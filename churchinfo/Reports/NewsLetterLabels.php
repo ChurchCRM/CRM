@@ -16,23 +16,21 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 require "../Include/ReportConfig.php";
+require "../Include/class_fpdf_labels.php";
 
-class PDF_NewsletterLabels extends ChurchInfoReport {
+class PDF_NewsletterLabels extends PDF_Label {
 
 	// Constructor
-	function PDF_NewsletterLabels() {
-		parent::FPDF("P", "mm", $this->paperFormat);
-
-		$this->SetMargins(0,0);
-		$this->Open();
-		$this->SetFont("Times",'',14);
-		$this->SetAutoPageBreak(false);
-		$this->AddPage ();
+	function PDF_NewsletterLabels($sLabelFormat) {
+   	parent::PDF_Label ($sLabelFormat);
+      $this->Open();
 	}
 }
 
+$sLabelFormat = FilterInput($_GET["LabelFormat"]);
+
 // Instantiate the directory class and build the report.
-$pdf = new PDF_NewsletterLabels();
+$pdf = new PDF_NewsletterLabels($sLabelFormat);
 
 // Get all the families which receive the newsletter by mail
 $sSQL = "SELECT * FROM family_fam WHERE fam_SendNewsLetter='TRUE' ORDER BY fam_Zip";
@@ -47,23 +45,20 @@ $labelX = 10;
 while ($aFam = mysql_fetch_array($rsFamilies)) {
 	extract ($aFam);
 
-	$curY = $labelThisPage * $labelHeight + 10;
-
-	$pdf->WriteAt ($labelX, $curY, $pdf->MakeSalutation ($fam_ID)); $curY += $labelLineHeight;
+   $labelText = $pdf->MakeSalutation ($fam_ID);
 	if ($fam_Address1 != "") {
-		$pdf->WriteAt ($labelX, $curY, $fam_Address1); $curY += $labelLineHeight;
+		$labelText .= "\n" . $fam_Address1;
 	}
 	if ($fam_Address2 != "") {
-		$pdf->WriteAt ($labelX, $curY, $fam_Address2); $curY += $labelLineHeight;
+		$labelText .= "\n" . $fam_Address2;
 	}
-	$pdf->WriteAt ($labelX, $curY, $fam_City . ", " .  $fam_State . "  " . $fam_Zip); $curY += $labelLineHeight;
+	$labelText .= sprintf ("\n%s, %s  %s", $fam_City, $fam_State, $fam_Zip);
+
 	if ($fam_Country != "" && $fam_Country != "USA" && $fam_Country != "United States") {
-		$pdf->WriteAt ($labelX, $curY, $fam_Country); $curY += $labelLineHeight;
-	}
-	if (++$labelThisPage == 10) {
-		$labelThisPage = 0;
-		$pdf->AddPage ();
-	}
+		$labelText .= "\n" . $fam_Country;
+   }
+
+	$pdf->Add_PDF_Label($labelText);
 }
 
 if ($iPDFOutputType == 1)
