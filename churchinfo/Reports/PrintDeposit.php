@@ -161,7 +161,7 @@ $pdf->Write (8, $dep_Date);
 
 $pdf->SetXY ($titleX, $titleY);
 $pdf->SetFont('Courier','B', 20);
-$pdf->Write (8, "Deposit Summary");
+$pdf->Write (8, "Deposit Summary " . $iDepositSlipID);
 $pdf->SetFont('Times','B', 10);
 
 $curX = $summaryX;
