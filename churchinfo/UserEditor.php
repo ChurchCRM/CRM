@@ -2,7 +2,7 @@
 /*******************************************************************************
  *
  *  filename    : UserEditor.php
- *  last change : 2003-05-29
+ *  last change : 2005-03-19
  *  description : form for adding and editing users
  *
  *  http://www.infocentral.org/
@@ -41,51 +41,79 @@ if (isset($_GET["PersonID"])) {
 	$bNewUser = true;
 }
 
+// Initialize the variables
+$sErrorText = "";
+
 // Has the form been submitted?
 if (isset($_POST["Submit"]) && $iPersonID > 0) {
 
 	// Assign all variables locally
 	$sAction = $_POST["Action"];
 
-	$defaultFY = CurrentFY ();
 	$sUserName = FilterInput($_POST["UserName"]);
-	if (isset($_POST["AddRecords"])) { $AddRecords = 1; } else { $AddRecords = 0; }
-	if (isset($_POST["EditRecords"])) { $EditRecords = 1; } else { $EditRecords = 0; }
-	if (isset($_POST["DeleteRecords"])) { $DeleteRecords = 1; } else { $DeleteRecords = 0; }
-	if (isset($_POST["MenuOptions"])) { $MenuOptions = 1; } else { $MenuOptions = 0; }
-	if (isset($_POST["ManageGroups"])) { $ManageGroups = 1; } else { $ManageGroups = 0; }
-	if (isset($_POST["Finance"])) { $Finance = 1; } else { $Finance = 0; }
-	if (isset($_POST["Notes"])) { $Notes = 1; } else { $Notes = 0; }
-	if (isset($_POST["EditSelf"])) { $EditSelf = 1; } else { $EditSelf = 0; }
-	if (isset($_POST["Canvasser"])) { $Canvasser = 1; } else { $Canvasser = 0; }
+	
+	if (strlen($sUserName) < 6) 
+	{	
+	// Check for short user names
+	$sErrorText = "&nbsp;" . gettext("Login must be a least 6 characters!");	
+	}else{		
+			if (isset($_POST["AddRecords"])) { $AddRecords = 1; } else { $AddRecords = 0; }
+			if (isset($_POST["EditRecords"])) { $EditRecords = 1; } else { $EditRecords = 0; }
+			if (isset($_POST["DeleteRecords"])) { $DeleteRecords = 1; } else { $DeleteRecords = 0; }
+			if (isset($_POST["MenuOptions"])) { $MenuOptions = 1; } else { $MenuOptions = 0; }
+			if (isset($_POST["ManageGroups"])) { $ManageGroups = 1; } else { $ManageGroups = 0; }
+			if (isset($_POST["Finance"])) { $Finance = 1; } else { $Finance = 0; }
+			if (isset($_POST["Notes"])) { $Notes = 1; } else { $Notes = 0; }
+			if (isset($_POST["EditSelf"])) { $EditSelf = 1; } else { $EditSelf = 0; }
+		
+			// This setting will go un-used until InfoCentral 1.3
+			// if (isset($_POST["Communication"])) { $Communication = 1; } else { $Communication = 0; }
+			$Communication = 0;
+		
+			if (isset($_POST["Admin"])) { $Admin = 1; } else { $Admin = 0; }
+			$Style = FilterInput($_POST["Style"]);
+		
+			// Initialize error flag
+			$bErrorFlag = false;
+		
+			// Were there any errors?
+			if (!$bErrorFlag) {
+						
+				//Check for duplicate user names
+				$unSQL = "Select Count(*) as dup from user_usr where usr_UserName like '".$sUserName
+						."' and usr_per_ID not like '".$iPersonID."'";
+		
+				// Execute the SQL
+				$unQueryResult = RunQuery($unSQL);
+				//Extract Value, if greater than 0 for add error, greater than 1 for add then error
+				$unQueryResultSet = mysql_fetch_array($unQueryResult);
+				$undupCount = $unQueryResultSet["dup"];
 
-	// This setting will go un-used until InfoCentral 1.3
-	// if (isset($_POST["Communication"])) { $Communication = 1; } else { $Communication = 0; }
-	$Communication = 0;
-
-	if (isset($_POST["Admin"])) { $Admin = 1; } else { $Admin = 0; }
-	$Style = FilterInput($_POST["Style"]);
-
-	// Initialize error flag
-	$bErrorFlag = false;
-
-	// Were there any errors?
-	if (!$bErrorFlag) {
-
-		// Write the SQL depending on whether we're adding or editing
-		if ($sAction == "add") {
-			$sSQL = "INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Communication, usr_Admin, usr_Style, usr_SearchLimit, usr_defaultFY, usr_UserName, usr_EditSelf, usr_Canvasser) VALUES (" . $iPersonID . ",'" . md5(strtolower($sDefault_Pass)) . "',1,'" . date("Y-m-d H:i:s") . "', " . $AddRecords . ", " . $EditRecords . ", " . $DeleteRecords . ", " . $MenuOptions . ", " . $ManageGroups . ", " . $Finance . ", " . $Notes . ", " . $Communication . ", " . $Admin . ", '" . $Style . "', 10," . $defaultFY . ",\"" . $sUserName . "\"," . $EditSelf . "," . $Canvasser . ")";
-		} else {
-			$sSQL = "UPDATE user_usr SET usr_AddRecords = " . $AddRecords . ", usr_EditRecords = " . $EditRecords . ", usr_DeleteRecords = " . $DeleteRecords . ", usr_MenuOptions = " . $MenuOptions . ", usr_ManageGroups = " . $ManageGroups . ", usr_Finance = " . $Finance . ", usr_Notes = " . $Notes . ", usr_Communication = " . $Communication . ", usr_Admin = " . $Admin . ", usr_Style = \"" . $Style . "\", usr_UserName = \"" . $sUserName . "\", usr_EditSelf = " . $EditSelf . ", usr_Canvasser = " . $Canvasser . " WHERE usr_per_ID = " . $iPersonID;
-		}
-
-		// Execute the SQL
-		RunQuery($sSQL);
-
-		// Redirect back to the list
-		Redirect("UserList.php");
+				// Write the SQL depending on whether we're adding or editing
+				if ($sAction == "add" && $undupCount == 0) {
+					$sSQL = "INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Communication, usr_Admin, usr_Style, usr_SearchLimit, usr_UserName, usr_EditSelf) VALUES (" . $iPersonID . ",'" . md5(strtolower($sDefault_Pass)) . "',1,'" . date("Y-m-d H:i:s") . "', " . $AddRecords . ", " . $EditRecords . ", " . $DeleteRecords . ", " . $MenuOptions . ", " . $ManageGroups . ", " . $Finance . ", " . $Notes . ", " . $Communication . ", " . $Admin . ", '" . $Style . "', 10, \"" . $sUserName . "\", usr_EditSelf = " . $EditSelf . ")";
+					
+					RunQuery($sSQL);		
+					Redirect("UserList.php");
+				
+				} elseif ($undupCount == 0) {
+					$sSQL = "UPDATE user_usr SET usr_AddRecords = " . $AddRecords . ", usr_EditRecords = " . $EditRecords . ", usr_DeleteRecords = " . $DeleteRecords . ", usr_MenuOptions = " . $MenuOptions . ", usr_ManageGroups = " . $ManageGroups . ", usr_Finance = " . $Finance . ", usr_Notes = " . $Notes . ", usr_Communication = " . $Communication . ", usr_Admin = " . $Admin . ", usr_Style = \"" . $Style . "\", usr_UserName = \"" . $sUserName . "\", usr_EditSelf = " . $EditSelf . " WHERE usr_per_ID = " . $iPersonID;
+					
+					RunQuery($sSQL);		
+					Redirect("UserList.php");
+					
+				} else {
+					// Set the error text
+				$sErrorText = "&nbsp;" . gettext("Login already in use, please select a different login!");
+				$sSQL = "SELECT per_LastName, per_FirstName FROM person_per WHERE per_ID = " . $iPersonID;
+				$rsUser = RunQuery($sSQL);
+				$aUser = mysql_fetch_array($rsUser);
+				$sUser = $aUser['per_LastName'] . ", " . $aUser['per_FirstName'];
+				$sUserName = $aUser['per_FirstName'] . $aUser['per_LastName'];
+								
+				}		
+			}
 	}
-
 } else {
 
 	// Do we know which person yet?
@@ -124,7 +152,6 @@ if (isset($_POST["Submit"]) && $iPersonID > 0) {
 		$usr_Communication = 0;
 		$usr_Admin = 0;
 		$usr_EditSelf = 0;
-		$usr_Canvasser = 0;
 		$sUserName = "";
 
 		// Get all the people who are NOT currently users
@@ -194,6 +221,12 @@ if ($bShowPersonSelect) {
 <?php
 }
 ?>
+	<?php if (isset($sErrorText) <> '') { ?> 
+	<tr>
+			<td align="center" colspan="2">
+			<span style="color:red;" id="PasswordError"><?php echo $sErrorText; ?></span>
+			</td>
+	</tr><?php } ?>
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Login Name:"); ?></td>
 		<td class="TextColumn"><input type="text" name="UserName" value="<?php echo $sUserName; ?>"></td>
@@ -244,11 +277,6 @@ if ($bShowPersonSelect) {
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Edit Self:"); ?></td>
 		<td class="TextColumn"><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) { echo " checked"; } ?>>&nbsp;<span class="SmallText"><?php echo gettext("(Edit own family only.)"); ?></span></td>
-	</tr>
-
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Canvasser:"); ?></td>
-		<td class="TextColumn"><input type="checkbox" name="Canvasser" value="1"<?php if ($usr_Canvasser) { echo " checked"; } ?>>&nbsp;<span class="SmallText"><?php echo gettext("(Canvass volunteer.)"); ?></span></td>
 	</tr>
 
 	<tr>
