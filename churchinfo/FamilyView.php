@@ -83,7 +83,7 @@ $rsNotes = RunQuery($sSQL);
 
 //Get the family members for this family
 $sSQL = "SELECT per_ID, per_Title, per_FirstName, per_LastName, per_Suffix, per_Gender,
-		per_BirthMonth, per_BirthDay, per_BirthYear, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole
+		per_BirthMonth, per_BirthDay, per_BirthYear, per_Flags, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole
 		FROM person_per
 		LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
 		LEFT JOIN list_lst fmr ON per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
@@ -526,7 +526,7 @@ while ($aRow =mysql_fetch_array($rsFamilyMembers))
 			<?php echo $sFamRole ?>&nbsp;
 		</td>
 		<td>
-			<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear); ?>
+			<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?>
 		</td>
 		<td><?php echo $sClassName; ?>&nbsp;</td>
 		<td><a href="PersonEditor.php?PersonID=<?php echo $per_ID ?>">Edit</a></td>

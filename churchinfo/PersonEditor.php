@@ -89,6 +89,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	$iBirthMonth = FilterInput($_POST["BirthMonth"],'int');
 	$iBirthDay = FilterInput($_POST["BirthDay"],'int');
 	$iBirthYear = FilterInput($_POST["BirthYear"],'int');
+	$bHideAge = isset($_POST["HideAge"]);
 	$dFriendDate = FilterInput($_POST["FriendDate"]);
 	$dMembershipDate = FilterInput($_POST["MembershipDate"]);
 	$iClassification = FilterInput($_POST["Classification"],'int');
@@ -207,13 +208,19 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 			extract(mysql_fetch_array($rsLastEntry));
 		}
 
+		if ($bHideAge) {
+			$per_Flags = 1;
+		} else {
+			$per_Flags = 0;
+		} 
+
 		// New Person (add)
 		if (strlen($iPersonID) < 1)
 		{
 			if (!$_SESSION['bFinance'] || strlen($sEnvelope) < 1)
 				$sEnvelope = "NULL";
 
-			$sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate) 
+			$sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags) 
 			         VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . "," . $iBirthDay . "," . $iBirthYear . "," . $sEnvelope . "," . $iFamily . "," . $iFamilyRole . ",";
 			if ( strlen($dMembershipDate) > 0 )
 				$sSQL .= "\"" . $dMembershipDate . "\"";
@@ -225,6 +232,8 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 				$sSQL .= "\"" . $dFriendDate . "\"";
 			else
 				$sSQL .= "NULL";
+
+			$sSQL .= "," . $per_Flags;
 			$sSQL .= ")";
 
 			$bGetKeyBack = True;
@@ -250,6 +259,8 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 				$sSQL .= "\"" . $dFriendDate . "\"";
 			else
 				$sSQL .= "NULL";
+
+			$sSQL .= ",per_Flags=" . $per_Flags;
 
 			$sSQL .= " WHERE per_ID = " . $iPersonID;
 
@@ -346,6 +357,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		$iBirthMonth = $per_BirthMonth;
 		$iBirthDay = $per_BirthDay;
 		$iBirthYear = $per_BirthYear;
+		$bHideAge = ($per_Flags & 1) != 0;
 		$iOriginalFamily = $per_fam_ID;
 		$iFamily = $per_fam_ID;
 		$iFamilyRole = $per_fmr_ID;
@@ -663,6 +675,7 @@ require "Include/Header.php";
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("It must be in four-digit format (XXXX).<br>If the birth date is not known, you can still include the date (for age reference), although birthday will not be calculated."); ?>><?php echo gettext("Birth Year:"); ?></td>
 				<td class="TextColumn"><input type="text" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"><font color="red"><br><?php echo $sBirthYearError ?></font><br><font size="1"><?php echo gettext("Must be four-digit format."); ?></font></td>
+				<td class="TextColumn"><input type="checkbox" name="HideAge" value="1" <?php if ($bHideAge) echo " checked";?>><?php echo gettext("Hide Age"); ?></td>
 			</tr>
 
 			<tr>

@@ -380,7 +380,7 @@ if ($next_link_text) {
 			</tr>
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Age:"); ?></td>
-				<td class="TinyTextColumn"><?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear); ?></td>
+				<td class="TinyTextColumn"><?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?></td>
 			</tr>
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Friend Date:"); ?></td>

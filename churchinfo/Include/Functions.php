@@ -604,8 +604,12 @@ function ExpandPhoneNumber($sPhoneNumber,$sPhoneCountry,&$bWeird)
 //
 // Prints age in years, or in months if less than one year old
 //
-function PrintAge($Month,$Day,$Year)
+function PrintAge($Month,$Day,$Year,$Flags)
 {
+	if ($Flags & 1) {
+		return;
+	}
+
 	if ($Year > 0)
 	{
 		if ($Year == date("Y"))

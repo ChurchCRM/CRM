@@ -178,6 +178,7 @@ CREATE TABLE person_per (
   per_EnteredBy smallint(5) unsigned NOT NULL default '0',
   per_EditedBy smallint(5) unsigned default '0',
   per_FriendDate date default NULL,
+  per_Flags mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (per_ID),
   KEY per_ID (per_ID)
 ) TYPE=MyISAM;
