@@ -39,7 +39,7 @@
 */
 
 
-class PDF_Label extends FPDF
+class PDF_Label extends ChurchInfoReport
 {
     // Private properties
 	var $_Avery_Name	= '';		// Name of format

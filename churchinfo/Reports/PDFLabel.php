@@ -21,11 +21,8 @@
 
 require "../Include/Config.php";
 require "../Include/Functions.php";
-require "../Include/ReportConfig.php";
 require "../Include/ReportFunctions.php";
-
-// Load the FPDF library
-LoadLib_FPDF();
+require "../Include/ReportConfig.php";
 
 require "../Include/class_fpdf_labels.php";
 
