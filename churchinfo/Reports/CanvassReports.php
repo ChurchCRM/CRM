@@ -120,7 +120,10 @@ function CanvassProgressReport ($iFYID)
 			$pdf->WriteAt ($nameX, $curY, $aCanvasser["per_FirstName"] . " " . $aCanvasser["per_LastName"]);
 			$pdf->WriteAt ($doneX, $curY, $thisCanvasserDone);
 			$pdf->WriteAt ($toDoX, $curY, $thisCanvasserToDo);
-			$percentStr = sprintf ("%.0f%%", ($thisCanvasserDone / $thisCanvasserToDo) * 100);
+			if ($thisCanvasserToDo > 0)
+				$percentStr = sprintf ("%.0f%%", ($thisCanvasserDone / $thisCanvasserToDo) * 100);
+			else
+				$percentStr = "N/A";
 			$pdf->WriteAt ($percentX, $curY, $percentStr);
 			$curY += 6;
 		}
