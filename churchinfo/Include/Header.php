@@ -303,13 +303,12 @@ $MenuFirst = 1;
 				'contents', <?php echo "'" . gettext("Data/Reports") . "'"; ?>,
 				'uri', '',
 				'statusText', '',
-				<?php if ($_SESSION['bAdmin'] || !$bCSVAdminOnly) {
-				echo $MenuSecond++; ?>, new domMenu_Hash(
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("CSV Export Records") . "'"; ?>,
 					'uri', 'CSVExport.php',
 					'statusText', ''
 				),
-				<?php } echo $MenuSecond++; ?>, new domMenu_Hash(
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Query Menu") . "'"; ?>,
 					'uri', 'QueryList.php',
 					'statusText', ''

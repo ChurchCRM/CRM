@@ -105,12 +105,9 @@ if (count($_SESSION['aPeopleCart']) != 0)
 		echo "<a href=\"CartToFamily.php\">" . gettext("Empty Cart to Family") . "</a>";
 	}
 
-	// Link to CSV Export
-	if (!$bCSVAdminOnly || $_SESSION['bAdmin'])
-	{
-		echo "<br>";
-		echo "<a href=\"CSVExport.php?Source=cart\">" . gettext("CSV Export") . "</a>";
-	}
+	/* Link to CSV export */
+	echo "<br>";
+	echo "<a href=\"CSVExport.php?Source=cart\">" . gettext("CSV Export") . "</a>";
 
 	if ($iEmailNum > 0) {
 		$sEmailLink .= "," . $sToEmailAddress . "\">";

@@ -19,12 +19,6 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-// If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
-	Redirect("Menu.php");
-	exit;
-}
-
 //Get Classifications for the drop-down
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
 $rsClassifications = RunQuery($sSQL);
@@ -135,11 +129,6 @@ require "Include/Header.php";
 			<td class="TextColumn"><input type="checkbox" name="WorkEmail" value="1"></td>
 		</tr>
 
-		<tr>
-			<td class="LabelColumn"><?php echo gettext("Envelope Number:"); ?></td>
-			<td class="TextColumnWithBottomBorder"><input type="checkbox" name="Envelope" value="1"></td>
-		</tr>
-		
 		<tr>
 			<td class="LabelColumn"><?php echo gettext("Membership Date:"); ?></td>
 			<td class="TextColumnWithBottomBorder"><input type="checkbox" name="MembershipDate" value="1"></td>
@@ -331,10 +320,6 @@ require "Include/Header.php";
 	</tr>
 	<tr>
 		<td colspan=2 align="center"><input type="checkbox" name="SkipIncompleteAddr" value="1"><?php echo gettext("Skip records with incomplete mail address"); ?></td>
-	</tr>
-	<tr>
-		<td colspan=2 align="center"><input type="checkbox" name="SkipNoEnvelope" value="1"><?php echo gettext("Skip records with no envelope number"); ?>
-		<br><font class="SmallText"><?php echo gettext("(Individual records only)"); ?></font></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>

@@ -17,12 +17,6 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-// If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
-	Redirect("Menu.php");
-	exit;
-}
-
 // Turn ON output buffering
 ob_start();
 
