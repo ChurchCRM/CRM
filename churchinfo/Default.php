@@ -11,7 +11,7 @@
  *	Updated 2005-03-19 by Everette L Mills: Removed dropdown login box and
  *	added user entered login box
  * 
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -21,10 +21,10 @@
 // Show disable message if register_globals are turned on.
 if (ini_get('register_globals'))
 {
-	echo "<h3>InfoCentral will not operate with PHP's register_globals option turned on.<BR>";
+	echo "<h3>ChurchInfo will not operate with PHP's register_globals option turned on.<BR>";
 	echo "This is for your own protection as the use of this setting could entirely undermine <BR>";
 	echo "all security.  You need to either turn off register_globals in your php.ini or else<BR>";
-	echo "configure your web server to turn off register_globals for the InfoCentral directory.</h3>";
+	echo "configure your web server to turn off register_globals for the ChurchInfo directory.</h3>";
 	exit;
 }
 
@@ -271,7 +271,7 @@ if ($iUserID > 0)
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="Include/Style.css">
-	<title><?php echo gettext("InfoCentral: Login"); ?></title>
+	<title><?php echo gettext("ChurchInfo: Login"); ?></title>
 </head>
 <body>
 <table width="80%" border="0" cellpadding="5" cellspacing="0" align="center">
