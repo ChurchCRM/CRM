@@ -40,7 +40,7 @@ class PDF_ReminderReport extends ChurchInfoReport {
 
 	function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID) {
 		$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
-		$curY += 2 * $incrementY;
+		$curY += 2 * $this->incrementY;
 		$blurb = $this->sReminder1 . (1995 + $iFYID) . "/" . (1995 + $iFYID + 1) . ".";
 		$this->WriteAt ($this->leftX, $curY, $blurb);
 		$curY += 2 * $this->incrementY;
