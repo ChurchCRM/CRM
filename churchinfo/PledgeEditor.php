@@ -134,9 +134,9 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		// New Person (add)
 		if (strlen($iPledgeID) < 1)
 		{
-			if ($PledgeOrPayment=='Pledge')
-				$depIDString = "NULL";
-			else // when creating a payment record the current deposit slip ID
+			// when creating a payment record the current deposit slip ID
+			$depIDString = "NULL";
+			if ($_SESSION['iCurrentDeposit'] && $PledgeOrPayment=='Payment')
 				$depIDString = $_SESSION['iCurrentDeposit'];
 
 			// Only set PledgeOrPayment when the record is first created

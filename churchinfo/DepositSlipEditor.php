@@ -18,13 +18,12 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 //Get whether making new deposit slip from the query string
-$bNew = FilterInput($_GET["new"],'int');
 $linkBack = FilterInput($_GET["linkBack"]);
-
+$iDepositSlipID = FilterInput($_GET["DepositSlipID"]);
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
 //Set the page title
-if ($bNew)
+if (! $iDepositSlipID)
 	$sPageTitle = gettext("Deposit Slip Number: TBD");
 else
 	$sPageTitle = gettext("Deposit Slip Number: " . $iDepositSlipID);
@@ -38,9 +37,11 @@ if (!$_SESSION['bFinance'])
 
 if ($iDepositSlipID) {
 	//Get the payments for this deposit slip
-	$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment, a.fam_Name AS FamilyName
+	$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment, 
+	         a.fam_Name AS FamilyName, b.fun_Name as fundName
 			 FROM pledge_plg 
 			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
+			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 			 WHERE plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_date";
 	$rsPledges = RunQuery($sSQL);
 } else {
@@ -75,7 +76,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 	if (!$bErrorFlag)
 	{
 		// New deposit slip
-		if ($bNew)
+		if (! $iDepositSlipID)
 		{
 			// Only set DepositSlipOrPayment when the record is first created
 			$sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy, dep_Closed) 
@@ -102,12 +103,11 @@ if (isset($_POST["DepositSlipSubmit"]))
 
 		if (isset($_POST["DepositSlipSubmit"]))
 		{
-			// Check for redirection to another page after saving information: (ie. DepositSlipEditor.php?previousPage=prev.php?a=1;b=2;c=3)
 			if ($linkBack != "") {
 				Redirect($linkBack);
 			} else {
 				//Send to the view of this DepositSlip
-				Redirect("DepositSlipEditor.php?new=0&linkBack=", $linkBack);
+				Redirect("DepositSlipEditor.php?linkBack=" . $linkBack . "&DepositSlipID=" . $iDepositSlipID);
 			}
 		}
 	}
@@ -115,7 +115,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 
 	//FirstPass
 	//Are we editing or adding?
-	if (! $bNew)
+	if ($iDepositSlipID)
 	{
 		//Editing....
 		//Get all the data on this record
@@ -139,7 +139,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?new=" . $bNew . "&linkBack=" . $linkBack?>" name="DepositSlipEditor">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?linkBack=" . $linkBack?>" name="DepositSlipEditor">
 
 <table cellpadding="3" align="center">
 
@@ -175,7 +175,7 @@ require "Include/Header.php";
 </table>
 
 <br>
-<?php if (! $bNew) { ?>
+<?php if ($iDepositSlipID) { ?>
 <b><?php echo gettext("Payments on this deposit slip:"); ?></b>
 <br>
 
@@ -185,6 +185,7 @@ require "Include/Header.php";
 	<td><?php echo gettext("Family"); ?></td>
 	<td><?php echo gettext("Date"); ?></td>
 	<td><?php echo gettext("Check #"); ?></td>
+	<td><?php echo gettext("Fund"); ?></td>
 	<td><?php echo gettext("Amount"); ?></td>
 	<td><?php echo gettext("Method"); ?></td>
 	<td><?php echo gettext("Comment"); ?></td>
@@ -204,6 +205,7 @@ while ($aRow =mysql_fetch_array($rsPledges))
 
 	$plg_date = "";
 	$plg_CheckNo = "";
+	$fundName = "";
 	$plg_amount = "";
 	$plg_method = "";
 	$plg_comment = "";
@@ -228,6 +230,9 @@ while ($aRow =mysql_fetch_array($rsPledges))
 			<?php echo $plg_CheckNo ?>&nbsp;
 		</td>
 		<td>
+			<?php echo $fundName ?>&nbsp;
+		</td>
+		<td>
 			<?php echo $plg_amount ?>&nbsp;
 		</td>
 		<td>
@@ -237,10 +242,10 @@ while ($aRow =mysql_fetch_array($rsPledges))
 			<?php echo $plg_comment; ?>&nbsp;
 		</td>
 		<td>
-			<a href="PledgeEditor.php?PledgeID=<?php echo $plg_plgID ?>&linkBack=DepositSlipEditor.php?new=0">Edit</a>
+			<a href="PledgeEditor.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Edit</a>
 		</td>
 		<td>
-			<a href="PledgeDelete.php?PledgeID=<?php echo $plg_plgID ?>&linkBack=DepositSlipEditor.php?new=0">Delete</a>
+			<a href="PledgeDelete.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Delete</a>
 		</td>
 	</tr>
 <?php
@@ -250,7 +255,7 @@ while ($aRow =mysql_fetch_array($rsPledges))
 </table>
 
 <?php
-} // if ($bNew)
+} // if (!$iDepositSlipID)
 ?>
 
 
