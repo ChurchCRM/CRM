@@ -265,13 +265,6 @@ else
 }
 
 ?>
-<script language="javascript">
-function confirmDeleteField( Mode, Order, ID, ListID ) {
-<?php echo "var answer = confirm (\"" . gettext("Warning:  If you delete this ") . $noun . gettext(", all ") . $adj . gettext("s using it will have this value reset to default.") . "\");"; ?>
-if ( answer )
-	window.location="OptionManagerRowOps.php?mode=" + Mode + "&ListID=" + ListID + "&Order=" + Order + "&ID=" + ID + "&Action=delete"
-}
-</script>
 
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
@@ -328,7 +321,7 @@ for ($row=1; $row <= $numRows; $row++)
 			if ($row < $numRows)
 				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$row&ListID=$listID&ID=" . $aIDs[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
 			if ($numRows > 1)
-				echo "<input type=\"image\" value=\"delete\" Name=\"delete\" onclick=\"confirmDeleteField('" . $mode . "', " . $row . ", " . $aIDs[$row] . ", " . $listID . ");\" src=\"Images/x.gif\">";
+				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$row&ListID=$listID&ID=" . $aIDs[$row] . "&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>";
 			?>
 		</td>
 		<td class="TextColumn">
