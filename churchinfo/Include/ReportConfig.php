@@ -64,6 +64,10 @@ class ChurchInfoReport extends FPDF {
          $phone = substr ($phone, 5, strlen ($phone) - 5);
       if (substr ($phone, 0, 1) == "-")
          $phone = substr ($phone, 1, strlen ($phone) - 1);
+      if (strlen ($phone) == 7) {
+         // Fix the missing -
+         $phone = substr ($phone, 0, 3) . "-" . substr ($phone, 3, 4);
+      }
       return ($phone);
    }
 
