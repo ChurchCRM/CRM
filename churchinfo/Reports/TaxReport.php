@@ -102,25 +102,6 @@ if (!empty($_POST["family"])) {
 		$sSQL .= ") ";
 	}
 }
-// Filter by Payment Method
-/*
-if (!empty($_POST["method"])) {
-	$count = 0;
-	foreach ($_POST["method"] as $MethodItem) {
-		$aMethod[$count++] = FilterInput($MethodItem);
-	}
-	if ($count == 1) {
-		if ($aMethod[0])
-			$sSQL .= " AND plg_method='$aMethod[0]' ";
-	} else {
-		$sSQL .= " AND (plg_method='$aMethod[0]' ";
-		for($i = 1; $i < $count; $i++) {
-			$sSQL .= " OR plg_method='$aMethod[$i]'";
-		}
-		$sSQL .= ") ";
-	}
-}
-*/
 
 // Add SQL ORDER
 $sSQL .= " ORDER BY plg_FamID, plg_date ";
@@ -128,6 +109,11 @@ $sSQL .= " ORDER BY plg_FamID, plg_date ";
 //Execute SQL Statement
 $rsReport = RunQuery($sSQL);
 
+// Exit if no rows returned
+$iCountRows = mysql_num_rows($rsReport);
+if ($iCountRows < 1){
+	header("Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report"); 
+}
 
 // Create Giving Report -- PDF
 // ***************************
