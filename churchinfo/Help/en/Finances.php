@@ -42,7 +42,7 @@
     ChurchInfo so the donating families receive credit against their pledges and also
     for tax purposes.</p>
       <ul>
-        <li><strong>Make a new deposit slip:</strong> Select &quot;New Deposit Slip&quot;
+        <li><strong>Make a new deposit slip:</strong> Select &quot;New Deposit Slip (checks and cash)&quot;
           from the &quot;Deposit&quot; menu.</li>
         <li><strong>Enter the deposits:</strong> See below.</li>
         <li><strong>Print the deposit slip:</strong> Select &quot;Edit Deposit Slip&quot;
@@ -50,6 +50,37 @@
           document will print on a standard bank deposit form.</li>
         <li><strong>Close the deposit:</strong> Select &quot;Close deposit slip&quot; to
           close the deposit slip once the deposit has been packaged for the bank.</li>
+      </ul>
+    <p>Automatic credit card and bank draft deposits are supported for churches and
+	 other organizations with an ECHO account.</p>
+      <ul>
+        <li><strong>Configure the automatic payments</strong> For each family participating in the automatic
+		  payment program, in the Family view, click &quot;Add a new automatic payment&quot;</li>
+        <li><strong>Fill in the automatic payment information</strong> Fill in all of the fields
+		  in this form, except for the last six fields.  Of the last six fields, the first three must
+		  be filled for credit card transactions, and the last three must be filled for bank draft
+		  transactions.  Many of these fields start with default values taken from the Family record,
+		  but these values may be edited if appropriate.  Note that the date specified here is the first
+		  date that the payment is authorized, and the payment interval specifies the period of time
+		  in months until another payment is authorized.</li>
+        <li><strong>Make a new deposit slip:</strong> Select &quot;New Deposit Slip (credit card)&quot; or &quot;New Deposit Slip (bank draft)&quot;
+          from the &quot;Deposit&quot; menu.</li>
+        <li><strong>Load the authorized payments</strong> Press &quot;Load Authorized Transactions&quot;
+		    to create payment records for all of the automatic transactions that have been authorized as
+			 of today.  Note that only credit card transactions or bank draft transactions will be loaded,
+			 depending on the nature of this deposit slip.  When the transactions are loaded the next payment
+			 date for each automatic payment is pushed forward by the specified interval in months.</li>
+        <li><strong>Process payments</strong> Press &quot;Run Transactions&quot; to execute all of the
+		    transactions using the ECHO transaction server.  This may take some time, depending on the
+			 number of transactions and the speed of the network connection.  When the page refreshes note
+			 the status of each transaction in the &quot;Cleared&quot; column.</li>
+        <li><strong>Fix problems with payments that did not clear</strong> Press &quot;Details&quot; 
+		    for any transactions that do not clear to see why the transaction failed.  Edit the automatic
+			 transaction record using the Family view to correct any errors.  After making corrections,
+			 repeat the &quot;Process payments&quot; step to re-submit the failed transactions.  Successful
+			 transactions will not be submitted again.</li>
+        <li><strong>Close the deposit slip</strong> Enable &quot;Close deposit slip&quot; when finished
+			 with this deposit slip, and press &quot;Save&quot;.</li>
       </ul></td>
     </tr></table>
 </div>
