@@ -21,6 +21,8 @@ $sUSER = "mikewilt_demo";
 $sPASSWORD = "solstice";
 $sDATABASE = "mikewilt_demo";
 
+$sWEBCALENDARDB = "mikewilt_cal";
+
 // Ports on which the web server may run.  Defaults are fine for most people.
 $aHTTPports = "80,8000,8080";
 $aHTTPSports = "443";
