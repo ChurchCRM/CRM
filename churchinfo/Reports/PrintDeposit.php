@@ -247,6 +247,11 @@ while ($aRow = mysql_fetch_array($rsPledges))
 	$totalAmount += $plg_amount;
 
 	$curY += $summaryIntervalY;
+
+	if ($curY >= 250) {
+	  $pdf->AddPage ();
+	  $curY = $topY;
+	}
 }
 
 $curY += $summaryIntervalY;
