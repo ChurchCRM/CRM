@@ -49,15 +49,9 @@ require "Include/Header.php";
 </p> */ ?>
 
 <p>
-<a class="MediumText" href="Reports/NewsLetterLabels.php"><?php echo gettext("Mailing labels for the newsletter"); ?></a>
+<a class="MediumText" href="LettersAndLabels.php"><?php echo gettext("Letters and Mailing Labels"); ?></a>
 <br>
-<?php echo gettext("Mailing labels for tractor feed printer (multi-page PDF)."); ?>
-</p>
-
-<p>
-<a class="MediumText" href="Reports/ConfirmReport.php"><?php echo gettext("Confirm data report"); ?></a>
-<br>
-<?php echo gettext("Generate letters requesting confirmation of information in the database (multi-page PDF)."); ?>
+<?php echo gettext("Generate letters and mailing labels."); ?>
 </p>
 
 <p>
