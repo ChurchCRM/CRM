@@ -52,7 +52,8 @@ $phoneX = 170;
 
 $yTitle = 20;
 $yTeachers = 26;
-$yStartStudents = 42;
+$yLiaison = 30;
+$yStartStudents = 36;
 $yIncrement = 4;
 
 $pdf->SetFont("Times",'B',16);
@@ -69,6 +70,7 @@ $ga = GetGroupArray ($iGroupID);
 $numMembers = count ($ga);
 
 $teacherString = "";
+
 $bFirstTeacher = true;
 for ($row = 0; $row < $numMembers; $row++)
 {
@@ -82,16 +84,18 @@ for ($row = 0; $row < $numMembers; $row++)
    }
 }
 
+$liaisonString = "";
 for ($row = 0; $row < $numMembers; $row++)
 {
    extract ($ga[$row]);
    if ($lst_OptionName == gettext ("Liaison")) {
-      $teacherString .= "  " . gettext ("Liaison") . ":" . $per_FirstName . " " . $per_LastName . " " . $fam_HomePhone . " ";
+      $liaisonString .= gettext ("Liaison") . ":" . $per_FirstName . " " . $per_LastName . " " . $fam_HomePhone . " ";
    }
 }
 
 $pdf->SetFont("Times",'B',10);
 $pdf->WriteAt ($nameX, $yTeachers, $teacherString);
+$pdf->WriteAt ($nameX, $yLiaison, $liaisonString);
 
 $pdf->SetFont("Times",'',12);
 
@@ -124,7 +128,7 @@ for ($row = 0; $row < $numMembers; $row++)
       $pdf->WriteAt ($parentsX, $y, $addrStr);
 
       $prevStudentName = $studentName;
-      $y += 2 * $yIncrement;
+      $y += 1.5 * $yIncrement;
    }
 }
 
