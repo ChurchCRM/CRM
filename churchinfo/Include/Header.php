@@ -216,6 +216,18 @@ $MenuFirst = 1;
 					'statusText', ''
 				),
 
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("Edit volunteer opportunities") . "'"; ?>,
+					'uri', 'VolunteerOpportunityEditor.php',
+					'statusText', ''
+				),
+
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
+					'contents', '---------------------------',
+					'uri', '',
+					'statusText', ''
+				),
+
 				<?php if ($_SESSION['bAddRecords']) {
 				echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Add New Family") . "'"; ?>,

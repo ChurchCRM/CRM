@@ -22,10 +22,24 @@ require "Include/Functions.php";
 // Get the person ID from the querystring
 $iPersonID = FilterInput($_GET["PersonID"],'int');
 
+$iRemoveVO = FilterInput($_GET["RemoveVO"],'int');
+
 if ( isset($_POST["GroupAssign"]) && $_SESSION['bManageGroups'] )
 {
 	$iGroupID = FilterInput($_POST["GroupAssignID"],'int');
 	AddToGroup($iPersonID,$iGroupID,0);
+}
+
+if ( isset($_POST["VolunteerOpportunityAssign"]))
+{
+	$iVolunteerOpportunityID = FilterInput($_POST["VolunteerOpportunityID"],'int');
+	AddVolunteerOpportunity($iPersonID,$iVolunteerOpportunityID);
+}
+
+// Service remove-volunteer-opportunity (these links set RemoveVO)
+if ($iRemoveVO > 0)
+{
+	RemoveVolunteerOpportunity($iPersonID, $iRemoveVO);
 }
 
 $dSQL= "SELECT per_ID FROM person_per order by per_LastName, per_FirstName";
@@ -110,6 +124,16 @@ $rsAssignedGroups = RunQuery($sSQL);
 // Get all the Groups
 $sSQL = "SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name";
 $rsGroups = RunQuery($sSQL);
+
+// Get the volunteer opportunities this Person is assigned to
+$sSQL = "SELECT vol_ID, vol_Name, vol_Description FROM volunteeropportunity_vol
+		LEFT JOIN person2volunteeropp_p2vo ON p2vo_vol_ID = vol_ID
+		WHERE person2volunteeropp_p2vo.p2vo_per_ID = " . $iPersonID;
+$rsAssignedVolunteerOpps = RunQuery($sSQL);
+
+// Get all the volunteer opportunities
+$sSQL = "SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Name";
+$rsVolunteerOpps = RunQuery($sSQL);
 
 // Get the Properties assigned to this Person
 $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
@@ -657,6 +681,80 @@ if ($next_link_text) {
 	</p>
 	</form>
 	<?php } ?>
+</td>
+</tr>
+</table>
+
+
+
+
+	<b><?php echo gettext("Volunteer opportunities:"); ?></b>
+
+	<?php
+
+	//Initialize row shading
+	$sRowClass = "RowColorA";
+
+	$sAssignedVolunteerOpps = ",";
+
+	//Was anything returned?
+	if (mysql_num_rows($rsAssignedVolunteerOpps) == 0)
+	{
+		echo "<p align=\"center\">" . gettext("No volunteer opportunity assignments.") . "</p>";
+	}
+	else
+	{
+		echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
+		echo "<tr class=\"TableHeader\">";
+		echo "<td>" . gettext("Name") . "</td>";
+		echo "<td>" . gettext("Description") . "</td>";
+		echo "<td width=\"10%\">" . gettext("Remove") . "</td>";
+		echo "</tr>";
+
+		// Loop through the rows
+		while ($aRow = mysql_fetch_array($rsAssignedVolunteerOpps))
+		{
+			extract($aRow);
+
+			// Alternate the row style
+			$sRowClass = AlternateRowStyle($sRowClass);
+
+			echo "<tr class=\"" . $sRowClass . "\">";
+			echo "<td>" . $vol_Name . "</a></td>";
+			echo "<td>" . $vol_Description . "</a></td>";
+
+			echo "<td><a class=\"SmallText\" href=\"PersonView.php?PersonID=" . $per_ID . "&RemoveVO=" . $vol_ID . "\">" . gettext("Remove") . "</a></td>";
+
+			echo "</tr>";
+
+			// NOTE: this method is crude.  Need to replace this with use of an array.
+			$sAssignedVolunteerOpps .= $vol_ID . ",";
+		}
+		echo "</table>";
+	}
+	?>
+
+	<form method="post" action="PersonView.php?PersonID=<?php echo $iPersonID ?>">
+	<p class="SmallText" align="center">
+		<span class="SmallText"><?php echo gettext("Assign a New Volunteer Opportunity:"); ?></span>
+		<select name="VolunteerOpportunityID">
+			<?php
+			while ($aRow = mysql_fetch_array($rsVolunteerOpps))
+			{
+				extract($aRow);
+
+				//If the property doesn't already exist for this Person, write the <OPTION> tag
+				if (strlen(strstr($sAssignedVolunteerOpps,"," . $grp_ID . ",")) == 0)
+				{
+					echo "<option value=\"" . $vol_ID . "\">" . $vol_Name . "</option>";
+				}
+			}
+			?>
+		</select>
+		<input type="submit" class="icButton" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="VolunteerOpportunityAssign" style="font-size: 8pt;">
+		<br>
+	</p>
+	</form>
 </td>
 </tr>
 </table>
