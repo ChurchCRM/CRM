@@ -21,7 +21,6 @@ require "Include/MICRFunctions.php";
 
 $linkBack = FilterInput($_GET["linkBack"]);
 $iDepositSlipID = FilterInput($_GET["DepositSlipID"]);
-$sDepositType = FilterInput($_GET["DepositType"]);
 
 // Security: User must have finance permission to use this form
 if (!$_SESSION['bFinance'])
@@ -50,6 +49,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 	$dDate = FilterInput($_POST["Date"]);
 	$sComment = FilterInput($_POST["Comment"]);
 	$bClosed = FilterInput($_POST["Closed"]);
+	$sDepositType = FilterInput($_POST["DepositType"]);
 	if (! $bClosed)
 		$bClosed = 0;
 
@@ -393,21 +393,26 @@ if ($iDepositSlipID) {
 	$rsPledges = RunQuery($sSQL);
 } else {
 	$rsPledges = 0;
+	$dDate = date("Y-m-d");	// Set default date to today
 }
 
 require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?linkBack=" . $linkBack . "&DepositSlipID=".$iDepositSlipID . "&DepositType=".$sDepositType?>" name="DepositSlipEditor">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?linkBack=" . $linkBack . "&DepositSlipID=".$iDepositSlipID?>" name="DepositSlipEditor">
 
 <table cellpadding="3" align="center">
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
+		<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
 			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="DepositSlipCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
-			<input type="button" class="icButton" value="<?php echo gettext("Generate PDF"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?php echo ($dep_Type == 'Bank')?>';">
+			<?php
+				if ($iDepositSlipID && !$dep_Closed)
+					echo "<input type=button class=icButton value=\"".gettext("Add Payment")."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+			?>
+			<input type="button" class="icButton" value="<?php echo gettext("Deposit Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?php echo ($dep_Type == 'Bank')?>';">
 
 			<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
 			<input type="submit" class="icButton" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
@@ -425,6 +430,23 @@ require "Include/Header.php";
 				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
 
+			
+			<?php
+			if (!$iDepositSlipID) 
+			{
+				echo "<tr><td class=LabelColumn>".gettext("Deposit Type:")."</td>";
+				if ($sDepositType == "BankDraft")
+					$select3 = "Checked ";
+				elseif ($sDepositType == "CreditCard")
+					$select2 = "Checked ";
+				else
+					$select1 = "Checked ";
+				echo "<td class=TextColumn><input type=radio name=DepositType id=DepositType value=\"Bank\" $select1>".gettext("Bank")." &nbsp; ";
+				echo "<input type=radio name=DepositType id=DepositType value=\"CreditCard\" $select2>".gettext("Credit Card")." &nbsp; ";
+				echo "<input type=radio name=DepositType id=DepositType value=\"BankDraft\" $select3>".gettext("Bank Draft")."</td></td>";
+			}
+			?>
+			
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Comment:"); ?></td>
 				<td class="TextColumn"><input type="text" name="Comment" id="Comment" value="<?php echo $sComment; ?>"></td>
@@ -446,7 +468,42 @@ require "Include/Header.php";
 </table>
 
 <br>
-<?php if ($iDepositSlipID) { ?>
+<?php if ($iDepositSlipID) {
+
+	// Get deposit totals
+	$sSQL = "SELECT SUM(plg_amount) FROM pledge_plg WHERE plg_depID = '$iDepositSlipID' AND plg_PledgeOrPayment = 'Payment'";
+	$rsDepositTotal = RunQuery($sSQL);
+	list ($deposit_total) = mysql_fetch_row($rsDepositTotal);
+	$sSQL = "SELECT SUM(plg_amount) FROM pledge_plg WHERE plg_depID = '$iDepositSlipID' AND plg_PledgeOrPayment = 'Payment' AND plg_method = 'CASH'";
+	$rsDepositTotal = RunQuery($sSQL);
+	list ($totalCash) = mysql_fetch_row($rsDepositTotal);
+	$sSQL = "SELECT SUM(plg_amount) FROM pledge_plg WHERE plg_depID = '$iDepositSlipID' AND plg_PledgeOrPayment = 'Payment' AND plg_method = 'CHECK'";
+	$rsDepositTotal = RunQuery($sSQL);
+	list ($totalChecks) = mysql_fetch_row($rsDepositTotal);
+	$sSQL = "SELECT COUNT(plg_plgID) AS deposit_total FROM pledge_plg WHERE plg_depID = '$iDepositSlipID' AND plg_PledgeOrPayment = 'Payment'";
+	$rsDepositTotal = RunQuery($sSQL);
+	list ($totalItems) = mysql_fetch_row($rsDepositTotal);
+	if (!$totalItems)
+		$totalItems = "0";
+	$sSQL = "SELECT COUNT(plg_plgID) AS deposit_total FROM pledge_plg WHERE plg_depID = '$iDepositSlipID' AND plg_PledgeOrPayment = 'Payment' AND plg_method = 'CASH'";
+	$rsDepositTotal = RunQuery($sSQL);
+	list ($totalCashItems) = mysql_fetch_row($rsDepositTotal);
+	if (!$totalCashItems)
+		$totalCashItems = "0";
+	$sSQL = "SELECT COUNT(plg_plgID) AS deposit_total FROM pledge_plg WHERE plg_depID = '$iDepositSlipID' AND plg_PledgeOrPayment = 'Payment' AND plg_method = 'CHECK'";
+	$rsDepositTotal = RunQuery($sSQL);
+	list ($totalCheckItems) = mysql_fetch_row($rsDepositTotal);
+	if (!$totalCheckItems)
+		$totalCheckItems = "0";
+	if (!$despositTotal)
+		$depositTotal = "0.00";
+	echo "<b>\$$deposit_total - TOTAL AMOUNT </b> &nbsp; (Items: $totalItems)<br>";
+	if ($totalCash)
+		echo "<i><b>\$$totalCash - Total Cash </b> &nbsp; (Items: $totalCashItems)</i><br>";
+	if ($totalChecks)
+		echo "<i><b>\$$totalChecks - Total Checks</b> &nbsp; (Items: $totalCheckItems)</i><br>";
+	echo "<br>";
+?>
 <b><?php echo gettext("Payments on this deposit slip:"); ?></b>
 <br>
 
