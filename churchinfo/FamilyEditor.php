@@ -87,10 +87,10 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		$iCanvasser = FilterInput($_POST["Canvasser"]);
 		if (! $iCanvasser)
 			$iCanvasser = FilterInput($_POST["BraveCanvasser"]);
-		if (! $iCanvasser)
-			$iCanvasser = 0;
 	}
-
+	if (! $iCanvasser)
+		$iCanvasser = 0;
+	
 	$iPropertyID = FilterInput($_POST["PropertyID"],'int');
 	$dWeddingDate = FilterInput($_POST["WeddingDate"]);
 
