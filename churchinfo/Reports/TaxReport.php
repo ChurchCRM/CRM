@@ -142,6 +142,11 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		$cnt += 1;
 
 		$curY += $summaryIntervalY;
+
+		if ($curY > 210) {
+			$pdf->AddPage ();
+			$curY = 20;
+		}
 	}
 
 	if ($cnt > 1) {
