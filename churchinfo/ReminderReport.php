@@ -15,7 +15,6 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/ReportConfig.php";
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
