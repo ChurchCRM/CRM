@@ -21,7 +21,11 @@ $sPageTitle = gettext("Financial Reports");
 require "Include/Header.php";
 
 // Is this the second pass?
-if (isset($_POST["SubmitReminder"]) || isset($_POST["SubmitTax"]) || isset($_POST["SubmitPledgeSummary"])) {
+if (isset($_POST["SubmitReminder"]) || 
+    isset($_POST["SubmitTax"]) || 
+	isset($_POST["SubmitPledgeSummary"]) ||
+	isset($_POST["VotingMembers"])) {
+
 	$iFYID = FilterInput($_POST["FYID"], 'int');
 	$iCalYear = FilterInput($_POST["CalYear"], 'int');
 
@@ -33,6 +37,8 @@ if (isset($_POST["SubmitReminder"]) || isset($_POST["SubmitTax"]) || isset($_POS
       Redirect ("Reports/TaxReport.php?Year=" . $iCalYear);
    } else if (isset($_POST["SubmitPledgeSummary"])) {
       Redirect ("Reports/PledgeSummary.php?FYID=" . $iFYID);
+   } else if (isset($_POST["VotingMembers"])) {
+      Redirect ("Reports/VotingMembers.php?FYID=" . $iFYID);
    }
 } else {
    $iFYID = $_SESSION['idefaultFY'];
@@ -82,6 +88,7 @@ if (isset($_POST["SubmitReminder"]) || isset($_POST["SubmitTax"]) || isset($_POS
       <td><input type="submit" class="icButton" name="SubmitTax" <?php echo 'value="' . gettext("Tax Statements") . '"'; ?>></td>
    	<?php } ?>
       <td><input type="submit" class="icButton" name="SubmitPledgeSummary" <?php echo 'value="' . gettext("Pledge Summary") . '"'; ?>></td>
+      <td><input type="submit" class="icButton" name="VotingMembers" <?php echo 'value="' . gettext("Voting Members") . '"'; ?>></td>
       <td><input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';"></td>
    </tr>
 
