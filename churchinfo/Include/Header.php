@@ -442,6 +442,11 @@ $MenuFirst = 1;
 					'contents', <?php echo "'" . gettext("Classifications") . "'"; ?>,
 					'uri', 'Help.php?page=Class',
 					'statusText', ''
+				),
+				13, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("Canvass Support") . "'"; ?>,
+					'uri', 'Help.php?page=Canvass',
+					'statusText', ''
 				)
 			)
 		));
