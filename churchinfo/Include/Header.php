@@ -256,27 +256,12 @@ $MenuFirst = 1;
 				'uri', '',
 				'statusText', '',
 				1, new domMenu_Hash(
-					'contents', <?php echo "'" . gettext("New Deposit Slip (checks and cash)") . "'"; ?>,
+					'contents', <?php echo "'" . gettext("Create New Deposit") . "'"; ?>,
 					'uri', 'DepositSlipEditor.php?DepositType=Bank',
 					'statusText', ''
 				),
 				2, new domMenu_Hash(
-					'contents', <?php echo "'" . gettext("New Deposit Slip (credit card)") . "'"; ?>,
-					'uri', 'DepositSlipEditor.php?DepositType=CreditCard',
-					'statusText', ''
-				),
-				3, new domMenu_Hash(
-					'contents', <?php echo "'" . gettext("New Deposit Slip (bank draft)") . "'"; ?>,
-					'uri', 'DepositSlipEditor.php?DepositType=BankDraft',
-					'statusText', ''
-				),
-				4, new domMenu_Hash(
-					'contents', <?php echo "'" . gettext("Edit Deposit Slip") . "'"; ?>,
-					'uri', 'DepositSlipEditor.php?DepositSlipID=<?php echo $_SESSION['iCurrentDeposit'];?>',
-					'statusText', ''
-				),
-				5, new domMenu_Hash(
-					'contents', <?php echo "'" . gettext("Find Deposit Slip") . "'"; ?>,
+					'contents', <?php echo "'" . gettext("View All Deposits") . "'"; ?>,
 					'uri', 'FindDepositSlip.php',
 					'statusText', ''
 				)
