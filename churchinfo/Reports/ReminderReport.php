@@ -62,6 +62,10 @@ $pdf = new PDF_ReminderReport();
 $sSQL = "SELECT * FROM family_fam WHERE 1";
 $rsFamilies = RunQuery($sSQL);
 
+// Get the list of funds
+$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
+$rsFunds = RunQuery($sSQL);
+
 // Loop through families
 while ($aFam = mysql_fetch_array($rsFamilies)) {
 	extract ($aFam);
@@ -128,6 +132,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
 			$pdf->PrintRightJustifiedCell ($summaryAmountX, $curY, $summaryAmountWid, $plg_amount);
 
+			$fundPledgeTotal[$fundName] += $plg_amount;
 			$totalAmount += $plg_amount;
 			$cnt += 1;
 
@@ -204,6 +209,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 			$pdf->PrintRightJustifiedCell ($summaryAmountX, $curY, $summaryAmountWid, $plg_amount);
 
 			$totalAmount += $plg_amount;
+			$fundPaymentTotal[$fundName] += $plg_amount;
 			$cnt += 1;
 
 			$curY += $summaryIntervalY;
@@ -228,14 +234,23 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
 	$curY += $summaryIntervalY;
 
-	$totalDue = $totalAmountPledges - $totalAmountPayments;
-	if ($totalDue > 0) {
-		$curY += $summaryIntervalY;
-		$dueString = sprintf ("Remaining pledge due: %.2f", ($totalAmountPledges - $totalAmountPayments));
-		$pdf->WriteAt ($summaryDateX, $curY, $dueString);
-		$curY += $summaryIntervalY;
+	if (mysql_num_rows ($rsFunds) > 0) {
+		mysql_data_seek($rsFunds,0);
+		while ($row = mysql_fetch_array($rsFunds))
+		{
+			$fun_name = $row["fun_Name"];
+			if ($fundPledgeTotal[$fun_name] > 0) {
+				$amountDue = $fundPledgeTotal[$fun_name] - $fundPaymentTotal[$fun_name];
+				if ($amountDue < 0)
+					$amountDue = 0;
+				$amountStr = sprintf ("Amount due for %s: %.2f", $fun_name, $amountDue);
+				$pdf->WriteAt ($pdf->leftX, $curY, $amountStr);
+				$curY += $summaryIntervalY;
+			}
+			$fundPledgeTotal[$fun_name] = 0; // Clear the array for the next person
+			$fundPaymentTotal[$fun_name] = 0;
+		}
 	}
-
 	$pdf->FinishPage ($curY);
 }
 
