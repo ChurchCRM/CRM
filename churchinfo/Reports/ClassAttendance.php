@@ -67,6 +67,7 @@ class PDF_Attendance extends ChurchInfoReport {
 	function PDF_Attendance() {
 		parent::FPDF("P", "mm", $this->paperFormat);
 
+		$this->incrementY = 6;
 		$this->SetMargins(0,0);
 		$this->Open();
 		$this->SetFont("Times",'',14);
@@ -87,8 +88,6 @@ class PDF_Attendance extends ChurchInfoReport {
       $yDays = $yTop + $yIncrement;
 
       $y = $yDays + $yIncrement;
-
-      $tweakLineY = -.85; // Offset the lines to line things up
 
       $this->SetFont("Times",'B',12);
       $this->WriteAt ($nameX, $yDays, $tTitle);
@@ -120,7 +119,7 @@ class PDF_Attendance extends ChurchInfoReport {
       $this->WriteAt ($nameX, $y, gettext ("Totals"));
       $this->SetFont("Times",'',12);
 
-      $bottomY = $y + $yIncrement + $tweakLineY;
+      $bottomY = $y + $yIncrement;
 
       // Paint the calendar grid
       $dayCounter = 0;
@@ -161,7 +160,7 @@ class PDF_Attendance extends ChurchInfoReport {
             $aNoSchoolX[$noSchoolCnt++] = $dayX;
 
          if (date ("n", $dWhichSunday) != $whichMonth) { // Finish the previous month
-            $this->WriteAt ($monthX, $yMonths, date ("F", $dWhichMonthDate));
+				$this->PrintCenteredCell ($monthX, $yMonths, $dayX - $monthX, date ("F", $dWhichMonthDate));
             $aHeavyVerticalX[$heavyVerticalXCnt++] = $monthX;
             $whichMonth = date ("n", $dWhichSunday);
             $dWhichMonthDate = $dWhichSunday;
@@ -191,10 +190,10 @@ class PDF_Attendance extends ChurchInfoReport {
 
       // Draw the left-most vertical line heavy, through the month row
       $this->SetLineWidth (0.5);
-      $this->Line ($nameX, $yMonths + $tweakLineY, $nameX, $bottomY);
+      $this->Line ($nameX, $yMonths, $nameX, $bottomY);
 
       // Draw the left-most line between the people and the calendar
-      $lineTopY = $yMonths + $tweakLineY;
+      $lineTopY = $yMonths;
       $this->Line ($startMonthX, $lineTopY, $startMonthX, $bottomY);
 
       // Draw the vertical lines in the grid based on X coords stored above
@@ -203,7 +202,7 @@ class PDF_Attendance extends ChurchInfoReport {
          $this->Line ($aHeavyVerticalX[$i], $lineTopY, $aHeavyVerticalX[$i], $bottomY);
       }
 
-      $lineTopY = $yDays + $tweakLineY;
+      $lineTopY = $yDays;
       $this->SetLineWidth (0.25);
       for ($i = 0; $i < $lightVerticalXCnt; $i++) {
          $this->Line ($aLightVerticalX[$i], $lineTopY, $aLightVerticalX[$i], $bottomY);
@@ -211,13 +210,13 @@ class PDF_Attendance extends ChurchInfoReport {
 
       // Draw the right-most vertical line heavy, through the month row
       $this->SetLineWidth (0.5);
-      $this->Line ($dayX, $yMonths + $tweakLineY, $dayX, $bottomY);
+      $this->Line ($dayX, $yMonths, $dayX, $bottomY);
 
       // Fill the no-school days
       $this->SetFillColor (200,200,200);
       $this->SetLineWidth (0.25);
       for ($i = 0; $i < count ($aNoSchoolX); $i++) {
-         $this->Rect ($aNoSchoolX[$i], $yDays + $tweakLineY, $dayWid, $bottomY - $yDays - $tweakLineY, 'FD');
+         $this->Rect ($aNoSchoolX[$i], $yDays, $dayWid, $bottomY - $yDays, 'FD');
       }
 
       for ($i = 0; $i < $dayCounter; $i++)
@@ -225,15 +224,15 @@ class PDF_Attendance extends ChurchInfoReport {
 
       // Draw heavy lines to delimit the Months and totals
       $this->SetLineWidth (0.5);
-      $this->Line ($nameX, $yMonths + $tweakLineY, $rightEdgeX, $yMonths + $tweakLineY);
-      $this->Line ($nameX, $yMonths + $yIncrement + $tweakLineY, $rightEdgeX, $yMonths + $yIncrement + $tweakLineY);
-      $this->Line ($nameX, $yMonths + 2 * $yIncrement + $tweakLineY, $rightEdgeX, $yMonths + 2 * $yIncrement + $tweakLineY);
-      $yBottom = $yMonths + (($numMembers - $phantomMembers + $extraLines + 2) * $yIncrement) + $tweakLineY;
+      $this->Line ($nameX, $yMonths, $rightEdgeX, $yMonths);
+      $this->Line ($nameX, $yMonths + $yIncrement, $rightEdgeX, $yMonths + $yIncrement);
+      $this->Line ($nameX, $yMonths + 2 * $yIncrement, $rightEdgeX, $yMonths + 2 * $yIncrement);
+      $yBottom = $yMonths + (($numMembers - $phantomMembers + $extraLines + 2) * $yIncrement);
       $this->Line ($nameX, $yBottom, $rightEdgeX, $yBottom);
       $this->Line ($nameX, $yBottom + $yIncrement, $rightEdgeX, $yBottom + $yIncrement);
 
       // Draw lines between the students
-      $y = $yTop + $tweakLineY;
+      $y = $yTop;
       $this->SetLineWidth (0.25);
       for ($studentInd = 0; $studentInd < $numMembers - $phantomMembers + $extraLines + 2; $studentInd++) {
          $this->Line ($nameX, $y, $rightEdgeX, $y);
@@ -253,10 +252,10 @@ $aGroupData = mysql_fetch_array(RunQuery($sSQL));
 extract($aGroupData);
 
 // Paint the title section- class name and year on the top, then teachers/liaison
-$yTitle = 10;
+$yTitle = 20;
 $yTeachers = $yTitle + 6;
 
-$nameX = 20;
+$nameX = 10;
 $yearX = 170;
 
 $pdf->SetFont("Times",'B',16);
@@ -295,7 +294,7 @@ for ($row = 0; $row < $numMembers; $row++)
 {
    extract ($ga[$row]);
    if ($lst_OptionName == gettext ("Liaison")) {
-      $teacherString .= "  " . gettext ("Liaison") . ":" . $per_FirstName . " " . $per_LastName . " " . $fam_HomePhone . " ";
+      $teacherString .= "  " . gettext ("Liaison") . ":" . $per_FirstName . " " . $per_LastName . " " . $pdf->StripPhone ($fam_HomePhone) . " ";
    }
 }
 

@@ -46,13 +46,13 @@ $aGroupData = mysql_fetch_array(RunQuery($sSQL));
 extract($aGroupData);
 
 $nameX = 20;
-$birthdayX = 60;
-$parentsX = 85;
+$birthdayX = 70;
+$parentsX = 95;
 $phoneX = 170;
 
-$yTitle = 10;
-$yTeachers = 16;
-$yStartStudents = 32;
+$yTitle = 20;
+$yTeachers = 26;
+$yStartStudents = 42;
 $yIncrement = 4;
 
 $pdf->SetFont("Times",'B',16);
