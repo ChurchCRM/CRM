@@ -19,12 +19,7 @@ require "Include/Functions.php";
 
 $linkBack = FilterInput($_GET["linkBack"]);
 $iDepositSlipID = FilterInput($_GET["DepositSlipID"]);
-
-//Set the page title
-if (! $iDepositSlipID)
-	$sPageTitle = gettext("Deposit Slip Number: TBD");
-else
-	$sPageTitle = gettext("Deposit Slip Number: " . $iDepositSlipID);
+$sDepositType = FilterInput($_GET["DepositType"]);
 
 // Security: User must have finance permission to use this form
 if (!$_SESSION['bFinance'])
@@ -34,17 +29,17 @@ if (!$_SESSION['bFinance'])
 }
 
 if ($iDepositSlipID) {
-	//Get the payments for this deposit slip
-	$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment, 
-	         a.fam_Name AS FamilyName, b.fun_Name as fundName
-			 FROM pledge_plg 
-			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
-			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-			 WHERE plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_date";
-	$rsPledges = RunQuery($sSQL);
-} else {
-	$rsPledges = 0;
+	// Get the current deposit slip
+	$sSQL = "SELECT * from deposit_dep WHERE dep_ID = " . $iDepositSlipID;
+	$rsDeposit = RunQuery($sSQL);
+	extract(mysql_fetch_array($rsDeposit));
 }
+
+//Set the page title
+if (! $iDepositSlipID)
+	$sPageTitle = $dep_Type . " " . gettext("Deposit Slip Number: TBD");
+else
+	$sPageTitle = $dep_Type . " " . gettext("Deposit Slip Number: ") . $iDepositSlipID;
 
 //Is this the second pass?
 if (isset($_POST["DepositSlipSubmit"]))
@@ -76,9 +71,8 @@ if (isset($_POST["DepositSlipSubmit"]))
 		// New deposit slip
 		if (! $iDepositSlipID)
 		{
-			// Only set DepositSlipOrPayment when the record is first created
-			$sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy, dep_Closed) 
-			VALUES ('" . $dDate . "','" . $sComment . "'," . $_SESSION['iUserID'] . "," . $bClosed . ")";
+			$sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy, dep_Closed, dep_Type) 
+			VALUES ('" . $dDate . "','" . $sComment . "'," . $_SESSION['iUserID'] . "," . $bClosed . ",'" . $sDepositType . "')";
 			$bGetKeyBack = True;
 
 		// Existing record (update)
@@ -109,6 +103,87 @@ if (isset($_POST["DepositSlipSubmit"]))
 			}
 		}
 	}
+} else if (isset($_POST["DepositSlipLoadAuthorized"])) {
+
+	// Create all the payment records that have been authorized
+
+	//Get all the variables from the request object and assign them locally
+	$dDate = FilterInput($_POST["Date"]);
+	$sComment = FilterInput($_POST["Comment"]);
+	$bClosed = FilterInput($_POST["Closed"]);
+	if (! $bClosed)
+		$bClosed = 0;
+
+	// Create any transactions that are authorized as of today
+	if ($dep_Type == "CreditCard") {
+		$enableStr = "fam_enableCreditCard=1";
+		$dateStr = "fam_creditCardDate";
+	} else {
+		$enableStr = "fam_enableBankDraft=1";
+		$dateStr = "fam_bankDraftDate";
+	}
+
+	// Compute the current fiscal year ID
+	$yearNow = date ("Y");
+	$monthNow = date ("m");
+	$FYID = $yearNow - 1995;
+	if ($monthNow > 3)
+		$FYID += 1;
+
+	// Get all the families with authorized automatic transactions
+	$sSQL = "SELECT * FROM family_fam WHERE " . $enableStr . " AND " . $dateStr . "<='" . date('Y-m-d') . "'";
+
+	$rsAuthorizedFamilies = RunQuery($sSQL);
+
+	while ($aFam =mysql_fetch_array($rsAuthorizedFamilies))
+	{
+		extract($aFam);
+		if ($dep_Type == "CreditCard") {
+			$interval = $fam_creditCardInterval;
+			$amount = $fam_creditCardAmount;
+			$method = "CREDITCARD";
+			$fund = $fam_creditCardFund;
+			$authDate = $fam_creditCardDate;
+			$scanString = $fam_scanCredit;
+		} else {
+			$interval = $fam_bankDraftInterval;
+			$amount = $fam_bankDraftAmount;
+			$method = "BANKDRAFT";
+			$fund = $fam_bankDraftFund;
+			$authDate = $fam_bankDraftDate;
+			$scanString = $fam_scanCheck;
+		}
+		if ($amount > 0.00) {
+			$sSQL = "INSERT INTO pledge_plg (plg_FamID, 
+														plg_FYID, 
+														plg_date, 
+														plg_amount, 
+														plg_method, 
+														plg_DateLastEdited, 
+														plg_EditedBy, 
+														plg_PledgeOrPayment, 
+														plg_fundID, 
+														plg_depID,
+														plg_scanString)
+											VALUES (" .
+														$fam_ID . "," .
+														$FYID . "," .
+														"'" . date ("Y-m-d") . "'," .
+														$amount . "," .
+														"'" . $method . "'," .
+														"'" . date ("Y-m-d") . "'," .
+														$_SESSION['iUserID'] . "," .
+														"'Payment'," .
+														$fund . "," .
+														$dep_ID . "," .
+														"'" . $scanString . "')";
+			RunQuery ($sSQL);
+
+			// Push the authorized transaction date forward by the interval
+			$sSQL = "UPDATE family_fam SET " . $dateStr . "=DATE_ADD('" . $authDate . "', INTERVAL " . $interval . " MONTH) WHERE fam_ID = " . $fam_ID;
+			RunQuery ($sSQL);
+		}
+	}
 } else {
 
 	//FirstPass
@@ -133,11 +208,24 @@ if (isset($_POST["DepositSlipSubmit"]))
 	}
 }
 
+if ($iDepositSlipID) {
+	//Get the payments for this deposit slip
+	$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment, 
+	         a.fam_Name AS FamilyName, b.fun_Name as fundName
+			 FROM pledge_plg 
+			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
+			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
+			 WHERE plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_date";
+	$rsPledges = RunQuery($sSQL);
+} else {
+	$rsPledges = 0;
+}
+
 require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?linkBack=" . $linkBack . "&DepositSlipID=".$iDepositSlipID?>" name="DepositSlipEditor">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?linkBack=" . $linkBack . "&DepositSlipID=".$iDepositSlipID . "&DepositType=".$sDepositType?>" name="DepositSlipEditor">
 
 <table cellpadding="3" align="center">
 
@@ -145,7 +233,15 @@ require "Include/Header.php";
 		<td align="center">
 			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
 			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="DepositSlipCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+
+			<?php if ($dep_Type == 'Bank') { ?>
 			<input type="button" class="icButton" value="<?php echo gettext("Generate PDF"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php';">
+			<?php } ?>
+
+			<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
+			<input type="submit" class="icButton" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
+			<?php } ?>
+
 		</td>
 	</tr>
 

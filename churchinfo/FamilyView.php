@@ -547,6 +547,15 @@ while ($aRow =mysql_fetch_array($rsFamilyMembers))
 </form>
 </p>
 
+<?php
+	if ($fam_enableBankDraft) {
+		echo "</p align=\"left\">Automatic bank draft pledge payments are enabled, next payment " . $fam_bankDraftDate . "</p>";
+	}
+	if ($fam_enableCreditCard) {
+		echo "</p align=\"left\">Automatic credit card pledge payments are enabled, next payment " . $fam_creditCardDate . "</p>";
+	}
+?>
+
 <table cellpadding="5" cellspacing="0" width="100%">
 
 <tr class="TableHeader">
@@ -660,7 +669,7 @@ if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
 <p>
 	<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&PledgeOrPayment=Pledge"><?php echo gettext("Add a new pledge"); ?></a></font>
 	<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&PledgeOrPayment=Payment"><?php echo gettext("Add a new payment"); ?></a></font>
-<p>
+</p>
 
 <?php } ?>
 

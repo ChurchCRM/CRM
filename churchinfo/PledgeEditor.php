@@ -25,6 +25,13 @@ $linkBack = FilterInput($_GET["linkBack"]);
 $FamIDIn = FilterInput($_GET["FamilyID"]);
 $PledgeOrPayment = FilterInput($_GET["PledgeOrPayment"]);
 
+$iCurrentDeposit = $_SESSION['iCurrentDeposit'];
+
+// Get the current deposit slip
+$sSQL = "SELECT * from deposit_dep WHERE dep_ID = " . $iCurrentDeposit;
+$rsDeposit = RunQuery($sSQL);
+extract(mysql_fetch_array($rsDeposit));
+
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
 if ($editorMode == 0) $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
@@ -34,7 +41,7 @@ $rsFunds = RunQuery($sSQL);
 if ($PledgeOrPayment == 'Pledge')
 	$sPageTitle = gettext("Pledge Editor");
 else
-	$sPageTitle = gettext("Payment Editor");
+	$sPageTitle = gettext($dep_Type . " Payment Editor");
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
@@ -236,6 +243,11 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		//Set defaults
 		$iFamily = $FamIDIn; // Will be set only if they pressed the "add pledge" link in the family view
 		$iFYID = $_SESSION['idefaultFY'];
+
+		if ($dep_Type == "CreditCard")
+			$iMethod = "CREDITCARD";
+		else if ($dep_Type == "BankDraft")
+			$iMethod = "BANKDRAFT";
 	}
 }
 
@@ -372,10 +384,19 @@ require "Include/Header.php";
 				<td class="TextColumnWithBottomBorder">
 					<select name="Method">
 						<option value="0"><?php echo gettext("Select Method"); ?></option>
+
+						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "CreditCard") { ?>
 						<option value="CREDITCARD" <?php if ($iMethod == "CREDITCARD") { echo "selected"; } ?>><?php echo gettext("Credit Card"); ?></option>
+						<?php } ?>
+
+						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "Bank") { ?>
 						<option value="CHECK" <?php if ($iMethod == "CHECK") { echo "selected"; } ?>><?php echo gettext("Check"); ?></option>
 						<option value="CASH" <?php if ($iMethod == "CASH") { echo "selected"; } ?>><?php echo gettext("Cash"); ?></option>
-						<option value="OTHER" <?php if ($iMethod == "OTHER") { echo "selected"; } ?>><?php echo gettext("Other"); ?></option>
+						<?php } ?>
+
+						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "BankDraft") { ?>
+						<option value="BANKDRAFT" <?php if ($iMethod == "BANKDRAFT") { echo "selected"; } ?>><?php echo gettext("Other"); ?></option>
+						<?php } ?>
 					</select>
 				</td>
 			</tr>

@@ -13,6 +13,7 @@ CREATE TABLE deposit_dep (
   dep_Comment text,
   dep_EnteredBy mediumint(9) unsigned default NULL,
   dep_Closed tinyint(1) NOT NULL default '0',
+  dep_Type enum('Bank','CreditCard','BankDraft') NOT NULL default 'Bank',
   PRIMARY KEY  (dep_ID)
 ) TYPE=MyISAM PACK_KEYS=0;
 
@@ -47,6 +48,16 @@ CREATE TABLE family_fam (
   fam_scanCredit text,
   fam_SendNewsLetter enum('FALSE','TRUE') NOT NULL default 'FALSE',
   fam_DateDeactivated date default NULL,
+  fam_enableBankDraft tinyint(1) unsigned NOT NULL default '0',
+  fam_enableCreditCard tinyint(1) unsigned NOT NULL default '0',
+  fam_bankDraftDate date default NULL,
+  fam_creditCardDate date default NULL,
+  fam_bankDraftAmount decimal(6,2) NOT NULL default '0.00',
+  fam_creditCardAmount decimal(6,2) NOT NULL default '0.00',
+  fam_creditCardInterval tinyint(3) NOT NULL default '1',
+  fam_bankDraftInterval tinyint(3) NOT NULL default '1',
+  fam_creditCardFund mediumint(6) NOT NULL default '0',
+  fam_bankDraftFund mediumint(6) NOT NULL default '0',
   PRIMARY KEY  (fam_ID),
   KEY fam_ID (fam_ID)
 ) TYPE=MyISAM;
@@ -134,7 +145,7 @@ CREATE TABLE pledge_plg (
   plg_date date default NULL,
   plg_amount decimal(8,2) default NULL,
   plg_schedule enum('Monthly','Quarterly','Once','Other') default NULL,
-  plg_method enum('CREDITCARD','CHECK','CASH','OTHER') default NULL,
+  plg_method enum('CREDITCARD','CHECK','CASH','BANKDRAFT') default NULL,
   plg_comment text,
   plg_DateLastEdited date NOT NULL default '0000-00-00',
   plg_EditedBy mediumint(9) NOT NULL default '0',
