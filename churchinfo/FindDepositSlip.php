@@ -80,7 +80,7 @@ require "Include/Header.php";
 			</tr>
 			<tr>
 				<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("Date End:"); ?></td>
-				<td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="sel2" size="11" value="<?php echo $dDateEnd; ?>">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[YYYY-MM-DD]"); ?></span></td>
+				<td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="sel2" size="11" value="<?php echo $dDateEnd; ?>">&nbsp;<input type="image" onclick="return showCalendar('sel2', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[YYYY-MM-DD]"); ?></span></td>
 				<td align="center">
 					<input type="submit" class="icButton" value="<?php echo gettext("Clear Filters"); ?>" name="FilterClear">
 				</td>
