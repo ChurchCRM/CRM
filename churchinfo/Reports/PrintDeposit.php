@@ -17,6 +17,8 @@ require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 require "../Include/ReportConfig.php";
 
+$iBankSlip = FilterInput($_GET["BankSlip"]);
+
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
 	Redirect("Menu.php");
@@ -109,46 +111,53 @@ $totalCash = 0;
 $totalChecks = 0;
 $numItems = 0;
 
-while ($aRow = mysql_fetch_array($rsPledges))
-{
-	$OutStr = "";
-	extract($aRow);
+if (! $iBankSlip) {
+	$summaryY -= 100;
+	$titleY -= 90;
+	$date2Y -= 90;
+} else {
 
-	// List all the checks and total the cash
-	if ($plg_method == 'CASH') {
-		$totalCash += $plg_amount;
-	} else if ($plg_method == 'CHECK') {
-		$numItems += 1;
-		$totalChecks += $plg_amount;
+	while ($aRow = mysql_fetch_array($rsPledges))
+	{
+		$OutStr = "";
+		extract($aRow);
 
-		$pdf->PrintRightJustified ($curX, $curY, $plg_CheckNo);
-		$pdf->PrintRightJustified ($curX + $amountOffsetX, $curY, $plg_amount);
+		// List all the checks and total the cash
+		if ($plg_method == 'CASH') {
+			$totalCash += $plg_amount;
+		} else if ($plg_method == 'CHECK') {
+			$numItems += 1;
+			$totalChecks += $plg_amount;
 
-		$curX += $intervalX;
-		if ($curX > $maxX) {
-			$curX = $leftX;
-			$curY += $intervalY;
+			$pdf->PrintRightJustified ($curX, $curY, $plg_CheckNo);
+			$pdf->PrintRightJustified ($curX + $amountOffsetX, $curY, $plg_amount);
+
+			$curX += $intervalX;
+			if ($curX > $maxX) {
+				$curX = $leftX;
+				$curY += $intervalY;
+			}
 		}
 	}
-}
 
-$pdf->SetXY ($date1X, $date1Y);
-$pdf->Write (8, $dep_Date);
+	$pdf->SetXY ($date1X, $date1Y);
+	$pdf->Write (8, $dep_Date);
+
+	if ($totalCash > 0) {
+		$totalCashStr = sprintf ("%.2f", $totalCash);
+		$pdf->PrintRightJustified ($leftX + $amountOffsetX, $topY, $totalCashStr);
+		$numItems += 1;
+	}
+
+	$pdf->PrintRightJustified ($numItemsX, $numItemsY, $numItems);
+	$pdf->PrintRightJustified ($numItemsX, $numItemsY, $numItems);
+	$grandTotalStr = sprintf ("%.2f", $totalChecks + $totalCash);
+	$pdf->PrintRightJustified ($subTotalX, $subTotalY, $grandTotalStr);
+	$pdf->PrintRightJustified ($topTotalX, $topTotalY, $grandTotalStr);
+}
 
 $pdf->SetXY ($date2X, $date2Y);
 $pdf->Write (8, $dep_Date);
-
-if ($totalCash > 0) {
-	$totalCashStr = sprintf ("%.2f", $totalCash);
-	$pdf->PrintRightJustified ($leftX + $amountOffsetX, $topY, $totalCashStr);
-	$numItems += 1;
-}
-
-$pdf->PrintRightJustified ($numItemsX, $numItemsY, $numItems);
-$pdf->PrintRightJustified ($numItemsX, $numItemsY, $numItems);
-$grandTotalStr = sprintf ("%.2f", $totalChecks + $totalCash);
-$pdf->PrintRightJustified ($subTotalX, $subTotalY, $grandTotalStr);
-$pdf->PrintRightJustified ($topTotalX, $topTotalY, $grandTotalStr);
 
 $pdf->SetXY ($titleX, $titleY);
 $pdf->SetFont('Courier','B', 20);
