@@ -5,7 +5,7 @@
 
 <div class="Help_Section">
 	<div class="Help_Header">What is a Person?</div>
-	<table width="100%" class="LightShadedBox"><tr><td>Not surprisingly, a Person record represents a single individual.  Person records can be grouped together into Families, can belong to Groups, can have Properties, and can be made Users of InfoCentral.</td></tr></table>
+	<table width="100%" class="LightShadedBox"><tr><td>Not surprisingly, a Person record represents a single individual.  Person records can be grouped together into Families, can belong to Groups, can have Properties, and can be made Users of ChurchInfo.</td></tr></table>
 </div>
 
 <div class="Help_Section">
@@ -45,7 +45,7 @@
 
 <div class="Help_Section">
 	<p><div class="Help_Header">How do I enter a person's age?</div>
-	<table width="100%" class="LightShadedBox"><tr><td><p>You don't.  Infocentral automatically calculates age based on the birth date given.</p>
+	<table width="100%" class="LightShadedBox"><tr><td><p>You don't.  ChurchInfo automatically calculates age based on the birth date given.</p>
 	<p>Age will be calculated as best it can with the information given.  At minimum a Birth Year must be entered.
 	Even if you don't know a person's birth year, you can always estimate until that information is available.</p></td></tr></table>
 </div>
@@ -62,7 +62,7 @@
 
 <div class="Help_Section">
 	<p><div class="Help_Header">What are Custom Person Fields?</div>
-	<table width="100%" class="LightShadedBox"><tr><td>Custom Person Fields is a powerful feature that allows you to add any fields that you need to use that do not come built-in with InfoCentral. This feature allows you to, for example, add a Mentor to a person, or add an additional date (such as confirmation). The possibilities are endless.</td></tr></table>
+	<table width="100%" class="LightShadedBox"><tr><td>Custom Person Fields is a powerful feature that allows you to add any fields that you need to use that do not come built-in with ChurchInfo. This feature allows you to, for example, add a Mentor to a person, or add an additional date (such as confirmation). The possibilities are endless.</td></tr></table>
 </div>
 
 <div class="Help_Section">

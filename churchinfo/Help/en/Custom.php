@@ -5,7 +5,7 @@
 
 <div class="Help_Section">
 	<div class="Help_Header">What are Custom Fields?</div>
-	<table width="100%" class="LightShadedBox"><tr><td><p>Custom Fields allow you to expand the functionality of InfoCentral beyond
+	<table width="100%" class="LightShadedBox"><tr><td><p>Custom Fields allow you to expand the functionality of ChurchInfo beyond
 	  the base information that can be stored as a default. Custom fields allow
 	  you to personalize the database to meet your specific needs. Custom fields
 	  can be added to individuals and to groups. For individuals, you could,

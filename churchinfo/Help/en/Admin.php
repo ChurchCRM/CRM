@@ -21,6 +21,7 @@
 			<li><b>Manage Donations and Finances:</b> Financial donations can be added, edited, and deleted with this option.</li>
 			<li><b>View, Add, and Edit Notes:</b> Notes can be added, edited, and deleted with this option.</li>
 			<li><b>Edit Self:</b> This allows editing of the user and family members only.  This option allows users to maintain their own data, especially email addresses and phone numbers which change frequently.</li>
+			<li><b>Canvasser:</b> This allows editing of canvass data and operation of the canvass automation features.</li>
 			<li><b>Admin:</b> This option automatically selects all previous options.</li>
 		</ul></td></tr></table>
 </div>

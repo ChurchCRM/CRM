@@ -85,7 +85,7 @@
 
 <div class="Help_Section">
 	<p><div class="Help_Header">What are Group-Specific Properties</div>
-	<table width="100%" class="LightShadedBox"><tr><td>Group-Specific Properties is a powerful feature that allows you to add any fields that you need to use that do not come built-in with InfoCentral. This feature allows you to, for example, add a Mentor to a person, or add an additional date (such as confirmation). The possibilities are endless.</td></tr></table>
+	<table width="100%" class="LightShadedBox"><tr><td>Group-Specific Properties is a powerful feature that allows you to add any fields that you need to use that do not come built-in with ChurchInfo. This feature allows you to, for example, add a Mentor to a person, or add an additional date (such as confirmation). The possibilities are endless.</td></tr></table>
 </div>
 
 <div class="Help_Section">

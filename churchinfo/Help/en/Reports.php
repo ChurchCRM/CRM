@@ -10,7 +10,7 @@
 
 <div class="Help_Section">
 	<p><div class="Help_Header">What is a Free-Text Query?</div>
-	<table width="100%" class="LightShadedBox"><tr><td>A Free-Text Query allows you to run any query on the database. Since InfoCentral is based on mySQL, anyone who has knowledge of this program can run free-text queries.</td></tr></table>
+	<table width="100%" class="LightShadedBox"><tr><td>A Free-Text Query allows you to run any query on the database. Since ChurchInfo is based on mySQL, anyone who has knowledge of this program can run free-text queries.</td></tr></table>
 </div>
 
 <div class="Help_Section">

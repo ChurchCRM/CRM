@@ -8,11 +8,11 @@
 	<table width="100%" class="LightShadedBox">
 	<tr>
 		<td width="10%" nowrap><b>Version:<b></td>
-		<td>1.1.1</td>
+		<td>1.2.0</td>
 	</tr>
 	<tr>
 		<td width="10%" nowrap><b>Release Date:</b></td>
-		<td>2004-08-24</td>
+		<td>2005-02-26</td>
 	</tr>
 	<tr>
 		<td width="10%" nowrap><b>License:</b></td>
