@@ -240,10 +240,11 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 													 "fam_WeddingDate='" . $dWeddingDate . "'," .
 													 "fam_DateLastEdited='" . date("YmdHis") . "'," .
 													 "fam_EditedBy = " . $_SESSION['iUserID'] . "," .
-													 "fam_SendNewsLetter = " . $bSendNewsLetterString . "," .
-													 "fam_OkToCanvass = " . $bOkToCanvassString . "," .
-													 "fam_Canvasser = '" . $iCanvasser .
-												"' WHERE fam_ID = " . $iFamilyID;
+													 "fam_SendNewsLetter = " . $bSendNewsLetterString;
+			if ($_SESSION['bCanvasser'])
+				$sSQL .= ", fam_OkToCanvass = " . $bOkToCanvassString . ", fam_Canvasser = '" . $iCanvasser . "'";
+			$sSQL .= 								 " WHERE fam_ID = " . $iFamilyID;
+			
 			$bGetKeyBack = false;
 		}
 
