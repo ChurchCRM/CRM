@@ -60,8 +60,10 @@ while ($aRow = mysql_fetch_array($rsPledges)) {
 
    if ($plg_PledgeOrPayment == "Pledge") {
       $pledgeFundTotal[$fundName] += $plg_amount;
+	  $pledgeCnt[$fundName] += 1;
    } else if ($plg_PledgeOrPayment == "Payment") {
       $paymentFundTotal[$fundName] += $plg_amount;
+	  $paymentCnt[$fundName] += 1;
    }
 }
 
@@ -69,6 +71,8 @@ while ($aRow = mysql_fetch_array($rsPledges)) {
 $nameX = 20;
 $pledgeX = 60;
 $paymentX = 80;
+$pledgeCountX = 100;
+$paymentCountX = 120;
 $curY = 20;
 
 $pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchName); $curY += $pdf->incrementY;
@@ -87,6 +91,8 @@ $pdf->SetFont('Times','B', 10);
 $pdf->WriteAt ($nameX, $curY, "Fund");
 $pdf->PrintRightJustified ($pledgeX, $curY, "Pledges");
 $pdf->PrintRightJustified ($paymentX, $curY, "Payments");
+$pdf->PrintRightJustified ($pledgeCountX, $curY, "# Pledges");
+$pdf->PrintRightJustified ($paymentCountX, $curY, "# Payments");
 $pdf->SetFont('Times','', 10);
 $curY += $pdf->incrementY;
 
@@ -94,14 +100,16 @@ mysql_data_seek($rsFunds,0);
 while ($row = mysql_fetch_array($rsFunds))
 {
 	$fun_name = $row["fun_Name"];
-   if ($pledgeFundTotal[$fun_name] > 0 || $paymentFundTotal[$fun_name] > 0) {
-   	$pdf->WriteAt ($nameX, $curY, $fun_name);
-      $amountStr = sprintf ("%.2f", $pledgeFundTotal[$fun_name]);
-   	$pdf->PrintRightJustified ($pledgeX, $curY, $amountStr);
-      $amountStr = sprintf ("%.2f", $paymentFundTotal[$fun_name]);
-   	$pdf->PrintRightJustified ($paymentX, $curY, $amountStr);
-      $curY += $pdf->incrementY;
-   }
+	if ($pledgeFundTotal[$fun_name] > 0 || $paymentFundTotal[$fun_name] > 0) {
+   		$pdf->WriteAt ($nameX, $curY, $fun_name);
+		$amountStr = sprintf ("%.2f", $pledgeFundTotal[$fun_name]);
+   		$pdf->PrintRightJustified ($pledgeX, $curY, $amountStr);
+		$amountStr = sprintf ("%.2f", $paymentFundTotal[$fun_name]);
+   		$pdf->PrintRightJustified ($paymentX, $curY, $amountStr);
+   		$pdf->PrintRightJustified ($pledgeCountX, $curY, $pledgeCnt[$fun_name]);
+   		$pdf->PrintRightJustified ($paymentCountX, $curY, $paymentCnt[$fun_name]);
+		$curY += $pdf->incrementY;
+	}
 }
 
 if ($pledgeFundTotal["Unassigned"] > 0 || $paymentFundTotal["Unassigned"] > 0) {
@@ -110,6 +118,8 @@ if ($pledgeFundTotal["Unassigned"] > 0 || $paymentFundTotal["Unassigned"] > 0) {
    $pdf->PrintRightJustified ($pledgeX, $curY, $amountStr);
    $amountStr = sprintf ("%.2f", $paymentFundTotal["Unassigned"]);
    $pdf->PrintRightJustified ($paymentX, $curY, $amountStr);
+   	$pdf->PrintRightJustified ($pledgeCountX, $curY, $pledgeCnt["Unassigned"]);
+   	$pdf->PrintRightJustified ($paymentCountX, $curY, $paymentCnt["Unassigned"]);
    $curY += $pdf->incrementY;
 }
 
