@@ -106,6 +106,7 @@ CREATE TABLE family_fam (
   fam_SendNewsLetter enum('FALSE','TRUE') NOT NULL default 'FALSE',
   fam_DateDeactivated date default NULL,
   fam_OkToCanvass enum('FALSE','TRUE') NOT NULL default 'FALSE',
+  fam_Canvasser smallint(5) unsigned NOT NULL default '0',
   PRIMARY KEY  (fam_ID),
   KEY fam_ID (fam_ID)
 ) TYPE=MyISAM;
@@ -278,6 +279,10 @@ INSERT INTO query_qry VALUES (24,'SELECT per_ID as AddToCart, CONCAT(\'<a href=P
 INSERT INTO query_qry VALUES (25, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2volunteeropp_p2vo ON per_id = p2vo_per_ID WHERE p2vo_vol_ID = ~volopp~ ORDER BY per_LastName', 'Volunteers', 'Find volunteers for a particular opportunity', 1);
 
 INSERT INTO query_qry VALUES (26,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE DATE_SUB(NOW(),INTERVAL ~friendmonths~ MONTH)<per_FriendDate ORDER BY per_MembershipDate','Recent friends','Friends who signed up in previous months',0);
+
+INSERT INTO query_qry VALUES (27,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per inner join family_fam on per_fam_ID=fam_ID where per_fmr_ID<>3 AND fam_OkToCanvass="TRUE" ORDER BY fam_Zip','Families to Canvass','People in families that are ok to canvass.',0);
+
+select per_ID as AddToCart,per_FirstName,per_LastName 
 
 CREATE TABLE queryparameteroptions_qpo (
   qpo_ID smallint(5) unsigned NOT NULL auto_increment,
