@@ -546,7 +546,7 @@ require "Include/Header.php";
 	</tr>
 
 	<tr><?php
-		if (mysql_num_rows($rsCanvassers) > 0) 
+		if ($rsCanvassers <> 0 && mysql_num_rows($rsCanvassers) > 0) 
 		{
 			echo "<tr><td class='LabelColumn'>" . gettext("Assign a Canvasser:") . "</td>\n";
 			echo "<td class='TextColumnWithBottomBorder'>";
@@ -564,7 +564,7 @@ require "Include/Header.php";
 			echo "</select></td></tr>";
 		}
 
-		if (mysql_num_rows($rsBraveCanvassers) > 0) 
+		if ($rsBraveCanvassers <> 0 && mysql_num_rows($rsBraveCanvassers) > 0) 
 		{
 			echo "<tr><td class='LabelColumn'>" . gettext("Assign a Brave Canvasser:") . "</td>\n";
 			echo "<td class='TextColumnWithBottomBorder'>";

@@ -37,18 +37,16 @@ function CanvassGetCanvassers ($groupName)
 	$sSQL = "SELECT grp_ID AS iCanvassGroup FROM group_grp WHERE grp_Name=\"" . $groupName . "\";";
 	$rsGroupData = RunQuery($sSQL);
 	$aGroupData = mysql_fetch_array($rsGroupData);
-	extract($aGroupData);
 	if (mysql_num_rows ($rsGroupData) == 0) {
-		echo (gettext ("There is no Canvassers group"));
 		return (0);
 	}
+	extract($aGroupData);
 
 	// Get the canvassers from the Canvassers group
 	$sSQL = "SELECT per_ID, per_FirstName, per_LastName FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = " . $iCanvassGroup . " ORDER BY per_LastName,per_FirstName;";
 	$rsCanvassers = RunQuery($sSQL);
 	$numCanvassers = mysql_num_rows ($rsCanvassers);
 	if ($numCanvassers == 0) {
-		echo (gettext ("The Canvassers group is empty"));
 		return (0);
 	}
 	return ($rsCanvassers);
