@@ -54,11 +54,12 @@ class PDF_TaxReport extends ChurchInfoReport {
 		$curY += 3 * $this->incrementY;
 		$blurb = $this->sTaxReport3;
 		$this->WriteAt ($this->leftX, $curY, $blurb);
-		$curY += 2 * $this->incrementY;
+
+		$curY += 4 * $this->incrementY;
 
 		$this->WriteAt ($this->leftX, $curY, "Sincerely,");
 		$curY += 4 * $this->incrementY;
-		$this->WriteAt ($this->leftX, $curY, "<signed by>");
+		$this->WriteAt ($this->leftX, $curY, $this->sTaxSigner);
 	}
 }
 
