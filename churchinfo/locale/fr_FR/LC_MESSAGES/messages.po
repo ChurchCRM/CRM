@@ -1,0 +1,2994 @@
+# translation of new2.po to Italian
+# InfoCentral Italian translation
+# Copyright (C) 2003
+# This file is distributed under the same license (GPL) as the InfoCentral package.
+# Federico Nebiolo <iconeb@yahoo.it>, 2003
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: new2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-27 18:32-0400\n"
+"PO-Revision-Date: 2003-10-31 15:14GMT\n"
+"Last-Translator: \n"
+"Language-Team:  <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.8\n"
+
+#: BackupDatabase.php:50
+msgid "Password values entered were not the same! Please re-type them."
+msgstr "Les valeurs du mot de passe ne sont pas les memes! Merci de les saisir &agrave; nouveau."
+
+#: BackupDatabase.php:55
+msgid "You must enter a password of at least 8 characters to encrypt this backup."
+msgstr "Vous devez entrer un mot de passe au moins de 8 caract&egrave;res pour crypter cette sauvegarde."
+
+#: BackupDatabase.php:115 Include/Header.php:171 Include/Header.php:525
+msgid "Backup Database"
+msgstr "Sauvegarder la Base de Donn&eacute;es"
+
+#: BackupDatabase.php:120
+msgid "This tool will assist you in manually backing up the InfoCentral database."
+msgstr "Cet outil vous aidera en soutenant manuellement la base de donn&eacute;es d'InfoCentral."
+
+#: BackupDatabase.php:122
+msgid "TIPS:"
+msgstr "Astuces:"
+
+#: BackupDatabase.php:124
+msgid ""
+"You should make a manual backup at least once a week unless you already have "
+"a regular backup procedule for your systems."
+msgstr ""
+"Vous devriez faire une protection manuelle au moins une fois par semaine &agrave; moins que vous ayez d&eacute;j&agrave; "
+"un proc&eacute;dure de sauvegarde r&eacute;guliere pour vos syst&egrave;mes."
+
+#: BackupDatabase.php:125
+msgid ""
+"After you download the backup file, you should make two copies. Put one of "
+"them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "Apr&egrave;s que vous t&eacute;l&eacute;chargiez le dossier de secours, vous devriez effectuer deux copies."
+"Mettez-en une dans un emplacement s&ucirc;r du site et l'autre dans un emplacement s&ucirc;r &agrave; l'ext&eacute;rieur du site."
+
+#: BackupDatabase.php:126
+msgid ""
+"If you are concerned about confidentiality of data stored in the InfoCentral "
+"database, you should encrypt the backup data if it will be stored somewhere "
+"potentially accessible to others"
+msgstr ""
+"Si vous etes pr&eacute;occup&eacute;s par la confidentialit&eacute; des donn&eacute;es stock&eacute;es dans la base de donn&eacute;es d'InfoCentral,"
+"vous devriez crypter les donn&eacute;es de sauvegarde si celle-ci sont quelque part potentiellement accessible &agrave; d'autres"
+
+#: BackupDatabase.php:127
+msgid ""
+"For added backup security, you can e-mail the backup to yourself at an e-"
+"mail account hosted off-site or to a trusted friend.  Be sure to use "
+"encryption if you do this, however."
+msgstr ""
+"Pour ajouter une sauvegarde de s&eacute;curit&eacute;, vous pouvez vous envoyer un Email ou l'envoyer &agrave; un ami de confiance. "
+"Cependant, soyez s&ucirc;r d'employer l'encryptage si vous faites ceci."
+
+#: BackupDatabase.php:131
+msgid "Select archive type:"
+msgstr "S&eacute;lectionnez le type de sauvegarde:"
+
+#: BackupDatabase.php:132
+msgid "GZip"
+msgstr "Gzip"
+
+#: BackupDatabase.php:133 DirectoryReports.php:160
+msgid "Zip"
+msgstr "Zip"
+
+#: BackupDatabase.php:134
+msgid "Uncompressed"
+msgstr "Non compress&eacute;"
+
+#: BackupDatabase.php:137
+msgid "Encrypt backup file with a password?"
+msgstr "Encrypter les fichiers de sauvegarde avec un mot de passe?"
+
+#: BackupDatabase.php:139
+msgid "Password:"
+msgstr "Mot de Passe:"
+
+#: BackupDatabase.php:140
+msgid "Re-type Password:"
+msgstr "Retapez votre Mot de Passe:"
+
+#: BackupDatabase.php:143
+msgid "Generate and Download Backup"
+msgstr "G&eacute;n&eacute;rez ou T&eacute;l&eacute;chargez Sauvegardes"
+
+#: BackupDatabase.php:144
+msgid "Delete Temp Files"
+msgstr "Effacement Fichiers Temporaires"
+
+#: CSVExport.php:45
+msgid "CSV Export"
+msgstr "Export au format CSV"
+
+#: CSVExport.php:55 PersonEditor.php:418
+msgid "Standard Fields"
+msgstr "Champs Standards"
+
+#: CSVExport.php:59 PersonEditor.php:437
+msgid "Last Name:"
+msgstr "Nom:"
+
+#: CSVExport.php:60
+msgid "Required"
+msgstr "Requis"
+
+#: CSVExport.php:64 PersonEditor.php:421
+msgid "Title:"
+msgstr "Titre:"
+
+#: CSVExport.php:69 PersonEditor.php:427
+msgid "First Name:"
+msgstr "Pr&eacute;nom:"
+
+#: CSVExport.php:74 PersonEditor.php:432
+msgid "Middle Name:"
+msgstr "Deuxi&egrave;me Pr&eacute;nom:"
+
+#: CSVExport.php:79 PersonEditor.php:442
+msgid "Suffix:"
+msgstr "Suffixe:"
+
+#: CSVExport.php:84 FamilyEditor.php:289 PersonEditor.php:534
+msgid "Address1:"
+msgstr "Adresse1:"
+
+#: CSVExport.php:89 FamilyEditor.php:294 PersonEditor.php:539
+msgid "Address2:"
+msgstr "Adresse2:"
+
+#: CSVExport.php:94 FamilyEditor.php:299 PersonEditor.php:544
+msgid "City:"
+msgstr "Ville:"
+
+#: CSVExport.php:99 FamilyEditor.php:304 PersonEditor.php:549
+msgid "State:"
+msgstr "État:"
+
+#: CSVExport.php:104 FamilyEditor.php:314 PersonEditor.php:559
+msgid "Zip:"
+msgstr "Code postale:"
+
+#: CSVExport.php:109 FamilyEditor.php:319 PersonEditor.php:564
+msgid "Country:"
+msgstr "Pays:"
+
+#: CSVExport.php:114 FamilyEditor.php:330 FamilyView.php:211
+#: PersonEditor.php:578 PersonEditor.php:580 PersonView.php:336
+#: PrintView.php:152
+msgid "Home Phone:"
+msgstr "T&eacute;l&eacute;phone Personnel:"
+
+#: CSVExport.php:119 FamilyEditor.php:338 FamilyView.php:215
+#: PersonEditor.php:593 PersonEditor.php:595 PersonView.php:340
+#: PrintView.php:157
+msgid "Work Phone:"
+msgstr "T&eacute;l&eacute;phone Professionnel:"
+
+#: CSVExport.php:124 FamilyEditor.php:346 FamilyView.php:219
+#: PersonEditor.php:608 PersonEditor.php:610 PersonView.php:344
+#: PrintView.php:162
+msgid "Mobile Phone:"
+msgstr "Portable:"
+
+#: CSVExport.php:129 FamilyEditor.php:354 FamilyView.php:223
+#: PersonEditor.php:623 PersonEditor.php:625 PersonView.php:348
+#: PrintView.php:236
+msgid "Email:"
+msgstr "Email:"
+
+#: CSVExport.php:134 PersonView.php:352
+msgid "Work/Other Email:"
+msgstr "Email Travail / Autre:"
+
+#: CSVExport.php:139
+msgid "Envelope Number:"
+msgstr "Valeur d'Enveloppe"
+
+#: CSVExport.php:144 CSVExport.php:262 PersonEditor.php:680 PersonView.php:307
+#: PrintView.php:246
+msgid "Membership Date:"
+msgstr "Date d'Adh&eacute;sion:"
+
+#: CSVExport.php:149
+msgid "* Birth / Anniversary Date:"
+msgstr "* Date De Naissance / Anniversaire:"
+
+#: CSVExport.php:154
+msgid "* Age / Years Married:"
+msgstr "* Dur&eacute;e / Ann&eacute;es de Mariage:"
+
+#: CSVExport.php:159 CSVExport.php:219 PersonEditor.php:508 PrintView.php:216
+msgid "Family Role:"
+msgstr "R&ocirc;le Famille"
+
+#: CSVExport.php:164
+msgid "* Depends whether using person or family output method"
+msgstr "* D&eacute;pend de la m&eacute;thode de sortie choisie par l'utilisateur"
+
+#: CSVExport.php:172 PersonEditor.php:712 Include/Header.php:396
+#: Include/Header.php:654
+msgid "Custom Fields"
+msgstr "Champs Personnalis&eacute;s"
+
+#: CSVExport.php:189
+msgid "Filters"
+msgstr "Filtres"
+
+#: CSVExport.php:193
+msgid "Records to export:"
+msgstr "Enregistrements &agrave; exporter:"
+
+#: CSVExport.php:196
+msgid "Based on filters below.."
+msgstr "Bas&eacute; sur des filtres ci-dessous.."
+
+#: CSVExport.php:197
+msgid "People in Cart (filters ignored)"
+msgstr "Personne dans le Panier (filtres ignor&eacute;s)"
+
+#: CSVExport.php:202 PersonEditor.php:685 PersonView.php:311 PrintView.php:251
+msgid "Classification:"
+msgstr "Classification:"
+
+#: CSVExport.php:204 CSVExport.php:221 CSVExport.php:249
+#: DirectoryReports.php:55
+msgid "Use Ctrl Key to select multiple"
+msgstr "Utilisez la touche Ctrl pour une s&eacute;lection multiple"
+
+#: CSVExport.php:236 PersonEditor.php:447 PersonView.php:283 PrintView.php:188
+msgid "Gender:"
+msgstr "Sexe:"
+
+#: CSVExport.php:239
+msgid "Don't Filter"
+msgstr "Ne Pas Filtrer"
+
+#: CSVExport.php:240 FamilyEditor.php:430 FamilyView.php:436
+#: PersonEditor.php:451 PersonView.php:289 PrintView.php:195 PrintView.php:304
+#: SelectList.php:330
+msgid "Male"
+msgstr "Masculin"
+
+#: CSVExport.php:241 FamilyEditor.php:431 FamilyView.php:436
+#: PersonEditor.php:452 PersonView.php:292 PrintView.php:198 PrintView.php:304
+#: SelectList.php:330
+msgid "Female"
+msgstr "F&eacute;minin"
+
+#: CSVExport.php:247
+msgid "Group Membership:"
+msgstr "Adh&eacute;sion au Groupe:"
+
+#: CSVExport.php:265 CSVExport.php:279 CSVExport.php:303 CSVExport.php:315
+msgid "From:"
+msgstr "De:"
+
+#: CSVExport.php:267 CSVExport.php:288 CSVExport.php:305 CSVExport.php:317
+msgid "To:"
+msgstr "A:"
+
+#: CSVExport.php:269 CSVExport.php:295 CSVExport.php:307 CSVExport.php:319
+#: FamilyEditor.php:364 PersonEditor.php:681 Include/Functions.php:760
+msgid "[format: YYYY-MM-DD]"
+msgstr "[format: AAAA-MM-JJ]"
+
+#: CSVExport.php:274
+msgid "Birthday Date:"
+msgstr "Date de Naissance:"
+
+#: CSVExport.php:300
+msgid "Anniversary Date:"
+msgstr "Date d'Anniversaire:"
+
+#: CSVExport.php:312
+msgid "Date Entered:"
+msgstr "Date d'Entr&eacute;e:"
+
+#: CSVExport.php:324
+msgid "Output Method:"
+msgstr "M&eacute;thode d'Exportation:"
+
+#: CSVExport.php:327
+msgid "CSV Individual Records"
+msgstr "Enregistrements individuels CSV"
+
+#: CSVExport.php:328
+msgid "CSV Combine Families"
+msgstr "Donn&eacute;es Familles en CVS"
+
+#: CSVExport.php:329
+msgid "Add Individuals to Cart"
+msgstr "Ajoutez des individus au panier"
+
+#: CSVExport.php:334
+msgid "Skip records with incomplete mail address"
+msgstr "Ignorer les enregistrements qui ont une adresse email incompl&egrave;te "
+
+#: CSVExport.php:337
+msgid "Skip records with no envelope number"
+msgstr "Ignorer les enregistrements qui n'ont pas de valeur d'enveloppe"
+
+#: CSVExport.php:338
+msgid "(Individual records only)"
+msgstr "(Enregistrements individuels seulement)"
+
+#: CSVExport.php:346
+msgid "Create File"
+msgstr "Dossier cr&eacute;&eacute;"
+
+#: CartToGroup.php:52
+msgid "Add Cart to Group"
+msgstr "Ajouter au Panier Groupe"
+
+#: CartToGroup.php:109 GroupReports.php:82
+msgid "Invalid Group or No Roles Available!"
+msgstr "Groupe invalide ou aucun R&ocirc;les disponibles!"
+
+#: CartToGroup.php:116
+msgid "Select the group to which you would like to add your cart:"
+msgstr "S&eacute;lectionnez le groupe que vous voulez ajouter &agrave; votre panier:"
+
+#: CartToGroup.php:120 GroupReports.php:95
+msgid "Select Group:"
+msgstr "Choisissez le groupe:"
+
+#: CartToGroup.php:124 DonationEditor.php:409 DonationEditor.php:511
+#: GroupReports.php:99 GroupReports.php:178 PersonEditor.php:466
+msgid "None"
+msgstr "Aucun"
+
+#: CartToGroup.php:134 GroupReports.php:109
+msgid "Select Role:"
+msgstr "Choisissez le R&ocirc;le:"
+
+#: CartToGroup.php:135 GroupReports.php:110 RPCdummy.php:96
+msgid "No Group Selected"
+msgstr "Aucun groupe s&eacute;lectionn&eacute;"
+
+#: CartToGroup.php:140
+msgid "Add to Group"
+msgstr "Ajoutez au groupe"
+
+#: CartToGroup.php:141
+msgid "OR"
+msgstr "OU"
+
+#: CartToGroup.php:142
+msgid "Create a New Group"
+msgstr "Cr&eacute;ez un nouveau groupe"
+
+#: CartToGroup.php:149
+msgid "Your cart is empty!"
+msgstr "Votre panier est vide!"
+
+#: CartView.php:23
+msgid "View Your Cart"
+msgstr "Consulter votre panier"
+
+#: CartView.php:27 DonationMove.php:75
+msgid "You have no items in your cart."
+msgstr "Vous n'avez aucun &eacute;l&eacute;ment dans votre panier."
+
+#: CartView.php:33
+msgid "There are"
+msgstr "Vous avez"
+
+#: CartView.php:33
+msgid "item(s) in your cart."
+msgstr "&eacute;l&eacute;ment(s) dans votre panier"
+
+#: CartView.php:36 DonationFundEditor.php:196 DonationView.php:85
+#: FamilyView.php:254 FamilyView.php:374 GroupList.php:44
+#: GroupMemberList.php:178 GroupPropsFormEditor.php:317 GroupView.php:159
+#: GroupView.php:197 PersonCustomFieldsEditor.php:298 PersonView.php:388
+#: PrintGroup.php:49 PrintMember.php:88 PrintView.php:277 PrintView.php:412
+#: PropertyList.php:62 PropertyTypeList.php:38 SelectList.php:259
+#: UserList.php:44
+msgid "Name"
+msgstr "Nom"
+
+#: CartView.php:37
+msgid "Address?"
+msgstr "Adresse?"
+
+#: CartView.php:38
+msgid "Email?"
+msgstr "Email?"
+
+#: CartView.php:39 CartView.php:84 FamilyView.php:260 FamilyView.php:309
+#: GroupView.php:204 GroupView.php:252 PersonView.php:394 PersonView.php:441
+#: PersonView.php:514 PersonView.php:540
+msgid "Remove"
+msgstr "Supprimer"
+
+#: CartView.php:53 CartView.php:75 DonationFundEditor.php:225
+#: Include/Functions.php:672
+msgid "Yes"
+msgstr "Oui"
+
+#: CartView.php:68 CartView.php:77 DonationFundEditor.php:226
+#: Include/Functions.php:674
+msgid "No"
+msgstr "Non"
+
+#: CartView.php:95
+msgid "Cart Functions"
+msgstr "Fonctions du Panier"
+
+#: CartView.php:97 Include/Header.php:259 Include/Header.php:585
+msgid "Empty Cart"
+msgstr "Vider le Panier"
+
+#: CartView.php:100 Include/Header.php:265 Include/Header.php:589
+msgid "Empty Cart to Group"
+msgstr "Vider le Panier Groupe"
+
+#: CartView.php:103
+msgid "Send E-Mail to Entire Cart"
+msgstr "Envoyez Email au contenu du Panier"
+
+#: CartView.php:111 CartView.php:144
+msgid "Generate Labels"
+msgstr "Cr&eacute;ez des Etiquettes"
+
+#: CartView.php:113
+msgid "All Individuals"
+msgstr "Tous les Individus"
+
+#: CartView.php:114
+msgid "Grouped by Family"
+msgstr "Group&eacute; par Famille"
+
+#: CartView.php:118
+msgid "Label Type:"
+msgstr "Type d'&eacute;tiquette:"
+
+#: CartView.php:132
+msgid "Start Row:"
+msgstr "Ligne de D&eacute;part:"
+
+#: CartView.php:136
+msgid "Start Column:"
+msgstr "Colonne de D&eacute;part:"
+
+#: CartView.php:140
+msgid "Ignore Incomplete<br>Addresses:"
+msgstr "Ignorez les Adresses<br>Incompl&egrave;te s:"
+
+#: Default.php:56 UserPasswordChange.php:85
+msgid "Invalid password"
+msgstr "Mot de passe invalide"
+
+#: Default.php:185
+msgid "InfoCentral: Login"
+msgstr "InfoCentral: Identifiant"
+
+#: Default.php:192
+msgid "Please Login"
+msgstr "Merci de vous identifier"
+
+#: Default.php:197
+msgid "Select your Username:"
+msgstr "S&eacute;lectionnez votre nom d'Utilisateur:"
+
+#: Default.php:200
+msgid "Choose One"
+msgstr "Choisissez votre nom utilisateur"
+
+#: Default.php:225
+msgid "Enter your password:"
+msgstr "Entrez votre mot de passe:"
+
+#: Default.php:232
+msgid "Login"
+msgstr "Identifi&eacute;"
+
+#: DirectoryReports.php:30
+msgid "Directory reports"
+msgstr "Liste des Rapports"
+
+#: DirectoryReports.php:53
+msgid "Select classifications to include"
+msgstr "Choisissez les classifications &agrave; inclure"
+
+#: DirectoryReports.php:70
+msgid "Which role is the head of household?"
+msgstr "Quel est le R&ocirc;le du chef de famille?"
+
+#: DirectoryReports.php:85
+msgid "Which role is the spouse?"
+msgstr "Quel est le R&ocirc;le du conjoint?"
+
+#: DirectoryReports.php:101
+msgid "Which role is a child?"
+msgstr "Quel R&ocirc;le de l'enfant?"
+
+#: DirectoryReports.php:117
+msgid "Information to Include:"
+msgstr "Information &agrave; Inclure:"
+
+#: DirectoryReports.php:119 DirectoryReports.php:148 GroupMemberList.php:180
+#: GroupReports.php:157 PrintGroup.php:50 PrintMember.php:89
+#: SelectList.php:507
+msgid "Address"
+msgstr "Adresse"
+
+#: DirectoryReports.php:120
+msgid "Wedding Date"
+msgstr "Date de Mariage:"
+
+#: DirectoryReports.php:121
+msgid "Birthday"
+msgstr "Anniversaire:"
+
+#: DirectoryReports.php:123
+msgid "Family Home Phone"
+msgstr "T&eacute;l&eacute;phone Personnel"
+
+#: DirectoryReports.php:124
+msgid "Family Work Phone"
+msgstr "T&eacute;l&eacute;phone Professionnel"
+
+#: DirectoryReports.php:125
+msgid "Family Cell Phone"
+msgstr "T&eacute;l&eacute;phone Portable Personnel"
+
+#: DirectoryReports.php:126
+msgid "Family Email"
+msgstr "Email personnel"
+
+#: DirectoryReports.php:128
+msgid "Personal Home Phone"
+msgstr "T&eacute;l&eacute;phone Personnel"
+
+#: DirectoryReports.php:129
+msgid "Personal Work Phone"
+msgstr "T&eacute;l&eacute;phone Personnel du travail"
+
+#: DirectoryReports.php:130
+msgid "Personal Cell Phone"
+msgstr "T&eacute;l&eacute;phone Portable Personnel"
+
+#: DirectoryReports.php:131
+msgid "Personal Email"
+msgstr "Email Personnel"
+
+#: DirectoryReports.php:132
+msgid "Personal Work/Other Email"
+msgstr "Email Personnel Travail/Autre:"
+
+#: DirectoryReports.php:136
+msgid "Title page:"
+msgstr "Titre de la page:"
+
+#: DirectoryReports.php:140
+msgid "Use Title Page"
+msgstr "Utilisez Titre Page"
+
+#: DirectoryReports.php:144
+msgid "Church Name"
+msgstr "Nom de la Soci&eacute;t&eacute;"
+
+#: DirectoryReports.php:152 GroupMemberList.php:181 PrintGroup.php:51
+#: PrintMember.php:90 SelectList.php:508
+msgid "City"
+msgstr "Ville"
+
+#: DirectoryReports.php:156 GroupMemberList.php:182 PrintGroup.php:52
+#: PrintMember.php:91 SelectList.php:509
+msgid "State"
+msgstr "État"
+
+#: DirectoryReports.php:164 Reports/DirectoryReport.php:207
+#: Reports/DirectoryReport.php:258 Reports/DirectoryReport.php:317
+#: Reports/DirectoryReport.php:485 Reports/GroupReport.php:259
+msgid "Phone"
+msgstr "T&eacute;l&eacute;phone"
+
+#: DirectoryReports.php:168
+msgid "Disclaimer"
+msgstr "Avertissement"
+
+#: DirectoryReports.php:181
+msgid "Create Directory"
+msgstr "Cr&eacute;er Dossier"
+
+#: DirectoryReports.php:182 DonationMove.php:66 FamilyEditor.php:268
+#: FamilyEditor.php:492 GroupPropsEditor.php:146 GroupPropsEditor.php:185
+#: GroupReports.php:128 GroupReports.php:187 MemberRoleChange.php:122
+#: MemberRoleChange.php:124 NoteEditor.php:172 PersonEditor.php:400
+#: PersonEditor.php:744 PropertyEditor.php:172 PropertyTypeEditor.php:107
+#: UserEditor.php:248
+msgid "Cancel"
+msgstr "Annuler"
+
+#: DonationDelete.php:56
+msgid "Donation Delete Confirmation"
+msgstr "Effacement des Donn&eacute;es Confirm&eacute;"
+
+#: DonationDelete.php:65 SelectDelete.php:174
+msgid "Please confirm deletion of:"
+msgstr "Veuillez confirmer la suppression de:"
+
+#: DonationDelete.php:70 DonationEditor.php:398
+msgid "Receipt Number:"
+msgstr "Num&eacute;ro de Reçu:"
+
+#: DonationDelete.php:71
+msgid "Donor Name:"
+msgstr "Nom du Cotisant:"
+
+#: DonationDelete.php:72
+msgid "Amount:"
+msgstr "Quantit&eacute;:"
+
+#: DonationDelete.php:73 DonationReports.php:141 DonationViewReceipt.php:108
+msgid "Date:"
+msgstr "Date:"
+
+#: DonationDelete.php:74 DonationEditor.php:461
+msgid "Payment Type:"
+msgstr "Moyen de paiement:"
+
+#: DonationDelete.php:75 DonationEditor.php:470
+msgid "Check Number:"
+msgstr "V&eacute;rifiez le nombre:"
+
+#: DonationDelete.php:80 GroupDelete.php:101 NoteDelete.php:81
+#: PropertyDelete.php:67 PropertyTypeDelete.php:70 SelectDelete.php:177
+#: SelectDelete.php:186 UserDelete.php:64
+msgid "Yes, delete this record"
+msgstr "oui, supprimer cet enregistrement"
+
+#: DonationDelete.php:80
+msgid "(This action CANNOT be undone!)"
+msgstr "(cette action NE PEUT PAS &ecirc;tre  annul&eacute;e!)"
+
+#: DonationDelete.php:82 GroupDelete.php:104 NoteDelete.php:85
+#: PropertyDelete.php:69 PropertyTypeDelete.php:72 SelectDelete.php:178
+#: UserDelete.php:66
+msgid "No, cancel this deletion"
+msgstr "Non, annuler cette suppression"
+
+#: DonationEditor.php:30
+msgid "Add/Edit a Donation"
+msgstr "Ajouter/Modifier une Cotisation"
+
+#: DonationEditor.php:114
+msgid "You must enter a valid check number."
+msgstr "Vous devez &eacute;crire un nombre valide."
+
+#: DonationEditor.php:119
+msgid "You must select the payment type."
+msgstr "Vous devez s&eacute;lectionner un moyen de paiement."
+
+#: DonationEditor.php:126 Include/Functions.php:898
+msgid "Not a valid date"
+msgstr "Le format de la date est invalide"
+
+#: DonationEditor.php:137
+msgid "Invalid envelope number"
+msgstr "La valeur de l'Enveloppe est invalide"
+
+#: DonationEditor.php:146
+msgid "Envelope number must always be<br>specified in batch entry mode"
+msgstr "Le nombre d'enveloppe doit toujours &ecirc;tre <br>indiqu&eacute; dans le mode d'entr&eacute;e batch"
+
+#: DonationEditor.php:359 DonationEditor.php:478 RPCdummy.php:53
+msgid "Address Info:"
+msgstr "Adresse Information:"
+
+#: DonationEditor.php:395
+msgid "Batch Entry Mode"
+msgstr "Entr&eacute;e en mode Batch"
+
+#: DonationEditor.php:400
+msgid "Donation Date:"
+msgstr "Date de la Cotisation:"
+
+#: DonationEditor.php:407
+msgid "Default fund:"
+msgstr "Association par D&eacute;faut:"
+
+#: DonationEditor.php:424
+msgid "Default Type:"
+msgstr "Type par d&eacute;faut:"
+
+#: DonationEditor.php:426 DonationEditor.php:463 DonationView.php:102
+msgid "cash"
+msgstr "liquide"
+
+#: DonationEditor.php:427 DonationEditor.php:464 DonationView.php:103
+msgid "check"
+msgstr "ch&egrave;que"
+
+#: DonationEditor.php:428 DonationEditor.php:465 DonationView.php:104
+msgid "credit"
+msgstr "carte de cr&eacute;dit"
+
+#: DonationEditor.php:445
+msgid "Clear"
+msgstr "Effacer"
+
+#: DonationEditor.php:449 DonationFundEditor.php:210
+msgid "delete"
+msgstr "Supprimer"
+
+#: DonationEditor.php:456
+msgid "Envelope:"
+msgstr "Enveloppe:"
+
+#: DonationEditor.php:497
+msgid "You must enter at least one valid fund / amount row."
+msgstr "Vous devez au moins entrer une association / montant par ligne."
+
+#: DonationEditor.php:501 DonationReports.php:50 DonationViewReceipt.php:120
+msgid "Fund"
+msgstr "Association"
+
+#: DonationEditor.php:502 DonationReports.php:114 DonationView.php:86
+#: DonationViewReceipt.php:120 Reports/DonationReportYearly.php:284
+msgid "Amount"
+msgstr "Montant"
+
+#: DonationEditor.php:523
+msgid "inactive"
+msgstr "inactive"
+
+#: DonationEditor.php:536 DonationViewReceipt.php:111
+msgid "Total:"
+msgstr "Total:"
+
+#: DonationEditor.php:545
+msgid "Enter Donation"
+msgstr "Entrer une Cotisation"
+
+#: DonationEditor.php:547 DonationFundEditor.php:167
+#: DonationFundEditor.php:189 DonationFundEditor.php:240 GroupEditor.php:275
+#: GroupPropsFormEditor.php:288 GroupPropsFormEditor.php:309
+#: GroupPropsFormEditor.php:396 OptionManager.php:282 OptionManager.php:284
+#: PersonCustomFieldsEditor.php:269 PersonCustomFieldsEditor.php:290
+#: PersonCustomFieldsEditor.php:377
+msgid "Exit"
+msgstr "Sortir"
+
+#: DonationEnvelopes.php:28 Include/Header.php:242 Include/Header.php:571
+msgid "Donation Envelope Manager"
+msgstr "Gestion des Enveloppes pour les Cotisations"
+
+#: DonationEnvelopes.php:99
+msgid "Assigned Envelopes:"
+msgstr "Enveloppes Assign&eacute;es:"
+
+#: DonationEnvelopes.php:103
+msgid "Active Envelopes this Year:"
+msgstr "Enveloppes Assign&eacute;es cette Ann&eacute;e:"
+
+#: DonationEnvelopes.php:107
+msgid "Highest Envelope Number:"
+msgstr "Valeur de l'Enveloppe la plus Elev&eacute;e:"
+
+#: DonationEnvelopes.php:119
+msgid ""
+"<b>Warning :</b> This envelope re-assignment feature will change "
+"<i>everyone's</i> envelope number.<br>"
+msgstr ""
+"<b>Attention :</b> Ce moyen de redistribution d'enveloppe changera "
+"<i>chaque</i>valeur d'enveloppe.<br>"
+
+#: DonationEnvelopes.php:120
+msgid ""
+"You should only use this if you will be handing out new envelopes. (such as "
+"with the beginning"
+msgstr ""
+"Vous devriez seulement employer ceci si vous distribuez de nouvelles "
+"enveloppes (comme au d&eacute;but"
+
+#: DonationEnvelopes.php:121
+msgid ""
+"of a new fiscal year)  This feature will re-assign envelope numbers "
+"alphabetically by Lastname /"
+msgstr ""
+"un nouvel exercice fiscal) Ce moyen attribuera de nouvelles enveloppes "
+"alphab&eacute;tiquement par Nom /"
+
+#: DonationEnvelopes.php:122
+msgid "Firstname <i>only</i> to those who <i>already</i> have an envelope assigned."
+msgstr "Pr&eacute;nom <i>seulement</i> pour ceux qui ont <i>d&eacute;j&agrave;</i> une enveloppe d'assign&eacute;e."
+
+#: DonationEnvelopes.php:124
+msgid "Yes, re-assign envelopes (This action CANNOT be undone!)"
+msgstr "Oui, attribuez &agrave; nouveau les enveloppes (cette action NE PEUT PAS &ecirc;tre  annul&eacute;e!)"
+
+#: DonationEnvelopes.php:125
+msgid "No, cancel this operation."
+msgstr "Non, annuler cette op&eacute;ration."
+
+#: DonationEnvelopes.php:135
+msgid "Display a list of all envelope assignments"
+msgstr "Montrez une liste de toutes les enveloppes assign&eacute;es"
+
+#: DonationEnvelopes.php:136
+msgid "Auto-assign envelopes to all persons in the cart without envelopes"
+msgstr "Assign&eacute; automatiquement des enveloppes &agrave; toutes les personnes dans le panier qui sont sans enveloppes"
+
+#: DonationEnvelopes.php:137
+msgid "Re-assign all existing envelopes by assignees' names in alphabetical order"
+msgstr "Attribuez &agrave; nouveau toutes les enveloppes existantes par noms des assign&eacute;s dans l'ordre alphab&eacute;tique"
+
+#: DonationFundEditor.php:41
+msgid "Cannot delete this fund.  It is being used by "
+msgstr "Impossible de supprimer cette association.  Elle est utilis&eacute;e par "
+
+#: DonationFundEditor.php:41
+msgid " donations!"
+msgstr " cotisations!"
+
+#: DonationFundEditor.php:50
+msgid "Donation Fund Editor"
+msgstr "Gestionnaire de Cotisations par Associations"
+
+#: DonationFundEditor.php:152
+msgid "Are you sure you want to delete this fund?"
+msgstr "Etes vous s&ucirc;r de vouloir supprimer ces Associations?"
+
+#: DonationFundEditor.php:166
+msgid "No funds have been added yet"
+msgstr "Aucune Association n'a encore &eacute;t&eacute; ajout&eacute;e"
+
+#: DonationFundEditor.php:175
+msgid ""
+"Warning: Field changes will be lost if you do not 'Save Changes' before "
+"using a delete or 'add new' button!"
+msgstr ""
+"Attention: Les champs modifi&eacute;s seront perdus si vous ne 'Sauvez pas les Changements"
+"avant d'utiliser les boutons supprimer ou 'ajouter nouveau'"
+
+#: DonationFundEditor.php:180 GroupPropsFormEditor.php:301
+#: OptionManager.php:274 PersonCustomFieldsEditor.php:282 PersonEditor.php:411
+msgid ""
+"Invalid fields or selections. Changes not saved! Please correct and try "
+"again!"
+msgstr ""
+"Champs ou choix invalides.  Changements non sauv&eacute;s!  Svp corrigez et essayez "
+"encore!"
+
+#: DonationFundEditor.php:187 DonationFundEditor.php:238
+#: GroupPropsFormEditor.php:307 GroupPropsFormEditor.php:394
+#: OptionManager.php:278 PersonCustomFieldsEditor.php:288
+#: PersonCustomFieldsEditor.php:375
+msgid "Save Changes"
+msgstr "Sauver les Changements"
+
+#: DonationFundEditor.php:197 GroupPropsFormEditor.php:318 GroupView.php:160
+msgid "Description"
+msgstr "D&eacute;signation"
+
+#: DonationFundEditor.php:198
+msgid "Active"
+msgstr "Actif"
+
+#: DonationFundEditor.php:217 DonationFundEditor.php:258 GroupEditor.php:221
+#: GroupPropsFormEditor.php:346 GroupPropsFormEditor.php:428
+#: OptionManager.php:329 PersonCustomFieldsEditor.php:328
+msgid "You must enter a name."
+msgstr "Vous devez entrer un nom."
+
+#: DonationFundEditor.php:256 GroupEditor.php:219 GroupPropsFormEditor.php:425
+#: OptionManager.php:344 PersonCustomFieldsEditor.php:407
+#: PropertyEditor.php:152 PropertyTypeEditor.php:98
+msgid "Name:"
+msgstr "Nom:"
+
+#: DonationFundEditor.php:262 GroupEditor.php:226 GroupPropsFormEditor.php:434
+#: PropertyTypeEditor.php:102
+msgid "Description:"
+msgstr "Description:"
+
+#: DonationFundEditor.php:267
+msgid "Add New Fund"
+msgstr "Ajouter Nouvelle Association"
+
+#: DonationMove.php:30
+msgid "Move Donations"
+msgstr "D&eacute;placer des Cotisations"
+
+#: DonationMove.php:46
+msgid ""
+"This maintenance feature lets you move all of a person's donation records to "
+"another member."
+msgstr ""
+"Ce dispositif d'entretien vous permet de d&eacute;placer tous les enregistrements "
+"des cotisations d'une personne &agrave; un autre membre."
+
+#: DonationMove.php:52
+msgid "Move From:"
+msgstr "D&eacute;placement De:"
+
+#: DonationMove.php:61
+msgid "Move To:"
+msgstr "D&eacute;placement A:"
+
+#: DonationMove.php:62
+msgid "Please confirm this move.."
+msgstr "Merci de confirmer ce d&eacute;placement.."
+
+#: DonationMove.php:65
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: DonationMove.php:73
+msgid "To select a recipient, they must first be added to the cart."
+msgstr "Pour choisir un destinataire, vous devez d'abord l'ajouter au panier."
+
+#: DonationMove.php:91
+msgid "Move"
+msgstr "D&eacute;placer"
+
+#: DonationReports.php:27
+msgid "Donation report"
+msgstr "Reporter la Cotisation"
+
+#: DonationReports.php:33
+msgid "for"
+msgstr "pour"
+
+#: DonationReports.php:51
+msgid "Total"
+msgstr "Total"
+
+#: DonationReports.php:61
+msgid "Total Donations:"
+msgstr "Cotisations Total:"
+
+#: DonationReports.php:112 SelectList.php:506
+msgid "First Name"
+msgstr "Pr&eacute;nom"
+
+#: DonationReports.php:113
+msgid "Last Name"
+msgstr "Nom"
+
+#: DonationReports.php:115
+msgid "Receipt No."
+msgstr "N° de Reçu"
+
+#: DonationReports.php:153
+msgid "Choose date to calculate total in each fund for."
+msgstr "Choisissez la date pour calculer le total dans chaque association pour"
+
+#: DonationReports.php:158 QueryView.php:392
+msgid "Execute Query"
+msgstr "Ex&eacute;cutez la Requ&ecirc;te "
+
+#: DonationView.php:29 PersonView.php:145 SelectDelete.php:168
+msgid "View Donations"
+msgstr "Voir les Cotisations"
+
+#: DonationView.php:64
+msgid "Back to Person Record"
+msgstr "Revenir &agrave; la fiche Personne"
+
+#: DonationView.php:67
+msgid "View"
+msgstr "Voir"
+
+#: DonationView.php:67
+msgid "exemption letter"
+msgstr "lettre de dispense"
+
+#: DonationView.php:70
+msgid "View Details"
+msgstr "Voir les D&eacute;tails"
+
+#: DonationView.php:74
+msgid "Hide Details"
+msgstr "Cacher les D&eacute;tails"
+
+#: DonationView.php:78
+msgid "Add a new donation"
+msgstr "Ajouter une nouvelle Cotisation"
+
+#: DonationView.php:79
+msgid "Move All Donations"
+msgstr "D&eacute;placer toutes les Cotisations"
+
+#: DonationView.php:87 Include/Functions.php:72
+#: Reports/DonationReportYearly.php:284
+msgid "Date"
+msgstr "Date"
+
+#: DonationView.php:88 FamilyView.php:253 GroupList.php:46
+#: GroupPropsFormEditor.php:316 GroupView.php:158 GroupView.php:196
+#: OptionManager.php:75 PersonCustomFieldsEditor.php:297 PersonView.php:387
+#: Reports/DonationReportYearly.php:284
+msgid "Type"
+msgstr "Type"
+
+#: DonationView.php:89
+msgid "Check No"
+msgstr "Ch&egrave;que N°"
+
+#: DonationView.php:90 DonationView.php:112
+msgid "Receipt"
+msgstr "Reçu"
+
+#: DonationView.php:91
+msgid "Options"
+msgstr "Options"
+
+#: DonationView.php:110 PersonView.php:393 PersonView.php:435
+#: PropertyList.php:67 PropertyList.php:107 PropertyTypeList.php:43
+#: PropertyTypeList.php:65 UserList.php:49 UserList.php:78
+msgid "Edit"
+msgstr "Modifier"
+
+#: DonationView.php:111 PropertyList.php:68 PropertyList.php:108
+#: PropertyTypeList.php:44 PropertyTypeList.php:67 PropertyTypeList.php:69
+#: UserList.php:50 UserList.php:79
+msgid "Delete"
+msgstr "Supprimer"
+
+#: DonationView.php:126
+msgid "Donation by Fund"
+msgstr "Cotisation par Association"
+
+#: DonationViewReceipt.php:43
+msgid "Receipt number:"
+msgstr "Num&eacute;ro du Reçu:"
+
+#: DonationViewReceipt.php:82 Reports/DonationReportYearly.php:292
+msgid "Cash"
+msgstr "Esp&egrave;ce"
+
+#: DonationViewReceipt.php:83 Reports/DonationReportYearly.php:295
+msgid "Check"
+msgstr "Ch&egrave;que"
+
+#: DonationViewReceipt.php:84 Reports/DonationReportYearly.php:299
+msgid "Credit"
+msgstr "Carte de Cr&eacute;dit"
+
+#: DonationViewReceipt.php:97
+msgid "Dear"
+msgstr "Cher"
+
+#: DonationViewReceipt.php:105
+msgid "Receipt:"
+msgstr "Reçu:"
+
+#: DonationViewReceipt.php:114 GroupPropsFormEditor.php:412
+#: PersonCustomFieldsEditor.php:393 PropertyEditor.php:133
+msgid "Type:"
+msgstr "Type:"
+
+#: FamilyEditor.php:21
+msgid "Family Editor"
+msgstr "Gestion des Familles"
+
+#: FamilyEditor.php:118
+msgid "You must enter a Name."
+msgstr "Vous devez entrer un Nom."
+
+#: FamilyEditor.php:131
+msgid "Not a valid WeddingDate"
+msgstr "La Date de Mariage est Invalide"
+
+#: FamilyEditor.php:266 FamilyEditor.php:490 GroupEditor.php:273
+#: GroupPropsEditor.php:144 GroupPropsEditor.php:183 NoteEditor.php:170
+#: PersonEditor.php:398 PersonEditor.php:742 PropertyEditor.php:172
+#: PropertyTypeEditor.php:107 UserEditor.php:248 UserPasswordChange.php:173
+#: UserProfileEditor.php:84
+msgid "Save"
+msgstr "Sauver"
+
+#: FamilyEditor.php:267 PersonEditor.php:399 PersonEditor.php:743
+msgid "Save and Add"
+msgstr "Sauver et Ajouter"
+
+#: FamilyEditor.php:280
+msgid "Family Name:"
+msgstr "Nom de Famille"
+
+#: FamilyEditor.php:309 PersonEditor.php:554
+msgid "(Use the textbox for non-US countries)"
+msgstr "(Utiliser ce champ pour les personnes n'habitant pas les USA)"
+
+#: FamilyEditor.php:333 FamilyEditor.php:341 FamilyEditor.php:349
+#: PersonEditor.php:585 PersonEditor.php:600 PersonEditor.php:615
+#: Include/Functions.php:850
+msgid "Do not auto-format"
+msgstr "Ne pas utiliser le format automatique"
+
+#: FamilyEditor.php:363 FamilyView.php:227
+msgid "Wedding Date:"
+msgstr "Date de Mariage:"
+
+#: FamilyEditor.php:378
+msgid ""
+"You may create family members now or add them later.  All entries will "
+"become <i>new</i> person records."
+msgstr ""
+"Vous pouvez cr&eacute;er des membres de famille maintenant ou les ajouter plus tard.  Toutes les entr&eacute;es "
+"deviendront de <i>nouveaux</i> enregistrement de personne."
+
+#: FamilyEditor.php:383
+msgid "Complete Name"
+msgstr "Nom Complet"
+
+#: FamilyEditor.php:385
+msgid "Birth Date"
+msgstr "Date d'Anniversaire"
+
+#: FamilyEditor.php:388
+msgid "Family Members"
+msgstr "Membres de la Famille"
+
+#: FamilyEditor.php:389
+msgid "First"
+msgstr "Pr&eacute;nom"
+
+#: FamilyEditor.php:390
+msgid "Middle"
+msgstr "Second pr&eacute;nom"
+
+#: FamilyEditor.php:391
+msgid "Last"
+msgstr "Nom"
+
+#: FamilyEditor.php:392 FamilyView.php:375 PrintView.php:278
+#: SelectList.php:260
+msgid "Gender"
+msgstr "Sexe"
+
+#: FamilyEditor.php:393 FamilyView.php:376 OptionManager.php:63
+#: OptionManager.php:81 PersonView.php:510 PrintView.php:279 PrintView.php:338
+#: Reports/GroupReport.php:248
+msgid "Role"
+msgstr "R&ocirc;le"
+
+#: FamilyEditor.php:394
+msgid "Month"
+msgstr "Mois"
+
+#: FamilyEditor.php:395
+msgid "Day"
+msgstr "Jour"
+
+#: FamilyEditor.php:396 Include/Functions.php:76
+msgid "Year"
+msgstr "Ann&eacute;e"
+
+#: FamilyEditor.php:429 PersonEditor.php:450
+msgid "Select Gender"
+msgstr "S&eacute;lectionner le Sexe"
+
+#: FamilyEditor.php:437
+msgid "Select Role"
+msgstr "S&eacute;lectionner le R&ocirc;le"
+
+#: FamilyEditor.php:451 PersonEditor.php:643
+msgid "Unknown"
+msgstr "Inconnu"
+
+#: FamilyEditor.php:452 PersonEditor.php:644
+msgid "January"
+msgstr "Janvier"
+
+#: FamilyEditor.php:453 PersonEditor.php:645
+msgid "February"
+msgstr "F&eacute;vrier"
+
+#: FamilyEditor.php:454 PersonEditor.php:646
+msgid "March"
+msgstr "Mars"
+
+#: FamilyEditor.php:455 PersonEditor.php:647
+msgid "April"
+msgstr "Avril"
+
+#: FamilyEditor.php:456 PersonEditor.php:648
+msgid "May"
+msgstr "Mai"
+
+#: FamilyEditor.php:457 PersonEditor.php:649
+msgid "June"
+msgstr "Juin"
+
+#: FamilyEditor.php:458 PersonEditor.php:650
+msgid "July"
+msgstr "Juillet"
+
+#: FamilyEditor.php:459 PersonEditor.php:651
+msgid "August"
+msgstr "Ao&ucirc;t "
+
+#: FamilyEditor.php:460 PersonEditor.php:652
+msgid "September"
+msgstr "Septembre"
+
+#: FamilyEditor.php:461 PersonEditor.php:653
+msgid "October"
+msgstr "Octobre"
+
+#: FamilyEditor.php:462 PersonEditor.php:654
+msgid "November"
+msgstr "Novembre"
+
+#: FamilyEditor.php:463 PersonEditor.php:655
+msgid "December"
+msgstr "D&eacute;cembre"
+
+#: FamilyView.php:21
+msgid "Family View"
+msgstr "Vue De Famille"
+
+#: FamilyView.php:86 FamilyView.php:352 PersonView.php:127 PersonView.php:614
+msgid "Edit this Record"
+msgstr "Modifier cet Enregistrement"
+
+#: FamilyView.php:87 FamilyView.php:354 PersonView.php:128 PersonView.php:616
+msgid "Delete this Record"
+msgstr "Effacer cet Enregistrement"
+
+#: FamilyView.php:96
+msgid "The"
+msgstr "La"
+
+#: FamilyView.php:96 OptionManager.php:62 PropertyAssign.php:77
+#: PropertyEditor.php:41 PropertyList.php:31 PropertyTypeEditor.php:92
+#: PropertyTypeList.php:61 SelectList.php:261 Include/Header.php:461
+msgid "Family"
+msgstr "Famille"
+
+#: FamilyView.php:110 PersonView.php:181
+msgid "View Map"
+msgstr "Vue de la Carte"
+
+#: FamilyView.php:117 PersonView.php:188
+msgid "No photo selected for uploading."
+msgstr "Aucune photo n'a &eacute;t&eacute; s&eacute;lectionn&eacute; pour le t&eacute;l&eacute;chargement."
+
+#: FamilyView.php:119 PersonView.php:190
+msgid "Only jpeg photos can be uploaded."
+msgstr "Il n'y a seulement que les photos au format jpeg qui peuvent &ecirc;tre  t&eacute;l&eacute;charg&eacute;e."
+
+#: FamilyView.php:182 PersonView.php:253
+msgid "Delete Photo"
+msgstr "Photo supprim&eacute;e"
+
+#: FamilyView.php:195 PersonView.php:266
+msgid "Upload Photo"
+msgstr "T&eacute;l&eacute;charger Photo"
+
+#: FamilyView.php:204 PersonView.php:276
+msgid "General Information:"
+msgstr "Information G&eacute;n&eacute;rale:"
+
+#: FamilyView.php:236 GroupView.php:181 PersonView.php:371 PrintView.php:394
+msgid "Assigned Properties:"
+msgstr "Propri&eacute;t&eacute;s Assign&eacute;es:"
+
+#: FamilyView.php:245 GroupView.php:188 PersonView.php:380 PrintView.php:406
+msgid "No property assignments."
+msgstr "Aucune propri&eacute;t&eacute;s n'est assign&eacute;es."
+
+#: FamilyView.php:255 GroupView.php:198 PersonView.php:389 PersonView.php:566
+#: PrintView.php:413
+msgid "Value"
+msgstr "Valeur"
+
+#: FamilyView.php:259 FamilyView.php:302 GroupView.php:203 GroupView.php:243
+msgid "Edit Value"
+msgstr "Modifier la Valeur"
+
+#: FamilyView.php:328 GroupView.php:274 PersonView.php:458
+msgid "Assign a New Property:"
+msgstr "Assigner une Nouvelle Propri&eacute;t&eacute;:"
+
+#: FamilyView.php:358 FamilyView.php:500 PersonView.php:634 PersonView.php:670
+#: PrintView.php:447
+msgid "Entered:"
+msgstr "Ins&eacute;rer"
+
+#: FamilyView.php:364 PersonView.php:641
+msgid "Last edited:"
+msgstr "Derniere modification:"
+
+#: FamilyView.php:364 FamilyView.php:500 FamilyView.php:506 PersonView.php:634
+#: PersonView.php:641 PersonView.php:670 PersonView.php:676 PrintView.php:451
+msgid "by"
+msgstr "par"
+
+#: FamilyView.php:369 PrintView.php:274
+msgid "Family Members:"
+msgstr "Membres de la Famille:"
+
+#: FamilyView.php:377 PrintView.php:280
+msgid "Age"
+msgstr "Age"
+
+#: FamilyView.php:378 OptionManager.php:69
+msgid "Classification"
+msgstr "Classification"
+
+#: FamilyView.php:458
+msgid "Assign a New Classification:"
+msgstr "Assigner une Nouvelle Classification:"
+
+#: FamilyView.php:460
+msgid "Select Classification"
+msgstr "S&eacute;lectionnez la Classification"
+
+#: FamilyView.php:472 UserList.php:76
+msgid "Change"
+msgstr "Changer"
+
+#: FamilyView.php:474
+msgid "(This will reset the Classification of ALL family members.)"
+msgstr "(Ceci remettra &agrave; z&eacute;ro la classification de TOUS LES membres de la Famille.)"
+
+#: FamilyView.php:481 PersonView.php:652 PrintView.php:440
+msgid "Notes:"
+msgstr "Notes:"
+
+#: FamilyView.php:485 PersonView.php:656
+msgid "Add a Note to this Record"
+msgstr "Ajouter une Note &agrave; cet Enregistrement"
+
+#: FamilyView.php:506 PersonView.php:676 PrintView.php:451
+msgid "Last Edited:"
+msgstr "Derniere Modification:"
+
+#: FamilyView.php:510 PersonView.php:680
+msgid "Edit This Note"
+msgstr "Modifier cette Note"
+
+#: FamilyView.php:512 PersonView.php:681
+msgid "Delete This Note"
+msgstr "Supprimer cette Note"
+
+#: GroupDelete.php:29
+msgid "Group Delete Confirmation"
+msgstr "Confirmation de Suppression du Groupe"
+
+#: GroupDelete.php:89
+msgid "Please confirm deletion of this group record:"
+msgstr "Merci de confirmer la suppression de ce groupe d'enregistrement:"
+
+#: GroupDelete.php:97
+msgid ""
+"This will also delete all Roles and Group-Specific Property data associated "
+"with this Group record."
+msgstr ""
+"Ceci supprimera &eacute;galement tous les r&ocirc;les et donn&eacute;es des propri&eacute;t&eacute;s d'un groupe sp&eacute;cifique li&eacute;s "
+"&agrave; ce groupe d'enregistrement."
+
+#: GroupDelete.php:101 NoteDelete.php:81 PropertyDelete.php:67
+msgid "(this action cannot be undone)"
+msgstr "(cette action ne peut pas &ecirc;tre  annul&eacute;e)"
+
+#: GroupEditor.php:28
+msgid "Group Editor"
+msgstr "Gestion de Groupe"
+
+#: GroupEditor.php:195
+msgid ""
+"Are you sure you want to remove the group-specific person properties?  All "
+"group member properties data will be lost!"
+msgstr ""
+"&Ecirc;tes-vous s&ucirc;r vous voulez enlever les propri&eacute;t&eacute;s d'un groupe sp&eacute;cifique de personne?"
+"Toutes les donn&eacute;es de propri&eacute;t&eacute;s du membre du groupe seront perdues!"
+
+#: GroupEditor.php:203
+msgid ""
+"This will create a group-specific properties table for this group.  You "
+"should then add needed properties with the Group-Specific Properties Form "
+"Editor."
+msgstr ""
+"Ceci cr&eacute;era une table groupe-sp&eacute;cifique des propri&eacute;t&eacute;s pour ce groupe. Vous "
+"devriez alors ajouter les propri&eacute;t&eacute;s n&eacute;cessaires avec la gestion du formulaire "
+"des propri&eacute;t&eacute;s d'un groupe sp&eacute;cifique."
+
+#: GroupEditor.php:231 GroupView.php:120
+msgid "Type of Group:"
+msgstr "Type de Groupe:"
+
+#: GroupEditor.php:234 PersonEditor.php:489 PersonEditor.php:511
+#: PersonEditor.php:688 PrintMember.php:155 Include/Functions.php:817
+#: Include/Functions.php:859
+msgid "Unassigned"
+msgstr "Non assign&eacute;"
+
+#: GroupEditor.php:251
+msgid "Group-Specific<br>Properties:"
+msgstr "Propri&eacute;t&eacute;s Sp&eacute;cifiques <br>d'un Groupe:"
+
+#: GroupEditor.php:253
+msgid "Use group-specific properties?"
+msgstr "Voulez-vous utiliser les propri&eacute;t&eacute;s sp&eacute;cifiques d'un groupe?"
+
+#: GroupEditor.php:258 GroupView.php:99
+msgid "Edit Group-Specific Properties Form"
+msgstr "Modifier les Propri&eacute;t&eacute;s Sp&eacute;cifiques du Formulaire pour un Groupe"
+
+#: GroupEditor.php:266
+msgid "Empty Cart to this Group?"
+msgstr "Vider le panier pour ce groupe?"
+
+#: GroupEditor.php:293
+msgid "Group Roles:"
+msgstr "R&ocirc;les du Groupe:"
+
+#: GroupEditor.php:300
+msgid "Initial Group Creation:  Group roles can be edited after the first save."
+msgstr "Cr&eacute;ation Initiale de Groupe:  Les R&ocirc;les de groupe peuvent &ecirc;tre  modifi&eacute;s apr&egrave;s la premiere sauvegarde."
+
+#: GroupList.php:21
+msgid "Group Listing"
+msgstr "Liste des Groupes"
+
+#: GroupList.php:29 Include/Header.php:303 Include/Header.php:610
+msgid "Add a New Group"
+msgstr "Ajouter Nouveau Groupe"
+
+#: GroupList.php:45
+msgid "Members"
+msgstr "Membres"
+
+#: GroupList.php:77 GroupView.php:66
+msgid "Undefined"
+msgstr "Ind&eacute;fini"
+
+#: GroupMemberList.php:112 GroupMemberList.php:129 SelectList.php:181
+#: SelectList.php:430
+msgid "View All"
+msgstr "Tout voir"
+
+#: GroupMemberList.php:119
+msgid "Show only"
+msgstr "Voir seulement"
+
+#: GroupMemberList.php:122 SelectList.php:248 SelectList.php:495
+msgid "Go"
+msgstr "Aller"
+
+#: GroupMemberList.php:147
+msgid "Previous Page"
+msgstr "Page Pr&eacute;c&eacute;dente"
+
+#: GroupMemberList.php:170 SelectList.php:227 SelectList.php:474
+msgid "Next Page"
+msgstr "Page Suivante"
+
+#: GroupMemberList.php:179 PrintGroup.php:57
+msgid "Group Role"
+msgstr "R&ocirc;le du Groupe"
+
+#: GroupMemberList.php:183 PrintGroup.php:53 PrintMember.php:92
+msgid "ZIP"
+msgstr "Code Postal"
+
+#: GroupMemberList.php:184 GroupReports.php:158 PrintGroup.php:54
+#: PrintMember.php:93
+msgid "Home Phone"
+msgstr "T&eacute;l&eacute;phone Personnel"
+
+#: GroupMemberList.php:185 PrintGroup.php:55 PrintMember.php:94
+msgid "E-mail"
+msgstr "Email"
+
+#: GroupPropsEditor.php:28
+msgid "Group Member Properties Editor"
+msgstr "Gestion des Propri&eacute;t&eacute;s des Membres du Groupe"
+
+#: GroupPropsEditor.php:127
+msgid ""
+"This group currently has no properties!  You can add them in the Group "
+"Editor."
+msgstr ""
+"Ce groupe n'a actuellement aucune propri&eacute;t&eacute;!  Vous pouvez l'ajouter dans "
+"l'&eacute;diteur de Groupe."
+
+#: GroupPropsEditor.php:129
+msgid "Return to Person Record"
+msgstr "Retourner &agrave; l'enregistrement des personnes"
+
+#: GroupPropsEditor.php:134
+msgid "Editing"
+msgstr "Modifi&eacute;"
+
+#: GroupPropsEditor.php:134
+msgid "data for member"
+msgstr "donn&eacute;es du membre"
+
+#: GroupPropsFormEditor.php:41
+msgid "Group-Specific Properties Form Editor:"
+msgstr "Éditeur de Formulaire des Propri&eacute;t&eacute;s Sp&eacute;cifiques du Groupe:"
+
+#: GroupPropsFormEditor.php:181
+msgid "'Default Option'"
+msgstr "'Option par D&eacute;faut'"
+
+#: GroupPropsFormEditor.php:273
+msgid ""
+"Warning:  By deleting this field, you will irrevokably lose all group member "
+"data assigned for this field!"
+msgstr ""
+"Attention:  En supprimant ce champ, vous perdrez de fait toutes les "
+"donn&eacute;es assign&eacute;es &agrave; ce champ pour ce membre du groupe !"
+
+#: GroupPropsFormEditor.php:287
+msgid "No properties have been added yet"
+msgstr "Aucune propri&eacute;t&eacute; n'a encore &eacute;t&eacute; ajout&eacute;"
+
+#: GroupPropsFormEditor.php:296 OptionManager.php:266
+msgid ""
+"Warning: Field changes will be lost if you do not 'Save Changes' before "
+"using an up, down, delete, or 'add new' button!"
+msgstr "Attention: Les champs modifi&eacute;s seront perdus si vous ne 'Sauvez les Changements' avant'utiliser les bouton haut, bas, supprimer ou 'ajouter nouveau'"
+
+#: GroupPropsFormEditor.php:319 PersonCustomFieldsEditor.php:299
+msgid "Special option"
+msgstr "Option Sp&eacute;ciale"
+
+#: GroupPropsFormEditor.php:320
+msgid "Show in"
+msgstr "Montrer"
+
+#: GroupPropsFormEditor.php:320 PersonView.php:122
+msgid "Person View"
+msgstr "Voir Fiche Personne"
+
+#: GroupPropsFormEditor.php:358
+msgid "Select a group"
+msgstr "S&eacute;lectionner un groupe"
+
+#: GroupPropsFormEditor.php:375 PersonCustomFieldsEditor.php:353
+msgid "You must select a group."
+msgstr "Vous devez s&eacute;lectionner un groupe."
+
+#: GroupPropsFormEditor.php:422 PersonCustomFieldsEditor.php:404
+msgid "Help on types.."
+msgstr "Aide sur les types.."
+
+#: GroupPropsFormEditor.php:429 PersonCustomFieldsEditor.php:411
+msgid "That field name already exists."
+msgstr "Ce nom de champ existe d&eacute;j&agrave;."
+
+#: GroupPropsFormEditor.php:439 PersonCustomFieldsEditor.php:422
+msgid "Add New Field"
+msgstr "Ajouter Nouveaux Champs"
+
+#: GroupReports.php:27
+msgid "Group reports"
+msgstr "Rapport du Groupe"
+
+#: GroupReports.php:91
+msgid "Select the group you would like to report:"
+msgstr "S&eacute;lectionnez le groupe pour lequel vous voulez un rapport:"
+
+#: GroupReports.php:113
+msgid "Only cart persons?:"
+msgstr "Seulement le Panier des Personnes?:"
+
+#: GroupReports.php:117
+msgid "Report Model:"
+msgstr "Mod&egrave;le de Rapport"
+
+#: GroupReports.php:119
+msgid "Report for group and role selected"
+msgstr "Rapport pour le groupe et le r&ocirc;le s&eacute;lectionn&eacute;s"
+
+#: GroupReports.php:120
+msgid "Report for any role in group selected"
+msgstr "Rapport pour n'importe quel r&ocirc;le dans le groupe choisi"
+
+#: GroupReports.php:127
+msgid "Next"
+msgstr "Suivant"
+
+#: GroupReports.php:151
+msgid "Select which information you want to include"
+msgstr "S&eacute;lectionnez les informations que vous voulez inclure"
+
+#: GroupReports.php:155
+msgid "Standard Info:"
+msgstr "Information Standard"
+
+#: GroupReports.php:159
+msgid "Work Phone"
+msgstr "T&eacute;l&eacute;phone Professionnel"
+
+#: GroupReports.php:160
+msgid "Cell Phone"
+msgstr "T&eacute;l&eacute;phone Portable"
+
+#: GroupReports.php:161 Reports/DirectoryReport.php:213
+#: Reports/DirectoryReport.php:269 Reports/DirectoryReport.php:328
+#: Reports/DirectoryReport.php:496 Reports/GroupReport.php:273
+msgid "Email"
+msgstr "Email"
+
+#: GroupReports.php:162 Reports/GroupReport.php:276
+msgid "Other Email"
+msgstr "Autre Email"
+
+#: GroupReports.php:163
+msgid "GroupRole"
+msgstr "R&ocirc;le"
+
+#: GroupReports.php:167
+msgid "Group-Specific Property Fields:"
+msgstr "Propri&eacute;t&eacute; des Champs Sp&eacute;cifiques au Groupe:"
+
+#: GroupReports.php:186
+msgid "Create Report"
+msgstr "Cr&eacute;er un Rapport"
+
+#: GroupView.php:21
+msgid "Group View"
+msgstr "Voir Groupe"
+
+#: GroupView.php:95
+msgid "Edit this Group"
+msgstr "Modifier ce Groupe"
+
+#: GroupView.php:96
+msgid "Delete this Group"
+msgstr "Supprimer ce Groupe"
+
+#: GroupView.php:102
+msgid "Add Group Members to Cart"
+msgstr "Ajouter Membres du Groupe au Panier"
+
+#: GroupView.php:103
+msgid "Print Group Members"
+msgstr "Imprimer les Membres du Groupe"
+
+#: GroupView.php:118
+msgid "Total Members:"
+msgstr "Tous les Membres:"
+
+#: GroupView.php:122
+msgid "Default Role:"
+msgstr "R&ocirc;le par D&eacute;faut:"
+
+#: GroupView.php:130
+msgid "Group-Specific Properties:"
+msgstr "Propri&eacute;t&eacute;s Sp&eacute;cifiques au Groupe:"
+
+#: GroupView.php:177
+msgid "Disabled for this group."
+msgstr "Inutilisable pour ce groupe."
+
+#: GroupView.php:290 PersonView.php:473 PersonView.php:602
+#: PropertyAssign.php:186
+msgid "Assign"
+msgstr "Assign&eacute;"
+
+#: GroupView.php:301
+msgid "Group Members:"
+msgstr "Membres du Groupe:"
+
+#: MemberRoleChange.php:28
+msgid "Member Role Change"
+msgstr "Modifier le R&ocirc;le du Membre"
+
+#: MemberRoleChange.php:79
+msgid "Group Name:"
+msgstr "Nom du Groupe:"
+
+#: MemberRoleChange.php:83
+msgid "Member's Name:"
+msgstr "Noms des Membres:"
+
+#: MemberRoleChange.php:87
+msgid "Current Role:"
+msgstr "R&ocirc;le Actuel:"
+
+#: MemberRoleChange.php:91
+msgid "New Role:"
+msgstr "Nouveau R&ocirc;le:"
+
+#: MemberRoleChange.php:119 PropertyAssign.php:186
+msgid "Update"
+msgstr "Mise &agrave; jour"
+
+#: Menu.php:23
+msgid "Welcome to InfoCentral"
+msgstr "Bienvenue dans InfoCentral"
+
+#: Menu.php:29
+msgid "Hi"
+msgstr "Bonjour"
+
+#: Menu.php:29
+msgid "welcome back"
+msgstr "et bienvenue"
+
+#: Menu.php:34
+msgid "This is your first login."
+msgstr "C'est la premiere fois que vous vous connectez"
+
+#: Menu.php:36
+msgid "You last logged in on "
+msgstr "Votre derniere connexion date du "
+
+#: Menu.php:36
+msgid "at"
+msgstr "&agrave;"
+
+#: Menu.php:41
+msgid "There were"
+msgstr "Vous avez"
+
+#: Menu.php:41
+msgid "failed login attempt(s) since your last successful login."
+msgstr "tentative(s) d'ouverture(s) &eacute;chou&eacute;e(s) depuis votre derniere ouverture r&eacute;ussie."
+
+#: NoteDelete.php:29
+msgid "Note Delete Confirmation"
+msgstr "Confirmation de la suppression de la note"
+
+#: NoteDelete.php:73
+msgid "Please confirm deletion of this note:"
+msgstr "Merci de bien vouloir confirmer le suppression de la note:"
+
+#: NoteEditor.php:29
+msgid "Note Editor"
+msgstr "Éditeur de Note"
+
+#: NoteEditor.php:166
+msgid "Private"
+msgstr "Priv&eacute;"
+
+#: OptionManager.php:68 PropertyAssign.php:45 PropertyEditor.php:37
+#: PropertyList.php:27 PropertyTypeEditor.php:91 PropertyTypeList.php:61
+#: Include/Header.php:461
+msgid "Person"
+msgstr "Personne"
+
+#: OptionManager.php:74 PropertyAssign.php:61 PropertyEditor.php:45
+#: PropertyList.php:35 PropertyTypeEditor.php:93 PropertyTypeList.php:61
+msgid "Group"
+msgstr "Groupe"
+
+#: OptionManager.php:80
+msgid "Group Member"
+msgstr "Membre du Groupe"
+
+#: OptionManager.php:99
+msgid "Custom List"
+msgstr "Liste Personnalis&eacute;e"
+
+#: OptionManager.php:100
+msgid "Option"
+msgstr "Option"
+
+#: OptionManager.php:258
+msgid "Warning:  If you delete this "
+msgstr "Attention:  Si vous supprimez ceci"
+
+#: OptionManager.php:258
+msgid ", all "
+msgstr ", tous les "
+
+#: OptionManager.php:258
+msgid "s using it will have this value reset to default."
+msgstr "s seront utilis&eacute;s comme les valeurs par d&eacute;fauts."
+
+#: OptionManager.php:273
+msgid "Error: Duplicate"
+msgstr "Erreur: Duplication"
+
+#: OptionManager.php:273
+msgid "s are not allowed."
+msgstr "s ne sont pas permis."
+
+#: OptionManager.php:305
+msgid "Default"
+msgstr "D&eacute;faut"
+
+#: OptionManager.php:334
+msgid "Make Default"
+msgstr "Mise par D&eacute;faut"
+
+#: OptionManager.php:349
+msgid "Add New"
+msgstr "Ajouter Nouveau"
+
+#: OptionManager.php:355
+msgid "Error: You must enter a name."
+msgstr "Erreur: Vous devez entrer un nom."
+
+#: OptionManager.php:357
+msgid "Error: A "
+msgstr "Erreur: Un"
+
+#: OptionManager.php:357
+msgid " by that name already exists."
+msgstr " par ce nom existe d&eacute;j&agrave;."
+
+#: PersonCustomFieldsEditor.php:27
+msgid "Custom Person Fields Editor"
+msgstr "Gestionnaire des Champs Personnalis&eacute;s"
+
+#: PersonCustomFieldsEditor.php:163
+msgid "Default Option"
+msgstr "Option par D&eacute;faut"
+
+#: PersonCustomFieldsEditor.php:254
+msgid ""
+"Warning:  By deleting this field, you will irrevokably lose all person data "
+"assigned for this field!"
+msgstr ""
+"Attention: En supprimant ce champ, vous perdrez de fait toutes les donn&eacute;es de personne "
+"assign&eacute;es &agrave; ce champ!"
+
+#: PersonCustomFieldsEditor.php:268
+msgid "No custom person fields have been added yet"
+msgstr "Aucun champ personnalis&eacute; n'a encore &eacute;t&eacute; ins&eacute;r&eacute;"
+
+#: PersonCustomFieldsEditor.php:277
+msgid ""
+"Warning: Field changes will be lost if you do not 'Save Changes' before "
+"using an up, down, delete or 'add new' button!"
+msgstr ""
+"Attention: Les champs modifi&eacute;s seront perdus si vous ne 'Sauvez pas les Changements avant"
+" d'utiliser les boutons haut, bas, supprimer ou 'ajouter nouveau'"
+
+#: PersonCustomFieldsEditor.php:300
+msgid "Person-View Side"
+msgstr "Personne - Fiche Associ&eacute;e"
+
+#: PersonCustomFieldsEditor.php:356
+msgid "Edit List Options"
+msgstr "Modifier la Liste des Options"
+
+#: PersonCustomFieldsEditor.php:363 PersonCustomFieldsEditor.php:417
+msgid "Left"
+msgstr "Gauche"
+
+#: PersonCustomFieldsEditor.php:364 PersonCustomFieldsEditor.php:418
+msgid "Right"
+msgstr "Droite"
+
+#: PersonCustomFieldsEditor.php:410 PropertyTypeEditor.php:43
+msgid "You must enter a name"
+msgstr "Vous devez entrer un nom"
+
+#: PersonCustomFieldsEditor.php:416
+msgid "Side:"
+msgstr "Côt&eacute;:"
+
+#: PersonEditor.php:21
+msgid "Person Editor"
+msgstr "Gestionnaire des Personnes"
+
+#: PersonEditor.php:108
+msgid "You must enter a First Name."
+msgstr "Vous devez entrer un Pr&eacute;nom."
+
+#: PersonEditor.php:116
+msgid "You must enter a Last Name if no Family is selected."
+msgstr "Vous devez entrer un Nom si aucune Famille n'a &eacute;t&eacute; s&eacute;lectionn&eacute;e."
+
+#: PersonEditor.php:131
+msgid "Invalid Year: allowable values are 1901 to 2155"
+msgstr "Ann&eacute;e Invalide:  les valeurs permises sont comprise entre 1901 et 2155"
+
+#: PersonEditor.php:138
+msgid "Invalid Birth Date."
+msgstr "Date de Naissance Invalide."
+
+#: PersonEditor.php:150
+msgid "Not a valid Membership Date"
+msgstr "Date d'Adh&eacute;sion Invalide"
+
+#: PersonEditor.php:406
+msgid "Items in"
+msgstr "Mettre &eacute;l&eacute;ments dans"
+
+#: PersonEditor.php:406
+msgid "red"
+msgstr "rouge"
+
+#: PersonEditor.php:406
+msgid "have corresponding values on the associated family record."
+msgstr "a des valeurs correspondantes aux enregistrements associ&eacute;s &agrave; cette Famille."
+
+#: PersonEditor.php:463 PersonView.php:318
+msgid "Donation Envelope:"
+msgstr "Enveloppe De Cotisation:"
+
+#: PersonEditor.php:486 PrintView.php:209
+msgid "Family:"
+msgstr "Famille:"
+
+#: PersonEditor.php:631 PrintView.php:241
+msgid "Work / Other Email:"
+msgstr "Travail / Autres Email:"
+
+#: PersonEditor.php:640
+msgid "Birth Date:"
+msgstr "Date de Naissance:"
+
+#: PersonEditor.php:658
+msgid "Unk"
+msgstr "N/D"
+
+#: PersonEditor.php:671
+msgid "Birth Year:"
+msgstr "Ann&eacute;e de Naissance:"
+
+#: PersonEditor.php:672
+msgid "Must be four-digit format."
+msgstr "Vous devez saisir 4 chiffres."
+
+#: PersonView.php:119
+msgid "Not assigned"
+msgstr "Non assign&eacute;"
+
+#: PersonView.php:130
+msgid "Printable Page"
+msgstr "Page Imprimable"
+
+#: PersonView.php:131 PersonView.php:621 SelectList.php:339
+msgid "Add to Cart"
+msgstr "Ajouter au Panier"
+
+#: PersonView.php:138 PersonView.php:625
+msgid "Make User"
+msgstr "Cr&eacute;er Utilisateur"
+
+#: PersonView.php:140
+msgid "Edit User"
+msgstr "Modifier Utilisateur"
+
+#: PersonView.php:146
+msgid "Add Donation"
+msgstr "Ajouter une Cotisation"
+
+#: PersonView.php:162
+msgid "Member"
+msgstr "Membre"
+
+#: PersonView.php:163
+msgid " of the"
+msgstr " de la"
+
+#: PersonView.php:163
+msgid " family)"
+msgstr " famille)"
+
+#: PersonView.php:166
+msgid "(No assigned family)"
+msgstr "(Aucune Famille assign&eacute;e)"
+
+#: PersonView.php:299
+msgid "Birthdate:"
+msgstr "Date de naissance:"
+
+#: PersonView.php:303
+msgid "Age:"
+msgstr "Age:"
+
+#: PersonView.php:483 PrintView.php:319
+msgid "Assigned Groups:"
+msgstr "Groupes Assign&eacute;s:"
+
+#: PersonView.php:487
+msgid ""
+"Warning: If you remove this group membership, you will irrevokably lose any "
+"member data assigned"
+msgstr ""
+"Attention: Si vous enlevez cette adh&eacute;sion de groupe, vous perdrez de fait toutes "
+"les donn&eacute;es associ&eacute;es au membre"
+
+#: PersonView.php:503 PrintView.php:331
+msgid "No group assignments."
+msgstr "Aucun groupe assign&eacute;."
+
+#: PersonView.php:509 PrintView.php:337
+msgid "Group Name"
+msgstr "Nom du groupe"
+
+#: PersonView.php:513 PropertyTypeList.php:40 Include/Header.php:317
+#: Include/Header.php:386 Include/Header.php:620 Include/Header.php:650
+msgid "Properties"
+msgstr "Propri&eacute;t&eacute;s"
+
+#: PersonView.php:537
+msgid "View/Edit"
+msgstr "Voir/Modifier"
+
+#: PersonView.php:566 PropertyList.php:56
+msgid "Property"
+msgstr "Propri&eacute;t&eacute;s"
+
+#: PersonView.php:587
+msgid "Assign a New Group:"
+msgstr "Assign&eacute; un Nouveau Groupe:"
+
+#: PersonView.php:604
+msgid "(Person will be assigned to the Group in the Default Role.)"
+msgstr "(La Personne sera affect&eacute;e au Groupe avec un R&ocirc;le par d&eacute;faut.)"
+
+#: PersonView.php:620
+msgid "Printable Page for this Record"
+msgstr "Imprimer Page pour cet enregistrement"
+
+#: PersonView.php:630
+msgid "Red text"
+msgstr "Texte en Rouge"
+
+#: PersonView.php:630
+msgid "indicates items inherited from the associated family record."
+msgstr "indique les objets h&eacute;rit&eacute;s de l'enregistrement associ&eacute; &agrave; la famille."
+
+#: PrintGroup.php:30
+msgid "Group Members : "
+msgstr "Membres du Groupe : "
+
+#: PrintGroup.php:56 PrintMember.php:95
+msgid "Work / Other E-mail"
+msgstr "Travail / Autre Email"
+
+#: PrintMember.php:21
+msgid "Person Listing Print Page"
+msgstr "Impression de la Liste de Personnes"
+
+#: PrintMember.php:96
+msgid "Date Entered"
+msgstr "Date d'Entr&eacute;e"
+
+#: PrintView.php:108
+msgid "Printable View"
+msgstr "Aperçu Avant Impression"
+
+#: PrintView.php:204
+msgid "BirthDate:"
+msgstr "Date de Naissance:"
+
+#: PropertyAssign.php:127 PropertyAssign.php:146
+msgid "Property successfully assigned."
+msgstr "La propri&eacute;t&eacute; a &eacute;t&eacute; affect&eacute;e avec succ&egrave;s."
+
+#: PropertyAssign.php:162
+msgid " Property Assignment"
+msgstr " Affectation de Propri&eacute;t&eacute;"
+
+#: PropertyAssign.php:176
+msgid "Assigning:"
+msgstr "Assign&eacute;e:"
+
+#: PropertyAssign.php:180
+msgid "Value:"
+msgstr "Valeur:"
+
+#: PropertyDelete.php:27
+msgid "Property Delete Confirmation"
+msgstr "Confirmer la Suppression de Propri&eacute;t&eacute;"
+
+#: PropertyDelete.php:55
+msgid "Please confirm deletion of this property:"
+msgstr "Merci de confirmer la suppression de cette propri&eacute;t&eacute;:"
+
+#: PropertyDelete.php:63
+msgid ""
+"Deleting this Property will also delete all assignments of this Property to "
+"any People, Family, or Group records."
+msgstr ""
+"Supprimer cette propri&eacute;t&eacute; entrainera &eacute;galement toutes les suppressions des propri&eacute;t&eacute;s "
+"associ&eacute;es de tous les enregistrement de personne, de famille, ou de groupe."
+
+#: PropertyEditor.php:55
+msgid "Property Editor"
+msgstr "Éditeur de Propri&eacute;t&eacute;"
+
+#: PropertyEditor.php:68
+msgid "You must enter a Name"
+msgstr "Vous devez entrer un Nom"
+
+#: PropertyEditor.php:75
+msgid "You must select a Type"
+msgstr "Vous devez s&eacute;lectionner un Type"
+
+#: PropertyEditor.php:136
+msgid "Select Property Type"
+msgstr "S&eacute;lectionnez un Type de Propri&eacute;t&eacute;"
+
+#: PropertyEditor.php:159 PropertyList.php:63
+msgid "A"
+msgstr "Un"
+
+#: PropertyEditor.php:159
+msgid "with this property.."
+msgstr "avec cette propri&eacute;t&eacute;..."
+
+#: PropertyEditor.php:163
+msgid "Prompt:"
+msgstr "Demande:"
+
+#: PropertyEditor.php:167
+msgid "Entering a Prompt value will allow the association of a free-form value."
+msgstr "Accepter cette valeur vous permettra d'associer de nouveaux champs personnalis&eacute;s"
+
+#: PropertyList.php:45
+msgid "Property List"
+msgstr "Liste des Propri&eacute;t&eacute;s"
+
+#: PropertyList.php:56
+msgid "Add a New"
+msgstr "Ajouter un Nouveau"
+
+#: PropertyList.php:63
+msgid "with this Property..."
+msgstr "avec cette Propri&eacute;t&eacute;..."
+
+#: PropertyList.php:64
+msgid "Prompt"
+msgstr "Demande"
+
+#: PropertyTypeDelete.php:28
+msgid "Property Type Delete Confirmation"
+msgstr "Confirmation Suppression Type de Propri&eacute;t&eacute;"
+
+#: PropertyTypeDelete.php:61
+msgid "Warning"
+msgstr "Attention"
+
+#: PropertyTypeDelete.php:61
+msgid "This property type is still being used by at least one property."
+msgstr "Ce type de propri&eacute;t&eacute; est associ&eacute;e &agrave; une autre propri&eacute;t&eacute; minimum."
+
+#: PropertyTypeDelete.php:61
+msgid "If you delete this type, you will also remove all properties using"
+msgstr "Si vous supprimez ce type, vous enl&egrave;verez &eacute;galement tout les propri&eacute;t&eacute;s associ&eacute;es"
+
+#: PropertyTypeDelete.php:61
+msgid "it and lose any corresponding property assignments."
+msgstr "et vous perdrez toutes les propri&eacute;t&eacute;s des tâches correspondantes."
+
+#: PropertyTypeDelete.php:66
+msgid "Please confirm deletion of this Property Type:"
+msgstr "Merci de confirmer la suppression du Type de Propri&eacute;t&eacute;:"
+
+#: PropertyTypeEditor.php:28
+msgid "Property Type Editor"
+msgstr "Gestionnaire de Type de Propri&eacute;t&eacute;"
+
+#: PropertyTypeEditor.php:88
+msgid "Class:"
+msgstr "Classe:"
+
+#: PropertyTypeList.php:21
+msgid "Property Type List"
+msgstr "Liste Types de Propri&eacute;t&eacute;s"
+
+#: PropertyTypeList.php:32
+msgid "Add a New Property Type"
+msgstr "Ajouter Nouveau Type de Propri&eacute;t&eacute;"
+
+#: PropertyTypeList.php:39
+msgid "Class"
+msgstr "Classe"
+
+#: PropertyUnassign.php:102
+msgid " Property Unassignment"
+msgstr " Propri&eacute;t&eacute; non Assign&eacute;e"
+
+#: PropertyUnassign.php:109
+msgid "Please confirm removal of this property from this"
+msgstr "Veuillez confirmer le d&eacute;placement de cette propri&eacute;t&eacute;"
+
+#: PropertyUnassign.php:118
+msgid "Unassigning:"
+msgstr "Non assign&eacute;:"
+
+#: PropertyUnassign.php:124
+msgid "Yes, unassign this Property"
+msgstr "Oui, annuler cette Propri&eacute;t&eacute;"
+
+#: PropertyUnassign.php:127
+msgid "No, retain this assignment"
+msgstr "Non, maintenir cette tâche"
+
+#: QueryList.php:21
+msgid "Query Listing"
+msgstr "Liste des Requ&ecirc;te s"
+
+#: QueryList.php:32
+msgid "Run a Free-Text Query"
+msgstr "Ex&eacute;cuter une Requ&ecirc;te  Libre"
+
+#: QuerySQL.php:21
+msgid "Free-Text Query"
+msgstr "Requ&ecirc;te  Texte Libre"
+
+#: QuerySQL.php:50
+msgid "Execute SQL"
+msgstr "Ex&eacute;cuter SQL"
+
+#: QuerySQL.php:82
+msgid "An error occured: "
+msgstr "Une erreur s'est produite: "
+
+#: QueryView.php:21
+msgid "Query View"
+msgstr "Visualisation de la Requ&ecirc;te "
+
+#: QueryView.php:98
+msgid "This value is required."
+msgstr "Cette valeur est exig&eacute;e."
+
+#: QueryView.php:114
+msgid "This value must be numeric."
+msgstr "Cette valeur doit &ecirc;tre  de type num&eacute;rique."
+
+#: QueryView.php:122
+msgid "This value must be at least "
+msgstr "Cette valeur doit &ecirc;tre  au moins "
+
+#: QueryView.php:128 QueryView.php:142
+msgid "This value cannot be more than "
+msgstr "Cette valeur ne peut pas &ecirc;tre  sup&eacute;rieure &agrave; "
+
+#: QueryView.php:142 QueryView.php:148
+msgid " characters long"
+msgstr " caract&egrave;res"
+
+#: QueryView.php:148
+msgid "This value cannot be less than "
+msgstr "Cette valeur ne peut pas &ecirc;tre  inf&eacute;rieure &agrave; "
+
+#: QueryView.php:196
+msgid " record(s) returned"
+msgstr " enregistrement(s) retourn&eacute;(s)"
+
+#: QueryView.php:272
+msgid "Add Results To Cart"
+msgstr "Ajouter R&eacute;sultats au Panier"
+
+#: QueryView.php:275
+msgid "Run Query Again"
+msgstr "Ex&eacute;cuter Requ&ecirc;te  &agrave; Nouveau"
+
+#: QueryView.php:276
+msgid "Return to Query Menu"
+msgstr "Retour Menu Requ&ecirc;te "
+
+#: ReportList.php:20 Include/Header.php:600
+msgid "Report Menu"
+msgstr "Menu des Rapports"
+
+#: ReportList.php:31
+msgid "Donation Summary Report"
+msgstr "Compte rendu succinct de cotisation"
+
+#: ReportList.php:33
+msgid ""
+"Displays a donation summary report for a specified day, including breakdown "
+"by fund."
+msgstr ""
+"Montre un compte rendu succinct de cotisation pour un jour donn&eacute;, y compris les refus "
+"par association."
+
+#: ReportList.php:37
+msgid "Donation End of Year Reports for All Members"
+msgstr "Rapport de Fin d'ann&eacute;e pour les Cotisations des Membres"
+
+#: ReportList.php:39
+msgid "Member Contribution Letter for all members with donations. (multi-page PDF)"
+msgstr "Lettre de contribution de membre pour tous les membres avec les cotisations (pdf de plusieurs pages)"
+
+#: ReportList.php:45
+msgid "Reports on groups and roles"
+msgstr "Rapport sur les groupes et les r&ocirc;les"
+
+#: ReportList.php:47
+msgid "Report on group and roles selected (it may be a multi-page PDF)."
+msgstr "Rapport sur les groupes et les r&ocirc;les s&eacute;lectionn&eacute;s (ils peuvent &ecirc;tre  g&eacute;n&eacute;rer en multipage PDF)."
+
+#: ReportList.php:53
+msgid "Members Directory"
+msgstr "Annuaire des membres"
+
+#: ReportList.php:55
+msgid "Printable directory of all members, grouped by family where assigned"
+msgstr "Annuaire imprimable de tous les membres, group&eacute; par l'assignement de la famille"
+
+#: SelectDelete.php:35
+msgid "Person Delete Confirmation"
+msgstr "Confirmation de la suppression de la personne"
+
+#: SelectDelete.php:37
+msgid "Family Delete Confirmation"
+msgstr "Confirmation de la suppression de la famille"
+
+#: SelectDelete.php:161
+msgid ""
+"Sorry, this person is a user.  An administrator must remove their user "
+"status before they may be deleted from the database."
+msgstr ""
+"D&eacute;sol&eacute;e, cette personne est un utilisateur.  Un administrateur doit enlever leur statut "
+"d'utilisateur avant qu'ils puissent &ecirc;tre  supprim&eacute;s de la base de donn&eacute;es."
+
+#: SelectDelete.php:162
+msgid "Return to Person View"
+msgstr "Retour sur l'aperçu de la personne"
+
+#: SelectDelete.php:166
+msgid ""
+"Sorry, this person still has donations records.  You must re-assign or "
+"delete these donations before you can remove this person."
+msgstr ""
+"D&eacute;sol&eacute;e, cette personne a toujours des enregistrements de cotisations. Vous devez attribuer &agrave; nouveau "
+"ou supprimer ces cotisations avant que vous puissiez enlever cette personne."
+
+#: SelectDelete.php:167
+msgid "Number of donations:"
+msgstr "Nombre de Cotisations:"
+
+#: SelectDelete.php:177
+msgid " (This action CANNOT be undone!)"
+msgstr " (cette action NE PEUT PAS &ecirc;tre  annul&eacute;e!)"
+
+#: SelectDelete.php:183
+msgid "Please confirm deletion of this family record:"
+msgstr "Merci de confirmer la suppression de l'enregistrement de cette famille:"
+
+#: SelectDelete.php:185
+msgid "This will also delete all Notes associated with this Family record."
+msgstr "Ceci supprimera &eacute;galement toutes les notes li&eacute;es &agrave; cet enregistrement Famille."
+
+#: SelectDelete.php:186
+msgid " (this action cannot be undone)"
+msgstr " (cette action ne peut pas &ecirc;tre  annul&eacute;e)"
+
+#: SelectDelete.php:187
+msgid "No, cancel this deletion</a>"
+msgstr "Non, annuler cette suppression</a>"
+
+#: SelectList.php:35
+msgid "Person Listing"
+msgstr "Liste des Personnes"
+
+#: SelectList.php:37
+msgid "Family Listing"
+msgstr "Liste des Familles"
+
+#: SelectList.php:161
+msgid "Add a New Person Record"
+msgstr "Ajouter Nouvelle Personne"
+
+#: SelectList.php:163
+msgid "View Printable Page of this Listing"
+msgstr "Aperçu page d'Impression de cette Liste"
+
+#: SelectList.php:167 SelectList.php:417
+msgid "Sort order:"
+msgstr "Ordre de tri:"
+
+#: SelectList.php:169 SelectList.php:419
+msgid "By Name"
+msgstr "Par Nom"
+
+#: SelectList.php:170
+msgid "By Family"
+msgstr "Par Famille"
+
+#: SelectList.php:171 SelectList.php:420
+msgid "By Newest Entries"
+msgstr "Par Nouvelle Entr&eacute;es"
+
+#: SelectList.php:175 SelectList.php:424
+msgid "Apply Filter"
+msgstr "Appliquer le Filtre"
+
+#: SelectList.php:240 SelectList.php:487
+msgid "Display:"
+msgstr "Affichage:"
+
+#: SelectList.php:262 Include/Header.php:250 Include/Header.php:381
+#: Include/Header.php:577 Include/Header.php:648
+msgid "Cart"
+msgstr "Panier"
+
+#: SelectList.php:263
+msgid "vCard"
+msgstr "vCard"
+
+#: SelectList.php:264
+msgid "Printable Record"
+msgstr "Enregistrement Imprimable"
+
+#: SelectList.php:340
+msgid "Create vCard"
+msgstr "Cr&eacute;er vCard"
+
+#: SelectList.php:341
+msgid "Imprimer la page"
+msgstr "Imprimer Page"
+
+#: SelectList.php:413
+msgid "Add a New Family Record"
+msgstr "Ajouter Nouvelle Famille"
+
+#: SelectList.php:505
+msgid "Family Name"
+msgstr "Nom de Famille"
+
+#: SelectList.php:510
+msgid "Last Edited"
+msgstr "Derniere Modification"
+
+#: UserDelete.php:55
+msgid "User Delete Confirmation"
+msgstr "Confirmation Suppression de l'Utilisateur"
+
+#: UserDelete.php:60
+msgid "Please confirm removal of user status from:"
+msgstr "Veuillez confirmer le d&eacute;placement du statut d'utilisateur de:"
+
+#: UserEditor.php:130
+msgid "Nope"
+msgstr "Personne"
+
+#: UserEditor.php:145
+msgid "User Editor"
+msgstr "Gestionnaire Utilisateur"
+
+#: UserEditor.php:160
+msgid "Person to Make User:"
+msgstr "Personne Autoriser &agrave; Cr&eacute;er des Utilisateurs:"
+
+#: UserEditor.php:182 Include/Header.php:469
+msgid "User:"
+msgstr "Utilisateur:"
+
+#: UserEditor.php:189
+msgid "Add Records:"
+msgstr "Ajouter Enregistrements:"
+
+#: UserEditor.php:194
+msgid "Edit Records:"
+msgstr "Modifier Enregistrements:"
+
+#: UserEditor.php:199
+msgid "Delete Records:"
+msgstr "Effacer Enregistrements:"
+
+#: UserEditor.php:204
+msgid "Manage Properties and Classifications:"
+msgstr "Gestion Propri&eacute;t&eacute;s et Classifications:"
+
+#: UserEditor.php:209
+msgid "Manage Groups and Roles:"
+msgstr "Gestion des Groupes et R&ocirc;les:"
+
+#: UserEditor.php:214
+msgid "Manage Donations and Finance:"
+msgstr "Gestion Cotisations et Finances:"
+
+#: UserEditor.php:219
+msgid "View, Add and Edit Notes:"
+msgstr "Voir, Ajouter et Éditer des notes:"
+
+#: UserEditor.php:231
+msgid "Admin:"
+msgstr "Administrateur:"
+
+#: UserEditor.php:232
+msgid "(Grants all privileges.)"
+msgstr "(Avoir tous les privil&egrave;ges.)"
+
+#: UserEditor.php:236
+msgid "Style:"
+msgstr "Style:"
+
+#: UserEditor.php:241
+msgid "Note: Changes will not take effect until next logon."
+msgstr "Note:  Les changements entreront en vigueur au prochain red&eacute;marrage."
+
+#: UserList.php:35
+msgid "User Listing"
+msgstr "Liste des Utilisateurs"
+
+#: UserList.php:40
+msgid "Add a New User"
+msgstr "Ajouter Nouvel Utilisateur"
+
+#: UserList.php:45
+msgid "Last Login"
+msgstr "Derniere Connexion"
+
+#: UserList.php:46
+msgid "Total Logins"
+msgstr "Connexion Totale"
+
+#: UserList.php:47
+msgid "Failed Logins"
+msgstr "La connexion a &eacute;chou&eacute;e"
+
+#: UserList.php:48
+msgid "Password"
+msgstr "Mot de Passe"
+
+#: UserList.php:77
+msgid "Reset"
+msgstr "Effacer"
+
+#: UserPasswordChange.php:45
+msgid "You must enter a password in both boxes"
+msgstr "Vous devez entrer un mot de passe dans des les champs"
+
+#: UserPasswordChange.php:51 UserPasswordChange.php:97
+msgid "You must enter the same password in both boxes"
+msgstr "Vous devez entrer le meme mot de passe dans des les deux champs"
+
+#: UserPasswordChange.php:91
+msgid "You must enter your new password in both boxes"
+msgstr "Vous devez entrer votre nouveau mot de passe dans les deux champs"
+
+#: UserPasswordChange.php:103
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr "Votre mot de passe est trop &eacute;vident.  Veuillez en choisir un autre."
+
+#: UserPasswordChange.php:109
+msgid "Your new password must be at least"
+msgstr "Votre nouveau mot de passe doit au moins avoir"
+
+#: UserPasswordChange.php:109
+msgid "characters"
+msgstr "caract&egrave;res"
+
+#: UserPasswordChange.php:115
+msgid "You need to actually change your password (nice try, though!)"
+msgstr "Vous devez r&eacute;ellement changer votre mot de passe"
+
+#: UserPasswordChange.php:120
+msgid "Your new password is too similar to your old one.  Be more creative!"
+msgstr "Votre nouveau mot de passe est trop ressemblant &agrave; l'ancien. Soyez plus cr&eacute;atif!"
+
+#: UserPasswordChange.php:145
+msgid "User Password Change"
+msgstr "Changement du Mot de Passe Utilisateur"
+
+#: UserPasswordChange.php:148
+msgid ""
+"Your account record indicates that you need to change your password before "
+"proceding."
+msgstr ""
+"L'enregistrement de votre compte indique que vous devez changer votre mot de passe avant de "
+"continuer."
+
+#: UserPasswordChange.php:151
+msgid ""
+"Enter your current password, then your new password twice.  Passwords must "
+"be at least"
+msgstr ""
+"Entrez votre mot de passe actuel, puis votre nouveau mot de passe deux fois.  "
+"Les mots de passe doivent &ecirc;tre  au moins"
+
+#: UserPasswordChange.php:151
+msgid "characters in length."
+msgstr "caract&egrave;res de long."
+
+#: UserPasswordChange.php:153
+msgid "Enter a new password for this user."
+msgstr "Entrez un nouveau mot de passe pour cet utilisateur."
+
+#: UserPasswordChange.php:160
+msgid "Old Password:"
+msgstr "Ancien Mot de Passe:"
+
+#: UserPasswordChange.php:165
+msgid "New Password:"
+msgstr "Nouveau Mot de Passe:"
+
+#: UserPasswordChange.php:169
+msgid "Confirm New Password:"
+msgstr "Confirmation Nouveau Mot de Passe:"
+
+#: UserProfileEditor.php:56
+msgid "Edit Your Profile"
+msgstr "Éditez Votre Profil"
+
+#: UserProfileEditor.php:64
+msgid "Workspace Width:"
+msgstr "Largeur de Zone de travail"
+
+#: UserProfileEditor.php:73
+msgid "Base Font Size:"
+msgstr "Taille Police par D&eacute;faut"
+
+#: UserReset.php:48
+msgid "User Reset"
+msgstr "Effacement de l'utilisateur"
+
+#: UserReset.php:53
+msgid "Please confirm the password reset of this user:"
+msgstr "Merci de confirmer le mot de passe d'effacement de cet utilisateur:"
+
+#: UserReset.php:57
+msgid "Yes, reset this User's password"
+msgstr "Oui, effacer le mot de passe de cet utilisateur"
+
+#: UserReset.php:59
+msgid "No, cancel this operation"
+msgstr "Non, annuler cette op&eacute;ration"
+
+#: Include/Functions.php:71
+msgid "True / False"
+msgstr "Vrai / Faux"
+
+#: Include/Functions.php:73
+msgid "Text Field (50 char)"
+msgstr "Champ Texte (50 caract&egrave;res)"
+
+#: Include/Functions.php:74
+msgid "Text Field (100 char)"
+msgstr "Champ Texte (100 caract&egrave;res)"
+
+#: Include/Functions.php:75
+msgid "Text Field (long)"
+msgstr "Champ Texte (long)"
+
+#: Include/Functions.php:77
+msgid "Season"
+msgstr "Saison"
+
+#: Include/Functions.php:78
+msgid "Number"
+msgstr "Nombre"
+
+#: Include/Functions.php:79
+msgid "Person from Group"
+msgstr "Personne du groupe"
+
+#: Include/Functions.php:80
+msgid "Money"
+msgstr "Monnaie"
+
+#: Include/Functions.php:81
+msgid "Phone Number"
+msgstr "Num&eacute;ro de t&eacute;l&eacute;phone"
+
+#: Include/Functions.php:82
+msgid "Custom Drop-Down List"
+msgstr "Liste d&eacute;roulante personnalis&eacute;e"
+
+#: Include/Functions.php:88
+msgid "Selected record successfully added to the Cart."
+msgstr "Les enregistrements s&eacute;lectionn&eacute;s ont bien &eacute;t&eacute; ajout&eacute; au panier."
+
+#: Include/Functions.php:94
+msgid "Selected record successfully removed from the Cart."
+msgstr "Les enregistrements s&eacute;lectionn&eacute;s ont bien &eacute;t&eacute; supprim&eacute; du panier."
+
+#: Include/Functions.php:100
+msgid "Your cart has been successfully emptied."
+msgstr "Votre panier a bien &eacute;t&eacute; vid&eacute;."
+
+#: Include/Functions.php:108
+msgid "item(s) added to the Cart."
+msgstr "&eacute;l&eacute;ment(s) ajout&eacute;(s) au panier."
+
+#: Include/Functions.php:147 Include/Initialize.php:86
+msgid "Cannot execute query."
+msgstr "Impossibilit&eacute; d'ex&eacute;cuter la demande."
+
+#: Include/Functions.php:565 Include/Functions.php:577
+msgid "1 month old"
+msgstr "1 mois"
+
+#: Include/Functions.php:567 Include/Functions.php:579
+msgid "months old"
+msgstr "mois"
+
+#: Include/Functions.php:575
+msgid "1 year old"
+msgstr "1 an"
+
+#: Include/Functions.php:582 Include/Functions.php:584
+msgid "years old"
+msgstr "ans"
+
+#: Include/Functions.php:587
+msgid "Age unknown"
+msgstr "Age inconnu"
+
+#: Include/Functions.php:730
+msgid "Invalid Editor ID!"
+msgstr "Modification de l'ID non valide!"
+
+#: Include/Functions.php:787
+msgid "Select Season"
+msgstr "Choisissez la saison"
+
+#: Include/Functions.php:788
+msgid "Winter"
+msgstr "Hiver"
+
+#: Include/Functions.php:789
+msgid "Spring"
+msgstr "Printemps"
+
+#: Include/Functions.php:790
+msgid "Summer"
+msgstr "Et&eacute;"
+
+#: Include/Functions.php:791
+msgid "Fall"
+msgstr "Automne"
+
+#: Include/Functions.php:875
+msgid "Error: Invalid Editor ID!"
+msgstr "Erreur: Modification de l'ID non valide!"
+
+#: Include/Functions.php:910
+msgid "Invalid Year"
+msgstr "Ann&eacute;e Invalide"
+
+#: Include/Functions.php:915
+msgid "Out of range: Allowable values are 1901 to 2155"
+msgstr "Ann&eacute;e Invalide:  les valeurs permises sont comprise entre 1901 et 2155"
+
+#: Include/Functions.php:928 Include/Functions.php:946
+msgid "Invalid Number"
+msgstr "Num&eacute;ro invalide"
+
+#: Include/Functions.php:933
+msgid "Number too large. Must be between -2147483648 and 2147483647"
+msgstr "Nombre trop grand Celui-ci doit &ecirc;tre  compris entre -2147483648 et 2147483647"
+
+#: Include/Functions.php:951
+msgid "Money amount too large. Maximum is $999999999.99"
+msgstr "Le montant indiqu&eacute; est trop important. Le Maximum est 999999999.99€"
+
+#: Include/Header.php:130
+msgid "Main"
+msgstr "Principal"
+
+#: Include/Header.php:134 Include/Header.php:508
+msgid "Log Off"
+msgstr "D&eacute;connexion"
+
+#: Include/Header.php:139 Include/Header.php:510
+msgid "Change Password"
+msgstr "Changez Mot de Passe"
+
+#: Include/Header.php:147 Include/Header.php:515
+msgid "Admin"
+msgstr "Administrateur"
+
+#: Include/Header.php:151 Include/Header.php:517
+msgid "Edit Users"
+msgstr "Éditez Utilisateurs"
+
+#: Include/Header.php:156 Include/Header.php:519
+msgid "Add New User"
+msgstr "Ajouter Nouvel Utilisateur"
+
+#: Include/Header.php:161 Include/Header.php:521
+msgid "Edit Custom Person Fields"
+msgstr "Modifiez Champs Personnalis&eacute;s"
+
+#: Include/Header.php:166 Include/Header.php:523
+msgid "Edit Donation Funds"
+msgstr "Modifiez les Associations"
+
+#: Include/Header.php:179 Include/Header.php:181
+msgid "People/Families"
+msgstr "Personnes/Familles"
+
+#: Include/Header.php:185 Include/Header.php:534
+msgid "Add New Person"
+msgstr "Ajouter Nouvelle Personne"
+
+#: Include/Header.php:191 Include/Header.php:541
+msgid "View All Persons"
+msgstr "Voir Toutes les Personnes"
+
+#: Include/Header.php:198 Include/Header.php:538
+msgid "Classification Manager"
+msgstr "Gestion des Classifications"
+
+#: Include/Header.php:211 Include/Header.php:552
+msgid "Add New Family"
+msgstr "Ajouter Nouvelle Famille"
+
+#: Include/Header.php:217 Include/Header.php:559
+msgid "View All Families"
+msgstr "Voir Toutes les Familles"
+
+#: Include/Header.php:224 Include/Header.php:556
+msgid "Family Roles Manager"
+msgstr "Gestion des R&ocirc;les Famille"
+
+#: Include/Header.php:233 Include/Header.php:567
+msgid "Finance"
+msgstr "Finance"
+
+#: Include/Header.php:237 Include/Header.php:569
+msgid "Donation Batch Entries"
+msgstr "Saisies/Modifications des Cotisations"
+
+#: Include/Header.php:254 Include/Header.php:583
+msgid "List Cart Items"
+msgstr "Liste des El&eacute;ments du Panier"
+
+#: Include/Header.php:272 Include/Header.php:594
+msgid "Data/Reports"
+msgstr "Donn&eacute;es/Rapports"
+
+#: Include/Header.php:277 Include/Header.php:596
+msgid "CSV Export Records"
+msgstr "Export Enregistrements CSV"
+
+#: Include/Header.php:282 Include/Header.php:598
+msgid "Query Menu"
+msgstr "Menu Requ&ecirc;tes"
+
+#: Include/Header.php:287
+msgid "Reports Menu"
+msgstr "Menu Rapports"
+
+#: Include/Header.php:293 Include/Header.php:361 Include/Header.php:604
+#: Include/Header.php:640
+msgid "Groups"
+msgstr "Groupes"
+
+#: Include/Header.php:297 Include/Header.php:606
+msgid "List Groups"
+msgstr "Liste des Groupes"
+
+#: Include/Header.php:310 Include/Header.php:615
+msgid "Edit Group Types"
+msgstr "Modifiez Types Groupe"
+
+#: Include/Header.php:321 Include/Header.php:622
+msgid "People Properties"
+msgstr "Propri&eacute;t&eacute;s Personnes"
+
+#: Include/Header.php:326 Include/Header.php:624
+msgid "Family Properties"
+msgstr "Propri&eacute;t&eacute;s Famille"
+
+#: Include/Header.php:331 Include/Header.php:626
+msgid "Group Properties"
+msgstr "Propri&eacute;t&eacute;s Groupe"
+
+#: Include/Header.php:336 Include/Header.php:628
+msgid "Property Types"
+msgstr "Type de propri&eacute;t&eacute;s"
+
+#: Include/Header.php:342 Include/Header.php:632
+msgid "Help"
+msgstr "Aide"
+
+#: Include/Header.php:346 Include/Header.php:634
+msgid "About InfoCentral"
+msgstr "A propos de InfoCentral"
+
+#: Include/Header.php:351 Include/Header.php:531 Include/Header.php:636
+msgid "People"
+msgstr "Personne"
+
+#: Include/Header.php:356 Include/Header.php:549 Include/Header.php:638
+msgid "Families"
+msgstr "Famille"
+
+#: Include/Header.php:366 Include/Header.php:642
+msgid "Finances"
+msgstr "Finances"
+
+#: Include/Header.php:371 Include/Header.php:644
+msgid "Reports"
+msgstr "Rapport"
+
+#: Include/Header.php:376 Include/Header.php:646
+msgid "Administration"
+msgstr "Administration"
+
+#: Include/Header.php:391 Include/Header.php:652
+msgid "Notes"
+msgstr "Notes"
+
+#: Include/Header.php:401 Include/Header.php:656
+msgid "Classifications"
+msgstr "Classifications"
+
+#: Include/Header.php:460
+msgid "Search"
+msgstr "Recherche"
+
+#: Include/Header.php:465 Include/Header.php:580
+msgid "Items in Cart:"
+msgstr "El&eacute;ments du Panier:"
+
+#: Include/Header.php:504
+msgid "Current User"
+msgstr "Utilisateur Actuel"
+
+#: Include/ReportFunctions.php:37
+msgid "ERROR: FPDF Library was not found in your path <i>or</i> at: "
+msgstr "ERREUR:  La biblioth&egrave;que FPDF n'a pas &eacute;t&eacute; trouv&eacute;e dans votre chemin d'acc&egrave;s <i>ou</i> &agrave;:"
+
+#: Include/ReportFunctions.php:66
+msgid "ERROR: JPGraph Library was not found in your path <i>or</i> at: "
+msgstr "ERREUR:  La biblioth&egrave;que JPGraph n'a pas &eacute;t&eacute; trouv&eacute;e dans votre chemin d'acc&egrave;s <i>ou</i> &agrave;:"
+
+#: Reports/DirectoryReport.php:56
+msgid "Member Directory"
+msgstr "Annuaire des Membres"
+
+#: Reports/DirectoryReport.php:92
+msgid "Directory"
+msgstr "Annuaire"
+
+#: Reports/DirectoryReport.php:209 Reports/DirectoryReport.php:262
+#: Reports/DirectoryReport.php:321 Reports/DirectoryReport.php:489
+#: Reports/GroupReport.php:264
+msgid "Work"
+msgstr "Profession"
+
+#: Reports/DirectoryReport.php:211 Reports/DirectoryReport.php:266
+#: Reports/DirectoryReport.php:325 Reports/DirectoryReport.php:493
+#: Reports/GroupReport.php:269
+msgid "Cell"
+msgstr "Cellule"
+
+#: Reports/DirectoryReport.php:215
+msgid "Wedding"
+msgstr "Mariage"
+
+#: Reports/DirectoryReport.php:237
+msgid "and"
+msgstr "et"
+
+#: Reports/DirectoryReport.php:271 Reports/DirectoryReport.php:330
+#: Reports/DirectoryReport.php:498
+msgid "Work/Other Email"
+msgstr "Email Travail/Autre"
+
+#: Reports/DonationEnvelopeList.php:64
+msgid "Donation Envelope List"
+msgstr "Liste Enveloppes Cotisation"
+
+#: Reports/DonationReportYearly.php:266
+msgid "Total sum of your donations, received during the year"
+msgstr "Total de vos cotisations, perçues pendant l'ann&eacute;e"
+
+#: Reports/DonationReportYearly.php:268
+msgid "Below are the details for your donations:"
+msgstr "Ci-dessous les d&eacute;tails de vos cotisations:"
+
+#: Reports/DonationReportYearly.php:284
+msgid "Receipt Number"
+msgstr "Nombre de Reçus"
+
+#: Reports/GroupReport.php:61
+msgid "Group Directory"
+msgstr "Annuaire du Groupe"
+
+#: Graphs/donByMonth.php:88
+msgid "Summary of donations for"
+msgstr "Sommaire des cotisations pour"
+
+#: Graphs/funds1day.php:61
+msgid "Total by Fund for"
+msgstr "Total par Association pour"
+

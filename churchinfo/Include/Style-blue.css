@@ -1,0 +1,392 @@
+body
+{
+	margin: 0;
+	padding: 0px;
+	font-family: arial, san-serif;
+    font-size: 75%;
+}
+
+TD, TH
+{
+    font-family: arial, san-serif;
+    font-size: 75%;
+}
+
+TEXTAREA, INPUT
+{
+	font-family: arial, san-serif;
+	font-size: 125%;
+}
+
+.LeftNavColumn
+{
+	background: #DBE0F3;
+	border-right: solid 1px black;
+}
+
+.Footer
+{
+	position: fixed;
+	width: 100%;
+	height: 26px;
+	top: auto;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #DBE0F3;
+	text-align: center;
+	border-top: solid 1px black;
+}
+
+.Search
+{
+	border-bottom: solid 1px black;
+	background: #EAECF8;
+}
+
+TD.HeaderRow
+{
+	border-bottom-style: solid;
+	border-bottom-color: black;
+	border-bottom-width: 1px;
+}
+
+.icButton
+{
+	background: #DBE0F3;
+	border: solid 1px black;
+	cursor: pointer;
+}
+
+.icTinyButton
+{
+	background: #EAECF8;
+	border: solid 1px grey;
+	font-size: 80%;
+	padding: 0px;
+	cursor: pointer;
+}
+
+A:active
+{
+	color: navy
+}
+
+A:visited
+{
+	color: navy
+}
+
+A:link
+{
+	color: navy
+}
+
+A:hover
+{
+	text-decoration: none;
+}
+
+A.SmallText
+{
+	font-size: 90%;
+}
+
+.PageTitle
+{
+	font-size: 170%;
+	color: black;
+	text-align: left;
+	border-bottom: solid 1px black;
+	font-family: arial, san-serif;
+}
+
+.LargeText
+{
+	font-size: 160%;
+}
+
+.MediumLargeText
+{
+	font-size: 140%;
+}
+
+.MediumText
+{
+	font-size: 120%;
+}
+
+.SmallText
+{
+	font-size: 90%;
+}
+
+.SmallError
+{
+	font-size: 90%;
+	color: red;
+}
+
+.LargeError
+{
+	font-size: 140%;
+	color: red;
+}
+
+.ShadedBox
+{
+	background: #DBE0F3;
+	border: solid 1px black;
+	padding: 8px;
+}
+
+.LightShadedBox
+{
+	background: #F7F7FD;
+	border: solid 1px #DBE0F3;
+	padding: 4px;
+}
+
+.SmallShadedBox
+{
+	background: #DBE0F3;
+	border: solid 1px black;
+	padding: 4px;
+}
+
+.TinyShadedBox
+{
+	background: #EAECF8;
+	border: solid 1px white;
+	padding: 2px;
+}
+
+TR.RowColorA TD
+{
+	background: #F7F7FD;
+	border-bottom: solid 1px #eaeaea;
+}
+
+TR.RowColorB TD
+{
+	background: white;
+	border-bottom: solid 1px #eaeaea;
+}
+
+TR.RowColorC TD
+{
+	background: white;
+	border-bottom: solid 1px #eaeaea;
+}
+
+TR.PaymentRowColorA TD
+{
+	background: #00FF00;
+	border-bottom: solid 1px #eaeaea;
+}
+
+TR.PaymentRowColorB TD
+{
+	background: #00C000;
+	border-bottom: solid 1px #eaeaea;
+}
+
+DIV.MenuItem
+{
+	color: navy;
+	font-weight: bold;
+	padding: 10px;
+}
+
+DIV.ActiveMenuItem
+{
+	background: navy;
+	font-weight: bold;
+	color: tan;
+	padding: 10pt;
+}
+
+DIV.p
+{
+    font-family: arial, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 0px;
+}
+
+DIV.BJ_menuBar, DIV.BJ_menuElement,
+DIV.BJ_subMenuBar, DIV.BJ_subMenuElement
+{
+    font-family: arial, sans-serif;
+    font-size: 10px;
+    color: #000000;
+    text-align: left;
+}
+
+DIV.BJ_subMenuBar
+{
+	background-color: #DBE0F3;
+	border-top: 2px solid #F7F7FD;
+	border-right: 2px solid #868379;
+	border-bottom: 2px solid #868379;
+	border-left: 2px solid #F7F7FD;
+}
+
+DIV.BJ_menuBar
+{
+    padding: 1px 4px;
+	background-color: #DBE0F3;
+	border-top: 0px none;
+	border-right: 0px none;
+	border-bottom: 1px solid #000000;
+	border-left: 0px none;
+}
+
+DIV.BJ_menuElement
+{
+    border: 1px solid #DBE0F3;
+    padding: 2px 6px 2px 6px;
+    font-weight: bold;
+}
+
+DIV.BJ_subMenuElement
+{
+    padding: 2px 6px 2px 6px;
+    margin: 0 1px 1px 0;
+}
+
+DIV.BJ_subMenuElementHover
+{
+    background-color: #F7F7FD;
+    color: #000000;
+}
+
+DIV.BJ_menuElementHover
+{
+    border-color: #F7F7FD #868379 #868379 #F7F7FD;
+}
+
+DIV.BJ_menuElementActive
+{
+    background-color: #F7F7FD;
+    color: #000000;
+    border-color: #868379 #F7F7FD #F7F7FD #868379;
+}
+
+DIV.hr
+{
+    border-top: 1px solid #906040;
+    border-bottom: 1px solid #e0b090;
+}
+
+.Help_Header
+{
+	color: navy;
+	font-weight: bold;
+}
+
+P
+{
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+OL LI
+{
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.Help_Section
+{
+	text-align: justify;
+}
+
+
+SELECT
+{
+	font-size: 8pt;
+}
+
+HR
+{
+	height: 1px;
+	color: black;
+	width: 100%;
+}
+
+TR.TableHeader TD
+{
+	background: #DBE0F3;
+	font-weight: bold;
+	border-bottom: solid 1px black;
+	border-top: solid 1px black;
+}
+
+TR.TinyTableHeader TD
+{
+	background: #EAECF8;
+	font-size: 75%;
+	font-weight: bold;
+	border-bottom: solid 1px black;
+}
+
+TD.LabelColumn
+{
+	text-align: right;
+	font-weight: bold;
+	background: #DBE0F3;
+	border: solid 1px black;
+	padding: 8px;
+	vertical-align: top;
+}
+
+TD.PaymentLabelColumn
+{
+	text-align: right;
+	font-weight: bold;
+	background: #00FF00;
+	border: solid 1px black;
+	padding: 8px;
+	vertical-align: top;
+}
+
+TD.TinyLabelColumn
+{
+	text-align: right;
+	font-weight: bold;
+	background: #EAECF8;
+	border: solid 1px white;
+	padding: 2px;
+	vertical-align: top;
+}
+
+TD.TextColumn
+{
+	border-top: solid 1px #eaeaea;
+	padding: 8px;
+	vertical-align: top;
+}
+
+TD.TinyTextColumn
+{
+	border-top: solid 1px white;
+	background: #EAECF8;
+	padding: 2px;
+	vertical-align: top;
+}
+
+TD.TextColumnWithBottomBorder
+{
+	border-top: solid 1px #eaeaea;
+	border-bottom: solid 1px #eaeaea;
+	padding: 8px;
+}
+
+TD.ControlBreak
+{
+	font-size: 130%;
+	color: black;
+	text-align: left;
+	font-family: arial, san-serif;
+}
