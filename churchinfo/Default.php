@@ -152,6 +152,7 @@ if ($iUserID > 0)
 			$_SESSION['bFinance'] = true;
 			$_SESSION['bNotes'] = true;
 			$_SESSION['bCommunication'] = true;
+			$_SESSION['bCanvasser'] = true;
 			$_SESSION['bAdmin'] = true;
 		}
 
@@ -183,6 +184,9 @@ if ($iUserID > 0)
 
 			// Set the EditSelf permission
 			$_SESSION['bEditSelf'] = $usr_EditSelf;
+			
+			// Set the Canvasser permission
+			$_SESSION['bCanvasser'] = $usr_Canvasser;
 
 			// Set the Admin permission
 			$_SESSION['bAdmin'] = false;
