@@ -101,6 +101,37 @@ if ($_SESSION['bManageGroups'])
 }
 echo "<a class=\"SmallText\" href=\"GroupView.php?Action=AddGroupToCart&GroupID=" . $grp_ID . "\">" . gettext("Add Group Members to Cart") . "</a> | ";
 echo "<a class=\"SmallText\" href=\"GroupMeeting.php?GroupID=" . $grp_ID . "&Name=" . $grp_Name . "&linkBack=GroupView.php?GroupID=" . $grp_ID . "\">" . gettext("Schedule a meeting") . "</a>";
+
+// Email Group link
+// Note: This will email entire group, even if a specific role is currently selected.
+$sSQL = "SELECT per_Email, fam_Email
+			FROM person_per
+			LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
+			LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
+			LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
+		WHERE p2g2r_grp_ID = " . $iGroupID;
+$rsEmailList = RunQuery($sSQL);
+$sEmailLink = "";
+while (list ($per_Email, $fam_Email) = mysql_fetch_row($rsEmailList))
+{
+	$sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
+	if ($sEmail)
+	{
+		// Add email only if email address is not already in string
+		if (!stristr($sEmailLink, $sEmail."," ))
+			$sEmailLink .= $sEmail . ",";
+	}
+}
+if ($sEmailLink)
+{
+	// Add default email if default email has been set and is not already in string
+	if ($sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress."," ))
+		$sEmailLink .= $sToEmailAddress . ",";
+	$sEmailLink = substr($sEmailLink,0,-1);	// Remove trailing comma
+	// Display link
+	echo " | <a class=\"SmallText\" href=\"mailto:?to=".$sEmailLink."\">Email Group</a>";
+}
+
 ?>
 <BR><BR>
 <table border="0" width="100%" cellspacing="0" cellpadding="5">
