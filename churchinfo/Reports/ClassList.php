@@ -132,7 +132,7 @@ $pdf->SetFont("Times",'B',12);
 $pdf->WriteAt ($phoneX, $y, date("d-M-Y"));
 
 if ($iPDFOutputType == 1)
-	$pdf->Output("NewsLetterLabels" . date("Ymd") . ".pdf", true);
+	$pdf->Output("ClassList" . date("Ymd") . ".pdf", true);
 else
 	$pdf->Output();	
 ?>

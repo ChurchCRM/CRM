@@ -288,7 +288,7 @@ $pdf->DrawAttendanceCalendar ($nameX, $y + 12, $aTeachers, "Teachers", $iExtraTe
                               $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4);
 
 if ($iPDFOutputType == 1)
-	$pdf->Output("NewsLetterLabels" . date("Ymd") . ".pdf", true);
+	$pdf->Output("ClassAttendance" . date("Ymd") . ".pdf", true);
 else
 	$pdf->Output();	
 ?>
