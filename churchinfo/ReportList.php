@@ -67,6 +67,13 @@ require "Include/Header.php";
 </p>
 
 
+<p>
+<a class="MediumText" href="FinancialReports.php"><?php echo gettext("Financial Reports"); ?></a>
+<br>
+<?php echo gettext("Pledges and Payments"); ?>
+</p>
+
+
 <?php
 require "Include/Footer.php";
 ?>
