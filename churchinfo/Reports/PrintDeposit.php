@@ -267,19 +267,20 @@ $pdf->SetFont('Courier','', 8);
 
 $curY += $summaryIntervalY;
 
-mysql_data_seek($rsFunds,0);
-while ($row = mysql_fetch_array($rsFunds))
-{
-	$fun_name = $row["fun_Name"];
-   if ($fundTotal[$fun_name] > 0) {
-   	$pdf->SetXY ($curX, $curY);
-   	$pdf->Write (8, $fun_name);
-      $amountStr = sprintf ("%.2f", $fundTotal[$fun_name]);
-   	$pdf->PrintRightJustified ($curX + $summaryMethodX, $curY, $amountStr);
-      $curY += $summaryIntervalY;
-   }
+if (mysql_num_rows ($rsFunds) > 0) {
+	mysql_data_seek($rsFunds,0);
+	while ($row = mysql_fetch_array($rsFunds))
+	{
+		$fun_name = $row["fun_Name"];
+	   if ($fundTotal[$fun_name] > 0) {
+   		$pdf->SetXY ($curX, $curY);
+   		$pdf->Write (8, $fun_name);
+		  $amountStr = sprintf ("%.2f", $fundTotal[$fun_name]);
+   		$pdf->PrintRightJustified ($curX + $summaryMethodX, $curY, $amountStr);
+		  $curY += $summaryIntervalY;
+	   }
+	}
 }
-
 
 if ($iPDFOutputType == 1)
 	$pdf->Output("Deposit-" . $iDepositSlipID . ".pdf", true);
