@@ -140,7 +140,7 @@ CREATE TABLE pledge_plg (
   plg_PledgeOrPayment enum('Pledge','Payment') NOT NULL default 'Pledge',
   plg_fundID tinyint(3) unsigned default NULL,
   plg_depID mediumint(9) unsigned default NULL,
-  plg_CheckNo mediumint(9) unsigned default NULL,
+  plg_CheckNo bigint(16) unsigned default NULL,
   plg_Problem tinyint(1) default NULL,
   plg_scanString text,
   PRIMARY KEY  (plg_plgID)
