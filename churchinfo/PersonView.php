@@ -711,6 +711,8 @@ if ($next_link_text) {
 </p>
 
 <p>
+	<a class="SmallText" href="WhyCameEditor.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Edit \"Why Came\" Notes"); ?></a></font>
+	<br>
 	<a class="SmallText" href="NoteEditor.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Add a Note to this Record"); ?></a></font>
 </p>
 

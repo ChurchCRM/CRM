@@ -414,3 +414,13 @@ INSERT INTO list_lst VALUES (4, 9, 9, 'Person from Group');
 INSERT INTO list_lst VALUES (4, 10, 10, 'Money');
 INSERT INTO list_lst VALUES (4, 11, 11, 'Phone Number');
 INSERT INTO list_lst VALUES (4, 12, 12, 'Custom Drop-Down List');
+
+CREATE TABLE whycame_why (
+  why_ID mediumint(9) NOT NULL auto_increment,
+  why_per_ID mediumint(9) NOT NULL default '0',
+  why_join text NOT NULL,
+  why_come text NOT NULL,
+  why_suggest text NOT NULL,
+  why_hearOfUs text NOT NULL,
+  PRIMARY KEY  (why_ID)
+) TYPE=MyISAM;
