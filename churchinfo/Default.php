@@ -50,6 +50,17 @@ if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
 				     ", usr_showSince = '" . $_SESSION['sshowSince'] . "'" .
 				     ", usr_defaultFY = '" . $_SESSION['idefaultFY'] . "'" .
 				     ", usr_currentDeposit = '" . $_SESSION['iCurrentDeposit'] . "'" .
+				     ", usr_CalStart = '" . $_SESSION['dCalStart'] . "'" .
+				     ", usr_CalEnd = '" . $_SESSION['dCalEnd'] . "'" .
+				     ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool1'] . "'" .
+				     ", usr_CalNoSchool2 = '" . $_SESSION['dCalNoSchool2'] . "'" .
+				     ", usr_CalNoSchool3 = '" . $_SESSION['dCalNoSchool3'] . "'" .
+				     ", usr_CalNoSchool4 = '" . $_SESSION['dCalNoSchool4'] . "'" .
+				     ", usr_CalNoSchool5 = '" . $_SESSION['dCalNoSchool5'] . "'" .
+				     ", usr_CalNoSchool6 = '" . $_SESSION['dCalNoSchool6'] . "'" .
+				     ", usr_CalNoSchool7 = '" . $_SESSION['dCalNoSchool7'] . "'" .
+				     ", usr_CalNoSchool8 = '" . $_SESSION['dCalNoSchool8'] . "'" .
+				     ", usr_SearchFamily = '" . $_SESSION['bSearchFamily'] . "'" .
 				     " WHERE usr_per_ID = " . $_SESSION['iUserID'];
 	   RunQuery($sSQL);
    }
@@ -215,6 +226,21 @@ if ($iUserID > 0)
 		$_SESSION['sshowSince'] = $usr_showSince;
 		$_SESSION['idefaultFY'] = $usr_defaultFY;
 		$_SESSION['iCurrentDeposit'] = $usr_currentDeposit;
+
+		// Church school calendar preferences
+		$_SESSION['dCalStart'] = $usr_CalStart;
+		$_SESSION['dCalEnd'] = $usr_CalEnd;
+		$_SESSION['dCalNoSchool1'] = $usr_CalNoSchool1;
+		$_SESSION['dCalNoSchool2'] = $usr_CalNoSchool2;
+		$_SESSION['dCalNoSchool3'] = $usr_CalNoSchool3;
+		$_SESSION['dCalNoSchool4'] = $usr_CalNoSchool4;
+		$_SESSION['dCalNoSchool5'] = $usr_CalNoSchool5;
+		$_SESSION['dCalNoSchool6'] = $usr_CalNoSchool6;
+		$_SESSION['dCalNoSchool7'] = $usr_CalNoSchool7;
+		$_SESSION['dCalNoSchool8'] = $usr_CalNoSchool8;
+
+		// Search preference
+		$_SESSION['bSearchFamily'] = $usr_SearchFamily;
 
 		// Redirect to the Menu
 		Redirect("Menu.php");
