@@ -5,7 +5,7 @@
  *  last change : 2003-09-30
  *  description : global configuration
  *
- *  http://www.infocentral.org/
+ *  http://www.churchinfo.org/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *
  *  InfoCentral is free software; you can redistribute it and/or modify
@@ -17,25 +17,25 @@
 
 // Database connection constants
 $sSERVERNAME = "localhost";
-$sUSER = "mySQL user name";
-$sPASSWORD = "mySQL user password";
-$sDATABASE = "mySQL database name";
+$sUSER = "churchdb_admin";
+$sPASSWORD = "solstice";
+$sDATABASE = "churchdb_demo";
 
 // Ports on which the web server may run.  Defaults are fine for most people.
 $aHTTPports = "80,8000,8080";
 $aHTTPSports = "443";
 
 // Root path of your InfoCentral installation ( THIS MUST BE SET CORRECTLY! )
-// For example, if you will be accessing from http://www.yourdomain.com/web/infocentral
-//  then you would enter "/web/infocentral" here.  This path SHOULD NOT end with slash.
-$sRootPath = "/web/infocentral";
+// For example, if you will be accessing from http://www.yourdomain.com/web/churchinfo
+//  then you would enter "/web/churchinfo" here.  This path SHOULD NOT end with slash.
+$sRootPath = "/~churchdb/churchinfo";
 
 // Set debug mode
 // This may be helpful for when you're first setting up InfoCentral, but you should
 // probably turn it off for maximum security otherwise.  If you are having trouble,
 // please enable this so that you'll know what the errors are.  This is especially
 // important if you need to report a problem on the help forums.
-$debug = false;
+$debug = true;
 
 //
 // Location of libraries that InfoCentral needs for certain features:
@@ -88,7 +88,7 @@ $sMinPasswordLength = 6;
 $sMinPasswordChange = 4;
 
 // A comma-seperated list of disallowed (too obvious) passwords.
-$sDisallowedPasswords = "infocentral,password,god,jesus,church,christian";
+$sDisallowedPasswords = "churchinfo,password,god,jesus,church,christian";
 
 // Maximum number of failed logins to allow before a user account is locked.
 // Once the maximum has been reached, an administrator must re-enable the account.
