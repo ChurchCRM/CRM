@@ -44,13 +44,15 @@ if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
 	if ($_SESSION['sshowPayments'] == "")
 		$_SESSION['sshowPayments'] = 0;
 
-	$sSQL = "UPDATE user_usr SET usr_showPledges = " . $_SESSION['sshowPledges'] . 
-	              ", usr_showPayments = " . $_SESSION['sshowPayments'] .
-				  ", usr_showSince = '" . $_SESSION['sshowSince'] . "'" .
-				  ", usr_defaultFY = '" . $_SESSION['idefaultFY'] . "'" .
-				  ", usr_currentDeposit = '" . $_SESSION['iCurrentDeposit'] . "'" .
-				  " WHERE usr_per_ID = " . $_SESSION['iUserID'];
-	RunQuery($sSQL);
+   if ($_SESSION['iUserID']) {
+	   $sSQL = "UPDATE user_usr SET usr_showPledges = " . $_SESSION['sshowPledges'] . 
+	                 ", usr_showPayments = " . $_SESSION['sshowPayments'] .
+				     ", usr_showSince = '" . $_SESSION['sshowSince'] . "'" .
+				     ", usr_defaultFY = '" . $_SESSION['idefaultFY'] . "'" .
+				     ", usr_currentDeposit = '" . $_SESSION['iCurrentDeposit'] . "'" .
+				     " WHERE usr_per_ID = " . $_SESSION['iUserID'];
+	   RunQuery($sSQL);
+   }
 
 	$_COOKIE = array();
 	$_SESSION = array();
