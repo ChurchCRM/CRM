@@ -133,6 +133,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
 			<td class="LabelColumn"><?php echo gettext("Label Type:");?></td>
 			<td class="TextColumn">
 				<select name="labeltype">
+					<option value="Tractor">Tractor</option>
 					<option value="5160">5160</option>
 					<option value="5161">5161</option>
 					<option value="5162">5162</option>
