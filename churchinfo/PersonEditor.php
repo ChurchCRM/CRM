@@ -68,6 +68,9 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	$iFamily = FilterInput($_POST["Family"],'int');
 	$iFamilyRole = FilterInput($_POST["FamilyRole"],'int');
 
+	if ($_POST["Family"] == -1) // -1 = create a new family from this person
+		$iFamily == -1;
+
 	// Get their family's country in case person's country was not entered
 	if ($iFamily > 0) {
 		$sSQL = "SELECT fam_Country FROM family_fam WHERE fam_ID = " . $iFamily;
@@ -114,7 +117,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	//Validate the Last Name.  If family selected, but no last name, inherit from family.
 	if (strlen($sLastName) < 1)
 	{
-		if ($iFamily == 0) {
+		if ($iFamily < 1) {
 			$sLastNameError = gettext("You must enter a Last Name if no Family is selected.");
 			$bErrorFlag = true;
 		} else {
@@ -191,6 +194,20 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		if (strlen($iBirthYear) < 4)
 		{
 			$iBirthYear = "NULL";
+		}
+
+		// New Family (add)
+		// Family will be named by the Last Name. 
+		if ($iFamily == -1)
+		{
+			$sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
+					VALUES ('" . $sLastName . "','" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','". $sCellPhone . "','". $sEmail . "','" . date("YmdHis") . "'," . $_SESSION['iUserID'].")";
+			//Execute the SQL
+			RunQuery($sSQL);
+			//Get the key back
+			$sSQL = "SELECT MAX(fam_ID) AS iFamily FROM family_fam";
+			$rsLastEntry = RunQuery($sSQL);
+			extract(mysql_fetch_array($rsLastEntry));
 		}
 
 		// New Person (add)
@@ -465,6 +482,7 @@ require "Include/Header.php";
 				<td class="TextColumn">
 					<select name="Family" size="8">
 						<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
+						<option value="-1"><?php echo gettext("Create a new family (using last name)"); ?></option>
 						<option value="0">-----------------------</option>
 
 						<?php
