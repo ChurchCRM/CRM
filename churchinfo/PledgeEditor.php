@@ -47,6 +47,8 @@ if ($iCurrentDeposit) {
 	$sSQL = "SELECT * from deposit_dep WHERE dep_ID = " . $iCurrentDeposit;
 	$rsDeposit = RunQuery($sSQL);
 	extract(mysql_fetch_array($rsDeposit));
+	if ($dep_Closed) // If the current deposit slip is closed, force creation of a new one.
+		$iCurrentDeposit = 0;
 }
 
 // Get the list of funds
