@@ -54,6 +54,12 @@ require "Include/Header.php";
 <?php echo gettext("Mailing labels for tractor feed printer (multi-page PDF)."); ?>
 </p>
 
+<p>
+<a class="MediumText" href="SundaySchool.php"><?php echo gettext("Sunday School Reports"); ?></a>
+<br>
+<?php echo gettext("Generate class lists and attendance sheets"); ?>
+</p>
+
 
 <?php
 require "Include/Footer.php";
