@@ -50,7 +50,7 @@ $debug = true;
 $sJPGRAPH_PATH = "Include/jpgraph-1.13/src";
 
 // FPDF library
-$sFPDF_PATH = "Include/fpdf151";
+$sFPDF_PATH = "Include/fpdf";
 
 // phpmailer library
 $sPHPMAILER_PATH = "Include/phpmailer";
