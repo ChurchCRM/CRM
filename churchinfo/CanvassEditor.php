@@ -37,6 +37,8 @@ $sPageTitle = gettext($fyStr . " Canvass Input for the " . $fam_Name . " family"
 if (isset($_POST["Submit"]))
 {
 	$iCanvasser = FilterInput ($_POST["Canvasser"]);
+	if (! $iCanvasser)
+		$iCanvasser = 0;
 	$dDate = FilterInput ($_POST["Date"]);
 	$tPositive = FilterInput ($_POST["Positive"]);
 	$tCritical = FilterInput ($_POST["Critical"]);
@@ -45,7 +47,6 @@ if (isset($_POST["Submit"]))
 	$tSuggestion = FilterInput ($_POST["Suggestion"]);
 	$bNotInterested = isset($_POST["NotInterested"]);
 	$tWhyNotInterested = FilterInput ($_POST["WhyNotInterested"]);
-
 
 	// New canvas input (add)
 	if (strlen($iCanvassID) < 1)
@@ -146,7 +147,8 @@ require "Include/Header.php";
 		<table cellpadding="3">
 
 			<?php
-			if (mysql_num_rows($rsCanvassers) > 0 || mysql_num_rows($rsCanvassers) > 0)
+			if (($rsBraveCanvassers <> 0 && mysql_num_rows($rsBraveCanvassers) > 0) || 
+			    ($rsCanvasser <> 0 && mysql_num_rows($rsCanvassers) > 0))
 			{
 				echo "<tr><td class='LabelColumn'>" . gettext("Canvasser:") . "</td>\n";
 				echo "<td class='TextColumnWithBottomBorder'>";
