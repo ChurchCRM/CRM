@@ -17,6 +17,13 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+// Security: User must have canvasser permission to use this form
+if (!$_SESSION['bCanvasser'])
+{
+	Redirect("Menu.php");
+	exit;
+}
+
 require "Include/CanvassUtilities.php";
 
 $iCanvassID = FilterInput($_GET["CanvassID"],'int');
