@@ -45,9 +45,10 @@ $sChurchName = "Your church name";
 $sChurchAddress = "Your church street address";
 $sChurchCity = "Your city";
 $sChurchState = "Your state";
-$sChurchZip = "YOur zip";
+$sChurchZip = "Your zip";
 $sChurchPhone = "Your phone";
 $sDirectoryDisclaimer = "Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of $sChurchName, and the information contained in it may not be used for business or commercial purposes.";
+$sChurchEmail = "Your church email";
 
 $bDirLetterHead = "../Images/church_letterhead.png";
 
