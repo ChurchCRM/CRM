@@ -37,7 +37,8 @@ if (isset($_POST["Submit"]))
 	$sNewPassword2 = strtolower($_POST["NewPassword2"]);
 
 	// Administrators can change other users' passwords without knowing the old ones.
-	// No password strength test is done, but users will be prompted to change it on next login.
+	// No password strength test is done, we assume this administrator knows what the
+   // user wants to there is no need to prompt the user to change it on next login.
 	if ($bAdminOtherUser)
 	{
 		// Did they enter a new password in both boxes?
@@ -54,7 +55,7 @@ if (isset($_POST["Submit"]))
 
 		else {
 			// Update the user record with a lowercase md5 hash of the new password
-			$sSQL = "UPDATE user_usr SET usr_Password = '" . md5($sNewPassword1) . "', usr_NeedPasswordChange = 1 WHERE usr_per_ID = " . $iPersonID;
+			$sSQL = "UPDATE user_usr SET usr_Password = '" . md5($sNewPassword1) . "', usr_NeedPasswordChange = 0 WHERE usr_per_ID = " . $iPersonID;
 			RunQuery($sSQL);
 
 			// Route back to the list
