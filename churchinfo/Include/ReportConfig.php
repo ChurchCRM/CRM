@@ -153,6 +153,10 @@ class ChurchInfoReport extends FPDF {
 		// When there are more than two people in the family I don't have any way to know which people are children, so I would have to just use the family name (e.g. "Grossman Family").
 		$sSQL = "SELECT * FROM family_fam WHERE fam_ID=" . $famID;
 		$rsFamInfo = RunQuery($sSQL);
+
+		if (mysql_num_rows ($rsFamInfo) == 0)
+			return "Invalid Family" . $famID;
+
 		$aFam = mysql_fetch_array($rsFamInfo);
 		extract ($aFam);
 
