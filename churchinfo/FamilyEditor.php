@@ -352,6 +352,8 @@ else
 		$sEmail = $fam_Email;
 		$bSendNewsLetter = ($fam_SendNewsLetter == 'TRUE');
 		$dWeddingDate = $fam_WeddingDate;
+		if ($dWeddingDate == '0000-00-00')
+			$dWeddingDate = '';
 
 		// Expand the phone number
 		$sHomePhone = ExpandPhoneNumber($sHomePhone,$sCountry,$bNoFormat_HomePhone);
