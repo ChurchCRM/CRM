@@ -55,7 +55,9 @@ if (is_array($email_array))
 		}
 		echo "<input type=\"hidden\" name=\"emailtitle\" value=\"" . $subject . "\">";
 		echo "<input type=\"hidden\" name=\"emailmessage\" value=\"" . $message . "\">";
-		echo "<input class=\"icButton\" type=\"submit\" name=\"submit\" value=\"Send Email\"></form>";
+		echo "<input class=\"icButton\" type=\"submit\" name=\"submit\" value=\"Send Email\">";
+		echo " <input class=\"icButton\" type=\"submit\" name=\"submitBCC\" value=\"Send Email using BCC\">";
+		echo "</form>";
 
 	echo "</td></tr></table>";
 }
