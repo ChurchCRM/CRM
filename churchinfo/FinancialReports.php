@@ -33,6 +33,10 @@ if ($sReportType)
 	$sPageTitle .= ": $sReportType";
 require "Include/Header.php";
 
+// No Records Message if previous report returned no records.
+if ($_GET["ReturnMessage"] == "NoRows")
+	echo "<h3><font color=red>".gettext("No records were returned from the pervious report.")."</font></h3>";
+
 if (!$sReportType) {
 	// First Pass - Choose report type
 	echo "<form method=post action='FinancialReports.php'>";
@@ -44,6 +48,8 @@ if (!$sReportType) {
 	echo "<option value='Pledge Reminders'>" . gettext("Pledge Reminders") ."</option>";
 	echo "<option value='Voting Members'>" . gettext("Voting Members") ."</option>";
 	echo "<option value='Giving Report'>" . gettext("Giving Report (Tax Statements)") ."</option>";
+	echo "<option value='Individual Deposit Report'>" . gettext("Individual Deposit Report") ."</option>";
+	echo "<option value='Advanced Deposit Report'>" . gettext("Advanced Deposit Report") ."</option>";
 	echo "</select>";
 	echo "</td></tr>";
 	// First Pass Cancel, Next Buttons
@@ -72,6 +78,12 @@ if (!$sReportType) {
 	    case "Voting Members":
 			$action = "Reports/VotingMembers.php";
 		break;
+		case "Individual Deposit Report";
+			$action = "Reports/PrintDeposit.php";
+		break;
+		case "Advanced Deposit Report";
+			$action = "Reports/AdvancedDeposit.php";
+		break;
 	}
 	echo "<form method=post action=\"$action\">";
 	echo "<input type=hidden name=ReportType value='$sReportType'>";
@@ -79,7 +91,7 @@ if (!$sReportType) {
 	echo "<tr><td><h3>". gettext("Filters") . "</h3></td></tr>";
 	
 	// Filter by Families
-	if ($sReportType == "Giving Report" || $sReportType == "Pledge Reminders") {
+	if ($sReportType == "Giving Report" || $sReportType == "Pledge Reminders" || $sReportType == "Advanced Deposit Report") {
 		$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
 		$rsFamilies = RunQuery($sSQL);
 		echo "<tr><td class=LabelColumn>".gettext("Filter by Family:")."<br></td>";
@@ -96,7 +108,7 @@ if (!$sReportType) {
 	}
 	
 	// Starting and Ending Dates for Report
-	if ($sReportType == "Giving Report") {
+	if ($sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report") {
 		$today = date("Y-m-d");
 		echo "<tr><td class=LabelColumn>".gettext("Report Start Date:")."</td>
 			<td class=TextColumn><input type=text name=DateStart maxlength=10 id=DateStart size=11 value='$today'>&nbsp;<input type=image onclick=\"return showCalendar('DateStart', 'y-mm-dd');\" src=Images/calendar.gif> <span class=SmallText>".gettext("[YYYY-MM-DD]")."</span></td></tr>";
@@ -113,14 +125,16 @@ if (!$sReportType) {
 	}
 
 	// Filter by Deposit
-	if ($sReportType == "Giving Report") {
+	if ($sReportType == "Giving Report" || $sReportType == "Individual Deposit Report" || $sReportType == "Advanced Deposit Report") {
 		$sSQL = "SELECT dep_ID, dep_Date, dep_Type FROM deposit_dep ORDER BY dep_ID DESC LIMIT 0,200";
 		$rsDeposits = RunQuery($sSQL);
 		echo "<tr><td class=LabelColumn>".gettext("Filter by Deposit:")."<br></td>";
-		echo "<td class=TextColumnWithBottomBorder><div class=SmallText>"
-			.gettext("If deposit is selected, date criteria will be ignored.");
+		echo "<td class=TextColumnWithBottomBorder><div class=SmallText>";
+		if ($sReportType != "Individual Deposit Report")
+			echo (gettext("If deposit is selected, date criteria will be ignored."));
 		echo "</div><select name=deposit>";
-		echo "<option value=0 selected>".gettext("All deposits within date range")."</option>";
+		if ($sReportType != "Individual Deposit Report")
+			echo "<option value=0 selected>" . gettext("All deposits within date range") . "</option>";
 		while ($aRow = mysql_fetch_array($rsDeposits)) {
 			extract($aRow);
 			echo "<option value=$dep_ID>$dep_ID &nbsp;$dep_Date &nbsp;$dep_Type ";
@@ -129,7 +143,7 @@ if (!$sReportType) {
 	}
 	
 	// Filter by Account
-	if ($sReportType == "Pledge Summary" || $sReportType == "Giving Report") {
+	if ($sReportType == "Pledge Summary" || $sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report") {
 		$sSQL = "SELECT fun_ID, fun_Name, fun_Active FROM donationfund_fun ORDER BY fun_Active, fun_Name";
 		$rsFunds = RunQuery($sSQL);
 		echo "<tr><td class=LabelColumn>".gettext("Filter by Fund:")."<br></td>";
@@ -148,8 +162,7 @@ if (!$sReportType) {
 	}
 	
 	// Filter by Payment Method
-	/*
-	if ($sReportType == "") {	
+	if ($sReportType == "Advanced Deposit Report") {	
 		echo "<tr><td class=LabelColumn>".gettext("Filter by Payment Type:")."<br></td>";
 		echo "<td class=TextColumnWithBottomBorder><div class=SmallText>"
 			.gettext("Use Ctrl Key to select multiple");
@@ -161,12 +174,12 @@ if (!$sReportType) {
 			."<option value='BANKDRAFT'>".gettext("Bank Draft");
 		echo "</select></td></tr>";
 	}
-	*/
 	
 	// Other Settings	
 	if ($sReportType != "Pledge Reminders") {
 		echo "<tr><td><h3>". gettext("Other Settings") . "</h3></td></tr>";
 	}
+	
 	if ($sReportType == "Giving Report"){
 		echo "<tr><td class=LabelColumn>".gettext("Report Heading:")."</td>"
 			."<td class=TextColumnWithBottomBorder><input name=letterhead type=radio value='graphic'>".gettext("Graphic")
@@ -176,14 +189,33 @@ if (!$sReportType) {
 			. "<td class=TextColumnWithBottomBorder><input name=remittance type=radio value='yes'>".gettext("Yes")
 			." <input name=remittance type=radio value='no' checked>".gettext("No")."</td></tr>";
 	}
+	
+	if ($sReportType == "Advanced Deposit Report"){
+		echo "<tr><td class=LabelColumn>".gettext("Sort Data by:")."</td>"
+			."<td class=TextColumnWithBottomBorder><input name=sort type=radio value='deposit' checked>".gettext("Deposit")
+			." &nbsp;<input name=sort type=radio value='fund'>".gettext("Fund")
+			." &nbsp;<input name=sort type=radio value='family'>".gettext("Family")."</td></tr>";
+		echo "<tr><td class=LabelColumn>".gettext("Report Type:")."</td>"
+			. "<td class=TextColumnWithBottomBorder><input name=detail_level type=radio value='detail' checked>".gettext("All Data")
+			." <input name=detail_level type=radio value='medium'>".gettext("Moderate Detail")
+			." <input name=detail_level type=radio value='summary'>".gettext("Summary Data")."</td></tr>";
+	}
+	
 	if ($sReportType == "Voting Members"){
 		echo "<tr><td class=LabelColumn>".gettext("Voting members must have made<br>
 			a donation within this many years<br>
 			(0 to not require a donation):")."</td>";
 		echo "<td class=TextColumnWithBottomBorder><input name=RequireDonationYears type=text value=0 size=5></td></tr>";
 	}
+	
+	if ($sReportType == "Individual Deposit Report"){
+		echo "<tr><td class=LabelColumn>".gettext("Report Type:")."</td>"
+			. "<td class=TextColumnWithBottomBorder><input name=report_type type=radio value='Bank'>".gettext("Deposit Slip")
+			." <input name=report_type type=radio value='' checked>".gettext("Deposit Report")."</td></tr>";		
+	}
+	
 	if ((($_SESSION['bAdmin'] && $bCSVAdminOnly) || !$bCSVAdminOnly) 
-		&& ($sReportType == "Pledge Summary" || $sReportType == "Giving Report")){
+		&& ($sReportType == "Pledge Summary" || $sReportType == "Giving Report" || $sReportType == "Individual Deposit Report" || $sReportType == "Advanced Deposit Report")){
 		echo "<tr><td class=LabelColumn>".gettext("Output Method:")."</td>";
 		echo "<td class=TextColumnWithBottomBorder><input name=output type=radio checked value='pdf'>".gettext("PDF");
 		echo " <input name=output type=radio value='csv'>".gettext("CSV")."</tr>";
