@@ -758,7 +758,7 @@ if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
 <?php } ?>
 
 <p>
-	<a class="SmallText" href="Canvas05Editor.php?FamilyID=<?php echo $fam_ID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo gettext("Canvas 2005 Entry"); ?></a></font>
+	<a class="SmallText" href="CanvassEditor.php?FamilyID=<?php echo $fam_ID;?>&FYID=<?php echo $_SESSION['idefaultFY'];?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo (($_SESSION['idefaultFY'] + 1995) . "/" . ($_SESSION['idefaultFY'] + 1996)) . gettext(" Canvass Entry"); ?></a></font>
 <p>
 
 <br>

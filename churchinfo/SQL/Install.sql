@@ -38,6 +38,24 @@ CREATE TABLE autopayment_aut (
   UNIQUE KEY aut_ID (aut_ID)
 ) TYPE=MyISAM;
 
+CREATE TABLE canvassdata_can (
+  can_ID mediumint(9) unsigned NOT NULL auto_increment,
+  can_famID mediumint(9) NOT NULL default '0',
+  can_Canvasser mediumint(9) NOT NULL default '0',
+  can_FYID mediumint(9) default NULL,
+  can_date date default NULL,
+  can_Positive text,
+  can_Critical text,
+  can_Insightful text,
+  can_Financial text,
+  can_Suggestion text,
+  can_NotInterested tinyint(1) NOT NULL default '0',
+  can_WhyNotInterested text,
+
+  PRIMARY KEY  (can_ID),
+  UNIQUE KEY can_ID (can_ID)
+)
+
 CREATE TABLE canvas05_c05 (
   c05_famID smallint(9) NOT NULL default '0',
   c05_churchColor text,

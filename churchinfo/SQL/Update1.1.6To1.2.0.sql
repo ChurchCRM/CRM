@@ -11,3 +11,21 @@ INSERT INTO query_qry VALUES (26,'SELECT per_ID as AddToCart, CONCAT(per_FirstNa
 INSERT INTO queryparameters_qrp VALUES (26,26,0,'','Months','Number of months since becoming a friend','friendmonths','1',1,0,'',24,1,1,2);
 
 INSERT INTO query_qry VALUES (27,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per inner join family_fam on per_fam_ID=fam_ID where per_fmr_ID<>3 AND fam_OkToCanvass="TRUE" ORDER BY fam_Zip','Families to Canvass','People in families that are ok to canvass.',0);
+
+CREATE TABLE canvassdata_can (
+  can_ID mediumint(9) unsigned NOT NULL auto_increment,
+  can_famID mediumint(9) NOT NULL default '0',
+  can_Canvasser mediumint(9) NOT NULL default '0',
+  can_FYID mediumint(9) default NULL,
+  can_date date default NULL,
+  can_Positive text,
+  can_Critical text,
+  can_Insightful text,
+  can_Financial text,
+  can_Suggestion text,
+  can_NotInterested tinyint(1) NOT NULL default '0',
+  can_WhyNotInterested text,
+
+  PRIMARY KEY  (can_ID),
+  UNIQUE KEY can_ID (can_ID)
+)
