@@ -483,7 +483,7 @@ $MenuFirst = 1;
 				<td class="Search" width="70%">
 					<form name="SelectFilter" method="get" action="SelectList.php">
 						<input class="menuButton" style="font-size: 8pt; margin-top: 5px;" type="text" name="Filter" id="SearchText" <?php echo 'value="' . gettext("Search") . '"'; ?> onfocus="ClearFieldOnce(this);">
-						<input name="mode" type="radio" value="person"><?php echo gettext("Person"); ?><input type="radio" name="mode" value="family" checked><?php echo gettext("Family"); ?>
+						<input name="mode" type="radio" value="person" <?php if (! $_SESSION['bSearchFamily']) echo "checked";?>><?php echo gettext("Person"); ?><input type="radio" name="mode" value="family" <?php if ($_SESSION['bSearchFamily']) echo "checked";?>><?php echo gettext("Family"); ?>
 					</form>
 				</td>
 				<td class="Search" align="right">
