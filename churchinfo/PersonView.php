@@ -243,7 +243,6 @@ if ($next_link_text) {
 			} else {
 				// Create the thumbnail used by PersonView
 
-//            chown ($_FILES['Photo']['tmp_name'], "mikewilt");
             chmod ($_FILES['Photo']['tmp_name'], 0777);
 
 				$srcImage=imagecreatefromjpeg($_FILES['Photo']['tmp_name']);
@@ -300,11 +299,10 @@ if ($next_link_text) {
 
 		// Display photo or upload from file
 		$photoFile = "Images/Person/thumbnails/" . $iPersonID . ".jpg";
-      $photoFileRef = "http://host12.ipowerweb.com" . $sRootPath . "/" . $photoFile;
 		if (file_exists($photoFile))
 		{
 			echo "<a target=\"_blank\" href=\"Images/Person/" . $iPersonID . ".jpg\">";
-			echo "<img border=\"1\" src=\"$photoFileRef\"></a>";
+			echo "<img border=\"1\" src=\"$photoFile\"></a>";
 			if ($_SESSION['bEditRecords']) {
 				echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "?PersonID=" . $iPersonID . "\">";
 				echo "<br><input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext("Delete Photo") . "\" name=\"DeletePhoto\">";
