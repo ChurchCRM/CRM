@@ -244,16 +244,26 @@ $MenuFirst = 1;
 				'uri', '',
 				'statusText', '',
 				1, new domMenu_Hash(
-					'contents', <?php echo "'" . gettext("New Deposit Slip") . "'"; ?>,
-					'uri', 'DepositSlipEditor.php',
+					'contents', <?php echo "'" . gettext("New Deposit Slip (checks and cash)") . "'"; ?>,
+					'uri', 'DepositSlipEditor.php?DepositType=Bank',
 					'statusText', ''
 				),
 				2, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("New Deposit Slip (credit card)") . "'"; ?>,
+					'uri', 'DepositSlipEditor.php?DepositType=CreditCard',
+					'statusText', ''
+				),
+				3, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("New Deposit Slip (bank draft)") . "'"; ?>,
+					'uri', 'DepositSlipEditor.php?DepositType=BankDraft',
+					'statusText', ''
+				),
+				4, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Edit Deposit Slip") . "'"; ?>,
 					'uri', 'DepositSlipEditor.php?DepositSlipID=<?php echo $_SESSION['iCurrentDeposit'];?>',
 					'statusText', ''
 				),
-				3, new domMenu_Hash(
+				5, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Find Deposit Slip") . "'"; ?>,
 					'uri', 'FindDepositSlip.php',
 					'statusText', ''
