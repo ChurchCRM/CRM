@@ -40,6 +40,15 @@ $dNoSchool2 = strtotime ($tNoSchool2);
 $dNoSchool3 = strtotime ($tNoSchool3);
 $dNoSchool4 = strtotime ($tNoSchool4);
 
+// Reformat the dates to get standardized text representation
+$tFirstSunday = date ("Y-m-d", $dFirstSunday);
+$tLastSunday = date ("Y-m-d", $dLastSunday);
+
+$tNoSchool1 = date ("Y-m-d", $dNoSchool1);
+$tNoSchool2 = date ("Y-m-d", $dNoSchool2);
+$tNoSchool3 = date ("Y-m-d", $dNoSchool3);
+$tNoSchool4 = date ("Y-m-d", $dNoSchool4);
+
 class PDF_Attendance extends ChurchInfoReport {
 
 	// Constructor
@@ -53,8 +62,9 @@ class PDF_Attendance extends ChurchInfoReport {
 		$this->AddPage ();
 	}
 
-   function DrawAttendanceCalendar ($nameX, $yTop, $aNames, $tTitle, $extraLines, $dFirstSunday, $dLastSunday,
-                                    $dNoSchool1, $dNoSchool2, $dNoSchool3, $dNoSchool4)
+   function DrawAttendanceCalendar ($nameX, $yTop, $aNames, $tTitle, $extraLines, 
+                                    $tFirstSunday, $tLastSunday,
+                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4)
    {
       $startMonthX = 60;
       $dayWid = 7;
@@ -81,45 +91,104 @@ class PDF_Attendance extends ChurchInfoReport {
          $y += $yIncrement;
       }
       $y += $extraLines * $yIncrement;
+
       $this->SetFont("Times",'B',12);
       $this->WriteAt ($nameX, $y, gettext ("Totals"));
       $this->SetFont("Times",'',12);
 
+      $bottomY = $y + $yIncrement + $tweakLineY;
+
       // Paint the calendar grid
+      $dayCounter = 0;
       $monthCounter = 0;
-      $whichMonth = date ("n", $dFirstSunday);
       $dayX = $startMonthX;
       $monthX = $startMonthX;
-      $weekIncrement = strtotime('+7 days') - strtotime('+0 days');
-      $whichMonthDate = $dFirstSunday;
       $noSchoolCnt = 0;
+      $heavyVerticalXCnt = 0;
+      $lightVerticalXCnt = 0;
 
-      for ($whichSunday = $dFirstSunday; $whichSunday < $dLastSunday + $weekIncrement; $whichSunday+=$weekIncrement) {
-// Write the days last in case they get blocked out by no-school rectangles
-//         $this->WriteAt ($dayX, $yDays, date ("d", $whichSunday));
+      $tWhichSunday = $tFirstSunday;
+      $dWhichSunday = strtotime ($tWhichSunday);
 
-         $tWhichSunday = date ("Y-m-d", $whichSunday);
-         if ($tWhichSunday == date ("Y-m-d", $dNoSchool1))
+      $dWhichMonthDate = $dWhichSunday;
+      $whichMonth = date ("n", $dWhichMonthDate);
+
+      $doneFlag = false;
+
+      while (! $doneFlag) {
+         $dayListX[$dayCounter] = $dayX;
+         $dayListNum[$dayCounter] = date ("d", $dWhichSunday);
+
+         if ($tWhichSunday == $tNoSchool1)
             $aNoSchoolX[$noSchoolCnt++] = $dayX;
-         if ($tWhichSunday == date ("Y-m-d", $dNoSchool2))
+         if ($tWhichSunday == $tNoSchool2)
             $aNoSchoolX[$noSchoolCnt++] = $dayX;
-         if ($tWhichSunday == date ("Y-m-d", $dNoSchool3))
+         if ($tWhichSunday == $tNoSchool3)
             $aNoSchoolX[$noSchoolCnt++] = $dayX;
-         if ($tWhichSunday == date ("Y-m-d", $dNoSchool4))
+         if ($tWhichSunday == $tNoSchool4)
             $aNoSchoolX[$noSchoolCnt++] = $dayX;
 
-         if (date ("n", $whichSunday) != $whichMonth) { // Finish the previous month
-            $this->WriteAt ($monthX, $yMonths, date ("F", $whichMonthDate));
-            $whichMonth = date ("n", $whichSunday);
-            $whichMonthDate = $whichSunday;
+         if (date ("n", $dWhichSunday) != $whichMonth) { // Finish the previous month
+            $this->WriteAt ($monthX, $yMonths, date ("F", $dWhichMonthDate));
+            $aHeavyVerticalX[$heavyVerticalXCnt++] = $monthX;
+            $whichMonth = date ("n", $dWhichSunday);
+            $dWhichMonthDate = $dWhichSunday;
             $monthX = $dayX;
+         } else {
+            $aLightVerticalX[$lightVerticalXCnt++] = $dayX;
          }
          $dayX += $dayWid;
+         ++$dayCounter;
+
+         if ($tWhichSunday == $tLastSunday)
+            $doneFlag = true;
+
+         // Increment the date by one week
+         $sundayDay = date ("d", $dWhichSunday);
+         $sundayMonth = date ("m", $dWhichSunday);
+         $sundayYear = date ("Y", $dWhichSunday);
+         $dWhichSunday = mktime (0,0,0,$sundayMonth,$sundayDay+7,$sundayYear);
+         $tWhichSunday = date ("Y-m-d", $dWhichSunday);
       }
-      $whichMonth = date ("n", $whichSunday);
-      $this->WriteAt ($monthX, $yMonths, date ("F", $whichMonthDate));
+      $this->WriteAt ($monthX, $yMonths, date ("F", $dWhichMonthDate));
 
       $rightEdgeX = $dayX;
+
+      // Draw vertical lines now that we know how far down the list goes
+
+      // Draw the left-most vertical line heavy, through the month row
+      $this->SetLineWidth (0.5);
+      $this->Line ($nameX, $yMonths + $tweakLineY, $nameX, $bottomY);
+
+      // Draw the left-most line between the people and the calendar
+      $lineTopY = $yMonths + $tweakLineY;
+      $this->Line ($startMonthX, $lineTopY, $startMonthX, $bottomY);
+
+      // Draw the vertical lines in the grid based on X coords stored above
+      $this->SetLineWidth (0.5);
+      for ($i = 0; $i < $heavyVerticalXCnt; $i++) {
+         $this->Line ($aHeavyVerticalX[$i], $lineTopY, $aHeavyVerticalX[$i], $bottomY);
+      }
+
+      $lineTopY = $yDays + $tweakLineY;
+      $this->SetLineWidth (0.25);
+      for ($i = 0; $i < $lightVerticalXCnt; $i++) {
+         $this->Line ($aLightVerticalX[$i], $lineTopY, $aLightVerticalX[$i], $bottomY);
+      }
+
+      // Draw the right-most vertical line heavy, through the month row
+      $this->SetLineWidth (0.5);
+      $this->Line ($dayX, $yMonths + $tweakLineY, $dayX, $bottomY);
+
+      // Fill the no-school days
+      $this->SetFillColor (200,200,200);
+      $this->SetLineWidth (0.25);
+      for ($i = 0; $i < count ($aNoSchoolX); $i++) {
+         $this->Rect ($aNoSchoolX[$i], $yDays + $tweakLineY, $dayWid, $bottomY - $yDays - $tweakLineY, 'FD');
+      }
+
+      for ($i = 0; $i < $dayCounter; $i++)
+         $this->WriteAt ($dayListX[$i], $yDays, $dayListNum[$i]);
 
       // Draw heavy lines to delimit the Months and totals
       $this->SetLineWidth (0.5);
@@ -137,45 +206,7 @@ class PDF_Attendance extends ChurchInfoReport {
          $this->Line ($nameX, $y, $rightEdgeX, $y);
          $y += $yIncrement;
       }
-      $y += $yIncrement; // Make room for the title row
-      $bottomY = $y;
 
-      // Draw vertical lines now that we know how far down the list goes
-
-      // Draw the left-most vertical line heavy, through the month row
-      $this->SetLineWidth (0.5);
-      $this->Line ($nameX, $yMonths + $tweakLineY, $nameX, $bottomY);
-
-      $dayX = $startMonthX;
-      $monthX = $startMonthX;
-      for ($whichSunday = $dFirstSunday; $whichSunday < $dLastSunday + $weekIncrement; $whichSunday+=$weekIncrement) {
-         $lineTopY = $yDays + $tweakLineY;
-         $this->SetLineWidth (0.25);
-         if (date ("n", $whichSunday) != $whichMonth) { // This is a month line
-            $this->SetLineWidth (0.5);
-            $whichMonth = date ("n", $whichSunday);
-            $lineTopY = $yMonths + $tweakLineY;
-         }
-         $this->Line ($dayX, $lineTopY, $dayX, $bottomY);
-         $dayX += $dayWid;
-      }
-      // Draw the right-most vertical line heavy, through the month row
-      $this->SetLineWidth (0.5);
-      $this->Line ($dayX, $yMonths + $tweakLineY, $dayX, $bottomY);
-
-      // Fill the no-school days
-      $this->SetFillColor (200,200,200);
-      $this->SetLineWidth (0.25);
-      for ($i = 0; $i < count ($aNoSchoolX); $i++) {
-         $this->Rect ($aNoSchoolX[$i], $yDays + $tweakLineY, $dayWid, $bottomY - $yDays - $tweakLineY, 'FD');
-      }
-
-      // Write the days last in case they got blocked out by the no-school rectangles
-      $dayX = $startMonthX;
-      for ($whichSunday = $dFirstSunday; $whichSunday < $dLastSunday + $weekIncrement; $whichSunday+=$weekIncrement) {
-         $this->WriteAt ($dayX, $yDays, date ("d", $whichSunday));
-         $dayX += $dayWid;
-      }
       return ($bottomY);
    }
 }
@@ -238,11 +269,11 @@ for ($row = 0; $row < $numMembers; $row++)
 $pdf->SetFont("Times",'B',12);
 $pdf->WriteAt ($nameX, $yTeachers, $teacherString);
 $y = $pdf->DrawAttendanceCalendar ($nameX, $yTeachers = $yTitle + 20, $aStudents, "Students", $iExtraStudents, 
-                                   $dFirstSunday, $dLastSunday, 
-                                   $dNoSchool1, $dNoSchool2, $dNoSchool3, $dNoSchool4);
+                                   $tFirstSunday, $tLastSunday, 
+                                   $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4);
 $pdf->DrawAttendanceCalendar ($nameX, $y + 12, $aTeachers, "Teachers", $iExtraTeachers, 
-                              $dFirstSunday, $dLastSunday,
-                              $dNoSchool1, $dNoSchool2, $dNoSchool3, $dNoSchool4);
+                              $tFirstSunday, $tLastSunday,
+                              $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4);
 
 if ($iPDFOutputType == 1)
 	$pdf->Output("NewsLetterLabels" . date("Ymd") . ".pdf", true);
