@@ -45,6 +45,8 @@ if (isset($_POST["Submit"]))
 
 	$dNextPayDate = FilterInput ($_POST["NextPayDate"]);
 	$nAmount = FilterInput ($_POST["Amount"]);
+	if (! $nAmount)
+		$nAmount = 0;
 	$iInterval = FilterInput ($_POST["Interval"],'int');
 	$iFund = FilterInput ($_POST["Fund"],'int');
 
@@ -121,7 +123,7 @@ if (isset($_POST["Submit"]))
 						"'" . $tBankName . "'," .
 						"'" . $tRoute . "'," .
 						"'" . $tAccount . "'," .
-						"'" . date ("Y-m-d") . "'," .
+						"'" . date ("YmdHis") . "'," .
 						$_SESSION['iUserID'] .
 						")";
 		$bGetKeyBack = True;
@@ -152,7 +154,7 @@ if (isset($_POST["Submit"]))
 						"aut_BankName	='" . $tBankName . "'," .
 						"aut_Route	='" . $tRoute . "'," .
 						"aut_Account	='" . $tAccount . "'," .
-						"aut_DateLastEdited	='" . date ("Y-m-d") . "'," .
+						"aut_DateLastEdited	='" . date ("YmdHis") . "'," .
 						"aut_EditedBy	=" . 	$_SESSION['iUserID'] .
 					" WHERE aut_ID = " . $iAutID;
 	}
@@ -278,8 +280,9 @@ $rsFunds = RunQuery($sSQL);
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Automatic payment type"); ?></td>
-				<td class="TextColumn"><input type="radio" Name="EnableButton" value="1" <?php if ($bEnableBankDraft) echo " checked"; ?>>Bank Draft</td>
-				<td class="TextColumn"><input type="radio" Name="EnableButton" value="2" <?php if ($bEnableCreditCard) echo " checked"; ?>>Credit Card</td>
+				<td class="TextColumn"><input type="radio" Name="EnableButton" value="1" <?php if ($bEnableBankDraft) echo " checked"; ?>>Bank Draft
+				                       <input type="radio" Name="EnableButton" value="2" <?php if ($bEnableCreditCard) echo " checked"; ?>>Credit Card
+											  <input type="radio" Name="EnableButton" value="3" <?php if ((!$bEnableBankDraft)&&(!$bEnableCreditCard)) echo " checked"; ?>>Disable</td>
 			</tr>
 
 			<tr>
@@ -289,17 +292,17 @@ $rsFunds = RunQuery($sSQL);
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Payment amount");?></td>
-				<td><textarea name="Amount" rows="1" cols="90"><?php echo $nAmount?></textarea></td>
+				<td class="TextColumn"><input type="text" name="Amount" value="<?php echo $nAmount?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Payment interval (months)");?></td>
-				<td><textarea name="Interval" rows="1" cols="90"><?php echo $iInterval?></textarea></td>
+				<td class="TextColumn"><input type="text" name="Interval" value="<?php echo $iInterval?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Fund:"); ?></td>
-				<td class="TextColumnWithBottomBorder">
+				<td class="TextColumn">
 					<select name="Fund">
 					<option value="0"><?php echo gettext("None"); ?></option>
 					<?php
@@ -323,82 +326,82 @@ $rsFunds = RunQuery($sSQL);
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("First name");?></td>
-				<td><textarea name="FirstName" rows="1" cols="90"><?php echo $tFirstName?></textarea></td>
+				<td class="TextColumn"><input type="text" name="FirstName" value="<?php echo $tFirstName?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Last name");?></td>
-				<td><textarea name="LastName" rows="1" cols="90"><?php echo $tLastName?></textarea></td>
+				<td class="TextColumn"><input type="text" name="LastName" value="<?php echo $tLastName?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Address 1");?></td>
-				<td><textarea name="Address1" rows="1" cols="90"><?php echo $tAddress1?></textarea></td>
+				<td class="TextColumn"><input type="text" name="Address1" value="<?php echo $tAddress1?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Address 2");?></td>
-				<td><textarea name="Address2" rows="1" cols="90"><?php echo $tAddress2?></textarea></td>
+				<td class="TextColumn"><input type="text" name="Address2" value="<?php echo $tAddress2?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("City");?></td>
-				<td><textarea name="City" rows="1" cols="90"><?php echo $tCity?></textarea></td>
+				<td class="TextColumn"><input type="text" name="City" value="<?php echo $tCity?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("State");?></td>
-				<td><textarea name="State" rows="1" cols="90"><?php echo $tState?></textarea></td>
+				<td class="TextColumn"><input type="text" name="State" value="<?php echo $tState?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Zip code");?></td>
-				<td><textarea name="Zip" rows="1" cols="90"><?php echo $tZip?></textarea></td>
+				<td class="TextColumn"><input type="text" name="Zip" value="<?php echo $tZip?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Country");?></td>
-				<td><textarea name="Country" rows="1" cols="90"><?php echo $tCountry?></textarea></td>
+				<td class="TextColumn"><input type="text" name="Country" value="<?php echo $tCountry?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Phone");?></td>
-				<td><textarea name="Phone" rows="1" cols="90"><?php echo $tPhone?></textarea></td>
+				<td class="TextColumn"><input type="text" name="Phone" value="<?php echo $tPhone?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Email");?></td>
-				<td><textarea name="Email" rows="1" cols="90"><?php echo $tEmail?></textarea></td>
+				<td class="TextColumn"><input type="text" name="Email" value="<?php echo $tEmail?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Credit Card");?></td>
-				<td><textarea name="CreditCard" rows="1" cols="90"><?php echo $tCreditCard?></textarea></td>
+				<td class="TextColumn"><input type="text" name="CreditCard" value="<?php echo $tCreditCard?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Expiration Month");?></td>
-				<td><textarea name="ExpMonth" rows="1" cols="90"><?php echo $tExpMonth?></textarea></td>
+				<td class="TextColumn"><input type="text" name="ExpMonth" value="<?php echo $tExpMonth?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Expiration Year");?></td>
-				<td><textarea name="ExpYear" rows="1" cols="90"><?php echo $tExpYear?></textarea></td>
+				<td class="TextColumn"><input type="text" name="ExpYear" value="<?php echo $tExpYear?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Bank Name");?></td>
-				<td><textarea name="BankName" rows="1" cols="90"><?php echo $tBankName?></textarea></td>
+				<td class="TextColumn"><input type="text" name="BankName" value="<?php echo $tBankName?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Bank Route Number");?></td>
-				<td><textarea name="Route" rows="1" cols="90"><?php echo $tRoute?></textarea></td>
+				<td class="TextColumn"><input type="text" name="Route" value="<?php echo $tRoute?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Bank Account Number");?></td>
-				<td><textarea name="Account" rows="1" cols="90"><?php echo $tAccount?></textarea></td>
+				<td class="TextColumn"><input type="text" name="Account" value="<?php echo $tAccount?>"></td>
 			</tr>
 		</table>
 		</td>

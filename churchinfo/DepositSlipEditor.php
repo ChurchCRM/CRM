@@ -118,11 +118,9 @@ if (isset($_POST["DepositSlipSubmit"]))
 
 	// Create any transactions that are authorized as of today
 	if ($dep_Type == "CreditCard") {
-		$enableStr = "fam_enableCreditCard=1";
-		$dateStr = "fam_creditCardDate";
+		$enableStr = "aut_EnableCreditCard=1";
 	} else {
-		$enableStr = "fam_enableBankDraft=1";
-		$dateStr = "fam_bankDraftDate";
+		$enableStr = "aut_EnableBankDraft=1";
 	}
 
 	// Compute the current fiscal year ID
@@ -133,28 +131,23 @@ if (isset($_POST["DepositSlipSubmit"]))
 		$FYID += 1;
 
 	// Get all the families with authorized automatic transactions
-	$sSQL = "SELECT * FROM family_fam WHERE " . $enableStr . " AND " . $dateStr . "<='" . date('Y-m-d') . "'";
+	$sSQL = "SELECT * FROM autopayment_aut WHERE " . $enableStr . " AND aut_NextPayDate<='" . date('Y-m-d') . "'";
 
-	$rsAuthorizedFamilies = RunQuery($sSQL);
+	$rsAuthorizedPayments = RunQuery($sSQL);
 
-	while ($aFam =mysql_fetch_array($rsAuthorizedFamilies))
+	while ($aAutoPayment =mysql_fetch_array($rsAuthorizedPayments))
 	{
-		extract($aFam);
+		extract($aAutoPayment);
 		if ($dep_Type == "CreditCard") {
-			$interval = $fam_creditCardInterval;
-			$amount = $fam_creditCardAmount;
 			$method = "CREDITCARD";
-			$fund = $fam_creditCardFund;
-			$authDate = $fam_creditCardDate;
-			$scanString = $fam_scanCredit;
 		} else {
-			$interval = $fam_bankDraftInterval;
-			$amount = $fam_bankDraftAmount;
 			$method = "BANKDRAFT";
-			$fund = $fam_bankDraftFund;
-			$authDate = $fam_bankDraftDate;
-			$scanString = $fam_scanCheck;
 		}
+		$amount = $aut_Amount;
+		$interval = $aut_Interval;
+		$fund = $aut_Fund;
+		$authDate = $aut_NextPayDate;
+
 		if ($amount > 0.00) {
 			$sSQL = "INSERT INTO pledge_plg (plg_FamID, 
 														plg_FYID, 
@@ -166,9 +159,9 @@ if (isset($_POST["DepositSlipSubmit"]))
 														plg_PledgeOrPayment, 
 														plg_fundID, 
 														plg_depID,
-														plg_scanString)
+														plg_aut_ID)
 											VALUES (" .
-														$fam_ID . "," .
+														$aut_FamID . "," .
 														$FYID . "," .
 														"'" . date ("Y-m-d") . "'," .
 														$amount . "," .
@@ -178,11 +171,11 @@ if (isset($_POST["DepositSlipSubmit"]))
 														"'Payment'," .
 														$fund . "," .
 														$dep_ID . "," .
-														"'" . $scanString . "')";
+														$aut_ID . ")";
 			RunQuery ($sSQL);
 
 			// Push the authorized transaction date forward by the interval
-			$sSQL = "UPDATE family_fam SET " . $dateStr . "=DATE_ADD('" . $authDate . "', INTERVAL " . $interval . " MONTH) WHERE fam_ID = " . $fam_ID;
+			$sSQL = "UPDATE autopayment_aut SET aut_NextPayDate=DATE_ADD('" . $authDate . "', INTERVAL " . $interval . " MONTH) WHERE aut_ID = " . $aut_ID;
 			RunQuery ($sSQL);
 		}
 	}
@@ -193,25 +186,30 @@ if (isset($_POST["DepositSlipSubmit"]))
 	//Get the payments for this deposit slip
 	$sSQL = "SELECT plg_amount, 
 	                plg_scanString, 
-						 a.fam_Address1 AS address1,
-						 a.fam_Address2 AS address2,
-						 a.fam_City AS city,
-						 a.fam_State AS state,
-						 a.fam_Zip AS zip,
-						 a.fam_Country AS country,
-						 a.fam_HomePhone AS phone,
-						 a.fam_Email AS email
+						 a.aut_FirstName AS firstName,
+						 a.aut_LastName AS lastName,
+						 a.aut_Address1 AS address1,
+						 a.aut_Address2 AS address2,
+						 a.aut_City AS city,
+						 a.aut_State AS state,
+						 a.aut_Zip AS zip,
+						 a.aut_Country AS country,
+						 a.aut_Phone AS phone,
+						 a.aut_Email AS email,
+						 a.aut_CreditCard AS creditCard,
+						 a.aut_ExpMonth AS expMonth,
+						 a.aut_ExpYear AS expYear,
+						 a.aut_BankName AS bankName,
+						 a.aut_Route AS route,
+						 a.aut_Account AS account
 			 FROM pledge_plg 
-			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
+			 LEFT JOIN autopayment_aut a ON plg_aut_ID = a.aut_ID
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 			 WHERE plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_date";
 	$rsTransactions = RunQuery($sSQL);
 
 	include ("Include/echophp.class");
 	include ("Include/EchoConfig.inc"); // Specific account information is in here
-
-	// Instantiate the MICR class
-	$micrObj = new MICRReader();
 
 	$echoPHP = new EchoPHP;
 
@@ -224,14 +222,13 @@ if (isset($_POST["DepositSlipSubmit"]))
 		$echoPHP->set_merchant_pin ($EchoPin);
 
 		$echoPHP->set_grand_total($plg_amount);
-
 		$echoPHP->set_billing_phone($phone);
 		$echoPHP->set_billing_address1($address1);
+		$echoPHP->set_billing_address2($address2);
 		$echoPHP->set_billing_city($city);
 		$echoPHP->set_billing_state($state);
 		$echoPHP->set_billing_zip($zip);
 		$echoPHP->set_billing_country($country);
-	//	$echoPHP->set_billing_fax("503-123-4569");
 		$echoPHP->set_billing_email($email);
 
 		$echoPHP->set_billing_ip_address($REMOTE_ADDR);
@@ -239,25 +236,12 @@ if (isset($_POST["DepositSlipSubmit"]))
 		$echoPHP->set_order_type("S");
 
 		if ($dep_Type == "CreditCard") {
-			$posLastName = strpos ($plg_scanString, "^") + 1;
-			$posFirstName = strpos ($plg_scanString, "/", $posLastName) + 1;
-			$posDateMonth = strpos ($plg_scanString, "^", $posFirstName) + 1;
-			$posDateYear = $posDateMonth + 2;
-
-			$creditCardNumber = substr ($plg_scanString, 2, 4) . " " .
-									  substr ($plg_scanString, 6, 4) . " " .
-									  substr ($plg_scanString, 10, 4) . " " .
-									  substr ($plg_scanString, 14, 4);
-			$creditCardExpYear = substr ($plg_scanString, $posDateMonth, 2);
-			$creditCardExpMonth = substr ($plg_scanString, $posDateYear, 2);
-			$firstName = substr ($plg_scanString, $posFirstName, $posDateMonth - $posFirstName - 1);
-			$lastName = substr ($plg_scanString, $posLastName, $posFirstName - $posLastName - 1);
 
 			$echoPHP->set_billing_first_name($firstName);
 			$echoPHP->set_billing_last_name($lastName);
-			$echoPHP->set_cc_number($creditCardNumber);
-			$echoPHP->set_ccexp_month($creditCardExpMonth);
-			$echoPHP->set_ccexp_year($creditCardExpYear);
+			$echoPHP->set_cc_number($creditCard);
+			$echoPHP->set_ccexp_month($expMonth);
+			$echoPHP->set_ccexp_year($expYear);
 
 			$echoPHP->set_transaction_type("EV");
 
@@ -266,15 +250,16 @@ if (isset($_POST["DepositSlipSubmit"]))
 
 		} else {
 			// check payment info if supplied...
-			$echoPHP->set_ec_bank_name(""); // **
-			$echoPHP->set_ec_first_name("First"); // **
-			$echoPHP->set_ec_last_name("Last"); // **
+			$echoPHP->set_ec_bank_name($bankName);
+			$echoPHP->set_ec_first_name($firstName);
+			$echoPHP->set_ec_last_name(lastName);
 			$echoPHP->set_ec_address1($address1);
+			$echoPHP->set_ec_address2($address2);
 			$echoPHP->set_ec_city($city);
 			$echoPHP->set_ec_state($state);
 			$echoPHP->set_ec_zip($zip);
-			$echoPHP->set_ec_rt($micrObj->FindRoute ($plg_scanString));
-			$echoPHP->set_ec_account($micrObj->FindAccount ($plg_scanString));
+			$echoPHP->set_ec_rt($route);
+			$echoPHP->set_ec_account($account);
 			$echoPHP->set_ec_serial_number(1); // ** check number
 			$echoPHP->set_ec_payee($EchoPayee);
 			//$echoPHP->set_ec_id_state("");

@@ -99,6 +99,16 @@ $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_met
 		 WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
 $rsPledges = RunQuery($sSQL);
 
+//Get the automatic payments for this family
+$sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName, 
+                   a.Per_LastName AS EnteredLastName, 
+                   b.fun_Name AS fundName
+		 FROM autopayment_aut
+		 LEFT JOIN person_per a ON aut_EditedBy = a.per_ID
+		 LEFT JOIN donationfund_fun b ON aut_Fund = b.fun_ID
+		 WHERE aut_famID = " . $iFamilyID . " ORDER BY autopayment_aut.aut_NextPayDate";
+$rsAutoPayments = RunQuery($sSQL);
+
 //Get the Properties assigned to this Family
 $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
 		FROM record2property_r2p
@@ -533,6 +543,88 @@ while ($aRow =mysql_fetch_array($rsFamilyMembers))
 
 <?php if ($_SESSION['bFinance']) { ?>
 
+<?if (mysql_num_rows ($rsAutoPayments) > 0) { ?>
+
+<br>
+<b><?php echo gettext("Automatic Payments:"); ?></b>
+<br>
+
+<table cellpadding="5" cellspacing="0" width="100%">
+
+<tr class="TableHeader">
+	<td><?php echo gettext("Type"); ?></td>
+	<td><?php echo gettext("Next payment date"); ?></td>
+	<td><?php echo gettext("Amount"); ?></td>
+	<td><?php echo gettext("Interval (months)"); ?></td>
+	<td><?php echo gettext("Fund"); ?></td>
+	<td><?php echo gettext("Edit"); ?></td>
+	<td><?php echo gettext("Delete"); ?></td>
+	<td><?php echo gettext("Date Updated"); ?></td>
+	<td><?php echo gettext("Updated By"); ?></td>
+</tr>
+
+<?php
+
+	$tog = 0;
+
+	//Loop through all automatic payments
+	while ($aRow =mysql_fetch_array($rsAutoPayments))
+	{
+		$tog = (! $tog);
+
+		extract($aRow);
+
+		$payType = "Disabled";
+		if ($aut_EnableBankDraft)
+			$payType = "Bank Draft";
+		if ($aut_EnableCreditCard)
+			$payType = "Credit Card";
+
+		//Alternate the row style
+		if ($tog)
+			$sRowClass = "RowColorA";
+		else
+			$sRowClass = "RowColorB";
+
+		?>
+
+		<tr class="<?php echo $sRowClass ?>">
+			<td>
+				<?php echo $payType ?>&nbsp;
+			</td>
+			<td>
+				<?php echo $aut_NextPayDate ?>&nbsp;
+			</td>
+			<td>
+				<?php echo $aut_Amount ?>&nbsp;
+			</td>
+			<td>
+				<?php echo $aut_Interval ?>&nbsp;
+			</td>
+			<td>
+				<?php echo $fundName ?>&nbsp;
+			</td>
+			<td>
+				<a href="AutoPaymentEditor.php?AutID=<?php echo $aut_ID ?>&FamilyID=<?php echo $iFamilyID;?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
+			</td>
+			<td>
+				<a href="AutoPaymentDelete.php?AutID=<?php echo $aut_ID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
+			</td>
+			<td>
+				<?php echo $aut_DateLastEdited; ?>&nbsp;
+			</td>
+			<td>
+				<?php echo $EnteredFirstName . " " . $EnteredLastName; ?>&nbsp;
+			</td>
+		</tr>
+		<?php
+	}
+}
+
+?>
+
+</table>
+
 <br>
 <b><?php echo gettext("Pledges and Payments:"); ?></b>
 <br>
@@ -546,15 +638,6 @@ while ($aRow =mysql_fetch_array($rsFamilyMembers))
 	<input type="submit" class="icButton" <?php echo 'value="' . gettext("Update") . '"'; ?> name="UpdatePledgeTable" style="font-size: 8pt;">
 </form>
 </p>
-
-<?php
-	if ($fam_enableBankDraft) {
-		echo "</p align=\"left\">Automatic bank draft pledge payments are enabled, next payment " . $fam_bankDraftDate . "</p>";
-	}
-	if ($fam_enableCreditCard) {
-		echo "</p align=\"left\">Automatic credit card pledge payments are enabled, next payment " . $fam_creditCardDate . "</p>";
-	}
-?>
 
 <table cellpadding="5" cellspacing="0" width="100%">
 
@@ -669,6 +752,7 @@ if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
 <p>
 	<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&PledgeOrPayment=Pledge"><?php echo gettext("Add a new pledge"); ?></a></font>
 	<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&PledgeOrPayment=Payment"><?php echo gettext("Add a new payment"); ?></a></font>
+	<a class="SmallText" href="AutoPaymentEditor.php?FamilyID=<?php echo $fam_ID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo gettext("Add a new automatic payment"); ?></a></font>
 </p>
 
 <?php } ?>

@@ -75,22 +75,6 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$bSendNewsLetter = isset($_POST["SendNewsLetter"]);
 	$dWeddingDate = FilterInput($_POST["WeddingDate"]);
 
-	$bEnableBankDraft = FilterInput($_POST["EnableBankDraft"],'int');
-	if (! $bEnableBankDraft)
-		$bEnableBankDraft = 0;
-	$dBankDraftDate = FilterInput($_POST["BankDraftDate"]);
-	$nBankDraftAmount = FilterInput($_POST["BankDraftAmount"]);
-	$nBankDraftInterval = FilterInput($_POST["BankDraftInterval"]);
-	$nBankDraftFund = FilterInput($_POST["BankDraftFund"]);
-
-	$bEnableCreditCard = FilterInput($_POST["EnableCreditCard"],'int');
-	if (! $bEnableCreditCard)
-		$bEnableCreditCard = 0;
-	$dCreditCardDate = FilterInput($_POST["CreditCardDate"]);
-	$nCreditCardAmount = FilterInput($_POST["CreditCardAmount"]);
-	$nCreditCardInterval = FilterInput($_POST["CreditCardInterval"]);
-	$nCreditCardFund = FilterInput($_POST["CreditCardFund"]);
-
 	$bNoFormat_HomePhone = isset($_POST["NoFormat_HomePhone"]);
 	$bNoFormat_WorkPhone = isset($_POST["NoFormat_WorkPhone"]);
 	$bNoFormat_CellPhone = isset($_POST["NoFormat_CellPhone"]);
@@ -195,17 +179,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 														fam_WeddingDate, 
 														fam_DateEntered, 
 														fam_EnteredBy, 
-														fam_SendNewsLetter,
-                                          fam_enableBankDraft,
-                                          fam_bankDraftDate,
-                                          fam_enableCreditCard,
-                                          fam_creditCardDate,
-														fam_bankDraftAmount,
-														fam_creditCardAmount,
-														fam_bankDraftInterval,
-														fam_creditCardInterval,
-														fam_creditCardFund,
-														fam_bankDraftFund)
+														fam_SendNewsLetter)
 											VALUES ('" . $sName . "','" . 
 											         $sAddress1 . "','" . 
 														$sAddress2 . "','" . 
@@ -220,47 +194,26 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 														$dWeddingDate . ",'" . 
 														date("YmdHis") . "'," . 
 														$_SESSION['iUserID'] . "," . 
-														$bSendNewsLetterString . "," .
-                                          $bEnableBankDraft . ",'" .
-                                          $dBankDraftDate . "'," .
-                                          $bEnableCreditCard . ",'" .
-                                          $dCreditCardDate . "'," .
-														$nBankDraftAmount . "," .
-														$nCreditCardAmount . "," .
-														$nBankDraftInterval . "," .
-														$nCreditCardInterval . "," .
-														$nCreditCardFund . "," .
-														$nBankDraftFund .
-													 ")";
+														$bSendNewsLetterString . ")";
 			$bGetKeyBack = true;
 		}
 		else
 		{
-			$sSQL = "UPDATE family_fam SET fam_Name='" . $sName . "', 
-			                               fam_Address1='" . $sAddress1 . "', 
-													 fam_Address2='" . $sAddress2 . "', 
-													 fam_City='" . $sCity . "', 
-													 fam_State='" . $sState . "', 
-													 fam_Zip='" . $sZip . "', 
-													 fam_Country='" . $sCountry . "', 
-													 fam_HomePhone='" . $sHomePhone . "', 
-													 fam_WorkPhone='" . $sWorkPhone . "', 
-													 fam_CellPhone='" . $sCellPhone . "', 
-													 fam_Email='" . $sEmail . "', 
-													 fam_WeddingDate=" . $dWeddingDate . ", 
-													 fam_DateLastEdited='" . date("YmdHis") . "', 
-													 fam_EditedBy = " . $_SESSION['iUserID'] . ", 
-													 fam_SendNewsLetter = " . $bSendNewsLetterString . ", 
-                                        fam_enableBankDraft = " . $bEnableBankDraft . ",
-                                        fam_bankDraftDate = '" . $dBankDraftDate . "',
-                                        fam_enableCreditCard = " . $bEnableCreditCard . ",
-                                        fam_creditCardDate = '" . $dCreditCardDate . "',
-													 fam_bankDraftAmount = " . $nBankDraftAmount . ",
-													 fam_creditCardAmount = " . $nCreditCardAmount . ",
-													 fam_bankDraftInterval = " . $nBankDraftInterval . ",
-													 fam_creditCardInterval = " . $nCreditCardInterval . ",
-													 fam_bankDraftFund = " . $nBankDraftFund . ",
-													 fam_creditCardFund = " . $nCreditCardFund .
+			$sSQL = "UPDATE family_fam SET fam_Name='" . $sName . "'," .
+			                               "fam_Address1='" . $sAddress1 . "'," .
+													 "fam_Address2='" . $sAddress2 . "'," .
+													 "fam_City='" . $sCity . "'," .
+													 "fam_State='" . $sState . "'," .
+													 "fam_Zip='" . $sZip . "'," .
+													 "fam_Country='" . $sCountry . "'," .
+													 "fam_HomePhone='" . $sHomePhone . "'," .
+													 "fam_WorkPhone='" . $sWorkPhone . "'," .
+													 "fam_CellPhone='" . $sCellPhone . "'," .
+													 "fam_Email='" . $sEmail . "'," .
+													 "fam_WeddingDate='" . $dWeddingDate . "'," .
+													 "fam_DateLastEdited='" . date("YmdHis") . "'," .
+													 "fam_EditedBy = " . $_SESSION['iUserID'] . "," .
+													 "fam_SendNewsLetter = " . $bSendNewsLetterString .
 												" WHERE fam_ID = " . $iFamilyID;
 			$bGetKeyBack = false;
 		}
@@ -391,17 +344,6 @@ else
 		$sEmail = $fam_Email;
 		$bSendNewsLetter = ($fam_SendNewsLetter == 'TRUE');
 		$dWeddingDate = $fam_WeddingDate;
-
-		$bEnableBankDraft = $fam_enableBankDraft;
-		$dBankDraftDate = $fam_bankDraftDate;
-		$nBankDraftAmount = $fam_bankDraftAmount;
-		$bEnableCreditCard = $fam_enableCreditCard;
-		$dCreditCardDate = $fam_creditCardDate;
-		$nCreditCardAmount = $fam_creditCardAmount;
-		$nBankDraftInterval = $fam_bankDraftInterval;
-		$nCreditCardInterval = $fam_creditCardInterval;
-		$nBankDraftFund = $fam_bankDraftFund;
-		$nCreditCardFund = $fam_creditCardFund;
 
 		// Expand the phone number
 		$sHomePhone = ExpandPhoneNumber($sHomePhone,$sCountry,$bNoFormat_HomePhone);
@@ -569,102 +511,6 @@ require "Include/Header.php";
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Wedding Date:"); ?></td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="10" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
-	</tr>
-
-	<tr>
-		<td>&nbsp;</td>
-	</tr>
-
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Automatic bank draft"); ?></td>
-		<td class="TextColumn"><input type="checkbox" name="EnableBankDraft" value="1" <?php if ($bEnableBankDraft) echo " checked";?>><?php echo gettext("Automatic bank draft"); ?></td>
-	</tr>
-
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Next bank draft payment date"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="BankDraftDate" value="<?php echo $dBankDraftDate; ?>" maxlength="10" id="BankDraftDate" size="15">&nbsp;<input type="image" onclick="return showCalendar('BankDraftDate', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
-	</tr>
-
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Bank draft amount"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="BankDraftAmount" value="<?php echo $nBankDraftAmount; ?>" size="30" maxlength="50"></td>
-	</tr>
-
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Bank draft interval (months)"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="BankDraftInterval" value="<?php echo $nBankDraftInterval; ?>" size="30" maxlength="50"></td>
-	</tr>
-
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Bank draft Fund:"); ?></td>
-		<td class="TextColumnWithBottomBorder">
-			<select name="BankDraftFund">
-			<option value="0"><?php echo gettext("None"); ?></option>
-			<?php
-			mysql_data_seek($rsFunds,0);
-			while ($row = mysql_fetch_array($rsFunds))
-			{
-				$fun_id = $row["fun_ID"];
-				$fun_name = $row["fun_Name"];
-				$fun_active = $row["fun_Active"];
-				echo "<option value=\"$fun_id\" " ;
-				if ($nBankDraftFund == $fun_id)
-					echo "selected" ;
-				echo ">$fun_name";
-				if ($fun_active != 'true') echo " (" . gettext("inactive") . ")";
-				echo "</option>" ;
-			}
-			?>
-			</select>
-		</td>
-	</tr>
-
-	<tr>
-		<td>&nbsp;</td>
-	</tr>
-
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Automatic credit card"); ?></td>
-		<td class="TextColumn"><input type="checkbox" name="EnableCreditCard" value="1" <?php if ($bEnableCreditCard) echo " checked";?>><?php echo gettext("Enable"); ?></td>
-	</tr>
-
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Next credit card payment date"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="CreditCardDate" value="<?php echo $dCreditCardDate; ?>" maxlength="10" id="CreditCardDate" size="15">&nbsp;<input type="image" onclick="return showCalendar('CreditCardDate', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
-	</tr>
-
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Credit card amount"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="CreditCardAmount" value="<?php echo $nCreditCardAmount; ?>" size="30" maxlength="50"></td>
-	</tr>
-
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Credit card interval (months)"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="CreditCardInterval" value="<?php echo $nCreditCardInterval; ?>" size="30" maxlength="50"></td>
-	</tr>
-
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Credit card Fund:"); ?></td>
-		<td class="TextColumnWithBottomBorder">
-			<select name="CreditCardFund">
-			<option value="0"><?php echo gettext("None"); ?></option>
-			<?php
-			mysql_data_seek($rsFunds,0);
-			while ($row = mysql_fetch_array($rsFunds))
-			{
-				$fun_id = $row["fun_ID"];
-				$fun_name = $row["fun_Name"];
-				$fun_active = $row["fun_Active"];
-				echo "<option value=\"$fun_id\" " ;
-				if ($nCreditCardFund == $fun_id)
-					echo "selected" ;
-				echo ">$fun_name";
-				if ($fun_active != 'true') echo " (" . gettext("inactive") . ")";
-				echo "</option>" ;
-			}
-			?>
-			</select>
-		</td>
 	</tr>
 
 	<tr>
