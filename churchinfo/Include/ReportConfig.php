@@ -119,12 +119,13 @@ class ChurchInfoReport extends FPDF {
 
 		$this->WriteAt ($dateX, $dateY, date("m/d/Y"));
 
-		$curY = 35;
+		$curY = 20;
 
 		$this->WriteAt ($this->leftX, $curY, $this->sChurchName); $curY += $this->incrementY;
 		$this->WriteAt ($this->leftX, $curY, $this->sChurchAddress); $curY += $this->incrementY;
 		$this->WriteAt ($this->leftX, $curY, $this->sChurchCity . ", " . $this->sChurchState . "  " . $this->sChurchZip); $curY += $this->incrementY;
-		$this->WriteAt ($this->leftX, $curY, $this->sChurchPhone . "  " . $this->sChurchEmail); $curY += 2 * $this->incrementY;
+		$this->WriteAt ($this->leftX, $curY, $this->sChurchPhone . "  " . $this->sChurchEmail); 
+		$curY += 25; // mm to move to the second window
 
 		$this->WriteAt ($this->leftX, $curY, $this->MakeSalutation ($fam_ID)); $curY += $this->incrementY;
 		if ($fam_Address1 != "") {
@@ -137,6 +138,7 @@ class ChurchInfoReport extends FPDF {
 		if ($fam_Country != "" && $fam_Country != "USA") {
 			$this->WriteAt ($this->leftX, $curY, $fam_Country); $curY += $this->incrementY;
 		}
+		$curY += 5.0; // mm to get away from the second window
       return ($curY);
    }
 
