@@ -76,7 +76,8 @@ for ($row = 0; $row < $numMembers; $row++)
    if ($lst_OptionName == gettext ("Teacher")) {
       if (! $bFirstTeacher)
          $teacherString .= ", ";
-      $teacherString .= $per_FirstName . " " . $per_LastName . " " . $fam_HomePhone;
+      $phone = $pdf->StripPhone ($fam_HomePhone);
+      $teacherString .= $per_FirstName . " " . $per_LastName . " " . $phone;
       $bFirstTeacher = false;
    }
 }
@@ -89,7 +90,7 @@ for ($row = 0; $row < $numMembers; $row++)
    }
 }
 
-$pdf->SetFont("Times",'B',12);
+$pdf->SetFont("Times",'B',10);
 $pdf->WriteAt ($nameX, $yTeachers, $teacherString);
 
 $pdf->SetFont("Times",'',12);
@@ -101,15 +102,19 @@ for ($row = 0; $row < $numMembers; $row++)
    extract ($ga[$row]);
 
    if ($lst_OptionName == gettext ("Student")) {
-      $pdf->WriteAt ($nameX, $y, ($per_LastName . ", " . $per_FirstName));
+      $studentName = ($per_LastName . ", " . $per_FirstName);
 
-      $birthdayStr = $per_BirthMonth . "-" . $per_BirthDay . "-" . $per_BirthYear;
-      $pdf->WriteAt ($birthdayX, $y, $birthdayStr);
+      if ($studentName != $prevStudentName) {
+         $pdf->WriteAt ($nameX, $y, $studentName);
+
+         $birthdayStr = $per_BirthMonth . "-" . $per_BirthDay . "-" . $per_BirthYear;
+         $pdf->WriteAt ($birthdayX, $y, $birthdayStr);
+      }
 
       $parentsStr = $pdf->MakeSalutation ($fam_ID);
       $pdf->WriteAt ($parentsX, $y, $parentsStr);
 
-      $pdf->WriteAt ($phoneX, $y, $fam_HomePhone);
+      $pdf->WriteAt ($phoneX, $y, $pdf->StripPhone ($fam_HomePhone));
       $y += $yIncrement;
 
       $addrStr = $fam_Address1;
@@ -118,6 +123,7 @@ for ($row = 0; $row < $numMembers; $row++)
       $addrStr .= ", " . $fam_City . ", " . $fam_State . "  " . $fam_Zip;
       $pdf->WriteAt ($parentsX, $y, $addrStr);
 
+      $prevStudentName = $studentName;
       $y += 2 * $yIncrement;
    }
 }

@@ -83,12 +83,23 @@ class PDF_Attendance extends ChurchInfoReport {
       $this->SetFont("Times",'',12);
 
       $numMembers = count ($aNames);
+      $phantomMembers = 0;
       for ($row = 0; $row < $numMembers; $row++)
       {
          extract ($aNames[$row]);
 
-         $this->WriteAt ($nameX, $y, ($per_LastName . ", " . $per_FirstName));
-         $y += $yIncrement;
+         $thisName = ($per_LastName . ", " . $per_FirstName);
+
+         // Special handling for person listed twice- only show once in the Attendance Calendar
+         // This happens when a child is listed in two different families (parents divorced and
+         // both active in the church)
+         if ($thisName != $prevThisName) {
+            $this->WriteAt ($nameX, $y, $thisName);
+            $y += $yIncrement;
+         } else {
+            $phantomMembers++;
+         }
+         $prevThisName = $thisName;
       }
       $y += $extraLines * $yIncrement;
 
@@ -150,6 +161,7 @@ class PDF_Attendance extends ChurchInfoReport {
          $dWhichSunday = mktime (0,0,0,$sundayMonth,$sundayDay+7,$sundayYear);
          $tWhichSunday = date ("Y-m-d", $dWhichSunday);
       }
+      $aHeavyVerticalX[$heavyVerticalXCnt++] = $monthX;
       $this->WriteAt ($monthX, $yMonths, date ("F", $dWhichMonthDate));
 
       $rightEdgeX = $dayX;
@@ -195,14 +207,14 @@ class PDF_Attendance extends ChurchInfoReport {
       $this->Line ($nameX, $yMonths + $tweakLineY, $rightEdgeX, $yMonths + $tweakLineY);
       $this->Line ($nameX, $yMonths + $yIncrement + $tweakLineY, $rightEdgeX, $yMonths + $yIncrement + $tweakLineY);
       $this->Line ($nameX, $yMonths + 2 * $yIncrement + $tweakLineY, $rightEdgeX, $yMonths + 2 * $yIncrement + $tweakLineY);
-      $yBottom = $yMonths + (($numMembers + $extraLines + 2) * $yIncrement) + $tweakLineY;
+      $yBottom = $yMonths + (($numMembers - $phantomMembers + $extraLines + 2) * $yIncrement) + $tweakLineY;
       $this->Line ($nameX, $yBottom, $rightEdgeX, $yBottom);
       $this->Line ($nameX, $yBottom + $yIncrement, $rightEdgeX, $yBottom + $yIncrement);
 
       // Draw lines between the students
       $y = $yTop + $tweakLineY;
       $this->SetLineWidth (0.25);
-      for ($studentInd = 0; $studentInd < $numMembers + $extraLines + 2; $studentInd++) {
+      for ($studentInd = 0; $studentInd < $numMembers - $phantomMembers + $extraLines + 2; $studentInd++) {
          $this->Line ($nameX, $y, $rightEdgeX, $y);
          $y += $yIncrement;
       }
