@@ -45,6 +45,8 @@ class PDF_ConfirmReport extends ChurchInfoReport {
 
 		$curY += 3 * $this->incrementY;
 		$this->WriteAt ($this->leftX, $curY, $this->sConfirm3);
+		$curY += 2 * $this->incrementY;
+		$this->WriteAt ($this->leftX, $curY, $this->sConfirm4);
 
 		$curY += 4 * $this->incrementY;
 
@@ -116,11 +118,11 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$pdf->SetFont("Times",'B',10);
    $pdf->WriteAtCell ($XName, $curY, $XGender - $XName, gettext ("Member Name"));
    $pdf->WriteAtCell ($XGender, $curY, $XRole - $XGender, gettext ("M/F"));
-   $pdf->WriteAtCell ($XRole, $curY, $XEmail - $XRole, gettext ("Role"));
+   $pdf->WriteAtCell ($XRole, $curY, $XEmail - $XRole, gettext ("Adult/Child"));
    $pdf->WriteAtCell ($XEmail, $curY, $XBirthday - $XEmail, gettext ("Email"));
    $pdf->WriteAtCell ($XBirthday, $curY, $XCellPhone - $XBirthday, gettext ("Birthday"));
    $pdf->WriteAtCell ($XCellPhone, $curY, $XClassification - $XCellPhone, gettext ("Cell phone"));
-   $pdf->WriteAtCell ($XClassification, $curY, $XRight - $XClassification, gettext ("Class"));
+   $pdf->WriteAtCell ($XClassification, $curY, $XRight - $XClassification, gettext ("Member/Friend"));
 	$pdf->SetFont("Times",'',10);
 	$curY += $pdf->incrementY;
 
