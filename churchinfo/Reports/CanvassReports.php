@@ -37,48 +37,6 @@ class PDF_CanvassBriefingReport extends ChurchInfoReport {
 	}
 }
 
-//
-// Prints age in years, or in months if less than one year old
-//
-function FormatAge($Month,$Day,$Year,$Flags)
-{
-	if ($Flags & 1) {
-		return;
-	}
-
-	if ($Year > 0)
-	{
-		if ($Year == date("Y"))
-		{
-			$monthCount = date("m") - $Month;
-			if ($Day > date("d"))
-				$monthCount--;
-			if ($monthCount == 1)
-				return (gettext("1 month old"));
-			else
-				return ( $monthCount . " " . gettext("months old"));
-		}
-		elseif ($Year == date("Y")-1)
-		{
-			$monthCount =  12 - $Month + date("m");
-			if ($Day > date("d"))
-				$monthCount--;
-			if ($monthCount >= 12)
-				return ( gettext("1 year old"));
-			elseif ($monthCount == 1)
-				return ( gettext("1 month old"));
-			else
-				return ( $monthCount . " " . gettext("months old"));
-		}
-		elseif ( $Month > date("m") || ($Month == date("m") && $Day > date("d")) )
-			return ( date("Y")-1 - $Year . " " . gettext("years old"));
-		else
-			return ( date("Y") - $Year . " " . gettext("years old"));
-	}
-	else
-		return ( gettext("Unknown"));
-}
-
 function TopPledgersLevel ($iFYID, $iPercent)
 {
 	// Get pledges for this fiscal year, highest first
@@ -89,6 +47,95 @@ function TopPledgersLevel ($iFYID, $iPercent)
 	mysql_data_seek ($rsPledges, $pledgeCount * $iPercent / 100);
 	$aLastTop = mysql_fetch_array($rsPledges);
 	return ($aLastTop["plg_Amount"]);
+}
+
+require "../Include/CanvassUtilities.php";
+
+function CanvassProgressReport ($iFYID)
+{
+	// Instantiate the directory class and build the report.
+	$pdf = new PDF_CanvassBriefingReport();
+
+	$curY = 10;
+
+	$pdf->SetFont('Times','', 24);
+	$pdf->WriteAt ($pdf->leftX, $curY, "Canvass Progress Report " . date ("Y-m-d"));
+	$pdf->SetFont('Times','', 14);
+
+	$curY += 10;
+
+	$pdf->SetFont('Times','', 12);
+	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchName); $curY += $pdf->incrementY;
+	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchAddress); $curY += $pdf->incrementY;
+	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchCity . ", " . $pdf->sChurchState . "  " . $pdf->sChurchZip); $curY += $pdf->incrementY;
+	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchPhone . "  " . $pdf->sChurchEmail); 
+	$curY += 10;
+	$pdf->SetFont('Times','', 14);
+
+	$nameX = 20;
+	$doneX = 70;
+	$toDoX = 85;
+	$percentX = 110;
+
+	$pdf->SetFont('Times','B', 14);
+	$pdf->WriteAt ($nameX, $curY, "Name");
+	$pdf->WriteAt ($doneX, $curY, "Done");
+	$pdf->WriteAt ($toDoX, $curY, "Assigned");
+	$pdf->WriteAt ($percentX, $curY, "Percent");
+	$pdf->SetFont('Times','', 14);
+
+	$curY += 6;
+
+	$totalToDo = 0;
+	$totalDone = 0;
+
+	// Get all the canvassers
+	$canvassGroups = array ('Canvassers', 'BraveCanvassers' );
+	foreach ($canvassGroups as $cgName) {
+		$rsCanvassers = CanvassGetCanvassers (gettext ($cgName));
+
+		while ($aCanvasser = mysql_fetch_array ($rsCanvassers)) {
+			// Get all the families for this canvasser
+			$sSQL = "SELECT fam_ID from family_fam WHERE fam_Canvasser = " . $aCanvasser["per_ID"];
+			$rsCanvassees = RunQuery($sSQL);
+
+			$thisCanvasserToDo = mysql_num_rows ($rsCanvassees);
+			$thisCanvasserDone = 0;
+
+			while ($aCanvassee = mysql_fetch_array ($rsCanvassees)) {
+				// Get all the canvass input entered so far by this canvasser
+				$sSQL = "SELECT can_ID from canvassdata_can WHERE can_famID=" . $aCanvassee["fam_ID"] .
+				            " AND can_FYID=" . $iFYID;
+				$rsCanvassData = RunQuery($sSQL);
+
+				if (mysql_num_rows ($rsCanvassData) == 1) {
+					++$thisCanvasserDone;
+				}
+			}
+
+			$totalToDo += $thisCanvasserToDo;
+			$totalDone += $thisCanvasserDone;
+
+			// Write the status output line for this canvasser
+			$pdf->WriteAt ($nameX, $curY, $aCanvasser["per_FirstName"] . " " . $aCanvasser["per_LastName"]);
+			$pdf->WriteAt ($doneX, $curY, $thisCanvasserDone);
+			$pdf->WriteAt ($toDoX, $curY, $thisCanvasserToDo);
+			$percentStr = sprintf ("%.0f%%", ($thisCanvasserDone / $thisCanvasserToDo) * 100);
+			$pdf->WriteAt ($percentX, $curY, $percentStr);
+			$curY += 6;
+		}
+	}
+	
+	// Summary status
+	$pdf->SetFont('Times','B', 14);
+
+	$pdf->WriteAt ($nameX, $curY, "Total");
+	$pdf->WriteAt ($doneX, $curY, $totalDone);
+	$pdf->WriteAt ($toDoX, $curY, $totalToDo);
+	$percentStr = sprintf ("%.0f%%", ($totalDone / $totalToDo) * 100);
+	$pdf->WriteAt ($percentX, $curY, $percentStr);
+
+	$pdf->Output("CanvassProgress" . date("Ymd") . ".pdf", true);
 }
 
 function CanvassBriefingSheets ($iFYID)
@@ -265,6 +312,7 @@ if ($sWhichReport == "Briefing") {
 }
 
 if ($sWhichReport == "Progress") {
+	CanvassProgressReport ($iFYID);
 }
 
 

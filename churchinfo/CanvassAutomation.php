@@ -78,7 +78,7 @@ if (isset($_POST["BriefingSheets"])) {
 	redirect ("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=Briefing");
 }
 if (isset($_POST["ProgressReport"])) {
-	$processNews = "ProgressReport button pressed.";
+	redirect ("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=Progress");
 }
 
 require "Include/Header.php";
