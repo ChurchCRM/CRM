@@ -399,6 +399,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		$iFamilyRole = "0";
 		$iClassification = "0";
 		$bHomeBound = False;
+		$dFriendDate = date("Y-m-d"); // Default friend date is today
 	}
 }
 
