@@ -37,7 +37,7 @@ if (count($_SESSION['aPeopleCart']) == 0) {
 	echo "<td align=\"center\"><b>" . gettext("Email?") . "</b></td>";
 	echo "<td><b>" . gettext("Remove") . "</b></td>";
 
-	$sEmailLink = "<a href=\"mailto:?to=";
+	$sEmailLink = "";
 	$iEmailNum = 0;
 
 	while ($aRow = mysql_fetch_array($rsCartItems))
@@ -113,8 +113,8 @@ if (count($_SESSION['aPeopleCart']) != 0)
 		// Add default email if default email has been set and is not already in string
 		if ($sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress))
 			$sEmailLink .= "," . $sToEmailAddress;
-		$sEmailLink .= "\">";
-		echo "<br>" . $sEmailLink . gettext("Email Cart") . "</a>";
+		echo "<br><a href=\"mailto:" . $sEmailLink ."\">". gettext("Email Cart") . "</a>";
+		echo "<br><a href=\"mailto:?&bcc=".$sEmailLink."\">".gettext("Email (BCC)")."</a>";	
 	}
 
 	echo "</p></td>";
