@@ -87,10 +87,10 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		$iCanvasser = FilterInput($_POST["Canvasser"]);
 		if (! $iCanvasser)
 			$iCanvasser = FilterInput($_POST["BraveCanvasser"]);
+		if (! $iCanvasser)
+			$iCanvasser = 0;
 	}
-	if (! $iCanvasser)
-		$iCanvasser = 0;
-	
+
 	$iPropertyID = FilterInput($_POST["PropertyID"],'int');
 	$dWeddingDate = FilterInput($_POST["WeddingDate"]);
 
@@ -220,8 +220,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 														date("YmdHis") . "'," . 
 														$_SESSION['iUserID'] . "," . 
 														$bSendNewsLetterString . "," . 
-														$bOkToCanvassString . "," .
-														$iCanvasser . ")";
+														$bOkToCanvassString . ",'" .
+														$iCanvasser . "')";
 			$bGetKeyBack = true;
 		}
 		else
@@ -242,8 +242,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 													 "fam_EditedBy = " . $_SESSION['iUserID'] . "," .
 													 "fam_SendNewsLetter = " . $bSendNewsLetterString . "," .
 													 "fam_OkToCanvass = " . $bOkToCanvassString . "," .
-													 "fam_Canvasser = " . $iCanvasser .
-												" WHERE fam_ID = " . $iFamilyID;
+													 "fam_Canvasser = '" . $iCanvasser .
+												"' WHERE fam_ID = " . $iFamilyID;
 			$bGetKeyBack = false;
 		}
 
