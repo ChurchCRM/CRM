@@ -17,6 +17,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+require "Include/MICRFunctions.php";
+
 //Get the PersonID out of the querystring
 $iPledgeID = FilterInput($_GET["PledgeID"],'int');
 $linkBack = FilterInput($_GET["linkBack"]);
@@ -56,6 +58,9 @@ elseif (!$_SESSION['bAddRecords'])
 	exit;
 }
 
+// Instantiate the MICR class
+$micrObj = new MICRReader();
+
 //Is this the second pass?
 if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isset($_POST["MatchFamily"]) ||
     isset($_POST["SetDefaultCheck"]) || isset($_POST["SetDefaultCreditCard"]))
@@ -65,19 +70,24 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 	// Take care of match-family first- select the family based on the scanned check
 	if (isset($_POST["MatchFamily"])) {
 		$tScanString = FilterInput($_POST["ScanInput"]);
-		$routeAndAccount = substr ($tScanString, 0, 22); // use routing and account number for matching
 
-		$sSQL = "SELECT fam_ID FROM family_fam WHERE fam_scanCheck REGEXP \"" . $routeAndAccount . "\"";
-		$rsFam = RunQuery($sSQL);
-		extract(mysql_fetch_array($rsFam));
-		$iFamily = $fam_ID;
+		$routeAndAccount = $micrObj->FindRouteAndAccount ($tScanString); // use routing and account number for matching
 
-		$iCheckNo = substr ($tScanString, 24, 4);
+      if ($routeAndAccount) {
+		   $sSQL = "SELECT fam_ID FROM family_fam WHERE fam_scanCheck REGEXP \"" . $routeAndAccount . "\"";
+		   $rsFam = RunQuery($sSQL);
+		   extract(mysql_fetch_array($rsFam));
+		   $iFamily = $fam_ID;
+
+		   $iCheckNo = $micrObj->FindCheckNo ($tScanString);
+      } else {
+		   $iFamily = FilterInput($_POST["Family"],'int');
+		   $iCheckNo = FilterInput($_POST["CheckNo"], 'int');
+      }
 	} else {
 		$iFamily = FilterInput($_POST["Family"],'int');
 		$iCheckNo = FilterInput($_POST["CheckNo"], 'int');
 	}
-
 	// Handle special buttons at the bottom of the form.
 	if (isset($_POST["SetDefaultCheck"])) {
 		$tScanString = FilterInput($_POST["ScanInput"]);
