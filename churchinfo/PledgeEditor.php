@@ -252,6 +252,12 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 	}
 }
 
+// Set Current Deposit setting for user
+if ($iDepositSlipID) {
+	$sSQL = "UPDATE user_usr SET usr_currentDeposit = '$iDepositSlipID' WHERE usr_per_id = \"".$_SESSION['iUserID']."\"";
+	$rsUpdate = RunQuery($sSQL);
+}
+
 //Get Families for the drop-down
 $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
