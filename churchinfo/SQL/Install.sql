@@ -1,3 +1,21 @@
+CREATE TABLE canvas05_c05 (
+  c05_famID smallint(9) NOT NULL default '0',
+  c05_churchColor text,
+  c05_doingRight text,
+  c05_canImprove text,
+  c05_pledgeByMar31 text,
+  c05_comments text
+) TYPE=MyISAM;
+
+CREATE TABLE deposit_dep (
+  dep_ID mediumint(9) unsigned NOT NULL auto_increment,
+  dep_Date date default NULL,
+  dep_Comment text,
+  dep_EnteredBy mediumint(9) unsigned default NULL,
+  dep_Closed tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (dep_ID)
+) TYPE=MyISAM PACK_KEYS=0;
+
 CREATE TABLE family_fam (
   fam_ID mediumint(9) unsigned NOT NULL auto_increment,
   fam_Name varchar(50) default NULL,
@@ -16,10 +34,13 @@ CREATE TABLE family_fam (
   fam_DateLastEdited datetime default NULL,
   fam_EnteredBy smallint(5) unsigned NOT NULL default '0',
   fam_EditedBy smallint(5) unsigned default '0',
+  fam_scanCheck text,
+  fam_scanCredit text,
+  fam_SendNewsLetter enum('FALSE','TRUE') NOT NULL default 'FALSE',
+  fam_DateDeactivated date default NULL,
   PRIMARY KEY  (fam_ID),
   KEY fam_ID (fam_ID)
 ) TYPE=MyISAM;
-
 
 CREATE TABLE group_grp (
   grp_ID mediumint(8) unsigned NOT NULL auto_increment,
@@ -96,6 +117,25 @@ CREATE TABLE person_per (
 
 INSERT INTO person_per VALUES (1,NULL,'InfoCentral',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0000,NULL,0,0,0,0,NULL,NULL,'2001-02-05 18:00:00',0,0);
 
+CREATE TABLE pledge_plg (
+  plg_plgID mediumint(9) NOT NULL auto_increment,
+  plg_FamID mediumint(9) default NULL,
+  plg_FYID mediumint(9) default NULL,
+  plg_date date default NULL,
+  plg_amount decimal(8,2) default NULL,
+  plg_schedule enum('Monthly','Quarterly','Once','Other') default NULL,
+  plg_method enum('CREDITCARD','CHECK','CASH','OTHER') default NULL,
+  plg_comment text,
+  plg_DateLastEdited date NOT NULL default '0000-00-00',
+  plg_EditedBy mediumint(9) NOT NULL default '0',
+  plg_PledgeOrPayment enum('Pledge','Payment') NOT NULL default 'Pledge',
+  plg_fundID tinyint(3) unsigned default NULL,
+  plg_depID mediumint(9) unsigned default NULL,
+  plg_CheckNo mediumint(9) unsigned default NULL,
+  plg_Problem tinyint(1) default NULL,
+  plg_scanString text,
+  PRIMARY KEY  (plg_plgID)
+) TYPE=MyISAM;
 
 CREATE TABLE property_pro (
   pro_ID mediumint(8) unsigned NOT NULL auto_increment,
@@ -237,12 +277,55 @@ CREATE TABLE user_usr (
   usr_BaseFontSize tinyint(4) default NULL,
   usr_SearchLimit tinyint(4) default '10',
   usr_Style varchar(50) default 'Style.css',
+  usr_showPledges tinyint(1) NOT NULL default '0',
+  usr_showPayments tinyint(1) NOT NULL default '0',
+  usr_showSince date NOT NULL default '0000-00-00',
+  usr_defaultFY mediumint(9) default NULL,
+  usr_currentDeposit mediumint(9) default NULL,
+  usr_UserName varchar(32) default NULL,
+  usr_EditSelf tinyint(3) unsigned NOT NULL default '0',
   PRIMARY KEY  (usr_per_ID),
   KEY usr_per_ID (usr_per_ID)
 ) TYPE=MyISAM;
 
-
-INSERT INTO user_usr VALUES (1,'c0937163b677904e6df31a77c7c12fda',1,'0000-00-00 00:00:00',0,0,1,1,1,1,1,1,1,1,1,580,9,10,'Style.css');
+INSERT INTO user_usr (usr_per_ID,
+                      usr_Password,
+					  usr_NeedPasswordChange,
+					  usr_LastLogin,
+					  usr_LoginCount,
+					  usr_FailedLogins,
+					  usr_AddRecords,
+					  usr_EditRecords,
+					  usr_DeleteRecords,
+					  usr_MenuOptions,
+					  usr_ManageGroups,
+					  usr_Finance,
+					  usr_Communication,
+					  usr_Notes,
+					  usr_Admin,
+					  usr_Workspacewidth,
+					  usr_BaseFontSize,
+					  usr_SearchLimit,
+					  usr_Style) 
+			VALUES (1,
+			        'c0937163b677904e6df31a77c7c12fda',
+					1,
+					'0000-00-00 00:00:00',
+					0,
+					0,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					580,
+					9,
+					10,
+					'Style.css');
 
 CREATE TABLE groupprop_master (
   grp_ID mediumint(9) unsigned NOT NULL default '0',
@@ -254,39 +337,6 @@ CREATE TABLE groupprop_master (
   prop_Special mediumint(9) unsigned default NULL,
   prop_PersonDisplay enum('false','true') NOT NULL default 'false'
 ) TYPE=MyISAM COMMENT='Group-specific properties order, name, description, type';
-
-CREATE TABLE donations_don (
-  don_ID mediumint(9) unsigned NOT NULL auto_increment,
-  don_DonorID mediumint(9) unsigned default NULL,
-  don_PaymentType tinyint(3) default NULL,
-  don_CheckNumber mediumint(9) unsigned NOT NULL default '0',
-  don_Date date NOT NULL default '0000-00-00',
-  don_Envelope smallint(5) unsigned default NULL,
-  PRIMARY KEY (don_ID),
-  KEY don_DonorID (don_DonorID),
-  KEY don_Date (don_Date)
-) TYPE=MyISAM;
-
-CREATE TABLE donationamounts_dna (
-  dna_don_ID mediumint(9) unsigned NOT NULL,
-  dna_Amount decimal(10,2) default NULL,
-  dna_fun_ID tinyint(3) unsigned default NULL,
-  KEY dna_don_ID (dna_don_ID)
-) TYPE=MyISAM;
-
-CREATE TABLE donationfund_fun (
-  fun_ID tinyint(3) NOT NULL auto_increment,
-  fun_Active enum('true','false') NOT NULL default 'true',
-  fun_Name varchar(30) default NULL,
-  fun_Description varchar(100) default NULL,
-  PRIMARY KEY  (fun_ID),
-  UNIQUE KEY fun_ID (fun_ID)
-) TYPE=MyISAM;
-
-# Sample data for table `donationfund_fun`
-INSERT INTO donationfund_fun VALUES (1, 'true', 'General Donation', 'Default fund: General operating expenses.');
-INSERT INTO donationfund_fun VALUES (2, 'true', 'Missions', 'Support for missions.');
-INSERT INTO donationfund_fun VALUES (3, 'true', 'Building', 'New building fund.');
 
 CREATE TABLE person_custom_master (
   custom_Order smallint(6) NOT NULL default '0',
@@ -342,4 +392,3 @@ INSERT INTO list_lst VALUES (4, 9, 9, 'Person from Group');
 INSERT INTO list_lst VALUES (4, 10, 10, 'Money');
 INSERT INTO list_lst VALUES (4, 11, 11, 'Phone Number');
 INSERT INTO list_lst VALUES (4, 12, 12, 'Custom Drop-Down List');
-
