@@ -47,10 +47,18 @@ class ChurchInfoReport extends FPDF {
    var $sTaxReport3 = "If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.";
    var $sTaxSigner = "<signs tax letter>";
 
+   // Verbage for the pledge reminder report
    var $sReminder1 = "This letter shows our record of your pledge and payments for fiscal year ";
    var $sReminderSigner = "<signs reminder letter>";
    var $sReminderNoPledge = "We have not received your pledge.";
    var $sReminderNoPayments = "We have not received any payments.";
+
+   // Verbage for the database information confirmation and correction report
+   var $sConfirm1 = "This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.";
+	var $sConfirm2 = "Thank you very much for helping us to update this information.  If you want on-line access to the church database please provide your email address and a desired password and we will send instructions.";
+	var $sConfirm3 = "Email _____________________________________ Password ________________";
+
+   var $sConfirmSigner = "<signs confirmation letter>";
 
    // Verbage for the directory report
    var $sDirectoryDisclaimer1 = "Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of ";
