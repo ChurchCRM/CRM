@@ -141,13 +141,26 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 	//If no errors, then let's update...
 	if (!$bErrorFlag)
 	{
-		// New Person (add)
+		// New pledge or deposit
 		if (strlen($iPledgeID) < 1)
 		{
 			// when creating a payment record the current deposit slip ID
 			$depIDString = "NULL";
 			if ($_SESSION['iCurrentDeposit'] && $PledgeOrPayment=='Payment')
 				$depIDString = $_SESSION['iCurrentDeposit'];
+			$sSQL = "SELECT * FROM deposit_dep WHERE dep_ID = " . $depIDString;
+			$rsDeposit = RunQuery($sSQL);
+			extract(mysql_fetch_array($rsDeposit));
+			if ($dep_Closed) {
+				$sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy)
+				         VALUES ('" . date("Y-m-d") . "','Automatically created because current slip was closed'," . $_SESSION['iUserID'] . ")";
+				RunQuery($sSQL);
+				$sSQL = "SELECT MAX(dep_ID) AS iDepositSlipID FROM deposit_dep";
+				$rsDepositSlipID = RunQuery($sSQL);
+				extract(mysql_fetch_array($rsDepositSlipID));
+				$_SESSION['iCurrentDeposit'] = $iDepositSlipID;
+				$depIDString = $iDepositSlipID;
+			}
 
 			// Only set PledgeOrPayment when the record is first created
 			$sSQL = "INSERT INTO pledge_plg (plg_FamID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString)

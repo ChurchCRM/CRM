@@ -164,7 +164,7 @@ require "Include/Header.php";
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Closed:"); ?></td>
-				<td class="TextColumn"><input type="checkbox" name="Closed" value="1" <?php if ($bClosed) echo " checked";?>><?php echo gettext("Close deposit slip"); ?>
+				<td class="TextColumn"><input type="checkbox" name="Closed" value="1" <?php if ($bClosed) echo " checked";?>><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
 			</tr>
 
 		</table>
