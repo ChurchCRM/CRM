@@ -419,6 +419,7 @@ CREATE TABLE user_usr (
   usr_SearchFamily tinyint(3) default NULL,
   usr_Canvasser tinyint(3) NOT NULL default '0',
   PRIMARY KEY  (usr_per_ID),
+  UNIQUE KEY `usr_UserName` (`usr_UserName`),
   KEY usr_per_ID (usr_per_ID)
 ) TYPE=MyISAM;
 
