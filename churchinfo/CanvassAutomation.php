@@ -196,7 +196,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 			 name="ProgressReport">
 		</td>
 		<td align="left" width="75%">
-			<?php echo gettext("Generate a PDF conaining a progress report.  The progress report includes
+			<?php echo gettext("Generate a PDF containing a progress report.  The progress report includes
 			information on the overall progress of the canvass, and the progress of individual canvassers."); ?>
 		</td>
 	</tr>
@@ -207,7 +207,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 			 name="SummaryReport">
 		</td>
 		<td align="left" width="75%">
-			<?php echo gettext("Generate a PDF conaining a summary report.  The summary report includes
+			<?php echo gettext("Generate a PDF containing a summary report.  The summary report includes
 			comments extracted from the canvass data."); ?>
 		</td>
 	</tr>
@@ -218,7 +218,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 			 name="NotInterestedReport">
 		</td>
 		<td align="left" width="75%">
-			<?php echo gettext("Generate a PDF conaining a report of the families marked &quot;Not Interested&quot; 
+			<?php echo gettext("Generate a PDF containing a report of the families marked &quot;Not Interested&quot; 
 			                    by the canvasser."); ?>
 		</td>
 	</tr>
