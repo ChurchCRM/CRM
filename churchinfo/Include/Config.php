@@ -216,6 +216,8 @@ $sPGPname = "gpg";
 // Right now, InfoCentral supports US English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)
 $sLanguage = 'en_US';
 
+$iFYMonth = 6; // Fiscal year runs June-May.  Pledges, payments, and canvass data are associated with the fiscal year
+
 //
 // SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE
 //

@@ -154,6 +154,21 @@ function Redirect($sRelativeURL)
 	header("Location: " . $sProtocol . $_SERVER['HTTP_HOST'] . $sPort . $sRootPath . "/" . $sRelativeURL);
 }
 
+// Returns the current fiscal year
+function CurrentFY()
+{
+	global $iFYMonth;
+
+echo "<p>iFYMonth=" . $iFYMonth . "</p>";
+
+	$yearNow = date ("Y");
+	$monthNow = date ("m");
+	$FYID = $yearNow - 1996;
+	if ($monthNow > $iFYMonth)
+		$FYID += 1;
+	return ($FYID);
+}
+
 // Runs an SQL query.  Returns the result resource.
 // By default stop on error, unless a second (optional) argument is passed as false.
 function RunQuery($sSQL, $bStopOnError = true)
