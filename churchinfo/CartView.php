@@ -110,8 +110,11 @@ if (count($_SESSION['aPeopleCart']) != 0)
 	echo "<a href=\"CSVExport.php?Source=cart\">" . gettext("CSV Export") . "</a>";
 
 	if ($iEmailNum > 0) {
-		$sEmailLink .= "," . $sToEmailAddress . "\">";
-		echo "<br>" . $sEmailLink . gettext("Open Standard E-mail Client") . "</a>";
+		// Add default email if default email has been set and is not already in string
+		if ($sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress))
+			$sEmailLink .= "," . $sToEmailAddress;
+		$sEmailLink .= "\">";
+		echo "<br>" . $sEmailLink . gettext("Email Cart") . "</a>";
 	}
 
 	echo "</p></td>";
