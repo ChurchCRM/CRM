@@ -61,7 +61,7 @@ class PDF_Label extends ChurchInfoReport
 
 	// List of all Avery formats
 	var $_Avery_Labels = array (
-
+		'Tractor'=>array('name'=>'Tractor', 'paper-size'=>'letter', 'metric'=>'mm', 'marginLeft'=>6.5, 'marginTop'=>5, 'NX'=>1, 'NY'=>10, 'SpaceX'=>3.175, 'SpaceY'=>0, 'width'=>120, 'height'=>26.5, 'font-size'=>12),
 		'5160'=>array('name'=>'5160', 'paper-size'=>'letter', 'metric'=>'mm', 'marginLeft'=>4, 'marginTop'=>11, 'NX'=>3, 'NY'=>10, 'SpaceX'=>3.175, 'SpaceY'=>0, 'width'=>66.675, 'height'=>25.4, 'font-size'=>11),
 		'5161'=>array('name'=>'5161', 'paper-size'=>'letter', 'metric'=>'mm', 'marginLeft'=>1, 'marginTop'=>10.7, 'NX'=>2, 'NY'=>10, 'SpaceX'=>3.967, 'SpaceY'=>0, 'width'=>101.6, 'height'=>25.4, 'font-size'=>11),
 		'5162'=>array('name'=>'5162', 'paper-size'=>'letter', 'metric'=>'mm', 'marginLeft'=>4, 'marginTop'=>20.224, 'NX'=>2, 'NY'=>7, 'SpaceX'=>4.762, 'SpaceY'=>0, 'width'=>100.807, 'height'=>34, 'font-size'=>12),
