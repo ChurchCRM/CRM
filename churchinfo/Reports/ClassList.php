@@ -52,8 +52,7 @@ $phoneX = 170;
 
 $yTitle = 20;
 $yTeachers = 26;
-$yLiaison = 30;
-$yStartStudents = 36;
+$yOffsetStartStudents = 6;
 $yIncrement = 4;
 
 $pdf->SetFont("Times",'B',16);
@@ -69,18 +68,30 @@ $pdf->Line ($nameX, $yTeachers -0.75, 195, $yTeachers -0.75);
 $ga = GetGroupArray ($iGroupID);
 $numMembers = count ($ga);
 
-$teacherString = "";
+$teacherString1 = "";
+$teacherString2 = "";
+$teacherCount = 0;
+$teachersThatFit = 4;
 
-$bFirstTeacher = true;
+$bFirstTeacher1 = true;
+$bFirstTeacher2 = true;
 for ($row = 0; $row < $numMembers; $row++)
 {
    extract ($ga[$row]);
    if ($lst_OptionName == gettext ("Teacher")) {
-      if (! $bFirstTeacher)
-         $teacherString .= ", ";
       $phone = $pdf->StripPhone ($fam_HomePhone);
-      $teacherString .= $per_FirstName . " " . $per_LastName . " " . $phone;
-      $bFirstTeacher = false;
+	  if ($teacherCount >= $teachersThatFit) {
+		  if (! $bFirstTeacher2)
+			 $teacherString2 .= ", ";
+	      $teacherString2 .= $per_FirstName . " " . $per_LastName . " " . $phone;
+	      $bFirstTeacher2 = false;
+	  } else {
+		  if (! $bFirstTeacher1)
+			 $teacherString1 .= ", ";
+	      $teacherString1 .= $per_FirstName . " " . $per_LastName . " " . $phone;
+	      $bFirstTeacher1 = false;
+	  }
+	  ++$teacherCount;
    }
 }
 
@@ -94,12 +105,21 @@ for ($row = 0; $row < $numMembers; $row++)
 }
 
 $pdf->SetFont("Times",'B',10);
-$pdf->WriteAt ($nameX, $yTeachers, $teacherString);
-$pdf->WriteAt ($nameX, $yLiaison, $liaisonString);
+
+$y = $yTeachers;
+
+$pdf->WriteAt ($nameX, $y, $teacherString1);
+$y += $yIncrement;
+
+if ($teacherCount > $teachersThatFit) {
+	$pdf->WriteAt ($nameX, $y, $teacherString2);
+	$y += $yIncrement;
+}
+
+$pdf->WriteAt ($nameX, $y, $liaisonString);
+$y += $yOffsetStartStudents;
 
 $pdf->SetFont("Times",'',12);
-
-$y = $yStartStudents;
 
 for ($row = 0; $row < $numMembers; $row++)
 {
@@ -129,6 +149,11 @@ for ($row = 0; $row < $numMembers; $row++)
 
       $prevStudentName = $studentName;
       $y += 1.5 * $yIncrement;
+
+	  if ($y > 250) {
+			$pdf->AddPage ();
+			$y = 20;
+	  }
    }
 }
 
