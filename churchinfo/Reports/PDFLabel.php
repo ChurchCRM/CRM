@@ -28,26 +28,29 @@ require "../Include/class_fpdf_labels.php";
 
 function GenerateLabels(&$pdf, $mode, $bOnlyComplete = false)
 {
-	if ($mode == "indiv")
-	{
-		$sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY per_LastName";
-	}
-	else
-	{
-		$sSQL = "(SELECT *, 0  AS memberCount FROM person_per  LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 AND per_ID in ( " . ConvertCartToString($_SESSION['aPeopleCart']) ." ))
-		UNION (SELECT *, COUNT(*) AS memberCount FROM person_per  LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 AND per_ID in ( " . ConvertCartToString($_SESSION['aPeopleCart']) ." ) GROUP BY per_fam_ID HAVING memberCount = 1)
-		UNION (SELECT *, COUNT(*) AS memberCount FROM person_per  LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 AND per_ID in ( " . ConvertCartToString($_SESSION['aPeopleCart']) ." ) GROUP BY per_fam_ID HAVING memberCount > 1)";
-	}
+	// $mode is "indiv" or "fam"
+
+	$sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY fam_Zip";
 	$rsCartItems = RunQuery($sSQL);
 
 	while ($aRow = mysql_fetch_array($rsCartItems))
 	{
 		$sRowClass = AlternateRowStyle($sRowClass);
 
-		if (($aRow['memberCount'] > 1) && ($mode == "fam"))
-			$sName = $aRow['fam_Name'] . " Family";
+		if ($aRow['per_fam_ID'] == 0) { // Person is a member with no family assigned
+			// echo "<p>No family assigned for " . $aRow['per_FirstName'] . " " . $aRow['per_LastName'] . "</p>" ;
+			continue;
+		}
+
+		if ($mode == "fam")
+			$sName = $pdf->MakeSalutation ($aRow['per_fam_ID']);
 		else
 			$sName = FormatFullName($aRow['per_Title'], $aRow['per_FirstName'], "", $aRow['per_LastName'], $aRow['per_Suffix'], 1);
+
+		if ($didFam[$aRow['per_fam_ID']] && ($mode == "fam"))
+			continue;
+
+		$didFam[$aRow['per_fam_ID']] = 1;
 
 		SelectWhichAddress($sAddress1, $sAddress2, $aRow['per_Address1'], $aRow['per_Address2'], $aRow['fam_Address1'], $aRow['fam_Address2'], false);
 
