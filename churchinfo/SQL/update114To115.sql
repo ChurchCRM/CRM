@@ -34,7 +34,7 @@ CREATE TABLE autopayment_aut (
   aut_Serial mediumint(9) NOT NULL default '1',
 
   PRIMARY KEY  (aut_ID),
-  UNIQUE KEY aut_ID (aut_ID),
+  UNIQUE KEY aut_ID (aut_ID)
 ) TYPE=MyISAM;
 
 ALTER TABLE deposit_dep ADD COLUMN (dep_Type enum('Bank','CreditCard','BankDraft') NOT NULL default 'Bank');
