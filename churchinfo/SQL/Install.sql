@@ -293,6 +293,17 @@ CREATE TABLE user_usr (
   usr_currentDeposit mediumint(9) default NULL,
   usr_UserName varchar(32) default NULL,
   usr_EditSelf tinyint(3) unsigned NOT NULL default '0',
+  usr_CalStart date default NULL,
+  usr_CalEnd date default NULL,
+  usr_CalNoSchool1 date default NULL,
+  usr_CalNoSchool2 date default NULL,
+  usr_CalNoSchool3 date default NULL,
+  usr_CalNoSchool4 date default NULL,
+  usr_CalNoSchool5 date default NULL,
+  usr_CalNoSchool6 date default NULL,
+  usr_CalNoSchool7 date default NULL,
+  usr_CalNoSchool8 date default NULL,
+  usr_SearchFamily tinyint(3) default NULL,
   PRIMARY KEY  (usr_per_ID),
   KEY usr_per_ID (usr_per_ID)
 ) TYPE=MyISAM;
