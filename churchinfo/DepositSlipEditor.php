@@ -81,6 +81,12 @@ if (isset($_POST["DepositSlipSubmit"]))
 		} else {
 			$sSQL = "UPDATE deposit_dep SET dep_Date = '" . $dDate . "', dep_Comment = '" . $sComment . "', dep_EnteredBy = ". $_SESSION['iUserID'] . ", dep_Closed = " . $bClosed . " WHERE dep_ID = " . $iDepositSlipID . ";";
 			$bGetKeyBack = false;
+
+			if ($bClosed) {
+				// Delete any failed transactions on this deposit slip now that it is closing
+				$q = "DELETE FROM pledge_plg WHERE plg_depID = " . $iDepositSlipID . " AND plg_aut_Cleared=0" ;
+				RunQuery($q);
+			}
 		}
 
 		//Execute the SQL
@@ -427,6 +433,11 @@ require "Include/Header.php";
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Closed:"); ?></td>
 				<td class="TextColumn"><input type="checkbox" name="Closed" value="1" <?php if ($bClosed) echo " checked";?>><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
+<?php 
+				if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') {
+					echo "<p>" . gettext("Important note: failed transactions will be deleted permanantly when the deposit slip is closed.") . "</p>";
+				}
+?>
 			</tr>
 
 		</table>
