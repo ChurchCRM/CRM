@@ -203,6 +203,9 @@ function FilterInput($sInput,$type = 'string',$size = 1)
 				return (int) trim($sInput);
 			case 'float':
 				return (float) trim($sInput);
+			case 'date':
+				// Attempts to take a date in any format and convert it to YYYY-MM-DD format
+				return date("Y-m-d",strtotime($sInput));
 		}
 	}
 	else
