@@ -162,9 +162,33 @@ function CurrentFY()
 	$yearNow = date ("Y");
 	$monthNow = date ("m");
 	$FYID = $yearNow - 1996;
-	if ($monthNow > $iFYMonth)
+	if ($monthNow >= $iFYMonth)
 		$FYID += 1;
 	return ($FYID);
+}
+
+// PrintFYIDSelect: make a fiscal year selection menu.
+function PrintFYIDSelect ($iFYID, $selectName)
+{
+	global $iFYMonth;
+
+	echo "<select name=\" . $selectName . \">";
+
+	$monthNow = date ("m");
+
+	echo "<option value=\"0\">" . gettext("Select Fiscal Year") . "</option>";
+
+	for ($fy = 1; $fy < CurrentFY() + 2; $fy++) {
+		echo "<option value=\"" . $fy . "\"";
+		if ($iFYID == $fy)
+			echo " selected";
+		echo ">";
+		if ($iFYMonth == 1)
+			echo 1996 + $fy;
+		else
+			echo 1995 + $fy . "/" . substr (1996 + $fy, 2, 2);
+	}
+	echo "</select>";
 }
 
 // Runs an SQL query.  Returns the result resource.
