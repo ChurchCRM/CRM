@@ -68,9 +68,6 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	$iFamily = FilterInput($_POST["Family"],'int');
 	$iFamilyRole = FilterInput($_POST["FamilyRole"],'int');
 
-	if ($_POST["Family"] == -1) // -1 = create a new family from this person
-		$iFamily == -1;
-
 	// Get their family's country in case person's country was not entered
 	if ($iFamily > 0) {
 		$sSQL = "SELECT fam_Country FROM family_fam WHERE fam_ID = " . $iFamily;
