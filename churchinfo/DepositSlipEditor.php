@@ -150,7 +150,12 @@ if (isset($_POST["DepositSlipSubmit"]))
 		$fund = $aut_Fund;
 		$authDate = $aut_NextPayDate;
 
-		if ($amount > 0.00) {
+		// Check for this automatic payment already loaded into this deposit slip
+		$sSQL = "SELECT plg_plgID FROM pledge_plg WHERE plg_depID=" . $dep_ID . " AND plg_aut_ID=" . $aut_ID;
+		$rsDupPayment = RunQuery ($sSQL);
+		$dupCnt = mysql_num_rows ($rsDupPayment);
+
+		if ($amount > 0.00 && $dupCnt == 0) {
 			$sSQL = "INSERT INTO pledge_plg (plg_FamID, 
 														plg_FYID, 
 														plg_date, 
@@ -175,13 +180,16 @@ if (isset($_POST["DepositSlipSubmit"]))
 														$dep_ID . "," .
 														$aut_ID . ")";
 			RunQuery ($sSQL);
-
-			// Push the authorized transaction date forward by the interval
-			$sSQL = "UPDATE autopayment_aut SET aut_NextPayDate=DATE_ADD('" . $authDate . "', INTERVAL " . $interval . " MONTH), aut_Serial=aut_Serial+1 WHERE aut_ID = " . $aut_ID;
-			RunQuery ($sSQL);
 		}
 	}
 } else if (isset($_POST["DepositSlipRunTransactions"])) {
+
+	$dDate = FilterInput($_POST["Date"]);
+	$sComment = FilterInput($_POST["Comment"]);
+	$bClosed = FilterInput($_POST["Closed"]);
+	$sDepositType = FilterInput($_POST["DepositType"]);
+	if (! $bClosed)
+		$bClosed = 0;
 
 	// Process all the transactions
 
@@ -207,8 +215,11 @@ if (isset($_POST["DepositSlipSubmit"]))
 						 a.aut_BankName AS bankName,
 						 a.aut_Route AS route,
 						 a.aut_Account AS account,
-						 a.aut_Serial AS serial
-			 FROM pledge_plg 
+						 a.aut_Serial AS serial,
+						 a.aut_NextPayDate AS authDate,
+						 a.aut_Interval AS aut_Interval,
+						 a.aut_ID AS aut_ID
+			 FROM pledge_plg
 			 LEFT JOIN autopayment_aut a ON plg_aut_ID = a.aut_ID
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 			 WHERE plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_date";
@@ -288,6 +299,12 @@ if (isset($_POST["DepositSlipSubmit"]))
 			$submitSuccess = 1;
 		else
 			$submitSuccess = 0;
+		
+		if ($submitSuccess) {
+			// Push the authorized transaction date forward by the interval
+			$sSQL = "UPDATE autopayment_aut SET aut_NextPayDate=DATE_ADD('" . $authDate . "', INTERVAL " . $aut_Interval . " MONTH), aut_Serial=aut_Serial+1 WHERE aut_ID = " . $aut_ID;
+			RunQuery ($sSQL);
+		}
 
 		$sSQL = "UPDATE pledge_plg SET plg_aut_Cleared=" . $submitSuccess . " WHERE plg_plgID=" . $plg_plgID;
 		RunQuery($sSQL);
