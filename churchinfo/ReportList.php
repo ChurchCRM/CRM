@@ -67,6 +67,12 @@ require "Include/Header.php";
 <?php echo gettext("Pledges and Payments"); ?>
 </p>
 
+<p>
+<a class="MediumText" href="CanvassAutomation.php"><?php echo gettext("Canvass Automation"); ?></a>
+<br>
+<?php echo gettext("Automated support for conducting an every-member canvass."); ?>
+</p>
+
 
 <?php
 require "Include/Footer.php";
