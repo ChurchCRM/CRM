@@ -159,8 +159,6 @@ function CurrentFY()
 {
 	global $iFYMonth;
 
-echo "<p>iFYMonth=" . $iFYMonth . "</p>";
-
 	$yearNow = date ("Y");
 	$monthNow = date ("m");
 	$FYID = $yearNow - 1996;
