@@ -57,10 +57,11 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 			 WHERE plg_FamID = " . $fam_ID . " AND plg_PledgeOrPayment = 'Payment' AND
-			 (" . $iFYID . "-plg_FYID<=" . $iRequireDonationYears . ")";
+			 (" . $iFYID . "-plg_FYID<" . $iRequireDonationYears . ")";
+
 	$rsPledges = RunQuery($sSQL);
 
-	if ((!$iRequireDonationYears) || mysql_num_rows ($rsPledges) > 0) {
+	if (($iRequireDonationYears==0) || mysql_num_rows ($rsPledges) > 0) {
 
 		$pdf->WriteAt ($pdf->leftX, $curY, $fam_Name);
 
