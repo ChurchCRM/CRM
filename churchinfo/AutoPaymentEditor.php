@@ -235,11 +235,7 @@ if (isset($_POST["Submit"]))
 		$iFund = 1;
 
 		// Default to the current fiscal year ID
-		$yearNow = date ("Y");
-		$monthNow = date ("m");
-		$FYID = $yearNow - 1996;
-		if ($monthNow > 3)
-			$FYID += 1;
+		$FYID = CurrentFY ();
 	}
 }
 
