@@ -5,7 +5,7 @@
 *  last change : 2003-08-30
 *  description : Creates a report on access by users
 *
-*  InfoCentral is free software; you can redistribute it and/or modify
+*  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -62,7 +62,7 @@ class PDF_AccessReport extends ChurchInfoReport {
 		$this->_Margin_Top  = 12;
 
 		$this->Set_Char_Size(20);
-		$this->Write (10, "InfoCentral Users Starting With Most Recently Logged In");
+		$this->Write (10, "ChurchInfo Users Starting With Most Recently Logged In");
 		$this->Set_Char_Size(12);
 	}
 
