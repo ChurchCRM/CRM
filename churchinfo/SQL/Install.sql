@@ -1,3 +1,42 @@
+
+CREATE TABLE autopayment_aut (
+  aut_ID mediumint(9) unsigned NOT NULL auto_increment,
+  aut_FamID mediumint(9) unsigned NOT NULL default '0',
+  aut_EnableBankDraft tinyint(1) unsigned NOT NULL default '0',
+  aut_EnableCreditCard tinyint(1) unsigned NOT NULL default '0',
+  aut_NextPayDate date default NULL,
+  aut_Amount decimal(6,2) NOT NULL default '0.00',
+  aut_Interval tinyint(3) NOT NULL default '1',
+  aut_Fund mediumint(6) NOT NULL default '0',
+
+  aut_FirstName varchar(50) default NULL,
+  aut_LastName varchar(50) default NULL,
+  aut_Address1 varchar(255) default NULL,
+  aut_Address2 varchar(255) default NULL,
+  aut_City varchar(50) default NULL,
+  aut_State varchar(50) default NULL,
+  aut_Zip varchar(50) default NULL,
+  aut_Country varchar(50) default NULL,
+  aut_Phone varchar(30) default NULL,
+  aut_Email varchar(100) default NULL,
+
+  aut_CreditCard varchar(50) default NULL,
+  aut_ExpMonth varchar(2) default NULL,
+  aut_ExpYear varchar(4) default NULL,
+
+  aut_BankName varchar (50) default NULL,
+  aut_Route varchar (30) default NULL,
+  aut_Account varchar (30) default NULL,
+
+  aut_DateLastEdited datetime default NULL,
+  aut_EditedBy smallint(5) unsigned default '0',
+
+  aut_Serial mediumint(9) NOT NULL default '1',
+
+  PRIMARY KEY  (aut_ID),
+  UNIQUE KEY aut_ID (aut_ID),
+) TYPE=MyISAM;
+
 CREATE TABLE canvas05_c05 (
   c05_famID smallint(9) NOT NULL default '0',
   c05_churchColor text,
@@ -48,16 +87,6 @@ CREATE TABLE family_fam (
   fam_scanCredit text,
   fam_SendNewsLetter enum('FALSE','TRUE') NOT NULL default 'FALSE',
   fam_DateDeactivated date default NULL,
-  fam_enableBankDraft tinyint(1) unsigned NOT NULL default '0',
-  fam_enableCreditCard tinyint(1) unsigned NOT NULL default '0',
-  fam_bankDraftDate date default NULL,
-  fam_creditCardDate date default NULL,
-  fam_bankDraftAmount decimal(6,2) NOT NULL default '0.00',
-  fam_creditCardAmount decimal(6,2) NOT NULL default '0.00',
-  fam_creditCardInterval tinyint(3) NOT NULL default '1',
-  fam_bankDraftInterval tinyint(3) NOT NULL default '1',
-  fam_creditCardFund mediumint(6) NOT NULL default '0',
-  fam_bankDraftFund mediumint(6) NOT NULL default '0',
   PRIMARY KEY  (fam_ID),
   KEY fam_ID (fam_ID)
 ) TYPE=MyISAM;
@@ -65,7 +94,7 @@ CREATE TABLE family_fam (
 CREATE TABLE group_grp (
   grp_ID mediumint(8) unsigned NOT NULL auto_increment,
   grp_Type tinyint(4) NOT NULL default '0',
-  grp_RoleListID mediumint(8) unsigned NOT NULL,
+  grp_RoleListID mediumint(8) unsigned NOT NULL default '0',
   grp_DefaultRole mediumint(9) NOT NULL default '0',
   grp_Name varchar(50) NOT NULL default '',
   grp_Description text,
@@ -155,8 +184,12 @@ CREATE TABLE pledge_plg (
   plg_CheckNo bigint(16) unsigned default NULL,
   plg_Problem tinyint(1) default NULL,
   plg_scanString text,
+  plg_aut_ID mediumint(9) NOT NULL default '0',
+  plg_aut_Cleared tinyint(1) NOT NULL default '0',
+  plg_aut_ResultID mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (plg_plgID)
 ) TYPE=MyISAM;
+
 
 CREATE TABLE property_pro (
   pro_ID mediumint(8) unsigned NOT NULL auto_increment,
@@ -279,6 +312,26 @@ CREATE TABLE record2property_r2p (
   r2p_Value text NOT NULL
 ) TYPE=MyISAM;
 
+
+CREATE TABLE result_res (
+  res_ID mediumint(9) NOT NULL auto_increment,
+  res_echotype1 text NOT NULL,
+  res_echotype2 text NOT NULL,
+  res_echotype3 text NOT NULL,
+  res_authorization text NOT NULL,
+  res_order_number text NOT NULL,
+  res_reference text NOT NULL,
+  res_status text NOT NULL,
+  res_avs_result text NOT NULL,
+  res_security_result text NOT NULL,
+  res_mac text NOT NULL,
+  res_decline_code text NOT NULL,
+  res_tran_date text NOT NULL,
+  res_merchant_name text NOT NULL,
+  res_version text NOT NULL,
+  res_EchoServer text NOT NULL,
+  PRIMARY KEY  (res_ID)
+) TYPE=MyISAM;
 
 CREATE TABLE user_usr (
   usr_per_ID mediumint(9) unsigned NOT NULL default '0',
