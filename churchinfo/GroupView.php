@@ -99,7 +99,8 @@ if ($_SESSION['bManageGroups'])
 		echo "<a class=\"SmallText\" href=\"GroupPropsFormEditor.php?GroupID=" . $grp_ID . "\">" . gettext("Edit Group-Specific Properties Form") . "</a> | ";
 	}
 }
-echo "<a class=\"SmallText\" href=\"GroupView.php?Action=AddGroupToCart&GroupID=" . $grp_ID . "\">" . gettext("Add Group Members to Cart") . "</a>";
+echo "<a class=\"SmallText\" href=\"GroupView.php?Action=AddGroupToCart&GroupID=" . $grp_ID . "\">" . gettext("Add Group Members to Cart") . "</a> | ";
+echo "<a class=\"SmallText\" href=\"GroupMeeting.php?GroupID=" . $grp_ID . "&Name=" . $grp_Name . "&linkBack=GroupView.php?GroupID=" . $grp_ID . "\">" . gettext("Schedule a meeting") . "</a>";
 ?>
 <BR><BR>
 <table border="0" width="100%" cellspacing="0" cellpadding="5">
