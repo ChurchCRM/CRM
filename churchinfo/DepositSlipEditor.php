@@ -184,8 +184,11 @@ if (isset($_POST["DepositSlipSubmit"]))
 	// Process all the transactions
 
 	//Get the payments for this deposit slip
-	$sSQL = "SELECT plg_amount, 
-	                plg_scanString, 
+	$sSQL = "SELECT plg_plgID,
+                   plg_amount, 
+	                plg_scanString,
+						 plg_aut_Cleared,
+						 plg_aut_ResultID,
 						 a.aut_FirstName AS firstName,
 						 a.aut_LastName AS lastName,
 						 a.aut_Address1 AS address1,
@@ -217,6 +220,11 @@ if (isset($_POST["DepositSlipSubmit"]))
 	while ($aTransaction =mysql_fetch_array($rsTransactions))
 	{
 		extract($aTransaction);
+
+echo "<p>serial is " . $serial . "</p>";
+
+		if ($plg_aut_Cleared) // If this one already cleared do not submit it again.
+			continue;
 
 		$echoPHP->set_EchoServer("https://wwws.echo-inc.com/scripts/INR200.EXE");
 		$echoPHP->set_merchant_echo_id ($EchoAccount);
@@ -270,44 +278,85 @@ if (isset($_POST["DepositSlipSubmit"]))
 			$echoPHP->set_transaction_type("DD");
 		}
 
-		$echoPHP->set_debug("T");  // set to T to turn on debugging
+		$echoPHP->set_debug("F");  // set to T to turn on debugging
 
-		$echoPHP->set_counter("1");
-		print("You are using the " . $echoPHP->get_version() . "<hr>");
+		$echoPHP->set_counter(1);
 
-		if (!($echoPHP->Submit()))  {
-			if ($echoPHP->decline_code == "1013") {
-				echo "<b>Transaction Declined: Decline code 1013</b><br><br>The merchant account ";
-				echo "could not login to the ECHOnline server (maybe your ";
-				echo "PIN is incorrect?), or transaction_type or order_type was found to be invalid. To ensure your ECHO-ID and PIN are correct, you should be able ";
-				echo "to login to the <a href=\"https://wwws.echo-inc.com/login.asp\">ECHO Merchant Center</a>. ";
-				echo "If you can't, please contact <i>ECHO</i> Customer Service at 1-800-262-3246, ext. 1 and ";
-				echo "they will help you resolve the problem.";
-				echo "<br><br><b>ECHO Response:</b><br>";
-			}
-			echo "</body></html>";
-		} else  {
-			// At this point, your transaction was successful.  You can insert your results into your database, etc.
-			// You do not need to parse <ECHOTYPE3>, we do this for you and put the results into variables.
-			print("<b>Congratulations!</b> Your transaction was successful.  The results of your transaction ");
-			print("have been stored in these variables for you ");
-			print("(see <a href=https://wwws.echo-inc.com/ISPGuide-Interface.asp>Response Protocol</a> for return information):");
-			print("<br>\$echoPHP->authorization<br>\$echoPHP->order_number<br>\$echoPHP->reference<br>\$echoPHP->status<br>");
-			print("\$echoPHP->avs_result<br>\$echoPHP->security_result<br>\$echoPHP->mac<br>\$echoPHP->decline_code<br>");
-			print("\$echoPHP->tran_date<br>\$echoPHP->merchant_name<br>\$echoPHP->version<br><br>\$echoPHP->EchoResponse");
-			print("<br>\$echoPHP->echotype1<br>\$echoPHP->echotype2<br>\$echoPHP->echotype3<br><br>I am printing the ");
-			print("\$echoPHP->EchoResponse variable here: <br>");
+		$submitSuccess = $echoPHP->Submit();
+		if ($submitSuccess)
+			$submitSuccess = 1;
+		else
+			$submitSuccess = 0;
+
+		$sSQL = "UPDATE pledge_plg SET plg_aut_Cleared=" . $submitSuccess . " WHERE plg_plgID=" . $plg_plgID;
+		RunQuery($sSQL);
+
+		if ($plg_aut_ResultID) {
+			// Already have a result record, update it.
+			$sSQL = "UPDATE result_res SET " .
+							"res_echotype1	='" . $echoPHP->echotype1	. "'," .
+							"res_echotype2	='" . $echoPHP->echotype2	. "'," .
+							"res_echotype3	='" . $echoPHP->echotype3	. "'," .
+							"res_authorization	='" . $echoPHP->authorization	. "'," .
+							"res_order_number	='" . $echoPHP->order_number	. "'," .
+							"res_reference	='" . $echoPHP->reference	. "'," .
+							"res_status	='" . $echoPHP->status	. "'," .
+							"res_avs_result	='" . $echoPHP->avs_result	. "'," .
+							"res_security_result	='" . $echoPHP->security_result	. "'," .
+							"res_mac	='" . $echoPHP->mac	. "'," .
+							"res_decline_code	='" . $echoPHP->decline_code	. "'," .
+							"res_tran_date	='" . $echoPHP->tran_date	. "'," .
+							"res_merchant_name	='" . $echoPHP->merchant_name	. "'," .
+							"res_version	='" . $echoPHP->version	. "'," .
+							"res_EchoServer	='" . $echoPHP->EchoServer	. "'" .
+						" WHERE res_ID=" . $plg_aut_ResultID;
+			RunQuery($sSQL);
+		} else {
+			// Need to make a new result record
+			$sSQL = "INSERT INTO result_res (
+							res_echotype1,
+							res_echotype2,
+							res_echotype3,
+							res_authorization,
+							res_order_number,
+							res_reference,
+							res_status,
+							res_avs_result,
+							res_security_result,
+							res_mac,
+							res_decline_code,
+							res_tran_date,
+							res_merchant_name,
+							res_version,
+							res_EchoServer)
+						VALUES (" .
+							"'" . $echoPHP->echotype1 . "'," .
+							"'" . $echoPHP->echotype2 . "'," .
+							"'" . $echoPHP->echotype3 . "'," .
+							"'" . $echoPHP->authorization . "'," .
+							"'" . $echoPHP->order_number . "'," .
+							"'" . $echoPHP->reference . "'," .
+							"'" . $echoPHP->status . "'," .
+							"'" . $echoPHP->avs_result . "'," .
+							"'" . $echoPHP->security_result . "'," .
+							"'" . $echoPHP->mac . "'," .
+							"'" . $echoPHP->decline_code . "'," .
+							"'" . $echoPHP->tran_date . "'," .
+							"'" . $echoPHP->merchant_name . "'," .
+							"'" . $echoPHP->version . "'," .
+							"'" . $echoPHP->EchoServer . "')";
+			RunQuery($sSQL);
+
+			// Now get the ID for the newly created record
+			$sSQL = "SELECT MAX(res_ID) AS iResID FROM result_res";
+			$rsLastEntry = RunQuery($sSQL);
+			extract(mysql_fetch_array($rsLastEntry));
+			$plg_aut_ResultID = $iResID;
+
+			// Poke the ID of the new result record back into this pledge (payment) record
+			$sSQL = "UPDATE pledge_plg SET plg_aut_ResultID=" . $plg_aut_ResultID . " WHERE plg_plgID=" . $plg_plgID;
+			RunQuery($sSQL);
 		}
-
-		// This prints the ECHO response.  You always get back <ECHOTYPE1>, <ECHOTYPE2>, and <ECHOTYPE3> tags.
-		// View the page source to see all three <ECHOTYPE3> results.
-		print($echoPHP->EchoResponse . "<br>");
-    
-		echo "<hr>Printing all properties of PHP class for debugging purposes..<br>";
-		echo "If you set debug to T, you will get back more information in EchoResponse<br>";
-		echo "<pre>"; 
-		var_dump($echoPHP); 
-		echo "</pre>";    
 	}
 
 } else {
@@ -336,7 +385,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 
 if ($iDepositSlipID) {
 	//Get the payments for this deposit slip
-	$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment, 
+	$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment, plg_aut_Cleared,
 	         a.fam_Name AS FamilyName, b.fun_Name as fundName
 			 FROM pledge_plg 
 			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
@@ -410,8 +459,10 @@ require "Include/Header.php";
 	<td><?php echo gettext("Amount"); ?></td>
 	<td><?php echo gettext("Method"); ?></td>
 	<td><?php echo gettext("Comment"); ?></td>
+	<td><?php echo gettext("Cleared"); ?></td>
 	<td><?php echo gettext("Edit"); ?></td>
 	<td><?php echo gettext("Delete"); ?></td>
+	<td><?php echo gettext("Details"); ?></td>
 </tr>
 
 <?php
@@ -463,10 +514,16 @@ while ($aRow =mysql_fetch_array($rsPledges))
 			<?php echo $plg_comment; ?>&nbsp;
 		</td>
 		<td>
+			<?php if ($plg_aut_Cleared) echo "Yes"; else echo "No"; ?>&nbsp;
+		</td>
+		<td>
 			<a href="PledgeEditor.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Edit</a>
 		</td>
 		<td>
 			<a href="PledgeDelete.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Delete</a>
+		</td>
+		<td>
+			<a href="PledgeDetails.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Details</a>
 		</td>
 	</tr>
 <?php
