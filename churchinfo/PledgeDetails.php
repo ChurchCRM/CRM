@@ -16,29 +16,15 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 //Set the page title
-$sPageTitle = gettext("Electronig Transaction Details");
+$sPageTitle = gettext("Electronic Transaction Details");
 
 //Get the PledgeID out of the querystring
 $iPledgeID = FilterInput($_GET["PledgeID"],'int');
 $linkBack = FilterInput($_GET["linkBack"]);
 
-// Security: User must have Add or Edit Records permission to use this form in those manners
+// Security: User must have Finance permission to use this form.
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (strlen($iPledgeID) > 0)
-{
-	if (!$_SESSION['bEditRecords'])
-	{
-		Redirect("Menu.php");
-		exit;
-	}
-	$sSQL = "SELECT '' FROM pledge_plg WHERE plg_plgID = " . $iPledgeID;
-	if (mysql_num_rows(RunQuery($sSQL)) == 0)
-	{
-		Redirect("Menu.php");
-		exit;
-	}
-}
-elseif (!$_SESSION['bAddRecords'])
+if (! $_SESSION['bFinance'])
 {
 	Redirect("Menu.php");
 	exit;

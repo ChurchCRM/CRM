@@ -221,8 +221,6 @@ if (isset($_POST["DepositSlipSubmit"]))
 	{
 		extract($aTransaction);
 
-echo "<p>serial is " . $serial . "</p>";
-
 		if ($plg_aut_Cleared) // If this one already cleared do not submit it again.
 			continue;
 
@@ -243,6 +241,7 @@ echo "<p>serial is " . $serial . "</p>";
 		$echoPHP->set_billing_ip_address($REMOTE_ADDR);
 
 		$echoPHP->set_order_type("S");
+		$echoPHP->set_cnp_recurring("Y");
 
 		if ($dep_Type == "CreditCard") {
 
@@ -454,15 +453,21 @@ require "Include/Header.php";
 <tr class="TableHeader">
 	<td><?php echo gettext("Family"); ?></td>
 	<td><?php echo gettext("Date"); ?></td>
+<?php if ($dep_Type == 'Bank') { ?>
 	<td><?php echo gettext("Check #"); ?></td>
+<?php } ?>
 	<td><?php echo gettext("Fund"); ?></td>
 	<td><?php echo gettext("Amount"); ?></td>
 	<td><?php echo gettext("Method"); ?></td>
 	<td><?php echo gettext("Comment"); ?></td>
+<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
 	<td><?php echo gettext("Cleared"); ?></td>
+<?php } ?>
 	<td><?php echo gettext("Edit"); ?></td>
 	<td><?php echo gettext("Delete"); ?></td>
+<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
 	<td><?php echo gettext("Details"); ?></td>
+<?php } ?>
 </tr>
 
 <?php
@@ -498,9 +503,11 @@ while ($aRow =mysql_fetch_array($rsPledges))
 		<td>
 			<?php echo $plg_date ?>&nbsp;
 		</td>
+<?php if ($dep_Type == 'Bank') { ?>
 		<td>
 			<?php echo $plg_CheckNo ?>&nbsp;
 		</td>
+<?php } ?>
 		<td>
 			<?php echo $fundName ?>&nbsp;
 		</td>
@@ -513,18 +520,22 @@ while ($aRow =mysql_fetch_array($rsPledges))
 		<td>
 			<?php echo $plg_comment; ?>&nbsp;
 		</td>
+<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
 		<td>
 			<?php if ($plg_aut_Cleared) echo "Yes"; else echo "No"; ?>&nbsp;
 		</td>
+<?php } ?>
 		<td>
 			<a href="PledgeEditor.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Edit</a>
 		</td>
 		<td>
 			<a href="PledgeDelete.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Delete</a>
 		</td>
+<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
 		<td>
 			<a href="PledgeDetails.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Details</a>
 		</td>
+<?php } ?>
 	</tr>
 <?php
 } // while
