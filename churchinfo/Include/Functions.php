@@ -606,6 +606,14 @@ function ExpandPhoneNumber($sPhoneNumber,$sPhoneCountry,&$bWeird)
 //
 function PrintAge($Month,$Day,$Year,$Flags)
 {
+	echo FormatAge ($Month,$Day,$Year,$Flags);
+}
+
+//
+// Formats an age string: age in years, or in months if less than one year old
+//
+function FormatAge($Month,$Day,$Year,$Flags)
+{
 	if ($Flags & 1) {
 		return;
 	}
@@ -618,9 +626,9 @@ function PrintAge($Month,$Day,$Year,$Flags)
 			if ($Day > date("d"))
 				$monthCount--;
 			if ($monthCount == 1)
-				echo gettext("1 month old");
+				return (gettext("1 month old"));
 			else
-				echo $monthCount . " " . gettext("months old");
+				return ( $monthCount . " " . gettext("months old"));
 		}
 		elseif ($Year == date("Y")-1)
 		{
@@ -628,19 +636,19 @@ function PrintAge($Month,$Day,$Year,$Flags)
 			if ($Day > date("d"))
 				$monthCount--;
 			if ($monthCount >= 12)
-				echo gettext("1 year old");
+				return ( gettext("1 year old"));
 			elseif ($monthCount == 1)
-				echo gettext("1 month old");
+				return ( gettext("1 month old"));
 			else
-				echo $monthCount . " " . gettext("months old");
+				return ( $monthCount . " " . gettext("months old"));
 		}
 		elseif ( $Month > date("m") || ($Month == date("m") && $Day > date("d")) )
-			echo date("Y")-1 - $Year . " " . gettext("years old");
+			return ( date("Y")-1 - $Year . " " . gettext("years old"));
 		else
-			echo date("Y") - $Year . " " . gettext("years old");
+			return ( date("Y") - $Year . " " . gettext("years old"));
 	}
 	else
-		echo gettext("Age unknown");
+		return ( gettext("Unknown"));
 }
 
 // Returns a string of a person's full name, formatted as specified by $Style
