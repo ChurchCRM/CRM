@@ -82,13 +82,12 @@ class PDF_Directory extends ChurchInfoReport {
 		global $sChurchState;
 		global $sChurchZip;
 		global $sChurchPhone;
-		global $bDirLetterHead;
 
 		//Select Arial bold 15
 		$this->SetFont($this->_Font,'B',15);
 
-		if (is_readable($bDirLetterHead))
-			$this->Image($bDirLetterHead,10,5,190);
+		if (is_readable($this->bDirLetterHead))
+			$this->Image($this->bDirLetterHead,10,5,190);
 
 		//Line break
 		$this->Ln(5);
