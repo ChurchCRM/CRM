@@ -78,7 +78,7 @@ if (isset($_POST["Submit"]))
 										cal_description)
 								VALUES (" . 
 								        $calID . "," .
-								        "\"admin\", " .
+								        "\"__public__\", " .
 								        "'" . $datestr . "'," .
 										"'" . $timestr . "'," .
 										"'" . date ("Ymd") . "'," .
@@ -94,7 +94,7 @@ if (isset($_POST["Submit"]))
 		                                     cal_login,
 											 cal_status)
 									VALUES (" . $calID . "," .
-									        "'admin'," .
+									        "'__public__'," .
 											"'A')";
 		mysql_query ($q);
 
