@@ -181,16 +181,6 @@ $MenuFirst = 1;
 					'contents', <?php echo "'" . gettext("Access report") . "'"; ?>,
 					'uri', 'AccessReport.php',
 					'statusText', ''
-				),
-				8, new domMenu_Hash(
-					'contents', <?php echo "'" . gettext("Reminder report") . "'"; ?>,
-					'uri', 'ReminderReport.php',
-					'statusText', ''
-				),
-				9, new domMenu_Hash(
-					'contents', <?php echo "'" . gettext("Tax report") . "'"; ?>,
-					'uri', 'TaxReport.php',
-					'statusText', ''
 				)
 			),
 			<?php } ?>

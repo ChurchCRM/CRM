@@ -6,9 +6,9 @@
  *  description : Configure report generation
  *
  *  http://www.infocentral.org/
- *  Copyright 2003 Chris Gebhardt
+ *  Copyright 2004 Chris Gebhardt, Michael Wilt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -57,8 +57,11 @@ class ChurchInfoReport extends FPDF {
    var $sConfirm1 = "This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.";
 	var $sConfirm2 = "Thank you very much for helping us to update this information.  If you want on-line access to the church database please provide your email address and a desired password and we will send instructions.";
 	var $sConfirm3 = "Email _____________________________________ Password ________________";
-
    var $sConfirmSigner = "<signs confirmation letter>";
+
+   // Verbage for the pledge summary report
+   var $sPledgeSummary1 = "Summary of pledges and payments for the fiscal year ";
+   var $sPledgeSummary2 = "as of ";
 
    // Verbage for the directory report
    var $sDirectoryDisclaimer1 = "Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of ";
