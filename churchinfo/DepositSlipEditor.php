@@ -34,6 +34,8 @@ if ($iDepositSlipID) {
 	$sSQL = "SELECT * from deposit_dep WHERE dep_ID = " . $iDepositSlipID;
 	$rsDeposit = RunQuery($sSQL);
 	extract(mysql_fetch_array($rsDeposit));
+	// Set current deposit slip
+	$_SESSION['iCurrentDeposit'] = $iDepositSlipID;
 }
 
 //Set the page title
