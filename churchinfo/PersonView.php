@@ -681,11 +681,6 @@ if ($next_link_text) {
 	</p>
 	</form>
 	<?php } ?>
-</td>
-</tr>
-</table>
-
-
 
 
 	<b><?php echo gettext("Volunteer opportunities:"); ?></b>
@@ -755,6 +750,10 @@ if ($next_link_text) {
 		<br>
 	</p>
 	</form>
+</td>
+</tr>
+</table>
+
 </td>
 </tr>
 </table>
