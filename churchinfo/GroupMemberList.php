@@ -124,10 +124,15 @@ if (!$bPrintView) {
 		extract($aRow);
 		$aName[$row] = $lst_OptionName;
 		$aSeq[$row] = $lst_OptionSequence;
+		if ($aSeq[$row] == $iSort)
+			$sSortName = $aName[$row];
 		echo "<option value=" . $aSeq[$row] . ">" . gettext("Show only") . " " . $aName[$row] . "</option>";
 	}
 	echo "</select>";
 	echo "<input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext("Go") . "\">";
+	// Display Filter
+	if ($sSortName)
+		echo "<font color=red> &nbsp; &nbsp; Currently showing only $sSortName </font>";
 	echo "</form>";
 	
 	// Create Sort Links
