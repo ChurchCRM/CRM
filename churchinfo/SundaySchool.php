@@ -36,12 +36,35 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 	$iFYID = FilterInput($_POST["FYID"], 'int');
 	$dFirstSunday = FilterInput($_POST["FirstSunday"]);
 	$dLastSunday = FilterInput($_POST["LastSunday"]);
+	$dNoSchool1 = FilterInput($_POST["NoSchool1"]);
+	$dNoSchool2 = FilterInput($_POST["NoSchool2"]);
+	$dNoSchool3 = FilterInput($_POST["NoSchool3"]);
+	$dNoSchool4 = FilterInput($_POST["NoSchool4"]);
+   $iExtraStudents = FilterInput($_POST["ExtraStudents"], 'int');
+   $iExtraTeachers = FilterInput($_POST["ExtraTeachers"], 'int');
    $_SESSION['idefaultFY'] = $iFYID;
 
    if (isset($_POST["SubmitClassList"])) {
-      Redirect ("Reports/ClassList.php?GroupID=" . $iGroupID . "&FYID=" . $iFYID . "&FirstSunday='" . $dFirstSunday . "'&LastSunday='" . $dLastSunday . "'");
+      Redirect ("Reports/ClassList.php?GroupID=" . $iGroupID . "&FYID=" . $iFYID . "&FirstSunday=" . $dFirstSunday . "&LastSunday=" . $dLastSunday);
    } else if (isset($_POST["SubmitClassAttendance"])) {
-      Redirect ("Reports/ClassAttendance.php?GroupID=" . $iGroupID . "&FYID=" . $iFYID . "&FirstSunday='" . $dFirstSunday . "'&LastSunday='" . $dLastSunday . "'");
+      $toStr = "Reports/ClassAttendance.php?";
+      $toStr .= "GroupID=" . $iGroupID;
+      $toStr .= "&FYID=" . $iFYID;
+      $toStr .= "&FirstSunday=" . $dFirstSunday;
+      $toStr .= "&LastSunday=" . $dLastSunday;
+      if ($dNoSchool1)
+         $toStr .= "&NoSchool1=" . $dNoSchool1;
+      if ($dNoSchool2)
+         $toStr .= "&NoSchool2=" . $dNoSchool2;
+      if ($dNoSchool3)
+         $toStr .= "&NoSchool3=" . $dNoSchool3;
+      if ($dNoSchool4)
+         $toStr .= "&NoSchool4=" . $dNoSchool4;
+      if ($iExtraStudents)
+         $toStr .= "&ExtraStudents=" . $iExtraStudents;
+      if ($iExtraTeachers)
+         $toStr .= "&ExtraTeachers=" . $iExtraTeachers;
+      Redirect ($toStr);
    }
 } else {
    $iFYID = $_SESSION['idefaultFY'];
@@ -105,6 +128,36 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 	<tr>
 		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("Last Sunday:"); ?></td>
 		<td class="TextColumn"><input type="text" name="LastSunday" value="<?php echo $dLastSunday; ?>" maxlength="10" id="sel2" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel2', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+	</tr>
+
+	<tr>
+		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
+		<td class="TextColumn"><input type="text" name="NoSchool1" value="<?php echo $dNoSchool1; ?>" maxlength="10" id="NoSchool1" size="11">&nbsp;<input type="image" onclick="return showCalendar('NoSchool1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+	</tr>
+
+	<tr>
+		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
+		<td class="TextColumn"><input type="text" name="NoSchool2" value="<?php echo $dNoSchool2; ?>" maxlength="10" id="NoSchool2" size="11">&nbsp;<input type="image" onclick="return showCalendar('NoSchool2', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+	</tr>
+
+	<tr>
+		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
+		<td class="TextColumn"><input type="text" name="NoSchool3" value="<?php echo $dNoSchool3; ?>" maxlength="10" id="NoSchool3" size="11">&nbsp;<input type="image" onclick="return showCalendar('NoSchool3', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+	</tr>
+
+	<tr>
+		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
+		<td class="TextColumn"><input type="text" name="NoSchool4" value="<?php echo $dNoSchool4; ?>" maxlength="10" id="NoSchool4" size="11">&nbsp;<input type="image" onclick="return showCalendar('NoSchool4', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+	</tr>
+
+	<tr>
+		<td class="LabelColumn"><?php addToolTip("Number of extra rows for write-in students"); ?><?php echo gettext("Extra Students:"); ?></td>
+		<td class="TextColumn"><input type="text" name="ExtraStudents" value="<?php echo $iExtraStudents; ?>" id="ExtraStudents" size="11">&nbsp;</td>
+	</tr>
+
+	<tr>
+		<td class="LabelColumn"><?php addToolTip("Number of extra rows for write-in teachers"); ?><?php echo gettext("Extra Teachers:"); ?></td>
+		<td class="TextColumn"><input type="text" name="ExtraTeachers" value="<?php echo $iExtraTeachers; ?>" id="ExtraTeachers" size="11">&nbsp;</td>
 	</tr>
 
    <tr>
