@@ -348,35 +348,6 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	}
 }
 
-// Get appropriate donation envelope options
-if ($_SESSION['bFinance'])
-{
-	if (isset($per_Envelope))  // Do they have an existing envelope number?
-	{
-		$aEnvelopeOptions[0] = $per_Envelope;
-		$numEnvelopeOptions = 1;
-	}
-	else
-	{
-		$sSQL = "SELECT DISTINCT per_Envelope AS iEnvelope FROM person_per WHERE per_Envelope != 'NULL' ORDER BY per_Envelope ASC";
-		$result = RunQuery($sSQL);
-		$lastEnvelope = 0;
-		$numEnvelopeOptions = 0;
-		while ($aRow = mysql_fetch_array($result))
-		{
-			$thisEnvelope = $aRow['iEnvelope'];
-			for($iOption = $lastEnvelope + 1; $iOption < $thisEnvelope; $iOption++)
-			{
-				$aEnvelopeOptions[$numEnvelopeOptions++] = $iOption;
-			}
-			$lastEnvelope = $thisEnvelope;
-		}
-
-		// If no recyclable unused IDs exist, create a new one.
-		if ($numEnvelopeOptions == 0) $aEnvelopeOptions[$numEnvelopeOptions++] = $lastEnvelope + 1;
-	}
-}
-
 //Get Classifications for the drop-down
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
 $rsClassifications = RunQuery($sSQL);
@@ -460,30 +431,6 @@ require "Include/Header.php";
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
-
-			<?php if ($_SESSION['bFinance']) { ?>
-			<tr>
-				<td class="LabelColumn" <?php addToolTip("Envelope Numbers are automatically assigned to prevent duplication. Simply select an available envelope number if needed."); ?>><?php echo gettext("Donation Envelope:"); ?></td>
-				<td class="TextColumn">
-					<select name="EnvID">
-						<option value=""><?php echo gettext("None"); ?></option>
-						<?php
-						for ($iOption = 0; $iOption < $numEnvelopeOptions; $iOption++)
-						{
-							$thisEnvelope = $aEnvelopeOptions[$iOption];
-
-							echo "<option value=\"" . $thisEnvelope . "\"";
-							if ($per_Envelope == $thisEnvelope) echo " selected";
-							echo ">" . $thisEnvelope . "</option>" ;
-						}
-						?>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-			</tr>
-			<?php } ?>
 
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("If a family member, select the appropriate family from the list. Otherwise, leave this as is."); ?>><?php echo gettext("Family:"); ?></td>

@@ -173,11 +173,6 @@ if ($_SESSION['bAdmin'])
 		echo " | <a class=\"SmallText\" href=\"UserEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit User") . "</a>" ;
 }
 
-if ($_SESSION['bFinance'])
-{
-	echo " | <a class=\"SmallText\" href=\"DonationView.php?PersonID=" . $per_ID . "\">" . gettext("View Donations") . "</a>" ;
-	echo " | <a class=\"SmallText\" href=\"DonationEditor.php?PersonID=" . $per_ID . "\">" . gettext("Add Donation") . "</a>" ;
-}
 if ($next_link_text) {
 	echo " | $next_link_text";
 }
@@ -374,13 +369,6 @@ if ($next_link_text) {
 				<td class="TinyTextColumn"><?php echo $sClassName; ?></td>
 			</tr>
 			<?php
-				// If finance permissions, display the person's Donation Envelope
-				if ($_SESSION['bFinance'])
-				{ ?>
-				<td class="TinyLabelColumn"><?php echo gettext("Donation Envelope:"); ?></td>
-				<td class="TinyTextColumn"><?php echo $sEnvelope; ?></td>
-				<?php }
-
 				// Display the left-side custom fields
 				while ($Row = mysql_fetch_array($rsLeftCustomFields)) {
 					extract($Row);
@@ -691,11 +679,6 @@ if ($_SESSION['bAdmin'])
 		echo " | <a class=\"SmallText\" href=\"UserEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit User") . "</a>" ;
 }
 
-if ($_SESSION['bFinance'])
-{
-	echo " | <a class=\"SmallText\" href=\"DonationView.php?PersonID=" . $per_ID . "\">" . gettext("View Donations") . "</a>" ;
-	echo " | <a class=\"SmallText\" href=\"DonationEditor.php?PersonID=" . $per_ID . "\">" . gettext("Add Donation") . "</a>" ;
-}
 if ($next_link_text) {
 	echo " | $next_link_text";
 }
