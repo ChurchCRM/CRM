@@ -38,7 +38,10 @@ if ( is_array($email_array) == TRUE )
 	{
 			$mail->Subject = stripslashes($_POST['emailtitle']);
 			$mail->Body = stripslashes($_POST['emailmessage']);
-			$mail->AddAddress($email_address);
+			if ($_POST['submitBCC'])
+				$mail->AddBCC($email_address);
+			else
+				$mail->AddAddress($email_address);
 			echo '<b>' . $email_address . '</b><br />';
 			if(!$mail->Send())
 				echo "There has been a mail error sending to " . $email_address . "<br>";
