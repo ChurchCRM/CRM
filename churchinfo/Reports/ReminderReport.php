@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : Reports/ReminderReport.php
-*  last change : 2003-08-30
+*  last change : 2005-03-26
 *  description : Creates a PDF of the current deposit slip
 *
 *  InfoCentral is free software; you can redistribute it and/or modify
@@ -17,8 +17,15 @@ require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 require "../Include/ReportConfig.php";
 
+// Security
+if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
+	Redirect("Menu.php");
+	exit;
+}
+
 //Get the Fiscal Year ID out of the querystring
-$iFYID = FilterInput($_GET["FYID"],'int');
+$iFYID = FilterInput($_POST["FYID"],'int');
+$output = FilterInput($_POST["output"]);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
@@ -26,6 +33,34 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
 	exit;
 }
 
+// Get all the families
+$sSQL = "SELECT * FROM family_fam WHERE 1";
+// Filter by Family
+if (!empty($_POST["family"])) {
+	$count = 0;
+	foreach ($_POST["family"] as $famID) {
+		$fam[$count++] = FilterInput($famID,'int');
+	}
+	if ($count == 1) {
+		if ($fam[0])
+			$sSQL .= " AND fam_ID='$fam[0]' ";
+	} else {
+		$sSQL .= " AND (fam_ID='$fam[0]'";
+		for($i = 1; $i < $count; $i++) {
+			$sSQL .= " OR fam_ID='$fam[$i]'";
+		}
+		$sSQL .= ") ";
+	}
+}
+$rsFamilies = RunQuery($sSQL);
+
+// Get the list of funds
+$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
+$rsFunds = RunQuery($sSQL);
+
+
+// Create PDF Report
+// *****************
 class PDF_ReminderReport extends ChurchInfoReport {
 
 	// Constructor
@@ -58,13 +93,6 @@ class PDF_ReminderReport extends ChurchInfoReport {
 // Instantiate the directory class and build the report.
 $pdf = new PDF_ReminderReport();
 
-// Get all the families
-$sSQL = "SELECT * FROM family_fam WHERE 1";
-$rsFamilies = RunQuery($sSQL);
-
-// Get the list of funds
-$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
-$rsFunds = RunQuery($sSQL);
 
 // Loop through families
 while ($aFam = mysql_fetch_array($rsFamilies)) {
@@ -76,7 +104,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 			 WHERE plg_FamID = " . $fam_ID . " AND plg_FYID = " . $iFYID . " ORDER BY plg_date";
 	$rsPledges = RunQuery($sSQL);
 
-// If there is either a pledge or a payment add a page for this reminder report
+	// If there is either a pledge or a payment add a page for this reminder report
 
 	if (mysql_num_rows ($rsPledges) == 0)
 		continue;
@@ -92,7 +120,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$totalAmountPledges = 0;
 	if (mysql_num_rows ($rsPledges) == 0) {
 		$curY += $summaryIntervalY;
-		$pdf->WriteAt ($summaryDateX, $curY, $this->sReminderNoPledge);
+		$pdf->WriteAt ($summaryDateX, $curY, $pdf->sReminderNoPledge);
 		$curY += 2 * $summaryIntervalY;
 	} else {
 
@@ -123,6 +151,10 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		$cnt = 0;
 		while ($aRow = mysql_fetch_array($rsPledges)) {
 			extract ($aRow);
+		
+			if (strlen($fundName) > 19)
+				$fundName = substr($fundName,0,18) . "...";
+			
 			$pdf->SetFont('Times','', 10);
 
 			$pdf->WriteAtCell ($summaryDateX, $curY, $summaryDateWid, $plg_date);
@@ -158,7 +190,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$totalAmountPayments = 0;
 	if (mysql_num_rows ($rsPledges) == 0) {
 		$curY += $summaryIntervalY;
-		$pdf->WriteAt ($summaryDateX, $curY, $this->sReminderNoPayments);
+		$pdf->WriteAt ($summaryDateX, $curY, $pdf->sReminderNoPayments);
 		$curY += 2 * $summaryIntervalY;
 	} else {
 		$summaryDateX = $pdf->leftX;
@@ -196,6 +228,15 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		$cnt = 0;
 		while ($aRow = mysql_fetch_array($rsPledges)) {
 			extract ($aRow);
+			
+			// Format Data
+			if (strlen($plg_CheckNo) > 8)
+				$plg_CheckNo = "...".substr($plg_CheckNo,-8,8);
+			if (strlen($fundName) > 19)
+				$fundName = substr($fundName,0,18) . "...";
+			if (strlen($plg_comment) > 30)
+				$plg_comment = substr($plg_comment,0,30) . "...";
+			
 			$pdf->SetFont('Times','', 10);
 
 			$pdf->WriteAtCell ($summaryDateX, $curY, $summaryDateWid, $plg_date);
@@ -213,7 +254,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 			$cnt += 1;
 
 			$curY += $summaryIntervalY;
-				
+			
 			if ($curY > 220) {
 				$pdf->AddPage ();
 				$curY = 20;
@@ -258,5 +299,6 @@ if ($iPDFOutputType == 1) {
 	$pdf->Output("ReminderReport" . date("Ymd") . ".pdf", true);
 } else {
 	$pdf->Output();
-}	
+}
+	
 ?>

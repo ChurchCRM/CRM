@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : Reports/VotingMembers.php
-*  last change : 2004-12-07
+*  last change : 2005-03-26
 *  description : Creates a PDF with names of voting members for a particular fiscal year
 *
 *  InfoCentral is free software; you can redistribute it and/or modify
@@ -18,8 +18,9 @@ require "../Include/ReportFunctions.php";
 require "../Include/ReportConfig.php";
 
 //Get the Fiscal Year ID out of the querystring
-$iFYID = FilterInput($_GET["FYID"],'int');
-$iRequireDonationYears = FilterInput($_GET["RequireDonationYears"],'int');
+$iFYID = FilterInput($_POST["FYID"],'int');
+$iRequireDonationYears = FilterInput($_POST["RequireDonationYears"],'int');
+$output = FilterInput($_POST["output"]);
 
 class PDF_VotingMembers extends ChurchInfoReport {
 
@@ -46,30 +47,41 @@ $curY += 10;
 $votingMemberCount = 0;
 
 // Get all the families
-$sSQL = "SELECT * FROM family_fam WHERE 1 ORDER BY fam_Name";
+$sSQL = "SELECT fam_ID, fam_Name FROM family_fam WHERE 1 ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
 
 // Loop through families
 while ($aFam = mysql_fetch_array($rsFamilies)) {
 	extract ($aFam);
-
-	// Get payments only
-	$sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
-			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-			 WHERE plg_FamID = " . $fam_ID . " AND plg_PledgeOrPayment = 'Payment' AND
-			 (" . $iFYID . "-plg_FYID<" . $iRequireDonationYears . ")";
-
-	$rsPledges = RunQuery($sSQL);
-
-	if (($iRequireDonationYears==0) || mysql_num_rows ($rsPledges) > 0) {
+	
+	// Get pledge date ranges
+	$donation = "no";
+	if ($iRequireDonationYears > 0) {
+		$startdate = $iFYID + 1996 - $i;
+		$startdate .= "-" . $iFYMonth . "-" . "01";
+		$enddate = $startdate = $iFYID + 1996 + 1;
+		$enddate .= "-" . $iFYMonth . "-" . "01";
+		
+		// Get payments only
+		$sSQL = "SELECT COUNT(plg_plgID) AS count FROM pledge_plg
+			WHERE plg_FamID = " . $fam_ID . " AND plg_PledgeOrPayment = 'Payment' AND
+				 plg_date >= '$startdate' AND plg_date < '$enddate'";
+		$rsPledges = RunQuery($sSQL);
+		list ($count) = mysql_fetch_row($rsPledges);
+		if ($count > 0)
+			$donation = "yes";
+	}
+		
+	if (($iRequireDonationYears==0) || $donation == "yes") {
 
 		$pdf->WriteAt ($pdf->leftX, $curY, $fam_Name);
 
 		//Get the family members for this family
 		$sSQL = "SELECT per_FirstName, per_LastName, cls.lst_OptionName AS sClassName
 				FROM person_per
-				LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
+				INNER JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
 				WHERE per_fam_ID = " . $fam_ID . " AND cls.lst_OptionName='" . gettext ("Member") . "'";
+				
 		$rsFamilyMembers = RunQuery($sSQL);
 
 		if (mysql_num_rows ($rsFamilyMembers) == 0)
@@ -79,11 +91,15 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 			extract ($aMember);
 			$pdf->WriteAt ($pdf->leftX + 30, $curY, ($per_FirstName . " " . $per_LastName));
 			$curY += 5;
-			if ($curY > 250) {
+			if ($curY > 245) {
 				$pdf->AddPage();
 				$curY = $topY;
 			}
 			$votingMemberCount += 1;
+		}
+		if ($curY > 245) {
+			$pdf->AddPage();
+			$curY = $topY;
 		}
 	}
 }
