@@ -253,6 +253,7 @@ INSERT INTO query_qry VALUES (18,'SELECT per_ID as AddToCart, per_BirthDay as Da
 INSERT INTO query_qry VALUES (19, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID LEFT JOIN group_grp a ON grp_ID = p2g2r_grp_ID LEFT JOIN list_lst b ON lst_ID = grp_RoleListID AND p2g2r_rle_ID = lst_OptionID WHERE lst_OptionName = \'Student\' AND grp_ID = ~group~ ORDER BY per_LastName', 'Class Students', 'Find students for a particular class', 1);
 INSERT INTO query_qry VALUES (20, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID LEFT JOIN group_grp a ON grp_ID = p2g2r_grp_ID LEFT JOIN list_lst b ON lst_ID = grp_RoleListID AND p2g2r_rle_ID = lst_OptionID WHERE lst_OptionName = \'Teacher\' AND grp_ID = ~group~ ORDER BY per_LastName', 'Class Teachers', 'Find teachers for a particular class', 1);
 INSERT INTO query_qry VALUES (21, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID WHERE p2g2r_grp_ID=~group~ ORDER BY per_LastName', 'Registered students', 'Find Registered students', 1);
+INSERT INTO query_qry VALUES (22,'SELECT per_ID as AddToCart, DAYOFMONTH(per_MembershipDate) as Day, per_MembershipDate AS DATE, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE per_cls_ID=1 AND MONTH(per_MembershipDate)=~membermonth~ ORDER BY per_MembershipDate','Membership anniversaries','Members who joined in a particular month',0);
 
 CREATE TABLE queryparameteroptions_qpo (
   qpo_ID smallint(5) unsigned NOT NULL auto_increment,
@@ -296,7 +297,6 @@ CREATE TABLE queryparameters_qrp (
   KEY qrp_qry_ID (qrp_qry_ID)
 ) TYPE=MyISAM;
 
-
 INSERT INTO queryparameters_qrp VALUES (1,4,0,NULL,'Minimum Age','The minimum age for which you want records returned.','min','0',0,5,'n',120,0,NULL,NULL);
 INSERT INTO queryparameters_qrp VALUES (2,4,0,NULL,'Maximum Age','The maximum age for which you want records returned.','max','120',1,5,'n',120,0,NULL,NULL);
 INSERT INTO queryparameters_qrp VALUES (4,6,1,'','Gender','The desired gender to search the database for.','gender','1',1,0,'',0,0,0,0);
@@ -313,6 +313,7 @@ INSERT INTO queryparameters_qrp VALUES (18,18,0,'','Month','The birthday month f
 INSERT INTO queryparameters_qrp VALUES (19,19,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Class','The sunday school class for which you would like records returned.','group','1',1,0,'',12,1,1,2);
 INSERT INTO queryparameters_qrp VALUES (20,20,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Class','The sunday school class for which you would like records returned.','group','1',1,0,'',12,1,1,2);
 INSERT INTO queryparameters_qrp VALUES (21,21,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Registered students','Group of registered students','group','1',1,0,'',12,1,1,2);
+INSERT INTO queryparameters_qrp VALUES (22,22,0,'','Month','The membership anniversary month for which you would like records returned.','membermonth','1',1,0,'',12,1,1,2);
 
 CREATE TABLE record2property_r2p (
   r2p_pro_ID mediumint(8) unsigned NOT NULL default '0',
