@@ -35,7 +35,7 @@ CREATE TABLE autopayment_aut (
   aut_Serial mediumint(9) NOT NULL default '1',
 
   PRIMARY KEY  (aut_ID),
-  UNIQUE KEY aut_ID (aut_ID),
+  UNIQUE KEY aut_ID (aut_ID)
 ) TYPE=MyISAM;
 
 CREATE TABLE canvas05_c05 (
