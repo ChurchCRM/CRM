@@ -408,7 +408,7 @@ if ($iDepositSlipID) {
 			 FROM pledge_plg 
 			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-			 WHERE plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_date";
+			 WHERE plg_depID = " . $iDepositSlipID . " AND plg_PledgeOrPayment='Payment' ORDER BY pledge_plg.plg_date";
 	$rsPledges = RunQuery($sSQL);
 } else {
 	$rsPledges = 0;
