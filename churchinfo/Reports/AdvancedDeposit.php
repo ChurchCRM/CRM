@@ -38,7 +38,6 @@ if (!$detail_level)
 if (!$output)
 	$output = "pdf"; 
 
-
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
 	Redirect("Menu.php");
@@ -47,8 +46,8 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
 
 // Build SQL Query
 // Build SELECT SQL Portion
-$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, plg_date, plg_amount, plg_method, plg_comment, plg_depID, plg_CheckNo, fun_ID, fun_Name, dep_Date FROM family_fam
-	INNER JOIN pledge_plg ON fam_ID=plg_FamID
+$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, plg_date, plg_amount, plg_method, plg_comment, plg_depID, plg_CheckNo, fun_ID, fun_Name, dep_Date FROM pledge_plg
+	LEFT JOIN family_fam ON plg_FamID=fam_ID
 	INNER JOIN deposit_dep ON plg_depID = dep_ID
 	LEFT JOIN donationfund_fun ON plg_fundID=fun_ID
 	WHERE plg_PledgeOrPayment='Payment' ";
