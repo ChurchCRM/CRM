@@ -28,6 +28,10 @@ $tNoSchool1 = FilterInput($_GET["NoSchool1"]);
 $tNoSchool2 = FilterInput($_GET["NoSchool2"]);
 $tNoSchool3 = FilterInput($_GET["NoSchool3"]);
 $tNoSchool4 = FilterInput($_GET["NoSchool4"]);
+$tNoSchool5 = FilterInput($_GET["NoSchool5"]);
+$tNoSchool6 = FilterInput($_GET["NoSchool6"]);
+$tNoSchool7 = FilterInput($_GET["NoSchool7"]);
+$tNoSchool8 = FilterInput($_GET["NoSchool8"]);
 
 $iExtraStudents = FilterInput($_GET["ExtraStudents"], 'int');
 $iExtraTeachers = FilterInput($_GET["ExtraTeachers"], 'int');
@@ -39,6 +43,10 @@ $dNoSchool1 = strtotime ($tNoSchool1);
 $dNoSchool2 = strtotime ($tNoSchool2);
 $dNoSchool3 = strtotime ($tNoSchool3);
 $dNoSchool4 = strtotime ($tNoSchool4);
+$dNoSchool5 = strtotime ($tNoSchool5);
+$dNoSchool6 = strtotime ($tNoSchool6);
+$dNoSchool7 = strtotime ($tNoSchool7);
+$dNoSchool8 = strtotime ($tNoSchool8);
 
 // Reformat the dates to get standardized text representation
 $tFirstSunday = date ("Y-m-d", $dFirstSunday);
@@ -48,6 +56,10 @@ $tNoSchool1 = date ("Y-m-d", $dNoSchool1);
 $tNoSchool2 = date ("Y-m-d", $dNoSchool2);
 $tNoSchool3 = date ("Y-m-d", $dNoSchool3);
 $tNoSchool4 = date ("Y-m-d", $dNoSchool4);
+$tNoSchool5 = date ("Y-m-d", $dNoSchool5);
+$tNoSchool6 = date ("Y-m-d", $dNoSchool6);
+$tNoSchool7 = date ("Y-m-d", $dNoSchool7);
+$tNoSchool8 = date ("Y-m-d", $dNoSchool8);
 
 class PDF_Attendance extends ChurchInfoReport {
 
@@ -64,7 +76,8 @@ class PDF_Attendance extends ChurchInfoReport {
 
    function DrawAttendanceCalendar ($nameX, $yTop, $aNames, $tTitle, $extraLines, 
                                     $tFirstSunday, $tLastSunday,
-                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4)
+                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
+												$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8)
    {
       $startMonthX = 60;
       $dayWid = 7;
@@ -137,6 +150,14 @@ class PDF_Attendance extends ChurchInfoReport {
          if ($tWhichSunday == $tNoSchool3)
             $aNoSchoolX[$noSchoolCnt++] = $dayX;
          if ($tWhichSunday == $tNoSchool4)
+            $aNoSchoolX[$noSchoolCnt++] = $dayX;
+         if ($tWhichSunday == $tNoSchool5)
+            $aNoSchoolX[$noSchoolCnt++] = $dayX;
+         if ($tWhichSunday == $tNoSchool6)
+            $aNoSchoolX[$noSchoolCnt++] = $dayX;
+         if ($tWhichSunday == $tNoSchool7)
+            $aNoSchoolX[$noSchoolCnt++] = $dayX;
+         if ($tWhichSunday == $tNoSchool8)
             $aNoSchoolX[$noSchoolCnt++] = $dayX;
 
          if (date ("n", $dWhichSunday) != $whichMonth) { // Finish the previous month
@@ -282,10 +303,12 @@ $pdf->SetFont("Times",'B',12);
 $pdf->WriteAt ($nameX, $yTeachers, $teacherString);
 $y = $pdf->DrawAttendanceCalendar ($nameX, $yTeachers = $yTitle + 20, $aStudents, "Students", $iExtraStudents, 
                                    $tFirstSunday, $tLastSunday, 
-                                   $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4);
+                                   $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
+											  $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8);
 $pdf->DrawAttendanceCalendar ($nameX, $y + 12, $aTeachers, "Teachers", $iExtraTeachers, 
                               $tFirstSunday, $tLastSunday,
-                              $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4);
+                              $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
+										$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8);
 
 if ($iPDFOutputType == 1)
 	$pdf->Output("ClassAttendance" . date("Ymd") . ".pdf", true);
