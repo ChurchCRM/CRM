@@ -4,135 +4,70 @@
 ?>
 
 <div class="Help_Section">
-	<div class="Help_Header">What Financial Tracking is provided by InfoCentral?</div>
+	<div class="Help_Header">What Financial Tracking is provided by ChurchInfo?</div>
 	<table width="100%" class="LightShadedBox"><tr>
-	<td><p>InfoCentral allows a user to keep track of the following information:</p>
+	<td><p>ChurchInfo keeps track of the following information:</p>
 	  <ul>
-	    <li><b>Donation Entry:</b> Batch donation entry by envelope number with multiple funds</li>
-        <li><b>Exemption Letter:</b> Print a yearly exemption letter for all individuals</li>
-	    <li><b>Donation Receipt:</b> Print a receipt for individual donations</li>
-	    <li><b>Donation Reports:</b> Reports based on donations given</li>
-	    <li><b>Envelope Management:</b> Keep track of envelope numbers and export for envelope printing service</li>
+	    <li><b>Pledge:</b> Promise of support, planning to donate a specific total amount.</li>
+	    <li><b>Deposit Slip:</b> Print a batch of donations on a standard bank deposit form for the bank.</li>
+       <li><b>Payment:</b> A donation payment by cash, check, credit card, or bank draft.</li>
+	    <li><b>Reminder Statements:</b> Print letters to remind Families of their pledge and report progress of their payments for the current fiscal year.</li>
+	    <li><b>Tax Statements:</b> Print letters acknowledging donations over the calendar year for tax purposes.</li>
 	  </ul></td>
 	</tr></table>
 </div>
 
 <div class="Help_Section">
 	<p>
-	<div class="Help_Header">How do I assign a new envelope number?</div>
-	<table width="100%" class="LightShadedBox"><tr>
-	<td>
-		<p>Thre are multiple ways in which to assign an envelope number:</p>
-		<ul>
-		  <li>Envelope
-		      numbers can be assigned when a person is entered into the system.
-		    InfoCentral automatically displays the next available number to ensure no
-		    overlap
-	      of numbers. </li>
-	      <li>Envelope numbers can be assigned to multiple individuals by placing
-	        them in the cart and then clicking on the &quot;Auto assign envelopes
-	        to all persons in the cart without envelopes&quot; link in the Donation
-	        Envelope Manager, which can be found in the drop-down menu under
-	        &quot;Finances&quot;.</li>
-		  <li>Envelope numbers can be re-assigned to all individuals by clicking on
-		    the &quot;Re-assign all existing envelopes by assignees' names in alphabetical
-	    order&quot; link in the Donation Envelop Manger. This tool re-assigns all
-		    previously assigned envelopes (in case of a new fiscal year, wanting
-		    to have all numbers in alphabetical order).</li>
-		</ul></td>
-	</tr></table>
-</div>
-
-<div class="Help_Section">
-	<p>
-	<div class="Help_Header">How do I view all assigned envelopes?</div>
+	<div class="Help_Header">How do I enter a pledge?</div>
     <table width="100%" class="LightShadedBox"><tr>
-    <td>In the &quot;Donation Envelopes Manger&quot; (found under &quot;Finance&quot; on the drop-down
-      menu), there is a link for &quot;Display a list of all envelope assignment.&quot;
-      This prints a PDF document of all envelope numbers and the individuals
-      assigned to that number.</td>
-    </tr></table>
-</div>
-
-<div class="Help_Section">
-	<p>
-	<div class="Help_Header">How do I enter a donation?</div>
-    <table width="100%" class="LightShadedBox"><tr>
-    <td><p>There are two ways in which donations can be added:</p>
+    <td><p>There are two ways in which pledges can be added:</p>
       <ul>
-        <li><strong>Batch Entry:</strong> Batch entry is done by the envelope number. Simply enter
-          the envelope number and move to the next field. The address of that
-          envelope will appear in the shaded box below to ensure that the donation
-          matches the information displayed. When you are finished, select &quot;Enter
-          Donation&quot;. The information will be saved and this screen will be cleared
-          for the next donation. When you have finished entering all the donations,
-          simply click &quot;Exit&quot;.</li>
-        <li><strong>Individual Entry:</strong> When viewing an individual's profile, a link for
-          &quot;Add Donation&quot; will be in the row of links. Enter the information and
-          click &quot;Enter Donation&quot;.</li>
+        <li><strong>From the Family View:</strong> When viewing a Family, a link for
+          &quot;Add a new pledge&quot; will be near the bottom of the screen. Enter the information and
+          click &quot;Save&quot;.</li>
+        <li><strong>Batch Entry:</strong> If you click &quot;Save and Add&quot; rather than &quot;Save&quot;, the Pledge
+          Editor will clear and prepare for another pledge entry.  Select the next family making a
+          pledge from the list, and fill in the rest of the pledge information.  Continue to click
+          &quot;Save and Add&quot; until all the pledges have been entered.</li>
       </ul></td>
     </tr></table>
 </div>
 
 <div class="Help_Section">
 	<p>
-	<div class="Help_Header">How do I view donations for an individual?</div>
+	<div class="Help_Header">How do I deposit donations?</div>
     <table width="100%" class="LightShadedBox"><tr>
-    <td>In the person view, there is a link for &quot;View Donations.&quot; This link will
-      take you to a page that displays all donations from this individual.</td>
-    </tr></table>
-</div>
-
-<div class="Help_Section">
-	<p>
-	<div class="Help_Header">How do I print an exemption letters?</div>
-    <table width="100%" class="LightShadedBox"><tr>
-    <td><p>There are two ways to print an exemption letter:</p>
+    <td><p>When a batch of cash and check donations is received they are entered into
+    ChurchInfo so the donating families receive credit against their pledges and also
+    for tax purposes.</p>
       <ul>
-        <li><strong>Individually:</strong> In the person view, there is a link for &quot;View Donations.&quot;
-          On this page there is a link called &quot;View XXXX (current year) exemption
-          letter&quot;. This creates an exemption letter for that individual</li>
-        <li><strong>Batch:</strong> In the &quot;Reports Menu&quot; (found under &quot;Data/Reports&quot; on the drop-down
-          menu), there is a link for &quot;Donation End of Year Reports for All Members&quot;.
-          This creats a member contribution letter for all members with donations.</li>
+        <li><strong>Make a new deposit slip:</strong> Select &quot;New Deposit Slip&quot;
+          from the &quot;Deposit&quot; menu.</li>
+        <li><strong>Enter the deposits:</strong> See below.</li>
+        <li><strong>Print the deposit slip:</strong> Select &quot;Edit Deposit Slip&quot;
+          from the &quot;Deposit&quot; menu.  Click on &quot;Generate PDF&quot;.  This PDF
+          document will print on a standard bank deposit form.</li>
+        <li><strong>Close the deposit:</strong> Select &quot;Close deposit slip&quot; to
+          close the deposit slip once the deposit has been packaged for the bank.</li>
       </ul></td>
     </tr></table>
 </div>
 
 <div class="Help_Section">
 	<p>
-	<div class="Help_Header">How do I view donation reports for a given day?</div>
+	<div class="Help_Header">How do I enter a payment?</div>
     <table width="100%" class="LightShadedBox"><tr>
-    <td>In the &quot;Reports Menu&quot; (found under &quot;Data/Reports&quot; on
-      the drop-down menu), there is a link for &quot;Donation Summary Report&quot; .
-      This displays a donation summary report for a specified day, including
-      breakdown by fund.</td>
-    </tr></table>
-</div>
-
-<div class="Help_Section">
-	<p>
-	<div class="Help_Header">How do I view donations for an individual?</div>
-    <table width="100%" class="LightShadedBox"><tr>
-    <td>In the person view, there is a link for &quot;View Donations.&quot; This link will
-      take you to a page that displays all donations from this individual.</td>
-    </tr></table>
-</div>
-
-<div class="Help_Section">
-	<p>
-	<div class="Help_Header">How do I reassign donations from an individual?</div>
-    <table width="100%" class="LightShadedBox"><tr>
-    <td><ol>
-      <li>Place the individual which you wish to reassign the donations <em><strong>to</strong></em><strong> </strong>into
-          the cart.</li>
-      <li>In the person view, there is a link for &quot;View Donations.&quot; On
-        this page select the  link called &quot;Move All Donations&quot;.</li>
-      <li>Select the individual in the cart from the drop-down menu and click
-        &quot;Move&quot;.</li>
-      <li>Confirm the move.</li>
-    </ol>
-    </td>
+    <td><p>Payments are very similar to pledges.  There are two ways in which payments can be added:</p>
+      <ul>
+        <li><strong>From the Family View:</strong> When viewing a Family, a link for
+          &quot;Add a new payment&quot; will be near the bottom of the screen. Enter the information and
+          click &quot;Save&quot;.</li>
+        <li><strong>Batch Entry:</strong> If you click &quot;Save and Add&quot; rather than &quot;Save&quot;, the Payment
+          Editor will clear and prepare for another pledge entry.  Select the next family making a
+          payment from the list, and fill in the rest of the payment information.  Continue to click
+          &quot;Save and Add&quot; until all the payments have been entered.</li>
+      </ul></td>
     </tr></table>
 </div>
 

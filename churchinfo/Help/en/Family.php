@@ -5,12 +5,13 @@
 
 <div class="Help_Section">
 	<div class="Help_Header">What is a Family?</div>
-	<table width="100%" class="LightShadedBox"><tr><td><p>A Family is a group of Person records.  Person records are grouped into Families for two reasons:</p>
+	<table width="100%" class="LightShadedBox"><tr><td><p>A Family is a group of Person records.  Person records are grouped into Families for three reasons:</p>
 	<ol>
 		<li>To represent the social constructs of the Family within the church
 		<li>To share information common to all members of the family -- things like address, phone number, email address, etc.
+		<li>To support the church financially as a single unit ("pledge unit").
 	</ol>
-	<p>A person record doesn't have to belong to a family.  Generally speaking, Family records should represent a spousal or parental relationship.  A married couple, for instance, rperesents a Family.  A single parent with a chlild would also represent a Family.  However, a single person with no children would not have a Family record.</td></tr></table>
+	<p>Every Person should belong to a family.</td></tr></table>
 </div>
 
 <div class="Help_Section">

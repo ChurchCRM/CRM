@@ -5,10 +5,10 @@
  *  last change : 2003-07-08
  *  description : page header used for most pages
  *
- *  http://www.infocentral.org/
- *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
+ *  http://www.churchdb.org/
+ *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -26,7 +26,7 @@ $MenuFirst = 1;
 <html>
 <head>
 	<meta http-equiv="pragma" content="no-cache">
-	<title>InfoCentral: <?php echo $sPageTitle; ?></title>
+	<title>ChurchInfo: <?php echo $sPageTitle; ?></title>
 	<link rel="stylesheet" type="text/css" href="Include/<?php echo $_SESSION['sStyle']; ?>">
 
 	<script type="text/javascript" src="Include/jscalendar/calendar.js"></script>
@@ -122,7 +122,7 @@ $MenuFirst = 1;
 
 		<script language="javascript" type="text/javascript">
 
-		// InfoCentral Menu Bar Items:
+		// ChurchInfo Menu Bar Items:
 
 		domMenu_data.setItem('domMenu_BJ', new domMenu_Hash(
 
@@ -378,7 +378,7 @@ $MenuFirst = 1;
 				'uri', '',
 				'statusText', '',
 				1, new domMenu_Hash(
-					'contents', <?php echo "'- " . gettext("About InfoCentral") . " -'"; ?>,
+					'contents', <?php echo "'- " . gettext("About ChurchInfo") . " -'"; ?>,
 					'uri', 'Help.php?page=About',
 					'statusText', ''
 				),
@@ -674,7 +674,7 @@ else
 			<p>
 				<b><?php echo gettext("Help"); ?></b>
 				<br>
-				<a class="SmallText" href="Help.php?page=About"><?php echo gettext("About InfoCentral"); ?></a>
+				<a class="SmallText" href="Help.php?page=About"><?php echo gettext("About ChurchInfo"); ?></a>
 				<br>
 				<a class="SmallText" href="Help.php?page=People"><?php echo gettext("People"); ?></a>
 				<br>

@@ -14,11 +14,13 @@
 		The Rights are as follows:
 		<ul>
 			<li><b>Add Records:</b> This right allows records to be entered.<b>Edit Records:</b> This allows records to be changed.</li>
+			<li><b>Edit Records:</b> This allows for records to be modified.</li>
 			<li><b>Delete Records:</b> This allows for records to be deleted.</li>
 			<li><b>Manage Properties and Classifications:</b> This allows for properties and classifications to be managed for the database.</li>
 			<li><b>Manage Groups and Roles:</b> Groups can be added, edited, and deleted as well as roles edited with this option.</li>
 			<li><b>Manage Donations and Finances:</b> Financial donations can be added, edited, and deleted with this option.</li>
 			<li><b>View, Add, and Edit Notes:</b> Notes can be added, edited, and deleted with this option.</li>
+			<li><b>Edit Self:</b> This allows editing of the user and family members only.  This option allows users to maintain their own data, especially email addresses and phone numbers which change frequently.</li>
 			<li><b>Admin:</b> This option automatically selects all previous options.</li>
 		</ul></td></tr></table>
 </div>
