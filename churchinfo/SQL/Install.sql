@@ -16,6 +16,15 @@ CREATE TABLE deposit_dep (
   PRIMARY KEY  (dep_ID)
 ) TYPE=MyISAM PACK_KEYS=0;
 
+CREATE TABLE donationfund_fun (
+  fun_ID tinyint(3) NOT NULL auto_increment,
+  fun_Active enum('true','false') NOT NULL default 'true',
+  fun_Name varchar(30) default NULL,
+  fun_Description varchar(100) default NULL,
+  PRIMARY KEY  (fun_ID),
+  UNIQUE KEY fun_ID (fun_ID)
+) TYPE=MyISAM;
+
 CREATE TABLE family_fam (
   fam_ID mediumint(9) unsigned NOT NULL auto_increment,
   fam_Name varchar(50) default NULL,
