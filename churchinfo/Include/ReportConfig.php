@@ -123,17 +123,30 @@ class ChurchInfoReport extends FPDF {
 		$rsMembers = RunQuery($sSQL);
 		$numMembers = mysql_num_rows ($rsMembers);
 
-		if ($numMembers == 1) {
-			$aMember = mysql_fetch_array($rsMembers);
-			extract ($aMember);
+      $numChildren = 0;      
+      $indNotChild = 0;
+      for ($ind = 0; $ind < $numMembers; $ind++) {
+		   $member = mysql_fetch_array($rsMembers);
+         extract ($member);
+         if ($per_fmr_ID == 3) {
+            $numChildren++;
+         } else {
+            $aNotChildren[$indNotChild++] = $member;
+         }
+      }
+
+      $numNotChildren = $numMembers - $numChildren;
+
+		if ($numNotChildren == 1) {
+         extract ($aNotChildren[0]);
 			return ($per_FirstName . " " . $per_LastName);
-		} else if ($numMembers == 2) {
+		} else if ($numNotChildren == 2) {
 			$firstMember = mysql_fetch_array($rsMembers);
-			extract ($firstMember);
+         extract ($aNotChildren[0]);
 			$firstFirstName = $per_FirstName;
 			$firstLastName = $per_LastName;
 			$secondMember = mysql_fetch_array($rsMembers);
-			extract ($secondMember);
+         extract ($aNotChildren[1]);
 			$secondFirstName = $per_FirstName;
 			$secondLastName = $per_LastName;
 			if ($firstLastName == $secondLastName) {
