@@ -24,13 +24,27 @@ $iPledgeID = FilterInput($_GET["PledgeID"],'int');
 $linkBack = FilterInput($_GET["linkBack"]);
 $FamIDIn = FilterInput($_GET["FamilyID"]);
 $PledgeOrPayment = FilterInput($_GET["PledgeOrPayment"]);
+$iCurrentDeposit = FilterInput($_GET["CurrentDeposit"]);
 
-$iCurrentDeposit = $_SESSION['iCurrentDeposit'];
+if ($iPledgeID) {
+	$sSQL = "SELECT plg_depID FROM pledge_plg WHERE plg_plgID = '$iPledgeID'";
+	$rsPledgeID = RunQuery($sSQL);
+	list ($iCurrentDeposit) = mysql_fetch_row($rsPledgeID);
+}
 
-// Get the current deposit slip
-$sSQL = "SELECT * from deposit_dep WHERE dep_ID = " . $iCurrentDeposit;
-$rsDeposit = RunQuery($sSQL);
-extract(mysql_fetch_array($rsDeposit));
+if ($iCurrentDeposit)
+	$_SESSION['iCurrentDeposit'] = $iCurrentDeposit;
+else
+	$iCurrentDeposit = $_SESSION['iCurrentDeposit'];
+
+// Get the current deposit slip data
+if ($iCurrentDeposit) {
+	$sSQL = "SELECT * from deposit_dep WHERE dep_ID = " . $iCurrentDeposit;
+	$rsDeposit = RunQuery($sSQL);
+	extract(mysql_fetch_array($rsDeposit));
+}
+if ($dep_Closed && !$iPledgeID)
+	$iCurrentDeposit = "";
 
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
@@ -40,8 +54,12 @@ $rsFunds = RunQuery($sSQL);
 //Set the page title
 if ($PledgeOrPayment == 'Pledge')
 	$sPageTitle = gettext("Pledge Editor");
+elseif ($iCurrentDeposit)
+	$sPageTitle = gettext("Payment Editor: ") . $dep_Type . gettext(" Deposit Slip #") . $iCurrentDeposit . " ($dep_Date)";
 else
-	$sPageTitle = gettext("Payment Editor");
+	$sPageTitle = gettext("Payment Editor - New Deposit Slip Will Be Created");
+if ($dep_Closed && $iPledgeID)
+	$sPageTitle .= " &nbsp; <font color=red>CLOSED</font>";			
 
 // Security: User must have Finance permission to use this form.
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
@@ -131,30 +149,32 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		// New pledge or deposit
 		if (strlen($iPledgeID) < 1)
 		{
-			// when creating a payment record the current deposit slip ID
-			$depIDString = "NULL";
-			if ($_SESSION['iCurrentDeposit'] && $PledgeOrPayment=='Payment')
-				$depIDString = $_SESSION['iCurrentDeposit'];
-			$sSQL = "SELECT * FROM deposit_dep WHERE dep_ID = " . $depIDString;
-			$rsDeposit = RunQuery($sSQL);
-			extract(mysql_fetch_array($rsDeposit));
-			if ($dep_Closed) {
-				$sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy)
-				         VALUES ('" . date("Y-m-d") . "','Automatically created because current slip was closed'," . $_SESSION['iUserID'] . ")";
+			// Create new Deposit Slip
+			if (!$iCurrentDeposit) {
+				if ($iMethod == "CASH" || $iMethod == "CHECK")
+					$dep_Type = "Bank";
+				elseif ($iMethod == "CREDITCARD")
+					$dep_Type = "CreditCard";
+				elseif ($iMethod == "BANKDRAFT")
+					$dep_Type = "BankDraft";
+					
+				$sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy, dep_Type)
+				         VALUES ('" . date("Y-m-d") . "','Automatically created because current slip was closed'," . $_SESSION['iUserID'] . ",'$dep_Type')";
 				RunQuery($sSQL);
 				$sSQL = "SELECT MAX(dep_ID) AS iDepositSlipID FROM deposit_dep";
 				$rsDepositSlipID = RunQuery($sSQL);
 				extract(mysql_fetch_array($rsDepositSlipID));
 				$_SESSION['iCurrentDeposit'] = $iDepositSlipID;
-				$depIDString = $iDepositSlipID;
+				$iCurrentDeposit = $iDepositSlipID;
+				$dep_Date = date("Y-m-d");
 			}
 
 			// Only set PledgeOrPayment when the record is first created
 			$sSQL = "INSERT INTO pledge_plg (plg_FamID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString)
 			VALUES ('" . $iFamily . "','" . $iFYID . "','" . $dDate . "','" . $nAmount . "','" . $iSchedule . "','" . $iMethod  . "','" . $sComment . "'";
-			$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $iFundID . "," . $depIDString . "," . $iCheckNo . ",\"" . $tScanString . "\")";
+			$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $iFundID . "," . $iCurrentDeposit . "," . $iCheckNo . ",\"" . $tScanString . "\")";
 			$bGetKeyBack = True;
-
+			
 		// Existing record (update)
 		} else {
 			$sSQL = "UPDATE pledge_plg SET plg_FamID = '" . $iFamily . "',plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment . "'";
@@ -223,7 +243,8 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		//Set defaults
 		$iFamily = $FamIDIn; // Will be set only if they pressed the "add pledge" link in the family view
 		$iFYID = $_SESSION['idefaultFY'];
-
+		if (!$iFYID)
+			$iFYID = date("Y") - 1995;
 		if ($dep_Type == "CreditCard")
 			$iMethod = "CREDITCARD";
 		else if ($dep_Type == "BankDraft")
@@ -232,7 +253,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 }
 
 //Get Families for the drop-down
-$sSQL = "SELECT * FROM family_fam ORDER BY fam_Name";
+$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
 
 require "Include/Header.php";
@@ -257,10 +278,8 @@ require "Include/Header.php";
 			<tr>
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php addToolTip("Select the pledging family from the list."); ?><?php echo gettext("Family:"); ?></td>
 				<td class="TextColumn">
-					<select name="Family" size="8">
+					<select name="Family">
 						<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
-						<option value="0">-----------------------</option>
-
 						<?php
 						while ($aRow = mysql_fetch_array($rsFamilies))
 						{
@@ -305,6 +324,8 @@ require "Include/Header.php";
 
 			<tr>
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date:"); ?></td>
+<?php	if (!$dDate)	$dDate = $dep_Date ?>
+		
 				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
 
@@ -363,19 +384,15 @@ require "Include/Header.php";
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Payment Method:"); ?></td>
 				<td class="TextColumnWithBottomBorder">
 					<select name="Method">
-						<option value="0"><?php echo gettext("Select Method"); ?></option>
-
-						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "CreditCard") { ?>
+						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "Bank" || !$iCurrentDeposit) { ?>
+						<option value="CHECK" <?php if ($iMethod == "CHECK") { echo "selected"; } ?>><?php echo gettext("CHECK"); ?></option>
+						<option value="CASH" <?php if ($iMethod == "CASH") { echo "selected"; } ?>><?php echo gettext("CASH"); ?></option>
+						<?php } ?>
+<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "CreditCard" || !$iCurrentDeposit) { ?>
 						<option value="CREDITCARD" <?php if ($iMethod == "CREDITCARD") { echo "selected"; } ?>><?php echo gettext("Credit Card"); ?></option>
 						<?php } ?>
-
-						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "Bank") { ?>
-						<option value="CHECK" <?php if ($iMethod == "CHECK") { echo "selected"; } ?>><?php echo gettext("Check"); ?></option>
-						<option value="CASH" <?php if ($iMethod == "CASH") { echo "selected"; } ?>><?php echo gettext("Cash"); ?></option>
-						<?php } ?>
-
-						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "BankDraft") { ?>
-						<option value="BANKDRAFT" <?php if ($iMethod == "BANKDRAFT") { echo "selected"; } ?>><?php echo gettext("Other"); ?></option>
+						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "BankDraft" || !$iCurrentDeposit) { ?>
+						<option value="BANKDRAFT" <?php if ($iMethod == "BANKDRAFT") { echo "selected"; } ?>><?php echo gettext("Bank Draft"); ?></option>
 						<?php } ?>
 					</select>
 				</td>
