@@ -54,15 +54,6 @@ CREATE TABLE canvassdata_can (
 
   PRIMARY KEY  (can_ID),
   UNIQUE KEY can_ID (can_ID)
-)
-
-CREATE TABLE canvas05_c05 (
-  c05_famID smallint(9) NOT NULL default '0',
-  c05_churchColor text,
-  c05_doingRight text,
-  c05_canImprove text,
-  c05_pledgeByMar31 text,
-  c05_comments text
 ) TYPE=MyISAM;
 
 CREATE TABLE deposit_dep (
@@ -204,7 +195,7 @@ CREATE TABLE person_per (
 ) TYPE=MyISAM;
 
 
-INSERT INTO person_per VALUES (1,NULL,'ChurchInfo',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0000,NULL,0,0,0,0,NULL,NULL,'2004-08-25 18:00:00',0,0,NULL);
+INSERT INTO person_per VALUES (1,NULL,'ChurchInfo',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0000,NULL,0,0,0,0,NULL,NULL,'2004-08-25 18:00:00',0,0,NULL,0);
 
 CREATE TABLE pledge_plg (
   plg_plgID mediumint(9) NOT NULL auto_increment,
@@ -295,12 +286,8 @@ INSERT INTO query_qry VALUES (22,'SELECT per_ID as AddToCart, DAYOFMONTH(per_Mem
 INSERT INTO query_qry VALUES (23,'SELECT usr_per_ID as AddToCart, CONCAT(a.per_FirstName,\' \',a.per_LastName) AS Name FROM user_usr LEFT JOIN person_per a ON per_ID=usr_per_ID ORDER BY per_LastName','Select database users','People who are registered as database users',0);
 INSERT INTO query_qry VALUES (24,'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per WHERE per_cls_id =1','Select all members','People who are members',0);
 INSERT INTO query_qry VALUES (25, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2volunteeropp_p2vo ON per_id = p2vo_per_ID WHERE p2vo_vol_ID = ~volopp~ ORDER BY per_LastName', 'Volunteers', 'Find volunteers for a particular opportunity', 1);
-
 INSERT INTO query_qry VALUES (26,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE DATE_SUB(NOW(),INTERVAL ~friendmonths~ MONTH)<per_FriendDate ORDER BY per_MembershipDate','Recent friends','Friends who signed up in previous months',0);
-
 INSERT INTO query_qry VALUES (27,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per inner join family_fam on per_fam_ID=fam_ID where per_fmr_ID<>3 AND fam_OkToCanvass="TRUE" ORDER BY fam_Zip','Families to Canvass','People in families that are ok to canvass.',0);
-
-select per_ID as AddToCart,per_FirstName,per_LastName 
 
 CREATE TABLE queryparameteroptions_qpo (
   qpo_ID smallint(5) unsigned NOT NULL auto_increment,
