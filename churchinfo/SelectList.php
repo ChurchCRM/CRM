@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : SelectList.php
-*  last change : 2003-03-27
+*  last change : 2004-02-03
 *  website     : http://www.infocentral.org
 *  copyright   : Copyright 2001-2003 Deane Barker and Chris Gebhardt
 *
@@ -482,20 +482,32 @@ if ($iMode == 1 || $iMode == 2)
 				echo "<input type=\"hidden\" name=\"grouptype\" value='". $iGroupType ."'\">";
 			if(isset($iGroupID))
 				echo "<input type=\"hidden\" name=\"groupid\" value='". $iGroupID ."'\">";
-			?>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo gettext("Display:"); ?>&nbsp;
-			<select class="SmallText" name="Number">
-				<option value="5">5</option>
-				<option value="10">10</option>
-				<option value="20">20</option>
-				<option value="25">25</option>
-				<option value="50">50</option>
+			
+			// Display record limit per page
+			if ($_SESSION['SearchLimit'] == "5")
+				$sLimit5 = "selected";
+			if ($_SESSION['SearchLimit'] == "10")
+				$sLimit10 = "selected";
+			if ($_SESSION['SearchLimit'] == "20")
+				$sLimit20 = "selected";
+			if ($_SESSION['SearchLimit'] == "25")
+				$sLimit25 = "selected";
+			if ($_SESSION['SearchLimit'] == "50")
+				$sLimit50 = "selected";
+			
+			echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;". gettext("Display:") . "&nbsp;
+			<select class=\"SmallText\" name=\"Number\">
+				<option value=\"5\" $sLimit5>5</option>
+				<option value=\"10\" $sLimit10>10</option>
+				<option value=\"20\" $sLimit20>20</option>
+				<option value=\"25\" $sLimit25>25</option>
+				<option value=\"50\" $sLimit50>50</option>
 			</select>&nbsp;
-			<input type="submit" class="icTinyButton" value="<?php echo gettext("Go"); ?>">
+			<input type=\"submit\" class=\"icTinyButton\" value=\"". gettext("Go") ."\">
 			</form>
 			</div>
-			<BR>
-		<?php } ?>
+			<BR>";
+		 } ?>
 
 		<table cellpadding="4" align="center" cellspacing="0" width="100%">
 			<tr class="TableHeader">
@@ -852,20 +864,32 @@ else
 			echo "<input type=\"hidden\" name=\"Sort\" value=\"" . $sSort . "\">";
 		if(isset($sLetter))
 			echo "<input type=\"hidden\" name=\"Letter\" value='" . $sLetter . "'\">";
-		?>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo gettext("Display:"); ?>&nbsp;
-		<select class="SmallText" name="Number">
-		<option value="5">5</option>
-		<option value="10">10</option>
-		<option value="20">20</option>
-		<option value="25">25</option>
-		<option value="50">50</option>
+		
+		// Display record limit per page
+		if ($_SESSION['SearchLimit'] == "5")
+			$sLimit5 = "selected";
+		if ($_SESSION['SearchLimit'] == "10")
+			$sLimit10 = "selected";
+		if ($_SESSION['SearchLimit'] == "20")
+			$sLimit20 = "selected";
+		if ($_SESSION['SearchLimit'] == "25")
+			$sLimit25 = "selected";
+		if ($_SESSION['SearchLimit'] == "50")
+			$sLimit50 = "selected";
+		
+		echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;". gettext("Display:") . "&nbsp;
+		<select class=\"SmallText\" name=\"Number\">
+			<option value=\"5\" $sLimit5>5</option>
+			<option value=\"10\" $sLimit10>10</option>
+			<option value=\"20\" $sLimit20>20</option>
+			<option value=\"25\" $sLimit25>25</option>
+			<option value=\"50\" $sLimit50>50</option>
 		</select>&nbsp;
-		<input type="submit" class="icTinyButton" value="<?php echo gettext("Go"); ?>">
+		<input type=\"submit\" class=\"icTinyButton\" value=\"". gettext("Go") ."\">
 		</form>
-
-		</div>
-	<?php } ?>
+		</div>";
+		
+	 } ?>
 	<BR>
 
 	<table cellpadding="4" align="center" cellspacing="0" width="100%">
