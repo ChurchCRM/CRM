@@ -27,10 +27,15 @@ $PledgeOrPayment = FilterInput($_GET["PledgeOrPayment"]);
 $iCurrentDeposit = FilterInput($_GET["CurrentDeposit"]);
 
 if ($iPledgeID) {
-	$sSQL = "SELECT plg_depID FROM pledge_plg WHERE plg_plgID = '$iPledgeID'";
-	$rsPledgeID = RunQuery($sSQL);
-	list ($iCurrentDeposit) = mysql_fetch_row($rsPledgeID);
+	$sSQL = "SELECT * FROM pledge_plg WHERE plg_plgID = '$iPledgeID'";
+	$rsPledge = RunQuery($sSQL);
+	$thePledge = mysql_fetch_array($rsPledge);
+	$iCurrentDeposit = $thePledge["plg_depID"];
+	$PledgeOrPayment = $thePledge["plg_PledgeOrPayment"];
 }
+
+if ($PledgeOrPayment == 'Pledge') // Don't assign the deposit slip if this is a pledge
+	$iCurrentDeposit = 0;
 
 if ($iCurrentDeposit)
 	$_SESSION['iCurrentDeposit'] = $iCurrentDeposit;
@@ -43,8 +48,6 @@ if ($iCurrentDeposit) {
 	$rsDeposit = RunQuery($sSQL);
 	extract(mysql_fetch_array($rsDeposit));
 }
-if ($dep_Closed && !$iPledgeID)
-	$iCurrentDeposit = "";
 
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
@@ -58,7 +61,7 @@ elseif ($iCurrentDeposit)
 	$sPageTitle = gettext("Payment Editor: ") . $dep_Type . gettext(" Deposit Slip #") . $iCurrentDeposit . " ($dep_Date)";
 else
 	$sPageTitle = gettext("Payment Editor - New Deposit Slip Will Be Created");
-if ($dep_Closed && $iPledgeID)
+if ($dep_Closed && $iPledgeID && $PledgeOrPayment == 'Payment')
 	$sPageTitle .= " &nbsp; <font color=red>CLOSED</font>";			
 
 // Security: User must have Finance permission to use this form.
@@ -150,7 +153,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		if (strlen($iPledgeID) < 1)
 		{
 			// Create new Deposit Slip
-			if (!$iCurrentDeposit) {
+			if ((!$iCurrentDeposit) && $PledgeOrPayment=='Payment') {
 				if ($iMethod == "CASH" || $iMethod == "CHECK")
 					$dep_Type = "Bank";
 				elseif ($iMethod == "CREDITCARD")
@@ -243,6 +246,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		//Set defaults
 		$iFamily = $FamIDIn; // Will be set only if they pressed the "add pledge" link in the family view
 		$iFYID = $_SESSION['idefaultFY'];
+		$dDate = date ("Y-m-d");
 		if (!$iFYID)
 			$iFYID = CurrentFY();
 		if ($dep_Type == "CreditCard")
