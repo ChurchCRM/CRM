@@ -264,7 +264,17 @@ $MenuFirst = 1;
 					'contents', <?php echo "'" . gettext("View All Deposits") . "'"; ?>,
 					'uri', 'FindDepositSlip.php',
 					'statusText', ''
-				)
+				),
+				3, new domMenu_Hash(
+					'contents', '---------------------------',
+					'uri', '',
+					'statusText', ''
+				),
+				4, new domMenu_Hash(
+ 					'contents', <?php echo "'" . gettext("Edit Deposit Slip " . $_SESSION['iCurrentDeposit']) . "'"; ?>,
+ 					'uri', 'DepositSlipEditor.php?DepositSlipID=<?php echo $_SESSION['iCurrentDeposit'];?>',
+ 					'statusText', ''
+ 				)
 			),
 			<?php } ?>
 
@@ -486,11 +496,14 @@ $MenuFirst = 1;
 			</tr>
 			<tr>
 				<td class="Search">&nbsp;</td>
-				<td class="Search" width="70%">
+				<td class="Search" width="50%">
 					<form name="SelectFilter" method="get" action="SelectList.php">
 						<input class="menuButton" style="font-size: 8pt; margin-top: 5px;" type="text" name="Filter" id="SearchText" <?php echo 'value="' . gettext("Search") . '"'; ?> onfocus="ClearFieldOnce(this);">
 						<input name="mode" type="radio" value="person" <?php if (! $_SESSION['bSearchFamily']) echo "checked";?>><?php echo gettext("Person"); ?><input type="radio" name="mode" value="family" <?php if ($_SESSION['bSearchFamily']) echo "checked";?>><?php echo gettext("Family"); ?>
 					</form>
+				</td>
+				<td class="Search" align="center">
+					<?php if($_SESSION['bFinance'])echo gettext("Current deposit slip: "); ?><span id="CartCounter"><?php echo $_SESSION['iCurrentDeposit']; ?></span>
 				</td>
 				<td class="Search" align="right">
 					<?php echo gettext("Items in Cart:"); ?><span id="CartCounter"><?php echo count($_SESSION['aPeopleCart']); ?></span>
