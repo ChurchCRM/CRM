@@ -30,6 +30,9 @@ if (strlen($_GET["Letter"])) $sLetter = FilterInput($_GET["Letter"],'char');
 
 $sMode = $_GET["mode"];
 
+// Save default search mode
+$_SESSION['bSearchFamily'] = ($sMode != 'person');
+
 if (isset($_GET["Number"]))
 {
 	$_SESSION['SearchLimit'] = FilterInput($_GET["Number"],'int');
