@@ -79,9 +79,10 @@ class PDF_ReminderReport extends FPDF {
 		$this->Cell ($wid, 4, $str, 1);
 	}
 
-	function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID) {
+	function StartNewPage ($sChurchName, $sChurchAddress, $sChurchCity, $sChurchState, $sChurchZip, $sChurchPhone, $sChurchEmail,
+	                       $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID) {
 		$this->AddPage();
-		
+
 		$dateX = 180;
 		$dateY = 25;
 
@@ -93,10 +94,10 @@ class PDF_ReminderReport extends FPDF {
 
 		$curY = $topY;
 
-		$this->WriteAt ($leftX, $curY, "Unitarian-Universalist Church of Nashua"); $curY += $incrementY;
-		$this->WriteAt ($leftX, $curY, "58 Lowell Street"); $curY += $incrementY;
-		$this->WriteAt ($leftX, $curY, "Nashua, New Hampshire  03064"); $curY += $incrementY;
-		$this->WriteAt ($leftX, $curY, "(603) 882-1092  office@uunashua.org"); $curY += 2 * $incrementY;
+		$this->WriteAt ($leftX, $curY, $sChurchName); $curY += $incrementY;
+		$this->WriteAt ($leftX, $curY, $sChurchAddress); $curY += $incrementY;
+		$this->WriteAt ($leftX, $curY, ($sChurchCity . ", " . $sChurchState . "  " .   $sChurchZip)); $curY += $incrementY;
+		$this->WriteAt ($leftX, $curY, $sChurchPhone . "  " . $sChurchEmail); $curY += 2 * $incrementY;
 
 		$this->WriteAt ($leftX, $curY, $this->MakeSalutation ($fam_ID)); $curY += $incrementY;
 		if ($fam_Address1 != "") {
@@ -185,7 +186,8 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	if (mysql_num_rows ($rsPledges) == 0)
 		continue;
 
-	$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID);
+	$curY = $pdf->StartNewPage ($sChurchName, $sChurchAddress, $sChurchCity, $sChurchState, $sChurchZip, $sChurchPhone, $sChurchEmail,
+	                            $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID);
 
 	// Get pledges only
 	$sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
