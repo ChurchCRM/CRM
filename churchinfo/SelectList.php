@@ -444,21 +444,39 @@ if ($iMode == 1 || $iMode == 2)
 				echo "<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">". gettext("Previous Page") . "</A>&nbsp;&nbsp;";
 			}
 
-			// Calculate and Display Page-Number Links
-			$Pages = $Total / $iPerPage;
+			// Calculate starting and ending Page-Number Links
+			$Pages = ceil($Total / $iPerPage);
+			$startpage =  (ceil($Result_Set / $iPerPage)) - 6;
+			if ($startpage <= 2)
+				$startpage = 1;
+			$endpage = (ceil($Result_Set / $iPerPage)) + 9;
+			if ($endpage >= ($Pages - 1))
+				$endpage = $Pages;
+			
+			// Show Link "1 ..." if startpage does not start at 1
+			if ($startpage != 1)
+				echo "<a href=\"SelectList.php?Result_Set=0&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">1</a> ... \n";
+
+			// Display page links
 			if ($Pages > 1)
 			{
-				for ($b = 0; $b < $Pages; $b++)
+				for ($c = $startpage; $c <= $endpage; $c++)
 				{
-					$c = $b + 1;
+					$b = $c - 1;
 					$thisLinkResult = $iPerPage * $b;
 					if ($thisLinkResult != $Result_Set)
-						echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">$c</a>&nbsp;&nbsp;\n";
+						echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">$c</a>&nbsp;\n";
 					else
 						echo "&nbsp;&nbsp;[ " . $c . " ]&nbsp;&nbsp;";
 				}
 			}
 
+			// Show Link "... xx" if endpage is not the maximum number of pages
+			if ($endpage != $Pages)
+			{
+				$thisLinkResult = ($Pages - 1) * $iPerPage;
+				echo " ... <a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">$Pages</a>\n";
+			}
 			// Show next-page link unless we're at the last page
 			if ($Result_Set >= 0 && $Result_Set < $Total)
 			{
@@ -832,19 +850,38 @@ else
 			echo "<A HREF=\"SelectList.php?Result_Set=$thisLinkResult&mode=family&Filter=$sFilter&Sort=$sSort&Letter=$sLetter\">Previous Page</A>&nbsp;&nbsp;";
 		}
 
-		// Calculate and Display Page # Links
-		$Pages = $Total / $iPerPage;
+		// Calculate starting and ending Page-Number Links
+		$Pages = ceil($Total / $iPerPage);
+		$startpage =  (ceil($Result_Set / $iPerPage)) - 6;
+		if ($startpage <= 2)
+			$startpage = 1;
+		$endpage = (ceil($Result_Set / $iPerPage)) + 9;
+		if ($endpage >= ($Pages - 1))
+			$endpage = $Pages;
+
+		// Show Link "1 ..." if startpage does not start at 1
+		if ($startpage != 1)
+			echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=0&mode=family&Filter=$sFilter&Sort=$sSort&Letter=$sLetter\">1</a> ... \n";
+
+		// Display page links
 		if ($Pages > 1)
 		{
-			for ($b = 0; $b < $Pages; $b++)
+			for ($c = $startpage; $c <= $endpage; $c++)
 			{
-				$c = $b + 1;
+				$b = $c - 1;
 				$thisLinkResult = $iPerPage * $b;
 				if ($thisLinkResult != $Result_Set)
-					echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=family&Filter=$sFilter&Sort=$sSort&Letter=$sLetter\">$c</a>&nbsp;&nbsp;\n";
+					echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=family&Filter=$sFilter&Sort=$sSort&Letter=$sLetter\">$c</a>&nbsp;\n";
 				else
 					echo "&nbsp;&nbsp;[ " . $c . " ]&nbsp;&nbsp;";
 			}
+		}
+
+		// Show Link "... xx" if endpage is not the maximum number of pages
+		if ($endpage != $Pages)
+		{
+			$thisLinkResult = ($Pages - 1) * $iPerPage;
+			echo " ... <a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=family&Filter=$sFilter&Sort=$sSort&Letter=$sLetter\">$Pages</a>\n";
 		}
 
 		// Show next-page link unless we're at the last page
