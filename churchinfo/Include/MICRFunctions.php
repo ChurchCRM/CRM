@@ -23,6 +23,20 @@ class MICRReader {
       }
    }
 
+	function FindRoute ($micr)
+	{
+		$routeAndAccount = $this->FindRouteAndAccount ($micr);
+		$breakChar = strpos ($routeAndAccount, "t", 1);
+		return (substr ($micr, 1, $breakChar - 1));
+	}
+
+	function FindAccount ($micr)
+	{
+		$routeAndAccount = $this->FindRouteAndAccount ($micr);
+		$breakChar = strpos ($routeAndAccount, "t", 1);
+		return (substr ($routeAndAccount, $breakChar + 1, strlen ($micr) - $breakChar));
+	}
+
    function FindRouteAndAccount ($micr)
    {
       $formatID = $this->IdentifyFormat ($micr);
