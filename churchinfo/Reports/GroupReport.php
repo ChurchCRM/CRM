@@ -17,11 +17,8 @@
 
 require "../Include/Config.php";
 require "../Include/Functions.php";
-require "../Include/ReportConfig.php";
 require "../Include/ReportFunctions.php";
-
-// Load the FPDF library
-LoadLib_FPDF();
+require "../Include/ReportConfig.php";
 
 $bOnlyCartMembers = $_POST["OnlyCart"];
 $iGroupID = FilterInput($_POST["GroupID"],'int');
@@ -32,7 +29,7 @@ if ($iMode == 1)
 else
 	$iRoleID = 0;
 
-class PDF_Directory extends FPDF
+class PDF_Directory extends ChurchInfoReport
 {
 
 	// Private properties
@@ -86,8 +83,7 @@ class PDF_Directory extends FPDF
 
 	// Constructor
 	function PDF_Directory() {
-		global $paperFormat;
-		parent::FPDF("P", "mm", $paperFormat);
+		parent::FPDF("P", "mm", $this->paperFormat);
 
 		$this->_Column      = 0;
 		$this->_CurLine     = 2;

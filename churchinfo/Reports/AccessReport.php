@@ -14,8 +14,8 @@
 
 require "../Include/Config.php";
 require "../Include/Functions.php";
-require "../Include/ReportConfig.php";
 require "../Include/ReportFunctions.php";
+require "../Include/ReportConfig.php";
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
@@ -23,10 +23,7 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
 	exit;
 }
 
-// Load the FPDF library
-LoadLib_FPDF();
-
-class PDF_AccessReport extends FPDF {
+class PDF_AccessReport extends ChurchInfoReport {
 
 	// Private properties
 	var $_Margin_Left = 0;         // Left Margin
@@ -50,7 +47,7 @@ class PDF_AccessReport extends FPDF {
 	// Constructor
 	function PDF_AccessReport() {
 		global $paperFormat;
-		parent::FPDF("P", "mm", $paperFormat);
+		parent::FPDF("P", "mm", $this->paperFormat);
 
 		$this->_Column      = 0;
 		$this->_CurLine     = 2;

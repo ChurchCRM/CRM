@@ -17,8 +17,8 @@
 
 require "../Include/Config.php";
 require "../Include/Functions.php";
-require "../Include/ReportConfig.php";
 require "../Include/ReportFunctions.php";
+require "../Include/ReportConfig.php";
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
@@ -26,10 +26,7 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
 	exit;
 }
 
-// Load the FPDF library
-LoadLib_FPDF();
-
-class PDF_Directory extends FPDF {
+class PDF_Directory extends ChurchInfoReport {
 
 	// Private properties
 	var $_Margin_Left = 0;         // Left Margin
@@ -47,7 +44,6 @@ class PDF_Directory extends FPDF {
 
 		if (($this->PageNo() > 1) || ($bDirUseTitlePage == false))
 		{
-			global $sChurchName;
 			//Select Arial bold 15
 			$this->SetFont($this->_Font,'B',15);
 			//Line break
@@ -55,7 +51,7 @@ class PDF_Directory extends FPDF {
 			//Move to the right
 			$this->Cell(10);
 			//Framed title
-			$this->Cell(190,10,$sChurchName . " - " . gettext("Member Directory"),1,0,'C');
+			$this->Cell(190,10,$this->sChurchName . " - " . gettext("Member Directory"),1,0,'C');
 		}
 	}
 
@@ -121,8 +117,7 @@ class PDF_Directory extends FPDF {
 
 	// Constructor
 	function PDF_Directory() {
-		global $paperFormat;
-		parent::FPDF("P", "mm", $paperFormat);
+		parent::FPDF("P", "mm", $this->paperFormat);
 
 		$this->_Column      = 0;
 		$this->_CurLine     = 2;
@@ -366,8 +361,6 @@ class PDF_Directory extends FPDF {
 		$this->_CurLine += $numlines;
 	}
 }
-
-
 
 // Get and filter the classifications selected
 $count = 0;
