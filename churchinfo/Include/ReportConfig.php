@@ -57,6 +57,8 @@ class ChurchInfoReport extends FPDF {
    var $sConfirm1 = "This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.";
 	var $sConfirm2 = "Thank you very much for helping us to update this information.  If you want on-line access to the church database please provide your email address and a desired password and we will send instructions.";
 	var $sConfirm3 = "Email _____________________________________ Password ________________";
+	var $sConfirm4 = "[  ] I no longer want to be associated with the church (check here to be removed from our records).";
+
    var $sConfirmSigner = "<signs confirmation letter>";
 
    // Verbage for the pledge summary report
