@@ -20,7 +20,6 @@ require "Include/Functions.php";
 //Set the page title
 $sPageTitle = gettext("Confirm Delete Automatic payment");
 
-//Get the PledgeID out of the querystring
 $iAutID = FilterInput($_GET["AutID"],'int');
 $linkBack = FilterInput($_GET["linkBack"]);
 

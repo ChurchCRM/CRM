@@ -97,6 +97,7 @@ if (isset($_POST["Submit"]))
 					  aut_BankName,
 					  aut_Route,
 					  aut_Account,
+					  aut_Serial,
 					  aut_DateLastEdited,
 					  aut_EditedBy)
 				   VALUES (" .
@@ -123,6 +124,7 @@ if (isset($_POST["Submit"]))
 						"'" . $tBankName . "'," .
 						"'" . $tRoute . "'," .
 						"'" . $tAccount . "'," .
+						"'" . 1 . "'," .
 						"'" . date ("YmdHis") . "'," .
 						$_SESSION['iUserID'] .
 						")";

@@ -175,7 +175,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 			RunQuery ($sSQL);
 
 			// Push the authorized transaction date forward by the interval
-			$sSQL = "UPDATE autopayment_aut SET aut_NextPayDate=DATE_ADD('" . $authDate . "', INTERVAL " . $interval . " MONTH) WHERE aut_ID = " . $aut_ID;
+			$sSQL = "UPDATE autopayment_aut SET aut_NextPayDate=DATE_ADD('" . $authDate . "', INTERVAL " . $interval . " MONTH), aut_Serial=aut_Serial+1 WHERE aut_ID = " . $aut_ID;
 			RunQuery ($sSQL);
 		}
 	}
@@ -201,7 +201,8 @@ if (isset($_POST["DepositSlipSubmit"]))
 						 a.aut_ExpYear AS expYear,
 						 a.aut_BankName AS bankName,
 						 a.aut_Route AS route,
-						 a.aut_Account AS account
+						 a.aut_Account AS account,
+						 a.aut_Serial AS serial
 			 FROM pledge_plg 
 			 LEFT JOIN autopayment_aut a ON plg_aut_ID = a.aut_ID
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
@@ -260,7 +261,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 			$echoPHP->set_ec_zip($zip);
 			$echoPHP->set_ec_rt($route);
 			$echoPHP->set_ec_account($account);
-			$echoPHP->set_ec_serial_number(1); // ** check number
+			$echoPHP->set_ec_serial_number($serial);
 			$echoPHP->set_ec_payee($EchoPayee);
 			//$echoPHP->set_ec_id_state("");
 			//$echoPHP->set_ec_id_number("");
