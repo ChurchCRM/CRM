@@ -156,6 +156,7 @@ $aDirRoleChild = explode(",",$sDirRoleChild);
 			<input type="checkbox" Name="bDirPersonalCell" value="1" checked><?php echo gettext("Personal Cell Phone");?><br>
 			<input type="checkbox" Name="bDirPersonalEmail" value="1" checked><?php echo gettext("Personal Email");?><br>
 			<input type="checkbox" Name="bDirPersonalWorkEmail" value="1" checked><?php echo gettext("Personal Work/Other Email");?><br>
+			<input type="checkbox" Name="bFamilyPhoto" value="1" checked><?php echo gettext("Family Photo");?><br>
 		</td>
 	</tr>
 	<tr>
