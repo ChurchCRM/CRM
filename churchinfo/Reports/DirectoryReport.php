@@ -29,7 +29,7 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
 class PDF_Directory extends ChurchInfoReport {
 
 	// Private properties
-	var $_Margin_Left = 0;         // Left Margin
+	var $_Margin_Left = 16;         // Left Margin
 	var $_Margin_Top  = 0;         // Top margin 
 	var $_Char_Size   = 12;        // Character size
 	var $_Column      = 0;
@@ -49,9 +49,9 @@ class PDF_Directory extends ChurchInfoReport {
 			//Line break
 			$this->Ln(7);
 			//Move to the right
-			$this->Cell(10);
+			$this->SetX($this->_Margin_Left);
 			//Framed title
-			$this->Cell(190,10,$this->sChurchName . " - " . gettext("Member Directory"),1,0,'C');
+			$this->Cell($this->w - ($this->_Margin_Left*2),10,$this->sChurchName . " - " . gettext("Member Directory"),1,0,'C');
             $this->SetY(25);
 		}
 	}
@@ -127,8 +127,8 @@ class PDF_Directory extends ChurchInfoReport {
 		$this->AddPage();
 		$this->SetAutoPageBreak(false);
 
-		$this->_Margin_Left = 12;
-		$this->_Margin_Top  = 12;
+		$this->_Margin_Left = 16;
+		$this->_Margin_Top  = 16;
 	}
 
     function NbLines($w,$txt)
@@ -192,7 +192,7 @@ class PDF_Directory extends ChurchInfoReport {
 		if (file_exists($famimg)) 
 		{
 			$s = getimagesize($famimg);
-			$h = (78 / $s[0]) * $s[1];
+			$h = ($this->_ColWidth / $s[0]) * $s[1];
 		}
 
 
@@ -220,7 +220,7 @@ class PDF_Directory extends ChurchInfoReport {
 		$this->Check_Lines(2, 0);
 		$this->SetTextColor(255);
 		$this->SetFont($this->_Font,'B',12);
-		$_PosX = $this->_Margin_Left+($this->_Column * ($this->w / 2));
+		$_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
 		$_PosY = $this->GetY();
 		$this->SetXY($_PosX, $_PosY);
 		$this->Cell($this->_ColWidth, 5, $sLetter, 1, 1, "C", 1) ;
@@ -233,7 +233,7 @@ class PDF_Directory extends ChurchInfoReport {
 	function Print_Name($sName)
 	{
 		$this->SetFont($this->_Font,'B',12);
-		$_PosX = $this->_Margin_Left+($this->_Column * ($this->w / 2));
+		$_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
 		$_PosY = $this->GetY();
 		$this->SetXY($_PosX, $_PosY);
         $this->MultiCell($this->_ColWidth, 5, $sName);
@@ -410,7 +410,7 @@ class PDF_Directory extends ChurchInfoReport {
 
 		$this->Print_Name($sName);
 
-		$_PosX = $this->_Margin_Left + ($this->_Column * ($this->w / 2));
+		$_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
 		$_PosY = $this->GetY();
 
 		$this->SetXY($_PosX, $_PosY);
@@ -419,9 +419,9 @@ class PDF_Directory extends ChurchInfoReport {
 		if (file_exists($famimg)) 
 		{
 			$s = getimagesize($famimg);
-			$h = (78 / $s[0]) * $s[1];
+			$h = ($this->_ColWidth / $s[0]) * $s[1];
 			$_PosY += 2;
-			$this->Image($famimg, $_PosX, $_PosY, 78);
+			$this->Image($famimg, $_PosX, $_PosY, $this->_ColWidth);
 			$this->SetXY($_PosX, $_PosY + $h + 2);
 		}
 		
