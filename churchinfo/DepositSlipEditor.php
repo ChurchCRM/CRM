@@ -82,7 +82,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 			$sSQL = "UPDATE deposit_dep SET dep_Date = '" . $dDate . "', dep_Comment = '" . $sComment . "', dep_EnteredBy = ". $_SESSION['iUserID'] . ", dep_Closed = " . $bClosed . " WHERE dep_ID = " . $iDepositSlipID . ";";
 			$bGetKeyBack = false;
 
-			if ($bClosed) {
+			if ($bClosed && ($dep_Type=='CreditCard' || $dep_Type == 'BankDraft')) {
 				// Delete any failed transactions on this deposit slip now that it is closing
 				$q = "DELETE FROM pledge_plg WHERE plg_depID = " . $iDepositSlipID . " AND plg_aut_Cleared=0" ;
 				RunQuery($q);
