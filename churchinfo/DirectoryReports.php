@@ -18,7 +18,8 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/ReportConfig.php";
+//require "Include/ReportFunctions.php";
+//require "Include/ReportConfig.php";
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
@@ -49,7 +50,6 @@ $sSQL = "SELECT * FROM group_grp ORDER BY grp_Name";
 $rsGroups = RunQuery($sSQL);
 
 $aDefaultClasses = explode(',', $sDirClassifications);
-
 $aDirRoleHead = explode(",",$sDirRoleHead);
 $aDirRoleSpouse = explode(",",$sDirRoleSpouse);
 $aDirRoleChild = explode(",",$sDirRoleChild);
