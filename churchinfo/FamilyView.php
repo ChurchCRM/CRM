@@ -710,7 +710,7 @@ if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
 					<?php echo $fundName ?>&nbsp;
 				</td>
 				<td>
-					<?php echo (1995 + $plg_FYID) . "/" . (1996 + $plg_FYID) ?>&nbsp;
+					<?php echo MakeFYString ($plg_FYID) ?>&nbsp;
 				</td>
 				<td>
 					<?php echo $plg_date ?>&nbsp;
@@ -760,7 +760,7 @@ if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
 <?php if ($_SESSION['bCanvasser']) { ?>
 
 <p>
-	<a class="SmallText" href="CanvassEditor.php?FamilyID=<?php echo $fam_ID;?>&FYID=<?php echo $_SESSION['idefaultFY'];?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo (($_SESSION['idefaultFY'] + 1995) . "/" . ($_SESSION['idefaultFY'] + 1996)) . gettext(" Canvass Entry"); ?></a></font>
+	<a class="SmallText" href="CanvassEditor.php?FamilyID=<?php echo $fam_ID;?>&FYID=<?php echo $_SESSION['idefaultFY'];?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo MakeFYString ($_SESSION['idefaultFY']) . gettext(" Canvass Entry"); ?></a></font>
 <p>
 
 <?php } ?>

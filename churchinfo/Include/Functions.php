@@ -170,11 +170,7 @@ function CurrentFY()
 // PrintFYIDSelect: make a fiscal year selection menu.
 function PrintFYIDSelect ($iFYID, $selectName)
 {
-	global $iFYMonth;
-
-	echo "<select name=\" . $selectName . \">";
-
-	$monthNow = date ("m");
+	echo "<select name=\"" . $selectName . "\">";
 
 	echo "<option value=\"0\">" . gettext("Select Fiscal Year") . "</option>";
 
@@ -183,12 +179,21 @@ function PrintFYIDSelect ($iFYID, $selectName)
 		if ($iFYID == $fy)
 			echo " selected";
 		echo ">";
-		if ($iFYMonth == 1)
-			echo 1996 + $fy;
-		else
-			echo 1995 + $fy . "/" . substr (1996 + $fy, 2, 2);
+		echo MakeFYString ($fy);
 	}
 	echo "</select>";
+}
+
+// Formats a fiscal year string
+function MakeFYString ($iFYID)
+{
+	global $iFYMonth;
+	$monthNow = date ("m");
+
+	if ($iFYMonth == 1)
+		return (1996 + $iFYID);
+	else
+		return (1995 + $iFYID . "/" . substr (1996 + $iFYID, 2, 2));
 }
 
 // Runs an SQL query.  Returns the result resource.

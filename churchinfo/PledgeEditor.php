@@ -244,7 +244,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		$iFamily = $FamIDIn; // Will be set only if they pressed the "add pledge" link in the family view
 		$iFYID = $_SESSION['idefaultFY'];
 		if (!$iFYID)
-			$iFYID = date("Y") - 1995;
+			$iFYID = CurrentFY();
 		if ($dep_Type == "CreditCard")
 			$iMethod = "CREDITCARD";
 		else if ($dep_Type == "BankDraft")

@@ -40,7 +40,7 @@ $pdf = new PDF_VotingMembers();
 $topY = 10;
 $curY = $topY;
 
-$pdf->WriteAt ($pdf->leftX, $curY, (gettext ("Voting members ") . (1995 + $iFYID) . "/" . (1996 + $iFYID)));
+$pdf->WriteAt ($pdf->leftX, $curY, (gettext ("Voting members ") . MakeFYString ($iFYID)));
 $curY += 10;
 
 $votingMemberCount = 0;

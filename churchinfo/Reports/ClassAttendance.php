@@ -262,7 +262,7 @@ $pdf->SetFont("Times",'B',16);
 
 $pdf->WriteAt ($nameX, $yTitle, ($grp_Name . " - " . $grp_Description));
 
-$FYString = (1995 + $iFYID) . "-" . substr ((1995 + $iFYID + 1), 2, 2);
+$FYString = MakeFYString ($iFYID);
 $pdf->WriteAt ($yearX, $yTitle, $FYString);
 
 $pdf->SetLineWidth (0.5);

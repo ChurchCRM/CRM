@@ -36,7 +36,7 @@ $sSQL = "SELECT fam_Name FROM family_fam where fam_ID = " . $iFamily;
 $rsFamily = RunQuery($sSQL);
 extract(mysql_fetch_array($rsFamily));
 
-$fyStr = (1995 + $iFYID) . "/" . (1995 + $iFYID + 1);
+$fyStr = MakeFYString ($iFYID);
 
 $sPageTitle = gettext($fyStr . " Canvass Input for the " . $fam_Name . " family");
 

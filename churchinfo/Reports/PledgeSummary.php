@@ -81,7 +81,7 @@ $pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchCity . ", " . $pdf->sChurchState
 $pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchPhone . "  " . $pdf->sChurchEmail); $curY += 2 * $pdf->incrementY;
 
 $blurb = $pdf->sPledgeSummary1;
-$blurb .= (1995 + $iFYID) . "/" . substr ((1995 + $iFYID + 1), 2, 2) . " ";
+$blurb .= MakeFYString ($iFYID);
 $blurb .= $pdf->sPledgeSummary2 . date ("Y-m-d") . ".";
 $pdf->WriteAt ($nameX, $curY, $blurb);
 
