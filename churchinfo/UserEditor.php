@@ -56,6 +56,7 @@ if (isset($_POST["Submit"]) && $iPersonID > 0) {
 	if (isset($_POST["Finance"])) { $Finance = 1; } else { $Finance = 0; }
 	if (isset($_POST["Notes"])) { $Notes = 1; } else { $Notes = 0; }
 	if (isset($_POST["EditSelf"])) { $EditSelf = 1; } else { $EditSelf = 0; }
+	if (isset($_POST["Canvasser"])) { $Canvasser = 1; } else { $Canvasser = 0; }
 
 	// This setting will go un-used until InfoCentral 1.3
 	// if (isset($_POST["Communication"])) { $Communication = 1; } else { $Communication = 0; }
@@ -72,9 +73,9 @@ if (isset($_POST["Submit"]) && $iPersonID > 0) {
 
 		// Write the SQL depending on whether we're adding or editing
 		if ($sAction == "add") {
-			$sSQL = "INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Communication, usr_Admin, usr_Style, usr_SearchLimit, usr_UserName, usr_EditSelf) VALUES (" . $iPersonID . ",'" . md5(strtolower($sDefault_Pass)) . "',1,'" . date("Y-m-d H:i:s") . "', " . $AddRecords . ", " . $EditRecords . ", " . $DeleteRecords . ", " . $MenuOptions . ", " . $ManageGroups . ", " . $Finance . ", " . $Notes . ", " . $Communication . ", " . $Admin . ", '" . $Style . "', 10, \"" . $sUserName . "\", usr_EditSelf = " . $EditSelf . ")";
+			$sSQL = "INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Communication, usr_Admin, usr_Style, usr_SearchLimit, usr_UserName, usr_EditSelf, usr_Canvasser) VALUES (" . $iPersonID . ",'" . md5(strtolower($sDefault_Pass)) . "',1,'" . date("Y-m-d H:i:s") . "', " . $AddRecords . ", " . $EditRecords . ", " . $DeleteRecords . ", " . $MenuOptions . ", " . $ManageGroups . ", " . $Finance . ", " . $Notes . ", " . $Communication . ", " . $Admin . ", '" . $Style . "', 10, \"" . $sUserName . "\"," . $EditSelf . "," . $Canvasser . ")";
 		} else {
-			$sSQL = "UPDATE user_usr SET usr_AddRecords = " . $AddRecords . ", usr_EditRecords = " . $EditRecords . ", usr_DeleteRecords = " . $DeleteRecords . ", usr_MenuOptions = " . $MenuOptions . ", usr_ManageGroups = " . $ManageGroups . ", usr_Finance = " . $Finance . ", usr_Notes = " . $Notes . ", usr_Communication = " . $Communication . ", usr_Admin = " . $Admin . ", usr_Style = \"" . $Style . "\", usr_UserName = \"" . $sUserName . "\", usr_EditSelf = " . $EditSelf . " WHERE usr_per_ID = " . $iPersonID;
+			$sSQL = "UPDATE user_usr SET usr_AddRecords = " . $AddRecords . ", usr_EditRecords = " . $EditRecords . ", usr_DeleteRecords = " . $DeleteRecords . ", usr_MenuOptions = " . $MenuOptions . ", usr_ManageGroups = " . $ManageGroups . ", usr_Finance = " . $Finance . ", usr_Notes = " . $Notes . ", usr_Communication = " . $Communication . ", usr_Admin = " . $Admin . ", usr_Style = \"" . $Style . "\", usr_UserName = \"" . $sUserName . "\", usr_EditSelf = " . $EditSelf . ", usr_Canvasser = " . $Canvasser . " WHERE usr_per_ID = " . $iPersonID;
 		}
 
 		// Execute the SQL
@@ -122,6 +123,7 @@ if (isset($_POST["Submit"]) && $iPersonID > 0) {
 		$usr_Communication = 0;
 		$usr_Admin = 0;
 		$usr_EditSelf = 0;
+		$usr_Canvasser = 0;
 		$sUserName = "";
 
 		// Get all the people who are NOT currently users
@@ -241,6 +243,11 @@ if ($bShowPersonSelect) {
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Edit Self:"); ?></td>
 		<td class="TextColumn"><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) { echo " checked"; } ?>>&nbsp;<span class="SmallText"><?php echo gettext("(Edit own family only.)"); ?></span></td>
+	</tr>
+
+	<tr>
+		<td class="LabelColumn"><?php echo gettext("Canvasser:"); ?></td>
+		<td class="TextColumn"><input type="checkbox" name="Canvasser" value="1"<?php if ($usr_Canvasser) { echo " checked"; } ?>>&nbsp;<span class="SmallText"><?php echo gettext("(Canvass volunteer.)"); ?></span></td>
 	</tr>
 
 	<tr>

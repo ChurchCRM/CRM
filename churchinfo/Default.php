@@ -134,6 +134,7 @@ if ($iUserID > 0)
 			$_SESSION['bNotes'] = true;
 			$_SESSION['bCommunication'] = true;
 			$_SESSION['bAdmin'] = true;
+			$_SESSION['bCanvasser'] = true;
 		}
 
 		// Otherwise, set the individual permissions.
@@ -164,6 +165,9 @@ if ($iUserID > 0)
 
 			// Set the EditSelf permission
 			$_SESSION['bEditSelf'] = $usr_EditSelf;
+
+			// Set the Canvasser permission
+			$_SESSION['bCanvasser'] = $usr_Canvasser;
 
 			// Set the Admin permission
 			$_SESSION['bAdmin'] = false;

@@ -73,6 +73,11 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$sCellPhone = FilterInput($_POST["CellPhone"]);
 	$sEmail = FilterInput($_POST["Email"]);
 	$bSendNewsLetter = isset($_POST["SendNewsLetter"]);
+
+	if ($_SESSION['bCanvasser']) { // Only take modifications to this field if the current user is a canvasser
+		$bOkToCanvass = isset($_POST["OkToCanvass"]);
+	}
+
 	$iPropertyID = FilterInput($_POST["PropertyID"],'int');
 	$dWeddingDate = FilterInput($_POST["WeddingDate"]);
 
@@ -163,6 +168,10 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			$bSendNewsLetterString = "'TRUE'";
 		else
 			$bSendNewsLetterString = "'FALSE'";
+		if ($bOkToCanvass)
+			$bOkToCanvassString = "'TRUE'";
+		else
+			$bOkToCanvassString = "'FALSE'";
 		if (strlen($iFamilyID) < 1)
 		{
 			$sSQL = "INSERT INTO family_fam (
@@ -180,7 +189,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 														fam_WeddingDate, 
 														fam_DateEntered, 
 														fam_EnteredBy, 
-														fam_SendNewsLetter)
+														fam_SendNewsLetter,
+														fam_OkToCanvass)
 											VALUES ('" . $sName . "','" . 
 											         $sAddress1 . "','" . 
 														$sAddress2 . "','" . 
@@ -195,7 +205,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 														$dWeddingDate . ",'" . 
 														date("YmdHis") . "'," . 
 														$_SESSION['iUserID'] . "," . 
-														$bSendNewsLetterString . ")";
+														$bSendNewsLetterString . "," . 
+														$bOkToCanvass . ")";
 			$bGetKeyBack = true;
 		}
 		else
@@ -214,7 +225,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 													 "fam_WeddingDate='" . $dWeddingDate . "'," .
 													 "fam_DateLastEdited='" . date("YmdHis") . "'," .
 													 "fam_EditedBy = " . $_SESSION['iUserID'] . "," .
-													 "fam_SendNewsLetter = " . $bSendNewsLetterString .
+													 "fam_SendNewsLetter = " . $bSendNewsLetterString . "," .
+													 "fam_OkToCanvass = " . $bOkToCanvassString .
 												" WHERE fam_ID = " . $iFamilyID;
 			$bGetKeyBack = false;
 		}
@@ -351,6 +363,7 @@ else
 		$sCellPhone = $fam_CellPhone;
 		$sEmail = $fam_Email;
 		$bSendNewsLetter = ($fam_SendNewsLetter == 'TRUE');
+		$bOkToCanvass = ($fam_OkToCanvass == 'TRUE');
 		$dWeddingDate = $fam_WeddingDate;
 		if ($dWeddingDate == '0000-00-00')
 			$dWeddingDate = '';
@@ -512,6 +525,11 @@ require "Include/Header.php";
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Send Newsletter:"); ?></td>
 		<td class="TextColumn"><input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) echo " checked"; ?>></td>
+	</tr>
+	
+	<tr>
+		<td class="LabelColumn"><?php echo gettext("Ok To Canvass:"); ?></td>
+		<td class="TextColumn"><input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) echo " checked"; ?>></td>
 	</tr>
 	
 	<?php
