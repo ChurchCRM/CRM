@@ -248,6 +248,7 @@ INSERT INTO query_qry VALUES (11, 'SELECT fun_name as Fund, CONCAT(\'$\',sum(rou
 INSERT INTO query_qry VALUES (15, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_MiddleName,\' \',per_LastName,\'</a>\') AS Name, \r\nper_City as City, per_State as State,\r\nper_Zip as ZIP, per_HomePhone as HomePhone\r\nFROM person_per \r\nWHERE ~searchwhat~ LIKE \'%~searchstring~%\'', 'Advanced Search', 'Search by any part of Name, City, State, Zip, or Home Phone.', 1);
 INSERT INTO query_qry VALUES (16, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID LEFT JOIN group_grp a ON grp_ID = p2g2r_grp_ID LEFT JOIN list_lst b ON lst_ID = grp_RoleListID AND p2g2r_rle_ID = lst_OptionID WHERE lst_OptionName = \'Teacher\'', 'Find Teachers', 'Find all people assigned to Sunday school classes as teachers', 1);
 INSERT INTO query_qry VALUES (17, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID LEFT JOIN group_grp a ON grp_ID = p2g2r_grp_ID LEFT JOIN list_lst b ON lst_ID = grp_RoleListID AND p2g2r_rle_ID = lst_OptionID WHERE lst_OptionName = \'Student\'', 'Find Students', 'Find all people assigned to Sunday school classes as students', 1);
+INSERT INTO query_qry VALUES (18,'SELECT per_ID as AddToCart, per_BirthDay as Day, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE per_cls_ID=1 AND per_BirthMonth=~birthmonth~ ORDER BY per_BirthDay','Birthdays','Members with birthdays in a particular month',0);
 
 CREATE TABLE queryparameteroptions_qpo (
   qpo_ID smallint(5) unsigned NOT NULL auto_increment,
@@ -304,6 +305,7 @@ INSERT INTO queryparameters_qrp VALUES (14, 15, 0, '', 'Search', 'Enter any part
 INSERT INTO queryparameters_qrp VALUES (15, 15, 1, '', 'Field', 'Select field to search for.', 'searchwhat', '1', 1, 0, '', 0, 0, 0, 0);
 INSERT INTO queryparameters_qrp VALUES (16, 11, 2, 'SELECT distinct don_date as Value, don_date as Display FROM donations_don ORDER BY don_date ASC', 'Beginning Date', 'Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations.', 'startdate', '1', 1, 0, '0', 0, 0, 0, 0);
 INSERT INTO queryparameters_qrp VALUES (17, 11, 2, 'SELECT distinct don_date as Value, don_date as Display FROM donations_don\r\nORDER BY don_date DESC', 'Ending Date', 'Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD).', 'enddate', '1', 1, 0, '', 0, 0, 0, 0);
+INSERT INTO queryparameters_qrp VALUES (18,18,0,'','Month','The birthday month for which you would like records returned.','birthmonth','1',1,0,'',12,1,1,2);
 
 
 CREATE TABLE record2property_r2p (
