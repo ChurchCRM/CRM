@@ -129,6 +129,9 @@ if (isset($_POST["UploadCSV"]))
 		<BR>
 		<input type="checkbox" value="1" name="IgnoreFirstRow"><?php echo gettext("Ignore first CSV row (to exclude a header)"); ?>
 		<BR><BR>
+		<BR>
+		<input type="checkbox" value="1" name="MakeFamilyRecords"><?php echo gettext("Make Family records for each Person imported"); ?>
+		<BR><BR>
 		<select name="DateMode">
 			<option value="1">YYYY-MM-DD</option>
 			<option value="2">MM-DD-YYYY</option>
@@ -357,6 +360,48 @@ if (isset($_POST["DoImport"]))
 
 			RunQuery($sSQLperson);
 			//echo "<br>" . $sSQLperson . "<br>";
+
+         // Make a one-person family if requested
+   		if (isset($_POST["MakeFamilyRecords"])) {
+			   $sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
+			   $rsPersonID = RunQuery($sSQL);
+			   extract(mysql_fetch_array($rsPersonID));
+			   $sSQL = "SELECT * FROM person_per WHERE per_ID = " . $iPersonID;
+			   $rsNewPerson = RunQuery($sSQL);
+			   extract(mysql_fetch_array($rsNewPerson));
+            $sSQL = "INSERT INTO family_fam (fam_ID,
+                                             fam_Name, 
+                                             fam_Address1, 
+                                             fam_Address2, 
+                                             fam_City, 
+                                             fam_State, 
+                                             fam_Zip, 
+                                             fam_Country, 
+                                             fam_HomePhone, 
+                                             fam_WorkPhone, 
+                                             fam_CellPhone, 
+                                             fam_Email, 
+                                             fam_DateEntered, 
+                                             fam_EnteredBy)
+                        VALUES ($per_ID, " .
+                               "\"" . $per_LastName . "\", " .
+                               "\"" . $per_Address1 . "\", " .
+                               "\"" . $per_Address2 . "\", " .
+                               "\"" . $per_City . "\", " .
+                               "\"" . $per_State . "\", " .
+                               "\"" . $per_Zip . "\", " .
+                               "\"" . $per_Country . "\", " .
+                               "\"" . $per_HomePhone . "\", " .
+                               "\"" . $per_WorkPhone . "\", " .
+                               "\"" . $per_CellPhone . "\", " .
+                               "\"" . $per_Email . "\"," .
+                               "\"" . date("YmdHis") . "\"," .
+                               "\"" . $_SESSION['iUserID'] . "\");";
+			   RunQuery($sSQL);
+            $sSQL = "UPDATE person_per SET per_fam_ID = " . $per_ID . " WHERE per_ID = " . $per_ID;
+			   RunQuery($sSQL);
+         }
+
 
 			if ($bHasCustom)
 			{
