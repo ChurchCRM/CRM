@@ -43,6 +43,7 @@ class ChurchInfoReport extends FPDF {
    var $sTaxReport1 = "This letter shows our record of your payments for ";
    var $sTaxReport2 = "Your only goods and services received, if any, were intangible religious benefits as defined under the code of the Internal Revenue Service.";
    var $sTaxReport3 = "If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.";
+   var $sTaxSigner = "<signs tax letter>";
 
    var $sReminder1 = "This letter shows our record of your pledge and payments for fiscal year ";
    var $sReminderSigner = "<signs reminder letter>";
