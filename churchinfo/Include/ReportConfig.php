@@ -63,7 +63,7 @@ class ChurchInfoReport extends FPDF {
 
    // Verbage for the pledge summary report
    var $sPledgeSummary1 = "Summary of pledges and payments for the fiscal year ";
-   var $sPledgeSummary2 = "as of ";
+   var $sPledgeSummary2 = " as of ";
 
    // Verbage for the directory report
    var $sDirectoryDisclaimer1 = "Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of ";
@@ -113,22 +113,27 @@ class ChurchInfoReport extends FPDF {
 		$this->Cell ($wid, 4, $str, 1);
 	}
 
-   function StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear) {
+   function StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear, $letterhead="") {
 		$this->AddPage();
 
-		$dateX = 170;
-		$dateY = 25;
-
-		$this->WriteAt ($dateX, $dateY, date("m/d/Y"));
-
-		$curY = 20;
-
-		$this->WriteAt ($this->leftX, $curY, $this->sChurchName); $curY += $this->incrementY;
-		$this->WriteAt ($this->leftX, $curY, $this->sChurchAddress); $curY += $this->incrementY;
-		$this->WriteAt ($this->leftX, $curY, $this->sChurchCity . ", " . $this->sChurchState . "  " . $this->sChurchZip); $curY += $this->incrementY;
-		$this->WriteAt ($this->leftX, $curY, $this->sChurchPhone . "  " . $this->sChurchEmail); 
-		$curY += 25; // mm to move to the second window
-
+		if ($letterhead == "graphic" && is_readable($this->bDirLetterHead)) {
+			$this->Image($this->bDirLetterHead,12,15,185);
+			$curY = 20 + ($this->incrementY * 3) + 25;
+			$this->WriteAt (170, $curY, date("m/d/Y"));
+		} elseif ($letterhead == "none") {
+			$curY = 20 + ($this->incrementY * 3) + 25;
+			$this->WriteAt (170, $curY, date("m/d/Y"));
+		} else {
+			$dateX = 170;
+			$dateY = 25;
+			$this->WriteAt ($dateX, $dateY, date("m/d/Y"));
+			$curY = 20;
+			$this->WriteAt ($this->leftX, $curY, $this->sChurchName); $curY += $this->incrementY;
+			$this->WriteAt ($this->leftX, $curY, $this->sChurchAddress); $curY += $this->incrementY;
+			$this->WriteAt ($this->leftX, $curY, $this->sChurchCity . ", " . $this->sChurchState . "  " . $this->sChurchZip); $curY += $this->incrementY;
+			$this->WriteAt ($this->leftX, $curY, $this->sChurchPhone . "  " . $this->sChurchEmail); 
+			$curY += 25; // mm to move to the second window
+		}
 		$this->WriteAt ($this->leftX, $curY, $this->MakeSalutation ($fam_ID)); $curY += $this->incrementY;
 		if ($fam_Address1 != "") {
 			$this->WriteAt ($this->leftX, $curY, $fam_Address1); $curY += $this->incrementY;
