@@ -129,7 +129,8 @@ if ($sEmailLink)
 		$sEmailLink .= $sToEmailAddress . ",";
 	$sEmailLink = substr($sEmailLink,0,-1);	// Remove trailing comma
 	// Display link
-	echo " | <a class=\"SmallText\" href=\"mailto:?to=".$sEmailLink."\">Email Group</a>";
+	echo " | <a class=\"SmallText\" href=\"mailto:".$sEmailLink."\">".gettext("Email Group")."</a>";
+	echo " | <a class=\"SmallText\" href=\"mailto:?&bcc=".$sEmailLink."\">".gettext("Email (BCC)")."</a>";
 }
 
 ?>
