@@ -119,12 +119,13 @@ CREATE TABLE person_per (
   per_DateEntered datetime NOT NULL default '0000-00-00 00:00:00',
   per_EnteredBy smallint(5) unsigned NOT NULL default '0',
   per_EditedBy smallint(5) unsigned default '0',
+  per_FriendDate date default NULL,
   PRIMARY KEY  (per_ID),
   KEY per_ID (per_ID)
 ) TYPE=MyISAM;
 
 
-INSERT INTO person_per VALUES (1,NULL,'ChurchInfo',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0000,NULL,0,0,0,0,NULL,NULL,'2004-08-25 18:00:00',0,0);
+INSERT INTO person_per VALUES (1,NULL,'ChurchInfo',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0000,NULL,0,0,0,0,NULL,NULL,'2004-08-25 18:00:00',0,0,NULL);
 
 CREATE TABLE pledge_plg (
   plg_plgID mediumint(9) NOT NULL auto_increment,

@@ -89,6 +89,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	$iBirthMonth = FilterInput($_POST["BirthMonth"],'int');
 	$iBirthDay = FilterInput($_POST["BirthDay"],'int');
 	$iBirthYear = FilterInput($_POST["BirthYear"],'int');
+	$dFriendDate = FilterInput($_POST["FriendDate"]);
 	$dMembershipDate = FilterInput($_POST["MembershipDate"]);
 	$iClassification = FilterInput($_POST["Classification"],'int');
 	$sEnvelope = FilterInput($_POST['EnvID'],'int');
@@ -142,6 +143,17 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		}
 	}
 
+	// Validate Friend Date if one was entered
+	if (strlen($dFriendDate) > 0)
+	{
+		list($iYear, $iMonth, $iDay) = sscanf($dFriendDate,"%04d-%02d-%02d");
+		if ( !checkdate($iMonth,$iDay,$iYear) )
+		{
+			$sFriendDateError = "<span style=\"color: red; \">" . gettext("Not a valid Friend Date") . "</span>";
+			$bErrorFlag = true;
+		}
+	}
+
 	// Validate Membership Date if one was entered
 	if (strlen($dMembershipDate) > 0)
 	{
@@ -187,12 +199,20 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 			if (!$_SESSION['bFinance'] || strlen($sEnvelope) < 1)
 				$sEnvelope = "NULL";
 
-			$sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy) VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . "," . $iBirthDay . "," . $iBirthYear . "," . $sEnvelope . "," . $iFamily . "," . $iFamilyRole . ",";
+			$sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate) 
+			         VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . "," . $iBirthDay . "," . $iBirthYear . "," . $sEnvelope . "," . $iFamily . "," . $iFamilyRole . ",";
 			if ( strlen($dMembershipDate) > 0 )
 				$sSQL .= "\"" . $dMembershipDate . "\"";
 			else
 				$sSQL .= "NULL";
-			$sSQL .= "," . $iClassification . ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ")";
+			$sSQL .= "," . $iClassification . ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",";
+
+			if ( strlen($dFriendDate) > 0 )
+				$sSQL .= "\"" . $dFriendDate . "\"";
+			else
+				$sSQL .= "NULL";
+			$sSQL .= ")";
+
 			$bGetKeyBack = True;
 
 		// Existing person (update)
@@ -210,7 +230,14 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 				$sSQL .= ", per_Envelope = " . $sEnvelope;
 			}
 
-			$sSQL .= ", per_DateLastEdited = '" . date("YmdHis") . "', per_EditedBy = " . $_SESSION['iUserID'] . " WHERE per_ID = " . $iPersonID;
+			$sSQL .= ", per_DateLastEdited = '" . date("YmdHis") . "', per_EditedBy = " . $_SESSION['iUserID'] . ", per_FriendDate =";
+
+			if ( strlen($dFriendDate) > 0 )
+				$sSQL .= "\"" . $dFriendDate . "\"";
+			else
+				$sSQL .= "NULL";
+
+			$sSQL .= " WHERE per_ID = " . $iPersonID;
 
 			$bGetKeyBack = false;
 		}
@@ -309,6 +336,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		$iFamily = $per_fam_ID;
 		$iFamilyRole = $per_fmr_ID;
 		$dMembershipDate = $per_MembershipDate;
+		$dFriendDate = $per_FriendDate;
 		$iClassification = $per_cls_ID;
 
 		$sPhoneCountry = SelectWhichInfo($sCountry,$fam_Country,false);
@@ -624,6 +652,11 @@ require "Include/Header.php";
 
 			<tr>
 				<td>&nbsp;</td>
+			</tr>
+
+			<tr>
+				<td class="LabelColumn" <?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Friend Date:"); ?></td>
+				<td class="TextColumn"><input type="text" name="FriendDate" value="<?php echo $dFriendDate; ?>" maxlength="10" id="sel2" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel2', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sFriendDateError ?></font></td>
 			</tr>
 
 			<tr>
