@@ -27,6 +27,13 @@ if (!empty($_GET["ShowGSP"]))
 	$bShowGSP = FilterInput($_GET["ShowGSP"],'int');
 else
 	$bShowGSP = 0;
+	
+if (isset($_GET["Number"]))
+{
+	$_SESSION['SearchLimit'] = FilterInput($_GET["Number"],'int');
+	$uSQL = "UPDATE user_usr SET usr_SearchLimit = " . $_SESSION['SearchLimit'] . " WHERE usr_per_ID = " . $_SESSION['iUserID'];
+	$rsUser = RunQuery($uSQL);
+}
 
 //Are we removing someone?
 if (isset($_GET["PersonToRemove"]) && $_SESSION['bManageGroups'])
@@ -48,7 +55,7 @@ $rsRoles = RunQuery($sSQL);
 $numRoles = mysql_num_rows($rsRoles);
 
 //Set Page Break
-$Per_Page = 10;
+$iPerPage = $_SESSION['SearchLimit'];
 
 // Main select query
 $sSQL = "SELECT per_ID, per_FirstName, per_MiddleName, per_LastName, per_Title, per_Suffix, per_Address1, per_Address2, per_City, per_State, per_Zip, per_HomePhone, per_Country, per_Email, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_Email, lst_OptionName
@@ -78,12 +85,12 @@ $Total = mysql_num_rows($sSQL_Result);
 if (empty($_GET['Result_Set']))
 {
 	$Result_Set = 0;
-	$sSQL .= " LIMIT $Result_Set, $Per_Page";
+	$sSQL .= " LIMIT $Result_Set, $iPerPage";
 }
 else
 {
 	$Result_Set = FilterInput($_GET['Result_Set'],'int');
-	$sSQL .= " LIMIT $Result_Set, $Per_Page";
+	$sSQL .= " LIMIT $Result_Set, $iPerPage";
 }
 
 // Run The Query With a Limit to get result
@@ -149,51 +156,103 @@ if (!$bPrintView) {
 	echo "</div>";
 
 	echo "<br><div align=\"center\">";
+	echo "<form method=\"get\" action=\"GroupMemberList.php\" name=\"ListNumber\">";
 
 	// Create Next / Prev Links and $Result_Set Value
-	if ($Total > 10)
+	if ($Total > $iPerPage)
 	{
 		// Show previous-page link unless we're at the first page
 		if ($Result_Set < $Total && $Result_Set > 0)
 		{
-			$thisLinkResult = $Result_Set - $Per_Page;
+			$thisLinkResult = $Result_Set - $iPerPage;
 			echo "<a href=\"GroupMemberList.php?Result_Set=$thisLinkResult&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter&ShowGSP=$bShowGSP\">". gettext("Previous Page") . "</A>&nbsp;&nbsp;";
 		}
-	
-		// Calculate and Display Page-Number Links
-		$Pages = $Total / $Per_Page;
+
+		// Calculate starting and ending Page-Number Links
+		$Pages = ceil($Total / $iPerPage);
+		$startpage =  (ceil($Result_Set / $iPerPage)) - 6;
+		if ($startpage <= 2)
+			$startpage = 1;
+		$endpage = (ceil($Result_Set / $iPerPage)) + 9;
+		if ($endpage >= ($Pages - 1))
+			$endpage = $Pages;
+		
+		// Show Link "1 ..." if startpage does not start at 1
+		if ($startpage != 1)
+			echo "<a href=\"GroupMemberList.php?Result_Set=0&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter&ShowGSP=$bShowGSP\">1</a> ... \n";
+
+		// Display page links
 		if ($Pages > 1)
 		{
-			for ($b = 0; $b < $Pages; $b++)
+			for ($c = $startpage; $c <= $endpage; $c++)
 			{
-				$c = $b + 1;
-				$thisLinkResult = $Per_Page * $b;
+				$b = $c - 1;
+				$thisLinkResult = $iPerPage * $b;
 				if ($thisLinkResult != $Result_Set)
-					echo "&nbsp;&nbsp;<a href=\"GroupMemberList.php?Result_Set=$thisLinkResult&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter&ShowGSP=$bShowGSP\">$c</a>&nbsp;&nbsp;\n";
+					echo "&nbsp;&nbsp;<a href=\"GroupMemberList.php?Result_Set=$thisLinkResult&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter&ShowGSP=$bShowGSP\">$c</a>&nbsp;\n";
 				else
 					echo "&nbsp;&nbsp;[ " . $c . " ]&nbsp;&nbsp;";
 			}
 		}
 
+		// Show Link "... xx" if endpage is not the maximum number of pages
+		if ($endpage != $Pages)
+		{
+			$thisLinkResult = ($Pages - 1) * $iPerPage;
+			echo " ... <a href=\"GroupMemberList.php?Result_Set=$thisLinkResult&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter&ShowGSP=$bShowGSP\">$Pages</a>\n";
+		}
+
 		// Show next-page link unless we're at the last page
 		if ($Result_Set >= 0 && $Result_Set < $Total)
 		{
-			$thisLinkResult=$Result_Set+$Per_Page;
+			$thisLinkResult=$Result_Set+$iPerPage;
 			if ($thisLinkResult<$Total)
 				echo "&nbsp;&nbsp;<a href=\"GroupMemberList.php?Result_Set=$thisLinkResult&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter&ShowGSP=$bShowGSP\">" . gettext("Next Page") . "</a>";
 		}
-		echo "</div><br><div align=\"center\">";
-		echo "<a href=\"GroupMemberList.php?PrintView=1&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter&ShowGSP=$bShowGSP\" target=\"_top\">" . gettext("Print Page") . "</a>&nbsp; | &nbsp;";
+
+		// Record number per page Drop-down box
+		if($Result_Set > 0)
+			echo "<input type=\"hidden\" name=\"Result_Set\" value=\"" . $Result_Set . "\">";
+		if(isset($iGroupID))
+			echo "<input type=\"hidden\" name=\"GroupID\" value=\"" . $iGroupID . "\">";
+		if(isset($sSort))
+			echo "<input type=\"hidden\" name=\"Sort\" value=\"" . $iSort . "\">";
+		if(isset($sLetter))
+			echo "<input type=\"hidden\" name=\"Letter\" value='" . $sLetter . "'\">";
+		if(isset($bShowGSP))
+			echo "<input type=\"hidden\" name=\"ShowGSP\" value='". $bShowGSP ."'\">";
+		if ($_SESSION['SearchLimit'] == "5")
+			$sLimit5 = "selected";
+		if ($_SESSION['SearchLimit'] == "10")
+			$sLimit10 = "selected";
+		if ($_SESSION['SearchLimit'] == "20")
+			$sLimit20 = "selected";
+		if ($_SESSION['SearchLimit'] == "25")
+			$sLimit25 = "selected";
+		if ($_SESSION['SearchLimit'] == "50")
+			$sLimit50 = "selected";
+		echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;". gettext("Display:") . "&nbsp;
+		<select class=\"SmallText\" name=\"Number\">
+			<option value=\"5\" $sLimit5>5</option>
+			<option value=\"10\" $sLimit10>10</option>
+			<option value=\"20\" $sLimit20>20</option>
+			<option value=\"25\" $sLimit25>25</option>
+			<option value=\"50\" $sLimit50>50</option>
+		</select>&nbsp;
+		<input type=\"submit\" class=\"icTinyButton\" value=\"". gettext("Go") ."\">
+		</form>";		
+				
+		echo "</div><div align=\"center\">";
+		echo "<a href=\"GroupMemberList.php?PrintView=1&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter&ShowGSP=$bShowGSP\" target=\"_top\">" . gettext("Print Page") . "</a>";
 	}
 
 	if ($bHasSpecialProps)
 	{
 		if ($bShowGSP)
-			echo "<a href=\"GroupMemberList.php?Result_Set=$Result_Set&ShowGSP=0&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter\">" . gettext("Hide Group-Specific Properties") . "</a>";
+			echo "&nbsp; | &nbsp;<a href=\"GroupMemberList.php?Result_Set=$Result_Set&ShowGSP=0&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter\">" . gettext("Hide Group-Specific Properties") . "</a>";
 		else
-			echo "<a href=\"GroupMemberList.php?Result_Set=$Result_Set&ShowGSP=1&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter\">" . gettext("Show Group-Specific Properties") . "</a>";
+			echo "&nbsp; | &nbsp;<a href=\"GroupMemberList.php?Result_Set=$Result_Set&ShowGSP=1&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter\">" . gettext("Show Group-Specific Properties") . "</a>";
 	}
-
 	echo "</div><br>";
 
 } ?>
