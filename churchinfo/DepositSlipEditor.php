@@ -17,6 +17,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+require "Include/MICRFunctions.php";
+
 $linkBack = FilterInput($_GET["linkBack"]);
 $iDepositSlipID = FilterInput($_GET["DepositSlipID"]);
 $sDepositType = FilterInput($_GET["DepositType"]);
@@ -184,6 +186,144 @@ if (isset($_POST["DepositSlipSubmit"]))
 			RunQuery ($sSQL);
 		}
 	}
+} else if (isset($_POST["DepositSlipRunTransactions"])) {
+
+	// Process all the transactions
+
+	//Get the payments for this deposit slip
+	$sSQL = "SELECT plg_amount, 
+	                plg_scanString, 
+						 a.fam_Address1 AS address1,
+						 a.fam_Address2 AS address2,
+						 a.fam_City AS city,
+						 a.fam_State AS state,
+						 a.fam_Zip AS zip,
+						 a.fam_Country AS country,
+						 a.fam_HomePhone AS phone,
+						 a.fam_Email AS email
+			 FROM pledge_plg 
+			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
+			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
+			 WHERE plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_date";
+	$rsTransactions = RunQuery($sSQL);
+
+	include ("Include/echophp.class");
+	include ("Include/EchoConfig.inc"); // Specific account information is in here
+
+	// Instantiate the MICR class
+	$micrObj = new MICRReader();
+
+	$echoPHP = new EchoPHP;
+
+	while ($aTransaction =mysql_fetch_array($rsTransactions))
+	{
+		extract($aTransaction);
+
+		$echoPHP->set_EchoServer("https://wwws.echo-inc.com/scripts/INR200.EXE");
+		$echoPHP->set_merchant_echo_id ($EchoAccount);
+		$echoPHP->set_merchant_pin ($EchoPin);
+
+		$echoPHP->set_grand_total($plg_amount);
+
+		$echoPHP->set_billing_phone($phone);
+		$echoPHP->set_billing_address1($address1);
+		$echoPHP->set_billing_city($city);
+		$echoPHP->set_billing_state($state);
+		$echoPHP->set_billing_zip($zip);
+		$echoPHP->set_billing_country($country);
+	//	$echoPHP->set_billing_fax("503-123-4569");
+		$echoPHP->set_billing_email($email);
+
+		$echoPHP->set_billing_ip_address($REMOTE_ADDR);
+
+		$echoPHP->set_order_type("S");
+
+		if ($dep_Type == "CreditCard") {
+			$posLastName = strpos ($plg_scanString, "^") + 1;
+			$posFirstName = strpos ($plg_scanString, "/", $posLastName) + 1;
+			$posDateMonth = strpos ($plg_scanString, "^", $posFirstName) + 1;
+			$posDateYear = $posDateMonth + 2;
+
+			$creditCardNumber = substr ($plg_scanString, 2, 4) . " " .
+									  substr ($plg_scanString, 6, 4) . " " .
+									  substr ($plg_scanString, 10, 4) . " " .
+									  substr ($plg_scanString, 14, 4);
+			$creditCardExpYear = substr ($plg_scanString, $posDateMonth, 2);
+			$creditCardExpMonth = substr ($plg_scanString, $posDateYear, 2);
+			$firstName = substr ($plg_scanString, $posFirstName, $posDateMonth - $posFirstName - 1);
+			$lastName = substr ($plg_scanString, $posLastName, $posFirstName - $posLastName - 1);
+
+			$echoPHP->set_billing_first_name($firstName);
+			$echoPHP->set_billing_last_name($lastName);
+			$echoPHP->set_cc_number($creditCardNumber);
+			$echoPHP->set_ccexp_month($creditCardExpMonth);
+			$echoPHP->set_ccexp_year($creditCardExpYear);
+
+			$echoPHP->set_transaction_type("EV");
+
+			// $echoPHP->set_cnp_security(3333);  // The three-digit MasterCard (CVC2) or VISA (CVV2) or the four-digit Discover (CID) 
+			// or AMEX card-not-present security code.
+
+		} else {
+			// check payment info if supplied...
+			$echoPHP->set_ec_bank_name(""); // **
+			$echoPHP->set_ec_first_name("First"); // **
+			$echoPHP->set_ec_last_name("Last"); // **
+			$echoPHP->set_ec_address1($address1);
+			$echoPHP->set_ec_city($city);
+			$echoPHP->set_ec_state($state);
+			$echoPHP->set_ec_zip($zip);
+			$echoPHP->set_ec_rt($micrObj->FindRoute ($plg_scanString));
+			$echoPHP->set_ec_account($micrObj->FindAccount ($plg_scanString));
+			$echoPHP->set_ec_serial_number(1); // ** check number
+			$echoPHP->set_ec_payee($EchoPayee);
+			//$echoPHP->set_ec_id_state("");
+			//$echoPHP->set_ec_id_number("");
+			//$echoPHP->set_ec_id_type("");
+
+			$echoPHP->set_transaction_type("DD");
+		}
+
+		$echoPHP->set_debug("T");  // set to T to turn on debugging
+
+		$echoPHP->set_counter("1");
+		print("You are using the " . $echoPHP->get_version() . "<hr>");
+
+		if (!($echoPHP->Submit()))  {
+			if ($echoPHP->decline_code == "1013") {
+				echo "<b>Transaction Declined: Decline code 1013</b><br><br>The merchant account ";
+				echo "could not login to the ECHOnline server (maybe your ";
+				echo "PIN is incorrect?), or transaction_type or order_type was found to be invalid. To ensure your ECHO-ID and PIN are correct, you should be able ";
+				echo "to login to the <a href=\"https://wwws.echo-inc.com/login.asp\">ECHO Merchant Center</a>. ";
+				echo "If you can't, please contact <i>ECHO</i> Customer Service at 1-800-262-3246, ext. 1 and ";
+				echo "they will help you resolve the problem.";
+				echo "<br><br><b>ECHO Response:</b><br>";
+			}
+			echo "</body></html>";
+		} else  {
+			// At this point, your transaction was successful.  You can insert your results into your database, etc.
+			// You do not need to parse <ECHOTYPE3>, we do this for you and put the results into variables.
+			print("<b>Congratulations!</b> Your transaction was successful.  The results of your transaction ");
+			print("have been stored in these variables for you ");
+			print("(see <a href=https://wwws.echo-inc.com/ISPGuide-Interface.asp>Response Protocol</a> for return information):");
+			print("<br>\$echoPHP->authorization<br>\$echoPHP->order_number<br>\$echoPHP->reference<br>\$echoPHP->status<br>");
+			print("\$echoPHP->avs_result<br>\$echoPHP->security_result<br>\$echoPHP->mac<br>\$echoPHP->decline_code<br>");
+			print("\$echoPHP->tran_date<br>\$echoPHP->merchant_name<br>\$echoPHP->version<br><br>\$echoPHP->EchoResponse");
+			print("<br>\$echoPHP->echotype1<br>\$echoPHP->echotype2<br>\$echoPHP->echotype3<br><br>I am printing the ");
+			print("\$echoPHP->EchoResponse variable here: <br>");
+		}
+
+		// This prints the ECHO response.  You always get back <ECHOTYPE1>, <ECHOTYPE2>, and <ECHOTYPE3> tags.
+		// View the page source to see all three <ECHOTYPE3> results.
+		print($echoPHP->EchoResponse . "<br>");
+    
+		echo "<hr>Printing all properties of PHP class for debugging purposes..<br>";
+		echo "If you set debug to T, you will get back more information in EchoResponse<br>";
+		echo "<pre>"; 
+		var_dump($echoPHP); 
+		echo "</pre>";    
+	}
+
 } else {
 
 	//FirstPass
@@ -240,6 +380,7 @@ require "Include/Header.php";
 
 			<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
 			<input type="submit" class="icButton" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
+			<input type="submit" class="icButton" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
 			<?php } ?>
 
 		</td>
