@@ -1,13 +1,13 @@
-How do I run InfoCentral?
+How do I run ChurchInfo?
 -------------------------
-Running InfoCentral is not complicated if you have experience with
+Running ChurchInfo is not complicated if you have experience with
 Web applications. If you don't, there are a few things to get used to.
-It is important to understand is that InfoCentral is a Web-based
+It is important to understand is that ChurchInfo is a Web-based
 application, which means it has two distinct sides:
 
 The "server", on which the application actually runs. This is a
 centrally located computer that stores the files and information that
-InfoCentral needs to run
+ChurchInfo needs to run
 
 The "client", through which a user interacts with the application via
 a Web browser.
@@ -15,7 +15,7 @@ a Web browser.
 There is only one server, but there can be an unlimited number of
 clients.
 
-What software do I need to run InfoCentral?
+What software do I need to run ChurchInfo?
 -------------------------------------------
 
 A PHP-compatible Web server (Apache is recommended)
@@ -30,7 +30,7 @@ For Debian GNU/Linux users, you should install these packages:
 mysql-server, mysql-common, mysql-client, php4, php4-mysql, php4-gd2,
 php4-pear, and whatever Apache packages suit your needs.
 
-InfoCentral can be run entirely with free software.  In fact, that's
+ChurchInfo can be run entirely with free software.  In fact, that's
 half the point of why it was written!
 
 What type of server do I need?
@@ -54,7 +54,7 @@ There is a simple work around if your server does not have register_globals
 turned off. Create a file called ".htaccess" with a simple text editor and 
 insert the following line into that new file:
 	php_flag register_globals off
-Save this file and upload this file into the main InfoCentral directory.
+Save this file and upload this file into the main ChurchInfo directory.
 
 What kind of client computers do I need?
 ----------------------------------------
@@ -69,14 +69,14 @@ non-compliant browsers.
 What if I only have one computer?
 ---------------------------------
 That's fine, so long as the computer satisfies the requirements for
-both the server and client. Both sides of InfoCentral can be on the
+both the server and client. Both sides of ChurchInfo can be on the
 same computer.
 
 Where do I get a Web server?
 ----------------------------
 The free Apache web server will work on Windows, Linux or about any
 flavor of Unix.  A few extra steps may be involved to configure Apache's
-PHP module.  Most distributions of Linux are ready for InfoCentral nearly
+PHP module.  Most distributions of Linux are ready for ChurchInfo nearly
 "out of the box" or at worst with the easy installation of a couple
 relevant Apache and PHP packages.
 
@@ -87,16 +87,16 @@ Apache is available from www.apache.org
 PHP is available from www.php.net
 
 
-How Do I Install InfoCentral?
+How Do I Install ChurchInfo?
 --------------------
-1) The .tar.gz file download contains a directory called "infocentral"
+1) The .tar.gz file download contains a directory called "churchinfo"
 Place this directory in the document root of your Web server.
 
 2) Within the directory, you'll find a directory called "SQL"
 containing a file named "Install.sql". Contained in this file are
-the SQL statements necessary to create the InfoCentral database. Log
+the SQL statements necessary to create the ChurchInfo database. Log
 onto your database server under the root account (or other account
-allowed to create databases), create a database for InfoCentral, and
+allowed to create databases), create a database for ChurchInfo, and
 then run the contents of Install.sql to create the tables and initial
 data.
 
@@ -115,17 +115,17 @@ For example:
 $sSERVERNAME = "localhost";
 $sUSER = "root";
 $sPASSWORD = "password";
-$sDATABASE = "infocentral";
+$sDATABASE = "churchinfo";
 
 Change these parameters to match the mysql server and user account you
 intend to use.  Change other settings as appropriate for your
 location and desired configuration.  You MUST set the $sRootPath option
 properly as described in Config.php.
 
-4) You should be able to access InfoCentral at "http://[server
-name]/infocentral/Default.php". The database script will have set up
-an initial user called "InfoCentral Admin" with a password of
-"InfoCentral" (passwords are case insensitive). You will be prompted
+4) You should be able to access ChurchInfo at "http://[server
+name]/churchinfo/Default.php". The database script will have set up
+an initial user called "ChurchInfo Admin" with a password of
+"churchinfoadmin" (passwords are case insensitive). You will be prompted
 to change this password upon login.  Once you have created other user
 accounts, you may delete or rename this default account.  Just make
 sure that you always have a user with administrative privledges.  The
@@ -146,14 +146,14 @@ Config.php
 Security Considerations:
 ---------------------
 - If you are using the database backup utility, you need to make sure
-that the infocentral/SQL directory is not accessible to your users!
+that the churchinfo/SQL directory is not accessible to your users!
 Otherwise, with the right timing, anybody can download the temporary
 files used in creating database backups and thus read the entire contents
 of the database!  Different web servers have different means of access
 control.  In Apache, for example, you might add a section something
 like this to your httpd.conf:
 
-<Directory /home/httpd/html/infocentral/SQL>
+<Directory /home/httpd/html/churchinfo/SQL>
  Order deny,allow
  Deny from all
 </Directory>
