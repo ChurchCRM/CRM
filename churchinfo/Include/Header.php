@@ -610,11 +610,12 @@ else
 
 			<?php if ($_SESSION['bFinance']) { ?>
 			<p>
-				<b><?php echo gettext("Finance"); ?></b>
+				<b><?php echo gettext("Deposit"); ?></b>
 				<br>
-				<a class="SmallText" href="DonationEditor.php?Batch=1"><?php echo gettext("Donation Batch Entries"); ?></a>
+			<a class="SmallText" href="DepositSlipEditor.php?DepositType=Bank"><?php echo gettext("Create New Deposit"); ?></a>
 				<br>
-				<a class="SmallText" href="DonationEnvelopes.php"><?php echo gettext("Donation Envelope Manager"); ?></a>
+				<a class="SmallText" href="FindDepositSlip.php"><?php echo gettext("View All Deposits"); ?></a><br>
+				<a class="SmallText" href="DepositSlipEditor.php?DepositSlipID=<?php echo $_SESSION['iCurrentDeposit'];?>"><?php echo gettext("Edit Deposit Slip " . $_SESSION['iCurrentDeposit']); ?></a>
 			</p>
 			<?php } ?>
 
