@@ -28,6 +28,7 @@ if (isset($_POST["SubmitReminder"]) ||
 
 	$iFYID = FilterInput($_POST["FYID"], 'int');
 	$iCalYear = FilterInput($_POST["CalYear"], 'int');
+	$iRequireDonationYears = FilterInput($_POST["RequireDonationYears"], 'int');
 
    $_SESSION['idefaultFY'] = $iFYID;
 
@@ -38,7 +39,7 @@ if (isset($_POST["SubmitReminder"]) ||
    } else if (isset($_POST["SubmitPledgeSummary"])) {
       Redirect ("Reports/PledgeSummary.php?FYID=" . $iFYID);
    } else if (isset($_POST["VotingMembers"])) {
-      Redirect ("Reports/VotingMembers.php?FYID=" . $iFYID);
+      Redirect ("Reports/VotingMembers.php?FYID=" . $iFYID . "&RequireDonationYears=" . $iRequireDonationYears);
    }
 } else {
    $iFYID = $_SESSION['idefaultFY'];
@@ -80,6 +81,11 @@ if (isset($_POST["SubmitReminder"]) ||
    <tr>
       <td class="LabelColumn"><?php echo gettext("Calendar Year:"); ?></td>
 		<td class="TextColumn"><input type="text" name="CalYear" id="CalYear" value="<?php echo $iCalYear; ?>"></td>
+   </tr>
+
+   <tr>
+      <td class="LabelColumn"><?php echo gettext("Voting members must have made a donation within this many years (0 to not require a donation):"); ?></td>
+		<td class="TextColumn"><input type="text" name="RequireDonationYears" id="RequireDonationYears" value="<?php echo $iRequireDonationYears; ?>"></td>
    </tr>
 
    <tr>

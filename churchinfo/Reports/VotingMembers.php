@@ -19,6 +19,7 @@ require "../Include/ReportConfig.php";
 
 //Get the Fiscal Year ID out of the querystring
 $iFYID = FilterInput($_GET["FYID"],'int');
+$iRequireDonationYears = FilterInput($_GET["RequireDonationYears"],'int');
 
 class PDF_VotingMembers extends ChurchInfoReport {
 
@@ -56,10 +57,10 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 			 WHERE plg_FamID = " . $fam_ID . " AND plg_PledgeOrPayment = 'Payment' AND
-			 plg_FYID = " . $iFYID;
+			 (" . $iFYID . "-plg_FYID<=" . $iRequireDonationYears . ")";
 	$rsPledges = RunQuery($sSQL);
 
-	if (mysql_num_rows ($rsPledges) > 0) {
+	if ((!$iRequireDonationYears) || mysql_num_rows ($rsPledges) > 0) {
 
 		$pdf->WriteAt ($pdf->leftX, $curY, $fam_Name);
 
