@@ -266,11 +266,16 @@ $MenuFirst = 1;
 					'statusText', ''
 				),
 				3, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("Deposit Reports") . "'"; ?>,
+					'uri', 'FinancialReports.php',
+					'statusText', ''
+				),
+				4, new domMenu_Hash(
 					'contents', '---------------------------',
 					'uri', '',
 					'statusText', ''
 				),
-				4, new domMenu_Hash(
+				5, new domMenu_Hash(
  					'contents', <?php echo "'" . gettext("Edit Deposit Slip " . $_SESSION['iCurrentDeposit']) . "'"; ?>,
  					'uri', 'DepositSlipEditor.php?DepositSlipID=<?php echo $_SESSION['iCurrentDeposit'];?>',
  					'statusText', ''
