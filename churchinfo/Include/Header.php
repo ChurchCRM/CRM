@@ -255,12 +255,12 @@ $MenuFirst = 1;
 				'statusText', '',
 				1, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("New Deposit Slip") . "'"; ?>,
-					'uri', 'DepositSlipEditor.php?new=1',
+					'uri', 'DepositSlipEditor.php',
 					'statusText', ''
 				),
 				2, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Edit Deposit Slip") . "'"; ?>,
-					'uri', 'DepositSlipEditor.php?new=0',
+					'uri', 'DepositSlipEditor.php?CurrentDeposit=<?php echo $_SESSION['iCurrentDeposit'];?>',
 					'statusText', ''
 				),
 				3, new domMenu_Hash(
