@@ -32,11 +32,11 @@ class PDF_Directory extends ChurchInfoReport {
 	var $_Margin_Left = 0;         // Left Margin
 	var $_Margin_Top  = 0;         // Top margin 
 	var $_Char_Size   = 12;        // Character size
-	var $_CurLine     = 0;
 	var $_Column      = 0;
 	var $_Font        = "Times";
 	var $sFamily;
 	var $sLastName;
+    var $_ColWidth    = 80;
 
 	function Header()
 	{
@@ -52,6 +52,7 @@ class PDF_Directory extends ChurchInfoReport {
 			$this->Cell(10);
 			//Framed title
 			$this->Cell(190,10,$this->sChurchName . " - " . gettext("Member Directory"),1,0,'C');
+            $this->SetY(25);
 		}
 	}
 
@@ -119,7 +120,6 @@ class PDF_Directory extends ChurchInfoReport {
 		parent::FPDF("P", "mm", $this->paperFormat);
 
 		$this->_Column      = 0;
-		$this->_CurLine     = 2;
 		$this->_Font        = "Times";
 		$this->SetMargins(0,0);
 		$this->Open();
@@ -131,57 +131,114 @@ class PDF_Directory extends ChurchInfoReport {
 		$this->_Margin_Top  = 12;
 	}
 
-	function Check_Lines($numlines)
-	{
-		$CurY = $this->GetY();  // Temporarily store off the position
+    function NbLines($w,$txt)
+    {
+        //Computes the number of lines a MultiCell of width w will take
+        $cw=&$this->CurrentFont['cw'];
+        if($w==0)
+            $w=$this->w-$this->rMargin-$this->x;
+        $wmax=($w-2*$this->cMargin)*1000/$this->FontSize;
+        $s=str_replace("\r",'',$txt);
+        $nb=strlen($s);
+        if($nb>0 and $s[$nb-1]=="\n")
+            $nb--;
+        $sep=-1;
+        $i=0;
+        $j=0;
+        $l=0;
+        $nl=1;
+        while($i<$nb)
+        {
+            $c=$s[$i];
+            if($c=="\n")
+            {
+                $i++;
+                $sep=-1;
+                $j=$i;
+                $l=0;
+                $nl++;
+                continue;
+            }
+            if($c==' ')
+                $sep=$i;
+            $l+=$cw[$c];
+            if($l>$wmax)
+            {
+                if($sep==-1)
+                {
+                    if($i==$j)
+                        $i++;
+                }
+                else
+                    $i=$sep+1;
+                $sep=-1;
+                $j=$i;
+                $l=0;
+                $nl++;
+            }
+            else
+                $i++;
+        }
+        return $nl;
+    }
 
+    function Check_Lines($numlines, $fid)
+	{
 		// Need to determine if we will extend beyoned 17mm from the bottom of
 		// the page.
-		$this->SetY(-17);
-		if ($this->_Margin_Top+(($this->_CurLine+$numlines)*5) > $this->GetY())
+        
+        $h = 0;
+   		$famimg = "../Images/Family/".$fid.".jpg";
+		if (file_exists($famimg)) 
+		{
+			$s = getimagesize($famimg);
+			$h = (78 / $s[0]) * $s[1];
+		}
+
+
+		if ($this->GetY() + $h + $numlines * 5 > $this->h - 27)
 		{
 			// Next Column or Page
 			if ($this->_Column == 1)
 			{
 				$this->_Column = 0;
-				$this->_CurLine = 2;
+				$this->SetY(25);
 				$this->AddPage();
 			}
 			else
 			{
 				$this->_Column = 1;
-				$this->_CurLine = 2;
+				$this->SetY(25);
 			}
 		}
-		$this->SetY($CurY); // Put the position back
 	}
 
 	// This function prints out the heading when a letter
 	// changes.
 	function Add_Header($sLetter)
 	{
-		$this->Check_Lines(2);
+		$this->Check_Lines(2, 0);
 		$this->SetTextColor(255);
 		$this->SetFont($this->_Font,'B',12);
-		$_PosX = $this->_Margin_Left+($this->_Column*108);
-		$_PosY = $this->_Margin_Top+($this->_CurLine*5);
+		$_PosX = $this->_Margin_Left+($this->_Column * ($this->w / 2));
+		$_PosY = $this->GetY();
 		$this->SetXY($_PosX, $_PosY);
-		$this->Cell(80, 5, $sLetter, 1, 1, "C", 1) ;
+		$this->Cell($this->_ColWidth, 5, $sLetter, 1, 1, "C", 1) ;
 		$this->SetTextColor(0);
 		$this->SetFont($this->_Font,'',$this->_Char_Size);
-		$this->_CurLine+=2;
+        $this->SetY($this->GetY() + 5);
 	}
 
 	// This prints the family name in BOLD
 	function Print_Name($sName)
 	{
 		$this->SetFont($this->_Font,'B',12);
-		$_PosX = $this->_Margin_Left+($this->_Column*108);
-		$_PosY = $this->_Margin_Top+($this->_CurLine*5);
+		$_PosX = $this->_Margin_Left+($this->_Column * ($this->w / 2));
+		$_PosY = $this->GetY();
 		$this->SetXY($_PosX, $_PosY);
-		$this->Write(5, $sName);
+        $this->MultiCell($this->_ColWidth, 5, $sName);
 		$this->SetFont($this->_Font,'',$this->_Char_Size);
-		$this->_CurLine++;
+		$this->SetY($_PosY + $this->NbLines($this->_ColWidth, $sName) * 5);
 	}
 
 	// This function formats the string for the family info
@@ -346,18 +403,30 @@ class PDF_Directory extends ChurchInfoReport {
 	}
 
 	// Number of lines is only for the $text parameter
-	function Add_Record($sName, $text, $numlines)
+	function Add_Record($sName, $text, $numlines, $fid)
 	{
-		$numlines++; // add an extra blank line after record
-		$this->Check_Lines($numlines);
+        
+		$this->Check_Lines($numlines, $fid);
 
 		$this->Print_Name($sName);
 
-		$_PosX = $this->_Margin_Left+($this->_Column*108);
-		$_PosY = $this->_Margin_Top+($this->_CurLine*5);
+		$_PosX = $this->_Margin_Left + ($this->_Column * ($this->w / 2));
+		$_PosY = $this->GetY();
+
 		$this->SetXY($_PosX, $_PosY);
-		$this->MultiCell(108, 5, $text);
-		$this->_CurLine += $numlines;
+		
+		$famimg = "../Images/Family/".$fid.".jpg";
+		if (file_exists($famimg)) 
+		{
+			$s = getimagesize($famimg);
+			$h = (78 / $s[0]) * $s[1];
+			$_PosY += 2;
+			$this->Image($famimg, $_PosX, $_PosY, 78);
+			$this->SetXY($_PosX, $_PosY + $h + 2);
+		}
+		
+		$this->MultiCell($this->_ColWidth, 5, $text, 0, 'L');
+		$this->SetY($this->GetY() + 5);
 	}
 }
 
@@ -403,6 +472,7 @@ $bDirPersonalWork = isset($_POST["bDirPersonalWork"]);
 $bDirPersonalCell = isset($_POST["bDirPersonalCell"]);
 $bDirPersonalEmail = isset($_POST["bDirPersonalEmail"]);
 $bDirPersonalWorkEmail = isset($_POST["bDirPersonalWorkEmail"]);
+$bFamilyPhoto = isset($_POST["bFamilyPhoto"]);
 
 $sChurchName = FilterInput($_POST["sChurchName"]);
 $sDirectoryDisclaimer = FilterInput($_POST["sDirectoryDisclaimer"]);
@@ -557,7 +627,7 @@ while ($aRow = mysql_fetch_array($rsRecords))
 
 	// Count the number of lines in the output string
 	if (strlen($OutStr))
-		$numlines = substr_count($OutStr, "\n");
+		$numlines = $pdf->NbLines($pdf->_ColWidth,$OutStr) ; 
 	else
 		$numlines = 0;
 
@@ -565,11 +635,17 @@ while ($aRow = mysql_fetch_array($rsRecords))
 	{
 		if (strtoupper($sLastLetter) != strtoupper(substr($pdf->sRecordName,0,1)))
 		{
-			$pdf->Check_Lines($numlines+2);
+			$pdf->Check_Lines($numlines+2, 0);
 			$sLastLetter = strtoupper(substr($pdf->sRecordName,0,1));
 			$pdf->Add_Header($sLastLetter);
 		}
-		$pdf->Add_Record($pdf->sRecordName, $OutStr, $numlines);  // another hack: added +1
+        
+        // if photo include pass the id, otherwise 0 equates to no family
+        if ($bFamilyPhoto) 
+            $fid = $fam_ID;
+        else
+            $fid = 0;
+		$pdf->Add_Record($pdf->sRecordName, $OutStr, $numlines, $fid);  // another hack: added +1
 	}
 }
 
