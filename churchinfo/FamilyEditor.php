@@ -220,7 +220,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 														date("YmdHis") . "'," . 
 														$_SESSION['iUserID'] . "," . 
 														$bSendNewsLetterString . "," . 
-														$bOkToCanvass . "," .
+														$bOkToCanvassString . "," .
 														$iCanvasser . ")";
 			$bGetKeyBack = true;
 		}
@@ -423,6 +423,7 @@ else
 		$sState = $sDefaultState;
 		$iClassification = "0";
 		$iFamilyMemberRows = 6;
+		$bOkToCanvass = 1;
 	}
 }
 
