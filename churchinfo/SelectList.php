@@ -529,7 +529,9 @@ if ($iMode == 1 || $iMode == 2)
 
 		<table cellpadding="4" align="center" cellspacing="0" width="100%">
 			<tr class="TableHeader">
-				<td width="25"><?php echo gettext("Edit"); ?></td>
+				<?php if ($_SESSION['bEditRecords']) { ?>
+					<td width="25"><?php echo gettext("Edit"); ?></td>
+				<?php } ?>
 				<td><a href="SelectList.php?mode=<?php echo $sMode; ?>&type=<?php echo $iGroupTypeMissing;?>&Sort=name&Filter=<?php echo $sFilter ?>"><?php echo gettext("Name"); ?></a></td>
 				<td><?php echo gettext("Gender"); ?></td>
 				<td><a href="SelectList.php?mode=<?php echo $sMode; ?>&type=<?php echo $iGroupTypeMissing;?>&Sort=family&Filter=<?php echo $sFilter ?>"><?php echo gettext("Family"); ?></a></td>
@@ -608,7 +610,9 @@ if ($iMode == 1 || $iMode == 2)
 			?>
 
 			<tr class="<?php echo $sRowClass; ?>">
-				<td><a href="PersonEditor.php?PersonID=<?php echo $per_ID ?>">Edit</a></td>
+				<?php if ($_SESSION['bEditRecords']) { ?>
+					<td><a href="PersonEditor.php?PersonID=<?php echo $per_ID . "\">" . gettext (Edit); ?></a></td>
+				<?php } ?>
 				<td><a href="PersonView.php?PersonID=<?php echo $per_ID ?>"><?php echo FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3); ?></a>&nbsp;				</td>
 				<td><?php switch ($per_Gender) {case 1: echo gettext("Male"); break; case 2: echo gettext("Female"); break; default: echo "";} ?>&nbsp;</td>
 				<td>
@@ -932,6 +936,9 @@ else
 	<table cellpadding="4" align="center" cellspacing="0" width="100%">
 
 	<tr class="TableHeader">
+		<?php if ($_SESSION['bEditRecords']) { ?>
+			<td width="25"><?php echo gettext("Edit"); ?></td>
+		<?php } ?>
 		<td><?php echo gettext("Family Name"); ?></td>
 		<?php if ($bFamListFirstNames) echo "<td>" . gettext("First Name") . "</td>"; ?>
 		<td><?php echo gettext("Address"); ?></td>
@@ -997,6 +1004,9 @@ else
 		?>
 
 		<tr class="<?php echo $sRowClass ?>">
+			<?php if ($_SESSION['bEditRecords']) { ?>
+				<td><a href="FamilyEditor.php?FamilyID=<?php echo $fam_ID . "\">" . gettext ("Edit"); ?></a></td>
+			<?php } ?>
 			<td><a href="FamilyView.php?FamilyID=<?php echo $fam_ID ?>"><?php echo $fam_Name ?></a>&nbsp;</td>
 			<?php if ($bFamListFirstNames) echo "<td>" . $sFirstNames . "</td>"; ?>
 			<td><?php echo $fam_Address1;?><?php if ($fam_Address1 != "" && $fam_Address2 != "") { echo ", "; } ?><?php if ($fam_Address2 != "") echo $fam_Address2; ?>&nbsp;</td>
