@@ -275,6 +275,7 @@ $numMembers = count ($ga);
 $teacherString = "Teachers: ";
 $bFirstTeacher = true;
 $iTeacherCnt = 0;
+$iMaxTeachersFit = 4;
 $iStudentCnt = 0;
 for ($row = 0; $row < $numMembers; $row++)
 {
@@ -290,17 +291,30 @@ for ($row = 0; $row < $numMembers; $row++)
    }
 }
 
+$liaisonString = "";
 for ($row = 0; $row < $numMembers; $row++)
 {
    extract ($ga[$row]);
    if ($lst_OptionName == gettext ("Liaison")) {
-      $teacherString .= "  " . gettext ("Liaison") . ":" . $per_FirstName . " " . $per_LastName . " " . $pdf->StripPhone ($fam_HomePhone) . " ";
+      $liaisonString .= gettext ("Liaison") . ":" . $per_FirstName . " " . $per_LastName . " " . $pdf->StripPhone ($fam_HomePhone) . " ";
    }
 }
 
+if ($iTeacherCnt < $iMaxTeachersFit)
+	$teacherString .= "  " . $liaisonString;
+
 $pdf->SetFont("Times",'B',12);
-$pdf->WriteAt ($nameX, $yTeachers, $teacherString);
-$y = $pdf->DrawAttendanceCalendar ($nameX, $yTeachers = $yTitle + 20, $aStudents, "Students", $iExtraStudents, 
+
+$y = $yTeachers;
+$pdf->WriteAt ($nameX, $y, $teacherString);
+$y += 4;
+
+if ($iTeacherCnt >= $iMaxTeachersFit) {
+	$pdf->WriteAt ($nameX, $y, $liaisonString);
+	$y += 4;
+}
+
+$y = $pdf->DrawAttendanceCalendar ($nameX, $y + 6, $aStudents, "Students", $iExtraStudents, 
                                    $tFirstSunday, $tLastSunday, 
                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
 											  $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8);
