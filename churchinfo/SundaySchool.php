@@ -42,6 +42,17 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
    $iExtraTeachers = FilterInput($_POST["ExtraTeachers"], 'int');
    $_SESSION['idefaultFY'] = $iFYID;
 
+	$_SESSION['dCalStart'] = $dFirstSunday;
+	$_SESSION['dCalEnd'] = $dLastSunday;
+	$_SESSION['dCalNoSchool1'] = $dNoSchool1;
+	$_SESSION['dCalNoSchool2'] = $dNoSchool2;
+	$_SESSION['dCalNoSchool3'] = $dNoSchool3;
+	$_SESSION['dCalNoSchool4'] = $dNoSchool4;
+	$_SESSION['dCalNoSchool5'] = $dNoSchool5;
+	$_SESSION['dCalNoSchool6'] = $dNoSchool6;
+	$_SESSION['dCalNoSchool7'] = $dNoSchool7;
+	$_SESSION['dCalNoSchool8'] = $dNoSchool8;
+
    if (isset($_POST["SubmitClassList"])) {
       Redirect ("Reports/ClassList.php?GroupID=" . $iGroupID . "&FYID=" . $iFYID . "&FirstSunday=" . $dFirstSunday . "&LastSunday=" . $dLastSunday);
    } else if (isset($_POST["SubmitClassAttendance"])) {
@@ -75,8 +86,16 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 } else {
    $iFYID = $_SESSION['idefaultFY'];
    $iGroupID = 0;
-	$dFirstSunday = "";
-	$dLastSunday = "";
+	$dFirstSunday = $_SESSION['dCalStart'];
+	$dLastSunday = $_SESSION['dCalEnd'];
+	$dNoSchool1 = $_SESSION['dCalNoSchool1'];
+	$dNoSchool2 = $_SESSION['dCalNoSchool2'];
+	$dNoSchool3 = $_SESSION['dCalNoSchool3'];
+	$dNoSchool4 = $_SESSION['dCalNoSchool4'];
+	$dNoSchool5 = $_SESSION['dCalNoSchool5'];
+	$dNoSchool6 = $_SESSION['dCalNoSchool6'];
+	$dNoSchool7 = $_SESSION['dCalNoSchool7'];
+	$dNoSchool8 = $_SESSION['dCalNoSchool8'];
 }
 
 ?>
