@@ -160,7 +160,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		$summaryCheckNoX = 40;
 		$summaryMethodX = 60;
 		$summaryFundX = 85;
-		$summaryMemoX = 110;
+		$summaryMemoX = 120;
 		$summaryAmountX = 170;
 		$summaryIntervalY = 4;
 
@@ -207,6 +207,12 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 			$cnt += 1;
 
 			$curY += $summaryIntervalY;
+				
+			if ($curY > 220) {
+				$pdf->AddPage ();
+				$curY = 20;
+			}
+
 		}
 		$pdf->SetFont('Times','', 10);
 		if ($cnt > 1) {
