@@ -281,7 +281,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						$sLastNameToEnter = $sName;
 					}
 
-//					RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
+					RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
 					$sSQL = "INSERT INTO person_per (per_FirstName, 
 					                                 per_MiddleName, 
 																per_LastName, 
@@ -309,7 +309,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					RunQuery($sSQL);
 					$sSQL = "INSERT INTO person_custom (per_ID) VALUES (" . mysql_insert_id() . ")";
 					RunQuery($sSQL);
-//					RunQuery("UNLOCK TABLES");
+					RunQuery("UNLOCK TABLES");
 				}
 			}
 		} else {
@@ -331,10 +331,10 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					{
 						$sLastNameToEnter = $sName;
 					}
-//					RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
+					RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
 					$sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "',per_BirthYear='" . $aBirthYears[$iCount] . "',per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
 					RunQuery($sSQL);
-//					RunQuery("UNLOCK TABLES");
+					RunQuery("UNLOCK TABLES");
 				}
 			}
 		}
