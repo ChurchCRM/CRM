@@ -14,8 +14,8 @@
 
 require "../Include/Config.php";
 require "../Include/Functions.php";
-require "../Include/ReportConfig.php";
 require "../Include/ReportFunctions.php";
+require "../Include/ReportConfig.php";
 
 //Get the Fiscal Year ID out of the querystring
 $iYear = FilterInput($_GET["Year"],'int');
@@ -26,100 +26,39 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
 	exit;
 }
 
-// Load the FPDF library
-LoadLib_FPDF();
-
-class PDF_TaxReport extends FPDF {
-
-	// Private properties
-	var $_Char_Size   = 10;        // Character size
-	var $_Font        = "Times";
-
-	// Sets the character size
-	// This changes the line height too
-	function Set_Char_Size($pt) {
-		if ($pt > 3) {
-			$this->_Char_Size = $pt;
-			$this->SetFont($this->_Font,'',$this->_Char_Size);
-		}
-	}
-
-	function PrintRightJustified ($x, $y, $str) {
-		$iLen = strlen ($str);
-		$nMoveBy = 10 - 2 * $iLen;
-		$this->SetXY ($x + $nMoveBy, $y);
-		$this->Write (4, $str);
-	}
+class PDF_TaxReport extends ChurchInfoReport {
 
 	// Constructor
 	function PDF_TaxReport() {
-		global $paperFormat;
-		parent::FPDF("P", "mm", $paperFormat);
+		parent::FPDF("P", "mm", $this->paperFormat);
 
-		$this->_Font        = "Times";
+		$this->SetFont("Times",'',10);
 		$this->SetMargins(20,20);
 		$this->Open();
-		$this->Set_Char_Size(10);
 		$this->SetAutoPageBreak(false);
 	}
 
-	function WriteAt ($x, $y, $str) {
-		$this->SetXY ($x, $y);
-		$this->Write (4, $str);
-	}
-
-	function StartNewPage ($fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear) {
-		$this->AddPage();
-		
-		$dateX = 170;
-		$dateY = 25;
-
-		$this->WriteAt ($dateX, $dateY, date("m/d/Y"));
-
-		$leftX = 20;
-		$topY = 35;
-		$incrementY = 4;
-
-		$curY = $topY;
-
-		$this->WriteAt ($leftX, $curY, "Unitarian-Universalist Church of Nashua"); $curY += $incrementY;
-		$this->WriteAt ($leftX, $curY, "58 Lowell Street"); $curY += $incrementY;
-		$this->WriteAt ($leftX, $curY, "Nashua, New Hampshire  03064"); $curY += $incrementY;
-		$this->WriteAt ($leftX, $curY, "(603) 882-1092  office@uunashua.org"); $curY += 2 * $incrementY;
-
-		$this->WriteAt ($leftX, $curY, ($fam_Name . " Family")); $curY += $incrementY;
-		if ($fam_Address1 != "") {
-			$this->WriteAt ($leftX, $curY, $fam_Address1); $curY += $incrementY;
-		}
-		if ($fam_Address2 != "") {
-			$this->WriteAt ($leftX, $curY, $fam_Address2); $curY += $incrementY;
-		}
-		$this->WriteAt ($leftX, $curY, $fam_City . ", " . $fam_State . "  " . $fam_Zip); $curY += $incrementY;
-		if ($fam_Country != "" && $fam_Country != "USA") {
-			$this->WriteAt ($leftX, $curY, $fam_Country); $curY += $incrementY;
-		}
-		$curY += 2 * $incrementY;
-		$blurb = "This letter shows our record of your payments for " . $iYear . ".";
-		$this->WriteAt ($leftX, $curY, $blurb);
-		$curY += 2 * $incrementY;
+	function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear) {
+      $curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
+		$curY += 2 * $this->incrementY;
+		$blurb = $this->sTaxReport1 . $iYear . ".";
+		$this->WriteAt ($this->leftX, $curY, $blurb);
+		$curY += 2 * $this->incrementY;
 		return ($curY);
 	}
 
 	function FinishPage ($curY) {
-		$leftX = 20;
-		$incrementY = 4;
-		$curY += 2 * $incrementY;
-		$blurb = "Your only goods and services received, if any, were intangible religious benefits as defined under the code of the Internal Revenue Service.";
-		$this->WriteAt ($leftX, $curY, $blurb);
-		$curY += 3 * $incrementY;
-		$blurb = "If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.";
-		$this->WriteAt ($leftX, $curY, $blurb);
-		$curY += 2 * $incrementY;
+		$curY += 2 * $this->incrementY;
+		$blurb = $this->sTaxReport2;
+		$this->WriteAt ($this->leftX, $curY, $blurb);
+		$curY += 3 * $this->incrementY;
+		$blurb = $this->sTaxReport3;
+		$this->WriteAt ($this->leftX, $curY, $blurb);
+		$curY += 2 * $this->incrementY;
 
-		$curY += 2 * $incrementY;
-		$this->WriteAt ($leftX, $curY, "Sincerely,");
-		$curY += 4 * $incrementY;
-		$this->WriteAt ($leftX, $curY, "<signed by>");
+		$this->WriteAt ($this->leftX, $curY, "Sincerely,");
+		$curY += 4 * $this->incrementY;
+		$this->WriteAt ($this->leftX, $curY, "<signed by>");
 	}
 }
 
@@ -157,9 +96,9 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 			 WHERE plg_FamID = " . $fam_ID . " AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date";
 	$rsPledges = RunQuery($sSQL);
 
-	$curY = $pdf->StartNewPage ($fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
+	$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
 
-	$summaryDateX = 20;
+	$summaryDateX = $pdf->leftX;
 	$summaryCheckNoX = 40;
 	$summaryMethodX = 60;
 	$summaryFundX = 85;
@@ -168,10 +107,6 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$summaryIntervalY = 4;
 
 	$curY += 2 * $summaryIntervalY;
-	$pdf->SetFont('Times','', 12);
-	$pdf->WriteAt ($summaryDateX, $curY, 'Payments: ');
-	$curY += 2 * $summaryIntervalY;
-
 	$pdf->SetFont('Times','B', 10);
 
 	$pdf->WriteAt ($summaryDateX, $curY, 'Date');
@@ -207,13 +142,17 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
 		$curY += $summaryIntervalY;
 	}
-	$pdf->SetFont('Times','', 10);
+
 	if ($cnt > 1) {
+   	$pdf->SetFont('Times','', 10);
 		$pdf->WriteAt ($summaryMemoX, $curY, "Total payments");
-		$pdf->PrintRightJustified ($summaryAmountX, $curY, $totalAmount);
+      $totalAmountStr = sprintf ("%.2f", $totalAmount);
+   	$pdf->SetFont('Courier','', 8);
+		$pdf->PrintRightJustified ($summaryAmountX, $curY, $totalAmountStr);
 		$curY += $summaryIntervalY;
 	}
 
+	$pdf->SetFont('Times','', 10);
 	$pdf->FinishPage ($curY);
 }
 

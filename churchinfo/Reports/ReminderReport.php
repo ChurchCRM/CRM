@@ -14,8 +14,8 @@
 
 require "../Include/Config.php";
 require "../Include/Functions.php";
-require "../Include/ReportConfig.php";
 require "../Include/ReportFunctions.php";
+require "../Include/ReportConfig.php";
 
 //Get the Fiscal Year ID out of the querystring
 $iFYID = FilterInput($_GET["FYID"],'int');
@@ -26,141 +26,32 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
 	exit;
 }
 
-// Load the FPDF library
-LoadLib_FPDF();
-
-class PDF_ReminderReport extends FPDF {
-
-	// Private properties
-	var $_Char_Size   = 10;        // Character size
-	var $_Font        = "Times";
-
-	// Sets the character size
-	// This changes the line height too
-	function Set_Char_Size($pt) {
-		if ($pt > 3) {
-			$this->_Char_Size = $pt;
-			$this->SetFont($this->_Font,'',$this->_Char_Size);
-		}
-	}
-
-	function PrintRightJustified ($x, $y, $str) {
-		$iLen = strlen ($str);
-		$nMoveBy = 10 - 2 * $iLen;
-		$this->SetXY ($x + $nMoveBy, $y);
-		$this->Write (8, $str);
-	}
-
-	function PrintRightJustifiedCell ($x, $y, $wid, $str) {
-		$iLen = strlen ($str);
-		$this->SetXY ($x, $y);
-		$this->Cell ($wid, 4, $str, 1, 0, 'R');
-	}
+class PDF_ReminderReport extends ChurchInfoReport {
 
 	// Constructor
 	function PDF_ReminderReport() {
-		global $paperFormat;
-		parent::FPDF("P", "mm", $paperFormat);
+		parent::FPDF("P", "mm", $this->paperFormat);
 
-		$this->_Font        = "Times";
+		$this->SetFont('Times','', 10);
 		$this->SetMargins(0,0);
 		$this->Open();
-		$this->Set_Char_Size(10);
 		$this->SetAutoPageBreak(false);
 	}
 
-	function WriteAt ($x, $y, $str) {
-		$this->SetXY ($x, $y);
-		$this->Write (8, $str);
-	}
-
-	function WriteAtCell ($x, $y, $wid, $str) {
-		$this->SetXY ($x, $y);
-		$this->Cell ($wid, 4, $str, 1);
-	}
-
-	function StartNewPage ($sChurchName, $sChurchAddress, $sChurchCity, $sChurchState, $sChurchZip, $sChurchPhone, $sChurchEmail,
-	                       $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID) {
-		$this->AddPage();
-
-		$dateX = 180;
-		$dateY = 25;
-
-		$this->WriteAt ($dateX, $dateY, date("m/d/Y"));
-
-		$leftX = 20;
-		$topY = 35;
-		$incrementY = 4;
-
-		$curY = $topY;
-
-		$this->WriteAt ($leftX, $curY, $sChurchName); $curY += $incrementY;
-		$this->WriteAt ($leftX, $curY, $sChurchAddress); $curY += $incrementY;
-		$this->WriteAt ($leftX, $curY, ($sChurchCity . ", " . $sChurchState . "  " .   $sChurchZip)); $curY += $incrementY;
-		$this->WriteAt ($leftX, $curY, $sChurchPhone . "  " . $sChurchEmail); $curY += 2 * $incrementY;
-
-		$this->WriteAt ($leftX, $curY, $this->MakeSalutation ($fam_ID)); $curY += $incrementY;
-		if ($fam_Address1 != "") {
-			$this->WriteAt ($leftX, $curY, $fam_Address1); $curY += $incrementY;
-		}
-		if ($fam_Address2 != "") {
-			$this->WriteAt ($leftX, $curY, $fam_Address2); $curY += $incrementY;
-		}
-		$this->WriteAt ($leftX, $curY, $fam_City . ", " . $fam_State . "  " . $fam_Zip); $curY += $incrementY;
-		if ($fam_Country != "" && $fam_Country != "USA") {
-			$this->WriteAt ($leftX, $curY, $fam_Country); $curY += $incrementY;
-		}
+	function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID) {
+		$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
 		$curY += 2 * $incrementY;
-		$blurb = "This letter shows our record of your pledge and payments for fiscal year " . (1995 + $iFYID) . "/" . (1995 + $iFYID + 1) . ".";
-		$this->WriteAt ($leftX, $curY, $blurb);
-		$curY += 2 * $incrementY;
+		$blurb = $this->sReminder1 . (1995 + $iFYID) . "/" . (1995 + $iFYID + 1) . ".";
+		$this->WriteAt ($this->leftX, $curY, $blurb);
+		$curY += 2 * $this->incrementY;
 		return ($curY);
 	}
 
 	function FinishPage ($curY) {
-		$leftX = 20;
-		$incrementY = 4;
-		$curY += 2 * $incrementY;
-		$this->WriteAt ($leftX, $curY, "Sincerely,");
-		$curY += 4 * $incrementY;
-		$this->WriteAt ($leftX, $curY, "<signed by>");
-	}
-
-	function MakeSalutation ($famID) {
-		// Make it put the name if there is only one individual in the family
-		// Make it put two first names and the last name when there are exactly two people in the family (e.g. "Nathaniel and Jeanette Brooks")
-		// Make it put two whole names where there are exactly two people with different names (e.g. "Doug Philbrook and Karen Andrews")
-		// When there are more than two people in the family I don't have any way to know which people are children, so I would have to just use the family name (e.g. "Grossman Family").
-		$sSQL = "SELECT * FROM family_fam WHERE fam_ID=" . $famID;
-		$rsFamInfo = RunQuery($sSQL);
-		$aFam = mysql_fetch_array($rsFamInfo);
-		extract ($aFam);
-
-		$sSQL = "SELECT * FROM person_per WHERE per_fam_ID=" . $famID;
-		$rsMembers = RunQuery($sSQL);
-		$numMembers = mysql_num_rows ($rsMembers);
-
-		if ($numMembers == 1) {
-			$aMember = mysql_fetch_array($rsMembers);
-			extract ($aMember);
-			return ($per_FirstName . " " . $per_LastName);
-		} else if ($numMembers == 2) {
-			$firstMember = mysql_fetch_array($rsMembers);
-			extract ($firstMember);
-			$firstFirstName = $per_FirstName;
-			$firstLastName = $per_LastName;
-			$secondMember = mysql_fetch_array($rsMembers);
-			extract ($secondMember);
-			$secondFirstName = $per_FirstName;
-			$secondLastName = $per_LastName;
-			if ($firstLastName == $secondLastName) {
-				return ($firstFirstName . " & " . $secondFirstName . " " . $firstLastName);
-			} else {
-				return ($firstFirstName . " " . $firstLastName . " & " . $secondFirstName . " " . $secondLastName);
-			}
-		} else {
-			return ($fam_Name . " Family");
-		}
+		$curY += 2 * $this->incrementY;
+		$this->WriteAt ($this->leftX, $curY, "Sincerely,");
+		$curY += 4 * $this->incrementY;
+		$this->WriteAt ($this->leftX, $curY, $this->sReminderSigner);
 	}
 }
 
@@ -186,8 +77,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	if (mysql_num_rows ($rsPledges) == 0)
 		continue;
 
-	$curY = $pdf->StartNewPage ($sChurchName, $sChurchAddress, $sChurchCity, $sChurchState, $sChurchZip, $sChurchPhone, $sChurchEmail,
-	                            $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID);
+	$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID);
 
 	// Get pledges only
 	$sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
@@ -198,11 +88,11 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$totalAmountPledges = 0;
 	if (mysql_num_rows ($rsPledges) == 0) {
 		$curY += $summaryIntervalY;
-		$pdf->WriteAt ($summaryDateX, $curY, 'We have not received your pledge.');
+		$pdf->WriteAt ($summaryDateX, $curY, $this->sReminderNoPledge);
 		$curY += 2 * $summaryIntervalY;
 	} else {
 
-		$summaryDateX = 20;
+		$summaryDateX = $pdf->leftX;
 		$summaryFundX = 45;
 		$summaryAmountX = 80;
 
@@ -263,10 +153,10 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$totalAmountPayments = 0;
 	if (mysql_num_rows ($rsPledges) == 0) {
 		$curY += $summaryIntervalY;
-		$pdf->WriteAt ($summaryDateX, $curY, 'We have not received any payments.');
+		$pdf->WriteAt ($summaryDateX, $curY, $this->sReminderNoPayments);
 		$curY += 2 * $summaryIntervalY;
 	} else {
-		$summaryDateX = 20;
+		$summaryDateX = $pdf->leftX;
 		$summaryCheckNoX = 40;
 		$summaryMethodX = 60;
 		$summaryFundX = 85;
