@@ -28,11 +28,12 @@ $paperFormat = "Letter";
 //  You may want to comment this out if you are using custom pre-printed letterhead paper.
 $sExemptionLetter_Letterhead = "../Images/church_letterhead.png";
 
-$sExemptionLetter_Intro = "We appreciate your financial support during the past year to the Unitarian Universalist Church of Nashua, New Hampshire. The following is a statement of your donations during the past year." ;
+$sExemptionLetter_Institution = "<your institution name>";
+$sExemptionLetter_Intro = "We appreciate your financial support during the past year to " . $sExemptionLetter_Institution . ". The following is a statement of your donations during the past year." ;
 $sExemptionLetter_EndLine = "Thank you for your kind donations.<br><br>" ;
 $sExemptionLetter_Closing = "<br>Sincerely,<br>" ;
-$sExemptionLetter_Author = "<br>Jon Laselle<br>Treasurer" ;
-$sExemptionLetter_FooterLine = "58 Lowell St. · Nashua, NH 03064 · Tel. (603) 882-1091 · http://www.uunashua.org";
+$sExemptionLetter_Author = "<br>Your signature name<br>Your signature title" ;
+$sExemptionLetter_FooterLine = "Your street address · Your city/state/zip · Tel. Your tel · http:Your URL";
 $sExemptionLetter_Signature = "../Images/signature.png";
 
 //
@@ -40,12 +41,12 @@ $sExemptionLetter_Signature = "../Images/signature.png";
 //
 
 // Settings for the optional title page
-$sChurchName = "Unitarian Universalist Church of Nashua";
-$sChurchAddress = "58 Lowell St.";
-$sChurchCity = "Nashua";
-$sChurchState = "NH";
-$sChurchZip = "03064";
-$sChurchPhone = "(603) 882-1091";
+$sChurchName = "Your church name";
+$sChurchAddress = "Your church street address";
+$sChurchCity = "Your city";
+$sChurchState = "Your state";
+$sChurchZip = "YOur zip";
+$sChurchPhone = "Your phone";
 $sDirectoryDisclaimer = "Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of $sChurchName, and the information contained in it may not be used for business or commercial purposes.";
 
 $bDirLetterHead = "../Images/church_letterhead.png";
@@ -60,7 +61,7 @@ $sDirRoleSpouse = "2";
 $sDirRoleChild = "3";
 
 // Donation Receipt
-$sDonationReceipt_Thanks = "Thank you for your kind donation to the Unitarian Universalist Church of Nashua, NH.";
+$sDonationReceipt_Thanks = "Thank you for your kind donation to the " . $sExemptionLetter_Institution .".";
 $sDonationReceipt_Closing = "Thank you!";
 
 ?>
