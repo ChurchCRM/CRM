@@ -55,6 +55,12 @@ require "Include/Header.php";
 </p>
 
 <p>
+<a class="MediumText" href="Reports/ConfirmReport.php"><?php echo gettext("Confirm data report"); ?></a>
+<br>
+<?php echo gettext("Generate letters requesting confirmation of information in the database (multi-page PDF)."); ?>
+</p>
+
+<p>
 <a class="MediumText" href="SundaySchool.php"><?php echo gettext("Sunday School Reports"); ?></a>
 <br>
 <?php echo gettext("Generate class lists and attendance sheets"); ?>
