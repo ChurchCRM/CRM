@@ -95,6 +95,12 @@ class ChurchInfoReport extends FPDF {
 		$this->Cell ($wid, $this->incrementY, $str, 1, 0, 'R');
 	}
 
+	function PrintCenteredCell ($x, $y, $wid, $str) {
+		$iLen = strlen ($str);
+		$this->SetXY ($x, $y);
+		$this->Cell ($wid, $this->incrementY, $str, 1, 0, 'C');
+	}
+
 	function WriteAt ($x, $y, $str) {
 		$this->SetXY ($x, $y);
 		$this->Write ($this->incrementY, $str);
