@@ -41,7 +41,7 @@ $rsFunds = RunQuery($sSQL);
 if ($PledgeOrPayment == 'Pledge')
 	$sPageTitle = gettext("Pledge Editor");
 else
-	$sPageTitle = gettext($dep_Type . " Payment Editor");
+	$sPageTitle = gettext("Payment Editor");
 
 // Security: User must have Finance permission to use this form.
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
@@ -56,7 +56,7 @@ $micrObj = new MICRReader();
 
 //Is this the second pass?
 if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isset($_POST["MatchFamily"]) ||
-    isset($_POST["SetDefaultCheck"]) || isset($_POST["SetDefaultCreditCard"]))
+    isset($_POST["SetDefaultCheck"]))
 {
 	$iFamily = 0;
 	$iCheckNo = 0;
@@ -86,12 +86,6 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		$tScanString = FilterInput($_POST["ScanInput"]);
 		$iFamily = FilterInput($_POST["Family"],'int');
 		$sSQL = "UPDATE family_fam SET fam_scanCheck=\"" . $tScanString . "\" WHERE fam_ID = " . $iFamily;
-		RunQuery($sSQL);
-	}
-	if (isset($_POST["SetDefaultCreditCard"])) {
-		$tScanString = FilterInput($_POST["ScanInput"]);
-		$iFamily = FilterInput($_POST["Family"],'int');
-		$sSQL = "UPDATE family_fam SET fam_scanCredit=\"" . $tScanString . "\" WHERE fam_ID = " . $iFamily;
 		RunQuery($sSQL);
 	}
 
@@ -172,7 +166,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		//Execute the SQL
 		RunQuery($sSQL);
 
-		// If this is a new person, get the key back
+		// If this is a new pledge or deposit, get the key back
 		if ($bGetKeyBack)
 		{
 			$sSQL = "SELECT MAX(plg_plgID) AS iPledgeID FROM pledge_plg";
@@ -393,8 +387,8 @@ require "Include/Header.php";
 			</tr>
 
 			<tr>
-				<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Scan check or credit card:");?></td>
-				<td><textarea name="ScanInput" rows="3" cols="90"><?php echo $tScanString?></textarea></td>
+				<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Scan check");?></td>
+				<td><textarea name="ScanInput" rows="2" cols="90"><?php echo $tScanString?></textarea></td>
 			</tr>
 	
 		</table>
@@ -404,7 +398,6 @@ require "Include/Header.php";
 		<td align="center">
 			<input type="submit" class="icButton" value="<?php echo gettext("Match family to check"); ?>" name="MatchFamily">
 			<input type="submit" class="icButton" value="<?php echo gettext("Set default check for family"); ?>" name="SetDefaultCheck">
-			<input type="submit" class="icButton" value="<?php echo gettext("Set default credit card for family"); ?>" name="SetDefaultCreditCard">
 		</td>
 	</tr>
 
