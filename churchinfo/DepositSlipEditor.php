@@ -398,6 +398,13 @@ if ($iDepositSlipID) {
 	$dDate = date("Y-m-d");	// Set default date to today
 }
 
+// Set Current Deposit setting for user
+if ($iDepositSlipID) {
+	$_SESSION['iCurrentDeposit'] = $iDepositSlipID;		// Probably redundant
+	$sSQL = "UPDATE user_usr SET usr_currentDeposit = '$iDepositSlipID' WHERE usr_per_id = \"".$_SESSION['iUserID']."\"";
+	$rsUpdate = RunQuery($sSQL);
+}
+
 require "Include/Header.php";
 
 ?>
