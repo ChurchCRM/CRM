@@ -17,6 +17,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+require "Include/CanvassUtilities.php";
+
 //Set the page title
 $sPageTitle = gettext("Family Editor");
 
@@ -51,6 +53,10 @@ $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun
 if ($editorMode == 0) $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
 $rsFunds = RunQuery($sSQL);
 
+// Get the lists of canvassers
+$rsCanvassers = CanvassGetCanvassers (gettext ("Canvassers"));
+$rsBraveCanvassers = CanvassGetCanvassers (gettext ("BraveCanvassers"));
+
 //Is this the second pass?
 if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 {
@@ -76,6 +82,9 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 	if ($_SESSION['bCanvasser']) { // Only take modifications to this field if the current user is a canvasser
 		$bOkToCanvass = isset($_POST["OkToCanvass"]);
+		$iCanvasser = FilterInput($_POST["Canvasser"]);
+		if (! $iCanvasser)
+			$iCanvasser = FilterInput($_POST["BraveCanvasser"]);
 	}
 
 	$iPropertyID = FilterInput($_POST["PropertyID"],'int');
@@ -190,7 +199,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 														fam_DateEntered, 
 														fam_EnteredBy, 
 														fam_SendNewsLetter,
-														fam_OkToCanvass)
+														fam_OkToCanvass,
+														fam_Canvasser)
 											VALUES ('" . $sName . "','" . 
 											         $sAddress1 . "','" . 
 														$sAddress2 . "','" . 
@@ -206,7 +216,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 														date("YmdHis") . "'," . 
 														$_SESSION['iUserID'] . "," . 
 														$bSendNewsLetterString . "," . 
-														$bOkToCanvass . ")";
+														$bOkToCanvass . "," .
+														$iCanvasser . ")";
 			$bGetKeyBack = true;
 		}
 		else
@@ -226,7 +237,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 													 "fam_DateLastEdited='" . date("YmdHis") . "'," .
 													 "fam_EditedBy = " . $_SESSION['iUserID'] . "," .
 													 "fam_SendNewsLetter = " . $bSendNewsLetterString . "," .
-													 "fam_OkToCanvass = " . $bOkToCanvassString .
+													 "fam_OkToCanvass = " . $bOkToCanvassString . "," .
+													 "fam_Canvasser = " . $iCanvasser .
 												" WHERE fam_ID = " . $iFamilyID;
 			$bGetKeyBack = false;
 		}
@@ -269,7 +281,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						$sLastNameToEnter = $sName;
 					}
 
-					RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
+//					RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
 					$sSQL = "INSERT INTO person_per (per_FirstName, 
 					                                 per_MiddleName, 
 																per_LastName, 
@@ -297,7 +309,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					RunQuery($sSQL);
 					$sSQL = "INSERT INTO person_custom (per_ID) VALUES (" . mysql_insert_id() . ")";
 					RunQuery($sSQL);
-					RunQuery("UNLOCK TABLES");
+//					RunQuery("UNLOCK TABLES");
 				}
 			}
 		} else {
@@ -319,10 +331,10 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					{
 						$sLastNameToEnter = $sName;
 					}
-					RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
+//					RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
 					$sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "',per_BirthYear='" . $aBirthYears[$iCount] . "',per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
 					RunQuery($sSQL);
-					RunQuery("UNLOCK TABLES");
+//					RunQuery("UNLOCK TABLES");
 				}
 			}
 		}
@@ -364,6 +376,7 @@ else
 		$sEmail = $fam_Email;
 		$bSendNewsLetter = ($fam_SendNewsLetter == 'TRUE');
 		$bOkToCanvass = ($fam_OkToCanvass == 'TRUE');
+		$iCanvasser = $fam_Canvasser;
 		$dWeddingDate = $fam_WeddingDate;
 		if ($dWeddingDate == '0000-00-00')
 			$dWeddingDate = '';
@@ -531,7 +544,46 @@ require "Include/Header.php";
 		<td class="LabelColumn"><?php echo gettext("Ok To Canvass:"); ?></td>
 		<td class="TextColumn"><input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) echo " checked"; ?>></td>
 	</tr>
-	
+
+	<tr><?php
+		if (mysql_num_rows($rsCanvassers) > 0) 
+		{
+			echo "<tr><td class='LabelColumn'>" . gettext("Assign a Canvasser:") . "</td>\n";
+			echo "<td class='TextColumnWithBottomBorder'>";
+			// Display all canvassers
+			echo "<select name='Canvasser'><option value=\"0\">None selected</option>";
+			while ($aCanvasser = mysql_fetch_array($rsCanvassers))
+			{
+				echo "<option value=\"" . $aCanvasser["per_ID"] . "\"";
+				if ($aCanvasser["per_ID"]==$fam_Canvasser)
+					echo " selected";
+				echo ">";
+				echo $aCanvasser["per_FirstName"] . " " . $aCanvasser["per_LastName"];
+				echo "</option>";
+			}
+			echo "</select></td></tr>";
+		}
+
+		if (mysql_num_rows($rsBraveCanvassers) > 0) 
+		{
+			echo "<tr><td class='LabelColumn'>" . gettext("Assign a Brave Canvasser:") . "</td>\n";
+			echo "<td class='TextColumnWithBottomBorder'>";
+			// Display all canvassers
+			echo "<select name='BraveCanvasser'><option value=\"0\">None selected</option>";
+			while ($aBraveCanvasser = mysql_fetch_array($rsBraveCanvassers))
+			{
+				echo "<option value=\"" . $aBraveCanvasser["per_ID"] . "\"";
+				if ($aBraveCanvasser["per_ID"]==$fam_Canvasser)
+					echo " selected";
+				echo ">";
+				echo $aBraveCanvasser["per_FirstName"] . " " . $aBraveCanvasser["per_LastName"];
+				echo "</option>";
+			}
+			echo "</select></td></tr>";
+		}
+		?>
+	</tr>
+
 	<?php
 	//"Assign a Property" block
 	// Adding a new family?
