@@ -74,6 +74,14 @@ function DeletePerson($iPersonID)
 
 	// Make sure person was not in the cart
 	RemoveFromPeopleCart($iPersonID);
+
+	// Delete the photo files, if they exist
+	$photoThumbnail = "Images/Person/thumbnails/" . $iPersonID . ".jpg";
+	if (file_exists($photoThumbnail))
+		unlink ($photoThumbnail);
+	$photoFile = "Images/Person/" . $iPersonID . ".jpg";
+	if (file_exists($photoFile))
+		unlink ($photoFile);
 }
 
 //Do we have deletion confirmation?
@@ -129,6 +137,14 @@ if (isset($_GET["Confirmed"]))
 		// Delete the specified Family record
 		$sSQL = "DELETE FROM family_fam WHERE fam_ID = " . $iFamilyID;
 		RunQuery($sSQL);
+
+		// Delete the photo files, if they exist
+		$photoThumbnail = "Images/Family/thumbnails/" . $iFamilyID . ".jpg";
+		if (file_exists($photoThumbnail))
+			unlink ($photoThumbnail);
+		$photoFile = "Images/Family/" . $iFamilyID . ".jpg";
+		if (file_exists($photoFile))
+			unlink ($photoFile);
 
 		// Redirect back to the family listing
 		Redirect("SelectList.php?mode=family");
