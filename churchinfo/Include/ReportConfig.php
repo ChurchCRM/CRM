@@ -39,6 +39,8 @@ class ChurchInfoReport extends FPDF {
    var $sChurchPhone = "Your phone";
    var $sChurchEmail = "Your church email";
 
+   var $sHomeAreaCode = "xxx";
+
    // Verbage for the tax report
    var $sTaxReport1 = "This letter shows our record of your payments for ";
    var $sTaxReport2 = "Your only goods and services received, if any, were intangible religious benefits as defined under the code of the Internal Revenue Service.";
@@ -54,6 +56,16 @@ class ChurchInfoReport extends FPDF {
    var $sDirectoryDisclaimer1 = "Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of ";
    var $sDirectoryDisclaimer2 = ", and the information contained in it may not be used for business or commercial purposes.";
    var $bDirLetterHead = "../Images/church_letterhead.png";
+
+   function StripPhone ($phone) {
+      if (substr ($phone, 0, 3) == $this->sHomeAreaCode)
+         $phone = substr ($phone, 3, strlen ($phone) - 3);
+      if (substr ($phone, 0, 5) == ("(" . $this->sHomeAreaCode . ")"))
+         $phone = substr ($phone, 5, strlen ($phone) - 5);
+      if (substr ($phone, 0, 1) == "-")
+         $phone = substr ($phone, 1, strlen ($phone) - 1);
+      return ($phone);
+   }
 
 	function PrintRightJustified ($x, $y, $str) {
 		$iLen = strlen ($str);
