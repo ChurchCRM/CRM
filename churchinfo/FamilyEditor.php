@@ -73,6 +73,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$sCellPhone = FilterInput($_POST["CellPhone"]);
 	$sEmail = FilterInput($_POST["Email"]);
 	$bSendNewsLetter = isset($_POST["SendNewsLetter"]);
+	$iPropertyID = FilterInput($_POST["PropertyID"],'int');
 	$dWeddingDate = FilterInput($_POST["WeddingDate"]);
 
 	$bNoFormat_HomePhone = isset($_POST["NoFormat_HomePhone"]);
@@ -228,6 +229,13 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			$sSQL = "SELECT MAX(fam_ID) AS iFamilyID FROM family_fam";
 			$rsLastEntry = RunQuery($sSQL);
 			extract(mysql_fetch_array($rsLastEntry));
+			
+			// Add property if assigned
+			if ($iPropertyID)
+			{
+				$sSQL = "INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID) VALUES ($iPropertyID, $iFamilyID)";
+				RunQuery($sSQL);
+			}
 
 			//Run through the family member arrays...
 			for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++)
@@ -503,7 +511,33 @@ require "Include/Header.php";
 		<td class="LabelColumn"><?php echo gettext("Send Newsletter:"); ?></td>
 		<td class="TextColumn"><input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) echo " checked"; ?>></td>
 	</tr>
-
+	
+	<?php
+	//"Assign a Property" block
+	// Adding a new family?
+	if (!$iFamilyID) 
+	{
+		// Yes. Get all the family properties
+		$sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'f' ORDER BY pro_Name";
+		$rsProperties = RunQuery($sSQL);
+		// Are there any family properties defined?
+		if (mysql_num_rows($rsProperties) > 0) 
+		{
+			// Yes. Display "Assign a Property" block
+			echo "<tr><td class='LabelColumn'>" . gettext("Assign a Property:") . "</td>\n";
+			echo "<td class='TextColumnWithBottomBorder'>";
+			// Display all family properties
+			echo "<select name='PropertyID'><option value='0'>None selected</option>";
+			while ($aRow = mysql_fetch_array($rsProperties))
+			{
+				extract($aRow);
+				echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
+			}
+			echo "</select></td></tr>";
+		}
+	}
+	?>
+	
 	<tr>
 		<td>&nbsp;</td>
 	</tr>
@@ -512,6 +546,7 @@ require "Include/Header.php";
 		<td class="LabelColumn"><?php echo gettext("Wedding Date:"); ?></td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="10" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
 	</tr>
+
 
 	<tr>
 		<td>&nbsp;</td>
