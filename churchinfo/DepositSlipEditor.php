@@ -86,7 +86,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 
 			if ($bClosed && ($dep_Type=='CreditCard' || $dep_Type == 'BankDraft')) {
 				// Delete any failed transactions on this deposit slip now that it is closing
-				$q = "DELETE FROM pledge_plg WHERE plg_depID = " . $iDepositSlipID . " AND plg_aut_Cleared=0" ;
+				$q = "DELETE FROM pledge_plg WHERE plg_depID = " . $iDepositSlipID . " AND plg_PledgeOrPayment=\"Payment\" AND plg_aut_Cleared=0" ;
 				RunQuery($q);
 			}
 		}
