@@ -43,7 +43,7 @@ if (isset($_POST["FindDepositSlipSubmit"]))
 		if ($dep_ID > 0) {
 			$iDepositSlipID = $dep_ID;
 			$_SESSION['iCurrentDeposit'] = $iDepositSlipID;
-			Redirect("DepositSlipEditor.php?new=0");
+			Redirect("DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID);
 			exit;
 		}
 	}
@@ -55,7 +55,7 @@ if (isset($_POST["FindDepositSlipSubmit"]))
 		if ($dep_ID > 0) {
 			$iDepositSlipID = $dep_ID;
 			$_SESSION['iCurrentDeposit'] = $iDepositSlipID;
-			Redirect("DepositSlipEditor.php?new=0");
+			Redirect("DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID);
 			exit;
 		}
 	}
