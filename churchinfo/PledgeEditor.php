@@ -181,13 +181,13 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 				Redirect($linkBack);
 			} else {
 				//Send to the view of this pledge
-				Redirect("PledgeEditor.php?PledgeID=" . $iPledgeID . "&linkBack=", $linkBack);
+				Redirect("PledgeEditor.php?PledgeOrPayment=" . $PledgeOrPayment . "&PledgeID=" . $iPledgeID . "&linkBack=", $linkBack);
 			}
 		}
 		else if (isset($_POST["PledgeSubmitAndAdd"]))
 		{
 			//Reload to editor to add another record
-			Redirect("PledgeEditor.php");
+			Redirect("PledgeEditor.php?PledgeOrPayment=" . $PledgeOrPayment . "&linkBack=", $linkBack);
 		}
 
 	}
@@ -215,6 +215,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		$sComment = $plg_comment;
 		$iFamily = $plg_FamID;
 		$tScanString = $plg_scanString;
+      $PledgeOrPayment = $plg_PledgeOrPayment;
 	}
 	else
 	{
@@ -233,7 +234,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?PledgeID=" . $iPledgeID . "&linkBack=" . $linkBack . "&PledgeOrPayment=" . $PledgeOrPayment; ?>" name="PledgeEditor">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?PledgeID=" . $iPledgeID . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
 
 <table cellpadding="3" align="center">
 
