@@ -17,10 +17,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-//Get whether making new deposit slip from the query string
 $linkBack = FilterInput($_GET["linkBack"]);
 $iDepositSlipID = FilterInput($_GET["DepositSlipID"]);
-$iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
 //Set the page title
 if (! $iDepositSlipID)
@@ -85,7 +83,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 
 		// Existing record (update)
 		} else {
-			$sSQL = "UPDATE deposit_dep SET dep_Date = '" . $dDate . "', dep_Comment = '" . $sComment . "', dep_EnteredBy = ". $_SESSION['iUserID'] . ", dep_Closed = " . $bClosed . ";";
+			$sSQL = "UPDATE deposit_dep SET dep_Date = '" . $dDate . "', dep_Comment = '" . $sComment . "', dep_EnteredBy = ". $_SESSION['iUserID'] . ", dep_Closed = " . $bClosed . " WHERE dep_ID = " . $iDepositSlipID . ";";
 			$bGetKeyBack = false;
 		}
 
@@ -139,7 +137,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?linkBack=" . $linkBack?>" name="DepositSlipEditor">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?linkBack=" . $linkBack . "&DepositSlipID=".$iDepositSlipID?>" name="DepositSlipEditor">
 
 <table cellpadding="3" align="center">
 
