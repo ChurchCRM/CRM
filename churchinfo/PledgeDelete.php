@@ -18,7 +18,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 //Set the page title
-$sPageTitle = gettext("Confirm Delete Pledge");
+$sPageTitle = gettext("Confirm Delete");
 
 //Get the PledgeID out of the querystring
 $iPledgeID = FilterInput($_GET["PledgeID"],'int');
