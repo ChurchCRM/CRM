@@ -95,7 +95,7 @@ class PDF_NewsletterLabels extends FPDF {
 $pdf = new PDF_NewsletterLabels();
 
 // Get all the families which receive the newsletter by mail
-$sSQL = "SELECT * FROM family_fam WHERE fam_SendNewsLetter='TRUE'";
+$sSQL = "SELECT * FROM family_fam WHERE fam_SendNewsLetter='TRUE' ORDER BY fam_Zip";
 $rsFamilies = RunQuery($sSQL);
 
 // Loop through families
