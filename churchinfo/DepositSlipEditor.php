@@ -36,13 +36,16 @@ if (!$_SESSION['bFinance'])
 	exit;
 }
 
-//Get the payments for this deposit slip
-$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment, a.fam_Name AS FamilyName
-		 FROM pledge_plg 
-		 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
-		 WHERE plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_date";
-$rsPledges = RunQuery($sSQL);
-
+if ($iDepositSlipID) {
+	//Get the payments for this deposit slip
+	$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment, a.fam_Name AS FamilyName
+			 FROM pledge_plg 
+			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
+			 WHERE plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_date";
+	$rsPledges = RunQuery($sSQL);
+} else {
+	$rsPledges = 0;
+}
 
 //Is this the second pass?
 if (isset($_POST["DepositSlipSubmit"]))
