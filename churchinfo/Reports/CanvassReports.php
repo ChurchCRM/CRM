@@ -306,6 +306,91 @@ function CanvassBriefingSheets ($iFYID)
 	$pdf->Output("CanvassBriefing" . date("Ymd") . ".pdf", true);
 }
 
+function CanvassSummaryReport ($iFYID)
+{
+	// Instantiate the directory class and build the report.
+	$pdf = new PDF_CanvassBriefingReport();
+	$pdf->SetMargins (20, 20);
+
+	$curY = 10;
+
+	$pdf->SetFont('Times','', 24);
+	$pdf->WriteAt ($pdf->leftX, $curY, "Canvass Summary Report " . date ("Y-m-d"));
+	$pdf->SetFont('Times','', 14);
+
+	$curY += 10;
+
+	$pdf->SetFont('Times','', 12);
+	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchName); $curY += $pdf->incrementY;
+	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchAddress); $curY += $pdf->incrementY;
+	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchCity . ", " . $pdf->sChurchState . "  " . $pdf->sChurchZip); $curY += $pdf->incrementY;
+	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchPhone . "  " . $pdf->sChurchEmail); 
+	$curY += 10;
+	$pdf->SetFont('Times','', 14);
+
+	$pdf->SetAutoPageBreak (1);
+
+	$pdf->Write (5, "\n\n");
+
+	$sSQL = "SELECT * FROM canvassdata_can WHERE can_FYID=" . $iFYID;
+	$rsCanvassData = RunQuery($sSQL);
+
+	foreach (array ("Positive", "Critical", "Insightful", "Financial", "Suggestion", "WhyNotInterested") as $colName) {
+		$pdf->SetFont('Times','B', 14);
+		$pdf->Write (5, $colName . " Comments\n");
+//		$pdf->WriteAt ($pdf->leftX, $curY, $colName . " Comments");
+		$pdf->SetFont('Times','', 12);
+		while ($aDatum = mysql_fetch_array ($rsCanvassData)) {
+			$str = $aDatum["can_" . $colName];
+			if ($str <> "") {
+				$pdf->Write (4, $str . "\n\n");
+//				$pdf->WriteAt ($pdf->leftX, $curY, $str);
+//				$curY += $pdf->incrementY;
+			}
+		}
+		mysql_data_seek ($rsCanvassData, 0);
+	}	
+
+	$pdf->Output("CanvassSummary" . date("Ymd") . ".pdf", true);
+}
+
+function CanvassNotInterestedReport ($iFYID)
+{
+	// Instantiate the directory class and build the report.
+	$pdf = new PDF_CanvassBriefingReport();
+	$pdf->SetMargins (20, 20);
+
+	$curY = 10;
+
+	$pdf->SetFont('Times','', 24);
+	$pdf->WriteAt ($pdf->leftX, $curY, "Canvass Not Interested Report " . date ("Y-m-d"));
+	$pdf->SetFont('Times','', 14);
+
+	$curY += 10;
+
+	$pdf->SetFont('Times','', 12);
+	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchName); $curY += $pdf->incrementY;
+	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchAddress); $curY += $pdf->incrementY;
+	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchCity . ", " . $pdf->sChurchState . "  " . $pdf->sChurchZip); $curY += $pdf->incrementY;
+	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchPhone . "  " . $pdf->sChurchEmail); 
+	$curY += 10;
+	$pdf->SetFont('Times','', 14);
+
+	$pdf->SetAutoPageBreak (1);
+
+	$pdf->Write (5, "\n\n");
+
+	$sSQL = "SELECT *,a.fam_Name FROM canvassdata_can LEFT JOIN family_fam a ON fam_ID=can_famID WHERE can_FYID=" . $iFYID . " AND can_NotInterested=1";
+	$rsCanvassData = RunQuery($sSQL);
+
+	$pdf->SetFont('Times','', 12);
+	while ($aDatum = mysql_fetch_array ($rsCanvassData)) {
+		$str = sprintf ("%s : %s\n", $aDatum["fam_Name"], $aDatum["can_WhyNotInterested"]);
+		$pdf->Write (4, $str . "\n\n");
+	}
+
+	$pdf->Output("CanvassNotInterested" . date("Ymd") . ".pdf", true);
+}
 
 if ($sWhichReport == "Briefing") {
 	CanvassBriefingSheets ($iFYID);
@@ -315,5 +400,12 @@ if ($sWhichReport == "Progress") {
 	CanvassProgressReport ($iFYID);
 }
 
+if ($sWhichReport == "Summary") {
+	CanvassSummaryReport ($iFYID);
+}
+
+if ($sWhichReport == "NotInterested") {
+	CanvassNotInterestedReport ($iFYID);
+}
 
 ?>
