@@ -82,9 +82,13 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 	if ($_SESSION['bCanvasser']) { // Only take modifications to this field if the current user is a canvasser
 		$bOkToCanvass = isset($_POST["OkToCanvass"]);
+		if (! $bOkToCanvass)
+			$bOkToCanvass = 0;
 		$iCanvasser = FilterInput($_POST["Canvasser"]);
 		if (! $iCanvasser)
 			$iCanvasser = FilterInput($_POST["BraveCanvasser"]);
+		if (! $iCanvasser)
+			$iCanvasser = 0;
 	}
 
 	$iPropertyID = FilterInput($_POST["PropertyID"],'int');
