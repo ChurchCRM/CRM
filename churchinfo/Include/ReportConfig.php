@@ -52,17 +52,7 @@ class ChurchInfoReport extends FPDF {
    // Verbage for the directory report
    var $sDirectoryDisclaimer1 = "Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of ";
    var $sDirectoryDisclaimer2 = ", and the information contained in it may not be used for business or commercial purposes.";
-
    var $bDirLetterHead = "../Images/church_letterhead.png";
-
-   // Include only these classifications in the directory, comma seperated
-   var $sDirClassifications = "1,2,4,5";
-   // These are the family role numbers designated as head of house
-   var $sDirRoleHead = "1,7";
-   // These are the family role numbers designated as spouse
-   var $sDirRoleSpouse = "2";
-   // These are the family role numbers designated as child
-   var $sDirRoleChild = "3";
 
 	function PrintRightJustified ($x, $y, $str) {
 		$iLen = strlen ($str);

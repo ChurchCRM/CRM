@@ -17,9 +17,9 @@
 
 // Database connection constants
 $sSERVERNAME = "localhost";
-$sUSER = "churchdb_admin";
+$sUSER = "mikewilt_demo";
 $sPASSWORD = "solstice";
-$sDATABASE = "churchdb_demo";
+$sDATABASE = "mikewilt_demo";
 
 // Ports on which the web server may run.  Defaults are fine for most people.
 $aHTTPports = "80,8000,8080";
@@ -28,7 +28,7 @@ $aHTTPSports = "443";
 // Root path of your InfoCentral installation ( THIS MUST BE SET CORRECTLY! )
 // For example, if you will be accessing from http://www.yourdomain.com/web/churchinfo
 //  then you would enter "/web/churchinfo" here.  This path SHOULD NOT end with slash.
-$sRootPath = "/~churchdb/churchinfo";
+$sRootPath = "/churchinfo";
 
 // Set debug mode
 // This may be helpful for when you're first setting up InfoCentral, but you should
@@ -52,6 +52,18 @@ $sFPDF_PATH = "Include/fpdf151";
 
 // phpmailer library
 $sPHPMAILER_PATH = "Include/phpmailer";
+
+
+// Directory report configuration
+// Include only these classifications in the directory, comma seperated
+$sDirClassifications = "1,2,4,5";
+// These are the family role numbers designated as head of house
+$sDirRoleHead = "1,7";
+// These are the family role numbers designated as spouse
+$sDirRoleSpouse = "2";
+// These are the family role numbers designated as child
+$sDirRoleChild = "3";
+
 
 //
 // Session parameters
