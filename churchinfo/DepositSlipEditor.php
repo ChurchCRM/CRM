@@ -123,13 +123,6 @@ if (isset($_POST["DepositSlipSubmit"]))
 		$enableStr = "aut_EnableBankDraft=1";
 	}
 
-	// Compute the current fiscal year ID
-	$yearNow = date ("Y");
-	$monthNow = date ("m");
-	$FYID = $yearNow - 1995;
-	if ($monthNow > 3)
-		$FYID += 1;
-
 	// Get all the families with authorized automatic transactions
 	$sSQL = "SELECT * FROM autopayment_aut WHERE " . $enableStr . " AND aut_NextPayDate<='" . date('Y-m-d') . "'";
 
@@ -144,6 +137,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 			$method = "BANKDRAFT";
 		}
 		$amount = $aut_Amount;
+		$FYID = $aut_FYID;
 		$interval = $aut_Interval;
 		$fund = $aut_Fund;
 		$authDate = $aut_NextPayDate;

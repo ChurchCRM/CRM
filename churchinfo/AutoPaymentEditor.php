@@ -47,6 +47,9 @@ if (isset($_POST["Submit"]))
 	$nAmount = FilterInput ($_POST["Amount"]);
 	if (! $nAmount)
 		$nAmount = 0;
+
+	$iFYID = FilterInput ($_POST["FYID"]);
+
 	$iInterval = FilterInput ($_POST["Interval"],'int');
 	$iFund = FilterInput ($_POST["Fund"],'int');
 
@@ -78,6 +81,7 @@ if (isset($_POST["Submit"]))
 					  aut_EnableBankDraft,
 					  aut_EnableCreditCard,
 					  aut_NextPayDate,
+					  aut_FYID,
 					  aut_Amount,
 					  aut_Interval,
 					  aut_Fund,
@@ -105,6 +109,7 @@ if (isset($_POST["Submit"]))
 						$bEnableBankDraft . "," .
 						$bEnableCreditCard . "," .
 						"'" . $dNextPayDate . "'," .
+						$iFYID . "," .
 						$nAmount . "," .
 						$iInterval . "," .
 						$iFund . "," .
@@ -138,6 +143,7 @@ if (isset($_POST["Submit"]))
 						"aut_EnableCreditCard	=" . 	$bEnableCreditCard . "," .
 						"aut_NextPayDate	='" . $dNextPayDate . "'," .
 						"aut_Amount	=" . 	$nAmount . "," .
+						"aut_FYID	=" . 	$iFYID . "," .
 						"aut_Interval	=" . 	$iInterval . "," .
 						"aut_Fund	=" . 	$iFund . "," .
 						"aut_FirstName	='" . $tFirstName . "'," .
@@ -195,6 +201,7 @@ if (isset($_POST["Submit"]))
 		$bEnableBankDraft=$aut_EnableBankDraft;
 		$bEnableCreditCard=$aut_EnableCreditCard;
 		$dNextPayDate=$aut_NextPayDate;
+		$iFYID = $aut_FYID;
 		$nAmount=$aut_Amount;
 		$iInterval=$aut_Interval;
 		$iFund=$aut_Fund;
@@ -226,6 +233,13 @@ if (isset($_POST["Submit"]))
 		$tEmail=$fam_Email;
 		$iInterval = 1;
 		$iFund = 1;
+
+		// Default to the current fiscal year ID
+		$yearNow = date ("Y");
+		$monthNow = date ("m");
+		$FYID = $yearNow - 1996;
+		if ($monthNow > 3)
+			$FYID += 1;
 	}
 }
 
@@ -290,6 +304,33 @@ $rsFunds = RunQuery($sSQL);
 			<tr>
 				<td class="LabelColumn"<?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date:"); ?></td>
 				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?php echo $dNextPayDate; ?>" maxlength="10" id="NextPayDate" size="11">&nbsp;<input type="image" onclick="return showCalendar('NextPayDate', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+			</tr>
+
+			<tr>
+				<td class="LabelColumn"><?php echo gettext("Fiscal Year:"); ?></td>
+				<td class="TextColumnWithBottomBorder">
+					<select name="FYID">
+						<option value="0"><?php echo gettext("Select Fiscal Year"); ?></option>
+						<option value="1" <?php if ($iFYID == 1) { echo "selected"; } ?>><?php echo gettext("1996/97"); ?></option>
+						<option value="2" <?php if ($iFYID == 2) { echo "selected"; } ?>><?php echo gettext("1997/98"); ?></option>
+						<option value="3" <?php if ($iFYID == 3) { echo "selected"; } ?>><?php echo gettext("1998/99"); ?></option>
+						<option value="4" <?php if ($iFYID == 4) { echo "selected"; } ?>><?php echo gettext("1999/00"); ?></option>
+						<option value="5" <?php if ($iFYID == 5) { echo "selected"; } ?>><?php echo gettext("2000/01"); ?></option>
+						<option value="6" <?php if ($iFYID == 6) { echo "selected"; } ?>><?php echo gettext("2001/02"); ?></option>
+						<option value="7" <?php if ($iFYID == 7) { echo "selected"; } ?>><?php echo gettext("2002/03"); ?></option>
+						<option value="8" <?php if ($iFYID == 8) { echo "selected"; } ?>><?php echo gettext("2003/04"); ?></option>
+						<option value="9" <?php if ($iFYID == 9) { echo "selected"; } ?>><?php echo gettext("2004/05"); ?></option>
+						<option value="10" <?php if ($iFYID == 10) { echo "selected"; } ?>><?php echo gettext("2005/06"); ?></option>
+						<option value="11" <?php if ($iFYID == 11) { echo "selected"; } ?>><?php echo gettext("2006/07"); ?></option>
+						<option value="12" <?php if ($iFYID == 12) { echo "selected"; } ?>><?php echo gettext("2007/08"); ?></option>
+						<option value="13" <?php if ($iFYID == 13) { echo "selected"; } ?>><?php echo gettext("2008/09"); ?></option>
+						<option value="14" <?php if ($iFYID == 14) { echo "selected"; } ?>><?php echo gettext("2009/10"); ?></option>
+						<option value="15" <?php if ($iFYID == 15) { echo "selected"; } ?>><?php echo gettext("2010/11"); ?></option>
+						<option value="16" <?php if ($iFYID == 16) { echo "selected"; } ?>><?php echo gettext("2011/12"); ?></option>
+						<option value="17" <?php if ($iFYID == 17) { echo "selected"; } ?>><?php echo gettext("2012/13"); ?></option>
+						<option value="18" <?php if ($iFYID == 18) { echo "selected"; } ?>><?php echo gettext("2013/14"); ?></option>
+					</select>
+				</td>
 			</tr>
 
 			<tr>

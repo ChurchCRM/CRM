@@ -5,6 +5,7 @@ CREATE TABLE autopayment_aut (
   aut_EnableBankDraft tinyint(1) unsigned NOT NULL default '0',
   aut_EnableCreditCard tinyint(1) unsigned NOT NULL default '0',
   aut_NextPayDate date default NULL,
+  aut_FYID mediumint(9) NOT NULL default '9',
   aut_Amount decimal(6,2) NOT NULL default '0.00',
   aut_Interval tinyint(3) NOT NULL default '1',
   aut_Fund mediumint(6) NOT NULL default '0',
