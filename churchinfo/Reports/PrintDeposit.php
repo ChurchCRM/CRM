@@ -51,7 +51,7 @@ $sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_co
 $rsPledges = RunQuery($sSQL);
 
 // Exit if no rows returned
-$iCountRows = mysql_num_rows($rsReport);
+$iCountRows = mysql_num_rows($rsPledges);
 if ($iCountRows < 1){
 	header("Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Individual%20Deposit%20Report"); 
 }
