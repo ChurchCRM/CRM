@@ -80,6 +80,12 @@ if (isset($_POST["BriefingSheets"])) {
 if (isset($_POST["ProgressReport"])) {
 	redirect ("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=Progress");
 }
+if (isset($_POST["SummaryReport"])) {
+	redirect ("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=Summary");
+}
+if (isset($_POST["NotInterestedReport"])) {
+	redirect ("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=NotInterested");
+}
 
 require "Include/Header.php";
 
@@ -192,6 +198,28 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 		<td align="left" width="75%">
 			<?php echo gettext("Generate a PDF conaining a progress report.  The progress report includes
 			information on the overall progress of the canvass, and the progress of individual canvassers."); ?>
+		</td>
+	</tr>
+
+	<tr>
+		<td align="center" width="25%">
+			<input type="submit" class="icButton" value="<?php echo gettext("Summary Report"); ?>" 
+			 name="SummaryReport">
+		</td>
+		<td align="left" width="75%">
+			<?php echo gettext("Generate a PDF conaining a summary report.  The summary report includes
+			comments extracted from the canvass data."); ?>
+		</td>
+	</tr>
+
+	<tr>
+		<td align="center" width="25%">
+			<input type="submit" class="icButton" value="<?php echo gettext("Not Interested Report"); ?>" 
+			 name="NotInterestedReport">
+		</td>
+		<td align="left" width="75%">
+			<?php echo gettext("Generate a PDF conaining a report of the families marked &quot;Not Interested&quot; 
+			                    by the canvasser."); ?>
 		</td>
 	</tr>
 </table>
