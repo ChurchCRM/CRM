@@ -379,7 +379,7 @@ if ($output == "pdf") {
 		$buffer .= trim($heading) . $delimiter;
 	}
 	// Remove trailing delimiter and add eol
-	$buffer .= substr($buffer,-1) . $eol;
+	$buffer = substr($buffer,0,-1) . $eol;
 	
 	// Add data
 	while ($row = mysql_fetch_row($rsReport)) {
@@ -388,7 +388,7 @@ if ($output == "pdf") {
 			$buffer .= $field . $delimiter;
 		}
 		// Remove trailing delimiter and add eol
-		$buffer .= substr($buffer,-1) . $eol;
+		$buffer = substr($buffer,0,-1) . $eol;
 	}
 	
 	// Export file
