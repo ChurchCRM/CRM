@@ -81,17 +81,12 @@ if (isset($_GET["Confirmed"]))
 {
 	if ($sMode == 'person')
 	{
-		// Make sure person has no donations
-		$sSQL = "SELECT '' FROM donations_don WHERE don_DonorID = " . $iPersonID;
-		$rsCheckDonations = RunQuery($sSQL);
-		$iDonations = mysql_num_rows($rsCheckDonations);
-
 		// Make sure this person is not a user
 		$sSQL = "SELECT '' FROM user_usr WHERE usr_per_ID = " . $iPersonID;
 		$rsUser = RunQuery($sSQL);
 		$bIsUser = (mysql_num_rows($rsUser) > 0);
 
-		if ($iDonations == 0 && !$bIsUser)
+		if (!$bIsUser)
 		{
 			DeletePerson($iPersonID);
 
@@ -147,16 +142,10 @@ if($sMode == 'person')
 	$rsPerson = RunQuery($sSQL);
 	extract(mysql_fetch_array($rsPerson));
 
-	// See if this person has any donations under their name
-	$sSQL = "SELECT '' FROM donations_don WHERE don_DonorID = " . $iPersonID;
-	$rsCheckDonations = RunQuery($sSQL);
-	$iDonations = mysql_num_rows($rsCheckDonations);
-
 	// See if this person is a user
 	$sSQL = "SELECT '' FROM user_usr WHERE usr_per_ID = " . $iPersonID;
 	$rsUser = RunQuery($sSQL);
 	$bIsUser = (mysql_num_rows($rsUser) > 0);
-
 }
 else
 {
@@ -175,14 +164,6 @@ if($sMode == 'person')
 		echo "<p class=\"LargeText\">" . gettext("Sorry, this person is a user.  An administrator must remove their user status before they may be deleted from the database.") . "<br><br>";
 		echo "<a href=\"PersonView.php?PersonID=" . $iPersonID . ">" . gettext("Return to Person View") . "</a></p>";
 	}
-
-	elseif ($iDonations > 0) {
-		echo "<p class=\"LargeText\">" . gettext("Sorry, this person still has donations records.  You must re-assign or delete these donations before you can remove this person.") . "<br><br>";
-		echo gettext("Number of donations:") . $iDonations . "<br>";
-		echo "<a href=\"DonationView.php?PersonID=" . $iPersonID . ">" . gettext("View Donations") . "</a></p>";
-
-	}
-
 	else
 	{
 		echo "<p>" . gettext("Please confirm deletion of:") . "</p>";
