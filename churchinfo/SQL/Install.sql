@@ -124,7 +124,7 @@ CREATE TABLE person_per (
 ) TYPE=MyISAM;
 
 
-INSERT INTO person_per VALUES (1,NULL,'InfoCentral',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0000,NULL,0,0,0,0,NULL,NULL,'2001-02-05 18:00:00',0,0);
+INSERT INTO person_per VALUES (1,NULL,'ChurchInfo',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0000,NULL,0,0,0,0,NULL,NULL,'2004-08-25 18:00:00',0,0);
 
 CREATE TABLE pledge_plg (
   plg_plgID mediumint(9) NOT NULL auto_increment,
@@ -317,7 +317,7 @@ INSERT INTO user_usr (usr_per_ID,
 					  usr_SearchLimit,
 					  usr_Style) 
 			VALUES (1,
-			        'c0937163b677904e6df31a77c7c12fda',
+			        '1a7ac1b904382aaf0ac67b4f00e7b93f',
 					1,
 					'0000-00-00 00:00:00',
 					0,
