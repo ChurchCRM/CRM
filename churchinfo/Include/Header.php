@@ -260,7 +260,7 @@ $MenuFirst = 1;
 				),
 				2, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Edit Deposit Slip") . "'"; ?>,
-					'uri', 'DepositSlipEditor.php?CurrentDeposit=<?php echo $_SESSION['iCurrentDeposit'];?>',
+					'uri', 'DepositSlipEditor.php?DepositSlipID=<?php echo $_SESSION['iCurrentDeposit'];?>',
 					'statusText', ''
 				),
 				3, new domMenu_Hash(
