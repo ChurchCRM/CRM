@@ -182,16 +182,23 @@ class PDF_Directory extends ChurchInfoReport {
         return $nl;
     }
 
-    function Check_Lines($numlines, $fid)
+    function Check_Lines($numlines, $fid, $pid)
 	{
 		// Need to determine if we will extend beyoned 17mm from the bottom of
 		// the page.
         
-        $h = 0;
+        $h = 0; // check image height.  id will be zero if not included
    		$famimg = "../Images/Family/".$fid.".jpg";
 		if (file_exists($famimg)) 
 		{
 			$s = getimagesize($famimg);
+			$h = ($this->_ColWidth / $s[0]) * $s[1];
+		}
+
+   		$persimg = "../Images/Person/".$pid.".jpg";
+		if (file_exists($persimg)) 
+		{
+			$s = getimagesize($persimg);
 			$h = ($this->_ColWidth / $s[0]) * $s[1];
 		}
 
@@ -403,7 +410,7 @@ class PDF_Directory extends ChurchInfoReport {
 	}
 
 	// Number of lines is only for the $text parameter
-	function Add_Record($sName, $text, $numlines, $fid)
+	function Add_Record($sName, $text, $numlines, $fid, $pid)
 	{
         
 		$this->Check_Lines($numlines, $fid);
@@ -415,13 +422,20 @@ class PDF_Directory extends ChurchInfoReport {
 
 		$this->SetXY($_PosX, $_PosY);
 		
+        $dirimg = "";
 		$famimg = "../Images/Family/".$fid.".jpg";
-		if (file_exists($famimg)) 
+		if (file_exists($famimg)) $dirimg = $famimg;
+        
+		$perimg = "../Images/Person/".$pid.".jpg";
+		if (file_exists($perimg)) $dirimg = $perimg;
+
+
+		if ($dirimg != "") 
 		{
-			$s = getimagesize($famimg);
+			$s = getimagesize($dirimg);
 			$h = ($this->_ColWidth / $s[0]) * $s[1];
 			$_PosY += 2;
-			$this->Image($famimg, $_PosX, $_PosY, $this->_ColWidth);
+			$this->Image($dirimg, $_PosX, $_PosY, $this->_ColWidth);
 			$this->SetXY($_PosX, $_PosY + $h + 2);
 		}
 		
@@ -472,7 +486,7 @@ $bDirPersonalWork = isset($_POST["bDirPersonalWork"]);
 $bDirPersonalCell = isset($_POST["bDirPersonalCell"]);
 $bDirPersonalEmail = isset($_POST["bDirPersonalEmail"]);
 $bDirPersonalWorkEmail = isset($_POST["bDirPersonalWorkEmail"]);
-$bFamilyPhoto = isset($_POST["bFamilyPhoto"]);
+$bDirPhoto = isset($_POST["bDirPhoto"]);
 
 $sChurchName = FilterInput($_POST["sChurchName"]);
 $sDirectoryDisclaimer = FilterInput($_POST["sDirectoryDisclaimer"]);
@@ -509,12 +523,17 @@ if (!empty($_POST["GroupID"]))
 	$sGroupBy = " GROUP BY per_ID";
 }
 
-// This query is similar to that of the CSV export with family roll-up.
-// Here we want to gather all unique families, and those that are not attached to a family.
-$sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier)
-	UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount = 1)
-	UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount > 1)
-	ORDER BY SortMe";
+if ($_POST['cartdir'] != null)
+{
+    $sWhereExt .= "AND per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ")";
+}
+        
+    // This query is similar to that of the CSV export with family roll-up.
+    // Here we want to gather all unique families, and those that are not attached to a family.
+    $sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier )
+        UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier  GROUP BY per_fam_ID HAVING memberCount = 1)
+        UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier  GROUP BY per_fam_ID HAVING memberCount > 1)
+        ORDER BY SortMe";
 
 $rsRecords = RunQuery($sSQL);
 
@@ -526,10 +545,13 @@ while ($aRow = mysql_fetch_array($rsRecords))
 {
 	$OutStr = "";
 	extract($aRow);
+    
+    $isFamily = false;
 
 	if ($memberCount > 1) // Here we have a family record.
 	{
 		$iFamilyID = $per_fam_ID;
+        $isFamily = true;
 
 		$pdf->sRecordName = "";
 		$pdf->sLastName = $fam_Name;
@@ -537,9 +559,9 @@ while ($aRow = mysql_fetch_array($rsRecords))
 		$bNoRecordName = true;
 
 		// Find the Head of Household
-		$sSQL = "SELECT * from person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID 
-			WHERE per_fam_ID = " . $iFamilyID . " 
-			AND per_fmr_ID in ($sDirRoleHeads) $sWhereExt $sClassQualifier $sGroupBy";
+        $sSQL = "SELECT * from person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID 
+            WHERE per_fam_ID = " . $iFamilyID . " 
+            AND per_fmr_ID in ($sDirRoleHeads) $sWhereExt $sClassQualifier $sGroupBy";
 		$rsPerson = RunQuery($sSQL);
 
 		if (mysql_num_rows($rsPerson) > 0)
@@ -550,9 +572,9 @@ while ($aRow = mysql_fetch_array($rsRecords))
 		}
 
 		// Find the Spouse of Household
-		$sSQL = "SELECT * from person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID 
-			WHERE per_fam_ID = " . $iFamilyID . " 
-			AND per_fmr_ID in ($sDirRoleSpouses) $sWhereExt $sClassQualifier $sGroupBy";
+        $sSQL = "SELECT * from person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID 
+            WHERE per_fam_ID = " . $iFamilyID . " 
+            AND per_fmr_ID in ($sDirRoleSpouses) $sWhereExt $sClassQualifier $sGroupBy";
 		$rsPerson = RunQuery($sSQL);
 
 		if (mysql_num_rows($rsPerson) > 0)
@@ -567,12 +589,9 @@ while ($aRow = mysql_fetch_array($rsRecords))
 			$pdf->sRecordName = $fam_Name;
 
 		// Find the other members of a family
-		$sSQL = "SELECT * from person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
+        $sSQL = "SELECT * from person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
             WHERE per_fam_ID = " . $iFamilyID . " AND !(per_fmr_ID in ($sDirRoleHeads))
             AND !(per_fmr_ID in ($sDirRoleSpouses))  $sWhereExt $sClassQualifier $sGroupBy";
-//		$sSQL = "SELECT * from person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
-//			WHERE per_fam_ID = " . $iFamilyID . " AND !(per_fmr_ID in ($sDirRoleHeads))
-//			AND per_fmr_ID in ($sDirRoleChildren) $sWhereExt $sGroupBy";
 		$rsPerson = RunQuery($sSQL);
 
 		while ($aRow = mysql_fetch_array($rsPerson))
@@ -640,12 +659,16 @@ while ($aRow = mysql_fetch_array($rsRecords))
 			$pdf->Add_Header($sLastLetter);
 		}
         
-        // if photo include pass the id, otherwise 0 equates to no family
-        if ($bFamilyPhoto) 
-            $fid = $fam_ID;
-        else
-            $fid = 0;
-		$pdf->Add_Record($pdf->sRecordName, $OutStr, $numlines, $fid);  // another hack: added +1
+        // if photo include pass the id, otherwise 0 equates to no family/pers
+        $fid = 0; $pid = 0;
+        if ($bDirPhoto) 
+        {
+            if ($isFamily) 
+                $fid = $fam_ID; 
+            else 
+                $pid = $per_ID;
+        }
+		$pdf->Add_Record($pdf->sRecordName, $OutStr, $numlines, $fid, $pid);  // another hack: added +1
 	}
 }
 

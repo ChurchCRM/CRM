@@ -57,6 +57,9 @@ $aDirRoleChild = explode(",",$sDirRoleChild);
 ?>
 
 <table align="center">
+<? if ($_GET['cartdir'] == null)
+{
+?>
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Select classifications to include"); ?></td>
 		<td class="TextColumn">
@@ -89,6 +92,11 @@ $aDirRoleChild = explode(",",$sDirRoleChild);
 			</select>
 		</td>
 	</tr>
+    
+<?
+}
+?>
+    
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Which role is the head of household?"); ?></td>
 		<td class="TextColumn">
@@ -156,7 +164,7 @@ $aDirRoleChild = explode(",",$sDirRoleChild);
 			<input type="checkbox" Name="bDirPersonalCell" value="1" checked><?php echo gettext("Personal Cell Phone");?><br>
 			<input type="checkbox" Name="bDirPersonalEmail" value="1" checked><?php echo gettext("Personal Email");?><br>
 			<input type="checkbox" Name="bDirPersonalWorkEmail" value="1" checked><?php echo gettext("Personal Work/Other Email");?><br>
-			<input type="checkbox" Name="bFamilyPhoto" value="1" checked><?php echo gettext("Family Photo");?><br>
+			<input type="checkbox" Name="bDirPhoto" value="1" checked><?php echo gettext("Photos");?><br>
 		</td>
 	</tr>
 	<tr>
@@ -202,6 +210,9 @@ $aDirRoleChild = explode(",",$sDirRoleChild);
 
 
 </table>
+
+<?php if ($_GET['cartdir'] != null) echo '<input type="hidden" name="cartdir" value="M">'; ?>
+
 
 <p align="center">
 <BR>
