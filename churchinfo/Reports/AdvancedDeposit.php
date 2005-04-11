@@ -130,11 +130,11 @@ if (!empty($_POST["method"])) {
 
 // Add SQL ORDER
 if ($sort == "deposit")
-	$sSQL .= " ORDER BY plg_depID, fun_ID, fam_ID ";
+	$sSQL .= " ORDER BY plg_depID, fun_Name, fam_Name, fam_ID";
 elseif ($sort == "fund")
-	$sSQL .= " ORDER BY fun_ID, fam_ID, plg_depID ";
+	$sSQL .= " ORDER BY fun_Name, fam_Name, fam_ID, plg_depID ";
 elseif ($sort == "family")
-	$sSQL .= " ORDER BY fam_ID, fun_ID, plg_depID";
+	$sSQL .= " ORDER BY fam_Name, fam_ID, fun_Name, plg_depID";
 
 //Execute SQL Statement
 $rsReport = RunQuery($sSQL);
@@ -280,6 +280,10 @@ if ($output == "pdf") {
 				$fun_ID = -1;
 				$fun_Name = "Undesignated";
 			}
+			if (!$fam_ID) {
+				$fam_ID = -1;
+				$fam_Name = "Unassigned";
+			}
 			// First Deposit Heading
 			if (!$currentDepositID && $detail_level != "summary"){
 				$sDepositTitle = "Deposit #$plg_depID ($dep_Date)";
@@ -423,6 +427,10 @@ if ($output == "pdf") {
 				$fun_ID = -1;
 				$fun_Name = "Undesignated";
 			}
+			if (!$fam_ID) {
+				$fam_ID = -1;
+				$fam_Name = "Unassigned";
+			}
 			// First Fund Heading
 			if (!$currentFundName && $detail_level != "summary"){
 				$sFundTitle = "Fund: $fun_Name";
@@ -564,6 +572,11 @@ if ($output == "pdf") {
 			if (!$fun_ID){
 				$fun_ID = -1;
 				$fun_Name = "Undesignated";
+			}
+			if (!$fam_ID) {
+				$fam_ID = -1;
+				$fam_Name = "Unassigned";
+				$fam_Address1 = "";
 			}
 			// First Family Heading
 			if (!$currentFamilyID && $detail_level != "summary"){
