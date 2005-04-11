@@ -182,7 +182,14 @@ if ($output == "pdf") {
 				$curY = 194;
 				$curX = 60;
 				$this->WriteAt ($curX, $curY, gettext("Please detach this slip and mail with your next gift."));
-				$curY += (3 * $this->incrementY);
+				$curY += (1.5 * $this->incrementY);
+				$church_mailing = gettext("Please mail you next gift to ") . $this->sChurchName . ", " 
+					. $this->sChurchAddress . ", " . $this->sChurchCity . ", " . $this->sChurchState . "  " 
+					. $this->sChurchZip . gettext(", Phone: ") . $this->sChurchPhone;
+				$this->SetFont('Times','I', 10);
+				$this->WriteAt ($this->leftX, $curY, $church_mailing);
+				$this->SetFont('Times','', 10);
+				$curY =215;
 				$this->WriteAt ($this->leftX, $curY, $this->MakeSalutation ($fam_ID)); $curY += $this->incrementY;
 				if ($fam_Address1 != "") {
 					$this->WriteAt ($this->leftX, $curY, $fam_Address1); $curY += $this->incrementY;
@@ -191,23 +198,27 @@ if ($output == "pdf") {
 					$this->WriteAt ($this->leftX, $curY, $fam_Address2); $curY += $this->incrementY;
 				}
 				$this->WriteAt ($this->leftX, $curY, $fam_City . ", " . $fam_State . "  " . $fam_Zip); $curY += $this->incrementY;
-				if ($fam_Country != "" && $fam_Country != "USA") {
+				if ($fam_Country != "" && $fam_Country != "USA" && $fam_Country != "United States") {
 					$this->WriteAt ($this->leftX, $curY, $fam_Country); $curY += $this->incrementY;
 				}
-				$curX = 110;
-				$curY = 200 + (3.5 * $this->incrementY);
+				$curX = 30;
+				$curY = 246;
+				$this->WriteAt ($this->leftX+5, $curY, $this->sChurchName); $curY += $this->incrementY;
+				if ($this->sChurchAddress != "") {
+					$this->WriteAt ($this->leftX+5, $curY, $this->sChurchAddress); $curY += $this->incrementY;
+				}
+				$this->WriteAt ($this->leftX+5, $curY, $this->sChurchCity . ", " . $this->sChurchState . "  " . $this->sChurchZip); $curY += $this->incrementY;
+				if ($fam_Country != "" && $fam_Country != "USA" && $fam_Country != "United States") {
+					$this->WriteAt ($this->leftX+5, $curY, $fam_Country); $curY += $this->incrementY;
+				}
+				$curX = 100;
+				$curY = 215;
 				$this->WriteAt ($curX, $curY, gettext("Gift Amount:"));
 				$this->WriteAt ($curX + 25, $curY, "_______________________________");
 				$curY += (2 * $this->incrementY);
 				$this->WriteAt ($curX, $curY, gettext("Gift Designation:"));
 				$this->WriteAt ($curX + 25, $curY, "_______________________________");
 				$curY = 200 + (11 * $this->incrementY);
-				$church_mailing = gettext("Please mail you next gift to ") . $this->sChurchName . ", " 
-					. $this->sChurchAddress . ", " . $this->sChurchCity . ", " . $this->sChurchState . "  " 
-					. $this->sChurchZip . gettext(", Phone: ") . $this->sChurchPhone;
-				$this->SetFont('Times','I', 10);
-				$this->WriteAt ($this->leftX, $curY, $church_mailing);
-				$this->SetFont('Times','', 10);
 			}
 		}
 	}
