@@ -90,6 +90,10 @@ else
 	Redirect("Menu.php");
 }
 
+// If no property, return to previous page
+if (!$iPropertyID)
+	Redirect ("$sBackPage");
+
 function UpdateProperty($iRecordID,$sValue,$iPropertyID,$sAction)
 {
 	global $cnInfoCentral;
