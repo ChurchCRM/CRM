@@ -26,6 +26,7 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 // Filter values
 $sort = FilterInput($_POST["sort"]);
 $detail_level = FilterInput($_POST["detail_level"]);
+$datetype = FilterInput($_POST["datetype"]);
 $output = FilterInput($_POST["output"]);
 $sDateStart = FilterInput($_POST["DateStart"],"date");
 $sDateEnd = FilterInput($_POST["DateEnd"],"date");
@@ -71,7 +72,10 @@ else {
 		$sDateStart = $sDateEnd;
 		$sDateEnd = $temp;
 	}
-	$sSQL .= " AND plg_date BETWEEN '$sDateStart' AND '$sDateEnd' ";
+	if ($datetype == "Payment")
+		$sSQL .= " AND plg_date BETWEEN '$sDateStart' AND '$sDateEnd' ";
+	else
+		$sSQL .= " AND dep_Date BETWEEN '$sDateStart' AND '$sDateEnd' ";
 }
 
 // Filter by Fund
@@ -174,7 +178,7 @@ if ($output == "pdf") {
 		}
 
 		function StartFirstPage () {
-			global $sDateStart, $sDateEnd, $sort, $iDepID;
+			global $sDateStart, $sDateEnd, $sort, $iDepID, $datetype;
 			$this->AddPage();
 			$curY = 20;
 			$curX = 60;
@@ -186,7 +190,7 @@ if ($output == "pdf") {
 			$this->WriteAt ($curX, $curY, "Data sorted by " . ucwords($sort));
 			$curY += $this->incrementY;
 			if (!$iDepID) {
-				$this->WriteAt ($curX, $curY, "Dates: $sDateStart through $sDateEnd");
+				$this->WriteAt ($curX, $curY, "$datetype Dates: $sDateStart through $sDateEnd");
 				$curY += $this->incrementY;
 			}
 			if ($iDepID || $_POST['family'][0] || $_POST['funds'][0] || $_POST['method'][0]){
