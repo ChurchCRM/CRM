@@ -124,7 +124,7 @@ require "Include/Header.php";
 	<a href="<?php echo $_SERVER['PHP_SELF'] . $sQuerystring . "&PropertyID=" . $iPropertyID . "&Confirmed=Yes"; ?>"><?php echo gettext("Yes, unassign this Property"); ?></a>
 </p>
 <p>
-	<a href="PersonView.php<?php echo $sQuerystring; ?>"><?php echo gettext("No, retain this assignment"); ?></a>
+	<a href="<?php echo $sBackPage; ?>"><?php echo gettext("No, retain this assignment"); ?></a>
 </p>
 
 <?php
