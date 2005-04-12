@@ -114,6 +114,9 @@ if (!$sReportType) {
 			<td class=TextColumn><input type=text name=DateStart maxlength=10 id=DateStart size=11 value='$today'>&nbsp;<input type=image onclick=\"return showCalendar('DateStart', 'y-mm-dd');\" src=Images/calendar.gif> <span class=SmallText>".gettext("[YYYY-MM-DD]")."</span></td></tr>";
 		echo "<tr><td class=LabelColumn>".gettext("Report End Date:")."</td>
 			<td class=TextColumn><input type=text name=DateEnd maxlength=10 id=DateEnd size=11 value='$today'>&nbsp;<input type=image onclick=\"return showCalendar('DateEnd', 'y-mm-dd');\" src=Images/calendar.gif> <span class=SmallText>".gettext("[YYYY-MM-DD]")."</span></td></tr>";
+		echo "<tr><td class=LabelColumn>".gettext("Apply Report Dates To:")."</td>";
+		echo "<td class=TextColumnWithBottomBorder><input name=datetype type=radio checked value='Deposit'>".gettext("Deposit Date (Default)");
+		echo " &nbsp; <input name=datetype type=radio value='Payment'>".gettext("Payment Date")."</tr>";
 	}	
 	
 	// Fiscal Year
