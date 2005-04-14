@@ -224,7 +224,7 @@ class PDF_Directory extends ChurchInfoReport {
 	// changes.
 	function Add_Header($sLetter)
 	{
-		$this->Check_Lines(2, 0);
+		$this->Check_Lines(2, 0, 0);
 		$this->SetTextColor(255);
 		$this->SetFont($this->_Font,'B',12);
 		$_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
@@ -244,8 +244,8 @@ class PDF_Directory extends ChurchInfoReport {
 		$_PosY = $this->GetY();
 		$this->SetXY($_PosX, $_PosY);
         $this->MultiCell($this->_ColWidth, 5, $sName);
-		$this->SetFont($this->_Font,'',$this->_Char_Size);
 		$this->SetY($_PosY + $this->NbLines($this->_ColWidth, $sName) * 5);
+		$this->SetFont($this->_Font,'',$this->_Char_Size);
 	}
 
 	// This function formats the string for the family info
@@ -298,7 +298,7 @@ class PDF_Directory extends ChurchInfoReport {
 
 		$sHeadStr = "";
 
-		if ( strlen($per_LastName) && ($per_LastName != $this->sLastName) )
+		if ( strlen($per_LastName) && (strtolower($per_LastName) != strtolower($this->sLastName)) )
 			$bDifferentLastName = true;
 		else
 			$bDifferentLastName = false;
@@ -413,7 +413,7 @@ class PDF_Directory extends ChurchInfoReport {
 	function Add_Record($sName, $text, $numlines, $fid, $pid)
 	{
         
-		$this->Check_Lines($numlines, $fid);
+		$this->Check_Lines($numlines, $fid, $pid);
 
 		$this->Print_Name($sName);
 
@@ -654,7 +654,7 @@ while ($aRow = mysql_fetch_array($rsRecords))
 	{
 		if (strtoupper($sLastLetter) != strtoupper(substr($pdf->sRecordName,0,1)))
 		{
-			$pdf->Check_Lines($numlines+2, 0);
+			$pdf->Check_Lines($numlines+2, 0, 0);
 			$sLastLetter = strtoupper(substr($pdf->sRecordName,0,1));
 			$pdf->Add_Header($sLastLetter);
 		}
