@@ -79,7 +79,7 @@ $sSessionTimeout = 3600;
 // This is a temporary solution until more comprehensive user permissions are developed
 
 // Queries for which user must have finance permissions to use:
-$aFinanceQueries = "10,11";
+$aFinanceQueries = "28";
 
 // Should only administrators have access to the CSV export system and directory report?
 // NOTE: While this does not provide any true security, it may discourage casual users from
