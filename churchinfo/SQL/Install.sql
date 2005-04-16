@@ -273,8 +273,6 @@ INSERT INTO query_qry VALUES (4,'SELECT per_ID as AddToCart,CONCAT(\'<a href=Per
 INSERT INTO query_qry VALUES (6,'SELECT COUNT(per_ID) AS Total FROM person_per WHERE per_Gender = ~gender~','Total By Gender','Total of records matching a given gender.',0);
 INSERT INTO query_qry VALUES (7,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE per_fmr_ID = ~role~ AND per_Gender = ~gender~','Person by Role and Gender','Selects person records with the family role and gender specified.',1);
 INSERT INTO query_qry VALUES (9,'SELECT \r\nper_ID as AddToCart, \r\nCONCAT(per_FirstName,\' \',per_LastName) AS Name, \r\nCONCAT(r2p_Value,\' \') AS Value\r\nFROM person_per,record2property_r2p\r\nWHERE per_ID = r2p_record_ID\r\nAND r2p_pro_ID = ~PropertyID~\r\nORDER BY per_LastName','Person by Property','Returns person records which are assigned the given property.',1);
-INSERT INTO query_qry VALUES (10, 'SELECT CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\' target=view>\', per_FirstName,\' \', per_MiddleName,\' \', per_LastName,\'</a>\') AS Name, CONCAT(\'<a href=DonationView.php?PersonID=\',per_ID,\' target=view>\', \'$\',sum(round(dna_amount,2)),\'</a>\') as Amount\r\nFROM donations_don, person_per\r\nLEFT JOIN donationamounts_dna ON don_ID = dna_don_ID\r\nWHERE don_DonorID = per_ID AND don_date >= \'~startdate~\'\r\nAND don_date <= \'~enddate~\'\r\nGROUP BY don_DonorID\r\nORDER BY per_LastName ASC', 'Total Donations by Member', 'Sum of donations by member for a specific period of time between two dates.', 1);
-INSERT INTO query_qry VALUES (11, 'SELECT fun_name as Fund, CONCAT(\'$\',sum(round(dna_amount,2))) as Total\r\nFROM donations_don\r\nLEFT JOIN donationamounts_dna ON donations_don.don_ID = donationamounts_dna.dna_don_ID LEFT JOIN donationfund_fun ON donationamounts_dna.dna_fun_ID = donationfund_fun.fun_ID\r\nWHERE don_date >= \'~startdate~\'\r\nAND don_date <= \'~enddate~\'\r\nGROUP BY fun_id\r\nORDER BY fun_name', 'Total Donations by Fund', 'Sum of donations by FUND for a specific period of time between two dates.', 1);
 INSERT INTO query_qry VALUES (15, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_MiddleName,\' \',per_LastName,\'</a>\') AS Name, \r\nper_City as City, per_State as State,\r\nper_Zip as ZIP, per_HomePhone as HomePhone\r\nFROM person_per \r\nWHERE ~searchwhat~ LIKE \'%~searchstring~%\'', 'Advanced Search', 'Search by any part of Name, City, State, Zip, or Home Phone.', 1);
 INSERT INTO query_qry VALUES (16, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID LEFT JOIN group_grp a ON grp_ID = p2g2r_grp_ID LEFT JOIN list_lst b ON lst_ID = grp_RoleListID AND p2g2r_rle_ID = lst_OptionID WHERE lst_OptionName = \'Teacher\'', 'Find Teachers', 'Find all people assigned to Sunday school classes as teachers', 1);
 INSERT INTO query_qry VALUES (17, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID LEFT JOIN group_grp a ON grp_ID = p2g2r_grp_ID LEFT JOIN list_lst b ON lst_ID = grp_RoleListID AND p2g2r_rle_ID = lst_OptionID WHERE lst_OptionName = \'Student\'', 'Find Students', 'Find all people assigned to Sunday school classes as students', 1);
@@ -288,6 +286,8 @@ INSERT INTO query_qry VALUES (24,'SELECT per_ID as AddToCart, CONCAT(\'<a href=P
 INSERT INTO query_qry VALUES (25, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2volunteeropp_p2vo ON per_id = p2vo_per_ID WHERE p2vo_vol_ID = ~volopp~ ORDER BY per_LastName', 'Volunteers', 'Find volunteers for a particular opportunity', 1);
 INSERT INTO query_qry VALUES (26,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE DATE_SUB(NOW(),INTERVAL ~friendmonths~ MONTH)<per_FriendDate ORDER BY per_MembershipDate','Recent friends','Friends who signed up in previous months',0);
 INSERT INTO query_qry VALUES (27,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per inner join family_fam on per_fam_ID=fam_ID where per_fmr_ID<>3 AND fam_OkToCanvass="TRUE" ORDER BY fam_Zip','Families to Canvass','People in families that are ok to canvass.',0);
+
+INSERT INTO query_qry VALUES (28,'SELECT fam_Name, a.plg_amount as PlgFY1, b.plg_amount as PlgFY2 from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid1~ and a.plg_PledgeOrPayment=\'Pledge\' left join pledge_plg b on b.plg_famID = fam_ID and b.plg_FYID=~fyid2~ and b.plg_PledgeOrPayment=\'Pledge\' order by fam_Name','Pledge comparison','Compare pledges between two fiscal years',1);
 
 CREATE TABLE queryparameteroptions_qpo (
   qpo_ID smallint(5) unsigned NOT NULL auto_increment,
@@ -308,6 +308,16 @@ INSERT INTO queryparameteroptions_qpo VALUES (6, 15, 'Zip Code', 'per_Zip');
 INSERT INTO queryparameteroptions_qpo VALUES (7, 15, 'State', 'per_State');
 INSERT INTO queryparameteroptions_qpo VALUES (8, 15, 'City', 'per_City');
 INSERT INTO queryparameteroptions_qpo VALUES (9, 15, 'Home Phone', 'per_HomePhone');
+
+INSERT INTO queryparameteroptions_qpo VALUES (10, 27, '2004/2005', '9');
+INSERT INTO queryparameteroptions_qpo VALUES (11, 27, '2005/2006', '10');
+INSERT INTO queryparameteroptions_qpo VALUES (12, 27, '2006/2007', '11');
+INSERT INTO queryparameteroptions_qpo VALUES (13, 27, '2007/2008', '12');
+
+INSERT INTO queryparameteroptions_qpo VALUES (14, 28, '2004/2005', '9');
+INSERT INTO queryparameteroptions_qpo VALUES (15, 28, '2005/2006', '10');
+INSERT INTO queryparameteroptions_qpo VALUES (16, 28, '2006/2007', '11');
+INSERT INTO queryparameteroptions_qpo VALUES (17, 28, '2007/2008', '12');
 
 CREATE TABLE queryparameters_qrp (
   qrp_ID mediumint(8) unsigned NOT NULL auto_increment,
@@ -351,6 +361,9 @@ INSERT INTO queryparameters_qrp VALUES (22,22,0,'','Month','The membership anniv
 INSERT INTO queryparameters_qrp VALUES (25,25,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','Choose a volunteer opportunity','volopp','1',1,0,'',12,1,1,2);
 
 INSERT INTO queryparameters_qrp VALUES (26,26,0,'','Months','Number of months since becoming a friend','friendmonths','1',1,0,'',24,1,1,2);
+
+INSERT INTO queryparameters_qrp VALUES (27,28,1,'','First Fiscal Year','First fiscal year for comparison','fyid1','9',1,0,'',12,9,0,0);
+INSERT INTO queryparameters_qrp VALUES (28,28,1,'','Second Fiscal Year','Second fiscal year for comparison','fyid2','9',1,0,'',12,9,0,0);
 
 CREATE TABLE record2property_r2p (
   r2p_pro_ID mediumint(8) unsigned NOT NULL default '0',
