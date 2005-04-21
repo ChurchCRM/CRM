@@ -268,7 +268,7 @@ else
 
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
-<center><b><?php echo gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"); ?></b><br><br>
+<center><b><?php echo gettext("Warning: Removing will reset all assignments for all persons with the assignment!"); ?></b><br><br>
 
 <?php
 
