@@ -44,6 +44,13 @@ switch ($mode) {
 		}
 		break;
 
+	case custom:
+		if (!$_SESSION['bAdmin'])
+		{
+			Redirect("Menu.php");
+			exit;
+		}
+		break;
 	default:
 		Redirect("Menu.php");
 		break;
@@ -81,6 +88,9 @@ switch ($mode) {
 			break;
 		}
 
+		break;
+	case custom:
+		$listID = FilterInput($_GET["ListID"],'int');
 		break;
 }
 
@@ -142,8 +152,10 @@ switch ($sAction)
 			// Otherwise, for other types of assignees having a deleted option, reset them to default of 0 (undefined).
 			else
 			{
-				$sSQL = "UPDATE $deleteCleanupTable SET $deleteCleanupColumn = $deleteCleanupResetTo WHERE $deleteCleanupColumn = " . $iID;
-				RunQuery($sSQL);
+				if ($deleteCleanupTable <> 0) {
+					$sSQL = "UPDATE $deleteCleanupTable SET $deleteCleanupColumn = $deleteCleanupResetTo WHERE $deleteCleanupColumn = " . $iID;
+					RunQuery($sSQL);
+				}
 			}
 		}
 		break;

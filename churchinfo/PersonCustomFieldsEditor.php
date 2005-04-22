@@ -274,7 +274,7 @@ else
 {
 ?>
 	<tr><td colspan="6">
-	<center><b><?php echo gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"); ?></b></center>
+	<center><b><?php echo gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"); ?></b></center>
 	</td></tr>
 
 	<tr><td colspan="6">
