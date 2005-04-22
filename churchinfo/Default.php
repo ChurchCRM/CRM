@@ -142,6 +142,9 @@ if ($iUserID > 0)
 		// Set the pagination Search Limit
 		$_SESSION['SearchLimit'] = $usr_SearchLimit;
 
+		// Set the User's email address
+		$_SESSION['sEmailAddress'] = $per_Email;
+
 		// If user has administrator privilege, override other settings and enable all permissions.
 		if ($usr_Admin) {
 			$_SESSION['bAddRecords'] = true;

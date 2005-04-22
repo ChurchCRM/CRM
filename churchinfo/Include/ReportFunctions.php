@@ -110,7 +110,10 @@ function LoadLib_PHPMailer()
 		var $Username;
 		var $Password;
 		function ICMail() {
-			$this->From = $GLOBALS['sFromEmailAddress'];
+			if ($_SESSION['sEmailAddress'] <> "")
+				$this->From = $_SESSION['sEmailAddress'];
+			else
+				$this->From = $GLOBALS['sFromEmailAddress'];
 			$this->FromName = $GLOBALS['sFromName'];
 			$this->Mailer = $GLOBALS['sSendType'];
 			$this->WordWrap = $GLOBALS['sWordWrap'];
