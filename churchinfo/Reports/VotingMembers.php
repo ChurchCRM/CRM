@@ -57,9 +57,9 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	// Get pledge date ranges
 	$donation = "no";
 	if ($iRequireDonationYears > 0) {
-		$startdate = $iFYID + 1996 - $i;
+		$startdate = $iFYID + 1995 - $iRequireDonationYears;
 		$startdate .= "-" . $iFYMonth . "-" . "01";
-		$enddate = $startdate = $iFYID + 1996 + 1;
+		$enddate = $iFYID + 1995 + 1;
 		$enddate .= "-" . $iFYMonth . "-" . "01";
 		
 		// Get payments only
