@@ -454,7 +454,8 @@ INSERT INTO user_usr (usr_per_ID,
 					  usr_Workspacewidth,
 					  usr_BaseFontSize,
 					  usr_SearchLimit,
-					  usr_Style) 
+					  usr_Style,
+					  usr_UserName) 
 			VALUES (1,
 			        '1a7ac1b904382aaf0ac67b4f00e7b93f',
 					1,
@@ -473,7 +474,8 @@ INSERT INTO user_usr (usr_per_ID,
 					580,
 					9,
 					10,
-					'Style.css');
+					'Style.css',
+					'Admin');
 
 CREATE TABLE groupprop_master (
   grp_ID mediumint(9) unsigned NOT NULL default '0',
