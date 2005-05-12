@@ -86,7 +86,7 @@ class PDF_Label extends ChurchInfoReport
     // Give the height for a char size given.
     function _Get_Height_Chars($pt) {
         // Array matching character sizes and line heights
-        $_Table_Hauteur_Chars = array(6=>2, 7=>2.5, 8=>3, 9=>4, 10=>5, 11=>6, 12=>7, 13=>8, 14=>9, 15=>10);
+        $_Table_Hauteur_Chars = array(6=>2, 7=>2.5, 8=>3, 9=>4, 10=>5, 11=>6, 12=>7, 13=>8, 14=>7.5, 15=>9, 16=>8, 18=>9);
         if (in_array($pt, array_keys($_Table_Hauteur_Chars))) {
             return $_Table_Hauteur_Chars[$pt];
         } else {
@@ -138,7 +138,7 @@ class PDF_Label extends ChurchInfoReport
 		if ($pt > 3) {
 			$this->_Char_Size = $pt;
 			$this->_Line_Height = $this->_Get_Height_Chars($pt);
-			$this->SetFont('Times','',$pt);
+			$this->SetFontSize($pt);
 		}
 	}
 
@@ -169,3 +169,5 @@ class PDF_Label extends ChurchInfoReport
 	}
 
 }
+
+?>

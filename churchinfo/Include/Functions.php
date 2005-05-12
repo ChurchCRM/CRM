@@ -1243,4 +1243,100 @@ function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSepar
 	return $dBirthDate;
 }
 
+function FilenameToFontname($filename, $family)
+{
+    if($filename==$family)
+    {
+        return ucfirst($family);
+    }
+    else
+    {
+        if(strlen($filename) - strlen($family) == 2)
+        {
+            return ucfirst($family).gettext(" Bold Italic");
+        }
+        else
+        {
+            if(substr($filename, strlen($filename) - 1) == "i")
+                return ucfirst($family).gettext(" Italic");
+            else
+                return ucfirst($family).gettext(" Bold");
+        }
+    }
+}
+
+function FontFromName($fontname)
+{
+    $fontinfo = split(" ", $fontname);
+    switch (count($fontinfo)) {
+        case 1:
+            return array($fontinfo[0], '');
+        case 2:
+            return array($fontinfo[0], substr($fontinfo[1], 0, 1));
+        case 3:
+            return array($fontinfo[0], substr($fontinfo[1], 0, 1).substr($fontinfo[2], 0, 1));
+    }
+}
+
+function FontSelect($fieldname)
+{
+    global $sFPDF_PATH;
+    
+    $d = dir($sFPDF_PATH."/font/");
+    $fontnames = array();
+    $family = " ";
+    while (false !== ($entry = $d->read())) 
+    {
+        $len = strlen($entry);
+        if($len > 3){
+            if(strtoupper(substr($entry, $len-3))=='PHP')
+            { // php files only
+                $filename = substr($entry, 0, $len-4);
+                if(substr($filename, 0, strlen($family)) != $family)  
+                    $family = $filename;
+                $fontnames[] = FilenameToFontname($filename, $family);                    
+            }
+        }
+    }
+    
+    ?>
+		<tr>
+			<td class="LabelColumn"><?php echo gettext("Font:");?></td>
+			<td class="TextColumn">
+				<select name="<? echo $fieldname ?>">
+                <?
+                foreach($fontnames as $n)
+                {
+					echo "<option value=\"".$n."\">".$n."</option>";
+                }
+                ?>
+				</select>
+			</td>
+		</tr>
+    
+    <?
+    
+}
+
+function FontSizeSelect($fieldname)
+{
+    $sizes = array("default", 6, 7, 8, 9, 10, 11, 12, 14, 16, 18);
+    ?>
+		<tr>
+			<td class="LabelColumn"><?php echo gettext("Font Size:");?></td>
+			<td class="TextColumn">
+				<select name="<? echo $fieldname ?>">
+                <?
+                foreach($sizes as $s)
+                {
+					echo "<option value=\"".$s."\">".$s."</option>";
+                }
+                ?>
+				</select>
+			</td>
+		</tr>
+    
+    <?
+    
+}
 ?>
