@@ -32,6 +32,11 @@ $sLabelFormat = FilterInput($_GET["LabelFormat"]);
 // Instantiate the directory class and build the report.
 $pdf = new PDF_NewsletterLabels($sLabelFormat);
 
+$sFontInfo = FontFromName($_GET["labelfont"]);
+$sFontSize = $_GET["labelfontsize"];
+$pdf->SetFont($sFontInfo[0],$sFontInfo[1]);
+if($sFontSize != "default") $pdf->Set_Char_Size($sFontSize);
+
 // Get all the families which receive the newsletter by mail
 $sSQL = "SELECT * FROM family_fam WHERE fam_SendNewsLetter='TRUE' ORDER BY fam_Zip";
 $rsFamilies = RunQuery($sSQL);

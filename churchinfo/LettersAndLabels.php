@@ -23,13 +23,16 @@ require "Include/Header.php";
 // Is this the second pass?
 if (isset($_POST["SubmitNewsLetter"]) || isset($_POST["SubmitConfirmReport"]) || isset($_POST["SubmitConfirmLabels"])) {
    $sLabelFormat = FilterInput($_POST['LabelFormat']);
+   $sFontInfo = $_POST["labelfont"];
+   $sFontSize = $_POST["labelfontsize"];
+   $sLabelInfo = "&labelfont=".urlencode($sFontInfo)."&labelfontsize=".$sFontSize;
 
    if (isset($_POST["SubmitNewsLetter"])) {
-      Redirect ("Reports/NewsLetterLabels.php?LabelFormat=" . $sLabelFormat);
+      Redirect ("Reports/NewsLetterLabels.php?LabelFormat=" . $sLabelFormat.$sLabelInfo);
    } else if (isset($_POST["SubmitConfirmReport"])) {
       Redirect ("Reports/ConfirmReport.php");
    } else if (isset($_POST["SubmitConfirmLabels"])) {
-      Redirect ("Reports/ConfirmLabels.php?LabelFormat=" . $sLabelFormat);
+      Redirect ("Reports/ConfirmLabels.php?LabelFormat=" . $sLabelFormat.$sLabelInfo);
    }
 } else {
    $sLabelFormat = 'Tractor';
@@ -54,6 +57,12 @@ if (isset($_POST["SubmitNewsLetter"]) || isset($_POST["SubmitConfirmReport"]) ||
 			   <option value="L7163">L7163</option>
 		   </select>
 	   </td>
+   </tr>
+   
+    <? 
+    FontSelect("labelfont"); 
+    FontSizeSelect("labelfontsize"); 
+    ?>
 
    <tr>
       <td><input type="submit" class="icButton" name="SubmitNewsLetter" <?php echo 'value="' . gettext("Newsletter labels") . '"'; ?>></td>

@@ -31,6 +31,11 @@ $sLabelFormat = FilterInput($_GET["LabelFormat"]);
 
 $pdf = new PDF_ConfirmLabels($sLabelFormat);
 
+$sFontInfo = FontFromName($_GET["labelfont"]);
+$sFontSize = $_GET["labelfontsize"];
+$pdf->SetFont($sFontInfo[0],$sFontInfo[1]);
+if($sFontSize != "default") $pdf->Set_Char_Size($sFontSize);
+
 // Get all the families
 $sSQL = "SELECT * FROM family_fam WHERE 1 ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);

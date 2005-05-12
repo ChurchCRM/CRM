@@ -81,7 +81,10 @@ $sLabelType = FilterInput($_GET["labeltype"],'char',8);
 // Standard format
 $pdf = new PDF_Label($sLabelType,$startcol,$startrow);
 $pdf->Open();
-
+$sFontInfo = FontFromName($_GET["labelfont"]);
+$sFontSize = $_GET["labelfontsize"];
+$pdf->SetFont($sFontInfo[0],$sFontInfo[1]);
+if($sFontSize != "default") $pdf->Set_Char_Size($sFontSize);
 // Manually add a new page if we're using offsets
 if ($startcol > 1 || $startrow > 1)	$pdf->AddPage();
 

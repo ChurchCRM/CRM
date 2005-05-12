@@ -144,6 +144,10 @@ if (count($_SESSION['aPeopleCart']) != 0)
 				</select>
 			</td>
 		</tr>
+        <? 
+        FontSelect("labelfont"); 
+        FontSizeSelect("labelfontsize"); 
+        ?>
 		<tr>
 			<td class="LabelColumn"><?php echo gettext("Start Row:");?></td>
 			<td class="TextColumn"><input type="text" name="startrow" id="startrow" maxlength="2" size="3" value="1"></td>
