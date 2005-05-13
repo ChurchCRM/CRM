@@ -1307,7 +1307,10 @@ function FontSelect($fieldname)
                 <?
                 foreach($fontnames as $n)
                 {
-					echo "<option value=\"".$n."\">".$n."</option>";
+                    $sel = "";
+                    if($_COOKIE[$fieldname] == $n) 
+                        $sel = " selected";
+					echo "<option value=\"".$n."\"".$sel.">".$n."</option>";
                 }
                 ?>
 				</select>
@@ -1329,7 +1332,10 @@ function FontSizeSelect($fieldname)
                 <?
                 foreach($sizes as $s)
                 {
-					echo "<option value=\"".$s."\">".$s."</option>";
+                    $sel = "";
+                    if($_COOKIE[$fieldname] == $s) 
+                        $sel = " selected";
+					echo "<option value=\"".$s."\"".$sel.">".$s."</option>";
                 }
                 ?>
 				</select>
@@ -1339,4 +1345,28 @@ function FontSizeSelect($fieldname)
     <?
     
 }
+
+function LabelSelect($fieldname)
+{
+    $labels = array("Tractor", "5160", "5161", "5162", "5163", "5164", "8600", "L7163");
+    ?>
+		<tr>
+			<td class="LabelColumn"><?php echo gettext("Label Type:");?></td>
+			<td class="TextColumn">
+				<select name="<? echo $fieldname ?>">
+                    <?
+                    foreach($labels as $l)
+                    {
+                        $sel = "";
+                        if($_COOKIE[$fieldname] == $l) 
+                            $sel = " selected";
+                        echo "<option value=\"".$l."\"".$sel.">".$l."</option>";
+                    }
+                    ?>
+				</select>
+			</td>
+		</tr>
+    <?
+}
+
 ?>
