@@ -22,17 +22,17 @@ require "Include/Header.php";
 
 // Is this the second pass?
 if (isset($_POST["SubmitNewsLetter"]) || isset($_POST["SubmitConfirmReport"]) || isset($_POST["SubmitConfirmLabels"])) {
-   $sLabelFormat = FilterInput($_POST['LabelFormat']);
+   $sLabelFormat = FilterInput($_POST['labeltype']);
    $sFontInfo = $_POST["labelfont"];
    $sFontSize = $_POST["labelfontsize"];
    $sLabelInfo = "&labelfont=".urlencode($sFontInfo)."&labelfontsize=".$sFontSize;
 
    if (isset($_POST["SubmitNewsLetter"])) {
-      Redirect ("Reports/NewsLetterLabels.php?LabelFormat=" . $sLabelFormat.$sLabelInfo);
+      Redirect ("Reports/NewsLetterLabels.php?labeltype=" . $sLabelFormat.$sLabelInfo);
    } else if (isset($_POST["SubmitConfirmReport"])) {
       Redirect ("Reports/ConfirmReport.php");
    } else if (isset($_POST["SubmitConfirmLabels"])) {
-      Redirect ("Reports/ConfirmLabels.php?LabelFormat=" . $sLabelFormat.$sLabelInfo);
+      Redirect ("Reports/ConfirmLabels.php?labeltype=" . $sLabelFormat.$sLabelInfo);
    }
 } else {
    $sLabelFormat = 'Tractor';
@@ -43,23 +43,8 @@ if (isset($_POST["SubmitNewsLetter"]) || isset($_POST["SubmitConfirmReport"]) ||
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
 
 <table cellpadding="3" align="left">
-	<tr>
-	   <td class="LabelColumn"><?php echo gettext("Label Type:");?></td>
-	   <td class="TextColumn">
-		   <select name="LabelFormat">
-			   <option value="Tractor">Tractor</option>
-			   <option value="5160">5160</option>
-			   <option value="5161">5161</option>
-			   <option value="5162">5162</option>
-			   <option value="5163">5163</option>
-			   <option value="5164">5164</option>
-			   <option value="8600">8600</option>
-			   <option value="L7163">L7163</option>
-		   </select>
-	   </td>
-   </tr>
-   
-    <? 
+    <?php 
+    LabelSelect("labeltype");
     FontSelect("labelfont"); 
     FontSizeSelect("labelfontsize"); 
     ?>

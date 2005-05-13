@@ -129,22 +129,8 @@ if (count($_SESSION['aPeopleCart']) != 0)
 				<input name="mode" type="radio" value="fam"><?php echo gettext("Grouped by Family");?><br>
 			</td>
 		</tr>
-		<tr>
-			<td class="LabelColumn"><?php echo gettext("Label Type:");?></td>
-			<td class="TextColumn">
-				<select name="labeltype">
-					<option value="Tractor">Tractor</option>
-					<option value="5160">5160</option>
-					<option value="5161">5161</option>
-					<option value="5162">5162</option>
-					<option value="5163">5163</option>
-					<option value="5164">5164</option>
-					<option value="8600">8600</option>
-					<option value="L7163">L7163</option>
-				</select>
-			</td>
-		</tr>
         <? 
+        LabelSelect("labeltype");
         FontSelect("labelfont"); 
         FontSizeSelect("labelfontsize"); 
         ?>
