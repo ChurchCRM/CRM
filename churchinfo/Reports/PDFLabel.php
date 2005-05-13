@@ -77,13 +77,18 @@ $startrow = FilterInput($_GET["startrow"],'int');
 if ($startrow < 1) $startrow = 1;
 
 $sLabelType = FilterInput($_GET["labeltype"],'char',8);
+setcookie("labeltype", $sLabelType, time()+60*60*24*90, "/" );
 
 // Standard format
 $pdf = new PDF_Label($sLabelType,$startcol,$startrow);
 $pdf->Open();
+
 $sFontInfo = FontFromName($_GET["labelfont"]);
+setcookie("labelfont", $_GET["labelfont"], time()+60*60*24*90, "/" );
 $sFontSize = $_GET["labelfontsize"];
+setcookie("labelfontsize", $sFontSize, time()+60*60*24*90, "/");
 $pdf->SetFont($sFontInfo[0],$sFontInfo[1]);
+
 if($sFontSize != "default") $pdf->Set_Char_Size($sFontSize);
 // Manually add a new page if we're using offsets
 if ($startcol > 1 || $startrow > 1)	$pdf->AddPage();

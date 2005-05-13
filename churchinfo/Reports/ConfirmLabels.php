@@ -27,12 +27,15 @@ class PDF_ConfirmLabels extends PDF_Label {
 	}
 }
 
-$sLabelFormat = FilterInput($_GET["LabelFormat"]);
+$sLabelFormat = FilterInput($_GET["labeltype"]);
+setcookie("labeltype", $sLabelFormat, time()+60*60*24*90, "/" );
 
 $pdf = new PDF_ConfirmLabels($sLabelFormat);
 
 $sFontInfo = FontFromName($_GET["labelfont"]);
+setcookie("labelfont", $_GET["labelfont"], time()+60*60*24*90, "/" );
 $sFontSize = $_GET["labelfontsize"];
+setcookie("labelfontsize", $sFontSize, time()+60*60*24*90, "/");
 $pdf->SetFont($sFontInfo[0],$sFontInfo[1]);
 if($sFontSize != "default") $pdf->Set_Char_Size($sFontSize);
 
