@@ -26,6 +26,7 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 //Get the Fiscal Year ID out of the querystring
 $iFYID = FilterInput($_POST["FYID"],'int');
 $output = FilterInput($_POST["output"]);
+$pledge_filter = FilterInput($_POST["pledge_filter"]);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
@@ -35,6 +36,7 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
 
 // Get all the families
 $sSQL = "SELECT * FROM family_fam WHERE 1";
+
 // Filter by Family
 if (!empty($_POST["family"])) {
 	$count = 0;
@@ -53,6 +55,24 @@ if (!empty($_POST["family"])) {
 	}
 }
 $rsFamilies = RunQuery($sSQL);
+
+// Build criteria string for funds
+if (!empty($_POST["funds"])) {
+	$count = 0;
+	foreach ($_POST["funds"] as $fundID) {
+		$fund[$count++] = FilterInput($fundID,'int');
+	}
+	if ($count == 1) {
+		if ($fund[0])
+			$sSQLFundCriteria .= " AND plg_fundID='$fund[0]' ";
+	} else {
+		$sSQLFundCriteria  .= " AND (plg_fundID ='$fund[0]'";
+		for($i = 1; $i < $count; $i++) {
+			$sSQLFundCriteria  .= " OR plg_fundID='$fund[$i]'";
+		}
+		$sSQLFundCriteria .= ") ";
+	}
+}
 
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
@@ -98,14 +118,24 @@ $pdf = new PDF_ReminderReport();
 while ($aFam = mysql_fetch_array($rsFamilies)) {
 	extract ($aFam);
 
+	// Check for pledges if filtering by pledges
+	if ($pledge_filter == "pledge"){
+		$temp = "SELECT plg_plgID FROM pledge_plg
+			WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID";
+		$rsPledgeCheck = RunQuery($temp);
+		if (mysql_num_rows ($rsPledgeCheck) == 0)
+			continue;
+	}
+
 	// Get pledges and payments for this family and this fiscal year
 	$sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-			 WHERE plg_FamID = " . $fam_ID . " AND plg_FYID = " . $iFYID . " ORDER BY plg_date";
+			 WHERE plg_FamID = " . $fam_ID . " AND plg_FYID =  $iFYID $sSQLFundCriteria ORDER BY plg_date";
+
 	$rsPledges = RunQuery($sSQL);
 
 	// If there is either a pledge or a payment add a page for this reminder report
-
+	// If not, go to next family
 	if (mysql_num_rows ($rsPledges) == 0)
 		continue;
 
