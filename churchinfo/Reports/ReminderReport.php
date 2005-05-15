@@ -58,26 +58,41 @@ $rsFamilies = RunQuery($sSQL);
 
 // Build criteria string for funds
 if (!empty($_POST["funds"])) {
-	$count = 0;
+	$fundCount = 0;
 	foreach ($_POST["funds"] as $fundID) {
-		$fund[$count++] = FilterInput($fundID,'int');
+		$fund[$fundCount++] = FilterInput($fundID,'int');
 	}
-	if ($count == 1) {
+	if ($fundCount == 1) {
 		if ($fund[0])
 			$sSQLFundCriteria .= " AND plg_fundID='$fund[0]' ";
 	} else {
 		$sSQLFundCriteria  .= " AND (plg_fundID ='$fund[0]'";
-		for($i = 1; $i < $count; $i++) {
+		for($i = 1; $i < $fundCount; $i++) {
 			$sSQLFundCriteria  .= " OR plg_fundID='$fund[$i]'";
 		}
 		$sSQLFundCriteria .= ") ";
 	}
 }
 
+// Make the string describing the fund filter
+if ($fundCount > 0) {
+	if ($fundCount == 1)
+		$fundOnlyString = gettext ("for fund ");
+	else
+		$fundOnlyString = gettext ("for funds ");
+	for ($i = 0; $i < $fundCount; $i++) {
+		$sSQL = "SELECT fun_Name FROM donationfund_fun WHERE fun_ID=" . $fund[$i];
+		$rsOneFund = RunQuery($sSQL);
+		$aFundName = mysql_fetch_array($rsOneFund);
+		$fundOnlyString .= $aFundName["fun_Name"];
+		if ($i < $fundCount - 1)
+			$fundOnlyString .= ", ";
+	}
+}
+
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
 $rsFunds = RunQuery($sSQL);
-
 
 // Create PDF Report
 // *****************
@@ -93,10 +108,10 @@ class PDF_ReminderReport extends ChurchInfoReport {
 		$this->SetAutoPageBreak(false);
 	}
 
-	function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID) {
+	function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID, $fundOnlyString) {
 		$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
 		$curY += 2 * $this->incrementY;
-		$blurb = $this->sReminder1 . MakeFYString ($iFYID) . ".";
+		$blurb = $this->sReminder1 . MakeFYString ($iFYID) . $fundOnlyString . ".";
 		$this->WriteAt ($this->leftX, $curY, $blurb);
 		$curY += 2 * $this->incrementY;
 		return ($curY);
@@ -130,7 +145,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	// Get pledges and payments for this family and this fiscal year
 	$sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-			 WHERE plg_FamID = " . $fam_ID . " AND plg_FYID =  $iFYID $sSQLFundCriteria ORDER BY plg_date";
+			 WHERE plg_FamID = " . $fam_ID . " AND plg_FYID = " . $iFYID . $sSQLFundCriteria . " ORDER BY plg_date";
 
 	$rsPledges = RunQuery($sSQL);
 
@@ -139,30 +154,32 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	if (mysql_num_rows ($rsPledges) == 0)
 		continue;
 
-	$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID);
+	$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID, $fundOnlyString);
 
 	// Get pledges only
 	$sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-			 WHERE plg_FamID = " . $fam_ID . " AND plg_FYID = " . $iFYID . " AND plg_PledgeOrPayment = 'Pledge' ORDER BY plg_date";
+			 WHERE plg_FamID = " . $fam_ID . " AND plg_FYID = " . $iFYID . $sSQLFundCriteria . " AND plg_PledgeOrPayment = 'Pledge' ORDER BY plg_date";
 	$rsPledges = RunQuery($sSQL);
 
 	$totalAmountPledges = 0;
+
+	$summaryDateX = $pdf->leftX;
+	$summaryFundX = 45;
+	$summaryAmountX = 80;
+
+	$summaryDateWid = $summaryFundX - $summaryDateX;
+	$summaryFundWid = $summaryAmountX - $summaryFundX;
+	$summaryAmountWid = 15;
+
+	$summaryIntervalY = 4;
+
 	if (mysql_num_rows ($rsPledges) == 0) {
 		$curY += $summaryIntervalY;
-		$pdf->WriteAt ($summaryDateX, $curY, $pdf->sReminderNoPledge);
+		$noPledgeString = $pdf->sReminderNoPledge . "(" . $fundOnlyString . ")";
+		$pdf->WriteAt ($summaryDateX, $curY, $noPledgeString);
 		$curY += 2 * $summaryIntervalY;
 	} else {
-
-		$summaryDateX = $pdf->leftX;
-		$summaryFundX = 45;
-		$summaryAmountX = 80;
-
-		$summaryDateWid = $summaryFundX - $summaryDateX;
-		$summaryFundWid = $summaryAmountX - $summaryFundX;
-		$summaryAmountWid = 15;
-
-		$summaryIntervalY = 4;
 
 		$curY += $summaryIntervalY;
 		$pdf->SetFont('Times','B', 10);
@@ -214,7 +231,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	// Get payments only
 	$sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-			 WHERE plg_FamID = " . $fam_ID . " AND plg_FYID = " . $iFYID . " AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date";
+			 WHERE plg_FamID = " . $fam_ID . " AND plg_FYID = " . $iFYID . $sSQLFundCriteria . " AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date";
 	$rsPledges = RunQuery($sSQL);
 
 	$totalAmountPayments = 0;
