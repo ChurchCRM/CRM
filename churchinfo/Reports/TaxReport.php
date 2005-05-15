@@ -32,6 +32,7 @@ $sDateStart = FilterInput($_POST["DateStart"],"date");
 $sDateEnd = FilterInput($_POST["DateEnd"],"date");
 $iDepID = FilterInput($_POST["deposit"],"int");
 $iFYID = FilterInput($_POST["FYID"],"int");
+$iMinimum = FilterInput($_POST["minimum"],"int");
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
@@ -102,6 +103,9 @@ if (!empty($_POST["family"])) {
 		$sSQL .= ") ";
 	}
 }
+
+// Get Criteria string
+eregi("WHERE (plg_PledgeOrPayment.*)", $sSQL, $aSQLCriteria);
 
 // Add SQL ORDER
 $sSQL .= " ORDER BY plg_FamID, plg_date ";
@@ -231,6 +235,15 @@ if ($output == "pdf") {
 	while ($row = mysql_fetch_array($rsReport)) {
 		extract ($row);
 		
+		// Check for minimum amount
+		if ($iMinimum > 0){
+			$temp = "SELECT SUM(plg_amount) AS total_gifts FROM pledge_plg
+				WHERE plg_FamID=$fam_ID AND $aSQLCriteria[1]";
+			$rsMinimum = RunQuery($temp);
+			list ($total_gifts) = mysql_fetch_row($rsMinimum);
+			if ($iMinimum > $total_gifts)
+				continue;
+		}
 		// Check for new family
 		if ($fam_ID != $currentFamilyID && $currentFamilyID != 0) {
 			//New Family. Finish Previous Family
