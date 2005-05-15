@@ -146,7 +146,7 @@ if (!$sReportType) {
 	}
 	
 	// Filter by Account
-	if ($sReportType == "Pledge Summary" || $sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report") {
+	if ($sReportType == "Pledge Summary" || $sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report" || $sReportType == "Pledge Reminders") {
 		$sSQL = "SELECT fun_ID, fun_Name, fun_Active FROM donationfund_fun ORDER BY fun_Active, fun_Name";
 		$rsFunds = RunQuery($sSQL);
 		echo "<tr><td class=LabelColumn>".gettext("Filter by Fund:")."<br></td>";
@@ -178,9 +178,20 @@ if (!$sReportType) {
 		echo "</select></td></tr>";
 	}
 	
+	if ($sReportType == "Giving Report") {
+		echo "<tr><td class=LabelColumn>".gettext("Minimun Total Amount:")."</td>"
+			. "<td class=TextColumnWithBottomBorder><div class=SmallText>"
+			. gettext("0 - No Minimum") . "</div>"
+			. "<input name=minimum type=text value='0' size=8></td></tr>";
+	}	
+	
 	// Other Settings	
-	if ($sReportType != "Pledge Reminders") {
-		echo "<tr><td><h3>". gettext("Other Settings") . "</h3></td></tr>";
+	echo "<tr><td><h3>". gettext("Other Settings") . "</h3></td></tr>";
+	
+	if ($sReportType == "Pledge Reminders"){
+		echo "<tr><td class=LabelColumn>".gettext("Include:")."</td>"
+			. "<td class=TextColumnWithBottomBorder><input name=pledge_filter type=radio value='pledge' checked>".gettext("Only Payments with Pledges")
+			." &nbsp; <input name=pledge_filter type=radio value='all'>".gettext("All Payments")."</td></tr>";
 	}
 	
 	if ($sReportType == "Giving Report"){
