@@ -127,7 +127,8 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		$iCheckNo = "NULL";
 
 	$_SESSION['idefaultFY'] = $iFYID; // Remember default fiscal year
-	$_SESSION['idefaultFundID'] = $iFundID; 
+	$_SESSION['idefaultFundID'] = $iFundID; // Remember current fund id and method (not stored- just for this session)
+	$_SESSION['idefaultPaymentMethod'] = $iMethod;
 
 	//Initialize the error flag
 	$bErrorFlag = false;
@@ -257,7 +258,8 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 			$iMethod = "CREDITCARD";
 		else if ($dep_Type == "BankDraft")
 			$iMethod = "BANKDRAFT";
-		$iFundID = $_SESSION['idefaultFundID']
+		$iFundID = $_SESSION['idefaultFundID'];
+		$iMethod = $_SESSION['idefaultPaymentMethod'];
 	}
 }
 
