@@ -136,7 +136,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	// Check for pledges if filtering by pledges
 	if ($pledge_filter == "pledge"){
 		$temp = "SELECT plg_plgID FROM pledge_plg
-			WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID";
+			WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID" . $sSQLFundCriteria;
 		$rsPledgeCheck = RunQuery($temp);
 		if (mysql_num_rows ($rsPledgeCheck) == 0)
 			continue;
