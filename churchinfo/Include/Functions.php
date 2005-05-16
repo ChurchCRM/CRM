@@ -21,10 +21,6 @@ if ($debug == true)
 else
 	error_reporting(0);
 
-// Establish the database connection
-$cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD);
-mysql_select_db($sDATABASE);
-
 // Initialize the session
 session_start();
 
