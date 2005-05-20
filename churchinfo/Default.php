@@ -225,22 +225,10 @@ if ($iUserID > 0)
 		// Initialize the last operation time
 		$_SESSION['tLastOperation'] = time();
 
-		$aHTTPports = explode(',', $aHTTPports);
-		$aHTTPSports = explode(',', $aHTTPSports);
+        $sProtocol = $_SERVER['SERVER_PROTOCOL'];
+        $bpos = strpos(strtoupper($sProtocol), "HTTPS");
+        $_SESSION['bSecureServer'] = ($bpos === true);
 
-		if (in_array($_SERVER['SERVER_PORT'],$aHTTPports))
-		{
-			$_SESSION['bSecureServer'] = false;
-		}
-		elseif (in_array($_SERVER['SERVER_PORT'],$aHTTPSports))
-		{
-			$_SESSION['bSecureServer'] = true;
-		}
-		else
-		{
-			echo "Invalid server port number.  Check Config.php";
-			exit;
-		}
 		$_SESSION['iServerPort'] = $_SERVER['SERVER_PORT'];
 
 		// If PHP's magic quotes setting is turned off, we want to use a workaround to ensure security.
