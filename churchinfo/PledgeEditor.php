@@ -122,6 +122,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 	$sComment = FilterInput($_POST["Comment"]);
 	$iFundID = FilterInput($_POST["FundID"],'int');
 	$tScanString = FilterInput($_POST["ScanInput"]);
+	$iAutID = FilterInput($_POST["AutoPay"]);
 
 	if (! $iCheckNo)
 		$iCheckNo = "NULL";
@@ -178,15 +179,15 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 			}
 
 			// Only set PledgeOrPayment when the record is first created
-			$sSQL = "INSERT INTO pledge_plg (plg_FamID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString)
+			$sSQL = "INSERT INTO pledge_plg (plg_FamID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID)
 			VALUES ('" . $iFamily . "','" . $iFYID . "','" . $dDate . "','" . $nAmount . "','" . $iSchedule . "','" . $iMethod  . "','" . $sComment . "'";
-			$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $iFundID . "," . $iCurrentDeposit . "," . $iCheckNo . ",\"" . $tScanString . "\")";
+			$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $iFundID . "," . $iCurrentDeposit . "," . $iCheckNo . ",\"" . $tScanString . "\",\"" . $iAutID . "\")";
 			$bGetKeyBack = True;
 			
 		// Existing record (update)
 		} else {
 			$sSQL = "UPDATE pledge_plg SET plg_FamID = '" . $iFamily . "',plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment . "'";
-			$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_fundID = " . $iFundID . ", plg_CheckNo = " . $iCheckNo . ", plg_scanString = \"" . $tScanString . "\" WHERE plg_plgID = " . $iPledgeID;
+			$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_fundID = " . $iFundID . ", plg_CheckNo = " . $iCheckNo . ", plg_scanString = \"" . $tScanString . "\", plg_aut_ID=\"" . $iAutID . "\" WHERE plg_plgID = " . $iPledgeID;
 
 			$bGetKeyBack = false;
 		}
@@ -244,6 +245,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		$iFamily = $plg_FamID;
 		$tScanString = $plg_scanString;
       $PledgeOrPayment = $plg_PledgeOrPayment;
+	  $iAutID = $plg_aut_ID;
 	}
 	else
 	{
@@ -260,6 +262,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 			$iMethod = "BANKDRAFT";
 		$iFundID = $_SESSION['idefaultFundID'];
 		$iMethod = $_SESSION['idefaultPaymentMethod'];
+		$iAutID = 0;
 	}
 }
 
@@ -350,7 +353,7 @@ require "Include/Header.php";
 				</td>
 			</tr>
 
-			<?php if ($PledgeOrPayment!='Pledge') {?>
+			<?php if ($dep_Type == 'Bank' && $PledgeOrPayment!='Pledge') {?>
 				<tr>
 					<td class="PaymentLabelColumn"><?php echo gettext("Check number:"); ?></td>
 					<td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?php echo $iCheckNo; ?>"></td>
@@ -400,20 +403,62 @@ require "Include/Header.php";
 				<td class="TextColumn"><input type="text" name="Comment" id="Comment" value="<?php echo $sComment; ?>"></td>
 			</tr>
 
+			<?php if ($dep_Type == 'Bank' || $PledgeOrPayment=='Pledge') {?>
 			<tr>
 				<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Scan check");?></td>
 				<td><textarea name="ScanInput" rows="2" cols="90"><?php echo $tScanString?></textarea></td>
 			</tr>
-	
+			<?php } ?>
+
+<?php
+			if (($dep_Type == 'CreditCard') || ($dep_Type == 'BankDraft')) {
+?>
+			<tr>
+				<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Choose online payment method");?></td>
+				<td class="TextColumnWithBottomBorder">
+					<select name="AutoPay">
+<?php
+					echo "<option value=0";
+					if ($iAutID == 0)
+						echo " selected";
+					echo ">" . gettext ("Select online payment record") . "</option>\n";
+					$sSQLTmp = "SELECT aut_ID, aut_CreditCard, aut_BankName, aut_Route, aut_Account FROM autopayment_aut WHERE aut_FamID=" . $iFamily;
+					$rsFindAut = RunQuery($sSQLTmp);
+					while ($aRow = mysql_fetch_array($rsFindAut))
+					{
+						extract($aRow);
+						if ($aut_CreditCard <> "") {
+							$showStr = gettext ("Credit card ...") . substr ($aut_CreditCard, strlen ($aut_CreditCard) - 4, 4);
+						} else {
+							$showStr = gettext ("Bank account ") . $aut_BankName . " " . $aut_Route . " " . $aut_Account;
+						}
+						echo "<option value=" . $aut_ID;
+						if ($iAutID == $aut_ID)
+							echo " selected";
+						echo ">" . $showStr . "</option>\n";
+					}
+?>
+					</select>
+				</td>
+			</tr>
+<?php
+			}
+?>
 		</table>
 		</td>
 
+<?php
+	if ($dep_Type == 'Bank') {
+?>
 	<tr>
 		<td align="center">
 			<input type="submit" class="icButton" value="<?php echo gettext("Match family to check"); ?>" name="MatchFamily">
 			<input type="submit" class="icButton" value="<?php echo gettext("Set default check for family"); ?>" name="SetDefaultCheck">
 		</td>
 	</tr>
+<?php
+			}
+?>
 
 	</form>
 </table>
