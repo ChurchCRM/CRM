@@ -302,7 +302,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 		
 		if ($submitSuccess) {
 			// Push the authorized transaction date forward by the interval
-			$sSQL = "UPDATE autopayment_aut SET aut_NextPayDate=DATE_ADD('" . $authDate . "', INTERVAL " . $aut_Interval . " MONTH), aut_Serial=aut_Serial+1 WHERE aut_ID = " . $aut_ID;
+			$sSQL = "UPDATE autopayment_aut SET aut_NextPayDate=DATE_ADD('" . $authDate . "', INTERVAL " . $aut_Interval . " MONTH), aut_Serial=aut_Serial+1 WHERE aut_ID = " . $aut_ID . " AND aut_Amount = " . $plg_amount;
 			RunQuery ($sSQL);
 		}
 
