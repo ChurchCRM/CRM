@@ -739,7 +739,7 @@ if ($next_link_text) {
 				extract($aRow);
 
 				//If the property doesn't already exist for this Person, write the <OPTION> tag
-				if (strlen(strstr($sAssignedVolunteerOpps,"," . $grp_ID . ",")) == 0)
+				if (strlen(strstr($sAssignedVolunteerOpps,"," . $vol_ID . ",")) == 0)
 				{
 					echo "<option value=\"" . $vol_ID . "\">" . $vol_Name . "</option>";
 				}
