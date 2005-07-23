@@ -301,13 +301,35 @@ require "Include/Header.php";
 					<select name="Family">
 						<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
 						<?php
+						// Build Criteria for Head of Household
+						if (!$sDirRoleHead)
+							$sDirRoleHead = "1";
+						$head_criteria = " per_fmr_ID = " . $sDirRoleHead;
+						// If more than one role assigned to Head of Household, add OR
+						$head_criteria = str_replace(",", " OR per_fmr_ID = ", $head_criteria);
+						// Add Spouse to criteria
+						if (intval($sDirRoleSpouse) > 0)
+							$head_criteria .= " OR per_fmr_ID = $sDirRoleSpouse";
+						// Build array of Head of Households and Spouses with fam_ID as the key
+						$sSQL = "SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (" . $head_criteria . ") ORDER BY per_fam_ID";
+						$rs_head = RunQuery($sSQL);
+						$aHead = "";
+						while (list ($head_firstname, $head_famid) = mysql_fetch_row($rs_head)){
+							if ($head_firstname && $aHead[$head_famid])
+								$aHead[$head_famid] .= " & " . $head_firstname;
+							elseif ($head_firstname)
+								$aHead[$head_famid] = $head_firstname;
+						}
+						
 						while ($aRow = mysql_fetch_array($rsFamilies))
 						{
 							extract($aRow);
-
 							echo "<option value=\"" . $fam_ID . "\"";
 							if ($iFamily == $fam_ID) { echo " selected"; }
-							echo ">" . $fam_Name . "&nbsp;" . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+							echo ">" . $fam_Name;
+							if ($aHead[$fam_ID])
+								echo ", " . $aHead[$fam_ID];
+							echo " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 						}
 						?>
 
