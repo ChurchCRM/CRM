@@ -130,7 +130,7 @@ function Redirect($sRelativeURL)
 {
 	global $sRootPath;
 
-	if (!$_SESSION['bSecureServer'])
+	if (!$_SESSION['bSecureServer'] && $_SESSION['iServerPort'] != 443)
 	{
 		$sProtocol = "http://";
 		if ($_SESSION['iServerPort'] != 80)
