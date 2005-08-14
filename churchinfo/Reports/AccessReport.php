@@ -120,6 +120,14 @@ class PDF_AccessReport extends ChurchInfoReport {
 // Instantiate the directory class and build the report.
 $pdf = new PDF_AccessReport();
 
+// Read in report settings from database
+$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+if ($rsConfig) {
+	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		$pdf->$cfg_name = $cfg_value;
+	}
+}
+
 // Fetch a new table consisting of first and last name from the 
 // person_per table and last login from the user_usr table.
 $sSQL = "SELECT person_per.per_FirstName, person_per.per_LastName, user_usr.usr_LastLogin FROM person_per INNER JOIN user_usr ON person_per.per_ID = user_usr.usr_per_ID ORDER BY usr_LastLogin DESC";

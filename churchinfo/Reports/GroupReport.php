@@ -196,6 +196,14 @@ class PDF_Directory extends ChurchInfoReport
 
 	$pdf = new PDF_Directory();
 
+	// Read in report settings from database
+	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+	if ($rsConfig) {
+		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+			$pdf->$cfg_name = $cfg_value;
+		}
+	}
+
 	// See if this group has special properties.
 	$sSQL = "SELECT * FROM groupprop_master WHERE grp_ID = " . $iGroupID . " ORDER BY prop_ID";
 	$rsProps = RunQuery($sSQL);

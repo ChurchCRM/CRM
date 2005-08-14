@@ -59,6 +59,14 @@ class PDF_ConfirmReport extends ChurchInfoReport {
 // Instantiate the directory class and build the report.
 $pdf = new PDF_ConfirmReport();
 
+// Read in report settings from database
+$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+if ($rsConfig) {
+	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		$pdf->$cfg_name = $cfg_value;
+	}
+}
+
 // Get all the families
 $sSQL = "SELECT * FROM family_fam WHERE 1 ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);

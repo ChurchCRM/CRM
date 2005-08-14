@@ -38,6 +38,14 @@ class PDF_VotingMembers extends ChurchInfoReport {
 
 $pdf = new PDF_VotingMembers();
 
+// Read in report settings from database
+$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+if ($rsConfig) {
+	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		$pdf->$cfg_name = $cfg_value;
+	}
+}
+
 $topY = 10;
 $curY = $topY;
 
