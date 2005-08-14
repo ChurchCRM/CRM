@@ -186,6 +186,11 @@ $MenuFirst = 1;
 					'contents', <?php echo "'" . gettext("Edit General Settings") . "'"; ?>,
 					'uri', 'SettingsGeneral.php',
 					'statusText', ''
+				),
+				9, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("Edit Report Settings") . "'"; ?>,
+					'uri', 'SettingsReport.php',
+					'statusText', ''
 				)
 			),
 			<?php } ?>
