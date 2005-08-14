@@ -404,7 +404,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 if ($iDepositSlipID) {
 	//Get the payments for this deposit slip
 	$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment, plg_aut_Cleared,
-	         a.fam_Name AS FamilyName, b.fun_Name as fundName
+	         a.fam_Name AS FamilyName, b.fun_Name as fundName, plg_NonDeductible
 			 FROM pledge_plg 
 			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
@@ -544,6 +544,7 @@ require "Include/Header.php";
 <?php } ?>
 	<td><?php echo gettext("Fund"); ?></td>
 	<td><?php echo gettext("Amount"); ?></td>
+	<td><?php echo gettext("NonDeduct"); ?></td>
 	<td><?php echo gettext("Method"); ?></td>
 	<td><?php echo gettext("Comment"); ?></td>
 <?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
@@ -597,8 +598,11 @@ while ($aRow =mysql_fetch_array($rsPledges))
 		<td>
 			<?php echo $fundName ?>&nbsp;
 		</td>
-		<td>
+		<td align=center>
 			<?php echo $plg_amount ?>&nbsp;
+		</td>
+		<td align=center>
+			<?php echo $plg_NonDeductible ?>&nbsp;
 		</td>
 		<td>
 			<?php echo $plg_method; ?>&nbsp;
