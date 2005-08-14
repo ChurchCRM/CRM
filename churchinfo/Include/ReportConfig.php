@@ -25,50 +25,10 @@ class ChurchInfoReport extends FPDF {
    //
    // Paper size for all PDF report documents
    // Sizes: A3, A4, A5, Letter, Legal, or a 2-element array for custom size
-   //
+   // Sorry -- This should really be set in database, but it is needed before all the report settings
+   // are read from the database.
+
    var $paperFormat = "Letter";
-	var $leftX = 20;
-	var $incrementY = 4;
-
-   // General contact info for the church
-   var $sChurchName = "Your church name";
-   var $sChurchAddress = "Your church street address";
-   var $sChurchCity = "Your city";
-   var $sChurchState = "Your state";
-   var $sChurchZip = "Your zip";
-   var $sChurchPhone = "Your phone";
-   var $sChurchEmail = "Your church email";
-
-   var $sHomeAreaCode = "xxx";
-
-   // Verbage for the tax report
-   var $sTaxReport1 = "This letter shows our record of your payments for ";
-   var $sTaxReport2 = "Your only goods and services received, if any, were intangible religious benefits as defined under the code of the Internal Revenue Service.";
-   var $sTaxReport3 = "If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.";
-   var $sTaxSigner = "<signs tax letter>";
-
-   // Verbage for the pledge reminder report
-   var $sReminder1 = "This letter shows our record of your pledge and payments for fiscal year ";
-   var $sReminderSigner = "<signs reminder letter>";
-   var $sReminderNoPledge = "We have not received your pledge.";
-   var $sReminderNoPayments = "We have not received any payments.";
-
-   // Verbage for the database information confirmation and correction report
-   var $sConfirm1 = "This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.";
-	var $sConfirm2 = "Thank you very much for helping us to update this information.  If you want on-line access to the church database please provide your email address and a desired password and we will send instructions.";
-	var $sConfirm3 = "Email _____________________________________ Password ________________";
-	var $sConfirm4 = "[  ] I no longer want to be associated with the church (check here to be removed from our records).";
-
-   var $sConfirmSigner = "<signs confirmation letter>";
-
-   // Verbage for the pledge summary report
-   var $sPledgeSummary1 = "Summary of pledges and payments for the fiscal year ";
-   var $sPledgeSummary2 = " as of ";
-
-   // Verbage for the directory report
-   var $sDirectoryDisclaimer1 = "Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of ";
-   var $sDirectoryDisclaimer2 = ", and the information contained in it may not be used for business or commercial purposes.";
-   var $bDirLetterHead = "../Images/church_letterhead.png";
 
    function StripPhone ($phone) {
       if (substr ($phone, 0, 3) == $this->sHomeAreaCode)
