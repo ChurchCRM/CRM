@@ -92,7 +92,7 @@ $rsFamilyMembers = RunQuery($sSQL);
 
 //Get the pledges for this family
 $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, 
-         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName
+         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName, plg_NonDeductible
 		 FROM pledge_plg 
 		 LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
 		 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
@@ -639,7 +639,7 @@ while ($aRow =mysql_fetch_array($rsFamilyMembers))
 </form>
 </p>
 
-<table cellpadding="5" cellspacing="0" width="100%">
+<table cellpadding="4" cellspacing="0" width="100%">
 
 <tr class="TableHeader">
 	<td><?php echo gettext("Pledge or Payment"); ?></td>
@@ -647,6 +647,7 @@ while ($aRow =mysql_fetch_array($rsFamilyMembers))
 	<td><?php echo gettext("Fiscal Year"); ?></td>
 	<td><?php echo gettext("Date"); ?></td>
 	<td><?php echo gettext("Amount"); ?></td>
+	<td><?php echo gettext("NonDeductible"); ?></td>
 	<td><?php echo gettext("Schedule"); ?></td>
 	<td><?php echo gettext("Method"); ?></td>
 	<td><?php echo gettext("Comment"); ?></td>
@@ -715,8 +716,11 @@ if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
 				<td>
 					<?php echo $plg_date ?>&nbsp;
 				</td>
-				<td>
+				<td align=center>
 					<?php echo $plg_amount ?>&nbsp;
+				</td>
+				<td align=center>
+					<?php echo $plg_NonDeductible ?>&nbsp;
 				</td>
 				<td>
 					<?php echo $plg_schedule ?>&nbsp;
