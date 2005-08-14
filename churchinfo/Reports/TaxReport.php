@@ -42,7 +42,7 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
 
 // Build SQL Query
 // Build SELECT SQL Portion
-$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, plg_date, plg_amount, plg_method, plg_comment, plg_CheckNo, fun_Name, plg_PledgeOrPayment FROM family_fam
+$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, plg_date, plg_amount, plg_method, plg_comment, plg_CheckNo, fun_Name, plg_PledgeOrPayment, plg_NonDeductible FROM family_fam
 	INNER JOIN pledge_plg ON fam_ID=plg_FamID
 	LEFT JOIN donationfund_fun ON plg_fundID=fun_ID
 	WHERE plg_PledgeOrPayment='Payment' ";
@@ -229,6 +229,14 @@ if ($output == "pdf") {
 
 	// Instantiate the directory class and build the report.
 	$pdf = new PDF_TaxReport();
+	
+	// Read in report settings from database
+	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+   if ($rsConfig) {
+		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+			$pdf->$cfg_name = $cfg_value;
+		}
+   }
 
 	// Loop through result array
 	$currentFamilyID = 0;
@@ -247,16 +255,28 @@ if ($output == "pdf") {
 		// Check for new family
 		if ($fam_ID != $currentFamilyID && $currentFamilyID != 0) {
 			//New Family. Finish Previous Family
-			if ($cnt > 1) {
-				$pdf->SetFont('Times','B', 10);
-				$pdf->Cell (20, $summaryIntervalY / 2, " ",0,1);
-				$pdf->Cell (105, $summaryIntervalY, " ");
-				$pdf->Cell (40, $summaryIntervalY, "Total Payments:");
-				$totalAmountStr = "\$" . sprintf ("%.2f", $totalAmount);
-				$pdf->SetFont('Courier','', 9);
-				$pdf->Cell (25, $summaryIntervalY, $totalAmountStr, 0,1,"R");
-				$curY = $pdf->GetY();
-			}
+			$pdf->SetFont('Times','B', 10);
+			$pdf->Cell (20, $summaryIntervalY / 2, " ",0,1);
+			$pdf->Cell (95, $summaryIntervalY, " ");
+			$pdf->Cell (50, $summaryIntervalY, "Total Payments:");
+			$totalAmountStr = "$" . number_format($totalAmount,2);
+			$pdf->SetFont('Courier','', 9);
+			$pdf->Cell (25, $summaryIntervalY, $totalAmountStr, 0,1,"R");
+			$pdf->SetFont('Times','B', 10);
+			$pdf->Cell (95, $summaryIntervalY, " ");
+			$pdf->Cell (50, $summaryIntervalY, "Goods and Services Rendered:");
+			$totalAmountStr = "$" . number_format($totalNonDeductible,2);
+			$pdf->SetFont('Courier','', 9);
+			$pdf->Cell (25, $summaryIntervalY, $totalAmountStr, 0,1,"R");
+			$pdf->SetFont('Times','B', 10);
+			$pdf->Cell (95, $summaryIntervalY, " ");
+			$pdf->Cell (50, $summaryIntervalY, "Tax-Deductible Contribution:");
+			$totalAmountStr = "$" . number_format($totalAmount-$totalNonDeductible,2);
+			$pdf->SetFont('Courier','', 9);
+			$pdf->Cell (25, $summaryIntervalY, $totalAmountStr, 0,1,"R");
+			$curY = $pdf->GetY();
+			$curY = $pdf->GetY();
+
 			if ($curY > $bottom_border1){
 				$pdf->AddPage ();
 				if ($letterhead == "none") {
@@ -293,6 +313,7 @@ if ($output == "pdf") {
 			$pdf->Cell (25, $summaryIntervalY, 'Amount',0,1,"R");
 			//$curY = $pdf->GetY();
 			$totalAmount = 0;
+			$totalNonDeductible = 0;
 			$cnt = 0;
 			$currentFamilyID = $fam_ID;
 		}
@@ -315,6 +336,7 @@ if ($output == "pdf") {
 		$pdf->SetFont('Courier','', 9);
 		$pdf->Cell (25, $summaryIntervalY, $plg_amount,0,1,"R");
 		$totalAmount += $plg_amount;
+		$totalNonDeductible += $plg_NonDeductible;
 		$cnt += 1;
 		$curY = $pdf->GetY();
 
@@ -340,16 +362,27 @@ if ($output == "pdf") {
 	}
 
 	// Finish Last Report
-	if ($cnt > 1) {
-		$pdf->SetFont('Times','B', 10);
-		$pdf->Cell (20, $summaryIntervalY / 2, " ",0,1);
-		$pdf->Cell (105, $summaryIntervalY, " ");
-		$pdf->Cell (40, $summaryIntervalY, "Total Payments:");
-		$totalAmountStr = "\$" . sprintf ("%.2f", $totalAmount);
-		$pdf->SetFont('Courier','', 9);
-		$pdf->Cell (25, $summaryIntervalY, $totalAmountStr, 0,1,"R");
-		$curY = $pdf->GetY();
-	}
+	$pdf->SetFont('Times','B', 10);
+	$pdf->Cell (20, $summaryIntervalY / 2, " ",0,1);
+	$pdf->Cell (95, $summaryIntervalY, " ");
+	$pdf->Cell (50, $summaryIntervalY, "Total Payments:");
+	$totalAmountStr = "$" . number_format($totalAmount,2);
+	$pdf->SetFont('Courier','', 9);
+	$pdf->Cell (25, $summaryIntervalY, $totalAmountStr, 0,1,"R");
+	$pdf->SetFont('Times','B', 10);
+	$pdf->Cell (95, $summaryIntervalY, " ");
+	$pdf->Cell (50, $summaryIntervalY, "Goods and Services Rendered:");
+	$totalAmountStr = "$" . number_format($totalNonDeductible,2);
+	$pdf->SetFont('Courier','', 9);
+	$pdf->Cell (25, $summaryIntervalY, $totalAmountStr, 0,1,"R");
+	$pdf->SetFont('Times','B', 10);
+	$pdf->Cell (95, $summaryIntervalY, " ");
+	$pdf->Cell (50, $summaryIntervalY, "Tax-Deductible Contribution:");
+	$totalAmountStr = "$" . number_format($totalAmount-$totalNonDeductible,2);
+	$pdf->SetFont('Courier','', 9);
+	$pdf->Cell (25, $summaryIntervalY, $totalAmountStr, 0,1,"R");
+	$curY = $pdf->GetY();
+
 	if ($cnt > 0) {
 		if ($curY > $bottom_border1){
 			$pdf->AddPage ();
