@@ -28,7 +28,7 @@ mysql_select_db($sDATABASE);
 
 // Read values from config table into local variables
 // **************************************************
-$sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg";
+$sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='General'";
 $rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
 if ($rsConfig) {
 	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
