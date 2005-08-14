@@ -100,10 +100,35 @@ if (!$sReportType) {
 			."</div><select name=family[] size=6 multiple>";
 		echo "<option value=0 selected>".gettext("All Families");
 		echo "<option value=0>----------";
-		while ($aRow = mysql_fetch_array($rsFamilies)) {
-			extract($aRow);
-			echo "<option value=$fam_ID>$fam_Name " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+		
+		// Build Criteria for Head of Household
+		if (!$sDirRoleHead)
+			$sDirRoleHead = "1";
+		$head_criteria = " per_fmr_ID = " . $sDirRoleHead;
+		// If more than one role assigned to Head of Household, add OR
+		$head_criteria = str_replace(",", " OR per_fmr_ID = ", $head_criteria);
+		// Add Spouse to criteria
+		if (intval($sDirRoleSpouse) > 0)
+			$head_criteria .= " OR per_fmr_ID = $sDirRoleSpouse";
+		// Build array of Head of Households and Spouses with fam_ID as the key
+		$sSQL = "SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (" . $head_criteria . ") ORDER BY per_fam_ID";
+		$rs_head = RunQuery($sSQL);
+		$aHead = "";
+		while (list ($head_firstname, $head_famid) = mysql_fetch_row($rs_head)){
+			if ($head_firstname && $aHead[$head_famid])
+				$aHead[$head_famid] .= " & " . $head_firstname;
+			elseif ($head_firstname)
+				$aHead[$head_famid] = $head_firstname;
 		}
+		while ($aRow = mysql_fetch_array($rsFamilies))
+		{
+			extract($aRow);
+			echo "<option value=$fam_ID>$fam_Name";
+			if ($aHead[$fam_ID])
+				echo ", " . $aHead[$fam_ID];
+			echo " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+		}
+
 		echo "</select></td></tr>";
 	}
 	
