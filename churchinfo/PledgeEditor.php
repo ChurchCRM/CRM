@@ -123,6 +123,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 	$iFundID = FilterInput($_POST["FundID"],'int');
 	$tScanString = FilterInput($_POST["ScanInput"]);
 	$iAutID = FilterInput($_POST["AutoPay"]);
+	$nNonDeductible = FilterInput($_POST["NonDeductible"]);
 
 	if (! $iCheckNo)
 		$iCheckNo = "NULL";
@@ -138,6 +139,13 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 	if (strlen($nAmount) < 1)
 	{
 		$sAmountError = gettext("You must enter an Amount.");
+		$bErrorFlag = true;
+	}
+
+	//Validate the NonDeductible Amount
+	if ($nNonDeductible > $nAmount)
+	{
+		$sNonDeductibleError = gettext("NonDeductible amount can't be greater than total amount.");
 		$bErrorFlag = true;
 	}
 
@@ -179,15 +187,15 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 			}
 
 			// Only set PledgeOrPayment when the record is first created
-			$sSQL = "INSERT INTO pledge_plg (plg_FamID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID)
+			$sSQL = "INSERT INTO pledge_plg (plg_FamID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID, plg_NonDeductible)
 			VALUES ('" . $iFamily . "','" . $iFYID . "','" . $dDate . "','" . $nAmount . "','" . $iSchedule . "','" . $iMethod  . "','" . $sComment . "'";
-			$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $iFundID . "," . $iCurrentDeposit . "," . $iCheckNo . ",\"" . $tScanString . "\",\"" . $iAutID . "\")";
+			$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $iFundID . "," . $iCurrentDeposit . "," . $iCheckNo . ",\"" . $tScanString . "\",\"" . $iAutID  . "\",\"" . $nNonDeductible . "\")";
 			$bGetKeyBack = True;
 			
 		// Existing record (update)
 		} else {
 			$sSQL = "UPDATE pledge_plg SET plg_FamID = '" . $iFamily . "',plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment . "'";
-			$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_fundID = " . $iFundID . ", plg_CheckNo = " . $iCheckNo . ", plg_scanString = \"" . $tScanString . "\", plg_aut_ID=\"" . $iAutID . "\" WHERE plg_plgID = " . $iPledgeID;
+			$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_fundID = " . $iFundID . ", plg_CheckNo = " . $iCheckNo . ", plg_scanString = \"" . $tScanString . "\", plg_aut_ID=\"" . $iAutID . "\", plg_NonDeductible=\"" . $nNonDeductible . "\" WHERE plg_plgID = " . $iPledgeID;
 
 			$bGetKeyBack = false;
 		}
@@ -244,8 +252,9 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		$sComment = $plg_comment;
 		$iFamily = $plg_FamID;
 		$tScanString = $plg_scanString;
-      $PledgeOrPayment = $plg_PledgeOrPayment;
-	  $iAutID = $plg_aut_ID;
+      	$PledgeOrPayment = $plg_PledgeOrPayment;
+	  	$iAutID = $plg_aut_ID;
+		$nNonDeductible = $plg_NonDeductible;
 	}
 	else
 	{
@@ -383,8 +392,13 @@ require "Include/Header.php";
 			<?php } ?>
 
 			<tr>
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Amount:"); ?></td>
+				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Total Amount:"); ?></td>
 				<td class="TextColumn"><input type="text" name="Amount" id="Amount" value="<?php echo $nAmount; ?>"><br><font color="red"><?php echo $sAmountError ?></font></td>
+			</tr>
+
+			<tr>
+				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Non Deductible Amount:<br>($0 if all is deductible)"); ?></td>
+				<td class="TextColumn"><input type="text" name="NonDeductible" id="Amount" value="<?php echo $nNonDeductible; ?>"><br><font color="red"><?php echo $sNonDeductibleError ?></font></td>
 			</tr>
 
 			<?php if ($PledgeOrPayment=='Pledge') {?>
