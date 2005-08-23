@@ -178,10 +178,19 @@ require "Include/Header.php";
 
 $iTableSpacerWidth = 10;
 
+$bOkToEdit = ($_SESSION['bEditRecords'] ||
+			  ($_SESSION['bEditSelf'] && $per_ID==$_SESSION['iUserID']) ||
+			  ($_SESSION['bEditSelf'] && $per_fam_ID==$_SESSION['iFamID'])
+			 );   
+
 if ($previous_link_text) {
 	echo "$previous_link_text | ";
 }
-if ($_SESSION['bEditRecords']) { echo "<a class=\"SmallText\" href=\"PersonEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit this Record") . "</a> | "; }
+if ($bOkToEdit) { 
+	echo "<a class=\"SmallText\" href=\"PersonEditor.php?PersonID=" . $per_ID . 
+		 "\">" . gettext("Edit this Record") . "</a> | "; 
+}
+
 if ($_SESSION['bDeleteRecords']) { echo "<a class=\"SmallText\" href=\"SelectDelete.php?mode=person&PersonID=" . $per_ID . "\">" . gettext("Delete this Record") . "</a> | " ; }
 ?>
 <a href="PrintView.php?PersonID=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Printable Page"); ?></a>
@@ -259,7 +268,7 @@ if ($next_link_text) {
 		echo "<br>";
 
 		// Upload photo
-		if ( isset($_POST["UploadPhoto"]) && ($_SESSION['bAddRecords'] || $_SESSION['bEditRecords']) ) {
+		if ( isset($_POST["UploadPhoto"]) && ($_SESSION['bAddRecords'] || $bOkToEdit) ) {
 			if ($_FILES['Photo']['name'] == "") {
 				$PhotoError = gettext("No photo selected for uploading.");
 			} elseif ($_FILES['Photo']['type'] != "image/pjpeg" && $_FILES['Photo']['type'] != "image/jpeg") {
@@ -327,7 +336,7 @@ if ($next_link_text) {
 		{
 			echo "<a target=\"_blank\" href=\"Images/Person/" . $iPersonID . ".jpg\">";
 			echo "<img border=\"1\" src=\"$photoFile\"></a>";
-			if ($_SESSION['bEditRecords']) {
+			if ($bOkToEdit) {
 				echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "?PersonID=" . $iPersonID . "\">";
 				echo "<br><input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext("Delete Photo") . "\" name=\"DeletePhoto\">";
 				echo "</form>";
@@ -339,7 +348,7 @@ if ($next_link_text) {
 			else
 				echo "<img border=\"0\" src=\"Images/NoPhoto.png\"><br><br><br>";
 
-			if ($_SESSION['bEditRecords']) {
+			if ($bOkToEdit) {
 				if (isset($PhotoError)) echo "<span style=\"color: red;\">" . $PhotoError . "</span><br>";
 				echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "?PersonID=" . $iPersonID . "\" enctype=\"multipart/form-data\">";
 				echo "<input class=\"icTinyButton\" type=\"file\" name=\"Photo\"> <input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext("Upload Photo") . "\" name=\"UploadPhoto\">";
@@ -464,7 +473,7 @@ if ($next_link_text) {
 		echo "<td width=\"15%\" valign=\"top\"><b>" . gettext("Name") . "</b>";
 		echo "<td valign=\"top\"><b>" . gettext("Value") . "</b></td>";
 
-		if ($_SESSION['bEditRecords'])
+		if ($bOkToEdit)
 		{
 			echo "<td valign=\"top\"><b>" . gettext("Edit") . "</b></td>";
 			echo "<td valign=\"top\"><b>" . gettext("Remove") . "</b></td>";
@@ -504,7 +513,7 @@ if ($next_link_text) {
 			echo "<td valign=\"center\">" . $pro_Name . "&nbsp;</td>";
 			echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
 
-			if ($_SESSION['bEditRecords'])
+			if ($bOkToEdit)
 			{
 				if (strlen($pro_Prompt) > 0)
 				{
@@ -528,7 +537,7 @@ if ($next_link_text) {
 
 	?>
 
-	<?php if ($_SESSION['bEditRecords']) { ?>
+	<?php if ($bOkToEdit) { ?>
 	<form method="post" action="PropertyAssign.php?PersonID=<?php echo $iPersonID; ?>">
 	<p class="SmallText" align="center">
 		<span class="SmallText"><?php echo gettext("Assign a New Property:"); ?></span>
@@ -762,7 +771,7 @@ if ($next_link_text) {
 if ($previous_link_text) {
 	echo "$previous_link_text | ";
 }
-if ($_SESSION['bEditRecords']) { echo "<a class=\"SmallText\" href=\"PersonEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit this Record") . "</a> | "; }
+if ($bOkToEdit) { echo "<a class=\"SmallText\" href=\"PersonEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit this Record") . "</a> | "; }
 if ($_SESSION['bDeleteRecords']) { echo "<a class=\"SmallText\" href=\"SelectDelete.php?mode=person&PersonID=" . $per_ID . "\">" . gettext("Delete this Record") . "</a> | " ; }
 ?>
 <a href="PrintView.php?PersonID=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Printable Page"); ?></a>

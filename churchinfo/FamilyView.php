@@ -139,9 +139,12 @@ require "Include/Header.php";
 if ($previous_link_text) {
 	echo "$previous_link_text | ";
 }
-if ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID']))) { echo "<a class=\"SmallText\" href=\"FamilyEditor.php?FamilyID=" . $fam_ID . "\">" . gettext("Edit this Record") . "</a> | "; }
+
+$bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID'])));
+
+if ($bOkToEdit) { echo "<a class=\"SmallText\" href=\"FamilyEditor.php?FamilyID=" . $fam_ID . "\">" . gettext("Edit this Record") . "</a> | "; }
 if ($_SESSION['bDeleteRecords']) { echo "<a class=\"SmallText\" href=\"SelectDelete.php?FamilyID=" . $fam_ID . "\">" . gettext("Delete this Record") . "</a>"; }
-if ($next_link_text && ($_SESSION['bEditRecords'] || $_SESSION['bDeleteRecords'])) {
+if ($next_link_text && ($bOkToEdit || $_SESSION['bDeleteRecords'])) {
 	echo " | $next_link_text";
 }
 elseif ($next_link_text) {
@@ -188,7 +191,7 @@ elseif ($next_link_text) {
 		echo "<br>";
 
 		// Upload photo
-		if ( isset($_POST["UploadPhoto"]) && ($_SESSION['bAddRecords'] || $_SESSION['bEditRecords']) ) {
+		if ( isset($_POST["UploadPhoto"]) && ($_SESSION['bAddRecords'] || $bOkToEdit) ) {
 			if ($_FILES['Photo']['name'] == "") {
 				$PhotoError = gettext("No photo selected for uploading.");
 			} elseif ($_FILES['Photo']['type'] != "image/pjpeg" && $_FILES['Photo']['type'] != "image/jpeg") {
@@ -253,7 +256,7 @@ elseif ($next_link_text) {
 		{
 			echo "<a target=\"_blank\" href=\"Images/Family/" . $iFamilyID . ".jpg\">";
 			echo "<img border=\"1\" src=\"$photoFile\"></a>";
-			if ($_SESSION['bEditRecords']) {
+			if ($bOkToEdit) {
 				echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "?FamilyID=" . $iFamilyID . "\">";
 				echo "<br><input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext("Delete Photo") . "\" name=\"DeletePhoto\">";
 				echo "</form>";
@@ -265,7 +268,7 @@ elseif ($next_link_text) {
 			else
 				echo "<img border=\"0\" src=\"Images/NoFamPhoto.png\"><br><br><br>";
 
-			if ($_SESSION['bEditRecords']) {
+			if ($bOkToEdit) {
 				if (isset($PhotoError)) echo "<span style=\"color: red;\">" . $PhotoError . "</span><br>";
 				echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "?FamilyID=" . $iFamilyID . "\" enctype=\"multipart/form-data\">";
 				echo "<input class=\"icTinyButton\" type=\"file\" name=\"Photo\"> <input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext("Upload Photo") . "\" name=\"UploadPhoto\">";
@@ -334,7 +337,7 @@ else
 	echo "<td width=\"15%\" valign=\"top\"><b>" . gettext("Name") . "</b></td>";
 	echo "<td valign=\"top\"><b>" . gettext("Value") . "</b></td>";
 
-	if ($_SESSION['bEditRecords'])
+	if ($bOkToEdit)
 	{
 		echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Edit Value") . "</td>";
 		echo "<td valign=\"top\"><b>" . gettext("Remove") . "</td>";
@@ -375,7 +378,7 @@ else
 		echo "<td valign=\"center\">" . $pro_Name . "</td>";
 		echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
 
-		if ($_SESSION['bEditRecords'])
+		if ($bOkToEdit)
 		{
 			if (strlen($pro_Prompt) > 0)
 			{
@@ -403,7 +406,7 @@ else
 }
 
 ?>
-    <?php if ($_SESSION['bEditRecords']) { ?>
+    <?php if ($bOkToEdit) { ?>
     <form method="post" action="PropertyAssign.php?FamilyID=<?php echo $iFamilyID ?>">
       <p align="center"> <span class="SmallText"><?php echo gettext("Assign a New Property:"); ?></span>
           <select name="PropertyID">
@@ -431,9 +434,9 @@ else
 if ($previous_link_text) {
 	echo "$previous_link_text | ";
 }
-if ($_SESSION['bEditRecords']) { echo "<a class=\"SmallText\" href=\"FamilyEditor.php?FamilyID=" . $fam_ID . "\">" . gettext("Edit this Record") . "</a>"; }
+if ($bOkToEdit) { echo "<a class=\"SmallText\" href=\"FamilyEditor.php?FamilyID=" . $fam_ID . "\">" . gettext("Edit this Record") . "</a>"; }
 if ($_SESSION['bDeleteRecords']) { echo " | <a class=\"SmallText\" href=\"SelectDelete.php?FamilyID=" . $fam_ID . "\">" . gettext("Delete this Record") . "</a>"; }
-if ($next_link_text && ($_SESSION['bEditRecords'] || $_SESSION['bDeleteRecords'])) {
+if ($next_link_text && ($bOkToEdit || $_SESSION['bDeleteRecords'])) {
 	echo " | $next_link_text";
 }
 elseif ($next_link_text) {
@@ -462,7 +465,9 @@ elseif ($next_link_text) {
 	<td><?php echo gettext("Role"); ?></td>
 	<td><?php echo gettext("Age"); ?></td>
 	<td><?php echo gettext("Classification"); ?></td>
+	<?php if ($bOkToEdit) { ?>
 	<td><?php echo gettext("Edit"); ?></td>
+	<?php } ?>
 </tr>
 
 <?php
@@ -528,8 +533,14 @@ while ($aRow =mysql_fetch_array($rsFamilyMembers))
 		<td>
 			<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?>
 		</td>
-		<td><?php echo $sClassName; ?>&nbsp;</td>
-		<td><a href="PersonEditor.php?PersonID=<?php echo $per_ID ?>">Edit</a></td>
+		<td>
+			<?php echo $sClassName; ?>&nbsp;
+		</td>
+		<?php if ($bOkToEdit) { ?>
+		<td>
+			<a href="PersonEditor.php?PersonID=<?php echo $per_ID ?>">Edit</a>
+		</td>
+		<?php } ?>
 	</tr>
 
 	<?php

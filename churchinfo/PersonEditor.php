@@ -27,13 +27,22 @@ $iPersonID = FilterInput($_GET["PersonID"],'int');
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if (strlen($iPersonID) > 0)
 {
-	if (!($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && $iPersonID==$_SESSION['iUserID'])))
+	$sSQL = "SELECT per_fam_ID FROM person_per WHERE per_ID = " . $iPersonID;
+	$rsPerson = RunQuery($sSQL);
+	extract(mysql_fetch_array($rsPerson));
+
+	if (mysql_num_rows($rsPerson) == 0)
 	{
 		Redirect("Menu.php");
 		exit;
 	}
-	$sSQL = "SELECT '' FROM person_per WHERE per_ID = " . $iPersonID;
-	if (mysql_num_rows(RunQuery($sSQL)) == 0)
+
+	if ( !(
+	       $_SESSION['bEditRecords'] ||
+	       ($_SESSION['bEditSelf'] && $iPersonID==$_SESSION['iUserID']) ||
+	       ($_SESSION['bEditSelf'] && $per_fam_ID==$_SESSION['iFamID'])
+		  )
+	   )
 	{
 		Redirect("Menu.php");
 		exit;
