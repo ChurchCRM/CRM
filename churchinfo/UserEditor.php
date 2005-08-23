@@ -178,7 +178,7 @@ if (isset($_POST["Submit"]) && $iPersonID > 0) {
 		$usr_Notes = 0;
 		$usr_Communication = 0;
 		$usr_Admin = 0;
-		$usr_EditSelf = 0;
+		$usr_EditSelf = 1;
 		$usr_Canvasser = 0;
 		$sUserName = "";
 		$vNewUser = "true";
