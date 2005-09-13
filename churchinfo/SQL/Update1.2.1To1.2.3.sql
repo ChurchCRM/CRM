@@ -89,3 +89,31 @@ INSERT IGNORE INTO `config_cfg` VALUES (75, 'bDirLetterHead', '../Images/church_
 
 
 ALTER TABLE  `pledge_plg` ADD  `plg_NonDeductible` DECIMAL( 8, 2 ) NOT NULL;
+
+CREATE TABLE IF NOT EXISTS event_attend (
+  event_id int(11) NOT NULL default '0',
+  person_id int(11) NOT NULL default '0'
+) TYPE=MyISAM;
+
+CREATE TABLE IF NOT EXISTS event_types (
+  type_id int(11) NOT NULL auto_increment,
+  type_name varchar(255) NOT NULL default '',
+  PRIMARY KEY  (type_id),
+  UNIQUE KEY event_name (type_name)
+) TYPE=MyISAM;
+
+INSERT INTO `event_types` VALUES (1, 'Church Service');
+INSERT INTO `event_types` VALUES (2, 'Sunday School');
+
+CREATE TABLE IF NOT EXISTS events_event (
+  event_id int(11) NOT NULL auto_increment,
+  event_type int(11) NOT NULL default '0',
+  event_title varchar(255) NOT NULL default '',
+  event_desc varchar(255) default NULL,
+  event_text text,
+  event_start datetime NOT NULL default '0000-00-00 00:00:00',
+  event_end datetime NOT NULL default '0000-00-00 00:00:00',
+  inactive int(1) NOT NULL default '0',
+  PRIMARY KEY  (event_id),
+  FULLTEXT KEY event_txt (event_text)
+) TYPE=MyISAM;
