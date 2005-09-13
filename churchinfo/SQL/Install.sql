@@ -442,44 +442,44 @@ CREATE TABLE user_usr (
 
 INSERT INTO user_usr (usr_per_ID,
                       usr_Password,
-					  usr_NeedPasswordChange,
-					  usr_LastLogin,
-					  usr_LoginCount,
-					  usr_FailedLogins,
-					  usr_AddRecords,
-					  usr_EditRecords,
-					  usr_DeleteRecords,
-					  usr_MenuOptions,
-					  usr_ManageGroups,
-					  usr_Finance,
-					  usr_Communication,
-					  usr_Notes,
-					  usr_Admin,
-					  usr_Workspacewidth,
-					  usr_BaseFontSize,
-					  usr_SearchLimit,
-					  usr_Style,
-					  usr_UserName) 
-			VALUES (1,
-			        '1a7ac1b904382aaf0ac67b4f00e7b93f',
-					1,
-					'0000-00-00 00:00:00',
-					0,
-					0,
-					1,
-					1,
-					1,
-					1,
-					1,
-					1,
-					1,
-					1,
-					1,
-					580,
-					9,
-					10,
-					'Style.css',
-					'Admin');
+                                          usr_NeedPasswordChange,
+                                          usr_LastLogin,
+                                          usr_LoginCount,
+                                          usr_FailedLogins,
+                                          usr_AddRecords,
+                                          usr_EditRecords,
+                                          usr_DeleteRecords,
+                                          usr_MenuOptions,
+                                          usr_ManageGroups,
+                                          usr_Finance,
+                                          usr_Communication,
+                                          usr_Notes,
+                                          usr_Admin,
+                                          usr_Workspacewidth,
+                                          usr_BaseFontSize,
+                                          usr_SearchLimit,
+                                          usr_Style,
+                                          usr_UserName)
+                        VALUES (1,
+                                '1a7ac1b904382aaf0ac67b4f00e7b93f',
+                                        1,
+                                        '0000-00-00 00:00:00',
+                                        0,
+                                        0,
+                                        1,
+                                        1,
+                                        1,
+                                        1,
+                                        1,
+                                        1,
+                                        1,
+                                        1,
+                                        1,
+                                        580,
+                                        9,
+                                        10,
+                                        'Style.css',
+                                        'Admin');
 
 CREATE TABLE groupprop_master (
   grp_ID mediumint(9) unsigned NOT NULL default '0',
@@ -555,6 +555,34 @@ CREATE TABLE whycame_why (
   why_suggest text NOT NULL,
   why_hearOfUs text NOT NULL,
   PRIMARY KEY  (why_ID)
+) TYPE=MyISAM;
+
+CREATE TABLE event_attend (
+  event_id int(11) NOT NULL default '0',
+  person_id int(11) NOT NULL default '0'
+) TYPE=MyISAM;
+
+CREATE TABLE event_types (
+  type_id int(11) NOT NULL auto_increment,
+  type_name varchar(255) NOT NULL default '',
+  PRIMARY KEY  (type_id),
+  UNIQUE KEY event_name (type_name)
+) TYPE=MyISAM;
+
+INSERT INTO `event_types` VALUES (1, 'Church Service');
+INSERT INTO `event_types` VALUES (2, 'Sunday School');
+
+CREATE TABLE events_event (
+  event_id int(11) NOT NULL auto_increment,
+  event_type int(11) NOT NULL default '0',
+  event_title varchar(255) NOT NULL default '',
+  event_desc varchar(255) default NULL,
+  event_text text,
+  event_start datetime NOT NULL default '0000-00-00 00:00:00',
+  event_end datetime NOT NULL default '0000-00-00 00:00:00',
+  inactive int(1) NOT NULL default '0',
+  PRIMARY KEY  (event_id),
+  FULLTEXT KEY event_txt (event_text)
 ) TYPE=MyISAM;
 
 
