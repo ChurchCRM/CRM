@@ -18,8 +18,6 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-//require "Include/ReportFunctions.php";
-//require "Include/ReportConfig.php";
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
@@ -53,6 +51,14 @@ $aDefaultClasses = explode(',', $sDirClassifications);
 $aDirRoleHead = explode(",",$sDirRoleHead);
 $aDirRoleSpouse = explode(",",$sDirRoleSpouse);
 $aDirRoleChild = explode(",",$sDirRoleChild);
+
+$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+if ($rsConfig) {
+	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		$$cfg_name = $cfg_value;
+	}
+}
+
 
 ?>
 
@@ -201,7 +207,7 @@ $aDirRoleChild = explode(",",$sDirRoleChild);
 				</tr>
 				<tr>
 					<td><?php echo gettext("Disclaimer"); ?></td>
-					<td><textarea Name="sDirectoryDisclaimer" cols="35" rows="4"><?php echo $sDirectoryDisclaimer;?></textarea></td>
+					<td><textarea Name="sDirectoryDisclaimer" cols="35" rows="4"><?php echo "$sDirectoryDisclaimer1 $sDirectoryDisclaimer2";?></textarea></td>
 				</tr>
 
 			</table>
