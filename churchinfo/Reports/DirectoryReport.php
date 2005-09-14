@@ -124,7 +124,6 @@ class PDF_Directory extends ChurchInfoReport {
 		$this->SetMargins(0,0);
 		$this->Open();
 		$this->Set_Char_Size(12);
-		$this->AddPage();
 		$this->SetAutoPageBreak(false);
 
 		$this->_Margin_Left = 16;
@@ -498,7 +497,6 @@ $sChurchPhone = FilterInput($_POST["sChurchPhone"]);
 
 $bDirUseTitlePage = isset($_POST["bDirUseTitlePage"]);
 
-
 // Instantiate the directory class and build the report.
 $pdf = new PDF_Directory();
 
@@ -509,6 +507,8 @@ if ($rsConfig) {
 		$pdf->$cfg_name = $cfg_value;
 	}
 }
+
+$pdf->AddPage();
 
 if ($bDirUseTitlePage) $pdf->TitlePage();
 
