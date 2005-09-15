@@ -24,10 +24,11 @@
 //  event_end      datetime
 //  inactive       int(1) default 0
 
-$sPageTitle = gettext("Church Event Editor");
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/Header.php";
+$sPageTitle = gettext("Church Event Editor");
+
 
 $sAction = $_POST['Action'];
 $sOpp = $_POST['EID'];
