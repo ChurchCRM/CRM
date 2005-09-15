@@ -504,6 +504,11 @@ if ($bToolTipsOn) {
                                         'contents', <?php echo "'" . gettext("Canvass Support") . "'"; ?>,
                                         'uri', 'Help.php?page=Canvass',
                                         'statusText', ''
+                                ),
+                                14, new domMenu_Hash(
+                                        'contents', <?php echo "'" . gettext("Events") . "'"; ?>,
+                                        'uri', 'Help.php?page=Events',
+                                        'statusText', ''
                                 )
                         )
                 ));
