@@ -27,8 +27,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/Header.php";
-$sPageTitle = gettext("Church Event Editor");
 
+$sPageTitle = gettext("Church Event Editor");
 
 $sAction = $_POST['Action'];
 $sOpp = $_POST['EID'];
@@ -63,26 +63,60 @@ if ($sAction = 'Edit' && !empty($sOpp))
 
 } elseif (isset($_POST["SaveChanges"])) {
 // Does the user want to save changes to text fields?
+        $bErrors = 0;
         $uEventID = $_POST['EventID'];
         $uEventType = $_POST['EventType'];
-        if (strlen($_POST['EventTitle']) == 0 )
+        if (empty($_POST['EventTitle']))
         {
-                $uTypeErrors[$eET] = true;
-                $bErrorFlag = true;
+                $bTitleError = true;
+                $bErrors++;
         }
         else
         {
                 $uEventTitle = FilterInput($_POST['EventTitle']);
-                $uTypeErrors[$eET] = false;
         }
-        $uEventDesc = FilterInput($_POST['EventDesc']);
+        if (empty($_POST['EventDesc']))
+        {
+                $bDescError = true;
+                $bErrors++;
+        }
+        else
+        {
+                $uEventDesc = FilterInput($_POST['EventDesc']);
+        }
         $uEventText = FilterInput($_POST['EventText']);
-        $uEventStart = $_POST['EventStartDate']." ".$_POST['EventStartTime'];
-        $uEventEnd = $_POST['EventEndDate']." ".$_POST['EventEndTime'];
+        if (empty($_POST['EventStartDate']))
+        {
+                $bESDError = true;
+                $bErrors++;
+        }
+        else
+        {
+                $uEventStartDate = $_POST['EventStartDate'];
+        }
+        if (empty($_POST['EventStartTime']))
+        {
+                $bESTError = true;
+                $bErrors++;
+        }
+        else
+        {
+                $uEventStartTime = $_POST['EventStartTime'];
+                $uESTokens = explode(":", $_POST['EventStartTime']);
+                $uEventStartHour = $uESTokens[0];
+                $uEventStartMins = $uESTokens[1];
+        }
+        $uEventStart = $uEventStartDate." ".$uEventStartTime;
+        $uEventEndDate = $_POST['EventEndDate'];
+        $uEventEndTime = $_POST['EventEndTime'];
+          $uEETokens = explode(":", $_POST['EventEndTime']);
+          $uEventEndHour = $uEETokens[0];
+          $uEventEndMins = $uEETokens[1];
+        $uEventEnd = $uEventEndDate." ".$uEventEndTime;
         $uEventStatus = $_POST['EventStatus'];
 
         // If no errors, then update.
-        if (!$bErrorFlag)
+        if ($bErrors == 0)
         {
             $sSQL = "UPDATE events_event
                      SET `event_type` = '".$uEventType."',
@@ -94,23 +128,37 @@ if ($sAction = 'Edit' && !empty($sOpp))
                      `inactive` = '".$uEventStatus."'" .
                     " WHERE `event_id` = '" . $uEventID."';";
             RunQuery($sSQL);
+            header ("Location: ListEvents.php");
         }
-        header ("Location: ListEvents.php");
 }
 
 // Construct the form
 ?>
 
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" name="EventsEditor">
-<input type="hidden" name="EventID" value="<?php echo $_POST['EID']; ?>">
+<input type="hidden" name="EventID" value="<?php echo ($uEventID ? $uEventID:$_POST['EID']); ?>">
 <table cellpadding="3" width="75%" align="center">
   <caption>
-    <h3><?php echo gettext("Editing Event ID: ".$aEventID); ?></h3>
-    <input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';">
-    <?php if ($bErrorFlag) echo "There were errors"; ?>
+    <h3><?php echo gettext("Editing Event ID: ").($uEventID ? $uEventID:$aEventID); ?></h3>
   </caption>
   <tr>
-    <td class="LabelColumn"><?php echo gettext("Event Type:"); ?></td>
+    <td colspan="4" align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
+  </tr>
+  <tr>
+    <td colspan="4" align="center">
+    <?php
+    if ($bErrors != 0) {
+        echo 'There were '.$bErrors.' errors. Please see below';
+    }
+    else
+    {
+        echo 'Items with a <font color="#ff0000">*</font> are required';
+    }
+    ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Type:"); ?></td>
     <td colspan="3" class="TextColumn">
       <select name="EventType">
 <?php
@@ -127,7 +175,7 @@ $sSQL = "SELECT * FROM `event_types`";
                 extract($bRow);
 
                 echo '<option value="'.$type_id.'"';
-                if ($aTypeID == $type_id) echo " selected";
+                if ($aTypeID == $type_id || $uEventType == $type_id) echo ' selected';
                 echo '">'.$type_name.'</option>';
         }
 ?>
@@ -135,48 +183,54 @@ $sSQL = "SELECT * FROM `event_types`";
     </td>
   </tr>
   <tr>
-    <td class="LabelColumn"><?php echo gettext("Event Title:"); ?></td>
+    <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Title:"); ?></td>
     <td colspan="3" class="TextColumn">
-      <input type="text" name="EventTitle" value="<?php echo $aEventTitle; ?>" echo " size="40" maxlength="100">
-      <?php if ( $bTitleError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a title.") . "</span></div>"; ?>
+      <input type="text" name="EventTitle" value="<?php echo ($uEventTitle ? $uEventTitle:$aEventTitle); ?>" echo " size="40" maxlength="100">
+      <?php if ( $bTitleError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a title.") . "</span></div>"; ?>
     </td>
   </tr>
   <tr>
-    <td class="LabelColumn"><?php echo gettext("Event Desc:"); ?></td>
+    <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Desc:"); ?></td>
     <td colspan="3" class="TextColumn">
-      <input type="text" name="EventDesc" value="<?php echo $aEventDesc; ?>" size="40" maxlength="100">
-      <?php if ( $bDescError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
+      <input type="text" name="EventDesc" value="<?php echo ($uEventDesc ? $uEventDesc:$aEventDesc); ?>" size="40" maxlength="100">
+      <?php if ( $bDescError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a description.") . "</span></div>"; ?>
     </td>
   </tr>
   <tr>
     <td class="LabelColumn"><?php echo gettext("Event Sermon:"); ?></td>
-    <td colspan="3" class="TextColumn"><textarea name="EventText" rows="10" cols="80"><?php echo $aEventText; ?></textarea></td>
+    <td colspan="3" class="TextColumn"><textarea name="EventText" rows="10" cols="80"><?php echo ($uEventText ? $uEventText:$aEventText); ?></textarea></td>
   </tr>
   <tr>
-    <td class="LabelColumn" <?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>>
-      <?php echo gettext("Start Date:"); ?>
+    <td class="LabelColumn"><font color="#ff0000">*</font>
+      <?php echo gettext("Start Date:"); ?><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>
     </td>
     <td class="TextColumn">
-      <input type="text" name="EventStartDate" value="<?php echo $aEventStartDate; ?>" maxlength="10" id="SD" size="11">&nbsp;
+      <input type="text" name="EventStartDate" value="<?php echo ($uEventStartDate ? $uEventStartDate:$aEventStartDate); ?>" maxlength="10" id="SD" size="11">&nbsp;
       <input type="image" onclick="return showCalendar('SD', 'y-mm-dd');" src="Images/calendar.gif">
       <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span>
+      <?php if ( $bESDError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a start date.") . "</span></div>"; ?>
     </td>
-    <td class="LabelColumn">
+    <td class="LabelColumn"><font color="#ff0000">*</font>
       <?php echo gettext("Start Time:"); ?>
     </td>
     <td class="TextColumn">
       <select name="EventStartTime" size="1">
+      <?
+      if ($uEventStartHour) $aEventStartHour = $uEventStartHour;
+      if ($uEventStartMins) $aEventStartMins = $uEventStartMins;
+      ?>
       <?php createTimeDropdown(7,18,15,$aEventStartHour,$aEventStartMins); ?>
       </select>
       &nbsp;<span class="SmallText"><?php echo gettext("[format: HH:MM]"); ?></span>
+      <?php if ( $bESTError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a start time.") . "</span></div>"; ?>
     </td>
   </tr>
   <tr>
-    <td class="LabelColumn" <?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>>
+    <td class="LabelColumn">
       <?php echo gettext("End Date:"); ?>
     </td>
     <td class="TextColumn">
-      <input type="text" name="EventEndDate" value="<?php echo $aEventEndDate; ?>" maxlength="10" id="ED" size="11">&nbsp;
+      <input type="text" name="EventEndDate" value="<?php echo ($uEventEndDate ? $uEventEndDate:$aEventEndDate); ?>" maxlength="10" id="ED" size="11">&nbsp;
       <input type="image" onclick="return showCalendar('ED', 'y-mm-dd');" src="Images/calendar.gif">
       <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span>
     </td>
@@ -185,16 +239,20 @@ $sSQL = "SELECT * FROM `event_types`";
     </td>
     <td class="TextColumn">
       <select name="EventEndTime" size="1">
+      <?
+      if ($uEventEndHour) $aEventEndHour = $uEventEndHour;
+      if ($uEventEndMins) $aEventEndMins = $uEventEndMins;
+      ?>
       <?php createTimeDropdown(7,18,15,$aEventEndHour,$aEventEndMins); ?>
       </select>
       &nbsp;<span class="SmallText"><?php echo gettext("[format: HH:MM]"); ?></span>
     </td>
   </tr>
   <tr>
-    <td class="LabelColumn"><?php echo gettext("Event Status:"); ?></td>
+    <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Status:"); ?></td>
     <td colspan="3" class="TextColumn">
-      <input type="radio" name="EventStatus" value="0"<?php if ($aEventStatus == 0) echo " checked";?>> Active <input type="radio" name="EventStatus" value="1"<?php if ($aEventStatus == 1) echo " checked"; ?>> Inactive
-      <?php if ( $bStatusError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("Is this Active or Inactive?") . "</span></div>"; ?>
+      <input type="radio" name="EventStatus" value="0"<?php if ($aEventStatus == 0 || $uEventStatus == 0) echo " checked";?>> Active <input type="radio" name="EventStatus" value="1"<?php if ($aEventStatus == 1 || $uEventStatus == 1) echo " checked"; ?>> Inactive
+      <?php if ( $bStatusError ) echo "<div><span style=\"color: red;\">" . gettext("Is this Active or Inactive?") . "</span></div>"; ?>
     </td>
   </tr>
   <tr>

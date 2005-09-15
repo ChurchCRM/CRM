@@ -73,6 +73,25 @@ require "Include/Header.php";
 <?php echo gettext("Automated support for conducting an every-member canvass."); ?>
 </p>
 
+<p>
+<span class="MediumText"><u><?php echo gettext("Event Attendance"); ?></u></span>
+<br>
+<?php echo gettext("Generate attendance -AND- non-attendance reports for events"); ?>
+<br>
+<?php
+$sSQL = "SELECT * FROM event_types";
+$rsOpps = RunQuery($sSQL);
+$numRows = mysql_num_rows($rsOpps);
+
+// List all events
+        for ($row = 1; $row <= $numRows; $row++)
+        {
+                $aRow = mysql_fetch_array($rsOpps);
+                extract($aRow);
+                echo '&nbsp;&nbsp;&nbsp;<a href="EventAttendance.php?Action=List&Event='.$type_id.'&Type='.gettext($type_name).'" title="List All '.gettext($type_name).' Events"><strong>'.gettext($type_name).'</strong></a>'."<br>\n";
+        }
+?>
+</p>
 
 <?php
 require "Include/Footer.php";

@@ -3,7 +3,7 @@
         require "Include/Header.php";
 ?>
 <div class="Help_Section">
-  <div class="Help_Header">What is a Event?</div>
+  <div class="Help_Header">What is an Event?</div>
     <table width="100%" class="LightShadedBox">
       <tr>
         <td>
