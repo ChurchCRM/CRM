@@ -76,9 +76,12 @@ if (!empty($_POST["funds"])) {
 
 // Make the string describing the fund filter
 if ($fundCount > 0) {
-	if ($fundCount == 1)
-		$fundOnlyString = gettext ("for fund ");
-	else
+	if ($fundCount == 1) {
+		if ($fund[0] == gettext ("All Funds"))
+			$fundOnlyString = gettext (" for all funds");
+		else
+			$fundOnlyString = gettext (" for fund ");
+	} else
 		$fundOnlyString = gettext ("for funds ");
 	for ($i = 0; $i < $fundCount; $i++) {
 		$sSQL = "SELECT fun_Name FROM donationfund_fun WHERE fun_ID=" . $fund[$i];
