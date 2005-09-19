@@ -2,8 +2,8 @@
 /*******************************************************************************
  *
  *  filename    : Attendance.php
- *  last change : 2005-09-113
- *  website     : http://www.churchinfo.org
+ *  last change : 2005-09-18
+ *  website     : http://www.churchdb.org
  *  copyright   : Copyright 2005 Todd Pillars
  *
  *  function    : List all Church Events
@@ -22,11 +22,10 @@ if ($_POST['Action']== "Retrieve" && !empty($_POST['Event']))
 {
     if ($_POST['Choice'] == "Attendees")
     {
-        $sSQL = "SELECT per_ID, per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Email, per_HomePhone, per_Country, per_MembershipDate 
-                FROM person_per as t1, events_event as t2, event_attend as t3 
-                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$_POST['Event']." AND per_cls_ID = 1";
-                // GROUP BY t1.per_fam_ID
-        $sSQL .= " ORDER BY t1.per_LastName, t1.per_ID";
+        $sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t4.fam_HomePhone, t4.fam_Country
+                FROM person_per AS t1, events_event AS t2, event_attend AS t3, family_fam AS t4 
+                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$_POST['Event']." AND t1.per_fam_ID = t4.fam_ID AND per_cls_ID = 1
+		ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext("Event Attendees");
     }
     elseif ($_POST['Choice'] == "Nonattendees")
@@ -37,17 +36,29 @@ if ($_POST['Action']== "Retrieve" && !empty($_POST['Event']))
         {
             $aArr[] = $aRow[0];
         }
-        if (count($aArr) > 0) $aArrJoin = join(",",$aArr);
-        $sSQL = "SELECT per_ID, per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Email, per_HomePhone, per_Country, per_MembershipDate 
-                FROM person_per 
-                WHERE per_ID NOT IN (".$aArrJoin.") AND per_cls_ID = 1";
+        if (count($aArr) > 0)
+	{
+		$aArrJoin = join(",",$aArr);
+	        $sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t2.fam_HomePhone, t2.fam_Country
+        	        FROM person_per AS t1, family_fam AS t2
+                	WHERE t1.per_fam_ID = t2.fam_ID AND t1.per_ID NOT IN (".$aArrJoin.") AND per_cls_ID = 1
+			ORDER BY t1.per_LastName, t1.per_ID";
+	}
+	else
+	{
+		$sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t2.fam_HomePhone, t2.fam_Country
+                        FROM person_per AS t1, family_fam AS t2
+                        WHERE t1.per_fam_ID = t2.fam_ID AND per_cls_ID = 1
+			ORDER BY t1.per_LastName, t1.per_ID";
+	}
         $sPageTitle = gettext("Event Nonattendees");
     }
     elseif ($_POST['Choice'] == "Guests")
     {
-        $sSQL = "SELECT per_ID, per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_HomePhone, per_Country
-                FROM person_per as t1, events_event as t2, event_attend as t3 
-                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$_POST['Event']." AND per_cls_ID = 3";
+        $sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_HomePhone, t1.per_Country
+                FROM person_per AS t1, events_event AS t2, event_attend AS t3
+                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$_POST['Event']." AND per_cls_ID = 3
+		ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext("Event Guests");
     }
 }
@@ -90,8 +101,7 @@ for ($row = 1; $row <= $numRows; $row++)
         $aLastName[$row] = $per_LastName;
         $aSuffix[$row] = $per_Suffix;
         $aEmail[$row] = $per_Email;
-        $aHomePhone[$row] = $per_HomePhone;
-        $aPhoneCountry[$row] = $per_Country;
+	$aHomePhone[$row] = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone,$per_Country,$dummy), ExpandPhoneNumber($fam_HomePhone,$fam_Country,$dummy), True);
     }
 }
 
@@ -189,9 +199,10 @@ elseif ($_POST['Action']== "Retrieve" && $numRows > 0)
          <h3><?php echo gettext("There ".($numRows == 1 ? "was ".$numRows." ".$_POST['Choice']:"were ".$numRows." ".$_POST['Choice']))." for this Event"; ?></h3>
        </caption>
          <tr class="TableHeader">
-           <td width="33%"><strong><?php echo gettext("Name"); ?></strong></td>
-           <td width="34%"><strong><?php echo gettext("Email"); ?></strong></td>
-           <td width="33%"><strong><?php echo gettext("Home Phone"); ?></strong></td>
+           <td width="45%"><strong><?php echo gettext("Name"); ?></strong></td>
+           <td width="25%"><strong><?php echo gettext("Email"); ?></strong></td>
+           <td width="25%"><strong><?php echo gettext("Home Phone"); ?></strong></td>
+	   <td width="10%" nowrap><strong><?php echo gettext("Cart"); ?></strong></td>
         </tr>
 <?php
          //Set the initial row color
@@ -209,6 +220,10 @@ elseif ($_POST['Action']== "Retrieve" && $numRows > 0)
            <td class="TextColumn"><?php echo FormatFullName($aTitle[$row],$aFistName[$row],$aMiddleName[$row],$aLastName[$row],$aSuffix[$row],3); ?></td>
            <td class="TextColumn"><?php echo ($aEmail[$row] ? '<a href="mailto:'.$aEmail[$row].'" title="Send Email">'.$aEmail[$row].'</a>':'Not Available'); ?></td>
            <td class="TextColumn"><?php echo ($aHomePhone[$row] ? ExpandPhoneNumber($aHomePhone[$row],$aPhoneCountry[$row],$dummy):'Not Available'); ?></td>
+<?php
+// AddToCart call to go here
+?>
+           <td class="TextColumn">&nbsp;</td>
          </tr>
 <?
          }
