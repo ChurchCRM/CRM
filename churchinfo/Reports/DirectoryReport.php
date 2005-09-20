@@ -535,13 +535,35 @@ if ($_POST['cartdir'] != null)
 {
     $sWhereExt .= "AND per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ")";
 }
-        
+
+$mysqlinfo = mysql_get_server_info();
+$mysqltmp = explode(".", $mysqlinfo);
+$mysqlversion = $mysqltmp[0];
+if(count($mysqltmp[1] > 1)) 
+    $mysqlsubversion = $mysqltmp[1]; 
+    else $mysqlsubversion = 0;
+if($mysqlversion >= 4){
     // This query is similar to that of the CSV export with family roll-up.
     // Here we want to gather all unique families, and those that are not attached to a family.
     $sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier )
         UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier  GROUP BY per_fam_ID HAVING memberCount = 1)
         UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier  GROUP BY per_fam_ID HAVING memberCount > 1)
         ORDER BY SortMe";
+}else if($mysqlversion == 3 && $mysqlsubversion >= 22){
+    // If UNION not supported use this query with temporary table.  Prior to version 3.22 no IF EXISTS statement.
+    $sSQL = "DROP TABLE IF EXISTS tmp;";
+    $rsRecords = mysql_query($sSQL) or die(mysql_error());
+    $sSQL = "CREATE TABLE tmp TYPE = MyISAM SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier ;"; 
+    $rsRecords = mysql_query($sSQL) or die(mysql_error());
+    $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount = 1;"; 
+    $rsRecords = mysql_query($sSQL) or die(mysql_error());
+    $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount > 1;";
+    $rsRecords = mysql_query($sSQL) or die(mysql_error());
+	$sSQL = "SELECT DISTINCT * FROM tmp ORDER BY SortMe";
+
+}else{
+    die(gettext("This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchInfo."));
+}
 
 $rsRecords = RunQuery($sSQL);
 
@@ -680,6 +702,11 @@ while ($aRow = mysql_fetch_array($rsRecords))
 	}
 }
 
+if($mysqlversion == 3 && $mysqlsubversion >= 22){
+    $sSQL = "DROP TABLE IF EXISTS tmp;";
+    mysql_query($sSQL,$cnInfoCentral);
+}
+    
 if ($iPDFOutputType == 1)
 	$pdf->Output("Directory-" . date("Ymd-Gis") . ".pdf", true);
 else
