@@ -114,13 +114,6 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	//Adjust variables as needed
 	if ($iFamily == 0)	$iFamilyRole = 0;
 
-	//Validate the First Name
-	if (strlen($sFirstName) < 1)
-	{
-		$sFirstNameError = gettext("You must enter a First Name.");
-		$bErrorFlag = true;
-	}
-
 	//Validate the Last Name.  If family selected, but no last name, inherit from family.
 	if (strlen($sLastName) < 1)
 	{
