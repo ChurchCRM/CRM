@@ -498,6 +498,8 @@ function RemoveFromPeopleCart($sID)
 // bWithtime 1 to be displayed
 function FormatDate($dDate, $bWithTime)
 {
+    if ($dDate == "" || $dDate == "0000-00-00 00:00:00")
+        return ("Unknown");
     $arr = explode(" ", $dDate);
     $arr0 = explode("-", $arr[0]);
     $arr1 = explode(":", $arr[1]);
