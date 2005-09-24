@@ -8,7 +8,7 @@
 	<table width="100%" class="LightShadedBox">
 	<tr>
 		<td width="10%" nowrap><b>Version:<b></td>
-		<td>1.2.0</td>
+		<td>1.2.3</td>
 	</tr>
 	<tr>
 		<td width="10%" nowrap><b>Release Date:</b></td>
