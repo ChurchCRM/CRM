@@ -87,6 +87,8 @@ INSERT IGNORE INTO `config_cfg` VALUES (73, 'sDirectoryDisclaimer1', 'Every effo
 INSERT IGNORE INTO `config_cfg` VALUES (74, 'sDirectoryDisclaimer2', ', and the information contained in it may not be used for business or commercial purposes.', 'text', ', and the information contained in it may not be used for business or commercial purposes.', 'Verbage for the directory report', 'ChurchInfoReport');
 INSERT IGNORE INTO `config_cfg` VALUES (75, 'bDirLetterHead', '../Images/church_letterhead.jpg', 'text', '../Images/church_letterhead.jpg', 'Church Letterhead path and file', 'ChurchInfoReport');
 
+INSERT IGNORE INTO `config_cfg` VALUES (100, 'bRegistered', '0', 'boolean', '0', 'ChurchInfo has been registered.  The ChurchInfo team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General');
+
 
 ALTER TABLE  `pledge_plg` ADD  `plg_NonDeductible` DECIMAL( 8, 2 ) NOT NULL;
 
