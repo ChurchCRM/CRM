@@ -191,6 +191,19 @@ $MenuFirst = 1;
 					'contents', <?php echo "'" . gettext("Edit Report Settings") . "'"; ?>,
 					'uri', 'SettingsReport.php',
 					'statusText', ''
+				),
+				10, new domMenu_Hash(
+					'contents', 
+					<?php 
+						echo "'";
+						if (! $_SESSION['bRegistered'])
+							echo gettext("Please select this option to register ChurchInfo after configuring.");
+						else
+							echo gettext("Update registration");
+						echo "',"; 
+					?>
+					'uri', 'Register.php',
+					'statusText', ''
 				)
 			),
 			<?php } ?>
