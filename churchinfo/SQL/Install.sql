@@ -217,9 +217,9 @@ CREATE TABLE pledge_plg (
   plg_aut_ID mediumint(9) NOT NULL default '0',
   plg_aut_Cleared tinyint(1) NOT NULL default '0',
   plg_aut_ResultID mediumint(9) NOT NULL default '0',
+  plg_NonDeductible DECIMAL( 8, 2 ) NOT NULL,
   PRIMARY KEY  (plg_plgID)
 ) TYPE=MyISAM;
-
 
 CREATE TABLE property_pro (
   pro_ID mediumint(8) unsigned NOT NULL auto_increment,
