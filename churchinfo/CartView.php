@@ -125,7 +125,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
 
         if ($iEmailNum > 0) {
                 // Add default email if default email has been set and is not already in string
-                if ($sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress))
+                if ($sToEmailAddress != "" && $sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress))
                         $sEmailLink .= "," . $sToEmailAddress;
                 echo "<br><a href=\"mailto:" . $sEmailLink ."\">". gettext("Email Cart") . "</a>";
                 echo "<br><a href=\"mailto:?&bcc=".$sEmailLink."\">".gettext("Email (BCC)")."</a>";
