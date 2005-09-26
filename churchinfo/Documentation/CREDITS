@@ -1,26 +1,17 @@
 Credits and Thanks
 ------------------
 
-Project Leader / Primary Developer:
-	Chris Gebhardt <chris@openserve.org>
-	
-Assistant Developers:
-	Lewis Franklin <lewis@franklin.org>
+The ChurchInfo team:
+	Michael Wilt: mikewiltwork at users.sourceforge.net
+	Tim Dearborn: timdearborn at users.sourceforge.net
+	Vincent Dogterom: dogteromv at users.sourceforge.net
+	Elmills: elmills at users.sourceforge.net
+	Todd Pillars: kazoot at users.sourceforge.net
+	Amiel Heyde: mealz at users.sourceforge.net
+	Richard Bondi: rbondi at users.sourceforge.net
+	Shaun Lloyd: shaunlloyd at users.sourceforge.net
+	G. Warren: craneandcrow at users.sourceforge.net
 
-Other Code Contributors:
-	Michael Slemen
-	Chris Nogradi
-	Jason York
-	Federico Nebiolo
-	Chris Simmons
-
-Translators:
-	Federico Nebiolo (Italian)
-
-Original Project Founders:
-	Deane Barker
-	Phillip Hullquist
-	
 Other Open Source code used in this project:
 	Javascript / DHTML Calendar by Mihai Bazon
 	DOM Menu by Dan Allen
@@ -31,6 +22,5 @@ Other Open Source code used in this project:
 Other data / graphics used in this project:
 	NoFamPhoto and NoPhoto are derivatives of Crystal theme icons from the KDE project
 
------
-Please let Chris know if your name was accidentally omitted or if you want
-your e-mail address (un)listed here.
+ChurchInfo is a spin-off from InfoCentral.  Refer to the InfoCentral 
+project for additional credits and history.
