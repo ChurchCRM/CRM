@@ -669,7 +669,7 @@ if ($iMode == 1 || $iMode == 2)
                                 </td>
                                 <td><?php if (strlen($zip)) echo $zip; else echo gettext("unassigned"); ?></td>
                                 <td>
-                                <?
+                                <?php
                                 // Added to show who is in cart
                                 if (@!in_array($per_ID, $_SESSION['aPeopleCart'])) {
                                         echo "<a onclick=\"AddToCart('".$per_ID."'); window.parent.reload();\" href=\"SelectList.php?mode=person\">".gettext("Add to Cart")."</a>";
