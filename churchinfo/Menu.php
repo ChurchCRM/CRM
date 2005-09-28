@@ -33,7 +33,7 @@ require "Include/Header.php";
 if ($_SESSION['iLoginCount'] == 0) {
 	echo gettext("This is your first login.");
 } else {
-	echo gettext("You last logged in on ") . strftime("%A, %B %e, %Y",$_SESSION['dLastLogin']) . ' ' . gettext("at") . ' ' . strftime("%r",$_SESSION['dLastLogin']) . ".";
+	echo gettext("You last logged in on ") . date("l, F d, Y",$_SESSION['dLastLogin']) . ' ' . gettext("at") . ' ' . date("H:i",$_SESSION['dLastLogin']) . ".";
 }
 ?>
 </p>
