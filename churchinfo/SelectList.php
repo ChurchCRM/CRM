@@ -668,16 +668,7 @@ if ($iMode == 1 || $iMode == 2)
                                         ?>&nbsp;
                                 </td>
                                 <td><?php if (strlen($zip)) echo $zip; else echo gettext("unassigned"); ?></td>
-                                <td>
-                                <?php
-                                // Added to show who is in cart
-                                if (@!in_array($per_ID, $_SESSION['aPeopleCart'])) {
-                                        echo "<a onclick=\"AddToCart('".$per_ID."'); window.parent.reload();\" href=\"SelectList.php?mode=person\">".gettext("Add to Cart")."</a>";
-                                } else {
-                                        echo "<a onclick=\"RemoveFromCart('".$per_ID."'); window.parent.reload();\" href=\"SelectList.php?mode=person\">".gettext("Remove From Cart")."</a>";
-                                }
-                                ?>
-                                </td>
+                                <td><a onclick="return AddToCart(<?php echo $per_ID ?>);" href="blank.html"><?php echo gettext("Add to Cart"); ?></a></td>
                                 <?php if ($iMode == 1) { ?>
                                         <td><a href="VCardCreate.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Create vCard"); ?></a></td>
                                         <td><a href="PrintView.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Print Page"); ?></a></td>
