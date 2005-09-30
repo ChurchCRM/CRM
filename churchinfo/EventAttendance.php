@@ -24,7 +24,7 @@ if ($_POST['Action']== "Retrieve" && !empty($_POST['Event']))
     {
         $sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t4.fam_HomePhone, t4.fam_Country
                 FROM person_per AS t1, events_event AS t2, event_attend AS t3, family_fam AS t4 
-                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$_POST['Event']." AND t1.per_fam_ID = t4.fam_ID AND per_cls_ID = 1
+                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$_POST['Event']." AND t1.per_fam_ID = t4.fam_ID AND per_cls_ID IN ('1','2','5')
 		ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext("Event Attendees");
     }
@@ -41,14 +41,14 @@ if ($_POST['Action']== "Retrieve" && !empty($_POST['Event']))
 		$aArrJoin = join(",",$aArr);
 	        $sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t2.fam_HomePhone, t2.fam_Country
         	        FROM person_per AS t1, family_fam AS t2
-                	WHERE t1.per_fam_ID = t2.fam_ID AND t1.per_ID NOT IN (".$aArrJoin.") AND per_cls_ID = 1
+                	WHERE t1.per_fam_ID = t2.fam_ID AND t1.per_ID NOT IN (".$aArrJoin.") AND per_cls_ID IN ('1','2','5')
 			ORDER BY t1.per_LastName, t1.per_ID";
 	}
 	else
 	{
 		$sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t2.fam_HomePhone, t2.fam_Country
                         FROM person_per AS t1, family_fam AS t2
-                        WHERE t1.per_fam_ID = t2.fam_ID AND per_cls_ID = 1
+                        WHERE t1.per_fam_ID = t2.fam_ID AND per_cls_ID IN ('1','2','5')
 			ORDER BY t1.per_LastName, t1.per_ID";
 	}
         $sPageTitle = gettext("Event Nonattendees");
@@ -57,7 +57,7 @@ if ($_POST['Action']== "Retrieve" && !empty($_POST['Event']))
     {
         $sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_HomePhone, t1.per_Country
                 FROM person_per AS t1, events_event AS t2, event_attend AS t3
-                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$_POST['Event']." AND per_cls_ID = 3
+                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$_POST['Event']." AND per_cls_ID IN ('0','3') 
 		ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext("Event Guests");
     }
@@ -145,12 +145,12 @@ if ($_GET['Action'] == "List" && $numRows > 0)
 <?php
 $cSQL = "SELECT COUNT(per_ID) AS cCount
          FROM person_per as t1, events_event as t2, event_attend as t3
-         WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$aEventID[$row]." AND per_cls_ID = 1";
+         WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$aEventID[$row]." AND per_cls_ID IN ('1','2','5')";
 $cOpps = RunQuery($cSQL);
 $cNumAttend = mysql_result($cOpps, 0);
 $tSQL = "SELECT COUNT(per_ID) AS tCount
          FROM person_per
-         WHERE per_cls_ID = 1";
+         WHERE per_cls_ID IN ('1','2','5')";
 $tOpps = RunQuery($tSQL);
 $tNumTotal = mysql_result($tOpps, 0);
 ?>
@@ -199,10 +199,10 @@ elseif ($_POST['Action']== "Retrieve" && $numRows > 0)
          <h3><?php echo gettext("There ".($numRows == 1 ? "was ".$numRows." ".$_POST['Choice']:"were ".$numRows." ".$_POST['Choice']))." for this Event"; ?></h3>
        </caption>
          <tr class="TableHeader">
-           <td width="45%"><strong><?php echo gettext("Name"); ?></strong></td>
+           <td width="35%"><strong><?php echo gettext("Name"); ?></strong></td>
            <td width="25%"><strong><?php echo gettext("Email"); ?></strong></td>
            <td width="25%"><strong><?php echo gettext("Home Phone"); ?></strong></td>
-	   <td width="10%" nowrap><strong><?php echo gettext("Cart"); ?></strong></td>
+	   <td width="15%" nowrap><strong><?php /* echo gettext("Cart"); */ ?>&nbsp;</strong></td>
         </tr>
 <?php
          //Set the initial row color
@@ -223,7 +223,7 @@ elseif ($_POST['Action']== "Retrieve" && $numRows > 0)
 <?php
 // AddToCart call to go here
 ?>
-           <td class="TextColumn">&nbsp;</td>
+           <td class="TextColumn"><?php /* echo '<a onclick="return AddToCart('.$aPersonID[$row].');" href="blank.html">'.gettext("Add to Cart").'</a>'; */ ?>&nbsp;</td>
          </tr>
 <?
          }
