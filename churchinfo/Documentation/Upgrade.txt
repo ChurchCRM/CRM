@@ -10,12 +10,3 @@ for reference.  Most of the configuration options that were previously set
 in these files have been moved into the database.  You can now set these 
 options by selecting Admin->Edit General Settings and 
 Admin->Edit Report Settings.
-
-********** Important Note ***********
-
-As of 1.2.3, the root path to ChurchInfo is specified in the table config_cfg.
-The fourth entry in this table should have cfg_name set to "sRootPath" and 
-cfg_value set to "/churchinfo".  If want to change this path, you must either
-edit Install.sql prior to executing it, or use phpMyAdmin or a similar program
-to set this value correcly.  ChurchInfo will not run if this value is not in
-agreement with the actual path to ChurchInfo on your server.

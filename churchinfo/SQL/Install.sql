@@ -601,7 +601,6 @@ CREATE TABLE IF NOT EXISTS `config_cfg` (
 INSERT IGNORE INTO `config_cfg` VALUES (1, 'sWEBCALENDARDB', '', 'text', '', 'WebCalendar database name', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (2, 'aHTTPports', '80,8000,8080', 'text', '80,8000,8080', 'Ports on which the web server may run.  Defaults are fine for most people.', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (3, 'aHTTPSports', '443', 'text', '443', 'Ports on which the SSL web server may run.  Defaults are fine for most people.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (4, 'sRootPath', '/churchinfo', 'text', '/churchinfo', 'Root path of your ChurchInfo installation ( THIS MUST BE SET CORRECTLY! )\rFor example, if you will be accessing from http://www.yourdomain.com/web/churchinfo\rthen you would enter "/web/churchinfo" here.  This path SHOULD NOT end with slash.', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (5, 'debug', '1', 'boolean', '1', 'Set debug mode\r\nThis may be helpful for when you''re first setting up ChurchInfo, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you''ll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (6, 'sJPGRAPH_PATH', 'Include/jpgraph-1.13/src', 'text', 'Include/jpgraph-1.13/src', 'JPGraph library', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (7, 'sFPDF_PATH', 'Include/fpdf', 'text', 'Include/fpdf', 'FPDF library', 'General');

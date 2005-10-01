@@ -6,9 +6,10 @@
  *  description : global configuration
  *
  *  http://www.churchinfo.org/
- *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
+ *  Copyright 2001-2005 Phillip Hullquist, Deane Barker, Chris Gebhardt, 
+ *                      Michael Wilt, Timothy Dearborn
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -20,6 +21,15 @@ $sSERVERNAME = "localhost";
 $sUSER = "churchinfo";
 $sPASSWORD = "churchinfo";
 $sDATABASE = "churchinfo";
+
+// Root path of your ChurchInfo installation ( THIS MUST BE SET CORRECTLY! )
+// For example, if you will be accessing from http://www.yourdomain.com/web/churchinfo
+// then you would enter "/web/churchinfo" here.  This path SHOULD NOT end with slash.
+$sRootPath="/churchinfo";
+
+//
+// SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE
+//
 
 // Establish the database connection
 $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD);
@@ -35,11 +45,6 @@ if ($rsConfig) {
 		$$cfg_name = $cfg_value;
 	}
 }
-	
-
-//
-// SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE
-//
 
 putenv("LANG=$sLanguage");
 setlocale(LC_ALL, $sLanguage);
