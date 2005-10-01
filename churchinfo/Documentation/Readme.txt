@@ -118,31 +118,25 @@ $sPASSWORD = "password";
 $sDATABASE = "churchinfo";
 
 Change these parameters to match the mysql server and user account you
-intend to use.  Change other settings as appropriate for your
-location and desired configuration.  You MUST set the $sRootPath option
-properly as described in Config.php.
+intend to use.  You MUST set the $sRootPath option properly as described 
+in Config.php.
 
 4) You should be able to access ChurchInfo at "http://[server
-name]/churchinfo/Default.php". The database script will have set up
+name]/churchinfo". The database script will have set up
 an initial user called "Admin" with a password of
 "churchinfoadmin" (passwords are case insensitive). You will be prompted
 to change this password upon login.  Once you have created other user
 accounts, you may delete or rename this default account.  Just make
-sure that you always have a user with administrative privledges.  The
-default new user password is set in Include/Config.php.  This password
-is also used in the case of a user reset.  When a newly created or
-reset user logs in the first time, they will be prompted to set a new
-password.  If a user provides a desired password, you can set it after
-the user is created and they will not be prompted to change it.
+sure that you always have a user with administrative privledges.
 
-5.) Configure reports as needed.  Edit Include/ReportConfig.php, create
-your own Images/church_letterhead.png, etc.
+5.) Select Admin->Edit General Settings and Admin->Edit Report Settings
+to finish customizing your installation.
 
 - You may need to change the default TrueType font path for the included
 JPGraph library used for the daily donation report.  To do this, you must
 edit line 38 of the file Include/jpgraph-1.13/src/jpgraph.php.  If you
 have JPGraph and FPDF elsewhere on your server, you can specify where in
-Config.php 
+the general settings page.
 
 Security Considerations:
 ---------------------
