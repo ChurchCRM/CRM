@@ -121,7 +121,7 @@ if ($numRows > 0)
            <td class="TextColumn"><? echo $aEventType[$row]; ?></td>
            <td class="TextColumn"><?php echo $aEventTitle[$row]; ?></td>
            <td class="TextColumn"><?php echo ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]); ?>
-             <?php echo ($aEventText[$row] != '' ? "&nbsp;&nbsp;&nbsp;<a href=\"javascript:popUp('GetText.php?EID=".$aEventID[$row]."')\"><strong>text</strong></a>":""); ?>
+             <?php echo ($aEventText[$row] != '' ? "&nbsp;&nbsp;&nbsp;<a href=\"javascript:popUp('GetText.php?EID=".$aEventID[$row]."')\"><strong>Sermon Text</strong></a>":""); ?>
            </td>
            <td class="TextColumn"><?php echo FormatDate($aEventStartDateTime[$row],1); ?></td>
            <td class="TextColumn" align="center"><?php echo ($aEventStatus[$row] != 0 ? "No":"Yes"); ?></td>
