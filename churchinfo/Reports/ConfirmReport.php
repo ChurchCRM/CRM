@@ -71,8 +71,8 @@ if ($rsConfig) {
 $sSQL = "SELECT * FROM family_fam WHERE 1 ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
 
-$dataCol = 40;
-$dataWid = 50;
+$dataCol = 55;
+$dataWid = 65;
 
 // Loop through families
 while ($aFam = mysql_fetch_array($rsFamilies)) {

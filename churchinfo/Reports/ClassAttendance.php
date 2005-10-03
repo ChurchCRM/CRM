@@ -90,7 +90,7 @@ class PDF_Attendance extends ChurchInfoReport {
       $y = $yDays + $yIncrement;
 
       $this->SetFont("Times",'B',12);
-      $this->WriteAt ($nameX, $yDays, $tTitle);
+      $this->WriteAt ($nameX, $yDays + 1, $tTitle);
 
       $this->SetFont("Times",'',12);
 
@@ -106,7 +106,7 @@ class PDF_Attendance extends ChurchInfoReport {
          // This happens when a child is listed in two different families (parents divorced and
          // both active in the church)
          if ($thisName != $prevThisName) {
-            $this->WriteAt ($nameX, $y, $thisName);
+            $this->WriteAt ($nameX, $y + 1, $thisName);
             $y += $yIncrement;
          } else {
             $phantomMembers++;
@@ -116,7 +116,7 @@ class PDF_Attendance extends ChurchInfoReport {
       $y += $extraLines * $yIncrement;
 
       $this->SetFont("Times",'B',12);
-      $this->WriteAt ($nameX, $y, gettext ("Totals"));
+      $this->WriteAt ($nameX, $y + 1, gettext ("Totals"));
       $this->SetFont("Times",'',12);
 
       $bottomY = $y + $yIncrement;
@@ -160,7 +160,7 @@ class PDF_Attendance extends ChurchInfoReport {
             $aNoSchoolX[$noSchoolCnt++] = $dayX;
 
          if (date ("n", $dWhichSunday) != $whichMonth) { // Finish the previous month
-				$this->PrintCenteredCell ($monthX, $yMonths, $dayX - $monthX, date ("F", $dWhichMonthDate));
+			    $this->WriteAt ($monthX, $yMonths + 1, date ("F", $dWhichMonthDate));
             $aHeavyVerticalX[$heavyVerticalXCnt++] = $monthX;
             $whichMonth = date ("n", $dWhichSunday);
             $dWhichMonthDate = $dWhichSunday;
@@ -182,7 +182,7 @@ class PDF_Attendance extends ChurchInfoReport {
          $tWhichSunday = date ("Y-m-d", $dWhichSunday);
       }
       $aHeavyVerticalX[$heavyVerticalXCnt++] = $monthX;
-      $this->WriteAt ($monthX, $yMonths, date ("F", $dWhichMonthDate));
+      $this->WriteAt ($monthX, $yMonths + 1, date ("F", $dWhichMonthDate));
 
       $rightEdgeX = $dayX;
 
@@ -220,7 +220,7 @@ class PDF_Attendance extends ChurchInfoReport {
       }
 
       for ($i = 0; $i < $dayCounter; $i++)
-         $this->WriteAt ($dayListX[$i], $yDays, $dayListNum[$i]);
+         $this->WriteAt ($dayListX[$i], $yDays + 1, $dayListNum[$i]);
 
       // Draw heavy lines to delimit the Months and totals
       $this->SetLineWidth (0.5);
