@@ -203,7 +203,7 @@ $MenuFirst = 1;
 					'contents', 
 					<?php 
 						echo "'";
-						if (! $_SESSION['bRegistered'])
+						if (! $bRegistered)
 							echo gettext("Please select this option to register ChurchInfo after configuring.");
 						else
 							echo gettext("Update registration");

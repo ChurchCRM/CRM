@@ -54,7 +54,7 @@ if (isset($_POST["Submit"]))
 
 	$sSQL = "UPDATE config_cfg SET cfg_value = 1 WHERE cfg_name='bRegistered'";
 	RunQuery($sSQL);
-	$_SESSION['bRegistered'] = 1;
+	$bRegistered = 1;
 
 	Redirect("Menu.php");
 
