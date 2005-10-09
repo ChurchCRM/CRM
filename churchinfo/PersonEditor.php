@@ -285,7 +285,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		// Update the custom person fields.
 		if ($numCustomFields > 0)
 		{
-			$sSQL = "UPDATE person_custom SET ";
+			$sSQL = "REPLACE INTO person_custom SET ";
 			mysql_data_seek($rsCustomFields,0);
 
 			while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
@@ -299,6 +299,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 			// chop off the last 2 characters (comma and space) added in the last while loop iteration.
 			$sSQL = substr($sSQL,0,-2);
 
+			$sSQL .= ", per_ID = " . $iPersonID;
 			$sSQL .= " WHERE per_ID = " . $iPersonID;
 
 			//Execute the SQL
