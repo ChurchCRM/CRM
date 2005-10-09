@@ -57,8 +57,8 @@ $sPageTitle = $sTypeName . ' ' . gettext("Property Editor");
 //Was the form submitted?
 if (isset($_POST["Submit"]))
 {
-	$sName = FilterInput($_POST["Name"]);
-	$sDescription = FilterInput($_POST["Description"]);
+	$sName = addslashes(FilterInput($_POST["Name"]));
+	$sDescription = addslashes(FilterInput($_POST["Description"]));
 	$iClass = FilterInput($_POST["Class"],'int');
 	$sPrompt = FilterInput($_POST["Prompt"]);
 
