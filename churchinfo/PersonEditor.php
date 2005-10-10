@@ -300,7 +300,6 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 			$sSQL = substr($sSQL,0,-2);
 
 			$sSQL .= ", per_ID = " . $iPersonID;
-			$sSQL .= " WHERE per_ID = " . $iPersonID;
 
 			//Execute the SQL
 			RunQuery($sSQL);
