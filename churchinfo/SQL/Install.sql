@@ -116,6 +116,8 @@ CREATE TABLE family_fam (
   fam_DateDeactivated date default NULL,
   fam_OkToCanvass enum('FALSE','TRUE') NOT NULL default 'FALSE',
   fam_Canvasser smallint(5) unsigned NOT NULL default '0',
+  fam_Latitude double default NULL,
+  fam_Longitude double default NULL,
   PRIMARY KEY  (fam_ID),
   KEY fam_ID (fam_ID)
 ) TYPE=MyISAM;
@@ -643,6 +645,10 @@ INSERT IGNORE INTO `config_cfg` VALUES (43, 'sZIPname', 'zip', 'text', 'zip', ''
 INSERT IGNORE INTO `config_cfg` VALUES (44, 'sPGPname', 'gpg', 'text', 'gpg', '', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (45, 'sLanguage', 'en_US', 'text', 'en_US', 'Internationalization (I18n) support\rUS English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (46, 'iFYMonth', '1', 'number', '1', 'First month of the fiscal year', 'General');
+
+INSERT IGNORE INTO `config_cfg` VALUES (76, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (77, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (78, 'sGeocoderPW', '', 'text', '', 'Password for rpc.geocoder.us', 'General');
 
 INSERT IGNORE INTO `config_cfg` VALUES (48, 'leftX', '20', 'number', '20', 'Left Margin (1 = 1/100th inch)', 'ChurchInfoReport');
 INSERT IGNORE INTO `config_cfg` VALUES (49, 'incrementY', '4', 'number', '4', 'Line Thickness (1 = 1/100th inch', 'ChurchInfoReport');
