@@ -131,7 +131,7 @@
 		function version_check($vercheck) { 
 		$minver = explode(".",$vercheck); 
 		$curver = explode(".",phpversion()); 
-		for ($i=0;$i<count($minver);$i++) if ($minver[$i]<$curver[$i]) return false; 
+		for ($i=0;$i<count($minver);$i++) if ($minver[$i]>$curver[$i]) return false; 
 		return true; 
 		}
 		
