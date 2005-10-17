@@ -1,4 +1,3 @@
-
 <?php
 
 require_once ("$sXML_RPC_PATH");
