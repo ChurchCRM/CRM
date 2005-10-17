@@ -19,6 +19,8 @@ require "Include/Functions.php";
 
 require "Include/CanvassUtilities.php";
 
+require "Include/GeoCoder.php";
+
 //Set the page title
 $sPageTitle = gettext("Family Editor");
 
@@ -79,6 +81,20 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$sCellPhone = FilterInput($_POST["CellPhone"]);
 	$sEmail = FilterInput($_POST["Email"]);
 	$bSendNewsLetter = isset($_POST["SendNewsLetter"]);
+
+	$nLatitude = FilterInput($_POST["Latitude"]);
+	$nLongitude = FilterInput($_POST["Longitude"]);
+
+	if ($sCountry == "United States" && ($nLatitude == 0 || $nLongitude == 0)) {
+	// Try to get Lat/Lon based on the address
+		$myAddressLatLon = new AddressLatLon;
+		$myAddressLatLon->SetAddress ($sAddress1, $sCity, $sState, $sZip);
+		$ret = $myAddressLatLon->Lookup ();
+		if ($ret == 0) {
+			$nLatitude = $myAddressLatLon->GetLat ();
+			$nLongitude = $myAddressLatLon->GetLon ();
+		}
+	}
 
 	if ($_SESSION['bCanvasser']) { // Only take modifications to this field if the current user is a canvasser
 		$bOkToCanvass = isset($_POST["OkToCanvass"]);
@@ -204,7 +220,9 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 														fam_EnteredBy, 
 														fam_SendNewsLetter,
 														fam_OkToCanvass,
-														fam_Canvasser)
+														fam_Canvasser,
+														fam_Latitude,
+														fam_Longitude)
 											VALUES ('" . $sName . "','" . 
 											         $sAddress1 . "','" . 
 														$sAddress2 . "','" . 
@@ -221,7 +239,9 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 														$_SESSION['iUserID'] . "," . 
 														$bSendNewsLetterString . "," . 
 														$bOkToCanvassString . ",'" .
-														$iCanvasser . "')";
+														$iCanvasser . "','" .
+														$nLatitude . "','" .
+														$nLongitude . "')";
 			$bGetKeyBack = true;
 		}
 		else
@@ -232,6 +252,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 													 "fam_City='" . $sCity . "'," .
 													 "fam_State='" . $sState . "'," .
 													 "fam_Zip='" . $sZip . "'," .
+													 "fam_Latitude='" . $nLatitude . "'," .
+													 "fam_Longitude='" . $nLongitude . "'," .
 													 "fam_Country='" . $sCountry . "'," .
 													 "fam_HomePhone='" . $sHomePhone . "'," .
 													 "fam_WorkPhone='" . $sWorkPhone . "'," .
@@ -383,6 +405,8 @@ else
 		$bOkToCanvass = ($fam_OkToCanvass == 'TRUE');
 		$iCanvasser = $fam_Canvasser;
 		$dWeddingDate = $fam_WeddingDate;
+		$nLatitude = $fam_Latitude;
+		$nLongitude = $fam_Longitude;
 		if ($dWeddingDate == '0000-00-00')
 			$dWeddingDate = '';
 
@@ -623,6 +647,14 @@ require "Include/Header.php";
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Wedding Date:"); ?></td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="10" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
+	</tr>
+	<tr>
+		<td class="LabelColumn"><?php echo gettext("Latitude:"); ?></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="Latitude" value="<?php echo $nLatitude; ?>" size="30" maxlength="50"></td>
+	</tr>
+	<tr>
+		<td class="LabelColumn"><?php echo gettext("Longitude:"); ?></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="Longitude" value="<?php echo $nLongitude; ?>" size="30" maxlength="50"></td>
 	</tr>
 
 
