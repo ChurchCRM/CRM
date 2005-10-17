@@ -2,11 +2,11 @@
 /*******************************************************************************
  *
  *  filename    : PersonEditor.php
- *  last change : 2003-01-29
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchdb.org
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
+ *                Copyright 2004-2005 Michael Wilt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
