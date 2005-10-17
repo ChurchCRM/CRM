@@ -269,6 +269,12 @@ $MenuFirst = 1;
 					'contents', <?php echo "'" . gettext("View All Families") . "'"; ?>,
 					'uri', 'SelectList.php?mode=family',
 					'statusText', ''
+				),
+
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("Family Geographic Utilties") . "'"; ?>,
+					'uri', 'GeoPage.php',
+					'statusText', ''
 				)
 
 				<?php if ($_SESSION['bMenuOptions']) {
