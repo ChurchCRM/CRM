@@ -1,14 +1,22 @@
 <?php
 
-require_once ("$sXML_RPC_PATH");
+$bHaveXML = 0;
+$pathArray = explode( PATH_SEPARATOR, get_include_path() );
+foreach ($pathArray as $onePath) {
+	$fullpath = $onePath . DIRECTORY_SEPARATOR . $sXML_RPC_PATH;
+	if (file_exists ($fullpath)) {
+		require_once ("$sXML_RPC_PATH");
+		$bHaveXML = 1;
+	}
+}
 
 // Function takes latitude and longitude
 // of two places as input and returns the
 // distance in miles.
 function LatLonDistance($lat1, $lon1, $lat2, $lon2)
 {
-    // Formula for calculating radians between
-    // latitude and longitude pairs.
+	// Formula for calculating radians between
+	// latitude and longitude pairs.
 
 	// Uses the Spherical Law of Cosines to find great circle distance.
 	// Length of arc on surface of sphere
@@ -24,21 +32,21 @@ function LatLonDistance($lat1, $lon1, $lat2, $lon2)
 	$radius = 6371.0;
 
 	// distance in kilometers is $radians times $radius
-    $kilometers  = $radians * $radius;
+	$kilometers  = $radians * $radius;
 
 	// convert to miles
-    $miles = 0.6213712 * $kilometers;
+	$miles = 0.6213712 * $kilometers;
 
-    // Return distance
-    $distance  = sprintf("%0.2f",$miles);
+	// Return distance
+	$distance  = sprintf("%0.2f",$miles);
 
-    return $distance ;
+	return $distance ;
 }
 
 
 function LatLonBearing($lat1, $lon1, $lat2, $lon2)
 {
-    // Formula for determining the bearing from ($lat1,$lon1) to ($lat2,$lon2)
+	// Formula for determining the bearing from ($lat1,$lon1) to ($lat2,$lon2)
 
 	// This is the initial bearing which if followed in a straight line will take
 	// you from the start point to the end point; in general, the bearing you are 
@@ -128,7 +136,9 @@ class AddressLatLon {
 	function GetLon () { return $this->lon; }
 
 	function AddressLatLon () {
-		global $sGeocoderID, $sGeocoderPW;
+		global $sGeocoderID, $sGeocoderPW, $bHaveXML;
+		if (! $bHaveXML)
+			return;
 		if ($sGeocoderID) { // Use credentials if available for unthrottled access to the geocoder server
 			$this->client = new XML_RPC_Client('/member/service/xmlrpc', 'rpc.geocoder.us');
 			$this->client->SetCredentials ($sGeocoderID, $sGeocoderPW);
@@ -145,6 +155,11 @@ class AddressLatLon {
 	}
 
 	function Lookup () {
+		global $bHaveXML;
+
+		if (! $bHaveXML)
+			return (-4);
+
 		$address = $this->street . "," . $this->city . "," . $this->state . "," . $this->zip;
 
 		$params = array(new XML_RPC_Value($address, 'string'));

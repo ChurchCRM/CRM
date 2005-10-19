@@ -85,7 +85,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$nLatitude = FilterInput($_POST["Latitude"]);
 	$nLongitude = FilterInput($_POST["Longitude"]);
 
-	if ($sCountry == "United States" && ($nLatitude == 0 || $nLongitude == 0)) {
+	if ($bHaveXML && $sCountry == "United States" && ($nLatitude == 0 || $nLongitude == 0)) {
 	// Try to get Lat/Lon based on the address
 		$myAddressLatLon = new AddressLatLon;
 		$myAddressLatLon->SetAddress ($sAddress1, $sCity, $sState, $sZip);
