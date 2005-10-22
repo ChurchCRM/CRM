@@ -5,7 +5,7 @@
 *  last change : 2005-03-26
 *  description : Creates a PDF of the current deposit slip
 *
-*  InfoCentral is free software; you can redistribute it and/or modify
+*  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -34,11 +34,11 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
 }
 
 // Get the list of funds
-$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
+$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true' ORDER BY fun_Active, fun_Name";
 $rsFunds = RunQuery($sSQL);
 
 // Get pledges and payments for this fiscal year
-$sSQL = "SELECT plg_plgID, plg_FYID, plg_amount, plg_PledgeOrPayment, plg_fundID, b.fun_Name AS fundName, b.fun_Active AS fundActive FROM pledge_plg 
+$sSQL = "SELECT plg_plgID, plg_FYID, plg_amount, plg_PledgeOrPayment, plg_fundID, plg_famID, b.fun_Name AS fundName, b.fun_Active AS fundActive FROM pledge_plg 
 		 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 		 WHERE plg_FYID = " . $iFYID;
 
@@ -60,7 +60,9 @@ $sSQL = "SELECT plg_plgID, plg_FYID, plg_amount, plg_PledgeOrPayment, plg_fundID
  	}
  }
 // Order by Fund Active, Fund Name
-$sSQL .= " ORDER BY fundActive, fundName";
+//$sSQL .= " ORDER BY fundActive, fundName";
+// Order by Family so the related pledges and payments will be together
+$sSQL .= " ORDER BY plg_famID";
 
 // Run Query
 $rsPledges = RunQuery($sSQL);
@@ -95,7 +97,15 @@ if ($output == "pdf") {
 		}
 	}
 
-
+	// Total all the pledges and payments by fund.  Compute overpaid and underpaid for each family as
+	// we go through them.
+	$curFam = 0;
+	$paidThisFam = array();
+	$pledgeThisFam = array();
+	$overpaid = array();
+	$underpaid = array();
+	$totRows = mysql_num_rows ($rsPledges);
+	$thisRow = 0;
 	while ($aRow = mysql_fetch_array($rsPledges)) {
 		extract ($aRow);
 
@@ -103,21 +113,47 @@ if ($output == "pdf") {
 	      $fundName = "Unassigned";
 	   }
 
+		++$thisRow;
+		if ($plg_famID != $curFam || $thisRow == $totRows) {
+			// Switching families.  Post the results for the previous family and initialize for the new family
+
+			mysql_data_seek($rsFunds,0);
+			while ($row = mysql_fetch_array($rsFunds))
+			{
+				$fun_name = $row["fun_Name"];
+				if ($pledgeThisFam[$fun_name] > 0 || $paidThisFam[$fun_name] > 0) {
+					$pledgeDiff = $paidThisFam[$fun_name] - $pledgeThisFam[$fun_name];
+					if ($pledgeDiff > 0) {
+						$overpaid[$fun_name] += $pledgeDiff;
+					} else {
+						$underpaid[$fun_name] -= $pledgeDiff;
+					}
+				}
+			}
+			$paidThisFam = array();
+			$pledgeThisFam = array();
+			$curFam = $plg_famID;
+		}
+
 	   if ($plg_PledgeOrPayment == "Pledge") {
 	      $pledgeFundTotal[$fundName] += $plg_amount;
+		  $pledgeThisFam[$fundName] += $plg_amount;
 		  $pledgeCnt[$fundName] += 1;
 	   } else if ($plg_PledgeOrPayment == "Payment") {
 	      $paymentFundTotal[$fundName] += $plg_amount;
+		  $paidThisFam[$fundName] += $plg_amount;
 		  $paymentCnt[$fundName] += 1;
 	   }
 	}
 
 
 	$nameX = 20;
-	$pledgeX = 80;
-	$paymentX = 120;
-	$pledgeCountX = 140;
-	$paymentCountX = 160;
+	$pledgeX = 60;
+	$paymentX = 80;
+	$pledgeCountX = 100;
+	$paymentCountX = 120;
+	$underpaidX = 145;
+	$overpaidX = 170;
 	$curY = 20;
 
 	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchName); $curY += $pdf->incrementY;
@@ -138,6 +174,8 @@ if ($output == "pdf") {
 	$pdf->PrintRightJustified ($paymentX, $curY, "Payments");
 	$pdf->PrintRightJustified ($pledgeCountX, $curY, "# Pledges");
 	$pdf->PrintRightJustified ($paymentCountX, $curY, "# Payments");
+	$pdf->PrintRightJustified ($underpaidX, $curY, "Overpaid");
+	$pdf->PrintRightJustified ($overpaidX, $curY, "Underpaid");
 	$pdf->SetFont('Times','', 10);
 	$curY += $pdf->incrementY;
 
@@ -157,6 +195,11 @@ if ($output == "pdf") {
 	   		$pdf->PrintRightJustified ($paymentX, $curY, $amountStr);
 	   		$pdf->PrintRightJustified ($pledgeCountX, $curY, $pledgeCnt[$fun_name]);
 	   		$pdf->PrintRightJustified ($paymentCountX, $curY, $paymentCnt[$fun_name]);
+
+			$amountStr = sprintf ("%.2f", $overpaid[$fun_name]);
+	   		$pdf->PrintRightJustified ($underpaidX, $curY, $amountStr);
+			$amountStr = sprintf ("%.2f", $underpaid[$fun_name]);
+	   		$pdf->PrintRightJustified ($overpaidX, $curY, $amountStr);
 			$curY += $pdf->incrementY;
 		}
 	}
