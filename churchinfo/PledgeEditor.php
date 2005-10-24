@@ -58,14 +58,31 @@ $sSQL .= " ORDER BY fun_Name";
 $rsFunds = RunQuery($sSQL);
 
 //Set the page title
-if ($PledgeOrPayment == 'Pledge')
+if ($PledgeOrPayment == 'Pledge') {
 	$sPageTitle = gettext("Pledge Editor");
-elseif ($iCurrentDeposit)
+} elseif ($iCurrentDeposit) {
 	$sPageTitle = gettext("Payment Editor: ") . $dep_Type . gettext(" Deposit Slip #") . $iCurrentDeposit . " ($dep_Date)";
-else
-	$sPageTitle = gettext("Payment Editor - New Deposit Slip Will Be Created");
+
+	// Important note: the number of checks that can fit on a deposit slip is fixed at 14, based on the paper
+	// form assumed by Reports/PrintDeposit.php.  If we make this form configurable this number may change.
+	$checksFit = 14;
+	$sSQL = "SELECT plg_plgID from pledge_plg where plg_depID=" . $iCurrentDeposit . " AND plg_method='CHECK'";
+	$rsChecksThisDep = RunQuery ($sSQL);
+	$checkCount = mysql_num_rows ($rsChecksThisDep);
+	$roomForChecks = $checksFit - $checkCount;
+	if ($roomForChecks <= 0)
+		$sPageTitle .= "<font color=red>";
+	$sPageTitle .= " (" . $roomForChecks . gettext (" more checks will fit.") . ")";
+	if ($roomForChecks <= 0)
+		$sPageTitle .= "</font>";
+} else {
+	if ($iPledgeID)
+		$sPageTitle = gettext("Payment Editor - Modify Existing Payment");
+	else
+		$sPageTitle = gettext("Payment Editor - New Deposit Slip Will Be Created");
+}
 if ($dep_Closed && $iPledgeID && $PledgeOrPayment == 'Payment')
-	$sPageTitle .= " &nbsp; <font color=red>CLOSED</font>";			
+	$sPageTitle .= " &nbsp; <font color=red>Deposit closed</font>";			
 
 // Security: User must have Finance permission to use this form.
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
