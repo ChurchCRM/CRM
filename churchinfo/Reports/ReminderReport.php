@@ -28,6 +28,7 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 $iFYID = FilterInput($_POST["FYID"],'int');
 $output = FilterInput($_POST["output"]);
 $pledge_filter = FilterInput($_POST["pledge_filter"]);
+$only_owe = FilterInput($_POST["only_owe"]);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
@@ -160,11 +161,29 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
 	$rsPledges = RunQuery($sSQL);
 
-	// If there is either a pledge or a payment add a page for this reminder report
-	// If not, go to next family
+	// If there is no pledge or a payment go to next family
 	if (mysql_num_rows ($rsPledges) == 0)
 		continue;
 
+	if ($only_owe == "yes") {
+		// Run through pledges and payments for this family to see if there are any unpaid pledges
+		$oweByFund = array ();
+		$bOwe = 0;
+		while ($aRow = mysql_fetch_array($rsPledges)) {
+			extract ($aRow);
+			if ($plg_PledgeOrPayment=='Pledge')
+				$oweByFund[$plg_fundID] -= $plg_amount;
+			else
+				$oweByFund[$plg_fundID] += $plg_amount;
+		}
+		foreach ($oweByFund as $oweRow)
+			if ($oweRow < 0)
+				$bOwe = 1;
+		if (! $bOwe)
+			continue;
+	}
+
+	// Add a page for this reminder report
 	$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID, $fundOnlyString);
 
 	// Get pledges only

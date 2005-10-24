@@ -217,6 +217,9 @@ if (!$sReportType) {
 		echo "<tr><td class=LabelColumn>".gettext("Include:")."</td>"
 			. "<td class=TextColumnWithBottomBorder><input name=pledge_filter type=radio value='pledge' checked>".gettext("Only Payments with Pledges")
 			." &nbsp; <input name=pledge_filter type=radio value='all'>".gettext("All Payments")."</td></tr>";
+		echo "<tr><td class=LabelColumn>".gettext("Generate:")."</td>"
+			. "<td class=TextColumnWithBottomBorder><input name=only_owe type=radio value='yes' checked>".gettext("Only Families with unpaid pledges")
+			." &nbsp; <input name=only_owe type=radio value='no'>".gettext("All Families")."</td></tr>";
 	}
 	
 	if ($sReportType == "Giving Report"){
