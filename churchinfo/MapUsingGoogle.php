@@ -26,9 +26,9 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 		$nChurchLatitude = $myAddressLatLon->GetLat ();
 		$nChurchLongitude = $myAddressLatLon->GetLon ();
 
-		$sSQL = "UPDATE config_cfg SET cfg_value=' . $nChurchLatitude . ' WHERE cfg_name=\"nChurchLatitude\"";
+		$sSQL = "UPDATE config_cfg SET cfg_value='" . $nChurchLatitude . "' WHERE cfg_name=\"nChurchLatitude\"";
 		RunQuery ($sSQL);
-		$sSQL = "UPDATE config_cfg SET cfg_value=' . $nChurchLongitude . ' WHERE cfg_name=\"nChurchLongitude\"";
+		$sSQL = "UPDATE config_cfg SET cfg_value='" . $nChurchLongitude . "' WHERE cfg_name=\"nChurchLongitude\"";
 		RunQuery ($sSQL);
 	}
 }
