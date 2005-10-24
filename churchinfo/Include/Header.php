@@ -275,6 +275,12 @@ $MenuFirst = 1;
 					'contents', <?php echo "'" . gettext("Family Geographic Utilties") . "'"; ?>,
 					'uri', 'GeoPage.php',
 					'statusText', ''
+				),
+
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("Family Map") . "'"; ?>,
+					'uri', 'MapUsingGoogle.php',
+					'statusText', ''
 				)
 
 				<?php if ($_SESSION['bMenuOptions']) {
