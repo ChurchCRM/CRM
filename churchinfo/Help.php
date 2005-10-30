@@ -20,7 +20,7 @@ require "Include/Config.php";
 require "Include/Initialize.php";
 
 // Valid pages to request via the 'page' GET variable. (prevent XSS)
-$aValidPages = array('About', 'Admin', 'Cart', 'Class', 'Custom', 'Family', 'Finances', 'Groups', 'Notes', 'People', 'Properties', 'Reports', 'Types', 'Canvass', 'Events');
+$aValidPages = array('About', 'Admin', 'Cart', 'Class', 'Custom', 'Family', 'Geographic', 'Finances', 'Groups', 'Notes', 'People', 'Properties', 'Reports', 'Types', 'Canvass', 'Events');
 
 if (in_array($_GET['page'], $aValidPages))
 {

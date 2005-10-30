@@ -50,8 +50,7 @@
 
 <div class="Help_Section">
 	<p><div class="Help_Header">How do I delete a Family?</div>
-	<table width="100%" class="LightShadedBox"><tr><td><p>First of all, don't.</p>
-	<p>But if you have to...</p>
+	<table width="100%" class="LightShadedBox"><tr><td>
 	<ol>
 		<li>Filter for the desired family, and bring up the Family View.
 		<li>Select "Delete this Record" (if this link doesn't appear, then either you don't have permissions to delete records, or the Family still has Person records assigned to it; you cannot delete a Family record until all Person records have been unassigned from it)

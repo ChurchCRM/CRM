@@ -4,7 +4,7 @@
 ?>
 
 <div class="Help_Section">
-	<div class="Help_Header">Canvass automation support</div>
+	<div class="Help_Header">How does ChurchInfo support an every-member canvass?</div>
 	<table width="100%" class="LightShadedBox">
 	<tr>
 	<td>
