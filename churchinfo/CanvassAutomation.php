@@ -36,6 +36,13 @@ if ($iFYID == 0)
 $_SESSION['idefaultFY'] = $iFYID; // Remember default fiscal year
 
 // Service the action buttons
+if (isset($_POST["SetDefaultFY"])) {
+	if (isset($_POST["SetDefaultFYConfirm"])) {
+		$processNews = CanvassSetDefaultFY ($iFYID);
+	} else {
+		$processNews = gettext ("Not confirmed.");
+	}
+}
 if (isset($_POST["AssignCanvassers"])) {
 	if (isset($_POST["AssignCanvassersConfirm"])) {
 		$processNews = CanvassAssignCanvassers (gettext ("Canvassers"));
@@ -100,6 +107,17 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 </p>
 
 <table border width="100%" align="left">
+	<tr>
+		<td align="center" width="25%">
+			<input type="submit" class="icButton" value="<?php echo gettext("Set default fiscal year"); ?>" 
+			 name="SetDefaultFY">
+		</td>
+		<td align="left" width="75%">
+			<?php echo gettext(""); ?>
+			<p><input type="checkbox" name="SetDefaultFYConfirm"><?php echo gettext("Check to confirm");?></p>
+		</td>
+	</tr>
+
 	<tr>
 		<td align="center" width="25%">
 			<input type="submit" class="icButton" value="<?php echo gettext("Assign Canvassers"); ?>" 
