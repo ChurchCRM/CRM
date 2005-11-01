@@ -434,101 +434,106 @@ $MenuFirst = 1;
 					'statusText', ''
 				)
 			),
-			<?php echo $MenuFirst++ ?>, new domMenu_Hash(
+			<?php echo $MenuFirst++; $MenuSecond = 1; ?>, new domMenu_Hash(
 				'contents', <?php echo "'" . gettext("Properties") . "'"; ?>,
 				'uri', '',
 				'statusText', '',
-				1, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("People Properties") . "'"; ?>,
 					'uri', 'PropertyList.php?Type=p',
 					'statusText', ''
 				),
-				2, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Family Properties") . "'"; ?>,
 					'uri', 'PropertyList.php?Type=f',
 					'statusText', ''
 				),
-				3, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Group Properties") . "'"; ?>,
 					'uri', 'PropertyList.php?Type=g',
 					'statusText', ''
 				),
-				4, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Property Types") . "'"; ?>,
 					'uri', 'PropertyTypeList.php',
 					'statusText', ''
 				)
 			),
-			<?php echo $MenuFirst++ ?>, new domMenu_Hash(
+			<?php echo $MenuFirst++; $MenuSecond = 1; ?>, new domMenu_Hash(
 				'contents', <?php echo "'" . gettext("Help") . "'"; ?>,
 				'uri', '',
 				'statusText', '',
-				1, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'- " . gettext("About ChurchInfo") . " -'"; ?>,
 					'uri', 'Help.php?page=About',
 					'statusText', ''
 				),
-				2, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("People") . "'"; ?>,
 					'uri', 'Help.php?page=People',
 					'statusText', ''
 				),
-				3, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Families") . "'"; ?>,
 					'uri', 'Help.php?page=Family',
 					'statusText', ''
 				),
-				4, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("Geographic features") . "'"; ?>,
+					'uri', 'Help.php?page=Geographic',
+					'statusText', ''
+				),
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Groups") . "'"; ?>,
 					'uri', 'Help.php?page=Groups',
 					'statusText', ''
 				),
-				5, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Finances") . "'"; ?>,
 					'uri', 'Help.php?page=Finances',
 					'statusText', ''
 				),
-				6, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Reports") . "'"; ?>,
 					'uri', 'Help.php?page=Reports',
 					'statusText', ''
 				),
-				7, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Administration") . "'"; ?>,
 					'uri', 'Help.php?page=Admin',
 					'statusText', ''
 				),
-				8, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Cart") . "'"; ?>,
 					'uri', 'Help.php?page=Cart',
 					'statusText', ''
 				),
-				9, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Properties") . "'"; ?>,
 					'uri', 'Help.php?page=Properties',
 					'statusText', ''
 				),
-				10, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Notes") . "'"; ?>,
 					'uri', 'Help.php?page=Notes',
 					'statusText', ''
 				),
-				11, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Custom Fields") . "'"; ?>,
 					'uri', 'Help.php?page=Custom',
 					'statusText', ''
 				),
-				12, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Classifications") . "'"; ?>,
 					'uri', 'Help.php?page=Class',
 					'statusText', ''
 				),
-				13, new domMenu_Hash(
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Canvass Support") . "'"; ?>,
 					'uri', 'Help.php?page=Canvass',
 					'statusText', ''
 				),
-                                14, new domMenu_Hash(
+                                <?php echo $MenuSecond++;?>, new domMenu_Hash(
                                         'contents', <?php echo "'" . gettext("Events") . "'"; ?>,
                                         'uri', 'Help.php?page=Events',
                                         'statusText', ''
