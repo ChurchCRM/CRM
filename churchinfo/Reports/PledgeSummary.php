@@ -26,6 +26,7 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 // Filter Values
 $output = FilterInput($_POST["output"]);
 $iFYID = FilterInput($_POST["FYID"],"int");
+$_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {

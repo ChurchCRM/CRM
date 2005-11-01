@@ -32,6 +32,7 @@ $sDateStart = FilterInput($_POST["DateStart"],"date");
 $sDateEnd = FilterInput($_POST["DateEnd"],"date");
 $iDepID = FilterInput($_POST["deposit"],"int");
 $iFYID = FilterInput($_POST["FYID"],"int");
+$_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 $iMinimum = FilterInput($_POST["minimum"],"int");
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.

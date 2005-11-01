@@ -26,6 +26,7 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 
 //Get the Fiscal Year ID out of the querystring
 $iFYID = FilterInput($_POST["FYID"],'int');
+$_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 $output = FilterInput($_POST["output"]);
 $pledge_filter = FilterInput($_POST["pledge_filter"]);
 $only_owe = FilterInput($_POST["only_owe"]);

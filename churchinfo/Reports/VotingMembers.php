@@ -19,6 +19,7 @@ require "../Include/ReportConfig.php";
 
 //Get the Fiscal Year ID out of the querystring
 $iFYID = FilterInput($_POST["FYID"],'int');
+$_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 $iRequireDonationYears = FilterInput($_POST["RequireDonationYears"],'int');
 $output = FilterInput($_POST["output"]);
 
