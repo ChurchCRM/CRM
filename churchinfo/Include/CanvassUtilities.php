@@ -13,6 +13,12 @@
  *
  ******************************************************************************/
 
+function CanvassSetDefaultFY ($iFYID)
+{
+	$sSQL = "UPDATE user_usr SET usr_defaultFY='" . $iFYID . "';";
+	RunQuery ($sSQL);
+}
+
 function CanvassSetAllOkToCanvass ()
 {
 	$sSQL = "UPDATE family_fam SET fam_OkToCanvass='TRUE' WHERE 1;";
