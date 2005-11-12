@@ -4,22 +4,22 @@ require ("Include/Functions.php");
 require ("Include/Header.php");
 require ("Include/ReportFunctions.php");
 
+// Read values from config table into local variables
+// **************************************************
+$sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'";
+$rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
+if ($rsConfig) {
+	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		$$cfg_name = $cfg_value;
+	}
+}
+
 if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 
 	require ("Include/GeoCoder.php");
 	$myAddressLatLon = new AddressLatLon;
 
 	// Try to look up the church address to center the map.
-	// Read values from config table into local variables
-	// **************************************************
-	$sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'";
-	$rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
-	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-			$$cfg_name = $cfg_value;
-		}
-	}
-
 	$myAddressLatLon->SetAddress ($sChurchAddress, $sChurchCity, $sChurchState, $sChurchZip);
 	$ret = $myAddressLatLon->Lookup ();
 	if ($ret == 0) {
