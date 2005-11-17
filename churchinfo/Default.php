@@ -49,18 +49,28 @@ if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
 	                 ", usr_showPayments = " . $_SESSION['sshowPayments'] .
 				     ", usr_showSince = '" . $_SESSION['sshowSince'] . "'" .
 				     ", usr_defaultFY = '" . $_SESSION['idefaultFY'] . "'" .
-				     ", usr_currentDeposit = '" . $_SESSION['iCurrentDeposit'] . "'" .
-				     ", usr_CalStart = '" . $_SESSION['dCalStart'] . "'" .
-				     ", usr_CalEnd = '" . $_SESSION['dCalEnd'] . "'" .
-				     ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool1'] . "'" .
-				     ", usr_CalNoSchool2 = '" . $_SESSION['dCalNoSchool2'] . "'" .
-				     ", usr_CalNoSchool3 = '" . $_SESSION['dCalNoSchool3'] . "'" .
-				     ", usr_CalNoSchool4 = '" . $_SESSION['dCalNoSchool4'] . "'" .
-				     ", usr_CalNoSchool5 = '" . $_SESSION['dCalNoSchool5'] . "'" .
-				     ", usr_CalNoSchool6 = '" . $_SESSION['dCalNoSchool6'] . "'" .
-				     ", usr_CalNoSchool7 = '" . $_SESSION['dCalNoSchool7'] . "'" .
-				     ", usr_CalNoSchool8 = '" . $_SESSION['dCalNoSchool8'] . "'" .
-				     ", usr_SearchFamily = '" . $_SESSION['bSearchFamily'] . "'" .
+				     ", usr_currentDeposit = '" . $_SESSION['iCurrentDeposit'] . "'";
+		if ($_SESSION['dCalStart'] != '')
+			$sSQL .= ", usr_CalStart = '" . $_SESSION['dCalStart'] . "'";
+		if ($_SESSION['dCalEnd'] != '')
+			$sSQL .= ", usr_CalEnd = '" . $_SESSION['dCalEnd'] . "'";
+		if ($_SESSION['dCalNoSchool1'] != '')
+			$sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool1'] . "'";
+		if ($_SESSION['dCalNoSchool2'] != '')
+			$sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool2'] . "'";
+		if ($_SESSION['dCalNoSchool3'] != '')
+			$sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool3'] . "'";
+		if ($_SESSION['dCalNoSchool4'] != '')
+			$sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool4'] . "'";
+		if ($_SESSION['dCalNoSchool5'] != '')
+			$sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool5'] . "'";
+		if ($_SESSION['dCalNoSchool6'] != '')
+			$sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool6'] . "'";
+		if ($_SESSION['dCalNoSchool7'] != '')
+			$sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool7'] . "'";
+		if ($_SESSION['dCalNoSchool8'] != '')
+			$sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool8'] . "'";
+		$sSQL .= ", usr_SearchFamily = '" . $_SESSION['bSearchFamily'] . "'" .
 				     " WHERE usr_per_ID = " . $_SESSION['iUserID'];
 	   RunQuery($sSQL);
    }
