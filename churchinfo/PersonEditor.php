@@ -131,15 +131,13 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	// If they entered a full date, see if it's valid
 	if (strlen($iBirthYear) > 0)
 	{
-		if ($iBirthYear > 2155 || $iBirthYear < 1901)
-		{
+		if ($iBirthYear == 0) { // If zero set to NULL
+			$iBirthYear = NULL;
+		} elseif ($iBirthYear > 2155 || $iBirthYear < 1901) {
 			$sBirthYearError = gettext("Invalid Year: allowable values are 1901 to 2155");
 			$bErrorFlag = true;
-		}
-		elseif ($iBirthMonth > 0 && $iBirthDay > 0)
-		{
-			if (!checkdate($iBirthMonth,$iBirthDay,$iBirthYear))
-			{
+		} elseif ($iBirthMonth > 0 && $iBirthDay > 0) {
+			if (!checkdate($iBirthMonth,$iBirthDay,$iBirthYear)) {
 				$sBirthDateError = gettext("Invalid Birth Date.");
 				$bErrorFlag = true;
 			}
