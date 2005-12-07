@@ -992,6 +992,156 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
 	}
 }
 
+function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = "future") {
+// This function takes a year, month and day from parseAndValidateDate.  On success this
+// function returns a string in the form "YYYY-MM-DD".  It returns FALSE on failure.
+// The year can be either 2 digit or 4 digit.  If a 2 digit year is passed the $passfut
+// indicates whether to return a 4 digit year in the past or the future.  The parameter
+// $passfut is not needed for the current year.  If unspecified it assumes the two digit year
+// is either this year or one of the next 99 years.
+
+
+	// Parse the year
+	// Take a 2 or 4 digit year and return a 4 digit year.  Use $pasfut to determine if
+	// two digit year maps to past or future 4 digit year.
+	if (strlen($sYear) == 2) {
+		$thisYear = date('Y');
+		$twoDigit = substr($thisYear,2,2);
+		if ($sYear == $twoDigit) {
+			// Assume 2 digit year is this year
+			$sYear = substr($thisYear,0,4);
+		} elseif ($pasfut == "future") {
+			// Assume 2 digit year is in next 99 years
+			if ($sYear > $twoDigit) {
+				$sYear = substr($thisYear,0,2) . $sYear;
+			} else {
+				$sNextCentury = $thisYear + 100;
+				$sYear = substr($sNextCentury,0,2) . $sYear;
+			}
+		} else {
+			// Assume 2 digit year was is last 99 years
+			if ($sYear < $twoDigit) {
+				$sYear = substr($thisYear,0,2) . $sYear;
+			} else {
+				$sLastCentury = $thisYear - 100;
+				$sYear = substr($sLastCentury,0,2) . $sYear;
+			}
+		}
+	} elseif (strlen($sYear) == 4) {
+		$sYear = $sYear;
+	} else {
+		return FALSE;
+	}
+
+	// Parse the Month
+	// Take a one or two character month and return a two character month
+	if (strlen($sMonth) == 1) {
+		$sMonth = "0" . $sMonth;
+	} elseif (strlen($sMonth) == 2) {
+		$sMonth = $sMonth;
+	} else {
+		return FALSE;
+	}
+
+	// Parse the Day
+	// Take a one or two character day and return a two character day
+	if (strlen($sDay) == 1) {
+		$sDay = "0" . $sDay;
+	} elseif (strlen($sDay) == 2) {
+		$sDay = $sDay;
+	} else {
+		return FALSE;
+	}
+
+	$sScanString = $sYear . "-" . $sMonth . "-" . $sDay;
+	list($iYear, $iMonth, $iDay) = sscanf($sScanString,"%04d-%02d-%02d");
+
+	if ( checkdate($iMonth,$iDay,$iYear) )	{
+		return $sScanString;
+	} else {
+		return FALSE;
+	}		
+
+}
+
+function parseAndValidateDate($data, $local = "US", $pasfut = "future") {
+// This function was written because I had no luck finding a PHP
+// function that would reliably parse a human entered date string for 
+// dates before 1/1/1970 or after 1/19/2038 on any Operating System.
+//
+// This function has hooks for US English M/D/Y format as well as D/M/Y.  The
+// default is M/D/Y for date.  To change to D/M/Y use anything but "US" for
+// $local.
+//
+// Y-M-D is allowed if the delimiter is "-" instead of "/"
+//
+// In order to help this function guess a two digit year a "past" or "future" flag is
+// passed to this function.  If no flag is passed the function assumes that two digit
+// years are in the future (or the current year).
+//
+// Month and day may be either 1 character or two characters (leading zeroes are not
+// necessary)
+
+
+	// Determine if the delimiter is "-" or "/".  The delimiter must appear
+	// twice or a FALSE will be returned. 
+
+	if (substr_count($data,'-') == 2) { 
+		// Assume format is Y-M-D
+		$iFirstDelimiter = strpos($data,'-');
+		$iSecondDelimiter = strpos($data,'-',$iFirstDelimiter+1);
+
+		// Parse the year.
+		$sYear = substr($data, 0, $iFirstDelimiter);		
+
+		// Parse the month
+		$sMonth = substr($data, $iFirstDelimiter+1, $iSecondDelimiter-$iFirstDelimiter-1);
+
+		// Parse the day
+		$sDay = substr($data, $iSecondDelimiter+1);
+
+		// Put into YYYY-MM-DD form
+		return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
+
+	} elseif ((substr_count($data,'/') == 2) && ($local == "US")) { 
+		// Assume format is M/D/Y
+		$iFirstDelimiter = strpos($data,'/');
+		$iSecondDelimiter = strpos($data,'/',$iFirstDelimiter+1);
+
+		// Parse the month
+		$sMonth = substr($data, 0, $iFirstDelimiter);		
+
+		// Parse the day
+		$sDay = substr($data, $iFirstDelimiter+1, $iSecondDelimiter-$iFirstDelimiter-1);
+
+		// Parse the year
+		$sYear = substr($data, $iSecondDelimiter+1);
+
+		// Put into YYYY-MM-DD form
+		return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
+
+	} elseif (substr_count($data,'/') == 2) { 
+		// Assume format is D/M/Y
+		$iFirstDelimiter = strpos($data,'/');
+		$iSecondDelimiter = strpos($data,'/',$iFirstDelimiter+1);
+
+		// Parse the day
+		$sDay = substr($data, 0, $iFirstDelimiter);		
+
+		// Parse the month
+		$sMonth = substr($data, $iFirstDelimiter+1, $iSecondDelimiter-$iFirstDelimiter-1);
+
+		// Parse the year
+		$sYear = substr($data, $iSecondDelimiter+1);
+
+		// Put into YYYY-MM-DD form
+		return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
+
+	}
+
+	return FALSE;
+}
+
 // Processes and Validates custom field data based on its type.
 //
 // Returns false if the data is not valid, true otherwise.
@@ -1007,11 +1157,12 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
 		case 2:
 			if (strlen($data) > 0)
 			{
-				list($iYear, $iMonth, $iDay) = sscanf($data,"%04d-%02d-%02d");
-				if ( !checkdate($iMonth,$iDay,$iYear) )
-				{
+				$dateString = parseAndValidateDate($data);
+				if ( $dateString === FALSE ) {
 					$aErrors[$col_Name] = gettext("Not a valid date");
 					$bErrorFlag = true;
+				} else {
+					$data = $dateString;
 				}
 			}
 			break;
