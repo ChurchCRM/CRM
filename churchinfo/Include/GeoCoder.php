@@ -4,7 +4,14 @@ $bHaveXML = 0;
 $pathArray = explode( PATH_SEPARATOR, get_include_path() );
 foreach ($pathArray as $onePath) {
 	$fullpath = $onePath . DIRECTORY_SEPARATOR . $sXML_RPC_PATH;
-	if (file_exists ($fullpath)) {
+	if (file_exists($fullpath)) {
+		require_once ("$sXML_RPC_PATH");
+		$bHaveXML = 1;
+	}
+}
+
+if ($bHaveXML == 0) { // Maybe the user entered absolute path, let's check
+	if (file_exists($sXML_RPC_PATH)) {
 		require_once ("$sXML_RPC_PATH");
 		$bHaveXML = 1;
 	}
@@ -37,8 +44,14 @@ function LatLonDistance($lat1, $lon1, $lat2, $lon2)
 	// convert to miles
 	$miles = 0.6213712 * $kilometers;
 
-	// Return distance
-	$distance  = sprintf("%0.2f",$miles);
+	// Return distance to three figures
+	if ($miles < 10.0) {
+		$distance = sprintf("%0.2f",$miles);
+	} elseif ($miles < 100.0) {
+		$distance = sprintf("%0.1f",$miles);
+	} else {
+		$distance = sprintf("%0.0f",$miles);		
+	}
 
 	return $distance ;
 }
@@ -72,41 +85,41 @@ function LatLonBearing($lat1, $lon1, $lat2, $lon2)
 
 	// Convert to directions
 	// -180=S   -135=SW   -90=W   -45=NW   0=N   45=NE   90=E   135=SE   180=S
-	if ($bearing <= -191.25) {
+	if ($bearing < -191.25) {
 		$direction = "---";
-	} elseif ($bearing <= -168.75){
+	} elseif ($bearing < -168.75){
 		$direction = "S";
-	} elseif ($bearing <= -146.25){
+	} elseif ($bearing < -146.25){
 		$direction = "SSW";
-	} elseif ($bearing <= -123.75) {
+	} elseif ($bearing < -123.75) {
 		$direction = "SW";
-	} elseif ($bearing <= -101.25) {
+	} elseif ($bearing < -101.25) {
 		$direction = "WSW";
-	} elseif ($bearing <= -78.75) {
+	} elseif ($bearing < -78.75) {
 		$direction = "W";
-	} elseif ($bearing <= -56.25){
+	} elseif ($bearing < -56.25){
 		$direction = "WNW";
-	} elseif ($bearing <= -33.75) {
+	} elseif ($bearing < -33.75) {
 		$direction = "NW";
-	} elseif ($bearing <= -11.25) {
+	} elseif ($bearing < -11.25) {
 		$direction = "NNW";
-	} elseif ($bearing <= 11.25){
+	} elseif ($bearing < 11.25){
 		$direction = "N";
-	} elseif ($bearing <= 33.75) {
+	} elseif ($bearing < 33.75) {
 		$direction = "NNE";
-	} elseif ($bearing <= 56.25) {
+	} elseif ($bearing < 56.25) {
 		$direction = "NE";
-	} elseif ($bearing <= 78.75) {
+	} elseif ($bearing < 78.75) {
 		$direction = "ENE";
-	} elseif ($bearing <= 101.25) {
+	} elseif ($bearing < 101.25) {
 		$direction = "E";
-	} elseif ($bearing <= 123.75) {
+	} elseif ($bearing < 123.75) {
 		$direction = "ESE";
-	} elseif ($bearing <= 146.25) {
+	} elseif ($bearing < 146.25) {
 		$direction = "SE";
-	} elseif ($bearing <= 168.75) {
+	} elseif ($bearing < 168.75) {
 		$direction = "SSE";
-	} elseif ($bearing <= 191.25) {
+	} elseif ($bearing < 191.25) {
 		$direction = "S";
 	} else {
 		$direction = "+++";
