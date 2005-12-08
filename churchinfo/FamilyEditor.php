@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *
- *  filename    : PersonEditor.php
+ *  filename    : FamilyEditor.php
  *  last change : 2003-01-04
  *  website     : http://www.infocentral.org
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -16,9 +16,7 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-
 require "Include/CanvassUtilities.php";
-
 require "Include/GeoCoder.php";
 
 //Set the page title
@@ -64,8 +62,10 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 {
 	//Assign everything locally
 	$sName = FilterInput($_POST["Name"]);
-	$sAddress1 = FilterInput($_POST["Address1"]);
-	$sAddress2 = FilterInput($_POST["Address2"]);
+	// Strip commas out of address fields because they are problematic when
+	// exporting addresses to CSV file
+	$sAddress1 = str_replace(',','',FilterInput($_POST["Address1"]));
+	$sAddress2 = str_replace(',','',FilterInput($_POST["Address2"]));
 	$sCity = FilterInput($_POST["City"]);
 	$sZip = FilterInput($_POST["Zip"]);
 	$sCountry = FilterInput($_POST["Country"]);
@@ -85,7 +85,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$nLatitude = FilterInput($_POST["Latitude"]);
 	$nLongitude = FilterInput($_POST["Longitude"]);
 
-	if ($bHaveXML && $sCountry == "United States" && ($nLatitude == 0 || $nLongitude == 0)) {
+	if ($bHaveXML && ($sCountry == "United States") && ($nLatitude == 0 || $nLongitude == 0)) {
 	// Try to get Lat/Lon based on the address
 		$myAddressLatLon = new AddressLatLon;
 		$myAddressLatLon->SetAddress ($sAddress1, $sCity, $sState, $sZip);
@@ -166,16 +166,16 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 	}
 
-	//Validate Wedding Date if one was entered
-	// Currently, format is a string: YYYY-MM-DD
+	// Validate Wedding Date if one was entered
 	if (strlen($dWeddingDate) > 0)
 	{
-		list($iYear, $iMonth, $iDay) = sscanf($dWeddingDate,"%04d-%02d-%02d");
-
-		if ( !checkdate($iMonth,$iDay,$iYear) )
-		{
-			$sWeddingDateError = "<span style=\"color: red; \"> " . gettext("Not a valid WeddingDate") . "</span>";
+		$dateString = parseAndValidateDate($dWeddingDate, $locale = "US", $pasfut = "past");
+		if ( $dateString === FALSE ) {
+			$sWeddingDateError = "<span style=\"color: red; \">" 
+								. gettext("Not a valid Wedding Date") . "</span>";
 			$bErrorFlag = true;
+		} else {
+			$dWeddingDate = $dateString;
 		}
 	}
 
@@ -186,11 +186,6 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		if (!$bNoFormat_HomePhone) $sHomePhone = CollapsePhoneNumber($sHomePhone,$sCountry);
 		if (!$bNoFormat_WorkPhone) $sWorkPhone = CollapsePhoneNumber($sWorkPhone,$sCountry);
 		if (!$bNoFormat_CellPhone) $sCellPhone = CollapsePhoneNumber($sCellPhone,$sCountry);
-
-		if ( strlen($dWeddingDate) > 0 )
-			$dWeddingDate = "\"" . $dWeddingDate . "\"";
-		else
-			$dWeddingDate = "NULL";
 
 		//Write the base SQL depending on the Action
 		if ($bSendNewsLetter)
@@ -204,69 +199,70 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		if (strlen($iFamilyID) < 1)
 		{
 			$sSQL = "INSERT INTO family_fam (
-			                                 fam_Name, 
-														fam_Address1, 
-														fam_Address2, 
-														fam_City, 
-														fam_State, 
-														fam_Zip, 
-														fam_Country, 
-														fam_HomePhone, 
-														fam_WorkPhone, 
-														fam_CellPhone, 
-														fam_Email, 
-														fam_WeddingDate, 
-														fam_DateEntered, 
-														fam_EnteredBy, 
-														fam_SendNewsLetter,
-														fam_OkToCanvass,
-														fam_Canvasser,
-														fam_Latitude,
-														fam_Longitude)
-											VALUES ('" . $sName . "','" . 
-											         $sAddress1 . "','" . 
-														$sAddress2 . "','" . 
-														$sCity . "','" . 
-														$sState . "','" . 
-														$sZip . "','" . 
-														$sCountry . "','" . 
-														$sHomePhone . "','" . 
-														$sWorkPhone . "','" . 
-														$sCellPhone . "','" . 
-														$sEmail . "'," . 
-														$dWeddingDate . ",'" . 
-														date("YmdHis") . "'," . 
-														$_SESSION['iUserID'] . "," . 
-														$bSendNewsLetterString . "," . 
-														$bOkToCanvassString . ",'" .
-														$iCanvasser . "','" .
-														$nLatitude . "','" .
-														$nLongitude . "')";
+						fam_Name, 
+						fam_Address1, 
+						fam_Address2, 
+						fam_City, 
+						fam_State, 
+						fam_Zip, 
+						fam_Country, 
+						fam_HomePhone, 
+						fam_WorkPhone, 
+						fam_CellPhone, 
+						fam_Email, 
+						fam_WeddingDate, 
+						fam_DateEntered, 
+						fam_EnteredBy, 
+						fam_SendNewsLetter,
+						fam_OkToCanvass,
+						fam_Canvasser,
+						fam_Latitude,
+						fam_Longitude)
+					VALUES ('"							. 
+						$sName					. "','" . 
+						$sAddress1				. "','" . 
+						$sAddress2				. "','" . 
+						$sCity					. "','" . 
+						$sState					. "','" . 
+						$sZip					. "','" . 
+						$sCountry				. "','" . 
+						$sHomePhone				. "','" . 
+						$sWorkPhone				. "','" . 
+						$sCellPhone				. "','" . 
+						$sEmail					. "','" . 
+						$dWeddingDate			. "','" . 
+						date("YmdHis")			. "'," . 
+						$_SESSION['iUserID']	. "," . 
+						$bSendNewsLetterString	. "," . 
+						$bOkToCanvassString		. ",'" .
+						$iCanvasser				. "','" .
+						$nLatitude				. "','" .
+						$nLongitude						. "')";
 			$bGetKeyBack = true;
 		}
 		else
 		{
 			$sSQL = "UPDATE family_fam SET fam_Name='" . $sName . "'," .
-			                               "fam_Address1='" . $sAddress1 . "'," .
-													 "fam_Address2='" . $sAddress2 . "'," .
-													 "fam_City='" . $sCity . "'," .
-													 "fam_State='" . $sState . "'," .
-													 "fam_Zip='" . $sZip . "'," .
-													 "fam_Latitude='" . $nLatitude . "'," .
-													 "fam_Longitude='" . $nLongitude . "'," .
-													 "fam_Country='" . $sCountry . "'," .
-													 "fam_HomePhone='" . $sHomePhone . "'," .
-													 "fam_WorkPhone='" . $sWorkPhone . "'," .
-													 "fam_CellPhone='" . $sCellPhone . "'," .
-													 "fam_Email='" . $sEmail . "'," .
-													 "fam_WeddingDate='" . $dWeddingDate . "'," .
-													 "fam_DateLastEdited='" . date("YmdHis") . "'," .
-													 "fam_EditedBy = " . $_SESSION['iUserID'] . "," .
-													 "fam_SendNewsLetter = " . $bSendNewsLetterString;
+						"fam_Address1='" . $sAddress1 . "'," .
+						"fam_Address2='" . $sAddress2 . "'," .
+						"fam_City='" . $sCity . "'," .
+						"fam_State='" . $sState . "'," .
+						"fam_Zip='" . $sZip . "'," .
+						"fam_Latitude='" . $nLatitude . "'," .
+						"fam_Longitude='" . $nLongitude . "'," .
+						"fam_Country='" . $sCountry . "'," .
+						"fam_HomePhone='" . $sHomePhone . "'," .
+						"fam_WorkPhone='" . $sWorkPhone . "'," .
+						"fam_CellPhone='" . $sCellPhone . "'," .
+						"fam_Email='" . $sEmail . "'," .
+						"fam_WeddingDate='" . $dWeddingDate . "'," .
+						"fam_DateLastEdited='" . date("YmdHis") . "'," .
+						"fam_EditedBy = " . $_SESSION['iUserID'] . "," .
+						"fam_SendNewsLetter = " . $bSendNewsLetterString;
 			if ($_SESSION['bCanvasser'])
-				$sSQL .= ", fam_OkToCanvass = " . $bOkToCanvassString . ", fam_Canvasser = '" . $iCanvasser . "'";
-			$sSQL .= 								 " WHERE fam_ID = " . $iFamilyID;
-			
+				$sSQL .= ", fam_OkToCanvass = " . $bOkToCanvassString . 
+									", fam_Canvasser = '" . $iCanvasser . "'";
+				$sSQL .= " WHERE fam_ID = " . $iFamilyID;
 			$bGetKeyBack = false;
 		}
 
@@ -309,32 +305,35 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					}
 
 					RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
-					$sSQL = "INSERT INTO person_per (per_FirstName, 
-					                                 per_MiddleName, 
-																per_LastName, 
-																per_fam_ID, 
-																per_fmr_ID, 
-																per_DateEntered, 
-																per_EnteredBy, 
-																per_Gender, 
-																per_BirthDay, 
-																per_BirthMonth, 
-																per_BirthYear, 
-																per_cls_ID) 
-													VALUES ('$aFirstNames[$iCount]',
-													        '$aMiddleNames[$iCount]',
-															  '$sLastNameToEnter',
-															  $iFamilyID,
-															  $aRoles[$iCount],
-															  '" . date("YmdHis") . "'," . 
-															  $_SESSION['iUserID'] . 
-															  ",$aGenders[$iCount],
-															  $aBirthDays[$iCount],
-															  $aBirthMonths[$iCount],
-															  $aBirthYears[$iCount],
-															  $aClassification[$iCount])";
+					$sSQL = "INSERT INTO person_per (
+								per_FirstName,
+								per_MiddleName,
+								per_LastName,
+								per_fam_ID,
+								per_fmr_ID,
+								per_DateEntered,
+								per_EnteredBy,
+								per_Gender,
+								per_BirthDay,
+								per_BirthMonth,
+								per_BirthYear,
+								per_cls_ID)
+							VALUES (
+								'$aFirstNames[$iCount]',
+								'$aMiddleNames[$iCount]',
+								'$sLastNameToEnter',
+								$iFamilyID,
+								$aRoles[$iCount],
+								'" . date("YmdHis") . "',
+								" . $_SESSION['iUserID'] . ",
+								$aGenders[$iCount],
+								$aBirthDays[$iCount],
+								$aBirthMonths[$iCount],
+								$aBirthYears[$iCount],
+								$aClassification[$iCount])";
 					RunQuery($sSQL);
-					$sSQL = "INSERT INTO person_custom (per_ID) VALUES (" . mysql_insert_id() . ")";
+					$sSQL = "INSERT INTO person_custom (per_ID) VALUES (" 
+								. mysql_insert_id() . ")";
 					RunQuery($sSQL);
 					RunQuery("UNLOCK TABLES");
 				}
@@ -408,7 +407,7 @@ else
 		$nLatitude = $fam_Latitude;
 		$nLongitude = $fam_Longitude;
 		if ($dWeddingDate == '0000-00-00')
-			$dWeddingDate = '';
+			$dWeddingDate = NULL;
 
 		// Expand the phone number
 		$sHomePhone = ExpandPhoneNumber($sHomePhone,$sCountry,$bNoFormat_HomePhone);
@@ -564,15 +563,18 @@ require "Include/Header.php";
 		<td class="LabelColumn"><?php echo gettext("Email:"); ?></td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="Email" value="<?php echo htmlentities(stripslashes($sEmail)); ?>" size="30" maxlength="50"></td>
 	</tr>
-
+<?php /* */ ?>
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Send Newsletter:"); ?></td>
 		<td class="TextColumn"><input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) echo " checked"; ?>></td>
 	</tr>
-	
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Ok To Canvass:"); ?></td>
-		<td class="TextColumn"><input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) echo " checked"; ?>></td>
+<?php /* */ ?>	
+	<tr><?php
+		if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser
+		echo "<td class='LabelColumn'>" . gettext("Ok To Canvass:") . "</td>\n";
+		echo "<td class='TextColumn'><input type=\"checkbox\" Name=\"OkToCanvass\" value=\"1\"";
+		if ($bOkToCanvass) echo " checked"; echo "</td>";
+		}?>
 	</tr>
 
 	<tr><?php
@@ -646,7 +648,7 @@ require "Include/Header.php";
 
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Wedding Date:"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="10" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="12" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
 	</tr>
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Latitude:"); ?></td>
