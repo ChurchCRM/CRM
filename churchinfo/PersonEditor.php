@@ -147,22 +147,26 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	// Validate Friend Date if one was entered
 	if (strlen($dFriendDate) > 0)
 	{
-		list($iYear, $iMonth, $iDay) = sscanf($dFriendDate,"%04d-%02d-%02d");
-		if ( !checkdate($iMonth,$iDay,$iYear) )
-		{
-			$sFriendDateError = "<span style=\"color: red; \">" . gettext("Not a valid Friend Date") . "</span>";
+		$dateString = parseAndValidateDate($dFriendDate, $locale = "US", $pasfut = "past");
+		if ( $dateString === FALSE ) {
+			$sFriendDateError = "<span style=\"color: red; \">" 
+								. gettext("Not a valid Friend Date") . "</span>";
 			$bErrorFlag = true;
+		} else {
+			$dFriendDate = $dateString;
 		}
 	}
 
 	// Validate Membership Date if one was entered
 	if (strlen($dMembershipDate) > 0)
 	{
-		list($iYear, $iMonth, $iDay) = sscanf($dMembershipDate,"%04d-%02d-%02d");
-		if ( !checkdate($iMonth,$iDay,$iYear) )
-		{
-			$sMembershipDateError = "<span style=\"color: red; \">" . gettext("Not a valid Membership Date") . "</span>";
+		$dateString = parseAndValidateDate($dMembershipDate, $locale = "US", $pasfut = "past");
+		if ( $dateString === FALSE ) {
+			$sMembershipDateError = "<span style=\"color: red; \">" 
+								. gettext("Not a valid Membership Date") . "</span>";
 			$bErrorFlag = true;
+		} else {
+			$dMembershipDate = $dateString;
 		}
 	}
 
@@ -535,7 +539,7 @@ require "Include/Header.php";
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
-
+<?php /* */?>
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("Main address for an individual. If the address does not differ from the family, leave this field blank."); ?>><?php if ($bFamilyAddress1) { echo "<span style=\"color: red;\">"; } ?><?php echo gettext("Address1:"); ?></span></td>
 				<td class="TextColumn"><input type="text" name="Address1" value="<?php echo htmlentities(stripslashes($sAddress1)); ?>" size="30" maxlength="50"></td>
@@ -572,7 +576,7 @@ require "Include/Header.php";
 					<?php require "Include/CountryDropDown.php"; ?>
 				</td>
 			</tr>
-
+<?php /* */?>
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
@@ -670,6 +674,7 @@ require "Include/Header.php";
 						<?php } ?>
 					</select>
 				<font color="red"><?php echo $sBirthDateError ?></font>
+<?php /* */?>
 				</td>
 			</tr>
 
@@ -678,7 +683,12 @@ require "Include/Header.php";
 				<td class="TextColumn"><input type="text" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"><font color="red"><br><?php echo $sBirthYearError ?></font><br><font size="1"><?php echo gettext("Must be four-digit format."); ?></font></td>
 				<td class="TextColumn"><input type="checkbox" name="HideAge" value="1" <?php if ($bHideAge) echo " checked";?>><?php echo gettext("Hide Age"); ?></td>
 			</tr>
+<?php /* ?>
+				 <input type="text" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"><font color="red"><br><?php echo $sBirthYearError ?></font><br><font size="2"><?php echo gettext("Leave year blank to hide age."); ?></font>
 
+				</td>
+			</tr>
+<?php */ ?>
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
