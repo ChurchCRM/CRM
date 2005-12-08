@@ -16,6 +16,7 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Include/GeoCoder.php";
 
 //Set the page title
 $sPageTitle = gettext("Family View");
@@ -167,27 +168,55 @@ elseif ($next_link_text) {
 			if ($fam_City != "") { echo $fam_City . ", "; }
 			if ($fam_State != "") { echo $fam_State; }
 			if ($fam_Zip != "") { echo " " . $fam_Zip; }
-			if ($fam_Country != "") { echo "<br>" . $fam_Country; }
-		echo "</font>";
-		echo "</div>";
+			if ($fam_Country != "") { echo "<br>" . $fam_Country . "<br>"; }
 
-		//Show link to mapquest
+			if ($fam_Latitude && $fam_Longitude) {
+				if ($nChurchLatitude && $nChurchLongitude) {
+					$sDistance = LatLonDistance($nChurchLatitude, $nChurchLongitude, 											$fam_Latitude, $fam_Longitude);
+					$sDirection = LatLonBearing($nChurchLatitude, $nChurchLongitude, 											$fam_Latitude, $fam_Longitude);
+					echo $sDistance . " miles " . $sDirection . " of church<br>";
+				}
+			}
+		echo "</font></div>";
+
+		//Show links to mapquest, US Post Office, and Geocoder US
+		$bShowUSLinks = false;
+		$bShowMQLink = false;
 		if ($fam_Address1 != "" && $fam_City != "" && $fam_State != "")
 		{
 			if ($fam_Country == "United States") {
 				$sMQcountry = "";
-				$bShowMQLink = true;
+				$bShowUSLinks = true;
 			}
 			elseif ($fam_Country == "Canada") {
 				$sMQcountry = "country=CA&";
 				$bShowMQLink = true;
 			}
-			else
-				$bShowMQLink = false;
 		}
 
-		if ($bShowMQLink)
-			echo "<div align=\"right\"><a class=\"SmallText\" target=\"_blank\" href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . "city=" . urlencode($fam_City) . "&state=" . $fam_State . "&address=" . urlencode($fam_Address1) . "\">" . gettext("View Map") . "</a></div>";
+		if ($bShowUSLinks) {
+			echo "<div align=left><a class=\"SmallText\" target=\"_blank\"
+				href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . 
+				"city=" . urlencode($fam_City) . "&state=" . $fam_State . 
+				"&address=" . urlencode($fam_Address1) . "\">" . gettext("View Map") . 
+				"</a></div>";
+				echo "<div align=center><a class=\"SmallText\" target=\"_blank\" 
+				href=\"http://zip4.usps.com/zip4/welcome.jsp?address2=" . 
+				urlencode($fam_Address1) . "&city=" . urlencode($fam_City) . 
+				"&state=" . $fam_State . "\">" . gettext("USPS") . 
+				"</a></div>";
+				echo "<div align=right><a class=\"SmallText\" target=\"_blank\" 
+				href=\"http://geocoder.us/demo.cgi?address=" . urlencode($fam_Address1) .
+				"%2C" . urlencode($fam_Zip) . "\">" . gettext("Geocode") . 
+				"</a></div>";
+		}
+		if ($bShowMQLink) {
+			echo "<div align=left><a class=\"SmallText\" target=\"_blank\"
+				href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . 
+				"city=" . urlencode($fam_City) . "&state=" . $fam_State . 
+				"&address=" . urlencode($fam_Address1) . "\">" . gettext("View Map") . 
+				"</a></div>";
+		}
 		echo "<br>";
 
 		// Upload photo
