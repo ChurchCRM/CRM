@@ -498,8 +498,8 @@ function RemoveFromPeopleCart($sID)
 // bWithtime 1 to be displayed
 function FormatDate($dDate, $bWithTime)
 {
-    if ($dDate == "" || $dDate == "0000-00-00 00:00:00")
-        return ("Unknown");
+    if ($dDate == "" || $dDate == "0000-00-00 00:00:00" || $dDate == "0000-00-00")
+        return ("");
     $arr = explode(" ", $dDate);
     $arr0 = explode("-", $arr[0]);
     $arr1 = explode(":", $arr[1]);
@@ -1064,14 +1064,14 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = "future") {
 
 }
 
-function parseAndValidateDate($data, $local = "US", $pasfut = "future") {
+function parseAndValidateDate($data, $locale = "US", $pasfut = "future") {
 // This function was written because I had no luck finding a PHP
 // function that would reliably parse a human entered date string for 
 // dates before 1/1/1970 or after 1/19/2038 on any Operating System.
 //
 // This function has hooks for US English M/D/Y format as well as D/M/Y.  The
 // default is M/D/Y for date.  To change to D/M/Y use anything but "US" for
-// $local.
+// $locale.
 //
 // Y-M-D is allowed if the delimiter is "-" instead of "/"
 //
@@ -1103,7 +1103,7 @@ function parseAndValidateDate($data, $local = "US", $pasfut = "future") {
 		// Put into YYYY-MM-DD form
 		return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
 
-	} elseif ((substr_count($data,'/') == 2) && ($local == "US")) { 
+	} elseif ((substr_count($data,'/') == 2) && ($locale == "US")) { 
 		// Assume format is M/D/Y
 		$iFirstDelimiter = strpos($data,'/');
 		$iSecondDelimiter = strpos($data,'/',$iFirstDelimiter+1);
@@ -1139,6 +1139,32 @@ function parseAndValidateDate($data, $local = "US", $pasfut = "future") {
 
 	}
 
+	// If we made it this far it means the above logic was unable to parse the date.
+	// Now try to parse using the function strtotime().  The strtotime() function does 
+	// not gracefully handle dates outside the range 1/1/1970 to 1/19/2038.  For this
+	// reason consider strtotime() as a function of last resort.
+	$timeStamp = strtotime($data);
+	if ($timeStamp == FALSE || $timeStamp <= 0) {
+		// Some Operating Sytems and older versions of PHP do not gracefully handle 
+		// negative timestamps.  Bail if the timestamp is negative.
+		return FALSE;
+	}
+
+	// Now use the date() function to convert timestamp into YYYY-MM-DD
+	$dateString = date("Y-m-d", $timeStamp);
+	
+	if (strlen($dateString) != 10) {
+		// Common sense says we have a 10 charater string.  If not, something is wrong
+		// and it's time to bail.
+		return FALSE;
+	}
+
+	if ($dateString > "1970-01-01" && $dateString < "2038-01-19") {
+		// Success!
+		return $dateString;
+	}
+
+	// Should not have made it this far.  Something is wrong so bail.
 	return FALSE;
 }
 
