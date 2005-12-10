@@ -109,7 +109,7 @@ class PDF_ReminderReport extends ChurchInfoReport {
 		parent::FPDF("P", "mm", $this->paperFormat);
 
 		$this->SetFont('Times','', 10);
-		$this->SetMargins(0,0);
+		$this->SetMargins(20,20);
 		$this->Open();
 		$this->SetAutoPageBreak(false);
 	}
