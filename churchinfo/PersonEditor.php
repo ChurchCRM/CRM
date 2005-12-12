@@ -539,7 +539,7 @@ require "Include/Header.php";
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
-<?php /* */?>
+<?php if (!$bHidePersonAddress) { /* Person Address can be hidden - General Settings */ ?>
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("Main address for an individual. If the address does not differ from the family, leave this field blank."); ?>><?php if ($bFamilyAddress1) { echo "<span style=\"color: red;\">"; } ?><?php echo gettext("Address1:"); ?></span></td>
 				<td class="TextColumn"><input type="text" name="Address1" value="<?php echo htmlentities(stripslashes($sAddress1)); ?>" size="30" maxlength="50"></td>
@@ -576,7 +576,7 @@ require "Include/Header.php";
 					<?php require "Include/CountryDropDown.php"; ?>
 				</td>
 			</tr>
-<?php /* */?>
+<?php } ?>
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
@@ -692,12 +692,12 @@ require "Include/Header.php";
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
-
+<?php if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Friend Date:"); ?></td>
 				<td class="TextColumn"><input type="text" name="FriendDate" value="<?php echo $dFriendDate; ?>" maxlength="10" id="sel2" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel2', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sFriendDateError ?></font></td>
 			</tr>
-
+<?php } ?>	
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Membership Date:"); ?></td>
 				<td class="TextColumn"><input type="text" name="MembershipDate" value="<?php echo $dMembershipDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sMembershipDateError ?></font></td>

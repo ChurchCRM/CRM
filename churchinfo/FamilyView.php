@@ -331,10 +331,12 @@ elseif ($next_link_text) {
 				<td class="TinyLabelColumn"><?php echo gettext("Email:"); ?></td>
 				<td class="TinyTextColumn"><?php if ($fam_Email != "") { echo "<a href='mailto:" . $fam_Email . "'>" . $fam_Email . "</a>"; } ?>				  </td>
 			</tr>
+<?php if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Send newsletter:"); ?></td>
 				<td class="TinyTextColumn"><?php echo $fam_SendNewsLetter; ?></td>
 			</tr>
+<?php } ?>
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Wedding Date:"); ?></td>
 				<td class="TinyTextColumn"><?php echo FormatDate($fam_WeddingDate,false) ?>				  </td>

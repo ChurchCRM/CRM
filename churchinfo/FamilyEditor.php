@@ -563,12 +563,12 @@ require "Include/Header.php";
 		<td class="LabelColumn"><?php echo gettext("Email:"); ?></td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="Email" value="<?php echo htmlentities(stripslashes($sEmail)); ?>" size="30" maxlength="50"></td>
 	</tr>
-<?php /* */ ?>
+<?php if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Send Newsletter:"); ?></td>
 		<td class="TextColumn"><input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) echo " checked"; ?>></td>
 	</tr>
-<?php /* */ ?>	
+<?php } ?>	
 	<tr><?php
 		if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser
 		echo "<td class='LabelColumn'>" . gettext("Ok To Canvass:") . "</td>\n";

@@ -391,10 +391,12 @@ if ($next_link_text) {
 				<td class="TinyLabelColumn"><?php echo gettext("Age:"); ?></td>
 				<td class="TinyTextColumn"><?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?></td>
 			</tr>
+<?php if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Friend Date:"); ?></td>
 				<td class="TinyTextColumn"><?php echo FormatDate($per_FriendDate,false); ?></td>
 			</tr>
+<?php } ?>	
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Membership Date:"); ?></td>
 				<td class="TinyTextColumn"><?php echo FormatDate($per_MembershipDate,false); ?></td>
