@@ -337,14 +337,18 @@ elseif ($next_link_text) {
 				<td class="TinyTextColumn"><?php echo $fam_SendNewsLetter; ?></td>
 			</tr>
 <?php } ?>
+<?php if (!$bHideWeddingDate) { /* Wedding Date can be hidden - General Settings */ ?>
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Wedding Date:"); ?></td>
 				<td class="TinyTextColumn"><?php echo FormatDate($fam_WeddingDate,false) ?>				  </td>
 			</tr>
+<?php } /* Wedding date can be hidden - General Settings */ ?>
+<?php if (!$bHideLatLon) { /* Lat/Lon can be hidden - General Settings */ ?>
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Latitude/Longitude"); ?></td>
 				<td class="TinyTextColumn"><?php echo $fam_Latitude . " / ", $fam_Longitude; ?>				  </td>
 			</tr>
+<?php } /* Lat/Lon can be hidden - General Settings */ ?>
 			</table>
 		</td>
 	</tr>
