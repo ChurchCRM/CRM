@@ -140,9 +140,9 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		}
 
 		// Validate any family member birthdays
-		if (strlen($aFirstNames[$iCount]) > 0 && strlen($aBirthYears[$iCount]) > 0)
+		if ((strlen($aFirstNames[$iCount]) > 0) && (strlen($aBirthYears[$iCount]) > 0)) 
 		{
-			if ($aBirthYears[$iCount] > 2155 || $aBirthYears[$iCount] < 1901)
+			if (($aBirthYears[$iCount] > 2155) || ($aBirthYears[$iCount] < 1901))
 			{
 				$aBirthDateError[$iCount] = gettext("Invalid Year: allowable values are 1901 to 2155");
 				$bErrorFlag = True;
@@ -163,18 +163,21 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	{
 		$sNameError = gettext("You must enter a Name.");
 		$bErrorFlag = True;
+
 	}
 
 	// Validate Wedding Date if one was entered
-	if (strlen($dWeddingDate) > 0) {
+	if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != "0000-00-00")) {
 		$dateString = parseAndValidateDate($dWeddingDate, $locale = "US", $pasfut = "past");
 		if ( $dateString === FALSE ) {
 			$sWeddingDateError = "<span style=\"color: red; \">" 
 								. gettext("Not a valid Wedding Date") . "</span>";
 			$bErrorFlag = true;
 		} else {
-			$dWeddingDate = $dateString;
+			$dWeddingDate = "'" . $dateString . "'";
 		}
+	} else {
+		$dWeddingDate = "NULL";
 	}
 
 	//If no errors, then let's update...
@@ -227,19 +230,15 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						$sHomePhone				. "','" . 
 						$sWorkPhone				. "','" . 
 						$sCellPhone				. "','" . 
-						$sEmail					. "',"; 
-				if ($dWeddingDate == NULL) {
-					$sSQL .= "NULL,'";
-				} else {
-					$sSQL .= "'" . $dWeddingDate . "','";
-				} 
-				$sSQL .= date("YmdHis")			. "'," . 
+						$sEmail					. "'," . 
+						$dWeddingDate			. ",'" . 
+						date("YmdHis")			. "'," . 
 						$_SESSION['iUserID']	. "," . 
 						$bSendNewsLetterString	. "," . 
 						$bOkToCanvassString		. ",'" .
 						$iCanvasser				. "','" .
 						$nLatitude				. "','" .
-						$nLongitude				. "')";
+						$nLongitude						. "')";
 			$bGetKeyBack = true;
 		}
 		else
@@ -256,13 +255,9 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						"fam_HomePhone='" . $sHomePhone . "'," .
 						"fam_WorkPhone='" . $sWorkPhone . "'," .
 						"fam_CellPhone='" . $sCellPhone . "'," .
-						"fam_Email='" . $sEmail . "',";
-			if ($dWeddingDate == NULL) {
-				$sSQL .= "fam_WeddingDate=NULL,";
-			} else {
-				$sSQL .= "fam_WeddingDate='" . $dWeddingDate . "',";
-			}
-				$sSQL .="fam_DateLastEdited='" . date("YmdHis") . "'," .
+						"fam_Email='" . $sEmail . "'," .
+						"fam_WeddingDate=" . $dWeddingDate . "," .
+						"fam_DateLastEdited='" . date("YmdHis") . "'," .
 						"fam_EditedBy = " . $_SESSION['iUserID'] . "," .
 						"fam_SendNewsLetter = " . $bSendNewsLetterString;
 			if ($_SESSION['bCanvasser'])
@@ -364,7 +359,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						$sLastNameToEnter = $sName;
 					}
 					RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
-					$sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "',per_BirthYear='" . $aBirthYears[$iCount] . "',per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
+					$sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "',per_BirthYear=" . $aBirthYears[$iCount] . ",per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
 					RunQuery($sSQL);
 					RunQuery("UNLOCK TABLES");
 				}
@@ -410,7 +405,6 @@ else
 		$bOkToCanvass = ($fam_OkToCanvass == 'TRUE');
 		$iCanvasser = $fam_Canvasser;
 		$dWeddingDate = $fam_WeddingDate;
-		if ($dWeddingDate == "0000-00-00") $dWeddingDate = NULL;
 		$nLatitude = $fam_Latitude;
 		$nLongitude = $fam_Longitude;
 
@@ -650,11 +644,14 @@ require "Include/Header.php";
 	<tr>
 		<td>&nbsp;</td>
 	</tr>
-
+<?php if (!$bHideWeddingDate) { /* Wedding Date can be hidden - General Settings */ ?>
 	<tr>
+		<?php if ($dWeddingDate == "0000-00-00") $dWeddingDate = ""; ?>
 		<td class="LabelColumn"><?php echo gettext("Wedding Date:"); ?></td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="12" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
 	</tr>
+<?php } /* Wedding date can be hidden - General Settings */ ?>
+<?php if (!$bHideLatLon) { /* Lat/Lon can be hidden - General Settings */ ?>
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Latitude:"); ?></td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="Latitude" value="<?php echo $nLatitude; ?>" size="30" maxlength="50"></td>
@@ -663,8 +660,7 @@ require "Include/Header.php";
 		<td class="LabelColumn"><?php echo gettext("Longitude:"); ?></td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="Longitude" value="<?php echo $nLongitude; ?>" size="30" maxlength="50"></td>
 	</tr>
-
-
+<?php } /* Lat/Lon can be hidden - General Settings */ ?>
 	<tr>
 		<td>&nbsp;</td>
 	</tr>
