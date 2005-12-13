@@ -163,12 +163,10 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	{
 		$sNameError = gettext("You must enter a Name.");
 		$bErrorFlag = True;
-
 	}
 
 	// Validate Wedding Date if one was entered
-	if (strlen($dWeddingDate) > 0)
-	{
+	if (strlen($dWeddingDate) > 0) {
 		$dateString = parseAndValidateDate($dWeddingDate, $locale = "US", $pasfut = "past");
 		if ( $dateString === FALSE ) {
 			$sWeddingDateError = "<span style=\"color: red; \">" 
@@ -229,15 +227,19 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						$sHomePhone				. "','" . 
 						$sWorkPhone				. "','" . 
 						$sCellPhone				. "','" . 
-						$sEmail					. "','" . 
-						$dWeddingDate			. "','" . 
-						date("YmdHis")			. "'," . 
+						$sEmail					. "',"; 
+				if ($dWeddingDate == NULL) {
+					$sSQL .= "NULL,'";
+				} else {
+					$sSQL .= "'" . $dWeddingDate . "','";
+				} 
+				$sSQL .= date("YmdHis")			. "'," . 
 						$_SESSION['iUserID']	. "," . 
 						$bSendNewsLetterString	. "," . 
 						$bOkToCanvassString		. ",'" .
 						$iCanvasser				. "','" .
 						$nLatitude				. "','" .
-						$nLongitude						. "')";
+						$nLongitude				. "')";
 			$bGetKeyBack = true;
 		}
 		else
@@ -254,9 +256,13 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						"fam_HomePhone='" . $sHomePhone . "'," .
 						"fam_WorkPhone='" . $sWorkPhone . "'," .
 						"fam_CellPhone='" . $sCellPhone . "'," .
-						"fam_Email='" . $sEmail . "'," .
-						"fam_WeddingDate='" . $dWeddingDate . "'," .
-						"fam_DateLastEdited='" . date("YmdHis") . "'," .
+						"fam_Email='" . $sEmail . "',";
+			if ($dWeddingDate == NULL) {
+				$sSQL .= "fam_WeddingDate=NULL,";
+			} else {
+				$sSQL .= "fam_WeddingDate='" . $dWeddingDate . "',";
+			}
+				$sSQL .="fam_DateLastEdited='" . date("YmdHis") . "'," .
 						"fam_EditedBy = " . $_SESSION['iUserID'] . "," .
 						"fam_SendNewsLetter = " . $bSendNewsLetterString;
 			if ($_SESSION['bCanvasser'])
@@ -404,10 +410,9 @@ else
 		$bOkToCanvass = ($fam_OkToCanvass == 'TRUE');
 		$iCanvasser = $fam_Canvasser;
 		$dWeddingDate = $fam_WeddingDate;
+		if ($dWeddingDate == "0000-00-00") $dWeddingDate = NULL;
 		$nLatitude = $fam_Latitude;
 		$nLongitude = $fam_Longitude;
-		if ($dWeddingDate == '0000-00-00')
-			$dWeddingDate = NULL;
 
 		// Expand the phone number
 		$sHomePhone = ExpandPhoneNumber($sHomePhone,$sCountry,$bNoFormat_HomePhone);
