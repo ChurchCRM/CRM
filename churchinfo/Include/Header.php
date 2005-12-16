@@ -664,6 +664,20 @@ else
 				<a class="SmallText" href="BackupDatabase.php"><?php echo gettext("Backup Database"); ?></a>
 				<br>
 				<a class="SmallText" href="CSVImport.php"><?php echo gettext("CSV Import"); ?></a>
+				<br>
+				<a class="SmallText" href="AccessReport.php"><?php echo gettext("Access Report"); ?></a>
+				<br>
+				<a class="SmallText" href="SettingsGeneral.php"><?php echo gettext("Edit General Settings"); ?></a>
+				<br>
+				<a class="SmallText" href="SettingsReport.php"><?php echo gettext("Exit Report Settings"); ?></a>
+				<br>
+				<a class="SmallText" href="Register.php"><?php
+						if (! $bRegistered)
+							echo gettext("Please select this option to register ChurchInfo after configuring.");
+						else
+							echo gettext("Update registration");
+						echo "',"; 
+				?></a>
 			</p>
 			<?php } ?>
 
@@ -675,14 +689,19 @@ else
 					<br><a href="PersonEditor.php" class="SmallText"><?php echo gettext("Add New Person"); ?></a>
 				<?php } ?>
 
+				<br><a href="SelectList.php?mode=person" class="SmallText"><?php echo gettext("View All Persons"); ?></a>
+				<input type="hidden" value="person" name="mode">
+				<input style="font-size: 8pt; margin-top: 5px; margin-bottom: 5px;" type="text" name="Filter" id="PersonSearch" value="Search" onFocus="ClearFieldOnce(this);">
+
 				<?php if ($_SESSION['bMenuOptions']) { ?>
 					<br><a href="OptionManager.php?mode=classes" class="SmallText"><?php echo gettext("Classification Manager"); ?></a>
 				<?php } ?>
 
-				<br><a href="SelectList.php?mode=person" class="SmallText"><?php echo gettext("View All Persons"); ?></a>
-				<input type="hidden" value="person" name="mode">
-				<input style="font-size: 8pt; margin-top: 5px; margin-bottom: 5px;" type="text" name="Filter" id="PersonSearch" value="Search" onFocus="ClearFieldOnce(this);">
 				</form>
+			</p>
+
+			<p>
+				<a class="SmallText" href="VolunteerOpportunityEditor.php"><?php echo gettext("Edit volunteer opportunities"); ?></a><br>
 			</p>
 
 			<p>
@@ -693,14 +712,30 @@ else
 					<br><a href="FamilyEditor.php" class="SmallText"><?php echo gettext("Add New Family"); ?></a>
 				<?php } ?>
 
+				<br><a href="SelectList.php?mode=family" class="SmallText"><?php echo gettext("View All Families"); ?></a>
+				<input type="hidden" value="family" name="mode">
+				<input style="font-size: 8pt; margin-top: 5px; margin-bottom: 5px;" type="text" name="Filter" id="FamilySearch" value="Search" onFocus="ClearFieldOnce(this);">
+
+				<a class="SmallText" href="GeoPage.php"><?php echo gettext("Family Geographic Utilties"); ?></a>
+				<br>
+				<a class="SmallText" href="MapUsingGoogle.php"><?php echo gettext("Family Map"); ?></a>
+				<br>
+
 				<?php if ($_SESSION['bMenuOptions']) { ?>
 					<br><a href="OptionManager.php?mode=famroles" class="SmallText"><?php echo gettext("Family Roles Manager"); ?></a>
 				<?php } ?>
 
-				<br><a href="SelectList.php?mode=family" class="SmallText"><?php echo gettext("View All Families"); ?></a>
-				<input type="hidden" value="family" name="mode">
-				<input style="font-size: 8pt; margin-top: 5px; margin-bottom: 5px;" type="text" name="Filter" id="FamilySearch" value="Search" onFocus="ClearFieldOnce(this);">
 				</form>
+			</p>
+
+			<p>
+				<b><?php echo gettext("Events"); ?></b>
+				<br>
+				<a class="SmallText" href="ListEvents.php"><?php echo gettext("List Church Events"); ?></a>
+				<br>
+				<a class="SmallText" href="AddEvent.php"><?php echo gettext("Add Church Event"); ?></a>
+				<br>
+				<a class="SmallText" href="EventNames.php"><?php echo gettext("Manage Event Names"); ?></a>
 			</p>
 
 			<?php if ($_SESSION['bFinance']) { ?>
@@ -710,6 +745,8 @@ else
 			<a class="SmallText" href="DepositSlipEditor.php?DepositType=Bank"><?php echo gettext("Create New Deposit"); ?></a>
 				<br>
 				<a class="SmallText" href="FindDepositSlip.php"><?php echo gettext("View All Deposits"); ?></a><br>
+				<a class="SmallText" href="FinancialReports.php"><?php echo gettext("Deposit Reports"); ?></a><br>
+				<br>
 				<a class="SmallText" href="DepositSlipEditor.php?DepositSlipID=<?php echo $_SESSION['iCurrentDeposit'];?>"><?php echo gettext("Edit Deposit Slip " . $_SESSION['iCurrentDeposit']); ?></a>
 			</p>
 			<?php } ?>
@@ -734,6 +771,8 @@ else
 					<br>
 					<a class="SmallText" href="CartToFamily.php"><?php echo gettext("Empty Cart to Family"); ?></a>
 				<?php } ?>
+					<br>
+				<a class="SmallText" href="CartToEvent.php"><?php echo gettext("Empty Cart to Event"); ?></a>
 			</p>
 
 			<p>
@@ -754,14 +793,12 @@ else
 				<?php if ($_SESSION['bManageGroups']) { ?>
 					<br>
 					<a href="GroupEditor.php" class="SmallText"><?php echo gettext("Add a New Group"); ?></a>
+					<br>s
+					<a href="OptionManager.php?mode=grptypes" class="SmallText"><?php echo gettext("Edit Group Types"); ?></a>
+					<br>
+					<a href="SelectList.php?mode=groupassign" class="SmallText"><?php echo gettext("Group Assignment Helper"); ?></a>
 				<?php } ?>
 
-				<?php if ($_SESSION['bMenuOptions']) { ?>
-					<br>
-					<a href="OptionManager.php?mode=grptypes" class="SmallText"><?php echo gettext("Edit Group Types"); ?></a>
-				<?php } ?>
-				<br>
-				<a href="SelectList.php?mode=groupassign" class="SmallText"><?php echo gettext("Group Assignment Helper"); ?></a>
 			</p>
 
 			<p>
@@ -785,6 +822,8 @@ else
 				<br>
 				<a class="SmallText" href="Help.php?page=Family"><?php echo gettext("Families"); ?></a>
 				<br>
+				<a class="SmallText" href="Help.php?page=Geographic"><?php echo gettext("Geographic features"); ?></a>
+				<br>
 				<a class="SmallText" href="Help.php?page=Groups"><?php echo gettext("Groups"); ?></a>
 				<br>
 				<a class="SmallText" href="Help.php?page=Finances"><?php echo gettext("Finances"); ?></a>
@@ -802,6 +841,10 @@ else
 				<a class="SmallText" href="Help.php?page=Custom"><?php echo gettext("Custom Fields"); ?></a>
 				<br>
 				<a class="SmallText" href="Help.php?page=Class"><?php echo gettext("Classifications"); ?></a>
+				<br>
+				<a class="SmallText" href="Help.php?page=Canvass"><?php echo gettext("Canvass Support"); ?></a>
+				<br>
+				<a class="SmallText" href="Help.php?page=Events"><?php echo gettext("Events"); ?></a>
 			</p>
 
 			<img src="Images/Spacer.gif" height="100" width="1">
