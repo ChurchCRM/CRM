@@ -98,8 +98,6 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 	if ($_SESSION['bCanvasser']) { // Only take modifications to this field if the current user is a canvasser
 		$bOkToCanvass = isset($_POST["OkToCanvass"]);
-		if (! $bOkToCanvass)
-			$bOkToCanvass = 0;
 		$iCanvasser = FilterInput($_POST["Canvasser"]);
 		if (! $iCanvasser)
 			$iCanvasser = FilterInput($_POST["BraveCanvasser"]);
@@ -572,7 +570,7 @@ require "Include/Header.php";
 		if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser
 		echo "<td class='LabelColumn'>" . gettext("Ok To Canvass:") . "</td>\n";
 		echo "<td class='TextColumn'><input type=\"checkbox\" Name=\"OkToCanvass\" value=\"1\"";
-		if ($bOkToCanvass) echo " checked"; echo "</td>";
+		if ($bOkToCanvass) echo " checked></td>";
 		}?>
 	</tr>
 
