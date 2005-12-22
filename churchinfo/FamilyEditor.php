@@ -570,8 +570,8 @@ require "Include/Header.php";
 		if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser
 		echo "<td class='LabelColumn'>" . gettext("Ok To Canvass:") . "</td>\n";
 		echo "<td class='TextColumn'><input type=\"checkbox\" Name=\"OkToCanvass\" value=\"1\"";
-		if ($bOkToCanvass) echo " checked></td>";
-		}?>
+		if ($bOkToCanvass) echo " checked";
+		}?>></td>
 	</tr>
 
 	<tr><?php
