@@ -4,6 +4,8 @@ require ("Include/Functions.php");
 require ("Include/Header.php");
 require ("Include/ReportFunctions.php");
 
+$iGroupID = FilterInput($_GET["GroupID"],'int');
+
 // Read values from config table into local variables
 // **************************************************
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'";
@@ -63,7 +65,24 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 	map.addOverlay (churchMark);
 
 <?php
+	$appendToQuery = "";
+	if ($iGroupID > 0) {
+		// If mapping only members of  a group build a condition to add to the query used below
+	
+		//Get all the members of this group
+		$sSQL = "SELECT per_fam_ID FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = " . $iGroupID;
+		$rsGroupMembers = RunQuery($sSQL);
+		$appendToQuery = " WHERE fam_ID IN (";
+		while ($aPerFam = mysql_fetch_array($rsGroupMembers)) {
+			extract ($aPerFam);
+			$appendToQuery .= $per_fam_ID . ",";
+		}
+		$appendToQuery = substr($appendToQuery, 0, strlen ($appendToQuery)-1);
+		$appendToQuery .= ")";
+	}
+
 	$sSQL = "SELECT fam_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam";
+	$sSQL .= $appendToQuery;
 	$rsFams = RunQuery ($sSQL);
 	while ($aFam = mysql_fetch_array($rsFams)) {
 		extract ($aFam);

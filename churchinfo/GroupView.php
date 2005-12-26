@@ -100,7 +100,9 @@ if ($_SESSION['bManageGroups'])
 	}
 }
 echo "<a class=\"SmallText\" href=\"GroupView.php?Action=AddGroupToCart&GroupID=" . $grp_ID . "\">" . gettext("Add Group Members to Cart") . "</a> | ";
-echo "<a class=\"SmallText\" href=\"GroupMeeting.php?GroupID=" . $grp_ID . "&Name=" . $grp_Name . "&linkBack=GroupView.php?GroupID=" . $grp_ID . "\">" . gettext("Schedule a meeting") . "</a>";
+echo "<a class=\"SmallText\" href=\"GroupMeeting.php?GroupID=" . $grp_ID . "&Name=" . $grp_Name . "&linkBack=GroupView.php?GroupID=" . $grp_ID . "\">" . gettext("Schedule a meeting") . "</a> | ";
+
+echo "<a class=\"SmallText\" href=\"MapUsingGoogle.php?GroupID=" . $grp_ID . "\">" . gettext("Map this group") . "</a>";
 
 // Email Group link
 // Note: This will email entire group, even if a specific role is currently selected.
