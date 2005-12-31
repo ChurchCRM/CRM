@@ -349,6 +349,12 @@ elseif ($next_link_text) {
 				<td class="TinyTextColumn"><?php echo $fam_Latitude . " / ", $fam_Longitude; ?>				  </td>
 			</tr>
 <?php } /* Lat/Lon can be hidden - General Settings */ ?>
+<?php if ($bUseDonationEnvelopes) { ?>
+			<tr>
+				<td class="TinyLabelColumn"><?php echo gettext("Envelope Number"); ?></td>
+				<td class="TinyTextColumn"><?php echo $fam_Envelope; ?></td>
+			</tr>
+<?php } ?>
 			</table>
 		</td>
 	</tr>

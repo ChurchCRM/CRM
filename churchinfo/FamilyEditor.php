@@ -85,6 +85,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$nLatitude = FilterInput($_POST["Latitude"]);
 	$nLongitude = FilterInput($_POST["Longitude"]);
 
+	$nEnvelope = FilterInput($_POST["Envelope"]);
+
 	if ($bHaveXML && ($sCountry == "United States") && ($nLatitude == 0 || $nLongitude == 0)) {
 	// Try to get Lat/Lon based on the address
 		$myAddressLatLon = new AddressLatLon;
@@ -216,7 +218,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						fam_OkToCanvass,
 						fam_Canvasser,
 						fam_Latitude,
-						fam_Longitude)
+						fam_Longitude,
+						fam_Envelope)
 					VALUES ('"							. 
 						$sName					. "','" . 
 						$sAddress1				. "','" . 
@@ -236,7 +239,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						$bOkToCanvassString		. ",'" .
 						$iCanvasser				. "','" .
 						$nLatitude				. "','" .
-						$nLongitude						. "')";
+						$nLongitude				. "','" .
+						$nEnvelope              . "')";
 			$bGetKeyBack = true;
 		}
 		else
@@ -254,7 +258,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						"fam_WorkPhone='" . $sWorkPhone . "'," .
 						"fam_CellPhone='" . $sCellPhone . "'," .
 						"fam_Email='" . $sEmail . "'," .
-						"fam_WeddingDate=" . $dWeddingDate . "," .
+						"fam_WeddingDate='" . $dWeddingDate . "'," .
+						"fam_Envelope='" . $nEnvelope . "'," .
 						"fam_DateLastEdited='" . date("YmdHis") . "'," .
 						"fam_EditedBy = " . $_SESSION['iUserID'] . "," .
 						"fam_SendNewsLetter = " . $bSendNewsLetterString;
@@ -611,6 +616,14 @@ require "Include/Header.php";
 			echo "</select></td></tr>";
 		}
 		?>
+
+<?php if ($bUseDonationEnvelopes) { /* Donation envelopes can be hidden - General Settings */ ?>
+	<tr>
+		<td class="LabelColumn"><?php echo gettext("Envelope number:"); ?></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="Envelope" value="<?php echo $fam_Envelope; ?>" size="30" maxlength="50"></td>
+	</tr>
+<?php } ?>	
+
 	</tr>
 
 	<?php
