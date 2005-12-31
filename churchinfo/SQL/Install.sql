@@ -421,8 +421,8 @@ CREATE TABLE user_usr (
   usr_showPledges tinyint(1) NOT NULL default '0',
   usr_showPayments tinyint(1) NOT NULL default '0',
   usr_showSince date NOT NULL default '0000-00-00',
-  usr_defaultFY mediumint(9) default NULL,
-  usr_currentDeposit mediumint(9) default NULL,
+  usr_defaultFY mediumint(9) NOT NULL default '10',
+  usr_currentDeposit mediumint(9) NOT NULL default '0',
   usr_UserName varchar(32) default NULL,
   usr_EditSelf tinyint(3) unsigned NOT NULL default '0',
   usr_CalStart date default NULL,
@@ -462,7 +462,8 @@ INSERT INTO user_usr (usr_per_ID,
                                           usr_SearchLimit,
                                           usr_Style,
                                           usr_UserName,
-										  usr_defaultFY)
+										  usr_defaultFY,
+										  usr_currentDeposit)
                         VALUES (1,
                                 '1a7ac1b904382aaf0ac67b4f00e7b93f',
                                         1,
@@ -483,7 +484,8 @@ INSERT INTO user_usr (usr_per_ID,
                                         10,
                                         'Style.css',
                                         'Admin',
-										10);
+										10,
+										0);
 
 CREATE TABLE groupprop_master (
   grp_ID mediumint(9) unsigned NOT NULL default '0',
