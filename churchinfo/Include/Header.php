@@ -150,56 +150,63 @@ $MenuFirst = 1;
 			),
 
 			<?php if ($_SESSION['bAdmin']) {
-			echo $MenuFirst++; ?>, new domMenu_Hash(
+			echo $MenuFirst++; $MenuSecond = 1; ?>, new domMenu_Hash(
 				'contents', <?php echo "'" . gettext("Admin") . "'"; ?>,
 				'uri', '',
 				'statusText', '',
-				1, new domMenu_Hash(
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Edit Users") . "'"; ?>,
 					'uri', 'UserList.php',
 					'statusText', ''
 				),
-				2, new domMenu_Hash(
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Add New User") . "'"; ?>,
 					'uri', 'UserEditor.php',
 					'statusText', ''
 				),
-				3, new domMenu_Hash(
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Edit Custom Person Fields") . "'"; ?>,
 					'uri', 'PersonCustomFieldsEditor.php',
 					'statusText', ''
 				),
-				4, new domMenu_Hash(
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Edit Donation Funds") . "'"; ?>,
 					'uri', 'DonationFundEditor.php',
 					'statusText', ''
 				),
-				5, new domMenu_Hash(
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Backup Database") . "'"; ?>,
 					'uri', 'BackupDatabase.php',
 					'statusText', ''
 				),
-				6, new domMenu_Hash(
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("CSV Import") . "'"; ?>,
 					'uri', 'CSVImport.php',
 					'statusText', ''
 				),
-				7, new domMenu_Hash(
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Access report") . "'"; ?>,
 					'uri', 'AccessReport.php',
 					'statusText', ''
 				),
-				8, new domMenu_Hash(
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Edit General Settings") . "'"; ?>,
 					'uri', 'SettingsGeneral.php',
 					'statusText', ''
 				),
-				9, new domMenu_Hash(
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Edit Report Settings") . "'"; ?>,
 					'uri', 'SettingsReport.php',
 					'statusText', ''
 				),
-				10, new domMenu_Hash(
+				<?php if ($bUseDonationEnvelopes) { ?>
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("Envelope Manager") . "'"; ?>,
+					'uri', 'ManageEnvelopes.php',
+					'statusText', ''
+				),
+				<?php } ?>
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', 
 					<?php 
 						echo "'";
