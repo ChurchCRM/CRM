@@ -97,7 +97,7 @@ $micrObj = new MICRReader();
 
 //Is this the second pass?
 if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isset($_POST["MatchFamily"]) ||
-    isset($_POST["SetDefaultCheck"]))
+    isset($_POST["MatchEnvelope"]) || isset($_POST["SetDefaultCheck"]))
 {
 	$iFamily = 0;
 	$iCheckNo = 0;
@@ -118,6 +118,14 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		   $iFamily = FilterInput($_POST["Family"],'int');
 		   $iCheckNo = FilterInput($_POST["CheckNo"], 'int');
       }
+	} else if (isset($_POST["MatchEnvelope"])) {
+		// Match envelope is similar to match check- use the envelope number to choose a family
+		
+		$iEnvelope = FilterInput($_POST["Envelope"], 'int');
+		$sSQL = "SELECT fam_ID FROM family_fam WHERE fam_Envelope=" . $iEnvelope;
+		$rsFam = RunQuery($sSQL);
+		extract(mysql_fetch_array($rsFam));
+		$iFamily = $fam_ID;
 	} else {
 		$iFamily = FilterInput($_POST["Family"],'int');
 		$iCheckNo = FilterInput($_POST["CheckNo"], 'int');
@@ -141,6 +149,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 	$tScanString = FilterInput($_POST["ScanInput"]);
 	$iAutID = FilterInput($_POST["AutoPay"]);
 	$nNonDeductible = FilterInput($_POST["NonDeductible"]);
+	$iEnvelope = FilterInput($_POST["Envelope"], 'int');
 
 	if (! $iCheckNo)
 		$iCheckNo = "NULL";
@@ -461,6 +470,12 @@ require "Include/Header.php";
 				<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Scan check");?></td>
 				<td><textarea name="ScanInput" rows="2" cols="90"><?php echo $tScanString?></textarea></td>
 			</tr>
+				<?php if ($bUseDonationEnvelopes) {?>
+				<tr>
+					<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Envelope");?></td>
+					<td class="TextColumn"><input type="text" name="Envelope" id="Envelope" value="<?php echo $iEnvelope; ?>"></td>
+				</tr>
+				<?php } ?>
 			<?php } ?>
 
 <?php
@@ -505,6 +520,10 @@ require "Include/Header.php";
 ?>
 	<tr>
 		<td align="center">
+
+		<?php if ($bUseDonationEnvelopes) { ?>
+			<input type="submit" class="icButton" value="<?php echo gettext("Match family to envelope"); ?>" name="MatchEnvelope">
+		<?php } ?>
 			<input type="submit" class="icButton" value="<?php echo gettext("Match family to check"); ?>" name="MatchFamily">
 			<input type="submit" class="icButton" value="<?php echo gettext("Set default check for family"); ?>" name="SetDefaultCheck">
 		</td>
