@@ -253,11 +253,12 @@ else
 function confirmDeleteField( Field, Row ) {
 var answer = confirm (<?php echo "'" . gettext("Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!") . "'"; ?>)
 if ( answer )
-	window.location="PersonCustomFieldsRowOps.php?Field=" + Field + "&OrderID=" + Row + "&Action=delete"
+	window.location="PersonCustomFieldsRowOps.php?Field=" + Field + "&OrderID=" + Row + "&Action=delete";
+	confirm ("Field Deleted");
 }
 </script>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" name="PersonCustomFieldsEditor">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="PersonCustomFieldsEditor">
 
 <table cellpadding="3" width="75%" align="center">
 
