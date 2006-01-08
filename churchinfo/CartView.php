@@ -165,10 +165,11 @@ if (count($_SESSION['aPeopleCart']) != 0)
     <input type="submit" class="icButton" value="<?php echo gettext("Generate Labels");?>" name="Submit">
     </form>
 </td></tr></table>
+
 <div align="center">
 <form method="get" action="DirectoryReports.php">
 <?php echo "<br><h2>" . gettext("Create Member Directory") . "</h2>"; ?>
-<input type="submit" class="icButton" name="cartdir" value="<?php echo gettext("Member Directory");?>"
+<input type="submit" class="icButton" name="cartdir" value="<?php echo gettext("Member Directory");?>">
 </form>
 </div>
 
