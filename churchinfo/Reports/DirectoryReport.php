@@ -656,19 +656,19 @@ while ($aRow = mysql_fetch_array($rsRecords))
 			if (strlen($sAddress2)) { $OutStr .= $sAddress2 . "\n";  }
 			if (strlen($sCity)) { $OutStr .= $sCity . ", " . $sState . " " . $sZip . "\n";  }
 		}
-		if ($bDirPersonalPhone && strlen($sHomePhone)) {
+		if (($bDirFamilyPhone || $bDirPersonalPhone) && strlen($sHomePhone)) {
 			$TempStr = ExpandPhoneNumber($sHomePhone, $sDefaultCountry, $bWierd);
 			$OutStr .= "   " . gettext("Phone") . ": " . $TempStr . "\n";
 		}
-		if ($bDirPersonalWork && strlen($sWorkPhone)) {
+		if ((bDirFamilyWork || $bDirPersonalWork) && strlen($sWorkPhone)) {
 			$TempStr = ExpandPhoneNumber($sWorkPhone, $sDefaultCountry, $bWierd);
 			$OutStr .= "   " . gettext("Work") . ": " . $TempStr . "\n";
 		}
-		if ($bDirPersonalCell && strlen($sCellPhone)) {
+		if (($bDirFamilyCell || $bDirPersonalCell) && strlen($sCellPhone)) {
 			$TempStr = ExpandPhoneNumber($sCellPhone, $sDefaultCountry, $bWierd);
 			$OutStr .= "   " . gettext("Cell") . ": " . $TempStr . "\n";
 		}
-		if ($bDirPersonalEmail && strlen($sEmail))
+		if (($bDirFamilyEmail || $bDirPersonalEmail) && strlen($sEmail))
 			$OutStr .= "   " . gettext("Email") . ": " . $sEmail . "\n";
 		if ($bDirPersonalWorkEmail && strlen($per_WorkEmail))
 			$OutStr .= "   " . gettext("Work/Other Email") . ": " . $per_WorkEmail .= "\n";
