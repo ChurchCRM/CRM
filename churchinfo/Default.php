@@ -43,6 +43,8 @@ if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
 		$_SESSION['sshowPledges'] = 0;
 	if ($_SESSION['sshowPayments'] == "")
 		$_SESSION['sshowPayments'] = 0;
+	if ($_SESSION['bSearchFamily'] == "")
+		$_SESSION['bSearchFamily'] = 0;
 
    if ($_SESSION['iUserID']) {
 	   $sSQL = "UPDATE user_usr SET usr_showPledges = " . $_SESSION['sshowPledges'] . 
