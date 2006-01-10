@@ -128,7 +128,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
                 if ($sToEmailAddress != "" && $sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress))
                         $sEmailLink .= "," . $sToEmailAddress;
                 echo "<br><a href=\"mailto:" . $sEmailLink ."\">". gettext("Email Cart") . "</a>";
-                echo "<br><a href=\"mailto:?&bcc=".$sEmailLink."\">".gettext("Email (BCC)")."</a>";
+                echo "<br><a href=\"mailto:?bcc=".$sEmailLink."\">".gettext("Email (BCC)")."</a>";
         }
 
         echo "</p></td>";
