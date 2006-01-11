@@ -4,5 +4,9 @@ INSERT IGNORE INTO `config_cfg` VALUES (83, 'bHideFriendDate', '0', 'boolean', '
 INSERT IGNORE INTO `config_cfg` VALUES (84, 'bHideFamilyNewsletter', '0', 'boolean', '0', 'Set true to disable management of newsletter subscriptions in the Family Editor.', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (85, 'bHideWeddingDate', '0', 'boolean', '0', 'Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (86, 'bHideLatLon', '0', 'boolean', '0', 'Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (87, 'bUseDonationEnvelopes', '0', 'boolean', '0', 'Set true to enable use of donation envelopes', 'General');
 
+ALTER TABLE user_usr CHANGE COLUMN usr_defaultFY mediumint(9) NOT NULL default '10';
+ALTER TABLE user_usr CHANGE COLUMN usr_currentDeposit mediumint(9) NOT NULL default '0';
 
+ALTER TABLE family_fam ADD COLUMN fam_Envelope mediumint(9) NOT NULL default '0';

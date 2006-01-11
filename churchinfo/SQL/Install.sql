@@ -118,6 +118,7 @@ CREATE TABLE family_fam (
   fam_Canvasser smallint(5) unsigned NOT NULL default '0',
   fam_Latitude double default NULL,
   fam_Longitude double default NULL,
+  fam_Envelope mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (fam_ID),
   KEY fam_ID (fam_ID)
 ) TYPE=MyISAM;
@@ -656,6 +657,12 @@ INSERT IGNORE INTO `config_cfg` VALUES (78, 'sGeocoderPW', '', 'text', '', 'Pass
 INSERT IGNORE INTO `config_cfg` VALUES (79, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from http://maps.google.com/apis/maps/signup.html', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (80, 'nChurchLatitude', '', 'number', '', 'Latitude of the church, used to center the Google map', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (81, 'nChurchLongitude', '', 'number', '', 'Longitude of the church, used to center the Google map', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (82, 'bHidePersonAddress', '1', 'boolean', '1', 'Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (83, 'bHideFriendDate', '0', 'boolean', '0', 'Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (84, 'bHideFamilyNewsletter', '0', 'boolean', '0', 'Set true to disable management of newsletter subscriptions in the Family Editor.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (85, 'bHideWeddingDate', '0', 'boolean', '0', 'Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (86, 'bHideLatLon', '0', 'boolean', '0', 'Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (87, 'bUseDonationEnvelopes', '0', 'boolean', '0', 'Set true to enable use of donation envelopes', 'General');
 
 INSERT IGNORE INTO `config_cfg` VALUES (48, 'leftX', '20', 'number', '20', 'Left Margin (1 = 1/100th inch)', 'ChurchInfoReport');
 INSERT IGNORE INTO `config_cfg` VALUES (49, 'incrementY', '4', 'number', '4', 'Line Thickness (1 = 1/100th inch', 'ChurchInfoReport');
