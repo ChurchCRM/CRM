@@ -75,6 +75,8 @@ CREATE TABLE donationfund_fun (
   UNIQUE KEY fun_ID (fun_ID)
 ) TYPE=MyISAM;
 
+INSERT INTO donationfund_fun (fun_ID, fun_Active, fun_Name, fun_Description) VALUES (1, 'true', 'Pledges', 'Pledge income for the operating budget');
+
 CREATE TABLE volunteeropportunity_vol (
   vol_ID tinyint(3) NOT NULL auto_increment,
   vol_Active enum('true','false') NOT NULL default 'true',
