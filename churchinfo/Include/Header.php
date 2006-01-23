@@ -583,11 +583,20 @@ $MenuFirst = 1;
 	if (!$bDefectiveBrowser)
 		echo "<div style=\"position:fixed; top:0; left:0; width: 100%;\">";
 
+	if ($sHeader) {
+		// Optional Header Code (Entered on General Settings page - sHeader)
+		// Must first set a table with a background color, or content scrolls across
+		// the background of the custom code when using a non-defective browser
+		echo "<table width=100% bgcolor=white cellpadding=0 cellspacing=0 border=0><tr><td width=100%>";
+		echo html_entity_decode($sHeader,ENT_QUOTES);
+		echo "</td></tr></table>";
+	}
+	
 	if (strlen($_SESSION['iUserID'])) {
 	?>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
-				<td colspan="6">
+				<td colspan="7" width="100%">
 					<div class="p" id="domMenu_BJ" style="height:20px; margin-bottom:0px;"></div>
 
 			<script language="javascript">
