@@ -696,3 +696,4 @@ INSERT IGNORE INTO `config_cfg` VALUES (74, 'sDirectoryDisclaimer2', ', and the 
 INSERT IGNORE INTO `config_cfg` VALUES (75, 'bDirLetterHead', '../Images/church_letterhead.jpg', 'text', '../Images/church_letterhead.jpg', 'Church Letterhead path and file', 'ChurchInfoReport');
 
 INSERT IGNORE INTO `config_cfg` VALUES (100, 'bRegistered', '0', 'boolean', '0', 'ChurchInfo has been registered.  The ChurchInfo team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (88, 'sHeader', '', 'text', '', 'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! There is a 255 character limit. Note: You must REFRESH YOUR BROWSER A SECOND TIME in order the new header.', 'General');
