@@ -87,7 +87,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 	$nEnvelope = FilterInput($_POST["Envelope"]);
 
-	if ($bHaveXML && ($sCountry == "United States") && ($nLatitude == 0 || $nLongitude == 0)) {
+	if ($bHaveXML && ($sCountry == "United States")) {
 	// Try to get Lat/Lon based on the address
 		$myAddressLatLon = new AddressLatLon;
 		$myAddressLatLon->SetAddress ($sAddress1, $sCity, $sState, $sZip);
@@ -95,8 +95,23 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		if ($ret == 0) {
 			$nLatitude = $myAddressLatLon->GetLat ();
 			$nLongitude = $myAddressLatLon->GetLon ();
+		} else {
+			$nLatitude="NULL";
+			$nLongitude="NULL";
 		}
+
 	}
+
+	if(!is_numeric($nLatitude))
+		$nLatitude="NULL";
+	else
+		$nLatitude = "'" . $nLatitude . "'";
+
+	if(!is_numeric($nLongitude))
+		$nLongitude="NULL";
+	else
+		$nLongitude= "'" . $nLongitude . "'";
+
 
 	if ($_SESSION['bCanvasser']) { // Only take modifications to this field if the current user is a canvasser
 		$bOkToCanvass = isset($_POST["OkToCanvass"]);
@@ -237,9 +252,9 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						$_SESSION['iUserID']	. "," . 
 						$bSendNewsLetterString	. "," . 
 						$bOkToCanvassString		. ",'" .
-						$iCanvasser				. "','" .
-						$nLatitude				. "','" .
-						$nLongitude				. "','" .
+						$iCanvasser				. "'," .
+						$nLatitude				. "," .
+						$nLongitude				. ",'" .
 						$nEnvelope              . "')";
 			$bGetKeyBack = true;
 		}
@@ -251,8 +266,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						"fam_City='" . $sCity . "'," .
 						"fam_State='" . $sState . "'," .
 						"fam_Zip='" . $sZip . "'," .
-						"fam_Latitude='" . $nLatitude . "'," .
-						"fam_Longitude='" . $nLongitude . "'," .
+						"fam_Latitude=" . $nLatitude . "," .
+						"fam_Longitude=" . $nLongitude . "," .
 						"fam_Country='" . $sCountry . "'," .
 						"fam_HomePhone='" . $sHomePhone . "'," .
 						"fam_WorkPhone='" . $sWorkPhone . "'," .
@@ -662,8 +677,11 @@ require "Include/Header.php";
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="12" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
 	</tr>
 <?php } /* Wedding date can be hidden - General Settings */ ?>
-<?php if (!$bHideLatLon) { /* Lat/Lon can be hidden - General Settings */ ?>
-	<tr>
+
+<?php
+	if (!$bHideLatLon) { /* Lat/Lon can be hidden - General Settings */ 
+		if (!$bHaveXML) { // No point entering if values will just be overwritten
+?><tr>
 		<td class="LabelColumn"><?php echo gettext("Latitude:"); ?></td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="Latitude" value="<?php echo $nLatitude; ?>" size="30" maxlength="50"></td>
 	</tr>
@@ -671,7 +689,8 @@ require "Include/Header.php";
 		<td class="LabelColumn"><?php echo gettext("Longitude:"); ?></td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="Longitude" value="<?php echo $nLongitude; ?>" size="30" maxlength="50"></td>
 	</tr>
-<?php } /* Lat/Lon can be hidden - General Settings */ ?>
+<?php	} 
+	} /* Lat/Lon can be hidden - General Settings */ ?>
 	<tr>
 		<td>&nbsp;</td>
 	</tr>
