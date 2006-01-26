@@ -273,7 +273,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						"fam_WorkPhone='" . $sWorkPhone . "'," .
 						"fam_CellPhone='" . $sCellPhone . "'," .
 						"fam_Email='" . $sEmail . "'," .
-						"fam_WeddingDate='" . $dWeddingDate . "'," .
+						"fam_WeddingDate=" . $dWeddingDate . "," .
 						"fam_Envelope='" . $nEnvelope . "'," .
 						"fam_DateLastEdited='" . date("YmdHis") . "'," .
 						"fam_EditedBy = " . $_SESSION['iUserID'] . "," .
