@@ -496,10 +496,18 @@ function RemoveFromPeopleCart($sID)
 // Reinstated by Todd Pillars for Event Listing
 // Takes MYSQL DateTime
 // bWithtime 1 to be displayed
-function FormatDate($dDate, $bWithTime)
+function FormatDate($dDate, $bWithTime=FALSE)
 {
     if ($dDate == "" || $dDate == "0000-00-00 00:00:00" || $dDate == "0000-00-00")
         return ("");
+	
+	if (strlen($dDate)==10) // If only a date was passed append time
+		$dDate = $dDate . " 12:00:00";	// Use noon to avoid a shift in daylight time causing
+										// a date change.
+
+	if (strlen($dDate)!=19)
+		return ("");
+
     $arr = explode(" ", $dDate);
     $arr0 = explode("-", $arr[0]);
     $arr1 = explode(":", $arr[1]);
@@ -510,9 +518,39 @@ function FormatDate($dDate, $bWithTime)
     }
     else
     {
-        return date("M d Y", mktime($arr1[0], $arr1[1], $arr1[2], $arr0[1], $arr0[2], $arr0[0]));
+        //return date("M d Y", mktime($arr1[0], $arr1[1], $arr1[2], $arr0[1], $arr0[2], $arr0[0]));
+		// Don't use PHP date() function.  It is not robust for dates prior to 1970 or after 2038.
+		
+		// Verify it is a valid date
+		$sScanString = substr($dDate,0,10);	
+		list($iYear, $iMonth, $iDay) = sscanf($sScanString,"%04d-%02d-%02d");
+
+		if ( !checkdate($iMonth,$iDay,$iYear) )
+			return ("Unknown");
+
+		// Would be nice to replace this switch with code allowing other languages
+		switch (substr($dDate,5,2)){
+			case "01":	$sMonth="Jan";	break;
+			case "02":	$sMonth="Feb";	break;
+			case "03":	$sMonth="Mar";	break;
+			case "04":	$sMonth="Apr";	break;
+			case "05":	$sMonth="May";	break;
+			case "06":	$sMonth="Jun";	break;
+			case "07":	$sMonth="Jul";	break;
+			case "08":	$sMonth="Aug";	break;
+			case "09":	$sMonth="Sep";	break;
+			case "10":	$sMonth="Oct";	break;
+			case "11":	$sMonth="Nov";	break;
+			default:	$sMonth="Dec";	break;
+		}
+
+		$sDay = substr($dDate,8,2);
+		$sYear = substr($dDate,0,4);
+
+		return ($sMonth . " " . $sDay . " " . $sYear);
+
     }
-        return $dDate;
+        return ("");
 }
 
 // this might be cruft
