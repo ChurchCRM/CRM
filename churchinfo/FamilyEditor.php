@@ -85,8 +85,6 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$nLatitude = FilterInput($_POST["Latitude"]);
 	$nLongitude = FilterInput($_POST["Longitude"]);
 
-	$nEnvelope = FilterInput($_POST["Envelope"]);
-
 	if ($bHaveXML && ($sCountry == "United States")) {
 	// Try to get Lat/Lon based on the address
 		$myAddressLatLon = new AddressLatLon;
@@ -102,15 +100,26 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 	}
 
-	if(!is_numeric($nLatitude))
-		$nLatitude="NULL";
-	else
+	if(is_numeric($nLatitude))
 		$nLatitude = "'" . $nLatitude . "'";
-
-	if(!is_numeric($nLongitude))
-		$nLongitude="NULL";
 	else
+		$nLatitude = "NULL";
+
+	if(is_numeric($nLongitude))
 		$nLongitude= "'" . $nLongitude . "'";
+	else
+		$nLongitude="NULL";
+
+
+	$nEnvelope = FilterInput($_POST["Envelope"]);
+	
+	if(is_numeric($nEnvelope)){ // Only integers are allowed as Envelope Numbers
+		if(intval($nEnvelope)==floatval($nEnvelope))
+			$nEnvelope= "'" . intval($nEnvelope) . "'";
+		else
+			$nEnvelope= "'0'";
+	} else
+		$nEnvelope= "'0'";
 
 
 	if ($_SESSION['bCanvasser']) { // Only take modifications to this field if the current user is a canvasser
@@ -254,8 +263,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						$bOkToCanvassString		. ",'" .
 						$iCanvasser				. "'," .
 						$nLatitude				. "," .
-						$nLongitude				. ",'" .
-						$nEnvelope              . "')";
+						$nLongitude				. "," .
+						$nEnvelope              . ")";
 			$bGetKeyBack = true;
 		}
 		else
@@ -274,7 +283,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						"fam_CellPhone='" . $sCellPhone . "'," .
 						"fam_Email='" . $sEmail . "'," .
 						"fam_WeddingDate=" . $dWeddingDate . "," .
-						"fam_Envelope='" . $nEnvelope . "'," .
+						"fam_Envelope=" . $nEnvelope . "," .
 						"fam_DateLastEdited='" . date("YmdHis") . "'," .
 						"fam_EditedBy = " . $_SESSION['iUserID'] . "," .
 						"fam_SendNewsLetter = " . $bSendNewsLetterString;
@@ -376,10 +385,10 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					{
 						$sLastNameToEnter = $sName;
 					}
-					RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
+					//RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
 					$sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "',per_BirthYear=" . $aBirthYears[$iCount] . ",per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
 					RunQuery($sSQL);
-					RunQuery("UNLOCK TABLES");
+					//RunQuery("UNLOCK TABLES");
 				}
 			}
 		}
@@ -635,7 +644,9 @@ require "Include/Header.php";
 <?php if ($bUseDonationEnvelopes) { /* Donation envelopes can be hidden - General Settings */ ?>
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Envelope number:"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="Envelope" value="<?php echo $fam_Envelope; ?>" size="30" maxlength="50"></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="Envelope"
+			<?php if($fam_Envelope) echo " value=\"" . $fam_Envelope; 
+			?>" size="30" maxlength="50"></td>
 	</tr>
 <?php } ?>	
 
@@ -672,7 +683,7 @@ require "Include/Header.php";
 	</tr>
 <?php if (!$bHideWeddingDate) { /* Wedding Date can be hidden - General Settings */ ?>
 	<tr>
-		<?php if ($dWeddingDate == "0000-00-00") $dWeddingDate = ""; ?>
+		<?php if ($dWeddingDate == "0000-00-00" || $dWeddingDate == "NULL") $dWeddingDate = ""; ?>
 		<td class="LabelColumn"><?php echo gettext("Wedding Date:"); ?></td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="12" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
 	</tr>
