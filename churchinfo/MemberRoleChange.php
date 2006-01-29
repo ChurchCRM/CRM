@@ -56,9 +56,10 @@ if (isset($_POST["Submit"]))
 
 //Get their current role
 $sSQL = "SELECT per_FirstName, per_LastName, grp_Name, grp_RoleListID, lst_OptionName AS sRoleName, p2g2r_rle_ID AS iRoleID
-		FROM group_grp, person_per
-		LEFT JOIN person2group2role_p2g2r ON p2g2r_per_ID = per_ID AND p2g2r_grp_ID = grp_ID
-		LEFT JOIN list_lst ON lst_ID = grp_RoleListID AND p2g2r_rle_ID = lst_OptionID
+		FROM person_per
+		LEFT JOIN person2group2role_p2g2r ON p2g2r_per_ID = per_ID 
+		LEFT JOIN group_grp ON p2g2r_grp_ID = grp_ID
+		LEFT JOIN list_lst ON lst_ID = grp_RoleListID
 		WHERE per_ID = $iPersonID AND grp_ID = $iGroupID";
 $rsCurrentRole = mysql_fetch_array(RunQuery($sSQL));
 extract($rsCurrentRole);
