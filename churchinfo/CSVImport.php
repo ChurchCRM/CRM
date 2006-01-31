@@ -297,7 +297,7 @@ if (isset($_POST["DoImport"]))
 						case 19:
 							$sDate = $aData[$col];
 							$aDate = ParseDate($sDate,$iDateMode);
-							$sSQLpersonData .= $aDate[0] . "," . $aDate[1] . "," . $aDate[2] . ",";
+                            $sSQLpersonData .= $aDate[0] . "," . $aDate[1] . "," . $aDate[2] . ",";
 							break;
 
 						// Membership date.. parse multiple date standards
@@ -369,37 +369,53 @@ if (isset($_POST["DoImport"]))
 			   $sSQL = "SELECT * FROM person_per WHERE per_ID = " . $iPersonID;
 			   $rsNewPerson = RunQuery($sSQL);
 			   extract(mysql_fetch_array($rsNewPerson));
-            $sSQL = "INSERT INTO family_fam (fam_ID,
-                                             fam_Name, 
-                                             fam_Address1, 
-                                             fam_Address2, 
-                                             fam_City, 
-                                             fam_State, 
-                                             fam_Zip, 
-                                             fam_Country, 
-                                             fam_HomePhone, 
-                                             fam_WorkPhone, 
-                                             fam_CellPhone, 
-                                             fam_Email, 
-                                             fam_DateEntered, 
-                                             fam_EnteredBy)
-                        VALUES ($per_ID, " .
-                               "\"" . $per_LastName . "\", " .
-                               "\"" . $per_Address1 . "\", " .
-                               "\"" . $per_Address2 . "\", " .
-                               "\"" . $per_City . "\", " .
-                               "\"" . $per_State . "\", " .
-                               "\"" . $per_Zip . "\", " .
-                               "\"" . $per_Country . "\", " .
-                               "\"" . $per_HomePhone . "\", " .
-                               "\"" . $per_WorkPhone . "\", " .
-                               "\"" . $per_CellPhone . "\", " .
-                               "\"" . $per_Email . "\"," .
-                               "\"" . date("YmdHis") . "\"," .
-                               "\"" . $_SESSION['iUserID'] . "\");";
-			   RunQuery($sSQL);
-            $sSQL = "UPDATE person_per SET per_fam_ID = " . $per_ID . " WHERE per_ID = " . $per_ID;
-			   RunQuery($sSQL);
+               
+               // see if there is a family with same last name and address
+               $sSQL = "SELECT fam_ID, fam_name, fam_Address1 
+                        FROM family_fam where fam_Name = '".addslashes($per_LastName)."' 
+                        AND fam_Address1 = '".addslashes($per_Address1)."'";
+               $rsExistingFamily = RunQuery($sSQL);
+               $famid = 0;
+               if(mysql_num_rows($rsExistingFamily) > 0)
+               {
+                   extract(mysql_fetch_array($rsExistingFamily));
+                   $famid = $fam_ID;
+               }
+               else
+               {
+                   $sSQL = "INSERT INTO family_fam (fam_ID,
+                                                 fam_Name, 
+                                                 fam_Address1, 
+                                                 fam_Address2, 
+                                                 fam_City, 
+                                                 fam_State, 
+                                                 fam_Zip, 
+                                                 fam_Country, 
+                                                 fam_HomePhone, 
+                                                 fam_WorkPhone, 
+                                                 fam_CellPhone, 
+                                                 fam_Email, 
+                                                 fam_DateEntered, 
+                                                 fam_EnteredBy)
+                            VALUES (NULL, " .
+                                   "\"" . $per_LastName . "\", " .
+                                   "\"" . $per_Address1 . "\", " .
+                                   "\"" . $per_Address2 . "\", " .
+                                   "\"" . $per_City . "\", " .
+                                   "\"" . $per_State . "\", " .
+                                   "\"" . $per_Zip . "\", " .
+                                   "\"" . $per_Country . "\", " .
+                                   "\"" . $per_HomePhone . "\", " .
+                                   "\"" . $per_WorkPhone . "\", " .
+                                   "\"" . $per_CellPhone . "\", " .
+                                   "\"" . $per_Email . "\"," .
+                                   "\"" . date("YmdHis") . "\"," .
+                                   "\"" . $_SESSION['iUserID'] . "\");";
+                   RunQuery($sSQL);
+                   $famid = "LAST_INSERT_ID()"; 
+               }   
+               $sSQL = "UPDATE person_per SET per_fam_ID = " . $famid . " WHERE per_ID = " . $per_ID;
+               RunQuery($sSQL);
          }
 
 
@@ -480,41 +496,76 @@ if ($iStage == 3)
 // Returns a date array [year,month,day]
 function ParseDate($sDate,$iDateMode)
 {
+    $cSeparator = "";
+    $sDate = trim($sDate);
+    for($i=0;$i<strlen($sDate);$i++)
+    {
+        if(is_numeric(substr($sDate,$i,1))) continue;
+        $cSeparator = substr($sDate,$i,1);
+        break;
+    }
+    $aDate[0] = "0000";
+    $aDate[1] = "00";
+    $aDate[2] = "00";
+    
 	switch($iDateMode)
 	{
 		// International standard: YYYY-MM-DD
 		case 1:
-			$cSeparator = substr($sDate,4,1);
 			// Remove separator if it exists
 			if (!is_numeric($cSeparator))
 				$sDate = str_replace($cSeparator,"",$sDate);
-			$aDate[0] = substr($sDate,0,4);
-			$aDate[1] = substr($sDate,4,2);
-			$aDate[2] = substr($sDate,6,2);
+             if(strlen($sDate) == 8)
+             {
+                $aDate[0] = substr($sDate,0,4);
+                $aDate[1] = substr($sDate,4,2);
+                $aDate[2] = substr($sDate,6,2);
+             }
 			break;
 
 		// MM-DD-YYYY
 		case 2:
-			$cSeparator = substr($sDate,2,1);
-			// Remove separator if it exists
-			if (!is_numeric($cSeparator))
-				$sDate = str_replace($cSeparator,"",$sDate);
-			$aDate[0] = substr($sDate,4,4);
-			$aDate[1] = substr($sDate,0,2);
-			$aDate[2] = substr($sDate,2,2);
+			// Remove separator if it exists and add leading 0s to m and d if needed
+			if ($cSeparator!="")
+            {
+				$tmpDate = explode($cSeparator,$sDate);
+                 $aDate[0] = strlen($tmpDate[2]) == 4 ? $tmpDate[2] : "0000";
+                 $aDate[1] = strlen($tmpDate[0]) == 2 ? $tmpDate[0] : "0".$tmpDate[0];
+                 $aDate[2] = strlen($tmpDate[1]) == 2 ? $tmpDate[1] : "0".$tmpDate[1];
+            }
+            else
+            {
+                if(strlen($sDate) == 8)
+                {
+                    $aDate[0] = substr($sDate,4,4);
+                    $aDate[1] = substr($sDate,0,2);
+                    $aDate[2] = substr($sDate,2,2);
+                }
+            }
 			break;
 
 		// DD-MM-YYYY
 		case 3:
-			$cSeparator = substr($sDate,2,1);
-			// Remove separator if it exists
-			if (!is_numeric($cSeparator))
-				$sDate = str_replace($cSeparator,"",$sDate);
-			$aDate[0] = substr($sDate,4,4);
-			$aDate[1] = substr($sDate,2,2);
-			$aDate[2] = substr($sDate,0,2);
+			// Remove separator if it exists and add leading 0s to m and d if needed
+			if ($cSeparator!="")
+            {
+				$tmpDate = explode($cSeparator,$sDate);
+                 $aDate[0] = strlen($tmpDate[2]) == 4 ? $tmpDate[2] : "0000";
+                 $aDate[1] = strlen($tmpDate[1]) == 2 ? $tmpDate[1] : "0".$tmpDate[1];
+                 $aDate[2] = strlen($tmpDate[0]) == 2 ? $tmpDate[0] : "0".$tmpDate[0];
+            }
+            else
+            {
+                if(strlen($sDate) == 8)
+                {
+                    $aDate[0] = substr($sDate,4,4);
+                    $aDate[1] = substr($sDate,2,2);
+                    $aDate[2] = substr($sDate,0,2);
+                }
+            }
 			break;
 	}
+    if((0 + $aDate[0]) < 1901) $aDate[0] = "0000";
 	return $aDate;
 }
 
