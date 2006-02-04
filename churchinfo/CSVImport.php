@@ -420,12 +420,19 @@ if (isset($_POST["DoImport"]))
                         // Donation envelope.. make sure it's available!
                         case 7:
                             $iEnv = FilterInput($aData[$col],'int');
-                            $sSQL = "SELECT '' FROM person_per WHERE per_Envelope = " . $iEnv;
-                            $rsTemp = RunQuery($sSQL);
-                            if (mysql_num_rows($rsTemp) == 0)
-                                $iEnvelope = $iEnv;
-                            else
+                            if($iEnv == "")
+                            {
                                 $iEnvelope = 0;
+                            }
+                            else
+                            {
+                                $sSQL = "SELECT '' FROM person_per WHERE per_Envelope = " . $iEnv;
+                                $rsTemp = RunQuery($sSQL);
+                                if (mysql_num_rows($rsTemp) == 0)
+                                    $iEnvelope = $iEnv;
+                                else
+                                    $iEnvelope = 0;
+                            }
                             break;
 
                         // Birth date.. parse multiple date standards.. then split into day,month,year
