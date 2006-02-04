@@ -33,6 +33,8 @@ class Family
     var $Members;       // array for member data
     var $MemberCount;   // obious
     var $WeddingDate;   // one per family
+    var $Phone;         // one per family
+    var $Envelope;      // one per family
     var $_nAdultMale;   // if one adult male 
     var $_nAdultFemale; // and 1 adult female we assume spouses
     var $_type;         // 0=patriarch, 1=martriarch
@@ -42,19 +44,28 @@ class Family
     {
         $this->_type = $famtype;
         $this->MemberCount = 0;
+        $this->Envelope = 0;
         $this->_nAdultMale = 0;
         $this->_nAdultFemale = 0;
         $this->Members = array();
         $this->WeddingDate = "0000-00-00";
+        $this->Phone = "";
     }
     
     /** Add what we need to know about members for role assignment later **/
-    function AddMember($PersonID, $Gender, $Age, $Wedding)
+    function AddMember($PersonID, $Gender, $Age, $Wedding, $Phone, $Envelope)
     {
         // add member with un-assigned role
-        $this->Members[] = array('personid'=>$PersonID,'age'=>$Age, 'gender'=>$Gender, 'role'=> 0);
+        $this->Members[] = array('personid'=>$PersonID,
+                                 'age'=>$Age, 
+                                 'gender'=>$Gender, 
+                                 'role'=> 0, 
+                                 'phone'=> $Phone,
+                                 'envelope'=>$Envelope);
         if($Wedding != "0000-00-00")
             $this->WeddingDate = $Wedding;
+        if($Envelope != 0)
+            $this->Envelope = $Envelope;
         $this->MemberCount++;
         if($Age > 18)
         {
@@ -69,6 +80,7 @@ class Family
         if($this->MemberCount == 1)
         {
             $this->Members[0]['role'] = 1;
+            $this->Phone = $this->Members[0]['phone'];
         }
         else
         {
@@ -88,9 +100,14 @@ class Family
                         {
                             // find head / spouse
                             if(($this->Members[$m]['gender'] == 1 && $this->_type == 0) || ($this->Members[$m]['gender'] == 2 && $this->_type == 1))
+                            {
                                 $this->Members[$m]['role'] = 1;
+                                if($this->Members[$m]['phone'] != "") $this->Phone = $this->Members[$m]['phone'];
+                            }
                             else
+                            {
                                 $this->Members[$m]['role'] = 2;
+                            }
                         }
                     }
                 }
@@ -186,7 +203,6 @@ if (isset($_POST["UploadCSV"]))
                 <option value="21"><?php echo gettext("Wedding Date"); ?></option>
 
                 <?php
-                mysql_data_seek($rsCustomFields,0);
                 while ($aRow = mysql_fetch_array($rsCustomFields))
                 {
                     extract($aRow);
@@ -323,6 +339,7 @@ if (isset($_POST["DoImport"]))
         while ($aData = fgetcsv($pFile, 2048, ","))
         {
             $iBirthYear = 0; $iBirthMonth = 0; $iBirthDay = 0; $iGender = 0; $dWedding = "0000-00-00";
+            $sAddress1 = ""; $sAddress2 = ""; $sCity = ""; $sState = ""; $sZip = "";
             // Use the default country from the mapping form in case we don't find one otherwise
             $sCountry = $sDefaultCountry;
 
@@ -342,9 +359,38 @@ if (isset($_POST["DoImport"]))
                     // handler for each of the 20 person_per table column possibilities
                     switch($currentType)
                     {
+                        // Address goes with family record if creating families
+                        case 8: case 9: case 10: case 11: case 12: 
+                            // if not making family records, add to person
+                            if (!isset($_POST["MakeFamilyRecords"]))
+                            {
+                                $sSQLpersonData .= "'" . addslashes($aData[$col]) . "',";
+                            }
+                            else
+                            {
+                                switch($currentType)
+                                {
+                                    case 8:
+                                        $sAddress1 = addslashes($aData[$col]);
+                                        break;
+                                    case 9:
+                                        $sAddress2 = addslashes($aData[$col]);
+                                        break;
+                                    case 10:
+                                        $sCity = addslashes($aData[$col]);
+                                        break;
+                                    case 11:
+                                        $sState = addslashes($aData[$col]);
+                                        break;
+                                    case 12:
+                                        $sZip = addslashes($aData[$col]);
+                                }
+                            }
+                            break;
+                        
                         // Simple strings.. no special processing
-                        case 1: case 2: case 3: case 4: case 5: case 8: case 9:
-                        case 10: case 11: case 12: case 17: case 18:
+                        case 1: case 2: case 3: case 4: case 5: 
+                        case 17: case 18:
                             $sSQLpersonData .= "'" . addslashes($aData[$col]) . "',";
                             break;
 
@@ -377,9 +423,9 @@ if (isset($_POST["DoImport"]))
                             $sSQL = "SELECT '' FROM person_per WHERE per_Envelope = " . $iEnv;
                             $rsTemp = RunQuery($sSQL);
                             if (mysql_num_rows($rsTemp) == 0)
-                                $sSQLpersonData .= $iEnv . ", ";
+                                $iEnvelope = $iEnv;
                             else
-                                $sSQLpersonData .= "NULL, ";
+                                $iEnvelope = 0;
                             break;
 
                         // Birth date.. parse multiple date standards.. then split into day,month,year
@@ -419,7 +465,12 @@ if (isset($_POST["DoImport"]))
 
                     switch($currentType)
                     {
-                        case 0: case 13: case 14: case 15: case 16: case 21:
+                        case 0: case 7: case 13: case 14: case 15: case 16: case 21:
+                            break;
+                        case 8: case 9: case 10: case 11: case 12: 
+                            // if not making family records, add to person
+                            if (!isset($_POST["MakeFamilyRecords"])) 
+                                $sSQLpersonFields .= $aPersonTableFields[$currentType] . ", ";
                             break;
                         default:
                             $sSQLpersonFields .= $aPersonTableFields[$currentType] . ", ";
@@ -471,14 +522,20 @@ if (isset($_POST["DoImport"]))
                // see if there is a family with same last name and address
                $sSQL = "SELECT fam_ID, fam_name, fam_Address1 
                         FROM family_fam where fam_Name = '".addslashes($per_LastName)."' 
-                        AND fam_Address1 = '".addslashes($per_Address1)."'";
+                        AND fam_Address1 = '".$sAddress1."'"; // slashes added already
                $rsExistingFamily = RunQuery($sSQL);
                $famid = 0;
                if(mysql_num_rows($rsExistingFamily) > 0)
                {
                    extract(mysql_fetch_array($rsExistingFamily));
                    $famid = $fam_ID;
-                   $Families[$famid]->AddMember($per_ID,$iGender,GetAge($iBirthMonth, $iBirthDay, $iBirthYear), $dWedding);
+                   if(array_key_exists($famid, $Families))
+                       $Families[$famid]->AddMember($per_ID,
+                                                    $iGender,
+                                                    GetAge($iBirthMonth, $iBirthDay, $iBirthYear), 
+                                                    $dWedding, 
+                                                    $per_HomePhone,
+                                                    $iEnvelope);
                }
                else
                {
@@ -498,11 +555,11 @@ if (isset($_POST["DoImport"]))
                                                  fam_EnteredBy)
                             VALUES (NULL, " .
                                    "\"" . $per_LastName . "\", " .
-                                   "\"" . $per_Address1 . "\", " .
-                                   "\"" . $per_Address2 . "\", " .
-                                   "\"" . $per_City . "\", " .
-                                   "\"" . $per_State . "\", " .
-                                   "\"" . $per_Zip . "\", " .
+                                   "\"" . $sAddress1 . "\", " .
+                                   "\"" . $sAddress2 . "\", " .
+                                   "\"" . $sCity . "\", " .
+                                   "\"" . $sState . "\", " .
+                                   "\"" . $sZip . "\", " .
                                    "\"" . $per_Country . "\", " .
                                    "\"" . $per_HomePhone . "\", " .
                                    "\"" . $per_WorkPhone . "\", " .
@@ -516,7 +573,12 @@ if (isset($_POST["DoImport"]))
                    $aFid = mysql_fetch_array($rsFid);
                    $famid =  $aFid[0];
                    $fFamily = new Family(FilterInput($_POST["FamilyMode"],'int'));
-                   $fFamily->AddMember($per_ID,$iGender,GetAge($iBirthMonth, $iBirthDay, $iBirthYear), $dWedding);
+                   $fFamily->AddMember($per_ID,
+                                       $iGender,
+                                       GetAge($iBirthMonth, $iBirthDay, $iBirthYear), 
+                                       $dWedding, 
+                                       $per_HomePhone,
+                                       $iEnvelope);
                    $Families[$famid] = $fFamily;
                }   
                $sSQL = "UPDATE person_per SET per_fam_ID = " . $famid . " WHERE per_ID = " . $per_ID;
@@ -604,7 +666,10 @@ if (isset($_POST["DoImport"]))
                 $sSQL = "UPDATE person_per SET per_fmr_ID = " . $iRole . " WHERE per_ID = " . $member['personid'];
                 RunQuery($sSQL);
             }
-            $sSQL = "UPDATE family_fam SET fam_WeddingDate = " . "'".$family->WeddingDate . "' WHERE fam_ID = " . $fid;
+            $sSQL = "UPDATE family_fam SET fam_WeddingDate = " . "'" . $family->WeddingDate. "'";
+            if($family->Phone != "")    $sSQL.= ", fam_HomePhone = " . $family->Phone;
+            if($family->Envelope != 0)    $sSQL.= ", fam_Envelope  = " . $family->Envelope;
+            $sSQL.=  " WHERE fam_ID = " . $fid;
             RunQuery($sSQL);
     }
 
@@ -614,13 +679,41 @@ if (isset($_POST["DoImport"]))
         echo gettext("ERROR: the uploaded CSV file no longer exists!");
 }
 
+// clear person and families if not happy with previous import.
+$sClear = "";
+if($_POST["Clear"] != "")
+{
+    if(isset($_POST["chkClear"]))
+    {
+        $sSQL = "TRUNCATE `family_fam`;";    
+        RunQuery($sSQL);
+        $sSQL = "TRUNCATE `person_per`;";
+        RunQuery($sSQL);
+        $sSQL = "INSERT INTO person_per VALUES (1,NULL,'ChurchInfo',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0000,NULL,0,0,0,0,NULL,NULL,'2004-08-25 18:00:00',0,0,NULL,0);";
+        RunQuery($sSQL);
+        $sClear = gettext("Data Cleared Successfully!");
+    }
+    else
+    {
+        $sClear = gettext("Please select the confirmation checkbox");
+    }
+}
+
 if ($iStage == 1)
 {
     // Display the select file form
     echo "<p style=\"color: red\">" . $csvError . "</p>";
     echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "\" enctype=\"multipart/form-data\">";
     echo "<input class=\"icTinyButton\" type=\"file\" name=\"CSVfile\"> <input type=\"submit\" class=\"icButton\" value=\"" . gettext("Upload CSV File") . "\" name=\"UploadCSV\">";
-    echo "</form>";
+    echo "</form><br/><br/><br/><br/>";
+    echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "\" enctype=\"multipart/form-data\">";
+    echo gettext("Are you sure?")."  <input type=\"checkbox\" name=\"chkClear\" value='0'> <input type=\"submit\" class=\"icButton\" value=\"" 
+                . gettext("Clear Persons and Families") . "\" name=\"Clear\">";
+    echo "<p style=\"color: red\">";
+    echo gettext("Warning!  Do not select this option if you plan to add to an existing database.<br/>");
+    echo gettext("Use only if unsatisfied with initial import.  All person and member data will be destroyed!");            
+    echo "</p></form>";
+    echo $sClear;
 }
 
 if ($iStage == 3)
