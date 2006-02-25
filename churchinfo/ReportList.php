@@ -93,6 +93,23 @@ $numRows = mysql_num_rows($rsOpps);
 ?>
 </p>
 
+
+<?php if (($_SESSION['bAdmin'] || !$bCSVAdminOnly) && strlen($sISTusername . $sISTpassword)) { ?>
+	<p>
+	<a class="MediumText" href="USISTAddressVerification.php"><?php echo gettext("US Address Verification Report"); ?></a>
+	<br>
+	<?php echo gettext("Generate report comparing all US family addresses " . 
+		"with United States Postal Service Standard Address Format.<br>");
+
+	if (!strlen($sISTpassword))
+		echo gettext("To remove this report from this list delete both sISTusername" . 
+					"and sISTpassword from: Admin -> Edit General Settings"); 
+
+?>
+	</p>
+<?php } ?>
+
+
 <?php
 require "Include/Footer.php";
 ?>
