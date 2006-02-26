@@ -53,6 +53,8 @@ if (isset($_POST["Submit"]))
 	$tFinancial = FilterInput ($_POST["Financial"]);
 	$tSuggestion = FilterInput ($_POST["Suggestion"]);
 	$bNotInterested = isset($_POST["NotInterested"]);
+	if ($bNotInterested == "")
+		$bNotInterested = 0;
 	$tWhyNotInterested = FilterInput ($_POST["WhyNotInterested"]);
 
 	// New canvas input (add)
