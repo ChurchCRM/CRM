@@ -101,6 +101,8 @@ function CanvassProgressReport ($iFYID)
 	$canvassGroups = array ('Canvassers', 'BraveCanvassers' );
 	foreach ($canvassGroups as $cgName) {
 		$rsCanvassers = CanvassGetCanvassers (gettext ($cgName));
+		if ($rsCanvassers == 0)
+			continue;
 
 		while ($aCanvasser = mysql_fetch_array ($rsCanvassers)) {
 			// Get all the families for this canvasser
