@@ -1702,4 +1702,30 @@ function FindMemberClassID ()
 	return (1); // Should not get here, but if we do get here use the default value.
 }
 
+// Prepare data for entry into MySQL database.
+// This function solves the problem of inserting a NULL value into MySQL since
+// MySQL will not accept 'NULL'.  One drawback is that it is not possible
+// to insert the character string "NULL" because it will be inserted as a MySQL NULL!
+// This will produce a database error if NULL's are not allowed!  Do not use this
+// function if you intend to insert the character string "NULL" into a field.
+function MySQLquote ($sfield)
+{
+	$sfield = trim($sfield);
+
+	if ($sfield == "NULL")
+		return "NULL";
+	elseif ($sfield == "'NULL'")
+		return "NULL";
+	elseif ($sfield == "")
+		return "NULL";
+	elseif ($sfield == "''")
+		return "NULL";
+	else {
+		if ((substr($sfield, 0, 1) == "'") && (substr($sfield, strlen($sfield)-1, 1)) == "'")
+			return $sfield;
+		else 
+			return "'" . $sfield . "'";
+	}
+}
+
 ?>
