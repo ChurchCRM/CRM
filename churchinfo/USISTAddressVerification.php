@@ -194,11 +194,11 @@ class ISTAddressLookup {
 
 		$response = file_get_contents($url);
 
-		$fp = fopen('/var/www/html/message.txt', 'w+');
-		fwrite($fp, $response . "\n" . $url);
-		fclose($fp);
+//		$fp = fopen('/var/www/html/message.txt', 'w+');
+//		fwrite($fp, $response . "\n" . $url);
+//		fclose($fp);
 
-		// Initialize return values to NULL
+		// Initialize return values
 		$this->DeliveryLine1	= "";
 		$this->DeliveryLine2	= "";
 		$this->City				= "";
