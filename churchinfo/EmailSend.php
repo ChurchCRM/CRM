@@ -47,6 +47,7 @@ if ( is_array($email_array) == TRUE )
 			if(!$mail->Send())
 				echo "There has been a mail error sending to " . $email_address . "<br>";
 			$mail->ClearAddresses();
+			$mail->ClearBCCs();
 		}
 	}
 	$mail->SmtpClose();
