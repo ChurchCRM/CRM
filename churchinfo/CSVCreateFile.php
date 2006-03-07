@@ -16,6 +16,7 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Include/ReportFunctions.php";
 
 // Turn ON output buffering
 ob_start();
@@ -367,7 +368,8 @@ else
 				else if ($sFormat == "rollup")
 				{
 					if ($memberCount > 1)
-						$sString = "\"" . $fam_Name . " Family";
+						$sString = "\"" . MakeSalutationUtility ($fam_ID);
+//						$sString = "\"" . $fam_Name . " Family";
 					else
 						$sString = "\"" . $per_LastName . ", " . $per_FirstName;
 				}
