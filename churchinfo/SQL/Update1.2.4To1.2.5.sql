@@ -6,6 +6,9 @@ INSERT IGNORE INTO `config_cfg` VALUES (86, 'bHideLatLon', '0', 'boolean', '0', 
 INSERT IGNORE INTO `config_cfg` VALUES (87, 'bUseDonationEnvelopes', '0', 'boolean', '0', 'Set true to enable use of donation envelopes', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (88, 'sHeader', '', 'text', '', 'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! There is a 255 character limit. Note: You must REFRESH YOUR BROWSER A SECOND TIME in order the new header.', 'General');
 
+UPDATE `user_usr` SET `usr_defaultFY` = '10' WHERE usr_defaultFY IS NULL;
+UPDATE `user_usr` SET `usr_currentDeposit` = '0' WHERE usr_currentDeposit IS NULL;
+
 ALTER TABLE `user_usr` MODIFY `usr_defaultFY` mediumint(9) NOT NULL default '10';
 ALTER TABLE `user_usr` MODIFY `usr_currentDeposit` mediumint(9) NOT NULL default '0';
 
