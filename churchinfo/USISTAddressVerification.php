@@ -194,9 +194,9 @@ class ISTAddressLookup {
 
 		$response = file_get_contents($url);
 
-//		$fp = fopen('/var/www/html/message.txt', 'w+');
-//		fwrite($fp, $response . "\n" . $url);
-//		fclose($fp);
+		$fp = fopen('/var/www/html/message.txt', 'w+');
+		fwrite($fp, $response . "\n" . $url);
+		fclose($fp);
 
 		// Initialize return values
 		$this->DeliveryLine1	= "";
@@ -242,8 +242,10 @@ class ISTAddressLookup {
 			$this->SearchesLeft		= XMLparseIST($response,"SearchesLeft");
 
 			if(strlen(XMLparseIST($response,"ErrorCodes"))){
-				$this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorCodes");
-				$this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorDesc");
+				if (XMLparseIST($response,"ErrorCodes") != "x1x2") {
+					$this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorCodes");
+					$this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorDesc");
+				}
 			} 
 			if (XMLparseIST($response,"ReturnCodes") > 1) {	
 				$this->DeliveryLine1 .= " Multiple matches.  Unable to determine proper match.";
@@ -293,23 +295,23 @@ if ($myISTReturnCode != "0") {
 	echo "Admin -> Edit General Settings -> sISTpassword<br><br>";
 	echo "Follow the URL below to log in and manage your Intelligent Search Technology account ";
 	echo "settings.  If you do not already have an account you may establish an account at this ";
-	echo "URL.<br>";
+	echo "URL.<br><br>";
 
-	echo "<a href=\"https://www.name-searching.com/CaddressASP\">" . gettext("https://www.name-searching.com/CaddressASP") . "</a><br><br><br>";
-
+	echo "<a href=\"https://www.name-searching.com/CaddressASP\">" . gettext("https://www.name-searching.com/CaddressASP") . "</a><br><br>";
 
 	echo "If you are sure that your account username and password are correct and that your ";
 	echo "account is in good standing it is possible that the server is currently unavailable ";
-	echo "but may be back online if you try again later.<br><br><br>";
+	echo "but may be back online if you try again later.<br><br>";
 
 	echo "ChurchInfo uses XML web services provided by Intelligent ";
 	echo "Search Technology, Ltd.  For information about CorrectAddress(R) Online Address ";
-	echo "Verification Service visit the following URL.<br>";
+	echo "Verification Service visit the following URL. This software was written to work ";
+	echo "best with the service CorrectAddress(R) with Addons. <br><br>";
 
 	echo "<a href=\"http://www.intelligentsearch.com/address_verification/verify_address.html\">" . gettext("http://www.intelligentsearch.com/address_verification/verify_address.html") . "</a>";
 
 
-} elseif ($myISTSearchesLeft == "0"){
+} elseif ($myISTSearchesLeft == "X"){
 
 	echo "<br>";
 	echo "Searches Left = " . $myISTSearchesLeft . "<br><br>";
@@ -318,6 +320,8 @@ if ($myISTReturnCode != "0") {
 
 	echo "<a href=\"https://www.name-searching.com/CaddressASP\">" . gettext("https://www.name-searching.com/CaddressASP") . "</a><br><br><br>";
 
+	echo "This software was written to work best with the service CorrectAddress(R) ";
+	echo "with Addons. <br><br><br>";
 
 } else {
 	// IST account is valid and working.  Time to get to work.
@@ -327,7 +331,7 @@ if ($myISTReturnCode != "0") {
 	echo "an address lookup should be performed.<br>";
 	echo "1) The family record was added to ChurchInfo after the last lookup<br>";
 	echo "2) The family record was edited after the last lookup<br>";
-	echo "3) It's been more than one year since the family record has been verified<br>";
+	echo "3) It's been more than two years since the family record has been verified<br>";
 	echo "4) The address must be a US address (Country = United States)<br><br>";
 	echo "</h3>";
 
@@ -379,14 +383,14 @@ if ($myISTReturnCode != "0") {
 
 	// More Housekeeping ... Delete families from the table istlookup_lu that
 	// have not had a lookup performed in more than one year.  Zip codes and street
-	// names occasionally change so an annual verification is a good idea.
+	// names occasionally change so a verification every two years is a good idea.
 
-	$oneYearAgo = date("Y-m-d H:i:s",strtotime("-12 months"));
-//	$oneYearAgo = date("Y-m-d H:i:s");
-//	echo "oneYearAgo = " . $oneYearAgo . "<br>";
+	$twoYearsAgo = date("Y-m-d H:i:s",strtotime("-24 months"));
+	//	$twoYearsAgo = date("Y-m-d H:i:s");
+	//	echo "twoYearsAgo = " . $twoYearsAgo . "<br>";
 
 	$sSQL  = "SELECT lu_fam_ID FROM istlookup_lu "; 
-	$sSQL .= "WHERE '" . $oneYearAgo . "' > lu_LookupDateTime";
+	$sSQL .= "WHERE '" . $twoYearsAgo . "' > lu_LookupDateTime";
 	$rsResult = RunQuery($sSQL);
 	$iOutdatedCount = 0;
 	while ($aRow = mysql_fetch_array($rsResult)) {
@@ -442,21 +446,30 @@ if ($myISTReturnCode != "0") {
 		echo "There are no US addresses eligible for lookup.<br>";
 	echo "</h4>";
 
-	if ($_POST['DoLookup']) {
+//	echo $_GET['DoLookup'] . "<br>";
 
+	if ($_GET['DoLookup']) {
+//$variablename=$_GET['variable'];
+//		echo "We're in!<br>";
+		$startTime = time();
 		$sSQL  = "SELECT fam_ID, fam_Address1, fam_Address2, fam_City, fam_State FROM family_fam ";
 		$sSQL .= "WHERE fam_Country='United States' ORDER BY fam_ID";
 		$rsResult = RunQuery($sSQL);
 
+		$iCount = 1;
+
 		while ($aRow = mysql_fetch_array($rsResult)) {
+
 			extract($aRow);
 			$sSQL  = "SELECT count(lu_fam_ID) AS idexists FROM istlookup_lu ";
 			$sSQL .= "WHERE lu_fam_ID='" . $fam_ID . "'";
 			$rsResult2 = RunQuery($sSQL);
 			extract(mysql_fetch_array($rsResult2));
 			if ($idexists == "0") {
-				//echo "<br>Family ID " . $fam_ID . " needs lookup<br>";
-
+				$iCount--; 
+				echo "Sent: " . $fam_Address1 . " " . $fam_Address2 . " ";
+				echo $fam_City . " " . $fam_State;
+				echo "<br>";
 				$myISTAddressLookup = new ISTAddressLookup;
 				$myISTAddressLookup->SetAddress ($fam_Address1, $fam_Address2, 
 												$fam_City, $fam_State);
@@ -481,6 +494,10 @@ if ($myISTReturnCode != "0") {
 				$lu_ErrorCodes = MySQLquote(addslashes($myISTAddressLookup->GetErrorCodes()));
 
 				//echo "<br>" . $lu_ErrorCodes;
+
+				echo "Received: " . $myISTAddressLookup->GetAddress1() . " ";
+				echo $myISTAddressLookup->GetAddress2() . " ";
+				echo $myISTAddressLookup->GetLastLine() . "<br><br>";
 
 				$iSearchesLeft = $myISTAddressLookup->GetSearchesLeft();
 				if (!is_numeric($iSearchesLeft))
@@ -510,15 +527,12 @@ if ($myISTReturnCode != "0") {
 				RunQuery($sSQL);
 				}
 
-				$bRedirect = TRUE;
-
 				if ($iSearchesLeft < 30) {
-					$bRedirect = FALSE;
 					if ($lu_ErrorCodes != "'xx'") {
 					echo "<h3>There are " . $iSearchesLeft . " searches remaining ";
 					echo "in your account.  Searches will be performed one at a time until ";
 					echo "your account balance is zero.  To enable bulk lookups you will ";
-					echo "need to add funds to your Intelligent Search Technolgy account ";
+					echo "need to add funds to your Intelligent Search Technology account ";
 					echo "at the following link.<br>";
 					echo "<a href=\"https://www.name-searching.com/CaddressASP\">";
 					echo gettext("https://www.name-searching.com/CaddressASP") . "</a><br></h3>";
@@ -530,7 +544,8 @@ if ($myISTReturnCode != "0") {
 	echo "Admin -> Edit General Settings -> sISTpassword<br><br>";
 	echo "Follow the URL below to log in and manage your Intelligent Search Technology account ";
 	echo "settings.  If you do not already have an account you may establish an account at this ";
-	echo "URL.<br>";
+	echo "URL. This software was written to work best with the service CorrectAddress(R) ";
+	echo "with Addons. <br><br><br>";
 
 	echo "<a href=\"https://www.name-searching.com/CaddressASP\">" . gettext("https://www.name-searching.com/CaddressASP") . "</a><br><br>";
 
@@ -541,7 +556,7 @@ if ($myISTReturnCode != "0") {
 
 					if ($iSearchesLeft) {
 					?>
-					<form method="POST" action="USISTAddressVerification.php">
+					<form method="GET" action="USISTAddressVerification.php">
 					<input type=submit class=icButton name=DoLookup value="Perform Next Lookup">
 					</form><br><br>
 					<?php
@@ -549,20 +564,25 @@ if ($myISTReturnCode != "0") {
 					break;
 				}
 			}
+
+			$now = time();	// This code used to prevent browser and server timeouts
+							// Keep doing fresh reloads of this page until complete.
+			if ($now-$startTime > 0){
+				?><meta http-equiv="refresh" content="5;URL=<?php 
+				echo $_SERVER['PHP_SELF'] . "?DoLookup=Perform+Lookups";?>" /><?php
+				break;
+			}			
+
 		}
-
-
-		if ($bRedirect)		
-			Redirect("USISTAddressVerification.php");
 	}
 
 	?>
 	<table><tr>
 	<?php
 
-	if (!$_POST['DoLookup'] && $iEligible){
+	if (!$_GET['DoLookup'] && $iEligible){
 	?>
-	<td><form method="POST" action="USISTAddressVerification.php">
+	<td><form method="GET" action="USISTAddressVerification.php">
 	<input type=submit class=icButton name=DoLookup value="Perform Lookups">
 	</form></td>
 	<?php } ?>

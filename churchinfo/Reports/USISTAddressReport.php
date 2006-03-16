@@ -84,7 +84,7 @@ class PDF_AddressReport extends ChurchInfoReport {
 
 	// Number of lines is only for the $text parameter
 	function Add_Record($fam_Str, $USPS_Str) {
-		$numlines=5; // add an extra blank line after record
+		$numlines=9; // add an extra blank line after record
 		$this->Check_Lines($numlines);
 
 		$_PosX = $this->_Margin_Left;
