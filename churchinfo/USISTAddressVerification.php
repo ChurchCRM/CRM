@@ -194,9 +194,9 @@ class ISTAddressLookup {
 
 		$response = file_get_contents($url);
 
-		$fp = fopen('/var/www/html/message.txt', 'w+');
-		fwrite($fp, $response . "\n" . $url);
-		fclose($fp);
+//		$fp = fopen('/var/www/html/message.txt', 'w+');
+//		fwrite($fp, $response . "\n" . $url);
+//		fclose($fp);
 
 		// Initialize return values
 		$this->DeliveryLine1	= "";
@@ -295,7 +295,8 @@ if ($myISTReturnCode != "0") {
 	echo "Admin -> Edit General Settings -> sISTpassword<br><br>";
 	echo "Follow the URL below to log in and manage your Intelligent Search Technology account ";
 	echo "settings.  If you do not already have an account you may establish an account at this ";
-	echo "URL.<br><br>";
+	echo "URL. This software was written to work best with the service CorrectAddress(R) with ";
+	echo "Addons. <br><br>";
 
 	echo "<a href=\"https://www.name-searching.com/CaddressASP\">" . gettext("https://www.name-searching.com/CaddressASP") . "</a><br><br>";
 
@@ -329,8 +330,8 @@ if ($myISTReturnCode != "0") {
 	echo "<h3>";
 	echo "To conserve funds the following rules are used to determine if ";
 	echo "an address lookup should be performed.<br>";
-	echo "1) The family record was added to ChurchInfo after the last lookup<br>";
-	echo "2) The family record was edited after the last lookup<br>";
+	echo "1) The family record has been added since the last lookup<br>";
+	echo "2) The family record has been edited since the last lookup<br>";
 	echo "3) It's been more than two years since the family record has been verified<br>";
 	echo "4) The address must be a US address (Country = United States)<br><br>";
 	echo "</h3>";
@@ -430,7 +431,7 @@ if ($myISTReturnCode != "0") {
 	extract(mysql_fetch_array($rsResult));
 	$iUSOkay = intval($usokay);
 	if ($iUSOkay) {
-		echo $iUSOkay . " US addresses have already had lookups performed.<br>";
+		echo $iUSOkay . " US addresses have had lookups performed.<br>";
 	}
 
 	// Get count of US addresses ready for lookup
@@ -446,97 +447,99 @@ if ($myISTReturnCode != "0") {
 		echo "There are no US addresses eligible for lookup.<br>";
 	echo "</h4>";
 
-//	echo $_GET['DoLookup'] . "<br>";
-
 	if ($_GET['DoLookup']) {
-//$variablename=$_GET['variable'];
-//		echo "We're in!<br>";
-		$startTime = time();
-		$sSQL  = "SELECT fam_ID, fam_Address1, fam_Address2, fam_City, fam_State FROM family_fam ";
-		$sSQL .= "WHERE fam_Country='United States' ORDER BY fam_ID";
+		$startTime = time();  // keep tabs on how long this runs to avoid server timeouts
+
+
+		echo "Lookups in process, screen refresh scheduled every 20 seconds.";
+
+		?>
+		<table><tr><td><form method="POST" action="USISTAddressVerification.php">
+		<input type=submit class=icButton name=StopLookup value="Stop Lookups">
+		</form></td></tr></table>
+		<?php
+
+		// Get list of fam_ID that do not exist in table istlookup_lu
+		$sSQL  = "SELECT fam_ID, fam_Address1, fam_Address2, fam_City, fam_State "; 
+		$sSQL .= "FROM family_fam LEFT JOIN istlookup_lu ";
+		$sSQL .= "ON fam_id = lu_fam_id ";
+		$sSQL .= "WHERE lu_fam_id IS NULL ";
 		$rsResult = RunQuery($sSQL);
 
-		$iCount = 1;
-
+		$bNormalFinish = TRUE;
 		while ($aRow = mysql_fetch_array($rsResult)) {
 
 			extract($aRow);
-			$sSQL  = "SELECT count(lu_fam_ID) AS idexists FROM istlookup_lu ";
-			$sSQL .= "WHERE lu_fam_ID='" . $fam_ID . "'";
-			$rsResult2 = RunQuery($sSQL);
-			extract(mysql_fetch_array($rsResult2));
-			if ($idexists == "0") {
-				$iCount--; 
-				echo "Sent: " . $fam_Address1 . " " . $fam_Address2 . " ";
-				echo $fam_City . " " . $fam_State;
-				echo "<br>";
-				$myISTAddressLookup = new ISTAddressLookup;
-				$myISTAddressLookup->SetAddress ($fam_Address1, $fam_Address2, 
-												$fam_City, $fam_State);
+			echo "Sent: " . $fam_Address1 . " " . $fam_Address2 . " ";
+			echo $fam_City . " " . $fam_State;
+			echo "<br>";
+			$myISTAddressLookup = new ISTAddressLookup;
+			$myISTAddressLookup->SetAddress ($fam_Address1, $fam_Address2, 
+											$fam_City, $fam_State);
 
-				$ret = $myISTAddressLookup->wsCorrectA ($sISTusername,$sISTpassword);
+			$ret = $myISTAddressLookup->wsCorrectA ($sISTusername,$sISTpassword);
 
-				$lu_fam_ID = MySQLquote(addslashes($fam_ID));
-				$lu_LookupDateTime = MySQLquote(addslashes(date("Y-m-d H:i:s")));
-				$lu_DeliveryLine1 = MySQLquote(addslashes($myISTAddressLookup->GetAddress1()));
-				$lu_DeliveryLine2 = MySQLquote(addslashes($myISTAddressLookup->GetAddress2()));
-				$lu_City = MySQLquote(addslashes($myISTAddressLookup->GetCity()));
-				$lu_State = MySQLquote(addslashes($myISTAddressLookup->GetState()));
-				$lu_ZipAddon = MySQLquote(addslashes($myISTAddressLookup->GetZip()));
-				$lu_Zip = MySQLquote(addslashes($myISTAddressLookup->GetZip5()));
-				$lu_Addon = MySQLquote(addslashes($myISTAddressLookup->GetZip4()));
-				$lu_LOTNumber = MySQLquote(addslashes($myISTAddressLookup->GetLOTNumber()));
-				$lu_DPCCheckdigit = MySQLquote(addslashes($myISTAddressLookup->GetDPCCheckdigit()));
-				$lu_RecordType = MySQLquote(addslashes($myISTAddressLookup->GetRecordType()));
-				$lu_LastLine = MySQLquote(addslashes($myISTAddressLookup->GetLastLine()));
-				$lu_CarrierRoute = MySQLquote(addslashes($myISTAddressLookup->GetCarrierRoute()));
-				$lu_ReturnCodes = MySQLquote(addslashes($myISTAddressLookup->GetReturnCodes()));
-				$lu_ErrorCodes = MySQLquote(addslashes($myISTAddressLookup->GetErrorCodes()));
+			$lu_fam_ID = MySQLquote(addslashes($fam_ID));
+			$lu_LookupDateTime = MySQLquote(addslashes(date("Y-m-d H:i:s")));
+			$lu_DeliveryLine1 = MySQLquote(addslashes($myISTAddressLookup->GetAddress1()));
+			$lu_DeliveryLine2 = MySQLquote(addslashes($myISTAddressLookup->GetAddress2()));
+			$lu_City = MySQLquote(addslashes($myISTAddressLookup->GetCity()));
+			$lu_State = MySQLquote(addslashes($myISTAddressLookup->GetState()));
+			$lu_ZipAddon = MySQLquote(addslashes($myISTAddressLookup->GetZip()));
+			$lu_Zip = MySQLquote(addslashes($myISTAddressLookup->GetZip5()));
+			$lu_Addon = MySQLquote(addslashes($myISTAddressLookup->GetZip4()));
+			$lu_LOTNumber = MySQLquote(addslashes($myISTAddressLookup->GetLOTNumber()));
+			$lu_DPCCheckdigit = MySQLquote(addslashes($myISTAddressLookup->GetDPCCheckdigit()));
+			$lu_RecordType = MySQLquote(addslashes($myISTAddressLookup->GetRecordType()));
+			$lu_LastLine = MySQLquote(addslashes($myISTAddressLookup->GetLastLine()));
+			$lu_CarrierRoute = MySQLquote(addslashes($myISTAddressLookup->GetCarrierRoute()));
+			$lu_ReturnCodes = MySQLquote(addslashes($myISTAddressLookup->GetReturnCodes()));
+			$lu_ErrorCodes = MySQLquote(addslashes($myISTAddressLookup->GetErrorCodes()));
 
-				//echo "<br>" . $lu_ErrorCodes;
+			//echo "<br>" . $lu_ErrorCodes;
 
-				echo "Received: " . $myISTAddressLookup->GetAddress1() . " ";
-				echo $myISTAddressLookup->GetAddress2() . " ";
-				echo $myISTAddressLookup->GetLastLine() . "<br><br>";
+			echo "Received: " . $myISTAddressLookup->GetAddress1() . " ";
+			echo $myISTAddressLookup->GetAddress2() . " ";
+			echo $myISTAddressLookup->GetLastLine() . "<br><br>";
 
-				$iSearchesLeft = $myISTAddressLookup->GetSearchesLeft();
-				if (!is_numeric($iSearchesLeft))
-					$iSearchesLeft = 0;
-				else
-					$iSearchesLeft = intval($iSearchesLeft);
+			$iSearchesLeft = $myISTAddressLookup->GetSearchesLeft();
+			if (!is_numeric($iSearchesLeft))
+				$iSearchesLeft = 0;
+			else
+				$iSearchesLeft = intval($iSearchesLeft);
 
+			if ($lu_ErrorCodes != "'xx'") {
+			// Error code xx is one of the following
+			// 1) Connection failure 2) Invalid username or password 3) No searches left 
+			//
+			// Insert data into istlookup_lu table
+			//
+			$sSQL  = "INSERT INTO istlookup_lu (";
+			$sSQL .= "  lu_fam_ID,  lu_LookupDateTime,  lu_DeliveryLine1, ";
+			$sSQL .= "  lu_DeliveryLine2,  lu_City,  lu_State,  lu_ZipAddon, ";
+			$sSQL .= "  lu_Zip,  lu_Addon,  lu_LOTNumber,  lu_DPCCheckdigit,  lu_RecordType, ";
+			$sSQL .= "  lu_LastLine,  lu_CarrierRoute,  lu_ReturnCodes,  lu_ErrorCodes) ";
+			$sSQL .= "VALUES( ";
+			$sSQL .= " $lu_fam_ID, $lu_LookupDateTime, $lu_DeliveryLine1, ";
+			$sSQL .= " $lu_DeliveryLine2, $lu_City, $lu_State, $lu_ZipAddon, ";
+			$sSQL .= " $lu_Zip, $lu_Addon, $lu_LOTNumber, $lu_DPCCheckdigit, $lu_RecordType, ";
+			$sSQL .= " $lu_LastLine, $lu_CarrierRoute, $lu_ReturnCodes, $lu_ErrorCodes) ";
+
+			//echo $sSQL;
+
+			RunQuery($sSQL);
+			}
+
+			if ($iSearchesLeft < 30) {
 				if ($lu_ErrorCodes != "'xx'") {
-				// Error code xx is one of the following
-				// 1) Connection failure 2) Invalid username or password 3) No searches left 
-				//
-				// Insert data into istlookup_lu table
-				//
-				$sSQL  = "INSERT INTO istlookup_lu (";
-				$sSQL .= "  lu_fam_ID,  lu_LookupDateTime,  lu_DeliveryLine1, ";
-				$sSQL .= "  lu_DeliveryLine2,  lu_City,  lu_State,  lu_ZipAddon, ";
-				$sSQL .= "  lu_Zip,  lu_Addon,  lu_LOTNumber,  lu_DPCCheckdigit,  lu_RecordType, ";
-				$sSQL .= "  lu_LastLine,  lu_CarrierRoute,  lu_ReturnCodes,  lu_ErrorCodes) ";
-				$sSQL .= "VALUES( ";
-				$sSQL .= " $lu_fam_ID, $lu_LookupDateTime, $lu_DeliveryLine1, ";
-				$sSQL .= " $lu_DeliveryLine2, $lu_City, $lu_State, $lu_ZipAddon, ";
-				$sSQL .= " $lu_Zip, $lu_Addon, $lu_LOTNumber, $lu_DPCCheckdigit, $lu_RecordType, ";
-				$sSQL .= " $lu_LastLine, $lu_CarrierRoute, $lu_ReturnCodes, $lu_ErrorCodes) ";
-
-				//echo $sSQL;
-
-				RunQuery($sSQL);
-				}
-
-				if ($iSearchesLeft < 30) {
-					if ($lu_ErrorCodes != "'xx'") {
-					echo "<h3>There are " . $iSearchesLeft . " searches remaining ";
-					echo "in your account.  Searches will be performed one at a time until ";
-					echo "your account balance is zero.  To enable bulk lookups you will ";
-					echo "need to add funds to your Intelligent Search Technology account ";
-					echo "at the following link.<br>";
-					echo "<a href=\"https://www.name-searching.com/CaddressASP\">";
-					echo gettext("https://www.name-searching.com/CaddressASP") . "</a><br></h3>";
-					} else {
+				echo "<h3>There are " . $iSearchesLeft . " searches remaining ";
+				echo "in your account.  Searches will be performed one at a time until ";
+				echo "your account balance is zero.  To enable bulk lookups you will ";
+				echo "need to add funds to your Intelligent Search Technology account ";
+				echo "at the following link.<br>";
+				echo "<a href=\"https://www.name-searching.com/CaddressASP\">";
+				echo gettext("https://www.name-searching.com/CaddressASP") . "</a><br></h3>";
+				} else {
 	echo "<h4>Lookup failed.  There is a problem with the connection or with your account.</h4>";
 	echo "Please verify that your Intelligent Search Technology, Ltd. username and password ";
 	echo "are correct.<br><br>";
@@ -552,27 +555,32 @@ if ($myISTReturnCode != "0") {
 	echo "If you are sure that your account username and password are correct and that your ";
 	echo "account is in good standing it is possible that the server is currently unavailable ";
 	echo "but may be back online if you try again later.<br><br>";
-					}
-
-					if ($iSearchesLeft) {
-					?>
-					<form method="GET" action="USISTAddressVerification.php">
-					<input type=submit class=icButton name=DoLookup value="Perform Next Lookup">
-					</form><br><br>
-					<?php
-					}
-					break;
 				}
+
+				if ($iSearchesLeft) {
+				?>
+				<form method="GET" action="USISTAddressVerification.php">
+				<input type=submit class=icButton name=DoLookup value="Perform Next Lookup">
+				</form><br><br>
+				<?php
+				}
+				$bNormalFinish = FALSE;
+				break;
 			}
 
 			$now = time();	// This code used to prevent browser and server timeouts
 							// Keep doing fresh reloads of this page until complete.
-			if ($now-$startTime > 0){
-				?><meta http-equiv="refresh" content="5;URL=<?php 
+			if ($now-$startTime > 17){  // run for 17 seconds, then reload page
+										// total cycle is about 20 seconds per page reload
+				?><meta http-equiv="refresh" content="2;URL=<?php 
 				echo $_SERVER['PHP_SELF'] . "?DoLookup=Perform+Lookups";?>" /><?php
 				break;
 			}			
 
+		}
+		if ($bNormalFinish) {
+			?><meta http-equiv="refresh" content="2;URL=<?php 
+			echo $_SERVER['PHP_SELF'];?>" /><?php
 		}
 	}
 
