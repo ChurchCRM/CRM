@@ -588,6 +588,7 @@ CREATE TABLE IF NOT EXISTS `istlookup_lu` (
   `lu_CarrierRoute` varchar(10) default NULL,
   `lu_ReturnCodes` varchar(10) default NULL,
   `lu_ErrorCodes` varchar(10) default NULL,
+  `lu_ErrorDesc` varchar(255) default NULL,
   PRIMARY KEY  (`lu_fam_ID`)
 ) TYPE=MyISAM COMMENT='US Address Verification Lookups From Intelligent Search Technology (IST)';
 
