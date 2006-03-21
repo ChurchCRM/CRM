@@ -36,6 +36,57 @@ class PDF_AddressReport extends ChurchInfoReport {
 	var $sFamily;
 	var $sLastName;
 
+	function num_lines_in_fpdf_cell($w,$txt)
+	{
+	    //Computes the number of lines a MultiCell of width w will take
+	    $cw=&$this->CurrentFont['cw'];
+	    if($w==0)
+	        $w=$this->w-$this->rMargin-$this->x;
+	    $wmax=($w-2*$this->cMargin)*1000/$this->FontSize;
+	    $s=str_replace("\r",'',$txt);
+	    $nb=strlen($s);
+	    if($nb>0 and $s[$nb-1]=="\n")
+	        $nb--;
+	    $sep=-1;
+	    $i=0;
+	    $j=0;
+	    $l=0;
+	    $nl=1;
+	    while($i<$nb)
+	    {
+	        $c=$s[$i];
+	        if($c=="\n")
+	        {
+	            $i++;
+	            $sep=-1;
+	            $j=$i;
+	            $l=0;
+	            $nl++;
+	            continue;
+	        }
+	        if($c==' ')
+	            $sep=$i;
+	        $l+=$cw[$c];
+	        if($l>$wmax)
+	        {
+	            if($sep==-1)
+	            {
+	                if($i==$j)
+	                    $i++;
+	            }
+	            else
+	                $i=$sep+1;
+	            $sep=-1;
+	            $j=$i;
+	            $l=0;
+	            $nl++;
+	        }
+	        else
+	            $i++;
+	    }
+	    return $nl;
+	}
+
 	// Sets the character size
 	// This changes the line height too
 	function Set_Char_Size($pt) {
@@ -83,8 +134,18 @@ class PDF_AddressReport extends ChurchInfoReport {
 	}
 
 	// Number of lines is only for the $text parameter
-	function Add_Record($fam_Str, $USPS_Str) {
-		$numlines=9; // add an extra blank line after record
+	function Add_Record($fam_Str, $sLuStr, $sErrStr) {
+
+		$sLuStr .= "\n" . $sErrStr;
+
+		$numlines1 = $this->num_lines_in_fpdf_cell(90,$fam_Str);
+		$numlines2 = $this->num_lines_in_fpdf_cell(90,$sLuStr);
+
+		if ($numlines1 > $numlines2)
+			$numlines = $numlines1;
+		else
+			$numlines = $numlines2;
+
 		$this->Check_Lines($numlines);
 
 		$_PosX = $this->_Margin_Left;
@@ -94,9 +155,9 @@ class PDF_AddressReport extends ChurchInfoReport {
 
 		$_PosX += 100;
 		$this->SetXY($_PosX, $_PosY);
-		$this->MultiCell(90, 5, $USPS_Str, 0, 'L');
+		$this->MultiCell(90, 5, $sLuStr, 0, 'L');
 
-		$this->_CurLine += $numlines;
+		$this->_CurLine += $numlines + 1;
 	}
 }
 
@@ -133,12 +194,6 @@ $rsFamilies = RunQuery($sSQL);
 while ($aRow = mysql_fetch_array($rsFamilies)) {
 
 	extract($aRow);
-	$fam_Str  = "";
-	if(strlen($fam_Address1))
-		$fam_Str .= $fam_Address1 . "\n";
-	if(strlen($fam_Address2))
-		$fam_Str .= $fam_Address2 . "\n";
-	$fam_Str .= $fam_City . " " . $fam_State . " " . $fam_Zip;
 
 	$sSQL  = "SELECT count(lu_fam_ID) AS idexists FROM istlookup_lu ";
 	$sSQL .= "WHERE lu_fam_ID IN (" . $fam_ID . ")";
@@ -149,6 +204,8 @@ while ($aRow = mysql_fetch_array($rsFamilies)) {
 		$lu_DeliveryLine1 = $sMissing;
 		$lu_DeliveryLine2 = "";
 		$lu_LastLine = "";
+		$lu_ErrorCodes = "";
+		$lu_ErrorDesc = "";
 	} else {
 
 		$sSQL  = "SELECT * FROM istlookup_lu ";
@@ -158,19 +215,55 @@ while ($aRow = mysql_fetch_array($rsFamilies)) {
 
 	}
 
+	// This check alows cities like Coeur d'Alene ID to be accepted also as Coeur d Alene ID
+	$lu_LastLine = str_replace("'"," ",$lu_LastLine);
+	$fam_City = str_replace("'"," ",$fam_City);		
+
+	// This may not be the best way to handle multiple line addresses
+	if (strtoupper($fam_Address2) == strtoupper($lu_DeliveryLine1)) {
+		$lu_DeliveryLine1 = $fam_Address1;
+		$lu_DeliveryLine2 = $fam_Address2;
+	}
+
+	$fam_Str  = "";
+	if(strlen($fam_Address1))
+		$fam_Str .= $fam_Address1 . "\n";
+	if(strlen($fam_Address2))
+		$fam_Str .= $fam_Address2 . "\n";
+	$fam_Str .= $fam_City . " " . $fam_State . " " . $fam_Zip;
+
+
 	$lu_Str = "";
+	$lu_ErrStr = "";
 	if(strlen($lu_DeliveryLine1))
 		$lu_Str .= $lu_DeliveryLine1 . "\n";
 	if(strlen($lu_DeliveryLine2))
 		$lu_Str .= $lu_DeliveryLine2 . "\n";
 	$lu_Str .= $lu_LastLine;
 
-	if (strtoupper($fam_Str) != strtoupper($lu_Str)){
+	$lu_Str = strtoupper($lu_Str);
+
+	if (strtoupper($fam_Str) == $lu_Str) { // Filter nuisance error messages
+		if ($lu_ErrorCodes == "10" ||
+		    $lu_ErrorCodes == "06" ||
+			$lu_ErrorCodes == "14"   ){
+			$lu_ErrorCodes = "";
+		}
+	}
+
+	if(strlen($lu_ErrorCodes)){
+		if($lu_ErrorCodes != "x1x2"){ // Filter error messages associated with subscribing to
+									  // CorrectAddress instead of CorrectAddress with Addons
+			$lu_ErrStr = $lu_ErrorCodes . " " . $lu_ErrorDesc;
+		}
+	}
+
+	if ((strtoupper($fam_Str) != $lu_Str) || strlen($lu_ErrStr) ) {
 		// Print both addresses if they don't match exactly
 
 		$fam_Str = $fam_Name . "\n" . $fam_Str;
 		$lu_Str = "Intelligent Search Technology, Ltd. Response\n" . $lu_Str;
-		$pdf->Add_Record($fam_Str, $lu_Str);
+		$pdf->Add_Record($fam_Str, $lu_Str, $lu_ErrStr);
 	}
 }
 

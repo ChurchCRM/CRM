@@ -61,6 +61,7 @@ class ISTAddressLookup {
 	function GetReturnCode ()			{ return $this->ReturnCode; }
 	function GetReturnCodes ()			{ return $this->ReturnCodes; }
 	function GetErrorCodes ()			{ return $this->ErrorCodes; }
+	function GetErrorDesc ()			{ return $this->ErrorDesc; }
 	function GetSearchesLeft ()			{ return $this->SearchesLeft; }
 
 	function SetAddress ($address1, $address2, $city, $state) {
@@ -241,18 +242,18 @@ class ISTAddressLookup {
 			$this->ErrorDesc		= XMLparseIST($response,"ErrorDesc");
 			$this->SearchesLeft		= XMLparseIST($response,"SearchesLeft");
 
-			if(strlen(XMLparseIST($response,"ErrorCodes"))){
-				if (XMLparseIST($response,"ErrorCodes") != "x1x2") {
-					$this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorCodes");
-					$this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorDesc");
-				}
-			} 
-			if (XMLparseIST($response,"ReturnCodes") > 1) {	
-				$this->DeliveryLine1 .= " Multiple matches.  Unable to determine proper match.";
-			}
-			if (XMLparseIST($response,"ReturnCodes") < 1) {
-				$this->DeliveryLine1 .= " No match found.";
-			}
+//			if(strlen(XMLparseIST($response,"ErrorCodes"))){
+//				if (XMLparseIST($response,"ErrorCodes") != "x1x2") {
+//					$this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorCodes");
+//					$this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorDesc");
+//				}
+//			} 
+//			if (XMLparseIST($response,"ReturnCodes") > 1) {	
+//				$this->DeliveryLine1 .= " Multiple matches.  Unable to determine proper match.";
+//			}
+//			if (XMLparseIST($response,"ReturnCodes") < 1) {
+//				$this->DeliveryLine1 .= " No match found.";
+//			}
 		}
 	}
 }
@@ -284,7 +285,22 @@ if(strlen($sISTusername) && strlen($sISTpassword)) {
 
 }
 
-if ($myISTReturnCode != "0") {
+if ($myISTReturnCode == "4") {
+
+	echo "<br>";
+	echo "getAccountInfo ReturnCode = " . $myISTReturnCode . "<br><br>";
+
+	echo "The Intelligent Search Technology, Ltd. XML web service is temporarily unavailable. ";
+	echo "Please try again in 30 minutes. <br><br>";
+
+
+	echo "You may follow the URL below to log in and manage your Intelligent Search ";
+	echo "Technology account settings.  This link may also provide information pertaining to ";
+	echo "this service disruption.<br><br>";
+
+	echo "<a href=\"https://www.name-searching.com/CaddressASP\">" . gettext("https://www.name-searching.com/CaddressASP") . "</a><br><br>";
+
+} elseif ($myISTReturnCode != "0") {
 
 	echo "<br>";
 	echo "getAccountInfo ReturnCode = " . $myISTReturnCode . "<br>";
@@ -470,6 +486,10 @@ if ($myISTReturnCode != "0") {
 		while ($aRow = mysql_fetch_array($rsResult)) {
 
 			extract($aRow);
+			if (strlen($fam_Address2)) {
+				$fam_Address1 = $fam_Address2;
+				$fam_Address2 = "";				
+			}
 			echo "Sent: " . $fam_Address1 . " " . $fam_Address2 . " ";
 			echo $fam_City . " " . $fam_State;
 			echo "<br>";
@@ -495,18 +515,22 @@ if ($myISTReturnCode != "0") {
 			$lu_CarrierRoute = MySQLquote(addslashes($myISTAddressLookup->GetCarrierRoute()));
 			$lu_ReturnCodes = MySQLquote(addslashes($myISTAddressLookup->GetReturnCodes()));
 			$lu_ErrorCodes = MySQLquote(addslashes($myISTAddressLookup->GetErrorCodes()));
+			$lu_ErrorDesc = MySQLquote(addslashes($myISTAddressLookup->GetErrorDesc()));
 
 			//echo "<br>" . $lu_ErrorCodes;
-
-			echo "Received: " . $myISTAddressLookup->GetAddress1() . " ";
-			echo $myISTAddressLookup->GetAddress2() . " ";
-			echo $myISTAddressLookup->GetLastLine() . "<br><br>";
 
 			$iSearchesLeft = $myISTAddressLookup->GetSearchesLeft();
 			if (!is_numeric($iSearchesLeft))
 				$iSearchesLeft = 0;
 			else
 				$iSearchesLeft = intval($iSearchesLeft);
+
+			echo "Received: " . $myISTAddressLookup->GetAddress1() . " ";
+			echo $myISTAddressLookup->GetAddress2() . " ";
+			echo $myISTAddressLookup->GetLastLine() . " " . $iSearchesLeft;
+			if ($lu_ErrorDesc != "NULL")
+				echo " " . $myISTAddressLookup->GetErrorDesc();
+			echo "<br><br>";
 
 			if ($lu_ErrorCodes != "'xx'") {
 			// Error code xx is one of the following
@@ -518,14 +542,16 @@ if ($myISTReturnCode != "0") {
 			$sSQL .= "  lu_fam_ID,  lu_LookupDateTime,  lu_DeliveryLine1, ";
 			$sSQL .= "  lu_DeliveryLine2,  lu_City,  lu_State,  lu_ZipAddon, ";
 			$sSQL .= "  lu_Zip,  lu_Addon,  lu_LOTNumber,  lu_DPCCheckdigit,  lu_RecordType, ";
-			$sSQL .= "  lu_LastLine,  lu_CarrierRoute,  lu_ReturnCodes,  lu_ErrorCodes) ";
+			$sSQL .= "  lu_LastLine,  lu_CarrierRoute,  lu_ReturnCodes,  lu_ErrorCodes, ";
+			$sSQL .= "  lu_ErrorDesc) ";
 			$sSQL .= "VALUES( ";
 			$sSQL .= " $lu_fam_ID, $lu_LookupDateTime, $lu_DeliveryLine1, ";
 			$sSQL .= " $lu_DeliveryLine2, $lu_City, $lu_State, $lu_ZipAddon, ";
 			$sSQL .= " $lu_Zip, $lu_Addon, $lu_LOTNumber, $lu_DPCCheckdigit, $lu_RecordType, ";
-			$sSQL .= " $lu_LastLine, $lu_CarrierRoute, $lu_ReturnCodes, $lu_ErrorCodes) ";
+			$sSQL .= " $lu_LastLine, $lu_CarrierRoute, $lu_ReturnCodes, $lu_ErrorCodes, ";
+			$sSQL .= " $lu_ErrorDesc) ";
 
-			//echo $sSQL;
+			//echo $sSQL . "<br>";
 
 			RunQuery($sSQL);
 			}
@@ -574,6 +600,7 @@ if ($myISTReturnCode != "0") {
 										// total cycle is about 20 seconds per page reload
 				?><meta http-equiv="refresh" content="2;URL=<?php 
 				echo $_SERVER['PHP_SELF'] . "?DoLookup=Perform+Lookups";?>" /><?php
+				$bNormalFinish = FALSE;
 				break;
 			}			
 
