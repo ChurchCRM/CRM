@@ -32,9 +32,11 @@ $sRootPath="/churchinfo";
 //
 
 // Establish the database connection
-$cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD);
-mysql_select_db($sDATABASE);
+$cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD) 
+	or die ('Cannot connect to the MySQL database because: ' . mysql_error());
 
+mysql_select_db($sDATABASE) 
+	or die ('Cannot select the MySQL database because: ' . mysql_error());
 
 // Read values from config table into local variables
 // **************************************************
