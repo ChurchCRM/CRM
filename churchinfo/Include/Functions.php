@@ -1114,15 +1114,21 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
 
 		// Handler for season (drop-down selection)
 		case 7:
-			?>
-			<select name="<?php echo $fieldname; ?>">
-				<option value="none"><?php echo gettext("Select Season"); ?></option>
-				<option value="winter" <?php if ($data == 'winter') { echo "selected"; } ?>><?php echo gettext("Winter"); ?></option>
-				<option value="spring" <?php if ($data == 'spring') { echo "selected"; } ?>><?php echo gettext("Spring"); ?></option>
-				<option value="summer" <?php if ($data == 'summer') { echo "selected"; } ?>><?php echo gettext("Summer"); ?></option>
-				<option value="fall" <?php if ($data == 'fall') { echo "selected"; } ?>><?php echo gettext("Fall"); ?></option>
-			</select>
-			<?php
+			echo "<select name=\"$fieldname\">";
+			echo "	<option value=\"none\">" . gettext("Select Season") . "</option>";
+			echo "	<option value=\"winter\"";
+			if ($data == 'winter') { echo " selected"; }
+			echo ">" . gettext("Winter") . "</option>";
+			echo "	<option value=\"spring\"";
+			if ($data == 'spring') { echo " selected"; }
+			echo ">" . gettext("Spring") . "</option>";
+			echo "	<option value=\"summer\"";
+			if ($data == 'summer') { echo "selected"; }
+			echo ">" . gettext("Summer") . "</option>";
+			echo "	<option value=\"fall\"";
+			if ($data == 'fall') { echo " selected"; }
+			echo ">" . gettext("Fall") . "</option>";
+			echo "</select>";
 			break;
 
 		// Handler for integer numbers
@@ -1706,74 +1712,58 @@ function FontSelect($fieldname)
         }
     }
     
-    ?>
-		<tr>
-			<td class="LabelColumn"><?php echo gettext("Font:");?></td>
-			<td class="TextColumn">
-				<select name="<? echo $fieldname ?>">
-                <?
-                foreach($fontnames as $n)
-                {
-                    $sel = "";
-                    if($_COOKIE[$fieldname] == $n) 
-                        $sel = " selected";
-					echo "<option value=\"".$n."\"".$sel.">".$n."</option>";
-                }
-                ?>
-				</select>
-			</td>
-		</tr>
-    
-    <?
-    
+	echo "<tr>";
+	echo "<td class=\"LabelColumn\">" . gettext("Font:") . "</td>";
+	echo "<td class=\"TextColumn\">";
+	echo "<select name=\"$fieldname\">";
+    foreach($fontnames as $n)
+    {
+        $sel = "";
+        if($_COOKIE[$fieldname] == $n) 
+            $sel = " selected";
+		echo "<option value=\"".$n."\"".$sel.">".$n."</option>";
+	}
+	echo "</select>";
+	echo "</td>";
+	echo "</tr>";
 }
 
 function FontSizeSelect($fieldname)
 {
     $sizes = array("default", 6, 7, 8, 9, 10, 11, 12, 14, 16, 18);
-    ?>
-		<tr>
-			<td class="LabelColumn"><?php echo gettext("Font Size:");?></td>
-			<td class="TextColumn">
-				<select name="<? echo $fieldname ?>">
-                <?
-                foreach($sizes as $s)
-                {
-                    $sel = "";
-                    if($_COOKIE[$fieldname] == $s) 
-                        $sel = " selected";
-					echo "<option value=\"".$s."\"".$sel.">".$s."</option>";
-                }
-                ?>
-				</select>
-			</td>
-		</tr>
-    
-    <?
-    
+	echo "<tr>";
+	echo "<td class=\"LabelColumn\"> " . gettext("Font Size:") . "</td>";
+	echo "<td class=\"TextColumn\">";
+	echo "<select name=\"$fieldname\">";
+    foreach($sizes as $s)
+    {
+        $sel = "";
+        if($_COOKIE[$fieldname] == $s) 
+            $sel = " selected";
+		echo "<option value=\"".$s."\"".$sel.">".$s."</option>";
+    }
+	echo "</select>";
+	echo "</td>";
+	echo "</tr>";
 }
 
 function LabelSelect($fieldname)
 {
     $labels = array("Tractor", "5160", "5161", "5162", "5163", "5164", "8600", "L7163");
-    ?>
-		<tr>
-			<td class="LabelColumn"><?php echo gettext("Label Type:");?></td>
-			<td class="TextColumn">
-				<select name="<? echo $fieldname ?>">
-                    <?
-                    foreach($labels as $l)
-                    {
-                        $sel = "";
-                        if($_COOKIE[$fieldname] == $l) 
-                            $sel = " selected";
-                        echo "<option value=\"".$l."\"".$sel.">".$l."</option>";
-                    }
-                    ?>
-				</select>
-			</td>
-		</tr>
-    <?
+	echo "<tr>";
+	echo "<td class=\"LabelColumn\">" . gettext("Label Type:") . "</td>";
+	echo "<td class=\"TextColumn\">";
+	echo "<select name=\"$fieldname\">";
+    foreach($labels as $l)
+    {
+        $sel = "";
+        if($_COOKIE[$fieldname] == $l) 
+            $sel = " selected";
+        echo "<option value=\"".$l."\"".$sel.">".$l."</option>";
+    }
+	echo "</select>";
+	echo "</td>";
+	echo "</tr>";
 }
 
 // Added for AddEvent.php
@@ -1906,5 +1896,4 @@ function MySQLquote ($sfield)
 			return "'" . $sfield . "'";
 	}
 }
-
 ?>
