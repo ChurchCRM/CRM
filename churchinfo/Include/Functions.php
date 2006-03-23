@@ -747,6 +747,185 @@ function FormatAge($Month,$Day,$Year,$Flags)
 		return ( gettext("Unknown"));
 }
 
+function GroupBySalutation($famID, $mode) {
+// Function to place the name(s) on a label when grouping multiple
+// family members on the same label.
+// Make it put the name if there is only one adult in the family.
+// Make it put two first names and the last name when there are exactly
+// two adults in the family (e.g. "Nathaniel & Jeanette Brooks")
+// Make it put two whole names where there are exactly two adults with 
+// different names (e.g. "Doug Philbrook & Karen Andrews")
+// When there are zero adults or more than two adults in the family just 
+// use the family name.  This is helpful for sending newsletters to places
+// such as "All Souls Church"
+// Simalar logic is applied if mailing to Sunday School children.
+
+	// Read values from config table into local variables
+	// we will use directory settings to determine Adults and Youth
+	// sDirRoleHead, and sDirRoleSpouse are assumed to be adults
+	// sDirRoleChild is assumed to be children
+	// **************************************************
+	$sSQL  = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value ";
+	$sSQL .= "FROM config_cfg WHERE cfg_section='General'";
+	$rsConfig = RunQuery($sSQL);
+	if ($rsConfig) {
+		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+			$$cfg_name = $cfg_value;
+		}
+	}
+
+	$sAdultRole = $sDirRoleHead . "," . $sDirRoleSpouse;
+	$sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
+
+	$sChildRole  = trim($sDirRoleChild, " ,\t\n\r\0\x0B");
+
+	$aAdultRole = explode(",", $sAdultRole);
+	$aChildRole = explode(",", $sChildRole);
+
+	array_unique($aAdultRole);		sort($aAdultRole);
+	array_unique($aChildRole);		sort($aChildRole);
+
+	$sSQL = "SELECT * FROM family_fam WHERE fam_ID=" . $famID;
+	$rsFamInfo = RunQuery($sSQL);
+
+	if (mysql_num_rows ($rsFamInfo) == 0)
+		return "Invalid Family" . $famID;
+
+	$aFam = mysql_fetch_array($rsFamInfo);
+	extract ($aFam);
+
+	// Only get family members that are in the cart
+	$sSQL = "SELECT * FROM person_per WHERE per_fam_ID=" . $famID . " AND per_ID IN (" 
+	. ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY per_LastName, per_FirstName";
+
+	$rsMembers = RunQuery($sSQL);
+	$numMembers = mysql_num_rows ($rsMembers);
+
+	// Initialize to "Nothing to return"  If this value is returned
+	// the calling program knows to skip this mode and try the next
+	$sName = "Nothing to return";
+
+	$numAdult = 0;
+	$numChild = 0;
+	$numOther = 0;
+
+	for ($ind = 0; $ind < $numMembers; $ind++) {
+		$member = mysql_fetch_array($rsMembers);
+		extract ($member);
+
+		$bAdult = FALSE;
+		$bChild = FALSE;
+
+		foreach ($aAdultRole as $value) {
+			if ($per_fmr_ID == $value) {
+				$aAdult[$numAdult++] = $member;
+				$bAdult = TRUE;
+			}
+		}
+
+		if (!$bAdult) {
+			foreach ($aChildRole as $value) {
+				if ($per_fmr_ID == $value) {
+					$aChild[$numChild++] = $member;
+					$bChild = TRUE;
+				}
+			}			
+		}
+
+		if (!$bAdult && !$bChild) {
+			$aOther[$numOther++] = $member;
+		}
+
+	}
+
+	if ($mode == "adult") { // Generate Salutation for Adults in family
+		if ($numAdult == 1) {
+			extract ($aAdult[0]);
+			$sName = $per_FirstName . " " . $per_LastName;
+		} else if ($numAdult == 2) {
+			$firstMember = mysql_fetch_array($rsMembers);
+			extract ($aAdult[0]);
+			$firstFirstName = $per_FirstName;
+			$firstLastName = $per_LastName;
+			$secondMember = mysql_fetch_array($rsMembers);
+			extract ($aAdult[1]);
+			$secondFirstName = $per_FirstName;
+			$secondLastName = $per_LastName;
+			if ($firstLastName == $secondLastName) {
+				$sName = $firstFirstName . " & " . $secondFirstName . " " . $firstLastName;
+			} else {
+				$sName = $firstFirstName . " " . $firstLastName . " & " . 
+							$secondFirstName . " " . $secondLastName;
+			}
+		} else if ($numAdult > 2) {
+			$sName = $fam_Name;
+		} else if ($numOther > 0) {
+			$sName = $fam_Name;
+		} // end if ($numAdult ...)
+	}
+
+	if ($mode == "child") { // Generate Salutation for youth in family
+		if ($numYouth > 0) {
+			$firstMember = mysql_fetch_array($rsMembers);
+			extract ($aYouth[0]);
+			$firstFirstName = $per_FirstName;
+			$firstLastName  = $per_LastName;
+		}
+		if ($numYouth > 1) {
+			$secondMember = mysql_fetch_array($rsMembers);
+			extract ($aYouth[1]);
+			$secondFirstName = $per_FirstName;
+			$secondLastName = $per_LastName;
+		}
+		if ($numYouth > 2) {
+			$thirdMember = mysql_fetch_array($rsMembers);
+			extract ($aYouth[2]);
+			$thirdFirstName = $per_FirstName;
+			$thirdLastName = $per_LastName;
+		}
+		if ($numYouth > 3) {
+			$fourthMember = mysql_fetch_array($rsMembers);
+			extract ($aYouth[3]);
+			$fourthFirstName = $per_FirstName;
+			$fourthLastName = $per_LastName;
+		}
+		if ($numYouth == 1) {
+			$sName = $per_FirstName . " " . $per_LastName;
+		}
+		if ($numYouth == 2) {
+			if ($firstLastName == $secondLastName) {
+				$sName = $firstFirstName . " & " . $secondFirstName . " " . $firstLastName;
+			} else {
+				$sName = $firstFirstName . " " . $firstLastName . " & " . 
+								$secondFirstName . " " . $secondLastName;
+			}
+		}
+		if ($numYouth == 3) {
+			$sName = $firstFirstName . ", " . $secondFirstName . " & " . 
+										$thirdFirstName . " " . $fam_Name;
+		}
+		if ($numYouth == 4) {
+			$sName = $firstFirstName . ", " . $secondFirstName . ", " . 
+						$thirdFirstName . " & " . $fourthFirstName . " " . $fam_Name;
+		}
+		if ($numYouth > 4) {
+			$sName = "The " . $fam_Name . " Family";
+		}
+	}
+
+	if ($mode == "other") { // Misc salutations
+		if ($numOther)
+			$sName = $fam_Name;
+	}
+
+	if (strlen($sName) > 33){
+		return (substr($sName,0,33));
+	} else {
+		return ($sName);
+	}
+}
+
+
 // Returns a string of a person's full name, formatted as specified by $Style
 // $Style = 0  :  "Title FirstName MiddleName LastName, Suffix"
 // $Style = 1  :  "Title FirstName MiddleInitial. LastName, Suffix"

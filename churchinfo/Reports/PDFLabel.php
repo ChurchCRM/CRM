@@ -230,27 +230,59 @@ function GenerateLabels(&$pdf, $mode, $bOnlyComplete = false)
 {
 	// $mode is "indiv" or "fam"
 
-	$sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY fam_Zip";
+	$sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY fam_Zip, per_LastName, per_FirstName";
 	$rsCartItems = RunQuery($sSQL);
 
 	while ($aRow = mysql_fetch_array($rsCartItems))
 	{
+
+	if ($mode == "fam"){
+		$iLoopCount = 3;
+	} else {
+		$iLoopCount = 1;
+	}
+
+	for ($iLoopIndex = 0; $iLoopIndex < $iLoopCount; $iLoopIndex++)
+	{
+		if ($iLoopCount == 1){
+			$sSubMode = "indiv";
+		} else {
+			if ($iLoopIndex == 0)
+				$sSubMode = "adult";
+			elseif ($iLoopIndex == 1)
+				$sSubMode = "child";
+			else
+				$sSubMode = "other";
+		}
+
+		// It's possible (but unlikely) that three labels can be generated for a
+		// family even when they are grouped.
+		// At most one label for all adults
+		// At most one label for all Children
+		// At most one label for anybody else (for example, another Church as a family)
+		$sUniqueKey = $aRow['per_fam_ID'] . $sSubMode;
+
 		$sRowClass = AlternateRowStyle($sRowClass);
 
-		if ($aRow['per_fam_ID'] == 0) { // Person is a member with no family assigned
-			// echo "<p>No family assigned for " . $aRow['per_FirstName'] . " " . $aRow['per_LastName'] . "</p>" ;
+		if (($aRow['per_fam_ID'] == 0) && ($mode == "fam")) { 
+			// Skip people with no family ID
 			continue;
 		}
 
+		// Skip if mode is fam and we have already printed labels
+		if ($didFam[$sUniqueKey] && ($mode == "fam"))
+			continue;
+
+		$didFam[$sUniqueKey] = 1;
+
 		if ($mode == "fam")
-			$sName = $pdf->MakeSalutation ($aRow['per_fam_ID']);
+			$sName = GroupBySalutation($aRow['per_fam_ID'], $sSubMode);
 		else
 			$sName = FormatFullName($aRow['per_Title'], $aRow['per_FirstName'], "", $aRow['per_LastName'], $aRow['per_Suffix'], 1);
 
-		if ($didFam[$aRow['per_fam_ID']] && ($mode == "fam"))
+		// Bail out if nothing to print
+		if ($sName == "Nothing to return")
 			continue;
-
-		$didFam[$aRow['per_fam_ID']] = 1;
 
 		SelectWhichAddress($sAddress1, $sAddress2, $aRow['per_Address1'], $aRow['per_Address2'], $aRow['fam_Address1'], $aRow['fam_Address2'], false);
 
@@ -267,7 +299,8 @@ function GenerateLabels(&$pdf, $mode, $bOnlyComplete = false)
 			$sLabelList[]=array('Name'=>$sName, 'Address'=>$sAddress,'City'=>$sCity,'State'=>$sState,'Zip'=>$sZip);
 ////////////////////////$pdf->Add_PDF_Label(sprintf("%s\n%s\n%s, %s %s", $sName, $sAddress, $sCity, $sState, $sZip));
 		}
-	}
+	} // end of for loop
+	} // end of while loop
 //
 // now sort the label list by presort bundle definitions
 //
@@ -280,6 +313,14 @@ while(list($i,$sLT)=each($zipLabels)){
 
 }
 
+
+// Read in report settings from database
+$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+if ($rsConfig) {
+	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		$pdf->$cfg_name = $cfg_value;
+	}
+}
 
 $startcol = FilterInput($_GET["startcol"],'int');
 if ($startcol < 1) $startcol = 1;
