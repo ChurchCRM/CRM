@@ -120,19 +120,19 @@ while (list ($per_Email, $fam_Email) = mysql_fetch_row($rsEmailList))
 	if ($sEmail)
 	{
 		// Add email only if email address is not already in string
-		if (!stristr($sEmailLink, $sEmail."," ))
-			$sEmailLink .= $sEmail . ",";
+		if (!stristr($sEmailLink, $sEmail.";" ))
+			$sEmailLink .= $sEmail . ";";
 	}
 }
 if ($sEmailLink)
 {
 	// Add default email if default email has been set and is not already in string
-	if ($sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress."," ))
-		$sEmailLink .= $sToEmailAddress . ",";
+	if ($sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress.";" ))
+		$sEmailLink .= $sToEmailAddress . ";";
 	$sEmailLink = substr($sEmailLink,0,-1);	// Remove trailing comma
 	// Display link
 	echo " | <a class=\"SmallText\" href=\"mailto:".$sEmailLink."\">".gettext("Email Group")."</a>";
-	echo " | <a class=\"SmallText\" href=\"mailto:?&bcc=".$sEmailLink."\">".gettext("Email (BCC)")."</a>";
+	echo " | <a class=\"SmallText\" href=\"mailto:?bcc=".$sEmailLink."\">".gettext("Email (BCC)")."</a>";
 }
 
 ?>
