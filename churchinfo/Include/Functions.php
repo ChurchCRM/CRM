@@ -776,14 +776,14 @@ function GroupBySalutation($famID, $mode) {
 
 	$sAdultRole = $sDirRoleHead . "," . $sDirRoleSpouse;
 	$sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
-
-	$sChildRole  = trim($sDirRoleChild, " ,\t\n\r\0\x0B");
-
 	$aAdultRole = explode(",", $sAdultRole);
-	$aChildRole = explode(",", $sChildRole);
+	$aAdultRole = array_unique($aAdultRole);		
+	sort($aAdultRole);
 
-	array_unique($aAdultRole);		sort($aAdultRole);
-	array_unique($aChildRole);		sort($aChildRole);
+	$sChildRole = trim($sDirRoleChild, " ,\t\n\r\0\x0B");
+	$aChildRole = explode(",", $sChildRole);
+	$aChildRole = array_unique($aChildRole);		
+	sort($aChildRole);
 
 	$sSQL = "SELECT * FROM family_fam WHERE fam_ID=" . $famID;
 	$rsFamInfo = RunQuery($sSQL);
@@ -829,7 +829,7 @@ function GroupBySalutation($famID, $mode) {
 					$aChild[$numChild++] = $member;
 					$bChild = TRUE;
 				}
-			}			
+			}
 		}
 
 		if (!$bAdult && !$bChild) {
@@ -865,34 +865,34 @@ function GroupBySalutation($famID, $mode) {
 	}
 
 	if ($mode == "child") { // Generate Salutation for youth in family
-		if ($numYouth > 0) {
+		if ($numChild > 0) {
 			$firstMember = mysql_fetch_array($rsMembers);
-			extract ($aYouth[0]);
+			extract ($aChild[0]);
 			$firstFirstName = $per_FirstName;
 			$firstLastName  = $per_LastName;
 		}
-		if ($numYouth > 1) {
+		if ($numChild > 1) {
 			$secondMember = mysql_fetch_array($rsMembers);
-			extract ($aYouth[1]);
+			extract ($aChild[1]);
 			$secondFirstName = $per_FirstName;
 			$secondLastName = $per_LastName;
 		}
-		if ($numYouth > 2) {
+		if ($numChild > 2) {
 			$thirdMember = mysql_fetch_array($rsMembers);
-			extract ($aYouth[2]);
+			extract ($aChild[2]);
 			$thirdFirstName = $per_FirstName;
 			$thirdLastName = $per_LastName;
 		}
-		if ($numYouth > 3) {
+		if ($numChild > 3) {
 			$fourthMember = mysql_fetch_array($rsMembers);
-			extract ($aYouth[3]);
+			extract ($aChild[3]);
 			$fourthFirstName = $per_FirstName;
 			$fourthLastName = $per_LastName;
 		}
-		if ($numYouth == 1) {
+		if ($numChild == 1) {
 			$sName = $per_FirstName . " " . $per_LastName;
 		}
-		if ($numYouth == 2) {
+		if ($numChild == 2) {
 			if ($firstLastName == $secondLastName) {
 				$sName = $firstFirstName . " & " . $secondFirstName . " " . $firstLastName;
 			} else {
@@ -900,15 +900,15 @@ function GroupBySalutation($famID, $mode) {
 								$secondFirstName . " " . $secondLastName;
 			}
 		}
-		if ($numYouth == 3) {
+		if ($numChild == 3) {
 			$sName = $firstFirstName . ", " . $secondFirstName . " & " . 
 										$thirdFirstName . " " . $fam_Name;
 		}
-		if ($numYouth == 4) {
+		if ($numChild == 4) {
 			$sName = $firstFirstName . ", " . $secondFirstName . ", " . 
 						$thirdFirstName . " & " . $fourthFirstName . " " . $fam_Name;
 		}
-		if ($numYouth > 4) {
+		if ($numChild > 4) {
 			$sName = "The " . $fam_Name . " Family";
 		}
 	}

@@ -70,6 +70,7 @@ $db=0;
 // 80
 
 $n = count($inLabels);
+$nTotalLabels = $n;
 if($db) echo "{$n} Labels passed to bundle function....<br>";
 
 for($i=0; $i < $n; $i++) $Zips[$i] = substr($inLabels[$i]['Zip'],0,5);
@@ -90,7 +91,8 @@ $nz5=0;
 while (list($z,$zc) = each($ZipCounts)){
 	if($zc >= 10){
 		$NoteText = array('Note'=>"******* Presort ZIP-5 ".$z);
-		$outList[]=array_merge(array('Name'=>" ".$zc." Labels in Bundle"),$NoteText);
+		$AddressText = array('Address'=>" ".$nTotalLabels." Total Labels");
+		$outList[]=array_merge(array('Name'=>" ".$zc." Labels in Bundle"),$NoteText,$AddressText);
 		for($i=0; $i<$n; $i++){
 			if(substr($inLabels[$i]['Zip'],0,5)==$z) {
 				$outList[] = array_merge($inLabels[$i], $NoteText);
@@ -136,7 +138,8 @@ $nz3=0;
 while (list($z,$zc) = each($ZipCounts)){
 	if($zc >= 10){
 		$NoteText = array('Note'=>"******* Presort ZIP-3 ".$z);
-		$outList[]=array_merge(array('Name'=>" ".$zc." Labels in Bundle"),$NoteText);
+		$AddressText = array('Address'=>" ".$nTotalLabels." Total Labels");
+		$outList[]=array_merge(array('Name'=>" ".$zc." Labels in Bundle"),$NoteText,$AddressText);
 		for($i=0; $i<$n; $i++){
 			if(substr($inLabels[$i]['Zip'],0,3)==$z) {
 				$outList[] = array_merge($inLabels[$i], $NoteText);
@@ -178,7 +181,8 @@ $nadc=0;
 while (list($z,$zc) = each($ZipCounts)){
 	if($zc >= 10){
 		$NoteText = array('Note'=>"******* Presort ADC ".$z);
-		$outList[]=array_merge(array('Name'=>" ".$zc." Labels in Bundle"),$NoteText);
+		$AddressText = array('Address'=>" ".$nTotalLabels." Total Labels");
+		$outList[]=array_merge(array('Name'=>" ".$zc." Labels in Bundle"),$NoteText,$AddressText);
 		for($i=0; $i<$n; $i++){
 			if($adc[substr($inLabels[$i]['Zip'],0,3)]==$z) {
 				$outList[] = array_merge($inLabels[$i], $NoteText);
@@ -201,9 +205,11 @@ $inLabels = $inLabels2;
 $nmadc=0;
 unset($Zips);
 $n = count($inLabels);
+$zc = $n;
 if($db) echo "...pass 4 Mixed ADC..{$n} labels to process\r\n";
 $NoteText = array('Note'=>"******* Presort MIXED ADC ");
-$outList[]=array_merge(array('Name'=>" ".$zc." Labels in Bundle"),$NoteText);
+$AddressText = array('Address'=>" ".$nTotalLabels." Total Labels");
+$outList[]=array_merge(array('Name'=>" ".$zc." Labels in Bundle"),$NoteText,$AddressText);
 for($i=0; $i<$n; $i++){
 	if($db) echo "$i.";
 	$outList[] = array_merge($inLabels[$i], $NoteText);
@@ -258,8 +264,8 @@ function GenerateLabels(&$pdf, $mode, $bOnlyComplete = false)
 		// It's possible (but unlikely) that three labels can be generated for a
 		// family even when they are grouped.
 		// At most one label for all adults
-		// At most one label for all Children
-		// At most one label for anybody else (for example, another Church as a family)
+		// At most one label for all children
+		// At most one label for all others (for example, another church as a family)
 		$sUniqueKey = $aRow['per_fam_ID'] . $sSubMode;
 
 		$sRowClass = AlternateRowStyle($sRowClass);
@@ -297,7 +303,6 @@ function GenerateLabels(&$pdf, $mode, $bOnlyComplete = false)
 		if (!$bOnlyComplete || ( (strlen($sAddress)) && strlen($sCity) && strlen($sState) && strlen($sZip) ) )
 		{
 			$sLabelList[]=array('Name'=>$sName, 'Address'=>$sAddress,'City'=>$sCity,'State'=>$sState,'Zip'=>$sZip);
-////////////////////////$pdf->Add_PDF_Label(sprintf("%s\n%s\n%s, %s %s", $sName, $sAddress, $sCity, $sState, $sZip));
 		}
 	} // end of for loop
 	} // end of while loop
@@ -305,6 +310,8 @@ function GenerateLabels(&$pdf, $mode, $bOnlyComplete = false)
 // now sort the label list by presort bundle definitions
 //
 
+
+$numLabels = count($sLabelList);
 $zipLabels = ZipBundleSort($sLabelList);
 while(list($i,$sLT)=each($zipLabels)){
 	$pdf->Add_PDF_Label(sprintf("%s\n%s\n%s\n%s, %s %s", $sLT['Note'],$sLT['Name'],$sLT['Address'],$sLT['City'], $sLT['State'],$sLT['Zip']));
