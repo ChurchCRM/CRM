@@ -34,7 +34,7 @@ if ($_POST['save']){
 		// Filter Input
 		if ($id == '88')	// Special handling of header value so HTML doesn't get removed
 			$value = html_entity_decode($new_value[$id]);
-		elseif ($current_type == 'text')
+		elseif ($current_type == 'text' || $current_type == "textarea")
 			$value = FilterInput($new_value[$id]);
 		elseif ($current_type == 'number')
 			$value = FilterInput($new_value[$id],"float");
@@ -91,6 +91,10 @@ while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_toolti
 		echo "<td class=TextColumnWithBottomBorder>
 			<input type=text size=30 maxlength=255 name='new_value[$cfg_id]'
 			value='".htmlspecialchars($cfg_value, ENT_QUOTES)."'></td>";
+	} elseif ($cfg_type == 'textarea') {
+		echo "<td class=TextColumnWithBottomBorder>
+			<textarea rows=4 cols=30 name='new_value[$cfg_id]'>"
+			.htmlspecialchars($cfg_value, ENT_QUOTES)."</textarea></td>";
 	} elseif ($cfg_type == 'number' || $cfg_type == 'date')	{
 		echo "<td class=TextColumnWithBottomBorder><input type=text size=15 maxlength=15 name="
 			."'new_value[$cfg_id]' value='$cfg_value'></td>";
@@ -109,7 +113,7 @@ while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_toolti
 	}
 	
 	// Default Value
-	if ($cfg_type == 'number' || $cfg_type == 'date' || $cfg_type == 'text') {
+	if ($cfg_type == 'number' || $cfg_type == 'date' || $cfg_type == 'text' || $cfg_type == 'textarea') {
 		$display_default = "";
 		// Add line breaks every 25 characters
 		for ($i=0; $i<=strlen($cfg_default)-1; $i=$i+25){

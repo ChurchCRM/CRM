@@ -562,9 +562,9 @@ CREATE TABLE IF NOT EXISTS `events_event` (
 CREATE TABLE IF NOT EXISTS `config_cfg` (
   `cfg_id` int(11) NOT NULL default '0',
   `cfg_name` varchar(50) NOT NULL default '',
-  `cfg_value` varchar(255) default NULL,
-  `cfg_type` enum('text','number','date','boolean') NOT NULL default 'text',
-  `cfg_default` varchar(255) NOT NULL default '',
+  `cfg_value` text default NULL,
+  `cfg_type` enum('text','number','date','boolean','textarea') NOT NULL default 'text',
+  `cfg_default` text NOT NULL default '',
   `cfg_tooltip` text NOT NULL,
   `cfg_section` varchar(50) NOT NULL default '',
   PRIMARY KEY  (`cfg_id`)
@@ -651,7 +651,7 @@ INSERT IGNORE INTO `config_cfg` VALUES (84, 'bHideFamilyNewsletter', '0', 'boole
 INSERT IGNORE INTO `config_cfg` VALUES (85, 'bHideWeddingDate', '0', 'boolean', '0', 'Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (86, 'bHideLatLon', '0', 'boolean', '0', 'Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (87, 'bUseDonationEnvelopes', '0', 'boolean', '0', 'Set true to enable use of donation envelopes', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (88, 'sHeader', '', 'text', '', 'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! There is a 255 character limit. Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (88, 'sHeader', '', 'textarea', '', 'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (89, 'sISTusername', 'username', 'text', 'username', 'Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.name-searching.com/CaddressASP', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (90, 'sISTpassword', '', 'text', '', 'Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.name-searching.com/CaddressASP', 'General');
 
