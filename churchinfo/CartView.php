@@ -15,6 +15,101 @@
  ******************************************************************************/
 
 // Include the function library
+
+function FontSelect($fieldname)
+{
+    global $sFPDF_PATH;
+    
+    $d = dir($sFPDF_PATH."/font/");
+    $fontnames = array();
+    $family = " ";
+    while (false !== ($entry = $d->read())) 
+    {
+        $len = strlen($entry);
+        if($len > 3){
+            if(strtoupper(substr($entry, $len-3))=='PHP')
+            { // php files only
+                $filename = substr($entry, 0, $len-4);
+                if(substr($filename, 0, strlen($family)) != $family)  
+                    $family = $filename;
+                $fontnames[] = FilenameToFontname($filename, $family);                    
+            }
+        }
+    }
+    
+	echo "<tr>";
+	echo "<td class=\"LabelColumn\">" . gettext("Font:") . "</td>";
+	echo "<td class=\"TextColumn\">";
+	echo "<select name=\"$fieldname\">";
+    foreach($fontnames as $n)
+    {
+        $sel = "";
+        if($_COOKIE[$fieldname] == $n) 
+            $sel = " selected";
+		echo "<option value=\"".$n."\"".$sel.">".$n."</option>";
+	}
+	echo "</select>";
+	echo "</td>";
+	echo "</tr>";
+}
+
+function FontSizeSelect($fieldname)
+{
+    $sizes = array("default", 6, 7, 8, 9, 10, 11, 12, 14, 16, 18);
+	echo "<tr>";
+	echo "<td class=\"LabelColumn\"> " . gettext("Font Size:") . "</td>";
+	echo "<td class=\"TextColumn\">";
+	echo "<select name=\"$fieldname\">";
+    foreach($sizes as $s)
+    {
+        $sel = "";
+        if($_COOKIE[$fieldname] == $s) 
+            $sel = " selected";
+		echo "<option value=\"".$s."\"".$sel.">".$s."</option>";
+    }
+	echo "</select>";
+	echo "</td>";
+	echo "</tr>";
+}
+
+function LabelSelect($fieldname)
+{
+    $labels = array("Tractor", "5160", "5161", "5162", "5163", "5164", "8600", "L7163");
+	echo "<tr>";
+	echo "<td class=\"LabelColumn\">" . gettext("Label Type:") . "</td>";
+	echo "<td class=\"TextColumn\">";
+	echo "<select name=\"$fieldname\">";
+    foreach($labels as $l)
+    {
+        $sel = "";
+        if($_COOKIE[$fieldname] == $l) 
+            $sel = " selected";
+        echo "<option value=\"".$l."\"".$sel.">".$l."</option>";
+    }
+	echo "</select>";
+	echo "</td>";
+	echo "</tr>";
+}
+
+function LabelGroupSelect($fieldname)
+{
+	echo "<tr><td class=\"LabelColumn\">" . gettext("Generate Labels") . "</td>";
+	echo "<td class=\"TextColumn\">";
+	echo "<input name=\"$fieldname\" type=\"radio\" value=\"indiv\" ";
+
+	if ($_COOKIE[$fieldname] != "fam")
+		echo "checked";
+	
+	echo ">" . gettext("All Individuals") . "<br>";
+	echo "<input name=\"$fieldname\" type=\"radio\" value=\"fam\" ";
+
+	if ($_COOKIE[$fieldname] == "fam")
+		echo "checked";
+
+	echo ">" . gettext("Grouped by Family") . "<br></td></tr>";
+}
+
+
 require "Include/Config.php";
 require "Include/Functions.php";
 
@@ -136,18 +231,12 @@ if (count($_SESSION['aPeopleCart']) != 0)
         <td>
     <form method="get" action="Reports/PDFLabel.php">
         <table cellpadding="4" align="center">
-                <tr>
-                        <td class="LabelColumn"><?php echo gettext("Generate Labels");?></td>
-                        <td class="TextColumn">
-                                <input name="mode" type="radio" value="indiv" checked><?php echo gettext("All Individuals");?><br>
-                                <input name="mode" type="radio" value="fam"><?php echo gettext("Grouped by Family");?><br>
-                        </td>
-                </tr>
-                <?
-                 LabelSelect("labeltype");
-                 FontSelect("labelfont");
-                 FontSizeSelect("labelfontsize");
-                 ?> 	                           
+                <?php
+				LabelGroupSelect("cartviewgroupbymode");
+				LabelSelect("cartviewlabeltype");
+				FontSelect("cartviewlabelfont");
+				FontSizeSelect("cartviewlabelfontsize");
+                ?> 	                           
                 <tr>
                         <td class="LabelColumn"><?php echo gettext("Start Row:");?></td>
                         <td class="TextColumn"><input type="text" name="startrow" id="startrow" maxlength="2" size="3" value="1"></td>
@@ -160,11 +249,11 @@ if (count($_SESSION['aPeopleCart']) != 0)
                         <td class="LabelColumn"><?php echo gettext("Ignore Incomplete<br>Addresses:");?></td>
                         <td class="TextColumn"><input type="checkbox" name="onlyfull" id="onlyfull" value="1" checked></td>
                 </tr>
-    </table>
-    <br/>
-    <input type="submit" class="icButton" value="<?php echo gettext("Generate Labels");?>" name="Submit">
-    </form>
-</td></tr></table>
+    			<tr>
+						<td></td>
+						<td><input type="submit" class="icButton" value="<?php echo gettext("Generate Labels");?>" name="Submit"></td>
+				</tr>
+    </table></form></td></tr></table>
 
 <div align="center">
 <form method="get" action="DirectoryReports.php">

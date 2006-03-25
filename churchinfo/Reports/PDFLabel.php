@@ -26,7 +26,186 @@ require "../Include/ReportConfig.php";
 
 require "../Include/class_fpdf_labels.php";
 
-Function ZipBundleSort($inLabels) {
+
+function GroupBySalutation($famID, $mode) {
+// Function to place the name(s) on a label when grouping multiple
+// family members on the same label.
+// Make it put the name if there is only one adult in the family.
+// Make it put two first names and the last name when there are exactly
+// two adults in the family (e.g. "Nathaniel & Jeanette Brooks")
+// Make it put two whole names where there are exactly two adults with 
+// different names (e.g. "Doug Philbrook & Karen Andrews")
+// When there are zero adults or more than two adults in the family just 
+// use the family name.  This is helpful for sending newsletters to places
+// such as "All Souls Church"
+// Simalar logic is applied if mailing to Sunday School children.
+
+	// Read values from config table into local variables
+	// we will use directory settings to determine Adults and Youth
+	// sDirRoleHead, and sDirRoleSpouse are assumed to be adults
+	// sDirRoleChild is assumed to be children
+	// **************************************************
+	$sSQL  = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value ";
+	$sSQL .= "FROM config_cfg WHERE cfg_section='General'";
+	$rsConfig = RunQuery($sSQL);
+	if ($rsConfig) {
+		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+			$$cfg_name = $cfg_value;
+		}
+	}
+
+	$sAdultRole = $sDirRoleHead . "," . $sDirRoleSpouse;
+	$sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
+	$aAdultRole = explode(",", $sAdultRole);
+	$aAdultRole = array_unique($aAdultRole);		
+	sort($aAdultRole);
+
+	$sChildRole = trim($sDirRoleChild, " ,\t\n\r\0\x0B");
+	$aChildRole = explode(",", $sChildRole);
+	$aChildRole = array_unique($aChildRole);		
+	sort($aChildRole);
+
+	$sSQL = "SELECT * FROM family_fam WHERE fam_ID=" . $famID;
+	$rsFamInfo = RunQuery($sSQL);
+
+	if (mysql_num_rows ($rsFamInfo) == 0)
+		return "Invalid Family" . $famID;
+
+	$aFam = mysql_fetch_array($rsFamInfo);
+	extract ($aFam);
+
+	// Only get family members that are in the cart
+	$sSQL = "SELECT * FROM person_per WHERE per_fam_ID=" . $famID . " AND per_ID IN (" 
+	. ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY per_LastName, per_FirstName";
+
+	$rsMembers = RunQuery($sSQL);
+	$numMembers = mysql_num_rows ($rsMembers);
+
+	// Initialize to "Nothing to return"  If this value is returned
+	// the calling program knows to skip this mode and try the next
+	$sName = "Nothing to return";
+
+	$numAdult = 0;
+	$numChild = 0;
+	$numOther = 0;
+
+	for ($ind = 0; $ind < $numMembers; $ind++) {
+		$member = mysql_fetch_array($rsMembers);
+		extract ($member);
+
+		$bAdult = FALSE;
+		$bChild = FALSE;
+
+		foreach ($aAdultRole as $value) {
+			if ($per_fmr_ID == $value) {
+				$aAdult[$numAdult++] = $member;
+				$bAdult = TRUE;
+			}
+		}
+
+		if (!$bAdult) {
+			foreach ($aChildRole as $value) {
+				if ($per_fmr_ID == $value) {
+					$aChild[$numChild++] = $member;
+					$bChild = TRUE;
+				}
+			}
+		}
+
+		if (!$bAdult && !$bChild) {
+			$aOther[$numOther++] = $member;
+		}
+
+	}
+
+	if ($mode == "adult") { // Generate Salutation for Adults in family
+		if ($numAdult == 1) {
+			extract ($aAdult[0]);
+			$sName = $per_FirstName . " " . $per_LastName;
+		} else if ($numAdult == 2) {
+			$firstMember = mysql_fetch_array($rsMembers);
+			extract ($aAdult[0]);
+			$firstFirstName = $per_FirstName;
+			$firstLastName = $per_LastName;
+			$secondMember = mysql_fetch_array($rsMembers);
+			extract ($aAdult[1]);
+			$secondFirstName = $per_FirstName;
+			$secondLastName = $per_LastName;
+			if ($firstLastName == $secondLastName) {
+				$sName = $firstFirstName . " & " . $secondFirstName . " " . $firstLastName;
+			} else {
+				$sName = $firstFirstName . " " . $firstLastName . " & " . 
+							$secondFirstName . " " . $secondLastName;
+			}
+		} else if ($numAdult > 2) {
+			$sName = $fam_Name;
+		} else if ($numOther > 0) {
+			$sName = $fam_Name;
+		} // end if ($numAdult ...)
+	}
+
+	if ($mode == "child") { // Generate Salutation for youth in family
+		if ($numChild > 0) {
+			$firstMember = mysql_fetch_array($rsMembers);
+			extract ($aChild[0]);
+			$firstFirstName = $per_FirstName;
+			$firstLastName  = $per_LastName;
+		}
+		if ($numChild > 1) {
+			$secondMember = mysql_fetch_array($rsMembers);
+			extract ($aChild[1]);
+			$secondFirstName = $per_FirstName;
+			$secondLastName = $per_LastName;
+		}
+		if ($numChild > 2) {
+			$thirdMember = mysql_fetch_array($rsMembers);
+			extract ($aChild[2]);
+			$thirdFirstName = $per_FirstName;
+			$thirdLastName = $per_LastName;
+		}
+		if ($numChild > 3) {
+			$fourthMember = mysql_fetch_array($rsMembers);
+			extract ($aChild[3]);
+			$fourthFirstName = $per_FirstName;
+			$fourthLastName = $per_LastName;
+		}
+		if ($numChild == 1) {
+			$sName = $per_FirstName . " " . $per_LastName;
+		}
+		if ($numChild == 2) {
+			if ($firstLastName == $secondLastName) {
+				$sName = $firstFirstName . " & " . $secondFirstName . " " . $firstLastName;
+			} else {
+				$sName = $firstFirstName . " " . $firstLastName . " & " . 
+								$secondFirstName . " " . $secondLastName;
+			}
+		}
+		if ($numChild == 3) {
+			$sName = $firstFirstName . ", " . $secondFirstName . " & " . 
+										$thirdFirstName . " " . $fam_Name;
+		}
+		if ($numChild == 4) {
+			$sName = $firstFirstName . ", " . $secondFirstName . ", " . 
+						$thirdFirstName . " & " . $fourthFirstName . " " . $fam_Name;
+		}
+		if ($numChild > 4) {
+			$sName = "The " . $fam_Name . " Family";
+		}
+	}
+
+	if ($mode == "other") { // Misc salutations
+		if ($numOther)
+			$sName = $fam_Name;
+	}
+
+	if (strlen($sName) > 33){
+		return (substr($sName,0,33));
+	} else {
+		return ($sName);
+	}
+}
+
+function ZipBundleSort($inLabels) {
 //
 // Description:
 // sorts an input array $inLabels() for presort bundles
@@ -335,24 +514,27 @@ if ($startcol < 1) $startcol = 1;
 $startrow = FilterInput($_GET["startrow"],'int');
 if ($startrow < 1) $startrow = 1;
 
-$sLabelType = FilterInput($_GET["labeltype"],'char',8);
-setcookie("labeltype", $sLabelType, time()+60*60*24*90, "/" );
+$sLabelType = FilterInput($_GET["cartviewlabeltype"],'char',8);
+setcookie("cartviewlabeltype", $sLabelType, time()+60*60*24*90, "/" );
 
 // Standard format
 $pdf = new PDF_Label($sLabelType,$startcol,$startrow);
 $pdf->Open();
 
-$sFontInfo = FontFromName($_GET["labelfont"]);
-setcookie("labelfont", $_GET["labelfont"], time()+60*60*24*90, "/" );
-$sFontSize = $_GET["labelfontsize"];
-setcookie("labelfontsize", $sFontSize, time()+60*60*24*90, "/");
+$sFontInfo = FontFromName($_GET["cartviewlabelfont"]);
+setcookie("cartviewlabelfont", $_GET["cartviewlabelfont"], time()+60*60*24*90, "/" );
+$sFontSize = $_GET["cartviewlabelfontsize"];
+setcookie("cartviewlabelfontsize", $sFontSize, time()+60*60*24*90, "/");
 $pdf->SetFont($sFontInfo[0],$sFontInfo[1]);
 
 if($sFontSize != "default") $pdf->Set_Char_Size($sFontSize);
 // Manually add a new page if we're using offsets
 if ($startcol > 1 || $startrow > 1)	$pdf->AddPage();
 
-$mode = $_GET["mode"];
+$mode = $_GET["cartviewgroupbymode"];
+setcookie("cartviewgroupbymode", $mode, time()+60*60*24*90, "/");
+
+
 $bOnlyComplete = ($_GET["onlyfull"] == 1);
 
 GenerateLabels($pdf, $mode, $bOnlyComplete);
