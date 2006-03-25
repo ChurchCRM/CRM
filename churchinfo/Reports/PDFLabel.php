@@ -27,7 +27,7 @@ require "../Include/ReportConfig.php";
 require "../Include/class_fpdf_labels.php";
 
 
-function GroupBySalutation($famID, $mode) {
+function GroupBySalutation($famID) {
 // Function to place the name(s) on a label when grouping multiple
 // family members on the same label.
 // Make it put the name if there is only one adult in the family.
@@ -83,7 +83,10 @@ function GroupBySalutation($famID, $mode) {
 
 	// Initialize to "Nothing to return"  If this value is returned
 	// the calling program knows to skip this mode and try the next
-	$sName = "Nothing to return";
+
+	$sNameAdult = "Nothing to return";
+	$sNameChild = "Nothing to return";
+	$sNameOther = "Nothing to return";
 
 	$numAdult = 0;
 	$numChild = 0;
@@ -96,6 +99,7 @@ function GroupBySalutation($famID, $mode) {
 		$bAdult = FALSE;
 		$bChild = FALSE;
 
+		// check if this person is adult
 		foreach ($aAdultRole as $value) {
 			if ($per_fmr_ID == $value) {
 				$aAdult[$numAdult++] = $member;
@@ -103,6 +107,9 @@ function GroupBySalutation($famID, $mode) {
 			}
 		}
 
+		// now check if this person is a child.  Note, if child and adult directory roles
+		// overlap the person will only be listed once as an adult (can't be adult and 
+		// child simultaneously ... even if directory roles suggest otherwise)
 		if (!$bAdult) {
 			foreach ($aChildRole as $value) {
 				if ($per_fmr_ID == $value) {
@@ -112,97 +119,94 @@ function GroupBySalutation($famID, $mode) {
 			}
 		}
 
+		// If this is not an adult or a child it must be something else.  Maybe it's
+		// another church or the landscape company that mows the lawn.
 		if (!$bAdult && !$bChild) {
 			$aOther[$numOther++] = $member;
 		}
 
 	}
 
-	if ($mode == "adult") { // Generate Salutation for Adults in family
-		if ($numAdult == 1) {
-			extract ($aAdult[0]);
-			$sName = $per_FirstName . " " . $per_LastName;
-		} else if ($numAdult == 2) {
-			$firstMember = mysql_fetch_array($rsMembers);
-			extract ($aAdult[0]);
-			$firstFirstName = $per_FirstName;
-			$firstLastName = $per_LastName;
-			$secondMember = mysql_fetch_array($rsMembers);
-			extract ($aAdult[1]);
-			$secondFirstName = $per_FirstName;
-			$secondLastName = $per_LastName;
-			if ($firstLastName == $secondLastName) {
-				$sName = $firstFirstName . " & " . $secondFirstName . " " . $firstLastName;
-			} else {
-				$sName = $firstFirstName . " " . $firstLastName . " & " . 
+	if ($numAdult == 1) { // Generate Salutation for Adults in family
+		extract ($aAdult[0]);
+		$sNameAdult = $per_FirstName . " " . $per_LastName;
+	} else if ($numAdult == 2) {
+		$firstMember = mysql_fetch_array($rsMembers);
+		extract ($aAdult[0]);
+		$firstFirstName = $per_FirstName;
+		$firstLastName = $per_LastName;
+		$secondMember = mysql_fetch_array($rsMembers);
+		extract ($aAdult[1]);
+		$secondFirstName = $per_FirstName;
+		$secondLastName = $per_LastName;
+		if ($firstLastName == $secondLastName) {
+			$sNameAdult = $firstFirstName . " & " . $secondFirstName . " " . $firstLastName;
+		} else {
+			$sNameAdult = $firstFirstName . " " . $firstLastName . " & " . 
+						$secondFirstName . " " . $secondLastName;
+		}
+	} else if ($numAdult > 2) {
+		$sNameAdult = $fam_Name;
+	} // end if ($numAdult ...)
+
+
+	if ($numChild > 0) { // Salutation for children grouped together
+		$firstMember = mysql_fetch_array($rsMembers);
+		extract ($aChild[0]);
+		$firstFirstName = $per_FirstName;
+		$firstLastName  = $per_LastName;
+	}
+	if ($numChild > 1) {
+		$secondMember = mysql_fetch_array($rsMembers);
+		extract ($aChild[1]);
+		$secondFirstName = $per_FirstName;
+		$secondLastName = $per_LastName;
+	}
+	if ($numChild > 2) {
+		$thirdMember = mysql_fetch_array($rsMembers);
+		extract ($aChild[2]);
+		$thirdFirstName = $per_FirstName;
+		$thirdLastName = $per_LastName;
+	}
+	if ($numChild > 3) {
+		$fourthMember = mysql_fetch_array($rsMembers);
+		extract ($aChild[3]);
+		$fourthFirstName = $per_FirstName;
+		$fourthLastName = $per_LastName;
+	}
+	if ($numChild == 1) {
+		$sNameChild = $per_FirstName . " " . $per_LastName;
+	}
+	if ($numChild == 2) {
+		if ($firstLastName == $secondLastName) {
+			$sNameChild = $firstFirstName . " & " . $secondFirstName . " " . $firstLastName;
+		} else {
+			$sNameChild = $firstFirstName . " " . $firstLastName . " & " . 
 							$secondFirstName . " " . $secondLastName;
-			}
-		} else if ($numAdult > 2) {
-			$sName = $fam_Name;
-		} else if ($numOther > 0) {
-			$sName = $fam_Name;
-		} // end if ($numAdult ...)
+		}
+	}
+	if ($numChild == 3) {
+		$sNameChild = $firstFirstName . ", " . $secondFirstName . " & " . 
+									$thirdFirstName . " " . $fam_Name;
+	}
+	if ($numChild == 4) {
+		$sNameChild = $firstFirstName . ", " . $secondFirstName . ", " . 
+					$thirdFirstName . " & " . $fourthFirstName . " " . $fam_Name;
+	}
+	if ($numChild > 4) {
+		$sNameChild = "The " . $fam_Name . " Family";
 	}
 
-	if ($mode == "child") { // Generate Salutation for youth in family
-		if ($numChild > 0) {
-			$firstMember = mysql_fetch_array($rsMembers);
-			extract ($aChild[0]);
-			$firstFirstName = $per_FirstName;
-			$firstLastName  = $per_LastName;
-		}
-		if ($numChild > 1) {
-			$secondMember = mysql_fetch_array($rsMembers);
-			extract ($aChild[1]);
-			$secondFirstName = $per_FirstName;
-			$secondLastName = $per_LastName;
-		}
-		if ($numChild > 2) {
-			$thirdMember = mysql_fetch_array($rsMembers);
-			extract ($aChild[2]);
-			$thirdFirstName = $per_FirstName;
-			$thirdLastName = $per_LastName;
-		}
-		if ($numChild > 3) {
-			$fourthMember = mysql_fetch_array($rsMembers);
-			extract ($aChild[3]);
-			$fourthFirstName = $per_FirstName;
-			$fourthLastName = $per_LastName;
-		}
-		if ($numChild == 1) {
-			$sName = $per_FirstName . " " . $per_LastName;
-		}
-		if ($numChild == 2) {
-			if ($firstLastName == $secondLastName) {
-				$sName = $firstFirstName . " & " . $secondFirstName . " " . $firstLastName;
-			} else {
-				$sName = $firstFirstName . " " . $firstLastName . " & " . 
-								$secondFirstName . " " . $secondLastName;
-			}
-		}
-		if ($numChild == 3) {
-			$sName = $firstFirstName . ", " . $secondFirstName . " & " . 
-										$thirdFirstName . " " . $fam_Name;
-		}
-		if ($numChild == 4) {
-			$sName = $firstFirstName . ", " . $secondFirstName . ", " . 
-						$thirdFirstName . " & " . $fourthFirstName . " " . $fam_Name;
-		}
-		if ($numChild > 4) {
-			$sName = "The " . $fam_Name . " Family";
-		}
-	}
+	if ($numOther) 
+		$sNameOther = $fam_Name;
 
-	if ($mode == "other") { // Misc salutations
-		if ($numOther)
-			$sName = $fam_Name;
-	}
+	unset($aName);
 
-	if (strlen($sName) > 33){
-		return (substr($sName,0,33));
-	} else {
-		return ($sName);
-	}
+	$aName['adult'] = substr($sNameAdult,0,33);
+	$aName['child'] = substr($sNameChild,0,33);
+	$aName['other'] = substr($sNameOther,0,33);
+
+	return $aName;
 }
 
 function ZipBundleSort($inLabels) {
@@ -258,7 +262,6 @@ for($i=0; $i < $n; $i++) $Zips[$i] = substr($inLabels[$i]['Zip'],0,5);
 // perform a count of the array values 
 //	
 
-
 $ZipCounts=array_count_values($Zips);
 
 //	
@@ -270,8 +273,10 @@ $nz5=0;
 while (list($z,$zc) = each($ZipCounts)){
 	if($zc >= 10){
 		$NoteText = array('Note'=>"******* Presort ZIP-5 ".$z);
-		$AddressText = array('Address'=>" ".$nTotalLabels." Total Labels");
-		$outList[]=array_merge(array('Name'=>" ".$zc." Labels in Bundle"),$NoteText,$AddressText);
+		$NameText = array('Name'=>" ".$zc." Addresses in Bundle ".$z);
+		$AddressText = array('Address'=>" ".$nTotalLabels." Total Addresses");
+		$CityText = array('City'=>"******* Presort ZIP-5 ".$z."  ");
+		$outList[]=array_merge($NoteText,$NameText,$AddressText,$CityText);
 		for($i=0; $i<$n; $i++){
 			if(substr($inLabels[$i]['Zip'],0,5)==$z) {
 				$outList[] = array_merge($inLabels[$i], $NoteText);
@@ -317,8 +322,10 @@ $nz3=0;
 while (list($z,$zc) = each($ZipCounts)){
 	if($zc >= 10){
 		$NoteText = array('Note'=>"******* Presort ZIP-3 ".$z);
-		$AddressText = array('Address'=>" ".$nTotalLabels." Total Labels");
-		$outList[]=array_merge(array('Name'=>" ".$zc." Labels in Bundle"),$NoteText,$AddressText);
+		$NameText = array('Name'=>" ".$zc." Addresses in Bundle ".$z);
+		$AddressText = array('Address'=>" ".$nTotalLabels." Total Addresses");
+		$CityText = array('City'=>"******* Presort ZIP-3 ".$z."  ");
+		$outList[]=array_merge($NoteText,$NameText,$AddressText,$CityText);
 		for($i=0; $i<$n; $i++){
 			if(substr($inLabels[$i]['Zip'],0,3)==$z) {
 				$outList[] = array_merge($inLabels[$i], $NoteText);
@@ -360,8 +367,10 @@ $nadc=0;
 while (list($z,$zc) = each($ZipCounts)){
 	if($zc >= 10){
 		$NoteText = array('Note'=>"******* Presort ADC ".$z);
-		$AddressText = array('Address'=>" ".$nTotalLabels." Total Labels");
-		$outList[]=array_merge(array('Name'=>" ".$zc." Labels in Bundle"),$NoteText,$AddressText);
+		$NameText = array('Name'=>" ".$zc." Addresses in Bundle ADC ".$z);
+		$AddressText = array('Address'=>" ".$nTotalLabels." Total Addresses");
+		$CityText = array('City'=>"******* Presort ADC ".$z."  ");
+		$outList[]=array_merge($NoteText,$NameText,$AddressText,$CityText);
 		for($i=0; $i<$n; $i++){
 			if($adc[substr($inLabels[$i]['Zip'],0,3)]==$z) {
 				$outList[] = array_merge($inLabels[$i], $NoteText);
@@ -386,14 +395,18 @@ unset($Zips);
 $n = count($inLabels);
 $zc = $n;
 if($db) echo "...pass 4 Mixed ADC..{$n} labels to process\r\n";
-$NoteText = array('Note'=>"******* Presort MIXED ADC ");
-$AddressText = array('Address'=>" ".$nTotalLabels." Total Labels");
-$outList[]=array_merge(array('Name'=>" ".$zc." Labels in Bundle"),$NoteText,$AddressText);
-for($i=0; $i<$n; $i++){
-	if($db) echo "$i.";
-	$outList[] = array_merge($inLabels[$i], $NoteText);
-	$nmadc ++;
-}
+	if ($zc > 0) {
+		$NoteText = array('Note'=>"******* Presort MIXED ADC ");
+		$NameText = array('Name'=>" ".$zc." Addresses in Bundle");
+		$AddressText = array('Address'=>" ".$nTotalLabels." Total Addresses");
+		$CityText = array('City'=>"******* Presort MIXED ADC   ");
+		$outList[]=array_merge($NoteText,$NameText,$AddressText,$CityText);
+		for($i=0; $i<$n; $i++){
+			if($db) echo "$i.";
+			$outList[] = array_merge($inLabels[$i], $NoteText);
+			$nmadc ++;
+		}
+	}
 
 if($db) echo "{$nmadc} Labels moved to the output list <br>";
 
@@ -410,8 +423,7 @@ if(count($outList) > 0) {
 }
 
 
-
-function GenerateLabels(&$pdf, $mode, $bOnlyComplete = false)
+function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bOnlyComplete = false)
 {
 	// $mode is "indiv" or "fam"
 
@@ -421,49 +433,39 @@ function GenerateLabels(&$pdf, $mode, $bOnlyComplete = false)
 	while ($aRow = mysql_fetch_array($rsCartItems))
 	{
 
-	if ($mode == "fam"){
-		$iLoopCount = 3;
-	} else {
-		$iLoopCount = 1;
+	// It's possible (but unlikely) that three labels can be generated for a
+	// family even when they are grouped.
+	// At most one label for all adults
+	// At most one label for all children
+	// At most one label for all others (for example, another church or the lansdscape 
+	// company)
+
+	$sUniqueKey = $aRow['per_fam_ID'];
+
+	$sRowClass = AlternateRowStyle($sRowClass);
+
+	if (($aRow['per_fam_ID'] == 0) && ($mode == "fam")) { 
+		// Skip people with no family ID
+		continue;
 	}
 
-	for ($iLoopIndex = 0; $iLoopIndex < $iLoopCount; $iLoopIndex++)
-	{
-		if ($iLoopCount == 1){
-			$sSubMode = "indiv";
-		} else {
-			if ($iLoopIndex == 0)
-				$sSubMode = "adult";
-			elseif ($iLoopIndex == 1)
-				$sSubMode = "child";
-			else
-				$sSubMode = "other";
-		}
+	// Skip if mode is fam and we have already printed labels
+	if ($didFam[$sUniqueKey] && ($mode == "fam"))
+		continue;
 
-		// It's possible (but unlikely) that three labels can be generated for a
-		// family even when they are grouped.
-		// At most one label for all adults
-		// At most one label for all children
-		// At most one label for all others (for example, another church as a family)
-		$sUniqueKey = $aRow['per_fam_ID'] . $sSubMode;
+	$didFam[$sUniqueKey] = 1;
 
-		$sRowClass = AlternateRowStyle($sRowClass);
+	unset($aName);
+	$sName = "";
+	if ($mode == "fam")
+		$aName = GroupBySalutation($aRow['per_fam_ID']);
+	else {
+		$sName = FormatFullName($aRow['per_Title'], $aRow['per_FirstName'], "", $aRow['per_LastName'], $aRow['per_Suffix'], 1);
+		$aName['indiv'] = substr($sName,0,33);
+	}
 
-		if (($aRow['per_fam_ID'] == 0) && ($mode == "fam")) { 
-			// Skip people with no family ID
-			continue;
-		}
 
-		// Skip if mode is fam and we have already printed labels
-		if ($didFam[$sUniqueKey] && ($mode == "fam"))
-			continue;
-
-		$didFam[$sUniqueKey] = 1;
-
-		if ($mode == "fam")
-			$sName = GroupBySalutation($aRow['per_fam_ID'], $sSubMode);
-		else
-			$sName = FormatFullName($aRow['per_Title'], $aRow['per_FirstName'], "", $aRow['per_LastName'], $aRow['per_Suffix'], 1);
+	foreach($aName as $sName){
 
 		// Bail out if nothing to print
 		if ($sName == "Nothing to return")
@@ -483,30 +485,41 @@ function GenerateLabels(&$pdf, $mode, $bOnlyComplete = false)
 		{
 			$sLabelList[]=array('Name'=>$sName, 'Address'=>$sAddress,'City'=>$sCity,'State'=>$sState,'Zip'=>$sZip);
 		}
-	} // end of for loop
+	} // end of foreach loop
 	} // end of while loop
-//
-// now sort the label list by presort bundle definitions
-//
+
+	if ($iBulkMailPresort) {
+		//
+		// now sort the label list by presort bundle definitions
+		//
+		$zipLabels = ZipBundleSort($sLabelList);
+		if ($iBulkMailPresort == 2) {
+		while(list($i,$sLT)=each($zipLabels)){		
+			$pdf->Add_PDF_Label(sprintf("%s\n%s\n%s\n%s, %s %s", 
+							$sLT['Note'],$sLT['Name'],$sLT['Address'],
+							$sLT['City'], $sLT['State'],$sLT['Zip']));
+		} // end while
+		} else {
+		while(list($i,$sLT)=each($zipLabels)){		
+			$pdf->Add_PDF_Label(sprintf("%s\n%s\n%s, %s %s", 
+							$sLT['Name'],$sLT['Address'],
+							$sLT['City'], $sLT['State'],$sLT['Zip']));
+		} // end while
+		} // end of if ($BulkMailPresort == 2)		
+	} else {
+		while(list($i,$sLT)=each($sLabelList)){
+			$pdf->Add_PDF_Label(sprintf("%s\n%s\n%s, %s %s",
+							$sLT['Name'], $sLT['Address'],
+							$sLT['City'], $sLT['State'], $sLT['Zip']));
+		} // end while
+	} // end of if($iBulkMailPresort)
+
+} // end of function GenerateLabels
 
 
-$numLabels = count($sLabelList);
-$zipLabels = ZipBundleSort($sLabelList);
-while(list($i,$sLT)=each($zipLabels)){
-	$pdf->Add_PDF_Label(sprintf("%s\n%s\n%s\n%s, %s %s", $sLT['Note'],$sLT['Name'],$sLT['Address'],$sLT['City'], $sLT['State'],$sLT['Zip']));
-}
+// Main body of PHP file begins here
 
-
-}
-
-
-// Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-		$pdf->$cfg_name = $cfg_value;
-	}
-}
+// Standard format
 
 $startcol = FilterInput($_GET["startcol"],'int');
 if ($startcol < 1) $startcol = 1;
@@ -517,7 +530,6 @@ if ($startrow < 1) $startrow = 1;
 $sLabelType = FilterInput($_GET["cartviewlabeltype"],'char',8);
 setcookie("cartviewlabeltype", $sLabelType, time()+60*60*24*90, "/" );
 
-// Standard format
 $pdf = new PDF_Label($sLabelType,$startcol,$startrow);
 $pdf->Open();
 
@@ -527,17 +539,29 @@ $sFontSize = $_GET["cartviewlabelfontsize"];
 setcookie("cartviewlabelfontsize", $sFontSize, time()+60*60*24*90, "/");
 $pdf->SetFont($sFontInfo[0],$sFontInfo[1]);
 
-if($sFontSize != "default") $pdf->Set_Char_Size($sFontSize);
+if ($sFontSize == "default")
+	$sFontSize = "10";
+
+$pdf->Set_Char_Size($sFontSize);
+
 // Manually add a new page if we're using offsets
 if ($startcol > 1 || $startrow > 1)	$pdf->AddPage();
 
 $mode = $_GET["cartviewgroupbymode"];
 setcookie("cartviewgroupbymode", $mode, time()+60*60*24*90, "/");
 
+$bulkmailpresort = $_GET["cartviewbulkmailpresort"];
+setcookie("cartviewbulkmailpresort", $bulkmailpresort, time()+60*60*24*90, "/");
+
+$iBulkCode = 0;
+if ($bulkmailpresort == "without")
+	$iBulkCode = 1;
+elseif ($bulkmailpresort == "with")
+	$iBulkCode = 2;
 
 $bOnlyComplete = ($_GET["onlyfull"] == 1);
 
-GenerateLabels($pdf, $mode, $bOnlyComplete);
+GenerateLabels($pdf, $mode, $iBulkCode, $bOnlyComplete);
 
 if ($iPDFOutputType == 1)
 	$pdf->Output("Labels-" . date("Ymd-Gis") . ".pdf", true);

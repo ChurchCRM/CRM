@@ -93,7 +93,7 @@ function LabelSelect($fieldname)
 
 function LabelGroupSelect($fieldname)
 {
-	echo "<tr><td class=\"LabelColumn\">" . gettext("Generate Labels") . "</td>";
+	echo "<tr><td class=\"LabelColumn\">" . gettext("Label Grouping") . "</td>";
 	echo "<td class=\"TextColumn\">";
 	echo "<input name=\"$fieldname\" type=\"radio\" value=\"indiv\" ";
 
@@ -107,6 +107,31 @@ function LabelGroupSelect($fieldname)
 		echo "checked";
 
 	echo ">" . gettext("Grouped by Family") . "<br></td></tr>";
+}
+
+function BulkMailPresort($fieldname)
+{
+	echo "<tr><td class=\"LabelColumn\">" . gettext("Bulk Mail Presort") . "</td>";
+	echo "<td class=\"TextColumn\">";
+	echo "<input name=\"$fieldname\" type=\"radio\" value=\"none\" ";
+
+	if (($_COOKIE[$fieldname] != "with") && ($_COOKIE[$fieldname] != "without"))
+		echo "checked";
+	
+	echo ">" . gettext("No") . "<br>";
+	echo "<input name=\"$fieldname\" type=\"radio\" value=\"without\" ";
+
+	if ($_COOKIE[$fieldname] == "without")
+		echo "checked";
+
+	echo ">" . gettext("Yes") . "<br>";
+	echo "<input name=\"$fieldname\" type=\"radio\" value=\"with\" ";
+
+	if ($_COOKIE[$fieldname] == "with")
+		echo "checked";
+
+	echo ">" . gettext("Yes, with codes") . "<br></td></tr>";
+
 }
 
 
@@ -233,6 +258,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
         <table cellpadding="4" align="center">
                 <?php
 				LabelGroupSelect("cartviewgroupbymode");
+				BulkMailPresort("cartviewbulkmailpresort");
 				LabelSelect("cartviewlabeltype");
 				FontSelect("cartviewlabelfont");
 				FontSizeSelect("cartviewlabelfontsize");
