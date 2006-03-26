@@ -134,6 +134,19 @@ function BulkMailPresort($fieldname)
 
 }
 
+function ToParentsOfCheckBox($fieldname)
+{
+	echo "<tr><td class=\"LabelColumn\">" . gettext("To the parents of:") . "</td>";
+	echo "<td class=\"TextColumn\">";
+	echo "<input name=\"$fieldname\" type=\"checkbox\" name=\"ToParent\" ";
+	echo "id=\"ToParent\" value=\"1\" ";
+
+	if ($_COOKIE[$fieldname])
+		echo "checked";
+	
+	echo "><br></td></tr>";
+}
+
 
 require "Include/Config.php";
 require "Include/Functions.php";
@@ -259,6 +272,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
                 <?php
 				LabelGroupSelect("cartviewgroupbymode");
 				BulkMailPresort("cartviewbulkmailpresort");
+				ToParentsOfCheckBox("cartviewtoparents");
 				LabelSelect("cartviewlabeltype");
 				FontSelect("cartviewlabelfont");
 				FontSizeSelect("cartviewlabelfontsize");

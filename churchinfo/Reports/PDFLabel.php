@@ -423,7 +423,7 @@ if(count($outList) > 0) {
 }
 
 
-function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bOnlyComplete = false)
+function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComplete)
 {
 	// $mode is "indiv" or "fam"
 
@@ -465,11 +465,14 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bOnlyComplete = false)
 	}
 
 
-	foreach($aName as $sName){
+	foreach($aName as $key => $sName){
 
 		// Bail out if nothing to print
 		if ($sName == "Nothing to return")
 			continue;
+
+		if ($bToParents && ($key == "child"))
+			$sName = "To the Parents of:\n" . $sName;
 
 		SelectWhichAddress($sAddress1, $sAddress2, $aRow['per_Address1'], $aRow['per_Address2'], $aRow['fam_Address1'], $aRow['fam_Address2'], false);
 
@@ -559,9 +562,12 @@ if ($bulkmailpresort == "without")
 elseif ($bulkmailpresort == "with")
 	$iBulkCode = 2;
 
+$bToParents = ($_GET["cartviewtoparents"] == 1);
+setcookie("cartviewtoparents", $_GET["cartviewtoparents"], time()+60*60*24*90, "/");
+ 
 $bOnlyComplete = ($_GET["onlyfull"] == 1);
 
-GenerateLabels($pdf, $mode, $iBulkCode, $bOnlyComplete);
+GenerateLabels($pdf, $mode, $iBulkCode, $bToParents, $bOnlyComplete);
 
 if ($iPDFOutputType == 1)
 	$pdf->Output("Labels-" . date("Ymd-Gis") . ".pdf", true);
