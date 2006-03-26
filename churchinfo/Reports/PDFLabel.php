@@ -12,7 +12,12 @@
 *  Portions based on code by LPA (lpasseb@numericable.fr)
 *  and Steve Dillon (steved@mad.scientist.com) from www.fpdf.org
 *
-*  InfoCentral is free software; you can redistribute it and/or modify
+*  Additional Contributions by
+*  2006 Ed Davis
+*  2006 Stephen Shaffer
+*
+*
+*  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -27,7 +32,7 @@ require "../Include/ReportConfig.php";
 require "../Include/class_fpdf_labels.php";
 
 
-function GroupBySalutation($famID) {
+function GroupBySalutation($famID, $aAdultRole, $aChildRole) {
 // Function to place the name(s) on a label when grouping multiple
 // family members on the same label.
 // Make it put the name if there is only one adult in the family.
@@ -38,32 +43,8 @@ function GroupBySalutation($famID) {
 // When there are zero adults or more than two adults in the family just 
 // use the family name.  This is helpful for sending newsletters to places
 // such as "All Souls Church"
-// Simalar logic is applied if mailing to Sunday School children.
+// Similar logic is applied if mailing to Sunday School children.
 
-	// Read values from config table into local variables
-	// we will use directory settings to determine Adults and Youth
-	// sDirRoleHead, and sDirRoleSpouse are assumed to be adults
-	// sDirRoleChild is assumed to be children
-	// **************************************************
-	$sSQL  = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value ";
-	$sSQL .= "FROM config_cfg WHERE cfg_section='General'";
-	$rsConfig = RunQuery($sSQL);
-	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-			$$cfg_name = $cfg_value;
-		}
-	}
-
-	$sAdultRole = $sDirRoleHead . "," . $sDirRoleSpouse;
-	$sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
-	$aAdultRole = explode(",", $sAdultRole);
-	$aAdultRole = array_unique($aAdultRole);		
-	sort($aAdultRole);
-
-	$sChildRole = trim($sDirRoleChild, " ,\t\n\r\0\x0B");
-	$aChildRole = explode(",", $sChildRole);
-	$aChildRole = array_unique($aChildRole);		
-	sort($aChildRole);
 
 	$sSQL = "SELECT * FROM family_fam WHERE fam_ID=" . $famID;
 	$rsFamInfo = RunQuery($sSQL);
@@ -427,7 +408,32 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 {
 	// $mode is "indiv" or "fam"
 
-	$sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY fam_Zip, per_LastName, per_FirstName";
+	unset($didFam);
+
+	$sSQL  = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value ";
+	$sSQL .= "FROM config_cfg WHERE cfg_section='General'";
+	$rsConfig = RunQuery($sSQL);
+	if ($rsConfig) {
+		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+			$$cfg_name = $cfg_value;
+		}
+	}
+
+	$sAdultRole = $sDirRoleHead . "," . $sDirRoleSpouse;
+	$sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
+	$aAdultRole = explode(",", $sAdultRole);
+	$aAdultRole = array_unique($aAdultRole);		
+	sort($aAdultRole);
+
+	$sChildRole = trim($sDirRoleChild, " ,\t\n\r\0\x0B");
+	$aChildRole = explode(",", $sChildRole);
+	$aChildRole = array_unique($aChildRole);		
+	sort($aChildRole);
+
+	$sSQL  = "SELECT * FROM person_per LEFT JOIN family_fam ";
+	$sSQL .= "ON person_per.per_fam_ID = family_fam.fam_ID ";
+	$sSQL .= "WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ";
+	$sSQL .= "ORDER BY fam_Zip, per_LastName, per_FirstName";
 	$rsCartItems = RunQuery($sSQL);
 
 	while ($aRow = mysql_fetch_array($rsCartItems))
@@ -440,8 +446,6 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 	// At most one label for all others (for example, another church or the lansdscape 
 	// company)
 
-	$sUniqueKey = $aRow['per_fam_ID'];
-
 	$sRowClass = AlternateRowStyle($sRowClass);
 
 	if (($aRow['per_fam_ID'] == 0) && ($mode == "fam")) { 
@@ -450,20 +454,31 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 	}
 
 	// Skip if mode is fam and we have already printed labels
-	if ($didFam[$sUniqueKey] && ($mode == "fam"))
+	if ($didFam[$aRow['per_fam_ID']] && ($mode == "fam"))
 		continue;
 
-	$didFam[$sUniqueKey] = 1;
+	$didFam[$aRow['per_fam_ID']] = 1;
 
 	unset($aName);
-	$sName = "";
-	if ($mode == "fam")
-		$aName = GroupBySalutation($aRow['per_fam_ID']);
-	else {
-		$sName = FormatFullName($aRow['per_Title'], $aRow['per_FirstName'], "", $aRow['per_LastName'], $aRow['per_Suffix'], 1);
-		$aName['indiv'] = substr($sName,0,33);
-	}
 
+	if ($mode == "fam")
+		$aName = GroupBySalutation($aRow['per_fam_ID'], $aAdultRole, $aChildRole);
+	else {
+		$sName = FormatFullName($aRow['per_Title'], $aRow['per_FirstName'], "",
+				 $aRow['per_LastName'], $aRow['per_Suffix'], 1);
+
+		$bChild = FALSE;
+		foreach ($aChildRole as $value) {
+			if ($aRow['per_fmr_ID'] == $value) {
+				$bChild = TRUE;
+			}
+		}
+
+		if ($bChild)
+			$aName['child'] = substr($sName,0,33);
+		else 
+			$aName['indiv'] = substr($sName,0,33);
+	}
 
 	foreach($aName as $key => $sName){
 
@@ -472,7 +487,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 			continue;
 
 		if ($bToParents && ($key == "child"))
-			$sName = "To the Parents of:\n" . $sName;
+			$sName = "To the parents of:\n" . $sName;
 
 		SelectWhichAddress($sAddress1, $sAddress2, $aRow['per_Address1'], $aRow['per_Address2'], $aRow['fam_Address1'], $aRow['fam_Address2'], false);
 
