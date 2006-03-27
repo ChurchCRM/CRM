@@ -105,7 +105,7 @@
       </tr>
    </table>
 </div>
-<? } else { ?>
+<?php } else { ?>
 <div class="Help_Section">
   <div class="Help_Header">I don't see the Event listed in the dropdown box, how do I add an Event Name to the list?</div>
     <table width="100%" class="LightShadedBox">

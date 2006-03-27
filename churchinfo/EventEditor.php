@@ -215,7 +215,7 @@ $sSQL = "SELECT * FROM `event_types`";
     </td>
     <td class="TextColumn">
       <select name="EventStartTime" size="1">
-      <?
+      <?php
       if ($uEventStartHour) $aEventStartHour = $uEventStartHour;
       if ($uEventStartMins) $aEventStartMins = $uEventStartMins;
       ?>
@@ -239,7 +239,7 @@ $sSQL = "SELECT * FROM `event_types`";
     </td>
     <td class="TextColumn">
       <select name="EventEndTime" size="1">
-      <?
+      <?php
       if ($uEventEndHour) $aEventEndHour = $uEventEndHour;
       if ($uEventEndMins) $aEventEndMins = $uEventEndMins;
       ?>

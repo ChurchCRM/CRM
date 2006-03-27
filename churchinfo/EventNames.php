@@ -41,7 +41,7 @@ if ( answer )
     <td align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
   </tr>
 </table>
-<?
+<?php
 if ($_POST['Action'] == "Add Event Name")
 {
     $newEventName = FilterInput($_POST['newEventName']);

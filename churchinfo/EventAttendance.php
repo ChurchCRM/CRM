@@ -75,7 +75,7 @@ require "Include/Header.php";
     <td align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Report Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='ReportList.php';"></td>
   </tr>
 </table>
-<?
+<?php
 // Get data for the form as it now exists..
 $rsOpps = RunQuery($sSQL);
 $numRows = mysql_num_rows($rsOpps);
@@ -182,7 +182,7 @@ $gOpps = RunQuery($gSQL);
 $gNumGuestAttend = mysql_result($gOpps, 0);
 ?>
                <input type="hidden" name="EventIDs" value="<?php echo $EventIDs; ?>">
-               <input <? echo ($gNumGuestAttend == 0 ? "type=\"button\"":"type=\"submit\""); ?> name="Type" value="<?php echo gettext("Guests").' ['.$gNumGuestAttend.']'; ?>" class="icButton">
+               <input <?php echo ($gNumGuestAttend == 0 ? "type=\"button\"":"type=\"submit\""); ?> name="Type" value="<?php echo gettext("Guests").' ['.$gNumGuestAttend.']'; ?>" class="icButton">
              </form>
            </td>
          </tr>
@@ -190,7 +190,7 @@ $gNumGuestAttend = mysql_result($gOpps, 0);
          }
 ?>
          <tr><td colspan="5">&nbsp;</td></tr>
-<?
+<?php
 }
 elseif ($_POST['Action']== "Retrieve" && $numRows > 0)
 {
@@ -225,7 +225,7 @@ elseif ($_POST['Action']== "Retrieve" && $numRows > 0)
 ?>
            <td class="TextColumn"><?php /* echo '<a onclick="return AddToCart('.$aPersonID[$row].');" href="blank.html">'.gettext("Add to Cart").'</a>'; */ ?>&nbsp;</td>
          </tr>
-<?
+<?php
          }
 }
 else

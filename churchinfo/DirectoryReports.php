@@ -68,7 +68,7 @@ if ($rsConfig) {
 ?>
 
 <table align="center">
-<? if ($_GET['cartdir'] == null)
+<?php if ($_GET['cartdir'] == null)
 {
 ?>
     <tr>
@@ -104,7 +104,7 @@ if ($rsConfig) {
         </td>
     </tr>
     
-<?
+<?php
 }
 ?>
     

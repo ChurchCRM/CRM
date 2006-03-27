@@ -39,7 +39,7 @@ elseif ($_POST['Action']== "Activate" && !empty($_POST['EID']))
     <td align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
   </tr>
 </table>
-<?
+<?php
 // Get data for the form as it now exists..
 // for this year
 $currYear = date("Y");
@@ -118,7 +118,7 @@ if ($numRows > 0)
          //Display the row
          ?>
          <tr class="<?php echo $sRowClass; ?>">
-           <td class="TextColumn"><? echo $aEventType[$row]; ?></td>
+           <td class="TextColumn"><?php echo $aEventType[$row]; ?></td>
            <td class="TextColumn"><?php echo $aEventTitle[$row]; ?></td>
            <td class="TextColumn"><?php echo ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]); ?>
              <?php echo ($aEventText[$row] != '' ? "&nbsp;&nbsp;&nbsp;<a href=\"javascript:popUp('GetText.php?EID=".$aEventID[$row]."')\"><strong>Sermon Text</strong></a>":""); ?>
@@ -146,7 +146,7 @@ if ($numRows > 0)
          }
 ?>
          <tr><td colspan="5">&nbsp;</td></tr>
-<?
+<?php
     }
 ?>
       </table>
