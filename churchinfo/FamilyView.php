@@ -599,7 +599,7 @@ while ($aRow =mysql_fetch_array($rsFamilyMembers))
 
 <?php if ($_SESSION['bFinance']) { ?>
 
-<?if (mysql_num_rows ($rsAutoPayments) > 0) { ?>
+<?php if (mysql_num_rows ($rsAutoPayments) > 0) { ?>
 
 <br>
 <b><?php echo gettext("Automatic Payments:"); ?></b>
