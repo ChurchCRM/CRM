@@ -2,9 +2,13 @@
 /*******************************************************************************
 *
 *  filename    : SelectList.php
-*  last change : 2004-02-03
 *  website     : http://www.infocentral.org
 *  copyright   : Copyright 2001-2003 Deane Barker and Chris Gebhardt
+*
+*  Additional contributions by
+*  2006 Ed Davis
+*
+*  This file best viewed in a text editor with tabs stops set to 4 characters
 *
 *  InfoCentral is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
@@ -23,59 +27,76 @@ if (strlen($_GET["Sort"]))
 else
         $sSort = "name";
 
-if (isset($_GET["PrintView"])) $bPrintView = true;
-
-if (strlen($_GET["Filter"])) $sFilter = FilterInput($_GET["Filter"]);
-if (strlen($_GET["Letter"])) $sLetter = FilterInput($_GET["Letter"],'char');
+if (isset($_GET["PrintView"])) 
+	$bPrintView = true;
+if (strlen($_GET["Filter"]))
+	$sFilter = FilterInput($_GET["Filter"]);
+if (strlen($_GET["Letter"]))
+	$sLetter = FilterInput($_GET["Letter"],'char');
 
 $sMode = $_GET["mode"];
+if (!strlen($sMode)) // default to person mode
+	$sMode = "person";
 
 // Save default search mode
 $_SESSION['bSearchFamily'] = ($sMode != 'person');
 
 if (isset($_GET["Number"]))
 {
-        $_SESSION['SearchLimit'] = FilterInput($_GET["Number"],'int');
-        $uSQL = "UPDATE user_usr SET usr_SearchLimit = " . $_SESSION['SearchLimit'] . " WHERE usr_per_ID = " . $_SESSION['iUserID'];
-        $rsUser = RunQuery($uSQL);
+    $_SESSION['SearchLimit'] = FilterInput($_GET["Number"],'int');
+    $uSQL  = "UPDATE user_usr SET usr_SearchLimit = " . $_SESSION['SearchLimit'];
+	$uSQL .= " WHERE usr_per_ID = " . $_SESSION['iUserID'];
+    $rsUser = RunQuery($uSQL);
+}
+
+$sPersonColumn3 = "";
+if (isset($_GET["PersonColumn3"])){
+	$sPersonColumn3 = FilterInput($_GET["PersonColumn3"]);
+	setcookie("PersonColumn3", $sPersonColumn3, time()+60*60*24*90, "/" );
 }
 
 // Set the page title
 if ($sMode == 'person')
 {
-        $sPageTitle = gettext("Person Listing");
-        $iMode = 1;
+    $sPageTitle = gettext("Person Listing");
+    $iMode = 1;
 
-		if (strlen($_GET["Classification"]))
-				$iClassification = FilterInput($_GET["Classification"],'int');
-        if (strlen($_GET["Gender"])) $iGender = FilterInput($_GET["Gender"],'int');
-        if (strlen($_GET["grouptype"]))
+	if (strlen($_GET["Classification"]))
+		$iClassification = FilterInput($_GET["Classification"],'int');
+	if (strlen($_GET["FamilyRole"]))
+		$iFamilyRole = FilterInput($_GET["FamilyRole"],'int');
+    if (strlen($_GET["Gender"])) 
+		$iGender = FilterInput($_GET["Gender"],'int');
+    if (strlen($_GET["grouptype"]))
+    {
+        $iGroupType = FilterInput($_GET["grouptype"],'int');
+        if (strlen($_GET["groupid"]))
         {
-                $iGroupType = FilterInput($_GET["grouptype"],'int');
-                if (strlen($_GET["groupid"]))
-                {
-                        $iGroupID = FilterInput($_GET["groupid"],'int');
-                        if ($iGroupID == 0) unset($iGroupID);
-                }
+            $iGroupID = FilterInput($_GET["groupid"],'int');
+            if ($iGroupID == 0) unset($iGroupID);
         }
+    }
 }
 elseif ($sMode == 'groupassign')
 {
-        $sPageTitle = gettext("Group Assignment Helper");
-        $iMode = 2;
+    $sPageTitle = gettext("Group Assignment Helper");
+    $iMode = 2;
 
-		if (strlen($_GET["Classification"]))
-				$iClassification = FilterInput($_GET["Classification"],'int');
-        if (strlen($_GET["Gender"])) $iGender = FilterInput($_GET["Gender"],'int');
-        if (isset($_GET["type"]))
-                $iGroupTypeMissing = FilterInput($_GET["type"],'int');
-        else
-                $iGroupTypeMissing = 1;
+	if (strlen($_GET["Classification"]))
+		$iClassification = FilterInput($_GET["Classification"],'int');
+	if (strlen($_GET["FamilyRole"]))
+		$iFamilyRole = FilterInput($_GET["FamilyRole"],'int');
+    if (strlen($_GET["Gender"]))
+		$iGender = FilterInput($_GET["Gender"],'int');
+    if (isset($_GET["type"]))
+        $iGroupTypeMissing = FilterInput($_GET["type"],'int');
+    else
+        $iGroupTypeMissing = 1;
 }
 else
 {
-        $sPageTitle = gettext("Family Listing");
-        $iMode = 3;
+    $sPageTitle = gettext("Family Listing");
+    $iMode = 3;
 }
 
 $iPerPage = $_SESSION['SearchLimit'];
@@ -186,224 +207,250 @@ else
 </script>
 
 <?php
+
 // Create array with Classification Information (lst_ID = 1)
 $sSQL = "SELECT * FROM list_lst where lst_ID=1 ORDER BY lst_OptionSequence";
 $rsClassification = mysql_query($sSQL);
 
-$aOptionID[0] = 0;
-$aOptionName[0] = "Unassigned";
+unset($aClassificationName);
+$aClassificationName[0] = "Unassigned";
 while ($aRow = mysql_fetch_array($rsClassification))
 {
-extract($aRow);
-$aOptionID[$lst_OptionSequence]=$lst_OptionID;
-$aOptionName[$lst_OptionSequence]=$lst_OptionName;
+	extract($aRow);
+	$aClassificationName[intval($lst_OptionID)]=$lst_OptionName;
 }
+
+// Create array with Family Role Information (lst_ID = 2)
+$sSQL = "SELECT * FROM list_lst where lst_ID=2 ORDER BY lst_OptionSequence";
+$rsFamilyRole = mysql_query($sSQL);
+
+unset($aFamilyRoleName);
+$aFamilyRoleName[0] = "Unassigned";
+while ($aRow = mysql_fetch_array($rsFamilyRole))
+{
+	extract($aRow);
+	$aFamilyRoleName[intval($lst_OptionID)]=$lst_OptionName;
+}
+
 
 if ($iMode == 1 || $iMode == 2)
 {
-        // SQL for group-assignment helper
-        if ($iMode == 2)
+    // SQL for group-assignment helper
+    if ($iMode == 2)
+    {
+    	$sBaseSQL  = "SELECT *, IF(LENGTH(per_Zip) > 0,per_Zip,fam_Zip) AS zip ";
+		$sBaseSQL .= "FROM person_per LEFT JOIN family_fam ";
+		$sBaseSQL .= "ON person_per.per_fam_ID = family_fam.fam_ID ";
+
+        // Find people who are part of a group of the specified type.
+        // MySQL doesn't have subqueries until version 4.1.. for now, do it the hard way
+        $sSQLsub  = "SELECT per_ID FROM person_per LEFT JOIN person2group2role_p2g2r ";
+		$sSQLsub .= "ON p2g2r_per_ID = per_ID LEFT JOIN group_grp ";
+		$sSQLsub .= "ON grp_ID = p2g2r_grp_ID ";
+		$sSQLsub .= "WHERE grp_Type = $iGroupTypeMissing GROUP BY per_ID";
+        $rsSub = RunQuery($sSQLsub);
+
+        if (mysql_num_rows($rsSub) > 0)
         {
-                $sBaseSQL = "SELECT *, IF(LENGTH(per_Zip) > 0,per_Zip,fam_Zip) AS zip FROM person_per
-                        LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID";
+            $sExcludedIDs = "";
+            while ($aTemp = mysql_fetch_row($rsSub))
+            {
+                $sExcludedIDs .= $aTemp[0] . ",";
+            }
+            $sExcludedIDs = substr($sExcludedIDs,0,-1);
+            $sGroupWhereExt = " AND per_ID NOT IN (" . $sExcludedIDs . ")";
+        }
+ 	}
 
-                // Find people who are part of a group of the specified type.
-                // MySQL doesn't have subqueries until version 4.1.. for now, do it the hard way
-                $sSQLsub = "SELECT per_ID FROM person_per
-                                        LEFT JOIN person2group2role_p2g2r ON p2g2r_per_ID = per_ID
-                                        LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
-                                        WHERE grp_Type = $iGroupTypeMissing GROUP BY per_ID";
-                $rsSub = RunQuery($sSQLsub);
+    // SQL for standard Person List
+    if ($iMode == 1)
+    {
+        // Set the base SQL
+        $sBaseSQL  = "SELECT *, IF(LENGTH(per_Zip) > 0,per_Zip,fam_Zip) AS zip ";
+		$sBaseSQL .= "FROM person_per LEFT JOIN family_fam ";
+		$sBaseSQL .= "ON per_fam_ID = family_fam.fam_ID";
 
-                if (mysql_num_rows($rsSub) > 0)
-                {
-                        $sExcludedIDs = "";
-                        while ($aTemp = mysql_fetch_row($rsSub))
-                        {
-                                $sExcludedIDs .= $aTemp[0] . ",";
-                        }
-                        $sExcludedIDs = substr($sExcludedIDs,0,-1);
-
-                        $sGroupWhereExt = " AND per_ID NOT IN (" . $sExcludedIDs . ")";
-                }
+        if (isset($iGroupID) || isset($iGroupType))
+        {
+            $sJoinExt = " LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID";
+            $sGroupBySQL = " GROUP BY per_ID";
         }
 
-        // SQL for standard Person List
+        if (isset($iGroupType))
+        {
+            $sJoinExt .= " LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID";
+        }
+
+        if (isset($iGroupType))
+        {
+            if (isset($iGroupID))
+            {
+                $sTestSQL  = "SELECT '' FROM group_grp ";
+				$sTestSQL .= "WHERE grp_ID = $iGroupID AND grp_Type = $iGroupType";
+                $rsGroupInType = RunQuery($sTestSQL);
+                if (mysql_num_rows($rsGroupInType) > 0)
+                    $sGroupWhereExt = " AND p2g2r_grp_ID = " . $iGroupID;
+                else
+                {
+                    $sGroupWhereExt = " AND grp_Type = " . $iGroupType;
+                    unset($iGroupID);
+                }
+            } else
+                    $sGroupWhereExt = " AND grp_Type = " . $iGroupType;
+        }
+    }
+
+    if (isset($sFilter))
+    {
+        // Check if there's a space
+        if (strstr($sFilter," "))
+        {
+            // break on the space...
+            $aFilter = explode(" ",$sFilter);
+
+            // use the results to check the first and last names
+            $sFilterWhereExt  = " AND per_FirstName LIKE '%" . $aFilter[0] . "%' ";
+			$sFilterWhereExt .= " AND per_LastName LIKE '%" . $aFilter[1] . "%' ";
+        } else
+		{
+            $sFilterWhereExt  = " AND (per_FirstName LIKE '%" . $sFilter . "%' ";
+			$sFilterWhereExt .= " OR per_LastName LIKE '%" . $sFilter . "%') ";
+		}
+            // Clear any previously set Letter filter to avoid re-submit in hidden form field
+            // $sLetter = "";
+    }
+
+	if (isset($iClassification))
+		$sClassificationWhereExt = " AND per_cls_ID = " . $iClassification;
+	else
+		$sClassificationWhereExt = "";
+
+	if (isset($iFamilyRole))
+		$sFamilyRoleWhereExt = " AND per_fmr_ID = " . $iFamilyRole;
+	else
+		$sFamilyRoleWhereExt = "";
+
+    if (isset($iGender))
+        $sGenderWhereExt = " AND per_Gender = " . $iGender;
+	else
+		$sGenderWhereExt = "";
+
+    if (isset($sLetter))
+        $sLetterWhereExt = " AND per_LastName LIKE '" . $sLetter . "%'";
+	else
+		$sLetterWhereExt = "";
+
+    $sWhereExt  = $sGroupWhereExt . $sFilterWhereExt . $sClassificationWhereExt; 
+	$sWhereExt .= $sFamilyRoleWhereExt . $sGenderWhereExt . $sLetterWhereExt;
+
+    $sSQL = $sBaseSQL . $sJoinExt . " WHERE 1" . $sWhereExt . $sGroupBySQL;
+
+    // If AddToCart submit button was used, run the query, add people to cart, and view cart
+    if (isset($_GET["AddAllToCart"]))
+    {
+        $rsPersons = RunQuery($sSQL);
+        while ($aRow = mysql_fetch_row($rsPersons))
+        {
+            AddToPeopleCart($aRow[0]);
+        }
+
+        Redirect("CartView.php");
+    } elseif (isset($_GET["IntersectCart"]))
+    {
+        $rsPersons = RunQuery($sSQL);
+        while ($aRow = mysql_fetch_row($rsPersons))
+	        $aItemsToProcess[] = $aRow[0];
+
+        if (isset($_SESSION['aPeopleCart']))
+            $_SESSION['aPeopleCart'] = array_intersect($_SESSION['aPeopleCart'],$aItemsToProcess);
+
+        Redirect("CartView.php");
+    } elseif (isset($_GET["RemoveFromCart"]))
+    {
+		$rsPersons = RunQuery($sSQL);
+        while ($aRow = mysql_fetch_row($rsPersons))
+        	$aItemsToProcess[] = $aRow[0];
+
+        if (isset($_SESSION['aPeopleCart']))
+        	$_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'],$aItemsToProcess);
+
+        Redirect("CartView.php");
+    }
+
+    // Get the total number of persons
+    $rsPer = RunQuery($sSQL);
+    $Total = mysql_num_rows($rsPer);
+
+    // Select the proper sort SQL
+    switch($sSort)
+    {
+        case "family":
+                $sOrderSQL = " ORDER BY fam_Name";
+                break;
+        case "zip":
+                $sOrderSQL = " ORDER BY zip, per_LastName, per_FirstName";
+                break;
+        case "entered":
+                $sOrderSQL = " ORDER BY per_DateEntered DESC";
+                break;
+        default:
+                $sOrderSQL = " ORDER BY per_LastName, per_FirstName";
+                break;
+    }
+
+    // Regular PersonList display
+    if (!$bPrintView)
+    {
+        // Append a LIMIT clause to the SQL statement
+        if (empty($_GET['Result_Set']))
+            $Result_Set = 0;
+        else
+            $Result_Set = FilterInput($_GET['Result_Set'],'int');
+
+        $sLimitSQL .= " LIMIT $Result_Set, $iPerPage";
+
+        // Run the query with order and limit to get the final result for this list page
+        $finalSQL = $sSQL . $sOrderSQL . $sLimitSQL;
+        $rsPersons = RunQuery($finalSQL);
+
+        // Run query to get first letters of last name.
+        $sSQL = "SELECT DISTINCT LEFT(per_LastName,1) AS letter FROM person_per $sJoinExt
+                        WHERE 1 $sWhereExt ORDER BY letter";
+        $rsLetters = RunQuery($sSQL);
+
+        echo "<form method=\"get\" action=\"SelectList.php\" name=\"PersonList\">";
+
         if ($iMode == 1)
         {
-                // Set the base SQL
-                $sBaseSQL = "SELECT *, IF(LENGTH(per_Zip) > 0,per_Zip,fam_Zip) AS zip FROM person_per
-                                        LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID";
+            echo "<p align=\"center\">";
+            if ($_SESSION['bAddRecords'])
+			{
+            	echo "<a href=\"PersonEditor.php\">";
+				echo gettext("Add a New Person Record") . "</a><BR>";
+			}
 
-                if (isset($iGroupID) || isset($iGroupType))
-                {
-                        $sJoinExt = " LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID";
-                        $sGroupBySQL = " GROUP BY per_ID";
-                }
+            echo "<a href=\"SelectList.php?mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID";
+            if($sSort) 
+				echo "&Sort=$sSort";
 
-                if (isset($iGroupType))
-                {
-                        $sJoinExt .= " LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID";
-                }
-
-                if (isset($iGroupType))
-                {
-                        if (isset($iGroupID))
-                        {
-                                $sTestSQL = "SELECT '' FROM group_grp WHERE grp_ID = $iGroupID AND grp_Type = $iGroupType";
-                                $rsGroupInType = RunQuery($sTestSQL);
-                                if (mysql_num_rows($rsGroupInType) > 0)
-                                        $sGroupWhereExt = " AND p2g2r_grp_ID = " . $iGroupID;
-                                else
-                                {
-                                        $sGroupWhereExt = " AND grp_Type = " . $iGroupType;
-                                        unset($iGroupID);
-                                }
-                        }
-                        else
-                                $sGroupWhereExt = " AND grp_Type = " . $iGroupType;
-                }
-        }
-
-        if (isset($sFilter))
-        {
-                // Check if there's a space
-                if (strstr($sFilter," "))
-                {
-                        // break on the space...
-                        $aFilter = explode(" ",$sFilter);
-
-                        // use the results to check the first and last names
-                        $sFilterWhereExt = " AND per_FirstName LIKE '%" . $aFilter[0] . "%' AND per_LastName LIKE '%" . $aFilter[1] . "%'";
-                }
-                else
-                        $sFilterWhereExt = " AND (per_FirstName LIKE '%" . $sFilter . "%' OR per_LastName LIKE '%" . $sFilter . "%')";
-
-                // Clear any previously set Letter filter to avoid re-submit in hidden form field
-                // $sLetter = "";
-        }
-
-		if (isset($iClassification))
+            echo "&Letter=$sLetter&PrintView=1\">" . gettext("View Printable Page of this Listing") . "</a>";
+        } else
 		{
-				$sClassificationWhereExt = " AND per_cls_ID = " . $iClassification;
-		}
-
-        if (isset($iGender))
-        {
-                $sGenderWhereExt = " AND per_Gender = " . $iGender;
+        	$sSQLtemp = "SELECT * FROM list_lst WHERE lst_ID = 3";
+            $rsGroupTypes = RunQuery($sSQLtemp);
+            echo "<p align=\"center\" class=\"MediumText\">" . gettext("Show people <b>not</b> in this group type:");
+            echo "<select name=\"type\" onchange=\"this.form.submit()\">";
+            while ($aRow = mysql_fetch_array($rsGroupTypes))
+            {
+                extract($aRow);
+                echo "<option value=\"" . $lst_OptionID . "\"";
+                if ($iGroupTypeMissing == $lst_OptionID) { echo " selected"; }
+                echo ">" . $lst_OptionName . "&nbsp;";
+            }
+            echo "</select></p>";
         }
-
-        if (isset($sLetter))
-        {
-                $sLetterWhereExt = " AND per_LastName LIKE '" . $sLetter . "%'";
-        }
-
-        $sWhereExt = $sGroupWhereExt . $sFilterWhereExt . $sClassificationWhereExt .
-											 $sGenderWhereExt . $sLetterWhereExt;
-        $sSQL = $sBaseSQL . $sJoinExt . " WHERE 1" . $sWhereExt . $sGroupBySQL;
-
-        // If AddToCart submit button was used, run the query, add people to cart, and view cart
-        if (isset($_GET["AddAllToCart"]))
-        {
-                $rsPersons = RunQuery($sSQL);
-                while ($aRow = mysql_fetch_row($rsPersons))
-                {
-                        AddToPeopleCart($aRow[0]);
-                }
-
-                Redirect("CartView.php");
-        }
-        elseif (isset($_GET["IntersectCart"]))
-        {
-                $rsPersons = RunQuery($sSQL);
-                while ($aRow = mysql_fetch_row($rsPersons))
-                        $aItemsToProcess[] = $aRow[0];
-
-                if (isset($_SESSION['aPeopleCart']))
-                        $_SESSION['aPeopleCart'] = array_intersect($_SESSION['aPeopleCart'],$aItemsToProcess);
-
-                Redirect("CartView.php");
-        }
-        elseif (isset($_GET["RemoveFromCart"]))
-        {
-                $rsPersons = RunQuery($sSQL);
-                while ($aRow = mysql_fetch_row($rsPersons))
-                        $aItemsToProcess[] = $aRow[0];
-
-                if (isset($_SESSION['aPeopleCart']))
-                        $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'],$aItemsToProcess);
-
-                Redirect("CartView.php");
-        }
-
-        // Get the total number of persons
-        $rsPer = RunQuery($sSQL);
-        $Total = mysql_num_rows($rsPer);
-
-        // Select the proper sort SQL
-        switch($sSort)
-        {
-                case "family":
-                        $sOrderSQL = " ORDER BY fam_Name";
-                        break;
-                case "zip":
-                        $sOrderSQL = " ORDER BY zip, per_LastName, per_FirstName";
-                        break;
-                case "entered":
-                        $sOrderSQL = " ORDER BY per_DateEntered DESC";
-                        break;
-
-                default:
-                        $sOrderSQL = " ORDER BY per_LastName, per_FirstName";
-                        break;
-        }
-
-        // Regular PersonList display
-        if (!$bPrintView)
-        {
-                // Append a LIMIT clause to the SQL statement
-                if (empty($_GET['Result_Set']))
-                        $Result_Set = 0;
-                else
-                        $Result_Set = FilterInput($_GET['Result_Set'],'int');
-                $sLimitSQL .= " LIMIT $Result_Set, $iPerPage";
-
-                // Run the query with order and limit to get the final result for this list page
-                $finalSQL = $sSQL . $sOrderSQL . $sLimitSQL;
-                $rsPersons = RunQuery($finalSQL);
-
-                // Run query to get first letters of last name.
-                $sSQL = "SELECT DISTINCT LEFT(per_LastName,1) AS letter FROM person_per $sJoinExt
-                                WHERE 1 $sWhereExt ORDER BY letter";
-                $rsLetters = RunQuery($sSQL);
-
-                echo "<form method=\"get\" action=\"SelectList.php\" name=\"PersonList\">";
-
-                if ($iMode == 1)
-                {
-                        echo "<p align=\"center\">";
-                        if ($_SESSION['bAddRecords'])
-                                echo "<a href=\"PersonEditor.php\">" . gettext("Add a New Person Record") . "</a><BR>";
-                        echo "<a href=\"SelectList.php?mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Classification=$iClassification&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID";
-                        if($sSort) echo "&Sort=$sSort";
-                        echo "&Letter=$sLetter&PrintView=1\">" . gettext("View Printable Page of this Listing") . "</a>";
-                }
-                else
-                {
-                        $sSQLtemp = "SELECT * FROM list_lst WHERE lst_ID = 3";
-                        $rsGroupTypes = RunQuery($sSQLtemp);
-                        echo "<p align=\"center\" class=\"MediumText\">" . gettext("Show people <b>not</b> in this group type:");
-                        echo "<select name=\"type\" onchange=\"this.form.submit()\">";
-                        while ($aRow = mysql_fetch_array($rsGroupTypes))
-                        {
-                                extract($aRow);
-                                echo "<option value=\"" . $lst_OptionID . "\"";
-                                if ($iGroupTypeMissing == $lst_OptionID) { echo " selected"; }
-                                echo ">" . $lst_OptionName . "&nbsp;";
-                        }
-                        echo "</select></p>";
-                }
-                ?>
+                
+		?>
 
                 <table align="center"><tr><td align="center">
                 <?php echo gettext("Sort order:"); ?>
@@ -430,13 +477,11 @@ if ($iMode == 1 || $iMode == 2)
                                 <option value="1" <?php 
 								if ($iGender == 1) { 
 									echo " selected ";
-									$sCustomColumn = "Gender";
 								}?>> <?php echo gettext ("Male"); ?></option>
 
                                 <option value="2" <?php 
 								if ($iGender == 2) { 
 									echo " selected ";
-									$sCustomColumn = "Gender"; 
 								}?>><?php echo gettext ("Female"); ?></option>
                         </select>
 
@@ -447,19 +492,37 @@ if ($iMode == 1 || $iMode == 2)
                                 if (!isset($iClassification)) echo " selected ";
                                 echo ">" . gettext("All Classifications") . "</option>";
 
-				 				foreach ($aOptionID as $value) {
-									echo "<option value=\"$aOptionID[$value]\"";
+				 				foreach ($aClassificationName as $key => $value) {
+									echo "<option value=\"$key\"";
 									if (isset($iClassification)) {
-										$sCustomColumn = "Classification";
-										if ($iClassification == $aOptionID[$value]) 
+										if ($iClassification == $key) 
 											echo " selected ";
 									}
-									echo ">$aOptionName[$value] </option>";
+									echo ">$value </option>";
 								}
 
                                 ?>
                         </select>
 
+                        <select name="FamilyRole" onchange="this.form.submit()">
+                                <?php
+
+                                echo "<option value=\"\" ";
+                                if (!isset($iFamilyRole)) echo " selected ";
+                                echo ">" . gettext("All Family Roles") . "</option>";
+
+				 				foreach ($aFamilyRoleName as $key => $value) {
+									echo "<option value=\"$key\"";
+									if (isset($iFamilyRole)) {
+										if ($iFamilyRole == $key) { 
+											echo " selected ";
+											}
+									}
+									echo ">$value </option>";
+								}
+
+                                ?>
+                        </select>
 
                 <?php if ($iMode == 1) { ?>
                         <select name="grouptype" onchange="this.form.submit()">
@@ -517,7 +580,7 @@ if ($iMode == 1 || $iMode == 2)
                 <?php
                 // Create Sort Links
                 echo "<div align=\"center\">";
-                echo "<a href=\"SelectList.php?mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Classification=$iClassification&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID";
+                echo "<a href=\"SelectList.php?mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID";
                 if($sSort) echo "&Sort=$sSort";
                 echo "\">" . gettext("View All") . "</a>";
                 while ($aLetter = mysql_fetch_row($rsLetters))
@@ -525,7 +588,7 @@ if ($iMode == 1 || $iMode == 2)
                         if ($aLetter[0] == $sLetter) {
                                 echo "&nbsp;&nbsp;|&nbsp;&nbsp;" . $aLetter[0];
                         } else {
-                                echo "&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"SelectList.php?mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Classification=$iClassification&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID";
+                                echo "&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"SelectList.php?mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID";
                                 if($sSort) echo "&Sort=$sSort";
                                 echo "&Letter=" . $aLetter[0] . "\">" . $aLetter[0] . "</a>";
                         }
@@ -542,7 +605,7 @@ if ($iMode == 1 || $iMode == 2)
                         if ($Result_Set < $Total && $Result_Set > 0)
                         {
                                 $thisLinkResult = $Result_Set - $iPerPage;
-                                echo "<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">". gettext("Previous Page") . "</A>&nbsp;&nbsp;";
+                                echo "<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">". gettext("Previous Page") . "</A>&nbsp;&nbsp;";
                         }
 
                         // Calculate starting and ending Page-Number Links
@@ -556,7 +619,7 @@ if ($iMode == 1 || $iMode == 2)
 
                         // Show Link "1 ..." if startpage does not start at 1
                         if ($startpage != 1)
-                                echo "<a href=\"SelectList.php?Result_Set=0&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">1</a> ... \n";
+                                echo "<a href=\"SelectList.php?Result_Set=0&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">1</a> ... \n";
 
                         // Display page links
                         if ($Pages > 1)
@@ -566,7 +629,7 @@ if ($iMode == 1 || $iMode == 2)
                                         $b = $c - 1;
                                         $thisLinkResult = $iPerPage * $b;
                                         if ($thisLinkResult != $Result_Set)
-                                                echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">$c</a>&nbsp;\n";
+                                                echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">$c</a>&nbsp;\n";
                                         else
                                                 echo "&nbsp;&nbsp;[ " . $c . " ]&nbsp;&nbsp;";
                                 }
@@ -576,33 +639,45 @@ if ($iMode == 1 || $iMode == 2)
                         if ($endpage != $Pages)
                         {
                                 $thisLinkResult = ($Pages - 1) * $iPerPage;
-                                echo " ... <a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">$Pages</a>\n";
+                                echo " ... <a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">$Pages</a>\n";
                         }
                         // Show next-page link unless we're at the last page
                         if ($Result_Set >= 0 && $Result_Set < $Total)
                         {
                                 $thisLinkResult=$Result_Set+$iPerPage;
                                 if ($thisLinkResult<$Total)
-                                        echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">" . gettext("Next Page") . "</a>";
+                                        echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">" . gettext("Next Page") . "</a>";
                         }
 
-                        echo "<input type=\"hidden\" name=\"mode\" value=\"" . $sMode . "\">";
-                        if($iGroupTypeMissing > 0)
-                                echo "<input type=\"hidden\" name=\"type\" value=\"" . $iGroupTypeMissing . "\">";
-                        if(isset($sFilter))
-                                echo "<input type=\"hidden\" name=\"Filter\" value=\"" . $sFilter . "\">";
-                        if(isset($sSort))
-                                echo "<input type=\"hidden\" name=\"Sort\" value=\"" . $sSort . "\">";
-                        if(isset($sLetter))
-                                echo "<input type=\"hidden\" name=\"Letter\" value='" . $sLetter . "'\">";
-                        if(isset($iClassification))
-                                echo "<input type=\"hidden\" name=\"Classification\" value='". $iClassification ."'\">";
-                        if(isset($iGender))
-                                echo "<input type=\"hidden\" name=\"Gender\" value='". $iGender ."'\">";
-                        if(isset($iGroupType))
-                                echo "<input type=\"hidden\" name=\"grouptype\" value='". $iGroupType ."'\">";
-                        if(isset($iGroupID))
-                                echo "<input type=\"hidden\" name=\"groupid\" value='". $iGroupID ."'\">";
+                        echo "<input type=\"hidden\" name=\"mode\" value=\"";
+						echo $sMode . "\">";
+                        if($iGroupTypeMissing > 0) {
+                            echo "<input type=\"hidden\" name=\"type\" value=\"";
+							echo $iGroupTypeMissing . "\">"; }
+                        if(isset($sFilter)) {
+                            echo "<input type=\"hidden\" name=\"Filter\" value=\"";
+							echo $sFilter . "\">"; }
+                        if(isset($sSort)) {
+                            echo "<input type=\"hidden\" name=\"Sort\" value=\"";
+							echo $sSort . "\">"; }
+                        if(isset($sLetter)) {
+                            echo "<input type=\"hidden\" name=\"Letter\" value='";
+							echo $sLetter . "'\">"; }
+                        if(isset($iClassification)) {
+                            echo "<input type=\"hidden\" name=\"Classification\" value='";
+							echo $iClassification ."'\">"; }
+                        if(isset($iFamilyRole)) {
+                            echo "<input type=\"hidden\" name=\"FamilyRole\" value='";
+							echo $iFamilyRole ."'\">"; }
+                        if(isset($iGender)) {
+                            echo "<input type=\"hidden\" name=\"Gender\" value='";
+							echo $iGender ."'\">"; }
+                        if(isset($iGroupType)) {
+                            echo "<input type=\"hidden\" name=\"grouptype\" value='";
+							echo $iGroupType ."'\">"; }
+                        if(isset($iGroupID)) {
+                            echo "<input type=\"hidden\" name=\"groupid\" value='";
+							echo $iGroupID ."'\">"; }
 
                         // Display record limit per page
                         if ($_SESSION['SearchLimit'] == "5")
@@ -617,180 +692,251 @@ if ($iMode == 1 || $iMode == 2)
                                 $sLimit50 = "selected";
 
                         echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;". gettext("Display:") . "&nbsp;
-                        <select class=\"SmallText\" name=\"Number\">
+				<select class=\"SmallText\" name=\"Number\" onchange=\"this.form.submit()\">
                                 <option value=\"5\" $sLimit5>5</option>
                                 <option value=\"10\" $sLimit10>10</option>
                                 <option value=\"20\" $sLimit20>20</option>
                                 <option value=\"25\" $sLimit25>25</option>
                                 <option value=\"50\" $sLimit50>50</option>
-                        </select>&nbsp;
-                        <input type=\"submit\" class=\"icTinyButton\" value=\"". gettext("Go") ."\">
+				</select>&nbsp;
                         </form>
                         </div>
                         <BR>";
                  } ?>
 
 <?php
-if(!isset($iClassification) && !isset($iGender)) {
-	$sCustomColumn = "Gender";
-//	$sCustomColumn = "Classification";
+
+// At this point we have finished the forms at the top of SelectList.  
+// Now begin the table displaying results.
+
+// Read if sort by person is selected column 3 is user selectable.  If the
+// user has not selected a value then read from cookie
+if (!$sPersonColumn3) {
+	switch ($_COOKIE[PersonColumn3]) 
+	{
+	case ("Family Role"):
+		$sPersonColumn3 = "Family Role";
+		break;
+	case ("Gender"):
+		$sPersonColumn3 = "Gender";
+		break;
+	default:
+		$sPersonColumn3 = "Classification";
+	break;
+	}
 }
 
-if(isset($iClassification) && isset($iGender)) {
-	$sCustomColumn = "Gender";
-//	$sCustomColumn = "Classification";
-} ?>
+// Results table begins here
+echo "<table cellpadding=\"4\" align=\"center\" cellspacing=\"0\" width=\"100%\">";
+echo "<tr class=\"TableHeader\">";
+                                
+if ($_SESSION['bEditRecords']) 
+	echo "<td width=\"25\">" . gettext("Edit") . "</td>";
 
-                <table cellpadding="4" align="center" cellspacing="0" width="100%">
-                        <tr class="TableHeader">
-                                <?php if ($_SESSION['bEditRecords']) { ?>
-                                        <td width="25"><?php echo gettext("Edit"); ?></td>
-                                <?php } ?>
-                                <td><a href="SelectList.php?mode=<?php echo $sMode; ?>&type=<?php echo $iGroupTypeMissing;?>&Sort=name&Filter=<?php echo $sFilter ?>"><?php echo gettext("Name"); ?></a></td>
-                                <td><?php
-									if($sCustomColumn == "Classification")
-										echo gettext("Classification");
-									else
-										echo gettext("Gender") ?>
-								</td>
+echo "<td><a href=\"SelectList.php?mode=" .$sMode. "&type=" .$iGroupTypeMissing;
+echo "&Sort=name&Filter=" .$sFilter. "\">" . gettext("Name") . "</a></td>";
 
-                                <td><a href="SelectList.php?mode=<?php echo $sMode; ?>&type=<?php echo $iGroupTypeMissing;?>&Sort=family&Filter=<?php echo $sFilter ?>"><?php echo gettext("Family"); ?></a></td>
-                                <td><?php echo gettext("Zip/Postal Code"); ?></td>
-                                <td><?php echo gettext("Cart"); ?></td>
-                                <?php if ($iMode == 1) { ?>
-                                        <td><?php echo gettext("vCard"); ?></td>
-                                        <td><?php echo gettext("Printable Record"); ?></td>
-                                <?php } else { ?>
-                                        <td><?php echo gettext("Assign"); ?></td>
-                                <?php } ?>
-                        </tr>
-                        <tr>
-                                <td>&nbsp;</td>
-                        </tr>
+echo "<td><form>";
+echo "<input type=\"hidden\" name=\"mode\" value=\"" .$sMode. "\">";
+if($iGroupTypeMissing > 0) 
+	echo "<input type=\"hidden\" name=\"type\" value=\"" .$iGroupTypeMissing. "\">";
+if(isset($sFilter)) 
+	echo "<input type=\"hidden\" name=\"Filter\" value=\"" .$sFilter. "\">";
+if(isset($sSort)) 
+	echo "<input type=\"hidden\" name=\"Sort\" value=\"" .$sSort. "\">";
+if(isset($sLetter)) 
+	echo "<input type=\"hidden\" name=\"Letter\" value='" .$sLetter. "'\">";
+if(isset($iClassification)) 
+	echo "<input type=\"hidden\" name=\"Classification\" value='" .$iClassification. "'\">";
+if(isset($iFamilyRole)) 
+	echo "<input type=\"hidden\" name=\"FamilyRole\" value='" .$iFamilyRole. "'\">";
+if(isset($iGender)) 
+	echo "<input type=\"hidden\" name=\"Gender\" value='" .$iGender. "'\">"; 
+if(isset($iGroupType)) 
+	echo "<input type=\"hidden\" name=\"grouptype\" value='" .$iGroupType. "'\">"; 
+if(isset($iGroupID))
+	echo "<input type=\"hidden\" name=\"groupid\" value='" .$iGroupID. "'\">";
 
-                <?php
+$aPersonCol3 = array("Classification","Family Role","Gender");
 
-                $sRowClass = "RowColorA";
+echo "<select class=\"SmallText\" name=\"PersonColumn3\" onchange=\"this.form.submit()\">";
 
-                $iPrevFamily = -1;
+foreach($aPersonCol3 as $s)
+{
+	$sel = "";
+	if($sPersonColumn3 == $s) 
+		$sel = " selected";
+	echo "<option value=\"".$s."\"".$sel.">".$s."</option>";
+}
 
-                //Loop through the person recordset
-                while ($aRow = mysql_fetch_array($rsPersons))
-                {
-                        $per_Title = "";
-                        $per_FirstName = "";
-                        $per_MiddleName = "";
-                        $per_LastName = "";
-                        $per_Suffix = "";
-                        $per_Gender = "";
+echo "</select></form></td>";
 
-                        $fam_Name = "";
-                        $fam_Address1 = "";
-                        $fam_Address2 = "";
-                        $fam_City = "";
-                        $fam_State = "";
+echo "<td><a href=\"SelectList.php?mode=" .$sMode. "&type=" .$iGroupTypeMissing;
+echo "&Sort=family&Filter=" .$sFilter. "\">" . gettext("Family") . "</a></td>";
 
-                        extract($aRow);
+echo "<td>" . gettext("Zip/Postal Code") . "</td>";
 
-                        // Add alphabetical headers based on sort
-                        switch($sSort)
-                        {
-                                case "family":
-                                        if ($fam_ID != $iPrevFamily || $iPrevFamily == -1)
-                                        {
-                                                echo $sBlankLine;
-                                                $sBlankLine = "<tr><td>&nbsp;</td></tr>";
-                                                echo "<tr><td></td><td class=\"ControlBreak\">";
-                                                if (strlen($fam_Name) > 0) { echo $fam_Name; } else {echo "Unassigned"; }
-                                                echo "</td></tr>";
-                                                $sRowClass = "RowColorA";
-                                        }
-                                        break;
+echo "<td>" . gettext("Cart") . "</td>";
 
-                                case "name":
+if ($iMode == 1) 
+{
+	echo "<td>" . gettext("vCard") . "</td>";
+	echo "<td>" . gettext("Printable Record") . "</td>";
+} else 
+{
+	echo "<td>" . gettext("Assign") . "</td>";
+}
+ 
+echo "</tr>";
+echo "<tr><td>&nbsp;</td></tr>";
 
-                                        if (substr($per_LastName,0,1) != $sPrevLetter)
-                                        {
-                                                echo $sBlankLine;
-                                                echo "<tr>";
-                                                echo "<td></td><td class=\"ControlBreak\">" . strtoupper(substr($per_LastName,0,1)) . "</td></tr>";
-                                                $sBlankLine = "<tr><td>&nbsp</td></tr>";
-                                                $sRowClass = "RowColorA";
-                                        }
-                                        break;
+$sRowClass = "RowColorA";
 
-                                default:
-                                        break;
-                        }
+$iPrevFamily = -1;
 
-                        //Alternate the row color
-                        $sRowClass = AlternateRowStyle($sRowClass);
+//Loop through the person recordset
+while ($aRow = mysql_fetch_array($rsPersons))
+{
+	$per_Title = "";
+	$per_FirstName = "";
+	$per_MiddleName = "";
+	$per_LastName = "";
+	$per_Suffix = "";
+	$per_Gender = "";
 
-                        //Display the row
-                        ?>
+	$fam_Name = "";
+	$fam_Address1 = "";
+	$fam_Address2 = "";
+	$fam_City = "";
+	$fam_State = "";
 
-                        <tr class="<?php echo $sRowClass; ?>">
-                                <?php if ($_SESSION['bEditRecords']) { ?>
-                                        <td><a href="PersonEditor.php?PersonID=<?php echo $per_ID . "\">" . gettext (Edit); ?></a></td>
-                                <?php } ?>
-                                <td><a href="PersonView.php?PersonID=<?php echo $per_ID ?>"><?php echo FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3); ?></a>&nbsp;                         </td>
+	extract($aRow);
 
-							<td><?php
-							if ($sCustomColumn == "Classification") {
- 								// Display Classification
- 								foreach ($aOptionID as $value) {
- 									if ($aOptionID[$value] == $per_cls_ID)
- 										echo $aOptionName[$value];
- 								}
-							} else {
-								// Display Gender
-								switch ($per_Gender) {
-									case 1: echo gettext("Male"); break; 
-									case 2: echo gettext("Female"); break; 
-									default: echo "";
-								}
-							}?>&nbsp;</td>
+	// Add alphabetical headers based on sort
+	$sBlankLine = "<tr><td>&nbsp;</td></tr>";
+	switch($sSort)
+	{
+	case "family":
+		if ($fam_ID != $iPrevFamily || $iPrevFamily == -1)
+		{
+			echo $sBlankLine;
+			echo "<tr><td></td><td class=\"ControlBreak\">";
 
+			if (strlen($fam_Name) > 0) 
+				echo $fam_Name;
+			else
+				echo "Unassigned";
 
-                                <td>
-                                        <?php
-                                        if ($fam_Name != "") {
-                                                echo "<a href=\"FamilyView.php?FamilyID=" . $fam_ID . "\">" . $fam_Name;
-                                                echo FormatAddressLine($fam_Address1, $fam_City, $fam_State) . "</a>";
-                                        }
-                                        ?>&nbsp;
-                                </td>
-                                <td><?php if (strlen($zip)) echo $zip; else echo gettext("unassigned"); ?></td>
-                                <td><a onclick="return AddToCart(<?php echo $per_ID ?>);" href="blank.html"><?php echo gettext("Add to Cart"); ?></a></td>
-                                <?php if ($iMode == 1) { ?>
-                                        <td><a href="VCardCreate.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Create vCard"); ?></a></td>
-                                        <td><a href="PrintView.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Print Page"); ?></a></td>
-                                <?php } else { ?>
-                                        <td><a href="PersonToGroup.php?PersonID=<?php echo $per_ID ?>&prevquery=<?php echo rawurlencode($_SERVER["QUERY_STRING"]);?>"><?php echo gettext("Add to Group"); ?></a></td>
-                                <?php } ?>
-                        </tr>
+			echo "</td></tr>";
+			$sRowClass = "RowColorA";
+		}
+		break;
 
-                        <?php
-                        //Store the family to enable the control break
-                        $iPrevFamily = $fam_ID;
+	case "name":
+		if (substr($per_LastName,0,1) != $sPrevLetter)
+		{
+			echo $sBlankLine;
+			echo "<tr><td></td>";
+			echo "<td class=\"ControlBreak\">" . strtoupper(substr($per_LastName,0,1));
+			echo "</td></tr>";
+			$sRowClass = "RowColorA";
+		}
+		break;
 
-                        //If there was no family, set it to 0
-                        if (strlen($iPrevFamily) < 1)
-                                $iPrevFamily = 0;
+	default:
+		break;
+	} // end switch
 
-                        //Store the first letter of this record to enable the control break
-                        $sPrevLetter = substr($per_LastName,0,1);
-                }
+	//Alternate the row color
+	$sRowClass = AlternateRowStyle($sRowClass);
 
-                //Close the table
-                echo "</table>\n";
+	//Display the row
+    echo "<tr class=" .$sRowClass. "\">";
+	if ($_SESSION['bEditRecords']) 
+	{
+		echo "<td><a href=\"PersonEditor.php?PersonID=" .$per_ID. "\">";
+		echo gettext(Edit) . "</a></td>";
+	} 
 
-                require "Include/Footer.php";
-                exit;
+	echo "<td><a href=\"PersonView.php?PersonID=" .$per_ID. "\">";
+	echo FormatFullName($per_Title, $per_FirstName, $per_MiddleName, 
+						$per_LastName, $per_Suffix, 3);
+	echo "</a>&nbsp;</td>";
 
-        } else { ?>
+	echo "<td>";
+	if ($sPersonColumn3 == "Classification") 
+ 		echo $aClassificationName[$per_cls_ID]; 
+	elseif ($sPersonColumn3 == "Family Role")
+		echo $aFamilyRoleName[$per_fmr_ID];
+	else 
+	{	// Display Gender
+		switch ($per_Gender) 
+		{
+			case 1: echo gettext("Male"); break; 
+			case 2: echo gettext("Female"); break; 
+			default: echo "";
+		}
+	}
+	echo "&nbsp;</td>";
 
-                <table cellpadding="2" align="center" cellspacing="0" width="100%">
+	echo "<td>";
+	if ($fam_Name != "") 
+	{
+		echo "<a href=\"FamilyView.php?FamilyID=" . $fam_ID . "\">" . $fam_Name;
+		echo FormatAddressLine($fam_Address1, $fam_City, $fam_State) . "</a>";
+	}
+	echo "&nbsp;</td>";
+
+	echo "<td>";
+	if (strlen($zip)) 
+		echo $zip; 
+	else 
+		echo gettext("unassigned"); 
+	echo "</td>";
+
+	echo "<td><a onclick=\"return AddToCart(" .$per_ID. ");\" href=\"blank.html\">";
+	echo gettext("Add to Cart") . "</a></td>";
+
+	if ($iMode == 1) 
+	{
+		echo "<td><a href=\"VCardCreate.php?PersonID=" .$per_ID. "\">";
+		echo gettext("Create vCard") . "</a></td>";
+		echo "<td><a href=\"PrintView.php?PersonID=" .$per_ID. "\">";
+		echo gettext("Print Page") . "</a></td>";
+	} else 
+	{
+		echo "<td><a href=\"PersonToGroup.php?PersonID=" .$per_ID;
+		echo "&prevquery=" . rawurlencode($_SERVER["QUERY_STRING"]) . "\">";
+		echo gettext("Add to Group") . "</a></td>";
+	}
+
+	echo "</tr>";
+                 
+	//Store the family to enable the control break
+	$iPrevFamily = $fam_ID;
+
+	//If there was no family, set it to 0
+	if (strlen($iPrevFamily) < 1)
+		$iPrevFamily = 0;
+
+	//Store the first letter of this record to enable the control break
+	$sPrevLetter = substr($per_LastName,0,1);
+
+} // end of while loop
+
+//Close the table
+echo "</table>\n";
+
+require "Include/Footer.php";
+exit;
+
+} 
+
+else 
+{ // This section creates the "Printable listing" version of the page
+
+?>
+<table cellpadding="2" align="center" cellspacing="0" width="100%">
 
                         <tr class="TableHeader">
                                 <td><?php echo gettext("Name"); ?></td>
