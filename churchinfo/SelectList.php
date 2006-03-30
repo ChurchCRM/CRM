@@ -21,6 +21,40 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+$iTenThousand = 10000;  // Constant used to offset negative choices in drop down lists
+
+// Create array with Classification Information (lst_ID = 1)
+$sClassSQL  = "SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence";
+$rsClassification = RunQuery($sClassSQL);
+unset($aClassificationName);
+$aClassificationName[0] = "Unassigned";
+while ($aRow = mysql_fetch_array($rsClassification))
+{
+	extract($aRow);
+	$aClassificationName[intval($lst_OptionID)]=$lst_OptionName;
+}
+
+// Create array with Family Role Information (lst_ID = 2)
+$sFamRoleSQL  = "SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence";
+$rsFamilyRole = RunQuery($sFamRoleSQL);
+unset($aFamilyRoleName);
+$aFamilyRoleName[0] = "Unassigned";
+while ($aRow = mysql_fetch_array($rsFamilyRole))
+{
+	extract($aRow);
+	$aFamilyRoleName[intval($lst_OptionID)]=$lst_OptionName;
+}
+
+// Create array with Group Type Information (lst_ID = 3)
+$sGroupTypeSQL  = "SELECT * FROM list_lst WHERE lst_ID=3 ORDER BY lst_OptionSequence";
+$rsGroupTypes = RunQuery($sGroupTypeSQL);
+unset($aGroupTypes);
+while ($aRow = mysql_fetch_array($rsGroupTypes))
+{
+	extract($aRow);
+	$aGroupTypes[intval($lst_OptionID)]=$lst_OptionName;
+}
+
 // Filter received user input as needed
 if (strlen($_GET["Sort"]))
         $sSort = FilterInput($_GET["Sort"]);
@@ -36,7 +70,7 @@ if (strlen($_GET["Letter"]))
 
 $sMode = $_GET["mode"];
 if (!strlen($sMode)) // default to person mode
-	$sMode = "person";
+	$sMode = 'person';
 
 // Save default search mode
 $_SESSION['bSearchFamily'] = ($sMode != 'person');
@@ -49,7 +83,7 @@ if (isset($_GET["Number"]))
     $rsUser = RunQuery($uSQL);
 }
 
-$sPersonColumn3 = "";
+unset($sPersonColumn3);
 if (isset($_GET["PersonColumn3"])){
 	$sPersonColumn3 = FilterInput($_GET["PersonColumn3"]);
 	setcookie("PersonColumn3", $sPersonColumn3, time()+60*60*24*90, "/" );
@@ -208,31 +242,6 @@ else
 
 <?php
 
-// Create array with Classification Information (lst_ID = 1)
-$sSQL = "SELECT * FROM list_lst where lst_ID=1 ORDER BY lst_OptionSequence";
-$rsClassification = mysql_query($sSQL);
-
-unset($aClassificationName);
-$aClassificationName[0] = "Unassigned";
-while ($aRow = mysql_fetch_array($rsClassification))
-{
-	extract($aRow);
-	$aClassificationName[intval($lst_OptionID)]=$lst_OptionName;
-}
-
-// Create array with Family Role Information (lst_ID = 2)
-$sSQL = "SELECT * FROM list_lst where lst_ID=2 ORDER BY lst_OptionSequence";
-$rsFamilyRole = mysql_query($sSQL);
-
-unset($aFamilyRoleName);
-$aFamilyRoleName[0] = "Unassigned";
-while ($aRow = mysql_fetch_array($rsFamilyRole))
-{
-	extract($aRow);
-	$aFamilyRoleName[intval($lst_OptionID)]=$lst_OptionName;
-}
-
-
 if ($iMode == 1 || $iMode == 2)
 {
     // SQL for group-assignment helper
@@ -289,16 +298,18 @@ if ($iMode == 1 || $iMode == 2)
 				$sTestSQL .= "WHERE grp_ID = $iGroupID AND grp_Type = $iGroupType";
                 $rsGroupInType = RunQuery($sTestSQL);
                 if (mysql_num_rows($rsGroupInType) > 0)
-                    $sGroupWhereExt = " AND p2g2r_grp_ID = " . $iGroupID;
+                    $sGroupWhereExt = " AND p2g2r_grp_ID IN (" . $iGroupID . ")";
                 else
                 {
-                    $sGroupWhereExt = " AND grp_Type = " . $iGroupType;
+                    $sGroupWhereExt = " AND grp_Type IN (" . $iGroupType . ")";
                     unset($iGroupID);
                 }
             } else
-                    $sGroupWhereExt = " AND grp_Type = " . $iGroupType;
+                    $sGroupWhereExt = " AND grp_Type IN (" . $iGroupType . ")";
         }
+
     }
+
 
     if (isset($sFilter))
     {
@@ -321,12 +332,44 @@ if ($iMode == 1 || $iMode == 2)
     }
 
 	if (isset($iClassification))
-		$sClassificationWhereExt = " AND per_cls_ID = " . $iClassification;
+	{
+		$sClassificationList = $iClassification;
+		if($iClassification < 0)
+		{
+			$sClassificationList = "";
+			foreach($aClassificationName as $key => $value)
+				if ($key != ($iClassification+$iTenThousand))
+					$sClassificationList .= $key . ",";
+
+			if (strlen($sClassificationList))  // Remove trailing comma
+				$sClassificationList = substr($sClassificationList,0,-1);
+		}
+		if (strlen($sClassificationList))
+			$sClassificationWhereExt = " AND per_cls_ID IN (" . $sClassificationList . ")";
+		else 
+			$sClassificationWhereExt = "";
+	}
 	else
 		$sClassificationWhereExt = "";
 
 	if (isset($iFamilyRole))
-		$sFamilyRoleWhereExt = " AND per_fmr_ID = " . $iFamilyRole;
+	{
+		$sFamilyRoleList = $iFamilyRole;
+		if($iFamilyRole < 0)
+		{
+			$sFamilyRoleList = "";
+			foreach($aFamilyRoleName as $key => $value)
+				if ($key != ($iFamilyRole+$iTenThousand))
+					$sFamilyRoleList .= $key . ",";
+
+			if (strlen($sFamilyRoleList))  // Remove trailing comma
+				$sFamilyRoleList = substr($sFamilyRoleList,0,-1);
+		}
+		if (strlen($sFamilyRoleList))
+			$sFamilyRoleWhereExt = " AND per_fmr_ID IN (" . $sFamilyRoleList . ")";
+		else 
+			$sFamilyRoleWhereExt = "";
+	}
 	else
 		$sFamilyRoleWhereExt = "";
 
@@ -488,38 +531,59 @@ if ($iMode == 1 || $iMode == 2)
                         <select name="Classification" onchange="this.form.submit()">
                                 <?php
 
-                                echo "<option value=\"\" ";
-                                if (!isset($iClassification)) echo " selected ";
-                                echo ">" . gettext("All Classifications") . "</option>";
 
-				 				foreach ($aClassificationName as $key => $value) {
-									echo "<option value=\"$key\"";
-									if (isset($iClassification)) {
-										if ($iClassification == $key) 
-											echo " selected ";
-									}
-									echo ">$value </option>";
-								}
+				echo "<option value=\"\" ";
+				if (!isset($iClassification)) echo " selected ";
+					echo ">" . gettext("All Classifications") . "</option>";
+
+				foreach ($aClassificationName as $key => $value) 
+				{
+					echo "<option value=\"$key\"";
+					if (isset($iClassification))
+						if ($iClassification == $key) 
+							echo " selected ";
+					echo ">$value </option>";
+				}
+
+				foreach ($aClassificationName as $key => $value) 
+				{
+					echo "<option value=\"" .($key-$iTenThousand). "\"";
+					if (isset($iClassification))
+						if ($iClassification == ($key-$iTenThousand)) 
+							echo " selected ";
+					echo ">! $value</option>";
+				}
+
 
                                 ?>
                         </select>
 
+
+
                         <select name="FamilyRole" onchange="this.form.submit()">
                                 <?php
 
-                                echo "<option value=\"\" ";
-                                if (!isset($iFamilyRole)) echo " selected ";
-                                echo ">" . gettext("All Family Roles") . "</option>";
+				echo "<option value=\"\" ";
+				if (!isset($iFamilyRole)) echo " selected ";
+					echo ">" . gettext("All Family Roles") . "</option>";
 
-				 				foreach ($aFamilyRoleName as $key => $value) {
-									echo "<option value=\"$key\"";
-									if (isset($iFamilyRole)) {
-										if ($iFamilyRole == $key) { 
-											echo " selected ";
-											}
-									}
-									echo ">$value </option>";
-								}
+				foreach ($aFamilyRoleName as $key => $value) 
+				{
+					echo "<option value=\"$key\"";
+					if (isset($iFamilyRole))
+						if ($iFamilyRole == $key)
+							echo " selected ";
+					echo ">$value </option>";
+				}
+
+ 				foreach ($aFamilyRoleName as $key => $value) 
+				{
+					echo "<option value=\"" . ($key-$iTenThousand) . "\"";
+					if (isset($iFamilyRole))
+						if ($iFamilyRole == ($key-$iTenThousand))
+							echo " selected ";
+					echo ">! $value </option>";
+				}
 
                                 ?>
                         </select>
@@ -527,21 +591,20 @@ if ($iMode == 1 || $iMode == 2)
                 <?php if ($iMode == 1) { ?>
                         <select name="grouptype" onchange="this.form.submit()">
                                 <?php
-                                $sGroupTypeSQL = "SELECT * FROM list_lst WHERE lst_ID='3' ORDER BY lst_OptionSequence";
-                                $rsGroupTypes = RunQuery($sGroupTypeSQL);
 
-                                echo "<option value=\"\" ";
-                                if (!isset($iGroupType)) echo " selected ";
-                                echo ">" . gettext("All Group Types") . "</option>";
+				echo "<option value=\"\" ";
+				if (!isset($iGroupType)) echo " selected ";
+					echo ">" . gettext("All Group Types") . "</option>";
 
-                                while($orows = mysql_fetch_array($rsGroupTypes))
-                                {
-                                        $OptionID = $orows["lst_OptionID"];
-                                        $OptionName = $orows["lst_OptionName"];
-                                        echo "<option value=\"$OptionID\"";
-                                        if ($iGroupType==$OptionID) echo " selected ";
-                                        echo ">$OptionName </option>";
-                                }
+ 				foreach ($aGroupTypes as $key => $value) 
+				{
+					echo "<option value=\"$key\"";
+					if (isset($iGroupType))
+						if ($iGroupType == $key)
+							echo " selected ";
+					echo ">$value </option>";
+				}
+
                                 ?>
                         </select>
                         <?php
@@ -711,7 +774,7 @@ if ($iMode == 1 || $iMode == 2)
 
 // Read if sort by person is selected column 3 is user selectable.  If the
 // user has not selected a value then read from cookie
-if (!$sPersonColumn3) {
+if (!isset($sPersonColumn3)) {
 	switch ($_COOKIE[PersonColumn3]) 
 	{
 	case ("Family Role"):
@@ -736,7 +799,7 @@ if ($_SESSION['bEditRecords'])
 echo "<td><a href=\"SelectList.php?mode=" .$sMode. "&type=" .$iGroupTypeMissing;
 echo "&Sort=name&Filter=" .$sFilter. "\">" . gettext("Name") . "</a></td>";
 
-echo "<td><form>";
+echo "<form><td>";
 echo "<input type=\"hidden\" name=\"mode\" value=\"" .$sMode. "\">";
 if($iGroupTypeMissing > 0) 
 	echo "<input type=\"hidden\" name=\"type\" value=\"" .$iGroupTypeMissing. "\">";
@@ -757,24 +820,23 @@ if(isset($iGroupType))
 if(isset($iGroupID))
 	echo "<input type=\"hidden\" name=\"groupid\" value='" .$iGroupID. "'\">";
 
-$aPersonCol3 = array("Classification","Family Role","Gender");
-
 echo "<select class=\"SmallText\" name=\"PersonColumn3\" onchange=\"this.form.submit()\">";
 
+$aPersonCol3 = array("Classification","Family Role","Gender");
 foreach($aPersonCol3 as $s)
 {
 	$sel = "";
 	if($sPersonColumn3 == $s) 
 		$sel = " selected";
-	echo "<option value=\"".$s."\"".$sel.">".$s."</option>";
+	echo "<option value=\"".$s."\"".$sel.">".gettext($s)."</option>";
 }
 
-echo "</select></form></td>";
+echo "</select></td>";
 
 echo "<td><a href=\"SelectList.php?mode=" .$sMode. "&type=" .$iGroupTypeMissing;
 echo "&Sort=family&Filter=" .$sFilter. "\">" . gettext("Family") . "</a></td>";
 
-echo "<td>" . gettext("Zip/Postal Code") . "</td>";
+echo "<td>" . gettext("Zip/Postal Code") . "</td></form>";
 
 echo "<td>" . gettext("Cart") . "</td>";
 
@@ -865,9 +927,9 @@ while ($aRow = mysql_fetch_array($rsPersons))
 
 	echo "<td>";
 	if ($sPersonColumn3 == "Classification") 
- 		echo $aClassificationName[$per_cls_ID]; 
+ 		echo gettext($aClassificationName[$per_cls_ID]); 
 	elseif ($sPersonColumn3 == "Family Role")
-		echo $aFamilyRoleName[$per_fmr_ID];
+		echo gettext($aFamilyRoleName[$per_fmr_ID]);
 	else 
 	{	// Display Gender
 		switch ($per_Gender) 
