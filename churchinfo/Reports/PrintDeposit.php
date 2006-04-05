@@ -223,7 +223,7 @@ if ($output == "pdf") {
 			 FROM pledge_plg
 			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-			 WHERE plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_method DESC, pledge_plg.plg_date";
+			 WHERE plg_PledgeOrPayment = 'Payment' AND plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_method DESC, pledge_plg.plg_date";
 	$rsPledges = RunQuery($sSQL);
 
 	$pdf->SetFont('Times','B', 10);
