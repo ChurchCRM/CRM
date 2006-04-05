@@ -1,20 +1,30 @@
 <?php
 /*******************************************************************************
- *
- *  filename    : Include/Config.php
- *  last change : 2003-09-30
- *  description : global configuration
- *
- *  http://www.churchinfo.org/
- *  Copyright 2001-2005 Phillip Hullquist, Deane Barker, Chris Gebhardt, 
- *                      Michael Wilt, Timothy Dearborn
- *
- *  ChurchInfo is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- ******************************************************************************/
+*
+*  filename    : Include/Config.php
+*  website     : http://www.churchdb.org
+*  description : global configuration
+*
+*  http://www.churchinfo.org/
+*  Copyright 2001-2005 Phillip Hullquist, Deane Barker, Chris Gebhardt, 
+*                      Michael Wilt, Timothy Dearborn
+*
+*
+*  Additional Contributors:
+*  2006 Ed Davis
+*
+*
+*  Copyright Contributors
+*
+*  ChurchInfo is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This file best viewed in a text editor with tabs stops set to 4 characters
+*
+******************************************************************************/
+
 
 // Database connection constants
 $sSERVERNAME = "localhost";
@@ -33,7 +43,7 @@ $sRootPath="/churchinfo";
 
 // Establish the database connection
 $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD) 
-	or die ('Cannot connect to the MySQL database because: ' . mysql_error());
+	or die ('Cannot connect to the MySQL server because: ' . mysql_error());
 
 mysql_select_db($sDATABASE) 
 	or die ('Cannot select the MySQL database because: ' . mysql_error());
