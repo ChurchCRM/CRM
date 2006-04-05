@@ -198,36 +198,38 @@ if ($iMode == 1 || $iMode == 2)
 					"ON per_fam_ID = family_fam.fam_ID ";
 
 		$sGroupWhereExt = ""; // Group Filtering Logic
+		$sJoinExt = "";
 		if (isset($iGroupType))
 		{
 			if ($iGroupType >= 0)
 			{	
-
-				$sGroupWhereExt .= " AND per_id IN (".
-					"SELECT p2g2r_per_ID FROM person2group2role_p2g2r LEFT JOIN group_grp ".
-					"ON grp_ID = p2g2r_grp_ID ".
-					"WHERE grp_type = ".$iGroupType.") ";
+				$sJoinExt = " LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID ".
+							" LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID ";
+				$sGroupWhereExt =	" AND grp_type = ".$iGroupType." ";
 
 				if (isset($iGroupID))
 					if ($iGroupID >= 0)
 					{
-						$sGroupWhereExt .= " AND per_id IN (" .
-							"SELECT p2g2r_per_ID FROM person2group2role_p2g2r ".
-							" WHERE p2g2r_grp_ID = ".$iGroupID.") ";
+						$sJoinExt =	" LEFT JOIN person2group2role_p2g2r ".
+									" ON per_ID = p2g2r_per_ID ";
+						$sGroupWhereExt =	" AND p2g2r_grp_ID=".$iGroupID." ".
+											" AND p2g2r_per_ID = per_ID ";
 					}
 					else
 					{
-						$sGroupWhereExt .= " AND per_id NOT IN (" .
-							"SELECT p2g2r_per_ID FROM person2group2role_p2g2r ".
-							" WHERE p2g2r_grp_ID = ".($iGroupID+$iTenThousand).") ";
+						$sJoinExt =	" LEFT JOIN person2group2role_p2g2r ".
+									" ON per_ID = p2g2r_per_ID " .
+									" LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID ";
+						$sGroupWhereExt =	" AND grp_type=".$iGroupType." ".
+											" AND p2g2r_grp_ID!=".($iGroupID+$iTenThousand)." ";
 					}
  			}
 			else
 			{
-				$sGroupWhereExt .= " AND per_id NOT IN (".
-					"SELECT p2g2r_per_ID FROM person2group2role_p2g2r LEFT JOIN group_grp ".
-					"ON grp_ID = p2g2r_grp_ID ".
-					"WHERE grp_type = ".($iGroupType+$iTenThousand).") ";
+				$sJoinExt = " LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID ".
+							" LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID ";
+				$sGroupWhereExt =	" AND (grp_type!=".($iGroupType+$iTenThousand)." ".
+											"OR p2g2r_grp_ID IS NULL)";
 			}
 		}
     }
@@ -252,37 +254,18 @@ if ($iMode == 1 || $iMode == 2)
 
 	$sClassificationWhereExt = "";
 	if (isset($iClassification))
-	{
 		if ($iClassification >= 0)
-		{
-			$sClassificationWhereExt = " AND per_ID IN (".
-					"SELECT per_ID from person_per ".
-					"WHERE per_cls_ID =".$iClassification.")";
-		}
+			$sClassificationWhereExt = " AND per_cls_ID=".$iClassification." ";
 		else
-		{
-			$sClassificationWhereExt = " AND per_ID NOT IN (".
-					"SELECT per_ID from person_per ".
-					"WHERE per_cls_ID =".($iClassification+$iTenThousand).")";
-		}
-	}
+			$sClassificationWhereExt = " AND per_cls_ID!=".
+											($iClassification+$iTenThousand)." ";
 	
 	$sFamilyRoleWhereExt = "";
 	if (isset($iFamilyRole))
-	{
 		if ($iFamilyRole >= 0)
-		{
-			$sFamilyRoleWhereExt = " AND per_ID IN (".
-					"SELECT per_ID from person_per ".
-					"WHERE per_fmr_ID =".$iFamilyRole.")";
-		}
+			$sFamilyRoleWhereExt = " AND per_fmr_ID=".$iFamilyRole." ";
 		else
-		{
-			$sFamilyRoleWhereExt = " AND per_ID NOT IN (".
-					"SELECT per_ID from person_per ".
-					"WHERE per_fmr_ID =".($iFamilyRole+$iTenThousand).")";
-		}
-	}
+			$sFamilyRoleWhereExt = " AND per_fmr_ID!=".($iFamilyRole+$iTenThousand)." ";
 
     if (isset($iGender))
         $sGenderWhereExt = " AND per_Gender = " . $iGender;
@@ -294,11 +277,12 @@ if ($iMode == 1 || $iMode == 2)
 	else
 		$sLetterWhereExt = "";
 
+	$sGroupBySQL = " GROUP BY per_ID";
+
     $sWhereExt =	$sGroupWhereExt . $sFilterWhereExt . $sClassificationWhereExt .
 					$sFamilyRoleWhereExt . $sGenderWhereExt . $sLetterWhereExt;
 
-    $sSQL = $sBaseSQL . " WHERE 1" . $sWhereExt . $sGroupBySQL;
-
+    $sSQL = $sBaseSQL . $sJoinExt . " WHERE 1" . $sWhereExt . $sGroupBySQL;
 
 
 	// URL to redirect back to this same page
@@ -385,7 +369,7 @@ if ($iMode == 1 || $iMode == 2)
 
         // Run query to get first letters of last name.
 		$sSQL = "SELECT DISTINCT LEFT(per_LastName,1) AS letter FROM person_per ".
-				"WHERE 1 $sWhereExt ORDER BY letter";
+				$sJoinExt . " WHERE 1 $sWhereExt ORDER BY letter";
 		$rsLetters = RunQuery($sSQL);
 
 		require "$sHeaderFile";
