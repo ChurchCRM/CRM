@@ -1,21 +1,25 @@
 <?php
 /*******************************************************************************
- *
- *  filename    : /Include/Functions.php
- *  website     : http://www.infocentral.org
- *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
- *
- *  Additional contributions by:
- *  2006 Ed Davis
- *
- *  ChurchInfo is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- ******************************************************************************/
-
-// Initialization common to all InfoCentral scripts
+*
+*  filename    : /Include/Functions.php
+*  website     : http://www.churchdb.org
+*  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
+*
+*  Additional Contributors:
+*  2006 Ed Davis
+*
+*
+*  Copyright Contributors
+*
+*  ChurchInfo is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This file best viewed in a text editor with tabs stops set to 4 characters
+*
+******************************************************************************/
+// Initialization common to all ChurchInfo scripts
 
 // Set error reporting
 if ($debug == true)
@@ -82,13 +86,25 @@ $aPropTypes = array(
 	12 => gettext("Custom Drop-Down List")
 );
 
-// Are they adding anything to the People Cart?
+// Are they adding an entire group to the cart?
+if (isset($_GET["AddGroupToPeopleCart"])) {
+	AddGroupToPeopleCart(FilterInput($_GET["AddGroupToPeopleCart"],'int'));
+	$sGlobalMessage = gettext("Group successfully added to the Cart.");
+}
+
+// Are they removing an entire group from the Cart?
+if (isset($_GET["RemoveGroupFromPeopleCart"])) {
+	RemoveGroupFromPeopleCart(FilterInput($_GET["RemoveGroupFromPeopleCart"],'int'));
+	$sGlobalMessage = gettext("Group successfully removed from the Cart.");
+}
+
+// Are they adding a person to the Cart?
 if (isset($_GET["AddToPeopleCart"])) {
 	AddToPeopleCart(FilterInput($_GET["AddToPeopleCart"],'int'));
 	$sGlobalMessage = gettext("Selected record successfully added to the Cart.");
 }
 
-// Are they removing anything from the People Cart?
+// Are they removing a person from the Cart?
 if (isset($_GET["RemoveFromPeopleCart"])) {
 	RemoveFromPeopleCart(FilterInput($_GET["RemoveFromPeopleCart"],'int'));
 	$sGlobalMessage = gettext("Selected record successfully removed from the Cart.");
@@ -150,6 +166,7 @@ function Redirect($sRelativeURL)
 	}
 
 	header("Location: " . $sProtocol . $_SERVER['HTTP_HOST'] . $sPort . $sRootPath . "/" . $sRelativeURL);
+	exit();
 }
 
 // Returns the current fiscal year
@@ -484,16 +501,51 @@ function AddToPeopleCart($sID)
 function RemoveFromPeopleCart($sID)
 {
 	// make sure the cart array exists
+	// we can't remove anybody if there is no cart
 	if(isset($_SESSION['aPeopleCart']))
 	{
-		while ($element = each($_SESSION['aPeopleCart'])) {
-			if ( $element[value] == $sID ) {
-				unset( $_SESSION['aPeopleCart'][$element[key]] );
-				break;
-			}
-		}
+		unset($aTempArray); // may not need this line, but make sure $aTempArray is empty
+		$aTempArray[] = $sID; // the only element in this array is the ID to be removed
+		$_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'],$aTempArray);
 	}
 }
+
+// Add group to cart 
+function AddGroupToPeopleCart($iGroupID)
+{
+	//Get all the members of this group
+	$sSQL =	"SELECT p2g2r_per_ID FROM person2group2role_p2g2r " .
+			"WHERE p2g2r_grp_ID = " . $iGroupID;
+	$rsGroupMembers = RunQuery($sSQL);
+
+	//Loop through the recordset
+	while ($aRow = mysql_fetch_array($rsGroupMembers))
+	{
+		extract($aRow);
+
+		//Add each person to the cart
+		AddToPeopleCart($p2g2r_per_ID);
+	}
+}
+
+// Remove group from cart
+function RemoveGroupFromPeopleCart($iGroupID)
+{
+	//Get all the members of this group
+	$sSQL =	"SELECT p2g2r_per_ID FROM person2group2role_p2g2r " . 
+			"WHERE p2g2r_grp_ID = " . $iGroupID;
+	$rsGroupMembers = RunQuery($sSQL);
+
+	//Loop through the recordset
+	while ($aRow = mysql_fetch_array($rsGroupMembers))
+	{
+		extract($aRow);
+
+		//remove each person from the cart
+		RemoveFromPeopleCart($p2g2r_per_ID);
+	}
+}
+
 
 // Reinstated by Todd Pillars for Event Listing
 // Takes MYSQL DateTime
