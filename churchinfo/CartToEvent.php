@@ -21,7 +21,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 // Security: User must have Manage Groups & Roles permission
-if (!$_SESSION['bAdmin'])
+if (!$_SESSION['bManageGroups'])
 {
         Redirect("Menu.php");
         exit;
