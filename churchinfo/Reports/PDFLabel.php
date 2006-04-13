@@ -2,11 +2,10 @@
 /*******************************************************************************
 *
 *  filename    : Reports/PDFLabel.php
-*  last change : 2003-08-08
+*  website     : http://www.churchdb.org
 *  description : Creates a PDF document containing the addresses of
 *                The people in the Cart
 *
-*  http://www.infocentral.org/
 *  Copyright 2003  Jason York
 *
 *  Portions based on code by LPA (lpasseb@numericable.fr)
@@ -16,6 +15,7 @@
 *  2006 Ed Davis
 *  2006 Stephen Shaffer
 *
+*  Copyright 2006 Contributors
 *
 *  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
@@ -190,6 +190,66 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole) {
 	return $aName;
 }
 
+function MakeADCArray($sADClist) {
+
+unset($aReturnArray);
+
+// The end of each row is marked with the pipe | symbol
+// keep fetching rows until gone
+while ( substr_count ( $sADClist, "|" )){
+
+    // find end of current row
+    $endOfRow = strpos($sADClist,"|");
+    if($endOfRow){
+        
+        $currentRow = substr($sADClist,0,$endOfRow);
+        $sADClist = substr($sADClist,($endOfRow+1));
+
+        // find the current adc (hint, last item listed)
+        $currentRow = trim($currentRow);
+        $adc = substr($currentRow,strrpos ($currentRow, " "));
+        $adc = trim($adc, " ,\t\n\r\0\x0B");
+
+        // Now get a list of the three digit codes associated
+        // with this adc.  They are all before the "_" character
+ 
+        $currentRow = substr($currentRow,0,strpos($currentRow,"_"));
+        $currentRow = trim($currentRow, " ,\t\n\r\0\x0B");
+        while (strlen($currentRow)){
+            if (strpos($currentRow, ",")) {
+                $nugget = trim(substr($currentRow,0,strpos($currentRow, ",")));
+                $currentRow = trim(substr($currentRow,strpos($currentRow, ",")+1));
+
+            } 
+            else  // parsing last element
+            {
+                $nugget = trim($currentRow, " ,\t\n\r\0\x0B");
+                $currentRow = "";
+            }
+
+            $dash = strpos($nugget,"-");
+            if ($dash)
+            {   // range of 
+                $start  = intval(substr($nugget,0,$dash));
+                $end    = intval(substr($nugget,$dash+1));
+                if ($end >= $start)
+                    for ($i=$start; $i<=$end; $i++)
+                        $aReturnArray[$i] = $adc;
+            } 
+            else
+            {   
+                $i = intval($nugget);
+                $aReturnArray[$i] = $adc;
+            }
+        }
+    }
+}
+
+return serialize($aReturnArray);
+
+}
+
+
 function ZipBundleSort($inLabels) {
 //
 // Description:
@@ -225,9 +285,123 @@ function ZipBundleSort($inLabels) {
 // 60
 // initialize the adc data list
 //
+// The following website is the source for the adc
+// http://pe.usps.com/text/dmm300/L004.htm
+// This array for STD mail
 
-$adc = array(005=>117,006=>006,007=>006,008=>006,009=>006,010=>010,011=>010,012=>010,013=>010,014=>010,015=>010,016=>010,017=>010,018=>021,019=>021,020=>028,021=>021,022=>021,023=>028,024=>021,025=>028,026=>028,027=>028,028=>028,029=>028,030=>038,031=>038,032=>038,033=>038,034=>038,035=>050,036=>050,037=>050,038=>038,039=>038,040=>040,041=>040,042=>040,043=>040,044=>040,045=>040,046=>040,047=>040,048=>040,049=>040,050=>050,051=>050,052=>050,053=>050,054=>050,055=>021,056=>050,057=>050,058=>050,059=>050,060=>064,061=>064,062=>064,063=>064,064=>064,065=>064,066=>064,067=>064,068=>064,069=>064,070=>070,071=>070,072=>070,073=>070,074=>070,075=>070,076=>070,077=>070,078=>070,079=>070,080=>080,081=>080,082=>080,083=>080,084=>080,085=>070,086=>070,087=>070,088=>070,089=>070,090=>090,091=>090,092=>090,093=>090,094=>090,095=>090,096=>090,097=>090,098=>090,099=>090,100=>100,101=>100,102=>100,103=>110,104=>100,105=>105,106=>105,107=>105,108=>105,109=>105,110=>110,111=>110,112=>110,113=>110,114=>110,115=>117,116=>110,117=>117,118=>117,119=>117,120=>120,121=>120,122=>120,123=>120,124=>120,125=>120,126=>120,127=>120,128=>120,129=>120,130=>130,131=>130,132=>130,133=>130,134=>130,135=>130,136=>130,137=>130,138=>130,139=>130,140=>140,141=>140,142=>140,143=>140,144=>140,145=>140,146=>140,147=>140,148=>140,149=>140,150=>150,151=>150,152=>150,153=>150,154=>150,155=>150,156=>150,157=>150,158=>150,159=>150,160=>150,161=>150,162=>150,163=>150,164=>150,165=>150,166=>150,167=>150,168=>150,169=>170,170=>170,171=>170,172=>170,173=>170,174=>170,175=>170,176=>170,177=>170,178=>170,179=>189,180=>180,181=>180,182=>180,183=>180,184=>180,185=>180,186=>180,187=>180,188=>180,189=>189,190=>190,191=>190,192=>190,193=>189,194=>189,195=>189,196=>189,197=>197,198=>197,199=>197,200=>200,201=>220,202=>202,203=>202,204=>202,205=>202,206=>207,207=>207,208=>207,209=>207,210=>210,211=>210,212=>210,214=>210,215=>210,216=>210,217=>210,218=>210,219=>210,220=>220,221=>220,222=>220,223=>220,224=>230,225=>230,226=>220,227=>220,228=>230,229=>230,230=>230,231=>230,232=>230,233=>230,234=>230,235=>230,236=>230,237=>230,238=>230,239=>230,240=>240,241=>240,242=>240,243=>240,244=>230,245=>240,246=>250,247=>250,248=>250,249=>250,250=>250,251=>250,252=>250,253=>250,254=>210,255=>250,256=>250,257=>250,258=>250,259=>250,260=>150,261=>263,262=>263,263=>263,264=>263,265=>263,266=>263,267=>210,268=>263,270=>270,271=>270,272=>270,273=>270,274=>270,275=>270,276=>270,277=>270,278=>270,279=>270,280=>280,281=>280,282=>280,283=>280,284=>280,285=>270,286=>280,287=>280,288=>280,289=>280,290=>290,291=>290,292=>290,293=>290,294=>290,295=>290,296=>290,297=>280,298=>301,299=>320,300=>301,301=>301,302=>303,303=>303,304=>320,305=>301,306=>301,307=>370,308=>301,309=>301,310=>312,311=>303,312=>312,313=>320,314=>320,315=>320,316=>312,317=>312,318=>312,319=>312,320=>320,321=>320,322=>320,323=>320,324=>320,325=>700,326=>320,327=>327,328=>327,329=>327,330=>332,331=>332,332=>332,334=>327,335=>342,336=>342,337=>342,338=>342,339=>342,340=>332,341=>342,342=>342,344=>320,346=>342,347=>327,349=>327,350=>350,351=>350,352=>350,354=>350,355=>350,356=>350,357=>350,358=>350,359=>350,360=>360,361=>360,362=>350,363=>360,364=>360,365=>700,366=>700,367=>360,368=>360,369=>390,370=>370,371=>370,372=>370,373=>370,374=>370,375=>380,376=>370,377=>370,378=>370,379=>370,380=>380,381=>380,382=>380,383=>380,384=>370,385=>370,386=>380,387=>380,388=>380,389=>380,390=>390,391=>390,392=>390,393=>390,394=>700,395=>700,396=>390,397=>390,398=>312,399=>303,400=>400,401=>400,402=>400,403=>400,404=>400,405=>400,406=>400,407=>400,408=>400,409=>400,410=>450,411=>400,412=>400,413=>400,414=>400,415=>400,416=>400,417=>400,418=>400,420=>400,421=>400,422=>400,423=>400,424=>400,425=>400,426=>400,427=>400,430=>430,431=>430,432=>430,433=>430,434=>430,435=>430,436=>430,437=>430,438=>430,439=>440,440=>440,441=>440,442=>440,443=>440,444=>440,445=>440,446=>440,447=>440,448=>440,449=>440,450=>450,451=>450,452=>450,453=>450,454=>450,455=>450,456=>430,457=>430,458=>450,459=>450,460=>460,461=>460,462=>460,463=>460,464=>460,465=>460,466=>460,467=>460,468=>460,469=>460,470=>450,471=>400,472=>460,473=>460,474=>460,475=>460,476=>400,477=>400,478=>460,479=>460,480=>481,481=>481,482=>481,483=>481,484=>481,485=>481,486=>481,487=>481,488=>481,489=>481,490=>493,491=>493,492=>481,493=>493,494=>493,495=>493,496=>493,497=>493,498=>530,499=>530,500=>500,501=>500,502=>500,503=>500,504=>500,505=>500,506=>500,507=>500,508=>500,509=>500,510=>680,511=>680,512=>680,513=>680,514=>680,515=>680,516=>680,520=>500,521=>500,522=>500,523=>500,524=>500,525=>500,526=>500,527=>500,528=>500,530=>530,531=>530,532=>530,534=>530,535=>530,537=>530,538=>530,539=>530,540=>552,541=>530,542=>530,543=>530,544=>530,545=>530,546=>552,547=>552,548=>552,549=>530,550=>552,551=>552,553=>055,554=>055,555=>055,556=>552,557=>552,558=>552,559=>552,560=>055,561=>055,562=>055,563=>055,564=>055,565=>580,567=>580,570=>570,571=>570,572=>570,573=>570,574=>570,575=>570,576=>570,577=>570,580=>580,581=>580,582=>580,583=>580,584=>580,585=>580,586=>580,587=>580,588=>580,590=>590,591=>590,592=>590,593=>590,594=>590,595=>590,596=>590,597=>590,598=>590,599=>590,600=>601,601=>601,602=>601,603=>601,604=>604,605=>604,606=>606,607=>606,608=>606,609=>604,610=>601,611=>601,612=>500,613=>604,614=>601,615=>601,616=>601,617=>604,618=>604,619=>604,620=>632,622=>632,623=>632,624=>632,625=>632,626=>632,627=>632,628=>632,629=>632,630=>632,631=>632,633=>632,634=>632,635=>632,636=>632,637=>632,638=>632,639=>632,640=>663,641=>663,644=>663,645=>663,646=>663,647=>663,648=>663,649=>663,650=>663,651=>663,652=>663,653=>663,654=>663,655=>663,656=>663,657=>663,658=>663,660=>663,661=>663,662=>663,664=>663,665=>663,666=>663,667=>663,668=>663,669=>670,670=>670,671=>670,672=>670,673=>670,674=>670,675=>670,676=>670,677=>670,678=>670,679=>670,680=>680,681=>680,683=>680,684=>680,685=>680,686=>680,687=>680,688=>680,689=>680,690=>680,691=>680,692=>680,693=>680,700=>700,701=>700,703=>700,704=>700,705=>700,706=>700,707=>700,708=>700,710=>710,711=>710,712=>710,713=>710,714=>710,716=>720,717=>720,718=>720,719=>720,720=>720,721=>720,722=>720,723=>380,724=>720,725=>720,726=>720,727=>720,728=>720,729=>720,730=>730,731=>730,733=>780,734=>730,735=>730,736=>730,737=>730,738=>730,739=>670,740=>740,741=>740,743=>740,744=>740,745=>740,746=>740,747=>740,748=>730,749=>740,750=>750,751=>750,752=>750,753=>750,754=>750,755=>750,756=>750,757=>750,758=>750,759=>750,760=>760,761=>760,762=>760,763=>760,764=>760,765=>760,766=>760,767=>760,768=>760,769=>760,770=>773,771=>773,772=>773,773=>773,774=>773,775=>773,776=>773,777=>773,778=>773,779=>780,780=>780,781=>780,782=>780,783=>780,784=>780,785=>780,786=>780,787=>780,788=>780,789=>780,790=>760,791=>760,792=>760,793=>760,794=>760,795=>760,796=>760,797=>760,798=>798,799=>798,800=>800,801=>800,802=>800,803=>800,804=>800,805=>800,806=>800,807=>800,808=>800,809=>800,810=>800,811=>800,812=>800,813=>800,814=>800,815=>800,816=>800,820=>820,821=>590,822=>820,823=>820,824=>820,825=>820,826=>820,827=>820,828=>820,829=>820,830=>820,831=>820,832=>836,833=>836,834=>836,835=>980,836=>836,837=>836,838=>980,840=>840,841=>840,842=>840,843=>840,844=>840,845=>840,846=>840,847=>840,850=>852,852=>852,853=>852,855=>852,856=>856,857=>856,859=>852,860=>852,863=>852,864=>890,865=>870,870=>870,871=>870,872=>870,873=>870,874=>870,875=>870,877=>870,878=>870,879=>870,880=>798,881=>870,882=>870,883=>870,884=>870,885=>798,889=>890,890=>890,891=>890,893=>890,894=>890,895=>890,897=>890,898=>840,900=>900,901=>900,902=>900,903=>900,904=>900,905=>917,906=>917,907=>917,908=>917,909=>917,910=>914,911=>914,912=>914,913=>914,914=>914,915=>914,916=>914,917=>917,918=>917,919=>920,920=>920,921=>920,922=>923,923=>923,924=>923,925=>923,926=>926,927=>926,928=>926,930=>914,931=>914,932=>914,933=>914,934=>914,935=>914,936=>945,937=>945,938=>945,939=>945,940=>941,941=>941,942=>956,943=>941,944=>941,945=>945,946=>945,947=>945,948=>945,949=>941,950=>945,951=>945,952=>956,953=>956,954=>941,955=>941,956=>956,957=>956,958=>956,959=>956,960=>956,961=>890,962=>962,963=>962,964=>962,965=>962,966=>962,967=>967,968=>967,969=>945,970=>970,971=>970,972=>970,973=>970,974=>970,975=>970,976=>970,977=>970,978=>970,979=>836,981=>980,982=>980,983=>980,984=>980,985=>980,986=>970,988=>980,995=>995,996=>995,997=>995,998=>980,999=>980);
-$db=0;
+$sADClist  =
+"005, 115, 117-119                      _LONG ISLAND NY 117         |" .
+"006-009                                _ADC SAN JUAN PR 006        |" .
+"010-017                                _ADC SPRINGFIELD MA 010     |" .
+"018, 019, 021, 022, 024, 055           _ADC BOSTON MA 021          |" .
+"020, 023, 025-029                      _ADC PROVIDENCE RI 028      |" .
+"030-034, 038, 039                      _ADC PORTSMOUTH NH 038      |" .
+"035-037, 050-054, 056-059              _ADC WHITE RIV JCT VT 050   |" .
+"040-049                                _ADC PORTLAND ME 040        |" .
+"060-069                                _ADC SOUTHERN CT 064        |" .
+"070-079, 085-089                       _ADC DV DANIELS NJ 07099    |" .
+"080-084                                _ADC SOUTH JERSEY NJ 080    |" .
+"090-099                                _MILITARY CENTER NY 090     |" .
+"100-102, 104                           _ADC NEW YORK NY 100        |" .
+"103, 110-114, 116                      _ADC QUEENS NY 110          |" .
+"105-109                                _ADC WESTCHESTER NY 105     |" .
+"120-129                                _ADC ALBANY NY 120          |" .
+"130-139                                _ADC SYRACUSE NY 130        |" .
+"140-149                                _ADC BUFFALO NY 140         |" .
+"150-168, 260                           _ADC PITTSBURGH PA 150      |" .
+"169-178                                _ADC HARRISBURG PA 170      |" .
+"179, 189, 193-196                      _ADC SOUTHEASTERN PA 189    |" .
+"180-188                                _ADC LEHIGH VALLEY PA 180   |" .
+"190-192                                _ADC PHILADELPHIA PA 190    |" .
+"197-199                                _ADC WILMINGTON DE 197      |" .
+"200                                    _WASHINGTON DC 200          |" .
+"202-205                                _ADC WASHINGTON DC 202      |" .
+"201, 220-223, 226, 227                 _ADC NORTHERN VA VA 220     |" .
+"206-209                                _ADC SOUTHERN MD MD 207     |" .
+"210-212, 214-219, 254, 267             _ADC LINTHICUM MD 210       |" .
+"224, 225, 228-239, 244                 _ADC RICHMOND VA 230        |" .
+"240-243, 245                           _ADC ROANOKE VA 240         |" .
+"246-253, 255-259                       _ADC CHARLESTON WV 250      |" .
+"261-266, 268                           _ADC CLARKSBURG WV 263      |" .
+"270-279, 285                           _ADC GREENSBORO NC 270      |" .
+"280-284, 286-289, 297                  _ADC CHARLOTTE NC 280       |" .
+"290-296                                _ADC COLUMBIA SC 290        |" .
+"298, 300, 301, 305, 306, 308, 309      _ADC NORTH METRO GA 30197   |" .
+"299, 304, 313-315, 320-324, 326, 344   _ADC JACKSONVILLE FL 32088  |" .
+"302, 303, 311, 399                     _ADC ATLANTA GA 303         |" .
+"307, 370-374, 376-379, 384, 385        _ADC NASHVILLE TN 37099     |" .
+"310, 312, 316-319, 398                 _ADC MACON GA 31293         |" .
+"325, 365, 366, 394, 395, 700, 701, 703-708
+                                        _ADC NEW ORLEANS LA 70099   |" .
+"327-329, 334, 347, 349                 _ADC MID FLORIDA FL 32799   |" .
+"330-333, 340                           _ADC MIAMI FL 33298         |" .
+"335-339, 341, 342, 346                 _ADC MANASOTA FL 34299      |" .
+"350-352, 354-359, 362                  _ADC BIRMINGHAM AL 35099    |" .
+"360, 361, 363, 364, 367, 368           _ADC MONTGOMERY AL 36099    |" .
+"369, 390-393, 396, 397                 _ADC JACKSON MS 39099       |" .
+"375, 380-383, 386-389, 723             _ADC MEMPHIS TN 38099       |" .
+"400-409, 411-418, 420-427, 471, 476, 477
+                                        _ADC LOUISVILLE KY 400      |" .
+"410, 450-455, 458, 459, 470            _ADC CINCINNATI OH 450      |" .
+"430-438, 456, 457                      _ADC COLUMBUS OH 430        |" .
+"439-449                                _ADC CLEVELAND OH 440       |" .
+"460-469, 472-475, 478, 479             _ADC INDIANAPOLIS IN 460    |" .
+"480-489, 492                           _ADC DETROIT MI 481         |" .
+"490, 491, 493-497                      _ADC GRAND RAPIDS MI 493    |" .
+"498, 499, 530-532, 534, 535, 537-539, 541-545, 549
+                                        _ADC MILWAUKEE WI 530       |" .
+"500-509, 520-528, 612                  _ADC DES MOINES IA 50091    |" .
+"510-516, 680, 681, 683-693             _ADC OMAHA NE 680           |" .
+"540, 546-548, 550, 551, 556-559        _ADC ST PAUL MN 55233       |" .
+"553-555, 560-564, 566                  _ADC MINNEAPOLIS MN 55533   |" .
+"565, 567, 580-588                      _ADC FARGO ND 580           |" .
+"570-577                                _ADC SIOUX FALLS SD 570     |" .
+"590-599, 821                           _ADC BILLINGS MT 590        |" .
+"600-603, 610, 611, 614-616             _ADC CAROL STREAM IL 601    |" .
+"604, 605, 609, 613, 617-619            _ADC S SUBURBAN IL 604      |" .
+"606-608                                _ADC CHICAGO IL 606         |" .
+"620, 622-631, 633-639                  _ADC ST LOUIS MO 63203      |" .
+"640, 641, 644-658, 660-662, 664-668    _ADC KANSAS CITY MO 66340   |" .
+"669-679, 739                           _ADC WICHITA KS 67099       |" .
+"710-714                                _ADC SHREVEPORT LA 71099    |" .
+"716-722, 724-729                       _ADC LITTLE ROCK AR 72098   |" .
+"730, 731, 734-738, 748                 _ADC OKLAHOMA CITY OK 730   |" .
+"733, 779-789                           _ADC SAN ANTONIO TX 78099   |" .
+"740, 741, 743-747, 749                 _ADC TULSA OK 740           |" .
+"750-759                                _ADC NORTH TEXAS TX 750     |" .
+"760-769, 790-797                       _ADC FT WORTH TX 760        |" .
+"770-778                                _ADC NORTH HOUSTON TX 773   |" .
+"798, 799, 880, 885                     _ADC EL PASO TX 798         |" .
+"800-816                                _ADC DENVER CO 800          |" .
+"820, 822-831                           _ADC CHEYENNE WY 820        |" .
+"832-834, 836, 837, 979                 _ADC BOISE ID 836           |" .
+"835, 838, 980-985, 988-994, 998, 999   _ADC SEATTLE WA 980         |" .
+"840-847, 898                           _ADC SALT LAKE CTY UT 840   |" .
+"850, 852, 853, 855, 859, 860, 863      _ADC PHOENIX AZ 852         |" .
+"856, 857                               _ADC TUCSON AZ 856          |" .
+"864, 889-891, 893-895, 897, 961        _ADC LAS VEGAS NV 890       |" .
+"865, 870-875, 877-879, 881-884         _ADC ALBUQUERQUE NM 870     |" .
+"900-904                                _ADC LOS ANGELES CA 900     |" .
+"905-908, 917, 918                      _ADC INDUSTRY CA 917        |" .
+"910-916, 930-935                       _ADC SANTA CLARITA CA 914   |" .
+"919-921                                _ADC SAN DIEGO CA 920       |" .
+"922-925                                _ADC SN BERNARDINO CA 923   |" .
+"926-928                                _ADC SANTA ANA CA 926       |" .
+"936-939, 945-948, 950, 951             _ADC OAKLAND CA 945         |" .
+"940, 941, 943, 944, 949, 954, 955      _ADC PENINSULA CA 941       |" .
+"942, 952, 953, 956-960                 _ADC SACRAMENTO CA 956      |" .
+"962-966                                _AMF SFO APO/FPO CA 962     |" .
+"967, 968                               _ADC HONOLULU HI 967        |" .
+"969                                    _ADC OAKLAND CA 945         |" .
+"970-978, 986                           _ADC PORTLAND OR 970        |" .
+"995-997                                _ADC ANCHORAGE AK 995       |";
+
+$adc = unserialize(MakeADCArray($sADClist));
+
+//foreach ($adc as $key => $value)
+//    echo "key = $key, value = $value <br>";
+
+//$db=0;
 //
 // Step 1 - create an array of only the zipcodes of length 5
 //
@@ -237,7 +411,7 @@ $n = count($inLabels);
 $nTotalLabels = $n;
 if($db) echo "{$n} Labels passed to bundle function....<br>";
 
-for($i=0; $i < $n; $i++) $Zips[$i] = substr($inLabels[$i]['Zip'],0,5);
+for($i=0; $i < $n; $i++) $Zips[$i] = intval(substr($inLabels[$i]['Zip'],0,5));
 
 //
 // perform a count of the array values 
@@ -259,9 +433,9 @@ while (list($z,$zc) = each($ZipCounts)){
 		$CityText = array('City'=>"******* Presort ZIP-5 ".$z."  ");
 		$outList[]=array_merge($NoteText,$NameText,$AddressText,$CityText);
 		for($i=0; $i<$n; $i++){
-			if(substr($inLabels[$i]['Zip'],0,5)==$z) {
+			if(intval(substr($inLabels[$i]['Zip'],0,5))==$z) {
 				$outList[] = array_merge($inLabels[$i], $NoteText);
-				$inLabels[$i]['Zip']="done";
+				$inLabels[$i]['Zip']= -1; // done
 				$nz5++;
 			} 
 		}
@@ -273,7 +447,7 @@ if($db) echo "<br>{$nz5} Labels moved to the output list<br>";
 //  remove processed labels for inLabels array
 //
 
-for($i=0; $i<$n; $i++)	if($inLabels[$i]['Zip'] != "done") $inLabels2[] = $inLabels[$i];
+for($i=0; $i<$n; $i++)	if($inLabels[$i]['Zip'] != -1) $inLabels2[] = $inLabels[$i];
 unset($inLabels);
 $inLabels = $inLabels2;
 
@@ -287,7 +461,8 @@ if($db) echo "<br>...pass 2 ZIP3..{$n} labels to process<br>";
 
 //print_r($inLabels);
 
-for($i=0; $i < $n; $i++) $Zips[$i] = substr($inLabels[$i]['Zip'],0,3);
+for($i=0; $i < $n; $i++) 
+    $Zips[$i] = intval(substr($inLabels[$i]['Zip'],0,3));
 
 //
 // perform a count of the array values 
@@ -308,9 +483,9 @@ while (list($z,$zc) = each($ZipCounts)){
 		$CityText = array('City'=>"******* Presort ZIP-3 ".$z."  ");
 		$outList[]=array_merge($NoteText,$NameText,$AddressText,$CityText);
 		for($i=0; $i<$n; $i++){
-			if(substr($inLabels[$i]['Zip'],0,3)==$z) {
+			if(intval(substr($inLabels[$i]['Zip'],0,3))==$z) {
 				$outList[] = array_merge($inLabels[$i], $NoteText);
-				$inLabels[$i]['Zip']="done";
+				$inLabels[$i]['Zip']= -1;
 				$nz3++;
 			} 
 		}
@@ -319,7 +494,9 @@ while (list($z,$zc) = each($ZipCounts)){
 
 if($db) echo "{$nz3} Labels moved to the output list...<br>";
 unset($inLabels2);
-for($i=0; $i<$n; $i++)	if($inLabels[$i]['Zip'] != "done") $inLabels2[] = $inLabels[$i];
+for($i=0; $i<$n; $i++)	
+    if($inLabels[$i]['Zip'] != -1) 
+        $inLabels2[] = $inLabels[$i];
 unset($inLabels);
 $inLabels = $inLabels2;
 
@@ -331,20 +508,25 @@ unset($Zips);
 $n = count($inLabels);
 if($db) echo "...pass 3 ADC..{$n} labels to process\r\n";
 
-for($i=0; $i < $n; $i++) $Zips[$i] = $adc[substr($inLabels[$i]['Zip'],0,3)];
-
+for($i=0; $i < $n; $i++)
+    if (isset($adc[intval(substr($inLabels[$i]['Zip'],0,3))]))
+        $Zips[$i] = $adc[intval(substr($inLabels[$i]['Zip'],0,3))];
 //
 // perform a count of the array values 
 //
-	
-$ZipCounts=array_count_values($Zips);
+unset($ZipCounts);
+if (isset($Zips))
+	$ZipCounts=array_count_values($Zips);
 
 //	
 // walk through the input array and pull all matching records where count > 10
 //
 
-$ncounts = count($ZipCounts);
+$ncounts = 0;
+if (isset($ZipCounts))
+	$ncounts = count($ZipCounts);
 $nadc=0;
+if ($ncounts) {
 while (list($z,$zc) = each($ZipCounts)){
 	if($zc >= 10){
 		$NoteText = array('Note'=>"******* Presort ADC ".$z);
@@ -353,23 +535,24 @@ while (list($z,$zc) = each($ZipCounts)){
 		$CityText = array('City'=>"******* Presort ADC ".$z."  ");
 		$outList[]=array_merge($NoteText,$NameText,$AddressText,$CityText);
 		for($i=0; $i<$n; $i++){
-			if($adc[substr($inLabels[$i]['Zip'],0,3)]==$z) {
+			if($adc[intval(substr($inLabels[$i]['Zip'],0,3))]==$z) {
 				$outList[] = array_merge($inLabels[$i], $NoteText);
-				$inLabels[$i]['Zip'] = "done";
+				$inLabels[$i]['Zip'] = -1; // done
 				$nadc++;
 			} 
 		}
 	}
 }
+}
 
 if($db) echo "{$nadc} Labels moved to the output list<br>";
 unset($inLabels2);
-for($i=0; $i<$n; $i++)	if($inLabels[$i]['Zip'] != "done") $inLabels2[] = $inLabels[$i];
+for($i=0; $i<$n; $i++)	if($inLabels[$i]['Zip'] != -1) $inLabels2[] = $inLabels[$i];
 unset($inLabels);
 $inLabels = $inLabels2;
 
 //
-// Pass 3 looking for remaining Mixed ADC bundles
+// Pass 4 looking for remaining Mixed ADC bundles
 //
 $nmadc=0;
 unset($Zips);
@@ -443,7 +626,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 	// family even when they are grouped.
 	// At most one label for all adults
 	// At most one label for all children
-	// At most one label for all others (for example, another church or the lansdscape 
+	// At most one label for all others (for example, another church or a landscape 
 	// company)
 
 	$sRowClass = AlternateRowStyle($sRowClass);
@@ -501,11 +684,12 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
 		if (!$bOnlyComplete || ( (strlen($sAddress)) && strlen($sCity) && strlen($sState) && strlen($sZip) ) )
 		{
-			$sLabelList[]=array('Name'=>$sName, 'Address'=>$sAddress,'City'=>$sCity,'State'=>$sState,'Zip'=>$sZip);
+			$sLabelList[]=array('Name'=>$sName, 'Address'=>$sAddress,'City'=>$sCity,'State'=>$sState,'Zip'=>$sZip); //,'fam_ID'=>$aRow['fam_ID']);
 		}
 	} // end of foreach loop
 	} // end of while loop
 
+	unset($zipLabels);
 	if ($iBulkMailPresort) {
 		//
 		// now sort the label list by presort bundle definitions
@@ -531,6 +715,11 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 							$sLT['City'], $sLT['State'], $sLT['Zip']));
 		} // end while
 	} // end of if($iBulkMailPresort)
+
+	if (isset($zipLabels))
+		return serialize($zipLabels);
+	else
+		return serialize($sLabelList);
 
 } // end of function GenerateLabels
 
@@ -582,10 +771,65 @@ setcookie("cartviewtoparents", $_GET["cartviewtoparents"], time()+60*60*24*90, "
  
 $bOnlyComplete = ($_GET["onlyfull"] == 1);
 
-GenerateLabels($pdf, $mode, $iBulkCode, $bToParents, $bOnlyComplete);
+$sFileType = FilterInput($_GET["filetype"],'char',4);
 
-if ($iPDFOutputType == 1)
-	$pdf->Output("Labels-" . date("Ymd-Gis") . ".pdf", true);
-else
-	$pdf->Output();
+$aLabelList =	unserialize(
+				GenerateLabels($pdf, $mode, $iBulkCode, $bToParents, $bOnlyComplete));
+
+if ($sFileType == "PDF"){
+
+	if ($iPDFOutputType == 1)
+		$pdf->Output("Labels-" . date("Ymd-Gis") . ".pdf", true);
+	else
+		$pdf->Output();
+
+} else { // File Type must be CSV
+
+	$sCSVOutput = "";
+	if ($iBulkCode)
+		$sCSVOutput .= '"ZipBundle",';
+
+	$sCSVOutput .= '"Greeting","Name","Address1","Address2","City","State","Zip"' . "\n";
+
+	while(list($i,$sLT)=each($aLabelList)){
+
+		if ($iBulkCode)
+			$sCSVOutput .= '"' . $sLT['Note'] . '",';
+
+		$iNewline = (strpos($sLT['Name'],"\n"));
+		if ($iNewline === FALSE){ // There is no newline character
+			$sCSVOutput .= '"","' . $sLT['Name'] . '",';
+		}
+		else
+		{
+			$sCSVOutput .=	'"' . substr($sLT['Name'],0,$iNewline) . '",' .
+							'"' . substr($sLT['Name'],$iNewline+1) . '",';
+		}
+
+		$iNewline = (strpos($sLT['Address'],"\n"));
+		if ($iNewline === FALSE){ // There is no newline character
+			$sCSVOutput .= '"' . $sLT['Address'] . '","",';
+		}
+		else
+		{
+			$sCSVOutput .=	'"' . substr($sLT['Address'],0,$iNewline) . '",' .
+							'"' . substr($sLT['Address'],$iNewline+1) . '",';
+		}
+
+		$sCSVOutput .=	'"' . $sLT['City']		. '",'	.
+						'"' . $sLT['State']		. '",'	.
+						'"' . $sLT['Zip']		. '"'	.	"\n";
+	}
+
+	header("Content-type: application/csv");
+	header("Content-Disposition: attachment; filename=Labels-" . date("Ymd-Gis") . ".csv");
+	header("Content-Transfer-Encoding: binary");
+	header('Expires: 0');
+	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+	header('Pragma: public'); 
+	echo $sCSVOutput;
+
+}
+
+exit();
 ?>
