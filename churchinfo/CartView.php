@@ -1,21 +1,26 @@
 <?php
 /*******************************************************************************
- *
- *  filename    : CartView.php
- *  description : displays records stored in cart
- *
- *  http://www.infocentral.org/
- *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
- *
- *  Additional Contributions by:
- *  2006 Ed Davis
- *
- *  ChurchInfo is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- ******************************************************************************/
+*
+*  filename    : CartView.php
+*  website     : http://www.churchdb.org
+*
+*  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
+*
+*  Additional Contributors:
+*  2006 Ed Davis
+*
+*
+*  Copyright 2006 Contributors
+*
+*  ChurchInfo is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This file best viewed in a text editor with tabs stops set to 4 characters
+*
+******************************************************************************/
+
 
 // Include the function library
 
@@ -78,7 +83,7 @@ if (count($_SESSION['aPeopleCart']) == 0) {
                                         $iEmailNum++;
                                 }
                                 else
-                                        $sEmailLink .= "," . $sEmail;
+                                        $sEmailLink .= ";" . $sEmail;
                         }
                 }
                 else
@@ -131,7 +136,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
         if ($iEmailNum > 0) {
                 // Add default email if default email has been set and is not already in string
                 if ($sToEmailAddress != "" && $sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress))
-                        $sEmailLink .= "," . $sToEmailAddress;
+                        $sEmailLink .= ";" . $sToEmailAddress;
                 echo "<br><a href=\"mailto:" . $sEmailLink ."\">". gettext("Email Cart") . "</a>";
                 echo "<br><a href=\"mailto:?bcc=".$sEmailLink."\">".gettext("Email (BCC)")."</a>";
         }
