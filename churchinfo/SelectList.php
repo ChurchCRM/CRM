@@ -103,11 +103,14 @@ if (isset($_GET["Number"]))
     $rsUser = RunQuery($uSQL);
 }
 
-unset($sPersonColumn3);
 if (isset($_GET["PersonColumn3"])){
-	$sPersonColumn3 = FilterInput($_GET["PersonColumn3"]);
-	setcookie("PersonColumn3", $sPersonColumn3, time()+60*60*24*90, "/" );
+	$_SESSION['sPersonColumn3'] = FilterInput($_GET["PersonColumn3"]);
 }
+
+if (isset($_GET["PersonColumn5"])){
+	$_SESSION['sPersonColumn5'] = FilterInput($_GET["PersonColumn5"]);
+}
+
 
 // Set the page title
 if ($sMode == 'person')
@@ -347,6 +350,9 @@ if ($iMode == 1 || $iMode == 2)
         case "entered":
                 $sOrderSQL = " ORDER BY per_DateEntered DESC";
                 break;
+        case "edited";
+                $sOrderSQL = " ORDER BY per_DateLastEdited DESC";
+                break;
         default:
                 $sOrderSQL = " ORDER BY per_LastName, per_FirstName";
                 break;
@@ -415,6 +421,8 @@ if ($iMode == 1 || $iMode == 2)
                         <option value="family" <?php if ($sSort == "family") echo "selected";?>><?php echo gettext("By Family"); ?></option>
                         <option value="zip" <?php if ($sSort == "zip") echo "selected";?>><?php echo gettext("By ZIP/Postal Code"); ?></option>
                         <option value="entered" <?php if ($sSort == "entered") echo "selected";?>><?php echo gettext("By Newest Entries"); ?></option>
+                        <option value="edited" <?php if ($sSort == "edited") echo "selected";?>><?php echo gettext("By Recently Edited"); ?></option>
+
                 </select>&nbsp;
                 <input type="text" name="Filter" value="<?php echo $sFilter;?>">
                 <input type="hidden" name="mode" value="<?php echo $sMode;?>">
@@ -708,10 +716,10 @@ if ($iMode == 1 || $iMode == 2)
 // At this point we have finished the forms at the top of SelectList.  
 // Now begin the table displaying results.
 
-// Read if sort by person is selected column 3 is user selectable.  If the
-// user has not selected a value then read from cookie
+// Read if sort by person is selected columns 3 and 5 are user selectable.  If the
+// user has not selected a value then read from session variable.
 if (!isset($sPersonColumn3)) {
-	switch ($_COOKIE[PersonColumn3]) 
+	switch ($_SESSION['sPersonColumn3']) 
 	{
 	case ("Family Role"):
 		$sPersonColumn3 = "Family Role";
@@ -725,24 +733,43 @@ if (!isset($sPersonColumn3)) {
 	}
 }
 
+if (!isset($sPersonColumn5)) {
+	switch ($_SESSION['sPersonColumn5']) 
+	{
+	case ("Home Phone"):
+		$sPersonColumn5 = "Home Phone";
+		break;
+	case ("Work Phone"):
+		$sPersonColumn5 = "Work Phone";
+		break;
+    case ("Mobile Phone"):
+        $sPersonColumn5 = "Mobile Phone";
+        break;
+	default:
+		$sPersonColumn5 = "Zip/Postal Code";
+	break;
+	}
+}
+
+
 // Results table begins here
-echo "<table cellpadding=\"4\" align=\"center\" cellspacing=\"0\" width=\"100%\">";
-echo "<tr class=\"TableHeader\">";
+echo '<table cellpadding="4" align="center" cellspacing="0" width="100%">';
+echo '<tr class="TableHeader">';
                                 
 if ($_SESSION['bEditRecords']) 
-	echo "<td width=\"25\">" . gettext("Edit") . "</td>";
+    echo '<td width="25">' . gettext("Edit") . '</td>';
 
-echo "<td><a href=\"SelectList.php?mode=" .$sMode. "&type=" .$iGroupTypeMissing;
-echo "&Sort=name&Filter=" .$sFilter. "\">" . gettext("Name") . "</a></td>";
+echo '<td><a href="SelectList.php?mode=' .$sMode. '&type=' .$iGroupTypeMissing;
+echo '&Sort=name&Filter=' .$sFilter. '">' . gettext("Name") . '</a></td>';
 
-echo "<form><td>";
-echo "<input type=\"hidden\" name=\"mode\" value=\"" .$sMode. "\">";
+echo '<form><td>';
+echo '<input type="hidden" name="mode" value="' .$sMode. '">';
 if($iGroupTypeMissing > 0) 
-	echo "<input type=\"hidden\" name=\"type\" value=\"" .$iGroupTypeMissing. "\">";
+	echo '<input type="hidden" name="type" value="' .$iGroupTypeMissing. '">';
 if(isset($sFilter)) 
-	echo "<input type=\"hidden\" name=\"Filter\" value=\"" .$sFilter. "\">";
+	echo '<input type="hidden" name="Filter" value="' .$sFilter. '">';
 if(isset($sSort)) 
-	echo "<input type=\"hidden\" name=\"Sort\" value=\"" .$sSort. "\">";
+	echo '<input type="hidden" name="Sort" value="' .$sSort. '">';
 if(isset($sLetter)) 
 	echo "<input type=\"hidden\" name=\"Letter\" value='" .$sLetter. "'\">";
 if(isset($iClassification)) 
@@ -764,7 +791,7 @@ foreach($aPersonCol3 as $s)
 	$sel = "";
 	if($sPersonColumn3 == $s) 
 		$sel = " selected";
-	echo "<option value=\"".$s."\"".$sel.">".gettext($s)."</option>";
+	echo '<option value="'.$s.'"'.$sel.'>'.gettext($s).'</option>';
 }
 
 echo "</select></td>";
@@ -772,7 +799,20 @@ echo "</select></td>";
 echo "<td><a href=\"SelectList.php?mode=" .$sMode. "&type=" .$iGroupTypeMissing;
 echo "&Sort=family&Filter=" .$sFilter. "\">" . gettext("Family") . "</a></td>";
 
-echo "<td>" . gettext("Zip/Postal Code") . "</td></form>";
+//echo "<td>" . gettext("Zip/Postal Code") . "</td></form>";
+
+echo "<td>";
+echo "<select class=\"SmallText\" name=\"PersonColumn5\" onchange=\"this.form.submit()\">";
+$aPersonCol5 = array("Home Phone","Work Phone","Mobile Phone","Zip/Postal Code");
+foreach($aPersonCol5 as $s)
+{
+	$sel = "";
+	if($sPersonColumn5 == $s) 
+		$sel = " selected";
+	echo '<option value="'.$s.'"'.$sel.'>'.gettext($s).'</option>';
+}
+echo "</select></td></form>";
+
 
 echo "<td>" . gettext("Cart") . "</td>";
 
@@ -863,9 +903,9 @@ while ($aRow = mysql_fetch_array($rsPersons))
 
 	echo "<td>";
 	if ($sPersonColumn3 == "Classification") 
- 		echo gettext($aClassificationName[$per_cls_ID]); 
+ 		echo $aClassificationName[$per_cls_ID]; 
 	elseif ($sPersonColumn3 == "Family Role")
-		echo gettext($aFamilyRoleName[$per_fmr_ID]);
+		echo $aFamilyRoleName[$per_fmr_ID];
 	else 
 	{	// Display Gender
 		switch ($per_Gender) 
@@ -886,10 +926,29 @@ while ($aRow = mysql_fetch_array($rsPersons))
 	echo "&nbsp;</td>";
 
 	echo "<td>";
-	if (strlen($zip)) 
-		echo $zip; 
+    // Phone number or zip code
+	if ($sPersonColumn5 == "Home Phone") 
+    {
+        echo SelectWhichInfo(ExpandPhoneNumber($fam_HomePhone,$fam_Country,$dummy),
+                ExpandPhoneNumber($per_HomePhone,$fam_Country,$dummy), True);
+    }
+	elseif ($sPersonColumn5 == "Work Phone")
+    {
+        echo SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone,$fam_Country,$dummy),
+                ExpandPhoneNumber($fam_WorkPhone,$fam_Country,$dummy), True);
+    }
+    elseif ($sPersonColumn5 == "Mobile Phone")
+    {
+        echo SelectWhichInfo(ExpandPhoneNumber($per_CellPhone,$fam_Country,$dummy),
+                ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy), True);
+    }
 	else 
-		echo gettext("unassigned"); 
+    { 
+        if (strlen($zip)) 
+            echo $zip; 
+        else 
+            echo gettext("unassigned");
+    } 
 	echo "</td>";
 
 	echo "<td>";
