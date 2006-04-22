@@ -49,16 +49,57 @@ if (count($_SESSION['aPeopleCart']) == 0) {
 
 } else {
 
+        // Create array with Classification Information (lst_ID = 1)
+        $sClassSQL  = "SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence";
+        $rsClassification = RunQuery($sClassSQL);
+        unset($aClassificationName);
+        $aClassificationName[0] = "Unassigned";
+        while ($aRow = mysql_fetch_array($rsClassification))
+        {
+            extract($aRow);
+            $aClassificationName[intval($lst_OptionID)]=$lst_OptionName;
+        }
+
+        // Create array with Family Role Information (lst_ID = 2)
+        $sFamRoleSQL  = "SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence";
+        $rsFamilyRole = RunQuery($sFamRoleSQL);
+        unset($aFamilyRoleName);
+        $aFamilyRoleName[0] = "Unassigned";
+        while ($aRow = mysql_fetch_array($rsFamilyRole))
+        {
+            extract($aRow);
+            $aFamilyRoleName[intval($lst_OptionID)]=$lst_OptionName;
+        }
+
+
         $sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY per_LastName";
         $rsCartItems = RunQuery($sSQL);
+        $iNumPersons = mysql_num_rows($rsCartItems);
 
-        echo "<p align=\"center\">" . gettext("There are") . " " . mysql_num_rows($rsCartItems) . " " . gettext("item(s) in your cart.") . "</p>";
-        echo "<table align=\"center\" width=\"50%\" cellpadding=\"4\" cellspacing=\"0\">\n";
-        echo "<tr class=\"TableHeader\">";
-        echo "<td><b>" . gettext("Name") . "</b></td>";
-        echo "<td align=\"center\"><b>" . gettext("Address?") . "</b></td>";
-        echo "<td align=\"center\"><b>" . gettext("Email?") . "</b></td>";
-        echo "<td><b>" . gettext("Remove") . "</b></td>";
+        $sSQL = "SELECT distinct per_fam_ID FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY per_fam_ID";
+        $iNumFamilies = mysql_num_rows(RunQuery($sSQL));
+
+        if ($iNumPersons > 16)
+        {
+        ?>
+        <center>
+        <form method="get" action="CartView.php#GenerateLabels">
+        <input type="submit" class="icButton" name="gotolabels" 
+        value="<?php echo gettext("Go To Labels");?>">
+        </form></center>
+        <?php
+        }
+
+        echo '<p align="center">' . gettext("Your cart contains") . ' ' . $iNumPersons . ' ' . gettext("persons from") . ' ' . $iNumFamilies . ' ' . gettext("families.") . '</p>';
+
+        echo '<table align="center" width="70%" cellpadding="4" cellspacing="0">';
+        echo '<tr class="TableHeader">';
+        echo '<td><b>' . gettext("Name") . '</b></td>';
+        echo '<td align="center"><b>' . gettext("Address?") . '</b></td>';
+        echo '<td align="center"><b>' . gettext("Email?") . '</b></td>';
+        echo '<td><b>' . gettext("Remove") . '</b></td>';
+        echo '<td align="center"><b>' . gettext("Classification") . '</b></td>';
+        echo '<td align="center"><b>' . gettext("Family Role") . '</b></td>';
 
         $sEmailLink = "";
         $iEmailNum = 0;
@@ -99,14 +140,22 @@ if (count($_SESSION['aPeopleCart']) == 0) {
                 else
                         $sValidAddy = gettext("No");
 
-                echo "<tr class=\"" . $sRowClass . "\">";
-                echo "<td><a href=\"PersonView.php?PersonID=" . $per_ID . "\">" . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . "</a></td>";
+                echo '<tr class="' . $sRowClass . '">';
+                echo '<td><a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
 
-                echo "<td align=\"center\">" . $sValidAddy . "</td>";
-                echo "<td align=\"center\">" . $sValidEmail . "</td>";
-                echo "<td><a href=\"CartView.php?RemoveFromPeopleCart=" . $per_ID . "\">" . gettext("Remove") . "</a></td>";
+                echo '<td align="center">' . $sValidAddy . '</td>';
+                echo '<td align="center">' . $sValidEmail . '</td>';
+                echo '<td><a onclick=saveScrollCoordinates() 
+                        href="CartView.php?RemoveFromPeopleCart=' . 
+                        $per_ID . '">' . gettext("Remove") . '</a></td>';
+                echo '<td align="center">' . $aClassificationName[$per_cls_ID] . '</td>';
+                echo '<td align="center">' . $aFamilyRoleName[$per_fmr_ID] . '</td>';
+
                 echo "</tr>";
         }
+
+"<a onclick=saveScrollCoordinates() 
+					href=\"" .$sRedirect. "RemoveFromPeopleCart=" .$per_ID. "\">";
 
         echo "</table>";
 }
@@ -144,15 +193,51 @@ if (count($_SESSION['aPeopleCart']) != 0)
         echo "</p></td>";
 ?>
         <td>
-    <form method="get" action="Reports/PDFLabel.php">
+        <a name="GenerateLabels"></a>
+
+        <SCRIPT LANGUAGE="JavaScript"><!--
+        function codename() 
+        {
+            if(document.labelform.bulkmailpresort.checked)
+            {
+                document.labelform.bulkmailquiet.disabled=false;
+            }
+            else
+            {
+                document.labelform.bulkmailquiet.disabled=true;
+            }
+        }
+    
+        //-->
+        </SCRIPT>
+
+
+
+    <form method="get" action="Reports/PDFLabel.php" name="labelform">
         <table cellpadding="4" align="center">
                 <?php
-				LabelGroupSelect("cartviewgroupbymode");
-				BulkMailPresort("cartviewbulkmailpresort");
-				ToParentsOfCheckBox("cartviewtoparents");
-				LabelSelect("cartviewlabeltype");
-				FontSelect("cartviewlabelfont");
-				FontSizeSelect("cartviewlabelfontsize");
+				LabelGroupSelect("groupbymode");
+
+                echo '  <tr><td class="LabelColumn">' . gettext("Bulk Mail Presort") . '</td>';
+                echo '  <td class="TextColumn">';
+                echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
+                echo '  id="BulkMailPresort" value="1" ';
+                if ($_COOKIE["bulkmailpresort"])
+                    echo "checked";
+                echo '  ><br></td></tr>';
+
+                echo '  <tr><td class="LabelColumn">' . gettext("Quiet Presort") . '</td>';
+                echo '  <td class="TextColumn">';
+                echo '  <input disabled name="bulkmailquiet" type="checkbox" ';
+                echo '  id="QuietBulkMail" value="1" ';
+                if ($_COOKIE["bulkmailquiet"])
+                    echo "checked";
+                echo '  ><br></td></tr>';
+
+				ToParentsOfCheckBox("toparents");
+				LabelSelect("labeltype");
+				FontSelect("labelfont");
+				FontSizeSelect("labelfontsize");
 				StartRowStartColumn();
 				IgnoreIncompleteAddresses();
 				LabelFileType();
