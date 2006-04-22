@@ -1,20 +1,29 @@
 <?php
 /*******************************************************************************
- *
- *  filename    : LettersAndMailingLabels.php
- *  last change : 2003-09-03
- *  description : form to invoke Sunday School reports
- *
- *  ChurchInfo is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- ******************************************************************************/
+*
+*  filename    : LettersAndLabels.php
+*  website     : http://www.churchdb.org
+*
+*  Contributors:
+*  2006 Ed Davis
+*
+*
+*  Copyright 2006 Contributors
+*
+*  ChurchInfo is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This file best viewed in a text editor with tabs stops set to 4 characters
+*
+******************************************************************************/
+
 
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Include/LabelFunctions.php";
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Letters and Mailing Labels");
