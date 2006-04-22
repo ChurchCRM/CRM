@@ -53,7 +53,9 @@ $MenuFirst = 1;
 				{X_scroll_coordinate = "0";}
 			if(Y_scroll_coordinate==null)
 				{Y_scroll_coordinate = "0";}
-			window.scrollTo(X_scroll_coordinate,Y_scroll_coordinate);
+            // Never scroll to 0,0 
+            if(Y_scroll_coordinate != "0" || X_scroll_coordinate != "0")       
+                {window.scrollTo(X_scroll_coordinate,Y_scroll_coordinate);}
 			// Important! Delete the cookies or every page will load at these coordinates.
 			delCookie('X_scroll_coordinate');
 			delCookie('Y_scroll_coordinate');
