@@ -1,7 +1,7 @@
 ALTER TABLE  `config_cfg` CHANGE  `cfg_value`  `cfg_value` TEXT DEFAULT NULL , CHANGE  `cfg_type`  `cfg_type` ENUM(  'text',  'number',  'date',  'boolean',  'textarea' ) DEFAULT  'text' NOT NULL , CHANGE  `cfg_default`  `cfg_default` TEXT NOT NULL;
 INSERT IGNORE INTO `config_cfg` VALUES (89, 'sISTusername', 'username', 'text', 'username', 'Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.name-searching.com/CaddressASP', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (90, 'sISTpassword', '', 'text', '', 'Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.name-searching.com/CaddressASP', 'General');
-UPDATE  `config_cfg` SET  `cfg_type` =  'textarea', `cfg_tooltip` =  'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME in order the new header.' WHERE  `cfg_id` = 88 LIMIT 1 ;
+UPDATE  `config_cfg` SET  `cfg_type` =  'textarea', `cfg_tooltip` =  'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.' WHERE  `cfg_id` = 88 LIMIT 1 ;
 
 CREATE TABLE IF NOT EXISTS `istlookup_lu` (
   `lu_fam_ID` mediumint(9) NOT NULL default '0',
