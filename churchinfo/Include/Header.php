@@ -747,7 +747,21 @@ $MenuFirst = 1;
 
 	<?php
 	}
-		if (!$bDefectiveBrowser) echo "</div><BR><BR><BR>";
+		if (!$bDefectiveBrowser)
+        {
+            echo "</div>";
+            if ($sHeader) {
+                // Optional Header Code (Entered on General Settings page - sHeader)
+                // Must first set a table with a background color, or content scrolls across
+                // the background of the custom code when using a non-defective browser
+                echo "  <table width=100% bgcolor=white cellpadding=0 cellspacing=0 border=0>
+                        <tr><td width=100%>";
+                echo html_entity_decode($sHeader,ENT_QUOTES);
+                echo "</td></tr></table>";
+        	}
+            echo "<BR><BR><BR>";
+        }
+
 	?>
 
 	<table width="100%" border="0" cellpadding="5" cellspacing="0" align="left">
