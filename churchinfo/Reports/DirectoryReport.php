@@ -479,12 +479,18 @@ class PDF_Directory extends ChurchInfoReport {
 
 // Get and filter the classifications selected
 $count = 0;
-foreach ($_POST["sDirClassifications"] as $Cls)
+if($_POST["sDirClassifications"] != "")
 {
-    $aClasses[$count++] = FilterInput($Cls,'int');
+    foreach ($_POST["sDirClassifications"] as $Cls)
+    {
+        $aClasses[$count++] = FilterInput($Cls,'int');
+    }
+    $sDirClassifications = implode(",",$aClasses);
 }
-$sDirClassifications = implode(",",$aClasses);
-
+else
+{
+    $sDirClassifications = "";
+}
 $count = 0;
 foreach ($_POST["sDirRoleHead"] as $Head)
 {
