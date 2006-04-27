@@ -237,9 +237,7 @@ if ($iUserID > 0)
 		// Initialize the last operation time
 		$_SESSION['tLastOperation'] = time();
 
-        $sProtocol = $_SERVER['SERVER_PROTOCOL'];
-        $bpos = strpos(strtoupper($sProtocol), "HTTPS");
-        $_SESSION['bSecureServer'] = ($bpos === true);
+        $_SESSION['bSecureServer'] = ($_SERVER['HTTPS'] == 'on');
 
 		$_SESSION['iServerPort'] = $_SERVER['SERVER_PORT'];
 
@@ -301,7 +299,7 @@ if ($iUserID > 0)
 			</td>
 		</tr><?php } ?>
 		<tr>
-			<td class="LabelColumn"><?php echo gettext("Enter your Username:"); ?></td>
+			<td class="LabelColumn"><?php echo gettext("Enter your user name:"); ?></td>
 			<td class="TextColumnWithBottomBorder">
 				<input type="text" id="LoginBox" name="User" size="10">
 				
