@@ -146,8 +146,10 @@ while ($aRow = mysql_fetch_array($rsRecords))
 	else
 		$numlines = 0;
 
-	$pdf->Add_Record($OutStr, $numlines);  // another hack: added +1
+	$pdf->Add_Record($OutStr, $numlines);
 }
+
+header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
 if ($iPDFOutputType == 1)
 	$pdf->Output("Directory-" . date("Ymd-Gis") . ".pdf", true);
