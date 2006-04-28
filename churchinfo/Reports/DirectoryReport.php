@@ -764,9 +764,11 @@ if($mysqlversion == 3 && $mysqlsubversion >= 22){
     $sSQL = "DROP TABLE IF EXISTS tmp;";
     mysql_query($sSQL,$cnInfoCentral);
 }
-    
+
+header('Pragma: public');  // Needed for IE when using a shared SSL certificate
+
 if ($iPDFOutputType == 1)
-    $pdf->Output("Directory-" . date("Ymd-Gis") . ".pdf", true);
+    $pdf->Output("Directory-" . date("Ymd-Gis") . ".pdf", 'D');
 else
     $pdf->Output();    
 ?>

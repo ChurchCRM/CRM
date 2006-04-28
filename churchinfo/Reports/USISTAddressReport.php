@@ -267,8 +267,11 @@ while ($aRow = mysql_fetch_array($rsFamilies)) {
 	}
 }
 
+header('Pragma: public');  // Needed for IE when using a shared SSL certificate
+
 if ($iPDFOutputType == 1)
-	$pdf->Output("Addresses-" . date("Ymd-Gis") . ".pdf", 'I');
+	$pdf->Output("Addresses-" . date("Ymd-Gis") . ".pdf", 'D');
 else
 	$pdf->Output();	
+
 ?>

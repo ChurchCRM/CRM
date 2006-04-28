@@ -783,8 +783,10 @@ $aLabelList =	unserialize(
 
 if ($sFileType == "PDF"){
 
+    header('Pragma: public');  // Needed for IE when using a shared SSL certificate
+
 	if ($iPDFOutputType == 1)
-		$pdf->Output("Labels-" . date("Ymd-Gis") . ".pdf", true);
+		$pdf->Output("Labels-" . date("Ymd-Gis") . ".pdf", 'D');
 	else
 		$pdf->Output();
 
