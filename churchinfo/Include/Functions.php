@@ -152,22 +152,29 @@ function RedirectURL($sRelativeURL)
     global $bHTTPSOnly;
     global $sPort;
 
+    // Check if port number needs to be included in URL
     if ($sPort)
         $sPortString = ":" . $sPort;
     else
         $sPortString = "";
 
+    // http or https ?
 	if (!$_SESSION['bSecureServer'] && !$bHTTPSOnly)
         $sRedirectURL = "http://";    
 	else
 		$sRedirectURL = "https://";
 
+    // Using a shared SSL certificate?
     if (strlen($sSharedSSLServer) && $_SESSION['bSecureServer'])
         $sRedirectURL .= $sSharedSSLServer . $sPortString . "/" . $sHTTP_Host;
     else
         $sRedirectURL .= $sHTTP_Host . $sPortString;
 
-    $sRedirectURL .= $sRootPath . "/" . $sRelativeURL;
+    // If root path is already included don't add it again
+    if (strpos($sRelativeURL, $sRootPath)===FALSE)
+        $sRedirectURL .= $sRootPath . "/" . $sRelativeURL;
+    else
+        $sRedirectURL .= $sRelativeURL;
 
     return $sRedirectURL;
 }
