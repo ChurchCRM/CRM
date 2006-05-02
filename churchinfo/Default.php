@@ -35,11 +35,22 @@ require "Include/Functions.php";
 // Initialize the variables
 $sErrorText = "";
 
+$_SESSION['bSecureServer'] = ($_SERVER['HTTPS'] == 'on');
 
-
+// Check if https is required, if so, check if we're using https.
+// Redirect back this page using https if https is required.
+// This prevents someone from accessing via http by typing in the URL 
+if ($bHTTPSOnly)
+{
+    if(!$_SESSION['bSecureServer'])
+    {
+        $_SESSION['bSecureServer'] = TRUE;
+        Redirect("Default.php");
+    }
+}
 // Is the user requesting to logoff or timed out?
 if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
-	if ($_SESSION['sshowPledges'] == "")
+    if ($_SESSION['sshowPledges'] == "")
 		$_SESSION['sshowPledges'] = 0;
 	if ($_SESSION['sshowPayments'] == "")
 		$_SESSION['sshowPayments'] = 0;
@@ -236,10 +247,6 @@ if ($iUserID > 0)
 
 		// Initialize the last operation time
 		$_SESSION['tLastOperation'] = time();
-
-        $_SESSION['bSecureServer'] = ($_SERVER['HTTPS'] == 'on');
-
-		$_SESSION['iServerPort'] = $_SERVER['SERVER_PORT'];
 
 		// If PHP's magic quotes setting is turned off, we want to use a workaround to ensure security.
 		$_SESSION['bHasMagicQuotes'] = get_magic_quotes_gpc();

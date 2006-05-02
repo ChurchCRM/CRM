@@ -143,30 +143,41 @@ if (isset($_POST["BulkAddToCart"])) {
 // Some very basic functions that all scripts use
 //
 
+function RedirectURL($sRelativeURL)
+// Convert a relative URL into an absolute URL and return absolute URL.
+{
+    global $sRootPath;
+    global $sSharedSSLServer;
+    global $sHTTP_Host;
+    global $bHTTPSOnly;
+    global $sPort;
+
+    if ($sPort)
+        $sPortString = ":" . $sPort;
+    else
+        $sPortString = "";
+
+	if (!$_SESSION['bSecureServer'] && !$bHTTPSOnly)
+        $sRedirectURL = "http://";    
+	else
+		$sRedirectURL = "https://";
+
+    if (strlen($sSharedSSLServer) && $_SESSION['bSecureServer'])
+        $sRedirectURL .= $sSharedSSLServer . $sPortString . "/" . $sHTTP_Host;
+    else
+        $sRedirectURL .= $sHTTP_Host . $sPortString;
+
+    $sRedirectURL .= $sRootPath . "/" . $sRelativeURL;
+
+    return $sRedirectURL;
+}
+
 // Convert a relative URL into an absolute URL and redirect the browser there.
 function Redirect($sRelativeURL)
 {
-	global $sRootPath;
-
-	if (!$_SESSION['bSecureServer'] && $_SESSION['iServerPort'] != 443)
-	{
-		$sProtocol = "http://";
-		if ($_SESSION['iServerPort'] != 80)
-			$sPort = ":" . $_SESSION['iServerPort'];
-		else
-			$sPort = "";
-	}
-	else
-	{
-		$sProtocol = "https://";
-		if ($_SESSION['iServerPort'] != 443)
-			$sPort = ":" . $_SESSION['iServerPort'];
-		else
-			$sPort = "";
-	}
-
-	header("Location: " . $sProtocol . $_SERVER['HTTP_HOST'] . $sPort . $sRootPath . "/" . $sRelativeURL);
-	exit();
+    $sRedirectURL = RedirectURL($sRelativeURL);
+	header("Location: " . $sRedirectURL);
+	exit;
 }
 
 // Returns the current fiscal year

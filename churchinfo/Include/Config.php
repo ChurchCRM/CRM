@@ -37,25 +37,42 @@ $sDATABASE = "churchinfo";
 // then you would enter "/web/churchinfo" here.  This path SHOULD NOT end with slash.
 $sRootPath="/churchinfo";
 
+// If you are using a non-standard port number you may need to include the 
+// port number in the URL.  Default value is fine for most installations.
+$sPort="";
+
+// You can enforce https access by setting this true.
+$bHTTPSOnly=FALSE;
+
+// When using a shared SSL certificate provided by your webhost for https access
+// you may need to add the shared SSL server name to the URL.  Default value is fine
+// for most installations
+$sSharedSSLServer="";
+
+// When using a shared SSL certificate your webhost may also require you to use a 
+// modified version of your hostname.  Default value is fine for most installations.
+$sHTTP_Host=$_SERVER['HTTP_HOST'];
+
+
 //
 // SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE
 //
 
 // Establish the database connection
 $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD) 
-	or die ('Cannot connect to the MySQL server because: ' . mysql_error());
+        or die ('Cannot connect to the MySQL server because: ' . mysql_error());
 
 mysql_select_db($sDATABASE) 
-	or die ('Cannot select the MySQL database because: ' . mysql_error());
+        or die ('Cannot select the MySQL database because: ' . mysql_error());
 
 // Read values from config table into local variables
 // **************************************************
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='General'";
 $rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
 if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-		$$cfg_name = $cfg_value;
-	}
+    while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+        $$cfg_name = $cfg_value;
+    }
 }
 
 putenv("LANG=$sLanguage");
@@ -70,54 +87,54 @@ setlocale(LC_NUMERIC, 'C');
 // patch some missing data for Italian.  This shouldn't be necessary!
 if ($sLanguage == "it_IT")
 {
-	$aLocaleInfo["thousands_sep"] = ".";
-	$aLocaleInfo["frac_digits"] = "2";
+    $aLocaleInfo["thousands_sep"] = ".";
+    $aLocaleInfo["frac_digits"] = "2";
 }
 
 if (function_exists('bindtextdomain'))
 {
-	$domain = 'messages';
+    $domain = 'messages';
 
-	$sLocaleDir = "locale";
-	if (!is_dir($sLocaleDir))
-		$sLocaleDir = "../" . $sLocaleDir;
+    $sLocaleDir = "locale";
+    if (!is_dir($sLocaleDir))
+        $sLocaleDir = "../" . $sLocaleDir;
 
-	bindtextdomain($domain, $sLocaleDir);
-	textdomain($domain);
+    bindtextdomain($domain, $sLocaleDir);
+    textdomain($domain);
 }
 else
 {
-	if ($sLanguage != 'en_US')
-	{
-		// PHP array version of the l18n strings
-		$sLocaleMessages = "locale/" . $sLanguage . "/LC_MESSAGES/messages.php";
+    if ($sLanguage != 'en_US')
+    {
+        // PHP array version of the l18n strings
+        $sLocaleMessages = "locale/" . $sLanguage . "/LC_MESSAGES/messages.php";
 
-		if (!is_readable($sLocaleMessages))
-			$sLocaleMessages = "../" . $sLocaleMessages;
+        if (!is_readable($sLocaleMessages))
+            $sLocaleMessages = "../" . $sLocaleMessages;
 
-		require ($sLocaleMessages);
+        require ($sLocaleMessages);
 
-		// replacement implementation of gettext for broken installs
-		function gettext($text)
-		{
-			global $locale;
+        // replacement implementation of gettext for broken installs
+        function gettext($text)
+        {
+            global $locale;
 
-			if (!empty($locale[$text]))
-				return $locale[$text];
-			else
-				return $text;
-		}
-	}
-	else
-	{
-		// dummy gettext function
-		function gettext($text)
-		{
-			return $text;
-		}
-	}
+            if (!empty($locale[$text]))
+                return $locale[$text];
+            else
+                return $text;
+        }
+    }
+    else
+    {
+        // dummy gettext function
+        function gettext($text)
+        {
+            return $text;
+        }
+    }
 
-	function _($text) { return gettext($text); }
+    function _($text) { return gettext($text); }
 }
 
 ?>
