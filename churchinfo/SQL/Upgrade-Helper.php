@@ -237,7 +237,7 @@ require "../Include/Header-Short.php";
 <table align="center" width="80%"><tr><td>
 
 <?php if ($bMissingCustomFields) { ?>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" name="UpgradeHelper">
+<form method="post" action="Upgrade-Helper.php" name="UpgradeHelper">
 <input type="hidden" name="Operation" value="1">
 <input type="submit" class="icButton" value="Perform">
 Create custom fields table entries for everyone currently in the database.
@@ -245,7 +245,7 @@ Create custom fields table entries for everyone currently in the database.
 <?php } ?>
 
 <?php if ($bOldLists && $iOperation != 2) { ?>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" name="UpgradeHelper">
+<form method="post" action="Upgrade-Helper.php" name="UpgradeHelper">
 <input type="hidden" name="Operation" value="2">
 <input type="submit" class="icButton" value="Perform">
 Import your old Classifications, Family Roles, and Group Roles to the new Lists Master Table (list_lst).
@@ -253,7 +253,7 @@ Import your old Classifications, Family Roles, and Group Roles to the new Lists 
 <?php } ?>
 
 <?php if ($bOldLists && $iOperation == 2) { ?>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" name="UpgradeHelper">
+<form method="post" action="Upgrade-Helper.php" name="UpgradeHelper">
 <input type="hidden" name="Operation" value="3">
 &nbsp;&nbsp;&nbsp;<input type="submit" class="icButton" value="Perform">
 Delete your old Classifications, Family Roles, and Group Roles tables.
@@ -261,7 +261,7 @@ Delete your old Classifications, Family Roles, and Group Roles tables.
 <?php } ?>
 
 <?php if ($bMissingThumbnails) { ?>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" name="UpgradeHelper">
+<form method="post" action="Upgrade-Helper.php" name="UpgradeHelper">
 <input type="hidden" name="Operation" value="4">
 &nbsp;&nbsp;&nbsp;<input type="submit" class="icButton" value="Perform">
 Create thumbnails of previously uploaded person and family pictures.

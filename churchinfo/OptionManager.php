@@ -266,7 +266,7 @@ else
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?mode=$mode&ListID=$listID" ?>" name="OptionManager">
+<form method="post" action="OptionManager.php?<?php echo "mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
 <center><b><?php echo gettext("Warning: Removing will reset all assignments for all persons with the assignment!"); ?></b><br><br>
 

@@ -90,7 +90,7 @@ if ($numRows > 0)
   </caption>
   <tr>
     <td>
-      <form name="UpdateEventNames" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+      <form name="UpdateEventNames" action="EventNames.php" method="POST">
       <table width="40%" align="center">
 <?php
          for ($row=1; $row <= $numRows; $row++)
@@ -118,7 +118,7 @@ if ($numRows > 0)
   <tr><td>&nbsp;</td></tr>
   <tr>
     <td>
-      <form name="AddEventNames" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+      <form name="AddEventNames" action="EventNames.php" method="POST">
       <table width="40%" align="center">
         <tr>
           <td align="right"><span class="SmallText"><?php echo gettext("New Event Name"); ?></span></td>

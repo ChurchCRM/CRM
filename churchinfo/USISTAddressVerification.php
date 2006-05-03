@@ -598,16 +598,14 @@ if ($myISTReturnCode == "4") {
 							// Keep doing fresh reloads of this page until complete.
 			if ($now-$startTime > 17){  // run for 17 seconds, then reload page
 										// total cycle is about 20 seconds per page reload
-				?><meta http-equiv="refresh" content="2;URL=<?php 
-				echo $_SERVER['PHP_SELF'] . "?DoLookup=Perform+Lookups";?>" /><?php
+				?><meta http-equiv="refresh" content="2;URL=USISTAddressVerification.php?DoLookup=Perform+Lookups" /><?php
 				$bNormalFinish = FALSE;
 				break;
 			}			
 
 		}
 		if ($bNormalFinish) {
-			?><meta http-equiv="refresh" content="2;URL=<?php 
-			echo $_SERVER['PHP_SELF'];?>" /><?php
+			?><meta http-equiv="refresh" content="2;URL=USISTAddressVerification.php" /><?php
 		}
 	}
 

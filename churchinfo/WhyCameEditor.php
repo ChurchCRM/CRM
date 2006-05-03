@@ -80,7 +80,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?PersonID=" . $iPerson . "&WhyCameID=" . $iWhyCameID . "&linkBack=" . $linkBack; ?>" name="WhyCameEditor">
+<form method="post" action="WhyCameEditor.php?<?php echo "PersonID=" . $iPerson . "&WhyCameID=" . $iWhyCameID . "&linkBack=" . $linkBack; ?>" name="WhyCameEditor">
 
 <table cellpadding="3" align="center">
 

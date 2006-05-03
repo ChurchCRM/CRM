@@ -481,7 +481,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?FamilyID=" . $iFamilyID ?>">
+<form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>">
 <input type="hidden" Name="sAction" value="<?php echo $sAction; ?>">
 <input type="hidden" Name="iFamilyID" value="<?php echo $iFamilyID; ?>">
 <input type="hidden" name="FamCount" value="<?php echo $iFamilyMemberRows; ?>">

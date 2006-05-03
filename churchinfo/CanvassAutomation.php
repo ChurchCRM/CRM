@@ -100,7 +100,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>" name="CanvassAutomation">
+<form method="post" action="CanvassAutomation.php" name="CanvassAutomation">
 
 <p>Fiscal Year:
 <?php PrintFYIDSelect ($iFYID, "FYID") ?>

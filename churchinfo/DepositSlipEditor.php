@@ -426,7 +426,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?linkBack=" . $linkBack . "&DepositSlipID=".$iDepositSlipID?>" name="DepositSlipEditor">
+<form method="post" action="DepositSlipEditor.php?<?php echo "linkBack=" . $linkBack . "&DepositSlipID=".$iDepositSlipID?>" name="DepositSlipEditor">
 
 <table cellpadding="3" align="center">
 

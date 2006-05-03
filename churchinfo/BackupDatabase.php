@@ -127,7 +127,7 @@ require "Include/Header.php";
 <li><?php echo gettext("For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."); ?></li>
 </ul>
 <BR><BR>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" name="BackupDatabase">
+<form method="post" action="BackupDatabase.php" name="BackupDatabase">
 <?php echo gettext("Select archive type:"); ?>
 <?php if ($hasGZIP) { ?><input type="radio" name="archiveType" value="0"><?php echo gettext("GZip"); ?><?php } ?>
 <?php if ($hasZIP) { ?><input type="radio" name="archiveType" value="1"><?php echo gettext("Zip"); ?><?php } ?>

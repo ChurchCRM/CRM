@@ -135,7 +135,7 @@ if ($sAction = 'Edit' && !empty($sOpp))
 // Construct the form
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" name="EventsEditor">
+<form method="post" action="EventEditor.php" name="EventsEditor">
 <input type="hidden" name="EventID" value="<?php echo ($uEventID ? $uEventID:$_POST['EID']); ?>">
 <table cellpadding="3" width="75%" align="center">
   <caption>

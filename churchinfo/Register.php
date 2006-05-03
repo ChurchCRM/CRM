@@ -89,7 +89,7 @@ echo gettext ("We will never sell or otherwise distribute this information.");
 ?>
 </p>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="Register">
+<form method="post" action="Register.php" name="Register">
 
 <table cellpadding="1" align="center">
 

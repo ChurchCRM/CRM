@@ -144,7 +144,7 @@ if ( answer )
 }
 </script>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" name="FundsEditor">
+<form method="post" action="DonationFundEditor.php" name="FundsEditor">
 
 <table cellpadding="3" width="75%" align="center">
 

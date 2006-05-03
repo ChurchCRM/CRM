@@ -49,7 +49,7 @@ echo $res_echotype2;
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?PledgeID=" . $iPledgeID . "&linkBack=" . $linkBack; ?>" name="PledgeDelete">
+<form method="post" action="PledgeDetails.php?<?php echo "PledgeID=" . $iPledgeID . "&linkBack=" . $linkBack; ?>" name="PledgeDelete">
 
 <table cellpadding="3" align="center">
 

@@ -423,7 +423,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?PersonID=" . $iPersonID; ?>" name="PersonEditor">
+<form method="post" action="PersonEditor.php?PersonID=<?php echo $iPersonID; ?>" name="PersonEditor">
 
 <table cellpadding="3" align="center">
 

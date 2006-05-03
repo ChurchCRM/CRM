@@ -258,7 +258,7 @@ if ( answer )
 }
 </script>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="PersonCustomFieldsEditor">
+<form method="post" action="PersonCustomFieldsEditor.php" name="PersonCustomFieldsEditor">
 
 <table cellpadding="3" width="75%" align="center">
 

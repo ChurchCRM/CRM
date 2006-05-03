@@ -137,7 +137,7 @@ if ( answer )
 }
 </script>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" name="OppsEditor">
+<form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
 <table cellpadding="3" width="75%" align="center">
 

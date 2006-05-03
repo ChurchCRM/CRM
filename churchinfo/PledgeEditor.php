@@ -315,7 +315,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?PledgeID=" . $iPledgeID . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
+<form method="post" action="PledgeEditor.php?<?php echo "PledgeID=" . $iPledgeID . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
 
 <table cellpadding="3" align="center">
 

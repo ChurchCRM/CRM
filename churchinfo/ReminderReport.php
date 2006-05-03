@@ -38,7 +38,7 @@ if (isset($_POST["Submit"])) {
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
+<form method="post" action="ReminderReport.php">
 
 <table cellpadding="3" align="left">
 
