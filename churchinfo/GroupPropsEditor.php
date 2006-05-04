@@ -135,7 +135,7 @@ echo "<h2>" . gettext("Editing") . " <i>" . $grp_Name . "</i> " . gettext("data 
 // Construct the form
 
 ?>
-	<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?PersonID=" . $iPersonID . "&GroupID=" . $iGroupID; ?>" name="GroupPropEditor">
+	<form method="post" action="GroupPropsEditor.php?<?php echo "PersonID=" . $iPersonID . "&GroupID=" . $iGroupID; ?>" name="GroupPropEditor">
 
 	<table cellpadding="3">
 		<tr>

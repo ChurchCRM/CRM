@@ -311,9 +311,9 @@ function DisplayParameterForm()
 	global $aErrorText;
 	global $cnInfoCentral;
 
-	//Start the form and the table
-	echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "?QueryID=" . $iQueryID . "\">";
-	echo "<table align=\"center\" cellpadding=\"5\" cellspacing=\"1\" border=\"0\">";
+    //Start the form and the table
+    echo '<form method="post" action="QueryView.php?QueryID=' . $iQueryID . '">';
+    echo '<table align="center" cellpadding="5" cellspacing="1" border="0">';
 
 	//Loop through the parameters and display an entry box for each one
 	if (mysql_num_rows($rsParameters)) {mysql_data_seek($rsParameters,0); }

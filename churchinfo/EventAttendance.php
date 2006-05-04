@@ -137,7 +137,7 @@ if ($_GET['Action'] == "List" && $numRows > 0)
            <td class="TextColumn"><?php echo $aEventTitle[$row]; ?></td>
            <td class="TextColumn"><?php echo FormatDate($aEventStartDateTime[$row],1); ?></td>
            <td class="TextColumn" align="center">
-             <form name="Attend" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+             <form name="Attend" action="EventAttendance.php" method="POST">
                <input type="hidden" name="Event" value="<?php echo $aEventID[$row]; ?>">
                <input type="hidden" name="Type" value="<?php echo $_GET['Type']; ?>">
                <input type="hidden" name="Action" value="Retrieve">
@@ -158,7 +158,7 @@ $tNumTotal = mysql_result($tOpps, 0);
              </form>
            </td>
            <td class="TextColumn">
-             <form name="NonAttend" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+             <form name="NonAttend" action="EventAttendance.php" method="POST">
                <input type="hidden" name="Event" value="<?php echo $aEventID[$row]; ?>">
                <input type="hidden" name="Type" value="<?php echo $_GET['Type']; ?>">
                <input type="hidden" name="Action" value="Retrieve">
@@ -169,7 +169,7 @@ $tNumTotal = mysql_result($tOpps, 0);
              </form>
            </td>
            <td class="TextColumn">
-             <form name="GuestAttend" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+             <form name="GuestAttend" action="EventAttendance.php" method="POST">
                <input type="hidden" name="Event" value="<?php echo $aEventID[$row]; ?>">
                <input type="hidden" name="Type" value="<?php echo $_GET['Type']; ?>">
                <input type="hidden" name="Action" value="Retrieve">

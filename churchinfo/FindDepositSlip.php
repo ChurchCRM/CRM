@@ -59,7 +59,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="get" action="<?php echo $_SERVER['PHP_SELF']?>" name="FindDepositSlip">
+<form method="get" action="FindDepositSlip.php" name="FindDepositSlip">
 <input name="sort" type="hidden" value="<?php echo $sSort; ?>"
 <table cellpadding="3" align="center">
 

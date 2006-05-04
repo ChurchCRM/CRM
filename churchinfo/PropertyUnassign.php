@@ -121,7 +121,7 @@ require "Include/Header.php";
 </table>
 
 <p>
-	<a href="<?php echo $_SERVER['PHP_SELF'] . $sQuerystring . "&PropertyID=" . $iPropertyID . "&Confirmed=Yes"; ?>"><?php echo gettext("Yes, unassign this Property"); ?></a>
+	<a href="PropertyUnassign.php<?php echo $sQuerystring . "&PropertyID=" . $iPropertyID . "&Confirmed=Yes"; ?>"><?php echo gettext("Yes, unassign this Property"); ?></a>
 </p>
 <p>
 	<a href="<?php echo $sBackPage; ?>"><?php echo gettext("No, retain this assignment"); ?></a>

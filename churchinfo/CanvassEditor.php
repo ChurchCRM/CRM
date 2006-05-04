@@ -139,7 +139,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?FamilyID=" . $iFamily . "&FYID=".$iFYID . "&CanvassID=" . $iCanvassID . "&linkBack=" . $linkBack; ?>" name="CanvassEditor">
+<form method="post" action="CanvassEditor.php?<?php echo "FamilyID=" . $iFamily . "&FYID=".$iFYID . "&CanvassID=" . $iCanvassID . "&linkBack=" . $linkBack; ?>" name="CanvassEditor">
 
 <table cellpadding="3" align="center">
 

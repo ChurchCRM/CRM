@@ -283,25 +283,37 @@ elseif ($next_link_text) {
 		$photoFile = "Images/Family/thumbnails/" . $iFamilyID . ".jpg";
 		if (file_exists($photoFile))
 		{
-			echo "<a target=\"_blank\" href=\"Images/Family/" . $iFamilyID . ".jpg\">";
-			echo "<img border=\"1\" src=\"$photoFile\"></a>";
-			if ($bOkToEdit) {
-				echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "?FamilyID=" . $iFamilyID . "\">";
-				echo "<br><input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext("Delete Photo") . "\" name=\"DeletePhoto\">";
-				echo "</form>";
+			echo '<a target="_blank" href="Images/Family/' . $iFamilyID . '.jpg">';
+			echo '<img border="1" src="'.$photoFile.'"></a>';
+			if ($bOkToEdit) 
+            {
+                echo '
+                    <form method="post" action="FamilyView.php?FamilyID=' . $iFamilyID . '">
+                    <br>
+                    <input type="submit" class="icTinyButton" 
+                    value="' . gettext("Delete Photo") . '" 
+                    name="DeletePhoto">
+                    </form>';
 			}
 		} else {
 			// Some old / M$ browsers can't handle PNG's correctly.
 			if ($bDefectiveBrowser)
-				echo "<img border=\"0\" src=\"Images/NoFamPhoto.gif\"><br><br><br>";
+				echo '<img border="0" src="Images/NoFamPhoto.gif"><br><br><br>';
 			else
-				echo "<img border=\"0\" src=\"Images/NoFamPhoto.png\"><br><br><br>";
+				echo '<img border="0" src="Images/NoFamPhoto.png"><br><br><br>';
 
 			if ($bOkToEdit) {
-				if (isset($PhotoError)) echo "<span style=\"color: red;\">" . $PhotoError . "</span><br>";
-				echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "?FamilyID=" . $iFamilyID . "\" enctype=\"multipart/form-data\">";
-				echo "<input class=\"icTinyButton\" type=\"file\" name=\"Photo\"> <input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext("Upload Photo") . "\" name=\"UploadPhoto\">";
-				echo "</form>";
+				if (isset($PhotoError)) 
+                    echo '<span style="color: red;">' . $PhotoError . '</span><br>';
+
+                echo '
+                    <form method="post" 
+                    action="FamilyView.php?FamilyID=' . $iFamilyID . '" 
+                    enctype="multipart/form-data">
+                    <input class="icTinyButton" type="file" name="Photo"> 
+                    <input type="submit" class="icTinyButton" 
+                    value="' . gettext("Upload Photo") . '" name="UploadPhoto">
+                    </form>';
 			}
 		}
 	?>

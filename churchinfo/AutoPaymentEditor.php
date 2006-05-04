@@ -253,7 +253,7 @@ $rsFunds = RunQuery($sSQL);
 ?>
 
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?AutID=" . $iAutID . "&FamilyID=" . $iFamily . "&linkBack=" . $linkBack; ?>" name="Canvas05Editor">
+<form method="post" action="AutoPaymentEditor.php?<?php echo "AutID=" . $iAutID . "&FamilyID=" . $iFamily . "&linkBack=" . $linkBack; ?>" name="Canvas05Editor">
 
 <table cellpadding="1" align="center">
 

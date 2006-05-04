@@ -48,7 +48,7 @@ echo "<p><B>" . $processNews . "</B></p>"; // Report any action just taken by bu
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>" name="ManageEnvelopes">
+<form method="post" action="ManageEnvelopes.php" name="ManageEnvelopes">
 
 <table border width="100%" align="left">
 	<tr>

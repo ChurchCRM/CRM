@@ -194,7 +194,7 @@ if ($bOkToEdit) {
 if ($_SESSION['bDeleteRecords']) { echo "<a class=\"SmallText\" href=\"SelectDelete.php?mode=person&PersonID=" . $per_ID . "\">" . gettext("Delete this Record") . "</a> | " ; }
 ?>
 <a href="PrintView.php?PersonID=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Printable Page"); ?></a>
-| <a href="<?php echo $_SERVER['PHP_SELF']; ?>?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Add to Cart"); ?></a>
+| <a href="PersonView.php?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Add to Cart"); ?></a>
 
 <?php
 if ($_SESSION['bAdmin'])
@@ -332,29 +332,40 @@ if ($next_link_text) {
 
 		// Display photo or upload from file
 		$photoFile = "Images/Person/thumbnails/" . $iPersonID . ".jpg";
-		if (file_exists($photoFile))
-		{
-			echo "<a target=\"_blank\" href=\"Images/Person/" . $iPersonID . ".jpg\">";
-			echo "<img border=\"1\" src=\"$photoFile\"></a>";
-			if ($bOkToEdit) {
-				echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "?PersonID=" . $iPersonID . "\">";
-				echo "<br><input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext("Delete Photo") . "\" name=\"DeletePhoto\">";
-				echo "</form>";
-			}
-		} else {
-			// Some old / M$ browsers can't handle PNG's correctly.
-			if ($bDefectiveBrowser)
-				echo "<img border=\"0\" src=\"Images/NoPhoto.gif\"><br><br><br>";
-			else
-				echo "<img border=\"0\" src=\"Images/NoPhoto.png\"><br><br><br>";
+        if (file_exists($photoFile))
+        {
+            echo '<a target="_blank" href="Images/Person/' . $iPersonID . '.jpg">';
+            echo '<img border="1" src="'.$photoFile.'"></a>';
+            if ($bOkToEdit) {
+                echo '
+                    <form method="post"
+                    action="PersonView.php?PersonID=' . $iPersonID . '">
+                    <br>
+                    <input type="submit" class="icTinyButton" 
+                    value="' . gettext("Delete Photo") . '" name="DeletePhoto">
+                    </form>';
+                }
+        } else {
+            // Some old / M$ browsers can't handle PNG's correctly.
+            if ($bDefectiveBrowser)
+                echo '<img border="0" src="Images/NoPhoto.gif"><br><br><br>';
+            else
+                echo '<img border="0" src="Images/NoPhoto.png"><br><br><br>';
 
-			if ($bOkToEdit) {
-				if (isset($PhotoError)) echo "<span style=\"color: red;\">" . $PhotoError . "</span><br>";
-				echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "?PersonID=" . $iPersonID . "\" enctype=\"multipart/form-data\">";
-				echo "<input class=\"icTinyButton\" type=\"file\" name=\"Photo\"> <input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext("Upload Photo") . "\" name=\"UploadPhoto\">";
-				echo "</form>";
-			}
-		}
+            if ($bOkToEdit) {
+                if (isset($PhotoError))
+                    echo '<span style="color: red;">' . $PhotoError . '</span><br>';
+
+                echo '
+                    <form method="post" 
+                    action="PersonView.php?PersonID=' . $iPersonID . '" 
+                    enctype="multipart/form-data">
+                    <input class="icTinyButton" type="file" name="Photo">
+                    <input type="submit" class="icTinyButton" 
+                    value="' . gettext("Upload Photo") . '" name="UploadPhoto">
+                    </form>';
+            }
+        }
 	?>
 	</div>
 </td>
@@ -777,7 +788,7 @@ if ($bOkToEdit) { echo "<a class=\"SmallText\" href=\"PersonEditor.php?PersonID=
 if ($_SESSION['bDeleteRecords']) { echo "<a class=\"SmallText\" href=\"SelectDelete.php?mode=person&PersonID=" . $per_ID . "\">" . gettext("Delete this Record") . "</a> | " ; }
 ?>
 <a href="PrintView.php?PersonID=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Printable Page"); ?></a>
-| <a href="<?php echo $_SERVER['PHP_SELF']; ?>?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Add to Cart"); ?></a>
+| <a href="PersonView.php?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Add to Cart"); ?></a>
 
 <?php
 if ($_SESSION['bAdmin'])

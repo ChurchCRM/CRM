@@ -100,7 +100,7 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
+<form method="post" action="SundaySchool.php">
 
 <table cellpadding="3" align="left">
 	<tr>

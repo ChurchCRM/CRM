@@ -132,7 +132,7 @@ if ($numRows > 0)
              </form>
            </td>
            <td class="TextColumn">
-             <form name="DeactivateEvent" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+             <form name="DeactivateEvent" action="ListEvents.php" method="POST">
                <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
                <?php if ($aEventStatus[$row] == 0 ) { ?>
                <input type="submit" name="Action" value="<?php echo gettext("Deactivate"); ?>" class="icButton" onClick="return confirm('Are you sure you want to DEACTIVATE Event ID: <?php echo  $aEventID[$row]; ?>')">

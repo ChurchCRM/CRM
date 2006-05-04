@@ -147,9 +147,8 @@ if (isset($_POST["UpdateAllFamilies"]))
 
 require "Include/Header.php";
 
-echo "<form method=\"POST\" action=\"" . $_SERVER['PHP_SELF'] . "\" name=\"GeoPage\">\n";
-
-echo "<table>\n";
+echo '<form method="POST" action="GeoPage.php" name="GeoPage">';
+echo '<table>';
 
 //Get Families for the list
 $sSQL = "SELECT * FROM family_fam ORDER BY fam_Name";

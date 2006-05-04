@@ -62,7 +62,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?AutID=" . $iAutID . "&linkBack=" . $linkBack; ?>" name="AutoPaymentDelete">
+<form method="post" action="AutoPaymentDelete.php?<?php echo "AutID=" . $iAutID . "&linkBack=" . $linkBack; ?>" name="AutoPaymentDelete">
 
 <table cellpadding="3" align="center">
 

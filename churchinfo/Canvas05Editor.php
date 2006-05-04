@@ -81,7 +81,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?FamilyID=" . $iFamily . "&linkBack=" . $linkBack; ?>" name="Canvas05Editor">
+<form method="post" action="Canvas05Editor.php?<?php echo "FamilyID=" . $iFamily . "&linkBack=" . $linkBack; ?>" name="Canvas05Editor">
 
 <table cellpadding="3" align="center">
 

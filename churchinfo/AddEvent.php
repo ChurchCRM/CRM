@@ -159,7 +159,7 @@ else
              </form>
            </td>
            <td class="TextColumn">
-             <form name="DeactivateEvent" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+             <form name="DeactivateEvent" action="AddEvent.php" method="POST">
                <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
                <?php if ($aEventStatus[$row] == 0 ) { ?>
                <input type="submit" name="Action" value="<?php echo gettext("Deactivate"); ?>" class="icButton" onClick="return confirm('Are you sure you want to DEACTIVATE Event ID: <?php echo  $aEventID[$row]; ?>')">
@@ -188,7 +188,7 @@ else
                 <tr><td colspan="5"><hr></td></tr>
                 <tr>
                   <td colspan="5">
-                      <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" name="AddEvent">
+                      <form method="post" action="AddEvent.php" name="AddEvent">
                         <table width="70%" align="center">
                           <tr>
                             <td class="LabelColumn"><?php echo gettext("Event Type:"); ?></td>

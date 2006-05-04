@@ -81,7 +81,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?PropertyTypeID=<?php echo $iPropertyTypeID; ?>">
+<form method="post" action="PropertyTypeEditor.php?PropertyTypeID=<?php echo $iPropertyTypeID; ?>">
 
 <table cellpadding="4">
 	<tr>

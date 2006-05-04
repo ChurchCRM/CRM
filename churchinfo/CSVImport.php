@@ -148,7 +148,7 @@ if (isset($_POST["UploadCSV"]))
 
         // create the form
         ?>
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <form method="post" action="CSVImport.php">
 
         <?php
         echo gettext("Total number of rows in the CSV file:") . $iNumRows;
@@ -709,17 +709,22 @@ if($_POST["Clear"] != "")
 if ($iStage == 1)
 {
     // Display the select file form
-    echo "<p style=\"color: red\">" . $csvError . "</p>";
-    echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "\" enctype=\"multipart/form-data\">";
-    echo "<input class=\"icTinyButton\" type=\"file\" name=\"CSVfile\"> <input type=\"submit\" class=\"icButton\" value=\"" . gettext("Upload CSV File") . "\" name=\"UploadCSV\">";
-    echo "</form><br/><br/><br/><br/>";
-    echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "\" enctype=\"multipart/form-data\">";
-    echo gettext("Are you sure?")."  <input type=\"checkbox\" name=\"chkClear\" value='0'> <input type=\"submit\" class=\"icButton\" value=\"" 
-                . gettext("Clear Persons and Families") . "\" name=\"Clear\">";
-    echo "<p style=\"color: red\">";
-    echo gettext("Warning!  Do not select this option if you plan to add to an existing database.<br/>");
-    echo gettext("Use only if unsatisfied with initial import.  All person and member data will be destroyed!");            
-    echo "</p></form>";
+    echo ' 
+        <p style="color: red">' . $csvError . '</p>
+        <form method="post" action="CSVImport.php" enctype="multipart/form-data">
+        <input class="icTinyButton" type="file" name="CSVfile"> 
+        <input type="submit" class="icButton" value="' . gettext("Upload CSV File") . '"
+        name="UploadCSV">
+        </form><br/><br/><br/><br/>
+        <form method="post" action="CSVImport.php" enctype="multipart/form-data">'
+        .gettext("Are you sure?"). ' 
+        <input type="checkbox" name="chkClear" value=' . "'0'>" . '
+        <input type="submit" class="icButton" value="'. gettext("Clear Persons and Families").'"
+        name="Clear">
+        <p style="color: red">' .
+        gettext("Warning!  Do not select this option if you plan to add to an existing database.<br/>") .
+        gettext("Use only if unsatisfied with initial import.  All person and member data will be destroyed!");            
+    echo '</p></form>';
     echo $sClear;
 }
 

@@ -49,7 +49,7 @@ if (isset($_POST["SubmitNewsLetter"]) || isset($_POST["SubmitConfirmReport"]) ||
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
+<form method="post" action="LettersAndLabels.php">
 
 <table cellpadding="3" align="left">
     <?php 

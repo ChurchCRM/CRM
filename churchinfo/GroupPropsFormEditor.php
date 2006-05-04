@@ -276,7 +276,7 @@ if ( answer )
 }
 </script>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?GroupID=" . $iGroupID; ?>" name="GroupPropFormEditor">
+<form method="post" action=GroupPropsFormEditor.php?GroupID="<?php echo $iGroupID; ?>" name="GroupPropFormEditor">
 
 <table cellpadding="3" width="100%">
 

@@ -213,7 +213,7 @@ function confirmAdd() {
 <tr>
 
 <td width="40%" valign="top" align="center">
-	<form name="GroupEdit" method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?GroupID=" . $iGroupID ?>">
+	<form name="GroupEdit" method="post" action="GroupEditor.php?GroupID=<?php echo $iGroupID ?>">
 	<table cellpadding="3">
 		<tr>
 			<td class="LabelColumn"><b><?php echo gettext("Name:"); ?></b></td>

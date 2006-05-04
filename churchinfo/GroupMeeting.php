@@ -148,7 +148,7 @@ require "Include/Header.php";
 meeting is scheduled any changes must be made within WebCalendar.  All members of
 this group will be added to the meeting as external users of WebCalendar.</p>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?GroupID=" . $iGroupID . "&linkBack=" . $linkBack . "&Name=" . $tName; ?>" name="GroupMeeting">
+<form method="post" action="GroupMeeting.php?<?php echo "GroupID=" . $iGroupID . "&linkBack=" . $linkBack . "&Name=" . $tName; ?>" name="GroupMeeting">
 
 <table cellpadding="3" align="center">
 

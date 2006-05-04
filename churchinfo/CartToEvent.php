@@ -63,7 +63,7 @@ $rsEvents = RunQuery($sSQL);
 
 ?>
 <p align="center"><?php echo gettext("Select the event to which you would like to add your cart:"); ?></p>
-<form name="CartToEvent" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+<form name="CartToEvent" action="CartToEvent.php" method="POST">
 <table align="center">
         <?php if ($sGlobalMessage) { ?>
         <tr>
