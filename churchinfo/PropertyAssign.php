@@ -167,7 +167,7 @@ $sPageTitle = $sTypeName . gettext(" Property Assignment");
 require "Include/Header.php";
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . $sQuerystring . "&PropertyID=" . $iPropertyID; ?>">
+<form method="post" action="PropertyAssign.php<?php echo $sQuerystring . "&PropertyID=" . $iPropertyID; ?>">
 <input type="hidden" name="SecondPass" value="True">
 <input type="hidden" name="Action" value="<?php echo $sAction; ?>">
 

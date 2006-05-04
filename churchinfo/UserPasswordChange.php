@@ -154,7 +154,7 @@ else
 	echo "<p>" . gettext("Enter a new password for this user.") . "</p>";
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] . "?PersonID=" . $iPersonID ?>&FromUserList=<?php echo $_GET["FromUserList"]; ?>">
+<form method="post" action="UserPasswordChange.php?<?php echo "PersonID=" . $iPersonID ?>&FromUserList=<?php echo $_GET["FromUserList"]; ?>">
 <table cellpadding="4">
 <?php if (!$bAdminOtherUser) { ?>
 	<tr>

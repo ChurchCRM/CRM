@@ -73,7 +73,7 @@ require "Include/Header.php"
 
 ?>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>?GroupID=<?php echo $iGroupID ?>&PersonID=<?php echo $iPersonID ?>&Return=<?php echo $iReturn ?>">
+<form method="post" action="MemberRoleChange.php?GroupID=<?php echo $iGroupID ?>&PersonID=<?php echo $iPersonID ?>&Return=<?php echo $iReturn ?>">
 
 <table cellpadding="4">
 	<tr>
