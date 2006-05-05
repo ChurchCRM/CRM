@@ -63,8 +63,8 @@ browser.  However, be warned:  Microsoft Internet Explorer is in many
 cases NOT compliant to well-established W3C-consortium Internet standards.
 If you have troubles, please use a quality (and free) browser such as
 Mozilla or "Netscape 7" instead.  Alternatively, there is a setting in
-Include/Config.php that can disable certain interface features for
-non-compliant browsers.
+Admin -> Edit General Settings that can disable certain interface 
+features for non-compliant browsers.
 
 What if I only have one computer?
 ---------------------------------
@@ -92,7 +92,13 @@ How Do I Install ChurchInfo?
 1) The .tar.gz file download contains a directory called "churchinfo"
 Place this directory in the document root of your Web server.
 
-2) Within the directory, you'll find a directory called "SQL"
+Note: There are .zip and .tar.gz versions of the file.  The difference between 
+the .zip and .tar.gz versions is only in EOL character format.  The .zip
+version uses Windows style CR-LF EOL characters and the .tar.gz uses Linux
+and OSX style LF EOL characters.  For best results use .zip for Windows
+servers and .tar.gz for Linux and Mac.
+
+2) Within the directory you'll find a directory called "SQL"
 containing a file named "Install.sql". Contained in this file are
 the SQL statements necessary to create the ChurchInfo database. Log
 onto your database server under the root account (or other account
@@ -120,6 +126,7 @@ $sDATABASE = "churchinfo";
 Change these parameters to match the mysql server and user account you
 intend to use.  You MUST set the $sRootPath option properly as described 
 in Config.php.
+
 
 4) You should be able to access ChurchInfo at "http://[server
 name]/churchinfo". The database script will have set up
@@ -154,3 +161,4 @@ like this to your httpd.conf:
 </Directory>
 
 Please see your web server's documentation if you need further help.
+

@@ -21,7 +21,9 @@
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
 *
-*  This file best viewed in a text editor with tabs stops set to 4 characters
+*  This file best viewed in a text editor with tabs stops set to 4 characters.
+*  Please configure your editor to use soft tabs (4 spaces for a tab) instead
+*  of hard tab characters.
 *
 ******************************************************************************/
 
@@ -53,6 +55,26 @@ $sSharedSSLServer="";
 // modified version of your hostname.  Default value is fine for most installations.
 $sHTTP_Host=$_SERVER['HTTP_HOST'];
 
+// Some webhosts implement shared SSL differently.  ChurchInfo currently
+// works with the following implementation of shared SSL hosting.
+//
+// Let's say your "normal" http access looks like this:
+// http://www.mydomain.org/churchinfo/Default.php
+//
+// Now let's say that access via your webhosts shared SSL certificate looks like this:
+// https://ssl.secureaccess.net/ssl.mydomain.org/churchinfo/Default.php
+//
+// Here are the settings to implement the above example
+// $sSharedSSLServer="ssl.secureaccess.net";
+// $sHTTP_Host="ssl.mydomain.org";
+//
+// If your webhost implements shared SSL differently you may need to modify the
+// source code to work with another implementation of shared SSL.  The only
+// code that should need to be modified is the function RedirectURL() in
+// the file Include/Functions.php.   
+// Please post to the sourceforge help forum.  Tell us about your changes to
+// get ChurchInfo to work with another implementation of shared SSL and we'll 
+// try to add it to the next release.
 
 //
 // SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE
