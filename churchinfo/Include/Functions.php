@@ -899,8 +899,11 @@ function displayCustomField($type, $data, $special)
 				return gettext("No");
 			break;
 
-		// Handler for date fields, text fields, years, seasons, numbers, money
+		// Handler for date fields
 		case 2:
+            return FormatDate($data);
+            break;
+        // Handler for text fields, years, seasons, numbers, money
 		case 3:
 		case 4:
 		case 6:
@@ -1535,6 +1538,10 @@ function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSepar
 		if (is_numeric($per_BirthYear))
 		{
 			$dBirthDate = $per_BirthYear . $sSeparator . $dBirthDate;
+            if (checkdate($dBirthMonth,$dBirthDay,$per_BirthYear))
+            {
+                $dBirthDate = FormatDate($dBirthDate);
+            }
 		}
 	}
 	elseif (is_numeric($per_BirthYear))
