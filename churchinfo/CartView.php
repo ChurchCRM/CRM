@@ -21,12 +21,84 @@
 *
 ******************************************************************************/
 
+function ExportCartToCSV()
+{
+
+
+    $sSQL  =    " SELECT lst_OptionName, fam_Name, per_LastName, per_FirstName, ".
+                " fam_HomePhone, per_HomePhone, fam_Address1, fam_Address2, fam_City, ".
+                " fam_State, fam_Zip, per_DateEntered".
+                " FROM person_per ".
+                " LEFT JOIN family_fam ON fam_ID = per_fam_ID ".
+                " LEFT JOIN list_lst ON lst_OptionID = per_cls_ID ".
+                " WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ".
+                " AND lst_ID='1' ".
+                " ORDER BY fam_Name, fam_ID, per_LastName, per_FirstName ";
+	
+	//Run the SQL
+	$rsQueryResults = RunQuery($sSQL);
+
+    $sCSVstring = "";
+
+	if (mysql_error() != "")
+	{
+		$sCSVstring = gettext("An error occured: ") . mysql_errno() . "--" . mysql_error();
+	}
+	else
+	{
+
+		//Loop through the fields and write the header row
+		for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
+		{
+            $sCSVstring .= mysql_field_name($rsQueryResults,$iCount) . ",";
+		}
+
+        $sCSVstring .= "\n";
+
+		//Loop through the recordsert
+		while($aRow =mysql_fetch_array($rsQueryResults))
+		{
+			//Loop through the fields and write each one
+			for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
+			{
+				$sCSVstring .= $aRow[$iCount] . ",";
+			}
+
+			$sCSVstring .= "\n";
+		}
+	}
+
+    header("Content-type: application/csv");
+	header("Content-Disposition: attachment; filename=Cart-" . date("Ymd-Gis") . ".csv");
+	header("Content-Transfer-Encoding: binary");
+	header('Expires: 0');
+	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+	header('Pragma: public'); 
+	echo $sCSVstring;
+    exit;
+
+}
+
 
 // Include the function library
 
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/LabelFunctions.php";
+
+if (isset($_POST["cartcsv"]))
+{
+
+    // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
+    if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) 
+    {
+	   Redirect("Menu.php");
+	   exit;
+    }
+
+    ExportCartToCSV();
+    exit;
+}
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("View Your Cart");
@@ -178,9 +250,14 @@ if (count($_SESSION['aPeopleCart']) != 0)
         }
         echo "<br>";
         echo "<a href=\"CartToEvent.php\">" . gettext("Empty Cart to Event") . "</a>";
-        /* Link to CSV export */
-        echo "<br>";
-        echo "<a href=\"CSVExport.php?Source=cart\">" . gettext("CSV Export") . "</a>";
+
+        // Only show CSV export link if user is allowed to CSV export.
+        if ($_SESSION['bAdmin'] || !$bCSVAdminOnly) 
+        {
+            /* Link to CSV export */
+            echo "<br>";
+            echo "<a href=\"CSVExport.php?Source=cart\">" . gettext("CSV Export") . "</a>";
+        }
 
         if ($iEmailNum > 0) {
                 // Add default email if default email has been set and is not already in string
@@ -205,6 +282,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
             else
             {
                 document.labelform.bulkmailquiet.disabled=true;
+                document.labelform.bulkmailquiet.checked=false;
             }
         }
     
@@ -249,10 +327,26 @@ if (count($_SESSION['aPeopleCart']) != 0)
 				</tr>
     </table></form></td></tr></table>
 
+<?php
+// Only show CSV export link if user is allowed to CSV export.
+if ($_SESSION['bAdmin'] || !$bCSVAdminOnly) 
+{
+    ?>
+    <div align="center">
+    <form method="post" action="CartView.php">
+    <?php echo "<br><h2>" . gettext("Export Cart to CSV File") . "</h2>"; ?>
+    <input type="submit" class="icButton" name="cartcsv" 
+            value="<?php echo gettext("Create CSV File");?>">
+    </form>
+    </div>
+    <?php
+} 
+?>
+
 <div align="center">
 <form method="get" action="DirectoryReports.php">
-<?php echo "<br><h2>" . gettext("Create Member Directory") . "</h2>"; ?>
-<input type="submit" class="icButton" name="cartdir" value="<?php echo gettext("Member Directory");?>">
+<?php echo "<br><h2>" . gettext("Create Directory From Cart") . "</h2>"; ?>
+<input type="submit" class="icButton" name="cartdir" value="<?php echo gettext("Cart Directory");?>">
 </form>
 </div>
 
