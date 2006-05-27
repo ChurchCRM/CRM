@@ -132,6 +132,11 @@ if ($sMode == 'person')
             $iGroupID = FilterInput($_GET["groupid"],'int');
             if ($iGroupID == 0) unset($iGroupID);
         }
+        if (strlen($_GET["grouproleid"]))
+        {
+            $iRoleID = FilterInput($_GET["grouproleid"],'int');
+            if ($iRoleID == 0) unset($iRoleID);
+        }
     }
 }
 elseif ($sMode == 'groupassign')
@@ -213,10 +218,23 @@ if ($iMode == 1 || $iMode == 2)
 				if (isset($iGroupID))
 					if ($iGroupID >= 0)
 					{
-						$sJoinExt =	" LEFT JOIN person2group2role_p2g2r ".
-									" ON per_ID = p2g2r_per_ID ";
-						$sGroupWhereExt =	" AND p2g2r_grp_ID=".$iGroupID." ".
-											" AND p2g2r_per_ID = per_ID ";
+                        if (isset($iRoleID))
+                        {
+                            $sJoinExt = " LEFT JOIN person2group2role_p2g2r ".
+                                        " ON per_ID = p2g2r_per_ID ".
+                                        " LEFT JOIN list_lst ".
+                                        " ON p2g2r_grp_ID = lst_ID ";
+                            $sGroupWhereExt =   " AND p2g2r_grp_ID=".$iGroupID." " .
+                                                " AND p2g2r_per_ID=per_ID " .
+                                                " AND p2g2r_rle_ID=".$iRoleID." ";
+                        }
+                        else
+                        {
+                            $sJoinExt =	" LEFT JOIN person2group2role_p2g2r ".
+                                        " ON per_ID = p2g2r_per_ID ";
+                            $sGroupWhereExt =	" AND p2g2r_grp_ID=".$iGroupID." ".
+                                                " AND p2g2r_per_ID = per_ID ";
+                        }
 					}
 					else
 					{
@@ -224,7 +242,9 @@ if ($iMode == 1 || $iMode == 2)
 									" ON per_ID = p2g2r_per_ID " .
 									" LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID ";
 						$sGroupWhereExt =	" AND grp_type=".$iGroupType." ".
-											" AND p2g2r_grp_ID!=".($iGroupID+$iTenThousand)." ";
+											" AND per_ID NOT IN ".
+                                            " (SELECT p2g2r_per_ID FROM person2group2role_p2g2r ".
+                                            "  WHERE p2g2r_grp_ID=".($iGroupID+$iTenThousand).") ";
 					}
  			}
 			else
@@ -300,6 +320,7 @@ if ($iMode == 1 || $iMode == 2)
 	if (isset($_GET["Gender"])) $sRedirect .= "Gender=" . $_GET["Gender"] . "&";
 	if (isset($_GET["grouptype"])) $sRedirect .= "grouptype=" . $_GET["grouptype"] . "&";
 	if (isset($_GET["groupid"])) $sRedirect .= "groupid=" . $_GET["groupid"] . "&";
+	if (isset($_GET["grouproleid"])) $sRedirect .= "grouproleid=" . $_GET["grouproleid"] . "&";
 	if (isset($_GET["Number"])) $sRedirect .= "Number=" . $_GET["Number"] . "&";
 	if (isset($_GET["Result_Set"])) $sRedirect .= "Result_Set=" . $_GET["Result_Set"] . "&";
 
@@ -391,7 +412,7 @@ if ($iMode == 1 || $iMode == 2)
 				echo gettext("Add a New Person Record") . "</a><BR>";
 			}
 
-            echo "<a href=\"SelectList.php?mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID";
+            echo "<a href=\"SelectList.php?mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID&grouproleid=$iRoleID";
             if($sSort) 
 				echo "&Sort=$sSort";
 
@@ -572,6 +593,56 @@ if ($iMode == 1 || $iMode == 2)
 					}
 					echo '</select>';
 				}
+
+                // *********    
+                // Create Group Role drop down box
+				if (isset($iGroupID) && ($iGroupID > -1))
+				{
+
+                    // Get the group's role list ID
+                    $sSQL = "SELECT grp_RoleListID ".
+                            "FROM group_grp WHERE grp_ID =" . $iGroupID;
+                    $aTemp = mysql_fetch_array(RunQuery($sSQL));
+                    $iRoleListID = $aTemp[0];
+
+                    // Get the roles
+                    $sSQL = "SELECT * FROM list_lst WHERE lst_ID = " . $iRoleListID .
+                            " ORDER BY lst_OptionSequence";
+                    $rsRoles = RunQuery($sSQL);
+					unset($aGroupRoles);
+					while ($aRow = mysql_fetch_array($rsRoles))
+					{
+						extract($aRow);
+						$aGroupRoles[intval($lst_OptionID)]=$lst_OptionName;
+					}
+
+					echo '	<select name="grouproleid" onchange="this.form.submit()">
+							<option value="" ';
+					if (!isset($iRoleID)) echo ' selected ';
+					echo '>' . gettext("All Roles") . '</option>';
+
+ 					foreach ($aGroupRoles as $key => $value) 
+					{
+						echo '<option value="'.$key.'"';
+						if (isset($iRoleID))
+							if ($iRoleID == $key)
+								echo ' selected ';
+						echo '>'.$value.'</option>';
+					}
+                    /*
+ 					foreach ($aGroupNames as $key => $value) 
+					{
+						echo '<option value="'.($key-$iTenThousand).'"';
+						if (isset($iGroupType))
+							if ($iGroupID == ($key-$iTenThousand))
+								echo ' selected ';
+						echo '>! '.$value.'</option>';
+					}*/
+					echo '</select>';
+				}
+
+
+
 			} ?>
 
                         <input type="button" class="icButton" value="<?php echo gettext("Clear Filters"); ?>" onclick="javascript:document.location='SelectList.php?mode=<?php echo $sMode; ?>&Sort=<?php echo $sSort; ?>&type=<?php echo $iGroupTypeMissing; ?>'"><BR><BR>
@@ -586,7 +657,7 @@ if ($iMode == 1 || $iMode == 2)
 
                 // Create Sort Links
                 echo '<div align="center">';
-                echo "<a href=\"SelectList.php?mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID";
+                echo "<a href=\"SelectList.php?mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID&grouproleid=$iRoleID";
                 if($sSort) echo "&Sort=$sSort";
                 echo "\">" . gettext("View All") . "</a>";
                 while ($aLetter = mysql_fetch_row($rsLetters))
@@ -595,7 +666,7 @@ if ($iMode == 1 || $iMode == 2)
                         if ($aLetter[0] == $sLetter) {
                                 echo "&nbsp;&nbsp;|&nbsp;&nbsp;" . $aLetter[0];
                         } else {
-                                echo "&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"SelectList.php?mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID";
+                                echo "&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"SelectList.php?mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID&grouproleid=$iRoleID";
                                 if($sSort) echo "&Sort=$sSort";
                                 echo "&Letter=" . $aLetter[0] . "\">" . $aLetter[0] . "</a>";
                         }
@@ -612,7 +683,7 @@ if ($iMode == 1 || $iMode == 2)
                         if ($Result_Set < $Total && $Result_Set > 0)
                         {
                                 $thisLinkResult = $Result_Set - $iPerPage;
-                                echo "<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">". gettext("Previous Page") . "</A>&nbsp;&nbsp;";
+                                echo "<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID&grouproleid=$iRoleID\">". gettext("Previous Page") . "</A>&nbsp;&nbsp;";
                         }
 
                         // Calculate starting and ending Page-Number Links
@@ -626,7 +697,7 @@ if ($iMode == 1 || $iMode == 2)
 
                         // Show Link "1 ..." if startpage does not start at 1
                         if ($startpage != 1)
-                                echo "<a href=\"SelectList.php?Result_Set=0&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">1</a> ... \n";
+                                echo "<a href=\"SelectList.php?Result_Set=0&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID&grouproleid=$iRoleID\">1</a> ... \n";
 
                         // Display page links
                         if ($Pages > 1)
@@ -636,7 +707,7 @@ if ($iMode == 1 || $iMode == 2)
                                         $b = $c - 1;
                                         $thisLinkResult = $iPerPage * $b;
                                         if ($thisLinkResult != $Result_Set)
-                                                echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">$c</a>&nbsp;\n";
+                                                echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID&grouproleid=$iRoleID\">$c</a>&nbsp;\n";
                                         else
                                                 echo "&nbsp;&nbsp;[ " . $c . " ]&nbsp;&nbsp;";
                                 }
@@ -646,14 +717,14 @@ if ($iMode == 1 || $iMode == 2)
                         if ($endpage != $Pages)
                         {
                                 $thisLinkResult = ($Pages - 1) * $iPerPage;
-                                echo " ... <a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">$Pages</a>\n";
+                                echo " ... <a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID&grouproleid=$iRoleID\">$Pages</a>\n";
                         }
                         // Show next-page link unless we're at the last page
                         if ($Result_Set >= 0 && $Result_Set < $Total)
                         {
                                 $thisLinkResult=$Result_Set+$iPerPage;
                                 if ($thisLinkResult<$Total)
-                                        echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID\">" . gettext("Next Page") . "</a>";
+                                        echo "&nbsp;&nbsp;<a href=\"SelectList.php?Result_Set=$thisLinkResult&mode=$sMode&type=$iGroupTypeMissing&Filter=$sFilter&Sort=$sSort&Letter=$sLetter&Classification=$iClassification&FamilyRole=$iFamilyRole&Gender=$iGender&grouptype=$iGroupType&groupid=$iGroupID&grouproleid=$iRoleID\">" . gettext("Next Page") . "</a>";
                         }
 
                         echo "<input type=\"hidden\" name=\"mode\" value=\"";
