@@ -46,6 +46,7 @@ if ($bHTTPSOnly)
     {
         $_SESSION['bSecureServer'] = TRUE;
         Redirect("Default.php");
+        exit;
     }
 }
 // Is the user requesting to logoff or timed out?

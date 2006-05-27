@@ -61,6 +61,19 @@ if (!$bSuppressSessionTests)  // This is used for the login page only.
 		Redirect("UserPasswordChange.php?PersonID=" . $_SESSION['iUserID']);
 		exit;
 	}
+
+    // Check if https is required, if so, make sure we're using https.
+    // Redirect back to login page using https if required.
+    // This prevents someone from accessing via http by typing in the URL 
+    if ($bHTTPSOnly)
+    {
+        if(!($_SERVER['HTTPS'] == 'on'))
+        {
+            $_SESSION['bSecureServer'] = TRUE;
+            Redirect("Default.php");
+            exit;
+        }
+    }
 }
 // End of basic security checks
 
