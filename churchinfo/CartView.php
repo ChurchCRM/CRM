@@ -23,17 +23,30 @@
 
 function ExportCartToCSV()
 {
+    $sSQL  =    " DROP TEMPORARY TABLE IF EXISTS tmp_canvassers ";
+    RunQuery($sSQL);
 
+    // Make temporary copy of person_per table and call it tmp_canvassers
+    $sSQL  =    " CREATE TEMPORARY TABLE tmp_canvassers ".
+                " SELECT * FROM person_per ";
+    RunQuery($sSQL);
 
-    $sSQL  =    " SELECT lst_OptionName, fam_Name, per_LastName, per_FirstName, ".
-                " fam_HomePhone, per_HomePhone, fam_Address1, fam_Address2, fam_City, ".
-                " fam_State, fam_Zip, per_DateEntered".
+    $sSQL  =    " SELECT lst_OptionName AS Classification, fam_Name AS Family, ".
+                " person_per.per_LastName AS Last_Name, ".
+                " person_per.per_FirstName AS First_Name, ".
+                " fam_HomePhone, person_per.per_HomePhone AS per_HomePhone, ".
+                " fam_Address1, fam_Address2, fam_City, ".
+                " fam_State, fam_Zip, person_per.per_DateEntered AS DateEntered, ".
+                " tmp_canvassers.per_LastName AS Cnvsr_Last_Name, ".
+                " tmp_canvassers.per_FirstName AS Cnvsr_First_Name ".
                 " FROM person_per ".
-                " LEFT JOIN family_fam ON fam_ID = per_fam_ID ".
-                " LEFT JOIN list_lst ON lst_OptionID = per_cls_ID ".
-                " WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ".
+                " LEFT JOIN family_fam ON fam_ID = person_per.per_fam_ID ".
+                " LEFT JOIN list_lst ON lst_OptionID = person_per.per_cls_ID ".
+                " LEFT JOIN tmp_canvassers ON tmp_canvassers.per_ID = fam_Canvasser ".
+                " WHERE person_per.per_ID ".
+                "     IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ".
                 " AND lst_ID='1' ".
-                " ORDER BY fam_Name, fam_ID, per_LastName, per_FirstName ";
+                " ORDER BY fam_Name, fam_ID, Last_Name, First_Name ";
 	
 	//Run the SQL
 	$rsQueryResults = RunQuery($sSQL);
