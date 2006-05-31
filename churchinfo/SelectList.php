@@ -249,10 +249,11 @@ if ($iMode == 1 || $iMode == 2)
  			}
 			else
 			{
-				$sJoinExt = " LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID ".
-							" LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID ";
-				$sGroupWhereExt =	" AND (grp_type!=".($iGroupType+$iTenThousand)." ".
-											"OR p2g2r_grp_ID IS NULL)";
+				$sJoinExt = " ";
+				$sGroupWhereExt =	" AND per_ID NOT IN (SELECT p2g2r_per_ID ". 
+                                    " FROM person2group2role_p2g2r ".
+                                    " LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID ".
+                                    " WHERE grp_type = ".($iGroupType+$iTenThousand).")";
 			}
 		}
     }
