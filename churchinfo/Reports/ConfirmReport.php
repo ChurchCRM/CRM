@@ -48,6 +48,16 @@ class PDF_ConfirmReport extends ChurchInfoReport {
 		$curY += 2 * $this->incrementY;
 		$this->WriteAt ($this->leftX, $curY, $this->sConfirm4);
 
+		if ($this->sConfirm5 != "") {
+			$curY += 2 * $this->incrementY;
+			$this->WriteAt ($this->leftX, $curY, $this->sConfirm5);
+			$curY += 2 * $this->incrementY;
+		}
+		if ($this->sConfirm6 != "") {
+			$curY += 2 * $this->incrementY;
+			$this->WriteAt ($this->leftX, $curY, $this->sConfirm6);
+		}
+
 		$curY += 4 * $this->incrementY;
 
 		$this->WriteAt ($this->leftX, $curY, "Sincerely,");

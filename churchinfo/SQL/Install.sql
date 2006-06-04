@@ -639,22 +639,21 @@ INSERT IGNORE INTO `config_cfg` VALUES (44, 'sPGPname', 'gpg', 'text', 'gpg', ''
 INSERT IGNORE INTO `config_cfg` VALUES (45, 'sLanguage', 'en_US', 'text', 'en_US', 'Internationalization (I18n) support\rUS English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (46, 'iFYMonth', '1', 'number', '1', 'First month of the fiscal year', 'General');
 
-INSERT IGNORE INTO `config_cfg` VALUES (76, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (77, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (78, 'sGeocoderPW', '', 'text', '', 'Password for rpc.geocoder.us', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (79, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from http://maps.google.com/apis/maps/signup.html', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (80, 'nChurchLatitude', '', 'number', '', 'Latitude of the church, used to center the Google map', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (81, 'nChurchLongitude', '', 'number', '', 'Longitude of the church, used to center the Google map', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (82, 'bHidePersonAddress', '1', 'boolean', '1', 'Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (83, 'bHideFriendDate', '0', 'boolean', '0', 'Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (84, 'bHideFamilyNewsletter', '0', 'boolean', '0', 'Set true to disable management of newsletter subscriptions in the Family Editor.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (85, 'bHideWeddingDate', '0', 'boolean', '0', 'Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (86, 'bHideLatLon', '0', 'boolean', '0', 'Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (87, 'bUseDonationEnvelopes', '0', 'boolean', '0', 'Set true to enable use of donation envelopes', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (88, 'sHeader', '', 'textarea', '', 'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (89, 'sISTusername', 'username', 'text', 'username', 'Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.name-searching.com/CaddressASP', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (90, 'sISTpassword', '', 'text', '', 'Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.name-searching.com/CaddressASP', 'General');
-
+INSERT IGNORE INTO `config_cfg` VALUES (78, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (79, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (80, 'sGeocoderPW', '', 'text', '', 'Password for rpc.geocoder.us', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (81, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from http://maps.google.com/apis/maps/signup.html', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (82, 'nChurchLatitude', '', 'number', '', 'Latitude of the church, used to center the Google map', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (83, 'nChurchLongitude', '', 'number', '', 'Longitude of the church, used to center the Google map', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (84, 'bHidePersonAddress', '1', 'boolean', '1', 'Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (85, 'bHideFriendDate', '0', 'boolean', '0', 'Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (86, 'bHideFamilyNewsletter', '0', 'boolean', '0', 'Set true to disable management of newsletter subscriptions in the Family Editor.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (87, 'bHideWeddingDate', '0', 'boolean', '0', 'Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (88, 'bHideLatLon', '0', 'boolean', '0', 'Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (89, 'bUseDonationEnvelopes', '0', 'boolean', '0', 'Set true to enable use of donation envelopes', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (90, 'sHeader', '', 'textarea', '', 'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (91, 'sISTusername', 'username', 'text', 'username', 'Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.name-searching.com/CaddressASP', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (92, 'sISTpassword', '', 'text', '', 'Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.name-searching.com/CaddressASP', 'General');
 
 INSERT IGNORE INTO `config_cfg` VALUES (48, 'leftX', '20', 'number', '20', 'Left Margin (1 = 1/100th inch)', 'ChurchInfoReport');
 INSERT IGNORE INTO `config_cfg` VALUES (49, 'incrementY', '4', 'number', '4', 'Line Thickness (1 = 1/100th inch', 'ChurchInfoReport');
@@ -678,11 +677,14 @@ INSERT IGNORE INTO `config_cfg` VALUES (66, 'sConfirm1', 'This letter shows the 
 INSERT IGNORE INTO `config_cfg` VALUES (67, 'sConfirm2', 'Thank you very much for helping us to update this information.  If you want on-line access to the church database please provide your email address and a desired password and we will send instructions.', 'text', 'Thank you very much for helping us to update this information.  If you want on-line access to the church database please provide your email address and a desired password and we will send instructions.', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport');
 INSERT IGNORE INTO `config_cfg` VALUES (68, 'sConfirm3', 'Email _____________________________________ Password ________________', 'text', 'Email _____________________________________ Password ________________', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport');
 INSERT IGNORE INTO `config_cfg` VALUES (69, 'sConfirm4', '[  ] I no longer want to be associated with the church (check here to be removed from our records).', 'text', '[  ] I no longer want to be associated with the church (check here to be removed from our records).', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport');
-INSERT IGNORE INTO `config_cfg` VALUES (70, 'sConfirmSigner', 'Elder Joe Smith', 'text', '', 'Database information confirmation and correction report signer', 'ChurchInfoReport');
-INSERT IGNORE INTO `config_cfg` VALUES (71, 'sPledgeSummary1', 'Summary of pledges and payments for the fiscal year', 'text', 'Summary of pledges and payments for the fiscal year', 'Verbage for the pledge summary report', 'ChurchInfoReport');
-INSERT IGNORE INTO `config_cfg` VALUES (72, 'sPledgeSummary2', 'as of', 'text', ' as of', 'Verbage for the pledge summary report', 'ChurchInfoReport');
-INSERT IGNORE INTO `config_cfg` VALUES (73, 'sDirectoryDisclaimer1', 'Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of', 'text', 'Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of', 'Verbage for the directory report', 'ChurchInfoReport');
-INSERT IGNORE INTO `config_cfg` VALUES (74, 'sDirectoryDisclaimer2', ', and the information contained in it may not be used for business or commercial purposes.', 'text', ', and the information contained in it may not be used for business or commercial purposes.', 'Verbage for the directory report', 'ChurchInfoReport');
-INSERT IGNORE INTO `config_cfg` VALUES (75, 'bDirLetterHead', '../Images/church_letterhead.jpg', 'text', '../Images/church_letterhead.jpg', 'Church Letterhead path and file', 'ChurchInfoReport');
+INSERT IGNORE INTO `config_cfg` VALUES (70, 'sConfirm5', '', 'text', '', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport');
+INSERT IGNORE INTO `config_cfg` VALUES (71, 'sConfirm6', '', 'text', '', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport');
+INSERT IGNORE INTO `config_cfg` VALUES (72, 'sConfirmSigner', 'Elder Joe Smith', 'text', '', 'Database information confirmation and correction report signer', 'ChurchInfoReport');
+INSERT IGNORE INTO `config_cfg` VALUES (73, 'sPledgeSummary1', 'Summary of pledges and payments for the fiscal year', 'text', 'Summary of pledges and payments for the fiscal year', 'Verbage for the pledge summary report', 'ChurchInfoReport');
+INSERT IGNORE INTO `config_cfg` VALUES (74, 'sPledgeSummary2', 'as of', 'text', ' as of', 'Verbage for the pledge summary report', 'ChurchInfoReport');
+INSERT IGNORE INTO `config_cfg` VALUES (75, 'sDirectoryDisclaimer1', 'Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of', 'text', 'Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of', 'Verbage for the directory report', 'ChurchInfoReport');
+INSERT IGNORE INTO `config_cfg` VALUES (76, 'sDirectoryDisclaimer2', ', and the information contained in it may not be used for business or commercial purposes.', 'text', ', and the information contained in it may not be used for business or commercial purposes.', 'Verbage for the directory report', 'ChurchInfoReport');
+INSERT IGNORE INTO `config_cfg` VALUES (77, 'bDirLetterHead', '../Images/church_letterhead.jpg', 'text', '../Images/church_letterhead.jpg', 'Church Letterhead path and file', 'ChurchInfoReport');
+
 
 INSERT IGNORE INTO `config_cfg` VALUES (100, 'bRegistered', '0', 'boolean', '0', 'ChurchInfo has been registered.  The ChurchInfo team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General');

@@ -23,3 +23,6 @@ CREATE TABLE IF NOT EXISTS `istlookup_lu` (
   `lu_ErrorDesc` varchar(255) default NULL,
   PRIMARY KEY  (`lu_fam_ID`)
 ) TYPE=MyISAM COMMENT='US Address Verification Lookups From Intelligent Search Technology (IST)';
+
+INSERT IGNORE INTO `config_cfg` VALUES (91, 'sConfirm5', '', 'text', '', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport');
+INSERT IGNORE INTO `config_cfg` VALUES (92, 'sConfirm6', '', 'text', '', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport');
