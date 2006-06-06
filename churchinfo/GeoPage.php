@@ -1,16 +1,24 @@
 <?php
 /*******************************************************************************
- *
- *  filename    : GeoPage.php
- *  website     : http://www.churchdb.org
- *  copyright   : Copyright 2004-2005 Michael Wilt
- *
- *  ChurchInfo is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- ******************************************************************************/
+*
+*  filename    : GeoPage.php
+*  website     : http://www.churchdb.org
+*  copyright   : Copyright 2004-2005 Michael Wilt
+*
+*  Additional Contributors:
+*  2006 Ed Davis
+*
+*
+*  Copyright Contributors
+*
+*  ChurchInfo is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This file best viewed in a text editor with tabs stops set to 4 characters
+*
+******************************************************************************/
 
 //Include the function library
 require "Include/Config.php";
@@ -66,6 +74,7 @@ function FamilyInfoByDistance ($iFamily)
 		$results[$fam_ID]["fam_Zip"] = $fam_Zip;
 		$results[$fam_ID]["fam_Latitude"] = $fam_Latitude;
 		$results[$fam_ID]["fam_Longitude"] = $fam_Longitude;
+        $results[$fam_ID]["fam_ID"] = $fam_ID;
 	}
 
 	if ($iFamily) {
@@ -76,8 +85,32 @@ function FamilyInfoByDistance ($iFamily)
 	return ($resultsByDistance);
 }
 
+/* End of functions ... code starts here */
+
 //Set the page title
 $sPageTitle = gettext("Family Geographic Utilities");
+
+// Create array with Classification Information (lst_ID = 1)
+$sClassSQL  = "SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence";
+$rsClassification = RunQuery($sClassSQL);
+unset($aClassificationName);
+$aClassificationName[0] = "Unassigned";
+while ($aRow = mysql_fetch_array($rsClassification))
+{
+    extract($aRow);
+    $aClassificationName[intval($lst_OptionID)]=$lst_OptionName;
+}
+
+// Create array with Family Role Information (lst_ID = 2)
+$sFamRoleSQL  = "SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence";
+$rsFamilyRole = RunQuery($sFamRoleSQL);
+unset($aFamilyRoleName);
+$aFamilyRoleName[0] = "Unassigned";
+while ($aRow = mysql_fetch_array($rsFamilyRole))
+{
+    extract($aRow);
+    $aFamilyRoleName[intval($lst_OptionID)]=$lst_OptionName;
+}
 
 // Get the Family if specified in the query string
 $iFamily = FilterInput($_GET["Family"],'int');
@@ -88,8 +121,13 @@ if ($iNumNeighbors == 0)
 
 $nMaxDistance = 10; // miles, default value
 
+$bClassificationPost = FALSE;
+$sClassificationList = "";
+
 //Is this the second pass?
-if (isset($_POST["FindNeighbors"]) || isset($_POST["DataFile"]))
+if (    isset($_POST["FindNeighbors"]) || 
+        isset($_POST["DataFile"]) || 
+        isset($_POST["PersonIDList"]))
 {
 	//Get all the variables from the request object and assign them locally
 	$iFamily = FilterInput($_POST["Family"]);
@@ -98,6 +136,37 @@ if (isset($_POST["FindNeighbors"]) || isset($_POST["DataFile"]))
 	$sCoordFileName = FilterInput ($_POST["CoordFileName"]);
 	$sCoordFileFormat = FilterInput ($_POST["CoordFileFormat"]);
 	$sCoordFileFamilies = FilterInput ($_POST["CoordFileFamilies"]);
+
+    foreach ($aClassificationName as $key => $value) {
+        $sClassNum = "Classification" . $key;
+        if (isset($_POST["$sClassNum"]))
+        {
+            $bClassificationPost = TRUE;
+            if (strlen($sClassificationList))
+                $sClassificationList .= ",";
+            $sClassificationList .= $key;
+        }
+    }
+}
+
+// Check if cart needs to be updated
+if(isset($_POST["PersonIDList"]))
+{
+    $aIDsToProcess = explode(",", $_POST["PersonIDList"]);   
+
+    //Do we add these people to cart?
+    if(isset($_POST["AddAllToCart"]))
+    {   AddArrayToPeopleCart($aIDsToProcess); }
+
+    //Do we intersect these people with cart (keep values that are in both arrays)
+    if(isset($_POST["IntersectCart"]))
+    {   IntersectArrayWithPeopleCart($aIDsToProcess); }  
+
+    if(isset($_POST["RemoveFromCart"]))
+    {   RemoveArrayFromPeopleCart($aIDsToProcess); }
+
+    //sort the cart
+    sort($_SESSION['aPeopleCart']);
 }
 
 if (isset($_POST["DataFile"]))
@@ -162,7 +231,7 @@ while ($aRow = mysql_fetch_array($rsFamilies))
 {
 	extract($aRow);
 
-	echo "<option value=\"" . $fam_ID . "\"";
+	echo "\n<option value=\"" . $fam_ID . "\"";
 	if ($iFamily == $fam_ID) { echo " selected"; }
 	echo ">" . $fam_Name . "&nbsp;" . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 }
@@ -194,20 +263,45 @@ echo "      <input type=\"radio\" name=\"CoordFileFamilies\" value=\"NeighborFam
 echo "  </td>\n";
 echo "</tr>\n";
 
-echo "<tr>\n";
-echo "	<td class=\"LabelColumn\">" . gettext("Coordinate data base file name") . "</td>\n";
-echo "	<td class=\"TextColumn\"><input type=\"text\" name=\"CoordFileName\" value=\"" . $sCoordFileName . "\"></td>\n";
-echo "</tr>\n";
+echo '<tr>';
+echo "	<td class=\"LabelColumn\">" . gettext("Coordinate data base file name") . "</td>";
+echo "	<td class=\"TextColumn\"><input type=\"text\" name=\"CoordFileName\" value=\"" . $sCoordFileName . "\"></td>";
+echo "</tr>";
 
-echo "<tr>";
-echo "<td><input type=\"submit\" class=\"icButton\" name=\"FindNeighbors\" value=\"" . gettext("Show Neighbors") . "\"></td>\n";
-echo "<td><input type=\"submit\" class=\"icButton\" name=\"DataFile\" value=\"" . gettext("Make Data File") . "\"></td>\n";
-echo "<td><input type=\"submit\" class=\"icButton\" name=\"UpdateAllFamilies\" value=\"" . gettext("Update All Family Coordinates") . "\"></td>\n";
-echo "</tr>\n";
+echo '<tr>';
+echo '<td></td>';
+echo '<td><input type="submit" class="icButton" name="DataFile" value="' . gettext("Make Data File") . '"></td>';
+echo '<td><input type="submit" class="icButton" name="UpdateAllFamilies" value="' . gettext("Update All Family Coordinates") . '"></td>';
+echo "</tr></table>\n";
 
-echo "</table>\n";
+echo "<CENTER><br><br><h3>Show neighbors with these classifications.</h3>";
+echo '<table>';
+echo '<tr><td><br></td><td><input type="submit" class="icButton" name="FindNeighbors" value="' . gettext("Show Neighbors") . '"></td></tr>'."\n";
 
-if (isset($_POST["FindNeighbors"]) && $iFamily != 0)
+foreach ($aClassificationName as $key => $value) {
+    echo '<tr><td class="LabelColumn">'.$value.'</td>';
+    echo '<td class="TextColumn">';
+    echo '<input name="Classification'.$key.'" type="checkbox" ';
+    echo 'id="'.$value.'" value="1" ';
+    $sClassNum = "Classification" . $key;
+    if (!$bClassificationPost || isset($_POST["$sClassNum"]))
+        echo "checked";
+    echo "><br></td></tr>\n";
+}
+
+
+echo '</table></CENTER>';
+
+if (isset($_POST["FindNeighbors"]) && !$iFamily)
+{
+    echo "<center><h2>Please select a Family</h2></center>";
+}
+
+unset($aPersonIDs);
+
+if (    $iFamily != 0 &&
+        (isset($_POST["FindNeighbors"]) ||
+        isset($_POST["PersonIDList"])))
 {
 	$resultsByDistance = FamilyInfoByDistance ($iFamily);
 
@@ -217,7 +311,7 @@ if (isset($_POST["FindNeighbors"]) && $iFamily != 0)
 	echo "<table cellpadding='4' align='center' cellspacing='0' width='100%'>\n";
 	echo "<tr class='TableHeader'>\n";
 	echo "<td width='25'>".gettext("Distance") . "</td>\n";
-	echo "<td>".gettext("Bearing")."</a></td>\n";
+	echo "<td>".gettext("Direction")."</a></td>\n";
 	echo "<td>".gettext("Name")."</a></td>\n";
 	echo "<td>".gettext("Address")."</td>\n";
 	echo "<td>".gettext("City")."</td>\n";
@@ -228,23 +322,67 @@ if (isset($_POST["FindNeighbors"]) && $iFamily != 0)
 	echo "</tr>\n";
 
 	foreach ($resultsByDistance as $oneResult) {
-		if ($counter++ == $iNumNeighbors)
+
+		if ($counter >= $iNumNeighbors)
 			break;
 
 		if ($oneResult["Distance"] > $nMaxDistance)
 			break;
 
-		echo "<tr>\n";
-		echo "<td>" . $oneResult["Distance"] . "</td>\n";
-		echo "<td>" . $oneResult["Bearing"] . "</td>\n";
-		echo "<td>" . $oneResult["fam_Name"] . "</td>\n";
-		echo "<td>" . $oneResult["fam_Address1"] . "</td>\n";
-		echo "<td>" . $oneResult["fam_City"] . "</td>\n";
-		echo "<td>" . $oneResult["fam_State"] . "</td>\n";
-		echo "<td>" . $oneResult["fam_Zip"] . "</td>\n";
-		echo "<td>" . $oneResult["fam_Latitude"] . "</td>\n";
-		echo "<td>" . $oneResult["fam_Longitude"] . "</td>\n";
+        // Determine how many people in this family will be listed
+        $sSQL = "SELECT * from person_per where per_fam_ID=".$oneResult["fam_ID"];
+        if ($bClassificationPost) 
+        {
+            $sSQL .= " AND per_cls_ID IN (".$sClassificationList.")";
+        }
+        $rsPeople = RunQuery($sSQL);
+        $numListed = mysql_num_rows($rsPeople);
+        
+        if (!$numListed) // skip familes with zero members
+            continue;
+
+        $counter++;
+
+        //Alternate the row color
+        $sRowClass = AlternateRowStyle($sRowClass);
+
+        echo "\n".'<tr class="' .$sRowClass. '">';
+		echo "<td>" . $oneResult["Distance"] . "</td>";
+		echo "<td>" . $oneResult["Bearing"] . "</td>";
+		echo "<td><B>" . $oneResult["fam_Name"] . "</B></td>";
+		echo "<td>" . $oneResult["fam_Address1"] . "</td>";
+		echo "<td>" . $oneResult["fam_City"] . "</td>";
+		echo "<td>" . $oneResult["fam_State"] . "</td>";
+		echo "<td>" . $oneResult["fam_Zip"] . "</td>";
+		echo "<td>" . $oneResult["fam_Latitude"] . "</td>";
+		echo "<td>" . $oneResult["fam_Longitude"] . "</td>";
 		echo "</tr>\n";
+
+
+        while ($aRow = mysql_fetch_array($rsPeople)) {
+            extract($aRow);
+
+            if (!in_array($per_ID,$aPersonIDs)) {
+                $aPersonIDs[] = $per_ID;
+            }
+
+            echo '<tr class="' .$sRowClass. '"><td><BR></td>';
+            echo '<td><BR></td><td align="RIGHT">'.$per_FirstName." ".$per_LastName.'</td>';
+            echo '<td align="RIGHT">'.$aClassificationName[$per_cls_ID].'</td>';
+            echo '<td><br></td><td<br></td><td><br></td><td><br></td><td><br></td></tr>';
+            echo "\n";
+        }
 	}
-	echo "</table>\n";
+	echo '</table>' . "\n";
+
+    $sPersonIDList = implode(",", $aPersonIDs);
+    echo '<input type="hidden" name="PersonIDList" value="'.$sPersonIDList.'">';
+    echo '<br><center>';
+    echo '<input name="AddAllToCart" type="submit" class="icButton" value="' . gettext("Add to Cart") . '">&nbsp';
+    echo '<input name="IntersectCart" type="submit" class="icButton" value="' . gettext("Intersect with Cart") . '">&nbsp';
+    echo '<input name="RemoveFromCart" type="submit" class="icButton" value="' . gettext("Remove from Cart") . '">';
+    echo '</center><br>';
+
 }
+echo '</form>';
+?>

@@ -515,13 +515,13 @@ function ChopLastCharacter($sText)
 	return substr($sText,0,strlen($sText) - 1);
 }
 
-
 function AddToPeopleCart($sID)
 {
 	// make sure the cart array exists
 	if(isset($_SESSION['aPeopleCart']))
 	{
-		if (!in_array($sID, $_SESSION['aPeopleCart'], false)) {
+		if (!in_array($sID, $_SESSION['aPeopleCart'], false)) 
+        {
 			$_SESSION['aPeopleCart'][] = $sID;
 		}
 	}
@@ -529,17 +529,17 @@ function AddToPeopleCart($sID)
 		$_SESSION['aPeopleCart'][] = $sID;
 }
 
-function RemoveFromPeopleCart($sID)
+function AddArrayToPeopleCart($aIDs)
 {
-	// make sure the cart array exists
-	// we can't remove anybody if there is no cart
-	if(isset($_SESSION['aPeopleCart']))
-	{
-		unset($aTempArray); // may not need this line, but make sure $aTempArray is empty
-		$aTempArray[] = $sID; // the only element in this array is the ID to be removed
-		$_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'],$aTempArray);
-	}
+    if(is_array($aIDs)) // Make sure we were passed an array
+    {
+        foreach($aIDs as $value) 
+        {
+            AddToPeopleCart($value);
+        }
+    }
 }
+
 
 // Add group to cart 
 function AddGroupToPeopleCart($iGroupID)
@@ -556,6 +556,35 @@ function AddGroupToPeopleCart($iGroupID)
 
 		//Add each person to the cart
 		AddToPeopleCart($p2g2r_per_ID);
+	}
+}
+
+function IntersectArrayWithPeopleCart($aIDs)
+{
+    if(isset($_SESSION['aPeopleCart']) && is_array($aIDs)) {
+        $_SESSION['aPeopleCart'] = array_intersect($_SESSION['aPeopleCart'], $aIDs);
+    }
+}
+
+function RemoveFromPeopleCart($sID)
+{
+	// make sure the cart array exists
+	// we can't remove anybody if there is no cart
+	if(isset($_SESSION['aPeopleCart']))
+	{
+		unset($aTempArray); // may not need this line, but make sure $aTempArray is empty
+		$aTempArray[] = $sID; // the only element in this array is the ID to be removed
+		$_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'],$aTempArray);
+	}
+}
+
+function RemoveArrayFromPeopleCart($aIDs)
+{
+	// make sure the cart array exists
+	// we can't remove anybody if there is no cart
+	if(isset($_SESSION['aPeopleCart']) && is_array($aIDs))
+	{
+		$_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'],$aIDs);
 	}
 }
 
