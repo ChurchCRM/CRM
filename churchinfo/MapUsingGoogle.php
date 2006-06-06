@@ -79,7 +79,18 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 		}
 		$appendToQuery = substr($appendToQuery, 0, strlen ($appendToQuery)-1);
 		$appendToQuery .= ")";
-	}
+	} else {
+        // group zero means map the cart
+		$sSQL = "SELECT per_fam_ID FROM person_per WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ")";
+		$rsGroupMembers = RunQuery($sSQL);
+		$appendToQuery = " WHERE fam_ID IN (";
+		while ($aPerFam = mysql_fetch_array($rsGroupMembers)) {
+			extract ($aPerFam);
+			$appendToQuery .= $per_fam_ID . ",";
+		}
+		$appendToQuery = substr($appendToQuery, 0, strlen ($appendToQuery)-1);
+		$appendToQuery .= ")";        
+    }
 
 	$sSQL = "SELECT fam_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam";
 	$sSQL .= $appendToQuery;

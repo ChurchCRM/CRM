@@ -279,6 +279,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
                 echo "<br><a href=\"mailto:" . $sEmailLink ."\">". gettext("Email Cart") . "</a>";
                 echo "<br><a href=\"mailto:?bcc=".$sEmailLink."\">".gettext("Email (BCC)")."</a>";
         }
+        echo "<br><a href=\"MapUsingGoogle.php?GroupID=0\">" . gettext("Map Cart") . "</a>";
 
         echo "</p></td>";
 ?>
