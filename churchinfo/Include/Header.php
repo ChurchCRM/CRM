@@ -593,6 +593,11 @@ $MenuFirst = 1;
 					'statusText', ''
 				),
 				<?php echo $MenuSecond++;?>, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("Wiki Documentation") . "'"; ?>,
+					'uri', 'JumpToWiki.php',
+					'statusText', ''
+				),
+				<?php echo $MenuSecond++;?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("People") . "'"; ?>,
 					'uri', 'Help.php?page=People',
 					'statusText', ''
