@@ -320,9 +320,13 @@ if (count($_SESSION['aPeopleCart']) != 0)
 
                 echo '  <tr><td class="LabelColumn">' . gettext("Quiet Presort") . '</td>';
                 echo '  <td class="TextColumn">';
-                echo '  <input disabled name="bulkmailquiet" type="checkbox" ';
+                echo '  <input ';
+                if (!$_COOKIE["bulkmailpresort"])
+                    echo 'disabled ';   // This would be better with $_SESSION variable
+                                        // instead of cookie ... (save $_SESSION in MySQL)
+                echo 'name="bulkmailquiet" type="checkbox" onload="codename()"';
                 echo '  id="QuietBulkMail" value="1" ';
-                if ($_COOKIE["bulkmailquiet"])
+                if ($_COOKIE["bulkmailquiet"] && $_COOKIE["bulkmailpresort"])
                     echo "checked";
                 echo '  ><br></td></tr>';
 
