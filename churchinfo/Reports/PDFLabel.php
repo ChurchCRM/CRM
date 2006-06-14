@@ -130,6 +130,7 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole) {
 		$sNameAdult = $fam_Name;
 	} // end if ($numAdult ...)
 
+    $bSameLastNames = TRUE;  // Assume all last names are the same
 
 	if ($numChild > 0) { // Salutation for children grouped together
 		$firstMember = mysql_fetch_array($rsMembers);
@@ -142,24 +143,27 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole) {
 		extract ($aChild[1]);
 		$secondFirstName = $per_FirstName;
 		$secondLastName = $per_LastName;
+        $bSameLastNames = $bSameLastNames && ($firstLastName == $secondLastName);
 	}
 	if ($numChild > 2) {
 		$thirdMember = mysql_fetch_array($rsMembers);
 		extract ($aChild[2]);
 		$thirdFirstName = $per_FirstName;
 		$thirdLastName = $per_LastName;
+        $bSameLastNames = $bSameLastNames && ($secondLastName == $thirdLastName);
 	}
 	if ($numChild > 3) {
 		$fourthMember = mysql_fetch_array($rsMembers);
 		extract ($aChild[3]);
 		$fourthFirstName = $per_FirstName;
 		$fourthLastName = $per_LastName;
+        $bSameLastNames = $bSameLastNames && ($thirdLastName == $fourthLastName);
 	}
 	if ($numChild == 1) {
 		$sNameChild = $per_FirstName . " " . $per_LastName;
 	}
 	if ($numChild == 2) {
-		if ($firstLastName == $secondLastName) {
+		if ($bSameLastNames) {
 			$sNameChild = $firstFirstName . " & " . $secondFirstName . " " . $firstLastName;
 		} else {
 			$sNameChild = $firstFirstName . " " . $firstLastName . " & " . 
@@ -167,12 +171,22 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole) {
 		}
 	}
 	if ($numChild == 3) {
-		$sNameChild = $firstFirstName . ", " . $secondFirstName . " & " . 
-									$thirdFirstName . " " . $fam_Name;
+        if ($bSameLastNames) {
+            $sNameChild = $firstFirstName . ", " . $secondFirstName . " & " . 
+                                            $thirdFirstName . " " . $firstLastName;
+        } else {
+            $sNameChild = $firstFirstName . ", " . $secondFirstName . " & " . 
+                                            $thirdFirstName . " " . $fam_Name;
+        }
 	}
 	if ($numChild == 4) {
-		$sNameChild = $firstFirstName . ", " . $secondFirstName . ", " . 
-					$thirdFirstName . " & " . $fourthFirstName . " " . $fam_Name;
+        if ($bSameLastNames) {
+            $sNameChild = $firstFirstName . ", " . $secondFirstName . ", " . 
+                        $thirdFirstName . " & " . $fourthFirstName . " " . $firstLastName;
+        } else {
+            $sNameChild = $firstFirstName . ", " . $secondFirstName . ", " . 
+                        $thirdFirstName . " & " . $fourthFirstName . " " . $fam_Name;
+        }
 	}
 	if ($numChild > 4) {
 		$sNameChild = "The " . $fam_Name . " Family";
@@ -245,7 +259,7 @@ while ( substr_count ( $sADClist, "|" )){
     }
 }
 
-return serialize($aReturnArray);
+return $aReturnArray;
 
 }
 
@@ -396,7 +410,7 @@ $sADClist  =
 "970-978, 986                           _ADC PORTLAND OR 970        |" .
 "995-997                                _ADC ANCHORAGE AK 995       |";
 
-$adc = unserialize(MakeADCArray($sADClist));
+$adc = MakeADCArray($sADClist);
 
 //foreach ($adc as $key => $value)
 //    echo "key = $key, value = $value <br>";
@@ -428,8 +442,8 @@ $nz5=0;
 while (list($z,$zc) = each($ZipCounts)){
 	if($zc >= 10){
 		$NoteText = array('Note'=>"******* Presort ZIP-5 ".$z);
-		$NameText = array('Name'=>" ".$zc." Addresses in Bundle ".$z);
-		$AddressText = array('Address'=>" ".$nTotalLabels." Total Addresses");
+		$NameText = array('Name'=>"** ".$zc." Addresses in Bundle ".$z." *");
+		$AddressText = array('Address'=>"** ".$nTotalLabels." Total Addresses *");
 		$CityText = array('City'=>"******* Presort ZIP-5 ".$z."  ");
 		$outList[]=array_merge($NoteText,$NameText,$AddressText,$CityText);
 		for($i=0; $i<$n; $i++){
@@ -478,8 +492,8 @@ $nz3=0;
 while (list($z,$zc) = each($ZipCounts)){
 	if($zc >= 10){
 		$NoteText = array('Note'=>"******* Presort ZIP-3 ".$z);
-		$NameText = array('Name'=>" ".$zc." Addresses in Bundle ".$z);
-		$AddressText = array('Address'=>" ".$nTotalLabels." Total Addresses");
+		$NameText = array('Name'=>"** ".$zc." Addresses in Bundle ".$z." *");
+		$AddressText = array('Address'=>"** ".$nTotalLabels." Total Addresses *");
 		$CityText = array('City'=>"******* Presort ZIP-3 ".$z."  ");
 		$outList[]=array_merge($NoteText,$NameText,$AddressText,$CityText);
 		for($i=0; $i<$n; $i++){
@@ -530,8 +544,8 @@ if ($ncounts) {
 while (list($z,$zc) = each($ZipCounts)){
 	if($zc >= 10){
 		$NoteText = array('Note'=>"******* Presort ADC ".$z);
-		$NameText = array('Name'=>" ".$zc." Addresses in Bundle ADC ".$z);
-		$AddressText = array('Address'=>" ".$nTotalLabels." Total Addresses");
+		$NameText = array('Name'=>"** ".$zc." Addresses in Bundle ADC ".$z." *");
+		$AddressText = array('Address'=>"** ".$nTotalLabels." Total Addresses *");
 		$CityText = array('City'=>"******* Presort ADC ".$z."  ");
 		$outList[]=array_merge($NoteText,$NameText,$AddressText,$CityText);
 		for($i=0; $i<$n; $i++){
@@ -561,8 +575,8 @@ $zc = $n;
 if($db) echo "...pass 4 Mixed ADC..{$n} labels to process\r\n";
 	if ($zc > 0) {
 		$NoteText = array('Note'=>"******* Presort MIXED ADC ");
-		$NameText = array('Name'=>" ".$zc." Addresses in Bundle");
-		$AddressText = array('Address'=>" ".$nTotalLabels." Total Addresses");
+		$NameText = array('Name'=>"** ".$zc." Addresses in Bundle *");
+		$AddressText = array('Address'=>"** ".$nTotalLabels." Total Addresses *");
 		$CityText = array('City'=>"******* Presort MIXED ADC   ");
 		$outList[]=array_merge($NoteText,$NameText,$AddressText,$CityText);
 		for($i=0; $i<$n; $i++){
@@ -771,8 +785,8 @@ if ($bulkmailpresort)
 	   $iBulkCode = 2;
 }
 
-$bToParents = ($_GET["cartviewtoparents"] == 1);
-setcookie("cartviewtoparents", $_GET["cartviewtoparents"], time()+60*60*24*90, "/");
+$bToParents = ($_GET["toparents"] == 1);
+setcookie("toparents", $_GET["toparents"], time()+60*60*24*90, "/");
  
 $bOnlyComplete = ($_GET["onlyfull"] == 1);
 
