@@ -251,14 +251,22 @@ while ($aRow = mysql_fetch_array($rsFamilies)) {
 		}
 	}
 
+    $bErrorDesc = FALSE;
 	if(strlen($lu_ErrorCodes)){
 		if($lu_ErrorCodes != "x1x2"){ // Filter error messages associated with subscribing to
 									  // CorrectAddress instead of CorrectAddress with Addons
 			$lu_ErrStr = $lu_ErrorCodes . " " . $lu_ErrorDesc;
+            $bErrorDesc = TRUE;
 		}
 	}
+    
+    $pos1 = strrpos($lu_ErrorDesc, "no match found");
+    $pos2 = strrpos($lu_ErrorDesc, "not enough information provided");
 
-	if ((strtoupper($fam_Str) != $lu_Str) || strlen($lu_ErrStr) ) {
+    if (($pos1 === FALSE) && ($pos2 === FALSE))
+        $bErrorDesc = FALSE;
+
+	if ((strtoupper($fam_Str) != $lu_Str) || $bErrorString) {
 		// Print both addresses if they don't match exactly
 
 		$fam_Str = $fam_Name . "\n" . $fam_Str;

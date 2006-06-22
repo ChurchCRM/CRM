@@ -382,8 +382,13 @@ if ($myISTReturnCode == "4") {
 
 	// More Housekeeping ... Delete families from the table istlookup_lu that
 	// have had their family_fam records edited since the last lookup
+    // 
+    // Note: If the address matches the information from the previous
+    // lookup the delete is not necessary.  Perform this check to determine
+    // if a delete is really needed.  This avoids the problem of having to do
+    // a lookup AFTER the address has been corrected.
 
-	$sSQL  = "SELECT fam_ID FROM family_fam INNER JOIN istlookup_lu ";
+	$sSQL  = "SELECT * FROM family_fam INNER JOIN istlookup_lu ";
 	$sSQL .= "ON family_fam.fam_ID = istlookup_lu.lu_fam_ID "; 
 	$sSQL .= "WHERE fam_DateLastEdited > lu_LookupDateTime ";
 	$sSQL .= "AND fam_DateLastEdited IS NOT NULL";
@@ -391,9 +396,19 @@ if ($myISTReturnCode == "4") {
 	$iUpdatedCount = 0;
 	while ($aRow = mysql_fetch_array($rsUpdated)) {
 		extract($aRow);
-		$sSQL  = "DELETE FROM istlookup_lu WHERE lu_fam_ID='" . $fam_ID . "'";
-		RunQuery($sSQL);
-		$iUpdatedCount++;
+
+        $sFamilyAddress = $fam_Address1 . $fam_Address2 . $fam_City .
+                            $fam_State . $fam_Zip;
+        $sLookupAddress = $lu_DeliveryLine1 . $lu_DeliveryLine2 . $lu_City .
+                            $lu_State . $lu_ZipAddon;
+
+        // compare addresses
+        if (strtoupper($sFamilyAddress) != strtoupper($sLookupAddress)) {
+          // only delete mismatches from lookup table
+		  $sSQL  = "DELETE FROM istlookup_lu WHERE lu_fam_ID='" . $fam_ID . "'";
+		  RunQuery($sSQL);
+		  $iUpdatedCount++;
+        }
 	}
 	if ($iUpdatedCount)
 		echo $iUpdatedCount . " Updated IDs deleted.<br>";
