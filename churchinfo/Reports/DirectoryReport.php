@@ -29,15 +29,19 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
 class PDF_Directory extends ChurchInfoReport {
 
     // Private properties
-    var $_Margin_Left = 16;         // Left Margin
+    var $_Margin_Left = 16;        // Left Margin
     var $_Margin_Top  = 0;         // Top margin 
-    var $_Char_Size   = 12;        // Character size
+    var $_Char_Size   = 10;        // Character size
     var $_Column      = 0;
     var $_Font        = "Times";
+    var $_Gutter      = 5;
+    var $_LS          = 4;
     var $sFamily;
     var $sLastName;
-    var $_ColWidth    = 80;
+    var $_ColWidth    = 58;
     var $_Custom;
+    var $_NCols       = 3;
+    var $_PS          = "Letter";
 
     function Header()
     {
@@ -52,7 +56,7 @@ class PDF_Directory extends ChurchInfoReport {
             //Move to the right
             $this->SetX($this->_Margin_Left);
             //Framed title
-            $this->Cell($this->w - ($this->_Margin_Left*2),10,$this->sChurchName . " - " . gettext("Member Directory"),1,0,'C');
+            $this->Cell($this->w - ($this->_Margin_Left*2),10,$this->sChurchName . " - " . gettext("Directory"),1,0,'C');
             $this->SetY(25);
         }
     }
@@ -71,7 +75,7 @@ class PDF_Directory extends ChurchInfoReport {
             $iPageNumber = $this->PageNo();
             if ($bDirUseTitlePage)
                 $iPageNumber--;
-            $this->Cell(0,10, gettext("Page") . " " . $iPageNumber,0,0,'C');
+            $this->Cell(0,10, gettext("Page") . " " . $iPageNumber."    ".date("M d, Y g:i a",time()),0,0,'C');
         }
     }
 
@@ -117,19 +121,24 @@ class PDF_Directory extends ChurchInfoReport {
     }
 
     // Constructor
-    function PDF_Directory() {
-        parent::FPDF("P", "mm", $this->paperFormat);
+    function PDF_Directory($nc=1, $paper='letter', $fs=10, $ls=4) {
+//        parent::FPDF("P", "mm", $this->paperFormat);
+	parent::FPDF("P", "mm", $paper);
+	$this->_Char_Size = $fs;
+	$this->_LS = $ls;
 
         $this->_Column      = 0;
         $this->_Font        = "Times";
         $this->SetMargins(0,0);
         $this->Open();
-        $this->Set_Char_Size(12);
+        $this->Set_Char_Size($this->_Char_Size);
         $this->SetAutoPageBreak(false);
 
-        $this->_Margin_Left = 16;
-        $this->_Margin_Top  = 16;
+        $this->_Margin_Left = 13;
+        $this->_Margin_Top  = 13;
         $this->_Custom = array();
+	$this->_NCols = $nc;
+	$this->_ColWidth = 190 / $nc - $this->_Gutter;
     }
 
     function AddCustomField($order, $use){
@@ -207,18 +216,19 @@ class PDF_Directory extends ChurchInfoReport {
         }
 
 
-        if ($this->GetY() + $h + $numlines * 5 > $this->h - 27)
+//      if ($this->GetY() + $h + $numlines * 5 > $this->h - 27)  
+        if ($this->GetY() + $h + $numlines * $this->_LS > $this->h - 27)
         {
             // Next Column or Page
-            if ($this->_Column == 1)
+            if ($this->_Column == $this->_NCols-1)
             {
                 $this->_Column = 0;
                 $this->SetY(25);
                 $this->AddPage();
             }
-            else
+            else 
             {
-                $this->_Column = 1;
+                $this->_Column++;
                 $this->SetY(25);
             }
         }
@@ -230,25 +240,31 @@ class PDF_Directory extends ChurchInfoReport {
     {
         $this->Check_Lines(2, 0, 0);
         $this->SetTextColor(255);
-        $this->SetFont($this->_Font,'B',12);
-        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
+        $this->SetFont($this->_Font,'B',$this->_Char_Size);
+//        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
+         $_PosX = ($this->_Column*($this->_ColWidth+$this->_Gutter)) + $this->_Margin_Left;
         $_PosY = $this->GetY();
         $this->SetXY($_PosX, $_PosY);
-        $this->Cell($this->_ColWidth, 5, $sLetter, 1, 1, "C", 1) ;
+//        $this->Cell($this->_ColWidth, 5, $sLetter, 1, 1, "C", 1) ;
+        $this->Cell($this->_ColWidth, $this->_LS, $sLetter, 1,1,"C",1);
         $this->SetTextColor(0);
         $this->SetFont($this->_Font,'',$this->_Char_Size);
-        $this->SetY($this->GetY() + 5);
+//        $this->SetY($this->GetY() + 5);
+	$this->SetY($this->GetY() + $this->_LS);
     }
 
     // This prints the family name in BOLD
     function Print_Name($sName)
     {
-        $this->SetFont($this->_Font,'B',12);
-        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
+        $this->SetFont($this->_Font,'BU',$this->_Char_Size);
+//        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
+         $_PosX = ($this->_Column*($this->_ColWidth+$this->_Gutter)) + $this->_Margin_Left;
         $_PosY = $this->GetY();
         $this->SetXY($_PosX, $_PosY);
-        $this->MultiCell($this->_ColWidth, 5, $sName);
-        $this->SetY($_PosY + $this->NbLines($this->_ColWidth, $sName) * 5);
+//        $this->MultiCell($this->_ColWidth, 5, $sName);
+	$this->MultiCell($this->_ColWidth, $this->_LS, $sName);
+//        $this->SetY($_PosY + $this->NbLines($this->_ColWidth, $sName) * 5);
+	$this->SetY($_PosY + $this->NbLines($this->_ColWidth, $sName) * $this->_LS);
         $this->SetFont($this->_Font,'',$this->_Char_Size);
     }
 
@@ -295,8 +311,11 @@ class PDF_Directory extends ChurchInfoReport {
 
         if ($bDirAddress)
         {
-            if (strlen($fam_Address1)) { $sFamilyStr .= $fam_Address1 . "\n";  }
-            if (strlen($fam_Address2)) { $sFamilyStr .= $fam_Address2 . "\n";  }
+//            if (strlen($fam_Address1)) { $sFamilyStr .= $fam_Address1 . "\n";  }
+//            if (strlen($fam_Address2)) { $sFamilyStr .= $fam_Address2 . "\n";  }
+	      if (strlen($fam_Address1)) { $sFamilyStr .= $fam_Address1;}
+	      if (strlen($fam_Address2)) { $sFamilyStr .= "  ".$fam_Address2;}
+	      $sFamilyStr .= "\n";
             if (strlen($fam_City)) { $sFamilyStr .= $fam_City . ", " . $fam_State . " " . $fam_Zip . "\n";  }
         }
 
@@ -450,7 +469,8 @@ class PDF_Directory extends ChurchInfoReport {
 
         $this->Print_Name($sName);
 
-        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
+//        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
+         $_PosX = ($this->_Column*($this->_ColWidth+$this->_Gutter)) + $this->_Margin_Left;
         $_PosY = $this->GetY();
 
         $this->SetXY($_PosX, $_PosY);
@@ -472,8 +492,10 @@ class PDF_Directory extends ChurchInfoReport {
             $this->SetXY($_PosX, $_PosY + $h + 2);
         }
         
-        $this->MultiCell($this->_ColWidth, 5, $text, 0, 'L');
-        $this->SetY($this->GetY() + 5);
+//        $this->MultiCell($this->_ColWidth, 5, $text, 0, 'L');
+        $this->MultiCell($this->_ColWidth, $this->_LS, $text, 0, 'L');
+//        $this->SetY($this->GetY() + 5);
+        $this->SetY($this->GetY() + $this->_LS);
     }
 }
 
@@ -537,8 +559,17 @@ $sChurchPhone = FilterInput($_POST["sChurchPhone"]);
 $bDirUseTitlePage = isset($_POST["bDirUseTitlePage"]);
 
 
+$bNumberofColumns = FilterInput($_POST["NumCols"]);
+$bPageSize = FilterInput($_POST["PageSize"]);
+$bFontSz = FilterInput($_POST["FSize"]);
+$bLineSp = $bFontSz / 3 ;
+if($bPageSize=="letter")$bPageSize="letter"; else $bPageSize="legal";
+//echo "ncols={$bNumberofColumns}  page size={$bPageSize}";
+
+
 // Instantiate the directory class and build the report.
-$pdf = new PDF_Directory();
+//echo "font sz = {$bFontSz} and line sp={$bLineSp}";
+$pdf = new PDF_Directory($bNumberofColumns, $bPageSize, $bFontSz, $bLineSp);
 
 // Get the list of custom person fields
 $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order";
@@ -706,8 +737,11 @@ while ($aRow = mysql_fetch_array($rsRecords))
 
         if ($bDirAddress)
         {
-            if (strlen($sAddress1)) { $OutStr .= $sAddress1 . "\n";  }
-            if (strlen($sAddress2)) { $OutStr .= $sAddress2 . "\n";  }
+//            if (strlen($sAddress1)) { $OutStr .= $sAddress1 . "\n";  }
+//            if (strlen($sAddress2)) { $OutStr .= $sAddress2 . "\n";  }
+            if (strlen($sAddress1)) { $OutStr .= $sAddress1;  }
+            if (strlen($sAddress2)) { $OutStr .= "   ".$sAddress2;  }
+            $OutStr .= "\n";
             if (strlen($sCity)) { $OutStr .= $sCity . ", " . $sState . " " . $sZip . "\n";  }
         }
         if (($bDirFamilyPhone || $bDirPersonalPhone) && strlen($sHomePhone)) {
@@ -764,11 +798,10 @@ if($mysqlversion == 3 && $mysqlsubversion >= 22){
     $sSQL = "DROP TABLE IF EXISTS tmp;";
     mysql_query($sSQL,$cnInfoCentral);
 }
-
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-
+    
 if ($iPDFOutputType == 1)
-    $pdf->Output("Directory-" . date("Ymd-Gis") . ".pdf", 'D');
+    $pdf->Output("Directory-" . date("Ymd-Gis") . ".pdf", true);
 else
     $pdf->Output();    
 ?>

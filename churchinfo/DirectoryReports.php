@@ -187,6 +187,37 @@ if ($rsConfig) {
 
         </td>
     </tr>
+	<tr>
+	 <td class="LabelColumn"><?php echo gettext("Number of Columns:"); ?></td>
+ 	 <td class="TextColumn">
+		    <input type="radio" Name="NumCols" value=1>1 col<br>
+		    <input type="radio" Name="NumCols" value=2 checked>2 cols<br>
+		    <input type="radio" Name="NumCols" value=3>3 cols<br>
+	</td>
+	</tr>
+	<tr>
+	 <td class="LabelColumn"><?php echo gettext("Paper Size:"); ?></td>
+ 	 <td class="TextColumn">
+		    <input type="radio" name="PageSize" value="letter" checked>Letter (8.5x11)<br>
+		    <input type="radio" name="PageSize" value="legal">Legal (8.5x14)
+	</td>
+	</tr>
+	<tr>
+	 <td class="LabelColumn"><?php echo gettext("Font Size:"); ?></td>
+ 	 <td class="TextColumn">
+		<table>
+		<tr>
+		    <td><input type="radio" Name="FSize" value=6>6<br>
+		    <input type="radio" Name="FSize" value=8>8<br>
+		    <input type="radio" Name="FSize" value=10 checked>10<br></td>
+
+		    <td><input type="radio" Name="FSize" value=12>12<br>
+		    <input type="radio" Name="FSize" value=14>14<br>
+		    <input type="radio" Name="FSize" value=16>16<br></td>
+		</tr>
+		</table>
+	</td>
+	</tr>
     <tr>
         <td class="LabelColumn"><?php echo gettext("Title page:"); ?></td>
         <td class="TextColumn">
