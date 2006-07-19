@@ -9,6 +9,7 @@
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
+ *  edited by S. Shaffer May/June 2006 - added capability to include multiple groups.  Group reports are printed with a page break between group selections.
  *
  ******************************************************************************/
 
@@ -26,7 +27,6 @@ require "Include/Header.php";
 
 // Is this the second pass?
 if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) {
-   $iGroupID = FilterInput($_POST['GroupID'],'int');
 	$iFYID = FilterInput($_POST["FYID"], 'int');
 	$dFirstSunday = FilterInput($_POST["FirstSunday"]);
 	$dLastSunday = FilterInput($_POST["LastSunday"]);
@@ -38,9 +38,17 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 	$dNoSchool6 = FilterInput($_POST["NoSchool6"]);
 	$dNoSchool7 = FilterInput($_POST["NoSchool7"]);
 	$dNoSchool8 = FilterInput($_POST["NoSchool8"]);
-   $iExtraStudents = FilterInput($_POST["ExtraStudents"], 'int');
-   $iExtraTeachers = FilterInput($_POST["ExtraTeachers"], 'int');
-   $_SESSION['idefaultFY'] = $iFYID;
+   	$iExtraStudents = FilterInput($_POST["ExtraStudents"], 'int');
+   	$iExtraTeachers = FilterInput($_POST["ExtraTeachers"], 'int');
+   	$_SESSION['idefaultFY'] = $iFYID;
+	if(!empty($_POST["GroupID"])){
+		$count=0;
+		foreach($_POST["GroupID"] as $Grp){
+			$aGroups[$count++] = FilterInput($Grp,'int');
+		} 
+		$aGrpID = implode(",",$aGroups);
+	}
+	$allroles = FilterInput($_POST["allroles"]);
 
 	$_SESSION['dCalStart'] = $dFirstSunday;
 	$_SESSION['dCalEnd'] = $dLastSunday;
@@ -54,34 +62,37 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 	$_SESSION['dCalNoSchool8'] = $dNoSchool8;
 
    if (isset($_POST["SubmitClassList"])) {
-      Redirect ("Reports/ClassList.php?GroupID=" . $iGroupID . "&FYID=" . $iFYID . "&FirstSunday=" . $dFirstSunday . "&LastSunday=" . $dLastSunday);
+//		Redirect ("Reports/ClassList.php?GroupID=" . $iGroupID . "&FYID=" . $iFYID . "&FirstSunday=" . $dFirstSunday . "&LastSunday=" . $dLastSunday);
+		Redirect ("Reports/ClassList.php?GroupID=" . $aGrpID . "&FYID=" . $iFYID . "&FirstSunday=" . $dFirstSunday . "&LastSunday=" . $dLastSunday . "&AllRoles=" . $allroles);
    } else if (isset($_POST["SubmitClassAttendance"])) {
-      $toStr = "Reports/ClassAttendance.php?";
-      $toStr .= "GroupID=" . $iGroupID;
-      $toStr .= "&FYID=" . $iFYID;
-      $toStr .= "&FirstSunday=" . $dFirstSunday;
-      $toStr .= "&LastSunday=" . $dLastSunday;
-      if ($dNoSchool1)
-         $toStr .= "&NoSchool1=" . $dNoSchool1;
-      if ($dNoSchool2)
-         $toStr .= "&NoSchool2=" . $dNoSchool2;
-      if ($dNoSchool3)
-         $toStr .= "&NoSchool3=" . $dNoSchool3;
-      if ($dNoSchool4)
-         $toStr .= "&NoSchool4=" . $dNoSchool4;
-      if ($dNoSchool5)
-         $toStr .= "&NoSchool5=" . $dNoSchool5;
-      if ($dNoSchool6)
-         $toStr .= "&NoSchool6=" . $dNoSchool6;
-      if ($dNoSchool7)
-         $toStr .= "&NoSchool7=" . $dNoSchool7;
-      if ($dNoSchool8)
-         $toStr .= "&NoSchool8=" . $dNoSchool8;
-      if ($iExtraStudents)
-         $toStr .= "&ExtraStudents=" . $iExtraStudents;
-      if ($iExtraTeachers)
-         $toStr .= "&ExtraTeachers=" . $iExtraTeachers;
-      Redirect ($toStr);
+	      $toStr = "Reports/ClassAttendance.php?";
+//	      $toStr .= "GroupID=" . $iGroupID;
+	      $toStr .= "GroupID=" . $aGrpID;
+	      $toStr .= "&FYID=" . $iFYID;
+	      $toStr .= "&FirstSunday=" . $dFirstSunday;
+	      $toStr .= "&LastSunday=" . $dLastSunday;
+	      $toStr .= "&AllRoles=" . $allroles;
+	      if ($dNoSchool1)
+	         $toStr .= "&NoSchool1=" . $dNoSchool1;
+	      if ($dNoSchool2)
+	         $toStr .= "&NoSchool2=" . $dNoSchool2;
+	      if ($dNoSchool3)
+	         $toStr .= "&NoSchool3=" . $dNoSchool3;
+	      if ($dNoSchool4)
+	         $toStr .= "&NoSchool4=" . $dNoSchool4;
+	      if ($dNoSchool5)
+	         $toStr .= "&NoSchool5=" . $dNoSchool5;
+	      if ($dNoSchool6)
+	         $toStr .= "&NoSchool6=" . $dNoSchool6;
+	      if ($dNoSchool7)
+	         $toStr .= "&NoSchool7=" . $dNoSchool7;
+	      if ($dNoSchool8)
+	         $toStr .= "&NoSchool8=" . $dNoSchool8;
+	      if ($iExtraStudents)
+	         $toStr .= "&ExtraStudents=" . $iExtraStudents;
+	      if ($iExtraTeachers)
+	         $toStr .= "&ExtraTeachers=" . $iExtraTeachers;
+	      Redirect ($toStr);
    }
 } else {
    $iFYID = $_SESSION['idefaultFY'];
@@ -104,16 +115,18 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 
 <table cellpadding="3" align="left">
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Group:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("Select Group: \nTo select multiple hold CTL"); ?></td>
 		<td class="TextColumn">
 			<?php
 			// Create the group select drop-down
-			echo "<select id=\"GroupID\" name=\"GroupID\" onChange=\"UpdateRoles();\"><option value=\"0\">". gettext('None') . "</option>";
+			echo "<select id=\"GroupID\" name=\"GroupID[]\" multiple size=\"8\" onChange=\"UpdateRoles();\"><option value=\"0\">". gettext('None') . "</option>";
 			while ($aRow = mysql_fetch_array($rsGroups)) {
 				extract($aRow);
 				echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
 			}
-			echo "</select>";
+			echo "</select><br>";
+			echo "Multiple groups will have a Page Break between Groups<br>";
+			echo "<input type=\"checkbox\" Name=\"allroles\" value=\"1\" checked>"; echo "List all Roles (unchecked will list Teacher/Student roles only)";	
 			?>
 		</td>
 	</tr>
