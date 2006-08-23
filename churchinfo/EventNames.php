@@ -23,7 +23,7 @@ if (!$_SESSION['bAdmin'])
     header ("Location: Menu.php");
 }
 
-$sPageTitle = gettext("Edit Event Names");
+$sPageTitle = gettext("Edit Event Types");
 
 require "Include/Header.php";
 
@@ -42,7 +42,7 @@ if ( answer )
   </tr>
 </table>
 <?php
-if ($_POST['Action'] == "Add Event Name")
+if ($_POST['Action'] == "Add Event Type")
 {
     $newEventName = FilterInput($_POST['newEventName']);
 
@@ -68,7 +68,7 @@ $sSQL = "SELECT * FROM event_types";
 $rsOpps = RunQuery($sSQL);
 $numRows = mysql_num_rows($rsOpps);
 
-        // Create arrays of the event names
+        // Create arrays of the event types
         for ($row = 1; $row <= $numRows; $row++)
         {
                 $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
@@ -86,7 +86,7 @@ if ($numRows > 0)
 {
 ?>
   <caption>
-    <h3><?php echo gettext("There currently ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." custom event names")); ?></h3>
+    <h3><?php echo gettext("There currently ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." custom event types")); ?></h3>
   </caption>
   <tr>
     <td>
@@ -121,10 +121,10 @@ if ($numRows > 0)
       <form name="AddEventNames" action="EventNames.php" method="POST">
       <table width="40%" align="center">
         <tr>
-          <td align="right"><span class="SmallText"><?php echo gettext("New Event Name"); ?></span></td>
+          <td align="right"><span class="SmallText"><?php echo gettext("New Event Type"); ?></span></td>
           <td align="center"><input type="text" name="newEventName" value="<?php echo $newEventName; ?>" size="30" maxlength="40"></td>
           <td align="left" valign="middle">
-            <input type="submit" Name="Action" <?php echo 'value="' . gettext("Add Event Name") . '"'; ?> class="icButton">
+            <input type="submit" Name="Action" <?php echo 'value="' . gettext("Add Event Type") . '"'; ?> class="icButton">
           </td>
         </tr>
       </table>
