@@ -434,7 +434,7 @@ $MenuFirst = 1;
                                 )
                                 <?php if ($_SESSION['bAdmin']) {
                                 echo ", ".$MenuSecond++; ?>, new domMenu_Hash(
-                                        'contents', <?php echo "'" . gettext("Manage Event Names") . "'"; ?>,
+                                        'contents', <?php echo "'" . gettext("Edit Event Types") . "'"; ?>,
                                         'uri', 'EventNames.php',
                                         'statusText', ''
                                 )
