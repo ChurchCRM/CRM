@@ -307,7 +307,7 @@ if ($fam_ID)
 				<?php echo $sFamRole ?>&nbsp;
 			</td>
 			<td>
-				<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear); ?>
+				<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear, $per_Flags); ?>
 			</td>
 		</tr>
 	<?php
