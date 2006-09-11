@@ -79,7 +79,7 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 		}
 		$appendToQuery = substr($appendToQuery, 0, strlen ($appendToQuery)-1);
 		$appendToQuery .= ")";
-	} else {
+	} elseif ($iGroupID > -1) {
         // group zero means map the cart
 		$sSQL = "SELECT per_fam_ID FROM person_per WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ")";
 		$rsGroupMembers = RunQuery($sSQL);

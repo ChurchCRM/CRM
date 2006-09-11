@@ -403,7 +403,7 @@ $MenuFirst = 1;
 
 				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Family Map") . "'"; ?>,
-					'uri', 'MapUsingGoogle.php',
+					'uri', 'MapUsingGoogle.php?GroupID=-1',
 					'statusText', ''
 				)
 
