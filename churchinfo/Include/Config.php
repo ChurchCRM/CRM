@@ -5,7 +5,7 @@
 *  website     : http://www.churchdb.org
 *  description : global configuration
 *
-*  http://www.churchinfo.org/
+*  http://www.churchdb.org/
 *  Copyright 2001-2005 Phillip Hullquist, Deane Barker, Chris Gebhardt, 
 *                      Michael Wilt, Timothy Dearborn
 *
@@ -30,14 +30,14 @@
 
 // Database connection constants
 $sSERVERNAME = "localhost";
-$sUSER = "churchinfo";
-$sPASSWORD = "churchinfo";
-$sDATABASE = "churchinfo";
+$sUSER = "buufuser";
+$sPASSWORD = "mysql";
+$sDATABASE = "BUUF";
 
 // Root path of your ChurchInfo installation ( THIS MUST BE SET CORRECTLY! )
 // For example, if you will be accessing from http://www.yourdomain.com/web/churchinfo
 // then you would enter "/web/churchinfo" here.  This path SHOULD NOT end with slash.
-$sRootPath="/churchinfo";
+$sRootPath="/CVSchurchinfo";
 
 // If you are using a non-standard port number you may need to include the 
 // port number in the URL.  Default value is fine for most installations.
