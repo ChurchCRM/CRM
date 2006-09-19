@@ -74,62 +74,6 @@ function LoadLib_JPGraph()
 	}
 }
 
-function LoadLib_PHPMailer()
-{
-	global $sPHPMAILER_PATH;
-
-	// Check if the Config.php given path is absolute
-	if ($sPHPMAILER_PATH{0} == "/" || substr($sPHPMAILER_PATH,1,2) == ":\\")
-		$sPHPMAILERpath = $sPHPMAILER_PATH . "/";
-	else
-		$sPHPMAILERpath = "./" . $sPHPMAILER_PATH . "/";
-
-	// If PHPMailer is not found at user specified path, fall back to PHP include_path, or else exit with error.
-	if (!is_readable($sPHPMAILERpath . "class.phpmailer.php"))
-	{
-		if (is_readable('class.phpmailer.php'))
-			$sPHPMAILERpath= "";
-		else {
-			echo "<h2>" . gettext("ERROR: PHPMailer Library was not found in your path <i>or</i> at: ") . $sPHPMAILERpath;
-			exit;
-		}
-	}
-	// If all went well, load the requested libraries
-	require $sPHPMAILERpath . "class.phpmailer.php";
-	require $sPHPMAILERpath . "class.smtp.php";
-
-	// Define parameters as class ICMail
-	class ICMail extends PHPMailer {
-		// Set default variables for all new objects
-		var $From;
-		var $FromName;
-		var $Mailer;
-		var $WordWrap;
-		var $Host;
-		var $SMTPAuth;
-		var $Username;
-		var $Password;
-		function ICMail() {
-			if ($_SESSION['sEmailAddress'] <> "")
-				$this->From = $_SESSION['sEmailAddress'];
-			else
-				$this->From = $GLOBALS['sFromEmailAddress'];
-			$this->FromName = $GLOBALS['sFromName'];
-			$this->Mailer = $GLOBALS['sSendType'];
-			$this->WordWrap = $GLOBALS['sWordWrap'];
-			if ($this->Mailer == "smtp")
-			{
-				$this->Host = $GLOBALS['sSMTPHost'];
-				$this->SMTPAuth = $GLOBALS['sSMTPAuth'];
-				if ($this->SMTPAuth) {
-					$this->Username = $GLOBALS['sSMTPUser'];
-					$this->Password = $GLOBALS['sSMTPPass'];
-				}
-			}
-		}
-	}
-}
-
 // MakeSalutation: this utility is used to figure out how to address a family
 // for correspondence.
 function MakeSalutationUtility ($famID) {

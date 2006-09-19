@@ -32,9 +32,17 @@ if (is_array($email_array))
 
 	$bcc_list = implode(", ", $email_array);
 
+    // Note: These optional settings for sending email from server should
+    // be stored in User Settings to be added in future revision of ChurchInfo.
+	if ($_SESSION['sEmailAddress'] <> "") {
+        $sFromEmailAddress = $_SESSION['sEmailAddress'];
+        $sFromName = $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'];
+    }
+
 	//Print the From, To, and Email List with the Subject and Message
     echo "<hr>\r\n";
-    echo "<p class=\"MediumText\"><b>" . gettext("From:") . "</b> "  . $sFromEmailAddress . "<br>";
+    echo "<p class=\"MediumText\"><b>" . gettext("From:") . "</b> \"" . $sFromName . "\""
+    . " &lt;" . $sFromEmailAddress . "&gt;<br>";
     echo "<b>" . gettext("To:") . "</b> "  . $bcc_list . "<br>";
     echo "<b>" . gettext("Subject:") . "</b> "  . $subject . "<br>";
     echo "</p><hr><textarea cols=\"72\" rows=\"20\" readonly class=\"MediumText\" style=\"border:0px;\">";
@@ -56,7 +64,11 @@ if (is_array($email_array))
 		echo "<input type=\"hidden\" name=\"emailtitle\" value=\"" . $subject . "\">";
 		echo "<input type=\"hidden\" name=\"emailmessage\" value=\"" . $message . "\">";
 		echo "<input class=\"icButton\" type=\"submit\" name=\"submit\" value=\"Send Email\">";
-		echo " <input class=\"icButton\" type=\"submit\" name=\"submitBCC\" value=\"Send Email using BCC\">";
+// BCC commented out.  PHPMailer sends emails one at a time so there is no need to conceal
+// one address from another.  Also, some spam filters block email if To line is empty.  So
+// BCC is not a good idea.
+// Even so, this should be enabled in a future version of ChurchInfo via General Settings.
+//		echo " <input class=\"icButton\" type=\"submit\" name=\"submitBCC\" value=\"Send Email using BCC\">";
 		echo "</form>";
 
 	echo "</td></tr></table>";
