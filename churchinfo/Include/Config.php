@@ -30,14 +30,14 @@
 
 // Database connection constants
 $sSERVERNAME = "localhost";
-$sUSER = "buufuser";
-$sPASSWORD = "mysql";
-$sDATABASE = "BUUF";
+$sUSER = "churchinfo";
+$sPASSWORD = "churchinfo";
+$sDATABASE = "churchinfo";
 
 // Root path of your ChurchInfo installation ( THIS MUST BE SET CORRECTLY! )
 // For example, if you will be accessing from http://www.yourdomain.com/web/churchinfo
 // then you would enter "/web/churchinfo" here.  This path SHOULD NOT end with slash.
-$sRootPath="/CVSchurchinfo";
+$sRootPath="/churchinfo";
 
 // If you are using a non-standard port number you may need to include the 
 // port number in the URL.  Default value is fine for most installations.
