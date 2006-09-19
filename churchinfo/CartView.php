@@ -204,12 +204,12 @@ if (count($_SESSION['aPeopleCart']) == 0) {
                                 $email_array[] = $sEmail;
 
                                 if ($iEmailNum == 0)
-                                {
+                                {       // Comma is not needed before first email address
                                         $sEmailLink .= $sEmail;
                                         $iEmailNum++;
                                 }
                                 else
-                                        $sEmailLink .= ";" . $sEmail;
+                                        $sEmailLink .= "," . $sEmail;
                         }
                 }
                 else
@@ -275,7 +275,8 @@ if (count($_SESSION['aPeopleCart']) != 0)
         if ($iEmailNum > 0) {
                 // Add default email if default email has been set and is not already in string
                 if ($sToEmailAddress != "" && $sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress))
-                        $sEmailLink .= ";" . $sToEmailAddress;
+                        $sEmailLink .= "," . $sToEmailAddress;
+                $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
                 echo "<br><a href=\"mailto:" . $sEmailLink ."\">". gettext("Email Cart") . "</a>";
                 echo "<br><a href=\"mailto:?bcc=".$sEmailLink."\">".gettext("Email (BCC)")."</a>";
         }

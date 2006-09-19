@@ -1,17 +1,24 @@
 <?php
 /*******************************************************************************
- *
- *  filename    : GroupView.php
- *  last change : 2003-04-15
- *  website     : http://www.infocentral.org
- *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
- *
- *  InfoCentral is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- ******************************************************************************/
+*
+*  filename    : GroupView.php
+*  website     : http://www.churchdb.org
+*  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
+*
+*  Additional Contributors:
+*  2006 Ed Davis
+*
+*
+*  Copyright Contributors
+*
+*  ChurchInfo is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This file best viewed in a text editor with tabs stops set to 4 characters
+*
+******************************************************************************/
 
 //Include the function library
 require "Include/Config.php";
@@ -120,16 +127,18 @@ while (list ($per_Email, $fam_Email) = mysql_fetch_row($rsEmailList))
 	if ($sEmail)
 	{
 		// Add email only if email address is not already in string
-		if (!stristr($sEmailLink, $sEmail.";" ))
-			$sEmailLink .= $sEmail . ";";
+		if (!stristr($sEmailLink, $sEmail))
+			$sEmailLink .= $sEmail . ",";
 	}
 }
 if ($sEmailLink)
 {
 	// Add default email if default email has been set and is not already in string
-	if ($sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress.";" ))
-		$sEmailLink .= $sToEmailAddress . ";";
-	$sEmailLink = substr($sEmailLink,0,-1);	// Remove trailing comma
+	if ($sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress))
+		$sEmailLink .= $sToEmailAddress . ",";
+    $sEmailLink = substr($sEmailLink,0,-1);	// Remove trailing comma
+    $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
+    
 	// Display link
 	echo " | <a class=\"SmallText\" href=\"mailto:".$sEmailLink."\">".gettext("Email Group")."</a>";
 	echo " | <a class=\"SmallText\" href=\"mailto:?bcc=".$sEmailLink."\">".gettext("Email (BCC)")."</a>";
