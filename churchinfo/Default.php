@@ -283,6 +283,7 @@ if ($iUserID > 0)
 
 <html>
 <head>
+	<meta http-equiv="pragma" content="no-cache">
 	<link rel="stylesheet" type="text/css" href="Include/Style.css">
 	<title><?php echo gettext("ChurchInfo: Login"); ?></title>
 </head>

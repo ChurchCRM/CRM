@@ -316,6 +316,11 @@ $MenuFirst = 1;
 					'uri', 'SettingsReport.php',
 					'statusText', ''
 				),
+				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("Edit User Default Settings") . "'"; ?>,
+					'uri', 'SettingsUser.php',
+					'statusText', ''
+				),
 				<?php if ($bUseDonationEnvelopes) { ?>
 				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Envelope Manager") . "'"; ?>,

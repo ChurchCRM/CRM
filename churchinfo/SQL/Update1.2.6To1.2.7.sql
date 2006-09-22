@@ -1,4 +1,4 @@
---        It is highly recommended you backup your MySQL database before excuting this
+--        It is highly recommended you backup your MySQL database before executing this
 --        script. To backup from the command prompt use the following.
 --
 -- system> mysqldump -u root -p db_name > filename.sql
@@ -8,14 +8,35 @@
 --
 -- system> mysql -u root -p db_name < filename.sql
 --
--- Note: This will overwrite your database so be sure you are restoring the proper backup.
+--      This SQL script will migrate your database from version 1.2.6 to 1.2.7.  There
+--      is no script to go from 1.2.7 to 1.2.6.  If you need to roll back to 1.2.6 your
+--      best bet is to restore your backup.
 
--- Fix a typo I noticed
+-- New table for user settings and permissions
+CREATE TABLE IF NOT EXISTS `userconfig_ucfg` (
+  `ucfg_per_ID` mediumint(9) unsigned NOT NULL auto_increment,
+  `ucfg_name` varchar(50) NOT NULL default '',
+  `ucfg_value` text default NULL,
+  `ucfg_type` enum('text','number','date','boolean','textarea') NOT NULL default 'text',
+  `ucfg_tooltip` text NOT NULL,
+  PRIMARY KEY  (`ucfg_per_ID`,`ucfg_name`)
+) TYPE=MyISAM;
+
+-- Add permissions for default user
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip)
+VALUES (1,'bEmailMailto','1',
+'boolean','user permission to send email via mailto: links');
+
+-- Set default user permissions for mailto
+INSERT IGNORE INTO `config_cfg` VALUES (2001, 'bEmailMailto', '1', 'boolean', '1', 'New user access to mailto links', 'UserDefaults');
+
+-- Fix a typo
 UPDATE IGNORE `config_cfg` 
 SET `cfg_name`='sReminderNoPayments' WHERE `cfg_name`='sReminderNoPlayments';
 
--- Renumber config values to match those of a fresh install
--- This aides in keeping consistency between upgrades and new installations.
+-- Renumber config values to match those of a fresh install.
+-- Helpfull in keeping consistency between upgrades and new installations.
 -- 1 thru 1000 is for 'General'
 -- 1001 thru 2000 is for 'ChurchInfoReport'
 -- 2001 thru 3000 is for 'UserDefaults'
@@ -331,3 +352,6 @@ FROM `tempconfig_tcfg` WHERE `tcfg_name`='sDirectoryDisclaimer2';
 INSERT INTO `config_cfg`
 SELECT 1030,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bDirLetterHead';
+INSERT INTO `config_cfg`
+SELECT 2001,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+FROM `tempconfig_tcfg` WHERE `tcfg_name`='bEmailMailto';

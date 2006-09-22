@@ -567,9 +567,25 @@ CREATE TABLE IF NOT EXISTS `config_cfg` (
   `cfg_default` text NOT NULL default '',
   `cfg_tooltip` text NOT NULL,
   `cfg_section` varchar(50) NOT NULL default '',
-  PRIMARY KEY  (`cfg_id`)
+  PRIMARY KEY  (`cfg_id`),
+  UNIQUE KEY `cfg_name` (`cfg_name`),
+  KEY `cfg_id` (`cfg_id`)
 ) TYPE=MyISAM;
 
+CREATE TABLE IF NOT EXISTS `userconfig_ucfg` (
+  `ucfg_per_ID` mediumint(9) unsigned NOT NULL auto_increment,
+  `ucfg_name` varchar(50) NOT NULL default '',
+  `ucfg_value` text default NULL,
+  `ucfg_type` enum('text','number','date','boolean','textarea') NOT NULL default 'text',
+  `ucfg_tooltip` text NOT NULL,
+  PRIMARY KEY  (`ucfg_per_ID`,`ucfg_name`)
+) TYPE=MyISAM;
+
+-- Add permissions for default user
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip)
+VALUES (1,'bEmailMailto','1',
+'boolean','user permission to send email via mailto: links');
 
 CREATE TABLE IF NOT EXISTS `istlookup_lu` (
   `lu_fam_ID` mediumint(9) NOT NULL default '0',
@@ -684,3 +700,6 @@ INSERT IGNORE INTO `config_cfg` VALUES (1027, 'sPledgeSummary2', 'as of', 'text'
 INSERT IGNORE INTO `config_cfg` VALUES (1028, 'sDirectoryDisclaimer1', 'Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of', 'text', 'Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of', 'Verbage for the directory report', 'ChurchInfoReport');
 INSERT IGNORE INTO `config_cfg` VALUES (1029, 'sDirectoryDisclaimer2', ', and the information contained in it may not be used for business or commercial purposes.', 'text', ', and the information contained in it may not be used for business or commercial purposes.', 'Verbage for the directory report', 'ChurchInfoReport');
 INSERT IGNORE INTO `config_cfg` VALUES (1030, 'bDirLetterHead', '../Images/church_letterhead.jpg', 'text', '../Images/church_letterhead.jpg', 'Church Letterhead path and file', 'ChurchInfoReport');
+
+INSERT IGNORE INTO `config_cfg` VALUES (2001, 'bEmailMailto', '1', 'boolean', '1', 'New user access to mailto links', 'UserDefaults');
+

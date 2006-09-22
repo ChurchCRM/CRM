@@ -1,16 +1,28 @@
 <?php
 /*******************************************************************************
- *
- *  filename    : FinancialReports.php
- *  last change : 2005-03-26
- *  description : form to invoke financial reports
- *
- *  ChurchInfo is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- ******************************************************************************/
+*
+*  filename    : SettingsUser.php
+*  website     : http://www.churchdb.org
+*  description : Default User Settings 
+*                   File copied from SettingsGeneral.php with minor edits.
+*
+*  Contributors:
+*  2006 Ed Davis
+*
+*
+*  Copyright Contributors
+*
+*  ChurchInfo is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This file best viewed in a text editor with tabs stops set to 4 characters.
+*  Please configure your editor to use soft tabs (4 spaces for a tab) instead
+*  of hard tab characters.
+*
+******************************************************************************/
+
 
 // Include the function library
 require "Include/Config.php";
@@ -23,19 +35,6 @@ if (!$_SESSION['bAdmin'])
 	exit;
 }
 
-// Figure out where $sHeader is stored.  Special handling is needed to preserve
-// HTML tags.
-$sSQL = "SELECT * FROM config_cfg WHERE cfg_section='General' ORDER BY cfg_id";
-$rsConfigs = RunQuery($sSQL);
-$iRowCount=0;
-while ($aRow = mysql_fetch_array($rsConfigs)) {
-    $iRowCount++;
-    extract($aRow);
-    if ($cfg_name == "sHeader") {
-        $iHTMLHeaderRow=$iRowCount;
-    }
-}
-
 // Save Settings
 if ($_POST['save']){
 	$new_value = $_POST['new_value'];
@@ -45,9 +44,7 @@ if ($_POST['save']){
 	while ($current_type = current($type)) {
 		$id = key($type);
 		// Filter Input
-		if ($id == $iHTMLHeaderRow)	// Special handling of header value so HTML doesn't get removed
-			$value = html_entity_decode($new_value[$id]);
-		elseif ($current_type == 'text' || $current_type == "textarea")
+		if ($current_type == 'text' || $current_type == "textarea")
 			$value = FilterInput($new_value[$id]);
 		elseif ($current_type == 'number')
 			$value = FilterInput($new_value[$id],"float");
@@ -67,15 +64,15 @@ if ($_POST['save']){
 }
 
 // Set the page title and include HTML header
-$sPageTitle = gettext("General Configuration Settings");
+$sPageTitle = gettext("Default User Settings");
 require "Include/Header.php";
 
 // Get settings
-$sSQL = "SELECT * FROM config_cfg WHERE cfg_section='general' ORDER BY cfg_id";
+$sSQL = "SELECT * FROM config_cfg WHERE cfg_section='UserDefaults' ORDER BY cfg_id";
 $rsConfigs = RunQuery($sSQL);
 
 // Table Headings
-echo "<form method=post action=SettingsGeneral.php>";
+echo "<form method=post action=SettingsUser.php>";
 echo "<table cellpadding=3 align=left>";
 echo "<tr><td><h3>". gettext("Variable name") . "</h3></td>
 	<td><h3>Current Value</h3></td>
