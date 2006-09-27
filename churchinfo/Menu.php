@@ -33,7 +33,13 @@ require "Include/Header.php";
 if ($_SESSION['iLoginCount'] == 0) {
 	echo gettext("This is your first login.");
 } else {
-	echo gettext("You last logged in on ") . date("l, F d, Y",$_SESSION['dLastLogin']) . ' ' . gettext("at") . ' ' . date("H:i",$_SESSION['dLastLogin']) . ".";
+    $dLL = $_SESSION['dLastLogin'];
+    $sSQL = "SELECT DAYNAME('$dLL') as dn, MONTHNAME('$dLL') as mn, DAYOFMONTH('$dLL') as dm, "
+    .       "YEAR('$dLL') as y, HOUR('$dLL') as h, DATE_FORMAT('$dLL', ':%i') as m";
+    extract(mysql_fetch_array(RunQuery($sSQL)));
+
+    echo gettext("You last logged in on ") . gettext("$dn") . ", " . gettext("$mn")
+    .   " $dm, $y " . gettext("at") . " $h$m.";
 }
 ?>
 </p>

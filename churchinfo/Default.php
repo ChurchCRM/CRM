@@ -148,7 +148,7 @@ if ($iUserID > 0)
 	} else {
 
 		// Set the LastLogin and Increment the LoginCount
-		$sSQL = "UPDATE user_usr SET usr_LastLogin = '" . date("Y-m-d H:i:s") . "', usr_LoginCount = usr_LoginCount + 1, usr_FailedLogins = 0 WHERE usr_per_ID = " . $iUserID;
+		$sSQL = "UPDATE user_usr SET usr_LastLogin = NOW(), usr_LoginCount = usr_LoginCount + 1, usr_FailedLogins = 0 WHERE usr_per_ID = " . $iUserID;
 		RunQuery($sSQL);
 
 		// Set the User's family id in case EditSelf is enabled
@@ -226,7 +226,8 @@ if ($iUserID > 0)
 		$_SESSION['iLoginCount'] = $usr_LoginCount;
 
 		// Set the Last Login
-		$_SESSION['dLastLogin'] = ConvertMySQLDate($usr_LastLogin);
+        $_SESSION['dLastLogin'] = $usr_LastLogin;
+        
 
 		// Set the Workspace Width
 		$_SESSION['iWorkspaceWidth'] = $usr_WorkspaceWidth;

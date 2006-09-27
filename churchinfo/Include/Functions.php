@@ -500,16 +500,6 @@ function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddres
 	}
 }
 
-function ConvertMySQLDate($datestr)
-{
-	if (strlen($datestr)) {
-		list($year,$month,$day,$hour,$minute,$second) = split("([^0-9])",$datestr);
-		return date("U",mktime($hour,$minute,$second,$month,$day,$year));
-	} else {
-		return "";
-	}
-}
-
 function ChopLastCharacter($sText)
 {
 	return substr($sText,0,strlen($sText) - 1);
