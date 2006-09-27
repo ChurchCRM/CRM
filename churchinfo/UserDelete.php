@@ -37,6 +37,9 @@ if (isset($_GET["Confirmed"])) {
 	$sSQL = "DELETE FROM user_usr WHERE usr_per_ID = " . $iPersonID;
 	RunQuery($sSQL);
 
+	$sSQL = "DELETE FROM userconfig_ucfg WHERE ucfg_per_ID = " . $iPersonID;
+	RunQuery($sSQL);
+
 	// Redirect back to the list
 	Redirect("UserList.php");
 

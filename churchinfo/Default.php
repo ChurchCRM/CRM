@@ -275,7 +275,8 @@ if ($iUserID > 0)
 		$_SESSION['bSearchFamily'] = $usr_SearchFamily;
 
 		// Redirect to the Menu
-		Redirect("Menu.php");
+		Redirect("CheckVersion.php");
+        exit;
 	}
 }
 // Set the page title and include HTML header
@@ -301,6 +302,14 @@ if ($iUserID > 0)
 			<span style="color:red; font-size:120%;">Your previous session timed out.  Please login again.</span>
 			</td>
 		</tr> <?php } ?>
+
+		<?php if (isset($_GET['update'])) { ?> 
+		<tr>
+			<td align="center" colspan="2">
+			<span style="color:red; font-size:120%;">The ChurchInfo database has been updated.  Please login again.</span>
+			</td>
+		</tr> <?php } ?>
+
 		<?php if (isset($sErrorText) <> '') { ?> 
 		<tr>
 			<td align="center" colspan="2">

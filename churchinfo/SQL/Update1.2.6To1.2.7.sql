@@ -8,28 +8,50 @@
 --
 -- system> mysql -u root -p db_name < filename.sql
 --
---      This SQL script will migrate your database from version 1.2.6 to 1.2.7.  There
---      is no script to go from 1.2.7 to 1.2.6.  If you need to roll back to 1.2.6 your
---      best bet is to restore your backup.
+--      The SQL script below will migrate your database from version 1.2.6 to 1.2.7.
+--      There is no script to go back to 1.2.6.  If you need to roll back to 1.2.6 your
+--      best bet is to restore your MySQL backup and install 1.2.6 PHP code.
+--
+--
+DELETE FROM `config_cfg` WHERE `cfg_id`=2001;
+DELETE FROM `config_cfg` WHERE `cfg_id`=2002;
+DROP TABLE IF EXISTS `version_ver`;
+DROP TABLE IF EXISTS `userconfig_ucfg`;
+
+-- New table to keep track of version information
+CREATE TABLE IF NOT EXISTS `version_ver` (
+  `ver_ID` mediumint(9) unsigned NOT NULL auto_increment,
+  `ver_version` varchar(50) NOT NULL default '',
+  `ver_date` datetime default NULL,
+  PRIMARY KEY  (`ver_ID`),
+  UNIQUE KEY `ver_version` (`ver_version`)
+) TYPE=MyISAM;
+
+INSERT IGNORE INTO `version_ver` (ver_version, ver_date) VALUES ('1.2.7',NOW());
 
 -- New table for user settings and permissions
 CREATE TABLE IF NOT EXISTS `userconfig_ucfg` (
-  `ucfg_per_ID` mediumint(9) unsigned NOT NULL auto_increment,
+  `ucfg_per_id` mediumint(9) unsigned NOT NULL,
+  `ucfg_id` int(11) NOT NULL default '0',
   `ucfg_name` varchar(50) NOT NULL default '',
   `ucfg_value` text default NULL,
   `ucfg_type` enum('text','number','date','boolean','textarea') NOT NULL default 'text',
   `ucfg_tooltip` text NOT NULL,
-  PRIMARY KEY  (`ucfg_per_ID`,`ucfg_name`)
+  `ucfg_permission` boolean default FALSE,
+  PRIMARY KEY  (`ucfg_per_ID`,`ucfg_id`)
 ) TYPE=MyISAM;
 
--- Add permissions for default user
-INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_name, ucfg_value,
-ucfg_type, ucfg_tooltip)
-VALUES (1,'bEmailMailto','1',
-'boolean','user permission to send email via mailto: links');
+-- Add default permissions for new users
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (0,0,'bEmailMailto','0',
+'boolean','user permission to send email via mailto: links',FALSE);
 
--- Set default user permissions for mailto
-INSERT IGNORE INTO `config_cfg` VALUES (2001, 'bEmailMailto', '1', 'boolean', '1', 'New user access to mailto links', 'UserDefaults');
+-- Add permissions for Admin
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (1,0,'bEmailMailto','1',
+'boolean','user permission to send email via mailto: links',TRUE);
 
 -- Fix a typo
 UPDATE IGNORE `config_cfg` 
@@ -39,7 +61,7 @@ SET `cfg_name`='sReminderNoPayments' WHERE `cfg_name`='sReminderNoPlayments';
 -- Helpfull in keeping consistency between upgrades and new installations.
 -- 1 thru 1000 is for 'General'
 -- 1001 thru 2000 is for 'ChurchInfoReport'
--- 2001 thru 3000 is for 'UserDefaults'
+-- 2001 thru 3000 is for future use
 --
 -- Step 1) Copy current config_cfg table into temporary table
 DROP TABLE IF EXISTS `tempconfig_tcfg`;
@@ -352,6 +374,5 @@ FROM `tempconfig_tcfg` WHERE `tcfg_name`='sDirectoryDisclaimer2';
 INSERT INTO `config_cfg`
 SELECT 1030,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bDirLetterHead';
-INSERT INTO `config_cfg`
-SELECT 2001,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
-FROM `tempconfig_tcfg` WHERE `tcfg_name`='bEmailMailto';
+
+DROP TABLE IF EXISTS `tempconfig_tcfg`;

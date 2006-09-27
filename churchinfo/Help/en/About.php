@@ -8,11 +8,11 @@
 	<table width="100%" class="LightShadedBox">
 	<tr>
 		<td width="10%" nowrap><b>Version:<b></td>
-		<td>1.2.5</td>
+		<td><?php echo $_SESSION['sChurchInfoPHPVersion']; ?></td>
 	</tr>
 	<tr>
 		<td width="10%" nowrap><b>Release Date:</b></td>
-		<td>2006-01-09</td>
+		<td><?php echo $_SESSION['sChurchInfoPHPDate']; ?></td>
 	</tr>
 	<tr>
 		<td width="10%" nowrap><b>License:</b></td>

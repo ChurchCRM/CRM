@@ -1,23 +1,31 @@
 <?php
 /*******************************************************************************
- *
- *  filename    : UserEditor.php
- *  last change : 2005-03-30
- *  description : form for adding and editing users
- *
- *  http://www.infocentral.org/
- *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
- * 
- *  Updated 2005-03-19 by Everette L Mills: Updated to remove error that could be created
- *  by use of duplicate usernames
- *
- *  InfoCentral is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- ******************************************************************************/
-
+*
+*  filename    : UserEditor.php
+*  description : form for adding and editing users
+*
+*  http://www.churchdb.org/
+*  Copyright 2001-2002 Phillip Hullquist, Deane Barker
+* 
+*  Updated 2005-03-19 by Everette L Mills: Updated to remove error that could be created
+*  by use of duplicate usernames
+*
+*  Additional Contributors:
+*  2006 Ed Davis
+*
+*
+*  Copyright Contributors
+*
+*  ChurchInfo is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This file best viewed in a text editor with tabs stops set to 4 characters.
+*  Please configure your editor to use soft tabs (4 spaces for a tab) instead
+*  of hard tab characters.
+*
+******************************************************************************/
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
@@ -64,16 +72,16 @@ if (isset($_POST["Submit"]) && $iPersonID > 0) {
 	$defaultFY = CurrentFY ();
 	$sUserName = FilterInput($_POST["UserName"]);
 	
-	 if (strlen($sUserName) < 6) 
+	 if (strlen($sUserName) < 3) 
 	{	
 		if($NewUser == false)
 		{
 		//Report error for current user creation
-		Redirect("UserEditor.php?PersonID=".$iPersonID."&ErrorText=Login must be a least 6 characters!");
+		Redirect("UserEditor.php?PersonID=".$iPersonID."&ErrorText=Login must be a least 3 characters!");
 		
 		}else{
 		//Report error for new user creation			
-		Redirect("UserEditor.php?NewPersonID=".$PersonID."&ErrorText=Login must be a least 6 characters!");
+		Redirect("UserEditor.php?NewPersonID=".$PersonID."&ErrorText=Login must be a least 3 characters!");
 		}
 		
 		
@@ -118,6 +126,10 @@ if (isset($_POST["Submit"]) && $iPersonID > 0) {
 								$sSQL = "INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Communication, usr_Admin, usr_Style, usr_SearchLimit, usr_defaultFY, usr_UserName, usr_EditSelf, usr_Canvasser) VALUES (" . $iPersonID . ",'" . md5(strtolower($sDefault_Pass)) . "',1,'" . date("Y-m-d H:i:s") . "', " . $AddRecords . ", " . $EditRecords . ", " . $DeleteRecords . ", " . $MenuOptions . ", " . $ManageGroups . ", " . $Finance . ", " . $Notes . ", " . $Communication . ", " . $Admin . ", '" . $Style . "', 10," . $defaultFY . ",\"" . $sUserName . "\"," . $EditSelf . "," . $Canvasser . ")";
 							// Execute the SQL
 							RunQuery($sSQL);
+
+
+
+
 							// 	Redirect back to the list
 							Redirect("UserList.php");
 							}else{
@@ -204,6 +216,73 @@ function StyleSheetOptions($dirName,$currentStyle)
 		}
 	}
 	closedir($dir);
+}
+
+
+
+// Save Settings
+if (isset($_POST['save']) && ($iPersonID > 0)){
+	$new_value = $_POST['new_value'];
+    $new_permission = $_POST['new_permission'];
+	$type = $_POST['type'];
+	ksort ($type);
+	reset ($type);
+	while ($current_type = current($type)) {
+		$id = key($type);
+		// Filter Input
+		if ($current_type == 'text' || $current_type == "textarea")
+			$value = FilterInput($new_value[$id]);
+		elseif ($current_type == 'number')
+			$value = FilterInput($new_value[$id],"float");
+		elseif ($current_type == 'date')
+			$value = FilterInput($new_value[$id],"date");
+		elseif ($current_type == 'boolean'){
+			if ($new_value[$id] != "1")
+				$value = "";
+			else
+				$value = "1";
+
+        if ($new_permission[$id] != "1")
+            $permission="FALSE";
+        else
+            $permission="TRUE";
+		}
+        // We can't update unless values already exist.
+        $sSQL = "SELECT * FROM userconfig_ucfg "
+        .       "WHERE ucfg_id=$id AND ucfg_per_id=$iPersonID ";
+        $bRowExists=TRUE;
+        $iNumRows=mysql_num_rows(RunQuery($sSQL));
+        if($iNumRows==0)
+            $bRowExists=FALSE;
+
+        if(!$bRowExists) { // If Row does not exist then insert default values.
+                           // Defaults will be replaced in the following Update
+            $sSQL = "SELECT * FROM userconfig_ucfg "
+            .       "WHERE ucfg_id=$id AND ucfg_per_id=0 ";
+            $rsDefault = RunQuery($sSQL);
+            $aDefaultRow = mysql_fetch_row($rsDefault);
+            if($aDefaultRow) {
+                list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, 
+                    $ucfg_tooltip, $ucfg_permission) = $aDefaultRow;
+
+                $sSQL = "INSERT INTO userconfig_ucfg VALUES ($iPersonID, $id, "
+                .       "'$ucfg_name', '$ucfg_value', '$ucfg_type', '$ucfg_tooltip', "
+                .       "$ucfg_permission)";
+                $rsResult = RunQuery($sSQL);
+
+            } else {
+                echo "<BR> Error: Software BUG 3215";
+                exit;
+            }
+        }
+
+		// Save new setting
+		$sSQL = "UPDATE userconfig_ucfg "
+        .       "SET ucfg_value='$value', ucfg_permission=$permission "
+        .       "WHERE ucfg_id='$id' AND ucfg_per_id=$iPersonID ";
+		$rsUpdate = RunQuery($sSQL);
+		next($type);
+	}
 }
 
 // Set the page title and include HTML header
@@ -332,13 +411,106 @@ if ($bShowPersonSelect) {
 
 	<tr>
 		<td colspan="2" align="center">
-		<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> name="Submit">&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='UserList.php';">
+		<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> name="save">&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='UserList.php';">
 		</td>
 	</tr>
 
 </table>
-</form>
 
 <?php
+
+// Table Headings
+echo "<BR><BR>";
+echo "Set Permission True to give this user the ability to change their current value.<BR>";
+echo "<table cellpadding=3 align=left>";
+echo "<tr><td><h3>Permission</h3></td>
+    <td><h3>". gettext("Variable name") . "</h3></td>
+	<td><h3>Current Value</h3></td>
+	<td><h3>Notes</h3></td></tr>";
+
+//First get default settings, then overwrite with settings from this user 
+
+// Get default settings
+$sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
+$rsDefault = RunQuery($sSQL);
+$r = 1;
+// List Default Settings
+while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
+    list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, 
+        $ucfg_tooltip, $ucfg_permission) = $aDefaultRow;
+
+    // Overwrite with user settings if they already exist
+    $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='$usr_per_ID' "
+    .       "AND ucfg_id='$ucfg_id' ";
+    $rsUser = RunQuery($sSQL);
+    while ($aUserRow = mysql_fetch_row($rsUser)) {
+            list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, 
+                $ucfg_tooltip, $ucfg_permission) = $aUserRow;
+    }
+	
+	// Cancel, Save Buttons every 13 rows
+	if ($r == 13) {
+		echo "<tr><td>&nbsp;</td>
+			<td><input type=submit class=icButton name=save value='" . gettext("Save Settings") . "'>
+			<input type=submit class=icButton name=cancel value='" . gettext("Cancel") . "'>
+			</td></tr>";
+		$r = 1;
+	}
+
+	// Default Permissions
+	if ($ucfg_permission){
+		$sel2 = "SELECTED";
+		$sel1 = "";
+	} else {
+		$sel1 = "SELECTED";
+		$sel2 = "";
+	}	
+	echo "<tr><td class=TextColumnWithBottomBorder><select name='new_permission[$ucfg_id]'>";
+	echo "<option value='' $sel1>False";
+	echo "<option value='1' $sel2>True";
+	echo "</select></td>";
+	
+	// Variable Name & Type
+	echo "<td class=LabelColumn>$ucfg_name</td>";
+	echo "<input type=hidden name='type[$ucfg_id]' value='$ucfg_type'>";
+	
+	// Current Value
+	if ($ucfg_type == 'text') {
+		echo "<td class=TextColumnWithBottomBorder>
+			<input type=text size=30 maxlength=255 name='new_value[$ucfg_id]'
+			value='".htmlspecialchars($ucfg_value, ENT_QUOTES)."'></td>";
+	} elseif ($ucfg_type == 'textarea') {
+		echo "<td class=TextColumnWithBottomBorder>
+			<textarea rows=4 cols=30 name='new_value[$ucfg_id]'>"
+			.htmlspecialchars($ucfg_value, ENT_QUOTES)."</textarea></td>";
+	} elseif ($ucfg_type == 'number' || $ucfg_type == 'date')	{
+		echo "<td class=TextColumnWithBottomBorder><input type=text size=15 maxlength=15 name="
+			."'new_value[$ucfg_id]' value='$ucfg_value'></td>";
+	} elseif ($ucfg_type == 'boolean') {
+		if ($ucfg_value){
+			$sel2 = "SELECTED";
+			$sel1 = "";
+		} else {
+			$sel1 = "SELECTED";
+			$sel2 = "";
+		}	
+		echo "<td class=TextColumnWithBottomBorder><select name='new_value[$ucfg_id]'>";
+		echo "<option value='' $sel1>False";
+		echo "<option value='1' $sel2>True";
+		echo "</select></td>";
+	}
+		
+	// Notes
+	echo "<td>$ucfg_tooltip</td>	</tr>";
+	$r++;
+}	 
+
+// Cancel, Save Buttons
+echo "<tr><td>&nbsp;</td>
+	<td><input type=submit class=icButton name=save value='" . gettext("Save Settings") . "'>
+	<input type=submit class=icButton name=cancel value='" . gettext("Cancel") . "'>
+	</td></tr></table></form>";
+
+
 require "Include/Footer.php";
 ?>

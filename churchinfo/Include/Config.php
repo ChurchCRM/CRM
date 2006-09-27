@@ -5,7 +5,7 @@
 *  website     : http://www.churchdb.org
 *  description : global configuration
 *
-*  http://www.churchdb.org/
+*  http://www.churchinfo.org/
 *  Copyright 2001-2005 Phillip Hullquist, Deane Barker, Chris Gebhardt, 
 *                      Michael Wilt, Timothy Dearborn
 *
@@ -92,8 +92,32 @@ mysql_select_db($sDATABASE)
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='General'";
 $rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
 if ($rsConfig) {
-    while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-        $$cfg_name = $cfg_value;
+    while (list($cfg_name, $value) = mysql_fetch_row($rsConfig)) {
+        $$cfg_name = $value;
+    }
+}
+
+// Load default user variables
+$sSQL = "SELECT ucfg_name, ucfg_value AS value "
+.       "FROM userconfig_ucfg WHERE ucfg_per_ID=0";
+$rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
+if ($rsConfig) {
+    while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
+        $$ucfg_name = $value;
+    }
+}
+
+// Overwrite default user variables with actual user variables from user config table.  
+// Any unspecified variables get defaults from above.
+// **************************************************
+if(isset($_SESSION['iUserID'])) { // Can only do this if a user ID has been set
+    $sSQL = "SELECT ucfg_name, ucfg_value AS value "
+    .       "FROM userconfig_ucfg WHERE ucfg_per_ID=".$_SESSION['iUserID'];
+    $rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
+    if ($rsConfig) {
+        while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
+            $$ucfg_name = $value;
+        }
     }
 }
 

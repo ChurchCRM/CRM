@@ -260,8 +260,13 @@ $MenuFirst = 1;
 					'statusText', ''
 				),
 				2, new domMenu_Hash(
-					'contents', <?php echo "'" . gettext("Change Password") . "'"; ?>,
+					'contents', <?php echo "'" . gettext("Change My Password") . "'"; ?>,
 					'uri', 'UserPasswordChange.php',
+					'statusText', ''
+				),
+				3, new domMenu_Hash(
+					'contents', <?php echo "'" . gettext("Change My Settings") . "'"; ?>,
+					'uri', 'SettingsIndividual.php',
 					'statusText', ''
 				)
 			),
