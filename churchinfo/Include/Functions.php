@@ -612,49 +612,38 @@ function FormatDate($dDate, $bWithTime=FALSE)
 	if (strlen($dDate)!=19)
 		return ("");
 
-    $arr = explode(" ", $dDate);
-    $arr0 = explode("-", $arr[0]);
-    $arr1 = explode(":", $arr[1]);
+	// Verify it is a valid date
+	$sScanString = substr($dDate,0,10);	
+	list($iYear, $iMonth, $iDay) = sscanf($sScanString,"%04d-%02d-%02d");
 
-    if ($bWithTime)
-    {
-        return date("M d Y  g:i a", mktime($arr1[0], $arr1[1], $arr1[2], $arr0[1], $arr0[2], $arr0[0]));
+	if ( !checkdate($iMonth,$iDay,$iYear) )
+		return ("Unknown");
+
+    $sSQL = "SELECT DATE_FORMAT('$dDate', '%b') as mn, "
+    .       "DAYOFMONTH('$dDate') as dm, YEAR('$dDate') as y, "
+    .       "HOUR('$dDate') as h, DATE_FORMAT('$dDate', ':%i') as m";
+    extract(mysql_fetch_array(RunQuery($sSQL)));
+
+    $month = gettext("$mn"); // Allow for translation of 3 character month abbr
+
+    if ($h >= 12) {
+        $sAMPM = "pm";
+        if ($h > 12) {
+            $h = $h-12;
+        } 
+    } else {
+        $sAMPM = "am";
+        if ($h == 0) {
+            $h = 12;
+        }
     }
-    else
-    {
-        //return date("M d Y", mktime($arr1[0], $arr1[1], $arr1[2], $arr0[1], $arr0[2], $arr0[0]));
-		// Don't use PHP date() function.  It is not robust for dates prior to 1970 or after 2038.
-		
-		// Verify it is a valid date
-		$sScanString = substr($dDate,0,10);	
-		list($iYear, $iMonth, $iDay) = sscanf($sScanString,"%04d-%02d-%02d");
 
-		if ( !checkdate($iMonth,$iDay,$iYear) )
-			return ("Unknown");
-
-		// Would be nice to replace this switch with code allowing other languages
-		switch (substr($dDate,5,2)){
-			case "01":	$sMonth="Jan";	break;
-			case "02":	$sMonth="Feb";	break;
-			case "03":	$sMonth="Mar";	break;
-			case "04":	$sMonth="Apr";	break;
-			case "05":	$sMonth="May";	break;
-			case "06":	$sMonth="Jun";	break;
-			case "07":	$sMonth="Jul";	break;
-			case "08":	$sMonth="Aug";	break;
-			case "09":	$sMonth="Sep";	break;
-			case "10":	$sMonth="Oct";	break;
-			case "11":	$sMonth="Nov";	break;
-			default:	$sMonth="Dec";	break;
-		}
-
-		$sDay = substr($dDate,8,2);
-		$sYear = substr($dDate,0,4);
-
-		return ($sMonth . " " . $sDay . " " . $sYear);
-
+    if ($bWithTime) {
+        return ("$month $dm $y $h$m $sAMPM");
+    } else {
+        return ("$month $dm $y");
     }
-        return ("");
+
 }
 
 // this might be cruft
