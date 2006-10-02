@@ -135,15 +135,15 @@ $rsDep = RunQuery($sSQL);
 $rsTotal = RunQuery($sSQLTotal);
 list ($Total) = mysql_fetch_row($rsTotal);
 
-echo "<div align=\"center\">\n";
-echo  "<form action='FindDepositSlip.php' method='get' name='ListNumber'>\n";
+echo '<div align="center">';
+echo  '<form action="FindDepositSlip.php" method="get" name="ListNumber">';
 // Show previous-page link unless we're at the first page
 if ($Result_Set < $Total && $Result_Set > 0)
 {
 	$thisLinkResult = $Result_Set - $iPerPage;
 	if ($thisLinkResult < 0)
 		$thisLinkResult = 0;
-	echo "<a href='FindDepositSlip.php?Result_Set=$thisLinkResult&Sort=$sSort'>". gettext("Previous Page") . "</a>&nbsp;&nbsp;\n";
+	echo '<a href="FindDepositSlip.php?Result_Set='.$thisLinkResult.'&Sort='.$sSort.'">'. gettext("Previous Page") . '</a>&nbsp;&nbsp;';
 }
 
 // Calculate starting and ending Page-Number Links
@@ -157,7 +157,7 @@ if ($endpage >= ($Pages - 1))
 
 // Show Link "1 ..." if startpage does not start at 1
 if ($startpage != 1)
-	echo "<a href=\"FindDepositSlip.php?Result_Set=0&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">1</a> ... \n";
+	echo "<a href=\"FindDepositSlip.php?Result_Set=0&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">1</a> ... ";
 
 	$dDateStart = FilterInput($_GET["DateStart"]);
 	$dDateEnd = FilterInput($_GET["DateEnd"]);
@@ -172,7 +172,7 @@ if ($Pages > 1)
 		$b = $c - 1;
 		$thisLinkResult = $iPerPage * $b;
 		if ($thisLinkResult != $Result_Set)
-			echo "<a href=\"FindDepositSlip.php?Result_Set=$thisLinkResult&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">$c</a>&nbsp;\n";
+			echo "<a href=\"FindDepositSlip.php?Result_Set=$thisLinkResult&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">$c</a>&nbsp;";
 		else
 			echo "&nbsp;&nbsp;[ " . $c . " ]&nbsp;&nbsp;";
 	}
@@ -190,14 +190,14 @@ if ($Result_Set >= 0 && $Result_Set < $Total)
 {
 	$thisLinkResult=$Result_Set+$iPerPage;
 	if ($thisLinkResult<$Total)
-		echo "&nbsp;&nbsp;<a href='FindDepositSlip.php?Result_Set=$thisLinkResult&Sort=$sSort'>". gettext("Next Page") . "</a>&nbsp;&nbsp;\n";
+		echo "&nbsp;&nbsp;<a href='FindDepositSlip.php?Result_Set=$thisLinkResult&Sort=$sSort'>". gettext("Next Page") . "</a>&nbsp;&nbsp;";
 }
 
 
 // Display Record Limit
-echo "<input type=\"hidden\" name=\"Result_Set\" value=\"" . $Result_Set . "\">\n";
+echo "<input type=\"hidden\" name=\"Result_Set\" value=\"" . $Result_Set . "\">";
 if(isset($sSort))
-	echo "<input type=\"hidden\" name=\"Sort\" value=\"" . $sSort . "\">\n";
+	echo "<input type=\"hidden\" name=\"Sort\" value=\"" . $sSort . "\">";
 if ($_SESSION['SearchLimit'] == "5")
 	$sLimit5 = "selected";
 if ($_SESSION['SearchLimit'] == "10")
@@ -210,15 +210,15 @@ if ($_SESSION['SearchLimit'] == "50")
 	$sLimit50 = "selected";
 			
 echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;". gettext("Display:") . "&nbsp;
-	<select class=\"SmallText\" name=\"Number\">\n
-		<option value=\"5\" $sLimit5>5</option>\n
-		<option value=\"10\" $sLimit10>10</option>\n
-		<option value=\"20\" $sLimit20>20</option>\n
-		<option value=\"25\" $sLimit25>25</option>\n
-		<option value=\"50\" $sLimit50>50</option>\n
-	</select>&nbsp;\n
+	<select class=\"SmallText\" name=\"Number\">
+		<option value=\"5\" $sLimit5>5</option>
+		<option value=\"10\" $sLimit10>10</option>
+		<option value=\"20\" $sLimit20>20</option>
+		<option value=\"25\" $sLimit25>25</option>
+		<option value=\"50\" $sLimit50>50</option>
+	</select>&nbsp;
 	<input type=\"submit\" class=\"icTinyButton\" value=\"". gettext("Go") ."\">
-	</form></div><br>\n";
+	</form></div><br>";
 
 // Column Headings
 echo "<table cellpadding='4' align='center' cellspacing='0' width='100%'>\n
@@ -230,28 +230,28 @@ echo "<table cellpadding='4' align='center' cellspacing='0' width='100%'>\n
 	<td>".gettext("Comment")."</td>\n
 	<td><a href='FindDepositSlip.php?Sort=closed'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>".gettext("Closed")."</a></td>\n
 	<td><a href='FindDepositSlip.php?Sort=type'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>".gettext("Deposit Type")."</a></td>\n
-	</tr>\n";
+	</tr>";
 
 // Display Deposits
 while (list ($dep_ID, $dep_Date, $dep_Comment, $dep_Closed, $dep_Type) = mysql_fetch_row($rsDep))
 {
-	echo "<tr><td><a href='DepositSlipEditor.php?DepositSlipID=$dep_ID'>" . gettext("Edit") . "</td>\n";
-	echo "<td>$dep_ID</td>\n";
-	echo "<td>$dep_Date</td>\n";
+	echo "<tr><td><a href='DepositSlipEditor.php?DepositSlipID=$dep_ID'>" . gettext("Edit") . "</td>";
+	echo "<td>$dep_ID</td>";
+	echo "<td>$dep_Date</td>";
 	// Get deposit total
 	$sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$dep_ID' AND plg_PledgeOrPayment = 'Payment'";
 	$rsDepositTotal = RunQuery($sSQL);
 	list ($deposit_total) = mysql_fetch_row($rsDepositTotal);
-	echo "<td>$deposit_total</td>\n";
-	echo "<td>$dep_Comment</td>\n";
+	echo "<td>$deposit_total</td>";
+	echo "<td>$dep_Comment</td>";
 	if ($dep_Closed == 1)
 		$dep_Closed_text = "Yes";
 	else
 		$dep_Closed_text = "No";
-	echo "<td>$dep_Closed_text</td>\n";	
-	echo "<td>$dep_Type</td>\n";
+	echo "<td>$dep_Closed_text</td>";	
+	echo "<td>$dep_Type</td>";
 }
-echo "</table>\n";
+echo "</table>";
 
 require "Include/Footer.php";
 ?>
