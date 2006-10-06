@@ -15,7 +15,10 @@ $sDATABASE = "churchinfo";
 
 // Root path of your ChurchInfo installation ( THIS MUST BE SET CORRECTLY! )
 // For example, if you will be accessing from http://www.yourdomain.com/web/churchinfo
-// then you would enter "/web/churchinfo" here.  This path SHOULD NOT end with slash.
+// then you would enter "/web/churchinfo" here.
+// Another example, if you will be accessing from http://www.yourdomain.com
+// then you would enter "" here ... an empty string for a top level installation.
+// This path SHOULD NOT end with slash.
 $sRootPath="/churchinfo";
 
 // If you are using a non-standard port number you may need to include the 
@@ -58,5 +61,8 @@ $sHTTP_Host=$_SERVER['HTTP_HOST'];
 //
 // SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE
 //
+
+// Absolute path must be specified since this file is called from scripts 
+// located in other directories
 require ($_SERVER["DOCUMENT_ROOT"].$sRootPath."/Include/LoadConfigs.php");
 ?>

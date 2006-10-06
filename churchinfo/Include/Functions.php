@@ -172,10 +172,10 @@ function RedirectURL($sRelativeURL)
         $sPortString = "";
 
     // http or https ?
-	if (!$_SESSION['bSecureServer'] && !$bHTTPSOnly)
-        $sRedirectURL = "http://";    
+	if ($_SESSION['bSecureServer'] || $bHTTPSOnly)
+        $sRedirectURL = "https://";    
 	else
-		$sRedirectURL = "https://";
+		$sRedirectURL = "http://";
 
     // Using a shared SSL certificate?
     if (strlen($sSharedSSLServer) && $_SESSION['bSecureServer'])
@@ -184,10 +184,24 @@ function RedirectURL($sRelativeURL)
         $sRedirectURL .= $sHTTP_Host . $sPortString;
 
     // If root path is already included don't add it again
-    if (strpos($sRelativeURL, $sRootPath)===FALSE)
-        $sRedirectURL .= $sRootPath . "/" . $sRelativeURL;
-    else
-        $sRedirectURL .= $sRelativeURL;
+    if (($sRootPath=="") || ($sRootPath=="/")) {
+        // This check is not meaningful if installed in top level web directory
+        $sRelativeURLPath = "/" . $sRelativeURL;
+    } elseif (strpos($sRelativeURL, $sRootPath)===FALSE) {
+        // sRootPath is not in sRelativeURL.  Add it
+        $sRelativeURLPath = $sRootPath . "/" . $sRelativeURL;
+    } else {
+        // sRootPath already in sRelativeURL.  Don't add
+        $sRelativeURLPath = $sRelativeURL;
+    }
+
+    $sFullPath = $_SERVER["DOCUMENT_ROOT"].$sRelativeURLPath;
+
+    if (file_exists($sFullPath) && is_readable($sFullPath)) {
+        $sRedirectURL .= $sRelativeURLPath;
+    } else {
+        die ('Cannot access file: ' . $sFullPath);
+    }
 
     return $sRedirectURL;
 }
