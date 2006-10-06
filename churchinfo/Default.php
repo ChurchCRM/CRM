@@ -21,9 +21,9 @@
 // Show disable message if register_globals are turned on.
 if (ini_get('register_globals'))
 {
-	echo "<h3>ChurchInfo will not operate with PHP's register_globals option turned on.<BR>";
-	echo "This is for your own protection as the use of this setting could entirely undermine <BR>";
-	echo "all security.  You need to either turn off register_globals in your php.ini or else<BR>";
+	echo "<h3>ChurchInfo will not operate with PHP's register_globals option turned on.<br/>";
+	echo "This is for your own protection as the use of this setting could entirely undermine <br/>";
+	echo "all security.  You need to either turn off register_globals in your php.ini or else<br/>";
 	echo "configure your web server to turn off register_globals for the ChurchInfo directory.</h3>";
 	exit;
 }
@@ -132,7 +132,7 @@ if ($iUserID > 0)
 	// Block the login if a maximum login failure count has been reached
 	if ($iMaxFailedLogins > 0 && $usr_FailedLogins >= $iMaxFailedLogins) {
 
-		$sErrorText = "<BR>" . gettext("Too many failed logins: your account has been locked.  Please contact an administrator.");
+		$sErrorText = "<br/>" . gettext("Too many failed logins: your account has been locked.  Please contact an administrator.");
 	}
 
 	// Does the password match?
@@ -283,9 +283,11 @@ if ($iUserID > 0)
 // Set the page title and include HTML header
 ?>
 
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
 <head>
 	<meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<link rel="stylesheet" type="text/css" href="Include/Style.css">
 	<title><?php echo gettext("ChurchInfo: Login"); ?></title>
 </head>
@@ -293,7 +295,7 @@ if ($iUserID > 0)
 <table width="80%" border="0" cellpadding="5" cellspacing="0" align="center">
 <tr>
 	<td valign="top">
-		<br>
+		<br/>
 		<p class="PageTitle"><?php echo gettext("Please Login"); ?></p>
 		<form method="post" name="LoginForm" action="Default.php">
 		<table border="0" align="center" cellpadding="5">
@@ -320,19 +322,19 @@ if ($iUserID > 0)
 		<tr>
 			<td class="LabelColumn"><?php echo gettext("Enter your user name:"); ?></td>
 			<td class="TextColumnWithBottomBorder">
-				<input type="text" id="LoginBox" name="User" size="10">
+				<input type="text" id="UserBox" name="User" size="10" />
 				
 			</td>
 		</tr>
 		<tr>
 			<td class="LabelColumn"><?php echo gettext("Enter your password:"); ?></td>
 			<td class="TextColumnWithBottomBorder">
-				<input type="password" id="LoginBox" name="Password" size="10">
+				<input type="password" id="PasswordBox" name="Password" size="10" />
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-			<input type="submit" class="icButton" name="LogonSubmit" value=<?php echo '"' . gettext("Login") . '"'; ?>></td>
+			<input type="submit" class="icButton" name="LogonSubmit" value=<?php echo '"' . gettext("Login") . '"'; ?>/></td>
 		</tr>
 		</table>
 		</form>
@@ -340,7 +342,7 @@ if ($iUserID > 0)
 </tr>
 </table>
 
-<script language="JavaScript">
+<script language="JavaScript" type="text/JavaScript">
 	document.LoginForm.User.focus();
 </script>
 

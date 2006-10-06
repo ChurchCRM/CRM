@@ -35,10 +35,15 @@ $MenuFirst = 1;
 <html>
 <head>
 	<meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<title>ChurchInfo: <?php echo $sPageTitle; ?></title>
 	<link rel="stylesheet" type="text/css" href="Include/<?php echo $_SESSION['sStyle']; ?>">
+	<link rel="stylesheet" type="text/css" media="all" href="Include/jscalendar/calendar-blue.css" title="cal-style">
 
-	<script language=javascript>
+</head>
+<body onload="javascript:scrollToCoordinates()"> 
+
+	<script language="javascript" type="text/javascript">
 		function scrollToCoordinates() 
 		{	// This function reads X and Y scroll coordinates from a cookie
 			// If the cookie does not exist or if cookies are not supported
@@ -148,7 +153,6 @@ $MenuFirst = 1;
 
 	<script type="text/javascript" src="Include/jscalendar/calendar.js"></script>
 	<script type="text/javascript" src="Include/jscalendar/lang/calendar-<?php echo substr($sLanguage,0,2); ?>.js"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="Include/jscalendar/calendar-blue.css" title="cal-style" />
 
 	<script language="javascript" type="text/javascript">
 
@@ -699,17 +703,13 @@ $MenuFirst = 1;
 			'closeClickMenuDelay', 0,
 			'closeMouseoutMenuDelay', -1
 		));
-		</script>
 
-		<script>
 		// Top Menu Bar
 		document.onmouseup = function()
 		{
 			domMenu_deactivate('domMenu_BJ');
 		}
 		</script>
-	</head>
-	<body onload="javascript:scrollToCoordinates()"> 
 
 	<?php
 	if (!$bDefectiveBrowser)
@@ -731,7 +731,8 @@ $MenuFirst = 1;
 				<td colspan="7" width="100%">
 					<div class="p" id="domMenu_BJ" style="height:20px; margin-bottom:0px;"></div>
 
-			<script language="javascript">
+            <script language="javascript" type="text/javascript">
+
 				domMenu_activate('domMenu_BJ');
 			</script>
 
@@ -832,7 +833,9 @@ else
 				<br>
 				<a class="SmallText" href="SettingsGeneral.php"><?php echo gettext("Edit General Settings"); ?></a>
 				<br>
-				<a class="SmallText" href="SettingsReport.php"><?php echo gettext("Exit Report Settings"); ?></a>
+				<a class="SmallText" href="SettingsReport.php"><?php echo gettext("Edit Report Settings"); ?></a>
+				<br>
+				<a class="SmallText" href="SettingsUser.php"><?php echo gettext("Edit User Default Settings"); ?></a>
 				<br>
 				<a class="SmallText" href="Register.php"><?php
 						if (! $bRegistered)
