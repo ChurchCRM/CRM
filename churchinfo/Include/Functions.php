@@ -195,8 +195,18 @@ function RedirectURL($sRelativeURL)
         $sRelativeURLPath = $sRelativeURL;
     }
 
-    $sFullPath = $_SERVER["DOCUMENT_ROOT"].$sRelativeURLPath;
+    // Test if file exists before redirecting.  May need to remove
+    // query string first.
+    $iQueryString = strpos($sRelativeURLPath,"?");
+    if ($iQueryString) {
+        $sRelativeFilePath = substr($sRelativeURLPath,0,$iQueryString);
+    } else {
+        $sRelativeFilePath = $sRelativeURLPath;
+    }
 
+    $sFullPath = $_SERVER["DOCUMENT_ROOT"].$sRelativeFilePath;
+
+    // With the query string removed we can test if file exists
     if (file_exists($sFullPath) && is_readable($sFullPath)) {
         $sRedirectURL .= $sRelativeURLPath;
     } else {
