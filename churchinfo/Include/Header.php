@@ -41,7 +41,8 @@ $MenuFirst = 1;
 	<link rel="stylesheet" type="text/css" media="all" href="Include/jscalendar/calendar-blue.css" title="cal-style">
 
 </head>
-<body onload="javascript:scrollToCoordinates()"> 
+<body onload="javascript:scrollToCoordinates()">
+
 
 	<script language="javascript" type="text/javascript">
 		function scrollToCoordinates() 
@@ -795,20 +796,16 @@ else
 {
 ?>
 
-</head>
-
-<body topmargin="0" bottommargin="0" rightmargin="0" leftmargin="0">
-
-<table height="100%" width="100%" border="0" cellpadding="5" cellspacing="0" align="center">
+<table width="100%" border="0" cellpadding="5" cellspacing="0" align="center">
 	<tr>
 		<td class="LeftNavColumn" valign="top" width="200">
 
 			<p>
 				<b><?php echo gettext("Current User"); ?></b>
 				<br>
-				<span class="SmallText"><?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?></span>
+				<a class="SmallText"><?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?></a>
 				<br>
-				<a class="SmallText" href="Default.php?Logoff=True"><?php echo gettext("Log Off"); ?></a></span>
+				<a class="SmallText" href="Default.php?Logoff=True"><?php echo gettext("Log Off"); ?></a>
 				<br>
 				<a class="SmallText" href="UserPasswordChange.php?PersonID=<?php echo $_SESSION['iUserID']; ?>"><?php echo gettext("Change Password"); ?></a>
 			</p>
@@ -847,8 +844,8 @@ else
 			</p>
 			<?php } ?>
 
-			<p>
 				<form name="PersonFilter" method="get" action="SelectList.php">
+                <p>
 				<b><?php echo gettext("People"); ?></b>
 
 				<?php if ($_SESSION['bAddRecords']) { ?>
@@ -862,16 +859,15 @@ else
 				<?php if ($_SESSION['bMenuOptions']) { ?>
 					<br><a href="OptionManager.php?mode=classes" class="SmallText"><?php echo gettext("Classification Manager"); ?></a>
 				<?php } ?>
-
+                </p>
 				</form>
-			</p>
 
 			<p>
 				<a class="SmallText" href="VolunteerOpportunityEditor.php"><?php echo gettext("Edit volunteer opportunities"); ?></a><br>
 			</p>
 
-			<p>
 				<form name="FamilyFilter" method="get" action="SelectList.php">
+                <p>
 				<b><?php echo gettext("Families"); ?></b>
 
 				<?php if ($_SESSION['bAddRecords']) { ?>
@@ -890,9 +886,8 @@ else
 				<?php if ($_SESSION['bMenuOptions']) { ?>
 					<br><a href="OptionManager.php?mode=famroles" class="SmallText"><?php echo gettext("Family Roles Manager"); ?></a>
 				<?php } ?>
-
+                </p>
 				</form>
-			</p>
 
 			<p>
 				<b><?php echo gettext("Events"); ?></b>
@@ -1012,7 +1007,7 @@ else
 				<a class="SmallText" href="Help.php?page=Events"><?php echo gettext("Events"); ?></a>
 			</p>
 
-			<img src="Images/Spacer.gif" height="100" width="1">
+			<img src="Images/Spacer.gif" height="100" width="1" alt="Images/Spacer.gif">
 		</td>
 
 		<td valign="top" width="100%" align="center">
