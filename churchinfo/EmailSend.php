@@ -57,30 +57,27 @@ foreach ($pathArray as $onePath) {
     if (file_exists($sPHPMailerClass) && is_readable($sPHPMailerClass)) {
         require_once ("class.phpmailer.php");
         $bHavePHPMailerClass = TRUE;
+        $sFoundPHPMailerClass = $sPHPMailerClass;
     }
     $sSMTPClass = $onePath . DIRECTORY_SEPARATOR . "class.smtp.php";
     if (file_exists($sSMTPClass) && is_readable($sSMTPClass)) {
         require_once ("class.smtp.php");
         $bHaveSMTPClass = TRUE;
-    }
-    $sSMTPClass = $onePath . DIRECTORY_SEPARATOR . "class.smtp.php";
-    if (file_exists($sSMTPClass) && is_readable($sSMTPClass)) {
-        require_once ("class.smtp.php");
-        $bHaveSMTPClass = TRUE;
+        $sFoundSMTPClass = $sSMTPClass;
     }
     $sTestLanguageFile = $onePath . DIRECTORY_SEPARATOR . "phpmailer.lang-" . $sLanguage . ".php";
     if (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
         $sLanguagePath= $onePath . DIRECTORY_SEPARATOR;
         $bHavePHPMailerLanguage = TRUE;
+        $sFoundLanguageFile = $sTestLanguageFile;
     }
     $sTestLanguageFile = $onePath . DIRECTORY_SEPARATOR . "language" . DIRECTORY_SEPARATOR
     . "phpmailer.lang-" . $sLanguage . ".php";
     if (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
         $sLanguagePath= $onePath . DIRECTORY_SEPARATOR . "language" . DIRECTORY_SEPARATOR;
         $bHavePHPMailerLanguage = TRUE;
+        $sFoundLanguageFile = $sTestLanguageFile;
     }
-
-
 }
 
 $bPHPMAILER_Installed = $bHavePHPMailerClass && $bHaveSMTPClass && $bHavePHPMailerLanguage;
@@ -93,6 +90,24 @@ if(!$bPHPMAILER_Installed) {
     echo    "<br>" . gettext("ERROR: PHPMailer is not properly installed on this server.")
     .       "<br>" . gettext("PHPMailer is required in order to send emails from this server.") 
     .       "<br>". gettext("View the file churchinfo/Include/phpmailer/README for installation instructions.");
+
+    if ($bHavePHPMailerClass)
+        echo "<br><br>Found: " . $sFoundPHPMailerClass;
+    else
+        echo "<br><br>Unable to find file: class.phpmailer.php";
+
+
+    if ($bHaveSMTPClass)
+        echo "<br>Found: " . $sFoundSMTPClass;
+    else
+        echo "<br>Unable to find file: class.smtp.php";
+
+
+    if ($bHavePHPMailerLanguage)
+        echo "<br>Found: " . $sFoundLanguageFile;
+    else
+        echo "<br>Unable to find file: phpmailer.lang-" . $sLanguage . ".php";
+
     exit;
 }
 
