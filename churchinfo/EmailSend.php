@@ -72,7 +72,14 @@ foreach ($pathArray as $onePath) {
     if (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
         $sLanguagePath= $onePath . DIRECTORY_SEPARATOR;
         $bHavePHPMailerLanguage = TRUE;
-    }   
+    }
+    $sTestLanguageFile = $onePath . DIRECTORY_SEPARATOR . "language" . DIRECTORY_SEPARATOR
+    . "phpmailer.lang-" . $sLanguage . ".php";
+    if (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
+        $sLanguagePath= $onePath . DIRECTORY_SEPARATOR . "language" . DIRECTORY_SEPARATOR;
+        $bHavePHPMailerLanguage = TRUE;
+    }
+
 
 }
 
