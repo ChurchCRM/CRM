@@ -151,6 +151,13 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 	$nNonDeductible = FilterInput($_POST["NonDeductible"]);
 	$iEnvelope = FilterInput($_POST["Envelope"], 'int');
 
+	if ($iAutID=="") 
+		$iAutID=0; 
+	if ($iSchedule=='') 
+		$iSchedule='Once'; 
+	if ($nNonDeductible=='') 
+		$nNonDeductible=0;
+
 	if (! $iCheckNo)
 		$iCheckNo = "NULL";
 
