@@ -74,6 +74,14 @@ if (!$bSuppressSessionTests)  // This is used for the login page only.
             exit;
         }
     }
+
+    // Make sure visitor got here using a valid URL.
+    // If not, redirect to Menu.php
+    $sFullPath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["PHP_SELF"];
+    if (!(file_exists($sFullPath) && is_readable($sFullPath))) {
+        Redirect("Menu.php");
+        exit;
+    }
 }
 // End of basic security checks
 
