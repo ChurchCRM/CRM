@@ -23,27 +23,16 @@
 *  of hard tab characters.
 *
 ******************************************************************************/
+
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
 
-/* In order to use phpmailer use must Install phpmailer on your server as follows
-
-Copy class.phpmailer.php into your php.ini include_path. If you are
-using the SMTP mailer then place class.smtp.php in your path as well.
-In the language directory you will find several files like 
-phpmailer.lang-en.php.  If you look right before the .php extension 
-that there are two letters.  These represent the language type of the 
-translation file.  For instance "en" is the English file and "br" is 
-the Portuguese file.  Chose the file that best fits with your language 
-and place it in the PHP include path.  If your language is English 
-then you have nothing more to do.  If it is a different language then 
-you must point PHPMailer to the correct translation.  To do this, call 
-the PHPMailer SetLanguage method like so:
-
-// To load the Portuguese version
-$mail->SetLanguage("br", "/optional/path/to/language/directory");
-*/
+// Force PHPMailer to the include path (this script only)
+$sPHPMailerPath = $_SERVER["DOCUMENT_ROOT"].$sRootPath.'/Include/phpmailer/';
+$sIncludePath = ".:".$sPHPMailerPath;
+ini_set('include_path',$sIncludePath);
+// The include_path will automatically be restored upon completion of this script
 
 $bHavePHPMailerClass = FALSE;
 $bHaveSMTPClass = FALSE;
@@ -51,33 +40,25 @@ $bHavePHPMailerLanguage = FALSE;
 
 $sLanguage = "en";  // In the future set PHPMailer Language in General Settings
 
-$pathArray = explode( PATH_SEPARATOR, get_include_path() );
-foreach ($pathArray as $onePath) {
-    $sPHPMailerClass = $onePath . DIRECTORY_SEPARATOR . "class.phpmailer.php";
-    if (file_exists($sPHPMailerClass) && is_readable($sPHPMailerClass)) {
-        require_once ("class.phpmailer.php");
-        $bHavePHPMailerClass = TRUE;
-        $sFoundPHPMailerClass = $sPHPMailerClass;
-    }
-    $sSMTPClass = $onePath . DIRECTORY_SEPARATOR . "class.smtp.php";
-    if (file_exists($sSMTPClass) && is_readable($sSMTPClass)) {
-        require_once ("class.smtp.php");
-        $bHaveSMTPClass = TRUE;
-        $sFoundSMTPClass = $sSMTPClass;
-    }
-    $sTestLanguageFile = $onePath . DIRECTORY_SEPARATOR . "phpmailer.lang-" . $sLanguage . ".php";
-    if (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
-        $sLanguagePath= $onePath . DIRECTORY_SEPARATOR;
-        $bHavePHPMailerLanguage = TRUE;
-        $sFoundLanguageFile = $sTestLanguageFile;
-    }
-    $sTestLanguageFile = $onePath . DIRECTORY_SEPARATOR . "language" . DIRECTORY_SEPARATOR
-    . "phpmailer.lang-" . $sLanguage . ".php";
-    if (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
-        $sLanguagePath= $onePath . DIRECTORY_SEPARATOR . "language" . DIRECTORY_SEPARATOR;
-        $bHavePHPMailerLanguage = TRUE;
-        $sFoundLanguageFile = $sTestLanguageFile;
-    }
+$sPHPMailerClass = $sPHPMailerPath."class.phpmailer.php";
+if (file_exists($sPHPMailerClass) && is_readable($sPHPMailerClass)) {
+    require_once ("$sPHPMailerClass");
+    $bHavePHPMailerClass = TRUE;
+    $sFoundPHPMailerClass = $sPHPMailerClass;
+}
+
+$sSMTPClass = $sPHPMailerPath."class.smtp.php";
+if (file_exists($sSMTPClass) && is_readable($sSMTPClass)) {
+    require_once ("$sSMTPClass");
+    $bHaveSMTPClass = TRUE;
+    $sFoundSMTPClass = $sSMTPClass;
+}
+
+$sTestLanguageFile = $sPHPMailerPath."language/phpmailer.lang-" . $sLanguage . ".php";
+if (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
+    $sLanguagePath = $sPHPMailerPath."language/";
+    $bHavePHPMailerLanguage = TRUE;
+    $sFoundLanguageFile = $sTestLanguageFile;
 }
 
 $bPHPMAILER_Installed = $bHavePHPMailerClass && $bHaveSMTPClass && $bHavePHPMailerLanguage;
@@ -88,8 +69,9 @@ require "Include/Header.php";
 
 if(!$bPHPMAILER_Installed) {
     echo    "<br>" . gettext("ERROR: PHPMailer is not properly installed on this server.")
-    .       "<br>" . gettext("PHPMailer is required in order to send emails from this server.") 
-    .       "<br>". gettext("View the file churchinfo/Include/phpmailer/README for installation instructions.");
+    .       "<br>" . gettext("PHPMailer is required in order to send emails from this server.");
+
+    echo "<br><br>include_path = " . ini_get('include_path');
 
     if ($bHavePHPMailerClass)
         echo "<br><br>Found: " . $sFoundPHPMailerClass;
