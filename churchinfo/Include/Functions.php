@@ -77,7 +77,7 @@ if (!$bSuppressSessionTests)  // This is used for the login page only.
 
     // Make sure visitor got here using a valid URL.
     // If not, redirect to Menu.php
-    $sFullPath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["PHP_SELF"];
+    $sFullPath = $sDocumentRoot.$_SERVER["PHP_SELF"];
     if (!(file_exists($sFullPath) && is_readable($sFullPath))) {
         Redirect("Menu.php");
         exit;
@@ -168,6 +168,7 @@ function RedirectURL($sRelativeURL)
 // Convert a relative URL into an absolute URL and return absolute URL.
 {
     global $sRootPath;
+    global $sDocumentRoot;
     global $sSharedSSLServer;
     global $sHTTP_Host;
     global $bHTTPSOnly;
@@ -212,7 +213,7 @@ function RedirectURL($sRelativeURL)
         $sRelativeFilePath = $sRelativeURLPath;
     }
 
-    $sFullPath = $_SERVER["DOCUMENT_ROOT"].$sRelativeFilePath;
+    $sFullPath = $sDocumentRoot.$sRelativeFilePath;
 
     // With the query string removed we can test if file exists
     if (file_exists($sFullPath) && is_readable($sFullPath)) {

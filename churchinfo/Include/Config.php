@@ -62,7 +62,19 @@ $sHTTP_Host=$_SERVER['HTTP_HOST'];
 // SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE
 //
 
-// Absolute path must be specified since this file is called from scripts 
-// located in other directories
-require ($_SERVER["DOCUMENT_ROOT"].$sRootPath."/Include/LoadConfigs.php");
+$sIncludeDir=dirname(__FILE__);
+$sInstallDir=dirname($sIncludeDir);
+$sDocumentRoot=$sInstallDir;
+if ( strlen($sRootPath) > 1 ) {
+    // Count number of "/" in $sRootPath to find DocumentRoot
+    $iCount = substr_count($sRootPath,'/');
+    while ($iCount>0) {
+        $iCount--;
+        $sDocumentRoot=dirname($sDocumentRoot);
+    }
+}
+
+// Absolute path must be specified for this require since this file is called 
+// from scripts located in other directories
+require ($sIncludeDir.DIRECTORY_SEPARATOR.'LoadConfigs.php');
 ?>
