@@ -28,11 +28,14 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+// *****
 // Force PHPMailer to the include path (this script only)
-$sPHPMailerPath = $_SERVER["DOCUMENT_ROOT"].$sRootPath.'/Include/phpmailer/';
+$sPHPMailerPath = dirname(__FILE__).DIRECTORY_SEPARATOR.'Include'
+.DIRECTORY_SEPARATOR.'phpmailer'.DIRECTORY_SEPARATOR;
 $sIncludePath = ".:".$sPHPMailerPath;
 ini_set('include_path',$sIncludePath);
 // The include_path will automatically be restored upon completion of this script
+// *****
 
 $bHavePHPMailerClass = FALSE;
 $bHaveSMTPClass = FALSE;
@@ -54,9 +57,10 @@ if (file_exists($sSMTPClass) && is_readable($sSMTPClass)) {
     $sFoundSMTPClass = $sSMTPClass;
 }
 
-$sTestLanguageFile = $sPHPMailerPath."language/phpmailer.lang-" . $sLanguage . ".php";
+$sTestLanguageFile = $sPHPMailerPath.'language'.DIRECTORY_SEPARATOR
+.'phpmailer.lang-'.$sLanguage.'.php';
 if (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
-    $sLanguagePath = $sPHPMailerPath."language/";
+    $sLanguagePath = $sPHPMailerPath.'language'.DIRECTORY_SEPARATOR;
     $bHavePHPMailerLanguage = TRUE;
     $sFoundLanguageFile = $sTestLanguageFile;
 }
@@ -109,20 +113,9 @@ if ( is_array($email_array) == TRUE )
 {
 
     // Set the language for PHPMailer
-    // In the future handle this through a General Settings option
-
     $mail->SetLanguage($sLanguage, $sLanguagePath);
     if($mail->IsError())
         echo "PHPMailer Error with SetLanguage().  Other errors (if any) may not report.<br>";
-
-    $mail->IsSMTP();                    // tell the class to use SMTP
-    $mail->SMTPKeepAlive = true;        // keep connection open until last email sent
-    $mail->SMTPAuth = $sSMTPAuth;       // Server requires authentication
-
-    if ($sSMTPAuth) {
-        $mail->Username = $sSMTPUser;	// SMTP username
-        $mail->Password = $sSMTPPass;	// SMTP password
-    }
 
     // Note: These optional settings for sending email from server should
     // be stored in User Settings.
@@ -134,20 +127,35 @@ if ( is_array($email_array) == TRUE )
     $mail->From = $sFromEmailAddress;	// From email address
     $mail->FromName = $sFromName;		// From name
 
-    $delimeter = strpos($sSMTPHost, ":");
-    if ($delimeter === FALSE) {
-        $sSMTPPort = 25;                // Default port number
+    if (strtolower($sSendType)=="smtp") {
+
+        $mail->IsSMTP();                    // tell the class to use SMTP
+        $mail->SMTPKeepAlive = true;        // keep connection open until last email sent
+        $mail->SMTPAuth = $sSMTPAuth;       // Server requires authentication
+
+        if ($sSMTPAuth) {
+            $mail->Username = $sSMTPUser;	// SMTP username
+            $mail->Password = $sSMTPPass;	// SMTP password
+        }
+
+        $delimeter = strpos($sSMTPHost, ":");
+        if ($delimeter === FALSE) {
+            $sSMTPPort = 25;                // Default port number
+        } else {
+            $sSMTPPort = substr($sSMTPHost, $delimeter+1);
+            $sSMTPHost = substr($sSMTPHost, 0, $delimeter);   
+        }
+
+        if (is_int($sSMTPPort))
+            $mail->Port = $sSMTPPort;
+        else
+            $mail->Port = 25;
+
+        $mail->Host = $sSMTPHost;           // SMTP server name
+        $mail->Mailer = "smtp";
     } else {
-        $sSMTPPort = substr($sSMTPHost, $delimeter+1);
-        $sSMTPHost = substr($sSMTPHost, 0, $delimeter);   
+        $mail->Mailer = "sendmail";
     }
-
-    if (is_int($sSMTPPort))
-        $mail->Port = $sSMTPPort;
-    else
-        $mail->Port = 25;
-
-    $mail->Host = $sSMTPHost;           // SMTP server name
 
     foreach ($email_array as $email_address)
     {
@@ -159,15 +167,18 @@ if ( is_array($email_array) == TRUE )
             $mail->AddAddress($email_address);
 
         echo '<b>' . $email_address . '</b>';
-        if(!$mail->Send())
-            echo "There has been a mail error sending to " . $email_address 
+        if(!$mail->Send()) {
+            echo "There has been a mail attempting to send to: " . $email_address 
             . "<br>" . "Mailer Error: " . $mail->ErrorInfo;
-
+        } else {
+            echo ' Sent! <br>';
+        }
         $mail->ClearAddresses();
         $mail->ClearBCCs();
-        echo ' Sent! <br>';
     }
-    $mail->SmtpClose();
+    
+    if ($mail-Mailer=="smtp")
+        $mail->SmtpClose();
 }
 else
 {
