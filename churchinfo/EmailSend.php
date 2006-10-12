@@ -152,9 +152,8 @@ if ( is_array($email_array) == TRUE )
             $mail->Port = 25;
 
         $mail->Host = $sSMTPHost;           // SMTP server name
-        $mail->Mailer = "smtp";
     } else {
-        $mail->Mailer = "sendmail";
+        $mail->IsSendmail();                // tell the class to use Sendmail
     }
 
     foreach ($email_array as $email_address)
@@ -168,7 +167,7 @@ if ( is_array($email_array) == TRUE )
 
         echo '<b>' . $email_address . '</b>';
         if(!$mail->Send()) {
-            echo "There has been a mail attempting to send to: " . $email_address 
+            echo "Unable to send to: " . $email_address 
             . "<br>" . "Mailer Error: " . $mail->ErrorInfo;
         } else {
             echo ' Sent! <br>';
@@ -177,7 +176,7 @@ if ( is_array($email_array) == TRUE )
         $mail->ClearBCCs();
     }
     
-    if ($mail-Mailer=="smtp")
+    if (strtolower($sSendType)=="smtp")
         $mail->SmtpClose();
 }
 else
