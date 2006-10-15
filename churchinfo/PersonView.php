@@ -37,7 +37,7 @@ if ( isset($_POST["VolunteerOpportunityAssign"]) && $_SESSION['bEditRecords'])
 }
 
 // Service remove-volunteer-opportunity (these links set RemoveVO)
-if ($iRemoveVO > 0)
+if ($iRemoveVO > 0  && $_SESSION['bEditRecords'])
 {
 	RemoveVolunteerOpportunity($iPersonID, $iRemoveVO);
 }
@@ -725,7 +725,9 @@ if ($next_link_text) {
 		echo "<tr class=\"TableHeader\">";
 		echo "<td>" . gettext("Name") . "</td>";
 		echo "<td>" . gettext("Description") . "</td>";
-		echo "<td width=\"10%\">" . gettext("Remove") . "</td>";
+		if ($_SESSION['bEditRecords']) {
+			echo "<td width=\"10%\">" . gettext("Remove") . "</td>";
+		}
 		echo "</tr>";
 
 		// Loop through the rows
@@ -740,7 +742,7 @@ if ($next_link_text) {
 			echo "<td>" . $vol_Name . "</a></td>";
 			echo "<td>" . $vol_Description . "</a></td>";
 
-			echo "<td><a class=\"SmallText\" href=\"PersonView.php?PersonID=" . $per_ID . "&RemoveVO=" . $vol_ID . "\">" . gettext("Remove") . "</a></td>";
+			if ($_SESSION['bEditRecords']) echo "<td><a class=\"SmallText\" href=\"PersonView.php?PersonID=" . $per_ID . "&RemoveVO=" . $vol_ID . "\">" . gettext("Remove") . "</a></td>";
 
 			echo "</tr>";
 
@@ -751,6 +753,7 @@ if ($next_link_text) {
 	}
 	?>
 
+	<?php if ($_SESSION['bEditRecords']) { ?>
 	<form method="post" action="PersonView.php?PersonID=<?php echo $iPersonID ?>">
 	<p class="SmallText" align="center">
 		<span class="SmallText"><?php echo gettext("Assign a New Volunteer Opportunity:"); ?></span>
@@ -772,6 +775,7 @@ if ($next_link_text) {
 		<br>
 	</p>
 	</form>
+	<?php } ?>
 </td>
 </tr>
 </table>
