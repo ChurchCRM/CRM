@@ -674,7 +674,8 @@ if (isset($_POST["DoImport"]))
                 RunQuery($sSQL);
             }
             $sSQL = "UPDATE family_fam SET fam_WeddingDate = " . "'" . $family->WeddingDate. "'";
-            if($family->Phone != "")    $sSQL.= ", fam_HomePhone = " . $family->Phone;
+			if($family->Phone != "")    $sSQL.= ", fam_HomePhone =" . "'" . $family->Phone . "'";
+
             if($family->Envelope != 0)    $sSQL.= ", fam_Envelope  = " . $family->Envelope;
             $sSQL.=  " WHERE fam_ID = " . $fid;
             RunQuery($sSQL);
