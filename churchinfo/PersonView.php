@@ -30,7 +30,7 @@ if ( isset($_POST["GroupAssign"]) && $_SESSION['bManageGroups'] )
 	AddToGroup($iPersonID,$iGroupID,0);
 }
 
-if ( isset($_POST["VolunteerOpportunityAssign"]))
+if ( isset($_POST["VolunteerOpportunityAssign"]) && $_SESSION['bEditRecords'])
 {
 	$iVolunteerOpportunityID = FilterInput($_POST["VolunteerOpportunityID"],'int');
 	AddVolunteerOpportunity($iPersonID,$iVolunteerOpportunityID);
