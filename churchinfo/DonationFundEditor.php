@@ -106,7 +106,7 @@ else
 			// Insert into the funds table
 			$sSQL = "INSERT INTO `donationfund_fun`
 					(`fun_ID` , `fun_Name` , `fun_Description`)
-					VALUES ('', '" . $newFieldName . "', '" . $newFieldDesc . "');";
+					VALUES (0, '" . $newFieldName . "', '" . $newFieldDesc . "');";
 			RunQuery($sSQL);
 
 			$bNewNameError = false;
