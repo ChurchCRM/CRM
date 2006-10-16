@@ -209,7 +209,7 @@ if (count($_SESSION['aPeopleCart']) == 0) {
                                         $iEmailNum++;
                                 }
                                 else
-                                        $sEmailLink .= "," . $sEmail;
+                                        $sEmailLink .= $sMailtoDelimiter . $sEmail;
                         }
                 }
                 else
@@ -275,10 +275,12 @@ if (count($_SESSION['aPeopleCart']) != 0)
         if ($iEmailNum > 0) {
                 // Add default email if default email has been set and is not already in string
                 if ($sToEmailAddress != "" && $sToEmailAddress != "myReceiveEmailAddress" && !stristr($sEmailLink, $sToEmailAddress))
-                        $sEmailLink .= "," . $sToEmailAddress;
+                        $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
                 $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
+                if ($bEmailMailto) { // Does user have permission to email groups with mailto
                 echo "<br><a href=\"mailto:" . $sEmailLink ."\">". gettext("Email Cart") . "</a>";
                 echo "<br><a href=\"mailto:?bcc=".$sEmailLink."\">".gettext("Email (BCC)")."</a>";
+                }
         }
         echo "<br><a href=\"MapUsingGoogle.php?GroupID=0\">" . gettext("Map Cart") . "</a>";
 

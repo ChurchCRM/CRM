@@ -13,10 +13,6 @@
 --      best bet is to restore your MySQL backup and install 1.2.6 PHP code.
 --
 --
-DELETE FROM `config_cfg` WHERE `cfg_id`=2001;
-DELETE FROM `config_cfg` WHERE `cfg_id`=2002;
-DROP TABLE IF EXISTS `version_ver`;
-DROP TABLE IF EXISTS `userconfig_ucfg`;
 
 -- New table to keep track of version information
 CREATE TABLE IF NOT EXISTS `version_ver` (
@@ -27,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `version_ver` (
   UNIQUE KEY `ver_version` (`ver_version`)
 ) TYPE=MyISAM;
 
-INSERT IGNORE INTO `version_ver` (ver_version, ver_date) VALUES ('1.2.7',NOW());
+INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('1.2.7',NOW());
 
 -- New table for user settings and permissions
 CREATE TABLE IF NOT EXISTS `userconfig_ucfg` (
@@ -44,14 +40,23 @@ CREATE TABLE IF NOT EXISTS `userconfig_ucfg` (
 -- Add default permissions for new users
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
-VALUES (0,0,'bEmailMailto','0',
-'boolean','user permission to send email via mailto: links','FALSE');
+VALUES (0,0,'bEmailMailto','1',
+'boolean','user permission to send email via mailto: links','TRUE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (0,1,'sMailtoDelimiter',',',
+'text','Delimiter to separate emails in mailto: links','TRUE');
 
 -- Add permissions for Admin
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (1,0,'bEmailMailto','1',
 'boolean','user permission to send email via mailto: links','TRUE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (1,1,'sMailtoDelimiter',',',
+'text','user permission to send email via mailto: links','TRUE');
+
 
 -- Fix a typo
 UPDATE IGNORE `config_cfg` 

@@ -25,9 +25,6 @@ else
 $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD);
 mysql_select_db($sDATABASE);
 
-// Initialize the session
-session_start();
-
 // Basic security: If the UserID isn't set (no session), redirect to the login page
 if (!isset($_SESSION['iUserID']))
 {

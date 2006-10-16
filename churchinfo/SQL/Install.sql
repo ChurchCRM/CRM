@@ -589,12 +589,21 @@ INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_valu
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (0,0,'bEmailMailto','0',
 'boolean','user permission to send email via mailto: links','FALSE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (0,1,'sMailtoDelimiter',',',
+'text','Delimiter to separate emails in mailto: links','TRUE');
 
 -- Add permissions for Admin
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (1,0,'bEmailMailto','1',
 'boolean','user permission to send email via mailto: links','TRUE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (1,1,'sMailtoDelimiter',',',
+'text','user permission to send email via mailto: links','TRUE');
+
 
 CREATE TABLE IF NOT EXISTS `istlookup_lu` (
   `lu_fam_ID` mediumint(9) NOT NULL default '0',

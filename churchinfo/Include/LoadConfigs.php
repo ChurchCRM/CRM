@@ -34,6 +34,9 @@ $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD)
 mysql_select_db($sDATABASE) 
         or die ('Cannot select the MySQL database because: ' . mysql_error());
 
+// Initialize the session
+session_start();
+
 // Read values from config table into local variables
 // **************************************************
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='General'";

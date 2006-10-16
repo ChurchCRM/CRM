@@ -123,8 +123,8 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 
 	
 	// Variable Name & Type
-	echo "<tr><td class=LabelColumn>$ucfg_name</td>";
-	echo "<input type=hidden name='type[$ucfg_id]' value='$ucfg_type'>";
+	echo '<tr><td class=LabelColumn>'.$ucfg_name;
+	echo '<input type=hidden name="type['.$ucfg_id.']" value="'.$ucfg_type.'"></td>';
 	
 	// Current Value
 	if ($ucfg_type == 'text') {
@@ -146,7 +146,7 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 			$sel1 = "SELECTED";
 			$sel2 = "";
 		}	
-		echo "<td class=TextColumnWithBottomBorder><select name='new_value[$ucfg_id]'>";
+		echo "<td class=TextColumnWithBottomBorder><select name=\"new_value[$ucfg_id]\">";
 		echo "<option value='' $sel1>False";
 		echo "<option value='1' $sel2>True";
 		echo "</select></td>";

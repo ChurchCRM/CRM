@@ -27,9 +27,6 @@ if ($debug == true)
 else
 	error_reporting(0);
 
-// Initialize the session
-session_start();
-
 //
 // Basic security checks:
 //
@@ -193,7 +190,7 @@ function RedirectURL($sRelativeURL)
         $sRedirectURL .= $sHTTP_Host . $sPortString;
 
     // If root path is already included don't add it again
-    if (($sRootPath=="") || ($sRootPath=="/")) {
+    if ( strlen($sRootPath) < 2 ) {
         // This check is not meaningful if installed in top level web directory
         $sRelativeURLPath = "/" . $sRelativeURL;
     } elseif (strpos($sRelativeURL, $sRootPath)===FALSE) {
