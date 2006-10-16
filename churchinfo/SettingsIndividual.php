@@ -109,7 +109,7 @@ $r = 1;
 // List Individual Settings
 while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = mysql_fetch_row($rsConfigs)) {
 	
-    if(!$ucfg_permission && !$_SESSION['bAdmin'])
+    if(!($ucfg_permission || $_SESSION['bAdmin']))
         break; // Don't show rows that can't be changed
 
 	// Cancel, Save Buttons every 13 rows

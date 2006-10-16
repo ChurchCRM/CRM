@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `userconfig_ucfg` (
   `ucfg_value` text default NULL,
   `ucfg_type` enum('text','number','date','boolean','textarea') NOT NULL default 'text',
   `ucfg_tooltip` text NOT NULL,
-  `ucfg_permission` boolean default FALSE,
+  `ucfg_permission` enum('FALSE','TRUE') NOT NULL default 'FALSE',
   PRIMARY KEY  (`ucfg_per_ID`,`ucfg_id`)
 ) TYPE=MyISAM;
 
@@ -45,13 +45,13 @@ CREATE TABLE IF NOT EXISTS `userconfig_ucfg` (
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (0,0,'bEmailMailto','0',
-'boolean','user permission to send email via mailto: links',FALSE);
+'boolean','user permission to send email via mailto: links','FALSE');
 
 -- Add permissions for Admin
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (1,0,'bEmailMailto','1',
-'boolean','user permission to send email via mailto: links',TRUE);
+'boolean','user permission to send email via mailto: links','TRUE');
 
 -- Fix a typo
 UPDATE IGNORE `config_cfg` 

@@ -58,7 +58,7 @@ if ($_POST['save']){
 			else
 				$value = "1";
 
-        if ($new_permission[$id] != "1")
+        if ($new_permission[$id] != "TRUE")
             $permission="FALSE";
         else
             $permission="TRUE";
@@ -111,8 +111,8 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 		$sel2 = "";
 	}	
 	echo "<tr><td class=TextColumnWithBottomBorder><select name='new_permission[$ucfg_id]'>";
-	echo "<option value='' $sel1>False";
-	echo "<option value='1' $sel2>True";
+	echo "<option value=\"FALSE\" $sel1>False";
+	echo "<option value=\"TRUE\" $sel2>True";
 	echo "</select></td>";
 	
 	// Variable Name & Type
