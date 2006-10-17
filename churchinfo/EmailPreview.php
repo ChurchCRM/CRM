@@ -18,6 +18,14 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+// Security: Both global and user permissions needed to send email.
+// Otherwise, re-direct them to the main menu.
+if (!($bEmailSend && $bSendPHPMail))
+{
+	Redirect("Menu.php");
+	exit;
+}
+
 // Set the page title and include HTML header
 $sPageTitle = gettext("Email Preview");
 require "Include/Header.php";
@@ -31,13 +39,6 @@ if (is_array($email_array))
     $message = htmlspecialchars(stripslashes($_POST['emailmessage']));
 
 	$bcc_list = implode(", ", $email_array);
-
-    // Note: These optional settings for sending email from server should
-    // be stored in User Settings to be added in future revision of ChurchInfo.
-	if ($_SESSION['sEmailAddress'] <> "") {
-        $sFromEmailAddress = $_SESSION['sEmailAddress'];
-        $sFromName = $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'];
-    }
 
 	//Print the From, To, and Email List with the Subject and Message
     echo "<hr>\r\n";

@@ -587,22 +587,46 @@ CREATE TABLE IF NOT EXISTS `userconfig_ucfg` (
 -- Add default permissions for new users
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
-VALUES (0,0,'bEmailMailto','0',
-'boolean','user permission to send email via mailto: links','FALSE');
+VALUES (0,0,'bEmailMailto','1',
+'boolean','User permission to send email via mailto: links','TRUE');
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (0,1,'sMailtoDelimiter',',',
 'text','Delimiter to separate emails in mailto: links','TRUE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (0,2,'bSendPHPMail','0',
+'boolean','User permission to send email using PHPMailer','FALSE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (0,3,'sFromEmailAddress','',
+'text','Reply email address for PHPMailer','FALSE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (0,4,'sFromName','ChurchInfo Webmaster',
+'text','Name that appears in From field','FALSE');
 
 -- Add permissions for Admin
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (1,0,'bEmailMailto','1',
-'boolean','user permission to send email via mailto: links','TRUE');
+'boolean','User permission to send email via mailto: links','TRUE');
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (1,1,'sMailtoDelimiter',',',
 'text','user permission to send email via mailto: links','TRUE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (1,2,'bSendPHPMail','1',
+'boolean','User permission to send email using PHPMailer','TRUE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (1,3,'sFromEmailAddress','',
+'text','Reply email address for PHPMailer','TRUE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (1,4,'sFromName','ChurchInfo Webmaster',
+'text','Name that appears in From field','TRUE');
 
 
 CREATE TABLE IF NOT EXISTS `istlookup_lu` (
@@ -654,38 +678,36 @@ INSERT IGNORE INTO `config_cfg` VALUES (24, 'sDefaultState', '', 'text', '', 'De
 INSERT IGNORE INTO `config_cfg` VALUES (25, 'sDefaultCountry', 'United States', 'text', 'United States', 'Default Country', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (26, 'bEmailSend', '', 'boolean', '', 'If you wish to be able to send emails from within ChurchInfo. This requires\reither an SMTP server address to send from or sendmail installed in PHP.', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (27, 'sSendType', 'smtp', 'text', 'smtp', 'The method for sending email. Either "smtp" or "sendmail"', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (28, 'sFromEmailAddress', '', 'text', '', 'The email address that shows up in the "From:" field', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (29, 'sFromName', 'ChurchInfo Webmaster', 'text', 'ChurchInfo Webmaster', 'The name that shows up on email address', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (30, 'sToEmailAddress', '', 'text', '', 'Default account for receiving a copy of all emails', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (31, 'sSMTPHost', '', 'text', '', 'SMTP Server Address (mail.server.com:25)', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (32, 'sSMTPAuth', '1', 'boolean', '1', 'Does your SMTP server require auththentication (username/password)?', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (33, 'sSMTPUser', '', 'text', '', 'SMTP Username', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (34, 'sSMTPPass', '', 'text', '', 'SMTP Password', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (35, 'sWordWrap', '72', 'number', '72', 'Word Wrap point. Default for most email programs is 72', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (36, 'bDefectiveBrowser', '1', 'boolean', '1', 'Are you using any non-standards-compliant "broken" browsers at this installation?\rIf so, enabling this will turn off the CSS tags that make the menubar stay\rat the top of the screen instead of scrolling with the rest of the page.\rIt will also turn off the use of nice, alpha-blended PNG images, which IE still\rdoes not properly handle.\rNOTICE: MS Internet Explorer is currently not standards-compliant enough for\rthese purposes.  Please use a quality web browser such as Netscape 7, Firefox, etc.\r', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (37, 'bShowFamilyData', '1', 'boolean', '1', 'Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person''s assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (38, 'bOldVCardVersion', '', 'boolean', '', 'Use vCard 2.1 rather than vCard 3.0 standard.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (39, 'bEnableBackupUtility', '', 'boolean', '', 'This backup system only works on "UNIX-style" operating systems such as\rGNU/Linux, OSX and the BSD variants (NOT Windows).\rOf course, remember that only your web server needs to running a UNIX-style\rOS for this feature to work.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (40, 'sGZIPname', 'gzip', 'text', 'gzip', '', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (41, 'sZIPname', 'zip', 'text', 'zip', '', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (42, 'sPGPname', 'gpg', 'text', 'gpg', '', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (43, 'sLanguage', 'en_US', 'text', 'en_US', 'Internationalization (I18n) support\rUS English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (44, 'iFYMonth', '1', 'number', '1', 'First month of the fiscal year', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (45, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (46, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (47, 'sGeocoderPW', '', 'text', '', 'Password for rpc.geocoder.us', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (48, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from http://maps.google.com/apis/maps/signup.html', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (49, 'nChurchLatitude', '', 'number', '', 'Latitude of the church, used to center the Google map', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (50, 'nChurchLongitude', '', 'number', '', 'Longitude of the church, used to center the Google map', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (51, 'bHidePersonAddress', '1', 'boolean', '1', 'Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (52, 'bHideFriendDate', '0', 'boolean', '0', 'Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (53, 'bHideFamilyNewsletter', '0', 'boolean', '0', 'Set true to disable management of newsletter subscriptions in the Family Editor.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (54, 'bHideWeddingDate', '0', 'boolean', '0', 'Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (55, 'bHideLatLon', '0', 'boolean', '0', 'Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (56, 'bUseDonationEnvelopes', '0', 'boolean', '0', 'Set true to enable use of donation envelopes', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (57, 'sHeader', '', 'textarea', '', 'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (58, 'sISTusername', 'username', 'text', 'username', 'Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.name-searching.com/CaddressASP', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (59, 'sISTpassword', '', 'text', '', 'Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.name-searching.com/CaddressASP', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (28, 'sToEmailAddress', '', 'text', '', 'Default account for receiving a copy of all emails', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (29, 'sSMTPHost', '', 'text', '', 'SMTP Server Address (mail.server.com:25)', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (30, 'sSMTPAuth', '1', 'boolean', '1', 'Does your SMTP server require auththentication (username/password)?', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (31, 'sSMTPUser', '', 'text', '', 'SMTP Username', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (32, 'sSMTPPass', '', 'text', '', 'SMTP Password', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (33, 'sWordWrap', '72', 'number', '72', 'Word Wrap point. Default for most email programs is 72', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (34, 'bDefectiveBrowser', '1', 'boolean', '1', 'Are you using any non-standards-compliant "broken" browsers at this installation?\rIf so, enabling this will turn off the CSS tags that make the menubar stay\rat the top of the screen instead of scrolling with the rest of the page.\rIt will also turn off the use of nice, alpha-blended PNG images, which IE still\rdoes not properly handle.\rNOTICE: MS Internet Explorer is currently not standards-compliant enough for\rthese purposes.  Please use a quality web browser such as Netscape 7, Firefox, etc.\r', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (35, 'bShowFamilyData', '1', 'boolean', '1', 'Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person''s assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (36, 'bOldVCardVersion', '', 'boolean', '', 'Use vCard 2.1 rather than vCard 3.0 standard.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (37, 'bEnableBackupUtility', '', 'boolean', '', 'This backup system only works on "UNIX-style" operating systems such as\rGNU/Linux, OSX and the BSD variants (NOT Windows).\rOf course, remember that only your web server needs to running a UNIX-style\rOS for this feature to work.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (38, 'sGZIPname', 'gzip', 'text', 'gzip', '', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (39, 'sZIPname', 'zip', 'text', 'zip', '', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (40, 'sPGPname', 'gpg', 'text', 'gpg', '', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (41, 'sLanguage', 'en_US', 'text', 'en_US', 'Internationalization (I18n) support\rUS English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (42, 'iFYMonth', '1', 'number', '1', 'First month of the fiscal year', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (43, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (44, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (45, 'sGeocoderPW', '', 'text', '', 'Password for rpc.geocoder.us', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (46, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from http://maps.google.com/apis/maps/signup.html', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (47, 'nChurchLatitude', '', 'number', '', 'Latitude of the church, used to center the Google map', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (48, 'nChurchLongitude', '', 'number', '', 'Longitude of the church, used to center the Google map', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (49, 'bHidePersonAddress', '1', 'boolean', '1', 'Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (50, 'bHideFriendDate', '0', 'boolean', '0', 'Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (51, 'bHideFamilyNewsletter', '0', 'boolean', '0', 'Set true to disable management of newsletter subscriptions in the Family Editor.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (52, 'bHideWeddingDate', '0', 'boolean', '0', 'Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (53, 'bHideLatLon', '0', 'boolean', '0', 'Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (54, 'bUseDonationEnvelopes', '0', 'boolean', '0', 'Set true to enable use of donation envelopes', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (55, 'sHeader', '', 'textarea', '', 'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (56, 'sISTusername', 'username', 'text', 'username', 'Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.name-searching.com/CaddressASP', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (57, 'sISTpassword', '', 'text', '', 'Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.name-searching.com/CaddressASP', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (999, 'bRegistered', '0', 'boolean', '0', 'ChurchInfo has been registered.  The ChurchInfo team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General');
 
 INSERT IGNORE INTO `config_cfg` VALUES (1001, 'leftX', '20', 'number', '20', 'Left Margin (1 = 1/100th inch)', 'ChurchInfoReport');

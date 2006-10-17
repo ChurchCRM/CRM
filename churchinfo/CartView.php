@@ -374,7 +374,7 @@ if ($_SESSION['bAdmin'] || !$bCSVAdminOnly)
 <div align="center"><table><tr><td align="center">
 
 <?php
-        if ((isset($email_array)) && ($bEmailSend))
+        if ((isset($email_array)) && ($bEmailSend) && ($bSendPHPMail))
         {
                 echo "<br><h2>" . gettext("Send Email To People in Cart") . "</h2>";
                 echo "<form action=\"EmailPreview.php\" method=\"POST\">";

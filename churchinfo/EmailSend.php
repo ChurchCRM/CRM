@@ -28,6 +28,14 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+// Security: Both global and user permissions needed to send email.
+// Otherwise, re-direct them to the main menu.
+if (!($bEmailSend && $bSendPHPMail))
+{
+	Redirect("Menu.php");
+	exit;
+}
+
 // *****
 // Force PHPMailer to the include path (this script only)
 $sPHPMailerPath = dirname(__FILE__).DIRECTORY_SEPARATOR.'Include'
@@ -97,14 +105,6 @@ if(!$bPHPMAILER_Installed) {
     exit;
 }
 
-// Security: User must be an Admin to access this page.
-// Otherwise, re-direct them to the main menu.
-//if (!$_SESSION['bAdmin'])
-//{
-//	Redirect("Menu.php");
-//	exit;
-//}
-
 $mail = new PHPMailer();
 
 $email_array = $_POST['emaillist'];
@@ -117,15 +117,8 @@ if ( is_array($email_array) == TRUE )
     if($mail->IsError())
         echo "PHPMailer Error with SetLanguage().  Other errors (if any) may not report.<br>";
 
-    // Note: These optional settings for sending email from server should
-    // be stored in User Settings.
-	if ($_SESSION['sEmailAddress'] <> "") {
-        $sFromEmailAddress = $_SESSION['sEmailAddress'];
-        $sFromName = $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'];
-    }
-
-    $mail->From = $sFromEmailAddress;	// From email address
-    $mail->FromName = $sFromName;		// From name
+    $mail->From = $sFromEmailAddress;	// From email address (User Settings)
+    $mail->FromName = $sFromName;		// From name (User Settings)
 
     if (strtolower($sSendType)=="smtp") {
 

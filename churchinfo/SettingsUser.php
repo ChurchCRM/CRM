@@ -57,15 +57,17 @@ if ($_POST['save']){
 				$value = "";
 			else
 				$value = "1";
+		}
 
         if ($new_permission[$id] != "TRUE")
             $permission="FALSE";
         else
             $permission="TRUE";
-		}
+
+
 		// Save new setting
 		$sSQL = "UPDATE userconfig_ucfg "
-        .       "SET ucfg_value='$value', ucfg_permission=$permission "
+        .       "SET ucfg_value='$value', ucfg_permission='$permission' "
         .       "WHERE ucfg_id='$id' AND ucfg_per_id='0' ";
 		$rsUpdate = RunQuery($sSQL);
 		next($type);
@@ -96,64 +98,71 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 	// Cancel, Save Buttons every 13 rows
 	if ($r == 13) {
 		echo "<tr><td>&nbsp;</td>
-			<td><input type=submit class=icButton name=save value='" . gettext("Save Settings") . "'>
-			<input type=submit class=icButton name=cancel value='" . gettext("Cancel") . "'>
+			<td><input type=submit class=icButton name=save value=\"" 
+            . gettext("Save Settings") . "\">
+			<input type=submit class=icButton name=cancel value=\"" 
+            . gettext("Cancel") . "\">
 			</td></tr>";
 		$r = 1;
 	}
 
 	// Default Permissions
-	if ($ucfg_permission){
-		$sel2 = "SELECTED";
+	if ($ucfg_permission=='TRUE'){
+		$sel2 = "SELECTED ";
 		$sel1 = "";
 	} else {
-		$sel1 = "SELECTED";
+		$sel1 = "SELECTED ";
 		$sel2 = "";
 	}	
-	echo "<tr><td class=TextColumnWithBottomBorder><select name='new_permission[$ucfg_id]'>";
+	echo "<tr><td class=\"TextColumnWithBottomBorder\"><select name=\"new_permission[$ucfg_id]\">";
 	echo "<option value=\"FALSE\" $sel1>False";
-	echo "<option value=\"TRUE\" $sel2>True";
-	echo "</select></td>";
+	echo "<option value=\"TRUE\" $sel2>True
+                        </select></td>";
+
 	
 	// Variable Name & Type
-	echo "<td class=LabelColumn>$ucfg_name</td>";
-	echo "<input type=hidden name='type[$ucfg_id]' value='$ucfg_type'>";
+	echo "<td class=\"LabelColumn\">$ucfg_name</td>";
 	
 	// Current Value
 	if ($ucfg_type == 'text') {
-		echo "<td class=TextColumnWithBottomBorder>
-			<input type=text size=30 maxlength=255 name='new_value[$ucfg_id]'
-			value='".htmlspecialchars($ucfg_value, ENT_QUOTES)."'></td>";
+		echo "<td class=\"TextColumnWithBottomBorder\">
+            <input type=text size=\"30\" maxlength=\"255\" name=\"new_value[$ucfg_id]\"
+            value=\"".htmlspecialchars($ucfg_value, ENT_QUOTES)."\"></td>";
 	} elseif ($ucfg_type == 'textarea') {
-		echo "<td class=TextColumnWithBottomBorder>
-			<textarea rows=4 cols=30 name='new_value[$ucfg_id]'>"
+		echo "<td class=\"TextColumnWithBottomBorder\">
+			<textarea rows=\"4\" cols=\"30\" name=\"new_value[$ucfg_id]\">"
 			.htmlspecialchars($ucfg_value, ENT_QUOTES)."</textarea></td>";
 	} elseif ($ucfg_type == 'number' || $ucfg_type == 'date')	{
-		echo "<td class=TextColumnWithBottomBorder><input type=text size=15 maxlength=15 name="
-			."'new_value[$ucfg_id]' value='$ucfg_value'></td>";
+		echo "<td class=\"TextColumnWithBottomBorder\">
+            <input type=text size=\"15\" maxlength=\"15\" name=\"new_value[$ucfg_id]\" 
+            value=\"$ucfg_value\"></td>";
 	} elseif ($ucfg_type == 'boolean') {
 		if ($ucfg_value){
-			$sel2 = "SELECTED";
+			$sel2 = "SELECTED ";
 			$sel1 = "";
 		} else {
-			$sel1 = "SELECTED";
+			$sel1 = "SELECTED ";
 			$sel2 = "";
 		}	
-		echo "<td class=TextColumnWithBottomBorder><select name='new_value[$ucfg_id]'>";
-		echo "<option value='' $sel1>False";
-		echo "<option value='1' $sel2>True";
-		echo "</select></td>";
+		echo "<td class=\"TextColumnWithBottomBorder\">
+                <select name=\"new_value[$ucfg_id]\">
+                <option value=\"\" $sel1>False
+                <option value=\"1\" $sel2>True
+                </select></td>";
 	}
 		
 	// Notes
-	echo "<td>$ucfg_tooltip</td>	</tr>";
+	echo "<td><input type=hidden name=\"type[$ucfg_id]\" value=\"$ucfg_type\">
+        $ucfg_tooltip</td></tr>";
+
+
 	$r++;
 }	 
 
 // Cancel, Save Buttons
 echo "<tr><td>&nbsp;</td>
-	<td><input type=submit class=icButton name=save value='" . gettext("Save Settings") . "'>
-	<input type=submit class=icButton name=cancel value='" . gettext("Cancel") . "'>
+	<td><input type=submit class=icButton name=save value=\"" . gettext("Save Settings") . "\">
+	<input type=submit class=icButton name=cancel value=\"" . gettext("Cancel") . "\">
 	</td></tr></table></form>";
 
 require "Include/Footer.php";

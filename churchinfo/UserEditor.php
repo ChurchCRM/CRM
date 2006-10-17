@@ -241,12 +241,13 @@ if (isset($_POST['save']) && ($iPersonID > 0)){
 				$value = "";
 			else
 				$value = "1";
+        }
 
         if ($new_permission[$id] != "TRUE")
             $permission="FALSE";
         else
             $permission="TRUE";
-		}
+
         // We can't update unless values already exist.
         $sSQL = "SELECT * FROM userconfig_ucfg "
         .       "WHERE ucfg_id=$id AND ucfg_per_id=$iPersonID ";
@@ -471,8 +472,7 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
 	echo "</select></td>";
 	
 	// Variable Name & Type
-	echo "<td class=\"LabelColumn\">$ucfg_name";
-	echo "<input type=\"hidden\" name=\"type[$ucfg_id]\" value=\"$ucfg_type\"></td>";
+	echo "<td class=\"LabelColumn\">$ucfg_name</td>";
 	
 	// Current Value
 	if ($ucfg_type == 'text') {
@@ -501,7 +501,9 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
 	}
 		
 	// Notes
-	echo "<td>$ucfg_tooltip</td>	</tr>";
+	echo "<td><input type=\"hidden\" name=\"type[$ucfg_id]\" value=\"$ucfg_type\">
+            $ucfg_tooltip</td></tr>";
+
 	$r++;
 }	 
 
