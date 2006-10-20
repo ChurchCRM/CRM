@@ -115,8 +115,8 @@ FROM `config_cfg` ORDER BY `cfg_id`;
 -- Step 2) Make sure `tempconfig_tcfg` matches `config_cfg` or exit with error
 --         This is to make darn sure we can restore `config_cfg`  
 
---CHECKSUM TABLE tempconfig_tcfg EXTENDED;
---CHECKSUM TABLE config_cfg EXTENDED;
+-- CHECKSUM TABLE tempconfig_tcfg EXTENDED;
+-- CHECKSUM TABLE config_cfg EXTENDED;
 
 -- Step 3) Drop the config table and make a new empty table
 DROP TABLE IF EXISTS `config_cfg`;
