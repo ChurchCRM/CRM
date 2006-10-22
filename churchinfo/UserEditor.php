@@ -204,18 +204,27 @@ if (isset($_POST["Submit"]) && $iPersonID > 0) {
 // Style sheet (CSS) file selection options
 function StyleSheetOptions($dirName,$currentStyle)
 {
-	$dir = @opendir($dirName) or die(gettext("Nope"));
-	while($file = readdir($dir))
-	{
-		if (ereg("\.css",$file))
+	$dir = @opendir($dirName);
+	if ($dir) {
+		while($file = readdir($dir))
 		{
-			echo "<option value=\"$file\"";
-			if ($file == $currentStyle)
+			if (ereg("\.css",$file))
+			{
+				echo "<option value=\"$file\"";
+				if ($file == $currentStyle)
+					echo " selected";
+				echo ">" . substr($file,0,-4) . "</option>";
+			}
+		}
+		closedir($dir);
+	} else {
+		foreach ( array ("Style-blue.css", "Style-green.css", "Style-purple.css", "Style-red.css", "Style.css") as $stylename ) {
+			echo "<option value=\"" . $stylename . "\"";
+			if ($stylename == $currentStyle)
 				echo " selected";
-			echo ">" . substr($file,0,-4) . "</option>";
+			echo ">" . substr($stylename,0,-4) . "</option>";
 		}
 	}
-	closedir($dir);
 }
 
 
