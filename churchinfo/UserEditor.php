@@ -421,7 +421,7 @@ if ($bShowPersonSelect) {
 
 	<tr>
 		<td colspan="2" align="center">
-		<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> name="save">&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='UserList.php';">
+		<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> name="Submit">&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='UserList.php';">
 		</td>
 	</tr>
 
