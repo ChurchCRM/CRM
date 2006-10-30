@@ -21,6 +21,12 @@ $sDATABASE = "churchinfo";
 // This path SHOULD NOT end with slash.
 $sRootPath="/churchinfo";
 
+// $_SERVER['DOCUMENT_ROOT'] is not defined on some web servers.  If this is the
+// case for your server you may need to change $sDocumentRoot.
+// $sDocumentRoot="/var/www/html";
+// $sDocumentRoot="c:\\inetpub\\wwwroot";
+$sDocumentRoot=$_SERVER['DOCUMENT_ROOT'];
+
 // If you are using a non-standard port number you may need to include the 
 // port number in the URL.  Default value is fine for most installations.
 $sPort="";
@@ -62,19 +68,7 @@ $sHTTP_Host=$_SERVER['HTTP_HOST'];
 // SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE
 //
 
-$sIncludeDir=dirname(__FILE__);
-$sInstallDir=dirname($sIncludeDir);
-$sDocumentRoot=$sInstallDir;
-if ( strlen($sRootPath) > 1 ) {
-    // Count number of "/" in $sRootPath to find DocumentRoot
-    $iCount = substr_count($sRootPath,'/');
-    while ($iCount>0) {
-        $iCount--;
-        $sDocumentRoot=dirname($sDocumentRoot);
-    }
-}
-
-// Absolute path must be specified for this require since this file is called 
+// Absolute path must be specified since this file is called 
 // from scripts located in other directories
-require ($sIncludeDir.DIRECTORY_SEPARATOR.'LoadConfigs.php');
+require (dirname(__FILE__).DIRECTORY_SEPARATOR.'LoadConfigs.php');
 ?>

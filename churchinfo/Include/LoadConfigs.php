@@ -34,6 +34,17 @@ $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD)
 mysql_select_db($sDATABASE) 
         or die ('Cannot select the MySQL database because: ' . mysql_error());
 
+// Verify that $sDocumentRoot and $sRootPath are correct
+$sTestPath = $sDocumentRoot.$sRootPath."/Include/Config.php";
+$sTestPath = str_replace ( '\\','/', $sTestPath  );
+if (!(file_exists($sTestPath) && is_readable($sTestPath))) {
+    $sErrorMessage  = 'Unable to open file: '.$sTestPath.'<br><br>';
+    $sErrorMessage .= 'Please verify that the following ';
+    $sErrorMessage .= 'variables are correct in /Include/Config.php<br>';
+    $sErrorMessage .= '$sDocumentRoot = '.$sDocumentRoot.'<br>$sRootPath = '.$sRootPath;
+    die ($sErrorMessage);
+    }
+
 // Initialize the session
 session_start();
 

@@ -73,11 +73,20 @@ if (!$bSuppressSessionTests)  // This is used for the login page only.
     }
 
     // Make sure visitor got here using a valid URL.
-    // If not, redirect to Menu.php
-    $sFullPath = $sDocumentRoot.$_SERVER["PHP_SELF"];
-    if (!(file_exists($sFullPath) && is_readable($sFullPath))) {
-        Redirect("Menu.php");
-        exit;
+    // If not, try to redirect to correct page, else "Menu.php"
+    // This check will only be performed if $_SERVER['PHP_SELF'] is set
+    if (isset($_SERVER['PHP_SELF'])) {
+        $sFullPath = str_replace( '\\','/',$sDocumentRoot.$_SERVER['PHP_SELF']);
+        if (!(file_exists($sFullPath) && is_readable($sFullPath))) {
+            $sNewPath = substr($sFullPath,0,strpos($sFullPath,".php")+4);
+            if (file_exists($sNewPath) && is_readable($sNewPath)) {
+                $sPage = substr($sNewPath,strrpos($sNewPath,"/")+1);
+                Redirect($sPage);
+            } else {
+                Redirect("Menu.php");
+            }
+            exit;
+        }
     }
 }
 // End of basic security checks
@@ -210,13 +219,13 @@ function RedirectURL($sRelativeURL)
         $sRelativeFilePath = $sRelativeURLPath;
     }
 
-    $sFullPath = $sDocumentRoot.$sRelativeFilePath;
+    $sFullPath = str_replace('\\','/',$sDocumentRoot.$sRelativeFilePath);
 
     // With the query string removed we can test if file exists
     if (file_exists($sFullPath) && is_readable($sFullPath)) {
         $sRedirectURL .= $sRelativeURLPath;
     } else {
-        die ('Cannot access file: ' . $sFullPath);
+        die ('Fatal Error: Cannot access file: ' . $sFullPath);
     }
 
     return $sRedirectURL;
