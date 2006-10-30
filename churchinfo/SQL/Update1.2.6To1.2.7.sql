@@ -37,28 +37,51 @@ CREATE TABLE IF NOT EXISTS `userconfig_ucfg` (
   PRIMARY KEY  (`ucfg_per_ID`,`ucfg_id`)
 ) TYPE=MyISAM;
 
--- Add default permissions for new users
-INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
-ucfg_type, ucfg_tooltip, ucfg_permission)
-VALUES (0,0,'bEmailMailto','1',
-'boolean','User permission to send email via mailto: links','TRUE');
-INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
-ucfg_type, ucfg_tooltip, ucfg_permission)
-VALUES (0,1,'sMailtoDelimiter',',',
-'text','Delimiter to separate emails in mailto: links','TRUE');
-INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
-ucfg_type, ucfg_tooltip, ucfg_permission)
-VALUES (0,2,'bSendPHPMail','0',
-'boolean','User permission to send email using PHPMailer','FALSE');
-INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
-ucfg_type, ucfg_tooltip, ucfg_permission)
-VALUES (0,3,'sFromEmailAddress','',
-'text','Reply email address for PHPMailer','FALSE');
-INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
-ucfg_type, ucfg_tooltip, ucfg_permission)
-VALUES (0,4,'sFromName','ChurchInfo Webmaster',
-'text','Name that appears in From field','FALSE');
+-- Create temporary table of user id's
+DROP TABLE IF EXISTS `user_id_tmp`;
+CREATE TABLE IF NOT EXISTS `user_id_tmp` (
+  `tmp_user_id` mediumint(9) unsigned NOT NULL,
+  PRIMARY KEY (`tmp_user_id`)
+) TYPE=MyISAM;
 
+-- Load Temporary table with list of user id's. (add 0 default) and (skip 1 admin)
+INSERT IGNORE INTO `user_id_tmp` (`tmp_user_id`) VALUES (0);
+INSERT IGNORE INTO `user_id_tmp` (`tmp_user_id`) 
+SELECT `usr_per_ID` FROM `user_usr` WHERE `usr_per_ID`>1 ORDER BY `usr_per_ID`;
+
+-- Store sFromEmailAddress and sFromName in variables.
+SELECT cfg_value FROM `config_cfg` WHERE `cfg_name`='sFromEmailAddress' INTO @fromaddress;
+SELECT cfg_value FROM `config_cfg` WHERE `cfg_name`='sFromName' INTO @fromname;
+
+-- Add default permissions for users
+INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
+`ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
+SELECT `tmp_user_id`,0,'bEmailMailto','1',
+'boolean','User permission to send email via mailto: links','TRUE'
+FROM `user_id_tmp` ORDER BY `tmp_user_id`;
+INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
+`ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
+SELECT `tmp_user_id`,1,'sMailtoDelimiter',',',
+'text','Delimiter to separate emails in mailto: links','TRUE'
+FROM `user_id_tmp` ORDER BY `tmp_user_id`;
+INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
+`ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
+SELECT `tmp_user_id`,2,'bSendPHPMail','0',
+'boolean','User permission to send email using PHPMailer','FALSE'
+FROM `user_id_tmp` ORDER BY `tmp_user_id`;
+INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
+`ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
+SELECT `tmp_user_id`,3,'sFromEmailAddress',@fromaddress,
+'text','Reply email address for PHPMailer','FALSE'
+FROM `user_id_tmp` ORDER BY `tmp_user_id`;
+INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
+`ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
+SELECT `tmp_user_id`,4,'sFromName',@fromname,
+'text','Name that appears in From field','FALSE'
+FROM `user_id_tmp` ORDER BY `tmp_user_id`;
+
+-- No longer need temporary table
+DROP TABLE IF EXISTS `user_id_tmp`;
 
 -- Add permissions for Admin
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_id, ucfg_name, ucfg_value,
@@ -75,13 +98,12 @@ VALUES (1,2,'bSendPHPMail','1',
 'boolean','User permission to send email using PHPMailer','TRUE');
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
-VALUES (1,3,'sFromEmailAddress','',
+VALUES (1,3,'sFromEmailAddress',@fromaddress,
 'text','Reply email address for PHPMailer','TRUE');
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
-VALUES (1,4,'sFromName','ChurchInfo Webmaster',
+VALUES (1,4,'sFromName',@fromname,
 'text','Name that appears in From field','TRUE');
-
 
 -- Fix a typo
 UPDATE IGNORE `config_cfg` 
