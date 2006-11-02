@@ -105,6 +105,10 @@ if(!$bPHPMAILER_Installed) {
     exit;
 }
 
+// Flush the output buffer early, this allows the screen to be updated in real-time as
+// each email is sent.
+ob_end_flush();
+
 $mail = new PHPMailer();
 
 $email_array = $_POST['emaillist'];
@@ -176,4 +180,6 @@ else
 {
     echo gettext("No email addresses specified!");
 }
+
+require "Include/Footer.php";
 ?>
