@@ -79,7 +79,8 @@ require "Include/Header.php";
 <?php echo gettext("Generate attendance -AND- non-attendance reports for events"); ?>
 <br>
 <?php
-$sSQL = "SELECT * FROM event_types";
+//$sSQL = "SELECT * FROM event_types";
+$sSQL = "SELECT DISTINCT event_types.* FROM event_types RIGHT JOIN events_event ON event_types.type_id=events_event.event_type ORDER BY type_id ";
 $rsOpps = RunQuery($sSQL);
 $numRows = mysql_num_rows($rsOpps);
 

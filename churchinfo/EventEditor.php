@@ -31,10 +31,194 @@ require "Include/Header.php";
 $sPageTitle = gettext("Church Event Editor");
 
 $sAction = $_POST['Action'];
-$sOpp = $_POST['EID'];
-if ($sAction = 'Edit' && !empty($sOpp))
+$sOpp = $_POST['EID']; // from EDIT button on event listing
+$tyid = $_POST["EN_tyid"]; // from event type list page
+//
+// process the action inputs
+//
+if ($sAction=='Create=>Event' && !empty($tyid)){
+//
+// user is coming from the event types screen and thus there
+// is no existing event in the event_event table
+// 
+// will use the event type information to smart-prefill the 
+// event fields...but still allow the user to edit everything 
+// except event type since event type is tied to the attendance count fields
+//
+
+  $EventExists = 0;
+  $sSQL = "SELECT * FROM event_types WHERE type_id=$tyid";
+  $rsOpps = RunQuery($sSQL);
+  $numRows = mysql_num_rows($rsOpps);
+  $ceRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+  extract($ceRow);
+
+  $aTypeID = $type_id;
+  $aTypeName = $type_name;             
+  $ceDefStartTime = $def_start_time;
+  $ceDefRecurDOW = $def_recur_DOW;
+  $ceDefRecurDOM = $def_recur_DOM;
+  $ceDefRecurDOY = $def_recur_DOY;
+  $ceDefRecurType = $def_recur_type;
+  
+  $cSQL = "SELECT count_id, count_name FROM event_count_names WHERE event_type_id='$aTypeID' ORDER BY count_id ASC";
+  $cOpps = RunQuery($cSQL);
+  $aNumCounts = mysql_num_rows($cOpps);
+  if($aNumCounts) {
+    for($c = 0; $c <$aNumCounts; $c++){
+        $cRow = mysql_fetch_array($cOpps, MYSQL_BOTH);
+        extract($cRow);
+        $cCountID[$c] = $count_id;
+        $cCountName[$c] = $count_name;    
+        $cCount[$c]=0;        
+    }
+  }    
+  $nCnts = $aNumCounts;
+  $cCountNotes="";               
+//
+// this switch manages the smart-prefill of the form based on the event type
+// definitions, recurrance type, etc.
+//           
+  switch ($ceDefRecurType){
+    case "none": 
+      $aEventStartDate = date('Y-m-d');
+      $aEventEndDate = $aEventStartDate;
+      $ceStartTimeTokens = explode(":",$ceDefStartTime);
+      $aEventStartHour = $ceStartTimeTokens[0];
+      $aEventStartMins = $ceStartTimeTokens[1];
+      $aEventEndHour = $ceStartTimeTokens[0];
+      $aEventEndMins = $ceStartTimeTokens[1];
+      break;
+      
+    case "weekly": 
+    // check for the last occurance of this type_id in the events table and
+    // create a new event based on this date reference
+    //
+      $ecSQL = "SELECT * FROM events_event WHERE event_type = '$aTypeID' ORDER BY event_start DESC LIMIT 1";
+      $ecOpps = RunQuery($ecSQL);
+      $numRows = mysql_num_rows($ecOpps);
+      if($numRows >0){
+        // use the most recent event if it exists
+        $ecRow = mysql_fetch_array($ecOpps, MYSQL_BOTH);
+        extract($ecRow);
+        $ceStartTokens = explode(" ", $event_start);
+        $ceEventStartDate = $ceStartTokens[0];          
+        $aEventStartDate = date('Y-m-d',strtotime("$ceEventStartDate +1 week"));
+        
+        $ceEventStartTimeTokens = explode(":",$ceDefStartTime);  
+        $aEventStartHour = $ceEventStartTimeTokens[0];
+        $aEventStartMins = $ceEventStartTimeTokens[1];
+
+        $aEventEndDate = $aEventStartDate;
+        $aEventEndHour = $aEventStartHour;
+        $aEventEndMins = $aEventStartMins;     
+      } else {
+        // use the event type definition
+        $aEventStartDate = date('Y-m-d',strtotime("last $ceDefRecurDOW"));
+        $ceStartTimeTokens = explode(":",$ceDefStartTime);
+        $aEventStartHour = $ceStartTimeTokens[0];
+        $aEventStartMins = $ceStartTimeTokens[1];
+        echo "weekly time = $aEventStartHour\r\n";
+        $aEventEndDate = $aEventStartDate;
+        $aEventEndHour = $ceStartTimeTokens[0];
+        $aEventEndMins = $ceStartTimeTokens[1];
+      }
+      break;
+      
+    case "monthly": 
+    // check for the last occurance of this type_id in the events table and
+    // create a new event based on this date reference
+    //
+      $ecSQL = "SELECT * FROM events_event WHERE event_type = '$aTypeID' ORDER BY event_start DESC LIMIT 1";
+      $ecOpps = RunQuery($ecSQL);
+      $numRows = mysql_num_rows($ecOpps);
+      if($numRows >0){
+        // use the most recent event if it exists
+        $ecRow = mysql_fetch_array($ecOpps, MYSQL_BOTH);
+        extract($ecRow);
+        $ceStartTokens = explode(" ", $event_start);
+        $ceEventStartDate = $ceStartTokens[0];
+        $ceDMY = explode("-",$ceStartTokens[0]);
+        $ceEventStartTimeTokens = explode(":",$ceStartTokens[1]);  
+          
+        $aEventStartDate = date('Y-m-d',mktime(0,0,0,$ceDMY[1]+1,$ceDMY[2],$ceDMY[0]));
+        $aEventStartHour = $ceEventStartTimeTokens[0];
+        $aEventStartMins = $ceEventStartTimeTokens[1];
+        $aEventEndDate = $aEventStartDate;
+        $aEventEndHour = $ceEventStartTimeTokens[0];
+        $aEventEndMins = $ceEventStartTimeTokens[1];
+      } else {
+        // use the event type definition
+        $currentDOM = date('d');
+        if($currentDOM < $ceDefRecurDOM){
+          $aEventStartDate = date('Y-m-d',mktime(0,0,0,date('m')-1,$ceDefRecurDOM,date('Y')));
+        } else {
+          $aEventStartDate = date('Y-m-d',mktime(0,0,0,date('m'),$ceDefRecurDOM,date('Y')));         
+        }
+
+        $ceStartTimeTokens = explode(":",$ceDefStartTime);
+        $aEventStartHour = $ceStartTimeTokens[0];
+        $aEventStartMins = $ceStartTimeTokens[1];
+        $aEventEndDate = $aEventStartDate;        
+        $aEventEndHour = $ceStartTimeTokens[0];
+        $aEventEndMins = $ceStartTimeTokens[1];
+      }
+      break;
+      
+    case "yearly": 
+      $ecSQL = "SELECT * FROM events_event WHERE event_type = '$aTypeID' ORDER BY event_start DESC LIMIT 1";
+      $ecOpps = RunQuery($ecSQL);
+      $numRows = mysql_num_rows($ecOpps);
+      if($numRows >0){
+        // use the most recent event if it exists
+        $ecRow = mysql_fetch_array($ecOpps, MYSQL_BOTH);
+        extract($ecRow);
+        $ceStartTokens = explode(" ", $event_start);
+        $ceEventStartDate = $ceStartTokens[0];
+        $ceDMY = explode("-",$ceStartTokens[0]);
+        $ceEventStartTimeTokens = explode(":",$ceStartTokens[1]);  
+          
+        $aEventStartDate = date('Y-m-d',mktime(0,0,0,$ceDMY[1],$ceDMY[2],$ceDMY[0]+1));
+        $aEventStartHour = $ceEventStartTimeTokens[0];
+        $aEventStartMins = $ceEventStartTimeTokens[1];
+        $aEventEndDate = $aEventStartDate;        
+        $aEventEndHour = $ceEventStartTimeTokens[0];
+        $aEventEndMins = $ceEventStartTimeTokens[1];
+      } else {
+        // use the event type definition
+        $currentDOY = time();
+        $defaultDOY = strtotime($ceDefRecurDOY);
+        if($currentDOY < $defaultDOY){  // event is future
+          $aEventStartDate = $ceDefRecurDOY;
+        } else if ($currentDOY > $defaultDOY+(365 * 24 * 60 * 60)){  // event is over 1 year past
+          $ceDMY = explode("-",$ceDefRecurDOY);
+          $aEventStartDate = date('Y-m-d',mktime(0,0,0,$ceDMY[1],$ceDMY[2],date('Y')-1));         
+        } else { // event is past
+          $ceDMY = explode("-",$ceDefRecurDOY);
+          $aEventStartDate = date('Y-m-d',mktime(0,0,0,$ceDMY[1],$ceDMY[2],date('Y')));         
+        
+        }
+
+        $ceStartTimeTokens = explode(":",$ceDefStartTime);
+        $aEventStartHour = $ceStartTimeTokens[0];
+        $aEventStartMins = $ceStartTimeTokens[1];
+        $aEventEndDate = $aEventStartDate;        
+        $aEventEndHour = $ceStartTimeTokens[0];
+        $aEventEndMins = $ceStartTimeTokens[1];
+      }
+      break;
+  }
+  $aEventTitle = $aEventStartDate."-".$aTypeName;
+  $aEventDesc="";
+  $aEventText="";
+  $aEventStatus=0;
+  $aTypeID = $type_id;
+
+}
+else if ($sAction = 'Edit' && !empty($sOpp))
 {
         // Get data for the form as it now exists..
+        $EventExists = 1;
         $sSQL = "SELECT * FROM events_event as t1, event_types as t2 WHERE t1.event_type = t2.type_id AND t1.event_id ='".$sOpp."' LIMIT 1";
 
         $rsOpps = RunQuery($sSQL);
@@ -45,7 +229,7 @@ if ($sAction = 'Edit' && !empty($sOpp))
         $aEventID = $event_id;
         $aTypeID = $type_id;
         $aEventName = $event_name;
-        $aEventType = $type_name;
+        $aTypeName = $type_name;
         $aEventTitle = $event_title;
         $aEventDesc = $event_desc;
         $aEventText = $event_text;
@@ -60,12 +244,33 @@ if ($sAction = 'Edit' && !empty($sOpp))
         $aEventEndHour = $aEndTimeTokens[0];
         $aEventEndMins = $aEndTimeTokens[1];
         $aEventStatus = $inactive;
+        
+        $cvSQL= "SELECT * FROM event_counts WHERE event_id='$aEventID' ORDER BY count_id ASC"; 
+//        echo $cvSQL;
+        $cvOpps = RunQuery($cvSQL);
+        $aNumCounts = mysql_num_rows($cvOpps);
+        $nCnts = $aNumCounts;
+//        echo "numcounts = {$aNumCounts}\n\l";
+        if($aNumCounts) {
+          for($c = 0; $c <$aNumCounts; $c++){
+            $cRow = mysql_fetch_array($cvOpps, MYSQL_BOTH);
+            extract($cRow);
+            $cCountID[$c] = $count_id;
+            $cCountName[$c] = $count_name;     
+            $cCount[$c]= $count_count;
+            $cCountNotes = $notes;            
+          }
+        }        
+//        for($v=0; $v<$aNumCounts; $v++)echo "count {$cCountName[$v]} = {$cCount[$v]}\n\r";           
 
 } elseif (isset($_POST["SaveChanges"])) {
 // Does the user want to save changes to text fields?
         $bErrors = 0;
         $uEventID = $_POST['EventID'];
-        $uEventType = $_POST['EventType'];
+//        echo "eventID = $uEventID";
+        $uTypeName = $_POST['EventTypeName'];
+        $uTypeID = $_POST['EventTypeID'];
+        $EventExists = $_POST['EventExists'];
         if (empty($_POST['EventTitle']))
         {
                 $bTitleError = true;
@@ -109,26 +314,70 @@ if ($sAction = 'Edit' && !empty($sOpp))
         $uEventStart = $uEventStartDate." ".$uEventStartTime;
         $uEventEndDate = $_POST['EventEndDate'];
         $uEventEndTime = $_POST['EventEndTime'];
-          $uEETokens = explode(":", $_POST['EventEndTime']);
-          $uEventEndHour = $uEETokens[0];
-          $uEventEndMins = $uEETokens[1];
+        $uEETokens = explode(":", $_POST['EventEndTime']);
+        $uEventEndHour = $uEETokens[0];
+        $uEventEndMins = $uEETokens[1];
         $uEventEnd = $uEventEndDate." ".$uEventEndTime;
         $uEventStatus = $_POST['EventStatus'];
+        
+        $uNumCounts = $_POST["NumAttendCounts"];
+        $nCnts = $uNumCounts;
+        $uEventCountArry = $_POST["EventCount"];
+        $uEventCountIDArry = $_POST["EventCountID"];
+        $uEventCountNameArry = $_POST["EventCountName"];
+        
+        unset($uCount, $uCountID, $uCountName);
+        foreach($uEventCountArry as $CCC) $uCount[] = $CCC; 
+        foreach($uEventCountIDArry as $CID) $uCountID[] = $CID;
+        foreach($uEventCountNameArry as $CNM) $uCountName[] = $CNM;
+
+        $uCountNotes = $_POST["EventCountNotes"];
 
         // If no errors, then update.
         if ($bErrors == 0)
         {
-            $sSQL = "UPDATE events_event
-                     SET `event_type` = '".$uEventType."',
+          if($EventExists==0){
+            $sSQL = "INSERT events_event
+                     SET `event_type` = '".$uTypeID."',
                      `event_title` = '".$uEventTitle."',
                      `event_desc` = '".$uEventDesc."',
                      `event_text` = '".$uEventText."',
                      `event_start` = '".$uEventStart."',
                      `event_end` = '".$uEventEnd."',
-                     `inactive` = '".$uEventStatus."'" .
-                    " WHERE `event_id` = '" . $uEventID."';";
+                     `inactive` = '".$uEventStatus."',  
+                     `event_type_name` = '".$uTypeName."'";  
             RunQuery($sSQL);
-            header ("Location: ListEvents.php");
+            $uEventID = mysql_insert_id();
+            for($c=0; $c<$uNumCounts; $c++)
+            {
+              $cCnt = ltrim(rtrim($uCountName[$c]));
+              $sSQL = "INSERT event_counts (event_id, count_id, count_name, count_count, notes) VALUES ('$uEventID','$uCountID[$c]','$uCountName[$c]','$uCount[$c]','$uCountNotes') ON DUPLICATE KEY UPDATE count_count='$uCount[$c]', notes='$uCountNotes'";
+//              echo $sSQL;
+              RunQuery($sSQL);
+            }          
+            
+          } else {
+            $sSQL = "UPDATE events_event
+                     SET `event_type` = '".$uTypeID."',
+                     `event_title` = '".$uEventTitle."',
+                     `event_desc` = '".$uEventDesc."',
+                     `event_text` = '".$uEventText."',
+                     `event_start` = '".$uEventStart."',
+                     `event_end` = '".$uEventEnd."',
+                     `inactive` = '".$uEventStatus."',
+                     `event_type_name` = '".$uTypeName."'".
+                    " WHERE `event_id` = '" . $uEventID."';";
+//            echo $sSQL;
+            RunQuery($sSQL);
+            for($c=0; $c<$uNumCounts; $c++)
+            {
+              $cCnt = ltrim(rtrim($uCountName[$c]));
+              $sSQL = "INSERT event_counts (event_id, count_id, count_name, count_count, notes) VALUES ('$uEventID','$uCountID[$c]','$uCountName[$c]','$uCount[$c]','$uCountNotes') ON DUPLICATE KEY UPDATE count_count='$uCount[$c]', notes='$uCountNotes'";
+              RunQuery($sSQL);
+            }          
+          }
+          $EventExists=1;
+          header ("Location: ListEvents.php");
         }
 }
 
@@ -136,10 +385,18 @@ if ($sAction = 'Edit' && !empty($sOpp))
 ?>
 
 <form method="post" action="EventEditor.php" name="EventsEditor">
-<input type="hidden" name="EventID" value="<?php echo ($uEventID ? $uEventID:$_POST['EID']); ?>">
+<input type="hidden" name="EventID" value="<?php echo ($uEventID ? $uEventID:$aEventID); ?>">
+<input type="hidden" name="EventExists" value="<?php echo $EventExists ;?>">
+<?php // used to be ($uEventID ? $uEventID:$aEventID_POST['EID']) ?>
 <table cellpadding="3" width="75%" align="center">
   <caption>
-    <h3><?php echo gettext("Editing Event ID: ").($uEventID ? $uEventID:$aEventID); ?></h3>
+    <h3><?php 
+        if($EventExists==0){
+          echo gettext("Editing Event ID: (ID will be created once saved)");
+        } else {
+          echo gettext("Editing Event ID: ").($uEventID ? $uEventID:$aEventID); 
+        }
+        ?></h3>
   </caption>
   <tr>
     <td colspan="4" align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
@@ -160,46 +417,25 @@ if ($sAction = 'Edit' && !empty($sOpp))
   <tr>
     <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Type:"); ?></td>
     <td colspan="3" class="TextColumn">
-      <select name="EventType">
-<?php
-// Get Event Names
-$sSQL = "SELECT * FROM `event_types`";
-
-        $rsOpps = RunQuery($sSQL);
-        $numRows = mysql_num_rows($rsOpps);
-
-        // Create arrays of the fundss.
-        for ($row = 1; $row <= $numRows; $row++)
-        {
-                $bRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
-                extract($bRow);
-
-                echo '<option value="'.$type_id.'"';
-                if ($aTypeID == $type_id || $uEventType == $type_id) echo ' selected';
-                echo '">'.$type_name.'</option>';
-        }
-?>
-      </select>
+    <input type="hidden" name="EventTypeName" value="<?php echo ($uTypeName ? $uTypeName:$aTypeName); ?>">
+    <input type="hidden" name="EventTypeID" value="<?php echo ($uTypeID ? $uTypeID:$aTypeID); ?>">
+    <?php echo ($uTypeID ? $uTypeID."-".$uTypeName:$aTypeID."-".$aTypeName); ?>
     </td>
   </tr>
+  
   <tr>
     <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Title:"); ?></td>
-    <td colspan="3" class="TextColumn">
-      <input type="text" name="EventTitle" value="<?php echo ($uEventTitle ? $uEventTitle:$aEventTitle); ?>" echo " size="40" maxlength="100">
+    <td colspan="1" class="TextColumn">
+      <input type="text" name="EventTitle" value="<?php echo ($uEventTitle ? $uEventTitle:$aEventTitle); ?>" echo " size="30" maxlength="100">
       <?php if ( $bTitleError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a title.") . "</span></div>"; ?>
     </td>
-  </tr>
-  <tr>
     <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Desc:"); ?></td>
-    <td colspan="3" class="TextColumn">
-      <input type="text" name="EventDesc" value="<?php echo ($uEventDesc ? $uEventDesc:$aEventDesc); ?>" size="40" maxlength="100">
+    <td colspan="1" class="TextColumn">
+      <input type="text" name="EventDesc" value="<?php echo ($uEventDesc ? $uEventDesc:$aEventDesc); ?>" size="30" maxlength="100">
       <?php if ( $bDescError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a description.") . "</span></div>"; ?>
     </td>
   </tr>
-  <tr>
-    <td class="LabelColumn"><?php echo gettext("Event Sermon:"); ?></td>
-    <td colspan="3" class="TextColumn"><textarea name="EventText" rows="10" cols="80"><?php echo ($uEventText ? $uEventText:$aEventText); ?></textarea></td>
-  </tr>
+  
   <tr>
     <td class="LabelColumn"><font color="#ff0000">*</font>
       <?php echo gettext("Start Date:"); ?><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>
@@ -224,7 +460,7 @@ $sSQL = "SELECT * FROM `event_types`";
       &nbsp;<span class="SmallText"><?php echo gettext("[format: HH:MM]"); ?></span>
       <?php if ( $bESTError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a start time.") . "</span></div>"; ?>
     </td>
-  </tr>
+  </tr> 
   <tr>
     <td class="LabelColumn">
       <?php echo gettext("End Date:"); ?>
@@ -247,7 +483,48 @@ $sSQL = "SELECT * FROM `event_types`";
       </select>
       &nbsp;<span class="SmallText"><?php echo gettext("[format: HH:MM]"); ?></span>
     </td>
+  </tr>  
+ 
+  <tr>
+    <td class="LabelColumn"><?php echo gettext("Attendance Counts"); ?></td>
+    <td class="TextColumn" colspan="3">
+      <input type="hidden" name="NumAttendCounts" value="<?php echo $nCnts; ?>"> 
+      <?php
+      if($nCnts==0){
+      echo gettext("No Attendance counts recorded");
+      } else {
+      ?>   
+    <table>
+      <?php
+      for ($c=0; $c<$nCnts; $c++){
+        ?><tr>
+          <td><strong><?php echo ($cCountName[$c] ? $cCountName[$c].": " : $uCountName[$c].": "); ?></strong></td>
+        <td>
+        <input type="text" name="EventCount[]" value="<?php echo ($cCount[$c] ? $cCount[$c] : $uCount[$c]);?>" size="8">
+        <input type="hidden" name="EventCountID[]" value="<?php echo ($cCountID[$c] ? $cCountID[$c] : $uCountID[$c]);?>">
+        <input type="hidden" name="EventCountName[]" value="<?php echo ($cCountName[$c] ? $cCountName[$c] : $uCountName[$c]);?>">
+        </td>
+        </tr>
+      <?php
+      } //end for loop
+      ?>
+      <tr>
+      <td><strong><?php echo gettext("Attendance Notes: "); ?></strong></td>
+        <td><input type="text" name="EventCountNotes" value="<?php echo $cCountNotes; ?>">
+        </td>
+        </tr>
+        </table>
+        <?php
+        } //endif 
+        ?>
+    </td>
+  </tr>  
+  
+  <tr>
+    <td class="LabelColumn"><?php echo gettext("Event Sermon:"); ?></td>
+    <td colspan="3" class="TextColumn"><textarea name="EventText" rows="5" cols="80"><?php echo ($uEventText ? $uEventText:$aEventText); ?></textarea></td>
   </tr>
+
   <tr>
     <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Status:"); ?></td>
     <td colspan="3" class="TextColumn">
@@ -255,6 +532,7 @@ $sSQL = "SELECT * FROM `event_types`";
       <?php if ( $bStatusError ) echo "<div><span style=\"color: red;\">" . gettext("Is this Active or Inactive?") . "</span></div>"; ?>
     </td>
   </tr>
+  
   <tr>
     <td colspan="2" align="center"><input type="submit" name="SaveChanges" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> class="icButton"></td>
   </tr>

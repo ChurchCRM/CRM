@@ -535,15 +535,41 @@ CREATE TABLE IF NOT EXISTS `event_attend` (
   `person_id` int(11) NOT NULL default '0'
 ) TYPE=MyISAM;
 
+
+-- New table to define Event Count Names 
+CREATE TABLE IF NOT EXISTS `event_count_names` (
+`count_id` int( 5 ) NOT NULL AUTO_INCREMENT ,
+`event_type_id` smallint( 5 ) NOT NULL default '0',
+`count_name` varchar( 20 ) NOT NULL default '',
+`notes` varchar( 20 ) NOT NULL default '',
+UNIQUE KEY `count_id` ( `count_id` ) ,
+UNIQUE KEY `event_type_id` ( `event_type_id` , `count_name` )
+) TYPE=MYISAM;
+
+-- New table to track Event Counts
+CREATE TABLE IF NOT EXISTS `event_counts` (
+`event_id` int( 5 ) NOT NULL default '0',
+`count_id` int( 5 ) NOT NULL default '0',
+`count_name` varchar( 20 ) default NULL ,
+`count_count` int( 6 ) default NULL ,
+`notes` varchar( 20 ) default NULL ,
+PRIMARY KEY ( `event_id` , `count_id` )
+) TYPE=MYISAM;
+
 CREATE TABLE IF NOT EXISTS `event_types` (
   `type_id` int(11) NOT NULL auto_increment,
   `type_name` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`type_id`),
-  UNIQUE KEY `event_name` (`type_name`)
+  `def_start_time` time NOT NULL default '00:00:00',
+  `def_recur_type` enum( 'none', 'weekly', 'monthly', 'yearly' ) NOT NULL default 'none',
+  `def_recur_DOW` enum( 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ) NOT NULL default 'Sunday',
+  `def_recur_DOM` char( 2 ) NOT NULL default '0',
+  `def_recur_DOY` date NOT NULL default '0000-00-00',
+  `active` int( 1 ) NOT NULL default '1',
+  PRIMARY KEY  (`type_id`)
 ) TYPE=MyISAM;
 
-INSERT IGNORE INTO `event_types` VALUES (1, 'Church Service');
-INSERT IGNORE INTO `event_types` VALUES (2, 'Sunday School');
+INSERT IGNORE INTO `event_types` VALUES (1, 'Church Service', '10:30:00', 'weekly', 'Sunday','','',1);
+INSERT IGNORE INTO `event_types` VALUES (2, 'Sunday School',  '09:30:00', 'weekly', 'Sunday','','',1);
 
 CREATE TABLE IF NOT EXISTS `events_event` (
   `event_id` int(11) NOT NULL auto_increment,
@@ -554,6 +580,7 @@ CREATE TABLE IF NOT EXISTS `events_event` (
   `event_start` datetime NOT NULL default '0000-00-00 00:00:00',
   `event_end` datetime NOT NULL default '0000-00-00 00:00:00',
   `inactive` int(1) NOT NULL default '0',
+  `event_type_name` varchar( 40 ) NOT NULL default '',
   PRIMARY KEY  (`event_id`),
   FULLTEXT KEY `event_txt` (`event_text`)
 ) TYPE=MyISAM;
@@ -747,7 +774,7 @@ CREATE TABLE IF NOT EXISTS `version_ver` (
   `ver_version` varchar(50) NOT NULL default '',
   `ver_date` datetime default NULL,
   PRIMARY KEY  (`ver_ID`),
-  UNIQUE KEY `ver_version` (`ver_version`),
+  UNIQUE KEY `ver_version` (`ver_version`)
 ) TYPE=MyISAM;
 
 INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('1.2.7',NOW());

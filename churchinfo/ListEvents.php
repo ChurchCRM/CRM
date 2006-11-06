@@ -17,15 +17,34 @@
 
 require "Include/Config.php";
 require "Include/Functions.php";
+$eType="All";
 
-$sPageTitle = gettext("All Church Events");
+if ($_POST['WhichType']){
+  $eType = $_POST['WhichType'];
+} else {
+  $eType ="All";
+}
+
+if($eType!="All"){
+  $sSQL = "SELECT * FROM event_types WHERE type_id=$eType";
+  $rsOpps = RunQuery($sSQL);
+  $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+  extract($aRow);
+  $sPageTitle = "Listing Events of Type = ".$type_name;
+} else {
+  $sPageTitle = gettext("Listing All Church Events");
+}
 
 require "Include/Header.php";
 
-if ($_POST['Action']== "Deactivate" && !empty($_POST['EID']))
+if ($_POST['Action']== "Delete" && !empty($_POST['EID']))
 {
-    $sSQL = "UPDATE events_event SET inactive = 1 WHERE event_id = ".$_POST['EID']." LIMIT 1";
+    $sSQL = "DELETE FROM events_event WHERE event_id = ".$_POST['EID']." LIMIT 1";
     RunQuery($sSQL);
+    
+    $sSQL = "DELETE FROM event_counts WHERE event_id = ".$_POST['EID'];
+    RunQuery($sSQL);
+
 }
 elseif ($_POST['Action']== "Activate" && !empty($_POST['EID']))
 {
@@ -33,20 +52,52 @@ elseif ($_POST['Action']== "Activate" && !empty($_POST['EID']))
     RunQuery($sSQL);
 }
 
+/// top of main form
+//
+$sSQL = "SELECT DISTINCT event_types.* FROM event_types RIGHT JOIN events_event ON event_types.type_id=events_event.event_type ORDER BY type_id ";
+$rsOpps = RunQuery($sSQL);
+$numRows = mysql_num_rows($rsOpps);
+
 ?>
-<table cellpadding="4" align="center" cellspacing="0" width="100%">
-  <tr>
-    <td align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
-  </tr>
+<table cellpadding="1" align="center" cellspacing="0" width="100%">
+<tr>
+<td align="center"><strong><?php echo gettext("Select Event Types To Display") ?></strong><br>
+    <form name="EventTypeSelector" method="POST" action="ListEvents.php">
+       <select name="WhichType" onchange="javascript:this.form.submit()">
+        <option value="All">All</option>
+        <?php
+        for ($r = 1; $r <= $numRows; $r++)
+        {
+          $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+          extract($aRow);
+          foreach($aRow as $t)echo "$t\n\r";
+          ?>
+          <option value="<?php echo $type_id ?>" <?php if($type_id==$eType) echo "selected" ?>><?php echo $type_name; ?></option>
+          <?php
+         }
+         ?>
+         </select>
+      </form>        
+</td>
+</tr>
 </table>
 <?php
+
 // Get data for the form as it now exists..
 // for this year
 $currYear = date("Y");
 $currMonth = date("m");
 $allMonths = array("1","2","3","4","5","6","7","8","9","10","11","12");
+if ($eType=="All") {
+  $eTypeSQL=" ";
+} else {
+  $eTypeSQL = " AND t1.event_type=$eType";
+
+}
+
 foreach ($allMonths as $mKey => $mVal) {
-        $sSQL = "SELECT * FROM events_event as t1, event_types as t2";
+        unset($cCountSum);
+        $sSQL = "SELECT * FROM events_event as t1, event_types as t2 ";
         if (isset($previousMonth))
         {
                 // $sSQL .= " WHERE previous month stuff";
@@ -62,13 +113,13 @@ foreach ($allMonths as $mKey => $mVal) {
         else
         {
                 //$sSQL .= " WHERE (TO_DAYS(event_start_date) - TO_DAYS(now()) < 30)";
-                $sSQL .= " WHERE t1.event_type = t2.type_id AND MONTH(t1.event_start) = ".$mVal;
+                $sSQL .= " WHERE t1.event_type = t2.type_id".$eTypeSQL." AND MONTH(t1.event_start) = ".$mVal;
         }
-        $sSQL .= " ORDER BY event_start";
+        $sSQL .= " ORDER BY t2.type_id, event_start ";
 
         $rsOpps = RunQuery($sSQL);
         $numRows = mysql_num_rows($rsOpps);
-
+        $aAvgRows = $numRows;
         // Create arrays of the fundss.
         for ($row = 1; $row <= $numRows; $row++)
         {
@@ -84,6 +135,13 @@ foreach ($allMonths as $mKey => $mVal) {
                 $aEventStartDateTime[$row] = $event_start;
                 $aEventEndDateTime[$row] = $event_end;
                 $aEventStatus[$row] = $inactive;
+                $attendSQL="SELECT * FROM event_attend WHERE event_id=$event_id";
+                $attOpps = RunQuery($attendSQL);
+                if($attOpps) 
+                  $attNumRows[$row] = mysql_num_rows($attOpps);
+                else
+                  $attNumRows[$row]=0;
+
         }
 
 // Construct the form
@@ -98,12 +156,13 @@ if ($numRows > 0)
          <h3><?php echo gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F", mktime(0, 0, 0, $mVal, 1, $currYear))); ?></h3>
        </caption>
          <tr class="TableHeader">
-           <td width="10%"><strong><?php echo gettext("Event Type"); ?></strong></td>
-           <td width="25%"><strong><?php echo gettext("Event Title"); ?></strong></td>
-           <td width="*"><strong><?php echo gettext("Description"); ?></strong></td>
+           <td width="15%"><strong><?php echo gettext("Event Type"); ?></strong></td>
+           <td width="20%"><strong><?php echo gettext("Event Title"); ?><br></strong>
+           <strong><?php echo gettext("Description"); ?></strong></td>
+           <td width="35%" align="center"><strong><?php echo gettext("Attendance Counts"); ?></strong></td>
            <td width="10%" align="center"><strong><?php echo gettext("Start Date/Time"); ?></strong></td>
            <td width="5%" align="center"><strong><?php echo gettext("Active"); ?></strong></td>
-           <td colspan="2" width="15%" align="center"><strong><?php echo gettext("Action"); ?></strong></td>
+           <td colspan="3" width="15%" align="center"><strong><?php echo gettext("Action"); ?></strong></td>
         </tr>
          <?php
          //Set the initial row color
@@ -118,45 +177,126 @@ if ($numRows > 0)
          //Display the row
          ?>
          <tr class="<?php echo $sRowClass; ?>">
-           <td class="TextColumn"><?php echo $aEventType[$row]; ?></td>
-           <td class="TextColumn"><?php echo $aEventTitle[$row]; ?></td>
-           <td class="TextColumn"><?php echo ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]); ?>
-             <?php echo ($aEventText[$row] != '' ? "&nbsp;&nbsp;&nbsp;<a href=\"javascript:popUp('GetText.php?EID=".$aEventID[$row]."')\"><strong>Sermon Text</strong></a>":""); ?>
+           <td><span class="SmallText"><?php echo $aEventType[$row]; ?></span></td>
+           <td><span class="SmallText"><?php echo $aEventTitle[$row]; ?><br>
+           <?php echo ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]); ?>
+             <?php echo ($aEventText[$row] != '' ? "&nbsp;&nbsp;&nbsp;<a href=\"javascript:popUp('GetText.php?EID=".$aEventID[$row]."')\"><strong>Sermon Text</strong></a>":""); ?></span>
            </td>
-           <td class="TextColumn"><?php echo FormatDate($aEventStartDateTime[$row],1); ?></td>
-           <td class="TextColumn" align="center"><?php echo ($aEventStatus[$row] != 0 ? "No":"Yes"); ?></td>
-           <td class="TextColumn" align="center">
+           <td>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+           <?php 
+                $cvSQL= "SELECT * FROM event_counts WHERE event_id='$aEventID[$row]' ORDER BY count_id ASC"; 
+//        echo $cvSQL;
+                $cvOpps = RunQuery($cvSQL);
+                $aNumCounts = mysql_num_rows($cvOpps);
+//        echo "numcounts = {$aNumCounts}\n\l";
+                if($aNumCounts) {
+                
+                for($c = 0; $c <$aNumCounts; $c++){
+                  $cRow = mysql_fetch_array($cvOpps, MYSQL_BOTH);
+                  extract($cRow);
+                  $cCountID[$c] = $count_id;
+                  $cCountName[$c] = $count_name;     
+                  $cCount[$c]= $count_count;
+                  $cCountNotes = $notes; 
+                  $cCountSum[$c]+= $count_count;
+                  ?>
+                  <td align="center">
+                  <span class="SmallText">
+                    <strong><?php echo $count_name; ?></strong>
+                    <br><?php echo $count_count; ?></span>
+                  </td> 
+                  <?php         
+                }
+                } else {
+                  ?>
+                  <td align="center">
+                    <span class="SmallText">
+                    <strong><?php echo gettext("No Attendance Counts"); ?></strong>
+                    </span>
+                  </td> 
+                  <?php     
+                  $aAvgRows -=1;                                   
+                }       
+           ?>
+           </tr>
+           </table>
+           </td>
+           <td><span class="SmallText"><?php echo FormatDate($aEventStartDateTime[$row],1); ?></span></td>
+           
+           <td class="SmallText" align="center"><?php echo ($aEventStatus[$row] != 0 ? "No":"Yes"); ?></span></td>
+           
+          <td><span class="SmallText">
+          <form name="EditAttendees" action="EditEventAttendees.php" method="POST">
+          <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
+          <input type="hidden" name="EName" value="<?php echo $aEventTitle[$row]; ?>">
+          <input type="hidden" name="EDesc" value="<?php echo $aEventDesc[$row]; ?>">
+          <input type="hidden" name="EDate" value="<?php echo FormatDate($aEventStartDateTime[$row],1); ?>">
+          <input type="submit" name="Action" value="<?php echo gettext("Attendees(".$attNumRows[$row].")"); ?>" class="icButton" >
+             </form></span>
+           </td>           
+           
+           <td align="center"><span class="SmallText">
              <form name="EditEvent" action="EventEditor.php" method="POST">
                <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
-               <input type="submit" name="Action" <?php echo 'value="' . gettext("Edit") . '"'; ?> class="icButton">
-             </form>
+               <input class="SmallText" type="submit" name="Action" <?php echo 'value="' . gettext("Edit") . '"'; ?> class="icButton">
+             </form></span>
            </td>
-           <td class="TextColumn">
-             <form name="DeactivateEvent" action="ListEvents.php" method="POST">
+           <td><span class="SmallText">
+             <form name="DeleteEvent" action="ListEvents.php" method="POST">
                <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
-               <?php if ($aEventStatus[$row] == 0 ) { ?>
-               <input type="submit" name="Action" value="<?php echo gettext("Deactivate"); ?>" class="icButton" onClick="return confirm('Are you sure you want to DEACTIVATE Event ID: <?php echo  $aEventID[$row]; ?>')">
-                <?php } else { ?>
-               <input type="submit" name="Action" value="<?php echo gettext("Activate"); ?>" class="icButton">
-                <?php } ?>
-             </form>
-           </td>
+               <input class="SmallText" type="submit" name="Action" value="<?php echo gettext("Delete"); ?>" class="icButton" onClick="return confirm('Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: <?php echo  $aEventID[$row]; ?>')">
+             </form></span>
+          </td>
+
          </tr>
 <?php
-         }
+         } // end of for loop for # rows for this month
+         
+// calculate averages if this is a single type list
+if ($eType != "All" && $aNumCounts >0){
+    ?>
+    <tr>
+    <td class="LabelColumn" colspan="2"><?php echo gettext(" Monthly Averages"); ?></td>
+    <td>
+       <table width="100%" cellpadding="0" cellspacing="0" border="0">
+       <tr>
+      <?php 
+      // calculate and report averages
+      for($c = 0; $c <$aNumCounts; $c++){
+        if($aAvgRows >0)
+          $cAvg[$c] = $cCountSum[$c] / $aAvgRows;
+        else
+          $cAvg[$c]=0;
+        ?>
+        <td align="center">
+          <span class="SmallText">
+          <strong>AVG<br><?php echo $cCountName[$c];?></strong>
+          <br><?php echo sprintf("%01.2f",$cAvg[$c]); ?></span>
+        </td> 
+        <?php         
+      }
+      ?>
+      </tr>
+      </table>
+      </td>
+      <td class="TextColumn" colspan="3"></td>
+      </tr>
+<?php } 
 ?>
-         <tr><td colspan="5">&nbsp;</td></tr>
+         <tr><td class="TextColumn" colspan="6">&nbsp;</td></tr>
 <?php
     }
 ?>
       </table>
 <?php
-}
+} // end for-each month loop
 ?>
              <table width="100%">
-               <tr>
+                <tr class="<?php echo $sRowClass; ?>">
                  <td align="center" valign="bottom">
-                   <input type="button" Name="Action" <?php echo 'value="' . gettext("Add New Event") . '"'; ?> class="icButton" onclick="javascript:document.location='AddEvent.php';">
+                   <input type="button" Name="Action" <?php echo 'value="' . gettext("Add New Event") . '"'; ?> class="icButton" onclick="javascript:document.location='EventNames.php';">
                  </td>
                </tr>
              </table>

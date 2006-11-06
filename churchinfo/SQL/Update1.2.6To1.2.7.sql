@@ -13,6 +13,42 @@
 --      best bet is to restore your MySQL backup and install 1.2.6 PHP code.
 --
 --
+-- New table to define Event Count Names 
+CREATE TABLE IF NOT EXISTS `event_count_names` (
+`count_id` int( 5 ) NOT NULL AUTO_INCREMENT ,
+`event_type_id` smallint( 5 ) NOT NULL default '0',
+`count_name` varchar( 20 ) NOT NULL default '',
+`notes` varchar( 20 ) NOT NULL default '',
+UNIQUE KEY `count_id` ( `count_id` ) ,
+UNIQUE KEY `event_type_id` ( `event_type_id` , `count_name` )
+) TYPE=MYISAM;
+
+-- New table to track Event Counts
+CREATE TABLE IF NOT EXISTS `event_counts` (
+`event_id` int( 5 ) NOT NULL default '0',
+`count_id` int( 5 ) NOT NULL default '0',
+`count_name` varchar( 20 ) default NULL ,
+`count_count` int( 6 ) default NULL ,
+`notes` varchar( 20 ) default NULL ,
+PRIMARY KEY ( `event_id` , `count_id` )
+) TYPE=MYISAM;
+
+-- Extend the table events_event to include event_type_name column
+ALTER TABLE `events_event` 
+	ADD COLUMN `event_type_name` varchar(40) NOT NULL default '' 
+	AFTER `inactive`;
+
+-- Fill in the new column with data from event_types
+UPDATE `events_event`,`event_types` SET events_event.event_type_name=event_types.type_name WHERE events_event.event_type=event_types.type_id;
+
+-- Extend the table event_types
+ALTER TABLE `event_types`
+  ADD COLUMN `def_start_time` time NOT NULL default '00:00:00' AFTER `type_name`,
+  ADD COLUMN `def_recur_type` enum( 'none', 'weekly', 'monthly', 'yearly' ) NOT NULL default 'none' AFTER `def_start_time`,
+  ADD COLUMN `def_recur_DOW` enum( 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ) NOT NULL default 'Sunday' AFTER `def_recur_type`,
+  ADD COLUMN `def_recur_DOM` char( 2 ) NOT NULL default '0' AFTER `def_recur_DOW`,
+  ADD COLUMN `def_recur_DOY` date NOT NULL default '0000-00-00' AFTER `def_recur_DOM`,
+  ADD COLUMN `active` int( 1 ) NOT NULL default '1' AFTER `def_recur_DOY`;
 
 -- New table to keep track of version information
 CREATE TABLE IF NOT EXISTS `version_ver` (

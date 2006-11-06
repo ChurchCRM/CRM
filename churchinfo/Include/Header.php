@@ -444,12 +444,12 @@ $MenuFirst = 1;
 
                                 <?php echo $MenuSecond++; ?>, new domMenu_Hash(
                                         'contents', <?php echo "'" . gettext("Add Church Event") . "'"; ?>,
-                                        'uri', 'AddEvent.php',
+                                        'uri', 'EventNames.php',
                                         'statusText', 'Add Church Event'
                                 )
                                 <?php if ($_SESSION['bAdmin']) {
                                 echo ", ".$MenuSecond++; ?>, new domMenu_Hash(
-                                        'contents', <?php echo "'" . gettext("Edit Event Types") . "'"; ?>,
+                                        'contents', <?php echo "'" . gettext("List Event Types") . "'"; ?>,
                                         'uri', 'EventNames.php',
                                         'statusText', ''
                                 )
