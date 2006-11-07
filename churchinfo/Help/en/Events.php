@@ -8,7 +8,7 @@
       <tr>
         <td>
           <p>An <b>Event</b> is an occasion that may, or may not, be hosted at your location.</p>
-          <p>In it's basic usage an <b>Event</b> could be a Worship Service or Sunday School. It could also be a fundraiser, a picnic, etc. By using the <b>Event</b> module you can generate reports on who showed up, who didn't, and a list of any guests attended.  <b>Events</b> are created using a template called and <b>Event Type</b>.</p>
+          <p>In it's basic usage an <b>Event</b> could be a Worship Service or Sunday School. It could also be a fundraiser, a picnic, etc. By using the <b>Event</b> module you can generate reports on who showed up, who didn't, and a list of any guests attended.  <b>Events</b> are created using a template called an <b>Event Type</b>.</p>
         </td>
       </tr>
    </table>
@@ -181,11 +181,11 @@ The prefilled values may be edited.  </td>
 <?php } ?>
 
 <div class="Help_Section">
-  <div class="Help_Header">How keep track of attendance Attendance?</div>
+  <div class="Help_Header">How keep track of Attendance?</div>
     <table width="100%" class="LightShadedBox">
       <tr>
         <td>
-          <p>There are two ways of tracking attendance; By Attendance Counts and By Attendees.</p>
+          <p>There are two ways of tracking attendance: By Attendance Counts and By Attendees.</p>
 	  <p>By Counts - When an Event is created using the "Create=>Event" button on the "List Event Types" screen, a list of Attendance Count fields will be displayed.  Simply enter the desired count value in the appropriate Count Field on the form.</p>
  	 <p>By Attendees - First you will want to make sure that all attendees (members and guests) are added to the membership database. See <a href="Help.php?page=People">Help -> People</a> on how to add people into the database.</p>
           <p>Once that is done you will need to put attendees into the "<b>Cart</b>". To do this select "<b>View all persons</b> from the <b>People/Families</b> dropdown in the menu. You get a display of all Person in the membership database.</p>
