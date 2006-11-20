@@ -82,6 +82,8 @@ if(isset($_SESSION['iUserID'])) { // Can only do this if a user ID has been set
     }
 }
 
+$sMetaRefresh = "";  // Initialize to empty
+
 putenv("LANG=$sLanguage");
 setlocale(LC_ALL, $sLanguage);
 

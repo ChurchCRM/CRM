@@ -230,7 +230,7 @@ if (count($_SESSION['aPeopleCart']) == 0) {
 
                 echo '<td align="center">' . $sValidAddy . '</td>';
                 echo '<td align="center">' . $sValidEmail . '</td>';
-                echo '<td><a onclick=saveScrollCoordinates() 
+                echo '<td><a onclick="saveScrollCoordinates()" 
                         href="CartView.php?RemoveFromPeopleCart=' . 
                         $per_ID . '">' . gettext("Remove") . '</a></td>';
                 echo '<td align="center">' . $aClassificationName[$per_cls_ID] . '</td>';
@@ -238,9 +238,6 @@ if (count($_SESSION['aPeopleCart']) == 0) {
 
                 echo "</tr>";
         }
-
-"<a onclick=saveScrollCoordinates() 
-					href=\"" .$sRedirect. "RemoveFromPeopleCart=" .$per_ID. "\">";
 
         echo "</table>";
 }
@@ -289,7 +286,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
         <td>
         <a name="GenerateLabels"></a>
 
-        <SCRIPT LANGUAGE="JavaScript"><!--
+        <script language="JavaScript" type="text/javascript"><!--
         function codename() 
         {
             if(document.labelform.bulkmailpresort.checked)
@@ -327,7 +324,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
                 if (!$_COOKIE["bulkmailpresort"])
                     echo 'disabled ';   // This would be better with $_SESSION variable
                                         // instead of cookie ... (save $_SESSION in MySQL)
-                echo 'name="bulkmailquiet" type="checkbox" onload="codename()"';
+                echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
                 echo '  id="QuietBulkMail" value="1" ';
                 if ($_COOKIE["bulkmailquiet"] && $_COOKIE["bulkmailpresort"])
                     echo "checked";
@@ -364,47 +361,336 @@ if ($_SESSION['bAdmin'] || !$bCSVAdminOnly)
 } 
 ?>
 
-<div align="center">
-<form method="get" action="DirectoryReports.php">
+<div align="center"><form method="get" action="DirectoryReports.php">
 <?php echo "<br><h2>" . gettext("Create Directory From Cart") . "</h2>"; ?>
-<input type="submit" class="icButton" name="cartdir" value="<?php echo gettext("Cart Directory");?>">
-</form>
-</div>
+<input type="submit" class="icButton" name="cartdir" 
+       value="<?php echo gettext("Cart Directory");?>">
+</form></div>
 
-<div align="center"><table><tr><td align="center">
 
 <?php
-        if ((isset($email_array)) && ($bEmailSend) && ($bSendPHPMail))
-        {
-                echo "<br><h2>" . gettext("Send Email To People in Cart") . "</h2>";
-                echo "<form action=\"EmailPreview.php\" method=\"POST\">";
-                foreach ($email_array as $email_address)
-                {
-                        echo "<input type=\"hidden\" name=\"emaillist[]\" value=\"" . $email_address . "\">";
+
+    echo '<a name="email"></a>'; // anchor used by EmailEditor.php
+
+    if (($bEmailSend) && ($bSendPHPMail))
+    {
+
+        if (isset($email_array)) {
+            $bcc_list = "";
+            foreach ($email_array as $email_address) {
+                // Add all address except the default
+                // avoid sending to this address twice
+                if ($email_address != $sToEmailAddress) {
+                    $bcc_list .= $email_address . ",";
                 }
-                echo "<input type=\"hidden\" name=\"emaillist[]\" value=\"" . $sToEmailAddress . "\">";
-
-                // If editing, get Title and Message
-            $sEditSubject = $_POST['emailtitle'];
-            if (isset($sEditSubject))
-                        $subject = $sEditSubject;
-                else
-                        $subject = "";
-
-            $sEditMessage = $_POST['emailmessage'];
-            if (isset($sEditMessage))
-                        $message = $sEditMessage;
-                else
-                        $message = "";
-
-                echo gettext("Subject:");
-                echo "<br><input type=\"text\" name=\"emailtitle\" size=\"80\" value=\"" . htmlspecialchars(stripslashes($subject)) . "\"></input>";
-                echo "<br>" . gettext("Message:");
-                echo "<br><textarea name=\"emailmessage\" rows=\"20\" cols=\"72\">" . htmlspecialchars(stripslashes($message)) . "</textarea>";
-                echo "<br><input class=\"icButton\" type=\"submit\" name=\"submit\" value=\"" . gettext("Preview your Email") . "\"></form>";
+            }
+            $bcc_list .= $sToEmailAddress;
         }
-        echo "</td></tr></table></div>";
-        echo "<a name=\"email\"></a>";
+
+        $sEmailForm = ""; // Initialize to empty
+
+        ?><div align="center"><table><tr><td align="center"><?php
+        echo "<br><h2>" . gettext("Send Email To People in Cart") . "</h2>";
+ 
+        // Check if there are pending emails that have not been delivered
+        // A user cannot send a new email until the previous email has been sent
+    
+        $sSQL  = "SELECT COUNT(emp_usr_id) as count "
+               . "FROM email_message_pending_emp "
+               . "WHERE emp_usr_id='".$_SESSION['iUserID']."'";
+
+        $rsPendingEmail = RunQuery($sSQL);
+        $aRow = mysql_fetch_array($rsPendingEmail);
+        extract($aRow);
+
+        if ($count) {
+            // There is already a message composed in MySQL
+            // Let's check and make sure it has not been sent.
+            $sSQL = "SELECT * FROM email_message_pending_emp "
+                  . "WHERE emp_usr_id='".$_SESSION['iUserID']."'";
+
+            $rsPendingEmail = RunQuery($sSQL);
+            $aRow = mysql_fetch_array($rsPendingEmail);
+            extract($aRow);
+
+            if (!($emp_num_sent || $emp_num_left)) {
+                // if both are zero the email job has not started.  In this
+                // case the user may edit the email and/or change the distribution
+
+                // This user has no email messages stored MySQL
+
+                $sEmailSubject = $_POST['emailsubject'];
+                $sEmailMessage = $_POST['emailmessage'];
+
+                if (strlen($sEmailSubject.$sEmailMessage)) {
+
+                    // User has edited a message.  Update MySQL.                
+                    $sSQLu = "UPDATE email_message_pending_emp ".
+                             "SET emp_subject='".addslashes($sEmailSubject)."',".
+                             "    emp_message='".addslashes($sEmailMessage)."' ".
+                             "WHERE emp_usr_id='".$_SESSION['iUserID']."'";
+
+                    RunQuery($sSQLu);
+
+                }
+
+                // Retrieve subject and message from MySQL (it might not be in POST)
+
+                $rsPendingEmail = RunQuery($sSQL);
+                $aRow = mysql_fetch_array($rsPendingEmail);
+                extract($aRow);
+
+                $sEmailSubject = stripslashes($emp_subject);
+                $sEmailMessage = stripslashes($emp_message);
+
+                $sEmailForm = "sendoredit";                
+
+            } else {
+                // This job has already started.  The user may not change the message
+                // or the distribution once emails have actually been sent.
+                $sSQL = "SELECT emp_last_sent_time FROM email_message_pending_emp ".
+                        "WHERE emp_usr_id='".$_SESSION['iUserID']."'";
+
+                $rsTime = RunQuery($sSQL);
+                $aRow = mysql_fetch_array($rsTime);
+                extract($aRow);
+                
+                $tLastAttempt = strtotime($emp_last_attempt_time);
+                $tTimeSinceLastAttempt = time() - $tLastAttempt;
+                $iWaitTime = 120;   // Number of seconds to wait before you may
+                                    // send a new Email
+
+                if ($tTimeSinceLastAttempt > $iWaitTime) {
+                    // If it's been more than 2 minutes since the last email
+                    // attempt it is resonable to assume that the job failed
+                    // due to an error.  
+                    if (!($emp_num_sent)) {
+                        // No messages have been sent.
+                        // In this case the user has two choices.
+                        // 1) Start Over (use message and distribution)
+                        // 2) Resume (use message and distribution in MySQL)
+                        // 3) Abort (wipe this from MySQL)
+                        $sEmailForm = 'startoverresumeabort';
+                    } else {
+                        // Some messages have been sent.
+                        // The user may resume or abort
+                        $sEmailForm = 'resumeorabort';
+                    }
+                } else {
+                    // The user may be running the email job in another browser window
+                    // In this case display statistics on the job. 
+                    $sEmailForm = 'viewjobstatus';
+                }
+            }
+
+
+        } elseif (isset($email_array)) {
+
+            // This user has no email messages stored MySQL
+
+            $sEmailSubject = $_POST['emailsubject'];
+            $sEmailMessage = $_POST['emailmessage'];
+
+            if (strlen($sEmailSubject.$sEmailMessage)) {
+
+                // User has written a message.  Store it in MySQL.
+                // Since this is the first time use INSERT instead of UPDATE                
+                $sSQL = "INSERT INTO email_message_pending_emp ".
+                        "VALUES ('" .$_SESSION['iUserID']. "','0','0','',".
+                        "'2000-01-01 00:00:00','','2001-01-01 00:00:00','".
+                        addslashes($sEmailSubject). "','".
+                        addslashes($sEmailMessage). "')";
+
+                RunQuery($sSQL);
+
+                $sEmailForm = 'sendoredit';
+
+
+            } else {
+
+                // There is no pending message.  User may compose a new message.
+                $sEmailForm = 'compose';
+
+            }
+        }
+
+        if ($sEmailForm == 'compose') {
+
+            echo '<form method="post" action="EmailEditor.php">'."\n";
+
+            foreach ($email_array as $email_address) {
+                // Add all address except the default
+                // avoid sending to this address twice
+                if ($email_address != $sToEmailAddress) {
+                    echo '<input type="hidden" name="emaillist[]" value="' .
+                                                            $email_address . '">';
+                }
+            }
+            // The default address gets the last email
+            echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
+
+            echo '<input type="submit" class="icButton" name="submit" '.
+                 'value ="'.gettext("Compose Email").'">'."\n</form>";
+
+        } elseif ($sEmailForm == 'sendoredit') {
+
+            //Print the From, To, and Email List with the Subject and Message
+
+            echo "\n</td></tr></table></div>\n";
+
+            echo "<hr>\r\n";
+            echo '<p class="MediumText"><b>'.gettext("From:").'</b> "'.$sFromName.'"';
+            echo ' &lt;'.$sFromEmailAddress.'&gt;<br>'."\n";
+            echo '<b>'.gettext("To (blind):").'</b> '.$bcc_list.'<br>'."\n";
+
+            echo '<b>'.gettext("Subject:").'</b> '.htmlspecialchars($sEmailSubject).'<br>';
+
+            echo '</p><hr><textarea cols="72" rows="20" readonly class="MediumText" ';
+            echo 'style="border:0px;">'. htmlspecialchars($sEmailMessage) . '</textarea><br>';
+            echo "<hr>\n";
+
+            // Create button to edit this message.
+            echo '<div align="center"><table><tr><td>'."\n";
+            echo '<form method="post" action="EmailEditor.php">'."\n";
+
+            foreach ($email_array as $email_address) {
+                // Add all address except the default
+                // avoid sending to this address twice
+                if ($email_address != $sToEmailAddress) {
+                    echo '<input type="hidden" name="emaillist[]" value="' .
+                                                            $email_address . '">';
+                }
+            }
+            // The default address gets the last email
+            echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
+            echo '<input type="hidden" name="mysql" value="true">'."\n";
+
+            echo '<input type="submit" class="icButton" name="submit" '.
+                     'value ="'.gettext("Edit Email").'">'."\n</form>";
+
+            // Create button to send this message
+            echo "</td>\n<td>";
+
+            echo '<form method="post" action="EmailSend.php">'."\n";
+
+            foreach ($email_array as $email_address) {
+                // Add all address except the default
+                // avoid sending to this address twice
+                if ($email_address != $sToEmailAddress) {
+                    echo '<input type="hidden" name="emaillist[]" value="' .
+                                                            $email_address . '">';
+                }
+            }
+            // The default address gets the last email
+            echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
+            echo '<input type="hidden" name="mysql" value="true">'."\n";
+
+            echo '<input type="submit" class="icButton" name="submit" '.
+                     'value ="'.gettext("Send Email").'">'."\n</form>";
+
+        } elseif ($sEmailForm == 'startoverresumeabort') {
+
+            // The user has three choices
+            echo "<table>\n<tr><td>";
+            echo 'The previous email was not sent to any recipients. You may';
+            echo "</td></tr>\n<tr><td>";
+            echo '1 Resume (try again using same subject, message, and distribution)';
+            echo "</td></tr>\n<tr><td>";
+            echo '2 Start Over (abort, but save subject and message)';
+            echo "</td></tr>\n<tr><td>";
+            echo '3 Abort (discard everything)';
+            echo "</td></tr>\n</table>";
+
+            // Create button to resume this job.
+            echo '<div align="center"><table><tr><td>'."\n";
+            echo '<form method="post" action="EmailSend.php">'."\n";
+
+            echo '<input type="hidden" name="resume" value="true">'."\n";
+
+            echo '<input type="submit" class="icButton" name="submit" '.
+                     'value ="'.gettext("Resume").'">'."\n</form>";
+
+            // Create button to start over
+            echo "</td>\n<td>";
+
+            echo '<form method="post" action="EmailEditor.php">'."\n";
+
+            foreach ($email_array as $email_address) {
+                // Add all address except the default
+                // avoid sending to this address twice
+                if ($email_address != $sToEmailAddress) {
+                    echo '<input type="hidden" name="emaillist[]" value="' .
+                                                            $email_address . '">';
+                }
+            }
+            // The default address gets the last email
+            echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
+            echo '<input type="hidden" name="startover" value="true">'."\n";
+
+            echo '<input type="submit" class="icButton" name="submit" '.
+                     'value ="'.gettext("Start Over").'">'."\n</form>";
+
+
+            // Create button to abort
+            echo "</td>\n<td>";
+
+            echo '<form method="post" action="EmailSend.php">'."\n";
+
+            // The default address gets the last email
+            echo '<input type="hidden" name="abort" value="true">'."\n";
+
+            echo '<input type="submit" class="icButton" name="submit" '.
+                     'value ="'.gettext("Abort").'">'."\n</form>";
+
+        } elseif ($sEmailForm == 'resumeorabort') {
+
+            // The user has three choices
+            echo "<table>\n<tr><td>";
+            echo 'The previous email was not sent to any recipients. You may';
+            echo "</td></tr>\n<tr><td>";
+            echo '1 View Log';
+            echo "</td></tr>\n<tr><td>";
+            echo '2 Resume (try again using same subject, message, and distribution)';
+            echo "</td></tr>\n<tr><td>";
+            echo '3 Abort (discard everything)';
+            echo "</td></tr>\n</table>";
+
+            // Create button to resume this job.
+            echo '<div align="center"><table><tr><td>'."\n";
+            echo '<form method="post" action="EmailSend.php">'."\n";
+
+            echo '<input type="hidden" name="resume" value="true">'."\n";
+
+            echo '<input type="submit" class="icButton" name="submit" '.
+                     'value ="'.gettext("Resume").'">'."\n</form>";
+
+            // Create button to abort
+            echo "</td>\n<td>";
+
+            echo '<form method="post" action="EmailSend.php">'."\n";
+
+            // The default address gets the last email
+            echo '<input type="hidden" name="abort" value="true">'."\n";
+
+            echo '<input type="submit" class="icButton" name="submit" '.
+                     'value ="'.gettext("Abort").'">'."\n</form>";
+
+
+        } else  { // ($sEmailForm == 'viewjobstatus')
+            //echo '<br>job status form goes here<br>';
+            echo "<br><br>";
+            echo "It has been $tTimeSinceLastAttempt seconds since the last email ";
+            echo "was attempted<br>\n";
+            echo "$iWaitTime seconds must elapse before sending another email.<br>\n";
+
+            $iComeBack = $iWaitTime - $tTimeSinceLastAttempt;
+
+            echo "Refresh this page in $iComeBack seconds.<br>\n";
+
+        }
+ 
+        echo "</td></tr></table></div>\n";
+    }
 }
 
 require "Include/Footer.php";

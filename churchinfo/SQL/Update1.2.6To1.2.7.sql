@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `event_count_names` (
 `notes` varchar( 20 ) NOT NULL default '',
 UNIQUE KEY `count_id` ( `count_id` ) ,
 UNIQUE KEY `event_type_id` ( `event_type_id` , `count_name` )
-) TYPE=MYISAM;
+) TYPE=MyISAM;
 
 -- New table to track Event Counts
 CREATE TABLE IF NOT EXISTS `event_counts` (
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `event_counts` (
 `count_count` int( 6 ) default NULL ,
 `notes` varchar( 20 ) default NULL ,
 PRIMARY KEY ( `event_id` , `count_id` )
-) TYPE=MYISAM;
+) TYPE=MyISAM;
 
 -- Extend the table events_event to include event_type_name column
 ALTER TABLE `events_event` 
@@ -49,6 +49,30 @@ ALTER TABLE `event_types`
   ADD COLUMN `def_recur_DOM` char( 2 ) NOT NULL default '0' AFTER `def_recur_DOW`,
   ADD COLUMN `def_recur_DOY` date NOT NULL default '0000-00-00' AFTER `def_recur_DOM`,
   ADD COLUMN `active` int( 1 ) NOT NULL default '1' AFTER `def_recur_DOY`;
+
+-- New Table to keep track of emails that are ready to be sent
+CREATE TABLE IF NOT EXISTS `email_recipient_pending_erp` (
+  `erp_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `erp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT '0',
+  `erp_num_attempt` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `erp_email_address` varchar(50) NOT NULL DEFAULT ''
+) TYPE=MyISAM;
+
+-- New Table to keep track of email subject and text
+-- Also keeps a total of how many have been sent and how many
+-- still need to be sent ... allows pausing the job and resuming 
+-- at a later date
+CREATE TABLE IF NOT EXISTS `email_message_pending_emp` (
+  `emp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT '0',
+  `emp_num_sent` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `emp_num_left` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `emp_last_sent_addr` varchar(50) NOT NULL DEFAULT '',
+  `emp_last_sent_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:00',
+  `emp_last_attempt_addr` varchar(50) NOT NULL DEFAULT '',
+  `emp_last_attempt_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:00',
+  `emp_subject` varchar(80) NOT NULL DEFAULT '',
+  `emp_message` text NOT NULL DEFAULT ''
+) TYPE=MyISAM;
 
 -- New table to keep track of version information
 CREATE TABLE IF NOT EXISTS `version_ver` (

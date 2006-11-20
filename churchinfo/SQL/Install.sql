@@ -544,7 +544,7 @@ CREATE TABLE IF NOT EXISTS `event_count_names` (
 `notes` varchar( 20 ) NOT NULL default '',
 UNIQUE KEY `count_id` ( `count_id` ) ,
 UNIQUE KEY `event_type_id` ( `event_type_id` , `count_name` )
-) TYPE=MYISAM;
+) TYPE=MyISAM;
 
 -- New table to track Event Counts
 CREATE TABLE IF NOT EXISTS `event_counts` (
@@ -554,7 +554,7 @@ CREATE TABLE IF NOT EXISTS `event_counts` (
 `count_count` int( 6 ) default NULL ,
 `notes` varchar( 20 ) default NULL ,
 PRIMARY KEY ( `event_id` , `count_id` )
-) TYPE=MYISAM;
+) TYPE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS `event_types` (
   `type_id` int(11) NOT NULL auto_increment,
@@ -676,6 +676,25 @@ CREATE TABLE IF NOT EXISTS `istlookup_lu` (
   `lu_ErrorDesc` varchar(255) default NULL,
   PRIMARY KEY  (`lu_fam_ID`)
 ) TYPE=MyISAM COMMENT='US Address Verification Lookups From Intelligent Search Technology (IST)';
+
+CREATE TABLE IF NOT EXISTS `email_recipient_pending_erp` (
+  `erp_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `erp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT '0',
+  `erp_num_attempt` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `erp_email_address` varchar(50) NOT NULL DEFAULT ''
+) TYPE=MyISAM;
+
+CREATE TABLE IF NOT EXISTS `email_message_pending_emp` (
+  `emp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT '0',
+  `emp_num_sent` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `emp_num_left` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `emp_last_sent_addr` varchar(50) NOT NULL DEFAULT '',
+  `emp_last_sent_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:01',
+  `emp_last_attempt_addr` varchar(50) NOT NULL DEFAULT '',
+  `emp_last_attempt_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:01',
+  `emp_subject` varchar(80) NOT NULL DEFAULT '',
+  `emp_message` text NOT NULL DEFAULT ''
+) TYPE=MyISAM;
 
 
 INSERT IGNORE INTO `config_cfg` VALUES (1, 'sWEBCALENDARDB', '', 'text', '', 'WebCalendar database name', 'General');

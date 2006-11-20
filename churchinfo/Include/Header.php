@@ -36,6 +36,7 @@ $MenuFirst = 1;
 <head>
 	<meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
 	<title>ChurchInfo: <?php echo $sPageTitle; ?></title>
 	<link rel="stylesheet" type="text/css" href="Include/<?php echo $_SESSION['sStyle']; ?>">
 	<link rel="stylesheet" type="text/css" media="all" href="Include/jscalendar/calendar-blue.css" title="cal-style">
