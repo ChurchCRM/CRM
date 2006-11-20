@@ -632,6 +632,15 @@ INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_valu
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (0,4,'sFromName','ChurchInfo Webmaster',
 'text','Name that appears in From field','FALSE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (0,5,'bCreateDirectory','0',
+'boolean','User permission to create directories','FALSE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (0,6,'bExportCSV','0',
+'boolean','User permission to export CSV files','FALSE');
+
 
 -- Add permissions for Admin
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_ID, ucfg_id, ucfg_name, ucfg_value,
@@ -654,6 +663,14 @@ INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_valu
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (1,4,'sFromName','ChurchInfo Webmaster',
 'text','Name that appears in From field','TRUE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (1,5,'bCreateDirectory','1',
+'boolean','User permission to create directories','TRUE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (1,6,'bExportCSV','1',
+'boolean','User permission to export CSV files','TRUE');
 
 
 CREATE TABLE IF NOT EXISTS `istlookup_lu` (

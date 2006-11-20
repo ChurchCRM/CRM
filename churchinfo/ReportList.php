@@ -33,7 +33,7 @@ require "Include/Header.php";
 </p>
 
 
-<?php if ($_SESSION['bAdmin'] || !$bCSVAdminOnly) { ?>
+<?php if ($bCreateDirectory) { ?>
 	<p>
 	<a class="MediumText" href="DirectoryReports.php"><?php echo gettext("Members Directory"); ?></a>
 	<br>
@@ -103,7 +103,7 @@ $numRows = mysql_num_rows($rsOpps);
 		"with United States Postal Service Standard Address Format.<br>");
 
 	if (!strlen($sISTpassword))
-		echo gettext("To remove this report from this list delete both sISTusername" . 
+		echo gettext("To remove this report from this list delete both sISTusername " . 
 					"and sISTpassword from: Admin -> Edit General Settings"); 
 
 ?>

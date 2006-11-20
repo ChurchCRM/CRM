@@ -20,8 +20,8 @@ require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 require "../Include/ReportConfig.php";
 
-// If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
+// Check for Create Directory user permission.
+if (!$bCreateDirectory) {
     Redirect("Menu.php");
     exit;
 }

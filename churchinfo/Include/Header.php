@@ -530,11 +530,12 @@ $MenuFirst = 1;
 				'contents', <?php echo "'" . gettext("Data/Reports") . "'"; ?>,
 				'uri', '',
 				'statusText', '',
+                <?php if($bExportCSV) { ?>
 				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("CSV Export Records") . "'"; ?>,
 					'uri', 'CSVExport.php',
 					'statusText', ''
-				),
+				), <?php } ?>
 				<?php echo $MenuSecond++; ?>, new domMenu_Hash(
 					'contents', <?php echo "'" . gettext("Query Menu") . "'"; ?>,
 					'uri', 'QueryList.php',
@@ -939,7 +940,9 @@ else
 			<p>
 				<b><?php echo gettext("Data/Reports"); ?></b>
 				<br>
+                <?php if ($bExportCSV) { ?>
 				<a href="CSVExport.php" class="SmallText"><?php echo gettext("CSV Export Records"); ?></a>
+                <?php } ?>
 				<br>
 				<a href="QueryList.php" class="SmallText"><?php echo gettext("Query Menu"); ?></a>
 				<br>

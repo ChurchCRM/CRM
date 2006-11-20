@@ -102,8 +102,8 @@ require "Include/LabelFunctions.php";
 if (isset($_POST["cartcsv"]))
 {
 
-    // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-    if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) 
+    // If user does not have CSV Export permission, redirect to the menu.
+    if (!$bExportCSV) 
     {
 	   Redirect("Menu.php");
 	   exit;
@@ -262,7 +262,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
         echo "<a href=\"CartToEvent.php\">" . gettext("Empty Cart to Event") . "</a>";
 
         // Only show CSV export link if user is allowed to CSV export.
-        if ($_SESSION['bAdmin'] || !$bCSVAdminOnly) 
+        if ($bExportCSV) 
         {
             /* Link to CSV export */
             echo "<br>";
@@ -347,7 +347,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
 
 <?php
 // Only show CSV export link if user is allowed to CSV export.
-if ($_SESSION['bAdmin'] || !$bCSVAdminOnly) 
+if ($bExportCSV) 
 {
     ?>
     <div align="center">
@@ -359,16 +359,19 @@ if ($_SESSION['bAdmin'] || !$bCSVAdminOnly)
     </div>
     <?php
 } 
-?>
 
+// Only show create directory link if user is allowed to create directories
+if ($bCreateDirectory)
+{
+?>
 <div align="center"><form method="get" action="DirectoryReports.php">
 <?php echo "<br><h2>" . gettext("Create Directory From Cart") . "</h2>"; ?>
 <input type="submit" class="icButton" name="cartdir" 
        value="<?php echo gettext("Cart Directory");?>">
 </form></div>
-
-
 <?php
+}
+
 
     echo '<a name="email"></a>'; // anchor used by EmailEditor.php
 

@@ -137,8 +137,19 @@ FROM `user_id_tmp` ORDER BY `tmp_user_id`;
 INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
 `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
 SELECT `tmp_user_id`,4,'sFromName',@fromname,
-'text','Name that appears in From field','FALSE'
+'text','Name that appears in From field - replies go to this address','FALSE'
 FROM `user_id_tmp` ORDER BY `tmp_user_id`;
+INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
+`ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
+SELECT `tmp_user_id`,5,'bCreateDirectory','0',
+'boolean','User permission to create directories','FALSE'
+FROM `user_id_tmp` ORDER BY `tmp_user_id`;
+INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
+`ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
+SELECT `tmp_user_id`,6,'bExportCSV','0',
+'boolean','User permission to export CSV files','FALSE'
+FROM `user_id_tmp` ORDER BY `tmp_user_id`;
+
 
 -- No longer need temporary table
 DROP TABLE IF EXISTS `user_id_tmp`;
@@ -163,7 +174,15 @@ VALUES (1,3,'sFromEmailAddress',@fromaddress,
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (1,4,'sFromName',@fromname,
-'text','Name that appears in From field','TRUE');
+'text','Name that appears in From field - replies go to this address','TRUE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (1,5,'bCreateDirectory','1',
+'boolean','User permission to create directories','TRUE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (1,6,'bExportCSV','1',
+'boolean','User permission to export CSV files (comma separated)','TRUE');
 
 -- Fix a typo
 UPDATE IGNORE `config_cfg` 

@@ -19,6 +19,13 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+// If user does not have CSV Export permission, redirect to the menu.
+if (!$bExportCSV) 
+{
+    Redirect("Menu.php");
+    exit;
+}
+
 //Get Classifications for the drop-down
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
 $rsClassifications = RunQuery($sSQL);
