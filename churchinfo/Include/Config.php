@@ -8,18 +8,18 @@
 ******************************************************************************/
 
 // Database connection constants
-$sSERVERNAME = "localhost";
-$sUSER = "churchinfo";
-$sPASSWORD = "churchinfo";
-$sDATABASE = "churchinfo";
+$sSERVERNAME = 'localhost';
+$sUSER = 'churchinfo';
+$sPASSWORD = 'churchinfo';
+$sDATABASE = 'churchinfo';
 
 // Root path of your ChurchInfo installation ( THIS MUST BE SET CORRECTLY! )
 // For example, if you will be accessing from http://www.yourdomain.com/web/churchinfo
-// then you would enter "/web/churchinfo" here.
+// then you would enter '/web/churchinfo' here.
 // Another example, if you will be accessing from http://www.yourdomain.com
-// then you would enter "" here ... an empty string for a top level installation.
+// then you would enter '' here ... an empty string for a top level installation.
 // This path SHOULD NOT end with slash.
-$sRootPath="/churchinfo";
+$sRootPath='/churchinfo';
 
 // $_SERVER['DOCUMENT_ROOT'] is not defined on some web servers.  If this is the
 // case for your server you may need to change $sDocumentRoot.
@@ -29,7 +29,7 @@ $sDocumentRoot=$_SERVER['DOCUMENT_ROOT'];
 
 // If you are using a non-standard port number you may need to include the 
 // port number in the URL.  Default value is fine for most installations.
-$sPort="";
+$sPort='';
 
 // You can enforce https access by setting this true.
 $bHTTPSOnly=FALSE;
@@ -37,7 +37,7 @@ $bHTTPSOnly=FALSE;
 // When using a shared SSL certificate provided by your webhost for https access
 // you may need to add the shared SSL server name to the URL.  Default value is fine
 // for most installations
-$sSharedSSLServer="";
+$sSharedSSLServer='';
 
 // When using a shared SSL certificate your webhost may also require you to use a 
 // modified version of your hostname.  Default value is fine for most installations.
@@ -53,8 +53,8 @@ $sHTTP_Host=$_SERVER['HTTP_HOST'];
 // https://ssl.secureaccess.net/ssl.mydomain.org/churchinfo/Default.php
 //
 // Here are the settings to implement the above example
-// $sSharedSSLServer="ssl.secureaccess.net";
-// $sHTTP_Host="ssl.mydomain.org";
+// $sSharedSSLServer='ssl.secureaccess.net';
+// $sHTTP_Host='ssl.mydomain.org';
 //
 // If your webhost implements shared SSL differently you may need to modify the
 // source code to work with another implementation of shared SSL.  The only

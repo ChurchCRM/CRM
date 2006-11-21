@@ -373,8 +373,6 @@ if ($bCreateDirectory)
 }
 
 
-    echo '<a name="email"></a>'; // anchor used by EmailEditor.php
-
     if (($bEmailSend) && ($bSendPHPMail))
     {
 
@@ -384,7 +382,7 @@ if ($bCreateDirectory)
                 // Add all address except the default
                 // avoid sending to this address twice
                 if ($email_address != $sToEmailAddress) {
-                    $bcc_list .= $email_address . ",";
+                    $bcc_list .= $email_address . ", ";
                 }
             }
             $bcc_list .= $sToEmailAddress;
@@ -467,21 +465,11 @@ if ($bCreateDirectory)
                     // If it's been more than 2 minutes since the last email
                     // attempt it is resonable to assume that the job failed
                     // due to an error.  
-                    if (!($emp_num_sent)) {
-                        // No messages have been sent.
-                        // In this case the user has two choices.
-                        // 1) Start Over (use message and distribution)
-                        // 2) Resume (use message and distribution in MySQL)
-                        // 3) Abort (wipe this from MySQL)
-                        $sEmailForm = 'startoverresumeabort';
-                    } else {
-                        // Some messages have been sent.
-                        // The user may resume or abort
-                        $sEmailForm = 'resumeorabort';
-                    }
+                    // Some messages have been sent. The user may resume or abort
+                    $sEmailForm = 'resumeorabort';
                 } else {
                     // The user may be running the email job in another browser window
-                    // In this case display statistics on the job. 
+                    // In this case ask user to wait and come back in minute. 
                     $sEmailForm = 'viewjobstatus';
                 }
             }
@@ -591,71 +579,17 @@ if ($bCreateDirectory)
             echo '<input type="submit" class="icButton" name="submit" '.
                      'value ="'.gettext("Send Email").'">'."\n</form>";
 
-        } elseif ($sEmailForm == 'startoverresumeabort') {
-
-            // The user has three choices
-            echo "<table>\n<tr><td>";
-            echo 'The previous email was not sent to any recipients. You may';
-            echo "</td></tr>\n<tr><td>";
-            echo '1 Resume (try again using same subject, message, and distribution)';
-            echo "</td></tr>\n<tr><td>";
-            echo '2 Start Over (abort, but save subject and message)';
-            echo "</td></tr>\n<tr><td>";
-            echo '3 Abort (discard everything)';
-            echo "</td></tr>\n</table>";
-
-            // Create button to resume this job.
-            echo '<div align="center"><table><tr><td>'."\n";
-            echo '<form method="post" action="EmailSend.php">'."\n";
-
-            echo '<input type="hidden" name="resume" value="true">'."\n";
-
-            echo '<input type="submit" class="icButton" name="submit" '.
-                     'value ="'.gettext("Resume").'">'."\n</form>";
-
-            // Create button to start over
-            echo "</td>\n<td>";
-
-            echo '<form method="post" action="EmailEditor.php">'."\n";
-
-            foreach ($email_array as $email_address) {
-                // Add all address except the default
-                // avoid sending to this address twice
-                if ($email_address != $sToEmailAddress) {
-                    echo '<input type="hidden" name="emaillist[]" value="' .
-                                                            $email_address . '">';
-                }
-            }
-            // The default address gets the last email
-            echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
-            echo '<input type="hidden" name="startover" value="true">'."\n";
-
-            echo '<input type="submit" class="icButton" name="submit" '.
-                     'value ="'.gettext("Start Over").'">'."\n</form>";
-
-
-            // Create button to abort
-            echo "</td>\n<td>";
-
-            echo '<form method="post" action="EmailSend.php">'."\n";
-
-            // The default address gets the last email
-            echo '<input type="hidden" name="abort" value="true">'."\n";
-
-            echo '<input type="submit" class="icButton" name="submit" '.
-                     'value ="'.gettext("Abort").'">'."\n</form>";
-
         } elseif ($sEmailForm == 'resumeorabort') {
 
-            // The user has three choices
+            // The user has two choices
             echo "<table>\n<tr><td>";
-            echo 'The previous email was not sent to any recipients. You may';
+            echo 'The previous email did not succesfully complete. You may';
             echo "</td></tr>\n<tr><td>";
-            echo '1 View Log';
+            echo '1 Resume at point of failure (no duplicates will be sent)';
             echo "</td></tr>\n<tr><td>";
-            echo '2 Resume (try again using same subject, message, and distribution)';
+            echo '2 Abort (discard everything)';
             echo "</td></tr>\n<tr><td>";
-            echo '3 Abort (discard everything)';
+            echo '3 View Log';
             echo "</td></tr>\n</table>";
 
             // Create button to resume this job.
@@ -667,6 +601,7 @@ if ($bCreateDirectory)
             echo '<input type="submit" class="icButton" name="submit" '.
                      'value ="'.gettext("Resume").'">'."\n</form>";
 
+
             // Create button to abort
             echo "</td>\n<td>";
 
@@ -677,6 +612,18 @@ if ($bCreateDirectory)
 
             echo '<input type="submit" class="icButton" name="submit" '.
                      'value ="'.gettext("Abort").'">'."\n</form>";
+
+            // Create button to view log
+            echo "</td>\n<td>";
+
+            echo '<form method="post" action="EmailSend.php">'."\n";
+
+            // The default address gets the last email
+            echo '<input type="hidden" name="viewlog" value="true">'."\n";
+
+            echo '<input type="submit" class="icButton" name="submit" '.
+                     'value ="'.gettext("View Log").'">'."\n</form>";
+
 
 
         } else  { // ($sEmailForm == 'viewjobstatus')
@@ -690,8 +637,32 @@ if ($bCreateDirectory)
 
             echo "Refresh this page in $iComeBack seconds.<br>\n";
 
+            $sSQL = 'SELECT * FROM email_job_log_'.$_SESSION['iUserID'].' '.
+                    'ORDER BY ejl_id';
+
+            $rsEJL = RunQuery($sSQL, FALSE); // FALSE means do not stop on error
+            $sError = mysql_error();
+
+            if ($sError) {
+                echo '<br>'.$sError;
+                echo '<br>'.$sSQL;
+
+            } else {
+                $sHTMLLog = '<br><br><div align="center"><table>';            
+                while ($aRow = mysql_fetch_array($rsEJL)) {
+                    extract($aRow);
+
+                    $sTime = date('i:s', intval($ejl_time)).'.';
+                    $sTime .= substr($ejl_usec,0,3);
+                    $sMsg = stripslashes($ejl_text);
+                    $sHTMLLog .= '<tr><td>'.$sTime.'</td><td>'.$sMsg.'</td></tr>'."\n";
+                }
+                $sHTMLLog .= '</table></div>';
+                echo $sHTMLLog;
+            }
+
         }
- 
+        echo '<a name="email"></a>'; // anchor used by EmailEditor.php
         echo "</td></tr></table></div>\n";
     }
 }

@@ -24,70 +24,120 @@
 *
 ******************************************************************************/
 
-
 // Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
-
-// Set the page title
-//$sPageTitle = gettext("ChurchInfo Database Version Check");
-
-//require "Include/Header.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
 // Set the current version of this PHP file
 // Important!  These must be updated before every software release.
-$_SESSION['sChurchInfoPHPVersion'] = "1.2.7";
-$_SESSION['sChurchInfoPHPDate'] = "2006-11-01";
 
-// First check if the table version_ver exists.  If the table does not exist then
-// old style SQL scripts must be run to get the database up to version 1.2.7
+$_SESSION['sChurchInfoPHPVersion'] = '1.2.7';
+$_SESSION['sChurchInfoPHPDate'] = '2007-01-01';
 
-$bTableExists=FALSE;
-if(mysql_num_rows(mysql_query("SHOW TABLES LIKE 'version_ver'"))==1)
-    $bTableExists=TRUE;
+// Check if the table version_ver exists.  If the table does not exist then
+// SQL scripts must be manually run to get the database up to version 1.2.7
+$bTableExists = FALSE;
+if(mysql_num_rows(RunQuery("SHOW TABLES LIKE 'version_ver'")) == 1) {
+    $bTableExists = TRUE;
+}
+
+// Let's see if the MySQL version matches the PHP version.  If we have a match then
+// proceed to Menu.php.  Otherwise further error checking is needed.
+if ($bTableExists) {
+    $sSQL = 'SELECT * FROM version_ver ORDER BY ver_ID DESC';
+    $aRow = mysql_fetch_array(RunQuery($sSQL));
+    extract($aRow);
+
+    if ($ver_version == $_SESSION['sChurchInfoPHPVersion']) {
+        Redirect('Menu.php');
+        exit;
+    }
+}
+
+// Set the page title
+$sPageTitle = gettext('ChurchInfo: Database Version Check');
+
+?><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<head>
+	<meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="Include/Style.css">
+	<title><?php echo $sPageTitle; ?></title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td>
+<?php
+
 
 if(!$bTableExists) {
     // Display message indicating that the ChurchInfo database must be updated to version
     // 1.2.7 using SQL scripts
 
-    echo    "Error: Please update your ChurchInfo MySQL database to version 1.2.7 "
-    .       "before using version 1.2.7 (or later) of PHP code.<BR>";
-    echo    "Your database and PHP code are out of sync.  ChurchInfo is in an untested "
-    .       "state and may not be stable. ";
+    echo    'Error: Please update your ChurchInfo MySQL database to version 1.2.7 '
+    .       'before using version 1.2.7 (or later) of PHP code.<BR>';
+    echo    'Your database and PHP code are out of sync.  ChurchInfo is in an untested '
+    .       'state and may not be stable. ';
 
-//    require "Include/Footer.php";
+    require 'Include/Footer.php';
     exit;
 }
 
-// Let's see if the MySQL version matches the PHP version.  If we have a match then
-// proceed to Menu.php.  Otherwise further error checking is needed.
+// This code is ready to go for automatically updating from 1.2.7 to 1.3.0
+// whenever that may happen
+if ($ver_version == '1.2.7') {
+    $sUpdateFile = 'AutoSQL'.DIRECTORY_SEPARATOR.'Update1.2.7To1.3.0.sql';
 
-$sSQL  = "SELECT * FROM version_ver ORDER BY ver_ID DESC";
-$rsVersion = mysql_query($sSQL);
+    if ((file_exists($sUpdateFile) && is_readable($sUpdateFile))) {
+        $sSQL = file_get_contents($sUpdateFile);
+        RunQuery($sSQL, FALSE); // FALSE means do not stop on error
+        $sError = mysql_error();
+    } else {
+        $sSQL = 'Could not access file '.$sUpdateFile;
+        $sError = $sSQL;
+    }
 
-$aRow = mysql_fetch_array($rsVersion);
-extract($aRow);
-if ($ver_version == $_SESSION['sChurchInfoPHPVersion']) {
-    Redirect("Menu.php");
+    if ($sError) {
+        echo '<br>MySQL error while upgrading database:<br>'.$sError."<br><br>\n";
+
+        echo '<br><br>You are seeing this message because you have encountered software a bug.'
+        .    '<br>Please post to the ChurchInfo '
+        .       '<a href="http://sourceforge.net/forum/forum.php?forum_id=401180"> help forum</a> '
+        .       'for assistance. The complete query is shown below.<br>'."\n";
+
+        echo "<br>$sSQL<br>\n";
+
+        echo '<br>ChurchInfo MySQL Version = ' . $ver_version;
+        echo '<br>ChurchInfo PHP Version = ' . $_SESSION['sChurchInfoPHPVersion'];
+
+    } else {
+
+        echo '<br>Database schema has been updated from 1.2.7 to 1.3.0.<br>'
+        .    '<BR>Please <a href="Default.php">click here</a> to log in again.';
+
+    }
+
+    require 'Include/Footer.php';
     exit;
 }
-
-// This code will be added when version 1.2.8 is released
-//if ($ver_version == "1.2.7") {
-//    Redirect("Updates/From1.2.7To1.2.8.php");
-//    exit;
-//}
 
 
 // We should not get to the bottom of this file.  We only get here if there is a bug.
 
 echo    'There is an incompatibility between database schema and PHP script.  You are seeing '
-.       'this message because there is a bug.'
+.       'this message because there is a software bug.'
 .       '<BR>Please post to the ChurchInfo '
 .       '<a href="http://sourceforge.net/forum/forum.php?forum_id=401180"> Help forum</a> '
 .       'for assistance. ';
 
 echo    '<BR>ChurchInfo MySQL Version = ' . $ver_version;
 echo    '<BR>ChurchInfo PHP Version = ' . $_SESSION['sChurchInfoPHPVersion'];
+
+require 'Include/Footer.php';
 
 ?>

@@ -62,43 +62,20 @@ function ClearEmailLog()
             ) TYPE=MyISAM";
     RunQuery($sSQL);
 
-    $sSQL = "INSERT INTO email_job_log_".$iUserID."
-             SET ejl_time='".$tSec."',
-                 ejl_usec='".$tUsec."',
-                 ejl_text='".$sMessage."'";
+    $sSQL = "INSERT INTO email_job_log_".$iUserID." 
+             SET ejl_text='".addslashes($sMessage)."', 
+                 ejl_time='".addslashes($tSec)."',
+                 ejl_usec='".addslashes($tUsec)."'";
+
     RunQuery($sSQL);
 }
 
 function AddToEmailLog($sMessage, $iUserID)
 {
-//   Stuff commented out was useful during debugging
+    $tSystem = gettimeofday();
 
-
-//    $sSQL = "SELECT * FROM email_job_log_".$iUserID."
-//             ORDER BY ejl_id DESC LIMIT 1";
-//    $rsEJL = RunQuery($sSQL);
-//    $aRow = mysql_fetch_array($rsEJL);
-//    extract ($aRow);
-
-//    $tLast = floatval($ejl_time.'.'.$ejl_usec);
-
-    // do { } while () ; // Loop may be cruft.  
-    // Loop was useful during development and debugging.
-
-//    $iEmergencyExit = 0;    
-//    do {
-
-        $tSystem = gettimeofday();
-
-        $tSec = $tSystem['sec'];
-        $tUsec = str_pad($tSystem['usec'], 6, "0");
-
-        $tNow = floatval($tSec.'.'.$tUsec);
-
-//        $iEmergencyExit++;
-//        if ($iEmergencyExit > 10) break;
-
-//    } while (!($tNow > $tLast));
+    $tSec = $tSystem['sec'];
+    $tUsec = str_pad($tSystem['usec'], 6, "0");
 
     $sSQL = "INSERT INTO email_job_log_".$iUserID." 
              SET ejl_text='".addslashes($sMessage)."', 
@@ -343,9 +320,9 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
 // This script does nothing if the table already exists
 // Table is dropped when job is finished
 
-$bTableExists=FALSE;
-if(mysql_num_rows(mysql_query("SHOW TABLES LIKE 'email_job_log_".$iUserID."'"))==1) {
-    $bTableExists=TRUE;
+$bTableExists = FALSE;
+if(mysql_num_rows(mysql_query("SHOW TABLES LIKE 'email_job_log_".$iUserID."'"))== 1 ) {
+    $bTableExists = TRUE;
 }
 
 if (!$bTableExists) {
@@ -503,16 +480,19 @@ if (!$emp_num_sent && !$emp_num_left) {
 
 } elseif ($emp_num_left) {
 
-    AddToEmailLog('Job continuing after page reload', $iUserID);
+    if (!($_POST['viewlog'] == 'true')) {
 
-    if ($_SESSION['sEmailState'] != 'continue') {
+        $sMsg = 'Job continuing after page reload at '.date('Y-m-d H:i:s');
+        AddToEmailLog($sMsg, $iUserID);
 
-        if ($_SESSION['sEmailState'] != 'error') {
-            $sMsg = 'Error on line '.__LINE__.' of file '.__FILE__;
-            AddToEmailLog($sMsg, $iUserID);
-            $_SESSION['sEmailState'] = 'error';
+        if ($_SESSION['sEmailState'] != 'continue') {
+
+            if ($_SESSION['sEmailState'] != 'error') {
+                $sMsg = 'Error on line '.__LINE__.' of file '.__FILE__;
+                AddToEmailLog($sMsg, $iUserID);
+                $_SESSION['sEmailState'] = 'error';
+            }
         }
-
     }
 
 } else {
@@ -610,6 +590,8 @@ if ($sEmailState == 'continue') {
         $_SESSION['sEmailState'] = 'finish';
     }
 
+    $sHTMLfilename = '/var/www/html/CVSchurchinfo/EmailSendContinue.html';
+
 } elseif ($sEmailState == 'start') {
 
     // send start message
@@ -662,6 +644,8 @@ if ($sEmailState == 'continue') {
 
     }
 
+    $sHTMLfilename = '/var/www/html/CVSchurchinfo/EmailSendStart.html';
+
 } elseif ($sEmailState == 'finish') {
 
     $sSubject = "Email job finished at $tTimeStamp";
@@ -683,7 +667,7 @@ if ($sEmailState == 'continue') {
     $sSQL = "SELECT * FROM email_job_log_".$iUserID." ".
             "ORDER BY ejl_id";
 
-    $sHTMLLog = '<div align="center"><table>';
+    $sHTMLLog = '<br><br><div align="center"><table>';
 
     $rsEJL = RunQuery($sSQL);
     while ($aRow = mysql_fetch_array($rsEJL)) {
@@ -693,7 +677,7 @@ if ($sEmailState == 'continue') {
         $sTime .= substr($ejl_usec,0,3);
         $sMsg = stripslashes($ejl_text);
         $sMessage .= $sTime.' '.$sMsg."\n";
-        $sHTMLLog .= '<tr><td>'.$sTime.'</td><td>'.$sMsg.'</td></tr><br>'."\n";
+        $sHTMLLog .= '<tr><td>'.$sTime.'</td><td>'.$sMsg.'</td></tr>'."\n";
     }
     $sHTMLLog .= '</table></div>';
 
@@ -705,7 +689,6 @@ if ($sEmailState == 'continue') {
     SendEmail($sSubject, $sMessage, $sToEmailAddress);
 
     echo "<br><b>The job is finished!</b><br>\n";
-    echo "On some browsers you may need to scroll down to find the log. Why?<br>\n";
 
     echo $sHTMLLog;
 
@@ -732,12 +715,11 @@ if ($sEmailState == 'continue') {
     AddToEmailLog("Job terminating due to error.  You may try to resume later.", $iUserID);
 
     echo "Job terminated due to error.  Please review log for further information.<br>\n";
-    echo "On some browsers you may need to scroll down to find the log. Why?<br>\n";
 
     $sSQL = "SELECT * FROM email_job_log_".$iUserID." ".
             "ORDER BY ejl_id";
 
-    $sHTMLLog = '<table>';
+    $sHTMLLog = '<br><br><div align="center"><table>';
 
     $rsEJL = RunQuery($sSQL);
     while ($aRow = mysql_fetch_array($rsEJL)) {
@@ -746,10 +728,11 @@ if ($sEmailState == 'continue') {
         $sTime = date('i:s', intval($ejl_time)).'.';
         $sTime .= substr($ejl_usec,0,3);
         $sMsg = stripslashes($ejl_text);
-        $sHTMLLog .= '<tr><td>'.$sTime.'</td><td>'.$sMsg.'</td></tr><br>'."\n";
+        $sHTMLLog .= '<tr><td>'.$sTime.'</td><td>'.$sMsg.'</td></tr>'."\n";
     }
 
-    $sHTMLLog .= '</table>';
+    $sHTMLLog .= '</table></div>';
+
     echo $sHTMLLog;
 
 } else {

@@ -1,18 +1,24 @@
 <?php
 /*******************************************************************************
- *
- *  filename    : EmailPreview.php
- *  description : Displays preview of email
- *
- *  http://www.infocentral.org/
- *  Copyright 2001-2003 Lewis Franklin
- *
- *  InfoCentral is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- ******************************************************************************/
+*
+*  filename    : EmailEditor.php
+*  description : Form for entering email subject and message
+*
+*  http://www.churchdb.org/
+*
+*  Contributors:
+*  2006 Ed Davis
+*
+*  Copyright Contributors
+*
+*  ChurchInfo is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This file best viewed in a text editor with tabs stops set to 4 characters
+*
+******************************************************************************/
 
 // Include the function library
 require "Include/Config.php";
@@ -25,38 +31,17 @@ $bcc_list = implode(", ", $email_array);
 $sEmailSubject = "";
 $sEmailMessage = "";
 
-if ( $_POST['mysql']     == 'true' ||
-     $_POST['startover'] == 'true' ) {
+if ($_POST['mysql'] == 'true') {
 
     // There is a subject and message already stored in mysql
     $sSQL = "SELECT * FROM email_message_pending_emp ".
             "WHERE emp_usr_id='".$_SESSION['iUserID']."' LIMIT 1";
 
-    $rsEMP = RunQuery($sSQL);
-    $aRow = mysql_fetch_array($rsEMP);
+    $aRow = mysql_fetch_array(RunQuery($sSQL));
     extract($aRow);
 
     $sEmailSubject = stripslashes($emp_subject);
     $sEmailMessage = stripslashes($emp_message);
-}
-
-if ( $_POST['startover'] == 'true' || 
-     $_POST['abort']     == 'true' ) {
-
-    // Wipe clean both tables clean
-    $sSQL = "DELETE FROM email_message_pending_emp ".
-            "WHERE emp_usr_id='".$_SESSION['iUserID']."'";
-
-    RunQuery($sSQL);
-
-    $sSQL = "DELETE FROM email_recipient_pending_erp ".
-            "WHERE erp_usr_id='".$_SESSION['iUserID']."'";
-
-    RunQuery($sSQL);
-}
-
-if ( $_POST['abort'] == 'true' ) {
-    Redirect("CartView.php");
 }
 
 // Security: Both global and user permissions needed to send email.

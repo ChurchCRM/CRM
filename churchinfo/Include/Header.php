@@ -942,8 +942,8 @@ else
 				<br>
                 <?php if ($bExportCSV) { ?>
 				<a href="CSVExport.php" class="SmallText"><?php echo gettext("CSV Export Records"); ?></a>
-                <?php } ?>
 				<br>
+                <?php } ?>
 				<a href="QueryList.php" class="SmallText"><?php echo gettext("Query Menu"); ?></a>
 				<br>
 				<a href="ReportList.php" class="SmallText"><?php echo gettext("Report Menu"); ?></a>
