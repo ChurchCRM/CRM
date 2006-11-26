@@ -60,14 +60,16 @@ if ($rsConfig) {
     }
 }
 
-// Load user variables from user config table.
-// **************************************************
-$sSQL = "SELECT ucfg_name, ucfg_value AS value "
-      . "FROM userconfig_ucfg WHERE ucfg_per_ID='".$_SESSION['iUserID']."'";
-$rsConfig = mysql_query($sSQL);     // Can't use RunQuery -- not defined yet
-if ($rsConfig) {
-    while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
-        $$ucfg_name = $value;
+if (isset($_SESSION['iUserID'])) {      // Not set on Default.php
+    // Load user variables from user config table.
+    // **************************************************
+    $sSQL = "SELECT ucfg_name, ucfg_value AS value "
+          . "FROM userconfig_ucfg WHERE ucfg_per_ID='".$_SESSION['iUserID']."'";
+    $rsConfig = mysql_query($sSQL);     // Can't use RunQuery -- not defined yet
+    if ($rsConfig) {
+        while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
+            $$ucfg_name = $value;
+        }
     }
 }
 
