@@ -420,15 +420,15 @@ if ($bCreateDirectory)
 
                 // This user has no email messages stored MySQL
 
-                $sEmailSubject = $_POST['emailsubject'];
-                $sEmailMessage = $_POST['emailmessage'];
+                $sEmailSubject = stripslashes($_POST['emailsubject']);
+                $sEmailMessage = stripslashes($_POST['emailmessage']);
 
                 if (strlen($sEmailSubject.$sEmailMessage)) {
 
                     // User has edited a message.  Update MySQL.                
                     $sSQLu = "UPDATE email_message_pending_emp ".
-                             "SET emp_subject='".addslashes($sEmailSubject)."',".
-                             "    emp_message='".addslashes($sEmailMessage)."' ".
+                             "SET emp_subject='".mysql_real_escape_string($sEmailSubject)."',".
+                             "    emp_message='".mysql_real_escape_string($sEmailMessage)."' ".
                              "WHERE emp_usr_id='".$_SESSION['iUserID']."'";
 
                     RunQuery($sSQLu);
@@ -441,8 +441,8 @@ if ($bCreateDirectory)
                 $aRow = mysql_fetch_array($rsPendingEmail);
                 extract($aRow);
 
-                $sEmailSubject = stripslashes($emp_subject);
-                $sEmailMessage = stripslashes($emp_message);
+                $sEmailSubject = $emp_subject;
+                $sEmailMessage = $emp_message;
 
                 $sEmailForm = "sendoredit";                
 
@@ -479,8 +479,8 @@ if ($bCreateDirectory)
 
             // This user has no email messages stored MySQL
 
-            $sEmailSubject = $_POST['emailsubject'];
-            $sEmailMessage = $_POST['emailmessage'];
+            $sEmailSubject = stripslashes($_POST['emailsubject']);
+            $sEmailMessage = stripslashes($_POST['emailmessage']);
 
             if (strlen($sEmailSubject.$sEmailMessage)) {
 
@@ -489,8 +489,8 @@ if ($bCreateDirectory)
                 $sSQL = "INSERT INTO email_message_pending_emp ".
                         "VALUES ('" .$_SESSION['iUserID']. "','0','0','',".
                         "'2000-01-01 00:00:00','','2001-01-01 00:00:00','".
-                        addslashes($sEmailSubject). "','".
-                        addslashes($sEmailMessage). "')";
+                        mysql_real_escape_string($sEmailSubject). "','".
+                        mysql_real_escape_string($sEmailMessage). "')";
 
                 RunQuery($sSQL);
 

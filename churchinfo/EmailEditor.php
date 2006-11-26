@@ -40,8 +40,8 @@ if ($_POST['mysql'] == 'true') {
     $aRow = mysql_fetch_array(RunQuery($sSQL));
     extract($aRow);
 
-    $sEmailSubject = stripslashes($emp_subject);
-    $sEmailMessage = stripslashes($emp_message);
+    $sEmailSubject = $emp_subject;
+    $sEmailMessage = $emp_message;
 }
 
 // Security: Both global and user permissions needed to send email.
@@ -73,11 +73,11 @@ echo '<form action="CartView.php#email" method="post">';
 
 echo gettext('Subject:');
 echo '<br><input type="text" name="emailsubject" size="80" value="';
-echo htmlspecialchars(stripslashes($sEmailSubject)) . '"></input>'."\n";
+echo htmlspecialchars($sEmailSubject) . '"></input>'."\n";
 
 echo '<br>' . gettext('Message:');
 echo '<br><textarea name="emailmessage" rows="20" cols="72">';
-echo htmlspecialchars(stripslashes($sEmailMessage)) . '</textarea>'."\n";
+echo htmlspecialchars($sEmailMessage) . '</textarea>'."\n";
 
 echo '<br><input class="icButton" type="submit" name="submit" value="';
 echo gettext('Save Email') . '"></form>'."\n";

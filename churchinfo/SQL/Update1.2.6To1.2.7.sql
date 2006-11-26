@@ -132,12 +132,12 @@ FROM `user_id_tmp` ORDER BY `tmp_user_id`;
 INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
 `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
 SELECT `tmp_user_id`,3,'sFromEmailAddress',@fromaddress,
-'text','Reply email address for PHPMailer','FALSE'
+'text','Reply email address: PHPMailer','FALSE'
 FROM `user_id_tmp` ORDER BY `tmp_user_id`;
 INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
 `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
 SELECT `tmp_user_id`,4,'sFromName',@fromname,
-'text','Name that appears in From field - replies go to this address','FALSE'
+'text','Name that appears in From field: PHPMailer','FALSE'
 FROM `user_id_tmp` ORDER BY `tmp_user_id`;
 INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
 `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
@@ -148,6 +148,11 @@ INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `uc
 `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
 SELECT `tmp_user_id`,6,'bExportCSV','0',
 'boolean','User permission to export CSV files','FALSE'
+FROM `user_id_tmp` ORDER BY `tmp_user_id`;
+INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
+`ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
+SELECT `tmp_user_id`,7,'bUSAddressVerification','0',
+'boolean','User permission to use IST Address Verification','FALSE'
 FROM `user_id_tmp` ORDER BY `tmp_user_id`;
 
 
@@ -170,11 +175,11 @@ VALUES (1,2,'bSendPHPMail','1',
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (1,3,'sFromEmailAddress',@fromaddress,
-'text','Reply email address for PHPMailer','TRUE');
+'text','Reply email address: PHPMailer','TRUE');
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (1,4,'sFromName',@fromname,
-'text','Name that appears in From field - replies go to this address','TRUE');
+'text','Name that appears in From field: PHPMailer','TRUE');
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (1,5,'bCreateDirectory','1',
@@ -182,7 +187,11 @@ VALUES (1,5,'bCreateDirectory','1',
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
 VALUES (1,6,'bExportCSV','1',
-'boolean','User permission to export CSV files (comma separated)','TRUE');
+'boolean','User permission to export CSV files','TRUE');
+INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
+ucfg_type, ucfg_tooltip, ucfg_permission)
+VALUES (1,7,'bUSAddressVerification','1',
+'boolean','User permission to use IST Address Verification','TRUE');
 
 -- Fix a typo
 UPDATE IGNORE `config_cfg` 
@@ -240,171 +249,165 @@ SELECT 1,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcf
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sWEBCALENDARDB';
 INSERT INTO `config_cfg`
 SELECT 2,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
-FROM `tempconfig_tcfg` WHERE `tcfg_name`='aHTTPports';
-INSERT INTO `config_cfg`
-SELECT 3,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
-FROM `tempconfig_tcfg` WHERE `tcfg_name`='aHTTPSports';
-INSERT INTO `config_cfg`
-SELECT 4,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='debug';
 INSERT INTO `config_cfg`
-SELECT 5,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 3,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sJPGRAPH_PATH';
 INSERT INTO `config_cfg`
-SELECT 6,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 4,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sFPDF_PATH';
 INSERT INTO `config_cfg`
-SELECT 7,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 5,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sDirClassifications';
 INSERT INTO `config_cfg`
-SELECT 8,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 6,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sDirRoleHead';
 INSERT INTO `config_cfg`
-SELECT 9,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 7,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sDirRoleSpouse';
 INSERT INTO `config_cfg`
-SELECT 10,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 8,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sDirRoleChild';
 INSERT INTO `config_cfg`
-SELECT 11,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 9,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sSessionTimeout';
 INSERT INTO `config_cfg`
-SELECT 12,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 10,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='aFinanceQueries';
 INSERT INTO `config_cfg`
-SELECT 13,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 11,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bCSVAdminOnly';
 INSERT INTO `config_cfg`
-SELECT 14,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 12,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sDefault_Pass';
 INSERT INTO `config_cfg`
-SELECT 15,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 13,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sMinPasswordLength';
 INSERT INTO `config_cfg`
-SELECT 16,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 14,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sMinPasswordChange';
 INSERT INTO `config_cfg`
-SELECT 17,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 15,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sDisallowedPasswords';
 INSERT INTO `config_cfg`
-SELECT 18,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 16,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='iMaxFailedLogins';
 INSERT INTO `config_cfg`
-SELECT 19,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 17,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bToolTipsOn';
 INSERT INTO `config_cfg`
-SELECT 20,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 18,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='iNavMethod';
 INSERT INTO `config_cfg`
-SELECT 21,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 19,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bFamListFirstNames';
 INSERT INTO `config_cfg`
-SELECT 22,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 20,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='iPDFOutputType';
 INSERT INTO `config_cfg`
-SELECT 23,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 21,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sDefaultCity';
 INSERT INTO `config_cfg`
-SELECT 24,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 22,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sDefaultState';
 INSERT INTO `config_cfg`
-SELECT 25,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 23,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sDefaultCountry';
 INSERT INTO `config_cfg`
-SELECT 26,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 24,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bEmailSend';
 INSERT INTO `config_cfg`
-SELECT 27,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 25,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sSendType';
 INSERT INTO `config_cfg`
-SELECT 28,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 26,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sToEmailAddress';
 INSERT INTO `config_cfg`
-SELECT 29,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 27,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sSMTPHost';
 INSERT INTO `config_cfg`
-SELECT 30,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 28,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sSMTPAuth';
 INSERT INTO `config_cfg`
-SELECT 31,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 29,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sSMTPUser';
 INSERT INTO `config_cfg`
-SELECT 32,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 30,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sSMTPPass';
 INSERT INTO `config_cfg`
-SELECT 33,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 31,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sWordWrap';
 INSERT INTO `config_cfg`
-SELECT 34,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 32,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bDefectiveBrowser';
 INSERT INTO `config_cfg`
-SELECT 35,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 33,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bShowFamilyData';
 INSERT INTO `config_cfg`
-SELECT 36,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 34,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bOldVCardVersion';
 INSERT INTO `config_cfg`
-SELECT 37,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 35,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bEnableBackupUtility';
 INSERT INTO `config_cfg`
-SELECT 38,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 36,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sGZIPname';
 INSERT INTO `config_cfg`
-SELECT 39,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 37,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sZIPname';
 INSERT INTO `config_cfg`
-SELECT 40,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 38,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sPGPname';
 INSERT INTO `config_cfg`
-SELECT 41,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 39,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sLanguage';
 INSERT INTO `config_cfg`
-SELECT 42,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 40,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='iFYMonth';
 INSERT INTO `config_cfg`
-SELECT 43,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 41,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sXML_RPC_PATH';
 INSERT INTO `config_cfg`
-SELECT 44,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 42,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sGeocoderID';
 INSERT INTO `config_cfg`
-SELECT 45,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 43,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sGeocoderPW';
 INSERT INTO `config_cfg`
-SELECT 46,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 44,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sGoogleMapKey';
 INSERT INTO `config_cfg`
-SELECT 47,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 45,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='nChurchLatitude';
 INSERT INTO `config_cfg`
-SELECT 48,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 46,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='nChurchLongitude';
 INSERT INTO `config_cfg`
-SELECT 49,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 47,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bHidePersonAddress';
 INSERT INTO `config_cfg`
-SELECT 50,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 48,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bHideFriendDate';
 INSERT INTO `config_cfg`
-SELECT 51,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 49,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bHideFamilyNewsletter';
 INSERT INTO `config_cfg`
-SELECT 52,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 50,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bHideWeddingDate';
 INSERT INTO `config_cfg`
-SELECT 53,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 51,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bHideLatLon';
 INSERT INTO `config_cfg`
-SELECT 54,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 52,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='bUseDonationEnvelopes';
 INSERT INTO `config_cfg`
-SELECT 55,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 53,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sHeader';
 INSERT INTO `config_cfg`
-SELECT 56,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 54,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sISTusername';
 INSERT INTO `config_cfg`
-SELECT 57,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
+SELECT 55,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`
 FROM `tempconfig_tcfg` WHERE `tcfg_name`='sISTpassword';
 INSERT INTO `config_cfg`
 SELECT 999,`tcfg_name`,`tcfg_value`,`tcfg_type`,`tcfg_default`,`tcfg_tooltip`,`tcfg_section`

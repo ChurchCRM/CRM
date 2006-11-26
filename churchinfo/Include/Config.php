@@ -9,22 +9,22 @@
 
 // Database connection constants
 $sSERVERNAME = 'localhost';
-$sUSER = 'churchinfo';
-$sPASSWORD = 'churchinfo';
-$sDATABASE = 'churchinfo';
+$sUSER = 'buufuser';
+$sPASSWORD = 'mysql';
+$sDATABASE = 'BUUF';
 
 // Root path of your ChurchInfo installation ( THIS MUST BE SET CORRECTLY! )
 // For example, if you will be accessing from http://www.yourdomain.com/web/churchinfo
 // then you would enter '/web/churchinfo' here.
 // Another example, if you will be accessing from http://www.yourdomain.com
-// then you would enter '' here ... an empty string for a top level installation.
+// then you would enter '' ... an empty string for a top level installation.
 // This path SHOULD NOT end with slash.
-$sRootPath='/churchinfo';
+$sRootPath='/CVSchurchinfo';
 
 // $_SERVER['DOCUMENT_ROOT'] is not defined on some web servers.  If this is the
 // case for your server you may need to change $sDocumentRoot.
-// $sDocumentRoot="/var/www/html";
-// $sDocumentRoot="c:\\inetpub\\wwwroot";
+// $sDocumentRoot='/var/www/html';
+// $sDocumentRoot='c:\\inetpub\\wwwroot';
 $sDocumentRoot=$_SERVER['DOCUMENT_ROOT'];
 
 // If you are using a non-standard port number you may need to include the 

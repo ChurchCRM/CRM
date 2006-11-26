@@ -2,7 +2,6 @@
 /*******************************************************************************
 *
 *  filename    : Reports/AccessReport.php
-*  last change : 2003-08-30
 *  description : Creates a report on access by users
 *
 *  ChurchInfo is free software; you can redistribute it and/or modify
@@ -12,14 +11,14 @@
 *
 ******************************************************************************/
 
-require "../Include/Config.php";
-require "../Include/Functions.php";
-require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
+require '../Include/Config.php';
+require '../Include/Functions.php';
+require '../Include/ReportFunctions.php';
+require '../Include/ReportConfig.php';
 
-// If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
-	Redirect("Menu.php");
+// If user is not admin, redirect to the menu.
+if (!$_SESSION['bAdmin']) {
+	Redirect('Menu.php');
 	exit;
 }
 
@@ -31,7 +30,7 @@ class PDF_AccessReport extends ChurchInfoReport {
 	var $_Char_Size   = 12;        // Character size
 	var $_CurLine     = 0;
 	var $_Column      = 0;
-	var $_Font        = "Times";
+	var $_Font        = 'Times';
 	var $sFamily;
 	var $sLastName;
 
@@ -47,11 +46,11 @@ class PDF_AccessReport extends ChurchInfoReport {
 	// Constructor
 	function PDF_AccessReport() {
 		global $paperFormat;
-		parent::FPDF("P", "mm", $this->paperFormat);
+		parent::FPDF('P', 'mm', $this->paperFormat);
 
 		$this->_Column      = 0;
 		$this->_CurLine     = 2;
-		$this->_Font        = "Times";
+		$this->_Font        = 'Times';
 		$this->SetMargins(0,0);
 		$this->Open();
 		$this->Set_Char_Size(12);
@@ -62,7 +61,7 @@ class PDF_AccessReport extends ChurchInfoReport {
 		$this->_Margin_Top  = 12;
 
 		$this->Set_Char_Size(20);
-		$this->Write (10, "ChurchInfo Users Starting With Most Recently Logged In");
+		$this->Write (10, 'ChurchInfo Users Starting With Most Recently Logged In');
 		$this->Set_Char_Size(12);
 	}
 
@@ -99,7 +98,7 @@ class PDF_AccessReport extends ChurchInfoReport {
 
 		$lastLogin = $usr_LastLogin;
 
-		$sMemberStr = $per_FirstName . " " . $per_LastName . ", last log in " . $lastLogin . "\n";
+		$sMemberStr = "$per_FirstName $per_LastName, last log in $lastLogin\n";
 		return $sMemberStr;
 	}
 
@@ -135,7 +134,7 @@ $rsRecords = RunQuery($sSQL);
 
 while ($aRow = mysql_fetch_array($rsRecords))
 {
-	$OutStr = "";
+	$OutStr = '';
 	extract($aRow);
 
 	$OutStr = $pdf->sGetUserString($aRow);
@@ -152,7 +151,7 @@ while ($aRow = mysql_fetch_array($rsRecords))
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
 if ($iPDFOutputType == 1)
-	$pdf->Output("Directory-" . date("Ymd-Gis") . ".pdf", true);
+	$pdf->Output('Directory-' . date("Ymd-Gis") . '.pdf', true);
 else
 	$pdf->Output();	
 ?>

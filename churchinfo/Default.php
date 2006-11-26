@@ -22,18 +22,18 @@
 if (ini_get('register_globals'))
 {
 	echo "<h3>ChurchInfo will not operate with PHP's register_globals option turned on.<br>";
-	echo "This is for your own protection as the use of this setting could entirely undermine <br>";
-	echo "all security.  You need to either turn off register_globals in your php.ini or else<br>";
-	echo "configure your web server to turn off register_globals for the ChurchInfo directory.</h3>";
+	echo 'This is for your own protection as the use of this setting could entirely undermine <br>';
+	echo 'all security.  You need to either turn off register_globals in your php.ini or else<br>';
+	echo 'configure your web server to turn off register_globals for the ChurchInfo directory.</h3>';
 	exit;
 }
 
 // Include the function library
-require "Include/Config.php";
+require 'Include/Config.php';
 $bSuppressSessionTests = true;
-require "Include/Functions.php";
+require 'Include/Functions.php';
 // Initialize the variables
-$sErrorText = "";
+$sErrorText = '';
 
 $_SESSION['bSecureServer'] = ($_SERVER['HTTPS'] == 'on');
 
@@ -45,17 +45,17 @@ if ($bHTTPSOnly)
     if(!$_SESSION['bSecureServer'])
     {
         $_SESSION['bSecureServer'] = TRUE;
-        Redirect("Default.php");
+        Redirect('Default.php');
         exit;
     }
 }
 // Is the user requesting to logoff or timed out?
 if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
-    if ($_SESSION['sshowPledges'] == "")
+    if ($_SESSION['sshowPledges'] == '')
 		$_SESSION['sshowPledges'] = 0;
-	if ($_SESSION['sshowPayments'] == "")
+	if ($_SESSION['sshowPayments'] == '')
 		$_SESSION['sshowPayments'] = 0;
-	if ($_SESSION['bSearchFamily'] == "")
+	if ($_SESSION['bSearchFamily'] == '')
 		$_SESSION['bSearchFamily'] = 0;
 
    if ($_SESSION['iUserID']) {
@@ -95,19 +95,19 @@ if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
 }
 
 // Get the UserID out of user name submitted in form results
-if (isset($_POST["User"]) && $sErrorText == '') {
+if (isset($_POST['User']) && $sErrorText == '') {
 	
 	// Get the information for the selected user
-	$UserName = FilterInput($_POST["User"],'string',32);
-	$uSQL = "SELECT usr_per_id FROM user_usr WHERE usr_UserName like '" . $UserName."'";
+	$UserName = FilterInput($_POST['User'],'string',32);
+	$uSQL = "SELECT usr_per_id FROM user_usr WHERE usr_UserName like '$UserName'";
 	$usQueryResult = RunQuery($uSQL);
 	$usQueryResultSet = mysql_fetch_array($usQueryResult);
 	If ($usQueryResultSet == Null){
 		// Set the error text
-		$sErrorText = "&nbsp;" . gettext("Invalid login or password");
+		$sErrorText = '&nbsp;' . gettext('Invalid login or password');
 	}else{
 		//Set user Id based on login name provided
-		$iUserID = $usQueryResultSet["usr_per_id"];
+		$iUserID = $usQueryResultSet['usr_per_id'];
 	}		
 }else{
 	//User ID was not submitted with form
@@ -120,35 +120,37 @@ if (isset($_POST["User"]) && $sErrorText == '') {
 if ($iUserID > 0)
 {
 	// Get the information for the selected user
-	$sSQL = "SELECT * FROM user_usr INNER JOIN person_per ON usr_per_ID = per_ID WHERE usr_per_ID = " . $iUserID;
+	$sSQL = 'SELECT * FROM user_usr INNER JOIN person_per ON usr_per_ID = per_ID '.
+            "WHERE usr_per_ID ='$iUserID'";
 	$rsQueryResult = RunQuery($sSQL);
 	extract(mysql_fetch_array($rsQueryResult));
 
 	// Get the user's family id in case edit self is turned on
-	$sSQL = "SELECT per_fam_ID FROM person_per WHERE per_ID = " . $iUserID;
+	$sSQL = "SELECT per_fam_ID FROM person_per WHERE per_ID ='$iUserID'";
 	$rsQueryResult = RunQuery($sSQL);
 	extract(mysql_fetch_array($rsQueryResult));
 
 	// Block the login if a maximum login failure count has been reached
 	if ($iMaxFailedLogins > 0 && $usr_FailedLogins >= $iMaxFailedLogins) {
 
-		$sErrorText = "<br>" . gettext("Too many failed logins: your account has been locked.  Please contact an administrator.");
+		$sErrorText = '<br>' . gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
 	}
 
 	// Does the password match?
-	elseif ($usr_Password != md5(strtolower($_POST["Password"]))) {
+	elseif ($usr_Password != md5(strtolower($_POST['Password']))) {
 
 		// Increment the FailedLogins
-		$sSQL = "UPDATE user_usr SET usr_FailedLogins = usr_FailedLogins + 1 WHERE usr_per_ID = " . $iUserID;
+		$sSQL = 'UPDATE user_usr SET usr_FailedLogins = usr_FailedLogins + 1 '.
+                "WHERE usr_per_ID ='$iUserID'";
 		RunQuery($sSQL);
 
 		// Set the error text
-		$sErrorText = "&nbsp;" . gettext("Invalid login or password");
+		$sErrorText = '&nbsp;' . gettext('Invalid login or password');
 
 	} else {
 
 		// Set the LastLogin and Increment the LoginCount
-		$sSQL = "UPDATE user_usr SET usr_LastLogin = NOW(), usr_LoginCount = usr_LoginCount + 1, usr_FailedLogins = 0 WHERE usr_per_ID = " . $iUserID;
+		$sSQL = "UPDATE user_usr SET usr_LastLogin = NOW(), usr_LoginCount = usr_LoginCount + 1, usr_FailedLogins = 0 WHERE usr_per_ID ='$iUserID'";
 		RunQuery($sSQL);
 
 		// Set the User's family id in case EditSelf is enabled
@@ -242,7 +244,7 @@ if ($iUserID > 0)
 		$_SESSION['aPeopleCart'] = array();
 
 		// Create the variable for the Global Message
-		$_SESSION['sGlobalMessage'] = "";
+		$_SESSION['sGlobalMessage'] = '';
 
 		// Set whether or not we need a password change
 		$_SESSION['bNeedPasswordChange'] = $usr_NeedPasswordChange;
@@ -276,10 +278,13 @@ if ($iUserID > 0)
 		$_SESSION['bSearchFamily'] = $usr_SearchFamily;
 
 		// Redirect to the Menu
-		Redirect("CheckVersion.php");
+		Redirect('CheckVersion.php');
         exit;
 	}
 }
+// Turn ON output buffering
+ob_start();
+
 // Set the page title and include HTML header
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -288,27 +293,20 @@ if ($iUserID > 0)
 	<meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<link rel="stylesheet" type="text/css" href="Include/Style.css">
-	<title><?php echo gettext("ChurchInfo: Login"); ?></title>
+	<title><?php echo gettext('ChurchInfo: Login'); ?></title>
 </head>
 <body>
 <table width="80%" border="0" cellpadding="5" cellspacing="0" align="center">
 <tr>
 	<td valign="top">
 		<br>
-		<p class="PageTitle"><?php echo gettext("Please Login"); ?></p>
+		<p class="PageTitle"><?php echo gettext('Please Login'); ?></p>
 		<form method="post" name="LoginForm" action="Default.php">
 		<table border="0" align="center" cellpadding="5">
 		<?php if (isset($_GET['timeout'])) { ?> 
 		<tr>
 			<td align="center" colspan="2">
 			<span style="color:red; font-size:120%;">Your previous session timed out.  Please login again.</span>
-			</td>
-		</tr> <?php } ?>
-
-		<?php if (isset($_GET['update'])) { ?> 
-		<tr>
-			<td align="center" colspan="2">
-			<span style="color:red; font-size:120%;">The ChurchInfo database has been updated.  Please login again.</span>
 			</td>
 		</tr> <?php } ?>
 
@@ -319,21 +317,21 @@ if ($iUserID > 0)
 			</td>
 		</tr><?php } ?>
 		<tr>
-			<td class="LabelColumn"><?php echo gettext("Enter your user name:"); ?></td>
+			<td class="LabelColumn"><?php echo gettext('Enter your user name:'); ?></td>
 			<td class="TextColumnWithBottomBorder">
 				<input type="text" id="UserBox" name="User" size="10">
 				
 			</td>
 		</tr>
 		<tr>
-			<td class="LabelColumn"><?php echo gettext("Enter your password:"); ?></td>
+			<td class="LabelColumn"><?php echo gettext('Enter your password:'); ?></td>
 			<td class="TextColumnWithBottomBorder">
 				<input type="password" id="PasswordBox" name="Password" size="10">
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-			<input type="submit" class="icButton" name="LogonSubmit" value=<?php echo '"' . gettext("Login") . '"'; ?>></td>
+			<input type="submit" class="icButton" name="LogonSubmit" value=<?php echo '"' . gettext('Login') . '"'; ?>></td>
 		</tr>
 		</table>
 		</form>
@@ -347,3 +345,8 @@ if ($iUserID > 0)
 
 </body>
 </html>
+
+<?php
+// Turn OFF output buffering
+ob_end_flush();
+?>

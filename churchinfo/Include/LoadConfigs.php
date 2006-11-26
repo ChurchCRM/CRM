@@ -35,12 +35,13 @@ mysql_select_db($sDATABASE)
         or die ('Cannot select the MySQL database because: ' . mysql_error());
 
 // Verify that $sDocumentRoot and $sRootPath are correct
-$sTestPath = $sDocumentRoot.$sRootPath."/Include/Config.php";
-$sTestPath = str_replace ( '\\','/', $sTestPath  );
+$sTestPath = $sDocumentRoot.$sRootPath.'/Include/Config.php';
+$sSeparators = array('\\', '/');
+$sTestPath = str_replace ( $sSeparators, DIRECTORY_SEPARATOR, $sTestPath  );
 if (!(file_exists($sTestPath) && is_readable($sTestPath))) {
     $sErrorMessage  = 'Unable to open file: '.$sTestPath.'<br><br>';
     $sErrorMessage .= 'Please verify that the following ';
-    $sErrorMessage .= 'variables are correct in /Include/Config.php<br>';
+    $sErrorMessage .= 'variables are correct in Include/Config.php<br>';
     $sErrorMessage .= '$sDocumentRoot = '.$sDocumentRoot.'<br>$sRootPath = '.$sRootPath;
     die ($sErrorMessage);
     }
@@ -50,7 +51,8 @@ session_start();
 
 // Read values from config table into local variables
 // **************************************************
-$sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='General'";
+$sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
+      . "FROM config_cfg WHERE cfg_section='General'";
 $rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
 if ($rsConfig) {
     while (list($cfg_name, $value) = mysql_fetch_row($rsConfig)) {
@@ -58,31 +60,18 @@ if ($rsConfig) {
     }
 }
 
-// Load default user variables
+// Load user variables from user config table.
+// **************************************************
 $sSQL = "SELECT ucfg_name, ucfg_value AS value "
-.       "FROM userconfig_ucfg WHERE ucfg_per_ID=0";
-$rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
+      . "FROM userconfig_ucfg WHERE ucfg_per_ID='".$_SESSION['iUserID']."'";
+$rsConfig = mysql_query($sSQL);     // Can't use RunQuery -- not defined yet
 if ($rsConfig) {
     while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
         $$ucfg_name = $value;
     }
 }
 
-// Overwrite default user variables with actual user variables from user config table.  
-// Any unspecified variables get defaults from above.
-// **************************************************
-if(isset($_SESSION['iUserID'])) { // Can only do this if a user ID has been set
-    $sSQL = "SELECT ucfg_name, ucfg_value AS value "
-    .       "FROM userconfig_ucfg WHERE ucfg_per_ID=".$_SESSION['iUserID'];
-    $rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
-    if ($rsConfig) {
-        while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
-            $$ucfg_name = $value;
-        }
-    }
-}
-
-$sMetaRefresh = "";  // Initialize to empty
+$sMetaRefresh = '';  // Initialize to empty
 
 putenv("LANG=$sLanguage");
 setlocale(LC_ALL, $sLanguage);
@@ -94,19 +83,19 @@ $aLocaleInfo = localeconv();
 setlocale(LC_NUMERIC, 'C');
 
 // patch some missing data for Italian.  This shouldn't be necessary!
-if ($sLanguage == "it_IT")
+if ($sLanguage == 'it_IT')
 {
-    $aLocaleInfo["thousands_sep"] = ".";
-    $aLocaleInfo["frac_digits"] = "2";
+    $aLocaleInfo['thousands_sep'] = '.';
+    $aLocaleInfo['frac_digits'] = '2';
 }
 
 if (function_exists('bindtextdomain'))
 {
     $domain = 'messages';
 
-    $sLocaleDir = "locale";
+    $sLocaleDir = 'locale';
     if (!is_dir($sLocaleDir))
-        $sLocaleDir = "../" . $sLocaleDir;
+        $sLocaleDir = '../' . $sLocaleDir;
 
     bindtextdomain($domain, $sLocaleDir);
     textdomain($domain);
@@ -116,10 +105,10 @@ else
     if ($sLanguage != 'en_US')
     {
         // PHP array version of the l18n strings
-        $sLocaleMessages = "locale/" . $sLanguage . "/LC_MESSAGES/messages.php";
+        $sLocaleMessages = "locale/$sLanguage/LC_MESSAGES/messages.php";
 
         if (!is_readable($sLocaleMessages))
-            $sLocaleMessages = "../" . $sLocaleMessages;
+            $sLocaleMessages = "../$sLocaleMessages";
 
         require ($sLocaleMessages);
 

@@ -13,28 +13,28 @@
 *
 ******************************************************************************/
 
-require "../Include/Config.php";
-require "../Include/Functions.php";
-require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
+require '../Include/Config.php';
+require '../Include/Functions.php';
+require '../Include/ReportFunctions.php';
+require '../Include/ReportConfig.php';
 
-// If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
-	Redirect("Menu.php");
+// If user does not have permission redirect to the menu.
+if (!$bUSAddressVerification) {
+	Redirect('Menu.php');
 	exit;
 }
 
 class PDF_AddressReport extends ChurchInfoReport {
 
 	// Private properties
-	var $_Margin_Left = 0;         // Left Margin
-	var $_Margin_Top  = 0;         // Top margin 
-	var $_Char_Size   = 12;        // Character size
-	var $_CurLine     = 0;
-	var $_Column      = 0;
-	var $_Font        = "Times";
-	var $sFamily;
-	var $sLastName;
+	private $_Margin_Left = 0;         // Left Margin
+	private $_Margin_Top  = 0;         // Top margin 
+	private $_Char_Size   = 12;        // Character size
+	private $_CurLine     = 0;
+	private $_Column      = 0;
+	private $_Font        = 'Times';
+	private $sFamily;
+	private $sLastName;
 
 	function num_lines_in_fpdf_cell($w,$txt)
 	{
@@ -99,11 +99,11 @@ class PDF_AddressReport extends ChurchInfoReport {
 	// Constructor
 	function PDF_AddressReport() {
 		global $paperFormat;
-		parent::FPDF("P", "mm", $this->paperFormat);
+		parent::FPDF('P', 'mm', $this->paperFormat);
 
 		$this->_Column      = 0;
 		$this->_CurLine     = 2;
-		$this->_Font        = "Times";
+		$this->_Font        = 'Times';
 		$this->SetMargins(0,0);
 		$this->Open();
 		$this->Set_Char_Size(12);
@@ -114,7 +114,7 @@ class PDF_AddressReport extends ChurchInfoReport {
 		$this->_Margin_Top  = 12;
 
 		$this->Set_Char_Size(20);
-		$this->Write (10, "ChurchInfo USPS Address Verification Report");
+		$this->Write (10, 'ChurchInfo USPS Address Verification Report');
 		$this->Set_Char_Size(12);
 	}
 
@@ -172,22 +172,22 @@ if ($rsConfig) {
 if ($_POST['MismatchReport']) {
 	$iNum = 1;
 	$sWhere = "WHERE fam_Country IN ('United States') ";
-	$sMissing = "Ready for Lookup.  Lookup not done.";
+	$sMissing = 'Ready for Lookup.  Lookup not done.';
 }
 elseif ($_POST['NonUSReport']) {
 	$iNum = 2;
 	$sWhere = "WHERE fam_Country NOT IN ('United States') ";
-	$sMissing = "Unable to perform lookup for non-US address";
+	$sMissing = 'Unable to perform lookup for non-US address';
 } else {
-	Redirect("USISTAddressVerification.php");
+	Redirect('USISTAddressVerification.php');
 }
 
 // Instantiate the class and build the report.
 $pdf = new PDF_AddressReport();
 
-$sSQL  = "SELECT * FROM family_fam ";
+$sSQL  = 'SELECT * FROM family_fam ';
 $sSQL .= $sWhere;
-$sSQL .= "ORDER BY fam_Name";
+$sSQL .= 'ORDER BY fam_Name';
 
 $rsFamilies = RunQuery($sSQL);
 
@@ -195,21 +195,21 @@ while ($aRow = mysql_fetch_array($rsFamilies)) {
 
 	extract($aRow);
 
-	$sSQL  = "SELECT count(lu_fam_ID) AS idexists FROM istlookup_lu ";
-	$sSQL .= "WHERE lu_fam_ID IN (" . $fam_ID . ")";
+	$sSQL  = 'SELECT count(lu_fam_ID) AS idexists FROM istlookup_lu ';
+	$sSQL .= "WHERE lu_fam_ID IN ($fam_ID)";
 	
 	$rsLookup = RunQuery($sSQL);
 	extract(mysql_fetch_array($rsLookup));
-	if ($idexists == "0") {
+	if ($idexists == '0') {
 		$lu_DeliveryLine1 = $sMissing;
-		$lu_DeliveryLine2 = "";
-		$lu_LastLine = "";
-		$lu_ErrorCodes = "";
-		$lu_ErrorDesc = "";
+		$lu_DeliveryLine2 = '';
+		$lu_LastLine = '';
+		$lu_ErrorCodes = '';
+		$lu_ErrorDesc = '';
 	} else {
 
-		$sSQL  = "SELECT * FROM istlookup_lu ";
-		$sSQL .= "WHERE lu_fam_ID IN (" . $fam_ID . ")";
+		$sSQL  = 'SELECT * FROM istlookup_lu ';
+		$sSQL .= "WHERE lu_fam_ID IN ($fam_ID)";
 		$rsLookup = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsLookup));
 
@@ -225,16 +225,16 @@ while ($aRow = mysql_fetch_array($rsFamilies)) {
 		$lu_DeliveryLine2 = $fam_Address2;
 	}
 
-	$fam_Str  = "";
+	$fam_Str  = '';
 	if(strlen($fam_Address1))
 		$fam_Str .= $fam_Address1 . "\n";
 	if(strlen($fam_Address2))
 		$fam_Str .= $fam_Address2 . "\n";
-	$fam_Str .= $fam_City . " " . $fam_State . " " . $fam_Zip;
+	$fam_Str .= "$fam_City $fam_State $fam_Zip";
 
 
-	$lu_Str = "";
-	$lu_ErrStr = "";
+	$lu_Str = '';
+	$lu_ErrStr = '';
 	if(strlen($lu_DeliveryLine1))
 		$lu_Str .= $lu_DeliveryLine1 . "\n";
 	if(strlen($lu_DeliveryLine2))
@@ -244,24 +244,24 @@ while ($aRow = mysql_fetch_array($rsFamilies)) {
 	$lu_Str = strtoupper($lu_Str);
 
 	if (strtoupper($fam_Str) == $lu_Str) { // Filter nuisance error messages
-		if ($lu_ErrorCodes == "10" ||
-		    $lu_ErrorCodes == "06" ||
-			$lu_ErrorCodes == "14"   ){
-			$lu_ErrorCodes = "";
+		if ($lu_ErrorCodes == '10' ||
+		    $lu_ErrorCodes == '06' ||
+			$lu_ErrorCodes == '14'   ){
+			$lu_ErrorCodes = '';
 		}
 	}
 
     $bErrorDesc = FALSE;
 	if(strlen($lu_ErrorCodes)){
-		if($lu_ErrorCodes != "x1x2"){ // Filter error messages associated with subscribing to
+		if($lu_ErrorCodes != 'x1x2'){ // Filter error messages associated with subscribing to
 									  // CorrectAddress instead of CorrectAddress with Addons
-			$lu_ErrStr = $lu_ErrorCodes . " " . $lu_ErrorDesc;
+			$lu_ErrStr = "$lu_ErrorCodes $lu_ErrorDesc";
             $bErrorDesc = TRUE;
 		}
 	}
     
-    $pos1 = strrpos($lu_ErrorDesc, "no match found");
-    $pos2 = strrpos($lu_ErrorDesc, "not enough information provided");
+    $pos1 = strrpos($lu_ErrorDesc, 'no match found');
+    $pos2 = strrpos($lu_ErrorDesc, 'not enough information provided');
 
     if (($pos1 === FALSE) && ($pos2 === FALSE))
         $bErrorDesc = FALSE;
@@ -278,7 +278,7 @@ while ($aRow = mysql_fetch_array($rsFamilies)) {
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
 if ($iPDFOutputType == 1)
-	$pdf->Output("Addresses-" . date("Ymd-Gis") . ".pdf", 'D');
+	$pdf->Output('Addresses-' . date('Ymd-Gis') . '.pdf', 'D');
 else
 	$pdf->Output();	
 

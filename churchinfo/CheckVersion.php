@@ -36,14 +36,14 @@ $_SESSION['sChurchInfoPHPDate'] = '2007-01-01';
 
 // Check if the table version_ver exists.  If the table does not exist then
 // SQL scripts must be manually run to get the database up to version 1.2.7
-$bTableExists = FALSE;
+$bVersionTableExists = FALSE;
 if(mysql_num_rows(RunQuery("SHOW TABLES LIKE 'version_ver'")) == 1) {
-    $bTableExists = TRUE;
+    $bVersionTableExists = TRUE;
 }
 
 // Let's see if the MySQL version matches the PHP version.  If we have a match then
 // proceed to Menu.php.  Otherwise further error checking is needed.
-if ($bTableExists) {
+if ($bVersionTableExists) {
     $sSQL = 'SELECT * FROM version_ver ORDER BY ver_ID DESC';
     $aRow = mysql_fetch_array(RunQuery($sSQL));
     extract($aRow);
@@ -53,6 +53,9 @@ if ($bTableExists) {
         exit;
     }
 }
+
+// Turn ON output buffering
+ob_start();
 
 // Set the page title
 $sPageTitle = gettext('ChurchInfo: Database Version Check');
@@ -75,12 +78,12 @@ $sPageTitle = gettext('ChurchInfo: Database Version Check');
 <?php
 
 
-if(!$bTableExists) {
+if(!$bVersionTableExists) {
     // Display message indicating that the ChurchInfo database must be updated to version
     // 1.2.7 using SQL scripts
 
     echo    'Error: Please update your ChurchInfo MySQL database to version 1.2.7 '
-    .       'before using version 1.2.7 (or later) of PHP code.<BR>';
+    .       'before using version 1.2.7 (or later) of PHP code.<br>';
     echo    'Your database and PHP code are out of sync.  ChurchInfo is in an untested '
     .       'state and may not be stable. ';
 
@@ -118,7 +121,7 @@ if ($ver_version == '1.2.7') {
     } else {
 
         echo '<br>Database schema has been updated from 1.2.7 to 1.3.0.<br>'
-        .    '<BR>Please <a href="Default.php">click here</a> to log in again.';
+        .    '<BR>Please <a href="CheckVersion.php">click here</a> to continue.';
 
     }
 
