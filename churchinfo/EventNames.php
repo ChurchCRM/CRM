@@ -60,8 +60,6 @@ case "Add Event Type":
     RunQuery($sSQL);
     $theID = mysql_insert_id();
     $editID=$theID;  
-//    $sSQL = "INSERT INTO event_count_names (event_type_id, count_name) VALUES('$theID','Total')";
-//    RunQuery($sSQL);
     $editing='TRUE';
     $_POST['Action']='';
     break;
@@ -81,14 +79,14 @@ case "Save Changes":
   $eCntNum = count($eCntArray);
   $theID=$_POST["theID"];
 
-  $sSQL = "UPDATE event_types SET type_name='$eName', def_start_time='$eTime',def_recur_type='$eRecur', def_recur_DOW='$eDOW',def_recur_DOM='$eDOM',def_recur_DOY='$eDOY' WHERE type_id='$theID'";
+  $sSQL = "UPDATE event_types SET type_name='$eName', type_defstarttime='$eTime',type_defrecurtype='$eRecur', type_defrecurDOW='$eDOW',type_defrecurDOM='$eDOM',type_defrecurDOY='$eDOY' WHERE type_id='$theID'";
 
   RunQuery($sSQL);
   
   for($j=0; $j<$eCntNum; $j++)
   {
     $cCnt = ltrim(rtrim($eCntArray[$j]));
-    $sSQL = "INSERT event_count_names (event_type_id, count_name) VALUES ('$theID','$cCnt') ON DUPLICATE KEY UPDATE count_name='$cCnt'";
+    $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('$theID','$cCnt') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
     RunQuery($sSQL);
   }
   $editID='';
@@ -105,7 +103,7 @@ case "Delete":
   $sSQL = "DELETE FROM event_types WHERE type_id='$theID' LIMIT 1";
 //  echo "$sSQL";
   RunQuery($sSQL);
-  $sSQL = "DELETE FROM event_count_names WHERE event_type_id='$theID'";
+  $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$theID'";
 //  echo "$sSQL";
   RunQuery($sSQL);
   $theID='';
@@ -130,11 +128,11 @@ $numRows = mysql_num_rows($rsOpps);
 
                 $aTypeID[$row] = $type_id;
                 $aTypeName[$row] = $type_name;             
-                $aDefStartTime[$row] = $def_start_time;
-                $aDefRecurDOW[$row] = $def_recur_DOW;
-                $aDefRecurDOM[$row] = $def_recur_DOM;
-                $aDefRecurDOY[$row] = $def_recur_DOY;
-                $aDefRecurType[$row] = $def_recur_type;
+                $aDefStartTime[$row] = $type_defstarttime;
+                $aDefRecurDOW[$row] = $type_defrecurDOW;
+                $aDefRecurDOM[$row] = $type_defrecurDOM;
+                $aDefRecurDOY[$row] = $type_defrecurDOY;
+                $aDefRecurType[$row] = $type_defrecurtype;
 //                echo "$row:::DOW = $aDefRecurDOW[$row], DOM=$aDefRecurDOM[$row], DOY=$adefRecurDOY[$row] type=$aDefRecurType[$row]\n\r\n<br>";
                 
                 switch ($aDefRecurType[$row]){
@@ -157,7 +155,7 @@ $numRows = mysql_num_rows($rsOpps);
                 // repeats on DOW, DOM or DOY 
                 //
                 // new - check the count definintions table for a list of count fields
-                $cSQL = "SELECT count_id, count_name FROM event_count_names WHERE event_type_id='$aTypeID[$row]' ORDER BY count_id";
+                $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
                 $cOpps = RunQuery($cSQL);
                 $numCounts = mysql_num_rows($cOpps);
                 $cCountName="";
@@ -167,8 +165,8 @@ $numRows = mysql_num_rows($rsOpps);
                   for($c = 1; $c <=$numCounts; $c++){
                     $cRow = mysql_fetch_array($cOpps, MYSQL_BOTH);
                     extract($cRow);
-                    $cCountID[$c] = $count_id;
-                    $cCountName[$c] = $count_name;                
+                    $cCountID[$c] = $evctnm_countid;
+                    $cCountName[$c] = $evctnm_countname;                
                   }
                   $cCountList[$row] = implode(", ",$cCountName);
                  }
