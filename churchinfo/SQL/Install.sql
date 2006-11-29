@@ -537,34 +537,40 @@ CREATE TABLE IF NOT EXISTS `event_attend` (
 
 
 -- New table to define Event Count Names 
-CREATE TABLE IF NOT EXISTS `event_count_names` (
-`count_id` int( 5 ) NOT NULL AUTO_INCREMENT ,
-`event_type_id` smallint( 5 ) NOT NULL default '0',
-`count_name` varchar( 20 ) NOT NULL default '',
-`notes` varchar( 20 ) NOT NULL default '',
-UNIQUE KEY `count_id` ( `count_id` ) ,
-UNIQUE KEY `event_type_id` ( `event_type_id` , `count_name` )
+CREATE TABLE IF NOT EXISTS `eventcountnames_evctnm` (
+`evctnm_countid` int( 5 ) NOT NULL AUTO_INCREMENT ,
+`evctnm_eventtypeid` smallint( 5 ) NOT NULL default '0',
+`evctnm_countname` varchar( 20 ) NOT NULL default '',
+`evctnm_notes` varchar( 20 ) NOT NULL default '',
+UNIQUE KEY `evctnm_countid` ( `evctnm_countid` ) ,
+UNIQUE KEY `evctnm_eventtypeid` ( `evctnm_eventtypeid` , `evctnm_countname` )
 ) TYPE=MyISAM;
+INSERT IGNORE INTO `eventcountnames_evctnm` VALUES (1, 1, 'Total','');
+INSERT IGNORE INTO `eventcountnames_evctnm` VALUES (2, 1, 'Members','');
+INSERT IGNORE INTO `eventcountnames_evctnm` VALUES (3, 1, 'Visitors','');
+INSERT IGNORE INTO `eventcountnames_evctnm` VALUES (4, 2, 'Total','');
+INSERT IGNORE INTO `eventcountnames_evctnm` VALUES (5, 2, 'Members','');
+INSERT IGNORE INTO `eventcountnames_evctnm` VALUES (6, 2, 'Visitors','');
 
 -- New table to track Event Counts
-CREATE TABLE IF NOT EXISTS `event_counts` (
-`event_id` int( 5 ) NOT NULL default '0',
-`count_id` int( 5 ) NOT NULL default '0',
-`count_name` varchar( 20 ) default NULL ,
-`count_count` int( 6 ) default NULL ,
-`notes` varchar( 20 ) default NULL ,
-PRIMARY KEY ( `event_id` , `count_id` )
+CREATE TABLE IF NOT EXISTS `eventcounts_evtcnt` (
+`evtcnt_eventid` int( 5 ) NOT NULL default '0',
+`evtcnt_countid` int( 5 ) NOT NULL default '0',
+`evtcnt_countname` varchar( 20 ) default NULL ,
+`evtcnt_countcount` int( 6 ) default NULL ,
+`evtcnt_notes` varchar( 20 ) default NULL ,
+PRIMARY KEY ( `evtcnt_eventid` , `evtcnt_countid` )
 ) TYPE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS `event_types` (
   `type_id` int(11) NOT NULL auto_increment,
   `type_name` varchar(255) NOT NULL default '',
-  `def_start_time` time NOT NULL default '00:00:00',
-  `def_recur_type` enum( 'none', 'weekly', 'monthly', 'yearly' ) NOT NULL default 'none',
-  `def_recur_DOW` enum( 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ) NOT NULL default 'Sunday',
-  `def_recur_DOM` char( 2 ) NOT NULL default '0',
-  `def_recur_DOY` date NOT NULL default '0000-00-00',
-  `active` int( 1 ) NOT NULL default '1',
+  `type_defstarttime` time NOT NULL default '00:00:00',
+  `type_defrecurtype` enum( 'none', 'weekly', 'monthly', 'yearly' ) NOT NULL default 'none',
+  `type_defrecurDOW` enum( 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ) NOT NULL default 'Sunday',
+  `type_defrecurDOM` char( 2 ) NOT NULL default '0',
+  `type_defrecurDOY` date NOT NULL default '0000-00-00',
+  `type_active` int( 1 ) NOT NULL default '1',
   PRIMARY KEY  (`type_id`)
 ) TYPE=MyISAM;
 
@@ -580,11 +586,10 @@ CREATE TABLE IF NOT EXISTS `events_event` (
   `event_start` datetime NOT NULL default '0000-00-00 00:00:00',
   `event_end` datetime NOT NULL default '0000-00-00 00:00:00',
   `inactive` int(1) NOT NULL default '0',
-  `event_type_name` varchar( 40 ) NOT NULL default '',
+  `event_typename` varchar( 40 ) NOT NULL default '',
   PRIMARY KEY  (`event_id`),
   FULLTEXT KEY `event_txt` (`event_text`)
 ) TYPE=MyISAM;
-
 
 CREATE TABLE IF NOT EXISTS `config_cfg` (
   `cfg_id` int(11) NOT NULL default '0',

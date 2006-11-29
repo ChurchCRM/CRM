@@ -14,41 +14,41 @@
 --
 --
 -- New table to define Event Count Names 
-CREATE TABLE IF NOT EXISTS `event_count_names` (
-`count_id` int( 5 ) NOT NULL AUTO_INCREMENT ,
-`event_type_id` smallint( 5 ) NOT NULL default '0',
-`count_name` varchar( 20 ) NOT NULL default '',
-`notes` varchar( 20 ) NOT NULL default '',
-UNIQUE KEY `count_id` ( `count_id` ) ,
-UNIQUE KEY `event_type_id` ( `event_type_id` , `count_name` )
+CREATE TABLE IF NOT EXISTS `eventcountnames_evctnm` (
+`evctnm_countid` int( 5 ) NOT NULL AUTO_INCREMENT ,
+`evctnm_eventtypeid` smallint( 5 ) NOT NULL default '0',
+`evctnm_countname` varchar( 20 ) NOT NULL default '',
+`evctnm_notes` varchar( 20 ) NOT NULL default '',
+UNIQUE KEY `evctnm_countid` ( `evctnm_countid` ) ,
+UNIQUE KEY `evctnm_eventtypeid` ( `evctnm_eventtypeid` , `evctnm_countname` )
 ) TYPE=MyISAM;
 
 -- New table to track Event Counts
-CREATE TABLE IF NOT EXISTS `event_counts` (
-`event_id` int( 5 ) NOT NULL default '0',
-`count_id` int( 5 ) NOT NULL default '0',
-`count_name` varchar( 20 ) default NULL ,
-`count_count` int( 6 ) default NULL ,
-`notes` varchar( 20 ) default NULL ,
-PRIMARY KEY ( `event_id` , `count_id` )
+CREATE TABLE IF NOT EXISTS `eventcounts_evtcnt` (
+`evtcnt_eventid` int( 5 ) NOT NULL default '0',
+`evtcnt_countid` int( 5 ) NOT NULL default '0',
+`evtcnt_countname` varchar( 20 ) default NULL ,
+`evtcnt_countcount` int( 6 ) default NULL ,
+`evtcnt_notes` varchar( 20 ) default NULL ,
+PRIMARY KEY ( `evtcnt_eventid` , `evtcnt_countid` )
 ) TYPE=MyISAM;
 
 -- Extend the table events_event to include event_type_name column
 ALTER TABLE `events_event` 
-	ADD COLUMN `event_type_name` varchar(40) NOT NULL default '' 
+	ADD COLUMN `event_typename` varchar(40) NOT NULL default '' 
 	AFTER `inactive`;
 
 -- Fill in the new column with data from event_types
-UPDATE `events_event`,`event_types` SET events_event.event_type_name=event_types.type_name WHERE events_event.event_type=event_types.type_id;
+UPDATE `events_event`,`event_types` SET events_event.event_typename=event_types.type_name WHERE events_event.event_type=event_types.type_id;
 
 -- Extend the table event_types
 ALTER TABLE `event_types`
-  ADD COLUMN `def_start_time` time NOT NULL default '00:00:00' AFTER `type_name`,
-  ADD COLUMN `def_recur_type` enum( 'none', 'weekly', 'monthly', 'yearly' ) NOT NULL default 'none' AFTER `def_start_time`,
-  ADD COLUMN `def_recur_DOW` enum( 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ) NOT NULL default 'Sunday' AFTER `def_recur_type`,
-  ADD COLUMN `def_recur_DOM` char( 2 ) NOT NULL default '0' AFTER `def_recur_DOW`,
-  ADD COLUMN `def_recur_DOY` date NOT NULL default '0000-00-00' AFTER `def_recur_DOM`,
-  ADD COLUMN `active` int( 1 ) NOT NULL default '1' AFTER `def_recur_DOY`;
+  ADD COLUMN `type_defstarttime` time NOT NULL default '00:00:00' AFTER `type_name`,
+  ADD COLUMN `type_defrecurtype` enum( 'none', 'weekly', 'monthly', 'yearly' ) NOT NULL default 'none' AFTER `type_defstarttime`,
+  ADD COLUMN `type_defrecurDOW` enum( 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ) NOT NULL default 'Sunday' AFTER `type_defrecurtype`,
+  ADD COLUMN `type_defrecurDOM` char( 2 ) NOT NULL default '0' AFTER `type_defrecurDOW`,
+  ADD COLUMN `type_defrecurDOY` date NOT NULL default '0000-00-00' AFTER `type_defrecurDOM`,
+  ADD COLUMN `type_active` int( 1 ) NOT NULL default '1' AFTER `type_defrecurDOY`;
 
 -- New Table to keep track of emails that are ready to be sent
 CREATE TABLE IF NOT EXISTS `email_recipient_pending_erp` (
