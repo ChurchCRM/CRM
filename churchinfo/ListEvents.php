@@ -42,7 +42,7 @@ if ($_POST['Action']== "Delete" && !empty($_POST['EID']))
     $sSQL = "DELETE FROM events_event WHERE event_id = ".$_POST['EID']." LIMIT 1";
     RunQuery($sSQL);
     
-    $sSQL = "DELETE FROM event_counts WHERE event_id = ".$_POST['EID'];
+    $sSQL = "DELETE FROM eventcounts_evtcnt WHERE evtcnt_eventid = ".$_POST['EID'];
     RunQuery($sSQL);
 
 }
@@ -186,7 +186,7 @@ if ($numRows > 0)
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
            <?php 
-                $cvSQL= "SELECT * FROM event_counts WHERE event_id='$aEventID[$row]' ORDER BY count_id ASC"; 
+                $cvSQL= "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$aEventID[$row]' ORDER BY evtcnt_countid ASC"; 
 //        echo $cvSQL;
                 $cvOpps = RunQuery($cvSQL);
                 $aNumCounts = mysql_num_rows($cvOpps);
@@ -196,16 +196,16 @@ if ($numRows > 0)
                 for($c = 0; $c <$aNumCounts; $c++){
                   $cRow = mysql_fetch_array($cvOpps, MYSQL_BOTH);
                   extract($cRow);
-                  $cCountID[$c] = $count_id;
-                  $cCountName[$c] = $count_name;     
-                  $cCount[$c]= $count_count;
-                  $cCountNotes = $notes; 
-                  $cCountSum[$c]+= $count_count;
+                  $cCountID[$c] = $evtcnt_countid;
+                  $cCountName[$c] = $evtcnt_countname;     
+                  $cCount[$c]= $evtcnt_countcount;
+                  $cCountNotes = $evtcnt_notes; 
+                  $cCountSum[$c]+= $evtcnt_countcount;
                   ?>
                   <td align="center">
                   <span class="SmallText">
-                    <strong><?php echo $count_name; ?></strong>
-                    <br><?php echo $count_count; ?></span>
+                    <strong><?php echo $evtcnt_countname; ?></strong>
+                    <br><?php echo $evtcnt_countcount; ?></span>
                   </td> 
                   <?php         
                 }
