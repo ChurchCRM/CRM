@@ -55,21 +55,21 @@ if ($sAction=='Create=>Event' && !empty($tyid)){
 
   $aTypeID = $type_id;
   $aTypeName = $type_name;             
-  $ceDefStartTime = $def_start_time;
-  $ceDefRecurDOW = $def_recur_DOW;
-  $ceDefRecurDOM = $def_recur_DOM;
-  $ceDefRecurDOY = $def_recur_DOY;
-  $ceDefRecurType = $def_recur_type;
+  $ceDefStartTime = $type_defstarttime;
+  $ceDefRecurDOW = $type_defrecurDOW;
+  $ceDefRecurDOM = $type_defrecurDOM;
+  $ceDefRecurDOY = $type_defrecurDOY;
+  $ceDefRecurType = $type_defrecurtype;
   
-  $cSQL = "SELECT count_id, count_name FROM event_count_names WHERE event_type_id='$aTypeID' ORDER BY count_id ASC";
+  $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID' ORDER BY evctnm_countid ASC";
   $cOpps = RunQuery($cSQL);
   $aNumCounts = mysql_num_rows($cOpps);
   if($aNumCounts) {
     for($c = 0; $c <$aNumCounts; $c++){
         $cRow = mysql_fetch_array($cOpps, MYSQL_BOTH);
         extract($cRow);
-        $cCountID[$c] = $count_id;
-        $cCountName[$c] = $count_name;    
+        $cCountID[$c] = $evctnm_countid;
+        $cCountName[$c] = $evctnm_countname;    
         $cCount[$c]=0;        
     }
   }    
@@ -86,7 +86,7 @@ if ($sAction=='Create=>Event' && !empty($tyid)){
       $ceStartTimeTokens = explode(":",$ceDefStartTime);
       $aEventStartHour = $ceStartTimeTokens[0];
       $aEventStartMins = $ceStartTimeTokens[1];
-      $aEventEndHour = $ceStartTimeTokens[0];
+      $aEventEndHour = $ceStartTimeTokens[0]+1;
       $aEventEndMins = $ceStartTimeTokens[1];
       break;
       
@@ -110,7 +110,7 @@ if ($sAction=='Create=>Event' && !empty($tyid)){
         $aEventStartMins = $ceEventStartTimeTokens[1];
 
         $aEventEndDate = $aEventStartDate;
-        $aEventEndHour = $aEventStartHour;
+        $aEventEndHour = $aEventStartHour+1;
         $aEventEndMins = $aEventStartMins;     
       } else {
         // use the event type definition
@@ -120,7 +120,7 @@ if ($sAction=='Create=>Event' && !empty($tyid)){
         $aEventStartMins = $ceStartTimeTokens[1];
         echo "weekly time = $aEventStartHour\r\n";
         $aEventEndDate = $aEventStartDate;
-        $aEventEndHour = $ceStartTimeTokens[0];
+        $aEventEndHour = $ceStartTimeTokens[0]+1;
         $aEventEndMins = $ceStartTimeTokens[1];
       }
       break;
@@ -145,7 +145,7 @@ if ($sAction=='Create=>Event' && !empty($tyid)){
         $aEventStartHour = $ceEventStartTimeTokens[0];
         $aEventStartMins = $ceEventStartTimeTokens[1];
         $aEventEndDate = $aEventStartDate;
-        $aEventEndHour = $ceEventStartTimeTokens[0];
+        $aEventEndHour = $ceEventStartTimeTokens[0]+1;
         $aEventEndMins = $ceEventStartTimeTokens[1];
       } else {
         // use the event type definition
@@ -160,7 +160,7 @@ if ($sAction=='Create=>Event' && !empty($tyid)){
         $aEventStartHour = $ceStartTimeTokens[0];
         $aEventStartMins = $ceStartTimeTokens[1];
         $aEventEndDate = $aEventStartDate;        
-        $aEventEndHour = $ceStartTimeTokens[0];
+        $aEventEndHour = $ceStartTimeTokens[0]+1;
         $aEventEndMins = $ceStartTimeTokens[1];
       }
       break;
@@ -182,7 +182,7 @@ if ($sAction=='Create=>Event' && !empty($tyid)){
         $aEventStartHour = $ceEventStartTimeTokens[0];
         $aEventStartMins = $ceEventStartTimeTokens[1];
         $aEventEndDate = $aEventStartDate;        
-        $aEventEndHour = $ceEventStartTimeTokens[0];
+        $aEventEndHour = $ceEventStartTimeTokens[0]+1;
         $aEventEndMins = $ceEventStartTimeTokens[1];
       } else {
         // use the event type definition
@@ -203,7 +203,7 @@ if ($sAction=='Create=>Event' && !empty($tyid)){
         $aEventStartHour = $ceStartTimeTokens[0];
         $aEventStartMins = $ceStartTimeTokens[1];
         $aEventEndDate = $aEventStartDate;        
-        $aEventEndHour = $ceStartTimeTokens[0];
+        $aEventEndHour = $ceStartTimeTokens[0]+1;
         $aEventEndMins = $ceStartTimeTokens[1];
       }
       break;
@@ -245,7 +245,7 @@ else if ($sAction = 'Edit' && !empty($sOpp))
         $aEventEndMins = $aEndTimeTokens[1];
         $aEventStatus = $inactive;
         
-        $cvSQL= "SELECT * FROM event_counts WHERE event_id='$aEventID' ORDER BY count_id ASC"; 
+        $cvSQL= "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$aEventID' ORDER BY evtcnt_countid ASC"; 
 //        echo $cvSQL;
         $cvOpps = RunQuery($cvSQL);
         $aNumCounts = mysql_num_rows($cvOpps);
@@ -255,10 +255,10 @@ else if ($sAction = 'Edit' && !empty($sOpp))
           for($c = 0; $c <$aNumCounts; $c++){
             $cRow = mysql_fetch_array($cvOpps, MYSQL_BOTH);
             extract($cRow);
-            $cCountID[$c] = $count_id;
-            $cCountName[$c] = $count_name;     
-            $cCount[$c]= $count_count;
-            $cCountNotes = $notes;            
+            $cCountID[$c] = $evtcnt_countid;
+            $cCountName[$c] = $evtcnt_countname;     
+            $cCount[$c]= $evtcnt_countcount;
+            $cCountNotes = $evtcnt_notes;            
           }
         }        
 //        for($v=0; $v<$aNumCounts; $v++)echo "count {$cCountName[$v]} = {$cCount[$v]}\n\r";           
@@ -345,13 +345,13 @@ else if ($sAction = 'Edit' && !empty($sOpp))
                      `event_start` = '".$uEventStart."',
                      `event_end` = '".$uEventEnd."',
                      `inactive` = '".$uEventStatus."',  
-                     `event_type_name` = '".$uTypeName."'";  
+                     `event_typename` = '".$uTypeName."'";  
             RunQuery($sSQL);
             $uEventID = mysql_insert_id();
             for($c=0; $c<$uNumCounts; $c++)
             {
               $cCnt = ltrim(rtrim($uCountName[$c]));
-              $sSQL = "INSERT event_counts (event_id, count_id, count_name, count_count, notes) VALUES ('$uEventID','$uCountID[$c]','$uCountName[$c]','$uCount[$c]','$uCountNotes') ON DUPLICATE KEY UPDATE count_count='$uCount[$c]', notes='$uCountNotes'";
+              $sSQL = "INSERT eventcounts_evtcnt (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes) VALUES ('$uEventID','$uCountID[$c]','$uCountName[$c]','$uCount[$c]','$uCountNotes') ON DUPLICATE KEY UPDATE evtcnt_countcount='$uCount[$c]', evtcnt_notes='$uCountNotes'";
 //              echo $sSQL;
               RunQuery($sSQL);
             }          
@@ -365,14 +365,14 @@ else if ($sAction = 'Edit' && !empty($sOpp))
                      `event_start` = '".$uEventStart."',
                      `event_end` = '".$uEventEnd."',
                      `inactive` = '".$uEventStatus."',
-                     `event_type_name` = '".$uTypeName."'".
+                     `event_typename` = '".$uTypeName."'".
                     " WHERE `event_id` = '" . $uEventID."';";
 //            echo $sSQL;
             RunQuery($sSQL);
             for($c=0; $c<$uNumCounts; $c++)
             {
               $cCnt = ltrim(rtrim($uCountName[$c]));
-              $sSQL = "INSERT event_counts (event_id, count_id, count_name, count_count, notes) VALUES ('$uEventID','$uCountID[$c]','$uCountName[$c]','$uCount[$c]','$uCountNotes') ON DUPLICATE KEY UPDATE count_count='$uCount[$c]', notes='$uCountNotes'";
+              $sSQL = "INSERT eventcounts_evtcnt (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes) VALUES ('$uEventID','$uCountID[$c]','$uCountName[$c]','$uCount[$c]','$uCountNotes') ON DUPLICATE KEY UPDATE evtcnt_countcount='$uCount[$c]', evtcnt_notes='$uCountNotes'";
               RunQuery($sSQL);
             }          
           }
