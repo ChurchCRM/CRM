@@ -100,19 +100,21 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
 
     $iUserID = $_SESSION['iUserID']; // Retrieve UserID for faster access
 
-    // Store these queries for faster access (called on every loop iteration)
-    $sSQLbContinue = 'SELECT COUNT(erp_id) as erp_count FROM email_recipient_pending_erp '.
-                     "WHERE erp_usr_id='$iUserID'";
-
+    // Store these queries in variables. (called on every loop iteration)
     $sSQLGetEmail = 'SELECT * FROM email_recipient_pending_erp '.
                     "WHERE erp_usr_id='$iUserID' ".
                     'ORDER BY erp_num_attempt, erp_id LIMIT 1';
+
+    $sSQL_ERP = 'SELECT COUNT(erp_id) as erp_count FROM email_recipient_pending_erp '.
+                "WHERE erp_usr_id='$iUserID'";
+
+    $sSQL_EMP = 'SELECT * FROM email_message_pending_emp '.
+                "WHERE emp_usr_id='$iUserID'";
 
     // Keep track of how long this script has been running.  To avoid server 
     // and browser timeouts break out of loop every $sLoopTimeout seconds and 
     // redirect back to EmailSend.php with meta refresh until finished.
     $tStartTime = time();
-
 
     $mail = new PHPMailer();
 
@@ -266,17 +268,49 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
         $mail->ClearAddresses();
         $mail->ClearBCCs();
 
+        // Pause here to verify that the cache is not dirty
+        $iEmailNum = $emp_num_left;
+
+        extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
+        extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
+        $iEmergencyExit = 20; // Error after 20 seconds
+        $bDelay1Second = ($erp_count != $iEmailNum) || ($emp_num_left != $iEmailNum);
+        $bDelay1Second = $bDelay1Second && ($sRecipient == 'get_recipients_from_mysql');
+
+        while ( $bDelay1Second ) {
+
+            $sMsg = "cache dirty: erp_count = $erp_count, iEmailNum = $iEmailNum, ".
+                    "emp_num_left = $emp_num_left";
+            AddToEmailLog($sMsg, $iUserID); // Add message to log
+
+            // file system may be slow to update on busy servers
+            // delay 1 second and then read the tables again
+            sleep(1);
+
+            $iEmergencyExit--;
+            if ($iEmergencyExit < 1) {
+                $_SESSION['sEmailState'] = 'error';
+                $bContinue = FALSE;
+                $sMsg = "Error: MySQL cache still dirty after 20 seconds";
+                AddToEmailLog($sMsg, $iUserID); // Add message to log
+
+                break;
+            }
+
+            extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
+            extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
+            $bDelay1Second = ($erp_count != $iEmailNum) || ($emp_num_left != $iEmailNum);
+        }
+
         // Are we done?
-        if (($emp_num_left < 1) && ($sRecipient == 'get_recipients_from_mysql')) {
+        if (($sRecipient == 'get_recipients_from_mysql') && ($emp_num_left < 1)) {
             $bContinue = FALSE;
             if ($emp_num_left < 0) {
                 $_SESSION['sEmailState'] = 'error';
                 $sMsg = 'Error on line '.__LINE__.' of file '.__FILE__;
                 AddToEmailLog($sMsg, $iUserID);
             } else {
-                $rsContinue = RunQuery($sSQLbContinue);
-                $aRow = mysql_fetch_array($rsContinue);
-                extract($aRow);
+                // If we're done, $erp_count should be zero
                 if ($erp_count) {
                     $_SESSION['sEmailState'] = 'error';
                     $sMsg = 'Error on line '.__LINE__.' of file '.__FILE__;
@@ -290,10 +324,6 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
 
         // Check if there are more addresses to send
         if ($bContinue) {
-            $rsContinue = RunQuery($sSQLbContinue);
-            $aRow = mysql_fetch_array($rsContinue);
-            extract($aRow);
-
             if ($erp_count != $emp_num_left) {
                 $_SESSION['sEmailState'] = 'error';
                 $bContinue = FALSE;
@@ -422,9 +452,7 @@ if (!$emp_count) {
 $sSQL_ERP = 'SELECT COUNT(erp_id) as erp_count FROM email_recipient_pending_erp '.
             "WHERE erp_usr_id='$iUserID'";
 
-$rsERP = RunQuery($sSQL_ERP);
-$aRow = mysql_fetch_array($rsERP);
-extract($aRow);
+extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
 
 $sSQL_EMP = 'SELECT * FROM email_message_pending_emp '.
             "WHERE emp_usr_id='$iUserID'";
@@ -477,7 +505,36 @@ if (!$emp_num_sent && !$emp_num_left) {
                 "WHERE emp_usr_id='$iUserID'";
         RunQuery($sSQL);
 
-        AddToEmailLog("Job Started", $iUserID); // Initialize the log
+        extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
+        extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
+        $iEmergencyExit = 20; // Error after 20 seconds
+        while (($erp_count != $iEmailNum) || ($emp_num_left != $iEmailNum)) {
+
+            $sMsg = "cache dirty: erp_count = $erp_count, iEmailNum = $iEmailNum, ".
+                    "emp_num_left = $emp_num_left";
+            AddToEmailLog($sMsg, $iUserID); // Add message to log
+
+            // file system may be slow to update on busy servers
+            // delay 1 second and then read the tables again
+            sleep(1);
+
+            $iEmergencyExit--;
+            if ($iEmergencyExit < 1) {
+                $_SESSION['sEmailState'] = 'error';
+                $bContinue = FALSE;
+                $sMsg = "Error: MySQL cache still dirty after 20 seconds";
+                AddToEmailLog($sMsg, $iUserID); // Add message to log
+
+                break;
+            }
+
+            extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
+            extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
+        }
+
+        if ($iEmergencyExit > 0) {
+            AddToEmailLog('Job Started', $iUserID); // Initialize the log
+        }
     }
 
 } elseif ($emp_num_left) {
@@ -718,6 +775,23 @@ if ($sEmailState == 'continue') {
 
     echo "Job terminated due to error.  Please review log for further information.<br>\n";
 
+    $sSubject = "Email job terminated due to error at $tTimeStamp";
+
+    $sMessage = "Email job issued by ";
+    $sMessage .= $_SESSION['UserFirstName'].' '.$_SESSION['UserLastName'];
+    $sMessage .= " using:\n";
+    $sMessage .= "From Name = $sFromName\n";
+    $sMessage .= "From Address = $sFromEmailAddress\n";
+
+    $sSQL = "SELECT * FROM email_message_pending_emp ".
+            "WHERE emp_usr_id='$iUserID'";
+    extract(mysql_fetch_array(RunQuery($sSQL)));
+
+    $sMessage .= "Email sent to $emp_num_sent email addresses.\n";
+    $sMessage .= "Email job terminated at $tTimeStamp\n\n";
+    $sMessage .= "Email job log:\n\n";
+
+
     $sSQL = "SELECT * FROM email_job_log_$iUserID ORDER BY ejl_id";
 
     $sHTMLLog = '<br><br><div align="center"><table>';
@@ -729,12 +803,18 @@ if ($sEmailState == 'continue') {
         $sTime = date('i:s', intval($ejl_time)).'.';
         $sTime .= substr($ejl_usec,0,3);
         $sMsg = $ejl_text;
+        $sMessage .= $sTime.' '.$sMsg."\n";
         $sHTMLLog .= "<tr><td>$sTime</td><td>$sMsg</td></tr>\n";
     }
 
     $sHTMLLog .= '</table></div>';
 
     echo $sHTMLLog;
+
+    $sMsg = "Attempting to email log to $sToEmailAddress\n";
+    echo $sMsg.'<br>';
+    SendEmail($sSubject, $sMessage, $sToEmailAddress);
+
 
 } else {
 
