@@ -54,9 +54,12 @@ if (isset($_POST["Submit"]))
 		}
 
 		else {
-			// Update the user record with a lowercase md5 hash of the new password
-			$sSQL = "UPDATE user_usr SET usr_Password = '" . md5($sNewPassword1) . "', usr_NeedPasswordChange = 0 WHERE usr_per_ID = " . $iPersonID;
-			RunQuery($sSQL);
+			// Update the user record with the password hash
+            $tmp = strtolower($sNewPassword1.$iPersonID);        
+            $sPasswordHash = sha1(sha1($tmp).$tmp);
+            $sSQL = "UPDATE user_usr SET usr_Password='".$sPasswordHash."' ".
+                    "WHERE usr_per_ID ='".$iPersonID."'";
+            RunQuery($sSQL);
 
 			// Route back to the list
 			if ($_GET["FromUserList"] == "True") {
@@ -70,10 +73,10 @@ if (isset($_POST["Submit"]))
 	// Otherwise, a user must know their own existing password to change it.
 	else
 	{
-		// Get the data on this user so we can confirm the old password
-		$sSQL = "SELECT * FROM user_usr, person_per WHERE per_ID = usr_per_ID AND usr_per_ID = " . $iPersonID;
-		$rsUser = RunQuery($sSQL);
-		$aRow = mysql_fetch_array($rsUser);
+        // Get the data on this user so we can confirm the old password
+        $sSQL = "SELECT * FROM user_usr, person_per ".
+                "WHERE per_ID = usr_per_ID AND usr_per_ID = " . $iPersonID;
+        extract(mysql_fetch_array(RunQuery($sSQL)));
 
 		// Build the array of bad passwords
 		$aBadPasswords = explode(",", $sDisallowedPasswords);
@@ -81,8 +84,19 @@ if (isset($_POST["Submit"]))
 		$aBadPasswords[] = strtolower($per_MiddleName);
 		$aBadPasswords[] = strtolower($per_LastName);
 
+        $bPasswordMatch = FALSE;
+        if (strlen($usr_Password) == 40) {
+            $tmp = strtolower($sOldPassword).$iPersonID;
+            $sPasswordHash = sha1(sha1($tmp).$tmp);
+            $bPasswordMatch = ($usr_Password == $sPasswordHash);
+        } else {
+            $tmp = strtolower($sOldPassword);
+            $sPasswordHash = md5($tmp);
+            $bPasswordMatch = ($usr_Password == $sPasswordHash);
+        }
+
 		// Does the old password match?
-		if (md5($sOldPassword) != $aRow["usr_Password"]) {
+		if (!$bPasswordMatch) {
 			$sOldPasswordError = "<br><font color=\"red\">" . gettext("Invalid password") . "</font>";
 			$bError = True;
 		}
@@ -124,10 +138,12 @@ if (isset($_POST["Submit"]))
 
 		// If no errors, update
 		if (!$bError) {
-
-			// Update the user record with a lowercase md5 hash of this user's password
-			$sSQL = "UPDATE user_usr SET usr_Password = '" . md5($sNewPassword1) . "', usr_NeedPasswordChange = 0 WHERE usr_per_ID = " . $iPersonID;
-			RunQuery($sSQL);
+			// Update the user record with the password hash
+            $tmp = strtolower($sNewPassword1.$iPersonID);        
+            $sPasswordHash = sha1(sha1($tmp).$tmp);
+            $sSQL = "UPDATE user_usr SET usr_Password='".$sPasswordHash."' ".
+                    "WHERE usr_per_ID ='".$iPersonID."'";
+            RunQuery($sSQL);
 
 			// Set the session variable so they don't get sent back here
 			$_SESSION['bNeedPasswordChange'] = False;

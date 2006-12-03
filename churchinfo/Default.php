@@ -115,20 +115,41 @@ if (isset($_POST['User']) && $sErrorText == '') {
 }
 
 
-
 // Has the form been submitted?
 if ($iUserID > 0)
 {
 	// Get the information for the selected user
-	$sSQL = 'SELECT * FROM user_usr INNER JOIN person_per ON usr_per_ID = per_ID '.
-            "WHERE usr_per_ID ='$iUserID'";
-	$rsQueryResult = RunQuery($sSQL);
-	extract(mysql_fetch_array($rsQueryResult));
+	$sSQL = "SELECT * FROM user_usr WHERE usr_per_ID ='$iUserID'";
+	extract(mysql_fetch_array(RunQuery($sSQL)));
 
-	// Get the user's family id in case edit self is turned on
-	$sSQL = "SELECT per_fam_ID FROM person_per WHERE per_ID ='$iUserID'";
-	$rsQueryResult = RunQuery($sSQL);
-	extract(mysql_fetch_array($rsQueryResult));
+	$sSQL = "SELECT * FROM person_per WHERE per_ID ='$iUserID'";
+	extract(mysql_fetch_array(RunQuery($sSQL)));
+
+    $bPasswordMatch = FALSE;
+    // Check the user password
+    if (strlen($usr_Password) == 40) {
+        // The password was stored using the new 40 character sha1 hash
+        $tmp = strtolower($_POST['Password'].$iUserID);
+        $sPasswordHash = sha1(sha1($tmp).$tmp);
+        $bPasswordMatch = ($usr_Password == $sPasswordHash);
+    } else {
+        // The password was stored using the old 32 character md5 hash
+        $tmp = strtolower($_POST['Password']);
+        $sPasswordHash = md5($tmp);
+        $bPasswordMatch = ($usr_Password == $sPasswordHash);
+
+        /***** Wait until version 1.3.0 to enable below code ****************
+        if ($bPasswordMatch) {
+            // If the password matches update from 32 character hash
+            // to 40 character hash
+            $tmp = strtolower($_POST['Password'].$iUserID);        
+            $sPasswordHash = sha1(sha1($tmp).$tmp);
+            $sSQL = "UPDATE user_usr SET usr_Password='".$sPasswordHash."' ".
+                    "WHERE usr_per_ID ='".$iUserID."'";
+            RunQuery($sSQL);
+        }
+        ****** Wait until ChurchInfo version 1.3.0 to enable above code  ***/
+    }
 
 	// Block the login if a maximum login failure count has been reached
 	if ($iMaxFailedLogins > 0 && $usr_FailedLogins >= $iMaxFailedLogins) {
@@ -137,7 +158,7 @@ if ($iUserID > 0)
 	}
 
 	// Does the password match?
-	elseif ($usr_Password != md5(strtolower($_POST['Password']))) {
+	elseif (!$bPasswordMatch) {
 
 		// Increment the FailedLogins
 		$sSQL = 'UPDATE user_usr SET usr_FailedLogins = usr_FailedLogins + 1 '.
