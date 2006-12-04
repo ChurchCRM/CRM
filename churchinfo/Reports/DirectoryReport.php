@@ -328,7 +328,7 @@ class PDF_Directory extends ChurchInfoReport {
         if ($bDirFamilyEmail && strlen($fam_Email))
             $sFamilyStr .= "   " . gettext("Email") . ": " . $fam_Email . "\n";
         if ($bDirWedding && ($fam_WeddingDate > 0))
-            $sFamilyStr .= "   " . gettext("Wedding") . ": " . Date("m/d/Y", mysql_to_epoch($fam_WeddingDate)) . "\n";
+            $sFamilyStr .= "   " . gettext("Wedding") . ": " . Date("m/d/Y", strtotime(($fam_WeddingDate)) . "\n";
 
         return $sFamilyStr;
     }

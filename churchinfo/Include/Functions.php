@@ -641,55 +641,53 @@ function RemoveGroupFromPeopleCart($iGroupID)
 // bWithtime 1 to be displayed
 function FormatDate($dDate, $bWithTime=FALSE)
 {
-    if ($dDate == "" || $dDate == "0000-00-00 00:00:00" || $dDate == "0000-00-00")
-        return ("");
+    if ($dDate == '' || $dDate == '0000-00-00 00:00:00' || $dDate == '0000-00-00')
+        return ('');
 	
 	if (strlen($dDate)==10) // If only a date was passed append time
-		$dDate = $dDate . " 12:00:00";	// Use noon to avoid a shift in daylight time causing
+		$dDate = $dDate . ' 12:00:00';	// Use noon to avoid a shift in daylight time causing
 										// a date change.
 
 	if (strlen($dDate)!=19)
-		return ("");
+		return ('');
 
 	// Verify it is a valid date
 	$sScanString = substr($dDate,0,10);	
 	list($iYear, $iMonth, $iDay) = sscanf($sScanString,"%04d-%02d-%02d");
 
 	if ( !checkdate($iMonth,$iDay,$iYear) )
-		return ("Unknown");
+		return ('Unknown');
+
+    // PHP date() function is not used because it is only robust for dates between
+    // 1970 and 2038.  This is a problem on systems that are limited to 32 bit integers.  
+    // To handle a much wider range of dates use MySQL date functions.
 
     $sSQL = "SELECT DATE_FORMAT('$dDate', '%b') as mn, "
     .       "DAYOFMONTH('$dDate') as dm, YEAR('$dDate') as y, "
-    .       "HOUR('$dDate') as h, DATE_FORMAT('$dDate', ':%i') as m";
+    .       "DATE_FORMAT('$dDate', '%k') as h, "
+    .       "DATE_FORMAT('$dDate', ':%i') as m";
     extract(mysql_fetch_array(RunQuery($sSQL)));
 
     $month = gettext("$mn"); // Allow for translation of 3 character month abbr
 
-    if ($h >= 12) {
-        $sAMPM = "pm";
+    if ($h > 11) {
+        $sAMPM = gettext('pm');
         if ($h > 12) {
             $h = $h-12;
         } 
     } else {
-        $sAMPM = "am";
+        $sAMPM = gettext('am');
         if ($h == 0) {
             $h = 12;
         }
     }
 
     if ($bWithTime) {
-        return ("$month $dm $y $h$m $sAMPM");
+        return ("$month $dm, $y $h$m $sAMPM");
     } else {
-        return ("$month $dm $y");
+        return ("$month $dm, $y");
     }
 
-}
-
-// this might be cruft
-function mysql_to_epoch($datestr)
-{
-	list($year, $month, $day, $hour, $minute, $second) = split("([^0-9])", $datestr);
-	return date("U", mktime($hour, $minute, $second, $month, $day, $year));
 }
 
 function AlternateRowStyle($sCurrentStyle)
