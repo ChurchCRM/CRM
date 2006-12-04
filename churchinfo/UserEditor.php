@@ -27,81 +27,79 @@
 *
 ******************************************************************************/
 // Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
 // Security: User must be an Admin to access this page.
-// Otherwise, re-direct them to the main menu.
+// Otherwise re-direct to the main menu.
 if (!$_SESSION['bAdmin'])
 {
-	Redirect("Menu.php");
+	Redirect('Menu.php');
 	exit;
 }
 
 // Get the PersonID out of either querystring or the form, depending and what we're doing
-if (isset($_GET["PersonID"])) {
-	$iPersonID = FilterInput($_GET["PersonID"],'int');
+if (isset($_GET['PersonID'])) {
+	$iPersonID = FilterInput($_GET['PersonID'],'int');
 	$bNewUser = false;
 
-} elseif (isset($_POST["PersonID"])) {
-	$iPersonID = FilterInput($_POST["PersonID"],'int');
+} elseif (isset($_POST['PersonID'])) {
+	$iPersonID = FilterInput($_POST['PersonID'],'int');
 	$bNewUser = false;
 
-} elseif (isset($_GET["NewPersonID"])) {
-	$iPersonID = FilterInput($_GET["NewPersonID"],'int');
+} elseif (isset($_GET['NewPersonID'])) {
+	$iPersonID = FilterInput($_GET['NewPersonID'],'int');
 	$bNewUser = true;
 }
 
-if (isset($_GET["ErrorText"])){
-	$sErrorText = FilterInput($_GET["ErrorText"],'string');
+if (isset($_GET['ErrorText'])){
+	$sErrorText = FilterInput($_GET['ErrorText'],'string');
 }else{
 	$sErrorText = '';	
 }
 
 //Value to help determine correct return state on error
-if (isset($_POST["NewUser"])){
-	$NewUser = FilterInput($_POST["NewUser"],'string');
+if (isset($_POST['NewUser'])){
+	$NewUser = FilterInput($_POST['NewUser'],'string');
 	}
 
 // Has the form been submitted?
-if (isset($_POST["Submit"]) && $iPersonID > 0) {
+if (isset($_POST['save']) && $iPersonID > 0) {
 
 	// Assign all variables locally
-	$sAction = $_POST["Action"];
+	$sAction = $_POST['Action'];
 
 	$defaultFY = CurrentFY ();
-	$sUserName = FilterInput($_POST["UserName"]);
+	$sUserName = FilterInput($_POST['UserName']);
 	
 	 if (strlen($sUserName) < 3) 
 	{	
 		if($NewUser == false)
 		{
 		//Report error for current user creation
-		Redirect("UserEditor.php?PersonID=".$iPersonID."&ErrorText=Login must be a least 3 characters!");
+		Redirect('UserEditor.php?PersonID='.$iPersonID.'&ErrorText=Login must be a least 3 characters!');
 		
 		}else{
 		//Report error for new user creation			
-		Redirect("UserEditor.php?NewPersonID=".$PersonID."&ErrorText=Login must be a least 3 characters!");
+		Redirect('UserEditor.php?NewPersonID='.$PersonID.'&ErrorText=Login must be a least 3 characters!');
 		}
 		
 		
 	}else{
-	if (isset($_POST["AddRecords"])) { $AddRecords = 1; } else { $AddRecords = 0; }
-	if (isset($_POST["EditRecords"])) { $EditRecords = 1; } else { $EditRecords = 0; }
-	if (isset($_POST["DeleteRecords"])) { $DeleteRecords = 1; } else { $DeleteRecords = 0; }
-	if (isset($_POST["MenuOptions"])) { $MenuOptions = 1; } else { $MenuOptions = 0; }
-	if (isset($_POST["ManageGroups"])) { $ManageGroups = 1; } else { $ManageGroups = 0; }
-	if (isset($_POST["Finance"])) { $Finance = 1; } else { $Finance = 0; }
-	if (isset($_POST["Notes"])) { $Notes = 1; } else { $Notes = 0; }
-	if (isset($_POST["EditSelf"])) { $EditSelf = 1; } else { $EditSelf = 0; }
-	if (isset($_POST["Canvasser"])) { $Canvasser = 1; } else { $Canvasser = 0; }
+	if (isset($_POST['AddRecords'])) { $AddRecords = 1; } else { $AddRecords = 0; }
+	if (isset($_POST['EditRecords'])) { $EditRecords = 1; } else { $EditRecords = 0; }
+	if (isset($_POST['DeleteRecords'])) { $DeleteRecords = 1; } else { $DeleteRecords = 0; }
+	if (isset($_POST['MenuOptions'])) { $MenuOptions = 1; } else { $MenuOptions = 0; }
+	if (isset($_POST['ManageGroups'])) { $ManageGroups = 1; } else { $ManageGroups = 0; }
+	if (isset($_POST['Finance'])) { $Finance = 1; } else { $Finance = 0; }
+	if (isset($_POST['Notes'])) { $Notes = 1; } else { $Notes = 0; }
+	if (isset($_POST['EditSelf'])) { $EditSelf = 1; } else { $EditSelf = 0; }
+	if (isset($_POST['Canvasser'])) { $Canvasser = 1; } else { $Canvasser = 0; }
 
-	// This setting will go un-used until InfoCentral 1.3
-	// if (isset($_POST["Communication"])) { $Communication = 1; } else { $Communication = 0; }
 	$Communication = 0;
 
-	if (isset($_POST["Admin"])) { $Admin = 1; } else { $Admin = 0; }
-	$Style = FilterInput($_POST["Style"]);
+	if (isset($_POST['Admin'])) { $Admin = 1; } else { $Admin = 0; }
+	$Style = FilterInput($_POST['Style']);
 
 	// Initialize error flag
 	$bErrorFlag = false;
@@ -110,31 +108,26 @@ if (isset($_POST["Submit"]) && $iPersonID > 0) {
 	if (!$bErrorFlag) {
 		
 		//Check for duplicate user names
-  	    $unSQL = "Select Count(*) as dup from user_usr where usr_UserName like '".$sUserName
-  	            ."' and usr_per_ID not like '".$iPersonID."'";
+  	    $unSQL = "Select Count(*) as dup from user_usr where usr_UserName like '".
+                 $sUserName."' and usr_per_ID not like '".$iPersonID."'";
   	 
   	   // Execute the SQL
   	   $unQueryResult = RunQuery($unSQL);
   	   //Extract Value, if greater than 0 for add error, greater than 1 for add then error
   	   $unQueryResultSet = mysql_fetch_array($unQueryResult);
-  	   $undupCount = $unQueryResultSet["dup"];
+  	   $undupCount = $unQueryResultSet['dup'];
 
 		// Write the SQL depending on whether we're adding or editing
-		if ($sAction == "add"){
+		if ($sAction == 'add'){
 									
 							if ($undupCount == 0) {
 								$sSQL = "INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Communication, usr_Admin, usr_Style, usr_SearchLimit, usr_defaultFY, usr_UserName, usr_EditSelf, usr_Canvasser) VALUES (" . $iPersonID . ",'" . md5(strtolower($sDefault_Pass)) . "',1,'" . date("Y-m-d H:i:s") . "', " . $AddRecords . ", " . $EditRecords . ", " . $DeleteRecords . ", " . $MenuOptions . ", " . $ManageGroups . ", " . $Finance . ", " . $Notes . ", " . $Communication . ", " . $Admin . ", '" . $Style . "', 10," . $defaultFY . ",\"" . $sUserName . "\"," . $EditSelf . "," . $Canvasser . ")";
 							// Execute the SQL
 							RunQuery($sSQL);
 
-
-
-
-							// 	Redirect back to the list
-							Redirect("UserList.php");
 							}else{
 							// Set the error text for duplicate when new user
-							Redirect("UserEditor.php?NewPersonID=".$PersonID."&ErrorText=Login already in use, please select a different login!");
+							Redirect('UserEditor.php?NewPersonID='.$PersonID.'&ErrorText=Login already in use, please select a different login!');
 							}
 		} else{
 		
@@ -142,11 +135,10 @@ if (isset($_POST["Submit"]) && $iPersonID > 0) {
 					$sSQL =  "UPDATE user_usr SET usr_AddRecords = " . $AddRecords . ", usr_EditRecords = " . $EditRecords . ", usr_DeleteRecords = " . $DeleteRecords . ", usr_MenuOptions = " . $MenuOptions . ", usr_ManageGroups = " . $ManageGroups . ", usr_Finance = " . $Finance . ", usr_Notes = " . $Notes . ", usr_Communication = " . $Communication . ", usr_Admin = " . $Admin . ", usr_Style = \"" . $Style . "\", usr_UserName = \"" . $sUserName . "\", usr_EditSelf = " . $EditSelf . " WHERE usr_per_ID = " . $iPersonID;
 					// Execute the SQL
 					RunQuery($sSQL);
-					// Redirect back to the list
-					Redirect("UserList.php");
+
 				}else{
 					// Set the error text for duplicate when currently existing
-					Redirect("UserEditor.php?PersonID=".$iPersonID."&ErrorText=Login already in use, please select a different login!");
+					Redirect('UserEditor.php?PersonID='.$iPersonID.'&ErrorText=Login already in use, please select a different login!');
 				} 
 	
 			}
@@ -165,20 +157,20 @@ if (isset($_POST["Submit"]) && $iPersonID > 0) {
 			extract($aUser);
 			$sUser = $per_LastName . ", " . $per_FirstName;
 			$sUserName = $usr_UserName;
-			$sAction = "edit";
+			$sAction = 'edit';
 		} else {
 			$sSQL = "SELECT per_LastName, per_FirstName FROM person_per WHERE per_ID = " . $iPersonID;
 			$rsUser = RunQuery($sSQL);
 			$aUser = mysql_fetch_array($rsUser);
-			$sUser = $aUser['per_LastName'] . ", " . $aUser['per_FirstName'];
+			$sUser = $aUser['per_LastName'] . ', ' . $aUser['per_FirstName'];
 			$sUserName = $aUser['per_FirstName'] . $aUser['per_LastName'];
-			$sAction = "add";
-			$vNewUser = "true";
+			$sAction = 'add';
+			$vNewUser = 'true';
 		}
 
 	// New user without person selected yet
 	} else {
-		$sAction = "add";
+		$sAction = 'add';
 		$bShowPersonSelect = true;
 
 		$usr_AddRecords = 0;
@@ -192,8 +184,8 @@ if (isset($_POST["Submit"]) && $iPersonID > 0) {
 		$usr_Admin = 0;
 		$usr_EditSelf = 1;
 		$usr_Canvasser = 0;
-		$sUserName = "";
-		$vNewUser = "true";
+		$sUserName = '';
+		$vNewUser = 'true';
 
 		// Get all the people who are NOT currently users
 		$sSQL = "SELECT * FROM person_per LEFT JOIN user_usr ON person_per.per_ID = user_usr.usr_per_ID WHERE usr_per_ID IS NULL ORDER BY per_LastName";
@@ -213,16 +205,16 @@ function StyleSheetOptions($dirName,$currentStyle)
 				echo "<option value=\"$file\"";
 				if ($file == $currentStyle)
 					echo " selected";
-				echo ">" . substr($file,0,-4) . "</option>";
+				echo '>' . substr($file,0,-4) . '</option>';
 			}
 		}
 		closedir($dir);
 	} else {
-		foreach ( array ("Style-blue.css", "Style-green.css", "Style-purple.css", "Style-red.css", "Style.css") as $stylename ) {
-			echo "<option value=\"" . $stylename . "\"";
+		foreach ( array ('Style-blue.css', 'Style-green.css', 'Style-purple.css', 'Style-red.css', 'Style.css') as $stylename ) {
+			echo '<option value="'.$stylename.'"';
 			if ($stylename == $currentStyle)
-				echo " selected";
-			echo ">" . substr($stylename,0,-4) . "</option>";
+				echo ' selected';
+			echo '>' . substr($stylename,0,-4) . '</option>';
 		}
 	}
 }
@@ -239,23 +231,23 @@ if (isset($_POST['save']) && ($iPersonID > 0)){
 	while ($current_type = current($type)) {
 		$id = key($type);
 		// Filter Input
-		if ($current_type == 'text' || $current_type == "textarea")
+		if ($current_type == 'text' || $current_type == 'textarea')
 			$value = FilterInput($new_value[$id]);
 		elseif ($current_type == 'number')
-			$value = FilterInput($new_value[$id],"float");
+			$value = FilterInput($new_value[$id],'float');
 		elseif ($current_type == 'date')
-			$value = FilterInput($new_value[$id],"date");
+			$value = FilterInput($new_value[$id],'date');
 		elseif ($current_type == 'boolean'){
-			if ($new_value[$id] != "1")
-				$value = "";
+			if ($new_value[$id] != '1')
+				$value = '';
 			else
-				$value = "1";
+				$value = '1';
         }
 
-        if ($new_permission[$id] != "TRUE")
-            $permission="FALSE";
+        if ($new_permission[$id] != 'TRUE')
+            $permission='FALSE';
         else
-            $permission="TRUE";
+            $permission='TRUE';
 
         // We can't update unless values already exist.
         $sSQL = "SELECT * FROM userconfig_ucfg "
@@ -281,7 +273,7 @@ if (isset($_POST['save']) && ($iPersonID > 0)){
                 $rsResult = RunQuery($sSQL);
 
             } else {
-                echo "<BR> Error: Software BUG 3215";
+                echo '<br> Error on line '.__LINE__.' of file '.__FILE__;
                 exit;
             }
         }
@@ -293,11 +285,14 @@ if (isset($_POST['save']) && ($iPersonID > 0)){
 		$rsUpdate = RunQuery($sSQL);
 		next($type);
 	}
+
+    Redirect('UserList.php');
+    exit;
 }
 
 // Set the page title and include HTML header
-$sPageTitle = gettext("User Editor");
-require "Include/Header.php";
+$sPageTitle = gettext('User Editor');
+require 'Include/Header.php';
 
 ?>
 
@@ -312,7 +307,7 @@ if ($bShowPersonSelect) {
 ?>
     <table cellpadding="4" align="center">
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Person to Make User:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext('Person to Make User:'); ?></td>
 		<td class="TextColumn">
 			<select name="PersonID" size="12">
 	<?php
@@ -320,7 +315,7 @@ if ($bShowPersonSelect) {
 	while ($aRow =mysql_fetch_array($rsPeople)) {
 		extract($aRow);
 	?>
-				<option value="<?php echo $per_ID; ?>"<?php if ($per_ID == $iPersonID) { echo " selected"; } ?>><?php echo $per_LastName . ", " .  $per_FirstName; ?></option>
+				<option value="<?php echo $per_ID; ?>"<?php if ($per_ID == $iPersonID) { echo ' selected'; } ?>><?php echo $per_LastName . ', ' .  $per_FirstName; ?></option>
 	<?php }	?>
 			</select>
 		</td>
@@ -334,7 +329,7 @@ if ($bShowPersonSelect) {
 	<input type="hidden" name="PersonID" value="<?php echo $iPersonID; ?>">
     <table cellpadding="4" align="center">
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("User:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext('User:'); ?></td>
 		<td class="TextColumn"><?php echo $sUser; ?></td>
 	</tr>
 <?php
@@ -347,43 +342,43 @@ if ($bShowPersonSelect) {
   		</td>
     </tr><?php } ?>
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Login Name:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext('Login Name:'); ?></td>
 		<td class="TextColumn"><input type="text" name="UserName" value="<?php echo $sUserName; ?>"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Add Records:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext('Add Records:'); ?></td>
 		<td class="TextColumn"><input type="checkbox" name="AddRecords" value="1"<?php if ($usr_AddRecords) { echo " checked"; } ?>></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Edit Records:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext('Edit Records:'); ?></td>
 		<td class="TextColumn"><input type="checkbox" name="EditRecords" value="1"<?php if ($usr_EditRecords) { echo " checked"; } ?>></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Delete Records:"); ?></td>
-		<td class="TextColumn"><input type="checkbox" name="DeleteRecords" value="1"<?php if ($usr_DeleteRecords) { echo " checked"; } ?>></td>
+		<td class="LabelColumn"><?php echo gettext('Delete Records:'); ?></td>
+		<td class="TextColumn"><input type="checkbox" name="DeleteRecords" value="1"<?php if ($usr_DeleteRecords) { echo ' checked'; } ?>></td>
 	</tr>
 
  	<tr>
-		<td class="LabelColumn"><?php echo gettext("Manage Properties and Classifications:"); ?></td>
-		<td class="TextColumn"><input type="checkbox" name="MenuOptions" value="1"<?php if ($usr_MenuOptions) { echo " checked"; } ?>></td>
+		<td class="LabelColumn"><?php echo gettext('Manage Properties and Classifications:'); ?></td>
+		<td class="TextColumn"><input type="checkbox" name="MenuOptions" value="1"<?php if ($usr_MenuOptions) { echo ' checked'; } ?>></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Manage Groups and Roles:"); ?></td>
-		<td class="TextColumn"><input type="checkbox" name="ManageGroups" value="1"<?php if ($usr_ManageGroups) { echo " checked"; } ?>></td>
+		<td class="LabelColumn"><?php echo gettext('Manage Groups and Roles:'); ?></td>
+		<td class="TextColumn"><input type="checkbox" name="ManageGroups" value="1"<?php if ($usr_ManageGroups) { echo ' checked'; } ?>></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Manage Donations and Finance:"); ?></td>
-		<td class="TextColumn"><input type="checkbox" name="Finance" value="1"<?php if ($usr_Finance) { echo " checked"; } ?>></td>
+		<td class="LabelColumn"><?php echo gettext('Manage Donations and Finance:'); ?></td>
+		<td class="TextColumn"><input type="checkbox" name="Finance" value="1"<?php if ($usr_Finance) { echo ' checked'; } ?>></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("View, Add and Edit Notes:"); ?></td>
-		<td class="TextColumn"><input type="checkbox" name="Notes" value="1"<?php if ($usr_Notes) { echo " checked"; } ?>></td>
+		<td class="LabelColumn"><?php echo gettext('View, Add and Edit Notes:'); ?></td>
+		<td class="TextColumn"><input type="checkbox" name="Notes" value="1"<?php if ($usr_Notes) { echo ' checked'; } ?>></td>
 	</tr>
 
 <?php /*  removed until 1.3
@@ -394,34 +389,34 @@ if ($bShowPersonSelect) {
 
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Edit Self:"); ?></td>
-		<td class="TextColumn"><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) { echo " checked"; } ?>>&nbsp;<span class="SmallText"><?php echo gettext("(Edit own family only.)"); ?></span></td>
+		<td class="LabelColumn"><?php echo gettext('Edit Self:'); ?></td>
+		<td class="TextColumn"><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?php echo gettext('(Edit own family only.)'); ?></span></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Canvasser:"); ?></td>
-		<td class="TextColumn"><input type="checkbox" name="Canvasser" value="1"<?php if ($usr_Canvasser) { echo " checked"; } ?>>&nbsp;<span class="SmallText"><?php echo gettext("(Canvass volunteer.)"); ?></span></td>
+		<td class="LabelColumn"><?php echo gettext('Canvasser:'); ?></td>
+		<td class="TextColumn"><input type="checkbox" name="Canvasser" value="1"<?php if ($usr_Canvasser) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?php echo gettext('(Canvass volunteer.)'); ?></span></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Admin:"); ?></td>
-		<td class="TextColumn"><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) { echo " checked"; } ?>>&nbsp;<span class="SmallText"><?php echo gettext("(Grants all privileges.)"); ?></span></td>
+		<td class="LabelColumn"><?php echo gettext('Admin:'); ?></td>
+		<td class="TextColumn"><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?php echo gettext('(Grants all privileges.)'); ?></span></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Style:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext('Style:'); ?></td>
 		<td class="TextColumnWithBottomBorder"><select name="Style"><?php StyleSheetOptions('Include',$usr_Style); ?></select></td>
 	</tr>
 
 	<tr>
-		<td colspan="2"><div align="center"><?php echo gettext("Note: Changes will not take effect until next logon."); ?></div></td>
+		<td colspan="2"><div align="center"><?php echo gettext('Note: Changes will not take effect until next logon.'); ?></div></td>
 
 	</tr>
 
 
 	<tr>
 		<td colspan="2" align="center">
-		<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> name="Submit">&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='UserList.php';">
+		<input type="submit" class="icButton" <?php echo 'value="' . gettext('Save') . '"'; ?> name="save">&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext('Cancel') . '"'; ?> onclick="javascript:document.location='UserList.php';">
 		</td>
 	</tr>
 
@@ -430,13 +425,13 @@ if ($bShowPersonSelect) {
 <?php
 
 // Table Headings
-echo "<BR><BR>";
-echo "Set Permission True to give this user the ability to change their current value.<BR>";
+echo '<br><br>';
+echo 'Set Permission True to give this user the ability to change their current value.<br>';
 echo '<table cellpadding="3" align="left">';
-echo "<tr><td><h3>Permission</h3></td>
-    <td><h3>". gettext("Variable name") . "</h3></td>
+echo "\n".'<tr><td><h3>Permission</h3></td>
+    <td><h3>'. gettext("Variable name") . '</h3></td>
 	<td><h3>Current Value</h3></td>
-	<td><h3>Notes</h3></td></tr>";
+	<td><h3>Notes</h3></td></tr>';
 
 //First get default settings, then overwrite with settings from this user 
 
@@ -460,25 +455,26 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
 	
 	// Cancel, Save Buttons every 13 rows
 	if ($r == 13) {
-		echo "<tr><td>&nbsp;</td>
-			<td><input type=\"submit\" class=\"icButton\" name=\"save\" value=\"".gettext("Save Settings")."\">
-			<input type=\"submit\" class=\"icButton\" name=\"cancel\" value=\"" . gettext("Cancel") . "\">
-			</td></tr>";
+		echo "\n".'<tr><td>&nbsp;</td>
+			<td><input type="submit" class="icButton" name="save" value="'.gettext('Save Settings').'">
+			<input type="submit" class="icButton" name="cancel" value="' . gettext('Cancel') . '">
+			</td></tr>';
 		$r = 1;
 	}
 
 	// Default Permissions
 	if ($ucfg_permission=='TRUE'){
-		$sel2 = "SELECTED";
-		$sel1 = "";
+		$sel2 = 'SELECTED';
+		$sel1 = '';
 	} else {
-		$sel1 = "SELECTED";
-		$sel2 = "";
+		$sel1 = 'SELECTED';
+		$sel2 = '';
 	}	
-	echo "<tr><td class=\"TextColumnWithBottomBorder\"><select name=\"new_permission[$ucfg_id]\">";
+    echo "\n<tr>";
+	echo "<td class=\"TextColumnWithBottomBorder\"><select name=\"new_permission[$ucfg_id]\">";
 	echo "<option value=\"FALSE\" $sel1>False";
 	echo "<option value=\"TRUE\" $sel2>True";
-	echo "</select></td>";
+	echo '</select></td>';
 	
 	// Variable Name & Type
 	echo "<td class=\"LabelColumn\">$ucfg_name</td>";
@@ -497,16 +493,16 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
         . " maxlength=\"15\" name=\"new_value[$ucfg_id]\" value=\"$ucfg_value\"></td>";
 	} elseif ($ucfg_type == 'boolean') {
 		if ($ucfg_value){
-			$sel2 = "SELECTED";
-			$sel1 = "";
+			$sel2 = 'SELECTED';
+			$sel1 = '';
 		} else {
-			$sel1 = "SELECTED";
-			$sel2 = "";
+			$sel1 = 'SELECTED';
+			$sel2 = '';
 		}	
 		echo "<td class=\"TextColumnWithBottomBorder\"><select name=\"new_value[$ucfg_id]\">";
 		echo "<option value=\"\" $sel1>False";
 		echo "<option value=\"1\" $sel2>True";
-		echo "</select></td>";
+		echo '</select></td>';
 	}
 		
 	// Notes
@@ -517,12 +513,12 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
 }	 
 
 // Cancel, Save Buttons
-echo "<tr><td>&nbsp;</td>
+echo "\n<tr><td>&nbsp;</td>
 	<td><input type=\"submit\" class=\"icButton\" name=\"save\" value=\"" 
     . gettext("Save Settings") . "\">
 	<input type=\"submit\" class=\"icButton\" name=\"cancel\" value=\"" . gettext("Cancel") . "\">
 	</td></tr></table></form>";
 
 
-require "Include/Footer.php";
+require 'Include/Footer.php';
 ?>
