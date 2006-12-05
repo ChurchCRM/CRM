@@ -36,9 +36,9 @@ if (isset($_POST["Submit"]))
 	$sNewPassword1 = strtolower($_POST["NewPassword1"]);
 	$sNewPassword2 = strtolower($_POST["NewPassword2"]);
 
-	// Administrators can change other users' passwords without knowing the old ones.
-	// No password strength test is done, we assume this administrator knows what the
-   // user wants to there is no need to prompt the user to change it on next login.
+    // Administrators can change other users' passwords without knowing the old ones.
+    // No password strength test is done, we assume this administrator knows what the
+    // user wants so there is no need to prompt the user to change it on next login.
 	if ($bAdminOtherUser)
 	{
 		// Did they enter a new password in both boxes?
@@ -57,8 +57,11 @@ if (isset($_POST["Submit"]))
 			// Update the user record with the password hash
             $tmp = strtolower($sNewPassword1.$iPersonID);        
             $sPasswordHash = sha1(sha1($tmp).$tmp);
-            $sSQL = "UPDATE user_usr SET usr_Password='".$sPasswordHash."' ".
+            $sSQL = "UPDATE user_usr SET".
+                    " usr_Password='".$sPasswordHash."',".
+                    " usr_NeedPasswordChange='0' ".
                     "WHERE usr_per_ID ='".$iPersonID."'";
+
             RunQuery($sSQL);
 
 			// Route back to the list
@@ -141,7 +144,9 @@ if (isset($_POST["Submit"]))
 			// Update the user record with the password hash
             $tmp = strtolower($sNewPassword1.$iPersonID);        
             $sPasswordHash = sha1(sha1($tmp).$tmp);
-            $sSQL = "UPDATE user_usr SET usr_Password='".$sPasswordHash."' ".
+            $sSQL = "UPDATE user_usr SET".
+                    " usr_Password='".$sPasswordHash."',".
+                    " usr_NeedPasswordChange='0' ".
                     "WHERE usr_per_ID ='".$iPersonID."'";
             RunQuery($sSQL);
 
