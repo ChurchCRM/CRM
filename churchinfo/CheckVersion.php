@@ -31,8 +31,8 @@ require 'Include/Functions.php';
 // Set the current version of this PHP file
 // Important!  These must be updated before every software release.
 
-$_SESSION['sChurchInfoPHPVersion'] = '1.2.7';
-$_SESSION['sChurchInfoPHPDate'] = '2006-12-03';
+$_SESSION['sChurchInfoPHPVersion'] = '1.2.8';
+$_SESSION['sChurchInfoPHPDate'] = '2006-12-10';
 
 // Check if the table version_ver exists.  If the table does not exist then
 // SQL scripts must be manually run to get the database up to version 1.2.7
@@ -91,19 +91,11 @@ if(!$bVersionTableExists) {
     exit;
 }
 
-// This code is ready to go for automatically updating from 1.2.7 to 1.3.0
-// whenever that may happen
+// This code will automatically update from 1.2.7 to 1.2.8
 if ($ver_version == '1.2.7') {
-    $sUpdateFile = 'AutoSQL'.DIRECTORY_SEPARATOR.'Update1.2.7To1.3.0.sql';
 
-    if ((file_exists($sUpdateFile) && is_readable($sUpdateFile))) {
-        $sSQL = file_get_contents($sUpdateFile);
-        RunQuery($sSQL, FALSE); // FALSE means do not stop on error
-        $sError = mysql_error();
-    } else {
-        $sSQL = 'Could not access file '.$sUpdateFile;
-        $sError = $sSQL;
-    }
+    $sError = 'Initialize';  // Initialize error string
+    require 'AutoUpdate/Update1_2_7To1_2_8.php';
 
     if ($sError) {
         echo '<br>MySQL error while upgrading database:<br>'.$sError."<br><br>\n";
@@ -120,7 +112,7 @@ if ($ver_version == '1.2.7') {
 
     } else {
 
-        echo '<br>Database schema has been updated from 1.2.7 to 1.3.0.<br>'
+        echo '<br>Database schema has been updated from 1.2.7 to 1.2.8.<br>'
         .    '<BR>Please <a href="CheckVersion.php">click here</a> to continue.';
 
     }
