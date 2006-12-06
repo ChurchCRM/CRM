@@ -36,15 +36,98 @@ mysql_select_db($sDATABASE)
 
 // Verify that $sDocumentRoot and $sRootPath are correct
 $sTestPath = $sDocumentRoot.$sRootPath.'/Include/Config.php';
-$sSeparators = array('\\', '/');
-$sTestPath = str_replace ( $sSeparators, DIRECTORY_SEPARATOR, $sTestPath  );
+$aSeparators = array('\\', '/');
+$sTestPath = str_replace ( $aSeparators, DIRECTORY_SEPARATOR, $sTestPath  );
 if (!(file_exists($sTestPath) && is_readable($sTestPath))) {
-    $sErrorMessage  = 'Unable to open file: '.$sTestPath.'<br><br>';
+    $sErrorMessage  = "Unable to open file: $sTestPath<br><br>\n";
     $sErrorMessage .= 'Please verify that the following ';
-    $sErrorMessage .= 'variables are correct in Include/Config.php<br>';
-    $sErrorMessage .= '$sDocumentRoot = '.$sDocumentRoot.'<br>$sRootPath = '.$sRootPath;
-    die ($sErrorMessage);
+    $sErrorMessage .= "variables are correct in Include/Config.php<br>\n";
+    $sErrorMessage .= "\$sDocumentRoot = $sDocumentRoot<br>\n\$sRootPath = $sRootPath";
+    $sErrorMessage .= "<br><br>\n";
+
+    $sCorrectPath = dirname(__FILE__).DIRECTORY_SEPARATOR.'Config.php';;
+
+    $sErrorMessage .= "Canonical file path = $sCorrectPath<br><br>\n";
+
+    // we know path ends in /Include/Config.php
+    // strip this off since not useful for debugging
+    
+    $sTestPath = dirname(dirname($sTestPath));
+    $sCorrectPath = dirname(dirname($sCorrectPath));
+
+    if ($sTestPath != $sCorrectPath) {
+        
+        // Try and determine what is wrong and advise the user how to fix this problem.
+
+        // First, check if the $sTestPath ends with $sRootPath or starts with $sDocumentRoot
+
+        $iRootPathLength = strlen($sRootPath);
+        $iDocumentRootLength = (strlen($sDocumentRoot));
+        $sEndOfTestPath = substr($sCorrectPath,-1*$iRootPathLength,$iRootPathLength);
+        $sStartOfTestPath = (substr($sCorrectPath,0,$iDocumentRootLength));
+
+        $bDocumentRoot = ($sStartOfTestPath == $sDocumentRoot);
+        $bRootPath = ($sEndOfTestPath == $sRootPath);
+
+        if ($bDocumentRoot && $bRootPath) {
+            // Both $bDocumentRoot and 
+            // Somehow the *correct* path begins with $sDocumentRoot and ends
+            // with $sRootPath.  Hard to imagine this as a failure possibility
+            
+            $sErrorMessage .= "Path begins with \$sDocumentRoot = $sDocumentRoot<br>\n";
+            $sErrorMessage .= "Path ends with \$sRootPath = $sRootPath<br>\n";
+            $sErrorMessage .= "Is it even possible to ever see this error message?<br><br>\n";
+
+        } elseif (!$bDocumentRoot && !$bRootPath) {
+            // Neither match.  Can't help the user in this situation.
+            // Their web host may be accessing the file via a different path
+            // using symbolic links.
+
+            $sErrorMessage .= "Your webhost might be accessing Config.php using a ";
+            $sErrorMessage .= "symbolic link rather than using the canonical file path.";
+            $sErrorMessage .= "<br><br>\n";
+
+        } elseif ($bDocumentRoot && !$bRootPath) {
+            // In this situation it appears $sDocumentRoot is correct but $sRootPath is wrong.
+            // Advise user of the possible correct value for $sRootPath
+
+            // Since $sDocumentRoot appears to be correct let's strip it from the start of
+            // $sCorrectPath
+
+            $sAltRootPath = substr($sCorrectPath,$iDocumentRootLength);
+
+            $sErrorMessage .= "\$sDocumentRoot appears correct<br>\n";
+            $sErrorMessage .= "\$sRootPath appears incorrect<br>\n";
+            $sErrorMessage .= "Incorrect: \$sRootPath = $sRootPath<br>\n";
+            $sErrorMessage .= "Try this: \$sRootPath = $sAltRootPath<br>\n";
+
+        } else {
+            // In this situation it appears $sRootPath is correct but $sDocumentRoot is wrong.
+            // Advise user of the possible correct value for $sDocumentRoot
+
+            // Since $sRootPath appears to be correct let's strip it from the end of
+            // $sCorrectPath
+
+            $iLength = strlen($sCorrectPath)-strlen($sRootPath);
+            $sAltDocumentRoot = substr($sCorrectPath,0,$iLength);
+
+            $sErrorMessage .= "\$sRootPath appears correct<br>\n";
+            $sErrorMessage .= "\$sDocumentRoot appears incorrect<br>\n";
+            $sErrorMessage .= "Incorrect: \$sDocumentRoot = $sDocumentRoot<br>\n";
+            $sErrorMessage .= "Try this: \$sDocumentRoot = $sAltDocumentRoot<br>\n";
+
+        }
+
+
+    } else {
+        $sErrorMessage .= "It appears you entered the correct information.<br>\n";
+        $sErrorMessage .= "You should not be seeing this error message.<br>\n";
+
     }
+
+
+    die ($sErrorMessage);
+}
 
 // Initialize the session
 session_start();
