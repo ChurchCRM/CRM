@@ -67,7 +67,7 @@ if (!$bSuppressSessionTests)  // This is used for the login page only.
         if(!($_SERVER['HTTPS'] == 'on'))
         {
             $_SESSION['bSecureServer'] = TRUE;
-            Redirect("Default.php");
+            Redirect('Default.php');
             exit;
         }
     }
@@ -76,14 +76,15 @@ if (!$bSuppressSessionTests)  // This is used for the login page only.
     // If not, try to redirect to correct page, else "Menu.php"
     // This check will only be performed if $_SERVER['PHP_SELF'] is set
     if (isset($_SERVER['PHP_SELF'])) {
-        $sFullPath = str_replace( '\\','/',$sDocumentRoot.$_SERVER['PHP_SELF']);
+        $sPathExtension = substr($_SERVER['PHP_SELF'],strlen($sRootPath));
+        $sFullPath = str_replace( '\\','/',$sDocumentRoot.$sPathExtension);
         if (!(file_exists($sFullPath) && is_readable($sFullPath))) {
-            $sNewPath = substr($sFullPath,0,strpos($sFullPath,".php")+4);
+            $sNewPath = substr($sFullPath,0,strpos($sFullPath,'.php')+4);
             if (file_exists($sNewPath) && is_readable($sNewPath)) {
-                $sPage = substr($sNewPath,strrpos($sNewPath,"/")+1);
+                $sPage = substr($sNewPath,strrpos($sNewPath,'/')+1);
                 Redirect($sPage);
             } else {
-                Redirect("Menu.php");
+                Redirect('Menu.php');
             }
             exit;
         }
@@ -182,29 +183,29 @@ function RedirectURL($sRelativeURL)
 
     // Check if port number needs to be included in URL
     if ($sPort)
-        $sPortString = ":" . $sPort;
+        $sPortString = ":$sPort";
     else
-        $sPortString = "";
+        $sPortString = '';
 
     // http or https ?
 	if ($_SESSION['bSecureServer'] || $bHTTPSOnly)
-        $sRedirectURL = "https://";    
+        $sRedirectURL = 'https://';    
 	else
-		$sRedirectURL = "http://";
+		$sRedirectURL = 'http://';
 
     // Using a shared SSL certificate?
     if (strlen($sSharedSSLServer) && $_SESSION['bSecureServer'])
-        $sRedirectURL .= $sSharedSSLServer . $sPortString . "/" . $sHTTP_Host;
+        $sRedirectURL .= $sSharedSSLServer . $sPortString . '/' . $sHTTP_Host;
     else
         $sRedirectURL .= $sHTTP_Host . $sPortString;
 
     // If root path is already included don't add it again
-    if ( strlen($sRootPath) < 2 ) {
+    if (!$sRootPath) {
         // This check is not meaningful if installed in top level web directory
-        $sRelativeURLPath = "/" . $sRelativeURL;
+        $sRelativeURLPath = '/' . $sRelativeURL;
     } elseif (strpos($sRelativeURL, $sRootPath)===FALSE) {
         // sRootPath is not in sRelativeURL.  Add it
-        $sRelativeURLPath = $sRootPath . "/" . $sRelativeURL;
+        $sRelativeURLPath = $sRootPath . '/' . $sRelativeURL;
     } else {
         // sRootPath already in sRelativeURL.  Don't add
         $sRelativeURLPath = $sRelativeURL;
@@ -212,20 +213,26 @@ function RedirectURL($sRelativeURL)
 
     // Test if file exists before redirecting.  May need to remove
     // query string first.
-    $iQueryString = strpos($sRelativeURLPath,"?");
+    $iQueryString = strpos($sRelativeURLPath,'?');
     if ($iQueryString) {
-        $sRelativeFilePath = substr($sRelativeURLPath,0,$iQueryString);
+        $sPathExtension = substr($sRelativeURLPath,0,$iQueryString);
     } else {
-        $sRelativeFilePath = $sRelativeURLPath;
+        $sPathExtension = $sRelativeURLPath;
     }
 
-    $sFullPath = str_replace('\\','/',$sDocumentRoot.$sRelativeFilePath);
+    // $sRootPath gets in the way when verifying if the file exists
+    $sPathExtension = substr($sPathExtension,strlen($sRootPath));
+    $sFullPath = str_replace('\\','/',$sDocumentRoot.$sPathExtension);
 
     // With the query string removed we can test if file exists
     if (file_exists($sFullPath) && is_readable($sFullPath)) {
         $sRedirectURL .= $sRelativeURLPath;
     } else {
-        die ('Fatal Error: Cannot access file: ' . $sFullPath);
+        $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n";
+        $sErrorMessage .= "\$sPathExtension = $sPathExtension<br>\n";
+        $sErrorMessage .= "\$sDocumentRoot = $sDocumentRoot<br>\n";
+
+        die ($sErrorMessage);
     }
 
     return $sRedirectURL;

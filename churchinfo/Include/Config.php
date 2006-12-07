@@ -21,12 +21,6 @@ $sDATABASE = 'churchinfo';
 // This path SHOULD NOT end with slash.
 $sRootPath='/churchinfo';
 
-// $_SERVER['DOCUMENT_ROOT'] is not defined on some web servers.  If this is the
-// case for your server you may need to change $sDocumentRoot.
-// $sDocumentRoot='/var/www/html';
-// $sDocumentRoot='c:\\inetpub\\wwwroot';
-$sDocumentRoot=$_SERVER['DOCUMENT_ROOT'];
-
 // If you are using a non-standard port number you may need to include the 
 // port number in the URL.  Default value is fine for most installations.
 $sPort='';
