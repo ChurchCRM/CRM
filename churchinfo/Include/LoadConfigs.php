@@ -34,6 +34,9 @@ $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD)
 mysql_select_db($sDATABASE) 
         or die ('Cannot select the MySQL database because: ' . mysql_error());
 
+// Avoid consecutive slashes when $sRootPath = '/'
+if (strlen($sRootPath) < 2) $sRootPath = "";
+
 // Verify that $sDocumentRoot and $sRootPath are correct
 $sTestPath = $sDocumentRoot.$sRootPath.'/Include/Config.php';
 $aSeparators = array('\\', '/');
