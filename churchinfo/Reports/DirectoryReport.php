@@ -15,14 +15,14 @@
 *
 ******************************************************************************/
 
-require "../Include/Config.php";
-require "../Include/Functions.php";
-require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
+require '../Include/Config.php';
+require '../Include/Functions.php';
+require '../Include/ReportFunctions.php';
+require '../Include/ReportConfig.php';
 
 // Check for Create Directory user permission.
 if (!$bCreateDirectory) {
-    Redirect("Menu.php");
+    Redirect('Menu.php');
     exit;
 }
 
@@ -33,7 +33,7 @@ class PDF_Directory extends ChurchInfoReport {
     var $_Margin_Top  = 0;         // Top margin 
     var $_Char_Size   = 10;        // Character size
     var $_Column      = 0;
-    var $_Font        = "Times";
+    var $_Font        = 'Times';
     var $_Gutter      = 5;
     var $_LS          = 4;
     var $sFamily;
@@ -41,7 +41,7 @@ class PDF_Directory extends ChurchInfoReport {
     var $_ColWidth    = 58;
     var $_Custom;
     var $_NCols       = 3;
-    var $_PS          = "Letter";
+    var $_PS          = 'Letter';
 
     function Header()
     {
@@ -320,15 +320,15 @@ class PDF_Directory extends ChurchInfoReport {
         }
 
         if ($bDirFamilyPhone && strlen($fam_HomePhone))
-            $sFamilyStr .= "   " . gettext("Phone") . ": " . ExpandPhoneNumber($fam_HomePhone, $fam_Country, $bWierd) . "\n";
+            $sFamilyStr .= "   " . gettext('Phone') . ": " . ExpandPhoneNumber($fam_HomePhone, $fam_Country, $bWierd) . "\n";
         if ($bDirFamilyWork && strlen($fam_WorkPhone))
-            $sFamilyStr .= "   " . gettext("Work") . ": " . ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $bWierd) . "\n";
+            $sFamilyStr .= "   " . gettext('Work') . ": " . ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $bWierd) . "\n";
         if ($bDirFamilyCell && strlen($fam_CellPhone))
-            $sFamilyStr .= "   " . gettext("Cell") . ": " . ExpandPhoneNumber($fam_CellPhone, $fam_Country, $bWierd) . "\n";
+            $sFamilyStr .= "   " . gettext('Cell') . ": " . ExpandPhoneNumber($fam_CellPhone, $fam_Country, $bWierd) . "\n";
         if ($bDirFamilyEmail && strlen($fam_Email))
-            $sFamilyStr .= "   " . gettext("Email") . ": " . $fam_Email . "\n";
+            $sFamilyStr .= "   " . gettext('Email') . ": " . $fam_Email . "\n";
         if ($bDirWedding && ($fam_WeddingDate > 0))
-            $sFamilyStr .= "   " . gettext("Wedding") . ": " . Date("m/d/Y", strtotime(($fam_WeddingDate)) . "\n";
+            $sFamilyStr .= "   " . gettext('Wedding') . ": " . Date("m/d/Y", strtotime($fam_WeddingDate)) . "\n";
 
         return $sFamilyStr;
     }
