@@ -21,34 +21,38 @@
 *
 ******************************************************************************/
 //Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
 //Set the page title
-$sPageTitle = gettext("Group Listing");
+$sPageTitle = gettext('Group Listing');
 
-require "Include/Header.php";
+require 'Include/Header.php';
 
 if ($_SESSION['bManageGroups']) 
 {
 	echo '<p align="center"><a href="GroupEditor.php">';
-	echo gettext("Add a New Group") . '</a></p>';
+	echo gettext('Add a New Group') . '</a></p>';
 }
 
-//Get all the User records
-$sSQL = "SELECT * FROM group_grp ORDER BY grp_Type,grp_Name";
+//Get all group records
+$sSQL = "SELECT * FROM group_grp LEFT JOIN list_lst "
+      . "ON grp_Type = lst_OptionID "
+      . "WHERE lst_ID='3' "
+      . "ORDER BY lst_OptionSequence, grp_Name";
+
 $rsGroups = RunQuery($sSQL);
 
 echo '	<center><table cellpadding="4" cellspacing="0" width="70%">
 		<tr class="TableHeader">
-		<td>' . gettext("Name") . '</td>
-		<td align="center">' . gettext("Members") . '</td>
-		<td align="center">' . gettext("Type") . '</td>
-		<td align="center">' . gettext("Add to Cart") . '</td>
-		<td align="center">' . gettext("Remove from Cart") . '</td></tr>';
+		<td>' . gettext('Name') . '</td>
+		<td align="center">' . gettext('Members') . '</td>
+		<td align="center">' . gettext('Type') . '</td>
+		<td align="center">' . gettext('Add to Cart') . '</td>
+		<td align="center">' . gettext('Remove from Cart') . '</td></tr>';
 
 //Set the initial row color
-$sRowClass = "RowColorA";
+$sRowClass = 'RowColorA';
 
 //Loop through the person recordset
 while ($aRow = mysql_fetch_array($rsGroups))
@@ -60,7 +64,7 @@ while ($aRow = mysql_fetch_array($rsGroups))
 
 	//Get the count for this group
 	$sSQL = "SELECT Count(*) AS iCount FROM person2group2role_p2g2r " .
-			"WHERE p2g2r_grp_ID = " . $grp_ID;
+			"WHERE p2g2r_grp_ID='$grp_ID'";
 	$rsMemberCount = mysql_fetch_array(RunQuery($sSQL));
 	extract($rsMemberCount);
 		
@@ -73,7 +77,7 @@ while ($aRow = mysql_fetch_array($rsGroups))
 		$sGroupType = $rsGroupType[0];
 	}
 	else
-		$sGroupType = gettext("Undefined");
+		$sGroupType = gettext('Undefined');
 
 		//Display the row
 
@@ -84,7 +88,7 @@ while ($aRow = mysql_fetch_array($rsGroups))
 				<td align="center">'; // end echo
 
 		$sSQL =	"SELECT p2g2r_per_ID FROM person2group2role_p2g2r " .
-				"WHERE p2g2r_grp_ID = " . $grp_ID;
+				"WHERE p2g2r_grp_ID='$grp_ID'";
 		$rsGroupMembers = RunQuery($sSQL);
 
 		$bNoneInCart = TRUE;
@@ -106,10 +110,13 @@ while ($aRow = mysql_fetch_array($rsGroups))
 		{
 			// Add to cart ... screen should return to this location
 			// after this group is added to cart
-			echo '<a onclick=saveScrollCoordinates() 
+			echo '<a onclick="saveScrollCoordinates()" 
 					href="GroupList.php?AddGroupToPeopleCart=' .$grp_ID. '">' .
-					gettext("Add all") . '</a>';
-		}
+					gettext('Add all') . '</a>';
+		} else {
+            echo '&nbsp;';
+        }
+    
 
 		echo '</td><td align="center">';
 
@@ -117,10 +124,12 @@ while ($aRow = mysql_fetch_array($rsGroups))
 		{
 			// Add to cart ... screen should return to this location
 			// after this group is removed from cart
-			echo '	<a onclick=saveScrollCoordinates()
+			echo '	<a onclick="saveScrollCoordinates()"
 					href="GroupList.php?RemoveGroupFromPeopleCart=' .$grp_ID. '">' .
-					gettext("Remove all") . '</a>';
-		}
+					gettext('Remove all') . '</a>';
+		} else {
+            echo '&nbsp;';
+        }
 
 		echo '</td>';
 	}
@@ -128,5 +137,5 @@ while ($aRow = mysql_fetch_array($rsGroups))
 	//Close the table
 	echo '</table></center>';
 
-require "Include/Footer.php";
+require 'Include/Footer.php';
 ?>
