@@ -97,6 +97,11 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
     global $sSMTPUser;
     global $sSMTPPass;
     global $sSMTPHost;
+    global $sSERVERNAME;
+    global $sUSER;
+    global $sPASSWORD;
+    global $sDATABASE;
+
 
     $iUserID = $_SESSION['iUserID']; // Retrieve UserID for faster access
 
@@ -273,29 +278,38 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
 
         extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
         extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
-        $iEmergencyExit = 20; // Error after 20 seconds
+
         $bDelay1Second = ($erp_count != $iEmailNum) || ($emp_num_left != $iEmailNum);
         $bDelay1Second = $bDelay1Second && ($sRecipient == 'get_recipients_from_mysql');
+        $iEmergencyExit = 20; // Error out after 20 seconds
 
         while ( $bDelay1Second ) {
 
-            $sMsg = "cache dirty: erp_count = $erp_count, iEmailNum = $iEmailNum, ".
+            $sMsg = "Warning: erp_count = $erp_count, iEmailNum = $iEmailNum, ".
                     "emp_num_left = $emp_num_left";
             AddToEmailLog($sMsg, $iUserID); // Add message to log
-
-            // file system may be slow to update on busy servers
-            // delay 1 second and then read the tables again
-            sleep(1);
 
             $iEmergencyExit--;
             if ($iEmergencyExit < 1) {
                 $_SESSION['sEmailState'] = 'error';
                 $bContinue = FALSE;
-                $sMsg = "Error: MySQL cache still dirty after 20 seconds";
+                $sMsg = "Error: MySQL returning stale data after 20 seconds";
                 AddToEmailLog($sMsg, $iUserID); // Add message to log
 
                 break;
             }
+
+            // On Windows systems MySQL does not immediately update.  This means that
+            // the SELECT statement returned information prior to running the above  
+            // DELETE and UPDATE commands.  Let's try to fake out the system by 
+            // disconnecting from MySQL and delaying 1 second.  Then reconnect and 
+            // try the query again.
+
+            mysql_close();  // Close the database connection
+            sleep(1);       // Wait 1 second
+                            // Re-establish the database connection
+            $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD);
+            mysql_select_db($sDATABASE);
 
             extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
             extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
@@ -507,26 +521,35 @@ if (!$emp_num_sent && !$emp_num_left) {
 
         extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
         extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
-        $iEmergencyExit = 20; // Error after 20 seconds
+        $iEmergencyExit = 20; // Error out after 20 seconds
+
         while (($erp_count != $iEmailNum) || ($emp_num_left != $iEmailNum)) {
 
-            $sMsg = "cache dirty: erp_count = $erp_count, iEmailNum = $iEmailNum, ".
+            $sMsg = "Warning: erp_count = $erp_count, iEmailNum = $iEmailNum, ".
                     "emp_num_left = $emp_num_left";
             AddToEmailLog($sMsg, $iUserID); // Add message to log
-
-            // file system may be slow to update on busy servers
-            // delay 1 second and then read the tables again
-            sleep(1);
 
             $iEmergencyExit--;
             if ($iEmergencyExit < 1) {
                 $_SESSION['sEmailState'] = 'error';
                 $bContinue = FALSE;
-                $sMsg = "Error: MySQL cache still dirty after 20 seconds";
+                $sMsg = "Error: MySQL did not update after 20 seconds";
                 AddToEmailLog($sMsg, $iUserID); // Add message to log
 
                 break;
             }
+
+            // On Windows systems MySQL does not immediately update.  This means that
+            // the SELECT statement returned information prior to running the above  
+            // INSERT and UPDATE commands.  Let's try to fake out the system by 
+            // disconnecting from MySQL and delaying 1 second.  Then reconnect and
+            // try the query again.
+
+            mysql_close();  // Close the database connection
+            sleep(1);       // Wait 1 second
+                            // Re-establish the database connection
+            $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD);
+            mysql_select_db($sDATABASE);
 
             extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
             extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
