@@ -331,7 +331,7 @@ for($i=0; $i<$nGrps; $i++) {
 	$aGroupData = mysql_fetch_array(RunQuery($sSQL));
 	extract($aGroupData);
 	$FYString = MakeFYString ($iFYID);
-	$reportHeader = str_pad($grp_Name,110).$FYString;
+	$reportHeader = str_pad($grp_Name,95).$FYString;
 
 	$ga = GetGroupArray ($iGroupID);
 	$numMembers = count ($ga);
