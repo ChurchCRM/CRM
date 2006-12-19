@@ -18,6 +18,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 $eType="All";
+$ThisYear=date("Y");
 
 if ($_POST['WhichType']){
   $eType = $_POST['WhichType'];
@@ -35,6 +36,17 @@ if($eType!="All"){
   $sPageTitle = gettext("Listing All Church Events");
 }
 
+// retrieve the year selector
+
+if($_POST['WhichYear'])
+{
+    $EventYear=$_POST['WhichYear'];
+} else {
+    $EventYear=date("Y");
+}
+
+
+///////////////////////
 require "Include/Header.php";
 
 if ($_POST['Action']== "Delete" && !empty($_POST['EID']))
@@ -61,7 +73,7 @@ $numRows = mysql_num_rows($rsOpps);
 ?>
 <table cellpadding="1" align="center" cellspacing="0" width="100%">
 <tr>
-<td align="center"><strong><?php echo gettext("Select Event Types To Display") ?></strong><br>
+<td align="center" width="50%"><strong><?php echo gettext("Select Event Types To Display") ?></strong><br>
     <form name="EventTypeSelector" method="POST" action="ListEvents.php">
        <select name="WhichType" onchange="javascript:this.form.submit()">
         <option value="All">All</option>
@@ -70,15 +82,48 @@ $numRows = mysql_num_rows($rsOpps);
         {
           $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
           extract($aRow);
-          foreach($aRow as $t)echo "$t\n\r";
+//          foreach($aRow as $t)echo "$t\n\r";
           ?>
           <option value="<?php echo $type_id ?>" <?php if($type_id==$eType) echo "selected" ?>><?php echo $type_name; ?></option>
           <?php
          }
          ?>
          </select>
-      </form>        
 </td>
+
+<?php
+// year selector
+if($eType=="All"){
+  $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) FROM events_event WHERE YEAR(events_event.event_start)";
+} else {
+  $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) FROM events_event WHERE events_event.event_type = '$eType' AND YEAR(events_event.event_start)";
+}  
+$rsOpps = RunQuery($sSQL);
+$aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+extract($aRow);
+$rsOpps = RunQuery($sSQL);
+$numRows = mysql_num_rows($rsOpps);
+for($r=1; $r<=$numRows; $r++){
+    $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+    extract($aRow);
+    $Yr[$r]=$aRow[0];
+}
+
+?>
+
+<td align="center" width="50%"><strong><?php echo gettext("Display Events in Year") ?></strong><br>
+       <select name="WhichYear" onchange="javascript:this.form.submit()" >
+        <?php
+        for ($r = 1; $r <= $numRows; $r++)
+        {
+          ?>
+          <option value="<?php echo $Yr[$r] ?>" <?php if($Yr[$r]==$EventYear) echo "selected" ?>><?php echo $Yr[$r]; ?></option>
+          <?php
+         }
+         ?>
+         </select>
+    </form>        
+</td>  
 </tr>
 </table>
 <?php
@@ -113,9 +158,9 @@ foreach ($allMonths as $mKey => $mVal) {
         else
         {
                 //$sSQL .= " WHERE (TO_DAYS(event_start_date) - TO_DAYS(now()) < 30)";
-                $sSQL .= " WHERE t1.event_type = t2.type_id".$eTypeSQL." AND MONTH(t1.event_start) = ".$mVal;
+                $sSQL .= " WHERE t1.event_type = t2.type_id".$eTypeSQL." AND MONTH(t1.event_start) = ".$mVal." AND YEAR(t1.event_start)=$EventYear";
         }
-        $sSQL .= " ORDER BY t2.type_id, event_start ";
+        $sSQL .= " ORDER BY t1.event_start ";
 
         $rsOpps = RunQuery($sSQL);
         $numRows = mysql_num_rows($rsOpps);
@@ -127,7 +172,7 @@ foreach ($allMonths as $mKey => $mVal) {
                 extract($aRow);
 
                 $aEventID[$row] = $event_id;
-                $aEventType[$row] = $type_name;
+                $aEventType[$row] = $event_typename;
                 $aEventName[$row] = htmlentities(stripslashes($event_name));
                 $aEventTitle[$row] = htmlentities(stripslashes($event_title));
                 $aEventDesc[$row] = htmlentities(stripslashes($event_desc));
@@ -135,6 +180,7 @@ foreach ($allMonths as $mKey => $mVal) {
                 $aEventStartDateTime[$row] = $event_start;
                 $aEventEndDateTime[$row] = $event_end;
                 $aEventStatus[$row] = $inactive;
+                // get the list of attend-counts that exists in event_attend for this 
                 $attendSQL="SELECT * FROM event_attend WHERE event_id=$event_id";
                 $attOpps = RunQuery($attendSQL);
                 if($attOpps) 
@@ -186,6 +232,8 @@ if ($numRows > 0)
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
            <?php 
+// RETRIEVE THE list of counts associated with the current event 
+//
                 $cvSQL= "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$aEventID[$row]' ORDER BY evtcnt_countid ASC"; 
 //        echo $cvSQL;
                 $cvOpps = RunQuery($cvSQL);
@@ -200,7 +248,7 @@ if ($numRows > 0)
                   $cCountName[$c] = $evtcnt_countname;     
                   $cCount[$c]= $evtcnt_countcount;
                   $cCountNotes = $evtcnt_notes; 
-                  $cCountSum[$c]+= $evtcnt_countcount;
+//                  $cCountSum[$c]+= $evtcnt_countcount;
                   ?>
                   <td align="center">
                   <span class="SmallText">
@@ -213,11 +261,11 @@ if ($numRows > 0)
                   ?>
                   <td align="center">
                     <span class="SmallText">
-                    <strong><?php echo gettext("No Attendance Counts"); ?></strong>
+                    <strong><?php echo gettext("No Attendance Recorded"); ?></strong>
                     </span>
                   </td> 
                   <?php     
-                  $aAvgRows -=1;                                   
+//                  $aAvgRows -=1;                                   
                 }       
            ?>
            </tr>
@@ -256,6 +304,11 @@ if ($numRows > 0)
          
 // calculate averages if this is a single type list
 if ($eType != "All" && $aNumCounts >0){
+    $avgSQL="SELECT evtcnt_countid, evtcnt_countname, AVG(evtcnt_countcount) from eventcounts_evtcnt, events_event WHERE eventcounts_evtcnt.evtcnt_eventid=events_event.event_id AND events_event.event_type='$eType' AND MONTH(events_event.event_start)='$mVal' GROUP BY eventcounts_evtcnt.evtcnt_countid ASC ";
+    
+    $avgOpps = RunQuery($avgSQL);
+    $aAvgRows = mysql_num_rows($avgOpps);
+
     ?>
     <tr>
     <td class="LabelColumn" colspan="2"><?php echo gettext(" Monthly Averages"); ?></td>
@@ -264,16 +317,16 @@ if ($eType != "All" && $aNumCounts >0){
        <tr>
       <?php 
       // calculate and report averages
-      for($c = 0; $c <$aNumCounts; $c++){
-        if($aAvgRows >0)
-          $cAvg[$c] = $cCountSum[$c] / $aAvgRows;
-        else
-          $cAvg[$c]=0;
+      for($c = 0; $c <$aAvgRows; $c++){
+        $avgRow = mysql_fetch_array($avgOpps, MYSQL_BOTH);
+        extract($avgRow);
+        $avgName = $avgRow['evtcnt_countname'];
+        $avgAvg = $avgRow[2];
         ?>
         <td align="center">
           <span class="SmallText">
-          <strong>AVG<br><?php echo $cCountName[$c];?></strong>
-          <br><?php echo sprintf("%01.2f",$cAvg[$c]); ?></span>
+          <strong>AVG<br><?php echo $avgName;?></strong>
+          <br><?php echo sprintf("%01.2f",$avgAvg); ?></span>
         </td> 
         <?php         
       }
