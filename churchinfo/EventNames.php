@@ -192,7 +192,7 @@ if ($numRows > 0)
         <td align="left" width="23%"><strong><?php echo gettext("Recurrance Pattern"); ?></strong></td>
         <td align="left" width="12%"><strong><?php echo gettext("Start Time"); ?></strong></td>
         <td align="left" width="20%"><strong><?php echo gettext("Attendance Counts"); ?></strong></td>
-        <td align="center" colspan=2 width="17%"><strong><?php echo gettext("Action"); ?></strong></td>
+        <td align="center" colspan=3 width="17%"><strong><?php echo gettext("Action"); ?></strong></td>
       </tr>
 <?php
       $sRowClass = "RowColorA";
@@ -280,9 +280,15 @@ if ($numRows > 0)
                 </form> 
               </td>
               <td class="TextColumn" align="center">
+                  <form name="ProcessEventType" action="EditEventTypes.php" method="POST">
+                  <input type="hidden" name="EN_tyid" value="<?php echo $aTypeID[$row]; ?>">
+                  <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("Edit"); ?>" class="icButton")">
+                </form> 
+              </td>
+              <td class="TextColumn" align="center">
                 <form name="ProcessEventType" action="EventNames.php" method="POST">
                   <input type="hidden" name="theID" value="<?php echo $aTypeID[$row]; ?>">
-                  <input type="submit" name="Action" value="<?php echo gettext("Delete"); ?>" class="icButton" onClick="return confirm('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: <?php echo  $aTypeID[$row]; ?>')">
+                  <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("Delete"); ?>" class="icButton" onClick="return confirm('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: <?php echo  $aTypeID[$row]; ?>')">
                 </form>
               </td>
               </tr>
@@ -294,7 +300,7 @@ if ($numRows > 0)
 if($editing=='FALSE'){
 ?>
 <tr align="center">
-    <td colspan=7 class="TextColumn" align="center">
+    <td colspan=8 class="TextColumn" align="center">
     <form name="AddEventNames" action="EventNames.php" method="POST">
     <span class="SmallText"><?php echo gettext("New Event Type"); ?></span>
     <input type="submit" Name="Action" <?php echo 'value="' . gettext("Add Event Type") . '"'; ?> class="icButton">
