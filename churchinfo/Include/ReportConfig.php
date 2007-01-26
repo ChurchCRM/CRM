@@ -91,6 +91,7 @@ class ChurchInfoReport extends FPDF {
 			$this->WriteAt ($this->leftX, $curY, $this->sChurchName); $curY += $this->incrementY;
 			$this->WriteAt ($this->leftX, $curY, $this->sChurchAddress); $curY += $this->incrementY;
 			$this->WriteAt ($this->leftX, $curY, $this->sChurchCity . ", " . $this->sChurchState . "  " . $this->sChurchZip); $curY += $this->incrementY;
+			$curY += $this->incrementY; // Skip another line before the phone/email
 			$this->WriteAt ($this->leftX, $curY, $this->sChurchPhone . "  " . $this->sChurchEmail); 
 			$curY += 25; // mm to move to the second window
 		}

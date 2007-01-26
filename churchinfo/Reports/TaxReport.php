@@ -161,9 +161,9 @@ if ($output == "pdf") {
 				if ($sDateStart == $sDateEnd)
 					$DateString = date("F j, Y",strtotime($sDateStart));
 				else
-					$DateString = date("M j, Y",strtotime($sDateStart)) . " through " .  date("M j, Y",strtotime($sDateEnd));
+					$DateString = date("M j, Y",strtotime($sDateStart)) . " - " .  date("M j, Y",strtotime($sDateEnd));
 			}
-			$blurb = $this->sTaxReport1 . $DateString . ".";
+			$blurb = $this->sTaxReport1 . " " . $DateString . ".";
 			$this->WriteAt ($this->leftX, $curY, $blurb);
 			$curY += 2 * $this->incrementY;
 			return ($curY);
