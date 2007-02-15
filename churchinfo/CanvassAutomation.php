@@ -113,7 +113,6 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 			 name="SetDefaultFY">
 		</td>
 		<td align="left" width="75%">
-			<?php echo gettext(""); ?>
 			<p><input type="checkbox" name="SetDefaultFYConfirm"><?php echo gettext("Check to confirm");?></p>
 		</td>
 	</tr>
