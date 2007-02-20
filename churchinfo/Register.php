@@ -18,6 +18,47 @@ require "Include/Functions.php";
 
 require "Include/ReportFunctions.php";
 
+// *****
+// Force PHPMailer to the include path (this script only)
+$sPHPMailerPath = dirname(__FILE__).DIRECTORY_SEPARATOR.'Include'
+.DIRECTORY_SEPARATOR.'phpmailer'.DIRECTORY_SEPARATOR;
+$sIncludePath = '.'.PATH_SEPARATOR.$sPHPMailerPath;
+ini_set('include_path',$sIncludePath);
+// The include_path will automatically be restored upon completion of this script
+// *****
+
+$bHavePHPMailerClass = FALSE;
+$bHaveSMTPClass = FALSE;
+$bHavePHPMailerLanguage = FALSE;
+
+$sLanguage = "en";  // In the future set PHPMailer Language in General Settings
+                    // currently hard-coded to English
+
+$sPHPMailerClass = $sPHPMailerPath.'class.phpmailer.php';
+if (file_exists($sPHPMailerClass) && is_readable($sPHPMailerClass)) {
+    require_once ($sPHPMailerClass);
+    $bHavePHPMailerClass = TRUE;
+    $sFoundPHPMailerClass = $sPHPMailerClass;
+}
+
+$sSMTPClass = $sPHPMailerPath.'class.smtp.php';
+if (file_exists($sSMTPClass) && is_readable($sSMTPClass)) {
+    require_once ($sSMTPClass);
+    $bHaveSMTPClass = TRUE;
+    $sFoundSMTPClass = $sSMTPClass;
+}
+
+$sTestLanguageFile = $sPHPMailerPath.'language'.DIRECTORY_SEPARATOR
+.'phpmailer.lang-'.$sLanguage.'.php';
+if (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
+    $sLanguagePath = $sPHPMailerPath.'language'.DIRECTORY_SEPARATOR;
+    $bHavePHPMailerLanguage = TRUE;
+    $sFoundLanguageFile = $sTestLanguageFile;
+}
+
+// This value is checked after the header is printed
+$bPHPMAILER_Installed = $bHavePHPMailerClass && $bHaveSMTPClass && $bHavePHPMailerLanguage;
+
 //Is this the second pass?
 if (isset($_POST["Submit"]))
 {
@@ -30,13 +71,40 @@ if (isset($_POST["Submit"]))
 	$sEmail = FilterInput($_POST["Email"]);
 	$sComments = FilterInput($_POST["Comments"]);
 
-	// Load the PHPMailer library
-	LoadLib_PHPMailer();
+	$mail = new PHPMailer;
 
-	$mail = new ICMail;
+    // Set the language for PHPMailer
+    $mail->SetLanguage($sLanguage, $sLanguagePath);
+    if($mail->IsError())
+        echo 'PHPMailer Error with SetLanguage().  Other errors (if any) may not report.<br>';
 
-	$mail->IsSMTP();
-	$mail->SMTPKeepAlive = true;
+    $mail->IsSMTP();                    // tell the class to use SMTP
+    $mail->SMTPKeepAlive = true;        // keep connection open until last email sent
+    $mail->SMTPAuth = $sSMTPAuth;       // Server requires authentication
+
+    if ($sSMTPAuth) {
+        $mail->Username = $sSMTPUser;	// SMTP username
+        $mail->Password = $sSMTPPass;	// SMTP password
+    }
+
+    $delimeter = strpos($sSMTPHost, ':');
+    if ($delimeter === FALSE) {
+        $sSMTPPort = 25;                // Default port number
+    } else {
+        $sSMTPPort = substr($sSMTPHost, $delimeter+1);
+        $sSMTPHost = substr($sSMTPHost, 0, $delimeter);   
+    }
+
+    if (is_int($sSMTPPort))
+        $mail->Port = $sSMTPPort;
+    else
+        $mail->Port = 25;
+
+    $mail->Host = $sSMTPHost;           // SMTP server name
+
+    $mail->From = $sFromEmailAddress;	// From email address (User Settings)
+    $mail->FromName = $sFromName;		// From name (User Settings)
+
 	$mail->Subject = "ChurchInfo registration";
 	$mail->Body = "Church name: " . $sName . "\n" .
 				  "Address: " . $sAddress . "\n" .
@@ -47,9 +115,14 @@ if (isset($_POST["Submit"]))
 				  "Email: " .$sEmail . "\n" .
 				  "Comments: " .$sComments . "\n" .
 				  "";
-	$mail->AddAddress("register@churchdb.org");
-	if(!$mail->Send())
+	$sEmail = "register@churchdb.org";
+	$mail->AddAddress($sEmail);
+	if(!$mail->Send()) {
 		echo "There has been a mail error sending to " . $sEmail . "<br>";
+		echo $mail->ErrorInfo;
+		echo "bHavePHPMailerLanguage" . $bHavePHPMailerLanguage;
+	}
+
 	$mail->SmtpClose();
 
 	$sSQL = "UPDATE config_cfg SET cfg_value = 1 WHERE cfg_name='bRegistered'";
