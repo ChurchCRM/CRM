@@ -8,7 +8,7 @@
 *  Copyright 2001-2003 Lewis Franklin
 *
 *  Additional Contributors:
-*  2006 Ed Davis
+*  2006-2007 Ed Davis
 *
 *
 *  Copyright Contributors
@@ -23,6 +23,10 @@
 *  of hard tab characters.
 *
 ******************************************************************************/
+
+// The log files are useful when debugging email problems.  In particular, problems
+// with SMTP servers.
+$bEmailLog = FALSE;
 
 // Include the function library
 require 'Include/Config.php';
@@ -284,25 +288,32 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
         $iEmergencyExit = 20; // Error out after 20 seconds
 
         while ( $bDelay1Second ) {
+            // We only drop into this loop if the information retrieved from MySQL
+            // does not exactly match what was just written to MySQL.
 
-            $sMsg = "Warning: erp_count = $erp_count, iEmailNum = $iEmailNum, ".
-                    "emp_num_left = $emp_num_left";
-            AddToEmailLog($sMsg, $iUserID); // Add message to log
+            // This only happens if MySQL returns stale data ... the value of the
+            // record prior to running the above update and insert statements)
 
             $iEmergencyExit--;
             if ($iEmergencyExit < 1) {
+
                 $_SESSION['sEmailState'] = 'error';
                 $bContinue = FALSE;
-                $sMsg = "Error: MySQL returning stale data after 20 seconds";
+
+                $sMsg = "Error: erp_count = $erp_count, iEmailNum = $iEmailNum, ".
+                    "emp_num_left = $emp_num_left";
+                AddToEmailLog($sMsg, $iUserID); // Add message to log
+
+                $sMsg = "Error: MySQL did not update after 20 seconds";
                 AddToEmailLog($sMsg, $iUserID); // Add message to log
 
                 break;
             }
 
-            // On Windows systems MySQL does not immediately update.  This means that
+            // On some systems MySQL does not immediately update.  This means that
             // the SELECT statement returned information prior to running the above  
-            // DELETE and UPDATE commands.  Let's try to fake out the system by 
-            // disconnecting from MySQL and delaying 1 second.  Then reconnect and 
+            // INSERT and UPDATE commands.  Let's try to force MySQL to update by 
+            // disconnecting from MySQL and delaying 1 second.  Then reconnect and
             // try the query again.
 
             mysql_close();  // Close the database connection
@@ -311,6 +322,7 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
             $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD);
             mysql_select_db($sDATABASE);
 
+            // Run queries again ... hopefully they returns correct data this time
             extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
             extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
             $bDelay1Second = ($erp_count != $iEmailNum) || ($emp_num_left != $iEmailNum);
@@ -524,24 +536,31 @@ if (!$emp_num_sent && !$emp_num_left) {
         $iEmergencyExit = 20; // Error out after 20 seconds
 
         while (($erp_count != $iEmailNum) || ($emp_num_left != $iEmailNum)) {
+            // We only drop into this loop if the information retrieved from MySQL
+            // does not exactly match what was just written to MySQL.
 
-            $sMsg = "Warning: erp_count = $erp_count, iEmailNum = $iEmailNum, ".
-                    "emp_num_left = $emp_num_left";
-            AddToEmailLog($sMsg, $iUserID); // Add message to log
+            // This only happens if MySQL returns stale data ... the value of the
+            // record prior to running the above update and insert statements)
 
             $iEmergencyExit--;
             if ($iEmergencyExit < 1) {
+
                 $_SESSION['sEmailState'] = 'error';
                 $bContinue = FALSE;
+
+                $sMsg = "Error: erp_count = $erp_count, iEmailNum = $iEmailNum, ".
+                    "emp_num_left = $emp_num_left";
+                AddToEmailLog($sMsg, $iUserID); // Add message to log
+
                 $sMsg = "Error: MySQL did not update after 20 seconds";
                 AddToEmailLog($sMsg, $iUserID); // Add message to log
 
                 break;
             }
 
-            // On Windows systems MySQL does not immediately update.  This means that
+            // On some systems MySQL does not immediately update.  This means that
             // the SELECT statement returned information prior to running the above  
-            // INSERT and UPDATE commands.  Let's try to fake out the system by 
+            // INSERT and UPDATE commands.  Let's try to force MySQL to update by 
             // disconnecting from MySQL and delaying 1 second.  Then reconnect and
             // try the query again.
 
@@ -551,6 +570,7 @@ if (!$emp_num_sent && !$emp_num_left) {
             $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD);
             mysql_select_db($sDATABASE);
 
+            // Run queries again ... hopefully they returns correct data this time
             extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
             extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
         }
@@ -609,8 +629,8 @@ if ($bMetaRefresh) {
 }
 
 // Set the page title and include HTML header
-$sPageTitle = gettext("Email Sent");
-require "Include/Header.php";
+$sPageTitle = gettext('Email Sent');
+require 'Include/Header.php';
 
 if(!$bPHPMAILER_Installed) {
     echo    '<br>' . gettext('ERROR: PHPMailer is not properly installed on this server.')
@@ -665,9 +685,6 @@ if ($sEmailState == 'continue') {
 
         SendEmail($sSubject, $sMessage, 'get_recipients_from_mysql');
 
-        echo '<br>Please be patient. Job is not finished.<br><br>';
-        echo '<b>Please allow up to 60 seconds for page to reload.</b><br>';
-
     } else {
         $_SESSION['sEmailState'] = 'finish';
     }
@@ -687,7 +704,7 @@ if ($sEmailState == 'continue') {
         $sMessage .= "From Address = $sFromEmailAddress\n";
 
         $sMessage .= "Email job started at $tTimeStamp\n\n";
-        $sMessage .= "Upon successful completion a log will be sent to $sToEmailAddress";
+        $sMessage .= "Upon successful completion a log will be sent to $sFromEmailAddress";
         $sMessage .= "\n\n";
 
         $sMessage .= "Job will attempt to send email to the following $erp_count addresses ";
@@ -706,11 +723,14 @@ if ($sEmailState == 'continue') {
 
         $sMessage .= "\n\nEnd of Listing\n\n";
 
-        $sMsg = "Attempting to email job start notification to $sToEmailAddress";
-        echo $sMsg.'<br><br>';
-        AddToEmailLog($sMsg, $iUserID);
+        if ($bEmailLog) {
+            $sMsg = "Attempting to email job start notification to $sFromEmailAddress";
+            echo $sMsg.'<br><br>';
+            AddToEmailLog($sMsg, $iUserID);
 
-        SendEmail($sSubject, $sMessage, $sToEmailAddress);
+            SendEmail($sSubject, $sMessage, $sFromEmailAddress);
+        }
+
         $_SESSION['sEmailState'] = 'continue';
 
         echo '<br><br>Please be patient. Job will begin when page reloads.<br><br>';
@@ -759,13 +779,14 @@ if ($sEmailState == 'continue') {
     }
     $sHTMLLog .= '</table></div>';
 
-    $sMsg = "Attempting to email log to $sToEmailAddress\n";
-    echo $sMsg.'<br>';
-    AddToEmailLog($sMsg, $iUserID);
+    if ($bEmailLog) {
+        $sMsg = "Attempting to email log to $sFromEmailAddress\n";
+        echo $sMsg.'<br>';
+        AddToEmailLog($sMsg, $iUserID);
 
-    // Send end message
-    SendEmail($sSubject, $sMessage, $sToEmailAddress);
-
+        // Send end message
+        SendEmail($sSubject, $sMessage, $sFromEmailAddress);
+    }
     echo "<br><b>The job is finished!</b><br>\n";
 
     echo $sHTMLLog;
@@ -791,7 +812,7 @@ if ($sEmailState == 'continue') {
     // we're having trouble sending email.  Terminate, but leave
     // message and distribution list in MySQL
 
-    if (!($_POST['viewlog'] == 'true')) { // Don't add log entry is user is viewing the log
+    if (!($_POST['viewlog'] == 'true')) { // Don't add log entry if user is viewing the log
         $sMsg = 'Job terminating due to error. You may try to resume later.';
         AddToEmailLog($sMsg, $iUserID);
     }
@@ -834,9 +855,9 @@ if ($sEmailState == 'continue') {
 
     echo $sHTMLLog;
 
-    $sMsg = "Attempting to email log to $sToEmailAddress\n";
+    $sMsg = "Attempting to email log to $sFromEmailAddress\n";
     echo $sMsg.'<br>';
-    SendEmail($sSubject, $sMessage, $sToEmailAddress);
+    SendEmail($sSubject, $sMessage, $sFromEmailAddress);
 
 
 } else {
