@@ -138,7 +138,6 @@ if ($iUserID > 0)
         $sPasswordHash = md5($tmp);
         $bPasswordMatch = ($usr_Password == $sPasswordHash);
 
-        /***** Wait until version 1.3.0 to enable below code ****************
         if ($bPasswordMatch) {
             // If the password matches update from 32 character hash
             // to 40 character hash
@@ -148,7 +147,6 @@ if ($iUserID > 0)
                     "WHERE usr_per_ID ='".$iUserID."'";
             RunQuery($sSQL);
         }
-        ****** Wait until ChurchInfo version 1.3.0 to enable above code  ***/
     }
 
 	// Block the login if a maximum login failure count has been reached
