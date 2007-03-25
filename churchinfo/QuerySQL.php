@@ -112,7 +112,8 @@ function ExportQueryResults()
 			//Loop through the fields and write each one
 			for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
 			{
-				$sCSVstring .= $aRow[$iCount] . ",";
+				$outStr = str_replace ('"', '""', $aRow[$iCount]);
+				$sCSVstring .= "\"" . $outStr . "\",";
 			}
 
 			$sCSVstring .= "\n";
