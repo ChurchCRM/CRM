@@ -226,7 +226,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 	$rsTransactions = RunQuery($sSQL);
 
 	include ("Include/echophp.class");
-	include ("Include/EchoConfig.inc"); // Specific account information is in here
+	include ("Include/EchoConfig.php"); // Specific account information is in here
 
 	$echoPHP = new EchoPHP;
 
