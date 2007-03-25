@@ -594,9 +594,9 @@ CREATE TABLE IF NOT EXISTS `events_event` (
 CREATE TABLE IF NOT EXISTS `config_cfg` (
   `cfg_id` int(11) NOT NULL default '0',
   `cfg_name` varchar(50) NOT NULL default '',
-  `cfg_value` text default NULL,
+  `cfg_value` text,
   `cfg_type` enum('text','number','date','boolean','textarea') NOT NULL default 'text',
-  `cfg_default` text NOT NULL default '',
+  `cfg_default` text NOT NULL,
   `cfg_tooltip` text NOT NULL,
   `cfg_section` varchar(50) NOT NULL default '',
   PRIMARY KEY  (`cfg_id`),
@@ -609,7 +609,7 @@ CREATE TABLE IF NOT EXISTS `userconfig_ucfg` (
   `ucfg_per_id` mediumint(9) unsigned NOT NULL,
   `ucfg_id` int(11) NOT NULL default '0',
   `ucfg_name` varchar(50) NOT NULL default '',
-  `ucfg_value` text default NULL,
+  `ucfg_value` text,
   `ucfg_type` enum('text','number','date','boolean','textarea') NOT NULL default 'text',
   `ucfg_tooltip` text NOT NULL,
   `ucfg_permission` enum('FALSE','TRUE') NOT NULL default 'FALSE',
@@ -723,7 +723,7 @@ CREATE TABLE IF NOT EXISTS `email_message_pending_emp` (
   `emp_last_attempt_addr` varchar(50) NOT NULL DEFAULT '',
   `emp_last_attempt_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:01',
   `emp_subject` varchar(80) NOT NULL DEFAULT '',
-  `emp_message` text NOT NULL DEFAULT ''
+  `emp_message` text NOT NULL
 ) TYPE=MyISAM;
 
 
