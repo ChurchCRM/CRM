@@ -1,0 +1,117 @@
+2.3
+---
+
+* fixed db_cache_insert table issue (ezar, mohrt)
+
+2.2
+---
+
+* add geoGetDistance() to compute distance between two coords
+  using great circle distance formula (mohrt)
+* update Google lookup to use official Google geo API (mohrt)
+
+2.1
+---
+
+* fix adjustCenterCoords to cast values as floats (hemmeter, mohrt)
+* made GOOGLE default lookup service
+* added support for tabbed info windows: pass an array of title => html pairs as the $html argument
+  to addMarker. Directions, if enabled, appear in the first tab. (clark)
+* minor bugfix: only zoom encompass if there are two or more markers (clark)
+* added print/getOnLoad() so you can set window onload dynamically (Vaughn Anderson)
+* add (dis/en)ableOverviewControl() features (Antonio Costa, monte)
+* add (dis/en)ableScaleControl() features (Antonio Costa, monte)
+* use first suggestion with "Did you mean" result from google lookups, avoid loops, add property $use_suggest (Angelo Conforti,  monte)
+* make GEOCODES db table configurable (Angelo Conforti, monte)
+
+2.0
+---
+
+* converted map type constants to G_NORMAL_MAP, G_SATELLITE_MAP, G_HYBRID_MAP,
+  for version 2 of Google Map api.
+* fixed up driving direction HTML, remove <p>, add <div> (John Schulz, monte)
+* Moved to version 2 of the Google Maps JS API. (clark)
+  Now use the GMap2 class instead of GMap and GLatLng instead of
+  GPoint (for lat/lon pairs) along with other minor changes. 
+* zoom encompass loop replaced by a new official function, map.getBoundsZoomLevel(bds),
+  which returns the appropriate zoom level for a given GBounds object. (clark)
+* Converted three sections of the getMapJS() function into their own functions:
+  getAddMarkersJS(), getPolylineJS(), and getCreateMarkerJS(), so that they can be extended
+  by subclasses. (clark)
+* fix zoom encompass fudge factor bug; now apply the fudge factor in
+  getMapJS(), just before we zoom. (clark)
+* addMarkerByAddress and addPolyLineByAddress now call addMarkerByCoords
+  and addPolyLineByCoords instead of duplicating the code (clark)
+* added setBoundsFudge() (clark)
+
+1.7
+---
+
+* fix compatability problem with older PHP
+  (change print_r to serialize) (monte)
+* fix bug with sidebar index counter (monte)
+* make map direction html more configurable with css and js (monte)
+* added more error checking to google geocoord lookups (monte)
+* add fudge factor to zoom_encompass so markers
+  are away from the edges (monte)
+
+1.6
+---
+
+* move driving dir output to property var (monte)
+* add <div> ids to driving dirs (monte)
+* fix problem with quotes in titles of driving dir (monte)
+* fix driving dir wrapping (monte)
+* fix problem with empty lat/lon values (monte)
+* move some js funcs around, test for map <div> tag (monte)
+* don't supply style tags to <div> if width and height empty (monte)
+* add js function show_info_window() (monte)
+* track points and markers in global js arrays (monte)
+* make the map js var global (monte)
+* fix bug with icon anchor positioning (monte)
+* add enableInfoWindow() and disableInfoWindow() (monte)
+* remove unused message_id (monte)
+
+1.5
+---
+
+* add setLookupService() to switch between geocode lookup services (monte)
+* add addMarkerIcon() for setting icons for individual map markers (Clark Freifeld)
+* add $zoom_encompass so default map zoom closely encompasses map markers (Clark
+Friefeld)
+* change markder defaults to more closely match google map defaults when none
+are given (Clark Freifeld)
+
+1.4
+---
+
+* split out URL fetching to its own method so it can be easily overridden (monte)
+* wrap <div> tags inside javascript for browser compatability (Jake Krohn, monte)
+* make HTML markers display properly in firefox 1.5 (Jake Krohn, monte)
+* fixed bug with sidebar disabled (monte)
+
+1.3
+---
+
+* remove debug print_r statement from geoGetCoords() function (monte)
+* fixed bug when setting map type and disabling map controls (John Francis Lee, monte)
+
+1.2
+---
+
+* added UTF-8 charset setting to <javascript> tags to work with IE in all langs (KADO, monte)
+* fix issue with multiple lat/lon findings from yahoo (andig,monte)
+* add setMapType() function (Isidor128,monte)
+* allow double quotes in title/html of markers (monte)
+* allow width/height in either px or % (TGKnIght,monte)
+* add setZoomLevel() function (monte)
+
+1.1
+---
+
+* replaced GoogleMapAPI.class.php with GOOD version, 1.0 had incorrect file!
+
+1.0
+---
+
+initial release

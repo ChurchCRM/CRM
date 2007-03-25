@@ -22,6 +22,10 @@
 
 $sSQL = "INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('1.2.9.dev',NOW())";
 RunQuery($sSQL, FALSE); // False means do not stop on error
+
+$sSQL = "INSERT INTO `config_cfg` VALUES (56, 'bUseGoogleGeocode', '1', 'boolean', '1', 'Set true to use the Google geocoder.  Set false to use rpc.geocoder.us.', 'General')";
+RunQuery($sSQL, FALSE);
+
 $sError = mysql_error();
 
 ?>

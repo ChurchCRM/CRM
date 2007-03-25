@@ -1,4 +1,8 @@
 <?php
+require('GoogleMapAPI/GoogleMapAPI.class.php');
+
+$googleMapObj = new GoogleMapAPI('map');
+$googleMapObj->setAPIKey($sGoogleMapKey);
 
 $bHaveXML = 0;
 $pathArray = explode( PATH_SEPARATOR, get_include_path() );
@@ -169,41 +173,50 @@ class AddressLatLon {
 
 	function Lookup () {
 		global $bHaveXML;
-
-		if (! $bHaveXML)
-			return (-4);
+		global $bUseGoogleGeocode;
+		global $googleMapObj;
 
 		$address = $this->street . "," . $this->city . "," . $this->state . "," . $this->zip;
 
-		$params = array(new XML_RPC_Value($address, 'string'));
-		$message = new XML_RPC_Message('geocode', $params);
-		$response = $this->client->send($message);
-
-		if (!$response) {
-			$errMsg = 'Communication error: ' . $client->errstr;
-			return (-1);
-		}
-
-		if (!$response->faultCode()) {
-			$value = $response->value();
-			$address_data = XML_RPC_decode($value);
-			$data0 = $address_data[0];
-			$this->lat = $data0["lat"];
-			$this->lon = $data0["long"];
-
-			if ($this->lat == "") {
-				$this->errMsg = "Unable to find " . $data0["number"] . " " . $data0["street"] . ", " . $data0["city"] . ", " . $data0["state"] . " " . $data0["zip"];
-				return (-3);
-			}
-			return (0);
+		if ($bUseGoogleGeocode) {
+			$geocode = $googleMapObj->geoGetCoords($address);
+        
+			$this->lat = $geocode['lat'];
+			$this->lon = $geocode['lon'];
 		} else {
-			/*
-			 * Display problems that have been gracefully cought and
-			 * reported by the xmlrpc.php script
-			 */
-			$this->errMsg = "Fault Code: " . $response->faultCode() . ",";
-			$this->errMsg .= "Fault Reason: " . $response->faultString() . "\n";
-			return (-2);
+			if (! $bHaveXML)
+				return (-4);
+
+			$params = array(new XML_RPC_Value($address, 'string'));
+			$message = new XML_RPC_Message('geocode', $params);
+			$response = $this->client->send($message);
+
+			if (!$response) {
+				$errMsg = 'Communication error: ' . $client->errstr;
+				return (-1);
+			}
+
+			if (!$response->faultCode()) {
+				$value = $response->value();
+				$address_data = XML_RPC_decode($value);
+				$data0 = $address_data[0];
+				$this->lat = $data0["lat"];
+				$this->lon = $data0["long"];
+
+				if ($this->lat == "") {
+					$this->errMsg = "Unable to find " . $data0["number"] . " " . $data0["street"] . ", " . $data0["city"] . ", " . $data0["state"] . " " . $data0["zip"];
+					return (-3);
+				}
+				return (0);
+			} else {
+				/*
+				 * Display problems that have been gracefully cought and
+				 * reported by the xmlrpc.php script
+				 */
+				$this->errMsg = "Fault Code: " . $response->faultCode() . ",";
+				$this->errMsg .= "Fault Reason: " . $response->faultString() . "\n";
+				return (-2);
+			}
 		}
 	}
 }

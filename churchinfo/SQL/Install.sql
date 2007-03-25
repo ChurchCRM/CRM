@@ -782,6 +782,7 @@ INSERT IGNORE INTO `config_cfg` VALUES (52, 'bUseDonationEnvelopes', '0', 'boole
 INSERT IGNORE INTO `config_cfg` VALUES (53, 'sHeader', '', 'textarea', '', 'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (54, 'sISTusername', 'username', 'text', 'username', 'Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.name-searching.com/CaddressASP', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (55, 'sISTpassword', '', 'text', '', 'Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.name-searching.com/CaddressASP', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (56, 'bUseGoogleGeocode', '1', 'boolean', '1', 'Set true to use the Google geocoder.  Set false to use rpc.geocoder.us.', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (999, 'bRegistered', '0', 'boolean', '0', 'ChurchInfo has been registered.  The ChurchInfo team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General');
 
 INSERT IGNORE INTO `config_cfg` VALUES (1001, 'leftX', '20', 'number', '20', 'Left Margin (1 = 1/100th inch)', 'ChurchInfoReport');
