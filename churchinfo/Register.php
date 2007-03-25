@@ -31,8 +31,7 @@ $bHavePHPMailerClass = FALSE;
 $bHaveSMTPClass = FALSE;
 $bHavePHPMailerLanguage = FALSE;
 
-$sLanguage = "en";  // In the future set PHPMailer Language in General Settings
-                    // currently hard-coded to English
+$sLangCode = substr ($sLanguage, 0, 2); // Strip the language code from the beginning of the language_country code
 
 $sPHPMailerClass = $sPHPMailerPath.'class.phpmailer.php';
 if (file_exists($sPHPMailerClass) && is_readable($sPHPMailerClass)) {
@@ -49,7 +48,7 @@ if (file_exists($sSMTPClass) && is_readable($sSMTPClass)) {
 }
 
 $sTestLanguageFile = $sPHPMailerPath.'language'.DIRECTORY_SEPARATOR
-.'phpmailer.lang-'.$sLanguage.'.php';
+.'phpmailer.lang-'.$sLangCode.'.php';
 if (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
     $sLanguagePath = $sPHPMailerPath.'language'.DIRECTORY_SEPARATOR;
     $bHavePHPMailerLanguage = TRUE;
@@ -74,7 +73,7 @@ if (isset($_POST["Submit"]))
 	$mail = new PHPMailer;
 
     // Set the language for PHPMailer
-    $mail->SetLanguage($sLanguage, $sLanguagePath);
+    $mail->SetLanguage($sLangCode, $sLanguagePath);
     if($mail->IsError())
         echo 'PHPMailer Error with SetLanguage().  Other errors (if any) may not report.<br>';
 

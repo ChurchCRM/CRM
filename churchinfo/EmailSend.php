@@ -95,7 +95,7 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
     global $sSendType;
     global $sFromEmailAddress;
     global $sFromName;
-    global $sLanguage;
+    global $sLangCode;
     global $sLanguagePath;
     global $sSMTPAuth;
     global $sSMTPUser;
@@ -128,7 +128,7 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
     $mail = new PHPMailer();
 
     // Set the language for PHPMailer
-    $mail->SetLanguage($sLanguage, $sLanguagePath);
+    $mail->SetLanguage($sLangCode, $sLanguagePath);
     if($mail->IsError())
         echo 'PHPMailer Error with SetLanguage().  Other errors (if any) may not report.<br>';
 
@@ -432,8 +432,7 @@ $bHavePHPMailerClass = FALSE;
 $bHaveSMTPClass = FALSE;
 $bHavePHPMailerLanguage = FALSE;
 
-$sLanguage = "en";  // In the future set PHPMailer Language in General Settings
-                    // currently hard-coded to English
+$sLangCode = substr ($sLanguage, 0, 2); // Strip the language code from the beginning of the language_country code
 
 $sPHPMailerClass = $sPHPMailerPath.'class.phpmailer.php';
 if (file_exists($sPHPMailerClass) && is_readable($sPHPMailerClass)) {
@@ -450,7 +449,7 @@ if (file_exists($sSMTPClass) && is_readable($sSMTPClass)) {
 }
 
 $sTestLanguageFile = $sPHPMailerPath.'language'.DIRECTORY_SEPARATOR
-.'phpmailer.lang-'.$sLanguage.'.php';
+.'phpmailer.lang-'.$sLangCode.'.php';
 if (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
     $sLanguagePath = $sPHPMailerPath.'language'.DIRECTORY_SEPARATOR;
     $bHavePHPMailerLanguage = TRUE;
@@ -652,7 +651,7 @@ if(!$bPHPMAILER_Installed) {
     if ($bHavePHPMailerLanguage)
         echo '<br>Found: ' . $sFoundLanguageFile;
     else
-        echo "<br>Unable to find file: phpmailer.lang-$sLanguage.php";
+        echo "<br>Unable to find file: phpmailer.lang-$sLangCode.php";
 
     exit;
 }
