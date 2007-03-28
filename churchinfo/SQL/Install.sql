@@ -825,4 +825,4 @@ CREATE TABLE IF NOT EXISTS `version_ver` (
   UNIQUE KEY `ver_version` (`ver_version`)
 ) TYPE=MyISAM;
 
-INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('1.2.8',NOW());
+INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('1.2.9',NOW());
