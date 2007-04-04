@@ -477,7 +477,6 @@ if ($bCreateDirectory)
                         "SET " . 
 							"emp_usr_id='" .$_SESSION['iUserID']. "',".
 							"emp_to_send='0'," .
-							"emp_sessionid='" .$_SESSION['name']. "',".
 							"emp_subject='" . mysql_real_escape_string($sEmailSubject). "',".
 							"emp_message='" . mysql_real_escape_string($sEmailMessage). "'";
 

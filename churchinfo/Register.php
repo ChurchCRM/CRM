@@ -16,7 +16,7 @@
 require "Include/Config.php";
 
 require "Include/Functions.php";
-//require "Include/ReportFunctions.php";
+require "Include/Header.php";
 
 echo gettext ("Please register your copy of ChurchInfo by checking over this information and pressing the Send button.  ");
 echo gettext ("If you need to make changes go to Admin->Edit General Settings and Admin->Edit Report Settings.  ");
@@ -57,7 +57,6 @@ $sSQL = "INSERT INTO email_message_pending_emp ".
         "SET " . 
 			"emp_usr_id='" .$_SESSION['iUserID']. "',".
 			"emp_to_send='0'," .
-			"emp_sessionid='" .$_SESSION['name']. "',".
 			"emp_subject='" . mysql_real_escape_string($sEmailSubject). "',".
 			"emp_message='" . mysql_real_escape_string($sEmailMessage). "'";
 RunQuery($sSQL);
