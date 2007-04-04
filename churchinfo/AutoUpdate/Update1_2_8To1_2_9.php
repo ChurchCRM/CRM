@@ -89,6 +89,9 @@ RunQuery($sSQL, FALSE);
 $sSQL = "UPDATE config_cfg SET cfg_value=concat(cfg_value,',30,31') WHERE cfg_name='aFinanceQueries'";
 RunQuery($sSQL, FALSE);
 
+$sSQL = "UPDATE config_cfg SET cfg_value='0' WHERE cfg_name='bRegistered'";
+RunQuery($sSQL, FALSE);
+
 $sError = mysql_error();
 
 ?>
