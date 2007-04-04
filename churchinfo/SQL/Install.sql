@@ -292,6 +292,10 @@ INSERT IGNORE INTO `query_qry` VALUES (26,'SELECT per_ID as AddToCart, CONCAT(pe
 INSERT IGNORE INTO `query_qry` VALUES (27,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per inner join family_fam on per_fam_ID=fam_ID where per_fmr_ID<>3 AND fam_OkToCanvass="TRUE" ORDER BY fam_Zip','Families to Canvass','People in families that are ok to canvass.',0);
 INSERT IGNORE INTO `query_qry` VALUES (28,'SELECT fam_Name, a.plg_amount as PlgFY1, b.plg_amount as PlgFY2 from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid1~ and a.plg_PledgeOrPayment=\'Pledge\' left join pledge_plg b on b.plg_famID = fam_ID and b.plg_FYID=~fyid2~ and b.plg_PledgeOrPayment=\'Pledge\' order by fam_Name','Pledge comparison','Compare pledges between two fiscal years',1);
 
+INSERT IGNORE INTO `query_qry` VALUES (30,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name, fam_address1, fam_city, fam_state, fam_zip FROM person_per join family_fam on per_fam_id=fam_id where per_fmr_id<>3 and per_fam_id in (select fam_id from family_fam inner join pledge_plg a on a.plg_famID=fam_ID and a.plg_FYID=~fyid1~ and a.plg_amount>0) and per_fam_id not in (select fam_id from family_fam inner join pledge_plg b on b.plg_famID=fam_ID and b.plg_FYID=~fyid2~ and b.plg_amount>0)','Missing pledges','Find people who pledged one year but not another',1);
+
+INSERT IGNORE INTO `query_qry` VALUES (31, 'select per_ID as AddToCart, per_FirstName, per_LastName, per_email from person_per, autopayment_aut where aut_famID=per_fam_ID and aut_CreditCard!="" and per_email!="" and (per_fmr_ID=1 or per_fmr_ID=2 or per_cls_ID=1)', 'Credit Cart People', 'People who are configured to pay by credit card.', 0);
+
 CREATE TABLE IF NOT EXISTS `queryparameteroptions_qpo` (
   `qpo_ID` smallint(5) unsigned NOT NULL auto_increment,
   `qpo_qrp_ID` mediumint(8) unsigned NOT NULL default '0',
@@ -312,15 +316,25 @@ INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (7, 15, 'State', 'per_Stat
 INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (8, 15, 'City', 'per_City');
 INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (9, 15, 'Home Phone', 'per_HomePhone');
 
-INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (10, 27, '2004/2005', '9');
-INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (11, 27, '2005/2006', '10');
-INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (12, 27, '2006/2007', '11');
-INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (13, 27, '2007/2008', '12');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (10, 27, '2005/2006', '10');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (11, 27, '2006/2007', '11');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (12, 27, '2007/2008', '12');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (13, 27, '2008/2009', '13');
 
-INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (14, 28, '2004/2005', '9');
-INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (15, 28, '2005/2006', '10');
-INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (16, 28, '2006/2007', '11');
-INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (17, 28, '2007/2008', '12');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (14, 28, '2005/2006', '10');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (15, 28, '2006/2007', '11');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (16, 28, '2007/2008', '12');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (17, 28, '2008/2009', '13');
+
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (18, 30, '2005/2006', '10');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (19, 30, '2006/2007', '11');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (20, 30, '2007/2008', '12');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (21, 30, '2008/2009', '13');
+
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (22, 31, '2005/2006', '10');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (23, 31, '2006/2007', '11');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (24, 31, '2007/2008', '12');
+INSERT IGNORE INTO `queryparameteroptions_qpo` VALUES (25, 31, '2008/2009', '13');
 
 CREATE TABLE IF NOT EXISTS `queryparameters_qrp` (
   `qrp_ID` mediumint(8) unsigned NOT NULL auto_increment,
@@ -367,6 +381,9 @@ INSERT IGNORE INTO `queryparameters_qrp` VALUES (26,26,0,'','Months','Number of 
 
 INSERT IGNORE INTO `queryparameters_qrp` VALUES (27,28,1,'','First Fiscal Year','First fiscal year for comparison','fyid1','9',1,0,'',12,9,0,0);
 INSERT IGNORE INTO `queryparameters_qrp` VALUES (28,28,1,'','Second Fiscal Year','Second fiscal year for comparison','fyid2','9',1,0,'',12,9,0,0);
+
+INSERT IGNORE INTO `queryparameters_qrp` VALUES (30,30,1,'','First Fiscal Year','Pledged this year','fyid1','9',1,0,'',12,9,0,0);
+INSERT IGNORE INTO `queryparameters_qrp` VALUES (31,30,1,'','Second Fiscal Year','but not this year','fyid2','9',1,0,'',12,9,0,0);
 
 INSERT IGNORE INTO `query_qry` VALUES (100, 'SELECT a.per_ID as AddToCart, CONCAT(''<a href=PersonView.php?PersonID='',a.per_ID,''>'',a.per_FirstName,'' '',a.per_LastName,''</a>'') AS Name FROM person_per AS a LEFT JOIN person2volunteeropp_p2vo p2v1 ON (a.per_id = p2v1.p2vo_per_ID AND p2v1.p2vo_vol_ID = ~volopp1~) LEFT JOIN person2volunteeropp_p2vo p2v2 ON (a.per_id = p2v2.p2vo_per_ID AND p2v2.p2vo_vol_ID = ~volopp2~) WHERE p2v1.p2vo_per_ID=p2v2.p2vo_per_ID ORDER BY per_LastName', 'Volunteers', 'Find volunteers for who match two specific opportunity codes', 1);
 INSERT IGNORE INTO `queryparameters_qrp` VALUES (100, 100, 2, 'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name', 'Volunteer opportunities', 'First volunteer opportunity choice', 'volopp1', '1', 1, 0, '', 12, 1, 1, 2);
@@ -711,21 +728,16 @@ CREATE TABLE IF NOT EXISTS `email_recipient_pending_erp` (
   `erp_id` smallint(5) unsigned NOT NULL DEFAULT '0',
   `erp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT '0',
   `erp_num_attempt` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `erp_failed_time` datetime,
   `erp_email_address` varchar(50) NOT NULL DEFAULT ''
 ) TYPE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS `email_message_pending_emp` (
   `emp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT '0',
-  `emp_num_sent` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `emp_num_left` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `emp_last_sent_addr` varchar(50) NOT NULL DEFAULT '',
-  `emp_last_sent_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:01',
-  `emp_last_attempt_addr` varchar(50) NOT NULL DEFAULT '',
-  `emp_last_attempt_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:01',
-  `emp_subject` varchar(80) NOT NULL DEFAULT '',
+  `emp_to_send` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `emp_subject` varchar(128) NOT NULL,
   `emp_message` text NOT NULL
 ) TYPE=MyISAM;
-
 
 INSERT IGNORE INTO `config_cfg` VALUES (1, 'sWEBCALENDARDB', '', 'text', '', 'WebCalendar database name', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (2, 'debug', '1', 'boolean', '1', 'Set debug mode\r\nThis may be helpful for when you''re first setting up ChurchInfo, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you''ll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.', 'General');
@@ -736,7 +748,7 @@ INSERT IGNORE INTO `config_cfg` VALUES (6, 'sDirRoleHead', '1,7', 'text', '1,7',
 INSERT IGNORE INTO `config_cfg` VALUES (7, 'sDirRoleSpouse', '2', 'text', '2', 'These are the family role numbers designated as spouse', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (8, 'sDirRoleChild', '3', 'text', '3', 'These are the family role numbers designated as child', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (9, 'sSessionTimeout', '3600', 'number', '3600', 'Session timeout length in seconds\rSet to zero to disable session timeouts.', 'General');
-INSERT IGNORE INTO `config_cfg` VALUES (10, 'aFinanceQueries', '28', 'text', '28', 'Queries for which user must have finance permissions to use:', 'General');
+INSERT IGNORE INTO `config_cfg` VALUES (10, 'aFinanceQueries', '28,30,31', 'text', '28', 'Queries for which user must have finance permissions to use:', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (11, 'bCSVAdminOnly', '1', 'boolean', '1', 'Should only administrators have access to the CSV export system and directory report?', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (12, 'sDefault_Pass', 'password', 'text', 'password', 'Default password for new users and those with reset passwords', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (13, 'sMinPasswordLength', '6', 'number', '6', 'Minimum length a user may set their password to', 'General');
