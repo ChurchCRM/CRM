@@ -396,7 +396,7 @@ if ($bCreateDirectory)
         // Check if there are pending emails that have not been delivered
         // A user cannot send a new email until the previous email has been sent
     
-        $sSQL  = "SELECT COUNT(emp_usr_id) as count "
+        $sSQL  = "SELECT COUNT(emp_usr_id) as countjobs "
                . "FROM email_message_pending_emp "
                . "WHERE emp_usr_id='".$_SESSION['iUserID']."'";
 
@@ -404,7 +404,15 @@ if ($bCreateDirectory)
         $aRow = mysql_fetch_array($rsPendingEmail);
         extract($aRow);
 
-        if ($count) {
+        $sSQL  = "SELECT COUNT(erp_usr_id) as countrecipients "
+               . "FROM email_recipient_pending_erp "
+               . "WHERE erp_usr_id='".$_SESSION['iUserID']."'";
+        $rsCountRecipients = RunQuery($sSQL);
+        $aRow = mysql_fetch_array($rsCountRecipients);
+        extract($aRow);
+
+
+        if ($countjobs) {
             // There is already a message composed in MySQL
             // Let's check and make sure it has not been sent.
             $sSQL = "SELECT * FROM email_message_pending_emp "
@@ -414,7 +422,7 @@ if ($bCreateDirectory)
             $aRow = mysql_fetch_array($rsPendingEmail);
             extract($aRow);
 
-            if (!($emp_num_sent || $emp_num_left)) {
+            if ($emp_to_send==0 && $countrecipients==0) {
                 // if both are zero the email job has not started.  In this
                 // case the user may edit the email and/or change the distribution
 
@@ -433,45 +441,24 @@ if ($bCreateDirectory)
 
                     RunQuery($sSQLu);
 
-                }
+                } else {
 
-                // Retrieve subject and message from MySQL (it might not be in POST)
+					// Retrieve subject and message from MySQL
 
-                $rsPendingEmail = RunQuery($sSQL);
-                $aRow = mysql_fetch_array($rsPendingEmail);
-                extract($aRow);
+					$rsPendingEmail = RunQuery($sSQL);
+					$aRow = mysql_fetch_array($rsPendingEmail);
+					extract($aRow);
 
-                $sEmailSubject = $emp_subject;
-                $sEmailMessage = $emp_message;
+					$sEmailSubject = $emp_subject;
+					$sEmailMessage = $emp_message;
+				}
 
                 $sEmailForm = "sendoredit";                
 
-            } else {
+            } else { 
                 // This job has already started.  The user may not change the message
                 // or the distribution once emails have actually been sent.
-                $sSQL = "SELECT emp_last_sent_time FROM email_message_pending_emp ".
-                        "WHERE emp_usr_id='".$_SESSION['iUserID']."'";
-
-                $rsTime = RunQuery($sSQL);
-                $aRow = mysql_fetch_array($rsTime);
-                extract($aRow);
-                
-                $tLastAttempt = strtotime($emp_last_attempt_time);
-                $tTimeSinceLastAttempt = time() - $tLastAttempt;
-                $iWaitTime = 120;   // Number of seconds to wait before you may
-                                    // send a new Email
-
-                if ($tTimeSinceLastAttempt > $iWaitTime) {
-                    // If it's been more than 2 minutes since the last email
-                    // attempt it is resonable to assume that the job failed
-                    // due to an error.  
-                    // Some messages have been sent. The user may resume or abort
-                    $sEmailForm = 'resumeorabort';
-                } else {
-                    // The user may be running the email job in another browser window
-                    // In this case ask user to wait and come back in minute. 
-                    $sEmailForm = 'viewjobstatus';
-                }
+                $sEmailForm = 'resumeorabort';
             }
 
 
@@ -487,15 +474,16 @@ if ($bCreateDirectory)
                 // User has written a message.  Store it in MySQL.
                 // Since this is the first time use INSERT instead of UPDATE                
                 $sSQL = "INSERT INTO email_message_pending_emp ".
-                        "VALUES ('" .$_SESSION['iUserID']. "','0','0','',".
-                        "'2000-01-01 00:00:00','','2001-01-01 00:00:00','".
-                        mysql_real_escape_string($sEmailSubject). "','".
-                        mysql_real_escape_string($sEmailMessage). "')";
+                        "SET " . 
+							"emp_usr_id='" .$_SESSION['iUserID']. "',".
+							"emp_to_send='0'," .
+							"emp_sessionid='" .$_SESSION['name']. "',".
+							"emp_subject='" . mysql_real_escape_string($sEmailSubject). "',".
+							"emp_message='" . mysql_real_escape_string($sEmailMessage). "'";
 
                 RunQuery($sSQL);
 
                 $sEmailForm = 'sendoredit';
-
 
             } else {
 

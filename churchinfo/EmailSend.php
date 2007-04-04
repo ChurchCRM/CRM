@@ -105,7 +105,8 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
     global $sUSER;
     global $sPASSWORD;
     global $sDATABASE;
-
+	global $sSQL_ERP;
+	global $sSQL_EMP;
 
     $iUserID = $_SESSION['iUserID']; // Retrieve UserID for faster access
 
@@ -114,11 +115,9 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
                     "WHERE erp_usr_id='$iUserID' ".
                     'ORDER BY erp_num_attempt, erp_id LIMIT 1';
 
-    $sSQL_ERP = 'SELECT COUNT(erp_id) as erp_count FROM email_recipient_pending_erp '.
-                "WHERE erp_usr_id='$iUserID'";
-
-    $sSQL_EMP = 'SELECT * FROM email_message_pending_emp '.
-                "WHERE emp_usr_id='$iUserID'";
+	// Just run this one ahead of time to get the message subject and body
+    $sSQL = 'SELECT * FROM email_message_pending_emp';
+    extract(mysql_fetch_array(RunQuery($sSQL)));
 
     // Keep track of how long this script has been running.  To avoid server 
     // and browser timeouts break out of loop every $sLoopTimeout seconds and 
@@ -181,11 +180,7 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
         $mail->Body = $sMessage;
 
         if ($sRecipient == 'get_recipients_from_mysql') {
-            
-            $sSQL = 'SELECT * FROM email_message_pending_emp';
-            extract(mysql_fetch_array(RunQuery($sSQL)));
-
-            $rsEmailAddress = RunQuery($sSQLGetEmail);
+            $rsEmailAddress = RunQuery($sSQLGetEmail); // This query has limit one to pick up one recipient
             $aRow = mysql_fetch_array($rsEmailAddress);
             extract($aRow);
             $mail->AddAddress($erp_email_address);
@@ -197,6 +192,7 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
 
         if(!$mail->Send()) {
 
+			// failed- make a note in the log and the recipient record
             if ($sRecipient == 'get_recipients_from_mysql') {
 
                 $sMsg = "Failed sending to: $erp_email_address ";
@@ -204,17 +200,11 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
                 echo "$sMsg<br>\n";
                 AddToEmailLog($sMsg, $iUserID);
 
-                // Update emp with latest attempt
-                $sSQL = 'UPDATE email_message_pending_emp '.
-                        "SET emp_last_attempt_addr='$erp_email_address', ".
-                           " emp_last_attempt_time='$tTimeStamp' ".
-                        "WHERE emp_usr_id='$iUserID'";
-                RunQuery($sSQL);
-
                 // Increment the number of attempts for this message
                 $erp_num_attempt++;
                 $sSQL = 'UPDATE email_recipient_pending_erp '.
-                        "SET erp_num_attempt='$erp_num_attempt' ".
+                        "SET erp_num_attempt='$erp_num_attempt' ,".
+                        "    erp_failed_time='$tTimeStamp' ".
                         "WHERE erp_id='$erp_id'";
                 RunQuery($sSQL);
 
@@ -251,20 +241,6 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
                 $sSQL = 'DELETE FROM email_recipient_pending_erp '.
                         "WHERE erp_email_address='$erp_email_address'";
                 RunQuery($sSQL);
-
-                $emp_num_sent++;
-                $emp_num_left--;
-
-                $sSQL = 'UPDATE email_message_pending_emp '.
-                        "SET emp_last_sent_addr='$erp_email_address', ".
-                           " emp_last_attempt_addr='$erp_email_address', ".
-                           " emp_last_sent_time='$tTimeStamp', ".
-                           " emp_last_attempt_time='$tTimeStamp', ".
-                           " emp_num_sent='$emp_num_sent', ".
-                           " emp_num_left='$emp_num_left' ".
-                        "WHERE emp_usr_id='$iUserID'";
-                RunQuery($sSQL);
-
             } else {
 
                 echo "<b>$sRecipient</b> Sent! <br>\n";
@@ -277,86 +253,13 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
         $mail->ClearAddresses();
         $mail->ClearBCCs();
 
-        // Pause here to verify that the cache is not dirty
-        $iEmailNum = $emp_num_left;
-
-        extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
-        extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
-
-        $bDelay1Second = ($erp_count != $iEmailNum) || ($emp_num_left != $iEmailNum);
-        $bDelay1Second = $bDelay1Second && ($sRecipient == 'get_recipients_from_mysql');
-        $iEmergencyExit = 20; // Error out after 20 seconds
-
-        while ( $bDelay1Second ) {
-            // We only drop into this loop if the information retrieved from MySQL
-            // does not exactly match what was just written to MySQL.
-
-            // This only happens if MySQL returns stale data ... the value of the
-            // record prior to running the above update and insert statements)
-
-            $iEmergencyExit--;
-            if ($iEmergencyExit < 1) {
-
-                $_SESSION['sEmailState'] = 'error';
-                $bContinue = FALSE;
-
-                $sMsg = "Error: erp_count = $erp_count, iEmailNum = $iEmailNum, ".
-                    "emp_num_left = $emp_num_left";
-                AddToEmailLog($sMsg, $iUserID); // Add message to log
-
-                $sMsg = "Error: MySQL did not update after 20 seconds";
-                AddToEmailLog($sMsg, $iUserID); // Add message to log
-
-                break;
-            }
-
-            // On some systems MySQL does not immediately update.  This means that
-            // the SELECT statement returned information prior to running the above  
-            // INSERT and UPDATE commands.  Let's try to force MySQL to update by 
-            // disconnecting from MySQL and delaying 1 second.  Then reconnect and
-            // try the query again.
-
-            mysql_close();  // Close the database connection
-            sleep(1);       // Wait 1 second
-                            // Re-establish the database connection
-            $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD);
-            mysql_select_db($sDATABASE);
-
-            // Run queries again ... hopefully they returns correct data this time
-            extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
-            extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
-            $bDelay1Second = ($erp_count != $iEmailNum) || ($emp_num_left != $iEmailNum);
-        }
-
         // Are we done?
-        if (($sRecipient == 'get_recipients_from_mysql') && ($emp_num_left < 1)) {
+        extract(mysql_fetch_array(RunQuery($sSQL_ERP))); // this query counts remaining recipient records
+
+        if (($sRecipient == 'get_recipients_from_mysql') && ($countrecipients == 0)) {
             $bContinue = FALSE;
-            if ($emp_num_left < 0) {
-                $_SESSION['sEmailState'] = 'error';
-                $sMsg = 'Error on line '.__LINE__.' of file '.__FILE__;
-                AddToEmailLog($sMsg, $iUserID);
-            } else {
-                // If we're done, $erp_count should be zero
-                if ($erp_count) {
-                    $_SESSION['sEmailState'] = 'error';
-                    $sMsg = 'Error on line '.__LINE__.' of file '.__FILE__;
-                    AddToEmailLog($sMsg, $iUserID);
-                } else {
-                    $_SESSION['sEmailState'] = 'finish';
-                    AddToEmailLog('Job Finished', $iUserID);
-                }
-            }
-        }
-
-        // Check if there are more addresses to send
-        if ($bContinue) {
-            if ($erp_count != $emp_num_left) {
-                $_SESSION['sEmailState'] = 'error';
-                $bContinue = FALSE;
-                $sMsg = 'Error on line '.__LINE__.' of file '.__FILE__;
-                AddToEmailLog($sMsg, $iUserID);
-            }
-
+            $_SESSION['sEmailState'] = 'finish';
+            AddToEmailLog('Job Finished', $iUserID);
         }
 
         if ((time() - $tStartTime) > $sLoopTimeout) {
@@ -471,21 +374,16 @@ if (!$emp_count) {
     Redirect('Menu.php');
 }
 
-// Check if this is the first time we are attempting to send this email.  We can tell
-// if emp_num_sent and emp_num_left are both zero then this is our first time.
-
-$sSQL_ERP = 'SELECT COUNT(erp_id) as erp_count FROM email_recipient_pending_erp '.
+// Check if this is the first time we are attempting to send this email.
+$sSQL_ERP = 'SELECT COUNT(erp_id) as countrecipients FROM email_recipient_pending_erp '.
             "WHERE erp_usr_id='$iUserID'";
-
-extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
+extract(mysql_fetch_array(RunQuery($sSQL_ERP))); // this query counts remaining recipient records
 
 $sSQL_EMP = 'SELECT * FROM email_message_pending_emp '.
             "WHERE emp_usr_id='$iUserID'";
-
 extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
 
-
-if (!$emp_num_sent && !$emp_num_left) {
+if ($emp_to_send==0 && $countrecipients==0) {
     // If both are zero the email job has not started yet.  
     // Begin by loading the list of recipients into MySQL.
     ClearEmailLog();  // Initialize Log
@@ -516,70 +414,24 @@ if (!$emp_num_sent && !$emp_num_left) {
             $iEmailNum++;
             // Load MySQL with the list of addresses to be sent
             $sSQL = 'INSERT INTO email_recipient_pending_erp '.
-                    "VALUES ('$iEmailNum','$iUserID','0','".
-                    mysql_real_escape_string($email_address)."')";
+                    "SET erp_id='$iEmailNum',erp_usr_id='$iUserID',erp_num_attempt='0',erp_email_address='".
+                    mysql_real_escape_string($email_address)."'";
 
             RunQuery($sSQL);
         }
 
         // Since no emails have been sent the number remaining to be
-        // sent is the total emp_num_left
+        // sent is the total just counted
 
         $sSQL = 'UPDATE email_message_pending_emp '.
-                "SET emp_num_left='$iEmailNum' ".
+                "SET emp_to_send='$iEmailNum' ".
                 "WHERE emp_usr_id='$iUserID'";
         RunQuery($sSQL);
-
-        extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
-        extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
-        $iEmergencyExit = 20; // Error out after 20 seconds
-
-        while (($erp_count != $iEmailNum) || ($emp_num_left != $iEmailNum)) {
-            // We only drop into this loop if the information retrieved from MySQL
-            // does not exactly match what was just written to MySQL.
-
-            // This only happens if MySQL returns stale data ... the value of the
-            // record prior to running the above update and insert statements)
-
-            $iEmergencyExit--;
-            if ($iEmergencyExit < 1) {
-
-                $_SESSION['sEmailState'] = 'error';
-                $bContinue = FALSE;
-
-                $sMsg = "Error: erp_count = $erp_count, iEmailNum = $iEmailNum, ".
-                    "emp_num_left = $emp_num_left";
-                AddToEmailLog($sMsg, $iUserID); // Add message to log
-
-                $sMsg = "Error: MySQL did not update after 20 seconds";
-                AddToEmailLog($sMsg, $iUserID); // Add message to log
-
-                break;
-            }
-
-            // On some systems MySQL does not immediately update.  This means that
-            // the SELECT statement returned information prior to running the above  
-            // INSERT and UPDATE commands.  Let's try to force MySQL to update by 
-            // disconnecting from MySQL and delaying 1 second.  Then reconnect and
-            // try the query again.
-
-            mysql_close();  // Close the database connection
-            sleep(1);       // Wait 1 second
-                            // Re-establish the database connection
-            $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD);
-            mysql_select_db($sDATABASE);
-
-            // Run queries again ... hopefully they returns correct data this time
-            extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
-            extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
-        }
-
-        if ($iEmergencyExit > 0) {
-            AddToEmailLog('Job Started', $iUserID); // Initialize the log
-        }
+		$countrecipients = $iEmailNum;
+        AddToEmailLog('Job Started', $iUserID); // Initialize the log
     }
 
-} elseif ($emp_num_left) {
+} elseif ($countrecipients) {
 
     if (!($_POST['viewlog'] == 'true')) {
 
@@ -656,16 +508,6 @@ if(!$bPHPMAILER_Installed) {
     exit;
 }
 
-// queries defined in section above the header
-extract(mysql_fetch_array(RunQuery($sSQL_ERP)));
-extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
-
-if ($erp_count != $emp_num_left) {
-    $_SESSION['sEmailState'] = 'error';
-    $sErrMsg = "Error detected, (erp_count $erp_count) != (emp_num_left $emp_num_left)";
-    AddToEmailLog($sErrMsg, $iUserID);
-}
-
 $tTimeStamp = date('m/d H:i:s');
 
 $sEmailState = $_SESSION['sEmailState'];
@@ -677,7 +519,7 @@ if ($sEmailState == 'continue') {
     $sMessage = $emp_message;
 
     // There must be more than one recipient
-    if ($erp_count) {
+    if ($countrecipients) {
 
         echo '<br>Please be patient. Job is not finished.<br><br>';
         echo '<b>Please allow up to 60 seconds for page to reload.</b><br><br>';
@@ -692,7 +534,7 @@ if ($sEmailState == 'continue') {
 
     // send start message
 
-    if ($erp_count) {
+    if ($countrecipients) {
 
         $sSubject = "Email job started at $tTimeStamp";
 
@@ -706,7 +548,7 @@ if ($sEmailState == 'continue') {
         $sMessage .= "Upon successful completion a log will be sent to $sFromEmailAddress";
         $sMessage .= "\n\n";
 
-        $sMessage .= "Job will attempt to send email to the following $erp_count addresses ";
+        $sMessage .= "Job will attempt to send email to the following $countrecipients addresses ";
         $sMessage .= "in this order";
         $sMessage .= "\n\n";
 
