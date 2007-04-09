@@ -110,8 +110,8 @@ INSERT IGNORE INTO `user_id_tmp` (`tmp_user_id`)
 SELECT `usr_per_ID` FROM `user_usr` WHERE `usr_per_ID`>1 ORDER BY `usr_per_ID`;
 
 -- Store sFromEmailAddress and sFromName in variables.
-SELECT cfg_value FROM `config_cfg` WHERE `cfg_name`='sFromEmailAddress' INTO @fromaddress;
-SELECT cfg_value FROM `config_cfg` WHERE `cfg_name`='sFromName' INTO @fromname;
+-- SELECT cfg_value FROM `config_cfg` WHERE `cfg_name`='sFromEmailAddress' INTO @fromaddress;
+-- SELECT cfg_value FROM `config_cfg` WHERE `cfg_name`='sFromName' INTO @fromname;
 
 -- Add default permissions for users
 INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
@@ -131,12 +131,12 @@ SELECT `tmp_user_id`,2,'bSendPHPMail','0',
 FROM `user_id_tmp` ORDER BY `tmp_user_id`;
 INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
 `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
-SELECT `tmp_user_id`,3,'sFromEmailAddress',@fromaddress,
+SELECT `tmp_user_id`,3,'sFromEmailAddress','reply@example.com',
 'text','Reply email address: PHPMailer','FALSE'
 FROM `user_id_tmp` ORDER BY `tmp_user_id`;
 INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
 `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`)
-SELECT `tmp_user_id`,4,'sFromName',@fromname,
+SELECT `tmp_user_id`,4,'sFromName','Reply Name',
 'text','Name that appears in From field: PHPMailer','FALSE'
 FROM `user_id_tmp` ORDER BY `tmp_user_id`;
 INSERT IGNORE INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`,
@@ -174,11 +174,11 @@ VALUES (1,2,'bSendPHPMail','1',
 'boolean','User permission to send email using PHPMailer','TRUE');
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
-VALUES (1,3,'sFromEmailAddress',@fromaddress,
+VALUES (1,3,'sFromEmailAddress','reply@example.com',
 'text','Reply email address: PHPMailer','TRUE');
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
-VALUES (1,4,'sFromName',@fromname,
+VALUES (1,4,'sFromName','Reply Name',
 'text','Name that appears in From field: PHPMailer','TRUE');
 INSERT IGNORE INTO `userconfig_ucfg` (ucfg_per_id, ucfg_id, ucfg_name, ucfg_value,
 ucfg_type, ucfg_tooltip, ucfg_permission)
