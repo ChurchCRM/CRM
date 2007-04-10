@@ -36,7 +36,7 @@ $sAddress = $reportConfig["sChurchAddress"];
 $sCity = $reportConfig["sChurchCity"];
 $sState = $reportConfig["sChurchState"];
 $sZip = $reportConfig["sChurchZip"];
-$sCountry = "";
+$sCountry = $sDefaultCountry;
 $sComments = "";
 $sEmail = $reportConfig["sChurchEmail"];
 
@@ -50,7 +50,7 @@ $sEmailMessage =
 	"Zip: " .$sZip . "\n" .
 	"Country:  " .$sCountry . "\n" .
 	"Email: " .$sEmail . "\n" .
-	"";
+	"Additional comments: " . $sComments . "\n";
 
 // Poke the message into email_message_pending_emp so EmailSend can find it
 $sSQL = "INSERT INTO email_message_pending_emp ".
@@ -60,6 +60,11 @@ $sSQL = "INSERT INTO email_message_pending_emp ".
 			"emp_subject='" . mysql_real_escape_string($sEmailSubject). "',".
 			"emp_message='" . mysql_real_escape_string($sEmailMessage). "'";
 RunQuery($sSQL);
+
+// Turn off the registration flag so the menu option is less obtrusive
+$sSQL = "UPDATE config_cfg SET cfg_value = 1 WHERE cfg_name='bRegistered'";
+RunQuery($sSQL);
+$bRegistered = 1;
 
 ?>
 
