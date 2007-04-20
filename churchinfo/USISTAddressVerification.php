@@ -98,15 +98,13 @@ class ISTAddressLookup {
                         'password'      =>  $password
         );
 
-        foreach ($params as $key => $value) { 
-            $query_string .= "$key=" . urlencode($value) . "&";
-        }
+        $query_string = 'username=' . $username . '&password=' . $password;
 
         $url = "$base?$query_string";
 
         $response = file_get_contents($url);
 
-//        $fp = fopen('/var/www/html/message.txt', 'w+');
+//        $fp = fopen('/path/to/debug/file.txt', 'w+');
 //        fwrite($fp, $response . "\n" . $url);
 //        fclose($fp);
 
@@ -116,8 +114,14 @@ class ISTAddressLookup {
 
         if (!$response) {
             $this->ReturnCode    = '9';
-            $this->SearchesLeft  = 'Connection failure: ' . $base;
-            $this->SearchesLeft .= ' Incorrect server name and/or path or server unavailable.';
+            $this->SearchesLeft  = 'Connection failure: ' . $base . '<br>';
+            $this->SearchesLeft .= ' Incorrect server name and/or path or server unavailable.<br>';
+            
+            // This feature requires that "allow_url_fopen = On" in the php.ini file.
+            if (! ini_get('allow_url_fopen') ) {
+                $this->SearchesLeft .= '<br>IMPORTANT: This feature requires "allow_url_fopen = On" in php.ini';
+                $this->SearchesLeft .= '<br>Please check your php.ini file for "allow_url_fopen"<br>';
+            }
         } else {
             $this->ReturnCode = XMLparseIST($response,'ReturnCode');
 
