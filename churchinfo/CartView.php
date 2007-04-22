@@ -385,7 +385,13 @@ if ($bCreateDirectory)
                     $bcc_list .= $email_address . ", ";
                 }
             }
-            $bcc_list .= $sToEmailAddress;
+            if ($sToEmailAddress) {
+                // append $sToEmailAddress
+                $bcc_list .= $sToEmailAddress;
+            } else {
+                // remove the last ", "
+                $bcc_list = substr($bcc_list, 0, strlen($bcc_list) - 2 );
+            }
         }
 
         $sEmailForm = ""; // Initialize to empty
@@ -504,8 +510,9 @@ if ($bCreateDirectory)
                                                             $email_address . '">';
                 }
             }
-            // The default address gets the last email
+            if ($sToEmailAddress) { // The default address gets the last email
             echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
+            }
 
             echo '<input type="submit" class="icButton" name="submit" '.
                  'value ="'.gettext("Compose Email").'">'."\n</form>";
@@ -539,8 +546,10 @@ if ($bCreateDirectory)
                                                             $email_address . '">';
                 }
             }
-            // The default address gets the last email
+            if ($sToEmailAddress) {  // The default address gets the last email
             echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
+            }
+
             echo '<input type="hidden" name="mysql" value="true">'."\n";
 
             echo '<input type="submit" class="icButton" name="submit" '.
@@ -559,8 +568,10 @@ if ($bCreateDirectory)
                                                             $email_address . '">';
                 }
             }
-            // The default address gets the last email
+            if ($sToEmailAddress) { // The default address gets the last email
             echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
+            }
+
             echo '<input type="hidden" name="mysql" value="true">'."\n";
 
             echo '<input type="submit" class="icButton" name="submit" '.
