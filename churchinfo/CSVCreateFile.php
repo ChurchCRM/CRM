@@ -187,7 +187,7 @@ if ($sFormat == "addtocart")
 {
 	// Get individual records to add to the cart
 
-	$sSQL = "SELECT per_ID FROM person_per $sGroupTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy";
+	$sSQL = "SELECT per_ID FROM (person_per $sGroupTable) $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy";
     $sSQL .= " ORDER BY per_LastName";
     $rsLabelsToWrite = RunQuery($sSQL);
 	while($aRow = mysql_fetch_array($rsLabelsToWrite))
@@ -203,13 +203,13 @@ else
 
 	if ($sFormat == "rollup")
 	{
-		$sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM person_per $sGroupTable $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
-		UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount = 1)
-		UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount > 1) ORDER BY SortMe";
+		$sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM (person_per $sGroupTable) $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
+		UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM (person_per $sGroupTable) $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount = 1)
+		UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM (person_per $sGroupTable) $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount > 1) ORDER BY SortMe";
 	}
 	else
 	{
-		$sSQL = "SELECT * FROM person_per $sGroupTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName";
+		$sSQL = "SELECT * FROM (person_per $sGroupTable) $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName";
 	}
 
 	//Execute whatever SQL was entered

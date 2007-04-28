@@ -629,19 +629,19 @@ if(count($mysqltmp[1] > 1))
 if($mysqlversion >= 4){
     // This query is similar to that of the CSV export with family roll-up.
     // Here we want to gather all unique families, and those that are not attached to a family.
-    $sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier )
-        UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier  GROUP BY per_fam_ID HAVING memberCount = 1)
-        UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier  GROUP BY per_fam_ID HAVING memberCount > 1)
+    $sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM (person_per $sGroupTable) LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier )
+        UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM (person_per $sGroupTable) LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier  GROUP BY per_fam_ID HAVING memberCount = 1)
+        UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM (person_per $sGroupTable) LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier  GROUP BY per_fam_ID HAVING memberCount > 1)
         ORDER BY SortMe";
 }else if($mysqlversion == 3 && $mysqlsubversion >= 22){
     // If UNION not supported use this query with temporary table.  Prior to version 3.22 no IF EXISTS statement.
     $sSQL = "DROP TABLE IF EXISTS tmp;";
     $rsRecords = mysql_query($sSQL) or die(mysql_error());
-    $sSQL = "CREATE TABLE tmp TYPE = MyISAM SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier ;"; 
+    $sSQL = "CREATE TABLE tmp TYPE = MyISAM SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM (person_per $sGroupTable) LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier ;"; 
     $rsRecords = mysql_query($sSQL) or die(mysql_error());
-    $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount = 1;"; 
+    $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM (person_per $sGroupTable) LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount = 1;"; 
     $rsRecords = mysql_query($sSQL) or die(mysql_error());
-    $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount > 1;";
+    $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM (person_per $sGroupTable) LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount > 1;";
     $rsRecords = mysql_query($sSQL) or die(mysql_error());
     $sSQL = "SELECT DISTINCT * FROM tmp ORDER BY SortMe";
 
@@ -673,7 +673,7 @@ while ($aRow = mysql_fetch_array($rsRecords))
         $bNoRecordName = true;
 
         // Find the Head of Household
-        $sSQL = "SELECT * from person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID 
+        $sSQL = "SELECT * from (person_per $sGroupTable) LEFT JOIN family_fam ON per_fam_ID = fam_ID 
             WHERE per_fam_ID = " . $iFamilyID . " 
             AND per_fmr_ID in ($sDirRoleHeads) $sWhereExt $sClassQualifier $sGroupBy";
         $rsPerson = RunQuery($sSQL);
@@ -686,7 +686,7 @@ while ($aRow = mysql_fetch_array($rsRecords))
         }
 
         // Find the Spouse of Household
-        $sSQL = "SELECT * from person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID 
+        $sSQL = "SELECT * from (person_per $sGroupTable) LEFT JOIN family_fam ON per_fam_ID = fam_ID 
             WHERE per_fam_ID = " . $iFamilyID . " 
             AND per_fmr_ID in ($sDirRoleSpouses) $sWhereExt $sClassQualifier $sGroupBy";
         $rsPerson = RunQuery($sSQL);
@@ -703,7 +703,7 @@ while ($aRow = mysql_fetch_array($rsRecords))
             $pdf->sRecordName = $fam_Name;
 
         // Find the other members of a family
-        $sSQL = "SELECT * from person_per $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
+        $sSQL = "SELECT * from (person_per $sGroupTable) LEFT JOIN family_fam ON per_fam_ID = fam_ID
             WHERE per_fam_ID = " . $iFamilyID . " AND !(per_fmr_ID in ($sDirRoleHeads))
             AND !(per_fmr_ID in ($sDirRoleSpouses))  $sWhereExt $sClassQualifier $sGroupBy";
         $rsPerson = RunQuery($sSQL);
