@@ -36,7 +36,7 @@ $tyid = $_POST["EN_tyid"]; // from event type list page
 //
 // process the action inputs
 //
-if ($sAction=='Create=>Event' && !empty($tyid)){
+if ($sAction==gettext('Create=>Event') && !empty($tyid)){
 //
 // user is coming from the event types screen and thus there
 // is no existing event in the event_event table
@@ -215,7 +215,7 @@ if ($sAction=='Create=>Event' && !empty($tyid)){
   $aTypeID = $type_id;
 
 }
-else if ($sAction = 'Edit' && !empty($sOpp))
+else if ($sAction = gettext('Edit') && !empty($sOpp))
 {
         // Get data for the form as it now exists..
         $EventExists = 1;
