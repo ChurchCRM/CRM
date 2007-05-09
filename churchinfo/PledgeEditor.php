@@ -257,7 +257,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 		else if (isset($_POST["PledgeSubmitAndAdd"]))
 		{
 			//Reload to editor to add another record
-			Redirect("PledgeEditor.php?PledgeOrPayment=" . $PledgeOrPayment . "&linkBack=", $linkBack);
+			Redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=" . $PledgeOrPayment . "&linkBack=", $linkBack);
 		}
 
 	}
