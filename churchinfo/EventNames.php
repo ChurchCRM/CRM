@@ -54,7 +54,7 @@ if ( answer )
 $editing='FALSE';
 
 switch ($_POST['Action']){
-case "Add Event Type":
+case gettext("Add Event Type"):
     // Insert into the event_name table
     $sSQL = "INSERT INTO event_types () VALUES()";
     RunQuery($sSQL);
@@ -64,7 +64,7 @@ case "Add Event Type":
     $_POST['Action']='';
     break;
 
-case "Save Changes":
+case gettext("Save Changes"):
 
   $editing='FALSE';
   $eName = $_POST["newEvtName"];
@@ -98,7 +98,7 @@ case "Save Changes":
 //  $theID = $_POST["theID"];
 //  break;
 //
-case "Delete":
+case gettext("Delete"):
   $theID = $_POST["theID"];
   $sSQL = "DELETE FROM event_types WHERE type_id='$theID' LIMIT 1";
 //  echo "$sSQL";
