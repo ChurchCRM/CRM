@@ -203,6 +203,7 @@ if (isset($_POST["UploadCSV"]))
                 <option value="21"><?php echo gettext("Wedding Date"); ?></option>
 
                 <?php
+				mysql_data_seek ($rsCustomFields, 0); // rewind the custom field list
                 while ($aRow = mysql_fetch_array($rsCustomFields))
                 {
                     extract($aRow);
