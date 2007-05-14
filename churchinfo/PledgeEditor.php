@@ -26,7 +26,7 @@ $FamIDIn = FilterInput($_GET["FamilyID"]);
 $PledgeOrPayment = FilterInput($_GET["PledgeOrPayment"]);
 $iCurrentDeposit = FilterInput($_GET["CurrentDeposit"]);
 
-if ($iPledgeID) {
+if ($iPledgeID > 0) {
 	$sSQL = "SELECT * FROM pledge_plg WHERE plg_plgID = '$iPledgeID'";
 	$rsPledge = RunQuery($sSQL);
 	$thePledge = mysql_fetch_array($rsPledge);
@@ -309,8 +309,8 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"]) || isse
 }
 
 // Set Current Deposit setting for user
-if ($iDepositSlipID) {
-	$sSQL = "UPDATE user_usr SET usr_currentDeposit = '$iDepositSlipID' WHERE usr_per_id = \"".$_SESSION['iUserID']."\"";
+if ($iCurrentDeposit) {
+	$sSQL = "UPDATE user_usr SET usr_currentDeposit = '$iCurrentDeposit' WHERE usr_per_id = \"".$_SESSION['iUserID']."\"";
 	$rsUpdate = RunQuery($sSQL);
 }
 
@@ -322,7 +322,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="PledgeEditor.php?<?php echo "PledgeID=" . $iPledgeID . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
+<form method="post" action="PledgeEditor.php?<?php echo "CurrentDeposit=" . $iCurrentDeposit . "&PledgeID=" . $iPledgeID . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
 
 <table cellpadding="3" align="center">
 
