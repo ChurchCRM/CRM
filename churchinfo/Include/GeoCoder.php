@@ -25,20 +25,23 @@ $googleMapObj = new GoogleMapAPI('map');
 $googleMapObj->setAPIKey($sGoogleMapKey);
 
 $bHaveXML = FALSE;
-$pathArray = explode( PATH_SEPARATOR, get_include_path() );
-foreach ($pathArray as $onePath) {
-	$fullpath = $onePath . DIRECTORY_SEPARATOR . $sXML_RPC_PATH;
-	if (file_exists($fullpath) && is_readable($fullpath)) {
-		require_once ("$sXML_RPC_PATH");
-		$bHaveXML = TRUE;
-	}
-}
 
-if ($bHaveXML == 0) { // Maybe the user entered absolute path, let's check
-	if (file_exists($sXML_RPC_PATH) && is_readable($sXML_RPC_PATH)) {
-		require_once ("$sXML_RPC_PATH");
-		$bHaveXML = TRUE;
-	}
+if ($sXML_RPC_PATH) {
+    $pathArray = explode( PATH_SEPARATOR, get_include_path() );
+    foreach ($pathArray as $onePath) {
+	    $fullpath = $onePath . DIRECTORY_SEPARATOR . $sXML_RPC_PATH;
+        if (file_exists($fullpath) && is_readable($fullpath)) {
+            require_once ("$sXML_RPC_PATH");
+            $bHaveXML = TRUE;
+        }
+    }
+
+    if ($bHaveXML == 0) { // Maybe the user entered absolute path, let's check
+        if (file_exists($sXML_RPC_PATH) && is_readable($sXML_RPC_PATH)) {
+            require_once ("$sXML_RPC_PATH");
+            $bHaveXML = TRUE;
+        }
+    }
 }
 
 // Function takes latitude and longitude
