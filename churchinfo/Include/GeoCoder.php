@@ -1,23 +1,43 @@
 <?php
+/*******************************************************************************
+*
+*  filename    : /Include/GeoCoder.php
+*  website     : http://www.churchdb.org
+*
+*  Contributors:
+*  2006-07 Ed Davis
+*
+*
+*  Copyright Contributors
+*
+*  ChurchInfo is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This file best viewed in a text editor with tabs stops set to 4 characters
+*
+******************************************************************************/
+
 require('GoogleMapAPI/GoogleMapAPI.class.php');
 
 $googleMapObj = new GoogleMapAPI('map');
 $googleMapObj->setAPIKey($sGoogleMapKey);
 
-$bHaveXML = 0;
+$bHaveXML = FALSE;
 $pathArray = explode( PATH_SEPARATOR, get_include_path() );
 foreach ($pathArray as $onePath) {
 	$fullpath = $onePath . DIRECTORY_SEPARATOR . $sXML_RPC_PATH;
-	if (file_exists($fullpath)) {
+	if (file_exists($fullpath) && is_readable($fullpath)) {
 		require_once ("$sXML_RPC_PATH");
-		$bHaveXML = 1;
+		$bHaveXML = TRUE;
 	}
 }
 
 if ($bHaveXML == 0) { // Maybe the user entered absolute path, let's check
-	if (file_exists($sXML_RPC_PATH)) {
+	if (file_exists($sXML_RPC_PATH) && is_readable($sXML_RPC_PATH)) {
 		require_once ("$sXML_RPC_PATH");
-		$bHaveXML = 1;
+		$bHaveXML = TRUE;
 	}
 }
 
