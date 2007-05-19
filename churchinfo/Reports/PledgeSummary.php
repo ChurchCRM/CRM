@@ -100,6 +100,11 @@ if ($output == "pdf") {
 
 	// Total all the pledges and payments by fund.  Compute overpaid and underpaid for each family as
 	// we go through them.
+
+	// This algorithm is complicated for the sake of efficiency.  The query gets all the payments ordered
+	// by family.  As the loop below goes through the payments, it collects pledges and payment for each
+	// family, by fund.  It needs to go around one extra time so the last payment gets posted to underpaid/
+	// overpaid.
 	$curFam = 0;
 	$paidThisFam = array();
 	$pledgeThisFam = array();
@@ -107,14 +112,17 @@ if ($output == "pdf") {
 	$underpaid = array();
 	$totRows = mysql_num_rows ($rsPledges);
 	$thisRow = 0;
-	while ($aRow = mysql_fetch_array($rsPledges)) {
-		extract ($aRow);
+
+	for ($thisRow = 0; $thisRow <= $totRows; $thisRow+=1) { // go through the loop one extra time
+		if ($thisRow < $totRows) {
+			$aRow = mysql_fetch_array($rsPledges);
+			extract ($aRow);
+		}
 
 	   if ($fundName == "") {
 	      $fundName = "Unassigned";
 	   }
 
-		++$thisRow;
 		if ($plg_famID != $curFam || $thisRow == $totRows) {
 			// Switching families.  Post the results for the previous family and initialize for the new family
 
@@ -136,15 +144,17 @@ if ($output == "pdf") {
 			$curFam = $plg_famID;
 		}
 
-	   if ($plg_PledgeOrPayment == "Pledge") {
-	      $pledgeFundTotal[$fundName] += $plg_amount;
-		  $pledgeThisFam[$fundName] += $plg_amount;
-		  $pledgeCnt[$fundName] += 1;
-	   } else if ($plg_PledgeOrPayment == "Payment") {
-	      $paymentFundTotal[$fundName] += $plg_amount;
-		  $paidThisFam[$fundName] += $plg_amount;
-		  $paymentCnt[$fundName] += 1;
-	   }
+		if ($thisRow < $totRows) {
+		   if ($plg_PledgeOrPayment == "Pledge") {
+			  $pledgeFundTotal[$fundName] += $plg_amount;
+			  $pledgeThisFam[$fundName] += $plg_amount;
+			  $pledgeCnt[$fundName] += 1;
+		   } else if ($plg_PledgeOrPayment == "Payment") {
+			  $paymentFundTotal[$fundName] += $plg_amount;
+			  $paidThisFam[$fundName] += $plg_amount;
+			  $paymentCnt[$fundName] += 1;
+		   }
+		}
 	}
 
 
