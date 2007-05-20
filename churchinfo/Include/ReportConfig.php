@@ -74,6 +74,7 @@ class ChurchInfoReport extends FPDF {
 	}
 
    function StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear, $letterhead="") {
+		global $sDefaultCountry;
 		$this->AddPage();
 
 		if ($letterhead == "graphic" && is_readable($this->bDirLetterHead)) {
@@ -103,7 +104,7 @@ class ChurchInfoReport extends FPDF {
 			$this->WriteAt ($this->leftX, $curY, $fam_Address2); $curY += $this->incrementY;
 		}
 		$this->WriteAt ($this->leftX, $curY, $fam_City . ", " . $fam_State . "  " . $fam_Zip); $curY += $this->incrementY;
-		if ($fam_Country != "" && $fam_Country != "USA") {
+		if ($fam_Country != "" && $fam_Country != $sDefaultCountry) {
 			$this->WriteAt ($this->leftX, $curY, $fam_Country); $curY += $this->incrementY;
 		}
 		$curY += 5.0; // mm to get away from the second window
