@@ -189,7 +189,7 @@ elseif ($next_link_text) {
 				$bShowUSLinks = true;
 			}
 			elseif ($fam_Country == "Canada") {
-				$sMQcountry = "country=CA&";
+				$sMQcountry = "country=CA&amp;";
 				$bShowMQLink = true;
 			}
 		}
@@ -197,13 +197,13 @@ elseif ($next_link_text) {
 		if ($bShowUSLinks) {
 			echo "<div align=left><a class=\"SmallText\" target=\"_blank\"
 				href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . 
-				"city=" . urlencode($fam_City) . "&state=" . $fam_State . 
-				"&address=" . urlencode($fam_Address1) . "\">" . gettext("View Map") . 
+				"city=" . urlencode($fam_City) . "&amp;state=" . $fam_State . 
+				"&amp;address=" . urlencode($fam_Address1) . "\">" . gettext("View Map") . 
 				"</a></div>";
 				echo "<div align=center><a class=\"SmallText\" target=\"_blank\" 
 				href=\"http://zip4.usps.com/zip4/welcome.jsp?address2=" . 
-				urlencode($fam_Address1) . "&city=" . urlencode($fam_City) . 
-				"&state=" . $fam_State . "\">" . gettext("USPS") . 
+				urlencode($fam_Address1) . "&amp;city=" . urlencode($fam_City) . 
+				"&amp;state=" . $fam_State . "\">" . gettext("USPS") . 
 				"</a></div>";
 				echo "<div align=right><a class=\"SmallText\" target=\"_blank\" 
 				href=\"http://geocoder.us/demo.cgi?address=" . urlencode($fam_Address1) .
@@ -213,8 +213,8 @@ elseif ($next_link_text) {
 		if ($bShowMQLink) {
 			echo "<div align=left><a class=\"SmallText\" target=\"_blank\"
 				href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . 
-				"city=" . urlencode($fam_City) . "&state=" . $fam_State . 
-				"&address=" . urlencode($fam_Address1) . "\">" . gettext("View Map") . 
+				"city=" . urlencode($fam_City) . "&amp;state=" . $fam_State . 
+				"&amp;address=" . urlencode($fam_Address1) . "\">" . gettext("View Map") . 
 				"</a></div>";
 		}
 		echo "<br>";
@@ -298,9 +298,9 @@ elseif ($next_link_text) {
 		} else {
 			// Some old / M$ browsers can't handle PNG's correctly.
 			if ($bDefectiveBrowser)
-				echo '<img border="0" src="Images/NoFamPhoto.gif"><br><br><br>';
+				echo '<img border="0" src="Images/NoFamPhoto.gif" alt="No Family Photo Found"><br><br><br>';
 			else
-				echo '<img border="0" src="Images/NoFamPhoto.png"><br><br><br>';
+				echo '<img border="0" src="Images/NoFamPhoto.png" alt="No Family Photo Found"><br><br><br>';
 
 			if ($bOkToEdit) {
 				if (isset($PhotoError)) 
@@ -382,7 +382,7 @@ $sAssignedProperties = ",";
 if (mysql_num_rows($rsAssignedProperties) == 0)
 {
 	//No, indicate nothing returned
-	echo "<p align\"center\">" . gettext("No property assignments.") . "</p>";
+	echo "<p align=\"center\">" . gettext("No property assignments.") . "</p>";
 }
 else
 {
@@ -439,14 +439,14 @@ else
 		{
 			if (strlen($pro_Prompt) > 0)
 			{
-				echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
+				echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
 			}
 			else
 			{
 				echo "<td>&nbsp;</td>";
 			}
 
-			echo "<td valign=\"center\"><a href=\"PropertyUnassign.php?FamilyID=" . $iFamilyID . "&PropertyID=" . $pro_ID . "\">" . gettext("Remove") . "</a></td>";
+			echo "<td valign=\"center\"><a href=\"PropertyUnassign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Remove") . "</a></td>";
 		}
 
 		echo "</tr>";
@@ -673,10 +673,10 @@ while ($aRow =mysql_fetch_array($rsFamilyMembers))
 				<?php echo $fundName ?>&nbsp;
 			</td>
 			<td>
-				<a href="AutoPaymentEditor.php?AutID=<?php echo $aut_ID ?>&FamilyID=<?php echo $iFamilyID;?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
+				<a href="AutoPaymentEditor.php?AutID=<?php echo $aut_ID ?>&amp;FamilyID=<?php echo $iFamilyID;?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
 			</td>
 			<td>
-				<a href="AutoPaymentDelete.php?AutID=<?php echo $aut_ID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
+				<a href="AutoPaymentDelete.php?AutID=<?php echo $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
 			</td>
 			<td>
 				<?php echo $aut_DateLastEdited; ?>&nbsp;
@@ -687,29 +687,28 @@ while ($aRow =mysql_fetch_array($rsFamilyMembers))
 		</tr>
 		<?php
 	}
+
+?></table><?php
+
 }
 
 ?>
-
-</table>
 
 <br>
 <b><?php echo gettext("Pledges and Payments:"); ?></b>
 <br>
 
-<p align="center">
 <form method="post" action="FamilyView.php?FamilyID=<?php echo $iFamilyID; ?>">
 	<input type="checkbox" name="ShowPledges" value="1" <?php if ($_SESSION['sshowPledges']) echo " checked";?>><?php echo gettext("Show Pledges"); ?>
 	<input type="checkbox" name="ShowPayments" value="1" <?php if ($_SESSION['sshowPayments']) echo " checked";?>><?php echo gettext("Show Payments"); ?>
 	 Since: 
-	<class="TextColumnWithBottomBorder"><input type="text" Name="ShowSinceDate" value="<?php echo $_SESSION['sshowSince']; ?>" maxlength="10" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span>
+	<input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?php echo $_SESSION['sshowSince']; ?>" maxlength="10" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span>
 	<input type="submit" class="icButton" <?php echo 'value="' . gettext("Update") . '"'; ?> name="UpdatePledgeTable" style="font-size: 8pt;">
 </form>
-</p>
 
 <table cellpadding="4" cellspacing="0" width="100%">
 
-<tr class="TableHeader">
+<tr class="TableHeader" align="center">
 	<td><?php echo gettext("Pledge or Payment"); ?></td>
 	<td><?php echo gettext("Fund"); ?></td>
 	<td><?php echo gettext("Fiscal Year"); ?></td>
@@ -771,7 +770,7 @@ if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
 
 			?>
 
-			<tr class="<?php echo $sRowClass ?>">
+			<tr class="<?php echo $sRowClass ?>" align="center">
 				<td>
 					<?php echo $plg_PledgeOrPayment ?>&nbsp;
 				</td>
@@ -800,10 +799,10 @@ if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
 					<?php echo $plg_comment; ?>&nbsp;
 				</td>
 				<td>
-					<a href="PledgeEditor.php?PledgeID=<?php echo $plg_plgID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
+					<a href="PledgeEditor.php?PledgeID=<?php echo $plg_plgID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
 				</td>
 				<td>
-					<a href="PledgeDelete.php?PledgeID=<?php echo $plg_plgID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
+					<a href="PledgeDelete.php?PledgeID=<?php echo $plg_plgID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
 				</td>
 				<td>
 					<?php echo $plg_DateLastEdited; ?>&nbsp;
@@ -821,19 +820,19 @@ if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
 
 </table>
 
-<p>
-	<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&PledgeOrPayment=Pledge"><?php echo gettext("Add a new pledge"); ?></a></font>
-	<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&PledgeOrPayment=Payment"><?php echo gettext("Add a new payment"); ?></a></font>
-	<a class="SmallText" href="AutoPaymentEditor.php?FamilyID=<?php echo $fam_ID ?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo gettext("Add a new automatic payment"); ?></a></font>
+<p align="center">
+	<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&amp;PledgeOrPayment=Pledge"><?php echo gettext("Add a new pledge"); ?></a>
+	<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&amp;PledgeOrPayment=Payment"><?php echo gettext("Add a new payment"); ?></a>
+	<a class="SmallText" href="AutoPaymentEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo gettext("Add a new automatic payment"); ?></a>
 </p>
 
 <?php } ?>
 
 <?php if ($_SESSION['bCanvasser']) { ?>
 
-<p>
-	<a class="SmallText" href="CanvassEditor.php?FamilyID=<?php echo $fam_ID;?>&FYID=<?php echo $_SESSION['idefaultFY'];?>&linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo MakeFYString ($_SESSION['idefaultFY']) . gettext(" Canvass Entry"); ?></a></font>
-<p>
+<p align="center">
+	<a class="SmallText" href="CanvassEditor.php?FamilyID=<?php echo $fam_ID;?>&amp;FYID=<?php echo $_SESSION['idefaultFY'];?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo MakeFYString ($_SESSION['idefaultFY']) . gettext(" Canvass Entry"); ?></a>
+</p>
 
 <?php } ?>
 
@@ -845,8 +844,8 @@ if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
 </p>
 
 <p>
-	<a class="SmallText" href="NoteEditor.php?FamilyID=<?php echo $fam_ID ?>"><?php echo gettext("Add a Note to this Record"); ?></a></font>
-<p>
+	<a class="SmallText" href="NoteEditor.php?FamilyID=<?php echo $fam_ID ?>"><?php echo gettext("Add a Note to this Record"); ?></a>
+</p>
 
 <?php
 
@@ -870,7 +869,7 @@ while($aRow = mysql_fetch_array($rsNotes))
 		<br>
 	<?php
 	} ?>
-	<a class="SmallText" href="NoteEditor.php?FamilyID=<?php echo $iFamilyID ?>&NoteID=<?php echo $nte_ID ?>"><?php echo gettext("Edit This Note"); ?></a></span>
+	<a class="SmallText" href="NoteEditor.php?FamilyID=<?php echo $iFamilyID ?>&amp;NoteID=<?php echo $nte_ID ?>"><?php echo gettext("Edit This Note"); ?></a></span>
 	|
 	<a class="SmallText" href="NoteDelete.php?NoteID=<?php echo $nte_ID ?>"><?php echo gettext("Delete This Note"); ?></a>
 
