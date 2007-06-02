@@ -455,7 +455,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
       if ($uEventStartHour) $aEventStartHour = $uEventStartHour;
       if ($uEventStartMins) $aEventStartMins = $uEventStartMins;
       ?>
-      <?php createTimeDropdown(7,18,15,$aEventStartHour,$aEventStartMins); ?>
+      <?php createTimeDropdown($iEventPeriodStartHr,$iEventPeriodEndHr,$iEventPeriodIntervalMin,$aEventStartHour,$aEventStartMins); ?>
       </select>
       &nbsp;<span class="SmallText"><?php echo gettext("[format: HH:MM]"); ?></span>
       <?php if ( $bESTError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a start time.") . "</span></div>"; ?>
@@ -479,7 +479,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
       if ($uEventEndHour) $aEventEndHour = $uEventEndHour;
       if ($uEventEndMins) $aEventEndMins = $uEventEndMins;
       ?>
-      <?php createTimeDropdown(7,18,15,$aEventEndHour,$aEventEndMins); ?>
+      <?php createTimeDropdown($iEventPeriodStartHr,$iEventPeriodEndHr,$iEventPeriodIntervalMin,$aEventEndHour,$aEventEndMins); ?>
       </select>
       &nbsp;<span class="SmallText"><?php echo gettext("[format: HH:MM]"); ?></span>
     </td>
