@@ -147,7 +147,7 @@ else
          ?>
          <tr class="<?php echo $sRowClass; ?>">
            <td class="TextColumn"><?php echo $aEventType[$row]; ?></td>
-           <td class="TextColumn"><?php echo htmlentities(stripslashes($aEventTitle[$row])); ?></td>
+           <td class="TextColumn"><?php echo htmlentities(stripslashes($aEventTitle[$row]),ENT_NOQUOTES, "UTF-8"); ?></td>
            <td class="TextColumn"><?php echo ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]); ?>
              <?php echo ($aEventText[$row] != '' ? "&nbsp;&nbsp;&nbsp;<a href=\"javascript:popUp('GetText.php?EID=".$aEventID[$row]."')\"><strong>text</strong></a>":""); ?></td>
            <td class="TextColumn"><?php echo FormatDate($aEventStart[$row],1); ?></td>

@@ -1055,17 +1055,17 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
 
 		// Handler for 50 character max. text fields
 		case 3:
-			echo "<input type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"50\" size=\"50\" value=\"" . htmlentities(stripslashes($data)) . "\">";
+			echo "<input type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"50\" size=\"50\" value=\"" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "\">";
 			break;
 
 		// Handler for 100 character max. text fields
 		case 4:
-			echo "<textarea Name=\"" . $fieldname . "\" cols=\"40\" rows=\"2\" onKeyPress=\"LimitTextSize(this,100)\">" . htmlentities(stripslashes($data)) . "</textarea>";
+			echo "<textarea Name=\"" . $fieldname . "\" cols=\"40\" rows=\"2\" onKeyPress=\"LimitTextSize(this,100)\">" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "</textarea>";
 			break;
 
 		// Handler for extended text fields (MySQL type TEXT, Max length: 2^16-1)
 		case 5:
-			echo "<textarea Name=\"" . $fieldname . "\" cols=\"60\" rows=\"4\" onKeyPress=\"LimitTextSize(this, 65535)\">" . htmlentities(stripslashes($data)) . "</textarea>";
+			echo "<textarea Name=\"" . $fieldname . "\" cols=\"60\" rows=\"4\" onKeyPress=\"LimitTextSize(this, 65535)\">" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "</textarea>";
 			break;
 
 		// Handler for 4-digit year
@@ -1143,7 +1143,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
 			if (isset($_POST[$fieldname . "noformat"]))
 				$bNoFormat_Phone = true;
 
-			echo "<input type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"30\" size=\"30\" value=\"" . htmlentities(stripslashes($data)) . "\">";
+			echo "<input type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"30\" size=\"30\" value=\"" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "\">";
 			echo "<br><input type=\"checkbox\" name=\"" . $fieldname . "noformat\" value=\"1\"";
 			if ($bNoFormat_Phone) echo " checked";
 			echo ">" . gettext("Do not auto-format");
