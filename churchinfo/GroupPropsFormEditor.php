@@ -340,14 +340,14 @@ else
 			<?php echo $aPropTypes[$aTypeFields[$row]];	?>
 			</td>
 
-			<td class="TextColumn"><input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row])); ?>" size="25" maxlength="40">
+			<td class="TextColumn"><input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="25" maxlength="40">
 				<?php
 				if ( $aNameErrors[$row] )
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
 				?>
 			</td>
 
-			<td class="TextColumn"><textarea name="<?php echo $row . "desc"; ?>" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?php echo htmlentities(stripslashes($aDescFields[$row])); ?></textarea></td>
+			<td class="TextColumn"><textarea name="<?php echo $row . "desc"; ?>" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?php echo htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
 
 			<td class="TextColumn">
 			<?php

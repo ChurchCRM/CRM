@@ -326,7 +326,7 @@ for ($row=1; $row <= $numRows; $row++)
 		</td>
 		<td class="TextColumn">
 			<span class="SmallText">
-				<input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row])); ?>" size="30" maxlength="40">
+				<input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="40">
 			</span>
 			<?php
 

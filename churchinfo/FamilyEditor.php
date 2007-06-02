@@ -503,7 +503,7 @@ require "Include/Header.php";
 
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Family Name:"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="Name" id="FamilyName" value="<?php echo htmlentities(stripslashes($sName)); ?>" maxlength="48"><font color="red"><?php echo $sNameError; ?></font></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="Name" id="FamilyName" value="<?php echo htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8"); ?>" maxlength="48"><font color="red"><?php echo $sNameError; ?></font></td>
 	</tr>
 	
 	<tr>
@@ -512,17 +512,17 @@ require "Include/Header.php";
 
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Address1:"); ?></td>
-		<td class="TextColumn"><input type="text" Name="Address1" value="<?php echo htmlentities(stripslashes($sAddress1)); ?>" size="50" maxlength="250"></td>
+		<td class="TextColumn"><input type="text" Name="Address1" value="<?php echo htmlentities(stripslashes($sAddress1),ENT_NOQUOTES, "UTF-8"); ?>" size="50" maxlength="250"></td>
 	</tr>
 	
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Address2:"); ?></td>
-		<td class="TextColumn"><input type="text" Name="Address2" value="<?php echo htmlentities(stripslashes($sAddress2)); ?>" size="50" maxlength="250"></td>
+		<td class="TextColumn"><input type="text" Name="Address2" value="<?php echo htmlentities(stripslashes($sAddress2),ENT_NOQUOTES, "UTF-8"); ?>" size="50" maxlength="250"></td>
 	</tr>
 	
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("City:"); ?></td>
-		<td class="TextColumn"><input type="text" Name="City" value="<?php echo htmlentities(stripslashes($sCity)); ?>" maxlength="50"></td>
+		<td class="TextColumn"><input type="text" Name="City" value="<?php echo htmlentities(stripslashes($sCity),ENT_NOQUOTES, "UTF-8"); ?>" maxlength="50"></td>
 	</tr>
 	
 	<tr>
@@ -530,7 +530,7 @@ require "Include/Header.php";
 		<td class="TextColumn">
 			<?php require "Include/StateDropDown.php"; ?>
 			OR
-			<input type="text" name="StateTextbox" value="<?php if ($sCountry != "United States" && $sCountry != "Canada") echo htmlentities(stripslashes($sState)); ?>" size="20" maxlength="30">
+			<input type="text" name="StateTextbox" value="<?php if ($sCountry != "United States" && $sCountry != "Canada") echo htmlentities(stripslashes($sState),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
 			<BR><?php echo gettext("(Use the textbox for countries other than US and Canada)"); ?>
 		</td>
 	</tr>
@@ -545,7 +545,7 @@ require "Include/Header.php";
 			?>
 		</td>
 		<td class="TextColumn">
-			<input type="text" Name="Zip" value="<?php echo htmlentities(stripslashes($sZip)); ?>" maxlength="10" size="8">
+			<input type="text" Name="Zip" value="<?php echo htmlentities(stripslashes($sZip),ENT_NOQUOTES, "UTF-8"); ?>" maxlength="10" size="8">
 		</td>
 		
 	</tr>

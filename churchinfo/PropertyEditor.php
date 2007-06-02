@@ -151,18 +151,18 @@ require "Include/Header.php";
 	<tr>
 		<td valign="top" align="right"><b><?php echo gettext("Name:"); ?></b></td>
 		<td>
-			<input type="text" name="Name" value="<?php echo htmlentities(stripslashes($sName)); ?>" size="50">
+			<input type="text" name="Name" value="<?php echo htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8"); ?>" size="50">
 			<?php echo $sNameError ?>
 		</td>
 	</tr>
 	<tr>
 		<td align="right" valign="top"><b>"<?php echo gettext("A"); ?> <?php echo $sTypeName ?><BR><?php echo gettext("with this property.."); ?>":</b></td>
-		<td><textarea name="Description" cols="60" rows="3"><?php echo htmlentities(stripslashes($sDescription)); ?></textarea></td>
+		<td><textarea name="Description" cols="60" rows="3"><?php echo htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
 	</tr>
 	<tr>
 		<td align="right" valign="top"><b><?php echo gettext("Prompt:"); ?></b></td>
 		<td valign="top">
-			<input type="text" name="Prompt" value="<?php echo htmlentities(stripslashes($sPrompt)) ?>" size="50">
+			<input type="text" name="Prompt" value="<?php echo htmlentities(stripslashes($sPrompt),ENT_NOQUOTES, "UTF-8") ?>" size="50">
 			<br>
 			<span class="SmallText"><?php echo gettext("Entering a Prompt value will allow the association of a free-form value."); ?></span>
 		</td>

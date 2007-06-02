@@ -200,7 +200,7 @@ else
 			</td>
 
 			<td class="TextColumn" align="center">
-				<input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row])); ?>" size="20" maxlength="30">
+				<input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
 				<?php
 				if ( $aNameErrors[$row] )
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
@@ -208,7 +208,7 @@ else
 			</td>
 
 			<td class="TextColumn">
-				<input type="text" Name="<?php echo $row . "desc" ?>" value="<?php echo htmlentities(stripslashes($aDescFields[$row])); ?>" size="40" maxlength="100">
+				<input type="text" Name="<?php echo $row . "desc" ?>" value="<?php echo htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="40" maxlength="100">
 			</td>
 			<td class="TextColumn" align="center" nowrap>
 				<input type="radio" Name="<?php echo $row . "active" ?>" value="1" <?php if ($aActiveFields[$row]) echo " checked" ?>><?php echo gettext("Yes"); ?>

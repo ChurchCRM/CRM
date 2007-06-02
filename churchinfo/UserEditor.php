@@ -268,7 +268,7 @@ if (isset($_POST['save']) && ($iPersonID > 0)){
                     $ucfg_tooltip, $ucfg_permission) = $aDefaultRow;
 
                 $sSQL = "INSERT INTO userconfig_ucfg VALUES ($iPersonID, $id, "
-                .       "'$ucfg_name', '$ucfg_value', '$ucfg_type', '$ucfg_tooltip', "
+                .       "'$ucfg_name', '$ucfg_value', '$ucfg_type', '".htmlentities(addslashes($ucfg_tooltip),ENT_NOQUOTES, 'UTF-8')."', "
                 .       "'$ucfg_permission')";
                 $rsResult = RunQuery($sSQL);
 

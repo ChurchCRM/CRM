@@ -89,7 +89,7 @@ for ($row = 1; $row <= $numRows; $row++)
     if ($_GET['Action'] == "List")
     {
         $aEventID[$row] = $event_id;
-        $aEventTitle[$row] = htmlentities(stripslashes($event_title));
+        $aEventTitle[$row] = htmlentities(stripslashes($event_title),ENT_NOQUOTES, "UTF-8");
         $aEventStartDateTime[$row] = $event_start;
     }
     else

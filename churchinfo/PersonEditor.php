@@ -453,17 +453,17 @@ require "Include/Header.php";
 			</tr>
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("Examples: Mr., Mrs., Dr., Rev."); ?>><?php echo gettext("Title:"); ?></td>
-				<td class="TextColumn"><input type="text" name="Title" id="Title" value="<?php echo htmlentities(stripslashes($sTitle)); ?>"></td>
+				<td class="TextColumn"><input type="text" name="Title" id="Title" value="<?php echo htmlentities(stripslashes($sTitle),ENT_NOQUOTES, "UTF-8"); ?>"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("First Name:"); ?></td>
-				<td class="TextColumn"><input type="text" name="FirstName" id="FirstName" value="<?php echo htmlentities(stripslashes($sFirstName)); ?>"><br><font color="red"><?php echo $sFirstNameError ?></font></td>
+				<td class="TextColumn"><input type="text" name="FirstName" id="FirstName" value="<?php echo htmlentities(stripslashes($sFirstName),ENT_NOQUOTES, "UTF-8"); ?>"><br><font color="red"><?php echo $sFirstNameError ?></font></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Middle Name:"); ?></td>
-				<td class="TextColumn"><input type="text" name="MiddleName" value="<?php echo htmlentities(stripslashes($sMiddleName)); ?>"></td>
+				<td class="TextColumn"><input type="text" name="LastName" id="LastName" value="<?php echo htmlentities(stripslashes($sLastName),ENT_NOQUOTES, "UTF-8"); ?>"><br><font color="red"><?php echo $sLastNameError ?></font></td>
 			</tr>
 
 			<tr>
@@ -473,7 +473,7 @@ require "Include/Header.php";
 
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("Examples: Jr., Sr., III"); ?>><?php echo gettext("Suffix:"); ?></td>
-				<td class="TextColumn"><input type="text" name="Suffix" id="Suffix" value="<?php echo htmlentities(stripslashes($sSuffix)); ?>"></td>
+				<td class="TextColumn"><input type="text" name="Suffix" id="Suffix" value="<?php echo htmlentities(stripslashes($sSuffix),ENT_NOQUOTES, "UTF-8"); ?>"></td>
 			</tr>
 
 			<tr>
@@ -542,17 +542,17 @@ require "Include/Header.php";
 <?php if (!$bHidePersonAddress) { /* Person Address can be hidden - General Settings */ ?>
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("Main address for an individual. If the address does not differ from the family, leave this field blank."); ?>><?php if ($bFamilyAddress1) { echo "<span style=\"color: red;\">"; } ?><?php echo gettext("Address1:"); ?></span></td>
-				<td class="TextColumn"><input type="text" name="Address1" value="<?php echo htmlentities(stripslashes($sAddress1)); ?>" size="30" maxlength="50"></td>
+				<td class="TextColumn"><input type="text" name="Address1" value="<?php echo htmlentities(stripslashes($sAddress1),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="50"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("Additional information if needed. If the address does not differ from the fmaily, leave this field blank."); ?>><?php if ($bFamilyAddress2) { echo "<span style=\"color: red;\">"; } ?><?php echo gettext("Address2:"); ?></span></td>
-				<td class="TextColumn"><input type="text" name="Address2" value="<?php echo htmlentities(stripslashes($sAddress2)); ?>" size="30" maxlength="50"></td>
+				<td class="TextColumn"><input type="text" name="Address2" value="<?php echo htmlentities(stripslashes($sAddress2),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="50"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("If the city does not differ from the family, leave this field blank."); ?>><?php if ($bFamilyCity) { echo "<span style=\"color: red;\">"; } ?><?php echo gettext("City:"); ?></span></td>
-				<td class="TextColumn"><input type="text" name="City" value="<?php echo htmlentities(stripslashes($sCity)); ?>"></td>
+				<td class="TextColumn"><input type="text" name="City" value="<?php echo htmlentities(stripslashes($sCity),ENT_NOQUOTES, "UTF-8"); ?>"></td>
 			</tr>
 
 			<tr>
@@ -560,14 +560,14 @@ require "Include/Header.php";
 				<td class="TextColumn">
 					<?php require "Include/StateDropDown.php"; ?>
 					OR
-					<input type="text" name="StateTextbox" value="<?php if ($sPhoneCountry != "United States" && $sPhoneCountry != "Canada") echo htmlentities(stripslashes($sState)); ?>" size="20" maxlength="30">
+					<input type="text" name="StateTextbox" value="<?php if ($sPhoneCountry != "United States" && $sPhoneCountry != "Canada") echo htmlentities(stripslashes($sState),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
 					<BR><?php echo gettext("(Use the textbox for countries other than US and Canada)"); ?>
 				</td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("If the ZIP does not differ from the family, leave this field blank."); ?>><?php if ($bFamilyZip) { echo "<span style=\"color: red;\">"; } ?><?php echo gettext("Zip:"); ?></span></td>
-				<td class="TextColumn"><input type="text" name="Zip" value="<?php echo htmlentities(stripslashes($sZip)); ?>" maxlength="10" size="8"></td>
+				<td class="TextColumn"><input type="text" name="Zip" value="<?php echo htmlentities(stripslashes($sZip),ENT_NOQUOTES, "UTF-8"); ?>" maxlength="10" size="8"></td>
 			</tr>
 
 			<tr>

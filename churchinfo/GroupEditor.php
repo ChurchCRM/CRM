@@ -217,14 +217,14 @@ function confirmAdd() {
 	<table cellpadding="3">
 		<tr>
 			<td class="LabelColumn"><b><?php echo gettext("Name:"); ?></b></td>
-			<td class="TextColumn"><input type="text" Name="Name" value="<?php echo htmlentities(stripslashes($sName)); ?>" size="40" maxlength="50">
+			<td class="TextColumn"><input type="text" Name="Name" value="<?php echo htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8"); ?>" size="40" maxlength="50">
 			<?php if ($bNameError) echo "<br><font color=\"red\">" . gettext("You must enter a name.") . "</font>"; ?>
 			</td>
 		</tr>
 
 		<tr>
 			<td class="LabelColumn"><b><?php echo gettext("Description:"); ?></b></td>
-			<td class="TextColumnWithBottomBorder"><textarea name="Description" cols="40" rows="5"><?php echo htmlentities(stripslashes($sDescription)); ?></textarea></td>
+			<td class="TextColumnWithBottomBorder"><textarea name="Description" cols="40" rows="5"><?php echo htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
 		</tr>
 
 		<tr>

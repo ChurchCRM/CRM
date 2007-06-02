@@ -96,12 +96,12 @@ require "Include/Header.php";
 	</tr>
 	<tr>
 		<td align="right"><b><?php echo gettext("Name:"); ?></b></td>
-		<td><input type="text" name="Name" value="<?php echo htmlentities(stripslashes($sName)); ?>" size="40"> 			<?php echo $sNameError; ?>
+		<td><input type="text" name="Name" value="<?php echo htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8"); ?>" size="40"> 			<?php echo $sNameError; ?>
 		</td>
 	</tr>
 	<tr>
 		<td align="right" valign="top"><b><?php echo gettext("Description:"); ?></b></td>
-		<td><textarea name="Description" cols="60" rows="10"><?php echo htmlentities(stripslashes($sDescription)); ?></textarea></td>
+		<td><textarea name="Description" cols="60" rows="10"><?php echo htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
