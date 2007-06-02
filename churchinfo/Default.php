@@ -189,6 +189,10 @@ if ($iUserID > 0)
 
 		// Set the User's email address
 		$_SESSION['sEmailAddress'] = $per_Email;
+/* -----------------------------------MRBS Bridging adds --------------------------------------------*/
+		// Set the User's email address
+		$_SESSION["UserName"] = $usr_UserName;
+/*------------------------------------MRBS Bridging add ends ---------------------------------------*/
 
 		// If user has administrator privilege, override other settings and enable all permissions.
 		if ($usr_Admin) {
