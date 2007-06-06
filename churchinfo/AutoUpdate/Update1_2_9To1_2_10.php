@@ -20,6 +20,9 @@
 *
 ******************************************************************************/
 
+$sSQL = "INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('1.2.10',NOW())";
+RunQuery($sSQL, FALSE); // False means do not stop on error
+
 $sSQL = "CREATE TABLE `menuconfig_mcf` (
   `mid` int(11) NOT NULL auto_increment,
   `name` varchar(20) NOT NULL,
