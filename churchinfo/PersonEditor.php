@@ -463,7 +463,7 @@ require "Include/Header.php";
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Middle Name:"); ?></td>
-				<td class="TextColumn"><input type="text" name="LastName" id="LastName" value="<?php echo htmlentities(stripslashes($sLastName),ENT_NOQUOTES, "UTF-8"); ?>"><br><font color="red"><?php echo $sLastNameError ?></font></td>
+				<td class="TextColumn"><input type="text" name="MiddleName" id="MiddleName" value="<?php echo htmlentities(stripslashes($sMiddleName),ENT_NOQUOTES, "UTF-8"); ?>"><br><font color="red"><?php echo $sMiddleNameError ?></font></td>
 			</tr>
 
 			<tr>
