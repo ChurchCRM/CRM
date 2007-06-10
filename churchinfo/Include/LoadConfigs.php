@@ -43,6 +43,12 @@ $sDocumentRoot = dirname(dirname(__FILE__));
 // Initialize the session
 session_start();
 
+$version = mysql_fetch_row(mysql_query("SELECT version()"));
+
+if (substr($version[0],0,3) >= "4.1") {
+	mysql_query("SET NAMES 'utf8'");
+}
+
 // Read values from config table into local variables
 // **************************************************
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
