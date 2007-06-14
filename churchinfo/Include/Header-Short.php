@@ -15,6 +15,8 @@
  *
  ******************************************************************************/
 
+ require_once('Header-function.php');
+
 // Turn ON output buffering
 ob_start();
 
@@ -22,9 +24,7 @@ ob_start();
 <html>
 
 <head>
-	<meta http-equiv="pragma" content="no-cache">
-	<title>ChurchInfo: <?php echo $sPageTitle; ?></title>
-	<link rel="stylesheet" type="text/css" href="Include/<?php echo $_SESSION['sStyle']; ?>">
+	<?php Header_head_metatag(); ?>
 </head>
 
 <body>
