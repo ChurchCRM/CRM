@@ -69,14 +69,24 @@ if (isset($_SESSION['iUserID'])) {      // Not set on Default.php
     if ($rsConfig) {
         while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
             $$ucfg_name = $value;
+				$_SESSION[$ucfg_name] = $value;
+//				echo "<br>".$ucfg_name." ".$_SESSION[$ucfg_name];
         }
     }
 }
 
 $sMetaRefresh = '';  // Initialize to empty
 
-putenv("LANG=$sLanguage");
-setlocale(LC_ALL, $sLanguage);
+require_once("Include/winlocallist.php");
+
+if (!(stripos(php_uname('s'), "windows") === false)) {
+//	$sLanguage = $lang_map_windows[strtolower($sLanguage)];
+	$sLang_Code = $lang_map_windows[strtolower($sLanguage)];
+} else {
+	$sLang_Code = $sLanguage;
+}
+putenv("LANG=$sLang_Code");
+setlocale(LC_ALL, $sLang_Code);
 
 // Get numeric and monetary locale settings.
 $aLocaleInfo = localeconv();
