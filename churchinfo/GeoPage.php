@@ -243,7 +243,7 @@ echo "	<td class=\"TextColumn\"><input type=\"text\" name=\"NumNeighbors\" value
 echo "</tr>\n";
 
 echo "<tr>\n";
-echo "	<td class=\"LabelColumn\">" . gettext("Maximum distance (miles):") . "</td>\n";
+echo "	<td class=\"LabelColumn\">" . gettext("Maximum distance") . " (" . strtolower($sDistanceUnit) . "): </td>\n";
 echo "	<td class=\"TextColumn\"><input type=\"text\" name=\"MaxDistance\" value=\"" . $nMaxDistance . "\"></td>\n";
 echo "</tr>\n";
 
