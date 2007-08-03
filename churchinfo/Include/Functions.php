@@ -847,8 +847,10 @@ function PrintAge($Month,$Day,$Year,$Flags)
 //
 function FormatAge($Month,$Day,$Year,$Flags)
 {
-	if ($Flags & 1) {
+	if (($Flags & 1) ||!$_SESSION['bSeePrivacyData'])
+	{
 		return;
+	
 	}
 
 	if ($Year > 0)
@@ -1586,8 +1588,17 @@ function formatNumber($iNumber,$sMode = 'integer')
 
 // Format a BirthDate
 // Optionally, the separator may be specified.  Default is YEAR-MN-DY
-function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator = "-")
+function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator = "-", $bFlags="1")
 {
+	if (!$_SESSION['bSeePrivacyData'])
+	{
+		$birthYear = "1000";
+	}
+	else 
+	{
+		$birthYear = $per_BirthYear;
+	}
+
 	if ($per_BirthMonth > 0 && $per_BirthDay > 0)
 	{
 		if ($per_BirthMonth < 10)
@@ -1600,18 +1611,22 @@ function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSepar
 			$dBirthDay = $per_BirthDay;
 
 		$dBirthDate = $dBirthMonth . $sSeparator . $dBirthDay;
-		if (is_numeric($per_BirthYear))
+		if (is_numeric($birthYear))
 		{
-			$dBirthDate = $per_BirthYear . $sSeparator . $dBirthDate;
-            if (checkdate($dBirthMonth,$dBirthDay,$per_BirthYear))
+			$dBirthDate = $birthYear . $sSeparator . $dBirthDate;
+            if (checkdate($dBirthMonth,$dBirthDay,$birthYear))
             {
-                $dBirthDate = FormatDate($dBirthDate);
+               $dBirthDate = FormatDate($dBirthDate);
+					if (substr($dBirthDate, -6, 6) == ", 1000")
+					{
+						$dBirthDate = str_replace(", 1000", "", $dBirthDate);
+					}
             }
 		}
 	}
-	elseif (is_numeric($per_BirthYear))
+	elseif (is_numeric($birthYear))
 	{
-		$dBirthDate = $per_BirthYear;
+		$dBirthDate = $birthYear;
 	}
 	else
 	{

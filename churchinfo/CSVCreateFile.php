@@ -32,6 +32,9 @@ if ($sFormat == "default")
 {
 	$sSQL = "SELECT * FROM person_custom_master ORDER BY custom_Order";
 	$rsCustomFields = RunQuery($sSQL);
+
+	$sSQL = "SELECT * FROM family_custom_master ORDER BY fam_custom_Order";
+	$rsFamCustomFields = RunQuery($sSQL);
 }
 
 //Get family roles
@@ -43,6 +46,17 @@ while ($aRow =mysql_fetch_array($rsFamilyRoles))
 	$familyRoles[$lst_OptionID] = $lst_OptionName;
 	$roleSequence[$lst_OptionSequence] = $lst_OptionID;
 }
+
+// Get Field Security List Matrix
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+$rsSecurityGrp = RunQuery($sSQL);
+
+while ($aRow = mysql_fetch_array($rsSecurityGrp))
+{
+	extract ($aRow);
+	$aSecurityType[$lst_OptionID] = $lst_OptionName;
+}
+
 
 //
 // Prepare the MySQL query
@@ -269,6 +283,18 @@ else
 				$headerString .= "\"$custom_Name\",";
 			}
 		}
+		while($aFamRow = mysql_fetch_array($rsFamCustomFields))
+		{
+			extract($aFamRow);
+			if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+			{
+				if (isset($_POST["$fam_custom_Field"]))
+				{
+					$bUsedCustomFields = true;
+					$headerString .= "\"$fam_custom_Name\",";
+				}
+			}
+		}
 	}
 
 	$headerString = substr($headerString,0,-1);
@@ -451,12 +477,36 @@ else
 						$type_ID = "";
 
 						extract($aCustomField);
-						if (isset($_POST["$custom_Field"]))
+						if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
 						{
-							if ($type_ID == 11) $custom_Special = $sCountry;
-							$sString .= "\",\"" . displayCustomField($type_ID, trim($aCustomData[$custom_Field]), $custom_Special);
+							if (isset($_POST["$custom_Field"]))
+							{
+								if ($type_ID == 11) $custom_Special = $sCountry;
+								$sString .= "\",\"" . displayCustomField($type_ID, trim($aCustomData[$custom_Field]), $custom_Special);
+							}
 						}
 					}
+
+					$sSQLFamCustom = "SELECT * FROM family_custom WHERE fam_ID = " . $per_fam_ID;
+					$rsFamCustomData = RunQuery($sSQLFamCustom);
+					$aFamCustomData = mysql_fetch_array($rsFamCustomData);
+
+					// Write custom field data
+					mysql_data_seek($rsFamCustomFields,0);
+					while($aFamCustomField = mysql_fetch_array($rsFamCustomFields))
+					{
+						$fam_custom_Field = "";
+						$fam_custom_Special = "";
+						$type_ID = "";
+
+						extract($aFamCustomField);
+						if (isset($_POST["$fam_custom_Field"]))
+						{
+							if ($type_ID == 11) $fam_custom_Special = $sCountry;
+							$sString .= "\",\"" . displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
+						}
+					}
+
 				}
 				$sString .= "\"\n";
 				echo $sString;

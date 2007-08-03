@@ -42,6 +42,21 @@ $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom
 $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysql_num_rows($rsCustomFields);
 
+$sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
+$rsFamCustomFields = RunQuery($sSQL);
+$numFamCustomFields = mysql_num_rows($rsFamCustomFields);
+
+// Get Field Security List Matrix
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+$rsSecurityGrp = RunQuery($sSQL);
+
+while ($aRow = mysql_fetch_array($rsSecurityGrp))
+{
+	extract ($aRow);
+	$aSecurityType[$lst_OptionID] = $lst_OptionName;
+}
+
+
 // Set the page title and include HTML header
 $sPageTitle = gettext("CSV Export");
 require "Include/Header.php";
@@ -163,21 +178,48 @@ require "Include/Header.php";
   </table>
 	</td>
 
+	<?php if (($numCustomFields > 0) or ($numFamCustomFields > 0)) {?>
+	<td width="20%" valign="top"><table border="0">
 	<?php if ($numCustomFields > 0) { ?>
-	<td width="20%" valign="top" align="left">
-		<h3><?php echo gettext("Custom Fields"); ?></h3>
+	<tr><td width="100%" valign="top" align="left">
+		<h3><?php echo gettext("Custom Person Fields"); ?></h3>
 		<table cellpadding="4" align="left">
 		<?php
 			// Display the custom fields
 			while ($Row = mysql_fetch_array($rsCustomFields)) {
 				extract($Row);
-				$currentData = trim($aCustomData[$custom_Field]);
-				echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td>";
-				echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $custom_Field . " value=\"1\"></td></tr>";
+				if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+				{
+					$currentData = trim($aCustomData[$custom_Field]);
+					echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td>";
+					echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $custom_Field . " value=\"1\"></td></tr>";
+				}
 			}
 		?>
 		</table>
-	</td>
+	</td></tr>
+	<?php } ?>
+
+	<?php if ($numFamCustomFields > 0) { ?>
+	<tr><td width="100%" valign="top" align="left">
+		<h3><?php echo gettext("Custom Family Fields"); ?></h3>
+		<table cellpadding="4" align="left">
+		<?php
+			// Display the family custom fields
+			while ($Row = mysql_fetch_array($rsFamCustomFields)) {
+				extract($Row);
+				if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+				{
+					$currentData = trim($aFamCustomData[$fam_custom_Field]);
+					echo "<tr><td class=\"LabelColumn\">" . $fam_custom_Name . "</td>";
+					echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $fam_custom_Field . " value=\"1\"></td></tr>";
+				}
+			}
+		?>
+		</table>
+	</td></tr>
+	<?php } ?>
+		</table></td>
 	<?php } ?>
 
     <td valign="top" align="left">
