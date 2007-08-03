@@ -6,11 +6,11 @@
  *  description : login page that checks for correct username and password
  *
  *  http://www.infocentral.org/
- *  Copyright 2001-2002 Phillip Hullquist, Deane Barker, 
- *	
+ *  Copyright 2001-2002 Phillip Hullquist, Deane Barker,
+ *
  *	Updated 2005-03-19 by Everette L Mills: Removed dropdown login box and
  *	added user entered login box
- * 
+ *
  *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
@@ -39,7 +39,7 @@ $_SESSION['bSecureServer'] = ($_SERVER['HTTPS'] == 'on');
 
 // Check if https is required, if so, check if we're using https.
 // Redirect back this page using https if https is required.
-// This prevents someone from accessing via http by typing in the URL 
+// This prevents someone from accessing via http by typing in the URL
 if ($bHTTPSOnly)
 {
     if(!$_SESSION['bSecureServer'])
@@ -59,7 +59,7 @@ if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
 		$_SESSION['bSearchFamily'] = 0;
 
    if ($_SESSION['iUserID']) {
-	   $sSQL = "UPDATE user_usr SET usr_showPledges = " . $_SESSION['sshowPledges'] . 
+	   $sSQL = "UPDATE user_usr SET usr_showPledges = " . $_SESSION['sshowPledges'] .
 	                 ", usr_showPayments = " . $_SESSION['sshowPayments'] .
 				     ", usr_showSince = '" . $_SESSION['sshowSince'] . "'" .
 				     ", usr_defaultFY = '" . $_SESSION['idefaultFY'] . "'" .
@@ -96,7 +96,7 @@ if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
 
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User']) && $sErrorText == '') {
-	
+
 	// Get the information for the selected user
 	$UserName = FilterInput($_POST['User'],'string',32);
 	$uSQL = "SELECT usr_per_id FROM user_usr WHERE usr_UserName like '$UserName'";
@@ -108,7 +108,7 @@ if (isset($_POST['User']) && $sErrorText == '') {
 	}else{
 		//Set user Id based on login name provided
 		$iUserID = $usQueryResultSet['usr_per_id'];
-	}		
+	}
 }else{
 	//User ID was not submitted with form
 	$iUserID = 0;
@@ -141,7 +141,7 @@ if ($iUserID > 0)
         if ($bPasswordMatch) {
             // If the password matches update from 32 character hash
             // to 40 character hash
-            $tmp = strtolower($_POST['Password'].$iUserID);        
+            $tmp = strtolower($_POST['Password'].$iUserID);
             $sPasswordHash = sha1(sha1($tmp).$tmp);
             $sSQL = "UPDATE user_usr SET usr_Password='".$sPasswordHash."' ".
                     "WHERE usr_per_ID ='".$iUserID."'";
@@ -193,7 +193,6 @@ if ($iUserID > 0)
 		// Set the User's email address
 		$_SESSION["UserName"] = $usr_UserName;
 /*------------------------------------MRBS Bridging add ends ---------------------------------------*/
-
 		// If user has administrator privilege, override other settings and enable all permissions.
 		if ($usr_Admin) {
 			$_SESSION['bAddRecords'] = true;
@@ -236,7 +235,7 @@ if ($iUserID > 0)
 
 			// Set the EditSelf permission
 			$_SESSION['bEditSelf'] = $usr_EditSelf;
-			
+
 			// Set the Canvasser permission
 			$_SESSION['bCanvasser'] = $usr_Canvasser;
 
@@ -252,7 +251,7 @@ if ($iUserID > 0)
 
 		// Set the Last Login
         $_SESSION['dLastLogin'] = $usr_LastLogin;
-        
+
 
 		// Set the Workspace Width
 		$_SESSION['iWorkspaceWidth'] = $usr_WorkspaceWidth;
@@ -326,14 +325,14 @@ ob_start();
 		<p class="PageTitle"><?php echo gettext('Please Login'); ?></p>
 		<form method="post" name="LoginForm" action="Default.php">
 		<table border="0" align="center" cellpadding="5">
-		<?php if (isset($_GET['timeout'])) { ?> 
+		<?php if (isset($_GET['timeout'])) { ?>
 		<tr>
 			<td align="center" colspan="2">
 			<span style="color:red; font-size:120%;">Your previous session timed out.  Please login again.</span>
 			</td>
 		</tr> <?php } ?>
 
-		<?php if (isset($sErrorText) <> '') { ?> 
+		<?php if (isset($sErrorText) <> '') { ?>
 		<tr>
 			<td align="center" colspan="2">
 			<span style="color:red;" id="PasswordError"><?php echo $sErrorText; ?></span>
@@ -343,7 +342,7 @@ ob_start();
 			<td class="LabelColumn"><?php echo gettext('Enter your user name:'); ?></td>
 			<td class="TextColumnWithBottomBorder">
 				<input type="text" id="UserBox" name="User" size="10">
-				
+
 			</td>
 		</tr>
 		<tr>
