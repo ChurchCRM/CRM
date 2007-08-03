@@ -163,7 +163,7 @@ if (isset($_POST["UploadCSV"]))
 
             echo "<tr>";
             for ($col = 0; $col < $numCol; $col++) {
-                echo "<td>" . $aData[$col] . "&nbsp;</td>";
+                echo "<td>" . $aData[$col] . "&nbsp;</td>"; 
             }
             echo "</tr>";
         }
@@ -173,9 +173,44 @@ if (isset($_POST["UploadCSV"]))
         $sSQL = "SELECT * FROM person_custom_master ORDER BY custom_Order";
         $rsCustomFields = RunQuery($sSQL);
 
+		  $sPerCustomFieldList = "";
+        while ($aRow = mysql_fetch_array($rsCustomFields))
+        {
+            extract($aRow);
+            // No easy way to import person-from-group or custom-list types
+            if ($type_ID != 9 && $type_ID != 12)
+				{
+               $sPerCustomFieldList .= "<option value=\"" . $custom_Field . "\">" . $custom_Name . "</option>\n";
+				}
+        }
+		
+        $sSQL = "SELECT * FROM family_custom_master ORDER BY fam_custom_Order";
+        $rsfamCustomFields = RunQuery($sSQL);
+
+		  $sFamCustomFieldList = "";
+		  while ($aRow = mysql_fetch_array($rsfamCustomFields))
+        {
+            extract($aRow);
+				if ($type_ID != 9 && $type_ID != 12)
+				{
+               $sFamCustomFieldList .= "<option value=\"f" . $fam_custom_Field . "\">" . $fam_custom_Name . "</option>\n";
+				}
+        }
+
+		  // Get Field Security List Matrix
+		  $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+		  $rsSecurityGrp = RunQuery($sSQL);
+
+		  while ($aRow = mysql_fetch_array($rsSecurityGrp))
+		  {
+			  extract ($aRow);
+		     $aSecurityType[$lst_OptionID] = $lst_OptionName;
+		  }
+
+
         // add select boxes for import destination mapping
         for ($col = 0; $col < $numCol; $col++)
-        {
+        {				
         ?>
             <td>
             <select name="<?php echo "col" . $col;?>">
@@ -201,17 +236,8 @@ if (isset($_POST["UploadCSV"]))
                 <option value="19"><?php echo gettext("Birth Date"); ?></option>
                 <option value="20"><?php echo gettext("Membership Date"); ?></option>
                 <option value="21"><?php echo gettext("Wedding Date"); ?></option>
+					 <?php echo $sPerCustomFieldList.$sFamCustomFieldList; ?>
 
-                <?php
-				mysql_data_seek ($rsCustomFields, 0); // rewind the custom field list
-                while ($aRow = mysql_fetch_array($rsCustomFields))
-                {
-                    extract($aRow);
-                    // No easy way to import person-from-group or custom-list types
-                    if ($type_ID != 9 && $type_ID != 12)
-                        echo "<option value=\"" . $custom_Field . "\">" . $custom_Name . "</option>";
-                }
-                ?>
             </select>
             </td>
         <?php
@@ -298,14 +324,22 @@ if (isset($_POST["DoImport"]))
         // Put the column types from the mapping form into an array
         for ($col = 0; $col < $numCol; $col++)
         {
-            if (substr($_POST["col" . $col],0,1) == "c")
+            if (substr($_POST["col" . $col],0,1) == "c") 
             {
                 $aColumnCustom[$col] = 1;
                 $bHasCustom = true;
             }
-            else
-            {
-                $aColumnCustom[$col] = 0;
+            else 
+				{
+					if (substr($_POST["col" . $col],0,2) == "fc")
+					{
+						$aFamColumnCustom[$col] = 1;
+						$bHasFamCustom = true;
+					}
+					else
+					{
+						$aColumnCustom[$col] = 0;
+					}
             }
             $aColumnID[$col] = $_POST["col" . $col];
         }
@@ -320,7 +354,16 @@ if (isset($_POST["DoImport"]))
                 extract($aRow);
                 $aCustomTypes[$custom_Field] = $type_ID;
             }
-        }
+
+            $sSQL = "SELECT * FROM family_custom_master";
+            $rsfamCustomFields = RunQuery($sSQL);
+
+            while ($aRow = mysql_fetch_array($rsfamCustomFields))
+            {
+                extract($aRow);
+                $afamCustomTypes[$fam_custom_Field] = $type_ID;
+            }
+			}
 
         //
         // Need to lock the person_custom and person_per tables!!
@@ -353,7 +396,7 @@ if (isset($_POST["DoImport"]))
             for ($col = 0; $col < $numCol; $col++)
             {
                 // Is it not a custom field?
-                if (!$aColumnCustom[$col])
+                if ((!$aColumnCustom[$col]) and (!$aFamColumnCustom[$col])) 
                 {
                     $currentType = $aColumnID[$col];
 
@@ -491,7 +534,7 @@ if (isset($_POST["DoImport"]))
             for ($col = 0; $col < $numCol; $col++)
             {
                 // Is it not a custom field?
-                if (!$aColumnCustom[$col])
+					 if ((!$aColumnCustom[$col]) and (!$aFamColumnCustom[$col])) 
                 {
                     $currentType = $aColumnID[$col];
                     switch($currentType)
@@ -580,6 +623,10 @@ if (isset($_POST["DoImport"]))
                    $rsFid = RunQuery($sSQL); 
                    $aFid = mysql_fetch_array($rsFid);
                    $famid =  $aFid[0];
+						 
+						 $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
+						 RunQuery($sSQL);
+						 
                    $fFamily = new Family(FilterInput($_POST["FamilyMode"],'int'));
                    $fFamily->AddMember($per_ID,
                                        $iGender,
@@ -591,25 +638,27 @@ if (isset($_POST["DoImport"]))
                }   
                $sSQL = "UPDATE person_per SET per_fam_ID = " . $famid . " WHERE per_ID = " . $per_ID;
                RunQuery($sSQL);
-            }
 
+					if ($bHasFamCustom)
+					{
+						// Check if family_custom record exists
+						$sSQL = "SELECT fam_id FROM family_custom WHERE fam_id = $famid";
+						$rsFamCustomID = RunQuery($sSQL);
+						if (mysql_num_rows($rsFamCustomID) == 0)
+						{
+							$sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
+							RunQuery($sSQL);
+						}
 
-            if ($bHasCustom)
-            {
-                // Get the last inserted person ID and insert a dummy row in the person_custom table
-                $sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
-                $rsPersonID = RunQuery($sSQL);
-                extract(mysql_fetch_array($rsPersonID));
-                $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('" . $iPersonID . "')";
-                RunQuery($sSQL);
-
-                // Build the person_custom SQL
-                for ($col = 0; $col < $numCol; $col++)
-                {
-                    // Is it a custom field?
-                    if ($aColumnCustom[$col])
-                    {
-                        $currentType = $aCustomTypes[$aColumnID[$col]];
+						// Build the family_custom SQL
+		            $sSQLFamCustom = "UPDATE Family_custom SET ";
+						for ($col = 0; $col < $numCol; $col++)
+						{
+							// Is it a custom field?
+							if ($aFamColumnCustom[$col])
+							{
+								$colID = substr($aColumnID[$col],1);
+                        $currentType = $afamCustomTypes[$colID];
                         $currentFieldData = trim($aData[$col]);
 
                         // If date, first parse it to the standard format..
@@ -628,15 +677,60 @@ if (isset($_POST["DoImport"]))
                             $currentFieldData = addslashes($currentFieldData);
 
                         // aColumnID is the custom table column name
-                        sqlCustomField($sSQLcustom, $currentType, $currentFieldData, $aColumnID[$col], $sCountry);
+                        sqlCustomField($sSQLFamCustom, $currentType, $currentFieldData, $colID, $sCountry);
                     }
-                }
+						}
 
-                // Finalize and run the update for the person_custom table.
-                $sSQLcustom = substr($sSQLcustom,0,-2);
-                $sSQLcustom .= " WHERE per_ID = " . $iPersonID;
-                RunQuery($sSQLcustom);
+						// Finalize and run the update for the person_custom table.
+						$sSQLFamCustom = substr($sSQLFamCustom,0,-2);
+						$sSQLFamCustom .= " WHERE fam_ID = " . $famid;
+						RunQuery($sSQLFamCustom);
+					}
             }
+
+            if ($bHasCustom)
+            {
+               // Get the last inserted person ID and insert a dummy row in the person_custom table
+               $sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
+               $rsPersonID = RunQuery($sSQL);
+               extract(mysql_fetch_array($rsPersonID));
+               $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('" . $iPersonID . "')";
+               RunQuery($sSQL);
+
+               // Build the person_custom SQL
+               for ($col = 0; $col < $numCol; $col++)
+               {
+						// Is it a custom field?
+						if ($aColumnCustom[$col])
+                  {
+                     $currentType = $aCustomTypes[$aColumnID[$col]];
+                     $currentFieldData = trim($aData[$col]);
+
+                     // If date, first parse it to the standard format..
+                     if ($currentType == 2)
+                     {
+                        $aDate = ParseDate($currentFieldData,$iDateMode);
+                        $currentFieldData = implode("-",$aDate);
+                     }
+                     // If boolean, convert to the expected values for custom field
+                     elseif ($currentType == 1)
+                     {
+                        if (strlen($currentFieldData))
+                           $currentFieldData = ConvertToBoolean($currentFieldData) + 1;
+                     }
+                     else
+								$currentFieldData = addslashes($currentFieldData);
+
+                     // aColumnID is the custom table column name
+                     sqlCustomField($sSQLcustom, $currentType, $currentFieldData, $aColumnID[$col], $sCountry);
+						}
+					}
+
+					// Finalize and run the update for the person_custom table.
+					$sSQLcustom = substr($sSQLcustom,0,-2);
+					$sSQLcustom .= " WHERE per_ID = " . $iPersonID;
+					RunQuery($sSQLcustom);
+				}
 
             $importCount++;
         }
@@ -650,7 +744,7 @@ if (isset($_POST["DoImport"]))
         $aDirRoleHead = explode(",",$sDirRoleHead);
         $aDirRoleSpouse = explode(",",$sDirRoleSpouse);
         $aDirRoleChild = explode(",",$sDirRoleChild);
-        
+
         // update roles now that we have complete family data.
         foreach($Families as $fid=>$family)
         {
@@ -698,8 +792,10 @@ if($_POST["Clear"] != "")
         RunQuery($sSQL);
         $sSQL = "TRUNCATE `person_per`;";
         RunQuery($sSQL);
-		$sSQL = "TRUNCATE `person_custom`;";
-		RunQuery($sSQL);
+    		$sSQL = "TRUNCATE `person_custom`;";
+		    RunQuery($sSQL);
+    		$sSQL = "TRUNCATE `family_custom`;";
+		    RunQuery($sSQL);
         $sSQL = "INSERT INTO person_per VALUES (1,NULL,'ChurchInfo',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0000,NULL,0,0,0,0,NULL,NULL,'2004-08-25 18:00:00',0,0,NULL,0);";
         RunQuery($sSQL);
         $sClear = gettext("Data Cleared Successfully!");
