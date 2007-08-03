@@ -64,6 +64,7 @@ if (isset($_POST["SaveChanges"]))
 		}
 
 		$aSideFields[$iFieldID] = $_POST[$iFieldID . "side"];
+		$aFieldSecurity[$iFieldID] = $_POST[$iFieldID . "FieldSec"];
 
 		if (isset($_POST[$iFieldID . "special"]))
 		{
@@ -94,9 +95,9 @@ if (isset($_POST["SaveChanges"]))
 			$sSQL = "UPDATE person_custom_master
 					SET `custom_Name` = '" . $aNameFields[$iFieldID] . "',
 						`custom_Special` = " . $aSpecialFields[$iFieldID] . ",
-						`custom_Side` = '" . $temp . "'
+						`custom_Side` = '" . $temp . "',
+						`custom_FieldSec` = " . $aFieldSecurity[$iFieldID] . "
 					WHERE `custom_Field` = '" . $aFieldFields[$iFieldID] . "';";
-
 			RunQuery($sSQL);
 		}
 	}
@@ -110,6 +111,7 @@ else
 		$newFieldType = FilterInput($_POST["newFieldType"],'int');
 		$newFieldName = FilterInput($_POST["newFieldName"]);
 		$newFieldSide = $_POST["newFieldSide"];
+		$newFieldSec  = $_POST["newFieldSec"];
 
 		if (strlen($newFieldName) == 0)
 		{
@@ -171,8 +173,8 @@ else
 				// Insert into the master table
 				$newOrderID = $last + 1;
 				$sSQL = "INSERT INTO `person_custom_master`
-						(`custom_Order` , `custom_Field` , `custom_Name` ,  `custom_Special` , `custom_Side` , `type_ID`)
-						VALUES ('" . $newOrderID . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', " . $newSpecial . ", '" . $newFieldSide . "', '" . $newFieldType . "');";
+						(`custom_Order` , `custom_Field` , `custom_Name` ,  `custom_Special` , `custom_Side` , `custom_FieldSec`, `type_ID`)
+						VALUES ('" . $newOrderID . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', " . $newSpecial . ", '" . $newFieldSide . "', '" . $newFieldSec . "', '" . $newFieldType . "');";
 				RunQuery($sSQL);
 
 				// Insert into the custom fields table
@@ -242,12 +244,42 @@ else
 		$aFieldFields[$row] = $custom_Field;
 		$aTypeFields[$row] = $type_ID;
 		$aSideFields[$row] = ($custom_Side == 'right');
+		$aFieldSecurity[$row] = $custom_FieldSec;
 	}
+}
+// Prepare Security Group list
+	$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+	$rsSecurityGrp = RunQuery($sSQL);
+
+	$aSecurityGrp = Array();
+	while ($aRow = mysql_fetch_array($rsSecurityGrp))
+	{
+		$aSecurityGrp[] = $aRow;
+		extract ($aRow);
+		$aSecurityType[$lst_OptionID] = $lst_OptionName;
+	}
+function GetSecurityList($aSecGrp, $fld_name, $currOpt='bAll') {
+
+	$sOptList = "<select name=\"" . $fld_name . "\">";
+	$grp_Count = count($aSecGrp);
+	
+	for ($i = 0; $i<$grp_Count; $i++) {
+		$aAryRow = $aSecGrp[$i];
+		//extract($aAryRow);
+		$sOptList .= "<option value=\"" . $aAryRow['lst_OptionID'] . "\"";
+//		echo "lst_OptionName:".$aAryRow['lst_OptionName']."<br>";
+		if ($aAryRow['lst_OptionName'] == $currOpt) 
+		{ 
+			$sOptList .= " selected"; 
+		}
+		$sOptList .= ">" . $aAryRow['lst_OptionName']."</option>\n";
+	}
+	$sOptList .= "</select>";
+	return $sOptList;
 }
 
 // Construct the form
 ?>
-
 <script language="javascript">
 
 function confirmDeleteField( Field, Row ) {
@@ -274,7 +306,7 @@ if ($numRows == 0)
 else
 {
 ?>
-	<tr><td colspan="6">
+	<tr><td colspan="7">
 	<center><b><?php echo gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"); ?></b></center>
 	</td></tr>
 
@@ -285,7 +317,7 @@ else
 	</td></tr>
 
 		<tr>
-			<td colspan="6" align="center">
+			<td colspan="7" align="center">
 			<input type="submit" class="icButton" value="<?php echo gettext("Save Changes"); ?>" Name="SaveChanges">
 			&nbsp;
 			<input type="button" class="icButton" value="<?php echo gettext("Exit"); ?>" Name="Exit" onclick="javascript:document.location='Menu.php';">
@@ -298,6 +330,7 @@ else
 			<th><?php echo gettext("Type"); ?></th>
 			<th><?php echo gettext("Name"); ?></th>
 			<th><?php echo gettext("Special option"); ?></th>
+			<th><?php echo gettext("Security Option"); ?></th>
 			<th><?php echo gettext("Person-View Side"); ?></th>
 		</tr>
 
@@ -347,7 +380,7 @@ else
 
 					echo "<option value=\"" . $grp_ID . "\"";
 					if ($aSpecialFields[$row] == $grp_ID) { echo " selected"; }
-					echo ">" . $grp_Name;
+					echo ">" . $grp_Name . "</option>";
 				}
 
 				echo "</select>";
@@ -361,6 +394,9 @@ else
 
 			</td>
 			<td class="TextColumn" align="center" nowrap>
+				<?php echo GetSecurityList($aSecurityGrp, $row . "FieldSec", $aSecurityType[$aFieldSecurity[$row]]); ?>
+			</td>
+			<td class="TextColumn" align="center" nowrap>
 				<input type="radio" Name="<?php echo $row . "side" ?>" value="0" <?php if (!$aSideFields[$row]) echo " checked" ?>><?php echo gettext("Left"); ?>
 				<input type="radio" Name="<?php echo $row . "side" ?>" value="1" <?php if ($aSideFields[$row]) echo " checked" ?>><?php echo gettext("Right"); ?>
 			</td>
@@ -368,7 +404,7 @@ else
 	<?php } ?>
 
 		<tr>
-			<td colspan="6">
+			<td colspan="7">
 			<table width="100%">
 				<tr>
 					<td width="30%"></td>
@@ -384,9 +420,9 @@ else
 			<td>
 		</tr>
 <?php } ?>
-		<tr><td colspan="6"><hr></td></tr>
+		<tr><td colspan="7"><hr></td></tr>
 		<tr>
-			<td colspan="6">
+			<td colspan="7">
 			<table width="100%">
 				<tr>
 					<td width="15%"></td>
@@ -398,7 +434,7 @@ else
 						for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++)
 						{
 							echo "<option value=\"" . $iOptionID . "\"";
-							echo ">" . $aPropTypes[$iOptionID];
+							echo ">" . $aPropTypes[$iOptionID] ."</option>";
 						}
 						echo "</select>";
 					?><BR>
@@ -418,6 +454,10 @@ else
 						<input type="radio" name="newFieldSide" value="0" checked><?php echo gettext("Left"); ?>
 						<input type="radio" name="newFieldSide" value="1"><?php echo gettext("Right"); ?>
 						&nbsp;
+					</td>
+					<td valign="top" nowrap>
+						<div><?php echo gettext("Security Option"); ?></div>
+						<?php echo GetSecurityList($aSecurityGrp, "newFieldSec"); ?>
 					</td>
 					<td>
 						<input type="submit" class="icButton" <?php echo 'value="' . gettext("Add New Field") . '"'; ?> Name="AddField">

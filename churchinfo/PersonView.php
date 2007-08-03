@@ -148,7 +148,18 @@ $rsAssignedProperties = RunQuery($sSQL);
 $sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
 $rsProperties = RunQuery($sSQL);
 
-$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay);
+// Get Field Security List Matrix
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+$rsSecurityGrp = RunQuery($sSQL);
+
+while ($aRow = mysql_fetch_array($rsSecurityGrp))
+{
+	extract ($aRow);
+	$aSecurityType[$lst_OptionID] = $lst_OptionName;
+}
+
+
+$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay,"-",$per_Flags);
 
 $sFamilyInfoBegin = "<span style=\"color: red;\">";
 $sFamilyInfoEnd = "</span>";
@@ -420,10 +431,13 @@ if ($next_link_text) {
 				// Display the left-side custom fields
 				while ($Row = mysql_fetch_array($rsLeftCustomFields)) {
 					extract($Row);
-					$currentData = trim($aCustomData[$custom_Field]);
-					if ($type_ID == 11) $custom_Special = $sPhoneCountry;
-					echo "<tr><td class=\"TinyLabelColumn\">" . $custom_Name . "</td>";
-					echo "<td class=\"TinyTextColumn\">" . displayCustomField($type_ID, $currentData, $custom_Special) . "</td></tr>";
+					if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+					{
+						$currentData = trim($aCustomData[$custom_Field]);
+						if ($type_ID == 11) $custom_Special = $sPhoneCountry;
+						echo "<tr><td class=\"TinyLabelColumn\">" . $custom_Name . "</td>";
+						echo "<td class=\"TinyTextColumn\">" . displayCustomField($type_ID, $currentData, $custom_Special) . "</td></tr>";
+					}
 				}
 			?>
 			</table>

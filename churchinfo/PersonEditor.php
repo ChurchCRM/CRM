@@ -53,6 +53,16 @@ elseif (!$_SESSION['bAddRecords'])
 	Redirect("Menu.php");
 	exit;
 }
+// Get Field Security List Matrix
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+$rsSecurityGrp = RunQuery($sSQL);
+
+while ($aRow = mysql_fetch_array($rsSecurityGrp))
+{
+	extract ($aRow);
+	$aSecurityType[$lst_OptionID] = $lst_OptionName;
+}
+
 
 // Get the list of custom person fields
 $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order";
@@ -103,6 +113,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	$dMembershipDate = FilterInput($_POST["MembershipDate"]);
 	$iClassification = FilterInput($_POST["Classification"],'int');
 	$sEnvelope = FilterInput($_POST['EnvID'],'int');
+	$iUpdateBirthYear = FilterInput($_POST['UpdateBirthYear'],'int');
 
 	$bNoFormat_HomePhone = isset($_POST["NoFormat_HomePhone"]);
 	$bNoFormat_WorkPhone = isset($_POST["NoFormat_WorkPhone"]);
@@ -129,17 +140,20 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	}
 
 	// If they entered a full date, see if it's valid
-	if (strlen($iBirthYear) > 0)
+	if ($updateBirthYear == 1) 
 	{
-		if ($iBirthYear == 0) { // If zero set to NULL
-			$iBirthYear = NULL;
-		} elseif ($iBirthYear > 2155 || $iBirthYear < 1901) {
-			$sBirthYearError = gettext("Invalid Year: allowable values are 1901 to 2155");
-			$bErrorFlag = true;
-		} elseif ($iBirthMonth > 0 && $iBirthDay > 0) {
-			if (!checkdate($iBirthMonth,$iBirthDay,$iBirthYear)) {
-				$sBirthDateError = gettext("Invalid Birth Date.");
+		if (strlen($iBirthYear) > 0)
+		{
+			if ($iBirthYear == 0) { // If zero set to NULL
+				$iBirthYear = NULL;
+			} elseif ($iBirthYear > 2155 || $iBirthYear < 1901) {
+				$sBirthYearError = gettext("Invalid Year: allowable values are 1901 to 2155");
 				$bErrorFlag = true;
+			} elseif ($iBirthMonth > 0 && $iBirthDay > 0) {
+				if (!checkdate($iBirthMonth,$iBirthDay,$iBirthYear)) {
+					$sBirthDateError = gettext("Invalid Birth Date.");
+					$bErrorFlag = true;
+				}
 			}
 		}
 	}
@@ -175,12 +189,15 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	{
 		extract($rowCustomField);
 
-		$currentFieldData = FilterInput($_POST[$custom_Field]);
+		if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+		{
+			$currentFieldData = FilterInput($_POST[$custom_Field]);
 
-		$bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $custom_Field, $aCustomErrors);
+			$bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $custom_Field, $aCustomErrors);
 
-		// assign processed value locally to $aPersonProps so we can use it to generate the form later
-		$aCustomData[$custom_Field] = $currentFieldData;
+			// assign processed value locally to $aPersonProps so we can use it to generate the form later
+			$aCustomData[$custom_Field] = $currentFieldData;
+		}
 	}
 
 	//If no errors, then let's update...
@@ -193,7 +210,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		if (!$bNoFormat_CellPhone) $sCellPhone = CollapsePhoneNumber($sCellPhone,$sPhoneCountry);
 
 		//If no birth year, set to NULL
-		if (strlen($iBirthYear) < 4)
+		if ((strlen($iBirthYear) < 4) &&  $updateBirthYear)
 		{
 			$iBirthYear = "NULL";
 		}
@@ -245,7 +262,8 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		// Existing person (update)
 		} else {
 
-			$sSQL = "UPDATE person_per SET per_Title = '" . $sTitle . "',per_FirstName = '" . $sFirstName . "',per_MiddleName = '" . $sMiddleName . "', per_LastName = '" . $sLastName . "', per_Suffix = '" . $sSuffix . "', per_Gender = " . $iGender . ", per_Address1 = '" . $sAddress1 . "', per_Address2 = '" . $sAddress2 . "', per_City = '" . $sCity . "', per_State = '" . $sState . "', per_Zip = '" . $sZip . "', per_Country = '" . $sCountry . "', per_HomePhone = '" . $sHomePhone . "', per_WorkPhone = '" . $sWorkPhone . "', per_CellPhone = '" . $sCellPhone . "', per_Email = '" . $sEmail . "', per_WorkEmail = '" . $sWorkEmail . "', per_BirthMonth = " . $iBirthMonth . ", per_BirthDay = " . $iBirthDay . ", per_BirthYear = " . $iBirthYear . ", per_fam_ID = " . $iFamily . ", per_Fmr_ID = " . $iFamilyRole . ", per_cls_ID = " . $iClassification . ", per_MembershipDate = ";
+			$sBirthYear = ($iUpdateBirthYear & 1) ? "per_BirthYear=" . $iBirthYear. ", " : "";
+			$sSQL = "UPDATE person_per SET per_Title = '" . $sTitle . "',per_FirstName = '" . $sFirstName . "',per_MiddleName = '" . $sMiddleName . "', per_LastName = '" . $sLastName . "', per_Suffix = '" . $sSuffix . "', per_Gender = " . $iGender . ", per_Address1 = '" . $sAddress1 . "', per_Address2 = '" . $sAddress2 . "', per_City = '" . $sCity . "', per_State = '" . $sState . "', per_Zip = '" . $sZip . "', per_Country = '" . $sCountry . "', per_HomePhone = '" . $sHomePhone . "', per_WorkPhone = '" . $sWorkPhone . "', per_CellPhone = '" . $sCellPhone . "', per_Email = '" . $sEmail . "', per_WorkEmail = '" . $sWorkEmail . "', per_BirthMonth = " . $iBirthMonth . ", per_BirthDay = " . $iBirthDay . ", " . $sBirthYear. "per_fam_ID = " . $iFamily . ", per_Fmr_ID = " . $iFamilyRole . ", per_cls_ID = " . $iClassification . ", per_MembershipDate = ";
 			if ( strlen($dMembershipDate) > 0 )
 				$sSQL .= "\"" . $dMembershipDate . "\"";
 			else
@@ -289,19 +307,25 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		{
 			$sSQL = "REPLACE INTO person_custom SET ";
 			mysql_data_seek($rsCustomFields,0);
-
+			
+			$sSQL = "";
 			while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
 			{
 				extract($rowCustomField);
-				$currentFieldData = trim($aCustomData[$custom_Field]);
-
-				sqlCustomField($sSQL, $type_ID, $currentFieldData, $custom_Field, $sPhoneCountry);
+				if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+				{
+					$currentFieldData = trim($aCustomData[$custom_Field]);
+					sqlCustomField($sSQL, $type_ID, $currentFieldData, $custom_Field, $sPhoneCountry);
+				}
 			}
 
 			// chop off the last 2 characters (comma and space) added in the last while loop iteration.
-			$sSQL = substr($sSQL,0,-2);
+			if ($sSQL > "") {
+				$sSQL = "REPLACE INTO person_custom SET " . $sSQL . " per_ID = " . $iPersonID;
+			}
+//			$sSQL = substr($sSQL,0,-2);
 
-			$sSQL .= ", per_ID = " . $iPersonID;
+//			$sSQL .= ", per_ID = " . $iPersonID;
 
 			//Execute the SQL
 			RunQuery($sSQL);
@@ -368,6 +392,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		$dMembershipDate = $per_MembershipDate;
 		$dFriendDate = $per_FriendDate;
 		$iClassification = $per_cls_ID;
+		$iViewAgeFlag = $per_Flags;
 
 		$sPhoneCountry = SelectWhichInfo($sCountry,$fam_Country,false);
 
@@ -677,12 +702,19 @@ require "Include/Header.php";
 <?php /* */?>
 				</td>
 			</tr>
-
+			<?php	if (($_SESSION['bSeePrivacyData']) || (strlen($iPersonID) < 1))
+			{
+				$updateBirthYear = 1;
+			?>
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("It must be in four-digit format (XXXX).<br>If the birth date is not known, you can still include the date (for age reference), although birthday will not be calculated."); ?>><?php echo gettext("Birth Year:"); ?></td>
 				<td class="TextColumn"><input type="text" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"><font color="red"><br><?php echo $sBirthYearError ?></font><br><font size="1"><?php echo gettext("Must be four-digit format."); ?></font></td>
 				<td class="TextColumn"><input type="checkbox" name="HideAge" value="1" <?php if ($bHideAge) echo " checked";?>><?php echo gettext("Hide Age"); ?></td>
 			</tr>
+			<?php
+			} else {
+				$updateBirthYear = 0;
+			} ?>
 <?php /* ?>
 				 <input type="text" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"><font color="red"><br><?php echo $sBirthYearError ?></font><br><font size="2"><?php echo gettext("Leave year blank to hide age."); ?></font>
 
@@ -739,16 +771,19 @@ require "Include/Header.php";
 				while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
 				{
 					extract($rowCustomField);
+					
+					if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+					{
+						echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td><td class=\"TextColumn\">";
 
-					echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td><td class=\"TextColumn\">";
+						$currentFieldData = trim($aCustomData[$custom_Field]);
 
-					$currentFieldData = trim($aCustomData[$custom_Field]);
+						if ($type_ID == 11) $custom_Special = $sPhoneCountry;
 
-					if ($type_ID == 11) $custom_Special = $sPhoneCountry;
-
-					formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST["PersonSubmit"]));
-					echo "<span style=\"color: red; \">" . $aCustomErrors[$custom_Field] . "</span>";
-					echo "</td></tr>";
+						formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST["PersonSubmit"]));
+						echo "<span style=\"color: red; \">" . $aCustomErrors[$custom_Field] . "</span>";
+						echo "</td></tr>";
+					}
 				}
 				?>
 			</table>
@@ -761,6 +796,7 @@ require "Include/Header.php";
 
 	<tr>
 		<td <?php if ($numCustomFields > 0) echo "colspan=\"2\""; ?> align="center">
+			<?php echo "<input type=\"hidden\" Name=\"UpdateBirthYear\" value=\"".$updateBirthYear."\">"; ?>
 			<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> name="PersonSubmit">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PersonSubmitAndAdd\">"; } ?>
 			<input type="button" class="icButton" <?php echo 'value="' . gettext("Cancel") . '"'; ?> name="PersonCancel" onclick="javascript:document.location='<?php if (strlen($iPersonID) > 0) { echo "PersonView.php?PersonID=" . $iPersonID; } else {echo "SelectList.php?mode=person"; } ?>';">
