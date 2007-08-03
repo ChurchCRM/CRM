@@ -23,9 +23,14 @@ if (!$_SESSION['bAdmin'])
 	exit;
 }
 
+$scfgCategory = FilterInput($_GET["Cat"],'string');
+
+$sCategory_Filter = ($scfgCategory == "") ? "" : " AND cfg_category = '$scfgCategory' ";
+
 // Figure out where $sHeader is stored.  Special handling is needed to preserve
 // HTML tags.
 $sSQL = "SELECT * FROM config_cfg WHERE cfg_section='General' ORDER BY cfg_id";
+
 $rsConfigs = RunQuery($sSQL);
 $iRowCount=0;
 while ($aRow = mysql_fetch_array($rsConfigs)) {
@@ -71,7 +76,7 @@ $sPageTitle = gettext("General Configuration Settings");
 require "Include/Header.php";
 
 // Get settings
-$sSQL = "SELECT * FROM config_cfg WHERE cfg_section='general' ORDER BY cfg_id";
+$sSQL = "SELECT * FROM config_cfg WHERE cfg_section='general' $sCategory_Filter ORDER BY cfg_id";
 $rsConfigs = RunQuery($sSQL);
 
 // Table Headings
