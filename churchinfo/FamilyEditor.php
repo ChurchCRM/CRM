@@ -17,7 +17,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/CanvassUtilities.php";
-require "Include/GeoCoder.php";
+//require "Include/GeoCoder.php";
 
 //Set the page title
 $sPageTitle = gettext("Family Editor");
@@ -57,6 +57,22 @@ $rsFunds = RunQuery($sSQL);
 $rsCanvassers = CanvassGetCanvassers (gettext ("Canvassers"));
 $rsBraveCanvassers = CanvassGetCanvassers (gettext ("BraveCanvassers"));
 
+// Get the list of custom person fields
+$sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
+$rsCustomFields = RunQuery($sSQL);
+$numCustomFields = mysql_num_rows($rsCustomFields);
+
+// Get Field Security List Matrix
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+$rsSecurityGrp = RunQuery($sSQL);
+
+while ($aRow = mysql_fetch_array($rsSecurityGrp))
+{
+	extract ($aRow);
+	$aSecurityType[$lst_OptionID] = $lst_OptionName;
+}
+
+
 //Is this the second pass?
 if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 {
@@ -85,7 +101,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$nLatitude = FilterInput($_POST["Latitude"]);
 	$nLongitude = FilterInput($_POST["Longitude"]);
 
-	if ($bHaveXML && ($sCountry == "United States")) {
+	if ($bHaveXML && ($sCountry == "United States" || $sCountry == "Canada")) {
 	// Try to get Lat/Lon based on the address
 		$myAddressLatLon = new AddressLatLon;
 		$myAddressLatLon->SetAddress ($sAddress1, $sCity, $sState, $sZip);
@@ -97,7 +113,6 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			$nLatitude="NULL";
 			$nLongitude="NULL";
 		}
-
 	}
 
 	if(is_numeric($nLatitude))
@@ -152,6 +167,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		$aBirthYears[$iCount] = FilterInput($_POST["BirthYear" . $iCount],'int');
 		$aClassification[$iCount] = FilterInput($_POST["Classification" . $iCount],'int');
 		$aPersonIDs[$iCount] = FilterInput($_POST["PersonID" . $iCount],'int');
+		$aUpdateBirthYear[$iCount] = FilterInput($_POST["UpdateBirthYear"], 'int');
 
 		// Make sure first names were entered if editing existing family
 		if (strlen($iFamilyID) > 0)
@@ -203,6 +219,20 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	} else {
 		$dWeddingDate = "NULL";
 	}
+
+	// Validate all the custom fields
+	while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
+	{
+		extract($rowCustomField);
+
+		$currentFieldData = FilterInput($_POST[$fam_custom_Field]);
+
+		$bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $fam_custom_Field, $aCustomErrors);
+
+		// assign processed value locally to $aPersonProps so we can use it to generate the form later
+		$aCustomData[$fam_custom_Field] = $currentFieldData;
+	}
+
 
 	//If no errors, then let's update...
 	if (!$bErrorFlag)
@@ -304,6 +334,9 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			$sSQL = "SELECT MAX(fam_ID) AS iFamilyID FROM family_fam";
 			$rsLastEntry = RunQuery($sSQL);
 			extract(mysql_fetch_array($rsLastEntry));
+
+			$sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $iFamilyID . "')";
+			RunQuery($sSQL);
 			
 			// Add property if assigned
 			if ($iPropertyID)
@@ -385,13 +418,41 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					{
 						$sLastNameToEnter = $sName;
 					}
+					$sUpdateBirthYear = ($aUpdateBirthYear[$iCount] & 1) ? "per_BirthYear=" . $aBirthYears[$iCount]. ", " : "";
 					//RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
-					$sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "',per_BirthYear=" . $aBirthYears[$iCount] . ",per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
+					$sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "', " . $sBirthYearScript . "per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
 					RunQuery($sSQL);
 					//RunQuery("UNLOCK TABLES");
 				}
 			}
 		}
+		
+		// Update the custom person fields.
+		if ($numCustomFields > 0)
+		{
+			$sSQL = "REPLACE INTO family_custom SET ";
+			mysql_data_seek($rsCustomFields,0);
+
+			while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
+			{
+				extract($rowCustomField);
+				if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+				{
+					$currentFieldData = trim($aCustomData[$fam_custom_Field]);
+
+					sqlCustomField($sSQL, $type_ID, $currentFieldData, $fam_custom_Field, $sPhoneCountry);
+				}
+			}
+
+			// chop off the last 2 characters (comma and space) added in the last while loop iteration.
+			$sSQL = substr($sSQL,0,-2);
+
+			$sSQL .= ", fam_ID = " . $iFamilyID;
+
+			//Execute the SQL
+			RunQuery($sSQL);
+		}
+
 
 		//Which submit button did they press?
 		if (isset($_POST["FamilySubmit"]))
@@ -439,7 +500,11 @@ else
 		$sHomePhone = ExpandPhoneNumber($sHomePhone,$sCountry,$bNoFormat_HomePhone);
 		$sWorkPhone = ExpandPhoneNumber($sWorkPhone,$sCountry,$bNoFormat_WorkPhone);
 		$sCellPhone = ExpandPhoneNumber($sCellPhone,$sCountry,$bNoFormat_CellPhone);
-	
+
+		$sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
+		$rsCustomData = RunQuery($sSQL);
+		$aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
+ 		
 		$sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID =" . $iFamilyID . " ORDER BY per_fmr_ID";
 		$rsMembers = RunQuery($sSQL);
 		$iCount = 0;
@@ -462,6 +527,7 @@ else
 				$aBirthYears[$iCount] = "";
 			$aClassification[$iCount] = $per_cls_ID;
 			$aPersonIDs[$iCount] = $per_ID;
+			$aPerFlag[$iCount] = $per_Flags;
 		}
 	}
 	else
@@ -502,12 +568,14 @@ require "Include/Header.php";
 	</tr>
 
 	<tr>
+	<td>
+	<table cellpadding="3"><tr>
 		<td class="LabelColumn"><?php echo gettext("Family Name:"); ?></td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="Name" id="FamilyName" value="<?php echo htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8"); ?>" maxlength="48"><font color="red"><?php echo $sNameError; ?></font></td>
 	</tr>
 	
 	<tr>
-		<td>&nbsp;</td>
+		<td>&nbsp;</td><td>&nbsp;</td>
 	</tr>
 
 	<tr>
@@ -558,7 +626,7 @@ require "Include/Header.php";
 	</tr>
 
 	<tr>
-		<td>&nbsp;</td>
+		<td>&nbsp;</td><td>&nbsp;</td>
 	</tr>
 
 	<tr>
@@ -603,7 +671,7 @@ require "Include/Header.php";
 		}?>></td>
 	</tr>
 
-	<tr><?php
+	<?php
 		if ($rsCanvassers <> 0 && mysql_num_rows($rsCanvassers) > 0) 
 		{
 			echo "<tr><td class='LabelColumn'>" . gettext("Assign a Canvasser:") . "</td>\n";
@@ -650,8 +718,6 @@ require "Include/Header.php";
 	</tr>
 <?php } ?>	
 
-	</tr>
-
 	<?php
 	//"Assign a Property" block
 	// Adding a new family?
@@ -679,7 +745,7 @@ require "Include/Header.php";
 	?>
 	
 	<tr>
-		<td>&nbsp;</td>
+		<td>&nbsp;</td><td>&nbsp;</td>
 	</tr>
 <?php if (!$bHideWeddingDate) { /* Wedding Date can be hidden - General Settings */ ?>
 	<tr>
@@ -702,6 +768,41 @@ require "Include/Header.php";
 	</tr>
 <?php	} 
 	} /* Lat/Lon can be hidden - General Settings */ ?>
+	</table>
+	</td>
+
+		<?php if ($numCustomFields > 0) { ?>
+			<td valign="top">
+			<table cellpadding="3">
+				<tr>
+					<td colspan="2" align="center"><h3><?php echo gettext("Custom Fields"); ?></h3></td>
+				</tr>
+				<?php
+				mysql_data_seek($rsCustomFields,0);
+
+				while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
+				{
+					extract($rowCustomField);
+					if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+					{
+						echo "<tr><td class=\"LabelColumn\">" . $fam_custom_Name . "</td><td class=\"TextColumn\">";
+
+						$currentFieldData = trim($aCustomData[$fam_custom_Field]);
+
+						if ($type_ID == 11) $fam_custom_Special = $sPhoneCountry;
+
+						formCustomField($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST["FamilySubmit"]));
+						echo "<span style=\"color: red; \">" . $aCustomErrors[$fam_custom_Field] . "</span>";
+						echo "</td></tr>";
+					}
+				}
+				?>
+			</table>
+			</td>
+		<?php } ?>
+	
+	</tr>
+	
 	<tr>
 		<td>&nbsp;</td>
 	</tr>
@@ -811,8 +912,19 @@ require "Include/Header.php";
 				</select>
 			</td>
 			<td class="TextColumn">
+			<?php	if ((!$aperFlags[$iCount]) or ($_SESSION['bSeePrivacyData']))
+			{
+				$updateBirthYear = 1;
+			?>
 				<input name="BirthYear<?php echo $iCount ?>" type="text" value="<?php echo $aBirthYears[$iCount] ?>" size="4" maxlength="4">
 				<div><font color="red"><?php echo $aBirthDateError[$iCount]; ?></font></div>
+			<?php }
+			else 
+			{ 
+				$updateBirthYear = 0;
+			}
+			?>
+				&nbsp;
 			</td>
 			<td>
 				<select name="Classification<?php echo $iCount ?>">
@@ -838,6 +950,8 @@ require "Include/Header.php";
 	}
 	
 	echo "<td colspan=\"2\" align=\"center\">";
+	echo "<input type=\"hidden\" Name=\"UpdateBirthYear\" value=\"".$updateBirthYear."\">";
+
 	echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\">";
 	if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"Save and Add\" name=\"FamilySubmitAndAdd\">"; }
 	echo "<input type=\"button\" class=\"icButton\" value=\"" . gettext("Cancel") . "\" Name=\"FamilyCancel\"";

@@ -64,6 +64,15 @@ if ($rsConfig) {
     }
 }
 
+// Get Field Security List Matrix
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+$rsSecurityGrp = RunQuery($sSQL);
+
+while ($aRow = mysql_fetch_array($rsSecurityGrp))
+{
+	extract ($aRow);
+	$aSecurityType[$lst_OptionID] = $lst_OptionName;
+}
 
 ?>
 
@@ -178,10 +187,13 @@ if ($rsConfig) {
             <input type="checkbox" Name="bDirPhoto" value="1" checked><?php echo gettext("Photos");?><br>
          <?php 
          if ($numCustomFields > 0) {
-            while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_ASSOC) ){ ?>
-            <input type="checkbox" Name="bCustom<?php echo $rowCustomField['custom_Order'];?>" value="1" checked><?php echo $rowCustomField['custom_Name'];?><br>
+            while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_ASSOC) ){ 
+					if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') or ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]]))
+					{ ?>
+		            <input type="checkbox" Name="bCustom<?php echo $rowCustomField['custom_Order'];?>" value="1" checked><?php echo $rowCustomField['custom_Name'];?><br>
          <?php
-            }
+	            }
+	         }
          }
          ?>
 

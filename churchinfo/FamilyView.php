@@ -75,6 +75,20 @@ $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS Entere
 $rsFamily = RunQuery($sSQL);
 extract(mysql_fetch_array($rsFamily));
 
+// Get the lists of custom person fields
+$sSQL = "SELECT family_custom_master.* FROM family_custom_master
+			WHERE fam_custom_Side = 'left' ORDER BY fam_custom_Order";
+$rsLeftFamCustomFields = RunQuery($sSQL);
+
+$sSQL = "SELECT family_custom_master.* FROM family_custom_master
+			WHERE fam_custom_Side = 'right' ORDER BY fam_custom_Order";
+$rsRightFamCustomFields = RunQuery($sSQL);
+
+// Get the custom field data for this person.
+$sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
+$rsFamCustomData = RunQuery($sSQL);
+$aFamCustomData = mysql_fetch_array($rsFamCustomData, MYSQL_BOTH);
+
 //Get the notes for this family
 $sSQL = "SELECT nte_ID, nte_Text, nte_DateEntered, nte_EnteredBy, nte_DateLastEdited, nte_EditedBy, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName 		FROM note_nte
 		LEFT JOIN person_per a ON nte_EnteredBy = a.per_ID
@@ -127,6 +141,16 @@ $rsProperties = RunQuery($sSQL);
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
 $rsClassifications = RunQuery($sSQL);
 
+// Get Field Security List Matrix
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+$rsSecurityGrp = RunQuery($sSQL);
+
+while ($aRow = mysql_fetch_array($rsSecurityGrp))
+{
+	extract ($aRow);
+	$aSecurityType[$lst_OptionID] = $lst_OptionName;
+}
+
 //Set the spacer cell width
 $iTableSpacerWidth = 10;
 
@@ -172,9 +196,9 @@ elseif ($next_link_text) {
 
 			if ($fam_Latitude && $fam_Longitude) {
 				if ($nChurchLatitude && $nChurchLongitude) {
-					$sDistance = LatLonDistance($nChurchLatitude, $nChurchLongitude, 											$fam_Latitude, $fam_Longitude);
-					$sDirection = LatLonBearing($nChurchLatitude, $nChurchLongitude, 											$fam_Latitude, $fam_Longitude);
-					echo $sDistance . " miles " . $sDirection . " of church<br>";
+					$sDistance = LatLonDistance($nChurchLatitude, $nChurchLongitude,$fam_Latitude, $fam_Longitude);
+					$sDirection = LatLonBearing($nChurchLatitude, $nChurchLongitude,$fam_Latitude, $fam_Longitude);
+					echo $sDistance . " " . strtolower($sDistanceUnit) . " " . $sDirection . " of church<br>";
 				}
 			}
 		echo "</font></div>";
@@ -298,9 +322,9 @@ elseif ($next_link_text) {
 		} else {
 			// Some old / M$ browsers can't handle PNG's correctly.
 			if ($bDefectiveBrowser)
-				echo '<img border="0" src="Images/NoFamPhoto.gif" alt="No Family Photo Found"><br><br><br>';
+				echo '<img border="0" src="Images/NoFamPhoto.gif" alt="'.gettext("No Family Photo Found").'><br><br><br>';
 			else
-				echo '<img border="0" src="Images/NoFamPhoto.png" alt="No Family Photo Found"><br><br><br>';
+				echo '<img border="0" src="Images/NoFamPhoto.png" alt="'.gettext("No Family Photo Found").'><br><br><br>';
 
 			if ($bOkToEdit) {
 				if (isset($PhotoError)) 
@@ -325,7 +349,7 @@ elseif ($next_link_text) {
 	<div class="LightShadedBox">
 	<table cellspacing="0" cellpadding="0" border="0" width="100%">
 	<tr>
-		<td align="center">
+		<td align="center" valign="top">
 			<table cellspacing="4" cellpadding="0" border="0">
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Home Phone:"); ?></td>
@@ -343,6 +367,23 @@ elseif ($next_link_text) {
 				<td class="TinyLabelColumn"><?php echo gettext("Email:"); ?></td>
 				<td class="TinyTextColumn"><?php if ($fam_Email != "") { echo "<a href='mailto:" . $fam_Email . "'>" . $fam_Email . "</a>"; } ?>				  </td>
 			</tr>
+			<?php
+				// Display the left-side custom fields
+				while ($Row = mysql_fetch_array($rsLeftFamCustomFields)) {
+					extract($Row);
+					if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+					{
+						$currentData = trim($aFamCustomData[$fam_custom_Field]);
+						if ($type_ID == 11) $fam_custom_Special = $sPhoneCountry;
+						echo "<tr><td class=\"TinyLabelColumn\">" . $fam_custom_Name . "</td>";
+						echo "<td class=\"TinyTextColumn\">" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</td></tr>";
+					}
+				}
+			?>
+			</table>
+		</td>
+		<td align="center" valign="top">
+			<table cellspacing="4" cellpadding="0" border="0">
 <?php if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Send newsletter:"); ?></td>
@@ -367,6 +408,19 @@ elseif ($next_link_text) {
 				<td class="TinyTextColumn"><?php echo $fam_Envelope; ?></td>
 			</tr>
 <?php } ?>
+			<?php
+				// Display the right-side custom fields
+				while ($Row = mysql_fetch_array($rsRightFamCustomFields)) {
+					extract($Row);
+					if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+					{
+						$currentData = trim($aFamCustomData[$fam_custom_Field]);
+						if ($type_ID == 11) $fam_custom_Special = $sPhoneCountry;
+						echo "<tr><td class=\"TinyLabelColumn\">" . $fam_custom_Name . "</td>";
+						echo "<td class=\"TinyTextColumn\">" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</td></tr>";
+					}
+				}
+			?>
 			</table>
 		</td>
 	</tr>
@@ -588,7 +642,7 @@ while ($aRow =mysql_fetch_array($rsFamilyMembers))
 			<?php echo $sFamRole ?>&nbsp;
 		</td>
 		<td>
-			<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?>
+			<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?>&nbsp;
 		</td>
 		<td>
 			<?php echo $sClassName; ?>&nbsp;
