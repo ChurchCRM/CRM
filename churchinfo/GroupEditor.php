@@ -42,6 +42,8 @@ if (isset($_POST["GroupSubmit"]))
 	$iDefaultRole = FilterInput($_POST["DefaultRole"],'int');
 	$sDescription = FilterInput($_POST["Description"]);
 	$bUseGroupProps = $_POST["UseGroupProps"];
+	$cloneGroupRole = FilterInput($_POST["cloneGroupRole"],'int');
+	$seedGroupID = FilterInput($_POST["seedGroupID"],'int');
 
 	//Did they enter a Name?
 	if (strlen($sName) < 1)
@@ -112,8 +114,20 @@ if (isset($_POST["GroupSubmit"]))
 			//Get the key back
 			$iGroupID = mysql_insert_id($cnInfoCentral);
 
-			$sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'Member')";
-			RunQuery($sSQL);
+			if (($cloneGroupRole) && ($seedGroupID>0)) {
+				$sSQL = "SELECT list_lst.* FROM list_lst, group_grp WHERE group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_id = $seedGroupID ORDER BY list_lst.lst_OptionID";
+				$rsRoleSeed = RunQuery($sSQL);
+				while ($aRow = mysql_fetch_array($rsRoleSeed))
+				{
+					extract ($aRow);
+					$sSQL = "INSERT INTO list_lst VALUES ($newListID, $lst_OptionID, $lst_OptionSequence, '$lst_OptionName')";
+					RunQuery($sSQL);
+				}
+			} else 
+			{
+				$sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'Member')";
+				RunQuery($sSQL);
+			}
 		}
 
 		// Create a table for group-specific properties
@@ -183,6 +197,10 @@ else
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 3 ORDER BY lst_OptionSequence";
 $rsGroupTypes = RunQuery($sSQL);
 
+//Group Group Role List 
+$sSQL = "SELECT * FROM group_grp WHERE grp_RoleListID > 0 ORDER BY grp_Name";
+$rsGroupRoleSeed = RunQuery($sSQL);
+
 require "Include/Header.php";
 
 ?>
@@ -247,6 +265,30 @@ function confirmAdd() {
 			</td>
 		</tr>
 
+		<?php 
+		// Show Role Clone fields only when adding new group
+		if (strlen($iGroupID) < 1) { ?>
+		<tr>
+			<td class="LabelColumn"><b><?php echo gettext("Group Member Roles:"); ?></b></td>
+			<td class="TextColumnWithBottomBorder">
+			<?php echo gettext("Clone roles:"); ?>
+			<input type="checkbox" name="cloneGroupRole" value="1"><br>
+			<?php echo gettext("from group:"); ?>
+			<select name="seedGroupID">
+			<option value="0"><?php gettext("Select a group"); ?></option>
+			
+			<?php
+				while ($aRow = mysql_fetch_array($rsGroupRoleSeed))
+				{
+					extract($aRow);
+					echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
+				}
+				echo "</select>";
+			?>
+			</td>
+		</tr>
+		<?php } ?>
+
 		<tr>
 			<td class="LabelColumn"><b><?php echo gettext("Group-Specific<br>Properties:"); ?></b></td>
 			<td class="TextColumnWithBottomBorder">
@@ -261,6 +303,7 @@ function confirmAdd() {
 					echo "<input type=\"checkbox\" name=\"UseGroupProps\" value=\"1\" onChange=\"confirmAdd();\">";
 				?>
 			</td>
+		</tr>
 
 		<tr>
 			<td class="SmallShadedBox" colspan="2" align="center"><input type="checkbox" name="EmptyCart" value="1" <?php if ($bEmptyCart) { echo " checked"; } ?>>&nbsp;&nbsp;<b><?php echo gettext("Empty Cart to this Group?"); ?></b></td>
