@@ -74,23 +74,34 @@ $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
 		" ORDER BY prt_Name, pro_Name";
 $rsAssignedProperties = RunQuery($sSQL);
 
+// Get Field Security List Matrix
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+$rsSecurityGrp = RunQuery($sSQL);
+
+while ($aRow = mysql_fetch_array($rsSecurityGrp))
+{
+	extract ($aRow);
+	$aSecurityType[$lst_OptionID] = $lst_OptionName;
+}
+
 // Format the BirthDate
-if ($per_BirthMonth > 0 && $per_BirthDay > 0)
-{
-	$dBirthDate = $per_BirthMonth . "/" . $per_BirthDay;
-	if (is_numeric($per_BirthYear))
-	{
-		$dBirthDate .= "/" . $per_BirthYear;
-	}
-}
-elseif (is_numeric($per_BirthYear))
-{
-	$dBirthDate = $per_BirthYear;
-}
-else
-{
-	$dBirthDate = "";
-}
+$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, "/", $per_Flags);
+//if ($per_BirthMonth > 0 && $per_BirthDay > 0)
+//{
+//	$dBirthDate = $per_BirthMonth . "/" . $per_BirthDay;
+//	if (is_numeric($per_BirthYear))
+//	{
+//		$dBirthDate .= "/" . $per_BirthYear;
+//	}
+//}
+//elseif (is_numeric($per_BirthYear))
+//{
+//	$dBirthDate = $per_BirthYear;
+//}
+//else
+//{
+//	$dBirthDate = "";
+//}
 
 // Assign the values locally, after selecting whether to display the family or person information
 
@@ -173,10 +184,13 @@ if ($fam_ID)
 			{
 				$Row = mysql_fetch_array($rsCustomFields);
 				extract($Row);
-				$currentData = trim($aCustomData[$custom_Field]);
-				if ($type_ID == 11) $custom_Special = $sCountry;
-				echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td><td width=\"" . $iTableSpacerWidth . "\"></td>";
-				echo "<td class=\"TextColumn\">" . displayCustomField($type_ID, $currentData, $custom_Special) . "</td></tr>";
+				if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+				{
+					$currentData = trim($aCustomData[$custom_Field]);
+					if ($type_ID == 11) $custom_Special = $sCountry;
+					echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td><td width=\"" . $iTableSpacerWidth . "\"></td>";
+					echo "<td class=\"TextColumn\">" . displayCustomField($type_ID, $currentData, $custom_Special) . "</td></tr>";
+				}
 			}
 		?>
 		</table>
