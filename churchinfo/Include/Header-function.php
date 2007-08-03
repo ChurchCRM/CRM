@@ -236,6 +236,40 @@ global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn,
 <?php
 }
 
+$security_matrix = GetSecuritySettings();
+
+function GetSecuritySettings() {
+	$aSecurityList[] = "bAdmin";
+	$aSecurityList[] = "bAddRecords";
+	$aSecurityList[] = "bEditRecords";
+	$aSecurityList[] = "bDeleteRecords";
+	$aSecurityList[] = "bMenuOptions";
+	$aSecurityList[] = "bManageGroups";
+	$aSecurityList[] = "bFinance";
+	$aSecurityList[] = "bNotes";
+	$aSecurityList[] = "bCommunication";
+	$aSecurityList[] = "bCanvasser";
+
+	$sSQL = "SELECT DISTINCT ucfg_name FROM userconfig_ucfg WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY' ORDER by ucfg_id";
+	$rsSecGrpList = RunQuery($sSQL);
+			
+	while ($aRow = mysql_fetch_array($rsSecGrpList))
+	{
+		$aSecurityList[] = $aRow['ucfg_name'];
+	}
+
+	asort($aSecurityList);
+
+	$sSecurityCond = " AND (security_grp = 'bALL'";
+	for ($i = 0; $i < count($aSecurityList); $i++) {
+		if ($_SESSION[$aSecurityList[$i]]) {
+			$sSecurityCond .= " OR security_grp = '" . $aSecurityList[$i] . "'";
+		}
+	}
+	$sSecurityCond .= ")";
+	return $sSecurityCond;
+}
+
 function create_menu($menu) {
 
 	echo "domMenu_data.setItem('domMenu_BJ', new domMenu_Hash(";
@@ -244,67 +278,70 @@ function create_menu($menu) {
 	menu_setting();
 }
 function addMenu($menu) {
-	global $cnInfoCentral;
+	global $security_matrix;
 	
-	$security_matrix = " AND (security_grp = 'bALL'";
-	if ($_SESSION['bAdmin']) {
-		$security_matrix .= " OR security_grp = 'bAdmin'";
-	}
-	if ($_SESSION['bAddRecords']) {
-		$security_matrix .= " OR security_grp = 'bAddRecords'";
-	}
-	if ($_SESSION['bMenuOptions']) {
-		$security_matrix .= " OR security_grp = 'bMenuOptions'";
-	}
-	if ($_SESSION['bFinance']) {
-		$security_matrix .= " OR security_grp = 'bFinance'";
-	}
-	if ($_SESSION['bManageGroups']) {
-		$security_matrix .= " OR security_grp = 'bManageGroups'";
-	}
-	$security_matrix .= ")";
-	$query = "SELECT name, ismenu, content, uri, statustext, session_var, session_var_in_text, session_var_in_uri, url_parm_name, security_grp FROM menuconfig_mcf WHERE parent = '$menu' AND active=1 ".$security_matrix." ORDER BY sortorder";
+	$sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text, session_var_in_uri, url_parm_name, security_grp FROM menuconfig_mcf WHERE parent = '$menu' AND active=1 ".$security_matrix." ORDER BY sortorder";
 	
-	$rsMenu = mysql_query($query, $cnInfoCentral);
+	$rsMenu = RunQuery($sSQL);
 	$item_cnt = mysql_num_rows($rsMenu);
 	$idx = 1;
 	$ptr = 1;
 	while ($aRow = mysql_fetch_array($rsMenu)) {	
-//		if ($aRow['admin_only'] & !$_SESSION['bAdmin']) {
-		// hide admin menu
-//		} else {
-			addMenuItem($aRow, $idx);
+		if (addMenuItem($aRow, $idx)) {
 			if ($ptr < $item_cnt) {
 				echo ", ";
 				$idx++;
 			}
-//		}
-		$ptr++;
+			$ptr++;
+		} else {
+			$item_cnt--;
+		}
 	}
 }
 
 function addMenuItem($aMenu,$mIdx) {
-global $sRootPath;
+global $sRootPath, $security_matrix;
 
 	$link = ($aMenu['uri'] == "") ? "" : $sRootPath."/".$aMenu['uri'];
 	$text = $aMenu['statustext'];
 	if (!is_null($aMenu['session_var'])) {
 		if (($link > "") & ($aMenu['session_var_in_uri'])) {
-			$link .= "?".$aMenu['url_parm_name']."=".$_SESSION[$aMenu['session_var']];
+			if (strstr($link, "?")&&true) {
+				$cConnector = "&";
+			} else {
+				$cConnector = "?"; 
+			}
+			$link .= $cConnector.$aMenu['url_parm_name']."=".$_SESSION[$aMenu['session_var']];
 		}
 		if (($text > "") & ($aMenu['session_var_in_text'])) {
 			$text .= " ".$_SESSION[$aMenu['session_var']];
 		}
 	}
-	echo "$mIdx, new domMenu_Hash("
-		 ."'contents', '".$aMenu['content']."', "
-		 ."'uri', '".$link."', "
-		 ."'statusText', '".$text."'";
 	if ($aMenu['ismenu']) {
-		echo ", ";
-		addMenu($aMenu['name']);
+		$sSQL = "SELECT name FROM menuconfig_mcf WHERE parent = '" . $aMenu['name'] . "' AND active=1 " . $security_matrix." ORDER BY sortorder";
+		$rsItemCnt = RunQuery($sSQL);
+		$numItems = mysql_num_rows($rsItemCnt);
 	}
-	echo ")\n";
+	if (!($aMenu['ismenu']) || ($numItems > 0))
+	{
+		if (($aMenu['ismenu']) && !($aMenu['parent'] == 'root')) {
+			$arrow=str_repeat("&nbsp;",10)."<img src=\"".$sRootPath."/Images/arrow.gif\">";
+		} else {
+			$arrow = "";
+		}
+		echo "$mIdx, new domMenu_Hash("
+			."'contents', '".$aMenu['content'].$arrow."', "
+			."'uri', '".$link."', "
+			."'statusText', '".$text."'";
+		if (($aMenu['ismenu']) && ($numItems > 0)) {
+			echo ", ";
+			addMenu($aMenu['name']);
+		}
+		echo ")\n";
+		return true;
+	} else {
+		return false;
+	}
 }
 
 function menu_setting() {
@@ -383,7 +420,7 @@ global $MenuFirst, $sPageTitle, $sRootPath;
 			<tr>
 				<td class="Search">&nbsp;</td>
 				<td class="Search" width="50%">
-					<form name="SelectFilter" method="get" action="SelectList.php">
+					<form name="SelectFilter" method="get" action="<?php echo $sRootPath."/"; ?>SelectList.php">
 						<input class="menuButton" style="font-size: 8pt; margin-top: 5px;" type="text" name="Filter" id="SearchText" <?php echo 'value="' . gettext("Search") . '"'; ?> onfocus="ClearFieldOnce(this);">
 						<input name="mode" type="radio" value="person" <?php if (! $_SESSION['bSearchFamily']) echo "checked";?>><?php echo gettext("Person"); ?><input type="radio" name="mode" value="family" <?php if ($_SESSION['bSearchFamily']) echo "checked";?>><?php echo gettext("Family"); ?>
 					</form>
