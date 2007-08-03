@@ -160,6 +160,10 @@ if (isset($_GET["Confirmed"]))
 		$sSQL = "DELETE FROM family_fam WHERE fam_ID = " . $iFamilyID;
 		RunQuery($sSQL);
 
+		// Remove custom field data
+		$sSQL = "DELETE FROM family_custom WHERE fam_ID = " . $iFamilyID;
+		RunQuery($sSQL);
+
 		// Delete the photo files, if they exist
 		$photoThumbnail = "Images/Family/thumbnails/" . $iFamilyID . ".jpg";
 		if (file_exists($photoThumbnail))
