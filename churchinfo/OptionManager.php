@@ -44,6 +44,8 @@ switch ($mode) {
 		break;
 
 	case custom:
+	case famcustom:
+	case securitygrp:
 		if (!$_SESSION['bAdmin'])
 		{
 			Redirect("Menu.php");
@@ -76,6 +78,12 @@ switch ($mode) {
 		$listID = 3;
 		$embedded = false;
 		break;
+	case securitygrp:
+		$adj = gettext("Security");
+		$noun = gettext("Group");
+		$listID = 5;
+		$embedded = false;
+		break;
 	case grproles:
 		$adj = gettext("Group Member");
 		$noun = gettext("Role");
@@ -96,7 +104,7 @@ switch ($mode) {
 
 		break;
 	case custom:
-		$adj = gettext("Custom List");
+		$adj = gettext("Person Custom List");
 		$noun = gettext("Option");
 		$listID = FilterInput($_GET["ListID"],'int');
 		$embedded = true;
@@ -112,8 +120,8 @@ switch ($mode) {
 
 		break;
 	case groupcustom:
-		$adj = "Custom List";
-		$noun = "Option";
+		$adj = gettext("Custom List");
+		$noun = gettext("Option");
 		$listID = FilterInput($_GET["ListID"],'int');
 		$embedded = true;
 
@@ -121,6 +129,22 @@ switch ($mode) {
 		$rsTemp = RunQuery($sSQL);
 
 		// Validate that this is a valid group-specific-property field custom list
+		if (mysql_num_rows($rsTemp) == 0) {
+			Redirect("Menu.php");
+			break;
+		}
+
+		break;
+	case famcustom:
+		$adj = gettext("Family Custom List");
+		$noun = gettext("Option");
+		$listID = FilterInput($_GET["ListID"],'int');
+		$embedded = true;
+
+		$sSQL = "SELECT '' FROM family_custom_master WHERE type_ID = 12 AND fam_custom_Special = " . $listID;
+		$rsTemp = RunQuery($sSQL);
+
+		// Validate that this is a valid family_custom field custom list
 		if (mysql_num_rows($rsTemp) == 0) {
 			Redirect("Menu.php");
 			break;
@@ -283,7 +307,7 @@ if ( $bErrorFlag )
 <input type="submit" class="icButton" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
 
 
-<?php if ($mode == 'groupcustom' || $mode == 'custom') { ?>
+<?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') { ?>
 	<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:window.close();">
 <?php } elseif ($mode != "grproles") { ?>
 	<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='<?php
