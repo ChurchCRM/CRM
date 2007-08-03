@@ -66,6 +66,9 @@ $sSQL = "UPDATE config_cfg SET cfg_value = 1 WHERE cfg_name='bRegistered'";
 RunQuery($sSQL);
 $bRegistered = 1;
 
+$sSQL = "UPDATE menuconfig_mcf SET content = 'Update registration' WHERE name = 'register' AND parent = 'admin'";
+RunQuery($sSQL);
+
 ?>
 
 <form method="post" action="EmailSend.php" name="Register">
