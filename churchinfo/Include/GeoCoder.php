@@ -49,6 +49,8 @@ if ($sXML_RPC_PATH) {
 // distance in miles.
 function LatLonDistance($lat1, $lon1, $lat2, $lon2)
 {
+	global $sDistanceUnit;
+	
 	// Formula for calculating radians between
 	// latitude and longitude pairs.
 
@@ -56,6 +58,7 @@ function LatLonDistance($lat1, $lon1, $lat2, $lon2)
 	// Length of arc on surface of sphere
 
 	// convert to radians to work with trig functions
+	
 	$lat1 = deg2rad($lat1);		$lon1 = deg2rad($lon1);
 	$lat2 = deg2rad($lat2);		$lon2 = deg2rad($lon2);
 
@@ -66,21 +69,23 @@ function LatLonDistance($lat1, $lon1, $lat2, $lon2)
 	$radius = 6371.0;
 
 	// distance in kilometers is $radians times $radius
-	$kilometers  = $radians * $radius;
+	$distance  = $radians * $radius;
 
 	// convert to miles
-	$miles = 0.6213712 * $kilometers;
-
+	if (strtoupper($sDistanceUnit) == 'MILES') {
+		$distance = 0.6213712 * $distance;
+	}
+	
 	// Return distance to three figures
-	if ($miles < 10.0) {
-		$distance = sprintf("%0.2f",$miles);
-	} elseif ($miles < 100.0) {
-		$distance = sprintf("%0.1f",$miles);
+	if ($distance < 10.0) {
+		$distance_f = sprintf("%0.2f",$distance);
+	} elseif ($distance < 100.0) {
+		$distance_f = sprintf("%0.1f",$distance);
 	} else {
-		$distance = sprintf("%0.0f",$miles);		
+		$distance_f = sprintf("%0.0f",$distance);		
 	}
 
-	return $distance ;
+	return $distance_f ;
 }
 
 
