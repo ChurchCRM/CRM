@@ -23,7 +23,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if (!$_SESSION['bAdmin'])
+if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent'])
 {
     header ("Location: Menu.php");
 }
