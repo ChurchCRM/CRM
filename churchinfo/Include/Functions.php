@@ -292,18 +292,20 @@ function MakeFYString ($iFYID)
 // By default stop on error, unless a second (optional) argument is passed as false.
 function RunQuery($sSQL, $bStopOnError = true)
 {
-	global $cnInfoCentral;
-	global $debug;
+    global $cnInfoCentral;
+    global $debug;
 
-	if ($result = mysql_query($sSQL, $cnInfoCentral))
-		return $result;
-	elseif ($bStopOnError)
-	{
-		if ($debug)
-			die(gettext("Cannot execute query.") . "<p>$sSQL<p>" . mysql_error());
-		else
-			die("Database error or invalid data");
-	}
+    if ($result = mysql_query($sSQL, $cnInfoCentral))
+        return $result;
+    elseif ($bStopOnError)
+    {
+        if ($debug)
+            die(gettext("Cannot execute query.") . "<p>$sSQL<p>" . mysql_error());
+        else
+            die("Database error or invalid data");
+    }
+    else
+        return FALSE;
 }
 
 // Sanitizes user input as a security measure
