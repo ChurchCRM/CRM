@@ -1,22 +1,33 @@
 <?php
 /*******************************************************************************
- *
- *  filename    : ListEvents.php
- *  last change : 2005-09-10
- *  website     : http://www.terralabs.com
- *  copyright   : Copyright 2005 Todd Pillars
- *
- *  function    : List all Church Events
- *
- *  ChurchInfo is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- ******************************************************************************/
+*
+*  filename    : ListEvents.php
+*  website     : http://www.churchdb.org
+*  function    : List all Church Events
+*
+*  copyright   : Copyright 2005 Todd Pillars
+*
+*
+*  Additional Contributors:
+*  2007 Ed Davis
+*
+*
+*  Copyright Contributors
+*
+*
+*  ChurchInfo is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This file best viewed in a text editor with tabs stops set to 4 characters.
+*  Please configure your editor to use soft tabs (4 spaces for a tab) instead
+*  of hard tab characters.
+*
+******************************************************************************/
 
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 $eType="All";
 $ThisYear=date("Y");
 
@@ -47,7 +58,7 @@ if($_POST['WhichYear'])
 
 
 ///////////////////////
-require "Include/Header.php";
+require 'Include/Header.php';
 
 if ($_POST['Action']== "Delete" && !empty($_POST['EID']))
 {
@@ -100,7 +111,7 @@ if($eType=="All"){
 }  
 $rsOpps = RunQuery($sSQL);
 $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
-extract($aRow);
+@extract($aRow); // @ needed to suppress error messages when no church events
 $rsOpps = RunQuery($sSQL);
 $numRows = mysql_num_rows($rsOpps);
 for($r=1; $r<=$numRows; $r++){
@@ -354,5 +365,5 @@ if ($eType != "All" && $aNumCounts >0){
                </tr>
              </table>
 <?php
-require "Include/Footer.php";
+require 'Include/Footer.php';
 ?>
