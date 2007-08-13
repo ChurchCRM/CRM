@@ -32,7 +32,7 @@ require 'Include/Functions.php';
 // Important!  These must be updated before every software release.
 
 $_SESSION['sChurchInfoPHPVersion'] = '1.2.10';
-$_SESSION['sChurchInfoPHPDate'] = '2007-06-04';
+$_SESSION['sChurchInfoPHPDate'] = '2007-08-31';
 
 // Check if the table version_ver exists.  If the table does not exist then
 // SQL scripts must be manually run to get the database up to version 1.2.7
@@ -63,10 +63,10 @@ $sPageTitle = gettext('ChurchInfo: Database Version Check');
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 <head>
-	<meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="Include/Style.css">
-	<title><?php echo $sPageTitle; ?></title>
+    <link rel="stylesheet" type="text/css" href="Include/Style.css">
+    <title><?php echo $sPageTitle; ?></title>
 </head>
 <body>
 <table>
@@ -100,7 +100,7 @@ if ($ver_version == '1.2.9') {
     if ($sError) {
         echo '<br>MySQL error while upgrading database:<br>'.$sError."<br><br>\n";
 
-        echo '<br><br>You are seeing this message because you have encountered software a bug.'
+        echo '<br><br>You are seeing this message because you have encountered a software bug.'
         .    '<br>Please post to the ChurchInfo '
         .       '<a href="http://sourceforge.net/forum/forum.php?forum_id=401180"> help forum</a> '
         .       'for assistance. The complete query is shown below.<br>'."\n";
@@ -130,7 +130,7 @@ if ($ver_version == '1.2.8') {
     if ($sError) {
         echo '<br>MySQL error while upgrading database:<br>'.$sError."<br><br>\n";
 
-        echo '<br><br>You are seeing this message because you have encountered software a bug.'
+        echo '<br><br>You are seeing this message because you have encountered a software bug.'
         .    '<br>Please post to the ChurchInfo '
         .       '<a href="http://sourceforge.net/forum/forum.php?forum_id=401180"> help forum</a> '
         .       'for assistance. The complete query is shown below.<br>'."\n";
@@ -161,7 +161,7 @@ if ($ver_version == '1.2.7') {
     if ($sError) {
         echo '<br>MySQL error while upgrading database:<br>'.$sError."<br><br>\n";
 
-        echo '<br><br>You are seeing this message because you have encountered software a bug.'
+        echo '<br><br>You are seeing this message because you have encountered a software bug.'
         .    '<br>Please post to the ChurchInfo '
         .       '<a href="http://sourceforge.net/forum/forum.php?forum_id=401180"> help forum</a> '
         .       'for assistance. The complete query is shown below.<br>'."\n";
