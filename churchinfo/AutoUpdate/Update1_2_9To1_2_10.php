@@ -559,23 +559,23 @@ $sSQL = "INSERT INTO `list_lst` VALUES (5, 11, 11, 'bCanvasser')";
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "INSERT INTO `userconfig_ucfg` VALUES ('', '10', 'bAddEvent', '1', 'number', 'Allow user to add new event', 'FALSE')";
-if (!RunQuery($sSQL, FALSE))
-    break;
-
-$sSQL = "INSERT INTO `userconfig_ucfg` VALUES ('', '11', 'bSeePrivacyData', '1', 'number', 'Allow user to see member privacy data, e.g. Birth Year, Age.', 'FALSE')";
-if (!RunQuery($sSQL, FALSE))
-    break;
-
 $sSQL = "ALTER TABLE `userconfig_ucfg` ADD `ucfg_cat` VARCHAR( 20 ) NOT NULL AFTER `ucfg_permission` ";
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "UPDATE `userconfig_ucfg` SET `ucfg_cat` = 'SECURITY' WHERE `userconfig_ucfg`.`ucfg_per_id` =0 AND `userconfig_ucfg`.`ucfg_id` =5 LIMIT 1 ";
+$sSQL = "UPDATE `userconfig_ucfg` SET `ucfg_cat` = 'SECURITY' WHERE `userconfig_ucfg`.`ucfg_per_id` =0 AND `userconfig_ucfg`.`ucfg_id` =5 ";
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "UPDATE `userconfig_ucfg` SET `ucfg_cat` = 'SECURITY' WHERE `userconfig_ucfg`.`ucfg_per_id` =0 AND `userconfig_ucfg`.`ucfg_id` =6 LIMIT 1 ";
+$sSQL = "UPDATE `userconfig_ucfg` SET `ucfg_cat` = 'SECURITY' WHERE `userconfig_ucfg`.`ucfg_per_id` =0 AND `userconfig_ucfg`.`ucfg_id` =6 ";
+if (!RunQuery($sSQL, FALSE))
+    break;
+
+$sSQL = "INSERT INTO `userconfig_ucfg` VALUES ('', '10', 'bAddEvent', '0', 'boolean', 'Allow user to add new event', 'FALSE', 'SECURITY')";
+if (!RunQuery($sSQL, FALSE))
+    break;
+
+$sSQL = "INSERT INTO `userconfig_ucfg` VALUES ('', '11', 'bSeePrivacyData', '0', 'boolean', 'Allow user to see member privacy data, e.g. Birth Year, Age.', 'FALSE', 'SECURITY')";
 if (!RunQuery($sSQL, FALSE))
     break;
 
