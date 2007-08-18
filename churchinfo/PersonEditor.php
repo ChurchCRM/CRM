@@ -659,12 +659,12 @@ require "Include/Header.php";
 						else
 							echo gettext("Email:") . "</td>";
 					?>
-				<td class="TextColumnWithBottomBorder"><input type="text" name="Email" value="<?php echo htmlentities(stripslashes($sEmail)); ?>" size="30"></td>
+				<td class="TextColumnWithBottomBorder"><input type="text" name="Email" value="<?php echo htmlentities(stripslashes($sEmail)); ?>" size="30" maxlength="100"></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Work / Other Email:"); ?></td>
-				<td class="TextColumnWithBottomBorder"><input type="text" name="WorkEmail" value="<?php echo htmlentities(stripslashes($sWorkEmail)); ?>" size="30"></td>
+				<td class="TextColumnWithBottomBorder"><input type="text" name="WorkEmail" value="<?php echo htmlentities(stripslashes($sWorkEmail)); ?>" size="30" maxlength="100"></td>
 			</tr>
 
 			<tr>

@@ -655,7 +655,7 @@ require "Include/Header.php";
 
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Email:"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="Email" value="<?php echo htmlentities(stripslashes($sEmail)); ?>" size="30" maxlength="50"></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="Email" value="<?php echo htmlentities(stripslashes($sEmail)); ?>" size="30" maxlength="100"></td>
 	</tr>
 <?php if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
 	<tr>
