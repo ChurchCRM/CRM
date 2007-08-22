@@ -336,6 +336,8 @@ require "Include/Header.php";
 
 	<tr>
 		<td>
+		<table border="0" width="100%" cellspacing="0" cellpadding="4">
+		<td width="50%" valign="top" align="left">
 		<table cellpadding="3">
 			<tr>
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php addToolTip("Select the pledging family from the list."); ?><?php echo gettext("Family:"); ?></td>
@@ -423,7 +425,11 @@ require "Include/Header.php";
 					<td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?php echo $iCheckNo; ?>"></td>
 				</tr>
 			<?php } ?>
-
+		</table>
+		</td>
+		<td width="50%" valign="top" align="center">
+		<table cellpadding="3">
+		
 			<tr>
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Total Amount:"); ?></td>
 				<td class="TextColumn"><input type="text" name="Amount" id="Amount" value="<?php echo $nAmount; ?>"><br><font color="red"><?php echo $sAmountError ?></font></td>
@@ -471,6 +477,11 @@ require "Include/Header.php";
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Comment:"); ?></td>
 				<td class="TextColumn"><input type="text" name="Comment" id="Comment" value="<?php echo $sComment; ?>"></td>
 			</tr>
+			</td>
+			</table>
+			<tr>
+			<table cellpadding="3">
+			<td width="100%" valign="top" align="left">
 
 			<?php if ($dep_Type == 'Bank' || $PledgeOrPayment=='Pledge') {?>
 			<tr>
@@ -521,7 +532,8 @@ require "Include/Header.php";
 ?>
 		</table>
 		</td>
-
+		</table>
+		</td>
 <?php
 	if ($dep_Type == 'Bank') {
 ?>
