@@ -64,19 +64,23 @@ require 'Include/Header.php';
     echo gettext('Generate class lists and attendance sheets'); ?>
 </p>
 
-<p>
-<a class="MediumText" href="FinancialReports.php"><?php 
-    echo gettext('Financial Reports'); ?></a>
-<br><?php 
-    echo gettext('Pledges and Payments'); ?>
-</p>
+<?php
+    if ($_SESSION['bFinance']) {
+	echo '<p>';
+	echo '<a class="MediumText" href="FinancialReports.php">';
+    echo gettext('Financial Reports')."</a><br>\n"; 
+    echo gettext('Pledges and Payments')."</p>"; 
+}
+?>
 
-<p>
-<a class="MediumText" href="CanvassAutomation.php"><?php 
-    echo gettext('Canvass Automation'); ?></a>
-<br><?php 
-    echo gettext('Automated support for conducting an every-member canvass.'); ?>
-</p>
+<?php
+    if ($_SESSION['bAdmin']) {
+	echo '<p>';
+	echo '<a class="MediumText" href="CanvassAutomation.php">';
+    echo gettext('Canvass Automation') . "</a><br>";
+    echo gettext('Automated support for conducting an every-member canvass.');
+}
+?>
 
 <p>
 <span class="MediumText"><u><?php echo gettext("Event Attendance"); ?></u></span>
