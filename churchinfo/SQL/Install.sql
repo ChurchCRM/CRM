@@ -549,7 +549,11 @@ CREATE TABLE IF NOT EXISTS `whycame_why` (
 
 CREATE TABLE IF NOT EXISTS `event_attend` (
   `event_id` int(11) NOT NULL default '0',
-  `person_id` int(11) NOT NULL default '0'
+  `person_id` int(11) NOT NULL default '0',
+  `checkin_date` datetime,
+  `checkin_id` int(11),
+  `checkout_date` datetime,
+  `checkout_id` int(11),
 ) TYPE=MyISAM;
 
 

@@ -592,6 +592,22 @@ if (mysql_num_rows(RunQuery("SELECT * FROM person_custom_master"))> 0) {
         break;
 }
 
+$sSQL = "ALTER TABLE `event_attend` ADD `checkin_date` datetime";
+if (!RunQuery($sSQL, FALSE))
+    break;
+
+$sSQL = "ALTER TABLE `event_attend` ADD ``checkin_id` int(11)";
+if (!RunQuery($sSQL, FALSE))
+    break;
+
+$sSQL = "ALTER TABLE `event_attend` ADD `checkout_date` datetime";
+if (!RunQuery($sSQL, FALSE))
+    break;
+
+$sSQL = "ALTER TABLE `event_attend` ADD ``checkout_id` int(11)";
+if (!RunQuery($sSQL, FALSE))
+    break;
+
 // If we got this far it means all queries ran without error.  It is okay to update
 // the version information.
 
