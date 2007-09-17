@@ -288,6 +288,10 @@ $sSQL = "INSERT INTO `menuconfig_mcf` VALUES (34, 'eventype', 'events', 0, '".ge
 if (!RunQuery($sSQL, FALSE))
     break;
 
+$sSQL = "INSERT INTO `menuconfig_mcf` VALUES (83, 'eventcheckin', 'events', 0, '".gettext('Check-in and Check-out')."', 'Checkin.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4)";
+if (!RunQuery($sSQL, FALSE))
+    break;
+
 $sSQL = "INSERT INTO `menuconfig_mcf` VALUES (35, 'deposit', 'root', 1, '".gettext('Deposit')."', '', '', 'bFinance', NULL, 0, 0, NULL, 1, 5)";
 if (!RunQuery($sSQL, FALSE))
     break;
