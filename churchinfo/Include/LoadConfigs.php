@@ -77,7 +77,7 @@ if (isset($_SESSION['iUserID'])) {      // Not set on Default.php
 
 $sMetaRefresh = '';  // Initialize to empty
 
-require_once("Include/winlocallist.php");
+require_once("winlocalelist.php");
 
 if (!(stripos(php_uname('s'), "windows") === false)) {
 //	$sLanguage = $lang_map_windows[strtolower($sLanguage)];
