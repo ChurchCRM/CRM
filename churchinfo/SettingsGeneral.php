@@ -25,7 +25,7 @@ if (!$_SESSION['bAdmin'])
 
 $scfgCategory = FilterInput($_GET["Cat"],'string');
 
-$sCategory_Filter = ($scfgCategory == "") ? "" : " AND cfg_category = '$scfgCategory' ";
+$sCategory_Filter = ($scfgCategory == "") ? " AND cfg_category is NULL" : " AND cfg_category = '$scfgCategory' ";
 
 // Figure out where $sHeader is stored.  Special handling is needed to preserve
 // HTML tags.
