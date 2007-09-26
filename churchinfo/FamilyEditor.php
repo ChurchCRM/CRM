@@ -418,7 +418,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					{
 						$sLastNameToEnter = $sName;
 					}
-					$sUpdateBirthYear = ($aUpdateBirthYear[$iCount] & 1) ? "per_BirthYear=" . $aBirthYears[$iCount]. ", " : "";
+					$sBirthYearScript = ($aUpdateBirthYear[$iCount] & 1) ? "per_BirthYear=" . $aBirthYears[$iCount]. ", " : "";
 					//RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
 					$sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "', " . $sBirthYearScript . "per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
 					RunQuery($sSQL);
@@ -914,14 +914,14 @@ require "Include/Header.php";
 			<td class="TextColumn">
 			<?php	if ((!$aperFlags[$iCount]) or ($_SESSION['bSeePrivacyData']))
 			{
-				$updateBirthYear = 1;
+				$UpdateBirthYear = 1;
 			?>
 				<input name="BirthYear<?php echo $iCount ?>" type="text" value="<?php echo $aBirthYears[$iCount] ?>" size="4" maxlength="4">
 				<div><font color="red"><?php echo $aBirthDateError[$iCount]; ?></font></div>
 			<?php }
 			else 
 			{ 
-				$updateBirthYear = 0;
+				$UpdateBirthYear = 0;
 			}
 			?>
 				&nbsp;
@@ -950,7 +950,7 @@ require "Include/Header.php";
 	}
 	
 	echo "<td colspan=\"2\" align=\"center\">";
-	echo "<input type=\"hidden\" Name=\"UpdateBirthYear\" value=\"".$updateBirthYear."\">";
+	echo "<input type=\"hidden\" Name=\"UpdateBirthYear\" value=\"".$UpdateBirthYear."\">";
 
 	echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\">";
 	if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"Save and Add\" name=\"FamilySubmitAndAdd\">"; }
