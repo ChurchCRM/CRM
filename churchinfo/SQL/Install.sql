@@ -553,7 +553,7 @@ CREATE TABLE IF NOT EXISTS `event_attend` (
   `checkin_date` datetime,
   `checkin_id` int(11),
   `checkout_date` datetime,
-  `checkout_id` int(11),
+  `checkout_id` int(11)
 ) TYPE=MyISAM;
 
 
