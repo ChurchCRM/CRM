@@ -591,7 +591,7 @@ if (!RunQuery($sSQL, FALSE))
 
 if (mysql_num_rows(RunQuery("SELECT * FROM person_custom_master"))> 0) {
 
-	$sSQL = "UPDATE TABLE `person_custom_master` SET `custom_FieldSec` = '1'";	
+	$sSQL = "UPDATE `person_custom_master` SET `custom_FieldSec` = '1'";	
     if (!RunQuery($sSQL, FALSE))
         break;
 }
