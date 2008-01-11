@@ -600,7 +600,7 @@ $sSQL = "ALTER TABLE `event_attend` ADD `checkin_date` datetime";
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "ALTER TABLE `event_attend` ADD ``checkin_id` int(11)";
+$sSQL = "ALTER TABLE `event_attend` ADD `checkin_id` int(11)";
 if (!RunQuery($sSQL, FALSE))
     break;
 
@@ -608,7 +608,7 @@ $sSQL = "ALTER TABLE `event_attend` ADD `checkout_date` datetime";
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "ALTER TABLE `event_attend` ADD ``checkout_id` int(11)";
+$sSQL = "ALTER TABLE `event_attend` ADD `checkout_id` int(11)";
 if (!RunQuery($sSQL, FALSE))
     break;
 
