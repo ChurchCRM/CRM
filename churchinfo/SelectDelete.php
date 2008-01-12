@@ -204,7 +204,7 @@ if($sMode == 'person')
 
 	if ($bIsUser) {
 		echo "<p class=\"LargeText\">" . gettext("Sorry, this person is a user.  An administrator must remove their user status before they may be deleted from the database.") . "<br><br>";
-		echo "<a href=\"PersonView.php?PersonID=" . $iPersonID . ">" . gettext("Return to Person View") . "</a></p>";
+		echo "<a href=\"PersonView.php?PersonID=" . $iPersonID . "\">" . gettext("Return to Person View")."</a></p>";
 	}
 	else
 	{
