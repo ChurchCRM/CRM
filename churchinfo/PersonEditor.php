@@ -184,6 +184,30 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		}
 	}
 
+	// Validate Email
+	if (strlen($sEmail) > 0)
+	{
+		if ( checkEmail($sEmail) == false ) {
+			$sEmailError = "<span style=\"color: red; \">" 
+								. gettext("Email is Not Valid") . "</span>";
+			$bErrorFlag = true;
+		} else {
+			$sEmail = $sEmail;
+		}
+	}
+	
+	// Validate Work Email
+	if (strlen($sWorkEmail) > 0)
+	{
+		if ( checkEmail($sWorkEmail) == false ) {
+			$sWorkEmailError = "<span style=\"color: red; \">" 
+								. gettext("Work Email is Not Valid") . "</span>";
+			$bErrorFlag = true;
+		} else {
+			$sWorkEmail = $sWorkEmail;
+		}
+	}
+
 	// Validate all the custom fields
 	while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
 	{
@@ -659,12 +683,12 @@ require "Include/Header.php";
 						else
 							echo gettext("Email:") . "</td>";
 					?>
-				<td class="TextColumnWithBottomBorder"><input type="text" name="Email" value="<?php echo htmlentities(stripslashes($sEmail)); ?>" size="30" maxlength="100"></td>
+				<td class="TextColumnWithBottomBorder"><input type="text" name="Email" value="<?php echo htmlentities(stripslashes($sEmail)); ?>" size="30" maxlength="100"><font color="red"><?php echo $sEmailError ?></font></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Work / Other Email:"); ?></td>
-				<td class="TextColumnWithBottomBorder"><input type="text" name="WorkEmail" value="<?php echo htmlentities(stripslashes($sWorkEmail)); ?>" size="30" maxlength="100"></td>
+				<td class="TextColumnWithBottomBorder"><input type="text" name="WorkEmail" value="<?php echo htmlentities(stripslashes($sWorkEmail)); ?>" size="30" maxlength="100"><font color="red"><?php echo $sWorkEmailError ?></font></td>
 			</tr>
 
 			<tr>
