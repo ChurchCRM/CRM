@@ -214,10 +214,22 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 								. gettext("Not a valid Wedding Date") . "</span>";
 			$bErrorFlag = true;
 		} else {
-			$dWeddingDate = "'" . $dateString . "'";
+			$dWeddingDate = $dateString;
 		}
 	} else {
 		$dWeddingDate = "NULL";
+	}
+
+	// Validate Email
+	if (strlen($sEmail) > 0)
+	{
+		if ( checkEmail($sEmail) == false ) {
+			$sEmailError = "<span style=\"color: red; \">" 
+								. gettext("Email is Not Valid") . "</span>";
+			$bErrorFlag = true;
+		} else {
+			$sEmail = $sEmail;
+		}
 	}
 
 	// Validate all the custom fields
@@ -285,8 +297,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						$sHomePhone				. "','" . 
 						$sWorkPhone				. "','" . 
 						$sCellPhone				. "','" . 
-						$sEmail					. "'," . 
-						$dWeddingDate			. ",'" . 
+						$sEmail					. "','" . 
+						$dWeddingDate			. "','" . 
 						date("YmdHis")			. "'," . 
 						$_SESSION['iUserID']	. "," . 
 						$bSendNewsLetterString	. "," . 
@@ -312,7 +324,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						"fam_WorkPhone='" . $sWorkPhone . "'," .
 						"fam_CellPhone='" . $sCellPhone . "'," .
 						"fam_Email='" . $sEmail . "'," .
-						"fam_WeddingDate=" . $dWeddingDate . "," .
+						"fam_WeddingDate='" . $dWeddingDate . "'," .
 						"fam_Envelope=" . $nEnvelope . "," .
 						"fam_DateLastEdited='" . date("YmdHis") . "'," .
 						"fam_EditedBy = " . $_SESSION['iUserID'] . "," .
@@ -655,7 +667,7 @@ require "Include/Header.php";
 
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Email:"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="Email" value="<?php echo htmlentities(stripslashes($sEmail)); ?>" size="30" maxlength="100"></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="Email" value="<?php echo htmlentities(stripslashes($sEmail)); ?>" size="30" maxlength="100"><font color="red"><?php echo "<BR>" . $sEmailError ?></font></td>
 	</tr>
 <?php if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
 	<tr>
