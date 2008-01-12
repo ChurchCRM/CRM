@@ -56,7 +56,7 @@
 	<option value="Croatia"<?php if ($sCountry == "Croatia") { echo " selected"; } ?>>Croatia
 	<option value="Cuba"<?php if ($sCountry == "Cuba") { echo " selected"; } ?>>Cuba
 	<option value="Cyprus"<?php if ($sCountry == "Cyprus") { echo " selected"; } ?>>Cyprus
-	<option value="Czechoslovakia"<?php if ($sCountry == "Czechoslovakia") { echo " selected"; } ?>>Czechoslovakia
+	<option value="Czech"<?php if ($sCountry == "Czech") { echo " selected"; } ?>>Czech
 	<option value="Denmark"<?php if ($sCountry == "Denmark") { echo " selected"; } ?>>Denmark
 	<option value="Djibouti"<?php if ($sCountry == "Djibouti") { echo " selected"; } ?>>Djibouti
 	<option value="Dominica"<?php if ($sCountry == "Dominica") { echo " selected"; } ?>>Dominica
