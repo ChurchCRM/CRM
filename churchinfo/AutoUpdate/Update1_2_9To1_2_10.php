@@ -637,6 +637,48 @@ $sSQL = "ALTER IGNORE TABLE `event_attend` ADD UNIQUE (`event_id`, `person_id`) 
 if (!RunQuery($sSQL, FALSE))
     break;
 
+$sSQL = "INSERT INTO `queryparameteroptions_qpo` VALUES ('', '15', 'Email', 'per_Email') ";
+if (!RunQuery($sSQL, FALSE))
+    break;
+
+$sSQL = "INSERT INTO `queryparameteroptions_qpo` VALUES ('', '15', 'WorkEmail', 'per_WorkEmail') ";
+if (!RunQuery($sSQL, FALSE))
+    break;
+
+$queryText = <<<EOD
+Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email.
+EOD;
+
+$sSQL = "UPDATE `queryparameters_qrp` SET `qrp_Description` ='" .
+		mysql_real_escape_string($queryText) .
+		"' WHERE `queryparameters_qrp`.`qrp_ID` = 14 ";
+if (!RunQuery($sSQL, FALSE))
+    break;
+
+$queryText = <<<EOD
+SELECT per_ID as AddToCart, CONCAT('<a href=PersonView.php?PersonID=',per_ID,'>',per_FirstName,' ',per_MiddleName,' ',per_LastName,'</a>') AS Name, 
+per_City as City, per_State as State,
+per_Zip as ZIP, per_HomePhone as HomePhone, per_Email as Email, per_WorkEmail as WorkEmail
+FROM person_per 
+WHERE ~searchwhat~ LIKE '%~searchstring~%'
+EOD;
+
+$sSQL = "UPDATE `query_qry` SET `qry_SQL` = '" . 
+         mysql_real_escape_string($queryText) . 
+         "' WHERE `query_qry`.`qry_ID` = 15 "; 
+if (!RunQuery($sSQL, FALSE))
+	break;
+
+$queryText = <<<EOD
+Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email.
+EOD;
+
+$sSQL = "UPDATE `query_qry` SET `qry_Description` = '" . 
+         mysql_real_escape_string($queryText) . 
+         "' WHERE `query_qry`.`qry_ID` = 15 "; 
+if (!RunQuery($sSQL, FALSE))
+	break;
+
 // If we got this far it means all queries ran without error.  It is okay to update
 // the version information.
 
