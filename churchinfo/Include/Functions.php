@@ -1811,8 +1811,8 @@ function MySQLquote ($sfield)
 //domainCheck verifies domain is valid using dns, verify uses SMTP to verify actual account exists on server
 
 function checkEmail($email, $domainCheck = false, $verify = false, $return_errors=false) {
-    global $debug;
-    if($debug) {echo "<pre>";}
+    global $checkEmailDebug;
+    if($checkEmailDebug) {echo "<pre>";}
     # Check syntax with regex
     if (preg_match('/^([a-zA-Z0-9\._\+-]+)\@((\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,7}|[0-9]{1,3})(\]?))$/', $email, $matches)) {
         $user = $matches[1];
@@ -1837,7 +1837,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
                 # Check if mailers accept mail
                 for($n=0; $n < $total; $n++) {
                     # Check if socket can be opened
-                    if($debug) { echo "Checking server $mailers[$n]...\n";}
+                    if($checkEmailDebug) { echo "Checking server $mailers[$n]...\n";}
                     $connect_timeout = 2;
                     $errno = 0;
                     $errstr = 0;
@@ -1845,10 +1845,10 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
                     # Try to open up socket
                     if($sock = @fsockopen($mailers[$n], 25, $errno , $errstr, $connect_timeout)) {
                         $response = fgets($sock);
-                        if($debug) {echo "Opening up socket to $mailers[$n]... Succes!\n";}
+                        if($checkEmailDebug) {echo "Opening up socket to $mailers[$n]... Succes!\n";}
                         stream_set_timeout($sock, 5);
                         $meta = stream_get_meta_data($sock);
-                        if($debug) { echo "$mailers[$n] replied: $response\n";}
+                        if($checkEmailDebug) { echo "$mailers[$n] replied: $response\n";}
                         $cmds = array(
                             "HELO $sSMTPHost",  # Be sure to set this correctly!
                             "MAIL FROM: <$probe_address>",
@@ -1865,14 +1865,14 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
                             fputs($sock, "$cmd\r\n");
                             $response = fgets($sock, 4096);
                             $t = 1000*(microtime(true)-$before);
-                            if($debug) {echo htmlentities("$cmd\n$response") . "(" . sprintf('%.2f', $t) . " ms)\n";}
+                            if($checkEmailDebug) {echo htmlentities("$cmd\n$response") . "(" . sprintf('%.2f', $t) . " ms)\n";}
                             if(!$meta['timed_out'] && preg_match('/^5\d\d[ -]/', $response)) {
                                 $error = "Unverified address: $mailers[$n] said: $response";
                                 break 2;
                             }
                         }
                         fclose($sock);
-                        if($debug) { echo "Succesful communication with $mailers[$n], no hard errors, assuming OK";}
+                        if($checkEmailDebug) { echo "Succesful communication with $mailers[$n], no hard errors, assuming OK";}
                         break;
                     } elseif($n == $total-1) {
                         $error = "None of the mailservers listed for $domain could be contacted";
@@ -1885,7 +1885,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
     } else {
         $error = 'Address syntax not correct';
     }
-    if($debug) { echo "</pre>";}
+    if($checkEmailDebug) { echo "</pre>";}
     #echo "</pre>";
     if($return_errors) {
         # Give back details about the error(s).
