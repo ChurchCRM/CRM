@@ -612,6 +612,21 @@ $sSQL = "ALTER TABLE `event_attend` ADD `checkout_id` int(11)";
 if (!RunQuery($sSQL, FALSE))
     break;
 
+/*
+$sSQL = 'UPDATE `query_qry` SET `qry_SQL` = \'SELECT per_ID as AddToCart,CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\', per_FirstName,\' \', per_LastName,\'</a>\') AS Name, CONCAT(per_BirthMonth,\'/\',per_BirthDay,\'/\',per_BirthYear) AS \'Birth Date\', YEAR(CURRENT_DATE) - per_BirthYear - 1 AS \'Age\' FROM person_per WHERE DATE_ADD (CONCAT(per_BirthYear,\'-\',per_BirthMonth,\'-\',per_BirthDay), INTERVAL ~min~ YEAR) <= CURDATE() AND DATE_ADD (CONCAT(per_BirthYear,\'-\',per_BirthMonth,\'-\',per_BirthDay), INTERVAL (~max~ + 1 YEAR)  >= CURDATE()\' WHERE `query_qry`.`qry_ID` = 4  ;'; 
+RunQuery($sSQL, FALSE); // False means do not stop on error
+break;
+*/
+
+
+$sSQL = "ALTER IGNORE TABLE `event_attend` ADD UNIQUE (`event_id`) ";
+if (!RunQuery($sSQL, FALSE))
+    break;
+
+$sSQL = "ALTER IGNORE TABLE `event_attend` ADD UNIQUE (`person_id`) ";
+if (!RunQuery($sSQL, FALSE))
+    break;
+
 // If we got this far it means all queries ran without error.  It is okay to update
 // the version information.
 
