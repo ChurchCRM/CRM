@@ -565,7 +565,7 @@ if (!RunQuery($sSQL, FALSE))
 
 $sSQL = "ALTER TABLE `userconfig_ucfg` ADD `ucfg_cat` VARCHAR( 20 ) NOT NULL AFTER `ucfg_permission` ";
 if (!RunQuery($sSQL, FALSE))
-    break;
+   break;
 
 $sSQL = "UPDATE `userconfig_ucfg` SET `ucfg_cat` = 'SECURITY' WHERE `userconfig_ucfg`.`ucfg_per_id` =0 AND `userconfig_ucfg`.`ucfg_id` =5 ";
 if (!RunQuery($sSQL, FALSE))
