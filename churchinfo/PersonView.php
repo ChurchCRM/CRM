@@ -204,6 +204,7 @@ if ($bOkToEdit) {
 
 if ($_SESSION['bDeleteRecords']) { echo "<a class=\"SmallText\" href=\"SelectDelete.php?mode=person&PersonID=" . $per_ID . "\">" . gettext("Delete this Record") . "</a> | " ; }
 ?>
+<a href="VCardCreate.php?PersonID=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Create vCard"); ?></a> |
 <a href="PrintView.php?PersonID=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Printable Page"); ?></a>
 | <a href="PersonView.php?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Add to Cart"); ?></a>
 
@@ -805,6 +806,7 @@ if ($previous_link_text) {
 if ($bOkToEdit) { echo "<a class=\"SmallText\" href=\"PersonEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit this Record") . "</a> | "; }
 if ($_SESSION['bDeleteRecords']) { echo "<a class=\"SmallText\" href=\"SelectDelete.php?mode=person&PersonID=" . $per_ID . "\">" . gettext("Delete this Record") . "</a> | " ; }
 ?>
+<a href="VCardCreate.php?PersonID=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Create vCard"); ?></a> |
 <a href="PrintView.php?PersonID=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Printable Page"); ?></a>
 | <a href="PersonView.php?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Add to Cart"); ?></a>
 
