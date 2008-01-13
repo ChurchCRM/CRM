@@ -633,11 +633,7 @@ $sSQL = "UPDATE `query_qry` SET `qry_SQL` = '" .
 if (!RunQuery($sSQL, FALSE))
 	break;
 
-$sSQL = "ALTER IGNORE TABLE `event_attend` ADD UNIQUE (`event_id`) ";
-if (!RunQuery($sSQL, FALSE))
-    break;
-
-$sSQL = "ALTER IGNORE TABLE `event_attend` ADD UNIQUE (`person_id`) ";
+$sSQL = "ALTER IGNORE TABLE `event_attend` ADD UNIQUE (`event_id`, `person_id`) ";
 if (!RunQuery($sSQL, FALSE))
     break;
 
