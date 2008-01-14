@@ -193,7 +193,6 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			  ($_SESSION['bEditSelf'] && $per_ID==$_SESSION['iUserID']) ||
 			  ($_SESSION['bEditSelf'] && $per_fam_ID==$_SESSION['iFamID'])
 			 );   
-
 if ($previous_link_text) {
 	echo "$previous_link_text | ";
 }
@@ -221,6 +220,8 @@ if ($_SESSION['bAdmin'])
 if ($next_link_text) {
 	echo " | $next_link_text";
 }
+echo " | <a class=\"SmallText\" href=\"SelectList.php?mode=person\">" .
+gettext("List View") . "</a> ";
 
 ?>
 
@@ -823,6 +824,8 @@ if ($_SESSION['bAdmin'])
 if ($next_link_text) {
 	echo " | $next_link_text";
 }
+echo " | <a class=\"SmallText\" href=\"SelectList.php?mode=person\">" .
+gettext("List View") . "</a> ";
 ?>
 
 <p class="SmallText">
