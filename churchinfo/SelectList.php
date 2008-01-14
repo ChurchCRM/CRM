@@ -48,6 +48,26 @@ while ($aRow = mysql_fetch_array($rsFamilyRole))
 	$aFamilyRoleName[intval($lst_OptionID)]=$lst_OptionName;
 }
 
+// Create array with Person Property
+
+ // Get the total number of Person Properties (p) in table Property_pro
+$sSQL = "SELECT * FROM property_pro WHERE pro_Class=\"p\"";
+$rsPro = RunQuery($sSQL);
+$ProRows = mysql_num_rows($rsPro);
+// Set a count variable
+$i = 1;
+
+$sPersonPropertySQL  = "SELECT * FROM property_pro WHERE pro_Class=\"p\" ORDER BY pro_Name";
+$rsPersonProperty = RunQuery($sPersonPropertySQL);
+unset($aPersonPropertyName);
+$aPersonPropertyName[0] = "Unassigned";
+while ( $i <= $ProRows ) {
+	$aRow = mysql_fetch_array($rsPersonProperty);
+	extract($aRow);
+	$aPersonPropertyName[intval($pro_ID)]=$pro_Name;
+	$i++;
+}
+
 // Create array with Group Type Information (lst_ID = 3)
 $sGroupTypeSQL  = "SELECT * FROM list_lst WHERE lst_ID=3 ORDER BY lst_OptionSequence";
 $rsGroupTypes = RunQuery($sGroupTypeSQL);
@@ -124,6 +144,8 @@ if ($sMode == 'person')
 		$iFamilyRole = FilterInput($_GET["FamilyRole"],'int');
     if (strlen($_GET["Gender"])) 
 		$iGender = FilterInput($_GET["Gender"],'int');
+	if (strlen($_GET["PersonProperties"]))
+		$iPersonProperty = FilterInput($_GET["PersonProperties"],'int');
     if (strlen($_GET["grouptype"]))
     {
         $iGroupType = FilterInput($_GET["grouptype"],'int');
@@ -258,6 +280,25 @@ if ($iMode == 1 || $iMode == 2)
 		}
     }
 
+			$sPersonPropertyWhereExt = ""; // Person Property Filtering Logic
+		$sJoinExt2 = "";
+		if (isset($iPersonProperty)) {
+			if ($iPersonProperty >= 0)
+			{	
+				$sJoinExt2 = " LEFT JOIN record2property_r2p ON per_ID = r2p_record_ID "; // per_ID should match the r2p_record_ID
+				$sPersonPropertyWhereExt =	" AND r2p_pro_ID = ".$iPersonProperty." "; 
+			}
+			else // >>>> THE SQL CODE BELOW IS NOT TESTED PROPERLY <<<<<
+			{
+				$sJoinExt2 = " ";
+				$sPersonPropertyWhereExt =	" AND per_ID NOT IN (SELECT r2p_record_ID ". 
+									" FROM record2property_r2p ".
+									" WHERE r2p_pro_ID = ".($iPersonProperty+$iTenThousand).")";
+			}
+		$sJoinExt .= $sJoinExt2; // We add our new SQL statement to the JoinExt variable from the group type.
+		}	
+    
+
     if (isset($sFilter))
     {
         // Check if there's a space
@@ -303,10 +344,10 @@ if ($iMode == 1 || $iMode == 2)
 
 	$sGroupBySQL = " GROUP BY per_ID";
 
-    $sWhereExt =	$sGroupWhereExt . $sFilterWhereExt . $sClassificationWhereExt .
-					$sFamilyRoleWhereExt . $sGenderWhereExt . $sLetterWhereExt;
-
-    $sSQL = $sBaseSQL . $sJoinExt . " WHERE 1" . $sWhereExt . $sGroupBySQL;
+     $sWhereExt =	$sGroupWhereExt . $sFilterWhereExt . $sClassificationWhereExt .
+					$sFamilyRoleWhereExt . $sGenderWhereExt . $sLetterWhereExt . $sPersonPropertyWhereExt;
+    
+	$sSQL = $sBaseSQL . $sJoinExt . " WHERE 1" . $sWhereExt . $sGroupBySQL;
 
 
 	// URL to redirect back to this same page
@@ -324,6 +365,7 @@ if ($iMode == 1 || $iMode == 2)
 	if (isset($_GET["grouproleid"])) $sRedirect .= "grouproleid=" . $_GET["grouproleid"] . "&amp;";
 	if (isset($_GET["Number"])) $sRedirect .= "Number=" . $_GET["Number"] . "&amp;";
 	if (isset($_GET["Result_Set"])) $sRedirect .= "Result_Set=" . $_GET["Result_Set"] . "&amp;";
+	if (isset($_GET["PersonProperties"])) $sRedirect .= "PersonProperties=" . $_GET["PersonProperties"] . "&amp;";
 
 	$sRedirect = substr($sRedirect,0,-5); // Chop off last &amp;
 
@@ -520,6 +562,33 @@ if ($iMode == 1 || $iMode == 2)
 					echo '<option value="'.($key-$iTenThousand).'"';
 					if (isset($iFamilyRole))
 						if ($iFamilyRole == ($key-$iTenThousand))
+							echo ' selected ';
+					echo '>! '.$value.'</option>';
+				}
+
+				echo '</select>';
+
+				// Person Property Drop Down Box
+				echo '<select name="PersonProperties" onchange="this.form.submit()">';
+				echo '<option value="" ';
+				if (!isset($iPersonProperty)) 
+					echo ' selected ';
+				echo '>' . gettext("All Contact Properties") . '</option>';
+
+				foreach ($aPersonPropertyName as $key => $value) 
+				{
+					echo '<option value="'.$key.'"';
+					if (isset($iPersonProperty))
+						if ($iPersonProperty == $key)
+							echo ' selected ';
+					echo '>'.$value.'</option>';
+				}
+
+				foreach ($aPersonPropertyName as $key => $value)
+				{
+					echo '<option value="'.($key-$iTenThousand).'"';
+					if (isset($iPersonProperty))
+						if ($iPersonProperty == ($key-$iTenThousand))
 							echo ' selected ';
 					echo '>! '.$value.'</option>';
 				}
@@ -752,8 +821,10 @@ if ($iMode == 1 || $iMode == 2)
                             echo '<input type="hidden" name="Gender" value="';
 							echo $iGender . '">'; }
                         if(isset($iGroupType)) {
-                            echo '<input type="hidden" name="grouptype" value="';
-							echo $iGroupType . '">'; }
+                            echo '<input type="hidden" name="grouptype" value="';							echo $iGroupType . '">'; }
+						if(isset($iPersonProperty)) {
+                            echo '<input type="hidden" name="PersonProperties" value="';
+							echo $iPersonProperty . '">'; }
                         if(isset($iGroupID)) {
                             echo '<input type="hidden" name="groupid" value="';
 							echo $iGroupID . '">'; }
@@ -848,7 +919,10 @@ if(isset($iClassification))
 if(isset($iFamilyRole)) 
 	echo '<input type="hidden" name="FamilyRole" value="' .$iFamilyRole. '">';
 if(isset($iGender)) 
-	echo '<input type="hidden" name="Gender" value="' .$iGender. '">'; 
+	echo '<input type="hidden" name="Gender" value="' .$iGender. '">';
+if(isset($iPersonProperty)) {
+	echo '<input type="hidden" name="PersonProperties" value="';
+	echo $iPersonProperty . '">'; }
 if(isset($iGroupType)) 
 	echo '<input type="hidden" name="grouptype" value="' .$iGroupType. '">'; 
 if(isset($iGroupID))
