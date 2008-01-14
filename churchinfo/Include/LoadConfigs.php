@@ -34,6 +34,14 @@ $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD)
 mysql_select_db($sDATABASE) 
         or die ('Cannot select the MySQL database because: ' . mysql_error());
 
+$sql = "SHOW TABLES FROM $sDATABASE";
+$tablecheck = mysql_num_rows( mysql_query($sql) );
+
+if (!$tablecheck) {
+    die ("There are no tables in installed in your database.  Please install the tables.");
+}
+
+
 // Avoid consecutive slashes when $sRootPath = '/'
 if (strlen($sRootPath) < 2) $sRootPath = '';
 
