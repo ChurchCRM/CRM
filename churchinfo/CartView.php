@@ -99,6 +99,11 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/LabelFunctions.php";
 
+if (isset($_POST["rmEmail"]))
+{
+ 	 rmEmail();
+}
+
 if (isset($_POST["cartcsv"]))
 {
 
@@ -576,6 +581,13 @@ if ($bCreateDirectory)
 
             echo '<input type="submit" class="icButton" name="submit" '.
                      'value ="'.gettext("Send Email").'">'."\n</form>";
+			// Create button to Delete this message
+            echo "</td>\n<td>";
+			echo '<form method="post" action="CartView.php">'."\n";
+			echo '<input type="hidden" name="rmEmail" value="true">'."\n";
+
+            echo '&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="icTinyButton" name="rmEail" '.
+                 'value ="'.gettext("Delete Email").'">'."\n</form>";
 
         } elseif ($sEmailForm == 'resumeorabort') {
 
@@ -666,4 +678,21 @@ if ($bCreateDirectory)
 }
 
 require "Include/Footer.php";
+
+function rmEmail()
+{
+ 		$iUserID = $_SESSION['iUserID']; // Read into local variable for faster access
+ 		// Delete message from emp
+    $sSQL = "DELETE FROM email_message_pending_emp ".
+            "WHERE emp_usr_id='$iUserID'";
+    RunQuery($sSQL);
+
+    // Delete recipients from erp (not really needed, this should have already happened)
+    // (no harm in trying again)
+    $sSQL = "DELETE FROM email_recipient_pending_erp ".
+            "WHERE erp_usr_id='$iUserID'";
+    RunQuery($sSQL);
+		echo '<font class="SmallError">Deleted Email message succesfuly</font>';
+}
+
 ?>
