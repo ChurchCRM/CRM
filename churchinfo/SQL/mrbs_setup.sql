@@ -125,3 +125,9 @@ INSERT INTO `menuconfig_mcf` VALUES (61, 'booking', 'root', 1, 'Booking', '', 'R
 INSERT INTO `menuconfig_mcf` VALUES (62, 'overview', 'booking', 0, 'Reservation', 'mrbs/index.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1);
 INSERT INTO `menuconfig_mcf` VALUES (63, 'bookingreport', 'booking', 0, 'Reports', 'mrbs/report.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2);
 INSERT INTO `menuconfig_mcf` VALUES (84, 'MRBSSeeting', 'admin', 0, 'MRBS Seeting', 'SettingsGeneral.php?Cat=MRBS', '', 'bAdmin', NULL, 0, 0, NULL, 1, 14);
+
+--
+-- Insert rows to Table userconfig_ucfg
+-- to add access control to mrbs for admin
+INSERT INTO `userconfig_ucfg` VALUES (0, 8, 'bEditMRBSBooking', '', 'boolean', 'Reserve resources in MRBS system, modify reservations and delete self reservations', 'TRUE', '');
+INSERT INTO `userconfig_ucfg` VALUES (0, 9, 'bAddMRBSResource', '', 'boolean', 'Add, modify and delete resources in MRBS, modify other user''s reservations.', 'TRUE', '');
