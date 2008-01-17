@@ -30,8 +30,8 @@ INSERT INTO `config_cfg` VALUES (2014, 'sMRBS_mon_v_entries_dtl', 'both', 'text'
 -- to add access control to mrbs for admin
 --
 
-INSERT INTO `userconfig_ucfg` VALUES (0, 8, 'bEditMRBSBooking', '', 'boolean', 'Reserve resources in MRBS system, modify reservations and delete self reservations', 'TRUE');
-INSERT INTO `userconfig_ucfg` VALUES (0, 9, 'bAddMRBSResource', '', 'boolean', 'Add, modify and delete resources in MRBS, modify other user''s reservations.', 'TRUE');
+INSERT INTO `userconfig_ucfg` VALUES (0, 8, 'bEditMRBSBooking', '', 'boolean', 'Reserve resources in MRBS system, modify reservations and delete self reservations', 'TRUE', '');
+INSERT INTO `userconfig_ucfg` VALUES (0, 9, 'bAddMRBSResource', '', 'boolean', 'Add, modify and delete resources in MRBS, modify other user''s reservations.', 'TRUE', '');
 
 -- --------------------------------------------------------
 
