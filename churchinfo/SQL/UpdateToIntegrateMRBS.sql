@@ -10,20 +10,20 @@
 
 --  Insert rows to table `config_cfg`
 -- 
-INSERT INTO `config_cfg` VALUES (2001, 'sMRBS_eable_periods', '', 'boolean', '0', 'Use "clock" based intervals (FALSE) or user defined periods (TRUE).  If user-defined periods are used then sMRBS_resolution, sMRBS_morningstarts, sMRBS_eveningends, sMRBS_morningstart_min and sMRBS_eveningends_min are ignored.', 'General');
-INSERT INTO `config_cfg` VALUES (2002, 'sMRBS_resolution', '1800', 'number', '1800', 'Resolution - what blocks can be booked, in seconds.', 'General');
-INSERT INTO `config_cfg` VALUES (2003, 'sMRBS_morningstarts', '7', 'number', '7', 'Start of day, integer hours only, 0-23.\r\nsMRBS_morningstarts must be < sMRBS_eveningends. See also sMRBS_eveningends.', 'General');
-INSERT INTO `config_cfg` VALUES (2004, 'sMRBS_eveningends', '19', 'number', '19', 'endof day, integer hours only, 0-23.\r\nsMRBS_eveningends must be > sMRBS_eveningends. See also sMRBS_morningstarts.', 'General');
-INSERT INTO `config_cfg` VALUES (2005, 'sMRBS_morningstart_min', '0', 'number', '0', 'Minutes to add to sMRBS_morningstarts to get to the real start of the day. Be sure to consider the value of sMRBS_eveningends_min if you change this, so that you do not cause a day to finish before the start of the last period. ', 'General');
-INSERT INTO `config_cfg` VALUES (2006, 'sMRBS_eveningends_min', '0', 'number', '0', 'Minutes to add to sMRBS_eveningends hours to get the real end of the day.', 'General');
-INSERT INTO `config_cfg` VALUES (2007, 'sMRBS_weekstarts', '0', 'number', '0', 'Start of week: 0 for Sunday, 1 for Monday, 2 Ffor Tuesday etc.', 'General');
-INSERT INTO `config_cfg` VALUES (2008, 'sMRBS_dateformat', '0', 'number', '0', 'Trailer date format: 0 to show dates as "Jul 10", 1 for "10 Jul"', 'General');
-INSERT INTO `config_cfg` VALUES (2009, 'sMRBS_24hrs_format', '1', 'number', '1', 'Time format in pages. 0 to show dates in 12 hour format, 1 to show them in 24 hour format', 'General');
-INSERT INTO `config_cfg` VALUES (2010, 'sMRBS_default_rpt_days', '60', 'number', '60', 'Default report span in days', 'General');
-INSERT INTO `config_cfg` VALUES (2011, 'sMRBS_search_count', '20', 'number', '20', 'Results per page for searching', 'General');
-INSERT INTO `config_cfg` VALUES (2012, 'sMRBS_refresh_rate', '0', 'number', '0', 'Page refresh time (in seconds). Set to 0 to disable', 'General');
-INSERT INTO `config_cfg` VALUES (2013, 'sMRBS_area_list_fmt', 'list', 'text', 'list', 'should areas be shown as a list or a drop-down select box? (list / select)', 'General');
-INSERT INTO `config_cfg` VALUES (2014, 'sMRBS_mon_v_entries_dtl', 'both', 'text', 'both', 'Entries in monthly view can be shown as start/end slot, brief description or\r\nboth. Set to "description" for brief description, "slot" for time slot and "both" for both. Default is "both", but 6 entries per day are shown instead of 12.\r\n', 'General');
+INSERT INTO `config_cfg` VALUES (2001, 'sMRBS_eable_periods', '', 'boolean', '0', 'Use "clock" based intervals (FALSE) or user defined periods (TRUE).  If user-defined periods are used then sMRBS_resolution, sMRBS_morningstarts, sMRBS_eveningends, sMRBS_morningstart_min and sMRBS_eveningends_min are ignored.', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2002, 'sMRBS_resolution', '1800', 'number', '1800', 'Resolution - what blocks can be booked, in seconds.', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2003, 'sMRBS_morningstarts', '7', 'number', '7', 'Start of day, integer hours only, 0-23.\r\nsMRBS_morningstarts must be < sMRBS_eveningends. See also sMRBS_eveningends.', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2004, 'sMRBS_eveningends', '19', 'number', '19', 'endof day, integer hours only, 0-23.\r\nsMRBS_eveningends must be > sMRBS_eveningends. See also sMRBS_morningstarts.', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2005, 'sMRBS_morningstart_min', '0', 'number', '0', 'Minutes to add to sMRBS_morningstarts to get to the real start of the day. Be sure to consider the value of sMRBS_eveningends_min if you change this, so that you do not cause a day to finish before the start of the last period. ', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2006, 'sMRBS_eveningends_min', '0', 'number', '0', 'Minutes to add to sMRBS_eveningends hours to get the real end of the day.', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2007, 'sMRBS_weekstarts', '0', 'number', '0', 'Start of week: 0 for Sunday, 1 for Monday, 2 Ffor Tuesday etc.', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2008, 'sMRBS_dateformat', '0', 'number', '0', 'Trailer date format: 0 to show dates as "Jul 10", 1 for "10 Jul"', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2009, 'sMRBS_24hrs_format', '1', 'number', '1', 'Time format in pages. 0 to show dates in 12 hour format, 1 to show them in 24 hour format', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2010, 'sMRBS_default_rpt_days', '60', 'number', '60', 'Default report span in days', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2011, 'sMRBS_search_count', '20', 'number', '20', 'Results per page for searching', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2012, 'sMRBS_refresh_rate', '0', 'number', '0', 'Page refresh time (in seconds). Set to 0 to disable', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2013, 'sMRBS_area_list_fmt', 'list', 'text', 'list', 'should areas be shown as a list or a drop-down select box? (list / select)', 'General', NULL);
+INSERT INTO `config_cfg` VALUES (2014, 'sMRBS_mon_v_entries_dtl', 'both', 'text', 'both', 'Entries in monthly view can be shown as start/end slot, brief description or\r\nboth. Set to "description" for brief description, "slot" for time slot and "both" for both. Default is "both", but 6 entries per day are shown instead of 12.\r\n', 'General', NULL);
 
 --
 -- Insert rows to Table userconfig_ucfg
