@@ -35,6 +35,13 @@ INSERT INTO `userconfig_ucfg` VALUES (0, 9, 'bAddMRBSResource', '', 'boolean', '
 
 -- --------------------------------------------------------
 
+--
+-- Update the tables to automatically give CI admin access to MRBS
+--
+
+UPDATE `userconfig_ucfg` SET `ucfg_value` = '1' WHERE `ucfg_per_id` = 1 AND `ucfg_id` = 8 ;
+UPDATE `userconfig_ucfg` SET `ucfg_value` = '1' WHERE `ucfg_per_id` = 1 AND `ucfg_id` = 9 ;
+
 -- 
 -- Table structure for table `mrbs_area`
 -- 
