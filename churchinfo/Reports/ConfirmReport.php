@@ -150,8 +150,6 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$curY += $pdf->incrementY;
 	$curY += $pdf->incrementY;
 
-
-
 	$sSQL = "SELECT *, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole FROM person_per 
 				LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
 				LEFT JOIN list_lst fmr ON per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
@@ -165,6 +163,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$XBirthday = 135;
 	$XCellPhone = 155;
 	$XClassification = 180;
+	$XWorkPhone = 155;
 	$XRight = 208;
 
 	$pdf->SetFont("Times",'B',10);
@@ -196,6 +195,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		   $pdf->WriteAtCell ($XClassification, $curY, $XRight - $XClassification, gettext ("Member/Friend"));
 			$pdf->SetFont("Times",'',10);
 			$curY += $pdf->incrementY;
+
         }
 		$iPersonID = $per_ID;
 		$pdf->SetFont("Times",'B',10);
@@ -215,8 +215,10 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		$curY += $pdf->incrementY;
 // Missing the following information for the personal record: ??? Is this the place to put this data ???
 // Work Phone
-		$pdf->WriteAt ($XCellPhone, $curY, "W:" . $per_WorkPhone);
+		$pdf->WriteAtCell ($XWorkPhone, $curY, $XRight - $XWorkPhone, "Work Phone:" . $per_WorkPhone);
 		$curY += $pdf->incrementY;
+		$curY += $pdf->incrementY;
+
 // *** All custom fields ***
 // Get the list of custom person fields
 
@@ -251,7 +253,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	                if($currentFieldData == "")
 	                {
 						$pdf->SetFont("Times",'B',6);
-	                    $pdf->WriteAtCell($xInc + $xSize,$curY, $xSize, "Unk");
+	                    $pdf->WriteAtCell($xInc + $xSize,$curY, $xSize, "");
 	                    $pdf->SetFont("Times",'',10);
 	                }
 	                else
