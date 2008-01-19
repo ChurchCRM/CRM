@@ -3,7 +3,7 @@ Room Booking System) that has been modified to work inside
 ChurchInfo.  To enable this feature:
 
 Install or upgrade to 1.2.10
-Run the SQL script SQL/UpdateToIntegrateMRBS.sql using PHPMyAdmin
+Run the SQL script SQL/mrbs_setup.sql using PHPMyAdmin
     or other MySQL utility.
 Log into ChurchInfo as an administrator, check to be sure the
     "Booking" menu has been added toward the right end of the menu.
