@@ -470,7 +470,7 @@ else
 
 					if (mysql_num_rows($rsCustomData) > 0 ){
 						// Write custom field data
-						mysql_data_seek($rsCustomFields,1);
+						mysql_data_seek($rsCustomFields,0);
 						while($aCustomField = mysql_fetch_array($rsCustomFields))
 						{
 							$custom_Field = "";
