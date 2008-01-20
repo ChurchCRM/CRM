@@ -87,6 +87,12 @@ $sMetaRefresh = '';  // Initialize to empty
 
 require_once("winlocalelist.php");
 
+if (!function_exists("stripos")) {
+  function stripos($str,$needle) {
+   return strpos(strtolower($str),strtolower($needle));
+  }
+}
+
 if (!(stripos(php_uname('s'), "windows") === false)) {
 //	$sLanguage = $lang_map_windows[strtolower($sLanguage)];
 	$sLang_Code = $lang_map_windows[strtolower($sLanguage)];
