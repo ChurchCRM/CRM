@@ -71,7 +71,7 @@ if (isset($_POST['save'])){
 
                 $sSQL = "INSERT INTO userconfig_ucfg VALUES ($iPersonID, $id, "
                 .       "'$ucfg_name', '$ucfg_value', '$ucfg_type', '$ucfg_tooltip', "
-                .       "$ucfg_permission)";
+                .       "$ucfg_permission, ' ')";
                 $rsResult = RunQuery($sSQL);
 
             } else {
