@@ -322,9 +322,9 @@ elseif ($next_link_text) {
 		} else {
 			// Some old / M$ browsers can't handle PNG's correctly.
 			if ($bDefectiveBrowser)
-				echo '<img border="0" src="Images/NoFamPhoto.gif" alt="'.gettext("No Family Photo Found").'><br><br><br>';
+				echo '<img border="0" src="Images/NoFamPhoto.gif" alt="'.gettext("No Family Photo Found").'"><br><br><br>';
 			else
-				echo '<img border="0" src="Images/NoFamPhoto.png" alt="'.gettext("No Family Photo Found").'><br><br><br>';
+				echo '<img border="0" src="Images/NoFamPhoto.png" alt="'.gettext("No Family Photo Found").'"><br><br><br>';
 
 			if ($bOkToEdit) {
 				if (isset($PhotoError)) 
