@@ -17,7 +17,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/CanvassUtilities.php";
-//require "Include/GeoCoder.php";
+require "Include/GeoCoder.php";
 
 //Set the page title
 $sPageTitle = gettext("Family Editor");
