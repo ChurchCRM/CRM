@@ -17,7 +17,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/CanvassUtilities.php";
-require "Include/GeoCoder.php";
+//require "Include/GeoCoder.php";
 
 //Set the page title
 $sPageTitle = gettext("Family Editor");
@@ -214,7 +214,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 								. gettext("Not a valid Wedding Date") . "</span>";
 			$bErrorFlag = true;
 		} else {
-			$dWeddingDate = $dateString;
+			$dWeddingDate = "'$dateString'";
 		}
 	} else {
 		$dWeddingDate = "NULL";
@@ -297,8 +297,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						$sHomePhone				. "','" . 
 						$sWorkPhone				. "','" . 
 						$sCellPhone				. "','" . 
-						$sEmail					. "','" . 
-						$dWeddingDate			. "','" . 
+						$sEmail					. "'," . 
+						$dWeddingDate			. ",'" . 
 						date("YmdHis")			. "'," . 
 						$_SESSION['iUserID']	. "," . 
 						$bSendNewsLetterString	. "," . 
@@ -324,7 +324,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						"fam_WorkPhone='" . $sWorkPhone . "'," .
 						"fam_CellPhone='" . $sCellPhone . "'," .
 						"fam_Email='" . $sEmail . "'," .
-						"fam_WeddingDate='" . $dWeddingDate . "'," .
+						"fam_WeddingDate=" . $dWeddingDate . "," .
 						"fam_Envelope=" . $nEnvelope . "," .
 						"fam_DateLastEdited='" . date("YmdHis") . "'," .
 						"fam_EditedBy = " . $_SESSION['iUserID'] . "," .
