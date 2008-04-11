@@ -140,8 +140,8 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	}
 
 	// If they entered a full date, see if it's valid
-	if ($updateBirthYear == 1) 
-	{
+//	if ($updateBirthYear == 1) 
+//	{
 		if (strlen($iBirthYear) > 0)
 		{
 			if ($iBirthYear == 0) { // If zero set to NULL
@@ -156,7 +156,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 				}
 			}
 		}
-	}
+//	}
 
 	// Validate Friend Date if one was entered
 	if (strlen($dFriendDate) > 0)
@@ -234,9 +234,11 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		if (!$bNoFormat_CellPhone) $sCellPhone = CollapsePhoneNumber($sCellPhone,$sPhoneCountry);
 
 		//If no birth year, set to NULL
-		if ((strlen($iBirthYear) < 4) &&  $updateBirthYear)
+		if ((strlen($iBirthYear) != 4) )	
 		{
 			$iBirthYear = "NULL";
+		} else {
+			$iBirthYear = "'$iBirthYear'";
 		}
 
 		// New Family (add)
@@ -265,8 +267,8 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 			if (!$_SESSION['bFinance'] || strlen($sEnvelope) < 1)
 				$sEnvelope = "NULL";
 
-			$sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags) 
-			         VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "','" . $iBirthMonth . "','" . $iBirthDay . "','" . $iBirthYear . "'," . $sEnvelope . ",'" . $iFamily . "','" . $iFamilyRole . "',";
+			$sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags ) 
+			         VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . "," . $iBirthDay . ", " . $iBirthYear . " ," . $sEnvelope . "," . $iFamily . "," . $iFamilyRole . ",";
 			if ( strlen($dMembershipDate) > 0 )
 				$sSQL .= "\"" . $dMembershipDate . "\"";
 			else
@@ -277,8 +279,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 				$sSQL .= "\"" . $dFriendDate . "\"";
 			else
 				$sSQL .= "NULL";
-
-			$sSQL .= "," . $per_Flags;
+			$sSQL .= ", " . $per_Flags;
 			$sSQL .= ")";
 
 			$bGetKeyBack = True;
@@ -286,8 +287,8 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		// Existing person (update)
 		} else {
 
-			$sBirthYear = ($iupdateBirthYear & 1) ? "per_BirthYear= '" . $iBirthYear. "', " : "";
-			$sSQL = "UPDATE person_per SET per_Title = '" . $sTitle . "',per_FirstName = '" . $sFirstName . "',per_MiddleName = '" . $sMiddleName . "', per_LastName = '" . $sLastName . "', per_Suffix = '" . $sSuffix . "', per_Gender = " . $iGender . ", per_Address1 = '" . $sAddress1 . "', per_Address2 = '" . $sAddress2 . "', per_City = '" . $sCity . "', per_State = '" . $sState . "', per_Zip = '" . $sZip . "', per_Country = '" . $sCountry . "', per_HomePhone = '" . $sHomePhone . "', per_WorkPhone = '" . $sWorkPhone . "', per_CellPhone = '" . $sCellPhone . "', per_Email = '" . $sEmail . "', per_WorkEmail = '" . $sWorkEmail . "', per_BirthMonth = 1" . $iBirthMonth . "1, per_BirthDay = '" . $iBirthDay . "', " .$sBirthYear. " per_fam_ID = " . $iFamily . ", per_Fmr_ID = " . $iFamilyRole . ", per_cls_ID = " . $iClassification . ", per_MembershipDate = ";
+			//$sBirthYear = ($iupdateBirthYear & 1) ? "per_BirthYear=" . $iBirthYear. ", " : "";
+			$sSQL = "UPDATE person_per SET per_Title = '" . $sTitle . "',per_FirstName = '" . $sFirstName . "',per_MiddleName = '" . $sMiddleName . "', per_LastName = '" . $sLastName . "', per_Suffix = '" . $sSuffix . "', per_Gender = " . $iGender . ", per_Address1 = '" . $sAddress1 . "', per_Address2 = '" . $sAddress2 . "', per_City = '" . $sCity . "', per_State = '" . $sState . "', per_Zip = '" . $sZip . "', per_Country = '" . $sCountry . "', per_HomePhone = '" . $sHomePhone . "', per_WorkPhone = '" . $sWorkPhone . "', per_CellPhone = '" . $sCellPhone . "', per_Email = '" . $sEmail . "', per_WorkEmail = '" . $sWorkEmail . "', per_BirthMonth = " . $iBirthMonth . ", per_BirthDay = " . $iBirthDay . ", " . "per_BirthYear = ". $iBirthYear. ", per_fam_ID = " . $iFamily . ", per_Fmr_ID = " . $iFamilyRole . ", per_cls_ID = " . $iClassification . ", per_MembershipDate = ";
 			if ( strlen($dMembershipDate) > 0 )
 				$sSQL .= "\"" . $dMembershipDate . "\"";
 			else
@@ -306,8 +307,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 			else
 				$sSQL .= "NULL";
 
-			$sSQL .= ",per_Flags=" . $per_Flags;
-
+			$sSQL .= ", per_Flags = " . $per_Flags;
 			$sSQL .= " WHERE per_ID = " . $iPersonID;
 
 			$bGetKeyBack = false;
@@ -726,19 +726,19 @@ require "Include/Header.php";
 <?php /* */?>
 				</td>
 			</tr>
-			<?php	if (($_SESSION['bSeePrivacyData']) || (strlen($iPersonID) < 1))
+			<?php /*	if (($_SESSION['bSeePrivacyData']) || (strlen($iPersonID) < 1))
 			{
 				$updateBirthYear = 1;
-			?>
+			*/ ?>
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("It must be in four-digit format (XXXX).<br>If the birth date is not known, you can still include the date (for age reference), although birthday will not be calculated."); ?>><?php echo gettext("Birth Year:"); ?></td>
 				<td class="TextColumn"><input type="text" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"><font color="red"><br><?php echo $sBirthYearError ?></font><br><font size="1"><?php echo gettext("Must be four-digit format."); ?></font></td>
 				<td class="TextColumn"><input type="checkbox" name="HideAge" value="1" <?php if ($bHideAge) echo " checked";?>><?php echo gettext("Hide Age"); ?></td>
 			</tr>
-			<?php
+			<?php /*
 			} else {
 				$updateBirthYear = 0;
-			} ?>
+			} */ ?>
 <?php /* ?>
 				 <input type="text" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"><font color="red"><br><?php echo $sBirthYearError ?></font><br><font size="2"><?php echo gettext("Leave year blank to hide age."); ?></font>
 
@@ -820,7 +820,7 @@ require "Include/Header.php";
 
 	<tr>
 		<td <?php if ($numCustomFields > 0) echo "colspan=\"2\""; ?> align="center">
-			<?php echo "<input type=\"hidden\" Name=\"updateBirthYear\" value=\"".$updateBirthYear."\">"; ?>
+			<?php // echo "<input type=\"hidden\" Name=\"updateBirthYear\" value=\"".$updateBirthYear."\">"; ?>
 			<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> name="PersonSubmit">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PersonSubmitAndAdd\">"; } ?>
 			<input type="button" class="icButton" <?php echo 'value="' . gettext("Cancel") . '"'; ?> name="PersonCancel" onclick="javascript:document.location='<?php if (strlen($iPersonID) > 0) { echo "PersonView.php?PersonID=" . $iPersonID; } else {echo "SelectList.php?mode=person"; } ?>';">

@@ -849,7 +849,7 @@ function PrintAge($Month,$Day,$Year,$Flags)
 //
 function FormatAge($Month,$Day,$Year,$Flags)
 {
-	if (($Flags & 1) ||!$_SESSION['bSeePrivacyData'])
+	if (($Flags & 1) ) //||!$_SESSION['bSeePrivacyData']
 	{
 		return;
 	
@@ -1590,9 +1590,9 @@ function formatNumber($iNumber,$sMode = 'integer')
 
 // Format a BirthDate
 // Optionally, the separator may be specified.  Default is YEAR-MN-DY
-function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator = "-", $bFlags="1")
+function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator = "-", $bFlags)
 {
-	if (!$_SESSION['bSeePrivacyData'])
+	if ($bFlags == 1)
 	{
 		$birthYear = "1000";
 	}
