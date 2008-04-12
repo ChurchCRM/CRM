@@ -700,15 +700,15 @@ require "Include/Header.php";
 				<td class="TextColumn">
 					<select name="BirthMonth">
 						<option value="0" <?php if ($iBirthMonth == 0) { echo "selected"; } ?>><?php echo gettext("Unknown"); ?></option>
-						<option value="01" <?php if ($iBirthMonth == 1) { echo "selected"; } ?>><?php echo gettext("January"); ?></option>
-						<option value="02" <?php if ($iBirthMonth == 2) { echo "selected"; } ?>><?php echo gettext("February"); ?></option>
-						<option value="03" <?php if ($iBirthMonth == 3) { echo "selected"; } ?>><?php echo gettext("March"); ?></option>
-						<option value="04" <?php if ($iBirthMonth == 4) { echo "selected"; } ?>><?php echo gettext("April"); ?></option>
-						<option value="05" <?php if ($iBirthMonth == 5) { echo "selected"; } ?>><?php echo gettext("May"); ?></option>
-						<option value="06" <?php if ($iBirthMonth == 6) { echo "selected"; } ?>><?php echo gettext("June"); ?></option>
-						<option value="07" <?php if ($iBirthMonth == 7) { echo "selected"; } ?>><?php echo gettext("July"); ?></option>
-						<option value="08" <?php if ($iBirthMonth == 8) { echo "selected"; } ?>><?php echo gettext("August"); ?></option>
-						<option value="09" <?php if ($iBirthMonth == 9) { echo "selected"; } ?>><?php echo gettext("September"); ?></option>
+						<option value="1" <?php if ($iBirthMonth == 1) { echo "selected"; } ?>><?php echo gettext("January"); ?></option>
+						<option value="2" <?php if ($iBirthMonth == 2) { echo "selected"; } ?>><?php echo gettext("February"); ?></option>
+						<option value="3" <?php if ($iBirthMonth == 3) { echo "selected"; } ?>><?php echo gettext("March"); ?></option>
+						<option value="4" <?php if ($iBirthMonth == 4) { echo "selected"; } ?>><?php echo gettext("April"); ?></option>
+						<option value="5" <?php if ($iBirthMonth == 5) { echo "selected"; } ?>><?php echo gettext("May"); ?></option>
+						<option value="6" <?php if ($iBirthMonth == 6) { echo "selected"; } ?>><?php echo gettext("June"); ?></option>
+						<option value="7" <?php if ($iBirthMonth == 7) { echo "selected"; } ?>><?php echo gettext("July"); ?></option>
+						<option value="8" <?php if ($iBirthMonth == 8) { echo "selected"; } ?>><?php echo gettext("August"); ?></option>
+						<option value="9" <?php if ($iBirthMonth == 9) { echo "selected"; } ?>><?php echo gettext("September"); ?></option>
 						<option value="10" <?php if ($iBirthMonth == 10) { echo "selected"; } ?>><?php echo gettext("October"); ?></option>
 						<option value="11" <?php if ($iBirthMonth == 11) { echo "selected"; } ?>><?php echo gettext("November"); ?></option>
 						<option value="12" <?php if ($iBirthMonth == 12) { echo "selected"; } ?>><?php echo gettext("December"); ?></option>
