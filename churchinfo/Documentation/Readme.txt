@@ -125,7 +125,8 @@ $sDATABASE = "churchinfo";
 
 Change these parameters to match the mysql server and user account you
 intend to use.  You MUST set the $sRootPath option properly as described 
-in Config.php.
+in Config.php.  It is NOT recommended that you use the ROOT account for
+accessing your database.
 
 
 4) You should be able to access ChurchInfo at "http://[server
