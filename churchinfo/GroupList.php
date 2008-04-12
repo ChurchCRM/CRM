@@ -36,9 +36,10 @@ if ($_SESSION['bManageGroups'])
 }
 
 //Get all group records
+//Added "OR grp_Type = 0" to display Unassigned Groups 
 $sSQL = "SELECT * FROM group_grp LEFT JOIN list_lst "
       . "ON grp_Type = lst_OptionID "
-      . "WHERE lst_ID='3' "
+      . "WHERE lst_ID='3' OR grp_Type = 0 "
       . "ORDER BY lst_OptionSequence, grp_Name";
 
 $rsGroups = RunQuery($sSQL);
