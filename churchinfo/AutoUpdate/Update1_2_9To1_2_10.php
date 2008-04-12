@@ -656,10 +656,14 @@ if (!RunQuery($sSQL, FALSE))
     break;
 
 $queryText = <<<EOD
-SELECT per_ID as AddToCart, CONCAT('<a href=PersonView.php?PersonID=',per_ID,'>',per_FirstName,' ',per_MiddleName,' ',per_LastName,'</a>') AS Name, 
-per_City as City, per_State as State,
-per_Zip as ZIP, per_HomePhone as HomePhone, per_Email as Email, per_WorkEmail as WorkEmail
+SELECT per_ID as AddToCart, CONCAT('<a
+href=PersonView.php?PersonID=',per_ID,'>',per_FirstName,'
+',per_MiddleName,' ',per_LastName,'</a>') AS Name, 
+fam_City as City, fam_State as State,
+fam_Zip as ZIP, per_HomePhone as HomePhone, per_Email as Email,
+per_WorkEmail as WorkEmail
 FROM person_per 
+RIGHT JOIN family_fam ON family_fam.fam_id = person_per.per_fam_id 
 WHERE ~searchwhat~ LIKE '%~searchstring~%'
 EOD;
 
@@ -676,6 +680,18 @@ EOD;
 $sSQL = "UPDATE `query_qry` SET `qry_Description` = '" . 
          mysql_real_escape_string($queryText) . 
          "' WHERE `query_qry`.`qry_ID` = 15 "; 
+if (!RunQuery($sSQL, FALSE))
+	break;
+
+$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Value` = 'fam_Zip' WHERE `queryparameteroptions_qpo`.`qpo_ID` = 6 "; 
+if (!RunQuery($sSQL, FALSE))
+	break;
+
+$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Value` = 'fam_State' WHERE `queryparameteroptions_qpo`.`qpo_ID` = 7 "; 
+if (!RunQuery($sSQL, FALSE))
+	break;
+
+$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Value` = 'fam_City' WHERE `queryparameteroptions_qpo`.`qpo_ID` = 8 "; 
 if (!RunQuery($sSQL, FALSE))
 	break;
 
