@@ -1592,7 +1592,7 @@ function formatNumber($iNumber,$sMode = 'integer')
 // Optionally, the separator may be specified.  Default is YEAR-MN-DY
 function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator = "-", $bFlags)
 {
-	if ($bFlags == 1)
+	if ($bFlags == 1 || $per_BirthYear == "" )	//Person Would Like their Age Hidden or BirthYear is not known.
 	{
 		$birthYear = "1000";
 	}
@@ -1618,7 +1618,7 @@ function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSepar
 			$dBirthDate = $birthYear . $sSeparator . $dBirthDate;
             if (checkdate($dBirthMonth,$dBirthDay,$birthYear))
             {
-               $dBirthDate = FormatDate($dBirthDate);
+			   $dBirthDate = FormatDate($dBirthDate);
 					if (substr($dBirthDate, -6, 6) == ", 1000")
 					{
 						$dBirthDate = str_replace(", 1000", "", $dBirthDate);
@@ -1626,7 +1626,7 @@ function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSepar
             }
 		}
 	}
-	elseif (is_numeric($birthYear))
+	elseif (is_numeric($birthYear) && $birthYear != 1000 )	//Person Would Like Their Age Hidden 
 	{
 		$dBirthDate = $birthYear;
 	}
