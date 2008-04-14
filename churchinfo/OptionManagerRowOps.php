@@ -45,7 +45,8 @@ switch ($mode) {
 		break;
 
 	case custom:
-		if (!$_SESSION['bAdmin'])
+	case famcustom:
+	if (!$_SESSION['bAdmin'])
 		{
 			Redirect("Menu.php");
 			exit;
@@ -90,6 +91,7 @@ switch ($mode) {
 
 		break;
 	case custom:
+	case famcustom:
 		$listID = FilterInput($_GET["ListID"],'int');
 		break;
 }
