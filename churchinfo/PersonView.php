@@ -438,7 +438,10 @@ gettext("List View") . "</a> ";
 						$currentData = trim($aCustomData[$custom_Field]);
 						if ($type_ID == 11) $custom_Special = $sPhoneCountry;
 						echo "<tr><td class=\"TinyLabelColumn\">" . $custom_Name . "</td>";
-						echo "<td class=\"TinyTextColumn\">" . displayCustomField($type_ID, $currentData, $custom_Special) . "</td></tr>";
+						echo "<td><div  class='TDscroll' id='customrow'>";
+						echo nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
+						echo "</div></td></tr>";						
+//						echo "<td class=\"TinyTextColumn\">" . displayCustomField($type_ID, $currentData, $custom_Special) . "</td></tr>";
 					}
 				}
 			?>
@@ -473,7 +476,10 @@ gettext("List View") . "</a> ";
 					$currentData = trim($aCustomData[$custom_Field]);
 					if ($type_ID == 11) $custom_Special = $sPhoneCountry;
 					echo "<tr><td class=\"TinyLabelColumn\">" . $custom_Name . "</td>";
-					echo "<td class=\"TinyTextColumn\">" . displayCustomField($type_ID, $currentData, $custom_Special) . "</td></tr>";
+					echo "<td><div  class='TDscroll' id='customrow'>";
+					echo nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
+					echo "</div></td></tr>";
+//					echo "<td class=\"TinyTextColumn\">" . displayCustomField($type_ID, $currentData, $custom_Special) . "</td></tr>";
 				}
 			?>
 			</table>

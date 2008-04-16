@@ -476,3 +476,13 @@ div.domTTMenuContent {
   padding: 1px 0;
   background-color: #E6E6E6;
 }
+
+.TDscroll {
+  border-top: solid 1px white;
+  background: #F7F5EA;
+  padding: 2px;
+  vertical-align: top;
+  width: auto;
+  height: 30px;
+  overflow:auto;
+}

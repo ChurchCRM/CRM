@@ -390,3 +390,13 @@ TD.ControlBreak
 	text-align: left;
 	font-family: arial, san-serif;
 }
+
+.TDscroll {
+  border-top: solid 1px white;
+  background: #EAECF8;
+  padding: 2px;
+  vertical-align: top;
+  width: auto;
+  height: 30px;
+  overflow:auto;
+}

@@ -724,9 +724,9 @@ function ConvertToBoolean($sInput)
 		{
 			$sInput = strtolower($sInput);
 			if (in_array($sInput,array("true","yes","si"))) {
-				return true;
+				return True;
 			} else {
-				return false;
+				return False;
 			}
 		}
 	}
@@ -984,10 +984,13 @@ function displayCustomField($type, $data, $special)
 
 		// Handler for extended text fields (MySQL type TEXT, Max length: 2^16-1)
 		case 5:
-			if (strlen($data) > 100)
+			/*if (strlen($data) > 100) {
 				return substr($data,0,100) . "...";
-			else
+			}else{
 				return $data;
+			}
+			*/
+			return $data;
 			break;
 
 		// Handler for season.  Capitalize the word for nicer display.
