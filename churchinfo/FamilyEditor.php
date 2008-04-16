@@ -606,7 +606,14 @@ require "Include/Header.php";
 	</tr>
 	
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("State:"); ?></td>
+		<td class="LabelColumn">
+		<?php 
+		if($sCountry == "Canada") {
+			echo gettext("Province:"); 
+		}else{
+			echo gettext("State:");
+		}?>
+		</td>
 		<td class="TextColumn">
 			<?php require "Include/StateDropDown.php"; ?>
 			OR
