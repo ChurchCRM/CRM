@@ -494,14 +494,22 @@ if (isset($_POST["DoImport"]))
                         case 20:
                             $sDate = $aData[$col];
                             $aDate = ParseDate($sDate,$iDateMode);
-                            $sSQLpersonData .= "\"" . $aDate[0] . "-" . $aDate[1] . "-" . $aDate[2] . "\",";
+							if ($aDate[0] == 'NULL' || $aDate[1] == 'NULL' || $aDate[2] == 'NULL'){
+								$sSQLpersonData .= "NULL,";
+							}else{
+								$sSQLpersonData .= "\"" . $aDate[0] . "-" . $aDate[1] . "-" . $aDate[2] . "\",";
+							}
                             break;
 
                         // Wedding date.. parse multiple date standards
                         case 21:
                             $sDate = $aData[$col];
                             $aDate = ParseDate($sDate,$iDateMode);
-                            $dWedding = $aDate[0] . "-" . $aDate[1] . "-" . $aDate[2];
+                            if ($aDate[0] == 'NULL' || $aDate[1] == 'NULL' || $aDate[2] == 'NULL'){
+								$dWedding = "NULL";
+							}else{
+								$dWedding = $aDate[0] . "-" . $aDate[1] . "-" . $aDate[2];
+							}
                             break;
 
                         // Ignore field option
@@ -534,7 +542,7 @@ if (isset($_POST["DoImport"]))
             for ($col = 0; $col < $numCol; $col++)
             {
                 // Is it not a custom field?
-					 if ((!$aColumnCustom[$col]) and (!$aFamColumnCustom[$col])) 
+				if ((!$aColumnCustom[$col]) and (!$aFamColumnCustom[$col])) 
                 {
                     $currentType = $aColumnID[$col];
                     switch($currentType)
@@ -624,8 +632,8 @@ if (isset($_POST["DoImport"]))
                    $aFid = mysql_fetch_array($rsFid);
                    $famid =  $aFid[0];
 						 
-						 $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
-						 RunQuery($sSQL);
+					 $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
+					 RunQuery($sSQL);
 						 
                    $fFamily = new Family(FilterInput($_POST["FamilyMode"],'int'));
                    $fFamily->AddMember($per_ID,
@@ -639,53 +647,57 @@ if (isset($_POST["DoImport"]))
                $sSQL = "UPDATE person_per SET per_fam_ID = " . $famid . " WHERE per_ID = " . $per_ID;
                RunQuery($sSQL);
 
-					if ($bHasFamCustom)
+				if ($bHasFamCustom)
+				{
+					// Check if family_custom record exists
+					$sSQL = "SELECT fam_id FROM family_custom WHERE fam_id = $famid";
+					$rsFamCustomID = RunQuery($sSQL);
+					if (mysql_num_rows($rsFamCustomID) == 0)
 					{
-						// Check if family_custom record exists
-						$sSQL = "SELECT fam_id FROM family_custom WHERE fam_id = $famid";
-						$rsFamCustomID = RunQuery($sSQL);
-						if (mysql_num_rows($rsFamCustomID) == 0)
-						{
-							$sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
-							RunQuery($sSQL);
-						}
+						$sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
+						RunQuery($sSQL);
+					}
 
-						// Build the family_custom SQL
-		            $sSQLFamCustom = "UPDATE Family_custom SET ";
+					// Build the family_custom SQL
+					$sSQLFamCustom = "UPDATE Family_custom SET ";
 						for ($col = 0; $col < $numCol; $col++)
 						{
 							// Is it a custom field?
 							if ($aFamColumnCustom[$col])
 							{
 								$colID = substr($aColumnID[$col],1);
-                        $currentType = $afamCustomTypes[$colID];
-                        $currentFieldData = trim($aData[$col]);
+						$currentType = $afamCustomTypes[$colID];
+						$currentFieldData = trim($aData[$col]);
 
-                        // If date, first parse it to the standard format..
-                        if ($currentType == 2)
-                        {
-                            $aDate = ParseDate($currentFieldData,$iDateMode);
-                            $currentFieldData = implode("-",$aDate);
-                        }
-                        // If boolean, convert to the expected values for custom field
-                        elseif ($currentType == 1)
-                        {
-                            if (strlen($currentFieldData))
-                                $currentFieldData = ConvertToBoolean($currentFieldData) + 1;
-                        }
-                        else
-                            $currentFieldData = addslashes($currentFieldData);
-
-                        // aColumnID is the custom table column name
-                        sqlCustomField($sSQLFamCustom, $currentType, $currentFieldData, $colID, $sCountry);
-                    }
+						// If date, first parse it to the standard format..
+						if ($currentType == 2)
+						{
+							$aDate = ParseDate($currentFieldData,$iDateMode);
+							if ($aDate[0] == 'NULL' || $aDate[1] == 'NULL' || $aDate[2] == 'NULL'){
+								$currentFieldData = "";
+							}else{
+								$currentFieldData = implode("-",$aDate);
+							}
 						}
+						// If boolean, convert to the expected values for custom field
+						elseif ($currentType == 1)
+						{
+							if (strlen($currentFieldData))
+								$currentFieldData = ConvertToBoolean($currentFieldData);
+						}
+						else
+							$currentFieldData = addslashes($currentFieldData);
 
-						// Finalize and run the update for the person_custom table.
-						$sSQLFamCustom = substr($sSQLFamCustom,0,-2);
-						$sSQLFamCustom .= " WHERE fam_ID = " . $famid;
-						RunQuery($sSQLFamCustom);
+						// aColumnID is the custom table column name
+						sqlCustomField($sSQLFamCustom, $currentType, $currentFieldData, $colID, $sCountry);
+						}
 					}
+
+					// Finalize and run the update for the person_custom table.
+					$sSQLFamCustom = substr($sSQLFamCustom,0,-2);
+					$sSQLFamCustom .= " WHERE fam_ID = " . $famid;
+					RunQuery($sSQLFamCustom);
+				}
             }
 
             if ($bHasCustom)
@@ -700,8 +712,8 @@ if (isset($_POST["DoImport"]))
                // Build the person_custom SQL
                for ($col = 0; $col < $numCol; $col++)
                {
-						// Is it a custom field?
-						if ($aColumnCustom[$col])
+				// Is it a custom field?
+				if ($aColumnCustom[$col])
                   {
                      $currentType = $aCustomTypes[$aColumnID[$col]];
                      $currentFieldData = trim($aData[$col]);
@@ -710,14 +722,20 @@ if (isset($_POST["DoImport"]))
                      if ($currentType == 2)
                      {
                         $aDate = ParseDate($currentFieldData,$iDateMode);
-                        $currentFieldData = implode("-",$aDate);
+						if ($aDate[0] == 'NULL' || $aDate[1] == 'NULL' || $aDate[2] == 'NULL'){
+	                        $currentFieldData = "";
+						}else{
+							$currentFieldData = implode("-",$aDate);
+						}
                      }
                      // If boolean, convert to the expected values for custom field
                      elseif ($currentType == 1)
                      {
-                        if (strlen($currentFieldData))
-                           $currentFieldData = ConvertToBoolean($currentFieldData) + 1;
-                     }
+						if (strlen($currentFieldData))
+						{
+							$currentFieldData = ConvertToBoolean($currentFieldData);
+						}
+					 }
                      else
 								$currentFieldData = addslashes($currentFieldData);
 
@@ -857,9 +875,9 @@ function ParseDate($sDate,$iDateMode)
                 $sDate = str_replace($cSeparator,"",$sDate);
              if(strlen($sDate) == 8)
              {
-                $aDate[0] = substr($sDate,0,4);
-                $aDate[1] = substr($sDate,4,2);
-                $aDate[2] = substr($sDate,6,2);
+                $aDate[0] = substr($sDate,0,4);	
+                $aDate[1] = substr($sDate,4,2);	
+                $aDate[2] = substr($sDate,6,2);	
              }
             break;
 
@@ -905,7 +923,15 @@ function ParseDate($sDate,$iDateMode)
             }
             break;
     }
-    if((0 + $aDate[0]) < 1901) $aDate[0] = "0000";
+    if( (0 + $aDate[0]) < 1901 || (0 + $aDate[0]) > 2155 ) {
+		$aDate[0] = "NULL";
+	}
+	if( (0 + $aDate[1]) < 0  || (0 + $aDate[1]) > 12 ) {
+		$aDate[1] = "NULL";
+	}
+	if( (0 + $aDate[2]) < 0  || (0 + $aDate[2]) > 31 ) {
+		$aDate[2] = "NULL";
+	}
     return $aDate;
 }
 
