@@ -31,8 +31,8 @@ require 'Include/Functions.php';
 // Set the current version of this PHP file
 // Important!  These must be updated before every software release.
 
-$_SESSION['sChurchInfoPHPVersion'] = '1.2.10';
-$_SESSION['sChurchInfoPHPDate'] = '2007-08-31';
+$_SESSION['sChurchInfoPHPVersion'] = '1.2.11';
+$_SESSION['sChurchInfoPHPDate'] = '2003-04-20';
 
 // Check if the table version_ver exists.  If the table does not exist then
 // SQL scripts must be manually run to get the database up to version 1.2.7
@@ -86,6 +86,35 @@ if(!$bVersionTableExists) {
     .       'before using version 1.2.7 (or later) of PHP code.<br>';
     echo    'Your database and PHP code are out of sync.  ChurchInfo is in an untested '
     .       'state and may not be stable. ';
+
+    require 'Include/Footer.php';
+    exit;
+}
+// This code will automatically update from 1.2.10 to 1.2.11
+if ($ver_version == '1.2.10') {
+
+    $sError = 'Initialize';  // Initialize error string
+    require 'AutoUpdate/Update1_2_10To1_2_11.php';
+
+    if ($sError) {
+        echo '<br>MySQL error while upgrading database:<br>'.$sError."<br><br>\n";
+
+        echo '<br><br>You are seeing this message because you have encountered a software bug.'
+        .    '<br>Please post to the ChurchInfo '
+        .       '<a href="http://sourceforge.net/forum/forum.php?forum_id=401180"> help forum</a> '
+        .       'for assistance. The complete query is shown below.<br>'."\n";
+
+        echo "<br>$sSQL<br>\n";
+
+        echo '<br>ChurchInfo MySQL Version = ' . $ver_version;
+        echo '<br>ChurchInfo PHP Version = ' . $_SESSION['sChurchInfoPHPVersion'];
+
+    } else {
+
+        echo '<br>Database schema has been updated from 1.2.10 to 1.2.11.<br>'
+        .    '<BR>Please <a href="CheckVersion.php">click here</a> to continue.';
+
+    }
 
     require 'Include/Footer.php';
     exit;
