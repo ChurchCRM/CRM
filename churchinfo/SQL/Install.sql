@@ -711,6 +711,8 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (81, 'menusetup', 'admin', 0, 'Menu Options', NULL, 'MenuSetup.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 13),
 (82, 'customfamilyfld', 'admin', 0, 'Edit Custom Family Fields', NULL, 'FamilyCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3);
 
+UPDATE menuconfig_mcf SET content=content_english;
+
 -- --------------------------------------------------------
 
 -- 
