@@ -15,6 +15,7 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Include/TranslateMenuOptions.php";
 
 // Security
 if (!$_SESSION['bAdmin'])
@@ -64,6 +65,12 @@ if ($_POST['save']){
 			else
 				$value = "1";
 		}
+		
+		// If changing the locale, translate the menu options
+		if ($id=='sLanguage' && $value != $sLanguage) {
+			TranslateMenuOptions ();
+		}
+		
 		// Save new setting
 		$sSQL = "UPDATE config_cfg SET cfg_value='$value' WHERE cfg_id='$id'";
 		$rsUpdate = RunQuery($sSQL);
