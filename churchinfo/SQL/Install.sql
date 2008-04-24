@@ -1276,7 +1276,7 @@ CREATE TABLE `version_ver` (
 -- 
 
 INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES 
-('1.2.10', NOW() );
+('1.2.11', NOW() );
 
 -- --------------------------------------------------------
 
