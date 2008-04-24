@@ -67,7 +67,16 @@ if ($_POST['save']){
 		}
 		
 		// If changing the locale, translate the menu options
-		if ($id=='sLanguage' && $value != $sLanguage) {
+		if ($id == 39 && $value != $sLanguage) {
+			$sLanguage = $value;
+			if (!(stripos(php_uname('s'), "windows") === false)) {
+			        $sLang_Code = $lang_map_windows[strtolower($sLanguage)];
+			} else {
+			        $sLang_Code = $sLanguage;
+			}
+			putenv("LANG=$sLang_Code");
+			setlocale(LC_ALL, $sLang_Code);
+
 			TranslateMenuOptions ();
 		}
 		
