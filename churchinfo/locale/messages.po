@@ -5101,3 +5101,236 @@ msgstr ""
 #: Include\ReportFunctions.php:65
 msgid "ERROR: JPGraph Library was not found in your path <i>or</i> at: "
 msgstr ""
+
+# Below are strings found in the menu options
+msgid "Main" 
+msgstr ""
+
+msgid "Log Off" 
+msgstr ""
+
+msgid "Change My Password" 
+msgstr ""
+
+msgid "Change My Settings" 
+msgstr ""
+
+msgid "Admin" 
+msgstr ""
+
+msgid "Edit Users" 
+msgstr ""
+
+msgid "Add New User" 
+msgstr ""
+
+msgid "Edit Custom Person Fields" 
+msgstr ""
+
+msgid "Edit Donation Funds" 
+msgstr ""
+
+msgid "Backup Database" 
+msgstr ""
+
+msgid "CSV Import" 
+msgstr ""
+
+msgid "Access report" 
+msgstr ""
+
+msgid "Edit General Settings" 
+msgstr ""
+
+msgid "Edit Report Settings" 
+msgstr ""
+
+msgid "Edit User Default Settings" 
+msgstr ""
+
+msgid "Envelope Manager" 
+msgstr ""
+
+msgid "Please select this option to register ChurchInfo after configuring." 
+msgstr ""
+
+msgid "People/Families" 
+msgstr ""
+
+msgid "Add New Person" 
+msgstr ""
+
+msgid "View All Persons" 
+msgstr ""
+
+msgid "Classification Manager" 
+msgstr ""
+
+msgid "---------------------------" 
+msgstr ""
+
+msgid "Edit volunteer opportunities" 
+msgstr ""
+
+msgid "Add New Family" 
+msgstr ""
+
+msgid "View All Families" 
+msgstr ""
+
+msgid "Family Geographic Utilties" 
+msgstr ""
+
+msgid "Family Map" 
+msgstr ""
+
+msgid "Family Roles Manager" 
+msgstr ""
+
+msgid "Events" 
+msgstr ""
+
+msgid "List Church Events" 
+msgstr ""
+
+msgid "Add Church Event" 
+msgstr ""
+
+msgid "List Event Types" 
+msgstr ""
+
+msgid "Check-in and Check-out" 
+msgstr ""
+
+msgid "Deposit" 
+msgstr ""
+
+msgid "Create New Deposit" 
+msgstr ""
+
+msgid "View All Deposits" 
+msgstr ""
+
+msgid "Deposit Reports" 
+msgstr ""
+
+msgid "Edit Deposit Slip" 
+msgstr ""
+
+msgid "Cart" 
+msgstr ""
+
+msgid "List Cart Items" 
+msgstr ""
+
+msgid "Empty Cart" 
+msgstr ""
+
+msgid "Empty Cart to Group" 
+msgstr ""
+
+msgid "Empty Cart to Family" 
+msgstr ""
+
+msgid "Empty Cart to Event" 
+msgstr ""
+
+msgid "Data/Reports" 
+msgstr ""
+
+msgid "CSV Export Records" 
+msgstr ""
+
+msgid "Query Menu" 
+msgstr ""
+
+msgid "Reports Menu" 
+msgstr ""
+
+msgid "Groups" 
+msgstr ""
+
+msgid "List Groups" 
+msgstr ""
+
+msgid "Add a New Group" 
+msgstr ""
+
+msgid "Edit Group Types" 
+msgstr ""
+
+msgid "Group Assignment Helper" 
+msgstr ""
+
+msgid "Properties" 
+msgstr ""
+
+msgid "People Properties" 
+msgstr ""
+
+msgid "Family Properties" 
+msgstr ""
+
+msgid "Group Properties" 
+msgstr ""
+
+msgid "Property Types" 
+msgstr ""
+
+msgid "Help" 
+msgstr ""
+
+msgid "About ChurchInfo" 
+msgstr ""
+
+msgid "Wiki Documentation" 
+msgstr ""
+
+msgid "People" 
+msgstr ""
+
+msgid "Families" 
+msgstr ""
+
+msgid "Geographic features" 
+msgstr ""
+
+msgid "Groups" 
+msgstr ""
+
+msgid "Finances" 
+msgstr ""
+
+msgid "Reports" 
+msgstr ""
+
+msgid "Administration" 
+msgstr ""
+
+msgid "Cart" 
+msgstr ""
+
+msgid "Properties" 
+msgstr ""
+
+msgid "Notes" 
+msgstr ""
+
+msgid "Custom Fields" 
+msgstr ""
+
+msgid "Classifications" 
+msgstr ""
+
+msgid "Canvass Support" 
+msgstr ""
+
+msgid "Events" 
+msgstr ""
+
+msgid "Menu Options" 
+msgstr ""
+
+msgid "Edit Custom Family Fields" 
+msgstr ""
+
