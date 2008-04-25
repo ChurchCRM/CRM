@@ -439,7 +439,6 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		$bFamilyEmail = strlen($fam_Email);
 
 		$sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $iPersonID;
-echo $sSQL;
 		$rsCustomData = RunQuery($sSQL);
 		$aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
 	}
