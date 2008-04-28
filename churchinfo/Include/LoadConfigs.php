@@ -123,6 +123,7 @@ if (function_exists('bindtextdomain'))
     if (!is_dir($sLocaleDir))
         $sLocaleDir = '../' . $sLocaleDir;
 
+    bind_textdomain_codeset ($domain, 'UTF-8' );
     bindtextdomain($domain, $sLocaleDir);
     textdomain($domain);
 }
