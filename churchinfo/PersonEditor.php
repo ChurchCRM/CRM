@@ -518,7 +518,7 @@ require "Include/Header.php";
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Last Name:"); ?></td>
-				<td class="TextColumn"><input type="text" name="LastName" id="LastName" value="<?php echo htmlentities(stripslashes($sLastName)); ?>"><br><font color="red"><?php echo $sLastNameError ?></font></td>
+				<td class="TextColumn"><input type="text" name="LastName" id="LastName" value="<?php echo htmlentities(stripslashes($sLastName),ENT_NOQUOTES, "UTF-8"); ?>"><br><font color="red"><?php echo $sLastNameError ?></font></td>
 			</tr>
 
 			<tr>
