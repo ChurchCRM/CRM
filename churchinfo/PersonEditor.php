@@ -234,7 +234,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		if (!$bNoFormat_CellPhone) $sCellPhone = CollapsePhoneNumber($sCellPhone,$sPhoneCountry);
 
 		//If no birth year, set to NULL
-		if ((strlen($iBirthYear) != 4) )	
+		if ((strlen($iBirthYear) != 4) )
 		{
 			$iBirthYear = "NULL";
 		} else {
@@ -268,7 +268,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 				$sEnvelope = "NULL";
 
 			$sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags ) 
-			         VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . "," . $iBirthDay . ", " . $iBirthYear . " ," . $sEnvelope . "," . $iFamily . "," . $iFamilyRole . ",";
+			         VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . "," . $iBirthDay . "," . $iBirthYear . "," . $sEnvelope . "," . $iFamily . "," . $iFamilyRole . ",";
 			if ( strlen($dMembershipDate) > 0 )
 				$sSQL .= "\"" . $dMembershipDate . "\"";
 			else
@@ -279,6 +279,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 				$sSQL .= "\"" . $dFriendDate . "\"";
 			else
 				$sSQL .= "NULL";
+
 			$sSQL .= ", " . $per_Flags;
 			$sSQL .= ")";
 
@@ -307,7 +308,8 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 			else
 				$sSQL .= "NULL";
 
-			$sSQL .= ", per_Flags = " . $per_Flags;
+			$sSQL .= ", per_Flags=" . $per_Flags;
+
 			$sSQL .= " WHERE per_ID = " . $iPersonID;
 
 			$bGetKeyBack = false;
@@ -353,7 +355,6 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 //			$sSQL .= ", per_ID = " . $iPersonID;
 
 			//Execute the SQL
-			
 		}
 
 		// Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
@@ -641,7 +642,7 @@ require "Include/Header.php";
 					?>
 				</td>
 				<td class="TextColumn">
-					<input type="text" name="HomePhone" value="<?php echo htmlentities(stripslashes($sHomePhone)); ?>" size="30" maxlength="30">
+					<input type="text" name="HomePhone" value="<?php echo htmlentities(stripslashes($sHomePhone),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="30">
 					<br><input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) echo " checked";?>><?php echo gettext("Do not auto-format"); ?>
 				</td>
 			</tr>
@@ -656,7 +657,7 @@ require "Include/Header.php";
 					?>
 				</td>
 				<td class="TextColumn">
-					<input type="text" name="WorkPhone" value="<?php echo htmlentities(stripslashes($sWorkPhone)); ?>" size="30" maxlength="30">
+					<input type="text" name="WorkPhone" value="<?php echo htmlentities(stripslashes($sWorkPhone),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="30">
 					<br><input type="checkbox" name="NoFormat_WorkPhone" value="1" <?php if ($bNoFormat_WorkPhone) echo " checked";?>><?php echo gettext("Do not auto-format"); ?>
 				</td>
 			</tr>
@@ -671,7 +672,7 @@ require "Include/Header.php";
 					?>
 				</td>
 				<td class="TextColumn">
-					<input type="text" name="CellPhone" value="<?php echo htmlentities(stripslashes($sCellPhone)); ?>" size="30" maxlength="30">
+					<input type="text" name="CellPhone" value="<?php echo htmlentities(stripslashes($sCellPhone),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="30">
 					<br><input type="checkbox" name="NoFormat_CellPhone" value="1" <?php if ($bNoFormat_CellPhone) echo " checked";?>><?php echo gettext("Do not auto-format"); ?>
 				</td>
 			</tr>
@@ -684,12 +685,12 @@ require "Include/Header.php";
 						else
 							echo gettext("Email:") . "</td>";
 					?>
-				<td class="TextColumnWithBottomBorder"><input type="text" name="Email" value="<?php echo htmlentities(stripslashes($sEmail)); ?>" size="30" maxlength="100"><font color="red"><?php echo $sEmailError ?></font></td>
+				<td class="TextColumnWithBottomBorder"><input type="text" name="Email" value="<?php echo htmlentities(stripslashes($sEmail),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="100"><font color="red"><?php echo $sEmailError ?></font></td>
 			</tr>
 
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Work / Other Email:"); ?></td>
-				<td class="TextColumnWithBottomBorder"><input type="text" name="WorkEmail" value="<?php echo htmlentities(stripslashes($sWorkEmail)); ?>" size="30" maxlength="100"><font color="red"><?php echo $sWorkEmailError ?></font></td>
+				<td class="TextColumnWithBottomBorder"><input type="text" name="WorkEmail" value="<?php echo htmlentities(stripslashes($sWorkEmail),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="100"><font color="red"><?php echo $sWorkEmailError ?></font></td>
 			</tr>
 
 			<tr>
@@ -701,15 +702,15 @@ require "Include/Header.php";
 				<td class="TextColumn">
 					<select name="BirthMonth">
 						<option value="0" <?php if ($iBirthMonth == 0) { echo "selected"; } ?>><?php echo gettext("Unknown"); ?></option>
-						<option value="1" <?php if ($iBirthMonth == 1) { echo "selected"; } ?>><?php echo gettext("January"); ?></option>
-						<option value="2" <?php if ($iBirthMonth == 2) { echo "selected"; } ?>><?php echo gettext("February"); ?></option>
-						<option value="3" <?php if ($iBirthMonth == 3) { echo "selected"; } ?>><?php echo gettext("March"); ?></option>
-						<option value="4" <?php if ($iBirthMonth == 4) { echo "selected"; } ?>><?php echo gettext("April"); ?></option>
-						<option value="5" <?php if ($iBirthMonth == 5) { echo "selected"; } ?>><?php echo gettext("May"); ?></option>
-						<option value="6" <?php if ($iBirthMonth == 6) { echo "selected"; } ?>><?php echo gettext("June"); ?></option>
-						<option value="7" <?php if ($iBirthMonth == 7) { echo "selected"; } ?>><?php echo gettext("July"); ?></option>
-						<option value="8" <?php if ($iBirthMonth == 8) { echo "selected"; } ?>><?php echo gettext("August"); ?></option>
-						<option value="9" <?php if ($iBirthMonth == 9) { echo "selected"; } ?>><?php echo gettext("September"); ?></option>
+						<option value="01" <?php if ($iBirthMonth == 1) { echo "selected"; } ?>><?php echo gettext("January"); ?></option>
+						<option value="02" <?php if ($iBirthMonth == 2) { echo "selected"; } ?>><?php echo gettext("February"); ?></option>
+						<option value="03" <?php if ($iBirthMonth == 3) { echo "selected"; } ?>><?php echo gettext("March"); ?></option>
+						<option value="04" <?php if ($iBirthMonth == 4) { echo "selected"; } ?>><?php echo gettext("April"); ?></option>
+						<option value="05" <?php if ($iBirthMonth == 5) { echo "selected"; } ?>><?php echo gettext("May"); ?></option>
+						<option value="06" <?php if ($iBirthMonth == 6) { echo "selected"; } ?>><?php echo gettext("June"); ?></option>
+						<option value="07" <?php if ($iBirthMonth == 7) { echo "selected"; } ?>><?php echo gettext("July"); ?></option>
+						<option value="08" <?php if ($iBirthMonth == 8) { echo "selected"; } ?>><?php echo gettext("August"); ?></option>
+						<option value="09" <?php if ($iBirthMonth == 9) { echo "selected"; } ?>><?php echo gettext("September"); ?></option>
 						<option value="10" <?php if ($iBirthMonth == 10) { echo "selected"; } ?>><?php echo gettext("October"); ?></option>
 						<option value="11" <?php if ($iBirthMonth == 11) { echo "selected"; } ?>><?php echo gettext("November"); ?></option>
 						<option value="12" <?php if ($iBirthMonth == 12) { echo "selected"; } ?>><?php echo gettext("December"); ?></option>

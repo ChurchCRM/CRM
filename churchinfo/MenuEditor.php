@@ -443,7 +443,7 @@ if ($sMode == "Delete") {
 
 	<tr>
 		<td class="LabelColumn"<?php addToolTip("Is SESSION variable required?"); ?>><?php echo gettext("Session Variable Name:"); ?></td>
-		<td class="TextColumn"><input type="text" name="SessionVar" id="SessionVar" value="<?php echo htmlentities(stripslashes($sSessionVar)); ?>">
+		<td class="TextColumn"><input type="text" name="SessionVar" id="SessionVar" value="<?php echo htmlentities(stripslashes($sSessionVar),ENT_NOQUOTES, "UTF-8"); ?>">
 			<div><font color="red"><?php echo $sSessionVarError; ?></font></div>
 		</td>
 	</tr>
