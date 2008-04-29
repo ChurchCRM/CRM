@@ -140,8 +140,6 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	}
 
 	// If they entered a full date, see if it's valid
-//	if ($updateBirthYear == 1) 
-//	{
 		if (strlen($iBirthYear) > 0)
 		{
 			if ($iBirthYear == 0) { // If zero set to NULL
@@ -156,7 +154,6 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 				}
 			}
 		}
-//	}
 
 	// Validate Friend Date if one was entered
 	if (strlen($dFriendDate) > 0)
@@ -288,7 +285,6 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		// Existing person (update)
 		} else {
 
-			//$sBirthYear = ($iupdateBirthYear & 1) ? "per_BirthYear=" . $iBirthYear. ", " : "";
 			$sSQL = "UPDATE person_per SET per_Title = '" . $sTitle . "',per_FirstName = '" . $sFirstName . "',per_MiddleName = '" . $sMiddleName . "', per_LastName = '" . $sLastName . "', per_Suffix = '" . $sSuffix . "', per_Gender = " . $iGender . ", per_Address1 = '" . $sAddress1 . "', per_Address2 = '" . $sAddress2 . "', per_City = '" . $sCity . "', per_State = '" . $sState . "', per_Zip = '" . $sZip . "', per_Country = '" . $sCountry . "', per_HomePhone = '" . $sHomePhone . "', per_WorkPhone = '" . $sWorkPhone . "', per_CellPhone = '" . $sCellPhone . "', per_Email = '" . $sEmail . "', per_WorkEmail = '" . $sWorkEmail . "', per_BirthMonth = " . $iBirthMonth . ", per_BirthDay = " . $iBirthDay . ", " . "per_BirthYear = ". $iBirthYear. ", per_fam_ID = " . $iFamily . ", per_Fmr_ID = " . $iFamilyRole . ", per_cls_ID = " . $iClassification . ", per_MembershipDate = ";
 			if ( strlen($dMembershipDate) > 0 )
 				$sSQL .= "\"" . $dMembershipDate . "\"";
@@ -331,9 +327,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		// Update the custom person fields.
 		if ($numCustomFields > 0)
 		{
-//			$sSQL = "REPLACE INTO person_custom SET ";
 			mysql_data_seek($rsCustomFields,0);
-			
 			$sSQL = "";
 			while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
 			{
@@ -348,13 +342,9 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 			// chop off the last 2 characters (comma and space) added in the last while loop iteration.
 			if ($sSQL > "") {
 				$sSQL = "REPLACE INTO person_custom SET " . $sSQL . " per_ID = " . $iPersonID;
+				//Execute the SQL
 				RunQuery($sSQL);
 			}
-//			$sSQL = substr($sSQL,0,-2);
-
-//			$sSQL .= ", per_ID = " . $iPersonID;
-
-			//Execute the SQL
 		}
 
 		// Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
@@ -822,7 +812,6 @@ require "Include/Header.php";
 
 	<tr>
 		<td <?php if ($numCustomFields > 0) echo "colspan=\"2\""; ?> align="center">
-			<?php // echo "<input type=\"hidden\" Name=\"updateBirthYear\" value=\"".$updateBirthYear."\">"; ?>
 			<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> name="PersonSubmit">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PersonSubmitAndAdd\">"; } ?>
 			<input type="button" class="icButton" <?php echo 'value="' . gettext("Cancel") . '"'; ?> name="PersonCancel" onclick="javascript:document.location='<?php if (strlen($iPersonID) > 0) { echo "PersonView.php?PersonID=" . $iPersonID; } else {echo "SelectList.php?mode=person"; } ?>';">
