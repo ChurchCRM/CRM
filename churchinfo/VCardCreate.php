@@ -29,7 +29,7 @@ $sSQL = "SELECT * FROM person_per
 $rsPerson = RunQuery($sSQL);
 extract(mysql_fetch_array($rsPerson));
 
-$sBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay);
+$sBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay,"-",$per_Flags);
 
 // Assign the values locally, after selecting whether to display the family or person information
 SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, False);
