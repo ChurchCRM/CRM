@@ -90,7 +90,7 @@ function MakeSalutationUtility ($famID) {
 	$aFam = mysql_fetch_array($rsFamInfo);
 	extract ($aFam);
 
-	$sSQL = "SELECT * FROM person_per WHERE per_fam_ID=" . $famID;
+	$sSQL = "SELECT * FROM person_per WHERE per_fam_ID=" . $famID . " ORDER BY per_fmr_ID";
 	$rsMembers = RunQuery($sSQL);
 	$numMembers = mysql_num_rows ($rsMembers);
 
