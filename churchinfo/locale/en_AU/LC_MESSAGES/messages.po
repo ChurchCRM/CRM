@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: en_AU V1.0\n"
+"POT-Creation-Date: 2008-04-10 23:24+0930\n"
+"PO-Revision-Date: 2008-04-10 23:24+0930\n"
+"Last-Translator: Kym Farnik <kym@farnik.com\n"
+"Language-Team: LANGUAGE <kym@farnik.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: BackupDatabase.php:133 CSVImport.php:102 DirectoryReports.php:186
+msgid "Zip"
+msgstr "Postcode"
+
+#: CSVExport.php:104 CartToFamily.php:271 FamilyEditor.php:375
+#: PersonEditor.php:562
+msgid "Zip:"
+msgstr "Postcode:"
+
+#: CSVExport.php:104 CartToFamily.php:271 FamilyEditor.php:375
+#: PersonEditor.php:562
+msgid "Postal Code:"
+msgstr "Postcode:"
+
+#: CartToFamily.php:269 FamilyEditor.php:373
+msgid "Postal Code:"
+msgstr "Postcode:"
+
+#: DirectoryReports.php:151
+msgid "Family Cell Phone"
+msgstr "Family Mobile"
+
+#: DirectoryReports.php:156
+msgid "Personal Cell Phone"
+msgstr "Personal Mobile"
+
+#: DonationEditor.php:439 DonationEditor.php:485 DonationView.php:103
+msgid "check"
+msgstr "cheque"
+
+#: DonationView.php:89
+msgid "Check No"
+msgstr "Cheque No"
+
+#: DonationViewReceipt.php:83 Reports/DonationReportYearly.php:294
+msgid "Check"
+msgstr "Cheque"
+
+#: GroupMemberList.php:203
+msgid "ZIP"
+msgstr "Postcode"
+
+#: SelectList.php:503
+msgid "Zip/Postal Code"
+msgstr "Postcode"
+
+#: SelectList.php:623
+msgid "City, State Zip"
+msgstr "City, State Pcode"
+
+#: Reports/DirectoryReport.php:219 Reports/DirectoryReport.php:285
+#: Reports/DirectoryReport.php:344 Reports/DirectoryReport.php:558
+#: Reports/GroupReport.php:269
+msgid "Cell"
+msgstr "Mobile"
+
+
