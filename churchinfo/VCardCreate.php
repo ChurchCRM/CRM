@@ -48,42 +48,42 @@ if ($bOldVCardVersion)
 else
 	$vcard = new Contact_Vcard_Build();
 // set a formatted name
-$vcard->setFormattedName(FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0));
+$vcard->setFormattedName(iconv("UTF-8","ISO-8859-1",FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0)));
 
 // set the structured name parts
-$vcard->setName($per_LastName, $per_FirstName, $per_MiddleName, $per_Title, $per_Suffix);
+$vcard->setName(iconv("UTF-8","ISO-8859-1",$per_LastName), iconv("UTF-8","ISO-8859-1",$per_FirstName), iconv("UTF-8","ISO-8859-1",$per_MiddleName), iconv("UTF-8","ISO-8859-1",$per_Title), iconv("UTF-8","ISO-8859-1",$per_Suffix));
 
-$vcard->addEmail($sEmail);
+$vcard->addEmail(iconv("UTF-8","ISO-8859-1",$sEmail));
 $vcard->addParam('TYPE', 'HOME');
 $vcard->addParam('TYPE', 'PREF');
 
-$vcard->addEmail($per_WorkEmail);
+$vcard->addEmail(iconv("UTF-8","ISO-8859-1",$per_WorkEmail));
 $vcard->addParam('TYPE', 'WORK');
 
 if ($bPalmVCard) {
-	$vcard->addAddress(';', $sAddress1, $sAddress2, $sCity, $sState, $sZip, $sCountry);
+	$vcard->addAddress(';', iconv("UTF-8","ISO-8859-1",$sAddress1), iconv("UTF-8","ISO-8859-1",$sAddress2), iconv("UTF-8","ISO-8859-1",$sCity), iconv("UTF-8","ISO-8859-1",$sState), iconv("UTF-8","ISO-8859-1",$sZip), iconv("UTF-8","ISO-8859-1",$sCountry));
 } else {
-	$vcard->addAddress('', $sAddress1, $sAddress2, $sCity, $sState, $sZip, $sCountry);
+	$vcard->addAddress('', iconv("UTF-8","ISO-8859-1",$sAddress1), iconv("UTF-8","ISO-8859-1",$sAddress2), iconv("UTF-8","ISO-8859-1",$sCity), iconv("UTF-8","ISO-8859-1",$sState), iconv("UTF-8","ISO-8859-1",$sZip), iconv("UTF-8","ISO-8859-1",$sCountry));
 }
 
 $vcard->addParam('TYPE', 'HOME');
 $vcard->addParam('TYPE', 'PREF');
 	
-$vcard->addTelephone($sHomePhone);
+$vcard->addTelephone(iconv("UTF-8","ISO-8859-1",$sHomePhone));
 $vcard->addParam('TYPE', 'HOME');
 
-$vcard->addTelephone($sWorkPhone);
+$vcard->addTelephone(iconv("UTF-8","ISO-8859-1",$sWorkPhone));
 $vcard->addParam('TYPE', 'WORK');
 
-$vcard->addTelephone($sCellPhone);
+$vcard->addTelephone(iconv("UTF-8","ISO-8859-1",$sCellPhone));
 $vcard->addParam('TYPE', 'CELL');
 
-$vcard->setBirthDay($sBirthDate);
+$vcard->setBirthDay(iconv("UTF-8","ISO-8859-1",$sBirthDate));
 
 $sVCard = $vcard->fetch();
 
 header("Content-type: text/x-vcard");
-header("Content-Disposition: attachment; filename=" . $per_FirstName . "_" . $per_LastName . ".vcf");
+header("Content-Disposition: attachment; filename=" . iconv("UTF-8","ISO-8859-1",$per_FirstName) . "_" . iconv("UTF-8","ISO-8859-1",$per_LastName) . ".vcf");
 
 echo $sVCard;
 

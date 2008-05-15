@@ -20,7 +20,7 @@ require "Include/Functions.php";
 //Get the GroupID from the querystring
 if (isset($_GET["GroupID"])) $iGroupID = FilterInput($_GET["GroupID"],'int');
 if (isset($_GET["Sort"])) $iSort = FilterInput($_GET["Sort"],'int');
-if (isset($_GET["Letter"]))	$sLetter = FilterInput($_GET["Letter"],'char',1);
+if (isset($_GET["Letter"]))	$sLetter = FilterInput($_GET["Letter"]);
 if (isset($_GET["PrintView"])) $bPrintView = FilterInput($_GET["PrintView"],'int');
 
 if (!empty($_GET["ShowGSP"]))

@@ -89,7 +89,7 @@ if (isset($_GET["PrintView"]))
 if (strlen($_GET["Filter"]))
 	$sFilter = FilterInput($_GET["Filter"]);
 if (strlen($_GET["Letter"]))
-	$sLetter = strtoupper(FilterInput($_GET["Letter"],'char'));
+	$sLetter = mb_strtoupper(FilterInput($_GET["Letter"]));
 
 
 if (strlen($_GET["mode"]))
@@ -214,7 +214,7 @@ if ($iMode == 1 || $iMode == 2)
             {
                 $sExcludedIDs .= $aTemp[0] . ",";
             }
-            $sExcludedIDs = substr($sExcludedIDs,0,-1);
+            $sExcludedIDs = mb_substr($sExcludedIDs,0,-1);
             $sGroupWhereExt = " AND per_ID NOT IN (" . $sExcludedIDs . ")";
         }
  	}
@@ -336,7 +336,6 @@ if ($iMode == 1 || $iMode == 2)
         $sGenderWhereExt = " AND per_Gender = " . $iGender;
 	else
 		$sGenderWhereExt = "";
-
     if (isset($sLetter))
         $sLetterWhereExt = " AND per_LastName LIKE '" . $sLetter . "%'";
 	else
@@ -367,7 +366,7 @@ if ($iMode == 1 || $iMode == 2)
 	if (isset($_GET["Result_Set"])) $sRedirect .= "Result_Set=" . $_GET["Result_Set"] . "&amp;";
 	if (isset($_GET["PersonProperties"])) $sRedirect .= "PersonProperties=" . $_GET["PersonProperties"] . "&amp;";
 
-	$sRedirect = substr($sRedirect,0,-5); // Chop off last &amp;
+	$sRedirect = mb_substr($sRedirect,0,-5); // Chop off last &amp;
 
     // If AddToCart submit button was used, run the query, add people to cart, and view cart
     if (isset($_GET["AddAllToCart"]))
@@ -732,7 +731,7 @@ if ($iMode == 1 || $iMode == 2)
                 echo "\">" . gettext("View All") . "</a>";
                 while ($aLetter = mysql_fetch_row($rsLetters))
                 {
-						$aLetter[0] = strtoupper($aLetter[0]);
+						$aLetter[0] = mb_strtoupper($aLetter[0]);
                         if ($aLetter[0] == $sLetter) {
                                 echo "&nbsp;&nbsp;|&nbsp;&nbsp;" . $aLetter[0];
                         } else {
@@ -1014,11 +1013,11 @@ while ($aRow = mysql_fetch_array($rsPersons))
 		break;
 
 	case "name":
-		if (strtoupper(substr($per_LastName,0,1)) != $sPrevLetter)
+		if (mb_strtoupper(mb_substr($per_LastName,0,1,"UTF-8")) != $sPrevLetter)
 		{
 			echo $sBlankLine;
 			echo "<tr><td></td>";
-			echo "<td class=\"ControlBreak\">" . strtoupper(substr($per_LastName,0,1));
+			echo "<td class=\"ControlBreak\">" . mb_strtoupper(mb_substr($per_LastName,0,1,"UTF-8"));
 			echo "</td></tr>";
 			$sRowClass = "RowColorA";
 		}
@@ -1099,10 +1098,10 @@ while ($aRow = mysql_fetch_array($rsPersons))
 	{
 
 		// Add to cart option
-		if (substr($sRedirect, -1, 1) == '?')
+		if (mb_substr($sRedirect, -1, 1) == '?')
 			echo "<a onclick=\"saveScrollCoordinates()\"
 					href=\"" .$sRedirect. "AddToPeopleCart=" .$per_ID. "\">";
-		elseif (substr($sRedirect, -1, 1) == '&')
+		elseif (mb_substr($sRedirect, -1, 1) == '&')
 			echo "<a onclick=\"saveScrollCoordinates()\"
 					href=\"" .$sRedirect. "AddToPeopleCart=" .$per_ID. "\">";
 		else
@@ -1113,10 +1112,10 @@ while ($aRow = mysql_fetch_array($rsPersons))
 	} else
 	{
 		// Remove from cart option
-		if (substr($sRedirect, -1, 1) == '?')
+		if (mb_substr($sRedirect, -1, 1) == '?')
 			echo "<a onclick=\"saveScrollCoordinates()\" 
 					href=\"" .$sRedirect. "RemoveFromPeopleCart=" .$per_ID. "\">";
-		elseif (substr($sRedirect, -1, 1) == '&')
+		elseif (mb_substr($sRedirect, -1, 1) == '&')
 			echo "<a onclick=\"saveScrollCoordinates()\"
 					href=\"" .$sRedirect. "RemoveFromPeopleCart=" .$per_ID. "\">";
 		else
@@ -1150,7 +1149,7 @@ while ($aRow = mysql_fetch_array($rsPersons))
 		$iPrevFamily = 0;
 
 	//Store the first letter of this record to enable the control break
-	$sPrevLetter = strtoupper(substr($per_LastName,0,1));
+	$sPrevLetter = mb_strtoupper(mb_substr($per_LastName,0,1,"UTF-8"));
 
 } // end of while loop
 
@@ -1266,7 +1265,7 @@ require "$sHeaderFile";
                         }
 
                         //Store the first letter of this record to enable the control break
-                        $sPrevLetter = strtoupper(substr($per_LastName,0,1));
+                        $sPrevLetter = mb_strtoupper(mb_substr($per_LastName,0,1,"UTF-8"));
 
                 }
                 //Close the table
@@ -1505,12 +1504,12 @@ else
                 }
 
                 //Does this family name start with a new letter?
-                if (strtoupper(substr($fam_Name,0,1)) != $sPrevLetter)
+                if (mb_strtoupper(mb_substr($fam_Name,0,1,"UTF-8")) != $sPrevLetter)
                 {
                         //Display the header
                         echo $sBlankLine;
-                        echo "<tr><td class=\"ControlBreak\" colspan=\"4\"><b>" . strtoupper(substr($fam_Name,0,1)) . "</b></td></tr>";
-                        $sBlankLine = "<tr><td>&nbsp;</td></tr>";
+                        echo "<tr><td class=\"ControlBreak\" colspan=\"4\"><b>" . mb_strtoupper(mb_substr($fam_Name,0,1,"UTF-8")) . "</b></td></tr>";
+			$sBlankLine = "<tr><td>&nbsp;</td></tr>";
                         $sRowClass = "RowColorA";
                 }
 
@@ -1533,7 +1532,7 @@ else
                 </tr>
                 <?php
                 //Store the first letter of the family name to allow for the control break
-                $sPrevLetter = strtoupper(substr($fam_Name,0,1));
+                $sPrevLetter = mb_strtoupper(mb_substr($fam_Name,0,1,"UTF-8"));
         }
 
         //Close the table

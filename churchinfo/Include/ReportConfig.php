@@ -43,34 +43,38 @@ class ChurchInfoReport extends FPDF {
       }
       return ($phone);
    }
-
 	function PrintRightJustified ($x, $y, $str) {
-		$iLen = strlen ($str);
+		$strconv=iconv("UTF-8","ISO-8859-1",$str);
+		$iLen = strlen ($strconv);
 		$nMoveBy = 10 - 2 * $iLen;
 		$this->SetXY ($x + $nMoveBy, $y);
-		$this->Write ($this->incrementY, $str);
+		$this->Write ($this->incrementY, $strconv);
 	}
 
 	function PrintRightJustifiedCell ($x, $y, $wid, $str) {
-		$iLen = strlen ($str);
+		$strconv=iconv("UTF-8","ISO-8859-1",$str);
+		$iLen = strlen ($strconv);
 		$this->SetXY ($x, $y);
-		$this->Cell ($wid, $this->incrementY, $str, 1, 0, 'R');
+		$this->Cell ($wid, $this->incrementY, $strconv, 1, 0, 'R');
 	}
 
 	function PrintCenteredCell ($x, $y, $wid, $str) {
-		$iLen = strlen ($str);
+		$strconv=iconv("UTF-8","ISO-8859-1",$str);
+		$iLen = strlen ($strconv);
 		$this->SetXY ($x, $y);
-		$this->Cell ($wid, $this->incrementY, $str, 1, 0, 'C');
+		$this->Cell ($wid, $this->incrementY, $strconv, 1, 0, 'C');
 	}
 
 	function WriteAt ($x, $y, $str) {
+		$strconv=iconv("UTF-8","ISO-8859-1",$str);
 		$this->SetXY ($x, $y);
-		$this->Write ($this->incrementY, $str);
+		$this->Write ($this->incrementY, $strconv);
 	}
 
 	function WriteAtCell ($x, $y, $wid, $str) {
+		$strconv=iconv("UTF-8","ISO-8859-1",$str);
 		$this->SetXY ($x, $y);
-		$this->Cell ($wid, 4, $str, 1);
+		$this->Cell ($wid, 4, $strconv, 1);
 	}
 
    function StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear, $letterhead="") {
