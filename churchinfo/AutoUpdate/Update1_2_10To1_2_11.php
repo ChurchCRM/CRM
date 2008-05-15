@@ -92,19 +92,19 @@ if (!RunQuery($sSQL, FALSE))
 	break;
 
 // push the queries that incorporate a fiscal year forward
-$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Display` = '2010/2011', qpo_Value = '12' WHERE `queryparameteroptions_qpo`.`qpo_Display` = '2008/2009 "; 
+$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Display` = '2010/2011', qpo_Value = '12' WHERE `queryparameteroptions_qpo`.`qpo_Display` = '2008/2009' "; 
 if (!RunQuery($sSQL, FALSE))
 	break;
 	
-$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Display` = '2009/2010', qpo_Value = '13' WHERE `queryparameteroptions_qpo`.`qpo_Display` = '2007/2008 "; 
+$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Display` = '2009/2010', qpo_Value = '13' WHERE `queryparameteroptions_qpo`.`qpo_Display` = '2007/2008' "; 
 if (!RunQuery($sSQL, FALSE))
 	break;
 	
-$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Display` = '2008/2009', qpo_Value = '14' WHERE `queryparameteroptions_qpo`.`qpo_Display` = '2006/2007 "; 
+$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Display` = '2008/2009', qpo_Value = '14' WHERE `queryparameteroptions_qpo`.`qpo_Display` = '2006/2007' "; 
 if (!RunQuery($sSQL, FALSE))
 	break;
 	
-$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Display` = '2007/2008', qpo_Value = '15' WHERE `queryparameteroptions_qpo`.`qpo_Display` = '2005/2006 "; 
+$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Display` = '2007/2008', qpo_Value = '15' WHERE `queryparameteroptions_qpo`.`qpo_Display` = '2005/2006' "; 
 if (!RunQuery($sSQL, FALSE))
 	break;
 	
