@@ -121,10 +121,11 @@ CREATE TABLE mrbs_repeat
 
 --
 -- Add Menu entries
-INSERT INTO `menuconfig_mcf` VALUES (61, 'booking', 'root', 1, 'Booking', '', 'Resources Reservation', 'bAll', NULL, 0, 0, NULL, 1, 10);
-INSERT INTO `menuconfig_mcf` VALUES (62, 'overview', 'booking', 0, 'Reservation', 'mrbs/index.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1);
-INSERT INTO `menuconfig_mcf` VALUES (63, 'bookingreport', 'booking', 0, 'Reports', 'mrbs/report.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2);
-INSERT INTO `menuconfig_mcf` VALUES (84, 'MRBSSeeting', 'admin', 0, 'MRBS Seeting', 'SettingsGeneral.php?Cat=MRBS', '', 'bAdmin', NULL, 0, 0, NULL, 1, 14);
+INSERT INTO `menuconfig_mcf` VALUES (61, 'booking', 'root', 1, '', 'Booking', '', 'Resources Reservation', 'bAll', NULL, 0, 0, NULL, 1, 10);
+INSERT INTO `menuconfig_mcf` VALUES (62, 'overview', 'booking', 0, '', 'Reservation', 'mrbs/index.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1);
+INSERT INTO `menuconfig_mcf` VALUES (63, 'bookingreport', 'booking', 0, '', 'Reports', 'mrbs/report.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2);
+INSERT INTO `menuconfig_mcf` VALUES (84, 'MRBSSeeting', 'admin', 0, '', 'MRBS Seeting', 'SettingsGeneral.php?Cat=MRBS', '', 'bAdmin', NULL, 0, 0, NULL, 1, 14);
+UPDATE menuconfig_mcf SET content_english=content;
 
 --
 -- Insert rows to Table userconfig_ucfg
