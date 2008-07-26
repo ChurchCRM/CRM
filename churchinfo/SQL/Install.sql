@@ -612,7 +612,7 @@ CREATE TABLE `menuconfig_mcf` (
   `parent` varchar(20) NOT NULL,
   `ismenu` tinyint(1) NOT NULL,
   `content_english` varchar(100) NOT NULL,
-  `content` varchar(100) NOT NULL,
+  `content` varchar(100) NULL,
   `uri` varchar(255) NOT NULL,
   `statustext` varchar(255) NOT NULL,
   `security_grp` varchar(50) NOT NULL,
