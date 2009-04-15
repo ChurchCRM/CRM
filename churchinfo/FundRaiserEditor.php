@@ -1,0 +1,239 @@
+<?php
+/*******************************************************************************
+ *
+ *  filename    : FundRaiserEditor.php
+ *  last change : 2009-04-15
+ *  website     : http://www.churchdb.org
+ *  copyright   : Copyright 2009 Michael Wilt
+ *
+ *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ ******************************************************************************/
+
+//Include the function library
+require "Include/Config.php";
+require "Include/Functions.php";
+
+$linkBack = FilterInput($_GET["linkBack"]);
+$iFundRaiserID = FilterInput($_GET["FundRaiserID"]);
+
+if ($iFundRaiserID) {
+	// Get the current fund raiser record
+	$sSQL = "SELECT * from fundraiser_fr WHERE fr_ID = " . $iFundRaiserID;
+	$rsFRR = RunQuery($sSQL);
+	extract(mysql_fetch_array($rsFRR));
+	// Set current fundraiser
+	$_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
+}
+
+$sPageTitle = gettext("Fund Raiser: ") . $iFundRaiserID;
+
+//Is this the second pass?
+if (isset($_POST["FundRaiserSubmit"]))
+{
+	//Get all the variables from the request object and assign them locally
+	$dDate = FilterInput($_POST["Date"]);
+	$sTitle = FilterInput($_POST["Title"]);
+	$sDescription = FilterInput($_POST["Description"]);
+	
+	//Initialize the error flag
+	$bErrorFlag = false;
+
+	// Validate Date
+	if (strlen($dDate) > 0)
+	{
+		list($iYear, $iMonth, $iDay) = sscanf($dDate,"%04d-%02d-%02d");
+		if ( !checkdate($iMonth,$iDay,$iYear) )
+		{
+			$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid Date") . "</span>";
+			$bErrorFlag = true;
+		}
+	}
+
+	//If no errors, then let's update...
+	if (!$bErrorFlag)
+	{
+		// New deposit slip
+		if (! $iFundRaiserID)
+		{
+			$sSQL = "INSERT INTO fundraiser_fr (fr_date, fr_title, fr_description, fr_EnteredBy, fr_EnteredDate) VALUES (".
+			"'" . $dDate . "','" . $sTitle . "','" . $sDescription . "'," . $_SESSION['iUserID'] . ",'" . date("YmdHis") . "')";
+			$bGetKeyBack = True;
+		// Existing record (update)
+		} else {
+			$sSQL = "UPDATE fundraiser_fr SET fr_date = '" . $dDate . "', fr_title = '" . $sTitle . "', fr_description = '" . $sDescription . "', fr_EnteredBy = ". $_SESSION['iUserID'] . ", fr_EnteredDate='" . date("YmdHis") . "' WHERE dep_ID = " . $iFundRaiserID . ";";
+			$bGetKeyBack = false;
+		}
+		//Execute the SQL
+		RunQuery($sSQL);
+
+		// If this is a new fundraiser, get the key back
+		if ($bGetKeyBack)
+		{
+			$sSQL = "SELECT MAX(fr_ID) AS iFundRaiserID FROM fundraiser_fr";
+			$rsFundRaiserID = RunQuery($sSQL);
+			extract(mysql_fetch_array($rsFundRaiserID));
+			$_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
+		}
+
+		if (isset($_POST["FundRaiserSubmit"]))
+		{
+			if ($linkBack != "") {
+				Redirect($linkBack);
+			} else {
+				//Send to the view of this FundRaiser
+				Redirect("FundRaiserEditor.php?linkBack=" . $linkBack . "&FundRaiserID=" . $iFundRaiserID);
+			}
+		}
+	}
+} else {
+
+	//FirstPass
+	//Are we editing or adding?
+	if ($iFundRaiserID)
+	{
+		//Editing....
+		//Get all the data on this record
+																		
+		$sSQL = "SELECT * FROM fundraiser_fr WHERE fr_ID = " . $iFundRaiserID;
+		$rsFundRaiser = RunQuery($sSQL);
+		extract(mysql_fetch_array($rsFundRaiser));
+
+		$dDate = $fr_date;
+		$sTitle = $fr_title;
+		$sDescription = $fr_description;
+	}
+	else
+	{
+		//Adding....
+		//Set defaults
+	}
+}
+
+if ($iFundRaiserID) {
+	//Get the items for this fundraiser
+	$sSQL = "SELECT di_ID, a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
+	                       b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
+	                       di_title, di_sellprice, di_estprice, di_materialvalue
+	         FROM DonatedItem_di
+	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
+	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
+	         WHERE di_FR_ID = '" . $iFundRaiserID . "'"; 
+	 $rsDonatedItems = RunQuery($sSQL);
+} else {
+	$rsDonatedItems = 0;
+	$dDate = date("Y-m-d");	// Set default date to today
+}
+
+// Set Current Deposit setting for user
+if ($iFundRaiserID) {
+	$_SESSION['iCurrentFundraiser'] = $iFundRaiserID;		// Probably redundant
+//	$sSQL = "UPDATE user_usr SET usr_currentDeposit = '$iFundRaiserID' WHERE usr_per_id = \"".$_SESSION['iUserID']."\"";
+//	$rsUpdate = RunQuery($sSQL);
+}
+
+require "Include/Header.php";
+
+?>
+
+<form method="post" action="FundRaiserEditor.php?<?php echo "linkBack=" . $linkBack . "&FundRaiserID=".$iFundRaiserID?>" name="FundRaiserEditor">
+
+<table cellpadding="3" align="center">
+
+	<tr>
+		<td align="center">
+		<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="FundRaiserSubmit">
+			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="FundRaiserCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<?php
+				if ($iFundRaiserID)
+					echo "<input type=button class=icButton value=\"".gettext("Add Donated Item")."\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">";
+			?>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+		<table cellpadding="3">
+			<tr>
+				<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("Date:"); ?></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font></td>
+			</tr>
+			
+			<tr>
+				<td class="LabelColumn"><?php echo gettext("Title:"); ?></td>
+				<td class="TextColumn"><input type="text" name="Title" id="Title" value="<?php echo $sTitle; ?>"></td>
+			</tr>
+
+			<tr>
+				<td class="LabelColumn"><?php echo gettext("Description:"); ?></td>
+				<td class="TextColumn"><input type="text" name="Description" id="Description" value="<?php echo $sDescription; ?>"></td>
+			</tr>
+		</table>
+		</td>
+	</form>
+</table>
+
+<br>
+
+<b><?php echo gettext("Donated items for this fundraiser:"); ?></b>
+<br>
+
+<table cellpadding="5" cellspacing="0" width="100%">
+
+<tr class="TableHeader">
+	<td><?php echo gettext("Doner"); ?></td>
+	<td><?php echo gettext("Buyer"); ?></td>
+	<td><?php echo gettext("Title"); ?></td>
+	<td><?php echo gettext("Sale Price"); ?></td>
+	<td><?php echo gettext("Est Value"); ?></td>
+	<td><?php echo gettext("Material Value"); ?></td>
+</tr>
+
+<?php
+$tog = 0;
+
+//Loop through all donated items
+while ($aRow =mysql_fetch_array($rsDonatedItems))
+{
+	extract($aRow);
+
+	$sRowClass = "RowColorA";
+?>
+	<tr class="<?php echo $sRowClass ?>">
+		<td>
+			<?php echo $donorFirstName . " " . $donorLastName ?>&nbsp;
+		</td>
+		<td>
+			<?php echo $buyerFirstName . " " . $buyerLastName ?>&nbsp;
+		</td>
+		<td>
+			<?php echo $di_title ?>&nbsp;
+		</td>
+		<td align=center>
+			<?php echo $di_sellprice ?>&nbsp;
+		</td>
+		<td align=center>
+			<?php echo $di_estprice ?>&nbsp;
+		</td>
+		<td align=center>
+			<?php echo $di_materialvalue ?>&nbsp;
+		</td>
+		<td>
+			<a href="DonatedItemEditor.php?DonatedItemID=<?php echo $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID;?>">Edit</a>
+		</td>
+		<td>
+			<a href="DonatedItemDelete.php?DonatedItemID=<?php echo $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID;?>">Delete</a>
+		</td>
+	</tr>
+<?php
+} // while
+?>
+
+</table>
+
+<?php
+require "Include/Footer.php";
+?>

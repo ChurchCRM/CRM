@@ -1,4 +1,4 @@
--- Install Version 1.2.10
+-- Install Version 1.2.12
 -- --------------------------------------------------------
 
 -- 
@@ -1314,7 +1314,40 @@ CREATE TABLE `whycame_why` (
   PRIMARY KEY  (`why_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- 
--- Dumping data for table `whycame_why`
+--
+-- Fundraiser support added 4/11/2009 Michael Wilt
 -- 
 
+CREATE TABLE `PaddleNum_pn` (
+  `pn_ID` mediumint(9) unsigned NOT NULL auto_increment,
+  `pn_per_ID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`pn_ID`),
+  UNIQUE KEY `pn_ID` (`pn_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE `Fundraiser_fr` (
+  `fr_ID` mediumint(9) unsigned NOT NULL auto_increment,
+  `fr_date` date default NULL,
+  `fr_title` varchar(128) NOT NULL,
+  `fr_description` varchar(2048),
+  `fr_EnteredBy` smallint(5) unsigned NOT NULL default '0',
+  `fr_EnteredDate` date NOT NULL,
+  PRIMARY KEY  (`fr_ID`),
+  UNIQUE KEY `fr_ID` (`fr_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE `DonatedItem_di` (
+  `di_ID` mediumint(9) unsigned NOT NULL auto_increment,
+  `di_FR_ID` mediumint(9) unsigned NOT NULL,
+  `di_donor_ID` mediumint(9) NOT NULL default '0',
+  `di_buyer_ID` mediumint(9) NOT NULL default '0',
+  `di_title` varchar(128) NOT NULL,
+  `di_description` varchar(2048),
+  `di_sellprice` decimal(8,2) default NULL,
+  `di_estprice` decimal(8,2) default NULL,
+  `di_materialvalue` decimal(8,2) default NULL,
+  `di_EnteredBy` smallint(5) unsigned NOT NULL default '0',
+  `di_EnteredDate` date NOT NULL,
+  PRIMARY KEY  (`di_ID`),
+  UNIQUE KEY `di_ID` (`di_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
