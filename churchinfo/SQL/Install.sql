@@ -671,6 +671,12 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (38, 'depositreport', 'deposit', 0, 'Deposit Reports', NULL, 'FinancialReports.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 3),
 (39, 'separator3', 'deposit', 0, '---------------------------', NULL, '', '', 'bFinance', NULL, 0, 0, NULL, 1, 4),
 (40, 'depositslip', 'deposit', 0, 'Edit Deposit Slip', NULL, 'DepositSlipEditor.php', '', 'bFinance', 'iCurrentDeposit', 1, 1, 'DepositSlipID', 1, 5),
+
+(84, 'fundraiser', 'root', 1, 'Fundraiser', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 5),
+(85, 'newfundraiser', 'fundraiser', 0, 'Create New Fundraiser', NULL, 'FundRaiserEditor.php?FundRaiserID=-1', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
+(86, 'viewfundraiser', 'fundraiser', 0, 'View All Fundraisers', NULL, 'FindFundRaiser.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
+(87, 'editfundraiser', 'fundraiser', 0, 'Edit Fundraiser', NULL, 'FundRaiserEditor.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5),
+
 (41, 'cart', 'root', 1, 'Cart', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 6),
 (42, 'viewcart', 'cart', 0, 'List Cart Items', NULL, 'CartView.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
 (43, 'emptycart', 'cart', 0, 'Empty Cart', NULL, 'CartView.php?Action=EmptyCart', '', 'bAll', NULL, 0, 0, NULL, 1, 2),
@@ -1338,9 +1344,11 @@ CREATE TABLE `Fundraiser_fr` (
 
 CREATE TABLE `DonatedItem_di` (
   `di_ID` mediumint(9) unsigned NOT NULL auto_increment,
+  `di_item` varchar(32) NOT NULL,
   `di_FR_ID` mediumint(9) unsigned NOT NULL,
   `di_donor_ID` mediumint(9) NOT NULL default '0',
   `di_buyer_ID` mediumint(9) NOT NULL default '0',
+  `di_multibuy` smallint(1) NOT NULL default '0',
   `di_title` varchar(128) NOT NULL,
   `di_description` varchar(2048),
   `di_sellprice` decimal(8,2) default NULL,
@@ -1350,4 +1358,13 @@ CREATE TABLE `DonatedItem_di` (
   `di_EnteredDate` date NOT NULL,
   PRIMARY KEY  (`di_ID`),
   UNIQUE KEY `di_ID` (`di_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE `Multibuy_mb` (
+  `mb_ID` mediumint(9) unsigned NOT NULL auto_increment,
+  `mb_per_ID` mediumint(9) NOT NULL default '0',
+  `mb_item_ID` mediumint(9) NOT NULL default '0',
+  `mb_count` decimal(8,0) default NULL,
+  PRIMARY KEY  (`mb_ID`),
+  UNIQUE KEY `mb_ID` (`mb_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
