@@ -20,7 +20,7 @@ require "Include/Functions.php";
 $linkBack = FilterInput($_GET["linkBack"]);
 $iFundRaiserID = FilterInput($_GET["FundRaiserID"]);
 
-if ($iFundRaiserID) {
+if ($iFundRaiserID>0) {
 	// Get the current fund raiser record
 	$sSQL = "SELECT * from fundraiser_fr WHERE fr_ID = " . $iFundRaiserID;
 	$rsFRR = RunQuery($sSQL);
@@ -29,7 +29,11 @@ if ($iFundRaiserID) {
 	$_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
 }
 
-$sPageTitle = gettext("Fund Raiser: ") . $iFundRaiserID;
+if ($iFundRaiserID > 0) {
+	$sPageTitle = gettext("Fund Raiser #") . $iFundRaiserID . " " . $fr_title;
+} else {
+	$sPageTitle = gettext("Create New Fund Raiser");
+}
 
 //Is this the second pass?
 if (isset($_POST["FundRaiserSubmit"]))
@@ -57,14 +61,14 @@ if (isset($_POST["FundRaiserSubmit"]))
 	if (!$bErrorFlag)
 	{
 		// New deposit slip
-		if (! $iFundRaiserID)
+		if ($iFundRaiserID <= 0)
 		{
 			$sSQL = "INSERT INTO fundraiser_fr (fr_date, fr_title, fr_description, fr_EnteredBy, fr_EnteredDate) VALUES (".
 			"'" . $dDate . "','" . $sTitle . "','" . $sDescription . "'," . $_SESSION['iUserID'] . ",'" . date("YmdHis") . "')";
 			$bGetKeyBack = True;
 		// Existing record (update)
 		} else {
-			$sSQL = "UPDATE fundraiser_fr SET fr_date = '" . $dDate . "', fr_title = '" . $sTitle . "', fr_description = '" . $sDescription . "', fr_EnteredBy = ". $_SESSION['iUserID'] . ", fr_EnteredDate='" . date("YmdHis") . "' WHERE dep_ID = " . $iFundRaiserID . ";";
+			$sSQL = "UPDATE fundraiser_fr SET fr_date = '" . $dDate . "', fr_title = '" . $sTitle . "', fr_description = '" . $sDescription . "', fr_EnteredBy = ". $_SESSION['iUserID'] . ", fr_EnteredDate='" . date("YmdHis") . "' WHERE fr_ID = " . $iFundRaiserID . ";";
 			$bGetKeyBack = false;
 		}
 		//Execute the SQL
@@ -93,7 +97,7 @@ if (isset($_POST["FundRaiserSubmit"]))
 
 	//FirstPass
 	//Are we editing or adding?
-	if ($iFundRaiserID)
+	if ($iFundRaiserID>0)
 	{
 		//Editing....
 		//Get all the data on this record
@@ -115,9 +119,10 @@ if (isset($_POST["FundRaiserSubmit"]))
 
 if ($iFundRaiserID) {
 	//Get the items for this fundraiser
-	$sSQL = "SELECT di_ID, a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
-	                       b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
-	                       di_title, di_sellprice, di_estprice, di_materialvalue
+	$sSQL = "SELECT di_ID, di_Item,
+	                a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
+	                b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
+	                di_title, di_sellprice, di_estprice, di_materialvalue
 	         FROM DonatedItem_di
 	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
 	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
@@ -184,12 +189,15 @@ require "Include/Header.php";
 <table cellpadding="5" cellspacing="0" width="100%">
 
 <tr class="TableHeader">
-	<td><?php echo gettext("Doner"); ?></td>
+	<td><?php echo gettext("Item"); ?></td>
+	<td><?php echo gettext("Donor"); ?></td>
 	<td><?php echo gettext("Buyer"); ?></td>
 	<td><?php echo gettext("Title"); ?></td>
 	<td><?php echo gettext("Sale Price"); ?></td>
 	<td><?php echo gettext("Est Value"); ?></td>
 	<td><?php echo gettext("Material Value"); ?></td>
+	<td><?php echo gettext("Edit"); ?></td>
+	<td><?php echo gettext("Delete"); ?></td>
 </tr>
 
 <?php
@@ -203,6 +211,9 @@ while ($aRow =mysql_fetch_array($rsDonatedItems))
 	$sRowClass = "RowColorA";
 ?>
 	<tr class="<?php echo $sRowClass ?>">
+		<td>
+			<?php echo $di_Item?>&nbsp;
+		</td>
 		<td>
 			<?php echo $donorFirstName . " " . $donorLastName ?>&nbsp;
 		</td>

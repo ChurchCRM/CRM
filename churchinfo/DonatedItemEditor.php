@@ -36,7 +36,7 @@ else
 
 // Get the current fundraiser data
 if ($iCurrentFundraiser) {
-	$sSQL = "SELECT * from fundraiser_fr WHERE dep_ID = " . $iCurrentFundraiser;
+	$sSQL = "SELECT * from fundraiser_fr WHERE fr_ID = " . $iCurrentFundraiser;
 	$rsDeposit = RunQuery($sSQL);
 	extract(mysql_fetch_array($rsDeposit));
 }
@@ -48,7 +48,9 @@ $sPageTitle = gettext("Donated Item Editor");
 if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"]))
 {
 	//Get all the variables from the request object and assign them locally
-	$iDonor = FilterInput($_POST["Doner"], 'int');
+	$sItem = FilterInput($_POST["Item"]);
+	$bMultibuy = FilterInput ($_POST["Multibuy"], 'int');
+	$iDonor = FilterInput($_POST["Donor"], 'int');
 	$iBuyer = FilterInput($_POST["Buyer"], 'int');
 	$sTitle = FilterInput($_POST["Title"]);
 	$sDescription = FilterInput($_POST["Description"]);
@@ -56,16 +58,20 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 	$nEstPrice = FilterInput($_POST["EstPrice"]);
 	$nMaterialValue = FilterInput($_POST["MaterialValue"]);
 
+	if (! $bMultibuy) {
+		$bMultibuy = 0;
+		$iBuyer = 0;
+	}
 	// New DonatedItem or deposit
 	if (strlen($iDonatedItemID) < 1)
 	{
-		$sSQL = "INSERT INTO DonatedItem_di (di_FR_ID, di_seller_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_EnteredBy, di_EnteredDate)
-		VALUES (" . $iCurrentFundraiser . ",'" . $iDonor . "','" . $iBuyer . "','" . $sTitle . "','" . $sDescription . "','" . $nSellPrice . "','" . $nEstPrice . "','" . $nMaterialValue . "'";
+		$sSQL = "INSERT INTO DonatedItem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_EnteredBy, di_EnteredDate)
+		VALUES (" . $iCurrentFundraiser . ",'" . $sItem . "','" . $bMultibuy . "','" . $iDonor . "','" . $iBuyer . "','" . $sTitle . "','" . $sDescription . "','" . $nSellPrice . "','" . $nEstPrice . "','" . $nMaterialValue . "'";
 		$sSQL .= "," . $_SESSION['iUserID'] . ",'" . date("YmdHis") . "')";
 		$bGetKeyBack = True;		
 	// Existing record (update)
 	} else {
-		$sSQL = "UPDATE DonatedItem_di SET di_FR_ID = " . $iCurrentFundraiser . ", di_donor_ID = " . $iDonor . ", di_buyer_ID = " . $iBuyer . ", di_title = '" . $sTitle . "', di_description = '" . $sDescription . "', di_sellprice = '" . $nSellPrice . "', di_estprice = '" . $nEstPrice . "', di_materialvalue = '" . $nMaterialValue . "', di_EnteredBy=" . $_SESSION['iUserID'] . ", di_EnteredDate = '" . date("YmdHis") . "'";
+		$sSQL = "UPDATE DonatedItem_di SET di_FR_ID = " . $iCurrentFundraiser . ", di_Item = '". $sItem . "', di_multibuy = '" . $bMultibuy . "', di_donor_ID = " . $iDonor . ", di_buyer_ID = " . $iBuyer . ", di_title = '" . $sTitle . "', di_description = '" . $sDescription . "', di_sellprice = '" . $nSellPrice . "', di_estprice = '" . $nEstPrice . "', di_materialvalue = '" . $nMaterialValue . "', di_EnteredBy=" . $_SESSION['iUserID'] . ", di_EnteredDate = '" . date("YmdHis") . "'";
 		$sSQL .= " WHERE di_ID = " . $iDonatedItemID;
 		$bGetKeyBack = false;
 	}
@@ -106,19 +112,19 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 		//Editing....
 		//Get all the data on this record
 
-		$sSQL = "SELECT di_ID, di_donor_ID, di_buyer_ID,
-		                   a.per_FirstName as sellerFirstName, a.per_LastName as sellerLastName,
+		$sSQL = "SELECT di_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID,
+		                   a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
 	                       b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
 	                       di_title, di_sellprice, di_estprice, di_materialvalue
 	         FROM DonatedItem_di
 	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
 	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
 	         WHERE di_ID = '" . $iDonatedItemID . "'"; 
-		
-		$sSQL = "SELECT * FROM DonatedItem_plg LEFT JOIN family_fam ON plg_famID = fam_ID WHERE di_ID = " . $iDonatedItemID;
 		$rsDonatedItem = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsDonatedItem));
 
+		$sItem = $di_Item;
+		$bMultibuy = $di_multibuy;
 		$iDonor = $di_donor_ID;
 		$iBuyer = $di_buyer_ID;
 		$sTitle = $di_title;
@@ -131,6 +137,8 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 	{
 		//Adding....
 		//Set defaults
+		$sItem = "";
+		$bMultibuy = 0;
 		$iDonor = 0;
 		$iBuyer = 0;
 		$sTitle = "";
@@ -148,7 +156,7 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 //}
 
 //Get People for the drop-down
-$sPeopleSQL = "SELECT per_FirstName, per_LastName, fam_Address1, fam_City, fam_State FROM person_per JOIN family_fam on per_fam_id=fam_id ORDER BY per_LastName";
+$sPeopleSQL = "SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_City, fam_State FROM person_per JOIN family_fam on per_fam_id=fam_id ORDER BY per_LastName";
 
 require "Include/Header.php";
 
@@ -171,6 +179,16 @@ require "Include/Header.php";
 			<tr>
 			<td width="50%" valign="top" align="left">
 			<table cellpadding="3">
+				<tr>
+					<td class="LabelColumn"><?php echo gettext("Item:"); ?></td>
+					<td class="TextColumn"><input type="text" name="Item" id="Item" value="<?php echo $sItem; ?>"></td>
+				</tr>
+				
+				<tr>
+					<td class="LabelColumn"><?php echo gettext("Multiple items:"); ?></td>
+					<td class="TextColumn"><input type="checkbox" name="Multibuy" value="1" <?php if ($bMultibuy) echo " checked";?>><?php echo gettext("Sell to everyone"); ?>
+				</tr>
+
 				<tr>
 					<td class="LabelColumn"><?php addToolTip("Select the donor from the list."); ?><?php echo gettext("Donor:"); ?>
 					</td>
@@ -216,6 +234,7 @@ require "Include/Header.php";
 				<tr>
 					<td class="LabelColumn"><?php addToolTip("Select the buyer from the list."); ?><?php echo gettext("Buyer:"); ?></td>
 					<td class="TextColumn">
+					    <?php if ($bMultibuy) echo gettext ("Multiple"); else { ?>
 						<select name="Buyer">
 							<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
 							<?php
@@ -228,7 +247,7 @@ require "Include/Header.php";
 								echo ">" . $per_FirstName . " " . $per_LastName;
 								echo " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 							}
-							?>
+					    } ?>
 	
 						</select>
 					</td>
@@ -245,7 +264,6 @@ require "Include/Header.php";
 			<tr>
 			<td width="100%" valign="top" align="left">
 	
-			<?php if ($dep_Type == 'Bank' || $DonatedItemOrPayment=='DonatedItem') {?>
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Description");?></td>
 				<td><textarea name="Description" rows="8" cols="90"><?php echo $sDescription?></textarea></td>
