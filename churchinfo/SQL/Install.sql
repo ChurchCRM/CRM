@@ -1326,6 +1326,8 @@ CREATE TABLE `whycame_why` (
 
 CREATE TABLE `PaddleNum_pn` (
   `pn_ID` mediumint(9) unsigned NOT NULL auto_increment,
+  `pn_fr_ID` mediumint(9) unsigned,
+  `pn_Num` mediumint(9) unsigned,
   `pn_per_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`pn_ID`),
   UNIQUE KEY `pn_ID` (`pn_ID`)
