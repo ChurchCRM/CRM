@@ -119,14 +119,14 @@ if (isset($_POST["FundRaiserSubmit"]))
 
 if ($iFundRaiserID) {
 	//Get the items for this fundraiser
-	$sSQL = "SELECT di_ID, di_Item,
+	$sSQL = "SELECT di_ID, di_Item, di_multibuy,
 	                a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
 	                b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
 	                di_title, di_sellprice, di_estprice, di_materialvalue
 	         FROM DonatedItem_di
 	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
 	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
-	         WHERE di_FR_ID = '" . $iFundRaiserID . "'"; 
+	         WHERE di_FR_ID = '" . $iFundRaiserID . "' ORDER BY di_multibuy"; 
 	 $rsDonatedItems = RunQuery($sSQL);
 } else {
 	$rsDonatedItems = 0;
@@ -190,6 +190,7 @@ require "Include/Header.php";
 
 <tr class="TableHeader">
 	<td><?php echo gettext("Item"); ?></td>
+	<td><?php echo gettext("Multiple"); ?></td>	
 	<td><?php echo gettext("Donor"); ?></td>
 	<td><?php echo gettext("Buyer"); ?></td>
 	<td><?php echo gettext("Title"); ?></td>
@@ -215,10 +216,13 @@ while ($aRow =mysql_fetch_array($rsDonatedItems))
 			<?php echo $di_Item?>&nbsp;
 		</td>
 		<td>
+			<?php if ($di_multibuy) echo "X";?>&nbsp;
+		</td>
+		<td>
 			<?php echo $donorFirstName . " " . $donorLastName ?>&nbsp;
 		</td>
 		<td>
-			<?php echo $buyerFirstName . " " . $buyerLastName ?>&nbsp;
+			<?php if ($di_multibuy) echo gettext ("Multiple"); else echo $buyerFirstName . " " . $buyerLastName ?>&nbsp;
 		</td>
 		<td>
 			<?php echo $di_title ?>&nbsp;
