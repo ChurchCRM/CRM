@@ -160,6 +160,14 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 //Get People for the drop-down
 $sPeopleSQL = "SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_City, fam_State FROM person_per JOIN family_fam on per_fam_id=fam_id ORDER BY per_LastName";
 
+//Get Paddles for the drop-down
+$sPaddleSQL = "SELECT pn_ID, pn_Num, pn_per_ID, 
+                      a.per_FirstName AS buyerFirstName, 
+                      a.per_LastName AS buyerLastName
+                      FROM PaddleNum_pn
+                      LEFT JOIN person_per a on a.per_ID=pn_per_ID
+                      WHERE pn_fr_ID=" . $iCurrentFundraiser;
+
 require "Include/Header.php";
 
 ?>
@@ -240,14 +248,13 @@ require "Include/Header.php";
 						<select name="Buyer">
 							<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
 							<?php
-							$rsPeople = RunQuery($sPeopleSQL);
-							while ($aRow = mysql_fetch_array($rsPeople))
+							$rsBuyers = RunQuery($sPaddleSQL);
+							while ($aRow = mysql_fetch_array($rsBuyers))
 							{
 								extract($aRow);
-								echo "<option value=\"" . $per_ID . "\"";
-								if ($iBuyer == $per_ID) { echo " selected"; }
-								echo ">" . $per_FirstName . " " . $per_LastName;
-								echo " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+								echo "<option value=\"" . $pn_per_ID . "\"";
+								if ($iBuyer == $pn_per_ID) { echo " selected"; }
+								echo ">" . $pn_Num . ":" . $buyerFirstName . " " . $buyerLastName;
 							}
 					    } ?>
 	
