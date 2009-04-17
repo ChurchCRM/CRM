@@ -60,6 +60,8 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 
 	if (! $bMultibuy) {
 		$bMultibuy = 0;
+	}
+	if (! $iBuyer) {
 		$iBuyer = 0;
 	}
 	// New DonatedItem or deposit
