@@ -21,7 +21,7 @@ $iPaddleNumID = FilterInput($_GET["PaddleNumID"],'int');
 $linkBack = FilterInput($_GET["linkBack"]);
 
 if ($iPaddleNumID > 0) {
-	$sSQL = "SELECT * FROM PaddleNum_pn WHERE pn_ID = '$iPaddleNumID'";
+	$sSQL = "SELECT * FROM paddlenum_pn WHERE pn_ID = '$iPaddleNumID'";
 	$rsPaddleNum = RunQuery($sSQL);
 	$thePaddleNum = mysql_fetch_array($rsPaddleNum);
 	$iCurrentFundraiser = $thePaddleNum["pn_fr_ID"];
@@ -37,7 +37,7 @@ if ($iCurrentFundraiser) {
 }
 
 // SQL to get multibuy items 
-$sMultibuyItemsSQL = "SELECT di_ID, di_title FROM DonatedItem_di WHERE di_multibuy='1' AND di_FR_ID=" . $iCurrentFundraiser;
+$sMultibuyItemsSQL = "SELECT di_ID, di_title FROM donateditem_di WHERE di_multibuy='1' AND di_FR_ID=" . $iCurrentFundraiser;
 
 //Set the page title
 $sPageTitle = gettext("Buyer Number Editor");
@@ -55,18 +55,18 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]))
 		$mbName = "MBItem" . $di_ID;
 		$iMBCount = FilterInput ($_POST[$mbName], 'int');
 		if ($iMBCount > 0) { // count for this item is positive.  If a multibuy record exists, update it.  If not, create it.
-			$sqlNumBought = "SELECT mb_count from Multibuy_mb WHERE mb_per_ID=".$iPerID." AND mb_item_ID=".$di_ID;
+			$sqlNumBought = "SELECT mb_count from multibuy_mb WHERE mb_per_ID=".$iPerID." AND mb_item_ID=".$di_ID;
 			$rsNumBought = RunQuery($sqlNumBought);
 			$numBoughtRow = mysql_fetch_array($rsNumBought);
 			if ($numBoughtRow) {
-				$sSQL = "UPDATE Multibuy_mb SET mb_count=".$iMBCount." WHERE mb_per_ID=".$iPerID." AND mb_item_ID=".$di_ID;
+				$sSQL = "UPDATE multibuy_mb SET mb_count=".$iMBCount." WHERE mb_per_ID=".$iPerID." AND mb_item_ID=".$di_ID;
 				RunQuery($sSQL);
 			} else {
-				$sSQL = "INSERT INTO Multibuy_mb (mb_per_ID, mb_item_ID, mb_count) VALUES (".$iPerID.",".$di_ID.",".$iMBCount.")";
+				$sSQL = "INSERT INTO multibuy_mb (mb_per_ID, mb_item_ID, mb_count) VALUES (".$iPerID.",".$di_ID.",".$iMBCount.")";
 				RunQuery($sSQL);
 			}
 		} else { // count is zero, if it was positive before there is a multibuy record that needs to be deleted
-			$sSQL = "DELETE FROM Multibuy_mb WHERE mb_per_ID=".$iPerID." AND mb_item_ID=".$di_ID;
+			$sSQL = "DELETE FROM multibuy_mb WHERE mb_per_ID=".$iPerID." AND mb_item_ID=".$di_ID;
 			RunQuery($sSQL);
 		}
 	}
@@ -74,12 +74,12 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]))
 	// New PaddleNum
 	if (strlen($iPaddleNumID) < 1)
 	{
-		$sSQL = "INSERT INTO PaddleNum_pn (pn_fr_ID, pn_Num, pn_per_ID)
+		$sSQL = "INSERT INTO paddlenum_pn (pn_fr_ID, pn_Num, pn_per_ID)
 		         VALUES (" . $iCurrentFundraiser . ",'" . $iNum . "','" . $iPerID . "')";
 		$bGetKeyBack = True;
 	// Existing record (update)
 	} else {
-		$sSQL = "UPDATE PaddleNum_pn SET pn_fr_ID = " . $iCurrentFundraiser . ", pn_Num = '". $iNum . "', pn_per_ID = '" . $iPerID . "'";
+		$sSQL = "UPDATE paddlenum_pn SET pn_fr_ID = " . $iCurrentFundraiser . ", pn_Num = '". $iNum . "', pn_per_ID = '" . $iPerID . "'";
 		$sSQL .= " WHERE pn_ID = " . $iPaddleNumID;
 		$bGetKeyBack = false;
 	}
@@ -90,7 +90,7 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]))
 	// If this is a new PaddleNum or deposit, get the key back
 	if ($bGetKeyBack)
 	{
-		$sSQL = "SELECT MAX(pn_ID) AS iPaddleNumID FROM PaddleNum_pn";
+		$sSQL = "SELECT MAX(pn_ID) AS iPaddleNumID FROM paddlenum_pn";
 		$rsPaddleNumID = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsPaddleNumID));
 	}
@@ -121,7 +121,7 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]))
 		//Get all the data on this record
 		$sSQL = "SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
 	                       a.per_FirstName as buyerFirstName, a.per_LastName as buyerLastName
-	         FROM PaddleNum_pn
+	         FROM paddlenum_pn
 	         LEFT JOIN person_per a ON pn_per_ID=a.per_ID
 	         WHERE pn_ID = '" . $iPaddleNumID . "'"; 
 		$rsPaddleNum = RunQuery($sSQL);
@@ -134,7 +134,7 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]))
 	{
 		//Adding....
 		//Set defaults
-		$sSQL = "SELECT COUNT(*) AS topNum FROM PaddleNum_pn WHERE pn_fr_ID=" . $iCurrentFundraiser;
+		$sSQL = "SELECT COUNT(*) AS topNum FROM paddlenum_pn WHERE pn_fr_ID=" . $iCurrentFundraiser;
 		$rsGetMaxNum = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsGetMaxNum));
 
@@ -156,7 +156,6 @@ require "Include/Header.php";
 	<tr>
 		<td align="center">
 			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="PaddleNumSubmit">
-			<input type="submit" class="icButton" value="<?php echo gettext("Make Statement"); ?>" name="FundRaiserStatement"  onclick="javascript:document.location='Reports/FundRaiserStatement.php?PaddleNumID=<?php echo $iPaddleNumID. "';"; ?>">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PaddleNumSubmitAndAdd\">"; } ?>
 			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
@@ -205,7 +204,7 @@ require "Include/Header.php";
 					{
 						extract($aRow);
 						
-						$sqlNumBought = "SELECT mb_count from Multibuy_mb WHERE mb_per_ID=".$iPerID." AND mb_item_ID=".$di_ID;
+						$sqlNumBought = "SELECT mb_count from multibuy_mb WHERE mb_per_ID=".$iPerID." AND mb_item_ID=".$di_ID;
 						$rsNumBought = RunQuery($sqlNumBought);
 						$numBoughtRow = mysql_fetch_array($rsNumBought);
 						if ($numBoughtRow) {
@@ -228,6 +227,10 @@ require "Include/Header.php";
 			
 			</table>
 			</tr>
+
+			<tr>
+			<a class="SmallText" href="Reports/FundRaiserStatement.php?PaddleNumID=<?php echo $iPaddleNumID; ?>"><?php echo gettext("Make Statement"); ?></a>&nbsp;
+                        </tr>
 	</table>
 
 </form>

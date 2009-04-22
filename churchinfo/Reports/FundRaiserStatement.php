@@ -25,13 +25,13 @@ $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 if ($iPaddleNumID > 0) {
 	$selectOneCrit = " AND pn_ID=" . $iPaddleNumID . " ";
 } else {
-	$selectOneCrit = 0;
+	$selectOneCrit = "";
 }
 
 $sSQL = "SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
-                a.per_FirstName as buyerFirstName, a.per_LastName as buyerLastName,
+                a.per_FirstName as paddleFirstName, a.per_LastName as paddleLastName,
 				b.fam_ID, b.fam_Name, b.fam_Address1, b.fam_Address2, b.fam_City, b.fam_State, b.fam_Zip, b.fam_Country                
-         FROM PaddleNum_pn
+         FROM paddlenum_pn
          LEFT JOIN person_per a ON pn_per_ID=a.per_ID
          LEFT JOIN family_fam b ON fam_ID = a.per_fam_ID 
          WHERE pn_FR_ID =" . $iFundRaiserID . $selectOneCrit . " ORDER BY pn_Num"; 
@@ -90,7 +90,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 	$sSQL = "SELECT di_item, di_title, di_buyer_id, di_sellprice,
 	                a.per_FirstName as buyerFirstName,
 	                a.per_LastName as buyerLastName
-	                FROM DonatedItem_di LEFT JOIN person_per a on a.per_ID = di_buyer_id 
+	                FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_buyer_id 
 	                WHERE di_donor_id = " . $pn_per_ID;
 	$rsDonatedItems = RunQuery($sSQL);
 	
@@ -125,7 +125,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 	$sSQL = "SELECT di_item, di_title, di_donor_id, di_sellprice,
 	                a.per_FirstName as donorFirstName,
 	                a.per_LastName as donorLastName
-	                FROM DonatedItem_di LEFT JOIN person_per a on a.per_ID = di_donor_id
+	                FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_donor_id
 	                WHERE di_buyer_id = " . $pn_per_ID;
 	$rsPurchasedItems = RunQuery($sSQL);
 
@@ -155,7 +155,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 	                a.per_FirstName as donorFirstName,
 	                a.per_LastName as donorLastName,
 					b.di_item, b.di_title, b.di_donor_id, b.di_sellprice
-					FROM Multibuy_mb
+					FROM multibuy_mb
 					LEFT JOIN donateditem_di b ON mb_item_ID=b.di_ID
 					LEFT JOIN person_per a ON b.di_donor_id=a.per_ID 
 					WHERE mb_per_ID=" . $pn_per_ID;
@@ -179,7 +179,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 	$curY = 240;
 	$pdf->WriteAt ($pdf->leftX, $curY, gettext ("-----------------------------------------------------------------------------------------------------------------------------------------------"));
 	$curY += 2 * $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, (gettext ("Buyer # ") . $pn_Num . " : " . $buyerFirstName . " " . $buyerLastName . " : " . gettext ("Total purchases: $") . $totalAmount . " : " . gettext ("Amount paid: ________________")));
+	$pdf->WriteAt ($pdf->leftX, $curY, (gettext ("Buyer # ") . $pn_Num . " : " . $paddleFirstName . " " . $paddleLastName . " : " . gettext ("Total purchases: $") . $totalAmount . " : " . gettext ("Amount paid: ________________")));
 	$curY += 2 * $pdf->incrementY;
 	$pdf->WriteAt ($pdf->leftX, $curY, gettext ("Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"));
 	$curY += 2 * $pdf->incrementY;

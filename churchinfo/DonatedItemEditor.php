@@ -22,7 +22,7 @@ $linkBack = FilterInput($_GET["linkBack"]);
 $iCurrentFundraiser = FilterInput($_GET["CurrentFundraiser"]);
 
 if ($iDonatedItemID > 0) {
-	$sSQL = "SELECT * FROM DonatedItem_di WHERE di_ID = '$iDonatedItemID'";
+	$sSQL = "SELECT * FROM donateditem_di WHERE di_ID = '$iDonatedItemID'";
 	$rsDonatedItem = RunQuery($sSQL);
 	$theDonatedItem = mysql_fetch_array($rsDonatedItem);
 	$iCurrentFundraiser = $theDonatedItem["plg_depID"];
@@ -67,13 +67,13 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 	// New DonatedItem or deposit
 	if (strlen($iDonatedItemID) < 1)
 	{
-		$sSQL = "INSERT INTO DonatedItem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_EnteredBy, di_EnteredDate)
+		$sSQL = "INSERT INTO donateditem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_EnteredBy, di_EnteredDate)
 		VALUES (" . $iCurrentFundraiser . ",'" . $sItem . "','" . $bMultibuy . "','" . $iDonor . "','" . $iBuyer . "','" . $sTitle . "','" . $sDescription . "','" . $nSellPrice . "','" . $nEstPrice . "','" . $nMaterialValue . "'";
 		$sSQL .= "," . $_SESSION['iUserID'] . ",'" . date("YmdHis") . "')";
 		$bGetKeyBack = True;		
 	// Existing record (update)
 	} else {
-		$sSQL = "UPDATE DonatedItem_di SET di_FR_ID = " . $iCurrentFundraiser . ", di_Item = '". $sItem . "', di_multibuy = '" . $bMultibuy . "', di_donor_ID = " . $iDonor . ", di_buyer_ID = " . $iBuyer . ", di_title = '" . $sTitle . "', di_description = '" . $sDescription . "', di_sellprice = '" . $nSellPrice . "', di_estprice = '" . $nEstPrice . "', di_materialvalue = '" . $nMaterialValue . "', di_EnteredBy=" . $_SESSION['iUserID'] . ", di_EnteredDate = '" . date("YmdHis") . "'";
+		$sSQL = "UPDATE donateditem_di SET di_FR_ID = " . $iCurrentFundraiser . ", di_Item = '". $sItem . "', di_multibuy = '" . $bMultibuy . "', di_donor_ID = " . $iDonor . ", di_buyer_ID = " . $iBuyer . ", di_title = '" . $sTitle . "', di_description = '" . $sDescription . "', di_sellprice = '" . $nSellPrice . "', di_estprice = '" . $nEstPrice . "', di_materialvalue = '" . $nMaterialValue . "', di_EnteredBy=" . $_SESSION['iUserID'] . ", di_EnteredDate = '" . date("YmdHis") . "'";
 		$sSQL .= " WHERE di_ID = " . $iDonatedItemID;
 		$bGetKeyBack = false;
 	}
@@ -84,7 +84,7 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 	// If this is a new DonatedItem or deposit, get the key back
 	if ($bGetKeyBack)
 	{
-		$sSQL = "SELECT MAX(di_ID) AS iDonatedItemID FROM DonatedItem_di";
+		$sSQL = "SELECT MAX(di_ID) AS iDonatedItemID FROM donateditem_di";
 		$rsDonatedItemID = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsDonatedItemID));
 	}
@@ -117,8 +117,8 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 		$sSQL = "SELECT di_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID,
 		                   a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
 	                       b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
-	                       di_title, di_sellprice, di_estprice, di_materialvalue
-	         FROM DonatedItem_di
+	                       di_title, di_description, di_sellprice, di_estprice, di_materialvalue
+	         FROM donateditem_di
 	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
 	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
 	         WHERE di_ID = '" . $iDonatedItemID . "'"; 
@@ -164,7 +164,7 @@ $sPeopleSQL = "SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_Cit
 $sPaddleSQL = "SELECT pn_ID, pn_Num, pn_per_ID, 
                       a.per_FirstName AS buyerFirstName, 
                       a.per_LastName AS buyerLastName
-                      FROM PaddleNum_pn
+                      FROM paddlenum_pn
                       LEFT JOIN person_per a on a.per_ID=pn_per_ID
                       WHERE pn_fr_ID=" . $iCurrentFundraiser;
 

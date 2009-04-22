@@ -114,7 +114,7 @@ else
 $sLimitSQL .= " LIMIT $Result_Set, $iPerPage";
 
 // Build SQL query
-$sSQL = "SELECT fr_ID, fr_Date, fr_Title FROM FundRaiser_fr $sCriteria $sOrderSQL $sLimitSQL";
+$sSQL = "SELECT fr_ID, fr_Date, fr_Title FROM fundraiser_fr $sCriteria $sOrderSQL $sLimitSQL";
 $sSQLTotal = "SELECT COUNT(fr_ID) FROM fundraiser_fr $sCriteria";
 
 // Execute SQL statement and get total result

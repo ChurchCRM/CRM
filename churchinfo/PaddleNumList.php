@@ -25,7 +25,7 @@ if ($iFundRaiserID) {
 	//Get the paddlenum records for this fundraiser
 	$sSQL = "SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
 	                a.per_FirstName as buyerFirstName, a.per_LastName as buyerLastName
-	         FROM PaddleNum_pn
+	         FROM paddlenum_pn
 	         LEFT JOIN person_per a ON pn_per_ID=a.per_ID
 	         WHERE pn_FR_ID = '" . $iFundRaiserID . "' ORDER BY pn_Num"; 
 	 $rsPaddleNums = RunQuery($sSQL);
