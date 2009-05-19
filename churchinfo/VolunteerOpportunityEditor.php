@@ -2,7 +2,7 @@
 /*******************************************************************************
  *
  *  filename    : VolunteerOpportunityEditor.php
- *  last change : 2003-03-29
+ *  last change : 2009-05-19
  *  website     : http://www.infocentral.org
  *  copyright   : Copyright 2005 Michael Wilt
  *
@@ -26,6 +26,8 @@ $sDeleteError = "";
 if ($sAction = 'delete' && strlen($sOpp) > 0)
 {
 	$sSQL = "DELETE FROM volunteeropportunity_vol WHERE vol_ID = '" . $sOpp . "'";
+	RunQuery($sSQL);
+	$sSQL = "DELETE FROM person2volunteeropp_p2vo WHERE p2vo_vol_ID = '" . $sOpp . "'";
 	RunQuery($sSQL);
 }
 
