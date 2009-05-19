@@ -2,7 +2,7 @@
 /*******************************************************************************
  *
  *  filename    : MenuEditor.php
- *  last change : 2007-06-28
+ *  last change : 2009-05-18
  *  website     : http://www.churchdb.org
  *  copyright   : Copyright 2007 Frederick To
  *
@@ -429,7 +429,7 @@ if ($sMode == "Delete") {
 			$sSecGrpList = "<select name=\"SecurityGroup\">";
 			for ($i=0; $i<count($aSecurityList); $i++)
 			{
-				$sSecGrpList .= "<option value=\"" . $aSecurityList[$i] . "\"" .$SecuritySelect[$aSecurityList[$i]] . ">" . $aSecurityList[$i] . "</option>\n";
+				$sSecGrpList .= "<option value=\"" . $aSecurityList[$i] . "\"" .$aSecuritySelect[$aSecurityList[$i]] . ">" . $aSecurityList[$i] . "</option>\n";
 			}
 			$sSecGrpList .= "</select>";
 			echo $sSecGrpList;
