@@ -152,6 +152,8 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (54, 'sISTusername', 'username', 'text', 'username', 'Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.name-searching.com/CaddressASP', 'General', NULL),
 (55, 'sISTpassword', '', 'text', '', 'Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.name-searching.com/CaddressASP', 'General', NULL),
 (56, 'bUseGoogleGeocode', '1', 'boolean', '1', 'Set true to use the Google geocoder.  Set false to use rpc.geocoder.us.', 'General', NULL),
+(57, 'bChecksPerDepositForm', '14', 'number', '14', 'Number of checks for Deposit Slip Report', 'General', NULL),
+(58, 'bUseScannedChecks', '0', 'boolean', '0', 'Set true to enable use of scanned checks', 'General', NULL),
 (999, 'bRegistered', '0', 'boolean', '0', 'ChurchInfo has been registered.  The ChurchInfo team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General', NULL),
 (1001, 'leftX', '20', 'number', '20', 'Left Margin (1 = 1/100th inch)', 'ChurchInfoReport', NULL),
 (1002, 'incrementY', '4', 'number', '4', 'Line Thickness (1 = 1/100th inch', 'ChurchInfoReport', NULL),
@@ -1292,7 +1294,8 @@ INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES
 -- 
 
 CREATE TABLE `volunteeropportunity_vol` (
-  `vol_ID` tinyint(3) NOT NULL auto_increment,
+  `vol_ID` int(3) NOT NULL auto_increment,
+  `vol_Order` int(11) NOT NULL default '0', 
   `vol_Active` enum('true','false') NOT NULL default 'true',
   `vol_Name` varchar(30) default NULL,
   `vol_Description` varchar(100) default NULL,
