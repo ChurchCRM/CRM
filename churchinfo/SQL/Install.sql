@@ -1295,7 +1295,7 @@ INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES
 
 CREATE TABLE `volunteeropportunity_vol` (
   `vol_ID` int(3) NOT NULL auto_increment,
-  `vol_Order` int(11) NOT NULL default '0', 
+  `vol_Order` int(3) NOT NULL default '0', 
   `vol_Active` enum('true','false') NOT NULL default 'true',
   `vol_Name` varchar(30) default NULL,
   `vol_Description` varchar(100) default NULL,
