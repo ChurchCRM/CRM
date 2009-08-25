@@ -12,6 +12,8 @@
 *
 ******************************************************************************/
 
+global $bChecksPerDepositForm;
+
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
@@ -148,7 +150,7 @@ if ($output == "pdf") {
 	$totalChecks = 0;
 	$numItems = 0;
 
-	if (! $iBankSlip) {
+	if ($bChecksPerDepositForm > 14 or ! $iBankSlip) {
 		$summaryY -= 100;
 		$titleY -= 90;
 		$date2Y -= 90;

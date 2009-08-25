@@ -47,15 +47,33 @@ elseif (!$_SESSION['bAddRecords'])
 }
 
 //Is this the second pass?
-if (isset($_POST["Delete"]))
-{
-	$sSQL = "DELETE FROM `pledge_plg` WHERE `plg_plgID` = '" . $iPledgeID . "' LIMIT 1;";
-	//Execute the SQL
-	RunQuery($sSQL);
+if (isset($_POST["Delete"])) {
+	// because we're creating extra entries for same-check numbers to split out the giving, we need to query the DB and find like check numbers and delete all the entries with that same check number
+
+	$sSQL = "SELECT plg_famID, plg_CheckNo, plg_date, plg_FYID, plg_method from pledge_plg where plg_plgID=\"" . $iPledgeID . "\";";
+	$rsFam = RunQuery($sSQL);
+	extract(mysql_fetch_array($rsFam));
+	if ($plg_method == 'CHECK') {
+		$sSQL = "SELECT plg_plgID from pledge_plg where plg_famID=\"" . $plg_famID . "\" AND  plg_CheckNo=\"" . $plg_CheckNo . "\" AND  plg_date=\"" . $plg_date . "\";";
+		$rsPlgIDs = RunQuery($sSQL);
+
+		while ($aRow = mysql_fetch_array($rsPlgIDs)) {
+			extract($aRow);
+			$plgIDs[] = $plg_plgID;
+		}
+	} else {
+		$plgIDs[] = $iPledgeID;
+	}
+
+	foreach ($plgIDs as $plgID) {
+		$sSQL = "DELETE FROM `pledge_plg` WHERE `plg_plgID` = '" . $plgID . "';";
+		RunQuery($sSQL);
+	}
+
 	if ($linkBack <> "") {
 		Redirect ($linkBack);
 	}
-} else if (isset ($_POST["Cancel"])) {
+} elseif (isset ($_POST["Cancel"])) {
 	Redirect ($linkBack);
 }
 

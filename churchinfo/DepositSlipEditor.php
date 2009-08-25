@@ -408,7 +408,7 @@ if ($iDepositSlipID) {
 			 FROM pledge_plg 
 			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-			 WHERE plg_depID = " . $iDepositSlipID . " AND plg_PledgeOrPayment='Payment' ORDER BY pledge_plg.plg_date";
+			 WHERE plg_depID = " . $iDepositSlipID . " AND plg_PledgeOrPayment='Payment' ORDER BY pledge_plg.plg_plgID, pledge_plg.plg_date";
 	$rsPledges = RunQuery($sSQL);
 } else {
 	$rsPledges = 0;
@@ -559,23 +559,56 @@ require "Include/Header.php";
 
 <?php
 
+//Loop through all pledges
+// there can be multiple 'check' records that contain data for a single deposit, due to allowing a single payment to be split to several pledge funds.  We need to therefore collect information from those 'like' records and create a single deposit line from those multiple records.  We'll create a unique key that contains the family name and check number as a map key and build the record into vertical bar separated records.
+// but because we're doing this only for checks, we need to then save the data into a unique 'payment' hash and later unpack the now combined check info into that payment hash.  (there's probably a better way to do this, but this should work for now).
+
+$depositOrder = 1;
+while ($aRow = mysql_fetch_array($rsPledges)) {
+	extract($aRow);
+
+	if ($plg_method == 'CHECK') {
+		$key = $FamilyName . "|" . $plg_date . "|" . $plg_method . "|" . $plg_CheckNo;
+		if ($checkHash and array_key_exists($key, $checkHash)) {
+		// add/tweak fields so existing key'ed record contains information of new record
+		
+			list($e_plg_amount, $e_fundName, $e_plg_comment, $e_plg_aut_Cleared, $e_plg_NonDeductible) = explode("|", $checkHash[$key]);
+
+			unset($checkHash[$key]);
+
+			$n_fundName = $e_fundName . "," . $fundName;
+			$n_comment = $e_plg_comment . "," . $plg_comment;
+			$n_amount = $e_plg_amount + $plg_amount;
+			$n_plg_NonDeductible = $e_plg_NonDeductible + $plg_NonDeductible;
+
+			$checkHash[$key] = $n_amount . "|" . $n_fundName . "|" . $n_plg_comment . "|" . $plg_aut_Cleared . "|" . $n_plg_NonDeductible . "|" . $plg_plgID;
+
+		} else {
+			$depositArray[$depositOrder] = 0;
+			$checkHashOrder2Key[$depositOrder] = $key;
+//echo "check " . $depositOrder . " ";
+			++$depositOrder;
+			$checkHash[$key] = $plg_amount . "|" . $fundName . "|" . $plg_comment . "|" . $plg_aut_Cleared . "|" . $plg_NonDeductible . "|" . $plg_plgID;
+		}
+	} else {
+		$depositArray[$depositOrder] = $FamilyName . "|" . $plg_date . "|" . $plg_method . "|" . $plg_CheckNo . "|" . $plg_amount . "|" . $fundName . "|" . $plg_comment . "|" . $plg_aut_Cleared . "|" . $plg_NonDeductible . "|" . $plg_plgID;
+//echo "cash " . $depositOrder . " ";
+		++$depositOrder;
+	}
+}
+
+if ($checkHashOrder2Key) {
+	foreach ($checkHashOrder2Key as $order => $key) {
+		$depositArray[$order] = $key . "|" . $checkHash[$key];
+	}
+}
 
 $tog = 0;
-
-//Loop through all pledges
-while ($aRow =mysql_fetch_array($rsPledges))
-{
+if ($depositArray) {
+foreach ($depositArray as $order => $value) {
+	list($FamilyName, $plg_date, $plg_method, $plg_CheckNo, $plg_amount, $fundName, $plg_comment, $plg_aut_Cleared, $plg_NonDeductible, $plg_plgID) = explode("|", $value);
+	
 	$tog = (! $tog);
-
-	$plg_date = "";
-	$plg_CheckNo = "";
-	$fundName = "";
-	$plg_amount = "";
-	$plg_method = "";
-	$plg_comment = "";
-	$plg_plgID = 0;
-
-	extract($aRow);
 
 	if ($tog)
 		$sRowClass = "PaymentRowColorA";
@@ -628,13 +661,14 @@ while ($aRow =mysql_fetch_array($rsPledges))
 <?php } ?>
 	</tr>
 <?php
+}
 } // while
 ?>
 
 </table>
 
 <?php
-} // if (!$iDepositSlipID)
+}
 ?>
 
 
