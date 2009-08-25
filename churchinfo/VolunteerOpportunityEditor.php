@@ -29,8 +29,6 @@ require "Include/Functions.php";
 // action is change of order number, up, down, delete, Name, Desc, or Active, or Add New
 
 
-
-
 $sAction = $_GET["Action"];
 $sOpp = FilterInput($_GET["Opp"],'int');
 
@@ -38,8 +36,6 @@ $sDeleteError = "";
 
 if ($sAction = 'delete' && strlen($sOpp) > 0) {
    $sSQL = "DELETE FROM volunteeropportunity_vol WHERE vol_ID = '" . $sOpp . "'";
-   echo "sSQL: "; 
-   var_dump($sSQL);
    RunQuery($sSQL);
    $sSQL = "DELETE FROM person2volunteeropp_p2vo WHERE p2vo_vol_ID = '" . $sOpp . "'";
    RunQuery($sSQL);
@@ -68,13 +64,13 @@ $sPageTitle = gettext("Volunteer Opportunity Editor");
 require "Include/Header.php";
 
 // Does the user want to save changes to text fields?
-if (isset($_GET["SaveChanges"])) {
+if (isset($_POST["SaveChanges"])) {
    $sSQL = "SELECT * FROM volunteeropportunity_vol";
    $rsOpps = RunQuery($sSQL);
    $numRows = mysql_num_rows($rsOpps);
 
    for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++ ) {
-      $aNameFields[$iFieldID] = FilterInput($_GET[$iFieldID . "name"]);
+      $aNameFields[$iFieldID] = FilterInput($_POST[$iFieldID . "name"]);
 
       if ( strlen($aNameFields[$iFieldID]) == 0 ) {
          $aNameErrors[$iFieldID] = true;
@@ -83,7 +79,7 @@ if (isset($_GET["SaveChanges"])) {
         $aNameErrors[$iFieldID] = false;
       }
 
-      $aDescFields[$iFieldID] = FilterInput($_GET[$iFieldID . "desc"]);
+      $aDescFields[$iFieldID] = FilterInput($_POST[$iFieldID . "desc"]);
 
       $aRow = mysql_fetch_array($rsOpps);
       $aIDFields[$iFieldID] = $aRow[0];
@@ -95,20 +91,19 @@ if (isset($_GET["SaveChanges"])) {
          $sSQL = "UPDATE volunteeropportunity_vol
                   SET `vol_Name` = '" . $aNameFields[$iFieldID] . "',
 	              `vol_Description` = '" . $aDescFields[$iFieldID] .
-	         "WHERE `vol_ID` = '" . $aIDFields[$iFieldID] . "';";
+	         "' WHERE `vol_ID` = '" . $aIDFields[$iFieldID] . "';";
          RunQuery($sSQL);
       }
    }
 } else {
-   if (isset($_GET["AddField"])) { // Check if we're adding a VolOp
-      $newFieldName = FilterInput($_GET["newFieldName"]);
-      $newFieldDesc = FilterInput($_GET["newFieldDesc"]);
+   if (isset($_POST["AddField"])) { // Check if we're adding a VolOp
+      $newFieldName = FilterInput($_POST["newFieldName"]);
+      $newFieldDesc = FilterInput($_POST["newFieldDesc"]);
       if (strlen($newFieldName) == 0) {
          $bNewNameError = true;
       } else { // Insert into table
          //  there must be an easier way to get the number of rows in order to generate the last order number.
          $sSQL = "SELECT * FROM volunteeropportunity_vol";
-
          $rsOpps = RunQuery($sSQL);
          $numRows = mysql_num_rows($rsOpps);
 	 $newOrder = $numRows + 1;
@@ -129,7 +124,6 @@ if (isset($_GET["SaveChanges"])) {
    for ($row = 1; $row <= $numRows; $row++) {
       $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
       extract($aRow);
-echo $vol_ID . " " . $vol_Name . "\n";
       $rowIndex = $vol_Order; // is this dangerous?  the vol_Order field had better be correct.
       $aIDFields[$rowIndex] = $vol_ID;
       $aNameFields[$rowIndex] = $vol_Name;
