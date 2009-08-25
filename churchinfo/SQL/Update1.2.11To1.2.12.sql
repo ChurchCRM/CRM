@@ -23,4 +23,4 @@ ALTER TABLE `volunteeropportunity_vol` ADD COLUMN `vol_Order` int(3) NOT NULL de
 -- New config values to enable multiple fund input
 INSERT IGNORE INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES 
 (57, 'bUseScannedChecks', '0', 'boolean', '0', 'Switch to enable use of checks scanned by a character scanner', 'General', NULL),
-(58, 'bChecksPerDepositForm', '14', 'boolean', '14', 'Number of checks on the deposit form, typically 14', 'General', NULL);
+(58, 'bChecksPerDepositForm', '14', 'number', '14', 'Number of checks on the deposit form, typically 14', 'General', NULL);
