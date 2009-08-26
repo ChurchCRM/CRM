@@ -35,3 +35,16 @@ INSERT IGNORE INTO `queryparameteroptions_qpo` (`qpo_ID`, `qpo_qrp_ID`, `qpo_Dis
 (29, 32, '2008/2009', '13'),
 (30, 32, '2009/2010', '14'),
 (31, 32, '2010/2011', '15');
+
+-- Change Birthday query to select Type (Member, Regular attender, etc) instead of hard-coding to Member.
+
+UPDATE `query_qry` SET `qry_SQL`='SELECT per_ID as AddToCart, per_BirthDay as Day, CONCAT(per_FirstName,'' '',per_LastName) AS Name FROM person_per WHERE per_cls_ID=~percls~ AND per_BirthMonth=~birthmonth~ ORDER BY per_BirthDay', `qry_Description`='People with birthdays in a particular month' WHERE `qry_ID`='18';
+
+INSERT IGNORE INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_OptionSQL`, `qrp_Name`, `qrp_Description`, `qrp_Alias`, `qrp_Default`, `qrp_Required`, `qrp_InputBoxSize`, `qrp_Validation`, `qrp_NumericMax`, `qrp_NumericMin`, `qrp_AlphaMinLength`, `qrp_AlphaMaxLength`) VALUES (33, 18, 1, '', 'Classification', 'Member, Regular Attender, etc.', 'percls', '1', 1, 0, '', 12, 1, 1, 2);
+
+INSERT IGNORE INTO `queryparameteroptions_qpo` (`qpo_ID`, `qpo_qrp_ID`, `qpo_Display`, `qpo_Value`) VALUES 
+(32, 33, 'Member', '1'),
+(33, 33, 'Regular Attender', '2'),
+(34, 33, 'Guest', '3'),
+(35, 33, 'Non-Attender', '4'),
+(36, 33, 'Non-Attender (staff)', '5');
