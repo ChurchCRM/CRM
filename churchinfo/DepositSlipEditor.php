@@ -52,6 +52,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 	$sComment = FilterInput($_POST["Comment"]);
 	$bClosed = FilterInput($_POST["Closed"]);
 	$sDepositType = FilterInput($_POST["DepositType"]);
+
 	if (! $bClosed)
 		$bClosed = 0;
 
@@ -108,8 +109,13 @@ if (isset($_POST["DepositSlipSubmit"]))
 			if ($linkBack != "") {
 				Redirect($linkBack);
 			} else {
-				//Send to the view of this DepositSlip
-				Redirect("DepositSlipEditor.php?linkBack=" . $linkBack . "&DepositSlipID=" . $iDepositSlipID);
+
+				if ($sDepositType == 'eGive') {
+					Redirect("eGive.php?DepositSlipID=" . $iDepositSlipID . "&linkBack=" . $linkBack . "&DepositSlipID=" . $iDepositSlipID);
+				} else {
+					//Send to the view of this DepositSlip
+					Redirect("DepositSlipEditor.php?linkBack=" . $linkBack . "&DepositSlipID=" . $iDepositSlipID);
+				}
 			}
 		}
 	}
@@ -435,17 +441,17 @@ require "Include/Header.php";
 		<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
 			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="DepositSlipCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 			<?php
-				if ($iDepositSlipID && !$dep_Closed)
+				if ($iDepositSlipID && !$dep_Closed) {
 					echo "<input type=button class=icButton value=\"".gettext("Add Payment")."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
 			?>
 			<input type="button" class="icButton" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?php echo ($dep_Type == 'Bank')?>';">
 			<input type="button" class="icButton" value="<?php echo gettext("More Reports"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
 
 			<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
-			<input type="submit" class="icButton" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
-			<input type="submit" class="icButton" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
-			<?php } ?>
-
+			    <input type="submit" class="icButton" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
+    <input type="submit" class="icButton" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
+			      <?php } ?>
+		    <?php } ?>
 		</td>
 	</tr>
 
@@ -463,14 +469,17 @@ require "Include/Header.php";
 			{
 				echo "<tr><td class=LabelColumn>".gettext("Deposit Type:")."</td>";
 				if ($sDepositType == "BankDraft")
-					$select3 = "Checked ";
+					$selectBankDraft = "Checked ";
 				elseif ($sDepositType == "CreditCard")
-					$select2 = "Checked ";
+					$selectCreditCard = "Checked ";
+				elseif ($sDepositType == "eGive")
+					$selecteGive = "Checked ";
 				else
-					$select1 = "Checked ";
-				echo "<td class=TextColumn><input type=radio name=DepositType id=DepositType value=\"Bank\" $select1>".gettext("Bank")." &nbsp; ";
-				echo "<input type=radio name=DepositType id=DepositType value=\"CreditCard\" $select2>".gettext("Credit Card")." &nbsp; ";
-				echo "<input type=radio name=DepositType id=DepositType value=\"BankDraft\" $select3>".gettext("Bank Draft")."</td></td>";
+					$selectOther = "Checked ";
+				echo "<td class=TextColumn><input type=radio name=DepositType id=DepositType value=\"Bank\" $selectOther>".gettext("Bank")." &nbsp; ";
+				echo "<input type=radio name=DepositType id=DepositType value=\"CreditCard\" $selectCreditCard>".gettext("Credit Card")." &nbsp; ";
+				echo "<input type=radio name=DepositType id=DepositType value=\"BankDraft\" $selectBankDraft>".gettext("Bank Draft")." &nbsp; ";
+				echo "<input type=radio name=DepositType id=DepositType value=\"eGive\" $selecteGive>".gettext("eGive")."</td></td>";
 			}
 			?>
 			
