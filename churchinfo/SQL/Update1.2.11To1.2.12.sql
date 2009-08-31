@@ -48,3 +48,10 @@ INSERT IGNORE INTO `queryparameteroptions_qpo` (`qpo_ID`, `qpo_qrp_ID`, `qpo_Dis
 (34, 33, 'Guest', '3'),
 (35, 33, 'Non-Attender', '4'),
 (36, 33, 'Non-Attender (staff)', '5');
+
+-- add egive to enums
+UPDATE `deposit_dep` SET `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') NOT NULL default 'Bank';
+
+ALTER TABLE `deposit_dep` CHANGE `dep_Type` `dep_Type` ENUM( 'Bank', 'CreditCard', 'BankDraft', 'eGive') NOT NULL DEFAULT 'Bank';
+
+ALTER TABLE `pledge_plg` CHANGE `plg_method` `plg_method` ENUM('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE') default NULL;
