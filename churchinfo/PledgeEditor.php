@@ -279,6 +279,11 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		$bErrorFlag = true;
 	}
 
+	if ($PledgeOrPayment=='Payment' and $iCheckNo and $iMethod == "CASH") {
+		$sCheckNoError = "<span style=\"color: red; \">" . gettext("Check number not valid for 'CASH' payment") . "</span>";
+		$bErrorFlag = true;
+	}
+
 	// Validate Date
 	if (strlen($dDate) > 0) {
 		list($iYear, $iMonth, $iDay) = sscanf($dDate,"%04d-%02d-%02d");
@@ -407,7 +412,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 				$calcTotal =+ $calcAmount;
 			}
 			if ($calcTotal <> $iTotalAmount) {
-				$nAmount[$defaultFund] = number_format($iTotalAmount - $calcOtherFunds, 2);
+				$nAmount[$defaultFund] = number_format($iTotalAmount - $calcOtherFunds, 2, ".", "");
 			}
 		} else {
 			$nAmount[$defaultFund] = $iTotalAmount;
@@ -426,7 +431,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 	}
 } else { // First time into screen
 	if ($fund2PlgIds) { // pledge records exist so pull data from the ones that exist
-		$sSQL = "SELECT * FROM pledge_plg WHERE plg_famID=\"" . $iFamily . "\" AND plg_PledgeOrPayment=\"" . $PledgeOrPayment . "\" AND plg_FYID=\"" . $iFYID . "\";";
+		$sSQL = "SELECT * FROM pledge_plg WHERE plg_famID=\"" . $iFamily . "\" AND plg_PledgeOrPayment=\"" . $PledgeOrPayment . "\" AND plg_FYID=\"" . $iFYID . "\" AND plg_date=\"" . $dDate . "\";";
 
 		$rsPledge = RunQuery($sSQL);
 		while ($aRow = mysql_fetch_array($rsPledge)) {
