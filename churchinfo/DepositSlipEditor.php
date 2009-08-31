@@ -45,8 +45,7 @@ else
 	$sPageTitle = $dep_Type . " " . gettext("Deposit Slip Number: ") . $iDepositSlipID;
 
 //Is this the second pass?
-if (isset($_POST["DepositSlipSubmit"]))
-{
+if (isset($_POST["DepositSlipSubmit"])) {
 	//Get all the variables from the request object and assign them locally
 	$dDate = FilterInput($_POST["Date"]);
 	$sComment = FilterInput($_POST["Comment"]);
@@ -108,14 +107,8 @@ if (isset($_POST["DepositSlipSubmit"]))
 		{
 			if ($linkBack != "") {
 				Redirect($linkBack);
-			} else {
-
-				if ($sDepositType == 'eGive') {
-					Redirect("eGive.php?DepositSlipID=" . $iDepositSlipID . "&linkBack=" . $linkBack . "&DepositSlipID=" . $iDepositSlipID);
-				} else {
-					//Send to the view of this DepositSlip
-					Redirect("DepositSlipEditor.php?linkBack=" . $linkBack . "&DepositSlipID=" . $iDepositSlipID);
-				}
+			} else { //Send to the view of this DepositSlip
+				Redirect("DepositSlipEditor.php?linkBack=" . $linkBack . "&DepositSlipID=" . $iDepositSlipID);
 			}
 		}
 	}
@@ -387,8 +380,7 @@ if (isset($_POST["DepositSlipSubmit"]))
 
 	//FirstPass
 	//Are we editing or adding?
-	if ($iDepositSlipID)
-	{
+	if ($iDepositSlipID)	{
 		//Editing....
 		//Get all the data on this record
 																		
@@ -399,9 +391,8 @@ if (isset($_POST["DepositSlipSubmit"]))
 		$dDate = $dep_Date;
 		$sComment = $dep_Comment;
 		$bClosed = $dep_Closed;
-	}
-	else
-	{
+		$sDepositType = $dep_Type;
+	} else {
 		//Adding....
 		//Set defaults
 	}
@@ -440,17 +431,20 @@ require "Include/Header.php";
 		<td align="center">
 		<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
 			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="DepositSlipCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
-			<?php
-				if ($iDepositSlipID && !$dep_Closed) {
+			<?php 
+			if ($iDepositSlipID and $sDepositType and !$dep_Closed) {
+				if ($sDepositType == "eGive") {
+					echo "<input type=button class=icButton value=\"".gettext("Import eGive")."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+				} else {
 					echo "<input type=button class=icButton value=\"".gettext("Add Payment")."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
-			?>
-			<input type="button" class="icButton" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?php echo ($dep_Type == 'Bank')?>';">
-			<input type="button" class="icButton" value="<?php echo gettext("More Reports"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
+				} ?>
+				<input type="button" class="icButton" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?php echo ($dep_Type == 'Bank')?>';">
+				<input type="button" class="icButton" value="<?php echo gettext("More Reports"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
 
-			<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
-			    <input type="submit" class="icButton" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
-    <input type="submit" class="icButton" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
-			      <?php } ?>
+				<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
+					<input type="submit" class="icButton" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
+    					<input type="submit" class="icButton" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
+			    	<?php } ?>
 		    <?php } ?>
 		</td>
 	</tr>
@@ -465,7 +459,7 @@ require "Include/Header.php";
 
 			
 			<?php
-			if (!$iDepositSlipID) 
+			if (!$iDepositSlipID or !$sDepositType) 
 			{
 				echo "<tr><td class=LabelColumn>".gettext("Deposit Type:")."</td>";
 				if ($sDepositType == "BankDraft")
