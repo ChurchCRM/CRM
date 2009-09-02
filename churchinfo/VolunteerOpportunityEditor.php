@@ -65,7 +65,7 @@ require "Include/Header.php";
 
 // Does the user want to save changes to text fields?
 if (isset($_POST["SaveChanges"])) {
-   $sSQL = "SELECT * FROM volunteeropportunity_vol";
+   $sSQL = "SELECT * FROM volunteeropportunity_vol ORDER by vol_Order";
    $rsOpps = RunQuery($sSQL);
    $numRows = mysql_num_rows($rsOpps);
 
@@ -103,7 +103,7 @@ if (isset($_POST["SaveChanges"])) {
          $bNewNameError = true;
       } else { // Insert into table
          //  there must be an easier way to get the number of rows in order to generate the last order number.
-         $sSQL = "SELECT * FROM volunteeropportunity_vol";
+         $sSQL = "SELECT * FROM volunteeropportunity_vol ORDER by vol_Order";
          $rsOpps = RunQuery($sSQL);
          $numRows = mysql_num_rows($rsOpps);
 	 $newOrder = $numRows + 1;
@@ -115,7 +115,7 @@ if (isset($_POST["SaveChanges"])) {
       }
    }
    // Get data for the form as it now exists..
-   $sSQL = "SELECT * FROM volunteeropportunity_vol";
+   $sSQL = "SELECT * FROM volunteeropportunity_vol ORDER by vol_Order";
 
    $rsOpps = RunQuery($sSQL);
    $numRows = mysql_num_rows($rsOpps);

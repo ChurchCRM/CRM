@@ -132,11 +132,11 @@ $rsGroups = RunQuery($sSQL);
 // Get the volunteer opportunities this Person is assigned to
 $sSQL = "SELECT vol_ID, vol_Name, vol_Description FROM volunteeropportunity_vol
 		LEFT JOIN person2volunteeropp_p2vo ON p2vo_vol_ID = vol_ID
-		WHERE person2volunteeropp_p2vo.p2vo_per_ID = " . $iPersonID;
+		WHERE person2volunteeropp_p2vo.p2vo_per_ID = " . $iPersonID . " ORDER by vol_Order";
 $rsAssignedVolunteerOpps = RunQuery($sSQL);
 
 // Get all the volunteer opportunities
-$sSQL = "SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Name";
+$sSQL = "SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Order";
 $rsVolunteerOpps = RunQuery($sSQL);
 
 // Get the Properties assigned to this Person
