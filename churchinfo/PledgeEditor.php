@@ -23,13 +23,13 @@ require "Include/MICRFunctions.php";
 
 $PledgeOrPayment = FilterInput($_GET["PledgeOrPayment"]);
 
-$dDate = $_SESSION['idefaultDate'];
+$dDate = FilterInput($_POST["Date"]);
 if (!$dDate) {
-  $dDate = FilterInput($_POST["Date"]);
-}
+	$dDate = $_SESSION['idefaultDate'];
 
-if (!$dDate) {
-  $dDate = date ("Y-m-d");
+	if (!$dDate) {
+		$dDate = date ("Y-m-d");
+	}
 }
 
 $_SESSION['idefaultDate'] = $dDate;
