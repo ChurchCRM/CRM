@@ -69,8 +69,8 @@ if ($PledgeOrPayment == 'Pledge') { // Don't assign the deposit slip if this is 
 
 	// Get the current deposit slip data
 	if ($iCurrentDeposit) {
-		// this query was for '*' but I don't see where anything other than dep_Closed is used...  so only get that for now
-		$sSQL = "SELECT dep_Closed from deposit_dep WHERE dep_ID = " . $iCurrentDeposit;
+		// this query was for '*' but I don't see where anything other than dep_Closed and dep_Date are used...  so only get that for now
+		$sSQL = "SELECT dep_Closed, dep_Date from deposit_dep WHERE dep_ID = " . $iCurrentDeposit;
 		$rsDeposit = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsDeposit));
 		if ($dep_Closed) // If the current deposit slip is closed, force creation of a new one.
@@ -140,16 +140,6 @@ if (!$iFamily) {
 	$iFamily = FilterInput($_POST["FamilyID"],'int');
 }
 
-$iEnvelope = FilterInput($_POST["Envelope"], 'int');
-if (!$iEnvelope and $iFamily) {
-	$sSQL = "SELECT fam_Envelope FROM family_fam WHERE fam_ID=\"" . $iFamily . "\";";
-	$rsEnv = RunQuery($sSQL);
-	extract(mysql_fetch_array($rsEnv));
-	if ($fam_Envelope) {
-		$iEnvelope = $fam_Envelope;
-	}
-}
-
 if ($PledgeOrPayment == 'Pledge' and $iFamily) {
 	$sSQL = "SELECT plg_plgID, plg_fundID from pledge_plg where plg_famID=\"" . $iFamily . "\" AND plg_PledgeOrPayment=\"" .  	$PledgeOrPayment . "\";";
 	$rsPlgIDs = RunQuery($sSQL);
@@ -159,23 +149,40 @@ if ($PledgeOrPayment == 'Pledge' and $iFamily) {
 		$fund2PlgIds[$fundID] = $plgID;
 	} // end while
 } elseif ($iPledgeID) { // handles the case where PledgeID is set.  Need to get all the family records for that payment so we can prime the data for editing
-	$sSQL = "SELECT plg_famID, plg_CheckNo from pledge_plg where plg_plgID=\"" . $iPledgeID . "\";";
+	$sSQL = "SELECT plg_famID, plg_CheckNo, plg_date, plg_method from pledge_plg where plg_plgID='" . $iPledgeID . "'";
 	$rsFam = RunQuery($sSQL);
-	extract(mysql_fetch_array($rsFam));
-	$iFamily = $plg_famID;
-	$iCheckNo = $plg_CheckNo;
-	
-	$sSQL = "SELECT plg_plgID, plg_fundID from pledge_plg where plg_famID=\"" . $iFamily . "\" AND plg_PledgeOrPayment=\"" . $PledgeOrPayment . "\";";
-	
-	// AND plg_CheckNo=\"" . $iCheckNo . "\";";
+        extract(mysql_fetch_array($rsFam));
+        $iFamily = $plg_famID;
+        $iCheckNo = $plg_CheckNo;
 
-	$rsPlgIDs = RunQuery($sSQL);
-	while ($row = mysql_fetch_array($rsPlgIDs)) {
-		$plgID = $row["plg_plgID"];
-		$fundID = $row["plg_fundID"];
+	$sSQL = "SELECT plg_plgID, plg_fundID, plg_amount from pledge_plg where plg_famID='" . $iFamily . "' AND plg_PledgeOrPayment='" . $PledgeOrPayment . "' AND plg_date='" . $plg_date . "'";
+
+	if ($plg_method == 'CHECK') { # a single check can result in multiple pledge records.  So now go pull those
+		$sSQL .= " AND plg_CheckNo='" . $iCheckNo . "'";
+	} else {
+		$sSQL .= " AND plg_plgID='" . $iPledgeID . "'";
+	}
+	$rsAmounts = RunQuery($sSQL);
+        while ($row = mysql_fetch_array($rsAmounts)) {
+		$plgID = $row['plg_plgID'];	
+		$fundID = $row['plg_fundID'];
 		$fund2PlgIds[$fundID] = $plgID;
-	} // end while
+		$fundName = $fundId2Name[$fundID];
+		$amount = $row['plg_amount'];
+		$nAmount[$fundName] = $row['plg_amount'];
+	}
 } // end if $iPledgeID
+
+
+$iEnvelope = FilterInput($_POST["Envelope"], 'int');
+if (!$iEnvelope and $iFamily) {
+	$sSQL = "SELECT fam_Envelope FROM family_fam WHERE fam_ID=\"" . $iFamily . "\";";
+	$rsEnv = RunQuery($sSQL);
+	extract(mysql_fetch_array($rsEnv));
+	if ($fam_Envelope) {
+		$iEnvelope = $fam_Envelope;
+	}
+}
 
 if ($pledgeOrPayment == 'Payment') {
 	$bEnableNonDeductible = 1; // this could/should be a config parm?  regardless, having a non-deductible amount for a pledge doesn't seem possible
@@ -238,7 +245,6 @@ if ($bUseScannedChecks) { // Instantiate the MICR class
 }
 
 if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
-	//echo "top of loop\n";
 	//Initialize the error flag
 	$bErrorFlag = false;
 
@@ -307,15 +313,15 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 			$iCurrentDeposit = $iDepositSlipID;
 			$dep_Date = date("Y-m-d");
 		}
+
 		// Only set PledgeOrPayment when the record is first created
 		// loop through all funds and create non-zero amount pledge records
 		foreach ($fundId2Name as $fun_id => $fun_name) {
 			if (!$iCheckNo) { $iCheckNo = 0; }
-
 			if ($fund2PlgIds and array_key_exists($fun_id, $fund2PlgIds)) {
 				if ($nAmount[$fun_name] > 0) {
 					$sSQL = "UPDATE pledge_plg SET plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount[$fun_name] . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment[$fun_name] . "'";
-					$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_CheckNo = \"" . $iCheckNo . "\", plg_scanString = \"" . $tScanString . "\", plg_aut_ID=\"" . $iAutID . "\", plg_NonDeductible=\"" . $nNonDeductible[$fun_name] . "\" WHERE plg_plgID = \"" . $fund2PlgIds[$fun_id] . "\" AND plg_famID = \"" . $iFamily . "\"";
+					$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_name] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "' AND plg_famID='" . $iFamily . "'";
 				} else { // delete that record
 					$sSQL = "DELETE FROM pledge_plg WHERE plg_plgID = \"" . $fund2PlgIds[$fun_id] . "\" AND plg_famID = \"" . $iFamily . "\"";
 				}
@@ -328,7 +334,6 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 				$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $fun_id . "," . $iCurrentDeposit . "," . $iCheckNo . ",\"" . $tScanString . "\",\"" . $iAutID  . "\",\"" . $nNonDeductible[$fun_name] . "\")";
 				$bGetKeyBack = True;
 			}
-
 			RunQuery($sSQL);
 			// If this is a new pledge or deposit, get the key back
 			if ($bGetKeyBack) {
@@ -337,7 +342,6 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 				extract(mysql_fetch_array($rsPledgeID));
 			}
 		} // end foreach of $fundId2Name
-	
 		if (isset($_POST["PledgeSubmit"])) {
 			// Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
 			if ($linkBack != "") {
@@ -430,7 +434,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		RunQuery($sSQL);
 	}
 } else { // First time into screen
-	if ($fund2PlgIds) { // pledge records exist so pull data from the ones that exist
+	if (!$iPledgeID and $fund2PlgIds) { // pledge records exist so pull data from the ones that exist
 		$sSQL = "SELECT * FROM pledge_plg WHERE plg_famID=\"" . $iFamily . "\" AND plg_PledgeOrPayment=\"" . $PledgeOrPayment . "\" AND plg_FYID=\"" . $iFYID . "\" AND plg_date=\"" . $dDate . "\";";
 
 		$rsPledge = RunQuery($sSQL);
