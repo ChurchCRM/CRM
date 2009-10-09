@@ -11,7 +11,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if (!$_SESSION['bFinance'] or !$_SESSION['bAdmin']) {
+if (!$_SESSION['bAdmin']) {
     Redirect("Menu.php");
     exit;
 }
@@ -19,24 +19,7 @@ if (!$_SESSION['bFinance'] or !$_SESSION['bAdmin']) {
 $iFYID = CurrentFY();
 $iDepositSlipID = FilterInput($_GET["DepositSlipID"]);
 
-// hard-code these for now, eventually, these would be put into a config file somewhere
-$eGiveBreakoutNames2FundIds["rrr"] = 4;
-$eGiveBreakoutNames2FundIds["renew"] = 4;
-$eGiveBreakoutNames2FundIds["rejoice"] = 4;
-$eGiveBreakoutNames2FundIds["refresh"] = 4;
-$eGiveBreakoutNames2FundIds["capital"] = 4;
-$eGiveBreakoutNames2FundIds["ocwm"] = 2;
-$eGiveBreakoutNames2FundIds["mission"] = 2;
-
-//$eGiveBreakoutNames2FundIds["building"] = 5;
-//$eGiveBreakoutNames2FundIds["mortgage"] = 5;
-
-
-$eGiveBreakoutNames2FundIds["general"] = 1;
-$eGiveBreakoutNames2FundIds["operating"] = 1;
-$eGiveBreakoutNames2FundIds["offering"] = 1;
-
-$defaultFundId = 5; // misc
+include ("Include/eGiveConfig.php"); // Specific account information is in here
 
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
@@ -45,18 +28,9 @@ mysql_data_seek($rsFunds,0);
 while ($row = mysql_fetch_array($rsFunds)) {
 	$fun_id = $row["fun_ID"];
 	$fun_name = $row["fun_Name"];
-	$fundName2Id[$fun_name] = $fun_id;
-	$fundId2Name[$fun_id] = $fun_name;
-	// if (!isset($defaultFundId)) {
-	//	$defaultFundId = $fun_id;
-	//}
 } // end while
 
 // get array of all existing payments into a 'cache' so we don't have to keep querying the DB
-
-//  need to use plg_FamID to get fam_Envelope from family_fam  
-
-// I'm going to do this a dumb way 'cause I'm not that good with SQL..  first get a hash of famIDs to famEnvelopes, then get the pledge data and use famID to get envelope
 
 $sSQL = "SELECT fam_ID, fam_Envelope from family_fam where fam_Envelope <> ''";
 $famIDs = RunQuery($sSQL);
@@ -65,14 +39,12 @@ while ($row = mysql_fetch_array($famIDs)) {
 	$famEnvelope = $row["fam_Envelope"];
 	$famID2Envelope[$famID] = $famEnvelope;
 	$famEnvelope2ID[$famEnvelope] = $famID;
-//echo "famID2Envelope . '" . $famID . "'->'" . $famEnvelope . "'\n";
 }
 
-$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_fundID, plg_FamID, plg_comment from pledge_plg where plg_method=\"EGIVE\" AND plg_PledgeOrPayment=\"Payment\";";
+$sSQL = "SELECT plg_date, plg_amount, plg_fundID, plg_FamID, plg_comment from pledge_plg where plg_method=\"EGIVE\" AND plg_PledgeOrPayment=\"Payment\";";
 
 $rsPlgIDs = RunQuery($sSQL);
 while ($row = mysql_fetch_array($rsPlgIDs)) {
-	$plgID = $row["plg_plgID"];  // don't think I need this one, but I'll leave it in in case I do....
 	$date = $row["plg_date"];
 	$amount = $row["plg_amount"];
 	$fundID = $row["plg_fundID"];
@@ -80,6 +52,7 @@ while ($row = mysql_fetch_array($rsPlgIDs)) {
 	$envelope = $famID2Envelope[$famID];
 	$comment = $row["plg_comment"];
 	$key = $date . "|" . $fundID . "|" . $envelope . "|" . $comment;
+echo "key: '$key' ";
 	$eGiveExisting[$key] = $amount;
 } // end while
 
@@ -165,6 +138,8 @@ if (isset($_POST["UploadCSV"])) {
 			if (strlen($dateArray[2]) == 2) {
 				$dateArray[2] += 2000;
 			}
+			$dateArray[0] = sprintf ("%02d", $dateArray[0]);
+			$dateArray[1] = sprintf ("%02d", $dateArray[1]);
 			$date = $dateArray[2] . "-" . $dateArray[0] . "-" . $dateArray[1];
 			$envelope = $aData[2];
 			if (array_key_exists($envelope, $famEnvelope2ID)) {
@@ -187,6 +162,8 @@ if (isset($_POST["UploadCSV"])) {
 					$foundFundId = $defaultFundId;
 				}
 				$keyExisting = $date . "|" . $foundFundId . "|" . $envelope . "|" . $comment;
+echo "keyExisting: '$keyExisting' ";
+
 				if ($eGiveExisting and array_key_exists($keyExisting, $eGiveExisting)) {
 					if ($eGiveExisting[$keyExisting] <> $amount) { // record already exists, just update amount
 						$sSQL = "UPDATE pledge_plg SET plg_DateLastEdited='" . date("YmdHis") . "', plg_comment = '" . $comment . "', plg_amount='" . $amount . "' WHERE plg_famID='" . $iFamily . "' AND plg_date='" . $date . "' AND plg_FundID='" . $foundFundId . "' AND plg_method='EGIVE';";
