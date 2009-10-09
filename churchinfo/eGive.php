@@ -11,7 +11,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if (!$_SESSION['bAdmin']) {
+if (!$_SESSION['bFinance'] and !$_SESSION['bAdmin']) {
     Redirect("Menu.php");
     exit;
 }
