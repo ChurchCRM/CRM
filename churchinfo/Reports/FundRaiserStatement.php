@@ -29,7 +29,7 @@ if ($iPaddleNumID > 0) {
 }
 
 $sSQL = "SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
-                a.per_FirstName as paddleFirstName, a.per_LastName as paddleLastName,
+                a.per_FirstName as paddleFirstName, a.per_LastName as paddleLastName, a.per_Email as paddleEmail,
 				b.fam_ID, b.fam_Name, b.fam_Address1, b.fam_Address2, b.fam_City, b.fam_State, b.fam_Zip, b.fam_Country                
          FROM paddlenum_pn
          LEFT JOIN person_per a ON pn_per_ID=a.per_ID
@@ -79,18 +79,23 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 	$pdf->WriteAt ($pdf->leftX, $curY, gettext ("Donated Items:"));
 	$curY += 2 * $pdf->incrementY;
 
-	$ItemWid = 20;
-	$QtyWid = 20;
-	$TitleWid = 60;
-	$DonorWid = 40;
+	$ItemWid = 10;
+	$QtyWid = 10;
+	$TitleWid = 50;
+	$DonorWid = 30;
+	$EmailWid = 35;
+	$PhoneWid = 20;
 	$PriceWid = 25;
 	$tableCellY = 4;
 	
 	// Get donated items and make the table
 	$sSQL = "SELECT di_item, di_title, di_buyer_id, di_sellprice,
 	                a.per_FirstName as buyerFirstName,
-	                a.per_LastName as buyerLastName
+	                a.per_LastName as buyerLastName,
+	                a.per_Email as buyerEmail,
+	                b.fam_homephone as buyerPhone
 	                FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_buyer_id 
+	                                    LEFT JOIN family_fam b on a.per_fam_id = b.fam_id
 	                WHERE di_donor_id = " . $pn_per_ID;
 	$rsDonatedItems = RunQuery($sSQL);
 	
@@ -100,6 +105,8 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 	$pdf->Cell ($ItemWid, $tableCellY, 'Item');
 	$pdf->Cell ($TitleWid, $tableCellY, 'Name');
 	$pdf->Cell ($DonorWid, $tableCellY, 'Buyer');
+	$pdf->Cell ($PhoneWid, $tableCellY, 'Phone');
+	$pdf->Cell ($EmailWid, $tableCellY, 'Email');
 	$pdf->Cell ($PriceWid, $tableCellY, 'Amount',0,1,"R");
 	$curY = $pdf->GetY();
 	$pdf->SetFont('Times','', 10);
@@ -109,6 +116,8 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 		$pdf->Cell ($ItemWid, $tableCellY, $di_item);
 		$pdf->Cell ($TitleWid, $tableCellY, $di_title);
 		$pdf->Cell ($DonorWid, $tableCellY, $buyerFirstName . " " . $buyerLastName);
+		$pdf->Cell ($PhoneWid, $tableCellY, $buyerPhone);
+		$pdf->Cell ($EmailWid, $tableCellY, $buyerEmail);
 		$pdf->Cell ($PriceWid, $tableCellY, $di_sellprice,0,1,"R");
 		$curY = $pdf->GetY();	
 	}
@@ -124,8 +133,11 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 	// Get individual auction items first
 	$sSQL = "SELECT di_item, di_title, di_donor_id, di_sellprice,
 	                a.per_FirstName as donorFirstName,
-	                a.per_LastName as donorLastName
+	                a.per_LastName as donorLastName,
+	                a.per_Email as donorEmail,
+	                b.fam_homePhone as donorPhone
 	                FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_donor_id
+	                                    LEFT JOIN family_fam b on a.per_fam_id=b.fam_id
 	                WHERE di_buyer_id = " . $pn_per_ID;
 	$rsPurchasedItems = RunQuery($sSQL);
 
@@ -135,6 +147,8 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 	$pdf->Cell ($QtyWid, $tableCellY, 'Qty');
 	$pdf->Cell ($TitleWid, $tableCellY, 'Name');
 	$pdf->Cell ($DonorWid, $tableCellY, 'Donor');
+	$pdf->Cell ($PhoneWid, $tableCellY, 'Phone');
+	$pdf->Cell ($EmailWid, $tableCellY, 'Email');
 	$pdf->Cell ($PriceWid, $tableCellY, 'Amount',0,1,"R");
 	$pdf->SetFont('Times','', 10);
 	$curY += $pdf->incrementY;
@@ -145,6 +159,8 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 		$pdf->Cell ($QtyWid, $tableCellY, "1"); // quantity 1 for all individual items
 		$pdf->Cell ($TitleWid, $tableCellY, $di_title);
 		$pdf->Cell ($DonorWid, $tableCellY, ($donorFirstName . " " . $donorLastName));
+		$pdf->Cell ($PhoneWid, $tableCellY, $donorPhone);
+		$pdf->Cell ($EmailWid, $tableCellY, $donorEmail);
 		$pdf->Cell ($PriceWid, $tableCellY, "$".$di_sellprice,0,1,"R");
 		$curY = $pdf->GetY();
 		$totalAmount += $di_sellprice;
@@ -154,10 +170,13 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 	$sqlMultiBuy = "SELECT mb_count, mb_item_ID, 
 	                a.per_FirstName as donorFirstName,
 	                a.per_LastName as donorLastName,
+	                a.per_Email as donorEmail,
+	                c.fam_HomePhone as donorPhone,
 					b.di_item, b.di_title, b.di_donor_id, b.di_sellprice
 					FROM multibuy_mb
 					LEFT JOIN donateditem_di b ON mb_item_ID=b.di_ID
 					LEFT JOIN person_per a ON b.di_donor_id=a.per_ID 
+					LEFT JOIN family_fam c ON a.per_fam_id = c.fam_ID
 					WHERE mb_per_ID=" . $pn_per_ID;
 	$rsMultiBuy = RunQuery($sqlMultiBuy);
 	while ($mbRow = mysql_fetch_array($rsMultiBuy)) {
@@ -166,6 +185,8 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 		$pdf->Cell ($QtyWid, $tableCellY, $mb_count);
 		$pdf->Cell ($TitleWid, $tableCellY, $di_title);
 		$pdf->Cell ($DonorWid, $tableCellY, ($donorFirstName . " " . $donorLastName));
+		$pdf->Cell ($PhoneWid, $tableCellY, $donorPhone);
+		$pdf->Cell ($EmailWid, $tableCellY, $donorEmail);
 		$pdf->Cell ($PriceWid, $tableCellY, ("$". ($mb_count * $di_sellprice)),0,1,"R");
 		$curY = $pdf->GetY();
 		$totalAmount += $mb_count * $di_sellprice;
