@@ -679,6 +679,7 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (86, 'viewfundraiser', 'fundraiser', 0, 'View All Fundraisers', NULL, 'FindFundRaiser.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
 (87, 'editfundraiser', 'fundraiser', 0, 'Edit Fundraiser', NULL, 'FundRaiserEditor.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5),
 (88, 'viewbuyers', 'fundraiser', 0, 'View Buyers', NULL, 'PaddleNumList.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5),
+(89, 'adddonors', 'fundraiser', 0, 'Add Donors to Buyer List', NULL, 'AddDonors.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5),
 
 (41, 'cart', 'root', 1, 'Cart', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 6),
 (42, 'viewcart', 'cart', 0, 'List Cart Items', NULL, 'CartView.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
