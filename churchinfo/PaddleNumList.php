@@ -85,7 +85,7 @@ while ($aRow =mysql_fetch_array($rsPaddleNums))
 			<a href="PaddleNumEditor.php?PaddleNumID=<?php echo $pn_ID . "&linkBack=PaddleNumList.php";?>">Edit</a>
 		</td>
 		<td>
-			<a href="PaddleNumDelete.php?PaddleNumID=<?php echo $pn_ID . "&linkBack=PaddleNumDelete.php?FundRaiserID=" . $iFundRaiserID;?>">Delete</a>
+			<a href="PaddleNumDelete.php?PaddleNumID=<?php echo $pn_ID . "&linkBack=PaddleNumList.php?FundRaiserID=" . $iFundRaiserID;?>">Delete</a>
 		</td>
 	</tr>
 <?php
