@@ -31,33 +31,23 @@ if ($iFundRaiserID) {
 	 $rsPaddleNums = RunQuery($sSQL);
 }
 
+$sPageTitle = gettext("Buyers for this fundraiser:");
 require "Include/Header.php";
-
 ?>
 
-<form method="post" action="FundRaiserEditor.php?<?php echo "linkBack=" . $linkBack . "&FundRaiserID=".$iFundRaiserID?>" name="FundRaiserEditor">
-
-<table cellpadding="3" align="center">
-
-	<tr>
-		<td align="center">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="FundRaiserCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
-			<?php
-				if ($iFundRaiserID)
-					echo "<input type=button class=icButton value=\"".gettext("Add Buyer")."\" name=AddBuyer onclick=\"javascript:document.location='PaddleNumEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">";
-			?>
-		</td>
-	</tr>
-</table>
-</form>
-
-<br>
-<b><?php echo gettext("Buyers for this fundraiser:"); ?></b>
-<br>
+<?php
+echo "<form method=\"post\" action=\"Reports/FundRaiserStatement.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID\">\n";
+if ($iFundRaiserID)
+	echo "<input type=button class=icButton value=\"".gettext("Select all")."\" name=SelectAll onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&SelectAll=1&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+	echo "<input type=button class=icButton value=\"".gettext("Select none")."\" name=SelectNone onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+	echo "<input type=button class=icButton value=\"".gettext("Add Buyer")."\" name=AddBuyer onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+	echo "<input type=submit class=icButton value=\"".gettext("Generate Statements for Selected")."\" name=GenerateStatements>\n";
+?>
 
 <table cellpadding="5" cellspacing="0" width="100%">
 
 <tr class="TableHeader">
+	<td><?php echo gettext("Select"); ?></td>
 	<td><?php echo gettext("Number"); ?></td>
 	<td><?php echo gettext("Buyer"); ?></td>
 	<td><?php echo gettext("Edit"); ?></td>
@@ -76,6 +66,9 @@ while ($aRow =mysql_fetch_array($rsPaddleNums))
 ?>
 	<tr class="<?php echo $sRowClass ?>">
 		<td>
+			<input type="checkbox" name="Chk<?php echo $pn_ID."\""; if (isset($_GET["SelectAll"])) echo " checked=\"yes\"";?>></input>
+		</td>
+		<td>
 			<?php echo $pn_Num?>&nbsp;
 		</td>
 		<td>
@@ -93,6 +86,7 @@ while ($aRow =mysql_fetch_array($rsPaddleNums))
 ?>
 
 </table>
+</form>
 
 <?php
 require "Include/Footer.php";
