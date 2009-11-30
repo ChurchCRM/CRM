@@ -45,6 +45,7 @@ if (!$sReportType) {
 	echo "<td class=TextColumn><select name=ReportType>";
 	echo "<option value=0>" . gettext("Select Report Type") ."</option>";
 	echo "<option value='Pledge Summary'>" . gettext("Pledge Summary") ."</option>";
+	echo "<option value='Pledge Family Summary'>" . gettext("Pledge FamilySummary") ."</option>";
 	echo "<option value='Pledge Reminders'>" . gettext("Pledge Reminders") ."</option>";
 	echo "<option value='Voting Members'>" . gettext("Voting Members") ."</option>";
 	echo "<option value='Giving Report'>" . gettext("Giving Report (Tax Statements)") ."</option>";
@@ -72,6 +73,9 @@ if (!$sReportType) {
 	    case "Pledge Summary":
 			$action = "Reports/PledgeSummary.php";
 		break;
+	    case "Pledge Family Summary":
+			$action = "Reports/FamilyPledgeSummary.php";
+		break;
 		case "Pledge Reminders":
 			$action = "Reports/ReminderReport.php";
 		break;
@@ -91,7 +95,7 @@ if (!$sReportType) {
 	echo "<tr><td><h3>". gettext("Filters") . "</h3></td></tr>";
 	
 	// Filter by Families
-	if ($sReportType == "Giving Report" || $sReportType == "Pledge Reminders" || $sReportType == "Advanced Deposit Report") {
+	if ($sReportType == "Giving Report" || $sReportType == "Pledge Reminders" || $sReportType == "Pledge Family Summary" || $sReportType == "Advanced Deposit Report") {
 		$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
 		$rsFamilies = RunQuery($sSQL);
 		echo "<tr><td class=LabelColumn>".gettext("Filter by Family:")."<br></td>";
@@ -145,7 +149,7 @@ if (!$sReportType) {
 	}	
 	
 	// Fiscal Year
-	if ($sReportType == "Pledge Summary" || $sReportType == "Pledge Reminders" || $sReportType == "Voting Members") {
+	if ($sReportType == "Pledge Summary" || $sReportType == "Pledge Reminders" || $sReportType == "Pledge Family Summary" || $sReportType == "Voting Members") {
 		echo "<tr><td class=LabelColumn>".gettext("Fiscal Year:")."</td>";
 		echo "<td class=TextColumn>";
 		PrintFYIDSelect ($iFYID, "FYID");
@@ -171,7 +175,7 @@ if (!$sReportType) {
 	}
 	
 	// Filter by Account
-	if ($sReportType == "Pledge Summary" || $sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report" || $sReportType == "Pledge Reminders") {
+	if ($sReportType == "Pledge Summary" || $sReportType == "Pledge Family Summary" || $sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report" || $sReportType == "Pledge Reminders") {
 		$sSQL = "SELECT fun_ID, fun_Name, fun_Active FROM donationfund_fun ORDER BY fun_Active, fun_Name";
 		$rsFunds = RunQuery($sSQL);
 		echo "<tr><td class=LabelColumn>".gettext("Filter by Fund:")."<br></td>";
