@@ -19,9 +19,20 @@ require "Include/Functions.php";
 
 //Get the GroupID from the querystring
 if (isset($_GET["GroupID"])) $iGroupID = FilterInput($_GET["GroupID"],'int');
-if (isset($_GET["Sort"])) $iSort = FilterInput($_GET["Sort"],'int');
+if (isset($_GET["Sort"])) {
+	 $iSort = FilterInput($_GET["Sort"],'int');
+} else {
+	$iSort = 0;
+}
 if (isset($_GET["Letter"]))	$sLetter = FilterInput($_GET["Letter"]);
 if (isset($_GET["PrintView"])) $bPrintView = FilterInput($_GET["PrintView"],'int');
+if (isset($_GET["RoleListID"])) {
+	$iRoleListID = FilterInput($_GET["RoleListID"],'int');
+} else { // Get the group's role list ID
+	$sSQL = "SELECT grp_RoleListID,grp_hasSpecialProps FROM group_grp WHERE grp_ID =" . $iGroupID;
+	$aTemp = mysql_fetch_array(RunQuery($sSQL));
+	$iRoleListID = $aTemp[0];
+}
 
 if (!empty($_GET["ShowGSP"]))
 	$bShowGSP = FilterInput($_GET["ShowGSP"],'int');
@@ -43,10 +54,28 @@ if (isset($_GET["PersonToRemove"]) && $_SESSION['bManageGroups'])
 	Redirect("PersonView.php?PersonID=" . $iRemovedPerson);
 }
 
-// Get the group's role list ID
-$sSQL = "SELECT grp_RoleListID,grp_hasSpecialProps FROM group_grp WHERE grp_ID =" . $iGroupID;
-$aTemp = mysql_fetch_array(RunQuery($sSQL));
-$iRoleListID = $aTemp[0];
+if (isset($_GET['Action']) and $_GET['Action'] == 'AddGroupViewToCart') {
+    //Get all the members of this group
+	$iRoleListID = FilterInput($_GET["RoleListID"],'int');
+
+	$sSQL = "SELECT per_ID
+			FROM person_per
+			LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
+			LEFT JOIN list_lst ON p2g2r_rle_ID = lst_OptionID 
+			LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
+		WHERE p2g2r_grp_ID = " . $iGroupID . " AND lst_ID = " . $iRoleListID . "  AND lst_OptionSequence = " . $iSort;
+    $rsGroupMembers = RunQuery($sSQL);
+
+    //Loop through the recordset
+    while ($aRow = mysql_fetch_array($rsGroupMembers))
+    {
+        extract($aRow);
+
+        //Add each person to the cart
+        AddToPeopleCart($per_ID);
+    }
+}
+
 $bHasSpecialProps = ($aTemp[1] == "true");
 
 // Get the roles
@@ -124,22 +153,33 @@ if (!$bPrintView) {
 	echo "<input type=\"hidden\" name=\"GroupID\" value=" . $iGroupID . ">";
 	echo "<input type=\"hidden\" name=\"ShowGSP\" value=" . $bShowGSP . ">";
 	echo "<select class=\"SmallText\" name=\"Sort\">";
-	echo "<option value=\"0\"  selected>" . gettext("View All") . "</option>";
+	echo "<option value='0'";
+	if ($iSort and $iSort == 0) {
+		echo " selected";
+	}
+	echo ">" . gettext("View All") . "</option>";
 	for ($row = 1; $row <= $numRoles; $row++)
 	{
 		$aRow = mysql_fetch_array($rsRoles, MYSQL_BOTH);
 		extract($aRow);
 		$aName[$row] = $lst_OptionName;
 		$aSeq[$row] = $lst_OptionSequence;
-		if ($aSeq[$row] == $iSort)
+		if ($aSeq[$row] == $iSort) {
 			$sSortName = $aName[$row];
-		echo "<option value=" . $aSeq[$row] . ">" . gettext("Show only") . " " . $aName[$row] . "</option>";
+			$iSort = $aSeq[$row];
+		}
+		echo "<option value=" . $aSeq[$row];
+		if ($iSort and $iSort == $row) {
+			echo " selected";
+		}
+		echo ">" . gettext("Show only") . " " . $aName[$row] . "</option>";
 	}
 	echo "</select>";
-	echo "<input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext("Go") . "\">";
+	echo "&nbsp&nbsp<input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext("Go") . "\">";
 	// Display Filter
 	if ($sSortName)
 		echo "<font color=red> &nbsp; &nbsp; Currently showing only $sSortName </font>";
+		echo '&nbsp&nbsp<a class="SmallText" href="GroupMemberList.php?Action=AddGroupViewToCart&amp;GroupID=' . $iGroupID . '&amp;RoleListID=' . $iRoleListID . '&amp;Sort=' . $iSort . '">' . gettext('Add Group View to Cart') . '</a>';
 	echo "</form>";
 	
 	// Create Sort Links
@@ -147,7 +187,7 @@ if (!$bPrintView) {
 	echo "<a href=\"GroupMemberList.php?ShowGSP=$bShowGSP&GroupID=" . $iGroupID;
 	if($iSort) echo "&Sort=$iSort";
 	echo "\">" . gettext("View All") . "</a>";
-	while ($aLetter = mysql_fetch_array($rsLetters))
+	while ($aLetter = mysql_fetch_array($rsLetters)) 
 	{
 		echo "&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"GroupMemberList.php?GroupID=" . $iGroupID;
 		if($iSort) echo "&Sort=$iSort";
