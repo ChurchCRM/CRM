@@ -32,19 +32,19 @@ for (; ; ) {    // This is not a loop but a section of code to be
 // **************************************************************************
 // Make a backup copies of each changed table so we can restore from them if we have problems
 
-$changing_tables[] = "volunteeropportunity_vol";
-
-changing_tables = array("config_cfg", "query_qry", "queryparameters_qrp", "queryparameteroptions_qpo", "deposit_dep", "pledge_plg");
+$changing_tables = array("volunteeropportunity_vol", "config_cfg", "query_qry", "queryparameters_qrp", "queryparameteroptions_qpo", "deposit_dep", "pledge_plg");
 
 $error = 0;
 foreach ($changing_tables as $tn) {
 	$btn = $tn . "_backup";
-	$sSQL = "DROP TABLE IF EXISTS " . $btn; 
+	$sSQL = "DROP TABLE IF EXISTS `" . $btn . "`"; 
+//var_dump($sSQL);
 	if (!RunQuery($sSQL, FALSE))
 		$error = 1;
 		break;
 
-	$sSQL = "CREATE TABLE " . $btn . " SELECT * FROM " . $tn"; 
+	$sSQL = "CREATE TABLE `" . $btn . "` SELECT * FROM `" . $tn . "`"; 
+//var_dump($sSQL);
 
 	if (!RunQuery($sSQL, FALSE))
 		$error = 1;
@@ -73,7 +73,7 @@ if (!RunQuery($sSQL, FALSE))
 // New config values to enable multiple fund input
 $sSQL = "INSERT IGNORE INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES 
 (57, 'bUseScannedChecks', '0', 'boolean', '0', 'Switch to enable use of checks scanned by a character scanner', 'General', NULL),
-(58, 'bChecksPerDepositForm', '14', 'number', '14', 'Number of checks on the deposit form, typically 14', 'General', NULL)";
+(58, 'iChecksPerDepositForm', '14', 'number', '14', 'Number of checks on the deposit form, typically 14', 'General', NULL)";
 if (!RunQuery($sSQL, FALSE))
 	break;
 
@@ -135,6 +135,12 @@ $sSQL = "CREATE TABLE IF NOT EXISTS `egive_egv` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8";
 if (!RunQuery($sSQL, FALSE))
 	break;
+	
+// If we got this far it means all queries ran without error.  It is okay to update
+// the version information.
+$sSQL = "INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('".$sVersion."',NOW())";
+RunQuery($sSQL, FALSE); // False means do not stop on error
+break;
 
 }  // End of for  
 
