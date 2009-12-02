@@ -13,7 +13,7 @@
  *
  ******************************************************************************/
 
-global $bChecksPerDepositForm;
+global $iChecksPerDepositForm;
 
 //Include the function library
 require "Include/Config.php";
@@ -195,7 +195,7 @@ if ($PledgeOrPayment == 'Pledge') {
 	$sPageTitle = gettext("Payment Editor: ") . $dep_Type . gettext(" Deposit Slip #") . $iCurrentDeposit . " ($dep_Date)";
 
 	// form assumed by Reports/PrintDeposit.php. 
-	$checksFit = $bChecksPerDepositForm;
+	$checksFit = $iChecksPerDepositForm;
 
 	$sSQL = "SELECT plg_plgID, plg_checkNo, plg_method from pledge_plg where plg_depID=" . $iCurrentDeposit;
 	$rsChecksThisDep = RunQuery ($sSQL);
