@@ -1387,3 +1387,12 @@ CREATE TABLE `Multibuy_mb` (
   PRIMARY KEY  (`mb_ID`),
   UNIQUE KEY `mb_ID` (`mb_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE `egive_egv` (
+  `egv_egiveID` varchar(16) character set utf8 NOT NULL,
+  `egv_famID` int(11) NOT NULL,
+  `egv_DateEntered` datetime NOT NULL,
+  `egv_DateLastEdited` datetime NOT NULL,
+  `egv_EnteredBy` smallint(6) NOT NULL default '0',
+  `egv_EditedBy` smallint(6) NOT NULL default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

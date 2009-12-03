@@ -55,3 +55,12 @@ UPDATE `deposit_dep` SET `dep_Type` enum('Bank','CreditCard','BankDraft','eGive'
 ALTER TABLE `deposit_dep` CHANGE `dep_Type` `dep_Type` ENUM( 'Bank', 'CreditCard', 'BankDraft', 'eGive') NOT NULL DEFAULT 'Bank';
 
 ALTER TABLE `pledge_plg` CHANGE `plg_method` `plg_method` ENUM('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE') default NULL;
+
+CREATE TABLE IF NOT EXISTS `egive_egv` (
+  `egv_egiveID` varchar(16) character set utf8 NOT NULL,
+  `egv_famID` int(11) NOT NULL,
+  `egv_DateEntered` datetime NOT NULL,
+  `egv_DateLastEdited` datetime NOT NULL,
+  `egv_EnteredBy` smallint(6) NOT NULL default '0',
+  `egv_EditedBy` smallint(6) NOT NULL default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
