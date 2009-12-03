@@ -9,7 +9,7 @@ $eGiveBreakoutNames2FundIds["general"] = 1;
 $eGiveBreakoutNames2FundIds["operating"] = 1;
 $eGiveBreakoutNames2FundIds["offering"] = 1;
 
-/ missions, Our Church's Wider Mission
+// missions, Our Church's Wider Mission
 $eGiveBreakoutNames2FundIds["ocwm"] = 2; //OCWM
 $eGiveBreakoutNames2FundIds["mission"] = 2;
 
