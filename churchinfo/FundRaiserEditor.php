@@ -117,7 +117,7 @@ if (isset($_POST["FundRaiserSubmit"]))
 	}
 }
 
-if ($iFundRaiserID) {
+if ($iFundRaiserID > 0) {
 	//Get the items for this fundraiser
 	$sSQL = "SELECT di_ID, di_Item, di_multibuy,
 	                a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
@@ -134,7 +134,7 @@ if ($iFundRaiserID) {
 }
 
 // Set Current Deposit setting for user
-if ($iFundRaiserID) {
+if ($iFundRaiserID > 0) {
 	$_SESSION['iCurrentFundraiser'] = $iFundRaiserID;		// Probably redundant
 //	$sSQL = "UPDATE user_usr SET usr_currentDeposit = '$iFundRaiserID' WHERE usr_per_id = \"".$_SESSION['iUserID']."\"";
 //	$rsUpdate = RunQuery($sSQL);
@@ -153,7 +153,7 @@ require "Include/Header.php";
 		<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="FundRaiserSubmit">
 			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="FundRaiserCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 			<?php
-				if ($iFundRaiserID)
+				if ($iFundRaiserID > 0)
 					echo "<input type=button class=icButton value=\"".gettext("Add Donated Item")."\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">";
 			?>
 		</td>
@@ -205,46 +205,48 @@ require "Include/Header.php";
 $tog = 0;
 
 //Loop through all donated items
-while ($aRow =mysql_fetch_array($rsDonatedItems))
-{
-	extract($aRow);
-
-	$sRowClass = "RowColorA";
-?>
-	<tr class="<?php echo $sRowClass ?>">
-		<td>
-			<?php echo $di_Item?>&nbsp;
-		</td>
-		<td>
-			<?php if ($di_multibuy) echo "X";?>&nbsp;
-		</td>
-		<td>
-			<?php echo $donorFirstName . " " . $donorLastName ?>&nbsp;
-		</td>
-		<td>
-			<?php if ($di_multibuy) echo gettext ("Multiple"); else echo $buyerFirstName . " " . $buyerLastName ?>&nbsp;
-		</td>
-		<td>
-			<?php echo $di_title ?>&nbsp;
-		</td>
-		<td align=center>
-			<?php echo $di_sellprice ?>&nbsp;
-		</td>
-		<td align=center>
-			<?php echo $di_estprice ?>&nbsp;
-		</td>
-		<td align=center>
-			<?php echo $di_materialvalue ?>&nbsp;
-		</td>
-		<td>
-			<a href="DonatedItemEditor.php?DonatedItemID=<?php echo $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID;?>">Edit</a>
-		</td>
-		<td>
-			<a href="DonatedItemDelete.php?DonatedItemID=<?php echo $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID;?>">Delete</a>
-		</td>
-	</tr>
-<?php
-} // while
+if ($rsDonatedItems != 0) {
+	while ($aRow = mysql_fetch_array($rsDonatedItems))
+	{
+		extract($aRow);
+	
+		$sRowClass = "RowColorA";
+	?>
+		<tr class="<?php echo $sRowClass ?>">
+			<td>
+				<?php echo $di_Item?>&nbsp;
+			</td>
+			<td>
+				<?php if ($di_multibuy) echo "X";?>&nbsp;
+			</td>
+			<td>
+				<?php echo $donorFirstName . " " . $donorLastName ?>&nbsp;
+			</td>
+			<td>
+				<?php if ($di_multibuy) echo gettext ("Multiple"); else echo $buyerFirstName . " " . $buyerLastName ?>&nbsp;
+			</td>
+			<td>
+				<?php echo $di_title ?>&nbsp;
+			</td>
+			<td align=center>
+				<?php echo $di_sellprice ?>&nbsp;
+			</td>
+			<td align=center>
+				<?php echo $di_estprice ?>&nbsp;
+			</td>
+			<td align=center>
+				<?php echo $di_materialvalue ?>&nbsp;
+			</td>
+			<td>
+				<a href="DonatedItemEditor.php?DonatedItemID=<?php echo $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID;?>">Edit</a>
+			</td>
+			<td>
+				<a href="DonatedItemDelete.php?DonatedItemID=<?php echo $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID;?>">Delete</a>
+			</td>
+		</tr>
+	<?php
+	} // while
+}// if
 ?>
 
 </table>
