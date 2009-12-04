@@ -7,7 +7,7 @@
 *  http://www.churchdb.org/
 *
 *  Contributors:
-*  2009 Kirby Bakken
+*  2009 Kirby Bakken, Michael Wilt
 *
 *  Copyright Contributors
 *
@@ -22,6 +22,38 @@
 
 $sVersion = '1.2.12';
 
+$bErr = false;
+
+function BackUpTable ($tn)
+{
+	$sSQL = "DROP TABLE IF EXISTS $tn". "_backup"; 
+	if (!RunQuery($sSQL, FALSE))
+		return (false);
+	$sSQL = "CREATE TABLE $tn" . "_backup SELECT * FROM $tn"; 
+	if (!RunQuery($sSQL, FALSE))
+		return (false);
+	return (true);
+}
+
+function RestoreTableFromBackup ($tn)
+{
+	$sSQL = "DROP TABLE IF EXISTS $tn"; 
+	if (!RunQuery($sSQL, FALSE))
+		return (false);
+	$sSQL  = "RENAME TABLE `$tn"."_backup` TO `$tn`";
+	if (!RunQuery($sSQL, FALSE))
+		return (false);
+	return (true);
+}
+
+function DeleteTableBackup ($tn)
+{
+	$sSQL = "DROP TABLE IF EXISTS $tn"."_backup"; 
+	if (!RunQuery($sSQL, FALSE))
+		return (false);
+	return (true);
+}
+
 for (; ; ) {    // This is not a loop but a section of code to be 
                 // executed once.  If an error occurs running a query the
                 // remaining code section is skipped and all table 
@@ -30,29 +62,27 @@ for (; ; ) {    // This is not a loop but a section of code to be
                 // is restored to the previous version.
 
 // **************************************************************************
-// Make a backup copies of each changed table so we can restore from them if we have problems
 
-$changing_tables = array("volunteeropportunity_vol", "config_cfg", "query_qry", "queryparameters_qrp", "queryparameteroptions_qpo", "deposit_dep", "pledge_plg");
+// Need to back up tables we will be modifying- query_qry, queryparameteroptions_qpo, and menuconfig_mcf
 
-$error = 0;
-foreach ($changing_tables as $tn) {
-	$btn = $tn . "_backup";
-	$sSQL = "DROP TABLE IF EXISTS `" . $btn . "`"; 
-//var_dump($sSQL);
-	if (!RunQuery($sSQL, FALSE))
-		$error = 1;
+	$needToBackUp = array (
+	"config_cfg",
+	"deposit_dep",
+	"menuconfig_mcf",
+	"pledge_plg",
+	"queryparameteroptions_qpo",
+	"queryparameters_qrp",
+	"query_qry",
+	"volunteeropportunity_vol");
+	
+	foreach ($needToBackUp as $backUpName) {
+		if (! BackUpTable ($backUpName)) {
+			$bErr = true;
+			break;
+		}
+	}
+	if ($bErr)
 		break;
-
-	$sSQL = "CREATE TABLE `" . $btn . "` SELECT * FROM `" . $tn . "`"; 
-//var_dump($sSQL);
-
-	if (!RunQuery($sSQL, FALSE))
-		$error = 1;
-		break;
-}
-
-// if we couldn't create backup tables, we don't want to do anything more
-if ($error) break;
 
 // ********************************************************
 // ********************************************************
@@ -60,23 +90,29 @@ if ($error) break;
 // The $bStopOnError argument to RunQuery can now be changed from
 // TRUE to FALSE now that backup copies of all tables are available
 
-//Change int type to avoid wrap of values
-$sSQL = "ALTER TABLE `volunteeropportunity_vol` CHANGE `vol_ID` `vol_ID` INT( 3 ) NOT NULL AUTO_INCREMENT";
+$sSQL = "INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES 
+(57, 'iChecksPerDepositForm', '14', 'number', '14', 'Number of checks for Deposit Slip Report', 'General', NULL),
+(58, 'bUseScannedChecks', '0', 'boolean', '0', 'Set true to enable use of scanned checks', 'General', NULL)";
 if (!RunQuery($sSQL, FALSE))
 	break;
 
-// Add vol_Order field to table so that we can alter display order of volunteer opps
-$sSQL = "ALTER TABLE `volunteeropportunity_vol` ADD COLUMN `vol_Order` int(3) NOT NULL default '0' AFTER `vol_ID`";
+$sSQL = "ALTER TABLE `menuconfig_mcf` CHANGE `content` `content` varchar(100) NULL";
 if (!RunQuery($sSQL, FALSE))
 	break;
 
-// New config values to enable multiple fund input
-$sSQL = "INSERT IGNORE INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES 
-(57, 'bUseScannedChecks', '0', 'boolean', '0', 'Switch to enable use of checks scanned by a character scanner', 'General', NULL),
-(58, 'iChecksPerDepositForm', '14', 'number', '14', 'Number of checks on the deposit form, typically 14', 'General', NULL)";
+$sSQL = "INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_english`, `content`, `uri`, `statustext`, `security_grp`, `session_var`, `session_var_in_text`, `session_var_in_uri`, `url_parm_name`, `active`, `sortorder`) VALUES 
+(84, 'fundraiser', 'root', 1, 'Fundraiser', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 5),
+(85, 'newfundraiser', 'fundraiser', 0, 'Create New Fundraiser', NULL, 'FundRaiserEditor.php?FundRaiserID=-1', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
+(86, 'viewfundraiser', 'fundraiser', 0, 'View All Fundraisers', NULL, 'FindFundRaiser.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
+(87, 'editfundraiser', 'fundraiser', 0, 'Edit Fundraiser', NULL, 'FundRaiserEditor.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5),
+(88, 'viewbuyers', 'fundraiser', 0, 'View Buyers', NULL, 'PaddleNumList.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5),
+(89, 'adddonors', 'fundraiser', 0, 'Add Donors to Buyer List', NULL, 'AddDonors.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5);";
 if (!RunQuery($sSQL, FALSE))
 	break;
 
+$sSQL = "UPDATE menuconfig_mcf SET content=content_english;";
+if (!RunQuery($sSQL, FALSE))
+	break;
 
 // New query
 $sSQL = "INSERT IGNORE INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qry_Count`) VALUES (32, 'SELECT fam_Name, fam_Envelope, b.fun_Name as Fund_Name, a.plg_amount as Pledge from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid~ and a.plg_PledgeOrPayment=\'Pledge\' and a.plg_amount>0 join donationfund_fun b on b.fun_ID = a.plg_fundID order by fam_Name, a.plg_fundID', 'Family Pledge by Fiscal Year', 'Pledge summary by family name for each fund for the selected fiscal year', 1)";
@@ -112,14 +148,75 @@ $sSQL = "INSERT IGNORE INTO `queryparameteroptions_qpo` (`qpo_ID`, `qpo_qrp_ID`,
 (36, 33, 'Non-Attender (staff)', '5')";
 if (!RunQuery($sSQL, FALSE))
 	break;
+	
+$sSQL = "ALTER TABLE `volunteeropportunity_vol` CHANGE `vol_ID` `vol_ID` INT( 3 ) NOT NULL AUTO_INCREMENT;";
+if (!RunQuery($sSQL, FALSE))
+	break;
 
+$sSQL = "ALTER TABLE `volunteeropportunity_vol` ADD COLUMN `vol_Order` int(3) NOT NULL default '0' AFTER `vol_ID`;";
+if (!RunQuery($sSQL, FALSE))
+	break;
+
+$sSQL = "CREATE TABLE `PaddleNum_pn` (
+   `pn_ID` mediumint(9) unsigned NOT NULL auto_increment,
+   `pn_fr_ID` mediumint(9) unsigned,
+   `pn_Num` mediumint(9) unsigned,
+   `pn_per_ID` mediumint(9) NOT NULL default '0',
+   PRIMARY KEY  (`pn_ID`),
+   UNIQUE KEY `pn_ID` (`pn_ID`)
+ ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+if (!RunQuery($sSQL, FALSE))
+	break;
+
+$sSQL = "CREATE TABLE `Fundraiser_fr` (
+   `fr_ID` mediumint(9) unsigned NOT NULL auto_increment,
+   `fr_date` date default NULL,
+   `fr_title` varchar(128) NOT NULL,
+   `fr_description` varchar(2048),
+   `fr_EnteredBy` smallint(5) unsigned NOT NULL default '0',
+   `fr_EnteredDate` date NOT NULL,
+   PRIMARY KEY  (`fr_ID`),
+   UNIQUE KEY `fr_ID` (`fr_ID`)
+ ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+if (!RunQuery($sSQL, FALSE))
+	break;
+
+$sSQL = "CREATE TABLE `DonatedItem_di` (
+   `di_ID` mediumint(9) unsigned NOT NULL auto_increment,
+   `di_item` varchar(32) NOT NULL,
+   `di_FR_ID` mediumint(9) unsigned NOT NULL,
+   `di_donor_ID` mediumint(9) NOT NULL default '0',
+   `di_buyer_ID` mediumint(9) NOT NULL default '0',
+   `di_multibuy` smallint(1) NOT NULL default '0',
+   `di_title` varchar(128) NOT NULL,
+   `di_description` varchar(2048),
+   `di_sellprice` decimal(8,2) default NULL,
+   `di_estprice` decimal(8,2) default NULL,
+   `di_materialvalue` decimal(8,2) default NULL,
+   `di_EnteredBy` smallint(5) unsigned NOT NULL default '0',
+   `di_EnteredDate` date NOT NULL,
+   PRIMARY KEY  (`di_ID`),
+   UNIQUE KEY `di_ID` (`di_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+if (!RunQuery($sSQL, FALSE))
+	break;
+
+$sSQL = "CREATE TABLE `Multibuy_mb` (
+  `mb_ID` mediumint(9) unsigned NOT NULL auto_increment,
+  `mb_per_ID` mediumint(9) NOT NULL default '0',
+  `mb_item_ID` mediumint(9) NOT NULL default '0',
+  `mb_count` decimal(8,0) default NULL,
+  PRIMARY KEY  (`mb_ID`),
+  UNIQUE KEY `mb_ID` (`mb_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+if (!RunQuery($sSQL, FALSE))
+	break;
 
 // add egive to enums
 
 $sSQL = "ALTER TABLE `deposit_dep` CHANGE `dep_Type` `dep_Type` ENUM( 'Bank', 'CreditCard', 'BankDraft', 'eGive') NOT NULL default 'Bank'";
 if (!RunQuery($sSQL, FALSE))
 	break;
-
 
 $sSQL = "ALTER TABLE `pledge_plg` CHANGE `plg_method` `plg_method` ENUM('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE') default NULL";
 if (!RunQuery($sSQL, FALSE))
@@ -138,6 +235,7 @@ if (!RunQuery($sSQL, FALSE))
 	
 // If we got this far it means all queries ran without error.  It is okay to update
 // the version information.
+
 $sSQL = "INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('".$sVersion."',NOW())";
 RunQuery($sSQL, FALSE); // False means do not stop on error
 break;
@@ -149,29 +247,29 @@ $sError = mysql_error();
 $sSQL_Last = $sSQL;
 
 // Let's check if MySQL database is in sync with PHP code
-$sSQL = 'SELECT * FROM version_ver ORDER BY ver_ID DESC';
-$aRow = mysql_fetch_array(RunQuery($sSQL));
-extract($aRow);
+    $sSQL = 'SELECT * FROM version_ver ORDER BY ver_ID DESC';
+    $aRow = mysql_fetch_array(RunQuery($sSQL));
+    extract($aRow);
 
-if ($ver_version == $sVersion) {
-    // We're good.  Clean up by dropping the
-    // temporary tables
-	foreach ($changing_tables as $tn) {
-		$btn = $tn . "_backup";
-		$sSQL = "DROP TABLE IF EXISTS " . $btn; 
-		if (!RunQuery($sSQL, FALSE)) {
-			break;
+    if ($ver_version == $sVersion) {
+        // We're good.  Clean up by dropping the
+        // temporary tables
+		foreach ($needToBackUp as $backUpName) {
+			if (! DeleteTableBackup ($backUpName)) {
+				break;
+			}
+		}
+    } else {
+        // An error occured.  Clean up by restoring
+        // tables to their original condition by using
+        // the temporary tables.
+
+		foreach ($needToBackUp as $backUpName) {
+			if (! RestoreTableFromBackup ($backUpName)) {
+				break;
+			}
 		}
 	}
-} else {
-	foreach ($changing_tables as $tn) {
-		$btn = $tn . "_backup";
-		$sSQL = "DROP TABLE IF EXISTS `" . $tn . "`";
-		RunQuery($sSQL, TRUE);
-		$sSQL  = "RENAME TABLE `" . $btn . "` TO `" . $tn . "`";
-		RunQuery($sSQL, TRUE);
-    }
-}
 
 $sSQL = $sSQL_Last;
 
