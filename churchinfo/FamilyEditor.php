@@ -572,9 +572,9 @@ require "Include/Header.php";
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"FamilySubmitAndAdd\">"; } 
 			echo "<input type=\"button\" class=\"icButton\" value=\"" . gettext("Cancel") . "\"Name=\"FamilyCancel\"";
 			if (strlen($iFamilyID) > 0)
-				echo "\"onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
+				echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
 			else
-				echo "\"onclick=\"javascript:document.location='SelectList.php';\">";
+				echo " onclick=\"javascript:document.location='SelectList.php';\">";
 			if ( $bErrorFlag ) echo "<br><br><span class=\"LargeText\" style=\"color: red;\">Invalid fields or selections. Changes not saved! Please correct and try again!</span><br><br>"; ?>
 		</td>
 	</tr>
@@ -975,9 +975,9 @@ require "Include/Header.php";
 	if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"Save and Add\" name=\"FamilySubmitAndAdd\">"; }
 	echo "<input type=\"button\" class=\"icButton\" value=\"" . gettext("Cancel") . "\" Name=\"FamilyCancel\"";
 	if (strlen($iFamilyID) > 0)
-		echo "\"onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
+		echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
 	else
-		echo "\"onclick=\"javascript:document.location='SelectList.php';\">";
+		echo " onclick=\"javascript:document.location='SelectList.php';\">";
 	echo "</td></tr></form></table>";
 require "Include/Footer.php";
 ?>
