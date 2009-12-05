@@ -188,7 +188,7 @@ require "Include/Header.php";
 			// Display the custom fields
 			while ($Row = mysql_fetch_array($rsCustomFields)) {
 				extract($Row);
-				if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+				if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
 				{
 					$currentData = trim($aCustomData[$custom_Field]);
 					echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td>";
