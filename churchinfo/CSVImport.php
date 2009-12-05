@@ -659,7 +659,7 @@ if (isset($_POST["DoImport"]))
 					}
 
 					// Build the family_custom SQL
-					$sSQLFamCustom = "UPDATE Family_custom SET ";
+					$sSQLFamCustom = "UPDATE family_custom SET ";
 						for ($col = 0; $col < $numCol; $col++)
 						{
 							// Is it a custom field?
