@@ -341,11 +341,11 @@ for ($row=1; $row <= $numRows; $row++)
 
 			<?php
 			if ($row != 1)
-				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$row&ListID=$listID&ID=" . $aIDs[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
+				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aIDs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
 			if ($row < $numRows)
-				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$row&ListID=$listID&ID=" . $aIDs[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
+				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aIDs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
 			if ($numRows > 1)
-				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$row&ListID=$listID&ID=" . $aIDs[$row] . "&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>";
+				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aIDs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>";
 			?>
 		</td>
 		<td class="TextColumn">
