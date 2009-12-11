@@ -29,55 +29,101 @@ if (!$_SESSION['bFinance'])
 	exit;
 }
 
-// Service the action buttons
-if (isset($_POST["AssignAllFamilies"])) {
-	if (isset($_POST["AssignAllFamiliesConfirm"])) {
-		$bMembersOnly = isset($_POST["MembersOnly"]);
-		$processNews = EnvelopeAssignAllFamilies ($bMembersOnly);
-	} else {
-		$processNews = gettext ("Not confirmed.");
-	}
-}
-if (isset($_POST["BriefingSheets"])) {
-	redirect ("Reports/EnvelopeReport.php");
-}
+
+$envelopesHash = getEnvelopes();
+$familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse);
 
 require "Include/Header.php";
 
-echo "<p><B>" . $processNews . "</B></p>"; // Report any action just taken by button processing
-
-?>
+// Service the action buttons
+if (isset($_POST["AssignAllFamilies"])) {
+	$newEnvNum = 0;
+	$envelopesHash = array(); // zero it out
+	foreach ($familyArray as $fam_ID => $fam_Data) {
+		$envelopesHash[$fam_ID] = ++$newEnvNum;
+	}
+} elseif (isset($_POST["PrintReport"])) {
+	redirect ("Reports/EnvelopeReport.php");
+} elseif (isset($_POST["ZeroAll"])) {
+	$envelopesHash = array(); // zero it out
+	foreach ($familyArray as $fam_ID => $fam_Data) {
+		$envelopesHash[$fam_ID] = 0;
+	}
+} elseif (isset($_POST["UpdateEnvelopes"])) {
+	foreach ($envelopesHash as $fam_ID => $envelope) {
+		$key = "EnvelopeID_" . $fam_ID;
+		if (isset($_POST[$key])) {
+			$newEnvelope = $_POST[$key];
+			if ($envelope <> $newEnvelope) {
+				$dSQL = "UPDATE family_fam SET fam_Envelope='" . $newEnvelope . "' WHERE fam_ID='" . $fam_ID . "'";
+				RunQuery($dSQL);
+			}
+		}
+	}
+	$envelopesHash = getEnvelopes();
+}?>
 
 <form method="post" action="ManageEnvelopes.php" name="ManageEnvelopes">
 
-<table border width="100%" align="left">
-	<tr>
-		<td align="center" width="25%">
-			<input type="submit" class="icButton" value="<?php echo gettext("Assign envelopes to all familes"); ?>" 
+<input type="submit" class="icButton" value="<?php echo gettext("Sort by last Name"); ?>" name="SortByName">
+<input type="submit" class="icButton" value="<?php echo gettext("Sort by envelope #"); ?>" name="SortByEnvelope">
+<input type="submit" class="icButton" value="<?php echo gettext("Print Report"); ?>" 
+			 name="PrintReport">
+
+<br><br>
+<input type="submit" class="icButton" value="<?php echo gettext("Update Family Records"); ?>" 
+			 name="UpdateEnvelopes"> <-- Envelope #'s are not written to DB until this button is pressed
+
+<br><br>
+
+<table border=1>
+<tr><td><b>Family Select</b></td><td><b>Envelope</b>
+<input type="submit" class="icButton" value="<?php echo gettext("Zero"); ?>" 
+			 name="ZeroAll">
+<input type="submit" class="icButton" value="<?php echo gettext("Assign"); ?>" 
 			 name="AssignAllFamilies">
-		</td>
-		<td align="left" width="75%">
-			<?php echo gettext("<p>Assign new envelope numbers to all families.  Any existing assignments will be replaced.  This feature will only execute if &quot;Check fo Confirm&quot; is enabled to inhibit accidental execution.</p>"); ?>
-			<p><input type="checkbox" name="MembersOnly"><?php echo gettext("Members only (families with at least one church member)");?></p>
-			<p><input type="checkbox" name="AssignAllFamiliesConfirm"><?php echo gettext("Check to confirm");?></p>
-		</td>
-	</tr>
 
-	<tr>
-		<td align="center" width="25%">
-			<input type="submit" class="icButton" value="<?php echo gettext("Envelope List"); ?>" 
-			 name="BriefingSheets">
-		</td>
-		<td align="left" width="75%">
-			<?php echo gettext("Generate a PDF containing all the envelope assignments, sorted by family name."); ?>
-		</td>
-	</tr>
-
-</table>
-
-</form>
-
+</td></tr>
 
 <?php
+if ($_POST["SortByEnvelope"]) {
+	foreach ($envelopesHash as $fam_ID => $envelope) {
+		$fam_Data = $familyArray[$fam_ID];
+		echo "<tr>";
+		echo "<td>" . $fam_Data . "&nbsp;</td>";
+		?>
+		<td><class="TextColumn"><input type="text" name="EnvelopeID_<?php echo $fam_ID; ?>" value="<?php echo $envelope; ?>" maxlength="10"></td>
+		<?php
+		echo "</tr>";
+	}
+} else {
+	foreach ($familyArray as $fam_ID => $fam_Data) {
+		$envelope = $envelopesHash[$fam_ID];
+		echo "<tr>";
+		echo "<td>" . $fam_Data . "&nbsp;</td>";
+		?>
+		<td><class="TextColumn"><input type="text" name="EnvelopeID_<?php echo $fam_ID; ?>" value="<?php echo $envelope; ?>" maxlength="10"></td>
+		<?php
+		echo "</tr>";
+	}
+}
+
+?>	
+</table><br>
+</form>
+
+<?php
+
+function getEnvelopes() {
+	$dSQL = "SELECT fam_ID, fam_Envelope FROM family_fam ORDER by fam_Envelope";
+	$dEnvelopes = RunQuery($dSQL);
+	while ($aRow = mysql_fetch_array($dEnvelopes)) {
+		extract($aRow);
+		$envelopes[$fam_ID] = $fam_Envelope;
+	}
+	return $envelopes;
+}
+
+
 require "Include/Footer.php";
 ?>
