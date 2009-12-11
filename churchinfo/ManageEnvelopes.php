@@ -35,6 +35,7 @@ $familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse);
 
 require "Include/Header.php";
 
+$duplicateEnvelopeHash = array();
 // Service the action buttons
 if (isset($_POST["AssignAllFamilies"])) {
 	$newEnvNum = 0;
@@ -91,20 +92,32 @@ if ($_POST["SortByEnvelope"]) {
 		$fam_Data = $familyArray[$fam_ID];
 		echo "<tr>";
 		echo "<td>" . $fam_Data . "&nbsp;</td>";
-		?>
-		<td><class="TextColumn"><input type="text" name="EnvelopeID_<?php echo $fam_ID; ?>" value="<?php echo $envelope; ?>" maxlength="10"></td>
+		if ($envelope and $duplicateEnvelopeHash and array_key_exists($envelope, $duplicateEnvelopeHash)) {
+			$tdTag = "<td bgcolor='red'>";
+		} else {
+			$duplicateEnvelopeHash[$envelope] = $fam_ID;
+			$tdTag = "<td>";
+		}
+		echo $tdTag;?><class="TextColumn">
+		<input type="text" name="EnvelopeID_<?php echo $fam_ID; ?>" value="<?php echo $envelope; ?>" maxlength="10">
+		</td></tr>
 		<?php
-		echo "</tr>";
 	}
 } else {
 	foreach ($familyArray as $fam_ID => $fam_Data) {
 		$envelope = $envelopesHash[$fam_ID];
 		echo "<tr>";
 		echo "<td>" . $fam_Data . "&nbsp;</td>";
-		?>
-		<td><class="TextColumn"><input type="text" name="EnvelopeID_<?php echo $fam_ID; ?>" value="<?php echo $envelope; ?>" maxlength="10"></td>
+		if ($envelope and $duplicateEnvelopeHash and array_key_exists($envelope, $duplicateEnvelopeHash)) {
+			$tdTag = "<td bgcolor='red'>";
+		} else {
+			$duplicateEnvelopeHash[$envelope] = $fam_ID;
+			$tdTag = "<td>";
+		}
+		echo $tdTag;?><class="TextColumn">
+		<input type="text"  name="EnvelopeID_<?php echo $fam_ID; ?>" value="<?php echo $envelope; ?>"  maxlength="10">
+		</td></tr>
 		<?php
-		echo "</tr>";
 	}
 }
 
