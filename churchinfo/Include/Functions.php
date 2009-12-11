@@ -1907,8 +1907,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
     }
 }
 
-function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse) {
-	//Get Families for the drop-down
+function getFamilyList($sDirRoleHead, $sDirRoleSpouse) {
 	$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
 
 	$rsFamilies = RunQuery($sSQL);
@@ -1933,18 +1932,30 @@ function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse) {
 			$aHead[$head_famid] = $head_firstname;
 		}
 	}
-	$html = "";
+	$familyArray = array();
 	while ($aRow = mysql_fetch_array($rsFamilies)) {
 		extract($aRow);
+		$name = $fam_Name;
+		if ($aHead[$fam_ID]) {
+			$name .= ", " . $aHead[$fam_ID];
+		}
+		$name .= " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+
+		$familyArray[$fam_ID] = $name;
+	}
+
+	return $familyArray;
+}
+
+function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse) {
+	//Get Families for the drop-down
+	$familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse);
+	foreach ($familyArray as $fam_ID => $fam_Data) {
 		$html .= "<option value=\"" . $fam_ID . "\"";
 		if ($iFamily == $fam_ID) {
 			$html .= " selected";
 		}
-		$html .= ">" . $fam_Name;
-		if ($aHead[$fam_ID]) {
-			$html .= ", " . $aHead[$fam_ID];
-		}
-		$html .= " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+		$html .= ">" . $fam_Data;
 	}
 	return $html;
 }
