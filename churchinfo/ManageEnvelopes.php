@@ -29,28 +29,54 @@ if (!$_SESSION['bFinance'])
 	exit;
 }
 
+if (isset($_POST["Classification"])) {
+	$iClassification = $_POST["Classification"];
+} else {
+	$iClassification = 0;
+}
 
-$envelopesHash = getEnvelopes();
-$familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse);
+
+if (isset($_POST["SortBy"])) {
+	$sSortBy = $_POST["SortBy"];
+} else {
+	$sSortBy = "name";
+}
+
+$hideActionButtons = 0;
+
+$envelopesHash = getEnvelopes($iClassification);
+$familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse, $iClassification);
+
+//Get Classifications for the drop-down
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
+$rsClassifications = RunQuery($sSQL);
+while ($aRow = mysql_fetch_array($rsClassifications)) {
+	extract($aRow);
+	$classification[$lst_OptionID] = $lst_OptionName;
+}
 
 require "Include/Header.php";
 
+?>
+<form method="post" action="ManageEnvelopes.php" name="ManageEnvelopes">
+<?php
+
 $duplicateEnvelopeHash = array();
 // Service the action buttons
-if (isset($_POST["AssignAllFamilies"])) {
+if (isset($_POST["PrintReport"])) {
+	redirect ("Reports/EnvelopeReport.php");
+} elseif (isset($_POST["AssignAllFamilies"])) {
 	$newEnvNum = 0;
 	$envelopesHash = array(); // zero it out
 	foreach ($familyArray as $fam_ID => $fam_Data) {
 		$envelopesHash[$fam_ID] = ++$newEnvNum;
 	}
-} elseif (isset($_POST["PrintReport"])) {
-	redirect ("Reports/EnvelopeReport.php");
 } elseif (isset($_POST["ZeroAll"])) {
 	$envelopesHash = array(); // zero it out
 	foreach ($familyArray as $fam_ID => $fam_Data) {
 		$envelopesHash[$fam_ID] = 0;
 	}
-} elseif (isset($_POST["UpdateEnvelopes"])) {
+} elseif (isset($_POST["ConfirmUpdateDB"])) {
 	foreach ($envelopesHash as $fam_ID => $envelope) {
 		$key = "EnvelopeID_" . $fam_ID;
 		if (isset($_POST[$key])) {
@@ -61,13 +87,22 @@ if (isset($_POST["AssignAllFamilies"])) {
 			}
 		}
 	}
-	$envelopesHash = getEnvelopes();
-}?>
+	$envelopesHash = getEnvelopes($iClassification);
+} elseif (isset($_POST["UpdateEnvelopes"])) {
+	$hideActionButtons = 1;
+?>
+	<p><b>Are you sure!  If you've Zero'ed or Assigned most records will be changed</b></p>
+	<input type="submit" class="icButton" value="<?php echo gettext("Confirm"); ?>" 
+			 name="ConfirmUpdateDB">
+	<input type="submit" class="icButton" value="<?php echo gettext("Cancel"); ?>" 
+			 name="CancelUpdate">
+	<br><br><br>
+<?php
+}
 
-<form method="post" action="ManageEnvelopes.php" name="ManageEnvelopes">
+if (!$hideActionButtons) {
+?>
 
-<input type="submit" class="icButton" value="<?php echo gettext("Sort by last Name"); ?>" name="SortByName">
-<input type="submit" class="icButton" value="<?php echo gettext("Sort by envelope #"); ?>" name="SortByEnvelope">
 <input type="submit" class="icButton" value="<?php echo gettext("Print Report"); ?>" 
 			 name="PrintReport">
 
@@ -77,8 +112,34 @@ if (isset($_POST["AssignAllFamilies"])) {
 
 <br><br>
 
+<?php
+}
+?>
+
 <table border=1>
-<tr><td><b>Family Select</b></td><td><b>Envelope</b>
+<tr>
+
+<td><b>Family Select</b> with at least one: 
+
+	<select name="Classification">
+	<option value="0"><?php echo gettext("All"); ?></option>
+	<?php
+	foreach ($classification as $lst_OptionID => $lst_OptionName) {
+		echo "<option value=\"" . $lst_OptionID . "\"";
+		if ($iClassification == $lst_OptionID) echo " selected";
+		echo ">" . $lst_OptionName . "&nbsp;";
+	}
+	?>
+	</select>
+<input type="submit" class="icButton" value="<?php echo gettext("Sort by"); ?>" name="Sort">
+<input type="radio" Name="SortBy" value="name"
+<?php if ($sSortBy == "name") echo " checked"; ?>><?php echo gettext("Last Name"); ?>
+<input type="radio" Name="SortBy" value="envelope"
+<?php if ($sSortBy == "envelope") echo " checked"; ?>><?php echo gettext("Envelope #"); ?>
+
+</td>
+
+<td><b>Envelope</b>
 <input type="submit" class="icButton" value="<?php echo gettext("Zero"); ?>" 
 			 name="ZeroAll">
 <input type="submit" class="icButton" value="<?php echo gettext("Assign"); ?>" 
@@ -87,7 +148,8 @@ if (isset($_POST["AssignAllFamilies"])) {
 </td></tr>
 
 <?php
-if ($_POST["SortByEnvelope"]) {
+//if ($_POST["Sort"]) {
+	if ($_POST["SortBy"] == "envelope") {
 	foreach ($envelopesHash as $fam_ID => $envelope) {
 		$fam_Data = $familyArray[$fam_ID];
 		echo "<tr>";
@@ -127,9 +189,15 @@ if ($_POST["SortByEnvelope"]) {
 
 <?php
 
-function getEnvelopes() {
-	$dSQL = "SELECT fam_ID, fam_Envelope FROM family_fam ORDER by fam_Envelope";
-	$dEnvelopes = RunQuery($dSQL);
+function getEnvelopes($classification) {
+	if ($classification) {
+		$sSQL = "SELECT fam_ID, fam_Envelope FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID='" . $classification . "'";
+	} else {
+		$sSQL = "SELECT fam_ID, fam_Envelope FROM family_fam";
+	}
+
+	$sSQL .= " ORDER by fam_Envelope";
+	$dEnvelopes = RunQuery($sSQL);
 	while ($aRow = mysql_fetch_array($dEnvelopes)) {
 		extract($aRow);
 		$envelopes[$fam_ID] = $fam_Envelope;
