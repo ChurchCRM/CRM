@@ -1907,7 +1907,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
     }
 }
 
-function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification) {
+function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0) {
 
 	if ($classification) {
 		$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID='" . $classification . "' ORDER BY fam_Name";
