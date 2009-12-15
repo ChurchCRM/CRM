@@ -117,9 +117,9 @@ if (isset($_POST["ApiGet"])) {
 		// each transaction has these fields: 'transactionID' 'envelopeID' 'giftID' 'frequency' 'amount'
 		// 'giverID' 'giverName' 'giverEmail' 'dateCompleted' 'breakouts'
 			$importCreated = 0;
-			$importUpdated = 0;
 			$importNoChange = 0;
 			$importError = 0;
+
 			foreach ($data['transactions'] as $trans) {
 				$transId = $trans['transactionID'];
 				$name = $trans['giverName'];
@@ -189,7 +189,6 @@ if (isset($_POST["ApiGet"])) {
 	$egiveID2NameWithUnderscores = $_SESSION['egiveID2NameWithUnderscores'];
 
 	$importCreated = 0;
-	$importUpdated = 0;
 	$importNoChange = 0;
 	$importError = 0;
 	foreach ($egiveID2NameWithUnderscores as $egiveID => $nameWithUnderscores) {
@@ -245,7 +244,6 @@ function updateDB($famID, $transId, $date, $name, $amount, $fundName, $frequency
 	global $iFYID;
 	global $iDepositSlipID;
 	global $importCreated;
-	global $importUpdated;
 	global $importNoChange;
 
 	$dateArray = explode('/', $date); // this date is in mm/dd/yy format.  churchinfo needs it in yyyy-mm-dd format
@@ -277,15 +275,24 @@ function updateDB($famID, $transId, $date, $name, $amount, $fundName, $frequency
 	$keyExisting = $dateCI . "|" . $foundFundId . "|" . $comment;
 
 	if ($eGiveExisting and array_key_exists($keyExisting, $eGiveExisting)) {
-		$priorAmount = $eGiveExisting[$keyExisting];
 
-		if ((int)$priorAmount != (int)$amount) { // record already exists, just update amount
-			$sSQL = "UPDATE pledge_plg SET plg_DateLastEdited='" . date("YmdHis") . "', plg_comment = '" . $comment . "', plg_amount='" . $amount . "' WHERE plg_famID='" . $famID . "' AND plg_date='" . $dateCI . "' AND plg_FundID='" . $foundFundId . "' AND plg_method='EGIVE';";
-			++$importUpdated;
-			RunQuery($sSQL);
-		} else {
-			++$importNoChange;
-		}
+		// At one point, this code tried to allow an amount difference in eGive API data.  This presumes that
+		// such a DB fixup by eGive on the amount only were possible.
+		// As it turns out, comparing two float numbers requires some 'trickery'.  You have to realize that because of how
+		// PHP stores float numbers, that '0.01' can end up not equal to '0.01'.  So, since this is a somewhat contrived
+		// capability/function anyway, we're commenting it out, probably to never use it again.
+		// If it ever gets put back in, the 'importUpdated' variable should also be put back in.
+
+		//$priorAmount = $eGiveExisting[$keyExisting];
+		//echo "<p>priorAmount '" . $priorAmount . "' amount '" . $amount ."'</p>";
+		//if ((float)$priorAmount != (float)$amount) { // record already exists, just update amount
+		//echo "<p>after != test priorAmount '" . $priorAmount . "' amount '" . $amount ."'</p>";
+		//	$sSQL = "UPDATE pledge_plg SET plg_DateLastEdited='" . date("YmdHis") . "', plg_comment = '" . $comment . "', plg_amount='" . $amount . "' WHERE plg_famID='" . $famID . "' AND plg_date='" . $dateCI . "' AND plg_FundID='" . $foundFundId . "' AND plg_method='EGIVE';";
+		//	++$importUpdated;
+		//	RunQuery($sSQL);
+		//} else {
+		++$importNoChange;
+		//}
 	} elseif ($famID) { //  insert a new record
 		$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_NonDeductible) VALUES ('" . $famID . "','" . $iFYID . "','" . $dateCI . "','" . $amount . "','Once','EGIVE','" . $comment . "','" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'Payment'," . $foundFundId . ",'" . $iDepositSlipID . "','0')";
 		++$importCreated;
@@ -295,7 +302,6 @@ function updateDB($famID, $transId, $date, $name, $amount, $fundName, $frequency
 
 function importDoneFixOrContinue() {
 	global $importCreated;
-	global $importUpdated;
 	global $importNoChange;
 	global $importError;
 	global $iDepositSlipID;
@@ -339,7 +345,7 @@ function importDoneFixOrContinue() {
 
  ?>
 
-	<p class="MediumLargeText"> <?php echo gettext("Data import results: ") . $importCreated . gettext(" gifts were imported, ") . $importUpdated . gettext(" gifts were updated, ") . $importNoChange . gettext(" gifts unchanged, and ") . $importError . gettext(" gifts not imported due to problems");?></p>
+	<p class="MediumLargeText"> <?php echo gettext("Data import results: ") . $importCreated . gettext(" gifts were imported, ") .  $importNoChange . gettext(" gifts unchanged, and ") . $importError . gettext(" gifts not imported due to problems");?></p>
 	<input type="button" class="icButton" value="<?php echo gettext("Back to Deposit Slip");?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?php echo $iDepositSlipID;?>'"
 <?php
 }
@@ -349,8 +355,6 @@ function get_api_data($json) {
 	$result = json_decode($json, true);
 
 	$rc = json_last_error();
-echo "rc ";
-var_dump($rc);
 	switch($rc) {
 		case JSON_ERROR_DEPTH:
 			$error =  ' - Maximum stack depth exceeded';
