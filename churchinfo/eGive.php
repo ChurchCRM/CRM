@@ -11,6 +11,16 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+if (!function_exists(json_last_error)) {
+	define("JSON_ERROR_NONE", 0);
+	define("JSON_ERROR_DEPTH", 1);
+	define("JSON_ERROR_CTRL_CHAR", 2);
+	define("JSON_ERROR_SYNTAX", 3);
+  	function json_last_error() {
+		return 0; // nothing
+	}
+}
+
 if (!$_SESSION['bFinance'] and !$_SESSION['bAdmin']) {
     Redirect("Menu.php");
     exit;
@@ -68,6 +78,7 @@ if (isset($_POST["ApiGet"])) {
 	$endDate = $_POST["EndDate"];
 
 	$url = $eGiveURL . "/api/login/?apiKey=" . $eGiveApiKey;
+	//var_dump($url);
 	$fp = fopen($url, 'r');
 
 	//$meta_data = stream_get_meta_data($fp);
@@ -77,11 +88,13 @@ if (isset($_POST["ApiGet"])) {
 	$json = stream_get_contents($fp);
 	fclose($fp);
 
-	$logon = json_decode($json, true);
+	$api_error = 1;
+	$logon = get_api_data($json);
 	//$status = $logon["status"];
 	//$message = $login["message"];
 
-	if ($logon['status'] == 'success') {
+	if ($logon and $logon['status'] == 'success') {
+		$api_error = 0;
  		$token = $logon["token"];
 
 		$url = $eGiveURL . "/api/transactions/" . $eGiveOrgID . "/" . $startDate;
@@ -90,12 +103,15 @@ if (isset($_POST["ApiGet"])) {
 		}
 		$url .= "/?token=" . $token;
 
+		//var_dump($url);
 		$fp = fopen($url, 'r');
 
 		$json = stream_get_contents($fp);
 		fclose($fp);
-		$data = json_decode($json, true);
-		if ($data['status'] == 'success') {
+		$data = get_api_data($json, true);
+		if ($data and $data['status'] == 'success') {
+			$api_error = 0;
+
 		//arrray($giftDataMissingEgiveID);
 
 		// each transaction has these fields: 'transactionID' 'envelopeID' 'giftID' 'frequency' 'amount'
@@ -140,6 +156,7 @@ if (isset($_POST["ApiGet"])) {
 						}
 					}
 				}
+
 				if ($totalAmount) {
 					if ($famID) {
 					   	updateDB($famID, $transId, $date, $name, $totalAmount, "unspecified", $frequency);
@@ -158,11 +175,15 @@ if (isset($_POST["ApiGet"])) {
 	$json = stream_get_contents($fp);
 	fclose($fp);
 
+
+	// don't know if it makes sense to check the logout success here...  we've already gotten data, cratering the transaction because the logout didn't work seems dumb.  In fact, I don't even check the logout success....  because of that very reason.
 	$logout = json_decode($json, true);
 
 	$_SESSION['giftDataMissingEgiveID'] = $giftDataMissingEgiveID;
 	$_SESSION['egiveID2NameWithUnderscores'] = $egiveID2NameWithUnderscores;
-	importDoneFixOrContinue();
+	if (!$api_error) {
+		importDoneFixOrContinue();
+	}
 } elseif (isset($_POST["ReImport"])) {
 	$giftDataMissingEgiveID = $_SESSION['giftDataMissingEgiveID'];
 	$egiveID2NameWithUnderscores = $_SESSION['egiveID2NameWithUnderscores'];
@@ -256,7 +277,9 @@ function updateDB($famID, $transId, $date, $name, $amount, $fundName, $frequency
 	$keyExisting = $dateCI . "|" . $foundFundId . "|" . $comment;
 
 	if ($eGiveExisting and array_key_exists($keyExisting, $eGiveExisting)) {
-		if ($eGiveExisting[$keyExisting] <> $amount) { // record already exists, just update amount
+		$priorAmount = $eGiveExisting[$keyExisting];
+
+		if ((int)$priorAmount != (int)$amount) { // record already exists, just update amount
 			$sSQL = "UPDATE pledge_plg SET plg_DateLastEdited='" . date("YmdHis") . "', plg_comment = '" . $comment . "', plg_amount='" . $amount . "' WHERE plg_famID='" . $famID . "' AND plg_date='" . $dateCI . "' AND plg_FundID='" . $foundFundId . "' AND plg_method='EGIVE';";
 			++$importUpdated;
 			RunQuery($sSQL);
@@ -319,6 +342,39 @@ function importDoneFixOrContinue() {
 	<p class="MediumLargeText"> <?php echo gettext("Data import results: ") . $importCreated . gettext(" gifts were imported, ") . $importUpdated . gettext(" gifts were updated, ") . $importNoChange . gettext(" gifts unchanged, and ") . $importError . gettext(" gifts not imported due to problems");?></p>
 	<input type="button" class="icButton" value="<?php echo gettext("Back to Deposit Slip");?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?php echo $iDepositSlipID;?>'"
 <?php
+}
+
+function get_api_data($json) {
+
+	$result = json_decode($json, true);
+
+	$rc = json_last_error();
+echo "rc ";
+var_dump($rc);
+	switch($rc) {
+		case JSON_ERROR_DEPTH:
+			$error =  ' - Maximum stack depth exceeded';
+			break;
+		case JSON_ERROR_CTRL_CHAR:
+			$error = ' - Unexpected control character found';
+			break;
+		case JSON_ERROR_SYNTAX:
+			$error = ' - Syntax error, malformed JSON';
+			break;
+		case JSON_ERROR_NONE:
+			default:
+			$error = '';                 
+	}
+
+	if (empty($error)) {
+		return $result;
+	} else {
+	?>
+		<font color="red"><?php echo gettext("Fatal error in eGive API datastream: '") . $error;?>"'</font><br><br>
+ 		<input type="button" class="icButton" value="<?php echo gettext("Back to Deposit Slip");?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?php echo $iDepositSlipID;?>'"
+	<?php
+		return 0;
+	}
 }
 
 require "Include/Footer.php";
