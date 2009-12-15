@@ -109,6 +109,7 @@ if (isset($_POST["PrintReport"])) {
 			}
 		}
 	}
+	$_SESSION['envelopesToWrite'] = $envelopesToWrite;
 
 	?>
 	<input type="submit" class="icButton" value="<?php echo gettext("Confirm"); ?>" 
