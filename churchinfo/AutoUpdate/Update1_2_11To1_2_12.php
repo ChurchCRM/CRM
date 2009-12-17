@@ -96,6 +96,10 @@ $sSQL = "INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`
 if (!RunQuery($sSQL, FALSE))
 	break;
 
+$sSQL = "UPDATE config_cfg SET cfg_value=concat(cfg_value,',32')  WHERE cfg_name='aFinanceQueries'";
+if (!RunQuery($sSQL, FALSE))
+	break;
+
 $sSQL = "ALTER TABLE `menuconfig_mcf` CHANGE `content` `content` varchar(100) NULL";
 if (!RunQuery($sSQL, FALSE))
 	break;
