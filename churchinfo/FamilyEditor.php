@@ -160,6 +160,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		$aFirstNames[$iCount] = FilterInput($_POST["FirstName" . $iCount]);
 		$aMiddleNames[$iCount] = FilterInput($_POST["MiddleName" . $iCount]);
 		$aLastNames[$iCount] = FilterInput($_POST["LastName" . $iCount]);
+		$aSuffix[$iCount] = FilterInput($_POST["Suffix" . $iCount]);
 		$aRoles[$iCount] = FilterInput($_POST["Role" . $iCount],'int');
 		$aGenders[$iCount] = FilterInput($_POST["Gender" . $iCount],'int');
 		$aBirthDays[$iCount] = FilterInput($_POST["BirthDay" . $iCount],'int');
@@ -382,6 +383,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 								per_FirstName,
 								per_MiddleName,
 								per_LastName,
+                        per_Suffix,
 								per_fam_ID,
 								per_fmr_ID,
 								per_DateEntered,
@@ -395,6 +397,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 								'$aFirstNames[$iCount]',
 								'$aMiddleNames[$iCount]',
 								'$sLastNameToEnter',
+								'$aSuffix[$iCount]',
 								$iFamilyID,
 								$aRoles[$iCount],
 								'" . date("YmdHis") . "',
@@ -432,7 +435,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					}
 					$sBirthYearScript = ($aUpdateBirthYear[$iCount] & 1) ? "per_BirthYear=" . $aBirthYears[$iCount]. ", " : "";
 					//RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
-					$sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "', " . $sBirthYearScript . "per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
+					$sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Suffix='" . $aSuffix[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "', " . $sBirthYearScript . "per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
 					RunQuery($sSQL);
 					//RunQuery("UNLOCK TABLES");
 				}
@@ -529,6 +532,7 @@ else
 			$aFirstNames[$iCount] = $per_FirstName;
 			$aMiddleNames[$iCount] = $per_MiddleName;
 			$aLastNames[$iCount] = $per_LastName;		
+			$aSuffix[$iCount] = $per_Suffix;		
 			$aGenders[$iCount] = $per_Gender;
 			$aRoles[$iCount] = $per_fmr_ID;
 			$aBirthMonths[$iCount] = $per_BirthMonth;
@@ -843,6 +847,7 @@ require "Include/Header.php";
 			<td><?php echo gettext("First"); ?></td>
 			<td><?php echo gettext("Middle"); ?></td>
 			<td><?php echo gettext("Last"); ?></td>
+			<td><?php echo gettext("Suffix"); ?></td>
 			<td><?php echo gettext("Gender"); ?></td>
 			<td><?php echo gettext("Role"); ?></td>
 			<td><?php echo gettext("Month"); ?></td>
@@ -879,6 +884,9 @@ require "Include/Header.php";
 			</td>
 			<td class="TextColumn">
 				<input name="LastName<?php echo $iCount ?>" type="text" value="<?php echo $aLastNames[$iCount] ?>" size="10">
+			</td>
+			<td class="TextColumn">
+				<input name="Suffix<?php echo $iCount ?>" type="text" value="<?php echo $aSuffix[$iCount] ?>" size="10">
 			</td>
 			<td class="TextColumn">
 				<select name="Gender<?php echo $iCount ?>">
