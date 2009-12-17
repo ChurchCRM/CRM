@@ -109,10 +109,10 @@ if (isset($_POST["Submit"]))
 						$bEnableBankDraft . "," .
 						$bEnableCreditCard . "," .
 						"'" . $dNextPayDate . "'," .
-						$iFYID . "," .
-						$nAmount . "," .
-						$iInterval . "," .
-						$iFund . "," .
+						"'" . $iFYID . "'," .
+						"'" . $nAmount . "'," .
+						"'" . $iInterval . "'," .
+						"'" . $iFund . "'," .
 						"'" . $tFirstName . "'," .
 						"'" . $tLastName . "'," .
 						"'" . $tAddress1 . "'," .
@@ -142,10 +142,10 @@ if (isset($_POST["Submit"]))
 						"aut_EnableBankDraft	=" . 	$bEnableBankDraft . "," .
 						"aut_EnableCreditCard	=" . 	$bEnableCreditCard . "," .
 						"aut_NextPayDate	='" . $dNextPayDate . "'," .
-						"aut_Amount	=" . 	$nAmount . "," .
-						"aut_FYID	=" . 	$iFYID . "," .
-						"aut_Interval	=" . 	$iInterval . "," .
-						"aut_Fund	=" . 	$iFund . "," .
+						"aut_Amount	='" . 	$nAmount . "'," .
+						"aut_FYID	='" . 	$iFYID . "'," .
+						"aut_Interval	='" . 	$iInterval . "'," .
+						"aut_Fund	='" . 	$iFund . "'," .
 						"aut_FirstName	='" . $tFirstName . "'," .
 						"aut_LastName	='" . $tLastName . "'," .
 						"aut_Address1	='" . $tAddress1 . "'," .
