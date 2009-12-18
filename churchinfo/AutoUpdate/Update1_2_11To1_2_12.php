@@ -237,6 +237,13 @@ $sSQL = "CREATE TABLE IF NOT EXISTS `egive_egv` (
 if (!RunQuery($sSQL, FALSE))
 	break;
 	
+// Fix age
+
+$sSQL = "UPDATE `query_qry` set `qry_SQL`='SELECT per_ID as AddToCart,CONCAT(''<a\r\nhref=PersonView.php?PersonID='',per_ID,''>'',per_FirstName,''\r\n'',per_LastName,''</a>'') AS Name,\r\nCONCAT(per_BirthMonth,''/'',per_BirthDay,''/'',per_BirthYear) AS ''Birth Date'',\r\nDATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(CONCAT(per_BirthYear,''-'',per_BirthMonth,''-'',per_BirthDay))),''%Y'')+0 AS  ''Age''\r\nFROM person_per\r\nWHERE\r\nDATE_ADD(CONCAT(per_BirthYear,''-'',per_BirthMonth,''-'',per_BirthDay),INTERVAL\r\n~min~ YEAR) <= CURDATE()\r\nAND\r\nDATE_ADD(CONCAT(per_BirthYear,''-'',per_BirthMonth,''-'',per_BirthDay),INTERVAL\r\n(~max~ + 1) YEAR) >= CURDATE()' WHERE `qry_ID`='4'";
+if (!RunQuery($sSQL, FALSE))
+	break;
+
+
 // If we got this far it means all queries ran without error.  It is okay to update
 // the version information.
 
