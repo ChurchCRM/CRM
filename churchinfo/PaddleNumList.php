@@ -42,7 +42,7 @@ echo "<form method=\"post\" action=\"Reports/FundRaiserStatement.php?CurrentFund
 if ($iFundRaiserID > 0)
 	echo "<input type=button class=icButton value=\"".gettext("Select all")."\" name=SelectAll onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&SelectAll=1&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
 	echo "<input type=button class=icButton value=\"".gettext("Select none")."\" name=SelectNone onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
-	echo "<input type=button class=icButton value=\"".gettext("Add Buyer")."\" name=AddBuyer onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+	echo "<input type=button class=icButton value=\"".gettext("Add Buyer")."\" name=AddBuyer onclick=\"javascript:document.location='PaddleNumEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
 	echo "<input type=submit class=icButton value=\"".gettext("Generate Statements for Selected")."\" name=GenerateStatements>\n";
 ?>
 
