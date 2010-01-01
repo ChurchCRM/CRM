@@ -1341,7 +1341,7 @@ CREATE TABLE `whycame_why` (
 -- Fundraiser support added 4/11/2009 Michael Wilt
 -- 
 
-CREATE TABLE `PaddleNum_pn` (
+CREATE TABLE `paddlenum_pn` (
   `pn_ID` mediumint(9) unsigned NOT NULL auto_increment,
   `pn_fr_ID` mediumint(9) unsigned,
   `pn_Num` mediumint(9) unsigned,
@@ -1350,7 +1350,7 @@ CREATE TABLE `PaddleNum_pn` (
   UNIQUE KEY `pn_ID` (`pn_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE `Fundraiser_fr` (
+CREATE TABLE `fundraiser_fr` (
   `fr_ID` mediumint(9) unsigned NOT NULL auto_increment,
   `fr_date` date default NULL,
   `fr_title` varchar(128) NOT NULL,
@@ -1361,7 +1361,7 @@ CREATE TABLE `Fundraiser_fr` (
   UNIQUE KEY `fr_ID` (`fr_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE `DonatedItem_di` (
+CREATE TABLE `donateditem_di` (
   `di_ID` mediumint(9) unsigned NOT NULL auto_increment,
   `di_item` varchar(32) NOT NULL,
   `di_FR_ID` mediumint(9) unsigned NOT NULL,
@@ -1379,7 +1379,7 @@ CREATE TABLE `DonatedItem_di` (
   UNIQUE KEY `di_ID` (`di_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE `Multibuy_mb` (
+CREATE TABLE `multibuy_mb` (
   `mb_ID` mediumint(9) unsigned NOT NULL auto_increment,
   `mb_per_ID` mediumint(9) NOT NULL default '0',
   `mb_item_ID` mediumint(9) NOT NULL default '0',
