@@ -149,6 +149,7 @@ if ($PledgeOrPayment == 'Pledge' and $iFamily) {
 		$fund2PlgIds[$fundID] = $plgID;
 	} // end while
 } elseif ($iPledgeID) { // handles the case where PledgeID is set.  Need to get all the family records for that payment so we can prime the data for editing
+	$iTotalAmount = 0;
 	$sSQL = "SELECT plg_famID, plg_CheckNo, plg_date, plg_method from pledge_plg where plg_plgID='" . $iPledgeID . "'";
 	$rsFam = RunQuery($sSQL);
         extract(mysql_fetch_array($rsFam));
@@ -170,6 +171,7 @@ if ($PledgeOrPayment == 'Pledge' and $iFamily) {
 		$fundName = $fundId2Name[$fundID];
 		$amount = $row['plg_amount'];
 		$nAmount[$fundName] = $row['plg_amount'];
+		$iTotalAmount += $amount;
 	}
 } // end if $iPledgeID
 
