@@ -21,8 +21,8 @@ if (!function_exists(json_last_error)) {
 	}
 }
 
-if (!function_exists(stream_get_contents)) {
-	function stream_get_contents($fp) {
+if (!function_exists(t_stream_get_contents)) {
+	function t_stream_get_contents($fp) {
 		$contents = '';
 		while (!feof($fp)) {
   			$contents .= fread($fp, 8192);
@@ -47,33 +47,20 @@ include ("Include/eGiveConfig.php"); // Specific account information is in here
 
 $familySelectHtml = buildFamilySelect(0, 0, 0);
 
-// Get the list of funds
-$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
-$rsFunds = RunQuery($sSQL);
-mysql_data_seek($rsFunds,0);
-while ($row = mysql_fetch_array($rsFunds)) {
-	$fun_id = $row["fun_ID"];
-	$fun_name = $row["fun_Name"];
-} // end while
-
 // get array of all existing payments into a 'cache' so we don't have to keep querying the DB
-
 $sSQL = "SELECT egv_egiveID, egv_famID from egive_egv";
 $egiveIDs = RunQuery($sSQL);
-while ($row = mysql_fetch_array($egiveIDs)) {
-	$egiveID2FamID[$row['egv_egiveID']] = $row['egv_famID'];
+while ($aRow = mysql_fetch_array($egiveIDs)) {
+	extract($aRow);
+	$egiveID2FamID[$egv_egiveID] = $egv_famID;
 }
 
-$sSQL = "SELECT plg_date, plg_amount, plg_fundID, plg_FamID, plg_comment from pledge_plg where plg_method=\"EGIVE\" AND plg_PledgeOrPayment=\"Payment\";";
+$sSQL = "SELECT plg_date, plg_amount, plg_CheckNo, plg_fundID, plg_FamID, plg_comment, plg_GroupKey from pledge_plg where plg_method=\"EGIVE\" AND plg_PledgeOrPayment=\"Payment\";";
 
 $rsPlgIDs = RunQuery($sSQL);
-while ($row = mysql_fetch_array($rsPlgIDs)) {
-	$date = $row["plg_date"];
-	$amount = $row["plg_amount"];
-	$fundID = $row["plg_fundID"];
-	$famID = $row["plg_FamID"];
-	$comment = $row["plg_comment"];
-	$key = $date . "|" . $fundID . "|" . $comment;
+while ($aRow = mysql_fetch_array($rsPlgIDs)) {
+	extract($aRow);
+	$key = $plg_CheckNo . "|" .$plg_FamID . "|" . $plg_date . "|" . $plg_fundID . "|" . $plg_comment . "|" . $plg_GroupKey;
 	$eGiveExisting[$key] = $amount;
 } // end while
 
@@ -95,7 +82,7 @@ if (isset($_POST["ApiGet"])) {
 	//foreach($meta_data['wrapper_data'] as $response) {
 	//}
 
-	$json = stream_get_contents($fp);
+	$json = t_stream_get_contents($fp);
 	fclose($fp);
 
 	$api_error = 1;
@@ -116,13 +103,11 @@ if (isset($_POST["ApiGet"])) {
 		//var_dump($url);
 		$fp = fopen($url, 'r');
 
-		$json = stream_get_contents($fp);
+		$json = t_stream_get_contents($fp);
 		fclose($fp);
 		$data = get_api_data($json, true);
 		if ($data and $data['status'] == 'success') {
 			$api_error = 0;
-
-		//arrray($giftDataMissingEgiveID);
 
 		// each transaction has these fields: 'transactionID' 'envelopeID' 'giftID' 'frequency' 'amount'
 		// 'giverID' 'giverName' 'giverEmail' 'dateCompleted' 'breakouts'
@@ -139,7 +124,7 @@ if (isset($_POST["ApiGet"])) {
 				$egiveID = $trans['giverID'];
 				$frequency = $trans['frequency'];
 				$dateTime = explode(' ', $dateCompleted);
-				$date = $dateTime[0];
+				$date = yearFirstDate($dateTime[0]);
 				$famID = 0;
 
 				if ($egiveID2FamID and array_key_exists($egiveID, $egiveID2FamID)) {
@@ -151,38 +136,67 @@ if (isset($_POST["ApiGet"])) {
 					$egiveID2NameWithUnderscores[$egiveID] = $nameWithUnderscores;
 
 				}
-						
+
 				foreach ($breakouts as $breakout) {
-					$amount = $breakout[0];
-					if ($amount) {
-						$totalAmount -= $amount;
-						$fundName = $breakout[1];
-						if ($famID) {
-					   		 updateDB($famID, $transId, $date, $name, $amount, $fundName, $frequency);
+					$am = $breakout[0];
+					if ($am) {
+						$eGiveFundName = $breakout[1];
+
+						$fundId = getFundId($eGiveFundName);
+						if ($eGiveFund[$fundId]) {
+							$eGiveFund[$fundId] .= "," . $eGiveFundName;
 						} else {
-							$missingValue = $transId . "|" . $date . "|" . $egiveID . "|" . $name . "|" . $amount . "|" . $fundName . "|" . $frequency;
- 							$giftDataMissingEgiveID[] = $missingValue; 
-							++$importError;
+							$eGiveFund[$fundId] = $eGiveFundName;
 						}
+
+						if ($amount[$fundId]) {
+							$amount[$fundId] += $am;
+						} else {
+							$amount[$fundId] = $am;
+						}
+
+						$totalAmount -= $am;
 					}
 				}
 
 				if ($totalAmount) {
-					if ($famID) {
-					   	updateDB($famID, $transId, $date, $name, $totalAmount, "unspecified", $frequency);
+					$eGiveFundName = "unspecified";
+
+					$fundId = getFundId($eGiveFundName);
+					if ($eGiveFund[$fundId]) {
+						$eGiveFund[$fundId] .= "," . $eGiveFundName;
 					} else {
-						$missingValue = $transId . "|" . $date . "|" . $egiveID . "|" . $name . "|" . $totalAmount . "|" . "unspecified" . "|" . $frequency;
-						$giftDataMissingEgiveID[] = $missingValue;
-						++$importError;
+						$eGiveFund[$fundId] = $eGiveFundName;
+					}
+
+					if ($amount[$fundId]) {
+						$amount[$fundId] += $totalAmount;
+					} else {
+						$amount[$fundId] = $totalAmount;
 					}
 				}
+
+				ksort($amount, SORT_NUMERIC);
+				$fundIds = implode(",", array_keys($amount));
+				$groupKey = genGroupKey($transId, $famID, $fundIds, $date);
+
+				foreach($amount as $fundId => $am) {
+					$comment = $eGiveFund[$fundId];
+					if ($famID) {
+						updateDB($famID, $transId, $date, $name, $am, $fundId, $comment, $frequency, $groupKey);
+					} else {
+						$missingValue = $transId . "|" . $date . "|" . $egiveID . "|" . $name . "|" . $am . "|" . $fundId . "|" . $comment . "|" . $frequency . "|" . $groupKey;
+ 						$giftDataMissingEgiveID[] = $missingValue; 
+						++$importError;
+					}
+				} while($j++ < $index);
 			}
 		}
 	}
 	$url = $eGiveURL . "/api/logout/?apiKey=" . $eGiveApiKey;
 	$fp = fopen($url, 'r');
 
-	$json = stream_get_contents($fp);
+	$json = t_stream_get_contents($fp);
 	fclose($fp);
 
 
@@ -217,9 +231,12 @@ if (isset($_POST["ApiGet"])) {
 					$date = $fields[1];
 					$name = $fields[3];
 					$amount = $fields[4];
-					$fundName = $fields[5];
-					$frequency = $fields[6];
-					updateDB($famID, $transId, $date, $name, $amount, $fundName, $frequency);
+					$fundId = $fields[5];
+					$comment = $fields[6];
+					$frequency = $fields[7];
+					$groupKey = $fields[8];
+
+					updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $frequency, $groupKey);
 				}
 			}
 		} else {
@@ -247,67 +264,34 @@ if (isset($_POST["ApiGet"])) {
 
 }
 
-function updateDB($famID, $transId, $date, $name, $amount, $fundName, $frequency) {
-	global $eGiveBreakoutNames2FundIds;
+function updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $frequency, $groupKey) {
 	global $eGiveExisting;
-	global $defaultFundId;
 	global $iFYID;
 	global $iDepositSlipID;
 	global $importCreated;
 	global $importNoChange;
 
-	$dateArray = explode('/', $date); // this date is in mm/dd/yy format.  churchinfo needs it in yyyy-mm-dd format
-	if (strlen($dateArray[2]) == 2) {
-		$dateArray[2] += 2000;
-	}
-	$dateArray[0] = sprintf ("%02d", $dateArray[0]);
-	$dateArray[1] = sprintf ("%02d", $dateArray[1]);
-	$dateCI = $dateArray[2] . "-" . $dateArray[0] . "-" . $dateArray[1];
-
-
-	$foundFundId = '';
-	foreach ($eGiveBreakoutNames2FundIds as $matchKey => $fundId) {
-		if (preg_match("%$matchKey%i", $fundName)) {
-			$foundFundId = $fundId;
-			break;
-		}
-	}		
-
-	// we may not need frequency to make it unique, but its added here to clarify any given gift.  
-	// especially the case where someone sets up a one time gift, and on the same date sets up a 
-	// recurring gift.  The date and fund name are no longer enough to make the gift unique.
-	// within the DB.  So, we added ID to ensure the entry was unique.
-	$comment = "egive: " . $frequency . "/" . $transId . "/" . $fundName;
-
-	if ($foundFundId == '') {
-		$foundFundId = $defaultFundId;
-	}
-	$keyExisting = $dateCI . "|" . $foundFundId . "|" . $comment;
+	$keyExisting = $transId . "|" . $famID . "|" . $date . "|" . $fundId . "|" . $comment . "|" . $groupKey;
 
 	if ($eGiveExisting and array_key_exists($keyExisting, $eGiveExisting)) {
-
-		// At one point, this code tried to allow an amount difference in eGive API data.  This presumes that
-		// such a DB fixup by eGive on the amount only were possible.
-		// As it turns out, comparing two float numbers requires some 'trickery'.  You have to realize that because of how
-		// PHP stores float numbers, that '0.01' can end up not equal to '0.01'.  So, since this is a somewhat contrived
-		// capability/function anyway, we're commenting it out, probably to never use it again.
-		// If it ever gets put back in, the 'importUpdated' variable should also be put back in.
-
-		//$priorAmount = $eGiveExisting[$keyExisting];
-		//echo "<p>priorAmount '" . $priorAmount . "' amount '" . $amount ."'</p>";
-		//if ((float)$priorAmount != (float)$amount) { // record already exists, just update amount
-		//echo "<p>after != test priorAmount '" . $priorAmount . "' amount '" . $amount ."'</p>";
-		//	$sSQL = "UPDATE pledge_plg SET plg_DateLastEdited='" . date("YmdHis") . "', plg_comment = '" . $comment . "', plg_amount='" . $amount . "' WHERE plg_famID='" . $famID . "' AND plg_date='" . $dateCI . "' AND plg_FundID='" . $foundFundId . "' AND plg_method='EGIVE';";
-		//	++$importUpdated;
-		//	RunQuery($sSQL);
-		//} else {
 		++$importNoChange;
-		//}
 	} elseif ($famID) { //  insert a new record
-		$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_NonDeductible) VALUES ('" . $famID . "','" . $iFYID . "','" . $dateCI . "','" . $amount . "','Once','EGIVE','" . $comment . "','" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'Payment'," . $foundFundId . ",'" . $iDepositSlipID . "','0')";
+		$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_NonDeductible, plg_GroupKey) VALUES ('" . $famID . "','" . $iFYID . "','" . $date . "','" . $amount . "','Once','EGIVE','" . $comment . "','" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'Payment'," . $fundId . ",'" . $iDepositSlipID . "','" . $transId . "','0','" . $groupKey . "')";
 		++$importCreated;
 		RunQuery($sSQL);
 	}
+}
+
+function getFundId($fundName) {
+	global $eGiveBreakoutNames2FundIds;
+	global $defaultFundId;
+
+	foreach ($eGiveBreakoutNames2FundIds as $matchKey => $fundId) {
+		if (preg_match("%$matchKey%i", $fundName)) {
+			return $fundId;
+		}
+	}		
+	return $defaultFundId;
 }
 
 function importDoneFixOrContinue() {
@@ -393,4 +377,15 @@ function get_api_data($json) {
 
 require "Include/Footer.php";
 
+function yearFirstDate($date) {
+	$dateArray = explode('/', $date); // this date is in mm/dd/yy format.  churchinfo needs it in yyyy-mm-dd format
+	if (strlen($dateArray[2]) == 2) {
+		$dateArray[2] += 2000;
+	}
+	$dateArray[0] = sprintf ("%02d", $dateArray[0]);
+	$dateArray[1] = sprintf ("%02d", $dateArray[1]);
+	$dateCI = $dateArray[2] . "-" . $dateArray[0] . "-" . $dateArray[1];
+	
+	return $dateCI;
+}
 ?>
