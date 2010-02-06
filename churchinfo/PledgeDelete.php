@@ -20,55 +20,30 @@ require "Include/Functions.php";
 //Set the page title
 $sPageTitle = gettext("Confirm Delete");
 
-//Get the PledgeID out of the querystring
-$iPledgeID = FilterInput($_GET["PledgeID"],'int');
 $linkBack = FilterInput($_GET["linkBack"]);
+$sGroupKey = FilterInput($_GET["GroupKey"],'string'); 
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (strlen($iPledgeID) > 0)
-{
-	if (!$_SESSION['bEditRecords'])
-	{
+if (strlen($iPledgeID) > 0) {
+	if (!$_SESSION['bEditRecords']) 	{
 		Redirect("Menu.php");
 		exit;
 	}
 	$sSQL = "SELECT '' FROM pledge_plg WHERE plg_plgID = " . $iPledgeID;
-	if (mysql_num_rows(RunQuery($sSQL)) == 0)
-	{
+	if (mysql_num_rows(RunQuery($sSQL)) == 0) {
 		Redirect("Menu.php");
 		exit;
 	}
-}
-elseif (!$_SESSION['bAddRecords'])
-{
+} elseif (!$_SESSION['bAddRecords']) {
 	Redirect("Menu.php");
 	exit;
 }
 
 //Is this the second pass?
 if (isset($_POST["Delete"])) {
-	// because we're creating extra entries for same-check numbers to split out the giving, we need to query the DB and find like check numbers and delete all the entries with that same check number
-
-	$sSQL = "SELECT plg_famID, plg_CheckNo, plg_date, plg_FYID, plg_method from pledge_plg where plg_plgID=\"" . $iPledgeID . "\";";
-	$rsFam = RunQuery($sSQL);
-	extract(mysql_fetch_array($rsFam));
-	if ($plg_method == 'CHECK') {
-		$sSQL = "SELECT plg_plgID from pledge_plg where plg_famID=\"" . $plg_famID . "\" AND  plg_CheckNo=\"" . $plg_CheckNo . "\" AND  plg_date=\"" . $plg_date . "\";";
-		$rsPlgIDs = RunQuery($sSQL);
-
-		while ($aRow = mysql_fetch_array($rsPlgIDs)) {
-			extract($aRow);
-			$plgIDs[] = $plg_plgID;
-		}
-	} else {
-		$plgIDs[] = $iPledgeID;
-	}
-
-	foreach ($plgIDs as $plgID) {
-		$sSQL = "DELETE FROM `pledge_plg` WHERE `plg_plgID` = '" . $plgID . "';";
-		RunQuery($sSQL);
-	}
+	$sSQL = "DELETE FROM `pledge_plg` WHERE `plg_GroupKey` = '" . $sGroupKey . "';";
+	RunQuery($sSQL);
 
 	if ($linkBack <> "") {
 		Redirect ($linkBack);
@@ -81,7 +56,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="PledgeDelete.php?<?php echo "PledgeID=" . $iPledgeID . "&linkBack=" . $linkBack; ?>" name="PledgeDelete">
+<form method="post" action="PledgeDelete.php?<?php echo "GroupKey=" . $sGroupKey . "&linkBack=" . $linkBack; ?>" name="PledgeDelete">
 
 <table cellpadding="3" align="center">
 
