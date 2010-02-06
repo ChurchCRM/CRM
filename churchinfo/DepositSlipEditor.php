@@ -29,6 +29,15 @@ if (!$_SESSION['bFinance'])
 	exit;
 }
 
+addGroupKey();
+
+$sSQL = "SELECT COUNT(plg_GroupKey) FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey<>''";
+$rsResults = RunQuery($sSQL);
+list($numGroupKeys) = mysql_fetch_row($rsResults);
+if (!$numGroupKeys) {
+	initGroupKeys();
+}
+
 if ($iDepositSlipID) {
 	// Get the current deposit slip
 	$sSQL = "SELECT * from deposit_dep WHERE dep_ID = " . $iDepositSlipID;
@@ -404,7 +413,7 @@ if (isset($_POST["DepositSlipSubmit"])) {
 if ($iDepositSlipID) {
 	//Get the payments for this deposit slip
 	$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment, plg_aut_Cleared,
-	         a.fam_Name AS FamilyName, b.fun_Name as fundName, plg_NonDeductible
+	         a.fam_Name AS FamilyName, b.fun_Name as fundName, plg_NonDeductible, plg_GroupKey
 			 FROM pledge_plg 
 			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
@@ -556,8 +565,12 @@ require "Include/Header.php";
 <?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
 	<td><?php echo gettext("Cleared"); ?></td>
 <?php } ?>
+	<?php if ($dep_Closed) { ?>
+	<td><?php echo gettext("View Detail"); ?></td>
+	<?php } else { ?>
 	<td><?php echo gettext("Edit"); ?></td>
 	<td><?php echo gettext("Delete"); ?></td>
+	<?php } ?>
 <?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
 	<td><?php echo gettext("Details"); ?></td>
 <?php } ?>
@@ -565,7 +578,7 @@ require "Include/Header.php";
 
 <?php
 
-//Loop through all pledges
+// Loop through all gifts
 // there can be multiple 'check' records that contain data for a single deposit, due to allowing a single payment to be split to several pledge funds.  We need to therefore collect information from those 'like' records and create a single deposit line from those multiple records.  We'll create a unique key that contains the family name and check number as a map key and build the record into vertical bar separated records.
 // but because we're doing this only for checks, we need to then save the data into a unique 'payment' hash and later unpack the now combined check info into that payment hash.  (there's probably a better way to do this, but this should work for now).
 
@@ -573,47 +586,43 @@ $depositOrder = 1;
 while ($aRow = mysql_fetch_array($rsPledges)) {
 	extract($aRow);
 
-	if ($plg_method == 'CHECK') {
-		$key = $FamilyName . "|" . $plg_date . "|" . $plg_method . "|" . $plg_CheckNo;
-		if ($checkHash and array_key_exists($key, $checkHash)) {
+	if ($depositHash and array_key_exists($plg_GroupKey, $depositHash)) {
 		// add/tweak fields so existing key'ed record contains information of new record
 		
-			list($e_plg_amount, $e_fundName, $e_plg_comment, $e_plg_aut_Cleared, $e_plg_NonDeductible) = explode("|", $checkHash[$key]);
+		// we could coherency check checkNo, famID, and date, but we won't since I don't know how we'd surface the error
+		list($e_plg_CheckNo, $e_plg_famID, $e_plg_date, $e_plg_amount, $e_fundName, $e_plg_comment, $e_plg_aut_Cleared, $e_plg_NonDeductible) = explode("|", $depositHash[$plg_GroupKey]);
 
-			unset($checkHash[$key]);
+		unset($depositHash[$plg_GroupKey]);
 
-			$n_fundName = $e_fundName . "," . $fundName;
-			$n_comment = $e_plg_comment . "," . $plg_comment;
-			$n_amount = $e_plg_amount + $plg_amount;
-			$n_plg_NonDeductible = $e_plg_NonDeductible + $plg_NonDeductible;
+		$n_fundName = $e_fundName . "," . $fundName;
+		$n_plg_comment = $e_plg_comment . "," . $plg_comment;
+		$n_amount = $e_plg_amount + $plg_amount;
+		$n_plg_NonDeductible = $e_plg_NonDeductible + $plg_NonDeductible;
 
-			$checkHash[$key] = $n_amount . "|" . $n_fundName . "|" . $n_plg_comment . "|" . $plg_aut_Cleared . "|" . $n_plg_NonDeductible . "|" . $plg_plgID;
+		$depositHash[$plg_GroupKey] = $plg_CheckNo . "|" .  $plg_famID . "|" . $plg_date . "|" . $n_amount . "|" . $n_fundName . "|" . $n_plg_comment . "|" . $plg_aut_Cleared . "|" . $n_plg_NonDeductible . "|" . $plg_plgID . "|" . $plg_method . "|" . $FamilyName;
 
-		} else {
-			$depositArray[$depositOrder] = 0;
-			$checkHashOrder2Key[$depositOrder] = $key;
-//echo "check " . $depositOrder . " ";
-			++$depositOrder;
-			$checkHash[$key] = $plg_amount . "|" . $fundName . "|" . $plg_comment . "|" . $plg_aut_Cleared . "|" . $plg_NonDeductible . "|" . $plg_plgID;
-		}
 	} else {
-		$depositArray[$depositOrder] = $FamilyName . "|" . $plg_date . "|" . $plg_method . "|" . $plg_CheckNo . "|" . $plg_amount . "|" . $fundName . "|" . $plg_comment . "|" . $plg_aut_Cleared . "|" . $plg_NonDeductible . "|" . $plg_plgID;
-//echo "cash " . $depositOrder . " ";
+		$depositArray[$depositOrder] = 0;
+		$depositHashOrder2Key[$depositOrder] = $plg_GroupKey;
 		++$depositOrder;
+		$depositHash[$plg_GroupKey] = $plg_CheckNo . "|" .  $plg_famID . "|" . $plg_date . "|" . $plg_amount . "|" . $fundName . "|" . $plg_comment . "|" . $plg_aut_Cleared . "|" . $plg_NonDeductible . "|" . $plg_plgID . "|" . $plg_method . "|" . $FamilyName;
 	}
 }
 
-if ($checkHashOrder2Key) {
-	foreach ($checkHashOrder2Key as $order => $key) {
-		$depositArray[$order] = $key . "|" . $checkHash[$key];
+if ($depositHashOrder2Key) {
+	foreach ($depositHashOrder2Key as $order => $key) {
+		$depositArray[$order] = $key . "%" . $depositHash[$key];
 	}
 }
 
 $tog = 0;
 if ($depositArray) {
 foreach ($depositArray as $order => $value) {
-	list($FamilyName, $plg_date, $plg_method, $plg_CheckNo, $plg_amount, $fundName, $plg_comment, $plg_aut_Cleared, $plg_NonDeductible, $plg_plgID) = explode("|", $value);
-	
+	// key is: method-specific-id, plg_famID, plg_funID, plg_data
+
+	list($plg_GroupKey, $data) = explode("%", $value);
+	list($plg_CheckNo, $plg_famID, $plg_date, $plg_amount, $fundName, $plg_comment, $plg_aut_Cleared, $plg_NonDeductible, $plg_plgID, $plg_method, $FamilyName) = explode("|", $data);
+
 	$tog = (! $tog);
 
 	if ($tog)
@@ -654,12 +663,18 @@ foreach ($depositArray as $order => $value) {
 			<?php if ($plg_aut_Cleared) echo "Yes"; else echo "No"; ?>&nbsp;
 		</td>
 <?php } ?>
+		<?php if ($dep_Closed) { ?>
 		<td>
-			<a href="PledgeEditor.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Edit</a>
+			<a href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">View</a>
+		</td>
+		<?php } else { ?>
+		<td>
+			<a href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Edit</a>
 		</td>
 		<td>
-			<a href="PledgeDelete.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Delete</a>
+			<a href="PledgeDelete.php?GroupKey=<?php echo $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Delete</a>
 		</td>
+		<?php } ?>
 <?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
 		<td>
 			<a href="PledgeDetails.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Details</a>
@@ -680,4 +695,120 @@ foreach ($depositArray as $order => $value) {
 
 <?php
 require "Include/Footer.php";
+
+function addGroupKey() {
+	$fields = mysql_list_fields('churchinfo', 'pledge_plg');
+	$columns = mysql_num_fields($fields);
+	for ($i = 0; $i < $columns; $i++) {
+		$field_array[] = mysql_field_name($fields, $i);
+	}
+
+	if (!in_array('plg_GroupKey', $field_array)) {
+		$sSQL = "ALTER TABLE `pledge_plg` ADD `plg_GroupKey` VARCHAR( 64 ) NOT NULL ";
+		RunQuery($sSQL);
+	}
+}
+
+function initGroupKeys() {
+	$sSQL = "SELECT plg_FamID, plg_plgID, plg_fundID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment,
+	         plg_NonDeductible FROM pledge_plg WHERE plg_PledgeOrPayment='Payment'";
+	$rsPledges = RunQuery($sSQL);
+
+	while ($aRow = mysql_fetch_array($rsPledges)) {
+		extract($aRow);
+
+		if ($plg_method == 'CHECK') {
+			$key = $plg_FamID . "|" . $plg_date . "|" . $plg_method . "|" . $plg_CheckNo;
+			if ($checkHash and array_key_exists($key, $checkHash)) {
+			// add/tweak fields so existing key'ed record contains information of new record
+		
+				list($e_plg_amount, $e_plg_fundID, $e_plg_comment, $e_plg_NonDeductible, $e_plg_plgID) = explode("|", $checkHash[$key]);
+
+				unset($checkHash[$key]);
+
+				$n_plg_fundID = $e_plg_fundID . "," . $plg_fundID;
+				$n_plg_comment = $e_plg_comment . "," . $plg_comment;
+				$n_amount = $e_plg_amount + $plg_amount;
+				$n_plg_NonDeductible = $e_plg_NonDeductible + $plg_NonDeductible;
+				$n_plg_plgID = $e_plg_plgID . "," . $plg_plgID;	
+
+
+				$checkHash[$key] = $n_amount . "|" . $n_plg_fundID . "|" . $n_plg_comment . "|" . $n_plg_NonDeductible . "|" . $n_plg_plgID;
+			} else {
+				$checkHash[$key] = $plg_amount . "|" . $plg_fundID . "|" . $plg_comment . "|" . $plg_NonDeductible . "|" . $plg_plgID;
+			}
+		} elseif ($plg_method == 'EGIVE') {
+			list($eyecatcher, $data) = explode(": ", $plg_comment);
+			list($frequency, $transID, $eGiveFund) = explode('/', $data);
+
+			$key = $plg_FamID . "|" . $plg_date . "|" . $plg_method . "|" . $transID;
+			if ($egiveHash and array_key_exists($key, $egiveHash)) {
+			// add/tweak fields so existing key'ed record contains information of new record
+
+				list($e_plg_amount, $e_plg_fundID, $e_plg_comment, $e_plg_NonDeductible, $e_plg_plgID) = explode("|", $egiveHash[$key]);
+
+				unset($egiveHash[$key]);
+
+				$n_plg_fundID = $e_plg_fundID . "," . $plg_fundID;
+				$n_plg_comment = $e_plg_comment . ";" . $eGiveFund;
+				$n_amount = $e_plg_amount + $plg_amount;
+				$n_plg_NonDeductible = $e_plg_NonDeductible + $plg_NonDeductible;
+				$n_plg_plgID = $e_plg_plgID . "," . $plg_plgID;	
+
+
+				$egiveHash[$key] = $n_amount . "|" . $n_plg_fundID . "|" . $n_plg_comment . "|" . $n_plg_NonDeductible . "|" . $n_plg_plgID;
+			} else {
+				$egiveHash[$key] = $plg_amount . "|" . $plg_fundID . "|" . $eGiveFund . "|" . $plg_NonDeductible . "|" . $plg_plgID;
+			}
+ 		} elseif ($plg_method == 'CASH') {
+			$sGroupKey = genGroupKey("cash", $plg_FamID, $plg_fundID, $plg_date);
+			$sSQL = "UPDATE pledge_plg SET plg_GroupKey='" . $sGroupKey . "' WHERE plg_plgID=" . $plg_plgID;
+			//	var_dump($sSQL);		
+			RunQuery($sSQL);
+		}
+	}
+
+	foreach ($checkHash as $key => $value) {
+		list($plg_FamID, $plg_date, $plg_method, $plg_CheckNo) = explode("|", $key);
+		list($plg_amount, $plg_fundID, $plg_comment, $plg_NonDeductible, $plg_plgID) = explode("|", $value);
+
+		$GroupKey = genGroupKey($plg_CheckNo, $plg_FamID, $plg_fundID, $plg_date);
+
+		// update plg records with groupkey
+		$plgIDs = explode(",", $plg_plgID);
+		foreach ($plgIDs as $plgID) {
+			$sSQL = "UPDATE pledge_plg SET plg_GroupKey='" . $GroupKey . "' WHERE plg_plgID=" . $plgID;
+			//	var_dump($sSQL);		
+			RunQuery($sSQL);
+ 		}
+	}
+	foreach ($egiveHash as $key => $value) {
+		list($plg_FamID, $plg_date, $plg_method, $plg_CheckNo) = explode("|", $key);
+		list($plg_amount, $plg_fundID, $plg_comment, $plg_NonDeductible, $plg_plgID) = explode("|", $value);
+
+ 		$GroupKey = genGroupKey($plg_CheckNo, $plg_FamID, $plg_fundID, $plg_date);
+
+		// update plg records with groupkey
+		$plgIDs = explode(",", $plg_plgID);
+		foreach ($plgIDs as $plgID) {
+			$sSQL = "UPDATE pledge_plg SET plg_GroupKey='" . $GroupKey . "' WHERE plg_plgID=" . $plgID;
+			//var_dump($sSQL);		
+			RunQuery($sSQL);
+ 		}
+	}
+	// fixup egive comments to take out egive: eyecatcher, transactionid, 
+	$sSQL = "SELECT plg_plgID, plg_comment FROM pledge_plg WHERE plg_method='EGIVE' AND plg_PledgeOrPayment='Payment'";
+	$rsPledges = RunQuery($sSQL);
+
+	while ($aRow = mysql_fetch_array($rsPledges)) {
+		extract($aRow);
+		list($eyecatcher, $data) = explode(": ", $plg_comment);
+		list($frequency, $transID, $eGiveFund) = explode('/', $data);
+		$sSQL = "UPDATE pledge_plg SET plg_comment='" . $eGiveFund . "' WHERE plg_plgID=" . $plg_plgID;
+		//var_dump($sSQL);		
+		RunQuery($sSQL);
+ 	}
+}	
+
+
 ?>
