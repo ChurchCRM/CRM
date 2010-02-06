@@ -804,7 +804,7 @@ function initGroupKeys() {
 		extract($aRow);
 		list($eyecatcher, $data) = explode(": ", $plg_comment);
 		list($frequency, $transID, $eGiveFund) = explode('/', $data);
-		$sSQL = "UPDATE pledge_plg SET plg_comment='" . $eGiveFund . "' WHERE plg_plgID=" . $plg_plgID;
+		$sSQL = "UPDATE pledge_plg SET plg_comment='" . $eGiveFund . "', plg_CheckNo='" . $transID . "' WHERE plg_plgID=" . $plg_plgID;
 		//var_dump($sSQL);		
 		RunQuery($sSQL);
  	}
