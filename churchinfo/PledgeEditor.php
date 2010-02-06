@@ -33,15 +33,54 @@ if (!$dDate) {
 }
 $_SESSION['idefaultDate'] = $dDate;
 
-$sFundSplit = FilterInput($_POST["FundSplit"]);
-if (!$sFundSplit) {
-	$sFundSplit = $_SESSION['sFundSplit'];
+// Get the list of funds
+$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
+if ($PledgeOrPayment == 'Pledge') {
+	$sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
+	// $sSQL .= " ORDER BY fun_Name";  take this out so that ordering is however they were added/entered rather than on fund name
+}
 
-	if (!$sFundSplit) {
-		$sFundSplit = 'Split';
+$rsFunds = RunQuery($sSQL);
+mysql_data_seek($rsFunds,0);
+while ($aRow = mysql_fetch_array($rsFunds)) {
+	extract($aRow);
+	$fundId2Name[$fun_ID] = $fun_Name;
+	if (!isset($defaultFund)) {
+		$defaultFund = $fun_Name;
+	}
+	$fundIdActive[$fun_ID] = $fun_Active;
+} // end while
+
+
+$sGroupKey = FilterInput($_GET["GroupKey"],'string'); // this will only be set if someone pressed the 'edit' button on the Pledge or Deposit line
+
+if ($sGroupKey) {
+	$sSQL = "SELECT COUNT(plg_GroupKey) FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey='" . $sGroupKey . "'";
+	$rsResults = RunQuery($sSQL);
+	list($numGroupKeys) = mysql_fetch_row($rsResults);
+	if ($numGroupKeys > 1) {
+		$sSelectedFund = 'Split';
+	} else {
+		$sSQL = "SELECT plg_fundID FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey='" . $sGroupKey . "'";
+		$rsResults = RunQuery($sSQL);
+		list($fundId) = mysql_fetch_row($rsResults);
+		$sSelectedFund = $fundId2Name[$fundId];
 	}
 }
-$_SESSION['sFundSplit'] = $sFundSplit;
+
+if (isset($_POST["FundSplit"])) {
+	$sSelectedFund = FilterInput($_POST["FundSplit"]);
+}
+
+if (!$sSelectedFund) {
+	if (!$sSelectedFund) {
+		$sSelectedFund = $_SESSION['sSelectedFund'];
+		if (!$sSelectedFund) { // if still not set, default to Split
+			$sSelectedFund = 'Split';
+		}
+	}
+}
+$_SESSION['sSelectedFund'] = $sSelectedFund;
 
 // set from saved session default, or from prior input, or default by calcuation
 $iFYID =  $_SESSION['idefaultFY'];
@@ -78,12 +117,9 @@ if ($PledgeOrPayment == 'Pledge') { // Don't assign the deposit slip if this is 
 
 	// Get the current deposit slip data
 	if ($iCurrentDeposit) {
-		// this query was for '*' but I don't see where anything other than dep_Closed and dep_Date are used...  so only get that for now
 		$sSQL = "SELECT dep_Closed, dep_Date from deposit_dep WHERE dep_ID = " . $iCurrentDeposit;
 		$rsDeposit = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsDeposit));
-		if ($dep_Closed) // If the current deposit slip is closed, force creation of a new one.
-			$iCurrentDeposit = 0;
 	}
 }
 
@@ -124,26 +160,6 @@ if (strlen($PledgeOrPayment) < 1) {
 	}
 }
 
-// Get the list of funds
-$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
-if ($PledgeOrPayment == 'Pledge') {
-	$sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
-	// $sSQL .= " ORDER BY fun_Name";  take this out so that ordering is however they were added/entered rather than on fund name
-}
-
-$rsFunds = RunQuery($sSQL);
-mysql_data_seek($rsFunds,0);
-while ($row = mysql_fetch_array($rsFunds)) {
-	$fun_id = $row["fun_ID"];
-	$fundId2Name[$fun_id] = $row["fun_Name"];
-	if (!isset($defaultFund)) {
-		$defaultFund = $row["fun_Name"];
-	}
-	$fundIdActive[$fun_id] = $row["fun_Active"];
-} // end while
-
-$iPledgeID = FilterInput($_GET["PledgeID"],'int'); // this will only be set if someone pressed the 'edit' button on the Pledge or Deposit line
-
 $iFamily = FilterInput($_GET["FamilyID"],'int');
 if (!$iFamily) {
 	$iFamily = FilterInput($_POST["FamilyID"],'int');
@@ -157,33 +173,29 @@ if ($PledgeOrPayment == 'Pledge' and $iFamily) {
 		$fundID = $row["plg_fundID"];
 		$fund2PlgIds[$fundID] = $plgID;
 	} // end while
-} elseif ($iPledgeID) { // handles the case where PledgeID is set.  Need to get all the family records for that payment so we can prime the data for editing
+} elseif ($sGroupKey) { // handles the case where GroupKey is set.  Need to get all the family records for that payment so we can prime the data for editing
 	$iTotalAmount = 0;
-	$sSQL = "SELECT plg_famID, plg_CheckNo, plg_date, plg_method, plg_FYID from pledge_plg where plg_plgID='" . $iPledgeID . "'";
+	$sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_date, plg_method, plg_FYID from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
+ 	//	don't know if we need plg_date or plg_method here...  leave it here for now
 	$rsFam = RunQuery($sSQL);
-        extract(mysql_fetch_array($rsFam));
-        $iFamily = $plg_famID;
-        $iCheckNo = $plg_CheckNo;
-		$iFYID = $plg_FYID;
+	extract(mysql_fetch_array($rsFam));
 
-	$sSQL = "SELECT plg_plgID, plg_fundID, plg_amount from pledge_plg where plg_famID='" . $iFamily . "' AND plg_PledgeOrPayment='" . $PledgeOrPayment . "' AND plg_date='" . $plg_date . "'";
+	$iFamily = $plg_famID;
+	$iCheckNo = $plg_CheckNo;
+	$iFYID = $plg_FYID;
 
-	if ($plg_method == 'CHECK') { # a single check can result in multiple pledge records.  So now go pull those
-		$sSQL .= " AND plg_CheckNo='" . $iCheckNo . "'";
-	} else {
-		$sSQL .= " AND plg_plgID='" . $iPledgeID . "'";
-	}
+	$sSQL = "SELECT plg_plgID, plg_fundID, plg_amount, plg_comment from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
+
 	$rsAmounts = RunQuery($sSQL);
-        while ($row = mysql_fetch_array($rsAmounts)) {
-		$plgID = $row['plg_plgID'];	
-		$fundID = $row['plg_fundID'];
-		$fund2PlgIds[$fundID] = $plgID;
-		$fundName = $fundId2Name[$fundID];
-		$amount = $row['plg_amount'];
-		$nAmount[$fundName] = $row['plg_amount'];
-		$iTotalAmount += $amount;
+	while ($aRow = mysql_fetch_array($rsAmounts)) {
+		extract($aRow);
+		$fund2PlgIds[$plg_fundID] = $plg_plgID;
+		$fundName = $fundId2Name[$plg_fundID];
+		$nAmount[$fundName] = $plg_amount;
+		$sComment[$fundName] = $plg_comment;
+		$iTotalAmount += $plg_amount;
 	}
-} // end if $iPledgeID
+} // end if $sGroupKey
 
 
 $iEnvelope = FilterInput($_POST["Envelope"], 'int');
@@ -234,14 +246,14 @@ if ($PledgeOrPayment == 'Pledge') {
 	if ($roomForDeposits <= 0)
 		$sPageTitle .= "</font>";
 } else { // not a plege and a current deposit hasn't been created yet
-	if ($iPledgeID) {
+	if ($sGroupKey) {
 		$sPageTitle = gettext("Payment Editor - Modify Existing Payment");
 	} else {
 		$sPageTitle = gettext("Payment Editor - New Deposit Slip Will Be Created");
 	}
 } // end if $PledgeOrPayment
 
-if ($dep_Closed && $iPledgeID && $PledgeOrPayment == 'Payment') {
+if ($dep_Closed && $sGroupKey && $PledgeOrPayment == 'Payment') {
 	$sPageTitle .= " &nbsp; <font color=red>Deposit closed</font>";
 }			
 
@@ -258,8 +270,8 @@ if ($bUseScannedChecks) { // Instantiate the MICR class
 
 if (isset($_POST["TotalAmount"])) {
 	$iTotalAmount = FilterInput($_POST["TotalAmount"]);
-	if ($sFundSplit<>'Split') {
-		$nAmount[$sFundSplit] = $iTotalAmount;
+	if ($sSelectedFund<>'Split') {
+		$nAmount[$sSelectedFund] = $iTotalAmount;
 	} else {
 		unset($nAmount);
 	}
@@ -269,7 +281,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 	//Initialize the error flag
 	$bErrorFlag = false;
 
-	if ($sFundSplit=='Split') {
+	if ($sSelectedFund=='Split') {
 		// make sure at least one fund has a non-zero numer
 		$nonZeroFundAmountEntered = 0;
 		foreach ($fundId2Name as $fun_id => $fun_name) {
@@ -323,31 +335,18 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 	}
 
 	//If no errors, then let's update...
-	if (!$bErrorFlag) {
-		// Create new Deposit Slip
-		if ((!$iCurrentDeposit) and $PledgeOrPayment=='Payment') {					
-			$sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy, dep_Type)
-				         VALUES ('" . date("Y-m-d") . "','Automatically created because current slip was closed'," . $_SESSION['iUserID'] . ",'$dep_Type')";
-			RunQuery($sSQL);
-			$sSQL = "SELECT MAX(dep_ID) AS iDepositSlipID FROM deposit_dep";
-			$rsDepositSlipID = RunQuery($sSQL);
-			extract(mysql_fetch_array($rsDepositSlipID));
-			$_SESSION['iCurrentDeposit'] = $iDepositSlipID;
-			$iCurrentDeposit = $iDepositSlipID;
-			$dep_Date = date("Y-m-d");
-		}
-
+	if (!$bErrorFlag and !$dep_Closed) {
 		// Only set PledgeOrPayment when the record is first created
 		// loop through all funds and create non-zero amount pledge records
 		foreach ($fundId2Name as $fun_id => $fun_name) {
-			if ($sFundSplit<>'Split' and $sFundSplit<>$fun_name) {
+			if ($sSelectedFund<>'Split' and $sSelectedFund<>$fun_name) {
 				continue;
 			}
 			if (!$iCheckNo) { $iCheckNo = 0; }
 			if ($fund2PlgIds and array_key_exists($fun_id, $fund2PlgIds)) {
 				if ($nAmount[$fun_name] > 0) {
 					$sSQL = "UPDATE pledge_plg SET plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount[$fun_name] . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment[$fun_name] . "'";
-					$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_name] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "' AND plg_famID='" . $iFamily . "'";
+					$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_name] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "' AND plg_famID='" . $iFamily . "' AND plg_GroupKey='" . $sGroupKey . "'";
 				} else { // delete that record
 					$sSQL = "DELETE FROM pledge_plg WHERE plg_plgID = \"" . $fund2PlgIds[$fun_id] . "\" AND plg_famID = \"" . $iFamily . "\"";
 				}
@@ -355,17 +354,20 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 				if ($iMethod <> "CHECK") {
 					$iCheckNo = "NULL";
 				}
-				$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID, plg_NonDeductible)
+				if (!$sGroupKey) {
+					if ($iMethod == "CHECK") {
+						$sGroupKey = genGroupKey($iCheckNo, $iFamily, $fun_id, $dDate);
+					} else {
+						$sGroupKey = genGroupKey("cash", $iFamily, $fun_id, $dDate);
+					} 
+				}
+				$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID, plg_NonDeductible, plg_GroupKey)
 			VALUES ('" . $iFamily . "','" . $iFYID . "','" . $dDate . "','" . $nAmount[$fun_name] . "','" . $iSchedule . "','" . $iMethod  . "','" . $sComment[$fun_name] . "'";
-				$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $fun_id . "," . $iCurrentDeposit . "," . $iCheckNo . ",\"" . $tScanString . "\",\"" . $iAutID  . "\",\"" . $nNonDeductible[$fun_name] . "\")";
-				$bGetKeyBack = True;
+				$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $fun_id . "," . $iCurrentDeposit . "," . $iCheckNo . ",'" . $tScanString . "','" . $iAutID  . "','" . $nNonDeductible[$fun_name] . "','" . $sGroupKey . "')";
 			}
-			RunQuery($sSQL);
-			// If this is a new pledge or deposit, get the key back
-			if ($bGetKeyBack) {
-				$sSQL = "SELECT MAX(plg_plgID) AS iPledgeID FROM pledge_plg";
-				$rsPledgeID = RunQuery($sSQL);
-				extract(mysql_fetch_array($rsPledgeID));
+			if ($sSQL) {
+				RunQuery($sSQL);
+				unset($sSQL);
 			}
 		} // end foreach of $fundId2Name
 		if (isset($_POST["PledgeSubmit"])) {
@@ -374,7 +376,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 				Redirect($linkBack);
 			} else {
 				//Send to the view of this pledge
-				Redirect("PledgeEditor.php?PledgeOrPayment=" . $PledgeOrPayment . "&PledgeID=" . $iPledgeID . "&linkBack=", $linkBack);
+				Redirect("PledgeEditor.php?PledgeOrPayment=" . $PledgeOrPayment . "&GroupKey=" . $sGroupKey . "&linkBack=", $linkBack);
 			}
 		} elseif (isset($_POST["PledgeSubmitAndAdd"])) {
 			//Reload to editor to add another record
@@ -414,7 +416,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 				$iFamily = $fam_ID;
 			}
 		}
-	} elseif ($sFundSplit=='Split') {
+	} elseif ($sSelectedFund=='Split') {
 		$sSQL = "SELECT plg_fundID, plg_amount from pledge_plg where plg_famID=\"" . $iFamily . "\" AND plg_PledgeOrPayment=\"Pledge\" AND plg_FYID=\"" . $iFYID . "\";";
 //echo "sSQL: " . $sSQL . "\n";
 		$rsPledge = RunQuery($sSQL);
@@ -457,7 +459,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		RunQuery($sSQL);
 	}
 } else { // First time into screen
-	if (!$iPledgeID and $fund2PlgIds) { // pledge records exist so pull data from the ones that exist
+	if (!$sGroupKey and $fund2PlgIds) { // pledge records exist so pull data from the ones that exist
 		$sSQL = "SELECT * FROM pledge_plg WHERE plg_famID=\"" . $iFamily . "\" AND plg_PledgeOrPayment=\"" . $PledgeOrPayment . "\" AND plg_FYID=\"" . $iFYID . "\" AND plg_date=\"" . $dDate . "\";";
 
 		$rsPledge = RunQuery($sSQL);
@@ -502,30 +504,40 @@ $familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
 require "Include/Header.php";
 
 ?>
-<form method="post" action="PledgeEditor.php?<?php echo "CurrentDeposit=" . $iCurrentDeposit . "&PledgeID=" . $iPledgeID . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
+<form method="post" action="PledgeEditor.php?<?php echo "CurrentDeposit=" . $iCurrentDeposit . "&GroupKey=" . $sGroupKey . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
 
 <input type="hidden" name="FamilyID" id="FamilyID" value="<?php echo $iFamily; ?>">
 <input type="hidden" name="PledgeOrPayment" id="PledgeOrPayment" value="<?php echo $PledgeOrPayment; ?>">
 
-<table cellpadding="3" align="center">
+<table cellpadding="2" align="center">
 	<tr>
-		<td align="center">
+		<td align="left">
+		<?php if (!$dep_Closed) { ?>
 			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="PledgeSubmit">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PledgeSubmitAndAdd\">"; } ?>
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="PledgeCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+		<?php } ?>
+			<?php if (!$dep_Closed) {
+				$cancelText = "Cancel";
+			} else {
+				$cancelText = "Return";
+			} ?>	
+			<input type="button" class="icButton" value="<?php echo gettext($cancelText); ?>" name="PledgeCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
 	<tr>
 		<td>
-		<table border="0" cellspacing="0" cellpadding="3">
+		<table border="0" cellspacing="0" cellpadding="2">
 		<td valign="top" align="left">
-		<table cellpadding="3">
+		<table cellpadding="2">
 			<?php if ($dep_Type == 'Bank' and $bUseDonationEnvelopes) {?>
 			<tr>
 				<td class="PaymentLabelColumn"><?php echo gettext("Envelope #"); ?></td>
 				<td class="TextColumn"><input type="text" name="Envelope" size=8 id="Envelope" value="<?php echo $iEnvelope; ?>">
-				<input type="submit" class="icButton" value="<?php echo gettext("Find family->"); ?>" name="MatchEnvelope"></td>
+				<?php if (!$dep_Closed) { ?>
+				<input type="submit" class="icButton" value="<?php echo gettext("Find family->"); ?>" name="MatchEnvelope">
+				<?php } ?>
+			</td>
 			</tr>
 			<?php } ?>
 			<tr>
@@ -572,19 +584,20 @@ require "Include/Header.php";
 				<td class="PaymentLabelColumn"><?php echo gettext("Fund"); ?></td>
 				<td class="TextColumnWithBottomBorder">
 					<select name="FundSplit">
-						<option value="Split" <?php if ($sFundSplit=='Split') { echo ' selected'; } ?>><?php echo gettext("Split");?></option>
+						<option value="Split" <?php if ($sSelectedFund=='Split') { echo ' selected'; } ?>><?php echo gettext("Split");?></option>
 						<?php foreach ($fundId2Name as $fun_name) {
-							echo "<option value=\"" . $fun_name . "\""; if ($sFundSplit==$fun_name) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
+							echo "<option value=\"" . $fun_name . "\""; if ($sSelectedFund==$fun_name) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
 						} ?>
 					</select>
+					<?php if (!$dep_Closed) { ?>
 					<input type="submit" class="icButton" name="SetFundTypeSelection" value="<-Set">
-
+					<?php } ?>
 				</td>
 			</tr>
 		</table>
 		</td>
 		<td valign="top" align="center">
-		<table cellpadding="3">
+		<table cellpadding="2">
 			<tr>
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php addToolTip("Select the pledging family from the list."); ?><?php echo gettext("Family"); ?></td>
 				<td class="TextColumn">
@@ -620,7 +633,7 @@ require "Include/Header.php";
 			<td valign="top" align="left" class="PaymentLabelColumn"><?php echo gettext("Total $"); ?></td>
 			<td class="TextColumn"><input type="text" name="TotalAmount" id="TotalAmount" value="<?php echo $iTotalAmount; ?>">
 
-			<?php if ($sFundSplit=='Split') { ?>
+			<?php if ($sSelectedFund=='Split' and !$dep_Closed) { ?>
 
 			<input type="submit" class="icButton" value="<?php echo gettext("Split to Funds by pledge"); ?>" name="SplitTotal"></td>
 
@@ -686,11 +699,11 @@ require "Include/Header.php";
 		</table>
 		</td>
 
-		<?php if ($sFundSplit=='Split') { ?>
+		<?php if ($sSelectedFund=='Split') { ?>
 
 	<tr>
 		<td valign="top" align="left">
-		<table cellpadding="3">
+		<table cellpadding="2">
 
 			<tr>
 
