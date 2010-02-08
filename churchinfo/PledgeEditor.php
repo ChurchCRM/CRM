@@ -728,7 +728,7 @@ require "Include/Header.php";
 				if ($bEnableNonDeductible) {
 					echo "<td class=\"TextColumn\"><input type=\"text\" name=\"" . $fun_name . "_NonDeductible\" id=\"" . $fun_name . "_Amount\" value=\"" . $nNonDeductible[$fun_name] . "\"><br><font color=\"red\">" . $sAmountError[$fun_name] . "</font></td>";
 				}
-				echo "<td class=\"TextColumn\"><input type=\"text\" name=\"" . $fun_name . "_Comment\" id=\"" . $fun_name . "_Comment\" value=\"" . $sComment[$fun_name] . "\"></td>";
+				echo "<td class=\"TextColumn\"><input type=\"text\" size=40 name=\"" . $fun_name . "_Comment\" id=\"" . $fun_name . "_Comment\" value=\"" . $sComment[$fun_name] . "\"></td>";
 				echo "</tr>";
 			}
 			?>
