@@ -491,7 +491,7 @@ require "Include/Header.php";
 			
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Comment:"); ?></td>
-				<td class="TextColumn"><input type="text" name="Comment" id="Comment" value="<?php echo $sComment; ?>"></td>
+				<td class="TextColumn"><input type="text" size=40 name="Comment" id="Comment" value="<?php echo $sComment; ?>"></td>
 			</tr>
 
 			<tr>
