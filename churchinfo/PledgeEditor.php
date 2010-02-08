@@ -125,7 +125,11 @@ if ($PledgeOrPayment == 'Pledge') { // Don't assign the deposit slip if this is 
 
 $iMethod = FilterInput($_POST["Method"]);
 if (!$iMethod) {
-	if ($iCurrentDeposit) {
+	if ($sGroupKey) {
+		$sSQL = "SELECT DISTINCT plg_method FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey='" . $sGroupKey . "'";
+		$rsResults = RunQuery($sSQL);
+		list($iMethod) = mysql_fetch_row($rsResults);
+	} elseif ($iCurrentDeposit) {
 		$sSQL = "SELECT plg_method from pledge_plg where plg_depID=\"" . $iCurrentDeposit . "\" ORDER by plg_plgID DESC LIMIT 1";
 		$rsMethod = RunQuery($sSQL);
 		$num = mysql_num_rows($rsMethod);
