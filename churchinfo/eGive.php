@@ -21,20 +21,8 @@ if (!function_exists(json_last_error)) {
 	}
 }
 
-if( !function_exists(json_decode) ) {
-   require_once 'Include/JSON/JSON.php';
-   function json_decode($data, $bool) {
-       if ($bool) {
-           $json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
-       } else {
-           $json = new Services_JSON();
-       }
-       return( $json->decode($data) );
-   }
-}
-
-if (!function_exists(t_stream_get_contents)) {
-	function t_stream_get_contents($fp) {
+if (!function_exists(stream_get_contents)) {
+	function stream_get_contents($fp) {
 		$contents = '';
 		while (!feof($fp)) {
   			$contents .= fread($fp, 8192);
@@ -72,7 +60,8 @@ $sSQL = "SELECT plg_date, plg_amount, plg_CheckNo, plg_fundID, plg_FamID, plg_co
 $rsPlgIDs = RunQuery($sSQL);
 while ($aRow = mysql_fetch_array($rsPlgIDs)) {
 	extract($aRow);
-	$key = $plg_CheckNo . "|" .$plg_FamID . "|" . $plg_date . "|" . $plg_fundID . "|" . $plg_comment . "|" . $plg_GroupKey;
+
+	$key = eGiveExistingKey($plg_CheckNo, $plg_FamID, $plg_date, $plg_fundID, $plg_comment);
 	$eGiveExisting[$key] = $amount;
 } // end while
 
@@ -94,7 +83,7 @@ if (isset($_POST["ApiGet"])) {
 	//foreach($meta_data['wrapper_data'] as $response) {
 	//}
 
-	$json = t_stream_get_contents($fp);
+	$json = stream_get_contents($fp);
 	fclose($fp);
 
 	$api_error = 1;
@@ -115,7 +104,7 @@ if (isset($_POST["ApiGet"])) {
 		//var_dump($url);
 		$fp = fopen($url, 'r');
 
-		$json = t_stream_get_contents($fp);
+		$json = stream_get_contents($fp);
 		fclose($fp);
 		$data = get_api_data($json, true);
 		if ($data and $data['status'] == 'success') {
@@ -148,6 +137,9 @@ if (isset($_POST["ApiGet"])) {
 					$egiveID2NameWithUnderscores[$egiveID] = $nameWithUnderscores;
 
 				}
+
+				unset($amount);
+				unset($eGiveFund);
 
 				foreach ($breakouts as $breakout) {
 					$am = $breakout[0];
@@ -201,14 +193,14 @@ if (isset($_POST["ApiGet"])) {
  						$giftDataMissingEgiveID[] = $missingValue; 
 						++$importError;
 					}
-				} while($j++ < $index);
+				}
 			}
 		}
 	}
 	$url = $eGiveURL . "/api/logout/?apiKey=" . $eGiveApiKey;
 	$fp = fopen($url, 'r');
 
-	$json = t_stream_get_contents($fp);
+	$json = stream_get_contents($fp);
 	fclose($fp);
 
 
@@ -283,12 +275,11 @@ function updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $f
 	global $importCreated;
 	global $importNoChange;
 
-	$keyExisting = $transId . "|" . $famID . "|" . $date . "|" . $fundId . "|" . $comment . "|" . $groupKey;
-
+	$keyExisting = eGiveExistingKey($transId, $famID, $date, $fundId, $comment);
 	if ($eGiveExisting and array_key_exists($keyExisting, $eGiveExisting)) {
 		++$importNoChange;
 	} elseif ($famID) { //  insert a new record
-		$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_NonDeductible, plg_GroupKey) VALUES ('" . $famID . "','" . $iFYID . "','" . $date . "','" . $amount . "','Once','EGIVE','" . $comment . "','" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'Payment'," . $fundId . ",'" . $iDepositSlipID . "','" . $transId . "','0','" . $groupKey . "')";
+		$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_NonDeductible, plg_GroupKey) VALUES ('" . $famID . "','" . $iFYID . "','" . $date . "','" . $amount . "','" . $frequency . "','EGIVE','" . $comment . "','" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'Payment'," . $fundId . ",'" . $iDepositSlipID . "','" . $transId . "','0','" . $groupKey . "')";
 		++$importCreated;
 		RunQuery($sSQL);
 	}
@@ -400,4 +391,11 @@ function yearFirstDate($date) {
 	
 	return $dateCI;
 }
+
+function eGiveExistingKey($transId, $famID, $date, $fundId, $comment) {
+	$key = $transId . "|" . $famID . "|" . $date . "|" . $fundId . "|" . $comment;
+
+	return $key;
+}
+
 ?>
