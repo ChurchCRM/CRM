@@ -311,7 +311,7 @@ function importDoneFixOrContinue() {
 	<?php
 	if ($importError) { // the only way we can fail to import data is if we're missing the egive IDs, so build a table, with text input, and prompt for it.
         ?>
-		<p>New eGive Name(s) and ID(s) have been imported and must be associated with the appropriate Family.  Use the pulldown in the <b>Family</b> column to select the Family, based on the eGive name.<br><br>If you cannot make the assignment now, you can safely go Back to the Deposit Slip, and re-import this data at a later time.  Its possible you may need to view eGive data using the Web View in order to make an accurate Family assignment.</p>
+		<p>New eGive Name(s) and ID(s) have been imported and must be associated with the appropriate Family.  Use the pulldown in the <b>Family</b> column to select the Family, based on the eGive name, and then press the Re-import button.<br><br>If you cannot make the assignment now, you can safely go Back to the Deposit Slip, and Re-import this data at a later time.  Its possible you may need to view eGive data using the Web View in order to make an accurate Family assignment.</p>
 		<table border=1>
 		<tr><td><b>eGive Name</b></td><td><b>eGive ID</b></td><td><b>Family</b></td><td><b>Set eGive ID into Family</b></td></tr>
 		<?php
