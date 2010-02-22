@@ -47,12 +47,23 @@ include ("Include/eGiveConfig.php"); // Specific account information is in here
 
 $familySelectHtml = buildFamilySelect(0, 0, 0);
 
+// if a family is deleted, and donations are found, the egive_egv table is updated at the same time that donations are transferred.  But if there aren't donations at the time, and there's still and egive ID, we need to get that changed.  So, we'll build an array of all the family IDs here, and then NOT cache the egiveID to familyID association in the loop below.  There's probably a nicer way to do this with an SQL join,  but this seems more explicit.
+
+$sSQL = "SELECT fam_ID FROM family_fam";
+$rsFamIDs = RunQuery($sSQL);
+while ($aRow = mysql_fetch_array($rsFamIDs)) {
+	extract($aRow);
+	$famIDs[] = $fam_ID;
+}
+
 // get array of all existing payments into a 'cache' so we don't have to keep querying the DB
 $sSQL = "SELECT egv_egiveID, egv_famID from egive_egv";
 $egiveIDs = RunQuery($sSQL);
 while ($aRow = mysql_fetch_array($egiveIDs)) {
 	extract($aRow);
-	$egiveID2FamID[$egv_egiveID] = $egv_famID;
+	if (in_array($egv_famID, $famIDs)) { // make sure the family still exists
+		$egiveID2FamID[$egv_egiveID] = $egv_famID;
+	}
 }
 
 $sSQL = "SELECT plg_date, plg_amount, plg_CheckNo, plg_fundID, plg_FamID, plg_comment, plg_GroupKey from pledge_plg where plg_method=\"EGIVE\" AND plg_PledgeOrPayment=\"Payment\";";
@@ -311,7 +322,7 @@ function importDoneFixOrContinue() {
 	<?php
 	if ($importError) { // the only way we can fail to import data is if we're missing the egive IDs, so build a table, with text input, and prompt for it.
         ?>
-		<p>New eGive Name(s) and ID(s) have been imported and must be associated with the appropriate Family.  Use the pulldown in the <b>Family</b> column to select the Family, based on the eGive name, and then press the Re-import button.<br><br>If you cannot make the assignment now, you can safely go Back to the Deposit Slip, and Re-import this data at a later time.  Its possible you may need to view eGive data using the Web View in order to make an accurate Family assignment.</p>
+		<p>New eGive Name(s) and ID(s) have been imported and must be associated with the appropriate Family.  Use the pulldown in the <b>Family</b> column to select the Family, based on the eGive name, and then press the Re-Import button.<br><br>If you cannot make the assignment now, you can safely go Back to the Deposit Slip, and Re-import this data at a later time.  Its possible you may need to view eGive data using the Web View in order to make an accurate Family assignment.</p>
 		<table border=1>
 		<tr><td><b>eGive Name</b></td><td><b>eGive ID</b></td><td><b>Family</b></td><td><b>Set eGive ID into Family</b></td></tr>
 		<?php
