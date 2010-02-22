@@ -42,6 +42,12 @@ if ($_SESSION['bFinance'] && $_GET["MoveDonations"] && $iFamilyID && $iDonationF
 		plg_DateLastEdited ='$today', plg_EditedBy='".$_SESSION["iUserID"]
 		."' WHERE plg_FamID='$iFamilyID'";
 	RunQuery($sSQL);
+
+	$sSQL = "UPDATE egive_egv SET egv_famID='$iDonationFamilyID',
+		egv_DateLastEdited ='$today', egv_EditedBy='".$_SESSION["iUserID"]
+		."' WHERE egv_famID='$iFamilyID'";
+	RunQuery($sSQL);
+
 	$DonationMessage = "<p><b><font color=red>".gettext("All donations from this family have been moved to another family.") . "</font></b></p>";
 }
 
@@ -218,10 +224,11 @@ if($sMode == 'person')
 else
 {
 	// Delete Family Confirmation
-	// See if this family has any donations
+	// See if this family has any donations OR an Egive association
 	$sSQL = "SELECT plg_plgID FROM pledge_plg WHERE plg_PledgeOrPayment = 'Payment' AND plg_FamID = " . $iFamilyID;
 	$rsDonations = RunQuery($sSQL);
 	$bIsDonor = (mysql_num_rows($rsDonations) > 0);
+
 	if ($bIsDonor && !$_SESSION['bFinance']) {
 		// Donations from Family. Current user not authorized for Finance
 		echo "<p class=\"LargeText\">" . gettext("Sorry, there are records of donations from this family. This family may not be deleted.") . "<br><br>";
