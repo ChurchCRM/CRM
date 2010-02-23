@@ -3,10 +3,10 @@
  *
  *  filename    : CSVCreateFile.php
  *  last change : 2003-06-11
- *  website     : http://www.infocentral.org
- *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
+ *  website     : http://www.churchdb.org
+ *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -322,7 +322,7 @@ else
 	$headerString .= "\n";
 
 	header("Content-type: text/x-csv");
-	header("Content-Disposition: attachment; filename=infocentral-export-" . date("Ymd-Gis") . ".csv");
+	header("Content-Disposition: attachment; filename=churchinfo-export-" . date("Ymd-Gis") . ".csv");
 
 	echo $headerString;
 
