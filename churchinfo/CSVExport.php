@@ -122,6 +122,11 @@ require "Include/Header.php";
 		</tr>
 
 		<tr>
+			<td class="LabelColumn"><?php echo gettext("Envelope:"); ?></td>
+			<td class="TextColumn"><input type="checkbox" name="Envelope" value="1"></td>
+		</tr>
+
+		<tr>
 			<td class="LabelColumn"><?php echo gettext("Country:"); ?></td>
 			<td class="TextColumn"><input type="checkbox" name="Country" value="1" checked></td>
 		</tr>

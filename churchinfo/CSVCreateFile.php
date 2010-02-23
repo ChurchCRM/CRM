@@ -344,7 +344,7 @@ else
 		$per_CellPhone = "";
 		$per_Email = "";
 		$per_WorkEmail = "";
-		$per_Envelope = "";
+		$fam_Envelope = "";
 		$per_MembershipDate = "";
 
 		$per_BirthDay = "";
@@ -401,7 +401,7 @@ else
 		{
 			// Check if we're filtering out people with no envelope number assigned
 			// ** should move this to the WHERE clause
-			if (!($bSkipNoEnvelope && (strlen($per_Envelope) == 0)))
+			if (!($bSkipNoEnvelope && (strlen($fam_Envelope) == 0)))
 			{
 				// If we are doing family roll-up, we use a single, formatted name field
 				if ($sFormat == "default")
@@ -432,7 +432,7 @@ else
 				if (isset($_POST["CellPhone"])) $sString .= "\",\"" . $sCellPhone;
 				if (isset($_POST["Email"])) $sString .= "\",\"" . $sEmail;
 				if (isset($_POST["WorkEmail"])) $sString .= "\",\"" . $per_WorkEmail;
-				if (isset($_POST["Envelope"])) $sString .= "\",\"" . $per_Envelope;
+				if (isset($_POST["Envelope"])) $sString .= "\",\"" . $fam_Envelope;
 				if (isset($_POST["MembershipDate"])) $sString .= "\",\"" . $per_MembershipDate;
 
 				if ($sFormat == "default")
