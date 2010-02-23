@@ -697,13 +697,15 @@ foreach ($depositArray as $order => $value) {
 require "Include/Footer.php";
 
 function addGroupKey() {
-	$fields = mysql_list_fields('churchinfo', 'pledge_plg');
-	$columns = mysql_num_fields($fields);
-	for ($i = 0; $i < $columns; $i++) {
-		$field_array[] = mysql_field_name($fields, $i);
+	$sSQL = "SHOW COLUMNS FROM pledge_plg";
+	$results = RunQuery($sSQL);
+	$foundKey = 0;
+	while ($aRow = mysql_fetch_array($results)) {
+		if (in_array("plg_GroupKey", $aRow)) {
+			$foundKey = 1;
+		}
 	}
-
-	if (!in_array('plg_GroupKey', $field_array)) {
+	if (!$foundKey) {
 		$sSQL = "ALTER TABLE `pledge_plg` ADD `plg_GroupKey` VARCHAR( 64 ) NOT NULL ";
 		RunQuery($sSQL);
 	}
