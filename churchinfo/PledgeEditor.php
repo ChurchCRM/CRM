@@ -225,16 +225,17 @@ if ($PledgeOrPayment == 'Pledge') {
 	// form assumed by Reports/PrintDeposit.php. 
 	$checksFit = $iChecksPerDepositForm;
 
-	$sSQL = "SELECT plg_plgID, plg_checkNo, plg_method from pledge_plg where plg_depID=" . $iCurrentDeposit;
+	$sSQL = "SELECT plg_FamID, plg_plgID, plg_checkNo, plg_method from pledge_plg where plg_depID=" . $iCurrentDeposit;
 	$rsChecksThisDep = RunQuery ($sSQL);
 	$depositCount = 0;
 	while ($aRow = mysql_fetch_array($rsChecksThisDep)) {
 		extract($aRow);
+		$chkKey = $plg_FamID . "|" . $plg_checkNo;
 		if ($plg_method=='CHECK') {
-			if ($checkHash and array_key_exists($plg_checkNo, $checkHash)) {
+			if ($checkHash and array_key_exists($chkKey, $checkHash)) {
 				next;
 			} else {
-				$checkHash[$plg_checkNo] = $plg_plgID;
+				$checkHash[$chkKey] = $plg_plgID;
 				++$depositCount;
 			}
 		} else {
@@ -329,10 +330,13 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		if ($iMethod == "CASH") {
 			$sCheckNoError = "<span style=\"color: red; \">" . gettext("Check number not valid for 'CASH' payment") . "</span>";
 			$bErrorFlag = true;
-		} elseif ($iMethod=='CHECK' and $checkHash and array_key_exists($iCheckNo, $checkHash)) {
-			$text = "Check number '" . $iCheckNo . "' already exists.";
-			$sCheckNoError = "<span style=\"color: red; \">" . gettext($text) . "</span>";
-			$bErrorFlag = true;
+		} elseif ($iMethod=='CHECK') {
+			$chkKey = $iFamily . "|" . $iCheckNo;
+			if ($checkHash and array_key_exists($chkKey, $checkHash)) {
+				$text = "Check number '" . $iCheckNo . "' for selected family already exists.";
+				$sCheckNoError = "<span style=\"color: red; \">" . gettext($text) . "</span>";
+				$bErrorFlag = true;
+			}
 		}
 	}
 
