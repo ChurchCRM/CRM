@@ -324,9 +324,16 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		$bErrorFlag = true;
 	}
 
-	if ($PledgeOrPayment=='Payment' and $iCheckNo and $iMethod == "CASH") {
-		$sCheckNoError = "<span style=\"color: red; \">" . gettext("Check number not valid for 'CASH' payment") . "</span>";
-		$bErrorFlag = true;
+	// detect check inconsistencies
+	if ($PledgeOrPayment=='Payment' and $iCheckNo) {
+		if ($iMethod == "CASH") {
+			$sCheckNoError = "<span style=\"color: red; \">" . gettext("Check number not valid for 'CASH' payment") . "</span>";
+			$bErrorFlag = true;
+		} elseif ($iMethod=='CHECK' and $checkHash and array_key_exists($iCheckNo, $checkHash)) {
+			$text = "Check number '" . $iCheckNo . "' already exists.";
+			$sCheckNoError = "<span style=\"color: red; \">" . gettext($text) . "</span>";
+			$bErrorFlag = true;
+		}
 	}
 
 	// Validate Date
