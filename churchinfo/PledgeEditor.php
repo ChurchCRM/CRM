@@ -64,16 +64,16 @@ if ($sGroupKey) {
 		$rsResults = RunQuery($sSQL);
 		list($fundId) = mysql_fetch_row($rsResults);
 		$iSelectedFund = $fundId;
+		$iOriginalSelectedFund = $fundId;
 	}
 }
 
 if (isset($_POST["FundSplit"])) {
-	if ($iSelectedFund) { $iOriginalSelectedFund = $iSelectedFund; }
 	$iSelectedFund = FilterInput($_POST["FundSplit"]);
 	$_SESSION['iSelectedFund'] = $iSelectedFund;
-} else {
-	$iSelectedFund = $_SESSION['iSelectedFund'];
-}
+} 
+
+$_SESSION['iSelectedFund'] = $iSelectedFund;
 
 // set from saved session default, or from prior input, or default by calcuation
 $iFYID =  $_SESSION['idefaultFY'];
