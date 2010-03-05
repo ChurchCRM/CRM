@@ -37,7 +37,6 @@ $_SESSION['idefaultDate'] = $dDate;
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
 if ($PledgeOrPayment == 'Pledge') {
 	$sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
-	// $sSQL .= " ORDER BY fun_Name";  take this out so that ordering is however they were added/entered rather than on fund name
 }
 
 $rsFunds = RunQuery($sSQL);
@@ -45,8 +44,8 @@ mysql_data_seek($rsFunds,0);
 while ($aRow = mysql_fetch_array($rsFunds)) {
 	extract($aRow);
 	$fundId2Name[$fun_ID] = $fun_Name;
-	if (!isset($defaultFund)) {
-		$defaultFund = $fun_Name;
+	if (!isset($defaultFundID)) {
+		$defaultFundID = $fun_ID;
 	}
 	$fundIdActive[$fun_ID] = $fun_Active;
 } // end while
@@ -59,28 +58,22 @@ if ($sGroupKey) {
 	$rsResults = RunQuery($sSQL);
 	list($numGroupKeys) = mysql_fetch_row($rsResults);
 	if ($numGroupKeys > 1) {
-		$sSelectedFund = 'Split';
+		$iSelectedFund = 0;
 	} else {
 		$sSQL = "SELECT plg_fundID FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey='" . $sGroupKey . "'";
 		$rsResults = RunQuery($sSQL);
 		list($fundId) = mysql_fetch_row($rsResults);
-		$sSelectedFund = $fundId2Name[$fundId];
+		$iSelectedFund = $fundId;
 	}
 }
 
 if (isset($_POST["FundSplit"])) {
-	$sSelectedFund = FilterInput($_POST["FundSplit"]);
+	if ($iSelectedFund) { $iOriginalSelectedFund = $iSelectedFund; }
+	$iSelectedFund = FilterInput($_POST["FundSplit"]);
+	$_SESSION['iSelectedFund'] = $iSelectedFund;
+} else {
+	$iSelectedFund = $_SESSION['iSelectedFund'];
 }
-
-if (!$sSelectedFund) {
-	if (!$sSelectedFund) {
-		$sSelectedFund = $_SESSION['sSelectedFund'];
-		if (!$sSelectedFund) { // if still not set, default to Split
-			$sSelectedFund = 'Split';
-		}
-	}
-}
-$_SESSION['sSelectedFund'] = $sSelectedFund;
 
 // set from saved session default, or from prior input, or default by calcuation
 $iFYID =  $_SESSION['idefaultFY'];
@@ -157,7 +150,7 @@ elseif ($iMethod == "BANKDRAFT")
 $linkBack = FilterInput($_GET["linkBack"]);
 
 if (strlen($PledgeOrPayment) < 1) {
-	if (ereg("Deposit", $linkBack)) {
+	if (preg_match("/Deposit/", $linkBack)) {
 		$PledgeOrPayment = 'Payment';
 	} else {
 		$PledgeOrPayment = 'Pledge'; // default to Pledge rather than payment
@@ -194,9 +187,8 @@ if ($PledgeOrPayment == 'Pledge' and $iFamily) {
 	while ($aRow = mysql_fetch_array($rsAmounts)) {
 		extract($aRow);
 		$fund2PlgIds[$plg_fundID] = $plg_plgID;
-		$fundName = $fundId2Name[$plg_fundID];
-		$nAmount[$fundName] = $plg_amount;
-		$sComment[$fundName] = $plg_comment;
+		$nAmount[$plg_fundID] = $plg_amount;
+		$sComment[$plg_fundID] = $plg_comment;
 		$iTotalAmount += $plg_amount;
 	}
 } // end if $sGroupKey
@@ -275,8 +267,8 @@ if ($bUseScannedChecks) { // Instantiate the MICR class
 
 if (isset($_POST["TotalAmount"])) {
 	$iTotalAmount = FilterInput($_POST["TotalAmount"]);
-	if ($sSelectedFund<>'Split') {
-		$nAmount[$sSelectedFund] = $iTotalAmount;
+	if ($iSelectedFund) {
+		$nAmount[$iSelectedFund] = $iTotalAmount;
 	} else {
 		unset($nAmount);
 	}
@@ -286,29 +278,29 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 	//Initialize the error flag
 	$bErrorFlag = false;
 
-	if ($sSelectedFund=='Split') {
+	if (!$iSelectedFund) { // split
 		// make sure at least one fund has a non-zero numer
 		$nonZeroFundAmountEntered = 0;
 		foreach ($fundId2Name as $fun_id => $fun_name) {
 			//$fun_active = $fundActive[$fun_id];
-			$nAmount[$fun_name] = FilterInput($_POST[$fun_name . "_Amount"]);
-			$sComment[$fun_name] = FilterInput($_POST[$fun_name . "_Comment"]);
-			if ($nAmount[$fun_name] > 0) {
+			$nAmount[$fun_id] = FilterInput($_POST[$fun_id . "_Amount"]);
+			$sComment[$fun_id] = FilterInput($_POST[$fun_id . "_Comment"]);
+			if ($nAmount[$fun_id] > 0) {
 				++$nonZeroFundAmountEntered;
 			}
 
 			if ($bEnableNonDeductible) {
-				$nNonDeductible[$fun_name] = FilterInput($_POST[$fun_name . "_NonDeductible"]);
+				$nNonDeductible[$fun_id] = FilterInput($_POST[$fun_id . "_NonDeductible"]);
 				//Validate the NonDeductible Amount
-				if ($nNonDeductible[$fun_name] > $nAmount[$fun_name]) { //Validate the NonDeductible Amount
-					$sNonDeductibleError[$fun_name] = gettext("NonDeductible amount can't be greater than total amount.");
+				if ($nNonDeductible[$fun_id] > $nAmount[$fun_id]) { //Validate the NonDeductible Amount
+					$sNonDeductibleError[$fun_id] = gettext("NonDeductible amount can't be greater than total amount.");
 				$bErrorFlag = true;
 				}
 			}
 		} // end foreach
 
 		if (!$nonZeroFundAmountEntered) {
-			$sAmountError[$fun_name] = gettext("At least one fund must have a non-zero amount.");
+			$sAmountError[$fun_id] = gettext("At least one fund must have a non-zero amount.");
 			$bErrorFlag = true;
 		}
 	}
@@ -330,7 +322,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		if ($iMethod == "CASH") {
 			$sCheckNoError = "<span style=\"color: red; \">" . gettext("Check number not valid for 'CASH' payment") . "</span>";
 			$bErrorFlag = true;
-		} elseif ($iMethod=='CHECK') {
+		} elseif ($iMethod=='CHECK' and !$sGroupKey) {
 			$chkKey = $iFamily . "|" . $iCheckNo;
 			if ($checkHash and array_key_exists($chkKey, $checkHash)) {
 				$text = "Check number '" . $iCheckNo . "' for selected family already exists.";
@@ -354,18 +346,19 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		// Only set PledgeOrPayment when the record is first created
 		// loop through all funds and create non-zero amount pledge records
 		foreach ($fundId2Name as $fun_id => $fun_name) {
-			if ($sSelectedFund<>'Split' and $sSelectedFund<>$fun_name) {
+			if ($iSelectedFund and $iSelectedFund<>$fun_id) {
 				continue;
 			}
 			if (!$iCheckNo) { $iCheckNo = 0; }
+			unset($sSQL);
 			if ($fund2PlgIds and array_key_exists($fun_id, $fund2PlgIds)) {
-				if ($nAmount[$fun_name] > 0) {
-					$sSQL = "UPDATE pledge_plg SET plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount[$fun_name] . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment[$fun_name] . "'";
-					$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_name] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "' AND plg_famID='" . $iFamily . "' AND plg_GroupKey='" . $sGroupKey . "'";
+				if ($nAmount[$fun_id] > 0) {
+					$sSQL = "UPDATE pledge_plg SET plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount[$fun_id] . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment[$fun_id] . "'";
+					$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_id] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "' AND plg_famID='" . $iFamily . "' AND plg_GroupKey='" . $sGroupKey . "'";
 				} else { // delete that record
 					$sSQL = "DELETE FROM pledge_plg WHERE plg_plgID = \"" . $fund2PlgIds[$fun_id] . "\" AND plg_famID = \"" . $iFamily . "\"";
 				}
-			} elseif ($nAmount[$fun_name] > 0) {
+			} elseif ($nAmount[$fun_id] > 0) {
 				if ($iMethod <> "CHECK") {
 					$iCheckNo = "NULL";
 				}
@@ -387,8 +380,8 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 					} 
 				}
 				$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID, plg_NonDeductible, plg_GroupKey)
-			VALUES ('" . $iFamily . "','" . $iFYID . "','" . $dDate . "','" . $nAmount[$fun_name] . "','" . $iSchedule . "','" . $iMethod  . "','" . $sComment[$fun_name] . "'";
-				$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $fun_id . "," . $iCurrentDeposit . "," . $iCheckNo . ",'" . $tScanString . "','" . $iAutID  . "','" . $nNonDeductible[$fun_name] . "','" . $sGroupKey . "')";
+			VALUES ('" . $iFamily . "','" . $iFYID . "','" . $dDate . "','" . $nAmount[$fun_id] . "','" . $iSchedule . "','" . $iMethod  . "','" . $sComment[$fun_id] . "'";
+				$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $fun_id . "," . $iCurrentDeposit . "," . $iCheckNo . ",'" . $tScanString . "','" . $iAutID  . "','" . $nNonDeductible[$fun_id] . "','" . $sGroupKey . "')";
 			}
 			if ($sSQL) {
 				RunQuery($sSQL);
@@ -441,7 +434,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 				$iFamily = $fam_ID;
 			}
 		}
-	} elseif ($sSelectedFund=='Split') {
+	} elseif (!$iSelectedFund) {
 		$sSQL = "SELECT plg_fundID, plg_amount from pledge_plg where plg_famID=\"" . $iFamily . "\" AND plg_PledgeOrPayment=\"Pledge\" AND plg_FYID=\"" . $iFYID . "\";";
 //echo "sSQL: " . $sSQL . "\n";
 		$rsPledge = RunQuery($sSQL);
@@ -449,27 +442,32 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		while ($row = mysql_fetch_array($rsPledge)) {
 			$fundID = $row["plg_fundID"];
 			$plgAmount = $row["plg_amount"];
-			$fundName = 	$fundId2Name[$fundID];
-			$fundName2Pledge[$fundName] = $plgAmount;
+			$fundID2Pledge[$fundID] = $plgAmount;
 			$totalPledgeAmount = $totalPledgeAmount + $plgAmount;
 		} // end while
-		if ($fundName2Pledge) {
+		if ($fundID2Pledge) {
 			// division rounding can cause total of calculations to not equal total.  Keep track of running total, and asssign any rounding error to 'default' fund
 			$calcTotal = 0;
 			$calcOtherFunds = 0;
-			foreach ($fundName2Pledge as $fundName => $plgAmount) {
-				$calcAmount = number_format($iTotalAmount * ($plgAmount / $totalPledgeAmount), 2);
-				$nAmount[$fundName] = $calcAmount;
-				if ($fundName <> $defaultFund) {
-					$calcOtherFunds += $calcAmount;
+			foreach ($fundID2Pledge as $fundID => $plgAmount) {
+				$calcAmount = round($iTotalAmount * ($plgAmount / $totalPledgeAmount), 2);
+
+				$nAmount[$fundID] = number_format($calcAmount, 2, ".", "");
+				if ($fundID <> $defaultFundID) {
+					$calcOtherFunds = $calcOtherFunds + $calcAmount;
 				}
-				$calcTotal =+ $calcAmount;
+
+				$calcTotal += $calcAmount;
 			}
 			if ($calcTotal <> $iTotalAmount) {
-				$nAmount[$defaultFund] = number_format($iTotalAmount - $calcOtherFunds, 2, ".", "");
+				$nAmount[$defaultFundID] = number_format($iTotalAmount - $calcOtherFunds, 2, ".", "");
 			}
 		} else {
-			$nAmount[$defaultFund] = $iTotalAmount;
+			if ($iOriginalSelectedFund) {
+				$nAmount[$iOriginalSelectedFund] = number_format($iTotalAmount, 2, ".", "");
+			} else {
+				$nAmount[$defaultFundID] = number_format($iTotalAmount, 2, ".", "");
+			}
 		}
 	} else {
 		$iFamily = FilterInput($_POST["FamilyID"]);
@@ -499,11 +497,10 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 	      	//$PledgeOrPayment = $plg_PledgeOrPayment;
 		  	$iAutID = $plg_aut_ID;
 			$fun_id = $plg_fundID;
-			$fun_name = 	$fundId2Name[$fun_id];
-			$nAmount[$fun_name] = $plg_amount;
-			$sComment[$fun_name] = $plg_comment;
+			$nAmount[$fun_id] = $plg_amount;
+			$sComment[$fun_id] = $plg_comment;
 			if ($bEnableNonDeductible) {
-				$nNonDeductible[$fun_name] = $plg_NonDeductible;
+				$nNonDeductible[$fun_id] = $plg_NonDeductible;
 			}
 		}
 	} else { // adding
@@ -609,9 +606,9 @@ require "Include/Header.php";
 				<td class="PaymentLabelColumn"><?php echo gettext("Fund"); ?></td>
 				<td class="TextColumnWithBottomBorder">
 					<select name="FundSplit">
-						<option value="Split" <?php if ($sSelectedFund=='Split') { echo ' selected'; } ?>><?php echo gettext("Split");?></option>
-						<?php foreach ($fundId2Name as $fun_name) {
-							echo "<option value=\"" . $fun_name . "\""; if ($sSelectedFund==$fun_name) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
+						<option value=0 <?php if (!$iSelectedFund) { echo ' selected'; } ?>><?php echo gettext("Split");?></option>
+						<?php foreach ($fundId2Name as $fun_id => $fun_name) {
+							echo "<option value=\"" . $fun_id . "\""; if ($iSelectedFund==$fun_id) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
 						} ?>
 					</select>
 					<?php if (!$dep_Closed) { ?>
@@ -658,7 +655,7 @@ require "Include/Header.php";
 			<td valign="top" align="left" class="PaymentLabelColumn"><?php echo gettext("Total $"); ?></td>
 			<td class="TextColumn"><input type="text" name="TotalAmount" id="TotalAmount" value="<?php echo $iTotalAmount; ?>">
 
-			<?php if ($sSelectedFund=='Split' and !$dep_Closed) { ?>
+			<?php if (!$iSelectedFund and !$dep_Closed) { ?>
 
 			<input type="submit" class="icButton" value="<?php echo gettext("Split to Funds by pledge"); ?>" name="SplitTotal"></td>
 
@@ -724,7 +721,7 @@ require "Include/Header.php";
 		</table>
 		</td>
 
-		<?php if ($sSelectedFund=='Split') { ?>
+		<?php if (!$iSelectedFund) { ?>
 
 	<tr>
 		<td valign="top" align="left">
@@ -742,14 +739,14 @@ require "Include/Header.php";
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Comment"); ?></td>
              </tr>
 
-			<?php foreach ($fundId2Name as $fun_name) {
+			<?php foreach ($fundId2Name as $fun_id => $fun_name) {
 				echo "<tr>";
 				echo "<td class=\"TextColumn\"><b>" . $fun_name . "</b></td>";
-				echo "<td class=\"TextColumn\"><input type=\"text\" name=\"" . $fun_name . "_Amount\" id=\"" . $fun_name . "_Amount\" value=\"" . $nAmount[$fun_name] . "\"><br><font color=\"red\">" . $sAmountError[$fun_name] . "</font></td>";
+				echo "<td class=\"TextColumn\"><input type=\"text\" name=\"" . $fun_id . "_Amount\" id=\"" . $fun_id . "_Amount\" value=\"" . $nAmount[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
 				if ($bEnableNonDeductible) {
-					echo "<td class=\"TextColumn\"><input type=\"text\" name=\"" . $fun_name . "_NonDeductible\" id=\"" . $fun_name . "_Amount\" value=\"" . $nNonDeductible[$fun_name] . "\"><br><font color=\"red\">" . $sAmountError[$fun_name] . "</font></td>";
+					echo "<td class=\"TextColumn\"><input type=\"text\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
 				}
-				echo "<td class=\"TextColumn\"><input type=\"text\" size=40 name=\"" . $fun_name . "_Comment\" id=\"" . $fun_name . "_Comment\" value=\"" . $sComment[$fun_name] . "\"></td>";
+				echo "<td class=\"TextColumn\"><input type=\"text\" size=40 name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
 				echo "</tr>";
 			}
 			?>
