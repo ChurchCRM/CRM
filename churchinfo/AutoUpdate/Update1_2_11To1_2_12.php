@@ -153,7 +153,7 @@ $sSQL = "INSERT IGNORE INTO `queryparameteroptions_qpo` (`qpo_ID`, `qpo_qrp_ID`,
 if (!RunQuery($sSQL, FALSE))
 	break;
 	
-$sSQL = "ALTER TABLE `volunteeropportunity_vol` CHANGE `vol_ID` `vol_ID` INT( 3 ) NOT NULL AUTO_INCREMENT;";
+$sSQL = "ALTER TABLE `volunteeropportunity_vol` CHANGE `vol_ID` `vol_ID` INT( 3 ) PRIMARY KEY NOT NULL AUTO_INCREMENT;";
 if (!RunQuery($sSQL, FALSE))
 	break;
 
@@ -247,7 +247,10 @@ $sSQL = "UPDATE `query_qry` set `qry_SQL`='SELECT per_ID as AddToCart,CONCAT(''<
 if (!RunQuery($sSQL, FALSE))
 	break;
 
-
+$sSQL = "UPDATE pledge_plg SET plg_GroupKey=CONCAT(plg_method,plg_plgID)";
+if (!RunQuery($sSQL, FALSE))
+	break;
+	
 // If we got this far it means all queries ran without error.  It is okay to update
 // the version information.
 
@@ -285,131 +288,4 @@ if ($ver_version == $sVersion) {
 		}
 	}
 }
-
-
-$sSQL = "SELECT COUNT(plg_GroupKey) FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey<>''";
-$rsResults = RunQuery($sSQL);
-list($numGroupKeys) = mysql_fetch_row($rsResults);
-if (!$numGroupKeys) {
-	initGroupKeys();
-}
-
-$sSQL = $sSQL_Last;
-
-function initGroupKeys() {
-	$sSQL = "SELECT plg_FamID, plg_plgID, plg_fundID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment,
-	         plg_NonDeductible, plg_aut_ID FROM pledge_plg WHERE plg_PledgeOrPayment='Payment'";
-	$rsPledges = RunQuery($sSQL);
-
-	while ($aRow = mysql_fetch_array($rsPledges)) {
-		extract($aRow);
-
-		if ($plg_method == 'CHECK') {
-			$key = $plg_FamID . "|" . $plg_date . "|" . $plg_method . "|" . $plg_CheckNo;
-			if ($checkHash and array_key_exists($key, $checkHash)) {
-			// add/tweak fields so existing key'ed record contains information of new record
-		
-				list($e_plg_amount, $e_plg_fundID, $e_plg_comment, $e_plg_NonDeductible, $e_plg_plgID) = explode("|", $checkHash[$key]);
-
-				unset($checkHash[$key]);
-
-				$n_plg_fundID = $e_plg_fundID . "," . $plg_fundID;
-				$n_plg_comment = $e_plg_comment . "," . $plg_comment;
-				$n_amount = $e_plg_amount + $plg_amount;
-				$n_plg_NonDeductible = $e_plg_NonDeductible + $plg_NonDeductible;
-				$n_plg_plgID = $e_plg_plgID . "," . $plg_plgID;	
-
-
-				$checkHash[$key] = $n_amount . "|" . $n_plg_fundID . "|" . $n_plg_comment . "|" . $n_plg_NonDeductible . "|" . $n_plg_plgID;
-			} else {
-				$checkHash[$key] = $plg_amount . "|" . $plg_fundID . "|" . $plg_comment . "|" . $plg_NonDeductible . "|" . $plg_plgID;
-			}
-		} elseif ($plg_method == 'EGIVE') {
-			list($eyecatcher, $data) = explode(": ", $plg_comment);
-			list($frequency, $transID, $eGiveFund) = explode('/', $data);
-
-			$key = $plg_FamID . "|" . $plg_date . "|" . $plg_method . "|" . $transID;
-			if ($egiveHash and array_key_exists($key, $egiveHash)) {
-			// add/tweak fields so existing key'ed record contains information of new record
-
-				list($e_plg_amount, $e_plg_fundID, $e_plg_comment, $e_plg_NonDeductible, $e_plg_plgID) = explode("|", $egiveHash[$key]);
-
-				unset($egiveHash[$key]);
-
-				$n_plg_fundID = $e_plg_fundID . "," . $plg_fundID;
-				$n_plg_comment = $e_plg_comment . ";" . $eGiveFund;
-				$n_amount = $e_plg_amount + $plg_amount;
-				$n_plg_NonDeductible = $e_plg_NonDeductible + $plg_NonDeductible;
-				$n_plg_plgID = $e_plg_plgID . "," . $plg_plgID;	
-
-
-				$egiveHash[$key] = $n_amount . "|" . $n_plg_fundID . "|" . $n_plg_comment . "|" . $n_plg_NonDeductible . "|" . $n_plg_plgID;
-			} else {
-				$egiveHash[$key] = $plg_amount . "|" . $plg_fundID . "|" . $eGiveFund . "|" . $plg_NonDeductible . "|" . $plg_plgID;
-			}
- 		} elseif ($plg_method == 'CASH') {
-			$sGroupKey = genGroupKey("cash", $plg_FamID, $plg_fundID, $plg_date);
-			$sSQL = "UPDATE pledge_plg SET plg_GroupKey='" . $sGroupKey . "' WHERE plg_plgID=" . $plg_plgID;
-			//	var_dump($sSQL);		
-			RunQuery($sSQL);
-		} elseif ($plg_method == 'BANKDRAFT') {
-			if (!$plg_aut_ID) {
-				$plg_aut_ID = "draft";
-			}
-			$sGroupKey = genGroupKey($plg_aut_ID, $plg_FamID, $plg_fundID, $plg_date);
-			$sSQL = "UPDATE pledge_plg SET plg_GroupKey='" . $sGroupKey . "' WHERE plg_plgID=" . $plg_plgID;
-			RunQuery($sSQL);
-		} elseif ($plg_method == 'CREDITCARD') {
-			if (!$plg_aut_ID) {
-				$plg_aut_ID = "credit";
-			}
-			$sGroupKey = genGroupKey($plg_aut_ID, $plg_FamID, $plg_fundID, $plg_date);
-			$sSQL = "UPDATE pledge_plg SET plg_GroupKey='" . $sGroupKey . "' WHERE plg_plgID=" . $plg_plgID;
-			RunQuery($sSQL);
-		}
-	}
-
-	foreach ($checkHash as $key => $value) {
-		list($plg_FamID, $plg_date, $plg_method, $plg_CheckNo) = explode("|", $key);
-		list($plg_amount, $plg_fundID, $plg_comment, $plg_NonDeductible, $plg_plgID) = explode("|", $value);
-
-		$GroupKey = genGroupKey($plg_CheckNo, $plg_FamID, $plg_fundID, $plg_date);
-
-		// update plg records with groupkey
-		$plgIDs = explode(",", $plg_plgID);
-		foreach ($plgIDs as $plgID) {
-			$sSQL = "UPDATE pledge_plg SET plg_GroupKey='" . $GroupKey . "' WHERE plg_plgID=" . $plgID;
-			//	var_dump($sSQL);		
-			RunQuery($sSQL);
- 		}
-	}
-	foreach ($egiveHash as $key => $value) {
-		list($plg_FamID, $plg_date, $plg_method, $plg_CheckNo) = explode("|", $key);
-		list($plg_amount, $plg_fundID, $plg_comment, $plg_NonDeductible, $plg_plgID) = explode("|", $value);
-
- 		$GroupKey = genGroupKey($plg_CheckNo, $plg_FamID, $plg_fundID, $plg_date);
-
-		// update plg records with groupkey
-		$plgIDs = explode(",", $plg_plgID);
-		foreach ($plgIDs as $plgID) {
-			$sSQL = "UPDATE pledge_plg SET plg_GroupKey='" . $GroupKey . "' WHERE plg_plgID=" . $plgID;
-			//var_dump($sSQL);		
-			RunQuery($sSQL);
- 		}
-	}
-	// fixup egive comments to take out egive: eyecatcher, transactionid, 
-	$sSQL = "SELECT plg_plgID, plg_comment FROM pledge_plg WHERE plg_method='EGIVE' AND plg_PledgeOrPayment='Payment'";
-	$rsPledges = RunQuery($sSQL);
-
-	while ($aRow = mysql_fetch_array($rsPledges)) {
-		extract($aRow);
-		list($eyecatcher, $data) = explode(": ", $plg_comment);
-		list($frequency, $transID, $eGiveFund) = explode('/', $data);
-		$sSQL = "UPDATE pledge_plg SET plg_comment='" . $eGiveFund . "', plg_CheckNo='" . $transID . "' WHERE plg_plgID=" . $plg_plgID;
-		//var_dump($sSQL);		
-		RunQuery($sSQL);
- 	}
-}	
-
-
 ?>
