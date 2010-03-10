@@ -92,10 +92,20 @@ if (!$bSuppressSessionTests)  // This is used for the login page only.
 }
 // End of basic security checks
 
+// if magic_quotes off and array
+function addslashes_deep($value)
+{
+    $value = is_array($value) ?
+                array_map('addslashes_deep', $value) :
+                addslashes($value);
+
+    return $value;
+}
+
 // If Magic Quotes is turned off, do the same thing manually..
 if (!$_SESSION['bHasMagicQuotes'])
 {
-	foreach ($_REQUEST as $key=>$value) $value = addslashes($value);
+	foreach ($_REQUEST as $key=>$value) $value = addslashes_deep($value);
 }
 
 // Constants
