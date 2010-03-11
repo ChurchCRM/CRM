@@ -41,11 +41,14 @@ extract (mysql_fetch_array ($rsPledgeRec));
 
 $sSQL="SELECT * FROM result_res WHERE res_ID=" . $plg_aut_ResultID;
 $rsResultRec = RunQuery($sSQL);
-extract (mysql_fetch_array ($rsResultRec));
 
 require "Include/Header.php";
 
-echo $res_echotype2;
+$resArr = mysql_fetch_array ($rsResultRec);
+if ($resArr) {
+	extract ($resArr);
+	echo $res_echotype2;
+}
 
 ?>
 
