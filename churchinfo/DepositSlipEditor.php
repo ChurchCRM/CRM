@@ -143,12 +143,15 @@ if (isset($_POST["DepositSlipSubmit"])) {
 		} else {
 			$method = "BANKDRAFT";
 		}
+		$dateToday = date ("Y-m-d");
+		
 		$amount = $aut_Amount;
 		$FYID = $aut_FYID;
 		$interval = $aut_Interval;
 		$fund = $aut_Fund;
 		$authDate = $aut_NextPayDate;
-
+		$sGroupKey = genGroupKey($aut_ID, $aut_FamID, $fund, $dateToday);
+		
 		// Check for this automatic payment already loaded into this deposit slip
 		$sSQL = "SELECT plg_plgID FROM pledge_plg WHERE plg_depID=" . $dep_ID . " AND plg_aut_ID=" . $aut_ID;
 		$rsDupPayment = RunQuery ($sSQL);
@@ -156,28 +159,32 @@ if (isset($_POST["DepositSlipSubmit"])) {
 
 		if ($amount > 0.00 && $dupCnt == 0) {
 			$sSQL = "INSERT INTO pledge_plg (plg_FamID, 
-														plg_FYID, 
-														plg_date, 
-														plg_amount, 
-														plg_method, 
-														plg_DateLastEdited, 
-														plg_EditedBy, 
-														plg_PledgeOrPayment, 
-														plg_fundID, 
-														plg_depID,
-														plg_aut_ID)
-											VALUES (" .
-														$aut_FamID . "," .
-														$FYID . "," .
-														"'" . date ("Y-m-d") . "'," .
-														$amount . "," .
-														"'" . $method . "'," .
-														"'" . date ("Y-m-d") . "'," .
-														$_SESSION['iUserID'] . "," .
-														"'Payment'," .
-														$fund . "," .
-														$dep_ID . "," .
-														$aut_ID . ")";
+											plg_FYID, 
+											plg_date, 
+											plg_amount, 
+											plg_method, 
+											plg_DateLastEdited, 
+											plg_EditedBy, 
+											plg_PledgeOrPayment, 
+											plg_fundID, 
+											plg_depID,
+											plg_aut_ID,
+											plg_CheckNo,
+											plg_GroupKey)
+								VALUES (" .
+											$aut_FamID . "," .
+											$FYID . "," .
+											"'" . date ("Y-m-d") . "'," .
+											$amount . "," .
+											"'" . $method . "'," .
+											"'" . date ("Y-m-d") . "'," .
+											$_SESSION['iUserID'] . "," .
+											"'Payment'," .
+											$fund . "," .
+											$dep_ID . "," .
+											$aut_ID . "," .
+											$aut_Serial . "," .
+											$sGroupKey . ")";
 			RunQuery ($sSQL);
 		}
 	}
