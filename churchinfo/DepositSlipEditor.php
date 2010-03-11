@@ -184,7 +184,7 @@ if (isset($_POST["DepositSlipSubmit"])) {
 											$dep_ID . "," .
 											$aut_ID . "," .
 											$aut_Serial . "," .
-											$sGroupKey . ")";
+											"'" . $sGroupKey . "')";
 			RunQuery ($sSQL);
 		}
 	}
