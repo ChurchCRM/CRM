@@ -64,7 +64,7 @@ if (!$bSuppressSessionTests)  // This is used for the login page only.
     // This prevents someone from accessing via http by typing in the URL 
     if ($bHTTPSOnly)
     {
-        if(!($_SERVER['HTTPS'] == 'on'))
+        if (!isAffirmative($_SERVER['HTTPS']))
         {
             $_SESSION['bSecureServer'] = TRUE;
             Redirect('Default.php');
@@ -1987,6 +1987,14 @@ function genGroupKey($methodSpecificID, $famID, $fundIDs, $date) {
 		} else {
 			return $GroupKey;
 		}
+	}
+}
+
+function isAffirmative($arg) {
+	if (strtolower($arg) == 'on' or strtolower($arg) == 'yes' or strtolower($arg) == 'true' or $arg == '1') {
+		return 1;
+	} else {
+		return 0;
 	}
 }
 
