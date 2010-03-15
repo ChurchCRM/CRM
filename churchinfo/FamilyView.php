@@ -107,7 +107,9 @@ $rsFamilyMembers = RunQuery($sSQL);
 
 //Get the pledges for this family
 $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, 
-         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName, plg_NonDeductible
+         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName, 
+         a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName, plg_NonDeductible,
+         plg_GroupKey
 		 FROM pledge_plg 
 		 LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
 		 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
@@ -853,10 +855,10 @@ if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
 					<?php echo $plg_comment; ?>&nbsp;
 				</td>
 				<td>
-					<a href="PledgeEditor.php?PledgeID=<?php echo $plg_plgID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
+					<a href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
 				</td>
 				<td>
-					<a href="PledgeDelete.php?PledgeID=<?php echo $plg_plgID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
+					<a href="PledgeDelete.php?GroupKey=<?php echo $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
 				</td>
 				<td>
 					<?php echo $plg_DateLastEdited; ?>&nbsp;
