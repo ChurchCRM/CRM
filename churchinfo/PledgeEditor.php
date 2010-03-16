@@ -290,17 +290,14 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		// Only set PledgeOrPayment when the record is first created
 		// loop through all funds and create non-zero amount pledge records
 		foreach ($fundId2Name as $fun_id => $fun_name) {
-			if ($iSelectedFund and $iSelectedFund<>$fun_id) {
-				continue;
-			}
 			if (!$iCheckNo) { $iCheckNo = 0; }
 			unset($sSQL);
 			if ($fund2PlgIds and array_key_exists($fun_id, $fund2PlgIds)) {
 				if ($nAmount[$fun_id] > 0) {
 					$sSQL = "UPDATE pledge_plg SET plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount[$fun_id] . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment[$fun_id] . "'";
-					$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_id] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "' AND plg_famID='" . $iFamily . "' AND plg_GroupKey='" . $sGroupKey . "'";
+					$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_id] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "'";
 				} else { // delete that record
-					$sSQL = "DELETE FROM pledge_plg WHERE plg_plgID = \"" . $fund2PlgIds[$fun_id] . "\" AND plg_famID = \"" . $iFamily . "\"";
+					$sSQL = "DELETE FROM pledge_plg WHERE plg_plgID =" . $fund2PlgIds[$fun_id];
 				}
 			} elseif ($nAmount[$fun_id] > 0) {
 				if ($iMethod <> "CHECK") {
