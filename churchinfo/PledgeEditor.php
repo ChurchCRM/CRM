@@ -77,7 +77,8 @@ if (isset($_POST["PledgeSubmit"]) or
     isset($_POST["MatchFamily"]) or 
     isset($_POST["MatchEnvelope"]) or 
     isset($_POST["SetDefaultCheck"]) or
-    isset($_POST["SetFundTypeSelection"])) {
+    isset($_POST["SetFundTypeSelection"]) or
+    isset($_POST["SplitTotal"])) {
 
 	$iFamily = FilterInput($_POST["FamilyID"],'int');
 
