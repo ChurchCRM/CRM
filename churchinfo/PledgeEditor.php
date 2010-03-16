@@ -201,7 +201,7 @@ if ($PledgeOrPayment == 'Pledge') { // Don't assign the deposit slip if this is 
 
 	// Get the current deposit slip data
 	if ($iCurrentDeposit) {
-		$sSQL = "SELECT dep_Closed, dep_Date from deposit_dep WHERE dep_ID = " . $iCurrentDeposit;
+		$sSQL = "SELECT dep_Closed, dep_Date, dep_Type from deposit_dep WHERE dep_ID = " . $iCurrentDeposit;
 		$rsDeposit = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsDeposit));
 	}
