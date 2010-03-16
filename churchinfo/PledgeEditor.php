@@ -351,17 +351,17 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 
 		$routeAndAccount = $micrObj->FindRouteAndAccount ($tScanString); // use routing and account number for matching
 
-    		if ($routeAndAccount) {
+    	if ($routeAndAccount) {
 		   $sSQL = "SELECT fam_ID FROM family_fam WHERE fam_scanCheck REGEXP \"" . $routeAndAccount . "\"";
 		   $rsFam = RunQuery($sSQL);
 		   extract(mysql_fetch_array($rsFam));
 		   $iFamily = $fam_ID;
 
 		   $iCheckNo = $micrObj->FindCheckNo ($tScanString);
-      		} else {
+      	} else {
 		   $iFamily = FilterInput($_POST["FamilyID"],'int');
 		   $iCheckNo = FilterInput($_POST["CheckNo"], 'int');
-    		}
+    	}
 	} elseif (isset($_POST["MatchEnvelope"])) {
 		// Match envelope is similar to match check- use the envelope number to choose a family
 		
@@ -375,45 +375,44 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 				$iFamily = $fam_ID;
 			}
 		}
-	} elseif (!$iSelectedFund) { // We have a total amount set and fund set to split
-		if ($iOriginalSelectedFund) { // put all in the originally assigned fund if there was one
-			$nAmount[$iOriginalSelectedFund] = number_format($iTotalAmount, 2, ".", "");
-		} else { // otherwise split according to pledges
-			$sSQL = "SELECT plg_fundID, plg_amount from pledge_plg where plg_famID=\"" . $iFamily . "\" AND plg_PledgeOrPayment=\"Pledge\" AND plg_FYID=\"" . $iFYID . "\";";
-	//echo "sSQL: " . $sSQL . "\n";
-			$rsPledge = RunQuery($sSQL);
-			$totalPledgeAmount = 0;
-			while ($row = mysql_fetch_array($rsPledge)) {
-				$fundID = $row["plg_fundID"];
-				$plgAmount = $row["plg_amount"];
-				$fundID2Pledge[$fundID] = $plgAmount;
-				$totalPledgeAmount = $totalPledgeAmount + $plgAmount;
-			} // end while
-			if ($fundID2Pledge) {
-				// division rounding can cause total of calculations to not equal total.  Keep track of running total, and asssign any rounding error to 'default' fund
-				$calcTotal = 0;
-				$calcOtherFunds = 0;
-				foreach ($fundID2Pledge as $fundID => $plgAmount) {
-					$calcAmount = round($iTotalAmount * ($plgAmount / $totalPledgeAmount), 2);
-	
-					$nAmount[$fundID] = number_format($calcAmount, 2, ".", "");
-					if ($fundID <> $defaultFundID) {
-						$calcOtherFunds = $calcOtherFunds + $calcAmount;
-					}
-	
-					$calcTotal += $calcAmount;
+	} elseif (isset ($_POST["SplitTotal"])) { // split total button pressed
+		$sSQL = "SELECT plg_fundID, plg_amount from pledge_plg where plg_famID=\"" . $iFamily . "\" AND plg_PledgeOrPayment=\"Pledge\" AND plg_FYID=\"" . $iFYID . "\";";
+//echo "sSQL: " . $sSQL . "\n";
+		$rsPledge = RunQuery($sSQL);
+		$totalPledgeAmount = 0;
+		while ($row = mysql_fetch_array($rsPledge)) {
+			$fundID = $row["plg_fundID"];
+			$plgAmount = $row["plg_amount"];
+			$fundID2Pledge[$fundID] = $plgAmount;
+			$totalPledgeAmount = $totalPledgeAmount + $plgAmount;
+		} // end while
+		if ($fundID2Pledge) {
+			// division rounding can cause total of calculations to not equal total.  Keep track of running total, and asssign any rounding error to 'default' fund
+			$calcTotal = 0;
+			$calcOtherFunds = 0;
+			foreach ($fundID2Pledge as $fundID => $plgAmount) {
+				$calcAmount = round($iTotalAmount * ($plgAmount / $totalPledgeAmount), 2);
+
+				$nAmount[$fundID] = number_format($calcAmount, 2, ".", "");
+				if ($fundID <> $defaultFundID) {
+					$calcOtherFunds = $calcOtherFunds + $calcAmount;
 				}
-				if ($calcTotal <> $iTotalAmount) {
-					$nAmount[$defaultFundID] = number_format($iTotalAmount - $calcOtherFunds, 2, ".", "");
-				}
-			} else {
-				$nAmount[$defaultFundID] = number_format($iTotalAmount, 2, ".", "");
+
+				$calcTotal += $calcAmount;
 			}
+			if ($calcTotal <> $iTotalAmount) {
+				$nAmount[$defaultFundID] = number_format($iTotalAmount - $calcOtherFunds, 2, ".", "");
+			}
+		} else {
+			$nAmount[$defaultFundID] = number_format($iTotalAmount, 2, ".", "");
 		}
+	} elseif (!$iSelectedFund) { // We have a total amount set and fund set to split
+		if ($iOriginalSelectedFund) // put all in the originally assigned fund if there was one
+			$nAmount[$iOriginalSelectedFund] = number_format($iTotalAmount, 2, ".", "");
 	} else {
 		$iFamily = FilterInput($_POST["FamilyID"]);
 		$iCheckNo = FilterInput($_POST["CheckNo"], 'int');
-	} // end if bUseScannedChecks
+	}
 
 	// Handle special buttons at the bottom of the form.
 	if (isset($_POST["SetDefaultCheck"])) {
