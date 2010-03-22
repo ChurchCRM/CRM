@@ -899,6 +899,7 @@ CREATE TABLE `pledge_plg` (
   `plg_aut_Cleared` tinyint(1) NOT NULL default '0',
   `plg_aut_ResultID` mediumint(9) NOT NULL default '0',
   `plg_NonDeductible` decimal(8,2) NOT NULL,
+  `plg_GroupKey` VARCHAR( 64 ) NOT NULL,
   PRIMARY KEY  (`plg_plgID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
