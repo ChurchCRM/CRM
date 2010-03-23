@@ -120,6 +120,7 @@ if (isset($_POST["DepositSlipSubmit"])) {
 	$dDate = FilterInput($_POST["Date"]);
 	$sComment = FilterInput($_POST["Comment"]);
 	$bClosed = FilterInput($_POST["Closed"]);
+	$sDepositType = FilterInput($_POST["DepositType"]);
 	if (! $bClosed)
 		$bClosed = 0;
 
@@ -484,6 +485,8 @@ require "Include/Header.php";
 				echo "<input type=radio name=DepositType id=DepositType value=\"CreditCard\" $selectCreditCard>".gettext("Credit Card")." &nbsp; ";
 				echo "<input type=radio name=DepositType id=DepositType value=\"BankDraft\" $selectBankDraft>".gettext("Bank Draft")." &nbsp; ";
 				echo "<input type=radio name=DepositType id=DepositType value=\"eGive\" $selecteGive>".gettext("eGive")."</td></td>";
+			} else {
+				echo "<input type=hidden name=DepositType id=DepositType value=\"$sDepositType\"></td></td>";
 			}
 			?>
 			
