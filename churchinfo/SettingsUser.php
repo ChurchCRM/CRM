@@ -84,12 +84,12 @@ $rsConfigs = RunQuery($sSQL);
 
 // Table Headings
 echo "<form method=post action=SettingsUser.php>";
-echo "Set Permission True to give new users the ability to change their current value.<BR>";
+echo gettext ("Set Permission True to give new users the ability to change their current value.<BR>");
 echo "<table cellpadding=3 align=left>";
-echo "<tr><td><h3>Permission</h3></td>
+echo "<tr><td><h3>" . gettext("Permission") . "</h3></td>
     <td><h3>". gettext("Variable name") . "</h3></td>
-	<td><h3>Current Value</h3></td>
-	<td><h3>Notes</h3></td></tr>";
+	<td><h3>". gettext("Current Value"). "</h3></td>
+	<td><h3>".gettext("Notes")."</h3></td></tr>";
 
 $r = 1;
 // List Individual Settings
