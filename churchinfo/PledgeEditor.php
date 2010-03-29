@@ -618,13 +618,6 @@ require "Include/Header.php";
 		</tr>
 			<td valign="top" align="left">
 
-			<?php if ($bUseScannedChecks and ($dep_Type == 'Bank' or $PledgeOrPayment=='Pledge')) {?>
-			<tr>
-				<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Scan check");?></td>
-				<td><textarea name="ScanInput" rows="2" cols="90"><?php echo $tScanString?></textarea></td>
-			</tr>
-			<?php } ?>
-
 <?php
 			if (($dep_Type == 'CreditCard') or ($dep_Type == 'BankDraft')) {
 ?>
@@ -662,13 +655,19 @@ require "Include/Header.php";
 		</table>
 		</td>
 
-	<tr>
-		<td align="center">
-		<?php if ($dep_type == 'Bank' and $bUseScannedChecks) { ?>
-			<input type="submit" class="icButton" value="<?php echo gettext("find familiy from check account #"); ?>" name="MatchFamily">
-			<input type="submit" class="icButton" value="<?php echo gettext("Set default check account number for family"); ?>" name="SetDefaultCheck">
-        <?php } ?>
-		</td>
+		<tr>
+		<?php if ($bUseScannedChecks and ($dep_Type == 'Bank' or $PledgeOrPayment=='Pledge')) {?>
+			<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\" align=\"center\">"; else echo "class=\"PaymentLabelColumn\" align=\"center\">";echo gettext("Scan check");?>
+			<textarea name="ScanInput" rows="2" cols="70"><?php echo $tScanString?></textarea></td>
+		<?php } ?>
+
+			<td align="center">
+			<?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
+				<input type="submit" class="icButton" value="<?php echo gettext("find familiy from check account #"); ?>" name="MatchFamily">
+				<input type="submit" class="icButton" value="<?php echo gettext("Set default check account number for family"); ?>" name="SetDefaultCheck">
+	        <?php } ?>
+			</td>
+		</tr>
 	</tr>
 
 		</table>
