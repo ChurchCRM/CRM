@@ -140,8 +140,11 @@ if (isset($_POST["PledgeSubmit"]) or
 	
 	$iEnvelope = FilterInput($_POST["Envelope"], 'int');
 	$iTotalAmount = FilterInput($_POST["TotalAmount"]);
-	if ($iSelectedFund)
+	$sOneComment = FilterInput($_POST["OneComment"]);
+	if ($iSelectedFund) {
 		$nAmount[$iSelectedFund] = $iTotalAmount;
+		$sComment[$iSelectedFund] = $sOneComment;
+	}
 } else { // Form was not up previously, take data from existing records or make default values
 	if ($sGroupKey) {
 		$sSQL = "SELECT COUNT(plg_GroupKey), plg_PledgeOrPayment, plg_fundID, plg_Date, plg_FYID, plg_CheckNo, plg_Schedule, plg_method, plg_depID FROM pledge_plg WHERE plg_GroupKey='" . $sGroupKey . "' GROUP BY plg_GroupKey";
@@ -294,7 +297,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 			unset($sSQL);
 			if ($fund2PlgIds and array_key_exists($fun_id, $fund2PlgIds)) {
 				if ($nAmount[$fun_id] > 0) {
-					$sSQL = "UPDATE pledge_plg SET plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount[$fun_id] . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment[$fun_id] . "'";
+					$sSQL = "UPDATE pledge_plg SET plg_famID = '" . $iFamily . "',plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount[$fun_id] . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment[$fun_id] . "'";
 					$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_id] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "'";
 				} else { // delete that record
 					$sSQL = "DELETE FROM pledge_plg WHERE plg_plgID =" . $fund2PlgIds[$fun_id];
@@ -407,8 +410,10 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 			$nAmount[$defaultFundID] = number_format($iTotalAmount, 2, ".", "");
 		}
 	} elseif (!$iSelectedFund) { // We have a total amount set and fund set to split
-		if ($iOriginalSelectedFund) // put all in the originally assigned fund if there was one
+		if ($iOriginalSelectedFund) { // put all in the originally assigned fund if there was one
 			$nAmount[$iOriginalSelectedFund] = number_format($iTotalAmount, 2, ".", "");
+			$sComment[$iOriginalSelectedFund] = $sOneComment;
+		}
 	} else {
 		$iFamily = FilterInput($_POST["FamilyID"]);
 		$iCheckNo = FilterInput($_POST["CheckNo"], 'int');
@@ -568,6 +573,12 @@ require "Include/Header.php";
 					<?php } ?>
 				</td>
 			</tr>
+			<tr>
+			<?php if ($iSelectedFund) { ?>
+				<td valign="top" align="left" <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Comment"); ?></td>
+				<td <?php echo "class=\"TextColumnWithBottomBorder\">"; echo "<input type=\"text\" name=\"OneComment\" id=\"OneComment\" value=\" ". $sComment[$iSelectedFund] . "\""; ?>">
+			<?php }?>
+			</tr>
 		</table>
 		</td>
 		<td valign="top" align="center">
@@ -663,7 +674,7 @@ require "Include/Header.php";
 
 			<td align="center">
 			<?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
-				<input type="submit" class="icButton" value="<?php echo gettext("find familiy from check account #"); ?>" name="MatchFamily">
+				<input type="submit" class="icButton" value="<?php echo gettext("find family from check account #"); ?>" name="MatchFamily">
 				<input type="submit" class="icButton" value="<?php echo gettext("Set default check account number for family"); ?>" name="SetDefaultCheck">
 	        <?php } ?>
 			</td>
