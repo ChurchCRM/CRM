@@ -46,10 +46,10 @@ if ((!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") || !$iDepositSl
 
 // SQL Statement
 //Get the payments for this deposit slip
-$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment, fun_Name, a.fam_Name AS FamilyName, a.fam_Address1, a.fam_Address2, a.fam_City, a.fam_State, a.fam_Zip FROM pledge_plg 
+$sSQL = "SELECT plg_plgID, plg_date, SUM(plg_amount) as plg_sum, plg_CheckNo, plg_method, plg_comment, fun_Name, a.fam_Name AS FamilyName, a.fam_Address1, a.fam_Address2, a.fam_City, a.fam_State, a.fam_Zip FROM pledge_plg 
 		LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
 		LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-		WHERE plg_PledgeOrPayment = 'Payment' AND plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_date";
+		WHERE plg_PledgeOrPayment = 'Payment' AND plg_depID = " . $iDepositSlipID . " GROUP BY CONCAT('Fam',plg_FamID,'Ck',plg_CheckNo) ORDER BY pledge_plg.plg_method DESC, pledge_plg.plg_date";
 $rsPledges = RunQuery($sSQL);
 
 // Exit if no rows returned
@@ -164,13 +164,13 @@ if ($output == "pdf") {
 
 			// List all the checks and total the cash
 			if ($plg_method == 'CASH') {
-				$totalCash += $plg_amount;
+				$totalCash += $plg_sum;
 			} else if ($plg_method == 'CHECK') {
 				$numItems += 1;
-				$totalChecks += $plg_amount;
+				$totalChecks += $plg_sum;
 
 				$pdf->PrintRightJustified ($curX, $curY, $plg_CheckNo);
-				$pdf->PrintRightJustified ($curX + $amountOffsetX, $curY, $plg_amount);
+				$pdf->PrintRightJustified ($curX + $amountOffsetX, $curY, $plg_sum);
 
 				$curX += $intervalX;
 				if ($curX > $maxX) {
@@ -340,8 +340,9 @@ if ($output == "pdf") {
 		}	
 	}
 
+	header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 	if ($iPDFOutputType == 1)
-		$pdf->Output("Deposit-" . $iDepositSlipID . ".pdf", true);
+		$pdf->Output("Deposit-" . $iDepositSlipID . ".pdf", "D");
 	else
 		$pdf->Output();
 
