@@ -143,8 +143,9 @@ while ($aRow = mysql_fetch_array($rsRecords))
 	$pdf->Add_Record($OutStr, $numlines);
 }
 
+header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1)
-	$pdf->Output("EnvelopeAssingments-" . date("Ymd-Gis") . ".pdf", true);
+	$pdf->Output("EnvelopeAssingments-" . date("Ymd-Gis") . ".pdf", "D");
 else
 	$pdf->Output();	
 ?>

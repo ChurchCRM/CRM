@@ -428,7 +428,8 @@ function CanvassNotInterestedReport ($iFYID)
 		$pdf->Write (4, $str . "\n\n");
 	}
 
-	$pdf->Output("CanvassNotInterested" . date("Ymd") . ".pdf", true);
+	header('Pragma: public');  // Needed for IE when using a shared SSL certificate
+	$pdf->Output("CanvassNotInterested" . date("Ymd") . ".pdf", "D");
 }
 
 if ($sWhichReport == "Briefing") {

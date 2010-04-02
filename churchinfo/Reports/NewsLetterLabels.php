@@ -69,8 +69,9 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$pdf->Add_PDF_Label($labelText);
 }
 
+header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1)
-	$pdf->Output("NewsLetterLabels" . date("Ymd") . ".pdf", true);
+	$pdf->Output("NewsLetterLabels" . date("Ymd") . ".pdf", "D");
 else
 	$pdf->Output();	
 ?>

@@ -756,7 +756,8 @@ if ($output == "pdf") {
 	}
 	
 	$pdf->FinishPage($page);
-	$pdf->Output("DepositReport-" . date("Ymd-Gis") . ".pdf", true);
+	header('Pragma: public');  // Needed for IE when using a shared SSL certificate
+	$pdf->Output("DepositReport-" . date("Ymd-Gis") . ".pdf", "D");
 
 	
 // Output a text file

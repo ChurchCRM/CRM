@@ -226,8 +226,9 @@ if ($output == "pdf") {
 	   $curY += $pdf->incrementY;
 	}
 
+	header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 	if ($iPDFOutputType == 1) {
-		$pdf->Output("PledgeSummaryReport" . date("Ymd") . ".pdf", true);
+		$pdf->Output("PledgeSummaryReport" . date("Ymd") . ".pdf", "D");
 	} else {
 		$pdf->Output();
 	}

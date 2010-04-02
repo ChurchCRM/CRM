@@ -313,8 +313,9 @@ class PDF_Directory extends ChurchInfoReport
 		// }
 	}
 
+header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1)
-	$pdf->Output("GroupDirectory-" . date("Ymd-Gis") . ".pdf", true);
+	$pdf->Output("GroupDirectory-" . date("Ymd-Gis") . ".pdf", "D");
 else
 	$pdf->Output();
 ?>

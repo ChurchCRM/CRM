@@ -400,8 +400,9 @@ if ($output == "pdf") {
 		$pdf->FinishPage ($curY,$fam_ID,$fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 	}
 
+	header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 	if ($iPDFOutputType == 1)
-		$pdf->Output("TaxReport" . date("Ymd") . ".pdf", true);
+		$pdf->Output("TaxReport" . date("Ymd") . ".pdf", "D");
 	else
 		$pdf->Output();
 

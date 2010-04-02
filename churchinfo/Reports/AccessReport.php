@@ -151,7 +151,7 @@ while ($aRow = mysql_fetch_array($rsRecords))
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
 if ($iPDFOutputType == 1)
-	$pdf->Output('Directory-' . date("Ymd-Gis") . '.pdf', true);
+	$pdf->Output('Directory-' . date("Ymd-Gis") . '.pdf', "D");
 else
 	$pdf->Output();	
 ?>

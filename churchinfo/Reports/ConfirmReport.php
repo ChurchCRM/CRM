@@ -316,8 +316,9 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$pdf->FinishPage ($curY);
 }
 
+header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1)
-	$pdf->Output("ConfirmReport" . date("Ymd") . ".pdf", true);
+	$pdf->Output("ConfirmReport" . date("Ymd") . ".pdf", "D");
 else
 	$pdf->Output();	
 ?>

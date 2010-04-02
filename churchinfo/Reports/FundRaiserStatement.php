@@ -213,5 +213,6 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 	}
 }
 
-$pdf->Output("FundRaiserStatement" . date("Ymd") . ".pdf", true);
+header('Pragma: public');  // Needed for IE when using a shared SSL certificate
+$pdf->Output("FundRaiserStatement" . date("Ymd") . ".pdf", "D");
 ?>

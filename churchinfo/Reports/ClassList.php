@@ -168,8 +168,9 @@ for ($row = 0; $row < $numMembers; $row++)
 $pdf->SetFont("Times",'B',12);
 $pdf->WriteAt ($phoneX, $y, date("d-M-Y"));
 
+header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1)
-	$pdf->Output("ClassList" . date("Ymd") . ".pdf", true);
+	$pdf->Output("ClassList" . date("Ymd") . ".pdf", "D");
 else
 	$pdf->Output();	
 ?>

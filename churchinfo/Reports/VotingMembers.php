@@ -116,8 +116,9 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 $curY += 5;
 $pdf->WriteAt ($pdf->leftX, $curY, "Number of Voting Members: " . $votingMemberCount);
 
+header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1)
-	$pdf->Output("VotingMembers" . date("Ymd") . ".pdf", true);
+	$pdf->Output("VotingMembers" . date("Ymd") . ".pdf", "D");
 else
 	$pdf->Output();	
 ?>
