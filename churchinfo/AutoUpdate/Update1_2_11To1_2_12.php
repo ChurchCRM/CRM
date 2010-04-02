@@ -100,7 +100,11 @@ $sSQL = "UPDATE config_cfg SET cfg_value=concat(cfg_value,',32')  WHERE cfg_name
 if (!RunQuery($sSQL, FALSE))
 	break;
 
-$sSQL = "ALTER TABLE `menuconfig_mcf` CHANGE `content` `content` varchar(100) NULL";
+$sSQL = "UPDATE config_cfg SET cfg_value='Include/fpdf16'  WHERE cfg_name='sFPDF_PATH'";
+if (!RunQuery($sSQL, FALSE))
+	break;
+
+	$sSQL = "ALTER TABLE `menuconfig_mcf` CHANGE `content` `content` varchar(100) NULL";
 if (!RunQuery($sSQL, FALSE))
 	break;
 
