@@ -200,6 +200,7 @@ $sSQL = "CREATE TABLE `DonatedItem_di` (
    `di_description` varchar(2048),
    `di_sellprice` decimal(8,2) default NULL,
    `di_estprice` decimal(8,2) default NULL,
+   `di_minimum` decimal(8,2) default NULL,
    `di_materialvalue` decimal(8,2) default NULL,
    `di_EnteredBy` smallint(5) unsigned NOT NULL default '0',
    `di_EnteredDate` date NOT NULL,
