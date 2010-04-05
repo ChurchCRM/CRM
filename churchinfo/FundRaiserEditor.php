@@ -122,7 +122,7 @@ if ($iFundRaiserID > 0) {
 	$sSQL = "SELECT di_ID, di_Item, di_multibuy,
 	                a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
 	                b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
-	                di_title, di_sellprice, di_estprice, di_materialvalue
+	                di_title, di_sellprice, di_estprice, di_materialvalue, di_minimum
 	         FROM donateditem_di
 	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
 	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
@@ -153,8 +153,10 @@ require "Include/Header.php";
 		<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="FundRaiserSubmit">
 			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="FundRaiserCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 			<?php
-				if ($iFundRaiserID > 0)
-					echo "<input type=button class=icButton value=\"".gettext("Add Donated Item")."\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">";
+				if ($iFundRaiserID > 0) {
+					echo "<input type=button class=icButton value=\"".gettext("Add Donated Item")."\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+					echo "<input type=button class=icButton value=\"".gettext("Generate Catalog")."\" name=GenerateCatalog onclick=\"javascript:document.location='Reports/FRCatalog.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+				}
 			?>
 		</td>
 	</tr>
@@ -197,6 +199,7 @@ require "Include/Header.php";
 	<td><?php echo gettext("Sale Price"); ?></td>
 	<td><?php echo gettext("Est Value"); ?></td>
 	<td><?php echo gettext("Material Value"); ?></td>
+	<td><?php echo gettext("Minimum Price"); ?></td>
 	<td><?php echo gettext("Edit"); ?></td>
 	<td><?php echo gettext("Delete"); ?></td>
 </tr>
@@ -236,6 +239,9 @@ if ($rsDonatedItems != 0) {
 			</td>
 			<td align=center>
 				<?php echo $di_materialvalue ?>&nbsp;
+			</td>
+			<td align=center>
+				<?php echo $di_minimum ?>&nbsp;
 			</td>
 			<td>
 				<a href="DonatedItemEditor.php?DonatedItemID=<?php echo $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID;?>">Edit</a>
