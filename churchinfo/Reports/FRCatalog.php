@@ -73,7 +73,7 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 	extract ($oneItem);
 
 	$pdf->SetFont("Times",'B',10);
-	$pdf->Write (5, $di_item."\t");
+	$pdf->Write (5, $di_item.":\t");
 	$pdf->Write (5, $di_title."\n");
 	$pdf->SetFont("Times",'',10);
 	$pdf->Write (5, $di_description."\n");
@@ -81,7 +81,8 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 		$pdf->Write (5, gettext ("Minimum bid ")."\$".$di_minimum.".  ");
 	if ($di_estprice > 0)
 		$pdf->Write (5, gettext ("Estimated value ")."\$".$di_estprice.".  ");
-	$pdf->Write (5, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n\n");
+	if ($per_LastName!="")
+		$pdf->Write (5, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n\n");
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate

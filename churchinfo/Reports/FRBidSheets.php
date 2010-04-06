@@ -79,7 +79,8 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 	$pdf->Write (5, $di_description."\n");
 	if ($di_estprice > 0)
 		$pdf->Write (5, gettext ("Estimated value ")."\$".$di_estprice.".  ");
-	$pdf->Write (5, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n\n");
+	if ($per_LastName!="")
+		$pdf->Write (5, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n\n");
 	
 	$widName = 100;
 	$widPaddle = 30;
