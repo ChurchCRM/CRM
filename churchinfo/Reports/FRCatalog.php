@@ -42,7 +42,8 @@ class PDF_FRCatalogReport extends ChurchInfoReport {
 		$curY += 8;
 		$this->Write (8, $fr_description."\n\n");
 		$curY += 8;
-   	}
+    	$this->SetFont("Times",'',10);
+	}
 }
 
 
