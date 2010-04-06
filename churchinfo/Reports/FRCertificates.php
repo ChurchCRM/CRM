@@ -76,18 +76,18 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 	$pdf->AddPage ();
 	
 	$pdf->SetFont("Times",'B',24);
-	$pdf->Write (5, $di_item."\t");
-	$pdf->Write (5, $di_title."\n\n");
+	$pdf->Write (8, $di_item.":\t");
+	$pdf->Write (8, $di_title."\n\n");
 	$pdf->SetFont("Times",'',16);
-	$pdf->Write (5, $di_description."\n");
+	$pdf->Write (8, $di_description."\n");
 	if ($di_estprice > 0)
-		$pdf->Write (5, gettext ("Estimated value ")."\$".$di_estprice.".  ");
-	$pdf->Write (5, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n\n");
+		$pdf->Write (8, gettext ("Estimated value ")."\$".$di_estprice.".  ");
+	$pdf->Write (8, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n\n");
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1)
-	$pdf->Output("FRCatalog" . date("Ymd") . ".pdf", "D");
+	$pdf->Output("FRCertificates" . date("Ymd") . ".pdf", "D");
 else
 	$pdf->Output();	
 ?>

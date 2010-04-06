@@ -73,7 +73,7 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 	$pdf->AddPage ();
 	
 	$pdf->SetFont("Times",'B',16);
-	$pdf->Write (5, $di_item."\t");
+	$pdf->Write (5, $di_item.":\t");
 	$pdf->Write (5, $di_title."\n\n");
 	$pdf->SetFont("Times",'',10);
 	$pdf->Write (5, $di_description."\n");
@@ -105,7 +105,7 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1)
-	$pdf->Output("FRCatalog" . date("Ymd") . ".pdf", "D");
+	$pdf->Output("FRBidSheets" . date("Ymd") . ".pdf", "D");
 else
 	$pdf->Output();	
 ?>
