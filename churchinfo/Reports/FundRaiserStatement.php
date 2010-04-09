@@ -99,7 +99,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 		                b.fam_homephone as buyerPhone
 		                FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_buyer_id 
 		                                    LEFT JOIN family_fam b on a.per_fam_id = b.fam_id
-		                WHERE di_donor_id = " . $pn_per_ID;
+		                WHERE di_FR_ID = ".$iFundRaiserID." AND di_donor_id = " . $pn_per_ID;
 		$rsDonatedItems = RunQuery($sSQL);
 		
 		$pdf->SetXY($pdf->leftX,$curY);
@@ -180,7 +180,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 						LEFT JOIN donateditem_di b ON mb_item_ID=b.di_ID
 						LEFT JOIN person_per a ON b.di_donor_id=a.per_ID 
 						LEFT JOIN family_fam c ON a.per_fam_id = c.fam_ID
-						WHERE mb_per_ID=" . $pn_per_ID;
+						WHERE b.di_FR_ID=".$iFundRaiserID." AND mb_per_ID=" . $pn_per_ID;
 		$rsMultiBuy = RunQuery($sqlMultiBuy);
 		while ($mbRow = mysql_fetch_array($rsMultiBuy)) {
 			extract ($mbRow);

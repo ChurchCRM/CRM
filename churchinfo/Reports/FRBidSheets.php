@@ -35,12 +35,12 @@ class PDF_FRBidSheetsReport extends ChurchInfoReport {
 
 		parent::AddPage();
 		
-    	$this->SetFont("Times",'B',16);
-    	$this->Write (8, $fr_title."\n");
-		$curY += 8;
-		$this->Write (8, $fr_description."\n\n");
-		$curY += 8;
-    	$this->SetFont("Times",'',10);
+//    	$this->SetFont("Times",'B',16);
+//    	$this->Write (8, $fr_title."\n");
+//		$curY += 8;
+//		$this->Write (8, $fr_description."\n\n");
+//		$curY += 8;
+//   	$this->SetFont("Times",'',10);
 	}
 }
 
@@ -80,8 +80,9 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 	if ($di_estprice > 0)
 		$pdf->Write (5, gettext ("Estimated value ")."\$".$di_estprice.".  ");
 	if ($per_LastName!="")
-		$pdf->Write (5, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n\n");
-	
+		$pdf->Write (5, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n");
+	$pdf->Write (5, "\n");
+
 	$widName = 100;
 	$widPaddle = 30;
 	$widBid = 40;
@@ -97,7 +98,7 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 		$pdf->Cell ($widPaddle, $lineHeight, "", 1, 0);
 		$pdf->Cell ($widBid, $lineHeight, "\$".$di_minimum, 1, 1);
 	}
-	for ($i = 0; $i < 16; $i+=1) {
+	for ($i = 0; $i < 20; $i+=1) {
 		$pdf->Cell ($widName, $lineHeight, "", 1, 0);
 		$pdf->Cell ($widPaddle, $lineHeight, "", 1, 0);
 		$pdf->Cell ($widBid, $lineHeight,"", 1, 1);

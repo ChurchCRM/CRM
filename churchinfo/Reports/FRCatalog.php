@@ -82,7 +82,8 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 	if ($di_estprice > 0)
 		$pdf->Write (5, gettext ("Estimated value ")."\$".$di_estprice.".  ");
 	if ($per_LastName!="")
-		$pdf->Write (5, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n\n");
+		$pdf->Write (5, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n");
+	$pdf->Write (5, "\n");
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
