@@ -43,7 +43,7 @@ $sSQL = "SELECT a.per_id as donorID FROM donateditem_di
 $rsDonors = RunQuery($sSQL);
 
 $extraPaddleNum = 1;
-$sSQL = "SELECT MAX(pn_NUM) AS pn_max FROM paddlenum_pn";
+$sSQL = "SELECT MAX(pn_NUM) AS pn_max FROM paddlenum_pn WHERE pn_FR_ID = '" . $iFundRaiserID. "'";
 $rsMaxPaddle = RunQuery ($sSQL);
 if (mysql_num_rows ($rsMaxPaddle) > 0) {
 	$oneRow = mysql_fetch_array ($rsMaxPaddle);
@@ -56,7 +56,7 @@ while ($donorRow = mysql_fetch_array($rsDonors))
 {
 	extract($donorRow);
 
-	$sSQL = "SELECT pn_per_id FROM paddlenum_pn WHERE pn_per_id='$donorID'";
+	$sSQL = "SELECT pn_per_id FROM paddlenum_pn WHERE pn_per_id='$donorID' AND pn_FR_ID = '$iFundRaiserID'";
 	$rsBuyer = RunQuery($sSQL);
 	
 	if ($donorID > 0 && mysql_num_rows ($rsBuyer) == 0) {
