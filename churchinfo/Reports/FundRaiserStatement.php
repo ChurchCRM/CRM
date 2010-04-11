@@ -56,6 +56,20 @@ class PDF_FundRaiserStatement extends ChurchInfoReport {
 
 	function FinishPage ($curY,$fam_ID,$fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) {
 	}
+	
+	function CellWithWrap ($curY, $curNewY, $ItemWid, $tableCellY, $txt, $bdr, $aligncode) {
+		$curPage = $this->PageNo();
+		$leftX = $this->GetX ();
+		$this->SetXY ($leftX, $curY);
+		$this->MultiCell ($ItemWid, $tableCellY, $txt, $bdr, $aligncode);
+		$newY = $this->GetY ();
+		$newPage = $this->PageNo ();
+		$this->SetXY ($leftX+$ItemWid, $curY);
+		if ($newPage > $curPage)
+			return $newY;
+		else
+			return (max ($newY, $curNewY));
+	}
 }
 
 // Instantiate the directory class and build the report.
@@ -86,9 +100,9 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 		$QtyWid = 10;
 		$TitleWid = 50;
 		$DonorWid = 30;
-		$EmailWid = 35;
-		$PhoneWid = 20;
-		$PriceWid = 25;
+		$EmailWid = 40;
+		$PhoneWid = 24;
+		$PriceWid = 20;
 		$tableCellY = 4;
 		
 		// Get donated items and make the table
@@ -116,13 +130,15 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 		
 		while ($itemRow = mysql_fetch_array($rsDonatedItems)) {
 			extract ($itemRow);
-			$pdf->Cell ($ItemWid, $tableCellY, $di_item);
-			$pdf->Cell ($TitleWid, $tableCellY, $di_title);
-			$pdf->Cell ($DonorWid, $tableCellY, $buyerFirstName . " " . $buyerLastName);
-			$pdf->Cell ($PhoneWid, $tableCellY, $buyerPhone);
-			$pdf->Cell ($EmailWid, $tableCellY, $buyerEmail);
-			$pdf->Cell ($PriceWid, $tableCellY, $di_sellprice,0,1,"R");
-			$curY = $pdf->GetY();	
+			$nextY = $curY;
+			$pdf->SetXY($pdf->leftX,$curY);
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $TitleWid, $tableCellY, $di_title, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $DonorWid, $tableCellY, $buyerFirstName . " " . $buyerLastName, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $PhoneWid, $tableCellY, $buyerPhone, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $EmailWid, $tableCellY, $buyerEmail, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $PriceWid, $tableCellY, $di_sellprice,0,"R");
+			$curY = $nextY;	
 		}
 		
 		// Get purchased items and make the table
@@ -158,14 +174,16 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 		
 		while ($itemRow = mysql_fetch_array($rsPurchasedItems)) {
 			extract ($itemRow);
-			$pdf->Cell ($ItemWid, $tableCellY, $di_item);
-			$pdf->Cell ($QtyWid, $tableCellY, "1"); // quantity 1 for all individual items
-			$pdf->Cell ($TitleWid, $tableCellY, $di_title);
-			$pdf->Cell ($DonorWid, $tableCellY, ($donorFirstName . " " . $donorLastName));
-			$pdf->Cell ($PhoneWid, $tableCellY, $donorPhone);
-			$pdf->Cell ($EmailWid, $tableCellY, $donorEmail);
-			$pdf->Cell ($PriceWid, $tableCellY, "$".$di_sellprice,0,1,"R");
-			$curY = $pdf->GetY();
+			$nextY = $curY;
+			$pdf->SetXY($pdf->leftX,$curY);
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $QtyWid, $tableCellY, "1", 0, 'L'); // quantity 1 for all individual items
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $TitleWid, $tableCellY, $di_title, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $DonorWid, $tableCellY, ($donorFirstName . " " . $donorLastName), 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $PhoneWid, $tableCellY, $donorPhone, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $PriceWid, $tableCellY, "$".$di_sellprice,0,"R");
+			$curY = $nextY;
 			$totalAmount += $di_sellprice;
 		}
 	
@@ -184,14 +202,17 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 		$rsMultiBuy = RunQuery($sqlMultiBuy);
 		while ($mbRow = mysql_fetch_array($rsMultiBuy)) {
 			extract ($mbRow);
-			$pdf->Cell ($ItemWid, $tableCellY, $di_item);
-			$pdf->Cell ($QtyWid, $tableCellY, $mb_count);
-			$pdf->Cell ($TitleWid, $tableCellY, $di_title);
-			$pdf->Cell ($DonorWid, $tableCellY, ($donorFirstName . " " . $donorLastName));
-			$pdf->Cell ($PhoneWid, $tableCellY, $donorPhone);
-			$pdf->Cell ($EmailWid, $tableCellY, $donorEmail);
-			$pdf->Cell ($PriceWid, $tableCellY, ("$". ($mb_count * $di_sellprice)),0,1,"R");
-			$curY = $pdf->GetY();
+			$nextY = $curY;
+			$pdf->SetXY($pdf->leftX,$curY);
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $QtyWid, $tableCellY, $mb_count, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $TitleWid, $tableCellY, $di_title, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $DonorWid, $tableCellY, ($donorFirstName . " " . $donorLastName), 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $PhoneWid, $tableCellY, $donorPhone, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
+			$nextY = $pdf->CellWithWrap ($curY, $nextY, $PriceWid, $tableCellY, ("$". ($mb_count * $di_sellprice)),0, 'R');
+			$curY = $nextY;
 			$totalAmount += $mb_count * $di_sellprice;
 		}
 		
