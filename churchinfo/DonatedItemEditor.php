@@ -170,7 +170,7 @@ $sPaddleSQL = "SELECT pn_ID, pn_Num, pn_per_ID,
                       a.per_LastName AS buyerLastName
                       FROM paddlenum_pn
                       LEFT JOIN person_per a on a.per_ID=pn_per_ID
-                      WHERE pn_fr_ID=" . $iCurrentFundraiser;
+                      WHERE pn_fr_ID=" . $iCurrentFundraiser . " ORDER BY pn_Num";
 
 require "Include/Header.php";
 
