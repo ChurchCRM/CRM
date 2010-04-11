@@ -52,7 +52,10 @@ $thisFR = mysql_fetch_array($rsFR);
 extract ($thisFR);
 
 // Get all the donated items
-$sSQL = "SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=".$iCurrentFundraiser." ORDER BY di_item";
+$sSQL = "SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID ".
+        " WHERE di_FR_ID=".$iCurrentFundraiser.
+        " ORDER BY substr(di_item,1,1),cast(substr(di_item,2) as unsigned integer),substr(di_item,4)";
+
 $rsItems = RunQuery($sSQL);
 
 $pdf = new PDF_FRBidSheetsReport();
@@ -72,23 +75,23 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 
 	$pdf->AddPage ();
 	
-	$pdf->SetFont("Times",'B',16);
+	$pdf->SetFont("Times",'B',24);
 	$pdf->Write (5, $di_item.":\t");
 	$pdf->Write (5, $di_title."\n\n");
-	$pdf->SetFont("Times",'',10);
-	$pdf->Write (5, $di_description."\n");
+	$pdf->SetFont("Times",'',16);
+	$pdf->Write (8, $di_description."\n");
 	if ($di_estprice > 0)
-		$pdf->Write (5, gettext ("Estimated value ")."\$".$di_estprice.".  ");
+		$pdf->Write (8, gettext ("Estimated value ")."\$".$di_estprice.".  ");
 	if ($per_LastName!="")
-		$pdf->Write (5, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n");
-	$pdf->Write (5, "\n");
+		$pdf->Write (8, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n");
+	$pdf->Write (8, "\n");
 
 	$widName = 100;
 	$widPaddle = 30;
 	$widBid = 40;
-	$lineHeight = 8;
+	$lineHeight = 7;
 	
-	$pdf->SetFont("Times",'B',14);
+	$pdf->SetFont("Times",'B',16);
 	$pdf->Cell ($widName, $lineHeight, gettext ("Name"), 1, 0);
 	$pdf->Cell ($widPaddle, $lineHeight, gettext ("Paddle"), 1, 0);
 	$pdf->Cell ($widBid, $lineHeight, gettext ("Bid"), 1, 1);

@@ -42,7 +42,7 @@ class PDF_FRCatalogReport extends ChurchInfoReport {
 		$curY += 8;
 		$this->Write (8, $fr_description."\n\n");
 		$curY += 8;
-    	$this->SetFont("Times",'',10);
+    	$this->SetFont("Times",'',12);
 	}
 }
 
@@ -54,7 +54,8 @@ $thisFR = mysql_fetch_array($rsFR);
 extract ($thisFR);
 
 // Get all the donated items
-$sSQL = "SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=".$iCurrentFundraiser." ORDER BY di_item";
+$sSQL = "SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=".$iCurrentFundraiser.
+" ORDER BY substr(di_item,1,1),cast(substr(di_item,2) as unsigned integer),substr(di_item,4)";
 $rsItems = RunQuery($sSQL);
 
 $pdf = new PDF_FRCatalogReport();
@@ -69,21 +70,28 @@ if ($rsConfig) {
 }
 
 // Loop through items
+$idFirstChar = '';
+
 while ($oneItem = mysql_fetch_array($rsItems)) {
 	extract ($oneItem);
 
-	$pdf->SetFont("Times",'B',10);
-	$pdf->Write (5, $di_item.":\t");
-	$pdf->Write (5, $di_title."\n");
-	$pdf->SetFont("Times",'',10);
-	$pdf->Write (5, $di_description."\n");
+	$newIdFirstChar = substr($di_item,0,1);
+	if ($pdf->GetY() > 220 || ($idFirstChar <> '' && $idFirstChar <> $newIdFirstChar))
+	  $pdf->AddPage ();
+	$idFirstChar = $newIdFirstChar;
+
+	$pdf->SetFont("Times",'B',12);
+	$pdf->Write (6, $di_item.": ");
+	$pdf->Write (6, $di_title."\n");
+	$pdf->SetFont("Times",'',12);
+	$pdf->Write (6, $di_description."\n");
 	if ($di_minimum > 0)
-		$pdf->Write (5, gettext ("Minimum bid ")."\$".$di_minimum.".  ");
+		$pdf->Write (6, gettext ("Minimum bid ")."\$".$di_minimum.".  ");
 	if ($di_estprice > 0)
-		$pdf->Write (5, gettext ("Estimated value ")."\$".$di_estprice.".  ");
+		$pdf->Write (6, gettext ("Estimated value ")."\$".$di_estprice.".  ");
 	if ($per_LastName!="")
-		$pdf->Write (5, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n");
-	$pdf->Write (5, "\n");
+		$pdf->Write (6, gettext ("Donated by ") . $per_FirstName . " " .$per_LastName.".\n");
+	$pdf->Write (6, "\n");
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate

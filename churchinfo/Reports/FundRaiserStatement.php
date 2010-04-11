@@ -141,7 +141,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 		                b.fam_homePhone as donorPhone
 		                FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_donor_id
 		                                    LEFT JOIN family_fam b on a.per_fam_id=b.fam_id
-		                WHERE di_buyer_id = " . $pn_per_ID;
+		                WHERE di_FR_ID = ".$iFundRaiserID." AND di_buyer_id = " . $pn_per_ID;
 		$rsPurchasedItems = RunQuery($sSQL);
 	
 		$pdf->SetXY($pdf->leftX,$curY);
