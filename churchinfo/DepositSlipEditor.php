@@ -36,6 +36,7 @@ if ($iDepositSlipID) {
 	extract(mysql_fetch_array($rsDeposit));
 	// Set current deposit slip
 	$_SESSION['iCurrentDeposit'] = $iDepositSlipID;
+	$_SESSION['idefaultPaymentMethod'] = $dep_method;
 }
 
 //Set the page title
