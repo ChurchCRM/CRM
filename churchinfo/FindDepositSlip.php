@@ -208,7 +208,13 @@ if ($_SESSION['SearchLimit'] == "25")
 	$sLimit25 = "selected";
 if ($_SESSION['SearchLimit'] == "50")
 	$sLimit50 = "selected";
-			
+if ($_SESSION['SearchLimit'] == "100")
+	$sLimit100 = "selected";
+if ($_SESSION['SearchLimit'] == "200")
+	$sLimit200 = "selected";
+if ($_SESSION['SearchLimit'] == "500")
+	$sLimit500 = "selected";
+	
 echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;". gettext("Display:") . "&nbsp;
 	<select class=\"SmallText\" name=\"Number\">
 		<option value=\"5\" $sLimit5>5</option>
@@ -216,6 +222,9 @@ echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;". gettext("Display:") . "&nbsp;
 		<option value=\"20\" $sLimit20>20</option>
 		<option value=\"25\" $sLimit25>25</option>
 		<option value=\"50\" $sLimit50>50</option>
+		<option value=\"100\" $sLimit100>100</option>
+		<option value=\"200\" $sLimit200>200</option>
+		<option value=\"500\" $sLimit500>500</option>
 	</select>&nbsp;
 	<input type=\"submit\" class=\"icTinyButton\" value=\"". gettext("Go") ."\">
 	</form></div><br>";
