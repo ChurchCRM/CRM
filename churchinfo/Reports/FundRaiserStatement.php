@@ -205,7 +205,6 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 			$nextY = $curY;
 			$pdf->SetXY($pdf->leftX,$curY);
 			$nextY = $pdf->CellWithWrap ($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
-			$nextY = $pdf->CellWithWrap ($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
 			$nextY = $pdf->CellWithWrap ($curY, $nextY, $QtyWid, $tableCellY, $mb_count, 0, 'L');
 			$nextY = $pdf->CellWithWrap ($curY, $nextY, $TitleWid, $tableCellY, $di_title, 0, 'L');
 			$nextY = $pdf->CellWithWrap ($curY, $nextY, $DonorWid, $tableCellY, ($donorFirstName . " " . $donorLastName), 0, 'L');
