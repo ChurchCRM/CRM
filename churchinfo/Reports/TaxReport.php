@@ -43,7 +43,7 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
 
 // Build SQL Query
 // Build SELECT SQL Portion
-$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, plg_date, plg_amount, plg_method, plg_comment, plg_CheckNo, fun_Name, plg_PledgeOrPayment, plg_NonDeductible FROM family_fam
+$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_envelope, plg_date, plg_amount, plg_method, plg_comment, plg_CheckNo, fun_Name, plg_PledgeOrPayment, plg_NonDeductible FROM family_fam
 	INNER JOIN pledge_plg ON fam_ID=plg_FamID
 	LEFT JOIN donationfund_fun ON plg_fundID=fun_ID
 	WHERE plg_PledgeOrPayment='Payment' ";
@@ -106,7 +106,7 @@ if (!empty($_POST["family"])) {
 }
 
 // Get Criteria string
-eregi("WHERE (plg_PledgeOrPayment.*)", $sSQL, $aSQLCriteria);
+preg_match  ("/WHERE (plg_PledgeOrPayment.*)/i", $sSQL, $aSQLCriteria);
 
 // Add SQL ORDER
 $sSQL .= " ORDER BY plg_FamID, plg_date ";
@@ -145,9 +145,13 @@ if ($output == "pdf") {
 			$this->SetAutoPageBreak(false);
 		}
 
-		function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear) {
-			global $letterhead, $sDateStart, $sDateEnd, $iDepID, $iFYID;
+		function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear, $fam_envelope) {
+			global $letterhead, $sDateStart, $sDateEnd, $iDepID, $iFYID,$bUseDonationEnvelopes;
 			$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear, $letterhead);
+			if ($bUseDonationEnvelopes) {
+				$this->WriteAt ($this->leftX, $curY, gettext ("Envelope:").$fam_envelope);
+				$curY += $this->incrementY;
+			}
 			$curY += 2 * $this->incrementY;
 			if ($iFYID > 0)
 				$DateString = gettext("Fiscal Year ") . ($iFYID + 1995) . ".";
@@ -295,7 +299,7 @@ if ($output == "pdf") {
 
 		// Start Page for New Family
 		if ($fam_ID != $currentFamilyID) {
-			$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
+			$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear, $fam_envelope);
 			$summaryDateX = $pdf->leftX;
 			$summaryCheckNoX = 40;
 			$summaryMethodX = 60;
