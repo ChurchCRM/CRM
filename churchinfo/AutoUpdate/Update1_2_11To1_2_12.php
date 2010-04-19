@@ -292,6 +292,16 @@ if ($ver_version == $sVersion) {
 			break;
 		}
 	}
+	$sSQL = 'DROP TABLE IF EXISTS `PaddleNum_pn`';
+	RunQuery($sSQL, FALSE);
+	$sSQL = 'DROP TABLE IF EXISTS `Fundraiser_fr`';
+	RunQuery($sSQL, FALSE);
+	$sSQL = 'DROP TABLE IF EXISTS `DonatedItem_di`';
+	RunQuery($sSQL, FALSE);
+	$sSQL = 'DROP TABLE IF EXISTS `Multibuy_mb`';
+	RunQuery($sSQL, FALSE);
+	$sSQL = 'DROP TABLE IF EXISTS `egive_egv`';
+	RunQuery($sSQL, FALSE);
 }
 
 $sSQL = $sSQL_Last;
