@@ -293,4 +293,7 @@ if ($ver_version == $sVersion) {
 		}
 	}
 }
+
+$sSQL = $sSQL_Last;
+
 ?>
