@@ -157,11 +157,15 @@ $sSQL = "INSERT IGNORE INTO `queryparameteroptions_qpo` (`qpo_ID`, `qpo_qrp_ID`,
 if (!RunQuery($sSQL, FALSE))
 	break;
 	
-$sSQL = "ALTER TABLE `volunteeropportunity_vol` CHANGE `vol_ID` `vol_ID` INT( 3 ) PRIMARY KEY NOT NULL AUTO_INCREMENT;";
+$sSQL = "ALTER TABLE `volunteeropportunity_vol` DROP PRIMARY KEY;";
 if (!RunQuery($sSQL, FALSE))
 	break;
 
-$sSQL = "ALTER TABLE `volunteeropportunity_vol` ADD COLUMN `vol_Order` int(3) NOT NULL default '0' AFTER `vol_ID`;";
+$sSQL = "ALTER TABLE `volunteeropportunity_vol` CHANGE `vol_ID` `vol_ID` INT(3) PRIMARY KEY NOT NULL AUTO_INCREMENT;";
+if (!RunQuery($sSQL, FALSE))
+	break;
+
+$sSQL = "ALTER TABLE `volunteeropportunity_vol` ADD COLUMN `vol_Order` INT(3) NOT NULL default '0' AFTER `vol_ID`;";
 if (!RunQuery($sSQL, FALSE))
 	break;
 
