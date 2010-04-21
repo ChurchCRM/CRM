@@ -39,6 +39,14 @@ if (!$bSuppressSessionTests)  // This is used for the login page only.
 		exit;
 	}
 
+	// Basic security: If $sRootPath has changed we have changed databases without logging in 
+	// redirect to the login page 
+	if ($_SESSION['sRootPath'] !== $sRootPath )
+	{
+		Redirect("Default.php");
+		exit;
+	}
+
 	// Check for login timeout.  If login has expired, redirect to login page
 	if ($sSessionTimeout > 0)
 	{
