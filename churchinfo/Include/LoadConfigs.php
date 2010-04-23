@@ -34,7 +34,7 @@ $cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD)
 mysql_select_db($sDATABASE) 
         or die ('Cannot select the MySQL database because: ' . mysql_error());
 
-$sql = "SHOW TABLES FROM $sDATABASE";
+$sql = "SHOW TABLES FROM `$sDATABASE`";
 $tablecheck = mysql_num_rows( mysql_query($sql) );
 
 if (!$tablecheck) {
@@ -54,14 +54,14 @@ session_start();
 $version = mysql_fetch_row(mysql_query("SELECT version()"));
 
 if (substr($version[0],0,3) >= "4.1") {
-	mysql_query("SET NAMES 'utf8'");
+    mysql_query("SET NAMES 'utf8'");
 }
 
 // Read values from config table into local variables
 // **************************************************
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
       . "FROM config_cfg WHERE cfg_section='General'";
-$rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
+$rsConfig = mysql_query($sSQL);         // Can't use RunQuery -- not defined yet
 if ($rsConfig) {
     while (list($cfg_name, $value) = mysql_fetch_row($rsConfig)) {
         $$cfg_name = $value;
@@ -77,8 +77,8 @@ if (isset($_SESSION['iUserID'])) {      // Not set on Default.php
     if ($rsConfig) {
         while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
             $$ucfg_name = $value;
-				$_SESSION[$ucfg_name] = $value;
-//				echo "<br>".$ucfg_name." ".$_SESSION[$ucfg_name];
+                $_SESSION[$ucfg_name] = $value;
+//              echo "<br>".$ucfg_name." ".$_SESSION[$ucfg_name];
         }
     }
 }
@@ -94,10 +94,10 @@ if (!function_exists("stripos")) {
 }
 
 if (!(stripos(php_uname('s'), "windows") === false)) {
-//	$sLanguage = $lang_map_windows[strtolower($sLanguage)];
-	$sLang_Code = $lang_map_windows[strtolower($sLanguage)];
+//  $sLanguage = $lang_map_windows[strtolower($sLanguage)];
+    $sLang_Code = $lang_map_windows[strtolower($sLanguage)];
 } else {
-	$sLang_Code = $sLanguage;
+    $sLang_Code = $sLanguage;
 }
 putenv("LANG=$sLang_Code");
 setlocale(LC_ALL, $sLang_Code);
