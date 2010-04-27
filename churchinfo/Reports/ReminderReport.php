@@ -37,8 +37,45 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
 	exit;
 }
 
+if (!empty($_POST["classList"])) {
+    $classList = $_POST["classList"];
+
+	if ($classList[0]) {
+		$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
+		$rsClassifications = RunQuery($sSQL);
+
+		$inClassList = "(";
+		$notInClassList = "(";
+
+		while ($aRow = mysql_fetch_array($rsClassifications)) {
+			extract($aRow);
+			if (in_array($lst_OptionID, $classList)) {
+				if ($inClassList == "(") {
+					$inClassList .= $lst_OptionID;
+				} else {
+					$inClassList .= "," . $lst_OptionID;
+				}
+			} else {
+				if ($notInClassList == "(") {
+					$notInClassList .= $lst_OptionID;
+				} else {
+					$notInClassList .= "," . $lst_OptionID;
+				}
+			}
+		}
+		$inClassList .= ")";
+		$notInClassList .= ")";
+	}
+}
+
+
 // Get all the families
-$sSQL = "SELECT * FROM family_fam WHERE 1";
+$sSQL = "SELECT * FROM family_fam";
+
+if ($classList[0]) {
+	$sSQL .= " LEFT JOIN person_per ON fam_ID=per_fam_ID";
+}
+$sSQL .= " WHERE";
 
 // Filter by Family
 if (!empty($_POST["family"])) {
@@ -47,16 +84,43 @@ if (!empty($_POST["family"])) {
 		$fam[$count++] = FilterInput($famID,'int');
 	}
 	if ($count == 1) {
-		if ($fam[0])
-			$sSQL .= " AND fam_ID='$fam[0]' ";
-	} else {
-		$sSQL .= " AND (fam_ID='$fam[0]'";
-		for($i = 1; $i < $count; $i++) {
-			$sSQL .= " OR fam_ID='$fam[$i]'";
+		if ($fam[0]) {
+			$q = " fam_ID='$fam[0]'";
+			if ($criteria) {
+				$criteria .= " AND" . $q;
+			} else {
+				$criteria = $q;
+			}
 		}
-		$sSQL .= ") ";
+	} else {
+		$q = " (fam_ID='$fam[0]'";
+		if ($criteria) {
+			$criteria .= " AND" . $q;
+		} else {
+			$criteria = $q;
+		}
+		for ($i = 1; $i < $count; $i++) {
+			$criteria .= " OR fam_ID='$fam[$i]'";
+		}
+		$criteria .= ")";
 	}
 }
+
+if ($classList[0]) {
+	$q = " per_cls_ID IN " . $inClassList . " AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN " . $notInClassList . ")";
+	if ($criteria) {
+		$criteria .= " AND" . $q;
+	} else {
+		$criteria = $q;
+	}	
+}
+
+if (!$criteria) {
+	$criteria = " 1";
+}
+$sSQL .= $criteria;
+
+//var_dump($sSQL);
 $rsFamilies = RunQuery($sSQL);
 
 // Build criteria string for funds
@@ -373,9 +437,8 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$pdf->FinishPage ($curY);
 }
 
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
-	$pdf->Output("ReminderReport" . date("Ymd") . ".pdf", "D");
+	$pdf->Output("ReminderReport" . date("Ymd") . ".pdf", true);
 } else {
 	$pdf->Output();
 }
