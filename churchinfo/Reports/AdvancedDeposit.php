@@ -32,6 +32,41 @@ $sDateStart = FilterInput($_POST["DateStart"],"date");
 $sDateEnd = FilterInput($_POST["DateEnd"],"date");
 $iDepID = FilterInput($_POST["deposit"],"int");
 
+if (!empty($_POST["classList"])) {
+    $classList = $_POST["classList"];
+
+	if ($classList[0]) {
+		$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
+		$rsClassifications = RunQuery($sSQL);
+
+		$inClassList = "(";
+		$notInClassList = "(";
+
+		while ($aRow = mysql_fetch_array($rsClassifications)) {
+			extract($aRow);
+			if (in_array($lst_OptionID, $classList)) {
+				if ($inClassList == "(") {
+					$inClassList .= $lst_OptionID;
+				} else {
+					$inClassList .= "," . $lst_OptionID;
+				}
+			} else {
+				if ($notInClassList == "(") {
+					$notInClassList .= $lst_OptionID;
+				} else {
+					$notInClassList .= "," . $lst_OptionID;
+				}
+			}
+		}
+		$inClassList .= ")";
+		$notInClassList .= ")";
+	}
+}
+
+if (!empty($_POST["family"])) {
+	$familyList = $_POST["family"];
+}
+
 if (!$sort)
 	$sort = "deposit";
 if (!$detail_level)
@@ -47,11 +82,16 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
 
 // Build SQL Query
 // Build SELECT SQL Portion
-$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, plg_date, plg_amount, plg_method, plg_comment, plg_depID, plg_CheckNo, fun_ID, fun_Name, dep_Date FROM pledge_plg
-	LEFT JOIN family_fam ON plg_FamID=fam_ID
-	INNER JOIN deposit_dep ON plg_depID = dep_ID
-	LEFT JOIN donationfund_fun ON plg_fundID=fun_ID
-	WHERE plg_PledgeOrPayment='Payment' ";
+
+$sSQL = "SELECT DISTINCT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, plg_date, plg_amount, plg_method, plg_comment, plg_depID, plg_CheckNo, fun_ID, fun_Name, dep_Date FROM pledge_plg";
+$sSQL .= " LEFT JOIN family_fam ON plg_FamID=fam_ID";
+$sSQL .= " INNER JOIN deposit_dep ON plg_depID = dep_ID";
+$sSQL .= " LEFT JOIN donationfund_fun ON plg_fundID=fun_ID";
+
+if ($classList[0]) {
+	$sSQL .= " LEFT JOIN person_per ON fam_ID=per_fam_ID";
+}
+$sSQL .= " WHERE plg_PledgeOrPayment='Payment'";
 
 // Add  SQL criteria
 // Report Dates OR Deposit ID
@@ -97,21 +137,26 @@ if (!empty($_POST["funds"])) {
 }
 
 // Filter by Family
-if (!empty($_POST["family"])) {
+if ($familyList) {
 	$count = 0;
-	foreach ($_POST["family"] as $famID) {
+	foreach ($familyList as $famID) {
 		$fam[$count++] = FilterInput($famID,'int');
 	}
 	if ($count == 1) {
-		if ($fam[0])
+		if ($fam[0]) {
 			$sSQL .= " AND plg_FamID='$fam[0]' ";
+		}
 	} else {
 		$sSQL .= " AND (plg_FamID='$fam[0]'";
 		for($i = 1; $i < $count; $i++) {
 			$sSQL .= " OR plg_FamID='$fam[$i]'";
 		}
-		$sSQL .= ") ";
+		$sSQL .= " ) ";
 	}
+}
+
+if ($classList[0]) {
+	$sSQL .= " AND per_cls_ID IN " . $inClassList . " AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN " . $notInClassList . ")"; 
 }
 
 // Filter by Payment Method
@@ -139,6 +184,8 @@ elseif ($sort == "fund")
 	$sSQL .= " ORDER BY fun_Name, fam_Name, fam_ID, plg_depID ";
 elseif ($sort == "family")
 	$sSQL .= " ORDER BY fam_Name, fam_ID, fun_Name, plg_depID";
+
+//var_dump($sSQL);
 
 //Execute SQL Statement
 $rsReport = RunQuery($sSQL);
@@ -756,8 +803,7 @@ if ($output == "pdf") {
 	}
 	
 	$pdf->FinishPage($page);
-	header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-	$pdf->Output("DepositReport-" . date("Ymd-Gis") . ".pdf", "D");
+	$pdf->Output("DepositReport-" . date("Ymd-Gis") . ".pdf", true);
 
 	
 // Output a text file
