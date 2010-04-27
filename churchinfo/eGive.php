@@ -11,18 +11,6 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if( !function_exists(json_decode) ) {
-   require_once 'Include/JSON/JSON.php';
-   function json_decode($data, $bool) {
-       if ($bool) {
-           $json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
-       } else {
-           $json = new Services_JSON();
-       }
-       return( $json->decode($data) );
-   }
-}
-
 if (!function_exists(json_last_error)) {
 	define("JSON_ERROR_NONE", 0);
 	define("JSON_ERROR_DEPTH", 1);
@@ -75,6 +63,18 @@ while ($aRow = mysql_fetch_array($egiveIDs)) {
 	extract($aRow);
 	if (in_array($egv_famID, $famIDs)) { // make sure the family still exists
 		$egiveID2FamID[$egv_egiveID] = $egv_famID;
+	}
+}
+
+// get array of all existing donation/fund ids to names so we don't have to keep querying the DB
+$sSQL = "SELECT fun_ID, fun_Name, fun_Description from donationfund_fun";
+$fundData = RunQuery($sSQL);
+while ($aRow = mysql_fetch_array($fundData)) {
+	extract($aRow);
+	$fundID2Name[$fun_ID] = $fun_Name;
+	$fundID2Desc[$fun_ID] = $fun_Description;
+	if (!$defaultFundId) {
+		$defaultFundId = $fun_ID;
 	}
 }
 
@@ -168,8 +168,8 @@ if (isset($_POST["ApiGet"])) {
 					$am = $breakout[0];
 					if ($am) {
 						$eGiveFundName = $breakout[1];
-
 						$fundId = getFundId($eGiveFundName);
+
 						if ($eGiveFund[$fundId]) {
 							$eGiveFund[$fundId] .= "," . $eGiveFundName;
 						} else {
@@ -203,18 +203,20 @@ if (isset($_POST["ApiGet"])) {
 					}
 				}
 
-				ksort($amount, SORT_NUMERIC);
-				$fundIds = implode(",", array_keys($amount));
-				$groupKey = genGroupKey($transId, $famID, $fundIds, $date);
+				if ($amount) { // eGive records can be 'zero' for two reasons:  a) intentional zero to suspend giving, or b) rejected bank transfer
+					ksort($amount, SORT_NUMERIC);
+					$fundIds = implode(",", array_keys($amount));
+					$groupKey = genGroupKey($transId, $famID, $fundIds, $date);
 
-				foreach($amount as $fundId => $am) {
-					$comment = $eGiveFund[$fundId];
-					if ($famID) {
-						updateDB($famID, $transId, $date, $name, $am, $fundId, $comment, $frequency, $groupKey);
-					} else {
-						$missingValue = $transId . "|" . $date . "|" . $egiveID . "|" . $name . "|" . $am . "|" . $fundId . "|" . $comment . "|" . $frequency . "|" . $groupKey;
- 						$giftDataMissingEgiveID[] = $missingValue; 
-						++$importError;
+					foreach($amount as $fundId => $am) {
+						$comment = $eGiveFund[$fundId];
+						if ($famID) {
+							updateDB($famID, $transId, $date, $name, $am, $fundId, $comment, $frequency, $groupKey);
+						} else {
+							$missingValue = $transId . "|" . $date . "|" . $egiveID . "|" . $name . "|" . $am . "|" . $fundId . "|" . $comment . "|" . $frequency . "|" . $groupKey;
+	 						$giftDataMissingEgiveID[] = $missingValue; 
+							++$importError;
+						}
 					}
 				}
 			}
@@ -308,15 +310,26 @@ function updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $f
 	}
 }
 
-function getFundId($fundName) {
-	global $eGiveBreakoutNames2FundIds;
+function getFundId($eGiveFundName) {
+	global $fundID2Name;
+	global $fundID2Desc;
 	global $defaultFundId;
 
-	foreach ($eGiveBreakoutNames2FundIds as $matchKey => $fundId) {
-		if (preg_match("%$matchKey%i", $fundName)) {
-			return $fundId;
+	foreach ($fundID2Name as $fun_ID => $fun_Name) {
+		if (preg_match("%$fun_Name%i", $eGiveFundName)) {
+			return $fun_ID;
 		}
-	}		
+	}
+
+	foreach ($fundID2Desc as $fun_ID => $fun_Desc) {
+		$descWords = explode(' ', $fun_Desc);
+		foreach ($descWords as $desc) {
+			if (preg_match("%$desc%i", $eGiveFundName)) {
+				return $fun_ID;
+			}
+		}
+	}
+
 	return $defaultFundId;
 }
 
