@@ -24,6 +24,38 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 	exit;
 }
 
+if (!empty($_POST["classList"])) {
+    $classList = $_POST["classList"];
+
+	if ($classList[0]) {
+		$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
+		$rsClassifications = RunQuery($sSQL);
+
+		$inClassList = "(";
+		$notInClassList = "(";
+
+		while ($aRow = mysql_fetch_array($rsClassifications)) {
+			extract($aRow);
+			if (in_array($lst_OptionID, $classList)) {
+				if ($inClassList == "(") {
+					$inClassList .= $lst_OptionID;
+				} else {
+					$inClassList .= "," . $lst_OptionID;
+				}
+			} else {
+				if ($notInClassList == "(") {
+					$notInClassList .= $lst_OptionID;
+				} else {
+					$notInClassList .= "," . $lst_OptionID;
+				}
+			}
+		}
+		$inClassList .= ")";
+		$notInClassList .= ")";
+	}
+}
+
+
 //Get the Fiscal Year ID out of the querystring
 $iFYID = FilterInput($_POST["FYID"],'int');
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
@@ -38,7 +70,26 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
 }
 
 // Get all the families
-$sSQL = "SELECT * FROM family_fam WHERE 1 ORDER BY fam_Name";
+$sSQL = "SELECT * FROM family_fam";
+
+if ($classList[0]) {
+	$sSQL .= " LEFT JOIN person_per ON fam_ID=per_fam_ID";
+}
+$sSQL .= " WHERE";
+
+if ($classList[0]) {
+	$q = " per_cls_ID IN " . $inClassList . " AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN " . $notInClassList . ")";
+	if ($criteria) {
+		$criteria .= " AND" . $q;
+	} else {
+		$criteria = $q;
+	}	
+}
+
+if (!$criteria) {
+	$criteria = " 1";
+}
+$sSQL .= $criteria . " ORDER BY fam_Name";
 
 // Filter by Family
 if (!empty($_POST["family"])) {
@@ -270,6 +321,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		}
 	}
 }
+
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
