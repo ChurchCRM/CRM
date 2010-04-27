@@ -49,6 +49,7 @@ if (!$sReportType) {
 	echo "<option value='Pledge Reminders'>" . gettext("Pledge Reminders") ."</option>";
 	echo "<option value='Voting Members'>" . gettext("Voting Members") ."</option>";
 	echo "<option value='Giving Report'>" . gettext("Giving Report (Tax Statements)") ."</option>";
+	echo "<option value='Zero Givers'>" . gettext("Zero Givers") ."</option>";
 	echo "<option value='Individual Deposit Report'>" . gettext("Individual Deposit Report") ."</option>";
 	echo "<option value='Advanced Deposit Report'>" . gettext("Advanced Deposit Report") ."</option>";
 	echo "</select>";
@@ -69,6 +70,9 @@ if (!$sReportType) {
 	switch($sReportType) {
 	    case "Giving Report":
 			$action = "Reports/TaxReport.php";
+		break;
+	    case "Zero Givers":
+			$action = "Reports/ZeroGivers.php";
 		break;
 	    case "Pledge Summary":
 			$action = "Reports/PledgeSummary.php";
@@ -94,8 +98,33 @@ if (!$sReportType) {
 	echo "<table cellpadding=3 align=left>";
 	echo "<tr><td><h3>". gettext("Filters") . "</h3></td></tr>";
 	
-	// Filter by Families
+	// Filter by Classification and Families
 	if ($sReportType == "Giving Report" || $sReportType == "Pledge Reminders" || $sReportType == "Pledge Family Summary" || $sReportType == "Advanced Deposit Report") {
+	
+		//Get Classifications for the drop-down
+		$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
+		$rsClassifications = RunQuery($sSQL);
+		?>
+		<tr>
+				<td class="LabelColumn" <?php addToolTip("Select the appropriate classification. These can be set using the classification manager in admin."); ?>><?php echo gettext("Classification:")."<br></td>";
+				echo "<td class=TextColumnWithBottomBorder><div class=SmallText>"
+					.gettext("Use Ctrl Key to select multiple")
+					."</div><select name=classList[] size=6 multiple>";
+					echo "<option value=0 selected>".gettext("All Classifications");
+					echo "<option value=0>----------";
+					while ($aRow = mysql_fetch_array($rsClassifications)) {
+						extract($aRow);
+						echo "<option value=\"" . $lst_OptionID . "\"";
+						if ($classList and array_key_exists($lst_OptionName, $classList)) {
+							echo " selected"; }
+						echo ">" . $lst_OptionName . "&nbsp;";
+					}
+					?>
+					</select>
+				</td>
+		</tr>
+		<?php
+
 		$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
 		$rsFamilies = RunQuery($sSQL);
 		echo "<tr><td class=LabelColumn>".gettext("Filter by Family:")."<br></td>";
@@ -137,15 +166,17 @@ if (!$sReportType) {
 	}
 	
 	// Starting and Ending Dates for Report
-	if ($sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report") {
+	if ($sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report" || $sReportType == "Zero Givers") {
 		$today = date("Y-m-d");
 		echo "<tr><td class=LabelColumn>".gettext("Report Start Date:")."</td>
 			<td class=TextColumn><input type=text name=DateStart maxlength=10 id=DateStart size=11 value='$today'>&nbsp;<input type=image onclick=\"return showCalendar('DateStart', 'y-mm-dd');\" src=Images/calendar.gif> <span class=SmallText>".gettext("[YYYY-MM-DD]")."</span></td></tr>";
 		echo "<tr><td class=LabelColumn>".gettext("Report End Date:")."</td>
 			<td class=TextColumn><input type=text name=DateEnd maxlength=10 id=DateEnd size=11 value='$today'>&nbsp;<input type=image onclick=\"return showCalendar('DateEnd', 'y-mm-dd');\" src=Images/calendar.gif> <span class=SmallText>".gettext("[YYYY-MM-DD]")."</span></td></tr>";
-		echo "<tr><td class=LabelColumn>".gettext("Apply Report Dates To:")."</td>";
-		echo "<td class=TextColumnWithBottomBorder><input name=datetype type=radio checked value='Deposit'>".gettext("Deposit Date (Default)");
-		echo " &nbsp; <input name=datetype type=radio value='Payment'>".gettext("Payment Date")."</tr>";
+		if ($sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report") {
+			echo "<tr><td class=LabelColumn>".gettext("Apply Report Dates To:")."</td>";
+			echo "<td class=TextColumnWithBottomBorder><input name=datetype type=radio checked value='Deposit'>".gettext("Deposit Date (Default)");
+			echo " &nbsp; <input name=datetype type=radio value='Payment'>".gettext("Payment Date")."</tr>";
+		}
 	}	
 	
 	// Fiscal Year
@@ -262,7 +293,7 @@ if (!$sReportType) {
 	}
 	
 	if ((($_SESSION['bAdmin'] && $bCSVAdminOnly) || !$bCSVAdminOnly) 
-		&& ($sReportType == "Pledge Summary" || $sReportType == "Giving Report" || $sReportType == "Individual Deposit Report" || $sReportType == "Advanced Deposit Report")){
+		&& ($sReportType == "Pledge Summary" || $sReportType == "Giving Report" || $sReportType == "Individual Deposit Report" || $sReportType == "Advanced Deposit Report" || $sReportType == "Zero Givers")){
 		echo "<tr><td class=LabelColumn>".gettext("Output Method:")."</td>";
 		echo "<td class=TextColumnWithBottomBorder><input name=output type=radio checked value='pdf'>".gettext("PDF");
 		echo " <input name=output type=radio value='csv'>".gettext("CSV")."</tr>";
