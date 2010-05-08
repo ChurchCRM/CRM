@@ -11,6 +11,18 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+if( !function_exists(json_decode) ) {
+   require_once 'Include/JSON/JSON.php';
+   function json_decode($data, $bool) {
+       if ($bool) {
+           $json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
+       } else {
+           $json = new Services_JSON();
+       }
+       return( $json->decode($data) );
+   }
+}
+
 if (!function_exists(json_last_error)) {
 	define("JSON_ERROR_NONE", 0);
 	define("JSON_ERROR_DEPTH", 1);
