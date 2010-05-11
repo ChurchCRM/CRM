@@ -412,7 +412,7 @@ if (isset($_POST["DepositSlipSubmit"])) {
 
 if ($iDepositSlipID) {
 	//Get the payments for this deposit slip
-	$sSQL = "SELECT plg_plgID, plg_date, plg_amount, plg_CheckNo, plg_method, plg_comment, plg_aut_Cleared,
+	$sSQL = "SELECT plg_plgID, plg_date, plg_FYID, plg_amount, plg_CheckNo, plg_method, plg_comment, plg_aut_Cleared,
 	         a.fam_Name AS FamilyName, b.fun_Name as fundName, plg_NonDeductible, plg_GroupKey
 			 FROM pledge_plg 
 			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
@@ -556,6 +556,7 @@ require "Include/Header.php";
 <tr class="TableHeader">
 	<td><?php echo gettext("Family"); ?></td>
 	<td><?php echo gettext("Date"); ?></td>
+	<td><?php echo gettext("Fiscal Year"); ?></td>
 <?php if ($dep_Type == 'Bank') { ?>
 	<td><?php echo gettext("Check #"); ?></td>
 <?php } ?>
@@ -592,7 +593,7 @@ while ($aRow = mysql_fetch_array($rsPledges)) {
 		// add/tweak fields so existing key'ed record contains information of new record
 		
 		// we could coherency check checkNo, famID, and date, but we won't since I don't know how we'd surface the error
-		list($e_plg_CheckNo, $e_plg_famID, $e_plg_date, $e_plg_amount, $e_fundName, $e_plg_comment, $e_plg_aut_Cleared, $e_plg_NonDeductible) = explode("|", $depositHash[$plg_GroupKey]);
+		list($e_plg_CheckNo, $e_plg_famID, $e_plg_date, $e_plg_FYID, $e_plg_amount, $e_fundName, $e_plg_comment, $e_plg_aut_Cleared, $e_plg_NonDeductible) = explode("|", $depositHash[$plg_GroupKey]);
 
 		unset($depositHash[$plg_GroupKey]);
 
@@ -601,13 +602,13 @@ while ($aRow = mysql_fetch_array($rsPledges)) {
 		$n_amount = $e_plg_amount + $plg_amount;
 		$n_plg_NonDeductible = $e_plg_NonDeductible + $plg_NonDeductible;
 
-		$depositHash[$plg_GroupKey] = $plg_CheckNo . "|" .  $plg_famID . "|" . $plg_date . "|" . $n_amount . "|" . $n_fundName . "|" . $n_plg_comment . "|" . $plg_aut_Cleared . "|" . $n_plg_NonDeductible . "|" . $plg_plgID . "|" . $plg_method . "|" . $FamilyName;
+		$depositHash[$plg_GroupKey] = $plg_CheckNo . "|" .  $plg_famID . "|" . $plg_date . "|" . $plg_FYID . "|" . $n_amount . "|" . $n_fundName . "|" . $n_plg_comment . "|" . $plg_aut_Cleared . "|" . $n_plg_NonDeductible . "|" . $plg_plgID . "|" . $plg_method . "|" . $FamilyName;
 
 	} else {
 		$depositArray[$depositOrder] = 0;
 		$depositHashOrder2Key[$depositOrder] = $plg_GroupKey;
 		++$depositOrder;
-		$depositHash[$plg_GroupKey] = $plg_CheckNo . "|" .  $plg_famID . "|" . $plg_date . "|" . $plg_amount . "|" . $fundName . "|" . $plg_comment . "|" . $plg_aut_Cleared . "|" . $plg_NonDeductible . "|" . $plg_plgID . "|" . $plg_method . "|" . $FamilyName;
+		$depositHash[$plg_GroupKey] = $plg_CheckNo . "|" .  $plg_famID . "|" . $plg_date . "|" . $plg_FYID . "|" . $plg_amount . "|" . $fundName . "|" . $plg_comment . "|" . $plg_aut_Cleared . "|" . $plg_NonDeductible . "|" . $plg_plgID . "|" . $plg_method . "|" . $FamilyName;
 	}
 }
 
@@ -623,7 +624,7 @@ foreach ($depositArray as $order => $value) {
 	// key is: method-specific-id, plg_famID, plg_funID, plg_data
 
 	list($plg_GroupKey, $data) = explode("%", $value);
-	list($plg_CheckNo, $plg_famID, $plg_date, $plg_amount, $fundName, $plg_comment, $plg_aut_Cleared, $plg_NonDeductible, $plg_plgID, $plg_method, $FamilyName) = explode("|", $data);
+	list($plg_CheckNo, $plg_famID, $plg_date, $plg_FYID, $plg_amount, $fundName, $plg_comment, $plg_aut_Cleared, $plg_NonDeductible, $plg_plgID, $plg_method, $FamilyName) = explode("|", $data);
 
 	$tog = (! $tog);
 
@@ -639,6 +640,9 @@ foreach ($depositArray as $order => $value) {
 		</td>
 		<td>
 			<?php echo $plg_date ?>&nbsp;
+		</td>
+		<td>
+			<?php echo MakeFYString ($plg_FYID) ?>&nbsp;
 		</td>
 <?php if ($dep_Type == 'Bank') { ?>
 		<td>
