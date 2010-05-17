@@ -1,3 +1,15 @@
+2.5
+---
+
+fix "from address" bug (Thomas Jackson, mohrt)
+
+2.4
+---
+
+fix a couple bugs with drawing the javascript map (drakos7,nmweb,mohrt)
+fix lat/lon decimal when locale uses a comma (mohrt, Rene Schmidt)
+fix javascript escapement errors (Greg Wilson, Jerome Combaz, mohrt)
+
 2.3
 ---
 

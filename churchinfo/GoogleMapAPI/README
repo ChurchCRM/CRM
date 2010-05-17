@@ -6,7 +6,7 @@ AUTHOR:
     Monte Ohrt <monte [AT] ohrt [DOT] com>
 
 LATEST VERSION:
-    2.3 - Nov 8th, 2006
+    2.5 - Sep 20th, 2007
 
 SYNOPSIS:
 
@@ -85,8 +85,8 @@ BASE CLASS METHODS:
     
         Class Constructor.
         The map id is needed only if you have multiple maps on the same page.
-        The App ID is used for the Yahoo GeoCode API, which is the default
-        lookup service. Use a unique App ID per application.
+        The App ID is used for the Yahoo GeoCode API, if you use Yahoo for lookups.
+        Use a unique App ID per application.
         
         Example:
         
@@ -753,7 +753,7 @@ BASE CLASS METHODS:
     geoGetDistance($lat1,$lon1,$lat2,$lon2,$unit)
     ---------------------------------------------
 
-        This gets the distance between too coorinate points using the great
+        This gets the distance between too coordinate points using the great
         circle formula. $unit can be M (miles),K (kilometers),N (nautical
         miles),I (inches), or F (feet). Default is M.   
         
@@ -838,6 +838,9 @@ Charlie Dawes
 Jake Krohn
 Clark Freifeld <clark AT users DOT sourceforge DOT net>
 Angelo Conforti
+Jerome Combaz
+drakos7 (from forums)
+nmweb (from forums)
 
 Anyone I missed, drop me a line!
 

@@ -26,10 +26,10 @@
  * @copyright 2005 New Digital Group, Inc.
  * @author Monte Ohrt <monte at ohrt dot com>
  * @package GoogleMapAPI
- * @version 2.3
+ * @version 2.5
  */
 
-/* $Id: GoogleMapAPI.class.php,v 1.1 2007-03-25 23:56:35 mikewiltwork Exp $ */
+/* $Id: GoogleMapAPI.class.php,v 1.2 2010-05-17 20:22:28 mikewiltwork Exp $ */
 
 /*
 
@@ -260,7 +260,7 @@ class GoogleMapAPI {
      *
      * @var string
      */
-    var $_version = '2.3';
+    var $_version = '2.5';
 
     /**
      * list of added markers
@@ -656,10 +656,10 @@ class GoogleMapAPI {
      * @param string $title the title display in the sidebar
      * @param string $html the HTML block to display in the info bubble (if empty, title is used)
      */
-    function addMarkerByAddress($address,$title = '',$html = '') {
+    function addMarkerByAddress($address,$title = '',$html = '',$tooltip = '') {
         if(($_geocode = $this->getGeocode($address)) === false)
             return false;
-        return $this->addMarkerByCoords($_geocode['lon'],$_geocode['lat'],$title,$html);
+        return $this->addMarkerByCoords($_geocode['lon'],$_geocode['lat'],$title,$html,$tooltip);
     }
 
     /**
@@ -673,11 +673,12 @@ class GoogleMapAPI {
      *     array: The title => content pairs for a tabbed info bubble     
      */
     // TODO make it so you can specify which tab you want the directions to appear in (add another arg)
-    function addMarkerByCoords($lon,$lat,$title = '',$html = '') {
+    function addMarkerByCoords($lon,$lat,$title = '',$html = '',$tooltip = '') {
         $_marker['lon'] = $lon;
         $_marker['lat'] = $lat;
         $_marker['html'] = (is_array($html) || strlen($html) > 0) ? $html : $title;
         $_marker['title'] = $title;
+        $_marker['tooltip'] = $tooltip;
         $this->_markers[] = $_marker;
         $this->adjustCenterCoords($_marker['lon'],$_marker['lat']);
         // return index of marker
@@ -842,7 +843,7 @@ class GoogleMapAPI {
      * 
      */
     function getHeaderJS() {
-        return sprintf('<script src="http://maps.google.com/maps?file=api&v=2&key=%s" type="text/javascript" charset="utf-8"></script>', $this->api_key);
+        return sprintf('<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=%s" type="text/javascript" charset="utf-8"></script>', $this->api_key);
     }    
     
    /**                                                                                                                          
@@ -899,13 +900,12 @@ class GoogleMapAPI {
 
         if(!empty($this->_icons)) {
             $_output .= 'var icon = [];' . "\n";
-            for($i = 0; $this->_icons[$i]; $i++) {
+            for($i = 0, $j = count($this->_icons); $i<$j; $i++) {
                 $info = $this->_icons[$i];
 
                 // hash the icon data to see if we've already got this one; if so, save some javascript
                 $icon_key = md5(serialize($info));
-                if(!is_numeric($exist_icn[$icon_key])) {
-                    $exist_icn[$icon_key] = $i;
+                if(!isset($exist_icn[$icon_key])) {
 
                     $_output .= "icon[$i] = new GIcon();\n";   
                     $_output .= sprintf('icon[%s].image = "%s";',$i,$info['image']) . "\n";   
@@ -936,7 +936,8 @@ class GoogleMapAPI {
         $_output .= 'if (mapObj != "undefined" && mapObj != null) {' . "\n";
         $_output .= sprintf('map = new GMap2(document.getElementById("%s"));',$this->map_id) . "\n";
         if(isset($this->center_lat) && isset($this->center_lon)) {
-            $_output .= sprintf('map.setCenter(new GLatLng(%s, %s), %s, %s);', $this->center_lat, $this->center_lon, $this->zoom, $this->map_type) . "\n";
+			// Special care for decimal point in lon and lat, would get lost if "wrong" locale is set; applies to (s)printf only
+			$_output .= sprintf('map.setCenter(new GLatLng(%s, %s), %d, %s);', number_format($this->center_lat, 6, ".", ""), number_format($this->center_lon, 6, ".", ""), $this->zoom, $this->map_type) . "\n";
         }
         
         // zoom so that all markers are in the viewport
@@ -977,14 +978,14 @@ class GoogleMapAPI {
         $_output .= $this->getPolylineJS();
 
         if($this->sidebar) {
-            $_output .= sprintf('document.getElementById("%s").innerHTML = "<ul class=\"gmapSidebar\">"+ sidebar_html +"</ul>";', $this->sidebar_id) . "\n";
+            $_output .= sprintf('document.getElementById("%s").innerHTML = "<ul class=\"gmapSidebar\">"+ sidebar_html +"<\/ul>";', $this->sidebar_id) . "\n";
         }
 
         $_output .= '}' . "\n";        
        
         if(!empty($this->browser_alert)) {
             $_output .= '} else {' . "\n";
-            $_output .= 'alert("' . $this->browser_alert . '");' . "\n";
+			$_output .= 'alert("' . str_replace('"','\"',$this->browser_alert) . '");' . "\n";
             $_output .= '}' . "\n";
         }                        
 
@@ -1044,18 +1045,20 @@ class GoogleMapAPI {
                     }
                     $tab = str_replace('"','\"',$tab);
                     $info = str_replace('"','\"',$info);
+					$info = str_replace(array("\n", "\r"), "", $info);
                     $tab_obs[] = sprintf('new GInfoWindowTab("%s", "%s")', $tab, '<div id=\"gmapmarker\"'.$width_style.'>' . $info . '</div>');
                     $ti++;
                 }
                 $iw_html = '[' . join(',',$tab_obs) . ']';
             } else {
-                $iw_html = sprintf('"%s"',str_replace('"','\"','<div id="gmapmarker">' . $_marker['html'] . '</div>'));
+                $iw_html = sprintf('"%s"',str_replace('"','\"','<div id="gmapmarker">' . str_replace(array("\n", "\r"), "", $_marker['html']) . '</div>'));
             }
             $_output .= sprintf('var point = new GLatLng(%s,%s);',$_marker['lat'],$_marker['lon']) . "\n";         
-            $_output .= sprintf('var marker = createMarker(point,"%s",%s, %s);',
+            $_output .= sprintf('var marker = createMarker(point,"%s",%s, %s,"%s");',
                                 str_replace('"','\"',$_marker['title']),
-                                $iw_html,
-                                $i) . "\n";
+                                str_replace('/','\/',$iw_html),
+                                $i,
+                                str_replace('"','\"',$_marker['tooltip'])) . "\n";
             //TODO: in above createMarker call, pass the index of the tab in which to put directions, if applicable
             $_output .= 'map.addOverlay(marker);' . "\n";
             $i++;
@@ -1080,12 +1083,12 @@ class GoogleMapAPI {
      * overridable function to generate the js for the js function for creating a marker.
      */
     function getCreateMarkerJS() {
-        $_output = 'function createMarker(point, title, html, n) {' . "\n";
+        $_output = 'function createMarker(point, title, html, n, tooltip) {' . "\n";
         $_output .= 'if(n >= '. sizeof($this->_icons) .') { n = '. (sizeof($this->_icons) - 1) ."; }\n";
         if(!empty($this->_icons)) {
-            $_output .= 'var marker = new GMarker(point,{\'icon\': icon[n]});' . "\n";
+            $_output .= 'var marker = new GMarker(point,{\'icon\': icon[n], \'title\': tooltip});' . "\n";
         } else {
-            $_output .= 'var marker = new GMarker(point);' . "\n";
+            $_output .= 'var marker = new GMarker(point,{\'title\': tooltip});' . "\n";
         }
         // TODO: make it so you can specify which tab you want the directions in.
         if($this->directions) {
@@ -1096,7 +1099,7 @@ class GoogleMapAPI {
             $_output .= 'var tabFlag = isArray(html);' . "\n";
             $_output .= 'if(!tabFlag) { html = [{"contentElem": html}]; }' . "\n";
             $_output .= sprintf(
-                     "to_htmls[counter] = html[0].contentElem + '<p /><form class=\"gmapDir\" id=\"gmapDirTo\" style=\"white-space: nowrap;\" action=\"http://maps.google.com/maps\" method=\"get\" target=\"_blank\">' +
+                     "to_htmls[counter] = html[0].contentElem + '<form class=\"gmapDir\" id=\"gmapDirTo\" style=\"white-space: nowrap;\" action=\"http://maps.google.com/maps\" method=\"get\" target=\"_blank\">' +
                      '<span class=\"gmapDirHead\" id=\"gmapDirHeadTo\">%s<strong>%s</strong> - <a href=\"javascript:fromhere(' + counter + ')\">%s</a></span>' +
                      '<p class=\"gmapDirItem\" id=\"gmapDirItemTo\"><label for=\"gmapDirSaddr\" class=\"gmapDirLabel\" id=\"gmapDirLabelTo\">%s<br /></label>' +
                      '<input type=\"text\" size=\"40\" maxlength=\"40\" name=\"saddr\" class=\"gmapTextBox\" id=\"gmapDirSaddr\" value=\"\" onfocus=\"this.style.backgroundColor = \'#e0e0e0\';\" onblur=\"this.style.backgroundColor = \'#ffffff\';\" />' +
@@ -1106,10 +1109,10 @@ class GoogleMapAPI {
                       from_htmls[counter] = html[0].contentElem + '<p /><form class=\"gmapDir\" id=\"gmapDirFrom\" style=\"white-space: nowrap;\" action=\"http://maps.google.com/maps\" method=\"get\" target=\"_blank\">' +
                      '<span class=\"gmapDirHead\" id=\"gmapDirHeadFrom\">%s<a href=\"javascript:tohere(' + counter + ')\">%s</a> - <strong>%s</strong></span>' +
                      '<p class=\"gmapDirItem\" id=\"gmapDirItemFrom\"><label for=\"gmapDirSaddr\" class=\"gmapDirLabel\" id=\"gmapDirLabelFrom\">%s<br /></label>' +
-                     '<input type=\"text\" size=\"40\" maxlength=\"40\" name=\"saddr\" class=\"gmapTextBox\" id=\"gmapDirSaddr\" value=\"\" onfocus=\"this.style.backgroundColor = \'#e0e0e0\';\" onblur=\"this.style.backgroundColor = \'#ffffff\';\" />' +
-                     '<span class=\"gmapDirBtns\" id=\"gmapDirBtnsFrom\"><input value=\"%s\" type=\"%s\" class=\"gmapDirButton\" id=\"gmapDirButtonFrom\" /></span></p' +
-                     '<input type=\"hidden\" name=\"daddr\" value=\"' +
-                     point.y + ',' + point.x + \"(\" + title.replace(new RegExp(/\"/g),'&quot;') + \")\" + '\" /></form>';
+                     '<input type=\"text\" size=\"40\" maxlength=\"40\" name=\"daddr\" class=\"gmapTextBox\" id=\"gmapDirSaddr\" value=\"\" onfocus=\"this.style.backgroundColor = \'#e0e0e0\';\" onblur=\"this.style.backgroundColor = \'#ffffff\';\" />' +
+                     '<span class=\"gmapDirBtns\" id=\"gmapDirBtnsFrom\"><input value=\"%s\" type=\"%s\" class=\"gmapDirButton\" id=\"gmapDirButtonFrom\" /></span></p>' +
+                     '<input type=\"hidden\" name=\"saddr\" value=\"' +
+                     point.y + ',' + point.x + encodeURIComponent(\"(\" + title.replace(new RegExp(/\"/g),'&quot;') + \")\") + '\" /></form>';
                      html[0].contentElem = html[0].contentElem + '<p /><div id=\"gmapDirHead\" class=\"gmapDir\" style=\"white-space: nowrap;\">%s<a href=\"javascript:tohere(' + counter + ')\">%s</a> - <a href=\"javascript:fromhere(' + counter + ')\">%s</a></div>';\n",
                      $this->driving_dir_text['dir_text'],
                      $this->driving_dir_text['dir_tohere'],
@@ -1138,7 +1141,7 @@ class GoogleMapAPI {
         $_output .= 'markers[counter] = marker;' . "\n";
         if($this->sidebar) {        
             $_output .= 'marker_html[counter] = html;' . "\n";
-            $_output .= "sidebar_html += '<li class=\"gmapSidebarItem\" id=\"gmapSidebarItem_'+ counter +'\"><a href=\"javascript:click_sidebar(' + counter + ')\">' + title + '</a></li>';" . "\n";
+            $_output .= "sidebar_html += '<li class=\"gmapSidebarItem\" id=\"gmapSidebarItem_'+ counter +'\"><a href=\"javascript:click_sidebar(' + counter + ')\">' + title + '<\/a><\/li>';" . "\n";
         }
         $_output .= 'counter++;' . "\n";
         $_output .= 'return marker;' . "\n";
@@ -1162,15 +1165,15 @@ class GoogleMapAPI {
         $_output = '<script type="text/javascript" charset="utf-8">' . "\n" . '//<![CDATA[' . "\n";
         $_output .= 'if (GBrowserIsCompatible()) {' . "\n";
         if(strlen($this->width) > 0 && strlen($this->height) > 0) {
-            $_output .= sprintf('document.write(\'<div id="%s" style="width: %s; height: %s"></div>\');',$this->map_id,$this->width,$this->height) . "\n";
+            $_output .= sprintf('document.write(\'<div id="%s" style="width: %s; height: %s"><\/div>\');',$this->map_id,$this->width,$this->height) . "\n";
         } else {
-            $_output .= sprintf('document.write(\'<div id="%s"></div>\');',$this->map_id) . "\n";     
+            $_output .= sprintf('document.write(\'<div id="%s"><\/div>\');',$this->map_id) . "\n";     
         }
         $_output .= '}';
 
         if(!empty($this->js_alert)) {
             $_output .= ' else {' . "\n";
-            $_output .= sprintf('document.write(\'%s\');', $this->js_alert) . "\n";
+            $_output .= sprintf('document.write(\'%s\');', str_replace('/','\/',$this->js_alert)) . "\n";
             $_output .= '}' . "\n";
         }
 
