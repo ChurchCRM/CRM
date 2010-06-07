@@ -2,7 +2,7 @@ The ChurchInfo distribion includes a version of MRBS (Meeting
 Room Booking System) that has been modified to work inside
 ChurchInfo.  To enable this feature:
 
-Install or upgrade to 1.2.10
+Install or upgrade to 1.2.12
 Run the SQL script SQL/mrbs_setup.sql using PHPMyAdmin
     or other MySQL utility.
 Log into ChurchInfo as an administrator, check to be sure the
