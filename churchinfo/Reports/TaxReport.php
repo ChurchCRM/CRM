@@ -421,7 +421,7 @@ if ($output == "pdf") {
 	$eol = "\r\n";
 	
 	// Build headings row
-	eregi ("SELECT (.*) FROM ", $sSQL, $result);
+	preg_match ("/SELECT (.*) FROM /i", $sSQL, $result);
 	$headings = explode(",",$result[1]);
 	$buffer = "";
 	foreach ($headings as $heading) {
