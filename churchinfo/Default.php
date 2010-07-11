@@ -2,19 +2,29 @@
 /*******************************************************************************
  *
  *  filename    : Default.php
- *  last change : 2005-03-19
  *  description : login page that checks for correct username and password
  *
- *  http://www.infocentral.org/
+ *  http://www.churchdb.org/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker,
  *
  *	Updated 2005-03-19 by Everette L Mills: Removed dropdown login box and
  *	added user entered login box
  *
+ *  
+ *  LICENSE:
+ *  (C) Free Software Foundation, Inc.
+ *
  *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
+ *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful, but
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ *  General Public License for more details.
+ *
+ *  http://www.gnu.org/licenses
  *
  ******************************************************************************/
 
@@ -129,19 +139,19 @@ if ($iUserID > 0)
     // Check the user password
     if (strlen($usr_Password) == 40) {
         // The password was stored using the new 40 character sha1 hash
-        $tmp = strtolower($_POST['Password'].$iUserID);
+        $tmp = $_POST['Password'].$iUserID;
         $sPasswordHash = sha1(sha1($tmp).$tmp);
         $bPasswordMatch = ($usr_Password == $sPasswordHash);
     } else {
         // The password was stored using the old 32 character md5 hash
-        $tmp = strtolower($_POST['Password']);
+        $tmp = $_POST['Password'];
         $sPasswordHash = md5($tmp);
         $bPasswordMatch = ($usr_Password == $sPasswordHash);
 
         if ($bPasswordMatch) {
             // If the password matches update from 32 character hash
             // to 40 character hash
-            $tmp = strtolower($_POST['Password'].$iUserID);
+            $tmp = $_POST['Password'].$iUserID;
             $sPasswordHash = sha1(sha1($tmp).$tmp);
             $sSQL = "UPDATE user_usr SET usr_Password='".$sPasswordHash."' ".
                     "WHERE usr_per_ID ='".$iUserID."'";
