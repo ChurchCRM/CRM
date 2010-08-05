@@ -10,16 +10,20 @@
 *                      Michael Wilt, Timothy Dearborn
 *
 *
-*  Additional Contributors:
-*  2006 Ed Davis
-*
-*
-*  Copyright Contributors
+*  LICENSE:
+*  (C) Free Software Foundation, Inc.
 *
 *  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
+*  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful, but
+*  WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+*  General Public License for more details.
+*
+*  http://www.gnu.org/licenses
 *
 *  This file best viewed in a text editor with tabs stops set to 4 characters.
 *  Please configure your editor to use soft tabs (4 spaces for a tab) instead
@@ -38,18 +42,24 @@ $sql = "SHOW TABLES FROM `$sDATABASE`";
 $tablecheck = mysql_num_rows( mysql_query($sql) );
 
 if (!$tablecheck) {
-    die ("There are no tables in installed in your database.  Please install the tables.");
+    die ("There are no tables installed in your database.  Please install the tables.");
 }
 
+// Initialize the session
+session_start();
 
 // Avoid consecutive slashes when $sRootPath = '/'
 if (strlen($sRootPath) < 2) $sRootPath = '';
 
+// Set default value for $sURLPath: relative path is fine for most installations
+$sURLPath=$sRootPath;
+
+// In case of Shared SSL installations absolute path must be specified
+if (strlen($sSharedSSLServer))
+    $sURLPath="https://".$sSharedSSLServer."/".$sHTTP_Host.$sRootPath;
+
 // Some webhosts make it difficult to use DOCUMENT_ROOT.  Define our own!
 $sDocumentRoot = dirname(dirname(__FILE__));
-
-// Initialize the session
-session_start();
 
 $version = mysql_fetch_row(mysql_query("SELECT version()"));
 
