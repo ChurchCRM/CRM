@@ -6,16 +6,20 @@
 *
 *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
 *
-*  Additional Contributors:
-*  2006 Ed Davis
-*
-*
-*  Copyright 2006 Contributors
+*  LICENSE:
+*  (C) Free Software Foundation, Inc.
 *
 *  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
+*  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful, but
+*  WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+*  General Public License for more details.
+*
+*  http://www.gnu.org/licenses
 *
 *  This file best viewed in a text editor with tabs stops set to 4 characters
 *
@@ -47,47 +51,47 @@ function ExportCartToCSV()
                 "     IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ".
                 " AND lst_ID='1' ".
                 " ORDER BY fam_Name, fam_ID, Last_Name, First_Name ";
-	
-	//Run the SQL
-	$rsQueryResults = RunQuery($sSQL);
+    
+    //Run the SQL
+    $rsQueryResults = RunQuery($sSQL);
 
     $sCSVstring = "";
 
-	if (mysql_error() != "")
-	{
-		$sCSVstring = gettext("An error occured: ") . mysql_errno() . "--" . mysql_error();
-	}
-	else
-	{
+    if (mysql_error() != "")
+    {
+        $sCSVstring = gettext("An error occured: ") . mysql_errno() . "--" . mysql_error();
+    }
+    else
+    {
 
-		//Loop through the fields and write the header row
-		for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
-		{
+        //Loop through the fields and write the header row
+        for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
+        {
             $sCSVstring .= mysql_field_name($rsQueryResults,$iCount) . ",";
-		}
+        }
 
         $sCSVstring .= "\n";
 
-		//Loop through the recordsert
-		while($aRow =mysql_fetch_array($rsQueryResults))
-		{
-			//Loop through the fields and write each one
-			for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
-			{
-				$sCSVstring .= $aRow[$iCount] . ",";
-			}
+        //Loop through the recordsert
+        while($aRow =mysql_fetch_array($rsQueryResults))
+        {
+            //Loop through the fields and write each one
+            for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
+            {
+                $sCSVstring .= $aRow[$iCount] . ",";
+            }
 
-			$sCSVstring .= "\n";
-		}
-	}
+            $sCSVstring .= "\n";
+        }
+    }
 
     header("Content-type: application/csv");
-	header("Content-Disposition: attachment; filename=Cart-" . date("Ymd-Gis") . ".csv");
-	header("Content-Transfer-Encoding: binary");
-	header('Expires: 0');
-	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-	header('Pragma: public'); 
-	echo $sCSVstring;
+    header("Content-Disposition: attachment; filename=Cart-" . date("Ymd-Gis") . ".csv");
+    header("Content-Transfer-Encoding: binary");
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+    header('Pragma: public'); 
+    echo $sCSVstring;
     exit;
 
 }
@@ -101,7 +105,7 @@ require "Include/LabelFunctions.php";
 
 if (isset($_POST["rmEmail"]))
 {
- 	 rmEmail();
+     rmEmail();
 }
 
 if (isset($_POST["cartcsv"]))
@@ -110,8 +114,8 @@ if (isset($_POST["cartcsv"]))
     // If user does not have CSV Export permission, redirect to the menu.
     if (!$bExportCSV) 
     {
-	   Redirect("Menu.php");
-	   exit;
+       Redirect("Menu.php");
+       exit;
     }
 
     ExportCartToCSV();
@@ -313,7 +317,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
     <form method="get" action="Reports/PDFLabel.php" name="labelform">
         <table cellpadding="4" align="center">
                 <?php
-				LabelGroupSelect("groupbymode");
+                LabelGroupSelect("groupbymode");
 
                 echo '  <tr><td class="LabelColumn">' . gettext("Bulk Mail Presort") . '</td>';
                 echo '  <td class="TextColumn">';
@@ -335,19 +339,19 @@ if (count($_SESSION['aPeopleCart']) != 0)
                     echo "checked";
                 echo '  ><br></td></tr>';
 
-				ToParentsOfCheckBox("toparents");
-				LabelSelect("labeltype");
-				FontSelect("labelfont");
-				FontSizeSelect("labelfontsize");
-				StartRowStartColumn();
-				IgnoreIncompleteAddresses();
-				LabelFileType();
-                ?> 	                           
+                ToParentsOfCheckBox("toparents");
+                LabelSelect("labeltype");
+                FontSelect("labelfont");
+                FontSizeSelect("labelfontsize");
+                StartRowStartColumn();
+                IgnoreIncompleteAddresses();
+                LabelFileType();
+                ?>                             
 
-    			<tr>
-						<td></td>
-						<td><input type="submit" class="icButton" value="<?php echo gettext("Generate Labels");?>" name="Submit"></td>
-				</tr>
+                <tr>
+                        <td></td>
+                        <td><input type="submit" class="icButton" value="<?php echo gettext("Generate Labels");?>" name="Submit"></td>
+                </tr>
     </table></form></td></tr></table>
 
 <?php
@@ -454,15 +458,15 @@ if ($bCreateDirectory)
 
                 } else {
 
-					// Retrieve subject and message from MySQL
+                    // Retrieve subject and message from MySQL
 
-					$rsPendingEmail = RunQuery($sSQL);
-					$aRow = mysql_fetch_array($rsPendingEmail);
-					extract($aRow);
+                    $rsPendingEmail = RunQuery($sSQL);
+                    $aRow = mysql_fetch_array($rsPendingEmail);
+                    extract($aRow);
 
-					$sEmailSubject = $emp_subject;
-					$sEmailMessage = $emp_message;
-				}
+                    $sEmailSubject = $emp_subject;
+                    $sEmailMessage = $emp_message;
+                }
 
                 $sEmailForm = "sendoredit";                
 
@@ -486,10 +490,10 @@ if ($bCreateDirectory)
                 // Since this is the first time use INSERT instead of UPDATE                
                 $sSQL = "INSERT INTO email_message_pending_emp ".
                         "SET " . 
-							"emp_usr_id='" .$_SESSION['iUserID']. "',".
-							"emp_to_send='0'," .
-							"emp_subject='" . mysql_real_escape_string($sEmailSubject). "',".
-							"emp_message='" . mysql_real_escape_string($sEmailMessage). "'";
+                            "emp_usr_id='" .$_SESSION['iUserID']. "',".
+                            "emp_to_send='0'," .
+                            "emp_subject='" . mysql_real_escape_string($sEmailSubject). "',".
+                            "emp_message='" . mysql_real_escape_string($sEmailMessage). "'";
 
                 RunQuery($sSQL);
 
@@ -578,15 +582,13 @@ if ($bCreateDirectory)
             }
 
             echo '<input type="hidden" name="mysql" value="true">'."\n";
-
             echo '<input type="submit" class="icButton" name="submit" '.
                      'value ="'.gettext("Send Email").'">'."\n</form>";
-			// Create button to Delete this message
+            // Create button to Delete this message
             echo "</td>\n<td>";
-			echo '<form method="post" action="CartView.php">'."\n";
-			echo '<input type="hidden" name="rmEmail" value="true">'."\n";
-
-            echo '&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="icTinyButton" name="rmEail" '.
+            echo '<form method="post" action="CartView.php">'."\n";
+            echo '<input type="hidden" name="rmEmail" value="true">'."\n";
+            echo '<input type="submit" class="icButton" name="rmEail" '.
                  'value ="'.gettext("Delete Email").'">'."\n</form>";
 
         } elseif ($sEmailForm == 'resumeorabort') {
@@ -681,8 +683,8 @@ require "Include/Footer.php";
 
 function rmEmail()
 {
- 		$iUserID = $_SESSION['iUserID']; // Read into local variable for faster access
- 		// Delete message from emp
+        $iUserID = $_SESSION['iUserID']; // Read into local variable for faster access
+        // Delete message from emp
     $sSQL = "DELETE FROM email_message_pending_emp ".
             "WHERE emp_usr_id='$iUserID'";
     RunQuery($sSQL);
@@ -692,7 +694,7 @@ function rmEmail()
     $sSQL = "DELETE FROM email_recipient_pending_erp ".
             "WHERE erp_usr_id='$iUserID'";
     RunQuery($sSQL);
-		echo '<font class="SmallError">Deleted Email message succesfuly</font>';
+        echo '<font class="SmallError">Deleted Email message succesfuly</font>';
 }
 
 ?>

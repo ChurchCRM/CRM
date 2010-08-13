@@ -6,15 +6,20 @@
 *
 *  http://www.churchdb.org/
 *
-*  Contributors:
-*  2006 Ed Davis
-*
-*  Copyright Contributors
+*  LICENSE:
+*  (C) Free Software Foundation, Inc.
 *
 *  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
+*  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful, but
+*  WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+*  General Public License for more details.
+*
+*  http://www.gnu.org/licenses
 *
 *  This file best viewed in a text editor with tabs stops set to 4 characters
 *
@@ -64,7 +69,7 @@ echo '<p class="MediumText"><b>' . gettext("From:") . '</b> "' . $sFromName . '"
 echo '<b>' . gettext("To (blind):") . '</b> '  . $bcc_list . '<br>';
 
 
-echo '<hr>';
+echo "\n<hr>";
 echo '<div align="center"><table><tr><td align="center">';
 
 echo '<br><h2>' . gettext("Send Email To People in Cart") . '</h2>'."\n";
@@ -73,13 +78,15 @@ echo '<form action="CartView.php#email" method="post">';
 
 echo gettext('Subject:');
 echo '<br><input type="text" name="emailsubject" size="80" value="';
-echo htmlspecialchars($sEmailSubject) . '"></input>'."\n";
+echo htmlspecialchars($sEmailSubject) . '">'."\n";
 
 echo '<br>' . gettext('Message:');
 echo '<br><textarea name="emailmessage" rows="20" cols="72">';
 echo htmlspecialchars($sEmailMessage) . '</textarea>'."\n";
 
 echo '<br><input class="icButton" type="submit" name="submit" value="';
-echo gettext('Save Email') . '"></form>'."\n";
+echo gettext('Save Email') . '"></form></td></tr></table></div>'."\n";
+
+require "Include/Footer.php"; 
 
 ?>

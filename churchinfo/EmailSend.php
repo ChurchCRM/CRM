@@ -7,16 +7,20 @@
 *  http://www.churchdb.org/
 *  Copyright 2001-2003 Lewis Franklin
 *
-*  Additional Contributors:
-*  2006-2007 Ed Davis
-*
-*
-*  Copyright Contributors
+*  LICENSE:
+*  (C) Free Software Foundation, Inc.
 *
 *  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
+*  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful, but
+*  WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+*  General Public License for more details.
+*
+*  http://www.gnu.org/licenses
 *
 *  This file best viewed in a text editor with tabs stops set to 4 characters.
 *  Please configure your editor to use soft tabs (4 spaces for a tab) instead
@@ -38,8 +42,8 @@ $iUserID = $_SESSION['iUserID']; // Read into local variable for faster access
 // Otherwise, re-direct them to the main menu.
 if (!($bEmailSend && $bSendPHPMail))
 {
-	Redirect('Menu.php');
-	exit;
+    Redirect('Menu.php');
+    exit;
 }
 
 // Keep a detailed log of events in MySQL.
@@ -105,8 +109,8 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
     global $sUSER;
     global $sPASSWORD;
     global $sDATABASE;
-	global $sSQL_ERP;
-	global $sSQL_EMP;
+    global $sSQL_ERP;
+    global $sSQL_EMP;
 
     $iUserID = $_SESSION['iUserID']; // Retrieve UserID for faster access
 
@@ -115,7 +119,7 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
                     "WHERE erp_usr_id='$iUserID' ".
                     'ORDER BY erp_num_attempt, erp_id LIMIT 1';
 
-	// Just run this one ahead of time to get the message subject and body
+    // Just run this one ahead of time to get the message subject and body
     $sSQL = 'SELECT * FROM email_message_pending_emp';
     extract(mysql_fetch_array(RunQuery($sSQL)));
 
@@ -131,8 +135,10 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
     if($mail->IsError())
         echo 'PHPMailer Error with SetLanguage().  Other errors (if any) may not report.<br>';
 
-    $mail->From = $sFromEmailAddress;	// From email address (User Settings)
-    $mail->FromName = $sFromName;		// From name (User Settings)
+    $mail->CharSet = 'utf-8';
+
+    $mail->From = $sFromEmailAddress;   // From email address (User Settings)
+    $mail->FromName = $sFromName;       // From name (User Settings)
 
     if (strtolower($sSendType)=='smtp') {
 
@@ -141,8 +147,8 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
         $mail->SMTPAuth = $sSMTPAuth;       // Server requires authentication
 
         if ($sSMTPAuth) {
-            $mail->Username = $sSMTPUser;	// SMTP username
-            $mail->Password = $sSMTPPass;	// SMTP password
+            $mail->Username = $sSMTPUser;   // SMTP username
+            $mail->Password = $sSMTPPass;   // SMTP password
         }
 
         $delimeter = strpos($sSMTPHost, ':');
@@ -192,7 +198,7 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
 
         if(!$mail->Send()) {
 
-			// failed- make a note in the log and the recipient record
+            // failed- make a note in the log and the recipient record
             if ($sRecipient == 'get_recipients_from_mysql') {
 
                 $sMsg = "Failed sending to: $erp_email_address ";
@@ -427,7 +433,7 @@ if ($emp_to_send==0 && $countrecipients==0) {
                 "SET emp_to_send='$iEmailNum' ".
                 "WHERE emp_usr_id='$iUserID'";
         RunQuery($sSQL);
-		$countrecipients = $iEmailNum;
+        $countrecipients = $iEmailNum;
         AddToEmailLog('Job Started', $iUserID); // Initialize the log
     }
 
