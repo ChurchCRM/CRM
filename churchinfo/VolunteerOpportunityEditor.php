@@ -54,7 +54,7 @@ if (($sAction == 'delete') && (strlen($sOpp) > 0)) {
     // Delete Confirmation Page
 
     // Security: User must have Delete records permission
-    // Otherwise, redirect to the mail menu
+    // Otherwise, redirect to the main menu
     if (!$_SESSION['bDeleteRecords']) {
         Redirect("Menu.php");
         exit;
@@ -110,7 +110,7 @@ if (($sAction == 'delete') && (strlen($sOpp) > 0)) {
 if (($sAction == 'ConfDelete') && (strlen($sOpp) > 0)) {
 
     // Security: User must have Delete records permission
-    // Otherwise, redirect to the mail menu
+    // Otherwise, redirect to the main menu
     if (!$_SESSION['bDeleteRecords']) {
         Redirect("Menu.php");
         exit;
@@ -122,48 +122,58 @@ if (($sAction == 'ConfDelete') && (strlen($sOpp) > 0)) {
     }
 
 
-// Data integrity check #1
-// The default value of `vol_Order` is '0'.  But '0' is not assigned. 
-// If we find a '0' add it to the end of the list by changing it to
-// MAX(vol_Order)+1. 
+if (!$_GET['row_num']) {
+// Skip data integrity check if we are only changing the ordering
+// by moving items up or down.
+// System response is too slow to do these checks every time the page
+// is viewed.
 
-$sSQL = "SELECT `vol_ID` FROM `volunteeropportunity_vol` WHERE vol_Order = '0' ";
-$sSQL .= "ORDER BY `vol_ID`";
-$rsOrder = RunQuery($sSQL);
-$numRows = mysql_num_rows($rsOrder);
-if ($numRows) {
-    $sSQL = "SELECT MAX(`vol_Order`) AS `Max_vol_Order` FROM `volunteeropportunity_vol`";
-    $rsMax = RunQuery($sSQL);
-    $aRow = mysql_fetch_array($rsMax);
-    extract($aRow);
-    for ($row = 1; $row <= $numRows; $row++) {
-        $aRow = mysql_fetch_array($rsOrder);
+    // Data integrity checks performed when adding or deleting records.
+    // Also on initial page view
+
+    // Data integrity check #1
+    // The default value of `vol_Order` is '0'.  But '0' is not assigned. 
+    // If we find a '0' add it to the end of the list by changing it to
+    // MAX(vol_Order)+1. 
+
+    $sSQL = "SELECT `vol_ID` FROM `volunteeropportunity_vol` WHERE vol_Order = '0' ";
+    $sSQL .= "ORDER BY `vol_ID`";
+    $rsOrder = RunQuery($sSQL);
+    $numRows = mysql_num_rows($rsOrder);
+    if ($numRows) {
+        $sSQL = "SELECT MAX(`vol_Order`) AS `Max_vol_Order` FROM `volunteeropportunity_vol`";
+        $rsMax = RunQuery($sSQL);
+        $aRow = mysql_fetch_array($rsMax);
         extract($aRow);
-        $num_vol_Order = $Max_vol_Order + $row;
-        $sSQL = "UPDATE `volunteeropportunity_vol` " .
-                "SET `vol_Order` = '" . $num_vol_Order . "' " .
-                "WHERE `vol_ID` = '" . $vol_ID . "'";
-        RunQuery($sSQL);
+        for ($row = 1; $row <= $numRows; $row++) {
+            $aRow = mysql_fetch_array($rsOrder);
+            extract($aRow);
+            $num_vol_Order = $Max_vol_Order + $row;
+            $sSQL = "UPDATE `volunteeropportunity_vol` " .
+                    "SET `vol_Order` = '" . $num_vol_Order . "' " .
+                    "WHERE `vol_ID` = '" . $vol_ID . "'";
+            RunQuery($sSQL);
+        }
     }
-}
 
-// Data integrity check #2
-// re-order the vol_Order field just in case there is a missing number(s)
-$sSQL = "SELECT * FROM `volunteeropportunity_vol` ORDER by `vol_Order`";
-$rsOpps = RunQuery($sSQL);
-$numRows = mysql_num_rows($rsOpps);
+    // Data integrity check #2
+    // re-order the vol_Order field just in case there is a missing number(s)
+    $sSQL = "SELECT * FROM `volunteeropportunity_vol` ORDER by `vol_Order`";
+    $rsOpps = RunQuery($sSQL);
+    $numRows = mysql_num_rows($rsOpps);
 
-$orderCounter = 1;
-for ($row = 1; $row <= $numRows; $row++) {
-     $aRow = mysql_fetch_array($rsOpps);
-     extract($aRow);
-     if ($orderCounter <> $vol_Order) { // found hole, update all records to the end
-     $sSQL = "UPDATE `volunteeropportunity_vol` " .
-             "SET `vol_Order` = '" . $orderCounter . "' " .
-             "WHERE `vol_ID` = '" . $vol_ID . "'";
-     RunQuery($sSQL);
-   }
-   ++$orderCounter;
+    $orderCounter = 1;
+    for ($row = 1; $row <= $numRows; $row++) {
+         $aRow = mysql_fetch_array($rsOpps);
+         extract($aRow);
+         if ($orderCounter <> $vol_Order) { // found hole, update all records to the end
+         $sSQL = "UPDATE `volunteeropportunity_vol` " .
+                 "SET `vol_Order` = '" . $orderCounter . "' " .
+                 "WHERE `vol_ID` = '" . $vol_ID . "'";
+         RunQuery($sSQL);
+       }
+       ++$orderCounter;
+    }
 }
 
 $sPageTitle = gettext("Volunteer Opportunity Editor");
@@ -241,16 +251,6 @@ if (isset($_POST["SaveChanges"])) {
 
 // Construct the form
 
-/*
-<script language="javascript" type="text/javascript">
-
-function confirmDeleteOpp( Opp ) {
-var answer = confirm (<?php echo '"' . gettext("Are you sure you want to delete this Vol Opp?") . '"'; ?>)
-if ( answer )
-    window.location="VolunteerOpportunityEditor.php?Opp=" + Opp + "&Action=delete"
-}
-</script>
-*/
 ?>
 <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
@@ -338,10 +338,10 @@ for ($row=1; $row <= $numRows; $row++) {
     if ($row == 1) {
       echo "<a href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=na&amp;row_num=" . $row . "\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
     } else {
-      echo "<a href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=up&amp;row_num=" . $row . "\"> <img src=\"Images/uparrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+      echo "<a onclick=\"saveScrollCoordinates()\" href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=up&amp;row_num=" . $row . "\"> <img src=\"Images/uparrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
     }
     if ($row <> $numRows) {
-      echo "<a href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=down&amp;row_num=" . $row . "\"> <img src=\"Images/downarrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+      echo "<a onclick=\"saveScrollCoordinates()\" href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=down&amp;row_num=" . $row . "\"> <img src=\"Images/downarrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
     } else {
       echo "<a href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=na&amp;row_num=" . $row . "\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
     }
