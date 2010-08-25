@@ -1,4 +1,3 @@
-﻿# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -8,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-04-21 10:04-0400\n"
-"PO-Revision-Date: 2009-12-19 13:00-0500\n"
+"PO-Revision-Date: 2010-08-25 18:44-0500\n"
 "Last-Translator: Michael Wilt <mike@mwilt.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -676,50 +675,40 @@ msgid "Assign Canvassers"
 msgstr "Asignar Electores"
 
 #: CanvassAutomation.php:126
-msgid ""
-"Randomly assign canvassers to all Families.  The Canvassers are \n"
-"\t\t\ttaken from the &quot;Canvassers&quot; Group."
-msgstr "Asignación aleatoria de elecciones a todas las familias. El Canvassers son \ n\ t \ t \ t \ ttaken de los \"Escrutinios\" Grupo."
+msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
+msgstr "Asignación aleatoria de elecciones a todas las familias. El Canvassers son taken de los \"Escrutinios\" Grupo."
 
 #: CanvassAutomation.php:134
 msgid "Assign To Non Pledging"
 msgstr "Asignar a quienes no han comprometido donaciones"
 
 #: CanvassAutomation.php:138
-msgid ""
-"Randomly assign canvassers to non-pledging Families.  The Canvassers are \n"
-"\t\t\ttaken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Asignación aleatoria de instituciones sin compromoiso de contribuciones. El Canvassers son \ n\ t \ t \ t \ ttaken de la \"BraveCanvassers\" Grupo."
+msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
+msgstr "Asignación aleatoria de instituciones sin compromoiso de contribuciones. El Canvassers son taken de la \"BraveCanvassers\" Grupo."
 
 #: CanvassAutomation.php:146
 msgid "Clear Canvasser Assignments"
 msgstr "Limpiar asignaciones de Elecciones"
 
 #: CanvassAutomation.php:150
-msgid ""
-"Clear all the canvasser assignments for all families.  <p>Important\n"
-"\t\t\tnote: this will lose any canvasser assignments that have been made by hand.</p>"
-msgstr "Borrar todas las asignaciones de representante electoral para todas las familias. Importante <p> \ n\ t \ t \ TNote: este perderá ningún representante electoral tareas que se han hecho a mano. </ p>"
+msgid "Clear all the canvasser assignments for all families.  <p>Important note: this will lose any canvasser assignments that have been made by hand.</p>"
+msgstr "Borrar todas las asignaciones de representante electoral para todas las familias. Importante <p>Note: este perderá ningún representante electoral tareas que se han hecho a mano. </ p>"
 
 #: CanvassAutomation.php:158
 msgid "Enable Canvass for All Families"
 msgstr " Habilitar Escrutinio para todas las instituciones"
 
 #: CanvassAutomation.php:162
-msgid ""
-"Turn on the &quot;Ok To Canvass&quot; field for all Families.  <p>Important\n"
-"\t\t\tnote: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand.</p>"
-msgstr "Encienda el Ok para sondear; de campo para todas las familias. Importante <p> \ n\ t \ t \ TNote: esto perder; Ok para sondear; los campos que han sido establecidos por la mano. </ p>"
+msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families.  <p>Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand.</p>"
+msgstr "Encienda el Ok para sondear; de campo para todas las familias. Importante <p>Note: esto perder; Ok para sondear; los campos que han sido establecidos por la mano. </ p>"
 
 #: CanvassAutomation.php:170
 msgid "Disable Canvass for All Families"
 msgstr "Deshabilitar Escrutinio de todas las familias"
 
 #: CanvassAutomation.php:174
-msgid ""
-"Turn off the &quot;Ok To Canvass&quot; field for all Families.  <p>Important\n"
-"\t\t\tnote: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand.</p>"
-msgstr "Apague Ok \"sondear\" el terreno para todas las familias. Importante <p> \ n\ t \ t \ TNote: esto perder \"Ok sondear\" los campos que han sido establecidos por la mano. </ p>"
+msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families.  <p>Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand.</p>"
+msgstr "Apague Ok \"sondear\" el terreno para todas las familias. Importante <p>Note: esto perder \"Ok sondear\" los campos que han sido establecidos por la mano. </ p>"
 
 #: CanvassAutomation.php:182
 msgid "Briefing Sheets"
@@ -734,30 +723,24 @@ msgid "Progress Report"
 msgstr "Informe de situación"
 
 #: CanvassAutomation.php:196
-msgid ""
-"Generate a PDF containing a progress report.  The progress report includes\n"
-"\t\t\tinformation on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "Generar un PDF que contiene un informe de progreso. El informe de situación incluye \ n\ t \ t \ tinformation sobre la evolución general del sondeo, y los progresos de elecciones individuales."
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "Generar un PDF que contiene un informe de progreso. El informe de situación incluye information sobre la evolución general del sondeo, y los progresos de elecciones individuales."
 
 #: CanvassAutomation.php:203
 msgid "Summary Report"
 msgstr "Informe resumido"
 
 #: CanvassAutomation.php:207
-msgid ""
-"Generate a PDF containing a summary report.  The summary report includes\n"
-"\t\t\tcomments extracted from the canvass data."
-msgstr "Generar un PDF que contiene un informe de síntesis. El informe de síntesis incluye \ n\ t \ t \ t \ tcomments extraídos de los datos de escrutinio."
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
+msgstr "Generar un PDF que contiene un informe de síntesis. El informe de síntesis incluye comments extraídos de los datos de escrutinio."
 
 #: CanvassAutomation.php:214
 msgid "Not Interested Report"
 msgstr "Informe de instituciones no interesadas"
 
 #: CanvassAutomation.php:218
-msgid ""
-"Generate a PDF containing a report of the families marked &quot;Not Interested&quot; \n"
-"\t\t\t                    by the canvasser."
-msgstr "Generar un PDF que contiene un informe de las instituciones marcadas \"No estoy interesado\" \ n\ t \ t \ t \ t por el representante electoral."
+msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
+msgstr "Generar un PDF que contiene un informe de las instituciones marcadas \"No estoy interesado\" por el representante electoral."
 
 #: CanvassEditor.php:41
 msgid " Canvass Input for the "
@@ -3140,7 +3123,8 @@ msgid ""
 "Voting members must have made<br>\n"
 "\t\t\ta donation within this many years<br>\n"
 "\t\t\t(0 to not require a donation):"
-msgstr "Los miembros que han votado deben haber donado <br>\n"
+msgstr ""
+"Los miembros que han votado deben haber donado <br>\n"
 "\t\t\ta con estos años<br>\n"
 "\t\t\t(0 a no requieren una donación):"
 
@@ -5788,14 +5772,8 @@ msgstr "Editar campos personalizados de personas"
 msgid "Edit Donation Funds"
 msgstr "Editar fondos en donación"
 
-msgid "Backup Database"
-msgstr "Respaldar Base de Datos"
-
 msgid "CSV Import"
 msgstr "Importar CSV"
-
-msgid "Access report"
-msgstr "Reporte de Accesos"
 
 msgid "Edit General Settings"
 msgstr "Editar Configuración General"
@@ -5805,9 +5783,6 @@ msgstr "Editar Configuración de Reportes"
 
 msgid "Edit User Default Settings"
 msgstr "Editar configuraciones de usuario por defecto"
-
-msgid "Envelope Manager"
-msgstr "Administrador de sobres"
 
 msgid "Please select this option to register ChurchInfo after configuring."
 msgstr "Seleccione esta opción para registrar"
@@ -5860,9 +5835,6 @@ msgstr "Lista de Tipos de Eventos"
 msgid "Check-in and Check-out"
 msgstr "entradas y Salidas"
 
-msgid "Deposit"
-msgstr "Depósito"
-
 msgid "Create New Deposit"
 msgstr "Crear nuevo depósito"
 
@@ -5875,23 +5847,8 @@ msgstr "Reporte de depósitos"
 msgid "Edit Deposit Slip"
 msgstr "Editar ficha de depósitos"
 
-msgid "Cart"
-msgstr "Separador"
-
 msgid "List Cart Items"
 msgstr "Listar items en Separador"
-
-msgid "Empty Cart"
-msgstr "Vaciar Separador"
-
-msgid "Empty Cart to Group"
-msgstr "Vaciar Separador a Grupo"
-
-msgid "Empty Cart to Family"
-msgstr "Vaciar Separador a Institución"
-
-msgid "Empty Cart to Event"
-msgstr "Vaciar Separador a Evento"
 
 msgid "Data/Reports"
 msgstr "Datos/Reportes"
@@ -5911,17 +5868,8 @@ msgstr "Grupos"
 msgid "List Groups"
 msgstr "Lista de Grupos"
 
-msgid "Add a New Group"
-msgstr "Añadir un nuevo grupo"
-
 msgid "Edit Group Types"
 msgstr "Editar tipos de grupos"
-
-msgid "Group Assignment Helper"
-msgstr "Ayuda de asignacion de grupos"
-
-msgid "Properties"
-msgstr "propiedades"
 
 msgid "People Properties"
 msgstr "Propiedades de personas"
@@ -5944,17 +5892,8 @@ msgstr "Acerca del Sistema"
 msgid "Wiki Documentation"
 msgstr "Documentación"
 
-msgid "People"
-msgstr "Personas"
-
-msgid "Families"
-msgstr "Instituciones (families)"
-
 msgid "Geographic features"
 msgstr "propiedades geográficas"
-
-msgid "Groups"
-msgstr "grupos"
 
 msgid "Finances"
 msgstr "finanzas"
@@ -5965,26 +5904,14 @@ msgstr "reportes"
 msgid "Administration"
 msgstr "Administración"
 
-msgid "Cart"
-msgstr "Separador"
-
-msgid "Properties"
-msgstr "Propiedades"
-
 msgid "Notes"
 msgstr "Notas"
-
-msgid "Custom Fields"
-msgstr "Campos Personalizados"
 
 msgid "Classifications"
 msgstr "Clasificaciones"
 
 msgid "Canvass Support"
 msgstr "Soporte de sondeo"
-
-msgid "Events"
-msgstr "Eventos"
 
 msgid "Menu Options"
 msgstr "Opciones de Menú"
