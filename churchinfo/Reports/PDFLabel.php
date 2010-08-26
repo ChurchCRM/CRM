@@ -12,15 +12,23 @@
 *  and Steve Dillon (steved@mad.scientist.com) from www.fpdf.org
 *
 *  Additional Contributions by
-*  2006 Ed Davis
+*  2006,2010 Ed Davis
 *  2006 Stephen Shaffer
 *
-*  Copyright 2006 Contributors
+*  LICENSE:
+*  (C) Free Software Foundation, Inc.
 *
 *  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
+*  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful, but
+*  WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+*  General Public License for more details.
+*
+*  http://www.gnu.org/licenses
 *
 ******************************************************************************/
 
@@ -276,9 +284,9 @@ function ZipBundleSort($inLabels) {
 //      $Labels[$i] = array('Name'=>$name, 'Address'=>$address,...'Zip'=>$zip) 
 //
 //  Bundles will be returned in the following order: 
-//  Bundles where full 5 digit zip count >= $iMinBundleSize 
-//  Bundles where 3 digit zip count >= $iMinBundleSize
-//  Bundles where "ADC" count >= $iMinBundleSize
+//  Bundles where full 5 digit zip count >= $iZip5MinBundleSize 
+//  Bundles where 3 digit zip count >= $iZip3MinBundleSize
+//  Bundles where "ADC" count >= $iAdcMinBundleSize
 //      Mixed ADC bundle
 //
 // Return Values:
@@ -302,6 +310,7 @@ function ZipBundleSort($inLabels) {
 // The following website is the source for the adc
 // http://pe.usps.com/text/dmm300/L004.htm
 // This array for STD mail
+// ADC array updated 2010-08-26
 
 $sADClist  =
 "005, 115, 117-119                      _LONG ISLAND NY 117         |" .
@@ -329,8 +338,8 @@ $sADClist  =
 "190-192                                _ADC PHILADELPHIA PA 190    |" .
 "197-199                                _ADC WILMINGTON DE 197      |" .
 "200                                    _WASHINGTON DC 200          |" .
-"202-205                                _ADC WASHINGTON DC 202      |" .
 "201, 220-223, 226, 227                 _ADC NORTHERN VA VA 220     |" .
+"202-205                                _ADC WASHINGTON DC 202      |" .
 "206-209                                _ADC SOUTHERN MD MD 207     |" .
 "210-212, 214-219, 254, 267             _ADC LINTHICUM MD 210       |" .
 "224, 225, 228-239, 244                 _ADC RICHMOND VA 230        |" .
@@ -345,11 +354,10 @@ $sADClist  =
 "302, 303, 311, 399                     _ADC ATLANTA GA 303         |" .
 "307, 370-374, 376-379, 384, 385        _ADC NASHVILLE TN 37099     |" .
 "310, 312, 316-319, 398                 _ADC MACON GA 31293         |" .
-"325, 365, 366, 394, 395, 700, 701, 703-708
-                                        _ADC NEW ORLEANS LA 70099   |" .
+"325, 365, 366, 394, 395                _ADC MOBILE AL 365          |" .
 "327-329, 334, 347, 349                 _ADC MID FLORIDA FL 32799   |" .
 "330-333, 340                           _ADC MIAMI FL 33298         |" .
-"335-339, 341, 342, 346                 _ADC MANASOTA FL 34299      |" .
+"335-339, 341, 342, 346                 _ADC TAMPA FL 335           |" .
 "350-352, 354-359, 362                  _ADC BIRMINGHAM AL 35099    |" .
 "360, 361, 363, 364, 367, 368           _ADC MONTGOMERY AL 36099    |" .
 "369, 390-393, 396, 397                 _ADC JACKSON MS 39099       |" .
@@ -366,8 +374,8 @@ $sADClist  =
                                         _ADC MILWAUKEE WI 530       |" .
 "500-509, 520-528, 612                  _ADC DES MOINES IA 50091    |" .
 "510-516, 680, 681, 683-693             _ADC OMAHA NE 680           |" .
-"540, 546-548, 550, 551, 556-559        _ADC ST PAUL MN 55233       |" .
-"553-555, 560-564, 566                  _ADC MINNEAPOLIS MN 55533   |" .
+"540, 546-548, 550, 551, 556-559        _ADC ST PAUL MN 550         |" .
+"553-555, 560-564, 566                  _ADC MINNEAPOLIS MN 553     |" .
 "565, 567, 580-588                      _ADC FARGO ND 580           |" .
 "570-577                                _ADC SIOUX FALLS SD 570     |" .
 "590-599, 821                           _ADC BILLINGS MT 590        |" .
@@ -377,36 +385,41 @@ $sADClist  =
 "620, 622-631, 633-639                  _ADC ST LOUIS MO 63203      |" .
 "640, 641, 644-658, 660-662, 664-668    _ADC KANSAS CITY MO 66340   |" .
 "669-679, 739                           _ADC WICHITA KS 67099       |" .
+"700, 701, 703, 704                     _ADC NEW ORLEANS LA 700     |" .
+"705-708                                _ADC BATON ROUGE LA 707     |" .
 "710-714                                _ADC SHREVEPORT LA 71099    |" .
 "716-722, 724-729                       _ADC LITTLE ROCK AR 72098   |" .
 "730, 731, 734-738, 748                 _ADC OKLAHOMA CITY OK 730   |" .
 "733, 779-789                           _ADC SAN ANTONIO TX 78099   |" .
 "740, 741, 743-747, 749                 _ADC TULSA OK 740           |" .
 "750-759                                _ADC NORTH TEXAS TX 750     |" .
-"760-769, 790-797                       _ADC FT WORTH TX 760        |" .
+"760-769                                _ADC FT WORTH TX 760        |" .
 "770-778                                _ADC NORTH HOUSTON TX 773   |" .
+"790-797                                _ADC LUBBOCK TX 793         |" .
 "798, 799, 880, 885                     _ADC EL PASO TX 798         |" .
 "800-816                                _ADC DENVER CO 800          |" .
 "820, 822-831                           _ADC CHEYENNE WY 820        |" .
 "832-834, 836, 837, 979                 _ADC BOISE ID 836           |" .
 "835, 838, 980-985, 988-994, 998, 999   _ADC SEATTLE WA 980         |" .
 "840-847, 898                           _ADC SALT LAKE CTY UT 840   |" .
-"850, 852, 853, 855, 859, 860, 863      _ADC PHOENIX AZ 852         |" .
+"850-853, 855, 859, 860, 863            _ADC PHOENIX AZ 852         |" .
 "856, 857                               _ADC TUCSON AZ 856          |" .
 "864, 889-891, 893-895, 897, 961        _ADC LAS VEGAS NV 890       |" .
 "865, 870-875, 877-879, 881-884         _ADC ALBUQUERQUE NM 870     |" .
 "900-904                                _ADC LOS ANGELES CA 900     |" .
-"905-908, 917, 918                      _ADC INDUSTRY CA 917        |" .
-"910-916, 930-935                       _ADC SANTA CLARITA CA 914   |" .
+"905-908                                _ADC LONG BEACH CA 907      |" .
+"910-912, 932, 933, 935                 _ADC PASADENA CA 910        |" .
+"913-916, 930, 931, 934                 _ADC SANTA CLARITA CA 913   |" .
+"917, 918                               _ADC INDUSTRY CA 917        |" .
 "919-921                                _ADC SAN DIEGO CA 920       |" .
 "922-925                                _ADC SN BERNARDINO CA 923   |" .
 "926-928                                _ADC SANTA ANA CA 926       |" .
-"936-939, 945-948, 950, 951             _ADC OAKLAND CA 945         |" .
-"940, 941, 943, 944, 949, 954, 955      _ADC PENINSULA CA 941       |" .
+"936-939, 950, 951                      _ADC SAN JOSE CA 950        |" .
+"940, 941, 943, 944, 949, 954, 955      _ADC SAN FRANCISCO CA 940   |" .
 "942, 952, 953, 956-960                 _ADC SACRAMENTO CA 956      |" .
+"945-948                                _ADC OAKLAND CA 945         |" .
 "962-966                                _AMF SFO APO/FPO CA 962     |" .
-"967, 968                               _ADC HONOLULU HI 967        |" .
-"969                                    _ADC OAKLAND CA 945         |" .
+"967-969                                _ADC HONOLULU HI 967        |" .
 "970-978, 986                           _ADC PORTLAND OR 970        |" .
 "995-997                                _ADC ANCHORAGE AK 995       |";
 
@@ -421,7 +434,10 @@ $adc = MakeADCArray($sADClist);
 //
 // 80
 
-$iMinBundleSize = 15;  // Minimum number of labels allowed in a bundle
+// $iMinBundleSize = 15;  // Minimum number of labels allowed in a bundle
+$iZip5MinBundleSize = 15;  // Minimum number of labels allowed in a 5 digit zip code bundle
+$iZip3MinBundleSize = 10;  // Minimum number of labels allowed in a 3 digit zip code bundle
+$iAdcMinBundleSize = 10;  // Minimum number of labels allowed in an ADC bundle
 
 $n = count($inLabels);
 $nTotalLabels = $n;
@@ -436,13 +452,13 @@ for($i=0; $i < $n; $i++) $Zips[$i] = intval(substr($inLabels[$i]['Zip'],0,5));
 $ZipCounts=array_count_values($Zips);
 
 //
-// walk through the input array and pull all matching records where count >= $iMinBundleSize
+// walk through the input array and pull all matching records where count >= $iZip5MinBundleSize
 //
 
 $nz5=0;
 
 while (list($z,$zc) = each($ZipCounts)){
-    if($zc >= $iMinBundleSize){
+    if($zc >= $iZip5MinBundleSize){
         $NoteText = array('Note'=>"******* Presort ZIP-5 ".$z);
         $NameText = array('Name'=>"** ".$zc." Addresses in Bundle ".$z." *");
         $AddressText = array('Address'=>"** ".$nTotalLabels." Total Addresses *");
@@ -487,12 +503,12 @@ for($i=0; $i < $n; $i++)
 $ZipCounts=array_count_values($Zips);
 
 //
-// walk through the input array and pull all matching records where count >= $iMinBundleSize
+// walk through the input array and pull all matching records where count >= $iZip3MinBundleSize
 //
 
 $nz3=0;
 while (list($z,$zc) = each($ZipCounts)){
-    if($zc >= $iMinBundleSize){
+    if($zc >= $iZip3MinBundleSize){
         $NoteText = array('Note'=>"******* Presort ZIP-3 ".$z);
         $NameText = array('Name'=>"** ".$zc." Addresses in Bundle ".$z." *");
         $AddressText = array('Address'=>"** ".$nTotalLabels." Total Addresses *");
@@ -535,7 +551,7 @@ if (isset($Zips))
     $ZipCounts=array_count_values($Zips);
 
 //
-// walk through the input array and pull all matching records where count >= $iMinBundleSize
+// walk through the input array and pull all matching records where count >= $iAdcMinBundleSize
 //
 
 $ncounts = 0;
@@ -544,7 +560,7 @@ if (isset($ZipCounts))
 $nadc=0;
 if ($ncounts) {
 while (list($z,$zc) = each($ZipCounts)){
-    if($zc >= $iMinBundleSize){
+    if($zc >= $iAdcMinBundleSize){
         $NoteText = array('Note'=>"******* Presort ADC ".$z);
         $NameText = array('Name'=>"** ".$zc." Addresses in Bundle ADC ".$z." *");
         $AddressText = array('Address'=>"** ".$nTotalLabels." Total Addresses *");
