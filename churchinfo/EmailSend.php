@@ -341,7 +341,7 @@ $bHavePHPMailerClass = FALSE;
 $bHaveSMTPClass = FALSE;
 $bHavePHPMailerLanguage = FALSE;
 
-$sLangCode = substr ($sLanguage, 0, 2); // Strip the language code from the beginning of the language_country code
+$sLangCode = substr($sLanguage, 0, 2); // Strip the language code from the beginning of the language_country code
 
 $sPHPMailerClass = $sPHPMailerPath.'class.phpmailer.php';
 if (file_exists($sPHPMailerClass) && is_readable($sPHPMailerClass)) {
@@ -359,7 +359,10 @@ if (file_exists($sSMTPClass) && is_readable($sSMTPClass)) {
 
 $sTestLanguageFile = $sPHPMailerPath.'language'.DIRECTORY_SEPARATOR
 .'phpmailer.lang-'.$sLangCode.'.php';
-if (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
+if (!strcmp($sLangCode, "en")) {
+    $bHavePHPMailerLanguage = TRUE;
+    $sFoundLanguageFile = "Not needed for English";
+} elseif (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
     $sLanguagePath = $sPHPMailerPath.'language'.DIRECTORY_SEPARATOR;
     $bHavePHPMailerLanguage = TRUE;
     $sFoundLanguageFile = $sTestLanguageFile;
