@@ -3,19 +3,28 @@
  *
  *  filename    : ISTAddressVerification.php
  *  website     : http://www.churchdb.org
- *  copyright   : Copyright Contributors
  *  description : USPS address verification
+ *
+ *  LICENSE:
+ *  (C) Free Software Foundation, Inc.
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
+ *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful, but
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ *  General Public License for more details.
+ *
+ *  http://www.gnu.org/licenses
  *
  ******************************************************************************/
 
 // This file verifies family address information using an on-line XML
 // service provided by Intelligent Search Technology, Ltd.  Fees required.
-// See https://www.name-searching.com/CaddressASP
+// See https://www.intelligentsearch.com/Hosted/User/
 
 // Include the function library
 require 'Include/Config.php';
@@ -44,7 +53,7 @@ class ISTAddressLookup {
 
     // This code is written to work with XML lookups provide by
     // Intelligent Search Technology, Ltd.
-    // https://www.name-searching.com/CaddressASP/LoginForm.aspx
+    // https://www.intelligentsearch.com/Hosted/User/
 
     function GetAddress1 ()         { return $this->DeliveryLine1; }
     function GetAddress2 ()         { return $this->DeliveryLine2; }
@@ -80,8 +89,8 @@ class ISTAddressLookup {
         // 3 - account does not have access to CorrectAddress(R) XML web services
         // 4 - unspecified error
 
-        $base     = 'https://www.name-searching.com/CaddressASP/';
-        $base    .= 'CorrectAddressWebService.asmx/getAccountInfo';
+        $base     = 'https://www.intelligentsearch.com/CorrectAddressWS/';
+        $base    .= 'CorrectAddressWebService.asmx/wsGetAccountInfo';
 
 
         $query_string     = '';
@@ -150,7 +159,7 @@ class ISTAddressLookup {
 
         // Lookup and Correct US address
 
-        $base     = 'https://www.name-searching.com/CaddressASP/';
+        $base     = 'https://www.intelligentsearch.com/CorrectAddressWS/';
         $base    .= 'CorrectAddressWebService.asmx/wsCorrectA';
 //        $base    .= "CorrectAddressWebService.asmx/wsTigerCA";
 
@@ -297,8 +306,8 @@ if ($myISTReturnCode == '4') {
     echo 'Technology account settings.  This link may also provide information pertaining to ';
     echo 'this service disruption.<br><br>';
 
-    echo '<a href="https://www.name-searching.com/CaddressASP">';
-    echo gettext('https://www.name-searching.com/CaddressASP') . '</a><br><br>';
+    echo '<a href="https://www.intelligentsearch.com/Hosted/User/">';
+    echo gettext('https://www.intelligentsearch.com/Hosted/User/') . '</a><br><br>';
 
 } elseif ($myISTReturnCode != '0') {
 
@@ -314,8 +323,8 @@ if ($myISTReturnCode == '4') {
     echo 'URL. This software was written to work best with the service CorrectAddress(R) with ';
     echo 'Addons. <br><br>';
 
-    echo '<a href="https://www.name-searching.com/CaddressASP">';
-    echo gettext('https://www.name-searching.com/CaddressASP') . '</a><br><br>';
+    echo '<a href="https://www.intelligentsearch.com/Hosted/User/">';
+    echo gettext('https://www.intelligentsearch.com/Hosted/User/') . '</a><br><br>';
 
     echo 'If you are sure that your account username and password are correct and that your ';
     echo 'account is in good standing it is possible that the server is currently unavailable ';
@@ -338,8 +347,8 @@ if ($myISTReturnCode == '4') {
     echo 'Follow the URL below to log in and manage your Intelligent Search Technology account ';
     echo "settings.<br>\n";
 
-    echo '<a href="https://www.name-searching.com/CaddressASP">';
-    echo gettext("https://www.name-searching.com/CaddressASP") . "</a><br><br><br>\n";
+    echo '<a href="https://www.intelligentsearch.com/Hosted/User/">';
+    echo gettext("https://www.intelligentsearch.com/Hosted/User/") . "</a><br><br><br>\n";
 
     echo 'This software was written to work best with the service CorrectAddress(R) ';
     echo 'with Addons. <br><br><br>';
@@ -580,8 +589,8 @@ if ($myISTReturnCode == '4') {
                 echo "your account balance is zero.  To enable bulk lookups you will ";
                 echo "need to add funds to your Intelligent Search Technology account ";
                 echo "at the following link.<br>";
-                echo "<a href=\"https://www.name-searching.com/CaddressASP\">";
-                echo gettext("https://www.name-searching.com/CaddressASP") . "</a><br></h3>";
+                echo "<a href=\"https://www.intelligentsearch.com/Hosted/User/\">";
+                echo gettext("https://www.intelligentsearch.com/Hosted/User/") . "</a><br></h3>";
                 } else {
     echo "<h4>Lookup failed.  There is a problem with the connection or with your account.</h4>";
     echo "Please verify that your Intelligent Search Technology, Ltd. username and password ";
@@ -593,7 +602,7 @@ if ($myISTReturnCode == '4') {
     echo "URL. This software was written to work best with the service CorrectAddress(R) ";
     echo "with Addons. <br><br><br>";
 
-    echo "<a href=\"https://www.name-searching.com/CaddressASP\">" . gettext("https://www.name-searching.com/CaddressASP") . "</a><br><br>";
+    echo "<a href=\"https://www.intelligentsearch.com/Hosted/User/\">" . gettext("https://www.intelligentsearch.com/Hosted/User/") . "</a><br><br>";
 
     echo "If you are sure that your account username and password are correct and that your ";
     echo "account is in good standing it is possible that the server is currently unavailable ";
