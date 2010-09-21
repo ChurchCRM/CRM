@@ -28,6 +28,11 @@ $sPageTitle = gettext("Custom Person Fields Editor");
 
 require "Include/Header.php";
 
+$bErrorFlag = false;
+$bNewNameError = false;
+$bDuplicateNameError = false; 
+$aNameErrors = array();
+
 // Does the user want to save changes to text fields?
 if (isset($_POST["SaveChanges"]))
 {
@@ -250,6 +255,7 @@ else
 // Prepare Security Group list
 	$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
 	$rsSecurityGrp = RunQuery($sSQL);
+	$aSecurityType = array ();
 
 	$aSecurityGrp = Array();
 	while ($aRow = mysql_fetch_array($rsSecurityGrp))
@@ -358,7 +364,7 @@ else
 
 			<td class="TextColumn" align="center"><input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="35" maxlength="40">
 				<?php
-				if ( $aNameErrors[$row] )
+				if ( isset($aNameErrors[$row]) )
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
 				?>
 			</td>
@@ -394,7 +400,13 @@ else
 
 			</td>
 			<td class="TextColumn" align="center" nowrap>
-				<?php echo GetSecurityList($aSecurityGrp, $row . "FieldSec", $aSecurityType[$aFieldSecurity[$row]]); ?>
+				<?php 
+				if (isset($aSecurityType[$aFieldSecurity[$row]])) { 
+					echo GetSecurityList($aSecurityGrp, $row . "FieldSec", $aSecurityType[$aFieldSecurity[$row]]);
+				} else {
+					echo GetSecurityList($aSecurityGrp, $row . "FieldSec");
+				}
+				?>
 			</td>
 			<td class="TextColumn" align="center" nowrap>
 				<input type="radio" Name="<?php echo $row . "side" ?>" value="0" <?php if (!$aSideFields[$row]) echo " checked" ?>><?php echo gettext("Left"); ?>
