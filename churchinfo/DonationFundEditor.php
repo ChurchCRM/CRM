@@ -25,10 +25,21 @@ if (!$_SESSION['bAdmin'])
 	exit;
 }
 
-$sAction = $_GET["Action"];
-$sFund = FilterInput($_GET["Fund"],'int');
+if (isset($_GET["Action"])) {
+	$sAction = $_GET["Action"];
+} else {
+	$sAction = '';
+}
+if (isset ($_GET["Fund"])) {
+	$sFund = FilterInput($_GET["Fund"],'int');
+} else {
+	$sFund = '';
+}
 
 $sDeleteError = "";
+$bErrorFlag = false;
+$aNameErrors = array ();
+$bNewNameError = false;
 
 if ($sAction = 'delete' && strlen($sFund) > 0)
 {
@@ -202,7 +213,7 @@ else
 			<td class="TextColumn" align="center">
 				<input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
 				<?php
-				if ( $aNameErrors[$row] )
+				if ( isset($aNameErrors[$row]) )
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
 				?>
 			</td>

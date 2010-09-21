@@ -40,6 +40,8 @@ $sPageTitle = gettext("Custom Family Fields Editor");
 
 require 'Include/Header.php';
 
+$bNewNameError = false;
+$bDuplicateNameError = false;
 // Does the user want to save changes to text fields?
 if (isset($_POST["SaveChanges"]))
 {

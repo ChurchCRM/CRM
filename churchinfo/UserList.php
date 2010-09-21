@@ -27,7 +27,12 @@ if (!$_SESSION['bAdmin'])
 	exit;
 }
 
-$iResetLoginCount = FilterInput($_GET["ResetLoginCount"],'int');
+if (isset ($_GET["ResetLoginCount"])) {
+	$iResetLoginCount = FilterInput($_GET["ResetLoginCount"],'int');
+} else {
+	$iResetLoginCount = 0;
+}
+
 if ($iResetLoginCount > 0)
 {
 	$sSQL = "UPDATE user_usr SET usr_FailedLogins = 0 WHERE usr_per_ID = " . $iResetLoginCount;

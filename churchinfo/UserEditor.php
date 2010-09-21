@@ -46,6 +46,8 @@ if (!$_SESSION['bAdmin'])
     exit;
 }
 
+$iPersonID = -1;
+
 // Get the PersonID out of either querystring or the form, depending and what we're doing
 if (isset($_GET['PersonID'])) {
     $iPersonID = FilterInput($_GET['PersonID'],'int');
@@ -208,7 +210,7 @@ function StyleSheetOptions($dirName,$currentStyle)
     if ($dir) {
         while($file = readdir($dir))
         {
-            if (ereg("\.css",$file))
+            if (preg_match("/\.css/",$file))
             {
                 echo "<option value=\"$file\"";
                 if ($file == $currentStyle)

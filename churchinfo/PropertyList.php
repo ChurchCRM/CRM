@@ -73,6 +73,8 @@ echo "<tr><td>&nbsp;</td></tr>";
 
 //Initalize the row shading
 $sRowClass = "RowColorA";
+$iPreviousPropertyType = -1;
+$sBlankLine = '';
 
 //Loop through the records
 while ($aRow = mysql_fetch_array($rsProperties))
