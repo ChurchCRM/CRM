@@ -310,7 +310,7 @@ global $sURLPath, $security_matrix;
     $link = ($aMenu['uri'] == "") ? "" : $sURLPath."/".$aMenu['uri'];
     $text = $aMenu['statustext'];
     if (!is_null($aMenu['session_var'])) {
-        if (($link > "") & ($aMenu['session_var_in_uri'])) {
+        if (($link > "") && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
             if (strstr($link, "?")&&true) {
                 $cConnector = "&";
             } else {
@@ -318,7 +318,7 @@ global $sURLPath, $security_matrix;
             }
             $link .= $cConnector.$aMenu['url_parm_name']."=".$_SESSION[$aMenu['session_var']];
         }
-        if (($text > "") & ($aMenu['session_var_in_text'])) {
+        if (($text > "") & ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
             $text .= " ".$_SESSION[$aMenu['session_var']];
         }
     }
@@ -524,10 +524,10 @@ global $sURLPath;
     $text = $aMenu['statustext'];
     $content = $aMenu['content'];
     if (!is_null($aMenu['session_var'])) {
-        if (($link > "") & ($aMenu['session_var_in_uri'])) {
+        if (($link > "") && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
             $link .= "?".$aMenu['url_parm_name']."=".$_SESSION[$aMenu['session_var']];
         }
-        if (($text > "") & ($aMenu['session_var_in_text'])) {
+        if (($text > "") && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
             $text .= " ".$_SESSION[$aMenu['session_var']];
         }
     }

@@ -34,7 +34,7 @@ else // Turn off error reporting
 //
 // Basic security checks:
 //
-if (!$bSuppressSessionTests)  // This is used for the login page only.
+if (!isset($bSuppressSessionTests))  // This is used for the login page only.
 {
     // Basic security: If the UserID isn't set (no session), redirect to the login page
     if (!isset($_SESSION['iUserID']))
@@ -115,7 +115,7 @@ function addslashes_deep($value)
 }
 
 // If Magic Quotes is turned off, do the same thing manually..
-if (!$_SESSION['bHasMagicQuotes'])
+if (!isset($_SESSION['bHasMagicQuotes']))
 {
     foreach ($_REQUEST as $key=>$value) $value = addslashes_deep($value);
 }
@@ -161,7 +161,7 @@ if (isset($_GET["RemoveFromPeopleCart"])) {
 }
 
 // Are they emptying their cart?
-if ($_GET["Action"] == "EmptyCart") {
+if (isset($_GET["Action"]) && $_GET["Action"] == "EmptyCart") {
     unset($_SESSION['aPeopleCart']);
     $sGlobalMessage = gettext("Your cart has been successfully emptied.");
 }

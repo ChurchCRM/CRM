@@ -45,7 +45,7 @@ require 'Include/Functions.php';
 // Initialize the variables
 $sErrorText = '';
 
-$_SESSION['bSecureServer'] = isAffirmative($_SERVER['HTTPS']);
+$_SESSION['bSecureServer'] = isset($_SERVER['HTTPS']) && isAffirmative($_SERVER['HTTPS']);
 
 // Check if https is required, if so, check if we're using https.
 // Redirect back this page using https if https is required.
@@ -104,6 +104,7 @@ if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
 	session_destroy();
 }
 
+$iUserID = 0;
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User']) && $sErrorText == '') {
 
@@ -267,7 +268,7 @@ if ($iUserID > 0)
 
 
 		// Set the Workspace Width
-		$_SESSION['iWorkspaceWidth'] = $usr_WorkspaceWidth;
+		$_SESSION['iWorkspaceWidth'] = $usr_Workspacewidth;
 
 		// Set the Base Font Size
 		$_SESSION['iBaseFontSize'] = $usr_BaseFontSize;
