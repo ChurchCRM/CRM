@@ -549,6 +549,10 @@ require "Include/Header.php";
 						<?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "BankDraft" or !$iCurrentDeposit) { ?>
 						<option value="BANKDRAFT" <?php if ($iMethod == "BANKDRAFT") { echo "selected"; } ?>><?php echo 						gettext("Bank Draft"); ?></option>
 						<?php } ?>
+                                                <?php if ($PledgeOrPayment=='Pledge') { ?>
+                                                <option value="EGIVE" <?php if ($iMethod == "EGIVE") { echo "selected"; } ?>><?php echo
+                          gettext("eGive"); ?></option>
+                                                <?php } ?>
 					</select>
 				</td>
 			</tr>
