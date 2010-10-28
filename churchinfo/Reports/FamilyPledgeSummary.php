@@ -70,7 +70,7 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
 }
 
 // Get all the families
-$sSQL = "SELECT * FROM family_fam";
+$sSQL = "SELECT DISTINCT fam_ID, fam_Name FROM family_fam";
 
 if ($classList[0]) {
 	$sSQL .= " LEFT JOIN person_per ON fam_ID=per_fam_ID";
