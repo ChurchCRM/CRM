@@ -41,12 +41,47 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
 	exit;
 }
 
+if (!empty($_POST["classList"])) {
+    $classList = $_POST["classList"];
+
+	if ($classList[0]) {
+		$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
+		$rsClassifications = RunQuery($sSQL);
+
+		$inClassList = "(";
+		$notInClassList = "(";
+
+		while ($aRow = mysql_fetch_array($rsClassifications)) {
+			extract($aRow);
+			if (in_array($lst_OptionID, $classList)) {
+				if ($inClassList == "(") {
+					$inClassList .= $lst_OptionID;
+				} else {
+					$inClassList .= "," . $lst_OptionID;
+				}
+			} else {
+				if ($notInClassList == "(") {
+					$notInClassList .= $lst_OptionID;
+				} else {
+					$notInClassList .= "," . $lst_OptionID;
+				}
+			}
+		}
+		$inClassList .= ")";
+		$notInClassList .= ")";
+	}
+}
+
 // Build SQL Query
 // Build SELECT SQL Portion
 $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_envelope, plg_date, plg_amount, plg_method, plg_comment, plg_CheckNo, fun_Name, plg_PledgeOrPayment, plg_NonDeductible FROM family_fam
 	INNER JOIN pledge_plg ON fam_ID=plg_FamID
-	LEFT JOIN donationfund_fun ON plg_fundID=fun_ID
-	WHERE plg_PledgeOrPayment='Payment' ";
+	LEFT JOIN donationfund_fun ON plg_fundID=fun_ID";
+
+if ($classList[0]) {
+	$sSQL .= " LEFT JOIN person_per ON fam_ID=per_fam_ID";
+}
+$sSQL .= " WHERE plg_PledgeOrPayment='Payment' ";
 
 // Add  SQL criteria
 // Report Dates OR Deposit ID
@@ -103,6 +138,12 @@ if (!empty($_POST["family"])) {
 		}
 		$sSQL .= ") ";
 	}
+}
+
+if ($classList[0]) {
+	$q = " per_cls_ID IN " . $inClassList . " AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN " . $notInClassList . ")";
+
+	$sSQL .= " AND" . $q;
 }
 
 // Get Criteria string
@@ -421,7 +462,7 @@ if ($output == "pdf") {
 	$eol = "\r\n";
 	
 	// Build headings row
-	preg_match ("/SELECT (.*) FROM /i", $sSQL, $result);
+        preg_match ("/SELECT (.*) FROM /i", $sSQL, $result);
 	$headings = explode(",",$result[1]);
 	$buffer = "";
 	foreach ($headings as $heading) {
