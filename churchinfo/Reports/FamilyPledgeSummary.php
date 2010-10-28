@@ -173,12 +173,14 @@ $pdf->AddPage ();
 $leftX = 10;
 $famNameX = 10;
 $famMethodX = 90;
-$famPledgeX = 120;
-$famPayX = 140;
-$famOweX = 160;
+$famFundX = 120;
+$famPledgeX = 150;
+$famPayX = 170;
+$famOweX = 190;
 
 $famNameWid = $famMethodX - $famNameX;
-$famMethodWid = $famPledgeX - $famMethodX;
+$famMethodWid = $famFundX - $famMethodX;
+$famFundWid = $famPledgeX - $famFundX;
 $famPledgeWid = $famPayX - $famPledgeX;
 $famPayWid = $famOweX - $famPayX;
 $famOweWid = $famPayWid;
@@ -192,6 +194,7 @@ $y += $lineInc;
 
 $pdf->WriteAtCell ($famNameX, $y, $famNameWid, "Name");
 $pdf->WriteAtCell ($famMethodX, $y, $famMethodWid, "Method");
+$pdf->WriteAtCell ($famFundX, $y, $famFundWid, "Fund");
 $pdf->WriteAtCell ($famPledgeX, $y, $famPledgeWid, "Pledge");
 $pdf->WriteAtCell ($famPayX, $y, $famPayWid, "Paid");
 $pdf->WriteAtCell ($famOweX, $y, $famOweWid, "Owe");
@@ -308,6 +311,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 				$pdf->WriteAtCell ($famNameX, $y, $famNameWid, $pdf->MakeSalutation ($fam_ID));
 				$pdf->WriteAtCell ($famPledgeX, $y, $famPledgeWid, $fundPledgeTotal[$fun_name]);
 				$pdf->WriteAtCell ($famMethodX, $y, $famMethodWid, $fundPledgeMethod[$fun_name]);
+				$pdf->WriteAtCell ($famFundX, $y, $famFundWid, $fun_name);
 				$pdf->WriteAtCell ($famPayX, $y, $famPayWid, $fundPaymentTotal[$fun_name]);
 				$pdf->WriteAtCell ($famOweX, $y, $famOweWid, $amountDue);
 				$y += $lineInc;
