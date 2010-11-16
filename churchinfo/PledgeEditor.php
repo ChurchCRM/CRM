@@ -217,7 +217,7 @@ elseif ($iMethod == "CREDITCARD")
 elseif ($iMethod == "BANKDRAFT")
 	$dep_Type = "BankDraft";
 
-if ($pledgeOrPayment == 'Payment') {
+if ($PledgeOrPayment == 'Payment') {
 	$bEnableNonDeductible = 1; // this could/should be a config parm?  regardless, having a non-deductible amount for a pledge doesn't seem possible
 }
 
