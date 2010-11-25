@@ -254,7 +254,9 @@ function GetSecuritySettings() {
     $aSecurityList[] = "bNotes";
     $aSecurityList[] = "bCommunication";
     $aSecurityList[] = "bCanvasser";
-
+    $aSecurityList[] = "bAddEvent";
+    $aSecurityList[] = "bSeePrivacyData";
+    
     $sSQL = "SELECT DISTINCT ucfg_name FROM userconfig_ucfg WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY' ORDER by ucfg_id";
     $rsSecGrpList = RunQuery($sSQL);
             
@@ -267,7 +269,7 @@ function GetSecuritySettings() {
 
     $sSecurityCond = " AND (security_grp = 'bALL'";
     for ($i = 0; $i < count($aSecurityList); $i++) {
-        if ($_SESSION[$aSecurityList[$i]]) {
+    	if (array_key_exists ($aSecurityList[$i], $_SESSION) && $_SESSION[$aSecurityList[$i]]) {
             $sSecurityCond .= " OR security_grp = '" . $aSecurityList[$i] . "'";
         }
     }
