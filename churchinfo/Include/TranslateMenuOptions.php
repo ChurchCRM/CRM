@@ -2,7 +2,7 @@
 // Convert a relative URL into an absolute URL and redirect the browser there.
 function TranslateMenuOptions ()
 {
-	foreach ( array(
+	$allOptions = array(
 	'Main',
 	'Log Off',
 	'Change My Password',
@@ -80,7 +80,9 @@ function TranslateMenuOptions ()
 	'Events',
 	'Menu Options',
 	'Edit Custom Family Fields'
-	) as $str) {
+	);
+	
+	foreach ($allOptions as $str) {
 		$sSQL = "update menuconfig_mcf set content='" . gettext ($str) . "' where content_english='". $str . "'";
 		RunQuery ($sSQL);
 	}
