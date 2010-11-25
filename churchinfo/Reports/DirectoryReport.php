@@ -705,7 +705,7 @@ while ($aRow = mysql_fetch_array($rsRecords))
         // Find the other members of a family
         $sSQL = "SELECT * from (person_per $sGroupTable) LEFT JOIN family_fam ON per_fam_ID = fam_ID
             WHERE per_fam_ID = " . $iFamilyID . " AND !(per_fmr_ID in ($sDirRoleHeads))
-            AND !(per_fmr_ID in ($sDirRoleSpouses))  $sWhereExt $sClassQualifier $sGroupBy";
+            AND !(per_fmr_ID in ($sDirRoleSpouses))  $sWhereExt $sClassQualifier $sGroupBy ORDER BY per_BirthYear";
         $rsPerson = RunQuery($sSQL);
 
         while ($aRow = mysql_fetch_array($rsPerson))
