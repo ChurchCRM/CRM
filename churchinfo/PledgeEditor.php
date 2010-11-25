@@ -355,7 +355,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		$routeAndAccount = $micrObj->FindRouteAndAccount ($tScanString); // use routing and account number for matching
 
     	if ($routeAndAccount) {
-		   $sSQL = "SELECT fam_ID FROM family_fam WHERE fam_scanCheck REGEXP \"" . $routeAndAccount . "\"";
+		   $sSQL = "SELECT fam_ID FROM family_fam WHERE fam_scanCheck=\"" . $routeAndAccount . "\"";
 		   $rsFam = RunQuery($sSQL);
 		   extract(mysql_fetch_array($rsFam));
 		   $iFamily = $fam_ID;
@@ -422,8 +422,9 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 	// Handle special buttons at the bottom of the form.
 	if (isset($_POST["SetDefaultCheck"])) {
 		$tScanString = FilterInput($_POST["ScanInput"]);
+		$routeAndAccount = $micrObj->FindRouteAndAccount ($tScanString); // use routing and account number for matching
 		$iFamily = FilterInput($_POST["FamilyID"],'int');
-		$sSQL = "UPDATE family_fam SET fam_scanCheck=\"" . $tScanString . "\" WHERE fam_ID = " . $iFamily;
+		$sSQL = "UPDATE family_fam SET fam_scanCheck=\"" . $routeAndAccount . "\" WHERE fam_ID = " . $iFamily;
 		RunQuery($sSQL);
 	}
 }
