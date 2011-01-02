@@ -24,7 +24,9 @@ if (!$_SESSION['bAdmin'])
 	exit;
 }
 
-$scfgCategory = FilterInput($_GET["Cat"],'string');
+$scfgCategory = "";
+if (isset ($_GET["Cat"]))
+	$scfgCategory = FilterInput($_GET["Cat"],'string');
 
 $sCategory_Filter = ($scfgCategory == "") ? " AND cfg_category is NULL" : " AND cfg_category = '$scfgCategory' ";
 
@@ -43,7 +45,7 @@ while ($aRow = mysql_fetch_array($rsConfigs)) {
 }
 
 // Save Settings
-if ($_POST['save']){
+if (isset ($_POST['save'])){
 	$new_value = $_POST['new_value'];
 	$type = $_POST['type'];
 	ksort ($type);

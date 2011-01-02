@@ -52,67 +52,69 @@ if ( answer )
 //  process the ACTION button inputs from the form page
 //
 $editing='FALSE';
+$editID = 0;
 
-switch ($_POST['Action']){
-case gettext("Add Event Type"):
-    // Insert into the event_name table
-    $sSQL = "INSERT INTO event_types () VALUES()";
-    RunQuery($sSQL);
-    $theID = mysql_insert_id();
-    $editID=$theID;  
-    $editing='TRUE';
-    $_POST['Action']='';
-    break;
-
-case gettext("Save Changes"):
-
-  $editing='FALSE';
-  $eName = $_POST["newEvtName"];
-  $eTime = $_POST["newEvtStartTime"];
-  $eDOM = $_POST["newEvtRecurDOM"];
-  $eDOW = $_POST["newEvtRecurDOW"];
-  $eDOY = $_POST["newEvtRecurDOY"];
-  $eRecur=$_POST["newEvtTypeRecur"];
-  $eCntLst = $_POST["newEvtTypeCntLst"];
-  $eCntArray = explode(",",$eCntLst);
-  $eCntArray[] = "Total";
-  $eCntNum = count($eCntArray);
-  $theID=$_POST["theID"];
-
-  $sSQL = "UPDATE event_types SET type_name='$eName', type_defstarttime='$eTime',type_defrecurtype='$eRecur', type_defrecurDOW='$eDOW',type_defrecurDOM='$eDOM',type_defrecurDOY='$eDOY' WHERE type_id='$theID'";
-
-  RunQuery($sSQL);
-  
-  for($j=0; $j<$eCntNum; $j++)
-  {
-    $cCnt = ltrim(rtrim($eCntArray[$j]));
-    $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('$theID','$cCnt') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
-    RunQuery($sSQL);
-  }
-  $editID='';
-  $theID='';
-  $_POST['Action']='';
-  break;
-//  
-//case "Edit": 
-//  $theID = $_POST["theID"];
-//  break;
-//
-case gettext("Delete"):
-  $theID = $_POST["theID"];
-  $sSQL = "DELETE FROM event_types WHERE type_id='$theID' LIMIT 1";
-//  echo "$sSQL";
-  RunQuery($sSQL);
-  $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$theID'";
-//  echo "$sSQL";
-  RunQuery($sSQL);
-  $theID='';
-  $editID='';
-  $editing='FALSE';
-  $_POST['Action']='';
-  break;
+if (isset ($_POST['Action'])) {
+	switch (FilterInput($_POST['Action'])){
+	case gettext("Add Event Type"):
+	    // Insert into the event_name table
+	    $sSQL = "INSERT INTO event_types () VALUES()";
+	    RunQuery($sSQL);
+	    $theID = mysql_insert_id();
+	    $editID=$theID;
+	    $editing='TRUE';
+	    $_POST['Action']='';
+	    break;
+	
+	case gettext("Save Changes"):
+	
+	  $editing='FALSE';
+	  $eName = $_POST["newEvtName"];
+	  $eTime = $_POST["newEvtStartTime"];
+	  $eDOM = $_POST["newEvtRecurDOM"];
+	  $eDOW = $_POST["newEvtRecurDOW"];
+	  $eDOY = $_POST["newEvtRecurDOY"];
+	  $eRecur=$_POST["newEvtTypeRecur"];
+	  $eCntLst = $_POST["newEvtTypeCntLst"];
+	  $eCntArray = explode(",",$eCntLst);
+	  $eCntArray[] = "Total";
+	  $eCntNum = count($eCntArray);
+	  $theID=$_POST["theID"];
+	
+	  $sSQL = "UPDATE event_types SET type_name='$eName', type_defstarttime='$eTime',type_defrecurtype='$eRecur', type_defrecurDOW='$eDOW',type_defrecurDOM='$eDOM',type_defrecurDOY='$eDOY' WHERE type_id='$theID'";
+	
+	  RunQuery($sSQL);
+	  
+	  for($j=0; $j<$eCntNum; $j++)
+	  {
+	    $cCnt = ltrim(rtrim($eCntArray[$j]));
+	    $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('$theID','$cCnt') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
+	    RunQuery($sSQL);
+	  }
+	  $editID='';
+	  $theID='';
+	  $_POST['Action']='';
+	  break;
+	//  
+	//case "Edit": 
+	//  $theID = $_POST["theID"];
+	//  break;
+	//
+	case gettext("Delete"):
+	  $theID = $_POST["theID"];
+	  $sSQL = "DELETE FROM event_types WHERE type_id='$theID' LIMIT 1";
+	//  echo "$sSQL";
+	  RunQuery($sSQL);
+	  $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$theID'";
+	//  echo "$sSQL";
+	  RunQuery($sSQL);
+	  $theID='';
+	  $editID='';
+	  $editing='FALSE';
+	  $_POST['Action']='';
+	  break;
+	}
 }
-
 
 // Get data for the form as it now exists.
 
@@ -204,7 +206,9 @@ if ($numRows > 0)
           <td class="TextColumn" align="center"><?php echo $aTypeID[$row]; ?></td>
           
           <?php
-          $t=$_POST["theID"];
+          $t = 0;
+          if (isset ($_POST["theID"]))
+          	$t=FilterInput ($_POST["theID"], 'int');
           if($aTypeID[$row]==$editID)
           {
           ?>

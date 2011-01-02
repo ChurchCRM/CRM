@@ -31,8 +31,8 @@ require 'Include/Functions.php';
 $eType="All";
 $ThisYear=date("Y");
 
-if ($_POST['WhichType']){
-  $eType = $_POST['WhichType'];
+if (isset($_POST['WhichType'])){
+  $eType = FilterInput($_POST['WhichType']);
 } else {
   $eType ="All";
 }
@@ -49,9 +49,9 @@ if($eType!="All"){
 
 // retrieve the year selector
 
-if($_POST['WhichYear'])
+if(isset($_POST['WhichYear']))
 {
-    $EventYear=$_POST['WhichYear'];
+    $EventYear=FilterInput($_POST['WhichYear'], 'int');
 } else {
     $EventYear=date("Y");
 }
@@ -60,19 +60,22 @@ if($_POST['WhichYear'])
 ///////////////////////
 require 'Include/Header.php';
 
-if ($_POST['Action']== "Delete" && !empty($_POST['EID']))
-{
-    $sSQL = "DELETE FROM events_event WHERE event_id = ".$_POST['EID']." LIMIT 1";
-    RunQuery($sSQL);
-    
-    $sSQL = "DELETE FROM eventcounts_evtcnt WHERE evtcnt_eventid = ".$_POST['EID'];
-    RunQuery($sSQL);
-
-}
-elseif ($_POST['Action']== "Activate" && !empty($_POST['EID']))
-{
-    $sSQL = "UPDATE events_event SET inactive = 0 WHERE event_id = ".$_POST['EID']." LIMIT 1";
-    RunQuery($sSQL);
+if (isset ($_POST['Action']) && isset ($_POST['EID'])) {
+	$eID = FilterInput($_POST['EID'], 'int');
+	$action = FilterInput($_POST['Action']);
+	if ($action== "Delete" && $eID)
+	{
+	    $sSQL = "DELETE FROM events_event WHERE event_id = ".$eID." LIMIT 1";
+	    RunQuery($sSQL);
+	    
+	    $sSQL = "DELETE FROM eventcounts_evtcnt WHERE evtcnt_eventid = ".$eID;
+	    RunQuery($sSQL);	
+	}
+	elseif ($action == "Activate" && $eID)
+	{
+	    $sSQL = "UPDATE events_event SET inactive = 0 WHERE event_id = ".$eID." LIMIT 1";
+	    RunQuery($sSQL);
+	}
 }
 
 /// top of main form
@@ -206,6 +209,10 @@ foreach ($allMonths as $mKey => $mVal) {
 <table cellpadding="4" align="center" cellspacing="0" width="100%">
 
 <?php
+
+//Set the initial row color
+$sRowClass = "RowColorA";
+
 if ($numRows > 0)
 {
 ?>
@@ -222,8 +229,6 @@ if ($numRows > 0)
            <td colspan="3" width="15%" align="center"><strong><?php echo gettext("Action"); ?></strong></td>
         </tr>
          <?php
-         //Set the initial row color
-         $sRowClass = "RowColorA";
 
          for ($row=1; $row <= $numRows; $row++)
          {
