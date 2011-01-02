@@ -112,6 +112,8 @@ if (!(stripos(php_uname('s'), "windows") === false)) {
 putenv("LANG=$sLang_Code");
 setlocale(LC_ALL, $sLang_Code);
 
+date_default_timezone_set ($sTimeZone);
+
 // Get numeric and monetary locale settings.
 $aLocaleInfo = localeconv();
 
