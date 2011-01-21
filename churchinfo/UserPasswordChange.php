@@ -27,6 +27,10 @@ require "Include/Config.php";
 $bNoPasswordRedirect = true; // Subdue UserPasswordChange redirect to prevent looping
 require "Include/Functions.php";
 
+$bAdminOtherUser = false;
+$bAdminOther = false;
+$bError = false;
+
 // Get the PersonID out of the querystring if they are an admin user; otherwise, use session.
 if ($_SESSION['bAdmin'] && isset($_GET["PersonID"]))
 {
