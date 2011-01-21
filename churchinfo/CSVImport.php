@@ -121,6 +121,7 @@ $sPageTitle = "CSV Import";
 require "Include/Header.php";
 
 $iStage = 1;
+$csvError = "";
 
 // Is the CSV file being uploaded?
 if (isset($_POST["UploadCSV"]))
@@ -802,7 +803,7 @@ if (isset($_POST["DoImport"]))
 
 // clear person and families if not happy with previous import.
 $sClear = "";
-if($_POST["Clear"] != "")
+if(isset($_POST["Clear"]))
 {
     if(isset($_POST["chkClear"]))
     {
