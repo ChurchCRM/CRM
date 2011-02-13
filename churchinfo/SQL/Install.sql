@@ -36,7 +36,7 @@ CREATE TABLE `autopayment_aut` (
   `aut_Serial` mediumint(9) NOT NULL default '1',
   PRIMARY KEY  (`aut_ID`),
   UNIQUE KEY `aut_ID` (`aut_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `autopayment_aut`
@@ -64,7 +64,7 @@ CREATE TABLE `canvassdata_can` (
   `can_WhyNotInterested` text,
   PRIMARY KEY  (`can_ID`),
   UNIQUE KEY `can_ID` (`can_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `canvassdata_can`
@@ -89,7 +89,7 @@ CREATE TABLE `config_cfg` (
   PRIMARY KEY  (`cfg_id`),
   UNIQUE KEY `cfg_name` (`cfg_name`),
   KEY `cfg_id` (`cfg_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `config_cfg`
@@ -205,7 +205,7 @@ CREATE TABLE `deposit_dep` (
   `dep_Closed` tinyint(1) NOT NULL default '0',
   `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') NOT NULL default 'Bank',
   PRIMARY KEY  (`dep_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 PACK_KEYS=0 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `deposit_dep`
@@ -225,7 +225,7 @@ CREATE TABLE `donationfund_fun` (
   `fun_Description` varchar(100) default NULL,
   PRIMARY KEY  (`fun_ID`),
   UNIQUE KEY `fun_ID` (`fun_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM   AUTO_INCREMENT=2 ;
 
 -- 
 -- Dumping data for table `donationfund_fun`
@@ -245,7 +245,7 @@ CREATE TABLE `email_message_pending_emp` (
   `emp_to_send` smallint(5) unsigned NOT NULL default '0',
   `emp_subject` varchar(128) NOT NULL,
   `emp_message` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `email_message_pending_emp`
@@ -264,7 +264,7 @@ CREATE TABLE `email_recipient_pending_erp` (
   `erp_num_attempt` smallint(5) unsigned NOT NULL default '0',
   `erp_failed_time` datetime default NULL,
   `erp_email_address` varchar(50) NOT NULL default ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `email_recipient_pending_erp`
@@ -284,7 +284,7 @@ CREATE TABLE `eventcountnames_evctnm` (
   `evctnm_notes` varchar(20) NOT NULL default '',
   UNIQUE KEY `evctnm_countid` (`evctnm_countid`),
   UNIQUE KEY `evctnm_eventtypeid` (`evctnm_eventtypeid`,`evctnm_countname`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM   AUTO_INCREMENT=7 ;
 
 -- 
 -- Dumping data for table `eventcountnames_evctnm`
@@ -311,7 +311,7 @@ CREATE TABLE `eventcounts_evtcnt` (
   `evtcnt_countcount` int(6) default NULL,
   `evtcnt_notes` varchar(20) default NULL,
   PRIMARY KEY  (`evtcnt_eventid`,`evtcnt_countid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `eventcounts_evtcnt`
@@ -336,7 +336,7 @@ CREATE TABLE `events_event` (
   `event_typename` varchar(40) NOT NULL default '',
   PRIMARY KEY  (`event_id`),
   FULLTEXT KEY `event_txt` (`event_text`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `events_event`
@@ -357,7 +357,7 @@ CREATE TABLE `event_attend` (
   `checkout_date` datetime default NULL,
   `checkout_id` int(11) default NULL,
   UNIQUE KEY `event_id` (`event_id`,`person_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `event_attend`
@@ -380,7 +380,7 @@ CREATE TABLE `event_types` (
   `type_defrecurDOY` date NOT NULL default '0000-00-00',
   `type_active` int(1) NOT NULL default '1',
   PRIMARY KEY  (`type_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM   AUTO_INCREMENT=3 ;
 
 -- 
 -- Dumping data for table `event_types`
@@ -399,7 +399,7 @@ INSERT INTO `event_types` (`type_id`, `type_name`, `type_defstarttime`, `type_de
 CREATE TABLE `family_custom` (
   `fam_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `family_custom`
@@ -420,7 +420,7 @@ CREATE TABLE `family_custom_master` (
   `fam_custom_Side` enum('left','right') NOT NULL default 'left',
   `fam_custom_FieldSec` tinyint(4) NOT NULL default '1',
   `type_ID` tinyint(4) NOT NULL default '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `family_custom_master`
@@ -462,7 +462,7 @@ CREATE TABLE `family_fam` (
   `fam_Envelope` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`),
   KEY `fam_ID` (`fam_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `family_fam`
@@ -484,7 +484,7 @@ CREATE TABLE `groupprop_master` (
   `type_ID` smallint(5) unsigned NOT NULL default '0',
   `prop_Special` mediumint(9) unsigned default NULL,
   `prop_PersonDisplay` enum('false','true') NOT NULL default 'false'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Group-specific properties order, name, description, type';
+) ENGINE=MyISAM  COMMENT='Group-specific properties order, name, description, type';
 
 -- 
 -- Dumping data for table `groupprop_master`
@@ -508,7 +508,7 @@ CREATE TABLE `group_grp` (
   PRIMARY KEY  (`grp_ID`),
   UNIQUE KEY `grp_ID` (`grp_ID`),
   KEY `grp_ID_2` (`grp_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `group_grp`
@@ -540,7 +540,7 @@ CREATE TABLE `istlookup_lu` (
   `lu_ErrorCodes` varchar(10) default NULL,
   `lu_ErrorDesc` varchar(255) default NULL,
   PRIMARY KEY  (`lu_fam_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='US Address Verification Lookups From Intelligent Search Tech';
+) ENGINE=MyISAM  COMMENT='US Address Verification Lookups From Intelligent Search Tech';
 
 -- 
 -- Dumping data for table `istlookup_lu`
@@ -558,7 +558,7 @@ CREATE TABLE `list_lst` (
   `lst_OptionID` mediumint(8) unsigned NOT NULL default '0',
   `lst_OptionSequence` tinyint(3) unsigned NOT NULL default '0',
   `lst_OptionName` varchar(50) NOT NULL default ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `list_lst`
@@ -626,7 +626,7 @@ CREATE TABLE `menuconfig_mcf` (
   `active` tinyint(1) NOT NULL,
   `sortorder` tinyint(3) NOT NULL,
   PRIMARY KEY  (`mid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=84 ;
+) ENGINE=MyISAM   AUTO_INCREMENT=84 ;
 
 -- 
 -- Dumping data for table `menuconfig_mcf`
@@ -741,7 +741,7 @@ CREATE TABLE `note_nte` (
   `nte_EnteredBy` mediumint(8) unsigned NOT NULL default '0',
   `nte_EditedBy` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`nte_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `note_nte`
@@ -760,7 +760,7 @@ CREATE TABLE `person2group2role_p2g2r` (
   `p2g2r_rle_ID` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`p2g2r_per_ID`,`p2g2r_grp_ID`),
   KEY `p2g2r_per_ID` (`p2g2r_per_ID`,`p2g2r_grp_ID`,`p2g2r_rle_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `person2group2role_p2g2r`
@@ -779,7 +779,7 @@ CREATE TABLE `person2volunteeropp_p2vo` (
   `p2vo_vol_ID` mediumint(9) default NULL,
   PRIMARY KEY  (`p2vo_ID`),
   UNIQUE KEY `p2vo_ID` (`p2vo_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `person2volunteeropp_p2vo`
@@ -795,7 +795,7 @@ CREATE TABLE `person2volunteeropp_p2vo` (
 CREATE TABLE `person_custom` (
   `per_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`per_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `person_custom`
@@ -816,7 +816,7 @@ CREATE TABLE `person_custom_master` (
   `custom_Side` enum('left','right') NOT NULL default 'left',
   `custom_FieldSec` tinyint(4) NOT NULL,
   `type_ID` tinyint(4) NOT NULL default '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `person_custom_master`
@@ -864,7 +864,7 @@ CREATE TABLE `person_per` (
   `per_Flags` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`per_ID`),
   KEY `per_ID` (`per_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM   AUTO_INCREMENT=2 ;
 
 -- 
 -- Dumping data for table `person_per`
@@ -902,7 +902,7 @@ CREATE TABLE `pledge_plg` (
   `plg_NonDeductible` decimal(8,2) NOT NULL,
   `plg_GroupKey` VARCHAR( 64 ) NOT NULL,
   PRIMARY KEY  (`plg_plgID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `pledge_plg`
@@ -923,7 +923,7 @@ CREATE TABLE `propertytype_prt` (
   PRIMARY KEY  (`prt_ID`),
   UNIQUE KEY `prt_ID` (`prt_ID`),
   KEY `prt_ID_2` (`prt_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM   AUTO_INCREMENT=4 ;
 
 -- 
 -- Dumping data for table `propertytype_prt`
@@ -950,7 +950,7 @@ CREATE TABLE `property_pro` (
   PRIMARY KEY  (`pro_ID`),
   UNIQUE KEY `pro_ID` (`pro_ID`),
   KEY `pro_ID_2` (`pro_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM   AUTO_INCREMENT=4 ;
 
 -- 
 -- Dumping data for table `property_pro`
@@ -974,7 +974,7 @@ CREATE TABLE `queryparameteroptions_qpo` (
   `qpo_Value` varchar(50) NOT NULL default '',
   PRIMARY KEY  (`qpo_ID`),
   UNIQUE KEY `qpo_ID` (`qpo_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+) ENGINE=MyISAM   AUTO_INCREMENT=28 ;
 
 -- 
 -- Dumping data for table `queryparameteroptions_qpo`
@@ -1044,7 +1044,7 @@ CREATE TABLE `queryparameters_qrp` (
   UNIQUE KEY `qrp_ID` (`qrp_ID`),
   KEY `qrp_ID_2` (`qrp_ID`),
   KEY `qrp_qry_ID` (`qrp_qry_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=102 ;
+) ENGINE=MyISAM   AUTO_INCREMENT=102 ;
 
 -- 
 -- Dumping data for table `queryparameters_qrp`
@@ -1094,7 +1094,7 @@ CREATE TABLE `query_qry` (
   PRIMARY KEY  (`qry_ID`),
   UNIQUE KEY `qry_ID` (`qry_ID`),
   KEY `qry_ID_2` (`qry_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=101 ;
+) ENGINE=MyISAM   AUTO_INCREMENT=101 ;
 
 -- 
 -- Dumping data for table `query_qry`
@@ -1136,7 +1136,7 @@ CREATE TABLE `record2property_r2p` (
   `r2p_pro_ID` mediumint(8) unsigned NOT NULL default '0',
   `r2p_record_ID` mediumint(8) unsigned NOT NULL default '0',
   `r2p_Value` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `record2property_r2p`
@@ -1167,7 +1167,7 @@ CREATE TABLE `result_res` (
   `res_version` text NOT NULL,
   `res_EchoServer` text NOT NULL,
   PRIMARY KEY  (`res_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `result_res`
@@ -1190,7 +1190,7 @@ CREATE TABLE `userconfig_ucfg` (
   `ucfg_permission` enum('FALSE','TRUE') NOT NULL default 'FALSE',
   `ucfg_cat` varchar(20) NOT NULL,
   PRIMARY KEY  (`ucfg_per_id`,`ucfg_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `userconfig_ucfg`
@@ -1264,7 +1264,7 @@ CREATE TABLE `user_usr` (
   PRIMARY KEY  (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
   KEY `usr_per_ID` (`usr_per_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dumping data for table `user_usr`
@@ -1293,7 +1293,7 @@ CREATE TABLE `version_ver` (
   `ver_date` datetime default NULL,
   PRIMARY KEY  (`ver_ID`),
   UNIQUE KEY `ver_version` (`ver_version`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM   AUTO_INCREMENT=3 ;
 
 -- 
 -- Dumping data for table `version_ver`
@@ -1316,7 +1316,7 @@ CREATE TABLE `volunteeropportunity_vol` (
   `vol_Description` varchar(100) default NULL,
   PRIMARY KEY  (`vol_ID`),
   UNIQUE KEY `vol_ID` (`vol_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `volunteeropportunity_vol`
@@ -1337,7 +1337,7 @@ CREATE TABLE `whycame_why` (
   `why_suggest` text NOT NULL,
   `why_hearOfUs` text NOT NULL,
   PRIMARY KEY  (`why_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 --
 -- Fundraiser support added 4/11/2009 Michael Wilt
@@ -1350,7 +1350,7 @@ CREATE TABLE `paddlenum_pn` (
   `pn_per_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`pn_ID`),
   UNIQUE KEY `pn_ID` (`pn_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 CREATE TABLE `fundraiser_fr` (
   `fr_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -1361,7 +1361,7 @@ CREATE TABLE `fundraiser_fr` (
   `fr_EnteredDate` date NOT NULL,
   PRIMARY KEY  (`fr_ID`),
   UNIQUE KEY `fr_ID` (`fr_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 CREATE TABLE `donateditem_di` (
   `di_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -1380,7 +1380,7 @@ CREATE TABLE `donateditem_di` (
   `di_EnteredDate` date NOT NULL,
   PRIMARY KEY  (`di_ID`),
   UNIQUE KEY `di_ID` (`di_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 CREATE TABLE `multibuy_mb` (
   `mb_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -1389,7 +1389,7 @@ CREATE TABLE `multibuy_mb` (
   `mb_count` decimal(8,0) default NULL,
   PRIMARY KEY  (`mb_ID`),
   UNIQUE KEY `mb_ID` (`mb_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 CREATE TABLE `egive_egv` (
   `egv_egiveID` varchar(16) character set utf8 NOT NULL,
@@ -1398,4 +1398,4 @@ CREATE TABLE `egive_egv` (
   `egv_DateLastEdited` datetime NOT NULL,
   `egv_EnteredBy` smallint(6) NOT NULL default '0',
   `egv_EditedBy` smallint(6) NOT NULL default '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM ;
