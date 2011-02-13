@@ -184,7 +184,7 @@ $sSQL = "CREATE TABLE `PaddleNum_pn` (
    `pn_per_ID` mediumint(9) NOT NULL default '0',
    PRIMARY KEY  (`pn_ID`),
    UNIQUE KEY `pn_ID` (`pn_ID`)
- ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+ ) ENGINE=MyISAM  AUTO_INCREMENT=1 ;";
 if (!RunQuery($sSQL, FALSE))
     break;
 
@@ -197,7 +197,7 @@ $sSQL = "CREATE TABLE `Fundraiser_fr` (
    `fr_EnteredDate` date NOT NULL,
    PRIMARY KEY  (`fr_ID`),
    UNIQUE KEY `fr_ID` (`fr_ID`)
- ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+ ) ENGINE=MyISAM  AUTO_INCREMENT=1 ;";
 if (!RunQuery($sSQL, FALSE))
     break;
 
@@ -218,7 +218,7 @@ $sSQL = "CREATE TABLE `DonatedItem_di` (
    `di_EnteredDate` date NOT NULL,
    PRIMARY KEY  (`di_ID`),
    UNIQUE KEY `di_ID` (`di_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;";
 if (!RunQuery($sSQL, FALSE))
     break;
 
@@ -229,7 +229,7 @@ $sSQL = "CREATE TABLE `Multibuy_mb` (
   `mb_count` decimal(8,0) default NULL,
   PRIMARY KEY  (`mb_ID`),
   UNIQUE KEY `mb_ID` (`mb_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;";
 if (!RunQuery($sSQL, FALSE))
     break;
 
@@ -254,7 +254,7 @@ $sSQL = "CREATE TABLE IF NOT EXISTS `egive_egv` (
   `egv_DateLastEdited` datetime NOT NULL,
   `egv_EnteredBy` smallint(6) NOT NULL default '0',
   `egv_EditedBy` smallint(6) NOT NULL default '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8";
+) ENGINE=MyISAM ";
 if (!RunQuery($sSQL, FALSE))
     break;
     

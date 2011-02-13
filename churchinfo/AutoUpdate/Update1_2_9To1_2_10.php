@@ -143,7 +143,7 @@ $sSQL = "CREATE TABLE `menuconfig_mcf` (
   `active` tinyint(1) NOT NULL,
   `sortorder` tinyint(3) NOT NULL,
   PRIMARY KEY  (`mid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=81 ";
+) ENGINE=MyISAM AUTO_INCREMENT=81 ";
 if (!RunQuery($sSQL, FALSE))
     break;
 
@@ -499,7 +499,7 @@ if (!RunQuery($sSQL, FALSE))
 $sSQL = "CREATE TABLE `family_custom` (
   `fam_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8";
+) ENGINE=MyISAM";
 if (!RunQuery($sSQL, FALSE))
     break;
 
@@ -515,7 +515,7 @@ $sSQL = "CREATE TABLE `family_custom_master` (
   `fam_custom_Side` enum('left','right') NOT NULL default 'left',
   `fam_custom_FieldSec` tinyint(4) NOT NULL default '1',
   `type_ID` tinyint(4) NOT NULL default '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8";
+) ENGINE=MyISAM ";
 if (!RunQuery($sSQL, FALSE))
     break;
 
