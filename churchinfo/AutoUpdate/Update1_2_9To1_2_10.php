@@ -476,19 +476,19 @@ $sSQL = "ALTER TABLE `config_cfg` ADD `cfg_category` VARCHAR( 20 ) NULL AFTER `c
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "INSERT INTO `config_cfg` VALUES (61, 'iEventPeriodStartHr', '7', 'number', '7', 'Church Event Valid Period Start Hour (0-23)', 'General', '')";
+$sSQL = "INSERT INTO `config_cfg` VALUES (61, 'iEventPeriodStartHr', '7', 'number', '7', 'Church Event Valid Period Start Hour (0-23)', 'General', NULL)";
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "INSERT INTO `config_cfg` VALUES (62, 'iEventPeriodEndHr', '18', 'number', '18', 'Church Event Valid Period End Hour (0-23, must be greater than iEventStartHr)', 'General', '')";
+$sSQL = "INSERT INTO `config_cfg` VALUES (62, 'iEventPeriodEndHr', '18', 'number', '18', 'Church Event Valid Period End Hour (0-23, must be greater than iEventStartHr)', 'General', NULL)";
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "INSERT INTO `config_cfg` VALUES (63, 'iEventPeriodIntervalMin', '15', 'number', '15', 'Event Period interval (in minutes)', 'General', '')";
+$sSQL = "INSERT INTO `config_cfg` VALUES (63, 'iEventPeriodIntervalMin', '15', 'number', '15', 'Event Period interval (in minutes)', 'General', NULL)";
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "INSERT INTO `config_cfg` VALUES (64, 'sDistanceUnit', 'miles', 'text', 'miles', 'Unit used to measure distance, miles or km.', 'General', '')";
+$sSQL = "INSERT INTO `config_cfg` VALUES (64, 'sDistanceUnit', 'miles', 'text', 'miles', 'Unit used to measure distance, miles or km.', 'General', NULL)";
 if (!RunQuery($sSQL, FALSE))
     break;
 
