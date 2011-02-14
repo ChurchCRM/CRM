@@ -209,7 +209,7 @@ $sSQL = "CREATE TABLE `DonatedItem_di` (
    `di_buyer_ID` mediumint(9) NOT NULL default '0',
    `di_multibuy` smallint(1) NOT NULL default '0',
    `di_title` varchar(128) NOT NULL,
-   `di_description` varchar(2048),
+   `di_description` text,
    `di_sellprice` decimal(8,2) default NULL,
    `di_estprice` decimal(8,2) default NULL,
    `di_minimum` decimal(8,2) default NULL,
