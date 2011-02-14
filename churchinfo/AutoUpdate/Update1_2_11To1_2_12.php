@@ -192,7 +192,7 @@ $sSQL = "CREATE TABLE `Fundraiser_fr` (
    `fr_ID` mediumint(9) unsigned NOT NULL auto_increment,
    `fr_date` date default NULL,
    `fr_title` varchar(128) NOT NULL,
-   `fr_description` varchar(2048),
+   `fr_description` text,
    `fr_EnteredBy` smallint(5) unsigned NOT NULL default '0',
    `fr_EnteredDate` date NOT NULL,
    PRIMARY KEY  (`fr_ID`),
