@@ -9,21 +9,90 @@
 *  Contributors:
 *  2010 Michael Wilt
 *
-*  Copyright Contributors
+*  LICENSE:
+*  (C) Free Software Foundation, Inc.
 *
 *  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
+*  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful, but
+*  WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+*  General Public License for more details.
+*
+*  http://www.gnu.org/licenses
 *
 *  This file best viewed in a text editor with tabs stops set to 4 characters
 *
 ******************************************************************************/
 
 $sVersion = '1.2.13';
+$sVersion = '1.2.12.1'; // Delete this line before release
 
-require "Include/MICRFunctions.php";
-$micrObj = new MICRReader();
+function BackUpTable ($tn)
+{
+    $sSQL = "DROP TABLE IF EXISTS $tn". "_backup";
+    if (!RunQuery($sSQL, FALSE))
+        return (false);
+    $sSQL = "CREATE TABLE $tn" . "_backup SELECT * FROM $tn";
+    if (!RunQuery($sSQL, FALSE))
+        return (false);
+    return (true);
+}
+
+function RestoreTableFromBackup ($tn)
+{
+    $sSQL = "DROP TABLE IF EXISTS $tn";
+    if (!RunQuery($sSQL, FALSE))
+        return (false);
+    $sSQL  = "RENAME TABLE `$tn"."_backup` TO `$tn`";
+    if (!RunQuery($sSQL, FALSE))
+        return (false);
+    return (true);
+}
+
+function DeleteTableBackup ($tn)
+{
+    $sSQL = "DROP TABLE IF EXISTS $tn"."_backup";
+    if (!RunQuery($sSQL, FALSE))
+        return (false);
+    return (true);
+}
+
+for (; ; ) {    // This is not a loop but a section of code to be
+                // executed once.  If an error occurs running a query the
+                // remaining code section is skipped and all table
+                // modifications are "un-done" at the end.
+                // The idea here is that upon failure the users database
+                // is restored to the previous version.
+
+// **************************************************************************
+
+// Need to back up tables we will be modifying- 
+
+    $needToBackUp = array (
+    "family_fam");
+
+    foreach ($needToBackUp as $backUpName) {
+        if (! BackUpTable ($backUpName)) {
+            $bErr = true;
+            break;
+        }
+    }
+    if ($bErr)
+        break;
+
+// ********************************************************
+// ********************************************************
+// Begin modifying tables now that backups are available
+// The $bStopOnError argument to RunQuery can now be changed from
+// TRUE to FALSE now that backup copies of all tables are available
+
+
+    require "Include/MICRFunctions.php";
+    $micrObj = new MICRReader();
 
 
 // Update the format of the scanned check stored in the family record.
@@ -32,20 +101,57 @@ $micrObj = new MICRReader();
 // version worked most of the time, but not in the rare cases when the check number
 // was in the middle.
 
-$sSQL = "SELECT fam_ID, fam_scanCheck from family_fam";
-$rsFamilies = RunQuery($sSQL);
+    $sSQL = "SELECT fam_ID, fam_scanCheck from family_fam";
+    $rsFamilies = RunQuery($sSQL);
 
-while ($aRow = mysql_fetch_array($rsFamilies)) {
-	$scanFormat = $micrObj->IdentifyFormat ($aRow['fam_scanCheck']);
-	if ($aRow['fam_scanCheck'] != '' && $scanFormat != $micrObj->NOT_RECOGNIZED) {
-		$newScanCheck = $micrObj->FindRouteAndAccount ($aRow['fam_scanCheck']);
-		$sSQL = "UPDATE family_fam SET fam_scanCheck='$newScanCheck' WHERE fam_ID=".$aRow['fam_ID'];
-		RunQuery($sSQL);
-	}
+    while ($aRow = mysql_fetch_array($rsFamilies)) {
+        $scanFormat = $micrObj->IdentifyFormat ($aRow['fam_scanCheck']);
+        if ($aRow['fam_scanCheck'] != '' && $scanFormat != $micrObj->NOT_RECOGNIZED) {
+            $newScanCheck = $micrObj->FindRouteAndAccount ($aRow['fam_scanCheck']);
+            $sSQL = "UPDATE family_fam SET fam_scanCheck='$newScanCheck' WHERE fam_ID=".$aRow['fam_ID'];
+            if (!RunQuery($sSQL, FALSE))
+                break 2; // break while and for
+        }
+    }
+
+    $sSQL = "INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('".$sVersion."',NOW())";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+    break;
+
 }
 
-$sSQL = "INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('".$sVersion."',NOW())";
-RunQuery($sSQL, FALSE); // False means do not stop on error
 $sError = mysql_error();
+$sSQL_Last = $sSQL;
+
+// Let's check if MySQL database is in sync with PHP code
+$sSQL = 'SELECT * FROM version_ver ORDER BY ver_ID DESC';
+$aRow = mysql_fetch_array(RunQuery($sSQL));
+extract($aRow);
+
+if ($ver_version == $sVersion) {
+    // We're good.  Clean up by dropping the
+    // temporary tables
+    foreach ($needToBackUp as $backUpName) {
+        if (! DeleteTableBackup ($backUpName)) {
+            break;
+        }
+    }
+} else {
+    // An error occured.  Clean up by restoring
+    // tables to their original condition by using
+    // the temporary tables.
+
+    foreach ($needToBackUp as $backUpName) {
+        if (! RestoreTableFromBackup ($backUpName)) {
+            break;
+        }
+    }
+
+    // Finally, Drop any tables that were created new
+
+}
+
+
+$sSQL = $sSQL_Last;
 
 ?>

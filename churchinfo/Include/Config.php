@@ -18,45 +18,57 @@ $sDATABASE = 'churchinfo';
 // then you would enter '/web/churchinfo' here.
 // Another example, if you will be accessing from http://www.yourdomain.com
 // then you would enter '' ... an empty string for a top level installation.
-// This path SHOULD NOT end with slash.
-$sRootPath='/churchinfo';
+// This path SHOULD NOT end with slash.  This is case sensitive.
+$sRootPath = '/churchinfo';
 
-// If you are using a non-standard port number you may need to include the 
-// port number in the URL.  Default value is fine for most installations.
-$sPort='';
+// Set $bLockURL=TRUE to enforce https access by specifying exactly
+// which URL's your users may use to log into ChurchInfo.
+$bLockURL = FALSE;
 
-// You can enforce https access by setting this true.
-$bHTTPSOnly=FALSE;
+// URL[0] is the URL that you prefer most users use when they
+// log in.  These are case sensitive.  Only used when $bLockURL = TRUE
+$URL[0] = 'https://mychurch.org/churchinfo/Default.php';
+// List as many other URL's as may be needed. Number them sequentially.
+//$URL[1] = 'http://localhost/churchinfo/Default.php';
+//$URL[2] = 'http://localhost:8080/churchinfo/Default.php';
+//$URL[3] = 'http://127.0.0.1/churchinfo/Default.php';
+//$URL[4] = 'https://www.mychurch.org/churchinfo/Default.php';
+//$URL[5] = 'https://mychurch.org/churchinfo/Default.php';
+//$URL[6] = 'https://ssl.sharedsslserver.com/mychurch.org/churchinfo/Default.php';
+
+// If you are using a non-standard port number be sure to include the 
+// port number in the URL. See example $URL[2]
+
+// To enforce https access make sure that "https" is specified in all of the
+// the allowable URLs.  Safe exceptions are when you are at the local machine
+// and using "localhost" or "127.0.0.1"
 
 // When using a shared SSL certificate provided by your webhost for https access
-// you may need to add the shared SSL server name to the URL.  Default value is fine
-// for most installations
-$sSharedSSLServer='';
+// you may need to add the shared SSL server name as well as your host name to
+// the URL.  See example $URL[6]
 
-// When using a shared SSL certificate your webhost may also require you to use a 
-// modified version of your hostname.  Default value is fine for most installations.
-$sHTTP_Host=$_SERVER['HTTP_HOST'];
 
-// Some webhosts implement shared SSL differently.  ChurchInfo currently
-// works with the following implementation of shared SSL hosting.
-//
-// Let's say your "normal" http access looks like this:
-// http://www.mydomain.org/churchinfo/Default.php
-//
-// Now let's say that access via your webhosts shared SSL certificate looks like this:
-// https://ssl.secureaccess.net/ssl.mydomain.org/churchinfo/Default.php
-//
-// Here are the settings to implement the above example
-// $sSharedSSLServer='ssl.secureaccess.net';
-// $sHTTP_Host='ssl.mydomain.org';
-//
-// If your webhost implements shared SSL differently you may need to modify the
-// source code to work with another implementation of shared SSL.  The only
-// code that should need to be modified is the function RedirectURL() in
-// the file Include/Functions.php.   
-// Please post to the sourceforge help forum.  Tell us about your changes to
-// get ChurchInfo to work with another implementation of shared SSL and we'll 
-// try to add it to the next release.
+// Set error reporting
+
+// Turn off all error reporting
+error_reporting(0);
+
+// Turn on all error reporting
+// error_reporting(-1);
+
+// Report all errors except E_NOTICE
+// error_reporting(E_STRICT & E_ALL & ~E_NOTICE);
+
+// For security it is good practice to avoid displaying error messages to users.
+// While debugging you may temporarily use ini_set('display_errors', 1)
+ini_set('display_errors', 0);
+
+// Rather than display errors on the screen it is more secure to
+// send error messages to a file.  Make sure that your web 
+// server has permission to write to this file.
+// Warning: The error_log file can grow very large over time.
+// ini_set('log_errors', 1);
+// ini_set('error_log','/tmp/churchinfo.log');
 
 //
 // SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE

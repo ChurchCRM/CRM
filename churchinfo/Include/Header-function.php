@@ -29,7 +29,9 @@
 
 function Header_head_metatag() {
 global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
-global $sPageTitle, $sURLPath;
+global $sPageTitle;
+
+$sURLPath = $_SESSION['sURLPath'];
 ?>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
@@ -41,8 +43,33 @@ global $sPageTitle, $sURLPath;
 }
 
 function Header_body_scripts() {
-global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage, $sURLPath;
-?>
+global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage, $bLockURL, $URL;
+
+$sURLPath = $_SESSION['sURLPath'];
+//
+// Basic sercurity checks:
+//
+// Check if https is required:
+// Verify that page has an authorized URL in the browser address bar.
+// Otherwise redirect to login page.
+// An array of authorized URL's is specified in Config.php ... $URL
+    if (isset($bLockURL) && ($bLockURL === TRUE)) {
+        echo '
+    <script language="javascript" type="text/javascript">
+        v_test="FAIL"'; // Set "FAIL" to assume the URL is not allowed
+                        // Set "PASS" if we learn it is allowed
+        foreach ($URL as $value) { // Default.php is 11 characters
+            $value = substr($value, 0, -11);
+            echo '
+        if(window.location.href.indexOf("'.$value.'") == 0) v_test="PASS";';
+        }
+        echo '
+        if (v_test == "FAIL") window.location="'.$URL[0].'";
+    </script>';
+    }
+// End of basic security checks
+ ?>
+
     <script language="javascript" type="text/javascript">
         function scrollToCoordinates() 
         {   // This function reads X and Y scroll coordinates from a cookie
@@ -307,7 +334,9 @@ function addMenu($menu) {
 }
 
 function addMenuItem($aMenu,$mIdx) {
-global $sURLPath, $security_matrix;
+global $security_matrix;
+
+$sURLPath = $_SESSION['sURLPath'];
 
     $link = ($aMenu['uri'] == "") ? "" : $sURLPath."/".$aMenu['uri'];
     $text = $aMenu['statustext'];
@@ -320,7 +349,7 @@ global $sURLPath, $security_matrix;
             }
             $link .= $cConnector.$aMenu['url_parm_name']."=".$_SESSION[$aMenu['session_var']];
         }
-        if (($text > "") & ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
+        if (($text > "") && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
             $text .= " ".$_SESSION[$aMenu['session_var']];
         }
     }
@@ -380,7 +409,9 @@ function menu_setting() {
 
 function Header_body_menu() {
 global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
-global $MenuFirst, $sPageTitle, $sURLPath;
+global $MenuFirst, $sPageTitle;
+
+$sURLPath = $_SESSION['sURLPath'];
 
         $MenuFirst = 1;
 
@@ -520,7 +551,8 @@ function addSection($menu) {
 }
 
 function addEntry($aMenu) {
-global $sURLPath;
+
+$sURLPath = $_SESSION['sURLPath'];
 
     $link = ($aMenu['uri'] == "") ? "" : $sURLPath."/".$aMenu['uri'];
     $text = $aMenu['statustext'];
@@ -551,7 +583,9 @@ global $sURLPath;
 }
 
 function Header_body_nomenu() {
-global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage, $sURLPath;
+global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
+
+$sURLPath = $_SESSION['sURLPath'];
 ?>
 
 <table width="100%" border="0" cellpadding="5" cellspacing="0" align="center">

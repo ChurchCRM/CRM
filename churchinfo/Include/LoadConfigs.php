@@ -51,13 +51,6 @@ session_start();
 // Avoid consecutive slashes when $sRootPath = '/'
 if (strlen($sRootPath) < 2) $sRootPath = '';
 
-// Set default value for $sURLPath: relative path is fine for most installations
-$sURLPath=$sRootPath;
-
-// In case of Shared SSL installations absolute path must be specified
-if (strlen($sSharedSSLServer))
-    $sURLPath="https://".$sSharedSSLServer."/".$sHTTP_Host.$sRootPath;
-
 // Some webhosts make it difficult to use DOCUMENT_ROOT.  Define our own!
 $sDocumentRoot = dirname(dirname(__FILE__));
 
@@ -112,7 +105,9 @@ if (!(stripos(php_uname('s'), "windows") === false)) {
 putenv("LANG=$sLang_Code");
 setlocale(LC_ALL, $sLang_Code);
 
-date_default_timezone_set ($sTimeZone);
+if (isset($sTimeZone)) {
+    date_default_timezone_set($sTimeZone);
+}
 
 // Get numeric and monetary locale settings.
 $aLocaleInfo = localeconv();

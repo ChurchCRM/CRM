@@ -32,7 +32,8 @@ require 'Include/Functions.php';
 // Important!  These must be updated before every software release.
 
 $_SESSION['sChurchInfoPHPVersion'] = '1.2.13';
-$_SESSION['sChurchInfoPHPDate'] = '2010-12-01';
+$_SESSION['sChurchInfoPHPVersion'] = '1.2.12.1'; // Delete this line before release
+$_SESSION['sChurchInfoPHPDate'] = '2011-06-01';
 
 // Check if the table version_ver exists.  If the table does not exist then
 // SQL scripts must be manually run to get the database up to version 1.2.7
@@ -92,8 +93,9 @@ if(!$bVersionTableExists) {
 }
 
 // This code will automatically update from 1.2.12 to 1.2.13
-if ($ver_version == '1.2.12') {
+if (strncmp($ver_version, "1.2.12", 6) == 0) {
 
+    $old_ver_version = $ver_version;
     $sError = 'Initialize';  // Initialize error string
     require 'AutoUpdate/Update1_2_12To1_2_13.php';
 
@@ -112,9 +114,11 @@ if ($ver_version == '1.2.12') {
 
     } else {
 
-        echo '<br>Database schema has been updated from 1.2.12 to 1.2.13.<br>'
+        echo '<br>Database schema has been updated from ' . $old_ver_version . ' to '
+             . $_SESSION['sChurchInfoPHPVersion'] . '.<br>'
         .    '<BR>Please <a href="CheckVersion.php">click here</a> to continue.';
 
+$_SESSION['sChurchInfoPHPVersion'] = '1.2.13';
     }
 
     require 'Include/Footer.php';

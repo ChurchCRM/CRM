@@ -25,16 +25,11 @@
 ******************************************************************************/
 // Initialization common to all ChurchInfo scripts
 
-// Set error reporting
-if ($debug == TRUE) // Report all PHP errors (-1)
-    error_reporting(-1);
-else // Turn off error reporting
-    error_reporting(0);
-
 //
 // Basic security checks:
 //
-if (!isset($bSuppressSessionTests))  // This is used for the login page only.
+
+if (empty($bSuppressSessionTests))  // This is used for the login page only.
 {
     // Basic security: If the UserID isn't set (no session), redirect to the login page
     if (!isset($_SESSION['iUserID']))
@@ -71,36 +66,17 @@ if (!isset($bSuppressSessionTests))  // This is used for the login page only.
         exit;
     }
 
-    // Check if https is required, if so, make sure we're using https.
-    // Redirect back to login page using https if required.
-    // This prevents someone from accessing via http by typing in the URL 
-    if ($bHTTPSOnly)
-    {
-        if (!isAffirmative($_SERVER['HTTPS']))
-        {
-            $_SESSION['bSecureServer'] = TRUE;
-            Redirect('Default.php');
-            exit;
-        }
-    }
+    // Check if https is required
 
-    // Make sure visitor got here using a valid URL.
-    // If not, try to redirect to correct page, else "Menu.php"
-    // This check will only be performed if $_SERVER['PHP_SELF'] is set
-    if (isset($_SERVER['PHP_SELF'])) {
-        $sPathExtension = substr($_SERVER['PHP_SELF'],strlen($sRootPath));
-        $sFullPath = str_replace( '\\','/',$sDocumentRoot.$sPathExtension);
-        if (!(file_exists($sFullPath) && is_readable($sFullPath))) {
-            $sNewPath = substr($sFullPath,0,strpos($sFullPath,'.php')+4);
-            if (file_exists($sNewPath) && is_readable($sNewPath)) {
-                $sPage = substr($sNewPath,strrpos($sNewPath,'/')+1);
-                Redirect($sPage);
-            } else {
-                Redirect('Menu.php');
-            }
-            exit;
-        }
-    }
+    // Note: PHP has limited ability to access the address bar 
+    // url.  PHP depends on Apache or other web server
+    // to provide this information.  The web server
+    // may or may not be configured to pass the address bar url
+    // to PHP.  As a workaround this security check is now performed
+    // by the browser using javascript.  The browser always has 
+    // access to the address bar url.  Search for basic security checks
+    // in Include/Header-functions.php
+
 }
 // End of basic security checks
 
@@ -115,7 +91,7 @@ function addslashes_deep($value)
 }
 
 // If Magic Quotes is turned off, do the same thing manually..
-if (!isset($_SESSION['bHasMagicQuotes']))
+if (empty($_SESSION['bHasMagicQuotes']))
 {
     foreach ($_REQUEST as $key=>$value) $value = addslashes_deep($value);
 }
@@ -161,7 +137,7 @@ if (isset($_GET["RemoveFromPeopleCart"])) {
 }
 
 // Are they emptying their cart?
-if (isset($_GET["Action"]) && $_GET["Action"] == "EmptyCart") {
+if (isset($_GET["Action"]) && ($_GET["Action"] == "EmptyCart")) {
     unset($_SESSION['aPeopleCart']);
     $sGlobalMessage = gettext("Your cart has been successfully emptied.");
 }
@@ -198,66 +174,40 @@ function RedirectURL($sRelativeURL)
 {
     global $sRootPath;
     global $sDocumentRoot;
-    global $sSharedSSLServer;
-    global $sHTTP_Host;
-    global $bHTTPSOnly;
-    global $sPort;
 
-    // Check if port number needs to be included in URL
-    if ($sPort)
-        $sPortString = ":$sPort";
-    else
-        $sPortString = '';
-
-    // http or https ?
-    if ($_SESSION['bSecureServer'] || $bHTTPSOnly)
-        $sRedirectURL = 'https://';    
-    else
-        $sRedirectURL = 'http://';
-
-    // Using a shared SSL certificate?
-    if (strlen($sSharedSSLServer) && $_SESSION['bSecureServer'])
-        $sRedirectURL .= $sSharedSSLServer . $sPortString . '/' . $sHTTP_Host;
-    else
-        $sRedirectURL .= $sHTTP_Host . $sPortString;
-
-    // If root path is already included don't add it again
-    if (!$sRootPath) {
-        // This check is not meaningful if installed in top level web directory
-        $sRelativeURLPath = '/' . $sRelativeURL;
-    } elseif (strpos($sRelativeURL, $sRootPath)===FALSE) {
-        // sRootPath is not in sRelativeURL.  Add it
-        $sRelativeURLPath = $sRootPath . '/' . $sRelativeURL;
-    } else {
-        // sRootPath already in sRelativeURL.  Don't add
-        $sRelativeURLPath = $sRelativeURL;
-    }
+if (empty($_SESSION['sURLPath'])) {
+    $sErrorMessage = "Fatal Error: \$_SESSION['sURLPath'] is empty.<br>.\n";
+    die ($sErrorMessage);
+}
 
     // Test if file exists before redirecting.  May need to remove
     // query string first.
-    $iQueryString = strpos($sRelativeURLPath,'?');
+    $iQueryString = strpos($sRelativeURL,'?');
     if ($iQueryString) {
-        $sPathExtension = substr($sRelativeURLPath,0,$iQueryString);
+        $sPathExtension = substr($sRelativeURL,0,$iQueryString);
     } else {
-        $sPathExtension = $sRelativeURLPath;
+        $sPathExtension = $sRelativeURL;
     }
 
-    // $sRootPath gets in the way when verifying if the file exists
-    $sPathExtension = substr($sPathExtension,strlen($sRootPath));
-    $sFullPath = str_replace('\\','/',$sDocumentRoot.$sPathExtension);
+    // The idea here is to get the file path into this form:
+    //     $sFullPath = $sDocumentRoot.$sRootPath.$sPathExtension
+    // The Redirect URL is then in this form: 
+    //     $sRedirectURL = $_SESSION['sURLPath'].$sPathExtension
+
+    $sFullPath = str_replace('\\','/',$sDocumentRoot.'/'.$sPathExtension);
 
     // With the query string removed we can test if file exists
     if (file_exists($sFullPath) && is_readable($sFullPath)) {
-        $sRedirectURL .= $sRelativeURLPath;
+        return ($_SESSION['sURLPath'] .'/' . $sRelativeURL);
     } else {
         $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n";
         $sErrorMessage .= "\$sPathExtension = $sPathExtension<br>\n";
         $sErrorMessage .= "\$sDocumentRoot = $sDocumentRoot<br>\n";
+        $sErrorMessage .= "\$_SESSION['sURLPath'] = ";
+        $sErrorMessage .= $_SESSION['sURLPath'] . "<br>\n";
 
         die ($sErrorMessage);
     }
-
-    return $sRedirectURL;
 }
 
 // Convert a relative URL into an absolute URL and redirect the browser there.
@@ -1999,14 +1949,6 @@ function genGroupKey($methodSpecificID, $famID, $fundIDs, $date) {
         } else {
             return $GroupKey;
         }
-    }
-}
-
-function isAffirmative($arg) {
-    if (strtolower($arg) == 'on' or strtolower($arg) == 'yes' or strtolower($arg) == 'true' or $arg == '1') {
-        return 1;
-    } else {
-        return 0;
     }
 }
 
