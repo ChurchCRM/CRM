@@ -29,9 +29,9 @@
 
 function Header_head_metatag() {
 global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
-global $sPageTitle;
+global $sPageTitle, $sURLPath;
 
-$sURLPath = $_SESSION['sURLPath'];
+	$sURLPath = $_SESSION['sURLPath'];
 ?>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
@@ -43,7 +43,8 @@ $sURLPath = $_SESSION['sURLPath'];
 }
 
 function Header_body_scripts() {
-global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage, $bLockURL, $URL;
+global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage, 
+$bLockURL, $URL, $sURLPath;
 
 $sURLPath = $_SESSION['sURLPath'];
 //
@@ -334,9 +335,9 @@ function addMenu($menu) {
 }
 
 function addMenuItem($aMenu,$mIdx) {
-global $security_matrix;
+global $security_matrix, $sURLPath;
 
-$sURLPath = $_SESSION['sURLPath'];
+	$sURLPath = $_SESSION['sURLPath'];
 
     $link = ($aMenu['uri'] == "") ? "" : $sURLPath."/".$aMenu['uri'];
     $text = $aMenu['statustext'];
@@ -409,9 +410,9 @@ function menu_setting() {
 
 function Header_body_menu() {
 global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
-global $MenuFirst, $sPageTitle;
+global $MenuFirst, $sPageTitle, $sURLPath;
 
-$sURLPath = $_SESSION['sURLPath'];
+	$sURLPath = $_SESSION['sURLPath'];
 
         $MenuFirst = 1;
 
@@ -541,7 +542,7 @@ function addSection($menu) {
     $item_cnt = mysql_num_rows($rsMenu);
     $ptr = 1;
     while ($aRow = mysql_fetch_array($rsMenu)) {    
-        if ($aRow['admin_only'] & !$_SESSION['bAdmin']) {
+        if (isset($aRow['admin_only']) & !$_SESSION['bAdmin']) {
         // hide admin menu
         } else {
             addEntry($aRow);
@@ -583,9 +584,10 @@ $sURLPath = $_SESSION['sURLPath'];
 }
 
 function Header_body_nomenu() {
-global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
+global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, 
+       $sHeader, $sGlobalMessage, $sURLPath, $sPageTitle;
 
-$sURLPath = $_SESSION['sURLPath'];
+	$sURLPath = $_SESSION['sURLPath'];
 ?>
 
 <table width="100%" border="0" cellpadding="5" cellspacing="0" align="center">
