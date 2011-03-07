@@ -47,6 +47,8 @@ if (!$_SESSION['bAdmin'])
 }
 
 $iPersonID = -1;
+$vNewUser = false;
+$bShowPersonSelect = false;
 
 // Get the PersonID out of either querystring or the form, depending and what we're doing
 if (isset($_GET['PersonID'])) {

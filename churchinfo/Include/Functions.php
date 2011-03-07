@@ -1339,7 +1339,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
 {
     global $aLocaleInfo;
     $bErrorFlag = false;
-
+    
     switch ($type)
     {
         // Validate a date field
@@ -1901,9 +1901,9 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0) {
     // Build array of Head of Households and Spouses with fam_ID as the key
     $sSQL = "SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (" . $head_criteria . ") ORDER BY per_fam_ID";
     $rs_head = RunQuery($sSQL);
-    $aHead = "";
+    $aHead = array ();
     while (list ($head_firstname, $head_famid) = mysql_fetch_row($rs_head)) {
-        if ($head_firstname && $aHead[$head_famid]) {
+        if ($head_firstname && isset ($aHead[$head_famid])) {
             $aHead[$head_famid] .= " & " . $head_firstname;
         } elseif ($head_firstname) {
             $aHead[$head_famid] = $head_firstname;

@@ -28,49 +28,48 @@ if (!$_SESSION['bFinance']) {
 	exit;
 }
 
-if (isset($_POST["Confirm"]) or isset($_POST["Confirm"])) {
-	$updateEnvelopes = 0;
-	if (isset($_POST["Confirm"])) {
-		$envelopesToWrite = $_SESSION['envelopesToWrite'];
-		foreach ($envelopesToWrite as $fam_ID => $envelope) {
-			$dSQL = "UPDATE family_fam SET fam_Envelope='" . $envelope . "' WHERE fam_ID='" . $fam_ID . "'";
-			RunQuery($dSQL);
-		}
+if (isset($_POST["Confirm"])) {
+	$envelopesToWrite = $_SESSION['envelopesToWrite'];
+	foreach ($envelopesToWrite as $fam_ID => $envelope) {
+		$dSQL = "UPDATE family_fam SET fam_Envelope='" . $envelope . "' WHERE fam_ID='" . $fam_ID . "'";
+		RunQuery($dSQL);
 	}
 }
 
-if (!$updateEnvelopes) {
-	if (isset($_POST["Classification"])) {
-		$iClassification = $_POST["Classification"];
-		$_SESSION['classification'] = $iClassification;
-	} else {
-		$iClassification = $_SESSION['classification'];
-	}
+if (isset($_POST["Classification"])) {
+	$iClassification = $_POST["Classification"];
+	$_SESSION['classification'] = $iClassification;
+} elseif (isset ($_SESSION['classification'])) {
+	$iClassification = $_SESSION['classification'];
+} else {
+	$iClassification = 0;
+}
 
-	if (isset($_POST["SortBy"])) {
-		$sSortBy = $_POST["SortBy"];
-	} else {
-		$sSortBy = "name";
-	}
+if (isset($_POST["SortBy"])) {
+	$sSortBy = $_POST["SortBy"];
+} else {
+	$sSortBy = "name";
+}
 	
-	if (isset($_POST["AssignStartNum"])) {
-		$iAssignStartNum = $_POST["AssignStartNum"];
-	} elseif (!$iAssignStartNum) {
-		$iAssignStartNum = 1;
-	}
+if (isset($_POST["AssignStartNum"])) {
+	$iAssignStartNum = $_POST["AssignStartNum"];
+} else {
+	$iAssignStartNum = 1;
+}
 
-	$envelopesHash = getEnvelopes($iClassification);
+// get the array of envelopes of interest, indexed by family id
+$envelopesByFamID = getEnvelopes($iClassification);
 
-	$familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse, $iClassification);
-	asort($familyArray);
+// get the array of family name/description strings, also indexed by family id
+$familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse, $iClassification);
+asort($familyArray);
 
-	//Get Classifications for the drop-down
-	$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
-	$rsClassifications = RunQuery($sSQL);
-	while ($aRow = mysql_fetch_array($rsClassifications)) {
-		extract($aRow);
-		$classification[$lst_OptionID] = $lst_OptionName;
-	}
+//Get Classifications for the drop-down
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
+$rsClassifications = RunQuery($sSQL);
+while ($aRow = mysql_fetch_array($rsClassifications)) {
+	extract($aRow);
+	$classification[$lst_OptionID] = $lst_OptionName;
 }
 
 require "Include/Header.php";
@@ -80,6 +79,7 @@ require "Include/Header.php";
 <?php
 
 $duplicateEnvelopeHash = array();
+$updateEnvelopes = 0;
 
 // Service the action buttons
 if (isset($_POST["PrintReport"])) {
@@ -88,13 +88,13 @@ if (isset($_POST["PrintReport"])) {
 	$newEnvNum = $iAssignStartNum;
 	$envelopesToWrite = array(); // zero it out
 	foreach ($familyArray as $fam_ID => $fam_Data) {
-		$envelopesHash[$fam_ID] = $newEnvNum;
+		$envelopesByFamID[$fam_ID] = $newEnvNum;
 		$envelopesToWrite[$fam_ID] = $newEnvNum++;
 	}
 } elseif (isset($_POST["ZeroAll"])) {
-	$envelopesHash = array(); // zero it out
+	$envelopesByFamID = array(); // zero it out
 	foreach ($familyArray as $fam_ID => $fam_Data) {
-		$envelopesHash[$fam_ID] = 0;
+		$envelopesByFamID[$fam_ID] = 0;
 		$envelopesToWrite[$fam_ID] = 0;
 	}
 } elseif (isset($_POST["UpdateEnvelopes"])) {
@@ -103,9 +103,10 @@ if (isset($_POST["PrintReport"])) {
 		$key = "EnvelopeID_" . $fam_ID;
 		if (isset($_POST[$key])) {
 			$newEnvelope = $_POST[$key];
-			$priorEnvelope = $envelopesHash[$fam_ID];
+			$priorEnvelope = $envelopesByFamID[$fam_ID];
 			if ($newEnvelope <> $priorEnvelope) {
 				$envelopesToWrite[$fam_ID] = $newEnvelope;
+				$envelopesByFamID[$fam_ID] = $newEnvelope;
 			}
 		}
 	}
@@ -119,83 +120,77 @@ if (isset($_POST["PrintReport"])) {
 	<?php
 }
 
-if (!$updateEnvelopes) {
-	if ($envelopesToWrite) {
-		$_SESSION['envelopesToWrite'] = $envelopesToWrite;
-	}	
+?>
+<input type="submit" class="icButton" value="<?php echo gettext("Print Report"); ?>" 
+		 name="PrintReport">
 
-	?>
-	<input type="submit" class="icButton" value="<?php echo gettext("Print Report"); ?>" 
-			 name="PrintReport">
+<br><br>
+<input type="submit" class="icButton" value="<?php echo gettext("Update Family Records"); ?>" 
+		 name="UpdateEnvelopes"> <-- Envelope #'s are not written to DB until this button is pressed
 
-	<br><br>
-	<input type="submit" class="icButton" value="<?php echo gettext("Update Family Records"); ?>" 
-			 name="UpdateEnvelopes"> <-- Envelope #'s are not written to DB until this button is pressed
+<br><br>
 
-	<br><br>
+<table border=1>
+<tr>
 
-	<table border=1>
-	<tr>
+<td><b>Family Select</b> with at least one: 
 
-	<td><b>Family Select</b> with at least one: 
+<select name="Classification">
+<option value="0"><?php echo gettext("All"); ?></option>
+<?php
+foreach ($classification as $lst_OptionID => $lst_OptionName) {
+	echo "<option value=\"" . $lst_OptionID . "\"";
+	if ($iClassification == $lst_OptionID) echo " selected";
+	echo ">" . $lst_OptionName . "&nbsp;";
+}
+?>
+</select>
+<input type="submit" class="icButton" value="<?php echo gettext("Sort by"); ?>" name="Sort">
+<input type="radio" Name="SortBy" value="name"
+<?php if ($sSortBy == "name") echo " checked"; ?>><?php echo gettext("Last Name"); ?>
+<input type="radio" Name="SortBy" value="envelope"
+<?php if ($sSortBy == "envelope") echo " checked"; ?>><?php echo gettext("Envelope #"); ?>
 
-	<select name="Classification">
-	<option value="0"><?php echo gettext("All"); ?></option>
-	<?php
-	foreach ($classification as $lst_OptionID => $lst_OptionName) {
-		echo "<option value=\"" . $lst_OptionID . "\"";
-		if ($iClassification == $lst_OptionID) echo " selected";
-		echo ">" . $lst_OptionName . "&nbsp;";
-	}
-	?>
-	</select>
-	<input type="submit" class="icButton" value="<?php echo gettext("Sort by"); ?>" name="Sort">
-	<input type="radio" Name="SortBy" value="name"
-	<?php if ($sSortBy == "name") echo " checked"; ?>><?php echo gettext("Last Name"); ?>
-	<input type="radio" Name="SortBy" value="envelope"
-	<?php if ($sSortBy == "envelope") echo " checked"; ?>><?php echo gettext("Envelope #"); ?>
+</td>
 
-	</td>
+<td><b>Envelope</b>
+<input type="submit" class="icButton" value="<?php echo gettext("Zero"); ?>" 
+		 name="ZeroAll">
+<input type="submit" class="icButton" value="<?php echo gettext("Assign starting at #"); ?>" 
+		 name="AssignAllFamilies">
+<input type="text" name="AssignStartNum" value="<?php echo $iAssignStartNum; ?>" maxlength="5">
 
-	<td><b>Envelope</b>
-	<input type="submit" class="icButton" value="<?php echo gettext("Zero"); ?>" 
-			 name="ZeroAll">
-	<input type="submit" class="icButton" value="<?php echo gettext("Assign starting at #"); ?>" 
-			 name="AssignAllFamilies">
-	<input type="text" name="AssignStartNum" value="<?php echo $iAssignStartNum; ?>" maxlength="5">
+</td></tr>
 
-	</td></tr>
+<?php
 
-	<?php
+if ($sSortBy == "envelope") {
+	asort($envelopesByFamID);
+	$arrayToLoop = $envelopesByFamID;
+} else {
+	$arrayToLoop = $familyArray;
+}
 
-	if ($_POST["SortBy"] == "envelope") {
-		asort($envelopesHash);
-		$arrayToLoop = $envelopesHash;
+foreach ($arrayToLoop as $fam_ID => $value) {
+	if ($sSortBy == "envelope") {
+		$envelope = $value;
+		$fam_Data = $familyArray[$fam_ID];
 	} else {
-		$arrayToLoop = $familyArray;
+		$fam_Data = $value;
+		$envelope = $envelopesByFamID[$fam_ID];
 	}
-	
-	foreach ($arrayToLoop as $fam_ID => $value) {
-		if ($_POST["SortBy"] == "envelope") {
-			$envelope = $value;
-			$fam_Data = $familyArray[$fam_ID];
-		} else {
-			$fam_Data = $value;
-			$envelope = $envelopesHash[$fam_ID];
-		}
-		echo "<tr>";
-		echo "<td>" . $fam_Data . "&nbsp;</td>";
-		if ($envelope and $duplicateEnvelopeHash and array_key_exists($envelope, $duplicateEnvelopeHash)) {
-			$tdTag = "<td bgcolor='red'>";
-		} else {
-			$duplicateEnvelopeHash[$envelope] = $fam_ID;
-			$tdTag = "<td>";
-		}
-		echo $tdTag;?><class="TextColumn">
-		<input type="text" name="EnvelopeID_<?php echo $fam_ID; ?>" value="<?php echo $envelope; ?>" maxlength="10">
-		</td></tr>
-		<?php
+	echo "<tr>";
+	echo "<td>" . $fam_Data . "&nbsp;</td>";
+	if ($envelope and $duplicateEnvelopeHash and array_key_exists($envelope, $duplicateEnvelopeHash)) {
+		$tdTag = "<td bgcolor='red'>";
+	} else {
+		$duplicateEnvelopeHash[$envelope] = $fam_ID;
+		$tdTag = "<td>";
 	}
+	echo $tdTag;?><class="TextColumn">
+	<input type="text" name="EnvelopeID_<?php echo $fam_ID; ?>" value="<?php echo $envelope; ?>" maxlength="10">
+	</td></tr>
+	<?php
 }
 ?>	
 </table><br>
@@ -203,6 +198,7 @@ if (!$updateEnvelopes) {
 
 <?php
 
+// make an array of envelopes indexed by family id, subject to the classification filter if specified.
 function getEnvelopes($classification) {
 	if ($classification) {
 		$sSQL = "SELECT fam_ID, fam_Envelope FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID='" . $classification . "'";
@@ -212,6 +208,7 @@ function getEnvelopes($classification) {
 
 	$sSQL .= " ORDER by fam_Envelope";
 	$dEnvelopes = RunQuery($sSQL);
+	$envelopes = array ();
 	while ($aRow = mysql_fetch_array($dEnvelopes)) {
 		extract($aRow);
 		$envelopes[$fam_ID] = $fam_Envelope;

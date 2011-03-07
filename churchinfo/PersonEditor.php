@@ -69,6 +69,19 @@ $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom
 $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysql_num_rows($rsCustomFields);
 
+//Initialize the error flag
+$bErrorFlag = false;
+$sFirstNameError = "";
+$sMiddleNameError = "";
+$sLastNameError = "";
+$sEmailError = "";
+$sWorkEmailError = "";
+$sBirthDateError = "";
+$sBirthYearError = "";
+$sFriendDateError = "";
+$sMembershipDateError = "";
+$aCustomErrors = array ();
+
 //Is this the second pass?
 if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 {
@@ -118,9 +131,6 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	$bNoFormat_HomePhone = isset($_POST["NoFormat_HomePhone"]);
 	$bNoFormat_WorkPhone = isset($_POST["NoFormat_WorkPhone"]);
 	$bNoFormat_CellPhone = isset($_POST["NoFormat_CellPhone"]);
-
-	//Initialize the error flag
-	$bErrorFlag = false;
 
 	//Adjust variables as needed
 	if ($iFamily == 0)	$iFamilyRole = 0;
@@ -209,7 +219,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
 	{
 		extract($rowCustomField);
-
+		
 		if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
 		{
 			$currentFieldData = FilterInput($_POST[$custom_Field]);
@@ -797,7 +807,8 @@ require "Include/Header.php";
 						if ($type_ID == 11) $custom_Special = $sPhoneCountry;
 
 						formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST["PersonSubmit"]));
-						echo "<span style=\"color: red; \">" . $aCustomErrors[$custom_Field] . "</span>";
+						if (isset ($aCustomErrors[$custom_Field])) 
+							echo "<span style=\"color: red; \">" . $aCustomErrors[$custom_Field] . "</span>";
 						echo "</td></tr>";
 					}
 				}
