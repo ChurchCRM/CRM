@@ -803,7 +803,7 @@ if ($output == "pdf") {
 	}
 	
 	$pdf->FinishPage($page);
-	$pdf->Output("DepositReport-" . date("Ymd-Gis") . ".pdf", true);
+	$pdf->Output("DepositReport-" . date("Ymd-Gis") . ".pdf", "D");
 
 	
 // Output a text file
