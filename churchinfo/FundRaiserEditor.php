@@ -202,7 +202,6 @@ require "Include/Header.php";
 	<td><?php echo gettext("Est Value"); ?></td>
 	<td><?php echo gettext("Material Value"); ?></td>
 	<td><?php echo gettext("Minimum Price"); ?></td>
-	<td><?php echo gettext("Edit"); ?></td>
 	<td><?php echo gettext("Delete"); ?></td>
 </tr>
 
@@ -219,7 +218,7 @@ if ($rsDonatedItems != 0) {
 	?>
 		<tr class="<?php echo $sRowClass ?>">
 			<td>
-				<?php echo $di_Item?>&nbsp;
+				<a href="DonatedItemEditor.php?DonatedItemID=<?php echo $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID;?>"><?php echo $di_Item;?></a>
 			</td>
 			<td>
 				<?php if ($di_multibuy) echo "X";?>&nbsp;
@@ -244,9 +243,6 @@ if ($rsDonatedItems != 0) {
 			</td>
 			<td align=center>
 				<?php echo $di_minimum ?>&nbsp;
-			</td>
-			<td>
-				<a href="DonatedItemEditor.php?DonatedItemID=<?php echo $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID;?>">Edit</a>
 			</td>
 			<td>
 				<a href="DonatedItemDelete.php?DonatedItemID=<?php echo $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID;?>">Delete</a>
