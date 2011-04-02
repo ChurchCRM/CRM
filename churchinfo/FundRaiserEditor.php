@@ -158,6 +158,7 @@ require "Include/Header.php";
 					echo "<input type=button class=icButton value=\"".gettext("Generate Catalog")."\" name=GenerateCatalog onclick=\"javascript:document.location='Reports/FRCatalog.php?CurrentFundraiser=$iFundRaiserID';\">\n";
 					echo "<input type=button class=icButton value=\"".gettext("Generate Bid Sheets")."\" name=GenerateBidSheets onclick=\"javascript:document.location='Reports/FRBidSheets.php?CurrentFundraiser=$iFundRaiserID';\">\n";
 					echo "<input type=button class=icButton value=\"".gettext("Generate Certificates")."\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+					echo "<input type=button class=icButton value=\"".gettext("Batch Winner Entry")."\" name=BatchWinnerEntry onclick=\"javascript:document.location='BatchWinnerEntry.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
 				}
 			?>
 		</td>

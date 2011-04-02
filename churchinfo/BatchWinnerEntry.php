@@ -36,14 +36,23 @@ if ($iCurrentFundraiser) {
 $sPageTitle = gettext("Batch Winner Entry");
 
 //Is this the second pass?
-if (isset($_POST["EnterWinners"]))
-{
+if (isset($_POST["EnterWinners"])) {
+	for ($row = 0; $row < 10; $row += 1) {
+		$buyer = $_POST["Paddle$row"];
+		$di = $_POST["Item$row"];
+		$price = $_POST["SellPrice$row"];
+		if ($buyer>0 && $di>0 && $price > 0) {
+			$sSQL = "UPDATE donateditem_di SET di_buyer_id=$buyer, di_sellprice=$price WHERE di_ID=$di";
+			RunQuery($sSQL);
+		}
+	}
+	Redirect ($linkBack);
 }
 
 // Get Items for the drop-down
 $sDonatedItemsSQL = "SELECT di_ID, di_Item, di_title, di_multibuy
                      FROM donateditem_di
-                     WHERE di_FR_ID = '" . $iFundRaiserID . "' ORDER BY substr(di_item,4)"; 
+                     WHERE di_FR_ID = '" . $iCurrentFundraiser . "' ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR(di_Item,2,3),SIGNED)"; 
 $rsDonatedItems = RunQuery($sDonatedItemsSQL);
 
 //Get Paddles for the drop-down
@@ -63,45 +72,47 @@ require "Include/Header.php";
 
 <table cellpadding="3" align="center">
 	<tr>
-		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Enter Winners"); ?>" name="EnterWinners">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
-		</td>
-	</tr>
-	<tr>
 		<td class="LabelColumn"><?php echo gettext("Item"); ?></td>
 		<td class="LabelColumn"><?php echo gettext("Winner"); ?></td>
 		<td class="LabelColumn"><?php echo gettext("Price"); ?></td>
 	</tr>
-<?php 
+<?php
 	for ($row = 0; $row < 10; $row += 1) {
+		echo "<tr>";
 		echo "<td>";
-		echo "<select name=\"Item\"" . $row . ">\n";
+		echo "<select name=\"Item" . $row . "\">\n";
 		echo "<option value=\"0\" selected>" . gettext("Unassigned") . "</option>\n";
 
 		mysql_data_seek ($rsDonatedItems, 0);
 		while ($itemArr = mysql_fetch_array($rsDonatedItems)) {
 			extract($itemArr);
-			echo "<option value=\"".$di_ID."\">" . $di_Item . " " . $di_Title . "</option>\n";
+			echo "<option value=\"".$di_ID."\">" . $di_Item . " " . $di_title . "</option>\n";
 		}
 		echo "</select>\n";
 		echo "</td>";
 
 		echo "<td>";
-		echo "<select name=\"Paddle\"" . $row . ">\n";
+		echo "<select name=\"Paddle" . $row . "\">\n";
 		echo "<option value=\"0\" selected>" . gettext("Unassigned") . "</option>\n";
 
 		mysql_data_seek ($rsPaddles, 0);
 		while ($paddleArr = mysql_fetch_array($rsPaddles)) {
 			extract($paddleArr);
-			echo "<option value=\"".$pn_ID."\">" . $pn_Num . " " . $buyerFirstName . " " . $buyerLastName .  "</option>\n";
+			echo "<option value=\"".$pn_per_ID."\">" . $pn_Num . " " . $buyerFirstName . " " . $buyerLastName .  "</option>\n";
 		}
 		echo "</select>\n";
 		echo "</td>";
 
-		echo "<td class=\"TextColumn\"><input type=\"text\" name=\"SellPrice\"$row id=\"SellPrice\"$row value=\"\"></td>\n";
+		echo "<td class=\"TextColumn\"><input type=\"text\" name=\"SellPrice$row\" id=\"SellPrice\"$row value=\"\"></td>\n";
+		echo "</tr>";
 	}
 ?>
+	<tr>
+		<td align="center">
+			<input type="submit" class="icButton" value="<?php echo gettext("Enter Winners"); ?>" name="EnterWinners">
+			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+		</td>
+	</tr>
 	</table>
 </form>
 
