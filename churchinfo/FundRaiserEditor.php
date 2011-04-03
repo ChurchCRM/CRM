@@ -214,6 +214,10 @@ if ($rsDonatedItems != 0) {
 	while ($aRow = mysql_fetch_array($rsDonatedItems))
 	{
 		extract($aRow);
+		
+		if ($di_Item == "") {
+			$di_Item = "~";
+		}
 	
 		$sRowClass = "RowColorA";
 	?>

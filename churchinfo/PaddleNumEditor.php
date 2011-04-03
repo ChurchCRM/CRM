@@ -43,7 +43,7 @@ $sMultibuyItemsSQL = "SELECT di_ID, di_title FROM donateditem_di WHERE di_multib
 $sPageTitle = gettext("Buyer Number Editor");
 
 //Is this the second pass?
-if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]))
+if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]) || isset($_POST["GenerateStatement"]))
 {
 	//Get all the variables from the request object and assign them locally
 	$iNum = FilterInput ($_POST["Num"]);
@@ -110,6 +110,11 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]))
 		//Reload to editor to add another record
 		Redirect("PaddleNumEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
 	}
+	else if (isset($_POST["GenerateStatement"]))
+	{
+		//Jump straight to generating the statement report
+		Redirect("Reports/FundRaiserStatement.php?PaddleNumID=$iPaddleNumID");
+	}
 	
 } else {
 
@@ -144,7 +149,7 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]))
 }
 
 //Get People for the drop-down
-$sPeopleSQL = "SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_City, fam_State FROM person_per JOIN family_fam on per_fam_id=fam_id ORDER BY per_LastName";
+$sPeopleSQL = "SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_City, fam_State FROM person_per JOIN family_fam on per_fam_id=fam_id ORDER BY per_LastName, per_FirstName";
 
 require "Include/Header.php";
 
@@ -156,6 +161,7 @@ require "Include/Header.php";
 	<tr>
 		<td align="center">
 			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="PaddleNumSubmit">
+			<input type="submit" class="icButton" value="<?php echo gettext("Generate Statement"); ?>" name="GenerateStatement">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PaddleNumSubmitAndAdd\">\n"; } ?>
 			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
@@ -185,7 +191,7 @@ require "Include/Header.php";
 								extract($aRow);
 								echo "<option value=\"" . $per_ID . "\"";
 								if ($iPerID == $per_ID) { echo " selected"; }
-								echo ">" . $per_FirstName . " " . $per_LastName;
+								echo ">" . $per_LastName . ", " . $per_FirstName;
 								echo " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 							}
 							?>
@@ -227,10 +233,6 @@ require "Include/Header.php";
 			
 			</table>
 			</tr>
-
-			<tr>
-			<a class="SmallText" href="Reports/FundRaiserStatement.php?PaddleNumID=<?php echo $iPaddleNumID; ?>"><?php echo gettext("Make Statement"); ?></a>&nbsp;
-                        </tr>
 	</table>
 
 </form>

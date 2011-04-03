@@ -40,19 +40,18 @@ require "Include/Header.php";
 <?php
 echo "<form method=\"post\" action=\"Reports/FundRaiserStatement.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID\">\n";
 if ($iFundRaiserID > 0)
-	echo "<input type=button class=icButton value=\"".gettext("Select all")."\" name=SelectAll onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&SelectAll=1&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
-	echo "<input type=button class=icButton value=\"".gettext("Select none")."\" name=SelectNone onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
-	echo "<input type=button class=icButton value=\"".gettext("Add Buyer")."\" name=AddBuyer onclick=\"javascript:document.location='PaddleNumEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+	echo "<input type=button class=icButton value=\"".gettext("Select all")."\" name=SelectAll onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&SelectAll=1&linkBack=PaddleNumList.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+	echo "<input type=button class=icButton value=\"".gettext("Select none")."\" name=SelectNone onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&linkBack=PaddleNumList.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+	echo "<input type=button class=icButton value=\"".gettext("Add Buyer")."\" name=AddBuyer onclick=\"javascript:document.location='PaddleNumEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=PaddleNumList.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
 	echo "<input type=submit class=icButton value=\"".gettext("Generate Statements for Selected")."\" name=GenerateStatements>\n";
 ?>
 
-<table cellpadding="5" cellspacing="0" width="100%">
+<table cellpadding="5" cellspacing="5">
 
 <tr class="TableHeader">
 	<td><?php echo gettext("Select"); ?></td>
 	<td><?php echo gettext("Number"); ?></td>
 	<td><?php echo gettext("Buyer"); ?></td>
-	<td><?php echo gettext("Edit"); ?></td>
 	<td><?php echo gettext("Delete"); ?></td>
 </tr>
 
@@ -72,13 +71,11 @@ if ($rsPaddleNums) {
 				<input type="checkbox" name="Chk<?php echo $pn_ID."\""; if (isset($_GET["SelectAll"])) echo " checked=\"yes\"";?>></input>
 			</td>
 			<td>
-				<?php echo $pn_Num?>&nbsp;
+				<?php echo "<a href=\"PaddleNumEditor.php?PaddleNumID=$pn_ID&linkBack=PaddleNumList.php\"> $pn_Num</a>\n"; ?>
 			</td>
+				
 			<td>
 				<?php echo $buyerFirstName . " " . $buyerLastName ?>&nbsp;
-			</td>
-			<td>
-				<a href="PaddleNumEditor.php?PaddleNumID=<?php echo $pn_ID . "&linkBack=PaddleNumList.php";?>">Edit</a>
 			</td>
 			<td>
 				<a href="PaddleNumDelete.php?PaddleNumID=<?php echo $pn_ID . "&linkBack=PaddleNumList.php?FundRaiserID=" . $iFundRaiserID;?>">Delete</a>

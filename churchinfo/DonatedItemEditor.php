@@ -162,7 +162,7 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 //}
 
 //Get People for the drop-down
-$sPeopleSQL = "SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_City, fam_State FROM person_per JOIN family_fam on per_fam_id=fam_id ORDER BY per_LastName";
+$sPeopleSQL = "SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_City, fam_State FROM person_per JOIN family_fam on per_fam_id=fam_id ORDER BY per_LastName, per_FirstName";
 
 //Get Paddles for the drop-down
 $sPaddleSQL = "SELECT pn_ID, pn_Num, pn_per_ID, 
@@ -216,7 +216,7 @@ require "Include/Header.php";
 								extract($aRow);
 								echo "<option value=\"" . $per_ID . "\"";
 								if ($iDonor == $per_ID) { echo " selected"; }
-								echo ">" . $per_FirstName . " " . $per_LastName;
+								echo ">" . $per_LastName . ", " . $per_FirstName;
 								echo " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 							}
 							?>
