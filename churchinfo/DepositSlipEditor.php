@@ -23,11 +23,11 @@ $linkBack = FilterInput($_GET["linkBack"]);
 $iDepositSlipID = FilterInput($_GET["DepositSlipID"]);
 
 // Security: User must have finance permission to use this form
-if (!$_SESSION['bFinance'])
-{
-	Redirect("Menu.php");
-	exit;
-}
+//if (!$_SESSION['bFinance'])
+//{
+//	Redirect("Menu.php");
+//	exit;
+//}
 
 if ($iDepositSlipID) {
 	// Get the current deposit slip

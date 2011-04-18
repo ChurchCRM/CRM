@@ -20,10 +20,10 @@ require "../Include/ReportFunctions.php";
 require "../Include/ReportConfig.php";
 
 // Security
-if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
-	Redirect("Menu.php");
-	exit;
-}
+//if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
+//	Redirect("Menu.php");
+//	exit;
+//}
 
 $iBankSlip = FilterInput($_GET["BankSlip"]);
 if (!$iBankSlip)

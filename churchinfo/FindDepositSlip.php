@@ -23,11 +23,11 @@ $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 $sPageTitle = gettext("Deposit Listing");
 
 // Security: User must have finance permission to use this form
-if (!$_SESSION['bFinance'])
-{
-	Redirect("Menu.php");
-	exit;
-}
+//if (!$_SESSION['bFinance'])
+//{
+//	Redirect("Menu.php");
+//	exit;
+//}
 
 //Filter Values
 $dDateStart = FilterInput($_GET["DateStart"]);
@@ -36,13 +36,21 @@ $iID = FilterInput($_GET["ID"]);
 $sSort = FilterInput($_GET["Sort"]);
 
 // Build SQL Criteria
+$sCriteria = "";
+if (!$_SESSION['bFinance'])
+	$sCriteria = "WHERE dep_EnteredBy=" . $_SESSION['iUserID'];
+
 if ($dDateStart || $dDateEnd) {
 	if (!$dDateStart && $dDateEnd)
 		$dDateStart = $dDateEnd;
 	if (!$dDateEnd && $dDateStart)
 		$dDateEnd = $dDateStart;
-	$sCriteria = " WHERE dep_Date BETWEEN '$dDateStart' AND '$dDateEnd' ";
+	if ($sCriteria == "")
+		$sCriteria .= " WHERE dep_Date BETWEEN '$dDateStart' AND '$dDateEnd' ";
+	else
+		$sCriteria .= " AND dep_Date BETWEEN '$dDateStart' AND '$dDateEnd' ";
 }
+
 if ($iID) {
 	if ($sCriteria)
 		$sCrieria .= "OR dep_ID = '$iID' ";

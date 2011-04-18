@@ -22,10 +22,10 @@ require "Include/MICRFunctions.php";
 
 // Security: User must have Finance permission to use this form.
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (! $_SESSION['bFinance']) {
-	Redirect("Menu.php");
-	exit;
-}
+//if (! $_SESSION['bFinance']) {
+//	Redirect("Menu.php");
+//	exit;
+//}
 
 if ($bUseScannedChecks) { // Instantiate the MICR class
    $micrObj = new MICRReader();
