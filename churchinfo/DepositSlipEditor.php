@@ -22,13 +22,6 @@ require "Include/MICRFunctions.php";
 $linkBack = FilterInput($_GET["linkBack"]);
 $iDepositSlipID = FilterInput($_GET["DepositSlipID"]);
 
-// Security: User must have finance permission to use this form
-//if (!$_SESSION['bFinance'])
-//{
-//	Redirect("Menu.php");
-//	exit;
-//}
-
 if ($iDepositSlipID) {
 	// Get the current deposit slip
 	$sSQL = "SELECT * from deposit_dep WHERE dep_ID = " . $iDepositSlipID;
@@ -37,6 +30,12 @@ if ($iDepositSlipID) {
 	// Set current deposit slip
 	$_SESSION['iCurrentDeposit'] = $iDepositSlipID;
 	$_SESSION['idefaultPaymentMethod'] = $dep_method;
+
+	// Security: User must have finance permission or be the one who created this deposit
+	if (! ($_SESSION['bFinance'] || $_SESSION['iUserID']==$dep_EnteredBy)) {
+		Redirect("Menu.php");
+		exit;
+	}
 }
 
 //Set the page title

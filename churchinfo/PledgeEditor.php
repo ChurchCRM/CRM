@@ -20,13 +20,6 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/MICRFunctions.php";
 
-// Security: User must have Finance permission to use this form.
-// Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-//if (! $_SESSION['bFinance']) {
-//	Redirect("Menu.php");
-//	exit;
-//}
-
 if ($bUseScannedChecks) { // Instantiate the MICR class
    $micrObj = new MICRReader();
 }
@@ -61,13 +54,19 @@ $iFamily = FilterInput($_GET["FamilyID"],'int');
 unset ($fund2PlgIds); // this will be the array cross-referencing funds to existing plg_plgid's
 
 if ($sGroupKey) {
-	$sSQL = "SELECT plg_plgID, plg_fundID from pledge_plg where plg_GroupKey=\"" . $sGroupKey . "\"";
+	$sSQL = "SELECT plg_plgID, plg_fundID, plg_EditedBy from pledge_plg where plg_GroupKey=\"" . $sGroupKey . "\"";
 	$rsKeys = RunQuery($sSQL);
 	while ($aRow = mysql_fetch_array($rsKeys)) {
 		$onePlgID = $aRow["plg_plgID"];
 		$oneFundID = $aRow["plg_fundID"];
 		$iOriginalSelectedFund = $oneFundID; // remember the original fund in case we switch to splitting
 		$fund2PlgIds[$oneFundID] = $onePlgID;
+
+		// Security: User must have Finance permission or be the one who entered this record originally
+		if (! ($_SESSION['bFinance'] || $_SESSION['iUserID']==$aRow["plg_EditedBy"])) {
+			Redirect("Menu.php");
+			exit;
+		}	
 	}
 }
 
