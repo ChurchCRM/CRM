@@ -75,6 +75,7 @@ for (; ; ) {    // This is not a loop but a section of code to be
     $needToBackUp = array (
     "family_fam");
 
+    $bErr = false;
     foreach ($needToBackUp as $backUpName) {
         if (! BackUpTable ($backUpName)) {
             $bErr = true;
