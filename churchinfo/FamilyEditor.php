@@ -49,8 +49,7 @@ elseif (!$_SESSION['bAddRecords'])
 }
 
 // Get the list of funds
-$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
-if ($editorMode == 0) $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
+$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
 $rsFunds = RunQuery($sSQL);
 
 // Get the lists of canvassers
@@ -72,6 +71,14 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
 	$aSecurityType[$lst_OptionID] = $lst_OptionName;
 }
 
+$bErrorFlag = false;
+$sNameError = "";
+$sEmailError = "";
+$sWeddingDateError = "";
+
+$aFirstNameError = array();
+$aBirthDateError = array();
+$aperFlags = array(); 
 
 //Is this the second pass?
 if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
@@ -98,8 +105,12 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$sEmail = FilterInput($_POST["Email"]);
 	$bSendNewsLetter = isset($_POST["SendNewsLetter"]);
 
-	$nLatitude = FilterInput($_POST["Latitude"]);
-	$nLongitude = FilterInput($_POST["Longitude"]);
+	$nLatitude = 0.0;
+	$nLongitude = 0.0;
+	if (array_key_exists ("Latitude", $_POST))
+		$nLatitude = FilterInput($_POST["Latitude"], "float");
+	if (array_key_exists ("Longitude", $_POST))
+		$nLongitude = FilterInput($_POST["Longitude"], "float");
 
 	if ($bHaveXML) {
 	// Try to get Lat/Lon based on the address
@@ -126,7 +137,9 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		$nLongitude="NULL";
 
 
-	$nEnvelope = FilterInput($_POST["Envelope"]);
+	$nEnvelope = 0;
+	if (array_key_exists ("Envelope", $_POST))
+		$nEnvelope = FilterInput($_POST["Envelope"], "int");
 	
 	if(is_numeric($nEnvelope)){ // Only integers are allowed as Envelope Numbers
 		if(intval($nEnvelope)==floatval($nEnvelope))
@@ -139,20 +152,24 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 	if ($_SESSION['bCanvasser']) { // Only take modifications to this field if the current user is a canvasser
 		$bOkToCanvass = isset($_POST["OkToCanvass"]);
-		$iCanvasser = FilterInput($_POST["Canvasser"]);
-		if (! $iCanvasser)
+		$iCanvasser = 0;
+		if (array_key_exists ("Canvasser", $_POST))
+			$iCanvasser = FilterInput($_POST["Canvasser"]);
+		if ((! $iCanvasser) && array_key_exists ("BraveCanvasser", $_POST))
 			$iCanvasser = FilterInput($_POST["BraveCanvasser"]);
 		if (! $iCanvasser)
 			$iCanvasser = 0;
 	}
 
-	$iPropertyID = FilterInput($_POST["PropertyID"],'int');
+	$iPropertyID = 0;
+	if (array_key_exists ("PropertyID", $_POST))
+		$iPropertyID = FilterInput($_POST["PropertyID"],'int');
 	$dWeddingDate = FilterInput($_POST["WeddingDate"]);
 
 	$bNoFormat_HomePhone = isset($_POST["NoFormat_HomePhone"]);
 	$bNoFormat_WorkPhone = isset($_POST["NoFormat_WorkPhone"]);
 	$bNoFormat_CellPhone = isset($_POST["NoFormat_CellPhone"]);
-
+	
 	//Loop through the Family Member 'quick entry' form fields
 	for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++)
 	{
@@ -564,7 +581,6 @@ require "Include/Header.php";
 ?>
 
 <form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>">
-<input type="hidden" Name="sAction" value="<?php echo $sAction; ?>">
 <input type="hidden" Name="iFamilyID" value="<?php echo $iFamilyID; ?>">
 <input type="hidden" name="FamCount" value="<?php echo $iFamilyMemberRows; ?>">
 
@@ -877,7 +893,7 @@ require "Include/Header.php";
 			<input type="hidden" name="PersonID<?php echo $iCount ?>" value="<?php echo $aPersonIDs[$iCount] ?>">
 			<td class="TextColumn">
 				<input name="FirstName<?php echo $iCount ?>" type="text" value="<?php echo $aFirstNames[$iCount] ?>" size="10">
-				<div><font color="red"><?php echo $aFirstNameError[$iCount]; ?></font></div>
+				<div><font color="red"><?php if (array_key_exists ($iCount, $aFirstNameError)) echo $aFirstNameError[$iCount]; ?></font></div>
 			</td>
 			<td class="TextColumn">
 				<input name="MiddleName<?php echo $iCount ?>" type="text" value="<?php echo $aMiddleNames[$iCount] ?>" size="10">
@@ -939,12 +955,12 @@ require "Include/Header.php";
 				</select>
 			</td>
 			<td class="TextColumn">
-			<?php	if ((!$aperFlags[$iCount]) or ($_SESSION['bSeePrivacyData']))
+			<?php	if ((!array_key_exists ($iCount, $aperFlags) || (!$aperFlags[$iCount])) or ($_SESSION['bSeePrivacyData']))
 			{
 				$UpdateBirthYear = 1;
 			?>
 				<input name="BirthYear<?php echo $iCount ?>" type="text" value="<?php echo $aBirthYears[$iCount] ?>" size="4" maxlength="4">
-				<div><font color="red"><?php echo $aBirthDateError[$iCount]; ?></font></div>
+				<div><font color="red"><?php if (array_key_exists ($iCount, $aBirthDateError)) echo $aBirthDateError[$iCount]; ?></font></div>
 			<?php }
 			else 
 			{ 

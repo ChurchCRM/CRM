@@ -23,6 +23,10 @@ $sPageTitle = gettext("Person Editor");
 //Get the PersonID out of the querystring
 $iPersonID = FilterInput($_GET["PersonID"],'int');
 
+$sPreviousPage = "";
+if (array_key_exists ("previousPage", $_GET))
+	$sPreviousPage = FilterInput ($_GET["previousPage"]);
+
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if (strlen($iPersonID) > 0)
@@ -92,11 +96,20 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	$sLastName = FilterInput($_POST["LastName"]);
 	$sSuffix = FilterInput($_POST["Suffix"]);
 	$iGender = FilterInput($_POST["Gender"],'int');
-	$sAddress1 = FilterInput($_POST["Address1"]);
-	$sAddress2 = FilterInput($_POST["Address2"]);
-	$sCity = FilterInput($_POST["City"]);
-	$sZip	= FilterInput($_POST["Zip"]);
-	$sCountry = FilterInput($_POST["Country"]);
+	
+	// Person address stuff is normally surpressed in favor of family address info
+	$sAddress1 = ""; $sAddress2 = ""; $sCity = ""; $sZip = ""; $sCountry = "";
+	if (array_key_exists ("Address1", $_POST))
+		$sAddress1 = FilterInput($_POST["Address1"]);
+	if (array_key_exists ("Address2", $_POST))
+		$sAddress2 = FilterInput($_POST["Address2"]);
+	if (array_key_exists ("City", $_POST))
+		$sCity = FilterInput($_POST["City"]);
+	if (array_key_exists ("Zip", $_POST))
+		$sZip	= FilterInput($_POST["Zip"]);
+	if (array_key_exists ("Country", $_POST))
+		$sCountry = FilterInput($_POST["Country"]);
+	
 	$iFamily = FilterInput($_POST["Family"],'int');
 	$iFamilyRole = FilterInput($_POST["FamilyRole"],'int');
 
@@ -108,10 +121,14 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	}
 
 	$sCountryTest = SelectWhichInfo($sCountry, $fam_Country, false);
-	if ($sCountryTest == "United States" || $sCountryTest == "Canada")
-		$sState = FilterInput($_POST["State"]);
-	else
-		$sState = FilterInput($_POST["StateTextbox"]);
+	$sState = "";
+	if ($sCountryTest == "United States" || $sCountryTest == "Canada") {
+		if (array_key_exists ("State", $_POST))
+			$sState = FilterInput($_POST["State"]);
+	} else {
+		if (array_key_exists ("StateTextbox", $_POST))
+			$sState = FilterInput($_POST["StateTextbox"]);
+	}
 
 	$sHomePhone = FilterInput($_POST["HomePhone"]);
 	$sWorkPhone = FilterInput($_POST["WorkPhone"]);
@@ -125,8 +142,11 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	$dFriendDate = FilterInput($_POST["FriendDate"]);
 	$dMembershipDate = FilterInput($_POST["MembershipDate"]);
 	$iClassification = FilterInput($_POST["Classification"],'int');
-	$sEnvelope = FilterInput($_POST['EnvID'],'int');
-	$iupdateBirthYear = FilterInput($_POST['updateBirthYear'],'int');
+	$iEnvelope = 0;
+	if (array_key_exists ('EnvID', $_POST))
+		$iEnvelope = FilterInput($_POST['EnvID'],'int');
+	if (array_key_exists ('updateBirthYear', $_POST))
+		$iupdateBirthYear = FilterInput($_POST['updateBirthYear'],'int');
 
 	$bNoFormat_HomePhone = isset($_POST["NoFormat_HomePhone"]);
 	$bNoFormat_WorkPhone = isset($_POST["NoFormat_WorkPhone"]);
@@ -271,11 +291,10 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		// New Person (add)
 		if (strlen($iPersonID) < 1)
 		{
-			if (!$_SESSION['bFinance'] || strlen($sEnvelope) < 1)
-				$sEnvelope = "NULL";
+			$iEnvelope = 0;
 
 			$sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags ) 
-			         VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . "," . $iBirthDay . "," . $iBirthYear . "," . $sEnvelope . "," . $iFamily . "," . $iFamilyRole . ",";
+			         VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . "," . $iBirthDay . "," . $iBirthYear . "," . $iEnvelope . "," . $iFamily . "," . $iFamilyRole . ",";
 			if ( strlen($dMembershipDate) > 0 )
 				$sSQL .= "\"" . $dMembershipDate . "\"";
 			else
@@ -303,8 +322,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 
 			if ($_SESSION['bFinance'])
 			{
-				if (strlen($sEnvelope) < 1) $sEnvelope = "NULL";
-				$sSQL .= ", per_Envelope = " . $sEnvelope;
+				$sSQL .= ", per_Envelope = " . $iEnvelope;
 			}
 
 			$sSQL .= ", per_DateLastEdited = '" . date("YmdHis") . "', per_EditedBy = " . $_SESSION['iUserID'] . ", per_FriendDate =";
@@ -358,32 +376,26 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		}
 
 		// Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-		if ($previousPage != "") {
-			$previousPage = str_replace(";","&",$previousPage) ;
-			Redirect($previousPage . $iPersonID);
-		}
-		else if (isset($_POST["PersonSubmit"]))
-		{
+		if ($sPreviousPage != "") {
+			$sPreviousPage = str_replace(";","&",$sPreviousPage) ;
+			Redirect($sPreviousPage . $iPersonID);
+		} else if (isset($_POST["PersonSubmit"])) {
 			//Send to the view of this person
 			Redirect("PersonView.php?PersonID=" . $iPersonID);
-		}
-		else
-		{
+		} else {
 			//Reload to editor to add another record
 			Redirect("PersonEditor.php");
 		}
-
 	}
 
 	// Set the envelope in case the form failed.
-	$per_Envelope = $sEnvelope;
+	$per_Envelope = $iEnvelope;
 
 } else {
 
 	//FirstPass
 	//Are we editing or adding?
-	if (strlen($iPersonID) > 0)
-	{
+	if (strlen($iPersonID) > 0) {
 		//Editing....
 		//Get all the data on this record
 

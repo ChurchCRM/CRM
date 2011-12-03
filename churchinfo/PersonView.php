@@ -22,7 +22,9 @@ require "Include/Functions.php";
 // Get the person ID from the querystring
 $iPersonID = FilterInput($_GET["PersonID"],'int');
 
-$iRemoveVO = FilterInput($_GET["RemoveVO"],'int');
+$iRemoveVO = 0;
+if (array_key_exists ("RemoveVO", $_GET))
+	$iRemoveVO = FilterInput($_GET["RemoveVO"],'int');
 
 if ( isset($_POST["GroupAssign"]) && $_SESSION['bManageGroups'] )
 {
@@ -265,6 +267,7 @@ gettext("List View") . "</a> ";
 		$sCountry = strip_tags($sCountry);
 
 		//Show link to mapquest
+		$bShowMQLink = false;
 		if ($sAddress1 != "" && $sCity != "" && $sState != "")
 		{
 			if ($sCountry == "United States") {

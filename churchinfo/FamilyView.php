@@ -25,8 +25,7 @@ $sPageTitle = gettext("Family View");
 $iFamilyID = FilterInput($_GET["FamilyID"],'int');
 
 // Get the list of funds
-$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
-if ($editorMode == 0) $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
+$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
 $rsFunds = RunQuery($sSQL);
 
 if (isset($_POST["UpdatePledgeTable"]) && $_SESSION['bFinance'])
@@ -58,10 +57,12 @@ while($myrow = mysql_fetch_row($dResults))
 	$last_id = $fid;
 }
 
+$previous_link_text = "";
 if (($previous_id > 0)) {
     $previous_link_text = "<a class=\"SmallText\" href=\"FamilyView.php?FamilyID=$previous_id\">" . gettext("Previous Family") . "</a>";
 }
 
+$next_link_text = "";
 if (($next_id > 0)) {
     $next_link_text = "<a class=\"SmallText\" href=\"FamilyView.php?FamilyID=$next_id\">" . gettext("Next Family") . "</a>";
 }
@@ -163,7 +164,7 @@ $sCellPhone = ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy);
 
 require "Include/Header.php";
 
-if ($previous_link_text) {
+if ($previous_link_text != "") {
 	echo "$previous_link_text | ";
 }
 
@@ -171,10 +172,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 
 if ($bOkToEdit) { echo "<a class=\"SmallText\" href=\"FamilyEditor.php?FamilyID=" . $fam_ID . "\">" . gettext("Edit this Record") . "</a> | "; }
 if ($_SESSION['bDeleteRecords']) { echo "<a class=\"SmallText\" href=\"SelectDelete.php?FamilyID=" . $fam_ID . "\">" . gettext("Delete this Record") . "</a>"; }
-if ($next_link_text && ($bOkToEdit || $_SESSION['bDeleteRecords'])) {
+if ($next_link_text != "" && ($bOkToEdit || $_SESSION['bDeleteRecords'])) {
 	echo " | $next_link_text";
 }
-elseif ($next_link_text) {
+elseif ($next_link_text != "") {
 	echo "$next_link_text";
 }
 ?>
@@ -544,15 +545,15 @@ else
 </table>
 <BR>
 <?php
-if ($previous_link_text) {
+if ($previous_link_text != "") {
 	echo "$previous_link_text | ";
 }
 if ($bOkToEdit) { echo "<a class=\"SmallText\" href=\"FamilyEditor.php?FamilyID=" . $fam_ID . "\">" . gettext("Edit this Record") . "</a>"; }
 if ($_SESSION['bDeleteRecords']) { echo " | <a class=\"SmallText\" href=\"SelectDelete.php?FamilyID=" . $fam_ID . "\">" . gettext("Delete this Record") . "</a>"; }
-if ($next_link_text && ($bOkToEdit || $_SESSION['bDeleteRecords'])) {
+if ($next_link_text != "" && ($bOkToEdit || $_SESSION['bDeleteRecords'])) {
 	echo " | $next_link_text";
 }
-elseif ($next_link_text) {
+elseif ($next_link_text != "") {
 	echo "$next_link_text";
 }
 ?>
