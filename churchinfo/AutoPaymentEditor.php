@@ -246,8 +246,7 @@ $sSQL = "SELECT * FROM family_fam ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
 
 // Get the list of funds
-$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
-if ($editorMode == 0) $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
+$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
 $rsFunds = RunQuery($sSQL);
 
 ?>
