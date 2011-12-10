@@ -21,7 +21,10 @@ require "Include/Functions.php";
 $sPageTitle = gettext("Person Editor");
 
 //Get the PersonID out of the querystring
-$iPersonID = FilterInput($_GET["PersonID"],'int');
+if (array_key_exists ("PersonID", $_GET))
+	$iPersonID = FilterInput($_GET["PersonID"],'int');
+else
+	$iPersonID = 0;
 
 $sPreviousPage = "";
 if (array_key_exists ("previousPage", $_GET))
@@ -29,7 +32,7 @@ if (array_key_exists ("previousPage", $_GET))
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (strlen($iPersonID) > 0)
+if ($iPersonID > 0)
 {
 	$sSQL = "SELECT per_fam_ID FROM person_per WHERE per_ID = " . $iPersonID;
 	$rsPerson = RunQuery($sSQL);
@@ -85,6 +88,11 @@ $sBirthYearError = "";
 $sFriendDateError = "";
 $sMembershipDateError = "";
 $aCustomErrors = array ();
+
+$bNoFormat_HomePhone = false;
+$bNoFormat_WorkPhone = false;
+$bNoFormat_CellPhone = false;
+
 
 //Is this the second pass?
 if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
@@ -289,8 +297,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		} 
 
 		// New Person (add)
-		if (strlen($iPersonID) < 1)
-		{
+		if ($iPersonID < 1) {
 			$iEnvelope = 0;
 
 			$sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags ) 
@@ -395,7 +402,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 
 	//FirstPass
 	//Are we editing or adding?
-	if (strlen($iPersonID) > 0) {
+	if ($iPersonID > 0) {
 		//Editing....
 		//Get all the data on this record
 
@@ -459,14 +466,53 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	{
 		//Adding....
 		//Set defaults
+		$sTitle = "";
+		$sFirstName = "";
+		$sMiddleName = "";
+		$sLastName = "";
+		$sSuffix = "";
+		$iGender = "";
+		$sAddress1 = "";
+		$sAddress2 = "";
 		$sCity = $sDefaultCity;
-		$sCountry = $sDefaultCountry;
 		$sState = $sDefaultState;
+		$sZip	= "";
+		$sCountry = $sDefaultCountry;
+		$sHomePhone = "";
+		$sWorkPhone = "";
+		$sCellPhone = "";
+		$sEmail = "";
+		$sWorkEmail = "";
+		$iBirthMonth = 0;
+		$iBirthDay = 0;
+		$iBirthYear = 0;
+		$bHideAge = 0;
+		$iOriginalFamily = 0;
 		$iFamily = "0";
 		$iFamilyRole = "0";
+		$dMembershipDate = "";
+		$dFriendDate = date("Y-m-d");
 		$iClassification = "0";
+		$iViewAgeFlag = 0;
+		$sPhoneCountry = "";
+
+		$sHomePhone = "";
+		$sWorkPhone = "";
+		$sCellPhone = "";
+
+		//The following values are True booleans if the family record has a value for the
+		//indicated field.  These are used to highlight field headers in red.
+		$bFamilyAddress1 = 0;
+		$bFamilyAddress2 = 0;
+		$bFamilyCity = 0;
+		$bFamilyState = 0;
+		$bFamilyZip = 0;
+		$bFamilyCountry = 0;
+		$bFamilyHomePhone = 0;
+		$bFamilyWorkPhone = 0;
+		$bFamilyCellPhone = 0;
+		$bFamilyEmail = 0;
 		$bHomeBound = False;
-		$dFriendDate = date("Y-m-d"); // Default friend date is today
 	}
 }
 
@@ -494,7 +540,7 @@ require "Include/Header.php";
 		<td <?php if ($numCustomFields > 0) echo "colspan=\"2\""; ?> align="center">
 			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="PersonSubmit">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PersonSubmitAndAdd\">"; } ?>
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="PersonCancel" onclick="javascript:document.location='<?php if (strlen($iPersonID) > 0) { echo "PersonView.php?PersonID=" . $iPersonID; } else {echo "SelectList.php?mode=person"; } ?>';">
+			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="PersonCancel" onclick="javascript:document.location='<?php if ($iPersonID > 0) { echo "PersonView.php?PersonID=" . $iPersonID; } else {echo "SelectList.php?mode=person"; } ?>';">
 		</td>
 	</tr>
 
