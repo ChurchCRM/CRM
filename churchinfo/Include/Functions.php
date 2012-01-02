@@ -883,7 +883,7 @@ function FormatFullName($Title, $FirstName, $MiddleName, $LastName, $Suffix, $St
     case 1:
         if ($Title) $nameString .= $Title . " ";
         $nameString .= $FirstName;
-        if ($MiddleName) $nameString .= " " . strtoupper($MiddleName{0}) . ".";
+        if ($MiddleName) $nameString .= " " . strtoupper(mb_substr($MiddleName, 0, 1, 'UTF-8')) . ".";
         if ($LastName) $nameString .= " " . $LastName;
         if ($Suffix) $nameString .= ", " . $Suffix;
         break;
@@ -900,7 +900,7 @@ function FormatFullName($Title, $FirstName, $MiddleName, $LastName, $Suffix, $St
         if ($LastName) $nameString .= $LastName . ", ";
         if ($Title) $nameString .= $Title . " ";
         $nameString .= $FirstName;
-        if ($MiddleName) $nameString .= " " . strtoupper($MiddleName{0}) . ".";
+        if ($MiddleName) $nameString .= " " . strtoupper(mb_substr($MiddleName, 0, 1, 'UTF-8')) . ".";
         if ($Suffix) $nameString .= ", " . $Suffix;
         break;
     }
