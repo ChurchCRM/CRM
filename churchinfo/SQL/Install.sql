@@ -885,7 +885,7 @@ CREATE TABLE `pledge_plg` (
   `plg_FYID` mediumint(9) default NULL,
   `plg_date` date default NULL,
   `plg_amount` decimal(8,2) default NULL,
-  `plg_schedule` enum('Monthly','Quarterly','Once','Other') default NULL,
+  `plg_schedule` enum('Weekly', 'Monthly','Quarterly','Once','Other') default NULL,
   `plg_method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE') default NULL,
   `plg_comment` text,
   `plg_DateLastEdited` date NOT NULL default '0000-00-00',
