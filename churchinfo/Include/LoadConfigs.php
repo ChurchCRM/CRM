@@ -103,7 +103,7 @@ if (!(stripos(php_uname('s'), "windows") === false)) {
     $sLang_Code = $sLanguage;
 }
 putenv("LANG=$sLang_Code");
-setlocale(LC_ALL, $sLang_Code);
+setlocale(LC_ALL, $sLang_Code, $sLang_Code.".utf8", $sLang_Code.".UTF8", $sLang_Code.".utf-8", $sLang_Code.".UTF-8");
 
 if (isset($sTimeZone)) {
     date_default_timezone_set($sTimeZone);
