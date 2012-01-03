@@ -73,7 +73,7 @@ for (; ; ) {    // This is not a loop but a section of code to be
 // Need to back up tables we will be modifying- 
 
     $needToBackUp = array (
-    "family_fam");
+    "family_fam", "config_cfg");
 
     $bErr = false;
     foreach ($needToBackUp as $backUpName) {
@@ -91,17 +91,19 @@ for (; ; ) {    // This is not a loop but a section of code to be
 // The $bStopOnError argument to RunQuery can now be changed from
 // TRUE to FALSE now that backup copies of all tables are available
 
-
-    require "Include/MICRFunctions.php";
-    $micrObj = new MICRReader();
-
+    // The older database has these set to empty string rather than NULL so they do not show up
+    // in the settings page.
+    $sSQL = "UPDATE config_cfg SET cfg_category=NULL WHERE cfg_id IN (61,62,63,64,65)";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
 
 // Update the format of the scanned check stored in the family record.
 // The original implementation stored the whole string, including the check number.
 // The new version strips out the check number to facilitate matching.  The original
 // version worked most of the time, but not in the rare cases when the check number
 // was in the middle.
-
+    require "Include/MICRFunctions.php";
+    $micrObj = new MICRReader();
+    
     $sSQL = "SELECT fam_ID, fam_scanCheck from family_fam";
     $rsFamilies = RunQuery($sSQL);
 
