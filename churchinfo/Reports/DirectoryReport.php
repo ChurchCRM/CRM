@@ -282,7 +282,10 @@ class PDF_Directory extends ChurchInfoReport {
                 extract($rowCustomField);
                 $sCustom = "bCustom".$custom_Order;
                 if($this->_Custom[$custom_Order]){
-                    $currentFieldData = trim($aCustomData[$custom_Field]);
+                	
+                	$currentFieldData = displayCustomField($type_ID, $aCustomData[$custom_Field], $custom_Special);
+                	
+//                    $currentFieldData = trim($aCustomData[$custom_Field]);
                     if($currentFieldData != ""){
                         $OutStr .= "   " . $custom_Name . ": " . $currentFieldData .= "\n";
                     }
