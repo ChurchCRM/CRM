@@ -55,15 +55,15 @@ if ($sAction=='Delete'){
 	  <td width="15%" nowrap><strong><?php echo gettext("Action"); ?></strong></td>
   </tr>
 <?php 
-  $sSQL = "SELECT * FROM event_attend WHERE event_id=$EventID ORDER BY person_id"; 
-	$rsOpps = RunQuery($sSQL);
-  $numAttRows = mysql_num_rows($rsOpps);
-  if($numAttRows!=0){
+$sSQL = 'SELECT person_id, per_LastName FROM event_attend JOIN person_per ON person_per.per_id = event_attend.person_id WHERE event_id = '.$EventID.' ORDER by per_LastName, per_FirstName';
+$rsOpps = RunQuery($sSQL);
+$numAttRows = mysql_num_rows($rsOpps);
+if($numAttRows!=0){
   $sRowClass = "RowColorA";
   for($na=0; $na<$numAttRows; $na++){  
     $attRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
     extract($attRow);
-    $sSQL = "SELECT * FROM person_per WHERE per_ID = $person_id";
+    $sSQL = 'SELECT per_FirstName, per_LastName, per_Email, per_HomePhone, per_Country FROM person_per WHERE per_ID = '.$person_id;
     $perOpps = RunQuery($sSQL);
     $perRow = mysql_fetch_array($perOpps, MYSQL_BOTH);
     extract($perRow);  
