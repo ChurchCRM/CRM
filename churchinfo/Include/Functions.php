@@ -1015,18 +1015,23 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
     switch ($type)
     {
         // Handler for boolean fields
-        case 1:
-            echo "<input type=\"radio\" Name=\"" . $fieldname . "\" value=\"true\"";
-                if ($data == 'true') { echo " checked"; }
-                echo ">Yes";
-            echo "<input type=\"radio\" Name=\"" . $fieldname . "\" value=\"false\"";
-                if ($data == 'false') { echo " checked"; }
-                echo ">No";
-            echo "<input type=\"radio\" Name=\"" . $fieldname . "\" value=\"\"";
-                if (strlen($data) == 0) { echo " checked"; }
-                echo ">Unknown";
-            break;
-
+        case 1: 
+        	echo "<input type=\"radio\" Name=\"" . $fieldname . "\" value=\"true\""; 
+        	if ($data == 'true') { 
+        		echo " checked"; 
+        	} 
+        	echo ">".gettext("Yes"); 
+        	echo "<input type=\"radio\" Name=\"" . $fieldname . "\" value=\"false\""; 
+        	if ($data == 'false') { 
+        		echo " checked"; 
+        	} 
+        	echo ">".gettext("No"); 
+        	echo "<input type=\"radio\" Name=\"" . $fieldname . "\" value=\"\""; 
+        	if (strlen($data) == 0) { 
+        		echo " checked"; 
+        	} 
+        	echo ">".gettext("Unknown"); 
+        	break; 
         // Handler for date fields
         case 2:
             echo "<input type=\"text\" id=\"" . $fieldname . "\" Name=\"" . $fieldname . "\" maxlength=\"10\" size=\"15\" value=\"" . $data . "\">&nbsp;<input type=\"image\" onclick=\"return showCalendar('$fieldname', 'y-mm-dd');\" src=\"Images/calendar.gif\"> " . gettext("[format: YYYY-MM-DD]");
@@ -1116,6 +1121,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
         case 11:
 
             // This is silly. Perhaps ExpandPhoneNumber before this function is called!
+            // this business of overloading the special field is really troublesome when trying to follow the code.
             if ($bFirstPassFlag)
                 // in this case, $special is the phone country
                 $data = ExpandPhoneNumber($data,$special,$bNoFormat_Phone);
@@ -1421,7 +1427,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
 
 // Generates SQL for custom field update
 //
-// $special is currently only used for the phone country
+// $special is currently only used for the phone country and the list ID for custom drop-down choices.
 //
 function sqlCustomField(&$sSQL, $type, $data, $col_Name, $special)
 {
