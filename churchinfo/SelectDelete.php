@@ -25,18 +25,26 @@ if (!$_SESSION['bDeleteRecords'])
 	exit;
 }
 
+// default values to make the newer versions of php happy
+$iFamilyID = 0;
+$iPersonID = 0;
+$iDonationFamilyID = 0;
+$sMode = 'family';
+
 if (!empty($_GET["FamilyID"])) $iFamilyID = FilterInput($_GET["FamilyID"],'int');
 if (!empty($_GET["PersonID"])) $iPersonID = FilterInput($_GET["PersonID"],'int');
 if (!empty($_GET["DonationFamilyID"])) $iDonationFamilyID = FilterInput($_GET["DonationFamilyID"],'int');
 if (!empty($_GET["mode"])) $sMode = $_GET["mode"];
 
-if ($_GET["CancelFamily"]){
+if (isset ($_GET["CancelFamily"])){
 	Redirect("FamilyView.php?FamilyID=$iFamilyID");
 	exit;
 }
 
+$DonationMessage = "";
+
 // Move Donations from 1 family to another
-if ($_SESSION['bFinance'] && $_GET["MoveDonations"] && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
+if ($_SESSION['bFinance'] && isset($_GET["MoveDonations"]) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
 	$today = date("Y-m-d");
 	$sSQL = "UPDATE pledge_plg SET plg_FamID='$iDonationFamilyID',
 		plg_DateLastEdited ='$today', plg_EditedBy='".$_SESSION["iUserID"]
