@@ -1919,7 +1919,7 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0) {
     while ($aRow = mysql_fetch_array($rsFamilies)) {
         extract($aRow);
         $name = $fam_Name;
-        if ($aHead[$fam_ID]) {
+        if (isset ($aHead[$fam_ID])) {
             $name .= ", " . $aHead[$fam_ID];
         }
         $name .= " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);

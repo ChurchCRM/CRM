@@ -1450,6 +1450,8 @@ if ($iMode == 1 || $iMode == 2) {
 
 <?php
     //Loop through the family recordset
+    $sRowClass = "RowColorA";
+
     while ($aRow = mysql_fetch_array($rsFamilies)) {
         // Unfortunately, extract()'s behavior with NULL array entries is inconsistent across different PHP versions
         // To be safe, we need to manually clear these variables.
@@ -1491,6 +1493,8 @@ if ($iMode == 1 || $iMode == 2) {
 
         //Alternate the row style
         $sRowClass = AlternateRowStyle($sRowClass);
+        if (empty ($fam_Name) || $fam_Name == "")
+        	$fam_Name = "(Not set)";
 
         //Display the row
         ?>
