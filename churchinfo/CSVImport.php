@@ -301,7 +301,12 @@ if (isset($_POST["UploadCSV"]))
 // Has the import form been submitted yet?
 if (isset($_POST["DoImport"]))
 {
-    $system_temp = ini_get("session.save_path");
+	$aColumnCustom = array();
+	$aFamColumnCustom = array();
+	$bHasCustom = false;
+	$bHasFamCustom = false;
+	
+	$system_temp = ini_get("session.save_path");
     $csvTempFile = $system_temp . "/import.csv";
     
     $Families = array();
@@ -387,6 +392,7 @@ if (isset($_POST["DoImport"]))
             $sAddress1 = ""; $sAddress2 = ""; $sCity = ""; $sState = ""; $sZip = "";
             // Use the default country from the mapping form in case we don't find one otherwise
             $sCountry = $sDefaultCountry;
+            $iEnvelope = 0;
 
             $sSQLpersonFields = "INSERT INTO person_per (";
             $sSQLpersonData = " VALUES (";
@@ -397,7 +403,7 @@ if (isset($_POST["DoImport"]))
             for ($col = 0; $col < $numCol; $col++)
             {
                 // Is it not a custom field?
-                if ((!$aColumnCustom[$col]) and (!$aFamColumnCustom[$col])) 
+                if ((!array_key_exists ($col, $aColumnCustom)) and (!array_key_exists ($col,$aFamColumnCustom)))
                 {
                     $currentType = $aColumnID[$col];
 
@@ -543,7 +549,7 @@ if (isset($_POST["DoImport"]))
             for ($col = 0; $col < $numCol; $col++)
             {
                 // Is it not a custom field?
-				if ((!$aColumnCustom[$col]) and (!$aFamColumnCustom[$col])) 
+				if ((!array_key_exists ($col,$aColumnCustom)) and (!array_key_exists($col, $aFamColumnCustom))) 
                 {
                     $currentType = $aColumnID[$col];
                     switch($currentType)

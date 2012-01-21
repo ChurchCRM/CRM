@@ -24,7 +24,7 @@ if (!$_SESSION['bAdmin'])
 }
 
 // Save Settings
-if ($_POST['save']){
+if (isset ($_POST['save'])){
 	$new_value = $_POST['new_value'];
 	$type = $_POST['type'];
 	ksort ($type);
