@@ -93,16 +93,16 @@ $bPrintView = false;
 $sFilter = "";
 $sLetter = "";
 $sPrevLetter = "";
-if (isset($_GET["PrintView"])) 
+if (array_key_exists ("PrintView", $_GET)) 
 	$bPrintView = true;
-if (isset($_GET["Filter"]))
+if (array_key_exists ("Filter", $_GET))
 	$sFilter = FilterInput($_GET["Filter"]);
-if (isset($_GET["Letter"]))
+if (array_key_exists ("Letter", $_GET))
 	$sLetter = mb_strtoupper(FilterInput($_GET["Letter"]));
 
-if (isset($_GET["mode"]))
+if (array_key_exists ("mode", $_GET))
 	$sMode = FilterInput($_GET["mode"]);
-elseif (isset($_SESSION['SelectListMode']))
+elseif (array_key_exists ('SelectListMode', $_SESSION))
 	$sMode = $_SESSION['SelectListMode'];
 
 switch ($sMode) {
@@ -120,18 +120,18 @@ switch ($sMode) {
 // Save default search mode
 $_SESSION['bSearchFamily'] = ($sMode != 'person');
 
-if (isset($_GET["Number"])) {
+if (array_key_exists ("Number", $_GET)) {
     $_SESSION['SearchLimit'] = FilterInput($_GET["Number"],'int');
     $uSQL =	" UPDATE user_usr SET usr_SearchLimit = " . $_SESSION['SearchLimit'] .
 			" WHERE usr_per_ID = " . $_SESSION['iUserID'];
     $rsUser = RunQuery($uSQL);
 }
 
-if (isset($_GET["PersonColumn3"])) {
+if (array_key_exists ("PersonColumn3", $_GET)) {
 	$_SESSION['sPersonColumn3'] = FilterInput($_GET["PersonColumn3"]);
 }
 
-if (isset($_GET["PersonColumn5"])) {
+if (array_key_exists ("PersonColumn5", $_GET)) {
 	$_SESSION['sPersonColumn5'] = FilterInput($_GET["PersonColumn5"]);
 }
 
@@ -145,22 +145,22 @@ if ($sMode == 'person') {
 	$sPageTitle = gettext("Person Listing");
     $iMode = 1;
 
-	if (isset($_GET["Classification"]) && $_GET["Classification"] != "")
+	if (array_key_exists ("Classification", $_GET) && $_GET["Classification"] != "")
 		$iClassification = FilterInput($_GET["Classification"],'int');
-	if (isset($_GET["FamilyRole"]) && $_GET["FamilyRole"] != "")
+	if (array_key_exists ("FamilyRole", $_GET) && $_GET["FamilyRole"] != "")
 		$iFamilyRole = FilterInput($_GET["FamilyRole"],'int');
-    if (isset($_GET["Gender"]) && $_GET["Gender"] != "") 
+    if (array_key_exists ("Gender", $_GET) && $_GET["Gender"] != "") 
 		$iGender = FilterInput($_GET["Gender"],'int');
-	if (isset($_GET["PersonProperties"]) && $_GET["PersonProperties"] != "")
+	if (array_key_exists ("PersonProperties", $_GET) && $_GET["PersonProperties"] != "")
 		$iPersonProperty = FilterInput($_GET["PersonProperties"],'int');
-    if (isset($_GET["grouptype"]) && $_GET["grouptype"] != "") {
+    if (array_key_exists ("grouptype", $_GET) && $_GET["grouptype"] != "") {
         $iGroupType = FilterInput($_GET["grouptype"],'int');
-        if (isset($_GET["groupid"])) {
+        if (array_key_exists ("groupid", $_GET)) {
             $iGroupID = FilterInput($_GET["groupid"],'int');
             if ($iGroupID == 0)
             	$iGroupID = -1;
         }
-        if (isset($_GET["grouproleid"]) && $_GET["grouproleid"] != "") {
+        if (array_key_exists ("grouproleid", $_GET) && $_GET["grouproleid"] != "") {
             $iRoleID = FilterInput($_GET["grouproleid"],'int');
             if ($iRoleID == 0)
             	$iRoleID = -1;
@@ -170,13 +170,13 @@ if ($sMode == 'person') {
     $sPageTitle = gettext("Group Assignment Helper");
     $iMode = 2;
 
-	if (isset($_GET["Classification"]) && $_GET["Classification"] != "")
+	if (array_key_exists ("Classification", $_GET) && $_GET["Classification"] != "")
 		$iClassification = FilterInput($_GET["Classification"],'int');
-	if (isset($_GET["FamilyRole"]) && $_GET["FamilyRole"] != "")
+	if (array_key_exists ("FamilyRole", $_GET) && $_GET["FamilyRole"] != "")
 		$iFamilyRole = FilterInput($_GET["FamilyRole"],'int');
-    if (isset($_GET["Gender"]) && $_GET["Gender"] != "")
+    if (array_key_exists ("Gender", $_GET) && $_GET["Gender"] != "")
 		$iGender = FilterInput($_GET["Gender"],'int');
-    if (isset($_GET["type"]))
+    if (array_key_exists ("type", $_GET))
         $iGroupTypeMissing = FilterInput($_GET["type"],'int');
     else
         $iGroupTypeMissing = 1;
@@ -342,46 +342,45 @@ if ($iMode == 1 || $iMode == 2) {
 
 	// URL to redirect back to this same page
 	$sRedirect = "SelectList.php?";
-	if (isset($_GET["mode"])) $sRedirect .= "mode=" . $_GET["mode"] . "&amp;";
-	if (isset($_GET["type"])) $sRedirect .= "type=" . $_GET["type"] . "&amp;";
-	if (isset($_GET["Filter"])) $sRedirect .= "Filter=" . $_GET["Filter"] . "&amp;";
-	if (isset($_GET["Sort"])) $sRedirect .= "Sort=" . $_GET["Sort"] . "&amp;";
-	if (isset($_GET["Letter"])) $sRedirect .= "Letter=" . $_GET["Letter"] . "&amp;";
-	if (isset($_GET["Classification"])) $sRedirect .= "Classification=" . $_GET["Classification"] . "&amp;";
-	if (isset($_GET["FamilyRole"])) $sRedirect .= "FamilyRole=" . $_GET["FamilyRole"] . "&amp;";
-	if (isset($_GET["Gender"])) $sRedirect .= "Gender=" . $_GET["Gender"] . "&amp;";
-	if (isset($_GET["grouptype"])) $sRedirect .= "grouptype=" . $_GET["grouptype"] . "&amp;";
-	if (isset($_GET["groupid"])) $sRedirect .= "groupid=" . $_GET["groupid"] . "&amp;";
-	if (isset($_GET["grouproleid"])) $sRedirect .= "grouproleid=" . $_GET["grouproleid"] . "&amp;";
-	if (isset($_GET["Number"])) $sRedirect .= "Number=" . $_GET["Number"] . "&amp;";
-	if (isset($_GET["Result_Set"])) $sRedirect .= "Result_Set=" . $_GET["Result_Set"] . "&amp;";
-	if (isset($_GET["PersonProperties"])) $sRedirect .= "PersonProperties=" . $_GET["PersonProperties"] . "&amp;";
+	if (array_key_exists ("mode", $_GET)) $sRedirect .= "mode=" . $_GET["mode"] . "&amp;";
+	if (array_key_exists ("type", $_GET)) $sRedirect .= "type=" . $_GET["type"] . "&amp;";
+	if (array_key_exists ("Filter", $_GET)) $sRedirect .= "Filter=" . $_GET["Filter"] . "&amp;";
+	if (array_key_exists ("Sort", $_GET)) $sRedirect .= "Sort=" . $_GET["Sort"] . "&amp;";
+	if (array_key_exists ("Letter", $_GET)) $sRedirect .= "Letter=" . $_GET["Letter"] . "&amp;";
+	if (array_key_exists ("Classification", $_GET)) $sRedirect .= "Classification=" . $_GET["Classification"] . "&amp;";
+	if (array_key_exists ("FamilyRole", $_GET)) $sRedirect .= "FamilyRole=" . $_GET["FamilyRole"] . "&amp;";
+	if (array_key_exists ("Gender", $_GET)) $sRedirect .= "Gender=" . $_GET["Gender"] . "&amp;";
+	if (array_key_exists ("grouptype", $_GET)) $sRedirect .= "grouptype=" . $_GET["grouptype"] . "&amp;";
+	if (array_key_exists ("groupid", $_GET)) $sRedirect .= "groupid=" . $_GET["groupid"] . "&amp;";
+	if (array_key_exists ("grouproleid", $_GET)) $sRedirect .= "grouproleid=" . $_GET["grouproleid"] . "&amp;";
+	if (array_key_exists ("Number", $_GET)) $sRedirect .= "Number=" . $_GET["Number"] . "&amp;";
+	if (array_key_exists ("Result_Set", $_GET)) $sRedirect .= "Result_Set=" . $_GET["Result_Set"] . "&amp;";
+	if (array_key_exists ("PersonProperties", $_GET)) $sRedirect .= "PersonProperties=" . $_GET["PersonProperties"] . "&amp;";
 
 	$sRedirect = mb_substr($sRedirect,0,-5); // Chop off last &amp;
 
     // If AddToCart submit button was used, run the query, add people to cart, and view cart
-    if (isset($_GET["AddAllToCart"])) {
+    if (array_key_exists ("AddAllToCart", $_GET)) {
         $rsPersons = RunQuery($sSQL);
         while ($aRow = mysql_fetch_row($rsPersons)) {
             AddToPeopleCart($aRow[0]);
         }
 
-    } elseif (isset($_GET["IntersectCart"])) {
+    } elseif (array_key_exists ("IntersectCart", $_GET)) {
         $rsPersons = RunQuery($sSQL);
         while ($aRow = mysql_fetch_row($rsPersons))
 	        $aItemsToProcess[] = $aRow[0];
 
-        if (isset($_SESSION['aPeopleCart']))
+        if (array_key_exists ('aPeopleCart', $_SESSION))
             $_SESSION['aPeopleCart'] = array_intersect($_SESSION['aPeopleCart'],$aItemsToProcess);
 
-    } elseif (isset($_GET["RemoveFromCart"])) {
+    } elseif (array_key_exists ("RemoveFromCart", $_GET)) {
 		$rsPersons = RunQuery($sSQL);
         while ($aRow = mysql_fetch_row($rsPersons))
         	$aItemsToProcess[] = $aRow[0];
 
-        if (isset($_SESSION['aPeopleCart']))
+        if (array_key_exists ('aPeopleCart', $_SESSION))
         	$_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'],$aItemsToProcess);
-
 	}
 
     // Get the total number of persons
@@ -872,7 +871,7 @@ if ($iMode == 1 || $iMode == 2) {
 		// Read if sort by person is selected columns 3 and 5 are user selectable.  If the
 		// user has not selected a value then read from session variable.
 		if (!isset($sPersonColumn3)) {
-			if (isset($_SESSION['sPersonColumn3'])) {
+			if (array_key_exists ('sPersonColumn3', $_SESSION)) {
 				switch ($_SESSION['sPersonColumn3']) {
 				case ("Family Role"):
 					$sPersonColumn3 = "Family Role";
@@ -890,7 +889,7 @@ if ($iMode == 1 || $iMode == 2) {
 		}
 
 		if (!isset($sPersonColumn5)) {
-			if (isset ($_SESSION['sPersonColumn5'])) {
+			if (array_key_exists ('sPersonColumn5', $_SESSION)) {
 				switch ($_SESSION['sPersonColumn5']) {
 				case ("Home Phone"):
 					$sPersonColumn5 = "Home Phone";
@@ -1266,7 +1265,7 @@ if ($iMode == 1 || $iMode == 2) {
     // Base SQL
     $sSQL = "SELECT * FROM family_fam";
 
-    if (isset($sLetter))
+    if (isset($sLetter) && strlen ($sLetter) > 0)
         $sSQL .= " WHERE fam_Name LIKE '" . $sLetter . "%'";
     elseif (isset($sFilter)) {
         // break on the space...
