@@ -36,33 +36,37 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 }
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 
-  <head>
-    <script src="http://maps.google.com/maps?file=api&v=1&key=<?php echo $sGoogleMapKey; ?>" type="text/javascript"></script>
-
-  </head>
-  <body>
-    <div id="map" style="width: 600px; height: 450px"></div>
+   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=<?php echo $sGoogleMapKey; ?>&sensor=false"></script>
+   <div>
+    <div id="map" style="width: 800px; height: 600px; float:left;"></div>
 
 
     <script type="text/javascript">
     //<![CDATA[
-   
-    var map = new GMap(document.getElementById("map"));
-    map.addControl(new GSmallMapControl());
-    map.addControl(new GMapTypeControl());
-    map.centerAndZoom(new GPoint(<?php echo $nChurchLongitude . ", " . $nChurchLatitude; ?>), 4);
 
-	var churchPt = new GPoint (<?php echo $nChurchLongitude . ", " . $nChurchLatitude; ?> );
-	var churchMark = new GMarker (churchPt);
-	<?php 
-		$churchDescription = $sChurchName;
-		$churchDescription .= "<p>" . $sChurchAddress . "<p>" . $sChurchCity . ", " . $sChurchState . "  " . $sChurchZip;
-	?>
-	GEvent.addListener(churchMark, "click", function() {churchMark.openInfoWindowHtml("<?php echo $churchDescription; ?>");});
-	map.addOverlay (churchMark);
+    var myOptions = {
+       center: new google.maps.LatLng(<?php echo $nChurchLatitude . ", " . $nChurchLongitude; ?>),
+       zoom: 12,
+       mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("map"), myOptions);   
+
+    var shadow = new google.maps.MarkerImage('http://google-maps-icons.googlecode.com/files/shadow.png',
+                                 new google.maps.Size(51, 37),
+                                 null,
+                                 new google.maps.Point(18, 37));
+	var churchMark = new google.maps.Marker({
+                                                icon: "http://google-maps-icons.googlecode.com/files/church2.png",
+                                                shadow: shadow,
+                                                position: new google.maps.LatLng(<?php echo $nChurchLatitude . ", " . $nChurchLongitude; ?>), 
+                                                map: map});
+	 
+	var churchInfoWin = new google.maps.InfoWindow({content: "<?php echo $sChurchName . "<p>" . $sChurchAddress . "<p>" . $sChurchCity . ", " . $sChurchState . "  " . $sChurchZip;?>"});
+	google.maps.event.addListener(churchMark, "click", function() {
+                                                  churchInfoWin.open(map,churchMark);
+                                    });
 
 <?php
 	$appendToQuery = "";
@@ -92,22 +96,39 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 		$appendToQuery .= ")";        
     }
 
-	$sSQL = "SELECT fam_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam";
+	$sSQL = "SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( $sDirRoleHead )";
 	$sSQL .= $appendToQuery;
 	$rsFams = RunQuery ($sSQL);
+        $markerIcons =  explode ( "," , $sGMapIcons );
+
 	while ($aFam = mysql_fetch_array($rsFams)) {
 		extract ($aFam);
 		if ($fam_longitude != 0 && $fam_latitude != 0) {
 ?>
-			var famPt<?php echo $fam_ID; ?> = new GPoint (<?php echo $fam_longitude . ", " . $fam_latitude; ?> );
-			var famMark<?php echo $fam_ID; ?> = new GMarker (famPt<?php echo $fam_ID; ?>);
+
+                     var image = new google.maps.MarkerImage('http://www.google.com/intl/en_us/mapfiles/ms/micons/<?php echo $markerIcons[$per_cls_ID]; ?>.png',
+                                 new google.maps.Size(32, 32),
+                                 new google.maps.Point(0,0),
+                                 new google.maps.Point(0, 32));
+                     var shadow = new google.maps.MarkerImage('http://maps.google.com/mapfiles/shadow50.png',
+                                 new google.maps.Size(37, 34),
+                                 new google.maps.Point(0,0),
+                                 new google.maps.Point(-4, 34));
+
+			var famMark<?php echo $fam_ID; ?> = new google.maps.Marker({
+                                                                    position: new google.maps.LatLng(<?php echo $fam_latitude . ", " . $fam_longitude; ?>),
+                                                                    shadow:shadow, 
+                                                                    icon: image,
+                                                                    map: map
+                                                                                   });
 			<?php 
 				$famDescription = MakeSalutationUtility ($fam_ID);
 				$famDescription .= "<p>" . $fam_Address1 . "<p>" . $fam_City . ", " . $fam_State . "  " . $fam_Zip;
 			?>
-			GEvent.addListener(famMark<?php echo $fam_ID; ?>, "click", function() {famMark<?php echo $fam_ID; ?>.openInfoWindowHtml("<?php echo $famDescription; ?>");});
-
-			map.addOverlay (famMark<?php echo $fam_ID; ?>);
+                        var fam<?php echo $fam_ID; ?>InfoWin = new google.maps.InfoWindow({content: "<?php echo $famDescription; ?>"}); 
+			google.maps.event.addListener(famMark<?php echo $fam_ID; ?>, "click", function() {
+                                                      fam<?php echo $fam_ID; ?>InfoWin.open(map,famMark<?php echo $fam_ID;?>);
+                                                     });
 <?php
 		}
 
@@ -117,5 +138,23 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
     //]]>
     </script>
 
+<div style="float:left; margin-left: 10px;" id='mapkey'>
+<table>
+<tr><th colspan='2'>Key:</th></tr>
+<?php
+	$sSQL = "SELECT lst_OptionID, lst_OptionName from list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
+	$rsIcons = RunQuery ($sSQL);
+        while ($aIcons = mysql_fetch_array($rsIcons)) {
+	    extract ($aIcons);
+            ?>
+      <tr>
+           <td><img style="vertical-align:middle;" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?php echo $markerIcons[$lst_OptionID]; ?>.png'/></td>
+           <td><?php echo $lst_OptionName; ?></td>
+     </tr>
+<?php
+        }
+?>
+</div>
+</div>
   </body>
 </html>
