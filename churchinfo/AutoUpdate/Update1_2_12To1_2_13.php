@@ -122,6 +122,11 @@ for (; ; ) {    // This is not a loop but a section of code to be
         }
     }
 
+// Add config 'sGMapIcons' for icons list for family map
+// 
+	$sSQL = "INSERT INTO `config_cfg` VALUES (66, 'sGMapIcons', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'text', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'Names of markers for Google Maps in order of classification', 'General',NULL);"
+	$rsIcons = RunQuery($sSQL, FALSE); // False means do not stop on error
+	
     $sSQL = "INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('".$sVersion."',NOW())";
     RunQuery($sSQL, FALSE); // False means do not stop on error
     break;

@@ -99,7 +99,8 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 	$sSQL = "SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( $sDirRoleHead )";
 	$sSQL .= $appendToQuery;
 	$rsFams = RunQuery ($sSQL);
-        $markerIcons =  explode ( "," , $sGMapIcons );
+	$markerIcons =  explode ( "," , $sGMapIcons );
+	array_unshift($markerIcons, "red-pushpin");
 
 	while ($aFam = mysql_fetch_array($rsFams)) {
 		extract ($aFam);
@@ -154,6 +155,7 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 <?php
         }
 ?>
+</table>
 </div>
 </div>
   </body>
