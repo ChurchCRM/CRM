@@ -112,7 +112,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	if (array_key_exists ("Longitude", $_POST))
 		$nLongitude = FilterInput($_POST["Longitude"], "float");
 
-	if ($bHaveXML) {
+//	if ($bHaveXML) {
 	// Try to get Lat/Lon based on the address
 		$myAddressLatLon = new AddressLatLon;
 		$myAddressLatLon->SetAddress ($sAddress1, $sCity, $sState, $sZip);
@@ -124,7 +124,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			$nLatitude="NULL";
 			$nLongitude="NULL";
 		}
-	}
+//	}
 
 	if(is_numeric($nLatitude))
 		$nLatitude = "'" . $nLatitude . "'";
