@@ -24,8 +24,13 @@ if (!$_SESSION['bMenuOptions'])
 	exit;
 }
 
+$sClassError = "";
+$sNameError = "";
+
 //Get the PropertyID
-$iPropertyID = FilterInput($_GET["PropertyID"],'int');
+$iPropertyID = 0;
+if (array_key_exists ("PropertyID", $_GET))
+	$iPropertyID = FilterInput($_GET["PropertyID"],'int');
 
 //Get the Type
 $sType = FilterInput($_GET["Type"],'char',1);
@@ -54,6 +59,8 @@ switch($sType)
 //Set the page title
 $sPageTitle = $sTypeName . ' ' . gettext("Property Editor");
 
+$bError = false;
+
 //Was the form submitted?
 if (isset($_POST["Submit"]))
 {
@@ -81,7 +88,7 @@ if (isset($_POST["Submit"]))
 	{
 
 		//Vary the SQL depending on if we're adding or editing
-		if ($iPropertyID == "")
+		if ($iPropertyID == 0)
 		{
 			$sSQL = "INSERT INTO property_pro (pro_Class,pro_prt_ID,pro_Name,pro_Description,pro_Prompt) VALUES ('" . $sType . "'," . $iClass . ",'" . $sName . "','" . $sDescription . "','" . $sPrompt . "')";
 		}
@@ -102,8 +109,7 @@ if (isset($_POST["Submit"]))
 else
 {
 
-	if (strlen($iPropertyID) != 0)
-	{
+	if ($iPropertyID != 0) {
 		//Get the data on this property
 		$sSQL = "SELECT * FROM property_pro WHERE pro_ID = " . $iPropertyID;
 		$rsProperty = mysql_fetch_array(RunQuery($sSQL));
@@ -114,6 +120,11 @@ else
 		$sDescription = $pro_Description;
 		$iType = $pro_prt_ID;
 		$sPrompt = $pro_Prompt;
+	} else {
+		$sName = "";
+		$sDescription = "";
+		$iType = 0;
+		$sPrompt = "";
 	}
 
 }

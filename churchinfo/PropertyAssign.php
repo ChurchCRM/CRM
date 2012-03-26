@@ -27,6 +27,8 @@ if (!$_SESSION['bManageGroups'] && !$_SESSION['bEditRecords'])
 	exit;
 }
 
+$sValue = "";
+
 // Get the new property value from the request
 if (isset($_POST["PropertyID"])) {
 	$iPropertyID = FilterInput($_POST["PropertyID"],'int');
@@ -182,12 +184,12 @@ require "Include/Header.php";
 <?php if (strlen($sPrompt)) { ?>
 		<tr>
 			<td align="right" valign="top"><b><?php echo gettext("Value:"); ?></b></td>
-			<td><?php echo $sPrompt; ?><br><textarea name="Value" cols="60" rows="10"><?php echo $sValue ?></textarea></td>
+			<td><?php echo $sPrompt; ?><br><textarea name="Value" cols="60" rows="10"><?php echo $sValue; ?></textarea></td>
 		</tr>
 <?php } ?>
 </table>
 
-<p align="center"><input type="submit" class="icButton" <?php echo 'value="'; if (sAction == "add") { echo gettext("Assign"); } else { echo gettext("Update"); } echo '"'; ?> name="Submit"></p>
+<p align="center"><input type="submit" class="icButton" <?php echo 'value="'; if ($sAction == "add") { echo gettext("Assign"); } else { echo gettext("Update"); } echo '"'; ?> name="Submit"></p>
 
 </form>
 

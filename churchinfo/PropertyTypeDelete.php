@@ -53,6 +53,7 @@ if (isset($_GET["Confirmed"]))
 $sSQL = "SELECT * FROM propertytype_prt WHERE prt_ID = " . $iPropertyTypeID;
 $rsProperty = RunQuery($sSQL);
 extract(mysql_fetch_array($rsProperty));
+$sType = "";
 
 require "Include/Header.php";
 

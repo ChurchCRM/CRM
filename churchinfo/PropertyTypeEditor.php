@@ -28,7 +28,13 @@ if (!$_SESSION['bMenuOptions'])
 $sPageTitle = gettext("Property Type Editor");
 
 //Get the PropertyID
-$iPropertyTypeID = FilterInput($_GET["PropertyTypeID"],'int');
+$iPropertyTypeID = 0;
+if (array_key_exists ("PropertyTypeID", $_GET))
+	$iPropertyTypeID = FilterInput($_GET["PropertyTypeID"],'int');
+
+$sClass = "";
+$sNameError = "";
+$bError = false;
 
 //Was the form submitted?
 if (isset($_POST["Submit"]))
@@ -63,9 +69,7 @@ if (isset($_POST["Submit"]))
 		//Route back to the list
 		Redirect("PropertyTypeList.php");
 	}
-}
-elseif (strlen($iPropertyTypeID) > 0)
-{
+} elseif ($iPropertyTypeID > 0) {
 	//Get the data on this property
 	$sSQL = "SELECT * FROM propertytype_prt WHERE prt_ID = " . $iPropertyTypeID;
 	$rsProperty = mysql_fetch_array(RunQuery($sSQL));
@@ -75,6 +79,10 @@ elseif (strlen($iPropertyTypeID) > 0)
 	$sName = $prt_Name;
 	$sDescription = $prt_Description;
 	$sClass = $prt_Class;
+} else {
+	$sName = "";
+	$sDescription = "";
+	$sClass = "";
 }
 
 require "Include/Header.php";
