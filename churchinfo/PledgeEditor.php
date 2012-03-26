@@ -478,7 +478,17 @@ if ($dep_Closed && $sGroupKey && $PledgeOrPayment == 'Payment') {
 	$sPageTitle .= " &nbsp; <font color=red>Deposit closed</font>";
 }			
 
-$familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
+//$familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
+if ($iFamily) {
+    $sSQL = "SELECT fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID =" . $iFamily;
+    $rsFindFam = RunQuery($sSQL);
+    $sFamilyName = "";
+    while ($aRow = mysql_fetch_array($rsFindFam))
+    {
+        extract($aRow);
+        $sFamilyName = $fam_Name . " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+    }
+}
 
 require "Include/Header.php";
 
@@ -588,14 +598,23 @@ require "Include/Header.php";
 		<td valign="top" align="center">
 		<table cellpadding="2">
 			<tr>
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php addToolTip("Select the pledging family from the list."); ?><?php echo gettext("Family"); ?></td>
+				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?><?php addToolTip("Select the pledging family from the list."); ?>><?php echo gettext("Family"); ?></td>
 				<td class="TextColumn">
-					<select name="FamilyID">
-						<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
-						<?php
-						echo $familySelectHtml;
-						?>
 
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+	$("#FamilyName").autocomplete({
+		source: "AjaxFunctions.php?f=famlist_s",
+		minLength: 3,
+		select: function(event,ui) {
+			$('[name=FamilyName]').val(ui.item.value);
+			$('[name=FamilyID]:eq(1)').val(ui.item.id);
+		}
+	});
+});
+</script>
+					<input style='width:350px;' type="text" id="FamilyName" name="FamilyName" value='<?php echo $sFamilyName; ?>' />
+					<input type="hidden" name="FamilyID" value='<?php echo $iFamily; ?>'>
 					</select>
 				</td>
 			</tr>

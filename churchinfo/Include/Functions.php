@@ -1885,12 +1885,22 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
     }
 }
 
-function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0) {
+function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSearchTerm = 0) {
 
     if ($classification) {
-        $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID='" . $classification . "' ORDER BY fam_Name";
+	if($sSearchTerm) {
+		$whereClause = " WHERE per_cls_ID='" . $classification . "' AND fam_Name LIKE '%".$sSearchTerm."%' ";
+	} else {
+		$whereClause = " WHERE per_cls_ID='" . $classification . "' ";
+	}
+        $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID $whereClause ORDER BY fam_Name";
     } else {
-        $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
+	if($sSearchTerm) {
+		$whereClause = " WHERE fam_Name LIKE '%".$sSearchTerm."%' ";
+	} else {
+		$whereClause = "";
+	}
+        $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam $whereClause ORDER BY fam_Name";
     }
 
     $rsFamilies = RunQuery($sSQL);
