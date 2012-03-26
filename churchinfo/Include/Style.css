@@ -1,3 +1,59 @@
+/* YUI 3 CSS reset */
+html{
+	color:#000;
+	background:#FFF;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset, img {
+	border:0;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+	font-style:normal;
+	font-weight:normal;
+}
+li {
+	list-style:none;
+}
+caption, th {
+	text-align:left;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before, q:after {
+	content:'';
+}
+abbr, acronym {
+	border:0;
+	font-variant:normal;
+}
+sup {
+	vertical-align:text-top;
+}
+sub {
+	vertical-align:text-bottom;
+}
+input, textarea, select {
+	font-family:inherit;
+	font-size:inherit;
+	font-weight:inherit;
+}
+input, textarea, select {
+	*font-size:100%;
+}
+legend {
+	color:#000;
+}
+/* end reset */
+
 body
 {
 	margin: 0;
@@ -6,13 +62,14 @@ body
     font-size: 75%;
 }
 
-TD, TH
+td, th
 {
     font-family: arial, san-serif;
-    font-size: 75%;
+    /* font-size: 75%; */
+    padding: 4;
 }
 
-TEXTAREA, INPUT
+textarea, input
 {
 	font-family: arial, san-serif;
 	font-size: 125%;
@@ -44,7 +101,7 @@ TEXTAREA, INPUT
 	background: #F7F5EA;
 }
 
-TD.HeaderRow
+td.HeaderRow
 {
 	border-bottom-style: solid;
 	border-bottom-color: black;
@@ -61,33 +118,33 @@ TD.HeaderRow
 .icTinyButton
 {
 	background: #F7F5EA;
-	border: solid 1px grey;
+	border: solid 1px gray;
 	font-size: 80%;
 	padding: 0px;
 	cursor: pointer;
 }
 
-A:active
+a:active
 {
 	color: navy
 }
 
-A:visited
+a:visited
 {
 	color: navy
 }
 
-A:link
+a:link
 {
 	color: navy
 }
 
-A:hover
+a:hover
 {
 	text-decoration: none;
 }
 
-A.SmallText
+a.SmallText
 {
 	font-size: 90%;
 }
@@ -161,52 +218,52 @@ A.SmallText
 	padding: 2px;
 }
 
-TR.RowColorA TD
+tr.RowColorA td
 {
 	background: #fcfbf7;
 	border-bottom: solid 1px #eaeaea;
 }
 
-TR.RowColorB TD
+tr.RowColorB td
 {
 	background: white;
 	border-bottom: solid 1px #eaeaea;
 }
 
-TR.RowColorC TD
+tr.RowColorC td
 {
 	background: white;
 	border-bottom: solid 1px #eaeaea;
 }
 
-TR.PaymentRowColorA TD
+tr.PaymentRowColorA td
 {
 	background: #00FF00;
 	border-bottom: solid 1px #eaeaea;
 }
 
-TR.PaymentRowColorB TD
+tr.PaymentRowColorB td
 {
 	background: #00C000;
 	border-bottom: solid 1px #eaeaea;
 }
 
-DIV.MenuItem
+div.MenuItem
 {
 	color: navy;
 	font-weight: bold;
 	padding: 10px;
 }
 
-DIV.ActiveMenuItem
+div.ActiveMenuItem
 {
 	background: navy;
 	font-weight: bold;
-	color: tan;
+	color: gray;
 	padding: 10pt;
 }
 
-DIV.p
+div.p
 {
     font-family: arial, sans-serif;
     font-size: 12px;
@@ -214,66 +271,152 @@ DIV.p
     padding: 0px;
 }
 
-DIV.BJ_menuBar, DIV.BJ_menuElement,
-DIV.BJ_subMenuBar, DIV.BJ_subMenuElement
-{
-    font-family: arial, sans-serif;
+/* superfish nav */
+
+#topnav > ul, #topnav > ul * {
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+}
+#topnav > ul {
+	line-height:	1.0;
+}
+#topnav > ul ul {
+	position:		absolute;
+	top:			-999em;
+	width:			10em; /* left offset of submenus need to match (see below) */
+}
+#topnav > ul ul li {
+	width:			100%;
+}
+#topnav > ul li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+#topnav > ul li {
+	float:			left;
+	position:		relative;
+}
+#topnav > ul a {
+	display:		block;
+	position:		relative;
+}
+#topnav > ul li:hover ul,
+#topnav > ul li.sfHover ul {
+	left:			0;
+	top:			2.5em; /* match top ul list item height */
+	z-index:		99;
+}
+ul#topnav > ul li:hover li ul,
+ul#topnav > ul li.sfHover li ul {
+	top:			-999em;
+}
+ul#topnav > ul li li:hover ul,
+ul#topnav > ul li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+ul#topnav > ul li li:hover li ul,
+ul#topnav > ul li li.sfHover li ul {
+	top:			-999em;
+}
+ul#topnav > ul li li li:hover ul,
+ul#topnav > ul li li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+
+/*** DEMO SKIN ***/
+#topnav {
+	width: 100%;
+	background: #F2EEDB;
+}
+
+#topnav > ul {
+    font-family: arial,sans-serif;
     font-size: 10px;
     color: #000000;
-    text-align: left;
+	float:			left;
+	margin-bottom:	.25em;
+}
+#topnav > ul a {
+	border-left:	1px solid #fff;
+	border-top:		1px solid #CFDEFF;
+	padding: 		.75em 1em;
+	text-decoration:none;
+}
+#topnav > ul a, #topnav > ul a:visited  { /* visited pseudo selector so IE6 applies text colour*/
+	color:			#000;
+}
+#topnav > ul li {
+	
+}
+#topnav > ul li li {
+	background:		#F2EEDB;
+}
+#topnav > ul li li li {
+	background:		#F2EEDB;
+}
+#topnav > ul li:hover, #topnav > ul li.sfHover,
+#topnav > ul a:focus, #topnav > ul a:hover, #topnav > ul a:active {
+	background:		#F2FFFF;
+	outline:		0;
 }
 
-DIV.BJ_subMenuBar
-{
-	background-color: #F2EEDB;
-	border-top: 2px solid #FCFBF7;
-	border-right: 2px solid #868379;
-	border-bottom: 2px solid #868379;
-	border-left: 2px solid #FCFBF7;
+/*** arrows **/
+#topnav > ul a.sf-with-ul {
+	padding-right: 	2.25em;
+	min-width:		1px; /* trigger IE7 hasLayout so spans position accurately */
+}
+.sf-sub-indicator {
+	position:		absolute;
+	display:		block;
+	right:			.75em;
+	top:			1.05em; /* IE6 only */
+	width:			10px;
+	height:			10px;
+	text-indent: 	-999em;
+	overflow:		hidden;
+	background:		url('./arrows-ffffff.png') no-repeat -10px -100px; /* 8-bit indexed alpha png. IE6 gets solid image only */
+}
+a > .sf-sub-indicator {  /* give all except IE6 the correct values */
+	top:			.8em;
+	background-position: 0 -100px; /* use translucent arrow for modern browsers*/
+}
+/* apply hovers to modern browsers */
+a:focus > .sf-sub-indicator,
+a:hover > .sf-sub-indicator,
+a:active > .sf-sub-indicator,
+li:hover > a > .sf-sub-indicator,
+li.sfHover > a > .sf-sub-indicator {
+	background-position: -10px -100px; /* arrow hovers for modern browsers*/
 }
 
-DIV.BJ_menuBar
-{
-    padding: 1px 4px;
-	background-color: #F2EEDB;
-	border-top: 0px none;
-	border-right: 0px none;
-	border-bottom: 1px solid #000000;
-	border-left: 0px none;
+/* point right for anchors in subs */
+#topnav > ul ul .sf-sub-indicator { background-position:  -10px 0; }
+#topnav > ul ul a > .sf-sub-indicator { background-position:  0 0; }
+/* apply hovers to modern browsers */
+#topnav > ul ul a:focus > .sf-sub-indicator,
+#topnav > ul ul a:hover > .sf-sub-indicator,
+#topnav > ul ul a:active > .sf-sub-indicator,
+#topnav > ul ul li:hover > a > .sf-sub-indicator,
+#topnav > ul ul li.sfHover > a > .sf-sub-indicator {
+	background-position: -10px 0; /* arrow hovers for modern browsers*/
 }
 
-DIV.BJ_menuElement
-{
-    border: 1px solid #F2EEDB;
-    padding: 2px 6px 2px 6px;
-    font-weight: bold;
+/*** shadows for all but IE6 ***/
+.sf-shadow ul {
+	background:	url('../images/shadow.png') no-repeat bottom right;
+	padding: 0 8px 9px 0;
+	-moz-border-radius-bottomleft: 17px;
+	-moz-border-radius-topright: 17px;
+	-webkit-border-top-right-radius: 17px;
+	-webkit-border-bottom-left-radius: 17px;
+}
+.sf-shadow ul.sf-shadow-off {
+	background: transparent;
 }
 
-DIV.BJ_subMenuElement
-{
-    padding: 2px 6px 2px 6px;
-    margin: 0 1px 1px 0;
-}
-
-DIV.BJ_subMenuElementHover
-{
-    background-color: #FCFBF7;
-    color: #000000;
-}
-
-DIV.BJ_menuElementHover
-{
-    border-color: #FCFBF7 #868379 #868379 #FCFBF7;
-}
-
-DIV.BJ_menuElementActive
-{
-    background-color: #FCFBF7;
-    color: #000000;
-    border-color: #868379 #FCFBF7 #FCFBF7 #868379;
-}
-
-DIV.hr
+div.hr
 {
     border-top: 1px solid #906040;
     border-bottom: 1px solid #e0b090;
@@ -291,7 +434,7 @@ P
 	margin-bottom: 10px;
 }
 
-OL LI
+ol li
 {
 	padding-top: 2px;
 	padding-bottom: 2px;
@@ -303,19 +446,19 @@ OL LI
 }
 
 
-SELECT
+select
 {
 	font-size: 8pt;
 }
 
-HR
+hr
 {
 	height: 1px;
 	color: black;
 	width: 100%;
 }
 
-TR.TableHeader TD
+tr.TableHeader td
 {
 	background: #F2EEDB;
 	font-weight: bold;
@@ -323,15 +466,15 @@ TR.TableHeader TD
 	border-top: solid 1px black;
 }
 
-TR.TinyTableHeader TD
+tr.TinyTableHeader td
 {
 	background: #f7f5ea;
-	font-size: 75%;
+	/* font-size: 75%; */
 	font-weight: bold;
 	border-bottom: solid 1px black;
 }
 
-TD.LabelColumn
+td.LabelColumn
 {
 	text-align: right;
 	font-weight: bold;
@@ -341,7 +484,7 @@ TD.LabelColumn
 	vertical-align: top;
 }
 
-TD.PaymentLabelColumn
+td.PaymentLabelColumn
 {
 	text-align: right;
 	font-weight: bold;
@@ -351,7 +494,7 @@ TD.PaymentLabelColumn
 	vertical-align: top;
 }
 
-TD.TinyLabelColumn
+td.TinyLabelColumn
 {
 	text-align: right;
 	font-weight: bold;
@@ -361,14 +504,14 @@ TD.TinyLabelColumn
 	vertical-align: top;
 }
 
-TD.TextColumn
+td.TextColumn
 {
 	border-top: solid 1px #eaeaea;
 	padding: 8px;
 	vertical-align: top;
 }
 
-TD.TinyTextColumn
+td.TinyTextColumn
 {
 	border-top: solid 1px white;
 	background: #F7F5EA;
@@ -376,14 +519,14 @@ TD.TinyTextColumn
 	vertical-align: top;
 }
 
-TD.TextColumnWithBottomBorder
+td.TextColumnWithBottomBorder
 {
 	border-top: solid 1px #eaeaea;
 	border-bottom: solid 1px #eaeaea;
 	padding: 8px;
 }
 
-TD.ControlBreak
+td.ControlBreak
 {
 	font-size: 130%;
 	color: black;

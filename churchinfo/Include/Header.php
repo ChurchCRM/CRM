@@ -37,11 +37,12 @@ $MenuFirst = 1;
 
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <?php Header_head_metatag(); ?>
+
+
 </head>
 <body onload="javascript:scrollToCoordinates()">
 <?php 

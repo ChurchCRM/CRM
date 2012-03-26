@@ -35,12 +35,38 @@ global $sPageTitle, $sURLPath;
 ?>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>Include/jquery/jquery-ui-1.8.18.custom.css">
+    <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/jquery-1.7.1.min.js"></script>	 
+    <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jqueryjquery-ui-1.8.18.custom.min.js"></script>
+	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/hoverIntent.js"></script> 
+	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/superfish.js"></script> 
+	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/supersubs.js"></script> 
+
+    <script language='javascript' type='text/javascript'>
+    // top menu
+    $(document).ready(function(){ 
+        $("#topnav>ul").supersubs({ 
+            minWidth:    12,
+            maxWidth:    27, 
+            extraWidth:  1 
+                            
+        }).superfish({ 
+            delay:       250,                             
+            animation:   {opacity:'show',height:'show'},   
+            speed:       100,                          
+            autoArrows:  false,                            
+            dropShadows: false                             
+        }); 
+    });
+	</script>
+
     <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
     <title>ChurchInfo: <?php echo $sPageTitle; ?></title>
     <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>Include/<?php echo $_SESSION['sStyle']; ?>">
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo $sURLPath."/"; ?>Include/jscalendar/calendar-blue.css" title="cal-style">
 <?php
 }
+
 
 function Header_body_scripts() {
 global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage, 
@@ -256,15 +282,7 @@ $sURLPath = $_SESSION['sURLPath'];
 
     </script>
 
-    <?php if ($bToolTipsOn) { ?>
-    <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/domLib.js"></script>
-    <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/domTT.js"></script>
-    <script>
-        var domTT_mouseHeight = domLib_isIE ? 17 : 20;
-        var domTT_offsetX = domLib_isIE ? -2 : 0;
-        var domTT_classPrefix = 'domTTClassic';
-    </script>
-    <?php } ?>
+
 
 <?php
 }
@@ -307,10 +325,8 @@ function GetSecuritySettings() {
 
 function create_menu($menu) {
 
-    echo "domMenu_data.setItem('domMenu_BJ', new domMenu_Hash(";
     addMenu($menu);
-    echo "));\n";
-    menu_setting();
+    echo "<div style='clear:both;'></div>\n";
 }
 function addMenu($menu) {
     global $security_matrix;
@@ -321,10 +337,11 @@ function addMenu($menu) {
     $item_cnt = mysql_num_rows($rsMenu);
     $idx = 1;
     $ptr = 1;
+    echo "<ul>";
     while ($aRow = mysql_fetch_array($rsMenu)) {    
         if (addMenuItem($aRow, $idx)) {
-            if ($ptr < $item_cnt) {
-                echo ", ";
+            if ($ptr == $item_cnt) {
+                echo "</ul>";
                 $idx++;
             }
             $ptr++;
@@ -366,46 +383,21 @@ global $security_matrix, $sURLPath;
         } else {
             $arrow = "";
         }
-        echo "$mIdx, new domMenu_Hash("
-            ."'contents', '".$aMenu['content'].$arrow."', "
-            ."'uri', '".$link."', "
-            ."'statusText', '".$text."'";
+			if($link){
+				echo "<li><a href='$link'>".$aMenu['content']."</a>";
+			} else {
+				echo "<li><a href='#'>".$aMenu['content']."</a>";
+			}
         if (($aMenu['ismenu']) && ($numItems > 0)) {
-            echo ", ";
+            echo "\n";
             addMenu($aMenu['name']);
-        }
-        echo ")\n";
+        } else {
+			echo "</li>\n";
+		}
         return true;
     } else {
         return false;
     }
-}
-
-function menu_setting() {
-
-        // domMenu_BJ: settings
-    echo "domMenu_settings.setItem('domMenu_BJ', new domMenu_Hash(
-            'menuBarWidth', '0%',
-            'menuBarClass', 'BJ_menuBar',
-            'menuElementClass', 'BJ_menuElement',
-            'menuElementHoverClass', 'BJ_menuElementHover',
-            'menuElementActiveClass', 'BJ_menuElementActive',
-            'subMenuBarClass', 'BJ_subMenuBar',
-            'subMenuElementClass', 'BJ_subMenuElement',
-            'subMenuElementHoverClass', 'BJ_subMenuElementHover',
-            'subMenuElementActiveClass', 'BJ_subMenuElementHover',
-            'subMenuMinWidth', 'auto',
-            'distributeSpace', false,
-            'openMouseoverMenuDelay', -1,
-            'openMousedownMenuDelay', 0,
-            'closeClickMenuDelay', 0,
-            'closeMouseoutMenuDelay', -1
-        ));\n";
-    // Top Menu Bar
-    echo "document.onmouseup = function()
-        {
-            domMenu_deactivate('domMenu_BJ');
-        }";
 }
 
 function Header_body_menu() {
@@ -415,19 +407,8 @@ global $MenuFirst, $sPageTitle, $sURLPath;
 	$sURLPath = $_SESSION['sURLPath'];
 
         $MenuFirst = 1;
-
-        if ($bDefectiveBrowser)
-            echo "<script language=\"javascript\" src=\"".$sURLPath."/Include/domMenu-IE.js\" type=\"text/javascript\"></script>";
-        else
-            echo "<script language=\"javascript\" src=\"".$sURLPath."/Include/domMenu.js\" type=\"text/javascript\"></script>";
         ?>
 
-        <script language="javascript" type="text/javascript">
-
-        // ChurchInfo Menu Bar Items:
-        <?php create_menu("root"); ?>
-
-        </script>
 
     <?php
     if (!$bDefectiveBrowser)
@@ -447,13 +428,10 @@ global $MenuFirst, $sPageTitle, $sURLPath;
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td colspan="7" width="100%">
-                    <div class="p" id="domMenu_BJ" style="height:20px; margin-bottom:0px;"></div>
-
-            <script language="javascript" type="text/javascript">
-
-                domMenu_activate('domMenu_BJ');
-            </script>
-
+			        <!-- // ChurchInfo Menu Bar Items: -->
+					<div id='topnav'>
+        			<?php create_menu("root"); ?>
+        			</div>
                 </td>
             </tr>
             <tr>
@@ -488,8 +466,8 @@ global $MenuFirst, $sPageTitle, $sURLPath;
                 // Optional Header Code (Entered on General Settings page - sHeader)
                 // Must first set a table with a background color, or content scrolls across
                 // the background of the custom code when using a non-defective browser
-                echo "  <table width=100% bgcolor=white cellpadding=0 cellspacing=0 border=0>
-                        <tr><td width=100%>";
+                echo "  <table width='100%' bgcolor=white cellpadding=0 cellspacing=0 border=0>
+                        <tr><td width='100%'>";
                 echo html_entity_decode($sHeader,ENT_QUOTES);
                 echo "</td></tr></table>";
             }
