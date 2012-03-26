@@ -17,24 +17,32 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-$iFundRaiserID = $_SESSION['iCurrentFundRaiser'];
-
 //Set the page title
 $sPageTitle = gettext("Fundraiser Listing");
 
 //Filter Values
-$dDateStart = FilterInput($_GET["DateStart"]);
-$dDateEnd = FilterInput($_GET["DateEnd"]);
-$iID = FilterInput($_GET["ID"]);
-$sSort = FilterInput($_GET["Sort"]);
+$dDateStart = "";
+$dDateEnd = "";
+$iID = "";
+$sSort = "";
+
+if (array_key_exists ("DateStart", $_GET))
+	$dDateStart = FilterInput($_GET["DateStart"]);
+if (array_key_exists ("DateEnd", $_GET))
+	$dDateEnd = FilterInput($_GET["DateEnd"]);
+if (array_key_exists ("ID", $_GET))
+	$iID = FilterInput($_GET["ID"]);
+if (array_key_exists ("Sort", $_GET))
+	$sSort = FilterInput($_GET["Sort"]);
 
 // Build SQL Criteria
+$sCriteria = "";
 if ($dDateStart || $dDateEnd) {
 	if (!$dDateStart && $dDateEnd)
 		$dDateStart = $dDateEnd;
 	if (!$dDateEnd && $dDateStart)
 		$dDateEnd = $dDateStart;
-	$sCriteria = " WHERE fr_Date BETWEEN '$dDateStart' AND '$dDateEnd' ";
+	$sCriteria .= " WHERE fr_Date BETWEEN '$dDateStart' AND '$dDateEnd' ";
 }
 if ($iID) {
 	if ($sCriteria)
@@ -42,7 +50,7 @@ if ($iID) {
 	else
 		$sCriteria = " WHERE fr_ID = '$iID' ";
 }
-if ($_GET["FilterClear"]) {
+if (array_key_exists ("FilterClear", $_GET) && $_GET["FilterClear"]) {
 	$sCriteria = "";
 	$dDateStart = "";
 	$dDateEnd = "";
@@ -111,7 +119,7 @@ if (empty($_GET['Result_Set']))
 	$Result_Set = 0;
 else
 	$Result_Set = FilterInput($_GET['Result_Set'],'int');
-$sLimitSQL .= " LIMIT $Result_Set, $iPerPage";
+$sLimitSQL = " LIMIT $Result_Set, $iPerPage";
 
 // Build SQL query
 $sSQL = "SELECT fr_ID, fr_Date, fr_Title FROM fundraiser_fr $sCriteria $sOrderSQL $sLimitSQL";
@@ -145,11 +153,6 @@ if ($endpage >= ($Pages - 1))
 // Show Link "1 ..." if startpage does not start at 1
 if ($startpage != 1)
 	echo "<a href=\"FindFundRaiser.php?Result_Set=0&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">1</a> ... ";
-
-	$dDateStart = FilterInput($_GET["DateStart"]);
-	$dDateEnd = FilterInput($_GET["DateEnd"]);
-	$iID = FilterInput($_GET["ID"]);
-	$sSort = FilterInput($_GET["Sort"]);
 
 // Display page links
 if ($Pages > 1)
@@ -185,6 +188,13 @@ if ($Result_Set >= 0 && $Result_Set < $Total)
 echo "<input type=\"hidden\" name=\"Result_Set\" value=\"" . $Result_Set . "\">";
 if(isset($sSort))
 	echo "<input type=\"hidden\" name=\"Sort\" value=\"" . $sSort . "\">";
+
+$sLimit5 = "";
+$sLimit10 = "";
+$sLimit20 = "";
+$sLimit25 = "";
+$sLimit50 = "";
+
 if ($_SESSION['SearchLimit'] == "5")
 	$sLimit5 = "selected";
 if ($_SESSION['SearchLimit'] == "10")
