@@ -323,9 +323,6 @@ if ( $bErrorFlag )
 	<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:window.close();">
 <?php } elseif ($mode != "grproles") { ?>
 	<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='<?php
-		if (strlen($sPreviousURL) > 0)
-			echo $sPreviousURL;
-		else
 			echo "Menu.php";
 		?>';">
 <?php } ?>
