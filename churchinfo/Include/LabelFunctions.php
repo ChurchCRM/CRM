@@ -49,7 +49,7 @@ function FontSelect($fieldname)
     foreach($fontnames as $n)
     {
         $sel = "";
-        if($_COOKIE[$fieldname] == $n) 
+        if(array_key_exists ($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $n) 
             $sel = " selected";
 		echo "<option value=\"".$n."\"".$sel.">".gettext("$n")."</option>";
 	}
@@ -68,7 +68,7 @@ function FontSizeSelect($fieldname)
     foreach($sizes as $s)
     {
         $sel = "";
-        if($_COOKIE[$fieldname] == $s) 
+        if(array_key_exists ($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $s) 
             $sel = " selected";
 		echo "<option value=\"".$s."\"".$sel.">".gettext("$s")."</option>";
     }
@@ -87,7 +87,7 @@ function LabelSelect($fieldname)
     foreach($labels as $l)
     {
         $sel = "";
-        if($_COOKIE[$fieldname] == $l) 
+        if(array_key_exists ($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $l) 
             $sel = " selected";
         echo "<option value=\"".$l."\"".$sel.">".gettext("$l")."</option>";
     }
