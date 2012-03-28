@@ -30,10 +30,10 @@ $sPageTitle = gettext("Deposit Listing");
 //}
 
 //Filter Values
-$dDateStart = FilterInput($_GET["DateStart"]);
-$dDateEnd = FilterInput($_GET["DateEnd"]);
-$iID = FilterInput($_GET["ID"]);
-$sSort = FilterInput($_GET["Sort"]);
+$dDateStart = FilterInputArr($_GET,"DateStart");
+$dDateEnd = FilterInputArr($_GET,"DateEnd");
+$iID = FilterInputArr($_GET,"ID");
+$sSort = FilterInputArr($_GET,"Sort");
 
 // Build SQL Criteria
 $sCriteria = "";
@@ -57,7 +57,8 @@ if ($iID) {
 	else
 		$sCriteria = " WHERE dep_ID = '$iID' ";
 }
-if ($_GET["FilterClear"]) {
+
+if (array_key_exists ("FilterClear", $_GET) && $_GET["FilterClear"]) {
 	$sCriteria = "";
 	$dDateStart = "";
 	$dDateEnd = "";
@@ -132,7 +133,7 @@ if (empty($_GET['Result_Set']))
 	$Result_Set = 0;
 else
 	$Result_Set = FilterInput($_GET['Result_Set'],'int');
-$sLimitSQL .= " LIMIT $Result_Set, $iPerPage";
+$sLimitSQL = " LIMIT $Result_Set, $iPerPage";
 
 // Build SQL query
 $sSQL = "SELECT dep_ID, dep_Date, dep_Comment, dep_Closed, dep_Type FROM deposit_dep $sCriteria $sOrderSQL $sLimitSQL";
@@ -167,10 +168,10 @@ if ($endpage >= ($Pages - 1))
 if ($startpage != 1)
 	echo "<a href=\"FindDepositSlip.php?Result_Set=0&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">1</a> ... ";
 
-	$dDateStart = FilterInput($_GET["DateStart"]);
-	$dDateEnd = FilterInput($_GET["DateEnd"]);
-	$iID = FilterInput($_GET["ID"]);
-	$sSort = FilterInput($_GET["Sort"]);
+	$dDateStart = FilterInputArr($_GET,"DateStart");
+	$dDateEnd = FilterInputArr($_GET,"DateEnd");
+	$iID = FilterInputArr($_GET,"ID");
+	$sSort = FilterInputArr($_GET,"Sort");
 
 // Display page links
 if ($Pages > 1)
@@ -201,6 +202,15 @@ if ($Result_Set >= 0 && $Result_Set < $Total)
 		echo "&nbsp;&nbsp;<a href='FindDepositSlip.php?Result_Set=$thisLinkResult&Sort=$sSort'>". gettext("Next Page") . "</a>&nbsp;&nbsp;";
 }
 
+
+$sLimit5 = "";
+$sLimit10 = "";
+$sLimit20 = "";
+$sLimit25 = "";
+$sLimit50 = "";
+$sLimit100 = "";
+$sLimit200 = "";
+$sLimit500 = "";
 
 // Display Record Limit
 echo "<input type=\"hidden\" name=\"Result_Set\" value=\"" . $Result_Set . "\">";
