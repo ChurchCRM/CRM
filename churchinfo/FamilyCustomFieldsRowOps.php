@@ -72,7 +72,7 @@ switch ($sAction)
 		$numRows = mysql_num_rows($rsPropList);
 
 		// Shift the remaining rows up by one, unless we've just deleted the only row
-		if ($numRows != 0)
+		if ($numRows > 0)
 		{
 			for ($reorderRow = $iOrderID+1; $reorderRow <= $numRows+1; $reorderRow++)
 			{

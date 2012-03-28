@@ -42,6 +42,7 @@ require 'Include/Header.php';
 
 $bNewNameError = false;
 $bDuplicateNameError = false;
+
 // Does the user want to save changes to text fields?
 if (isset($_POST["SaveChanges"]))
 {
@@ -366,12 +367,12 @@ else
 
             <td class="TextColumn" width="5%" nowrap>
                 <?php
-                if ($row != 1)
+                if ($row > 1)
                     echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
                 if ($row < $numRows)
                     echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
+		echo "<a href=\"FamilyCustomFieldsRowOps.php?Field= $aFieldFields[$row] &OrderID=$row&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>";
                 ?>
-                    <input type="image" value="delete" Name="delete" onclick="confirmDeleteField(<?php echo "'" . $aFieldFields[$row] . "', '" . $row . "'"; ?>);" src="Images/x.gif">
             </td>
 
             <td class="TextColumn" style="font-size:80%;">

@@ -204,21 +204,25 @@ $bErrorFlag = false;
 $bDuplicateFound = false;
 
 // Get the original list of options..
-$sSQL = "SELECT lst_OptionName, lst_OptionID FROM list_lst WHERE lst_ID=$listID ORDER BY lst_OptionSequence";
+//ADDITION - get Sequence Also
+$sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=$listID ORDER BY lst_OptionSequence";
 $rsList = RunQuery($sSQL);
 $numRows = mysql_num_rows($rsList);
 
 $aNameErrors = array();
 for ($row = 1; $row <= $numRows; $row++)
 	$aNameErrors[$row] = 0;
-
+	
 if (isset($_POST["SaveChanges"]))
 {
 	for ($row = 1; $row <= $numRows; $row++)
 	{
 		$aRow = mysql_fetch_array($rsList, MYSQL_BOTH);
 		$aOldNameFields[$row] = $aRow["lst_OptionName"];
-		$aIDs[$row] = $aRow["lst_OptionID"];
+		$aIDs[$row] =  $aRow["lst_OptionID"];
+
+		//addition save off sequence also
+		$aSeqs[$row] = $aRow['lst_OptionSequence'];
 
 		$aNameFields[$row] = FilterInput($_POST[$row . "name"]);
 	}
@@ -267,7 +271,7 @@ if (isset($_POST["SaveChanges"]))
 
 // Get data for the form as it now exists..
 
-$sSQL = "SELECT lst_OptionName, lst_OptionID FROM list_lst WHERE lst_ID = $listID ORDER BY lst_OptionSequence";
+$sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID = $listID ORDER BY lst_OptionSequence";
 $rsRows = RunQuery($sSQL);
 $numRows = mysql_num_rows($rsRows);
 
@@ -280,6 +284,8 @@ for ($row = 1; $row <= $numRows; $row++)
 		$aNameFields[$row] = $aRow["lst_OptionName"];
 
 	$aIDs[$row] = $aRow["lst_OptionID"];
+	//addition save off sequence also
+	$aSeqs[$row] = $aRow['lst_OptionSequence'];
 }
 
 //Set the starting row color
@@ -347,11 +353,11 @@ for ($row=1; $row <= $numRows; $row++)
 
 			<?php
 			if ($row != 1)
-				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aIDs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
+				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
 			if ($row < $numRows)
-				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aIDs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
-			if ($numRows > 1)
-				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aIDs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>";
+				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
+			if ($numRows > 0)
+				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>";
 			?>
 		</td>
 		<td class="TextColumn">
