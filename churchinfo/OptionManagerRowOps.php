@@ -26,8 +26,8 @@ $mode = trim($_GET["mode"]);
 
 // Check security for the mode selected.
 switch ($mode) {
-	case famroles:
-	case classes:
+	case 'famroles':
+	case 'classes':
 		if (!$_SESSION['bMenuOptions'])
 		{
 			Redirect("Menu.php");
@@ -35,8 +35,8 @@ switch ($mode) {
 		}
 		break;
 
-	case grptypes:
-	case grproles:
+	case 'grptypes':
+	case 'grproles':
 		if (!$_SESSION['bManageGroups'])
 		{
 			Redirect("Menu.php");
@@ -44,8 +44,8 @@ switch ($mode) {
 		}
 		break;
 
-	case custom:
-	case famcustom:
+	case 'custom':
+	case 'famcustom':
 	if (!$_SESSION['bAdmin'])
 		{
 			Redirect("Menu.php");
@@ -60,25 +60,25 @@ switch ($mode) {
 
 // Set appropriate table and field names for the editor mode
 switch ($mode) {
-	case famroles:
+	case 'famroles':
 		$deleteCleanupTable = "person_per";
 		$deleteCleanupColumn = "per_fmr_ID";
 		$deleteCleanupResetTo = 0;
 		$listID = 2;
 		break;
-	case classes:
+	case 'classes':
 		$deleteCleanupTable = "person_per";
 		$deleteCleanupColumn = "per_cls_ID";
 		$deleteCleanupResetTo = 0;
 		$listID = 1;
 		break;
-	case grptypes:
+	case 'grptypes':
 		$deleteCleanupTable = "group_grp";
 		$deleteCleanupColumn = "grp_Type";
 		$deleteCleanupResetTo = 0;
 		$listID = 3;
 		break;
-	case grproles:
+	case 'grproles':
 		$listID = FilterInput($_GET["ListID"],'int');
 
 		// Validate that this list ID is really for a group roles list. (for security)
@@ -90,8 +90,8 @@ switch ($mode) {
 		}
 
 		break;
-	case custom:
-	case famcustom:
+	case 'custom':
+	case 'famcustom':
 		$listID = FilterInput($_GET["ListID"],'int');
 		break;
 }
@@ -99,7 +99,7 @@ switch ($mode) {
 switch ($sAction)
 {
 	// Move a field up:  Swap the OptionSequence (ordering) of the selected row and the one above it
-	case up:
+	case 'up':
 		$sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . $iOrder . "' WHERE lst_ID = $listID AND lst_OptionSequence = '" . ($iOrder - 1) . "'";
 		RunQuery($sSQL);
 		$sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . ($iOrder - 1) . "' WHERE lst_ID = $listID AND lst_OptionID = '" . $iID . "'";
@@ -107,7 +107,7 @@ switch ($sAction)
 		break;
 
 	// Move a field down:  Swap the OptionSequence (ordering) of the selected row and the one below it
-	case down:
+	case 'down':
 		$sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . $iOrder . "' WHERE lst_ID = $listID AND lst_OptionSequence = '" . ($iOrder + 1) . "'";
 		RunQuery($sSQL);
 		$sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . ($iOrder + 1) . "' WHERE lst_ID = $listID AND lst_OptionID = '" . $iID . "'";
@@ -115,7 +115,7 @@ switch ($sAction)
 		break;
 
 	// Delete a field from the form
-	case delete:
+	case 'delete':
 		$sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
 		$rsPropList = RunQuery($sSQL);
 		$numRows = mysql_num_rows($rsPropList);
@@ -163,7 +163,7 @@ switch ($sAction)
 		break;
 
 	// Currently this is used solely for group roles
-	case makedefault:
+	case 'makedefault':
 		$sSQL = "UPDATE group_grp SET grp_DefaultRole = $iID WHERE grp_RoleListID = $listID";
 		RunQuery($sSQL);
 		break;

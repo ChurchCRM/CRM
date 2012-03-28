@@ -24,8 +24,8 @@ $mode = trim($_GET["mode"]);
 
 // Check security for the mode selected.
 switch ($mode) {
-	case famroles:
-	case classes:
+	case 'famroles':
+	case 'classes':
 		if (!$_SESSION['bMenuOptions'])
 		{
 			Redirect("Menu.php");
@@ -33,9 +33,9 @@ switch ($mode) {
 		}
 		break;
 
-	case grptypes:
-	case grproles:
-	case groupcustom:
+	case 'grptypes':
+	case 'grproles':
+	case 'groupcustom':
 		if (!$_SESSION['bManageGroups'])
 		{
 			Redirect("Menu.php");
@@ -43,9 +43,9 @@ switch ($mode) {
 		}
 		break;
 
-	case custom:
-	case famcustom:
-	case securitygrp:
+	case 'custom':
+	case 'famcustom':
+	case 'securitygrp':
 		if (!$_SESSION['bAdmin'])
 		{
 			Redirect("Menu.php");
@@ -60,31 +60,31 @@ switch ($mode) {
 
 // Select the proper settings for the editor mode
 switch ($mode) {
-	case famroles:
+	case 'famroles':
 		$adj = gettext("Family");
 		$noun = gettext("Role");
 		$listID = 2;
 		$embedded = false;
 		break;
-	case classes:
+	case 'classes':
 		$adj = gettext("Person");
 		$noun = gettext("Classification");
 		$listID = 1;
 		$embedded = false;
 		break;
-	case grptypes:
+	case 'grptypes':
 		$adj = gettext("Group");
 		$noun = gettext("Type");
 		$listID = 3;
 		$embedded = false;
 		break;
-	case securitygrp:
+	case 'securitygrp':
 		$adj = gettext("Security");
 		$noun = gettext("Group");
 		$listID = 5;
 		$embedded = false;
 		break;
-	case grproles:
+	case 'grproles':
 		$adj = gettext("Group Member");
 		$noun = gettext("Role");
 		$listID = FilterInput($_GET["ListID"],'int');
@@ -103,7 +103,7 @@ switch ($mode) {
 		$iDefaultRole = $aTemp[0];
 
 		break;
-	case custom:
+	case 'custom':
 		$adj = gettext("Person Custom List");
 		$noun = gettext("Option");
 		$listID = FilterInput($_GET["ListID"],'int');
@@ -119,7 +119,7 @@ switch ($mode) {
 		}
 
 		break;
-	case groupcustom:
+	case 'groupcustom':
 		$adj = gettext("Custom List");
 		$noun = gettext("Option");
 		$listID = FilterInput($_GET["ListID"],'int');
@@ -135,7 +135,7 @@ switch ($mode) {
 		}
 
 		break;
-	case famcustom:
+	case 'famcustom':
 		$adj = gettext("Family Custom List");
 		$noun = gettext("Option");
 		$listID = FilterInput($_GET["ListID"],'int');
@@ -156,6 +156,8 @@ switch ($mode) {
 		break;
 }
 
+$iNewNameError = 0;
+
 // Check if we're adding a field
 if (isset($_POST["AddField"]))
 {
@@ -163,7 +165,7 @@ if (isset($_POST["AddField"]))
 
 	if (strlen($newFieldName) == 0)
 	{
-		$bNewNameError = 1;
+		$iNewNameError = 1;
 	}
 	else
 	{
@@ -172,7 +174,7 @@ if (isset($_POST["AddField"]))
 		$rsCount = RunQuery($sSQL);
 		if (mysql_num_rows($rsCount) > 0)
 		{
-			$bNewNameError = 2;
+			$iNewNameError = 2;
 		}
 		else
 		{
@@ -193,21 +195,25 @@ if (isset($_POST["AddField"]))
 					VALUES (" . $listID . "," . $newOptionID . ",'" . $newFieldName . "'," . $newOptionSequence . ")";
 
 			RunQuery($sSQL);
-			$bNewNameError = 0;
+			$iNewNameError = 0;
 		}
 	}
 }
 
+$bErrorFlag = false;
+$bDuplicateFound = false;
+
+// Get the original list of options..
+$sSQL = "SELECT lst_OptionName, lst_OptionID FROM list_lst WHERE lst_ID=$listID ORDER BY lst_OptionSequence";
+$rsList = RunQuery($sSQL);
+$numRows = mysql_num_rows($rsList);
+
+$aNameErrors = array();
+for ($row = 1; $row <= $numRows; $row++)
+	$aNameErrors[$row] = 0;
+
 if (isset($_POST["SaveChanges"]))
 {
-	$bErrorFlag = false;
-	$bDuplicateFound = false;
-
-	// Get the original list of options..
-	$sSQL = "SELECT lst_OptionName, lst_OptionID FROM list_lst WHERE lst_ID=$listID ORDER BY lst_OptionSequence";
-	$rsList = RunQuery($sSQL);
-	$numRows = mysql_num_rows($rsList);
-
 	for ($row = 1; $row <= $numRows; $row++)
 	{
 		$aRow = mysql_fetch_array($rsList, MYSQL_BOTH);
@@ -379,10 +385,10 @@ New <?php echo $noun . " " . gettext("Name:"); ?>&nbsp;
 &nbsp;
 <input type="submit" class="icTinyButton" <?php echo 'value="' . gettext("Add New") . ' ' . $adj . ' ' . $noun . '"'?> Name="AddField">
 <?php
-	if ($bNewNameError > 0)
+	if ($iNewNameError > 0)
 	{
 		echo "<div><span style=\"color: red;\"><BR>";
-		if ( $bNewNameError == 1 )
+		if ( $iNewNameError == 1 )
 			echo gettext("Error: You must enter a name.");
 		else
 			echo gettext("Error: A ") . $noun . gettext(" by that name already exists.");

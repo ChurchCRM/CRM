@@ -28,22 +28,28 @@ if (!$_SESSION['bManageGroups'])
 $sPageTitle = gettext("Group Editor");
 
 //Get the GroupID from the querystring
-$iGroupID = FilterInput($_GET["GroupID"],'int');
+$iGroupID = 0;
+if (array_key_exists ("GroupID", $_GET))
+	$iGroupID = FilterInput($_GET["GroupID"],'int');
 
-$bEmptyCart = ($_GET["EmptyCart"] == "yes") && count($_SESSION['aPeopleCart']) > 0;
+$bEmptyCart = (array_key_exists ("EmptyCart", $_GET) && $_GET["EmptyCart"] == "yes") && 
+               array_key_exists ('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) > 0;
 
+$bNameError = False;
+$bErrorFlag = False;
+		
 //Is this the second pass?
 if (isset($_POST["GroupSubmit"]))
 {
 
 	//Assign everything locally
-	$sName = FilterInput($_POST["Name"]);
-	$iGroupType = FilterInput($_POST["GroupType"],'int');
-	$iDefaultRole = FilterInput($_POST["DefaultRole"],'int');
-	$sDescription = FilterInput($_POST["Description"]);
-	$bUseGroupProps = $_POST["UseGroupProps"];
-	$cloneGroupRole = FilterInput($_POST["cloneGroupRole"],'int');
-	$seedGroupID = FilterInput($_POST["seedGroupID"],'int');
+	$sName = FilterInputArr($_POST, "Name");
+	$iGroupType = FilterInputArr($_POST, "GroupType",'int');
+	$iDefaultRole = FilterInputArr($_POST,"DefaultRole",'int');
+	$sDescription = FilterInputArr($_POST,"Description");
+	$bUseGroupProps = FilterInputArr($_POST,"UseGroupProps");
+	$cloneGroupRole = FilterInputArr($_POST,"cloneGroupRole",'int');
+	$seedGroupID = FilterInputArr($_POST,"seedGroupID",'int');
 
 	//Did they enter a Name?
 	if (strlen($sName) < 1)
@@ -154,7 +160,7 @@ if (isset($_POST["GroupSubmit"]))
 			}
 		}
 
-		if ($_POST["EmptyCart"] && count($_SESSION['aPeopleCart']) > 0)
+		if (array_key_exists ("EmptyCart", $_POST) && $_POST["EmptyCart"] && count($_SESSION['aPeopleCart']) > 0)
 		{
 			while ($element = each($_SESSION['aPeopleCart'])) {
 				AddToGroup($_SESSION['aPeopleCart'][$element[key]],$iGroupID,$iDefaultRole);
