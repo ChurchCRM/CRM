@@ -17,16 +17,15 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-$iDonatedItemID = FilterInput($_GET["DonatedItemID"],'int');
-$linkBack = FilterInput($_GET["linkBack"]);
-$iCurrentFundraiser = FilterInput($_GET["CurrentFundraiser"]);
+$iDonatedItemID = FilterInputArr($_GET,"DonatedItemID",'int');
+$linkBack = FilterInputArr($_GET,"linkBack");
+$iCurrentFundraiser = FilterInputArr($_GET,"CurrentFundraiser");
 
 if ($iDonatedItemID > 0) {
 	$sSQL = "SELECT * FROM donateditem_di WHERE di_ID = '$iDonatedItemID'";
 	$rsDonatedItem = RunQuery($sSQL);
 	$theDonatedItem = mysql_fetch_array($rsDonatedItem);
-	$iCurrentFundraiser = $theDonatedItem["plg_depID"];
-	$DonatedItemOrPayment = $theDonatedItem["plg_DonatedItemOrPayment"];
+	$iCurrentFundraiser = $theDonatedItem["di_FR_ID"];
 }
 
 if ($iCurrentFundraiser)
@@ -48,16 +47,16 @@ $sPageTitle = gettext("Donated Item Editor");
 if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"]))
 {
 	//Get all the variables from the request object and assign them locally
-	$sItem = FilterInput($_POST["Item"]);
-	$bMultibuy = FilterInput ($_POST["Multibuy"], 'int');
-	$iDonor = FilterInput($_POST["Donor"], 'int');
-	$iBuyer = FilterInput($_POST["Buyer"], 'int');
-	$sTitle = FilterInput($_POST["Title"]);
-	$sDescription = FilterInput($_POST["Description"]);
-	$nSellPrice = FilterInput($_POST["SellPrice"]);
-	$nEstPrice = FilterInput($_POST["EstPrice"]);
-	$nMaterialValue = FilterInput($_POST["MaterialValue"]);
-	$nMinimumPrice = FilterInput($_POST["MinimumPrice"]);
+	$sItem = FilterInputArr($_POST,"Item");
+	$bMultibuy = FilterInputArr ($_POST,"Multibuy", 'int');
+	$iDonor = FilterInputArr($_POST,"Donor", 'int');
+	$iBuyer = FilterInputArr($_POST,"Buyer", 'int');
+	$sTitle = FilterInputArr($_POST,"Title");
+	$sDescription = FilterInputArr($_POST,"Description");
+	$nSellPrice = FilterInputArr($_POST,"SellPrice");
+	$nEstPrice = FilterInputArr($_POST,"EstPrice");
+	$nMaterialValue = FilterInputArr($_POST,"MaterialValue");
+	$nMinimumPrice = FilterInputArr($_POST,"MinimumPrice");
 	
 	if (! $bMultibuy) {
 		$bMultibuy = 0;

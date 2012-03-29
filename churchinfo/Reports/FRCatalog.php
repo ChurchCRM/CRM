@@ -20,6 +20,8 @@ require "../Include/ReportConfig.php";
 
 $iCurrentFundraiser = $_GET["CurrentFundraiser"];
 
+$curY = 0;
+
 class PDF_FRCatalogReport extends ChurchInfoReport {
 	// Constructor
 	function PDF_FRCatalogReport() {
@@ -32,10 +34,10 @@ class PDF_FRCatalogReport extends ChurchInfoReport {
 		$this->SetAutoPageBreak(true, 25);
 	}
 	
-	function AddPage () {
-		global $fr_title, $fr_description;
+	function AddPage ($orientation='', $format='') {
+		global $fr_title, $fr_description, $curY;
 
-		parent::AddPage();
+		parent::AddPage($orientation, $format);
 		
     	$this->SetFont("Times",'B',16);
     	$this->Write (8, $fr_title."\n");

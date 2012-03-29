@@ -17,8 +17,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-$iPaddleNumID = FilterInput($_GET["PaddleNumID"],'int');
-$linkBack = FilterInput($_GET["linkBack"]);
+$iPaddleNumID = FilterInputArr($_GET,"PaddleNumID",'int');
+$linkBack = FilterInputArr($_GET,"linkBack");
 
 if ($iPaddleNumID > 0) {
 	$sSQL = "SELECT * FROM paddlenum_pn WHERE pn_ID = '$iPaddleNumID'";

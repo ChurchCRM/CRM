@@ -17,7 +17,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-$linkBack = FilterInput($_GET["linkBack"]);
+$linkBack = FilterInputArr($_GET,"linkBack");
 
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 

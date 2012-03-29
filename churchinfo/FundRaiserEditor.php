@@ -17,8 +17,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-$linkBack = FilterInput($_GET["linkBack"]);
-$iFundRaiserID = FilterInput($_GET["FundRaiserID"]);
+$linkBack = FilterInputArr($_GET,"linkBack");
+$iFundRaiserID = FilterInputArr($_GET,"FundRaiserID");
 
 if ($iFundRaiserID>0) {
 	// Get the current fund raiser record
@@ -35,13 +35,15 @@ if ($iFundRaiserID > 0) {
 	$sPageTitle = gettext("Create New Fund Raiser");
 }
 
+$sDateError = "";
+
 //Is this the second pass?
 if (isset($_POST["FundRaiserSubmit"]))
 {
 	//Get all the variables from the request object and assign them locally
-	$dDate = FilterInput($_POST["Date"]);
-	$sTitle = FilterInput($_POST["Title"]);
-	$sDescription = FilterInput($_POST["Description"]);
+	$dDate = FilterInputArr($_POST,"Date");
+	$sTitle = FilterInputArr($_POST,"Title");
+	$sDescription = FilterInputArr($_POST,"Description");
 	
 	//Initialize the error flag
 	$bErrorFlag = false;
@@ -112,8 +114,9 @@ if (isset($_POST["FundRaiserSubmit"]))
 	}
 	else
 	{
-		//Adding....
-		//Set defaults
+		$dDate = "";
+		$sTitle = "";
+		$sDescription = "";
 	}
 }
 

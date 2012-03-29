@@ -18,7 +18,7 @@ require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 require "../Include/ReportConfig.php";
 
-$iPaddleNumID = FilterInput($_GET["PaddleNumID"],'int');
+$iPaddleNumID = FilterInputArr($_GET,"PaddleNumID",'int');
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 
 //Get the paddlenum records for this fundraiser
@@ -54,7 +54,7 @@ class PDF_FundRaiserStatement extends ChurchInfoReport {
 		return ($curY);
 	}
 
-	function FinishPage ($curY,$fam_ID,$fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) {
+	function FinishPage ($curY) {
 	}
 	
 	function CellWithWrap ($curY, $curNewY, $ItemWid, $tableCellY, $txt, $bdr, $aligncode) {
@@ -91,6 +91,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 	// If running for all paddles check the _POST to see which ones are selected
 	if ($iPaddleNumID || isset($_POST["Chk$pn_ID"])) {
 		// Start page for this paddle number
+		$iYear = date("Y"); // not actually used by StartNewPage but should be defined
 		$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
 	
 		$pdf->WriteAt ($pdf->leftX, $curY, gettext ("Donated Items:"));
@@ -229,7 +230,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 		$curY += 2 * $pdf->incrementY;
 		$pdf->WriteAt ($pdf->leftX, $curY, gettext ("                                        Signature ________________________________________________________________"));
 		
-		$pdf->FinishPage ($curY,$prev_fam_ID,$prev_fam_Name, $prev_fam_Address1, $prev_fam_Address2, $prev_fam_City, $prev_fam_State, $prev_fam_Zip, $prev_fam_Country);
+		$pdf->FinishPage ($curY);
 	}
 }
 
