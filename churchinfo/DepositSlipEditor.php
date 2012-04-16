@@ -20,7 +20,7 @@ require "Include/Functions.php";
 require "Include/MICRFunctions.php";
 
 $linkBack = FilterInput($_GET["linkBack"]);
-$iDepositSlipID = FilterInput($_GET["DepositSlipID"]);
+$iDepositSlipID = FilterInput($_GET["DepositSlipID"], 'int');
 
 if ($iDepositSlipID) {
 	// Get the current deposit slip
