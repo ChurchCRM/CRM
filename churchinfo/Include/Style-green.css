@@ -400,3 +400,12 @@ TD.ControlBreak
   height: 30px;
   overflow:auto;
 }
+
+/* ## bevand10 - 2012-04-25 - add row hover effect - use SmallShadedBox:background-color */
+tr.RowColorA:hover td,
+tr.RowColorB:hover td,
+tr.RowColorC:hover td,
+tr.PaymentRowColorA:hover td,
+tr.PaymentRowColorB:hover td {
+	background-color: #DBF3DD;
+}
