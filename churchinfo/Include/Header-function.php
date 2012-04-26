@@ -62,6 +62,7 @@ global $sPageTitle, $sURLPath;
 
     <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
     <title>ChurchInfo: <?php echo $sPageTitle; ?></title>
+    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>Include/Style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>Include/<?php echo $_SESSION['sStyle']; ?>">
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo $sURLPath."/"; ?>Include/jscalendar/calendar-blue.css" title="cal-style">
 <?php
