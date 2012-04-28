@@ -91,6 +91,10 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$sAddress2 = str_replace(',','',FilterInput($_POST["Address2"]));
 	$sCity = FilterInput($_POST["City"]);
 	$sZip = FilterInput($_POST["Zip"]);
+
+	// bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
+	if($cfgForceUppercaseZip)$sZip=strtoupper($sZip);
+
 	$sCountry = FilterInput($_POST["Country"]);
 	$iFamilyMemberRows = FilterInput($_POST["FamCount"]);
 
@@ -652,7 +656,14 @@ require "Include/Header.php";
 			?>
 		</td>
 		<td class="TextColumn">
-			<input type="text" Name="Zip" value="<?php echo htmlentities(stripslashes($sZip),ENT_NOQUOTES, "UTF-8"); ?>" maxlength="10" size="8">
+			<input type="text" Name="Zip"
+<?php
+	// bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
+	if($cfgForceUppercaseZip)echo 'style="text-transform:uppercase" ';
+
+	echo 'value="' . htmlentities(stripslashes($sZip), ENT_NOQUOTES, "UTF-8") . '" ';
+?>
+maxlength="10" size="8">
 		</td>
 		
 	</tr>

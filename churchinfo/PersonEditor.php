@@ -115,6 +115,10 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		$sCity = FilterInput($_POST["City"]);
 	if (array_key_exists ("Zip", $_POST))
 		$sZip	= FilterInput($_POST["Zip"]);
+
+	// bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
+	if($cfgForceUppercaseZip)$sZip=strtoupper($sZip);
+
 	if (array_key_exists ("Country", $_POST))
 		$sCountry = FilterInput($_POST["Country"]);
 	
@@ -676,7 +680,14 @@ require "Include/Header.php";
 
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("If the ZIP does not differ from the family, leave this field blank."); ?>><?php if ($bFamilyZip) { echo "<span style=\"color: red;\">"; } ?><?php echo gettext("Zip:"); ?></span></td>
-				<td class="TextColumn"><input type="text" name="Zip" value="<?php echo htmlentities(stripslashes($sZip),ENT_NOQUOTES, "UTF-8"); ?>" maxlength="10" size="8"></td>
+				<td class="TextColumn"><input type="text" name="Zip"
+<?php 
+	// bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
+	if($cfgForceUppercaseZip)echo 'style="text-transform:uppercase" ';
+
+	echo 'value="' . htmlentities(stripslashes($sZip),ENT_NOQUOTES, "UTF-8") . '" ';
+?>
+maxlength="10" size="8"></td>
 			</tr>
 
 			<tr>
