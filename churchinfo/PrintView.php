@@ -132,7 +132,10 @@ if ($sAddress1 != "") { echo $sAddress1 . "<br>"; }
 if ($sAddress2 != "") { echo $sAddress2 . "<br>"; }
 if ($sCity != "") { echo $sCity . ", "; }
 if ($sState != "") { echo $sState; }
-if ($sZip != "") { echo " " . $sZip; }
+
+// bevand10 2012-04-28 Replace space with &nbsp; in zip/postcodes, to ensure they do not wrap on output.
+if ($sZip != "") { echo " " . str_replace(' ', '&nbsp;', trim($sZip)); }
+
 if ($sCountry != "") {echo "<br>" . $sCountry; }
 echo "</font>";
 
