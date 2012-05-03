@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-04-21 10:04-0400\n"
-"PO-Revision-Date: 2010-08-25 18:44-0500\n"
-"Last-Translator: Michael Wilt <mike@mwilt.org>\n"
+"PO-Revision-Date: 2012-05-02 21:28-0500\n"
+"Last-Translator: Isaac silva <contacto@webdesignvida.com.co>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -423,7 +423,7 @@ msgstr "Primer Nombre"
 
 #: AutoPaymentEditor.php:352
 msgid "Last name"
-msgstr "Apellidos"
+msgstr "Apellido"
 
 #: AutoPaymentEditor.php:357
 #: Reports\ConfirmReport.php:116
@@ -533,7 +533,7 @@ msgstr "Esta herramienta le ayudará a realizar copias de seguridad manualmente 
 
 #: BackupDatabase.php:122
 msgid "TIPS:"
-msgstr "TIPS:"
+msgstr "Consejos:"
 
 #: BackupDatabase.php:124
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
@@ -596,7 +596,7 @@ msgstr "Escrutinio 2005 entradas para "
 
 #: Canvas05Editor.php:99
 msgid "Do you like the color of the church?"
-msgstr "¿Te gusta el color de los albergues de día?"
+msgstr "¿Te gusta el color de la iglesia de día?"
 
 #: Canvas05Editor.php:104
 msgid "What are we doing right?"
@@ -813,11 +813,11 @@ msgstr "Su Separador está vacío!"
 
 #: CartToFamily.php:80
 msgid "No family name entered!"
-msgstr "No ha ingresado nombre de la institucion!"
+msgstr "No ha ingresado el apellido de la familia"
 
 #: CartToFamily.php:125
 msgid "Add Cart to Family"
-msgstr "Añadir los contenidos del Separador a una institucion"
+msgstr "Añadir los contenidos del Separador a una familia"
 
 #: CartToFamily.php:132
 #: CartToFamily.php:324
@@ -880,7 +880,7 @@ msgstr "Si esta adicionando una nueva institución, ingrese los datos a continua
 #: SelectDelete.php:236
 #: SelectDelete.php:358
 msgid "Family Name:"
-msgstr "Nombre de Institución:"
+msgstr "Nombre de la familia:"
 
 #: CartToFamily.php:217
 #: FamilyEditor.php:772
@@ -1077,7 +1077,7 @@ msgstr "personas de"
 
 #: CartView.php:183
 msgid "families."
-msgstr "instituciones."
+msgstr "Familias"
 
 #: CartView.php:188
 msgid "Address?"
@@ -1195,7 +1195,7 @@ msgstr "Lotes de correo Presort"
 
 #: CartView.php:326
 msgid "Quiet Presort"
-msgstr "Quiet Presort"
+msgstr "Organizar sin notificaciones"
 
 #: CartView.php:349
 msgid "Generate Labels"
@@ -1239,7 +1239,7 @@ msgstr "De:"
 #: CartView.php:534
 #: EmailEditor.php:64
 msgid "To (blind):"
-msgstr "Para:"
+msgstr "Para(cco):"
 
 #: CartView.php:536
 #: EmailEditor.php:74
@@ -1253,11 +1253,11 @@ msgstr "Editar"
 
 #: CartView.php:583
 msgid "Send Email"
-msgstr "Enviar"
+msgstr "Enviar Correo"
 
 #: CartView.php:590
 msgid "Delete Email"
-msgstr "Borrar"
+msgstr "Borrar Correo"
 
 #: CartView.php:612
 msgid "Resume"
@@ -1448,7 +1448,7 @@ msgstr "Año de contacto:"
 #: PersonEditor.php:567
 #: PrintView.php:230
 msgid "Family Role:"
-msgstr "Cargo:"
+msgstr "Rol en la Familia:"
 
 #: CSVExport.php:175
 msgid "* Depends whether using person or family output method"
@@ -1883,7 +1883,7 @@ msgstr "Fondo"
 #: FamilyView.php:770
 #: SelectDelete.php:299
 msgid "Amount"
-msgstr "Suma de Dinero"
+msgstr "Cantidad"
 
 #: DepositSlipEditor.php:547
 msgid "NonDeduct"
@@ -1920,15 +1920,15 @@ msgstr "Seleccione las clasificaciones para incluir"
 
 #: DirectoryReports.php:121
 msgid "Which role is the head of household?"
-msgstr "Cargo de mayor jerarquía"
+msgstr "Cual es el rol de la cabeza de hogar"
 
 #: DirectoryReports.php:137
 msgid "Which role is the spouse?"
-msgstr "Cargo segundo"
+msgstr "Cual es el cargo de la esposa"
 
 #: DirectoryReports.php:154
 msgid "Which role is a child?"
-msgstr "Cargo tercero"
+msgstr "Cual es el cargo del hijo?"
 
 #: DirectoryReports.php:171
 msgid "Information to Include:"
@@ -1952,31 +1952,31 @@ msgstr "Cumpleaños"
 
 #: DirectoryReports.php:177
 msgid "Family Home Phone"
-msgstr "Telefono del Instituto"
+msgstr "Telefono de la Familia"
 
 #: DirectoryReports.php:178
 msgid "Family Work Phone"
-msgstr "Telefono 1"
+msgstr "Telefono de contacto familia (trabajo)"
 
 #: DirectoryReports.php:179
 msgid "Family Cell Phone"
-msgstr "Telefono Celular"
+msgstr "Telefono movil (familia)"
 
 #: DirectoryReports.php:180
 msgid "Family Email"
-msgstr "Correo electronico de la Instutción"
+msgstr "Correo de la Familia"
 
 #: DirectoryReports.php:182
 msgid "Personal Home Phone"
-msgstr "Telefono 2"
+msgstr "Telefono Personal"
 
 #: DirectoryReports.php:183
 msgid "Personal Work Phone"
-msgstr "Fax"
+msgstr "Telefono del Trabajo"
 
 #: DirectoryReports.php:184
 msgid "Personal Cell Phone"
-msgstr "Telefono Mobil"
+msgstr "Telefono Movil"
 
 #: DirectoryReports.php:185
 msgid "Personal Email"
@@ -2013,7 +2013,7 @@ msgstr "Utilice título de la página"
 
 #: DirectoryReports.php:242
 msgid "Church Name"
-msgstr "Nombre de su institución"
+msgstr "Nombre de la Iglesia"
 
 #: DirectoryReports.php:266
 msgid "Disclaimer"
