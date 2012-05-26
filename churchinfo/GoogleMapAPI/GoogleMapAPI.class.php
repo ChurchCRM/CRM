@@ -1,8 +1,7 @@
 <?php
-
-/**
- * Project:     GoogleMapAPI: a PHP library inteface to the Google Map API
- * File:        GoogleMapAPI.class.php
+/*
+ * Project:     GoogleMapAPI V3: a PHP library inteface to the Google Map API v3
+ * File:        GoogleMapV3.php
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,26 +17,28 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * For questions, help, comments, discussion, etc., please join the
- * Smarty mailing list. Send a blank e-mail to
- * smarty-general-subscribe@lists.php.net
- *
- * @link http://www.phpinsider.com/php/code/GoogleMapAPI/
- * @copyright 2005 New Digital Group, Inc.
- * @author Monte Ohrt <monte at ohrt dot com>
- * @package GoogleMapAPI
- * @version 2.5
+ * ORIGINAL INFO
+ * link http://www.phpinsider.com/php/code/GoogleMapAPI/
+ * copyright 2005 New Digital Group, Inc.
+ * author Monte Ohrt <monte at ohrt dot com>
+ * package GoogleMapAPI
+ * version 2.5
+ * 
+ * REVISION NOTIFICATION
+ * NOTE: This is a modified version of the original listed above.  This version
+ * maintains all original GNU software licenses.
  */
-
-/* $Id: GoogleMapAPI.class.php,v 1.2 2010-05-17 20:22:28 mikewiltwork Exp $ */
-
+/**
+ * @link http://code.google.com/p/php-google-map-api/
+ * @copyright 2010 Brad wedell
+ * @author Brad Wedell
+ * @package GoogleMapAPI (version 3)
+ * @version 3.0beta
+*/
 /*
-
-For best results with GoogleMaps, use XHTML compliant web pages with this header:
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
-
+ * To view the full CHANGELOG, visit 
+ * http://code.google.com/p/php-google-map-api/wiki/ChangeLog3
+/*
 For database caching, you will want to use this schema:
 
 CREATE TABLE GEOCODES (
@@ -49,7 +50,19 @@ CREATE TABLE GEOCODES (
 
 */
 
+/**
+ * PHP Google Maps API class
+ * @package GoogleMapAPI
+ * @version 3.0beta
+ */
 class GoogleMapAPI {
+
+    /**
+     * contains any map styles in a json string
+     *
+     * @var string json $map_styles
+     */
+    var $map_styles = true; 	
 
     /**
      * PEAR::DB DSN for geocode caching. example:
@@ -60,20 +73,18 @@ class GoogleMapAPI {
     var $dsn = null;
     
     /**
-     * YOUR GooglMap API KEY for your site.
-     * (http://maps.google.com/apis/maps/signup.html)
-     *
-     * @var string
-     */
-    var $api_key = '';
-
-    /**
      * current map id, set when you instantiate
      * the GoogleMapAPI object.
      *
      * @var string
      */
     var $map_id = null;
+	
+	/**
+	 * determines whether or not to display the map and associated JS on the page
+	 * this is used if you just want to display a streetview with no map
+	 */
+	var $display_map = true;
 
     /**
      * sidebar <div> used along with this map.
@@ -83,7 +94,33 @@ class GoogleMapAPI {
     var $sidebar_id = null;    
     
     /**
-     * GoogleMapAPI uses the Yahoo geocode lookup API.
+     * With this, you can append lang= and region= to the script url for localization. If Google adds more features in the future, they will be supported by default
+     *
+     * See http://code.google.com/apis/maps/documentation/javascript/basics.html#Localization
+     * for more info on Localization
+     *
+     * @var array
+     **/
+    var $api_options=null;
+    
+    /**
+     * Whether to use new V3 mobile functionality
+     *
+     * @var bool
+     */
+    var $mobile=false;
+    
+    /**
+     * The viewport meta tag allows more values than these defaults; you can get more info here: http://www.html-5.com/metatags/index.html#viewport-meta-tag
+     *
+     * @var string
+     */
+    var $meta_viewport = "initial-scale=1.0, user-scalable=no";
+    
+    /**
+     * DEPRECATED: Google now has geocoding service.  
+     * NOTE: Note even sure if this still works
+     * GoogleMapAPI used to use the Yahoo geocode lookup API.
      * This is the application ID for YOUR application.
      * This is set upon instantiating the GoogleMapAPI object.
      * (http://developer.yahoo.net/faq/index.html#appid)
@@ -95,9 +132,11 @@ class GoogleMapAPI {
     /**
      * use onLoad() to load the map javascript.
      * if enabled, be sure to include on your webpage:
-     * <html onload="onLoad()">
+     * <?=$mapobj->printOnLoad?> or manually create an onload function 
+     * that calls the map's onload function using $this->printOnLoadFunction
      *
-     * @var string
+     * @var bool
+     * @default true
      */
     var $onload = true;
     
@@ -122,7 +161,7 @@ class GoogleMapAPI {
     /**
      * enables map controls (zoom/move/center)
      *
-     * @var boolean
+     * @var bool
      */
     var $map_controls = true;
 
@@ -136,51 +175,139 @@ class GoogleMapAPI {
     var $control_size = 'large';
     
     /**
-     * enables map type controls (map/satellite/hybrid)
+     * enables map type controls (map/satellite/hybrid/terrain)
      *
-     * @var boolean
+     * @var bool
      */
     var $type_controls = true;
+    
+    /**
+     * determines unit system to use for directions, blank = default
+     * @var string (METRIC, IMPERIAL)
+     */
+    var $directions_unit_system = '';
+	
+	/**
+	 * sets default option for type controls(DEFAULT, HORIZONTAL_BAR, DROPDOWN_MENU)
+	 *
+	 * @var string
+	 */
+	 var $type_controls_style = "DEFAULT";
 
     /**
-     * default map type (G_NORMAL_MAP/G_SATELLITE_MAP/G_HYBRID_MAP)
+     * default map type google.maps.MapTypeId.(ROADMAP, SATELLITE, HYBRID, TERRAIN)
      *
-     * @var boolean
+     * @var string
      */
-    var $map_type = 'G_NORMAL_MAP';
+    var $map_type = 'HYBRID';
     
     /**
      * enables scale map control
      *
-     * @var boolean
+     * @var bool
      */
     var $scale_control = true;
+    /**
+	  * class variable to control scrollwheel
+	  * @var bool
+	  */
+    var $scrollwheel = true; 
     
     /**
      * enables overview map control
      *
-     * @var boolean
+     * @var bool
      */
-    var $overview_control = false;    
+    var $overview_control = false;
+    
+    /**
+     * enables Google Adsense Adsmanager on page, not currently supported in beta
+     *
+     * @var bool
+     */
+    var $ads_manager = false;
+    
+    /**
+     * Google Adsense Publisher ID
+     *
+     * @var string
+     */
+    var $ads_pub_id = "";  
+    
+    /**
+     * Google Adsense Channel ID
+     *
+     * @var string
+     */
+    var $ads_channel = "";
+    
+    /**
+     * The Max number of Adsmanager ads to show on a map
+     *
+     * @var int
+     */
+    var $ads_max = 10;
+    
+    /**
+     * enables/disables local search on page
+     *
+     * @var bool
+     */
+    var $local_search = false;
+    
+    /**
+     * enables local search ads on page NOTE: will only display ads if local_search == true, otherwise just use ad_manager and settings.
+     *
+     * @var bool
+     */
+    var $local_search_ads = false;
+    
+    /**
+     * enables/disables walking directions option
+     *
+     * @var bool
+     */
+    var $walking_directions = false;
+    
+    /**
+     * enables/disables biking directions on directions
+     *
+     * @var bool
+     */
+    var $biking_directions = false;
+    
+    /**
+     * enables/disables avoid highways on directions
+     *
+     * @var bool
+     */
+    var $avoid_highways = false;
+    
+    /**
+     * determines if avoid tollways is used in directions
+     *
+     * @var bool
+     */
+    var $avoid_tollways = false;    
      
     /**
      * determines the default zoom level
      *
-     * @var integer
+     * @var int
      */
     var $zoom = 16;
 
     /**
      * determines the map width
      *
-     * @var integer
+     * @var string
      */
     var $width = '500px';
     
     /**
      * determines the map height
      *
-     * @var integer
+     * @var string
      */
     var $height = '500px';
 
@@ -188,7 +315,7 @@ class GoogleMapAPI {
      * message that pops up when the browser is incompatible with Google Maps.
      * set to empty string to disable.
      *
-     * @var integer
+     * @var string
      */
     var $browser_alert = 'Sorry, the Google Maps API is not compatible with this browser.';
     
@@ -203,21 +330,22 @@ class GoogleMapAPI {
     /**
      * determines if sidebar is enabled
      *
-     * @var boolean
+     * @var bool
      */
     var $sidebar = true;    
 
     /**
      * determines if to/from directions are included inside info window
-     *
-     * @var boolean
+     * 
+     * @var bool
+     * @deprecated
      */
     var $directions = true;
 
     /**
      * determines if map markers bring up an info window
      *
-     * @var boolean
+     * @var bool
      */
     var $info_window = true;    
     
@@ -227,7 +355,50 @@ class GoogleMapAPI {
      * @var string click/mouseover
      */
     var $window_trigger = 'click';    
-
+	
+	/**
+	 * determines whether or not to use the MarkerClusterer plugin
+	 */
+	 var $marker_clusterer = false;
+	 
+	 /**
+	 * set default marker clusterer *webserver* file location
+	 */
+	 var $marker_clusterer_location = "/MarkerClusterer-1.0/markerclusterer_compiled.js";
+	 
+	 /**
+	 * set default marker clusterer options
+	 */
+	 var $marker_clusterer_options = array(
+	 	"maxZoom"=>"null",
+		"gridSize"=>"null",
+		"styles"=>"null"
+	 );
+    
+    /**
+     * determines if traffic overlay is displayed on map
+     *
+     * @var bool
+     */
+    var $traffic_overlay = false;
+	
+	/**
+     * determines if biking overlay is displayed on map
+     *
+     * @var bool
+     */
+    var $biking_overlay = false;   
+	
+	/**
+	 * determines whether or not to display street view controls
+	 */
+	var $street_view_controls = false;
+	
+	/**
+	 * ID of the container that will hold a street view if streetview controls = true.
+	 */
+	var $street_view_dom_id = "";
+    
     /**
      * what server geocode lookups come from
      *
@@ -240,8 +411,13 @@ class GoogleMapAPI {
      * @var string service name
      */
     var $lookup_service = 'GOOGLE';
-	var $lookup_server = array('GOOGLE' => 'maps.google.com', 'YAHOO' => 'api.local.yahoo.com');
+    var $lookup_server = array('GOOGLE' => 'maps.google.com', 'YAHOO' => 'api.local.yahoo.com');
     
+    /**
+     * 
+     * @var array
+     * @deprecated
+     */
     var $driving_dir_text = array(
             'dir_to' => 'Start address: (include addr, city st/region)',
             'to_button_value' => 'Get Directions',
@@ -260,7 +436,7 @@ class GoogleMapAPI {
      *
      * @var string
      */
-    var $_version = '2.5';
+    var $_version = '3.0beta';
 
     /**
      * list of added markers
@@ -300,7 +476,7 @@ class GoogleMapAPI {
     /**
      * determines if we should zoom to minimum level (above this->zoom value) that will encompass all markers
      *
-     * @var boolean
+     * @var bool
      */
     var $zoom_encompass = true;
 
@@ -318,20 +494,80 @@ class GoogleMapAPI {
      */
     var $use_suggest = false;
 
+    /** #)MS
+     * list of added polygon
+     *
+     * @var array
+     */
+    var $_polygons = array();
     
     /**
      * list of added polylines
      *
      * @var array
      */
-    var $_polylines = array();    
-    
+    var $_polylines = array();
+	
+	/**
+	 * list of polylines that should have an elevation profile rendered.
+	 */
+	var $_elevation_polylines = array();
+	
+	/**
+	 * determines whether or not to display a marker on the "line" when 
+	 * mousing over the elevation chart
+	 */
+	var $elevation_markers = true;
+	
+	/**
+	 * determines whether or not to display an elevation chart 
+	 * for directions that are added to the map.  
+	 */
+	var $elevation_directions = false;
+        
     /**
      * icon info array
      *
      * @var array
+     * @deprecated
+     * @version 2.5  
      */
-    var $_icons = array();
+    var $_icons = array();  
+       
+    /**
+     * marker icon info array
+     *
+     * @var array
+     * @version 3.0
+     */
+    var $_marker_icons = array();
+    
+    /**
+     * Default icon image location.
+     *
+     * @var string
+     */
+    var $default_icon = "";
+    
+    /**
+     * Default icon shadow image location.
+     *
+     * @var string
+     */
+    var $default_icon_shadow = "";
+	
+	/**
+     * list of added overlays
+     *
+     * @var array
+     */
+    var $_overlays = array();
+    
+    /**
+     * list of added kml overlays
+     */
+    var $_kml_overlays = array();
+        
 
     /**
      * database cache table name
@@ -339,12 +575,36 @@ class GoogleMapAPI {
      * @var string
      */
     var $_db_cache_table = 'GEOCODES';
-        
+    
+    /**
+     * Class variable that will store generated header code for JS to display directions
+     *
+     * @var string
+     */
+    var $_directions_header = '';
+	
+	/**
+	 * Class variable that will store information to render directions
+	 */
+	var $_directions = array();
+    
+    /**
+     * Class variable to store whether or not to display JS functions in the header
+     */
+    var $_display_js_functions = true;
+    
+    /**
+     * Class variable that will store flag to minify js - this can be overwritten after object is instantiated.  Include JSMin.php if 
+	 * you want to use JS Minification.
+     *
+     * @var bool
+     */
+	 var $_minify_js = true;
         
     /**
      * class constructor
      *
-     * @param string $map_id the id for this map
+     * @param string $map_id the DOM element ID for the map
      * @param string $app_id YOUR Yahoo App ID
      */
     function GoogleMapAPI($map_id = 'map', $app_id = 'MyMapApp') {
@@ -352,29 +612,35 @@ class GoogleMapAPI {
         $this->sidebar_id = 'sidebar_' . $map_id;
         $this->app_id = $app_id;
     }
-   
+	
+	/**
+	 * function to enable map display
+	 */
+	function enableMapDisplay(){
+		$this->display_map = true;
+	}
+	
+	/**
+	 * function to disable map display (used to display street view only)
+	 */
+	function disableMapDisplay(){
+		$this->display_map = false;
+	}
+    
     /**
      * sets the PEAR::DB dsn
      *
-     * @param string $dsn
+     * @param string $dsn Takes the form of "mysql://user:pass@localhost/db_name"
      */
     function setDSN($dsn) {
         $this->dsn = $dsn;   
     }
     
     /**
-     * sets YOUR Google Map API key
-     *
-     * @param string $key
-     */
-    function setAPIKey($key) {
-        $this->api_key = $key;   
-    }
-
-    /**
      * sets the width of the map
      *
      * @param string $width
+     * @return string|false Width or false if not a valid value
      */
     function setWidth($width) {
         if(!preg_match('!^(\d+)(.*)$!',$width,$_match))
@@ -394,6 +660,7 @@ class GoogleMapAPI {
      * sets the height of the map
      *
      * @param string $height
+     * @return string|false Height or false if not a valid value
      */
     function setHeight($height) {
         if(!preg_match('!^(\d+)(.*)$!',$height,$_match))
@@ -407,16 +674,27 @@ class GoogleMapAPI {
             $this->height = $_height . 'px';
         
         return true;
-    }        
+    }  
+          
 
     /**
      * sets the default map zoom level
      *
-     * @param string $level
+     * @param string $level Initial zoom level value
      */
     function setZoomLevel($level) {
         $this->zoom = (int) $level;
     }    
+    
+    
+    /**
+     * sets any map styles ( style wizard: http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/wizard/index.html )
+     *
+     * @param string $styles json string of the map styles to be applied
+     */
+    function setMapStyles($styles) {
+        $this->map_styles = (string) $styles;
+    }       
             
     /**
      * enables the map controls (zoom/move)
@@ -432,18 +710,151 @@ class GoogleMapAPI {
      */
     function disableMapControls() {
         $this->map_controls = false;
-    }    
+    } 
     
     /**
      * sets the map control size (large/small)
      *
-     * @param string $size
+     * @param string $size Large/Small
      */
     function setControlSize($size) {
         if(in_array($size,array('large','small')))
             $this->control_size = $size;
     }            
 
+    /**
+	 * disable mouse scrollwheel on Map
+	 */
+    function disableScrollWheel(){
+        $this->scrollwheel = false;
+    } 
+
+     /**
+     * enables the type controls (map/satellite/hybrid)
+     *
+     */
+    function enableLocalSearch() {
+        $this->local_search = true;
+    }
+
+    /**
+     * disables the type controls (map/satellite/hybrid)
+     *
+     */
+    function disableLocalSearch() {
+        $this->local_search = false;
+    }
+    
+    /**
+     * enables the type controls (map/satellite/hybrid)
+     *
+     */
+    function enableLocalSearchAds() {
+        $this->local_search_ads = true;
+    }
+
+    /**
+     * disables the type controls (map/satellite/hybrid)
+     *
+     */
+    function disableLocalSearchAds() {
+        $this->local_search_ads = false;
+    }
+    
+    /**
+     * enables walking directions
+     * 
+     */
+    function enableWalkingDirections() {
+        $this->walking_directions = true;
+    }
+
+    /**
+     * disables walking directions
+     * 
+     */
+    function disableWalkingDirections() {
+        $this->walking_directions = false;
+    }
+    
+    /**
+     * enables biking directions
+     * 
+     */
+    function enableBikingDirections() {
+        $this->biking_directions = true;
+    }
+
+    /**
+     * disables biking directions
+     * 
+     */
+    function disableBikingDirections() {
+        $this->biking_directions = false;
+    }
+    
+    /**
+     * enables avoid highways in directions
+     * 
+     */
+    function enableAvoidHighways() {
+        $this->avoid_highways = true;
+    }
+
+    /**
+     * disables avoid highways in directions
+     * 
+     */
+    function disableAvoidHighways() {
+        $this->avoid_highways = false;
+    }
+    
+    /**
+     * enables avoid tolls in directions
+     * 
+     */
+    function enableAvoidTolls() {
+        $this->avoid_tolls = true;
+    }
+
+    /**
+     * disables avoid tolls in directions
+     * 
+     */
+    function disableAvoidTolls() {
+        $this->avoid_tolls = false;
+    }
+    
+    /**
+     * Add directions route to the map and adds text directions container with id=$dom_id
+     *
+     * @param string $start_address
+     * @param string $dest_address
+     * @param string $dom_id DOM Element ID for directions container.
+     * @param bool $add_markers Add a marker at start and dest locations.
+     */
+    function addDirections($start_address='',$dest_address='',$dom_id='', $add_markers=true, $elevation_samples=256, $elevation_width="", $elevation_height="", $elevation_dom_id=''){
+		if($elevation_dom_id=="")
+			$elevation_dom_id = "elevation".$dom_id;
+		
+        if($start_address != '' && $dest_address != '' && $dom_id != ''){
+			$this->_directions[$dom_id] = array(
+				"dom_id"=>$dom_id,
+				"start"=>$start_address,
+				"dest"=>$dest_address,
+				"markers"=>true,
+				"elevation_samples"=>$elevation_samples,
+				"width"=>($elevation_width!=""?$elevation_width:str_replace("px","",$this->width)),
+				"height"=>($elevation_height!=""?$elevation_height:str_replace("px","",$this->height)/2),
+				"elevation_dom_id"=>$elevation_dom_id
+			);			
+			if($add_markers==true){
+				$this->addMarkerByAddress($start_address,$start_address, $start_address);
+				$this->addMarkerByAddress($dest_address,$dest_address, $dest_address);
+			} 
+        }
+    }
+        
     /**
      * enables the type controls (map/satellite/hybrid)
      *
@@ -459,26 +870,47 @@ class GoogleMapAPI {
     function disableTypeControls() {
         $this->type_controls = false;
     }
-
+	
+	/**
+	 * sets map control style
+	 */
+	function setTypeControlsStyle($type){
+		switch($type){
+			case "dropdown":
+				$this->type_controls_style = "DROPDOWN_MENU";
+				break;
+			case "horizontal":
+				$this->type_controls_style = "HORIZONTAL_BAR";
+				break;
+			default:
+				$this->type_controls_style = "DEFAULT";
+				break;
+		}
+	}
+	
     /**
      * set default map type (map/satellite/hybrid)
      *
+     * @param string $type New V3 Map Types, only include ending word (HYBRID,SATELLITE,TERRAIN,ROADMAP)
      */
     function setMapType($type) {
         switch($type) {
             case 'hybrid':
-                $this->map_type = 'G_HYBRID_MAP';
+                $this->map_type = 'HYBRID';
                 break;
             case 'satellite':
-                $this->map_type = 'G_SATELLITE_MAP';
+                $this->map_type = 'SATELLITE';
+                break;
+            case 'terrain':
+                $this->map_type = 'TERRAIN';
                 break;
             case 'map':
             default:
-                $this->map_type = 'G_NORMAL_MAP';
+                $this->map_type = 'ROADMAP';
                 break;
         }       
-    }    
-    
+    }	   
+	    
     /**
      * enables onload
      *
@@ -530,7 +962,7 @@ class GoogleMapAPI {
     /**
      * set browser alert message for incompatible browsers
      *
-     * @params $message string
+     * @param string $message
      */
     function setBrowserAlert($message) {
         $this->browser_alert = $message;
@@ -539,11 +971,76 @@ class GoogleMapAPI {
     /**
      * set <noscript> message when javascript is disabled
      *
-     * @params $message string
+     * @param string $message
      */
     function setJSAlert($message) {
         $this->js_alert = $message;
     }
+    
+    /**
+     * enable traffic overlay 
+     */
+    function enableTrafficOverlay() {
+        $this->traffic_overlay= true;
+    }
+    
+    /**
+     * disable traffic overlay (default)
+     */
+    function disableTrafficOverlay() {
+        $this->traffic_overlay= false;
+    }
+	
+	/**
+     * enable biking overlay 
+     */
+    function enableBikingOverlay() {
+        $this->biking_overlay= true;
+    }
+    
+    /**
+     * disable biking overlay (default)
+     */
+    function disableBikingOverlay() {
+        $this->biking_overlay= false;
+    }
+	
+	/**
+     * enable biking overlay 
+     */
+    function enableStreetViewControls() {
+        $this->street_view_controls= true;
+    }
+    
+    /**
+     * disable biking overlay (default)
+     */
+    function disableStreetViewControls() {
+        $this->street_view_controls= false;
+    }
+	
+	/**
+	 * attach a dom id object as a streetview container to the map
+	 * NOTE: Only one container can be attached to a map.
+	 **/
+	function attachStreetViewContainer($dom_id){
+		$this->street_view_dom_id = $dom_id;
+	}
+    
+    /**
+     * enable Google Adsense admanager on Map (not supported in V3 API)
+     */
+    function enableAds(){
+        $this->ads_manager = true; 
+    }
+    
+    /**
+     * disable Google Adsense admanager on Map (not supported in V3 API)
+     */
+    function disableAds(){
+        $this->ads_manager = false; 
+    }
+    
 
     /**
      * enable map marker info windows
@@ -558,11 +1055,69 @@ class GoogleMapAPI {
     function disableInfoWindow() {
         $this->info_window = false;
     }
+	
+	/**
+	 * enable elevation marker to be displayed
+	 */
+	 function enableElevationMarker(){
+		 $this->elevation_markers = true;
+	 }
+	 
+	 /**
+	 * disable elevation marker
+	 */
+	 function disableElevationMarker(){
+		 $this->elevation_markers = false;
+	 }
+	 
+	 /**
+	 * enable elevation to be displayed for directions
+	 */
+	 function enableElevationDirections(){
+		 $this->elevation_directions = true;
+	 }
+	 
+	 /**
+	 * disable elevation to be displayed for directions
+	 */
+	 function disableElevationDirections(){
+		 $this->elevation_directions = false;
+	 }
+    
+    /**
+     * enable map marker clustering
+     */
+    function enableClustering() {
+        $this->marker_clusterer = true;
+    }
+    
+    /**
+     * disable map marker clustering
+     */
+    function disableClustering() {
+        $this->marker_clusterer = false;
+    }
+    
+    /**
+     * set clustering options
+     */
+    function setClusterOptions($zoom="null", $gridsize="null", $styles="null"){
+    	$this->marker_clusterer_options["maxZoom"]=$zoom;
+    	$this->marker_clusterer_options["gridSize"]=$gridsize;
+    	$this->marker_clusterer_options["styles"]=$styles;
+    }   
+
+    /**
+     * Set clustering library file location
+     */
+    function setClusterLocation($file){
+    	$this->marker_clusterer_location=$file;
+    }
     
     /**
      * set the info window trigger action
      *
-     * @params $message string click/mouseover
+     * @param string $message click/mouseover
      */
     function setInfoWindowTrigger($type) {
         switch($type) {
@@ -591,6 +1146,7 @@ class GoogleMapAPI {
 
     /**
      * set the boundary fudge factor
+     * @param float
      */
     function setBoundsFudge($val) {
         $this->bounds_fudge = $val;
@@ -635,6 +1191,8 @@ class GoogleMapAPI {
      * NOTE: GOOGLE can to intl lookups, but is not an
      * official API, so use at your own risk.
      *
+     * @param string $service
+     * @deprecated
      */
     function setLookupService($service) {
         switch($service) {
@@ -650,39 +1208,129 @@ class GoogleMapAPI {
     
         
     /**
-     * adds a map marker by address
+     * adds a map marker by address - DEPRECATION WARNING: Tabs are no longer supported in V3, if this changes this can be easily updated.
      * 
      * @param string $address the map address to mark (street/city/state/zip)
      * @param string $title the title display in the sidebar
      * @param string $html the HTML block to display in the info bubble (if empty, title is used)
+     * @param string $tooltip Tooltip to display (deprecated?)
+     * @param string $icon_filename Web file location (eg http://somesite/someicon.gif) to use for icon
+     * @param string $icon_shadow_filename Web file location (eg http://somesite/someicon.gif) to use for icon shadow
+     * @return int|bool
      */
-    function addMarkerByAddress($address,$title = '',$html = '',$tooltip = '') {
+    function addMarkerByAddress($address,$title = '',$html = '',$tooltip = '', $icon_filename = '', $icon_shadow_filename='') {
         if(($_geocode = $this->getGeocode($address)) === false)
             return false;
-        return $this->addMarkerByCoords($_geocode['lon'],$_geocode['lat'],$title,$html,$tooltip);
+        return $this->addMarkerByCoords($_geocode['lon'],$_geocode['lat'],$title,$html,$tooltip, $icon_filename, $icon_shadow_filename);
     }
 
     /**
-     * adds a map marker by geocode
+     * adds a map marker by lat/lng coordinates - DEPRECATION WARNING: Tabs are no longer supported in V3, if this changes this can be easily updated.
      * 
      * @param string $lon the map longitude (horizontal)
      * @param string $lat the map latitude (vertical)
      * @param string $title the title display in the sidebar
-     * @param string $html|array $html 
-     *     string: the HTML block to display in the info bubble (if empty, title is used)
-     *     array: The title => content pairs for a tabbed info bubble     
+     * @param string $html the HTML block to display in the info bubble (if empty, title is used)
+     * @param string $tooltip Tooltip to display (deprecated?)
+     * @param string $icon_filename Web file location (eg http://somesite/someicon.gif) to use for icon
+     * @param string $icon_shadow_filename Web file location (eg http://somesite/someicon.gif) to use for icon shadow
+     * @return int|bool    
      */
-    // TODO make it so you can specify which tab you want the directions to appear in (add another arg)
-    function addMarkerByCoords($lon,$lat,$title = '',$html = '',$tooltip = '') {
+    function addMarkerByCoords($lon,$lat,$title = '',$html = '',$tooltip = '', $icon_filename = '', $icon_shadow_filename='') {
         $_marker['lon'] = $lon;
         $_marker['lat'] = $lat;
         $_marker['html'] = (is_array($html) || strlen($html) > 0) ? $html : $title;
         $_marker['title'] = $title;
         $_marker['tooltip'] = $tooltip;
+        
+        if($icon_filename!=""){
+            $_marker['icon_key'] = $this->setMarkerIconKey($icon_filename, $icon_shadow_filename);
+            if($icon_shadow_filename!=""){
+               $_marker['shadow_icon']=1;
+            }   
+        }else if( $this->default_icon != ''){
+        	$_marker['icon_key'] = $this->setMarkerIconKey($this->default_icon, $this->default_icon_shadow);
+        	if($this->default_icon_shadow!=""){
+        	   $_marker['shadow_icon']=1;
+        	}
+        }        
         $this->_markers[] = $_marker;
         $this->adjustCenterCoords($_marker['lon'],$_marker['lat']);
         // return index of marker
         return count($this->_markers) - 1;
+    }
+    
+    /**
+     * adds a DOM object ID to specified marker to open the marker's info window.
+     *   Does nothing if the info windows is disabled.
+     * @param string $marker_id ID of the marker to associate to
+     * @param string $dom_id ID of the DOM object to use to open marker info window
+     * @return bool true/false status
+     */
+    function addMarkerOpener($marker_id, $dom_id){
+    	if($this->info_window === false || !isset($this->_markers[$marker_id]))
+    	   return false;
+    	if(!isset($this->_markers[$marker_id]["openers"]))
+    	   $this->_markers[$marker_id]["openers"] = array();
+        $this->_markers[$marker_id]["openers"][] = $dom_id;    	   
+    }
+    
+    /**
+     * adds polyline by passed array
+     * if color, weight and opacity are not defined, use the google maps defaults
+     * @param array $polyline_array array of lat/long coords
+     * @param string $id An array id to use to append coordinates to a line
+     * @param string $color the color of the line (format: #000000)
+     * @param string $weight the weight of the line in pixels
+     * @param string $opacity the line opacity (percentage)
+     * @return bool|int Array id of newly added point or false
+     */
+    function addPolylineByCoordsArray($polyline_array,$id=false,$color='',$weight=0,$opacity=0){
+    	if(!is_array($polyline_array) || sizeof($polyline_array) < 2)
+    	   return false;
+    	$_prev_coords = "";
+    	$_next_coords = "";
+    	
+    	foreach($polyline_array as $_coords){
+    		$_prev_coords = $_next_coords;
+    		$_next_coords = $_coords;
+    		
+    		if($_prev_coords !== ""){
+    		  $_lt1=$_prev_coords["lat"];
+    		  $_ln1=$_prev_coords["long"];
+    		  $_lt2=$_next_coords["lat"];
+              $_ln2=$_next_coords["long"];
+    		  $id = $this->addPolyLineByCoords($_ln1, $_lt1, $_ln2, $_lt2, $id, $color, $weight, $opacity);
+    		}
+    	}
+        return $id;
+    }
+    
+    /**
+     * adds polyline by passed array
+     * if color, weight and opacity are not defined, use the google maps defaults
+     * @param array $polyline_array array of addresses
+     * @param string $id An array id to use to append coordinates to a line
+     * @param string $color the color of the line (format: #000000)
+     * @param string $weight the weight of the line in pixels
+     * @param string $opacity the line opacity (percentage)
+     * @return bool|int Array id of newly added point or false
+     */
+    function addPolylineByAddressArray($polyline_array,$id=false,$color='',$weight=0,$opacity=0){
+        if(!is_array($polyline_array) || sizeof($polyline_array) < 2)
+           return false;
+        $_prev_address = "";
+        $_next_address = "";
+        
+        foreach($polyline_array as $_address){
+            $_prev_address = $_next_address;
+            $_next_address = $_address;
+            
+            if($_prev_address !== ""){
+              $id = $this->addPolyLineByAddress($_prev_address, $_next_address, $id, $color, $weight, $opacity);
+            }
+        }
+        return $id;
     }
 
     /**
@@ -691,16 +1339,18 @@ class GoogleMapAPI {
      * 
      * @param string $address1 the map address to draw from
      * @param string $address2 the map address to draw to
+     * @param string $id An array id to use to append coordinates to a line
      * @param string $color the color of the line (format: #000000)
      * @param string $weight the weight of the line in pixels
      * @param string $opacity the line opacity (percentage)
+     * @return bool|int Array id of newly added point or false
      */
-    function addPolyLineByAddress($address1,$address2,$color='',$weight=0,$opacity=0) {
+    function addPolyLineByAddress($address1,$address2,$id=false,$color='',$weight=0,$opacity=0) {
         if(($_geocode1 = $this->getGeocode($address1)) === false)
             return false;
         if(($_geocode2 = $this->getGeocode($address2)) === false)
             return false;
-        return $this->addPolyLineByCoords($_geocode1['lon'],$_geocode1['lat'],$_geocode2['lon'],$_geocode2['lat'],$color,$weight,$opacity);
+        return $this->addPolyLineByCoords($_geocode1['lon'],$_geocode1['lat'],$_geocode2['lon'],$_geocode2['lat'],$id,$color,$weight,$opacity);
     }
 
     /**
@@ -711,24 +1361,96 @@ class GoogleMapAPI {
      * @param string $lat1 the map latitude to draw from
      * @param string $lon2 the map longitude to draw to
      * @param string $lat2 the map latitude to draw to
+     * @param string $id An array id to use to append coordinates to a line
      * @param string $color the color of the line (format: #000000)
      * @param string $weight the weight of the line in pixels
      * @param string $opacity the line opacity (percentage)
+	 * @return string $id id of the created/updated polyline array
      */
-    function addPolyLineByCoords($lon1,$lat1,$lon2,$lat2,$color='',$weight=0,$opacity=0) {
-        $_polyline['lon1'] = $lon1;
-        $_polyline['lat1'] = $lat1;
-        $_polyline['lon2'] = $lon2;
-        $_polyline['lat2'] = $lat2;
-        $_polyline['color'] = $color;
-        $_polyline['weight'] = $weight;
-        $_polyline['opacity'] = $opacity;
-        $this->_polylines[] = $_polyline;
-        $this->adjustCenterCoords($_polyline['lon1'],$_polyline['lat1']);
-        $this->adjustCenterCoords($_polyline['lon2'],$_polyline['lat2']);
+    function addPolyLineByCoords($lon1,$lat1,$lon2,$lat2,$id=false,$color='',$weight=0,$opacity=0) {
+		if($id !== false && isset($this->_polylines[$id]) && is_array($this->_polylines[$id])){
+			$_polyline = $this->_polylines[$id];
+		}else{
+			//only set color,weight,and opacity if new polyline
+			$_polyline = array(
+				"color"=>$color,
+				"weight"=>$weight,
+				"opacity"=>$opacity
+			);
+		}
+		if(!isset($_polyline['coords']) || !is_array($_polyline['coords'])){
+			$_polyline['coords'] = array(
+				"0"=> array("lat"=>$lat1, "long"=>$lon1),
+				"1"=> array("lat"=>$lat2, "long"=>$lon2)
+			);
+		}else{
+			$last_index = sizeof($_polyline['coords'])-1;
+			//check if lat1/lon1 point is already on polyline
+			if($_polyline['coords'][$last_index]["lat"] != $lat1 || $_polyline['coords'][$last_index]["long"]  != $lon1){
+				$_polyline['coords'][] = array("lat"=>$lat1, "long"=>$lon1);
+			}
+			$_polyline['coords'][] = array("lat"=>$lat2, "long"=>$lon2);
+		}
+        if($id === false){
+            $this->_polylines[] = $_polyline;
+            $id = count($this->_polylines) - 1;
+        }else{
+			$this->_polylines[$id] = $_polyline;
+        }
+        $this->adjustCenterCoords($lon1,$lat1);
+        $this->adjustCenterCoords($lon2,$lat2);
         // return index of polyline
-        return count($this->_polylines) - 1;
-    }        
+        return $id;
+    }
+	
+	/**
+	 * function to add an elevation profile for a polyline to the page
+	 */
+	 function addPolylineElevation($polyline_id, $elevation_dom_id, $samples=256, $width="", $height="", $focus_color="#00ff00"){
+		if(isset($this->_polylines[$polyline_id])){
+			$this->_elevation_polylines[$polyline_id] = array(
+				"dom_id"=>$elevation_dom_id,
+				"samples"=>$samples,
+				"width"=>($width!=""?$width:str_replace("px","",$this->width)),
+				"height"=>($height!=""?$height:str_replace("px","",$this->height)/2),
+				"focus_color"=>$focus_color
+			);
+		}
+	 }
+	
+	/**
+	 * function to add an overlay to the map.
+	 */
+	 function addOverlay($bds_lat1, $bds_lon1, $bds_lat2, $bds_lon2, $img_src, $opacity = 100){
+		 $_overlay = array(
+			"bounds" => array(
+				"ne"=>array(
+					"lat"=>$bds_lat1,
+					"long"=>$bds_lon1
+				),
+				"sw"=>array(
+					"lat"=>$bds_lat2,
+					"long"=>$bds_lon2
+				)
+			),
+			"img" => $img_src,
+			"opacity" => $opacity/10
+		 );
+		 $this->adjustCenterCoords($bds_lon1,$bds_lat1);
+         $this->adjustCenterCoords($bds_lon2,$bds_lat2);
+		 $this->_overlays[] = $_overlay;
+		 return count($this->_overlays)-1;
+	 }
+	 
+	 /**
+	  * function to add a KML overlay to the map.
+	  *  *Note that this expects a filename and file parsing/processing is done
+	  *  on the client side
+	  */
+	 function addKMLOverlay($file){
+	   $this->_kml_overlays[] = $file;
+	   return count($this->_kml_overlays)-1;
+	 }
         
     /**
      * adjust map center coordinates by the given lat/lon point
@@ -739,12 +1461,11 @@ class GoogleMapAPI {
     function adjustCenterCoords($lon,$lat) {
         if(strlen((string)$lon) == 0 || strlen((string)$lat) == 0)
             return false;
-        $this->_max_lon = (float) max($lon, $this->_max_lon);
+		$this->_max_lon = (float) max($lon, $this->_max_lon);
         $this->_min_lon = (float) min($lon, $this->_min_lon);
         $this->_max_lat = (float) max($lat, $this->_max_lat);
         $this->_min_lat = (float) min($lat, $this->_min_lat);
-        
-        $this->center_lon = (float) ($this->_min_lon + $this->_max_lon) / 2;
+		$this->center_lon = (float) ($this->_min_lon + $this->_max_lon) / 2;
         $this->center_lat = (float) ($this->_min_lat + $this->_max_lat) / 2;
         return true;
     }
@@ -764,7 +1485,7 @@ class GoogleMapAPI {
      * generate an array of params for a new marker icon image
      * iconShadowImage is optional
      * If anchor coords are not supplied, we use the center point of the image by default. 
-     * Can be called statically. For private use by addMarkerIcon() and setMarkerIcon()
+     * Can be called statically. For private use by addMarkerIcon() and setMarkerIcon() and addIcon()
      *
      * @param string $iconImage URL to icon image
      * @param string $iconShadowImage URL to shadow image
@@ -772,6 +1493,7 @@ class GoogleMapAPI {
      * @param string $iconAnchorY Y coordinate for icon anchor point
      * @param string $infoWindowAnchorX X coordinate for info window anchor point
      * @param string $infoWindowAnchorY Y coordinate for info window anchor point
+     * @return array Array with information about newly /previously created icon.
      */
     function createMarkerIcon($iconImage,$iconShadowImage = '',$iconAnchorX = 'x',$iconAnchorY = 'x',$infoWindowAnchorX = 'x',$infoWindowAnchorY = 'x') {
         $_icon_image_path = strpos($iconImage,'http') === 0 ? $iconImage : $_SERVER['DOCUMENT_ROOT'] . $iconImage;
@@ -781,7 +1503,7 @@ class GoogleMapAPI {
         if($iconShadowImage) {
             $_shadow_image_path = strpos($iconShadowImage,'http') === 0 ? $iconShadowImage : $_SERVER['DOCUMENT_ROOT'] . $iconShadowImage;
             if(!($_shadow_info = @getimagesize($_shadow_image_path))) {
-                die('GoogleMapAPI:createMarkerIcon: Error reading image: ' . $iconShadowImage);
+                die('GoogleMapAPI:createMarkerIcon: Error reading shadow image: ' . $iconShadowImage);
             }
         }
         
@@ -816,52 +1538,152 @@ class GoogleMapAPI {
     }
     
     /**
-     * set the marker icon for ALL markers on the map
+     * set the default marker icon for ALL markers on the map
+     * NOTE: This MUST be set prior to adding markers in order for the defaults
+     * to be set correctly.
+     * @param string $iconImage URL to icon image
+     * @param string $iconShadowImage URL to shadow image
+     * @param string $iconAnchorX X coordinate for icon anchor point
+     * @param string $iconAnchorY Y coordinate for icon anchor point
+     * @param string $infoWindowAnchorX X coordinate for info window anchor point
+     * @param string $infoWindowAnchorY Y coordinate for info window anchor point
+     * @return string A marker icon key.
      */
     function setMarkerIcon($iconImage,$iconShadowImage = '',$iconAnchorX = 'x',$iconAnchorY = 'x',$infoWindowAnchorX = 'x',$infoWindowAnchorY = 'x') {
-        $this->_icons = array($this->createMarkerIcon($iconImage,$iconShadowImage,$iconAnchorX,$iconAnchorY,$infoWindowAnchorX,$infoWindowAnchorY));
+        $this->default_icon = $iconImage;
+        $this->default_icon_shadow = $iconShadowImage;
+        return $this->setMarkerIconKey($iconImage,$iconShadowImage,$iconAnchorX,$iconAnchorY,$infoWindowAnchorX,$infoWindowAnchorY);       
     }
     
     /**
-     * add an icon to go with the correspondingly added marker
+     * function to check if icon is in  class "marker_iconset", if it is, 
+     * returns the key, if not, creates a new array indice and returns the key
+     * @param string $iconImage URL to icon image
+     * @param string $iconShadowImage URL to shadow image
+     * @param string $iconAnchorX X coordinate for icon anchor point
+     * @param string $iconAnchorY Y coordinate for icon anchor point
+     * @param string $infoWindowAnchorX X coordinate for info window anchor point
+     * @param string $infoWindowAnchorY Y coordinate for info window anchor point
+     * @return string A marker icon key.
      */
-    function addMarkerIcon($iconImage,$iconShadowImage = '',$iconAnchorX = 'x',$iconAnchorY = 'x',$infoWindowAnchorX = 'x',$infoWindowAnchorY = 'x') {
-        $this->_icons[] = $this->createMarkerIcon($iconImage,$iconShadowImage,$iconAnchorX,$iconAnchorY,$infoWindowAnchorX,$infoWindowAnchorY);
-        return count($this->_icons) - 1;
+    function setMarkerIconKey($iconImage,$iconShadow='',$iconAnchorX = 'x',$iconAnchorY = 'x',$infoWindowAnchorX = 'x',$infoWindowAnchorY = 'x'){
+    	$_iconKey = $this->getIconKey($iconImage,$iconShadow);
+    	if(isset($this->_marker_icons[$_iconKey])){
+    		return $_iconKey;
+    	}else{
+    		return $this->addIcon($iconImage,$iconShadow,$iconAnchorX,$iconAnchorY,$infoWindowAnchorX,$infoWindowAnchorY);
+    	}
     }
+    
+    /**
+     * function to get icon key
+     * @param string $iconImage URL to marker icon image
+     * @param string $iconShadow URL to marker icon shadow image
+     * @return string Returns formatted icon key from icon or icon+shadow image name pairs
+     */
+    function getIconKey($iconImage,$iconShadow=""){
+        return str_replace(array("/",":","."),"",$iconImage.$iconShadow);
+    }
+ 
+    /**
+     * add an icon to "iconset"
+     * @param string $iconImage URL to marker icon image
+     * @param string $iconShadow URL to marker icon shadow image
+     * @param string $iconAnchorX X coordinate for icon anchor point
+     * @param string $iconAnchorY Y coordinate for icon anchor point
+     * @param string $infoWindowAnchorX X coordinate for info window anchor point
+     * @param string $infoWindowAnchorY Y coordinate for info window anchor point
+     * @return string Returns the icon's key.  
+     */
+    function addIcon($iconImage,$iconShadowImage = '',$iconAnchorX = 'x',$iconAnchorY = 'x',$infoWindowAnchorX = 'x',$infoWindowAnchorY = 'x') {
+    	$_iconKey = $this->getIconKey($iconImage, $iconShadowImage);
+        $this->_marker_icons[$_iconKey] = $this->createMarkerIcon($iconImage,$iconShadowImage,$iconAnchorX,$iconAnchorY,$infoWindowAnchorX,$infoWindowAnchorY);
+        return $_iconKey;
+    }
+    
+    /**
+     * updates a marker's icon key.
+     * NOTE: To be used in lieu of addMarkerIcon, now use addIcon + updateMarkerIconKey for explicit icon association
+     * @param string $markerKey Marker key to define which marker's icon to update
+     * @param string $iconKey Icon key to define which icon to use.
+     */
+    function updateMarkerIconKey($markerKey, $iconKey){
+    	if(isset($this->_markers[$markerKey])){
+    		$this->_markers[$markerKey]['icon_key'] = $iconKey;
+    	}
+    }    
 
     /**
      * print map header javascript (goes between <head></head>)
      * 
      */
-    function printHeaderJS() {
-        echo $this->getHeaderJS();   
+    function printHeaderJS() { 
+        echo $this->getHeaderJS();
     }
     
     /**
      * return map header javascript (goes between <head></head>)
      * 
      */
-    function getHeaderJS() {
-        return sprintf('<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=%s" type="text/javascript" charset="utf-8"></script>', $this->api_key);
+    function getHeaderJS() { 
+		$_headerJS = "";
+        if( $this->mobile == true){
+        	$_headerJS .= "
+        	    <meta name='viewport' content='".$this->meta_viewport."' />
+        	";
+        }
+		if(!empty($this->_elevation_polylines)||(!empty($this->_directions)&&$this->elevation_directions)){
+			$_headerJS .= "<script type='text/javascript' src='http://www.google.com/jsapi'></script>";
+			$_headerJS .= "
+			<script type='text/javascript'>
+				// Load the Visualization API and the piechart package.
+				google.load('visualization', '1', {packages: ['columnchart']});
+			</script>";
+		}
+        $scriptUrl = "http://maps.google.com/maps/api/js?sensor=".(($this->mobile==true)?"true":"false");
+        if( is_array( $this->api_options ) ) {
+            foreach( $this->api_options as $key => $value ){
+                $scriptUrl .= '&'.$key.'='.$value;
+            }
+        }
+        $_headerJS .= "<script type='text/javascript' src='".$scriptUrl."'></script>";
+        if($this->marker_clusterer){
+			$_headerJS .= "<script type='text/javascript' src='".$this->marker_clusterer_location."' ></script>";
+		}        
+        if($this->local_search){/*TODO: Load Local Search API V3 when available*/}   
+        return $_headerJS;
     }    
     
-   /**                                                                                                                          
-    * prints onLoad() without having to manipulate body tag.                                                                     
-    * call this after the print map like so...                                                                             
-    *      $map->printMap();                                                                                                     
-    *      $map->printOnLoad();                                                                                                  
-    */                                                                                                                           
+   /**
+    * prints onLoad() without having to manipulate body tag.
+	* call this after the print map like so...    
+	*      $map->printMap();    
+	*      $map->printOnLoad();    
+	*/
     function printOnLoad() {
         echo $this->getOnLoad();
+    }
+    
+    /**
+     * print onLoad function name
+     */
+    function printOnLoadFunction(){
+        echo $this->getOnLoadFunction();
     }
 
     /**
      * return js to set onload function
      */
     function getOnLoad() {
-        return '<script language="javascript" type="text/javascript" charset="utf-8">window.onload=onLoad;</script>';                       
+        return '<script type="text/javascript">window.onload=onLoad'.$this->map_id.';</script>';                       
     }
+    
+    /**
+     * return js to set onload function
+     */
+    function getOnLoadFunction() {
+        return 'onLoad'.$this->map_id;                       
+    }   
 
     /**
      * print map javascript (put just before </body>, or in <header> if using onLoad())
@@ -876,278 +1698,730 @@ class GoogleMapAPI {
      * 
      */
     function getMapJS() {
-        $_output = '<script type="text/javascript" charset="utf-8">' . "\n";
+		$_script = "";
+		$_key = $this->map_id;
+		$_output = '<script type="text/javascript" charset="utf-8">' . "\n";
         $_output .= '//<![CDATA[' . "\n";
         $_output .= "/*************************************************\n";
-        $_output .= " * Created with GoogleMapAPI " . $this->_version . "\n";
-        $_output .= " * Author: Monte Ohrt <monte AT ohrt DOT com>\n";
-        $_output .= " * Copyright 2005-2006 New Digital Group\n";
-        $_output .= " * http://www.phpinsider.com/php/code/GoogleMapAPI/\n";
+        $_output .= " * Created with GoogleMapAPI" . $this->_version . "\n";
+        $_output .= " * Author: Brad Wedell <brad AT mycnl DOT com>\n";
+        $_output .= " * Link http://code.google.com/p/php-google-map-api/\n";
+        $_output .= " * Copyright 2010 Brad Wedell\n";
+        $_output .= " * Original Author: Monte Ohrt <monte AT ohrt DOT com>\n";
+        $_output .= " * Original Copyright 2005-2006 New Digital Group\n";
+        $_output .= " * Originial Link http://www.phpinsider.com/php/code/GoogleMapAPI/\n";
         $_output .= " *************************************************/\n";
-
-        $_output .= 'var points = [];' . "\n";
-        $_output .= 'var markers = [];' . "\n";
-        $_output .= 'var counter = 0;' . "\n";
-        if($this->sidebar) {        
-            $_output .= 'var sidebar_html = "";' . "\n";
-            $_output .= 'var marker_html = [];' . "\n";
-        }
-
+        
+        // create global info window ( so we can auto close it )
+        $_script .= "var infowindow = new google.maps.InfoWindow();";
+			        
+        
+		if($this->street_view_dom_id!=""){
+			$_script .= "
+				var panorama".$this->street_view_dom_id."$_key = '';
+			";
+			if(!empty($this->_markers)){
+				$_script .= "
+					var panorama".$this->street_view_dom_id."markers$_key = [];
+				";
+			}
+		}
+		
+		if(!empty($this->_markers)){
+			$_script .= "
+				var markers$_key  = [];
+			";
+			if($this->sidebar) {        
+				$_script .= "
+					var sidebar_html$_key  = '';
+					var marker_html$_key  = [];
+				";
+			}
+		}
+		if($this->marker_clusterer){
+			$_script .= "
+			  var markerClusterer$_key = null;
+			";
+		}        
         if($this->directions) {        
-            $_output .= 'var to_htmls = [];' . "\n";
-            $_output .= 'var from_htmls = [];' . "\n";
-        }        
-
-        if(!empty($this->_icons)) {
-            $_output .= 'var icon = [];' . "\n";
-            for($i = 0, $j = count($this->_icons); $i<$j; $i++) {
-                $info = $this->_icons[$i];
-
-                // hash the icon data to see if we've already got this one; if so, save some javascript
-                $icon_key = md5(serialize($info));
-                if(!isset($exist_icn[$icon_key])) {
-
-                    $_output .= "icon[$i] = new GIcon();\n";   
-                    $_output .= sprintf('icon[%s].image = "%s";',$i,$info['image']) . "\n";   
-                    if($info['shadow']) {
-                        $_output .= sprintf('icon[%s].shadow = "%s";',$i,$info['shadow']) . "\n";
-                        $_output .= sprintf('icon[%s].shadowSize = new GSize(%s,%s);',$i,$info['shadowWidth'],$info['shadowHeight']) . "\n";   
-                    }
-                    $_output .= sprintf('icon[%s].iconSize = new GSize(%s,%s);',$i,$info['iconWidth'],$info['iconHeight']) . "\n";   
-                    $_output .= sprintf('icon[%s].iconAnchor = new GPoint(%s,%s);',$i,$info['iconAnchorX'],$info['iconAnchorY']) . "\n";   
-                    $_output .= sprintf('icon[%s].infoWindowAnchor = new GPoint(%s,%s);',$i,$info['infoWindowAnchorX'],$info['infoWindowAnchorY']) . "\n";
-                } else {
-                    $_output .= "icon[$i] = icon[$exist_icn[$icon_key]];\n";
-                }
-            }
+            $_script .= "
+                var to_htmls$_key  = [];
+                var from_htmls$_key  = [];
+            ";
+        }
+		if(!empty($this->_directions)){
+			$_script .= "
+			    var directions$_key = [];
+			";
+		}
+		//Polylines
+		if(!empty($this->_polylines)){
+			$_script .= "
+				var polylines$_key = [];
+				var polylineCoords$_key = [];
+			";
+			if(!empty($this->_elevation_polylines)){
+				$_script .= "
+					var elevationPolylines$_key = [];
+				";
+			}
+		}
+        //Polygons
+		if(!empty($this->_polygons)){
+			$_script .= "
+				var polygon$_key = [];
+				var polygonCoords$_key = [];
+			";
+		}
+		//Elevation stuff
+		if(!empty($this->_elevation_polylines)||(!empty($this->_directions)&&$this->elevation_directions)){
+			$_script .= "
+				var elevationCharts$_key = [];				
+			";
+		}
+		//Overlays
+		if(!empty($this->_overlays)){
+			$_script .= "
+				var overlays$_key = [];
+			";
+		}
+        //KML Overlays
+        if(!empty($this->_kml_overlays)){
+            $_script .= "
+                var kml_overlays$_key = [];
+            ";
+        }
+        //New Icons
+        if(!empty($this->_marker_icons)){
+        	$_script .= "var icon$_key  = []; \n";
+        	foreach($this->_marker_icons as $icon_key=>$icon_info){
+        		//no need to check icon key here since that's already done with setters
+        		$_script .= "
+        		  icon".$_key."['$icon_key'] = {};
+        		  icon".$_key."['$icon_key'].image =  new google.maps.MarkerImage('".$icon_info["image"]."',
+				      // The size
+				      new google.maps.Size(".$icon_info['iconWidth'].", ".$icon_info['iconHeight']."),
+				      // The origin(sprite)
+				      new google.maps.Point(0,0),
+				      // The anchor
+				      new google.maps.Point(".$icon_info['iconAnchorX'].", ".$icon_info['iconAnchorY'].")
+                  );
+        		";
+        		if(isset($icon_info['shadow']) && $icon_info['shadow']!=""){
+        		  $_script .= "
+                    icon".$_key."['$icon_key'].shadow = new google.maps.MarkerImage('".$icon_info["shadow"]."',
+                      // The size
+                      new google.maps.Size(".$icon_info['shadowWidth'].", ".$icon_info['shadowHeight']."),
+                      // The origin(sprite)
+                      new google.maps.Point(0,0),
+                      // The anchor
+                      new google.maps.Point(".$icon_info['iconAnchorX'].", ".$icon_info['iconAnchorY'].")
+                    );
+                  ";
+        		}
+        	}
         }
                            
-        $_output .= 'var map = null;' . "\n";
-                     
+        $_script .= "var map$_key = null;\n";
+		
+		//start setting script var
         if($this->onload) {
-           $_output .= 'function onLoad() {' . "\n";   
-        }
+           $_script .= 'function onLoad'.$this->map_id.'() {' . "\n";   
+        } 
                 
         if(!empty($this->browser_alert)) {
-            $_output .= 'if (GBrowserIsCompatible()) {' . "\n";
-        }
-
-        $_output .= sprintf('var mapObj = document.getElementById("%s");',$this->map_id) . "\n";
-        $_output .= 'if (mapObj != "undefined" && mapObj != null) {' . "\n";
-        $_output .= sprintf('map = new GMap2(document.getElementById("%s"));',$this->map_id) . "\n";
-        if(isset($this->center_lat) && isset($this->center_lon)) {
-			// Special care for decimal point in lon and lat, would get lost if "wrong" locale is set; applies to (s)printf only
-			$_output .= sprintf('map.setCenter(new GLatLng(%s, %s), %d, %s);', number_format($this->center_lat, 6, ".", ""), number_format($this->center_lon, 6, ".", ""), $this->zoom, $this->map_type) . "\n";
+        	//TODO:Update with new browser catch - GBrowserIsCompatible is deprecated
+            //$_output .= 'if (GBrowserIsCompatible()) {' . "\n";
         }
         
-        // zoom so that all markers are in the viewport
-        if($this->zoom_encompass && count($this->_markers) > 1) {
-            // increase bounds by fudge factor to keep
-            // markers away from the edges
-            $_len_lon = $this->_max_lon - $this->_min_lon;
-            $_len_lat = $this->_max_lat - $this->_min_lat;
-            $this->_min_lon -= $_len_lon * $this->bounds_fudge;
-            $this->_max_lon += $_len_lon * $this->bounds_fudge;
-            $this->_min_lat -= $_len_lat * $this->bounds_fudge;
-            $this->_max_lat += $_len_lat * $this->bounds_fudge;
+        /*
+         *TODO:Update with local search bar once implemented in V3 api 
+		$strMapOptions = "";
+		if($this->local_search){
+			$_output .= "
+				mapOptions.googleBarOptions= {
+					style : 'new'
+					".(($this->local_search_ads)?",
+					adsOptions: {
+					    client: '".$this->ads_pub_id."',
+					    channel: '".$this->ads_channel."',
+					    language: 'en'
+					":"")."
+				};
+			";            
+			$strMapOptions .= ", mapOptions";
+		}
+        */
+		
+		if($this->display_map){
+			$_script .= sprintf('var mapObj%s = document.getElementById("%s");', $_key, $this->map_id) . "\n";
+			$_script .= "if (mapObj$_key != 'undefined' && mapObj$_key != null) {\n";
+			
+			$_script .= "
+				var mapOptions$_key = {
+					scrollwheel: ". ($this->scrollwheel?"true":"false") . ",
+					zoom: ".$this->zoom.",
+					mapTypeId: google.maps.MapTypeId.".$this->map_type.",
+					mapTypeControl: ".($this->type_controls?"true":"false").",
+					mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.".$this->type_controls_style."}
+				};
+			";
+			if(isset($this->center_lat) && isset($this->center_lon)) {
+				// Special care for decimal point in lon and lat, would get lost if "wrong" locale is set; applies to (s)printf only
+				$_script .= "
+					mapOptions".$_key.".center = new google.maps.LatLng(
+						".number_format($this->center_lat, 6, ".", "").",
+						".number_format($this->center_lon, 6, ".", "")."
+					);
+				";
+			}   
+			
+			if($this->street_view_controls){
+				$_script .= "
+					mapOptions".$_key.".streetViewControl= true;
+	
+				";
+			}
+			
+			
+			// Add any map styles if they are present
+			if( isset($this->map_styles) ) {
+			
+				$_script .= "
+						var styles$_key = ".$this->map_styles.";		
+				";
+			}
+			
+			
+			
+			$_script .= "
+				map$_key = new google.maps.Map(mapObj$_key,mapOptions$_key);
+			";
+			
+			$_script .= "
+				map$_key.setOptions({styles: styles$_key});
+			";
+				
+			if($this->street_view_dom_id!=""){
+				$_script .= "
+					panorama".$this->street_view_dom_id."$_key = new  google.maps.StreetViewPanorama(document.getElementById('".$this->street_view_dom_id."'));
+					map$_key.setStreetView(panorama".$this->street_view_dom_id."$_key);
+				";
+				
+				if(!empty($this->_markers)){
+					
+					//Add markers to the street view
+					if($this->street_view_dom_id!=""){
+						$_script .= $this->getAddMarkersJS($this->map_id, $pano=true);
+					}
+					//set center to last marker
+					$last_id = count($this->_markers)-1;
+					
+					$_script .= "
+						panorama".$this->street_view_dom_id."$_key.setPosition(new google.maps.LatLng(
+							".$this->_markers[$last_id]["lat"].",
+							".$this->_markers[$last_id]["lon"]."
+						));
+						panorama".$this->street_view_dom_id."$_key.setVisible(true);
+					";
+				}
+			}
+			
+			if(!empty($this->_directions)){
+				$_script .= $this->getAddDirectionsJS();
+			}
+			
+			//TODO:add support for Google Earth Overlay once integrated with V3
+			//$_output .= "map.addMapType(G_SATELLITE_3D_MAP);\n";
+			
+			// zoom so that all markers are in the viewport
+			if($this->zoom_encompass && (count($this->_markers) > 1 || count($this->_polylines) >= 1 || count($this->_overlays) >= 1)) {
+				// increase bounds by fudge factor to keep
+				// markers away from the edges
+				$_len_lon = $this->_max_lon - $this->_min_lon;
+				$_len_lat = $this->_max_lat - $this->_min_lat;
+				$this->_min_lon -= $_len_lon * $this->bounds_fudge;
+				$this->_max_lon += $_len_lon * $this->bounds_fudge;
+				$this->_min_lat -= $_len_lat * $this->bounds_fudge;
+				$this->_max_lat += $_len_lat * $this->bounds_fudge;
+	
+				$_script .= "var bds$_key = new google.maps.LatLngBounds(new google.maps.LatLng($this->_min_lat, $this->_min_lon), new google.maps.LatLng($this->_max_lat, $this->_max_lon));\n";
+				$_script .= 'map'.$_key.'.fitBounds(bds'.$_key.');' . "\n";
+			}
+			
+			/*
+			 * TODO: Update controls to use new API v3 methods.(Not a priority, see below)
+			 * default V3 functionality caters control display according to the 
+			 * device that's accessing the page, as well as the specified width
+			 * and height of the map itself.
+			if($this->map_controls) {
+			  if($this->control_size == 'large')
+				  $_output .= 'map.addControl(new GLargeMapControl(), new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(10,10)));' . "\n";
+			  else
+				  $_output .= 'map.addControl(new GSmallMapControl(), new GControlPosition(G_ANCHOR_TOP_RIGHT, new GSize(10,60)));' . "\n";
+			}
+			if($this->type_controls) {
+				$_output .= 'map.addControl(new GMapTypeControl(), new GControlPosition(G_ANCHOR_TOP_RIGHT, new GSize(10,10)));' . "\n";
+			}
+			
+			if($this->scale_control) {
+				if($this->control_size == 'large'){
+					$_output .= 'map.addControl(new GScaleControl(), new GControlPosition(G_ANCHOR_TOP_RIGHT, new GSize(35,190)));' . "\n";
+				}else {
+					$_output .= 'map.addControl(new GScaleControl(), new GControlPosition(G_ANCHOR_BOTTOM_RIGHT, new GSize(190,10)));' . "\n";
+				}
+			}
+			if($this->overview_control) {
+				$_output .= 'map.addControl(new GOverviewMapControl());' . "\n";
+			}
+			
+			 * TODO: Update with ads_manager stuff once integrated into V3
+			if($this->ads_manager){
+				$_output .= 'var adsManager = new GAdsManager(map, "'.$this->ads_pub_id.'",{channel:"'.$this->ads_channel.'",maxAdsOnMap:"'.$this->ads_max.'"});
+		   adsManager.enable();'."\n";
+			
+			}
+			 * TODO: Update with local search once integrated into V3
+			if($this->local_search){
+				$_output .= "\n
+					map.enableGoogleBar();
+				";
+			}
+			*/
+			
+			if($this->traffic_overlay){
+				$_script .= "
+					var trafficLayer = new google.maps.TrafficLayer();
+					trafficLayer.setMap(map$_key);
+				";            
+			}
+			
+			if($this->biking_overlay){
+				$_script .= "
+					var bikingLayer = new google.maps.BicyclingLayer();
+					bikingLayer.setMap(map$_key);
+				";            
+			}
+			
+			$_script .= $this->getAddMarkersJS();
+			
+			$_script .= $this->getPolylineJS();
+			$_script .= $this->getPolygonJS();
+			$_script .= $this->getAddOverlayJS();
+			
+			if($this->_kml_overlays!==""){
+			  foreach($this->_kml_overlays as $_kml_key=>$_kml_file){
+				  $_script .= "
+					  kml_overlays$_key[$_kml_key]= new google.maps.KmlLayer('$_kml_file');
+					  kml_overlays$_key[$_kml_key].setMap(map$_key);
+				  ";
+			  }
+			  $_script .= "
+				  
+			  ";
+			}
 
-            $_output .= "var bds = new GLatLngBounds(new GLatLng($this->_min_lat, $this->_min_lon), new GLatLng($this->_max_lat, $this->_max_lon));\n";
-            $_output .= 'map.setZoom(map.getBoundsZoomLevel(bds));' . "\n";
-        }
-        
-        if($this->map_controls) {
-          if($this->control_size == 'large')
-              $_output .= 'map.addControl(new GLargeMapControl());' . "\n";
-          else
-              $_output .= 'map.addControl(new GSmallMapControl());' . "\n";
-        }
-        if($this->type_controls) {
-            $_output .= 'map.addControl(new GMapTypeControl());' . "\n";
-        }
-        
-        if($this->scale_control) {
-            $_output .= 'map.addControl(new GScaleControl());' . "\n";
-        }
-
-        if($this->overview_control) {
-            $_output .= 'map.addControl(new GOverviewMapControl());' . "\n";
-        }
-        
-        $_output .= $this->getAddMarkersJS();
-
-        $_output .= $this->getPolylineJS();
-
-        if($this->sidebar) {
-            $_output .= sprintf('document.getElementById("%s").innerHTML = "<ul class=\"gmapSidebar\">"+ sidebar_html +"<\/ul>";', $this->sidebar_id) . "\n";
-        }
-
-        $_output .= '}' . "\n";        
+			 //end JS if mapObj != "undefined" block
+			$_script .= '}' . "\n";
+		
+		}//end if $this->display_map==true
        
         if(!empty($this->browser_alert)) {
-            $_output .= '} else {' . "\n";
-			$_output .= 'alert("' . str_replace('"','\"',$this->browser_alert) . '");' . "\n";
-            $_output .= '}' . "\n";
+            //TODO:Update with new browser catch SEE ABOVE
+           // $_output .= '} else {' . "\n";
+           // $_output .= 'alert("' . str_replace('"','\"',$this->browser_alert) . '");' . "\n";
+           // $_output .= '}' . "\n";
         }                        
 
         if($this->onload) {
-           $_output .= '}' . "\n";
+           $_script .= '}' . "\n";
         }
-
-        $_output .= $this->getCreateMarkerJS();
-
-        // Utility functions used to distinguish between tabbed and non-tabbed info windows
-        $_output .= 'function isArray(a) {return isObject(a) && a.constructor == Array;}' . "\n";
-        $_output .= 'function isObject(a) {return (a && typeof a == \'object\') || isFunction(a);}' . "\n";
-        $_output .= 'function isFunction(a) {return typeof a == \'function\';}' . "\n";
-
-        if($this->sidebar) {        
-            $_output .= 'function click_sidebar(idx) {' . "\n";
-            $_output .= '  if(isArray(marker_html[idx])) { markers[idx].openInfoWindowTabsHtml(marker_html[idx]); }' . "\n";
-            $_output .= '  else { markers[idx].openInfoWindowHtml(marker_html[idx]); }' . "\n";
-            $_output .= '}' . "\n";
-        }
-        $_output .= 'function showInfoWindow(idx,html) {' . "\n";
-        $_output .= 'map.centerAtLatLng(points[idx]);' . "\n";
-        $_output .= 'markers[idx].openInfoWindowHtml(html);' . "\n";
-        $_output .= '}' . "\n";
-        if($this->directions) {
-            $_output .= 'function tohere(idx) {' . "\n";
-            $_output .= 'markers[idx].openInfoWindowHtml(to_htmls[idx]);' . "\n";
-            $_output .= '}' . "\n";
-            $_output .= 'function fromhere(idx) {' . "\n";
-            $_output .= 'markers[idx].openInfoWindowHtml(from_htmls[idx]);' . "\n";
-            $_output .= '}' . "\n";
-        }
-
-        $_output .= '//]]>' . "\n";
+        
+		$_script .= $this->getMapFunctions();
+        
+		if($this->_minify_js && class_exists("JSMin")){
+			$_script = JSMin::minify($_script);
+		}
+		
+		//Append script to output
+		$_output .= $_script;
+		$_output .= '//]]>' . "\n";
         $_output .= '</script>' . "\n";
         return $_output;
     }
+	
+	/**
+	 * function to render utility functions for use on the page
+	 */
+	 function getMapFunctions(){
+		$_script = "";
+		if($this->_display_js_functions===true){
+	    	$_script = $this->getUtilityFunctions();           
+        }
+		return $_script;
+	 }
+	 
+	 function getUtilityFunctions(){
+		 $_script = "";
+		 if(!empty($this->_markers))
+		 	$_script .= $this->getCreateMarkerJS();
+		 if(!empty($this->_overlays))
+		 	$_script .= $this->getCreateOverlayJS();
+		 if(!empty($this->_elevation_polylines)||(!empty($this->_directions)&&$this->elevation_directions))
+		 	$_script .= $this->getPlotElevationJS();
+		 // Utility functions used to distinguish between tabbed and non-tabbed info windows
+		 $_script .= 'function isArray(a) {return isObject(a) && a.constructor == Array;}' . "\n";
+		 $_script .= 'function isObject(a) {return (a && typeof a == \'object\') || isFunction(a);}' . "\n";
+		 $_script .= 'function isFunction(a) {return typeof a == \'function\';}' . "\n";
+		 $_script .= 'function isEmpty(obj) { for(var i in obj) { return false; } return true; }'."\n";	 
+		 return $_script;
+	 }
 
     /**
      * overridable function for generating js to add markers
      */
-    function getAddMarkersJS() {
-        $SINGLE_TAB_WIDTH = 88;    // constant: width in pixels of each tab heading (set by google)
-        $i = 0;
+    function getAddMarkersJS($map_id = "", $pano= false) {
+		//defaults
+		if($map_id == ""){
+			$map_id = $this->map_id;
+		}
+		
+		if($pano==false){
+			$_prefix = "map";
+		}else{
+			$_prefix = "panorama".$this->street_view_dom_id;
+		}
         $_output = '';
         foreach($this->_markers as $_marker) {
-            if(is_array($_marker['html'])) {
-                // warning: you can't have two tabs with the same header. but why would you want to?
-                $ti = 0;
-                $num_tabs = count($_marker['html']);
-                $tab_obs = array();
-                foreach($_marker['html'] as $tab => $info) {
-                    if($ti == 0 && $num_tabs > 2) {
-                        $width_style = sprintf(' style=\"width: %spx\"', $num_tabs * $SINGLE_TAB_WIDTH);
-                    } else {
-                        $width_style = '';
-                    }
-                    $tab = str_replace('"','\"',$tab);
-                    $info = str_replace('"','\"',$info);
-					$info = str_replace(array("\n", "\r"), "", $info);
-                    $tab_obs[] = sprintf('new GInfoWindowTab("%s", "%s")', $tab, '<div id=\"gmapmarker\"'.$width_style.'>' . $info . '</div>');
-                    $ti++;
-                }
-                $iw_html = '[' . join(',',$tab_obs) . ']';
-            } else {
-                $iw_html = sprintf('"%s"',str_replace('"','\"','<div id="gmapmarker">' . str_replace(array("\n", "\r"), "", $_marker['html']) . '</div>'));
-            }
-            $_output .= sprintf('var point = new GLatLng(%s,%s);',$_marker['lat'],$_marker['lon']) . "\n";         
-            $_output .= sprintf('var marker = createMarker(point,"%s",%s, %s,"%s");',
-                                str_replace('"','\"',$_marker['title']),
-                                str_replace('/','\/',$iw_html),
-                                $i,
-                                str_replace('"','\"',$_marker['tooltip'])) . "\n";
-            //TODO: in above createMarker call, pass the index of the tab in which to put directions, if applicable
-            $_output .= 'map.addOverlay(marker);' . "\n";
-            $i++;
+            $iw_html = str_replace('"','\"',str_replace(array("\n", "\r"), "", $_marker['html']));
+            $_output .= "var point = new google.maps.LatLng(".$_marker['lat'].",".$_marker['lon'].");\n";
+            $_output .= sprintf('%s.push(createMarker(%s%s, point,"%s","%s", %s, %s, "%s", %s ));',
+				(($pano==true)?$_prefix:"")."markers".$map_id,
+				$_prefix,                
+				$map_id,
+				str_replace('"','\"',$_marker['title']),
+				str_replace('/','\/',$iw_html),
+				(isset($_marker["icon_key"]))?"icon".$map_id."['".$_marker["icon_key"]."'].image":"''",
+				(isset($_marker["icon_key"])&&isset($_marker["shadow_icon"]))?"icon".$map_id."['".$_marker["icon_key"]."'].shadow":"''",
+				(($this->sidebar)?$this->sidebar_id:""),
+				((isset($_marker["openers"])&&count($_marker["openers"])>0)?json_encode($_marker["openers"]):"''")
+            ) . "\n";
+        }
+        
+        if($this->marker_clusterer && $pano==false){//only do marker clusterer for map, not streetview
+        	$_output .= "
+        	   markerClusterer".$map_id." = new MarkerClusterer(".$_prefix.$map_id.", markers".$map_id.", {
+		          maxZoom: ".$this->marker_clusterer_options["maxZoom"].",
+		          gridSize: ".$this->marker_clusterer_options["gridSize"].",
+		          styles: ".$this->marker_clusterer_options["styles"]."
+		        });
+		        	
+        	";
         }
         return $_output;
     }
 
     /**
-     * overridable function to generate polyline js
+     * overridable function to generate polyline js - for now can only be used on a map, not a streetview
      */
     function getPolylineJS() {
         $_output = '';
-        foreach($this->_polylines as $_polyline) {
-            $_output .= sprintf('var polyline = new GPolyline([new GLatLng(%s,%s),new GLatLng(%s,%s)],"%s",%s,%s);',
-                    $_polyline['lat1'],$_polyline['lon1'],$_polyline['lat2'],$_polyline['lon2'],$_polyline['color'],$_polyline['weight'],$_polyline['opacity'] / 100.0) . "\n";
-            $_output .= 'map.addOverlay(polyline);' . "\n";
-        }
+        foreach($this->_polylines as $polyline_id =>$_polyline) {
+        	$_coords_output = "";
+        	foreach($_polyline["coords"] as $_coords){
+				if($_coords_output != ""){$_coords_output.=",";}
+        		$_coords_output .= "
+        		    new google.maps.LatLng(".$_coords["lat"].", ".$_coords["long"].")
+        		";
+        	}
+        	$_output .= "
+        	   polylineCoords".$this->map_id."[$polyline_id] = [".$_coords_output."];    	
+			   polylines".$this->map_id."[$polyline_id] = new google.maps.Polyline({
+				  path: polylineCoords".$this->map_id."[$polyline_id]
+				  ".(($_polyline['color']!="")?", strokeColor: '".$_polyline['color']."'":"")."
+				  ".(($_polyline['opacity']!=0)?", strokeOpacity: ".$_polyline['opacity']."":"")."
+				  ".(($_polyline['weight']!=0)?", strokeWeight: ".$_polyline['weight']."":"")."
+			  });			
+			  polylines".$this->map_id."[$polyline_id].setMap(map".$this->map_id.");
+        	";
+			
+			//Elevation profiles
+			if(!empty($this->_elevation_polylines) && isset($this->_elevation_polylines[$polyline_id])){
+				$elevation_dom_id=$this->_elevation_polylines[$polyline_id]["dom_id"];
+				$width = $this->_elevation_polylines[$polyline_id]["width"];
+				$height = $this->_elevation_polylines[$polyline_id]["height"];
+				$samples = $this->_elevation_polylines[$polyline_id]["samples"];
+				$focus_color = $this->_elevation_polylines[$polyline_id]["focus_color"];
+				$_output .= "
+					elevationPolylines".$this->map_id."[$polyline_id] = {
+						'selector':'$elevation_dom_id',
+						'chart': new google.visualization.ColumnChart(document.getElementById('$elevation_dom_id')),
+						'service': new google.maps.ElevationService(),
+						'width':$width,
+						'height':$height,
+						'focusColor':'$focus_color',
+						'marker':null
+					};
+					elevationPolylines".$this->map_id."[$polyline_id]['service'].getElevationAlongPath({
+						path: polylineCoords".$this->map_id."[$polyline_id],
+						samples: $samples
+					}, function(results,status){plotElevation(results,status, elevationPolylines".$this->map_id."[$polyline_id], map".$this->map_id.", elevationCharts".$this->map_id.");});
+				";
+			}
+		}
         return $_output;
     }
+	
+	/**
+	 * function to render proper calls for directions - for now can only be used on a map, not a streetview
+	 */
+	 function getAddDirectionsJS(){
+		$_output = ""; 
+		 
+		foreach($this->_directions as $directions){
+			$dom_id = $directions["dom_id"];			
+			$travelModeParams = array();
+			$directionsParams = "";         
+			if($this->walking_directions==TRUE)
+				$directionsParams .= ", \n travelMode:google.maps.DirectionsTravelMode.WALKING";
+			else if($this->biking_directions==TRUE)
+				$directionsParams .= ", \n travelMode:google.maps.DirectionsTravelMode.BICYCLING";
+			else
+				$directionsParams .= ", \n travelMode:google.maps.DirectionsTravelMode.DRIVING";
+		   
+			if($this->avoid_highways==TRUE)
+			   $directionsParams .= ", \n avoidHighways: true";
+			if($this->avoid_tollways==TRUE)
+			   $directionsParams .= ", \n avoidTolls: true";
+
+			if($this->directions_unit_system!=''){
+			    if($this->directions_unit_system == 'METRIC'){
+			        $directionsParams .= ", \n unitSystem: google.maps.DirectionsUnitSystem.METRIC";
+			    }else{
+			        $directionsParams .= ", \n unitSystem: google.maps.DirectionsUnitSystem.IMPERIAL";
+			    }
+			}
+			
+			$_output .= "
+			    directions".$this->map_id."['$dom_id'] = {
+					displayRenderer:new google.maps.DirectionsRenderer(),
+					directionService:new google.maps.DirectionsService(),
+					request:{
+						origin: '".$directions["start"]."',
+						destination: '".$directions["dest"]."'
+						$directionsParams
+					}
+					".(($this->elevation_directions)?",		
+					   selector: '".$directions["elevation_dom_id"]."',
+					   chart: new google.visualization.ColumnChart(document.getElementById('".$directions["elevation_dom_id"]."')),
+					   service: new google.maps.ElevationService(),
+					   width:".$directions["width"].",
+					   height:".$directions["height"].",
+					   focusColor:'#00FF00',
+					   marker:null
+				   ":"")."
+				};
+				directions".$this->map_id."['$dom_id'].displayRenderer.setMap(map".$this->map_id.");
+				directions".$this->map_id."['$dom_id'].displayRenderer.setPanel(document.getElementById('$dom_id'));
+				directions".$this->map_id."['$dom_id'].directionService.route(directions".$this->map_id."['$dom_id'].request, function(response, status) {
+					if (status == google.maps.DirectionsStatus.OK) {
+					   directions".$this->map_id."['$dom_id'].displayRenderer.setDirections(response);
+					   ".(($this->elevation_directions)?"
+						   directions".$this->map_id."['$dom_id'].service.getElevationAlongPath({
+							   path: response.routes[0].overview_path,
+							   samples: ".$directions["elevation_samples"]."
+						   }, function(results,status){plotElevation(results,status, directions".$this->map_id."['$dom_id'], map".$this->map_id.", elevationCharts".$this->map_id.");});
+					   ":"")."
+					}
+				});
+			 ";
+		 }
+		 
+		 return $_output;
+	 }
+	
+	/**
+	 * function to get overlay creation JS.
+	 */
+	 function getAddOverlayJS(){
+		 $_output = "";
+		 foreach($this->_overlays as $_key=>$_overlay){
+			 $_output .= "
+			 	 var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(".$_overlay["bounds"]["ne"]["lat"].", ".$_overlay["bounds"]["ne"]["long"]."), new google.maps.LatLng(".$_overlay["bounds"]["sw"]["lat"].", ".$_overlay["bounds"]["sw"]["long"]."));
+				 var image = '".$_overlay["img"]."';
+			     overlays".$this->map_id."[$_key] = new CustomOverlay(bounds, image, map".$this->map_id.", ".$_overlay["opacity"].");
+			 ";
+		 }
+		 return $_output;
+	 }
 
     /**
      * overridable function to generate the js for the js function for creating a marker.
      */
     function getCreateMarkerJS() {
-        $_output = 'function createMarker(point, title, html, n, tooltip) {' . "\n";
-        $_output .= 'if(n >= '. sizeof($this->_icons) .') { n = '. (sizeof($this->_icons) - 1) ."; }\n";
-        if(!empty($this->_icons)) {
-            $_output .= 'var marker = new GMarker(point,{\'icon\': icon[n], \'title\': tooltip});' . "\n";
-        } else {
-            $_output .= 'var marker = new GMarker(point,{\'title\': tooltip});' . "\n";
-        }
-        // TODO: make it so you can specify which tab you want the directions in.
-        if($this->directions) {
-            // WARNING: If you are using a tabbed info window AND directions: this uses an UNDOCUMENTED field
-            // of the GInfoWindowTab object, contentElem. Google may CHANGE this name or other aspects of their
-            // GInfoWindowTab implementation without warning and BREAK this code.
-            // NOTE: If you are NOT using a tabbed info window, you'll be fine.
-            $_output .= 'var tabFlag = isArray(html);' . "\n";
-            $_output .= 'if(!tabFlag) { html = [{"contentElem": html}]; }' . "\n";
-            $_output .= sprintf(
-                     "to_htmls[counter] = html[0].contentElem + '<form class=\"gmapDir\" id=\"gmapDirTo\" style=\"white-space: nowrap;\" action=\"http://maps.google.com/maps\" method=\"get\" target=\"_blank\">' +
-                     '<span class=\"gmapDirHead\" id=\"gmapDirHeadTo\">%s<strong>%s</strong> - <a href=\"javascript:fromhere(' + counter + ')\">%s</a></span>' +
-                     '<p class=\"gmapDirItem\" id=\"gmapDirItemTo\"><label for=\"gmapDirSaddr\" class=\"gmapDirLabel\" id=\"gmapDirLabelTo\">%s<br /></label>' +
-                     '<input type=\"text\" size=\"40\" maxlength=\"40\" name=\"saddr\" class=\"gmapTextBox\" id=\"gmapDirSaddr\" value=\"\" onfocus=\"this.style.backgroundColor = \'#e0e0e0\';\" onblur=\"this.style.backgroundColor = \'#ffffff\';\" />' +
-                     '<span class=\"gmapDirBtns\" id=\"gmapDirBtnsTo\"><input value=\"%s\" type=\"%s\" class=\"gmapDirButton\" id=\"gmapDirButtonTo\" /></span></p>' +
-                     '<input type=\"hidden\" name=\"daddr\" value=\"' +
-                     point.y + ',' + point.x + \"(\" + title.replace(new RegExp(/\"/g),'&quot;') + \")\" + '\" /></form>';
-                      from_htmls[counter] = html[0].contentElem + '<p /><form class=\"gmapDir\" id=\"gmapDirFrom\" style=\"white-space: nowrap;\" action=\"http://maps.google.com/maps\" method=\"get\" target=\"_blank\">' +
-                     '<span class=\"gmapDirHead\" id=\"gmapDirHeadFrom\">%s<a href=\"javascript:tohere(' + counter + ')\">%s</a> - <strong>%s</strong></span>' +
-                     '<p class=\"gmapDirItem\" id=\"gmapDirItemFrom\"><label for=\"gmapDirSaddr\" class=\"gmapDirLabel\" id=\"gmapDirLabelFrom\">%s<br /></label>' +
-                     '<input type=\"text\" size=\"40\" maxlength=\"40\" name=\"daddr\" class=\"gmapTextBox\" id=\"gmapDirSaddr\" value=\"\" onfocus=\"this.style.backgroundColor = \'#e0e0e0\';\" onblur=\"this.style.backgroundColor = \'#ffffff\';\" />' +
-                     '<span class=\"gmapDirBtns\" id=\"gmapDirBtnsFrom\"><input value=\"%s\" type=\"%s\" class=\"gmapDirButton\" id=\"gmapDirButtonFrom\" /></span></p>' +
-                     '<input type=\"hidden\" name=\"saddr\" value=\"' +
-                     point.y + ',' + point.x + encodeURIComponent(\"(\" + title.replace(new RegExp(/\"/g),'&quot;') + \")\") + '\" /></form>';
-                     html[0].contentElem = html[0].contentElem + '<p /><div id=\"gmapDirHead\" class=\"gmapDir\" style=\"white-space: nowrap;\">%s<a href=\"javascript:tohere(' + counter + ')\">%s</a> - <a href=\"javascript:fromhere(' + counter + ')\">%s</a></div>';\n",
-                     $this->driving_dir_text['dir_text'],
-                     $this->driving_dir_text['dir_tohere'],
-                     $this->driving_dir_text['dir_fromhere'],
-                     $this->driving_dir_text['dir_to'],
-                     $this->driving_dir_text['to_button_value'],
-                     $this->driving_dir_text['to_button_type'],
-                     $this->driving_dir_text['dir_text'],
-                     $this->driving_dir_text['dir_tohere'],
-                     $this->driving_dir_text['dir_fromhere'],
-                     $this->driving_dir_text['dir_from'],
-                     $this->driving_dir_text['from_button_value'],
-                     $this->driving_dir_text['from_button_type'],
-                     $this->driving_dir_text['dir_text'],
-                     $this->driving_dir_text['dir_tohere'],
-                     $this->driving_dir_text['dir_fromhere']
-                    );
-            $_output .= 'if(!tabFlag) { html = html[0].contentElem; }';
-        }
-        
-        if($this->info_window) {
-            $_output .= sprintf('if(isArray(html)) { GEvent.addListener(marker, "%s", function() { marker.openInfoWindowTabsHtml(html); }); }',$this->window_trigger) . "\n";
-            $_output .= sprintf('else { GEvent.addListener(marker, "%s", function() { marker.openInfoWindowHtml(html); }); }',$this->window_trigger) . "\n";
-        }
-        $_output .= 'points[counter] = point;' . "\n";
-        $_output .= 'markers[counter] = marker;' . "\n";
-        if($this->sidebar) {        
-            $_output .= 'marker_html[counter] = html;' . "\n";
-            $_output .= "sidebar_html += '<li class=\"gmapSidebarItem\" id=\"gmapSidebarItem_'+ counter +'\"><a href=\"javascript:click_sidebar(' + counter + ')\">' + title + '<\/a><\/li>';" . "\n";
-        }
-        $_output .= 'counter++;' . "\n";
-        $_output .= 'return marker;' . "\n";
-        $_output .= '}' . "\n";
-        return $_output;
+    	$_output = "
+    	   function createMarker(map, point, title, html, icon, icon_shadow, sidebar_id, openers){
+			    var marker_options = {
+			        position: point,
+			        map: map,
+			        title: title};  
+			    if(icon!=''){marker_options.icon = icon;}
+			    if(icon_shadow!=''){marker_options.shadow = icon_shadow;}
+			    
+			    //create marker
+			    var new_marker = new google.maps.Marker(marker_options);
+			    if(html!=''){
+					".(($this->info_window)?"
+			        
+			        google.maps.event.addListener(new_marker, '".$this->window_trigger."', function() {
+			          	infowindow.close();	
+			          	infowindow.setContent(html);
+			          	infowindow.open(map,new_marker);
+			        });
+			        
+					if(openers != ''&&!isEmpty(openers)){
+			           for(var i in openers){
+			             var opener = document.getElementById(openers[i]);
+			             opener.on".$this->window_trigger." = function() { 
+			             
+			             	infowindow.close();
+			             	infowindow.setContent(html);
+			             	infowindow.open(map,new_marker); 
+			             	
+			          		return false;			             	
+			             };
+			           }
+			        }
+					":"")."
+			        if(sidebar_id != ''){
+			            var sidebar = document.getElementById(sidebar_id);
+						if(sidebar!=null && sidebar!=undefined && title!=null && title!=''){
+							var newlink = document.createElement('a');
+							".(($this->info_window)?"
+			        		newlink.onclick=function(){infowindow.open(map,new_marker); return false};
+							":"
+							newlink.onclick=function(){map.setCenter(point); return false};
+							")."
+							newlink.innerHTML = title;
+							sidebar.appendChild(newlink);
+						}
+			        }
+                }
+			    return new_marker;  
+			}
+    	";
+    	return $_output;
     }
+	
+	/**
+	 * Get create overlay js
+	 */
+	 function getCreateOverlayJS(){
+		 $_output = "
+		 	CustomOverlay.prototype = new google.maps.OverlayView();	
+			function CustomOverlay(bounds, image, map, opacity){
+				this.bounds_ = bounds;
+				this.image_ = image;
+				this.map_ = map;
+				this.div_ = null;
+				this.opacity = (opacity!='')?opacity:10;
+				this.setMap(map);
+			}
+			CustomOverlay.prototype.onAdd = function() {
+				var div = document.createElement('DIV');
+				div.style.borderStyle = 'none';
+				div.style.borderWidth = '0px';
+				div.style.position = 'absolute';
+				var img = document.createElement('img');
+				img.src = this.image_;
+				img.style.width = '100%';
+				img.style.height = '100%';
+				img.style.opacity = this.opacity/10;
+				img.style.filter = 'alpha(opacity='+this.opacity*10+')';	
+				div.appendChild(img);
+				this.div_ = div;	
+				var panes = this.getPanes();
+				panes.overlayImage.appendChild(div);
+			}
+			CustomOverlay.prototype.draw = function() {
+				var overlayProjection = this.getProjection();
+				var sw = overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest());
+				var ne = overlayProjection.fromLatLngToDivPixel(this.bounds_.getNorthEast());
+				var div = this.div_;
+				div.style.left = sw.x + 'px';
+				div.style.top = ne.y + 'px';
+				div.style.width = (ne.x - sw.x) + 'px';
+				div.style.height = (sw.y - ne.y) + 'px';
+			}
+			CustomOverlay.prototype.onRemove = function() {
+				this.div_.parentNode.removeChild(this.div_);
+				this.div_ = null;
+			}
+		 ";		 
+		 return $_output;
+	 }
+	 
+	 /**
+	  * print helper function to draw elevation results as a chart
+	  */
+	function getPlotElevationJS(){
+		$_output = "
+			function plotElevation(results, status, elevation_data, map, charts_array) {
+				charts_array[elevation_data.selector] = {
+					results:results,
+					data:new google.visualization.DataTable()
+				};
+				charts_array[elevation_data.selector].data.addColumn('string', 'Sample');
+				charts_array[elevation_data.selector].data.addColumn('number', 'Elevation');
+				for (var i = 0; i < charts_array[elevation_data.selector].results.length; i++) {
+				  charts_array[elevation_data.selector].data.addRow(['', charts_array[elevation_data.selector].results[i].elevation]);
+				}
+				document.getElementById(elevation_data.selector).style.display = 'block';
+				elevation_data.chart.draw(charts_array[elevation_data.selector].data, {
+				  width: elevation_data.width,
+				  height: elevation_data.height,
+				  legend: 'none',
+				  titleY: 'Elevation (m)',
+				  focusBorderColor: elevation_data.focusColor
+				});
+		";
+		if($this->elevation_markers){
+			$_output .= $this->getElevationMarkerJS();			
+		}
+		$_output .= "}";
+		return $_output;
+	}	  
+	
+	/**
+	 * create JS that is inside of JS plot elevation function
+	 */
+	 function getElevationMarkerJS(){
+		 $_output = "
+			google.visualization.events.addListener(elevation_data.chart, 'onmouseover', function(e) {
+				if(elevation_data.marker==null){
+					elevation_data.marker = new google.maps.Marker({
+					  position: charts_array[elevation_data.selector].results[e.row].location,
+					  map: map,
+					  icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+					});
+				}else{
+					elevation_data.marker.setPosition(charts_array[elevation_data.selector].results[e.row].location);
+				}
+				map.setCenter(charts_array[elevation_data.selector].results[e.row].location);
+			});
+			document.getElementById(elevation_data.selector).onmouseout = function(){
+				elevation_data.marker = clearElevationMarker(elevation_data.marker);
+			};
+			function clearElevationMarker(marker){
+			  if(marker!=null){
+				  marker.setMap(null);
+				  return null;
+			  }
+			}
+		";
+		return $_output;
+	 }
+	 
 
     /**
      * print map (put at location map will appear)
@@ -1163,19 +2437,19 @@ class GoogleMapAPI {
      */
     function getMap() {
         $_output = '<script type="text/javascript" charset="utf-8">' . "\n" . '//<![CDATA[' . "\n";
-        $_output .= 'if (GBrowserIsCompatible()) {' . "\n";
+        //$_output .= 'if (GBrowserIsCompatible()) {' . "\n";
         if(strlen($this->width) > 0 && strlen($this->height) > 0) {
-            $_output .= sprintf('document.write(\'<div id="%s" style="width: %s; height: %s"><\/div>\');',$this->map_id,$this->width,$this->height) . "\n";
+            $_output .= sprintf('document.write(\'<div id="%s" style="width: %s; height: %s; position:relative;"><\/div>\');',$this->map_id,$this->width,$this->height) . "\n";
         } else {
-            $_output .= sprintf('document.write(\'<div id="%s"><\/div>\');',$this->map_id) . "\n";     
+            $_output .= sprintf('document.write(\'<div id="%s" style="position:relative;"><\/div>\');',$this->map_id) . "\n";     
         }
-        $_output .= '}';
+        //$_output .= '}';
 
-        if(!empty($this->js_alert)) {
-            $_output .= ' else {' . "\n";
-            $_output .= sprintf('document.write(\'%s\');', str_replace('/','\/',$this->js_alert)) . "\n";
-            $_output .= '}' . "\n";
-        }
+        //if(!empty($this->js_alert)) {
+        //    $_output .= ' else {' . "\n";
+        //    $_output .= sprintf('document.write(\'%s\');', str_replace('/','\/',$this->js_alert)) . "\n";
+        //    $_output .= '}' . "\n";
+        //}
 
         $_output .= '//]]>' . "\n" . '</script>' . "\n";
 
@@ -1200,7 +2474,7 @@ class GoogleMapAPI {
      * 
      */
     function getSidebar() {
-        return sprintf('<div id="%s"></div>',$this->sidebar_id) . "\n";
+        return sprintf('<div id="%s" class="'.$this->sidebar_id.'"></div>',$this->sidebar_id) . "\n";
     }    
             
     /**
@@ -1208,19 +2482,17 @@ class GoogleMapAPI {
      * look in cache first, otherwise get from Yahoo
      * 
      * @param string $address
+     * @return array GeoCode information
      */
     function getGeocode($address) {
         if(empty($address))
             return false;
-
-        $_geocode = false;
-
+        $_geocode = false;  
         if(($_geocode = $this->getCache($address)) === false) {
-            if(($_geocode = $this->geoGetCoords($address)) !== false) {
-                $this->putCache($address, $_geocode['lon'], $_geocode['lat']);
+        	if(($_geocode = $this->geoGetCoords($address)) !== false) {
+            	$this->putCache($address, $_geocode['lon'], $_geocode['lat']);
             }
         }
-        
         return $_geocode;
     }
    
@@ -1228,6 +2500,7 @@ class GoogleMapAPI {
      * get the geocode lat/lon points from cache for given address
      * 
      * @param string $address
+     * @return bool|array False if no cache, array of data if has cache
      */
     function getCache($address) {
         if(!isset($this->dsn))
@@ -1241,7 +2514,7 @@ class GoogleMapAPI {
         if (PEAR::isError($_db)) {
             die($_db->getMessage());
         }
-		$_res =& $_db->query("SELECT lon,lat FROM {$this->_db_cache_table} where address = ?", $address);
+        $_res =& $_db->query("SELECT lon,lat FROM {$this->_db_cache_table} where address = ?", $address);
         if (PEAR::isError($_res)) {
             die($_res->getMessage());
         }
@@ -1261,77 +2534,87 @@ class GoogleMapAPI {
      * @param string $address
      * @param string $lon the map latitude (horizontal)
      * @param string $lat the map latitude (vertical)
+     * @return bool Status of put cache request
      */
     function putCache($address, $lon, $lat) {
         if(!isset($this->dsn) || (strlen($address) == 0 || strlen($lon) == 0 || strlen($lat) == 0))
            return false;
         // PEAR DB
-        require_once('DB.php');          
+        require_once('DB.php');         
         $_db =& DB::connect($this->dsn);
         if (PEAR::isError($_db)) {
-            die($_db->getMessage());
+        	die($_db->getMessage());
         }
-        
         $_res =& $_db->query('insert into '.$this->_db_cache_table.' values (?, ?, ?)', array($address, $lon, $lat));
         if (PEAR::isError($_res)) {
             die($_res->getMessage());
         }
         $_db->disconnect();
-        
-        return true;
-        
+        return true;        
     }
    
     /**
      * get geocode lat/lon points for given address from Yahoo
      * 
      * @param string $address
+     * @return bool|array false if can't be geocoded, array or geocdoes if successful
      */
     function geoGetCoords($address,$depth=0) {
-        
         switch($this->lookup_service) {
-                        
             case 'GOOGLE':
-                
-                $_url = sprintf('http://%s/maps/geo?&q=%s&output=csv&key=%s',$this->lookup_server['GOOGLE'],rawurlencode($address),$this->api_key);
-
+                $_url = sprintf('http://%s/maps/api/geocode/json?sensor=%s&address=%s',$this->lookup_server['GOOGLE'], $this->mobile==true?"true":"false", rawurlencode($address));
                 $_result = false;
-                
                 if($_result = $this->fetchURL($_url)) {
-
-                    $_result_parts = explode(',',$_result);
-                    if($_result_parts[0] != 200)
-                        return false;
-                    $_coords['lat'] = $_result_parts[2];
-                    $_coords['lon'] = $_result_parts[3];
+                    $_result_parts = json_decode($_result);
+                    if($_result_parts->status!="OK"){
+                    	return false;
+                    }
+                    $_coords['lat'] = $_result_parts->results[0]->geometry->location->lat;
+                    $_coords['lon'] = $_result_parts->results[0]->geometry->location->lng;
                 }
-                
                 break;
-            
             case 'YAHOO':
-            default:
-                        
-                $_url = 'http://%s/MapsService/V1/geocode';
-                $_url .= sprintf('?appid=%s&location=%s',$this->lookup_server['YAHOO'],$this->app_id,rawurlencode($address));
-
+            default:        
+                $_url = sprintf('http://%s/MapsService/V1/geocode?appid=%s&location=%s',$this->lookup_server['YAHOO'],$this->app_id,rawurlencode($address));
                 $_result = false;
-
                 if($_result = $this->fetchURL($_url)) {
-
                     preg_match('!<Latitude>(.*)</Latitude><Longitude>(.*)</Longitude>!U', $_result, $_match);
-
                     $_coords['lon'] = $_match[2];
                     $_coords['lat'] = $_match[1];
-
                 }
-                
                 break;
         }         
-        
         return $_coords;       
     }
     
-    
+	/**
+     * get full geocode information for given address from Google
+	 * NOTE: This does not use the getCache function as there is 
+	 * a lot of data in a full geocode response to cache.
+     * 
+     * @param string $address
+     * @return bool|array false if can't be geocoded, array or geocdoes if successful
+     */
+    function geoGetCoordsFull($address,$depth=0) {
+        switch($this->lookup_service) {
+            case 'GOOGLE':
+                $_url = sprintf('http://%s/maps/api/geocode/json?sensor=%s&address=%s',$this->lookup_server['GOOGLE'], $this->mobile==true?"true":"false", rawurlencode($address));
+                $_result = false;
+                if($_result = $this->fetchURL($_url)) {
+                    return json_decode($_result);
+                }
+                break;
+            case 'YAHOO':
+            default:        
+                $_url = 'http://%s/MapsService/V1/geocode';
+                $_url .= sprintf('?appid=%s&location=%s',$this->lookup_server['YAHOO'],$this->app_id,rawurlencode($address));
+                $_result = false;
+                if($_result = $this->fetchURL($_url)) {
+                    return $_match;
+                }
+                break;
+        }         
+    }    
 
     /**
      * fetch a URL. Override this method to change the way URLs are fetched.
@@ -1352,6 +2635,7 @@ class GoogleMapAPI {
      * @param float $lon1
      * @param float $lon2
      * @param float $unit   M=miles, K=kilometers, N=nautical miles, I=inches, F=feet
+     * @return float
      */
     function geoGetDistance($lat1,$lon1,$lat2,$lon2,$unit='M') {
         
@@ -1384,7 +2668,121 @@ class GoogleMapAPI {
       }
       
     }    
-    
-}
 
+    /** #)MS
+     * overridable function to generate polyline js - for now can only be used on a map, not a streetview
+     */
+    function getPolygonJS() {
+        $_output = '';
+        foreach($this->_polygons as $polygon_id => $_polygon) {
+        	$_coords_output = "";
+        	foreach($_polygon["coords"] as $_coords){
+				if($_coords_output != ""){$_coords_output.=",";}
+        		$_coords_output .= "
+        		    new google.maps.LatLng(".$_coords["lat"].", ".$_coords["long"].")
+        		";
+        	}
+        	$_output .= "
+        	   polygonCoords".$this->map_id."[$polygon_id] = [".$_coords_output."];    	
+			   polygon".$this->map_id."[$polygon_id] = new google.maps.Polygon({
+				  paths: polygonCoords".$this->map_id."[$polygon_id]
+				  ".(($_polygon['color']!="")?", strokeColor: '".$_polygon['color']."'":"")."
+				  ".(($_polygon['opacity']!=0)?", strokeOpacity: ".$_polygon['opacity']."":"")."
+				  ".(($_polygon['weight']!=0)?", strokeWeight: ".$_polygon['weight']."":"")."
+				  ".(($_polygon['fill_color']!="")?", fillColor: '".$_polygon['fill_color']."'":"")."
+				  ".(($_polygon['fill_opacity']!=0)?", fillOpacity: ".$_polygon['fill_opacity']."":"")."
+			  });			
+			  polygon".$this->map_id."[$polygon_id].setMap(map".$this->map_id.");
+        	";
+		}
+        return $_output;
+    }
+
+    /** #)MS
+     * adds a map polygon by map coordinates
+     * if color, weight and opacity are not defined, use the google maps defaults
+     * 
+     * @param string $lon1 the map longitude to draw from
+     * @param string $lat1 the map latitude to draw from
+     * @param string $lon2 the map longitude to draw to
+     * @param string $lat2 the map latitude to draw to
+     * @param string $id An array id to use to append coordinates to a line
+     * @param string $color the color of the border line (format: #000000)
+     * @param string $weight the weight of the line in pixels
+     * @param string $opacity the border line opacity (percentage)
+     * @param string $fill_color the polygon color (format: #000000)
+     * @param string $fill_opacity the polygon opacity (percentage)
+	 * @return string $id id of the created/updated polyline array
+     */
+    function addPolygonByCoords($lon1,$lat1,$lon2,$lat2,$id=false,$color='',$weight=0,$opacity=0,$fill_color='',$fill_opacity=0) {
+		if($id !== false && isset($this->_polygons[$id]) && is_array($this->_polygons[$id])){
+			$_polygon = $this->_polygons[$id];
+		}else{
+			//only set color,weight,and opacity if new polyline
+			$_polygon = array(
+				"color"=>$color,
+				"weight"=>$weight,
+				"opacity"=>$opacity,
+				"fill_color"=>$fill_color,
+				"fill_opacity"=>$fill_opacity,
+			);
+		}
+		if(!isset($_polygon['coords']) || !is_array($_polygon['coords'])){
+			$_polygon['coords'] = array(
+				"0"=> array("lat"=>$lat1, "long"=>$lon1),
+				"1"=> array("lat"=>$lat2, "long"=>$lon2)
+			);
+		}else{
+			$last_index = sizeof($_polygon['coords'])-1;
+			//check if lat1/lon1 point is already on polyline
+			if($_polygon['coords'][$last_index]["lat"] != $lat1 || $_polygon['coords'][$last_index]["long"]  != $lon1){
+				$_polygon['coords'][] = array("lat"=>$lat1, "long"=>$lon1);
+			}
+			$_polygon['coords'][] = array("lat"=>$lat2, "long"=>$lon2);
+		}
+        if($id === false){
+            $this->_polygons[] = $_polygon;
+            $id = count($this->_polygons) - 1;
+        }else{
+			$this->_polygons[$id] = $_polygon;
+        }
+        $this->adjustCenterCoords($lon1,$lat1);
+        $this->adjustCenterCoords($lon2,$lat2);
+        // return index of polyline
+        return $id;
+    }
+
+     /**#)MS
+     * adds polyline by passed array
+     * if color, weight and opacity are not defined, use the google maps defaults
+     * @param array $polyline_array array of lat/long coords
+     * @param string $id An array id to use to append coordinates to a line
+     * @param string $color the color of the line (format: #000000)
+     * @param string $weight the weight of the line in pixels
+     * @param string $opacity the line opacity (percentage)
+     * @param string $fill_color the polygon color (format: #000000)
+     * @param string $fill_opacity the polygon opacity (percentage)
+     * @return bool|int Array id of newly added point or false
+     */
+    function addPolygonByCoordsArray($polygon_array,$id=false,$color='',$weight=0,$opacity=0,$fill_color='',$fill_opacity=0){
+    	if(!is_array($polygon_array) || sizeof($polygon_array) < 3)
+    	   return false;
+    	$_prev_coords = "";
+    	$_next_coords = "";
+    	
+    	foreach($polygon_array as $_coords){
+    		$_prev_coords = $_next_coords;
+    		$_next_coords = $_coords;
+    		
+    		if($_prev_coords !== ""){
+    		  $_lt1=$_prev_coords["lat"];
+    		  $_ln1=$_prev_coords["long"];
+    		  $_lt2=$_next_coords["lat"];
+    		  $_ln2=$_next_coords["long"];
+    		  $id = $this->addPolygonByCoords($_ln1, $_lt1, $_ln2, $_lt2, $id, $color, $weight, $opacity, $fill_color, $fill_opacity);
+    		}
+    	}
+        return $id;
+    }
+}
 ?>

@@ -22,7 +22,9 @@
 require('GoogleMapAPI/GoogleMapAPI.class.php');
 
 $googleMapObj = new GoogleMapAPI('map');
-$googleMapObj->setAPIKey($sGoogleMapKey);
+// $googleMapObj->setAPIKey($sGoogleMapKey);
+$googleMapObj->setLookupService('GOOGLE'); // or 'YAHOO'
+
 
 $bHaveXML = FALSE;
 
@@ -207,8 +209,9 @@ class AddressLatLon {
 		$address = $this->street . "," . $this->city . "," . $this->state . "," . $this->zip;
 
 		if ($bUseGoogleGeocode) {
-			$geocode = $googleMapObj->geoGetCoords($address);
-        
+			//$geocode = $googleMapObj->geoGetCoords($address);
+			$geocode = $googleMapObj->getGeocode($address);
+
 			$this->lat = $geocode['lat'];
 			$this->lon = $geocode['lon'];
 		} else {
