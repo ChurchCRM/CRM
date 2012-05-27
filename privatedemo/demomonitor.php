@@ -50,6 +50,46 @@ while (list ($dbdir, $dbid, $acid) = mysql_fetch_row($rsDBP)) {
 		mysql_query ($sSQL);
 	}
 }
+
+// see if the update mailing list button was pressed
+if (isset ($_POST["UpdateMailingList"])) {
+	// gather up all the email addresses that have been entered so far
+	$emailArr = array();
+	
+	$sSQL = "SELECT ac_id,ac_email FROM AdminContact";
+	$rsDBP = mysql_query ($sSQL);
+	
+	while ($emailArr[] = mysql_fetch_row($rsDBP))
+	;
+
+	// switch databases to the mailing list one to poke in all these email addresses
+	$cnTempDB = mysql_connect($sPhpMailSERVERNAME,$sPhpMailUSER,$sPhpMailPASSWORD)
+	        or die ('Cannot connect to the MySQL server because: ' . mysql_error());
+	mysql_select_db($sPhpMailDATABASE)
+	        or die ('Cannot select the MySQL database because: ' . mysql_error());
+	        
+	// always rebuild list 1 to match all the people who have registered for private demos.
+	$sSQL = "DELETE FROM phplist_listuser WHERE listid=1";
+	$rsDBP = mysql_query ($sSQL);
+	
+	foreach ($emailArr as $oneRow ) {
+		$id = $oneRow[0];
+		$email = $oneRow[1];
+
+		// this INSERT IGNORE will quietly do nothing for existing users
+		$sSQL = "INSERT IGNORE INTO phplist_user_user (id, email, confirmed, uniqid, htmlemail) VALUES ($id, \"$email\", 1, $id, 1)";
+		$rsDBP = mysql_query ($sSQL);
+		
+		$sSQL = "INSERT IGNORE INTO phplist_listuser (userid, listid) VALUES ($id, 1)";
+		$rsDBP = mysql_query ($sSQL);
+	}
+
+	// switch databases back to the default for personal demo monitor
+	$cnTempDB = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD)
+	        or die ('Cannot connect to the MySQL server because: ' . mysql_error());
+	mysql_select_db($sDATABASE)
+	        or die ('Cannot select the MySQL database because: ' . mysql_error());		
+}
 ?>
 
 <html>
@@ -102,6 +142,7 @@ while (list ($firstname, $lastname, $receivedEmail, $organization, $city, $state
 	echo "</tr>\n";
 	$activeDemoCnt += 1;
 }
+echo "<tr><td><input type=\"submit\" class=\"button\" value=\"Update Mailing List\" name=\"UpdateMailingList\"></td>";
 
 print "<tr><h2>Total active demos $activeDemoCnt</h2></tr>\n";
 print "<tr><a href=\"mailto:?bcc=$bccEmail\">Email all (BCC)</a></tr>\n";

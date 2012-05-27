@@ -8,6 +8,11 @@ $sDATABASE = 'privatedemo';
 
 $useTarFile = 'churchinfo-1.2.12.tar';
 
+$sPhpMailSERVERNAME = 'localhost';
+$sPhpMailUSER = 'phpmail';
+$sPhpMailPASSWORD = 'phpmail';
+$sPhpMailDATABASE = 'phpmail';
+
 // Root path
 $sRootPath='/privatedemo';
 $sDocumentRoot = dirname(__FILE__);
