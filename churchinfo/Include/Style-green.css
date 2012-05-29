@@ -111,13 +111,6 @@ TD.TinyLabelColumn
 	background: #EAF8EC;
 }
 
-TD.TextColumn
-{
-	border-top: solid 1px #eaeaea;
-	padding: 8px;
-	vertical-align: top;
-}
-
 TD.TinyTextColumn
 {
 	background: #E7F5E9;
