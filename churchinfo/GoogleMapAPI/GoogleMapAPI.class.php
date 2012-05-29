@@ -65,6 +65,14 @@ class GoogleMapAPI {
     var $map_styles = true; 	
 
     /**
+     * API key - while not required, allows for monitoring and purchasing additional usage
+     * see https://developers.google.com/maps/documentation/javascript/tutorial#api_key 
+     *
+     * @var string $api_key
+     */
+    var $api_key = null; 	
+
+    /**
      * PEAR::DB DSN for geocode caching. example:
      * $dsn = 'mysql://user:pass@localhost/dbname';
      *
@@ -634,6 +642,15 @@ class GoogleMapAPI {
      */
     function setDSN($dsn) {
         $this->dsn = $dsn;   
+    }
+
+    /**
+     * sets the API key
+     *
+     * @param string $key 
+     */
+    function setAPIKey($key) {
+        $this->api_key = $key;   
     }
     
     /**
@@ -1640,7 +1657,7 @@ class GoogleMapAPI {
 				google.load('visualization', '1', {packages: ['columnchart']});
 			</script>";
 		}
-        $scriptUrl = "http://maps.google.com/maps/api/js?sensor=".(($this->mobile==true)?"true":"false");
+        $scriptUrl = "http://maps.google.com/maps/api/js?".( $this->api_key ? "key=$this->api_key&" : "" )."sensor=".(($this->mobile==true)?"true":"false");
         if( is_array( $this->api_options ) ) {
             foreach( $this->api_options as $key => $value ){
                 $scriptUrl .= '&'.$key.'='.$value;

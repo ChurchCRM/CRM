@@ -22,7 +22,7 @@
 require('GoogleMapAPI/GoogleMapAPI.class.php');
 
 $googleMapObj = new GoogleMapAPI('map');
-// $googleMapObj->setAPIKey($sGoogleMapKey);
+$googleMapObj->setAPIKey($sGoogleMapKey);
 $googleMapObj->setLookupService('GOOGLE'); // or 'YAHOO'
 
 
