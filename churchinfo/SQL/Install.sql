@@ -196,6 +196,8 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 --
 (67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General', NULL) ;
 
+-- Save 68, 69 for MRBS if installed
+
 -- --------------------------------------------------------
 
 -- 

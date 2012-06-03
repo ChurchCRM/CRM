@@ -162,7 +162,6 @@ if ($iUserID > 0)
 
         // Set the error text
         $sErrorText = '&nbsp;' . gettext('Invalid login or password');
-
     } else {
 
         // Set the LastLogin and Increment the LoginCount
@@ -186,10 +185,7 @@ if ($iUserID > 0)
 
         // Set the User's email address
         $_SESSION['sEmailAddress'] = $per_Email;
-/* -----------------------------------MRBS Bridging adds --------------------------------------------*/
-        // Set the User's email address
-        $_SESSION["UserName"] = $usr_UserName;
-/*------------------------------------MRBS Bridging add ends ---------------------------------------*/
+
         // If user has administrator privilege, override other settings and enable all permissions.
         if ($usr_Admin) {
             $_SESSION['bAddRecords'] = true;
@@ -305,6 +301,18 @@ if ($iUserID > 0)
         // Search preference
         $_SESSION['bSearchFamily'] = $usr_SearchFamily;
 
+        if (defined($bEnableMRBS) && $bEnableMRBS) {
+		   	$_SESSION["UserName"] = $UserName; // set the session variable recognized by MRBS
+		   	// Update the MRBS user record to match this ChurchInfo user
+		   	$iMRBSLevel = 0;
+		   	if ($usr_AddRecords)
+		   		$iMRBSLevel = 1;
+        	if ($usr_Admin)
+		   		$iMRBSLevel = 2;
+            $sSQL = "INSERT INTO mrbs_users (id, level, name, email) VALUES ('$iUserID', '$iMRBSLevel', '$UserName', '$per_Email') ON DUPLICATE KEY UPDATE level='$iMRBSLevel', name='$UserName',email='$per_Email'";
+        	RunQuery($sSQL);	        
+        }
+        
         // Redirect to the Menu
         Redirect('CheckVersion.php');
         exit;
