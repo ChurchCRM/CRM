@@ -301,7 +301,7 @@ if ($iUserID > 0)
         // Search preference
         $_SESSION['bSearchFamily'] = $usr_SearchFamily;
 
-        if (defined($bEnableMRBS) && $bEnableMRBS) {
+        if (isset($bEnableMRBS) && $bEnableMRBS) {
 		   	$_SESSION["UserName"] = $UserName; // set the session variable recognized by MRBS
 		   	// Update the MRBS user record to match this ChurchInfo user
 		   	$iMRBSLevel = 0;
