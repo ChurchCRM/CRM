@@ -62,6 +62,15 @@ if (isset($_POST["Submit"]))
 
 		$calID = $calID + 1;
 
+		// Move the meeting date/time from here to UTC for storage
+	    $timezoneHere = new DateTimeZone(date_default_timezone_get());
+	    $timezoneUTC = new DateTimeZone('UTC');
+		$dateTimeMeeting = new DateTime($dDate.$iHour.":".$iMinutes, $timezoneHere);
+		$dateTimeMeeting->setTimezone($timezoneUTC);
+		$dDate = $dateTimeMeeting->format ('Y-m-d');
+		$iHour = $dateTimeMeeting->format ('H');
+		$iMinutes = $dateTimeMeeting->format ('i'); 
+		
 		$datestr = sprintf ("%04d%02d%02d", substr ($dDate, 0, 4), substr ($dDate, 5, 2), substr ($dDate, 8, 2));
 		$timestr = sprintf ("%02d%02d00", $iHour, $iMinutes);
 		$modtimestr = sprintf ("%02d%02d00", date ("h"), date ("m"));
