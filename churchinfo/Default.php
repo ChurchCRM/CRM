@@ -310,7 +310,23 @@ if ($iUserID > 0)
         	if ($usr_Admin)
 		   		$iMRBSLevel = 2;
             $sSQL = "INSERT INTO mrbs_users (id, level, name, email) VALUES ('$iUserID', '$iMRBSLevel', '$UserName', '$per_Email') ON DUPLICATE KEY UPDATE level='$iMRBSLevel', name='$UserName',email='$per_Email'";
-        	RunQuery($sSQL);	        
+        	RunQuery($sSQL);
+        }
+        
+        if (isset($bEnableWebCalendar) && $bEnableWebCalendar) {
+        	$sAdmin = ($usr_Admin ? 'Y' : 'N');
+		    $GLOBALS['login'] = $UserName;
+		    $GLOBALS['firstname'] = $per_FirstName;
+    		$GLOBALS['lastname'] = $per_LastName;
+    		$GLOBALS['is_admin'] = $sAdmin;
+    		$GLOBALS['email'] = $per_Email;
+		    $GLOBALS['fullname'] = "$per_FirstName $per_LastName";
+		    $GLOBALS['enabled'] = 1;
+		    
+		    $_SESSION['webcal_login'] = $UserName;
+		    
+        	$sSQL = "INSERT INTO webcal_user (cal_login, cal_firstname, cal_lastname, cal_is_admin, cal_email) VALUES ('$UserName', '$per_FirstName', '$per_LastName', '$sAdmin', '$per_Email') ON DUPLICATE KEY UPDATE cal_login='$UserName', cal_firstname='$per_FirstName', cal_lastname='$per_LastName',cal_is_admin='$sAdmin', cal_email='$per_Email'";
+        	RunQuery($sSQL);
         }
         
         // Redirect to the Menu
