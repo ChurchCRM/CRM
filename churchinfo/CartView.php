@@ -205,24 +205,23 @@ if (count($_SESSION['aPeopleCart']) == 0) {
                 extract($aRow);
 
                 $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
-                if (strlen($sEmail))
-                {
-                        $sValidEmail = gettext("Yes");
-                        if (!stristr($sEmailLink, $sEmail))
-                        {
-                                $email_array[] = $sEmail;
-
-                                if ($iEmailNum == 0)
-                                {       // Comma is not needed before first email address
-                                        $sEmailLink .= $sEmail;
-                                        $iEmailNum++;
-                                }
-                                else
-                                        $sEmailLink .= $sMailtoDelimiter . $sEmail;
-                        }
+                if (strlen($sEmail) == 0 && strlen ($per_WorkEmail) > 0) {
+                	$sEmail = $per_WorkEmail;                	
                 }
-                else
-                {
+                
+                if (strlen($sEmail)) {
+                    $sValidEmail = gettext("Yes");
+                    if (!stristr($sEmailLink, $sEmail)) {
+                        $email_array[] = $sEmail;
+
+                        if ($iEmailNum == 0) {       
+                        	// Comma is not needed before first email address
+                            $sEmailLink .= $sEmail;
+                            $iEmailNum++;
+                        } else
+                            $sEmailLink .= $sMailtoDelimiter . $sEmail;
+                    }
+                } else {
                         $sValidEmail = gettext("No");
                 }
 
