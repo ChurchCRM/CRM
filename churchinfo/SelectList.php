@@ -139,6 +139,10 @@ $iGroupTypeMissing = 0;
 
 $iGroupID = -1;
 $iRoleID = -1;
+$iClassification = -1;
+$iFamilyRole = -1;
+$iGender = -1;
+$iGroupType = -1;
 
 if ($sMode == 'person') {
 	// Set the page title
@@ -307,23 +311,20 @@ if ($iMode == 1 || $iMode == 2) {
     }
 
 	$sClassificationWhereExt = "";
-	if (isset($iClassification))
-		if ($iClassification >= 0)
-			$sClassificationWhereExt = " AND per_cls_ID=".$iClassification." ";
-		else
-			$sClassificationWhereExt = " AND per_cls_ID!=".
-											($iClassification+$iTenThousand)." ";
+	if ($iClassification >= 0)
+		$sClassificationWhereExt = " AND per_cls_ID=".$iClassification." ";
+	else
+		$sClassificationWhereExt = " AND per_cls_ID!=".
+										($iClassification+$iTenThousand)." ";
 	
 	$sFamilyRoleWhereExt = "";
-	if (isset($iFamilyRole)) {
-		if ($iFamilyRole >= 0) {
-			$sFamilyRoleWhereExt = " AND per_fmr_ID=".$iFamilyRole." ";
-		} else {
-			$sFamilyRoleWhereExt = " AND per_fmr_ID!=".($iFamilyRole+$iTenThousand)." ";
-		}
+	if ($iFamilyRole >= 0) {
+		$sFamilyRoleWhereExt = " AND per_fmr_ID=".$iFamilyRole." ";
+	} else {
+		$sFamilyRoleWhereExt = " AND per_fmr_ID!=".($iFamilyRole+$iTenThousand)." ";
 	}
 
-    if (isset($iGender))
+    if ($iGender >= 0)
         $sGenderWhereExt = " AND per_Gender = " . $iGender;
 	else
 		$sGenderWhereExt = "";
@@ -406,22 +407,22 @@ if ($iMode == 1 || $iMode == 2) {
                 break;
     }
     
-	if (isset ($iClassification) && $iClassification != "")
+	if ($iClassification >= 0)
 		$iClassificationStr = $iClassification;
 	else 
 		$iClassificationStr = "";
 		
-	if (isset ($iFamilyRole) && $iFamilyRole != "")
+	if ($iFamilyRole >= 0)
 		$iFamilyRoleStr = $iFamilyRole;
 	else
 		$iFamilyRoleStr = "";
 				
-	if (isset ($iGender) && $iGender != "")
+	if ($iGender >= 0)
 		$iGenderStr = $iGender;
 	else
 		$iGenderStr = "";
 				
-	if (isset ($iGroupType) && $iGroupType != "")
+	if ($iGroupType >= 0)
 		$iGroupTypeStr = $iGroupType;
 	else
 		$iGroupTypeStr = "";
@@ -535,22 +536,20 @@ if ($iMode == 1 || $iMode == 2) {
 		// Classification drop down list
 		echo '	<select name="Classification" onchange="this.form.submit()">
 				<option value="" ';
-		if (!isset($iClassification)) 
+		if ($iClassification >= 0)
 			echo ' selected ';
 		echo '>' . gettext("All Classifications") . '</option>';
 
 		foreach ($aClassificationName as $key => $value) {
 			echo '<option value="'.$key.'"';
-			if (isset($iClassification))
-				if ($iClassification == $key) 
+			if ($iClassification >= 0 && $iClassification == $key) 
 					echo ' selected ';
 			echo '>'.$value.'</option>';
 		}
 
 		foreach ($aClassificationName as $key => $value) {
 			echo '<option value="'.($key-$iTenThousand).'"';
-			if (isset($iClassification))
-				if ($iClassification == ($key-$iTenThousand)) 
+			if ($iClassification >= 0 && $iClassification == ($key-$iTenThousand))
 					echo ' selected ';
 			echo '>! '.$value.'</option>';
 		}
@@ -560,22 +559,20 @@ if ($iMode == 1 || $iMode == 2) {
 		// Family Role Drop Down Box
 		echo '<select name="FamilyRole" onchange="this.form.submit()">';
 		echo '<option value="" ';
-		if (!isset($iFamilyRole)) 
+		if ($iFamilyRole < 0) 
 			echo ' selected ';
 		echo '>' . gettext("All Family Roles") . '</option>';
 
 		foreach ($aFamilyRoleName as $key => $value) {
 			echo '<option value="'.$key.'"';
-			if (isset($iFamilyRole))
-				if ($iFamilyRole == $key)
+			if ($iFamilyRole >= 0 && $iFamilyRole == $key)
 					echo ' selected ';
 			echo '>'.$value.'</option>';
 		}
 
 		foreach ($aFamilyRoleName as $key => $value) {
 			echo '<option value="'.($key-$iTenThousand).'"';
-			if (isset($iFamilyRole))
-				if ($iFamilyRole == ($key-$iTenThousand))
+			if ($iFamilyRole >= 0 && $iFamilyRole == ($key-$iTenThousand))
 					echo ' selected ';
 			echo '>! '.$value.'</option>';
 		}
@@ -804,19 +801,19 @@ if ($iMode == 1 || $iMode == 2) {
 				echo '<input type="hidden" name="Letter" value="';
 				echo $sLetter . '">'; 
 			}
-			if(isset($iClassification)) {
+			if($iClassification >= 0) {
 				echo '<input type="hidden" name="Classification" value="';
 				echo $iClassification . '">'; 
 			}
-			if(isset($iFamilyRole)) {
+			if($iFamilyRole >= 0) {
 				echo '<input type="hidden" name="FamilyRole" value="';
 				echo $iFamilyRole . '">'; 
 			}
-			if(isset($iGender)) {
+			if($iGender >= 0) {
 				echo '<input type="hidden" name="Gender" value="';
 				echo $iGender . '">'; 
 			}
-			if(isset($iGroupType)) {
+			if($iGroupType >= 0) {
 				echo '<input type="hidden" name="grouptype" value="';
 				echo $iGroupType . '">'; 
 			}
@@ -929,16 +926,16 @@ if ($iMode == 1 || $iMode == 2) {
 			echo '<input type="hidden" name="Sort" value="' .$sSort. '">';
 		if(isset($sLetter)) 
 			echo '<input type="hidden" name="Letter" value="' .$sLetter. '">';
-		if(isset($iClassification)) 
+		if($iClassification >= 0) 
 			echo '<input type="hidden" name="Classification" value="' .$iClassification. '">';
-		if(isset($iFamilyRole)) 
+		if($iFamilyRole >= 0) 
 			echo '<input type="hidden" name="FamilyRole" value="' .$iFamilyRole. '">';
-		if(isset($iGender)) 
+		if($iGender >= 0) 
 			echo '<input type="hidden" name="Gender" value="' .$iGender. '">';
 		if(isset($iPersonProperty)) {
 			echo '<input type="hidden" name="PersonProperties" value="';
 			echo $iPersonProperty . '">'; }
-		if(isset($iGroupType)) 
+		if($iGroupType >= 0) 
 			echo '<input type="hidden" name="grouptype" value="' .$iGroupType. '">'; 
 		if(isset($iGroupID))
 			echo '<input type="hidden" name="groupid" value="' .$iGroupID. '">';
