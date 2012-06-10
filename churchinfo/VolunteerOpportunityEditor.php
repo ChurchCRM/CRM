@@ -44,13 +44,23 @@ if (!$_SESSION['bAdmin']) {
 // and so on
 // action is change of order number, up, down, delete, Name, Desc, or Active, or Add New
 
+$iOpp = -1;
+$sAction = "";
+$iRowNum = -1;
+$bErrorFlag = false;
+$aNameErrors = array (); 
+$bNewNameError = false;
 
-$sAction = $_GET["act"];
-$sOpp = FilterInput($_GET["Opp"],'int');
-
+if (array_key_exists ("act", $_GET))
+	$sAction = FilterInput($_GET["act"]);
+if (array_key_exists ("Opp", $_GET))
+	$iOpp = FilterInput($_GET["Opp"],'int');
+if (array_key_exists ("row_num", $_GET))
+	$iRowNum = FilterInput($_GET["row_num"], 'int');
+	
 $sDeleteError = "";
 
-if (($sAction == 'delete') && (strlen($sOpp) > 0)) {
+if (($sAction == 'delete') && $iOpp > 0) {
     // Delete Confirmation Page
 
     // Security: User must have Delete records permission
@@ -60,7 +70,7 @@ if (($sAction == 'delete') && (strlen($sOpp) > 0)) {
         exit;
     }
 
-    $sSQL = "SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $sOpp . "'";
+    $sSQL = "SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
     $rsOpps = RunQuery($sSQL);
     $aRow = mysql_fetch_array($rsOpps);
     extract($aRow);
@@ -83,7 +93,7 @@ if (($sAction == 'delete') && (strlen($sOpp) > 0)) {
     $sSQL = "SELECT `per_FirstName`, `per_LastName` FROM `person_per` ";
     $sSQL .= "LEFT JOIN `person2volunteeropp_p2vo` ";
     $sSQL .= "ON `p2vo_per_ID`=`per_ID` ";
-    $sSQL .= "WHERE `p2vo_vol_ID` = '" . $sOpp . "' ";
+    $sSQL .= "WHERE `p2vo_vol_ID` = '" . $iOpp . "' ";
     $sSQL .= "ORDER BY `per_LastName`, `per_FirstName` ";
     $rsPeople = RunQuery($sSQL);
     $numRows = mysql_num_rows($rsPeople);
@@ -98,7 +108,7 @@ if (($sAction == 'delete') && (strlen($sOpp) > 0)) {
             echo "\n<br><b> $per_FirstName $per_LastName</b>";
         }
     }
-    echo "\n<br><h3><a href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=" . $sOpp . "\"> ";
+    echo "\n<br><h3><a href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=" . $iOpp . "\"> ";
     echo gettext("Yes, delete this Volunteer Opportunity") . " </a></h3> ";
     echo "\n<h2><a href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php\"> ";
     echo gettext("No, cancel this deletion") . " </a></h2> ";
@@ -107,7 +117,7 @@ if (($sAction == 'delete') && (strlen($sOpp) > 0)) {
 }
 
 
-if (($sAction == 'ConfDelete') && (strlen($sOpp) > 0)) {
+if (($sAction == 'ConfDelete') && $iOpp > 0) {
 
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
@@ -115,14 +125,14 @@ if (($sAction == 'ConfDelete') && (strlen($sOpp) > 0)) {
         Redirect("Menu.php");
         exit;
     }
-    $sSQL = "DELETE FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $sOpp . "'";
+    $sSQL = "DELETE FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
     RunQuery($sSQL);
-    $sSQL = "DELETE FROM `person2volunteeropp_p2vo` WHERE `p2vo_vol_ID` = '" . $sOpp . "'";
+    $sSQL = "DELETE FROM `person2volunteeropp_p2vo` WHERE `p2vo_vol_ID` = '" . $iOpp . "'";
     RunQuery($sSQL);
     }
 
 
-if (!$_GET['row_num']) {
+if ($iRowNum == 0) {
 // Skip data integrity check if we are only changing the ordering
 // by moving items up or down.
 // System response is too slow to do these checks every time the page
@@ -264,16 +274,14 @@ if ($numRows == 0) {
     </center>
 <?php
 } else { // if an 'action' (up/down arrow clicked, or order was input)
-   if ($_GET['row_num'] and $_GET['act']) {
+   if ($iRowNum and $sAction != "") {
       // cast as int and couple with switch for sql injection prevention for $row_num
-      $row_num = (int) $_GET['row_num'];
-      $act = $_GET['act'];
-      if ($act == 'up' or $act == 'down') {
-         $swapRow = $row_num;
-         if ($act == 'up') {
-            $newRow = --$row_num;
+      if ($sAction == 'up' or $sAction == 'down') {
+         $swapRow = $iRowNum;
+         if ($sAction == 'up') {
+            $newRow = --$iRowNum;
          } else {
-            $newRow = ++$row_num;
+            $newRow = ++$iRowNum;
          }
       }
 
@@ -353,7 +361,7 @@ for ($row=1; $row <= $numRows; $row++) {
    <input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
    <?php
       
-   if ( $aNameErrors[$row] ) {
+   if (array_key_exists ($row, $aNameErrors) && $aNameErrors[$row] ) {
       echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
    }
    ?>
