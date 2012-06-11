@@ -39,7 +39,7 @@ function CompareDistance ($elem1, $elem2)
 function SortByDistance ($array)
 {
   $newArr = $array;
-  usort ($newArr, CompareDistance);
+  usort ($newArr, 'CompareDistance');
   return ($newArr);
 }
 
@@ -113,16 +113,20 @@ while ($aRow = mysql_fetch_array($rsFamilyRole))
 }
 
 // Get the Family if specified in the query string
-$iFamily = FilterInput($_GET["Family"],'int');
-$iNumNeighbors = FilterInput ($_GET["NumNeighbors"],'int');
-
-if ($iNumNeighbors == 0)
-	$iNumNeighbors = 15;
+$iFamily = -1;
+$iNumNeighbors = 15;
+if (array_key_exists ("Family", $_GET))
+	$iFamily = FilterInput($_GET["Family"],'int');
+if (array_key_exists ("NumNeighbors", $_GET))
+	$iNumNeighbors = FilterInput ($_GET["NumNeighbors"],'int');
 
 $nMaxDistance = 10; // miles, default value
 
 $bClassificationPost = FALSE;
 $sClassificationList = "";
+$sCoordFileFormat = "";
+$sCoordFileFamilies = "";
+$sCoordFileName = "";
 
 //Is this the second pass?
 if (    isset($_POST["FindNeighbors"]) || 
@@ -134,8 +138,10 @@ if (    isset($_POST["FindNeighbors"]) ||
 	$iNumNeighbors = FilterInput ($_POST["NumNeighbors"]);
 	$nMaxDistance = FilterInput ($_POST["MaxDistance"]);
 	$sCoordFileName = FilterInput ($_POST["CoordFileName"]);
-	$sCoordFileFormat = FilterInput ($_POST["CoordFileFormat"]);
-	$sCoordFileFamilies = FilterInput ($_POST["CoordFileFamilies"]);
+	if (array_key_exists ("CoordFileFormat", $_POST))
+		$sCoordFileFormat = FilterInput ($_POST["CoordFileFormat"]);
+	if (array_key_exists ("CoordFileFamilies", $_POST))
+		$sCoordFileFamilies = FilterInput ($_POST["CoordFileFamilies"]);
 
     foreach ($aClassificationName as $key => $value) {
         $sClassNum = "Classification" . $key;
@@ -297,7 +303,7 @@ if (isset($_POST["FindNeighbors"]) && !$iFamily)
     echo "<center><h2>Please select a Family</h2></center>";
 }
 
-unset($aPersonIDs);
+$aPersonIDs = array();
 
 if (    $iFamily != 0 &&
         (isset($_POST["FindNeighbors"]) ||
@@ -321,6 +327,8 @@ if (    $iFamily != 0 &&
 	echo "<td>".gettext("Longitude")."</td>\n";
 	echo "</tr>\n";
 
+	$sRowClass = 'RowColorA';
+
 	foreach ($resultsByDistance as $oneResult) {
 
 		if ($counter >= $iNumNeighbors)
@@ -342,7 +350,6 @@ if (    $iFamily != 0 &&
             continue;
 
         $counter++;
-
         //Alternate the row color
         $sRowClass = AlternateRowStyle($sRowClass);
 
