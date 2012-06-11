@@ -22,12 +22,15 @@ require "Include/GeoCoder.php";
 //Set the page title
 $sPageTitle = gettext("Family Editor");
 
+$iFamilyID = -1;
+
 //Get the FamilyID from the querystring
-$iFamilyID = FilterInput($_GET["FamilyID"],'int');
+if (array_key_exists ("FamilyID", $_GET))
+	$iFamilyID = FilterInput($_GET["FamilyID"],'int');
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (strlen($iFamilyID) > 0)
+if ($iFamilyID > 0)
 {
 	if (!($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID']))))
 	{
@@ -75,6 +78,10 @@ $bErrorFlag = false;
 $sNameError = "";
 $sEmailError = "";
 $sWeddingDateError = "";
+
+$sName = "";
+
+$UpdateBirthYear = 0;
 
 $aFirstNameError = array();
 $aBirthDateError = array();
@@ -192,7 +199,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		$aUpdateBirthYear[$iCount] = FilterInput($_POST["UpdateBirthYear"], 'int');
 
 		// Make sure first names were entered if editing existing family
-		if (strlen($iFamilyID) > 0)
+		if ($iFamilyID > 0)
 		{
 			if (strlen($aFirstNames[$iCount]) == 0)
 			{
@@ -285,7 +292,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			$bOkToCanvassString = "'TRUE'";
 		else
 			$bOkToCanvassString = "'FALSE'";
-		if (strlen($iFamilyID) < 1)
+		if ($iFamilyID < 1)
 		{
 			$sSQL = "INSERT INTO family_fam (
 						fam_Name, 
@@ -505,7 +512,7 @@ else
 {
 	//FirstPass
 	//Are we editing or adding?
-	if (strlen($iFamilyID) > 0)
+	if ($iFamilyID > 0)
 	{
 		//Editing....
 		//Get the information on this family
@@ -577,6 +584,46 @@ else
 		$iClassification = "0";
 		$iFamilyMemberRows = 6;
 		$bOkToCanvass = 1;
+		
+		$iFamilyID = -1;
+		$sName = "";
+		$sAddress1 = "";
+		$sAddress2 = "";
+		$sCity = "";
+		$sState = "";
+		$sZip	= "";
+		$sCountry = "";
+		$sHomePhone = "";
+		$bNoFormat_HomePhone = isset($_POST["NoFormat_HomePhone"]);
+		$sWorkPhone = "";
+		$bNoFormat_WorkPhone = isset($_POST["NoFormat_WorkPhone"]);
+		$sCellPhone = "";
+		$bNoFormat_CellPhone = isset($_POST["NoFormat_CellPhone"]);
+		$sEmail = "";
+		$bSendNewsLetter = 'TRUE';
+		$iCanvasser = -1;
+		$dWeddingDate = "";
+		$nLatitude = 0.0;
+		$nLongitude = 0.0;		
+
+		//Loop through the Family Member 'quick entry' form fields
+		for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++)
+		{
+			// Assign everything to arrays
+			$aFirstNames[$iCount] = "";
+			$aMiddleNames[$iCount] = "";
+			$aLastNames[$iCount] = "";
+			$aSuffix[$iCount] = "";
+			$aRoles[$iCount] = 0;
+			$aGenders[$iCount] = "";
+			$aBirthDays[$iCount] = 0;
+			$aBirthMonths[$iCount] = 0;
+			$aBirthYears[$iCount] = 0;
+			$aClassification[$iCount] = 0;
+			$aPersonIDs[$iCount] = 0;
+			$aUpdateBirthYear[$iCount] = 0;
+		}
+		
 	}
 }
 
@@ -595,7 +642,7 @@ require "Include/Header.php";
 			<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="FamilySubmit">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"FamilySubmitAndAdd\">"; } 
 			echo "<input type=\"button\" class=\"icButton\" value=\"" . gettext("Cancel") . "\"Name=\"FamilyCancel\"";
-			if (strlen($iFamilyID) > 0)
+			if ($iFamilyID > 0)
 				echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
 			else
 				echo " onclick=\"javascript:document.location='SelectList.php';\">";
@@ -731,7 +778,7 @@ maxlength="10" size="8">
 			while ($aCanvasser = mysql_fetch_array($rsCanvassers))
 			{
 				echo "<option value=\"" . $aCanvasser["per_ID"] . "\"";
-				if ($aCanvasser["per_ID"]==$fam_Canvasser)
+				if ($aCanvasser["per_ID"]==$iCanvasser)
 					echo " selected";
 				echo ">";
 				echo $aCanvasser["per_FirstName"] . " " . $aCanvasser["per_LastName"];
@@ -749,7 +796,7 @@ maxlength="10" size="8">
 			while ($aBraveCanvasser = mysql_fetch_array($rsBraveCanvassers))
 			{
 				echo "<option value=\"" . $aBraveCanvasser["per_ID"] . "\"";
-				if ($aBraveCanvasser["per_ID"]==$fam_Canvasser)
+				if ($aBraveCanvasser["per_ID"]==$iCanvasser)
 					echo " selected";
 				echo ">";
 				echo $aBraveCanvasser["per_FirstName"] . " " . $aBraveCanvasser["per_LastName"];
@@ -861,7 +908,7 @@ maxlength="10" size="8">
 
 	<tr>
 		<td colspan="2">
-		<div class="MediumText"><center><?php if (!strlen($iFamilyID)) { echo gettext("You may create family members now or add them later.  All entries will become <i>new</i> person records."); }?></center></div><br><br>
+		<div class="MediumText"><center><?php if ($iFamilyID<0) { echo gettext("You may create family members now or add them later.  All entries will become <i>new</i> person records."); }?></center></div><br><br>
 		<table cellpadding="3" cellspacing="0" width="100%">
 		<tr align="center">
 			<td>&nbsp;</td>
@@ -1009,7 +1056,7 @@ maxlength="10" size="8">
 	echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\">";
 	if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"Save and Add\" name=\"FamilySubmitAndAdd\">"; }
 	echo "<input type=\"button\" class=\"icButton\" value=\"" . gettext("Cancel") . "\" Name=\"FamilyCancel\"";
-	if (strlen($iFamilyID) > 0)
+	if ($iFamilyID > 0)
 		echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
 	else
 		echo " onclick=\"javascript:document.location='SelectList.php';\">";
