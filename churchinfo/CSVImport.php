@@ -580,7 +580,6 @@ if (isset($_POST["DoImport"]))
             $sSQLpersonFields .= ")";
             $sSQLperson = $sSQLpersonFields . $sSQLpersonData;
 
-            print $sSQLperson . "<p>\n";
             RunQuery($sSQLperson);
 
            // Make a one-person family if requested
