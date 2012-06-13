@@ -135,8 +135,10 @@ if (isset($_POST["UploadCSV"]))
     // Valid file, so save it and display the import mapping form.
     else
     {
+    	$csvTempFile = "import.csv";
         $system_temp = ini_get("session.save_path");
-        $csvTempFile = $system_temp . "/import.csv";
+        if (strlen ($system_temp)>0)
+	        $csvTempFile = $system_temp . "/" . $csvTempFile;
         move_uploaded_file($_FILES['CSVfile']['tmp_name'], $csvTempFile);
 
         // create the file pointer
@@ -306,8 +308,10 @@ if (isset($_POST["DoImport"]))
 	$bHasCustom = false;
 	$bHasFamCustom = false;
 	
-	$system_temp = ini_get("session.save_path");
-    $csvTempFile = $system_temp . "/import.csv";
+    $csvTempFile = "import.csv";
+    $system_temp = ini_get("session.save_path");
+    if (strlen ($system_temp)>0)
+        $csvTempFile = $system_temp . "/" . $csvTempFile;
     
     $Families = array();
 
@@ -333,10 +337,12 @@ if (isset($_POST["DoImport"]))
             if (substr($_POST["col" . $col],0,1) == "c") 
             {
                 $aColumnCustom[$col] = 1;
+				$aFamColumnCustom[$col] = 0;
                 $bHasCustom = true;
             }
             else 
 				{
+		            $aColumnCustom[$col] = 0;
 					if (substr($_POST["col" . $col],0,2) == "fc")
 					{
 						$aFamColumnCustom[$col] = 1;
@@ -344,7 +350,7 @@ if (isset($_POST["DoImport"]))
 					}
 					else
 					{
-						$aColumnCustom[$col] = 0;
+						$aFamColumnCustom[$col] = 0;
 					}
             }
             $aColumnID[$col] = $_POST["col" . $col];
@@ -403,7 +409,7 @@ if (isset($_POST["DoImport"]))
             for ($col = 0; $col < $numCol; $col++)
             {
                 // Is it not a custom field?
-                if ((!array_key_exists ($col, $aColumnCustom)) and (!array_key_exists ($col,$aFamColumnCustom)))
+                if (!$aColumnCustom[$col] and !$aFamColumnCustom[$col])
                 {
                     $currentType = $aColumnID[$col];
 
@@ -549,7 +555,7 @@ if (isset($_POST["DoImport"]))
             for ($col = 0; $col < $numCol; $col++)
             {
                 // Is it not a custom field?
-				if ((!array_key_exists ($col,$aColumnCustom)) and (!array_key_exists($col, $aFamColumnCustom))) 
+				if (!$aColumnCustom[$col] and !$aFamColumnCustom[$col]) 
                 {
                     $currentType = $aColumnID[$col];
                     switch($currentType)
@@ -574,6 +580,7 @@ if (isset($_POST["DoImport"]))
             $sSQLpersonFields .= ")";
             $sSQLperson = $sSQLpersonFields . $sSQLpersonData;
 
+            print $sSQLperson . "<p>\n";
             RunQuery($sSQLperson);
 
            // Make a one-person family if requested
