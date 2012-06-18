@@ -37,7 +37,7 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 
 ?>
 
-   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=<?php echo $sGoogleMapKey; ?>&sensor=false"></script>
+   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?<?php echo $sGoogleMapKey ? "key=$sGoogleMapKey&" : ""; ?>sensor=false"></script>
    <div>
     <div id="map" style="width: 800px; height: 600px; float:left;"></div>
 
