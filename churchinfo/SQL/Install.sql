@@ -712,7 +712,7 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (60, 'propertytype', 'properties', 0, 'Property Types', NULL, 'PropertyTypeList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4),
 (64, 'help', 'root', 1, 'Help', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 127),
 (65, 'about', 'help', 0, 'About ChurchInfo', NULL, 'Help.php?page=About', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
-(66, 'wiki', 'help', 0, 'Wiki Documentation', NULL, 'JumpToWiki.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2),
+(66, 'wiki', 'help', 0, 'Wiki Documentation', NULL, 'Help.php?page=Wiki', '', 'bAll', NULL, 0, 0, NULL, 1, 2),
 (67, 'helppeople', 'help', 0, 'People', NULL, 'Help.php?page=People', '', 'bAll', NULL, 0, 0, NULL, 1, 3),
 (68, 'helpfamily', 'help', 0, 'Families', NULL, 'Help.php?page=Family', '', 'bAll', NULL, 0, 0, NULL, 1, 4),
 (69, 'helpgeofeature', 'help', 0, 'Geographic features', NULL, 'Help.php?page=Geographic', '', 'bAll', NULL, 0, 0, NULL, 1, 5),
