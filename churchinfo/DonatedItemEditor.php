@@ -68,12 +68,12 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 	if (strlen($iDonatedItemID) < 1)
 	{
 		$sSQL = "INSERT INTO donateditem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_minimum, di_EnteredBy, di_EnteredDate)
-		VALUES (" . $iCurrentFundraiser . ",'" . $sItem . "','" . $bMultibuy . "','" . $iDonor . "','" . $iBuyer . "','" . $sTitle . "','" . $sDescription . "','" . $nSellPrice . "','" . $nEstPrice . "','" . $nMaterialValue . "','".$nMinimumPrice . "'";
+		VALUES (" . $iCurrentFundraiser . ",'" . $sItem . "','" . $bMultibuy . "','" . $iDonor . "','" . $iBuyer . "','" . mysql_real_escape_string($sTitle) . "','" . mysql_real_escape_string($sDescription) . "','" . $nSellPrice . "','" . $nEstPrice . "','" . $nMaterialValue . "','".$nMinimumPrice . "'";
 		$sSQL .= "," . $_SESSION['iUserID'] . ",'" . date("YmdHis") . "')";
 		$bGetKeyBack = True;		
 	// Existing record (update)
 	} else {
-		$sSQL = "UPDATE donateditem_di SET di_FR_ID = " . $iCurrentFundraiser . ", di_Item = '". $sItem . "', di_multibuy = '" . $bMultibuy . "', di_donor_ID = " . $iDonor . ", di_buyer_ID = " . $iBuyer . ", di_title = '" . $sTitle . "', di_description = '" . $sDescription . "', di_sellprice = '" . $nSellPrice . "', di_estprice = '" . $nEstPrice . "', di_materialvalue = '" . $nMaterialValue . "', di_minimum = '" . $nMinimumPrice . "', di_EnteredBy=" . $_SESSION['iUserID'] . ", di_EnteredDate = '" . date("YmdHis") . "'";
+		$sSQL = "UPDATE donateditem_di SET di_FR_ID = " . $iCurrentFundraiser . ", di_Item = '". $sItem . "', di_multibuy = '" . $bMultibuy . "', di_donor_ID = " . $iDonor . ", di_buyer_ID = " . $iBuyer . ", di_title = '" . mysql_real_escape_string($sTitle) . "', di_description = '" . mysql_real_escape_string($sDescription) . "', di_sellprice = '" . $nSellPrice . "', di_estprice = '" . $nEstPrice . "', di_materialvalue = '" . $nMaterialValue . "', di_minimum = '" . $nMinimumPrice . "', di_EnteredBy=" . $_SESSION['iUserID'] . ", di_EnteredDate = '" . date("YmdHis") . "'";
 		$sSQL .= " WHERE di_ID = " . $iDonatedItemID;
 		$bGetKeyBack = false;
 	}
@@ -226,7 +226,7 @@ require "Include/Header.php";
 	
 				<tr>
 					<td class="LabelColumn"><?php echo gettext("Title:"); ?></td>
-					<td class="TextColumn"><input type="text" name="Title" id="Title" value="<?php echo $sTitle; ?>"></td>
+					<td class="TextColumn"><input type="text" name="Title" id="Title" value="<?php echo stripslashes($sTitle); ?>"></td>
 				</tr>
 				
 				<tr>
@@ -239,7 +239,6 @@ require "Include/Header.php";
 					<td class="TextColumn"><input type="text" name="MaterialValue" id="MaterialValue" value="<?php echo $nMaterialValue; ?>"></td>
 				</tr>
 
-				<tr>
 					<td class="LabelColumn"><?php echo gettext("Minimum Price:"); ?></td>
 					<td class="TextColumn"><input type="text" name="MinimumPrice" id="MinimumPrice" value="<?php echo $nMinimumPrice; ?>"></td>
 				</tr>
@@ -283,7 +282,7 @@ require "Include/Header.php";
 	
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Description");?></td>
-				<td><textarea name="Description" rows="8" cols="90"><?php echo $sDescription?></textarea></td>
+				<td><textarea name="Description" rows="8" cols="90"><?php echo stripslashes($sDescription);?></textarea></td>
 			</tr>
 
 			</table>
