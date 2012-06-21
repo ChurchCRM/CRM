@@ -358,21 +358,21 @@ if (isset($_POST["DepositSlipSubmit"])) {
 							res_version,
 							res_EchoServer)
 						VALUES (" .
-							"'" . $echoPHP->echotype1 . "'," .
-							"'" . $echoPHP->echotype2 . "'," .
-							"'" . $echoPHP->echotype3 . "'," .
-							"'" . $echoPHP->authorization . "'," .
-							"'" . $echoPHP->order_number . "'," .
-							"'" . $echoPHP->reference . "'," .
-							"'" . $echoPHP->status . "'," .
-							"'" . $echoPHP->avs_result . "'," .
-							"'" . $echoPHP->security_result . "'," .
-							"'" . $echoPHP->mac . "'," .
-							"'" . $echoPHP->decline_code . "'," .
-							"'" . $echoPHP->tran_date . "'," .
-							"'" . $echoPHP->merchant_name . "'," .
-							"'" . $echoPHP->version . "'," .
-							"'" . $echoPHP->EchoServer . "')";
+							"'" . mysql_real_escape_string($echoPHP->echotype1) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->echotype2) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->echotype3) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->authorization) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->order_number) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->reference) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->status) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->avs_result) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->security_result) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->mac) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->decline_code) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->tran_date) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->merchant_name) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->version) . "'," .
+							"'" . mysql_real_escape_string($echoPHP->EchoServer) . "')";
 			RunQuery($sSQL);
 
 			// Now get the ID for the newly created record
