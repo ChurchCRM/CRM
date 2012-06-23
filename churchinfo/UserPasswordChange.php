@@ -30,6 +30,8 @@ require "Include/Functions.php";
 $bAdminOtherUser = false;
 $bAdminOther = false;
 $bError = false;
+$sOldPasswordError = false;
+$sNewPasswordError = false; 
 
 // Get the PersonID out of the querystring if they are an admin user; otherwise, use session.
 if ($_SESSION['bAdmin'] && isset($_GET["PersonID"]))
@@ -78,7 +80,7 @@ if (isset($_POST["Submit"]))
             RunQuery($sSQL);
 
             // Route back to the list
-            if ($_GET["FromUserList"] == "True") {
+            if (array_key_exists ("FromUserList", $_GET) and $_GET["FromUserList"] == "True") {
                 Redirect("UserList.php");
             } else {
                 Redirect("Menu.php");
@@ -174,6 +176,11 @@ if (isset($_POST["Submit"]))
             }
         }
     }
+} else {
+	// initialize stuff since this is the first time showing the form
+	$sOldPassword = "";
+	$sNewPassword1 = "";
+    $sNewPassword2 = "";
 }
 
 // Set the page title and include HTML header
@@ -188,7 +195,7 @@ else
     echo "<p>" . gettext("Enter a new password for this user.") . "</p>";
 ?>
 
-<form method="post" action="UserPasswordChange.php?<?php echo "PersonID=" . $iPersonID ?>&FromUserList=<?php echo $_GET["FromUserList"]; ?>">
+<form method="post" action="UserPasswordChange.php?<?php echo "PersonID=" . $iPersonID ?>&FromUserList=<?php echo (array_key_exists ("FromUserList", $_GET) ? $_GET["FromUserList"] : ""); ?>">
 <table cellpadding="4">
 <?php if (!$bAdminOtherUser) { ?>
     <tr>
