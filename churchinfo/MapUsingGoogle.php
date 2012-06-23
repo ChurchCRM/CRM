@@ -107,7 +107,7 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 		if ($fam_longitude != 0 && $fam_latitude != 0) {
 ?>
 
-                     var image = new google.maps.MarkerImage('http://www.google.com/intl/en_us/mapfiles/ms/micons/<?php echo $markerIcons[$per_cls_ID]; ?>.png',
+                     var image = new google.maps.MarkerImage('http://www.google.com/intl/en_us/mapfiles/ms/micons/<?php echo (array_key_exists ($per_cls_ID, $markerIcons) ? $markerIcons[$per_cls_ID] : 0); ?>.png',
                                  new google.maps.Size(32, 32),
                                  new google.maps.Point(0,0),
                                  new google.maps.Point(0, 32));
