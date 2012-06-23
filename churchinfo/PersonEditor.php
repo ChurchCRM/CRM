@@ -89,6 +89,8 @@ $sFriendDateError = "";
 $sMembershipDateError = "";
 $aCustomErrors = array ();
 
+$fam_Country = "";
+
 $bNoFormat_HomePhone = false;
 $bNoFormat_WorkPhone = false;
 $bNoFormat_CellPhone = false;
