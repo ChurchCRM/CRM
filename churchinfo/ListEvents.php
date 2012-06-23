@@ -187,7 +187,6 @@ foreach ($allMonths as $mKey => $mVal) {
 
                 $aEventID[$row] = $event_id;
                 $aEventType[$row] = $event_typename;
-                $aEventName[$row] = htmlentities(stripslashes($event_name),ENT_NOQUOTES, "UTF-8");
                 $aEventTitle[$row] = htmlentities(stripslashes($event_title),ENT_NOQUOTES, "UTF-8");
                 $aEventDesc[$row] = htmlentities(stripslashes($event_desc),ENT_NOQUOTES, "UTF-8");
                 $aEventText[$row] = htmlentities(stripslashes($event_text),ENT_NOQUOTES, "UTF-8");
