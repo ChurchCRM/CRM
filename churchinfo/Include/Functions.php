@@ -138,7 +138,7 @@ if (isset($_GET["RemoveFromPeopleCart"])) {
 
 // Are they emptying their cart?
 if (isset($_GET["Action"]) && ($_GET["Action"] == "EmptyCart")) {
-    unset($_SESSION['aPeopleCart']);
+    $_SESSION['aPeopleCart'] = array ();
     $sGlobalMessage = gettext("Your cart has been successfully emptied.");
 }
 
