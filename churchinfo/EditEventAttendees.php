@@ -63,7 +63,7 @@ if($numAttRows!=0){
   for($na=0; $na<$numAttRows; $na++){  
     $attRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
     extract($attRow);
-    $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Email, per_HomePhone, per_Country FROM person_per WHERE per_ID = '.$person_id;
+    $sSQL = 'SELECT per_Title, per_ID, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Email, per_HomePhone, per_Country FROM person_per WHERE per_ID = '.$person_id;
     $perOpps = RunQuery($sSQL);
     $perRow = mysql_fetch_array($perOpps, MYSQL_BOTH);
     extract($perRow);  

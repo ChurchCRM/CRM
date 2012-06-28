@@ -5,11 +5,12 @@
  *  last change : 2007-xx-x
  *  description : Quickly add attendees to an event
  *
- *  http://www.infocentral.org/
+ *  http://www.churchdb.org/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *  Copyright 2005 Todd Pillars
+ *  Copyright 2012 Michael Wilt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -23,11 +24,22 @@ require "Include/Header.php";
 
 $sPageTitle = gettext("Event Checkin");
 
-$sAction = $_POST['Action'];
-$EventID = $_POST['EventID']; // from ListEvents button=Attendees
-$EvtName = $_POST['EName'];
-$EvtDesc = $_POST['EDesc'];
-$EvtDate = $_POST['EDate'];
+$sAction = "";
+$EventID = 0;
+$EvtName = "";
+$EvtDesc = "";
+$EvtDate = "";
+
+if (array_key_exists ('Action', $_POST))
+	$sAction = $_POST['Action'];
+if (array_key_exists ('EventID', $_POST))
+	$EventID = $_POST['EventID']; // from ListEvents button=Attendees
+if (array_key_exists ('EName', $_POST))
+	$EvtName = $_POST['EName'];
+if (array_key_exists ('EDesc', $_POST))
+	$EvtDesc = $_POST['EDesc'];
+if (array_key_exists ('EDate', $_POST))
+	$EvtDate = $_POST['EDate'];
 
 //
 // process the action inputs
@@ -381,11 +393,13 @@ if (isset ($_POST["EventID"]) ) {
 
 	//Get Person who checked person in	
 		if ($checkin_id <> null){
-		$sSQL = "SELECT * FROM person_per WHERE per_ID = $checkin_id";
-		$perCheckin = RunQuery($sSQL);
-		$perCheckinRow = mysql_fetch_array($perCheckin, MYSQL_BOTH);
-		extract($perCheckinRow);  
-		$sCheckinby = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
+			$sSQL = "SELECT * FROM person_per WHERE per_ID = $checkin_id";
+			$perCheckin = RunQuery($sSQL);
+			$perCheckinRow = mysql_fetch_array($perCheckin, MYSQL_BOTH);
+			extract($perCheckinRow);
+			$sCheckinby = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
+		} else {
+			$sCheckinby = "";
 		}
 		$per_Title='';$per_FirstName='';$per_MiddleName='';$per_LastName='';$per_Suffix='';
 
@@ -432,6 +446,8 @@ if (isset ($_POST["EventID"]) ) {
 <?php require "Include/Footer.php"; 
 
 function loadperson($iPersonID){
+	global $bDefectiveBrowser;
+	
 	$sSQL = "SELECT a.*, family_fam.*, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole, b.per_FirstName AS EnteredFirstName,
 					b.Per_LastName AS EnteredLastName, c.per_FirstName AS EditedFirstName, c.per_LastName AS EditedLastName
 				FROM person_per a
@@ -442,6 +458,9 @@ function loadperson($iPersonID){
 				LEFT JOIN person_per c ON a.per_EditedBy = c.per_ID
 				WHERE a.per_ID = " . $iPersonID;
 	$rsPerson = RunQuery($sSQL);
+	if ((! $rsPerson) || mysql_num_rows ($rsPerson) == 0)
+		return;
+		
 	extract(mysql_fetch_array($rsPerson));
 
 	// Get the lists of custom person fields
@@ -471,7 +490,13 @@ function loadperson($iPersonID){
 
 	$rsNotes = RunQuery($sSQL);
 
-
+        SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
+        $sAddress2 = SelectWhichInfo($per_Address2, $fam_Address2, false);
+        $sCity = SelectWhichInfo($per_City, $fam_City, false);
+        $sState = SelectWhichInfo($per_State, $fam_State, false);
+        $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
+        $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+        
 		echo "<font size=\"4\"><b>";
 		echo FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0);
 		echo "</font></b><br>";
