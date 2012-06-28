@@ -197,6 +197,7 @@ if (count($_SESSION['aPeopleCart']) == 0) {
 
         $sEmailLink = "";
         $iEmailNum = 0;
+        $sRowClass = "RowColorA";
 
         while ($aRow = mysql_fetch_array($rsCartItems))
         {
@@ -288,7 +289,7 @@ if (count($_SESSION['aPeopleCart']) != 0)
                 }
         }
         echo "<br><a href=\"MapUsingGoogle.php?GroupID=0\">" . gettext("Map Cart") . "</a>";
-
+        echo "<br><a href=\"Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36\">" . gettext("Name Tags") . "</a>";
         echo "</p></td>";
 ?>
         <td>
@@ -322,19 +323,19 @@ if (count($_SESSION['aPeopleCart']) != 0)
                 echo '  <td class="TextColumn">';
                 echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
                 echo '  id="BulkMailPresort" value="1" ';
-                if ($_COOKIE["bulkmailpresort"])
+                if (array_key_exists ("buildmailpresort", $_COOKIE) and $_COOKIE["bulkmailpresort"])
                     echo "checked";
                 echo '  ><br></td></tr>';
 
                 echo '  <tr><td class="LabelColumn">' . gettext("Quiet Presort") . '</td>';
                 echo '  <td class="TextColumn">';
                 echo '  <input ';
-                if (!$_COOKIE["bulkmailpresort"])
+                if (array_key_exists ("buildmailpresort", $_COOKIE) and !$_COOKIE["bulkmailpresort"])
                     echo 'disabled ';   // This would be better with $_SESSION variable
                                         // instead of cookie ... (save $_SESSION in MySQL)
                 echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
                 echo '  id="QuietBulkMail" value="1" ';
-                if ($_COOKIE["bulkmailquiet"] && $_COOKIE["bulkmailpresort"])
+                if (array_key_exists ("bulkmailquiet", $_COOKIE) and $_COOKIE["bulkmailquiet"] && array_key_exists ("buildmailpresort", $_COOKIE) and $_COOKIE["bulkmailpresort"])
                     echo "checked";
                 echo '  ><br></td></tr>';
 
@@ -379,7 +380,6 @@ if ($bCreateDirectory)
 </form></div>
 <?php
 }
-
 
     if (($bEmailSend) && ($bSendPHPMail))
     {
@@ -479,9 +479,13 @@ if ($bCreateDirectory)
         } elseif (isset($email_array)) {
 
             // This user has no email messages stored MySQL
-
-            $sEmailSubject = stripslashes($_POST['emailsubject']);
-            $sEmailMessage = stripslashes($_POST['emailmessage']);
+			$sEmailSubject = "";
+			$sEmailMessage = "";
+        	
+			if (array_key_exists ('emailsubject', $_POST))
+	            $sEmailSubject = stripslashes($_POST['emailsubject']);
+			if (array_key_exists ('emailmessage', $_POST))
+	            $sEmailMessage = stripslashes($_POST['emailmessage']);
 
             if (strlen($sEmailSubject.$sEmailMessage)) {
 
