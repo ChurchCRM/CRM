@@ -2,11 +2,12 @@
 /*******************************************************************************
  *
  *  filename    : PledgeEditor.php
- *  last change : 2004-6-12
- *  website     : http://www.infocentral.org
- *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt, Michael Wilt
+ *  last change : 2012-06-29
+ *  website     : http://www.churchdb.org
+ *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
+ *                Copyright 2004-2012Michael Wilt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -24,13 +25,25 @@ if ($bUseScannedChecks) { // Instantiate the MICR class
    $micrObj = new MICRReader();
 }
 
-unset ($nAmount); // this will be the array for collecting values for each fund
+$iEnvelope = 0;
+$sCheckNoError = "";
+$iCheckNo = "";
+$sDateError = "";
+$sAmountError = "";
+$iTotalAmount = 0;
+$nNonDeductible = array ();
+$sComment = "";
+$tScanString = "";
+
+$nAmount = array (); // this will be the array for collecting values for each fund
+$sAmountError = array ();
+$sComment = array ();
+
+$checkHash = array();
 
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
-if ($PledgeOrPayment == 'Pledge') {
-	$sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
-}
+$sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
 
 $rsFunds = RunQuery($sSQL);
 mysql_data_seek($rsFunds,0);
@@ -38,6 +51,9 @@ while ($aRow = mysql_fetch_array($rsFunds)) {
 	extract($aRow);
 	$fundId2Name[$fun_ID] = $fun_Name;
 	$nAmount[$fun_ID] = 0.0;
+	$nNonDeductible[$fun_ID] = 0.0;
+	$sAmountError[$fun_ID] = "";
+	$sComment[$fun_ID] = "";
 	if (!isset($defaultFundID)) {
 		$defaultFundID = $fun_ID;
 	}
@@ -45,13 +61,19 @@ while ($aRow = mysql_fetch_array($rsFunds)) {
 } // end while
 
 // Handle URL via _GET first
-$PledgeOrPayment = FilterInput($_GET["PledgeOrPayment"],'string');
-$sGroupKey = FilterInput($_GET["GroupKey"],'string'); // this will only be set if someone pressed the 'edit' button on the Pledge or Deposit line
-$iCurrentDeposit = FilterInput($_GET["CurrentDeposit"],'integer');
+if (array_key_exists ("PledgeOrPayment", $_GET))
+	$PledgeOrPayment = FilterInput($_GET["PledgeOrPayment"],'string');
+$sGroupKey = "";
+if (array_key_exists ("GroupKey", $_GET))
+	$sGroupKey = FilterInput($_GET["GroupKey"],'string'); // this will only be set if someone pressed the 'edit' button on the Pledge or Deposit line
+if (array_key_exists ("CurrentDeposit", $_GET))
+	$iCurrentDeposit = FilterInput($_GET["CurrentDeposit"],'integer');
 $linkBack = FilterInput($_GET["linkBack"],'string');
-$iFamily = FilterInput($_GET["FamilyID"],'int');
+$iFamily = 0;
+if (array_key_exists ("FamilyID", $_GET))
+	$iFamily = FilterInput($_GET["FamilyID"],'int');
 
-unset ($fund2PlgIds); // this will be the array cross-referencing funds to existing plg_plgid's
+$fund2PlgIds = array(); // this will be the array cross-referencing funds to existing plg_plgid's
 
 if ($sGroupKey) {
 	$sSQL = "SELECT plg_plgID, plg_fundID, plg_EditedBy from pledge_plg where plg_GroupKey=\"" . $sGroupKey . "\"";
@@ -83,11 +105,10 @@ if (isset($_POST["PledgeSubmit"]) or
 
    	$dDate = FilterInput($_POST["Date"]);
 	if (!$dDate) {
-		$dDate = $_SESSION['idefaultDate'];
-	
-		if (!$dDate) {
+		if (array_key_exists ('idefaultDate', $_SESSION))
+			$dDate = $_SESSION['idefaultDate'];
+		else
 			$dDate = date ("Y-m-d");
-		}
 	}
 	$_SESSION['idefaultDate'] = $dDate;
 
@@ -109,10 +130,10 @@ if (isset($_POST["PledgeSubmit"]) or
 	
 	$iCheckNo = FilterInput($_POST["CheckNo"], 'int');
 	
-	$iSchedule = FilterInput($_POST["Schedule"]);
-	if ($iSchedule=='') {
+	if (array_key_exists ("Schedule", $_POST))
+		$iSchedule = FilterInput($_POST["Schedule"]);
+	else
 		$iSchedule='Once';
-	}
 	$_SESSION['iDefaultSchedule'] = $iSchedule;
 	
 	$iMethod = FilterInput($_POST["Method"]);
@@ -137,9 +158,12 @@ if (isset($_POST["PledgeSubmit"]) or
 	}
 	$_SESSION['idefaultPaymentMethod'] = $iMethod;
 	
-	$iEnvelope = FilterInput($_POST["Envelope"], 'int');
+	$iEnvelope = 0;
+	if (array_key_exists ("Envelope", $_POST))
+		$iEnvelope = FilterInput($_POST["Envelope"], 'int');
 	$iTotalAmount = FilterInput($_POST["TotalAmount"]);
-	$sOneComment = FilterInput($_POST["OneComment"]);
+	if (array_key_exists ("OneComment", $_POST))
+		$sOneComment = FilterInput($_POST["OneComment"]);
 	if ($iSelectedFund) {
 		$nAmount[$iSelectedFund] = $iTotalAmount;
 		$sComment[$iSelectedFund] = $sOneComment;
@@ -175,11 +199,23 @@ if (isset($_POST["PledgeSubmit"]) or
 			$iTotalAmount += $plg_amount;
 		}
 	} else {
-		$dDate = $_SESSION['idefaultDate'];
-	 	$iSelectedFund = $_SESSION['iSelectedFund'];
+		if (array_key_exists ('idefaultDate', $_SESSION))
+			$dDate = $_SESSION['idefaultDate'];
+		else
+			$dDate = date ("Y-m-d");
+		if (array_key_exists ('iSelectedFund', $_SESSION))
+			$iSelectedFund = $_SESSION['iSelectedFund'];
+		else
+			$iSelectedFund = 0;
 	 	$fundId = $iSelectedFund;
-		$iFYID = $_SESSION['idefaultFY'];
-		$iSchedule = $_SESSION['iDefaultSchedule'];		
+	 	if (array_key_exists ('idefaultFY', $_SESSION))
+			$iFYID = $_SESSION['idefaultFY'];
+		else
+			$iFYID = CurrentFY ();
+	 	if (array_key_exists ('iDefaultSchedule', $_SESSION))
+			$iSchedule = $_SESSION['iDefaultSchedule'];
+		else
+			$iSchedule = 'Once';
 		$iMethod = $_SESSION['idefaultPaymentMethod'];
 	}
 	if (!$iEnvelope and $iFamily) {
@@ -252,11 +288,10 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 	}
 
 	$tScanString = FilterInput($_POST["ScanInput"]);
-	$iAutID = FilterInput($_POST["AutoPay"]);
+	$iAutID = 0;
+	if (array_key_exists ("AutoPay", $_POST))
+		$iAutID = FilterInput($_POST["AutoPay"]);
 	//$iEnvelope = FilterInput($_POST["Envelope"], 'int');
-
-	if ($iAutID=="") 
-		$iAutID=0; 
 
 	if ($PledgeOrPayment=='Payment' and !$iCheckNo and $iMethod == "CHECK") {
 		$sCheckNoError = "<span style=\"color: red; \">" . gettext("Must specify non-zero check number") . "</span>";
@@ -270,7 +305,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 			$bErrorFlag = true;
 		} elseif ($iMethod=='CHECK' and !$sGroupKey) {
 			$chkKey = $iFamily . "|" . $iCheckNo;
-			if ($checkHash and array_key_exists($chkKey, $checkHash)) {
+			if (array_key_exists($chkKey, $checkHash)) {
 				$text = "Check number '" . $iCheckNo . "' for selected family already exists.";
 				$sCheckNoError = "<span style=\"color: red; \">" . gettext($text) . "</span>";
 				$bErrorFlag = true;
@@ -326,7 +361,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 			VALUES ('" . $iFamily . "','" . $iFYID . "','" . $dDate . "','" . $nAmount[$fun_id] . "','" . $iSchedule . "','" . $iMethod  . "','" . $sComment[$fun_id] . "'";
 				$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $fun_id . "," . $iCurrentDeposit . "," . $iCheckNo . ",'" . $tScanString . "','" . $iAutID  . "','" . $nNonDeductible[$fun_id] . "','" . $sGroupKey . "')";
 			}
-			if ($sSQL) {
+			if (isset ($sSQL)) {
 				RunQuery($sSQL);
 				unset($sSQL);
 			}
@@ -449,13 +484,9 @@ if ($PledgeOrPayment == 'Pledge') {
 	while ($aRow = mysql_fetch_array($rsChecksThisDep)) {
 		extract($aRow);
 		$chkKey = $plg_FamID . "|" . $plg_checkNo;
-		if ($plg_method=='CHECK') {
-			if ($checkHash and array_key_exists($chkKey, $checkHash)) {
-				next;
-			} else {
-				$checkHash[$chkKey] = $plg_plgID;
-				++$depositCount;
-			}
+		if ($plg_method=='CHECK' and (!array_key_exists($chkKey, $checkHash))) {
+			$checkHash[$chkKey] = $plg_plgID;
+			++$depositCount;
 		}
 	}
 
@@ -479,10 +510,10 @@ if ($dep_Closed && $sGroupKey && $PledgeOrPayment == 'Payment') {
 }			
 
 //$familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
+$sFamilyName = "";
 if ($iFamily) {
     $sSQL = "SELECT fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID =" . $iFamily;
     $rsFindFam = RunQuery($sSQL);
-    $sFamilyName = "";
     while ($aRow = mysql_fetch_array($rsFindFam))
     {
         extract($aRow);

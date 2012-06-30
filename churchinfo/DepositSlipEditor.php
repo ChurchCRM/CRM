@@ -19,8 +19,18 @@ require "Include/Functions.php";
 
 require "Include/MICRFunctions.php";
 
-$linkBack = FilterInput($_GET["linkBack"]);
-$iDepositSlipID = FilterInput($_GET["DepositSlipID"], 'int');
+$linkBack = "";
+$iDepositSlipID = 0;
+$dep_Type = "";
+$sDateError = "";
+$sDepositType = "";
+$sComment = "";
+$bClosed = false;
+
+if (array_key_exists ("linkBack", $_GET))
+	$linkBack = FilterInput($_GET["linkBack"]);
+if (array_key_exists ("DepositSlipID", $_GET))
+	$iDepositSlipID = FilterInput($_GET["DepositSlipID"], 'int');
 
 if ($iDepositSlipID) {
 	// Get the current deposit slip
@@ -29,7 +39,6 @@ if ($iDepositSlipID) {
 	extract(mysql_fetch_array($rsDeposit));
 	// Set current deposit slip
 	$_SESSION['iCurrentDeposit'] = $iDepositSlipID;
-	$_SESSION['idefaultPaymentMethod'] = $dep_method;
 
 	// Security: User must have finance permission or be the one who created this deposit
 	if (! ($_SESSION['bFinance'] || $_SESSION['iUserID']==$dep_EnteredBy)) {
@@ -49,7 +58,9 @@ if (isset($_POST["DepositSlipSubmit"])) {
 	//Get all the variables from the request object and assign them locally
 	$dDate = FilterInput($_POST["Date"]);
 	$sComment = FilterInput($_POST["Comment"]);
-	$bClosed = FilterInput($_POST["Closed"]);
+	$bClosed = false;
+	if (array_key_exists ("Closed", $_POST))
+		$bClosed = FilterInput($_POST["Closed"]);
 	$sDepositType = FilterInput($_POST["DepositType"]);
 
 	if (! $bClosed)
@@ -411,7 +422,7 @@ if (isset($_POST["DepositSlipSubmit"])) {
 
 if ($iDepositSlipID) {
 	//Get the payments for this deposit slip
-	$sSQL = "SELECT plg_plgID, plg_date, plg_FYID, plg_amount, plg_CheckNo, plg_method, plg_comment, plg_aut_Cleared,
+	$sSQL = "SELECT plg_plgID, plg_famID, plg_date, plg_FYID, plg_amount, plg_CheckNo, plg_method, plg_comment, plg_aut_Cleared,
 	         a.fam_Name AS FamilyName, b.fun_Name as fundName, plg_NonDeductible, plg_GroupKey
 			 FROM pledge_plg 
 			 LEFT JOIN family_fam a ON plg_FamID = a.fam_ID
@@ -472,6 +483,11 @@ require "Include/Header.php";
 			<?php
 			if (!$iDepositSlipID or !$sDepositType) 
 			{
+				$selectOther = "";
+				$selectCreditCard = "";
+				$selectBankDraft = "";
+				$selecteGive = "";
+				
 				echo "<tr><td class=LabelColumn>".gettext("Deposit Type:")."</td>";
 				if ($sDepositType == "BankDraft")
 					$selectBankDraft = "Checked ";
@@ -538,8 +554,6 @@ require "Include/Header.php";
 	list ($totalCheckItems) = mysql_fetch_row($rsDepositTotal);
 	if (!$totalCheckItems)
 		$totalCheckItems = "0";
-	if (!$despositTotal)
-		$depositTotal = "0.00";
 	echo "<b>\$$deposit_total - TOTAL AMOUNT </b> &nbsp; (Items: $totalItems)<br>";
 	if ($totalCash)
 		echo "<i><b>\$$totalCash - Total Cash </b> &nbsp; (Items: $totalCashItems)</i><br>";
@@ -585,10 +599,14 @@ require "Include/Header.php";
 // but because we're doing this only for checks, we need to then save the data into a unique 'payment' hash and later unpack the now combined check info into that payment hash.  (there's probably a better way to do this, but this should work for now).
 
 $depositOrder = 1;
+$depositHashOrder2Key = array ();
+$depositArray = array ();
+$depositHash = array ();
+
 while ($aRow = mysql_fetch_array($rsPledges)) {
 	extract($aRow);
 
-	if ($depositHash and array_key_exists($plg_GroupKey, $depositHash)) {
+	if (array_key_exists($plg_GroupKey, $depositHash)) {
 		// add/tweak fields so existing key'ed record contains information of new record
 		
 		// we could coherency check checkNo, famID, and date, but we won't since I don't know how we'd surface the error
@@ -611,14 +629,14 @@ while ($aRow = mysql_fetch_array($rsPledges)) {
 	}
 }
 
-if ($depositHashOrder2Key) {
+if (count ($depositHashOrder2Key)) {
 	foreach ($depositHashOrder2Key as $order => $key) {
 		$depositArray[$order] = $key . "%" . $depositHash[$key];
 	}
 }
 
 $tog = 0;
-if ($depositArray) {
+if (count ($depositArray)) {
 foreach ($depositArray as $order => $value) {
 	// key is: method-specific-id, plg_famID, plg_funID, plg_data
 

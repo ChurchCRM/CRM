@@ -25,17 +25,7 @@ $sGroupKey = FilterInput($_GET["GroupKey"],'string');
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (strlen($iPledgeID) > 0) {
-	if (!$_SESSION['bEditRecords']) 	{
-		Redirect("Menu.php");
-		exit;
-	}
-	$sSQL = "SELECT '' FROM pledge_plg WHERE plg_plgID = " . $iPledgeID;
-	if (mysql_num_rows(RunQuery($sSQL)) == 0) {
-		Redirect("Menu.php");
-		exit;
-	}
-} elseif (!$_SESSION['bAddRecords']) {
+if (!$_SESSION['bAddRecords']) {
 	Redirect("Menu.php");
 	exit;
 }
