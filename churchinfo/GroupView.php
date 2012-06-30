@@ -31,7 +31,7 @@ $sPageTitle = gettext('Group View');
 $iGroupID = FilterInput($_GET['GroupID'],'int');
 
 //Do they want to add this group to their cart?
-if ($_GET['Action'] == 'AddGroupToCart')
+if (array_key_exists ('Action', $_GET) and $_GET['Action'] == 'AddGroupToCart')
 {
     //Get all the members of this group
     $sSQL = 'SELECT per_ID FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = ' . $iGroupID;

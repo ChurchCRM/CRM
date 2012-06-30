@@ -24,9 +24,17 @@ if (isset($_GET["Sort"])) {
 } else {
 	$iSort = 0;
 }
-if (isset($_GET["Letter"]))	$sLetter = FilterInput($_GET["Letter"]);
-if (isset($_GET["PrintView"])) $bPrintView = FilterInput($_GET["PrintView"],'int');
-if (isset($_GET["RoleListID"])) {
+
+$sLetter = "";
+$bPrintView = false;
+
+if (array_key_exists ("Letter", $_GET))
+	$sLetter = FilterInput($_GET["Letter"]);
+	
+if (array_key_exists ("PrintView", $_GET)) 
+	$bPrintView = FilterInput($_GET["PrintView"],'int');
+	
+if (array_key_exists ("RoleListID", $_GET)) {
 	$iRoleListID = FilterInput($_GET["RoleListID"],'int');
 } else { // Get the group's role list ID
 	$sSQL = "SELECT grp_RoleListID,grp_hasSpecialProps FROM group_grp WHERE grp_ID =" . $iGroupID;
@@ -146,6 +154,7 @@ if (!$bPrintView) {
 	require "Include/Header-Short.php";
 }
 
+$sSortName = "";
 
 // Create Filter Links
 if (!$bPrintView) {

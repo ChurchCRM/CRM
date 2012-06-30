@@ -31,11 +31,16 @@ if (isset($_POST["Submit"]) && count($_SESSION['aPeopleCart']) > 0) {
 
 	// Get the GroupID
 	$iGroupID = FilterInput($_POST["GroupID"],'int');
-	$iGroupRole = FilterInput($_POST["GroupRole"],'int');
+	if (array_key_exists ("GroupRole", $_POST))
+		$iGroupRole = FilterInput($_POST["GroupRole"],'int');
+	else
+		$iGroupRole = 0;
 
 	// Loop through the session array
+	$iCount = 0;
 	while ($element = each($_SESSION['aPeopleCart'])) {
-		AddToGroup($_SESSION['aPeopleCart'][$element[key]],$iGroupID,$iGroupRole);
+		AddToGroup($_SESSION['aPeopleCart'][$element['key']],$iGroupID,$iGroupRole);
+		$iCount += 1;
 	}
 
 	$sGlobalMessage = $iCount . " records(s) successfully added to selected Group.";

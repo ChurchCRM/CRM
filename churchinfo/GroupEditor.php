@@ -5,8 +5,9 @@
  *  last change : 2003-04-15
  *  website     : http://www.infocentral.org
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
+ *                Copyright 2004-2012 Michael Wilt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -162,8 +163,10 @@ if (isset($_POST["GroupSubmit"]))
 
 		if (array_key_exists ("EmptyCart", $_POST) && $_POST["EmptyCart"] && count($_SESSION['aPeopleCart']) > 0)
 		{
+			$iCount = 0;
 			while ($element = each($_SESSION['aPeopleCart'])) {
-				AddToGroup($_SESSION['aPeopleCart'][$element[key]],$iGroupID,$iDefaultRole);
+				AddToGroup($_SESSION['aPeopleCart'][$element['key']],$iGroupID,$iDefaultRole);
+				$iCount += 1;
 			}
 
 			$sGlobalMessage = $iCount . " records(s) successfully added to selected Group.";
