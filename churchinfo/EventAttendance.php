@@ -18,7 +18,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if ($_POST['Action']== "Retrieve" && !empty($_POST['Event']))
+if (array_key_exists ('Action', $_POST) and $_POST['Action']== "Retrieve" && !empty($_POST['Event']))
 {
     if ($_POST['Choice'] == "Attendees")
     {
@@ -32,6 +32,7 @@ if ($_POST['Action']== "Retrieve" && !empty($_POST['Event']))
     {
         $aSQL = "SELECT DISTINCT(person_id) FROM event_attend WHERE event_id = ".$_POST['Event'];
         $raOpps = RunQuery($aSQL);
+        $aArr = array ();
         while ($aRow = mysql_fetch_row($raOpps))
         {
             $aArr[] = $aRow[0];
@@ -62,7 +63,7 @@ if ($_POST['Action']== "Retrieve" && !empty($_POST['Event']))
         $sPageTitle = gettext("Event Guests");
     }
 }
-elseif ($_GET['Action']== "List" && !empty($_GET['Event']))
+elseif (array_key_exists ('Action', $_GET) and $_GET['Action']== "List" && !empty($_GET['Event']))
 {
     $sSQL = "SELECT * FROM events_event WHERE event_type = ".$_GET['Event']." ORDER BY event_start";
 
@@ -86,7 +87,7 @@ for ($row = 1; $row <= $numRows; $row++)
     $aRow = mysql_fetch_assoc($rsOpps);
     extract($aRow);
 
-    if ($_GET['Action'] == "List")
+    if (array_key_exists ('Action', $_GET) and $_GET['Action'] == "List")
     {
         $aEventID[$row] = $event_id;
         $aEventTitle[$row] = htmlentities(stripslashes($event_title),ENT_NOQUOTES, "UTF-8");
@@ -101,7 +102,7 @@ for ($row = 1; $row <= $numRows; $row++)
         $aLastName[$row] = $per_LastName;
         $aSuffix[$row] = $per_Suffix;
         $aEmail[$row] = $per_Email;
-	$aHomePhone[$row] = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone,$per_Country,$dummy), ExpandPhoneNumber($fam_HomePhone,$fam_Country,$dummy), True);
+		$aHomePhone[$row] = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone,$per_Country,$dummy), ExpandPhoneNumber($fam_HomePhone,$fam_Country,$dummy), True);
     }
 }
 
@@ -110,7 +111,7 @@ for ($row = 1; $row <= $numRows; $row++)
 <table cellpadding="4" align="center" cellspacing="0" width="60%">
 
 <?php
-if ($_GET['Action'] == "List" && $numRows > 0)
+if (array_key_exists ('Action', $_GET) and $_GET['Action'] == "List" && $numRows > 0)
 {
 ?>
        <caption>
@@ -181,7 +182,6 @@ $gSQL = "SELECT COUNT(per_ID) AS gCount
 $gOpps = RunQuery($gSQL);
 $gNumGuestAttend = mysql_result($gOpps, 0);
 ?>
-               <input type="hidden" name="EventIDs" value="<?php echo $EventIDs; ?>">
                <input <?php echo ($gNumGuestAttend == 0 ? "type=\"button\"":"type=\"submit\""); ?> name="Type" value="<?php echo gettext("Guests").' ['.$gNumGuestAttend.']'; ?>" class="icButton">
              </form>
            </td>
@@ -219,7 +219,7 @@ elseif ($_POST['Action']== "Retrieve" && $numRows > 0)
          <tr class="<?php echo $sRowClass; ?>">
            <td class="TextColumn"><?php echo FormatFullName($aTitle[$row],$aFistName[$row],$aMiddleName[$row],$aLastName[$row],$aSuffix[$row],3); ?></td>
            <td class="TextColumn"><?php echo ($aEmail[$row] ? '<a href="mailto:'.$aEmail[$row].'" title="Send Email">'.$aEmail[$row].'</a>':'Not Available'); ?></td>
-           <td class="TextColumn"><?php echo ($aHomePhone[$row] ? ExpandPhoneNumber($aHomePhone[$row],$aPhoneCountry[$row],$dummy):'Not Available'); ?></td>
+           <td class="TextColumn"><?php echo ($aHomePhone[$row] ? $aHomePhone[$row]:'Not Available'); ?></td>
 <?php
 // AddToCart call to go here
 ?>
