@@ -218,7 +218,7 @@ if (isset($_POST["EventID"]) && isset($_POST['child']) && (isset($_POST['CheckIn
 			$fields = "(event_id, person_id, checkin_date)";
 		   $values =  "'".$iEventID."', '".$iChildID."', NOW() ";
 	   }
-        $sSQL = "INSERT INTO event_attend $fields VALUES ( $values ) ;";
+        $sSQL = "INSERT IGNORE INTO event_attend $fields VALUES ( $values ) ;";
         RunQuery($sSQL);
 	}
 	if (isset($_POST['VerifyCheckOut']) ){
@@ -386,31 +386,42 @@ if (isset ($_POST["EventID"]) ) {
 	//Get Person who is checked in
 		$sSQL = "SELECT * FROM person_per WHERE per_ID = $person_id ";
 		$perOpps = RunQuery($sSQL);
-		$perRow = mysql_fetch_array($perOpps, MYSQL_BOTH);
-		extract($perRow);  
-		$sPerson = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
+		if (mysql_num_rows ($perOpps) > 0) {
+			$perRow = mysql_fetch_array($perOpps, MYSQL_BOTH);
+			extract($perRow);  
+			$sPerson = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
+		} else {
+			$sPerson = "";
+		}
 		$per_Title='';$per_FirstName='';$per_MiddleName='';$per_LastName='';$per_Suffix='';
-
+		
 	//Get Person who checked person in	
-		if ($checkin_id <> null){
+		if ($checkin_id > 0) {
 			$sSQL = "SELECT * FROM person_per WHERE per_ID = $checkin_id";
 			$perCheckin = RunQuery($sSQL);
-			$perCheckinRow = mysql_fetch_array($perCheckin, MYSQL_BOTH);
-			extract($perCheckinRow);
-			$sCheckinby = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
+			if (mysql_num_rows ($perCheckin) > 0) {
+				$perCheckinRow = mysql_fetch_array($perCheckin, MYSQL_BOTH);
+				extract($perCheckinRow);
+				$sCheckinby = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
+			} else
+				$sCheckinby = "";
 		} else {
 			$sCheckinby = "";
 		}
 		$per_Title='';$per_FirstName='';$per_MiddleName='';$per_LastName='';$per_Suffix='';
 
 	//Get Person who checked person out	
-		if ($checkout_id > 1) {
-		$sSQL = "SELECT * FROM person_per WHERE per_ID = $checkout_id";
-		$perCheckout = RunQuery($sSQL);
-		$perCheckoutRow = mysql_fetch_array($perCheckout, MYSQL_BOTH);
-		extract($perCheckoutRow);  
-		$sCheckoutby = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
-		}else{
+		if ($checkout_id > 0) {
+			$sSQL = "SELECT * FROM person_per WHERE per_ID = $checkout_id";
+			$perCheckout = RunQuery($sSQL);
+
+			if (mysql_num_rows ($perCheckout) > 0) {
+				$perCheckoutRow = mysql_fetch_array($perCheckout, MYSQL_BOTH);
+				extract($perCheckoutRow);  
+				$sCheckoutby = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
+			} else
+				$sCheckoutby = '';
+		} else {
 			$sCheckoutby = '';
 		}
 		$per_Title='';$per_FirstName='';$per_MiddleName='';$per_LastName='';$per_Suffix='';
@@ -448,6 +459,9 @@ if (isset ($_POST["EventID"]) ) {
 function loadperson($iPersonID){
 	global $bDefectiveBrowser;
 	
+	if ($iPersonID == 0)
+		return;
+	
 	$sSQL = "SELECT a.*, family_fam.*, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole, b.per_FirstName AS EnteredFirstName,
 					b.Per_LastName AS EnteredLastName, c.per_FirstName AS EditedFirstName, c.per_LastName AS EditedLastName
 				FROM person_per a
@@ -460,7 +474,7 @@ function loadperson($iPersonID){
 	$rsPerson = RunQuery($sSQL);
 	if ((! $rsPerson) || mysql_num_rows ($rsPerson) == 0)
 		return;
-		
+
 	extract(mysql_fetch_array($rsPerson));
 
 	// Get the lists of custom person fields
