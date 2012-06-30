@@ -650,7 +650,9 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
     $sSQL .= "WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ";
     $sSQL .= "ORDER BY fam_Zip, per_LastName, per_FirstName";
     $rsCartItems = RunQuery($sSQL);
-
+	$sRowClass = "RowColorA";
+	$didFam = array ();
+	
     while ($aRow = mysql_fetch_array($rsCartItems))
     {
 
@@ -669,7 +671,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
     }
 
     // Skip if mode is fam and we have already printed labels
-    if ($didFam[$aRow['per_fam_ID']] && ($mode == "fam"))
+    if (array_key_exists ($aRow['per_fam_ID'], $didFam) and $didFam[$aRow['per_fam_ID']] && ($mode == "fam"))
         continue;
 
     $didFam[$aRow['per_fam_ID']] = 1;
@@ -789,10 +791,18 @@ if ($startcol > 1 || $startrow > 1) $pdf->AddPage();
 $mode = $_GET["groupbymode"];
 setcookie("groupbymode", $mode, time()+60*60*24*90, "/");
 
-$bulkmailpresort = $_GET["bulkmailpresort"];
+if (array_key_exists ("bulkmailpresort", $_GET))
+	$bulkmailpresort = $_GET["bulkmailpresort"];
+else
+	$bulkmailpresort = false;
+	
 setcookie("bulkmailpresort", $bulkmailpresort, time()+60*60*24*90, "/");
 
-$bulkmailquiet = $_GET["bulkmailquiet"];
+if (array_key_exists ("bulkmailquiet", $_GET))
+	$bulkmailquiet = $_GET["bulkmailquiet"];
+else
+	$bulkmailquiet = false;
+
 setcookie("bulkmailquiet", $bulkmailquiet, time()+60*60*24*90, "/");
 
 $iBulkCode = 0;
@@ -803,9 +813,9 @@ if ($bulkmailpresort)
         $iBulkCode = 2;
 }
 
-$bToParents = ($_GET["toparents"] == 1);
-setcookie("toparents", $_GET["toparents"], time()+60*60*24*90, "/");
- 
+$bToParents = (array_key_exists ("toparents", $_GET) and $_GET["toparents"] == 1);
+setcookie("toparents", $bToParents, time()+60*60*24*90, "/");
+
 $bOnlyComplete = ($_GET["onlyfull"] == 1);
 
 $sFileType = FilterInput($_GET["filetype"],'char',4);

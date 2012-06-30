@@ -76,7 +76,10 @@ if ($sSource == "cart")
 else
 {
 	// If we're filtering by groups, include the p2g2r table
-	if (!empty($_POST["GroupID"])) $sGroupTable = ", person2group2role_p2g2r";
+	if (!empty($_POST["GroupID"])) 
+		$sGroupTable = ", person2group2role_p2g2r";
+	else
+		$sGroupTable = "";
 
 	// Prepare any extentions to the WHERE clauses
 	$sWhereExt = "";
@@ -152,7 +155,9 @@ else
 
 		// This is used for individual mode to remove duplicate rows from people assigned multiple groups.
 		$sGroupBy = " GROUP BY per_ID";
-	}
+	} else
+		$sGroupBy = "";
+	
 
 	if (!empty($_POST["MembershipDate1"]))
 		$sWhereExt .= "AND per_MembershipDate >= '" . FilterInput($_POST["MembershipDate1"],'char',10) . "' ";

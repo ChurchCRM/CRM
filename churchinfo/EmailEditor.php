@@ -36,7 +36,7 @@ $bcc_list = implode(", ", $email_array);
 $sEmailSubject = "";
 $sEmailMessage = "";
 
-if ($_POST['mysql'] == 'true') {
+if (array_key_exists ('mysql', $_POST) and $_POST['mysql'] == 'true') {
 
     // There is a subject and message already stored in mysql
     $sSQL = "SELECT * FROM email_message_pending_emp ".

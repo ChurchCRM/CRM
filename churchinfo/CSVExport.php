@@ -246,7 +246,7 @@ require "Include/Header.php";
         <td class="TextColumnWithBottomBorder">
             <select name="Source">
                 <option value="filters"><?php echo gettext("Based on filters below.."); ?></option>
-                <option value="cart" <?php if ($_GET["Source"] == 'cart') echo "selected";?>><?php echo gettext("People in Cart (filters ignored)"); ?></option>
+                <option value="cart" <?php if (array_key_exists ("Source", $_GET) and $_GET["Source"] == 'cart') echo "selected";?>><?php echo gettext("People in Cart (filters ignored)"); ?></option>
             </select>
         </td>
     </tr>
