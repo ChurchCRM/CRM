@@ -467,10 +467,9 @@ class PDF_Directory extends ChurchInfoReport {
     // Number of lines is only for the $text parameter
     function Add_Record($sName, $text, $numlines, $fid, $pid)
     {
-        
         $this->Check_Lines($numlines, $fid, $pid);
 
-        $this->Print_Name($sName);
+        $this->Print_Name(iconv("UTF-8","ISO-8859-1",$sName));
 
 //        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
          $_PosX = ($this->_Column*($this->_ColWidth+$this->_Gutter)) + $this->_Margin_Left;
@@ -485,7 +484,6 @@ class PDF_Directory extends ChurchInfoReport {
         $perimg = "../Images/Person/".$pid.".jpg";
         if (file_exists($perimg)) $dirimg = $perimg;
 
-
         if ($dirimg != "") 
         {
             $s = getimagesize($dirimg);
@@ -496,7 +494,8 @@ class PDF_Directory extends ChurchInfoReport {
         }
         
 //        $this->MultiCell($this->_ColWidth, 5, $text, 0, 'L');
-        $this->MultiCell($this->_ColWidth, $this->_LS, $text, 0, 'L');
+        
+        $this->MultiCell($this->_ColWidth, $this->_LS, iconv("UTF-8","ISO-8859-1",$text), 0, 'L');
 //        $this->SetY($this->GetY() + 5);
         $this->SetY($this->GetY() + $this->_LS);
     }
@@ -504,7 +503,7 @@ class PDF_Directory extends ChurchInfoReport {
 
 // Get and filter the classifications selected
 $count = 0;
-if($_POST["sDirClassifications"] != "")
+if(array_key_exists ("sDirClassifications", $_POST) and $_POST["sDirClassifications"] != "")
 {
     foreach ($_POST["sDirClassifications"] as $Cls)
     {
@@ -599,8 +598,10 @@ $pdf->AddPage();
 
 if ($bDirUseTitlePage) $pdf->TitlePage();
 
+$sClassQualifier = ""; 
 if (strlen($sDirClassifications)) $sClassQualifier = "AND per_cls_ID in (" . $sDirClassifications . ")";
 
+$sWhereExt = "";
 if (!empty($_POST["GroupID"]))
 {
     $sGroupTable = "(person_per, person2group2role_p2g2r)";
@@ -617,7 +618,10 @@ if (!empty($_POST["GroupID"]))
     // This is used by per-role queries to remove duplicate rows from people assigned multiple groups.
     $sGroupBy = " GROUP BY per_ID";
 } else { 
-	$sGroupTable = "person_per"; 
+	$sGroupTable = "person_per";
+	$sGroupsList = "";
+	$sWhereExt = ""; 
+	$sGroupBy = "";
 }
 
 if ($_POST['cartdir'] != null)
