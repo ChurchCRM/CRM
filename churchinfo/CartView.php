@@ -127,13 +127,11 @@ $sPageTitle = gettext("View Your Cart");
 require "Include/Header.php";
 
 // Confirmation message that people where added to Event from Cart
-if (count($_SESSION['aPeopleCart']) == 0) {
-        if (!$_GET["Message"])
-        {
+if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart']) == 0) {
+        if (!array_key_exists("Message", $_GET)) {
             echo "<p align=\"center\" class=\"LargeText\">" . gettext("You have no items in your cart.") . "</p>";
         } else {
-            switch ($_GET["Message"])
-            {
+            switch ($_GET["Message"]) {
                 case "aMessage":
                     echo '<p align="center" class="LargeText">'.$_GET["iCount"].' '.($_GET["iCount"] == 1 ? "Record":"Records").' Emptied into Event ID:'.$_GET["iEID"].'</p>'."\n";
                 break;
