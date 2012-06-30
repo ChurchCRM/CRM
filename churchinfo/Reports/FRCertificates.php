@@ -78,9 +78,9 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 	
 	$pdf->SetFont("Times",'B',24);
 	$pdf->Write (8, $di_item.":\t");
-	$pdf->Write (8, $di_title."\n\n");
+	$pdf->Write (8, stripslashes($di_title)."\n\n");
 	$pdf->SetFont("Times",'',16);
-	$pdf->Write (8, $di_description."\n");
+	$pdf->Write (8, stripslashes($di_description)."\n");
 	if ($di_estprice > 0)
 		$pdf->Write (8, gettext ("Estimated value ")."\$".$di_estprice.".  ");
 	if ($per_LastName!="")

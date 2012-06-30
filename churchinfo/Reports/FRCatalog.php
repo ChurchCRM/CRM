@@ -84,9 +84,9 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 
 	$pdf->SetFont("Times",'B',12);
 	$pdf->Write (6, $di_item.": ");
-	$pdf->Write (6, $di_title."\n");
+	$pdf->Write (6, stripslashes($di_title)."\n");
 	$pdf->SetFont("Times",'',12);
-	$pdf->Write (6, $di_description."\n");
+	$pdf->Write (6, stripslashes($di_description)."\n");
 	if ($di_minimum > 0)
 		$pdf->Write (6, gettext ("Minimum bid ")."\$".$di_minimum.".  ");
 	if ($di_estprice > 0)
