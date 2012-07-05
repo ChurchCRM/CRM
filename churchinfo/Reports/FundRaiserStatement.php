@@ -48,9 +48,9 @@ class PDF_FundRaiserStatement extends ChurchInfoReport {
 		$this->SetAutoPageBreak(false);
 	}
 
-	function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear) {
+	function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) {
 		global $letterhead;
-		$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear, $letterhead);
+		$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
 		return ($curY);
 	}
 
@@ -91,8 +91,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 	// If running for all paddles check the _POST to see which ones are selected
 	if ($iPaddleNumID || isset($_POST["Chk$pn_ID"])) {
 		// Start page for this paddle number
-		$iYear = date("Y"); // not actually used by StartNewPage but should be defined
-		$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
+		$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 	
 		$pdf->WriteAt ($pdf->leftX, $curY, gettext ("Donated Items:"));
 		$curY += 2 * $pdf->incrementY;

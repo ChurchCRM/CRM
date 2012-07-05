@@ -31,7 +31,9 @@ $sReportType = FilterInput($_POST["ReportType"]);
 $sDateStart = FilterInput($_POST["DateStart"],"date");
 $sDateEnd = FilterInput($_POST["DateEnd"],"date");
 $iDepID = FilterInput($_POST["deposit"],"int");
-$iFYID = FilterInput($_POST["FYID"],"int");
+$iFYID = CurrentFY();
+if (array_key_exists ("FYID", $_POST))
+	$iFYID = FilterInput($_POST["FYID"],"int");
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 $iMinimum = FilterInput($_POST["minimum"],"int");
 
@@ -186,9 +188,9 @@ if ($output == "pdf") {
 			$this->SetAutoPageBreak(false);
 		}
 
-		function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear, $fam_envelope) {
+		function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fam_envelope) {
 			global $letterhead, $sDateStart, $sDateEnd, $iDepID, $iFYID,$bUseDonationEnvelopes;
-			$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear, $letterhead);
+			$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
 			if ($bUseDonationEnvelopes) {
 				$this->WriteAt ($this->leftX, $curY, gettext ("Envelope:").$fam_envelope);
 				$curY += $this->incrementY;
@@ -340,7 +342,7 @@ if ($output == "pdf") {
 
 		// Start Page for New Family
 		if ($fam_ID != $currentFamilyID) {
-			$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear, $fam_envelope);
+			$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fam_envelope);
 			$summaryDateX = $pdf->leftX;
 			$summaryCheckNoX = 40;
 			$summaryMethodX = 60;

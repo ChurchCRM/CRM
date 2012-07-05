@@ -38,6 +38,25 @@ if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true' ORDER BY fun_Active, fun_Name";
 $rsFunds = RunQuery($sSQL);
 
+$overpaid = array ();
+$underpaid = array ();
+$pledgeFundTotal = array ();
+$paymentFundTotal = array ();
+
+while ($row = mysql_fetch_array($rsFunds)) {
+	$fun_name = $row["fun_Name"];
+	$overpaid[$fun_name] = 0;
+	$underpaid[$fun_name] = 0;
+	$paymentCnt[$fun_name] = 0;
+	$pledgeCnt[$fun_name] = 0;
+	$pledgeFundTotal[$fun_name] = 0;
+	$paymentFundTotal[$fun_name] = 0;
+}
+$pledgeFundTotal["Unassigned"] = 0;
+$paymentFundTotal["Unassigned"] = 0;
+$paymentCnt["Unassigned"] = 0;
+$pledgeCnt["Unassigned"] = 0;
+
 // Get pledges and payments for this fiscal year
 $sSQL = "SELECT plg_plgID, plg_FYID, plg_amount, plg_PledgeOrPayment, plg_fundID, plg_famID, b.fun_Name AS fundName, b.fun_Active AS fundActive FROM pledge_plg 
 		 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
@@ -108,10 +127,10 @@ if ($output == "pdf") {
 	$curFam = 0;
 	$paidThisFam = array();
 	$pledgeThisFam = array();
-	$overpaid = array();
-	$underpaid = array();
 	$totRows = mysql_num_rows ($rsPledges);
 	$thisRow = 0;
+	$fundName = "";
+	$plg_famID = 0;
 
 	for ($thisRow = 0; $thisRow <= $totRows; $thisRow+=1) { // go through the loop one extra time
 		if ($thisRow < $totRows) {
@@ -127,16 +146,21 @@ if ($output == "pdf") {
 			// Switching families.  Post the results for the previous family and initialize for the new family
 
 			mysql_data_seek($rsFunds,0);
-			while ($row = mysql_fetch_array($rsFunds))
-			{
+			while ($row = mysql_fetch_array($rsFunds)) {
 				$fun_name = $row["fun_Name"];
-				if ($pledgeThisFam[$fun_name] > 0 || $paidThisFam[$fun_name] > 0) {
-					$pledgeDiff = $paidThisFam[$fun_name] - $pledgeThisFam[$fun_name];
-					if ($pledgeDiff > 0) {
-						$overpaid[$fun_name] += $pledgeDiff;
-					} else {
-						$underpaid[$fun_name] -= $pledgeDiff;
-					}
+				if (array_key_exists ($fun_name, $pledgeThisFam) && $pledgeThisFam[$fun_name] > 0)
+					$thisPledge = $pledgeThisFam[$fun_name];
+				else
+					$thisPledge = 0.0;
+				if (array_key_exists ($fun_name, $paidThisFam) && $paidThisFam[$fun_name] > 0)
+					$thisPay = $paidThisFam[$fun_name];
+				else
+					$thisPay = 0.0;
+				$pledgeDiff = $thisPay - $thisPledge;
+				if ($pledgeDiff > 0) {
+					$overpaid[$fun_name] += $pledgeDiff;
+				} else {
+					$underpaid[$fun_name] -= $pledgeDiff;
 				}
 			}
 			$paidThisFam = array();
@@ -146,13 +170,29 @@ if ($output == "pdf") {
 
 		if ($thisRow < $totRows) {
 		   if ($plg_PledgeOrPayment == "Pledge") {
-			  $pledgeFundTotal[$fundName] += $plg_amount;
-			  $pledgeThisFam[$fundName] += $plg_amount;
-			  $pledgeCnt[$fundName] += 1;
+		   		if (array_key_exists ($fundName, $pledgeFundTotal)) {
+				  $pledgeFundTotal[$fundName] += $plg_amount;
+				  $pledgeCnt[$fundName] += 1;
+		   		} else {
+				  $pledgeFundTotal[$fundName] = $plg_amount;
+				  $pledgeCnt[$fundName] = 1;
+		   		}
+		   		if (array_key_exists ($fundName, $pledgeThisFam))
+		   			$pledgeThisFam[$fundName] += $plg_amount;
+		   		else
+					$pledgeThisFam[$fundName] = $plg_amount;
 		   } else if ($plg_PledgeOrPayment == "Payment") {
-			  $paymentFundTotal[$fundName] += $plg_amount;
-			  $paidThisFam[$fundName] += $plg_amount;
-			  $paymentCnt[$fundName] += 1;
+		   		if (array_key_exists ($fundName, $paymentFundTotal)) { 
+				  $paymentFundTotal[$fundName] += $plg_amount;
+				  $paymentCnt[$fundName] += 1;
+		   		} else {
+				  $paymentFundTotal[$fundName] = $plg_amount;
+				  $paymentCnt[$fundName] = 1;
+		   		}
+		   		if (array_key_exists ($fundName, $paidThisFam))
+					$paidThisFam[$fundName] += $plg_amount;
+				else
+					$paidThisFam[$fundName] = $plg_amount;
 		   }
 		}
 	}

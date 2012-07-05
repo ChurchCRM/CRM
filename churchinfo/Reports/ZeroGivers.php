@@ -4,8 +4,9 @@
 *  filename    : Reports/ZeroGivers.php
 *  last change : 2005-03-26
 *  description : Creates a PDF with all the tax letters for a particular calendar year.
+*  Copyright 2012 Michael Wilt
 *
-*  InfoCentral is free software; you can redistribute it and/or modify
+*  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -27,6 +28,9 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 $output = FilterInput($_POST["output"]);
 $sDateStart = FilterInput($_POST["DateStart"],"date");
 $sDateEnd = FilterInput($_POST["DateEnd"],"date");
+
+$letterhead = FilterInput($_POST["letterhead"]);
+$remittance = FilterInput($_POST["remittance"]);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
@@ -87,9 +91,9 @@ if ($output == "pdf") {
 			$this->SetAutoPageBreak(false);
 		}
 
-		function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear) {
+		function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) {
 			global $letterhead, $sDateStart, $sDateEnd;
-			$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear, $letterhead);
+			$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
 			$curY += 2 * $this->incrementY;
 			if ($sDateStart == $sDateEnd)
 				$DateString = date("F j, Y",strtotime($sDateStart));
@@ -133,13 +137,13 @@ if ($output == "pdf") {
 	// Loop through result array
 	while ($row = mysql_fetch_array($rsReport)) {
 		extract ($row);
-		$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
+		$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 
 		$pdf->FinishPage ($curY,$fam_ID,$fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 	}
 
 	if ($iPDFOutputType == 1)
-		$pdf->Output("ZeroGivers" . date("Ymd") . ".pdf", true);
+		$pdf->Output("ZeroGivers" . date("Ymd") . ".pdf", "D");
 	else
 		$pdf->Output();
 

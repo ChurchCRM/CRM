@@ -26,15 +26,19 @@ require "../Include/ReportConfig.php";
 //}
 
 $iBankSlip = FilterInput($_GET["BankSlip"]);
-if (!$iBankSlip)
+if (!$iBankSlip && array_key_exists ("report_type", $_POST))
 	$iBankSlip = FilterInput($_POST["report_type"]);
 
-$output = FilterInput($_POST["output"]);
-if (!$output)
-	$output = "pdf";
+$output = "pdf";
+if (array_key_exists ("output",$_POST))
+	$output = FilterInput($_POST["output"]);
 
-$iDepositSlipID = FilterInput($_POST["deposit"],"int");
-if (!$iDepositSlipID)
+
+$iDepositSlipID = 0;
+if (array_key_exists ("deposit", $_POST))
+	$iDepositSlipID = FilterInput($_POST["deposit"],"int");
+	
+if (!$iDepositSlipID && array_key_exists ('iCurrentDeposit', $_SESSION))
 	$iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
@@ -99,6 +103,8 @@ if ($output == "pdf") {
 		}
 	}
 
+	$fundTotal = array ();
+	
 	// Instantiate the directory class and build the report.
 	$pdf = new PDF_AccessReport();
 
@@ -258,8 +264,12 @@ if ($output == "pdf") {
 		
 		if (!$fundName)
 			$fundTotal['UNDESIGNATED'] += $plg_amount;
-		else
-			$fundTotal[$fundName] += $plg_amount;
+		else {
+			if (array_key_exists ($fundName, $fundTotal))
+				$fundTotal[$fundName] += $plg_amount;
+			else
+				$fundTotal[$fundName] = $plg_amount;
+		}
 			
 		// Format Data
 		if (strlen($plg_CheckNo) > 8)
@@ -322,7 +332,7 @@ if ($output == "pdf") {
 		while ($row = mysql_fetch_array($rsFunds))
 		{
 			$fun_name = $row["fun_Name"];
-		   if ($fundTotal[$fun_name] > 0) {
+		   if (array_key_exists ($fun_name, $fundTotal) && $fundTotal[$fun_name] > 0) {
 	   		$pdf->SetXY ($curX, $curY);
 	   		$pdf->Write (8, $fun_name);
 			  $amountStr = sprintf ("%.2f", $fundTotal[$fun_name]);
@@ -330,7 +340,7 @@ if ($output == "pdf") {
 			  $curY += $summaryIntervalY;
 		   }
 		}
-		if ($fundTotal['UNDESIGNATED']) {
+		if (array_key_exists ('UNDESIGNATED', $fundTotal) && $fundTotal['UNDESIGNATED']) {
 			$pdf->SetXY ($curX, $curY);
 	   		$pdf->Write (8, gettext("UNDESIGNATED"));
 			$amountStr = sprintf ("%.2f", $fundTotal['UNDESIGNATED']);

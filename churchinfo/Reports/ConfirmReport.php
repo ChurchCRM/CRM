@@ -30,8 +30,8 @@ class PDF_ConfirmReport extends ChurchInfoReport {
 		$this->SetAutoPageBreak(false);
 	}
 
-	function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear) {
-      $curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
+	function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) {
+      $curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 		$curY += 2 * $this->incrementY;
 		$blurb = $this->sConfirm1;
 		$this->WriteAt ($this->leftX, $curY, $blurb);
@@ -105,7 +105,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	extract ($aFam);
 
 	$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, 
-                               $fam_State, $fam_Zip, $fam_Country, $iYear);
+                               $fam_State, $fam_Zip, $fam_Country);
 	$curY += $pdf->incrementY;
 
 	$pdf->SetFont("Times",'B',10);
@@ -184,7 +184,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		// Make sure the person data will display with adequate room for the trailer and group information
         if (($curY + $numCustomFields * $pdf->incrementY) > 260)
         {
-        	$curY = $pdf->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
+        	$curY = $pdf->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 			$pdf->SetFont("Times",'B',10);
 		   $pdf->WriteAtCell ($XName, $curY, $XGender - $XName, gettext ("Member Name"));
 		   $pdf->WriteAtCell ($XGender, $curY, $XRole - $XGender, gettext ("M/F"));
@@ -281,7 +281,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
     if (($curY + 2 *$numFamilyMembers * $pdf->incrementY)  >= 260)
     {
-    	$curY = $pdf->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
+    	$curY = $pdf->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     }
 	$sSQL = "SELECT * FROM person_per WHERE per_fam_ID = " . $fam_ID . " ORDER BY per_fmr_ID";
 	$rsFamilyMembers = RunQuery ($sSQL);
@@ -311,7 +311,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
     if ($curY > 183)	// This insures the trailer information fits continuously on the page (3 inches of "footer"
     {
-    	$curY = $pdf->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
+    	$curY = $pdf->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     }
 	$pdf->FinishPage ($curY);
 }

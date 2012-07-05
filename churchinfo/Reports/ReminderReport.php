@@ -87,6 +87,8 @@ if ($classList[0]) {
 }
 $sSQL .= " WHERE";
 
+$criteria = "";
+
 // Filter by Family
 if (!empty($_POST["family"])) {
     $count = 0;
@@ -132,6 +134,8 @@ $sSQL .= $criteria;
 
 //var_dump($sSQL);
 $rsFamilies = RunQuery($sSQL);
+
+$sSQLFundCriteria = "";
 
 // Build criteria string for funds
 if (!empty($_POST["funds"])) {
@@ -188,8 +192,8 @@ class PDF_ReminderReport extends ChurchInfoReport {
         $this->SetAutoPageBreak(false);
     }
 
-    function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID, $fundOnlyString) {
-        $curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear);
+    function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fundOnlyString, $iFYID) {
+        $curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
         $curY += 2 * $this->incrementY;
         $blurb = $this->sReminder1 . MakeFYString ($iFYID) . $fundOnlyString . ".";
         $this->WriteAt ($this->leftX, $curY, $blurb);
@@ -259,7 +263,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     }
 
     // Add a page for this reminder report
-    $curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iFYID, $fundOnlyString);
+    $curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fundOnlyString, $iFYID);
 
     // Get pledges only
     $sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
@@ -268,7 +272,8 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPledges = 0;
-
+    $fundPledgeTotal = array ();
+    
     $summaryDateX = $pdf->leftX;
     $summaryFundX = 45;
     $summaryAmountX = 80;
@@ -301,6 +306,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
         $totalAmount = 0;
         $cnt = 0;
+        
         while ($aRow = mysql_fetch_array($rsPledges)) {
             extract ($aRow);
         
@@ -316,8 +322,11 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
             $pdf->PrintRightJustifiedCell ($summaryAmountX, $curY, $summaryAmountWid, $plg_amount);
 
-            $fundPledgeTotal[$fundName] += $plg_amount;
-            $totalAmount += $plg_amount;
+            if (array_key_exists ($fundName, $fundPledgeTotal))
+	            $fundPledgeTotal[$fundName] += $plg_amount;
+	        else
+	            $fundPledgeTotal[$fundName] = $plg_amount;
+	        $totalAmount += $plg_amount;
             $cnt += 1;
 
             $curY += $summaryIntervalY;
@@ -340,6 +349,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPayments = 0;
+    $fundPaymentTotal = array ();
     if (mysql_num_rows ($rsPledges) == 0) {
         $curY += $summaryIntervalY;
         $pdf->WriteAt ($summaryDateX, $curY, $pdf->sReminderNoPayments);
@@ -402,8 +412,11 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
             $pdf->PrintRightJustifiedCell ($summaryAmountX, $curY, $summaryAmountWid, $plg_amount);
 
             $totalAmount += $plg_amount;
-            $fundPaymentTotal[$fundName] += $plg_amount;
-            $cnt += 1;
+            if (array_key_exists ($fundName, $fundPaymentTotal))
+	            $fundPaymentTotal[$fundName] += $plg_amount;
+	        else
+	            $fundPaymentTotal[$fundName] = $plg_amount;
+	        $cnt += 1;
 
             $curY += $summaryIntervalY;
             
@@ -432,16 +445,17 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
         while ($row = mysql_fetch_array($rsFunds))
         {
             $fun_name = $row["fun_Name"];
-            if ($fundPledgeTotal[$fun_name] > 0) {
-                $amountDue = $fundPledgeTotal[$fun_name] - $fundPaymentTotal[$fun_name];
+            if (array_key_exists ($fun_name, $fundPledgeTotal) && $fundPledgeTotal[$fun_name] > 0) {
+            	if (array_key_exists ($fun_name, $fundPaymentTotal))
+	                $amountDue = $fundPledgeTotal[$fun_name] - $fundPaymentTotal[$fun_name];
+	            else
+		            $amountDue = $fundPledgeTotal[$fun_name];
                 if ($amountDue < 0)
                     $amountDue = 0;
                 $amountStr = sprintf ("Amount due for %s: %.2f", $fun_name, $amountDue);
                 $pdf->WriteAt ($pdf->leftX, $curY, $amountStr);
                 $curY += $summaryIntervalY;
             }
-            $fundPledgeTotal[$fun_name] = 0; // Clear the array for the next person
-            $fundPaymentTotal[$fun_name] = 0;
         }
     }
     $pdf->FinishPage ($curY);

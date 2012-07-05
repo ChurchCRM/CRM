@@ -60,8 +60,12 @@ if (!empty($_POST["classList"])) {
 $iFYID = FilterInput($_POST["FYID"],'int');
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 $output = FilterInput($_POST["output"]);
-$pledge_filter = FilterInput($_POST["pledge_filter"]);
-$only_owe = FilterInput($_POST["only_owe"]);
+$pledge_filter = "";
+if (array_key_exists ("pledge_filter", $_POST))
+	$pledge_filter = FilterInput($_POST["pledge_filter"]);
+$only_owe = "";
+if (array_key_exists ("only_owe", $_POST))
+	$only_owe = FilterInput($_POST["only_owe"]);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
@@ -77,6 +81,7 @@ if ($classList[0]) {
 }
 $sSQL .= " WHERE";
 
+$criteria = "";
 if ($classList[0]) {
 	$q = " per_cls_ID IN " . $inClassList . " AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN " . $notInClassList . ")";
 	if ($criteria) {
@@ -109,6 +114,8 @@ if (!empty($_POST["family"])) {
 	}
 }
 $rsFamilies = RunQuery($sSQL);
+
+$sSQLFundCriteria = "";
 
 // Build criteria string for funds
 if (!empty($_POST["funds"])) {
@@ -151,6 +158,15 @@ if ($fundCount > 0) {
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
 $rsFunds = RunQuery($sSQL);
 
+$fundPaymentTotal = array ();
+$fundPledgeTotal = array ();
+while ($row = mysql_fetch_array($rsFunds))
+{
+	$fun_name = $row["fun_Name"];
+	$fundPaymentTotal[$fun_name] = 0;
+	$fundPledgeTotal[$fun_name] = 0;
+}
+
 // Create PDF Report
 // *****************
 class PDF_FamilyPledgeSummaryReport extends ChurchInfoReport {
@@ -163,6 +179,7 @@ class PDF_FamilyPledgeSummaryReport extends ChurchInfoReport {
 		$this->SetMargins(20,20);
 		$this->Open();
 		$this->SetAutoPageBreak(false);
+		$this->incrementY = 0;
 	}
 }
 

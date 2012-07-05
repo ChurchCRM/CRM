@@ -23,8 +23,12 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin'])
 	exit;
 }
 
-$sReportType = FilterInput($_POST["ReportType"]);
-if (!$sRportType && isset ($_GET["ReportType"]))
+$sReportType = "";
+
+if (array_key_exists ("ReportType", $_POST))
+	$sReportType = FilterInput($_POST["ReportType"]);
+	
+if ($sReportType == "" && array_key_exists ("ReportType", $_GET))
 	$sReportType = FilterInput($_GET["ReportType"]);
 
 // Set the page title and include HTML header
@@ -34,10 +38,10 @@ if ($sReportType)
 require "Include/Header.php";
 
 // No Records Message if previous report returned no records.
-if ($_GET["ReturnMessage"] == "NoRows")
+if (array_key_exists ("ReturnMessage", $_GET) && $_GET["ReturnMessage"] == "NoRows")
 	echo "<h3><font color=red>".gettext("No records were returned from the previous report.")."</font></h3>";
 
-if (!$sReportType) {
+if ($sReportType == "") {
 	// First Pass - Choose report type
 	echo "<form method=post action='FinancialReports.php'>";
 	echo "<table cellpadding=3 align=left>";
@@ -115,8 +119,6 @@ if (!$sReportType) {
 					while ($aRow = mysql_fetch_array($rsClassifications)) {
 						extract($aRow);
 						echo "<option value=\"" . $lst_OptionID . "\"";
-						if ($classList and array_key_exists($lst_OptionName, $classList)) {
-							echo " selected"; }
 						echo ">" . $lst_OptionName . "&nbsp;";
 					}
 					?>
@@ -146,9 +148,9 @@ if (!$sReportType) {
 		// Build array of Head of Households and Spouses with fam_ID as the key
 		$sSQL = "SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (" . $head_criteria . ") ORDER BY per_fam_ID";
 		$rs_head = RunQuery($sSQL);
-		$aHead = "";
+		$aHead = array();
 		while (list ($head_firstname, $head_famid) = mysql_fetch_row($rs_head)){
-			if ($head_firstname && $aHead[$head_famid])
+			if ($head_firstname && array_key_exists ($head_famid, $aHead))
 				$aHead[$head_famid] .= " & " . $head_firstname;
 			elseif ($head_firstname)
 				$aHead[$head_famid] = $head_firstname;
@@ -157,7 +159,7 @@ if (!$sReportType) {
 		{
 			extract($aRow);
 			echo "<option value=$fam_ID>$fam_Name";
-			if ($aHead[$fam_ID])
+			if (array_key_exists ($fam_ID, $aHead))
 				echo ", " . $aHead[$fam_ID];
 			echo " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 		}
@@ -258,7 +260,7 @@ if (!$sReportType) {
 			." &nbsp; <input name=only_owe type=radio value='no'>".gettext("All Families")."</td></tr>";
 	}
 	
-	if ($sReportType == "Giving Report"){
+	if ($sReportType == "Giving Report" or $sReportType == "Zero Givers"){
 		echo "<tr><td class=LabelColumn>".gettext("Report Heading:")."</td>"
 			."<td class=TextColumnWithBottomBorder><input name=letterhead type=radio value='graphic'>".gettext("Graphic")
 			." <input name=letterhead type=radio value='address' checked>".gettext("Church Address")
