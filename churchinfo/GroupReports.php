@@ -5,10 +5,11 @@
  *  last change : 2003-09-03
  *  description : Detailed reports on group members
  *
- *  http://www.infocentral.org/
+ *  http://www.churchdb.org/
  *  Copyright 2003 Federico Nebiolo, Chris Gebhardt
+ *  Copyright 2004-2012 Michael Wilt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -136,10 +137,10 @@ $iGroupID = FilterInput($_POST['GroupID'],'int');
 ?>
 
 <form method="POST" action="Reports/GroupReport.php">
-<input type="hidden" Name="GroupID" value="<?php echo $iGroupID;?>">
-<input type="hidden" Name="GroupRole" value="<?php echo $_POST['GroupRole'];?>">
-<input type="hidden" Name="OnlyCart" value="<?php echo $_POST['OnlyCart'];?>">
-<input type="hidden" Name="ReportModel" value="<?php echo $_POST['ReportModel'];?>">
+<input type="hidden" Name="GroupID" <?php echo "value=\"" . $iGroupID . "\"";?>>
+<input type="hidden" Name="GroupRole" <?php if (array_key_exists ('GroupRole', $_POST)) { echo "value=\"" . $_POST['GroupRole'] . "\""; }?>>
+<input type="hidden" Name="OnlyCart" <?php if (array_key_exists ('OnlyCart', $_POST)) { echo "value=\"" . $_POST['OnlyCart'] . "\""; } ?>>
+<input type="hidden" Name="ReportModel" <?php echo "value=\"" . $_POST['ReportModel'] . "\"";?>>
 
 <?php
 
