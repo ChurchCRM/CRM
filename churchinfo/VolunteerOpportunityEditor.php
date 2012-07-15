@@ -108,9 +108,9 @@ if (($sAction == 'delete') && $iOpp > 0) {
             echo "\n<br><b> $per_FirstName $per_LastName</b>";
         }
     }
-    echo "\n<br><h3><a href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=" . $iOpp . "\"> ";
+    echo "\n<br><h3><a href=\"VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=" . $iOpp . "\"> ";
     echo gettext("Yes, delete this Volunteer Opportunity") . " </a></h3> ";
-    echo "\n<h2><a href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php\"> ";
+    echo "\n<h2><a href=\"VolunteerOpportunityEditor.php\"> ";
     echo gettext("No, cancel this deletion") . " </a></h2> ";
     require "Include/Footer.php";
     exit;
@@ -197,29 +197,35 @@ if (isset($_POST["SaveChanges"])) {
     $numRows = mysql_num_rows($rsOpps);
 
     for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++ ) {
-        $aNameFields[$iFieldID] = FilterInput($_POST[$iFieldID . "name"]);
-
-        if ( strlen($aNameFields[$iFieldID]) == 0 ) {
-            $aNameErrors[$iFieldID] = true;
-        $bErrorFlag = true;
-        } else {
-            $aNameErrors[$iFieldID] = false;
-        }
-
-        $aDescFields[$iFieldID] = FilterInput($_POST[$iFieldID . "desc"]);
-
-        $aRow = mysql_fetch_array($rsOpps);
-        $aIDFields[$iFieldID] = $aRow[0];
+    	$nameName = $iFieldID . "name";
+    	$descName = $iFieldID . "desc";
+    	if (array_key_exists ($nameName, $_POST)) {
+	        $aNameFields[$iFieldID] = FilterInput($_POST[$nameName]);
+	
+	        if ( strlen($aNameFields[$iFieldID]) == 0 ) {
+	            $aNameErrors[$iFieldID] = true;
+	        $bErrorFlag = true;
+	        } else {
+	            $aNameErrors[$iFieldID] = false;
+	        }
+	
+	        $aDescFields[$iFieldID] = FilterInput($_POST[$descName]);
+	
+	        $aRow = mysql_fetch_array($rsOpps);
+	        $aIDFields[$iFieldID] = $aRow[0];
+    	}
     }
 
     // If no errors, then update.
     if (!$bErrorFlag) {
         for ( $iFieldID=1; $iFieldID <= $numRows; $iFieldID++ ) {
-            $sSQL = "UPDATE `volunteeropportunity_vol`
-                     SET `vol_Name` = '" . $aNameFields[$iFieldID] . "',
-                     `vol_Description` = '" . $aDescFields[$iFieldID] .
-                     "' WHERE `vol_ID` = '" . $aIDFields[$iFieldID] . "';";
-             RunQuery($sSQL);
+        	if (array_key_exists ($iFieldID, $aNameFields)) {
+	            $sSQL = "UPDATE `volunteeropportunity_vol`
+	                     SET `vol_Name` = '" . $aNameFields[$iFieldID] . "',
+	                     `vol_Description` = '" . $aDescFields[$iFieldID] .
+	                     "' WHERE `vol_ID` = '" . $aIDFields[$iFieldID] . "';";
+	             RunQuery($sSQL);
+        	}
          }
     }
 } else {
@@ -280,33 +286,43 @@ if ($numRows == 0) {
          $swapRow = $iRowNum;
          if ($sAction == 'up') {
             $newRow = --$iRowNum;
-         } else {
+         } else if ($sAction == 'down') {
             $newRow = ++$iRowNum;
          }
+      } else {
+         $swapRow = $iRowNum;
+      	 $newRow = $iRowNum;
       }
 
-      $sSQL = "UPDATE volunteeropportunity_vol
-               SET vol_Order = '" . $newRow . "' " .
-          "WHERE vol_ID = '" . $aIDFields[$swapRow] . "';";
-      RunQuery($sSQL);
+      if (array_key_exists ($swapRow, $aIDFields)) {
+	      $sSQL = "UPDATE volunteeropportunity_vol
+	               SET vol_Order = '" . $newRow . "' " .
+	          "WHERE vol_ID = '" . $aIDFields[$swapRow] . "';";
+	      RunQuery($sSQL);
+      }
 
-      $sSQL = "UPDATE volunteeropportunity_vol
-               SET vol_Order = '" . $swapRow . "' " .
-          "WHERE vol_ID = '" . $aIDFields[$newRow] . "';";
-      RunQuery($sSQL);
+      if (array_key_exists ($newRow, $aIDFields)) {
+	      $sSQL = "UPDATE volunteeropportunity_vol
+	               SET vol_Order = '" . $swapRow . "' " .
+	          "WHERE vol_ID = '" . $aIDFields[$newRow] . "';";
+	      RunQuery($sSQL);
+      }
 
       // now update internal data to match
-      $saveID = $aIDFields[$swapRow];
-      $saveName = $aNameFields[$swapRow];
-      $saveDesc = $aDescFields[$swapRow];
+      if (array_key_exists ($swapRow, $aIDFields)) {
+	      $saveID = $aIDFields[$swapRow];
+	      $saveName = $aNameFields[$swapRow];
+	      $saveDesc = $aDescFields[$swapRow];
+	      $aIDFields[$newRow] = $saveID;
+	      $aNameFields[$newRow] = $saveName;
+	      $aDescFields[$newRow] = $saveDesc;
+      }
 
-      $aIDFields[$swapRow] = $aIDFields[$newRow];
-      $aNameFields[$swapRow] = $aNameFields[$newRow];
-      $aDescFields[$swapRow] = $aDescFields[$newRow];
-
-      $aIDFields[$newRow] = $saveID;
-      $aNameFields[$newRow] = $saveName;
-      $aDescFields[$newRow] = $saveDesc;
+      if (array_key_exists ($newRow, $aIDFields)) {
+	      $aIDFields[$swapRow] = $aIDFields[$newRow];
+	      $aNameFields[$swapRow] = $aNameFields[$newRow];
+	      $aDescFields[$swapRow] = $aDescFields[$newRow];
+      }
    }
 } // end if GET  
 
@@ -340,39 +356,41 @@ if (strlen($sDeleteError) > 0) echo $sDeleteError;
 <?php
 
 for ($row=1; $row <= $numRows; $row++) {
-    echo "<tr>";
-    echo "<td class=\"LabelColumn\"><b>" . $row . "</b></td>";
-    echo "<td class=\"TextColumn\">";
-    if ($row == 1) {
-      echo "<a href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=na&amp;row_num=" . $row . "\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
-    } else {
-      echo "<a onclick=\"saveScrollCoordinates()\" href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=up&amp;row_num=" . $row . "\"> <img src=\"Images/uparrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
-    }
-    if ($row <> $numRows) {
-      echo "<a onclick=\"saveScrollCoordinates()\" href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=down&amp;row_num=" . $row . "\"> <img src=\"Images/downarrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
-    } else {
-      echo "<a href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=na&amp;row_num=" . $row . "\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
-    }
-    
-    echo "<a href=\"" . $sURLPath . "/VolunteerOpportunityEditor.php?act=delete&amp;Opp=" . $aIDFields[$row] . "\"> <img src=\"Images/x.gif\" border=\"0\" width=\"15\" alt=''></a></td>";
-   ?>
-
-   <td class="TextColumn" align="center">
-   <input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
+	if (array_key_exists ($row, $aNameFields)) {
+	    echo "<tr>";
+	    echo "<td class=\"LabelColumn\"><b>" . $row . "</b></td>";
+	    echo "<td class=\"TextColumn\">";
+	    if ($row == 1) {
+	      echo "<a href=\"VolunteerOpportunityEditor.php?act=na&amp;row_num=" . $row . "\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+	    } else {
+	      echo "<a onclick=\"saveScrollCoordinates()\" href=\"VolunteerOpportunityEditor.php?act=up&amp;row_num=" . $row . "\"> <img src=\"Images/uparrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+	    }
+	    if ($row <> $numRows) {
+	      echo "<a onclick=\"saveScrollCoordinates()\" href=\"VolunteerOpportunityEditor.php?act=down&amp;row_num=" . $row . "\"> <img src=\"Images/downarrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+	    } else {
+	      echo "<a href=\"VolunteerOpportunityEditor.php?act=na&amp;row_num=" . $row . "\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+	    }
+	    
+	    echo "<a href=\"VolunteerOpportunityEditor.php?act=delete&amp;Opp=" . $aIDFields[$row] . "\"> <img src=\"Images/x.gif\" border=\"0\" width=\"15\" alt=''></a></td>";
+	   ?>
+	
+	   <td class="TextColumn" align="center">
+	   <input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
+	   <?php
+	      
+	   if (array_key_exists ($row, $aNameErrors) && $aNameErrors[$row] ) {
+	      echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
+	   }
+	   ?>
+	   </td>
+	
+	   <td class="TextColumn">
+	   <input type="text" Name="<?php echo $row . "desc" ?>" value="<?php echo htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="40" maxlength="100">
+	   </td>
+	
+	   </tr>
    <?php
-      
-   if (array_key_exists ($row, $aNameErrors) && $aNameErrors[$row] ) {
-      echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
-   }
-   ?>
-   </td>
-
-   <td class="TextColumn">
-   <input type="text" Name="<?php echo $row . "desc" ?>" value="<?php echo htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="40" maxlength="100">
-   </td>
-
-   </tr>
-   <?php
+	} 
 } 
 ?>
 
