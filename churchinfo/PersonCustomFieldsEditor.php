@@ -364,7 +364,7 @@ else
 
 			<td class="TextColumn" align="center"><input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="35" maxlength="40">
 				<?php
-				if ($aNameErrors[$row])
+				if (array_key_exists ($row, $aNameErrors) && $aNameErrors[$row])
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
 				?>
 			</td>

@@ -250,6 +250,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	}
 
 	// Validate all the custom fields
+	$aCustomData = array();
 	while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
 	{
 		extract($rowCustomField);
@@ -466,7 +467,9 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 
 		$sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $iPersonID;
 		$rsCustomData = RunQuery($sSQL);
-		$aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
+		$aCustomData = array();
+		if (mysql_num_rows ($rsCustomData) >= 1)
+			$aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
 	}
 	else
 	{
@@ -519,6 +522,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		$bFamilyCellPhone = 0;
 		$bFamilyEmail = 0;
 		$bHomeBound = False;
+		$aCustomData = array();
 	}
 }
 
@@ -873,7 +877,10 @@ maxlength="10" size="8"></td>
 					{
 						echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td><td class=\"TextColumn\">";
 
-						$currentFieldData = trim($aCustomData[$custom_Field]);
+						if (array_key_exists ($custom_Field, $aCustomData))
+							$currentFieldData = trim($aCustomData[$custom_Field]);
+						else
+							$currentFieldData = "";
 
 						if ($type_ID == 11) $custom_Special = $sPhoneCountry;
 

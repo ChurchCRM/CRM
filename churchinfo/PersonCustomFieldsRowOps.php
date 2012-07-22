@@ -33,7 +33,7 @@ $sAction = $_GET["Action"];
 switch ($sAction)
 {
 	// Move a field up:  Swap the custom_Order (ordering) of the selected row and the one above it
-	case up:
+	case 'up':
 		$sSQL = "UPDATE person_custom_master SET custom_Order = '" . $iOrderID . "' WHERE custom_Order = '" . ($iOrderID - 1) . "'";
 		RunQuery($sSQL);
 		$sSQL = "UPDATE person_custom_master SET custom_Order = '" . ($iOrderID - 1) . "' WHERE custom_Field = '" . $sField . "'";
@@ -41,7 +41,7 @@ switch ($sAction)
 		break;
 
 	// Move a field down:  Swap the custom_Order (ordering) of the selected row and the one below it
-	case down:
+	case 'down':
 		$sSQL = "UPDATE person_custom_master SET custom_Order = '" . $iOrderID . "' WHERE custom_Order = '" . ($iOrderID + 1) . "'";
 		RunQuery($sSQL);
 		$sSQL = "UPDATE person_custom_master SET custom_Order = '" . ($iOrderID + 1) . "' WHERE custom_Field = '" . $sField . "'";
@@ -49,7 +49,7 @@ switch ($sAction)
 		break;
 
 	// Delete a field from the form
-	case delete:
+	case 'delete':
 		// Check if this field is a custom list type.  If so, the list needs to be deleted from list_lst.
 		$sSQL = "SELECT type_ID,custom_Special FROM person_custom_master WHERE custom_Field = '" . $sField . "'";
 		$rsTemp = RunQuery($sSQL);
