@@ -123,27 +123,27 @@ for (; ; ) {    // This is not a loop but a section of code to be
     }
 
     // add time zone config parameter, now mandatory for time functions in php
-	$sSQL = "INSERT INTO `config_cfg` VALUES (65, 'sTimeZone', 'America/New_York', 'text', 'America/New_York', 'Time zone- see http://php.net/manual/en/timezones.php for valid choices.', 'General', NULL)";
+	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (65, 'sTimeZone', 'America/New_York', 'text', 'America/New_York', 'Time zone- see http://php.net/manual/en/timezones.php for valid choices.', 'General', NULL)";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 	
 // Add config 'sGMapIcons' for icons list for family map
 // 
-	$sSQL = "INSERT INTO `config_cfg` VALUES (66, 'sGMapIcons', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'text', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'Names of markers for Google Maps in order of classification', 'General',NULL);";
+	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (66, 'sGMapIcons', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'text', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'Names of markers for Google Maps in order of classification', 'General',NULL);";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 	
 // Change Wiki link in Help section to a Help page
 	$sSQL = "UPDATE `menuconfig_mcf` SET uri = 'Help.php?page=Wiki' where name = 'wiki';";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 
-	$sSQL = "INSERT INTO `config_cfg` VALUES (67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General',NULL);";
+	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General',NULL);";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 
-	$sSQL = "INSERT INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_OptionSQL`, `qrp_Name`, `qrp_Description`, `qrp_Alias`, `qrp_Default`, `qrp_Required`, `qrp_InputBoxSize`, `qrp_Validation`, `qrp_NumericMax`, `qrp_NumericMin`, `qrp_AlphaMinLength`, `qrp_AlphaMaxLength`) VALUES 
+	$sSQL = "INSERT IGNORE INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_OptionSQL`, `qrp_Name`, `qrp_Description`, `qrp_Alias`, `qrp_Default`, `qrp_Required`, `qrp_InputBoxSize`, `qrp_Validation`, `qrp_NumericMax`, `qrp_NumericMin`, `qrp_AlphaMinLength`, `qrp_AlphaMaxLength`) VALUES 
 	(200, 200, 2, 'SELECT custom_field as Value, custom_Name as Display FROM person_custom_master', 'Custom field', 'Choose customer person field', 'custom', '1', 0, 0, '', 0, 0, 0, 0),
 	(201, 200, 0, '', 'Field value', 'Match custom field to this value', 'value', '1', 0, 0, '', 0, 0, 0, 0);";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 
-	$sSQL = "INSERT INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qry_Count`) VALUES 
+	$sSQL = "INSERT IGNORE INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qry_Count`) VALUES 
 	(200, 
 	\"SELECT a.per_ID as AddToCart, CONCAT('<a href=PersonView.php?PersonID=',a.per_ID,'>',a.per_FirstName,' ',a.per_LastName,'</a>') AS Name FROM person_per AS a LEFT JOIN person_custom pc ON a.per_id = pc.per_ID where pc.~custom~='~value~' ORDER BY per_LastName\",
 	 'CustomSearch', 
@@ -151,7 +151,7 @@ for (; ; ) {    // This is not a loop but a section of code to be
 	 1)";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 	
-	$sSQL = "INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('".$sVersion."',NOW())";
+	$sSQL = "INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('".$sVersion."',NOW())";
     RunQuery($sSQL, FALSE); // False means do not stop on error
     break;
 
