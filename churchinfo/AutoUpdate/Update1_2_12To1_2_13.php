@@ -138,6 +138,15 @@ for (; ; ) {    // This is not a loop but a section of code to be
 	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General',NULL);";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 
+	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (1031, 'sZeroGivers', 'This letter shows our record of your payments for', 'text', '0', 'Verbage for top line of zero givers report. Dates will be appended to the end of this line.', 'ChurchInfoReport',NULL);";
+	$rsIcons = RunQuery($sSQL, FALSE); // False means do not stop on error
+	
+	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (1032, 'sZeroGivers2', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'text', '0', 'Verbage for bottom line of tax report. Dates will be appended to the end of this line.', 'ChurchInfoReport',NULL);";
+	$rsIcons = RunQuery($sSQL, FALSE); // False means do not stop on error
+	
+	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (1033, 'sZeroGivers3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', '0', 'Verbage for bottom line of tax report.', 'ChurchInfoReport',NULL);";
+	$rsIcons = RunQuery($sSQL, FALSE); // False means do not stop on error
+
 	$sSQL = "INSERT IGNORE INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_OptionSQL`, `qrp_Name`, `qrp_Description`, `qrp_Alias`, `qrp_Default`, `qrp_Required`, `qrp_InputBoxSize`, `qrp_Validation`, `qrp_NumericMax`, `qrp_NumericMin`, `qrp_AlphaMinLength`, `qrp_AlphaMaxLength`) VALUES 
 	(200, 200, 2, 'SELECT custom_field as Value, custom_Name as Display FROM person_custom_master', 'Custom field', 'Choose customer person field', 'custom', '1', 0, 0, '', 0, 0, 0, 0),
 	(201, 200, 0, '', 'Field value', 'Match custom field to this value', 'value', '1', 0, 0, '', 0, 0, 0, 0);";
