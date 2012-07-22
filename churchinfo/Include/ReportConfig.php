@@ -5,8 +5,8 @@
  *  last change : 2003-03-14
  *  description : Configure report generation
  *
- *  http://www.infocentral.org/
- *  Copyright 2004 Chris Gebhardt, Michael Wilt
+ *  http://www.churchdb.org/
+ *  Copyright 2004-2012 Chris Gebhardt, Michael Wilt
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -77,7 +77,7 @@ class ChurchInfoReport extends FPDF {
 		$this->Cell ($wid, 4, $strconv, 1);
 	}
 
-   function StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $iYear, $letterhead="") {
+   function StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead="") {
 		global $sDefaultCountry;
 		$this->AddPage();
 
