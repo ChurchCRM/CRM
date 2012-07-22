@@ -68,6 +68,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
 //
 
 $sJoinFamTable = " LEFT JOIN family_fam ON per_fam_ID = fam_ID ";
+$sPerTable = "person_per";
 
 // If our source is the cart contents, we don't need to build a WHERE filter string
 if ($sSource == "cart")
@@ -77,9 +78,7 @@ else
 {
 	// If we're filtering by groups, include the p2g2r table
 	if (!empty($_POST["GroupID"])) 
-		$sGroupTable = ", person2group2role_p2g2r";
-	else
-		$sGroupTable = "";
+		$sPerTable = "(person_per, person2group2role_p2g2r)";
 
 	// Prepare any extentions to the WHERE clauses
 	$sWhereExt = "";
@@ -211,7 +210,7 @@ if ($sFormat == "addtocart")
 {
 	// Get individual records to add to the cart
 
-	$sSQL = "SELECT per_ID FROM (person_per $sGroupTable) $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy";
+	$sSQL = "SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy";
     $sSQL .= " ORDER BY per_LastName";
     $rsLabelsToWrite = RunQuery($sSQL);
 	while($aRow = mysql_fetch_array($rsLabelsToWrite))
@@ -227,13 +226,13 @@ else
 
 	if ($sFormat == "rollup")
 	{
-		$sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM (person_per $sGroupTable) $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
-		UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM (person_per $sGroupTable) $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount = 1)
-		UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM (person_per $sGroupTable) $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount > 1) ORDER BY SortMe";
+		$sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
+		UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount = 1)
+		UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount > 1) ORDER BY SortMe";
 	}
 	else
 	{
-		$sSQL = "SELECT * FROM (person_per $sGroupTable) $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName";
+		$sSQL = "SELECT * FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName";
 	}
 
 	//Execute whatever SQL was entered
