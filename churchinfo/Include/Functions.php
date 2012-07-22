@@ -4,6 +4,7 @@
 *  filename    : /Include/Functions.php
 *  website     : http://www.churchdb.org
 *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
+*                Copyright 2004-1012 Michael Wilt
 *
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.
@@ -1392,7 +1393,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
             if (strlen($data) != 0)
             {
                 if ($aLocalInfo["thousands_sep"]) {
-                    $data = eregi_replace($aLocaleInfo["thousands_sep"], "", $data);  // remove any thousands separators
+                    $data = preg_replace('/'.$aLocaleInfo["thousands_sep"].'/i', "", $data);  // remove any thousands separators
                 }
                 if (!is_numeric($data))
                 {
@@ -1411,7 +1412,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
         case 10:
             if (strlen($data) != 0)
             {   if ($aLocaleInfo["mon_thousands_sep"]) {
-                    $data = eregi_replace($aLocaleInfo["mon_thousands_sep"], "", $data);
+                    $data = preg_replace('/'.$aLocaleInfo["mon_thousands_sep"].'/i', "", $data);
                 }
                 if (!is_numeric($data))
                 {
