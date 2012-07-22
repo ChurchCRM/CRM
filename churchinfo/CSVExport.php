@@ -204,7 +204,6 @@ require "Include/Header.php";
                 extract($Row);
                 if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
                 {
-                    $currentData = trim($aCustomData[$custom_Field]);
                     echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td>";
                     echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $custom_Field . " value=\"1\"></td></tr>";
                 }
@@ -224,7 +223,6 @@ require "Include/Header.php";
                 extract($Row);
                 if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
                 {
-                    $currentData = trim($aFamCustomData[$fam_custom_Field]);
                     echo "<tr><td class=\"LabelColumn\">" . $fam_custom_Name . "</td>";
                     echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $fam_custom_Field . " value=\"1\"></td></tr>";
                 }
