@@ -186,7 +186,7 @@ class AddressLatLon {
 		global $sGeocoderID, $sGeocoderPW, $bHaveXML;
 		if (! $bHaveXML)
 			return;
-		if ($sGeocoderID) { // Use credentials if available for unthrottled access to the geocoder server
+		if (isset ($sGeocoderID) && $sGeoCoderID != "") { // Use credentials if available for unthrottled access to the geocoder server
 			$this->client = new XML_RPC_Client('/member/service/xmlrpc', 'rpc.geocoder.us');
 			$this->client->SetCredentials ($sGeocoderID, $sGeocoderPW);
 		} else {
@@ -211,9 +211,11 @@ class AddressLatLon {
 		if ($bUseGoogleGeocode) {
 			//$geocode = $googleMapObj->geoGetCoords($address);
 			$geocode = $googleMapObj->getGeocode($address);
-
-			$this->lat = $geocode['lat'];
-			$this->lon = $geocode['lon'];
+			
+			if ($geocode) {
+				$this->lat = $geocode['lat'];
+				$this->lon = $geocode['lon'];
+			}
 		} else {
 			if (! $bHaveXML)
 				return (-4);
