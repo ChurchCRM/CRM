@@ -92,18 +92,18 @@ for (; ; ) {    // This is not a loop but a section of code to be
 // TRUE to FALSE now that backup copies of all tables are available
 
     // Allow pledge to be weekly
-    $sSQL = "ALTER TABLE pledge_plg CHANGE plg_schedule plg_schedule enum('Weekly','Monthly','Quarterly','Once','Other')";
+    $sSQL = "ALTER IGNORE TABLE pledge_plg CHANGE plg_schedule plg_schedule enum('Weekly','Monthly','Quarterly','Once','Other')";
     RunQuery($sSQL, FALSE); // False means do not stop on error
 
-    $sSQL = "ALTER TABLE email_message_pending_emp ADD `emp_attach_name` text NULL";    
+    $sSQL = "ALTER IGNORE TABLE email_message_pending_emp ADD `emp_attach_name` text NULL";    
     RunQuery($sSQL, FALSE); // False means do not stop on error
     
-    $sSQL = "ALTER TABLE email_message_pending_emp ADD emp_attach tinyint(1) default 0";
+    $sSQL = "ALTER IGNORE TABLE email_message_pending_emp ADD emp_attach tinyint(1) default 0";
     RunQuery($sSQL, FALSE); // False means do not stop on error
     
 	// The older database has these set to empty string rather than NULL so they do not show up
     // in the settings page.
-    $sSQL = "UPDATE config_cfg SET cfg_category=NULL WHERE cfg_id IN (61,62,63,64,65)";
+    $sSQL = "UPDATE IGNORE config_cfg SET cfg_category=NULL WHERE cfg_id IN (61,62,63,64,65)";
     RunQuery($sSQL, FALSE); // False means do not stop on error
 
 // Update the format of the scanned check stored in the family record.
@@ -137,7 +137,7 @@ for (; ; ) {    // This is not a loop but a section of code to be
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 	
 // Change Wiki link in Help section to a Help page
-	$sSQL = "UPDATE `menuconfig_mcf` SET uri = 'Help.php?page=Wiki' where name = 'wiki';";
+	$sSQL = "UPDATE IGNORE `menuconfig_mcf` SET uri = 'Help.php?page=Wiki' where name = 'wiki';";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 
 	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General',NULL);";
