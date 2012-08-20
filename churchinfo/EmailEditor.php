@@ -29,12 +29,17 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-$email_array = $_POST['emaillist'];
+if (array_key_exists ('emaillist', $_POST))
+	$email_array = $_POST['emaillist'];
+else
+	$email_array = array ();
+
 $bcc_list = implode(", ", $email_array);
 
 // If editing, get Title and Message
 $sEmailSubject = "";
 $sEmailMessage = "";
+$sEmailAttachName = "";
 
 if (array_key_exists ('mysql', $_POST) and $_POST['mysql'] == 'true') {
 
@@ -47,6 +52,7 @@ if (array_key_exists ('mysql', $_POST) and $_POST['mysql'] == 'true') {
 
     $sEmailSubject = $emp_subject;
     $sEmailMessage = $emp_message;
+    $sEmailAttachName = $emp_attach_name;
 }
 
 // Security: Both global and user permissions needed to send email.
@@ -70,15 +76,16 @@ echo '<b>' . gettext("To (blind):") . '</b> '  . $bcc_list . '<br>';
 
 
 echo "\n<hr>";
-echo '<div align="center"><table><tr><td align="center">';
+echo '<div align="left"><table><tr><td align="left">';
 
-echo '<br><h2>' . gettext("Send Email To People in Cart") . '</h2>'."\n";
-echo '<form action="CartView.php#email" method="post">';
-
+echo '<form action="CartView.php#email" method="post" enctype="multipart/form-data">';
 
 echo gettext('Subject:');
-echo '<br><input type="text" name="emailsubject" size="80" value="';
-echo htmlspecialchars($sEmailSubject) . '">'."\n";
+echo '<input type="text" name="emailsubject" size="80" value="';
+echo htmlspecialchars($sEmailSubject) . '">'."<br>\n";
+
+echo gettext('Attach file:');
+echo "<input class=\"icTinyButton\" type=\"file\" name=\"Attach\"".(strlen($sEmailAttachName)>0?" value=\"$sEmailAttachName\"":"").">";
 
 echo '<br>' . gettext('Message:');
 echo '<br><textarea name="emailmessage" rows="20" cols="72">';

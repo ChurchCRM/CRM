@@ -196,6 +196,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
         $sEmailLink = "";
         $iEmailNum = 0;
         $sRowClass = "RowColorA";
+        $email_array = array ();
 
         while ($aRow = mysql_fetch_array($rsCartItems))
         {
@@ -379,9 +380,7 @@ if ($bCreateDirectory)
 <?php
 }
 
-    if (($bEmailSend) && ($bSendPHPMail))
-    {
-
+    if (($bEmailSend) && ($bSendPHPMail)) {
         if (isset($email_array)) {
             $bcc_list = "";
             foreach ($email_array as $email_address) {
@@ -423,7 +422,6 @@ if ($bCreateDirectory)
         $aRow = mysql_fetch_array($rsCountRecipients);
         extract($aRow);
 
-
         if ($countjobs) {
             // There is already a message composed in MySQL
             // Let's check and make sure it has not been sent.
@@ -440,15 +438,29 @@ if ($bCreateDirectory)
 
                 // This user has no email messages stored MySQL
 
-                $sEmailSubject = stripslashes($_POST['emailsubject']);
-                $sEmailMessage = stripslashes($_POST['emailmessage']);
+                $sEmailSubject = "";
+                if (array_key_exists ('emailsubject', $_POST))
+                	$sEmailSubject = stripslashes($_POST['emailsubject']);
+                $sEmailMessage = "";
+                if (array_key_exists ('emailmessage', $_POST))
+	                $sEmailMessage = stripslashes($_POST['emailmessage']);
+                $hasAttach = 0;
+                $attachName = "";
 
+                if (array_key_exists ('Attach', $_FILES)) {
+	        		$attachName = $_FILES['Attach']['name'];
+	        		$hasAttach = 1;
+                	move_uploaded_file ($_FILES['Attach']['tmp_name'], "tmp_attach/".$attachName);
+		        }
+                
                 if (strlen($sEmailSubject.$sEmailMessage)) {
 
                     // User has edited a message.  Update MySQL.                
                     $sSQLu = "UPDATE email_message_pending_emp ".
                              "SET emp_subject='".mysql_real_escape_string($sEmailSubject)."',".
-                             "    emp_message='".mysql_real_escape_string($sEmailMessage)."' ".
+                             "    emp_message='".mysql_real_escape_string($sEmailMessage)."', ".
+                             "    emp_attach_name='".$attachName."',".
+                             "    emp_attach='".$hasAttach."' ".
                              "WHERE emp_usr_id='".$_SESSION['iUserID']."'";
 
                     RunQuery($sSQLu);
@@ -463,6 +475,7 @@ if ($bCreateDirectory)
 
                     $sEmailSubject = $emp_subject;
                     $sEmailMessage = $emp_message;
+                    $attachName = $emp_attach_name;
                 }
 
                 $sEmailForm = "sendoredit";                
@@ -479,11 +492,18 @@ if ($bCreateDirectory)
             // This user has no email messages stored MySQL
 			$sEmailSubject = "";
 			$sEmailMessage = "";
+			$hasAttach = 0;
+			$attachName = "";
         	
 			if (array_key_exists ('emailsubject', $_POST))
 	            $sEmailSubject = stripslashes($_POST['emailsubject']);
 			if (array_key_exists ('emailmessage', $_POST))
-	            $sEmailMessage = stripslashes($_POST['emailmessage']);
+	            $sEmailMessage = stripslashes($_POST['emailmessage']);	            
+            if (array_key_exists ('Attach', $_FILES)) {
+	        	$attachName = $_FILES['Attach']['name'];
+	        	$hasAttach = 1;
+                move_uploaded_file ($_FILES['Attach']['tmp_name'], "tmp_attach/".$attachName);
+	        }
 
             if (strlen($sEmailSubject.$sEmailMessage)) {
 
@@ -494,7 +514,9 @@ if ($bCreateDirectory)
                             "emp_usr_id='" .$_SESSION['iUserID']. "',".
                             "emp_to_send='0'," .
                             "emp_subject='" . mysql_real_escape_string($sEmailSubject). "',".
-                            "emp_message='" . mysql_real_escape_string($sEmailMessage). "'";
+                            "emp_message='" . mysql_real_escape_string($sEmailMessage). "',".
+                            "emp_attach_name='" .$attachName . "',".
+                			"emp_attach='".$hasAttach."'";
 
                 RunQuery($sSQL);
 
@@ -526,7 +548,7 @@ if ($bCreateDirectory)
 
             echo '<input type="submit" class="icButton" name="submit" '.
                  'value ="'.gettext("Compose Email").'">'."\n</form>";
-
+            
         } elseif ($sEmailForm == 'sendoredit') {
 
             //Print the From, To, and Email List with the Subject and Message
@@ -539,6 +561,10 @@ if ($bCreateDirectory)
             echo '<b>'.gettext("To (blind):").'</b> '.$bcc_list.'<br>'."\n";
 
             echo '<b>'.gettext("Subject:").'</b> '.htmlspecialchars($sEmailSubject).'<br>';
+            
+            if (strlen ($attachName) > 0) {
+            	echo '<b>'.gettext("Attach file:").'</b> '.htmlspecialchars($attachName).'<br>';
+            }
 
             echo '</p><hr><textarea cols="72" rows="20" readonly class="MediumText" ';
             echo 'style="border:0px;">'. htmlspecialchars($sEmailMessage) . '</textarea><br>';
@@ -647,7 +673,6 @@ if ($bCreateDirectory)
             echo "$iWaitTime seconds must elapse before sending another email.<br>\n";
 
             $iComeBack = $iWaitTime - $tTimeSinceLastAttempt;
-
             echo "Refresh this page in $iComeBack seconds.<br>\n";
 
             $sSQL = 'SELECT * FROM email_job_log_'.$_SESSION['iUserID'].' '.

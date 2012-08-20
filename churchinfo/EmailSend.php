@@ -93,7 +93,7 @@ function AddToEmailLog($sMessage, $iUserID)
     RunQuery($sSQL);
 }
 
-function SendEmail($sSubject, $sMessage, $sRecipient)
+function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
 {
 
     global $sSendType;
@@ -139,6 +139,9 @@ function SendEmail($sSubject, $sMessage, $sRecipient)
 
     $mail->From = $sFromEmailAddress;   // From email address (User Settings)
     $mail->FromName = $sFromName;       // From name (User Settings)
+    
+    if ($hasAttach)
+    	$mail->AddAttachment ("tmp_attach/".$attachName);
 
     if (strtolower($sSendType)=='smtp') {
 
@@ -293,7 +296,7 @@ if (!$bTableExists) {
     ClearEmailLog();  
 }
 
-if ($_POST['resume'] == 'true') {
+if (array_key_exists ('resume', $_POST) && $_POST['resume'] == 'true') {
     // If we are resuming skip the 'start' state and go straight to 'continue'
     $_SESSION['sEmailState'] = 'continue';
 
@@ -308,7 +311,7 @@ if ($_POST['resume'] == 'true') {
     RunQuery($sSQL);
 }
 
-if ($_POST['abort'] == 'true') {
+if (array_key_exists ('abort', $_POST) && $_POST['abort'] == 'true') {
     // If user chooses to abort the print job be sure to erase all evidence and
     // Redirect to main menu
 
@@ -442,7 +445,7 @@ if ($emp_to_send==0 && $countrecipients==0) {
 
 } elseif ($countrecipients) {
 
-    if (!($_POST['viewlog'] == 'true')) {
+    if (!(array_key_exists ('viewlog', $_POST))) { // not ready to view the log so must be continuing
 
         $sMsg = 'Job continuing after page reload at '.date('Y-m-d H:i:s');
         AddToEmailLog($sMsg, $iUserID);
@@ -526,6 +529,9 @@ if ($sEmailState == 'continue') {
     // continue sending email
     $sSubject = $emp_subject;
     $sMessage = $emp_message;
+    $attachName = $emp_attach_name;
+    $hasAttach = $emp_attach;
+    
 
     // There must be more than one recipient
     if ($countrecipients) {
@@ -533,7 +539,7 @@ if ($sEmailState == 'continue') {
         echo '<br>Please be patient. Job is not finished.<br><br>';
         echo '<b>Please allow up to 60 seconds for page to reload.</b><br><br>';
 
-        SendEmail($sSubject, $sMessage, 'get_recipients_from_mysql');
+        SendEmail($sSubject, $sMessage, $attachName, $hasAttach, 'get_recipients_from_mysql');
 
     } else {
         $_SESSION['sEmailState'] = 'finish';
@@ -578,7 +584,7 @@ if ($sEmailState == 'continue') {
             echo $sMsg.'<br><br>';
             AddToEmailLog($sMsg, $iUserID);
 
-            SendEmail($sSubject, $sMessage, $sFromEmailAddress);
+            SendEmail($sSubject, $sMessage, "", 0, $sFromEmailAddress);
         }
 
         $_SESSION['sEmailState'] = 'continue';
@@ -608,7 +614,10 @@ if ($sEmailState == 'continue') {
             "WHERE emp_usr_id='$iUserID'";
     extract(mysql_fetch_array(RunQuery($sSQL)));
 
-    $sMessage .= "Email sent to $emp_num_sent email addresses.\n";
+	if (strlen($emp_attach_name)>0) // delete the attached file if there is one
+    	unlink ("tmp_attach/".$emp_attach_name);
+	
+    //    $sMessage .= "Email sent to $emp_num_sent email addresses.\n"; // $emp_num_sent not a field in email_message_pending_emp
     $sMessage .= "Email job finished at $tTimeStamp\n\n";
     $sMessage .= "Email job log:\n\n";
 
@@ -635,7 +644,7 @@ if ($sEmailState == 'continue') {
         AddToEmailLog($sMsg, $iUserID);
 
         // Send end message
-        SendEmail($sSubject, $sMessage, $sFromEmailAddress);
+        SendEmail($sSubject, $sMessage, "", 0, $sFromEmailAddress);
     }
     echo "<br><b>The job is finished!</b><br>\n";
 
@@ -681,7 +690,7 @@ if ($sEmailState == 'continue') {
             "WHERE emp_usr_id='$iUserID'";
     extract(mysql_fetch_array(RunQuery($sSQL)));
 
-    $sMessage .= "Email sent to $emp_num_sent email addresses.\n";
+//    $sMessage .= "Email sent to $emp_num_sent email addresses.\n"; // $emp_num_sent not a field in email_message_pending_emp
     $sMessage .= "Email job terminated at $tTimeStamp\n\n";
     $sMessage .= "Email job log:\n\n";
 
@@ -707,7 +716,7 @@ if ($sEmailState == 'continue') {
 
     $sMsg = "Attempting to email log to $sFromEmailAddress\n";
     echo $sMsg.'<br>';
-    SendEmail($sSubject, $sMessage, $sFromEmailAddress);
+    SendEmail($sSubject, $sMessage, "", 0, $sFromEmailAddress);
 
 
 } else {
