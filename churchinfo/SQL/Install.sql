@@ -255,7 +255,9 @@ CREATE TABLE `email_message_pending_emp` (
   `emp_usr_id` mediumint(9) unsigned NOT NULL default '0',
   `emp_to_send` smallint(5) unsigned NOT NULL default '0',
   `emp_subject` varchar(128) NOT NULL,
-  `emp_message` text NOT NULL
+  `emp_message` text NOT NULL,
+  `emp_attach_name` text NULL,
+  `emp_attach` tinyint(1)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 -- 

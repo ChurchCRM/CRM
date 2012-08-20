@@ -94,8 +94,13 @@ for (; ; ) {    // This is not a loop but a section of code to be
     // Allow pledge to be weekly
     $sSQL = "ALTER TABLE pledge_plg CHANGE plg_schedule plg_schedule enum('Weekly','Monthly','Quarterly','Once','Other')";
     RunQuery($sSQL, FALSE); // False means do not stop on error
-        
 
+    $sSQL = "ALTER TABLE email_message_pending_emp ADD `emp_attach_name` text NULL";    
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+    
+    $sSQL = "ALTER TABLE email_message_pending_emp ADD emp_attach tinyint(1) default 0";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+    
 	// The older database has these set to empty string rather than NULL so they do not show up
     // in the settings page.
     $sSQL = "UPDATE config_cfg SET cfg_category=NULL WHERE cfg_id IN (61,62,63,64,65)";
