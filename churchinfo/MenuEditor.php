@@ -69,7 +69,13 @@ if (!$_SESSION['bAdmin'])
 $sPageTitle = gettext("Menu Item Editor");
 
 $iMenuID = FilterInput($_GET["mid"],'int');
-$sMode = FilterInput($_GET["mode"]);
+$sMode = "";
+if (array_key_exists ("mode", $_GET))
+	$sMode = FilterInput($_GET["mode"]);
+
+$bErrorFlag = False;
+$sContentError = "";
+$sSessionVarError = "";
 
 //Is this the second pass?
 if (isset($_POST["DeleteCancel"])) {
@@ -429,7 +435,10 @@ if ($sMode == "Delete") {
 			$sSecGrpList = "<select name=\"SecurityGroup\">";
 			for ($i=0; $i<count($aSecurityList); $i++)
 			{
-				$sSecGrpList .= "<option value=\"" . $aSecurityList[$i] . "\"" .$aSecuritySelect[$aSecurityList[$i]] . ">" . $aSecurityList[$i] . "</option>\n";
+				$valStr = "";
+				if (array_key_exists ($aSecurityList[$i], $aSecuritySelect))
+					$valStr = $aSecuritySelect[$aSecurityList[$i]];
+				$sSecGrpList .= "<option value=\"" . $aSecurityList[$i] . "\"" . $valStr . ">" . $aSecurityList[$i] . "</option>\n";
 			}
 			$sSecGrpList .= "</select>";
 			echo $sSecGrpList;
@@ -475,15 +484,6 @@ if ($sMode == "Delete") {
 			</select>
 		</td>
 	</tr>
-	<tr>
-		<td <?php if ($numCustomFields > 0) echo "colspan=\"2\""; ?> align="center">
-			<?php echo "<input type=\"hidden\" Name=\"Name\" value=\"".$sName."\">"; ?>
-			<?php echo "<input type=\"hidden\" Name=\"OrigParent\" value=\"".$sParent."\">"; ?>
-			<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> name="MenuSubmit">
-			<input type="reset" class="icButton" <?php echo 'value="' . gettext("Reset") . '"'; ?> name="MenuReset">
-		</td>
-	</tr>
-
 </table>
 </form>
 <?php
