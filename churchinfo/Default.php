@@ -84,10 +84,6 @@ if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
                      " WHERE usr_per_ID = " . $_SESSION['iUserID'];
        RunQuery($sSQL);
    }
-
-    $_COOKIE = array();
-    $_SESSION = array();
-    session_destroy();
 }
 
 $iUserID = 0;
@@ -107,8 +103,12 @@ if (isset($_POST['User']) && $sErrorText == '') {
         $iUserID = $usQueryResultSet['usr_per_id'];
     }
 } else {
-    //User ID was not submitted with form
+    // Nothing submitted yet, must be the first time loading this page.
+    // Clear out any old session
     $iUserID = 0;
+    $_COOKIE = array();
+    $_SESSION = array();
+    session_destroy();
 }
 
 
@@ -138,6 +138,10 @@ if ($iUserID > 0)
     $bPasswordMatch = ($usr_Password == $sPasswordHashMd5 || $usr_Password == $sPasswordHash40 || $usr_Password == $sPasswordHashSha256);
 
     if ($bPasswordMatch && $usr_Password != $sPasswordHashSha256) {
+    	// Need to make sure this field can handle the additional length before updating the password
+    	$sSQL = "ALTER IGNORE TABLE user_usr MODIFY `usr_Password` text NOT NULL default ''";
+    	RunQuery($sSQL, TRUE); // TRUE means stop on error
+    	
         $sSQL = "UPDATE user_usr SET usr_Password='".$sPasswordHashSha256."' ".
                 "WHERE usr_per_ID ='".$iUserID."'";
         RunQuery($sSQL);
