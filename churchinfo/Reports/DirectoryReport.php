@@ -624,7 +624,7 @@ if (!empty($_POST["GroupID"]))
 	$sGroupBy = "";
 }
 
-if ($_POST['cartdir'] != null)
+if (array_key_exists ('cartdir', $_POST))
 {
     $sWhereExt .= "AND per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ")";
 }
@@ -714,7 +714,7 @@ while ($aRow = mysql_fetch_array($rsRecords))
         // Find the other members of a family
         $sSQL = "SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
             WHERE per_fam_ID = " . $iFamilyID . " AND !(per_fmr_ID in ($sDirRoleHeads))
-            AND !(per_fmr_ID in ($sDirRoleSpouses))  $sWhereExt $sClassQualifier $sGroupBy ORDER BY per_BirthYear";
+            AND !(per_fmr_ID in ($sDirRoleSpouses))  $sWhereExt $sClassQualifier $sGroupBy ORDER BY per_BirthYear,per_FirstName";
         $rsPerson = RunQuery($sSQL);
 
         while ($aRow = mysql_fetch_array($rsPerson))
