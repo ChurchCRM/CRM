@@ -4,6 +4,7 @@
  *  filename    : UserPasswordChange.php
  *  website     : http://www.churchdb.org
  *  copyright   : Copyright 2001, 2002 Deane Barker
+ *  			  Copyright 2004-2012 Michael Wilt
  *
  *  LICENSE:
  *  (C) Free Software Foundation, Inc.
@@ -71,7 +72,8 @@ if (isset($_POST["Submit"]))
         else {
             // Update the user record with the password hash
             $tmp = $sNewPassword1.$iPersonID;        
-            $sPasswordHash = sha1(sha1($tmp).$tmp);
+		    $sPasswordHashSha256 = hash ("sha256", $tmp);
+            
             $sSQL = "UPDATE user_usr SET".
                     " usr_Password='".$sPasswordHash."',".
                     " usr_NeedPasswordChange='0' ".
@@ -102,17 +104,18 @@ if (isset($_POST["Submit"]))
         $aBadPasswords[] = strtolower($per_MiddleName);
         $aBadPasswords[] = strtolower($per_LastName);
 
-        $bPasswordMatch = FALSE;
-        if (strlen($usr_Password) == 40) {
-            $tmp = $sOldPassword.$iPersonID;
-            $sPasswordHash = sha1(sha1($tmp).$tmp);
-            $bPasswordMatch = ($usr_Password == $sPasswordHash);
-        } else {
-            $tmp = $sOldPassword;
-            $sPasswordHash = md5($tmp);
-            $bPasswordMatch = ($usr_Password == $sPasswordHash);
-        }
-
+	    // Note that there are several possible encodings for the password in the database
+	    $tmp = $sOldPassword;
+	    $sPasswordHashMd5 = md5($tmp);
+	    
+	    $tmp = $sOldPassword.$usr_per_ID;
+	    $sPasswordHash40 = sha1(sha1($tmp).$tmp);
+	    
+	    $tmp = $sOldPassword.$usr_per_ID;
+	    $sPasswordHashSha256 = hash ("sha256", $tmp);
+        
+    	$bPasswordMatch = ($usr_Password == $sPasswordHashMd5 || $usr_Password == $sPasswordHash40 || $usr_Password == $sPasswordHashSha256);
+	    
         // Does the old password match?
         if (!$bPasswordMatch) {
             $sOldPasswordError = "<br><font color=\"red\">" . gettext("Invalid password") . "</font>";
@@ -157,10 +160,11 @@ if (isset($_POST["Submit"]))
         // If no errors, update
         if (!$bError) {
             // Update the user record with the password hash
-            $tmp = $sNewPassword1.$iPersonID;        
-            $sPasswordHash = sha1(sha1($tmp).$tmp);
+		    $tmp = $sNewPassword1.$usr_per_ID;
+		    $sPasswordHashSha256 = hash ("sha256", $tmp);
+        	
             $sSQL = "UPDATE user_usr SET".
-                    " usr_Password='".$sPasswordHash."',".
+                    " usr_Password='".$sPasswordHashSha256."',".
                     " usr_NeedPasswordChange='0' ".
                     "WHERE usr_per_ID ='".$iPersonID."'";
             RunQuery($sSQL);
