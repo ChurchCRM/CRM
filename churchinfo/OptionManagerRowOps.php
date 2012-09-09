@@ -19,7 +19,8 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 // Get the Order, ID, Mode, and Action from the querystring
-$iOrder = FilterInput($_GET["Order"],'int');  // the option Sequence
+if (array_key_exists ("Order", $_GET))
+	$iOrder = FilterInput($_GET["Order"],'int');  // the option Sequence
 $sAction = $_GET["Action"];
 $iID = FilterInput($_GET["ID"],'int');  // the option ID
 $mode = trim($_GET["mode"]);
