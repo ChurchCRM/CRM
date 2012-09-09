@@ -5,10 +5,11 @@
  *  last change : 2003-09-03
  *  description : form to invoke directory report
  *
- *  http://www.infocentral.org/
+ *  http://www.churchdb.org/
  *  Copyright 2003 Chris Gebhardt
+ *  Copyright 2004-2012 Michael Wilt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -77,7 +78,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
 ?>
 
 <table align="center">
-<?php if ($_GET['cartdir'] == null)
+<?php if (!array_key_exists ('cartdir', $_GET))
 {
 ?>
     <tr>
@@ -274,7 +275,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
 
 </table>
 
-<?php if ($_GET['cartdir'] != null) echo '<input type="hidden" name="cartdir" value="M">'; ?>
+<?php if (array_key_exists ('cartdir', $_GET)) echo '<input type="hidden" name="cartdir" value="M">'; ?>
 
 
 <p align="center">
