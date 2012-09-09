@@ -47,7 +47,7 @@ if ($iPersonID > 0)
 	if ( !(
 	       $_SESSION['bEditRecords'] ||
 	       ($_SESSION['bEditSelf'] && $iPersonID==$_SESSION['iUserID']) ||
-	       ($_SESSION['bEditSelf'] && $per_fam_ID==$_SESSION['iFamID'])
+	       ($_SESSION['bEditSelf'] && $per_fam_ID>0 && $per_fam_ID==$_SESSION['iFamID'])
 		  )
 	   )
 	{
@@ -702,7 +702,16 @@ maxlength="10" size="8"></td>
 					<?php require "Include/CountryDropDown.php"; ?>
 				</td>
 			</tr>
-<?php } ?>
+<?php } else { // put the current values in hidden controls so they are not lost if hiding the person-specific info ?>
+				<input type="hidden" name="Address1" value="<?php echo htmlentities(stripslashes($sAddress1),ENT_NOQUOTES, "UTF-8"); ?>"></input>
+				<input type="hidden" name="Address2" value="<?php echo htmlentities(stripslashes($sAddress2),ENT_NOQUOTES, "UTF-8"); ?>"></input>
+				<input type="hidden" name="City" value="<?php echo htmlentities(stripslashes($sCity),ENT_NOQUOTES, "UTF-8"); ?>"></input>
+				<input type="hidden" name="State" value="<?php echo htmlentities(stripslashes($sState),ENT_NOQUOTES, "UTF-8"); ?>"></input>
+				<input type="hidden" name="StateTextbox" value="<?php echo htmlentities(stripslashes($sState),ENT_NOQUOTES, "UTF-8"); ?>"></input>
+				<input type="hidden" name="Zip" value="<?php echo htmlentities(stripslashes($sZip),ENT_NOQUOTES, "UTF-8"); ?>"></input>
+				<input type="hidden" name="Country" value="<?php echo htmlentities(stripslashes($sCountry),ENT_NOQUOTES, "UTF-8"); ?>"></input>
+<?php } ?>				
+
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
