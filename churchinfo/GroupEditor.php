@@ -127,7 +127,8 @@ if (isset($_POST["GroupSubmit"]))
 				while ($aRow = mysql_fetch_array($rsRoleSeed))
 				{
 					extract ($aRow);
-					$sSQL = "INSERT INTO list_lst VALUES ($newListID, $lst_OptionID, $lst_OptionSequence, '$lst_OptionName')";
+					$useOptionName = mysql_real_escape_string($lst_OptionName);
+					$sSQL = "INSERT INTO list_lst VALUES ($newListID, $lst_OptionID, $lst_OptionSequence, '$useOptionName')";
 					RunQuery($sSQL);
 				}
 			} else 
