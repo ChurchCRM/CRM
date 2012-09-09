@@ -7,7 +7,7 @@
 *  http://www.churchdb.org/
 *
 *  Contributors:
-*  2010 Michael Wilt
+*  2010-2012 Michael Wilt
 *
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.
@@ -99,6 +99,12 @@ for (; ; ) {    // This is not a loop but a section of code to be
     RunQuery($sSQL, FALSE); // False means do not stop on error
     
     $sSQL = "ALTER IGNORE TABLE email_message_pending_emp ADD emp_attach tinyint(1) default 0";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+    
+    $sSQL = "ALTER IGNORE TABLE user_usr MODIFY `usr_Password` text NOT NULL default ''";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+    
+    $sSQL = "ALTER IGNORE TABLE user_usr MODIFY `usr_NeedPasswordChange` tinyint(3) unsigned NOT NULL default '1'";
     RunQuery($sSQL, FALSE); // False means do not stop on error
     
 	// The older database has these set to empty string rather than NULL so they do not show up
