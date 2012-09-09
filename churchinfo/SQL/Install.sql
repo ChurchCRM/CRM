@@ -646,7 +646,7 @@ CREATE TABLE `menuconfig_mcf` (
 -- 
 
 INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_english`, `content`, `uri`, `statustext`, `security_grp`, `session_var`, `session_var_in_text`, `session_var_in_uri`, `url_parm_name`, `active`, `sortorder`) VALUES 
-(1, 'ROOT', '', 1, 'Main', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 0),
+(1, 'root', '', 1, 'Main', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 0),
 (2, 'main', 'root', 1, 'Main', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
 (3, 'logoff', 'main', 0, 'Log Off', NULL, 'Default.php?Logoff=True', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
 (4, 'chgpassword', 'main', 0, 'Change My Password', NULL, 'UserPasswordChange.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2),
