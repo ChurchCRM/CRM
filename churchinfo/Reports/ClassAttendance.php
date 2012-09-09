@@ -30,17 +30,17 @@ $tLastSunday = FilterInput($_GET["LastSunday"]);
 $tAllRoles = FilterInput($_GET["AllRoles"],'int');
 //echo "all roles ={$tAllRoles}";
 
-$tNoSchool1 = FilterInput($_GET["NoSchool1"]);
-$tNoSchool2 = FilterInput($_GET["NoSchool2"]);
-$tNoSchool3 = FilterInput($_GET["NoSchool3"]);
-$tNoSchool4 = FilterInput($_GET["NoSchool4"]);
-$tNoSchool5 = FilterInput($_GET["NoSchool5"]);
-$tNoSchool6 = FilterInput($_GET["NoSchool6"]);
-$tNoSchool7 = FilterInput($_GET["NoSchool7"]);
-$tNoSchool8 = FilterInput($_GET["NoSchool8"]);
+$tNoSchool1 = FilterInputArr($_GET,"NoSchool1");
+$tNoSchool2 = FilterInputArr($_GET,"NoSchool2");
+$tNoSchool3 = FilterInputArr($_GET,"NoSchool3");
+$tNoSchool4 = FilterInputArr($_GET,"NoSchool4");
+$tNoSchool5 = FilterInputArr($_GET,"NoSchool5");
+$tNoSchool6 = FilterInputArr($_GET,"NoSchool6");
+$tNoSchool7 = FilterInputArr($_GET,"NoSchool7");
+$tNoSchool8 = FilterInputArr($_GET,"NoSchool8");
 
-$iExtraStudents = FilterInput($_GET["ExtraStudents"], 'int');
-$iExtraTeachers = FilterInput($_GET["ExtraTeachers"], 'int');
+$iExtraStudents = FilterInputArr($_GET,"ExtraStudents", 'int');
+$iExtraTeachers = FilterInputArr($_GET,"ExtraTeachers", 'int');
 
 $dFirstSunday = strtotime ($tFirstSunday);
 $dLastSunday = strtotime ($tLastSunday);
@@ -288,7 +288,7 @@ class PDF_Attendance extends ChurchInfoReport {
       		$this->Line ($nameX, $yMonths, $rightEdgeX, $yMonths);
       		$this->Line ($nameX, $yMonths + $yIncrement, $rightEdgeX, $yMonths + $yIncrement);
       		$this->Line ($nameX, $yMonths + 2 * $yIncrement, $rightEdgeX, $yMonths + 2 * $yIncrement);
-      		$yBottom = $yMonths + (($numMembers - $phantomMembers + $extraLines + 2) * $yIncrement);
+      		$yBottom = $yMonths + (($numMembers + $extraLines + 2) * $yIncrement);
       		$this->Line ($nameX, $yBottom, $rightEdgeX, $yBottom);
       		$this->Line ($nameX, $yBottom + $yIncrement, $rightEdgeX, $yBottom + $yIncrement);
 //

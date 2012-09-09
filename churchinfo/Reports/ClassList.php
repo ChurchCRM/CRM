@@ -128,6 +128,7 @@ $pdf->WriteAt ($nameX, $y, $liaisonString);
 $y += $yOffsetStartStudents;
 
 $pdf->SetFont("Times",'',12);
+$prevStudentName = "";
 
 for ($row = 0; $row < $numMembers; $row++)
 {
