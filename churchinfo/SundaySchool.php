@@ -41,12 +41,16 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
    	$iExtraStudents = FilterInput($_POST["ExtraStudents"], 'int');
    	$iExtraTeachers = FilterInput($_POST["ExtraTeachers"], 'int');
    	$_SESSION['idefaultFY'] = $iFYID;
+   	
+   	$bAtLeastOneGroup = false;
+   	
 	if(!empty($_POST["GroupID"])){
 		$count=0;
 		foreach($_POST["GroupID"] as $Grp){
 			$aGroups[$count++] = FilterInput($Grp,'int');
 		} 
 		$aGrpID = implode(",",$aGroups);
+		$bAtLeastOneGroup = true;
 	}
 	$allroles = FilterInput($_POST["allroles"]);
 
@@ -60,11 +64,11 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 	$_SESSION['dCalNoSchool6'] = $dNoSchool6;
 	$_SESSION['dCalNoSchool7'] = $dNoSchool7;
 	$_SESSION['dCalNoSchool8'] = $dNoSchool8;
-
-   if (isset($_POST["SubmitClassList"])) {
+	
+   if ($bAtLeastOneGroup && isset($_POST["SubmitClassList"])) {
 //		Redirect ("Reports/ClassList.php?GroupID=" . $iGroupID . "&FYID=" . $iFYID . "&FirstSunday=" . $dFirstSunday . "&LastSunday=" . $dLastSunday);
 		Redirect ("Reports/ClassList.php?GroupID=" . $aGrpID . "&FYID=" . $iFYID . "&FirstSunday=" . $dFirstSunday . "&LastSunday=" . $dLastSunday . "&AllRoles=" . $allroles);
-   } else if (isset($_POST["SubmitClassAttendance"])) {
+   } else if ($bAtLeastOneGroup && isset($_POST["SubmitClassAttendance"])) {
 	      $toStr = "Reports/ClassAttendance.php?";
 //	      $toStr .= "GroupID=" . $iGroupID;
 	      $toStr .= "GroupID=" . $aGrpID;
@@ -93,6 +97,8 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 	      if ($iExtraTeachers)
 	         $toStr .= "&ExtraTeachers=" . $iExtraTeachers;
 	      Redirect ($toStr);
+   } else if (! $bAtLeastOneGroup) {
+		echo gettext("At least one group must be selected to make class lists or attendance sheets.");
    }
 } else {
    $iFYID = $_SESSION['idefaultFY'];
@@ -107,6 +113,8 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 	$dNoSchool6 = $_SESSION['dCalNoSchool6'];
 	$dNoSchool7 = $_SESSION['dCalNoSchool7'];
 	$dNoSchool8 = $_SESSION['dCalNoSchool8'];
+	$iExtraStudents = 0;
+   	$iExtraTeachers = 0;
 }
 
 ?>
