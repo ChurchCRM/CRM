@@ -63,17 +63,21 @@ if($numAttRows!=0){
   for($na=0; $na<$numAttRows; $na++){  
     $attRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
     extract($attRow);
-    $sSQL = 'SELECT per_Title, per_ID, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Email, per_HomePhone, per_Country FROM person_per WHERE per_ID = '.$person_id;
+    $sSQL = 'SELECT per_Title, per_ID, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Email, per_HomePhone, per_Country, fam_HomePhone, fam_Email, fam_Country FROM person_per LEFT JOIN family_fam ON per_fam_id=fam_id WHERE per_ID = '.$person_id;
     $perOpps = RunQuery($sSQL);
     $perRow = mysql_fetch_array($perOpps, MYSQL_BOTH);
     extract($perRow);  
     $sRowClass = AlternateRowStyle($sRowClass);
-    $aHomePhone = ExpandPhoneNumber($per_HomePhone,$per_Country,$dummy);
+    
+	$sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, False);
+    $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone,$sPhoneCountry,$dummy), ExpandPhoneNumber($fam_HomePhone,$fam_Country,$dummy), True);
+	$sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
+    
     ?>
     <tr class="<?php echo $sRowClass; ?>">
         <td class="TextColumn"><?php echo FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3); ?></td>
-        <td class="TextColumn"><?php echo ($per_Email ? '<a href="mailto:'.$per_Email.'" title="Send Email">'.$per_Email.'</a>':'Not Available'); ?></td>
-        <td class="TextColumn"><?php echo ($aHomePhone ? $aHomePhone :'Not Available'); ?></td>
+        <td class="TextColumn"><?php echo ($sEmail ? '<a href="mailto:'.$sEmail.'" title="Send Email">'.$sEmail.'</a>':'Not Available'); ?></td>
+        <td class="TextColumn"><?php echo ($sHomePhone ? $sHomePhone :'Not Available'); ?></td>
     <td  class="TextColumn" colspan="1" align="center">
       <form method="POST" action="EditEventAttendees.php" name="DeletePersonFromEvent">
           <input type="hidden" name="DelPerID" value="<?php echo $per_ID; ?>">
