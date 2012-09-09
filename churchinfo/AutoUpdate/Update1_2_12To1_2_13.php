@@ -115,6 +115,9 @@ for (; ; ) {    // This is not a loop but a section of code to be
     $sSQL = "UPDATE IGNORE menuconfig_mcf SET name='root' WHERE name='ROOT'";
     RunQuery($sSQL, FALSE); // False means do not stop on error
     
+    $sSQL = "UPDATE IGNORE config_cfg SET cfg_value='Include/fpdf17' WHERE cfg_name='sFPDF_PATH'";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+    
 // Update the format of the scanned check stored in the family record.
 // The original implementation stored the whole string, including the check number.
 // The new version strips out the check number to facilitate matching.  The original
