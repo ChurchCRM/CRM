@@ -124,26 +124,23 @@ if ($iUserID > 0)
 
     $bPasswordMatch = FALSE;
     // Check the user password
-    if (strlen($usr_Password) == 40) {
-        // The password was stored using the new 40 character sha1 hash
-        $tmp = $_POST['Password'].$iUserID;
-        $sPasswordHash = sha1(sha1($tmp).$tmp);
-        $bPasswordMatch = ($usr_Password == $sPasswordHash);
-    } else {
-        // The password was stored using the old 32 character md5 hash
-        $tmp = $_POST['Password'];
-        $sPasswordHash = md5($tmp);
-        $bPasswordMatch = ($usr_Password == $sPasswordHash);
+    
+    // Note that there are several possible encodings for the password in the database
+    $tmp = $_POST['Password'];
+    $sPasswordHashMd5 = md5($tmp);
+    
+    $tmp = $_POST['Password'].$iUserID;
+    $sPasswordHash40 = sha1(sha1($tmp).$tmp);
+    
+    $tmp = $_POST['Password'].$iUserID;
+    $sPasswordHashSha256 = hash ("sha256", $tmp);
+    
+    $bPasswordMatch = ($usr_Password == $sPasswordHashMd5 || $usr_Password == $sPasswordHash40 || $usr_Password == $sPasswordHashSha256);
 
-        if ($bPasswordMatch) {
-            // If the password matches update from 32 character hash
-            // to 40 character hash
-            $tmp = $_POST['Password'].$iUserID;
-            $sPasswordHash = sha1(sha1($tmp).$tmp);
-            $sSQL = "UPDATE user_usr SET usr_Password='".$sPasswordHash."' ".
-                    "WHERE usr_per_ID ='".$iUserID."'";
-            RunQuery($sSQL);
-        }
+    if ($bPasswordMatch && $usr_Password != $sPasswordHashSha256) {
+        $sSQL = "UPDATE user_usr SET usr_Password='".$sPasswordHashSha256."' ".
+                "WHERE usr_per_ID ='".$iUserID."'";
+        RunQuery($sSQL);
     }
 
     // Block the login if a maximum login failure count has been reached
