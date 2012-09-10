@@ -140,6 +140,7 @@ else
 		$aNameFields[$row] = $fun_Name;
 		$aDescFields[$row] = $fun_Description;
 		$aActiveFields[$row] = ($fun_Active == 'true');
+		$aNameErrors[$row] = false;
 	}
 }
 
@@ -213,7 +214,7 @@ else
 			<td class="TextColumn" align="center">
 				<input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
 				<?php
-				if ( isset($aNameErrors[$row]) )
+				if ($aNameErrors[$row])
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
 				?>
 			</td>

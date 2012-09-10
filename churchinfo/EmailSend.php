@@ -671,7 +671,7 @@ if ($sEmailState == 'continue') {
     // we're having trouble sending email.  Terminate, but leave
     // message and distribution list in MySQL
 
-    if (!($_POST['viewlog'] == 'true')) { // Don't add log entry if user is viewing the log
+    if (!(array_key_exists ('viewlog', $_POST) && $_POST['viewlog'] == 'true')) { // Don't add log entry if user is viewing the log
         $sMsg = 'Job terminating due to error. You may try to resume later.';
         AddToEmailLog($sMsg, $iUserID);
     }

@@ -42,6 +42,8 @@ require 'Include/Header.php';
 
 $bNewNameError = false;
 $bDuplicateNameError = false;
+$bErrorFlag = false;
+$aNameErrors = array ();
 
 // Does the user want to save changes to text fields?
 if (isset($_POST["SaveChanges"]))
@@ -267,6 +269,7 @@ else
         $aTypeFields[$row] = $type_ID;
         $aSideFields[$row] = ($fam_custom_Side == 'right');
         $aFieldSecurity[$row] = $fam_custom_FieldSec;
+        $aNameErrors[$row] = false;
     }
 }
 
