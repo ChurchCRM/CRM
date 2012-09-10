@@ -59,6 +59,8 @@ class PDF_EnvelopeReport extends ChurchInfoReport {
 
 		$this->_Margin_Left = 12;
 		$this->_Margin_Top  = 12;
+		
+		$this->incrementY = 10;
 
 		$this->Set_Char_Size(20);
 		$this->WriteAt (12, 12, "Envelope Numbers for all Families");
