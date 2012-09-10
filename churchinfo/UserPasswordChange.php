@@ -48,7 +48,9 @@ else
 if (isset($_POST["Submit"]))
 {
     // Assign all the stuff locally
-    $sOldPassword = $_POST["OldPassword"];
+    $sOldPassword = "";
+    if (array_key_exists ("OldPassword", $_POST))
+	    $sOldPassword = $_POST["OldPassword"];
     $sNewPassword1 = $_POST["NewPassword1"];
     $sNewPassword2 = $_POST["NewPassword2"];
 
@@ -73,9 +75,9 @@ if (isset($_POST["Submit"]))
             // Update the user record with the password hash
             $tmp = $sNewPassword1.$iPersonID;        
 		    $sPasswordHashSha256 = hash ("sha256", $tmp);
-            
+		    
             $sSQL = "UPDATE user_usr SET".
-                    " usr_Password='".$sPasswordHash."',".
+                    " usr_Password='".$sPasswordHashSha256."',".
                     " usr_NeedPasswordChange='0' ".
                     "WHERE usr_per_ID ='".$iPersonID."'";
 
