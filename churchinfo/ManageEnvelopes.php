@@ -28,6 +28,8 @@ if (!$_SESSION['bFinance']) {
 	exit;
 }
 
+$envelopesToWrite = array ();
+
 if (isset($_POST["Confirm"])) {
 	$envelopesToWrite = $_SESSION['envelopesToWrite'];
 	foreach ($envelopesToWrite as $fam_ID => $envelope) {
