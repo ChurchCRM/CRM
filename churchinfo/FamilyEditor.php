@@ -262,6 +262,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	}
 
 	// Validate all the custom fields
+	$aCustomData = array();
 	while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
 	{
 		extract($rowCustomField);
@@ -483,7 +484,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 				{
 					$currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
-					sqlCustomField($sSQL, $type_ID, $currentFieldData, $fam_custom_Field, $sPhoneCountry);
+					sqlCustomField($sSQL, $type_ID, $currentFieldData, $fam_custom_Field, $sCountry);
 				}
 			}
 
@@ -547,7 +548,14 @@ else
 		$sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
 		$rsCustomData = RunQuery($sSQL);
 		$aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
- 		
+		
+		$aCustomErrors = array();
+		
+		mysql_data_seek($rsCustomFields,0);
+		while ($rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
+			$aCustomErrors[$rowCustomField['fam_custom_Field']] = false;
+		}
+				
 		$sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID =" . $iFamilyID . " ORDER BY per_fmr_ID";
 		$rsMembers = RunQuery($sSQL);
 		$iCount = 0;
@@ -624,6 +632,14 @@ else
 			$aUpdateBirthYear[$iCount] = 0;
 		}
 		
+		$aCustomData = array ();
+		$aCustomErrors = array ();
+		mysql_data_seek($rsCustomFields,0);
+		while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
+			extract($rowCustomField);
+			$aCustomData[$fam_custom_Field] = '';
+			$aCustomErrors[$fam_custom_Field] = false;
+		}		
 	}
 }
 
@@ -886,7 +902,7 @@ maxlength="10" size="8">
 
 						$currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
-						if ($type_ID == 11) $fam_custom_Special = $sPhoneCountry;
+						if ($type_ID == 11) $fam_custom_Special = $sCountry;
 
 						formCustomField($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST["FamilySubmit"]));
 						echo "<span style=\"color: red; \">" . $aCustomErrors[$fam_custom_Field] . "</span>";
