@@ -2,14 +2,14 @@
 /*******************************************************************************
  *
  *  filename    : FamilyCustomFieldsRowOps.php
- *  last change : 2007-06-18
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchdb.org
  *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
+ *                Copyright 2004-2012 Michael Wilt
  *  Cloned from PersonCustomFieldsRowOps.php
  *
  *  function    : Row operations for the Family custom fields form
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -34,7 +34,7 @@ $sAction = $_GET["Action"];
 switch ($sAction)
 {
 	// Move a field up:  Swap the fam_custom_Order (ordering) of the selected row and the one above it
-	case up:
+	case 'up':
 		$sSQL = "UPDATE family_custom_master SET fam_custom_Order = '" . $iOrderID . "' WHERE fam_custom_Order = '" . ($iOrderID - 1) . "'";
 		RunQuery($sSQL);
 		$sSQL = "UPDATE family_custom_master SET fam_custom_Order = '" . ($iOrderID - 1) . "' WHERE fam_custom_Field = '" . $sField . "'";
@@ -42,7 +42,7 @@ switch ($sAction)
 		break;
 
 	// Move a field down:  Swap the fam_custom_Order (ordering) of the selected row and the one below it
-	case down:
+	case 'down':
 		$sSQL = "UPDATE family_custom_master SET fam_custom_Order = '" . $iOrderID . "' WHERE fam_custom_Order = '" . ($iOrderID + 1) . "'";
 		RunQuery($sSQL);
 		$sSQL = "UPDATE family_custom_master SET fam_custom_Order = '" . ($iOrderID + 1) . "' WHERE fam_custom_Field = '" . $sField . "'";
@@ -50,7 +50,7 @@ switch ($sAction)
 		break;
 
 	// Delete a field from the form
-	case delete:
+	case 'delete':
 		// Check if this field is a custom list type.  If so, the list needs to be deleted from list_lst.
 		$sSQL = "SELECT type_ID,fam_custom_Special FROM family_custom_master WHERE fam_custom_Field = '" . $sField . "'";
 		$rsTemp = RunQuery($sSQL);
