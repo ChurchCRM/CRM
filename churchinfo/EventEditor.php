@@ -31,7 +31,11 @@ require "Include/Header.php";
 
 $sPageTitle = gettext("Church Event Editor");
 
-$sAction = $_POST['Action'];
+$sAction = 'Create=>Event';
+
+if (array_key_exists ('Action', $_POST))
+	$sAction = $_POST['Action'];
+	
 if (array_key_exists ('EID', $_POST))
 	$sOpp = $_POST['EID']; // from EDIT button on event listing
 
@@ -288,47 +292,32 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
         $sTypeName = $_POST['EventTypeName'];
         $iTypeID = $_POST['EventTypeID'];
         $EventExists = $_POST['EventExists'];
-        if (empty($_POST['EventTitle']))
-        {
+        $sEventTitle = FilterInput($_POST['EventTitle']);
+        $sEventDesc = FilterInput($_POST['EventDesc']);
+        $sEventStartDate = $_POST['EventStartDate'];
+        $sEventStartTime = $_POST['EventStartTime'];
+        if (empty($_POST['EventTitle'])) {
                 $bTitleError = true;
                 $iErrors++;
         }
-        else
-        {
-                $sEventTitle = FilterInput($_POST['EventTitle']);
-        }
-        if (empty($_POST['EventDesc']))
-        {
+        if (empty($_POST['EventDesc'])) {
                 $bDescError = true;
                 $iErrors++;
         }
-        else
-        {
-                $sEventDesc = FilterInput($_POST['EventDesc']);
-        }
         $sEventText = FilterInput($_POST['EventText']);
-        if (empty($_POST['EventStartDate']))
-        {
+        if (empty($_POST['EventStartDate'])) {
                 $bESDError = true;
                 $iErrors++;
         }
-        else
-        {
-                $sEventStartDate = $_POST['EventStartDate'];
-        }
-        if (empty($_POST['EventStartTime']))
-        {
+        if (empty($_POST['EventStartTime'])) {
                 $bESTError = true;
                 $iErrors++;
-        }
-        else
-        {
-                $sEventStartTime = $_POST['EventStartTime'];
+        } else {
                 $aESTokens = explode(":", $_POST['EventStartTime']);
                 $iEventStartHour = $aESTokens[0];
                 $iEventStartMins = $aESTokens[1];
         }
-        $sEventStart = $sEventStartDate." ".$uEventStartTime;
+        $sEventStart = $sEventStartDate." ".$sEventStartTime;
         $sEventEndDate = $_POST['EventEndDate'];
         $sEventEndTime = $_POST['EventEndTime'];
         $aEETokens = explode(":", $_POST['EventEndTime']);
@@ -442,7 +431,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   <tr>
     <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Title:"); ?></td>
     <td colspan="1" class="TextColumn">
-      <input type="text" name="EventTitle" value="<?php echo ($sEventTitle); ?>" echo " size="30" maxlength="100">
+      <input type="text" name="EventTitle" value="<?php echo ($sEventTitle); ?>" size="30" maxlength="100">
       <?php if ( $bTitleError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a title.") . "</span></div>"; ?>
     </td>
     <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Desc:"); ?></td>
