@@ -93,7 +93,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         
         }else{
         //Report error for new user creation            
-        Redirect('UserEditor.php?NewPersonID='.$PersonID.'&ErrorText=Login must be a least 3 characters!');
+        Redirect('UserEditor.php?NewPersonID='.$iPersonID.'&ErrorText=Login must be a least 3 characters!');
         }
         
         
@@ -160,6 +160,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
 
     // Do we know which person yet?
     if ($iPersonID > 0) {
+    	$usr_per_ID = $iPersonID;
 
         if (!$bNewUser) {
             // Get the data on this user
@@ -178,6 +179,19 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $sUserName = $aUser['per_FirstName'] . $aUser['per_LastName'];
             $sAction = 'add';
             $vNewUser = 'true';
+            
+	        $usr_AddRecords = 0;
+	        $usr_EditRecords = 0;
+	        $usr_DeleteRecords = 0;
+	        $usr_MenuOptions = 0;
+	        $usr_ManageGroups = 0;
+	        $usr_Finance = 0;
+	        $usr_Notes = 0;
+	        $usr_Communication = 0;
+	        $usr_Admin = 0;
+	        $usr_EditSelf = 1;
+	        $usr_Canvasser = 0;
+			$usr_Style = '';
         }
 
     // New user without person selected yet
@@ -197,8 +211,9 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         $usr_EditSelf = 1;
         $usr_Canvasser = 0;
         $sUserName = '';
+		$usr_Style = '';
         $vNewUser = 'true';
-
+        
         // Get all the people who are NOT currently users
         $sSQL = "SELECT * FROM person_per LEFT JOIN user_usr ON person_per.per_ID = user_usr.usr_per_ID WHERE usr_per_ID IS NULL ORDER BY per_LastName";
         $rsPeople = RunQuery($sSQL);
