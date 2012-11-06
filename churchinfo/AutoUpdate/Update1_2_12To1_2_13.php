@@ -152,6 +152,13 @@ for (; ; ) {    // This is not a loop but a section of code to be
 	$sSQL = "UPDATE IGNORE `menuconfig_mcf` SET uri = 'Help.php?page=Wiki' where name = 'wiki';";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 
+	$sSQL = "INSERT IGNORE INTO `menuconfig_mcf` VALUES (90, 'helpfundraiser', 'help', 0, 'Fundraiser', NULL, 'Help.php?page=Fundraiser', '', 'bAll', NULL, 0, 0, NULL, 1, 8);";
+	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
+
+	$sSQL = "UPDATE menuconfig_mcf SET content=content_english;";
+	if (!RunQuery($sSQL, FALSE))
+	    break;
+	
 	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General',NULL);";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 
