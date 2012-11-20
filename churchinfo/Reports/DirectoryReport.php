@@ -360,12 +360,12 @@ class PDF_Directory extends ChurchInfoReport {
         if (strlen($this->sRecordName)) {
             $this->sRecordName .= " " . gettext("and") . " " . $per_FirstName;
             if ($bDifferentLastName)
-                $this->sRecordName .= " (" . $per_LastName . ")";
+                $this->sRecordName .= " " .$per_LastName;
         }
         else {
             $this->sRecordName = $this->sLastName . ", " . $per_FirstName;
             if ($bDifferentLastName)
-                $this->sRecordName .= " (" . $per_LastName . ")";
+                $this->sRecordName .= " " . $per_LastName;
         }
 
         $sHeadStr .= $per_FirstName;
