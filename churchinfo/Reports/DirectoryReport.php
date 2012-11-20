@@ -361,16 +361,23 @@ class PDF_Directory extends ChurchInfoReport {
             $this->sRecordName .= " " . gettext("and") . " " . $per_FirstName;
             if ($bDifferentLastName)
                 $this->sRecordName .= " " .$per_LastName;
+            if (strlen ($per_Suffix))
+	            $this->sRecordName .= " " . $per_Suffix;
         }
         else {
             $this->sRecordName = $this->sLastName . ", " . $per_FirstName;
             if ($bDifferentLastName)
                 $this->sRecordName .= " " . $per_LastName;
+            if (strlen ($per_Suffix))
+	            $this->sRecordName .= " " . $per_Suffix;
         }
 
         $sHeadStr .= $per_FirstName;
         if ($bDifferentLastName)
             $sHeadStr .= " " . $per_LastName;
+        if (strlen ($per_Suffix))
+            $sHeadStr .= " " . $per_Suffix;
+            
         $iTempLen = strlen($sHeadStr);
 
         if ($bDirBirthday && $per_BirthMonth && $per_BirthDay)
@@ -428,6 +435,8 @@ class PDF_Directory extends ChurchInfoReport {
         // Check to see if family member has different last name
         if ( strlen($per_LastName) && ($per_LastName != $this->sLastName) )
             $sMemberStr .= " " . $per_LastName;
+        if (strlen ($per_Suffix))
+            $sMemberStr .= " " . $per_Suffix;
 
         if ($bDirBirthday && $per_BirthMonth && $per_BirthDay)
         {
@@ -730,6 +739,8 @@ while ($aRow = mysql_fetch_array($rsRecords))
         else
             $pdf->sLastName = $per_LastName;
         $pdf->sRecordName = $pdf->sLastName . ", " . $per_FirstName;
+        if (strlen ($per_Suffix))
+			$pdf->sRecordName .= " " . $per_Suffix;
 
         if ($bDirBirthday && $per_BirthMonth && $per_BirthDay)
             $pdf->sRecordName .= sprintf(" (%d/%d)", $per_BirthMonth, $per_BirthDay);
