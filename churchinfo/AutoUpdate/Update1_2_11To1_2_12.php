@@ -177,7 +177,7 @@ $sSQL = "ALTER TABLE `volunteeropportunity_vol` ADD COLUMN `vol_Order` INT(3) NO
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "CREATE TABLE `PaddleNum_pn` (
+$sSQL = "CREATE TABLE `paddlenum_pn` (
    `pn_ID` mediumint(9) unsigned NOT NULL auto_increment,
    `pn_fr_ID` mediumint(9) unsigned,
    `pn_Num` mediumint(9) unsigned,
@@ -188,7 +188,7 @@ $sSQL = "CREATE TABLE `PaddleNum_pn` (
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "CREATE TABLE `Fundraiser_fr` (
+$sSQL = "CREATE TABLE `fundraiser_fr` (
    `fr_ID` mediumint(9) unsigned NOT NULL auto_increment,
    `fr_date` date default NULL,
    `fr_title` varchar(128) NOT NULL,
@@ -201,7 +201,7 @@ $sSQL = "CREATE TABLE `Fundraiser_fr` (
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "CREATE TABLE `DonatedItem_di` (
+$sSQL = "CREATE TABLE `donateditem_di` (
    `di_ID` mediumint(9) unsigned NOT NULL auto_increment,
    `di_item` varchar(32) NOT NULL,
    `di_FR_ID` mediumint(9) unsigned NOT NULL,
@@ -222,7 +222,7 @@ $sSQL = "CREATE TABLE `DonatedItem_di` (
 if (!RunQuery($sSQL, FALSE))
     break;
 
-$sSQL = "CREATE TABLE `Multibuy_mb` (
+$sSQL = "CREATE TABLE `multibuy_mb` (
   `mb_ID` mediumint(9) unsigned NOT NULL auto_increment,
   `mb_per_ID` mediumint(9) NOT NULL default '0',
   `mb_item_ID` mediumint(9) NOT NULL default '0',
@@ -304,13 +304,13 @@ if ($ver_version == $sVersion) {
             break;
         }
     }
-    $sSQL = 'DROP TABLE IF EXISTS `PaddleNum_pn`';
+    $sSQL = 'DROP TABLE IF EXISTS `paddlenum_pn`';
     RunQuery($sSQL, FALSE);
-    $sSQL = 'DROP TABLE IF EXISTS `Fundraiser_fr`';
+    $sSQL = 'DROP TABLE IF EXISTS `fundraiser_fr`';
     RunQuery($sSQL, FALSE);
-    $sSQL = 'DROP TABLE IF EXISTS `DonatedItem_di`';
+    $sSQL = 'DROP TABLE IF EXISTS `donateditem_di`';
     RunQuery($sSQL, FALSE);
-    $sSQL = 'DROP TABLE IF EXISTS `Multibuy_mb`';
+    $sSQL = 'DROP TABLE IF EXISTS `multibuy_mb`';
     RunQuery($sSQL, FALSE);
     $sSQL = 'DROP TABLE IF EXISTS `egive_egv`';
     RunQuery($sSQL, FALSE);
