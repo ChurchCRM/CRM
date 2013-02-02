@@ -2,14 +2,24 @@
 /*******************************************************************************
  *
  *  filename    : FamilyView.php
- *  last change : 2002-04-18
+ *  last change : 2013-02-02
  *  website     : http://www.churchdb.org
  *  copyright   : Copyright 2001, 2002 Deane Barker, 2003 Chris Gebhardt, 2004-2005 Michael Wilt
  *
+ *  LICENSE:
+ *  (C) Free Software Foundation, Inc.
+ *
  *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
+ *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful, but
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ *  General Public License for more details.
+ *
+ *  http://www.gnu.org/licenses
  *
  ******************************************************************************/
 
@@ -206,7 +216,7 @@ elseif ($next_link_text != "") {
 			}
 		echo "</font></div>";
 
-		//Show links to mapquest, US Post Office, and Geocoder US
+		//Show links to MapQuest, US Post Office, and Google Maps
 		$bShowUSLinks = false;
 		$bShowMQLink = false;
 		if ($fam_Address1 != "" && $fam_City != "" && $fam_State != "")
@@ -225,23 +235,23 @@ elseif ($next_link_text != "") {
 			echo "<div align=left><a class=\"SmallText\" target=\"_blank\"
 				href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . 
 				"city=" . urlencode($fam_City) . "&amp;state=" . $fam_State . 
-				"&amp;address=" . urlencode($fam_Address1) . "\">" . gettext("View Map") . 
+				"&amp;address=" . urlencode($fam_Address1) . "\">" . gettext("MapQuest") . 
 				"</a></div>";
 				echo "<div align=center><a class=\"SmallText\" target=\"_blank\" 
-				href=\"http://zip4.usps.com/zip4/welcome.jsp?address2=" . 
+				href=\"https://tools.usps.com/go/ZipLookupResultsAction!input.action?address1=" . 
 				urlencode($fam_Address1) . "&amp;city=" . urlencode($fam_City) . 
-				"&amp;state=" . $fam_State . "\">" . gettext("USPS") . 
+				"&amp;state=" . urlencode($fam_State) . "\">" . gettext("USPS") . 
 				"</a></div>";
 				echo "<div align=right><a class=\"SmallText\" target=\"_blank\" 
-				href=\"http://geocoder.us/demo.cgi?address=" . urlencode($fam_Address1) .
-				"%2C" . urlencode($fam_Zip) . "\">" . gettext("Geocode") . 
-				"</a></div>";
+				href=\"https://maps.google.com/maps?q=" .
+				urlencode("$fam_Address1,$fam_City,$fam_State") .
+				"\">" . gettext("Google Maps") . "</a></div>";
 		}
 		if ($bShowMQLink) {
 			echo "<div align=left><a class=\"SmallText\" target=\"_blank\"
 				href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . 
 				"city=" . urlencode($fam_City) . "&amp;state=" . $fam_State . 
-				"&amp;address=" . urlencode($fam_Address1) . "\">" . gettext("View Map") . 
+				"&amp;address=" . urlencode($fam_Address1) . "\">" . gettext("MapQuest") . 
 				"</a></div>";
 		}
 		echo "<br>";
@@ -311,7 +321,7 @@ elseif ($next_link_text != "") {
 		if (file_exists($photoFile))
 		{
 			echo '<a target="_blank" href="Images/Family/' . $iFamilyID . '.jpg">';
-			echo '<img border="1" src="'.$photoFile.'"></a>';
+			echo '<img border="1" src="'.$photoFile.'" alt="thumbnail"></a>';
 			if ($bOkToEdit) 
             {
                 echo '
