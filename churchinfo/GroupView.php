@@ -207,6 +207,7 @@ if ($sEmailLink)
             </tr>
             <?php
 
+            $sRowClass = 'RowColorA';
             for ($row=1; $row <= $numRows; $row++)
             {
                 $sRowClass = AlternateRowStyle($sRowClass);

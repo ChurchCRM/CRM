@@ -45,7 +45,7 @@ if ($grp_hasSpecialProps == 'false')
 switch ($sAction)
 {
 	// Move a field up:  Swap the prop_ID (ordering) of the selected row and the one above it
-	case up:
+	case 'up':
 		$sSQL = "UPDATE groupprop_master SET prop_ID = '" . $iPropID . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . ($iPropID - 1) . "'";
 		RunQuery($sSQL);
 		$sSQL = "UPDATE groupprop_master SET prop_ID = '" . ($iPropID - 1) . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
@@ -53,7 +53,7 @@ switch ($sAction)
 		break;
 
 	// Move a field down:  Swap the prop_ID (ordering) of the selected row and the one below it
-	case down:
+	case 'down':
 		$sSQL = "UPDATE groupprop_master SET prop_ID = '" . $iPropID . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . ($iPropID + 1) . "'";
 		RunQuery($sSQL);
 		$sSQL = "UPDATE groupprop_master SET prop_ID = '" . ($iPropID + 1) . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
@@ -61,7 +61,7 @@ switch ($sAction)
 		break;
 
 	// Delete a field from the form
-	case delete:
+	case 'delete':
 		// Check if this field is a custom list type.  If so, the list needs to be deleted from list_lst.
 		$sSQL = "SELECT type_ID,prop_Special FROM groupprop_master WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
 		$rsTemp = RunQuery($sSQL);

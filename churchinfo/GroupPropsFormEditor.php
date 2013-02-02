@@ -42,6 +42,11 @@ $sPageTitle = gettext("Group-Specific Properties Form Editor:") . " &nbsp&nbsp "
 
 require "Include/Header.php";
 
+$bErrorFlag = false;
+$aNameErrors = array();
+$bNewNameError = false;
+$bDuplicateNameError = false;
+
 // Does the user want to save changes to text fields?
 if (isset($_POST["SaveChanges"]))
 {
@@ -342,7 +347,7 @@ else
 
 			<td class="TextColumn"><input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="25" maxlength="40">
 				<?php
-				if ( $aNameErrors[$row] )
+				if ( array_key_exists ($row, $aNameErrors) && $aNameErrors[$row] )
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
 				?>
 			</td>

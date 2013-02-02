@@ -259,6 +259,12 @@ if (!$bPrintView) {
 				echo "&nbsp;&nbsp;<a href=\"GroupMemberList.php?Result_Set=$thisLinkResult&GroupID=$iGroupID&Sort=$iSort&Letter=$sLetter&ShowGSP=$bShowGSP\">" . gettext("Next Page") . "</a>";
 		}
 
+		$sLimit5 = "";
+		$sLimit10 = "";
+		$sLimit20 = "";
+		$sLimit25 = "";
+		$sLimit50 = "";
+		
 		// Record number per page Drop-down box
 		if($Result_Set > 0)
 			echo "<input type=\"hidden\" name=\"Result_Set\" value=\"" . $Result_Set . "\">";
