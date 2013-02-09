@@ -1354,6 +1354,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
 {
     global $aLocaleInfo;
     $bErrorFlag = false;
+    $aErrors[$col_Name] = "";
     
     switch ($type)
     {
