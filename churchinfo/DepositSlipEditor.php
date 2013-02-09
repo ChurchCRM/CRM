@@ -130,7 +130,10 @@ if (isset($_POST["DepositSlipSubmit"])) {
 	//Get all the variables from the request object and assign them locally
 	$dDate = FilterInput($_POST["Date"]);
 	$sComment = FilterInput($_POST["Comment"]);
-	$bClosed = FilterInput($_POST["Closed"]);
+	if (array_key_exists ("Closed", $_POST))
+		$bClosed = FilterInput($_POST["Closed"]);
+	else
+		$bClosed = false;
 	$sDepositType = FilterInput($_POST["DepositType"]);
 	if (! $bClosed)
 		$bClosed = 0;
