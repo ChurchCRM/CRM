@@ -205,8 +205,8 @@ elseif ($next_link_text != "") {
 			if ($fam_City != "") { echo $fam_City . ", "; }
 			if ($fam_State != "") { echo $fam_State; }
 			if ($fam_Zip != "") { echo " " . $fam_Zip; }
-			if ($fam_Country != "") { echo "<br>" . $fam_Country . "<br>"; }
-
+			if ($fam_Country != "") { echo "<br>" . $fam_Country . "<br>"; } else {echo "<br>";}
+			
 			if ($fam_Latitude && $fam_Longitude) {
 				if ($nChurchLatitude && $nChurchLongitude) {
 					$sDistance = LatLonDistance($nChurchLatitude, $nChurchLongitude,$fam_Latitude, $fam_Longitude);
@@ -890,7 +890,7 @@ if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
 <p align="center">
 	<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&amp;PledgeOrPayment=Pledge"><?php echo gettext("Add a new pledge"); ?></a>
 	<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&amp;PledgeOrPayment=Payment"><?php echo gettext("Add a new payment"); ?></a>
-	<a class="SmallText" href="AutoPaymentEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo gettext("Add a new automatic payment"); ?></a>
+	<a class="SmallText" href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo gettext("Add a new automatic payment"); ?></a>
 </p>
 
 <?php } ?>
