@@ -551,9 +551,11 @@ else
 		
 		$aCustomErrors = array();
 		
-		mysql_data_seek($rsCustomFields,0);
-		while ($rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
-			$aCustomErrors[$rowCustomField['fam_custom_Field']] = false;
+		if ($numCustomFields >0) {
+			mysql_data_seek($rsCustomFields,0);
+			while ($rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
+				$aCustomErrors[$rowCustomField['fam_custom_Field']] = false;
+			}
 		}
 				
 		$sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID =" . $iFamilyID . " ORDER BY per_fmr_ID";
@@ -634,11 +636,13 @@ else
 		
 		$aCustomData = array ();
 		$aCustomErrors = array ();
-		mysql_data_seek($rsCustomFields,0);
-		while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
-			extract($rowCustomField);
-			$aCustomData[$fam_custom_Field] = '';
-			$aCustomErrors[$fam_custom_Field] = false;
+		if ($numCustomFields > 0) {
+			mysql_data_seek($rsCustomFields,0);
+			while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
+				extract($rowCustomField);
+				$aCustomData[$fam_custom_Field] = '';
+				$aCustomErrors[$fam_custom_Field] = false;
+			}
 		}		
 	}
 }

@@ -2,9 +2,10 @@
 /*******************************************************************************
  *
  *  filename    : GroupPropsEditor.php
- *  last change : 2003-02-09
- *  website     : http://www.infocentral.org
+ *  last change : 2013-02-07
+ *  website     : http://www.churchdb.org
  *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
+ *                Copyright 2013 Michael Wilt
  *
  *  function    : Editor for the special properties of a group member
  *
@@ -36,6 +37,8 @@ $sSQL = "SELECT per_FirstName, per_LastName, per_Country, per_fam_ID FROM person
 $rsPersonInfo = RunQuery($sSQL);
 extract(mysql_fetch_array($rsPersonInfo));
 
+$fam_Country = "";
+
 if ($per_fam_ID > 0)
 {
 	$sSQL = "SELECT fam_Country FROM family_fam WHERE fam_ID = " . $per_fam_ID;
@@ -58,6 +61,8 @@ extract(mysql_fetch_array($rsGroupInfo));
 $sSQL = "SELECT groupprop_master.* FROM groupprop_master
 			WHERE grp_ID = " . $iGroupID . " ORDER BY prop_ID";
 $rsPropList = RunQuery($sSQL);
+
+$aPropErrors = array ();
 
 // Is this the second pass?
 if (isset($_POST["GroupPropSubmit"]))
@@ -169,7 +174,7 @@ echo "<h2>" . gettext("Editing") . " <i>" . $grp_Name . "</i> " . gettext("data 
 
 			formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST["GroupPropSubmit"]));
 
-			echo "<span style=\"color: red; \">" . $aPropErrors[$prop_Field] . "</span>";
+			if (array_key_exists ($prop_Field, $aPropErrors)) echo "<span style=\"color: red; \">" . $aPropErrors[$prop_Field] . "</span>";
 			?></td>
 
 			<td class="TextColumn"><?php echo $prop_Description; ?></td>

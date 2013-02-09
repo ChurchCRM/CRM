@@ -34,6 +34,8 @@ $iTotalAmount = 0;
 $nNonDeductible = array ();
 $sComment = "";
 $tScanString = "";
+$dep_Closed = false;
+$iAutID = 0;
 
 $nAmount = array (); // this will be the array for collecting values for each fund
 $sAmountError = array ();
@@ -128,7 +130,10 @@ if (isset($_POST["PledgeSubmit"]) or
 	}
 	$_SESSION['idefaultFY'] = $iFYID;
 	
-	$iCheckNo = FilterInput($_POST["CheckNo"], 'int');
+	if (array_key_exists ("CheckNo", $_POST))
+		$iCheckNo = FilterInput($_POST["CheckNo"], 'int');
+	else
+		$iCheckNo = 0;
 	
 	if (array_key_exists ("Schedule", $_POST))
 		$iSchedule = FilterInput($_POST["Schedule"]);
@@ -164,6 +169,8 @@ if (isset($_POST["PledgeSubmit"]) or
 	$iTotalAmount = FilterInput($_POST["TotalAmount"]);
 	if (array_key_exists ("OneComment", $_POST))
 		$sOneComment = FilterInput($_POST["OneComment"]);
+	else
+		$sOneComment = "";
 	if ($iSelectedFund) {
 		$nAmount[$iSelectedFund] = $iTotalAmount;
 		$sComment[$iSelectedFund] = $sOneComment;
@@ -216,7 +223,10 @@ if (isset($_POST["PledgeSubmit"]) or
 			$iSchedule = $_SESSION['iDefaultSchedule'];
 		else
 			$iSchedule = 'Once';
-		$iMethod = $_SESSION['idefaultPaymentMethod'];
+		if (array_key_exists ('idefaultPaymentMethod', $_SESSION))
+			$iMethod = $_SESSION['idefaultPaymentMethod'];
+		else
+			$iMethod = 'Check';
 	}
 	if (!$iEnvelope and $iFamily) {
 		$sSQL = "SELECT fam_Envelope FROM family_fam WHERE fam_ID=\"" . $iFamily . "\";";
@@ -287,7 +297,10 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		}
 	}
 
-	$tScanString = FilterInput($_POST["ScanInput"]);
+	if (array_key_exists ("ScanInput", $_POST))
+		$tScanString = FilterInput($_POST["ScanInput"]);
+	else
+		$tScanString = "";
 	$iAutID = 0;
 	if (array_key_exists ("AutoPay", $_POST))
 		$iAutID = FilterInput($_POST["AutoPay"]);
