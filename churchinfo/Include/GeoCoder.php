@@ -186,7 +186,7 @@ class AddressLatLon {
 		global $sGeocoderID, $sGeocoderPW, $bHaveXML;
 		if (! $bHaveXML)
 			return;
-		if (isset ($sGeocoderID) && $sGeoCoderID != "") { // Use credentials if available for unthrottled access to the geocoder server
+		if (isset ($sGeocoderID) && $sGeocoderID != "") { // Use credentials if available for unthrottled access to the geocoder server
 			$this->client = new XML_RPC_Client('/member/service/xmlrpc', 'rpc.geocoder.us');
 			$this->client->SetCredentials ($sGeocoderID, $sGeocoderPW);
 		} else {
