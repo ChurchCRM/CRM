@@ -16,8 +16,8 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 $linkBack = FilterInput($_GET["linkBack"]);
-$iFamily = FilterInput($_GET["FamilyID"]);
-$iAutID = FilterInput($_GET["AutID"]);
+$iFamily = FilterInput($_GET["FamilyID"], 'int');
+$iAutID = FilterInput($_GET["AutID"], 'int');
 
 //Get Family name
 if ($iFamily) {
@@ -73,9 +73,10 @@ if (isset($_POST["Submit"]))
 	$tRoute = FilterInput ($_POST["Route"]);
 	$tAccount = FilterInput ($_POST["Account"]);
 
+	$bGetKeyBack = false;
+	
 	// New automatic payment record
-	if (strlen($iAutID) < 1)
-	{
+	if ($iAutID < 1) {
 		$sSQL = "INSERT INTO autopayment_aut (
 		           aut_FamID,
 					  aut_EnableBankDraft,
@@ -223,6 +224,8 @@ if (isset($_POST["Submit"]))
 		$tAccount=$aut_Account;
 	} else {
 		$dNextPayDate = date ("Y-m-d");
+		$tFirstName="";
+		$tLastName="";
 		$tAddress1=$fam_Address1;
 		$tAddress2=$fam_Address2;
 		$tCity=$fam_City;
@@ -233,9 +236,22 @@ if (isset($_POST["Submit"]))
 		$tEmail=$fam_Email;
 		$iInterval = 1;
 		$iFund = 1;
+		
+		$bEnableBankDraft=false;
+		$bEnableCreditCard=false;
 
 		// Default to the current fiscal year ID
 		$FYID = CurrentFY ();
+		$iFYID = $FYID;
+
+		$tCreditCard="";
+		$tExpMonth="";
+		$tExpYear="";
+		$tBankName="";
+		$tRoute="";
+		$tAccount="";
+				
+		$nAmount = 0;
 	}
 }
 
