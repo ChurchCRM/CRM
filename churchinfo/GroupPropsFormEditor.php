@@ -3,8 +3,9 @@
  *
  *  filename    : GroupPropsFormEditor.php
  *  last change : 2003-02-09
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchdb.org
  *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
+ *                Copyright 2013 Michael Wilt
  *
  *  function    : Editor for group-specific properties form
  *
@@ -272,15 +273,6 @@ else
 // Construct the form
 ?>
 
-<script language="javascript">
-
-function confirmDeleteField( Group, Prop, Field ) {
-var answer = confirm (<?php echo '"' . gettext("Warning:  By deleting this field, you will irrevokably lose all group member data assigned for this field!") . '"'; ?>)
-if ( answer )
-	window.location="GroupPropsFormRowOps.php?GroupID=" + Group + "&PropID=" + Prop + "&Field=" + Field + "&Action=delete"
-}
-</script>
-
 <form method="post" action="GroupPropsFormEditor.php?GroupID=<?php echo $iGroupID; ?>" name="GroupPropFormEditor">
 
 <table cellpadding="3" width="100%">
@@ -339,7 +331,8 @@ else
 				if ($row < $numRows)
 					echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
 				?>
-				<input type="image" value="delete" Name="delete" onclick="confirmDeleteField(<?php echo $iGroupID . ", " . $row . ", '" . $aFieldFields[$row] . "'"; ?>);" src="Images/x.gif">
+				
+				<?php echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>";?>
 			</td>
 			<td class="TextColumn" style="font-size:70%;">
 			<?php echo $aPropTypes[$aTypeFields[$row]];	?>
