@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `autopayment_aut` (
   `aut_Serial` mediumint(9) NOT NULL default '1',
   PRIMARY KEY  (`aut_ID`),
   UNIQUE KEY `aut_ID` (`aut_ID`)
-) TYPE=MyISAM  ;
+) ENGINE=MyISAM  ;
 
 CREATE TABLE IF NOT EXISTS `canvassdata_can` (
   `can_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `canvassdata_can` (
   `can_WhyNotInterested` text collate latin1_general_ci,
   PRIMARY KEY  (`can_ID`),
   UNIQUE KEY `can_ID` (`can_ID`)
-) TYPE=MyISAM  ;
+) ENGINE=MyISAM  ;
 
 CREATE TABLE IF NOT EXISTS `config_cfg` (
   `cfg_id` int(11) NOT NULL default '0',
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `config_cfg` (
   `cfg_tooltip` text NOT NULL,
   `cfg_section` varchar(50) NOT NULL default '',
   PRIMARY KEY  (`cfg_id`)
-) TYPE=MyISAM  ;
+) ENGINE=MyISAM  ;
 
 INSERT IGNORE INTO `config_cfg` VALUES (1, 'sWEBCALENDARDB', '', 'text', '', 'WebCalendar database name', 'General');
 INSERT IGNORE INTO `config_cfg` VALUES (2, 'aHTTPports', '80,8000,8080', 'text', '80,8000,8080', 'Ports on which the web server may run.  Defaults are fine for most people.', 'General');
@@ -155,19 +155,19 @@ CREATE TABLE IF NOT EXISTS `deposit_dep` (
   `dep_Closed` tinyint(1) NOT NULL default '0',
   `dep_Type` enum('Bank','CreditCard','BankDraft') NOT NULL default 'Bank',
   PRIMARY KEY  (`dep_ID`)
-) TYPE=MyISAM PACK_KEYS=0 ;
+) ENGINE=MyISAM PACK_KEYS=0 ;
 
 CREATE TABLE IF NOT EXISTS `event_attend` (
   `event_id` int(11) NOT NULL default '0',
   `person_id` int(11) NOT NULL default '0'
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS `event_types` (
   `type_id` int(11) NOT NULL auto_increment,
   `type_name` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`type_id`),
   UNIQUE KEY `event_name` (`type_name`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 INSERT IGNORE INTO `event_types` VALUES (1, 'Church Service');
 INSERT IGNORE INTO `event_types` VALUES (2, 'Sunday School');
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `events_event` (
   `inactive` int(1) NOT NULL default '0',
   PRIMARY KEY  (`event_id`),
   FULLTEXT KEY `event_txt` (`event_text`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS `person2volunteeropp_p2vo` (
   `p2vo_ID` mediumint(9) NOT NULL auto_increment,
@@ -191,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `person2volunteeropp_p2vo` (
   `p2vo_vol_ID` mediumint(9) default NULL,
   PRIMARY KEY  (`p2vo_ID`),
   UNIQUE KEY `p2vo_ID` (`p2vo_ID`)
-) TYPE=MyISAM  ;
+) ENGINE=MyISAM  ;
 
 ALTER TABLE `family_fam` ADD COLUMN `fam_scanCheck` text;
 ALTER TABLE `family_fam` ADD COLUMN `fam_scanCredit` text;
@@ -225,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `pledge_plg` (
   `plg_aut_ResultID` mediumint(9) NOT NULL default '0',
   `plg_NonDeductible` decimal(8,2) NOT NULL,
   PRIMARY KEY  (`plg_plgID`)
-) TYPE=MyISAM  ;
+) ENGINE=MyISAM  ;
 
 INSERT IGNORE INTO `query_qry` VALUES (16, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID LEFT JOIN group_grp a ON grp_ID = p2g2r_grp_ID LEFT JOIN list_lst b ON lst_ID = grp_RoleListID AND p2g2r_rle_ID = lst_OptionID WHERE lst_OptionName = \'Teacher\'', 'Find Teachers', 'Find all people assigned to Sunday school classes as teachers', 1);
 INSERT IGNORE INTO `query_qry` VALUES (17, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID LEFT JOIN group_grp a ON grp_ID = p2g2r_grp_ID LEFT JOIN list_lst b ON lst_ID = grp_RoleListID AND p2g2r_rle_ID = lst_OptionID WHERE lst_OptionName = \'Student\'', 'Find Students', 'Find all people assigned to Sunday school classes as students', 1);
@@ -285,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `result_res` (
   `res_version` text NOT NULL,
   `res_EchoServer` text NOT NULL,
   PRIMARY KEY  (`res_ID`)
-) TYPE=MyISAM  ;
+) ENGINE=MyISAM  ;
 
 ALTER TABLE `user_usr` ADD COLUMN `usr_showPledges` tinyint(1) NOT NULL default '0';
 ALTER TABLE `user_usr` ADD COLUMN `usr_showPayments` tinyint(1) NOT NULL default '0';
@@ -315,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `volunteeropportunity_vol` (
   `vol_Description` varchar(100) default NULL,
   PRIMARY KEY  (`vol_ID`),
   UNIQUE KEY `vol_ID` (`vol_ID`)
-) TYPE=MyISAM  ;
+) ENGINE=MyISAM  ;
 
 
 CREATE TABLE IF NOT EXISTS `whycame_why` (
@@ -326,4 +326,4 @@ CREATE TABLE IF NOT EXISTS `whycame_why` (
   `why_suggest` text NOT NULL,
   `why_hearOfUs` text NOT NULL,
   PRIMARY KEY  (`why_ID`)
-) TYPE=MyISAM  ;
+) ENGINE=MyISAM  ;

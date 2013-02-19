@@ -7,7 +7,7 @@ CREATE TABLE volunteeropportunity_vol (
   vol_Description varchar(100) default NULL,
   PRIMARY KEY  (vol_ID),
   UNIQUE KEY vol_ID (vol_ID)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE person2volunteeropp_p2vo (
   p2vo_ID mediumint(9) NOT NULL auto_increment,
@@ -15,7 +15,7 @@ CREATE TABLE person2volunteeropp_p2vo (
   p2vo_vol_ID mediumint(9),
   PRIMARY KEY (p2vo_ID),
   UNIQUE KEY (p2vo_ID)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 INSERT INTO query_qry VALUES (18,'SELECT per_ID as AddToCart, per_BirthDay as Day, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE per_cls_ID=1 AND per_BirthMonth=~birthmonth~ ORDER BY per_BirthDay','Birthdays','Members with birthdays in a particular month',0);
 INSERT INTO query_qry VALUES (19, 'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID LEFT JOIN group_grp a ON grp_ID = p2g2r_grp_ID LEFT JOIN list_lst b ON lst_ID = grp_RoleListID AND p2g2r_rle_ID = lst_OptionID WHERE lst_OptionName = \'Student\' AND grp_ID = ~group~ ORDER BY per_LastName', 'Class Students', 'Find students for a particular class', 1);

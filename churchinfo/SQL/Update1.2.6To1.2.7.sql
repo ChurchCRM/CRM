@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `eventcountnames_evctnm` (
 `evctnm_notes` varchar( 20 ) NOT NULL default '',
 UNIQUE KEY `evctnm_countid` ( `evctnm_countid` ) ,
 UNIQUE KEY `evctnm_eventtypeid` ( `evctnm_eventtypeid` , `evctnm_countname` )
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 -- New table to track Event Counts
 CREATE TABLE IF NOT EXISTS `eventcounts_evtcnt` (
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `eventcounts_evtcnt` (
 `evtcnt_countcount` int( 6 ) default NULL ,
 `evtcnt_notes` varchar( 20 ) default NULL ,
 PRIMARY KEY ( `evtcnt_eventid` , `evtcnt_countid` )
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 -- Extend the table events_event to include event_type_name column
 ALTER TABLE `events_event` 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `email_recipient_pending_erp` (
   `erp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT '0',
   `erp_num_attempt` smallint(5) unsigned NOT NULL DEFAULT '0',
   `erp_email_address` varchar(50) NOT NULL DEFAULT ''
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 -- New Table to keep track of email subject and text
 -- Also keeps a total of how many have been sent and how many
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `email_message_pending_emp` (
   `emp_last_attempt_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:00',
   `emp_subject` varchar(80) NOT NULL DEFAULT '',
   `emp_message` text NOT NULL
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 -- New table to keep track of version information
 CREATE TABLE IF NOT EXISTS `version_ver` (
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `version_ver` (
   `ver_date` datetime default NULL,
   PRIMARY KEY  (`ver_ID`),
   UNIQUE KEY `ver_version` (`ver_version`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('1.2.7',NOW());
 
@@ -95,14 +95,14 @@ CREATE TABLE IF NOT EXISTS `userconfig_ucfg` (
   `ucfg_tooltip` text NOT NULL,
   `ucfg_permission` enum('FALSE','TRUE') NOT NULL default 'FALSE',
   PRIMARY KEY  (`ucfg_per_ID`,`ucfg_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 -- Create temporary table of user id's
 DROP TABLE IF EXISTS `user_id_tmp`;
 CREATE TABLE IF NOT EXISTS `user_id_tmp` (
   `tmp_user_id` mediumint(9) unsigned NOT NULL,
   PRIMARY KEY (`tmp_user_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 -- Load Temporary table with list of user id's. (add 0 default) and (skip 1 admin)
 INSERT IGNORE INTO `user_id_tmp` (`tmp_user_id`) VALUES (0);
@@ -216,7 +216,7 @@ CREATE TABLE `tempconfig_tcfg` (
   PRIMARY KEY  (`tcfg_id`),
   UNIQUE KEY `tcfg_name` (`tcfg_name`),
   KEY `tcfg_id` (`tcfg_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 INSERT INTO `tempconfig_tcfg` 
 SELECT `cfg_id`,`cfg_name`,`cfg_value`,`cfg_type`,`cfg_default`,`cfg_tooltip`,`cfg_section`
@@ -241,7 +241,7 @@ CREATE TABLE `config_cfg` (
   PRIMARY KEY  (`cfg_id`),
   UNIQUE KEY `cfg_name` (`cfg_name`),
   KEY `cfg_id` (`cfg_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 -- Step 4) Copy data into the config table in the desired order
 INSERT INTO `config_cfg`

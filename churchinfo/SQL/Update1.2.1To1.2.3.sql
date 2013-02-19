@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `config_cfg` (
   `cfg_tooltip` text NOT NULL,
   `cfg_section` varchar(50) NOT NULL default '',
   PRIMARY KEY  (`cfg_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 
 INSERT IGNORE INTO `config_cfg` VALUES (1, 'sWEBCALENDARDB', '', 'text', '', 'WebCalendar database name', 'General');
@@ -94,14 +94,14 @@ ALTER TABLE  `pledge_plg` ADD  `plg_NonDeductible` DECIMAL( 8, 2 ) NOT NULL;
 CREATE TABLE IF NOT EXISTS event_attend (
   event_id int(11) NOT NULL default '0',
   person_id int(11) NOT NULL default '0'
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS event_types (
   type_id int(11) NOT NULL auto_increment,
   type_name varchar(255) NOT NULL default '',
   PRIMARY KEY  (type_id),
   UNIQUE KEY event_name (type_name)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 INSERT INTO `event_types` VALUES (1, 'Church Service');
 INSERT INTO `event_types` VALUES (2, 'Sunday School');
@@ -117,4 +117,4 @@ CREATE TABLE IF NOT EXISTS events_event (
   inactive int(1) NOT NULL default '0',
   PRIMARY KEY  (event_id),
   FULLTEXT KEY event_txt (event_text)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
