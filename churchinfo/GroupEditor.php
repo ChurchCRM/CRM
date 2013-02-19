@@ -145,7 +145,7 @@ if (isset($_POST["GroupSubmit"]))
 						per_ID mediumint(8) unsigned NOT NULL default '0',
 						PRIMARY KEY  (per_ID),
   						UNIQUE KEY per_ID (per_ID)
-						) TYPE=MyISAM;";
+						) ENGINE=MyISAM;";
 			RunQuery($sSQLp);
 
 			// If this is an existing group, add rows in this table for each member
