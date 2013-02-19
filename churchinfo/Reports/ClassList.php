@@ -152,7 +152,7 @@ for ($row = 0; $row < $numMembers; $row++)
 
       $addrStr = $fam_Address1;
       if ($fam_Address2 != "")
-         $addrStr .= " " .  fam_Address2;
+         $addrStr .= " " .  $fam_Address2;
       $addrStr .= ", " . $fam_City . ", " . $fam_State . "  " . $fam_Zip;
       $pdf->WriteAt ($parentsX, $y, $addrStr);
 
