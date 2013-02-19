@@ -19,7 +19,9 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-$linkBack = FilterInput($_GET["linkBack"]);
+$linkBack = "";
+if (array_key_exists ("linkBack", $_GET))
+	FilterInput($_GET["linkBack"]);
 $iFundRaiserID = FilterInput($_GET["FundRaiserID"]);
 
 if ($linkBack == "")
