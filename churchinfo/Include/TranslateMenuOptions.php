@@ -1,89 +1,26 @@
 <?php
-// Convert a relative URL into an absolute URL and redirect the browser there.
+
+/*******************************************************************************
+ *
+ *  filename    : TranslateMenuOptions.php
+ *  last change : 2012-02-19
+ *  description : utility to translate all the menu options to the selected language
+ *
+ *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ ******************************************************************************/
+
 function TranslateMenuOptions ()
 {
-	$allOptions = array(
-	'Main',
-	'Log Off',
-	'Change My Password',
-	'Change My Settings',
-	'Admin',
-	'Edit Users',
-	'Add New User',
-	'Edit Custom Person Fields',
-	'Edit Donation Funds',
-	'Backup Database',
-	'CSV Import',
-	'Access report',
-	'Edit General Settings',
-	'Edit Report Settings',
-	'Edit User Default Settings',
-	'Envelope Manager',
-	'Please select this option to register ChurchInfo after configuring.',
-	'People/Families',
-	'Add New Person',
-	'View All Persons',
-	'Classification Manager',
-	'---------------------------',
-	'Edit volunteer opportunities',
-	'Add New Family',
-	'View All Families',
-	'Family Geographic Utilties',
-	'Family Map',
-	'Family Roles Manager',
-	'Events',
-	'List Church Events',
-	'Add Church Event',
-	'List Event Types',
-	'Check-in and Check-out',
-	'Deposit',
-	'Create New Deposit',
-	'View All Deposits',
-	'Deposit Reports',
-	'Edit Deposit Slip',
-	'Cart',
-	'List Cart Items',
-	'Empty Cart',
-	'Empty Cart to Group',
-	'Empty Cart to Family',
-	'Empty Cart to Event',
-	'Data/Reports',
-	'CSV Export Records',
-	'Query Menu',
-	'Reports Menu',
-	'Groups',
-	'List Groups',
-	'Add a New Group',
-	'Edit Group Types',
-	'Group Assignment Helper',
-	'Properties',
-	'People Properties',
-	'Family Properties',
-	'Group Properties',
-	'Property Types',
-	'Help',
-	'About ChurchInfo',
-	'Wiki Documentation',
-	'People',
-	'Families',
-	'Geographic features',
-	'Groups',
-	'Finances',
-	'Reports',
-	'Administration',
-	'Cart',
-	'Properties',
-	'Notes',
-	'Custom Fields',
-	'Classifications',
-	'Canvass Support',
-	'Events',
-	'Menu Options',
-	'Edit Custom Family Fields'
-	);
+	$sSQL = "SELECT content_english from menuconfig_mcf";
+	$rsMenuOptions = RunQuery ($sSQL);
 	
-	foreach ($allOptions as $str) {
-		$sSQL = "update menuconfig_mcf set content='" . gettext ($str) . "' where content_english='". $str . "'";
+	while($myrow = mysql_fetch_row($rsMenuOptions)) {
+		$optStr = $myrow[0];
+		$sSQL = "update menuconfig_mcf set content='" . gettext ($optStr) . "' where content_english='". $optStr . "'";
 		RunQuery ($sSQL);
 	}
 }
