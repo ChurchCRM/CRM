@@ -60,6 +60,7 @@ switch($sType)
 $sPageTitle = $sTypeName . ' ' . gettext("Property Editor");
 
 $bError = false;
+$iType = 0;
 
 //Was the form submitted?
 if (isset($_POST["Submit"]))
