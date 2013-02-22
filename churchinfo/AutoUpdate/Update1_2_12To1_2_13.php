@@ -29,7 +29,6 @@
 ******************************************************************************/
 
 $sVersion = '1.2.13';
-$sVersion = '1.2.12.1'; // Delete this line before release
 
 function BackUpTable ($tn)
 {
@@ -73,7 +72,7 @@ for (; ; ) {    // This is not a loop but a section of code to be
 // Need to back up tables we will be modifying- 
 
     $needToBackUp = array (
-    "family_fam", "config_cfg", "pledge_plg", "queryparameteroptions_gpo");
+    "menuconfig_mcf", "family_fam", "user_usr", "config_cfg", "pledge_plg", "queryparameteroptions_qpo");
 
     $bErr = false;
     foreach ($needToBackUp as $backUpName) {

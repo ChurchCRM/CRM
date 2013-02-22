@@ -32,7 +32,6 @@ require 'Include/Functions.php';
 // Important!  These must be updated before every software release.
 
 $_SESSION['sChurchInfoPHPVersion'] = '1.2.13';
-$_SESSION['sChurchInfoPHPVersion'] = '1.2.12.1'; // Delete this line before release
 $_SESSION['sChurchInfoPHPDate'] = '2011-06-01';
 
 // Check if the table version_ver exists.  If the table does not exist then
