@@ -29,11 +29,15 @@ if (!$_SESSION['bCanvasser'])
 	exit;
 }
 
-$iFYID = FilterInput($_POST["FYID"], 'int'); // Use FY from the form if it was set
-if ($iFYID == 0)
+$iFYID = CurrentFY ();
+if (array_key_exists ('idefaultFY', $_SESSION))
 	$iFYID = $_SESSION['idefaultFY'];
+if (array_key_exists ("FYID", $_POST))
+	$iFYID = FilterInput($_POST["FYID"], 'int'); // Use FY from the form if it was set
 
 $_SESSION['idefaultFY'] = $iFYID; // Remember default fiscal year
+
+$processNews = "";
 
 // Service the action buttons
 if (isset($_POST["SetDefaultFY"])) {
