@@ -125,11 +125,20 @@ if (($sAction == 'ConfDelete') && $iOpp > 0) {
         Redirect("Menu.php");
         exit;
     }
+    
+    // get the order value for the record being deleted
+    $sSQL = "SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";
+    $rsOrder = RunQuery ($sSQL);
+    $aRow = mysql_fetch_array($rsOrder);
+    $orderVal = $aRow[0];
     $sSQL = "DELETE FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
     RunQuery($sSQL);
     $sSQL = "DELETE FROM `person2volunteeropp_p2vo` WHERE `p2vo_vol_ID` = '" . $iOpp . "'";
     RunQuery($sSQL);
-    }
+    // pull back all the vol_Order fields that are higher than the one just deleted
+    $sSQL = "UPDATE volunteeropportunity_vol SET vol_Order=vol_Order-1 WHERE vol_Order>=$orderVal";
+    RunQuery($sSQL);
+}
 
 
 if ($iRowNum == 0) {
