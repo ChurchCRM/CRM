@@ -197,10 +197,11 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 --
 -- bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param below
 --
-(67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General', NULL) ;
+(67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General', NULL),
 
 -- Save 68, 69 for MRBS if installed
 -- Save 70, 71 for WebCalendar if installed
+(72, 'bEnableNonDeductible', '0', 'boolean', '0', 'Enable non-deductible payments', 'General', NULL) ;
 
 -- --------------------------------------------------------
 
@@ -1004,28 +1005,28 @@ INSERT INTO `queryparameteroptions_qpo` (`qpo_ID`, `qpo_qrp_ID`, `qpo_Display`, 
 (7, 15, 'State', 'fam_State'),
 (8, 15, 'City', 'fam_City'),
 (9, 15, 'Home Phone', 'per_HomePhone'),
-(10, 27, '2007/2008', '12'),
-(11, 27, '2008/2009', '13'),
-(12, 27, '2009/2010', '14'),
-(13, 27, '2010/2011', '15'),
-(14, 28, '2007/2008', '12'),
-(15, 28, '2008/2009', '13'),
-(16, 28, '2009/2010', '14'),
-(17, 28, '2010/2011', '15'),
-(18, 30, '2007/2008', '12'),
-(19, 30, '2008/2009', '13'),
-(20, 30, '2009/2010', '14'),
-(21, 30, '2010/2011', '15'),
-(22, 31, '2007/2008', '12'),
-(23, 31, '2008/2009', '13'),
-(24, 31, '2009/2010', '14'),
-(25, 31, '2010/2011', '15'),
+(10, 27, '2012/2013', '17'),
+(11, 27, '2013/2014', '18'),
+(12, 27, '2014/2015', '19'),
+(13, 27, '2015/2016', '20'),
+(14, 28, '2012/2013', '17'),
+(15, 28, '2013/2014', '18'),
+(16, 28, '2014/2015', '19'),
+(17, 28, '2015/2016', '20'),
+(18, 30, '2012/2013', '17'),
+(19, 30, '2013/2014', '18'),
+(20, 30, '2014/2015', '19'),
+(21, 30, '2015/2016', '20'),
+(22, 31, '2012/2013', '17'),
+(23, 31, '2013/2014', '18'),
+(24, 31, '2014/2015', '19'),
+(25, 31, '2015/2016', '20'),
 (26, 15, 'Email', 'per_Email'),
 (27, 15, 'WorkEmail', 'per_WorkEmail'),
-(28, 32, '2007/2008', '12'),
-(29, 32, '2008/2009', '13'),
-(30, 32, '2009/2010', '14'),
-(31, 32, '2010/2011', '15'),
+(28, 32, '2012/2013', '17'),
+(29, 32, '2013/2014', '18'),
+(30, 32, '2014/2015', '19'),
+(31, 32, '2015/2016', '20'),
 (32, 33, 'Member', '1'),
 (33, 33, 'Regular Attender', '2'),
 (34, 33, 'Guest', '3'),

@@ -73,7 +73,7 @@ for (; ; ) {    // This is not a loop but a section of code to be
 // Need to back up tables we will be modifying- 
 
     $needToBackUp = array (
-    "family_fam", "config_cfg", "pledge_plg");
+    "family_fam", "config_cfg", "pledge_plg", "queryparameteroptions_gpo");
 
     $bErr = false;
     foreach ($needToBackUp as $backUpName) {
@@ -162,6 +162,9 @@ for (; ; ) {    // This is not a loop but a section of code to be
 	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General',NULL);";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 
+	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (72, 'bEnableNonDeductible', '0', 'boolean', '0', 'Enable non-deductible payments', 'General',NULL);";
+	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
+
 	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (1031, 'sZeroGivers', 'This letter shows our record of your payments for', 'text', '0', 'Verbage for top line of zero givers report. Dates will be appended to the end of this line.', 'ChurchInfoReport',NULL);";
 	$rsIcons = RunQuery($sSQL, FALSE); // False means do not stop on error
 	
@@ -183,6 +186,35 @@ for (; ; ) {    // This is not a loop but a section of code to be
 	 'Find people with a custom field value', 
 	 1)";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
+
+	$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Value` = 'fam_Zip' WHERE `queryparameteroptions_qpo`.`qpo_ID` = 6 "; 
+	if (!RunQuery($sSQL, FALSE))
+		break;
+	
+	$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Value` = 'fam_State' WHERE `queryparameteroptions_qpo`.`qpo_ID` = 7 "; 
+	if (!RunQuery($sSQL, FALSE))
+		break;
+	
+	$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Value` = 'fam_City' WHERE `queryparameteroptions_qpo`.`qpo_ID` = 8 "; 
+	if (!RunQuery($sSQL, FALSE))
+		break;
+	
+	// push the queries that incorporate a fiscal year forward
+	$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Display` = '2015/2016', qpo_Value = '20' WHERE `queryparameteroptions_qpo`.`qpo_Display` = '2010/2011' "; 
+	if (!RunQuery($sSQL, FALSE))
+		break;
+		
+	$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Display` = '2014/2015', qpo_Value = '19' WHERE `queryparameteroptions_qpo`.`qpo_Display` = '2009/2010' "; 
+	if (!RunQuery($sSQL, FALSE))
+		break;
+		
+	$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Display` = '2013/2014', qpo_Value = '18' WHERE `queryparameteroptions_qpo`.`qpo_Display` = '2008/2009' "; 
+	if (!RunQuery($sSQL, FALSE))
+		break;
+		
+	$sSQL = "UPDATE `queryparameteroptions_qpo` SET `qpo_Display` = '2012/2013', qpo_Value = '17' WHERE `queryparameteroptions_qpo`.`qpo_Display` = '2007/2008' "; 
+	if (!RunQuery($sSQL, FALSE))
+		break;
 	
 	$sSQL = "INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('".$sVersion."',NOW())";
     RunQuery($sSQL, FALSE); // False means do not stop on error
