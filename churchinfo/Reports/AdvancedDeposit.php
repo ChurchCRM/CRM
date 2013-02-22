@@ -2,10 +2,10 @@
 /*******************************************************************************
 *
 *  filename    : Reports/AdvancedDeposit.php
-*  last change : 2005-03-29
+*  last change : 2013-02-21
 *  description : Creates a PDF customized Deposit Report .
 *
-*  InfoCentral is free software; you can redistribute it and/or modify
+*  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -326,6 +326,19 @@ if ($output == "pdf") {
 	}
 	
 	$curY = $pdf->StartFirstPage ();
+	$curX = 0;
+	
+	$currentDepositID = 0;
+	$currentFundID = 0;
+	$totalAmount = 0;
+	$totalFund = array();
+	
+	$countFund = 0;
+	$countDeposit = 0;
+	$countReport = 0;
+	$currentFundAmount = 0;
+	$currentDepositAmount = 0;
+	$currentReportAmount = 0;
 	
 	// **********************
 	// Sort by Deposit Report
@@ -431,7 +444,10 @@ if ($output == "pdf") {
 			}
 			// Update running totals
 			$totalAmount += $plg_amount;
-			$totalFund[$fun_Name] += $plg_amount;
+			if (array_key_exists ($fun_Name, $totalFund))
+				$totalFund[$fun_Name] += $plg_amount;
+			else
+				$totalFund[$fun_Name] = $plg_amount;
 			$countFund ++;
 			$countDeposit ++;
 			$countReport ++;
@@ -577,7 +593,10 @@ if ($output == "pdf") {
 			}
 			// Update running totals
 			$totalAmount += $plg_amount;
-			$totalFund[$fun_Name] += $plg_amount;
+			if (array_key_exists ($fun_Name, $totalFund))
+				$totalFund[$fun_Name] += $plg_amount;
+			else
+				$totalFund[$fun_Name] = $plg_amount;
 			$countFund ++;
 			$countFamily ++;
 			$countReport ++;
@@ -724,7 +743,10 @@ if ($output == "pdf") {
 			}
 			// Update running totals
 			$totalAmount += $plg_amount;
-			$totalFund[$fun_Name] += $plg_amount;
+			if (array_key_exists ($fun_Name, $totalFund))
+				$totalFund[$fun_Name] += $plg_amount;
+			else
+				$totalFund[$fun_Name] = $plg_amount;
 			$countFund ++;
 			$countFamily ++;
 			$countReport ++;

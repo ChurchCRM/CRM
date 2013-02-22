@@ -2,10 +2,10 @@
 /*******************************************************************************
 *
 *  filename    : Reports/PrintDeposit.php
-*  last change : 2005-03-28
+*  last change : 2013-02-21
 *  description : Creates a PDF of the current deposit slip
 *
-*  InfoCentral is free software; you can redistribute it and/or modify
+*  ChurchInfo is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -25,9 +25,11 @@ require "../Include/ReportConfig.php";
 //	exit;
 //}
 
-$iBankSlip = FilterInput($_GET["BankSlip"]);
+$iBankSlip = 0;
+if (array_key_exists ("BankSlip", $_GET))
+	$iBankSlip = FilterInput($_GET["BankSlip"], 'int');
 if (!$iBankSlip && array_key_exists ("report_type", $_POST))
-	$iBankSlip = FilterInput($_POST["report_type"]);
+	$iBankSlip = FilterInput($_POST["report_type"], 'int');
 
 $output = "pdf";
 if (array_key_exists ("output",$_POST))

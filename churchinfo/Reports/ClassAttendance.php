@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : Reports/ClassAttendance.php
-*  last change : 2003-08-30
+*  last change : 2013-02-22
 *  description : Creates a PDF for a Sunday School Class Attendance List
 *
 *  ChurchInfo is free software; you can redistribute it and/or modify
@@ -106,6 +106,9 @@ class PDF_Attendance extends ChurchInfoReport {
 	unset($NameList);
 	$numMembers = 0;
 	$aNameCount=0;
+	
+	$aNoSchoolX = array ();
+	$noSchoolCnt = 0;
 //
 //  determine how many pages will be includes in this report
 //

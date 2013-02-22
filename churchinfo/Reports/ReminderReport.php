@@ -250,10 +250,17 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
         $bOwe = 0;
         while ($aRow = mysql_fetch_array($rsPledges)) {
             extract ($aRow);
-            if ($plg_PledgeOrPayment=='Pledge')
-                $oweByFund[$plg_fundID] -= $plg_amount;
-            else
-                $oweByFund[$plg_fundID] += $plg_amount;
+            if ($plg_PledgeOrPayment=='Pledge') {
+            	if (array_key_exists ($plg_fundID, $oweByFund))
+	                $oweByFund[$plg_fundID] -= $plg_amount;
+	            else
+	                $oweByFund[$plg_fundID] = -$plg_amount;
+            } else {
+            	if (array_key_exists ($plg_fundID, $oweByFund))
+            		$oweByFund[$plg_fundID] += $plg_amount;
+            	else
+            		$oweByFund[$plg_fundID] = $plg_amount;
+            }
         }
         foreach ($oweByFund as $oweRow)
             if ($oweRow < 0)
