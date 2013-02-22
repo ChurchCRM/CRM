@@ -1,9 +1,9 @@
 <?php
 /*******************************************************************************
  *
- *  filename    : FinancialReports.php
- *  last change : 2005-03-26
- *  description : form to invoke financial reports
+ *  filename    : SettingsGeneral.php
+ *  last change : 2013-02-19
+ *  description : form to modify general global configuration settings
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
