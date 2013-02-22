@@ -2,9 +2,9 @@
 /*******************************************************************************
  *
  *  filename    : /Include/CanvassUtilities.php
- *  last change : 2005-02-21
+ *  last change : 2013-02-22
  *  website     : http://www.churchdb.org
- *  copyright   : Copyright 2005 Michael Wilt
+ *  copyright   : Copyright 2013 Michael Wilt
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -148,7 +148,7 @@ function CanvassProgressReport ($iFYID)
 	$percentStr = sprintf ("%.0f%%", ($totalDone / $totalToDo) * 100);
 	$pdf->WriteAt ($percentX, $curY, $percentStr);
 
-	$pdf->Output("CanvassProgress" . date("Ymd") . ".pdf", true);
+	$pdf->Output("CanvassProgress" . date("Ymd") . ".pdf", "D");
 }
 
 function CanvassBriefingSheets ($iFYID)
@@ -270,7 +270,7 @@ function CanvassBriefingSheets ($iFYID)
 				$sGender = "M";
 			else
 				$sGender = "F";
-			$sAge = FormatAge($aFamilyMember["per_BirthMonth"],$aFamilyMember["per_BirthDay"],$aFamilyMember["per_BirthYear"],$aFamilyMember["Flags"]);
+			$sAge = FormatAge($aFamilyMember["per_BirthMonth"],$aFamilyMember["per_BirthDay"],$aFamilyMember["per_BirthYear"],$aFamilyMember["per_Flags"]);
 			$pdf->WriteAt ($memberNameX, $curY, $aFamilyMember["per_FirstName"] . " " . $aFamilyMember["per_LastName"]);
 			$pdf->WriteAt ($memberGenderX, $curY, $sGender);
 			$pdf->WriteAt ($memberRoleX, $curY, $aFamilyMember["sFamRole"]);
@@ -324,7 +324,7 @@ function CanvassBriefingSheets ($iFYID)
 		$pdf->AddPage ();
 	}
 
-	$pdf->Output("CanvassBriefing" . date("Ymd") . ".pdf", true);
+	$pdf->Output("CanvassBriefing" . date("Ymd") . ".pdf", "D");
 }
 
 function CanvassSummaryReport ($iFYID)
@@ -381,7 +381,7 @@ function CanvassSummaryReport ($iFYID)
 		mysql_data_seek ($rsCanvassData, 0);
 	}	
 
-	$pdf->Output("CanvassSummary" . date("Ymd") . ".pdf", true);
+	$pdf->Output("CanvassSummary" . date("Ymd") . ".pdf", "D");
 }
 
 function CanvassNotInterestedReport ($iFYID)
