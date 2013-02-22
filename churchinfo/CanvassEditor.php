@@ -2,9 +2,9 @@
 /*******************************************************************************
  *
  *  filename    : CanvassEditor.php
- *  last change : 2005-02-23
- *  website     : http://www.infocentral.org
- *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt, Michael Wilt
+ *  last change : 2013-02-22
+ *  website     : http://www.churchdb.org
+ *  copyright   : Copyright 2001, 2002, 2003, 2013 Deane Barker, Chris Gebhardt, Michael Wilt
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,10 +26,15 @@ if (!$_SESSION['bCanvasser'])
 
 require "Include/CanvassUtilities.php";
 
-$iCanvassID = FilterInput($_GET["CanvassID"],'int');
+$iCanvassID = 0;
+if (array_key_exists ("CanvassID", $_GET))
+	$iCanvassID = FilterInput($_GET["CanvassID"],'int');
 $linkBack = FilterInput($_GET["linkBack"]);
 $iFamily = FilterInput($_GET["FamilyID"]);
 $iFYID = FilterInput($_GET["FYID"]);
+
+$sDateError = "";
+$bNotInterested = false;
 
 //Get Family name
 $sSQL = "SELECT fam_Name FROM family_fam where fam_ID = " . $iFamily;
@@ -58,8 +63,7 @@ if (isset($_POST["Submit"]))
 	$tWhyNotInterested = FilterInput ($_POST["WhyNotInterested"]);
 
 	// New canvas input (add)
-	if (strlen($iCanvassID) < 1)
-	{
+	if ($iCanvassID < 1) {
 		$sSQL = "INSERT INTO canvassdata_can (can_famID, can_Canvasser, can_FYID, can_date, can_Positive,
 		                                      can_Critical, can_Insightful, can_Financial, can_Suggestion,
 											  can_NotInterested, can_WhyNotInterested) 
@@ -128,6 +132,15 @@ if (isset($_POST["Submit"]))
 		// Set some default values
 		$iCanvasser = $_SESSION['iUserID'];
 		$dDate = date("Y-m-d");
+		
+		$dDate = "";
+		$tPositive = "";
+		$tCritical = "";
+		$tInsightful = "";
+		$tFinancial = "";
+		$tSuggestion = "";
+		$bNotInterested = false;
+		$tWhyNotInterested = "";
 	}
 }
 
@@ -157,29 +170,30 @@ require "Include/Header.php";
 
 			<?php
 			if (($rsBraveCanvassers <> 0 && mysql_num_rows($rsBraveCanvassers) > 0) || 
-			    ($rsCanvasser <> 0 && mysql_num_rows($rsCanvassers) > 0))
-			{
+			    ($rsCanvassers <> 0 && mysql_num_rows($rsCanvassers) > 0)) {
 				echo "<tr><td class='LabelColumn'>" . gettext("Canvasser:") . "</td>\n";
 				echo "<td class='TextColumnWithBottomBorder'>";
 				// Display all canvassers
 				echo "<select name='Canvasser'><option value=\"0\">None selected</option>";
-				while ($aCanvasser = mysql_fetch_array($rsBraveCanvassers))
-				{
-					echo "<option value=\"" . $aCanvasser["per_ID"] . "\"";
-					if ($aCanvasser["per_ID"]==$iCanvasser)
-						echo " selected";
-					echo ">";
-					echo $aCanvasser["per_FirstName"] . " " . $aCanvasser["per_LastName"];
-					echo "</option>";
+				if ($rsBraveCanvassers != 0) {
+					while ($aCanvasser = mysql_fetch_array($rsBraveCanvassers)) {
+						echo "<option value=\"" . $aCanvasser["per_ID"] . "\"";
+						if ($aCanvasser["per_ID"]==$iCanvasser)
+							echo " selected";
+						echo ">";
+						echo $aCanvasser["per_FirstName"] . " " . $aCanvasser["per_LastName"];
+						echo "</option>";
+					}
 				}
-				while ($aCanvasser = mysql_fetch_array($rsCanvassers))
-				{
-					echo "<option value=\"" . $aCanvasser["per_ID"] . "\"";
-					if ($aCanvasser["per_ID"]==$iCanvasser)
-						echo " selected";
-					echo ">";
-					echo $aCanvasser["per_FirstName"] . " " . $aCanvasser["per_LastName"];
-					echo "</option>";
+				if ($rsCanvassers != 0) {
+					while ($aCanvasser = mysql_fetch_array($rsCanvassers)) {
+						echo "<option value=\"" . $aCanvasser["per_ID"] . "\"";
+						if ($aCanvasser["per_ID"]==$iCanvasser)
+							echo " selected";
+						echo ">";
+						echo $aCanvasser["per_FirstName"] . " " . $aCanvasser["per_LastName"];
+						echo "</option>";
+					}
 				}
 				echo "</select></td></tr>";
 			}
