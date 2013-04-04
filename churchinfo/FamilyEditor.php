@@ -599,10 +599,7 @@ else
 		$sName = "";
 		$sAddress1 = "";
 		$sAddress2 = "";
-		$sCity = "";
-		$sState = "";
 		$sZip	= "";
-		$sCountry = "";
 		$sHomePhone = "";
 		$bNoFormat_HomePhone = isset($_POST["NoFormat_HomePhone"]);
 		$sWorkPhone = "";
