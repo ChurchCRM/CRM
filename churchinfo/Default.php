@@ -441,6 +441,31 @@ ob_start();
 <script language="JavaScript" type="text/JavaScript">
     document.LoginForm.User.focus();
 </script>
+<?php
+//
+// Basic sercurity checks:
+//
+// Check if https is required:
+// Verify that page has an authorized URL in the browser address bar.
+// Otherwise redirect to login page.
+// An array of authorized URL's is specified in Config.php ... $URL
+    if (isset($bLockURL) && ($bLockURL === TRUE)) {
+        echo '
+    <script language="javascript" type="text/javascript">
+        v_test="FAIL"'; // Set "FAIL" to assume the URL is not allowed
+                        // Set "PASS" if we learn it is allowed
+        foreach ($URL as $value) { // Default.php is 11 characters
+            $value = substr($value, 0, -11);
+            echo '
+        if(window.location.href.indexOf("'.$value.'") == 0) v_test="PASS";';
+        }
+        echo '
+        if (v_test == "FAIL") window.location="'.$URL[0].'";
+    </script>';
+    }
+// End of basic security checks
+
+?>
 
 </body>
 </html>
