@@ -625,7 +625,7 @@ else
 			$aGenders[$iCount] = "";
 			$aBirthDays[$iCount] = 0;
 			$aBirthMonths[$iCount] = 0;
-			$aBirthYears[$iCount] = 0;
+			$aBirthYears[$iCount] = "";
 			$aClassification[$iCount] = 0;
 			$aPersonIDs[$iCount] = 0;
 			$aUpdateBirthYear[$iCount] = 0;
