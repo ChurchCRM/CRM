@@ -395,7 +395,8 @@ ob_start();
     if (isset($_GET['Proto']) && isset($_GET['Path'])) {
 ?>
         <form method="post" name="LoginForm" 
-        <?php echo "action=\"Default.php?Proto=".$_GET['Proto']."&amp;Path=".$_GET['Path']."\"" ?> >
+        <?php echo "action=\"Default.php?Proto=".$_GET['Proto'].
+        "&amp;Path=".rawurlencode($_GET['Path'])."\"" ?> >
         <table border="0" align="center" cellpadding="5">
         <?php if (isset($_GET['timeout'])) { ?>
         <tr>
