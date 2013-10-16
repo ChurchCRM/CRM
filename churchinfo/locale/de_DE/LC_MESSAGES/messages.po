@@ -1,4 +1,4 @@
- # translation of messages.po to
+# translation of messages.po to
 # InfoCentral German translation
 # Copyright (C) 2003
 # This file is distributed under the same license (GPL) as the InfoCentral package.
@@ -16,10 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Basepath: c:\xampp\htdocs\churchinfo\\n"
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
-"X-Poedit-SearchPath-0: c:\xampp\htdocs\churchinfo2\n"
 
 #: AccessReport.php:25 MenuStrings.php:13
 msgid "Access report"
