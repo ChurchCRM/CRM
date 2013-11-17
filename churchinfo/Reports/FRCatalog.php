@@ -78,13 +78,24 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 	extract ($oneItem);
 
 	$newIdFirstChar = substr($di_item,0,1);
-	if ($pdf->GetY() > 220 || ($idFirstChar <> '' && $idFirstChar <> $newIdFirstChar))
+	$maxYNewPage = 220;
+	if ($di_picture != "")
+	    $maxYNewPage = 120;
+	if ($pdf->GetY() > $maxYNewPage || ($idFirstChar <> '' && $idFirstChar <> $newIdFirstChar))
 	  $pdf->AddPage ();
 	$idFirstChar = $newIdFirstChar;
 
 	$pdf->SetFont("Times",'B',12);
 	$pdf->Write (6, $di_item.": ");
 	$pdf->Write (6, stripslashes($di_title)."\n");
+	
+    if ($di_picture != "") {
+        $s = getimagesize($di_picture);
+        $h = (100.0 / $s[0]) * $s[1];
+        $pdf->Image($di_picture, $pdf->GetX(), $pdf->GetY(), 100.0, $h);
+        $pdf->SetY ($pdf->GetY() + $h);
+    }
+	
 	$pdf->SetFont("Times",'',12);
 	$pdf->Write (6, stripslashes($di_description)."\n");
 	if ($di_minimum > 0)

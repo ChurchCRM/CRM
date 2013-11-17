@@ -1396,6 +1396,7 @@ CREATE TABLE `donateditem_di` (
   `di_materialvalue` decimal(8,2) default NULL,
   `di_EnteredBy` smallint(5) unsigned NOT NULL default '0',
   `di_EnteredDate` date NOT NULL,
+  `di_picture` text,
   PRIMARY KEY  (`di_ID`),
   UNIQUE KEY `di_ID` (`di_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
