@@ -1,20 +1,21 @@
- # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Churchinfo\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-19 13:42-1000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2014-02-28 15:41+0100\n"
+"Last-Translator: Hans Hagemann <Hagemann@mailcom.nl>\n"
+"Language-Team: PrimeSoft <hagemann@mailcom.nl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
 
 #: AccessReport.php:25 MenuStrings.php:13
 msgid "Access report"
@@ -415,12 +416,12 @@ msgstr "Selecteer archieftype:"
 
 #: BackupDatabase.php:132
 msgid "GZip"
-msgstr "Postcode"
+msgstr "GZip"
 
 #: BackupDatabase.php:133 CSVImport.php:232 DirectoryReports.php:259
 #: GeoPage.php:325
 msgid "Zip"
-msgstr "Postcode"
+msgstr "Zip"
 
 #: BackupDatabase.php:134
 msgid "Uncompressed"
@@ -451,19 +452,16 @@ msgid "Batch Winner Entry"
 msgstr "Batch Winnaar Entry"
 
 #: BatchWinnerEntry.php:75 FundRaiserEditor.php:200
-#, fuzzy
 msgid "Item"
 msgstr "object"
 
 #: BatchWinnerEntry.php:76
-#, fuzzy
 msgid "Winner"
-msgstr "Winter"
+msgstr "Winnaar"
 
 #: BatchWinnerEntry.php:77
-#, fuzzy
 msgid "Price"
-msgstr "Prive"
+msgstr "Prijs"
 
 #: BatchWinnerEntry.php:112
 msgid "Enter Winners"
@@ -543,10 +541,10 @@ msgstr "Koppel enqueteurs"
 #: CanvassAutomation.php:126
 msgid ""
 "Randomly assign canvassers to all Families.  The Canvassers are \n"
-"			taken from the &quot;Canvassers&quot; Group."
+"\t\t\ttaken from the &quot;Canvassers&quot; Group."
 msgstr ""
 "Wijs willekeurig enqueteurs aan alle Families toe. De Enqueteurs zijn \n"
-"			gehaald uit de &quot;Canvassers&quot; Groep."
+"\t\t\tgehaald uit de &quot;Canvassers&quot; Groep."
 
 #: CanvassAutomation.php:134
 msgid "Assign To Non Pledging"
@@ -555,11 +553,11 @@ msgstr "Toewijzen aan geen bijdrage"
 #: CanvassAutomation.php:138
 msgid ""
 "Randomly assign canvassers to non-pledging Families.  The Canvassers are \n"
-"			taken from the &quot;BraveCanvassers&quot; Group."
+"\t\t\ttaken from the &quot;BraveCanvassers&quot; Group."
 msgstr ""
 "Wijs willekeurig enqueteurs toe aan Families die geen bijdrage betalen.De "
 "Enqueteurs zijn \n"
-" 			gehaald uit de &quot;Enqueteurs&quot; Groep."
+" \t\t\tgehaald uit de &quot;Enqueteurs&quot; Groep."
 
 #: CanvassAutomation.php:146
 msgid "Clear Canvasser Assignments"
@@ -568,11 +566,11 @@ msgstr "Ledig enquêteurs Toewijzingen"
 #: CanvassAutomation.php:150
 msgid ""
 "Clear all the canvasser assignments for all families.  <p>Important\n"
-"			note: this will lose any canvasser assignments that have been made by "
+"\t\t\tnote: this will lose any canvasser assignments that have been made by "
 "hand.</p>"
 msgstr ""
 "Verwijder alle Enqueteurs toewijzingen aan alle families. <p>Belangrijk\n"
-"t		note: hiermee verliezen we alle enqueteur toewijzigingen die handmatig "
+"t\t\tnote: hiermee verliezen we alle enqueteur toewijzigingen die handmatig "
 "gezet zijn.</p>"
 
 #: CanvassAutomation.php:158
@@ -582,12 +580,12 @@ msgstr "Laat enquete voor alle families toe"
 #: CanvassAutomation.php:162
 msgid ""
 "Turn on the &quot;Ok To Canvass&quot; field for all Families.  <p>Important\n"
-"			note: this will lose any &quot;Ok To Canvass&quot; fields that have "
+"\t\t\tnote: this will lose any &quot;Ok To Canvass&quot; fields that have "
 "been set by hand.</p>"
 msgstr ""
 "Het Aanzetten van &quot;Ok Voor Enquete&quot; veld voor alle Families. "
 "<p>Belangrijk\n"
-" 			note: hiermee verliezen we alle &quot;Ok Voor Enquete&quot;velden die "
+" \t\t\tnote: hiermee verliezen we alle &quot;Ok Voor Enquete&quot;velden die "
 "handmatig zijn gezet.</p>"
 
 #: CanvassAutomation.php:170
@@ -598,12 +596,12 @@ msgstr "Sta Enquete voor Alle Families niet meer toe"
 msgid ""
 "Turn off the &quot;Ok To Canvass&quot; field for all Families.  "
 "<p>Important\n"
-"			note: this will lose any &quot;Ok To Canvass&quot; fields that have "
+"\t\t\tnote: this will lose any &quot;Ok To Canvass&quot; fields that have "
 "been set by hand.</p>"
 msgstr ""
 "Zet het &quot;Ok Voor Enquete&quot; veld uit voor alle Families.  "
 "<p>Belangrijk\n"
-"t		note: hiermee verliezen we alle &quot;Ok Voor Enquete&quot;velden die "
+"t\t\tnote: hiermee verliezen we alle &quot;Ok Voor Enquete&quot;velden die "
 "handmatig zijn gezet.</p>"
 
 #: CanvassAutomation.php:182
@@ -625,11 +623,11 @@ msgstr "Voortgangsrapport"
 #: CanvassAutomation.php:196
 msgid ""
 "Generate a PDF containing a progress report.  The progress report includes\n"
-"			information on the overall progress of the canvass, and the progress "
+"\t\t\tinformation on the overall progress of the canvass, and the progress "
 "of individual canvassers."
 msgstr ""
 "Genereer een voortgangs rapportage (PDF). Het rapport omvat\n"
-"			informatie over de totale voortgang van de enquete, en de voortgang "
+"\t\t\tinformatie over de totale voortgang van de enquete, en de voortgang "
 "van de individuele enqeteurs."
 
 #: CanvassAutomation.php:203
@@ -639,11 +637,11 @@ msgstr "Samenvattings Rapport"
 #: CanvassAutomation.php:207
 msgid ""
 "Generate a PDF containing a summary report.  The summary report includes\n"
-"			comments extracted from the canvass data."
+"\t\t\tcomments extracted from the canvass data."
 msgstr ""
 "Genereer een Samenvattings rapportage (PDF). Het Samenvattings Rapport "
 "omvat\n"
-"			commentaar die uit de enquete data wordt gehaald."
+"\t\t\tcommentaar die uit de enquete data wordt gehaald."
 
 #: CanvassAutomation.php:214
 msgid "Not Interested Report"
@@ -653,11 +651,11 @@ msgstr "Niet geinterresseerd Rapport"
 msgid ""
 "Generate a PDF containing a report of the families marked &quot;Not "
 "Interested&quot; \n"
-"			                    by the canvasser."
+"\t\t\t                    by the canvasser."
 msgstr ""
 "Genereer een PDF rapport van alle Families gemarkeerd &quot;Niet "
 "Geinterresseerd&quot; \n"
-"			                    door de enqueteur."
+"\t\t\t                    door de enqueteur."
 
 #: CanvassEditor.php:41
 msgid " Canvass Input for the "
@@ -696,13 +694,12 @@ msgid "Why Not Interested?"
 msgstr "Waarom niet Geinterresseerd?"
 
 #: CartToEvent.php:56 CartToEvent.php:91
-#, fuzzy
 msgid "Add Cart to Event"
-msgstr "Voeg kaart toe aan Evenement"
+msgstr "Voeg mandje toe aan Evenement"
 
 #: CartToEvent.php:66
 msgid "Select the event to which you would like to add your cart:"
-msgstr "Selecteer het evenement aan welke u de kaart wil toevoegen:"
+msgstr "Selecteer het evenement aan welke u het mandje wil toevoegen:"
 
 #: CartToEvent.php:75 Checkin.php:68
 msgid "Select Event:"
@@ -718,16 +715,15 @@ msgstr "Voeg Evenement Toe"
 
 #: CartToEvent.php:100 CartToFamily.php:331 CartToGroup.php:154
 msgid "Your cart is empty!"
-msgstr "Uw kaart is leeg!"
+msgstr "Uw mandje is leeg!"
 
 #: CartToFamily.php:80
 msgid "No family name entered!"
 msgstr "Geen familie naam ingevoerd!"
 
 #: CartToFamily.php:125
-#, fuzzy
 msgid "Add Cart to Family"
-msgstr "Voeg kaart toe aan Familie"
+msgstr "Voeg mandje toe aan Familie"
 
 #: CartToFamily.php:132 CartToFamily.php:324
 msgid "Add to Family"
@@ -855,9 +851,8 @@ msgid "Email:"
 msgstr "Email:"
 
 #: CartToGroup.php:57
-#, fuzzy
 msgid "Add Cart to Group"
-msgstr "Voeg kaart toe aan groep"
+msgstr "Voeg mandje toe aan groep"
 
 #: CartToGroup.php:114 GroupReports.php:83 PersonToGroup.php:108
 msgid "Invalid Group or No Roles Available!"
@@ -865,7 +860,7 @@ msgstr "Groep bestaat niet of geen Rol beschikbaar!"
 
 #: CartToGroup.php:121
 msgid "Select the group to which you would like to add your cart:"
-msgstr "Selecteer de groep welke u wilt toevoegen aan de kaart:"
+msgstr "Selecteer de groep welke u wilt toevoegen aan het mandje :"
 
 #: CartToGroup.php:125 GroupReports.php:96 PersonToGroup.php:120
 msgid "Select Group:"
@@ -894,13 +889,12 @@ msgid "An error occured: "
 msgstr "Een fout heeft plaatsgevonden: "
 
 #: CartView.php:126
-#, fuzzy
 msgid "View Your Cart"
-msgstr "Bekijk Uw kaart"
+msgstr "Bekijk Uw mandje"
 
 #: CartView.php:132
 msgid "You have no items in your cart."
-msgstr "U heeft geen object in de kaart."
+msgstr "U heeft geen object in het mandje "
 
 #: CartView.php:180
 msgid "Go To Labels"
@@ -908,7 +902,7 @@ msgstr "Ga naar Etiketten"
 
 #: CartView.php:185
 msgid "Your cart contains"
-msgstr "Uw kaart bevat"
+msgstr "Uw mandje bevat"
 
 #: CartView.php:185
 msgid "persons from"
@@ -959,50 +953,42 @@ msgid "No"
 msgstr "Nee"
 
 #: CartView.php:257
-#, fuzzy
 msgid "Cart Functions"
-msgstr "Kaart Functies"
+msgstr "Mandjes Functies"
 
 #: CartView.php:259 MenuStrings.php:47
-#, fuzzy
 msgid "Empty Cart"
-msgstr "Lege Kaart"
+msgstr "Leeg mandje"
 
 #: CartView.php:263 MenuStrings.php:48
-#, fuzzy
 msgid "Empty Cart to Group"
-msgstr "Leeg Kaart in Groep"
+msgstr "Leeg mandje in Groep"
 
 #: CartView.php:267 MenuStrings.php:49
-#, fuzzy
 msgid "Empty Cart to Family"
-msgstr "Leeg Kaart in Familie"
+msgstr "Leeg mandje in Familie"
 
 #: CartView.php:270 MenuStrings.php:50
-#, fuzzy
 msgid "Empty Cart to Event"
-msgstr "Leeg Kaart in Evenement"
+msgstr "Leeg mandje in Evenement"
 
 #: CartView.php:277 CSVExport.php:70
 msgid "CSV Export"
 msgstr "CVS Export"
 
 #: CartView.php:286
-#, fuzzy
 msgid "Email Cart"
-msgstr "Email Kaart"
+msgstr "Email mandje"
 
 #: CartView.php:287 GroupView.php:147
 msgid "Email (BCC)"
 msgstr "Email (BCC)"
 
 #: CartView.php:290
-#, fuzzy
 msgid "Map Cart"
-msgstr "Route Kaart"
+msgstr "Route mandje "
 
 #: CartView.php:291
-#, fuzzy
 msgid "Name Tags"
 msgstr "Naam"
 
@@ -1019,28 +1005,24 @@ msgid "Generate Labels"
 msgstr "Genereer Etiketten"
 
 #: CartView.php:363
-#, fuzzy
 msgid "Export Cart to CSV File"
-msgstr "Exporteer Kaart naar CSV Bestand"
+msgstr "Exporteer mandje naar CSV Bestand"
 
 #: CartView.php:365
 msgid "Create CSV File"
 msgstr "Creeer CSV Bestand"
 
 #: CartView.php:376
-#, fuzzy
 msgid "Create Directory From Cart"
-msgstr "Maak Adresboek van de Kaart"
+msgstr "Maak Adresboek van het mandje"
 
 #: CartView.php:378
-#, fuzzy
 msgid "Cart Directory"
-msgstr "Maak Nieuwe Folder"
+msgstr "Mandjes Directory"
 
 #: CartView.php:405
-#, fuzzy
 msgid "Send Email To People in Cart"
-msgstr "Stuur Email naar Mensen op de Kaart"
+msgstr "Stuur Email naar Mensen in mandje"
 
 #: CartView.php:550 EmailEditor.php:67
 msgid "Compose Email"
@@ -1053,7 +1035,7 @@ msgstr "Van"
 
 #: CartView.php:561 EmailEditor.php:75
 msgid "To (blind):"
-msgstr "Naar:"
+msgstr "Naar (bcc):"
 
 #: CartView.php:563 EmailEditor.php:83 Register.php:89
 msgid "Subject:"
@@ -1061,7 +1043,7 @@ msgstr "Onderwerp"
 
 #: CartView.php:566 EmailEditor.php:87
 msgid "Attach file:"
-msgstr "Voeg bestand:"
+msgstr "Bijlage:"
 
 #: CartView.php:592
 msgid "Edit Email"
@@ -1072,9 +1054,8 @@ msgid "Send Email"
 msgstr "Verstuur Email"
 
 #: CartView.php:619
-#, fuzzy
 msgid "Delete Email"
-msgstr "Andere Email"
+msgstr "Wis Email"
 
 #: CartView.php:641
 msgid "Resume"
@@ -1082,24 +1063,21 @@ msgstr "Hervatten"
 
 #: CartView.php:653
 msgid "Abort"
-msgstr "Aborteren"
+msgstr "Afbreken"
 
 #: CartView.php:664
 msgid "View Log"
 msgstr "Lees Log"
 
 #: Checkin.php:25
-#, fuzzy
 msgid "Event Checkin"
-msgstr "Evenement Omschrijving"
+msgstr "Evenement Checkin"
 
 #: Checkin.php:59
-#, fuzzy
 msgid "Select the event to which you would like to check people in for:"
-msgstr "Selecteer het evenement aan welke u de kaart wil toevoegen:"
+msgstr "Selecteer het evenement waaraan u personen wilt toevoegen:"
 
 #: Checkin.php:84
-#, fuzzy
 msgid "Select Event"
 msgstr "Selecteer Evenement:"
 
@@ -1108,55 +1086,48 @@ msgid "Verify"
 msgstr "Controleren"
 
 #: Checkin.php:125
-#, fuzzy
 msgid "Add Visitor"
-msgstr "Voeg toe aan Groep"
+msgstr "Voeg bezoeker toe"
 
 #: Checkin.php:184 Checkin.php:342
-#, fuzzy
 msgid "CheckIn"
-msgstr "Controleren"
+msgstr "CheckIn"
 
 #: Checkin.php:185
-#, fuzzy
 msgid "CheckOut"
-msgstr "Controleren"
+msgstr "CheckOut"
 
 #: Checkin.php:240
 msgid "Continue checkin"
-msgstr "Ga checkin"
+msgstr "door met controle"
 
 #: Checkin.php:289
 msgid "Verify CheckOut"
-msgstr "Controleer CheckOut"
+msgstr "controlereer aankoop"
 
 #: Checkin.php:343
 msgid "Finalize CheckOut"
-msgstr "Finalize CheckOut"
+msgstr "Rond betaling af"
 
 #: Checkin.php:367
-#, fuzzy
 msgid "Checked In Time"
-msgstr "Controleer nummer:"
+msgstr "CheckIn tijd"
 
 #: Checkin.php:368
-#, fuzzy
 msgid "Checked In By"
-msgstr "Controleer #"
+msgstr "Ingechecked door"
 
 #: Checkin.php:369
-#, fuzzy
 msgid "Checked Out Time"
-msgstr "Kruis ter controle"
+msgstr "Checkuit tij"
 
 #: Checkin.php:370
 msgid "Checked Out By"
-msgstr "Uitgecheckt door"
+msgstr "Afgerekend doior "
 
 #: Checkin.php:441
-#, fuzzy
 msgid "Checkout"
-msgstr "Controleren"
+msgstr "CheckUit"
 
 #: Checkin.php:450 EditEventAttendees.php:97
 msgid "No Attendees Assigned to Event"
@@ -1169,7 +1140,7 @@ msgstr "Lid"
 
 #: Checkin.php:521 PersonView.php:247
 msgid " of the"
-msgstr "van de"
+msgstr " van de"
 
 #: Checkin.php:521 PersonView.php:247
 msgid " family)"
@@ -1192,9 +1163,8 @@ msgid "ChurchInfo: Database Version Check"
 msgstr "KerkInfo: Database Versie Check"
 
 #: ConvertIndividualToFamily.php:46
-#, fuzzy
 msgid "Convert Individuals to Families"
-msgstr "Voeg individuen toe op de Kaart"
+msgstr "Converteer personen naar families"
 
 #: ConvertIndividualToFamily.php:148
 msgid "Convert Next"
@@ -1227,14 +1197,13 @@ msgstr "Voornaam:"
 
 #: CSVExport.php:99 PersonEditor.php:584
 msgid "Middle Name:"
-msgstr "Andere namen:"
+msgstr "Tussenvoegsel:"
 
 #: CSVExport.php:104 PersonEditor.php:594
 msgid "Suffix:"
 msgstr "Achtervoegsel:"
 
 #: CSVExport.php:134 Reports/TaxReport.php:195
-#, fuzzy
 msgid "Envelope:"
 msgstr "Enveloppe"
 
@@ -1264,14 +1233,12 @@ msgid "* Depends whether using person or family output method"
 msgstr "* De output methode hangt af van het gebruik van persoon of familie"
 
 #: CSVExport.php:199
-#, fuzzy
 msgid "Custom Person Fields"
 msgstr "Aanpasbare Persoons-Veld"
 
 #: CSVExport.php:218
-#, fuzzy
 msgid "Custom Family Fields"
-msgstr "Aanpasbare Velden"
+msgstr "Aanpasbare familie Velden"
 
 #: CSVExport.php:239 FinancialReports.php:103
 msgid "Filters"
@@ -1286,9 +1253,8 @@ msgid "Based on filters below.."
 msgstr "Gebaseerd op onderstaande filters.."
 
 #: CSVExport.php:247
-#, fuzzy
 msgid "People in Cart (filters ignored)"
-msgstr "Kaart met Personen (filters genegeerd) "
+msgstr "Mandje met Personen (filters genegeerd) "
 
 #: CSVExport.php:252 FinancialReports.php:113 PersonEditor.php:849
 #: PersonView.php:436 PrintView.php:268
@@ -1308,7 +1274,7 @@ msgstr "Geslacht:"
 
 #: CSVExport.php:289
 msgid "Don't Filter"
-msgstr "Maak geen Filter"
+msgstr "Niet filteren"
 
 #: CSVExport.php:290 FamilyEditor.php:988 FamilyView.php:652
 #: PersonEditor.php:603 PersonView.php:408 PrintView.php:212 PrintView.php:321
@@ -1357,9 +1323,8 @@ msgid "CSV Combine Families"
 msgstr "CSV Combineer Families"
 
 #: CSVExport.php:378
-#, fuzzy
 msgid "Add Individuals to Cart"
-msgstr "Voeg individuen toe op de Kaart"
+msgstr "Voeg individuen toe aan mandje"
 
 #: CSVExport.php:383
 msgid "Skip records with incomplete mail address"
@@ -1391,7 +1356,7 @@ msgstr "Voornaam"
 
 #: CSVImport.php:223
 msgid "Middle Name"
-msgstr "Andere namen"
+msgstr "Tussenvoegsel"
 
 #: CSVImport.php:224 ManageEnvelopes.php:152
 msgid "Last Name"
@@ -1689,9 +1654,8 @@ msgid "Cleared"
 msgstr "Verwijderd"
 
 #: DepositSlipEditor.php:588
-#, fuzzy
 msgid "View Detail"
-msgstr "Details"
+msgstr "Bekijk Details"
 
 #: DepositSlipEditor.php:594
 msgid "Details"
@@ -1806,9 +1770,8 @@ msgid "Create Directory"
 msgstr "Maak Nieuwe Folder"
 
 #: DonatedItemEditor.php:44
-#, fuzzy
 msgid "Donated Item Editor"
-msgstr "Note Aministrateur"
+msgstr "Gift Item Editor"
 
 #: DonatedItemEditor.php:184 FamilyEditor.php:663 PaddleNumEditor.php:165
 #: PersonEditor.php:552 PersonEditor.php:914 PledgeEditor.php:550
@@ -1816,7 +1779,6 @@ msgid "Save and Add"
 msgstr "Bewaar en Voeg toe"
 
 #: DonatedItemEditor.php:196
-#, fuzzy
 msgid "Item:"
 msgstr "object"
 
@@ -1845,18 +1807,16 @@ msgid "Minimum Price:"
 msgstr "Minimum prijs:"
 
 #: DonatedItemEditor.php:252 PaddleNumEditor.php:182
-#, fuzzy
 msgid "Buyer:"
-msgstr "Nummer:"
+msgstr "Koper:"
 
 #: DonatedItemEditor.php:254 FundRaiserEditor.php:201 FundRaiserEditor.php:238
 msgid "Multiple"
 msgstr "Meervoudig"
 
 #: DonatedItemEditor.php:273
-#, fuzzy
 msgid "Final Price:"
-msgstr "Finances"
+msgstr "Uiteindelijke prijs"
 
 #: DonationFundEditor.php:50
 msgid "Donation Fund Editor"
@@ -1980,12 +1940,10 @@ msgid "ADD"
 msgstr "TOEVOEGEN"
 
 #: eGive.php:295
-#, fuzzy
 msgid "Start Date: "
 msgstr "Start Datum:"
 
 #: eGive.php:297
-#, fuzzy
 msgid "End Date: "
 msgstr "Eind Datum:"
 
@@ -1994,14 +1952,12 @@ msgid "Re-import to selected family"
 msgstr "Re-import naar geselecteerde familie"
 
 #: eGive.php:393
-#, fuzzy
 msgid "Data import results: "
-msgstr "Data import compleet."
+msgstr "Data import resultaten:"
 
 #: eGive.php:393
-#, fuzzy
 msgid " gifts were imported, "
-msgstr "Personen werden geimporteerd"
+msgstr "giften werden geimporteerd"
 
 #: eGive.php:393
 msgid " gifts unchanged, and "
@@ -2012,9 +1968,8 @@ msgid " gifts not imported due to problems"
 msgstr "gaven niet geïmporteerd als gevolg van problemen"
 
 #: eGive.php:394 eGive.php:423
-#, fuzzy
 msgid "Back to Deposit Slip"
-msgstr "Bewerk Stortings Strookje"
+msgstr "Terug naar Stortings Strookje"
 
 #: eGive.php:422
 msgid "Fatal error in eGive API datastream: '"
@@ -2113,7 +2068,6 @@ msgid "Editing Event ID: "
 msgstr "Aanpassen evenement ID: "
 
 #: EventEditor.php:413
-#, fuzzy
 msgid "There were "
 msgstr "Er waren"
 
@@ -2122,14 +2076,12 @@ msgid " errors. Please see below"
 msgstr "fouten. Zie hieronder"
 
 #: EventEditor.php:417
-#, fuzzy
 msgid "Items with a "
-msgstr "Objecten in Kaart"
+msgstr "Objecten met een"
 
 #: EventEditor.php:417
-#, fuzzy
 msgid " are required"
-msgstr "Deze waarde is vereist."
+msgstr "zijn vereist"
 
 #: EventEditor.php:435
 msgid "You must enter a title."
@@ -2234,9 +2186,8 @@ msgid "New Event Type"
 msgstr "Nieuw Evenement Type"
 
 #: FamilyCustomFieldsEditor.php:39 FamilyCustomFieldsEditorSave.php:39
-#, fuzzy
 msgid "Custom Family Fields Editor"
-msgstr "Aanpasbare Persoons-Veld Administratie"
+msgstr "Aanpasbare familie-Veld editor"
 
 #: FamilyCustomFieldsEditor.php:189 FamilyCustomFieldsEditorSave.php:186
 #: PersonCustomFieldsEditor.php:170
@@ -2244,16 +2195,14 @@ msgid "Default Option"
 msgstr "Standaard optie"
 
 #: FamilyCustomFieldsEditor.php:312 FamilyCustomFieldsEditorSave.php:308
-#, fuzzy
 msgid ""
 "Warning:  By deleting this field, you will irrevokably lose all family data "
 "assigned for this field!"
 msgstr ""
-"Waarschuwing: Door het verwijderen van dit veld, wordt alle persoons data "
-"hieraan gekoppeld vernietigd!"
+"Waarschuwing: Door het verwijderen van dit veld, wordt alle hieraan "
+"gekoppelde  familiegegevens vernietigd!"
 
 #: FamilyCustomFieldsEditor.php:327 FamilyCustomFieldsEditorSave.php:323
-#, fuzzy
 msgid "No custom Family fields have been added yet"
 msgstr "Aanpasbare persoons-velden zijn nog niet toegevoegd"
 
@@ -2276,12 +2225,10 @@ msgstr "Speciale Optie"
 #: FamilyCustomFieldsEditor.php:359 FamilyCustomFieldsEditor.php:482
 #: FamilyCustomFieldsEditorSave.php:355 FamilyCustomFieldsEditorSave.php:478
 #: PersonCustomFieldsEditor.php:339 PersonCustomFieldsEditor.php:471
-#, fuzzy
 msgid "Security Option"
-msgstr "Omschrijving"
+msgstr "Beveiligings optie"
 
 #: FamilyCustomFieldsEditor.php:360 FamilyCustomFieldsEditorSave.php:356
-#, fuzzy
 msgid "Family-View Side"
 msgstr "Familie Overzicht"
 
@@ -2428,7 +2375,7 @@ msgstr "Voornaam"
 
 #: FamilyEditor.php:942
 msgid "Middle"
-msgstr "Andere Namen"
+msgstr "Tussenvoegsel"
 
 #: FamilyEditor.php:943
 msgid "Last"
@@ -2726,9 +2673,8 @@ msgid "Pledge Summary"
 msgstr "Beloftes Samenvatting"
 
 #: FinancialReports.php:52
-#, fuzzy
 msgid "Pledge FamilySummary"
-msgstr "Beloftes Samenvatting"
+msgstr "Toezeggingen Samenvatting"
 
 #: FinancialReports.php:53
 msgid "Pledge Reminders"
@@ -2907,12 +2853,12 @@ msgstr "Samenvattings Data"
 #: FinancialReports.php:285
 msgid ""
 "Voting members must have made<br>\n"
-"			a donation within this many years<br>\n"
-"			(0 to not require a donation):"
+"\t\t\ta donation within this many years<br>\n"
+"\t\t\t(0 to not require a donation):"
 msgstr ""
 "Leden met stemrecht moeten<br>\n"
-"			een donatie hebben gemaakt binnen zoveel jaren<br>\n"
-"			(0 staat voor geen donatie nodig)"
+"\t\t\teen donatie hebben gemaakt binnen zoveel jaren<br>\n"
+"\t\t\t(0 staat voor geen donatie nodig)"
 
 #: FinancialReports.php:293
 msgid "Deposit Slip"
@@ -2999,37 +2945,32 @@ msgid "Deposit Type"
 msgstr "Bijdrage Type"
 
 #: FindFundRaiser.php:21
-#, fuzzy
 msgid "Fundraiser Listing"
-msgstr "Gebruiker Lijst"
+msgstr "Fundraiser Lijst"
 
 #: FundRaiserEditor.php:33
 msgid "Fund Raiser #"
 msgstr "Fondsenwerver #"
 
 #: FundRaiserEditor.php:35
-#, fuzzy
 msgid "Create New Fund Raiser"
-msgstr "Voer nieuwe familie in"
+msgstr "Voer fundraiser in"
 
 #: FundRaiserEditor.php:160
 msgid "Add Donated Item"
 msgstr "Voeg Geschonken Item"
 
 #: FundRaiserEditor.php:161
-#, fuzzy
 msgid "Generate Catalog"
-msgstr "Genereer Etiketten"
+msgstr "Genereer catalodus"
 
 #: FundRaiserEditor.php:162
-#, fuzzy
 msgid "Generate Bid Sheets"
-msgstr "Genereer Etiketten"
+msgstr "Genereer biedings blaadjes"
 
 #: FundRaiserEditor.php:163
-#, fuzzy
 msgid "Generate Certificates"
-msgstr "Genereer Rapportage"
+msgstr "Genereer Certificaten"
 
 #: FundRaiserEditor.php:194
 msgid "Donated items for this fundraiser:"
@@ -3048,9 +2989,8 @@ msgid "Sale Price"
 msgstr "Verkoopprijs"
 
 #: FundRaiserEditor.php:206
-#, fuzzy
 msgid "Est Value"
-msgstr "Wijzig Waarde"
+msgstr "Geschatte Waarde"
 
 #: FundRaiserEditor.php:207
 msgid "Material Value"
@@ -3131,20 +3071,17 @@ msgstr "Lengte"
 #: GeoPage.php:388 GroupList.php:52 PersonView.php:214 PersonView.php:822
 #: SelectList.php:713 SelectList.php:1103 SelectListFormatted.php:745
 #: SelectListFormatted.php:1145
-#, fuzzy
 msgid "Add to Cart"
-msgstr "Voeg resultaten toe op de Kaart"
+msgstr "Voeg resultaten toe aan mandje"
 
 #: GeoPage.php:389 SelectList.php:714 SelectListFormatted.php:748
-#, fuzzy
 msgid "Intersect with Cart"
-msgstr "Doorkruis resultaten met de Kaart"
+msgstr "Doorsnede met mandje "
 
 #: GeoPage.php:390 GroupList.php:53 SelectList.php:715
 #: SelectListFormatted.php:751
-#, fuzzy
 msgid "Remove from Cart"
-msgstr "Verwijder resultaten van de Kaart"
+msgstr "Verwijder uit mandje "
 
 #: GetText.php:33
 msgid "Text for Event ID: "
@@ -3183,7 +3120,7 @@ msgstr "Nee, annuleer deze verwijdering"
 
 #: GroupEditor.php:29
 msgid "Group Editor"
-msgstr "Groep Bewerker"
+msgstr "Groep Editor"
 
 #: GroupEditor.php:223
 msgid ""
@@ -3208,18 +3145,16 @@ msgid "Type of Group:"
 msgstr "Type of Groep:"
 
 #: GroupEditor.php:282
-#, fuzzy
 msgid "Group Member Roles:"
-msgstr "Groep Leden:"
+msgstr "Groepslid rollen:"
 
 #: GroupEditor.php:284
 msgid "Clone roles:"
 msgstr "Clone rollen:"
 
 #: GroupEditor.php:286
-#, fuzzy
 msgid "from group:"
-msgstr "persoon van de Groep"
+msgstr "van de Groep"
 
 #: GroupEditor.php:288 GroupPropsFormEditor.php:356
 msgid "Select a group"
@@ -3238,9 +3173,8 @@ msgid "Edit Group-Specific Properties Form"
 msgstr "Bewerk het Groep-Specifieke Eigenschappen Formulier"
 
 #: GroupEditor.php:319
-#, fuzzy
 msgid "Empty Cart to this Group?"
-msgstr "Leeg Kaart in deze Groep?"
+msgstr "Leeg mandje in deze Groep?"
 
 #: GroupEditor.php:346
 msgid "Group Roles:"
@@ -3387,9 +3321,8 @@ msgid "Show only"
 msgstr "Vertoon alleen"
 
 #: GroupMemberList.php:191
-#, fuzzy
 msgid "Add Group View to Cart"
-msgstr "Voeg Groep Lidmaatschap toe aan deze Kaart"
+msgstr "Voeg Groep Lidmaatschap toe aan mandje"
 
 #: GroupMemberList.php:301 SelectList.php:1123 SelectListFormatted.php:1165
 msgid "Print Page"
@@ -3421,15 +3354,15 @@ msgstr "Eigenschap"
 
 #: GroupPropsEditor.php:29
 msgid "Group Member Properties Editor"
-msgstr "Groep Lidmaatschap Eigenschappen Bewerker"
+msgstr "Groep Lidmaatschap Eigenschappen Editor"
 
 #: GroupPropsEditor.php:131
 msgid ""
 "This group currently has no properties!  You can add them in the Group "
 "Editor."
 msgstr ""
-"Deze groep heeft momenteel geen eigenschappen! U kunt ze in de Groep "
-"Bewerker toevoegen."
+"Deze groep heeft momenteel geen eigenschappen! U kunt ze in de Groep Editor "
+"toevoegen."
 
 #: GroupPropsEditor.php:133
 msgid "Return to Person Record"
@@ -3444,7 +3377,6 @@ msgid "data for member"
 msgstr "Data for een Lid"
 
 #: GroupPropsFormEditor.php:42
-#, fuzzy
 msgid "Group-Specific Properties Form Editor:"
 msgstr "Bewerk het Groep-Specifieke Eigenschappen Formulier"
 
@@ -3482,7 +3414,7 @@ msgstr "Selecteer de groep waarop u wilt rapporteren:"
 
 #: GroupReports.php:114
 msgid "Only cart persons?:"
-msgstr "Alleen Kaart Personen?:"
+msgstr "Alleen personen in mandje?"
 
 #: GroupReports.php:118
 msgid "Report Model:"
@@ -3535,7 +3467,7 @@ msgstr "Verwijder deze Groep"
 
 #: GroupView.php:109
 msgid "Add Group Members to Cart"
-msgstr "Voeg Groep Lidmaatschap toe aan deze Kaart"
+msgstr "Voeg Groep Lidmaatschap toe aan dit mandje"
 
 #: GroupView.php:110
 msgid "Schedule a meeting"
@@ -3623,44 +3555,36 @@ msgid "Envelope Manager"
 msgstr "Envelope Manager"
 
 #: ManageEnvelopes.php:118
-#, fuzzy
 msgid "Confirm"
-msgstr "Bevestig Verwijdering"
+msgstr "Bevestig"
 
 #: ManageEnvelopes.php:126
-#, fuzzy
 msgid "Print Report"
-msgstr "Aanmaken rapportage"
+msgstr "Print Rapportage"
 
 #: ManageEnvelopes.php:130
-#, fuzzy
 msgid "Update Family Records"
-msgstr "Voeg een Nieuw Familie Record toe"
+msgstr "Pas Familie Record aan"
 
 #: ManageEnvelopes.php:141
-#, fuzzy
 msgid "All"
 msgstr "Iedereen"
 
 #: ManageEnvelopes.php:150
-#, fuzzy
 msgid "Sort by"
 msgstr "Sorteer Data op:"
 
 #: ManageEnvelopes.php:154 PledgeEditor.php:568
-#, fuzzy
 msgid "Envelope #"
-msgstr "Enveloppe"
+msgstr "Enveloppe #"
 
 #: ManageEnvelopes.php:159
-#, fuzzy
 msgid "Zero"
-msgstr "Persoon"
+msgstr "Nul"
 
 #: ManageEnvelopes.php:161
-#, fuzzy
 msgid "Assign starting at #"
-msgstr "Toewijzing"
+msgstr "Toewijzing beginnend bij #"
 
 #: MemberRoleChange.php:28
 msgid "Member Role Change"
@@ -3700,7 +3624,7 @@ msgstr "Welkom terug"
 
 #: Menu.php:51
 msgid "You last logged in on"
-msgstr "De Laatste keer dat u ingelogt was "
+msgstr "De laatste keer dat u ingelogd was "
 
 #: Menu.php:52
 msgid "at"
@@ -3712,26 +3636,25 @@ msgstr "Er waren"
 
 #: Menu.php:55
 msgid "failed login attempt(s) since your last successful login"
-msgstr "Mislukte login(s) gemeten vanaf de laatste succesvolle login"
+msgstr "Mislukte login(s) sinds de laatste succesvolle login"
 
 #: MenuEditor.php:69 MenuSetup.php:28
-#, fuzzy
 msgid "Menu Item Editor"
-msgstr "Note Aministrateur"
+msgstr "Menu item editor"
 
 #: MenuEditor.php:135
 msgid "Must provide menu text"
 msgstr "Moet menutekst"
 
 #: MenuEditor.php:143
-#, fuzzy
 msgid "Missing Session Variable name"
-msgstr "Variabel namen"
+msgstr "Sessie Variabele naam ontbreekt"
 
 #: MenuEditor.php:270
-#, fuzzy
 msgid "Are you sure to delete this menu entry? Action cannot be redone!"
-msgstr "Weet u zeker dat u dit evenement wilt verwijderen?"
+msgstr ""
+"Weet u zeker dat u dit menu item wilt wissen?  Kan niet ongedaan gemaakt "
+"worden!"
 
 #: MenuEditor.php:274 MenuEditor.php:382
 msgid "Menu Text"
@@ -3750,24 +3673,20 @@ msgid "Link URL:"
 msgstr "Link URL:"
 
 #: MenuEditor.php:301 MenuEditor.php:427
-#, fuzzy
 msgid "Text on Status Line:"
-msgstr "Evenement Status:"
+msgstr "Tekst op Status regel:"
 
 #: MenuEditor.php:306 MenuEditor.php:432
-#, fuzzy
 msgid "Security Group:"
-msgstr "Selecteer Groep:"
+msgstr "Beveiligings Groep:"
 
 #: MenuEditor.php:310 MenuEditor.php:449
-#, fuzzy
 msgid "Parameter"
-msgstr "karakters"
+msgstr "Parameter"
 
 #: MenuEditor.php:314 MenuEditor.php:454
-#, fuzzy
 msgid "Session Variable Name:"
-msgstr "Variabel namen"
+msgstr "Sessie Variabele naam"
 
 #: MenuEditor.php:318 MenuEditor.php:461
 msgid "Session Variable in Status"
@@ -3778,9 +3697,8 @@ msgid "Session Variable in Link Address"
 msgstr "Sessie Variabele in Link Adres"
 
 #: MenuEditor.php:342
-#, fuzzy
 msgid "Currently Active?"
-msgstr "Huidige Gebruiker"
+msgstr "Nu actief?"
 
 #: MenuEditor.php:372 UserList.php:90 UserList.php:96
 msgid "Reset"
@@ -3815,18 +3733,16 @@ msgid "Do you want to make this menu item available?"
 msgstr "Wilt u om dit menu-item beschikbaar?"
 
 #: MenuEditor.php:479
-#, fuzzy
 msgid "Active?"
-msgstr "Actief"
+msgstr "Actief?"
 
 #: MenuManager.php:31
 msgid "Menu Tree"
 msgstr "Menustructuur"
 
 #: MenuManager.php:32
-#, fuzzy
 msgid "Definition"
-msgstr "Omschrijving"
+msgstr "Definitie"
 
 #: MenuManager.php:118
 msgid "Name cannot be duplicated"
@@ -3845,7 +3761,6 @@ msgid "Name cannot be empty"
 msgstr "Naam kan niet leeg zijn"
 
 #: MenuManager.php:244 MenuManager.php:274
-#, fuzzy
 msgid "Duplicate name"
 msgstr "Indentieke naam gevonden."
 
@@ -3854,7 +3769,6 @@ msgid "Add New"
 msgstr "Voeg Nieuwe toe"
 
 #: MenuSetup.php:81
-#, fuzzy
 msgid "Inactive"
 msgstr "inactief"
 
@@ -3995,19 +3909,16 @@ msgid "Fundraiser"
 msgstr "Fundraiser"
 
 #: MenuStrings.php:40
-#, fuzzy
 msgid "Create New Fundraiser"
-msgstr "Voer nieuwe familie in"
+msgstr "Voer nieuwe inzameling in"
 
 #: MenuStrings.php:41
-#, fuzzy
 msgid "View All Fundraisers"
-msgstr "Bekijk Alle Families"
+msgstr "Bekijk Alle inzamelingen"
 
 #: MenuStrings.php:42
-#, fuzzy
 msgid "Edit Fundraiser"
-msgstr "Bewerk Gebruiker"
+msgstr "Bewerk inzameling"
 
 #: MenuStrings.php:43
 msgid "View Buyers"
@@ -4020,11 +3931,11 @@ msgstr "Voeg Donoren aan de Koper Lijst"
 #: MenuStrings.php:45 MenuStrings.php:76 SelectList.php:969
 #: SelectListFormatted.php:1009
 msgid "Cart"
-msgstr "Kaart"
+msgstr "Mandje"
 
 #: MenuStrings.php:46
 msgid "List Cart Items"
-msgstr "Lijst Kaart Objecten"
+msgstr "Lijst Objecten in mandje "
 
 #: MenuStrings.php:51
 msgid "Data/Reports"
@@ -4047,7 +3958,6 @@ msgid "Groups"
 msgstr "Groepen"
 
 #: MenuStrings.php:56
-#, fuzzy
 msgid "List Groups"
 msgstr "Groepen Lijst"
 
@@ -4065,19 +3975,16 @@ msgid "Properties"
 msgstr "Eigenschappen"
 
 #: MenuStrings.php:61
-#, fuzzy
 msgid "People Properties"
-msgstr "Eigenschappen"
+msgstr "Eigenschappen Personen"
 
 #: MenuStrings.php:62
-#, fuzzy
 msgid "Family Properties"
-msgstr "Eigenschappen"
+msgstr "Eigenschappen Families"
 
 #: MenuStrings.php:63
-#, fuzzy
 msgid "Group Properties"
-msgstr "Eigenschappen"
+msgstr "Eigenschappen Groepen"
 
 #: MenuStrings.php:64
 msgid "Property Types"
@@ -4105,11 +4012,11 @@ msgstr "Families"
 
 #: MenuStrings.php:70
 msgid "Geographic features"
-msgstr "Geographische eigenschappen"
+msgstr "Geografische eigenschappen"
 
 #: MenuStrings.php:72
 msgid "Finances"
-msgstr "Finances"
+msgstr "Financiën"
 
 #: MenuStrings.php:74
 msgid "Reports"
@@ -4132,19 +4039,16 @@ msgid "Canvass Support"
 msgstr "Enquete Ondersteuning"
 
 #: MenuStrings.php:83
-#, fuzzy
 msgid "Menu Options"
-msgstr "Standaard optie"
+msgstr "Menu opties"
 
 #: MenuStrings.php:84
-#, fuzzy
 msgid "Edit Custom Family Fields"
-msgstr "Aanpasbare Persoons-Veld"
+msgstr "Wijzig aanpasbare Persoons-Velden"
 
 #: mrbs.php:26
-#, fuzzy
 msgid "ChurchInfo MRBS Portal"
-msgstr "KerkInfo : Login"
+msgstr "KerkInfo MRBS Portaal"
 
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
@@ -4183,7 +4087,6 @@ msgid "Group Member"
 msgstr "Groep Lid"
 
 #: OptionManager.php:107 OptionManagerSave.php:107
-#, fuzzy
 msgid "Person Custom List"
 msgstr "Aanpasbare Lijst"
 
@@ -4198,7 +4101,6 @@ msgid "Custom List"
 msgstr "Aanpasbare Lijst"
 
 #: OptionManager.php:139 OptionManagerSave.php:139
-#, fuzzy
 msgid "Family Custom List"
 msgstr "Aanpasbare Lijst"
 
@@ -4207,7 +4109,7 @@ msgid ""
 "Warning: Removing will reset all assignments for all persons with the "
 "assignment!"
 msgstr ""
-"Waarschuwing: Verwijdering betekend het resetten van de koppelingen van alle "
+"Waarschuwing: Verwijdering betekent het resetten van de koppelingen van alle "
 "personen met deze koppeling!"
 
 #: OptionManager.php:343 OptionManagerSave.php:340
@@ -4224,53 +4126,47 @@ msgstr "Maak Standaard"
 
 #: OptionManager.php:395 OptionManagerSave.php:392
 msgid "Error: You must enter a name."
-msgstr "Error: u moet een naam toevoegen."
+msgstr "Fout: u moet een naam toevoegen."
 
 #: OptionManager.php:397 OptionManagerSave.php:394
 msgid "Error: A "
-msgstr "Error: A "
+msgstr "Fout: Een "
 
 #: OptionManager.php:397 OptionManagerSave.php:394
 msgid " by that name already exists."
-msgstr "met die naam bestaat al."
+msgstr " met die naam bestaat al."
 
 #: PaddleNumEditor.php:43
-#, fuzzy
 msgid "Buyer Number Editor"
 msgstr "Gebruikers Administratie"
 
 #: PaddleNumEditor.php:164
-#, fuzzy
 msgid "Generate Statement"
 msgstr "Genereer Rapportage"
 
 #: PaddleNumList.php:36
 msgid "Buyers for this fundraiser:"
-msgstr "Kopers van dit fundraiser:"
+msgstr "Kopers van deze fundraiser:"
 
 #: PaddleNumList.php:43
-#, fuzzy
 msgid "Select all"
-msgstr "Selecteer Rol"
+msgstr "Selecteer alles"
 
 #: PaddleNumList.php:44
-#, fuzzy
 msgid "Select none"
-msgstr "Selecteer Rol"
+msgstr "Selecteer geen"
 
 #: PaddleNumList.php:45
-#, fuzzy
 msgid "Add Buyer"
-msgstr "Voeg Nieuwe toe"
+msgstr "Voeg koper toe"
 
 #: PaddleNumList.php:46
 msgid "Generate Statements for Selected"
-msgstr "Genereer Verklaringen voor Selected"
+msgstr "Genereer Verklaringen voor geselecteerde"
 
 #: PaddleNumList.php:52
-#, fuzzy
 msgid "Select"
-msgstr "Selecteer Rol"
+msgstr "Selecteer "
 
 #: PersonCustomFieldsEditor.php:27
 msgid "Custom Person Fields Editor"
@@ -4294,7 +4190,7 @@ msgstr "Bekijk-Persoon Kant"
 
 #: PersonEditor.php:21
 msgid "Person Editor"
-msgstr "Persoon Bewerker"
+msgstr "Persoon Editor"
 
 #: PersonEditor.php:176
 msgid "You must enter a Last Name if no Family is selected."
@@ -4350,7 +4246,7 @@ msgstr "Moet bestaan uit 4 cijfers."
 
 #: PersonEditor.php:822
 msgid "Hide Age"
-msgstr "Verstop Leeftijd"
+msgstr "Verberg Leeftijd"
 
 #: PersonEditor.php:839 PersonView.php:427
 msgid "Friend Date:"
@@ -4394,7 +4290,6 @@ msgid "Edit User"
 msgstr "Bewerk Gebruiker"
 
 #: PersonView.php:230 PersonView.php:838
-#, fuzzy
 msgid "List View"
 msgstr "Afdruk Voorbeeld"
 
@@ -4411,16 +4306,15 @@ msgid "Age:"
 msgstr "Leeftijd"
 
 #: PersonView.php:610 PrintView.php:336
-#, fuzzy
 msgid "Assigned Groups:"
-msgstr "Gekoppelde Groepen:"
+msgstr "Toegekende Groepen:"
 
 #: PersonView.php:614
 msgid ""
 "Warning: If you remove this group membership, you will irrevokably lose any "
 "member data assigned"
 msgstr ""
-"Waarschuwing: Als je de leden van deze Groep verwijderd, zal ook alle "
+"Waarschuwing: Als je de leden van deze Groep verwijdert, zal ook alle "
 "lidmaatschap data vernietigd worden"
 
 #: PersonView.php:630 PrintView.php:348
@@ -4445,7 +4339,7 @@ msgstr "(De Persoon zal zijn gekoppeld aan de Groep in de Standaard Rol.)"
 
 #: PersonView.php:737
 msgid "Volunteer opportunities:"
-msgstr "Wrijwilligers mogelijkheden:"
+msgstr "Vrijwilligers mogelijkheden:"
 
 #: PersonView.php:749
 msgid "No volunteer opportunity assignments."
@@ -4457,11 +4351,11 @@ msgstr "Koppel een Nieuwe vrijwilligers mogelijkheid:"
 
 #: PersonView.php:842
 msgid "Red text"
-msgstr "Rode text"
+msgstr "Rode tekst"
 
 #: PersonView.php:842
 msgid "indicates items inherited from the associated family record."
-msgstr "Impliceerd objecten ge-erft van het geaccogieerde familie record."
+msgstr "geeft aan dat inhoud is geërfd van het gekoppelde familie record."
 
 #: PersonView.php:868
 msgid "Edit \"Why Came\" Notes"
@@ -4477,7 +4371,7 @@ msgstr "Electronische Transactie Details"
 
 #: PledgeEditor.php:288
 msgid "NonDeductible amount can't be greater than total amount."
-msgstr "NietAftrekbaar bedrag kan niet groter zijn dan het totale bedrag."
+msgstr "Niet Aftrekbaar bedrag kan niet groter zijn dan het totale bedrag."
 
 #: PledgeEditor.php:295
 msgid "At least one fund must have a non-zero amount."
@@ -4504,9 +4398,8 @@ msgid " Deposit Slip #"
 msgstr "Stortings Strookje #"
 
 #: PledgeEditor.php:510
-#, fuzzy
 msgid " more entries will fit."
-msgstr "Er is ruimte voor meer cheques."
+msgstr "Er is ruimte voor meer."
 
 #: PledgeEditor.php:515
 msgid "Payment Editor - Modify Existing Payment"
@@ -4517,12 +4410,10 @@ msgid "Payment Editor - New Deposit Slip Will Be Created"
 msgstr "Betalings Adminitrateur - Nieuw Stortingsstrookje zal Gemaakt Worden"
 
 #: PledgeEditor.php:571
-#, fuzzy
 msgid "Find family->"
-msgstr "familie"
+msgstr "Vind familie->"
 
 #: PledgeEditor.php:578
-#, fuzzy
 msgid "Payment Schedule"
 msgstr "Betalings Programma:"
 
@@ -4551,24 +4442,22 @@ msgid "Other"
 msgstr "Andere"
 
 #: PledgeEditor.php:593
-#, fuzzy
 msgid "Payment by"
 msgstr "Betalings Datum"
 
 #: PledgeEditor.php:597
 msgid "CHECK"
-msgstr "CONTROLEER"
+msgstr "Cheque"
 
 #: PledgeEditor.php:598
 msgid "CASH"
-msgstr "KAS"
+msgstr "Contant"
 
 #: PledgeEditor.php:624
 msgid "Split"
 msgstr "Verdelen"
 
 #: PledgeEditor.php:685
-#, fuzzy
 msgid "Total $"
 msgstr "Totaal,"
 
@@ -4598,20 +4487,17 @@ msgstr "Controleer scan"
 
 #: PledgeEditor.php:744
 msgid "find family from check account #"
-msgstr "vinden familie van controle houden #"
+msgstr "Zoek familie via cheque account #"
 
 #: PledgeEditor.php:745
-#, fuzzy
 msgid "Set default check account number for family"
-msgstr "Stel standaardcontrole voor familie"
+msgstr "Stel cheque account voor familie in"
 
 #: PledgeEditor.php:762
-#, fuzzy
 msgid "Fund Name"
-msgstr "Bank Naam"
+msgstr "Fonds Naam"
 
 #: PledgeEditor.php:766
-#, fuzzy
 msgid "Non-deductible amount"
 msgstr "Niet Aftrekbaar"
 
@@ -4629,7 +4515,7 @@ msgstr "Succesvolle toegewezen eigenschap."
 
 #: PropertyAssign.php:168
 msgid " Property Assignment"
-msgstr "Eigenschap Koppeling"
+msgstr " Eigenschap Koppeling"
 
 #: PropertyAssign.php:182
 msgid "Assigning:"
@@ -4641,7 +4527,7 @@ msgstr "Waarde"
 
 #: PropertyDelete.php:27
 msgid "Property Delete Confirmation"
-msgstr "Eigenschap verwijderd bevestiging "
+msgstr "Bevestig verwijdering eigenschap"
 
 #: PropertyDelete.php:55
 msgid "Please confirm deletion of this property:"
@@ -4657,7 +4543,7 @@ msgstr ""
 
 #: PropertyEditor.php:60
 msgid "Property Editor"
-msgstr "De Eigenschappen Administrateur"
+msgstr "Eigenschappen Editor"
 
 #: PropertyEditor.php:75
 msgid "You must enter a Name"
@@ -4673,7 +4559,7 @@ msgstr "Selecteer het Type van Eigenschap"
 
 #: PropertyEditor.php:170 PropertyList.php:63
 msgid "A"
-msgstr "A"
+msgstr "Een"
 
 #: PropertyEditor.php:170
 msgid "with this property.."
@@ -4704,7 +4590,7 @@ msgstr "met deze Eigenschap..."
 
 #: PropertyList.php:64
 msgid "Prompt"
-msgstr "Herinnering "
+msgstr "Prompt"
 
 #: PropertyTypeDelete.php:28
 msgid "Property Type Delete Confirmation"
@@ -4762,7 +4648,7 @@ msgstr "Bevestig aub verwijdering van de eigenschap van deze"
 
 #: PropertyUnassign.php:118
 msgid "Unassigning:"
-msgstr "Ontkoppeld:"
+msgstr "Ontkoppelen:"
 
 #: PropertyUnassign.php:124
 msgid "Yes, unassign this Property"
@@ -4790,7 +4676,7 @@ msgstr "Exporteer het Resultaat naar een CSV bestand"
 
 #: QuerySQL.php:62
 msgid "Execute SQL"
-msgstr "Execute SQL"
+msgstr "Voer SQL uit"
 
 #: QueryView.php:22
 msgid "Query View"
@@ -4814,7 +4700,7 @@ msgstr "Deze waarde kan niet meer zijn dan "
 
 #: QueryView.php:143 QueryView.php:149
 msgid " characters long"
-msgstr "karakters lang"
+msgstr " karakters lang"
 
 #: QueryView.php:149
 msgid "This value cannot be less than "
@@ -4826,15 +4712,15 @@ msgstr "recors(s) ontvangen"
 
 #: QueryView.php:278
 msgid "Add Results To Cart"
-msgstr "Voeg resultaten toe op de Kaart"
+msgstr "Voeg resultaten toe aan mandje"
 
 #: QueryView.php:279
 msgid "Intersect Results With Cart"
-msgstr "Doorkruis resultaten met de Kaart"
+msgstr "Doorsnede resultaten en mandje "
 
 #: QueryView.php:280
 msgid "Remove Results From Cart"
-msgstr "Verwijder resultaten van de Kaart"
+msgstr "Verwijder resultaten uit mandje "
 
 #: QueryView.php:285
 msgid "Run Query Again"
@@ -4849,19 +4735,20 @@ msgid "Execute Query"
 msgstr "Execute Query"
 
 #: Register.php:21
-#, fuzzy
 msgid ""
 "Please register your copy of ChurchInfo by checking over this information "
 "and pressing the Send button.  "
 msgstr ""
-"Registreer aub uw copy van het KerkInfo pakket door het invullen van de "
+"Registreer aub uw exemplaar van het KerkInfo pakket door het invullen van de "
 "gegevens en het indrukken van de verstuur knop.  "
 
 #: Register.php:22
 msgid ""
 "If you need to make changes go to Admin->Edit General Settings and Admin-"
 ">Edit Report Settings.  "
-msgstr "Als u wijzigingen aanbrengt gaan naar Admin-> Bewerken Algemene instellingen en Admin-> Rapport bewerken Instellingen."
+msgstr ""
+"Als u wijzigingen aanbrengt gaan naar Admin-> Bewerken Algemene instellingen "
+"en Admin-> Rapport bewerken Instellingen."
 
 #: Register.php:23
 msgid "This information is used only to track the usage of this software.  "
@@ -5109,7 +4996,6 @@ msgid "All Family Roles"
 msgstr "Alle Familie Rollen"
 
 #: SelectList.php:587 SelectListFormatted.php:611
-#, fuzzy
 msgid "All Contact Properties"
 msgstr "Eigenschappen"
 
@@ -5118,7 +5004,6 @@ msgid "All Group Types"
 msgstr "Alle Groep Types"
 
 #: SelectList.php:648 SelectListFormatted.php:672
-#, fuzzy
 msgid "All Groups"
 msgstr "Alle Groep Types"
 
@@ -5198,23 +5083,22 @@ msgstr "Standaard Gebruikers Instellingen"
 msgid ""
 "Set Permission True to give new users the ability to change their current "
 "value.<BR>"
-msgstr "Stel Toestemming Trouw aan nieuwe gebruikers de mogelijkheid om hun huidige waarde te wijzigen. <BR>"
+msgstr ""
+"Stel Toestemming Trouw aan nieuwe gebruikers de mogelijkheid om hun huidige "
+"waarde te wijzigen. <BR>"
 
 #: SettingsUser.php:89
-#, fuzzy
 msgid "Permission"
-msgstr "Persoon"
+msgstr "Toestemming"
 
 #: SettingsUser.php:91
-#, fuzzy
 msgid "Current Value"
-msgstr "Huidige Rol:"
+msgstr "Huidige waarde:"
 
 #: SundaySchool.php:101
-#, fuzzy
 msgid ""
 "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Genereer Klas Lijsten en opkomst overzichten"
+msgstr "Er moet minstens één groep worden geselecteerd om een lijst te maken"
 
 #: SundaySchool.php:126
 msgid ""
@@ -5476,31 +5360,29 @@ msgstr "https://www.intelligentsearch.com/Hosted/User/"
 #: USISTAddressVerification.php:339
 msgid ""
 "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
+msgstr ""
+"http://www.intelligentsearch.com/address_verification/verify_address.html"
 
 #: VolunteerOpportunityEditor.php:78
-#, fuzzy
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Vrijwilligers Mogelijkheden Administrateur"
 
 #: VolunteerOpportunityEditor.php:101
-#, fuzzy
 msgid "Warning!"
-msgstr "Waarschuwing"
+msgstr "Waarschuwing!"
 
 #: VolunteerOpportunityEditor.php:102
-#, fuzzy
 msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Koppel een Nieuwe vrijwilligers mogelijkheid:"
+msgstr "Er zijn personen gekoppeld aan deze vrijwilligers mogelijkheid:"
 
 #: VolunteerOpportunityEditor.php:103
 msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Vrijwilliger Opportunity zal worden toegewezen voor de volgende personen."
+msgstr ""
+"Vrijwilliger Opportunity zal worden toegewezen voor de volgende personen."
 
 #: VolunteerOpportunityEditor.php:112
-#, fuzzy
 msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Koppel een Nieuwe vrijwilligers mogelijkheid:"
+msgstr "Ja, verwijder deze vrijwilligers mogelijkheid"
 
 #: VolunteerOpportunityEditor.php:189
 msgid "Volunteer Opportunity Editor"
@@ -5514,7 +5396,10 @@ msgstr "Er zijn nog geen vrijwilligers mogelijkheden toegevoegd"
 msgid ""
 "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or "
 "Desc fields must be saved by pressing 'Save Changes'"
-msgstr "OPMERKING: toevoegen, verwijderen en bestelinformatie veranderingen zijn onmiddellijk. Wijzigingen in Naam of Desc velden moeten worden opgeslagen door op &#39;Wijzigingen opslaan&#39;"
+msgstr ""
+"OPMERKING: toevoegen, verwijderen en bestelinformatie veranderingen zijn "
+"onmiddellijk. Wijzigingen in Naam of Desc velden moeten worden opgeslagen "
+"door op &#39;Wijzigingen opslaan&#39;"
 
 #: VolunteerOpportunityEditor.php:432
 msgid "Add New Opportunity"
@@ -5555,12 +5440,13 @@ msgstr "Geen families hebben een koppeling nodig met een enqueteur"
 #: Include/CanvassUtilities.php:82
 #, php-format
 msgid "Canvassers assigned at random to %d families."
-msgstr "Enqueteus zijn willekeurig gekoppeld aan families."
+msgstr "Enqueteus zijn willekeurig gekoppeld aan %d families."
 
 #: Include/CanvassUtilities.php:115
 #, php-format
 msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Enqueteurs zijn willekeurig gekoppeld aan families die niet bijdragen."
+msgstr ""
+"Enqueteurs zijn willekeurig gekoppeld aan %d families die niet bijdragen."
 
 #: Include/EnvelopeFunctions.php:39
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -5609,28 +5495,27 @@ msgstr "Aangepaste Selectie Lijst"
 
 #: Include/Functions.php:119
 msgid "Group successfully added to the Cart."
-msgstr "Groep met success toegevoegd aan de Kaart."
+msgstr "Groep met success toegevoegd mandje."
 
 #: Include/Functions.php:125
-#, fuzzy
 msgid "Group successfully removed from the Cart."
-msgstr "De Groep is met success verwijderd van de Kaart."
+msgstr "De Groep is met success verwijderd uit het mandje."
 
 #: Include/Functions.php:131
 msgid "Selected record successfully added to the Cart."
-msgstr "Geselecteerde records zijn met sucess toegevoegd aan de Kaart."
+msgstr "Geselecteerde records zijn met sucess toegevoegd aan het mandje."
 
 #: Include/Functions.php:137
 msgid "Selected record successfully removed from the Cart."
-msgstr "Geselecteerde records zijn met success verwijderd van de Kaart."
+msgstr "Geselecteerde records zijn met success verwijderd uit het mandje."
 
 #: Include/Functions.php:143
 msgid "Your cart has been successfully emptied."
-msgstr "U Kaart is met success geleegd."
+msgstr "U mandje is met success geleegd."
 
 #: Include/Functions.php:165
 msgid "item(s) added to the Cart."
-msgstr "Object(en) toegevoegd aan Kaart."
+msgstr "Object(en) toegevoegd aan mandje ."
 
 #: Include/Functions.php:240
 msgid "Select Fiscal Year"
@@ -5738,7 +5623,7 @@ msgstr "Huidig storting strookje"
 
 #: Include/Header-function.php:451
 msgid "Items in Cart"
-msgstr "Objecten in Kaart"
+msgstr "Objecten in mandje "
 
 #: Include/LabelFunctions.php:46
 msgid "Font:"
@@ -5844,9 +5729,8 @@ msgstr "Student"
 
 #: Reports/ClassAttendance.php:363 Reports/ClassAttendance.php:364
 #: Reports/ClassList.php:110 Reports/ClassList.php:111
-#, fuzzy
 msgid "Liaison"
-msgstr "Seizoen"
+msgstr "Liaison"
 
 #: Reports/ConfirmReport.php:112
 msgid "Family name"
@@ -5865,14 +5749,12 @@ msgid "Send Newsletter"
 msgstr "Stuur Nieuwsbrief"
 
 #: Reports/ConfirmReport.php:141
-#, fuzzy
 msgid "Anniversary Date"
 msgstr "Trouwdatum:"
 
 #: Reports/ConfirmReport.php:147
-#, fuzzy
 msgid "Family E-Mail"
-msgstr "Email van Familie"
+msgstr "Email Familie"
 
 #: Reports/ConfirmReport.php:170 Reports/ConfirmReport.php:189
 msgid "Member Name"
@@ -5933,7 +5815,7 @@ msgstr ""
 
 #: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:162
 msgid " for all funds"
-msgstr " voor alle fonds"
+msgstr " voor alle fondsen"
 
 #: Reports/FamilyPledgeSummary.php:144 Reports/ReminderReport.php:164
 msgid " for fund "
@@ -5941,13 +5823,12 @@ msgstr " Voor fonds "
 
 #: Reports/FamilyPledgeSummary.php:146 Reports/ReminderReport.php:166
 msgid "for funds "
-msgstr "Voor fonds "
+msgstr "Voor fondsen"
 
 #: Reports/FRBidSheets.php:84 Reports/FRCatalog.php:93
 #: Reports/FRCertificates.php:85
-#, fuzzy
 msgid "Estimated value "
-msgstr "Wijzig Waarde"
+msgstr "Geschatte Waarde"
 
 #: Reports/FRBidSheets.php:86 Reports/FRCatalog.php:95
 #: Reports/FRCertificates.php:87
@@ -5955,13 +5836,12 @@ msgid "Donated by "
 msgstr "Geschonken door"
 
 #: Reports/FRBidSheets.php:96
-#, fuzzy
 msgid "Paddle"
-msgstr "Andere Namen"
+msgstr "Peddel"
 
 #: Reports/FRBidSheets.php:97
 msgid "Bid"
-msgstr "Bid"
+msgstr "Bod"
 
 #: Reports/FRCatalog.php:91
 msgid "Minimum bid "
@@ -5977,7 +5857,7 @@ msgstr "Geschonken items:"
 
 #: Reports/FundRaiserStatement.php:147
 msgid "Purchased Items:"
-msgstr "Gekocht Artikelen:"
+msgstr "Gekochte Artikelen:"
 
 #: Reports/FundRaiserStatement.php:219
 msgid "Total of all purchases: $"
@@ -5985,7 +5865,7 @@ msgstr "Totaal van alle aankopen: $"
 
 #: Reports/FundRaiserStatement.php:224
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr ""
+msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
 
 #: Reports/FundRaiserStatement.php:226
 msgid "Buyer # "
@@ -6003,13 +5883,16 @@ msgstr "Bedrag betaald: ________________"
 msgid ""
 "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ "
 "__    __ __ __ __    __ __ __ __  Exp __ / __"
-msgstr "Ten laste van () Cash () Check () Creditcard ________________________________ Belichtingstijd __ / __"
+msgstr ""
+"Ten laste van () Cash () Check () Creditcard "
+"________________________________ Belichtingstijd __ / __"
 
 #: Reports/FundRaiserStatement.php:230
 msgid ""
 "                                        Signature "
 "________________________________________________________________"
-msgstr "Handtekening ________________________________________________________________"
+msgstr ""
+"Handtekening ________________________________________________________________"
 
 #: Reports/GroupReport.php:58
 msgid "Group Directory"
