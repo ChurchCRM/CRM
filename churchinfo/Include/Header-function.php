@@ -41,6 +41,7 @@ global $sPageTitle, $sURLPath;
 	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/hoverIntent.js"></script> 
 	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/superfish.js"></script> 
 	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/supersubs.js"></script> 
+	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/SiteWidejQuery.js"></script>
 
     <script language='javascript' type='text/javascript'>
     // top menu
