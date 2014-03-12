@@ -168,7 +168,7 @@ if (isset($_POST["MenuSubmit"]))
 			$sSQL .= ", url_parm_name = NULL";
 		}
 		
-		$sSQL .= " WHERE mid = '" . $iMenuID ."' AND name = '" . $sName . "'";
+		$sSQL .= " WHERE mid = '" . $iMenuID ."' LIMIT 1";
 		
 		RunQuery($sSQL);
 		
