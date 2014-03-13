@@ -1,7 +1,7 @@
 $("document").ready(function(){
 
 	$("#SearchText").autocomplete({
-		source: "Include/JSONSearch.php?type=person",
+		source: "AjaxFunctions.php?searchtype=person",
 		minLength: 2,
 		select: function(event, ui) {
 			var location = 'PersonView.php?PersonID='+ui.item.id;
