@@ -67,7 +67,7 @@ function ClearEmailLog()
             " ejl_time varchar(20) NOT NULL DEFAULT '', ".
             " ejl_usec varchar(6) NOT NULL DEFAULT '', ".
             " ejl_text text NOT NULL DEFAULT '', PRIMARY KEY (ejl_id) ".
-            ") TYPE=MyISAM";
+            ") ENGINE=MyISAM";
     RunQuery($sSQL);
 
     $sSQL = "INSERT INTO email_job_log_$iUserID ". 
