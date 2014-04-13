@@ -36,6 +36,7 @@ $sComment = "";
 $tScanString = "";
 $dep_Closed = false;
 $iAutID = 0;
+$iCurrentDeposit = 0;
 
 $nAmount = array (); // this will be the array for collecting values for each fund
 $sAmountError = array ();
@@ -241,7 +242,7 @@ if (isset($_POST["PledgeSubmit"]) or
 if ($PledgeOrPayment == 'Pledge') { // Don't assign the deposit slip if this is a pledge
 	$iCurrentDeposit = 0;
 } else { // its a deposit
-	if ($iCurrentDeposit) {
+	if ($iCurrentDeposit > 0) {
 		$_SESSION['iCurrentDeposit'] = $iCurrentDeposit;
 	} else {
 		$iCurrentDeposit = $_SESSION['iCurrentDeposit'];
