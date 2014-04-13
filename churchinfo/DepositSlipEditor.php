@@ -207,7 +207,10 @@ if (isset($_POST["DepositSlipSubmit"])) {
 
 	$dDate = FilterInput($_POST["Date"]);
 	$sComment = FilterInput($_POST["Comment"]);
-	$bClosed = FilterInput($_POST["Closed"]);
+	if (array_key_exists ("Closed", $_POST))
+		$bClosed = FilterInput($_POST["Closed"]);
+	else
+		$bClosed = false;
 	$sDepositType = FilterInput($_POST["DepositType"]);
 	if (! $bClosed)
 		$bClosed = 0;
@@ -246,10 +249,8 @@ if (isset($_POST["DepositSlipSubmit"])) {
 			 WHERE plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_date";
 	$rsTransactions = RunQuery($sSQL);
 
-	include ("Include/echophp.class");
-	include ("Include/EchoConfig.php"); // Specific account information is in here
-
-	$echoPHP = new EchoPHP;
+	require_once 'Include/sdk-php-1.8.0/AuthorizeNet.php'; 
+	include ("Include/AuthorizeNetConfig.php"); // Specific account information is in here
 
 	while ($aTransaction =mysql_fetch_array($rsTransactions))
 	{
@@ -258,70 +259,93 @@ if (isset($_POST["DepositSlipSubmit"])) {
 		if ($plg_aut_Cleared) // If this one already cleared do not submit it again.
 			continue;
 
-		$echoPHP->set_EchoServer("https://wwws.echo-inc.com/scripts/INR200.EXE");
-		$echoPHP->set_merchant_echo_id ($EchoAccount);
-		$echoPHP->set_merchant_pin ($EchoPin);
+		$donation = new AuthorizeNetAIM;
+		$donation->amount = "$plg_amount";
+		$donation->first_name = $firstName;
+		$donation->last_name = $lastName;
+		$donation->address = $address1 . $address2;
+		$donation->city = $city;
+		$donation->state = $state;
+		$donation->zip = $zip;
+		$donation->country = $country;
+		$donation->description = "UU Nashua Pledge";
+		$donation->email = $email;
+		$donation->phone = $phone;
 
-		$echoPHP->set_grand_total($plg_amount);
-		$echoPHP->set_billing_phone($phone);
-		$echoPHP->set_billing_address1($address1);
-		$echoPHP->set_billing_address2($address2);
-		$echoPHP->set_billing_city($city);
-		$echoPHP->set_billing_state($state);
-		$echoPHP->set_billing_zip($zip);
-		$echoPHP->set_billing_country($country);
-		$echoPHP->set_billing_email($email);
-
-		$echoPHP->set_billing_ip_address($REMOTE_ADDR);
-
-		$echoPHP->set_order_type("S");
-		$echoPHP->set_cnp_recurring("Y");
-
+		// not setting these
+//		$donation->allow_partial_auth
+//		$donation->auth_code
+//		$donation->authentication_indicator
+//		$donation->bank_aba_code
+//		$donation->bank_check_number
+//		$donation->card_code
+//		$donation->cardholder_authentication_value
+//		$donation->company
+//		$donation->cust_id
+//		$donation->customer_ip
+//		$donation->delim_char
+//		$donation->delim_data
+//		$donation->duplicate_window
+//		$donation->duty
+//		$donation->echeck_type
+//		$donation->email_customer
+//		$donation->encap_char
+//		$donation->fax
+//		$donation->footer_email_receipt
+//		$donation->freight
+//		$donation->header_email_receipt
+//		$donation->invoice_num
+//		$donation->line_item
+//		$donation->login
+//		$donation->method
+//		$donation->po_num
+//		$donation->recurring_billing
+//		$donation->relay_response
+//		$donation->ship_to_address
+//		$donation->ship_to_city
+//		$donation->ship_to_company
+//		$donation->ship_to_country
+//		$donation->ship_to_first_name
+//		$donation->ship_to_last_name
+//		$donation->ship_to_state
+//		$donation->ship_to_zip
+//		$donation->split_tender_id
+//		$donation->tax
+//		$donation->tax_exempt
+//		$donation->test_request
+//		$donation->tran_key
+//		$donation->trans_id
+//		$donation->type
+//		$donation->version
+	
 		if ($dep_Type == "CreditCard") {
-
-			$echoPHP->set_billing_first_name($firstName);
-			$echoPHP->set_billing_last_name($lastName);
-			$echoPHP->set_cc_number($creditCard);
-			$echoPHP->set_ccexp_month($expMonth);
-			$echoPHP->set_ccexp_year($expYear);
-
-			$echoPHP->set_transaction_type("EV");
-
-			// $echoPHP->set_cnp_security(3333);  // The three-digit MasterCard (CVC2) or VISA (CVV2) or the four-digit Discover (CID) 
-			// or AMEX card-not-present security code.
-
+			$donation->card_num = $creditCard;
+			$donation->exp_date = $expMonth . "/" . $expYear;
 		} else {
 			// check payment info if supplied...
-			$echoPHP->set_ec_bank_name($bankName);
-			$echoPHP->set_ec_first_name($firstName);
-			$echoPHP->set_ec_last_name(lastName);
-			$echoPHP->set_ec_address1($address1);
-			$echoPHP->set_ec_address2($address2);
-			$echoPHP->set_ec_city($city);
-			$echoPHP->set_ec_state($state);
-			$echoPHP->set_ec_zip($zip);
-			$echoPHP->set_ec_rt($route);
-			$echoPHP->set_ec_account($account);
-			$echoPHP->set_ec_serial_number($serial);
-			$echoPHP->set_ec_payee($EchoPayee);
-			//$echoPHP->set_ec_id_state("");
-			//$echoPHP->set_ec_id_number("");
-			//$echoPHP->set_ec_id_type("");
-
-			$echoPHP->set_transaction_type("DD");
+			
+// Use eCheck:
+			$donation->bank_acct_name = $firstName . ' ' . $lastName;
+			$donation->bank_acct_num = $account;
+			$donation->bank_acct_type = 'CHECKING';
+			$donation->bank_name = $bankName;
+			
+			$donation->setECheck(
+			    $route,
+			    $account,
+			    'CHECKING',
+			    $bankName,
+			    $firstName . ' ' . $lastName,
+			    'WEB'
+			);
 		}
 
-		$echoPHP->set_debug("F");  // set to T to turn on debugging
-
-		$echoPHP->set_counter(1);
-
-		$submitSuccess = $echoPHP->Submit();
-		if ($submitSuccess)
-			$submitSuccess = 1;
-		else
-			$submitSuccess = 0;
+		$response = $donation->authorizeAndCapture();
+		if ($response->approved) {
+		    $transaction_id = $response->transaction_id;
+		}
 		
-		if ($submitSuccess) {
+		if ($response->approved) {
 			// Push the authorized transaction date forward by the interval
 			$sSQL = "UPDATE autopayment_aut SET aut_NextPayDate=DATE_ADD('" . $authDate . "', INTERVAL " . $aut_Interval . " MONTH) WHERE aut_ID = " . $aut_ID . " AND aut_Amount = " . $plg_amount;
 			RunQuery ($sSQL);
@@ -330,27 +354,22 @@ if (isset($_POST["DepositSlipSubmit"])) {
 			RunQuery ($sSQL);
 		}
 
-		$sSQL = "UPDATE pledge_plg SET plg_aut_Cleared=" . $submitSuccess . " WHERE plg_plgID=" . $plg_plgID;
+		if (! ($response->approved))
+			$response->approved = 0;
+
+		$sSQL = "UPDATE pledge_plg SET plg_aut_Cleared=" . $response->approved . " WHERE plg_plgID=" . $plg_plgID;
 		RunQuery($sSQL);
 
 		if ($plg_aut_ResultID) {
 			// Already have a result record, update it.
 			$sSQL = "UPDATE result_res SET " .
-							"res_echotype1	='" . $echoPHP->echotype1	. "'," .
-							"res_echotype2	='" . $echoPHP->echotype2	. "'," .
-							"res_echotype3	='" . $echoPHP->echotype3	. "'," .
-							"res_authorization	='" . $echoPHP->authorization	. "'," .
-							"res_order_number	='" . $echoPHP->order_number	. "'," .
-							"res_reference	='" . $echoPHP->reference	. "'," .
-							"res_status	='" . $echoPHP->status	. "'," .
-							"res_avs_result	='" . $echoPHP->avs_result	. "'," .
-							"res_security_result	='" . $echoPHP->security_result	. "'," .
-							"res_mac	='" . $echoPHP->mac	. "'," .
-							"res_decline_code	='" . $echoPHP->decline_code	. "'," .
-							"res_tran_date	='" . $echoPHP->tran_date	. "'," .
-							"res_merchant_name	='" . $echoPHP->merchant_name	. "'," .
-							"res_version	='" . $echoPHP->version	. "'," .
-							"res_EchoServer	='" . $echoPHP->EchoServer	. "'" .
+							"res_echotype1	='" . $response->response_reason_code	. "'," .
+							"res_echotype2	='" . $response->response_reason_text	. "'," .
+							"res_echotype3	='" . $response->response_code	. "'," .
+							"res_authorization	='" . $response->response_subcode	. "'," .
+							"res_order_number	='" . $response->authorization_code	. "'," .
+							"res_reference	='" . $response->avs_response	. "'," .
+							"res_status	='" . $response->transaction_id	. "'" .
 						" WHERE res_ID=" . $plg_aut_ResultID;
 			RunQuery($sSQL);
 		} else {
@@ -362,31 +381,15 @@ if (isset($_POST["DepositSlipSubmit"])) {
 							res_authorization,
 							res_order_number,
 							res_reference,
-							res_status,
-							res_avs_result,
-							res_security_result,
-							res_mac,
-							res_decline_code,
-							res_tran_date,
-							res_merchant_name,
-							res_version,
-							res_EchoServer)
+							res_status)
 						VALUES (" .
-							"'" . mysql_real_escape_string($echoPHP->echotype1) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->echotype2) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->echotype3) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->authorization) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->order_number) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->reference) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->status) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->avs_result) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->security_result) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->mac) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->decline_code) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->tran_date) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->merchant_name) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->version) . "'," .
-							"'" . mysql_real_escape_string($echoPHP->EchoServer) . "')";
+							"'" . mysql_real_escape_string($response->response_reason_code) . "'," .
+							"'" . mysql_real_escape_string($response->response_reason_text) . "'," .
+							"'" . mysql_real_escape_string($response->response_code) . "'," .
+							"'" . mysql_real_escape_string($response->response_subcode) . "'," .
+							"'" . mysql_real_escape_string($response->authorization_code) . "'," .
+							"'" . mysql_real_escape_string($response->avs_response) . "'," .
+							"'" . mysql_real_escape_string($response->transaction_id) . "')";
 			RunQuery($sSQL);
 
 			// Now get the ID for the newly created record
