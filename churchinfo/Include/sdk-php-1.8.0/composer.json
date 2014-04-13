@@ -1,0 +1,11 @@
+{
+	"name": "authorizenet/authorizenet",
+	"type": "library",
+	"description": "Official PHP SDK for Authorize.Net",
+	"keywords": ["authorizenet", "authorize.net", "payment", "ecommerce"],
+	"homepage": "http://developer.authorize.net",
+	"require": {
+		"php": ">=5.2.0",
+		"ext-curl": "*"
+	}
+}
