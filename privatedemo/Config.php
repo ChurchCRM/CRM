@@ -1,6 +1,6 @@
 <?php
 
-// Database connection constants
+// Database connection constants.
 $sSERVERNAME = 'localhost';
 $sUSER = 'privatedemo';
 $sPASSWORD = 'privatedemo';
