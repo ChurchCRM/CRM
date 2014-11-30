@@ -35,9 +35,13 @@ global $sPageTitle, $sURLPath;
 ?>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>Include/jquery/jquery-ui-1.8.18.custom.css">
-    <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/jquery-1.7.1.min.js"></script>	 
-    <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/jquery-ui-1.8.18.custom.min.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>  
+
 	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/hoverIntent.js"></script> 
 	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/superfish.js"></script> 
 	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/supersubs.js"></script> 
