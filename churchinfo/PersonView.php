@@ -18,17 +18,9 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require 'Include/Mailchimp.php';
+require 'Include/MailchimpFunctions.php';
 
-function isEmailInMailChimp($email) {
-	try {
-		$MailChimp = new MailChimp("api-key");
-		$lists = $MailChimp->helper->listsForEmail(array("email" => $email));
-		return $lists[0]["name"];
-	 } catch (Exception $e) {
-		return "";
-	 }
-}
+$mailchimp = new ChurchInfoMailchimp();
 
 // Get the person ID from the querystring
 $iPersonID = FilterInput($_GET["PersonID"],'int');
@@ -485,7 +477,7 @@ gettext("List View") . "</a> ";
 			</tr>
 			<tr>
 				<td class="TinyLabelColumn">MailChimp</td>
-				<td class="TinyTextColumn"><?php if ($sEmail != "") { echo isEmailInMailChimp($sEmail); } ?></td>
+				<td class="TinyTextColumn"><?php if ($sEmail != "") { echo $mailchimp->isEmailInMailChimp($sEmail); } ?></td>
 			</tr>			
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Work/Other Email:"); ?></td>
@@ -493,7 +485,7 @@ gettext("List View") . "</a> ";
 			</tr>
 			<tr>
 				<td class="TinyLabelColumn">MailChimp</td>
-				<td class="TinyTextColumn"><?php if ($per_WorkEmail != "") { echo isEmailInMailChimp($per_WorkEmail); } ?></td>
+				<td class="TinyTextColumn"><?php if ($per_WorkEmail != "") { echo $mailchimp->isEmailInMailChimp($per_WorkEmail); } ?></td>
 			</tr>					
 			<?php
 				// Display the right-side custom fields

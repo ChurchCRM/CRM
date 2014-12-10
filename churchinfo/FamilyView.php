@@ -27,21 +27,13 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/GeoCoder.php";
-require 'Include/Mailchimp.php';
+require 'Include/MailchimpFunctions.php';
 
+$mailchimp = new ChurchInfoMailchimp();
 //Set the page title
 $sPageTitle = gettext("Family View");
 
-function isEmailInMailChimp($email) {
-	try {
-		$MailChimp = new MailChimp("api-key");
-		$lists = $MailChimp->helper->listsForEmail(array("email" => $email));
-		//return "found";
-		return $lists[0]["name"];
-	 } catch (Exception $e) {
-		return "";
-	 }
-}
+
 
 //Get the FamilyID out of the querystring
 $iFamilyID = FilterInput($_GET["FamilyID"],'int');
@@ -402,7 +394,7 @@ if ($bOkToEdit) {
 			</tr>
 			<tr>
 				<td class="TinyLabelColumn">MailChimp</td>
-				<td class="TinyTextColumn"><?php if ($fam_Email != "") { echo isEmailInMailChimp($fam_Email); } ?></td>
+				<td class="TinyTextColumn"><?php if ($fam_Email != "") { echo $mailchimp->isEmailInMailChimp($fam_Email); } ?></td>
 			</tr>
 			<?php
 				// Display the left-side custom fields

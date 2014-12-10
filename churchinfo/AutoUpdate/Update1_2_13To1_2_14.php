@@ -93,6 +93,9 @@ for (; ; ) {    // This is not a loop but a section of code to be
     // Allow pledge to be weekly
     $sSQL = "ALTER IGNORE TABLE donateditem_di ADD `di_picture` text NULL";
     RunQuery($sSQL, FALSE); // False means do not stop on error
+
+    $sSQL = "INSERT INTO `stgeorge_churchinfo`.`config_cfg` VALUES ('2001', 'mailChimpApiKey', '', 'text', '', 'see http://kb.mailchimp.com/accounts/management/about-api-keys', 'General', NULL);";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
 }
 
 $sError = mysql_error();

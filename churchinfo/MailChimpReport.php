@@ -15,23 +15,12 @@
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'Include/Mailchimp.php';
+require 'Include/MailchimpFunctions.php';
+
+$mailchimp = new ChurchInfoMailchimp();
 
 //Set the page title
 $sPageTitle = gettext('MailChimp Menu');
-
-
-
-function isEmailInMailChimp($email) {
-	try {
-		$MailChimp = new MailChimp("api-key");
-		$lists = $MailChimp->helper->listsForEmail(array("email" => $email));
-		//return "found";
-		return $lists[0]["name"];
-	 } catch (Exception $e) {
-		return "";
-	 }
-}
 
 require 'Include/Header.php';
 
@@ -58,7 +47,7 @@ while ($aRow = mysql_fetch_array($rsPeopleWithEmail)) {
 	echo "<tr>";
 		echo "<td><a href='PersonView.php?PersonID=".$per_id."'>".$per_FirstName." ".$per_LastName."</a></td>";
 		echo "<td>".$per_Email."</td>";
-		echo "<td>".isEmailInMailChimp($per_Email)."</td>";	
+		echo "<td>".$mailchimp->isEmailInMailChimp($per_Email)."</td>";
 	echo "</tr>";
 }
 
