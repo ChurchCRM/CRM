@@ -333,7 +333,7 @@ ul#topnav > ul li li li.sfHover ul {
 
 #topnav > ul {
     font-family: arial,sans-serif;
-    font-size: 10px;
+    font-size: 15px;
     color: #000000;
 	float:			left;
 	margin-bottom:	.25em;
@@ -348,7 +348,7 @@ ul#topnav > ul li li li.sfHover ul {
 	color:			#000;
 }
 #topnav > ul li {
-	
+
 }
 #topnav > ul li li {
 	background:		#F2EEDB;
