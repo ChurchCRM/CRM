@@ -102,8 +102,17 @@ if ($numCustomFields > 0)
     }
 }
 
+if ($_GET["updated"]) {
+	echo "<h3>Sending ** Updated ** emails </h3><br/>";
+}
+
+$sSubQuery = "";
+if ($_GET["familyId"]) {
+	$sSubQuery = " and fam_id in (".$_GET["familyId"].") ";
+}
+
 // Get all the families
-$sSQL = "SELECT * from family_fam fam, person_per per where fam.fam_id = per.per_fam_id and per.per_email is not null and per.per_email != '' and fam.fam_id in (0) group by fam_ID ORDER BY fam_Name";
+$sSQL = "SELECT * from family_fam fam, person_per per where fam.fam_id = per.per_fam_id and per.per_email is not null and per.per_email != '' ".$sSubQuery." group by fam_ID ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
 
 $dataCol = 55;
@@ -241,7 +250,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 			}
 		}
 		if ($per_BirthYear)
-			$birthdayStr = $per_BirthYear . "-" . $per_BirthMonth . "-" . $per_BirthDay;
+			$birthdayStr = $per_BirthMonth."/".$per_BirthDay."/".$per_BirthYear;
 		else
 			$birthdayStr = "";
 		$pdf->WriteAtCell ($XBirthday, $curY, $XCellPhone - $XBirthday, $birthdayStr);
@@ -350,12 +359,19 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     }
 	$pdf->FinishPage ($curY);
 	
+	if ($emaillist != "") {
+	
 	header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 	
 	$doc = $pdf->Output("ConfirmReportEmail-". $fam_ID."-". date("Ymd") . ".pdf", "S");
-			
+		
 	$subject = $fam_Name.' Family Information Review';
-	$message = "Dear ".$fam_Name." Family <p>".$pdf->sConfirm1.".</p>Sincerely, <br/>".$pdf->sConfirmSigner;
+	
+	if ($_GET["updated"]) {
+		$subject = $subject." ** Updated **";
+	}
+	
+	$message = "Dear ".$fam_Name." Family <p>".$pdf->sConfirm1."</p>Sincerely, <br/>".$pdf->sConfirmSigner;
 		
 	$mail->Subject = $subject;
 	$mail->MsgHTML($message);
@@ -365,10 +381,13 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	foreach($myArray = explode(',', $emaillist) as $address) {
 		$mail->AddAddress($address);
 	}
-	$mail->Username;
+	
 	$mail_sent = $mail->Send();
 	
-	echo $fam_Name." ( ".$fam_ID." ) - to: ". $emaillist." " ;
+		echo $fam_Name." ( ".$fam_ID." ) - to: ". $emaillist." " ;
+	} else {
+		echo $fam_Name." ( ".$fam_ID." ) - without emails" ;
+	}
 	echo $mail_sent ? "Mail sent" : "Mail failed" ;
 	echo "<br/>";
 }
