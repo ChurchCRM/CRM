@@ -776,13 +776,13 @@ maxlength="10" size="8">
 		<td class="LabelColumn"><?php echo gettext("Send Newsletter:"); ?></td>
 		<td class="TextColumn"><input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) echo " checked"; ?>></td>
 	</tr>
-<?php } ?>	
+<?php } ?>
 	<tr><?php
 		if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser
 		echo "<td class='LabelColumn'>" . gettext("Ok To Canvass:") . "</td>\n";
 		echo "<td class='TextColumn'><input type=\"checkbox\" Name=\"OkToCanvass\" value=\"1\"";
 		if ($bOkToCanvass) echo " checked";
-		}?>></td>
+		}?></td>
 	</tr>
 
 	<?php
