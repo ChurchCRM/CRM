@@ -64,6 +64,14 @@ require 'Include/Header.php';
     echo gettext('Generate class lists and attendance sheets'); ?>
 </p>
 
+<a class="MediumText" href="SundaySchoolClassList.php"><?php 
+    echo gettext('Sunday School Class List'); ?></a>   
+</p>
+
+<a class="MediumText" href="MailChimpReport.php"><?php 
+    echo gettext('MailChimp Report'); ?></a>   
+</p>
+
 <?php
     if ($_SESSION['bFinance']) {
 	echo '<p>';

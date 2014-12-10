@@ -27,9 +27,21 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/GeoCoder.php";
+require 'Include/Mailchimp.php';
 
 //Set the page title
 $sPageTitle = gettext("Family View");
+
+function isEmailInMailChimp($email) {
+	try {
+		$MailChimp = new MailChimp("api-key");
+		$lists = $MailChimp->helper->listsForEmail(array("email" => $email));
+		//return "found";
+		return $lists[0]["name"];
+	 } catch (Exception $e) {
+		return "";
+	 }
+}
 
 //Get the FamilyID out of the querystring
 $iFamilyID = FilterInput($_GET["FamilyID"],'int');
@@ -190,6 +202,14 @@ elseif ($next_link_text != "") {
 }
 ?>
 <BR><br>
+<?php 
+if ($bOkToEdit) { 
+	echo "<a class=\"SmallText\" href=\"Reports/ConfirmReport.php?familyId=" . $fam_ID . "\">" . gettext("Family Record PDF") . "</a> ";
+	echo "| <a class=\"SmallText\" href=\"Reports/ConfirmReportEmail.php?familyId=" . $fam_ID . "\">" . gettext("Email Family Record") . "</a> ";
+	echo "| <a class=\"SmallText\" href=\"Reports/ConfirmReportEmail.php?updated=true&familyId=" . $fam_ID . "\">" . gettext("Email Family Record - Updated") . "</a>";
+	echo "<BR><br>"; }
+
+?>
 <table border="0" width="100%" cellspacing="0" cellpadding="4">
 <tr>
 <td width="25%" valign="top" align="center">
@@ -379,6 +399,10 @@ elseif ($next_link_text != "") {
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Email:"); ?></td>
 				<td class="TinyTextColumn"><?php if ($fam_Email != "") { echo "<a href='mailto:" . $fam_Email . "'>" . $fam_Email . "</a>"; } ?>				  </td>
+			</tr>
+			<tr>
+				<td class="TinyLabelColumn">MailChimp</td>
+				<td class="TinyTextColumn"><?php if ($fam_Email != "") { echo isEmailInMailChimp($fam_Email); } ?></td>
 			</tr>
 			<?php
 				// Display the left-side custom fields
@@ -943,8 +967,7 @@ while($aRow = mysql_fetch_array($rsNotes))
 	<?php
 
 }
-?>
-<?php } ?>
+} ?>
 
 <?php
 require "Include/Footer.php";
