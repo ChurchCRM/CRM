@@ -475,19 +475,25 @@ gettext("List View") . "</a> ";
 				<td class="TinyLabelColumn"><?php echo gettext("Email:"); ?></td>
 				<td class="TinyTextColumn"><?php if ($sEmail != "") { echo "<a href=\"mailto:" . $sUnformattedEmail . "\">" . $sEmail . "</a>"; } ?></td>
 			</tr>
+				<?php if ($mailchimp->isActive()) { ?>
 			<tr>
 				<td class="TinyLabelColumn">MailChimp</td>
 				<td class="TinyTextColumn"><?php if ($sEmail != "") { echo $mailchimp->isEmailInMailChimp($sEmail); } ?></td>
-			</tr>			
+			</tr>
+				<?php } ?>
 			<tr>
 				<td class="TinyLabelColumn"><?php echo gettext("Work/Other Email:"); ?></td>
 				<td class="TinyTextColumn"><?php if ($per_WorkEmail != "") { echo "<a href=\"mailto:" . $per_WorkEmail . "\">" . $per_WorkEmail . "</a>"; } ?></td>
 			</tr>
+			<?php if ($mailchimp->isActive()) { ?>
 			<tr>
 				<td class="TinyLabelColumn">MailChimp</td>
-				<td class="TinyTextColumn"><?php if ($per_WorkEmail != "") { echo $mailchimp->isEmailInMailChimp($per_WorkEmail); } ?></td>
-			</tr>					
+				<td class="TinyTextColumn"><?php if ($per_WorkEmail != "") {
+						echo $mailchimp->isEmailInMailChimp($per_WorkEmail);
+					} ?></td>
+			</tr>
 			<?php
+				}
 				// Display the right-side custom fields
 				while ($Row = mysql_fetch_array($rsRightCustomFields)) {
 					extract($Row);

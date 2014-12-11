@@ -71,7 +71,9 @@ echo gettext('Export Sunday School Kids to CSV'); ?>
 </p>
 
 <a class="MediumText" href="MailChimpReport.php"><?php 
-    echo gettext('MailChimp Report'); ?></a>   
+    echo gettext('MailChimp Report'); ?></a>
+<br><?php
+echo gettext('Reports and data about your mailchimp account'); ?>
 </p>
 
 <?php

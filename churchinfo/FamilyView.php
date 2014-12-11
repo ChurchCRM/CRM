@@ -392,11 +392,13 @@ if ($bOkToEdit) {
 				<td class="TinyLabelColumn"><?php echo gettext("Email:"); ?></td>
 				<td class="TinyTextColumn"><?php if ($fam_Email != "") { echo "<a href='mailto:" . $fam_Email . "'>" . $fam_Email . "</a>"; } ?>				  </td>
 			</tr>
+				<?php if ($mailchimp->isActive()) { ?>
 			<tr>
 				<td class="TinyLabelColumn">MailChimp</td>
 				<td class="TinyTextColumn"><?php if ($fam_Email != "") { echo $mailchimp->isEmailInMailChimp($fam_Email); } ?></td>
 			</tr>
 			<?php
+				}
 				// Display the left-side custom fields
 				while ($Row = mysql_fetch_array($rsLeftFamCustomFields)) {
 					extract($Row);
