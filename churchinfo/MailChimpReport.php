@@ -4,7 +4,7 @@
  *  filename    : MailChimpReprot.php
  *  last change : 2014-11-29
  *  website     : http://www.churchdb.org
- *  copyright   : Copyright 2014 
+ *  copyright   : Copyright 2014
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -24,48 +24,42 @@ $sPageTitle = gettext('MailChimp Menu');
 
 require 'Include/Header.php';
 
+if (!$mailchimp->isActive()) {
+    echo "Mailchimp is not active";
+} else {
 
-// Get all the groups
-$sSQL = "SELECT per_FirstName, per_LastName, per_Email, per_id FROM `stgeorge_churchinfo`.`person_per` where per_Email != '' order by per_DateLastEdited desc";
-$rsPeopleWithEmail = RunQuery($sSQL);
+    echo "<h3>Mailchimp Lists</h3>";
 
-?>
-<script src="http://mottie.github.io/tablesorter/js/jquery.tablesorter.js"></script>
-<script src="http://mottie.github.io/tablesorter/js/jquery.tablesorter.widgets.js"></script>
-<table id="people_with_email" width="100%" data-toggle="table" class="table table-striped table-bordered tablesorter">
-<thead>
-<tr>
-	<td>Name</td>
-	<td>Email</td>
-	<td>MailChimp Status</td>
-</tr>
-</thead>
-<tbody>
+    $mcLists =  $mailchimp->getLists();
+
+    foreach ($mcLists as $list) {
+
+        echo "<h4><u>".$list["name"]."</u></h4>";
+        ?>
+        <table width="300px">
+
+        <?php
+        echo "<tr><td><b>Members:</b> </td><td>".$list["stats"]["member_count"]."</td></tr>";
+        echo "<tr><td><b>Campaigns:</b> </td><td>".$list["stats"]["campaign_count"]."</td></tr>";
+        echo "<tr><td><b>Unsubscribed count:</b> </td><td>".$list["stats"]["unsubscribe_count"]."</td></tr>";
+        echo "<tr><td><b>Unsubscribed count since last send:</b> </td><td>".$list["stats"]["unsubscribe_count_since_send"]."</td></tr>";
+        echo "<tr><td><b>Cleaned count:</b> </td><td>".$list["stats"]["cleaned_count"]."</td></tr>";
+        echo "<tr><td><b>Cleaned count since last send:</b> </td><td>".$list["stats"]["cleaned_count_since_send"]."</td></tr>";
+        echo "</tr>";
+    }
+    ?>
+    </table>
+
+
+    <h3>Reports</h3>
+
+    <ul>
+        <li><a href="Reports/MailChimpMissingReport.php">Missing emails report </a> (slow)</li>
+        <li><a href="Reports/MailChimpCsvExport.php">Create email CSV </a> (to import into mailchimp)</li>
+    </ul>
+
+
 <?php
-while ($aRow = mysql_fetch_array($rsPeopleWithEmail)) {
-	extract($aRow);
-	echo "<tr>";
-		echo "<td><a href='PersonView.php?PersonID=".$per_id."'>".$per_FirstName." ".$per_LastName."</a></td>";
-		echo "<td>".$per_Email."</td>";
-		echo "<td>".$mailchimp->isEmailInMailChimp($per_Email)."</td>";
-	echo "</tr>";
 }
-
-?>
-</tbody>
-</table>
-
-<script>
-$(function(){
-  $("#people_with_email").tablesorter();
-});
-</script>
-
-<?php
-
-
-
-
-
 require "Include/Footer.php";
 ?>
