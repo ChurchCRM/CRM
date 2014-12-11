@@ -64,8 +64,10 @@ require 'Include/Header.php';
     echo gettext('Generate class lists and attendance sheets'); ?>
 </p>
 
-<a class="MediumText" href="SundaySchoolClassList.php"><?php 
-    echo gettext('Sunday School Class List'); ?></a>   
+<a class="MediumText" href="Reports/SundaySchoolClassList.php"><?php
+    echo gettext('Sunday School Class List'); ?></a>
+<br><?php
+echo gettext('Export Sunday School Kids to CSV'); ?>
 </p>
 
 <a class="MediumText" href="MailChimpReport.php"><?php 
