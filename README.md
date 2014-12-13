@@ -32,8 +32,8 @@ Reports
 - Export Sundayschool csv of the child info along with Dad/Mom email/phone
 
 Bug fix
-=====
+========
 - Removed Extra > in family edit page
-- 
+
 
 
