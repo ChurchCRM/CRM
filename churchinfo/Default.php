@@ -343,10 +343,15 @@ ob_start();
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-   <meta http-equiv="pragma" content="no-cache">
-     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-   <link rel="stylesheet" type="text/css" href="Include/Style.css">
-   <title><?php echo gettext('ChurchInfo: Login'); ?></title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="Include/Style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Include/signin.css" >
+    <title><?php echo gettext('ChurchInfo: Login'); ?></title>
 </head>
 <body>
 <?php
@@ -386,59 +391,37 @@ ob_start();
     }
 ?>
 
-<table width="80%" border="0" cellpadding="5" cellspacing="0" align="center">
-<tr>
-    <td valign="top">
-        <br>
-        <p class="PageTitle"><?php echo gettext('Please Login'); ?></p>
 <?php
+    $loginPageMsg = "";
     if (isset($_GET['Proto']) && isset($_GET['Path'])) {
-?>
-        <form method="post" name="LoginForm" 
-        <?php echo "action=\"Default.php?Proto=".$_GET['Proto'].
-        "&amp;Path=".rawurlencode($_GET['Path'])."\"" ?> >
-        <table border="0" align="center" cellpadding="5">
-        <?php if (isset($_GET['timeout'])) { ?>
-        <tr>
-            <td align="center" colspan="2">
-            <span style="color:red; font-size:120%;">Your previous session timed out.  Please login again.</span>
-            </td>
-        </tr> <?php } ?>
-
-        <?php if (isset($sErrorText) <> '') { ?>
-        <tr>
-            <td align="center" colspan="2">
-            <span style="color:red;" id="PasswordError"><?php echo $sErrorText; ?></span>
-            </td>
-        </tr><?php } ?>
-        <tr>
-            <td class="LabelColumn"><?php echo gettext('Enter your user name:'); ?></td>
-            <td class="TextColumnWithBottomBorder">
-                <input type="text" id="UserBox" name="User" size="10">
-
-            </td>
-        </tr>
-        <tr>
-            <td class="LabelColumn"><?php echo gettext('Enter your password:'); ?></td>
-            <td class="TextColumnWithBottomBorder">
-                <input type="password" id="PasswordBox" name="Password" size="10">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">
-            <input type="submit" class="icButton" name="LogonSubmit" 
-             value="<?php echo gettext('Login'); ?>"></td><td>
-            <input type="hidden" name="sURLPath" 
-             value="<?php echo $_GET['Proto'] . "://" . $_GET['Path'] ?>"></td>
-        </tr>
-        </table>
-        </form>
-<?php
+        if (isset($_GET['timeout'])) {
+            $loginPageMsg = "Your previous session timed out.  Please login again.";
+        }
+        if (isset($sErrorText) <> '') {
+            $loginPageMsg = $sErrorText;
+        }
     }
 ?>
-    </td>
-</tr>
-</table>
+
+
+
+<div class="container">
+    <form class="form-signin" role="form" method="post" name="LoginForm"
+        <?php echo "action=\"Default.php?Proto=".$_GET['Proto'].
+        "&amp;Path=".rawurlencode($_GET['Path'])."\"" ?> >
+        <h2 class="form-signin-heading"><?php echo gettext('Please Login'); ?></h2>
+        <?php    if ($loginPageMsg != "") { ?>
+            <div class="alert alert-danger" role="alert"><p class="bg-danger"><?php echo $loginPageMsg; ?></p></div>
+        <?php   } ?>
+        <label for="inputEmail" class="sr-only"><?php echo gettext('Enter your user name:'); ?></label>
+        <input type="text" id="UserBox" class="form-control" name="User" size="10" placeholder="<?php echo gettext('Enter your user name:'); ?>" required autofocus>
+        <label for="inputPassword" class="sr-only"><?php echo gettext('Enter your password:'); ?></label>
+        <input type="password" id="PasswordBox" class="form-control" name="Password" size="10" placeholder="<?php echo gettext('Enter your password:'); ?>" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><?php echo gettext('Login'); ?></button>
+        <input type="hidden" name="sURLPath" value="<?php echo $_GET['Proto'] . "://" . $_GET['Path'] ?>">
+    </form>
+
+</div> <!-- /container -->
 
 <script language="JavaScript" type="text/JavaScript">
     document.LoginForm.User.focus();
