@@ -397,7 +397,14 @@ global $security_matrix, $sURLPath;
             echo "<li class=\"divider\">\n";
         } else {
             echo "<li class=\"dropdown\">\n";
-            echo "<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">".$aMenu['content']."<span class=\"caret\"></span></a>\n";
+            echo "<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">";
+            echo $aMenu['content'];
+            if ($aMenu['name'] == "cart") {
+                echo " (". count($_SESSION['aPeopleCart']).") ";
+            } else if ($aMenu['name'] == "deposit") {
+            echo " (". $_SESSION['iCurrentDeposit'].") ";
+            }
+            echo "<span class=\"caret\"></span></a>\n";
             echo "<ul class=\"dropdown-menu\" role=\"menu\">\n";
         }
         if (($aMenu['ismenu']) && ($numItems > 0)) {
@@ -440,7 +447,7 @@ global $MenuFirst, $sPageTitle, $sURLPath;
     if (strlen($_SESSION['iUserID'])) {
     ?>
         <!-- Static navbar -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+        <nav class="navbar navbar-inverse" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -451,9 +458,11 @@ global $MenuFirst, $sPageTitle, $sURLPath;
                     </button>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <?php addMenu("root"); ?>
-                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group" name="SelectFilter" method="get" action="<?php echo $sURLPath."/"; ?>SelectList.php">
+                            <input type="text" class="form-control" placeholder="Search" onfocus="ClearFieldOnce(this);" id="SearchText" <?php echo 'value="' . gettext("Search") . '"'; ?>>
+                        </div>
+                    </form>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="img-circle" /> <?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> <span class="caret"></span></a>
@@ -465,6 +474,10 @@ global $MenuFirst, $sPageTitle, $sURLPath;
                             </ul>
                         </li>
                     </ul>
+                    <ul class="nav navbar-nav">
+                        <?php addMenu("root"); ?>
+                    </ul>
+
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
