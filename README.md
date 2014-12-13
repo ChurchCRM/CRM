@@ -21,6 +21,8 @@ UI
 - JQuery Updated and used via CDN 
 - Added CSS Bootstrap used via CDN
 - Updated Family/Person action items to use Bootstrap buttons vs Links
+- Replaced the Nav bar with bootstrap nav so that it has responsive ui in mobile devices
+- added support for using the logged in user image via Gravatar URL
 
 Reports
 ======= 
