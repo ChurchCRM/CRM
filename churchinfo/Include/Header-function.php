@@ -54,28 +54,7 @@ global $sPageTitle, $sURLPath;
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/hoverIntent.js"></script>
-    <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/superfish.min.js"></script>
-    <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/supersubs.js"></script>
 	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/SiteWidejQuery.js"></script>
-
-    <script language='javascript' type='text/javascript'>
-    // top menu
-    $(document).ready(function(){
-        $("#topnav>ul").supersubs({
-            minWidth:    12,
-            maxWidth:    27,
-            extraWidth:  1
-
-        }).superfish({
-            delay:       250,
-            animation:   {opacity:'show',height:'show'},
-            speed:       100,
-            autoArrows:  false,
-            dropShadows: false
-        });
-    });
-	</script>
 
     <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
     <title>ChurchInfo: <?php echo $sPageTitle; ?></title>
@@ -83,6 +62,30 @@ global $sPageTitle, $sURLPath;
 <?php
 }
 
+/**
+ * Get either a Gravatar URL or complete image tag for a specified email address.
+ *
+ * @param string $email The email address
+ * @param string $s Size in pixels, defaults to 80px [ 1 - 2048 ]
+ * @param string $d Default imageset to use [ 404 | mm | identicon | monsterid | wavatar ]
+ * @param string $r Maximum rating (inclusive) [ g | pg | r | x ]
+ * @param boole $img True to return a complete IMG tag False for just the URL
+ * @param array $atts Optional, additional key/value attributes to include in the IMG tag
+ * @return String containing either just a URL or a complete image tag
+ * @source http://gravatar.com/site/implement/images/php/
+ */
+function get_gravatar( $email, $s = 18, $d = 'mm', $r = 'g', $img = false, $atts = array() ) {
+    $url = 'http://www.gravatar.com/avatar/';
+    $url .= md5( strtolower( trim( $email ) ) );
+    $url .= "?s=$s&d=$d&r=$r";
+    if ( $img ) {
+        $url = '<img src="' . $url . '"';
+        foreach ( $atts as $key => $val )
+            $url .= ' ' . $key . '="' . $val . '"';
+        $url .= ' />';
+    }
+    return $url;
+}
 
 function Header_body_scripts() {
 global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage, 
@@ -339,11 +342,6 @@ function GetSecuritySettings() {
     return $sSecurityCond;
 }
 
-function create_menu($menu) {
-
-    addMenu($menu);
-    echo "<div style='clear:both;'></div>\n";
-}
 function addMenu($menu) {
     global $security_matrix;
     
@@ -353,11 +351,10 @@ function addMenu($menu) {
     $item_cnt = mysql_num_rows($rsMenu);
     $idx = 1;
     $ptr = 1;
-    echo "<ul>";
-    while ($aRow = mysql_fetch_array($rsMenu)) {    
+    while ($aRow = mysql_fetch_array($rsMenu)) {
         if (addMenuItem($aRow, $idx)) {
             if ($ptr == $item_cnt) {
-                echo "</ul>";
+                echo "</li>";
                 $idx++;
             }
             $ptr++;
@@ -369,7 +366,7 @@ function addMenu($menu) {
 
 function addMenuItem($aMenu,$mIdx) {
 global $security_matrix, $sURLPath;
-
+    $separators = array("separator1", "separator2", "separator3");
 	$sURLPath = $_SESSION['sURLPath'];
 
     $link = ($aMenu['uri'] == "") ? "" : $sURLPath."/".$aMenu['uri'];
@@ -394,22 +391,23 @@ global $security_matrix, $sURLPath;
     }
     if (!($aMenu['ismenu']) || ($numItems > 0))
     {
-        if (($aMenu['ismenu']) && !($aMenu['parent'] == 'root')) {
-            $arrow=str_repeat("&nbsp;",10)."<img src=\"".$sURLPath."/Images/arrow.gif\">";
+        if($link){
+            echo "<li><a href='$link'>".$aMenu['content']."</a>";
+        } else if (in_array($aMenu['name'] , $separators)){
+            echo "<li class=\"divider\">\n";
         } else {
-            $arrow = "";
+            echo "<li class=\"dropdown\">\n";
+            echo "<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">".$aMenu['content']."<span class=\"caret\"></span></a>\n";
+            echo "<ul class=\"dropdown-menu\" role=\"menu\">\n";
         }
-			if($link){
-				echo "<li><a href='$link'>".$aMenu['content']."</a>";
-			} else {
-				echo "<li><a href='#'>".$aMenu['content']."</a>";
-			}
         if (($aMenu['ismenu']) && ($numItems > 0)) {
             echo "\n";
             addMenu($aMenu['name']);
+            echo "</ul>";
         } else {
 			echo "</li>\n";
 		}
+
         return true;
     } else {
         return false;
@@ -441,37 +439,35 @@ global $MenuFirst, $sPageTitle, $sURLPath;
     
     if (strlen($_SESSION['iUserID'])) {
     ?>
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-                <td colspan="7" width="100%">
-			        <!-- // ChurchInfo Menu Bar Items: -->
-					<div id='topnav'>
-        			<?php create_menu("root"); ?>
-        			</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="Search">&nbsp;</td>
-                <td class="Search" width="50%">
-                    <form name="SelectFilter" method="get" action="<?php echo $sURLPath."/"; ?>SelectList.php">
-                        <input class="menuButton" style="font-size: 8pt; margin-top: 5px;" type="text" name="Filter" id="SearchText" <?php echo 'value="' . gettext("Search") . '"'; ?> onfocus="ClearFieldOnce(this);">
-                        <input name="mode" type="radio" value="person" <?php if (! $_SESSION['bSearchFamily']) echo "checked";?>><?php echo gettext("Person"); ?><input type="radio" name="mode" value="family" <?php if ($_SESSION['bSearchFamily']) echo "checked";?>><?php echo gettext("Family"); ?>
-                    </form>
-                </td>
-                <td class="Search" align="center">
-                    <?php if($_SESSION['bFinance']) echo gettext("Current deposit slip") .
-                ": " . $_SESSION['iCurrentDeposit']; ?>
-                </td>
-                <td class="Search" align="right">
-                    <?php echo gettext("Items in Cart") . ": " . count($_SESSION['aPeopleCart']); ?>
-                </td>
-                <td class="Search">&nbsp;&nbsp;&nbsp;</td>
-                <td class="Search" align="right">
-                    <?php echo gettext("User:") . " " . $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?>
-                </td>
-                <td class="Search">&nbsp;</td>
-            </tr>
-        </table>
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <?php addMenu("root"); ?>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="img-circle" /> <?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="Default.php?Logoff=True">Log Off</a></li>
+                                <li class="divider"></li>
+                                <li><a href="UserPasswordChange.php">Change My Password</a></li>
+                                <li><a href="SettingsIndividual.php">Change My Settings</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
 
     <?php
     }
