@@ -74,11 +74,11 @@ while($myrow = mysql_fetch_row($dResults))
 }
 
 if (($previous_id > 0)) {
-    $previous_link_text = "<a class=\"SmallText\" href=\"PersonView.php?PersonID=$previous_id\">" . gettext("Previous Person") . "</a>";
+    $previous_link_text = "<a class=\"btn btn-primary active\" role=\"button\"  href=\"PersonView.php?PersonID=$previous_id\" role=\"button\">" . gettext("Previous Person") . "</a>";
 }
 
 if (($next_id > 0)) {
-    $next_link_text = "<a class=\"SmallText\" href=\"PersonView.php?PersonID=$next_id\">" . gettext("Next Person") . "</a>";
+    $next_link_text = "<a class=\"btn btn-primary active\" role=\"button\" href=\"PersonView.php?PersonID=$next_id\" role=\"button\">" . gettext("Next Person") . "</a>";
 }
 
 // Get this person's data
@@ -203,33 +203,33 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			  ($_SESSION['bEditSelf'] && $per_fam_ID==$_SESSION['iFamID'])
 			 );   
 if ($previous_link_text) {
-	echo "$previous_link_text | ";
+	echo "$previous_link_text ";
 }
-if ($bOkToEdit) { 
-	echo "<a class=\"SmallText\" href=\"PersonEditor.php?PersonID=" . $per_ID . 
-		 "\">" . gettext("Edit this Record") . "</a> | "; 
+if ($bOkToEdit) {
+	echo "<a class=\"btn btn-primary active\" role=\"button\" href=\"PersonEditor.php?PersonID=" . $per_ID .
+		 "\">" . gettext("Edit this Record") . "</a> ";
 }
 
-if ($_SESSION['bDeleteRecords']) { echo "<a class=\"SmallText\" href=\"SelectDelete.php?mode=person&PersonID=" . $per_ID . "\">" . gettext("Delete this Record") . "</a> | " ; }
+if ($_SESSION['bDeleteRecords']) { echo "<a class=\"btn btn-danger active\" role=\"button\" href=\"SelectDelete.php?mode=person&PersonID=" . $per_ID . "\">" . gettext("Delete this Record") . "</a> " ; }
 ?>
-<a href="VCardCreate.php?PersonID=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Create vCard"); ?></a> |
-<a href="PrintView.php?PersonID=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Printable Page"); ?></a>
-| <a href="PersonView.php?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Add to Cart"); ?></a>
+<a href="VCardCreate.php?PersonID=<?php echo $per_ID; ?>" class="btn btn-primary active" role="button"><?php echo gettext("Create vCard"); ?></a>
+<a href="PrintView.php?PersonID=<?php echo $per_ID; ?>" class="btn btn-primary active" role="button"><?php echo gettext("Printable Page"); ?></a>
+<a href="PersonView.php?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>" class="btn btn-primary active" role="button"><?php echo gettext("Add to Cart"); ?></a>
 
 <?php
 if ($_SESSION['bAdmin'])
 {
 	$sSQL = "SELECT usr_per_ID FROM user_usr WHERE usr_per_ID = " . $per_ID;
 	if (mysql_num_rows(RunQuery($sSQL)) == 0)
-		echo " | <a class=\"SmallText\" href=\"UserEditor.php?NewPersonID=" . $per_ID . "\">" . gettext("Make User") . "</a>" ;
+		echo " <a class=\"btn btn-primary active\" role=\"button\" href=\"UserEditor.php?NewPersonID=" . $per_ID . "\">" . gettext("Make User") . "</a> " ;
 	else
-		echo " | <a class=\"SmallText\" href=\"UserEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit User") . "</a>" ;
+		echo " <a class=\"btn btn-primary active\" role=\"button\" href=\"UserEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit User") . "</a> " ;
 }
 
 if ($next_link_text) {
-	echo " | $next_link_text";
+	echo " $next_link_text";
 }
-echo " | <a class=\"SmallText\" href=\"SelectList.php?mode=person\">" .
+echo " <a class=\"btn btn-primary active\" role=\"button\" href=\"SelectList.php?mode=person\">" .
 gettext("List View") . "</a> ";
 
 ?>
@@ -826,34 +826,6 @@ gettext("List View") . "</a> ";
 </td>
 </tr>
 </table>
-
-<?php
-if ($previous_link_text) {
-	echo "$previous_link_text | ";
-}
-if ($bOkToEdit) { echo "<a class=\"SmallText\" href=\"PersonEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit this Record") . "</a> | "; }
-if ($_SESSION['bDeleteRecords']) { echo "<a class=\"SmallText\" href=\"SelectDelete.php?mode=person&PersonID=" . $per_ID . "\">" . gettext("Delete this Record") . "</a> | " ; }
-?>
-<a href="VCardCreate.php?PersonID=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Create vCard"); ?></a> |
-<a href="PrintView.php?PersonID=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Printable Page"); ?></a>
-| <a href="PersonView.php?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>" class="SmallText"><?php echo gettext("Add to Cart"); ?></a>
-
-<?php
-if ($_SESSION['bAdmin'])
-{
-	$sSQL = "SELECT usr_per_ID FROM user_usr WHERE usr_per_ID = " . $per_ID;
-	if (mysql_num_rows(RunQuery($sSQL)) == 0)
-		echo " | <a class=\"SmallText\" href=\"UserEditor.php?NewPersonID=" . $per_ID . "\">" . gettext("Make User") . "</a>" ;
-	else
-		echo " | <a class=\"SmallText\" href=\"UserEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit User") . "</a>" ;
-}
-
-if ($next_link_text) {
-	echo " | $next_link_text";
-}
-echo " | <a class=\"SmallText\" href=\"SelectList.php?mode=person\">" .
-gettext("List View") . "</a> ";
-?>
 
 <p class="SmallText">
 	<span style="color: red;"><?php echo gettext("Red text"); ?></span> <?php echo gettext("indicates items inherited from the associated family record."); ?>

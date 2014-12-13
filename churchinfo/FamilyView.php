@@ -73,12 +73,12 @@ while($myrow = mysql_fetch_row($dResults))
 
 $previous_link_text = "";
 if (($previous_id > 0)) {
-    $previous_link_text = "<a class=\"SmallText\" href=\"FamilyView.php?FamilyID=$previous_id\">" . gettext("Previous Family") . "</a>";
+    $previous_link_text = "<a class=\"btn btn-primary active\" role=\"button\" href=\"FamilyView.php?FamilyID=$previous_id\">" . gettext("Previous Family") . "</a>";
 }
 
 $next_link_text = "";
 if (($next_id > 0)) {
-    $next_link_text = "<a class=\"SmallText\" href=\"FamilyView.php?FamilyID=$next_id\">" . gettext("Next Family") . "</a>";
+    $next_link_text = "<a class=\"btn btn-primary active\" role=\"button\" href=\"FamilyView.php?FamilyID=$next_id\">" . gettext("Next Family") . "</a>";
 }
 
 //Get the information for this family
@@ -179,29 +179,26 @@ $sCellPhone = ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy);
 require "Include/Header.php";
 
 if ($previous_link_text != "") {
-	echo "$previous_link_text | ";
+	echo "$previous_link_text ";
 }
 
 $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID'])));
 
-if ($bOkToEdit) { echo "<a class=\"SmallText\" href=\"FamilyEditor.php?FamilyID=" . $fam_ID . "\">" . gettext("Edit this Record") . "</a> | "; }
-if ($_SESSION['bDeleteRecords']) { echo "<a class=\"SmallText\" href=\"SelectDelete.php?FamilyID=" . $fam_ID . "\">" . gettext("Delete this Record") . "</a>"; }
+if ($bOkToEdit) { echo "<a class=\"btn btn-primary active\" role=\"button\" href=\"FamilyEditor.php?FamilyID=" . $fam_ID . "\">" . gettext("Edit this Record") . "</a> "; }
+if ($_SESSION['bDeleteRecords']) { echo "<a class=\"btn btn-danger active\" role=\"button\" href=\"SelectDelete.php?FamilyID=" . $fam_ID . "\">" . gettext("Delete this Record") . "</a> "; }
+if ($bOkToEdit) {
+	echo "<a class=\"btn btn-info active\" role=\"button\" href=\"Reports/ConfirmReport.php?familyId=" . $fam_ID . "\">" . gettext("Family Record PDF") . "</a> ";
+	echo "<a class=\"btn btn-warning active\" role=\"button\" href=\"Reports/ConfirmReportEmail.php?familyId=" . $fam_ID . "\">" . gettext("Email Family Record") . "</a> ";
+	echo "<a class=\"btn btn-warning active\" role=\"button\" href=\"Reports/ConfirmReportEmail.php?updated=true&familyId=" . $fam_ID . "\">" . gettext("Email Family Record - Updated") . "</a>";
+}
 if ($next_link_text != "" && ($bOkToEdit || $_SESSION['bDeleteRecords'])) {
-	echo " | $next_link_text";
+	echo " $next_link_text";
 }
 elseif ($next_link_text != "") {
 	echo "$next_link_text";
 }
 ?>
 <BR><br>
-<?php 
-if ($bOkToEdit) { 
-	echo "<a class=\"SmallText\" href=\"Reports/ConfirmReport.php?familyId=" . $fam_ID . "\">" . gettext("Family Record PDF") . "</a> ";
-	echo "| <a class=\"SmallText\" href=\"Reports/ConfirmReportEmail.php?familyId=" . $fam_ID . "\">" . gettext("Email Family Record") . "</a> ";
-	echo "| <a class=\"SmallText\" href=\"Reports/ConfirmReportEmail.php?updated=true&familyId=" . $fam_ID . "\">" . gettext("Email Family Record - Updated") . "</a>";
-	echo "<BR><br>"; }
-
-?>
 <table border="0" width="100%" cellspacing="0" cellpadding="4">
 <tr>
 <td width="25%" valign="top" align="center">
@@ -572,19 +569,6 @@ else
   </tr>
 </table>
 <BR>
-<?php
-if ($previous_link_text != "") {
-	echo "$previous_link_text | ";
-}
-if ($bOkToEdit) { echo "<a class=\"SmallText\" href=\"FamilyEditor.php?FamilyID=" . $fam_ID . "\">" . gettext("Edit this Record") . "</a>"; }
-if ($_SESSION['bDeleteRecords']) { echo " | <a class=\"SmallText\" href=\"SelectDelete.php?FamilyID=" . $fam_ID . "\">" . gettext("Delete this Record") . "</a>"; }
-if ($next_link_text != "" && ($bOkToEdit || $_SESSION['bDeleteRecords'])) {
-	echo " | $next_link_text";
-}
-elseif ($next_link_text != "") {
-	echo "$next_link_text";
-}
-?>
 <p class="SmallText">
 	<?php echo gettext("Entered:"); ?> <?php echo FormatDate($fam_DateEntered,True) . " by " . $EnteredFirstName . " " . $EnteredLastName; ?>
 	<br>

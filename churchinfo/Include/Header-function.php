@@ -33,8 +33,11 @@ global $sPageTitle, $sURLPath;
 
 	$sURLPath = $_SESSION['sURLPath'];
 ?>
+    <meta charset="utf-8">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>Include/Style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>Include/<?php echo $_SESSION['sStyle']; ?>">
@@ -50,7 +53,6 @@ global $sPageTitle, $sURLPath;
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="http://osvaldas.info/examples/drop-down-navigation-touch-friendly-and-responsive/doubletaptogo.js"></script>
 
 	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/hoverIntent.js"></script>
     <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jquery/superfish.min.js"></script>
