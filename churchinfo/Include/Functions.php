@@ -177,7 +177,7 @@ function RedirectURL($sRelativeURL)
     global $sDocumentRoot;
 
 if (empty($_SESSION['sURLPath'])) {
-    $sErrorMessage = "Fatal Error: \$_SESSION['sURLPath'] is empty.<br>.\n";
+    $sErrorMessage = "Fatal Error: \$_SESSION['sURLPath'] is empty.<br> <a href='Default.php'>Click here to login</a>.\n";
     die ($sErrorMessage);
 }
 
