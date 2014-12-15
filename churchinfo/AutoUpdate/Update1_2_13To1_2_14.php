@@ -97,7 +97,16 @@ for (; ; ) {    // This is not a loop but a section of code to be
     $sSQL = "INSERT INTO `stgeorge_churchinfo`.`config_cfg` VALUES ('2001', 'mailChimpApiKey', '', 'text', '', 'see http://kb.mailchimp.com/accounts/management/about-api-keys', 'General', NULL);";
     RunQuery($sSQL, FALSE); // False means do not stop on error
 
+    $sSQL = " delete FROM menuconfig_mcf WHERE name = 'main'"; // Moved top row
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+
     $sSQL = "delete FROM menuconfig_mcf WHERE parent = 'main';"; // Moved to the new menu style
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+
+    $sSQL = " delete FROM menuconfig_mcf WHERE name = 'help'"; // Moved top row
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+
+    $sSQL = "delete FROM menuconfig_mcf WHERE name = 'admin'"; // Moved top row
     RunQuery($sSQL, FALSE); // False means do not stop on error
 }
 

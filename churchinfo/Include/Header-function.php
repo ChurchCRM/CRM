@@ -39,8 +39,8 @@ global $sPageTitle, $sURLPath;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>Include/Style.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>Include/<?php echo $_SESSION['sStyle']; ?>">
+    <link rel="stylesheet" type="text/css" href="<?php /*echo $sURLPath."/"; */?>Include/Style.css">
+    <!--<link rel="stylesheet" type="text/css" href="<?php /*echo $sURLPath."/"; */?>Include/<?php /*echo $_SESSION['sStyle']; */?>">-->
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo $sURLPath."/"; ?>Include/jscalendar/calendar-blue.css" title="cal-style">
 
     <!-- jQuery -->
@@ -464,6 +464,20 @@ global $MenuFirst, $sPageTitle, $sURLPath;
                         </div>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Help <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <?php addMenu("help"); ?>
+                            </ul>
+                        </li>
+                        <?php if ($_SESSION['bAdmin']) { ?>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <?php addMenu("admin"); ?>
+                            </ul>
+                        </li>
+                        <?php } ?>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="img-circle" /> <?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
