@@ -15,7 +15,6 @@ eMail
 - List emails not in the MailChimp Lists
 - Export a cvs with person name, and emails for import into mail chimp 
 
-
 UI 
 =======
 - JQuery Updated and used via CDN 
@@ -23,7 +22,8 @@ UI
 - Updated Family/Person action items to use Bootstrap buttons vs Links
 - Replaced the Nav bar with bootstrap nav so that it has responsive ui in mobile devices
 - added support for using the logged in user image via Gravatar URL
-
+- Updated Login screen to use bootstrap
+- 
 Reports
 ======= 
 - Added support to create a fmaily pfd from the family view
@@ -32,8 +32,8 @@ Reports
 - Export Sundayschool csv of the child info along with Dad/Mom email/phone
 
 Bug fix
-=====
+========
 - Removed Extra > in family edit page
-- 
+
 
 
