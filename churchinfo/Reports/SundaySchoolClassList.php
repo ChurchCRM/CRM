@@ -2,13 +2,6 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 
-header("Content-type: text/csv");
-header("Content-Disposition: attachment; filename=SundaySchool-".date("Ymd").".csv");
-header("Pragma: no-cache");
-header("Expires: 0");
-
-$out = fopen('php://output', 'w');
-
 // Get all the groups
 $sSQL = "select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_FirstName firstName, kid.per_LastName LastName, kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, kid.per_CellPhone mobilePhone,
 fam.fam_HomePhone homePhone,
@@ -26,11 +19,52 @@ grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_
 order by grp.grp_Name, fam.fam_Name";
 $rsKids = RunQuery($sSQL);
 
-fputcsv($out, array("Class",
-	"First Name","Last Name", "Birth Date", "Mobile",
-	"Home Phone","Home Address",
-	"Dad Name", "Dad Mobile", "Dad Email" ,
-	"Mom Name", "Mom Mobile", "Mom Email"));
+// Set the page title and include HTML header
+$sPageTitle = gettext("Sunday School Class List");
+require "../Include/Header.php";
+
+?>
+<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/9dcbecd42ad/integration/bootstrap/3/dataTables.bootstrap.css">
+<script type="text/javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/plug-ins/9dcbecd42ad/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	<thead>
+	<tr>
+		<th>Class</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Birth Date</th>
+		<th>Mobile</th>
+		<th>Home Phone</th>
+		<th>Home Address</th>
+		<th>Dad Name</th>
+		<th>Dad Mobile</th>
+		<th>Dad Email</th>
+		<th>Mom Name</th>
+		<th>Mom Mobile</th>
+		<th>Mom Email</th>
+	</tr>
+	</thead>
+	<tfoot>
+	<tr>
+		<th>Class</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Birth Date</th>
+		<th>Mobile</th>
+		<th>Home Phone</th>
+		<th>Home Address</th>
+		<th>Dad Name</th>
+		<th>Dad Mobile</th>
+		<th>Dad Email</th>
+		<th>Mom Name</th>
+		<th>Mom Mobile</th>
+		<th>Mom Email</th>
+	</tr>
+	</tfoot>
+	<tbody>
+<?php
 
 while ($aRow = mysql_fetch_array($rsKids)) {
 	extract($aRow);
@@ -38,12 +72,40 @@ while ($aRow = mysql_fetch_array($rsKids)) {
 	if ($birthYear != "") {
 		$birthDate = $birthDay."/".$birthMonth."/".$birthYear;
 	}
-	fputcsv($out, array($sundayschoolClass,$firstName, $LastName, $birthDate,$mobilePhone, $homePhone,$Address1." ".$Address2." ".$city." ".$state." ".$zip,
-		$dadFirstName." ".$dadLastName, $dadCellPhone,  $dadEmail,
-		$momFirstName." ".$momLastName, $momCellPhone, $momEmail));
-}
 
-fclose($out);
+	echo "<tr>";
+	echo "<td>".$sundayschoolClass."</td>";
+	echo "<td>".$firstName."</td>";
+	echo "<td>".$LastName."</td>";
+ 	echo "<td>".$birthDate."</td>";
+	echo "<td>".$mobilePhone."</td>";
+	echo "<td>".$homePhone."</td>";
+	echo "<td>".$Address1." ".$Address2." ".$city." ".$state." ".$zip."</td>";
+	echo "<td>".$dadFirstName." ".$dadLastName."</td>";
+	echo "<td>".$dadCellPhone."</td>";
+ 	echo "<td>".$dadEmail."</td>";
+	echo "<td>".$momFirstName." ".$momLastName."</td>";
+	echo "<td>".$momCellPhone."</td>";
+	echo "<td>".$momEmail."</td>";
+	echo "</tr>";
+	}
+
+?>
+	</tbody>
+</table>
+
+<script language="javascript" type="text/javascript">
+	$(document).ready(function() {
+		$('#example').dataTable();
+	} );
+
+</script>
+
+
+<?php
+
+require "../Include/Footer.php";
+
 ?>
 
 

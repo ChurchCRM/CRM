@@ -108,6 +108,19 @@ for (; ; ) {    // This is not a loop but a section of code to be
 
     $sSQL = "delete FROM menuconfig_mcf WHERE name = 'admin'"; // Moved top row
     RunQuery($sSQL, FALSE); // False means do not stop on error
+
+    $sSQL = "INSERT INTO `menuconfig_mcf` (`mid`,`name`,`parent`,`ismenu`,`content_english`,`content`,`uri`,`statustext`,`security_grp`,`session_var`,`session_var_in_text`,`session_var_in_uri`,`url_parm_name`,`active`,`sortorder`)  values ('95', 'separator4', 'groups', '0', '---------------------------', '---------------------------', '', '', 'bAll', NULL, '0', '0', NULL, '1', '4');";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+
+    $sSQL = "INSERT INTO `menuconfig_mcf` (`mid`,`name`,`parent`,`ismenu`,`content_english`,`content`,`uri`,`statustext`,`security_grp`,`session_var`,`session_var_in_text`,`session_var_in_uri`,`url_parm_name`,`active`,`sortorder`)  values ('96', 'cvsundayschool', 'groups', '0','View Sunday School Reports','View Sunday School Reports', 'SundaySchool.php',  '', 'bAll', NULL, '0', '0', NULL, '1', '5');";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+
+    $sSQL = "INSERT INTO `menuconfig_mcf` (`mid`,`name`,`parent`,`ismenu`,`content_english`,`content`,`uri`,`statustext`,`security_grp`,`session_var`,`session_var_in_text`,`session_var_in_uri`,`url_parm_name`,`active`,`sortorder`)  values ('97', 'cvsundayschool', 'groups', '0','View Sunday School Class List','View Sunday School Class List', 'Reports/SundaySchoolClassList.php',  '', 'bAll', NULL, '0', '0', NULL, '1', '6');";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+
+    $sSQL = "INSERT INTO `menuconfig_mcf` (`mid`,`name`,`parent`,`ismenu`,`content_english`,`content`,`uri`,`statustext`,`security_grp`,`session_var`,`session_var_in_text`,`session_var_in_uri`,`url_parm_name`,`active`,`sortorder`)  values ('98', 'cvsundayschool', 'groups', '0', 'Sunday School Class List CSV Export' , 'Sunday School Class List CSV Export' ,  'Reports/SundaySchoolClassListExport.php', '', 'bAll', NULL, '0', '0', NULL, '1', '7');";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+
 }
 
 $sError = mysql_error();

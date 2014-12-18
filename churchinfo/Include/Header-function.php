@@ -366,7 +366,7 @@ function addMenu($menu) {
 
 function addMenuItem($aMenu,$mIdx) {
 global $security_matrix, $sURLPath;
-    $separators = array("separator1", "separator2", "separator3");
+    $separators = array("separator1", "separator2", "separator3", "separator4");
 	$sURLPath = $_SESSION['sURLPath'];
 
     $link = ($aMenu['uri'] == "") ? "" : $sURLPath."/".$aMenu['uri'];
