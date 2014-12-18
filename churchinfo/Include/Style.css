@@ -151,11 +151,19 @@ a.SmallText
 
 .PageTitle
 {
-	font-size: 170%;
 	color: black;
 	text-align: left;
 	border-bottom: solid 1px black;
 	font-family: arial, san-serif;
+}
+
+.PageTitle1
+{
+	font-size: 170%;
+}
+.PageTitle2
+{
+	font-size: 100%;
 }
 
 .LargeText

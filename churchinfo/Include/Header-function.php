@@ -423,7 +423,7 @@ global $security_matrix, $sURLPath;
 
 function Header_body_menu() {
 global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
-global $MenuFirst, $sPageTitle, $sURLPath;
+global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
 
 	$sURLPath = $_SESSION['sURLPath'];
 
@@ -522,7 +522,11 @@ global $MenuFirst, $sPageTitle, $sURLPath;
                     <tr>
                         <td valign="top">
                             <br>
-                            <p class="PageTitle"><?php echo $sPageTitle; ?></p>
+                            <div class="PageTitle">
+                                <span class="PageTitle1"><?php echo $sPageTitle; ?> </span> <small><?php echo $sPageTitleSub; ?></small>
+                            </div>
+
+
                             <p align="center" style="color: red; font-weight: bold;"><?php $sGlobalMessage; ?></p>
 <?php
 }
