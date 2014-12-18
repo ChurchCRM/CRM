@@ -214,7 +214,7 @@ if (($previous_id > 0)) {
 ?>
 <!-- Split button -->
 <div class="btn-group" xmlns="http://www.w3.org/1999/html">
-	<button type="button" class="btn btn-warning"><?php echo gettext("Modify this Record")?></button>
+	<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></button>
 	<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 		<span class="caret"></span>
 		<span class="sr-only">Toggle Dropdown</span>
