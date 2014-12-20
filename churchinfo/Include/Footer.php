@@ -15,25 +15,44 @@
  *
  ******************************************************************************/
 ?>
-						<br>
-						<br>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
-<?php
-// This footer layer slows things down, so it is disabled by default.
-/*
-<div class="Footer">
-WARNING: This is pre-release development code obtained via CVS2!<br>
-<a href="http://www.infocentral.org/" target="_blank">www.InfoCentral.org</a>
-</div>
-*/
-?>
-</body>
 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- global scripts -->
+<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/demo-skin-changer.js"></script> <!-- only for demo -->
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/jquery.nanoscroller.min.js"></script>
+
+<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/demo.js"></script> <!-- only for demo -->
+
+<!-- this page specific scripts -->
+
+<!-- theme scripts -->
+<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/scripts.js"></script>
+<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/pace.min.js"></script>
+
+<!-- this page specific inline scripts -->
+
+<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/SiteWidejQuery.js"></script>
+
+
+
+
+</body>
 </html>
 <?php
 

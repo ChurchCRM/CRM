@@ -1,0 +1,222 @@
+/** initial setup **/
+.nano {
+  position : relative;
+  width    : 100%;
+  height   : 100%;
+  overflow : hidden;
+}
+.nano > .nano-content {
+  position      : absolute;
+  overflow      : scroll;
+  overflow-x    : hidden;
+  top           : 0;
+  right         : 0;
+  bottom        : 0;
+  left          : 0;
+}
+.nano > .nano-content:focus {
+  outline: thin dotted;
+}
+.nano > .nano-content::-webkit-scrollbar {
+  display: none;
+}
+.has-scrollbar > .nano-content::-webkit-scrollbar {
+  display: block;
+}
+.nano > .nano-pane {
+  background : rgba(0,0,0,.1);
+  position   : absolute;
+  width      : 7px;
+  right      : 0;
+  top        : 0;
+  bottom     : 0;
+  visibility : hidden\9; /* Target only IE7 and IE8 with this hack */
+  opacity    : .01;
+  -webkit-transition    : .2s;
+  -moz-transition       : .2s;
+  -o-transition         : .2s;
+  transition            : .2s;
+  -moz-border-radius    : 7px;
+  -webkit-border-radius : 7px;
+  border-radius         : 7px;
+}
+.nano > .nano-pane > .nano-slider {
+  background: #444;
+  background: rgba(0,0,0,.5);
+  position              : relative;
+  margin                : 0 1px;
+  -moz-border-radius    : 7px;
+  -webkit-border-radius : 7px;
+  border-radius         : 7px;
+}
+.nano:hover > .nano-pane, .nano-pane.active, .nano-pane.flashed {
+  visibility : visible\9; /* Target only IE7 and IE8 with this hack */
+  opacity    : 0.99;
+}
+
+
+/** initial setup for left menu **/
+@media (min-width: 992px) {
+	.fixed-leftmenu .col-left-nano {
+	  position : relative;
+	  width    : 100%;
+	  height   : 100%;
+	  overflow : hidden;
+	}
+	.fixed-leftmenu .col-left-nano > .col-left-nano-content {
+	  position      : absolute;
+	  overflow      : scroll;
+	  overflow-x    : hidden;
+	  top           : 0;
+	  right         : 0;
+	  bottom        : 0;
+	  left          : 0;
+	}
+	.fixed-leftmenu .col-left-nano > .col-left-nano-content:focus {
+	  outline: thin dotted;
+	}
+	.fixed-leftmenu .col-left-nano > .col-left-nano-content::-webkit-scrollbar {
+	  display: none;
+	}
+	.fixed-leftmenu .has-scrollbar > .col-left-nano-content::-webkit-scrollbar {
+	  display: block;
+	}
+	.fixed-leftmenu .col-left-nano > .nano-pane {
+	  background : rgba(0,0,0,.1);
+	  position   : absolute;
+	  width      : 7px;
+	  right      : 0;
+	  top        : 0;
+	  bottom     : 0;
+	  visibility : hidden\9; /* Target only IE7 and IE8 with this hack */
+	  opacity    : .01;
+	  -webkit-transition    : .2s;
+	  -moz-transition       : .2s;
+	  -o-transition         : .2s;
+	  transition            : .2s;
+	  -moz-border-radius    : 7px;
+	  -webkit-border-radius : 7px;
+	  border-radius         : 7px;
+	}
+	.fixed-leftmenu .col-left-nano > .nano-pane > .nano-slider {
+	  background: #444;
+	  background: rgba(0,0,0,.5);
+	  position              : relative;
+	  margin                : 0 1px;
+	  -moz-border-radius    : 7px;
+	  -webkit-border-radius : 7px;
+	  border-radius         : 7px;
+	}
+	.fixed-leftmenu .col-left-:hover > .nano-pane, .nano-pane.active, .nano-pane.flashed {
+	  visibility : visible\9; /* Target only IE7 and IE8 with this hack */
+	  opacity    : 0.99;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	#email-navigation.email-nav-nano,
+	#email-content.email-content-nano,
+	#email-detail.email-detail-nano,
+	#email-new.email-new-nano {
+	  height   : 100%;
+	  overflow : hidden;
+	}
+	#email-navigation.email-nav-nano > .email-nav-nano-content,
+	#email-content.email-content-nano > .email-content-nano-content,
+	#email-detail.email-detail-nano > .email-detail-nano-content,
+	#email-new.email-new-nano > .email-new-nano-content {
+	  position      : absolute;
+	  overflow      : scroll;
+	  overflow-x    : hidden;
+	  top           : 0;
+	  right         : 0;
+	  bottom        : 0;
+	  left          : 0;
+	}
+	.rtl #email-navigation.email-nav-nano > .email-nav-nano-content,
+	.rtl #email-content.email-content-nano > .email-content-nano-content,
+	.rtl #email-detail.email-detail-nano > .email-detail-nano-content,
+	.rtl #email-new.email-new-nano > .email-new-nano-content {
+		left: -14px;
+		padding-left: 14px;
+		right: 0 !important;
+		padding-right: 0 !important;
+	}
+	#email-navigation.email-nav-nano > .email-nav-nano-content:focus,
+	#email-content.email-content-nano > .email-content-nano-content:focus,
+	#email-detail.email-detail-nano > .email-detail-nano-content:focus,
+	#email-new.email-new-nano > .email-new-nano-content:focus {
+	  outline: thin dotted;
+	}
+	#email-navigation.email-nav-nano > .email-nav-nano-content::-webkit-scrollbar,
+	#email-content.email-content-nano > .email-content-nano-content::-webkit-scrollbar,
+	#email-detail.email-detail-nano > .email-detail-nano-content::-webkit-scrollbar,
+	#email-new.email-new-nano > .email-new-nano-content::-webkit-scrollbar {
+	  display: none;
+	}
+	#email-navigation.has-scrollbar > .email-nav-nano-content::-webkit-scrollbar,
+	#email-content.has-scrollbar > .email-content-nano-content::-webkit-scrollbar,
+	#email-detail.has-scrollbar > .email-detail-nano-content::-webkit-scrollbar,
+	#email-new.has-scrollbar > .email-new-nano-content::-webkit-scrollbar {
+	  display: block;
+	}
+	#email-navigation.email-nav-nano > .nano-pane,
+	#email-content.email-content-nano > .nano-pane,
+	#email-detail.email-detail-nano > .nano-pane,
+	#email-new.email-new-nano > .nano-pane {
+	  background : rgba(0,0,0,.1);
+	  position   : absolute;
+	  width      : 7px;
+	  right      : 0;
+	  top        : 0;
+	  bottom     : 0;
+	  visibility : hidden\9; /* Target only IE7 and IE8 with this hack */
+	  opacity    : .01;
+	  -webkit-transition    : .2s;
+	  -moz-transition       : .2s;
+	  -o-transition         : .2s;
+	  transition            : .2s;
+	  -moz-border-radius    : 7px;
+	  -webkit-border-radius : 7px;
+	  border-radius         : 7px;
+	}
+	.rtl #email-navigation.email-nav-nano > .nano-pane,
+	.rtl #email-content.email-content-nano > .nano-pane,
+	.rtl #email-detail.email-detail-nano > .nano-pane,
+	.rtl #email-new.email-new-nano > .nano-pane {
+		left: 0;
+		right: auto;
+	}
+	#email-navigation.email-nav-nano > .nano-pane > .nano-slider,
+	#email-content.email-content-nano > .nano-pane > .nano-slider,
+	#email-detail.email-detail-nano > .nano-pane > .nano-slider,
+	#email-new.email-new-nano > .nano-pane > .nano-slider {
+	  background: #444;
+	  background: rgba(0,0,0,.5);
+	  position              : relative;
+	  margin                : 0 1px;
+	  -moz-border-radius    : 7px;
+	  -webkit-border-radius : 7px;
+	  border-radius         : 7px;
+	}
+	#email-navigation.email-nav-nano:hover > .nano-pane, 
+	#email-navigation .nano-pane.active, 
+	#email-navigation .nano-pane.flashed,
+	#email-content.email-content-nano:hover > .nano-pane, 
+	#email-content .nano-pane.active, 
+	#email-content .nano-pane.flashed,
+	#email-detail.email-detail-nano:hover > .nano-pane, 
+	#email-detail .nano-pane.active, 
+	#email-detail .nano-pane.flashed,
+	#email-new.email-new-nano:hover > .nano-pane, 
+	#email-new .nano-pane.active, 
+	#email-new .nano-pane.flashed {
+	  visibility : visible\9; /* Target only IE7 and IE8 with this hack */
+	  opacity    : 0.99;
+	}
+}

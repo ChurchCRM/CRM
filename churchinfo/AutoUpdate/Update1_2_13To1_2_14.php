@@ -121,6 +121,24 @@ for (; ; ) {    // This is not a loop but a section of code to be
     $sSQL = "INSERT INTO `menuconfig_mcf` (`mid`,`name`,`parent`,`ismenu`,`content_english`,`content`,`uri`,`statustext`,`security_grp`,`session_var`,`session_var_in_text`,`session_var_in_uri`,`url_parm_name`,`active`,`sortorder`)  values ('98', 'cvsundayschool', 'groups', '0', 'Sunday School Class List CSV Export' , 'Sunday School Class List CSV Export' ,  'Reports/SundaySchoolClassListExport.php', '', 'bAll', NULL, '0', '0', NULL, '1', '7');";
     RunQuery($sSQL, FALSE); // False means do not stop on error
 
+    $sSQL = "ALTER TABLE `menuconfig_mcf` ADD COLUMN `icon` VARCHAR(45) NULL AFTER `sortorder`;";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+
+
+    /*
+     *
+     * UPDATE `stgeorge_churchinfo`.`menuconfig_mcf` SET `icon`='fa-users' WHERE `mid`='19';
+UPDATE `stgeorge_churchinfo`.`menuconfig_mcf` SET `icon`='fa-ticket' WHERE `mid`='31';
+UPDATE `stgeorge_churchinfo`.`menuconfig_mcf` SET `icon`='fa-bank' WHERE `mid`='35';
+UPDATE `stgeorge_churchinfo`.`menuconfig_mcf` SET `icon`='fa-money' WHERE `mid`='84';
+UPDATE `stgeorge_churchinfo`.`menuconfig_mcf` SET `icon`='fa-shopping-cart' WHERE `mid`='41';
+UPDATE `stgeorge_churchinfo`.`menuconfig_mcf` SET `icon`='fa-file-pdf-o' WHERE `mid`='47';
+UPDATE `stgeorge_churchinfo`.`menuconfig_mcf` SET `icon`='fa-tag' WHERE `mid`='51';
+UPDATE `stgeorge_churchinfo`.`menuconfig_mcf` SET `icon`='fa-cogs' WHERE `mid`='56';
+
+     *
+     */
+
 }
 
 $sError = mysql_error();

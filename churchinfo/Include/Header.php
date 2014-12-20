@@ -38,11 +38,12 @@ $MenuFirst = 1;
 
 ?>
 <!DOCTYPE HTML>
-<html lang="en">
+<html>
 <head>
 <?php Header_head_metatag(); ?>
 </head>
-<body onload="javascript:scrollToCoordinates()">
+<body>
+<div id="theme-wrapper">
 <?php 
 
 Header_body_scripts();

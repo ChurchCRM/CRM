@@ -65,7 +65,7 @@ $sPageTitle = gettext('ChurchInfo: Database Version Check');
 <head>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="Include/Style.css">
+    <link rel="stylesheet" type="text/css" href="css/Style.css">
     <title><?php echo $sPageTitle; ?></title>
 </head>
 <body>

@@ -33,28 +33,34 @@ global $sPageTitle, $sURLPath;
 
 	$sURLPath = $_SESSION['sURLPath'];
 ?>
-    <meta charset="utf-8">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <link rel="stylesheet" type="text/css" href="<?php /*echo $sURLPath."/"; */?>Include/Style.css">
-    <!--<link rel="stylesheet" type="text/css" href="<?php /*echo $sURLPath."/"; */?>Include/<?php /*echo $_SESSION['sStyle']; */?>">-->
+    <link rel="stylesheet" type="text/css" href="<?php /*echo $sURLPath."/"; */?>css/Style.css">
+    <!--<link rel="stylesheet" type="text/css" href="<?php /*echo $sURLPath."/"; */?>Include/<?php /*echo $_SESSION['sStyle']; */?>">
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo $sURLPath."/"; ?>Include/jscalendar/calendar-blue.css" title="cal-style">
+    -->
 
     <!-- jQuery -->
     <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/SiteWidejQuery.js"></script>
+
+	<!-- libraries -->
+    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/libs/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/libs/nanoscroller.css" />
+
+    <!-- global styles -->
+    <link rel="stylesheet" type="text/css" href="css/compiled/theme_styles.css" />
+
+
+
+    <!-- google font libraries -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
 
     <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
     <title>ChurchInfo: <?php echo $sPageTitle; ?></title>
@@ -115,114 +121,6 @@ $sURLPath = $_SESSION['sURLPath'];
     }
 // End of basic security checks
  ?>
-
-    <script language="javascript" type="text/javascript">
-        function scrollToCoordinates() 
-        {   // This function reads X and Y scroll coordinates from a cookie
-            // If the cookie does not exist or if cookies are not supported
-            // default values of zero are returned.
-            // Next, the browser scroll bars are set to the X and Y values
-            // Finally, the cookie is deleted
-            var X_scroll_coordinate = 0;
-            var Y_scroll_coordinate = 0;
-            X_scroll_coordinate = getCookie('X_scroll_coordinate');
-            Y_scroll_coordinate = getCookie('Y_scroll_coordinate');
-            if(X_scroll_coordinate==null)
-                {X_scroll_coordinate = "0";}
-            if(Y_scroll_coordinate==null)
-                {Y_scroll_coordinate = "0";}
-            // Never scroll to 0,0 
-            if(Y_scroll_coordinate != "0" || X_scroll_coordinate != "0")       
-                {window.scrollTo(X_scroll_coordinate,Y_scroll_coordinate);}
-            // Important! Delete the cookies or every page will load at these coordinates.
-            delCookie('X_scroll_coordinate');
-            delCookie('Y_scroll_coordinate');
-        }
-        function saveScrollCoordinates() 
-        {   // This function reads the current X and Y coordinate values
-            // and saves them to a cookie
-            // Should work with most browsers 
-            // (Only tested FireFox 1.0 and IE 6.0)
-            var scrOfX = 0, scrOfY = 0;
-            if( typeof( window.pageYOffset ) == 'number' ) 
-            {   //Netscape compliant
-                scrOfY = window.pageYOffset;
-                scrOfX = window.pageXOffset;
-            } else if( document.body && ( document.body.scrollLeft || 
-                                            document.body.scrollTop ) ) 
-            {   //DOM compliant
-                scrOfY = document.body.scrollTop;
-                scrOfX = document.body.scrollLeft;
-            } else if( document.documentElement && ( document.documentElement.scrollLeft 
-                                            || document.documentElement.scrollTop ) ) 
-            {   //IE6 standards compliant mode
-                scrOfY = document.documentElement.scrollTop;
-                scrOfX = document.documentElement.scrollLeft;
-            }
-            setCookie('X_scroll_coordinate', scrOfX, 1);
-            setCookie('Y_scroll_coordinate', scrOfY, 1);
-        }
-
-        function getCookie(NameOfCookie)
-        {   // First we check to see if there is a cookie stored.
-            // Otherwise the length of document.cookie would be zero.
-
-            if (document.cookie.length > 0)
-            {   // Second we check to see if the cookie's name is stored in the
-                // "document.cookie" object for the page.
-
-                // Since more than one cookie can be set on a
-                // single page it is possible that our cookie
-                // is not present, even though the "document.cookie" object
-                // is not just an empty text.
-                // If our cookie name is not present the value -1 is stored
-                // in the variable called "begin".
-
-                begin = document.cookie.indexOf(NameOfCookie+"=");
-                if (begin != -1) // Note: != means "is not equal to"
-                {   // Our cookie was set.
-                    // The value stored in the cookie is returned from the function.
-
-                    begin += NameOfCookie.length+1;
-                    end = document.cookie.indexOf(";", begin);
-                    if (end == -1) end = document.cookie.length;
-                    return unescape(document.cookie.substring(begin, end)); 
-                }
-            }
-            return null;
-
-            // Our cookie was not set.
-            // The value "null" is returned from the function.
-        }
-        function setCookie(NameOfCookie, value, expiredays)
-        {   // Three variables are used to set the new cookie.
-            // The name of the cookie, the value to be stored,
-            // and finally the number of days until the cookie expires.
-            // The first lines in the function convert
-            // the number of days to a valid date.
-
-            var ExpireDate = new Date ();
-            ExpireDate.setTime(ExpireDate.getTime() + (expiredays * 24 * 3600 * 1000));
-
-            // The next line stores the cookie, simply by assigning
-            // the values to the "document.cookie" object.
-            // Note the date is converted to Greenwich Mean time using
-            // the "toGMTstring()" function.
-
-            document.cookie = NameOfCookie + "=" + escape(value) +
-            ((expiredays == null) ? "" : "; expires=" + ExpireDate.toGMTString());
-        }
-        function delCookie (NameOfCookie)
-        {
-        // The function simply checks to see if the cookie is set.
-        // If so, the expiration date is set to Jan. 1st 1970.
-
-            if (getCookie(NameOfCookie)) {
-                document.cookie = NameOfCookie + "=" +
-                "; expires=Thu, 01-Jan-70 00:00:01 GMT";
-            }
-        }
-    </script> 
 
     <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jscalendar/calendar.js"></script>
     <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jscalendar/lang/calendar-<?php echo substr($sLanguage,0,2); ?>.js"></script>
@@ -300,9 +198,6 @@ $sURLPath = $_SESSION['sURLPath'];
         }
 
     </script>
-
-
-
 <?php
 }
 
@@ -345,7 +240,7 @@ function GetSecuritySettings() {
 function addMenu($menu) {
     global $security_matrix;
     
-    $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text, session_var_in_uri, url_parm_name, security_grp FROM menuconfig_mcf WHERE parent = '$menu' AND active=1 ".$security_matrix." ORDER BY sortorder";
+    $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text, session_var_in_uri, url_parm_name, security_grp, icon FROM menuconfig_mcf WHERE parent = '$menu' AND active=1 ".$security_matrix." ORDER BY sortorder";
     
     $rsMenu = RunQuery($sSQL);
     $item_cnt = mysql_num_rows($rsMenu);
@@ -396,16 +291,19 @@ global $security_matrix, $sURLPath;
         } else if (in_array($aMenu['name'] , $separators)){
             echo "<li class=\"divider\">\n";
         } else {
-            echo "<li class=\"dropdown\">\n";
-            echo "<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">";
-            echo $aMenu['content'];
+            echo "<li>\n";
+            echo "    <a href=\"#\" class=\"dropdown-toggle\">\n";
+            echo "<i class=\"fa ". $aMenu['icon'] ."\"></i>";
+            echo "<span>".$aMenu['content']."</span> ";
+            echo "<i class=\"fa fa-chevron-circle-right drop-icon\"></i>\n";
             if ($aMenu['name'] == "cart") {
                 echo " (". count($_SESSION['aPeopleCart']).") ";
             } else if ($aMenu['name'] == "deposit") {
             echo " (". $_SESSION['iCurrentDeposit'].") ";
             }
-            echo "<span class=\"caret\"></span></a>\n";
-            echo "<ul class=\"dropdown-menu\" role=\"menu\">\n";
+            ?>  </a>
+                <ul class="submenu">
+            <?php
         }
         if (($aMenu['ismenu']) && ($numItems > 0)) {
             echo "\n";
@@ -446,55 +344,114 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
     
     if (strlen($_SESSION['iUserID'])) {
     ?>
-        <!-- Static navbar -->
-        <nav class="navbar navbar-inverse" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+    <header class="navbar" id="header-navbar">
+        <div class="container">
+            <a href="Menu.php" id="logo" class="navbar-brand">
+                Church Info CRM
+            </a>
+            <div class="clearfix">
+                <button class="navbar-toggle" data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+                    <ul class="nav navbar-nav pull-left">
+                        <li>
+                            <a class="btn" id="make-small-nav">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group" name="SelectFilter" method="get" action="<?php echo $sURLPath."/"; ?>SelectList.php">
-                            <input type="text" class="form-control" placeholder="Search" onfocus="ClearFieldOnce(this);" id="SearchText" <?php echo 'value="' . gettext("Search") . '"'; ?>>
-                        </div>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Help <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <?php addMenu("help"); ?>
-                            </ul>
+
+
+                <div class="nav-no-collapse pull-right" id="header-nav">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="mobile-search">
+                            <a class="btn">
+                                <i class="fa fa-search"></i>
+                            </a>
+
+                            <div class="drowdown-search">
+                                <form role="search">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search..." onfocus="ClearFieldOnce(this);" id="SearchText" <?php echo 'value="' . gettext("Search") . '"'; ?>>
+                                        <i class="fa fa-search nav-search-icon"></i>
+                                    </div>
+                                </form>
+                            </div>
                         </li>
                         <?php if ($_SESSION['bAdmin']) { ?>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown profile-dropdown">
+                            <a class="btn" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                            <ul class="dropdown-menu">
                                 <?php addMenu("admin"); ?>
                             </ul>
                         </li>
                         <?php } ?>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="img-circle" /> <?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="Default.php?Logoff=True">Log Off</a></li>
+                        <li class="dropdown profile-dropdown">
+                            <a class="btn" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-question-circle"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <?php addMenu("help"); ?>
+                            </ul>
+                        </li>
+                        <li class="dropdown profile-dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="img-circle" />
+                                <span class="hidden-xs"><?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> </span> <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="PersonView.php?PersonID=<?php echo $_SESSION['iUserID'];?>"><i class="fa fa-user"></i>Profile</a></li>
                                 <li class="divider"></li>
                                 <li><a href="UserPasswordChange.php">Change My Password</a></li>
                                 <li><a href="SettingsIndividual.php">Change My Settings</a></li>
+                                <li class="divider"></li>
+                                <li><a href="Default.php?Logoff=True"><i class="fa fa-power-off"></i>Log Off</a></li>
                             </ul>
                         </li>
+                        <li class="hidden-xxs">
+                            <a class="btn" href="Default.php?Logoff=True">
+                                <i class="fa fa-power-off"></i>
+                            </a>
+                        </li>
                     </ul>
-                    <ul class="nav navbar-nav">
-                        <?php addMenu("root"); ?>
-                    </ul>
-
-                </div><!--/.nav-collapse -->
+                </div>
             </div>
-        </nav>
+        </div>
+    </header>
+    <div id="page-wrapper" class="container">
+        <div class="row">
+            <div id="nav-col">
+                <section id="col-left" class="col-left-nano">
+                    <div id="col-left-inner" class="col-left-nano-content">
+                        <div id="user-left-box" class="clearfix hidden-sm hidden-xs">
+                            <img src="<?php echo get_gravatar($_SESSION['sEmailAddress'],70); ?>" class="img-circle" />
+                            <div class="user-box">
+									<span class="name">Welcome<br/>
+                                        <?php echo $_SESSION['UserFirstName']; ?>
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li>
+                                    <a href="Menu.php">
+                                        <i class="fa fa-dashboard"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <?php addMenu("root"); ?>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
 
     <?php
     }
@@ -514,20 +471,21 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
         }
 
     ?>
+        <div id="content-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                                <span class="PageTitle1"></small>
+                    <div class="row">
+                        <div class="col-lg-12">
+                               <h1><?php echo $sPageTitle; ?></h1>
+                        </div>
+                    </div>
 
-    <table width="100%" border="0" cellpadding="5" cellspacing="0" align="left">
-        <tr>
-            <td valign="top" width="100%" align="center">
-                <table width="95%" border="0">
-                    <tr>
-                        <td valign="top">
-                            <br>
-                            <div class="PageTitle">
-                                <span class="PageTitle1"><?php echo $sPageTitle; ?> </span> <small><?php echo $sPageTitleSub; ?></small>
-                            </div>
-
-
-                            <p align="center" style="color: red; font-weight: bold;"><?php $sGlobalMessage; ?></p>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="main-box clearfix">
+                                <div class="main-box-body clearfix">
+                                        <p align="center" style="color: red; font-weight: bold;"><?php $sGlobalMessage; ?></p>
 <?php
 }
 
