@@ -55,9 +55,9 @@ global $sPageTitle, $sURLPath;
     <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/libs/nanoscroller.css" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="css/compiled/theme_styles.css" />
-
-
+    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/compiled/theme_styles.css" />
+    <!-- this page specific styles -->
+    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/libs/magnific-popup.css">
 
     <!-- google font libraries -->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
@@ -341,7 +341,7 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
         echo html_entity_decode($sHeader,ENT_QUOTES);
         echo "</td></tr></table>";
     }
-    
+
     if (strlen($_SESSION['iUserID'])) {
     ?>
     <header class="navbar" id="header-navbar">
@@ -474,20 +474,21 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
         <div id="content-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                                <span class="PageTitle1"></small>
-                    <div class="row">
-                        <div class="col-lg-12">
-                               <h1><?php echo $sPageTitle; ?></h1>
-                        </div>
-                    </div>
+                    <h1><?php echo $sPageTitle; ?></h1>
+                </div>
+            </div>
 
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="main-box clearfix">
-                                <div class="main-box-body clearfix">
-                                        <p align="center" style="color: red; font-weight: bold;"><?php $sGlobalMessage; ?></p>
-<?php
-}
+            <?php if ($sGlobalMessage) { ?>
+                <div class="main-box-body clearfix">
+                    <div class="alert alert-success fade in">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <i class="fa fa-check-circle fa-fw fa-lg"></i>
+                        <?php $sGlobalMessage; ?>
+                    </div>
+                </div>
+            <?php
+            }
+    }
 
 function create_side_nav($menu) {
 

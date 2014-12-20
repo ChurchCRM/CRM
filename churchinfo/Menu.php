@@ -31,30 +31,29 @@ require 'Include/Functions.php';
 $sPageTitle = gettext('Welcome to ChurchInfo');
 
 require 'Include/Header.php';
+?>
 
+<div class="row">
+    <div class="col-lg-3 col-sm-6 col-xs-12">
+        <div class="main-box infographic-box">
+            <i class="fa fa-user red-bg"></i>
+            <span class="headline">Persons</span>
+            <span class="value">2562</span>
+        </div>
+        <div class="main-box infographic-box">
+            <i class="fa fa-shopping-cart emerald-bg"></i>
+            <span class="headline">Cart</span>
+            <span class="value">2562</span>
+        </div>
+        <div class="main-box infographic-box">
+            <i class="fa fa-money green-bg"></i>
+            <span class="headline">Income</span>
+            <span class="value">2562</span>
+        </div>
+    </div>
+</div>
 
-echo '<p>'.gettext('Hi').' '.$_SESSION['UserFirstName'].'</p>';
-
-if ($_SESSION['iLoginCount'] == 0) {
-
-    echo '<p>'.gettext('This is your first login').'.</p>';
-
-} else {
-
-    $dLL = $_SESSION['dLastLogin'];
-    $sSQL = "SELECT DAYNAME('$dLL') as dn, MONTHNAME('$dLL') as mn, DAYOFMONTH('$dLL') as dm, "
-    .       "YEAR('$dLL') as y, HOUR('$dLL') as h, DATE_FORMAT('$dLL', ':%i') as m";
-    extract(mysql_fetch_array(RunQuery($sSQL)));
-
-    echo '<p>'.gettext('Welcome back').'.';
-
-    echo ' '.gettext('You last logged in on').' '.gettext("$dn").', '.gettext("$mn")
-    .   " $dm, $y " . gettext('at') . " $h$m.</p>\n";
-
-    echo '<p>'.gettext('There were').' '.$_SESSION['iFailedLogins'].' '
-    .   gettext('failed login attempt(s) since your last successful login').'.</p>';
-
-}
+<?php
 
 require 'Include/Footer.php';
 ?>
