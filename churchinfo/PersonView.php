@@ -18,6 +18,7 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require 'Include/PersonFunctions.php';
 require 'Include/MailchimpFunctions.php';
 
 $mailchimp = new ChurchInfoMailchimp();
@@ -44,6 +45,8 @@ if ( isset($_POST["VolunteerOpportunityAssign"]) && $_SESSION['bEditRecords'])
 		}
 	}
 }
+
+
 
 // Service remove-volunteer-opportunity (these links set RemoveVO)
 if ($iRemoveVO > 0  && $_SESSION['bEditRecords'])
@@ -75,7 +78,7 @@ $rsCustomData = RunQuery($sSQL);
 $aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
 
 // Get the notes for this person
-$sSQL = "SELECT nte_Private, nte_ID, nte_Text, nte_DateEntered, nte_EnteredBy, nte_DateLastEdited, nte_EditedBy, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName ";
+$sSQL = "SELECT nte_Private, nte_ID, nte_Text, nte_DateEntered, nte_EnteredBy, nte_DateLastEdited, nte_EditedBy, a.per_FirstName AS EnteredFirstName, a.Per_ID EnteredId, a.Per_LastName AS EnteredLastName, b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName, b.Per_ID EditedId ";
 $sSQL .= "FROM note_nte ";
 $sSQL .= "LEFT JOIN person_per a ON nte_EnteredBy = a.per_ID ";
 $sSQL .= "LEFT JOIN person_per b ON nte_EditedBy = b.per_ID ";
@@ -170,7 +173,48 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			  ($_SESSION['bEditSelf'] && $per_fam_ID==$_SESSION['iFamID'])
 			 );
 ?>
-<p class="SmallText">
+<div class="pull-right top-page-ui text-center">
+	<div class="profile-message-btn btn-group">
+		<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Profile</button>
+		<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			<span class="caret"></span>
+			<span class="sr-only">Toggle Dropdown</span>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<?php
+			if ($bOkToEdit) {
+				echo "<li><a href=\"uploadPhoto.php?PersonID=" . $per_ID . "\">" . gettext("Upload "). $per_FirstName  . gettext(" Photo ")."</a></li> ";
+				echo "<li class=\"divider\"></li>";
+			} ?>
+			<li><a href="VCardCreate.php?PersonID=<?php echo $per_ID; ?>" ><?php echo gettext("Create vCard"); ?></a></li>
+			<li><a href="PrintView.php?PersonID=<?php echo $per_ID; ?>"><?php echo gettext("Printable Page"); ?></a></li>
+			<li><a href="PersonView.php?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>"><?php echo gettext("Add to Cart"); ?></a></li>
+			<?php if ($_SESSION['bNotes']) { ?>
+				<li class="divider"></li>
+				<li><a href="WhyCameEditor.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Edit \"Why Came\" Notes"); ?></a></li>
+				<li><a href="NoteEditor.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Add a Note to this Record"); ?></a></li>
+			<?php } ?>
+			</p>
+			<li class="divider"></li>
+			<?php
+			if ($_SESSION['bDeleteRecords']) {
+				echo "<li><a href=\"SelectDelete.php?mode=person&PersonID=" . $per_ID . "\">" . gettext("Delete this Record") . "</a></li>";
+			}
+			if ($_SESSION['bAdmin'])
+			{
+				echo "<li class=\"divider\"></li>";
+				$sSQL = "SELECT usr_per_ID FROM user_usr WHERE usr_per_ID = " . $per_ID;
+				if (mysql_num_rows(RunQuery($sSQL)) == 0)
+					echo "<li> <a href=\"UserEditor.php?NewPersonID=" . $per_ID . "\">" . gettext("Make User") . "</a> </li>" ;
+				else
+					echo "<li> <a role=\"button\" href=\"UserEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit User") . "</a> " ;
+			}
+			?>
+		</ul>
+		<a class="btn btn-primary active" role="button" href="SelectList.php?mode=person"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+	</div>
+</div>
+<p class="SmallText clearfix" >
 	<span style="color: red;"><?php echo gettext("Red text"); ?></span> <?php echo gettext("indicates items inherited from the associated family record."); ?>
 </p>
 <div class="row" id="user-profile">
@@ -179,37 +223,29 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			<header class="main-box-header clearfix">
 				<h2>
 					<?php
-					switch ($per_Gender)
-					{
-						case 1:
-							echo "<i class=\"fa fa-male\"></i>";
-							break;
-						case 2:
-							echo "<i class=\"fa fa-female\"></i>";
-							break;
-					}
-					echo " ".FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0);
-					?>
+					echo getGenderIcon($per_Gender). " ".FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0);
+					if ($bOkToEdit) {?>
+						<a href="PersonEditor.php?PersonID=<?php echo $per_ID;?>">
+						<span class="fa-stack">
+							<i class="fa fa-square fa-stack-2x"></i>
+							<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+						</span>
+						</a>
+					<?php }?>
 				</h2>
 			</header>
 
 			<div class="main-box-body clearfix">
-				<?php
-				$photoFile = "Images/Person/thumbnails/" . $iPersonID . ".jpg";
-				if (!file_exists($photoFile))
-				{
-					$photoFile = "Images/NoPhoto.png";
-				}
-				?>
-				<img src="<?php echo $photoFile ?>" alt="" class="profile-img img-responsive center-block" />
-
+				<img src="<?php echo getPersonPhoto($iPersonID, $per_Gender, $sFamRole) ?>" alt="" class="profile-img img-responsive center-block" />
 				<div class="profile-label">
 					<span class="label label-info"><?php
 						if ($sFamRole != "")
 							echo $sFamRole;
 						else
 							echo gettext("Member");
-						?></span>
+						?>
+					</span>
+					<p />
 				</div>
 
 
@@ -226,9 +262,15 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 					<ul class="fa-ul">
 						<li><i class="fa-li fa fa-group"></i>Family: <span>
 								<?php
-								if ($fam_ID != "") {
-									echo "<a href=\"FamilyView.php?FamilyID=" . $fam_ID . "\">" . $fam_Name . "</a>";
-								} else
+								if ($fam_ID != "") { ?>
+									<a href="FamilyView.php?FamilyID=<?php echo $fam_ID; ?>"><?php echo $fam_Name; ?> </a>
+									<a href="FamilyEditor.php?FamilyID=<?php echo $fam_ID; ?>" class="table-link">
+										<span class="fa-stack">
+											<i class="fa fa-square fa-stack-2x"></i>
+											<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+										</span>
+									</a>
+								<?php } else
 									echo gettext("(No assigned family)");
 								?>
 							</span></li>
@@ -290,55 +332,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
 				</div>
 
-				<div class="profile-message-btn center-block text-center">
-					<a href="#" class="btn btn-success">
-						<i class="fa fa-envelope"></i>
-						Send message
-					</a>
-					<div class="profile-message-btn btn-group">
-						<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></button>
-						<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							<span class="caret"></span>
-							<span class="sr-only">Toggle Dropdown</span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<?php
-							echo "<li><a href=\"FamilyView.php?FamilyID=" . $fam_ID . "\">View " . $fam_Name . gettext(" family"). "</a></li>";
-							echo "<li class=\"divider\"></li>";
-							if ($bOkToEdit) {
-								echo "<li><a href=\"PersonEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit "). $per_FirstName  . "</a></li> ";
-								echo "<li><a href=\"FamilyEditor.php?FamilyID=" . $fam_ID . "\">" . gettext("Edit "). $fam_Name. gettext(" family"). "</a></li> ";
-								echo "<li><a href=\"uploadPhoto.php?PersonID=" . $per_ID . "\">" . gettext("Upload "). $per_FirstName  . gettext(" Photo ")."</a></li> ";
-								echo "<li class=\"divider\"></li>";
-							} ?>
-							<li><a href="VCardCreate.php?PersonID=<?php echo $per_ID; ?>" ><?php echo gettext("Create vCard"); ?></a></li>
-							<li><a href="PrintView.php?PersonID=<?php echo $per_ID; ?>"><?php echo gettext("Printable Page"); ?></a></li>
-							<li><a href="PersonView.php?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>"><?php echo gettext("Add to Cart"); ?></a></li>
-							<?php if ($_SESSION['bNotes']) { ?>
-								<li class="divider"></li>
-								<li><a href="WhyCameEditor.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Edit \"Why Came\" Notes"); ?></a></li>
-								<li><a href="NoteEditor.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Add a Note to this Record"); ?></a></li>
-							<?php } ?>
-							</p>
-							<li class="divider"></li>
-							<?php
-							if ($_SESSION['bDeleteRecords']) {
-								echo "<li><a href=\"SelectDelete.php?mode=person&PersonID=" . $per_ID . "\">" . gettext("Delete this Record") . "</a></li>";
-							}
-							if ($_SESSION['bAdmin'])
-							{
-								echo "<li class=\"divider\"></li>";
-								$sSQL = "SELECT usr_per_ID FROM user_usr WHERE usr_per_ID = " . $per_ID;
-								if (mysql_num_rows(RunQuery($sSQL)) == 0)
-									echo "<li> <a href=\"UserEditor.php?NewPersonID=" . $per_ID . "\">" . gettext("Make User") . "</a> </li>" ;
-								else
-									echo "<li> <a role=\"button\" href=\"UserEditor.php?PersonID=" . $per_ID . "\">" . gettext("Edit User") . "</a> " ;
-							}
-							?>
-						</ul>
-						<a class="btn btn-primary active" role="button" href="SelectList.php?mode=person"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
-					</div>
-				</div>
+
 				<br/>
 				<?php
 				echo gettext("Entered: ").FormatDate($per_DateEntered,false).gettext(" by ").$EnteredFirstName . " " . $EnteredLastName;
@@ -351,7 +345,84 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 		</div>
 	</div>
 
+	<?php
+
+	// Get all the properties
+	$sSQL = "SELECT per_ID, per_Title, per_FirstName, per_LastName, per_Suffix, per_Gender, per_Email,
+		per_BirthMonth, per_BirthDay, per_BirthYear, per_Flags, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole
+		FROM person_per
+		LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
+		LEFT JOIN list_lst fmr ON per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2 where per_fam_ID = ".$fam_ID ." and per_Id != ". $per_ID ." order by per_BirthYear" ;
+	$rsOtherFamily = RunQuery($sSQL);
+	?>
+
 	<div class="col-lg-9 col-md-8 col-sm-8">
+		<?php if (mysql_num_rows($rsOtherFamily) != 0) { ?>
+		<div class="row">
+			<div class="main-box no-header clearfix">
+				<div class="main-box-body clearfix">
+					<div class="table-responsive">
+						<table class="table user-list table-hover">
+							<thead>
+							<tr>
+								<th><span>Family Members</span></th>
+								<th class="text-center"><span>Role</span></th>
+								<th><span>Birthday</span></th>
+								<th><span>Email</span></th>
+								<th>&nbsp;</th>
+							</tr>
+							</thead>
+							<tbody>
+							<?php while ($Row = mysql_fetch_array($rsOtherFamily)) {
+								$tmpPersonId = $Row["per_ID"];
+								?>
+							<tr>
+								<td>
+									<img src="<?php echo getPersonPhoto($tmpPersonId, $Row["per_Gender"], $Row["sFamRole"]) ?>" alt="" class="profile-img img-responsive center-block" />
+									<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="user-link"><?php echo $Row["per_FirstName"]." ".$Row["per_LastName"]; ?> </a>
+								</td>
+								<td class="text-center">
+									<?php echo getRoleLabel($Row["sFamRole"]) ?>
+								</td>
+								<td>
+									<?php echo FormatBirthDate($Row["per_BirthYear"], $Row["per_BirthMonth"], $Row["per_BirthDay"],"-",$Row["per_Flags"]);?>
+								</td>
+								<td>
+									<?php $tmpEmail = $Row["per_Email"];
+									if ($tmpEmail != "") { ?>
+									<a href="#"><a href="mailto:<?php echo $tmpEmail; ?>"><?php echo $tmpEmail; ?></a></a>
+									<?php } ?>
+								</td>
+								<td style="width: 20%;">
+									<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="table-link">
+										<span class="fa-stack">
+											<i class="fa fa-square fa-stack-2x"></i>
+											<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+										</span>
+									</a>
+									<a href="PersonEditor.php?PersonID=<?php echo $tmpPersonId; ?>" class="table-link">
+										<span class="fa-stack">
+											<i class="fa fa-square fa-stack-2x"></i>
+											<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+										</span>
+									</a>
+									<a href="SelectDelete.php?mode=person&PersonID=<?php echo $tmpPersonId; ?>" class="table-link danger">
+										<span class="fa-stack">
+											<i class="fa fa-square fa-stack-2x"></i>
+											<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+										</span>
+									</a>
+								</td>
+							</tr>
+							<?php } ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+
 		<div class="main-box clearfix">
 
 			<div role="person-tabs">
@@ -368,145 +439,125 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
 				<!-- Tab panes -->
 				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane active" id="groups">
-
-						<script language="javascript">
-							function GroupRemove( Group, Person ) {
-								var answer = confirm (<?php echo "'" . gettext("Warning: If you remove this group membership, you will irrevokably lose any member data assigned") . "'"; ?>)
-								if ( answer )
-									window.location="GroupMemberList.php?GroupID=" + Group + "&PersonToRemove=" + Person
-							}
-						</script>
-
+					<div role="tab-pane fade" class="tab-pane active" id="groups">
+						<div class="main-box clearfix">
+							<div class="main-box-body clearfix">
 						<?php
-
-						//Initialize row shading
-						$sRowClass = "RowColorA";
-
 						$sAssignedGroups = ",";
 
 						//Was anything returned?
-						if (mysql_num_rows($rsAssignedGroups) == 0)
-						{
-							echo "<p align=\"center\">" . gettext("No group assignments.") . "</p>";
-						}
-						else
-						{
-							echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
-							echo "<tr class=\"TableHeader\">";
-							echo "<td>" . gettext("Group Name") . "</td>";
-							echo "<td>" . gettext("Role") . "</td>";
-							if ($_SESSION['bManageGroups'])
-							{
-								echo "<td>" . gettext("Properties") . "</td>";
-								echo "<td width=\"10%\">" . gettext("Remove") . "</td>";
-							}
-							echo "</tr>";
-
+						if (mysql_num_rows($rsAssignedGroups) == 0) {?>
+							<br>
+							<div class="alert alert-warning">
+								<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?php echo gettext("No group assignments."); ?></span>
+							</div>
+						<?php } else {
 							// Loop through the rows
-							while ($aRow = mysql_fetch_array($rsAssignedGroups))
-							{
-								extract($aRow);
+							while ($aRow = mysql_fetch_array($rsAssignedGroups)) {
+								extract($aRow); ?>
+								<div class="col-md-3 col-sm-6 col-xs-12 simple">
+									<div>
+										<div>
+											<h3><?php echo $grp_Name; ?></h3>
+										</div>
+										<div>
+											<a href="GroupView.php?GroupID=<?php echo $grp_ID ?>" class="btn btn-primary" role="button"><i class="fa fa-search"></i></a>
+											<?php if ($_SESSION['bManageGroups']) {?>
+											<div class="btn-group">
+												<button type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+												<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+													<span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu" role="menu">
+													<li><a href="MemberRoleChange.php?GroupID=<?php echo $grp_ID; ?>&PersonID=<?php echo $iPersonID; ?>" class="table-link">Change Role</a></li>
+													<?php if ($grp_hasSpecialProps == 'true') { ?>
+													<li><a href="GroupPropsEditor.php?GroupID=<?php echo $grp_ID; ?>&PersonID=<?php echo $iPersonID; ?>" class="table-link">Update Properties</a></li>
+													<?php } ?>
+												</ul>
+											</div>
+											<a href="#" onclick="GroupRemove(<?php echo $grp_ID . ", " . $iPersonID ;?>);" class="btn btn-primary" role="button"><i class="fa fa-trash-o"></i></a>
+											</a>
+										<?php } ?>
+										</div>
+										<div class="">
+											<ul>
+												<li><?php echo $roleName;?></li>
+												<?php
+												// If this group has associated special properties, display those with values and prop_PersonDisplay flag set.
+												if ($grp_hasSpecialProps == 'true') {
+													// Get the special properties for this group
+													$sSQL = "SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = " . $grp_ID . " AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
+													$rsPropList = RunQuery($sSQL);
 
-								// Alternate the row style
-								$sRowClass = AlternateRowStyle($sRowClass);
+													$sSQL = "SELECT * FROM groupprop_" . $grp_ID . " WHERE per_ID = " . $iPersonID;
+													$rsPersonProps = RunQuery($sSQL);
+													$aPersonProps = mysql_fetch_array($rsPersonProps, MYSQL_BOTH);
 
-								echo "<tr class=\"" . $sRowClass . "\">";
-								echo "<td><a href=\"GroupView.php?GroupID=" . $grp_ID . "\">" . $grp_Name . "</a></td>";
+													while ($aProps = mysql_fetch_array($rsPropList))
+													{
+														extract($aProps);
+														$currentData = trim($aPersonProps[$prop_Field]);
+														if (strlen($currentData) > 0)
+														{
+															$sRowClass = AlternateRowStyle($sRowClass);
+															if ($type_ID == 11) $prop_Special = $sPhoneCountry;
+															echo "<li><strong>" . $prop_Name . "</strong>: " . displayCustomField($type_ID, $currentData, $prop_Special) . "</li>";
+														}
+													}
+												}
+												?>
+											</ul>
+										</div>
+									</div>
 
-								echo "<td>";
-								if ($_SESSION['bManageGroups']) echo "<a href=\"MemberRoleChange.php?GroupID=" . $grp_ID . "&PersonID=" . $iPersonID . "\">";
-								echo $roleName;
-								if ($_SESSION['bManageGroups']) echo "</a>";
-								echo "</td>";
-
-								if ($_SESSION['bManageGroups']) {
-									if ($grp_hasSpecialProps == 'true')
-										echo "<td><a href=\"GroupPropsEditor.php?PersonID=" . $iPersonID . "&GroupID=" . $grp_ID . "\">" . gettext("View/Edit") . "</a></td>";
-									else
-										echo "<td>&nbsp;</td>";
-									echo "<td><input type=\"button\" class=\"icTinyButton\" value=\"" . gettext("Remove") . "\" Name=\"remove\" onclick=\"GroupRemove(" . $grp_ID . ", " . $iPersonID . ");\" ></td>";
-								}
-								echo "</tr>";
-
-								// If this group has associated special properties, display those with values and prop_PersonDisplay flag set.
-								if ($grp_hasSpecialProps == 'true')
-								{
-									$firstRow = true;
-									// Get the special properties for this group
-									$sSQL = "SELECT groupprop_master.* FROM groupprop_master
-					WHERE grp_ID = " . $grp_ID . " AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
-									$rsPropList = RunQuery($sSQL);
-
-									$sSQL = "SELECT * FROM groupprop_" . $grp_ID . " WHERE per_ID = " . $iPersonID;
-									$rsPersonProps = RunQuery($sSQL);
-									$aPersonProps = mysql_fetch_array($rsPersonProps, MYSQL_BOTH);
-
-									while ($aProps = mysql_fetch_array($rsPropList))
-									{
-										extract($aProps);
-										$currentData = trim($aPersonProps[$prop_Field]);
-										if (strlen($currentData) > 0)
-										{
-											// only create the properties table if it's actually going to be used
-											if ($firstRow) {
-												echo "<tr><td colspan=\"2\"><table width=\"100%\"><tr><td width=\"15%\"></td><td><table width=\"90%\" cellspacing=\"0\">";
-												echo "<tr class=\"TinyTableHeader\"><td>" . gettext("Property") . "</td><td>" . gettext("Value") . "</td></tr>";
-												$firstRow = false;
-											}
-											$sRowClass = AlternateRowStyle($sRowClass);
-											if ($type_ID == 11) $prop_Special = $sPhoneCountry;
-											echo "<tr class=\"$sRowClass\"><td>" . $prop_Name . "</td><td>" . displayCustomField($type_ID, $currentData, $prop_Special) . "</td></tr>";
-										}
-									}
-									if (!$firstRow) echo "</table></td></tr></table></td></tr>";
-								}
-
+								</div>
+								<?php
 								// NOTE: this method is crude.  Need to replace this with use of an array.
 								$sAssignedGroups .= $grp_ID . ",";
 							}
-							echo "</table>";
 						}
 						?>
-
+						</div>
 						<?php if ($_SESSION['bManageGroups']) { ?>
-							<form method="post" action="PersonView.php?PersonID=<?php echo $iPersonID ?>">
-								<p class="SmallText" align="center">
-									<span class="SmallText"></span>
-									<select name="GroupAssignID">
-										<?php
-										while ($aRow = mysql_fetch_array($rsGroups))
-										{
-											extract($aRow);
+							<div class="main-box-body clearfix">
+								<div class="alert alert-info">
+									<div>
+										<h4><strong>Assign New Group</strong></h4>
+										<i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?php echo gettext("Person will be assigned to the Group in the Default Role."); ?></span>
+										<p><br></p>
+										<form method="post" action="PersonView.php?PersonID=<?php echo $iPersonID ?>">
+											<select name="GroupAssignID">
+												<?php while ($aRow = mysql_fetch_array($rsGroups)) {
+													extract($aRow);
 
-											//If the property doesn't already exist for this Person, write the <OPTION> tag
-											if (strlen(strstr($sAssignedGroups,"," . $grp_ID . ",")) == 0)
-											{
-												echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
-											}
-										}
-										?>
-									</select>
-									<input type="submit" class="icButton" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="GroupAssign" style="font-size: 8pt;">
-									<br>
-									<span class="SmallText" align="center"><?php echo gettext("(Person will be assigned to the Group in the Default Role.)"); ?></span>
-								</p>
-							</form>
+													//If the property doesn't already exist for this Person, write the <OPTION> tag
+													if (strlen(strstr($sAssignedGroups,"," . $grp_ID . ",")) == 0) {
+														echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
+													}
+												}
+												?>
+											</select>
+											<input type="submit" class="btn-primary" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="GroupAssign">
+											<br>
+										</form>
+									</div>
+								</div>
+							</div>
 						<?php } ?>
-
+						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="properties">
+					<div role="tab-pane fade" class="tab-pane" id="properties">
+						<div class="main-box clearfix">
 						<?php
-
 						$sAssignedProperties = ",";
 
 						//Was anything returned?
-						if (mysql_num_rows($rsAssignedProperties) == 0)
-						{
-							echo "<p align\"center\">" . gettext("No property assignments.") . "</p>";
-						}
-						else
-						{
+						if (mysql_num_rows($rsAssignedProperties) == 0) { ?>
+							<br>
+							<div class="alert alert-warning">
+								<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?php echo gettext("No property assignments."); ?></span>
+							</div>
+						<?php } else {
 							//Yes, start the table
 							echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
 							echo "<tr class=\"TableHeader\">";
@@ -578,35 +629,33 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
 						?>
 
-						<?php if ($bOkToEdit) { ?>
-							<form method="post" action="PropertyAssign.php?PersonID=<?php echo $iPersonID; ?>">
-								<p class="SmallText" align="center">
-									<span class="SmallText"><?php echo gettext("Assign a New Property:"); ?></span>
-									<select name="PropertyID">
-										<?php
-										while ($aRow = mysql_fetch_array($rsProperties))
-										{
-											extract($aRow);
-
-											//If the property doesn't already exist for this Person, write the <OPTION> tag
-											if (strlen(strstr($sAssignedProperties,"," . $pro_ID . ",")) == 0)
-											{
-												echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
+						<?php if ($bOkToEdit && mysql_num_rows($rsProperties) != 0) { ?>
+							<div class="alert alert-info">
+								<div>
+									<h4><strong><?php echo gettext("Assign a New Property:"); ?></strong></h4>
+									<p><br></p>
+									<form method="post" action="PropertyAssign.php?PersonID=<?php echo $iPersonID; ?>">
+										<select name="PropertyID">
+											<?php
+											while ($aRow = mysql_fetch_array($rsProperties)) {
+												extract($aRow);
+												//If the property doesn't already exist for this Person, write the <OPTION> tag
+												if (strlen(strstr($sAssignedProperties,"," . $pro_ID . ",")) == 0) {
+													echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
+												}
 											}
-										}
-										?>
-									</select>
-									<input type="submit" class="icButton" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="Submit" style="font-size: 8pt;">
-								</p>
-							</form>
-						<?php }
-						else
-						{
-							echo "<br><br><br>";
-						}
-						?>
+											?>
+										</select>
+										<input type="submit" class="btn-primary" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="Submit" >
+									</form>
+								</div>
+							</div>
+						<?php } ?>
+							</div>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="volunteer">
+					<div role="tab-pane fade" class="tab-pane" id="volunteer">
+						<div class="main-box clearfix">
+							<div class="main-box-body clearfix">
 						<?php
 
 						//Initialize row shading
@@ -615,12 +664,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 						$sAssignedVolunteerOpps = ",";
 
 						//Was anything returned?
-						if (mysql_num_rows($rsAssignedVolunteerOpps) == 0)
-						{
-							echo "<p align=\"center\">" . gettext("No volunteer opportunity assignments.") . "</p>";
-						}
-						else
-						{
+						if (mysql_num_rows($rsAssignedVolunteerOpps) == 0)  {?>
+								<br>
+								<div class="alert alert-warning">
+									<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?php echo gettext("No volunteer opportunity assignments."); ?></span>
+								</div>
+						<?php } else {
 							echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
 							echo "<tr class=\"TableHeader\">";
 							echo "<td>" . gettext("Name") . "</td>";
@@ -654,9 +703,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 						?>
 
 						<?php if ($_SESSION['bEditRecords']) { ?>
-							<form method="post" action="PersonView.php?PersonID=<?php echo $iPersonID ?>">
-								<p class="SmallText" align="center">
-									<span class="SmallText"><?php echo gettext("Assign a New Volunteer Opportunity:"); ?></span>
+						<div class="alert alert-info">
+							<div>
+								<h4><strong><?php echo gettext("Assign a New Volunteer Opportunity:"); ?></strong></h4>
+								<p><br></p>
+								<form method="post" action="PersonView.php?PersonID=<?php echo $iPersonID ?>">
 									<select name="VolunteerOpportunityIDs[]", size=6, multiple>
 										<?php
 										while ($aRow = mysql_fetch_array($rsVolunteerOpps)) {
@@ -668,47 +719,89 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 										}
 										?>
 									</select>
-									<input type="submit" class="icButton" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="VolunteerOpportunityAssign" style="font-size: 8pt;">
-									<br>
-								</p>
-							</form>
+									<input type="submit" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="VolunteerOpportunityAssign" class="btn-primary">
+								</form>
+							</div>
+						</div>
 						<?php } ?>
+							</div>
+						</div>
 					</div>
 					<?php if ($_SESSION['bNotes']) { ?>
-						<div role="tabpanel" class="tab-pane" id="notes">
-							<?php
-							//Loop through all the notes
-							while($aRow = mysql_fetch_array($rsNotes))
-							{
-								extract($aRow);
-								?>
-
-								<p class="ShadedBox")>
-									<?php echo $nte_Text ?>
-								</p>
-								<span class="SmallText"><?php echo gettext("Entered:") . ' ' . FormatDate($nte_DateEntered,True) . ' ' . gettext("by") . ' ' . $EnteredFirstName . " " . $EnteredLastName ?></span>
-								<br>
+						<div role="tab-pane fade" class="tab-pane" id="notes">
+							<div class="conversation-wrapper">
+								<div class="conversation-content">
+									<p>
+									<div class="pull-right top-page-ui text-center clearfix">
+										<div class="profile-message-btn btn-group">
+											<a class="btn btn-primary active" role="button" href="http://www.stgeorgeseattle.org/crm/churchinfo/NoteEditor.php?PersonID=<?php echo $iPersonID; ?>"><span class="fa fa-plus" aria-hidden="true"></span> Add Note</a>
+										</div>
+									</div>
+									<br></p>
 								<?php
-
-								if (strlen($nte_DateLastEdited))
-								{ ?>
-									<span class="SmallText"><?php echo gettext("Last Edited:") . ' ' . FormatDate($nte_DateLastEdited,True) . ' ' . gettext("by") . ' ' . $EditedFirstName . " " . $EditedLastName ?></span>
-									<br>
-								<?php
-								}
-								if ($_SESSION['bNotes']) { ?><a class="SmallText" href="NoteEditor.php?PersonID=<?php echo $iPersonID ?>&NoteID=<?php echo $nte_ID ?>"><?php echo gettext("Edit This Note"); ?></a>&nbsp;|&nbsp;<?php }
-								if ($_SESSION['bNotes']) { ?><a class="SmallText" href="NoteDelete.php?NoteID=<?php echo $nte_ID ?>"><?php echo gettext("Delete This Note"); ?></a> <?php }
-
-							}
-							?>
+								//Loop through all the notes
+								while($aRow = mysql_fetch_array($rsNotes))
+								{
+									extract($aRow);
+									?>
+									<div class="conversation-item item-left clearfix">
+										<div class="conversation-user">
+											<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>" alt="" width="60" height="60"/>
+										</div>
+										<div class="conversation-body">
+											<div class="name">
+												<?php if (!strlen($nte_DateLastEdited)) {
+													echo $EnteredFirstName . " " . $EnteredLastName;
+												} else {
+													echo $EditedFirstName . " " . $EditedLastName;
+												}?>
+											</div>
+											<div class="time hidden-xs">
+												<?php
+												if (!strlen($nte_DateLastEdited)) {
+													echo FormatDate($nte_DateEntered, True);
+												} else {
+													echo FormatDate($nte_DateLastEdited,True);
+												} ?>
+											</div>
+											<div class="text">
+												<?php echo $nte_Text ?>
+											</div>
+											<div class="text">
+												<?php if ($_SESSION['bNotes']) { ?>
+													<a href="NoteEditor.php?PersonID=<?php echo $iPersonID ?>&NoteID=<?php echo $nte_ID ?>" class="table-link">
+											<span class="fa-stack">
+												<i class="fa fa-square fa-stack-2x"></i>
+												<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+											</span>
+													</a>
+													<a href="NoteDelete.php?NoteID=<?php echo $nte_ID ?>" class="table-link danger">
+											<span class="fa-stack">
+												<i class="fa fa-square fa-stack-2x"></i>
+												<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+											</span>
+													</a>
+												<?php } ?>
+											</div>
+										</div>
+									</div>
+									<?php } ?>
+								</div>
+							</div>
 						</div>
 					<?php } ?>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </div>
+<script language="javascript">
+	function GroupRemove( Group, Person ) {
+		var answer = confirm (<?php echo "'",  "'"; ?>)
+		if ( answer )
+			window.location="GroupMemberList.php?GroupID=" + Group + "&PersonToRemove=" + Person
+	}
+</script>
 <?php
 require "Include/Footer.php";
 ?>
