@@ -27,13 +27,22 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/GeoCoder.php";
+require 'Include/PersonFunctions.php';
 require 'Include/MailchimpFunctions.php';
 
 $mailchimp = new ChurchInfoMailchimp();
 //Set the page title
 $sPageTitle = gettext("Family View");
 
-
+function getFamilyPhoto($iFamilyID) {
+	// Display photo or upload from file
+	$photoFile = "Images/Family/thumbnails/" . $iFamilyID . ".jpg";
+	if (file_exists($photoFile))  {
+		return  $photoFile;
+	} else {
+	 return "img/family-128.png";
+	 }
+}
 
 //Get the FamilyID out of the querystring
 $iFamilyID = FilterInput($_GET["FamilyID"],'int');
@@ -58,31 +67,20 @@ $capture_next = 0;
 while($myrow = mysql_fetch_row($dResults))
 {
 	$fid = $myrow[0];
-	if ($capture_next == 1)
-	{
+	if ($capture_next == 1) {
 	    $next_id = $fid;
 		break;
 	}
-	if ($fid == $iFamilyID)
-	{
+	if ($fid == $iFamilyID) {
 		$previous_id = $last_id;
 		$capture_next = 1;
 	}
 	$last_id = $fid;
 }
 
-$previous_link_text = "";
-if (($previous_id > 0)) {
-    $previous_link_text = "<a class=\"btn btn-primary active\" role=\"button\" href=\"FamilyView.php?FamilyID=$previous_id\">" . gettext("Previous Family") . "</a>";
-}
-
-$next_link_text = "";
-if (($next_id > 0)) {
-    $next_link_text = "<a class=\"btn btn-primary active\" role=\"button\" href=\"FamilyView.php?FamilyID=$next_id\">" . gettext("Next Family") . "</a>";
-}
-
 //Get the information for this family
-$sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName
+$sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, a.per_ID AS EnteredId,
+			b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName, b.per_ID AS EditedId
 		FROM family_fam
 		LEFT JOIN person_per a ON fam_EnteredBy = a.per_ID
 		LEFT JOIN person_per b ON fam_EditedBy = b.per_ID
@@ -91,13 +89,8 @@ $rsFamily = RunQuery($sSQL);
 extract(mysql_fetch_array($rsFamily));
 
 // Get the lists of custom person fields
-$sSQL = "SELECT family_custom_master.* FROM family_custom_master
-			WHERE fam_custom_Side = 'left' ORDER BY fam_custom_Order";
-$rsLeftFamCustomFields = RunQuery($sSQL);
-
-$sSQL = "SELECT family_custom_master.* FROM family_custom_master
-			WHERE fam_custom_Side = 'right' ORDER BY fam_custom_Order";
-$rsRightFamCustomFields = RunQuery($sSQL);
+$sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
+$rsFamCustomFields = RunQuery($sSQL);
 
 // Get the custom field data for this person.
 $sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
@@ -112,7 +105,7 @@ $sSQL = "SELECT nte_ID, nte_Text, nte_DateEntered, nte_EnteredBy, nte_DateLastEd
 $rsNotes = RunQuery($sSQL);
 
 //Get the family members for this family
-$sSQL = "SELECT per_ID, per_Title, per_FirstName, per_LastName, per_Suffix, per_Gender,
+$sSQL = "SELECT per_ID, per_Title, per_FirstName, per_LastName, per_Suffix, per_Gender, per_Email,
 		per_BirthMonth, per_BirthDay, per_BirthYear, per_Flags, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole
 		FROM person_per
 		LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
@@ -178,775 +171,628 @@ $sCellPhone = ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy);
 
 require "Include/Header.php";
 
-if ($previous_link_text != "") {
-	echo "$previous_link_text ";
-}
-
 $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID'])));
-
-if ($bOkToEdit) { echo "<a class=\"btn btn-primary active\" role=\"button\" href=\"FamilyEditor.php?FamilyID=" . $fam_ID . "\">" . gettext("Edit this Record") . "</a> "; }
-if ($_SESSION['bDeleteRecords']) { echo "<a class=\"btn btn-danger active\" role=\"button\" href=\"SelectDelete.php?FamilyID=" . $fam_ID . "\">" . gettext("Delete this Record") . "</a> "; }
-if ($bOkToEdit) {
-	echo "<a class=\"btn btn-info active\" role=\"button\" href=\"Reports/ConfirmReport.php?familyId=" . $fam_ID . "\">" . gettext("Family Record PDF") . "</a> ";
-	echo "<a class=\"btn btn-warning active\" role=\"button\" href=\"Reports/ConfirmReportEmail.php?familyId=" . $fam_ID . "\">" . gettext("Email Family Record") . "</a> ";
-	echo "<a class=\"btn btn-warning active\" role=\"button\" href=\"Reports/ConfirmReportEmail.php?updated=true&familyId=" . $fam_ID . "\">" . gettext("Email Family Record - Updated") . "</a>";
-}
-if ($next_link_text != "" && ($bOkToEdit || $_SESSION['bDeleteRecords'])) {
-	echo " $next_link_text";
-}
-elseif ($next_link_text != "") {
-	echo "$next_link_text";
-}
 ?>
-<BR><br>
-<table border="0" width="100%" cellspacing="0" cellpadding="4">
-<tr>
-<td width="25%" valign="top" align="center">
-	<div class="LightShadedBox">
-	<?php
-		//Print the name and address header
-		echo "<font size=\"4\"><b>" . gettext("The") . " $fam_Name " . gettext("Family") . "</b></font>";
-		echo "<br><br>";
-		echo "<div class=\"TinyShadedBox\">";
-		echo "<font size=\"3\">";
-			if ($fam_Address1 != "") { echo $fam_Address1 . "<br>"; }
-			if ($fam_Address2 != "") { echo $fam_Address2 . "<br>"; }
-			if ($fam_City != "") { echo $fam_City . ", "; }
-			if ($fam_State != "") { echo $fam_State; }
-			if ($fam_Zip != "") { echo " " . $fam_Zip; }
-			if ($fam_Country != "") { echo "<br>" . $fam_Country . "<br>"; } else {echo "<br>";}
-			
-			if ($fam_Latitude && $fam_Longitude) {
-				if ($nChurchLatitude && $nChurchLongitude) {
-					$sDistance = LatLonDistance($nChurchLatitude, $nChurchLongitude,$fam_Latitude, $fam_Longitude);
-					$sDirection = LatLonBearing($nChurchLatitude, $nChurchLongitude,$fam_Latitude, $fam_Longitude);
-					echo $sDistance . " " . strtolower($sDistanceUnit) . " " . $sDirection . " of church<br>";
-				}
-			}
-		echo "</font></div>";
+<div class="pull-right top-page-ui text-center">
+	<div class="profile-message-btn btn-group">
+		<?php if (($previous_id > 0)) { ?>
+			  <a class="btn btn-primary active" role="button" href="FamilyView.php?FamilyID=<?php echo $previous_id;?>"> <span class="fa fa-hand-o-left" aria-hidden="true"></span></a>
+		<?php } ?>
+		<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Family</button>
+		<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			<span class="caret"></span>
+			<span class="sr-only">Toggle Dropdown</span>
+		</button>
 
-		//Show links to MapQuest, US Post Office, and Google Maps
-		$bShowUSLinks = false;
-		$bShowMQLink = false;
-		if ($fam_Address1 != "" && $fam_City != "" && $fam_State != "")
-		{
-			if ($fam_Country == "United States") {
-				$sMQcountry = "";
-				$bShowUSLinks = true;
-			}
-			elseif ($fam_Country == "Canada") {
-				$sMQcountry = "country=CA&amp;";
-				$bShowMQLink = true;
-			}
-		}
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="Reports/ConfirmReport.php?familyId=<?php echo $iFamilyID; ?>"><?php echo gettext("Family Record PDF"); ?></a></li>
+			<?php if ($bOkToEdit) { ?>
+			<li><a href="uploadPhoto.php?FamilyID=<?php echo $iFamilyID; ?>">Upload Family Photo </a></li>
+			<li class="divider"></li>
+			<li><a href="Reports/ConfirmReportEmail.php?familyId=<?php echo $iFamilyID; ?>">Email Confirmation PDF Report</a></li>
+			<li><a href="Reports/ConfirmReportEmail.php?updated=true&familyId=<?php echo $iFamilyID; ?>">Email Updated Confirmation PDF Report</a></li>
+			<li class="divider"></li>
+			<?php }
+			if ($_SESSION['bNotes']) { ?>
+			<li><a href="NoteEditor.php?FamilyID=<?php echo $iFamilyID; ?>">Add a Note to this Record</a></li>
+			<li class="divider"></li>
+			<?php }
+			if ($_SESSION['bDeleteRecords']) { ?>
+			<li><a href="SelectDelete.php?FamilyID=<?php echo $iFamilyID; ?>">Delete this Family</a></li>
+			<?php } ?>
+		</ul>
 
-		if ($bShowUSLinks) {
-			echo "<div align=left><a class=\"SmallText\" target=\"_blank\"
-				href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . 
-				"city=" . urlencode($fam_City) . "&amp;state=" . $fam_State . 
-				"&amp;address=" . urlencode($fam_Address1) . "\">" . gettext("MapQuest") . 
-				"</a></div>";
-				echo "<div align=center><a class=\"SmallText\" target=\"_blank\" 
-				href=\"https://tools.usps.com/go/ZipLookupResultsAction!input.action?address1=" . 
-				urlencode($fam_Address1) . "&amp;city=" . urlencode($fam_City) . 
-				"&amp;state=" . urlencode($fam_State) . "\">" . gettext("USPS") . 
-				"</a></div>";
-				echo "<div align=right><a class=\"SmallText\" target=\"_blank\" 
-				href=\"https://maps.google.com/maps?q=" .
-				urlencode("$fam_Address1,$fam_City,$fam_State") .
-				"\">" . gettext("Google Maps") . "</a></div>";
-		}
-		if ($bShowMQLink) {
-			echo "<div align=left><a class=\"SmallText\" target=\"_blank\"
-				href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . 
-				"city=" . urlencode($fam_City) . "&amp;state=" . $fam_State . 
-				"&amp;address=" . urlencode($fam_Address1) . "\">" . gettext("MapQuest") . 
-				"</a></div>";
-		}
-		echo "<br>";
+		<a class="btn btn-primary active" role="button" href="SelectList.php?mode=family"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+		<?php if (($next_id > 0)) { ?>
+			<a class="btn btn-primary active" role="button" href="FamilyView.php?FamilyID=<?php echo $next_id;?>"><span class="fa fa-hand-o-right" aria-hidden="true"></span></a>
+		<?php } ?>
+	</div>
+</div>
+<p><br/><br/></p>
+<div class="row" id="user-profile">
+	<div class="col-lg-3 col-md-4 col-sm-4">
+		<div class="main-box clearfix">
+			<header class="main-box-header clearfix">
+			<?php
+				//Print the name and address header
+				echo "<font size=\"4\"><b>" . gettext("The") . " $fam_Name " . gettext("Family") . "</b></font>";
+				if ($bOkToEdit) { ?>
+					<a href="FamilyEditor.php?FamilyID=<?php echo $fam_ID ?>" class="table-link">
+						<span class="fa-stack">
+							<i class="fa fa-square fa-stack-2x"></i>
+							<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+						</span>
+					</a>
+				<?php
+				} ?>
+			</header>
+			<br>
 
-		// Upload photo
-		if ( isset($_POST["UploadPhoto"]) && ($_SESSION['bAddRecords'] || $bOkToEdit) ) {
-			if ($_FILES['Photo']['name'] == "") {
-				$PhotoError = gettext("No photo selected for uploading.");
-			} elseif ($_FILES['Photo']['type'] != "image/pjpeg" && $_FILES['Photo']['type'] != "image/jpeg") {
-				$PhotoError = gettext("Only jpeg photos can be uploaded.");
-			} else {
-				// Create the thumbnail used by PersonView
-				$srcImage=imagecreatefromjpeg($_FILES['Photo']['tmp_name']);
-				$src_w=imageSX($srcImage);
-    			$src_h=imageSY($srcImage);
-
-				// Calculate thumbnail's height and width (a "maxpect" algorithm)
-				$dst_max_w = 200;
-				$dst_max_h = 350;
-				if ($src_w > $dst_max_w) {
-					$thumb_w=$dst_max_w;
-					$thumb_h=$src_h*($dst_max_w/$src_w);
-					if ($thumb_h > $dst_max_h) {
-						$thumb_h = $dst_max_h;
-						$thumb_w = $src_w*($dst_max_h/$src_h);
+			<div class="main-box-body clearfix">
+				<img src="<?php echo getFamilyPhoto($iPersonID) ?>" alt="" class="profile-img img-responsive center-block" />
+				<ul class="fa-ul">
+					<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
+					<address>
+						<?php if ($fam_Address1 != "") { echo $fam_Address1 . "<br>"; }
+							if ($fam_Address2 != "") { echo $fam_Address2 . "<br>"; }
+							if ($fam_City != "") { echo $fam_City . ", "; }
+							if ($fam_State != "") { echo $fam_State; }
+							if ($fam_Zip != "") { echo " " . $fam_Zip; }
+							if ($fam_Country != "") { echo "<br>" . $fam_Country . "<br>"; } else {echo "<br>";}
+							echo "<br>";
+							if ($fam_Latitude && $fam_Longitude) {
+								if ($nChurchLatitude && $nChurchLongitude) {
+									$sDistance = LatLonDistance($nChurchLatitude, $nChurchLongitude,$fam_Latitude, $fam_Longitude);
+									$sDirection = LatLonBearing($nChurchLatitude, $nChurchLongitude,$fam_Latitude, $fam_Longitude);
+									echo $sDistance . " " . strtolower($sDistanceUnit) . " " . $sDirection . " of church<br>";
+								}
+							}
+						?>
+					</address>
+					<?php if (!$bHideLatLon) { /* Lat/Lon can be hidden - General Settings */ ?>
+						<li><i class="fa-li fa fa-compass"></i><?php echo gettext("Latitude/Longitude"); ?> <span><?php echo $fam_Latitude . " / ", $fam_Longitude; ?></span></li>
+					<?php }
+					if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
+						<li><i class="fa-li fa fa-hacker-news"></i><?php echo gettext("Send newsletter:"); ?> <span><?php echo $fam_SendNewsLetter; ?></span></li>
+					<?php }
+					if (!$bHideWeddingDate) { /* Wedding Date can be hidden - General Settings */ ?>
+						<li><i class="fa-li fa fa-magic"></i><?php echo gettext("Wedding Date:"); ?> <span><?php echo FormatDate($fam_WeddingDate,false); ?></span></li>
+					<?php }
+					if ($bUseDonationEnvelopes) { ?>
+						<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Envelope Number"); ?> <span><?php echo $fam_Envelope; ?></span></li>
+					<?php  }
+					if ($sHomePhone != "") { ?>
+						<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Home Phone:"); ?> <span><?php echo $sHomePhone; ?></span></li>
+					<?php  }
+					if ($sWorkPhone != "") { ?>
+						<li><i class="fa-li fa fa-building"></i><?php echo gettext("Work Phone:"); ?> <span><?php echo $sWorkPhone; ?></span></li>
+					<?php  }
+					if ($sCellPhone != "") { ?>
+						<li><i class="fa-li fa fa-mobile"></i><?php echo gettext("Mobile Phone:"); ?> <span><?php echo $sCellPhone; ?></span></li>
+					<?php  }
+					if ($fam_Email != "") { ?>
+						<li><i class="fa-li fa fa-envelope"></i><?php echo gettext("Email:"); ?><a href="mailto:<?php echo $fam_Email; ?>"> <span><?php echo $fam_Email; ?></span></a></li>
+						<?php if ($mailchimp->isActive()) { ?>
+							<li><i class="fa-li glyphicon glyphicon-send"></i><?php echo gettext("Email:"); ?> <span><?php echo $mailchimp->isEmailInMailChimp($fam_Email); ?></span></a></li>
+					<?php }
 					}
-				}
-				elseif ($src_h > $dst_max_h) {
-					$thumb_h=$dst_max_h;
-					$thumb_w=$src_w*($dst_max_h/$src_h);
-					if ($thumb_w > $dst_max_w) {
-						$thumb_w = $dst_max_w;
-						$thumb_h = $src_h*($dst_max_w/$src_w);
-					}
-				}
-				else {
-					if ($src_w > $src_h) {
-						$thumb_w = $dst_max_w;
-						$thumb_h = $src_h*($dst_max_w/$src_w);
-					} elseif ($src_w < $src_h) {
-						$thumb_h = $dst_max_h;
-						$thumb_w = $src_w*($dst_max_h/$src_h);
-					} else {
-						if ($dst_max_w >= $dst_max_h) {
-							$thumb_w=$dst_max_h;
-							$thumb_h=$dst_max_h;
-						} else {
-							$thumb_w=$dst_max_w;
-							$thumb_h=$dst_max_w;
+					// Display the left-side custom fields
+					while ($Row = mysql_fetch_array($rsFamCustomFields)) {
+						extract($Row);
+						if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+						{
+							$currentData = trim($aFamCustomData[$fam_custom_Field]);
+							if ($type_ID == 11) $fam_custom_Special = $sPhoneCountry;
+							echo "<li><i class=\"fa-li glyphicon glyphicon-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
 						}
 					}
-				}
-				$dstImage=ImageCreateTrueColor($thumb_w,$thumb_h);
-        		imagecopyresampled($dstImage,$srcImage,0,0,0,0,$thumb_w,$thumb_h,$src_w,$src_h);
-				imagejpeg($dstImage,"Images/Family/thumbnails/" . $iFamilyID . ".jpg");
-				imagedestroy($dstImage);
-    			imagedestroy($srcImage);
-				move_uploaded_file($_FILES['Photo']['tmp_name'], "Images/Family/" . $iFamilyID . ".jpg");
-			}
-		} elseif (isset($_POST["DeletePhoto"]) && $_SESSION['bDeleteRecords']) {
-			unlink("Images/Family/" . $iFamilyID . ".jpg");
-			unlink("Images/Family/thumbnails/" . $iFamilyID . ".jpg");
-		}
-
-		// Display photo or upload from file
-		$photoFile = "Images/Family/thumbnails/" . $iFamilyID . ".jpg";
-		if (file_exists($photoFile))
-		{
-			echo '<a target="_blank" href="Images/Family/' . $iFamilyID . '.jpg">';
-			echo '<img border="1" src="'.$photoFile.'" alt="thumbnail"></a>';
-			if ($bOkToEdit) 
-            {
-                echo '
-                    <form method="post" action="FamilyView.php?FamilyID=' . $iFamilyID . '">
-                    <br>
-                    <input type="submit" class="icTinyButton" 
-                    value="' . gettext("Delete Photo") . '" 
-                    name="DeletePhoto">
-                    </form>';
-			}
-		} else {
-			// Some old / M$ browsers can't handle PNG's correctly.
-			if ($bDefectiveBrowser)
-				echo '<img border="0" src="Images/NoFamPhoto.gif" alt="'.gettext("No Family Photo Found").'"><br><br><br>';
-			else
-				echo '<img border="0" src="Images/NoFamPhoto.png" alt="'.gettext("No Family Photo Found").'"><br><br><br>';
-
-			if ($bOkToEdit) {
-				if (isset($PhotoError)) 
-                    echo '<span style="color: red;">' . $PhotoError . '</span><br>';
-
-                echo '
-                    <form method="post" 
-                    action="FamilyView.php?FamilyID=' . $iFamilyID . '" 
-                    enctype="multipart/form-data">
-                    <input class="icTinyButton" type="file" name="Photo"> 
-                    <input type="submit" class="icTinyButton" 
-                    value="' . gettext("Upload Photo") . '" name="UploadPhoto">
-                    </form>';
-			}
-		}
-	?>
+					?>
+				</ul>
+			</div>
+		</div>
 	</div>
-</td>
-<td width="75%" valign="top" align="left">
-
-	<b><?php echo gettext("General Information:"); ?></b>
-	<div class="LightShadedBox">
-	<table cellspacing="0" cellpadding="0" border="0" width="100%">
-	<tr>
-		<td align="center" valign="top">
-			<table cellspacing="4" cellpadding="0" border="0">
-			<tr>
-				<td class="TinyLabelColumn"><?php echo gettext("Home Phone:"); ?></td>
-				<td class="TinyTextColumn"><?php echo $sHomePhone; ?></td>
-			</tr>
-			<tr>
-				<td class="TinyLabelColumn"><?php echo gettext("Work Phone:"); ?></td>
-				<td class="TinyTextColumn"><?php echo $sWorkPhone; ?></td>
-			</tr>
-			<tr>
-				<td class="TinyLabelColumn"><?php echo gettext("Mobile Phone:"); ?></td>
-				<td class="TinyTextColumn"><?php echo $sCellPhone; ?></td>
-			</tr>
-			<tr>
-				<td class="TinyLabelColumn"><?php echo gettext("Email:"); ?></td>
-				<td class="TinyTextColumn"><?php if ($fam_Email != "") { echo "<a href='mailto:" . $fam_Email . "'>" . $fam_Email . "</a>"; } ?>				  </td>
-			</tr>
-				<?php if ($mailchimp->isActive()) { ?>
-			<tr>
-				<td class="TinyLabelColumn">MailChimp</td>
-				<td class="TinyTextColumn"><?php if ($fam_Email != "") { echo $mailchimp->isEmailInMailChimp($fam_Email); } ?></td>
-			</tr>
-			<?php
-				}
-				// Display the left-side custom fields
-				while ($Row = mysql_fetch_array($rsLeftFamCustomFields)) {
-					extract($Row);
-					if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
-					{
-						$currentData = trim($aFamCustomData[$fam_custom_Field]);
-						if ($type_ID == 11) $fam_custom_Special = $sPhoneCountry;
-						echo "<tr><td class=\"TinyLabelColumn\">" . $fam_custom_Name . "</td>";
-						echo "<td class=\"TinyTextColumn\">" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</td></tr>";
-					}
-				}
-			?>
-			</table>
-		</td>
-		<td align="center" valign="top">
-			<table cellspacing="4" cellpadding="0" border="0">
-<?php if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
-			<tr>
-				<td class="TinyLabelColumn"><?php echo gettext("Send newsletter:"); ?></td>
-				<td class="TinyTextColumn"><?php echo $fam_SendNewsLetter; ?></td>
-			</tr>
-<?php } ?>
-<?php if (!$bHideWeddingDate) { /* Wedding Date can be hidden - General Settings */ ?>
-			<tr>
-				<td class="TinyLabelColumn"><?php echo gettext("Wedding Date:"); ?></td>
-				<td class="TinyTextColumn"><?php echo FormatDate($fam_WeddingDate,false) ?>				  </td>
-			</tr>
-<?php } /* Wedding date can be hidden - General Settings */ ?>
-<?php if (!$bHideLatLon) { /* Lat/Lon can be hidden - General Settings */ ?>
-			<tr>
-				<td class="TinyLabelColumn"><?php echo gettext("Latitude/Longitude"); ?></td>
-				<td class="TinyTextColumn"><?php echo $fam_Latitude . " / ", $fam_Longitude; ?>				  </td>
-			</tr>
-<?php } /* Lat/Lon can be hidden - General Settings */ ?>
-<?php if ($bUseDonationEnvelopes) { ?>
-			<tr>
-				<td class="TinyLabelColumn"><?php echo gettext("Envelope Number"); ?></td>
-				<td class="TinyTextColumn"><?php echo $fam_Envelope; ?></td>
-			</tr>
-<?php } ?>
-			<?php
-				// Display the right-side custom fields
-				while ($Row = mysql_fetch_array($rsRightFamCustomFields)) {
-					extract($Row);
-					if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
-					{
-						$currentData = trim($aFamCustomData[$fam_custom_Field]);
-						if ($type_ID == 11) $fam_custom_Special = $sPhoneCountry;
-						echo "<tr><td class=\"TinyLabelColumn\">" . $fam_custom_Name . "</td>";
-						echo "<td class=\"TinyTextColumn\">" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</td></tr>";
-					}
-				}
-			?>
-			</table>
-		</td>
-	</tr>
-	</table>
-	</div>
-	<BR>
-	<b><?php echo gettext("Assigned Properties:"); ?></b>
-    <?php
-
-$sAssignedProperties = ",";
-
-//Was anything returned?
-if (mysql_num_rows($rsAssignedProperties) == 0)
-{
-	//No, indicate nothing returned
-	echo "<p align=\"center\">" . gettext("No property assignments.") . "</p>";
-}
-else
-{
-
-	//Yes, start the table
-	echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
-	echo "<tr class=\"TableHeader\">";
-	echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Type") . "</b></td>";
-	echo "<td width=\"15%\" valign=\"top\"><b>" . gettext("Name") . "</b></td>";
-	echo "<td valign=\"top\"><b>" . gettext("Value") . "</b></td>";
-
-	if ($bOkToEdit)
-	{
-		echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Edit Value") . "</td>";
-		echo "<td valign=\"top\"><b>" . gettext("Remove") . "</td>";
-	}
-
-	echo "</tr>";
-
-	$last_pro_prt_ID = "";
-	$bIsFirst = true;
-
-	//Loop through the rows
-	while ($aRow = mysql_fetch_array($rsAssignedProperties))
-	{
-		$pro_Prompt = "";
-		$r2p_Value = "";
-
-		extract($aRow);
-
-		if ($pro_prt_ID != $last_pro_prt_ID)
-		{
-			echo "<tr class=\"";
-			if ($bIsFirst)
-				echo "RowColorB";
-			else
-				echo "RowColorC";
-			echo "\"><td><b>" . $prt_Name . "</b></td>";
-
-			$bIsFirst = false;
-			$last_pro_prt_ID = $pro_prt_ID;
-			$sRowClass = "RowColorB";
-		}
-		else
-		{
-			echo "<tr class=\"" . $sRowClass . "\">";
-			echo "<td valign=\"top\">&nbsp;</td>";
-		}
-
-		echo "<td valign=\"center\">" . $pro_Name . "</td>";
-		echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
-
-		if ($bOkToEdit)
-		{
-			if (strlen($pro_Prompt) > 0)
-			{
-				echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
-			}
-			else
-			{
-				echo "<td>&nbsp;</td>";
-			}
-
-			echo "<td valign=\"center\"><a href=\"PropertyUnassign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Remove") . "</a></td>";
-		}
-
-		echo "</tr>";
-
-		//Alternate the row style
-		$sRowClass = AlternateRowStyle($sRowClass);
-
-		$sAssignedProperties .= $pro_ID . ",";
-	}
-
-	//Close the table
-	echo "</table>";
-
-}
-
-?>
-    <?php if ($bOkToEdit) { ?>
-    <form method="post" action="PropertyAssign.php?FamilyID=<?php echo $iFamilyID ?>">
-      <p align="center"> <span class="SmallText"><?php echo gettext("Assign a New Property:"); ?></span>
-          <select name="PropertyID">
-            <?php
-		while ($aRow = mysql_fetch_array($rsProperties))
-		{
-			extract($aRow);
-			//If the property doesn't already exist for this Person, write the <OPTION> tag
-			if (strlen(strstr($sAssignedProperties,"," . $pro_ID . ",")) == 0)
-			{
-				echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
-			}
-		}
-		?>
-          </select>
-          <input type="submit" class="icButton" value="Assign" name="Submit2" style="font-size: 8pt;">
-      </p>
-    </form>
-	<?php } ?>
-</td>
-  </tr>
-</table>
-<BR>
-<p class="SmallText">
-	<?php echo gettext("Entered:"); ?> <?php echo FormatDate($fam_DateEntered,True) . " by " . $EnteredFirstName . " " . $EnteredLastName; ?>
-	<br>
-
-	<?php
-	if (strlen($fam_DateLastEdited) > 0)
-	{
-		echo gettext("Last edited:") . " " . FormatDate($fam_DateLastEdited,True) . " ". gettext("by") . " " . $EditedFirstName . " " . $EditedLastName;
-	}
-	?>
-</p>
-
-<b><?php echo gettext("Family Members:"); ?></b>
-
-<table cellpadding="5" cellspacing="0" width="100%">
-
-<tr class="TableHeader">
-	<td><?php echo gettext("Name"); ?></td>
-	<td><?php echo gettext("Gender"); ?></td>
-	<td><?php echo gettext("Role"); ?></td>
-	<td><?php echo gettext("Age"); ?></td>
-	<td><?php echo gettext("Classification"); ?></td>
-	<?php if ($bOkToEdit) { ?>
-	<td><?php echo gettext("Edit"); ?></td>
-	<?php } ?>
-</tr>
-
-<?php
-
-$sRowClass = "RowColorA";
-
-//Loop through all the family members
-while ($aRow =mysql_fetch_array($rsFamilyMembers))
-{
-	$per_Title = "";
-	$per_FirstName = "";
-	$per_LastName = "";
-	$per_Suffix = "";
-	$per_Gender = "";
-	$per_BirthMonth = "";
-	$per_BirthDay = "";
-	$per_BirthYear = "";
-
-	$sFamRole = "";
-	$sClassName = "";
-
-	extract($aRow);
-
-	//Alternate the row style
-	$sRowClass = AlternateRowStyle($sRowClass)
-
-	//Display the family member
-	?>
-
-	<tr class="<?php echo $sRowClass ?>">
-		<td>
-			<a href="PersonView.php?PersonID=<?php echo $per_ID ?>"><?php
-		if ($per_Suffix)
-		{
-			if ($per_Title)
-			{
-				 echo $per_Title . " " . $per_FirstName . " " . $per_LastName . ", " . $per_Suffix;
-			}
-			else
-			{
-				 echo $per_FirstName . " " . $per_LastName . ", " . $per_Suffix;
-			}
-		}
-		else
-		{
-			if ($per_Title)
-			{
-				echo $per_Title . " " . $per_FirstName . " " . $per_LastName;
-			}
-			else
-			{
-				echo $per_FirstName . " " . $per_LastName;
-			}
-		}?></a>
-			<br>
-		</td>
-		<td>
-			<?php switch ($per_Gender) {case 1: echo gettext("Male"); break; case 2: echo gettext("Female"); break; default: echo "";} ?>&nbsp;
-		</td>
-		<td>
-			<?php echo $sFamRole ?>&nbsp;
-		</td>
-		<td>
-			<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?>&nbsp;
-		</td>
-		<td>
-			<?php echo $sClassName; ?>&nbsp;
-		</td>
-		<?php if ($bOkToEdit) { ?>
-		<td>
-			<a href="PersonEditor.php?PersonID=<?php echo $per_ID ?>">Edit</a>
-		</td>
+	<div class="col-lg-9 col-md-8 col-sm-8">
+		<div class="col-md-4 col-sm-4">
+			<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>" alt="" width="40" height="40" class="profile-img"/>
+			<?php echo gettext("Entered: ").FormatDate($per_DateEntered,false).gettext(" by ").$EnteredFirstName . " " . $EnteredLastName; ?>
+		</div>
+		<?php if (strlen($per_DateLastEdited) > 0) { ?>
+			<div class="col-md-4 col-sm-4">
+				<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>" alt="" width="40" height="40" class="profile-img"/>
+				<?php  echo gettext("Updated: "). FormatDate($per_DateLastEdited,false) .gettext(" by ") . $EditedFirstName . " " . $EditedLastName."<br>"; ?>
+			</div>
 		<?php } ?>
-	</tr>
+	</div>
 
-	<?php
+	<div class="col-lg-9 col-md-8 col-sm-8">
+		<div class="row">
+			<div class="main-box no-header clearfix">
+				<div class="main-box-body clearfix">
+					<div class="table-responsive">
+						<table class="table user-list table-hover">
+						<thead>
+						<tr>
+							<th><span>Family Members</span></th>
+							<th class="text-center"><span>Role</span></th>
+							<th><span>Birthday</span></th>
+							<th><span>Email</span></th>
+							<th>&nbsp;</th>
+						</tr>
+						</thead>
+						<tbody>
+						<?php while ($Row = mysql_fetch_array($rsFamilyMembers)) {
+							$tmpPersonId = $Row["per_ID"];
+							?>
+							<tr>
+								<td>
+									<img src="<?php echo getPersonPhoto($tmpPersonId, $Row["per_Gender"], $Row["sFamRole"]) ?>" alt="" class="profile-img img-responsive center-block" />
+									<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="user-link"><?php echo $Row["per_FirstName"]." ".$Row["per_LastName"]; ?> </a>
+								</td>
+								<td class="text-center">
+									<?php echo getRoleLabel($Row["sFamRole"]) ?>
+								</td>
+								<td>
+									<?php echo FormatBirthDate($Row["per_BirthYear"], $Row["per_BirthMonth"], $Row["per_BirthDay"],"-",$Row["per_Flags"]);?>
+								</td>
+								<td>
+									<?php $tmpEmail = $Row["per_Email"];
+									if ($tmpEmail != "") { ?>
+										<a href="#"><a href="mailto:<?php echo $tmpEmail; ?>"><?php echo $tmpEmail; ?></a></a>
+									<?php } ?>
+								</td>
+								<td style="width: 20%;">
+									<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="table-link">
+								<span class="fa-stack">
+									<i class="fa fa-square fa-stack-2x"></i>
+									<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+								</span>
+									</a>
+									<?php if ($bOkToEdit) { ?>
+									<a href="PersonEditor.php?PersonID=<?php echo $tmpPersonId; ?>" class="table-link">
+								<span class="fa-stack">
+									<i class="fa fa-square fa-stack-2x"></i>
+									<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+								</span>
+									</a>
+									<a href="SelectDelete.php?mode=person&PersonID=<?php echo $tmpPersonId; ?>" class="table-link danger">
+								<span class="fa-stack">
+									<i class="fa fa-square fa-stack-2x"></i>
+									<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+								</span>
+									</a>
+									<?php } ?>
+								</td>
+							</tr>
+						<?php } ?>
+						</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="main-box clearfix">
+		<div role="person-tabs">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?php echo gettext("Assigned Properties"); ?></a></li>
+				<?php if ($_SESSION['bFinance']) { ?>
+					<li role="presentation"><a href="#finance" aria-controls="finance" role="tab" data-toggle="tab"><?php echo gettext("Automatic Payments:"); ?></a></li>
+					<li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab" data-toggle="tab"><?php echo gettext("Pledges and Payments:"); ?></a></li>
+				<?php }
+				if ($_SESSION['bNotes']) { ?>
+					<li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?php echo gettext("Notes"); ?></a></li>
+				<?php } ?>
+			</ul>
 
-}
+			<!-- Tab panes -->
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tab-pane fade" class="tab-pane active" id="properties">
+					<div class="main-box clearfix">
+						<div class="main-box-body clearfix">
+							<?php
+							$sAssignedProperties = ",";
 
-?>
+							if (mysql_num_rows($rsAssignedProperties) == 0) { ?>
+								<br>
+								<div class="alert alert-warning">
+									<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?php echo gettext("No property assignments."); ?></span>
+								</div>
+							<?php } else {
+								//Yes, start the table
+								echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
+								echo "<tr class=\"TableHeader\">";
+								echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Type") . "</b></td>";
+								echo "<td width=\"15%\" valign=\"top\"><b>" . gettext("Name") . "</b></td>";
+								echo "<td valign=\"top\"><b>" . gettext("Value") . "</b></td>";
 
-</table>
+								if ($bOkToEdit)
+								{
+									echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Edit Value") . "</td>";
+									echo "<td valign=\"top\"><b>" . gettext("Remove") . "</td>";
+								}
+
+								echo "</tr>";
+
+								$last_pro_prt_ID = "";
+								$bIsFirst = true;
+
+								//Loop through the rows
+								while ($aRow = mysql_fetch_array($rsAssignedProperties))
+								{
+									$pro_Prompt = "";
+									$r2p_Value = "";
+
+									extract($aRow);
+
+									if ($pro_prt_ID != $last_pro_prt_ID)
+									{
+										echo "<tr class=\"";
+										if ($bIsFirst)
+											echo "RowColorB";
+										else
+											echo "RowColorC";
+										echo "\"><td><b>" . $prt_Name . "</b></td>";
+
+										$bIsFirst = false;
+										$last_pro_prt_ID = $pro_prt_ID;
+										$sRowClass = "RowColorB";
+									}
+									else
+									{
+										echo "<tr class=\"" . $sRowClass . "\">";
+										echo "<td valign=\"top\">&nbsp;</td>";
+									}
+
+									echo "<td valign=\"center\">" . $pro_Name . "</td>";
+									echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
+
+									if ($bOkToEdit)
+									{
+										if (strlen($pro_Prompt) > 0)
+										{
+											echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
+										}
+										else
+										{
+											echo "<td>&nbsp;</td>";
+										}
+
+										echo "<td valign=\"center\"><a href=\"PropertyUnassign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Remove") . "</a></td>";
+									}
+
+									echo "</tr>";
+
+									//Alternate the row style
+									$sRowClass = AlternateRowStyle($sRowClass);
+
+									$sAssignedProperties .= $pro_ID . ",";
+								}
+
+								//Close the table
+								echo "</table>";
+
+							}
+							if ($bOkToEdit) { ?>
+							<div class="alert alert-info">
+								<div>
+									<h4><strong><?php echo gettext("Assign a New Property:"); ?></strong></h4>
+									<p><br></p>
+									<form method="post" action="PropertyAssign.php?FamilyID=<?php echo $iFamilyID ?>">
+									  <select name="PropertyID">
+										<?php
+									while ($aRow = mysql_fetch_array($rsProperties))
+									{
+										extract($aRow);
+										//If the property doesn't already exist for this Person, write the <OPTION> tag
+										if (strlen(strstr($sAssignedProperties,"," . $pro_ID . ",")) == 0)
+										{
+											echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
+										}
+									}
+									?>
+									  </select>
+									  <input type="submit" class="icButton" value="Assign" name="Submit2" style="font-size: 8pt;">
+								  </p>
+								</form>
+								</div>
+							</div>
+							<?php } ?>
+						</div>
+					</div>
+				</div>
+				<?php if ($_SESSION['bFinance']) { ?>
+				<div role="tab-pane fade" class="tab-pane" id="finance">
+					<div class="main-box clearfix">
+						<div class="main-box-body clearfix">
+						<?php if (mysql_num_rows ($rsAutoPayments) > 0) { ?>
+						<table cellpadding="5" cellspacing="0" width="100%">
+
+						<tr class="TableHeader">
+							<td><?php echo gettext("Type"); ?></td>
+							<td><?php echo gettext("Next payment date"); ?></td>
+							<td><?php echo gettext("Amount"); ?></td>
+							<td><?php echo gettext("Interval (months)"); ?></td>
+							<td><?php echo gettext("Fund"); ?></td>
+							<td><?php echo gettext("Edit"); ?></td>
+							<td><?php echo gettext("Delete"); ?></td>
+							<td><?php echo gettext("Date Updated"); ?></td>
+							<td><?php echo gettext("Updated By"); ?></td>
+						</tr>
+
+						<?php
+
+							$tog = 0;
+
+							//Loop through all automatic payments
+							while ($aRow =mysql_fetch_array($rsAutoPayments))
+							{
+								$tog = (! $tog);
+
+								extract($aRow);
+
+								$payType = "Disabled";
+								if ($aut_EnableBankDraft)
+									$payType = "Bank Draft";
+								if ($aut_EnableCreditCard)
+									$payType = "Credit Card";
+
+								//Alternate the row style
+								if ($tog)
+									$sRowClass = "RowColorA";
+								else
+									$sRowClass = "RowColorB";
+
+								?>
+
+								<tr class="<?php echo $sRowClass ?>">
+									<td>
+										<?php echo $payType ?>&nbsp;
+									</td>
+									<td>
+										<?php echo $aut_NextPayDate ?>&nbsp;
+									</td>
+									<td>
+										<?php echo $aut_Amount ?>&nbsp;
+									</td>
+									<td>
+										<?php echo $aut_Interval ?>&nbsp;
+									</td>
+									<td>
+										<?php echo $fundName ?>&nbsp;
+									</td>
+									<td>
+										<a href="AutoPaymentEditor.php?AutID=<?php echo $aut_ID ?>&amp;FamilyID=<?php echo $iFamilyID;?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
+									</td>
+									<td>
+										<a href="AutoPaymentDelete.php?AutID=<?php echo $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
+									</td>
+									<td>
+										<?php echo $aut_DateLastEdited; ?>&nbsp;
+									</td>
+									<td>
+										<?php echo $EnteredFirstName . " " . $EnteredLastName; ?>&nbsp;
+									</td>
+								</tr>
+								<?php
+							} ?>
+						</table>
+						<?php } ?>
+						</div>
+					</div>
+				</div>
+				<div role="tab-pane fade" class="tab-pane" id="pledges">
+					<div class="main-box clearfix">
+						<div class="main-box-body clearfix">
+						<form method="post" action="FamilyView.php?FamilyID=<?php echo $iFamilyID; ?>">
+							<input type="checkbox" name="ShowPledges" value="1" <?php if ($_SESSION['sshowPledges']) echo " checked";?>><?php echo gettext("Show Pledges"); ?>
+							<input type="checkbox" name="ShowPayments" value="1" <?php if ($_SESSION['sshowPayments']) echo " checked";?>><?php echo gettext("Show Payments"); ?>
+							 Since:
+							<input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?php echo $_SESSION['sshowSince']; ?>" maxlength="10" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span>
+							<input type="submit" class="icButton" <?php echo 'value="' . gettext("Update") . '"'; ?> name="UpdatePledgeTable" style="font-size: 8pt;">
+						</form>
+
+						<table cellpadding="4" cellspacing="0" width="100%">
+
+						<tr class="TableHeader" align="center">
+							<td><?php echo gettext("Pledge or Payment"); ?></td>
+							<td><?php echo gettext("Fund"); ?></td>
+							<td><?php echo gettext("Fiscal Year"); ?></td>
+							<td><?php echo gettext("Date"); ?></td>
+							<td><?php echo gettext("Amount"); ?></td>
+							<td><?php echo gettext("NonDeductible"); ?></td>
+							<td><?php echo gettext("Schedule"); ?></td>
+							<td><?php echo gettext("Method"); ?></td>
+							<td><?php echo gettext("Comment"); ?></td>
+							<td><?php echo gettext("Edit"); ?></td>
+							<td><?php echo gettext("Delete"); ?></td>
+							<td><?php echo gettext("Date Updated"); ?></td>
+							<td><?php echo gettext("Updated By"); ?></td>
+						</tr>
+
+						<?php
 
 
-<?php if ($_SESSION['bFinance']) { ?>
+						$tog = 0;
 
-<?php if (mysql_num_rows ($rsAutoPayments) > 0) { ?>
+						if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
+						{
+							//Loop through all pledges
+							while ($aRow =mysql_fetch_array($rsPledges))
+							{
+								$tog = (! $tog);
 
-<br>
-<b><?php echo gettext("Automatic Payments:"); ?></b>
-<br>
+								$plg_FYID = "";
+								$plg_date = "";
+								$plg_amount = "";
+								$plg_schedule = "";
+								$plg_method = "";
+								$plg_comment = "";
+								$plg_plgID = 0;
+								$plg_DateLastEdited  = "";
+								$plg_EditedBy = "";
 
-<table cellpadding="5" cellspacing="0" width="100%">
+								extract($aRow);
 
-<tr class="TableHeader">
-	<td><?php echo gettext("Type"); ?></td>
-	<td><?php echo gettext("Next payment date"); ?></td>
-	<td><?php echo gettext("Amount"); ?></td>
-	<td><?php echo gettext("Interval (months)"); ?></td>
-	<td><?php echo gettext("Fund"); ?></td>
-	<td><?php echo gettext("Edit"); ?></td>
-	<td><?php echo gettext("Delete"); ?></td>
-	<td><?php echo gettext("Date Updated"); ?></td>
-	<td><?php echo gettext("Updated By"); ?></td>
-</tr>
+								//Display the pledge or payment if appropriate
+								if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
+									 ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
+									 ) &&
+									($_SESSION['sshowSince'] == "" || $plg_date > $_SESSION['sshowSince'])
+								   )
+								{
+									//Alternate the row style
+									if ($tog)
+										$sRowClass = "RowColorA";
+									else
+										$sRowClass = "RowColorB";
 
-<?php
+									if ($plg_PledgeOrPayment == 'Payment') {
+										if ($tog)
+											$sRowClass = "PaymentRowColorA";
+										else
+											$sRowClass = "PaymentRowColorB";
+									}
 
-	$tog = 0;
+									?>
 
-	//Loop through all automatic payments
-	while ($aRow =mysql_fetch_array($rsAutoPayments))
-	{
-		$tog = (! $tog);
+									<tr class="<?php echo $sRowClass ?>" align="center">
+										<td>
+											<?php echo $plg_PledgeOrPayment ?>&nbsp;
+										</td>
+										<td>
+											<?php echo $fundName ?>&nbsp;
+										</td>
+										<td>
+											<?php echo MakeFYString ($plg_FYID) ?>&nbsp;
+										</td>
+										<td>
+											<?php echo $plg_date ?>&nbsp;
+										</td>
+										<td align=center>
+											<?php echo $plg_amount ?>&nbsp;
+										</td>
+										<td align=center>
+											<?php echo $plg_NonDeductible ?>&nbsp;
+										</td>
+										<td>
+											<?php echo $plg_schedule ?>&nbsp;
+										</td>
+										<td>
+											<?php echo $plg_method; ?>&nbsp;
+										</td>
+										<td>
+											<?php echo $plg_comment; ?>&nbsp;
+										</td>
+										<td>
+											<a href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
+										</td>
+										<td>
+											<a href="PledgeDelete.php?GroupKey=<?php echo $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
+										</td>
+										<td>
+											<?php echo $plg_DateLastEdited; ?>&nbsp;
+										</td>
+										<td>
+											<?php echo $EnteredFirstName . " " . $EnteredLastName; ?>&nbsp;
+										</td>
+									</tr>
+									<?php
+								}
+							}
+						} // if bShowPledges
 
-		extract($aRow);
+						?>
 
-		$payType = "Disabled";
-		if ($aut_EnableBankDraft)
-			$payType = "Bank Draft";
-		if ($aut_EnableCreditCard)
-			$payType = "Credit Card";
+						</table>
 
-		//Alternate the row style
-		if ($tog)
-			$sRowClass = "RowColorA";
-		else
-			$sRowClass = "RowColorB";
+						<p align="center">
+							<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&amp;PledgeOrPayment=Pledge"><?php echo gettext("Add a new pledge"); ?></a>
+							<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&amp;PledgeOrPayment=Payment"><?php echo gettext("Add a new payment"); ?></a>
+							<a class="SmallText" href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo gettext("Add a new automatic payment"); ?></a>
+						</p>
 
-		?>
+						<?php } ?>
 
-		<tr class="<?php echo $sRowClass ?>">
-			<td>
-				<?php echo $payType ?>&nbsp;
-			</td>
-			<td>
-				<?php echo $aut_NextPayDate ?>&nbsp;
-			</td>
-			<td>
-				<?php echo $aut_Amount ?>&nbsp;
-			</td>
-			<td>
-				<?php echo $aut_Interval ?>&nbsp;
-			</td>
-			<td>
-				<?php echo $fundName ?>&nbsp;
-			</td>
-			<td>
-				<a href="AutoPaymentEditor.php?AutID=<?php echo $aut_ID ?>&amp;FamilyID=<?php echo $iFamilyID;?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
-			</td>
-			<td>
-				<a href="AutoPaymentDelete.php?AutID=<?php echo $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
-			</td>
-			<td>
-				<?php echo $aut_DateLastEdited; ?>&nbsp;
-			</td>
-			<td>
-				<?php echo $EnteredFirstName . " " . $EnteredLastName; ?>&nbsp;
-			</td>
-		</tr>
-		<?php
-	}
+						<?php if ($_SESSION['bCanvasser']) { ?>
 
-?></table><?php
-
-}
-
-?>
-
-<br>
-<b><?php echo gettext("Pledges and Payments:"); ?></b>
-<br>
-
-<form method="post" action="FamilyView.php?FamilyID=<?php echo $iFamilyID; ?>">
-	<input type="checkbox" name="ShowPledges" value="1" <?php if ($_SESSION['sshowPledges']) echo " checked";?>><?php echo gettext("Show Pledges"); ?>
-	<input type="checkbox" name="ShowPayments" value="1" <?php if ($_SESSION['sshowPayments']) echo " checked";?>><?php echo gettext("Show Payments"); ?>
-	 Since: 
-	<input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?php echo $_SESSION['sshowSince']; ?>" maxlength="10" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span>
-	<input type="submit" class="icButton" <?php echo 'value="' . gettext("Update") . '"'; ?> name="UpdatePledgeTable" style="font-size: 8pt;">
-</form>
-
-<table cellpadding="4" cellspacing="0" width="100%">
-
-<tr class="TableHeader" align="center">
-	<td><?php echo gettext("Pledge or Payment"); ?></td>
-	<td><?php echo gettext("Fund"); ?></td>
-	<td><?php echo gettext("Fiscal Year"); ?></td>
-	<td><?php echo gettext("Date"); ?></td>
-	<td><?php echo gettext("Amount"); ?></td>
-	<td><?php echo gettext("NonDeductible"); ?></td>
-	<td><?php echo gettext("Schedule"); ?></td>
-	<td><?php echo gettext("Method"); ?></td>
-	<td><?php echo gettext("Comment"); ?></td>
-	<td><?php echo gettext("Edit"); ?></td>
-	<td><?php echo gettext("Delete"); ?></td>
-	<td><?php echo gettext("Date Updated"); ?></td>
-	<td><?php echo gettext("Updated By"); ?></td>
-</tr>
-
-<?php
-
-
-$tog = 0;
-
-if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
-{
-	//Loop through all pledges
-	while ($aRow =mysql_fetch_array($rsPledges))
-	{
-		$tog = (! $tog);
-
-		$plg_FYID = "";
-		$plg_date = "";
-		$plg_amount = "";
-		$plg_schedule = "";
-		$plg_method = "";
-		$plg_comment = "";
-		$plg_plgID = 0;
-		$plg_DateLastEdited  = "";
-		$plg_EditedBy = "";
-
-		extract($aRow);
-
-		//Display the pledge or payment if appropriate
-		if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
-		     ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
-			 ) &&
-		    ($_SESSION['sshowSince'] == "" || $plg_date > $_SESSION['sshowSince'])
-		   )
-		{
-			//Alternate the row style
-			if ($tog)
-				$sRowClass = "RowColorA";
-			else
-				$sRowClass = "RowColorB";
-
-			if ($plg_PledgeOrPayment == 'Payment') {
-				if ($tog)
-					$sRowClass = "PaymentRowColorA";
-				else
-					$sRowClass = "PaymentRowColorB";
-			}
-
-			?>
-
-			<tr class="<?php echo $sRowClass ?>" align="center">
-				<td>
-					<?php echo $plg_PledgeOrPayment ?>&nbsp;
-				</td>
-				<td>
-					<?php echo $fundName ?>&nbsp;
-				</td>
-				<td>
-					<?php echo MakeFYString ($plg_FYID) ?>&nbsp;
-				</td>
-				<td>
-					<?php echo $plg_date ?>&nbsp;
-				</td>
-				<td align=center>
-					<?php echo $plg_amount ?>&nbsp;
-				</td>
-				<td align=center>
-					<?php echo $plg_NonDeductible ?>&nbsp;
-				</td>
-				<td>
-					<?php echo $plg_schedule ?>&nbsp;
-				</td>
-				<td>
-					<?php echo $plg_method; ?>&nbsp;
-				</td>
-				<td>
-					<?php echo $plg_comment; ?>&nbsp;
-				</td>
-				<td>
-					<a href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
-				</td>
-				<td>
-					<a href="PledgeDelete.php?GroupKey=<?php echo $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
-				</td>
-				<td>
-					<?php echo $plg_DateLastEdited; ?>&nbsp;
-				</td>
-				<td>
-					<?php echo $EnteredFirstName . " " . $EnteredLastName; ?>&nbsp;
-				</td>
-			</tr>
-			<?php
-		}
-	}
-} // if bShowPledges
-
-?>
-
-</table>
-
-<p align="center">
-	<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&amp;PledgeOrPayment=Pledge"><?php echo gettext("Add a new pledge"); ?></a>
-	<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&amp;PledgeOrPayment=Payment"><?php echo gettext("Add a new payment"); ?></a>
-	<a class="SmallText" href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo gettext("Add a new automatic payment"); ?></a>
-</p>
-
-<?php } ?>
-
-<?php if ($_SESSION['bCanvasser']) { ?>
-
-<p align="center">
-	<a class="SmallText" href="CanvassEditor.php?FamilyID=<?php echo $fam_ID;?>&amp;FYID=<?php echo $_SESSION['idefaultFY'];?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo MakeFYString ($_SESSION['idefaultFY']) . gettext(" Canvass Entry"); ?></a>
-</p>
-
-<?php } ?>
-
-<br>
-
-<?php if ($_SESSION['bNotes']) { ?>
-<p>
-	<b><?php echo gettext("Notes:"); ?></b>
-</p>
-
-<p>
-	<a class="SmallText" href="NoteEditor.php?FamilyID=<?php echo $fam_ID ?>"><?php echo gettext("Add a Note to this Record"); ?></a>
-</p>
-
-<?php
-
-//Loop through all the notes
-while($aRow = mysql_fetch_array($rsNotes))
-{
-	extract($aRow);
-
-	?>
-
-<p class="ShadedBox")>
-		<?php echo $nte_Text ?>
-</p>
-	<span class="SmallText"><?php echo gettext("Entered:") . ' ' . FormatDate($nte_DateEntered,True) . ' ' . gettext("by") . ' ' . $EnteredFirstName . " " . $EnteredLastName ?></span>
-	<br>
-	<?php
-
-	if (strlen($nte_DateLastEdited) > 0)
-	{ ?>
-		<span class="SmallText"><?php echo gettext("Last Edited:") . ' ' . FormatDate($nte_DateLastEdited,True) . ' ' . gettext("by") . ' ' . $EditedFirstName . " " . $EditedLastName ?></span>
-		<br>
-	<?php
-	} ?>
-	<a class="SmallText" href="NoteEditor.php?FamilyID=<?php echo $iFamilyID ?>&amp;NoteID=<?php echo $nte_ID ?>"><?php echo gettext("Edit This Note"); ?></a></span>
-	|
-	<a class="SmallText" href="NoteDelete.php?NoteID=<?php echo $nte_ID ?>"><?php echo gettext("Delete This Note"); ?></a>
-
-	<?php
-
-}
-} ?>
-
+						<p align="center">
+							<a class="SmallText" href="CanvassEditor.php?FamilyID=<?php echo $fam_ID;?>&amp;FYID=<?php echo $_SESSION['idefaultFY'];?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo MakeFYString ($_SESSION['idefaultFY']) . gettext(" Canvass Entry"); ?></a>
+						</p>
+						</div>
+					</div>
+				</div>
+				<?php } ?>
+				<?php if ($_SESSION['bNotes']) { ?>
+				<div role="tab-pane fade" class="tab-pane" id="notes">
+					<div class="main-box clearfix">
+						<div class="main-box-body clearfix">
+							<div class="conversation-content">
+								<p>
+								<div class="pull-right top-page-ui text-center clearfix">
+									<div class="profile-message-btn btn-group">
+										<a class="btn btn-primary active" role="button" href="NoteEditor.php?FamilyID=<?php echo $fam_ID; ?>"><span class="fa fa-plus" aria-hidden="true"></span> Add Note</a>
+									</div>
+								</div>
+								<br></p>
+								<?php
+								//Loop through all the notes
+								while($aRow = mysql_fetch_array($rsNotes)){
+									extract($aRow);
+								?>
+									<div class="conversation-item item-left clearfix">
+										<div class="conversation-user">
+											<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>" alt="" width="60" height="60"/>
+										</div>
+										<div class="conversation-body">
+											<div class="name">
+												<?php if (!strlen($nte_DateLastEdited)) {
+										echo $EnteredFirstName . " " . $EnteredLastName;
+									} else {
+										echo $EditedFirstName . " " . $EditedLastName;
+									}?>
+											</div>
+											<div class="time hidden-xs">
+												<?php
+									if (!strlen($nte_DateLastEdited)) {
+										echo FormatDate($nte_DateEntered, True);
+									} else {
+										echo FormatDate($nte_DateLastEdited,True);
+									} ?>
+											</div>
+											<div class="text">
+												<?php echo $nte_Text ?>
+											</div>
+											<div class="text">
+												<?php if ($_SESSION['bNotes']) { ?>
+										<a href="NoteEditor.php?PersonID=<?php echo $iPersonID ?>&NoteID=<?php echo $nte_ID ?>" class="table-link">
+											<span class="fa-stack">
+												<i class="fa fa-square fa-stack-2x"></i>
+												<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+											</span>
+										</a>
+										<a href="NoteDelete.php?NoteID=<?php echo $nte_ID ?>" class="table-link danger">
+											<span class="fa-stack">
+												<i class="fa fa-square fa-stack-2x"></i>
+												<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+											</span>
+										</a>
+									<?php } ?>
+											</div>
+										</div>
+									</div>
+								<?php } ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				<?php } ?>
+		</div>
+	</div>
+</div>
 <?php
 require "Include/Footer.php";
 ?>
