@@ -39,7 +39,6 @@ global $sPageTitle, $sURLPath;
 
     <link rel="stylesheet" type="text/css" href="<?php /*echo $sURLPath."/"; */?>css/Style.css">
     <!--<link rel="stylesheet" type="text/css" href="<?php /*echo $sURLPath."/"; */?>Include/<?php /*echo $_SESSION['sStyle']; */?>">
-    <link rel="stylesheet" type="text/css" media="all" href="<?php echo $sURLPath."/"; ?>Include/jscalendar/calendar-blue.css" title="cal-style">
     -->
 
     <!-- jQuery -->
@@ -48,9 +47,9 @@ global $sPageTitle, $sURLPath;
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-table/1.3.0/bootstrap-table.min.css" >
 
-
-	<!-- libraries -->
+    <!-- libraries -->
     <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/libs/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/libs/nanoscroller.css" />
 
@@ -61,6 +60,8 @@ global $sPageTitle, $sURLPath;
 
     <!-- google font libraries -->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
     <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
     <title>ChurchInfo: <?php echo $sPageTitle; ?></title>

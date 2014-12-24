@@ -30,11 +30,13 @@
 <!-- global scripts -->
 <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/demo-skin-changer.js"></script> <!-- only for demo -->
 
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
 
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-table/1.3.0/bootstrap-table.min.js"></script>
+
+
 <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/jquery.nanoscroller.min.js"></script>
 
 <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/demo.js"></script> <!-- only for demo -->
