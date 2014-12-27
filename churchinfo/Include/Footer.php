@@ -16,44 +16,29 @@
  ******************************************************************************/
 ?>
 
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+			</section><!-- /.content -->
+		</aside><!-- /.right-side -->
+	</div><!-- ./wrapper -->
 
-<!-- global scripts -->
-<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/demo-skin-changer.js"></script> <!-- only for demo -->
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+	<!-- AdminLTE App -->
+	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/AdminLTE/app.js"></script>
 
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-table/1.3.0/bootstrap-table.min.js"></script>
-
-
-<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/jquery.nanoscroller.min.js"></script>
-
-<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/demo.js"></script> <!-- only for demo -->
-
-<!-- this page specific scripts -->
-
-<!-- theme scripts -->
-<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/scripts.js"></script>
-<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/pace.min.js"></script>
-
-<!-- this page specific inline scripts -->
-
-<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/SiteWidejQuery.js"></script>
-
-
-
-
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script language="javascript" type="text/javascript">
+		$("document").ready(function(){
+			$(".searchPerson").autocomplete({
+				source: "AjaxFunctions.php?searchtype=person",
+				minLength: 2,
+				select: function(event, ui) {
+					var location = 'PersonView.php?PersonID='+ui.item.id;
+					window.location.replace(location);
+					$('#add_per_ID').val(ui.item.id);
+				}
+			});
+		});
+	</script>
 </body>
 </html>
 <?php

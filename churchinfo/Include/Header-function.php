@@ -33,35 +33,27 @@ global $sPageTitle, $sURLPath;
 
 	$sURLPath = $_SESSION['sURLPath'];
 ?>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-    <link rel="stylesheet" type="text/css" href="<?php /*echo $sURLPath."/"; */?>css/Style.css">
-    <!--<link rel="stylesheet" type="text/css" href="<?php /*echo $sURLPath."/"; */?>Include/<?php /*echo $_SESSION['sStyle']; */?>">
-    -->
-
     <!-- jQuery -->
     <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-table/1.3.0/bootstrap-table.min.css" >
 
-    <!-- libraries -->
-    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/libs/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/libs/nanoscroller.css" />
-
-    <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/compiled/theme_styles.css" />
-    <!-- this page specific styles -->
-    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/libs/magnific-popup.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/AdminLTE.css" />
 
     <!-- google font libraries -->
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"  />
 
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- Ionicons -->
+    <link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- DATA TABLES -->
+    <link href="../../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
     <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
     <title>ChurchInfo: <?php echo $sPageTitle; ?></title>
@@ -250,7 +242,6 @@ function addMenu($menu) {
     while ($aRow = mysql_fetch_array($rsMenu)) {
         if (addMenuItem($aRow, $idx)) {
             if ($ptr == $item_cnt) {
-                echo "</li>";
                 $idx++;
             }
             $ptr++;
@@ -262,7 +253,6 @@ function addMenu($menu) {
 
 function addMenuItem($aMenu,$mIdx) {
 global $security_matrix, $sURLPath;
-    $separators = array("separator1", "separator2", "separator3", "separator4");
 	$sURLPath = $_SESSION['sURLPath'];
 
     $link = ($aMenu['uri'] == "") ? "" : $sURLPath."/".$aMenu['uri'];
@@ -288,28 +278,32 @@ global $security_matrix, $sURLPath;
     if (!($aMenu['ismenu']) || ($numItems > 0))
     {
         if($link){
-            echo "<li><a href='$link'>".$aMenu['content']."</a>";
-        } else if (in_array($aMenu['name'] , $separators)){
-            echo "<li class=\"divider\">\n";
+            echo "<li><a href='$link'>";
+            if ($aMenu['icon'] != "") {
+                echo "<i class=\"fa ". $aMenu['icon'] ."\"></i>";
+            }
+            echo "<i class=\"fa fa-angle-double-right\"></i> ".$aMenu['content']."</a>";
         } else {
-            echo "<li>\n";
-            echo "    <a href=\"#\" class=\"dropdown-toggle\">\n";
-            echo "<i class=\"fa ". $aMenu['icon'] ."\"></i>";
-            echo "<span>".$aMenu['content']."</span> ";
-            echo "<i class=\"fa fa-chevron-circle-right drop-icon\"></i>\n";
+            echo "<li class=\"treeview\">\n";
+            echo "    <a href=\"#\">\n";
+            if ($aMenu['icon'] != "") {
+                echo "<i class=\"fa ". $aMenu['icon'] ."\"></i>\n";
+            }
+            echo "<span>".$aMenu['content']."</span>\n";
+            echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
             if ($aMenu['name'] == "cart") {
-                echo " (". count($_SESSION['aPeopleCart']).") ";
+                echo "<small class=\"badge pull-right bg-green\">". count($_SESSION['aPeopleCart'])."</small>\n";
             } else if ($aMenu['name'] == "deposit") {
-            echo " (". $_SESSION['iCurrentDeposit'].") ";
+                echo "<small class=\"badge pull-right bg-green\">". $_SESSION['iCurrentDeposit']."</small>\n";
             }
             ?>  </a>
-                <ul class="submenu">
+                <ul class="treeview-menu">
             <?php
         }
         if (($aMenu['ismenu']) && ($numItems > 0)) {
             echo "\n";
             addMenu($aMenu['name']);
-            echo "</ul>";
+            echo "</ul>\n</li>\n";
         } else {
 			echo "</li>\n";
 		}
@@ -342,154 +336,125 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
         echo html_entity_decode($sHeader,ENT_QUOTES);
         echo "</td></tr></table>";
     }
-
-    if (strlen($_SESSION['iUserID'])) {
     ?>
-    <header class="navbar" id="header-navbar">
-        <div class="container">
-            <a href="Menu.php" id="logo" class="navbar-brand">
-                Church Info CRM
+    <header class="header">
+        <a href="Menu.php" class="logo">
+            Church Info CRM
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </a>
-            <div class="clearfix">
-                <button class="navbar-toggle" data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
-                    <ul class="nav navbar-nav pull-left">
-                        <li>
-                            <a class="btn" id="make-small-nav">
-                                <i class="fa fa-bars"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-
-                <div class="nav-no-collapse pull-right" id="header-nav">
-                    <ul class="nav navbar-nav pull-right">
-                        <li class="mobile-search">
-                            <a class="btn">
-                                <i class="fa fa-search"></i>
-                            </a>
-
-                            <div class="drowdown-search">
-                                <form role="search">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Search..." onfocus="ClearFieldOnce(this);" id="SearchText" <?php echo 'value="' . gettext("Search") . '"'; ?>>
-                                        <i class="fa fa-search nav-search-icon"></i>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-                        <?php if ($_SESSION['bAdmin']) { ?>
-                        <li class="dropdown profile-dropdown">
-                            <a class="btn" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <?php addMenu("admin"); ?>
-                            </ul>
-                        </li>
-                        <?php } ?>
-                        <li class="dropdown profile-dropdown">
-                            <a class="btn" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-question-circle"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <?php addMenu("help"); ?>
-                            </ul>
-                        </li>
-                        <li class="dropdown profile-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="img-circle" />
-                                <span class="hidden-xs"><?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> </span> <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="PersonView.php?PersonID=<?php echo $_SESSION['iUserID'];?>"><i class="fa fa-user"></i>Profile</a></li>
-                                <li class="divider"></li>
-                                <li><a href="UserPasswordChange.php">Change My Password</a></li>
-                                <li><a href="SettingsIndividual.php">Change My Settings</a></li>
-                                <li class="divider"></li>
-                                <li><a href="Default.php?Logoff=True"><i class="fa fa-power-off"></i>Log Off</a></li>
-                            </ul>
-                        </li>
-                        <li class="hidden-xxs">
-                            <a class="btn" href="Default.php?Logoff=True">
-                                <i class="fa fa-power-off"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="navbar-right">
+                <ul class="nav navbar-nav">
+                    <?php if ($_SESSION['bAdmin']) { ?>
+                    <li class="dropdown profile-dropdown">
+                        <a class="btn" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-cog"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <?php addMenu("admin"); ?>
+                        </ul>
+                    </li>
+                    <?php } ?>
+                    <li class="dropdown profile-dropdown">
+                        <a class="btn" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-question-circle"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <?php addMenu("help"); ?>
+                        </ul>
+                    </li>
+                    <li class="dropdown profile-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="img-circle" />
+                            <span class="hidden-xs"><?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> </span> <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="PersonView.php?PersonID=<?php echo $_SESSION['iUserID'];?>"><i class="fa fa-user"></i>Profile</a></li>
+                            <li class="divider"></li>
+                            <li><a href="UserPasswordChange.php">Change My Password</a></li>
+                            <li><a href="SettingsIndividual.php">Change My Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="Default.php?Logoff=True"><i class="fa fa-power-off"></i>Log Off</a></li>
+                        </ul>
+                    </li>
+                    <li class="hidden-xxs">
+                        <a class="btn" href="Default.php?Logoff=True">
+                            <i class="fa fa-power-off"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </nav>
     </header>
-    <div id="page-wrapper" class="container">
-        <div class="row">
-            <div id="nav-col">
-                <section id="col-left" class="col-left-nano">
-                    <div id="col-left-inner" class="col-left-nano-content">
-                        <div id="user-left-box" class="clearfix hidden-sm hidden-xs">
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
                             <img src="<?php echo get_gravatar($_SESSION['sEmailAddress'],70); ?>" class="img-circle" />
-                            <div class="user-box">
-									<span class="name">Welcome<br/>
-                                        <?php echo $_SESSION['UserFirstName']; ?>
-                                    </span>
-                            </div>
                         </div>
-                        <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li>
-                                    <a href="Menu.php">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>Dashboard</span>
-                                    </a>
-                                </li>
-                                <?php addMenu("root"); ?>
-                            </ul>
+                        <div class="pull-left info">
+                            <p>Welcome, <?php echo $_SESSION['UserFirstName']; ?></p>
                         </div>
                     </div>
+                    <!-- search form -->
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" class="form-control searchPerson" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
+                            <span class="input-group-btn">
+                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li>
+                            <a href="Menu.php">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <?php addMenu("root"); ?>
+                    </ul>
                 </section>
-            </div>
-
-
-
-    <?php
-    }
-        if (!$bDefectiveBrowser)
-        {
-            echo "</div>";
-            if ($sHeader) {
-                // Optional Header Code (Entered on General Settings page - sHeader)
-                // Must first set a table with a background color, or content scrolls across
-                // the background of the custom code when using a non-defective browser
-                echo "  <table width='100%' bgcolor=white cellpadding=0 cellspacing=0 border=0>
-                        <tr><td width='100%'>";
-                echo html_entity_decode($sHeader,ENT_QUOTES);
-                echo "</td></tr></table>";
-            }
-            echo "<BR><BR><BR>";
-        }
-
-    ?>
-        <div id="content-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1><?php echo $sPageTitle; ?></h1>
-                </div>
-            </div>
-
-            <?php if ($sGlobalMessage) { ?>
-                <div class="main-box-body clearfix">
-                    <div class="alert alert-success fade in">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <i class="fa fa-check-circle fa-fw fa-lg"></i>
-                        <?php $sGlobalMessage; ?>
+            </aside>
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <section class="content-header">
+                    <h1>
+                        <?php
+                        echo $sPageTitle."\n";
+                        if ($sPageTitleSub != "") {
+                            echo "<small>".$sPageTitleSub."</small>";
+                        }?>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo $sURLPath."/Menu.php"; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active"><?php echo $sPageTitle; ?></li>
+                    </ol>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <?php if ($sGlobalMessage) { ?>
+                    <div class="main-box-body clearfix">
+                        <div class="alert alert-success fade in">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <i class="fa fa-check-circle fa-fw fa-lg"></i>
+                            <?php $sGlobalMessage; ?>
+                        </div>
                     </div>
-                </div>
-            <?php
-            }
-    }
+                    <?php }
+}
 
 function create_side_nav($menu) {
 
@@ -562,44 +527,5 @@ $sURLPath = $_SESSION['sURLPath'];
     if ($aMenu['ismenu']) {
         addSection($aMenu['name']);
     }
-}
-
-function Header_body_nomenu() {
-global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, 
-       $sHeader, $sGlobalMessage, $sURLPath, $sPageTitle;
-
-	$sURLPath = $_SESSION['sURLPath'];
-?>
-
-<table width="100%" border="0" cellpadding="5" cellspacing="0" align="center">
-    <tr>
-        <td class="LeftNavColumn" valign="top" width="200">
-         <p>
-            <form name="PersonFilter" method="get" action="<?php echo $sURLPath."/"; ?>SelectList.php">
-                <b><?php echo gettext("People"); ?></b>
-                <input type="hidden" value="person" name="mode">
-                <input style="font-size: 8pt; margin-top: 5px; margin-bottom: 5px;" type="text" name="Filter" id="PersonSearch" value="Search" onFocus="ClearFieldOnce(this);">
-            </form>
-         </p>
-         <p>
-            <form name="FamilyFilter" method="get" action="<?php echo $sURLPath."/"; ?>SelectList.php">
-                <b><?php echo gettext("Families"); ?></b>
-                <input type="hidden" value="family" name="mode">
-                <input style="font-size: 8pt; margin-top: 5px; margin-bottom: 5px;" type="text" name="Filter" id="FamilySearch" value="Search" onFocus="ClearFieldOnce(this);">
-            </form>
-         </p>
-        
-        <?php create_side_nav("root"); ?>
-            <img src="<?php echo $sURLPath."/"; ?>Images/Spacer.gif" height="100" width="1" alt="<?php echo $sURLPath."/"; ?>Images/Spacer.gif">
-        </td>
-
-        <td valign="top" width="100%" align="center">
-            <table width="95%" border="0">
-                <tr>
-                    <td valign="top">
-
-                        <br>
-                        <p class="PageTitle"><?php echo $sPageTitle; ?></p>
-<?php
 }
 ?>
