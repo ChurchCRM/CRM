@@ -99,7 +99,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>
             </div>
-            <a href="/SelectList.php?mode=family" class="small-box-footer">
+            <a href="<?php echo $sURLPath."/"; ?>FamilyList.php" class="small-box-footer">
                 See all Families <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -118,7 +118,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person-add"></i>
             </div>
-            <a href="/SelectList.php?mode=person" class="small-box-footer">
+            <a href="<?php echo $sURLPath."/"; ?>SelectList.php?mode=person" class="small-box-footer">
                 See All Member <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -137,7 +137,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-university"></i>
             </div>
-            <a href="#" class="small-box-footer">
+            <a href="<?php echo $sURLPath."/"; ?>SundaySchool.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -156,7 +156,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-happy"></i>
             </div>
-            <a href="#" class="small-box-footer">
+            <a href="<?php echo $sURLPath."/"; ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
