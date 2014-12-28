@@ -49,9 +49,6 @@ global $sPageTitle, $sURLPath;
     <!-- Ionicons -->
     <link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- DATA TABLES -->
-    <link href="../../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
-
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
@@ -408,14 +405,9 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
                         </div>
                     </div>
                     <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" class="form-control searchPerson" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
+                    <div class="sidebar-form">
+                        <input type="text" class="form-control searchPerson" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
+                    </div>
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
