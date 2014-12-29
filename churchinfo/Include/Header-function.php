@@ -412,7 +412,7 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="Menu.php">
+                            <a href="<?php echo $sURLPath."/"; ?>Menu.php">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
@@ -442,7 +442,7 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
                         <div class="alert alert-success fade in">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             <i class="fa fa-check-circle fa-fw fa-lg"></i>
-                            <?php $sGlobalMessage; ?>
+                            <?php echo $sGlobalMessage; ?>
                         </div>
                     </div>
                     <?php }
