@@ -310,7 +310,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 	</div>
 	<div class="col-lg-9 col-md-8 col-sm-8">
 		<div class="box box-solid">
-			<div class="box-body clearfix">
+			<div class="box-body table-responsive clearfix">
 				<table class="table user-list table-hover">
 				<thead>
 				<tr>

@@ -368,7 +368,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 		<?php if (mysql_num_rows($rsOtherFamily) != 0) { ?>
 		<div class="row">
 			<div class="box box-solid">
-				<div class="box-body clearfix">
+				<div class="box-body table-responsive clearfix">
 					<table class="table user-list table-hover">
 						<thead>
 						<tr>
