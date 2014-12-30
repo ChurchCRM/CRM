@@ -401,10 +401,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								<?php } ?>
 							</td>
 							<td style="width: 20%;">
-								<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>">
+								<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>&AddToPeopleCart=<?php echo $tmpPersonId; ?>">
 									<span class="fa-stack">
 										<i class="fa fa-square fa-stack-2x"></i>
-										<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+										<i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
 									</span>
 								</a>
 								<?php if ($bOkToEdit) { ?>
