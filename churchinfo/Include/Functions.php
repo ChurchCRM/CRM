@@ -113,6 +113,18 @@ $aPropTypes = array(
     12 => gettext("Custom Drop-Down List")
 );
 
+if (isset($_GET["AllPDFsEmailed"])) {
+    $sGlobalMessage = gettext("PDFs successfully emailed ". $_GET["AllPDFsEmailed"] . " families.");
+}
+
+if (isset($_GET["PDFEmailed"])) {
+    if ($_GET["PDFEmailed"] == 1) {
+        $sGlobalMessage = gettext("PDF successfully emailed to family members.");
+    } else {
+        $sGlobalMessage = gettext("Failed to email PDF to family members.");
+    }
+}
+
 // Are they adding an entire group to the cart?
 if (isset($_GET["AddGroupToPeopleCart"])) {
     AddGroupToPeopleCart(FilterInput($_GET["AddGroupToPeopleCart"],'int'));
@@ -1025,17 +1037,17 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
     {
         // Handler for boolean fields
         case 1: 
-        	echo "<input type=\"radio\" Name=\"" . $fieldname . "\" value=\"true\""; 
+        	echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"true\"";
         	if ($data == 'true') { 
         		echo " checked"; 
         	} 
         	echo ">".gettext("Yes"); 
-        	echo "<input type=\"radio\" Name=\"" . $fieldname . "\" value=\"false\""; 
+        	echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"false\"";
         	if ($data == 'false') { 
         		echo " checked"; 
         	} 
         	echo ">".gettext("No"); 
-        	echo "<input type=\"radio\" Name=\"" . $fieldname . "\" value=\"\""; 
+        	echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"\"";
         	if (strlen($data) == 0) { 
         		echo " checked"; 
         	} 
@@ -1043,32 +1055,32 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
         	break; 
         // Handler for date fields
         case 2:
-            echo "<input type=\"text\" id=\"" . $fieldname . "\" Name=\"" . $fieldname . "\" maxlength=\"10\" size=\"15\" value=\"" . $data . "\">&nbsp;<input type=\"image\" onclick=\"return showCalendar('$fieldname', 'y-mm-dd');\" src=\"Images/calendar.gif\"> " . gettext("[format: YYYY-MM-DD]");
+            echo "<input class=\"form-control\" type=\"text\" id=\"" . $fieldname . "\" Name=\"" . $fieldname . "\" maxlength=\"10\" size=\"15\" value=\"" . $data . "\">&nbsp;<input type=\"image\" class=\"form-control\" onclick=\"return showCalendar('$fieldname', 'y-mm-dd');\" src=\"Images/calendar.gif\"> " . gettext("[format: YYYY-MM-DD]");
             break;
 
         // Handler for 50 character max. text fields
         case 3:
-            echo "<input type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"50\" size=\"50\" value=\"" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "\">";
+            echo "<input class=\"form-control\" type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"50\" size=\"50\" value=\"" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "\">";
             break;
 
         // Handler for 100 character max. text fields
         case 4:
-            echo "<textarea Name=\"" . $fieldname . "\" cols=\"40\" rows=\"2\" onKeyPress=\"LimitTextSize(this,100)\">" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "</textarea>";
+            echo "<textarea class=\"form-control\" Name=\"" . $fieldname . "\" cols=\"40\" rows=\"2\" onKeyPress=\"LimitTextSize(this,100)\">" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "</textarea>";
             break;
 
         // Handler for extended text fields (MySQL type TEXT, Max length: 2^16-1)
         case 5:
-            echo "<textarea Name=\"" . $fieldname . "\" cols=\"60\" rows=\"4\" onKeyPress=\"LimitTextSize(this, 65535)\">" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "</textarea>";
+            echo "<textarea class=\"form-control\" Name=\"" . $fieldname . "\" cols=\"60\" rows=\"4\" onKeyPress=\"LimitTextSize(this, 65535)\">" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "</textarea>";
             break;
 
         // Handler for 4-digit year
         case 6:
-            echo "<input type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"4\" size=\"6\" value=\"" . $data . "\">";
+            echo "<input class=\"form-control\" type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"4\" size=\"6\" value=\"" . $data . "\">";
             break;
 
         // Handler for season (drop-down selection)
         case 7:
-            echo "<select name=\"$fieldname\">";
+            echo "<select name=\"$fieldname\" class=\"form-control\" >";
             echo "  <option value=\"none\">" . gettext("Select Season") . "</option>";
             echo "  <option value=\"winter\"";
             if ($data == 'winter') { echo " selected"; }
@@ -1087,7 +1099,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
 
         // Handler for integer numbers
         case 8:
-            echo "<input type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"11\" size=\"15\" value=\"" . $data . "\">";
+            echo "<input class=\"form-control\" type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"11\" size=\"15\" value=\"" . $data . "\">";
             break;
 
         // Handler for "person from group"
@@ -1103,7 +1115,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
 
             $rsGroupPeople = RunQuery($sSQL);
 
-            echo "<select name=\"" . $fieldname . "\">";
+            echo "<select name=\"" . $fieldname . "\" class=\"form-control\" >";
                 echo "<option value=\"0\"";
                 if ($data <= 0) echo " selected";
                 echo ">" . gettext("Unassigned") . "</option>";
@@ -1123,7 +1135,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
 
         // Handler for money amounts
         case 10:
-            echo "<input type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"13\" size=\"16\" value=\"" . $data . "\">";
+            echo "<input class=\"form-control\"  type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"13\" size=\"16\" value=\"" . $data . "\">";
             break;
 
         // Handler for phone numbers
@@ -1137,7 +1149,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
             if (isset($_POST[$fieldname . "noformat"]))
                 $bNoFormat_Phone = true;
 
-            echo "<input type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"30\" size=\"30\" value=\"" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "\">";
+            echo "<input class=\"form-control\"  type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"30\" size=\"30\" value=\"" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "\">";
             echo "<br><input type=\"checkbox\" name=\"" . $fieldname . "noformat\" value=\"1\"";
             if ($bNoFormat_Phone) echo " checked";
             echo ">" . gettext("Do not auto-format");
@@ -1148,7 +1160,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
             $sSQL = "SELECT * FROM list_lst WHERE lst_ID = $special ORDER BY lst_OptionSequence";
             $rsListOptions = RunQuery($sSQL);
 
-            echo "<select name=\"" . $fieldname . "\">";
+            echo "<select class=\"form-control\" name=\"" . $fieldname . "\">";
                 echo "<option value=\"0\" selected>" . gettext("Unassigned") . "</option>";
                 echo "<option value=\"0\">-----------------------</option>";
 
