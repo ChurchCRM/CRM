@@ -200,7 +200,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 		<li><a href="SelectDelete.php?FamilyID=<?php echo $iFamilyID; ?>">Delete this Family</a></li>
 		<?php } ?>
 	</ul>
-
+	<a class="btn btn-info" href="PersonEditor.php?FamilyID=<?php echo $iFamilyID; ?>">
+		<i class="fa fa-plus-square"></i> Add New Member
+	</a>
 	<a class="btn btn-default" role="button" href="SelectList.php?mode=family"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
 	<?php if (($next_id > 0)) { ?>
 		<a class="btn btn-default" role="button" href="FamilyView.php?FamilyID=<?php echo $next_id;?>"><span class="fa fa-hand-o-right" aria-hidden="true"></span></a>
@@ -318,7 +320,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 					<th class="text-center"><span>Role</span></th>
 					<th><span>Birthday</span></th>
 					<th><span>Email</span></th>
-					<th>&nbsp;</th>
+					<th></th>
 				</tr>
 				</thead>
 				<tbody>

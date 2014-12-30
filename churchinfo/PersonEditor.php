@@ -681,7 +681,7 @@ require "Include/Header.php";
 							extract($aRow);
 
 							echo "<option value=\"" . $fam_ID . "\"";
-							if ($iFamily == $fam_ID) { echo " selected"; }
+							if ($iFamily == $fam_ID || $_GET['FamilyID'] == $fam_ID) { echo " selected"; }
 							echo ">" . $fam_Name . "&nbsp;" . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 						} ?>
 				</select>
