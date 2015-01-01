@@ -915,18 +915,20 @@ require "Include/Header.php";
 		<td colspan="2">
 		<div class="MediumText"><center><?php if ($iFamilyID<0) { echo gettext("You may create family members now or add them later.  All entries will become <i>new</i> person records."); }?></center></div><br><br>
 		<table cellpadding="3" cellspacing="0" width="100%">
+		<thead>
 		<tr class="TableHeader" align="center">
-			<td><?php echo gettext("First"); ?></td>
-			<td><?php echo gettext("Middle"); ?></td>
-			<td><?php echo gettext("Last"); ?></td>
-			<td><?php echo gettext("Suffix"); ?></td>
-			<td><?php echo gettext("Gender"); ?></td>
-			<td><?php echo gettext("Role"); ?></td>
-			<td><?php echo gettext("Month"); ?></td>
-			<td><?php echo gettext("Day"); ?></td>
-			<td><?php echo gettext("Year"); ?></td>
-			<td><?php echo gettext("Classification"); ?></td>
+			<th><?php echo gettext("First"); ?></th>
+			<th><?php echo gettext("Middle"); ?></th>
+			<th><?php echo gettext("Last"); ?></th>
+			<th><?php echo gettext("Suffix"); ?></th>
+			<th><?php echo gettext("Gender"); ?></th>
+			<th><?php echo gettext("Role"); ?></th>
+			<th><?php echo gettext("Month"); ?></th>
+			<th><?php echo gettext("Day"); ?></th>
+			<th><?php echo gettext("Year"); ?></th>
+			<th><?php echo gettext("Classification"); ?></th>
 		</tr>
+		</thead>
 		<?php
 
 		//Get family roles
