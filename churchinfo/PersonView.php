@@ -192,8 +192,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 	<ul class="dropdown-menu" role="menu">
 		<?php
 		if ($bOkToEdit) {
-			echo "<li><a href=\"uploadPhoto.php?PersonID=" . $per_ID . "\">" . gettext("Upload "). $per_FirstName  . gettext(" Photo ")."</a></li> ";
+			echo "<li><a href=\"#\" data-toggle=\"modal\" data-target=\"#upload-image\">". gettext("Upload Photo") ."</a></li>";
+			echo "<li><a href=\"#\" data-toggle=\"modal\" data-target=\"#confirm-delete-image\">". gettext("Delete Photo") ."</a></li>";
 			echo "<li class=\"divider\"></li>";
+
 		} ?>
 		<li><a href="VCardCreate.php?PersonID=<?php echo $per_ID; ?>" ><?php echo gettext("Create vCard"); ?></a></li>
 		<li><a href="PrintView.php?PersonID=<?php echo $per_ID; ?>"><?php echo gettext("Printable Page"); ?></a></li>
@@ -223,8 +225,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 	<a class="btn btn-primary active" role="button" href="SelectList.php?mode=person"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
 </div>
 <p><br/><br/></p>
-<div class="alert alert-info alert-dismissable">
-	<i class="fa fa-info"></i>
+<div class="alert alert-warning alert-dismissable">
+	<i class="fa fa-magic"></i>
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 	<b><span style="color: red;"><?php echo gettext("Red text"); ?></span></b> <?php echo gettext("indicates items inherited from the associated family record.");?>
 </div>
@@ -800,6 +802,46 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 		</div>
 	</div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label" aria-hidden="true">
+	<div class="modal-dialog">
+		<form action="ImageUpload.php?PersonID=<?php echo $iPersonID;?>" method="post" enctype="multipart/form-data" id="UploadForm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="upload-Image-label"><?php echo gettext("Upload Photo") ?></h4>
+			</div>
+			<div class="modal-body">
+				<input type="file" name="file" size="50" />
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<input type="submit" class="btn btn-primary" value="Upload Image">
+			</div>
+		</div>
+		</form>
+	</div>
+</div>
+<div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="delete-Image-label">Confirm Delete</h4>
+			</div>
+
+			<div class="modal-body">
+				<p>You are about to delete the profile photo, this procedure is irreversible.</p>
+				<p>Do you want to proceed?</p>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<a href="ImageDelete.php?PersonID=<?php echo $iPersonID;?>" class="btn btn-danger danger">Delete</a>
+			</div>
+		</div>
+	</div>
+</div>
 <script language="javascript">
 	function GroupRemove( Group, Person ) {
 		var answer = confirm (<?php echo "'",  "'"; ?>)
@@ -807,6 +849,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			window.location="GroupMemberList.php?GroupID=" + Group + "&PersonToRemove=" + Person
 	}
 </script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 <?php
 require "Include/Footer.php";
 ?>

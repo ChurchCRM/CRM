@@ -113,6 +113,7 @@ $aPropTypes = array(
     12 => gettext("Custom Drop-Down List")
 );
 
+$sGlobalMessageClass = "success";
 if (isset($_GET["AllPDFsEmailed"])) {
     $sGlobalMessage = gettext("PDFs successfully emailed ". $_GET["AllPDFsEmailed"] . " families.");
 }
@@ -136,6 +137,20 @@ if (isset($_GET["RemoveGroupFromPeopleCart"])) {
     RemoveGroupFromPeopleCart(FilterInput($_GET["RemoveGroupFromPeopleCart"],'int'));
     $sGlobalMessage = gettext("Group successfully removed from the Cart.");
 }
+
+if (isset($_GET["ProfileImageDeleted"])) {
+    $sGlobalMessage = gettext("Profile Image successfully removed.");
+}
+
+if (isset($_GET["ProfileImageUploaded"])) {
+    $sGlobalMessage = gettext("Profile Image successfully updated.");
+}
+
+if (isset($_GET["ProfileImageUploadedError"])) {
+    $sGlobalMessage = gettext("Profile Image upload Error.");
+    $sGlobalMessageClass = "error";
+}
+
 
 // Are they adding a person to the Cart?
 if (isset($_GET["AddToPeopleCart"])) {

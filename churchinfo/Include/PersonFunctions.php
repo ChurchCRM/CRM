@@ -1,13 +1,33 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: gdawoud
- * Date: 12/20/2014
- * Time: 12:43 PM
- */
+
+function deletePersonPhoto($personId) {
+    $validextensions = array("jpeg", "jpg", "png");
+    $finalFileName = "Images/Person/" . $personId;
+    $finalFileNameThumb = "Images/Person/thumbnails/" . $personId;
+    while (list(, $ext) = each($validextensions)) {
+        $tmpFile = $finalFileName .".".$ext;
+        if (file_exists($tmpFile)) {
+            unlink($tmpFile);
+        }
+        $tmpFile = $finalFileNameThumb .".".$ext;
+        if (file_exists($tmpFile)) {
+            unlink($tmpFile);
+        }
+    }
+}
+
 function getPersonPhoto($personId, $gender, $famRole) {
-    $photoFile = "Images/Person/thumbnails/" . $personId . ".jpg";
-    if (!file_exists($photoFile))  {
+    $validextensions = array("jpeg", "jpg", "png");
+    $hasFile = false;
+    while (list(, $ext) = each($validextensions)) {
+        $photoFile = "Images/Person/thumbnails/" . $personId . ".".$ext;
+        if (file_exists($photoFile)) {
+            $hasFile = true;
+            break;
+        }
+    }
+
+    if (!$hasFile)  {
         if ($gender == 1 && $famRole =="Child") {
             $photoFile = "img/kid_boy-128.png";
         } else if ($gender == 2 && $famRole !="Child") {

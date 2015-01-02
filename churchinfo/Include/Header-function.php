@@ -31,7 +31,7 @@ function Header_head_metatag() {
 global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
 global $sPageTitle, $sURLPath;
 
-	$sURLPath = $_SESSION['sURLPath'];
+$sURLPath = $_SESSION['sURLPath'];
 ?>
     <!-- jQuery -->
     <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
@@ -439,9 +439,9 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
                 <section class="content">
                     <?php if ($sGlobalMessage) { ?>
                     <div class="main-box-body clearfix">
-                        <div class="alert alert-success fade in">
+                        <div class="alert alert-info fade in">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <i class="fa fa-check-circle fa-fw fa-lg"></i>
+                            <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i>
                             <?php echo $sGlobalMessage; ?>
                         </div>
                     </div>
