@@ -1,21 +1,5 @@
 <?php
 
-function deletePersonPhoto($personId) {
-    $validextensions = array("jpeg", "jpg", "png");
-    $finalFileName = "Images/Person/" . $personId;
-    $finalFileNameThumb = "Images/Person/thumbnails/" . $personId;
-    while (list(, $ext) = each($validextensions)) {
-        $tmpFile = $finalFileName .".".$ext;
-        if (file_exists($tmpFile)) {
-            unlink($tmpFile);
-        }
-        $tmpFile = $finalFileNameThumb .".".$ext;
-        if (file_exists($tmpFile)) {
-            unlink($tmpFile);
-        }
-    }
-}
-
 function getPersonPhoto($personId, $gender, $famRole) {
     $validextensions = array("jpeg", "jpg", "png");
     $hasFile = false;
@@ -55,11 +39,11 @@ function getRoleLabel($famRole) {
     $label = "<span class=\"label ";
     if ($famRole == "Head of Household") {
         $label = $label . "label-success";
-    }
-    if ($famRole == "Spouse") {
+    } else  if ($famRole == "Spouse") {
         $label = $label . "label-info";
-    }
-    if ($famRole == "Child") {
+    } else if ($famRole == "Child") {
+        $label = $label . "label-warning";
+    } else {
         $label = $label . "label-default";
     }
     $label = $label. "\">".$famRole."</span>";
