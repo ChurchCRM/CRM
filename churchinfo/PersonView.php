@@ -183,7 +183,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			  ($_SESSION['bEditSelf'] && $per_fam_ID==$_SESSION['iFamID'])
 			 );
 ?>
-<div class="pull-right btn-group">
+<div class="btn-group pull-right">
 	<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Profile</button>
 	<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 		<span class="caret"></span>
@@ -205,8 +205,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			<li><a href="WhyCameEditor.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Edit \"Why Came\" Notes"); ?></a></li>
 			<li><a href="NoteEditor.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Add a Note to this Record"); ?></a></li>
 		<?php } ?>
-		</p>
-		<li class="divider"></li>
+			<li class="divider"></li>
 		<?php
 		if ($_SESSION['bDeleteRecords']) {
 			echo "<li><a href=\"SelectDelete.php?mode=person&PersonID=" . $per_ID . "\">" . gettext("Delete this Record") . "</a></li>";
@@ -222,7 +221,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 		}
 		?>
 	</ul>
-	<a class="btn btn-primary active" role="button" href="SelectList.php?mode=person"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+	<a class="btn btn-default" role="button" href="SelectList.php?mode=person"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
 </div>
 <p><br/><br/></p>
 <div class="alert alert-warning alert-dismissable">

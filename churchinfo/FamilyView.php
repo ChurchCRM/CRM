@@ -35,13 +35,21 @@ $mailchimp = new ChurchInfoMailchimp();
 $sPageTitle = gettext("Family View");
 
 function getFamilyPhoto($iFamilyID) {
-	// Display photo or upload from file
-	$photoFile = "Images/Family/thumbnails/" . $iFamilyID . ".jpg";
-	if (file_exists($photoFile))  {
+	$validExtensions = array("jpeg", "jpg", "png");
+	$hasFile = false;
+	while (list(, $ext) = each($validExtensions)) {
+		$photoFile = "Images/Family/thumbnails/" . $iFamilyID . ".".$ext;
+		if (file_exists($photoFile)) {
+			$hasFile = true;
+			break;
+		}
+	}
+
+	if ($hasFile)  {
 		return  $photoFile;
 	} else {
-	 return "img/family-128.png";
-	 }
+	 	return "img/family-128.png";
+ 	}
 }
 
 //Get the FamilyID out of the querystring
@@ -186,7 +194,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 	<ul class="dropdown-menu" role="menu">
 		<li><a href="Reports/ConfirmReport.php?familyId=<?php echo $iFamilyID; ?>"><?php echo gettext("Family Record PDF"); ?></a></li>
 		<?php if ($bOkToEdit) { ?>
-		<li><a href="uploadPhoto.php?FamilyID=<?php echo $iFamilyID; ?>">Upload Family Photo </a></li>
+		<li><a href="#" data-toggle="modal" data-target="#upload-image">Upload Family Photo </a></li>
+		<li><a href="#" data-toggle="modal" data-target="#confirm-delete-image">Delete Family Photo </a></li>
 		<li class="divider"></li>
 		<li><a href="Reports/ConfirmReportEmail.php?familyId=<?php echo $iFamilyID; ?>">Email Confirmation PDF Report</a></li>
 		<li><a href="Reports/ConfirmReportEmail.php?updated=true&familyId=<?php echo $iFamilyID; ?>">Email Updated Confirmation PDF Report</a></li>
@@ -200,9 +209,6 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 		<li><a href="SelectDelete.php?FamilyID=<?php echo $iFamilyID; ?>">Delete this Family</a></li>
 		<?php } ?>
 	</ul>
-	<a class="btn btn-info" href="PersonEditor.php?FamilyID=<?php echo $iFamilyID; ?>">
-		<i class="fa fa-plus-square"></i> Add New Member
-	</a>
 	<a class="btn btn-default" role="button" href="SelectList.php?mode=family"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
 	<?php if (($next_id > 0)) { ?>
 		<a class="btn btn-default" role="button" href="FamilyView.php?FamilyID=<?php echo $next_id;?>"><span class="fa fa-hand-o-right" aria-hidden="true"></span></a>
@@ -228,7 +234,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 				</h3>
 			</div>
 			<div class="box-body">
-				<img src="<?php echo getFamilyPhoto($iPersonID) ?>" alt="" class="img-circle img-responsive center-block" />
+				<img src="<?php echo getFamilyPhoto($fam_ID) ?>" alt="" class="img-circle img-responsive center-block" />
 				<ul class="fa-ul">
 					<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
 					<address>
@@ -291,85 +297,96 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 		</div>
 	</div>
 	<div class="col-lg-9 col-md-8 col-sm-8">
-		<div class="box box-solid">
-			<div class="box-body clearfix">
-				<table width="100%">
-				<tr>
-					<td width="50%">
-							<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>" alt="" width="30" height="30" class="img-circle"/>
-						<?php echo gettext("Entered: ").FormatDate($per_DateEntered,false).gettext(" by ").$EnteredFirstName . " " . $EnteredLastName; ?>
-					</td>
-					<?php if (strlen($per_DateLastEdited) > 0) { ?>
-						<td width="50%">
-							<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>" alt="" width="30" height="30" class="img-circle"/>
-							<?php  echo gettext("Updated: "). FormatDate($per_DateLastEdited,false) .gettext(" by ") . $EditedFirstName . " " . $EditedLastName."<br>"; ?>
-						</td>
-					<?php } ?>
-				</tr>
-				</table>
+		<div class="row">
+			<div class="col-lg-12 col-md-8 col-sm-8">
+				<div class="box box-solid">
+					<div class="box-body clearfix">
+						<table width="100%">
+						<tr>
+							<td width="50%">
+									<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>" alt="" width="30" height="30" class="img-circle"/>
+								<?php echo gettext("Entered: ").FormatDate($per_DateEntered,false).gettext(" by ").$EnteredFirstName . " " . $EnteredLastName; ?>
+							</td>
+							<?php if (strlen($per_DateLastEdited) > 0) { ?>
+								<td width="50%">
+									<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>" alt="" width="30" height="30" class="img-circle"/>
+									<?php  echo gettext("Updated: "). FormatDate($per_DateLastEdited,false) .gettext(" by ") . $EditedFirstName . " " . $EditedLastName."<br>"; ?>
+								</td>
+							<?php } ?>
+						</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="col-lg-9 col-md-8 col-sm-8">
-		<div class="box box-solid">
-			<div class="box-body table-responsive clearfix">
-				<table class="table user-list table-hover">
-				<thead>
-				<tr>
-					<th><span>Family Members</span></th>
-					<th class="text-center"><span>Role</span></th>
-					<th><span>Birthday</span></th>
-					<th><span>Email</span></th>
-					<th></th>
-				</tr>
-				</thead>
-				<tbody>
-				<?php while ($Row = mysql_fetch_array($rsFamilyMembers)) {
-					$tmpPersonId = $Row["per_ID"];
-					?>
-					<tr>
-						<td>
-							<img src="<?php echo getPersonPhoto($tmpPersonId, $Row["per_Gender"], $Row["sFamRole"]) ?>" width="40" height="40" class="img-circle" />
-							<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="user-link"><?php echo $Row["per_FirstName"]." ".$Row["per_LastName"]; ?> </a>
-						</td>
-						<td class="text-center">
-							<?php echo getRoleLabel($Row["sFamRole"]) ?>
-						</td>
-						<td>
-							<?php echo FormatBirthDate($Row["per_BirthYear"], $Row["per_BirthMonth"], $Row["per_BirthDay"],"-",$Row["per_Flags"]);?>
-						</td>
-						<td>
-							<?php $tmpEmail = $Row["per_Email"];
-							if ($tmpEmail != "") { ?>
-								<a href="#"><a href="mailto:<?php echo $tmpEmail; ?>"><?php echo $tmpEmail; ?></a></a>
-							<?php } ?>
-						</td>
-						<td style="width: 20%;">
-							<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>&AddToPeopleCart=<?php echo $tmpPersonId; ?>">
-									<span class="fa-stack">
-										<i class="fa fa-square fa-stack-2x"></i>
-										<i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-									</span>
+		<div class="row">
+			<div class="col-lg-12 col-md-8 col-sm-8">
+				<div class="box box-solid">
+					<div class="box-body table-responsive clearfix">
+						<div class="btn-group pull-right clearfix">
+							<a class="btn btn-info" href="PersonEditor.php?FamilyID=<?php echo $iFamilyID; ?>">
+								<i class="fa fa-plus-square"></i> Add New Member
 							</a>
-							<?php if ($bOkToEdit) { ?>
-							<a href="PersonEditor.php?PersonID=<?php echo $tmpPersonId; ?>" class="table-link">
-						<span class="fa-stack">
-							<i class="fa fa-square fa-stack-2x"></i>
-							<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-						</span>
-							</a>
-							<a href="SelectDelete.php?mode=person&PersonID=<?php echo $tmpPersonId; ?>" class="table-link danger">
-						<span class="fa-stack">
-							<i class="fa fa-square fa-stack-2x"></i>
-							<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-						</span>
-							</a>
-							<?php } ?>
-						</td>
-					</tr>
-				<?php } ?>
-				</tbody>
-				</table>
+						</div>
+						<table class="table user-list table-hover">
+						<thead>
+						<tr>
+							<th><span>Family Members</span></th>
+							<th class="text-center"><span>Role</span></th>
+							<th><span>Birthday</span></th>
+							<th><span>Email</span></th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						<?php while ($Row = mysql_fetch_array($rsFamilyMembers)) {
+							$tmpPersonId = $Row["per_ID"];
+							?>
+							<tr>
+								<td>
+									<img src="<?php echo getPersonPhoto($tmpPersonId, $Row["per_Gender"], $Row["sFamRole"]) ?>" width="40" height="40" class="img-circle" />
+									<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="user-link"><?php echo $Row["per_FirstName"]." ".$Row["per_LastName"]; ?> </a>
+								</td>
+								<td class="text-center">
+									<?php echo getRoleLabel($Row["sFamRole"]) ?>
+								</td>
+								<td>
+									<?php echo FormatBirthDate($Row["per_BirthYear"], $Row["per_BirthMonth"], $Row["per_BirthDay"],"-",$Row["per_Flags"]);?>
+								</td>
+								<td>
+									<?php $tmpEmail = $Row["per_Email"];
+									if ($tmpEmail != "") { ?>
+										<a href="#"><a href="mailto:<?php echo $tmpEmail; ?>"><?php echo $tmpEmail; ?></a></a>
+									<?php } ?>
+								</td>
+								<td style="width: 20%;">
+									<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>&AddToPeopleCart=<?php echo $tmpPersonId; ?>">
+											<span class="fa-stack">
+												<i class="fa fa-square fa-stack-2x"></i>
+												<i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+											</span>
+									</a>
+									<?php if ($bOkToEdit) { ?>
+									<a href="PersonEditor.php?PersonID=<?php echo $tmpPersonId; ?>" class="table-link">
+								<span class="fa-stack">
+									<i class="fa fa-square fa-stack-2x"></i>
+									<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+								</span>
+									</a>
+									<a href="SelectDelete.php?mode=person&PersonID=<?php echo $tmpPersonId; ?>" class="table-link danger">
+								<span class="fa-stack">
+									<i class="fa fa-square fa-stack-2x"></i>
+									<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+								</span>
+									</a>
+									<?php } ?>
+								</td>
+							</tr>
+						<?php } ?>
+						</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -391,7 +408,6 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 				</ul>
 
 				<!-- Tab panes -->
-				<!-- Tab panes -->
 				<div class="tab-content">
 					<div role="tab-pane fade" class="tab-pane active" id="properties">
 						<div class="main-box clearfix">
@@ -412,8 +428,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 									echo "<td width=\"15%\" valign=\"top\"><b>" . gettext("Name") . "</b></td>";
 									echo "<td valign=\"top\"><b>" . gettext("Value") . "</b></td>";
 
-									if ($bOkToEdit)
-									{
+									if ($bOkToEdit)  {
 										echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Edit Value") . "</td>";
 										echo "<td valign=\"top\"><b>" . gettext("Remove") . "</td>";
 									}
@@ -424,15 +439,13 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 									$bIsFirst = true;
 
 									//Loop through the rows
-									while ($aRow = mysql_fetch_array($rsAssignedProperties))
-									{
+									while ($aRow = mysql_fetch_array($rsAssignedProperties)) {
 										$pro_Prompt = "";
 										$r2p_Value = "";
 
 										extract($aRow);
 
-										if ($pro_prt_ID != $last_pro_prt_ID)
-										{
+										if ($pro_prt_ID != $last_pro_prt_ID) {
 											echo "<tr class=\"";
 											if ($bIsFirst)
 												echo "RowColorB";
@@ -443,9 +456,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 											$bIsFirst = false;
 											$last_pro_prt_ID = $pro_prt_ID;
 											$sRowClass = "RowColorB";
-										}
-										else
-										{
+										} else {
 											echo "<tr class=\"" . $sRowClass . "\">";
 											echo "<td valign=\"top\">&nbsp;</td>";
 										}
@@ -453,14 +464,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 										echo "<td valign=\"center\">" . $pro_Name . "</td>";
 										echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
 
-										if ($bOkToEdit)
-										{
-											if (strlen($pro_Prompt) > 0)
-											{
+										if ($bOkToEdit) {
+											if (strlen($pro_Prompt) > 0) {
 												echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
-											}
-											else
-											{
+											} else {
 												echo "<td>&nbsp;</td>";
 											}
 
@@ -785,15 +792,63 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 											</a>
 										</div>
 									<?php } ?>
-								</div><!-- /.item -->
-								<?php } ?>
+									</div><!-- /.item -->
+									<?php } ?>
+								</div>
 							</div>
-						</div>
-					<?php } ?>
+						<?php } ?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label" aria-hidden="true">
+	<div class="modal-dialog">
+		<form action="ImageUpload.php?FamilyID=<?php echo $iFamilyID;?>" method="post" enctype="multipart/form-data" id="UploadForm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="upload-Image-label"><?php echo gettext("Upload Photo") ?></h4>
+				</div>
+				<div class="modal-body">
+					<input type="file" name="file" size="50" />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<input type="submit" class="btn btn-primary" value="Upload Image">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="delete-Image-label">Confirm Delete</h4>
+			</div>
+
+			<div class="modal-body">
+				<p>You are about to delete the profile photo, this procedure is irreversible.</p>
+				<p>Do you want to proceed?</p>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<a href="ImageDelete.php?FamilyID=<?php echo $iFamilyID;?>" class="btn btn-danger danger">Delete</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 <?php
 require "Include/Footer.php";
 ?>
