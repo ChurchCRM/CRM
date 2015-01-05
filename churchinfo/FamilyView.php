@@ -177,6 +177,8 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone,$fam_Country,$dummy);
 $sWorkPhone = ExpandPhoneNumber($fam_WorkPhone,$fam_Country,$dummy);
 $sCellPhone = ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy);
 
+$sFamilyEmails = array();
+
 require "Include/Header.php";
 
 $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID'])));
@@ -197,8 +199,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 		<li><a href="#" data-toggle="modal" data-target="#upload-image">Upload Family Photo </a></li>
 		<li><a href="#" data-toggle="modal" data-target="#confirm-delete-image">Delete Family Photo </a></li>
 		<li class="divider"></li>
-		<li><a href="Reports/ConfirmReportEmail.php?familyId=<?php echo $iFamilyID; ?>">Email Confirmation PDF Report</a></li>
-		<li><a href="Reports/ConfirmReportEmail.php?updated=true&familyId=<?php echo $iFamilyID; ?>">Email Updated Confirmation PDF Report</a></li>
+		<li><a href="#" data-toggle="modal" data-target="#confirm-email-pdf"> Email Confirmation PDF Report</a></li>
 		<li class="divider"></li>
 		<?php }
 		if ($_SESSION['bNotes']) { ?>
@@ -355,7 +356,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 								</td>
 								<td>
 									<?php $tmpEmail = $Row["per_Email"];
-									if ($tmpEmail != "") { ?>
+									if ($tmpEmail != "") {
+										array_push($sFamilyEmails, $tmpEmail);
+									?>
 										<a href="#"><a href="mailto:<?php echo $tmpEmail; ?>"><?php echo $tmpEmail; ?></a></a>
 									<?php } ?>
 								</td>
@@ -368,16 +371,16 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 									</a>
 									<?php if ($bOkToEdit) { ?>
 									<a href="PersonEditor.php?PersonID=<?php echo $tmpPersonId; ?>" class="table-link">
-								<span class="fa-stack">
-									<i class="fa fa-square fa-stack-2x"></i>
-									<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-								</span>
+										<span class="fa-stack">
+											<i class="fa fa-square fa-stack-2x"></i>
+											<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+										</span>
 									</a>
-									<a href="SelectDelete.php?mode=person&PersonID=<?php echo $tmpPersonId; ?>" class="table-link danger">
-								<span class="fa-stack">
-									<i class="fa fa-square fa-stack-2x"></i>
-									<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-								</span>
+									<a href="SelectDelete.php?mode=person&PersonID=<?php echo $tmpPersonId; ?>" class="table-link">
+										<span class="fa-stack">
+											<i class="fa fa-square fa-stack-2x"></i>
+											<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+										</span>
 									</a>
 									<?php } ?>
 								</td>
@@ -841,6 +844,35 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 				<a href="ImageDelete.php?FamilyID=<?php echo $iFamilyID;?>" class="btn btn-danger danger">Delete</a>
 			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="confirm-email-pdf" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="delete-Image-label">Confirm PDF Email</h4>
+			</div>
+			<?php if (count($sFamilyEmails) >0 ) { ?>
+			<div class="modal-body">
+				<p>You are about to email copy of the family information in pdf to the following emails <i><?php echo implode(", ", $sFamilyEmails) ?></i> </p>
+				<p>Do you want to proceed?</p>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<a href="Reports/ConfirmReportEmail.php?familyId=<?php echo $iFamilyID;?>" class="btn btn-warning warning">Email</a>
+				<a href="Reports/ConfirmReportEmail.php?updated=true&familyId=<?php echo $iFamilyID;?>" class="btn btn-warning warning">Email Updated</a>
+			</div>
+			<?php } else { ?>
+				<div class="modal-body">
+					<p>This family does not have any email address, so we can't send email </p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			<?php } ?>
 		</div>
 	</div>
 </div>

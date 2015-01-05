@@ -19,10 +19,6 @@ require "../Include/ReportFunctions.php";
 require "../Include/ReportConfig.php";
 require "../Include/phpmailer/class.phpmailer.php";
 
-$sPageTitle = gettext('Email Confirmation PDF');
-
-require '../Include/Header.php';
-
 class EmailPDF_ConfirmReport extends ChurchInfoReport {
 
 	// Constructor
@@ -86,6 +82,9 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport {
 	
 }
 
+$familyEmailSent = false;
+$familiesEmailed = 0;
+
 // Get the list of custom person fields
 $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order";
 $rsCustomFields = RunQuery($sSQL);
@@ -102,12 +101,8 @@ if ($numCustomFields > 0)
     }
 }
 
-if ($_GET["updated"]) {
-	echo "<h3>Sending ** Updated ** emails </h3><br/>";
-}
-
 $sSubQuery = "";
-if ($_GET["familyId"]) {
+if (FilterInput($_GET["familyId"], "int")) {
 	$sSubQuery = " and fam_id in (".$_GET["familyId"].") ";
 }
 
@@ -381,20 +376,16 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	foreach($myArray = explode(',', $emaillist) as $address) {
 		$mail->AddAddress($address);
 	}
-	
-	$mail_sent = $mail->Send();
-	
-		echo $fam_Name." ( ".$fam_ID." ) - to: ". $emaillist." " ;
-	} else {
-		echo $fam_Name." ( ".$fam_ID." ) - without emails" ;
+	$familyEmailSent = $mail->Send();
+		if ($familyEmailSent) {
+			$familiesEmailed = $familiesEmailed+1;
+		}
 	}
-	echo $mail_sent ? "Mail sent" : "Mail failed" ;
-	echo "<br/>";
 }
 
-?>
-
-<?php
-echo "Done";
-require '../Include/Footer.php';
+if ($_GET["familyId"]) {
+	header("Location: ".$_SESSION['sURLPath']."/FamilyView.php?FamilyID=" . $_GET["familyId"]."&PDFEmailed=".$familyEmailSent);
+} else {
+	header("Location: ".$_SESSION['sURLPath']."/FamilyList.php&AllPDFsEmailed=".$familiesEmailed);
+}
 ?>
