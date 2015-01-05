@@ -296,6 +296,13 @@ global $security_matrix, $sURLPath;
             ?>  </a>
                 <ul class="treeview-menu">
             <?php
+                if ($aMenu['name'] == "sundayschool") {
+                    $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
+                    $rsSundaySchoolClasses = RunQuery($sSQL);
+                    while ($aRow = mysql_fetch_array($rsSundaySchoolClasses)) {
+                        echo "<li><a href='SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
+                    }
+                }
         }
         if (($aMenu['ismenu']) && ($numItems > 0)) {
             echo "\n";
