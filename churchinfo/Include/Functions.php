@@ -891,9 +891,9 @@ function FormatAge($Month,$Day,$Year,$Flags)
             if ($Day > date("d"))
                 $monthCount--;
             if ($monthCount == 1)
-                return (gettext("1 month old"));
+                return (gettext("1 m old"));
             else
-                return ( $monthCount . " " . gettext("months old"));
+                return ( $monthCount . " " . gettext("m old"));
         }
         elseif ($Year == date("Y")-1)
         {
@@ -901,16 +901,16 @@ function FormatAge($Month,$Day,$Year,$Flags)
             if ($Day > date("d"))
                 $monthCount--;
             if ($monthCount >= 12)
-                return ( gettext("1 year old"));
+                return ( gettext("1 yr old"));
             elseif ($monthCount == 1)
-                return ( gettext("1 month old"));
+                return ( gettext("1 m old"));
             else
-                return ( $monthCount . " " . gettext("months old"));
+                return ( $monthCount . " " . gettext("m old"));
         }
         elseif ( $Month > date("m") || ($Month == date("m") && $Day > date("d")) )
-            return ( date("Y")-1 - $Year . " " . gettext("years old"));
+            return ( date("Y")-1 - $Year . " " . gettext("yrs old"));
         else
-            return ( date("Y") - $Year . " " . gettext("years old"));
+            return ( date("Y") - $Year . " " . gettext("yrs old"));
     }
     else
         return ( gettext("Unknown"));
