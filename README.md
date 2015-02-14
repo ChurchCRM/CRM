@@ -3,6 +3,11 @@ What is New in StGeorge Seattle Branch
 
 St George Seattle Uses churchInfo CRM and while using it we make changes to make it fit our needs... feel free to use them as you see fit..
 
+Live Demo:
+
+http://www.krysto.com/churchinfo
+username/pass: admin/george
+
 Here is an few examples of the new Ui.
 
 ![Menu](http://krysto.com/churchinfo-other/menu.PNG)
@@ -28,7 +33,8 @@ UI
 - Replaced the Nav bar with bootstrap nav so that it has responsive ui in mobile devices
 - added support for using the logged in user image via Gravatar URL
 - Updated Login screen to use bootstrap
-- 
+- Updated Family/Person Photo UI
+
 Reports
 ======= 
 - Added support to create a fmaily pfd from the family view
@@ -36,9 +42,15 @@ Reports
 - Email a family pdf via email 
 - Export Sundayschool csv of the child info along with Dad/Mom email/phone
 
-Bug fix
-========
-- Removed Extra > in family edit page
+
+Sunday School  Groups
+=====================
+- New Nav Menu for Sunday School Kids
+- Pages for Sundayschool teachers to get full parents details about each kid
+- Email parents from the Sunday School Group Page.
+
+
+
 
 
 
