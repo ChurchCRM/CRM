@@ -3,8 +3,13 @@ What is New in StGeorge Seattle Branch
 
 St George Seattle Uses churchInfo CRM and while using it we make changes to make it fit our needs... feel free to use them as you see fit..
 
-Here is the list of these changes.
+Here is an few examples of the new Ui.
 
+![Menu](http://krysto.com/churchinfo-other/menu.PNG)
+![Family](http://krysto.com/churchinfo-other/family.PNG)
+![Person](http://krysto.com/churchinfo-other/person.PNG)
+
+Here is the list of these changes.
 
 eMail 
 ========
