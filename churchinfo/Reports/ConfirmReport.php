@@ -93,8 +93,13 @@ if ($numCustomFields > 0)
     }
 }
 
+$sSubQuery = " 1 ";
+if ($_GET["familyId"]) {
+	$sSubQuery = " fam_id in (".$_GET["familyId"].") ";
+}
+
 // Get all the families
-$sSQL = "SELECT * FROM family_fam WHERE 1 ORDER BY fam_Name";
+$sSQL = "SELECT * FROM family_fam WHERE ".$sSubQuery." ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
 
 $dataCol = 55;

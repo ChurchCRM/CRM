@@ -37,22 +37,17 @@ $MenuFirst = 1;
 
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
-<head>
-<?php Header_head_metatag(); ?>
-
-
-</head>
-<body onload="javascript:scrollToCoordinates()">
-<?php 
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<?php Header_head_metatag(); ?>
+	</head>
+<body class="skin-blue">
+<?php
 
 Header_body_scripts();
-
-if ($iNavMethod != 2)	{
-	Header_body_menu();
-}
-else {
-	Header_body_nomenu();
-}
+Header_body_menu();
 ?>

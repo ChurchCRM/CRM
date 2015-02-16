@@ -1,4 +1,4 @@
--- Install Version 1.2.13
+-- Install Version 1.3.0
 -- --------------------------------------------------------
 
 -- 
@@ -17,7 +17,7 @@ CREATE TABLE `autopayment_aut` (
   `aut_Fund` mediumint(6) NOT NULL default '0',
   `aut_FirstName` varchar(50) default NULL,
   `aut_LastName` varchar(50) default NULL,
-  `aut_Address1` varchar(255) default NULL,
+  `aut_Address1` varchar(255) default NULL, 
   `aut_Address2` varchar(255) default NULL,
   `aut_City` varchar(50) default NULL,
   `aut_State` varchar(50) default NULL,
@@ -34,6 +34,8 @@ CREATE TABLE `autopayment_aut` (
   `aut_DateLastEdited` datetime default NULL,
   `aut_EditedBy` smallint(5) unsigned default '0',
   `aut_Serial` mediumint(9) NOT NULL default '1',
+  `aut_CreditCardVanco` varchar(50) default NULL,
+  `aut_AccountVanco` varchar(50) default NULL,
   PRIMARY KEY  (`aut_ID`),
   UNIQUE KEY `aut_ID` (`aut_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
@@ -154,6 +156,24 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (56, 'bUseGoogleGeocode', '1', 'boolean', '1', 'Set true to use the Google geocoder.  Set false to use rpc.geocoder.us.', 'General', NULL),
 (57, 'iChecksPerDepositForm', '14', 'number', '14', 'Number of checks for Deposit Slip Report', 'General', NULL),
 (58, 'bUseScannedChecks', '0', 'boolean', '0', 'Set true to enable use of scanned checks', 'General', NULL),
+(61, 'iEventPeriodStartHr', '7', 'number', '7', 'Church Event Valid Period Start Hour (0-23)', 'General', NULL),
+(62, 'iEventPeriodEndHr', '18', 'number', '18', 'Church Event Valid Period End Hour (0-23, must be greater than iEventStartHr)', 'General', NULL),
+(63, 'iEventPeriodIntervalMin', '15', 'number', '15', 'Event Period interval (in minutes)', 'General', NULL),
+(64, 'sDistanceUnit', 'miles', 'text', 'miles', 'Unit used to measure distance, miles or km.', 'General', NULL),
+(65, 'sTimeZone', 'America/New_York', 'text', 'America/New_York', 'Time zone- see http://php.net/manual/en/timezones.php for valid choices.', 'General', NULL),
+(66, 'sGMapIcons', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'text', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'Names of markers for Google Maps in order of classification', 'General',NULL),
+--
+-- bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param below
+--
+(67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General', NULL),
+
+(2001, 'mailChimpApiKey', '', 'text', '', 'see http://kb.mailchimp.com/accounts/management/about-api-keys', 'General', NULL),
+
+
+-- Save 68, 69 for MRBS if installed
+-- Save 70, 71 for WebCalendar if installed
+(72, 'bEnableNonDeductible', '0', 'boolean', '0', 'Enable non-deductible payments', 'General', NULL),
+(73, 'sElectronicTransactionProcessor', 'Vanco', 'text', 'Vanco', 'Electronic Transaction Processor', 'General', NULL),
 (999, 'bRegistered', '0', 'boolean', '0', 'ChurchInfo has been registered.  The ChurchInfo team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General', NULL),
 (1001, 'leftX', '20', 'number', '20', 'Left Margin (1 = 1/100th inch)', 'ChurchInfoReport', NULL),
 (1002, 'incrementY', '4', 'number', '4', 'Line Thickness (1 = 1/100th inch', 'ChurchInfoReport', NULL),
@@ -187,21 +207,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1030, 'bDirLetterHead', '../Images/church_letterhead.jpg', 'text', '../Images/church_letterhead.jpg', 'Church Letterhead path and file', 'ChurchInfoReport', NULL),
 (1031, 'sZeroGivers', 'This letter shows our record of your payments for', 'text', 'This letter shows our record of your payments for', 'Verbage for top line of tax report. Dates will be appended to the end of this line.', 'ChurchInfoReport', NULL),
 (1032, 'sZeroGivers2', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
-(1033, 'sZeroGivers3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
-(61, 'iEventPeriodStartHr', '7', 'number', '7', 'Church Event Valid Period Start Hour (0-23)', 'General', NULL),
-(62, 'iEventPeriodEndHr', '18', 'number', '18', 'Church Event Valid Period End Hour (0-23, must be greater than iEventStartHr)', 'General', NULL),
-(63, 'iEventPeriodIntervalMin', '15', 'number', '15', 'Event Period interval (in minutes)', 'General', NULL),
-(64, 'sDistanceUnit', 'miles', 'text', 'miles', 'Unit used to measure distance, miles or km.', 'General', NULL),
-(65, 'sTimeZone', 'America/New_York', 'text', 'America/New_York', 'Time zone- see http://php.net/manual/en/timezones.php for valid choices.', 'General', NULL),
-(66, 'sGMapIcons', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'text', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'Names of markers for Google Maps in order of classification', 'General',NULL),
---
--- bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param below
---
-(67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General', NULL),
-
--- Save 68, 69 for MRBS if installed
--- Save 70, 71 for WebCalendar if installed
-(72, 'bEnableNonDeductible', '0', 'boolean', '0', 'Enable non-deductible payments', 'General', NULL) ;
+(1033, 'sZeroGivers3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL);
 
 -- --------------------------------------------------------
 
@@ -615,7 +621,12 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
 (5, 8, 8, 'bFinance'),
 (5, 9, 9, 'bNotes'),
 (5, 10, 10, 'bCommunication'),
-(5, 11, 11, 'bCanvasser');
+(5, 11, 11, 'bCanvasser'),
+(10, 1, 1, 'Teacher'),
+(10, 2, 2, 'Student'),
+(11, 1, 1, 'Member'),
+(12, 1, 1, 'Teacher'),
+(12, 2, 2, 'Student');
 
 -- --------------------------------------------------------
 
@@ -639,6 +650,7 @@ CREATE TABLE `menuconfig_mcf` (
   `url_parm_name` varchar(50) default NULL,
   `active` tinyint(1) NOT NULL,
   `sortorder` tinyint(3) NOT NULL,
+  `icon` varchar(50) DEFAULT NULL,
   PRIMARY KEY  (`mid`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=84 ;
 
@@ -646,96 +658,87 @@ CREATE TABLE `menuconfig_mcf` (
 -- Dumping data for table `menuconfig_mcf`
 -- 
 
-INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_english`, `content`, `uri`, `statustext`, `security_grp`, `session_var`, `session_var_in_text`, `session_var_in_uri`, `url_parm_name`, `active`, `sortorder`) VALUES 
-(1, 'root', '', 1, 'Main', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 0),
-(2, 'main', 'root', 1, 'Main', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
-(3, 'logoff', 'main', 0, 'Log Off', NULL, 'Default.php?Logoff=True', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
-(4, 'chgpassword', 'main', 0, 'Change My Password', NULL, 'UserPasswordChange.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2),
-(5, 'chgsetting', 'main', 0, 'Change My Settings', NULL, 'SettingsIndividual.php', '', 'bAll', NULL, 0, 0, NULL, 1, 0),
-(6, 'admin', 'root', 1, 'Admin', NULL, '', '', 'bAdmin', NULL, 0, 0, NULL, 1, 2),
-(7, 'editusers', 'admin', 0, 'Edit Users', NULL, 'UserList.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1),
-(8, 'addnewuser', 'admin', 0, 'Add New User', NULL, 'UserEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 2),
-(9, 'custompersonfld', 'admin', 0, 'Edit Custom Person Fields', NULL, 'PersonCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3),
-(10, 'donationfund', 'admin', 0, 'Edit Donation Funds', NULL, 'DonationFundEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 4),
-(11, 'dbbackup', 'admin', 0, 'Backup Database', NULL, 'BackupDatabase.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 5),
-(12, 'cvsimport', 'admin', 0, 'CSV Import', NULL, 'CSVImport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 6),
-(13, 'accessreport', 'admin', 0, 'Access report', NULL, 'AccessReport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 7),
-(14, 'generalsetting', 'admin', 0, 'Edit General Settings', NULL, 'SettingsGeneral.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 8),
-(15, 'reportsetting', 'admin', 0, 'Edit Report Settings', NULL, 'SettingsReport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 9),
-(16, 'userdefault', 'admin', 0, 'Edit User Default Settings', NULL, 'SettingsUser.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 10),
-(17, 'envelopmgr', 'admin', 0, 'Envelope Manager', NULL, 'ManageEnvelopes.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 11),
-(18, 'register', 'admin', 0, 'Please select this option to register ChurchInfo after configuring.', NULL, 'Register.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 12),
-(19, 'people', 'root', 1, 'People/Families', NULL, '', 'People/Families', 'bAll', NULL, 0, 0, NULL, 1, 3),
-(20, 'newperson', 'people', 0, 'Add New Person', NULL, 'PersonEditor.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 1),
-(21, 'viewperson', 'people', 0, 'View All Persons', NULL, 'SelectList.php?mode=person', '', 'bAll', NULL, 0, 0, NULL, 1, 2),
-(22, 'classes', 'people', 0, 'Classification Manager', NULL, 'OptionManager.php?mode=classes', '', 'bMenuOptions', NULL, 0, 0, NULL, 1, 3),
-(23, 'separator1', 'people', 0, '---------------------------', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 4),
-(24, 'volunteeropportunity', 'people', 0, 'Edit volunteer opportunities', NULL, 'VolunteerOpportunityEditor.php', '', 'bAll', NULL, 0, 0, NULL, 1, 5),
-(25, 'separator2', 'people', 0, '---------------------------', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 6),
-(26, 'newfamily', 'people', 0, 'Add New Family', NULL, 'FamilyEditor.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 7),
-(27, 'viewfamily', 'people', 0, 'View All Families', NULL, 'SelectList.php?mode=family', '', 'bAll', NULL, 0, 0, NULL, 1, 8),
-(28, 'familygeotools', 'people', 0, 'Family Geographic Utilties', NULL, 'GeoPage.php', '', 'bAll', NULL, 0, 0, NULL, 1, 9),
-(29, 'familymap', 'people', 0, 'Family Map', NULL, 'MapUsingGoogle.php?GroupID=-1', '', 'bAll', NULL, 0, 0, NULL, 1, 10),
-(30, 'rolemanager', 'people', 0, 'Family Roles Manager', NULL, 'OptionManager.php?mode=famroles', '', 'bMenuOptions', NULL, 0, 0, NULL, 1, 11),
-(31, 'events', 'root', 1, 'Events', NULL, '', 'Events', 'bAll', NULL, 0, 0, NULL, 1, 4),
-(32, 'listevent', 'events', 0, 'List Church Events', NULL, 'ListEvents.php', 'List Church Events', 'bAll', NULL, 0, 0, NULL, 1, 1),
-(33, 'addevent', 'events', 0, 'Add Church Event', NULL, 'EventNames.php', 'Add Church Event', 'bAll', NULL, 0, 0, NULL, 1, 2),
-(34, 'eventype', 'events', 0, 'List Event Types', NULL, 'EventNames.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3),
-(83, 'eventcheckin', 'events', 0, 'Check-in and Check-out', NULL, 'Checkin.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4),
-(35, 'deposit', 'root', 1, 'Deposit', NULL, '', '', 'bFinance', NULL, 0, 0, NULL, 1, 5),
-(36, 'newdeposit', 'deposit', 0, 'Create New Deposit', NULL, 'DepositSlipEditor.php?DepositType=Bank', '', 'bFinance', NULL, 0, 0, NULL, 1, 1),
-(37, 'viewdeposit', 'deposit', 0, 'View All Deposits', NULL, 'FindDepositSlip.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 2),
-(38, 'depositreport', 'deposit', 0, 'Deposit Reports', NULL, 'FinancialReports.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 3),
-(39, 'separator3', 'deposit', 0, '---------------------------', NULL, '', '', 'bFinance', NULL, 0, 0, NULL, 1, 4),
-(40, 'depositslip', 'deposit', 0, 'Edit Deposit Slip', NULL, 'DepositSlipEditor.php', '', 'bFinance', 'iCurrentDeposit', 1, 1, 'DepositSlipID', 1, 5),
-
-(84, 'fundraiser', 'root', 1, 'Fundraiser', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 5),
-(85, 'newfundraiser', 'fundraiser', 0, 'Create New Fundraiser', NULL, 'FundRaiserEditor.php?FundRaiserID=-1', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
-(86, 'viewfundraiser', 'fundraiser', 0, 'View All Fundraisers', NULL, 'FindFundRaiser.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
-(87, 'editfundraiser', 'fundraiser', 0, 'Edit Fundraiser', NULL, 'FundRaiserEditor.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5),
-(88, 'viewbuyers', 'fundraiser', 0, 'View Buyers', NULL, 'PaddleNumList.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5),
-(89, 'adddonors', 'fundraiser', 0, 'Add Donors to Buyer List', NULL, 'AddDonors.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5),
-
-(41, 'cart', 'root', 1, 'Cart', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 6),
-(42, 'viewcart', 'cart', 0, 'List Cart Items', NULL, 'CartView.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
-(43, 'emptycart', 'cart', 0, 'Empty Cart', NULL, 'CartView.php?Action=EmptyCart', '', 'bAll', NULL, 0, 0, NULL, 1, 2),
-(44, 'carttogroup', 'cart', 0, 'Empty Cart to Group', NULL, 'CartToGroup.php', '', 'bManageGroups', NULL, 0, 0, NULL, 1, 3),
-(45, 'carttofamily', 'cart', 0, 'Empty Cart to Family', NULL, 'CartToFamily.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 4),
-(46, 'carttoevent', 'cart', 0, 'Empty Cart to Event', NULL, 'CartToEvent.php', 'Empty Cart contents to Event', 'bAll', NULL, 0, 0, NULL, 1, 5),
-(47, 'report', 'root', 1, 'Data/Reports', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 7),
-(48, 'cvsexport', 'report', 0, 'CSV Export Records', NULL, 'CSVExport.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
-(49, 'querymenu', 'report', 0, 'Query Menu', NULL, 'QueryList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2),
-(50, 'reportmenu', 'report', 0, 'Reports Menu', NULL, 'ReportList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 3),
-(51, 'groups', 'root', 1, 'Groups', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 8),
-(52, 'listgroups', 'groups', 0, 'List Groups', NULL, 'GroupList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
-(53, 'newgroup', 'groups', 0, 'Add a New Group', NULL, 'GroupEditor.php', '', 'bManageGroups', NULL, 0, 0, NULL, 1, 2),
-(54, 'editgroup', 'groups', 0, 'Edit Group Types', NULL, 'OptionManager.php?mode=grptypes', '', 'bMenuOptions', NULL, 0, 0, NULL, 1, 3),
-(55, 'assigngroup', 'group', 0, 'Group Assignment Helper', NULL, 'SelectList.php?mode=groupassign', '', 'bAll', NULL, 0, 0, NULL, 1, 4),
-(56, 'properties', 'root', 1, 'Properties', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 9),
-(57, 'peopleproperty', 'properties', 0, 'People Properties', NULL, 'PropertyList.php?Type=p', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
-(58, 'familyproperty', 'properties', 0, 'Family Properties', NULL, 'PropertyList.php?Type=f', '', 'bAll', NULL, 0, 0, NULL, 1, 2),
-(59, 'groupproperty', 'properties', 0, 'Group Properties', NULL, 'PropertyList.php?Type=g', '', 'bAll', NULL, 0, 0, NULL, 1, 3),
-(60, 'propertytype', 'properties', 0, 'Property Types', NULL, 'PropertyTypeList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4),
-(64, 'help', 'root', 1, 'Help', NULL, '', '', 'bAll', NULL, 0, 0, NULL, 1, 127),
-(65, 'about', 'help', 0, 'About ChurchInfo', NULL, 'Help.php?page=About', '', 'bAll', NULL, 0, 0, NULL, 1, 1),
-(66, 'wiki', 'help', 0, 'Wiki Documentation', NULL, 'Help.php?page=Wiki', '', 'bAll', NULL, 0, 0, NULL, 1, 2),
-(67, 'helppeople', 'help', 0, 'People', NULL, 'Help.php?page=People', '', 'bAll', NULL, 0, 0, NULL, 1, 3),
-(68, 'helpfamily', 'help', 0, 'Families', NULL, 'Help.php?page=Family', '', 'bAll', NULL, 0, 0, NULL, 1, 4),
-(69, 'helpgeofeature', 'help', 0, 'Geographic features', NULL, 'Help.php?page=Geographic', '', 'bAll', NULL, 0, 0, NULL, 1, 5),
-(70, 'helpgroups', 'help', 0, 'Groups', NULL, 'Help.php?page=Groups', '', 'bAll', NULL, 0, 0, NULL, 1, 6),
-(71, 'helpfinance', 'help', 0, 'Finances', NULL, 'Help.php?page=Finances', '', 'bAll', NULL, 0, 0, NULL, 1, 7),
-(90, 'helpfundraiser', 'help', 0, 'Fundraiser', NULL, 'Help.php?page=Fundraiser', '', 'bAll', NULL, 0, 0, NULL, 1, 8),
-(72, 'helpreports', 'help', 0, 'Reports', NULL, 'Help.php?page=Reports', '', 'bAll', NULL, 0, 0, NULL, 1, 9),
-(73, 'helpadmin', 'help', 0, 'Administration', NULL, 'Help.php?page=Admin', '', 'bAll', NULL, 0, 0, NULL, 1, 10),
-(74, 'helpcart', 'help', 0, 'Cart', NULL, 'Help.php?page=Cart', '', 'bAll', NULL, 0, 0, NULL, 1, 11),
-(75, 'helpproperty', 'help', 0, 'Properties', NULL, 'Help.php?page=Properties', '', 'bAll', NULL, 0, 0, NULL, 1, 12),
-(76, 'helpnotes', 'help', 0, 'Notes', NULL, 'Help.php?page=Notes', '', 'bAll', NULL, 0, 0, NULL, 1, 13),
-(77, 'helpcustomfields', 'help', 0, 'Custom Fields', NULL, 'Help.php?page=Custom', '', 'bAll', NULL, 0, 0, NULL, 1, 14),
-(78, 'helpclassification', 'help', 0, 'Classifications', NULL, 'Help.php?page=Class', '', 'bAll', NULL, 0, 0, NULL, 1, 15),
-(79, 'helpcanvass', 'help', 0, 'Canvass Support', NULL, 'Help.php?page=Canvass', '', 'bAll', NULL, 0, 0, NULL, 1, 16),
-(80, 'helpevents', 'help', 0, 'Events', NULL, 'Help.php?page=Events', '', 'bAll', NULL, 0, 0, NULL, 1, 17),
-(81, 'menusetup', 'admin', 0, 'Menu Options', NULL, 'MenuSetup.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 13),
-(82, 'customfamilyfld', 'admin', 0, 'Edit Custom Family Fields', NULL, 'FamilyCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3);
+INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_english`, `content`, `uri`, `statustext`, `security_grp`, `session_var`, `session_var_in_text`, `session_var_in_uri`, `url_parm_name`, `active`, `sortorder`, `icon`) VALUES
+(1, 'root', '', 1, 'Main', 'Main', '', '', 'bAll', NULL, 0, 0, NULL, 1, 0, NULL),
+(101, 'sundayschool-dash', 'sundayschool', 0, 'Dashboard', 'Dashbaord', 'Reports/SundaySchoolClassList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
+(100, 'sundayschool', 'root', 1, 'Sunday School', 'Sunday School', '', '', 'bAll', NULL, 0, 0, NULL, 1, 4, 'fa-stack-overflow'),
+(7, 'editusers', 'admin', 0, 'Edit Users', 'Edit Users', 'UserList.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
+(8, 'addnewuser', 'admin', 0, 'Add New User', 'Add New User', 'UserEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 2, NULL),
+(9, 'custompersonfld', 'admin', 0, 'Edit Custom Person Fields', 'Edit Custom Person Fields', 'PersonCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3, NULL),
+(10, 'donationfund', 'admin', 0, 'Edit Donation Funds', 'Edit Donation Funds', 'DonationFundEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 4, NULL),
+(11, 'dbbackup', 'admin', 0, 'Backup Database', 'Backup Database', 'BackupDatabase.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 5, NULL),
+(12, 'cvsimport', 'admin', 0, 'CSV Import', 'CSV Import', 'CSVImport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 6, NULL),
+(13, 'accessreport', 'admin', 0, 'Access report', 'Access report', 'AccessReport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 7, NULL),
+(14, 'generalsetting', 'admin', 0, 'Edit General Settings', 'Edit General Settings', 'SettingsGeneral.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 8, NULL),
+(15, 'reportsetting', 'admin', 0, 'Edit Report Settings', 'Edit Report Settings', 'SettingsReport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 9, NULL),
+(16, 'userdefault', 'admin', 0, 'Edit User Default Settings', 'Edit User Default Settings', 'SettingsUser.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 10, NULL),
+(17, 'envelopmgr', 'admin', 0, 'Envelope Manager', 'Envelope Manager', 'ManageEnvelopes.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 11, NULL),
+(18, 'register', 'admin', 0, 'Please select this option to register ChurchInfo after configuring.', 'Update registration', 'Register.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 12, NULL),
+(19, 'people', 'root', 1, 'Members', 'Members', '', 'Members', 'bAll', NULL, 0, 0, NULL, 1, 3, 'fa-users'),
+(20, 'newperson', 'people', 0, 'Add New Person', 'Add New Person', 'PersonEditor.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 1, NULL),
+(21, 'viewperson', 'people', 0, 'View All Persons', 'View All Persons', 'SelectList.php?mode=person', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
+(22, 'classes', 'people', 0, 'Classification Manager', 'Classification Manager', 'OptionManager.php?mode=classes', '', 'bMenuOptions', NULL, 0, 0, NULL, 1, 3, NULL),
+(24, 'volunteeropportunity', 'people', 0, 'Edit volunteer opportunities', 'Edit volunteer opportunities', 'VolunteerOpportunityEditor.php', '', 'bAll', NULL, 0, 0, NULL, 1, 5, NULL),
+(26, 'newfamily', 'people', 0, 'Add New Family', 'Add New Family', 'FamilyEditor.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 7, NULL),
+(27, 'viewfamily', 'people', 0, 'View All Families', 'View All Families', 'FamilyList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 8, NULL),
+(28, 'familygeotools', 'people', 0, 'Family Geographic Utilties', 'Family Geographic Utilties', 'GeoPage.php', '', 'bAll', NULL, 0, 0, NULL, 1, 9, NULL),
+(29, 'familymap', 'people', 0, 'Family Map', 'Family Map', 'MapUsingGoogle.php?GroupID=-1', '', 'bAll', NULL, 0, 0, NULL, 1, 10, NULL),
+(30, 'rolemanager', 'people', 0, 'Family Roles Manager', 'Family Roles Manager', 'OptionManager.php?mode=famroles', '', 'bMenuOptions', NULL, 0, 0, NULL, 1, 11, NULL),
+(31, 'events', 'root', 1, 'Events', 'Events', '', 'Events', 'bAll', NULL, 0, 0, NULL, 1, 9, 'fa-ticket'),
+(32, 'listevent', 'events', 0, 'List Church Events', 'List Church Events', 'ListEvents.php', 'List Church Events', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
+(33, 'addevent', 'events', 0, 'Add Church Event', 'Add Church Event', 'EventNames.php', 'Add Church Event', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
+(34, 'eventype', 'events', 0, 'List Event Types', 'List Event Types', 'EventNames.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3, NULL),
+(83, 'eventcheckin', 'events', 0, 'Check-in and Check-out', 'Check-in and Check-out', 'Checkin.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
+(35, 'deposit', 'root', 1, 'Deposit', 'Deposit', '', '', 'bFinance', NULL, 0, 0, NULL, 1, 10, 'fa-bank'),
+(36, 'newdeposit', 'deposit', 0, 'Create New Deposit', 'Create New Deposit', 'DepositSlipEditor.php?DepositType=Bank', '', 'bFinance', NULL, 0, 0, NULL, 1, 1, NULL),
+(37, 'viewdeposit', 'deposit', 0, 'View All Deposits', 'View All Deposits', 'FindDepositSlip.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 2, NULL),
+(38, 'depositreport', 'deposit', 0, 'Deposit Reports', 'Deposit Reports', 'FinancialReports.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 3, NULL),
+(40, 'depositslip', 'deposit', 0, 'Edit Deposit Slip', 'Edit Deposit Slip', 'DepositSlipEditor.php', '', 'bFinance', 'iCurrentDeposit', 1, 1, 'DepositSlipID', 1, 5, NULL),
+(84, 'fundraiser', 'root', 1, 'Fundraiser', 'Fundraiser', '', '', 'bAll', NULL, 0, 0, NULL, 1, 11, 'fa-money'),
+(85, 'newfundraiser', 'fundraiser', 0, 'Create New Fundraiser', 'Create New Fundraiser', 'FundRaiserEditor.php?FundRaiserID=-1', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
+(86, 'viewfundraiser', 'fundraiser', 0, 'View All Fundraisers', 'View All Fundraisers', 'FindFundRaiser.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
+(87, 'editfundraiser', 'fundraiser', 0, 'Edit Fundraiser', 'Edit Fundraiser', 'FundRaiserEditor.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5, NULL),
+(88, 'viewbuyers', 'fundraiser', 0, 'View Buyers', 'View Buyers', 'PaddleNumList.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5, NULL),
+(89, 'adddonors', 'fundraiser', 0, 'Add Donors to Buyer List', 'Add Donors to Buyer List', 'AddDonors.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5, NULL),
+(41, 'cart', 'root', 1, 'Cart', 'Cart', '', '', 'bAll', NULL, 0, 0, NULL, 1, 6, 'fa-shopping-cart'),
+(42, 'viewcart', 'cart', 0, 'List Cart Items', 'List Cart Items', 'CartView.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
+(43, 'emptycart', 'cart', 0, 'Empty Cart', 'Empty Cart', 'CartView.php?Action=EmptyCart', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
+(44, 'carttogroup', 'cart', 0, 'Empty Cart to Group', 'Empty Cart to Group', 'CartToGroup.php', '', 'bManageGroups', NULL, 0, 0, NULL, 1, 3, NULL),
+(45, 'carttofamily', 'cart', 0, 'Empty Cart to Family', 'Empty Cart to Family', 'CartToFamily.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 4, NULL),
+(46, 'carttoevent', 'cart', 0, 'Empty Cart to Event', 'Empty Cart to Event', 'CartToEvent.php', 'Empty Cart contents to Event', 'bAll', NULL, 0, 0, NULL, 1, 5, NULL),
+(47, 'report', 'root', 1, 'Data/Reports', 'Data/Reports', '', '', 'bAll', NULL, 0, 0, NULL, 1, 8, 'fa-file-pdf-o'),
+(48, 'cvsexport', 'report', 0, 'CSV Export Records', 'CSV Export Records', 'CSVExport.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
+(49, 'querymenu', 'report', 0, 'Query Menu', 'Query Menu', 'QueryList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
+(50, 'reportmenu', 'report', 0, 'Reports Menu', 'Reports Menu', 'ReportList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 3, NULL),
+(51, 'groups', 'root', 1, 'Groups', 'Groups', '', '', 'bAll', NULL, 0, 0, NULL, 1, 7, 'fa-tag'),
+(52, 'listgroups', 'groups', 0, 'List Groups', 'List Groups', 'GroupList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
+(53, 'newgroup', 'groups', 0, 'Add a New Group', 'Add a New Group', 'GroupEditor.php', '', 'bManageGroups', NULL, 0, 0, NULL, 1, 2, NULL),
+(54, 'editgroup', 'groups', 0, 'Edit Group Types', 'Edit Group Types', 'OptionManager.php?mode=grptypes', '', 'bMenuOptions', NULL, 0, 0, NULL, 1, 3, NULL),
+(55, 'assigngroup', 'group', 0, 'Group Assignment Helper', 'Group Assignment Helper', 'SelectList.php?mode=groupassign', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
+(56, 'properties', 'root', 1, 'Properties', 'Properties', '', '', 'bAll', NULL, 0, 0, NULL, 1, 12, 'fa-cogs'),
+(57, 'peopleproperty', 'properties', 0, 'People Properties', 'People Properties', 'PropertyList.php?Type=p', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
+(58, 'familyproperty', 'properties', 0, 'Family Properties', 'Family Properties', 'PropertyList.php?Type=f', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
+(59, 'groupproperty', 'properties', 0, 'Group Properties', 'Group Properties', 'PropertyList.php?Type=g', '', 'bAll', NULL, 0, 0, NULL, 1, 3, NULL),
+(60, 'propertytype', 'properties', 0, 'Property Types', 'Property Types', 'PropertyTypeList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
+(65, 'about', 'help', 0, 'About ChurchInfo', 'About ChurchInfo', 'Help.php?page=About', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
+(66, 'wiki', 'help', 0, 'Wiki Documentation', 'Wiki Documentation', 'Help.php?page=Wiki', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
+(67, 'helppeople', 'help', 0, 'People', 'People', 'Help.php?page=People', '', 'bAll', NULL, 0, 0, NULL, 1, 3, NULL),
+(68, 'helpfamily', 'help', 0, 'Families', 'Families', 'Help.php?page=Family', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
+(69, 'helpgeofeature', 'help', 0, 'Geographic features', 'Geographic features', 'Help.php?page=Geographic', '', 'bAll', NULL, 0, 0, NULL, 1, 5, NULL),
+(70, 'helpgroups', 'help', 0, 'Groups', 'Groups', 'Help.php?page=Groups', '', 'bAll', NULL, 0, 0, NULL, 1, 6, NULL),
+(71, 'helpfinance', 'help', 0, 'Finances', 'Finances', 'Help.php?page=Finances', '', 'bAll', NULL, 0, 0, NULL, 1, 7, NULL),
+(90, 'helpfundraiser', 'help', 0, 'Fundraiser', 'Fundraiser', 'Help.php?page=Fundraiser', '', 'bAll', NULL, 0, 0, NULL, 1, 8, NULL),
+(72, 'helpreports', 'help', 0, 'Reports', 'Reports', 'Help.php?page=Reports', '', 'bAll', NULL, 0, 0, NULL, 1, 9, NULL),
+(73, 'helpadmin', 'help', 0, 'Administration', 'Administration', 'Help.php?page=Admin', '', 'bAll', NULL, 0, 0, NULL, 1, 10, NULL),
+(74, 'helpcart', 'help', 0, 'Cart', 'Cart', 'Help.php?page=Cart', '', 'bAll', NULL, 0, 0, NULL, 1, 11, NULL),
+(75, 'helpproperty', 'help', 0, 'Properties', 'Properties', 'Help.php?page=Properties', '', 'bAll', NULL, 0, 0, NULL, 1, 12, NULL),
+(76, 'helpnotes', 'help', 0, 'Notes', 'Notes', 'Help.php?page=Notes', '', 'bAll', NULL, 0, 0, NULL, 1, 13, NULL),
+(77, 'helpcustomfields', 'help', 0, 'Custom Fields', 'Custom Fields', 'Help.php?page=Custom', '', 'bAll', NULL, 0, 0, NULL, 1, 14, NULL),
+(78, 'helpclassification', 'help', 0, 'Classifications', 'Classifications', 'Help.php?page=Class', '', 'bAll', NULL, 0, 0, NULL, 1, 15, NULL),
+(79, 'helpcanvass', 'help', 0, 'Canvass Support', 'Canvass Support', 'Help.php?page=Canvass', '', 'bAll', NULL, 0, 0, NULL, 1, 16, NULL),
+(80, 'helpevents', 'help', 0, 'Events', 'Events', 'Help.php?page=Events', '', 'bAll', NULL, 0, 0, NULL, 1, 17, NULL),
+(81, 'menusetup', 'admin', 0, 'Menu Options', 'Menu Options', 'MenuSetup.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 13, NULL),
+(82, 'customfamilyfld', 'admin', 0, 'Edit Custom Family Fields', 'Edit Custom Family Fields', 'FamilyCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3, NULL);
 
 UPDATE menuconfig_mcf SET content=content_english;
 
@@ -1318,7 +1321,7 @@ CREATE TABLE `version_ver` (
 -- 
 
 INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES 
-('1.2.13', NOW() );
+('1.3.0', NOW() );
 
 -- --------------------------------------------------------
 

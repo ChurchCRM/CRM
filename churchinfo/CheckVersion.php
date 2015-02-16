@@ -31,7 +31,7 @@ require 'Include/Functions.php';
 // Set the current version of this PHP file
 // Important!  These must be updated before every software release.
 
-$_SESSION['sChurchInfoPHPVersion'] = '1.2.13';
+$_SESSION['sChurchInfoPHPVersion'] = '1.3.0';
 $_SESSION['sChurchInfoPHPDate'] = '2011-06-01';
 
 // Check if the table version_ver exists.  If the table does not exist then
@@ -65,7 +65,7 @@ $sPageTitle = gettext('ChurchInfo: Database Version Check');
 <head>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="Include/Style.css">
+    <link rel="stylesheet" type="text/css" href="css/Style.css">
     <title><?php echo $sPageTitle; ?></title>
 </head>
 <body>

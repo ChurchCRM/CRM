@@ -15,25 +15,31 @@
  *
  ******************************************************************************/
 ?>
-						<br>
-						<br>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
-<?php
-// This footer layer slows things down, so it is disabled by default.
-/*
-<div class="Footer">
-WARNING: This is pre-release development code obtained via CVS2!<br>
-<a href="http://www.infocentral.org/" target="_blank">www.InfoCentral.org</a>
-</div>
-*/
-?>
-</body>
 
+			</section><!-- /.content -->
+		</aside><!-- /.right-side -->
+	</div><!-- ./wrapper -->
+
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	<!-- AdminLTE App -->
+	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/AdminLTE/app.js"></script>
+
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script language="javascript" type="text/javascript">
+		$("document").ready(function(){
+			$(".searchPerson").autocomplete({
+				source: "AjaxFunctions.php?searchtype=person",
+				minLength: 2,
+				select: function(event, ui) {
+					var location = 'PersonView.php?PersonID='+ui.item.id;
+					window.location.replace(location);
+					$('#add_per_ID').val(ui.item.id);
+				}
+			});
+		});
+	</script>
+</body>
 </html>
 <?php
 

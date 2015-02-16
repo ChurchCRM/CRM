@@ -1,6 +1,6 @@
-<select name="Country">
+<select name="Country" class="form-control">
 	<option value="">Unassigned</option>
-	<option value="">--------------------</option>
+	<option value="" disabled>--------------------</option>
 	<option value="United States"<?php if ($sCountry == "United States") { echo " selected"; } ?>>United States
 	<option value="Canada"<?php if ($sCountry == "Canada") { echo " selected"; } ?>>Canada
 	<option value="Afghanistan"<?php if ($sCountry == "Afghanistan") { echo " selected"; } ?>>Afghanistan

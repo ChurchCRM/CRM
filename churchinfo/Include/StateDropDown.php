@@ -1,6 +1,6 @@
-<select name="State">
+<select name="State" class="form-control">
 	<option value="">No Selection</option>
-	<option value="">--------------------</option>
+	<option value="" disabled>--------------------</option>
 	<option value="AL"<?php if ($sState == "AL") { echo " selected"; } ?>>Alabama</option>
 	<option value="AK"<?php if ($sState == "AK") { echo " selected"; } ?>>Alaska</option>
 	<option value="AZ"<?php if ($sState == "AZ") { echo " selected"; } ?>>Arizona</option>
@@ -52,7 +52,7 @@
 	<option value="WV"<?php if ($sState == "WV") { echo " selected"; } ?>>West Virginia</option>
 	<option value="WI"<?php if ($sState == "WI") { echo " selected"; } ?>>Wisconsin</option>
 	<option value="WY"<?php if ($sState == "WY") { echo " selected"; } ?>>Wyoming</option>
-	<option value="">--------------------</option>
+	<option value="" disabled>--------------------</option>
 	<option value="BC"<?php if ($sState == "BC") { echo " selected"; } ?>>British Columbia</option>
 	<option value="AB"<?php if ($sState == "AB") { echo " selected"; } ?>>Alberta</option>
 	<option value="SK"<?php if ($sState == "SK") { echo " selected"; } ?>>Saskatchewan</option>
