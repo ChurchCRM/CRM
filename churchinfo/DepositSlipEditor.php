@@ -2,11 +2,11 @@
 /*******************************************************************************
  *
  *  filename    : DepositSlipEditor.php
- *  last change : 2004-6-12
- *  website     : http://www.infocentral.org
- *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt, Michael Wilt
+ *  last change : 2014-12-14
+ *  website     : http://www.churchdb.org
+ *  copyright   : Copyright 2001, 2002, 2003-2014 Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchInfo is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -40,6 +40,16 @@ if ($iDepositSlipID) {
 	// Set current deposit slip
 	$_SESSION['iCurrentDeposit'] = $iDepositSlipID;
 
+	// Set the session variable for default payment type so the new payment form will come up correctly
+	if ($dep_Type == "Bank") 
+		$_SESSION['idefaultPaymentMethod'] = "CHECK";
+	else if ($dep_Type == "CreditCard")
+		$_SESSION['idefaultPaymentMethod'] = "CREDITCARD";
+	else if ($dep_Type == "BankDraft")
+		$_SESSION['idefaultPaymentMethod'] = "BANKDRAFT";
+	else if ($dep_Type == "eGive")
+		$_SESSION['idefaultPaymentMethod'] = "EGIVE";
+	
 	// Security: User must have finance permission or be the one who created this deposit
 	if (! ($_SESSION['bFinance'] || $_SESSION['iUserID']==$dep_EnteredBy)) {
 		Redirect("Menu.php");
@@ -52,7 +62,7 @@ if (! $iDepositSlipID)
 	$sPageTitle = $dep_Type . " " . gettext("Deposit Slip Number: TBD");
 else
 	$sPageTitle = $dep_Type . " " . gettext("Deposit Slip Number: ") . $iDepositSlipID;
-
+	
 //Is this the second pass?
 if (isset($_POST["DepositSlipSubmit"])) {
 	//Get all the variables from the request object and assign them locally
@@ -234,11 +244,13 @@ if (isset($_POST["DepositSlipSubmit"])) {
 						 a.aut_Phone AS phone,
 						 a.aut_Email AS email,
 						 a.aut_CreditCard AS creditCard,
+						 a.aut_CreditCardVanco AS creditcardvanco,
 						 a.aut_ExpMonth AS expMonth,
 						 a.aut_ExpYear AS expYear,
 						 a.aut_BankName AS bankName,
 						 a.aut_Route AS route,
 						 a.aut_Account AS account,
+						 a.aut_AccountVanco AS accountvanco,
 						 a.aut_Serial AS serial,
 						 a.aut_NextPayDate AS authDate,
 						 a.aut_Interval AS aut_Interval,
@@ -249,9 +261,16 @@ if (isset($_POST["DepositSlipSubmit"])) {
 			 WHERE plg_depID = " . $iDepositSlipID . " ORDER BY pledge_plg.plg_date";
 	$rsTransactions = RunQuery($sSQL);
 
-	require_once 'Include/sdk-php-1.8.0/AuthorizeNet.php'; 
-	include ("Include/AuthorizeNetConfig.php"); // Specific account information is in here
-
+	if ($sElectronicTransactionProcessor == "AuthorizeNet") {
+		require_once 'Include/sdk-php-1.8.0/AuthorizeNet.php'; 
+		include ("Include/AuthorizeNetConfig.php"); // Specific account information is in here
+	}
+		
+	if ($sElectronicTransactionProcessor == "Vanco") {
+		include "Include/vancowebservices.php";
+		include "Include/VancoConfig.php";
+	}
+	
 	while ($aTransaction =mysql_fetch_array($rsTransactions))
 	{
 		extract($aTransaction);
@@ -259,148 +278,244 @@ if (isset($_POST["DepositSlipSubmit"])) {
 		if ($plg_aut_Cleared) // If this one already cleared do not submit it again.
 			continue;
 
-		$donation = new AuthorizeNetAIM;
-		$donation->amount = "$plg_amount";
-		$donation->first_name = $firstName;
-		$donation->last_name = $lastName;
-		$donation->address = $address1 . $address2;
-		$donation->city = $city;
-		$donation->state = $state;
-		$donation->zip = $zip;
-		$donation->country = $country;
-		$donation->description = "UU Nashua Pledge";
-		$donation->email = $email;
-		$donation->phone = $phone;
-
-		// not setting these
-//		$donation->allow_partial_auth
-//		$donation->auth_code
-//		$donation->authentication_indicator
-//		$donation->bank_aba_code
-//		$donation->bank_check_number
-//		$donation->card_code
-//		$donation->cardholder_authentication_value
-//		$donation->company
-//		$donation->cust_id
-//		$donation->customer_ip
-//		$donation->delim_char
-//		$donation->delim_data
-//		$donation->duplicate_window
-//		$donation->duty
-//		$donation->echeck_type
-//		$donation->email_customer
-//		$donation->encap_char
-//		$donation->fax
-//		$donation->footer_email_receipt
-//		$donation->freight
-//		$donation->header_email_receipt
-//		$donation->invoice_num
-//		$donation->line_item
-//		$donation->login
-//		$donation->method
-//		$donation->po_num
-//		$donation->recurring_billing
-//		$donation->relay_response
-//		$donation->ship_to_address
-//		$donation->ship_to_city
-//		$donation->ship_to_company
-//		$donation->ship_to_country
-//		$donation->ship_to_first_name
-//		$donation->ship_to_last_name
-//		$donation->ship_to_state
-//		$donation->ship_to_zip
-//		$donation->split_tender_id
-//		$donation->tax
-//		$donation->tax_exempt
-//		$donation->test_request
-//		$donation->tran_key
-//		$donation->trans_id
-//		$donation->type
-//		$donation->version
+		if ($sElectronicTransactionProcessor == "AuthorizeNet") {
+			$donation = new AuthorizeNetAIM;
+			$donation->amount = "$plg_amount";
+			$donation->first_name = $firstName;
+			$donation->last_name = $lastName;
+			$donation->address = $address1 . $address2;
+			$donation->city = $city;
+			$donation->state = $state;
+			$donation->zip = $zip;
+			$donation->country = $country;
+			$donation->description = "UU Nashua Pledge";
+			$donation->email = $email;
+			$donation->phone = $phone;
 	
-		if ($dep_Type == "CreditCard") {
-			$donation->card_num = $creditCard;
-			$donation->exp_date = $expMonth . "/" . $expYear;
-		} else {
-			// check payment info if supplied...
-			
-// Use eCheck:
-			$donation->bank_acct_name = $firstName . ' ' . $lastName;
-			$donation->bank_acct_num = $account;
-			$donation->bank_acct_type = 'CHECKING';
-			$donation->bank_name = $bankName;
-			
-			$donation->setECheck(
-			    $route,
-			    $account,
-			    'CHECKING',
-			    $bankName,
-			    $firstName . ' ' . $lastName,
-			    'WEB'
-			);
-		}
-
-		$response = $donation->authorizeAndCapture();
-		if ($response->approved) {
-		    $transaction_id = $response->transaction_id;
-		}
+			// not setting these
+	//		$donation->allow_partial_auth
+	//		$donation->auth_code
+	//		$donation->authentication_indicator
+	//		$donation->bank_aba_code
+	//		$donation->bank_check_number
+	//		$donation->card_code
+	//		$donation->cardholder_authentication_value
+	//		$donation->company
+	//		$donation->cust_id
+	//		$donation->customer_ip
+	//		$donation->delim_char
+	//		$donation->delim_data
+	//		$donation->duplicate_window
+	//		$donation->duty
+	//		$donation->echeck_type
+	//		$donation->email_customer
+	//		$donation->encap_char
+	//		$donation->fax
+	//		$donation->footer_email_receipt
+	//		$donation->freight
+	//		$donation->header_email_receipt
+	//		$donation->invoice_num
+	//		$donation->line_item
+	//		$donation->login
+	//		$donation->method
+	//		$donation->po_num
+	//		$donation->recurring_billing
+	//		$donation->relay_response
+	//		$donation->ship_to_address
+	//		$donation->ship_to_city
+	//		$donation->ship_to_company
+	//		$donation->ship_to_country
+	//		$donation->ship_to_first_name
+	//		$donation->ship_to_last_name
+	//		$donation->ship_to_state
+	//		$donation->ship_to_zip
+	//		$donation->split_tender_id
+	//		$donation->tax
+	//		$donation->tax_exempt
+	//		$donation->test_request
+	//		$donation->tran_key
+	//		$donation->trans_id
+	//		$donation->type
+	//		$donation->version
 		
-		if ($response->approved) {
-			// Push the authorized transaction date forward by the interval
-			$sSQL = "UPDATE autopayment_aut SET aut_NextPayDate=DATE_ADD('" . $authDate . "', INTERVAL " . $aut_Interval . " MONTH) WHERE aut_ID = " . $aut_ID . " AND aut_Amount = " . $plg_amount;
-			RunQuery ($sSQL);
-			// Update the serial number in any case, even if this is not the scheduled payment
-			$sSQL = "UPDATE autopayment_aut SET aut_Serial=aut_Serial+1 WHERE aut_ID = " . $aut_ID;
-			RunQuery ($sSQL);
-		}
-
-		if (! ($response->approved))
-			$response->approved = 0;
-
-		$sSQL = "UPDATE pledge_plg SET plg_aut_Cleared=" . $response->approved . " WHERE plg_plgID=" . $plg_plgID;
-		RunQuery($sSQL);
-
-		if ($plg_aut_ResultID) {
-			// Already have a result record, update it.
-			$sSQL = "UPDATE result_res SET " .
-							"res_echotype1	='" . $response->response_reason_code	. "'," .
-							"res_echotype2	='" . $response->response_reason_text	. "'," .
-							"res_echotype3	='" . $response->response_code	. "'," .
-							"res_authorization	='" . $response->response_subcode	. "'," .
-							"res_order_number	='" . $response->authorization_code	. "'," .
-							"res_reference	='" . $response->avs_response	. "'," .
-							"res_status	='" . $response->transaction_id	. "'" .
-						" WHERE res_ID=" . $plg_aut_ResultID;
+			if ($dep_Type == "CreditCard") {
+				$donation->card_num = $creditCard;
+				$donation->exp_date = $expMonth . "/" . $expYear;
+			} else {
+				// check payment info if supplied...
+				
+	// Use eCheck:
+				$donation->bank_acct_name = $firstName . ' ' . $lastName;
+				$donation->bank_acct_num = $account;
+				$donation->bank_acct_type = 'CHECKING';
+				$donation->bank_name = $bankName;
+				
+				$donation->setECheck(
+				    $route,
+				    $account,
+				    'CHECKING',
+				    $bankName,
+				    $firstName . ' ' . $lastName,
+				    'WEB'
+				);
+			}
+	
+			$response = $donation->authorizeAndCapture();
+			if ($response->approved) {
+			    $transaction_id = $response->transaction_id;
+			}
+			
+			if ($response->approved) {
+				// Push the authorized transaction date forward by the interval
+				$sSQL = "UPDATE autopayment_aut SET aut_NextPayDate=DATE_ADD('" . $authDate . "', INTERVAL " . $aut_Interval . " MONTH) WHERE aut_ID = " . $aut_ID . " AND aut_Amount = " . $plg_amount;
+				RunQuery ($sSQL);
+				// Update the serial number in any case, even if this is not the scheduled payment
+				$sSQL = "UPDATE autopayment_aut SET aut_Serial=aut_Serial+1 WHERE aut_ID = " . $aut_ID;
+				RunQuery ($sSQL);
+			}
+	
+			if (! ($response->approved))
+				$response->approved = 0;
+				
+			$sSQL = "UPDATE pledge_plg SET plg_aut_Cleared=" . $response->approved . " WHERE plg_plgID=" . $plg_plgID;
 			RunQuery($sSQL);
-		} else {
-			// Need to make a new result record
-			$sSQL = "INSERT INTO result_res (
-							res_echotype1,
-							res_echotype2,
-							res_echotype3,
-							res_authorization,
-							res_order_number,
-							res_reference,
-							res_status)
-						VALUES (" .
-							"'" . mysql_real_escape_string($response->response_reason_code) . "'," .
-							"'" . mysql_real_escape_string($response->response_reason_text) . "'," .
-							"'" . mysql_real_escape_string($response->response_code) . "'," .
-							"'" . mysql_real_escape_string($response->response_subcode) . "'," .
-							"'" . mysql_real_escape_string($response->authorization_code) . "'," .
-							"'" . mysql_real_escape_string($response->avs_response) . "'," .
-							"'" . mysql_real_escape_string($response->transaction_id) . "')";
-			RunQuery($sSQL);
+	
+			if ($plg_aut_ResultID) {
+				// Already have a result record, update it.
+				$sSQL = "UPDATE result_res SET " .
+								"res_echotype1	='" . $response->response_reason_code	. "'," .
+								"res_echotype2	='" . $response->response_reason_text	. "'," .
+								"res_echotype3	='" . $response->response_code	. "'," .
+								"res_authorization	='" . $response->response_subcode	. "'," .
+								"res_order_number	='" . $response->authorization_code	. "'," .
+								"res_reference	='" . $response->avs_response	. "'," .
+								"res_status	='" . $response->transaction_id	. "'" .
+							" WHERE res_ID=" . $plg_aut_ResultID;
+				RunQuery($sSQL);
+			} else {
+				// Need to make a new result record
+				$sSQL = "INSERT INTO result_res (
+								res_echotype1,
+								res_echotype2,
+								res_echotype3,
+								res_authorization,
+								res_order_number,
+								res_reference,
+								res_status)
+							VALUES (" .
+								"'" . mysql_real_escape_string($response->response_reason_code) . "'," .
+								"'" . mysql_real_escape_string($response->response_reason_text) . "'," .
+								"'" . mysql_real_escape_string($response->response_code) . "'," .
+								"'" . mysql_real_escape_string($response->response_subcode) . "'," .
+								"'" . mysql_real_escape_string($response->authorization_code) . "'," .
+								"'" . mysql_real_escape_string($response->avs_response) . "'," .
+								"'" . mysql_real_escape_string($response->transaction_id) . "')";
+				RunQuery($sSQL);
+	
+				// Now get the ID for the newly created record
+				$sSQL = "SELECT MAX(res_ID) AS iResID FROM result_res";
+				$rsLastEntry = RunQuery($sSQL);
+				extract(mysql_fetch_array($rsLastEntry));
+				$plg_aut_ResultID = $iResID;
+	
+				// Poke the ID of the new result record back into this pledge (payment) record
+				$sSQL = "UPDATE pledge_plg SET plg_aut_ResultID=" . $plg_aut_ResultID . " WHERE plg_plgID=" . $plg_plgID;
+				RunQuery($sSQL);
+			}
+		} else if ($sElectronicTransactionProcessor == "Vanco") {
+			$customerid = "$aut_ID";  // This is an optional value that can be used to indicate a unique customer ID that is used in your system
+			// put aut_ID into the $customerid field
+			// Create object to preform API calls
+			
+			$workingobj = new VancoTools($VancoUserid, $VancoPassword, $VancoClientid, $VancoEnc_key, $VancoTest);
+			// Call Login API to receive a session ID to be used in future API calls
+			$sessionid = $workingobj->vancoLoginRequest();
+			// Create content to be passed in the nvpvar variable for a TransparentRedirect API call
+			$nvpvarcontent = $workingobj->vancoEFTTransparentRedirectNVPGenerator($VancoUrltoredirect,$customerid,"","NO");
 
-			// Now get the ID for the newly created record
-			$sSQL = "SELECT MAX(res_ID) AS iResID FROM result_res";
-			$rsLastEntry = RunQuery($sSQL);
-			extract(mysql_fetch_array($rsLastEntry));
-			$plg_aut_ResultID = $iResID;
+			$paymentmethodref = "";
+			if ($dep_Type == "CreditCard") {
+				$paymentmethodref = $creditcardvanco;
+			} else {
+				$paymentmethodref = $accountvanco;
+			}
 
-			// Poke the ID of the new result record back into this pledge (payment) record
-			$sSQL = "UPDATE pledge_plg SET plg_aut_ResultID=" . $plg_aut_ResultID . " WHERE plg_plgID=" . $plg_plgID;
+			$addRet = $workingobj->vancoEFTAddCompleteTransactionRequest(
+			    $sessionid, // $sessionid
+			    $paymentmethodref,// $paymentmethodref
+			    '0000-00-00',// $startdate
+			    'O',// $frequencycode
+			    $customerid,// $customerid
+			    "",// $customerref
+			    $firstName . " " . $lastName,// $name
+			    $address1,// $address1
+			    $address2,// $address2
+			    $city,// $city
+				$state,// $state
+				$zip,// $czip
+				$phone,// $phone
+				"No",// $isdebitcardonly
+				"",// $enddate
+				"",// $transactiontypecode
+				"",// $funddict
+				$plg_amount);// $amount
+
+			$retArr = array();
+			parse_str($addRet, $retArr);
+			
+			$errListStr = "";
+			if (array_key_exists ("errorlist", $retArr))
+				$errListStr = $retArr["errorlist"];
+			
+			$bApproved = false;
+			
+			// transactionref=None&paymentmethodref=16610755&customerref=None&requestid=201411222041237455&errorlist=167
+			if ($retArr["transactionref"]!="None" && $errListStr == "")
+				$bApproved = true;
+				
+			$errStr = "";
+			if ($errListStr != "") {
+				$errList = explode (",", $errListStr);
+				foreach ($errList as $oneErr) {
+					$errStr .= $workingobj->errorString ($oneErr . "<br>\n");
+				}
+			}
+			if ($errStr == "")
+				$errStr = "Success: Transaction reference number " . $retArr["transactionref"] . "<br>";
+			
+				
+			if ($bApproved) {
+				// Push the authorized transaction date forward by the interval
+				$sSQL = "UPDATE autopayment_aut SET aut_NextPayDate=DATE_ADD('" . $authDate . "', INTERVAL " . $aut_Interval . " MONTH) WHERE aut_ID = " . $aut_ID . " AND aut_Amount = " . $plg_amount;
+				RunQuery ($sSQL);
+				// Update the serial number in any case, even if this is not the scheduled payment
+				$sSQL = "UPDATE autopayment_aut SET aut_Serial=aut_Serial+1 WHERE aut_ID = " . $aut_ID;
+				RunQuery ($sSQL);
+			}
+				
+			$sSQL = "UPDATE pledge_plg SET plg_aut_Cleared='" . $bApproved . "' WHERE plg_plgID=" . $plg_plgID;
 			RunQuery($sSQL);
+			
+			if ($plg_aut_ResultID) {
+				// Already have a result record, update it.
+				
+				$sSQL = "UPDATE result_res SET res_echotype2='" . mysql_real_escape_string($errStr)	. "' WHERE res_ID=" . $plg_aut_ResultID;
+				RunQuery($sSQL);
+			} else {
+				// Need to make a new result record
+				$sSQL = "INSERT INTO result_res (res_echotype2) VALUES ('" . mysql_real_escape_string($errStr) . "')";
+				RunQuery($sSQL);
+	
+				// Now get the ID for the newly created record
+				$sSQL = "SELECT MAX(res_ID) AS iResID FROM result_res";
+				$rsLastEntry = RunQuery($sSQL);
+				extract(mysql_fetch_array($rsLastEntry));
+				$plg_aut_ResultID = $iResID;
+	
+				// Poke the ID of the new result record back into this pledge (payment) record
+				$sSQL = "UPDATE pledge_plg SET plg_aut_ResultID=" . $plg_aut_ResultID . " WHERE plg_plgID=" . $plg_plgID;
+				RunQuery($sSQL);
+			}
 		}
 	}
 
@@ -448,8 +563,8 @@ if ($iDepositSlipID) {
 }
 
 require "Include/Header.php";
-
 ?>
+
 
 <form method="post" action="DepositSlipEditor.php?<?php echo "linkBack=" . $linkBack . "&DepositSlipID=".$iDepositSlipID?>" name="DepositSlipEditor">
 

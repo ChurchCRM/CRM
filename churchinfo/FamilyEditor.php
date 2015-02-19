@@ -105,7 +105,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$sCountry = FilterInput($_POST["Country"]);
 	$iFamilyMemberRows = FilterInput($_POST["FamCount"]);
 
-	if ($sCountry == "United States" || $sCountry == "Canada")
+	if ($sCountry == "United States" || $sCountry == "Canada" || $sCountry == "")
 		$sState = FilterInput($_POST["State"]);
 	else
 		$sState = FilterInput($_POST["StateTextbox"]);

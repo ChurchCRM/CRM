@@ -158,7 +158,7 @@ if ($output == "pdf") {
 	$totalChecks = 0;
 	$numItems = 0;
 
-	if ($iChecksPerDepositForm > 14 or ! $iBankSlip) {
+	if (! $iBankSlip) {
 		$summaryY -= 100;
 		$titleY -= 90;
 		$date2Y -= 90;

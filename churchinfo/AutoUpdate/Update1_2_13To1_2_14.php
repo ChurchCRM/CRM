@@ -72,7 +72,7 @@ for (; ; ) {    // This is not a loop but a section of code to be
 // Need to back up tables we will be modifying- 
 
     $needToBackUp = array (
-    "donateditem_di");
+    "donateditem_di", "config_cfg", "autopayment_aut", "menuconfig_mcf");
 
     $bErr = false;
     foreach ($needToBackUp as $backUpName) {
@@ -90,9 +90,38 @@ for (; ; ) {    // This is not a loop but a section of code to be
 // The $bStopOnError argument to RunQuery can now be changed from
 // TRUE to FALSE now that backup copies of all tables are available
 
-    // Allow pledge to be weekly
+    // Add picture field for donated items
     $sSQL = "ALTER IGNORE TABLE donateditem_di ADD `di_picture` text NULL";
     RunQuery($sSQL, FALSE); // False means do not stop on error
+
+    // Add electronic payment processor defaulting to Vanco, also supporting AuthorizeNet
+    $sSQL = "INSERT IGNORE INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES (73, 'sElectronicTransactionProcessor', 'Vanco', 'text', 'Vanco', 'Electronic Transaction Processor', 'General', NULL)";
+	if (!RunQuery($sSQL, FALSE))
+	    break;
+        
+    $sSQL = "ALTER IGNORE TABLE autopayment_aut ADD `aut_CreditCardVanco` text NULL";
+	if (!RunQuery($sSQL, FALSE))
+	    break;
+        
+    $sSQL = "ALTER IGNORE TABLE autopayment_aut ADD `aut_AccountVanco` text NULL";
+	if (!RunQuery($sSQL, FALSE))
+	    break;
+
+   	$sSQL = "INSERT IGNORE INTO `menuconfig_mcf` VALUES (91, 'automaticpayments', 'admin', 0, 'Electronic Payments', NULL, 'ElectronicPaymentList.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 12);";
+	if (!RunQuery($sSQL, FALSE))
+	    break;
+   		
+	$sSQL = "UPDATE menuconfig_mcf SET sortorder=13	WHERE mid=18 AND sortorder=12";
+	if (!RunQuery($sSQL, FALSE))
+	    break;
+		
+	$sSQL = "UPDATE menuconfig_mcf SET content=content_english;";
+	if (!RunQuery($sSQL, FALSE))
+	    break;
+	
+	$sSQL = "INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('".$sVersion."',NOW())";
+    RunQuery($sSQL, FALSE); // False means do not stop on error
+	    break;
 }
 
 $sError = mysql_error();

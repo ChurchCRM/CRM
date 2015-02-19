@@ -3,10 +3,10 @@ within ChurchInfo.  Here are the installation steps required to enable this
 feature.
 
 1. Download the desired version of MRBS from https://sourceforge.net/projects/mrbs/?source=directory
-   Note that the current version that has been tested with ChurchInfo is 1.4.8\
+   Note that the current version that has been tested with ChurchInfo is 1.4.11
 
 2. Copy the MRBS distribution to your server.  The default value for the mrbs location is 
-    /mrbs-1.4.8, next to /churchinfo.  If you use a different location the global setting sMRBSPath 
+    /mrbs-1.4.11, next to /churchinfo.  If you use a different location the global setting sMRBSPath 
     must be modified to reflect the actual location.
 
 3. Edit the MRBS configuration file web/config.inc.php specify the same mysql database that is used 
@@ -28,7 +28,10 @@ feature.
    modified later using the menu configuration pages and the general settings pages
    respectively. 
 
-8. Edit the following file in the MRBS distribution: web/session_php.inc
+8. Edit the file that sets up the session in the MRBS distribution.  
+   In version 1.4.8 of MRBS it is this file: web/session_php.inc
+   In version 1.4.11 of MRBS it is this file: session/session_php.inc
+   
    Comment-out the line which sets the session name (located at line 50 in version 1.4.8 of MRBS).  
    It should look like this:
    //session_name("MRBS_SESSID");  // call before session_set_cookie_params() - see PHP manual

@@ -284,7 +284,7 @@ if ($iUserID > 0)
         $_SESSION['sshowPledges'] = $usr_showPledges;
         $_SESSION['sshowPayments'] = $usr_showPayments;
         $_SESSION['sshowSince'] = $usr_showSince;
-        $_SESSION['idefaultFY'] = $usr_defaultFY;
+        $_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
         $_SESSION['iCurrentDeposit'] = $usr_currentDeposit;
 
         // Church school calendar preferences

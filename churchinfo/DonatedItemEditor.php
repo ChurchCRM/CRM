@@ -57,6 +57,7 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 	$nEstPrice = FilterInputArr($_POST,"EstPrice");
 	$nMaterialValue = FilterInputArr($_POST,"MaterialValue");
 	$nMinimumPrice = FilterInputArr($_POST,"MinimumPrice");
+	$sPictureURL = FilterInputArr($_POST,"PictureURL");
 	
 	if (! $bMultibuy) {
 		$bMultibuy = 0;
@@ -67,14 +68,15 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 	// New DonatedItem or deposit
 	if (strlen($iDonatedItemID) < 1)
 	{
-		$sSQL = "INSERT INTO donateditem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_minimum, di_EnteredBy, di_EnteredDate)
-		VALUES (" . $iCurrentFundraiser . ",'" . $sItem . "','" . $bMultibuy . "','" . $iDonor . "','" . $iBuyer . "','" . mysql_real_escape_string($sTitle) . "','" . mysql_real_escape_string($sDescription) . "','" . $nSellPrice . "','" . $nEstPrice . "','" . $nMaterialValue . "','".$nMinimumPrice . "'";
+		$sSQL = "INSERT INTO donateditem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_minimum, di_picture, di_EnteredBy, di_EnteredDate)
+		VALUES (" . $iCurrentFundraiser . ",'" . $sItem . "','" . $bMultibuy . "','" . $iDonor . "','" . $iBuyer . "','" .  html_entity_decode($sTitle) . "','" . html_entity_decode($sDescription) . "','" . $nSellPrice . "','" . $nEstPrice . "','" . $nMaterialValue . "','".$nMinimumPrice . "','" . mysql_real_escape_string($sPictureURL)."'";
 		$sSQL .= "," . $_SESSION['iUserID'] . ",'" . date("YmdHis") . "')";
 		$bGetKeyBack = True;		
 	// Existing record (update)
 	} else {
-		$sSQL = "UPDATE donateditem_di SET di_FR_ID = " . $iCurrentFundraiser . ", di_Item = '". $sItem . "', di_multibuy = '" . $bMultibuy . "', di_donor_ID = " . $iDonor . ", di_buyer_ID = " . $iBuyer . ", di_title = '" . mysql_real_escape_string($sTitle) . "', di_description = '" . mysql_real_escape_string($sDescription) . "', di_sellprice = '" . $nSellPrice . "', di_estprice = '" . $nEstPrice . "', di_materialvalue = '" . $nMaterialValue . "', di_minimum = '" . $nMinimumPrice . "', di_EnteredBy=" . $_SESSION['iUserID'] . ", di_EnteredDate = '" . date("YmdHis") . "'";
+		$sSQL = "UPDATE donateditem_di SET di_FR_ID = " . $iCurrentFundraiser . ", di_Item = '". $sItem . "', di_multibuy = '" . $bMultibuy . "', di_donor_ID = " . $iDonor . ", di_buyer_ID = " . $iBuyer . ", di_title = '" . html_entity_decode($sTitle) . "', di_description = '" . html_entity_decode($sDescription) . "', di_sellprice = '" . $nSellPrice . "', di_estprice = '" . $nEstPrice . "', di_materialvalue = '" . $nMaterialValue . "', di_minimum = '" . $nMinimumPrice . "', di_picture = '" . mysql_real_escape_string($sPictureURL) . "', di_EnteredBy=" . $_SESSION['iUserID'] . ", di_EnteredDate = '" . date("YmdHis") . "'";
 		$sSQL .= " WHERE di_ID = " . $iDonatedItemID;
+		echo "<br><br><br><br><br><br>".$sSQL;
 		$bGetKeyBack = false;
 	}
 
@@ -118,7 +120,7 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 		                   a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
 	                       b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
 	                       di_title, di_description, di_sellprice, di_estprice, di_materialvalue,
-	                       di_minimum
+	                       di_minimum, di_picture
 	         FROM donateditem_di
 	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
 	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
@@ -136,6 +138,7 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 		$nEstPrice = $di_estprice;
 		$nMaterialValue = $di_materialvalue;
 		$nMinimumPrice = $di_minimum;
+		$sPictureURL = $di_picture;
 	}
 	else
 	{
@@ -151,6 +154,7 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
 		$nEstPrice = 0.0;
 		$nMaterialValue = 0.0;
 		$nMinimumPrice = 0.0;
+		$sPictureURL = "";
 	}
 }
 
@@ -177,8 +181,8 @@ require "Include/Header.php";
 
 <form method="post" action="DonatedItemEditor.php?<?php echo "CurrentFundraiser=" . $iCurrentFundraiser . "&DonatedItemID=" . $iDonatedItemID . "&linkBack=" . $linkBack; ?>" name="DonatedItemEditor">
 
-<table cellpadding="3" align="center">
-	<tr>
+<table cellpadding="3" align="center"> <!-- Table for the whole form -->
+	<tr> <!-- Row of buttons across the top -->
 		<td align="center">
 			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="DonatedItemSubmit">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"DonatedItemSubmitAndAdd\">"; } ?>
@@ -186,9 +190,9 @@ require "Include/Header.php";
 		</td>
 	</tr>
 
-	<tr>
+	<tr> <!-- Remaining stuff below the buttons -->
 		<td>
-		<table border="0" width="100%" cellspacing="0" cellpadding="4">
+		<table border="0" width="100%" cellspacing="0" cellpadding="4"> <!-- Table for the left side entries -->
 			<tr>
 			<td width="50%" valign="top" align="left">
 			<table cellpadding="3">
@@ -226,7 +230,7 @@ require "Include/Header.php";
 	
 				<tr>
 					<td class="LabelColumn"><?php echo gettext("Title:"); ?></td>
-					<td class="TextColumn"><input type="text" name="Title" id="Title" value="<?php echo stripslashes($sTitle); ?>"></td>
+					<td class="TextColumn"><input type="text" name="Title" id="Title" value="<?php echo htmlentities ($sTitle); ?>"/></td>
 				</tr>
 				
 				<tr>
@@ -239,14 +243,15 @@ require "Include/Header.php";
 					<td class="TextColumn"><input type="text" name="MaterialValue" id="MaterialValue" value="<?php echo $nMaterialValue; ?>"></td>
 				</tr>
 
+				<tr>
 					<td class="LabelColumn"><?php echo gettext("Minimum Price:"); ?></td>
 					<td class="TextColumn"><input type="text" name="MinimumPrice" id="MinimumPrice" value="<?php echo $nMinimumPrice; ?>"></td>
 				</tr>
-			</table>
+			</table> <!-- Table for the left side entries -->
 			</td>
 		
-			<td width="50%" valign="top" align="center">
-			<table cellpadding="3">
+			<td width="50%" valign="top" align="center"> <!-- Cross over to the right side of the main form -->
+			<table cellpadding="3"> <!-- Table for the right side entries -->
 			
 				<tr>
 					<td class="LabelColumn"><?php addToolTip("Select the buyer from the list."); ?><?php echo gettext("Buyer:"); ?></td>
@@ -273,22 +278,44 @@ require "Include/Header.php";
 					<td class="LabelColumn"><?php echo gettext("Final Price:"); ?></td>
 					<td class="TextColumn"><input type="text" name="SellPrice" id="SellPrice" value="<?php echo $nSellPrice; ?>"></td>
 				</tr>
+				
+				<tr><td>&nbsp;</td></tr> <!-- Make an empty row to segregate the replication controls -->
+				
+				<tr>
+					<td class="LabelColumn"><?php echo gettext("Replicate item"); ?></td>
+					<td class="TextColumn"><input type="text" name="NumberCopies" id="NumberCopies" value="0"></td>
+					<td><input type="button" class="icButton" value="<?php echo gettext("Go"); ?>" name="DonatedItemReplicate" onclick="javascript:document.location='DonatedItemReplicate.php?DonatedItemID=<?php echo $iDonatedItemID;?>&Count='+NumberCopies.value"></td>
+				</tr>
+				
 			</table>
-			</td>
-			</tr>
+	
+			</td> <!-- Close the right side entries -->
+			</tr> <!-- Close the part of the form with left and right entries -->
 			
 			<tr>
-			<td width="100%" valign="top" align="left">
+			<td colspan="2" width="100%" valign="top" align="left"> <!-- Larger entries get more space across the bottom -->
+			<table cellpadding="3"> <!-- Table for the bottom full-width entries -->
 	
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Description");?></td>
-				<td><textarea name="Description" rows="8" cols="90"><?php echo stripslashes($sDescription);?></textarea></td>
+				<td><textarea name="Description" rows="8" cols="90"><?php echo htmlentities ($sDescription);?></textarea></td>
 			</tr>
 
-			</table>
+			<tr>
+				<td class="LabelColumn"><?php echo gettext("Picture URL");?></td>
+				<td><textarea name="PictureURL" rows="1" cols="90"><?php echo htmlentities ($sPictureURL);?></textarea></td>
 			</tr>
-	</table>
+			
+			<?php if ($sPictureURL != "") {?>
+			<tr>
+				<td colspan="2" width="100%"><img src="<?php echo htmlentities ($sPictureURL);?>"/></td>
+			</tr>				
+			<?php }?>
 
+			</table> <!-- Table for the bottom full-width entries -->
+			</td>
+		</tr>
+	</table> <!-- Table for the whole form -->
 </form>
 
 <?php
