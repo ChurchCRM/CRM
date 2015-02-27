@@ -726,9 +726,9 @@ if ($iMode == 1 || $iMode == 2) {
 		while ($aLetter = mysql_fetch_row($rsLetters)) {
 			$aLetter[0] = mb_strtoupper($aLetter[0]);
 			if ($aLetter[0] == $sLetter) {
-				echo "&nbsp;&nbsp;|&nbsp;&nbsp;" . $aLetter[0];
+				echo " &nbsp;|&nbsp; " . $aLetter[0];
 			} else {
-				echo "&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"SelectList.php?mode=$sMode&amp;type=$iGroupTypeMissing&amp;Filter=$sFilter&amp;Classification=$iClassificationStr&amp;FamilyRole=$iFamilyRoleStr&amp;Gender=$iGenderStr&amp;grouptype=$iGroupTypeStr&amp;groupid=$iGroupIDStr&amp;grouproleid=$iRoleIDStr";
+				echo " &nbsp;|&nbsp; <a href=\"SelectList.php?mode=$sMode&amp;type=$iGroupTypeMissing&amp;Filter=$sFilter&amp;Classification=$iClassificationStr&amp;FamilyRole=$iFamilyRoleStr&amp;Gender=$iGenderStr&amp;grouptype=$iGroupTypeStr&amp;groupid=$iGroupIDStr&amp;grouproleid=$iRoleIDStr";
 				if($sSort) echo "&amp;Sort=$sSort";
 				echo "&amp;Letter=" . $aLetter[0] . "\">" . $aLetter[0] . "</a>";
 			}
@@ -909,12 +909,12 @@ if ($iMode == 1 || $iMode == 2) {
 		// Header Row for results table
 		echo '<form method="get" action="SelectList.php" name="ColumnOptions">';
 		echo '<table cellpadding="4" align="center" cellspacing="0" width="100%">';
-		echo '<tr class="TableHeader">';
+		echo '<tr class="TableHeader"><td>';
 
 		if ($_SESSION['bEditRecords']) 
-		    echo '<td width="25">' . gettext("Edit") . '</td>';
+		    echo gettext("Edit");
 
-		echo '<td><a href="SelectList.php?mode=' .$sMode. '&amp;type=' .$iGroupTypeMissing;
+		echo '</td><td><a href="SelectList.php?mode=' .$sMode. '&amp;type=' .$iGroupTypeMissing;
 		echo '&amp;Sort=name&amp;Filter=' .$sFilter. '">' . gettext("Name") . '</a></td>';
 
 		echo '<td><input type="hidden" name="mode" value="' .$sMode. '">';
@@ -1323,7 +1323,7 @@ if ($iMode == 1 || $iMode == 2) {
     echo "<div align=\"center\">";
     echo "<a href=\"SelectList.php?mode=family\">" . gettext("View All") . "</a>";
     while ($aLetter = mysql_fetch_array($rsLetters)) {
-        echo "&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"SelectList.php?mode=family";
+        echo " &nbsp;|&nbsp; <a href=\"SelectList.php?mode=family";
         if($sSort) echo "&amp;Sort=$sSort";
             echo "&amp;Letter=" . $aLetter[0] . "\">" . $aLetter[0] . "</a>";
     }
