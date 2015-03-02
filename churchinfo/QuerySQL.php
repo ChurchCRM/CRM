@@ -131,6 +131,10 @@ function ExportQueryResults()
 
 }
 
+//Display the count of the recordset 	 	
+	echo "<p align=\"center\">";
+	echo mysql_num_rows($rsQueryResults) . gettext(" record(s) returned");
+	echo "</p>";
 
 function RunFreeQuery()
 {
@@ -161,9 +165,13 @@ function RunFreeQuery()
 		//Loop through the fields and write the header row
 		for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
 		{
-            echo '  <td align="center">
-                        <b>' . mysql_field_name($rsQueryResults,$iCount) . '</b>
-                    </td>';
+            		//If this field is called "AddToCart", don't display this field...
+			if (mysql_field_name($rsQueryResults,$iCount) != "AddToCart")
+			{
+	            	echo '  <td align="center">
+	                        	<b>' . mysql_field_name($rsQueryResults,$iCount) . '</b>
+	                    	</td>';
+			}
 		}
 
 		echo '</tr>';
@@ -179,15 +187,37 @@ function RunFreeQuery()
 			//Loop through the fields and write each one
 			for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
 			{
+				//If this field is called "AddToCart", add this to the hidden form field...
+				if (mysql_field_name($rsQueryResults,$iCount) == "AddToCart")
+				{
+					$aHiddenFormField[] = $aRow[$iCount];
+				}
+				//...otherwise just render the field
+				else
+				{
+				//Write the actual value of this row
 				echo '<td align="center">' . $aRow[$iCount] . '</td>';
+				}
 			}
-
 			echo '</tr>';
 
 		}
 
 		echo '</table>';
+		echo "<p align=\"center\">";
 
+			if (count($aHiddenFormField) > 0)
+			{
+				?>
+				<form method="post" action="CartView.php"><p align="center">
+					<input type="hidden" value="<?php echo join(",",$aHiddenFormField); ?>" name="BulkAddToCart">
+					<input type="submit" class="icButton" name="AddToCartSubmit" value="<?php echo gettext("Add Results To Cart");?>">&nbsp;
+					<input type="submit" class="icButton" name="AndToCartSubmit" value="<?php echo gettext("Intersect Results With Cart");?>">&nbsp;
+					<input type="submit" class="icButton" name="NotToCartSubmit" value="<?php echo gettext("Remove Results From Cart");?>">
+				</p></form>
+				<?php
+			}
+		echo "<p align=\"center\"><a href=\"QueryList.php\">". gettext("Return to Query Menu") . "</a></p>";
 		echo '<br><p class="ShadedBox" style="border-style: solid; margin-left: 50px; margin-right: 50 px; border-width: 1px;"><span class="SmallText">' . str_replace(Chr(13),"<br>",htmlspecialchars($sSQL)) . '</span></p>';
 	}
 }
