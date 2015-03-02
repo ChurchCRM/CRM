@@ -1035,13 +1035,13 @@ if ($iMode == 1 || $iMode == 2) {
 			$sRowClass = AlternateRowStyle($sRowClass);
 
 			//Display the row
-    		echo "<tr class=\"" .$sRowClass. "\">";
+    		echo "<tr class=\"" .$sRowClass. "\"><td>";
 			if ($_SESSION['bEditRecords']) {
-				echo "<td><a href=\"PersonEditor.php?PersonID=" .$per_ID. "\">";
-				echo gettext("Edit") . "</a></td>";
+				echo "<a href=\"PersonEditor.php?PersonID=" .$per_ID. "\">";
+				echo gettext("Edit") . "</a>";
 			}
 
-			echo "<td><a href=\"PersonView.php?PersonID=" .$per_ID. "\">";
+			echo "</td><td><a href=\"PersonView.php?PersonID=" .$per_ID. "\">";
 			echo FormatFullName($per_Title, $per_FirstName, $per_MiddleName, 
 								$per_LastName, $per_Suffix, 3);
 			echo "</a>&nbsp;</td>";
