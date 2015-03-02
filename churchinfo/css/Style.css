@@ -246,13 +246,13 @@ tr.RowColorC td
 
 tr.PaymentRowColorA td
 {
-	background: #00FF00;
+	background: /* #00FF00 */ #fcfbf7;
 	border-bottom: solid 1px #eaeaea;
 }
 
 tr.PaymentRowColorB td
 {
-	background: #00C000;
+	background: /* #00C000 */ white;
 	border-bottom: solid 1px #eaeaea;
 }
 
@@ -327,6 +327,7 @@ tr.TableHeader td
 	font-weight: bold;
 	border-bottom: solid 1px black;
 	border-top: solid 1px black;
+	padding-right: 4px;
 }
 
 tr.TinyTableHeader td
@@ -349,9 +350,9 @@ td.LabelColumn
 
 td.PaymentLabelColumn
 {
-	text-align: right;
+	text-align: /* right */ left;
 	font-weight: bold;
-	background: #00FF00;
+	background: /* #00FF00 */ #F2EEDB;
 	border: solid 1px black;
 	padding: 8px;
 	vertical-align: top;
@@ -483,15 +484,22 @@ div.domTTMenuContent {
   background-color: #E6E6E6;
 }
 
-.TDscroll {
-  border-top: solid 1px white;
+.TDscroll { /* modified by RSBC */
+  width: auto;
+  height: auto;
+  overflow:auto;
+} 
+
+/* .TDscroll { /* using this instead of the above block fixes the User Style colors in desktop mode. Lines 653-654 also need to be commented out
+  /* border-top: solid 1px white; 
   background: #F7F5EA;
   padding: 2px;
   vertical-align: top;
   width: auto;
-  height: 30px;
+  height: auto;
   overflow:auto;
-}
+  min-height: 1.15em; 
+} */
 
 /* ## bevand10 - 2012-04-25 - add row hover effect - use SmallShadedBox:background-color */
 tr.RowColorA:hover td,
@@ -500,4 +508,265 @@ tr.RowColorC:hover td,
 tr.PaymentRowColorA:hover td,
 tr.PaymentRowColorB:hover td {
 	background-color: #F2EEDB;
+}
+
+/* added/modified  by RSBC */
+div.LightShadedBox table tbody tr td table tbody tr td {
+	border-top: solid 1px white;
+	background: #F7F5EA;
+	padding: 2px;
+	vertical-align: top; 
+} 
+
+.icTinyButton
+{
+	width: 7em;
+}
+
+tr.RowColorA td, tr.RowColorB td, tr.RowColorC td, tr.PaymentRowColorA td, tr.PaymentRowColorB td {
+	padding-right: .5em;
+        text-align: left;
+}
+
+input[type="text"][size="50"],input[type="text"][size="30"] {
+  width:13em;
+  }
+
+input[name="RemoveFromCart"] {
+  margin-bottom: 1em;
+  }
+
+@media only screen and (max-device-width: 610px) { 
+
+html {
+    font-size: 110%;
+}
+
+.Search {
+  /* display: none; */
+  width: auto;
+  padding-right: .3em;
+  font-size: 80%;
+  }
+
+#topnav > ul {
+    font-size: 75%;
+}
+
+   
+input[type="text"][size="35"]{
+  width:15em;
+  } 
+
+textarea[cols="40"] {
+  width: 13em;
+  }
+
+select[name="Family"] {
+  width: 19em;
+  }
+
+div#map {
+  max-width: 500px;
+  max-height: 280px;
+  }
+
+}
+
+@media only screen and (max-device-width: 360px) {
+
+html {
+    font-size: 110%;
+}
+
+#topnav > ul {
+    font-size: 85%;
+}
+
+a.SmallText
+{
+	font-size: 100%;
+	margin-bottom: .75em;
+	display: inline-block;
+}
+
+/* make person and family views display as blocks */
+td[width="25%"][valign="top"][align="center"], td[width="75%"][valign="top"][align="left"]{
+  display: block;
+  width: 100%;
+  }
+  
+div.LightShadedBox > table > tbody > tr > td {
+  display: block;
+  width: 100%;
+  }
+
+div.LightShadedBox > table > tbody >  tr > td > table > tbody > tr > td {
+	background: #F7F5EA;
+	padding: 2px;
+	vertical-align: top;
+	width: 50%;
+	display: table-cell;
+	border: none;
+        font-size: 115%;
+}
+
+div.LightShadedBox > table > tbody > tr > td > table > tbody > tr {
+	border-bottom: solid 1px white;
+}
+
+div.LightShadedBox > table > tbody > tr > td > table {
+	width: 100%;
+}
+  
+/* hide extra text in the search bar to save on space */
+.Search:nth-child(1), .Search:nth-child(3), /* .Search:nth-child(4), */ .Search:nth-child(5), .Search:nth-child(6), .Search:nth-child(7) {
+  display: none;
+  }
+
+.PageTitle {
+  padding-top: 1.5em;
+  }
+
+tr.RowColorA, tr.PaymentRowColorB {
+	background: #F9F3E2;
+	border: solid 1px #eaeaea;;
+}
+
+tr.RowColorB, tr.RowColorC, tr.PaymentRowColorA {
+	background: white;
+	border: solid 1px #eaeaea;
+}
+
+tr.RowColorA td, tr.RowColorB td, tr.RowColorC td, tr.PaymentRowColorA td, tr.PaymentRowColorB td {
+	background: none;
+	border-bottom: none;
+	margin: .5em 0 .5em 0;
+	padding: 0 .7em 0 .7em;
+	display: inline-block; 
+	width: auto;
+	font-size: 110%;
+} 
+
+tr.RowColorA:hover,
+tr.RowColorB:hover,
+tr.RowColorC:hover,
+tr.PaymentRowColorA:hover,
+tr.PaymentRowColorB:hover {
+	background-color: #F2EEDB;
+}
+
+form[name="FamilyList"] ~ table > tbody > tr > td {
+  display: inline-block;
+  }
+
+tr.TableHeader {
+	background: #F2EEDB;
+	border-bottom: solid 1px black;
+	border-top: solid 1px black;
+}
+
+tr.TableHeader td {
+	background: none;
+	font-weight: bold;
+	border-bottom: none;
+	border-top: none;
+	margin: .5em 0 .5em 0;
+	padding: 0 .7em 0 .7em;
+	display: inline-block;
+	width: auto; 
+}
+
+td.LabelColumn, td.TextColumn {
+	text-align: left;
+        width: auto;
+}
+   
+input[type="text"][size="35"]{
+  width:15em;
+  } 
+   
+input[type="text"][size="20"]{
+  width:3em;
+  } 
+
+input[type="text"][id="FamilyName"]{ /* pledge editor */
+  width:12em !important;
+  } 
+
+textarea[cols="40"] {
+  width: 13em;
+  }
+
+select[name="Family"] {
+  width: 19em;
+  }
+
+form[name="PersonEditor"] > table > tbody > tr > td {
+  display: block;
+  width: 100%;
+  }
+
+form[action^="FamilyEditor.php"] > table > tbody > tr > td {
+  display: inline-block;
+  }
+
+form[action^="FamilyEditor.php"] table > tbody > tr > td > table > tbody > tr.TableHeader > td {
+  display: table-cell;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  } 
+
+form[name="PledgeEditor"] > table > tbody > tr > td > table > tbody > tr > td {
+  display: block;
+  width: 100%;
+  }
+
+div#map {
+  max-width: 320px;
+  max-height: 360px;
+  }
+
+/* minimize SelectionList.php person selector */
+form[action^="SelectList.php"] > table > tbody > tr > td {
+  display: inline-block;
+  }
+
+form[action^="SelectList.php"] > table > tbody > tr.TableHeader {
+	display: none;
+}
+
+form[action^="SelectList.php"] > table > tbody > tr.RowColorA > td, 
+form[action^="SelectList.php"] > table > tbody > tr.RowColorB > td {
+  display: none;
+  }
+
+form[action^="SelectList.php"] > table > tbody > tr.RowColorA > td:nth-child(1),
+form[action^="SelectList.php"] > table > tbody > tr.RowColorB > td:nth-child(1) {
+  display: table-cell;
+  /* width: 65%; */
+  padding: .5em;
+  }
+
+form[action^="SelectList.php"] > table > tbody > tr.RowColorA > td:nth-child(2),
+form[action^="SelectList.php"] > table > tbody > tr.RowColorB > td:nth-child(2) {
+  display: table-cell;
+  width: 65%;
+  padding: .5em;
+  }
+
+form[action^="SelectList.php"] > table > tbody > tr.RowColorA > td:nth-child(6),
+form[action^="SelectList.php"] > table > tbody > tr.RowColorB > td:nth-child(6) {
+  display: table-cell;
+  width: 35%;
+  padding: .5em;
+  text-align: right;
+  }
+  
+@media only screen and (max-device-width: 320px) {
+	html {font-size: 115%;}
+	#topnav > ul {font-size: 72%;}
+	.PageTitle {padding-top: 1em;}
+    }
+
 }
