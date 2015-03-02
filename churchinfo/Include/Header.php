@@ -42,7 +42,7 @@ $MenuFirst = 1;
 <head>
 <?php Header_head_metatag(); ?>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui"/>
+
 </head>
 <body onload="javascript:scrollToCoordinates()">
 <?php 
