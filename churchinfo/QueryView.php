@@ -41,7 +41,7 @@ $rsSQL = RunQuery($sSQL);
 extract(mysql_fetch_array($rsSQL));
 
 //Get the parameters for this query
-$sSQL = "SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID = " . $iQueryID;
+$sSQL = "SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID = " . $iQueryID . " ORDER BY qrp_ID";
 $rsParameters = RunQuery($sSQL);
 
 //If the form was submitted or there are no parameters, run the query
