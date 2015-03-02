@@ -95,7 +95,7 @@ $numRoles = mysql_num_rows($rsRoles);
 $iPerPage = $_SESSION['SearchLimit'];
 
 // Main select query
-$sSQL = "SELECT per_ID, per_FirstName, per_MiddleName, per_LastName, per_Title, per_Suffix, per_Address1, per_Address2, per_City, per_State, per_Zip, per_HomePhone, per_Country, per_Email, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_Email, lst_OptionName
+$sSQL = "SELECT per_ID, per_FirstName, LEFT(per_MiddleName,1) AS per_MiddleName, per_LastName, per_Title, per_Suffix, per_Address1, per_Address2, per_City, per_State, per_Zip, per_CellPhone, per_Country, per_Email, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_CellPhone, fam_Email, lst_OptionName
 			FROM person_per
 			LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
 			LEFT JOIN list_lst ON p2g2r_rle_ID = lst_OptionID AND lst_ID = $iRoleListID
@@ -320,7 +320,7 @@ if (!$bPrintView) {
 		<td><?php echo gettext("City"); ?></td>
 		<td><?php echo gettext("State"); ?></td>
 		<td><?php echo gettext("ZIP"); ?></td>
-		<td><?php echo gettext("Home Phone"); ?></td>
+		<td><?php echo gettext("Cell Phone"); ?></td>
 		<td><?php echo gettext("E-mail"); ?></td>
 	</tr>
 	<?php
@@ -361,17 +361,17 @@ if (!$bPrintView) {
 		$sState = SelectWhichInfo($per_State, $fam_State, False);
 		$sZip = SelectWhichInfo($per_Zip, $fam_Zip, False);
 		$sCountry = SelectWhichInfo($per_Country, $fam_Country, False);
-		$sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone,$sCountry,$dummy),
-						ExpandPhoneNumber($fam_HomePhone,$fam_Country,$dummy), False);
+		$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone,$sCountry,$dummy), 
+					ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy), False); 
 		$sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
 		//Display the row
 		?>
 	<tr class="<?php echo $sRowClass; ?>">
 		<td><?php
 			if(!$bPrintView)
-				echo "<a target=\"_top\" href=\"PersonView.php?PersonID=$per_ID\">" . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) . "</a>";
+				echo "<a target=\"_top\" href=\"PersonView.php?PersonID=$per_ID\">" . FormatFullName($per_Title, $per_LastName, $per_FirstName, $per_MiddleName, $per_Suffix, 0) . "</a>";
 			else
-				echo FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0); ?>
+				echo FormatFullName($per_Title, $per_LastName, $per_FirstName, $per_MiddleName, $per_Suffix, 0); ?>
 		</td>		
 		<td><?php
 			if ($_SESSION['bManageGroups'] && !$bPrintView) echo "<a target=\"_top\" href=\"MemberRoleChange.php?GroupID=" . $iGroupID . "&PersonID=" . $per_ID . "&Return=1\">";
@@ -382,7 +382,7 @@ if (!$bPrintView) {
 		<td><?php echo $sCity ?>&nbsp;</td>
 		<td><?php echo $sState ?>&nbsp;</td>
 		<td><?php echo $sZip ?>&nbsp;</td>
-		<td><?php echo $sHomePhone ?>&nbsp;</td>
+		<td><?php echo $sCellPhone ?>&nbsp;</td>
 		<td><?php echo $sEmail;?>&nbsp;</td>
 	</tr>
 	<?php
