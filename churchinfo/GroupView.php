@@ -118,7 +118,12 @@ $sSQL = "SELECT per_Email, fam_Email
             LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
             LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
             LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
-        WHERE p2g2r_grp_ID = " . $iGroupID;
+        WHERE per_ID NOT IN 
+            (SELECT per_ID 
+                FROM person_per 
+                INNER JOIN record2property_r2p ON r2p_record_ID = per_ID 
+                INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not Email') 
+            AND p2g2r_grp_ID = " . $iGroupID;
 $rsEmailList = RunQuery($sSQL);
 $sEmailLink = '';
 while (list ($per_Email, $fam_Email) = mysql_fetch_row($rsEmailList))
@@ -126,11 +131,11 @@ while (list ($per_Email, $fam_Email) = mysql_fetch_row($rsEmailList))
     $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
     if ($sEmail)
     {
-        if ($sEmailLink) // Don't put delimiter before first email
-            $sEmailLink .= $sMailtoDelimiter;
+        /* if ($sEmailLink) // Don't put delimiter before first email
+            $sEmailLink .= $sMailtoDelimiter; */
         // Add email only if email address is not already in string
         if (!stristr($sEmailLink, $sEmail))
-            $sEmailLink .= $sEmail;
+            $sEmailLink .= $sEmail .= $sMailtoDelimiter;
     }
 }
 if ($sEmailLink)
@@ -143,8 +148,45 @@ if ($sEmailLink)
 
     if ($bEmailMailto) { // Does user have permission to email groups
     // Display link
-    echo ' | <a class="SmallText" href="mailto:'.$sEmailLink.'">'.gettext('Email Group').'</a>';
-    echo ' | <a class="SmallText" href="mailto:?bcc='.$sEmailLink.'">'.gettext('Email (BCC)').'</a>';
+    echo ' | <a class="SmallText" href="mailto:'. mb_substr($sEmailLink,0,-3) .'">'.gettext('Email Group').'</a>';
+    echo ' | <a class="SmallText" href="mailto:?bcc='. mb_substr($sEmailLink,0,-3) .'">'.gettext('Email (BCC)').'</a>';
+    }
+}
+// Group Text Message Comma Delimited - added by RSBC
+// Note: This will provide cell phone numbers for the entire group, even if a specific role is currently selected.
+$sSQL = "SELECT per_CellPhone, fam_CellPhone
+            FROM person_per
+            LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
+            LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
+            LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
+        WHERE per_ID NOT IN 
+            (SELECT per_ID 
+            FROM person_per 
+            INNER JOIN record2property_r2p ON r2p_record_ID = per_ID 
+            INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not SMS') 
+        AND p2g2r_grp_ID = " . $iGroupID;
+$rsPhoneList = RunQuery($sSQL);
+$sPhoneLink = '';
+$sCommaDelimiter = ', ';
+while (list ($per_CellPhone, $fam_CellPhone) = mysql_fetch_row($rsPhoneList))
+{
+    $sPhone = SelectWhichInfo($per_CellPhone, $fam_CellPhone, False);
+    if ($sPhone)
+    {
+        /* if ($sPhoneLink) // Don't put delimiter before first phone
+            $sPhoneLink .= $sCommaDelimiter; */
+        // Add phone only if phone is not already in string
+        if (!stristr($sPhoneLink, $sPhone))
+            $sPhoneLink .= $sPhone .= $sCommaDelimiter;
+    }
+}
+if ($sPhoneLink)
+{
+    if ($bEmailMailto) { // Does user have permission to email groups
+
+    // Display link
+    echo ' | <a class="SmallText" href="javascript:void(0)" onclick="allPhonesCommaD()">Text Group</a>';
+    echo '<script>function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "'. mb_substr($sPhoneLink,0,-2) .'")};</script>';
     }
 }
 
