@@ -673,7 +673,7 @@ input[name="RemoveFromCart"] {
   margin-bottom: 1em;
   }
 
-@media only screen and (max-device-width: 610px) { 
+@media only screen and (max-device-width: 720px) { 
 
 html {
     font-size: 110%;
@@ -710,7 +710,7 @@ div#map {
 
 }
 
-@media only screen and (max-device-width: 360px) {
+@media only screen and (max-device-width: 500px) {
 
 html {
     font-size: 110%;
