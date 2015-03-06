@@ -266,24 +266,42 @@ gettext("List View") . "</a> ";
 		$sState = strip_tags($sState);
 		$sCountry = strip_tags($sCountry);
 
-		//Show link to mapquest
+                //Show links to MapQuest, US Post Office, and Google Maps
+		$bShowUSLinks = false;
 		$bShowMQLink = false;
 		if ($sAddress1 != "" && $sCity != "" && $sState != "")
 		{
 			if ($sCountry == "United States") {
 				$sMQcountry = "";
-				$bShowMQLink = true;
+				$bShowUSLinks = true;
 			}
 			elseif ($sCountry == "Canada") {
-				$sMQcountry = "country=CA&";
+				$sMQcountry = "country=CA&amp;";
 				$bShowMQLink = true;
 			}
-			else
-				$bShowMQLink = false;
 		}
 
-		if ($bShowMQLink)
-			echo "<div align=\"right\"><a class=\"SmallText\" target=\"_blank\" href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . "city=" . urlencode($sCity) . "&state=" . $sState . "&address=" . urlencode($sAddress1) . "\">" . gettext("View Map") . "</a></div>";
+		if ($bShowUSLinks) {
+				echo "<div align=center><a class=\"SmallText\" target=\"_blank\"
+				href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . 
+				"city=" . urlencode($sCity) . "&amp;state=" . $sState . 
+				"&amp;address=" . urlencode($sAddress1) . "\">" . gettext("MapQuest") . 
+				"</a> &nbsp;|&nbsp; <a class=\"SmallText\" target=\"_blank\" 
+				href=\"https://tools.usps.com/go/ZipLookupResultsAction!input.action?address1=" . 
+				urlencode($sAddress1) . "&amp;city=" . urlencode($sCity) . 
+				"&amp;state=" . urlencode($sState) . "\">" . gettext("USPS") . 
+				"</a> &nbsp;|&nbsp; <a class=\"SmallText\" target=\"_blank\" 
+				href=\"https://maps.google.com/maps?q=" .
+				urlencode("$sAddress1,$sCity,$sState") .
+				"\">" . gettext("Google Maps") . "</a></div>";
+		}
+		if ($bShowMQLink) {
+			echo "<div align=center><a class=\"SmallText\" target=\"_blank\"
+				href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . 
+				"city=" . urlencode($sCity) . "&amp;state=" . $sState . 
+				"&amp;address=" . urlencode($sAddress1) . "\">" . gettext("MapQuest") . 
+				"</a></div>";
+		}
 
 		echo "<br>";
 
