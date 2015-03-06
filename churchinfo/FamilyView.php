@@ -232,23 +232,21 @@ elseif ($next_link_text != "") {
 		}
 
 		if ($bShowUSLinks) {
-			echo "<div align=left><a class=\"SmallText\" target=\"_blank\"
+				echo "<div align=center><a class=\"SmallText\" target=\"_blank\"
 				href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . 
 				"city=" . urlencode($fam_City) . "&amp;state=" . $fam_State . 
 				"&amp;address=" . urlencode($fam_Address1) . "\">" . gettext("MapQuest") . 
-				"</a></div>";
-				echo "<div align=center><a class=\"SmallText\" target=\"_blank\" 
+				"</a> &nbsp;|&nbsp; <a class=\"SmallText\" target=\"_blank\" 
 				href=\"https://tools.usps.com/go/ZipLookupResultsAction!input.action?address1=" . 
 				urlencode($fam_Address1) . "&amp;city=" . urlencode($fam_City) . 
 				"&amp;state=" . urlencode($fam_State) . "\">" . gettext("USPS") . 
-				"</a></div>";
-				echo "<div align=right><a class=\"SmallText\" target=\"_blank\" 
+				"</a> &nbsp;|&nbsp; <a class=\"SmallText\" target=\"_blank\" 
 				href=\"https://maps.google.com/maps?q=" .
 				urlencode("$fam_Address1,$fam_City,$fam_State") .
 				"\">" . gettext("Google Maps") . "</a></div>";
 		}
 		if ($bShowMQLink) {
-			echo "<div align=left><a class=\"SmallText\" target=\"_blank\"
+			echo "<div align=center><a class=\"SmallText\" target=\"_blank\"
 				href=\"http://www.mapquest.com/maps/map.adp?" .$sMQcountry . 
 				"city=" . urlencode($fam_City) . "&amp;state=" . $fam_State . 
 				"&amp;address=" . urlencode($fam_Address1) . "\">" . gettext("MapQuest") . 
