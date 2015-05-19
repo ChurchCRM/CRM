@@ -213,24 +213,26 @@ else
 
 require "Include/Header.php";
 
+?>
+<div class="row">
+	<div class="col-lg-6">
+		<div class="main-box clearfix">
+<?php
 if($sMode == 'person')
 {
-
 	if ($bIsUser) {
 		echo "<p class=\"LargeText\">" . gettext("Sorry, this person is a user.  An administrator must remove their user status before they may be deleted from the database.") . "<br><br>";
 		echo "<a href=\"PersonView.php?PersonID=" . $iPersonID . "\">" . gettext("Return to Person View")."</a></p>";
+	}	else {
+		echo "<div class=\"alert alert-block alert-danger fade in\">";
+		echo "<h3>".gettext("Please confirm deletion of:") ." <strong>" . $per_FirstName . " " . $per_LastName. "</strong></h3>";
+		echo "<p>";
+		echo "<a class=\"btn btn-danger\" href=\"SelectDelete.php?mode=person&PersonID=" . $iPersonID . "&Confirmed=Yes\">" . gettext("Yes, delete this record") . "</a>" ;
+		echo "<a class=\"btn btn-info\" href=\"PersonView.php?PersonID=" . $iPersonID . "\">" . gettext("No, cancel this deletion") . "</a></h2></p>";
+		echo gettext(" (This action CANNOT be undone!)"). "<br/>";
+		echo "</p></div>";
 	}
-	else
-	{
-		echo "<p>" . gettext("Please confirm deletion of:") . "</p>";
-		echo "<p class=\"ShadedBox\">" . $per_FirstName . " " . $per_LastName . "</p>";
-		echo "<BR>";
-		echo "<p><h3><a href=\"SelectDelete.php?mode=person&PersonID=" . $iPersonID . "&Confirmed=Yes\">" . gettext("Yes, delete this record") . "</a>" . gettext(" (This action CANNOT be undone!)") . "</h3></p>";
-		echo "<p><h2><a href=\"PersonView.php?PersonID=" . $iPersonID . "\">" . gettext("No, cancel this deletion") . "</a></h2></p>";
-	}
-}
-else
-{
+} else {
 	// Delete Family Confirmation
 	// See if this family has any donations OR an Egive association
 	$sSQL = "SELECT plg_plgID FROM pledge_plg WHERE plg_PledgeOrPayment = 'Payment' AND plg_FamID = " . $iFamilyID;
@@ -388,6 +390,10 @@ else
 		echo "<p class=\"MediumText\"><a href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . "\">" . gettext("Delete Family Record AND Family Members") . "</a>" . gettext(" (this action cannot be undone)") . "</p>";
 		echo "<br><p class=\"LargeText\"><a href=\"FamilyView.php?FamilyID=".$iFamilyID."\">" . gettext("No, cancel this deletion</a>") . "</p>";
 	}
-}
+}?>
+		</div>
+	</div>
+</div>
+<?php
 require "Include/Footer.php";
 ?>
