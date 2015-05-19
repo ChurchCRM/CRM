@@ -5,7 +5,7 @@ St George Seattle Uses churchInfo CRM and while using it we make changes to make
 
 Live Demo:
 
-http://www.krysto.com/churchinfo
+http://demo.ChurchWebCRM.com 
 username/pass: admin/george
 
 Here is an few examples of the new Ui.
