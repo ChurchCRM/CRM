@@ -14,7 +14,7 @@ left Join person_per dad on fam.fam_id = dad.per_fam_id and dad.per_Gender = 1 a
 left join person_per mom on fam.fam_id = mom.per_fam_id and mom.per_Gender = 2 and mom.per_fmr_ID = 2
 ,`group_grp` grp, `person2group2role_p2g2r` person_grp  
 
-where kid.per_fam_id = fam.fam_ID and person_grp.p2g2r_rle_ID = 2 and
+where kid.per_fam_id = fam.fam_ID and person_grp.p2g2r_rle_ID = 2 and kid.per_cls_ID = 2 and
 grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = kid.per_ID
 order by grp.grp_Name, fam.fam_Name";
 $rsKids = RunQuery($sSQL);
