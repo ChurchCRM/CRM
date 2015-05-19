@@ -59,7 +59,6 @@ if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
         }
     }
     $foo->Clean();
-    echo $foo->log;
 }
 
 if ($uploaded) {
