@@ -88,30 +88,18 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]) |
 	RunQuery($sSQL);
 
 	// If this is a new PaddleNum or deposit, get the key back
-	if ($bGetKeyBack)
-	{
+	if ($bGetKeyBack) {
 		$sSQL = "SELECT MAX(pn_ID) AS iPaddleNumID FROM paddlenum_pn";
 		$rsPaddleNumID = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsPaddleNumID));
 	}
 
-	if (isset($_POST["PaddleNumSubmit"]))
-	{
-		// Check for redirection to another page after saving information: (ie. PaddleNumEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-		if ($linkBack != "") {
-			Redirect($linkBack);
-		} else {
-			//Send to the view of this PaddleNum
-			Redirect("PaddleNumEditor.php?PaddleNumID=" . $iPaddleNumID . "&linkBack=", $linkBack);
-		}
-	}
-	else if (isset($_POST["PaddleNumSubmitAndAdd"]))
-	{
+	if (isset($_POST["PaddleNumSubmit"])) {
+		Redirect("PaddleNumEditor.php?PaddleNumID=" . $iPaddleNumID . "&linkBack=" . $linkBack);
+	} else if (isset($_POST["PaddleNumSubmitAndAdd"])) {
 		//Reload to editor to add another record
 		Redirect("PaddleNumEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
-	}
-	else if (isset($_POST["GenerateStatement"]))
-	{
+	} else if (isset($_POST["GenerateStatement"])) {
 		//Jump straight to generating the statement report
 		Redirect("Reports/FundRaiserStatement.php?PaddleNumID=$iPaddleNumID");
 	}
@@ -120,8 +108,7 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]) |
 
 	//FirstPass
 	//Are we editing or adding?
-	if (strlen($iPaddleNumID) > 0)
-	{
+	if (strlen($iPaddleNumID) > 0) {
 		//Editing....
 		//Get all the data on this record
 		$sSQL = "SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
@@ -134,9 +121,7 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]) |
 
 		$iNum = $pn_Num;
 		$iPerID = $pn_per_ID;
-	}
-	else
-	{
+	} else {
 		//Adding....
 		//Set defaults
 		$sSQL = "SELECT COUNT(*) AS topNum FROM paddlenum_pn WHERE pn_fr_ID=" . $iCurrentFundraiser;
@@ -163,7 +148,7 @@ require "Include/Header.php";
 			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="PaddleNumSubmit">
 			<input type="submit" class="icButton" value="<?php echo gettext("Generate Statement"); ?>" name="GenerateStatement">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PaddleNumSubmitAndAdd\">\n"; } ?>
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="button" class="icButton" value="<?php echo gettext("Back"); ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 

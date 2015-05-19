@@ -5,10 +5,10 @@ feature.
 1. Download the desired version of WebCalendar from
    https://sourceforge.net/projects/webcalendar/files
 
-   Note that the current version that has been tested with ChurchInfo is 1.2.5
+   Note that the current version that has been tested with ChurchInfo is 1.2.7
 
 2. Copy the WebCalendar distribution to your server.  The default value for the WebCalendar location is 
-    /WebCalendar-1.2.5, next to /churchinfo.  If you use a different location the global setting 
+    /WebCalendar-1.2.7, next to /churchinfo.  If you use a different location the global setting 
     sWebCalendarPath must be modified to reflect the actual location.
 
 3. Update the ChurchInfo database to enable the WebCalendar option by importing this SQL file:
@@ -17,14 +17,17 @@ feature.
    modified later using the menu configuration pages and the general settings pages
    respectively. 
    
-3. Log into ChurchInfo as an administrator and select the new menu option Main->WebCalendar.
-   It will lead you through the configuration process with a series of pages.  Specify the same 
-   mysql database and associated credentials that are used by ChurchInfo.  The WebCalendar system 
+4. Browse to the new WebCalendar installation directory and follow the automatic installation
+   steps, specifying the same database used by ChurchInfo.  The WebCalendar system 
    will install its tables with the prefix webcal_ so they do not conflict with ChurchInfo.
+   Once you get to step 4 in the WebCalendar installation you will be able to use WebCalendar 
+   from within ChurchInfo.
+   
+5. Log into ChurchInfo as an administrator and select the new menu option Main->WebCalendar.
 
-4. Note that the WebCalendar system may be run outside of ChurchInfo by browsing to its web directory.
+6. Note that the WebCalendar system may be run outside of ChurchInfo by browsing to its web directory.
    For example, if ChurchInfo is located in the standard director the URL will be
-   http://www.domain.com/churchinfo and the WebCalendar system will be at http://www.domain.com/WebCalendar-1.2.5
+   http://www.domain.com/churchinfo and the WebCalendar system will be at http://www.domain.com/WebCalendar-1.2.7
 
 The ChurchInfo WebCalendar integration works by copying the current ChurchInfo user's login information
 into the WebCalendar database as well, and setting the session variables such that WebCalendar will

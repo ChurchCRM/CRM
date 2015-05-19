@@ -27,8 +27,8 @@ Certain PHP modules (sometimes referred to as extensions) must be enabled:
 install specific packages for these modules.
 
 For Debian GNU/Linux users, you should install these packages:
-mysql-server, mysql-common, mysql-client, php4, php4-mysql, php4-gd2,
-php4-pear, and whatever Apache packages suit your needs.
+httpd, mysql, mysql-server, php, php-gd, php-mcrypt, php-mysql, 
+php-pear, and whatever Apache packages suit your needs.
 
 ChurchInfo can be run entirely with free software.  In fact, that's
 half the point of why it was written!
@@ -62,7 +62,7 @@ The interface will work fine with any modern standards-compliant web
 browser.  However, be warned:  Microsoft Internet Explorer is in many
 cases NOT compliant to well-established W3C-consortium Internet standards.
 If you have troubles, please use a quality (and free) browser such as
-Mozilla or "Netscape 7" instead.  Alternatively, there is a setting in
+Mozilla or Chrome instead.  Alternatively, there is a setting in
 Admin -> Edit General Settings that can disable certain interface 
 features for non-compliant browsers.
 
