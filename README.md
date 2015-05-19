@@ -1,18 +1,18 @@
-What is New in StGeorge Seattle Branch
+Welcome to Church Web CRM - (http://ChurchCRM.io)
 ====================================================
 
 St George Seattle Uses churchInfo CRM and while using it we make changes to make it fit our needs... feel free to use them as you see fit..
 
 Live Demo:
 
-http://demo.ChurchWebCRM.com 
+http://demo.churchcrm.io 
 username/pass: admin/george
 
 Here is an few examples of the new Ui.
 
-![Menu](http://krysto.com/churchinfo-other/menu.PNG)
-![Family](http://krysto.com/churchinfo-other/family.PNG)
-![Person](http://krysto.com/churchinfo-other/person.PNG)
+![Menu](http://www.churchcrm.io/screenshots/menu.PNG)
+![Family](http://www.churchcrm.io/screenshots/family.PNG)
+![Person](http://www.churchcrm.io/screenshots/person.PNG)
 
 Here is the list of these changes.
 
