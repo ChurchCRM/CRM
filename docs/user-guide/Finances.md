@@ -1,4 +1,4 @@
-ChurchInfo keeps track of the following information:
+**ChurchInfo keeps track of the following information**
 
 *   **Pledge:** Promise of support, planning to donate a specific total amount.
 *   **Deposit Slip:** Print a batch of donations on a standard bank deposit form for the bank.
@@ -6,7 +6,7 @@ ChurchInfo keeps track of the following information:
 *   **Reminder Statements:** Print letters to remind Families of their pledge and report progress of their payments for the current fiscal year.
 *   **Tax Statements:** Print letters acknowledging donations over the calendar year for tax purposes.
 
-**How do I enter a pledge?**
+#How do I enter a pledge?
 
 There are two ways in which pledges can be added:
 
@@ -14,13 +14,13 @@ There are two ways in which pledges can be added:
 2. Enter the information 
 3. click "Save".
 
-**Batch Entry:** 
+##Batch Entry
 
 1. If you click "Save and Add" rather than "Save", the Pledge Editor will clear and prepare for another pledge entry.  
 2. Select the next family making a pledge from the list, and fill in the rest of the pledge information.  Continue to click
 3. "Save and Add" until all the pledges have been entered.
 
-**How do I deposit donations?**
+#How do I deposit donations?
 
 When a batch of cash and check donations is received they are entered into ChurchInfo so the donating families receive credit against their pledges and also for tax purposes.
 
@@ -69,7 +69,7 @@ Press "Details" for any transactions that do not clear to see why the transactio
 *   **Close the deposit slip** 
 Enable "Close deposit slip" when finished  with this deposit slip, and press "Save".
 
-**How do I enter a payment?**
+#How do I enter a payment?
 
 Payments are very similar to pledges.  There are two ways in which payments can be added:
 
