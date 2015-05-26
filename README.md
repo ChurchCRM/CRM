@@ -7,12 +7,12 @@
 
 ## Docs
 
-![Checkout our online Docs] (http://docs.churchcrm.io)
+[Checkout our online Docs] (http://docs.churchcrm.io)
 
 
 ##  Change Log
 
-![0.10.0 Development ] (http://docs.churchcrm.io/en/latest/About/release-notes/)
+[0.10.0 Development ] (http://docs.churchcrm.io/en/latest/About/release-notes/)
 
 ## Live Demo
 
