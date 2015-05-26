@@ -6,12 +6,12 @@ You may put an unlimited number of People in the Cart. Putting someone in the Ca
 
 The Cart is user- and session-specific. Every User has his or her own Cart, and that Cart will only last until the User logs off -- Carts do not span sessions.
 
-**How can I see what's in my Cart?**
+#How can I see what's in my Cart?
 On the top menu, second row, right side, a real-time counter will tell you how many records you have in the Cart. This counter will go up or down as you add or remove records.
 
 To see the actual records in your Cart, click on "List Cart Items" (under "Cart"). This will display all records currently in the Cart.
 
-**How do I add a Person to the Cart?**
+#How do I add a Person to the Cart?
 
 There several ways to do this:
 
@@ -21,7 +21,7 @@ There several ways to do this:
      3. When the results of the filter are displayed, there will be a link on the far right of every Person record called "Add to Cart." Click this link for the desired Person.
      4. If this Person does not already exist in the cart, they will be added.
      
--  Alternately, 
+-  Alternately:
 1. View the desired Person record, and within that record will be a link for "Add to Cart." 
 2. Clicking this link accomplishes the same thing as the process described above.
 3. To add the results of a report: Some reports will allow you to dump the results to the Cart, and some won't -- it depends what the report returns. Since the cart holds People, a report that returned Family records will not allow the results to be placed in the Cart.
@@ -36,7 +36,7 @@ Click on the desired Group or Create a New Group - Don't worry, if you make a ne
 
 If you choose to make a new group, on the New Group page, there is a box for "Empty Cart to this Group?". It should already be checked, so just let InfoCentral make the move for you.
 
-**How do I remove a person from the Cart?**
+#How do I remove a person from the Cart?
 
 1. From the top menu, click "List Cart Items" (under "Cart").
 2. On the resulting screen, all the People currently in the Cart will be listed, with a "Remove" link to the far right of their name. 
