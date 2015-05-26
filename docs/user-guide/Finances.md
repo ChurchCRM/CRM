@@ -1,4 +1,4 @@
-**ChurchInfo keeps track of the following information**
+**ChurchCRM keeps track of the following information**
 
 *   **Pledge:** Promise of support, planning to donate a specific total amount.
 *   **Deposit Slip:** Print a batch of donations on a standard bank deposit form for the bank.
@@ -22,7 +22,7 @@ There are two ways in which pledges can be added:
 
 #How do I deposit donations?
 
-When a batch of cash and check donations is received they are entered into ChurchInfo so the donating families receive credit against their pledges and also for tax purposes.
+When a batch of cash and check donations is received they are entered into ChurchCRM so the donating families receive credit against their pledges and also for tax purposes.
 
 *   **Make a new deposit slip:** Select "New Deposit Slip (checks and cash)"  from the "Deposit" menu.
 

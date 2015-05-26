@@ -1,6 +1,6 @@
 #What are Custom Fields?
 
-Custom Fields allow you to expand the functionality of ChurchInfo beyond the base information that can be stored as a default. Custom fields allow you to personalize the database to meet your specific needs. Custom fields can be added to individuals and to groups. For individuals, you could, for example, have a custom field that shows an individual's mentor. For groups, you could have a start and stop date for a group of ushers.
+Custom Fields allow you to expand the functionality of ChurchCRM beyond the base information that can be stored as a default. Custom fields allow you to personalize the database to meet your specific needs. Custom fields can be added to individuals and to groups. For individuals, you could, for example, have a custom field that shows an individual's mentor. For groups, you could have a start and stop date for a group of ushers.
 
 ##How do I assign Custom Fields?
 

@@ -4,7 +4,7 @@ Reports are built-in reports that give specific reports about user information. 
 
 ##What is a Free-Text Query?
 
-A Free-Text Query allows you to run any query on the database. Since ChurchInfo is based on mySQL, anyone who has knowledge of this program can run free-text queries.
+A Free-Text Query allows you to run any query on the database. Since ChurchCRM is based on mySQL, anyone who has knowledge of this program can run free-text queries.
 
 ##What is a Cart-Enabled Query?
 

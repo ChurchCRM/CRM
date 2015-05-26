@@ -1,8 +1,8 @@
 #Canvass Support
 
-**How does ChurchInfo support an every-member canvass?**
+**How does ChurchCRM support an every-member canvass?**
 
-ChurchInfo includes comprehensive support to facilitate an every-member canvass effort. The main control panel for canvass activity is called the Canvass Automation page. This page may be found by selecting Data/Reports->Reports Menu, and then clicking the Canvass Automation link.
+ChurchCRM includes comprehensive support to facilitate an every-member canvass effort. The main control panel for canvass activity is called the Canvass Automation page. This page may be found by selecting Data/Reports->Reports Menu, and then clicking the Canvass Automation link.
 
 Here is an overview of the steps:
 

@@ -1,6 +1,6 @@
-##How does ChurchInfo know exactly where Families live?
+##How does ChurchCRM know exactly where Families live?
 
-ChurchInfo stores the latitude and longitude with each Family. These numbers may be entered into the Family edit page, or looked up based on the address. In the United States, this information is found automatically by using the Internet service [rpc.geocoder.us](http://rpc.geocoder.us). If you know of a similar service for other countries please let us know!
+ChurchCRM stores the latitude and longitude with each Family. These numbers may be entered into the Family edit page, or looked up based on the address. In the United States, this information is found automatically by using the Internet service [rpc.geocoder.us](http://rpc.geocoder.us). If you know of a similar service for other countries please let us know!
 
 ##How do I find Families that live close to each other?
 

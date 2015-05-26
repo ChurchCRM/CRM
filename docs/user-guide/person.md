@@ -35,7 +35,7 @@ This defines the Person's role within the church. Common Classifications are Mem
 
 ##How do I enter a person's age?
 
-You don't. ChurchInfo automatically calculates age based on the birth date given.
+You don't. ChurchCRM automatically calculates age based on the birth date given.
 
 Age will be calculated as best it can with the information given. At minimum a Birth Year must be entered. Even if you don't know a person's birth year, you can always estimate until that information is available.
 
@@ -49,7 +49,7 @@ Confirm the deletion
 
 ##What are Custom Person Fields?
 
-Custom Person Fields is a powerful feature that allows you to add any fields that you need to use that do not come built-in with ChurchInfo. This feature allows you to, for example, add a Mentor to a person, or add an additional date (such as confirmation). The possibilities are endless.
+Custom Person Fields is a powerful feature that allows you to add any fields that you need to use that do not come built-in with ChurchCRM. This feature allows you to, for example, add a Mentor to a person, or add an additional date (such as confirmation). The possibilities are endless.
 
 ##How do I use Custom Person Fields?
 

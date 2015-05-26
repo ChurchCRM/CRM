@@ -68,7 +68,7 @@ From the top menu, click on "Edit Group Types" (under "Groups").
 
 **What are Group-Specific Properties?**
 
-Group-Specific Properties is a powerful feature that allows you to add any fields that you need to use that do not come built-in with ChurchInfo. This feature allows you to, for example, add a Mentor to a person, or add an additional date (such as confirmation). The possibilities are endless.
+Group-Specific Properties is a powerful feature that allows you to add any fields that you need to use that do not come built-in with ChurchCRM. This feature allows you to, for example, add a Mentor to a person, or add an additional date (such as confirmation). The possibilities are endless.
 
 **How do I use Group-Specific Properties?**
 
