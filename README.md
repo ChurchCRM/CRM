@@ -3,7 +3,7 @@
 
 ## Website
 
-[http://churchcrm.io]
+[http://churchcrm.io](http://churchcrm.io)
 
 ## Docs
 
