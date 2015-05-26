@@ -1,4 +1,8 @@
-**ChurchCRM keeps track of the following information**
+#Finances
+
+ChurchInfo has a finance function for tracking tithes, pledges and gifts.
+
+The software keeps track of the following information:
 
 *   **Pledge:** Promise of support, planning to donate a specific total amount.
 *   **Deposit Slip:** Print a batch of donations on a standard bank deposit form for the bank.

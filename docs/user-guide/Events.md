@@ -1,4 +1,8 @@
-**What is an Event?**
+#Events
+
+The ChurchInfo events module allows you to create events and track attendance, visitor numbers, and who needs to be followed up.
+
+##What is an Event?
 
 - An Event is an occasion that may, or may not, be hosted at your location.
 

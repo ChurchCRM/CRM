@@ -1,3 +1,7 @@
+#Geographic Features
+
+Included in ChurchInfo is a geographic mapping feature that lets you map groups of people or families.
+
 ##How does ChurchCRM know exactly where Families live?
 
 ChurchCRM stores the latitude and longitude with each Family. These numbers may be entered into the Family edit page, or looked up based on the address. In the United States, this information is found automatically by using the Internet service [rpc.geocoder.us](http://rpc.geocoder.us). If you know of a similar service for other countries please let us know!
