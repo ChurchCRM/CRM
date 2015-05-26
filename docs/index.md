@@ -25,13 +25,9 @@ TODO
 
 ## Installation
 
-In order to install ChurchCRM you'll need [php] installed on your system
-
-
-ChurchCRM supports PHP 5.x.
+ChurchCRM is a PHP/MySQL application which runs on a web server, providing web pages so users can update and access the data in the database. You can run both the server and the browser on a single computer, but the real power of a web database application is visible when you have multiple users accessing the database from their own computers.
 
 ---
-
 
 ## Getting started
 
