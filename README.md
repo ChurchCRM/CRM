@@ -1,6 +1,11 @@
 Welcome to Church Web CRM
 ---
 
+## Badges 
+
+[![Documentation Status](https://readthedocs.org/projects/church-web-crm/badge/?version=latest)](https://readthedocs.org/projects/church-web-crm/?badge=latest)
+
+
 ## Website
 
 [http://churchcrm.io](http://churchcrm.io)
