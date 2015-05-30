@@ -1,16 +1,15 @@
 Welcome to Church Web CRM
 ---
 
-## Badges 
-
 [![Documentation Status](https://readthedocs.org/projects/church-web-crm/badge/?version=latest)](https://readthedocs.org/projects/church-web-crm/?badge=latest)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 
 ## Website
 
 [http://churchcrm.io](http://churchcrm.io)
 
-## Docs
+## Installation, Upgrades and Documentation
 
 [Checkout our online Docs] (http://docs.churchcrm.io)
 
@@ -19,11 +18,12 @@ Welcome to Church Web CRM
 
 [0.10.0 Development ] (http://docs.churchcrm.io/en/latest/About/release-notes/)
 
-## Live Demo
+### Demo Account
 
-http://demo.churchcrm.io 
-username/pass: admin/george
+To test out the demo, you may login to the http://demo.churchcrm.io  with the following:
 
+- **Username:** admin
+- **Password:** george
 
 ## New Ui.
 
