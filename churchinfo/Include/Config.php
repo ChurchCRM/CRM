@@ -9,9 +9,9 @@
 
 // Database connection constants
 $sSERVERNAME = 'localhost';
-$sUSER = 'churchinfo';
-$sPASSWORD = 'churchinfo';
-$sDATABASE = 'churchinfo';
+$sUSER = 'churchcrm';
+$sPASSWORD = 'churchcrm';
+$sDATABASE = 'churchcrm';
 
 // Root path of your ChurchInfo installation ( THIS MUST BE SET CORRECTLY! )
 // For example, if you will be accessing from http://www.yourdomain.com/web/churchinfo

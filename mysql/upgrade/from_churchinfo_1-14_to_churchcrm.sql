@@ -17,12 +17,6 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `gdawoud_churchinfo`
---
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `menuconfig_mcf`
 --
 
