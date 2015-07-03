@@ -18,3 +18,9 @@ Just clone and run Vagrant up
 ##Server
 
 Access the Project at http://192.168.33.10/
+
+
+###Login Info
+
+User: Admin
+Password: churchinfoadmin
