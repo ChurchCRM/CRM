@@ -1,9 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Database Configuration
-mysql_root_password   = "root"   # We'll assume user "root"
-
 Vagrant.configure("2") do |config|
 
   config.vm.box = "scotch/box"
