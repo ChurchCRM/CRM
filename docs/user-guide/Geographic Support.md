@@ -1,6 +1,6 @@
 #Geographic Features
 
-Included in ChurchInfo is a geographic mapping feature that lets you map groups of people or families.
+Included in ChurchCRM is a geographic mapping feature that lets you map groups of people or families.
 
 ##How does ChurchCRM know exactly where Families live?
 

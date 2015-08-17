@@ -1,6 +1,6 @@
 #Finances
 
-ChurchInfo has a finance function for tracking tithes, pledges and gifts.
+ChurchCRM has a finance function for tracking tithes, pledges and gifts.
 
 The software keeps track of the following information:
 
