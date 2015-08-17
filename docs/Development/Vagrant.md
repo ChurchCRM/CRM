@@ -24,3 +24,15 @@ Access the Project at http://192.168.33.10/
 
 User: Admin
 Password: churchinfoadmin
+
+##Database
+
+See https://github.com/scotch-io/scotch-box#database-access for connection info
+
+### CRM DB info
+
+DB: churchcrm
+DB User: churchcrm
+DB Password: churchcrm
+
+

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+#=============================================================================
+# DB Setup
 DB_USER="root"
 DB_PASS="root"
 DB_HOST="localhost"
@@ -32,6 +34,9 @@ sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SC
 
 echo "Database: tables and metadata deployed"
 
+
+#=============================================================================
+# Help info
 
 echo "============================================================================="
 echo "======== Church CRM is now hosted @ http://192.168.33.10/      =============="
