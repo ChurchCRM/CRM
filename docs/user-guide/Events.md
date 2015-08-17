@@ -1,6 +1,6 @@
 #Events
 
-The ChurchInfo events module allows you to create events and track attendance, visitor numbers, and who needs to be followed up.
+The ChurchCRM events module allows you to create events and track attendance, visitor numbers, and who needs to be followed up.
 
 ##What is an Event?
 
