@@ -31,10 +31,6 @@ $sReportType = FilterInput($_POST["ReportType"]);
 $sDateStart = FilterInput($_POST["DateStart"],"date");
 $sDateEnd = FilterInput($_POST["DateEnd"],"date");
 $iDepID = FilterInput($_POST["deposit"],"int");
-$iFYID = CurrentFY();
-if (array_key_exists ("FYID", $_POST))
-	$iFYID = FilterInput($_POST["FYID"],"int");
-$_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 $iMinimum = FilterInput($_POST["minimum"],"int");
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
@@ -189,27 +185,23 @@ if ($output == "pdf") {
 		}
 
 		function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fam_envelope) {
-			global $letterhead, $sDateStart, $sDateEnd, $iDepID, $iFYID,$bUseDonationEnvelopes;
+			global $letterhead, $sDateStart, $sDateEnd, $iDepID, $bUseDonationEnvelopes;
 			$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
 			if ($bUseDonationEnvelopes) {
 				$this->WriteAt ($this->leftX, $curY, gettext ("Envelope:").$fam_envelope);
 				$curY += $this->incrementY;
 			}
 			$curY += 2 * $this->incrementY;
-			if ($iFYID > 0)
-				$DateString = gettext("Fiscal Year ") . ($iFYID + 1995) . ".";
-			else {
-				if ($iDepID) {
-					// Get Deposit Date
-					$sSQL = "SELECT dep_Date, dep_Date FROM deposit_dep WHERE dep_ID='$iDepID'";
-					$rsDep = RunQuery($sSQL);
-					list($sDateStart, $sDateEnd) = mysql_fetch_row($rsDep);
-				}
-				if ($sDateStart == $sDateEnd)
-					$DateString = date("F j, Y",strtotime($sDateStart));
-				else
-					$DateString = date("M j, Y",strtotime($sDateStart)) . " - " .  date("M j, Y",strtotime($sDateEnd));
+			if ($iDepID) {
+				// Get Deposit Date
+				$sSQL = "SELECT dep_Date, dep_Date FROM deposit_dep WHERE dep_ID='$iDepID'";
+				$rsDep = RunQuery($sSQL);
+				list($sDateStart, $sDateEnd) = mysql_fetch_row($rsDep);
 			}
+			if ($sDateStart == $sDateEnd)
+				$DateString = date("F j, Y",strtotime($sDateStart));
+			else
+				$DateString = date("M j, Y",strtotime($sDateStart)) . " - " .  date("M j, Y",strtotime($sDateEnd));
 			$blurb = $this->sTaxReport1 . " " . $DateString . ".";
 			$this->WriteAt ($this->leftX, $curY, $blurb);
 			$curY += 2 * $this->incrementY;

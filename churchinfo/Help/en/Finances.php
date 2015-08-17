@@ -52,7 +52,11 @@
           close the deposit slip once the deposit has been packaged for the bank.</li>
       </ul>
     <p>Automatic credit card and bank draft deposits are supported for churches and
-	 other organizations with an ECHO account.</p>
+	 other organizations with a Vanco or Authorize.NET account.</p>
+    <p>The automatic electronic payment vendor is set in Admin->Edit General Settings.  The valid
+       settings are Vanco and AuthorizeNet.  In either case an account must be established with
+       the electronic payment vendor and credentials must be entered into the ChurchInfo installation
+       to enable automatic donation transactions.</p>
       <ul>
         <li><strong>Configure the automatic payments</strong> For each family participating in the automatic
 		  payment program, in the Family view, click &quot;Add a new automatic payment&quot;</li>
