@@ -1,7 +1,7 @@
 <?php
 /*******************************************************************************
  *
- *  filename    : AjaxFunctions.php
+ *  filename    : SearchMembers.php
  *  last change : 2014-03-10
  *  description : AJAX helper file to return autocomplete names for various site searches
  *
