@@ -5,7 +5,7 @@ Families, can belong to Groups, can have Properties, and can be made Users of th
 
 ##How do I find a specific Person?
 
-On left menu, find the search box just above the "Dashboard" heading. Enter a search string in this box, and press Enter
+On left menu, find the search box just above the "Dashboard" heading. Enter a search string in this box, as you begin to type results will begin showing all of matches.
 
 The system will return all Person records containing that search string in the first or last name.
 
