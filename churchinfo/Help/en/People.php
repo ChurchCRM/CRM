@@ -5,14 +5,14 @@
 
 <div class="Help_Section">
 	<div class="Help_Header">What is a Person?</div>
-	<table width="100%" class="LightShadedBox"><tr><td>Not surprisingly, a Person record represents a single individual.  Person records can be grouped together into Families, can belong to Groups, can have Properties, and can be made Users of ChurchInfo.</td></tr></table>
+	<table width="100%" class="LightShadedBox"><tr><td>Not surprisingly, a Person record represents a single individual.  Person records can be grouped together into Families, can belong to Groups, can have Properties, and can be made Users of Church Web CRM.</td></tr></table>
 </div>
 
 <div class="Help_Section">
 	<p><div class="Help_Header">How do I find a specific Person?</div>
 	<table width="100%" class="LightShadedBox"><tr><td><ol>
-		<li>On left menu, find the input box just below the "People" heading
-		<li>Enter a search string in this box, and press Enter
+		<li>On left menu, directly above the Dashboard is a Search box
+		<li>Begin typing the persons name
 		<li>The system will return all Person records containing that search string in the first or last name.
 		<li>Clicking on the Person's name will reveal the Person View which lists all information about that Person, including any Assigned Properties, Assigned Groups, and Notes.
 	</ol>

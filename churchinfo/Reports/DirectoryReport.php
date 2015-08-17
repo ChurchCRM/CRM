@@ -42,6 +42,7 @@ class PDF_Directory extends ChurchInfoReport {
     var $_Custom;
     var $_NCols       = 3;
     var $_PS          = 'Letter';
+    var $sSortBy = "";
 
     function Header()
     {
@@ -678,6 +679,8 @@ while ($aRow = mysql_fetch_array($rsRecords))
     $OutStr = "";
     extract($aRow);
     
+    $pdf->sSortBy = $SortMe;
+    
     $isFamily = false;
 
     if ($memberCount > 1) // Here we have a family record.
@@ -686,7 +689,7 @@ while ($aRow = mysql_fetch_array($rsRecords))
         $isFamily = true;
 
         $pdf->sRecordName = "";
-        $pdf->sLastName = $fam_Name;
+        $pdf->sLastName = $per_LastName;
         $OutStr .= $pdf->sGetFamilyString($aRow);
         $bNoRecordName = true;
 
@@ -734,10 +737,10 @@ while ($aRow = mysql_fetch_array($rsRecords))
     }
     else
     {
-        if (strlen($fam_Name))
-            $pdf->sLastName = $fam_Name;
-        else
+        if (strlen($per_LastName))
             $pdf->sLastName = $per_LastName;
+        else
+            $pdf->sLastName = $fam_Name;
         $pdf->sRecordName = $pdf->sLastName . ", " . $per_FirstName;
         if (strlen ($per_Suffix))
 			$pdf->sRecordName .= " " . $per_Suffix;
@@ -794,10 +797,10 @@ while ($aRow = mysql_fetch_array($rsRecords))
 
     if ($numlines > 0)
     {
-        if (strtoupper($sLastLetter) != strtoupper(substr($pdf->sRecordName,0,1)))
+        if (strtoupper($sLastLetter) != strtoupper(substr($pdf->sSortBy,0,1)))
         {
             $pdf->Check_Lines($numlines+2, 0, 0);
-            $sLastLetter = strtoupper(substr($pdf->sRecordName,0,1));
+            $sLastLetter = strtoupper(substr($pdf->sSortBy,0,1));
             $pdf->Add_Header($sLastLetter);
         }
         

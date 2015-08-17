@@ -300,7 +300,7 @@ global $security_matrix, $sURLPath;
                     $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
                     $rsSundaySchoolClasses = RunQuery($sSQL);
                     while ($aRow = mysql_fetch_array($rsSundaySchoolClasses)) {
-                        echo "<li><a href='SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
+                        echo "<li><a href='".$sURLPath."/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
                     }
                 }
         }
@@ -380,16 +380,16 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
                             <span class="hidden-xs"><?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> </span> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="PersonView.php?PersonID=<?php echo $_SESSION['iUserID'];?>"><i class="fa fa-user"></i>Profile</a></li>
+                            <li><a href="<?php echo $sURLPath."/"; ?>PersonView.php?PersonID=<?php echo $_SESSION['iUserID'];?>"><i class="fa fa-user"></i>Profile</a></li>
                             <li class="divider"></li>
-                            <li><a href="UserPasswordChange.php">Change My Password</a></li>
-                            <li><a href="SettingsIndividual.php">Change My Settings</a></li>
+                            <li><a href="<?php echo $sURLPath."/"; ?>UserPasswordChange.php">Change My Password</a></li>
+                            <li><a href="<?php echo $sURLPath."/"; ?>SettingsIndividual.php">Change My Settings</a></li>
                             <li class="divider"></li>
-                            <li><a href="Default.php?Logoff=True"><i class="fa fa-power-off"></i>Log Off</a></li>
+                            <li><a href="<?php echo $sURLPath."/"; ?>Default.php?Logoff=True"><i class="fa fa-power-off"></i>Log Off</a></li>
                         </ul>
                     </li>
                     <li class="hidden-xxs">
-                        <a class="btn" href="Default.php?Logoff=True">
+                        <a class="btn" href="<?php echo $sURLPath."/"; ?>Default.php?Logoff=True">
                             <i class="fa fa-power-off"></i>
                         </a>
                     </li>
