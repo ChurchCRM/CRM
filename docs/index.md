@@ -37,7 +37,12 @@ After you have installed the ChurchCRM application and can login, you are ready 
 
 The first thing to do is enter your church name, address, phone and email address into the Report Settings.
 
-You can add a custom header to ChurchCRM by entering the HTML for the custom header in the General Settings. From the Admin menu, choose “Edit General Settings”. Near the bottom of the General Settings page, enter the HTML for the custom header into the field “sHeader”. Example: If you enter ”<H2>My Church</H2>”, ChurchInfo will display “My Church” in large, bold letters at the top of each page.
+You can add a custom header to ChurchCRM by entering the HTML for the custom header in the General Settings. From the Admin menu, choose “Edit General Settings”. Near the bottom of the General Settings page, enter the HTML for the custom header into the field “sHeader”. Example: If you enter-
+```html
+<H2>My Church</H2>
+```
+
+ChurchCRM will display “My Church” in large, bold letters at the top of each page.
 
 During the configuration stage, give some consideration to how you will use ChurchCRM:
 
