@@ -2,9 +2,9 @@
 
 Reports are built-in reports that give specific reports about user information. Queries are pre-built queries on the database that return individuals/families.
 
-##Built in Reports
+###Built in Reports
 
-###group membership
+####group membership
 contact lists
 reports on groups and roles
 Members Directory: Printable directory of all members, grouped by family where assigned
@@ -26,14 +26,14 @@ Advanced Search: Search by any part of Name, City, State, Zip, or Home Phone.
 Families to canvass: People in families that are ok to canvass.
 Class & Attendance Reports
 
-###Sunday School Reports: Generate class lists and attendance sheets
+####Sunday School Reports: Generate class lists and attendance sheets
 Event Attendance: Generate attendance -AND- non-attendance reports for events
 Class Students: Find students for a particular class
 Class Teachers: Find teachers for a particular class
 Registered students
 Finance Reports
 
-###Finance Reports
+####Finance Reports
 Financial Reports: Pledges and Payments
 Canvass Automation: support for conducting an every-member canvass.
 Pledge comparison: Compare pledges between two fiscal years
