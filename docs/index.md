@@ -29,6 +29,7 @@ ChurchCRM is a PHP/MySQL application which runs on a web server, providing web p
 
 ---
 
+
 ## Getting started
 
 The application is based on the concepts of people who are members of families and are also members of common interest groups.
@@ -56,7 +57,6 @@ During the configuration stage, give some consideration to how you will use Chur
 ## Deploying
 
 The documentation site that we've just built only uses static files so you'll be able to host it from pretty much anywhere. [GitHub project pages] and [Amazon S3] are good hosting options. Upload the contents of the entire `site` directory to wherever you're hosting your website from and you're done.
-
 
 ## Getting help
 

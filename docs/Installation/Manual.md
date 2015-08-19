@@ -31,8 +31,11 @@ file are the database connection parameters:
 For example:
 
 $sSERVERNAME = "localhost";
+
 $sUSER = "root";
+
 $sPASSWORD = "password";
+
 $sDATABASE = "churchinfo";
 
 Change these parameters to match the mysql server and user account you
