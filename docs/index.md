@@ -46,12 +46,12 @@ ChurchCRM will display “My Church” in large, bold letters at the top of each
 
 During the configuration stage, give some consideration to how you will use ChurchCRM:
 
-What are the groups that you will use?
-What properties do you need to record for people, families and groups?
-Do you need to use custom fields?
-Who needs access to the administration features?
-Who should be given access to the Financial records?
-Who can add or change records?
+-What are the groups that you will use?
+-What properties do you need to record for people, families and groups?
+-Do you need to use custom fields?
+-Who needs access to the administration features?
+-Who should be given access to the Financial records?
+-Who can add or change records?
 
 ## Deploying
 
