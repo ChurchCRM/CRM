@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="Tests/bootstrap.php" colors="true">
+<phpunit bootstrap="tests/bootstrap.php" colors="true">
     <php>
         <var name="db_dsn" value="mysql:dbname=churchcrm;host=localhost"/>
         <var name="db_username" value="churchcrm"/>
