@@ -1,14 +1,10 @@
-#Getting Started
-
-The application is based on the concepts of people who are members of families and are also members of common interest groups.
-
 #Configuration
 
 After you have installed your ChurchCRM application and can login, you are ready to configure the application.
 
 ###Report Settings
 
-On the Report Settings is where you can enter your church information. You can also change the default text that is printed on reports. Under the Admin menu, choose “Edit Report Settings”. Enter your church name, address, phone and email address. Review the default report text and change the information as needed.
+Within Report Settings you can enter your church information. You can also change the default text that is printed on reports. Under the Admin menu, choose “Edit Report Settings”. Enter your church name, address, phone and email address. Review the default report text and change the information as needed.
 
 ###Custome Header
 
