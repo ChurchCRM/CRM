@@ -25,6 +25,4 @@ Users can be edited by clicking on “Edit Users” under “Admin” in the dro
 
 The default password is specified in the General Settings, available from the Admin menu. The default password is about a third of the way down this page.
 
-##Database Structure
 
-It is helpful to understand the underlying database structure of ChurchInfo, so that you can create custom reports and queries using the data.
