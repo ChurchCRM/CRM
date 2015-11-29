@@ -58,11 +58,13 @@ class PDF_ConfirmReport extends ChurchInfoReport {
 			$this->WriteAt ($this->leftX, $curY, $this->sConfirm6);
 		}
 
-		$curY += 4 * $this->incrementY;
+		if ($this->sConfirmSigner) {
+            $curY += 4 * $this->incrementY;
 
-		$this->WriteAt ($this->leftX, $curY, "Sincerely,");
-		$curY += 4 * $this->incrementY;
-		$this->WriteAt ($this->leftX, $curY, $this->sConfirmSigner);
+            $this->WriteAt ($this->leftX, $curY, "Sincerely,");
+            $curY += 4 * $this->incrementY;
+            $this->WriteAt ($this->leftX, $curY, $this->sConfirmSigner);
+        }
 	}
 }
 
@@ -138,10 +140,10 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
    $pdf->WriteAtCell ($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext ("Home phone"));
 	$pdf->SetFont("Times",'',10);
    $pdf->WriteAtCell ($dataCol, $curY, $dataWid, $fam_HomePhone); $curY += $pdf->incrementY;
-	$pdf->SetFont("Times",'B',10);
-   $pdf->WriteAtCell ($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext ("Send Newsletter"));
-	$pdf->SetFont("Times",'',10);
-   $pdf->WriteAtCell ($dataCol, $curY, $dataWid, $fam_SendNewsLetter); $curY += $pdf->incrementY;
+	//$pdf->SetFont("Times",'B',10);
+   //$pdf->WriteAtCell ($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext ("Send Newsletter"));
+	//$pdf->SetFont("Times",'',10);
+  // $pdf->WriteAtCell ($dataCol, $curY, $dataWid, $fam_SendNewsLetter); $curY += $pdf->incrementY;
 
 // Missing the following information from the Family record:
 // Wedding date (if present) - need to figure how to do this with sensitivity
@@ -217,6 +219,8 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		$pdf->WriteAtCell ($XEmail, $curY, $XBirthday - $XEmail, $per_Email);
 		if ($per_BirthYear)
 			$birthdayStr = $per_BirthYear . "-" . $per_BirthMonth . "-" . $per_BirthDay;
+        elseif ($per_BirthMonth)
+            $birthdayStr = $per_BirthMonth . "-" . $per_BirthDay;
 		else
 			$birthdayStr = "";
 		$pdf->WriteAtCell ($XBirthday, $curY, $XCellPhone - $XBirthday, $birthdayStr);
