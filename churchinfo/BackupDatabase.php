@@ -60,7 +60,7 @@ if (isset($_POST["doBackup"]))
 	if ($bNoErrors)
 	{
 		$saveTo = "SQL/InfoCentral-Backup-" . date("Ymd-Gis") . ".sql";
-		$backupCommand = "mysqldump -u $sUSER --password=$sPASSWORD $sDATABASE > $saveTo";
+		$backupCommand = "mysqldump -u $sUSER --password=$sPASSWORD --host=$sSERVERNAME $sDATABASE > $saveTo";
 		exec($backupCommand, $returnString, $returnStatus);
 
 		switch ($iArchiveType)
