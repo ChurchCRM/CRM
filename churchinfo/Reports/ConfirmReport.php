@@ -68,6 +68,7 @@ class PDF_ConfirmReport extends ChurchInfoReport {
 
 // Instantiate the directory class and build the report.
 $pdf = new PDF_ConfirmReport();
+$filename = "ConfirmReport" . date("Ymd") . ".pdf";
 
 // Read in report settings from database
 $rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
@@ -108,6 +109,10 @@ $dataWid = 65;
 // Loop through families
 while ($aFam = mysql_fetch_array($rsFamilies)) {
 	extract ($aFam);
+    
+    if ($_GET["familyId"]) {
+        $filename = "ConfirmReport-".$fam_Name.".pdf";
+    } 
 
 	$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, 
                                $fam_State, $fam_Zip, $fam_Country);
@@ -323,7 +328,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1)
-	$pdf->Output("ConfirmReport" . date("Ymd") . ".pdf", "D");
+	$pdf->Output($filename, "D");
 else
 	$pdf->Output();	
 ?>
