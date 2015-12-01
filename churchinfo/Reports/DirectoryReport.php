@@ -382,7 +382,13 @@ class PDF_Directory extends ChurchInfoReport {
         $iTempLen = strlen($sHeadStr);
 
         if ($bDirBirthday && $per_BirthMonth && $per_BirthDay)
-            $sHeadStr .= sprintf(" (%d/%d)\n", $per_BirthMonth, $per_BirthDay);
+        {
+            $sHeadStr .= sprintf(" (%d/%d", $per_BirthMonth, $per_BirthDay);
+            if ($per_BirthYear  && ! $per_Flags)
+                $sHeadStr .= sprintf("/%d)\n", $per_BirthYear);
+            else
+                $sHeadStr .= ")\n";
+        }
         else
         {
             $sHeadStr .= "\n";
@@ -442,7 +448,7 @@ class PDF_Directory extends ChurchInfoReport {
         if ($bDirBirthday && $per_BirthMonth && $per_BirthDay)
         {
             $sMemberStr .= sprintf(" (%d/%d", $per_BirthMonth, $per_BirthDay);
-            if ($per_BirthYear && in_array($per_fmr_ID, $aChildren))
+            if ($per_BirthYear  && ! $per_Flags)
                 $sMemberStr .= sprintf("/%d)\n", $per_BirthYear);
             else
                 $sMemberStr .= ")\n";
