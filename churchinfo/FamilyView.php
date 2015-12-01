@@ -238,14 +238,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 				<img src="<?php echo getFamilyPhoto($fam_ID) ?>" alt="" class="img-circle img-responsive center-block" />
 				<ul class="fa-ul">
 					<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
-					<address>
-						<?php if ($fam_Address1 != "") { echo $fam_Address1 . "<br>"; }
-							if ($fam_Address2 != "") { echo $fam_Address2 . "<br>"; }
-							if ($fam_City != "") { echo $fam_City . ", "; }
-							if ($fam_State != "") { echo $fam_State; }
-							if ($fam_Zip != "") { echo " " . $fam_Zip; }
-							if ($fam_Country != "") { echo "<br>" . $fam_Country . "<br>"; } else {echo "<br>";}
-							echo "<br>";
+					<a href="http://maps.google.com/?q=<?php echo getMailingAddress($fam_Address1,$fam_Address2,$fam_City,$fam_State,$fam_Zip,$fam_Country); ?>" target="_blank"><?php
+							echo getMailingAddress($fam_Address1,$fam_Address2,$fam_City,$fam_State,$fam_Zip,$fam_Country);				
+							echo "</a></span><br>";
 							if ($fam_Latitude && $fam_Longitude) {
 								if ($nChurchLatitude && $nChurchLongitude) {
 									$sDistance = LatLonDistance($nChurchLatitude, $nChurchLongitude,$fam_Latitude, $fam_Longitude);
@@ -254,7 +249,6 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 								}
 							}
 						?>
-					</address>
 					<?php if (!$bHideLatLon) { /* Lat/Lon can be hidden - General Settings */ ?>
 						<li><i class="fa-li fa fa-compass"></i><?php echo gettext("Latitude/Longitude"); ?> <span><?php echo $fam_Latitude . " / ", $fam_Longitude; ?></span></li>
 					<?php }
