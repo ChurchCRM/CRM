@@ -169,10 +169,11 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$rsFamilyMembers = RunQuery ($sSQL);
 
 	$XName = 10;
-	$XGender = 50;
-	$XRole = 60;
-	$XEmail = 90;
-	$XBirthday = 135;
+	$XGender = 40;
+	$XRole = 50;
+	$XEmail = 80;
+	$XBirthday = 125;
+    $XHideAge=145;
 	$XCellPhone = 155;
 	$XClassification = 180;
 	$XWorkPhone = 155;
@@ -183,11 +184,12 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
    $pdf->WriteAtCell ($XGender, $curY, $XRole - $XGender, gettext ("M/F"));
    $pdf->WriteAtCell ($XRole, $curY, $XEmail - $XRole, gettext ("Adult/Child"));
    $pdf->WriteAtCell ($XEmail, $curY, $XBirthday - $XEmail, gettext ("Email"));
-   $pdf->WriteAtCell ($XBirthday, $curY, $XCellPhone - $XBirthday, gettext ("Birthday"));
+   $pdf->WriteAtCell ($XBirthday, $curY, $XHideAge - $XBirthday, gettext ("Birthday"));
+   $pdf->WriteAtCell ($XHideAge, $curY, $XCellPhone - $XHideAge, gettext ("Hide Age"));
    $pdf->WriteAtCell ($XCellPhone, $curY, $XClassification - $XCellPhone, gettext ("Cell phone"));
    $pdf->WriteAtCell ($XClassification, $curY, $XRight - $XClassification, gettext ("Member/Friend"));
 	$pdf->SetFont("Times",'',10);
-	$curY += $pdf->incrementY;
+	$curY += 3*$pdf->incrementY;
 
 	$numFamilyMembers = 0;
 	while ($aMember = mysql_fetch_array($rsFamilyMembers)) {
@@ -202,7 +204,8 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		   $pdf->WriteAtCell ($XGender, $curY, $XRole - $XGender, gettext ("M/F"));
 		   $pdf->WriteAtCell ($XRole, $curY, $XEmail - $XRole, gettext ("Adult/Child"));
 		   $pdf->WriteAtCell ($XEmail, $curY, $XBirthday - $XEmail, gettext ("Email"));
-		   $pdf->WriteAtCell ($XBirthday, $curY, $XCellPhone - $XBirthday, gettext ("Birthday"));
+		   $pdf->WriteAtCell ($XBirthday, $curY, $XHideAge - $XBirthday, gettext ("Birthday"));
+           $pdf->WriteAtCell ($XHideAge, $curY, $XCellPhone - $XHideAge, gettext ("Hide Age"));
 		   $pdf->WriteAtCell ($XCellPhone, $curY, $XClassification - $XCellPhone, gettext ("Cell phone"));
 		   $pdf->WriteAtCell ($XClassification, $curY, $XRight - $XClassification, gettext ("Member/Friend"));
 			$pdf->SetFont("Times",'',10);
@@ -218,12 +221,24 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		$pdf->WriteAtCell ($XRole, $curY, $XEmail - $XRole, $sFamRole);
 		$pdf->WriteAtCell ($XEmail, $curY, $XBirthday - $XEmail, $per_Email);
 		if ($per_BirthYear)
-			$birthdayStr = $per_BirthYear . "-" . $per_BirthMonth . "-" . $per_BirthDay;
+        {
+            $birthdayStr = $per_BirthYear . "-" . $per_BirthMonth . "-" . $per_BirthDay;
+        }
         elseif ($per_BirthMonth)
             $birthdayStr = $per_BirthMonth . "-" . $per_BirthDay;
 		else
 			$birthdayStr = "";
-		$pdf->WriteAtCell ($XBirthday, $curY, $XCellPhone - $XBirthday, $birthdayStr);
+        if ($per_Flags)
+        {
+            $hideAgeStr="Yes";
+        }
+        else
+        {
+            $hideAgeStr="No";
+        }
+        
+		$pdf->WriteAtCell ($XBirthday, $curY, $XHideAge - $XBirthday, $birthdayStr);
+        $pdf->WriteAtCell ($XHideAge, $curY, $XCellPhone - $XHideAge,$hideAgeStr);
 		$pdf->WriteAtCell ($XCellPhone, $curY, $XClassification - $XCellPhone, $per_CellPhone);
 		$pdf->WriteAtCell ($XClassification, $curY, $XRight - $XClassification, $sClassName);
 		$curY += $pdf->incrementY;
