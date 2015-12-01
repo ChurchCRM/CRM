@@ -140,10 +140,10 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
    $pdf->WriteAtCell ($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext ("Home phone"));
 	$pdf->SetFont("Times",'',10);
    $pdf->WriteAtCell ($dataCol, $curY, $dataWid, $fam_HomePhone); $curY += $pdf->incrementY;
-	//$pdf->SetFont("Times",'B',10);
-   //$pdf->WriteAtCell ($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext ("Send Newsletter"));
-	//$pdf->SetFont("Times",'',10);
-  // $pdf->WriteAtCell ($dataCol, $curY, $dataWid, $fam_SendNewsLetter); $curY += $pdf->incrementY;
+	$pdf->SetFont("Times",'B',10);
+   $pdf->WriteAtCell ($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext ("Send Newsletter"));
+	$pdf->SetFont("Times",'',10);
+  $pdf->WriteAtCell ($dataCol, $curY, $dataWid, $fam_SendNewsLetter); $curY += $pdf->incrementY;
 
 // Missing the following information from the Family record:
 // Wedding date (if present) - need to figure how to do this with sensitivity
