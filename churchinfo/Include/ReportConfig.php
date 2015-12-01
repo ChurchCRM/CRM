@@ -74,7 +74,7 @@ class ChurchInfoReport extends FPDF {
 	function WriteAtCell ($x, $y, $wid, $str) {
 		$strconv=iconv("UTF-8","ISO-8859-1",$str);
 		$this->SetXY ($x, $y);
-		$this->Cell ($wid, 4, $strconv, 1);
+		$this->MultiCell ($wid, 4, $strconv, 1);
 	}
 
    function StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead="") {
