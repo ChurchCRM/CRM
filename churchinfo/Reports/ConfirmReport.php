@@ -57,10 +57,9 @@ class PDF_ConfirmReport extends ChurchInfoReport {
 			$curY += 2 * $this->incrementY;
 			$this->WriteAt ($this->leftX, $curY, $this->sConfirm6);
 		}
-
-		if ($this->sConfirmSigner) {
+        //If the Reports Settings Menu's sConfirmSigner is set, then display the closing statement.  Hide it otherwise.
+        if ($this->sConfirmSigner) {
             $curY += 4 * $this->incrementY;
-
             $this->WriteAt ($this->leftX, $curY, "Sincerely,");
             $curY += 4 * $this->incrementY;
             $this->WriteAt ($this->leftX, $curY, $this->sConfirmSigner);
@@ -111,7 +110,8 @@ $dataWid = 65;
 // Loop through families
 while ($aFam = mysql_fetch_array($rsFamilies)) {
 	extract ($aFam);
-    
+
+    //If this is a report for a single family, name the file accordingly.
     if ($_GET["familyId"]) {
         $filename = "ConfirmReport-".$fam_Name.".pdf";
     } 
@@ -143,7 +143,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$pdf->SetFont("Times",'B',10);
    $pdf->WriteAtCell ($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext ("Send Newsletter"));
 	$pdf->SetFont("Times",'',10);
-  $pdf->WriteAtCell ($dataCol, $curY, $dataWid, $fam_SendNewsLetter); $curY += $pdf->incrementY;
+   $pdf->WriteAtCell ($dataCol, $curY, $dataWid, $fam_SendNewsLetter); $curY += $pdf->incrementY;
 
 // Missing the following information from the Family record:
 // Wedding date (if present) - need to figure how to do this with sensitivity
@@ -220,14 +220,15 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		$pdf->WriteAtCell ($XGender, $curY, $XRole - $XGender, $genderStr);
 		$pdf->WriteAtCell ($XRole, $curY, $XEmail - $XRole, $sFamRole);
 		$pdf->WriteAtCell ($XEmail, $curY, $XBirthday - $XEmail, $per_Email);
-		if ($per_BirthYear)
+        if ($per_BirthYear)
         {
             $birthdayStr = $per_BirthYear . "-" . $per_BirthMonth . "-" . $per_BirthDay;
         }
         elseif ($per_BirthMonth)
             $birthdayStr = $per_BirthMonth . "-" . $per_BirthDay;
-		else
-			$birthdayStr = "";
+        else
+            $birthdayStr = "";
+        //If the "HideAge" check box is true, then create a Yes/No representation of the check box.
         if ($per_Flags)
         {
             $hideAgeStr="Yes";
@@ -238,7 +239,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
         }
         
 		$pdf->WriteAtCell ($XBirthday, $curY, $XHideAge - $XBirthday, $birthdayStr);
-        $pdf->WriteAtCell ($XHideAge, $curY, $XCellPhone - $XHideAge,$hideAgeStr);
+		$pdf->WriteAtCell ($XHideAge, $curY, $XCellPhone - $XHideAge,$hideAgeStr);
 		$pdf->WriteAtCell ($XCellPhone, $curY, $XClassification - $XCellPhone, $per_CellPhone);
 		$pdf->WriteAtCell ($XClassification, $curY, $XRight - $XClassification, $sClassName);
 		$curY += $pdf->incrementY;
