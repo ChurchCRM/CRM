@@ -7,6 +7,13 @@ DB_PASS="root"
 DB_HOST="localhost"
 
 CRM_DB_INSTALL_SCRIPT="/vagrant/mysql/install/Install.sql"
+if [ -f /vagrant/dbsnapshot.mysql ]
+	then
+		CRM_DB_INSTALL_SCRIPT="/vagrant/dbsnapshot.sql"
+fi
+	
+echo "Installing Database from $CRM_DB_INSTALL_SCRIPT"
+
 CRM_DB_USER="churchcrm"
 CRM_DB_PASS="churchcrm"
 CRM_DB_NAME="churchcrm"
