@@ -7,7 +7,7 @@ DB_PASS="root"
 DB_HOST="localhost"
 
 CRM_DB_INSTALL_SCRIPT="/vagrant/mysql/install/Install.sql"
-if [ -f /vagrant/dbsnapshot.mysql ]
+if [ -f /vagrant/dbsnapshot.sql ]
 	then
 		CRM_DB_INSTALL_SCRIPT="/vagrant/dbsnapshot.sql"
 fi
