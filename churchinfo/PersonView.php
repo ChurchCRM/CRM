@@ -154,17 +154,30 @@ $sFamilyInfoEnd = "</span>";
 
 // Assign the values locally, after selecting whether to display the family or person information
 
-SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, True);
+//Get an unformatted mailing address to pass as a parameter to a google maps search
+SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, False);
+$sCity = SelectWhichInfo($per_City, $fam_City, False);
+$sState = SelectWhichInfo($per_State, $fam_State, False);
+$sZip = SelectWhichInfo($per_Zip, $fam_Zip, False);
+$sCountry = SelectWhichInfo($per_Country, $fam_Country, False);
+$plaintextMailingAddress = getMailingAddress($Address1,$Address2,$sCity,$sState,$sZip,$sCountry);
+
+//Get a formatted mailing address to use as display to the user.
+SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, True);
 $sCity = SelectWhichInfo($per_City, $fam_City, True);
 $sState = SelectWhichInfo($per_State, $fam_State, True);
 $sZip = SelectWhichInfo($per_Zip, $fam_Zip, True);
 $sCountry = SelectWhichInfo($per_Country, $fam_Country, True);
+$formattedMailingAddress = getMailingAddress($Address1,$Address2,$sCity,$sState,$sZip,$sCountry);
+
 $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, False);
 $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone,$sPhoneCountry,$dummy), ExpandPhoneNumber($fam_HomePhone,$fam_Country,$dummy), True);
 $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone,$sPhoneCountry,$dummy), ExpandPhoneNumber($fam_WorkPhone,$fam_Country,$dummy), True);
 $sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone,$sPhoneCountry,$dummy), ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy), True);
 $sEmail = SelectWhichInfo($per_Email, $fam_Email, True);
 $sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, False);
+
+						
 
 if ($per_Envelope > 0)
 	$sEnvelope = $per_Envelope;
@@ -286,16 +299,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								?>
 							</span></li>
 						<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
-							<address>
+							<a href="http://maps.google.com/?q=<?php echo $plaintextMailingAddress; ?>" target="_blank">
 							<?php
-							if ($sAddress1 != "") { echo $sAddress1 . "<br>"; }
-							if ($sAddress2 != "") { echo $sAddress2 . "<br>"; }
-							if ($sCity != "") { echo $sCity . ", "; }
-							if ($sState != "") { echo $sState; }
-							if ($sZip != "") { echo " " . $sZip; }
-							if ($sCountry != "") {echo "<br>" . $sCountry; }
+							echo $formattedMailingAddress;
 							?>
-							</address>
+							</a>
 							</span></li>
 						<?php if ($dBirthDate) {?>
 						<li><i class="fa-li fa fa-calendar"></i><?php echo gettext("Birthdate:"); ?> <span><?php echo $dBirthDate; ?></span> (<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?>)</li>
