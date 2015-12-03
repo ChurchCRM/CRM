@@ -7,6 +7,13 @@ DB_PASS="root"
 DB_HOST="localhost"
 
 CRM_DB_INSTALL_SCRIPT="/vagrant/mysql/install/Install.sql"
+if [ -f /vagrant/dbsnapshot.sql ]
+	then
+		CRM_DB_INSTALL_SCRIPT="/vagrant/dbsnapshot.sql"
+fi
+	
+echo "Installing Database from $CRM_DB_INSTALL_SCRIPT"
+
 CRM_DB_USER="churchcrm"
 CRM_DB_PASS="churchcrm"
 CRM_DB_NAME="churchcrm"
@@ -41,6 +48,6 @@ echo "Database: tables and metadata deployed"
 echo "============================================================================="
 echo "======== Church CRM is now hosted @ http://192.168.33.10/      =============="
 echo "======== CRM User Name: Admin                                  =============="
-echo "======== 1st time login password for Admin: churchinfoadmin    =============="
+echo "======== 1st time login password for Admin: password           =============="
 echo "======== churchinfo is active project source                   =============="
 echo "============================================================================="
