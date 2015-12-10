@@ -2025,4 +2025,15 @@ function genGroupKey($methodSpecificID, $famID, $fundIDs, $date) {
     }
 }
 
+function getMailingAddress($Address1,$Address2,$City,$State,$Zip,$Country){
+	$mailingAddress= "";
+	if ($Address1 != "") { $mailingAddress .= $Address1. " " ; }
+	if ($Address2 != "") { $mailingAddress .= $Address2. " " ; }
+	if ($City != "") { $mailingAddress .= $City . ", "; }
+	if ($State != "") { $mailingAddress .= $State; }
+	if ($Zip != "") { $mailingAddress .= " " . $Zip ." "; }
+	if ($Country != "") {$mailingAddress .= $Country; }
+	return $mailingAddress;
+}
+
 ?>

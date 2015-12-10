@@ -2,6 +2,8 @@
 
 How to send mass emails from ChurchCRM
 
+Before you can send emails via ChurchCRM email functionality must first be configured. See the 'Configuration' page in the User Guide.
+
 #To send email from an email client on your PC:
 
 1. select and Add Group Members to Cart

@@ -57,17 +57,19 @@ class PDF_ConfirmReport extends ChurchInfoReport {
 			$curY += 2 * $this->incrementY;
 			$this->WriteAt ($this->leftX, $curY, $this->sConfirm6);
 		}
-
-		$curY += 4 * $this->incrementY;
-
-		$this->WriteAt ($this->leftX, $curY, "Sincerely,");
-		$curY += 4 * $this->incrementY;
-		$this->WriteAt ($this->leftX, $curY, $this->sConfirmSigner);
+        //If the Reports Settings Menu's sConfirmSigner is set, then display the closing statement.  Hide it otherwise.
+        if ($this->sConfirmSigner) {
+            $curY += 4 * $this->incrementY;
+            $this->WriteAt ($this->leftX, $curY, "Sincerely,");
+            $curY += 4 * $this->incrementY;
+            $this->WriteAt ($this->leftX, $curY, $this->sConfirmSigner);
+        }
 	}
 }
 
 // Instantiate the directory class and build the report.
 $pdf = new PDF_ConfirmReport();
+$filename = "ConfirmReport" . date("Ymd") . ".pdf";
 
 // Read in report settings from database
 $rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
@@ -108,6 +110,11 @@ $dataWid = 65;
 // Loop through families
 while ($aFam = mysql_fetch_array($rsFamilies)) {
 	extract ($aFam);
+
+    //If this is a report for a single family, name the file accordingly.
+    if ($_GET["familyId"]) {
+        $filename = "ConfirmReport-".$fam_Name.".pdf";
+    } 
 
 	$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, 
                                $fam_State, $fam_Zip, $fam_Country);
@@ -162,10 +169,11 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$rsFamilyMembers = RunQuery ($sSQL);
 
 	$XName = 10;
-	$XGender = 50;
-	$XRole = 60;
-	$XEmail = 90;
-	$XBirthday = 135;
+	$XGender = 40;
+	$XRole = 50;
+	$XEmail = 80;
+	$XBirthday = 125;
+    $XHideAge=145;
 	$XCellPhone = 155;
 	$XClassification = 180;
 	$XWorkPhone = 155;
@@ -176,11 +184,12 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
    $pdf->WriteAtCell ($XGender, $curY, $XRole - $XGender, gettext ("M/F"));
    $pdf->WriteAtCell ($XRole, $curY, $XEmail - $XRole, gettext ("Adult/Child"));
    $pdf->WriteAtCell ($XEmail, $curY, $XBirthday - $XEmail, gettext ("Email"));
-   $pdf->WriteAtCell ($XBirthday, $curY, $XCellPhone - $XBirthday, gettext ("Birthday"));
+   $pdf->WriteAtCell ($XBirthday, $curY, $XHideAge - $XBirthday, gettext ("Birthday"));
+   $pdf->WriteAtCell ($XHideAge, $curY, $XCellPhone - $XHideAge, gettext ("Hide Age"));
    $pdf->WriteAtCell ($XCellPhone, $curY, $XClassification - $XCellPhone, gettext ("Cell phone"));
    $pdf->WriteAtCell ($XClassification, $curY, $XRight - $XClassification, gettext ("Member/Friend"));
 	$pdf->SetFont("Times",'',10);
-	$curY += $pdf->incrementY;
+	$curY += 3*$pdf->incrementY;
 
 	$numFamilyMembers = 0;
 	while ($aMember = mysql_fetch_array($rsFamilyMembers)) {
@@ -195,7 +204,8 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		   $pdf->WriteAtCell ($XGender, $curY, $XRole - $XGender, gettext ("M/F"));
 		   $pdf->WriteAtCell ($XRole, $curY, $XEmail - $XRole, gettext ("Adult/Child"));
 		   $pdf->WriteAtCell ($XEmail, $curY, $XBirthday - $XEmail, gettext ("Email"));
-		   $pdf->WriteAtCell ($XBirthday, $curY, $XCellPhone - $XBirthday, gettext ("Birthday"));
+		   $pdf->WriteAtCell ($XBirthday, $curY, $XHideAge - $XBirthday, gettext ("Birthday"));
+           $pdf->WriteAtCell ($XHideAge, $curY, $XCellPhone - $XHideAge, gettext ("Hide Age"));
 		   $pdf->WriteAtCell ($XCellPhone, $curY, $XClassification - $XCellPhone, gettext ("Cell phone"));
 		   $pdf->WriteAtCell ($XClassification, $curY, $XRight - $XClassification, gettext ("Member/Friend"));
 			$pdf->SetFont("Times",'',10);
@@ -210,11 +220,26 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		$pdf->WriteAtCell ($XGender, $curY, $XRole - $XGender, $genderStr);
 		$pdf->WriteAtCell ($XRole, $curY, $XEmail - $XRole, $sFamRole);
 		$pdf->WriteAtCell ($XEmail, $curY, $XBirthday - $XEmail, $per_Email);
-		if ($per_BirthYear)
-			$birthdayStr = $per_BirthYear . "-" . $per_BirthMonth . "-" . $per_BirthDay;
-		else
-			$birthdayStr = "";
-		$pdf->WriteAtCell ($XBirthday, $curY, $XCellPhone - $XBirthday, $birthdayStr);
+        if ($per_BirthYear)
+        {
+            $birthdayStr = $per_BirthYear . "-" . $per_BirthMonth . "-" . $per_BirthDay;
+        }
+        elseif ($per_BirthMonth)
+            $birthdayStr = $per_BirthMonth . "-" . $per_BirthDay;
+        else
+            $birthdayStr = "";
+        //If the "HideAge" check box is true, then create a Yes/No representation of the check box.
+        if ($per_Flags)
+        {
+            $hideAgeStr="Yes";
+        }
+        else
+        {
+            $hideAgeStr="No";
+        }
+        
+		$pdf->WriteAtCell ($XBirthday, $curY, $XHideAge - $XBirthday, $birthdayStr);
+		$pdf->WriteAtCell ($XHideAge, $curY, $XCellPhone - $XHideAge,$hideAgeStr);
 		$pdf->WriteAtCell ($XCellPhone, $curY, $XClassification - $XCellPhone, $per_CellPhone);
 		$pdf->WriteAtCell ($XClassification, $curY, $XRight - $XClassification, $sClassName);
 		$curY += $pdf->incrementY;
@@ -323,7 +348,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1)
-	$pdf->Output("ConfirmReport" . date("Ymd") . ".pdf", "D");
+	$pdf->Output($filename, "D");
 else
 	$pdf->Output();	
 ?>
