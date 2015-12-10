@@ -649,7 +649,7 @@ require "Include/Header.php";
 <script language="javascript" type="text/javascript">
 $(document).ready(function() {
 	$("#FamilyName").autocomplete({
-		source: "AjaxFunctions.php?f=famlist_s",
+		source: "../ajax/SearchMembers.php?f=famlist_s",
 		minLength: 3,
 		select: function(event,ui) {
 			$('[name=FamilyName]').val(ui.item.value);
