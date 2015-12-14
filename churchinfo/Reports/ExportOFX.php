@@ -25,7 +25,7 @@ require "../Include/ReportConfig.php";
 //	exit;
 //}
 $fundTotal = array ();
-
+$iDepositComment ="";
 $iDepositSlipID = 0;
 if (array_key_exists ("deposit", $_POST))
 	$iDepositSlipID = FilterInput($_POST["deposit"],"int");
@@ -42,6 +42,9 @@ if ((!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") || !$iDepositSl
 }
 
 // SQL Statement
+$sSQL = "SELECT dep_Date, dep_Comment, dep_Closed, dep_Type FROM deposit_dep WHERE dep_ID= ".$iDepositSlipID;
+$depositRow = RunQuery($sSQL);
+list ($dep_date,$dep_comment,$dep_closed,$dep_type) = mysql_fetch_row($depositRow);
 
 // Get the list of funds
 	$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
@@ -98,7 +101,7 @@ if ($iCountRows < 1)
 	$buffer .= "<SIGNONMSGSRSV1><SONRS><STATUS><CODE>0<SEVERITY>INFO</STATUS><DTSERVER>20151213191205.762[-5:EST]<LANGUAGE>ENG<FI><ORG>".$orgName."<FID>12345</FI></SONRS></SIGNONMSGSRSV1>";
 	$buffer .= "<BANKMSGSRSV1>".
       "<STMTTRNRS>".
-        "<TRNUID>23382938".
+        "<TRNUID>".
         "<STATUS>".
           "<CODE>0".
          "<SEVERITY>INFO".
@@ -123,22 +126,32 @@ if ($iCountRows < 1)
 				$buffer.=
 				"<STMTTRN>".
 					"<TRNTYPE>CREDIT".
-					"<DTPOSTED>20070315".
-					"<DTUSER>20070315".
+					"<DTPOSTED>".date("Ymd", strtotime($dep_date)).
 					"<TRNAMT>".$fundTotal[$fun_name].
 					"<FITID>". 
-					"<NAME>TRANSFER".
+					"<NAME>".$dep_comment.
 					"<MEMO>".$fun_name.
 				"</STMTTRN></STMTRS>";
 			}
 		}
 		if (array_key_exists ('UNDESIGNATED', $fundTotal) && $fundTotal['UNDESIGNATED']) 
 		{
-			#$pdf->SetXY ($curX, $curY);
-	   		#$pdf->Write (8, gettext("UNDESIGNATED"));
-			#$amountStr = sprintf ("%.2f", $fundTotal['UNDESIGNATED']);
-	   		#$pdf->PrintRightJustified ($curX + $summaryMethodX, $curY, $amountStr);
-			#$curY += $summaryIntervalY;
+				$buffer.="<STMTRS>".
+					  "<CURDEF>USD".
+					  "<BANKACCTFROM>".
+						"<BANKID>".$orgName.
+						"<ACCTID>General".
+						"<ACCTTYPE>SAVINGS".
+					 "</BANKACCTFROM>";
+				$buffer.=
+				"<STMTTRN>".
+					"<TRNTYPE>CREDIT".
+					"<DTPOSTED>".date("Ymd", strtotime($dep_date)).
+					"<TRNAMT>".$fundTotal[$fun_name].
+					"<FITID>". 
+					"<NAME>".$dep_comment.
+					"<MEMO>General".
+				"</STMTTRN></STMTRS>";
 			
 		}	
 	}
