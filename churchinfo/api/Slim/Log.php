@@ -2,11 +2,12 @@
 /**
  * Slim - a micro PHP 5 framework
  *
- * @author      Josh Lockhart <info@joshlockhart.com>
+ * @author      Josh Lockhart <info@slimframework.com>
  * @copyright   2011 Josh Lockhart
  * @link        http://www.slimframework.com
  * @license     http://www.slimframework.com/license
- * @version     1.5.0
+ * @version     2.6.1
+ * @package     Slim
  *
  * MIT LICENSE
  *
@@ -29,53 +30,102 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+namespace Slim;
 
 /**
- * Log Adapter
+ * Log
  *
- * This is an adapter for your own custom Logger. This adapter assumes
- * your custom Logger provides the following public instance methods:
+ * This is the primary logger for a Slim application. You may provide
+ * a Log Writer in conjunction with this Log to write to various output
+ * destinations (e.g. a file). This class provides this interface:
  *
- * debug( mixed $object )
- * info( mixed $object )
- * warn( mixed $object )
- * error( mixed $object )
- * fatal( mixed $object )
+ * debug( mixed $object, array $context )
+ * info( mixed $object, array $context )
+ * notice( mixed $object, array $context )
+ * warning( mixed $object, array $context )
+ * error( mixed $object, array $context )
+ * critical( mixed $object, array $context )
+ * alert( mixed $object, array $context )
+ * emergency( mixed $object, array $context )
+ * log( mixed $level, mixed $object, array $context )
  *
- * This class assumes nothing else about your custom Logger, so you are free
- * to use Apache's Log4PHP logger or any other log class that, at the
- * very least, implements the five public instance methods shown above.
+ * This class assumes only that your Log Writer has a public `write()` method
+ * that accepts any object as its one and only argument. The Log Writer
+ * class may write or send its argument anywhere: a file, STDERR,
+ * a remote web API, etc. The possibilities are endless.
  *
  * @package Slim
- * @author  Josh Lockhart <info@joshlockhart.com>
- * @since   Version 1.0
+ * @author  Josh Lockhart
+ * @since   1.0.0
  */
-class Slim_Log {
+class Log
+{
+    const EMERGENCY = 1;
+    const ALERT     = 2;
+    const CRITICAL  = 3;
+    const FATAL     = 3; //DEPRECATED replace with CRITICAL
+    const ERROR     = 4;
+    const WARN      = 5;
+    const NOTICE    = 6;
+    const INFO      = 7;
+    const DEBUG     = 8;
 
     /**
-     * @var mixed An object that implements expected Logger interface
+     * @var array
      */
-    protected $logger;
+    protected static $levels = array(
+        self::EMERGENCY => 'EMERGENCY',
+        self::ALERT     => 'ALERT',
+        self::CRITICAL  => 'CRITICAL',
+        self::ERROR     => 'ERROR',
+        self::WARN      => 'WARNING',
+        self::NOTICE    => 'NOTICE',
+        self::INFO      => 'INFO',
+        self::DEBUG     => 'DEBUG'
+    );
 
     /**
-     * @var bool Enable logging?
+     * @var mixed
+     */
+    protected $writer;
+
+    /**
+     * @var bool
      */
     protected $enabled;
 
     /**
-     * Constructor
+     * @var int
      */
-    public function __construct() {
+    protected $level;
+
+    /**
+     * Constructor
+     * @param  mixed $writer
+     */
+    public function __construct($writer)
+    {
+        $this->writer = $writer;
         $this->enabled = true;
+        $this->level = self::DEBUG;
+    }
+
+    /**
+     * Is logging enabled?
+     * @return bool
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 
     /**
      * Enable or disable logging
-     * @param   bool    $enabled
-     * @return  void
+     * @param  bool $enabled
      */
-    public function setEnabled( $enabled ) {
-        if ( $enabled ) {
+    public function setEnabled($enabled)
+    {
+        if ($enabled) {
             $this->enabled = true;
         } else {
             $this->enabled = false;
@@ -83,73 +133,222 @@ class Slim_Log {
     }
 
     /**
+     * Set level
+     * @param  int                          $level
+     * @throws \InvalidArgumentException    If invalid log level specified
+     */
+    public function setLevel($level)
+    {
+        if (!isset(self::$levels[$level])) {
+            throw new \InvalidArgumentException('Invalid log level');
+        }
+        $this->level = $level;
+    }
+
+    /**
+     * Get level
+     * @return int
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * Set writer
+     * @param  mixed $writer
+     */
+    public function setWriter($writer)
+    {
+        $this->writer = $writer;
+    }
+
+    /**
+     * Get writer
+     * @return mixed
+     */
+    public function getWriter()
+    {
+        return $this->writer;
+    }
+
+    /**
      * Is logging enabled?
      * @return bool
      */
-    public function isEnabled() {
+    public function isEnabled()
+    {
         return $this->enabled;
     }
 
     /**
      * Log debug message
-     * @param   mixed           $object
-     * @return  mixed|false     What the Logger returns, or false if Logger not set or not enabled
+     * @param  mixed       $object
+     * @param  array       $context
+     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
      */
-    public function debug( $object ) {
-        return isset($this->logger) && $this->isEnabled() ? $this->logger->debug($object) : false;
+    public function debug($object, $context = array())
+    {
+        return $this->log(self::DEBUG, $object, $context);
     }
 
     /**
      * Log info message
-     * @param   mixed           $object
-     * @return  mixed|false     What the Logger returns, or false if Logger not set or not enabled
+     * @param  mixed       $object
+     * @param  array       $context
+     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
      */
-    public function info( $object ) {
-        return isset($this->logger) && $this->isEnabled() ? $this->logger->info($object) : false;
+    public function info($object, $context = array())
+    {
+        return $this->log(self::INFO, $object, $context);
     }
 
     /**
-     * Log warn message
-     * @param   mixed           $object
-     * @return  mixed|false     What the Logger returns, or false if Logger not set or not enabled
+     * Log notice message
+     * @param  mixed       $object
+     * @param  array       $context
+     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
      */
-    public function warn( $object ) {
-        return isset($this->logger) && $this->isEnabled() ? $this->logger->warn($object) : false;
+    public function notice($object, $context = array())
+    {
+        return $this->log(self::NOTICE, $object, $context);
+    }
+
+    /**
+     * Log warning message
+     * @param  mixed       $object
+     * @param  array       $context
+     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
+     */
+    public function warning($object, $context = array())
+    {
+        return $this->log(self::WARN, $object, $context);
+    }
+
+    /**
+     * DEPRECATED for function warning
+     * Log warning message
+     * @param  mixed       $object
+     * @param  array       $context
+     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
+     */
+    public function warn($object, $context = array())
+    {
+        return $this->log(self::WARN, $object, $context);
     }
 
     /**
      * Log error message
-     * @param   mixed           $object
-     * @return  mixed|false     What the Logger returns, or false if Logger not set or not enabled
+     * @param  mixed       $object
+     * @param  array       $context
+     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
      */
-    public function error( $object ) {
-        return isset($this->logger) && $this->isEnabled() ? $this->logger->error($object) : false;
+    public function error($object, $context = array())
+    {
+        return $this->log(self::ERROR, $object, $context);
     }
 
     /**
+     * Log critical message
+     * @param  mixed       $object
+     * @param  array       $context
+     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
+     */
+    public function critical($object, $context = array())
+    {
+        return $this->log(self::CRITICAL, $object, $context);
+    }
+
+    /**
+     * DEPRECATED for function critical
      * Log fatal message
-     * @param   mixed           $object
-     * @return  mixed|false     What the Logger returns, or false if Logger not set or not enabled
+     * @param  mixed       $object
+     * @param  array       $context
+     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
      */
-    public function fatal( $object ) {
-        return isset($this->logger) && $this->isEnabled() ? $this->logger->fatal($object) : false;
+    public function fatal($object, $context = array())
+    {
+        return $this->log(self::CRITICAL, $object, $context);
     }
 
     /**
-     * Set Logger
-     * @param   mixed   $logger
-     * @return  void
+     * Log alert message
+     * @param  mixed       $object
+     * @param  array       $context
+     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
      */
-    public function setLogger( $logger ) {
-        $this->logger = $logger;
+    public function alert($object, $context = array())
+    {
+        return $this->log(self::ALERT, $object, $context);
     }
 
     /**
-     * Get Logger
-     * @return mixed
+     * Log emergency message
+     * @param  mixed       $object
+     * @param  array       $context
+     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
      */
-    public function getLogger() {
-        return $this->logger;
+    public function emergency($object, $context = array())
+    {
+        return $this->log(self::EMERGENCY, $object, $context);
     }
 
+    /**
+     * Log message
+     * @param  mixed       $level
+     * @param  mixed       $object
+     * @param  array       $context
+     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
+     * @throws \InvalidArgumentException If invalid log level
+     */
+    public function log($level, $object, $context = array())
+    {
+        if (!isset(self::$levels[$level])) {
+            throw new \InvalidArgumentException('Invalid log level supplied to function');
+        } else if ($this->enabled && $this->writer && $level <= $this->level) {
+            if (is_array($object) || (is_object($object) && !method_exists($object, "__toString"))) {
+                $message = print_r($object, true);
+            } else {
+                $message = (string) $object;
+            }
+
+            if (count($context) > 0) {
+                if (isset($context['exception']) && $context['exception'] instanceof \Exception) {
+                    $message .= ' - ' . $context['exception'];
+                    unset($context['exception']);
+                }
+                $message = $this->interpolate($message, $context);
+            }
+            return $this->writer->write($message, $level);
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * DEPRECATED for function log
+     * Log message
+     * @param   mixed    $object The object to log
+     * @param   int      $level  The message level
+     * @return  int|bool
+     */
+    protected function write($object, $level)
+    {
+        return $this->log($level, $object);
+    }
+
+    /**
+     * Interpolate log message
+     * @param  mixed     $message               The log message
+     * @param  array     $context               An array of placeholder values
+     * @return string    The processed string
+     */
+    protected function interpolate($message, $context = array())
+    {
+        $replace = array();
+        foreach ($context as $key => $value) {
+            $replace['{' . $key . '}'] = $value;
+        }
+        return strtr($message, $replace);
+    }
 }

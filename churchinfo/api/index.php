@@ -1,6 +1,11 @@
 <?php
 
 require 'Slim/Slim.php';
+
+use Slim\Slim;
+Slim::registerAutoloader();
+
+
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
