@@ -25,6 +25,7 @@ if ($bUseScannedChecks) { // Instantiate the MICR class
    $micrObj = new MICRReader();
 }
 
+$thisPledgeID = 0;
 $iEnvelope = 0;
 $sCheckNoError = "";
 $iCheckNo = "";
@@ -44,6 +45,9 @@ $sComment = array ();
 
 $checkHash = array();
 
+$currencyDenomination2Name=array();
+$currencyDenominationValue=array();
+
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
 $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
@@ -62,6 +66,17 @@ while ($aRow = mysql_fetch_array($rsFunds)) {
 	}
 	$fundIdActive[$fun_ID] = $fun_Active;
 } // end while
+
+// Get the list of Currency denominations
+$sSQL = "SELECT * FROM currency_denominations_cdem";
+$rscurrencyDenomination = RunQuery($sSQL);
+mysql_data_seek($rscurrencyDenomination,0);
+while ($aRow = mysql_fetch_array($rscurrencyDenomination)) {
+	extract($aRow);
+	$currencyDenomination2Name[$cdem_denominationID] = $cdem_denominationName;
+	$currencyDenominationValue[$cdem_denominationID] = $cdem_denominationValue;
+} // end while
+
 
 // Handle URL via _GET first
 if (array_key_exists ("PledgeOrPayment", $_GET))
@@ -96,87 +111,7 @@ if ($sGroupKey) {
 }
 
 // Handle _POST input if the form was up and a button press came in
-if (isset($_POST["PledgeSubmit"]) or
-    isset($_POST["PledgeSubmitAndAdd"]) or
-    isset($_POST["MatchFamily"]) or 
-    isset($_POST["MatchEnvelope"]) or 
-    isset($_POST["SetDefaultCheck"]) or
-    isset($_POST["SetFundTypeSelection"]) or
-    isset($_POST["SplitTotal"])) {
-
-	$iFamily = FilterInput($_POST["FamilyID"],'int');
-
-   	$dDate = FilterInput($_POST["Date"]);
-	if (!$dDate) {
-		if (array_key_exists ('idefaultDate', $_SESSION))
-			$dDate = $_SESSION['idefaultDate'];
-		else
-			$dDate = date ("Y-m-d");
-	}
-	$_SESSION['idefaultDate'] = $dDate;
-
-	if (isset($_POST["FundSplit"])) {
-		$iSelectedFund = FilterInput($_POST["FundSplit"]);
-		$_SESSION['iSelectedFund'] = $iSelectedFund;
-	} 
-	$_SESSION['iSelectedFund'] = $iSelectedFund;
-
-	// set from drop-down if set, saved session default, or by calcuation
-	$iFYID = FilterInput($_POST["FYID"], 'int');
-	if (!$iFYID) {
-		$iFYID =  $_SESSION['idefaultFY'];
-	}
-	if (!$iFYID) {
-		$iFYID = CurrentFY();
-	}
-	$_SESSION['idefaultFY'] = $iFYID;
-	
-	if (array_key_exists ("CheckNo", $_POST))
-		$iCheckNo = FilterInput($_POST["CheckNo"], 'int');
-	else
-		$iCheckNo = 0;
-	
-	if (array_key_exists ("Schedule", $_POST))
-		$iSchedule = FilterInput($_POST["Schedule"]);
-	else
-		$iSchedule='Once';
-	$_SESSION['iDefaultSchedule'] = $iSchedule;
-	
-	$iMethod = FilterInput($_POST["Method"]);
-	if (!$iMethod) {
-		if ($sGroupKey) {
-			$sSQL = "SELECT DISTINCT plg_method FROM pledge_plg WHERE plg_GroupKey='" . $sGroupKey . "'";
-			$rsResults = RunQuery($sSQL);
-			list($iMethod) = mysql_fetch_row($rsResults);
-		} elseif ($iCurrentDeposit) {
-			$sSQL = "SELECT plg_method from pledge_plg where plg_depID=\"" . $iCurrentDeposit . "\" ORDER by plg_plgID DESC LIMIT 1";
-			$rsMethod = RunQuery($sSQL);
-			$num = mysql_num_rows($rsMethod);
-			if ($num) {	// set iMethod to last record's setting
-				extract(mysql_fetch_array($rsMethod));  
-				$iMethod = $plg_method;
-			} else {
-				$iMethod = "CHECK";
-			}
-		} else {
-			$iMethod = "CHECK";
-		}
-	}
-	$_SESSION['idefaultPaymentMethod'] = $iMethod;
-	
-	$iEnvelope = 0;
-	if (array_key_exists ("Envelope", $_POST))
-		$iEnvelope = FilterInput($_POST["Envelope"], 'int');
-	$iTotalAmount = FilterInput($_POST["TotalAmount"]);
-	if (array_key_exists ("OneComment", $_POST))
-		$sOneComment = FilterInput($_POST["OneComment"]);
-	else
-		$sOneComment = "";
-	if ($iSelectedFund) {
-		$nAmount[$iSelectedFund] = $iTotalAmount;
-		$sComment[$iSelectedFund] = $sOneComment;
-	}
-} else { // Form was not up previously, take data from existing records or make default values
+ else { // Form was not up previously, take data from existing records or make default values
 	if ($sGroupKey) {
 		$sSQL = "SELECT COUNT(plg_GroupKey), plg_PledgeOrPayment, plg_fundID, plg_Date, plg_FYID, plg_CheckNo, plg_Schedule, plg_method, plg_depID FROM pledge_plg WHERE plg_GroupKey='" . $sGroupKey . "' GROUP BY plg_GroupKey";
 		$rsResults = RunQuery($sSQL);
@@ -267,215 +202,8 @@ if ($PledgeOrPayment == 'Payment') {
 	$bEnableNonDeductible = 1; // this could/should be a config parm?  regardless, having a non-deductible amount for a pledge doesn't seem possible
 }
 
-if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
-	//Initialize the error flag
-	$bErrorFlag = false;
 
-	if (!$iSelectedFund) { // split
-		// make sure at least one fund has a non-zero numer
-		$nonZeroFundAmountEntered = 0;
-		foreach ($fundId2Name as $fun_id => $fun_name) {
-			//$fun_active = $fundActive[$fun_id];
-			$nAmount[$fun_id] = FilterInput($_POST[$fun_id . "_Amount"]);
-			$sComment[$fun_id] = FilterInput($_POST[$fun_id . "_Comment"]);
-			if ($nAmount[$fun_id] > 0) {
-				++$nonZeroFundAmountEntered;
-			}
 
-			if ($bEnableNonDeductible) {
-				$nNonDeductible[$fun_id] = FilterInput($_POST[$fun_id . "_NonDeductible"]);
-				//Validate the NonDeductible Amount
-				if ($nNonDeductible[$fun_id] > $nAmount[$fun_id]) { //Validate the NonDeductible Amount
-					$sNonDeductibleError[$fun_id] = gettext("NonDeductible amount can't be greater than total amount.");
-				$bErrorFlag = true;
-				}
-			}
-		} // end foreach
-
-		if (!$nonZeroFundAmountEntered) {
-			$sAmountError[$fun_id] = gettext("At least one fund must have a non-zero amount.");
-			$bErrorFlag = true;
-		}
-	}
-
-	if (array_key_exists ("ScanInput", $_POST))
-		$tScanString = FilterInput($_POST["ScanInput"]);
-	else
-		$tScanString = "";
-	$iAutID = 0;
-	if (array_key_exists ("AutoPay", $_POST))
-		$iAutID = FilterInput($_POST["AutoPay"]);
-	//$iEnvelope = FilterInput($_POST["Envelope"], 'int');
-
-	if ($PledgeOrPayment=='Payment' and !$iCheckNo and $iMethod == "CHECK") {
-		$sCheckNoError = "<span style=\"color: red; \">" . gettext("Must specify non-zero check number") . "</span>";
-		$bErrorFlag = true;
-	}
-
-	// detect check inconsistencies
-	if ($PledgeOrPayment=='Payment' and $iCheckNo) {
-		if ($iMethod == "CASH") {
-			$sCheckNoError = "<span style=\"color: red; \">" . gettext("Check number not valid for 'CASH' payment") . "</span>";
-			$bErrorFlag = true;
-		} elseif ($iMethod=='CHECK' and !$sGroupKey) {
-			$chkKey = $iFamily . "|" . $iCheckNo;
-			if (array_key_exists($chkKey, $checkHash)) {
-				$text = "Check number '" . $iCheckNo . "' for selected family already exists.";
-				$sCheckNoError = "<span style=\"color: red; \">" . gettext($text) . "</span>";
-				$bErrorFlag = true;
-			}
-		}
-	}
-
-	// Validate Date
-	if (strlen($dDate) > 0) {
-		list($iYear, $iMonth, $iDay) = sscanf($dDate,"%04d-%02d-%02d");
-		if ( !checkdate($iMonth,$iDay,$iYear) ) {
-			$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid Date") . "</span>";
-			$bErrorFlag = true;
-		}
-	}
-
-	//If no errors, then let's update...
-	if (!$bErrorFlag and !$dep_Closed) {
-		// Only set PledgeOrPayment when the record is first created
-		// loop through all funds and create non-zero amount pledge records
-		foreach ($fundId2Name as $fun_id => $fun_name) {
-			if (!$iCheckNo) { $iCheckNo = 0; }
-			unset($sSQL);
-			if ($fund2PlgIds and array_key_exists($fun_id, $fund2PlgIds)) {
-				if ($nAmount[$fun_id] > 0) {
-					$sSQL = "UPDATE pledge_plg SET plg_famID = '" . $iFamily . "',plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount[$fun_id] . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment[$fun_id] . "'";
-					$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_id] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "'";
-				} else { // delete that record
-					$sSQL = "DELETE FROM pledge_plg WHERE plg_plgID =" . $fund2PlgIds[$fun_id];
-				}
-			} elseif ($nAmount[$fun_id] > 0) {
-				if ($iMethod <> "CHECK") {
-					$iCheckNo = "NULL";
-				}
-				if (!$sGroupKey) {
-					if ($iMethod == "CHECK") {
-						$sGroupKey = genGroupKey($iCheckNo, $iFamily, $fun_id, $dDate);
-					} elseif ($iMethod == "BANKDRAFT") {
-						if (!$iAutID) {
-							$iAutID = "draft";
-						}
-						$sGroupKey = genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
-					} elseif ($iMethod == "CREDITCARD") {
-						if (!$iAutID) {
-							$iAutID = "credit";
-						}
-						$sGroupKey = genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
-					} else {
-						$sGroupKey = genGroupKey("cash", $iFamily, $fun_id, $dDate);
-					} 
-				}
-				$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID, plg_NonDeductible, plg_GroupKey)
-			VALUES ('" . $iFamily . "','" . $iFYID . "','" . $dDate . "','" . $nAmount[$fun_id] . "','" . $iSchedule . "','" . $iMethod  . "','" . $sComment[$fun_id] . "'";
-				$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $fun_id . "," . $iCurrentDeposit . "," . $iCheckNo . ",'" . $tScanString . "','" . $iAutID  . "','" . $nNonDeductible[$fun_id] . "','" . $sGroupKey . "')";
-			}
-			if (isset ($sSQL)) {
-				RunQuery($sSQL);
-				unset($sSQL);
-			}
-		} // end foreach of $fundId2Name
-		if (isset($_POST["PledgeSubmit"])) {
-			// Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-			if ($linkBack != "") {
-				Redirect($linkBack);
-			} else {
-				//Send to the view of this pledge
-				Redirect("PledgeEditor.php?PledgeOrPayment=" . $PledgeOrPayment . "&GroupKey=" . $sGroupKey . "&linkBack=", $linkBack);
-			}
-		} elseif (isset($_POST["PledgeSubmitAndAdd"])) {
-			//Reload to editor to add another record
-			Redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=" . $PledgeOrPayment . "&linkBack=", $linkBack);
-		}
-	} // end if !$bErrorFlag
-} elseif (isset($_POST["MatchFamily"]) or isset($_POST["MatchEnvelope"]) or isset($_POST["SetDefaultCheck"]) or isset($_POST["TotalAmount"])) {
-
-	//$iCheckNo = 0;
-	// Take care of match-family first- select the family based on the scanned check
-	if ($bUseScannedChecks and isset($_POST["MatchFamily"])) {
-		$tScanString = FilterInput($_POST["ScanInput"]);
-
-		$routeAndAccount = $micrObj->FindRouteAndAccount ($tScanString); // use routing and account number for matching
-
-    	if ($routeAndAccount) {
-		   $sSQL = "SELECT fam_ID FROM family_fam WHERE fam_scanCheck=\"" . $routeAndAccount . "\"";
-		   $rsFam = RunQuery($sSQL);
-		   extract(mysql_fetch_array($rsFam));
-		   $iFamily = $fam_ID;
-
-		   $iCheckNo = $micrObj->FindCheckNo ($tScanString);
-      	} else {
-		   $iFamily = FilterInput($_POST["FamilyID"],'int');
-		   $iCheckNo = FilterInput($_POST["CheckNo"], 'int');
-    	}
-	} elseif (isset($_POST["MatchEnvelope"])) {
-		// Match envelope is similar to match check- use the envelope number to choose a family
-		
-		$iEnvelope = FilterInput($_POST["Envelope"], 'int');
-		if ($iEnvelope and strlen($iEnvelope) > 0) {
-			$sSQL = "SELECT fam_ID FROM family_fam WHERE fam_Envelope=" . $iEnvelope;
-			$rsFam = RunQuery($sSQL);
-			$numRows = mysql_num_rows($rsFam);
-			if ($numRows) {
-				extract(mysql_fetch_array($rsFam));
-				$iFamily = $fam_ID;
-			}
-		}
-	} elseif (isset ($_POST["SplitTotal"])) { // split total button pressed
-		$sSQL = "SELECT plg_fundID, plg_amount from pledge_plg where plg_famID=\"" . $iFamily . "\" AND plg_PledgeOrPayment=\"Pledge\" AND plg_FYID=\"" . $iFYID . "\";";
-//echo "sSQL: " . $sSQL . "\n";
-		$rsPledge = RunQuery($sSQL);
-		$totalPledgeAmount = 0;
-		while ($row = mysql_fetch_array($rsPledge)) {
-			$fundID = $row["plg_fundID"];
-			$plgAmount = $row["plg_amount"];
-			$fundID2Pledge[$fundID] = $plgAmount;
-			$totalPledgeAmount = $totalPledgeAmount + $plgAmount;
-		} // end while
-		if ($fundID2Pledge) {
-			// division rounding can cause total of calculations to not equal total.  Keep track of running total, and asssign any rounding error to 'default' fund
-			$calcTotal = 0;
-			$calcOtherFunds = 0;
-			foreach ($fundID2Pledge as $fundID => $plgAmount) {
-				$calcAmount = round($iTotalAmount * ($plgAmount / $totalPledgeAmount), 2);
-
-				$nAmount[$fundID] = number_format($calcAmount, 2, ".", "");
-				if ($fundID <> $defaultFundID) {
-					$calcOtherFunds = $calcOtherFunds + $calcAmount;
-				}
-
-				$calcTotal += $calcAmount;
-			}
-			if ($calcTotal <> $iTotalAmount) {
-				$nAmount[$defaultFundID] = number_format($iTotalAmount - $calcOtherFunds, 2, ".", "");
-			}
-		} else {
-			$nAmount[$defaultFundID] = number_format($iTotalAmount, 2, ".", "");
-		}
-	} elseif (!$iSelectedFund) { // We have a total amount set and fund set to split
-		if ($iOriginalSelectedFund) { // put all in the originally assigned fund if there was one
-			$nAmount[$iOriginalSelectedFund] = number_format($iTotalAmount, 2, ".", "");
-			$sComment[$iOriginalSelectedFund] = $sOneComment;
-		}
-	} else {
-		$iFamily = FilterInput($_POST["FamilyID"]);
-		$iCheckNo = FilterInput($_POST["CheckNo"], 'int');
-	}
-
-	// Handle special buttons at the bottom of the form.
-	if (isset($_POST["SetDefaultCheck"])) {
-		$tScanString = FilterInput($_POST["ScanInput"]);
-		$routeAndAccount = $micrObj->FindRouteAndAccount ($tScanString); // use routing and account number for matching
-		$iFamily = FilterInput($_POST["FamilyID"],'int');
-		$sSQL = "UPDATE family_fam SET fam_scanCheck=\"" . $routeAndAccount . "\" WHERE fam_ID = " . $iFamily;
-		RunQuery($sSQL);
-	}
-}
 
 // Set Current Deposit setting for user
 if ($iCurrentDeposit) {
@@ -508,7 +236,7 @@ if ($PledgeOrPayment == 'Pledge') {
 	$roomForDeposits = $checksFit - $depositCount;
 	if ($roomForDeposits <= 0)
 		$sPageTitle .= "<font color=red>";
-	$sPageTitle .= " (" . $roomForDeposits . gettext (" more entries will fit.") . ")";
+	$sPageTitle .= "<br>(" . $roomForDeposits . gettext (" more entries will fit.") . ")";
 	if ($roomForDeposits <= 0)
 		$sPageTitle .= "</font>";
 } else { // not a plege and a current deposit hasn't been created yet
@@ -538,42 +266,34 @@ if ($iFamily) {
 require "Include/Header.php";
 
 ?>
-<form method="post" action="PledgeEditor.php?<?php echo "CurrentDeposit=" . $iCurrentDeposit . "&GroupKey=" . $sGroupKey . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
+<form id="PledgeForm" action="PledgeEditor.php?<?php echo "CurrentDeposit=" . $iCurrentDeposit . "&GroupKey=" . $sGroupKey . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
 
 <input type="hidden" name="FamilyID" id="FamilyID" value="<?php echo $iFamily; ?>">
 <input type="hidden" name="PledgeOrPayment" id="PledgeOrPayment" value="<?php echo $PledgeOrPayment; ?>">
-
-<table cellpadding="2" align="center">
-	<tr>
-		<td align="left">
-		<?php if (!$dep_Closed) { ?>
-			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="PledgeSubmit">
-			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PledgeSubmitAndAdd\">"; } ?>
-		<?php } ?>
-			<?php if (!$dep_Closed) {
-				$cancelText = "Cancel";
-			} else {
-				$cancelText = "Return";
-			} ?>	
-			<input type="button" class="icButton" value="<?php echo gettext($cancelText); ?>" name="PledgeCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
-		</td>
-	</tr>
-
-	<tr>
-		<td>
-		<table border="0" cellspacing="0" cellpadding="2">
-		<td valign="top" align="left">
-		<table cellpadding="2">
+<!-- Start Pledge Details Section -->
+<div class="box box-info clearfix">
+	<div class="box-header">
+		<h3 class="box-title">Pledge Details</h3>
+	</div>
+	<div class="box-body">
+	<div class="table-responsive">
+		<table class="table table-striped">
+				<thead>
+				</thead>
+				<tbody>
+				<!-- Start Donation Envelope Section -->
 			<?php if ($dep_Type == 'Bank' and $bUseDonationEnvelopes) {?>
 			<tr>
 				<td class="PaymentLabelColumn"><?php echo gettext("Envelope #"); ?></td>
 				<td class="TextColumn"><input type="text" name="Envelope" size=8 id="Envelope" value="<?php echo $iEnvelope; ?>">
 				<?php if (!$dep_Closed) { ?>
-				<input type="submit" class="icButton" value="<?php echo gettext("Find family->"); ?>" name="MatchEnvelope">
+				<button type="button" class="btn btn-primary" value="<?php echo gettext("Find family->"); ?>" id="MatchEnvelope"><?php echo gettext("Find family->"); ?></button>
 				<?php } ?>
 			</td>
 			</tr>
 			<?php } ?>
+			<!-- End Donation Envelope Section -->
+			<!-- Start Recurring Pledge Section -->
 			<tr>
 				<?php if ($PledgeOrPayment=='Pledge') { ?>
 					<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Payment Schedule"); ?></td>
@@ -588,21 +308,24 @@ require "Include/Header.php";
 						</select>
 					</td>
 				<?php }?>
-
+			<!-- End Recurring Pledge Section -->
 			</tr>
 			<tr>
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Payment by"); ?></td>
+			<!-- Echo the verbiage for pledge / payment -->
+				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Payment by"); ?></td>
+				<!-- Start Payment Method Section -->
 				<td class="TextColumnWithBottomBorder">
-					<select name="Method">
+					<select name="Method" id="PaymentByMethod">
+						<option value="None" selected>Select a Payment Method</option>
 						<?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "Bank" or !$iCurrentDeposit) { ?>
-						<option value="CHECK" <?php if ($iMethod == "CHECK") { echo "selected"; } ?>><?php echo gettext("CHECK"); 						?></option>
-						<option value="CASH" <?php if ($iMethod == "CASH") { echo "selected"; } ?>><?php echo gettext("CASH"); 						?></option>
+						<option value="CHECK"><?php echo gettext("CHECK");?></option>
+						<option value="CASH"><?php echo gettext("CASH");?></option>
 						<?php } ?>
 						<?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "CreditCard" or !$iCurrentDeposit) { ?>
-						<option value="CREDITCARD" <?php if ($iMethod == "CREDITCARD") { echo "selected"; } ?>><?php echo 						gettext("Credit Card"); ?></option>
+						<option value="CREDITCARD"><?php echo gettext("Credit Card"); ?></option>
 						<?php } ?>
 						<?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "BankDraft" or !$iCurrentDeposit) { ?>
-						<option value="BANKDRAFT" <?php if ($iMethod == "BANKDRAFT") { echo "selected"; } ?>><?php echo 						gettext("Bank Draft"); ?></option>
+						<option value="BANKDRAFT"><?php echo gettext("Bank Draft"); ?></option>
 						<?php } ?>
                                                 <?php if ($PledgeOrPayment=='Pledge') { ?>
                                                 <option value="EGIVE" <?php if ($iMethod == "EGIVE") { echo "selected"; } ?>><?php echo
@@ -610,66 +333,46 @@ require "Include/Header.php";
                                                 <?php } ?>
 					</select>
 				</td>
+				<!-- End Payment Method Section -->
 			</tr>
-
+			<!-- Start Fiscal Year Selection -->
 			<tr>
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Fiscal Year"); ?></td>
 				<td class="TextColumnWithBottomBorder">
 					<?php PrintFYIDSelect ($iFYID, "FYID") ?>
 				</td>
 			</tr>
+			<!-- End Fiscal Year Selection -->
+			<!-- Start Fund Selection (or Split Option) -->
 			<tr>
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Fund"); ?></td>
 				<td class="TextColumnWithBottomBorder">
-					<select name="FundSplit">
+					<select name="FundSplit" id="FundSplit">
 						<option value=0 <?php if (!$iSelectedFund) { echo ' selected'; } ?>><?php echo gettext("Split");?></option>
 						<?php foreach ($fundId2Name as $fun_id => $fun_name) {
 							echo "<option value=\"" . $fun_id . "\""; if ($iSelectedFund==$fun_id) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
 						} ?>
 					</select>
-					<?php if (!$dep_Closed) { ?>
-					<input type="submit" class="icButton" name="SetFundTypeSelection" value="<-Set">
-					<?php } ?>
 				</td>
 			</tr>
-			<tr>
-			<?php if ($iSelectedFund) { ?>
+			<!-- End Fund Selection (or Split Option) -->
+			<!-- Start Comment Section -->
+			<tr id="SingleComment">
 				<td valign="top" align="left" <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Comment"); ?></td>
 				<td <?php echo "class=\"TextColumnWithBottomBorder\">"; echo "<input type=\"text\" name=\"OneComment\" id=\"OneComment\" value=\" ". $sComment[$iSelectedFund] . "\""; ?>">
-			<?php }?>
 			</tr>
-		</table>
-		</td>
-		<td valign="top" align="center">
-		<table cellpadding="2">
+			<!-- Start Comment Section -->
+		
 			<tr>
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?><?php addToolTip("Select the pledging family from the list."); ?>><?php echo gettext("Family"); ?></td>
 				<td class="TextColumn">
-
-<script language="javascript" type="text/javascript">
-$(document).ready(function() {
-	$("#FamilyName").autocomplete({
-		source: "AjaxFunctions.php?f=famlist_s",
-		minLength: 3,
-		select: function(event,ui) {
-			$('[name=FamilyName]').val(ui.item.value);
-			$('[name=FamilyID]:eq(1)').val(ui.item.id);
-		}
-	});
-});
-</script>
 					<input style='width:350px;' type="text" id="FamilyName" name="FamilyName" value='<?php echo $sFamilyName; ?>' />
 					<input type="hidden" name="FamilyID" value='<?php echo $iFamily; ?>'>
 					</select>
 				</td>
 			</tr>
 
-			<?php if ($PledgeOrPayment=='Payment' and $dep_Type == 'Bank') {?>
-				<tr>
-					<td class="PaymentLabelColumn"><?php echo gettext("Check #"); ?></td>
-					<td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?php echo $iCheckNo; ?>"><font color="red"><?php echo $sCheckNoError ?></font></td>
-				</tr>
-			<?php } ?>
+			
 
 
 
@@ -679,114 +382,216 @@ $(document).ready(function() {
 	
 				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
-
-
-
-		<tr> 
+			<tr> 
 			<td valign="top" align="left" <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Total $"); ?></td>
-			<td <?php echo "class=\"TextColumnWithBottomBorder\">"; echo "<input type=\"text\" name=\"TotalAmount\" id=\"TotalAmount\" value=\" ". $iTotalAmount . "\""; ?>">
-		    <?php if ($PledgeOrPayment=='Payment') { ?>
+			<td <?php echo "class=\"TextColumnWithBottomBorder\">"; echo "<input id=\"grandTotal\" type=\"text\" name=\"TotalAmount\" id=\"TotalAmount\" value=\" ". $iTotalAmount . "\""; ?>">
+		    
 
-				<?php if (!$iSelectedFund and !$dep_Closed) { ?>
-
-				<input type="submit" class="icButton" value="<?php echo gettext("Split to Funds by pledge"); ?>" name="SplitTotal"></td>
-
-			<?php } ?>
-
-		<?php } ?>
-		</tr>
-			<td valign="top" align="left">
-
-<?php
-			if (($dep_Type == 'CreditCard') or ($dep_Type == 'BankDraft')) {
-?>
-			<tr>
-				<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Choose online payment method");?></td>
-				<td class="TextColumnWithBottomBorder">
-					<select name="AutoPay">
-<?php
-					echo "<option value=0";
-					if ($iAutID == 0)
-						echo " selected";
-					echo ">" . gettext ("Select online payment record") . "</option>\n";
-					$sSQLTmp = "SELECT aut_ID, aut_CreditCard, aut_BankName, aut_Route, aut_Account FROM autopayment_aut WHERE aut_FamID=" . $iFamily;
-					$rsFindAut = RunQuery($sSQLTmp);
-					while ($aRow = mysql_fetch_array($rsFindAut))
-					{
-						extract($aRow);
-						if ($aut_CreditCard <> "") {
-							$showStr = gettext ("Credit card ...") . substr ($aut_CreditCard, strlen ($aut_CreditCard) - 4, 4);
-						} else {
-							$showStr = gettext ("Bank account ") . $aut_BankName . " " . $aut_Route . " " . $aut_Account;
-						}
-						echo "<option value=" . $aut_ID;
-						if ($iAutID == $aut_ID)
-							echo " selected";
-						echo ">" . $showStr . "</option>\n";
-					}
-?>
-					</select>
-				</td>
-			</tr>
-			<?php } ?>
-		</td>
-		</tr>
-		</table>
-		</td>
-
-		<tr>
-		<?php if ($bUseScannedChecks and ($dep_Type == 'Bank' or $PledgeOrPayment=='Pledge')) {?>
-			<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\" align=\"center\">"; else echo "class=\"PaymentLabelColumn\" align=\"center\">";echo gettext("Scan check");?>
-			<textarea name="ScanInput" rows="2" cols="70"><?php echo $tScanString?></textarea></td>
-		<?php } ?>
-
-			<td align="center">
-			<?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
-				<input type="submit" class="icButton" value="<?php echo gettext("find family from check account #"); ?>" name="MatchFamily">
-				<input type="submit" class="icButton" value="<?php echo gettext("Set default check account number for family"); ?>" name="SetDefaultCheck">
-	        <?php } ?>
-			</td>
-		</tr>
-	</tr>
-
-		</table>
-		</td>
-
-		<?php if (!$iSelectedFund) { ?>
-
-	<tr>
-		<td valign="top" align="left">
-		<table cellpadding="2">
-
-			<tr>
-
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Fund Name"); ?></td>
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Amount"); ?></td>
-
-				<?php if ($bEnableNonDeductible) {?>
-					<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Non-deductible amount"); ?></td>
-				<?php }?>
-
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Comment"); ?></td>
-             </tr>
-
-			<?php foreach ($fundId2Name as $fun_id => $fun_name) {
-				echo "<tr>";
-				echo "<td class=\"TextColumn\"><b>" . $fun_name . "</b></td>";
-				echo "<td class=\"TextColumn\"><input type=\"text\" name=\"" . $fun_id . "_Amount\" id=\"" . $fun_id . "_Amount\" value=\"" . $nAmount[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
-				if ($bEnableNonDeductible) {
-					echo "<td class=\"TextColumn\"><input type=\"text\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
-				}
-				echo "<td class=\"TextColumn\"><input type=\"text\" size=40 name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
-				echo "</tr>";
-			}
-			?>
-		</td>
-		</table>
-		</tr>
+<!--Start Credit card or Bank Draft Section -->
+<?php if (($dep_Type == 'CreditCard') or ($dep_Type == 'BankDraft')) {?>
+	<div class="box box-info clearfix">
+	<div class="box-header">
+		<h3 class="box-title">Credit Card / Bank Draft</h3>
+	</div>
+	<div class="box-body">
+	<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+				</thead>
+				<tbody>
+					<tr>
+						<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Choose online payment method");?></td>
+						<td class="TextColumnWithBottomBorder">
+							<select name="AutoPay">
+		<?php
+							echo "<option value=0";
+							if ($iAutID == 0)
+								echo " selected";
+							echo ">" . gettext ("Select online payment record") . "</option>\n";
+							$sSQLTmp = "SELECT aut_ID, aut_CreditCard, aut_BankName, aut_Route, aut_Account FROM autopayment_aut WHERE aut_FamID=" . $iFamily;
+							$rsFindAut = RunQuery($sSQLTmp);
+							while ($aRow = mysql_fetch_array($rsFindAut))
+							{
+								extract($aRow);
+								if ($aut_CreditCard <> "") {
+									$showStr = gettext ("Credit card ...") . substr ($aut_CreditCard, strlen ($aut_CreditCard) - 4, 4);
+								} else {
+									$showStr = gettext ("Bank account ") . $aut_BankName . " " . $aut_Route . " " . $aut_Account;
+								}
+								echo "<option value=" . $aut_ID;
+								if ($iAutID == $aut_ID)
+									echo " selected";
+								echo ">" . $showStr . "</option>\n";
+							}?>
+							</select>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</div>
+	</div>
 	<?php } ?>
-</table>
+<!--End Credit card or Bank Draft Section -->
+
+	
+		
+
+						</tr>
+						</tbody>
+					</table>
+<!-- End Pledge Details -->
+</div>
+</div>
+</div>
+
+
+
+
+<!-- Start Cash Denomination Enter Section -->
+
+		<div class="box box-info clearfix" id="CashEnter" style="display:none">
+			<div class="box-header">
+				<h3 class="box-title">Cash Denominations</h3>
+			</div><!-- /.box-header -->
+			<div class="box-body">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<th>Denomination</th>
+							<th>Count</th>
+							<th>Total</th>
+						</thead>
+						<tbody>
+				<?php 
+				
+					foreach ($currencyDenomination2Name as $cdem_denominationID =>$cdem_denominationName)
+					{
+					echo "<tr><td>";
+					echo $cdem_denominationName;
+					echo "</td><td><input type=\"text\" class=\"denominationInputBox\" data-cur-value=\"".$currencyDenominationValue[$cdem_denominationID]."\" name=\"currencyCount-".$cdem_denominationID."\"></td>";
+					
+					}?>
+				
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+
+	
+<!-- End Cash Denomination Enter Section -->
+
+
+<!-- Start Check Details Enter Section -->
+
+		<div class="box box-info clearfix" id="CheckEnter" style="display:none">
+			<div class="box-header">
+				<h3 class="box-title">Check Details</h3>
+			</div><!-- /.box-header -->
+			<div class="box-body">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<tbody>
+						<!-- Start Scanned Check Section -->
+		<?php if ($bUseScannedChecks and ($dep_Type == 'Bank' or $PledgeOrPayment=='Pledge')) {?>
+		
+		
+		<td align="center">
+		<?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
+			<button class="btn btn-primary" value="<?php echo gettext("find family from check account #"); ?>" id="MatchFamily"><?php echo gettext("find family from check account #"); ?></button>
+			<button  class="btn btn-primary" value="<?php echo gettext("Set default check account number for family"); ?>" id="SetDefaultCheck"><?php echo gettext("Set default check account number for family"); ?></button>
+		<?php } ?>
+	
+		
+		
+		
+		
+		<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\" align=\"center\">"; else echo "class=\"PaymentLabelColumn\" align=\"center\">";echo gettext("Scan check");?>
+		<textarea name="ScanInput" rows="2" cols="70"><?php echo $tScanString?></textarea></td>
+		<?php } ?>
+		<!-- End Scanned Check Section -->
+		<!-- Start Paper Check Section -->
+
+											
+		<?php if ($PledgeOrPayment=='Payment' and $dep_Type == 'Bank') {?>
+		<tr>
+		<td class="PaymentLabelColumn"><?php echo gettext("Check #"); ?></td>
+		<td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?php echo $iCheckNo; ?>"><font color="red"><?php echo $sCheckNoError ?></font></td>
+		</tr>
+		<?php } ?>
+						</tbody>
+						
+					</table>
+				</div>
+			</div>
+		</div>
+
+	
+<!-- End Cash Denomination Enter Section -->
+
+
+<!-- Start Fund Selection Section -->
+
+		<div class="box box-info clearfix" id="FundSelection" style="display:none">
+			<div class="box-header">
+				<h3 class="box-title">Fund Split</h3>
+			</div><!-- /.box-header -->
+			<div class="box-body">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Fund Name"); ?></th>
+							<th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Amount"); ?></th>
+
+							<?php if ($bEnableNonDeductible) {?>
+								<th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Non-deductible amount"); ?></th>
+							<?php }?>
+
+							<th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Comment"); ?></th>
+						</thead>
+						<tbody>
+							<?php foreach ($fundId2Name as $fun_id => $fun_name) {
+								echo "<tr>";
+								echo "<td>".$fun_name."</td>";
+								echo "<td><input type=\"text\" name=\"" . $fun_id . "_Amount\" id=\"" . $fun_id . "_Amount\" value=\"" . $nAmount[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
+								if ($bEnableNonDeductible) {
+								echo "<td><input type=\"text\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
+								}
+								echo "<td><input type=\"text\" size=40 name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
+								echo "</tr>";
+							}
+							?>
+							</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+
+	
+<!-- End Fund Selection Section -->
+
+
+<!--Start Save button section -->
+		<div class="box box-info clearfix">
+			<div class="box-body">
+				<?php if (!$dep_Closed) { ?>
+				<button type="submit" class="btn btn-primary" value="<?php echo gettext("Save"); ?>" id="PledgeSubmit" name="PledgeSubmit"><?php echo gettext("Save"); ?></button>
+				<?php if ($_SESSION['bAddRecords']) { echo "<button type=\"submit\" class=\"btn btn-primary\" value=\"" . gettext("Save and Add") . "\" id=\"PledgeSubmitAndAdd\" name=\"PledgeSubmitAndAdd\">". gettext("Save and Add") ."</button>"; } ?>
+			<?php } ?>
+				<?php if (!$dep_Closed) {
+					$cancelText = "Cancel";
+				} else {
+					$cancelText = "Return";
+				} ?>	
+				<button type="button" class="btn btn-primary" value="<?php echo gettext($cancelText); ?>" name="PledgeCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';"><?php echo gettext($cancelText); ?></button>
+			</div>
+		</div>
+<!--End Save button section -->
 </form>
+<script type="text/javascript" src="js/PledgeEditor.js"></script>
 
 <?php
 

@@ -927,6 +927,38 @@ CREATE TABLE `pledge_plg` (
 -- 
 
 
+CREATE TABLE `currency_denominations_cdem` (
+ `cdem_denominationID` mediumint(9) NOT NULL auto_increment,
+ `cdem_denominationName` text,
+ `cdem_denominationValue` decimal(8,2) default NULL,
+ PRIMARY KEY  (`cdem_denominationID`)
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+INSERT INTO `currency_denominations_cdem` (`cdem_denominationName`, `cdem_denominationValue`) VALUES 
+("1¢", 0.01),
+("5¢", .05),
+("10¢", .10),
+("25¢", .25),
+("50¢", .5),
+("$1 Coin", 1),
+("$1", 1),
+("$2", 2),
+("$5", 5),
+("$10", 10),
+("$20", 20),
+("$50", 50),
+("$100", 100);
+
+
+CREATE TABLE `pledge_denominations_pdem`(
+ `pdem_pdemID` mediumint(9) NOT NULL auto_increment,
+ `pdem_plg_GroupKey` text,
+ `plg_depID` mediumint(9) unsigned default NULL,
+ `pdem_denominationID` text,
+ `pdem_denominationQuantity` mediumint(9) default NULL,
+ PRIMARY KEY  (`pdem_pdemID`)
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+
 -- --------------------------------------------------------
 
 -- 
