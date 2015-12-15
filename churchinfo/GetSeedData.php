@@ -2,14 +2,6 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-$kidsPerFamily=3;
-$kidsdev=3;
-$percentMaleAdult=50;
-$percentMaleChild=50;
-$families=30;
-$pseronPointer = 0;
-$rs = 0;
-
 function getPerson()
 {
 	global $pseronPointer, $rs;
@@ -156,42 +148,64 @@ $sSQL = "INSERT INTO family_fam (
 }
 
 
-
-$count = $families * ($kidsPerFamily+2);
-
-$response = file_get_contents("http://api.randomuser.me/?nat=US&results=".$count);
-$data=json_decode($response);
-$rs = $data->results;
-
-for ($i=0;$i<$families;$i++)
+function GenerateFamilies($families,$kidsPerFamily,$kidsdev)
 {
-	$hoh = getPerson();
-	$FamilyID = insertFamily($hoh);
-	$familyName = $hoh->name->last;
-	$hoh->famID = $FamilyID;
-	$hoh->per_fmr_id = 1;
+	global $rs,$pseronPointer;
+	$count = $families * ($kidsPerFamily+2);
 
-	$spouse = getPerson();
-	$spouse->name->last = $familyName;
-	$spouse->famID = $FamilyID;
-	$spouse->per_fmr_id = 2;
-	
-	insertPerson($hoh);
-	insertPerson($spouse);
-	
-	#$thisFamChildren = stats_rand_gen_normal ($kidsPerFamily, $stddev);
-	$thisFamChildren = rand($kidsPerFamily-$kidsdev,$kidsPerFamily+$kidsdev);
-	
-	for ($y=0;$y<$thisFamChildren;$y++)
+	$response = file_get_contents("http://api.randomuser.me/?nat=US&results=".$count);
+	$data=json_decode($response);
+	$rs = $data->results;
+
+	for ($i=0;$i<$families;$i++)
 	{
-		$child = getPerson();
-		$child->name->last = $familyName;
-		$child->famID = $FamilyID;
-		$child->per_fmr_id = 3;
-		insertPerson($child);
+		$hoh = getPerson();
+		$FamilyID = insertFamily($hoh);
+		$familyName = $hoh->name->last;
+		$hoh->famID = $FamilyID;
+		$hoh->per_fmr_id = 1;
+
+		$spouse = getPerson();
+		$spouse->name->last = $familyName;
+		$spouse->famID = $FamilyID;
+		$spouse->per_fmr_id = 2;
+		
+		insertPerson($hoh);
+		insertPerson($spouse);
+		
+		#$thisFamChildren = stats_rand_gen_normal ($kidsPerFamily, $stddev);
+		$thisFamChildren = rand($kidsPerFamily-$kidsdev,$kidsPerFamily+$kidsdev);
+		
+		for ($y=0;$y<$thisFamChildren;$y++)
+		{
+			$child = getPerson();
+			$child->name->last = $familyName;
+			$child->famID = $FamilyID;
+			$child->per_fmr_id = 3;
+			insertPerson($child);
+		}
+		
 	}
-	
 }
+
+function GenerateDeposits($numDeposits,$numPaymentsPerDeposit,$pmtAverage)
+{
+
+
+
+}
+
+$kidsPerFamily=3;
+$kidsdev=3;
+$families=30;
+$pseronPointer = 0;
+$rs = 0;
+$numDeposits = 20;
+$numPaymentsPerDeposit=12;
+$pmtAverage=100;
+
+GenerateFamilies($families,$kidsPerFamily,$kidsdev);
+GenerateDeposits($numDeposits,$numPaymentsPerDeposit,$pmtAverage);
 
 Redirect("Menu.php");
 
