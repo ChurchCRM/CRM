@@ -20,20 +20,29 @@ $app = new Slim();
 $app->contentType('application/json');
 
 $app->get('/members/list/search/:query', 'searchMembers');
-$app->get('/deposits/list','listDeposits');
-$app->get('/deposits/list/:query','listDeposits');
-$app->get('/payments/list','listPayments');
-$app->get('/payments/list/:query','listPayments');
 
+$app->group('/deposits',function () use ($app) {
+	$app->get('/','listDeposits');
+	$app->get('/:id','listDeposits')->conditions(array('id' => '[0-9]+'));
+	$app->get('/:id/payments','listPayments')->conditions(array('id' => '[0-9]+'));
+	
+});
+
+
+$app->group('/payments',function () use ($app) {
+	$app->get('/','listPayments');
+	$app->get('/:id','listPayments')->conditions(array('id' => '[0-9]+'));
+	
+});
 
 $app->run();
 
-function listDeposits($query) {
+function listDeposits($id) {
 
 	$sSQL = "SELECT dep_ID, dep_Date, dep_Comment, dep_Closed, dep_Type FROM deposit_dep";
-	if ($query)
+	if ($id)
 	{
-			$sSQL.=" WHERE dep_ID = ".$query;
+			$sSQL.=" WHERE dep_ID = ".$id;
 	}
 	$rsDep = RunQuery($sSQL);
 	$return = array();
@@ -50,11 +59,11 @@ function listDeposits($query) {
 	echo '{"deposits": ' . json_encode($return) . '}';
 }
 
-function listPayments($query) {
+function listPayments($id) {
 	$sSQL = "SELECT * from pledge_plg";
-	if ($query)
+	if ($id)
 	{
-			$sSQL.=" WHERE plg_plgID = ".$query;
+			$sSQL.=" WHERE plg_plgID = ".$id;
 	}
 	$rsDep = RunQuery($sSQL);
 	$return = array();
