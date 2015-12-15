@@ -6,7 +6,7 @@ $kidsPerFamily=3;
 $kidsdev=3;
 $percentMaleAdult=50;
 $percentMaleChild=50;
-$families=30;
+$families=2;
 $pseronPointer = 0;
 $rs = 0;
 
@@ -18,23 +18,71 @@ function getPerson()
 	return $user;
 }
 
+function sanitize($str)
+{
+	return str_replace("'","",$str);
+}
+
 function insertPerson($user)
 {
-	$gender = $user->gender;
-	$name = $user->name->title." ". $user->name->first." ". $user->name->last;
-	$location = $user->location->street." ". $user->location->city." ". $user->location->state." ". $user->location->zip;
-	if ($bHideAge) {
-	$per_Flags = 1;
-	} else {
-	$per_Flags = 0;
-	}
-	$sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags ) 
-	VALUES ('" . $user->name->title . "','" . $user->name->first . "',NULL,'" . $user->name->last . "',NULL,'" . $user->gender . "','" . $user->location->street . "',NULL,'" . $user->location->city . "','" . $user->location->state . "','" . $user->location->zip . "','USA','" . $user->phone . "',NULL,'" . $user->cell . "','" . $user->email . "',NULL," . date('m', $user->dob) . "," . date('d', $user->dob) . "," . date('Y', $user->dob) . ",NULL,'".$user->famID."',0,"."\"" . date('Y-m-d', $user->registered) . "\"". ",1,'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",";
+	$sSQL = "INSERT INTO person_per 
+	(per_Title, 
+	per_FirstName, 
+	per_MiddleName, 
+	per_LastName, 
+	per_Suffix, 
+	per_Gender, 
+	per_Address1, 
+	per_Address2, 
+	per_City, 
+	per_State, 
+	per_Zip, 
+	per_Country, 
+	per_HomePhone, 
+	per_WorkPhone, 
+	per_CellPhone, 
+	per_Email, 
+	per_WorkEmail, 
+	per_BirthMonth, 
+	per_BirthDay, 
+	per_BirthYear, 
+	per_Envelope, 
+	per_fam_ID, 
+	per_fmr_ID, 
+	per_MembershipDate, 
+	per_cls_ID, 
+	per_DateEntered, 
+	per_EnteredBy, 
+	per_FriendDate, 
+	per_Flags ) 
+	VALUES ('" . 
+	sanitize($user->name->title) . "','" . 
+	sanitize($user->name->first) . "',NULL,'" . 
+	sanitize($user->name->last) . "',NULL,'" . 
+	sanitize($user->gender) . "','" . 
+	sanitize($user->location->street) . "',NULL,'" . 
+	sanitize($user->location->city) . "','" . 
+	sanitize($user->location->state) . "','" . 
+	sanitize($user->location->zip) . "','USA','" . 
+	sanitize($user->phone) . "',NULL,'" . 
+	sanitize($user->cell) . "','" . 
+	sanitize($user->email) . "',NULL," . 
+	date('m', $user->dob) . "," .
+	date('d', $user->dob) . "," . 
+	date('Y', $user->dob) . ",NULL,'".
+	sanitize($user->famID) ."',". 
+	sanitize($user->per_fmr_id) .","."\"" . 
+	date('Y-m-d', $user->registered) . 
+	"\"". ",1,'" . 
+	date("YmdHis") . 
+	"'," . 
+	sanitize($_SESSION['iUserID']) . ",";
+	
 	if ( strlen($dFriendDate) > 0 )
 	$sSQL .= "\"" . $dFriendDate . "\"";
 	else
 	$sSQL .= "NULL";
-	$sSQL .= ", " . $per_Flags;
+	$sSQL .= ", 0" ;
 	$sSQL .= ")";
 	$bGetKeyBack = True;
 	RunQuery($sSQL);
@@ -50,9 +98,60 @@ function insertPerson($user)
 
 }
 
-function insertFamily($hoh)
+function insertFamily($user)
 {
-
+$dWeddingDate="NULL";
+$iCanvasser=0;
+$nLatitude=0;
+$nLongitude=0;
+$nEnvelope=0;   
+$sSQL = "INSERT INTO family_fam (
+						fam_Name, 
+						fam_Address1, 
+						fam_Address2, 
+						fam_City, 
+						fam_State, 
+						fam_Zip, 
+						fam_Country, 
+						fam_HomePhone, 
+						fam_WorkPhone, 
+						fam_CellPhone, 
+						fam_Email, 
+						fam_WeddingDate, 
+						fam_DateEntered, 
+						fam_EnteredBy, 
+						fam_SendNewsLetter,
+						fam_OkToCanvass,
+						fam_Canvasser,
+						fam_Latitude,
+						fam_Longitude,
+						fam_Envelope)
+					VALUES ('"							. 
+						$user->name->last				. "','" . 
+						$user->location->street				. "','" . 
+						$sAddress2				. "','" . 
+						$user->location->city				. "','" . 
+						$user->location->state					. "','" . 
+						$user->location->zip					. "','" . 
+						$sCountry				. "','" . 
+						$sHomePhone				. "','" . 
+						$sWorkPhone				. "','" . 
+						$sCellPhone				. "','" . 
+						$sEmail					. "'," . 
+						$dWeddingDate			. ",'" . 
+						date("YmdHis")			. "'," . 
+						$_SESSION['iUserID']	. "," . 
+						"FALSE," . 
+						"FALSE,'" .
+						$iCanvasser				. "'," .
+						$nLatitude				. "," .
+						$nLongitude				. "," .
+						$nEnvelope              . ")";
+				RunQuery($sSQL);
+				$sSQL = "SELECT MAX(fam_ID) AS iFamilyID FROM family_fam";
+			$rsLastEntry = RunQuery($sSQL);
+			extract(mysql_fetch_array($rsLastEntry));
+			return $iFamilyID;
 
 }
 
@@ -66,27 +165,30 @@ $rs = $data->results;
 
 for ($i=0;$i<$families;$i++)
 {
-	#$thisFamChildren = stats_rand_gen_normal ($kidsPerFamily, $stddev);
-	$thisFamChildren = rand($kidsPerFamily-$kidsdev,$kidsPerFamily+$kidsdev);
-	echo $thisFamChildren;
-	
 	$hoh = getPerson();
+	$FamilyID = insertFamily($hoh);
 	$familyName = $hoh->name->last;
-	$familyID = $i;
-	$hoh->famID = $familyID;
-	
-	insertFamily($hoh);
+	$hoh->famID = $FamilyID;
+	$hoh->per_fmr_id = 1;
+	echo "This Family ID: ".$FamilyID."<br>Surname:".$familyName."<br>"."per_fmr_id: ".$hoh->per_fmr_id;
 	
 	$spouse = getPerson();
 	$spouse->name->last = $familyName;
-	$spouse->famID = $familyID;
+	$spouse->famID = $FamilyID;
+	$spouse->per_fmr_id = 2;
 	
 	insertPerson($hoh);
 	insertPerson($spouse);
+	
+	#$thisFamChildren = stats_rand_gen_normal ($kidsPerFamily, $stddev);
+	$thisFamChildren = rand($kidsPerFamily-$kidsdev,$kidsPerFamily+$kidsdev);
+	echo "Children in this family: ".$thisFamChildren."<br>";
 	for ($y=0;$y<$thisFamChildren;$y++)
 	{
 		$child = getPerson();
 		$child->name->last = $familyName;
+		$child->famID = $FamilyID;
+		$child->per_fmr_id = 3;
 		insertPerson($child);
 	}
 	
