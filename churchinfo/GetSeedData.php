@@ -6,7 +6,7 @@ $kidsPerFamily=3;
 $kidsdev=3;
 $percentMaleAdult=50;
 $percentMaleChild=50;
-$families=2;
+$families=30;
 $pseronPointer = 0;
 $rs = 0;
 
@@ -170,8 +170,7 @@ for ($i=0;$i<$families;$i++)
 	$familyName = $hoh->name->last;
 	$hoh->famID = $FamilyID;
 	$hoh->per_fmr_id = 1;
-	echo "This Family ID: ".$FamilyID."<br>Surname:".$familyName."<br>"."per_fmr_id: ".$hoh->per_fmr_id;
-	
+
 	$spouse = getPerson();
 	$spouse->name->last = $familyName;
 	$spouse->famID = $FamilyID;
@@ -182,7 +181,7 @@ for ($i=0;$i<$families;$i++)
 	
 	#$thisFamChildren = stats_rand_gen_normal ($kidsPerFamily, $stddev);
 	$thisFamChildren = rand($kidsPerFamily-$kidsdev,$kidsPerFamily+$kidsdev);
-	echo "Children in this family: ".$thisFamChildren."<br>";
+	
 	for ($y=0;$y<$thisFamChildren;$y++)
 	{
 		$child = getPerson();
@@ -193,6 +192,8 @@ for ($i=0;$i<$families;$i++)
 	}
 	
 }
+
+Redirect("Menu.php");
 
 
 ?>
