@@ -159,7 +159,7 @@ $sSQL = "INSERT INTO family_fam (
 
 $count = $families * ($kidsPerFamily+2);
 
-$response = file_get_contents("http://api.randomuser.me/?results=".$count);
+$response = file_get_contents("http://api.randomuser.me/?nat=US&results=".$count);
 $data=json_decode($response);
 $rs = $data->results;
 
