@@ -20,7 +20,57 @@ $app = new Slim();
 $app->contentType('application/json');
 
 $app->group('/data/seed',function () use ($app) {
-	$app->get('/families/:count','generateFamilies')->conditions(array('count' => '[0-9]+'));
+	$app->post('/families',function () use ($app) {
+		$request = $app->request();
+		$body = $request->getBody();
+		$input = json_decode($body);	
+		$families=$input->families;
+		$kidsPerFamily=3;
+		$kidsdev=3;
+		$pseronPointer=0;
+		$count = $families * ($kidsPerFamily+2);
+		$response = file_get_contents("http://api.randomuser.me/?nat=US&results=".$count);
+		$data=json_decode($response);
+		$rs = $data->results;
+		$rTotalHoh=0;
+		$rTotalSpouse=0;
+		$rTotalChildren=0;
+
+		for ($i=0;$i<$families;$i++)
+		{
+			$hoh = getPerson($rs,$pseronPointer);
+			$FamilyID = insertFamily($hoh);
+			$familyName = $hoh->name->last;
+			$hoh->famID = $FamilyID;
+			$hoh->per_fmr_id = 1;
+			
+			$spouse = getPerson($rs,$pseronPointer);
+			$spouse->name->last = $familyName;
+			$spouse->famID = $FamilyID;
+			$spouse->per_fmr_id = 2;
+			
+			insertPerson($hoh);
+			$rTotalHoh +=1;
+			insertPerson($spouse);
+			$rTotalSpouse+=1;
+			
+			#$thisFamChildren = stats_rand_gen_normal ($kidsPerFamily, $stddev);
+			$thisFamChildren = rand($kidsPerFamily-$kidsdev,$kidsPerFamily+$kidsdev);
+			
+			for ($y=0;$y<$thisFamChildren;$y++)
+			{
+				$child = getPerson($rs,$pseronPointer);
+				$child->name->last = $familyName;
+				$child->famID = $FamilyID;
+				$child->per_fmr_id = 3;
+				insertPerson($child);
+				$rTotalChildren+=1;
+			}
+			
+		}
+		 echo '{"families created": '.$families.',"heads of household created": '.$rTotalHoh.', "spouses created":'.$rTotalSpouse.', "children created":'.$rTotalChildren.'}';
+		
+	});
 
 });
 
@@ -174,53 +224,7 @@ $sSQL = "INSERT INTO family_fam (
 
 }
 
-function generateFamilies($families)
-{
-	$kidsPerFamily=3;
-	$kidsdev=3;
-	$pseronPointer=0;
-	$count = $families * ($kidsPerFamily+2);
-	$response = file_get_contents("http://api.randomuser.me/?nat=US&results=".$count);
-	$data=json_decode($response);
-	$rs = $data->results;
-	$rTotalHoh=0;
-	$rTotalSpouse=0;
-	$rTotalChildren=0;
 
-	for ($i=0;$i<$families;$i++)
-	{
-		$hoh = getPerson($rs,$pseronPointer);
-		$FamilyID = insertFamily($hoh);
-		$familyName = $hoh->name->last;
-		$hoh->famID = $FamilyID;
-		$hoh->per_fmr_id = 1;
-		
-		$spouse = getPerson($rs,$pseronPointer);
-		$spouse->name->last = $familyName;
-		$spouse->famID = $FamilyID;
-		$spouse->per_fmr_id = 2;
-		
-		insertPerson($hoh);
-		$rTotalHoh +=1;
-		insertPerson($spouse);
-		$rTotalSpouse+=1;
-		
-		#$thisFamChildren = stats_rand_gen_normal ($kidsPerFamily, $stddev);
-		$thisFamChildren = rand($kidsPerFamily-$kidsdev,$kidsPerFamily+$kidsdev);
-		
-		for ($y=0;$y<$thisFamChildren;$y++)
-		{
-			$child = getPerson($rs,$pseronPointer);
-			$child->name->last = $familyName;
-			$child->famID = $FamilyID;
-			$child->per_fmr_id = 3;
-			insertPerson($child);
-			$rTotalChildren+=1;
-		}
-		
-	}
-	 echo '{"families created": '.$families.',"heads of household created": '.$rTotalHoh.', "spouses created":'.$rTotalSpouse.', "children created":'.$rTotalChildren.'}';
-}
 
 function searchMembers($query) {
         $sSearchTerm = $query;
