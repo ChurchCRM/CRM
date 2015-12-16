@@ -69,10 +69,10 @@ $app->get('/members/list/search/:query', 'searchMembers');
 
 $app->run();
 
-function getPerson(&$rs,&$personPointer)
+function getPerson($rs,&$personPointer)
 {
-	$user=$rs[$pseronPointer]->user;
-	$pseronPointer += 1;
+	$user=$rs[$personPointer]->user;
+	$personPointer += 1;
 	return $user;
 }
 
@@ -207,6 +207,7 @@ $sSQL = "INSERT INTO family_fam (
 						$nEnvelope              . ")";
 				RunQuery($sSQL);
 				$sSQL = "SELECT MAX(fam_ID) AS iFamilyID FROM family_fam";
+				
 			$rsLastEntry = RunQuery($sSQL);
 			extract(mysql_fetch_array($rsLastEntry));
 			return $iFamilyID;
@@ -215,10 +216,10 @@ $sSQL = "INSERT INTO family_fam (
 
 function generateFamilies($families)
 {
-	$kidsPerFamily=3;
+		$kidsPerFamily=3;
 		$kidsdev=3;
-		$pseronPointer=0;
-		$count = $families * ($kidsPerFamily+2);
+		$personPointer=1;
+		$count = $families * ($kidsPerFamily+$kidsdev+2);
 		$response = file_get_contents("http://api.randomuser.me/?nat=US&results=".$count);
 		$data=json_decode($response);
 		$rs = $data->results;
@@ -227,14 +228,14 @@ function generateFamilies($families)
 		$rTotalChildren=0;
 
 		for ($i=0;$i<$families;$i++)
-		{
-			$hoh = getPerson($rs,$pseronPointer);
+		{	
+			$hoh = getPerson($rs,$personPointer);
 			$FamilyID = insertFamily($hoh);
 			$familyName = $hoh->name->last;
 			$hoh->famID = $FamilyID;
 			$hoh->per_fmr_id = 1;
 			
-			$spouse = getPerson($rs,$pseronPointer);
+			$spouse = getPerson($rs,$personPointer);
 			$spouse->name->last = $familyName;
 			$spouse->famID = $FamilyID;
 			$spouse->per_fmr_id = 2;
@@ -249,7 +250,7 @@ function generateFamilies($families)
 			
 			for ($y=0;$y<$thisFamChildren;$y++)
 			{
-				$child = getPerson($rs,$pseronPointer);
+				$child = getPerson($rs,$personPointer);
 				$child->name->last = $familyName;
 				$child->famID = $FamilyID;
 				$child->per_fmr_id = 3;
@@ -258,7 +259,7 @@ function generateFamilies($families)
 			}
 			
 		}
-		 echo '{"families created": '.$families.',"heads of household created": '.$rTotalHoh.', "spouses created":'.$rTotalSpouse.', "children created":'.$rTotalChildren.'}';
+		 echo '{"random.me response":'.$response.'"families created": '.$families.',"heads of household created": '.$rTotalHoh.', "spouses created":'.$rTotalSpouse.', "children created":'.$rTotalChildren.'}';
 
 }
 
