@@ -33,7 +33,32 @@ $app->group('/data/seed',function () use ($app) {
 		$input = json_decode($body);	
 		$classes=$input->classes;
 		$childrenPerTeacher=$input->childrenPerTeacher;
-		generateSundaySchoolClasses($classesm,$childrenPerTeacher);
+		generateSundaySchoolClasses($classes,$childrenPerTeacher);
+	});
+	$app->post('/deposits',function () use ($app) {
+		$request = $app->request();
+		$body = $request->getBody();
+		$input = json_decode($body);	
+		$deposits=$input->deposits;
+		$averagedepositvalue=$input->averagedepositvalue;
+		generateDeposits($deposits,$averagedepositvalue);
+	});
+	$app->post('/events',function () use ($app) {
+		$request = $app->request();
+		$body = $request->getBody();
+		$input = json_decode($body);	
+		$events=$input->events;
+		$averageAttendance=$input->averageAttendance;
+		generateEvents($events,$averageAttendance);
+	});
+	$app->post('/fundraisers',function () use ($app) {
+		$request = $app->request();
+		$body = $request->getBody();
+		$input = json_decode($body);	
+		$fundraisers=$input->fundraisers;
+		$averageItems=$input->averageItems;
+		$averageItemPrice=$input->averageItemPrice;
+		generateFundRaisers($fundraisers,$averageItems,$averageItemPrice);
 	});
 
 });
@@ -237,10 +262,28 @@ function generateFamilies($families)
 
 }
 
-function generateSundaySchoolClasses($classesm,$childrenPerTeacher)
+function generateSundaySchoolClasses($classes,$childrenPerTeacher)
 {
 
+	echo '{"status":"Sunday School Seed Data Not Implemented"}';
 
+}
+
+function generateEvents($events,$averageAttendance)
+{
+
+	echo '{"status":"Events Seed Data Not Implemented"}';
+
+}
+
+function generateDeposits($deposits,$averagedepositvalue)
+{
+	echo '{"status":"Deposits Seed Data Not Implemented"}';
+}
+
+function generateFundRaisers($fundraisers,$averageItems,$averageItemPrice)
+{
+	echo '{"status":"Fundraisers Seed Data Not Implemented"}';
 }
 
 function searchMembers($query) {
