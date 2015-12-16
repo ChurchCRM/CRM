@@ -18,8 +18,8 @@ Oracle VirtualBox allows you to run virtual machines on your system for free.
 At a 10,000 ft view, Vagrant is a tool that automagically provisions a virutal machine in Oracle VritualBox with all of the prerequisites, settings, files, and other artifacts that are required for running an instance of ChurchCRM.  Since ChurchCRM is a web application, the "vagrant image" also includes a fully functional LAMP stack.
 ###Testing ChurchCRM
 1. Check out the branch you're going to test.  You can either use the [GitHub Desktop Client](https://desktop.github.com/), or manually download the source from the GitHub Page, or click one of the following links:
-  *Most often, we'll want help testing the [Development Branch](https://github.com/ChurchCRM/CRM/archive/develop.zip)
-  *Sometimes we'll need to test something in the [Expiremental Branch](https://github.com/ChurchCRM/CRM/archive/experimental.zip)
+  * Most often, we'll want help testing the [Development Branch](https://github.com/ChurchCRM/CRM/archive/develop.zip)
+  * Sometimes we'll need to test something in the [Expiremental Branch](https://github.com/ChurchCRM/CRM/archive/experimental.zip)
 2. If you downloaded a Zip file, please extract that ZIP to a directory
 3. From a command line, navigate to the directory containing the files
 4. Run the command "vagrant up"
