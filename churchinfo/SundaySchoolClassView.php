@@ -163,7 +163,7 @@ require "Include/Header.php";
                     extract($aRow);
                     $birthDate = "";
                     if ($birthYear != "") {
-                        $birthDate = $birthDay."/".$birthMonth."/".$birthYear;
+                        $birthDate = $birthMonth."/".$birthDay."/".$birthYear;
                     }
                     if ($dadEmail != "")
                         array_push($ParentsEmails, "<".$dadFirstName." ".$dadLastName."> ". $dadEmail);
