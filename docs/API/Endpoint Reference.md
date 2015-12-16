@@ -3,6 +3,7 @@ ChurchCRM leverages Slim 2.6.2 to provide REST access to the data elements.
 
 ## People
 * [GET] /members/list/search/:query
+
 Returns a list of the members who's first name or last name matches the :query parameter
 
 ## Families
