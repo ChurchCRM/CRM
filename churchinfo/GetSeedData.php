@@ -2,6 +2,13 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+//Security
+if (!isset($_SESSION['iUserID']))
+{
+    Redirect("Default.php");
+    exit;
+}
+
 function getPerson()
 {
 	global $pseronPointer, $rs;
