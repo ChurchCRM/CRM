@@ -257,6 +257,7 @@ echo "<table cellpadding='4' align='center' cellspacing='0' width='100%'>\n
 	<td>".gettext("Comment")."</td>\n
 	<td><a href='FindDepositSlip.php?Sort=closed'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>".gettext("Closed")."</a></td>\n
 	<td><a href='FindDepositSlip.php?Sort=type'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>".gettext("Deposit Type")."</a></td>\n
+	<td>Download OFX</td>\n
 	</tr>";
 
 // Display Deposits
@@ -277,6 +278,7 @@ while (list ($dep_ID, $dep_Date, $dep_Comment, $dep_Closed, $dep_Type) = mysql_f
 		$dep_Closed_text = "No";
 	echo "<td>$dep_Closed_text</td>";	
 	echo "<td>$dep_Type</td>";
+	echo "<td><a href='Reports/ExportOFX.php?deposit=$dep_ID'>Download</td>";
 }
 echo "</table>";
 
