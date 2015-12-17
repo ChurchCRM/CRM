@@ -103,9 +103,17 @@ $app->group('/deposits',function () use ($app) {
 
 $app->group('/payments',function () use ($app) {
 	$app->get('/','listPayments');
+	$app->post('/', function ($familyId) use ($app) {
+		echo '{"New Payment":"not implemented"}';
+	});
 	$app->get('/:id','listPayments')->conditions(array('id' => '[0-9]+'));
-	$app->get('/byFamily/:familyId', function ($familyId) use ($app) {
-		sSQL = "SELECT plg_fundID, plg_amount from pledge_plg where plg_famID=\"" . $familyId . "\" AND plg_PledgeOrPayment=\"Pledge\" AND plg_FYID=\"" . $iFYID . "\";";
+	$app->get('/byFamily/:familyId(/:fyid)', function ($familyId,$fyid=-1) use ($app) {
+		$sSQL = "SELECT plg_fundID, plg_amount from pledge_plg where plg_famID=\"" . $familyId . "\" AND plg_PledgeOrPayment=\"Pledge\"";
+		if ($fyid != -1)
+		{
+			$sSQL .= " AND plg_FYID=\"" . $fyid . "\";";
+		}
+		echo $sSQL;
 		$rsPledge = RunQuery($sSQL);
 		$totalPledgeAmount = 0;
 		while ($row = mysql_fetch_array($rsPledge)) {
@@ -136,6 +144,8 @@ $app->group('/payments',function () use ($app) {
 		}
 		
 	});
+
+	
 });
 
 $app->run();
