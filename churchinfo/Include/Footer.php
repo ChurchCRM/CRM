@@ -29,7 +29,7 @@
 	<script language="javascript" type="text/javascript">
 		$("document").ready(function(){
 			$(".searchPerson").autocomplete({
-				source: "AjaxFunctions.php?searchtype=person",
+				source: "ajax/SearchMembers.php?searchtype=person",
 				minLength: 2,
 				select: function(event, ui) {
 					var location = 'PersonView.php?PersonID='+ui.item.id;

@@ -343,7 +343,7 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
     ?>
     <header class="header">
         <a href="Menu.php" class="logo">
-            Church Info CRM
+            Church Web CRM
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">

@@ -28,7 +28,7 @@
 *
 ******************************************************************************/
 
-$sVersion = '1.2.13';
+$sVersion = '1.2.13'; //TODO this need to be a global Var
 
 function BackUpTable ($tn)
 {
