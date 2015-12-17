@@ -300,7 +300,8 @@ function generateDeposits($deposits,$averagedepositvalue)
 function generateFundRaisers($fundraisers,$averageItems,$averageItemPrice)
 {
 	echo '{"status":"Fundraisers Seed Data Not Implemented"}';
-=======
+}
+
 function listDeposits($id) {
 
 	$sSQL = "SELECT dep_ID, dep_Date, dep_Comment, dep_Closed, dep_Type FROM deposit_dep";
