@@ -100,6 +100,16 @@ function getFundSubmitData(){
 
 }
 
+function getDenominationSubmitData(){
+	var denominations=new Array();
+	$(".denominationInputBox").each(function(i,el){
+	var currencyObject = {currencyID: $(el).attr("Name"), Count: $(el).val()}
+	console.log(currencyObject);
+	denominations.push(currencyObject);
+	});
+	return denominations;	
+}
+
 
 function getSubmitFormData(){
 	var fd = {
@@ -113,8 +123,8 @@ function getSubmitFormData(){
 				'comment'			:$('input[name=OneComment]').val(),
 				
 				
-				'total'				:$('input[name=Total]').val()
-				
+				'total'				:$('input[name=Total]').val(),
+				'cashDenominations'	:getDenominationSubmitData()
 				
 			};
 			
@@ -133,7 +143,7 @@ $('#PledgeForm').submit(function(event) {
        //process the form
        $.ajax({
             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : 'SubmitPledgeorPayment.php', // the url where we want to POST
+            url         : 'api/payments', // the url where we want to POST
             data        : formData, // our data object
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true

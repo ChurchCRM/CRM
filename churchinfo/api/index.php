@@ -102,7 +102,9 @@ $app->group('/deposits',function () use ($app) {
 $app->group('/payments',function () use ($app) {
 	$app->get('/','listPayments');
 	$app->post('/', function ($familyId) use ($app) {
-		echo '{"New Payment":"not implemented"}';
+		$request = $app->request();
+		$body = $request->getBody();
+		echo $body;
 	});
 	$app->get('/:id','listPayments')->conditions(array('id' => '[0-9]+'));
 	$app->get('/byFamily/:familyId(/:fyid)', function ($familyId,$fyid=-1) use ($app) {
