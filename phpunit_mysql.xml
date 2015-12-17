@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="tests/bootstrap.php" colors="true">
+    <php>
+        <var name="db_dsn" value="mysql:dbname=churchcrm;host=localhost"/>
+        <var name="db_username" value="churchcrm"/>
+        <var name="db_password" value="churchcrm"/>
+    </php>
+
+    <testsuites>
+        <testsuite name="Hello World Test Suite">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./</directory>
+            <exclude>
+                <directory>./tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
