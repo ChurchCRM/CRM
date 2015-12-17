@@ -63,22 +63,47 @@ $app->group('/data/seed',function () use ($app) {
 
 });
 
-
-
-$app->get('/members/list/search/:query', 'searchMembers');
+$app->group('/members',function () use ($app){
+	$app->get('/list/search/:query', 'searchMembers');
+	$app->get('/list/byCheckNumber/:tScanString', function($tScanString) use ($app) 
+	{
+		global $bUseScannedChecks;
+		if ($bUseScannedChecks) 
+		{ 
+			require "../Include/MICRFunctions.php";
+			$micrObj = new MICRReader(); // Instantiate the MICR class
+			echo '{"ScanString":'.$tScanString.'}';
+			$routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
+			if ($routeAndAccount) {
+				$sSQL = "SELECT fam_ID FROM family_fam WHERE fam_scanCheck=\"" . $routeAndAccount . "\"";
+				$rsFam = RunQuery($sSQL);
+				extract(mysql_fetch_array($rsFam));
+				$iFamily = $fam_ID;
+				$iCheckNo = $micrObj->FindCheckNo ($tScanString);
+				echo '{"RouteAndAccount":'.$routeAndAccount.', "FamilyID":'.$iFamily.', "Check Number":'.$iCheckNo.'}';
+			}
+			else
+			{
+				echo '{"status":"error in locating family"}';
+			}
+		}
+		else
+		{
+			echo '{"status":"Scanned Checks is disabled"}';
+		}
+		
+	});
+});
 
 $app->group('/deposits',function () use ($app) {
 	$app->get('/','listDeposits');
 	$app->get('/:id','listDeposits')->conditions(array('id' => '[0-9]+'));
 	$app->get('/:id/payments','listPayments')->conditions(array('id' => '[0-9]+'));
-	
 });
-
 
 $app->group('/payments',function () use ($app) {
 	$app->get('/','listPayments');
 	$app->get('/:id','listPayments')->conditions(array('id' => '[0-9]+'));
-	
 });
 
 $app->run();
