@@ -72,15 +72,13 @@ $app->group('/members',function () use ($app){
 		{ 
 			require "../Include/MICRFunctions.php";
 			$micrObj = new MICRReader(); // Instantiate the MICR class
-			echo '{"ScanString":'.$tScanString.'}';
 			$routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
 			if ($routeAndAccount) {
-				$sSQL = "SELECT fam_ID FROM family_fam WHERE fam_scanCheck=\"" . $routeAndAccount . "\"";
+				$sSQL = "SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck=\"" . $routeAndAccount . "\"";
 				$rsFam = RunQuery($sSQL);
 				extract(mysql_fetch_array($rsFam));
-				$iFamily = $fam_ID;
 				$iCheckNo = $micrObj->FindCheckNo ($tScanString);
-				echo '{"RouteAndAccount":'.$routeAndAccount.', "FamilyID":'.$iFamily.', "Check Number":'.$iCheckNo.'}';
+				echo '{"ScanString": "'.$tScanString.'" , "RouteAndAccount": "'.$routeAndAccount.'" , "CheckNumber": "'.$iCheckNo.'" ,"fam_ID": "'.$fam_ID.'" , "fam_Name": "'.$fam_Name.'"}';
 			}
 			else
 			{

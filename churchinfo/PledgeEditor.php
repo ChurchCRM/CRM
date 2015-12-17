@@ -19,11 +19,8 @@ global $iChecksPerDepositForm;
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/MICRFunctions.php";
 
-if ($bUseScannedChecks) { // Instantiate the MICR class
-   $micrObj = new MICRReader();
-}
+
 
 $thisPledgeID = 0;
 $iEnvelope = 0;
@@ -500,8 +497,8 @@ require "Include/Header.php";
 		
 		<td align="center">
 		<?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
-			<button class="btn btn-primary" value="<?php echo gettext("find family from check account #"); ?>" id="MatchFamily"><?php echo gettext("find family from check account #"); ?></button>
-			<button  class="btn btn-primary" value="<?php echo gettext("Set default check account number for family"); ?>" id="SetDefaultCheck"><?php echo gettext("Set default check account number for family"); ?></button>
+			<button type="button" class="btn btn-primary" value="<?php echo gettext("find family from check account #"); ?>" id="MatchFamily"><?php echo gettext("find family from check account #"); ?></button>
+			<button  type="button" class="btn btn-primary" value="<?php echo gettext("Set default check account number for family"); ?>" id="SetDefaultCheck"><?php echo gettext("Set default check account number for family"); ?></button>
 		<?php } ?>
 	
 		

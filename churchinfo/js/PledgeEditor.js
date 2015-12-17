@@ -78,7 +78,17 @@ $('#MatchEnvelope').click(function() {
 });
 
 $('#MatchFamily').click(function() {
-  alert( "Handler for find MatchFamily clicked" );
+   $.ajax({
+            type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
+            url         : '/api/members/list/byCheckNumber/'+$('textarea[name=ScanInput]').val(), // the url where we want to POST
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode      : true
+        })
+		 .done(function(data) {
+			console.log(data);
+			$('[name=FamilyName]').val(data.fam_Name);
+			$('[name=CheckNo]').val(data.CheckNumber);
+		});
 });
 
 $('#SetDefaultCheck').click(function() {
