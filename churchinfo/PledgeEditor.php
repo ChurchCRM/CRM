@@ -345,7 +345,8 @@ require "Include/Header.php";
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Fund"); ?></td>
 				<td class="TextColumnWithBottomBorder">
 					<select name="FundSplit" id="FundSplit">
-						<option value=0 <?php if (!$iSelectedFund) { echo ' selected'; } ?>><?php echo gettext("Split");?></option>
+						<option value="None" selected>Select a Fund</option>
+						<option value=0><?php echo gettext("Split");?></option>
 						<?php foreach ($fundId2Name as $fun_id => $fun_name) {
 							echo "<option value=\"" . $fun_id . "\""; if ($iSelectedFund==$fun_id) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
 						} ?>

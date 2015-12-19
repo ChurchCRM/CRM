@@ -91,6 +91,13 @@ $app->group('/members',function () use ($app){
 		}
 		
 	});
+	
+	$app->get('/list/byEnvelopeNumber/:tEnvelopeNumber',function($tEnvelopeNumber) use ($app) 
+	{
+		$return[] = getFamilyStringByEnvelope($tEnvelopeNumber);
+		echo json_encode($return);
+		
+	});
 });
 
 $app->group('/deposits',function () use ($app) {

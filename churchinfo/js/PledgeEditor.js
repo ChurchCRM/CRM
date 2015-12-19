@@ -43,7 +43,6 @@ $(".denominationInputBox").on('change',function(){
 	$(".denominationInputBox").each(function(i,el){
 	var currencyvalue=$(el).attr("data-cur-value");
 	var currencycount=$(el).val();
-	console.log("("+currencycount+"): "+currencyvalue);
 	grandtotal+= currencyvalue*currencycount;
 	});
 	$('#grandTotal').val(formatCurrency(grandtotal));
@@ -64,8 +63,8 @@ $("#FamilyName").autocomplete({
 $('#MatchEnvelope').click(function() {
 	console.log("matchenvelopecliked");
    $.ajax({
-            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : 'ajax/SearchEnvelope.php?searchtype=envelope&envelopeID='+$('input[name=Envelope]').val(), // the url where we want to POST
+            type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
+            url         : '/api/members/list/byEnvelopeNumber/'+$('input[name=Envelope]').val(), // the url where we want to POST
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true
         })
@@ -104,10 +103,9 @@ function getDenominationSubmitData(){
 	var denominations=new Array();
 	$(".denominationInputBox").each(function(i,el){
 	var currencyObject = {currencyID: $(el).attr("Name"), Count: $(el).val()}
-	console.log(currencyObject);
 	denominations.push(currencyObject);
 	});
-	return denominations;	
+	return JSON.stringify(denominations);	
 }
 
 
@@ -115,18 +113,27 @@ function getSubmitFormData(){
 	var fd = {
 				'FamilyID'			: $('[name=FamilyID]:eq(1)').val(),
 				'Date'				:$('input[name=Date]').val(),
-				'FundSplit'			:$('select[name=FundSplit]').val(),
+				
 				'FYID'				 : $('select[name=FYID]').val(),
 				'Envelope'             : $('input[name=Envelope]').val(),
 				'paymentby'    : $('select[name=Method]').val(),
-				
 				'comment'			:$('input[name=OneComment]').val(),
+				'total'				:$('input[name=Total]').val()};
+	
+				if ($('select[name=Method]').val() == "CASH")
+				{
+					fd['cashDenominations']=getDenominationSubmitData();
+				}
+				if ($('select[name=FundSplit]').val() == "SPLIT")
+				{
+					fd['FundSplit']=getSplitSubmitData();
+				}
+				else
+				{
+					fd['FundSplit']=$('select[name=FundSplit]').val();
+				}
 				
-				
-				'total'				:$('input[name=Total]').val(),
-				'cashDenominations'	:getDenominationSubmitData()
-				
-			};
+			
 			
 	return fd;
 }
