@@ -11,16 +11,17 @@ class PersonService
 
         if ($per_ID != "") {
 
-            $photo = "";
-            if ($per_Email != "") {
-                $photo = $this->getGravatar($per_Email);
+            $photoFile = $this->getUploadedPhoto($per_ID);
+
+            if ($photoFile == "" && $per_Email != "") {
+                $photoFile = $this->getGravatar($per_Email);
             }
 
-            if ($photo == "") {
-                $photo = $this->getLocalPhoto($per_ID, $per_Gender, "Child");
+            if ($photoFile == "") {
+                $photoFile = $this->getDefaultPhoto();
             }
 
-            echo $photo;
+            echo $photoFile;
         } else {
             echo "{ error: person not found for id ".$id. "}";
         }
@@ -28,7 +29,7 @@ class PersonService
     }
 
     private
-    function getLocalPhoto($personId, $gender, $famRole)
+    function getUploadedPhoto($personId)
     {
         $validextensions = array("jpeg", "jpg", "png");
         $hasFile = false;
@@ -41,18 +42,11 @@ class PersonService
             }
         }
 
-        if (!$hasFile) {
-            if ($gender == 1 && $famRole == "Child") {
-                $photoFile = "img/kid_boy-128.png";
-            } else if ($gender == 2 && $famRole != "Child") {
-                $photoFile = "img/woman-128.png";
-            } else if ($gender == 2 && $famRole == "Child") {
-                $photoFile = "img/kid_girl-128.png";
-            } else {
-                $photoFile = "img/man-128.png";
-            }
+        if ($hasFile) {
+            return $photoFile;
+        } else {
+            return "";
         }
-        return $photoFile;
     }
 
     private
@@ -87,6 +81,20 @@ class PersonService
         }
 
         echo '{"persons": ' . json_encode($return) . '}';
+    }
+
+    private function getDefaultPhoto($gender, $famRole)
+    {
+        $photoFile = "img/man-128.png";
+        if ($gender == 1 && $famRole == "Child") {
+            $photoFile = "img/kid_boy-128.png";
+        } else if ($gender == 2 && $famRole  != "Child") {
+            $photoFile = "img/woman-128.png";
+        } else if ($gender == 2 && $famRole  == "Child") {
+            $photoFile = "img/kid_girl-128.png";
+        }
+
+        return $photoFile;
     }
 
 }
