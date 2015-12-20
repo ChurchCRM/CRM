@@ -48,27 +48,27 @@ class DataSeedService
 	per_FriendDate,
 	per_Flags )
 	VALUES ('" .
-            sanitize($user->name->title) . "','" .
-            sanitize($user->name->first) . "',NULL,'" .
-            sanitize($user->name->last) . "',NULL,'" .
-            sanitize($user->gender) . "','" .
-            sanitize($user->location->street) . "',NULL,'" .
-            sanitize($user->location->city) . "','" .
-            sanitize($user->location->state) . "','" .
-            sanitize($user->location->zip) . "','USA','" .
-            sanitize($user->phone) . "',NULL,'" .
-            sanitize($user->cell) . "','" .
-            sanitize($user->email) . "',NULL," .
+            $this->sanitize($user->name->title) . "','" .
+            $this->sanitize($user->name->first) . "',NULL,'" .
+            $this->sanitize($user->name->last) . "',NULL,'" .
+            $this->sanitize($user->gender) . "','" .
+            $this->sanitize($user->location->street) . "',NULL,'" .
+            $this->sanitize($user->location->city) . "','" .
+            $this->sanitize($user->location->state) . "','" .
+            $this->sanitize($user->location->zip) . "','USA','" .
+            $this->sanitize($user->phone) . "',NULL,'" .
+            $this->sanitize($user->cell) . "','" .
+            $this->sanitize($user->email) . "',NULL," .
             date('m', $user->dob) . "," .
             date('d', $user->dob) . "," .
             date('Y', $user->dob) . ",NULL,'" .
-            sanitize($user->famID) . "'," .
-            sanitize($user->per_fmr_id) . "," . "\"" .
+            $this->sanitize($user->famID) . "'," .
+            $this->sanitize($user->per_fmr_id) . "," . "\"" .
             date('Y-m-d', $user->registered) .
             "\"" . ",1,'" .
             date("YmdHis") .
             "'," .
-            sanitize($_SESSION['iUserID']) . ",";
+            $this->sanitize($_SESSION['iUserID']) . ",";
 
         if (strlen($dFriendDate) > 0)
             $sSQL .= "\"" . $dFriendDate . "\"";
@@ -149,6 +149,7 @@ class DataSeedService
 
     function generateFamilies($families)
     {
+		echo "Generating Families";
         $kidsPerFamily = 3;
         $kidsdev = 3;
         $personPointer = 1;
@@ -161,31 +162,33 @@ class DataSeedService
         $rTotalChildren = 0;
 
         for ($i = 0; $i < $families; $i++) {
-            $hoh = getPerson($rs, $personPointer);
-            $FamilyID = insertFamily($hoh);
+			
+            $hoh = $this->getPerson($rs, $personPointer);
+			
+            $FamilyID = $this->insertFamily($hoh);
             $familyName = $hoh->name->last;
             $hoh->famID = $FamilyID;
             $hoh->per_fmr_id = 1;
 
-            $spouse = getPerson($rs, $personPointer);
+            $spouse = $this->getPerson($rs, $personPointer);
             $spouse->name->last = $familyName;
             $spouse->famID = $FamilyID;
             $spouse->per_fmr_id = 2;
-
-            insertPerson($hoh);
+			
+            $this->insertPerson($hoh);
             $rTotalHoh += 1;
-            insertPerson($spouse);
+            $this->insertPerson($spouse);
             $rTotalSpouse += 1;
 
             #$thisFamChildren = stats_rand_gen_normal ($kidsPerFamily, $stddev);
             $thisFamChildren = rand($kidsPerFamily - $kidsdev, $kidsPerFamily + $kidsdev);
 
             for ($y = 0; $y < $thisFamChildren; $y++) {
-                $child = getPerson($rs, $personPointer);
+                $child = $this->getPerson($rs, $personPointer);
                 $child->name->last = $familyName;
                 $child->famID = $FamilyID;
                 $child->per_fmr_id = 3;
-                insertPerson($child);
+                $this->insertPerson($child);
                 $rTotalChildren += 1;
             }
 

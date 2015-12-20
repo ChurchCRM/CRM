@@ -19,6 +19,7 @@ Slim::registerAutoloader();
 // Services
 require_once "services/PersonService.php";
 require_once "services/FamilyService.php";
+require_once "services/DataSeedService.php";
 
 $app = new Slim();
 
@@ -75,13 +76,11 @@ $app->group('/families', function () use ($app) {
 
 $app->group('/data/seed', function () use ($app) {
     $app->post('/families', function () use ($app) {
-        echo 1;
         $request = $app->request();
         $body = $request->getBody();
         $input = json_decode($body);
         $families = $input->families;
-        echo $families;
-        //$app->DataSeedService->generateFamilies($families);
+        $app->DataSeedService->generateFamilies($families);
     });
     $app->post('/sundaySchoolClasses', function () use ($app) {
         $request = $app->request();
