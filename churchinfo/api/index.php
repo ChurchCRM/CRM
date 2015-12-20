@@ -108,10 +108,11 @@ $app->group('/deposits',function () use ($app) {
 
 $app->group('/payments',function () use ($app) {
 	$app->get('/','listPayments');
-	$app->post('/', function ($familyId) use ($app) {
+	$app->post('/', function () use ($app) {
 		$request = $app->request();
 		$body = $request->getBody();
-		echo $body;
+		$payment = json_decode($body);	
+		processPayment($payment);
 	});
 	$app->get('/:id','listPayments')->conditions(array('id' => '[0-9]+'));
 	$app->get('/byFamily/:familyId(/:fyid)', function ($familyId,$fyid=-1) use ($app) {
@@ -156,6 +157,49 @@ $app->group('/payments',function () use ($app) {
 });
 
 $app->run();
+
+function processPayment($payment)
+{
+		$sSQL = "INSERT INTO pledge_plg
+		(plg_famID,
+		plg_FYID, 
+		plg_date, 
+		plg_amount,
+		plg_schedule, 
+		plg_method, 
+		plg_comment, 
+		plg_DateLastEdited, 
+		plg_EditedBy, 
+		plg_PledgeOrPayment, 
+		plg_fundID, 
+		plg_depID, 
+		plg_CheckNo, 
+		plg_scanString, 
+		plg_aut_ID, 
+		plg_NonDeductible, 
+		plg_GroupKey)
+		VALUES ('" . 
+		$payment->FamilyID . "','" . 
+		$payment->FYID . "','" . 
+		$payment->Date . "','" .
+		$nAmount[$fun_id] . "','" . 
+		$iSchedule . "','" . 
+		$iMethod  . "','" . 
+		$sComment[$fun_id] . "','".
+		date("YmdHis") . "'," .
+		$_SESSION['iUserID'] . ",'" . 
+		$PledgeOrPayment . "'," . 
+		$fun_id . "," . 
+		$iCurrentDeposit . "," . 
+		$iCheckNo . ",'" . 
+		$tScanString . "','" . 
+		$iAutID  . "','" . 
+		$nNonDeductible[$fun_id] . "','" . 
+		$sGroupKey . "')";
+		echo $sSQL;
+
+	
+}
 
 
 function getPerson($rs,&$personPointer)

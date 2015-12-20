@@ -151,21 +151,12 @@ $('#PledgeForm').submit(function(event) {
        $.ajax({
             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
             url         : 'api/payments', // the url where we want to POST
-            data        : formData, // our data object
+            data        :  JSON.stringify(formData), // our data object
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true
         })
 		 .done(function(data) {
 			console.log(data);
-			console.log(data.downloads);
-			var obj = jQuery.parseJSON(data.downloads);
-			console.log(obj);
-			jQuery.each(obj, function() {
-					console.log(this);
-					console.log(this.name);
-					console.log(this.url);
-				});
-			
 		  });
 		 
 		
