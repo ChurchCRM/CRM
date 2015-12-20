@@ -307,12 +307,16 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt='bAll') {
 ?>
 
 <script language="javascript">
-
-function confirmDeleteField( Field, Row ) {
-var answer = confirm (<?php echo "'" . gettext("Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!") . "'"; ?>)
-if ( answer )
-    window.location="FamilyCustomFieldsRowOps.php?Field=" + Field + "&OrderID=" + Row + "&Action=delete";
-    confirm ("Field Deleted");
+function confirmDeleteField( event ) {
+	var answer = confirm (<?php echo "'" . gettext("Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!") . "'"; ?>)
+	if ( answer )
+	{
+		window.location="FamilyCustomFieldsRowOps.php?Field=" + Field + "&OrderID=" + Row + "&Action=delete";
+		confirm ("Field Deleted");
+		return true;
+	}
+	event.preventDefault ? event.preventDefault() : event.returnValue = false;
+	return false;
 }
 </script>
 
@@ -374,7 +378,7 @@ else
                     echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
                 if ($row < $numRows)
                     echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
-		echo "<a href=\"FamilyCustomFieldsRowOps.php?Field= $aFieldFields[$row] &OrderID=$row&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>";
+		echo "<a href=\"FamilyCustomFieldsRowOps.php?Field=" . $aFieldFields[$row] . "&OrderID=". $row . "&Action=delete\" onclick=\"return confirmDeleteField(event)\"><img src=\"Images/x.gif\" border=\"0\"></a>";
                 ?>
             </td>
 
