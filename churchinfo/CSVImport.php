@@ -217,28 +217,28 @@ if (isset($_POST["UploadCSV"]))
         ?>
             <td>
             <select name="<?= "col" . $col ?>">
-                <option value="0"><?php echo gettext("Ignore this Field"); ?></option>
-                <option value="1"><?php echo gettext("Title"); ?></option>
-                <option value="2"><?php echo gettext("First Name"); ?></option>
-                <option value="3"><?php echo gettext("Middle Name"); ?></option>
-                <option value="4"><?php echo gettext("Last Name"); ?></option>
-                <option value="5"><?php echo gettext("Suffix"); ?></option>
-                <option value="6"><?php echo gettext("Gender"); ?></option>
-                <option value="7"><?php echo gettext("Donation Envelope"); ?></option>
-                <option value="8"><?php echo gettext("Address1"); ?></option>
-                <option value="9"><?php echo gettext("Address2"); ?></option>
-                <option value="10"><?php echo gettext("City"); ?></option>
-                <option value="11"><?php echo gettext("State"); ?></option>
-                <option value="12"><?php echo gettext("Zip"); ?></option>
-                <option value="13"><?php echo gettext("Country"); ?></option>
-                <option value="14"><?php echo gettext("Home Phone"); ?></option>
-                <option value="15"><?php echo gettext("Work Phone"); ?></option>
-                <option value="16"><?php echo gettext("Mobile Phone"); ?></option>
-                <option value="17"><?php echo gettext("Email"); ?></option>
-                <option value="18"><?php echo gettext("Work / Other Email"); ?></option>
-                <option value="19"><?php echo gettext("Birth Date"); ?></option>
-                <option value="20"><?php echo gettext("Membership Date"); ?></option>
-                <option value="21"><?php echo gettext("Wedding Date"); ?></option>
+                <option value="0"><?= gettext("Ignore this Field"); ?></option>
+                <option value="1"><?= gettext("Title"); ?></option>
+                <option value="2"><?= gettext("First Name"); ?></option>
+                <option value="3"><?= gettext("Middle Name"); ?></option>
+                <option value="4"><?= gettext("Last Name"); ?></option>
+                <option value="5"><?= gettext("Suffix"); ?></option>
+                <option value="6"><?= gettext("Gender"); ?></option>
+                <option value="7"><?= gettext("Donation Envelope"); ?></option>
+                <option value="8"><?= gettext("Address1"); ?></option>
+                <option value="9"><?= gettext("Address2"); ?></option>
+                <option value="10"><?= gettext("City"); ?></option>
+                <option value="11"><?= gettext("State"); ?></option>
+                <option value="12"><?= gettext("Zip"); ?></option>
+                <option value="13"><?= gettext("Country"); ?></option>
+                <option value="14"><?= gettext("Home Phone"); ?></option>
+                <option value="15"><?= gettext("Work Phone"); ?></option>
+                <option value="16"><?= gettext("Mobile Phone"); ?></option>
+                <option value="17"><?= gettext("Email"); ?></option>
+                <option value="18"><?= gettext("Work / Other Email"); ?></option>
+                <option value="19"><?= gettext("Birth Date"); ?></option>
+                <option value="20"><?= gettext("Membership Date"); ?></option>
+                <option value="21"><?= gettext("Wedding Date"); ?></option>
                 <?= $sPerCustomFieldList.$sFamCustomFieldList; ?>
             </select>
             </td>
@@ -248,19 +248,19 @@ if (isset($_POST["UploadCSV"]))
         echo "</table>";
         ?>
         <BR>
-        <input type="checkbox" value="1" name="IgnoreFirstRow"><?php echo gettext("Ignore first CSV row (to exclude a header)"); ?>
+        <input type="checkbox" value="1" name="IgnoreFirstRow"><?= gettext("Ignore first CSV row (to exclude a header)"); ?>
         <BR><BR>
         <BR>
         <input type="checkbox" value="1" name="MakeFamilyRecords" checked="true">
-        <select name="bundleFamCustom">
+        <select name="MakeFamilyRecordsMode">
             <option value="0"><?= gettext("Make Family records based on last name and address") ?></option>
             <?= $sPerCustomFieldList.$sFamCustomFieldList; ?>
         </select>
 
         <BR><BR>
         <select name="FamilyMode">
-            <option value="0"><?php echo gettext("Patriarch");?></option>
-            <option value="1"><?php echo gettext("Matriarch");?></option>
+            <option value="0"><?= gettext("Patriarch");?></option>
+            <option value="1"><?= gettext("Matriarch");?></option>
         </select>
         <?= gettext("Family Type: used with Make Family records... option above"); ?>
         <BR><BR>
@@ -595,10 +595,28 @@ if (isset($_POST["DoImport"]))
                 $rsNewPerson = RunQuery($sSQL);
                 extract(mysql_fetch_array($rsNewPerson));
 
-                // see if there is a family with same last name and address
-                $sSQL = "SELECT fam_ID, fam_name, fam_Address1
-                         FROM family_fam where fam_Name = '".addslashes($per_LastName)."'
-                         AND fam_Address1 = '".$sAddress1."'"; // slashes added already
+                // see if there is a family...
+                if (!isset($_POST["MakeFamilyRecordsMode"]) || $_POST["MakeFamilyRecordsMode"] == "0")
+                {
+                    // ...with same last name and address
+                    $sSQL = "SELECT fam_ID
+                             FROM family_fam where fam_Name = '".addslashes($per_LastName)."'
+                             AND fam_Address1 = '".$sAddress1."'"; // slashes added already
+                } else {
+                    // ...with the same custom field values
+                    $field = $_POST["MakeFamilyRecordsMode"];
+                    $field_value = '';
+                    for ($col = 0; $col < $numCol; $col++)
+                    {
+                        if ($aFamColumnCustom[$col] && $field == $aColumnID[$col])
+                        {
+                            $field_value = trim($aData[$col]);
+                            break;
+                        }
+                    }
+                    $sSQL = "SELECT f.fam_ID FROM family_fam f, family_custom c
+                             WHERE f.fam_ID = c.fam_ID AND c.".addslashes(substr($field,1))." = '".addslashes($field_value)."'";
+                }
                 $rsExistingFamily = RunQuery($sSQL);
                 $famid = 0;
                 if(mysql_num_rows($rsExistingFamily) > 0)
