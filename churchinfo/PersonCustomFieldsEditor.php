@@ -288,11 +288,15 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt='bAll') {
 ?>
 <script language="javascript">
 
-function confirmDeleteField( Field, Row ) {
-var answer = confirm (<?php echo "'" . gettext("Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!") . "'"; ?>)
-if ( answer )
-	window.location="PersonCustomFieldsRowOps.php?Field=" + Field + "&OrderID=" + Row + "&Action=delete";
-	confirm ("Field Deleted");
+function confirmDeleteField(event) {
+	var answer = confirm (<?php echo "'" . gettext("Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!") . "'"; ?>)
+	if ( answer )
+	{
+		confirm ("Field Deleted");
+		return true;
+	}
+	event.preventDefault ? event.preventDefault() : event.returnValue = false;
+	return false;
 }
 </script>
 
@@ -355,7 +359,7 @@ else
 				if ($row < $numRows)
 					echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
 				?>
-				<input type="image" value="delete" Name="delete" onclick="confirmDeleteField(<?php echo "'" . $aFieldFields[$row] . "', '" . $row . "'"; ?>);" src="Images/x.gif">
+				<a href="PersonCustomFieldsRowOps.php?Field=<?= $aFieldFields[$row] ?>&OrderID=<?= $row ?>&Action=delete" onclick="return confirmDeleteField(event)"><img src="Images/x.gif"></a>
 			</td>
 
 			<td class="TextColumn" style="font-size:80%;">
