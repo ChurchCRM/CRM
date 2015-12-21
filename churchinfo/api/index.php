@@ -76,7 +76,7 @@ $app->group('/families', function () use ($app) {
     });
 	$app->get('/byCheckNumber/:tScanString', function($tScanString) use ($app) 
 	{
-		getMemberByScanString($sstrnig)
+		getMemberByScanString($sstrnig);
 	});
 	$app->get('/list/byEnvelopeNumber/:tEnvelopeNumber',function($tEnvelopeNumber) use ($app) 
 	{
@@ -105,9 +105,10 @@ $app->group('/payments',function () use ($app) {
 	});
 	$app->get('/:id','listPayments')->conditions(array('id' => '[0-9]+'));
 	$app->get('/byFamily/:familyId(/:fyid)', function ($familyId,$fyid=-1) use ($app) {
-		getDepositsByFamilyID($fid)
+		getDepositsByFamilyID($fid);
 		
 	});
+});
 
 
 $app->group('/data/seed', function () use ($app) {
