@@ -64,7 +64,7 @@ $('#MatchEnvelope').click(function() {
 	console.log("matchenvelopecliked");
    $.ajax({
             type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
-            url         : '/api/members/list/byEnvelopeNumber/'+$('input[name=Envelope]').val(), // the url where we want to POST
+            url         : '/api/families/byEnvelopeNumber/'+$('input[name=Envelope]').val(), // the url where we want to POST
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true
         })

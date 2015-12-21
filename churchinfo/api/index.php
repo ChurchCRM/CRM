@@ -22,7 +22,7 @@ Slim::registerAutoloader();
 require_once "services/PersonService.php";
 require_once "services/FamilyService.php";
 require_once "services/DataSeedService.php";
-require_once "services/FinancialService.php";
+#require_once "services/FinancialService.php";
 
 $app = new Slim();
 
@@ -39,6 +39,10 @@ $app->container->singleton('FamilyService', function () {
 $app->container->singleton('DataSeedService', function () {
     return new DataSeedService();
 });
+
+#$app->container->singleton('FinancialService', function () {
+#    return new FinancialService();
+#});
 
 $app->group('/persons', function () use ($app) {
     $app->get('/search/:query', function ($query) use ($app) {
@@ -76,9 +80,9 @@ $app->group('/families', function () use ($app) {
     });
 	$app->get('/byCheckNumber/:tScanString', function($tScanString) use ($app) 
 	{
-		getMemberByScanString($sstrnig);
+		$app->FinancialService->getMemberByScanString($sstrnig);
 	});
-	$app->get('/list/byEnvelopeNumber/:tEnvelopeNumber',function($tEnvelopeNumber) use ($app) 
+	$app->get('/byEnvelopeNumber/:tEnvelopeNumber',function($tEnvelopeNumber) use ($app) 
 	{
 		$return[] = getFamilyStringByEnvelope($tEnvelopeNumber);
 		echo json_encode($return);
@@ -87,28 +91,28 @@ $app->group('/families', function () use ($app) {
 	
 });
 
-$app->group('/deposits',function () use ($app) {
-	$app->get('/','listDeposits');
-	$app->get('/:id','listDeposits')->conditions(array('id' => '[0-9]+'));
-	$app->get('/:id/payments','listPayments')->conditions(array('id' => '[0-9]+'));
-});
+#$app->group('/deposits',function () use ($app) {
+	#$app->get('/','listDeposits');
+	#$app->get('/:id','listDeposits')->conditions(array('id' => '[0-9]+'));
+	#$app->get('/:id/payments','listPayments')->conditions(array('id' => '[0-9]+'));
+#});
 
 
 
-$app->group('/payments',function () use ($app) {
-	$app->get('/','listPayments');
-	$app->post('/', function () use ($app) {
-		$request = $app->request();
-		$body = $request->getBody();
-		$payment = json_decode($body);	
-		processPayment($payment);
-	});
-	$app->get('/:id','listPayments')->conditions(array('id' => '[0-9]+'));
-	$app->get('/byFamily/:familyId(/:fyid)', function ($familyId,$fyid=-1) use ($app) {
-		getDepositsByFamilyID($fid);
+#$app->group('/payments',function () use ($app) {
+	#$app->get('/','listPayments');
+	#$app->post('/', function () use ($app) {
+		#$request = $app->request();
+		#$body = $request->getBody();
+		#$payment = json_decode($body);	
+		#processPayment($payment);
+	#});
+	#$app->get('/:id','listPayments')->conditions(array('id' => '[0-9]+'));
+	#$app->get('/byFamily/:familyId(/:fyid)', function ($familyId,$fyid=-1) use ($app) {
+		#getDepositsByFamilyID($fid);
 		
-	});
-});
+	#});
+#});
 
 
 $app->group('/data/seed', function () use ($app) {
