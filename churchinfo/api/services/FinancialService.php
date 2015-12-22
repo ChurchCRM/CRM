@@ -68,51 +68,6 @@ class FinancialService {
 		
 	}
 
-
-	function processPayment($payment)
-	{
-			$sSQL = "INSERT INTO pledge_plg
-			(plg_famID,
-			plg_FYID, 
-			plg_date, 
-			plg_amount,
-			plg_schedule, 
-			plg_method, 
-			plg_comment, 
-			plg_DateLastEdited, 
-			plg_EditedBy, 
-			plg_PledgeOrPayment, 
-			plg_fundID, 
-			plg_depID, 
-			plg_CheckNo, 
-			plg_scanString, 
-			plg_aut_ID, 
-			plg_NonDeductible, 
-			plg_GroupKey)
-			VALUES ('" . 
-			$payment->FamilyID . "','" . 
-			$payment->FYID . "','" . 
-			$payment->Date . "','" .
-			$nAmount[$fun_id] . "','" . 
-			$iSchedule . "','" . 
-			$iMethod  . "','" . 
-			$sComment[$fun_id] . "','".
-			date("YmdHis") . "'," .
-			$_SESSION['iUserID'] . ",'" . 
-			$PledgeOrPayment . "'," . 
-			$fun_id . "," . 
-			$iCurrentDeposit . "," . 
-			$iCheckNo . ",'" . 
-			$tScanString . "','" . 
-			$iAutID  . "','" . 
-			$nNonDeductible[$fun_id] . "','" . 
-			$sGroupKey . "')";
-			echo $sSQL;
-
-		
-	}
-
-
 	function getPerson($rs,&$personPointer)
 	{
 		$user=$rs[$personPointer]->user;
@@ -327,7 +282,7 @@ class FinancialService {
 			
 	}
 
-	function validateDate($date) { 
+	private function validateDate($payment) { 
 		// Validate Date
 		if (strlen($dDate) > 0) {
 			list($iYear, $iMonth, $iDay) = sscanf($dDate,"%04d-%02d-%02d");
@@ -340,7 +295,7 @@ class FinancialService {
 	
 	}
 	
-	function validateCheck($check) {
+	private function validateCheck($payment) {
 
 		// detect check inconsistencies
 		if ($PledgeOrPayment=='Payment' and $iCheckNo) {
@@ -362,10 +317,10 @@ class FinancialService {
 		
 	}
 	
-	
-	function validateFund($fund) {
+	private function validateFund($payment) {
 		
-		if (!$iSelectedFund) { // split
+		if (count($payment->FundSplit) > 0 ) { // split
+			echo "split selected";
 			// make sure at least one fund has a non-zero numer
 			$nonZeroFundAmountEntered = 0;
 			foreach ($fundId2Name as $fun_id => $fun_name) {
@@ -393,95 +348,24 @@ class FinancialService {
 				echo "bErrorFlag 118";
 			}
 		}
+		elseif ($payment->FundSplit == "None")
+		{
+			throw new Exception ("error, must select a fundm or split");
+			
+		}
+		else
+		{
+			echo "error, must select a fundm or split";
+			// they selected one of the other funds.  Let's make sure it's valid.
+			
+			
+		}
 		
 
 	}
 	
-	
-	function submitPledgeOrPayment() {
+	function validateChecks($payment) {
 		
-			$iFamily = FilterInput($_POST["FamilyID"],'int');
-			
-			$dDate = FilterInput($_POST["Date"]);
-			if (!$dDate) {
-				if (array_key_exists ('idefaultDate', $_SESSION))
-					$dDate = $_SESSION['idefaultDate'];
-				else
-					$dDate = date ("Y-m-d");
-			}
-
-			if (isset($_POST["FundSplit"])) {
-				$iSelectedFund = FilterInput($_POST["FundSplit"]);
-			} 
-
-			// set from drop-down if set, saved session default, or by calcuation
-			$iFYID = FilterInput($_POST["FYID"], 'int');
-			if (!$iFYID) {
-				$iFYID =  $_SESSION['idefaultFY'];
-			}
-			if (!$iFYID) {
-				$iFYID = CurrentFY();
-			}
-			
-			if (array_key_exists ("CheckNo", $_POST))
-				$iCheckNo = FilterInput($_POST["CheckNo"], 'int');
-			else
-				$iCheckNo = 0;
-			
-			if (array_key_exists ("Schedule", $_POST))
-				$iSchedule = FilterInput($_POST["Schedule"]);
-			else
-				$iSchedule='Once';
-			$_SESSION['iDefaultSchedule'] = $iSchedule;
-			
-			$iMethod = FilterInput($_POST["Method"]);
-			
-			if (!$iMethod) {
-				if ($sGroupKey) 
-				{
-					$sSQL = "SELECT DISTINCT plg_method FROM pledge_plg WHERE plg_GroupKey='" . $sGroupKey . "'";
-					$rsResults = RunQuery($sSQL);
-					list($iMethod) = mysql_fetch_row($rsResults);
-				} 
-				elseif ($iCurrentDeposit) 
-				{
-					$sSQL = "SELECT plg_method from pledge_plg where plg_depID=\"" . $iCurrentDeposit . "\" ORDER by plg_plgID DESC LIMIT 1";
-					$rsMethod = RunQuery($sSQL);
-					$num = mysql_num_rows($rsMethod);
-					if ($num) 
-					{	// set iMethod to last record's setting
-						extract(mysql_fetch_array($rsMethod));  
-						$iMethod = $plg_method;
-					} 
-					else 
-					{
-						$iMethod = "CHECK";
-					}
-				} 
-				else 
-				{
-					$iMethod = "CHECK";
-				}
-			}
-
-			$iEnvelope = 0;
-			if (array_key_exists ("Envelope", $_POST))
-				$iEnvelope = FilterInput($_POST["Envelope"], 'int');
-			$iTotalAmount = FilterInput($_POST["TotalAmount"]);
-			if (array_key_exists ("OneComment", $_POST))
-				$sOneComment = FilterInput($_POST["OneComment"]);
-			else
-				$sOneComment = "";
-			if ($iSelectedFund) {
-				$nAmount[$iSelectedFund] = $iTotalAmount;
-				$sComment[$iSelectedFund] = $sOneComment;
-			}
-
-		//Initialize the error flag
-		$bErrorFlag = false;
-
-		validateFund($fund);
-
 		if (array_key_exists ("ScanInput", $_POST))
 			$tScanString = FilterInput($_POST["ScanInput"]);
 		else
@@ -496,16 +380,32 @@ class FinancialService {
 			$bErrorFlag = true;
 			echo "bErrorFlag 133";
 		}
-
-		validateCheck();
-
-		validateDate($date);
-
-
-		//If no errors, then let's update...
-		if (!$bErrorFlag and !$dep_Closed) {
-			echo "no errors, update!";
-			// Only set PledgeOrPayment when the record is first created
+		
+	}
+	
+	function processCurrencyDenominations($payment) {
+		//Process the Currency Denominations for this deposit
+			if ($iMethod == "CASH"){
+				$sGroupKey = genGroupKey("cash", $iFamily, $fun_id, $dDate);
+				foreach ($currencyDenomination2Name as $cdem_denominationID =>$cdem_denominationName)
+				{
+					$sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, pdem_denominationID, pdem_denominationQuantity) 
+					VALUES ('". $sGroupKey ."','".$cdem_denominationID."','".$_POST['currencyCount-'.$cdem_denominationID]."')";
+				
+					if (isset ($sSQL)) {
+						RunQuery($sSQL);
+						unset($sSQL);
+					}
+					//$currencyDenomination2Name[$cdem_denominationID] = $cdem_denominationName;
+					//$currencyDenominationValue[$cdem_denominationID] = $cdem_denominationValue;
+				}
+			}
+		
+		
+	}
+	
+	function insertPledgeorPayment ($payment) {
+		// Only set PledgeOrPayment when the record is first created
 			// loop through all funds and create non-zero amount pledge records
 			foreach ($fundId2Name as $fun_id => $fun_name) {
 				if (!$iCheckNo) { $iCheckNo = 0; }
@@ -538,9 +438,42 @@ class FinancialService {
 							$sGroupKey = genGroupKey("cash", $iFamily, $fun_id, $dDate);
 						} 
 					}
-					$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID, plg_NonDeductible, plg_GroupKey)
-				VALUES ('" . $iFamily . "','" . $iFYID . "','" . $dDate . "','" . $nAmount[$fun_id] . "','" . $iSchedule . "','" . $iMethod  . "','" . $sComment[$fun_id] . "'";
-					$sSQL .= ",'" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'" . $PledgeOrPayment . "'," . $fun_id . "," . $iCurrentDeposit . "," . $iCheckNo . ",'" . $tScanString . "','" . $iAutID  . "','" . $nNonDeductible[$fun_id] . "','" . $sGroupKey . "')";
+		$sSQL = "INSERT INTO pledge_plg
+			(plg_famID,
+			plg_FYID, 
+			plg_date, 
+			plg_amount,
+			plg_schedule, 
+			plg_method, 
+			plg_comment, 
+			plg_DateLastEdited, 
+			plg_EditedBy, 
+			plg_PledgeOrPayment, 
+			plg_fundID, 
+			plg_depID, 
+			plg_CheckNo, 
+			plg_scanString, 
+			plg_aut_ID, 
+			plg_NonDeductible, 
+			plg_GroupKey)
+			VALUES ('" . 
+			$payment->FamilyID . "','" . 
+			$payment->FYID . "','" . 
+			$payment->Date . "','" .
+			$nAmount[$fun_id] . "','" . 
+			$iSchedule . "','" . 
+			$iMethod  . "','" . 
+			$sComment[$fun_id] . "','".
+			date("YmdHis") . "'," .
+			$_SESSION['iUserID'] . ",'" . 
+			$PledgeOrPayment . "'," . 
+			$fun_id . "," . 
+			$iCurrentDeposit . "," . 
+			$iCheckNo . ",'" . 
+			$tScanString . "','" . 
+			$iAutID  . "','" . 
+			$nNonDeductible[$fun_id] . "','" . 
+			$sGroupKey . "')";
 					
 					echo "SQL: ".$sSQL;
 				}
@@ -548,29 +481,33 @@ class FinancialService {
 					RunQuery($sSQL);
 					unset($sSQL);
 				}
-				
-			} // end foreach of $fundId2Name
-			
-			
-			//Process the Currency Denominations for this deposit
-			if ($iMethod == "CASH"){
-				$sGroupKey = genGroupKey("cash", $iFamily, $fun_id, $dDate);
-				foreach ($currencyDenomination2Name as $cdem_denominationID =>$cdem_denominationName)
-				{
-					$sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, pdem_denominationID, pdem_denominationQuantity) 
-					VALUES ('". $sGroupKey ."','".$cdem_denominationID."','".$_POST['currencyCount-'.$cdem_denominationID]."')";
-				
-					if (isset ($sSQL)) {
-						RunQuery($sSQL);
-						unset($sSQL);
-					}
-					//$currencyDenomination2Name[$cdem_denominationID] = $cdem_denominationName;
-					//$currencyDenominationValue[$cdem_denominationID] = $cdem_denominationValue;
-				}
+			}
+		
+	}
+	
+	
+	function submitPledgeOrPayment($payment) {
+
+		try {
+			echo "Validating Fund";
+			$this->validateFund($payment);
+			echo "Validating checks";
+			$this->validateChecks($payment);
+			echo "Validating check";
+			$this->validateCheck($payment);
+			echo "Validating date";
+			$this->validateDate($payment);
+			echo "Validating deposit";
+			$this->validateDeposit($payment);
+			echo "no errors, update!";
+			#$this->insertPledgeorPayment ($payment);
+			if ($payment->paymentby =="CASH") {
+				$this->processCurrencyDenominations($payment);
 			}
 			
-			
-		} // end if !$bErrorFlag
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
 		
 	}
 }

@@ -95,7 +95,26 @@ $('#SetDefaultCheck').click(function() {
 });
 
 function getFundSubmitData(){
-
+	
+	var funds=new Array();
+	if ($('select[name=FundSplit]').val() == "0")
+	{
+		$(".fundrow").each(function(i,el){
+			console.log(i);
+			var fundID = (i+1);
+			var amount = $('input[name='+fundID+'_Amount]').val();
+			var nondedamount=  $('input[name='+fundID+'_NonDeductible]').val();
+			var comment=  $('input[name='+fundID+'_Comment]').val();
+			var fundobjet ={FundID: fundID, Amount: amount, NonDeductible:nondedamount, Comment: comment};
+			funds.push(fundobjet);
+		});
+	}
+	else
+	{
+		var fundobjet ={FundSplit: $('select[name=FundSplit]').val()};
+		funds.push(fundobjet);
+	}
+	return JSON.stringify(funds);	
 
 }
 
@@ -119,19 +138,12 @@ function getSubmitFormData(){
 				'paymentby'    : $('select[name=Method]').val(),
 				'comment'			:$('input[name=OneComment]').val(),
 				'total'				:$('input[name=Total]').val()};
-	
 				if ($('select[name=Method]').val() == "CASH")
 				{
 					fd['cashDenominations']=getDenominationSubmitData();
 				}
-				if ($('select[name=FundSplit]').val() == "SPLIT")
-				{
-					fd['FundSplit']=getSplitSubmitData();
-				}
-				else
-				{
-					fd['FundSplit']=$('select[name=FundSplit]').val();
-				}
+				fd['FundSplit']=getFundSubmitData();
+				
 				
 			
 			
@@ -140,6 +152,7 @@ function getSubmitFormData(){
 
 
 $('#PledgeForm').submit(function(event) {
+		event.preventDefault();
 		console.log("submit pressed");
         // get the form data
         // there are many ways to get this data using jQuery (you can use the class or id also)
@@ -161,7 +174,7 @@ $('#PledgeForm').submit(function(event) {
 		 
 		
 
-        event.preventDefault();
+        
     });
 
 });

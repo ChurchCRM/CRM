@@ -22,6 +22,14 @@ require_once "services/FamilyService.php";
 require_once "services/DataSeedService.php";
 require_once "services/FinancialService.php";
 
+function getJSONFromApp($app)
+{
+	
+	$request = $app->request();
+    $body = $request->getBody();
+    return json_decode($body);
+}
+
 $app = new Slim();
 
 $app->contentType('application/json');
@@ -131,10 +139,7 @@ $app->group('/deposits',function () use ($app) {
 $app->group('/payments',function () use ($app) {
 	$app->get('/', function () use ($app) {
 		try {
-			#$request = $app->request();
-			#$body = $request->getBody();
-			#$payment = json_decode($body);	
-			#$app->FinancialService->processPayment($payment);
+			$app->FinancialService->getPayments();
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
@@ -142,16 +147,14 @@ $app->group('/payments',function () use ($app) {
 	});
 	$app->post('/', function () use ($app) {
 		try {
-			#$request = $app->request();
-			#$body = $request->getBody();
-			#$payment = json_decode($body);	
-			#$app->FinancialService->processPayment($payment);
+			$payment=getJSONFromApp($app);
+			$app->FinancialService->submitPledgeOrPayment($payment);
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
 		
 	});
-	$app->get('/:id',function ($familyId,$fyid=-1) use ($app) {
+	$app->get('/:id',function ($id) use ($app) {
 		try {
 			#$request = $app->request();
 			#$body = $request->getBody();
@@ -225,5 +228,6 @@ $app->group('/data/seed', function () use ($app) {
 });
 
 $app->run();
+
 
 

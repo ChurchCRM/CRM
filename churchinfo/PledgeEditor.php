@@ -551,7 +551,7 @@ require "Include/Header.php";
 						</thead>
 						<tbody>
 							<?php foreach ($fundId2Name as $fun_id => $fun_name) {
-								echo "<tr>";
+								echo "<tr class=\"fundrow\" id=\"fundrow_". $fun_id."\" >";
 								echo "<td>".$fun_name."</td>";
 								echo "<td><input type=\"text\" name=\"" . $fun_id . "_Amount\" id=\"" . $fun_id . "_Amount\" value=\"" . $nAmount[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
 								if ($bEnableNonDeductible) {
