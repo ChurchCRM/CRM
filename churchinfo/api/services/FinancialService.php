@@ -68,149 +68,11 @@ class FinancialService {
 		
 	}
 
-	function getPerson($rs,&$personPointer)
-	{
-		$user=$rs[$personPointer]->user;
-		$personPointer += 1;
-		return $user;
-	}
+	
 
 	function sanitize($str)
 	{
 		return str_replace("'","",$str);
-	}
-
-	function insertPerson($user)
-	{
-		$sSQL = "INSERT INTO person_per 
-		(per_Title, 
-		per_FirstName, 
-		per_MiddleName, 
-		per_LastName, 
-		per_Suffix, 
-		per_Gender, 
-		per_Address1, 
-		per_Address2, 
-		per_City, 
-		per_State, 
-		per_Zip, 
-		per_Country, 
-		per_HomePhone, 
-		per_WorkPhone, 
-		per_CellPhone, 
-		per_Email, 
-		per_WorkEmail, 
-		per_BirthMonth, 
-		per_BirthDay, 
-		per_BirthYear, 
-		per_Envelope, 
-		per_fam_ID, 
-		per_fmr_ID, 
-		per_MembershipDate, 
-		per_cls_ID, 
-		per_DateEntered, 
-		per_EnteredBy, 
-		per_FriendDate, 
-		per_Flags ) 
-		VALUES ('" . 
-		sanitize($user->name->title) . "','" . 
-		sanitize($user->name->first) . "',NULL,'" . 
-		sanitize($user->name->last) . "',NULL,'" . 
-		sanitize($user->gender) . "','" . 
-		sanitize($user->location->street) . "',NULL,'" . 
-		sanitize($user->location->city) . "','" . 
-		sanitize($user->location->state) . "','" . 
-		sanitize($user->location->zip) . "','USA','" . 
-		sanitize($user->phone) . "',NULL,'" . 
-		sanitize($user->cell) . "','" . 
-		sanitize($user->email) . "',NULL," . 
-		date('m', $user->dob) . "," .
-		date('d', $user->dob) . "," . 
-		date('Y', $user->dob) . ",NULL,'".
-		sanitize($user->famID) ."',". 
-		sanitize($user->per_fmr_id) .","."\"" . 
-		date('Y-m-d', $user->registered) . 
-		"\"". ",1,'" . 
-		date("YmdHis") . 
-		"'," . 
-		sanitize($_SESSION['iUserID']) . ",";
-		
-		if ( strlen($dFriendDate) > 0 )
-		$sSQL .= "\"" . $dFriendDate . "\"";
-		else
-		$sSQL .= "NULL";
-		$sSQL .= ", 0" ;
-		$sSQL .= ")";
-		$bGetKeyBack = True;
-		RunQuery($sSQL);
-		// If this is a new person, get the key back and insert a blank row into the person_custom table
-		if ($bGetKeyBack)
-		{
-			$sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
-			$rsPersonID = RunQuery($sSQL);
-			extract(mysql_fetch_array($rsPersonID));
-			$sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('" . $iPersonID . "')";
-			RunQuery($sSQL);
-		}
-
-	}
-
-	function insertFamily($user)
-	{
-	$dWeddingDate="NULL";
-	$iCanvasser=0;
-	$nLatitude=0;
-	$nLongitude=0;
-	$nEnvelope=0;   
-	$sSQL = "INSERT INTO family_fam (
-							fam_Name, 
-							fam_Address1, 
-							fam_Address2, 
-							fam_City, 
-							fam_State, 
-							fam_Zip, 
-							fam_Country, 
-							fam_HomePhone, 
-							fam_WorkPhone, 
-							fam_CellPhone, 
-							fam_Email, 
-							fam_WeddingDate, 
-							fam_DateEntered, 
-							fam_EnteredBy, 
-							fam_SendNewsLetter,
-							fam_OkToCanvass,
-							fam_Canvasser,
-							fam_Latitude,
-							fam_Longitude,
-							fam_Envelope)
-						VALUES ('"							. 
-							$user->name->last				. "','" . 
-							$user->location->street				. "','" . 
-							$sAddress2				. "','" . 
-							$user->location->city				. "','" . 
-							$user->location->state					. "','" . 
-							$user->location->zip					. "','" . 
-							$sCountry				. "','" . 
-							$sHomePhone				. "','" . 
-							$sWorkPhone				. "','" . 
-							$sCellPhone				. "','" . 
-							$sEmail					. "'," . 
-							$dWeddingDate			. ",'" . 
-							date("YmdHis")			. "'," . 
-							$_SESSION['iUserID']	. "," . 
-							"FALSE," . 
-							"FALSE,'" .
-							$iCanvasser				. "'," .
-							$nLatitude				. "," .
-							$nLongitude				. "," .
-							$nEnvelope              . ")";
-					RunQuery($sSQL);
-					$sSQL = "SELECT MAX(fam_ID) AS iFamilyID FROM family_fam";
-					
-				$rsLastEntry = RunQuery($sSQL);
-				extract(mysql_fetch_array($rsLastEntry));
-				return $iFamilyID;
-
 	}
 
 	function listDeposits($id) {
@@ -307,7 +169,6 @@ class FinancialService {
 	
 			foreach ($FundSplit as $fun_id => $fund) {
 				//$fun_active = $fundActive[$fun_id];
-			
 				if ($fund->Amount > 0) {
 					++$nonZeroFundAmountEntered;
 				}
@@ -346,22 +207,23 @@ class FinancialService {
 				throw new Exception (gettext("Must specify non-zero check number"));
 			}
 		
-		// detect check inconsistencies
-		if ($payment->type=="Payment" and isset($payment->checknumber)) {
-			if ($payment->paymentby == "CASH") {
-				throw new Exception (gettext("Check number not valid for 'CASH' payment"));
-			} elseif ($iMethod=='CHECK' and !$sGroupKey) {
-				$chkKey = $iFamily . "|" . $iCheckNo;
-				if (array_key_exists($chkKey, $checkHash)) {
-					$text = "Check number '" . $iCheckNo . "' for selected family already exists.";
-					$sCheckNoError = "<span style=\"color: red; \">" . gettext($text) . "</span>";
-					$bErrorFlag = true;
-					echo "bErrorFlag 146";
-				}
-			}
-		}
-			
-			
+			// detect check inconsistencies
+			if ($payment->type=="Payment" and isset($payment->checknumber)) {
+				if ($payment->paymentby == "CASH") {
+					throw new Exception (gettext("Check number not valid for 'CASH' payment"));
+				} 
+				
+				//build routine to make sure this check number hasn't been used by this family yet (look at group key)
+				/*elseif ($payment->paymentby=='CHECK' and !$sGroupKey) {
+					$chkKey = $iFamily . "|" . $iCheckNo;
+					if (array_key_exists($chkKey, $checkHash)) {
+						$text = "Check number '" . $iCheckNo . "' for selected family already exists.";
+						$sCheckNoError = "<span style=\"color: red; \">" . gettext($text) . "</span>";
+						$bErrorFlag = true;
+						echo "bErrorFlag 146";
+					}
+				}*/
+			}			
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
@@ -393,82 +255,74 @@ class FinancialService {
 	function insertPledgeorPayment ($payment) {
 		// Only set PledgeOrPayment when the record is first created
 			// loop through all funds and create non-zero amount pledge records
-			foreach ($fundId2Name as $fun_id => $fun_name) {
-				if (!$iCheckNo) { $iCheckNo = 0; }
-				unset($sSQL);
-				if ($fund2PlgIds and array_key_exists($fun_id, $fund2PlgIds)) {
-					if ($nAmount[$fun_id] > 0) {
-						$sSQL = "UPDATE pledge_plg SET plg_famID = '" . $iFamily . "',plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount[$fun_id] . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment[$fun_id] . "'";
-						$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_id] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "'";
-					} else { // delete that record
-						$sSQL = "DELETE FROM pledge_plg WHERE plg_plgID =" . $fund2PlgIds[$fun_id];
-					}
-				} elseif ($nAmount[$fun_id] > 0) {
-					if ($iMethod <> "CHECK") {
-						$iCheckNo = "NULL";
-					}
-					if (!$sGroupKey) {
-						if ($iMethod == "CHECK") {
-							$sGroupKey = genGroupKey($iCheckNo, $iFamily, $fun_id, $dDate);
-						} elseif ($iMethod == "BANKDRAFT") {
-							if (!$iAutID) {
-								$iAutID = "draft";
-							}
-							$sGroupKey = genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
-						} elseif ($iMethod == "CREDITCARD") {
-							if (!$iAutID) {
-								$iAutID = "credit";
-							}
-							$sGroupKey = genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
-						} else {
-							$sGroupKey = genGroupKey("cash", $iFamily, $fun_id, $dDate);
-						} 
-					}
-		$sSQL = "INSERT INTO pledge_plg
-			(plg_famID,
-			plg_FYID, 
-			plg_date, 
-			plg_amount,
-			plg_schedule, 
-			plg_method, 
-			plg_comment, 
-			plg_DateLastEdited, 
-			plg_EditedBy, 
-			plg_PledgeOrPayment, 
-			plg_fundID, 
-			plg_depID, 
-			plg_CheckNo, 
-			plg_scanString, 
-			plg_aut_ID, 
-			plg_NonDeductible, 
-			plg_GroupKey)
-			VALUES ('" . 
-			$payment->FamilyID . "','" . 
-			$payment->FYID . "','" . 
-			$payment->Date . "','" .
-			$nAmount[$fun_id] . "','" . 
-			$iSchedule . "','" . 
-			$iMethod  . "','" . 
-			$sComment[$fun_id] . "','".
-			date("YmdHis") . "'," .
-			$_SESSION['iUserID'] . ",'" . 
-			$PledgeOrPayment . "'," . 
-			$fun_id . "," . 
-			$iCurrentDeposit . "," . 
-			$iCheckNo . ",'" . 
-			$tScanString . "','" . 
-			$iAutID  . "','" . 
-			$nNonDeductible[$fun_id] . "','" . 
-			$sGroupKey . "')";
-					
-					echo "SQL: ".$sSQL;
-				}
-				if (isset ($sSQL)) {
-					RunQuery($sSQL);
-					unset($sSQL);
-				}
-			}
+			$FundSplit = json_decode($payment->FundSplit);
+			if (count($FundSplit) > 1 ) { // split
+				echo "split selected";
+				$nonZeroFundAmountEntered =0;
 		
+				foreach ($FundSplit as $fun_id => $fund) {
+					
+					if ($iMethod == "CHECK") {
+						$sGroupKey = genGroupKey($iCheckNo, $iFamily, $fun_id, $dDate);
+					} elseif ($iMethod == "BANKDRAFT") {
+						if (!$iAutID) {
+							$iAutID = "draft";
+						}
+						$sGroupKey = genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
+					} elseif ($iMethod == "CREDITCARD") {
+						if (!$iAutID) {
+							$iAutID = "credit";
+						}
+						$sGroupKey = genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
+					} else {
+						$sGroupKey = genGroupKey("cash", $iFamily, $fun_id, $dDate);
+					} 
+					$sSQL = "INSERT INTO pledge_plg
+						(plg_famID,
+						plg_FYID, 
+						plg_date, 
+						plg_amount,
+						plg_schedule, 
+						plg_method, 
+						plg_comment, 
+						plg_DateLastEdited, 
+						plg_EditedBy, 
+						plg_PledgeOrPayment, 
+						plg_fundID, 
+						plg_depID, 
+						plg_CheckNo, 
+						plg_scanString, 
+						plg_aut_ID, 
+						plg_NonDeductible, 
+						plg_GroupKey)
+						VALUES ('" . 
+						$payment->FamilyID . "','" . 
+						$payment->FYID . "','" . 
+						$payment->Date . "','" .
+						$fund->amount . "','" . 
+						($payment->schedule ? $payment->schedule : "NULL") . "','" . 
+						$payment->paymentby  . "','" . 
+						$fund->comment . "','".
+						date("YmdHis") . "'," .
+						$_SESSION['iUserID'] . ",'" . 
+						$payment->PledgeOrPayment . "'," . 
+						$fund->fundID . "," . 
+						$iCurrentDeposit . "," . 
+						$payment->checknumber . ",'" . 
+						$payment->tScanString . "','" . 
+						$payment->iAutID  . "','" . 
+						$fund->nNonDeductible . "','" . 
+						$sGroupKey . "')";
+							
+						echo "SQL: ".$sSQL;
+						
+						if (isset ($sSQL)) {
+							RunQuery($sSQL);
+							unset($sSQL);
+						}
+				}
+		
+		}
 	}
 	
 	
@@ -484,7 +338,7 @@ class FinancialService {
 			echo "Validating deposit".PHP_EOL;
 			$this->validateDeposit($payment);
 			echo "no errors, update!".PHP_EOL;
-			#$this->insertPledgeorPayment ($payment);
+			$this->insertPledgeorPayment ($payment);
 			if ($payment->paymentby =="CASH") {
 				$this->processCurrencyDenominations($payment);
 			}

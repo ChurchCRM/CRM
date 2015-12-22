@@ -124,8 +124,9 @@ function getFundSubmitData(){
 	if ($('select[name=FundSplit]').val() == "0")
 	{
 		$(".fundrow").each(function(i,el){
-			console.log(i);
-			var fundID = (i+1);
+			console.log($(this).attr('id'));
+			var fundID = ($(this).attr('id').split('_'))[1];
+			console.log(fundID);
 			var amount = $('input[name='+fundID+'_Amount]').val();
 			var nondedamount=  $('input[name='+fundID+'_NonDeductible]').val();
 			var comment=  $('input[name='+fundID+'_Comment]').val();
