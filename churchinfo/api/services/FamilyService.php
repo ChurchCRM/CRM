@@ -66,7 +66,7 @@ class FamilyService {
 		$sSQL = "UPDATE family_fam SET fam_scanCheck=\"" . $routeAndAccount . "\" WHERE fam_ID = " . $iFamily;
 		RunQuery($sSQL);
 	}
-	}
+	
 }
 
 ?>
