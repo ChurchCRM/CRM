@@ -295,14 +295,61 @@ class FinancialService {
 	
 	}
 	
-	private function validateCheck($payment) {
 
+	private function validateFund($payment) {
+		//Validate that the fund selection is valid:
+		//If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
+		//If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
+		$FundSplit = json_decode($payment->FundSplit);
+		if (count($FundSplit) > 1 ) { // split
+			echo "split selected";
+			$nonZeroFundAmountEntered =0;
+	
+			foreach ($FundSplit as $fun_id => $fund) {
+				//$fun_active = $fundActive[$fun_id];
+			
+				if ($fund->Amount > 0) {
+					++$nonZeroFundAmountEntered;
+				}
+
+				if ($GLOBALS['bEnableNonDeductible']) {
+					//Validate the NonDeductible Amount
+					if ($fund->NonDeductible > $fund->Amount) { //Validate the NonDeductible Amount
+						throw new Exception (gettext("NonDeductible amount can't be greater than total amount."));
+					}
+				}
+			} // end foreach
+
+			if (!$nonZeroFundAmountEntered) {
+				throw new Exception (gettext("At least one fund must have a non-zero amount."));
+			}
+		}
+		elseif (count($FundSplit) ==1 and $FundSplit[0]->FundID != "None")
+		{
+			echo "one fund selected ".$FundSplit[0]->FundID;
+			
+		}
+		else
+		{
+			throw new Exception ("Must select a valid fund");
+		}
+		
+
+	}
+	
+	function validateChecks($payment) {
+	//validate that the payment options are valid
+	//If the payment method is a check, then the check nubmer must be present, and it must not already have been used for this family
+	//if the payment method is cash, there must not be a check number
+		try {
+			if ($payment->type=="Payment" and $payment->paymentby == "CHECK"  and  ! isset($payment->checknumber)) {
+				throw new Exception (gettext("Must specify non-zero check number"));
+			}
+		
 		// detect check inconsistencies
-		if ($PledgeOrPayment=='Payment' and $iCheckNo) {
-			if ($iMethod == "CASH") {
-				$sCheckNoError = "<span style=\"color: red; \">" . gettext("Check number not valid for 'CASH' payment") . "</span>";
-				$bErrorFlag = true;
-				echo "bErrorFlag 139";
+		if ($payment->type=="Payment" and isset($payment->checknumber)) {
+			if ($payment->paymentby == "CASH") {
+				throw new Exception (gettext("Check number not valid for 'CASH' payment"));
 			} elseif ($iMethod=='CHECK' and !$sGroupKey) {
 				$chkKey = $iFamily . "|" . $iCheckNo;
 				if (array_key_exists($chkKey, $checkHash)) {
@@ -313,73 +360,12 @@ class FinancialService {
 				}
 			}
 		}
-		
-		
-	}
-	
-	private function validateFund($payment) {
-		
-		if (count($payment->FundSplit) > 0 ) { // split
-			echo "split selected";
-			// make sure at least one fund has a non-zero numer
-			$nonZeroFundAmountEntered = 0;
-			foreach ($fundId2Name as $fun_id => $fun_name) {
-				//$fun_active = $fundActive[$fun_id];
-				$nAmount[$fun_id] = FilterInput($_POST[$fun_id . "_Amount"]);
-				$sComment[$fun_id] = FilterInput($_POST[$fun_id . "_Comment"]);
-				if ($nAmount[$fun_id] > 0) {
-					++$nonZeroFundAmountEntered;
-				}
-
-				if ($bEnableNonDeductible) {
-					$nNonDeductible[$fun_id] = FilterInput($_POST[$fun_id . "_NonDeductible"]);
-					//Validate the NonDeductible Amount
-					if ($nNonDeductible[$fun_id] > $nAmount[$fun_id]) { //Validate the NonDeductible Amount
-						$sNonDeductibleError[$fun_id] = gettext("NonDeductible amount can't be greater than total amount.");
-					$bErrorFlag = true;
-					echo "bErrorFlag 111";
-					}
-				}
-			} // end foreach
-
-			if (!$nonZeroFundAmountEntered) {
-				$sAmountError[$fun_id] = gettext("At least one fund must have a non-zero amount.");
-				$bErrorFlag = true;
-				echo "bErrorFlag 118";
-			}
-		}
-		elseif ($payment->FundSplit == "None")
-		{
-			throw new Exception ("error, must select a fundm or split");
-			
-		}
-		else
-		{
-			echo "error, must select a fundm or split";
-			// they selected one of the other funds.  Let's make sure it's valid.
 			
 			
-		}
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
 		
-
-	}
-	
-	function validateChecks($payment) {
-		
-		if (array_key_exists ("ScanInput", $_POST))
-			$tScanString = FilterInput($_POST["ScanInput"]);
-		else
-			$tScanString = "";
-		$iAutID = 0;
-		if (array_key_exists ("AutoPay", $_POST))
-			$iAutID = FilterInput($_POST["AutoPay"]);
-		//$iEnvelope = FilterInput($_POST["Envelope"], 'int');
-
-		if ($PledgeOrPayment=='Payment' and !$iCheckNo and $iMethod == "CHECK") {
-			$sCheckNoError = "<span style=\"color: red; \">" . gettext("Must specify non-zero check number") . "</span>";
-			$bErrorFlag = true;
-			echo "bErrorFlag 133";
-		}
 		
 	}
 	
@@ -489,17 +475,15 @@ class FinancialService {
 	function submitPledgeOrPayment($payment) {
 
 		try {
-			echo "Validating Fund";
+			echo "Validating Fund".PHP_EOL;
 			$this->validateFund($payment);
-			echo "Validating checks";
+			echo "Validating checks".PHP_EOL;
 			$this->validateChecks($payment);
-			echo "Validating check";
-			$this->validateCheck($payment);
-			echo "Validating date";
+			echo "Validating date".PHP_EOL;
 			$this->validateDate($payment);
-			echo "Validating deposit";
+			echo "Validating deposit".PHP_EOL;
 			$this->validateDeposit($payment);
-			echo "no errors, update!";
+			echo "no errors, update!".PHP_EOL;
 			#$this->insertPledgeorPayment ($payment);
 			if ($payment->paymentby =="CASH") {
 				$this->processCurrencyDenominations($payment);

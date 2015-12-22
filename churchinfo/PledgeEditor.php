@@ -535,6 +535,7 @@ require "Include/Header.php";
 		<div class="box box-info clearfix" id="FundSelection" style="display:none">
 			<div class="box-header">
 				<h3 class="box-title">Fund Split</h3>
+				<h4></h4>
 			</div><!-- /.box-header -->
 			<div class="box-body">
 				<div class="table-responsive">
@@ -553,9 +554,9 @@ require "Include/Header.php";
 							<?php foreach ($fundId2Name as $fun_id => $fun_name) {
 								echo "<tr class=\"fundrow\" id=\"fundrow_". $fun_id."\" >";
 								echo "<td>".$fun_name."</td>";
-								echo "<td><input type=\"text\" name=\"" . $fun_id . "_Amount\" id=\"" . $fun_id . "_Amount\" value=\"" . $nAmount[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
+								echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fun_id . "_Amount\" id=\"" . $fun_id . "_Amount\" value=\"" . $nAmount[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
 								if ($bEnableNonDeductible) {
-								echo "<td><input type=\"text\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
+								echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
 								}
 								echo "<td><input type=\"text\" size=40 name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
 								echo "</tr>";

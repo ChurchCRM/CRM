@@ -48,6 +48,30 @@ $(".denominationInputBox").on('change',function(){
 	$('#grandTotal').val(formatCurrency(grandtotal));
 });
 
+$(".fundSplitInputBox").on('change',function(){
+	var grandtotal=0;
+	$(".fundSplitInputBox").each(function(i,el){
+		var fundval=$(el).val();
+		grandtotal+= fundval*1;
+	});
+	if (formatCurrency(grandtotal) == formatCurrency($('#grandTotal').val())){
+		console.log("split value is OK");
+		$('#FundSelection .box-header h4').removeClass('fa fa-exclamation');
+		$('#FundSelection .box-header h4').addClass('fa fa-check');
+		
+		
+	}
+	else
+	{
+		$('#FundSelection .box-header h4').removeClass('fa fa-check');
+		$('#FundSelection .box-header h4').addClass('fa fa-exclamation');
+	}
+});
+
+
+
+
+
 $(document).ready(function() {
 
 $("#FamilyName").autocomplete({
@@ -79,7 +103,7 @@ $('#MatchEnvelope').click(function() {
 $('#MatchFamily').click(function() {
    $.ajax({
             type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
-            url         : '/api/members/list/byCheckNumber/'+$('textarea[name=ScanInput]').val(), // the url where we want to POST
+            url         : '/api/families/byCheckNumber/'+$('textarea[name=ScanInput]').val(), // the url where we want to POST
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true
         })
@@ -111,7 +135,7 @@ function getFundSubmitData(){
 	}
 	else
 	{
-		var fundobjet ={FundSplit: $('select[name=FundSplit]').val()};
+		var fundobjet ={FundID: $('select[name=FundSplit]').val(), Comment: $('input[name=OneComment]').val()};
 		funds.push(fundobjet);
 	}
 	return JSON.stringify(funds);	
@@ -137,7 +161,7 @@ function getSubmitFormData(){
 				'Envelope'             : $('input[name=Envelope]').val(),
 				'paymentby'    : $('select[name=Method]').val(),
 				'comment'			:$('input[name=OneComment]').val(),
-				'total'				:$('input[name=Total]').val()};
+				'total'				:$('input[name=TotalAmount]').val()};
 				if ($('select[name=Method]').val() == "CASH")
 				{
 					fd['cashDenominations']=getDenominationSubmitData();
