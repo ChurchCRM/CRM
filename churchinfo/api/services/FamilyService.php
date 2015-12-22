@@ -59,6 +59,14 @@ class FamilyService {
 		}
 		echo json_encode($familyArray);
 	}
+	
+	function setFamilyCheckingAccountDetails($tScanString,$iFamily) {
+	//Set the Routing and Account Number for a family
+		$routeAndAccount = $micrObj->FindRouteAndAccount ($tScanString); // use routing and account number for matching
+		$sSQL = "UPDATE family_fam SET fam_scanCheck=\"" . $routeAndAccount . "\" WHERE fam_ID = " . $iFamily;
+		RunQuery($sSQL);
+	}
+	}
 }
 
 ?>
