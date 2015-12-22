@@ -70,8 +70,8 @@ $('#MatchEnvelope').click(function() {
         })
 		 .done(function(data) {
 			console.log(data);
-			$('[name=FamilyName]').val(data[0].Name);
-			$('[name=FamilyID]:eq(1)').val(data[0].fam_ID);
+			$('[name=FamilyName]').val(data.Name);
+			$('[name=FamilyID]:eq(1)').val(data.fam_ID);
 		});
 		
 });

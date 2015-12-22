@@ -22,7 +22,7 @@ Slim::registerAutoloader();
 require_once "services/PersonService.php";
 require_once "services/FamilyService.php";
 require_once "services/DataSeedService.php";
-#require_once "services/FinancialService.php";
+require_once "services/FinancialService.php";
 
 $app = new Slim();
 
@@ -40,9 +40,9 @@ $app->container->singleton('DataSeedService', function () {
     return new DataSeedService();
 });
 
-#$app->container->singleton('FinancialService', function () {
-#    return new FinancialService();
-#});
+$app->container->singleton('FinancialService', function () {
+   return new FinancialService();
+});
 
 $app->group('/persons', function () use ($app) {
     $app->get('/search/:query', function ($query) use ($app) {
@@ -80,22 +80,42 @@ $app->group('/families', function () use ($app) {
     });
 	$app->get('/byCheckNumber/:tScanString', function($tScanString) use ($app) 
 	{
-		$app->FinancialService->getMemberByScanString($sstrnig);
+		try {
+			$app->FinancialService->getMemberByScanString($sstrnig);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+		
 	});
 	$app->get('/byEnvelopeNumber/:tEnvelopeNumber',function($tEnvelopeNumber) use ($app) 
 	{
-		$return[] = getFamilyStringByEnvelope($tEnvelopeNumber);
-		echo json_encode($return);
-		
+		try {
+			$app->FamilyService->getFamilyStringByEnvelope($tEnvelopeNumber);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
 	});
 	
 });
 
-#$app->group('/deposits',function () use ($app) {
-	#$app->get('/','listDeposits');
-	#$app->get('/:id','listDeposits')->conditions(array('id' => '[0-9]+'));
-	#$app->get('/:id/payments','listPayments')->conditions(array('id' => '[0-9]+'));
-#});
+$app->group('/deposits',function () use ($app) {
+	$app->get('/',function() use ($app) 
+	{
+		$app->FinancialService->listDeposits();
+	});
+	
+	$app->get('/:id',function($id) use ($app) 
+	{
+		$app->FinancialService->listDeposits($id);
+			
+	})->conditions(array('id' => '[0-9]+'));
+	
+	$app->get('/:id/payments',function($id) use ($app) 
+	{
+		$app->FinancialService->listPayments($id);
+		
+	})->conditions(array('id' => '[0-9]+'));
+});
 
 
 

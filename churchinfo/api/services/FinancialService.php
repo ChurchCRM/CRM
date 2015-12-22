@@ -326,4 +326,6 @@ class FinancialService {
 			$result=mysql_query($fetch);
 			
 	}
+
+}
 ?>

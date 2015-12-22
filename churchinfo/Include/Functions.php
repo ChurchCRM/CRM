@@ -1997,24 +1997,6 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
     return $familyArray;
 }
 
-function getFamilyStringByEnvelope($iEnvelope)
-{
-	$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_Envelope=" . $iEnvelope;
-    $rsFamilies = RunQuery($sSQL);
-	$familyArray = array();
-    while ($aRow = mysql_fetch_array($rsFamilies)) {
-        extract($aRow);
-        $name = $fam_Name;
-        if (isset ($aHead[$fam_ID])) 
-		{
-            $name .= ", " . $aHead[$fam_ID];
-        }
-        $name .= " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
-
-        $familyArray = array("fam_ID"=> $fam_ID, "Name" => $name);
-    }
-    return $familyArray;
-}
 
 function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse) {
     //Get Families for the drop-down
