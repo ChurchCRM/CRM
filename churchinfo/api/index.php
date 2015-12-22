@@ -10,11 +10,9 @@ if (!isset($_SESSION['iUserID'])) {
     exit;
 }
 
-
 require 'vendor/Slim/Slim.php';
 
 use Slim\Slim;
-
 
 Slim::registerAutoloader();
 
@@ -99,40 +97,87 @@ $app->group('/families', function () use ($app) {
 });
 
 $app->group('/deposits',function () use ($app) {
+	
 	$app->get('/',function() use ($app) 
 	{
-		$app->FinancialService->listDeposits();
+		try {
+			$app->FinancialService->listDeposits();
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
 	});
 	
 	$app->get('/:id',function($id) use ($app) 
 	{
-		$app->FinancialService->listDeposits($id);
-			
+		try {
+			$app->FinancialService->listDeposits($id);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }	
 	})->conditions(array('id' => '[0-9]+'));
 	
 	$app->get('/:id/payments',function($id) use ($app) 
 	{
-		$app->FinancialService->listPayments($id);
-		
+		try {
+			$app->FinancialService->listPayments($id);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
 	})->conditions(array('id' => '[0-9]+'));
 });
 
 
 
-#$app->group('/payments',function () use ($app) {
-	#$app->get('/','listPayments');
-	#$app->post('/', function () use ($app) {
-		#$request = $app->request();
-		#$body = $request->getBody();
-		#$payment = json_decode($body);	
-		#processPayment($payment);
-	#});
-	#$app->get('/:id','listPayments')->conditions(array('id' => '[0-9]+'));
-	#$app->get('/byFamily/:familyId(/:fyid)', function ($familyId,$fyid=-1) use ($app) {
-		#getDepositsByFamilyID($fid);
+$app->group('/payments',function () use ($app) {
+	$app->get('/', function () use ($app) {
+		try {
+			#$request = $app->request();
+			#$body = $request->getBody();
+			#$payment = json_decode($body);	
+			#$app->FinancialService->processPayment($payment);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
 		
-	#});
-#});
+	});
+	$app->post('/', function () use ($app) {
+		try {
+			#$request = $app->request();
+			#$body = $request->getBody();
+			#$payment = json_decode($body);	
+			#$app->FinancialService->processPayment($payment);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+		
+	});
+	$app->get('/:id',function ($familyId,$fyid=-1) use ($app) {
+		try {
+			#$request = $app->request();
+			#$body = $request->getBody();
+			#$payment = json_decode($body);	
+			#$app->FinancialService->getDepositsByFamilyID($fid);
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+		
+		
+	});
+	$app->get('/byFamily/:familyId(/:fyid)', function ($familyId,$fyid=-1) use ($app) {
+		try {
+			#$request = $app->request();
+			#$body = $request->getBody();
+			#$payment = json_decode($body);	
+			#$app->FinancialService->getDepositsByFamilyID($fid);
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+		
+		
+	});
+});
 
 
 $app->group('/data/seed', function () use ($app) {

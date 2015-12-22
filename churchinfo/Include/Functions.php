@@ -1997,7 +1997,6 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
     return $familyArray;
 }
 
-
 function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse) {
     //Get Families for the drop-down
     $familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse);
