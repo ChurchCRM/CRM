@@ -10,13 +10,13 @@ while [[ RET -ne 0 ]]; do
     RET=$?
 done
 
-echo "=> Creating MySQL churchinfo user with churchinfo password"
+echo "=> Creating MySQL churchcrm user with churchcrm password"
 
-mysql -uroot -e "CREATE DATABASE churchinfo"
-mysql -uroot -e "CREATE USER 'churchinfo'@'%' IDENTIFIED BY 'churchinfo'"
-mysql -uroot -e "GRANT ALL PRIVILEGES ON churchinfo.* TO 'churchinfo'@'%' WITH GRANT OPTION"
+mysql -uroot -e "CREATE DATABASE churchcrm"
+mysql -uroot -e "CREATE USER 'churchcrm'@'%' IDENTIFIED BY 'churchcrm'"
+mysql -uroot -e "GRANT ALL PRIVILEGES ON churchcrm.* TO 'churchcrm'@'%' WITH GRANT OPTION"
 
-#Install churhcinfo db
+#Install churchcrm db
 mysql churchinfo < /app/mysql/install/Install.sql
 
 mysqladmin -uroot shutdown
