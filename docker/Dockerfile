@@ -5,7 +5,7 @@ MAINTAINER George Dawoud <george@dawouds.com>
 RUN rm -fr /app && git clone https://github.com/ChurchCRM/CRM.git /app
 
 # Add database setup script
-ADD create_mysql_admin_user.sh /mysql/database_setup_and_install.sh
+ADD create_mysql_admin_user.sh ../mysql/database_setup_and_install.sh
 RUN chmod 755 /*.sh
 
 EXPOSE 80 3306
