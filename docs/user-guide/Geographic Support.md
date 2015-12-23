@@ -1,6 +1,6 @@
-# Geographic Features
+# Geographic Utilities
 
-Included in ChurchCRM is a geographic mapping feature that lets you map groups of people or families.
+Included in ChurchCRM is a geographic mapping feature that lets you map groups of [people](person.md) or [families](families.md).
 
 ## How does ChurchCRM know exactly where Families live?
 
@@ -8,12 +8,12 @@ ChurchCRM stores the latitude and longitude with each Family. These numbers may 
 
 ## How do I find Families that live close to each other?
 
-Select Family Geographic Utilities from the People/Families menu, then select a Family from the list. Press Show Neighbors and this page will update with the nearest neighbor families listed at the bottom. The Maximum number of neighbors and Maximum distance fields are used to limit the number of neighbor families displayed.
+Select _"Family Geographic Utilities"_ from the _"Members"_ menu, then select a Family from the list. Press _"Show Neighbors"_ and this page will update with the nearest neighbor families listed at the bottom. The Maximum number of neighbors and Maximum distance fields are used to limit the number of neighbor families displayed.
 
 ## How do I see where Families live on a map?
 
-The easiest way is to select Family Map from the People/Familes menu. This map is generated using the Google mapping service. For this feature to work, the Google map key must be set specifically for your web site URL. The setting is near the bottom of the General Settings page available from the Admin menu. The web site to obtain your unique key from Google is: here.
+The easiest way is to select _"Family Map"_ from the _"Members"_ menu. This map is generated using the Google mapping service. For this feature to work, the Google map key must be set specifically for your web site URL. The setting is near the bottom of the General Settings page available from the Admin menu. You can obtain a unique Google Maps API key on the [Google Developers page](https://developers.google.com/maps/documentation/javascript/?hl=en).
 
 ## Are other types of maps available?
 
-The Family Geographic Utilities page can also make annotation files for the GPS Visualizer web site or the Delorme Street Atlas USA map program. To make an annotation file select the desired format and press Make Data File.
+The _"Family Geographic Utilities"_ page can also make annotation files for the GPS Visualizer web site or the Delorme Street Atlas USA map program. To make an annotation file select the desired format and press _"Make Data File"_.

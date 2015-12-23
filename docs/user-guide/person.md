@@ -1,11 +1,10 @@
-# What is a Person?
+# Persons
 
-Not surprisingly, a Person record represents a single individual. Person records can be grouped together into
-[Families](families.md), can belong to [Groups](Groups.md), can have Properties, and can be made Users of the application.
+Not surprisingly, a Person record represents a single individual. Person records can be grouped together into [Families](families.md), can belong to [Groups](Groups.md), can have [Properties](Properties.md), and can be made Users of the application.
 
 ## How do I find a specific Person?
 
-On left menu, find the search box just above the "Dashboard" heading. Enter a search string in this box, as you begin to type results will begin showing all of matches.
+On left menu, find the search box just above the _"Dashboard"_ heading. Enter a search string in this box, as you begin to type results will begin showing all of matches.
 
 The system will return all Person records containing that search string in the first or last name.
 
@@ -25,13 +24,14 @@ This makes it easy to change common information for all members of a Family. For
 
 There are two ways to add a new Person:
 
-From the left menu, click on "Add a New Person"
-Complete the form Press "Save" or "Save and Add." The latter will add the person and return you to an empty form to add another person, which is handy for large amounts of data entry.
+From the left menu, click on _"Add a New Person"_
+Complete the form Press _"Save"_ or _"Save and Add"_. The latter will add the person and return you to an empty form to add another person, which is handy for large amounts of data entry.
+
 However, to enter a new Family and several Person records at once which you plan to assign to that Family, use the Family Editor.
 
 ## What is a Classification?
 
-This defines the Person's role within the church. Common Classifications are Member, Guest, Regular Attender, Non-Attender, etc.
+This defines the Person's role within the church. Common [Classifications](Classifications.md) are Member, Guest, Regular Attender, Non-Attender, etc.
 
 ## How do I enter a person's age?
 
@@ -43,9 +43,12 @@ Age will be calculated as best it can with the information given. At minimum a B
 
 Leaving old people in the database doesn't hurt anything and may help with historical record keeping. But if you have to...
 
-Filter for the desired person, and bring up their Person View.
-Select "Delete this Record" (if this link doesn't appear, then you don't have permissions to delete records)
-Confirm the deletion
+1. Filter for the desired person, and bring up their Person View.
+
+2. Select _"Delete this Record"_
+> If this link doesn't appear, then you don't have permissions to delete records
+
+3. Confirm the deletion
 
 ## What are Custom Person Fields?
 

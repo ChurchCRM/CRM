@@ -1,10 +1,11 @@
-## What are Reports/Queries?
+# Reports and Queries
 
-Reports are built-in reports that give specific reports about user information. Queries are pre-built queries on the database that return individuals/families.
+Reports are built-in reports that give specific reports about user information. Queries are pre-built queries on the database that return [individuals](person.md)/[families](families.md).
 
-### Built in Reports
+## Built in Reports
 
-#### group membership
+### Group membership
+
 - Contact lists
 - Reports on groups and roles
 - Members Directory: Printable directory of all members, grouped by family where assigned
@@ -26,16 +27,24 @@ Reports are built-in reports that give specific reports about user information. 
 - Families to canvass: People in families that are ok to canvass.
 - Class & Attendance Reports
 
-#### Sunday School Reports: Generate class lists and attendance sheets
+### [Sunday School](Sunday School.md) Reports: Generate class lists and attendance sheets
+
 - Event Attendance: Generate attendance -AND- non-attendance reports for events
+
 - Class Students: Find students for a particular class
+
 - Class Teachers: Find teachers for a particular class
+
 - Registered students
+
 - Finance Reports
 
-#### Finance Reports
-- Financial Reports: Pledges and Payments
-- Canvass Automation: support for conducting an every-member canvass.
+### Finance Reports
+
+- [Financial Reports](Finances.md): Pledges and Payments
+
+- [Canvass Automation](Canvass.md): support for conducting an every-member canvass.
+
 - Pledge comparison: Compare pledges between two fiscal years
 
 
@@ -45,8 +54,8 @@ A Free-Text Query allows you to run any query on the database. Since ChurchCRM i
 
 ## What is a Cart-Enabled Query?
 
-A Cart-Enabled Query is one in which the results of the query can be entered into the cart.
+A [Cart](Cart.md)-Enabled Query is one in which the results of the query can be entered into the cart.
 
 ## How do I use Cart-Enabled Queries?
 
-Once a Cart-Enabled Query has been run, simply click the button entitled "Add Results to Cart".
+Once a Cart-Enabled Query has been run, simply click the button entitled _"Add Results to Cart"_.
