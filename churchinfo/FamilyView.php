@@ -187,7 +187,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 	<?php if (($previous_id > 0)) { ?>
 		  <a class="btn btn-default" role="button" href="FamilyView.php?FamilyID=<?php echo $previous_id;?>"> <span class="fa fa-hand-o-left" aria-hidden="true"></span></a>
 	<?php } ?>
-	<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Family</button>
+	<a role="button" class="btn btn-warning" href="FamilyEditor.php?FamilyID=<?php echo $fam_ID ?>"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Family</a>
 	<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 		<span class="caret"></span>
 		<span class="sr-only">Toggle Dropdown</span>
