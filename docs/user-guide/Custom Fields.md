@@ -4,9 +4,11 @@ Custom Fields allow you to expand the functionality of ChurchCRM beyond the base
 
 ## How do I assign Custom Fields?
 
+![Gear menu](images/gear_menu.png)
+
 For people and families:
 
-1. Click the gear icon dropdown menu
+1. Click the gear icon dropdown menu (see image above)
   - For people click on "Edit Custom Person Fields"
   - For families click on "Edit Custom Family Fields"
 2. To add a new field, select the type, a name and the side on which it should appear.

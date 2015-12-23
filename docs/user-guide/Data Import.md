@@ -28,7 +28,9 @@ The _CSV Import_ feature is in the Admin menu. Once a file is chosen and uploade
 
 Dates can be formatted as YYYY-MM-DD, MM-DD-YYYY, or DD-MM-YYYY. The date separator (dash, slash, etc.) or lack thereof does not matter.
 
-It is best to import the data first, before you invest time into tweaking the database. This way you can use the feature of the import screen which deletes all of the Person and Family records so you can try importing again. It is usually easier to do most of the necessary clean-up in your data file rather than navigating the ChurchCRM interface to make corrections.
+It is best to import the data first, before you invest time into tweaking the database. This way you can use the feature of the import screen which deletes all of the Person and Family records (see image below) so you can try importing again. It is usually easier to do most of the necessary clean-up in your data file rather than navigating the ChurchCRM interface to make corrections.
+
+![Import clear data](images/import_clear.png)
 
 Once you are satisfied that the import has done what it can, you can make corrections using the ChurchCRM pages. You can move someone to a different family by editing the Person record. You can also specify family roles such as “child”, which helps ChurchCRM identify the adults for address labels.
 
@@ -39,7 +41,10 @@ ChurchCRM can automatically generate [family](families.md) records for the impor
 - They share the same _Last Name_ and _Address1_ field values
 - They share values of a selected _Custom Family Field_
 
-The former option is a simple heuristic to detect traditional families. The second option allows the import of member directories with pre-assigned family identifiers and allows for families where not all members share the same last name.
+![Select family record mode](images/make_family.png)
+
+The first option is a simple heuristic to detect traditional families. The second option allows the import of member directories with pre-assigned family identifiers and allows for families where not all members share the same last name.
+Switch on family record generation by ticking the checkbox in front of the dropdown list shown in the figure above, then select either _Make Family records based on last name and address_ (default) or one of listed custom family fields below.
 
 ## Member classification
 
