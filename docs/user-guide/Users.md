@@ -1,4 +1,4 @@
-##How do I add new Users?
+## How do I add new Users?
 
 Users can be added by 
 
@@ -6,7 +6,7 @@ Users can be added by
 2. A list of all non-users will appear and you can select the individual you wish to make a user. 
 3. Select the rights and then click "Save".
 
-##What are the different rights available?
+## What are the different rights available?
 
 The Rights are as follows:
 
@@ -21,10 +21,10 @@ The Rights are as follows:
 - Canvasser: This allows editing of canvass data and operation of the canvass automation features.
 - Admin: This option automatically selects all previous options.
 
-##How do I edit Users?
+## How do I edit Users?
 
 Users can be edited by clicking on "Edit Users" under "Admin" in the drop-down menu. A list of users will appear and you can select which individual you wish to edit. Clicking "Reset" will reset the password for the next logon. "Edit" allows the rights and style to be edited. "Delete" removes user rights from the individual.
 
-##What is the default password assigned to new Users?
+## What is the default password assigned to new Users?
 
 In the subfolder Include, the file "Config.php", one of the lines reads the following: $sDefault_Pass = "password". The word in the quotations is the default password. This can be changed at any time by editing "Config.php".

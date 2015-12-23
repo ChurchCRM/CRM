@@ -1,16 +1,16 @@
-#Configuration
+# Configuration
 
 After you have installed your ChurchCRM application and can login, you are ready to configure the application.
 
-###Report Settings
+### Report Settings
 
 Within Report Settings you can enter your church information. You can also change the default text that is printed on reports. Under the Admin menu, choose “Edit Report Settings”. Enter your church name, address, phone and email address. Review the default report text and change the information as needed.
 
-###Custome Header
+### Custome Header
 
 You can add a custom header to ChurchCRM by entering the HTML for the custom header in the General Settings. From the Admin menu, choose “Edit General Settings”. Near the bottom of the General Settings page, enter the HTML for the custom header into the field “sHeader”. Example: If you enter ”<H2>My Church</H2>”, ChurchCRM will display “My Church” in large, bold letters at the top of each page.
 
-###Configuring Email
+### Configuring Email
 
 ChurchCRM has a powerful email system, but it requires some effort to configure.
 

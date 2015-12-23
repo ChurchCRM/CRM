@@ -1,8 +1,8 @@
-#Manual Installation
+# Manual Installation
 
 Currently as ChurchCRM is still in development an install script is not yet available. ChurchCRM can run on a LAMP server (Linux, Apache, Mysql, PHP) or a Shared Hosting account through a manual installation.
 
-##How Do I Install ChurchInfo?
+## How Do I Install ChurchInfo?
 --------------------
 1. The .tar.gz file download contains a directory called "churchinfo"
 Extract the file and place the contents into a directory in the document root of your Web server or via FTP to a shared hosting account

@@ -38,6 +38,7 @@ Click on "View All Families"(under "People/Families").
 3. Confirm the deletion
 
 ## How do I assign a Property to a Family?
+
 See the [Properties](Properties.md) help topic.
 
 ## How do I add a Note to a Family?

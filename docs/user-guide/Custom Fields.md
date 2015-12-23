@@ -1,8 +1,8 @@
-#What are Custom Fields?
+# What are Custom Fields?
 
 Custom Fields allow you to expand the functionality of ChurchCRM beyond the base information that can be stored as a default. Custom fields allow you to personalize the database to meet your specific needs. Custom fields can be added to [persons](person.md), [families](families.md), and [groups](Groups.md). For persons, you could, for example, have a custom field that shows an individual's mentor. For groups, you could have a start and stop date for a group of ushers.
 
-##How do I assign Custom Fields?
+## How do I assign Custom Fields?
 
 For people and families:
 
@@ -20,11 +20,11 @@ If this link is not visible, this group may not have group-specific properties e
 3. Click on "Edit this Group" and select the checkbox by "Use group-specific properties?".
 4. Too add a new field, select the type, name, description and click "Add new field".
 
-##What are the Types?
+## What are the Types?
 
 See the Types help topic.
 
-##How do I edit a Custom Field?
+## How do I edit a Custom Field?
 
 - *For people and families* you can change the name, special option, and Person-View side.  When changes are made to those categories, you must click "Save Changes" before anything else or all changes will be lost. If the type needs to be changed, it can only be done by creating a new field and deleting the undesired field. If you wish to change the order in which the fields are displayed, use the up and down arrows to the left to move its location.  To delete a field, click the "X" on the left side.
 

@@ -1,4 +1,4 @@
-#Canvass Support
+# Canvass Support
 
 **How does ChurchCRM support an every-member canvass?**
 

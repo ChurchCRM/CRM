@@ -1,17 +1,17 @@
-#What is a Group?
+# What is a Group?
 
 A Group is a collection of People, all of which occupy Roles within the Group. Groups can be used to represent organization, educational, and social constructs within the church.
 
 For example, a Group may be "Friday Night Bible Study." Roles within this group may be Leader, Assistant Leader, and Member. If 16 people are assigned to this group, 13 may occupy the Role of Member, 2 may occupy the Role of Assistant Leader, and 1 may occupy the Role of Leader.
 
-##How do I add a new Group?
+## How do I add a new Group?
 
 1. From the top menu, click on "Add a New Group" (under "Groups").
 2. Complete the form.
 3. Press Save.
 4. When a new Group is created, a Role of "Member" is automatically created and assigned as the Default Role for that Group. (You may immediately change the name of this role, however.)
 
-##How do I change the Name/Description/Type of a Group?
+## How do I change the Name/Description/Type of a Group?
 
 1. From the top menu, select "List Groups" (under "Groups").
 2. Click on the desired Group.
@@ -20,7 +20,7 @@ For example, a Group may be "Friday Night Bible Study." Roles within this group 
 5. Type the new title in the input box, and press "Save".
 6. The new information should appear.
 
-##How do I add a new Role to a Group?
+## How do I add a new Role to a Group?
 
 1. From the top menu, select "List Groups" (under "Groups").
 2. Click on the desired Group.
@@ -30,7 +30,7 @@ For example, a Group may be "Friday Night Bible Study." Roles within this group 
 
 The new Role should appear in the list.
 
-##How do I change a Role in a Group?
+## How do I change a Role in a Group?
 
 1. From the top menu, select "List Groups" (under "Groups").
 2. Click on the desired Group.
@@ -41,20 +41,20 @@ The new Role should appear in the list.
 *Please note*, if you make changes without clicking "Save Changes", all changes will be lost.
 The new Role should appear in the list.
 
-##What is the Default Role?
+## What is the Default Role?
 
 Every Group has a Default Role, which is simply the "standard" Role for a Member of that Group. For a class, for instance, the Default Role might be Student, because 95% of the people in the class will be Students. There will be other Roles -- Teacher, Assistant Teacher, etc. -- but most everyone will be a Student, so that's the Default Role.
 
 Default Roles allow you to quickly add new Members to a group. If you have 200 People in your Cart, you don't have to specify Roles for every record to dump the Cart to a Group, they are simply added as the Default Role. This also allows quick sorting of the organizers of a Group. The Group View producers all Members of a Group who do not occupy the Default Role, which are usually the organizers and administrators of the Group.
 
-##How do I change the Default Role for a Group?
+## How do I change the Default Role for a Group?
 
 1. From the top menu, select "List Groups" (under "Groups").
 2. Click on the desired Group.
 3. Click on "Edit this group."
 4. Under the heading of "Group Roles" is a list of current group roles. Click on "Make Default" to make the desired role the Default. The word "Default" appears over the number of the shaded box for the default role.
 
-##What is Group Type?
+## What is Group Type?
 
 Group types allow you to categorize your groups. For example, a group called "Gleaners Class" can be type *"Sunday School"* and a group called "Franklin House" can be type "Cell Groups". This helps in further classifying groups so that you don't have to memorize which group is associated with which type.
 

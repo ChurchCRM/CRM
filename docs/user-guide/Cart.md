@@ -1,4 +1,4 @@
-#What is the Cart?
+# What is the Cart?
 
 The Cart is a temporary holding space for People records. You can add People to the Cart, then process these People records all at once, by generating labels or dumping the contents of the cart to a group.
 
@@ -6,12 +6,12 @@ You may put an unlimited number of People in the Cart. Putting someone in the Ca
 
 The Cart is user- and session-specific. Every User has his or her own Cart, and that Cart will only last until the User logs off -- Carts do not span sessions.
 
-#How can I see what's in my Cart?
+# How can I see what's in my Cart?
 On the top menu, second row, right side, a real-time counter will tell you how many records you have in the Cart. This counter will go up or down as you add or remove records.
 
 To see the actual records in your Cart, click on "List Cart Items" (under "Cart"). This will display all records currently in the Cart.
 
-#How do I add a Person to the Cart?
+# How do I add a Person to the Cart?
 
 There several ways to do this:
 
@@ -36,7 +36,7 @@ Click on the desired Group or Create a New Group - Don't worry, if you make a ne
 
 If you choose to make a new group, on the New Group page, there is a box for "Empty Cart to this Group?". It should already be checked, so just let InfoCentral make the move for you.
 
-#How do I remove a person from the Cart?
+# How do I remove a person from the Cart?
 
 1. From the top menu, click "List Cart Items" (under "Cart").
 2. On the resulting screen, all the People currently in the Cart will be listed, with a "Remove" link to the far right of their name. 

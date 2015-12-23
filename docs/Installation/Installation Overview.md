@@ -1,6 +1,6 @@
-#Installation Overview & Requirements
+# Installation Overview & Requirements
 
-##How do I run ChurchCRM?
+## How do I run ChurchCRM?
 
 Running ChurchCRM is not complicated if you have experience with
 Web applications. If you don't, there are a few things to get used to.
@@ -17,7 +17,7 @@ a Web browser.
 There is only one server, but there can be an unlimited number of
 clients.
 
-##ChurchCRM Requirements?
+## ChurchCRM Requirements?
 ---
 A PHP-compatible Web server (Apache is recommended)
 The MySQL database server (version 4.0 or higher)
@@ -34,7 +34,7 @@ php-pear, and whatever Apache packages suit your needs.
 ChurchCRM can be run entirely with free software.  In fact, that's
 half the point of why it was written!
 
-##What type of server do I need?
+## What type of server do I need?
 ---
 The computer can be running almost any operating system: 
 Windows 9x/2000/XP,Linux, BSD, Solaris, MacOS, etc. so long as 
@@ -49,7 +49,7 @@ PHP   - Version 4.1 or greater
       - register_globals turned OFF (see below)
 MySQL - Version 4.0 or greater
 
-##What if my host doesn't have register_globals turned OFF?
+## What if my host doesn't have register_globals turned OFF?
 ---
 There is a simple work around if your server does not have register_globals
 turned off. Create a file called ".htaccess" with a simple text editor and 
@@ -57,7 +57,7 @@ insert the following line into that new file:
 	php_flag register_globals off
 Save this file and upload this file into the main ChurchInfo directory.
 
-##What kind of client computers do I need?
+## What kind of client computers do I need?
 ---
 The interface will work fine with any modern standards-compliant web
 browser.  However, be warned:  Microsoft Internet Explorer is in many
@@ -67,13 +67,13 @@ Mozilla or Chrome instead.  Alternatively, there is a setting in
 Admin -> Edit General Settings that can disable certain interface 
 features for non-compliant browsers.
 
-##What if I only have one computer?
+## What if I only have one computer?
 ---
 That's fine, so long as the computer satisfies the requirements for
 both the server and client. Both sides of ChurchCRM can be on the
 same computer.
 
-##Where do I get a Web server?
+## Where do I get a Web server?
 ---
 The free Apache web server will work on Windows, Linux or about any
 flavor of Unix.  A few extra steps may be involved to configure Apache's
