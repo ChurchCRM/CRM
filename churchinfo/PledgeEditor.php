@@ -649,18 +649,31 @@ require "Include/Header.php";
 <script language="javascript" type="text/javascript">
 $(document).ready(function() {
 	$("#FamilyName").autocomplete({
-		source: "../ajax/SearchMembers.php?f=famlist_s",
-		minLength: 3,
+		source: function (request, response) {
+			$.ajax({
+				url: 'api/families/search/'+request.term,
+				dataType: 'json',
+				type: 'GET',
+				success: function (data) {
+					response($.map(data.families, function (item) {
+						return {
+                            value: item.displayName,
+                            id: item.id
+						}
+					}));
+				}
+			})
+		},
+		minLength: 2,
 		select: function(event,ui) {
-			$('[name=FamilyName]').val(ui.item.value);
-			$('[name=FamilyID]:eq(1)').val(ui.item.id);
+			$("#FamilyName").val(ui.item.value);
+			$("#FamilyID").val(ui.item.id);
 		}
 	});
 });
 </script>
 					<input style='width:350px;' type="text" id="FamilyName" name="FamilyName" value='<?php echo $sFamilyName; ?>' />
-					<input type="hidden" name="FamilyID" value='<?php echo $iFamily; ?>'>
-					</select>
+					<input type="hidden" id="FamilyID" name="FamilyID" value='<?php echo $iFamily; ?>'>
 				</td>
 			</tr>
 
