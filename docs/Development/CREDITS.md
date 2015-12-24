@@ -4,6 +4,8 @@
 
 
 ##Other Open Source code used in this project:
+*  [php-google-map-api] (https://github.com/streetlogics/php-google-map-api)
+
 *	Javascript / DHTML Calendar by Mihai Bazon
 *	DOM Menu by Dan Allen
 *	DOM ToolTips by Dan Allen
