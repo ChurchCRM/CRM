@@ -4,6 +4,8 @@
 
 
 ##Other Open Source code used in this project:
+* [] (https://github.com/horechek/mailchimp-mailchimp-api-php)
+
 *	Javascript / DHTML Calendar by Mihai Bazon
 *	DOM Menu by Dan Allen
 *	DOM ToolTips by Dan Allen
