@@ -666,8 +666,8 @@ $(document).ready(function() {
 		},
 		minLength: 2,
 		select: function(event,ui) {
-			$("#FamilyName").val(ui.item.value);
-			$("#FamilyID").val(ui.item.id);
+			$('[name=FamilyName]').val(ui.item.value);
+			$('[name=FamilyID]:eq(1)').val(ui.item.id);
 		}
 	});
 });
