@@ -6,7 +6,7 @@
  */
 require_once '../vendor/Mailchimp.php';
 
-class ChurchInfoMailchimp
+class MailChimpService
 {
 
     private $isActive = false;
