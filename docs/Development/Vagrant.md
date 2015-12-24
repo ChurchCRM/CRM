@@ -1,38 +1,36 @@
-#Develop using a Vagrant Box 
+# Develop using a Vagrant Box
 
-##Get Started
+## Get Started
 
-Thanks to Scotch box https://github.com/scotch-io/scotch-box a the LAMP base box. 
+Thanks to Scotch box https://github.com/scotch-io/scotch-box a the LAMP base box.
 
 https://github.com/scotch-io/scotch-box#get-started
 
 
-##Steps  
+## Steps  
 
-Just clone and run Vagrant up 
+Just clone and run Vagrant up
 
-1. git clone https://github.com/ChurchCRM/CRM.git
+1. `git clone https://github.com/ChurchCRM/CRM.git`
 
-2. vagrant up
+2. `vagrant up`
 
-##Server
+## Server
 
 Access the Project at http://192.168.33.10/
 
 
-###Login Info
+### Login Info
 
-User: Admin
-Password: churchinfoadmin
+User: `Admin`
+Password: `churchinfoadmin`
 
-##Database
+## Database
 
 See https://github.com/scotch-io/scotch-box#database-access for connection info
 
 ### CRM DB info
 
-DB: churchcrm
-DB User: churchcrm
-DB Password: churchcrm
-
-
+DB: `churchcrm`
+DB User: `churchcrm`
+DB Password: `churchcrm`

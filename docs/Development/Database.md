@@ -1,4 +1,4 @@
-#Structure
+# Structure
 
 The following tables exist in ChurchInfo:
 
