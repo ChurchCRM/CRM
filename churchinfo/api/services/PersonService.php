@@ -66,16 +66,16 @@ class PersonService
 
     function search($searchTerm)
     {
-        $fetch = 'SELECT per_ID, per_FirstName, per_LastName, CONCAT_WS(" ",per_FirstName,per_LastName) AS fullname, per_fam_ID  FROM person_per WHERE per_FirstName LIKE \'%' . $searchTerm . '%\' OR per_LastName LIKE \'%' . $searchTerm . '%\' OR per_Email LIKE \'%' . $searchTerm . '%\' OR CONCAT_WS(" ",per_FirstName,per_LastName) LIKE \'%' . $searchTerm . '%\' LIMIT 15';
+        $fetch = 'SELECT per_ID, per_FirstName, per_LastName, CONCAT_WS(" ",per_FirstName,per_LastName) AS fullname, per_fam_ID  FROM person_per WHERE per_FirstName LIKE \'%' . $searchTerm . '%\' OR per_LastName LIKE \'%' . $searchTerm . '%\' OR per_Email LIKE \'%' . $searchTerm . '%\' OR CONCAT_WS(" ",per_FirstName,per_LastName) LIKE \'%' . $searchTerm . '%\' order by per_FirstName LIMIT 15';
         $result = mysql_query($fetch);
 
         $return = array();
         while ($row = mysql_fetch_array($result)) {
             $values['id'] = $row['per_ID'];
-            $values['famID'] = $row['per_fam_ID'];
-            $values['per_FirstName'] = $row['per_FirstName'];
-            $values['per_LastName'] = $row['per_LastName'];
-            $values['value'] = $row['per_FirstName'] . " " . $row['per_LastName'];
+            $values['familyID'] = $row['per_fam_ID'];
+            $values['firstName'] = $row['per_FirstName'];
+            $values['lastName'] = $row['per_LastName'];
+            $values['fullName'] = $row['per_FirstName'] . " " . $row['per_LastName'];
 
             array_push($return, $values);
         }

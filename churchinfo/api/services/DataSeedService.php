@@ -149,7 +149,6 @@ class DataSeedService
 
     function generateFamilies($families)
     {
-		echo "Generating Families";
         $kidsPerFamily = 3;
         $kidsdev = 3;
         $personPointer = 1;
@@ -193,7 +192,7 @@ class DataSeedService
             }
 
         }
-        echo '{"random.me response":' . $response . '"families created": ' . $families . ',"heads of household created": ' . $rTotalHoh . ', "spouses created":' . $rTotalSpouse . ', "children created":' . $rTotalChildren . '}';
+        echo '{"families created": ' . $families . ',"heads of household created": ' . $rTotalHoh . ', "spouses created":' . $rTotalSpouse . ', "children created":' . $rTotalChildren . ',"random.me response":' . $response . '}';
 
     }
 
