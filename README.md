@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/ChurchCRM/CRM.png?label=ready&title=Ready)](https://waffle.io/ChurchCRM/CRM)
 Welcome to Church Web CRM
 ---
 
