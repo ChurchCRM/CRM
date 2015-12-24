@@ -19,7 +19,7 @@
 *
 ******************************************************************************/
 
-require('GoogleMapAPI/GoogleMapAPI.class.php');
+require('../vendor/google-map/GoogleMap.php');
 
 $googleMapObj = new GoogleMapAPI('map');
 $googleMapObj->setAPIKey($sGoogleMapKey);
