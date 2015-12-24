@@ -2,14 +2,14 @@
 
 Currently as ChurchCRM is still in development an install script is not yet available. ChurchCRM can run on a LAMP server (Linux, Apache, Mysql, PHP) or a Shared Hosting account through a manual installation.
 
-## How Do I Install ChurchInfo?
+## How Do I Install ChurchCRM?
 --------------------
 1. The .tar.gz file download contains a directory called "churchinfo"
 Extract the file and place the contents into a directory in the document root of your Web server or via FTP to a shared hosting account
 
 2. Within the directory you'll find a directory called "SQL"
 containing a file named "Install.sql". Contained in this file are
-the SQL statements necessary to create the ChurchInfo database.
+the SQL statements necessary to create the ChurchCRM database.
 
  - For LAMP servers, log onto your database server under the root account (or other account
 allowed to create databases), create a database for ChurchCRM, and
@@ -39,7 +39,7 @@ $sPASSWORD = "password";
 $sDATABASE = "churchinfo";
 
 Change these parameters to match the mysql server and user account you
-intend to use.  You MUST set the $sRootPath option properly as described 
+intend to use.  You MUST set the $sRootPath option properly as described
 in Config.php.  It is NOT recommended that you use the ROOT account for
 accessing your database.
 
