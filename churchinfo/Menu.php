@@ -65,7 +65,7 @@ require 'Include/Header.php';
 
 
 <div class="row">
-    <div class="col-lg-12 col-md-6 col-sm-4">
+    <div class="col-lg-6 col-md-3 col-sm-4">
         <div class="box box-solid">
             <div class="box-body clearfix">
                 <i class="fa fa-search"></i><input type="text" class="search searchPerson" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
@@ -73,12 +73,18 @@ require 'Include/Header.php';
                 <a href="PersonEditor.php" class="btn btn-primary">
                     <i class="fa fa-plus-circle fa-md"></i> Add Person
                 </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-3 col-sm-4">
+        <div class="box box-solid">
+            <div class="box-body clearfix">
+                <i class="fa fa-search"></i><input type="text" class="search searchFamily" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
 
                 <a href="FamilyEditor.php" class="btn btn-primary">
                     <i class="fa fa-plus-circle fa-md"></i> Add Family
                 </a>
             </div>
-            </header>
         </div>
     </div>
 </div>

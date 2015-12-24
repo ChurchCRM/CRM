@@ -51,6 +51,30 @@
 				},
 				minLength: 2
 			});
+
+            $(".searchFamily").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: 'api/families/search/'+request.term,
+                        dataType: 'json',
+                        type: 'GET',
+                        success: function (data) {
+                            response($.map(data.families, function (item) {
+                                return {
+                                    label: item.displayName,
+                                    value: item.id
+                                }
+                            }));
+                        }
+                    })
+                },
+                select: function (event, ui) {
+                    var location = 'FamilyView.php?FamilyID='+ui.item.value;
+                    window.location.replace(location);
+                    return false;
+                },
+                minLength: 2
+            });
 		});
 	</script>
 </body>
