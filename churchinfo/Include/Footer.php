@@ -29,13 +29,27 @@
 	<script language="javascript" type="text/javascript">
 		$("document").ready(function(){
 			$(".searchPerson").autocomplete({
-				source: "ajax/SearchMembers.php?searchtype=person",
-				minLength: 2,
-				select: function(event, ui) {
-					var location = 'PersonView.php?PersonID='+ui.item.id;
-					window.location.replace(location);
-					$('#add_per_ID').val(ui.item.id);
-				}
+				source: function (request, response) {
+					$.ajax({
+						url: 'api/persons/search/'+request.term,
+						dataType: 'json',
+						type: 'GET',
+						success: function (data) {
+							response($.map(data.persons, function (item) {
+								return {
+                                    label: item.fullName,
+									value: item.id
+								}
+							}));
+						}
+					})
+				},
+				select: function (event, ui) {
+                    var location = 'PersonView.php?PersonID='+ui.item.value;
+                    window.location.replace(location);
+					return false;
+				},
+				minLength: 2
 			});
 		});
 	</script>
