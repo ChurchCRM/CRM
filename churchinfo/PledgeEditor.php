@@ -364,9 +364,36 @@ require "Include/Header.php";
 			<tr>
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?><?php addToolTip("Select the pledging family from the list."); ?>><?php echo gettext("Family"); ?></td>
 				<td class="TextColumn">
+
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+	$("#FamilyName").autocomplete({
+		source: function (request, response) {
+			$.ajax({
+				url: 'api/families/search/'+request.term,
+				dataType: 'json',
+				type: 'GET',
+				success: function (data) {
+					response($.map(data.families, function (item) {
+						return {
+                            value: item.displayName,
+                            id: item.id
+						}
+					}));
+				}
+			})
+		},
+		minLength: 2,
+		select: function(event,ui) {
+			$('[name=FamilyName]').val(ui.item.value);
+			$('[name=FamilyID]:eq(1)').val(ui.item.id);
+		}
+	});
+});
+</script>
+
 					<input style='width:350px;' type="text" id="FamilyName" name="FamilyName" value='<?php echo $sFamilyName; ?>' />
-					<input type="hidden" name="FamilyID" value='<?php echo $iFamily; ?>'>
-					</select>
+					<input type="hidden" id="FamilyID" name="FamilyID" value='<?php echo $iFamily; ?>'>
 				</td>
 			</tr>
 

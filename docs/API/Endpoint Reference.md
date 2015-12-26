@@ -2,15 +2,23 @@
 ChurchCRM leverages Slim 2.6.2 to provide REST access to the data elements.
 
 ## People
-* [GET] /members/list/search/:query
+* [GET] /api/persons/search/:query
   * Returns a list of the members who's first name or last name matches the :query parameter
 
+* [GET] /api/persons/:id/photo
+  * Returns a the correct photo for that person for a person with the :id value
+
 ## Families
+
 * [GET] /families/byCheckNumber/:tScanString
   * Returns a family string based on the scan string of an MICR reader containing a routing and account number
 * [GET] /families/byEnvelopeNumber/:tEnvelopeNumber
   * Returns a family string based on the the requested envelope number
-  
+* [GET] /api/families/search/:query
+  * Returns a list of the families who's name matches the :query parameter
+* [GET] /api/families/lastedited
+  * Returns a the last 10 updated families 
+
 ## Deposits
 * [GET] /
   * Returns all deposits

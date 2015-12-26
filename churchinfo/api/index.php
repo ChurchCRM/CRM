@@ -70,7 +70,7 @@ $app->group('/persons', function () use ($app) {
 });
 
 $app->group('/families', function () use ($app) {
-    $app->get('/:query', function ($query) use ($app) {
+    $app->get('/search/:query', function ($query) use ($app) {
         try {
             $app->FamilyService->search($query);
         } catch (Exception $e) {
