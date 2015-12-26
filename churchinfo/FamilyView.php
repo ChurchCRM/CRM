@@ -28,9 +28,9 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/GeoCoder.php";
 require 'Include/PersonFunctions.php';
-require 'Include/MailchimpFunctions.php';
+require 'service/MailChimpService.php';
 
-$mailchimp = new ChurchInfoMailchimp();
+$mailchimp = new MailChimpService();
 //Set the page title
 $sPageTitle = gettext("Family View");
 

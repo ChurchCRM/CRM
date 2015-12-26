@@ -1,4 +1,4 @@
-#Canvass Support
+# Canvass Support
 
 **How does ChurchCRM support an every-member canvass?**
 
@@ -6,11 +6,11 @@ ChurchCRM includes comprehensive support to facilitate an every-member canvass e
 
 Here is an overview of the steps:
 
-1. Create a group called “Canvassers”. Identify canvassers and collect them in this “Canvassers” group.
+1. Create a [group](Groups.md) called “Canvassers”. Identify canvassers and collect them in this “Canvassers” group.
 
 2. Optionally create a group called “BraveCanvassers”. These canvassers are people who are willing to call families that did not pledge last year.
 
-3. Use the Canvass Automation page to either enable or disable canvassing for all families. If most families will be canvassed, enable canvassing for all families and then turn off the “Ok To Canvass” field for families that should not be canvassed. Alternatively, disable canvassing for all families and then turn on the “Ok To Canvass” field for families to canvass. The “Ok To Canvass” field is found about half-way down the family editor page.
+3. Use the Canvass Automation page to either enable or disable canvassing for all [families](families.md). If most families will be canvassed, enable canvassing for all families and then turn off the “Ok To Canvass” field for families that should not be canvassed. Alternatively, disable canvassing for all families and then turn on the “Ok To Canvass” field for families to canvass. The “Ok To Canvass” field is found about half-way down the family editor page.
 
 4. Use the Canvass Automation page to assign “BraveCanvassers” to non-pledging families first, if using this feature.
 

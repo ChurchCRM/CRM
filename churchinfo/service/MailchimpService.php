@@ -4,9 +4,9 @@
  * Date: 12/9/2014
  * Time: 11:00 PM
  */
-require_once 'Mailchimp.php';
+require_once '../vendor/Mailchimp.php';
 
-class ChurchInfoMailchimp
+class MailChimpService
 {
 
     private $isActive = false;
