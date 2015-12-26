@@ -394,6 +394,7 @@ $(document).ready(function() {
 
 					<input style='width:350px;' type="text" id="FamilyName" name="FamilyName" value='<?php echo $sFamilyName; ?>' />
 					<input type="hidden" id="FamilyID" name="FamilyID" value='<?php echo $iFamily; ?>'>
+					<input type="hidden" id="DepositID" name="DepositID" value='<?php echo $_GET['CurrentDeposit']; ?>'>
 				</td>
 			</tr>
 

@@ -154,7 +154,9 @@ function getSubmitFormData(){
 				'Envelope'             : $('input[name=Envelope]').val(),
 				'iMethod'    : $('select[name=Method]').val(),
 				'comment'			:$('input[name=OneComment]').val(),
-				'total'				:$('input[name=TotalAmount]').val()};
+				'total'				:$('input[name=TotalAmount]').val(),
+				'DepositID'			:$('input[name=DepositID]').val()
+				};
 				if ($('select[name=Method]').val() == "CASH")
 				{
 					fd['cashDenominations']=getDenominationSubmitData();

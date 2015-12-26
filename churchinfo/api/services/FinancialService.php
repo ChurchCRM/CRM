@@ -257,22 +257,22 @@ class FinancialService {
 			// loop through all funds and create non-zero amount pledge records
 			$FundSplit = json_decode($payment->FundSplit);
 			echo "funds selected: ".count($FundSplit);
-			
-			foreach ($FundSplit as $fun_id => $fund) {
+			print_r($FundSplit);
+			foreach ($FundSplit as $Fund) {
 				if ($payment->iMethod  == "CHECK") {
-					$sGroupKey = genGroupKey($payment->iCheckNo, $payment->FamilyID, $fun_id, $payment->Date);
+					$sGroupKey = genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
 				} elseif ($payment->iMethod == "BANKDRAFT") {
 					if (!$iAutID) {
 						$iAutID = "draft";
 					}
-					$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $fun_id, $payment->Date);
+					$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
 				} elseif ($payment->iMethod  == "CREDITCARD") {
 					if (!$iAutID) {
 						$iAutID = "credit";
 					}
-					$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $fun_id, $payment->Date);
+					$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
 				} else {
-					$sGroupKey = genGroupKey("cash", $payment->FamilyID, $fun_id, $payment->Date);
+					$sGroupKey = genGroupKey("cash", $payment->FamilyID, $Fund->FundID, $payment->Date);
 				} 
 				$sSQL = "INSERT INTO pledge_plg
 					(plg_famID,
@@ -296,19 +296,19 @@ class FinancialService {
 					$payment->FamilyID . "','" . 
 					$payment->FYID . "','" . 
 					$payment->Date . "','" .
-					$fund->Amount . "','" . 
+					$Fund->Amount . "','" . 
 					(isset($payment->schedule) ? $payment->schedule : "NULL") . "','" . 
 					$payment->iMethod  . "','" . 
-					$fund->Comment . "','".
+					$Fund->Comment . "','".
 					date("YmdHis") . "'," .
 					$_SESSION['iUserID'] . ",'" . 
 					(isset($payment->type) ? "pledge" : "payment") . "'," . 
-					$fun_id . "," . 
-					$iCurrentDeposit . "," . 
-					$payment->checknumber . ",'" . 
-					$payment->tScanString . "','" . 
-					$payment->iAutID  . "','" . 
-					$fund->nNonDeductible . "','" . 
+					$Fund->FundID . "," . 
+					$payment->DepositID . "," . 
+					$payment->iCheckNo . ",'" . 
+					(isset($payment->tScanString) ? $payment->tScanString : "NULL") . "','" . 
+					(isset($payment->iAutID ) ? $payment->iAutID  : "NULL") . "','" . 
+					(isset($Fund->nNonDeductible ) ? $Fund->nNonDeductible : "NULL") . "','" . 
 					$sGroupKey . "')";
 						
 					echo "SQL: ".$sSQL;
