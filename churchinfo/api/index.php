@@ -20,6 +20,15 @@ Slim::registerAutoloader();
 require_once "services/PersonService.php";
 require_once "services/FamilyService.php";
 require_once "services/DataSeedService.php";
+require_once "services/FinancialService.php";
+
+function getJSONFromApp($app)
+{
+	
+	$request = $app->request();
+    $body = $request->getBody();
+    return json_decode($body);
+}
 
 $app = new Slim();
 
@@ -35,6 +44,10 @@ $app->container->singleton('FamilyService', function () {
 
 $app->container->singleton('DataSeedService', function () {
     return new DataSeedService();
+});
+
+$app->container->singleton('FinancialService', function () {
+   return new FinancialService();
 });
 
 $app->group('/persons', function () use ($app) {
@@ -71,6 +84,102 @@ $app->group('/families', function () use ($app) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
     });
+	$app->get('/byCheckNumber/:tScanString', function($tScanString) use ($app) 
+	{
+		try {
+			$app->FinancialService->getMemberByScanString($sstrnig);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+		
+	});
+	$app->get('/byEnvelopeNumber/:tEnvelopeNumber',function($tEnvelopeNumber) use ($app) 
+	{
+		try {
+			$app->FamilyService->getFamilyStringByEnvelope($tEnvelopeNumber);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+	});
+	
+});
+
+$app->group('/deposits',function () use ($app) {
+	
+	$app->get('/',function() use ($app) 
+	{
+		try {
+			$app->FinancialService->listDeposits();
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+	});
+	
+	$app->get('/:id',function($id) use ($app) 
+	{
+		try {
+			$app->FinancialService->listDeposits($id);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }	
+	})->conditions(array('id' => '[0-9]+'));
+	
+	$app->get('/:id/payments',function($id) use ($app) 
+	{
+		try {
+			$app->FinancialService->listPayments($id);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+	})->conditions(array('id' => '[0-9]+'));
+});
+
+
+
+$app->group('/payments',function () use ($app) {
+	$app->get('/', function () use ($app) {
+		try {
+			$app->FinancialService->getPayments();
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+		
+	});
+	$app->post('/', function () use ($app) {
+		try {
+			$payment=getJSONFromApp($app);
+			$app->FinancialService->submitPledgeOrPayment($payment);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+		
+	});
+	$app->get('/:id',function ($id) use ($app) {
+		try {
+			#$request = $app->request();
+			#$body = $request->getBody();
+			#$payment = json_decode($body);	
+			#$app->FinancialService->getDepositsByFamilyID($fid);
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+		
+		
+	});
+	$app->get('/byFamily/:familyId(/:fyid)', function ($familyId,$fyid=-1) use ($app) {
+		try {
+			#$request = $app->request();
+			#$body = $request->getBody();
+			#$payment = json_decode($body);	
+			#$app->FinancialService->getDepositsByFamilyID($fid);
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+		
+		
+	});
 });
 
 
@@ -118,7 +227,7 @@ $app->group('/data/seed', function () use ($app) {
 
 });
 
-
 $app->run();
+
 
 

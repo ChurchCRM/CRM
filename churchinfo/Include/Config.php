@@ -51,10 +51,10 @@ $URL[0] = 'https://mychurch.org/churchinfo/Default.php';
 // Set error reporting
 
 // Turn off all error reporting
-error_reporting(0);
+//error_reporting(0);
 
 // Turn on all error reporting
-// error_reporting(-1);
+ error_reporting(-1);
 
 // Report all errors except E_NOTICE
 // error_reporting(E_STRICT & E_ALL & ~E_NOTICE);
