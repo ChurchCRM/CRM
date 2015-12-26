@@ -74,14 +74,6 @@ $(".fundSplitInputBox").on('change',function(){
 
 $(document).ready(function() {
 
-$("#FamilyName").autocomplete({
-		source: "AjaxFunctions.php?searchtype=famlist_s",
-		minLength: 3,
-		select: function(event,ui) {
-			$('[name=FamilyName]').val(ui.item.value);
-			$('[name=FamilyID]:eq(1)').val(ui.item.id);
-		}
-	});
 
 
 $('#MatchEnvelope').click(function() {
