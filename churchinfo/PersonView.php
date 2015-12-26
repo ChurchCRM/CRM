@@ -19,9 +19,9 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require 'Include/PersonFunctions.php';
-require 'Include/MailchimpFunctions.php';
+require 'service/MailChimpService.php';
 
-$mailchimp = new ChurchInfoMailchimp();
+$mailchimp = new MailChimpService();
 
 // Get the person ID from the querystring
 $iPersonID = FilterInput($_GET["PersonID"],'int');
