@@ -128,7 +128,7 @@ function getFundSubmitData(){
 	}
 	else
 	{
-		var fundobjet ={FundID: $('select[name=FundSplit]').val(), Comment: $('input[name=OneComment]').val()};
+		var fundobjet ={FundID: $('select[name=FundSplit]').val(), Comment: $('input[name=OneComment]').val(), Amount: $('input[name=TotalAmount]').val()};
 		funds.push(fundobjet);
 	}
 	return JSON.stringify(funds);	
@@ -152,12 +152,16 @@ function getSubmitFormData(){
 				
 				'FYID'				 : $('select[name=FYID]').val(),
 				'Envelope'             : $('input[name=Envelope]').val(),
-				'paymentby'    : $('select[name=Method]').val(),
+				'iMethod'    : $('select[name=Method]').val(),
 				'comment'			:$('input[name=OneComment]').val(),
 				'total'				:$('input[name=TotalAmount]').val()};
 				if ($('select[name=Method]').val() == "CASH")
 				{
 					fd['cashDenominations']=getDenominationSubmitData();
+				}
+				if ($('select[name=Method]').val() == "CHECK")
+				{
+					fd['iCheckNo']=$('input[name=CheckNo]').val();
 				}
 				fd['FundSplit']=getFundSubmitData();
 				

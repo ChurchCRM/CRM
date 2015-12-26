@@ -146,8 +146,8 @@ class FinancialService {
 
 	private function validateDate($payment) { 
 		// Validate Date
-		if (strlen($dDate) > 0) {
-			list($iYear, $iMonth, $iDay) = sscanf($dDate,"%04d-%02d-%02d");
+		if (strlen($payment->Date) > 0) {
+			list($iYear, $iMonth, $iDay) = sscanf($payment->Date,"%04d-%02d-%02d");
 			if ( !checkdate($iMonth,$iDay,$iYear) ) {
 				$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid Date") . "</span>";
 				$bErrorFlag = true;
@@ -203,19 +203,19 @@ class FinancialService {
 	//If the payment method is a check, then the check nubmer must be present, and it must not already have been used for this family
 	//if the payment method is cash, there must not be a check number
 		try {
-			if ($payment->type=="Payment" and $payment->paymentby == "CHECK"  and  ! isset($payment->checknumber)) {
+			if ($payment->type=="Payment" and $payment->iMethod == "CHECK"  and  ! isset($payment->checknumber)) {
 				throw new Exception (gettext("Must specify non-zero check number"));
 			}
 		
 			// detect check inconsistencies
 			if ($payment->type=="Payment" and isset($payment->checknumber)) {
-				if ($payment->paymentby == "CASH") {
+				if ($payment->iMethod == "CASH") {
 					throw new Exception (gettext("Check number not valid for 'CASH' payment"));
 				} 
 				
 				//build routine to make sure this check number hasn't been used by this family yet (look at group key)
-				/*elseif ($payment->paymentby=='CHECK' and !$sGroupKey) {
-					$chkKey = $iFamily . "|" . $iCheckNo;
+				/*elseif ($payment->iMethod=='CHECK' and !$sGroupKey) {
+					$chkKey = $payment->FamilyID . "|" . $iCheckNo;
 					if (array_key_exists($chkKey, $checkHash)) {
 						$text = "Check number '" . $iCheckNo . "' for selected family already exists.";
 						$sCheckNoError = "<span style=\"color: red; \">" . gettext($text) . "</span>";
@@ -233,8 +233,8 @@ class FinancialService {
 	
 	function processCurrencyDenominations($payment) {
 		//Process the Currency Denominations for this deposit
-			if ($iMethod == "CASH"){
-				$sGroupKey = genGroupKey("cash", $iFamily, $fun_id, $dDate);
+			if ($payment->iMethod  == "CASH"){
+				$sGroupKey = genGroupKey("cash", $payment->FamilyID, $fun_id, $dDate);
 				foreach ($currencyDenomination2Name as $cdem_denominationID =>$cdem_denominationName)
 				{
 					$sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, pdem_denominationID, pdem_denominationQuantity) 
@@ -256,73 +256,68 @@ class FinancialService {
 		// Only set PledgeOrPayment when the record is first created
 			// loop through all funds and create non-zero amount pledge records
 			$FundSplit = json_decode($payment->FundSplit);
-			if (count($FundSplit) > 1 ) { // split
-				echo "split selected";
-				$nonZeroFundAmountEntered =0;
-		
-				foreach ($FundSplit as $fun_id => $fund) {
-					
-					if ($iMethod == "CHECK") {
-						$sGroupKey = genGroupKey($iCheckNo, $iFamily, $fun_id, $dDate);
-					} elseif ($iMethod == "BANKDRAFT") {
-						if (!$iAutID) {
-							$iAutID = "draft";
-						}
-						$sGroupKey = genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
-					} elseif ($iMethod == "CREDITCARD") {
-						if (!$iAutID) {
-							$iAutID = "credit";
-						}
-						$sGroupKey = genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
-					} else {
-						$sGroupKey = genGroupKey("cash", $iFamily, $fun_id, $dDate);
-					} 
-					$sSQL = "INSERT INTO pledge_plg
-						(plg_famID,
-						plg_FYID, 
-						plg_date, 
-						plg_amount,
-						plg_schedule, 
-						plg_method, 
-						plg_comment, 
-						plg_DateLastEdited, 
-						plg_EditedBy, 
-						plg_PledgeOrPayment, 
-						plg_fundID, 
-						plg_depID, 
-						plg_CheckNo, 
-						plg_scanString, 
-						plg_aut_ID, 
-						plg_NonDeductible, 
-						plg_GroupKey)
-						VALUES ('" . 
-						$payment->FamilyID . "','" . 
-						$payment->FYID . "','" . 
-						$payment->Date . "','" .
-						$fund->amount . "','" . 
-						($payment->schedule ? $payment->schedule : "NULL") . "','" . 
-						$payment->paymentby  . "','" . 
-						$fund->comment . "','".
-						date("YmdHis") . "'," .
-						$_SESSION['iUserID'] . ",'" . 
-						$payment->PledgeOrPayment . "'," . 
-						$fund->fundID . "," . 
-						$iCurrentDeposit . "," . 
-						$payment->checknumber . ",'" . 
-						$payment->tScanString . "','" . 
-						$payment->iAutID  . "','" . 
-						$fund->nNonDeductible . "','" . 
-						$sGroupKey . "')";
-							
-						echo "SQL: ".$sSQL;
+			echo "funds selected: ".count($FundSplit);
+			
+			foreach ($FundSplit as $fun_id => $fund) {
+				if ($payment->iMethod  == "CHECK") {
+					$sGroupKey = genGroupKey($payment->iCheckNo, $payment->FamilyID, $fun_id, $payment->Date);
+				} elseif ($payment->iMethod == "BANKDRAFT") {
+					if (!$iAutID) {
+						$iAutID = "draft";
+					}
+					$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $fun_id, $payment->Date);
+				} elseif ($payment->iMethod  == "CREDITCARD") {
+					if (!$iAutID) {
+						$iAutID = "credit";
+					}
+					$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $fun_id, $payment->Date);
+				} else {
+					$sGroupKey = genGroupKey("cash", $payment->FamilyID, $fun_id, $payment->Date);
+				} 
+				$sSQL = "INSERT INTO pledge_plg
+					(plg_famID,
+					plg_FYID, 
+					plg_date, 
+					plg_amount,
+					plg_schedule, 
+					plg_method, 
+					plg_comment, 
+					plg_DateLastEdited, 
+					plg_EditedBy, 
+					plg_PledgeOrPayment, 
+					plg_fundID, 
+					plg_depID, 
+					plg_CheckNo, 
+					plg_scanString, 
+					plg_aut_ID, 
+					plg_NonDeductible, 
+					plg_GroupKey)
+					VALUES ('" . 
+					$payment->FamilyID . "','" . 
+					$payment->FYID . "','" . 
+					$payment->Date . "','" .
+					$fund->Amount . "','" . 
+					(isset($payment->schedule) ? $payment->schedule : "NULL") . "','" . 
+					$payment->iMethod  . "','" . 
+					$fund->Comment . "','".
+					date("YmdHis") . "'," .
+					$_SESSION['iUserID'] . ",'" . 
+					(isset($payment->type) ? "pledge" : "payment") . "'," . 
+					$fun_id . "," . 
+					$iCurrentDeposit . "," . 
+					$payment->checknumber . ",'" . 
+					$payment->tScanString . "','" . 
+					$payment->iAutID  . "','" . 
+					$fund->nNonDeductible . "','" . 
+					$sGroupKey . "')";
 						
-						if (isset ($sSQL)) {
-							RunQuery($sSQL);
-							unset($sSQL);
-						}
-				}
-		
-		}
+					echo "SQL: ".$sSQL;
+					
+					if (isset ($sSQL)) {
+						RunQuery($sSQL);
+						unset($sSQL);
+					}
+			}
 	}
 	
 	
@@ -335,11 +330,11 @@ class FinancialService {
 			$this->validateChecks($payment);
 			echo "Validating date".PHP_EOL;
 			$this->validateDate($payment);
-			echo "Validating deposit".PHP_EOL;
-			$this->validateDeposit($payment);
+			#echo "Validating deposit".PHP_EOL;
+		#	$this->validateDeposit($payment);
 			echo "no errors, update!".PHP_EOL;
 			$this->insertPledgeorPayment ($payment);
-			if ($payment->paymentby =="CASH") {
+			if ($payment->iMethod =="CASH") {
 				$this->processCurrencyDenominations($payment);
 			}
 			

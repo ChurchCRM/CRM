@@ -357,7 +357,7 @@ require "Include/Header.php";
 			<!-- Start Comment Section -->
 			<tr id="SingleComment">
 				<td valign="top" align="left" <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Comment"); ?></td>
-				<td <?php echo "class=\"TextColumnWithBottomBorder\">"; echo "<input type=\"text\" name=\"OneComment\" id=\"OneComment\" value=\" ". $sComment[$iSelectedFund] . "\""; ?>">
+				<td <?php echo "class=\"TextColumnWithBottomBorder\">"; echo "<input type=\"text\" name=\"OneComment\" id=\"OneComment\" value=\" \""; ?>">
 			</tr>
 			<!-- Start Comment Section -->
 		
