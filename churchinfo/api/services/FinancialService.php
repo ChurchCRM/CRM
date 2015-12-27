@@ -255,68 +255,74 @@ class FinancialService {
 	function insertPledgeorPayment ($payment) {
 		// Only set PledgeOrPayment when the record is first created
 			// loop through all funds and create non-zero amount pledge records
+			$sGroupKey="";
 			$FundSplit = json_decode($payment->FundSplit);
 			echo "funds selected: ".count($FundSplit);
 			print_r($FundSplit);
 			foreach ($FundSplit as $Fund) {
-				if ($payment->iMethod  == "CHECK") {
-					$sGroupKey = genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
-				} elseif ($payment->iMethod == "BANKDRAFT") {
-					if (!$iAutID) {
-						$iAutID = "draft";
+				if ($Fund->Amount > 0) {  //Only insert a row in the pledge table if this fund has a non zero amount.
+					if (!isset($sGroupKey) )  //a GroupKey references a single familie's payment, and transcends the fund splits.  Sharing the same Group Key for this payment helps clean up reports.
+					{
+						if ($payment->iMethod  == "CHECK") {
+							$sGroupKey = genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
+						} elseif ($payment->iMethod == "BANKDRAFT") {
+							if (!$iAutID) {
+								$iAutID = "draft";
+							}
+							$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
+						} elseif ($payment->iMethod  == "CREDITCARD") {
+							if (!$iAutID) {
+								$iAutID = "credit";
+							}
+							$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
+						} else {
+							$sGroupKey = genGroupKey("cash", $payment->FamilyID, $Fund->FundID, $payment->Date);
+						} 
 					}
-					$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
-				} elseif ($payment->iMethod  == "CREDITCARD") {
-					if (!$iAutID) {
-						$iAutID = "credit";
-					}
-					$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
-				} else {
-					$sGroupKey = genGroupKey("cash", $payment->FamilyID, $Fund->FundID, $payment->Date);
-				} 
-				$sSQL = "INSERT INTO pledge_plg
-					(plg_famID,
-					plg_FYID, 
-					plg_date, 
-					plg_amount,
-					plg_schedule, 
-					plg_method, 
-					plg_comment, 
-					plg_DateLastEdited, 
-					plg_EditedBy, 
-					plg_PledgeOrPayment, 
-					plg_fundID, 
-					plg_depID, 
-					plg_CheckNo, 
-					plg_scanString, 
-					plg_aut_ID, 
-					plg_NonDeductible, 
-					plg_GroupKey)
-					VALUES ('" . 
-					$payment->FamilyID . "','" . 
-					$payment->FYID . "','" . 
-					$payment->Date . "','" .
-					$Fund->Amount . "','" . 
-					(isset($payment->schedule) ? $payment->schedule : "NULL") . "','" . 
-					$payment->iMethod  . "','" . 
-					$Fund->Comment . "','".
-					date("YmdHis") . "'," .
-					$_SESSION['iUserID'] . ",'" . 
-					(isset($payment->type) ? "pledge" : "payment") . "'," . 
-					$Fund->FundID . "," . 
-					$payment->DepositID . "," . 
-					$payment->iCheckNo . ",'" . 
-					(isset($payment->tScanString) ? $payment->tScanString : "NULL") . "','" . 
-					(isset($payment->iAutID ) ? $payment->iAutID  : "NULL") . "','" . 
-					(isset($Fund->nNonDeductible ) ? $Fund->nNonDeductible : "NULL") . "','" . 
-					$sGroupKey . "')";
+					$sSQL = "INSERT INTO pledge_plg
+						(plg_famID,
+						plg_FYID, 
+						plg_date, 
+						plg_amount,
+						plg_schedule, 
+						plg_method, 
+						plg_comment, 
+						plg_DateLastEdited, 
+						plg_EditedBy, 
+						plg_PledgeOrPayment, 
+						plg_fundID, 
+						plg_depID, 
+						plg_CheckNo, 
+						plg_scanString, 
+						plg_aut_ID, 
+						plg_NonDeductible, 
+						plg_GroupKey)
+						VALUES ('" . 
+						$payment->FamilyID . "','" . 
+						$payment->FYID . "','" . 
+						$payment->Date . "','" .
+						$Fund->Amount . "','" . 
+						(isset($payment->schedule) ? $payment->schedule : "NULL") . "','" . 
+						$payment->iMethod  . "','" . 
+						$Fund->Comment . "','".
+						date("YmdHis") . "'," .
+						$_SESSION['iUserID'] . ",'" . 
+						(isset($payment->type) ? "pledge" : "payment") . "'," . 
+						$Fund->FundID . "," . 
+						$payment->DepositID . "," . 
+						(isset($payment->iCheckNo) ? $payment->iCheckNo : "NULL") . ",'" . 
+						(isset($payment->tScanString) ? $payment->tScanString : "NULL") . "','" . 
+						(isset($payment->iAutID ) ? $payment->iAutID  : "NULL") . "','" . 
+						(isset($Fund->nNonDeductible ) ? $Fund->nNonDeductible : "NULL") . "','" . 
+						$sGroupKey . "')";
+							
+						echo "SQL: ".$sSQL;
 						
-					echo "SQL: ".$sSQL;
-					
-					if (isset ($sSQL)) {
-						RunQuery($sSQL);
-						unset($sSQL);
-					}
+						if (isset ($sSQL)) {
+							RunQuery($sSQL);
+							unset($sSQL);
+						}
+				}
 			}
 	}
 	
