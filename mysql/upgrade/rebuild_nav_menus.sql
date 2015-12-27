@@ -112,8 +112,6 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
   (58, 'familyproperty', 'properties', 0, 'Family Properties', 'Family Properties', 'PropertyList.php?Type=f', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
   (59, 'groupproperty', 'properties', 0, 'Group Properties', 'Group Properties', 'PropertyList.php?Type=g', '', 'bAll', NULL, 0, 0, NULL, 1, 3, NULL),
   (60, 'propertytype', 'properties', 0, 'Property Types', 'Property Types', 'PropertyTypeList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
-  (65, 'about', 'help', 0, 'About Church CRM', 'About Church CRM', 'http://www.churchcrm.io', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
-  (66, 'wiki', 'help', 0, 'User Guide', 'User Guide', 'http://docs.churchcrm.io/', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
   (81, 'menusetup', 'admin', 0, 'Menu Options', 'Menu Options', 'MenuSetup.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 13, NULL),
   (82, 'customfamilyfld', 'admin', 0, 'Edit Custom Family Fields', 'Edit Custom Family Fields', 'FamilyCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3, NULL),
   (91, 'seeddata', 'admin', 0, 'Generate Seed Data', 'Generate Seed Data', 'GenerateSeedData.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 14, NULL);
