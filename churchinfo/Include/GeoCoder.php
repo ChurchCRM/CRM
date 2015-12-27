@@ -19,10 +19,9 @@
 *
 ******************************************************************************/
 
-require('../vendor/google-map/GoogleMap.php');
+require "vendor/google-map/GoogleMap.php";
 
 $googleMapObj = new GoogleMapAPI('map');
-$googleMapObj->setAPIKey($sGoogleMapKey);
 $googleMapObj->setLookupService('GOOGLE'); // or 'YAHOO'
 
 
