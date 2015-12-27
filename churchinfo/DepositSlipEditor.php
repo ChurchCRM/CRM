@@ -262,7 +262,7 @@ if (isset($_POST["DepositSlipSubmit"])) {
 	$rsTransactions = RunQuery($sSQL);
 
 	if ($sElectronicTransactionProcessor == "AuthorizeNet") {
-		require_once 'Include/sdk-php-1.8.0/AuthorizeNet.php'; 
+		require_once 'vendor/sdk-php-1.8.0/AuthorizeNet.php';
 		include ("Include/AuthorizeNetConfig.php"); // Specific account information is in here
 	}
 		
