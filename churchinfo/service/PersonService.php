@@ -85,13 +85,13 @@ class PersonService
 
     private function getDefaultPhoto($gender, $famRole)
     {
-        $photoFile = "img/man-128.png";
+        $photoFile = "../Images/Person/man-128.png";
         if ($gender == 1 && $famRole == "Child") {
-            $photoFile = "img/kid_boy-128.png";
+            $photoFile = "../Images/Person/kid_boy-128.png";
         } else if ($gender == 2 && $famRole  != "Child") {
-            $photoFile = "img/woman-128.png";
+            $photoFile = "../Images/Person/woman-128.png";
         } else if ($gender == 2 && $famRole  == "Child") {
-            $photoFile = "img/kid_girl-128.png";
+            $photoFile = "../Images/Person/kid_girl-128.png";
         }
 
         return $photoFile;
