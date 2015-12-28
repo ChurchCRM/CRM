@@ -173,13 +173,26 @@ $app->group('/payments',function () use ($app) {
 			#$body = $request->getBody();
 			#$payment = json_decode($body);	
 			#$app->FinancialService->getDepositsByFamilyID($fid);
-            echo '{"error":{"text":' . $e->getMessage() . '}}';
         }catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
 		
 		
 	});
+	$app->delete('/:groupKey',function ($groupKey) use ($app) {
+		try {
+			if (!$_SESSION['bAddRecords']) {
+				throw new Exception (gettext("You must have at least AddRecords permission to use this API call"));
+			}
+			$app->FinancialService->deletePayment($groupKey);
+        }catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+		
+		
+	});
+	
+	
 });
 
 

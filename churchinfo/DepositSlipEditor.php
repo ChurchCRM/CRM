@@ -817,7 +817,7 @@ foreach ($depositArray as $order => $value) {
 			<a href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Edit</a>
 		</td>
 		<td>
-			<a href="PledgeDelete.php?GroupKey=<?php echo $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Delete</a>
+			<button type="button" class="btn btn-primary delete-button" id="delete:<?php echo $plg_GroupKey;?>" ><?php echo gettext("Delete"); ?></button>
 		</td>
 		<?php } ?>
 <?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
@@ -836,6 +836,8 @@ foreach ($depositArray as $order => $value) {
 <?php
 }
 ?>
+
+<script type="text/javascript" src="js/DepositSlipEditor.js"></script>
 
 <?php
 require "Include/Footer.php";

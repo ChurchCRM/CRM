@@ -701,7 +701,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 												<a href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
 											</td>
 											<td>
-												<a href="PledgeDelete.php?GroupKey=<?php echo $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
+												<button type="button" class="btn btn-primary delete-button" id="delete:<?php echo $plg_GroupKey;?>" ><?php echo gettext("Delete"); ?></button>
 											</td>
 											<td>
 												<?php echo $plg_DateLastEdited; ?>&nbsp;
@@ -875,6 +875,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/DepositSlipEditor.js"></script>
+
 <?php
 require "Include/Footer.php";
 ?>

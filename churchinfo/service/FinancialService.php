@@ -1,7 +1,12 @@
 <?php
 
 class FinancialService {
-		
+	
+	function deletePayment($groupKey) {
+		$sSQL = "DELETE FROM `pledge_plg` WHERE `plg_GroupKey` = '" . $groupKey . "';";
+		RunQuery($sSQL);
+	}
+	
 	function getMemberByScanString($sstrnig)
 	{
 		global $bUseScannedChecks;
