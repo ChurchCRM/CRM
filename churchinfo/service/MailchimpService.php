@@ -4,7 +4,7 @@
  * Date: 12/9/2014
  * Time: 11:00 PM
  */
-include '../vendor/Mailchimp.php';
+require_once dirname(__FILE__).'/../vendor/Mailchimp.php';
 
 class MailChimpService
 {
