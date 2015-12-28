@@ -454,7 +454,7 @@ else
 						}
 						echo "</select>";
 					?><BR>
-					<a href="Help.php?page=Types"><?php echo gettext("Help on types.."); ?></a>
+					<a href="http://docs.churchcrm.io/"><?php echo gettext("Help on types.."); ?></a>
 					</td>
 					<td valign="top">
 						<div><?php echo gettext("Name:"); ?></div>

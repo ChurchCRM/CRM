@@ -85,16 +85,90 @@ class PersonService
 
     private function getDefaultPhoto($gender, $famRole)
     {
-        $photoFile = "img/man-128.png";
+        $photoFile = "../Images/Person/man-128.png";
         if ($gender == 1 && $famRole == "Child") {
-            $photoFile = "img/kid_boy-128.png";
+            $photoFile = "../Images/Person/kid_boy-128.png";
         } else if ($gender == 2 && $famRole  != "Child") {
-            $photoFile = "img/woman-128.png";
+            $photoFile = "../Images/Person/woman-128.png";
         } else if ($gender == 2 && $famRole  == "Child") {
-            $photoFile = "img/kid_girl-128.png";
+            $photoFile = "../Images/Person/kid_girl-128.png";
         }
 
         return $photoFile;
+    }
+	
+	public function insertPerson($user)
+    {
+        $sSQL = "INSERT INTO person_per
+	(per_Title,
+	per_FirstName,
+	per_MiddleName,
+	per_LastName,
+	per_Suffix,
+	per_Gender,
+	per_Address1,
+	per_Address2,
+	per_City,
+	per_State,
+	per_Zip,
+	per_Country,
+	per_HomePhone,
+	per_WorkPhone,
+	per_CellPhone,
+	per_Email,
+	per_WorkEmail,
+	per_BirthMonth,
+	per_BirthDay,
+	per_BirthYear,
+	per_Envelope,
+	per_fam_ID,
+	per_fmr_ID,
+	per_MembershipDate,
+	per_cls_ID,
+	per_DateEntered,
+	per_EnteredBy,
+	per_FriendDate,
+	per_Flags )
+	VALUES ('" .
+           FilterInput($user->name->title) . "','" .
+           FilterInput($user->name->first) . "',NULL,'" .
+           FilterInput($user->name->last) . "',NULL,'" .
+           FilterInput($user->gender) . "','" .
+           FilterInput($user->location->street) . "',NULL,'" .
+           FilterInput($user->location->city) . "','" .
+           FilterInput($user->location->state) . "','" .
+           FilterInput($user->location->zip) . "','USA','" .
+           FilterInput($user->phone) . "',NULL,'" .
+           FilterInput($user->cell) . "','" .
+           FilterInput($user->email) . "',NULL," .
+            date('m', $user->dob) . "," .
+            date('d', $user->dob) . "," .
+            date('Y', $user->dob) . ",NULL,'" .
+           FilterInput($user->famID) . "'," .
+           FilterInput($user->per_fmr_id) . "," . "\"" .
+            date('Y-m-d', $user->registered) .
+            "\"" . ",1,'" .
+            date("YmdHis") .
+            "'," .
+           FilterInput($_SESSION['iUserID']) . ",";
+
+        if (isset($dFriendDate) && strlen($dFriendDate) > 0)
+            $sSQL .= "\"" . $dFriendDate . "\"";
+        else
+            $sSQL .= "NULL";
+        $sSQL .= ", 0";
+        $sSQL .= ")";
+        $bGetKeyBack = True;
+        RunQuery($sSQL);
+        // If this is a new person, get the key back and insert a blank row into the person_custom table
+        if ($bGetKeyBack) {
+            $sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
+            $rsPersonID = RunQuery($sSQL);
+            extract(mysql_fetch_array($rsPersonID));
+            $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('" . $iPersonID . "')";
+            RunQuery($sSQL);
+        }
+
     }
 
 }

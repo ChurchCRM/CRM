@@ -367,25 +367,21 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
                     </li>
                     <?php } ?>
                     <li class="dropdown profile-dropdown">
-                        <a class="btn" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-question-circle"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <?php addMenu("help"); ?>
-                        </ul>
-                    </li>
-                    <li class="dropdown profile-dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="img-circle" />
                             <span class="hidden-xs"><?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> </span> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a href="http://docs.churchcrm.io" target="_blank"><i class="fa fa-question-circle"></i> User Guide</a></li>
+                            <li class="divider"></li>
                             <li><a href="<?php echo $sURLPath."/"; ?>PersonView.php?PersonID=<?php echo $_SESSION['iUserID'];?>"><i class="fa fa-user"></i>Profile</a></li>
                             <li class="divider"></li>
                             <li><a href="<?php echo $sURLPath."/"; ?>UserPasswordChange.php">Change My Password</a></li>
                             <li><a href="<?php echo $sURLPath."/"; ?>SettingsIndividual.php">Change My Settings</a></li>
                             <li class="divider"></li>
                             <li><a href="<?php echo $sURLPath."/"; ?>Default.php?Logoff=True"><i class="fa fa-power-off"></i>Log Off</a></li>
+                            <li class="divider"></li>
+                            <li><a href="http://www.churchcrm.io" target="_blank">About Church CRM</a></li>
                         </ul>
                     </li>
                     <li class="hidden-xxs">
