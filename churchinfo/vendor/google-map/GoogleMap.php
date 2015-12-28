@@ -30,7 +30,7 @@
  */
 /**
  * @link http://code.google.com/p/php-google-map-api/
- * @copyright 2010 Brad wedell
+ * @copyright 2010-2012 Brad wedell
  * @author Brad Wedell
  * @package GoogleMapAPI (version 3)
  * @version 3.0beta
@@ -63,14 +63,6 @@ class GoogleMapAPI {
      * @var string json $map_styles
      */
     var $map_styles = true; 	
-
-    /**
-     * API key - while not required, allows for monitoring and purchasing additional usage
-     * see https://developers.google.com/maps/documentation/javascript/tutorial#api_key 
-     *
-     * @var string $api_key
-     */
-    var $api_key = null; 	
 
     /**
      * PEAR::DB DSN for geocode caching. example:
@@ -349,6 +341,9 @@ class GoogleMapAPI {
      * @deprecated
      */
     var $directions = true;
+    
+      /* waypoints  */
+	  protected  $_waypoints_string = '';
 
     /**
      * determines if map markers bring up an info window
@@ -643,15 +638,6 @@ class GoogleMapAPI {
     function setDSN($dsn) {
         $this->dsn = $dsn;   
     }
-
-    /**
-     * sets the API key
-     *
-     * @param string $key 
-     */
-    function setAPIKey($key) {
-        $this->api_key = $key;   
-    }
     
     /**
      * sets the width of the map
@@ -871,6 +857,24 @@ class GoogleMapAPI {
 			} 
         }
     }
+    
+ 
+ function addWaypoints($lat, $lon, $stopover = TRUE)
+ {
+   if( ! empty($this->_waypoints_string) )  $this->_waypoints_string .= ",";
+     $tmp_stopover =  $stopover?'true':'false';
+     $this->_waypoints_string .= "{location: new google.maps.LatLng({$lat},{$lon}), stopover: {$tmp_stopover}}";
+ }
+
+  function addWaypointByAddress($address,$stopover = TRUE)
+  {
+     if( $tmp_geocode = $this->getGeocode($address))
+     {
+       $this->addWaypoints($tmp_geocode['lat'], $tmp_geocode['lon'], $stopover);
+     }
+ }
+            
+            
         
     /**
      * enables the type controls (map/satellite/hybrid)
@@ -1657,7 +1661,7 @@ class GoogleMapAPI {
 				google.load('visualization', '1', {packages: ['columnchart']});
 			</script>";
 		}
-        $scriptUrl = "http://maps.google.com/maps/api/js?".( $this->api_key ? "key=$this->api_key&" : "" )."sensor=".(($this->mobile==true)?"true":"false");
+        $scriptUrl = "http://maps.google.com/maps/api/js?sensor=".(($this->mobile==true)?"true":"false");
         if( is_array( $this->api_options ) ) {
             foreach( $this->api_options as $key => $value ){
                 $scriptUrl .= '&'.$key.'='.$value;
@@ -1723,7 +1727,7 @@ class GoogleMapAPI {
         $_output .= " * Created with GoogleMapAPI" . $this->_version . "\n";
         $_output .= " * Author: Brad Wedell <brad AT mycnl DOT com>\n";
         $_output .= " * Link http://code.google.com/p/php-google-map-api/\n";
-        $_output .= " * Copyright 2010 Brad Wedell\n";
+        $_output .= " * Copyright 2010-2012 Brad Wedell\n";
         $_output .= " * Original Author: Monte Ohrt <monte AT ohrt DOT com>\n";
         $_output .= " * Original Copyright 2005-2006 New Digital Group\n";
         $_output .= " * Originial Link http://www.phpinsider.com/php/code/GoogleMapAPI/\n";
@@ -2224,6 +2228,7 @@ class GoogleMapAPI {
 					displayRenderer:new google.maps.DirectionsRenderer(),
 					directionService:new google.maps.DirectionsService(),
 					request:{
+            					waypoints: [{$this->_waypoints_string}],
 						origin: '".$directions["start"]."',
 						destination: '".$directions["dest"]."'
 						$directionsParams
