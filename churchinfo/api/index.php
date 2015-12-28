@@ -10,16 +10,16 @@ if (!isset($_SESSION['iUserID'])) {
     exit;
 }
 
-require 'vendor/Slim/Slim.php';
+require_once '../vendor/Slim/Slim.php';
 
 use Slim\Slim;
 
 Slim::registerAutoloader();
 
 // Services
-require_once "services/PersonService.php";
-require_once "services/FamilyService.php";
-require_once "services/DataSeedService.php";
+require_once "../service/PersonService.php";
+require_once "../service/FamilyService.php";
+require_once "../service/DataSeedService.php";
 
 $app = new Slim();
 

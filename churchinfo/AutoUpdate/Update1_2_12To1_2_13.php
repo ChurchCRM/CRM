@@ -147,13 +147,6 @@ for (; ; ) {    // This is not a loop but a section of code to be
 	$sSQL = "INSERT IGNORE INTO `config_cfg` VALUES (66, 'sGMapIcons', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'text', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'Names of markers for Google Maps in order of classification', 'General',NULL);";
 	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
 	
-// Change Wiki link in Help section to a Help page
-	$sSQL = "UPDATE IGNORE `menuconfig_mcf` SET uri = 'Help.php?page=Wiki' where name = 'wiki';";
-	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
-
-	$sSQL = "INSERT IGNORE INTO `menuconfig_mcf` VALUES (90, 'helpfundraiser', 'help', 0, 'Fundraiser', NULL, 'Help.php?page=Fundraiser', '', 'bAll', NULL, 0, 0, NULL, 1, 8);";
-	$rsIns = RunQuery($sSQL, FALSE); // False means do not stop on error
-
 	$sSQL = "UPDATE menuconfig_mcf SET content=content_english;";
 	if (!RunQuery($sSQL, FALSE))
 	    break;

@@ -48,7 +48,7 @@ function getFamilyPhoto($iFamilyID) {
 	if ($hasFile)  {
 		return  $photoFile;
 	} else {
-	 	return "img/family-128.png";
+	 	return "Images/Family/family-128.png";
  	}
 }
 
