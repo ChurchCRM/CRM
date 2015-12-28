@@ -148,7 +148,7 @@ function getDenominationSubmitData(){
 function getSubmitFormData(){
 	var fd = {
 				'FamilyID'			: $('[name=FamilyID]:eq(1)').val(),
-				'Date'				:$('input[name=Date]').val(),
+				'Date'				: $('input[name=Date]').val(),
 				
 				'FYID'				 : $('select[name=FYID]').val(),
 				'Envelope'             : $('input[name=Envelope]').val(),
@@ -171,6 +171,27 @@ function getSubmitFormData(){
 			
 			
 	return fd;
+}
+
+
+$("#ResetForm").click(function() {
+	resetForm();
+});
+
+function resetForm() {
+	
+	$('#CashEnter').hide();
+	$('#CheckEnter').hide();
+	$('#FundSelection').hide();
+	$('#SingleComment').show();
+	$('[name=FamilyID]:eq(1)').val("");
+	$('input[name=Date]').val("");
+	$('select[name=FYID]').val("");
+	$('input[name=Envelope]').val("");
+	$('select[name=Method]').val("");
+	$('input[name=OneComment]').val("");
+	$('input[name=TotalAmount]').val("");
+	$('input[name=DepositID]').val("");
 }
 
 

@@ -262,7 +262,21 @@ if ($iFamily) {
 
 require "Include/Header.php";
 
+if (true) //If the requested page is to edit a deposit, then we need to get the data
+{
 ?>
+<script>
+
+//Render a JS Object here that represents the currently selected payment entry so that we can use JQuery to set up the form later on.
+
+</script>	
+<?php
+	
+}
+
+?>
+
+
 <form id="PledgeForm" action="PledgeEditor.php?<?php echo "CurrentDeposit=" . $iCurrentDeposit . "&GroupKey=" . $sGroupKey . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
 
 <input type="hidden" name="FamilyID" id="FamilyID" value="<?php echo $iFamily; ?>">
@@ -614,6 +628,8 @@ $(document).ready(function() {
 					$cancelText = "Return";
 				} ?>	
 				<button type="button" class="btn btn-primary" value="<?php echo gettext($cancelText); ?>" name="PledgeCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';"><?php echo gettext($cancelText); ?></button>
+				<button type="button" class="btn btn-primary" name="ResetForm" id="ResetForm"><?php echo gettext("Reset Form"); ?></button>
+
 			</div>
 		</div>
 <!--End Save button section -->
