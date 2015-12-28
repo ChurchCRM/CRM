@@ -329,7 +329,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 							<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Work Phone:"); ?> <span><?php echo $sWorkPhone; ?></span></li>
 						<?php } ?>
 						<?php if ($per_WorkEmail != "") { ?>
-						<li><i class="fa-li fa fa-envelope"></i><?php echo gettext("Work/Other Email:"); ?>: <span><?php  echo "<a href=\"mailto:" . $per_WorkEmail . "\">" . $per_WorkEmail . "</a>"; ?></span></li>
+						<li><i class="fa-li fa fa-envelope"></i><?php echo gettext("Work/Other Email:"); ?><span><?php  echo "<a href=\"mailto:" . $per_WorkEmail . "\">" . $per_WorkEmail . "</a>"; ?></span></li>
 							<?php if ($mailchimp->isActive()) { ?>
 								<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
 							<?php
