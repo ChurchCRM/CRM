@@ -241,7 +241,7 @@ $(document).ready(function() {
 
 	$('#PledgeForm').submit(function(event) {
 			event.preventDefault();
-			console.log("submit pressed");
+			var submitType = $("button[type=submit][clicked=true]").val();
 			// get the form data
 			// there are many ways to get this data using jQuery (you can use the class or id also)
 			var formData = getSubmitFormData();
@@ -253,17 +253,30 @@ $(document).ready(function() {
 				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
 				url         : 'api/payments', // the url where we want to POST
 				data        :  JSON.stringify(formData), // our data object
-				dataType    : 'json', // what type of data do we expect back from the server
+				//dataType    : 'json', // what type of data do we expect back from the server
 				encode      : true
 			})
 			 .done(function(data) {
 				console.log(data);
+				var submitType = $("button[type=submit][clicked=true]").val();
+				console.log(submitType);
+				if(submitType == "Save") {
+					window.location.href = 'PledgeEditor.php';
+				}
+				else if(submitType = "Save and Add") {
+					window.location.href = 'DepositSlipEditor.php';
+				}
 			  });
-			 
 			
 
 			
 	});
+	
+	$("form button[type=submit]").click(function() {
+        $("button[type=submit]", $(this).parents("form")).removeAttr("clicked");
+        $(this).attr("clicked", "true");
+    });
+	
 	
 	if (typeof thisPayment != 'undefined') {
 		renderFormData(thisPayment);
