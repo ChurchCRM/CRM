@@ -35,6 +35,7 @@ $tScanString = "";
 $dep_Closed = false;
 $iAutID = 0;
 $iCurrentDeposit = 0;
+$iFamily = 0;
 
 $nAmount = array (); // this will be the array for collecting values for each fund
 $sAmountError = array ();
@@ -84,27 +85,17 @@ if (array_key_exists ("GroupKey", $_GET))
 if (array_key_exists ("CurrentDeposit", $_GET))
 	$iCurrentDeposit = FilterInput($_GET["CurrentDeposit"],'integer');
 $linkBack = FilterInput($_GET["linkBack"],'string');
-$iFamily = 0;
 if (array_key_exists ("FamilyID", $_GET))
 	$iFamily = FilterInput($_GET["FamilyID"],'int');
 
 $fund2PlgIds = array(); // this will be the array cross-referencing funds to existing plg_plgid's
 
 if ($sGroupKey) {
-	$sSQL = "SELECT plg_plgID, plg_fundID, plg_EditedBy from pledge_plg where plg_GroupKey=\"" . $sGroupKey . "\"";
-	$rsKeys = RunQuery($sSQL);
-	while ($aRow = mysql_fetch_array($rsKeys)) {
-		$onePlgID = $aRow["plg_plgID"];
-		$oneFundID = $aRow["plg_fundID"];
-		$iOriginalSelectedFund = $oneFundID; // remember the original fund in case we switch to splitting
-		$fund2PlgIds[$oneFundID] = $onePlgID;
-
-		// Security: User must have Finance permission or be the one who entered this record originally
-		if (! ($_SESSION['bFinance'] || $_SESSION['iUserID']==$aRow["plg_EditedBy"])) {
-			Redirect("Menu.php");
-			exit;
-		}	
-	}
+			// Security: User must have Finance permission or be the one who entered this record originally
+			if (! ($_SESSION['bFinance'] || $_SESSION['iUserID']==$aRow["plg_EditedBy"])) {
+				Redirect("Menu.php");
+				exit;
+			}	
 }
 
 // Handle _POST input if the form was up and a button press came in
@@ -637,6 +628,14 @@ $(document).ready(function() {
 <script type="text/javascript" src="js/PledgeEditor.js"></script>
 
 <?php
-
+if ($sGroupKey) {
+	?><script type="text/javascript">
+		<?php 
+			require_once "service/FinancialService.php"; 
+			$FinancialService = new FinancialService();
+echo "var thisPayment = " . $FinancialService->getPledgeorPayment($sGroupKey) ;
+		?>
+	</script><?php
+}
 require "Include/Footer.php";
 ?>

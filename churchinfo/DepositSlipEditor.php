@@ -814,10 +814,10 @@ foreach ($depositArray as $order => $value) {
 		</td>
 		<?php } else { ?>
 		<td>
-			<a href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Edit</a>
+			<a class="btn btn-primary edit-button" href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Edit</a>
 		</td>
 		<td>
-			<button type="button" class="btn btn-primary delete-button" id="delete:<?php echo $plg_GroupKey;?>" ><?php echo gettext("Delete"); ?></button>
+			<button type="button" class="btn btn-primary delete-button" data-toggle="modal" data-target="#confirmDelete" id="delete:<?php echo $plg_GroupKey;?>">Delete</button>
 		</td>
 		<?php } ?>
 <?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
@@ -836,6 +836,29 @@ foreach ($depositArray as $order => $value) {
 <?php
 }
 ?>
+
+
+
+<!-- Delete Confirm Modal -->
+<div id="confirmDelete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirm Delete</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the Payment?</p>
+		<button type="button" class="btn btn-primary" id="deleteConfirmed" ><?php echo gettext("Delete"); ?></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Delete Confirm Modal -->
 
 <script type="text/javascript" src="js/DepositSlipEditor.js"></script>
 

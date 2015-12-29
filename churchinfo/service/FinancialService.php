@@ -260,7 +260,7 @@ class FinancialService {
 	function insertPledgeorPayment ($payment) {
 		// Only set PledgeOrPayment when the record is first created
 			// loop through all funds and create non-zero amount pledge records
-			$sGroupKey="";
+			unset($sGroupKey);
 			$FundSplit = json_decode($payment->FundSplit);
 			echo "funds selected: ".count($FundSplit);
 			print_r($FundSplit);
@@ -342,7 +342,7 @@ class FinancialService {
 			echo "Validating date".PHP_EOL;
 			$this->validateDate($payment);
 			#echo "Validating deposit".PHP_EOL;
-		#	$this->validateDeposit($payment);
+			#$this->validateDeposit($payment);
 			echo "no errors, update!".PHP_EOL;
 			$this->insertPledgeorPayment ($payment);
 			if ($payment->iMethod =="CASH") {
@@ -352,6 +352,32 @@ class FinancialService {
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
+		
+	}
+	
+	function getPledgeorPayment($GroupKey) {
+		
+		$sSQL = "SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey=\"" . $GroupKey . "\"";
+		$rsKeys = RunQuery($sSQL);
+		$payment=new stdClass();
+		$payment->funds = array();
+		while ($aRow = mysql_fetch_array($rsKeys)) {
+			extract($aRow);
+			$payment->FamilyID = $plg_FamID;
+			$payment->Date = $plg_date;
+			$payment->FYID = $plg_FYID;
+			$payment->iMethod = $plg_method;
+			$fund['FundID']=$plg_fundID;
+			$fund['Amount']=$plg_amount;
+			$fund['NonDeductible']=$plg_NonDeductible;
+			$fund['Comment']=$plg_comment ;
+			array_push($payment->funds,$fund);
+			$onePlgID = $aRow["plg_plgID"];
+			$oneFundID = $aRow["plg_fundID"];
+			$iOriginalSelectedFund = $oneFundID; // remember the original fund in case we switch to splitting
+			$fund2PlgIds[$oneFundID] = $onePlgID;
+		}
+		return json_encode($payment);
 		
 	}
 }

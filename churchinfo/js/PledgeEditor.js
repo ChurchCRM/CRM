@@ -74,151 +74,195 @@ $(".fundSplitInputBox").on('change',function(){
 
 $(document).ready(function() {
 
-
-
-$('#MatchEnvelope').click(function() {
-	console.log("matchenvelopecliked");
-   $.ajax({
-            type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
-            url         : '/api/families/byEnvelopeNumber/'+$('input[name=Envelope]').val(), // the url where we want to POST
-            dataType    : 'json', // what type of data do we expect back from the server
-            encode      : true
-        })
-		 .done(function(data) {
-			console.log(data);
-			$('[name=FamilyName]').val(data.Name);
-			$('[name=FamilyID]:eq(1)').val(data.fam_ID);
-		});
-		
-});
-
-$('#MatchFamily').click(function() {
-   $.ajax({
-            type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
-            url         : '/api/families/byCheckNumber/'+$('textarea[name=ScanInput]').val(), // the url where we want to POST
-            dataType    : 'json', // what type of data do we expect back from the server
-            encode      : true
-        })
-		 .done(function(data) {
-			console.log(data);
-			$('[name=FamilyName]').val(data.fam_Name);
-			$('[name=CheckNo]').val(data.CheckNumber);
-		});
-});
-
-$('#SetDefaultCheck').click(function() {
-  alert( "Handler for find SetDefaultCheck clicked" );
-});
-
-function getFundSubmitData(){
-	
-	var funds=new Array();
-	if ($('select[name=FundSplit]').val() == "0")
-	{
-		$(".fundrow").each(function(i,el){
-			console.log($(this).attr('id'));
-			var fundID = ($(this).attr('id').split('_'))[1];
-			console.log(fundID);
-			var amount = $('input[name='+fundID+'_Amount]').val();
-			var nondedamount=  $('input[name='+fundID+'_NonDeductible]').val();
-			var comment=  $('input[name='+fundID+'_Comment]').val();
-			var fundobjet ={FundID: fundID, Amount: amount, NonDeductible:nondedamount, Comment: comment};
-			funds.push(fundobjet);
-		});
-	}
-	else
-	{
-		var fundobjet ={FundID: $('select[name=FundSplit]').val(), Comment: $('input[name=OneComment]').val(), Amount: $('input[name=TotalAmount]').val()};
-		funds.push(fundobjet);
-	}
-	return JSON.stringify(funds);	
-
-}
-
-function getDenominationSubmitData(){
-	var denominations=new Array();
-	$(".denominationInputBox").each(function(i,el){
-	var currencyObject = {currencyID: $(el).attr("Name"), Count: $(el).val()}
-	denominations.push(currencyObject);
+	$('#MatchEnvelope').click(function() {
+		console.log("matchenvelopecliked");
+	   $.ajax({
+				type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
+				url         : '/api/families/byEnvelopeNumber/'+$('input[name=Envelope]').val(), // the url where we want to POST
+				dataType    : 'json', // what type of data do we expect back from the server
+				encode      : true
+			})
+			 .done(function(data) {
+				console.log(data);
+				$('[name=FamilyName]').val(data.Name);
+				$('[name=FamilyID]:eq(1)').val(data.fam_ID);
+			});
 	});
-	return JSON.stringify(denominations);	
-}
 
+	$('#MatchFamily').click(function() {
+	   $.ajax({
+				type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
+				url         : '/api/families/byCheckNumber/'+$('textarea[name=ScanInput]').val(), // the url where we want to POST
+				dataType    : 'json', // what type of data do we expect back from the server
+				encode      : true
+			})
+			 .done(function(data) {
+				console.log(data);
+				$('[name=FamilyName]').val(data.fam_Name);
+				$('[name=CheckNo]').val(data.CheckNumber);
+			});
+	});
 
-function getSubmitFormData(){
-	var fd = {
-				'FamilyID'			: $('[name=FamilyID]:eq(1)').val(),
-				'Date'				: $('input[name=Date]').val(),
-				
-				'FYID'				 : $('select[name=FYID]').val(),
-				'Envelope'             : $('input[name=Envelope]').val(),
-				'iMethod'    : $('select[name=Method]').val(),
-				'comment'			:$('input[name=OneComment]').val(),
-				'total'				:$('input[name=TotalAmount]').val(),
-				'DepositID'			:$('input[name=DepositID]').val()
-				};
-				if ($('select[name=Method]').val() == "CASH")
-				{
-					fd['cashDenominations']=getDenominationSubmitData();
-				}
-				if ($('select[name=Method]').val() == "CHECK")
-				{
-					fd['iCheckNo']=$('input[name=CheckNo]').val();
-				}
-				fd['FundSplit']=getFundSubmitData();
-				
-				
+	$('#SetDefaultCheck').click(function() {
+	  alert( "Handler for find SetDefaultCheck clicked" );
+	});
+
+	function getFundSubmitData(){
+		
+		var funds=new Array();
+		if ($('select[name=FundSplit]').val() == "0")
+		{
+			$(".fundrow").each(function(i,el){
+				console.log($(this).attr('id'));
+				var fundID = ($(this).attr('id').split('_'))[1];
+				console.log(fundID);
+				var amount = $('input[name='+fundID+'_Amount]').val();
+				var nondedamount=  $('input[name='+fundID+'_NonDeductible]').val();
+				var comment=  $('input[name='+fundID+'_Comment]').val();
+				var fundobjet ={FundID: fundID, Amount: amount, NonDeductible:nondedamount, Comment: comment};
+				funds.push(fundobjet);
+			});
+		}
+		else
+		{
+			var fundobjet ={FundID: $('select[name=FundSplit]').val(), Comment: $('input[name=OneComment]').val(), Amount: $('input[name=TotalAmount]').val()};
+			funds.push(fundobjet);
+		}
+		return JSON.stringify(funds);	
+
+	}
+
+	function setFundData (funds)
+	{
+		console.log ("Fund Split Lenght: "+funds.length);
+		console.log ("Processing Fund: " + JSON.stringify(funds));
+		if (funds.length >1)
+		{
+			$('#FundSelection').show();
+			$('#SingleComment').hide();
+			$('select[name=FundSplit]').val()
+			for( var fund in funds)
+			{
+				console.log(fund)
+			}
 			
+		}
+		else
+		{
+			var fund = funds[0];
+			$('#FundSelection').hide();
+			$('select[name=FundSplit]').val(fund.FundID);
+			$('#SingleComment').show();
+			$('input[name=OneComment]').val(fund.Comment)
 			
-	return fd;
-}
+		}
+	}
+
+	function getDenominationSubmitData(){
+		var denominations=new Array();
+		$(".denominationInputBox").each(function(i,el){
+		var currencyObject = {currencyID: $(el).attr("Name"), Count: $(el).val()}
+		denominations.push(currencyObject);
+		});
+		return JSON.stringify(denominations);	
+	}
+
+	function getSubmitFormData(){
+		var fd = {
+					'FamilyID'			: $('[name=FamilyID]:eq(1)').val(),
+					'Date'				: $('input[name=Date]').val(),
+					'FYID'				 : $('select[name=FYID]').val(),
+					'Envelope'             : $('input[name=Envelope]').val(),
+					'iMethod'    : $('select[name=Method]').val(),
+					'comment'			:$('input[name=OneComment]').val(),
+					'total'				:$('input[name=TotalAmount]').val(),
+					'DepositID'			:$('input[name=DepositID]').val()
+					};
+					if ($('select[name=Method]').val() == "CASH")
+					{
+						fd['cashDenominations']=getDenominationSubmitData();
+					}
+					if ($('select[name=Method]').val() == "CHECK")
+					{
+						fd['iCheckNo']=$('input[name=CheckNo]').val();
+					}
+					fd['FundSplit']=getFundSubmitData();
+		return fd;
+	}
+
+	$("#ResetForm").click(function() {
+		resetForm();
+	});
+
+	function resetForm() {
+		
+		$('#CashEnter').hide();
+		$('#CheckEnter').hide();
+		$('#FundSelection').hide();
+		$('select[name=FundSplit]').val('None');
+		$('#SingleComment').show();
+		$('[name=FamilyID]:eq(1)').val("");
+		$('input[name=FamilyName]').val("");
+		$('input[name=Date]').val("");
+		$('select[name=FYID]').val("");
+		$('input[name=Envelope]').val("");
+		$('select[name=Method]').val("");
+		$('input[name=OneComment]').val("");
+		$('input[name=TotalAmount]').val("");
+		$('input[name=DepositID]').val("");
+	}
+
+	function renderFormData(payment) {
+		console.log("Rendering Payment Data: "  + JSON.stringify(payment));
+		if (payment.iMethod == "CASH") {
+			$('#CashEnter').show();
+			$('#CheckEnter').hide();
+		}
+		else
+		{
+			$('#CheckEnter').show();
+			$('#CashEnter').hide();
+		}
+		setFundData (payment.funds);
+		$('[name=FamilyID]:eq(1)').val(payment.FamilyID);
+		$('input[name=Date]').val(payment.date);
+		$('select[name=FYID]').val(payment.FYID);
+		$('input[name=Envelope]').val("");
+		$('select[name=Method]').val(payment.iMethod);
+		$('input[name=TotalAmount]').val(payment.total);
+		$('input[name=DepositID]').val("");
+		
+	}
 
 
-$("#ResetForm").click(function() {
-	resetForm();
-});
+	$('#PledgeForm').submit(function(event) {
+			event.preventDefault();
+			console.log("submit pressed");
+			// get the form data
+			// there are many ways to get this data using jQuery (you can use the class or id also)
+			var formData = getSubmitFormData();
+			
+			console.log(formData);
 
-function resetForm() {
+		   //process the form
+		   $.ajax({
+				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+				url         : 'api/payments', // the url where we want to POST
+				data        :  JSON.stringify(formData), // our data object
+				dataType    : 'json', // what type of data do we expect back from the server
+				encode      : true
+			})
+			 .done(function(data) {
+				console.log(data);
+			  });
+			 
+			
+
+			
+	});
 	
-	$('#CashEnter').hide();
-	$('#CheckEnter').hide();
-	$('#FundSelection').hide();
-	$('#SingleComment').show();
-	$('[name=FamilyID]:eq(1)').val("");
-	$('input[name=Date]').val("");
-	$('select[name=FYID]').val("");
-	$('input[name=Envelope]').val("");
-	$('select[name=Method]').val("");
-	$('input[name=OneComment]').val("");
-	$('input[name=TotalAmount]').val("");
-	$('input[name=DepositID]').val("");
-}
-
-
-$('#PledgeForm').submit(function(event) {
-		event.preventDefault();
-		console.log("submit pressed");
-        // get the form data
-        // there are many ways to get this data using jQuery (you can use the class or id also)
-        var formData = getSubmitFormData();
-		
-		console.log(formData);
-
-       //process the form
-       $.ajax({
-            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : 'api/payments', // the url where we want to POST
-            data        :  JSON.stringify(formData), // our data object
-            dataType    : 'json', // what type of data do we expect back from the server
-            encode      : true
-        })
-		 .done(function(data) {
-			console.log(data);
-		  });
-		 
-		
-
-        
-    });
+	if (typeof thisPayment != 'undefined') {
+		renderFormData(thisPayment);
+	}
 
 });
