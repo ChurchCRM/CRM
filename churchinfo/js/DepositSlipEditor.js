@@ -18,7 +18,10 @@ $('#deleteConfirmed').click(function() {
         })
 		 .done(function(data) {
 			console.log(data);
-			
+			var gk = '#row-'+groupKey.replace(/\|/g,'\\|');
+			$('#confirmDelete').modal('hide');
+
+			$(gk).remove();
 		});
 		
 });

@@ -184,7 +184,8 @@ $app->group('/payments',function () use ($app) {
 			if (!$_SESSION['bAddRecords']) {
 				throw new Exception (gettext("You must have at least AddRecords permission to use this API call"));
 			}
-			$app->FinancialService->deletePayment($groupKey);
+			#$app->FinancialService->deletePayment($groupKey);
+			echo '{"status":"ok"}';
         }catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

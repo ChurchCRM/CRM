@@ -686,33 +686,35 @@ require "Include/Header.php";
 <b><?php echo gettext("Payments on this deposit slip:"); ?></b>
 <br>
 
-<table cellpadding="5" cellspacing="0" width="100%">
+<table class="table table-striped table-bordered table-hover table-condensed">
 
-<tr class="TableHeader">
-	<td><?php echo gettext("Family"); ?></td>
-	<td><?php echo gettext("Date"); ?></td>
-	<td><?php echo gettext("Fiscal Year"); ?></td>
+<thead>
+<tr>
+	<th><?php echo gettext("Family"); ?></th>
+	<th><?php echo gettext("Date"); ?></th>
+	<th><?php echo gettext("Fiscal Year"); ?></th>
 <?php if ($dep_Type == 'Bank') { ?>
-	<td><?php echo gettext("Check #"); ?></td>
+	<th><?php echo gettext("Check #"); ?></th>
 <?php } ?>
-	<td><?php echo gettext("Fund"); ?></td>
-	<td><?php echo gettext("Amount"); ?></td>
-	<td><?php echo gettext("NonDeduct"); ?></td>
-	<td><?php echo gettext("Method"); ?></td>
-	<td><?php echo gettext("Comment"); ?></td>
+	<th><?php echo gettext("Fund"); ?></th>
+	<th><?php echo gettext("Amount"); ?></th>
+	<th><?php echo gettext("NonDeduct"); ?></th>
+	<th><?php echo gettext("Method"); ?></th>
+	<th><?php echo gettext("Comment"); ?></th>
 <?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
-	<td><?php echo gettext("Cleared"); ?></td>
+	<th><?php echo gettext("Cleared"); ?></th>
 <?php } ?>
 	<?php if ($dep_Closed) { ?>
-	<td><?php echo gettext("View Detail"); ?></td>
+	<th><?php echo gettext("View Detail"); ?></th>
 	<?php } else { ?>
-	<td><?php echo gettext("Edit"); ?></td>
-	<td><?php echo gettext("Delete"); ?></td>
+	<th><?php echo gettext("Edit"); ?></th>
+	<th><?php echo gettext("Delete"); ?></th>
 	<?php } ?>
 <?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
-	<td><?php echo gettext("Details"); ?></td>
+	<th><?php echo gettext("Details"); ?></th>
 <?php } ?>
 </tr>
+</thead>
 
 <?php
 
@@ -765,15 +767,10 @@ foreach ($depositArray as $order => $value) {
 	list($plg_GroupKey, $data) = explode("%", $value);
 	list($plg_CheckNo, $plg_famID, $plg_date, $plg_FYID, $plg_amount, $fundName, $plg_comment, $plg_aut_Cleared, $plg_NonDeductible, $plg_plgID, $plg_method, $FamilyName) = explode("|", $data);
 
-	$tog = (! $tog);
-
-	if ($tog)
-		$sRowClass = "PaymentRowColorA";
-	else
-		$sRowClass = "PaymentRowColorB";
+	
 	?>
 
-	<tr class="<?php echo $sRowClass ?>">
+	<tr class="PaymentRow" id="row-<?php echo $plg_GroupKey ?>">
 		<td>
 			<?php echo $FamilyName ?>&nbsp;
 		</td>
