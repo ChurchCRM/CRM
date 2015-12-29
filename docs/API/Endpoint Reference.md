@@ -36,6 +36,8 @@ ChurchCRM leverages Slim 2.6.2 to provide REST access to the data elements.
   * Gets the specified payment by ID
 * [GET] /byFamily/:familyID(/:fyid)
   * Gets all payments be family, and optionally by the fiscal year ID
+* [DELETE] /:groupKey
+  * Deleted the payment with the specified GroupKey 
 
  
 
