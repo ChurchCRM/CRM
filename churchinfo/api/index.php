@@ -51,6 +51,13 @@ $app->group('/search', function () use ($app) {
 });
 
 $app->group('/persons', function () use ($app) {
+	$app->get('/search/:query', function ($query) use ($app) {
+        try {
+            echo $app->PersonService->search($query);
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
     $app->group('/:id', function () use ($app) {
         $app->get('/photo', function ($id) use ($app) {
             try {
@@ -65,7 +72,7 @@ $app->group('/persons', function () use ($app) {
 $app->group('/families', function () use ($app) {
     $app->get('/search/:query', function ($query) use ($app) {
         try {
-            $app->FamilyService->search($query);
+            echo $app->FamilyService->search($query);
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

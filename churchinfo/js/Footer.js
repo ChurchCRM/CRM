@@ -36,4 +36,56 @@ $("document").ready(function(){
 			return false;
 		}
 	});
+	
+	$(".searchPerson").autocomplete({
+				source: function (request, response) {
+					$.ajax({
+						url: 'api/persons/search/'+request.term,
+						dataType: 'json',
+						type: 'GET',
+						success: function (data) {
+							response($.map(data.persons, function (item) {
+								return {
+                                    label: item.displayName,
+									value: item.uri
+								}
+							}));
+						}
+					})
+				},
+				select: function (event, ui) {
+                    var location = ui.item.value;
+                    window.location.replace(location);
+					return false;
+				},
+				minLength: 2
+			});
+            $(".searchFamily").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: 'api/families/search/'+request.term,
+                        dataType: 'json',
+                        type: 'GET',
+                        success: function (data) {
+                            response($.map(data.families, function (item) {
+                                return {
+                                    label: item.displayName,
+                                    value: item.uri
+                                }
+                            }));
+                        }
+                    })
+                },
+                select: function (event, ui) {
+                    var location = ui.item.value;
+                    window.location.replace(location);
+                    return false;
+                },
+                minLength: 2
+				});
+	
+	
+	
+	
+	
 });
