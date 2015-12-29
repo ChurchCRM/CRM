@@ -15,7 +15,7 @@ class FamilyService {
 
             array_push($families,$row_array);
         }
-        $this->returnFamilies($families);
+        return $this->returnFamilies($families);
     }
 
 

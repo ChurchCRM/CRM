@@ -42,8 +42,8 @@ $app->container->singleton('DataSeedService', function () {
 $app->group('/search', function () use ($app) {
     $app->get('/:query', function ($query) use ($app) {
         try {
-            $app->PersonService->search($query);
-			$app->FamilyService->search($query);
+            echo "[ ".$app->PersonService->search($query).", ";
+			echo $app->FamilyService->search($query)."]";
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

@@ -26,70 +26,8 @@
 	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/AdminLTE/app.js"></script>
 
 	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-	<script language="javascript" type="text/javascript">
-		$("document").ready(function(){
-			$(".multiSearch").autocomplete({
-				source: function (request, response) {
-					$.ajax({
-						url: 'api/search/'+request.term,
-						dataType: 'json',
-						type: 'GET',
-						success: function (data) {
-							response(data);
-							console.log("ajax: " + data);
-						}
-					})
-				},
-				select: function (event, ui) {
-                    var location = 'PersonView.php?PersonID='+ui.item.value;
-                    window.location.replace(location);
-					return false;
-				},
-				minLength: 2,
-				_renderMenu: function( ul, items ) {
-					console.log("REnder: " + items);
-					var that = this,
-					currentCategory = "";
-					$.each( items, function( index, item ) {
-						console.log(index);
-						var li;
-						if ( item.category != currentCategory ) {
-							ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>" );
-							currentCategory = item.category;
-						}
-						li = that._renderItemData( ul, item );
-						if ( item.category ) {
-							li.attr( "aria-label", item.category + " : " + item.label );
-						}
-					});
-				}
-			});
-
-            $(".searchFamily").autocomplete({
-                source: function (request, response) {
-                    $.ajax({
-                        url: 'api/families/search/'+request.term,
-                        dataType: 'json',
-                        type: 'GET',
-                        success: function (data) {
-                            response($.map(data.families, function (item) {
-                                return {
-                                    label: item.displayName,
-                                    value: item.id
-                                }
-                            }));
-                        }
-                    })
-                },
-                select: function (event, ui) {
-                    var location = 'FamilyView.php?FamilyID='+ui.item.value;
-                    window.location.replace(location);
-                    return false;
-                },
-                minLength: 2
-            });
-		});
-	</script>
+	<script type="text/javascript" src="js/Footer.js"></script>
+	
 </body>
 </html>
 <?php

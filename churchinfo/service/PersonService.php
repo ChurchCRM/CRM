@@ -75,12 +75,12 @@ class PersonService
             $values['familyID'] = $row['per_fam_ID'];
             $values['firstName'] = $row['per_FirstName'];
             $values['lastName'] = $row['per_LastName'];
-            $values['fullName'] = $row['per_FirstName'] . " " . $row['per_LastName'];
+            $values['displayName'] = $row['per_FirstName'] . " " . $row['per_LastName'];
 
             array_push($return, $values);
         }
 
-        echo '{"persons": ' . json_encode($return) . '}';
+        return '{"persons": ' . json_encode($return) . '}';
     }
 
     private function getDefaultPhoto($gender, $famRole)
