@@ -37,14 +37,20 @@ $app->container->singleton('DataSeedService', function () {
     return new DataSeedService();
 });
 
-$app->group('/persons', function () use ($app) {
-    $app->get('/search/:query', function ($query) use ($app) {
+
+
+$app->group('/search', function () use ($app) {
+    $app->get('/:query', function ($query) use ($app) {
         try {
             $app->PersonService->search($query);
+			$app->FamilyService->search($query);
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
     });
+});
+
+$app->group('/persons', function () use ($app) {
     $app->group('/:id', function () use ($app) {
         $app->get('/photo', function ($id) use ($app) {
             try {

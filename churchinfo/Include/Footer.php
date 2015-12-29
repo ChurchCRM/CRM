@@ -28,19 +28,15 @@
 	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 	<script language="javascript" type="text/javascript">
 		$("document").ready(function(){
-			$(".searchPerson").autocomplete({
+			$(".multiSearch").autocomplete({
 				source: function (request, response) {
 					$.ajax({
-						url: 'api/persons/search/'+request.term,
+						url: 'api/search/'+request.term,
 						dataType: 'json',
 						type: 'GET',
 						success: function (data) {
-							response($.map(data.persons, function (item) {
-								return {
-                                    label: item.fullName,
-									value: item.id
-								}
-							}));
+							response(data);
+							console.log("ajax: " + data);
 						}
 					})
 				},
@@ -49,7 +45,24 @@
                     window.location.replace(location);
 					return false;
 				},
-				minLength: 2
+				minLength: 2,
+				_renderMenu: function( ul, items ) {
+					console.log("REnder: " + items);
+					var that = this,
+					currentCategory = "";
+					$.each( items, function( index, item ) {
+						console.log(index);
+						var li;
+						if ( item.category != currentCategory ) {
+							ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>" );
+							currentCategory = item.category;
+						}
+						li = that._renderItemData( ul, item );
+						if ( item.category ) {
+							li.attr( "aria-label", item.category + " : " + item.label );
+						}
+					});
+				}
 			});
 
             $(".searchFamily").autocomplete({

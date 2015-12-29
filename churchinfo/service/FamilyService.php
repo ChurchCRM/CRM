@@ -40,7 +40,7 @@ class FamilyService {
     }
 
     function returnFamilies($families) {
-        echo '{"families": ' . json_encode($families) . '}';
+        return '{"families": ' . json_encode($families) . '}';
     }
 	
 	function insertFamily($user)
