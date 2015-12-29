@@ -135,16 +135,16 @@ $(document).ready(function() {
 	function setFundData (funds)
 	{
 		console.log ("Fund Split Lenght: "+funds.length);
-		console.log ("Processing Fund: " + JSON.stringify(funds));
 		if (funds.length >1)
 		{
 			$('#FundSelection').show();
 			$('#SingleComment').hide();
-			$('select[name=FundSplit]').val()
-			for( var fund in funds)
-			{
-				console.log(fund)
-			}
+			$('select[name=FundSplit]').val(0)
+			$.each(funds, function(index,fund) {
+				$('input[name='+fund.FundID+'_Amount]').val(fund.Amount);
+				$('input[name='+fund.FundID+'_NonDeductible]').val(fund.NonDeductible);
+				$('input[name='+fund.FundID+'_Comment]').val(fund.Comment);
+			});
 			
 		}
 		else
