@@ -76,6 +76,7 @@ class PersonService
             $values['firstName'] = $row['per_FirstName'];
             $values['lastName'] = $row['per_LastName'];
             $values['displayName'] = $row['per_FirstName'] . " " . $row['per_LastName'];
+			$values['uri'] = "PersonView.php?PersonID=".$row['per_ID'];
 
             array_push($return, $values);
         }

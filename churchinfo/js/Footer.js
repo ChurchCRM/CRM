@@ -6,13 +6,10 @@ $.widget( "custom.catcomplete", $.ui.autocomplete, {
     _renderMenu: function( ul, items ) {
 		var that = this;
 		$.each(items, function( index, item ) {
-			console.log(JSON.stringify(item));
 			var li;
 			ul.append( "<li class='ui-autocomplete-category'>" + Object.keys(item)[0]+ "</li>" );
-			
 			$.each(item[Object.keys(item)[0]], function (subindex,subitem) { 
-				console.log(subitem);
-				li = that._renderItemData( ul, {label: subitem.displayName,value: subitem.displayName} );
+				li = that._renderItemData( ul, {label: subitem.displayName,value: subitem.uri} );
 			});
 		});
     }
@@ -27,11 +24,16 @@ $("document").ready(function(){
 				dataType: 'json',
 				type: 'GET',
 				success: function (data) {
-					console.log(data);
 					response(data);
 				}
 			})
 		},
-		minLength: 2
+		minLength: 2,
+		select: function (event, ui) {
+			console.log("selected");
+			var location = ui.item.value;
+			window.location.replace(location);
+			return false;
+		}
 	});
 });
