@@ -356,14 +356,16 @@ class FinancialService {
 	}
 	
 	function getPledgeorPayment($GroupKey) {
-		
+		require_once "FamilyService.php";
+		$total=0;
+		$FamilyService = New FamilyService();
 		$sSQL = "SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey=\"" . $GroupKey . "\"";
 		$rsKeys = RunQuery($sSQL);
 		$payment=new stdClass();
 		$payment->funds = array();
 		while ($aRow = mysql_fetch_array($rsKeys)) {
 			extract($aRow);
-			$payment->FamilyID = $plg_FamID;
+			$payment->Family = $FamilyService->getFamilyStringByID($plg_FamID);
 			$payment->Date = $plg_date;
 			$payment->FYID = $plg_FYID;
 			$payment->iMethod = $plg_method;
@@ -372,11 +374,13 @@ class FinancialService {
 			$fund['NonDeductible']=$plg_NonDeductible;
 			$fund['Comment']=$plg_comment ;
 			array_push($payment->funds,$fund);
+			$total += $plg_amount;
 			$onePlgID = $aRow["plg_plgID"];
 			$oneFundID = $aRow["plg_fundID"];
 			$iOriginalSelectedFund = $oneFundID; // remember the original fund in case we switch to splitting
 			$fund2PlgIds[$oneFundID] = $onePlgID;
 		}
+		$payment->total = $total;
 		return json_encode($payment);
 		
 	}

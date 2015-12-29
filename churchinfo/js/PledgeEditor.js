@@ -224,8 +224,12 @@ $(document).ready(function() {
 			$('#CashEnter').hide();
 		}
 		setFundData (payment.funds);
-		$('[name=FamilyID]:eq(1)').val(payment.FamilyID);
-		$('input[name=Date]').val(payment.date);
+		var family = JSON.parse(payment.Family);
+		console.log(family.fam_ID);
+		console.log(family.Name);
+		$('[name=FamilyID]:eq(1)').val(family.fam_ID);
+		$('input[name=FamilyName]').val(family.Name);
+		$('input[name=Date]').val(payment.Date);
 		$('select[name=FYID]').val(payment.FYID);
 		$('input[name=Envelope]').val("");
 		$('select[name=Method]').val(payment.iMethod);
