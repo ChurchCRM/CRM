@@ -26,57 +26,8 @@
 	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/AdminLTE/app.js"></script>
 
 	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-	<script language="javascript" type="text/javascript">
-		$("document").ready(function(){
-			$(".searchPerson").autocomplete({
-				source: function (request, response) {
-					$.ajax({
-						url: 'api/persons/search/'+request.term,
-						dataType: 'json',
-						type: 'GET',
-						success: function (data) {
-							response($.map(data.persons, function (item) {
-								return {
-                                    label: item.fullName,
-									value: item.id
-								}
-							}));
-						}
-					})
-				},
-				select: function (event, ui) {
-                    var location = 'PersonView.php?PersonID='+ui.item.value;
-                    window.location.replace(location);
-					return false;
-				},
-				minLength: 2
-			});
-
-            $(".searchFamily").autocomplete({
-                source: function (request, response) {
-                    $.ajax({
-                        url: 'api/families/search/'+request.term,
-                        dataType: 'json',
-                        type: 'GET',
-                        success: function (data) {
-                            response($.map(data.families, function (item) {
-                                return {
-                                    label: item.displayName,
-                                    value: item.id
-                                }
-                            }));
-                        }
-                    })
-                },
-                select: function (event, ui) {
-                    var location = 'FamilyView.php?FamilyID='+ui.item.value;
-                    window.location.replace(location);
-                    return false;
-                },
-                minLength: 2
-            });
-		});
-	</script>
+	<script type="text/javascript" src="js/Footer.js"></script>
+	
 </body>
 </html>
 <?php

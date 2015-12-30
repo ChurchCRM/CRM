@@ -409,7 +409,7 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
                     </div>
                     <!-- search form -->
                     <div class="sidebar-form">
-                        <input type="text" class="form-control searchPerson" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
+                        <input type="text" class="form-control multiSearch" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
                     </div>
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->

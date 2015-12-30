@@ -46,14 +46,26 @@ $app->container->singleton('DataSeedService', function () {
     return new DataSeedService();
 });
 
+
 $app->container->singleton('FinancialService', function () {
    return new FinancialService();
 });
 
+$app->group('/search', function () use ($app) {
+    $app->get('/:query', function ($query) use ($app) {
+        try {
+            echo "[ ".$app->PersonService->search($query).", ";
+            echo $app->FamilyService->search($query)."]";
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+});
+
+
 $app->group('/persons', function () use ($app) {
     $app->get('/search/:query', function ($query) use ($app) {
         try {
-            $app->PersonService->search($query);
+            echo $app->PersonService->search($query);
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
@@ -72,7 +84,7 @@ $app->group('/persons', function () use ($app) {
 $app->group('/families', function () use ($app) {
     $app->get('/search/:query', function ($query) use ($app) {
         try {
-            $app->FamilyService->search($query);
+            echo $app->FamilyService->search($query);
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
