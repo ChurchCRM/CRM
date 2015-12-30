@@ -33,28 +33,8 @@ global $sPageTitle, $sURLPath;
 
 $sURLPath = $_SESSION['sURLPath'];
 ?>
-    <!-- jQuery -->
-    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-
-    <!-- Theme style -->
-    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/AdminLTE.css" />
-
-    <!-- google font libraries -->
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"  />
-
-    <!-- Ionicons -->
-    <link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-
     <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
-    <title>ChurchInfo: <?php echo $sPageTitle; ?></title>
-
+    <title>ChurchCRM: <?php echo $sPageTitle; ?></title>
 <?php
 }
 
@@ -319,16 +299,13 @@ global $security_matrix, $sURLPath;
 }
 
 function Header_body_menu() {
-global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
-global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
+    global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
+    global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
 
 	$sURLPath = $_SESSION['sURLPath'];
 
-        $MenuFirst = 1;
-        ?>
+    $MenuFirst = 1;
 
-
-    <?php
     if (!$bDefectiveBrowser)
         echo "<div style=\"position:fixed; top:0; left:0; width: 100%;\">";
 
@@ -340,52 +317,89 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
         echo html_entity_decode($sHeader,ENT_QUOTES);
         echo "</td></tr></table>";
     }
-    ?>
-    <header class="header">
-        <a href="Menu.php" class="logo">
-            Church Web CRM
+?>
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="<?= $sURLPath?>/Menu.php" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>C</b>RM</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Church</b>CRM</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
-            <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <div class="navbar-right">
+            <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <?php if ($_SESSION['bAdmin']) { ?>
-                    <li class="dropdown profile-dropdown">
-                        <a class="btn" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-cog"></i>
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="user-image" alt="User Image">
+                            <span class="hidden-xs"><?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> </span>
+
                         </a>
                         <ul class="dropdown-menu">
-                            <?php addMenu("admin"); ?>
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="img-circle" alt="User Image">
+
+                                <p>
+                                    <?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?>
+                                    <!--<small>Member since Nov. 2012</small>-->
+                                </p>
+                            </li>
+                            <!-- Menu Body
+                            <li class="user-body">
+                                <div class="row">
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Followers</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Sales</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Friends</a>
+                                    </div>
+                                </div>
+                                <!-- /.row --
+                            </li>-->
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="<?php echo $sURLPath."/"; ?>UserPasswordChange.php" class="btn btn-default btn-flat">Change Password</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="<?php echo $sURLPath."/"; ?>SettingsIndividual.php" class="btn btn-default btn-flat">My Settings</a>
+                                </div>
+                            </li>
                         </ul>
                     </li>
+                    <?php if ($_SESSION['bAdmin']) { ?>
+                        <li class="dropdown settings-dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="user-body">
+                                        <?php addMenu("admin"); ?>
+                                </li>
+                            </ul>
+                        </li>
                     <?php } ?>
-                    <li class="dropdown profile-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="img-circle" />
-                            <span class="hidden-xs"><?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> </span> <b class="caret"></b>
+                    <li class="hidden-xxs">
+                        <a href="http://docs.churchcrm.io" target="_blank">
+                            <i class="fa fa-support"></i>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="http://docs.churchcrm.io" target="_blank"><i class="fa fa-question-circle"></i> User Guide</a></li>
-                            <li class="divider"></li>
-                            <li><a href="<?php echo $sURLPath."/"; ?>PersonView.php?PersonID=<?php echo $_SESSION['iUserID'];?>"><i class="fa fa-user"></i>Profile</a></li>
-                            <li class="divider"></li>
-                            <li><a href="<?php echo $sURLPath."/"; ?>UserPasswordChange.php">Change My Password</a></li>
-                            <li><a href="<?php echo $sURLPath."/"; ?>SettingsIndividual.php">Change My Settings</a></li>
-                            <li class="divider"></li>
-                            <li><a href="<?php echo $sURLPath."/"; ?>Default.php?Logoff=True"><i class="fa fa-power-off"></i>Log Off</a></li>
-                            <li class="divider"></li>
-                            <li><a href="http://www.churchcrm.io" target="_blank">About Church CRM</a></li>
-                        </ul>
                     </li>
                     <li class="hidden-xxs">
-                        <a class="btn" href="<?php echo $sURLPath."/"; ?>Default.php?Logoff=True">
+                        <a href="<?php echo $sURLPath."/"; ?>Default.php?Logoff=True">
                             <i class="fa fa-power-off"></i>
                         </a>
                     </li>
@@ -393,9 +407,10 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
             </div>
         </nav>
     </header>
-    <div class="wrapper row-offcanvas row-offcanvas-left">
-            <!-- Left side column. contains the logo and sidebar -->
-            <aside class="left-side sidebar-offcanvas">
+    <!-- =============================================== -->
+
+    <!-- Left side column. contains the sidebar -->
+    <aside class="main-sidebar">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
@@ -408,9 +423,14 @@ global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
                         </div>
                     </div>
                     <!-- search form -->
-                    <div class="sidebar-form">
-                        <input type="text" class="form-control multiSearch" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
-                    </div>
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" class="form-control multiSearch" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
+                             <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
