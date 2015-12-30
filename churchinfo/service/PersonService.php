@@ -66,7 +66,7 @@ class PersonService
     
     function getViewURI($Id)
     {
-        return $sURLPath."/PersonView.php?PersonID=".$Id;
+        return $_SESSION['sURLPath']."/PersonView.php?PersonID=".$Id;
     }
 
     function search($searchTerm)
