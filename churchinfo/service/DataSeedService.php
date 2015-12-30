@@ -8,6 +8,13 @@ class DataSeedService
         $personPointer += 1;
         return $user;
     }
+    
+    function savePersonImage($person,$id)
+    {
+        $dest = "../Images/Person/thumbnails/".$id.".jpg";
+        #echo "Saving image for: ".$person->name->first." from: ".$person->picture->thumbnail. " to: ". $dest;
+        file_put_contents($dest, fopen($person->picture->thumbnail, 'r'));
+    }
 
     function generateFamilies($families)
     {
@@ -38,9 +45,11 @@ class DataSeedService
             $spouse->famID = $FamilyID;
             $spouse->per_fmr_id = 2;
 			
-            $PersonService->insertPerson($hoh);
+            $hohID = $PersonService->insertPerson($hoh);
+            $this->savePersonImage($hoh,$hohID);
             $rTotalHoh += 1;
-            $PersonService->insertPerson($spouse);
+            $spouseID = $PersonService->insertPerson($spouse);
+            $this->savePersonImage($spouse,$spouseID);
             $rTotalSpouse += 1;
 
             #$thisFamChildren = stats_rand_gen_normal ($kidsPerFamily, $stddev);
@@ -51,7 +60,8 @@ class DataSeedService
                 $child->name->last = $familyName;
                 $child->famID = $FamilyID;
                 $child->per_fmr_id = 3;
-                $PersonService->insertPerson($child);
+                $childID= $PersonService->insertPerson($child);
+                $this->savePersonImage($child,$childID);
                 $rTotalChildren += 1;
             }
 
