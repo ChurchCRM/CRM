@@ -1,6 +1,12 @@
 <?php
 
 class FamilyService {
+    
+    function getViewURI($Id)
+    {
+        return  "FamilyView.php?FamilyID=".$Id;
+    }
+    
     function search($searchTerm) {
         $fetch = 'SELECT fam_ID, fam_Name, fam_City, fam_State FROM family_fam WHERE family_fam.fam_Name LIKE \'%'.$searchTerm.'%\' LIMIT 15';
         $result=mysql_query($fetch);
@@ -10,7 +16,7 @@ class FamilyService {
             $row_array['familyName']=$row['fam_Name'];
             $row_array['city']=$row['fam_City'];
             $row_array['displayName']=$row['fam_Name']." - ".$row['fam_City'];
-            $row_array['uri'] = "FamilyView.php?FamilyID=".$row['fam_ID'];
+            $row_array['uri'] = $this->getViewURI($row['fam_ID']);
             array_push($families,$row_array);
         }
         return $this->returnFamilies($families);
