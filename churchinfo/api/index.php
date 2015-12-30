@@ -59,6 +59,7 @@ $app->group('/search', function () use ($app) {
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
+    });
 });
 
 
