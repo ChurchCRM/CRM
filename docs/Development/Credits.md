@@ -8,7 +8,8 @@
 * [mailchimp-mailchimp-api-php] (https://github.com/horechek/mailchimp-mailchimp-api-php)
 * [Slim Framework] (http://www.slimframework.com/)
 * [AdminLTE] (https://github.com/almasaeed2010/AdminLTE)
-* 
+* [FPDF] (http://www.fpdf.org/)
+
 *	Javascript / DHTML Calendar by Mihai Bazon
 *	DOM Menu by Dan Allen
 *	DOM ToolTips by Dan Allen

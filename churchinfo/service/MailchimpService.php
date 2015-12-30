@@ -43,7 +43,7 @@ class MailChimpService
         }
 
         if ($email == "") {
-            return "";
+            return "No email";
         }
 
         try {
@@ -54,7 +54,7 @@ class MailChimpService
             }
             return implode(",", $listNames);
         } catch (Exception $e) {
-            return "";
+            return $e->getMessage();
         }
 
     }
