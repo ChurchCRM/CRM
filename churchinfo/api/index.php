@@ -40,7 +40,7 @@ $app->container->singleton('DataSeedService', function () {
 
 
 $app->group('/search', function () use ($app) {
-    $app->get('/:query', function ($query) use ($app) {
+	$app->get('/:query', function ($query) use ($app) {
         try {
             echo "[ ".$app->PersonService->search($query).", ";
 			echo $app->FamilyService->search($query)."]";

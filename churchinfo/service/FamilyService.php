@@ -12,7 +12,7 @@ class FamilyService {
             $row_array['familyName']=$row['fam_Name'];
             $row_array['city']=$row['fam_City'];
             $row_array['displayName']=$row['fam_Name']." - ".$row['fam_City'];
-			$row_array['uri'] = "FamilyView.php?FamilyID=".$row['fam_ID'];
+            $row_array['uri'] = "FamilyView.php?FamilyID=".$row['fam_ID'];
 
             array_push($families,$row_array);
         }
