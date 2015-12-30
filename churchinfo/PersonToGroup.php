@@ -6,7 +6,7 @@
  *  description : Add a person record to a group after selection of group
  *  	and role.  This is a companion script to the Group Assign Helper.
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
  *
  *  InfoCentral is free software; you can redistribute it and/or modify

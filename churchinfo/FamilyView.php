@@ -3,7 +3,7 @@
  *
  *  filename    : FamilyView.php
  *  last change : 2013-02-02
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker, 2003 Chris Gebhardt, 2004-2005 Michael Wilt
  *
  *  LICENSE:
@@ -870,11 +870,13 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 		</div>
 	</div>
 </div>
-<!-- Latest compiled and minified CSS -->
+<!-- Latest compiled and minified CSS
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
+-->
+<!-- Latest compiled and minified JavaScript
 <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+-->
+
 <?php
 require "Include/Footer.php";
 ?>

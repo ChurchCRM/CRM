@@ -3,7 +3,7 @@
  *
  *  filename    : AutoPaymentDelete.php
  *  last change : 2004-6-12
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt, Michael Wilt
  *
  *  InfoCentral is free software; you can redistribute it and/or modify

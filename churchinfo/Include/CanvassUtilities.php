@@ -3,7 +3,7 @@
  *
  *  filename    : /Include/CanvassUtilities.php
  *  last change : 2005-02-21
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Michael Wilt
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify

@@ -2,7 +2,7 @@
 /*******************************************************************************
  *
  *  filename    : Register.php
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Michael Wilt
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify

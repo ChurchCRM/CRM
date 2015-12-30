@@ -2,7 +2,7 @@
 /*******************************************************************************
  *
  *  filename    : /Include/Initialize.php
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
  *  description : This is a minimal script initialization common to InfoCentral
  *              : Scripts which do not need Functions.php can use this instead

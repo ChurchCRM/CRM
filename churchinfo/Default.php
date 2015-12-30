@@ -4,7 +4,7 @@
  *  filename    : Default.php
  *  description : login page that checks for correct username and password
  *
- *  http://www.churchdb.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker,
  *
  *  Updated 2005-03-19 by Everette L Mills: Removed dropdown login box and
@@ -385,8 +385,8 @@ ob_start();
         echo '
 
 <script language="javascript" type="text/javascript">
-    error_page1="http://www.churchdb.org";
-    error_page2="http://www.churchdb.org";
+    error_page1="http://www.churchcrm.io";
+    error_page2="http://www.churchcrm.io";
     if(window.location.href.indexOf(":") == 5) {
         v_Proto="https";
         v_Path=window.location.href.substring(8);

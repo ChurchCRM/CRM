@@ -5,7 +5,7 @@
  *  last change : 2003-01-07
  *  description : displays a list of all users
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
  *
  *  InfoCentral is free software; you can redistribute it and/or modify

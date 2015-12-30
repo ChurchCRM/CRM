@@ -36,7 +36,7 @@ require 'Include/Header.php';
 
 </div>
 
-<script>
+<script type="text/javascript">
 
 $('#SeedForm').submit(function(event) {
 		event.preventDefault();

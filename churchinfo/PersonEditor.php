@@ -2,7 +2,7 @@
 /*******************************************************************************
  *
  *  filename    : PersonEditor.php
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2005 Michael Wilt
  *

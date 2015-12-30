@@ -245,9 +245,6 @@ if (isset($_POST["Submit"]))
 }
 
 require "Include/Header.php";
-?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<?php
 
 //Get Families for the drop-down
 $sSQL = "SELECT * FROM family_fam ORDER BY fam_Name";

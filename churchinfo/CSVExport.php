@@ -4,7 +4,7 @@
  *  filename    : CSVExport.php
  *  description : options for creating csv file
  *
- *  http://www.churchdb.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
  *
  *  LICENSE:

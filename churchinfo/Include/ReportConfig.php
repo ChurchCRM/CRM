@@ -5,7 +5,7 @@
  *  last change : 2003-03-14
  *  description : Configure report generation
  *
- *  http://www.churchdb.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2004-2012 Chris Gebhardt, Michael Wilt
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify

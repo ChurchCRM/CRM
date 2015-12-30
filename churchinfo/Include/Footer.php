@@ -5,7 +5,7 @@
  *  last change : 2002-04-22
  *  description : footer that appear on the bottom of all pages
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
  *
  *  InfoCentral is free software; you can redistribute it and/or modify

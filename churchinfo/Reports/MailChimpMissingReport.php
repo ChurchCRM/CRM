@@ -3,7 +3,7 @@
  *
  *  filename    : MailChimpReprot.php
  *  last change : 2014-11-29
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2014
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify
@@ -33,8 +33,9 @@ $sSQL = "SELECT per_FirstName, per_LastName, per_Email, per_id FROM `stgeorge_ch
 $rsPeopleWithEmail = RunQuery($sSQL);
 
 ?>
-<script src="http://mottie.github.io/tablesorter/js/jquery.tablesorter.js"></script>
+<!--<script src="http://mottie.github.io/tablesorter/js/jquery.tablesorter.js"></script>
 <script src="http://mottie.github.io/tablesorter/js/jquery.tablesorter.widgets.js"></script>
+-->
 <h3>People not in Mailchimp</h3>
 
 <table id="people_with_email" width="100%" data-toggle="table" class="table table-striped table-bordered tablesorter">

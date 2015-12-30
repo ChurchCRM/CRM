@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : ListEvents.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  function    : List all Church Events
 *
 *  copyright   : Copyright 2005 Todd Pillars

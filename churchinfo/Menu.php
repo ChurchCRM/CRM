@@ -4,7 +4,7 @@
 *  filename    : Menu.php
 *  description : menu that appears after login, shows login attempts
 *
-*  http://www.churchdb.org/
+*  http://www.churchcrm.io/
 *  Copyright 2001-2002 Phillip Hullquist, Deane Barker, Michael Wilt
 *
 *  Additional Contributors:
@@ -60,9 +60,10 @@ $sPageTitle = gettext('Welcome to ChurchInfo');
 require 'Include/Header.php';
 ?>
 <!-- this page specific styles -->
-<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
-
+<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/morris/morris.min.js"></script>
+<!--
+<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/raphael/2.1.2/raphael-min.js"></script>
+-->
 
 <div class="row">
     <div class="col-lg-6 col-md-3 col-sm-4">
@@ -300,7 +301,6 @@ require 'Include/Header.php';
 </div>
 
 <!-- this page specific inline scripts -->
-<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
 <script>
     Morris.Donut({
         element: 'gender-donut',

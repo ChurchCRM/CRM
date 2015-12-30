@@ -5,7 +5,7 @@
  *  last change : 2003-04-14
  *  description : Displays all the information about a single person
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *
  *  InfoCentral is free software; you can redistribute it and/or modify
@@ -856,11 +856,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			window.location="GroupMemberList.php?GroupID=" + Group + "&PersonToRemove=" + Person
 	}
 </script>
-<!-- Latest compiled and minified CSS -->
+<!-- Latest compiled and minified CSS
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
+-->
+<!-- Latest compiled and minified JavaScript
 <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+-->
 <?php
 require "Include/Footer.php";
 ?>

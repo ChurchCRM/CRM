@@ -5,7 +5,7 @@
 *  last change : 2003-09-09
 *  description : Creates a group-member directory
 *
-*  http://www.infocentral.org/
+*  http://www.churchcrm.io/
 *  Copyright 2003  Chris Gebhardt, Jason York
 *
 *  InfoCentral is free software; you can redistribute it and/or modify

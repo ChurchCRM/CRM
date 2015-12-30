@@ -3,7 +3,7 @@
  *
  *  filename    : CSVCreateFile.php
  *  last change : 2003-06-11
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt, Michael Wilt
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify
