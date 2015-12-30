@@ -15,19 +15,34 @@
  *
  ******************************************************************************/
 ?>
-
 			</section><!-- /.content -->
+
 		</aside><!-- /.right-side -->
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+        </div>
+        <!-- ./wrapper -->
 	</div><!-- ./wrapper -->
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 2.0.0 - Beta
+    </div>
+    <strong>Copyright &copy; 2015-2016 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> All rights reserved.
+</footer>
 
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
+	<!-- Bootstrap 3.3.5 -->
+	<script src="<?= $sURLPath; ?>/vendor/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
+	<!-- SlimScroll -->
+	<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<!-- FastClick -->
+	<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/fastclick/fastclick.js"></script>
 	<!-- AdminLTE App -->
-	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/AdminLTE/app.js"></script>
+	<script src="<?= $sURLPath; ?>/vendor/AdminLTE/dist/js/app.min.js"></script>
 
-	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-	<script type="text/javascript" src="js/Footer.js"></script>
-	
+	<script src="<?= $sURLPath; ?>/js/Footer.js"></script>
+
 </body>
 </html>
 <?php
