@@ -63,6 +63,11 @@ class PersonService
             return "";
         }
     }
+    
+    function getViewURI($Id)
+    {
+        return $sURLPath."/PersonView.php?PersonID=".$Id;
+    }
 
     function search($searchTerm)
     {
@@ -75,12 +80,13 @@ class PersonService
             $values['familyID'] = $row['per_fam_ID'];
             $values['firstName'] = $row['per_FirstName'];
             $values['lastName'] = $row['per_LastName'];
-            $values['fullName'] = $row['per_FirstName'] . " " . $row['per_LastName'];
+            $values['displayName'] = $row['per_FirstName'] . " " . $row['per_LastName'];
+            $values['uri'] = $this->getViewURI($row['per_ID']);
 
             array_push($return, $values);
         }
 
-        echo '{"persons": ' . json_encode($return) . '}';
+        return '{"persons": ' . json_encode($return) . '}';
     }
 
     private function getDefaultPhoto($gender, $famRole)
