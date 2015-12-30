@@ -35,19 +35,41 @@ require_once ('Header-function.php');
 // Top level menu index counter
 $MenuFirst = 1;
 
-
+$sURLPath = $_SESSION['sURLPath'];
 ?>
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<?php Header_head_metatag(); ?>
-	</head>
-<body class="skin-blue">
-<?php
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="<?= $sURLPath ?>/vendor/AdminLTE/bootstrap/css/bootstrap.min.css">
+    <!-- google font libraries -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/dist/css/AdminLTE.min.css" />
 
-Header_body_scripts();
-Header_body_menu();
-?>
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/AdminLTE/dist/css/skins/_all-skins.min.css">
+
+    <!-- jQuery 2.1.4 -->
+    <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+
+    <!-- jQuery 2.1.4 -->
+    <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/jQueryUI/jquery-ui.min.js"></script>
+
+
+    <?php Header_head_metatag(); ?>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+    <?php
+        Header_body_scripts();
+        Header_body_menu();
+    ?>
