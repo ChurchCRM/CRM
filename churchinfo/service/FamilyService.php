@@ -4,7 +4,7 @@ class FamilyService {
     
     function getViewURI($Id)
     {
-        return  $sURLPath."/FamilyView.php?FamilyID=".$Id;
+        return  $_SESSION['sURLPath']."/FamilyView.php?FamilyID=".$Id;
     }
     
     function search($searchTerm) {
