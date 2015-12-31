@@ -243,140 +243,130 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 	<b><span style="color: red;"><?php echo gettext("Red text"); ?></span></b> <?php echo gettext("indicates items inherited from the associated family record.");?>
 </div>
 <div class="row">
-	<div class="col-lg-3 col-md-4 col-sm-4">
-		<div class="box box-solid box-info">
-			<div class="box-header">
-				<h3 class='box-title'>
-					<?php
-					echo getGenderIcon($per_Gender). " ".FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0). " ";
-					if ($bOkToEdit) {?>
-						<a href="PersonEditor.php?PersonID=<?php echo $per_ID;?>">
-						<span class="fa-stack">
-							<i class="fa fa-square fa-stack-2x"></i>
-							<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-						</span>
-						</a>
-					<?php }?>
-				</h3>
+	<div class="col-lg-3 col-md-3 col-sm-3">
+		<div class="box box-primary">
+			<div class="box-body box-profile">
+				<img src="<?php echo getPersonPhoto($iPersonID, $per_Gender, $sFamRole) ?>" alt="" class="profile-user-img img-responsive img-circle" />
+				<h3 class="profile-username text-center"><?= getGenderIcon($per_Gender). " ".FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0); ?></h3>
+
+				<p class="text-muted text-center">
+				<?php
+					if ($sFamRole != "")
+						echo $sFamRole;
+					else
+						echo gettext("Member");
+					?>
+				</p>
+				<p class="text-muted text-center">
+				<?php echo $sClassName;
+					if ($per_MembershipDate) {
+						echo " since: ".FormatDate($per_MembershipDate,false);
+					} ?>
+				</p>
+				<?php if ($bOkToEdit) {?>
+					<a href="PersonEditor.php?PersonID=<?php echo $per_ID;?>" class="btn btn-primary btn-block"><b>Edit</b></a>
+				<?php }?>
 			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+
+		<!-- About Me Box -->
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h3 class="box-title text-center">About Me</h3>
+			</div>
+			<!-- /.box-header -->
 			<div class="box-body">
-				<div class="box-tools">
-					<div class="label bg-light-blue"><?php
-						if ($sFamRole != "")
-							echo $sFamRole;
-						else
-							echo gettext("Member");
-						?>
-					</div>
-					<p />
-				</div>
-				<img src="<?php echo getPersonPhoto($iPersonID, $per_Gender, $sFamRole) ?>" alt="" class="img-circle center-block" />
-
-				<div class="box-tools">
-					<div class="label bg-olive">
-						<?php
-						echo $sClassName;
-						if ($per_MembershipDate) {
-							echo " since: ".FormatDate($per_MembershipDate,false);
-						} ?>
-					</div>
-				</div>
-				<p><hr/></p>
-				<div class="profile-details">
-					<ul class="fa-ul">
-						<li><i class="fa-li fa fa-group"></i>Family: <span>
-								<?php
-								if ($fam_ID != "") { ?>
-									<a href="FamilyView.php?FamilyID=<?php echo $fam_ID; ?>"><?php echo $fam_Name; ?> </a>
-									<a href="FamilyEditor.php?FamilyID=<?php echo $fam_ID; ?>" class="table-link">
-										<span class="fa-stack">
-											<i class="fa fa-square fa-stack-2x"></i>
-											<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-										</span>
-									</a>
-								<?php } else
-									echo gettext("(No assigned family)");
-								?>
-							</span></li>
-						<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
-							<a href="http://maps.google.com/?q=<?php echo $plaintextMailingAddress; ?>" target="_blank">
+				<ul class="fa-ul">
+					<li><i class="fa-li fa fa-group"></i>Family: <span>
 							<?php
-							echo $formattedMailingAddress;
+							if ($fam_ID != "") { ?>
+								<a href="FamilyView.php?FamilyID=<?php echo $fam_ID; ?>"><?php echo $fam_Name; ?> </a>
+								<a href="FamilyEditor.php?FamilyID=<?php echo $fam_ID; ?>" class="table-link">
+									<span class="fa-stack">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+									</span>
+								</a>
+							<?php } else
+								echo gettext("(No assigned family)");
 							?>
-							</a>
-							</span></li>
-						<?php if ($dBirthDate) {?>
-						<li><i class="fa-li fa fa-calendar"></i><?php echo gettext("Birthdate:"); ?> <span><?php echo $dBirthDate; ?></span> (<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?>)</li>
-						<?php } if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
-						<li><i class="fa-li fa fa-tasks"></i><?php echo gettext("Friend Date:"); ?> <span><?php echo FormatDate($per_FriendDate,false); ?></span></li>
-						<?php } if ($sCellPhone) {?>
-						<li><i class="fa-li fa fa-mobile-phone"></i><?php echo gettext("Mobile Phone:"); ?> <span><?php echo $sCellPhone; ?></span></li>
+						</span></li>
+					<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
+						<a href="http://maps.google.com/?q=<?php echo $plaintextMailingAddress; ?>" target="_blank">
+						<?php
+						echo $formattedMailingAddress;
+						?>
+						</a>
+						</span></li>
+					<?php if ($dBirthDate) {?>
+					<li><i class="fa-li fa fa-calendar"></i><?php echo gettext("Birthdate:"); ?> <span><?php echo $dBirthDate; ?></span> (<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?>)</li>
+					<?php } if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
+					<li><i class="fa-li fa fa-tasks"></i><?php echo gettext("Friend Date:"); ?> <span><?php echo FormatDate($per_FriendDate,false); ?></span></li>
+					<?php } if ($sCellPhone) {?>
+					<li><i class="fa-li fa fa-mobile-phone"></i><?php echo gettext("Mobile Phone:"); ?> <span><?php echo $sCellPhone; ?></span></li>
+					<?php }
+					if ($sHomePhone) {
+						?>
+						<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Home Phone:"); ?>
+							<span><?php echo $sHomePhone; ?></span></li>
+					<?php
+					}
+					if ($sEmail != "") { ?>
+					<li><i class="fa-li fa fa-envelope"></i><?php echo gettext("Email:"); ?> <span><?php echo "<a href=\"mailto:" . $sUnformattedEmail . "\">" . $sEmail . "</a>"; ?></span></li>
+						<?php if ($mailchimp->isActive()) { ?>
+							<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($sEmail);?></span></li>
 						<?php }
-						if ($sHomePhone) {
-							?>
-							<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Home Phone:"); ?>
-								<span><?php echo $sHomePhone; ?></span></li>
+					}
+					if ($sWorkPhone) {
+					?>
+						<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Work Phone:"); ?> <span><?php echo $sWorkPhone; ?></span></li>
+					<?php } ?>
+					<?php if ($per_WorkEmail != "") { ?>
+					<li><i class="fa-li fa fa-envelope"></i><?php echo gettext("Work/Other Email:"); ?> <span><?php  echo "<a href=\"mailto:" . $per_WorkEmail . "\">" . $per_WorkEmail . "</a>"; ?></span></li>
+						<?php if ($mailchimp->isActive()) { ?>
+							<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
 						<?php
 						}
-						if ($sEmail != "") { ?>
-						<li><i class="fa-li fa fa-envelope"></i><?php echo gettext("Email:"); ?> <span><?php echo "<a href=\"mailto:" . $sUnformattedEmail . "\">" . $sEmail . "</a>"; ?></span></li>
-							<?php if ($mailchimp->isActive()) { ?>
-								<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($sEmail);?></span></li>
-							<?php }
-						}
-						if ($sWorkPhone) {
-						?>
-							<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Work Phone:"); ?> <span><?php echo $sWorkPhone; ?></span></li>
-						<?php } ?>
-						<?php if ($per_WorkEmail != "") { ?>
-						<li><i class="fa-li fa fa-envelope"></i><?php echo gettext("Work/Other Email:"); ?> <span><?php  echo "<a href=\"mailto:" . $per_WorkEmail . "\">" . $per_WorkEmail . "</a>"; ?></span></li>
-							<?php if ($mailchimp->isActive()) { ?>
-								<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
-							<?php
-							}
-						}
+					}
 
-						// Display the right-side custom fields
-						while ($Row = mysql_fetch_array($rsCustomFields)) {
-							extract($Row);
-							$currentData = trim($aCustomData[$custom_Field]);
-							if ($currentData != "") {
-								if ($type_ID == 11) $custom_Special = $sPhoneCountry;
-								echo "<li><i class=\"fa-li glyphicon glyphicon-tag\"></i>" . $custom_Name . ": <span>";
-								echo nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
-								echo "</span></li>";
-							}
+					// Display the right-side custom fields
+					while ($Row = mysql_fetch_array($rsCustomFields)) {
+						extract($Row);
+						$currentData = trim($aCustomData[$custom_Field]);
+						if ($currentData != "") {
+							if ($type_ID == 11) $custom_Special = $sPhoneCountry;
+							echo "<li><i class=\"fa-li glyphicon glyphicon-tag\"></i>" . $custom_Name . ": <span>";
+							echo nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
+							echo "</span></li>";
 						}
-						?>
-					</ul>
-				</div>
+					}
+					?>
+				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="col-lg-9 col-md-8 col-sm-8">
-		<div class="box box-solid">
-			<div class="box-body clearfix">
-				<table width="100%">
-					<tr>
-						<td width="50%">
-							<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>" alt="" width="40" height="40" class="img-circle"/>
-							<?php echo gettext("Entered: ").FormatDate($per_DateEntered,false).gettext(" by ").$EnteredFirstName . " " . $EnteredLastName; ?>
-						</td>
-						<?php if (strlen($per_DateLastEdited) > 0) { ?>
-						<td width="50%">
-							<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>" alt="" width="40" height="40" class="img-circle"/>
-							<?php  echo gettext("Updated: "). FormatDate($per_DateLastEdited,false) .gettext(" by ") . $EditedFirstName . " " . $EditedLastName."<br>"; ?>
-						</td>
-						<?php } ?>
-					</tr>
-				</table>
-			</div>
-		</div>
+        <div class="row">
+            <div class="box box-header">
+                <div class="col-lg-5 col-md-4 col-sm-4">
+                    <img src="<?= getPersonPhoto($EnteredId, "", "") ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+                    <?= gettext("Entered: ").FormatDate($per_DateEntered,false) ?>
+                </div>
+                <?php if (strlen($per_DateLastEdited) > 0) { ?>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <img src="<?= getPersonPhoto($EditedId, "", "") ?>" title="<?=  $EditedFirstName . " " . $EditedLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+                    <?= gettext("Updated: ").FormatDate($per_DateLastEdited,false) ?>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
 	</div>
 	<div class="col-lg-9 col-md-8 col-sm-8">
 		<?php if (mysql_num_rows($rsOtherFamily) != 0) { ?>
 		<div class="row">
-			<div class="box box-solid">
+			<div class="box box-success">
 				<div class="box-body table-responsive clearfix">
 					<table class="table user-list table-hover">
 						<thead>
@@ -394,7 +384,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 							?>
 						<tr>
 							<td>
-								<img src="<?php echo getPersonPhoto($tmpPersonId, $Row["per_Gender"], $Row["sFamRole"]) ?>" width="40" height="40" class="img-circle" />
+								<img src="<?php echo getPersonPhoto($tmpPersonId, $Row["per_Gender"], $Row["sFamRole"]) ?>" width="40" height="40" class="img-circle img-bordered-sm" />
 								<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="user-link"><?php echo $Row["per_FirstName"]." ".$Row["per_LastName"]; ?> </a>
 							</td>
 							<td class="text-center">
@@ -856,12 +846,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			window.location="GroupMemberList.php?GroupID=" + Group + "&PersonToRemove=" + Person
 	}
 </script>
-<!-- Latest compiled and minified CSS
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
--->
-<!-- Latest compiled and minified JavaScript
-<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
--->
+
 <?php
 require "Include/Footer.php";
 ?>
