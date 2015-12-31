@@ -66,7 +66,7 @@ class PersonService
     
     function getViewURI($Id)
     {
-        return $sURLPath."/PersonView.php?PersonID=".$Id;
+        return $_SESSION['sURLPath']."/PersonView.php?PersonID=".$Id;
     }
 
     function search($searchTerm)
@@ -138,9 +138,16 @@ class PersonService
 	VALUES ('" .
            FilterInput($user->name->title) . "','" .
            FilterInput($user->name->first) . "',NULL,'" .
-           FilterInput($user->name->last) . "',NULL,'" .
-           FilterInput($user->gender) . "','" .
-           FilterInput($user->location->street) . "',NULL,'" .
+           FilterInput($user->name->last) . "',NULL,'";
+           if (FilterInput($user->gender) == "male")
+           {
+               $sSQL .= "1";
+           }
+           else {
+               $sSQL .= "2";
+           }
+           $sSQL .= FilterInput($user->gender) . "','" .
+           FilterInput($user->location->street) . "',\"\",'" .
            FilterInput($user->location->city) . "','" .
            FilterInput($user->location->state) . "','" .
            FilterInput($user->location->zip) . "','USA','" .
@@ -174,6 +181,7 @@ class PersonService
             $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('" . $iPersonID . "')";
             RunQuery($sSQL);
         }
+        return $iPersonID;
 
     }
 

@@ -4,7 +4,7 @@ class FamilyService {
     
     function getViewURI($Id)
     {
-        return  $sURLPath."/FamilyView.php?FamilyID=".$Id;
+        return  $_SESSION['sURLPath']."/FamilyView.php?FamilyID=".$Id;
     }
     
     function search($searchTerm) {
@@ -72,7 +72,7 @@ class FamilyService {
             VALUES ('" .
             FilterInput($user->name->last) . "','" .
             FilterInput($user->location->street) . "','" .
-            "NULL','" .
+            "\"\"','" .
             FilterInput( $user->location->city) . "','" .
             FilterInput($user->location->state) . "','" .
             FilterInput( $user->location->zip) . "','" .
