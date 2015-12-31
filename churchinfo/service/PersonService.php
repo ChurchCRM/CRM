@@ -52,7 +52,7 @@ class PersonService
     private
     function getGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
     {
-        $url = 'http://www.gravatar.com/avatar/';
+        $url = '//www.gravatar.com/avatar/';
         $url .= md5(strtolower(trim($email)));
         $url .= "?s=$s&d=$d&r=$r";
 
@@ -138,9 +138,16 @@ class PersonService
 	VALUES ('" .
            FilterInput($user->name->title) . "','" .
            FilterInput($user->name->first) . "',NULL,'" .
-           FilterInput($user->name->last) . "',NULL,'" .
-           FilterInput($user->gender) . "','" .
-           FilterInput($user->location->street) . "',NULL,'" .
+           FilterInput($user->name->last) . "',NULL,'";
+           if (FilterInput($user->gender) == "male")
+           {
+               $sSQL .= "1";
+           }
+           else {
+               $sSQL .= "2";
+           }
+           $sSQL .= FilterInput($user->gender) . "','" .
+           FilterInput($user->location->street) . "',\"\",'" .
            FilterInput($user->location->city) . "','" .
            FilterInput($user->location->state) . "','" .
            FilterInput($user->location->zip) . "','USA','" .
@@ -174,6 +181,7 @@ class PersonService
             $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('" . $iPersonID . "')";
             RunQuery($sSQL);
         }
+        return $iPersonID;
 
     }
 

@@ -3,7 +3,7 @@
  *
  *  filename    : SelectDelete
  *  last change : 2003-01-07
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Lewis Franklin
  *
  *  InfoCentral is free software; you can redistribute it and/or modify

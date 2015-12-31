@@ -4,7 +4,7 @@
 *  filename    : EmailSend.php
 *  description : Sends emails and lists addresses
 *
-*  http://www.churchdb.org/
+*  http://www.churchcrm.io/
 *  Copyright 2001-2003 Lewis Franklin
 *
 *  LICENSE:

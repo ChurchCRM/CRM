@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : Include/LoadConfigs.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  description : global configuration 
 *                   The code in this file used to be part of part of Config.php
 *

@@ -5,7 +5,7 @@
  *  last change : 2003-06-23
  *  description : Add cart records to a group
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *
  *  InfoCentral is free software; you can redistribute it and/or modify

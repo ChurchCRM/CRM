@@ -4,7 +4,7 @@
 *  filename    : EmailEditor.php
 *  description : Form for entering email subject and message
 *
-*  http://www.churchdb.org/
+*  http://www.churchcrm.io/
 *
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.

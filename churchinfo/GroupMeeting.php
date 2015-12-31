@@ -3,7 +3,7 @@
  *
  *  filename    : GroupMeeting.php
  *  last change : 2004-11-7
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003, 2004 Deane Barker, Chris Gebhardt, Michael Wilt
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify

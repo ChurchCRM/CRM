@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : CartView.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *
 *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
 *

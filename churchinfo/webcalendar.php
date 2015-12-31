@@ -4,7 +4,7 @@
 *  filename    : webcalendar.php
 *  description : shell page for the WebCalendar system
 *
-*  http://www.churchdb.org/
+*  http://www.churchcrm.io/
 *  Copyright 2012 Michael Wilt
 *
 *  Copyright Contributors

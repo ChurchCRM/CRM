@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : Reports/PDFLabel.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  description : Creates a PDF document containing the addresses of
 *                The people in the Cart
 *

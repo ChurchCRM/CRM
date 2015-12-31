@@ -3,7 +3,7 @@
  *
  *  filename    : BatchWinnerEntry.php
  *  last change : 2011-04-01
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2011 Michael Wilt
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify

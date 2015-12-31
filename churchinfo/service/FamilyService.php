@@ -118,7 +118,7 @@ class FamilyService {
             VALUES ('" .
             FilterInput($user->name->last) . "','" .
             FilterInput($user->location->street) . "','" .
-            "NULL','" .
+            "\"\"','" .
             FilterInput( $user->location->city) . "','" .
             FilterInput($user->location->state) . "','" .
             FilterInput( $user->location->zip) . "','" .

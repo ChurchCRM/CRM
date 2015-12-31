@@ -5,7 +5,7 @@
 *  last change : 2003-08-30
 *  description : Creates a Member directory
 *
-*  http://www.churchdb.org/
+*  http://www.churchcrm.io/
 *  Copyright 2003  Jason York, 2004-2005 Michael Wilt, Richard Bondi
 *
 *  ChurchInfo is free software; you can redistribute it and/or modify

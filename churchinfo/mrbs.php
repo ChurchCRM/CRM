@@ -4,7 +4,7 @@
 *  filename    : mrbs.php
 *  description : shell page for the mrbs system
 *
-*  http://www.churchdb.org/
+*  http://www.churchcrm.io/
 *  Copyright 2012 Michael Wilt
 *
 *  Copyright Contributors

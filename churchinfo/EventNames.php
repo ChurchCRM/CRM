@@ -3,7 +3,7 @@
  *
  *  filename    : EventNames.php
  *  last change : 2005-09-10
- *  website     : http://www.terralabs.com
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Todd Pillars
  *
  *  function    : List all Church Events

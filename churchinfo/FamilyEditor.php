@@ -3,7 +3,7 @@
  *
  *  filename    : FamilyEditor.php
  *  last change : 2003-01-04
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify
@@ -1062,10 +1062,11 @@ require "Include/Header.php";
 	echo "</td></tr></form></table>";
 ?>
 	<!-- InputMask -->
-	<script src="<?php echo $sURLPath."/"; ?>js/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
-	<script src="<?php echo $sURLPath."/"; ?>js/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
-	<script src="<?php echo $sURLPath."/"; ?>js/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
-	<script src="<?php echo $sURLPath."/"; ?>js/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+	<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+	<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+	<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
+
+	<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
 
 	<script type="text/javascript">
 		$(function() {

@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : SettingsUser.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  description : Default User Settings 
 *                   File copied from SettingsGeneral.php with minor edits.
 *                   Controls default settings for new users.

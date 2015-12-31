@@ -3,7 +3,7 @@
  *
  *  filename    : UpdateAllLatLon.php
  *  last change : 2013-02-02
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *
  *  LICENSE:
  *  (C) Free Software Foundation, Inc.

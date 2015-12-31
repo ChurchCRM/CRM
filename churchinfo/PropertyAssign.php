@@ -5,7 +5,7 @@
  *  last change : 2003-06-04
  *  description : property assign
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *
  *  InfoCentral is free software; you can redistribute it and/or modify

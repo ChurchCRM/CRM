@@ -5,7 +5,7 @@
  *  last change : 2003-09-03
  *  description : form to invoke directory report
  *
- *  http://www.churchdb.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
  *  Copyright 2004-2012 Michael Wilt
  *
