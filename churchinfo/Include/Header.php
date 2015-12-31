@@ -57,7 +57,7 @@ $sURLPath = $_SESSION['sURLPath'];
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/AdminLTE/dist/css/skins/_all-skins.min.css">
     
-    <link rel="stylesheet" href="/vendor/AdminLTE/plugins/select2/select2.min.css">
+    <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/select2/select2.min.css">
     
   
     <!-- jQuery 2.1.4 -->
@@ -67,7 +67,7 @@ $sURLPath = $_SESSION['sURLPath'];
     <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/jQueryUI/jquery-ui.min.js"></script>
     
       <!-- AdminLTE Select2 -->
-    <script src="/vendor/AdminLTE/plugins/select2/select2.full.min.js"></script>
+    <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/select2/select2.full.min.js"></script>
 
 
 
