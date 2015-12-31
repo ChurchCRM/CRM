@@ -10,9 +10,7 @@ $("document").ready(function(){
             data: "",
             processResults: function (data, params) {
                 var idKey = 1;
-                //console.log(data);
-                var results = new Array();
-                
+                var results = new Array();   
                 $.each(data, function (key,value) {
                     var groupName = Object.keys(value)[0];
                     var ckeys = value[groupName];
@@ -22,27 +20,24 @@ $("document").ready(function(){
                         children:[]
                     };
                     idKey++;
-                    //console.log("Processing Group : "+groupName) ;
-                    //console.log("Key: "+key+" Value: "+value);
-                    //console.log(ckeys);
                     var children = new Array();
                     $.each(ckeys, function (ckey,cvalue) {
                         var childObject = {
                             id: idKey,
-                            text: cvalue.displayName      
+                            text: cvalue.displayName,     
+                            uri: cvalue.uri
                         };
                         idKey++;
                         resultGroup.children.push(childObject);
                     });
-                   
                     results.push(resultGroup);
                 });
-                console.log(results);
                 return {results: results}; 
             },
             cache: true
         }
     });
+    $(".multiSearch").on("select2:select",function (e) { window.location.href= e.params.data.uri;});
      
     $(".searchPerson").autocomplete({
         source: function (request, response) {
