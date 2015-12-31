@@ -425,10 +425,8 @@ function Header_body_menu() {
                     <!-- search form -->
                     <form action="#" method="get" class="sidebar-form">
                         <div class="input-group">
-                            <input type="text" class="form-control multiSearch" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
-                             <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
+                            <select class="multiSearch" style="width:100%">
+                            </select>
                         </div>
                     </form>
                     <!-- /.search form -->
