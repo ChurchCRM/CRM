@@ -396,8 +396,11 @@ $(document).ready(function() {
 	});
 });
 </script>
-
-					<input style='width:350px;' type="text" id="FamilyName" name="FamilyName" value='<?php echo $sFamilyName; ?>' />
+                    <select style="width:100%" name="FamilyName" id="FamilyName">
+                    <option value="<?php echo $sFamilyName; ?>"><?php echo $sFamilyName; ?></option>
+                    </select>
+                        
+					
 					<input type="hidden" id="FamilyID" name="FamilyID" value='<?php echo $iFamily; ?>'>
 					<input type="hidden" id="DepositID" name="DepositID" value='<?php echo $_GET['CurrentDeposit']; ?>'>
 				</td>
