@@ -61,9 +61,7 @@ require 'Include/Header.php';
 ?>
 <!-- this page specific styles -->
 <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/morris/morris.min.js"></script>
-<!--
-<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/raphael/2.1.2/raphael-min.js"></script>
--->
+<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/raphael/raphael-min.js"></script>
 
 <div class="row">
     <div class="col-lg-6 col-md-3 col-sm-4">
@@ -287,14 +285,14 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="box box-solid">
             <div class="box-header">
                 <i class="ion ion-android-contacts"></i>
                 <h3 class="box-title">Gender Demographics</h3>
             </div><!-- /.box-header -->
             <div class="main-box-body clearfix">
-                <div id="gender-donut"></div>
+                <div class="chart" id="gender-donut" style="height: 300px; position: relative;"></div>
             </div>
         </div>
     </div>
@@ -302,7 +300,8 @@ require 'Include/Header.php';
 
 <!-- this page specific inline scripts -->
 <script>
-    Morris.Donut({
+
+    var genderDonut = Morris.Donut({
         element: 'gender-donut',
         data: [
             <?php while ($row = mysql_fetch_array($rsAdultsGender)) {
