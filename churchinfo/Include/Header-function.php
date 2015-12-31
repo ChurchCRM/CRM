@@ -424,10 +424,10 @@ function Header_body_menu() {
                     </div>
                     <!-- search form -->
                     <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <select class="multiSearch" style="width:100%">
+                        
+                            <select class="form-control multiSearch" style="width:100%">
                             </select>
-                        </div>
+                        
                     </form>
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
