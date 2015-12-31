@@ -3,7 +3,7 @@
  *
  *  filename    : Attendance.php
  *  last change : 2005-09-18
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Todd Pillars
  *
  *  function    : List all Church Events

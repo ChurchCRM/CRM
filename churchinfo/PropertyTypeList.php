@@ -3,7 +3,7 @@
  *
  *  filename    : PropertyTypeList.php
  *  last change : 2003-03-27
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
  *
  *  InfoCentral is free software; you can redistribute it and/or modify

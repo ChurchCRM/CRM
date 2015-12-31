@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : GroupView.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
 *
 *  Additional Contributors:

@@ -4,7 +4,7 @@
 *  filename    : Menu.php
 *  description : menu that appears after login, shows login attempts
 *
-*  http://www.churchdb.org/
+*  http://www.churchcrm.io/
 *  Copyright 2001-2002 Phillip Hullquist, Deane Barker, Michael Wilt
 *
 *  Additional Contributors:
@@ -55,39 +55,14 @@ $rsQuickStat = RunQuery($sSQL);
 
 
 // Set the page title
-$sPageTitle = gettext('Welcome to ChurchInfo');
+$sPageTitle = "Welcome to <b>Church</b>CRM";
 
 require 'Include/Header.php';
 ?>
 <!-- this page specific styles -->
-<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/morris/morris.min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/raphael/raphael-min.js"></script>
 
-
-<div class="row">
-    <div class="col-lg-6 col-md-3 col-sm-4">
-        <div class="box box-solid">
-            <div class="box-body clearfix">
-                <i class="fa fa-search"></i><input type="text" class="search searchPerson" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
-
-                <a href="PersonEditor.php" class="btn btn-primary">
-                    <i class="fa fa-plus-circle fa-md"></i> Add Person
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6 col-md-3 col-sm-4">
-        <div class="box box-solid">
-            <div class="box-body clearfix">
-                <i class="fa fa-search"></i><input type="text" class="search searchFamily" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
-
-                <a href="FamilyEditor.php" class="btn btn-primary">
-                    <i class="fa fa-plus-circle fa-md"></i> Add Family
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 <?php while ($row = mysql_fetch_array($rsQuickStat)) { ?>
 <!-- Small boxes (Stat box) -->
 <div class="row">
@@ -174,7 +149,7 @@ require 'Include/Header.php';
         <div class="box box-solid">
             <div class="box-header">
                 <i class="ion ion-person-add"></i>
-                <h3 class="box-title">New Families</h3>
+                <h3 class="box-title">Latest Families</h3>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">
@@ -236,7 +211,7 @@ require 'Include/Header.php';
         <div class="box box-solid">
             <div class="box-header">
                 <i class="fa fa-plus"></i>
-                <h3 class="box-title">New People</h3>
+                <h3 class="box-title">Latest Members</h3>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">
@@ -264,7 +239,7 @@ require 'Include/Header.php';
         <div class="box box-solid">
             <div class="box-header">
                 <i class="fa fa-check"></i>
-                <h3 class="box-title">Modified People</h3>
+                <h3 class="box-title">Updated Members</h3>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <table class="table table-striped table-condensed">
@@ -286,23 +261,23 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="box box-solid">
             <div class="box-header">
                 <i class="ion ion-android-contacts"></i>
                 <h3 class="box-title">Gender Demographics</h3>
             </div><!-- /.box-header -->
             <div class="main-box-body clearfix">
-                <div id="gender-donut"></div>
+                <div class="chart" id="gender-donut" style="height: 300px; position: relative;"></div>
             </div>
         </div>
     </div>
 </div>
 
 <!-- this page specific inline scripts -->
-<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
 <script>
-    Morris.Donut({
+
+    var genderDonut = Morris.Donut({
         element: 'gender-donut',
         data: [
             <?php while ($row = mysql_fetch_array($rsAdultsGender)) {

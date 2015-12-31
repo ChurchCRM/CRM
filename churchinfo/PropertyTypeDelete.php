@@ -3,7 +3,7 @@
  *
  *  filename    : PropertyTypeDelete.php
  *  last change : 2003-06-04
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
  *
  *  InfoCentral is free software; you can redistribute it and/or modify

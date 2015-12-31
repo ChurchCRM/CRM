@@ -3,7 +3,7 @@
  *
  *  filename    : CanvassAutomation.php
  *  last change : 2005-02-21
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2005 Deane Barker, Chris Gebhardt, Michael Wilt, Tim Dearborn
  *
  *  ChurchInfo is free software; you can redistribute it and/or modify

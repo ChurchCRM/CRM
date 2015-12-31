@@ -5,7 +5,7 @@
  *  last change : 2003-05-29
  *  description : page header (Bare minimum, not for use with Footer.php)
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
  *
  *  InfoCentral is free software; you can redistribute it and/or modify

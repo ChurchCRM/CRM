@@ -5,7 +5,7 @@
  *  last change : 2003-10-09
  *  description : Add cart records to a family
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
  *
  *  InfoCentral is free software; you can redistribute it and/or modify

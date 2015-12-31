@@ -3,7 +3,7 @@
  *
  *  filename    : GroupEditor.php
  *  last change : 2003-04-15
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2012 Michael Wilt
  *
@@ -215,7 +215,7 @@ require "Include/Header.php";
 
 ?>
 
-<script language="javascript">
+<script type="text/javascript">
 bStatus = false;
 
 function confirmDelete() {

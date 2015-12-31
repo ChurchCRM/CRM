@@ -3,7 +3,7 @@
  *
  *  filename    : MenuEditor.php
  *  last change : 2007-06-28
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2007 Frederick To
  *
  *  InfoCentral is free software; you can redistribute it and/or modify

@@ -3,7 +3,7 @@
  *
  *  filename    : GroupPropsFormRowOps.php
  *  last change : 2013-02-09
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
  *
  *  function    : Row operations for the group-specific properties form

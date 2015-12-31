@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : GeoPage.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  copyright   : Copyright 2004-2005 Michael Wilt
 *
 *  Additional Contributors:
@@ -392,4 +392,5 @@ if (    $iFamily != 0 &&
 
 }
 echo '</form>';
+require 'Include/Footer.php';
 ?>

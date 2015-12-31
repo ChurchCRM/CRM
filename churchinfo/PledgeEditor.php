@@ -3,7 +3,7 @@
  *
  *  filename    : PledgeEditor.php
  *  last change : 2012-06-29
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2012Michael Wilt
  *

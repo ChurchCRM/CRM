@@ -41,7 +41,7 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 
 ?>
 
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
 
 <div class="row">
     <div class="col-lg-10 col-md-8 col-sm-4">

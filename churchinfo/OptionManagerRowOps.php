@@ -3,7 +3,7 @@
  *
  *  filename    : OptionManagerRowOps.php
  *  last change : 2003-04-09
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
  *
  *  function    : Row operations for the option manager
