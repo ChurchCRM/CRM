@@ -392,4 +392,5 @@ if (    $iFamily != 0 &&
 
 }
 echo '</form>';
+require 'Include/Footer.php';
 ?>
