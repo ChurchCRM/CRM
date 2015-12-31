@@ -1,6 +1,7 @@
 $("document").ready(function(){
 
     $(".multiSearch").select2({
+        minimumInputLength: 2,
         ajax: {
             url: function (params){
                     return "api/search/"+params.term;   
