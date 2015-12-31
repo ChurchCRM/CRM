@@ -55,7 +55,7 @@ $rsQuickStat = RunQuery($sSQL);
 
 
 // Set the page title
-$sPageTitle = gettext('Welcome to ChurchInfo');
+$sPageTitle = "Welcome to <b>Church</b>CRM";
 
 require 'Include/Header.php';
 ?>
@@ -173,7 +173,7 @@ require 'Include/Header.php';
         <div class="box box-solid">
             <div class="box-header">
                 <i class="ion ion-person-add"></i>
-                <h3 class="box-title">New Families</h3>
+                <h3 class="box-title">Latest Families</h3>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">
@@ -235,7 +235,7 @@ require 'Include/Header.php';
         <div class="box box-solid">
             <div class="box-header">
                 <i class="fa fa-plus"></i>
-                <h3 class="box-title">New People</h3>
+                <h3 class="box-title">Latest Members</h3>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">
@@ -263,7 +263,7 @@ require 'Include/Header.php';
         <div class="box box-solid">
             <div class="box-header">
                 <i class="fa fa-check"></i>
-                <h3 class="box-title">Modified People</h3>
+                <h3 class="box-title">Updated Members</h3>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <table class="table table-striped table-condensed">
