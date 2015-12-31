@@ -4,7 +4,7 @@
 *  filename    : Update1_2_13To1_2_14.php
 *  description : auto-update script
 *
-*  http://www.churchdb.org/
+*  http://www.churchinfo.io
 *
 *  Contributors:
 *  2010-2013 Michael Wilt
