@@ -63,30 +63,6 @@ require 'Include/Header.php';
 <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/morris/morris.min.js"></script>
 <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/raphael/raphael-min.js"></script>
 
-<div class="row">
-    <div class="col-lg-6 col-md-3 col-sm-4">
-        <div class="box box-solid">
-            <div class="box-body clearfix">
-                <i class="fa fa-search"></i><input type="text" class="search searchPerson" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
-
-                <a href="PersonEditor.php" class="btn btn-primary">
-                    <i class="fa fa-plus-circle fa-md"></i> Add Person
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6 col-md-3 col-sm-4">
-        <div class="box box-solid">
-            <div class="box-body clearfix">
-                <i class="fa fa-search"></i><input type="text" class="search searchFamily" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
-
-                <a href="FamilyEditor.php" class="btn btn-primary">
-                    <i class="fa fa-plus-circle fa-md"></i> Add Family
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 <?php while ($row = mysql_fetch_array($rsQuickStat)) { ?>
 <!-- Small boxes (Stat box) -->
 <div class="row">

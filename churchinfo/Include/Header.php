@@ -56,12 +56,19 @@ $sURLPath = $_SESSION['sURLPath'];
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/AdminLTE/dist/css/skins/_all-skins.min.css">
-
+    
+    <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/select2/select2.min.css">
+    
+  
     <!-- jQuery 2.1.4 -->
     <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
     <!-- jQuery 2.1.4 -->
     <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/jQueryUI/jquery-ui.min.js"></script>
+    
+      <!-- AdminLTE Select2 -->
+    <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/select2/select2.full.min.js"></script>
+
 
 
     <?php Header_head_metatag(); ?>
