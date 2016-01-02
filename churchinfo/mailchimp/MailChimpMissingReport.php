@@ -28,7 +28,6 @@ if (!$mailchimp->isActive()) {
     echo "Mailchimp is not active";
 }
 
-// Get all the groups
 $sSQL = "SELECT per_FirstName, per_LastName, per_Email, per_id FROM person_per where per_Email != '' order by per_DateLastEdited desc";
 $rsPeopleWithEmail = RunQuery($sSQL);
 
