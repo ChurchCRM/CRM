@@ -3,6 +3,13 @@
 class PersonService
 {
 
+    private $baseURL;
+
+    public function __construct()
+    {
+        $this->baseURL = $_SESSION['sURLPath'];
+    }
+
     function photo($id)
     {
         $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email FROM person_per WHERE per_ID =' . $id;
@@ -37,7 +44,7 @@ class PersonService
             $photoFile = "../Images/Person/thumbnails/" . $personId . "." . $ext;
             if (file_exists($photoFile)) {
                 $hasFile = true;
-                $photoFile = "Images/Person/thumbnails/" . $personId . "." . $ext;
+                $photoFile = $this->baseURL ."/Images/Person/thumbnails/" . $personId . "." . $ext;
                 break;
             }
         }
@@ -66,7 +73,7 @@ class PersonService
     
     function getViewURI($Id)
     {
-        return $_SESSION['sURLPath']."/PersonView.php?PersonID=".$Id;
+        return $this->baseURL ."/PersonView.php?PersonID=".$Id;
     }
 
     function search($searchTerm)
