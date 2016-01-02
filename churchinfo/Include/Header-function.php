@@ -27,7 +27,7 @@
 *
 ******************************************************************************/
 
-require dirname(__FILE__).'/../service/PersonService.php';
+require_once dirname(__FILE__).'/../service/PersonService.php';
 
 function Header_head_metatag() {
 global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;

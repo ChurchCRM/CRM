@@ -1,12 +1,10 @@
 <?php
 
-class PersonService
-{
+class PersonService {
 
     private $baseURL;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->baseURL = $_SESSION['sURLPath'];
     }
 
@@ -22,7 +20,7 @@ class PersonService
                 }
 
                 if ($photoFile == "") {
-                    $photoFile = $this->getDefaultPhoto();
+                    $photoFile = $this->getDefaultPhoto($per_Gender, "");
                 }
 
                 return $photoFile;
@@ -38,7 +36,7 @@ class PersonService
         $validextensions = array("jpeg", "jpg", "png");
         $hasFile = false;
         while (list(, $ext) = each($validextensions)) {
-            $photoFile = "Images/Person/thumbnails/" . $personId . "." . $ext;
+            $photoFile = dirname(__FILE__)."/../Images/Person/thumbnails/" . $personId . "." . $ext;
             if (file_exists($photoFile)) {
                 $hasFile = true;
                 $photoFile = $this->baseURL ."/Images/Person/thumbnails/" . $personId . "." . $ext;
