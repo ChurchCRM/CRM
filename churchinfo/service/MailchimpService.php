@@ -53,8 +53,10 @@ class MailChimpService
                 array_push($listNames, $val["name"]);
             }
             return implode(",", $listNames);
+        } catch (Mailchimp_Email_NotExists $e) {
+            return "";
         } catch (Exception $e) {
-            return $e->getMessage();
+            return $e;
         }
 
     }
@@ -68,7 +70,7 @@ class MailChimpService
             $result = $this->myMailchimp->lists->getList();
             return $result["data"];
         } catch (Exception $e) {
-            return "";
+            return $e->getMessage();
         }
     }
 
