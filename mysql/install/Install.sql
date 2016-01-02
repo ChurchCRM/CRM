@@ -1,4 +1,4 @@
--- Install Version 1.3.0
+-- Install Version 2.0.0
 -- --------------------------------------------------------
 
 -- 
@@ -1305,7 +1305,7 @@ CREATE TABLE `version_ver` (
 -- 
 
 INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES 
-('1.3.0', NOW() );
+('2.0.0', NOW() );
 
 -- --------------------------------------------------------
 

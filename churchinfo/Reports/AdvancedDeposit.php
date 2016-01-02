@@ -5,7 +5,7 @@
 *  last change : 2013-02-21
 *  description : Creates a PDF customized Deposit Report .
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
