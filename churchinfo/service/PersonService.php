@@ -10,26 +10,26 @@ class PersonService
         $this->baseURL = $_SESSION['sURLPath'];
     }
 
-    function photo($id)
-    {
-        $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email FROM person_per WHERE per_ID =' . $id;
-        $person = RunQuery($sSQL);
-        extract(mysql_fetch_array($person));
-        if ($per_ID != "") {
-            $photoFile = $this->getUploadedPhoto($per_ID);
-            if ($photoFile == "" && $per_Email != "") {
-                $photoFile = $this->getGravatar($per_Email);
-            }
+    function photo($id) {
+        if ($id != "") {
+            $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email FROM person_per WHERE per_ID =' . $id;
+            $person = RunQuery($sSQL);
+            extract(mysql_fetch_array($person));
+            if ($per_ID != "") {
+                $photoFile = $this->getUploadedPhoto($per_ID);
+                if ($photoFile == "" && $per_Email != "") {
+                    $photoFile = $this->getGravatar($per_Email);
+                }
 
-            if ($photoFile == "") {
-                $photoFile = $this->getDefaultPhoto();
-            }
+                if ($photoFile == "") {
+                    $photoFile = $this->getDefaultPhoto();
+                }
 
-            return $photoFile;
-        } else {
-            return "error: person not found for id ".$id;
+                return $photoFile;
+            }
         }
 
+        return $this->baseURL."/Images/x.gif";
     }
 
     private
