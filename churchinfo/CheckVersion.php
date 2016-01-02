@@ -31,8 +31,7 @@ require 'Include/Functions.php';
 // Set the current version of this PHP file
 // Important!  These must be updated before every software release.
 
-$_SESSION['sChurchInfoPHPVersion'] = '2.0.0';
-$_SESSION['sChurchInfoPHPDate'] = '2016-01-01';
+$_SESSION['sSoftwareInstalledVersion'] = '2.0.0';
 
 // Check if the table version_ver exists.  If the table does not exist then
 // SQL scripts must be manually run to get the database up to version 1.2.7
@@ -48,7 +47,7 @@ if ($bVersionTableExists) {
     $aRow = mysql_fetch_array(RunQuery($sSQL));
     extract($aRow);
 
-    if ($ver_version == $_SESSION['sChurchInfoPHPVersion']) {
+    if ($ver_version == $_SESSION['sSoftwareInstalledVersion']) {
         Redirect('Menu.php');
         exit;
     }
@@ -109,15 +108,15 @@ if (strncmp($ver_version, "1.2.13", 6) == 0) {
         echo "<br>$sSQL<br>\n";
 
         echo '<br>ChurchInfo MySQL Version = ' . $ver_version;
-        echo '<br>ChurchInfo PHP Version = ' . $_SESSION['sChurchInfoPHPVersion'];
+        echo '<br>ChurchInfo PHP Version = ' . $_SESSION['sSoftwareInstalledVersion'];
 
     } else {
 
         echo '<br>Database schema has been updated from ' . $old_ver_version . ' to '
-             . $_SESSION['sChurchInfoPHPVersion'] . '.<br>'
+             . $_SESSION['sSoftwareInstalledVersion'] . '.<br>'
         .    '<BR>Please <a href="CheckVersion.php">click here</a> to continue.';
 
-$_SESSION['sChurchInfoPHPVersion'] = '1.2.14';
+$_SESSION['sSoftwareInstalledVersion'] = '1.2.14';
     }
 
     require 'Include/Footer.php';
@@ -142,15 +141,15 @@ if (strncmp($ver_version, "1.2.12", 6) == 0) {
         echo "<br>$sSQL<br>\n";
 
         echo '<br>ChurchInfo MySQL Version = ' . $ver_version;
-        echo '<br>ChurchInfo PHP Version = ' . $_SESSION['sChurchInfoPHPVersion'];
+        echo '<br>ChurchInfo PHP Version = ' . $_SESSION['sSoftwareInstalledVersion'];
 
     } else {
 
         echo '<br>Database schema has been updated from ' . $old_ver_version . ' to '
-             . $_SESSION['sChurchInfoPHPVersion'] . '.<br>'
+             . $_SESSION['sSoftwareInstalledVersion'] . '.<br>'
         .    '<BR>Please <a href="CheckVersion.php">click here</a> to continue.';
 
-$_SESSION['sChurchInfoPHPVersion'] = '1.2.13';
+$_SESSION['sSoftwareInstalledVersion'] = '1.2.13';
     }
 
     require 'Include/Footer.php';
@@ -167,7 +166,7 @@ echo    'There is an incompatibility between database schema and PHP script.  Yo
 .       'for assistance. ';
 
 echo    '<BR>ChurchInfo MySQL Version = ' . $ver_version;
-echo    '<BR>ChurchInfo PHP Version = ' . $_SESSION['sChurchInfoPHPVersion'];
+echo    '<BR>ChurchInfo PHP Version = ' . $_SESSION['sSoftwareInstalledVersion'];
 
 require 'Include/Footer.php';
 

@@ -27,7 +27,7 @@
 	</div><!-- ./wrapper -->
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> <?= $_SESSION['sChurchInfoPHPVersion'] ?>
+        <b>Version</b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
     <strong>Copyright &copy; 2015-2016 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> All rights reserved.
 </footer>
