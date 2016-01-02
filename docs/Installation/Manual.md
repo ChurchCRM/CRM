@@ -36,7 +36,7 @@ $sUSER = "root";
 
 $sPASSWORD = "password";
 
-$sDATABASE = "churchinfo";
+$sDATABASE = "churchcrm";
 
 Change these parameters to match the mysql server and user account you
 intend to use.  You MUST set the $sRootPath option properly as described
@@ -45,9 +45,9 @@ accessing your database.
 
 
 4) You should be able to access ChurchCRM at "http://[server
-name]/churchinfo". The database script will have set up
+name]/<crm/church-crm/churchcrm>". The database script will have set up
 an initial user called "Admin" with a password of
-"churchinfoadmin" (passwords are case insensitive). You will be prompted
+"changeme" (passwords are case insensitive). You will be prompted
 to change this password upon login.  Once you have created other user
 accounts, you may delete or rename this default account.  Just make
 sure that you always have a user with administrative privledges.
