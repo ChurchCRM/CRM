@@ -14,7 +14,7 @@
  *  LICENSE:
  *  (C) Free Software Foundation, Inc.
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
@@ -31,7 +31,7 @@
 // Show disable message if register_globals are turned on.
 if (ini_get('register_globals'))
 {
-    echo "<h3>ChurchInfo will not operate with PHP's register_globals option turned on.<br>";
+    echo "<h3><b>Church</b>CRM will not operate with PHP's register_globals option turned on.<br>";
     echo 'This is for your own protection as the use of this setting could entirely undermine <br>';
     echo 'all security.  You need to either turn off register_globals in your php.ini or else<br>';
     echo 'configure your web server to turn off register_globals for the ChurchInfo directory.</h3>';
