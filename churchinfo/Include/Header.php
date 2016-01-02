@@ -73,7 +73,7 @@ $sURLPath = $_SESSION['sURLPath'];
 
     <?php Header_head_metatag(); ?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition <?= $_SESSION['sStyle']; ?> sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
     <?php
