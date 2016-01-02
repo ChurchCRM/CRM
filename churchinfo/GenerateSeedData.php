@@ -59,10 +59,15 @@ require 'Include/Header.php';
             url         : 'api/data/seed/families', // the url where we want to POST
             data        :  JSON.stringify(formData), // our data object
             dataType    : 'json', // what type of data do we expect back from the server
-            encode      : true
+            encode      : true,
+            beforeSend  : function () { 
+                $('#results').empty();
+                $('#results').append('<div class="text-center"><i class="fa fa-spinner"></i><h3>Loading Seed Data</h3></div>');
+            }
         })
 		 .done(function(data) {
 			console.log(data);
+             $('#results').empty();
 			$('#results').append('<pre>'+JSON.stringify(data,null,4) +'</pre>');          
 		  });
 		 
