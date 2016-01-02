@@ -45,6 +45,7 @@ if(mysql_num_rows(RunQuery("SHOW TABLES LIKE 'version_ver'")) == 1) {
 
 // Let's see if the MySQL version matches the PHP version.  If we have a match then
 // proceed to Menu.php.  Otherwise further error checking is needed.
+$ver_version = "unknown";
 if ($bVersionTableExists) {
     $sSQL = 'SELECT * FROM version_ver ORDER BY ver_ID DESC';
     $aRow = mysql_fetch_array(RunQuery($sSQL));
@@ -54,8 +55,6 @@ if ($bVersionTableExists) {
         Redirect('Menu.php');
         exit;
     }
-} else {
-    $ver_version = "unknown";
 }
 
 
