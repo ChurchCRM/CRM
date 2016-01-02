@@ -31,11 +31,6 @@ require 'Include/Functions.php';
 //Set the page title
 $sPageTitle = gettext("Software Version Check");
 
-// Set the current version of this PHP file
-// Important!  These must be updated before every software release.
-
-$_SESSION['sSoftwareInstalledVersion'] = '2.0.0';
-
 // Check if the table version_ver exists.  If the table does not exist then
 // SQL scripts must be manually run to get the database up to version 1.2.7
 $bVersionTableExists = FALSE;

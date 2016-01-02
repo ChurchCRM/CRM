@@ -24,7 +24,12 @@
 *  This file best viewed in a text editor with tabs stops set to 4 characters
 *
 ******************************************************************************/
-// Initialization common to all ChurchInfo scripts
+// Initialization common to all ChurchCRM scripts
+
+// Set the current version of this PHP file
+// Important!  These must be updated before every software release.
+
+$_SESSION['sSoftwareInstalledVersion'] = '2.0.0';
 
 //
 // Basic security checks:
