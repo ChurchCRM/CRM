@@ -259,7 +259,10 @@ global $security_matrix, $sURLPath;
             if ($aMenu['icon'] != "") {
                 echo "<i class=\"fa ". $aMenu['icon'] ."\"></i>";
             }
-            echo "<i class=\"fa fa-angle-double-right\"></i> ".$aMenu['content']."</a>";
+            if ($aMenu['parent'] != "root") {
+                echo "<i class=\"fa fa-angle-double-right\"></i> ";
+            }
+            echo $aMenu['content']."</a>";
         } else {
             echo "<li class=\"treeview\">\n";
             echo "    <a href=\"#\">\n";
