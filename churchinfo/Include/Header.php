@@ -10,7 +10,7 @@
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
@@ -73,7 +73,7 @@ $sURLPath = $_SESSION['sURLPath'];
 
     <?php Header_head_metatag(); ?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition <?= $_SESSION['sStyle']; ?> sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
     <?php
