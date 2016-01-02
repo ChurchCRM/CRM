@@ -27,52 +27,14 @@ $sPageTitle = gettext("Restore Database");
 require 'Include/Header.php';
 ?>
 
-
-
-<form id="upload" action="upload.php" method="POST" enctype="multipart/form-data">
-
-<fieldset>
-<legend>HTML File Upload</legend>
-
-<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
-
-<div>
-	<label for="fileselect">Files to upload:</label>
-	<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
-	<div id="filedrag">or drop files here</div>
-</div>
-
-<div id="submitbutton">
-	<button type="submit">Upload Files</button>
-</div>
-
-</fieldset>
-
+<form id="fileupload" action="/api/database/restore" method="POST" enctype="multipart/form-data">
+<input type="file" name="restoreFile" multiple=""></span>     
+<button type="submit">Upload Files</button>
 </form>
-
-<script type="text/javascript">
-   
-// file selection
-function FileSelectHandler(e) {
-
-	// cancel event and hover styling
-	FileDragHover(e);
-
-	// fetch FileList object
-	var files = e.target.files || e.dataTransfer.files;
-
-	// process all File objects
-	for (var i = 0, f; f = files[i]; i++) {
-		ParseFile(f);
-		UploadFile(f);
-	}
-
-}
-
-</script>
 
 <!-- PACE -->
 <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/pace/pace.min.js"></script>
 <?php
 require "Include/Footer.php";
 ?>
+

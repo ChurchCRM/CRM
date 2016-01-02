@@ -38,6 +38,30 @@ $app->container->singleton('DataSeedService', function () {
 });
 
 
+$app->group('/database', function () use ($app) {
+    $app->post('/restore', function () use ($app) {
+        try {
+            global $sUSER, $sPASSWORD, $sDATABASE;
+            $file = $_FILES['restoreFile']['tmp_name'];
+            $clearCommand = "mysqldump -u $sUSER --password=$sPASSWORD  -e 'drop database  $sDATABASE'";
+            echo $clearCommand." ";
+            exec($clearCommand, $returnString, $returnStatus);
+            echo $returnString." ".$returnStatus;
+            $createCommand = "mysql -u'$sUSER' -p'$sPASSWORD' -e 'CREATE DATABASE $CRM_DB_NAME CHARACTER SET utf8;' ";
+            echo $createCommand." ";
+            exec($createCommand, $returnString, $returnStatus);
+            echo $returnString." ".$returnStatus;
+            $restoreCommand = "mysql -u $sUSER --password=$sPASSWORD $sDATABASE < $file";
+            echo $restoreCommand." ";
+            exec($restoreCommand, $returnString, $returnStatus);
+            echo $returnString." ".$returnStatus;
+            
+            echo '{"file":"'.$file.'"}';
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+});
 
 $app->group('/search', function () use ($app) {
     $app->get('/:query', function ($query) use ($app) {
