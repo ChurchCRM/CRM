@@ -14,11 +14,13 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../service/MailChimpService.php';
+require '../service/PersonService.php';
 
 $mailchimp = new MailChimpService();
+$personService = new PersonService();
 
 //Set the page title
-$sPageTitle = gettext('MailChimp Menu');
+$sPageTitle = gettext('People not in Mailchimp');
 
 require '../Include/Header.php';
 
@@ -32,37 +34,37 @@ $rsPeopleWithEmail = RunQuery($sSQL);
 
 ?>
 
-<h3>People not in Mailchimp</h3>
-
-<table id="people_with_email" width="100%" data-toggle="table" class="table table-striped table-bordered tablesorter">
-    <thead>
-    <tr>
-        <td>Name</td>
-        <td>Email</td>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    while ($aRow = mysql_fetch_array($rsPeopleWithEmail)) {
-        extract($aRow);
-        $mailchimpList = $mailchimp->isEmailInMailChimp($per_Email);
-        if ($mailchimpList == "") {
-            echo "<tr>";
-            echo "<td><a href='../PersonView.php?PersonID=" . $per_id . "'>" . $per_FirstName . " " . $per_LastName . "</a></td>";
-            echo "<td>" . $per_Email . "</td>";
-            echo "</tr>";
-        }
-    }
-    ?>
-    </tbody>
-</table>
-
-<script>
-    $(function () {
-        $("#people_with_email").tablesorter();
-    });
-</script>
-
+<div class="row">
+    <div class="col-lg-8 col-md-4 col-sm-4">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Members</h3>
+            </div>
+            <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+                <?php
+                while ($aRow = mysql_fetch_array($rsPeopleWithEmail)) {
+                    extract($aRow);
+                    $mailchimpList = $mailchimp->isEmailInMailChimp($per_Email);
+                    if ($mailchimpList == "") { ?>
+                    <tr>
+                        <td><img class="contacts-list-img" src="<?= $personService->photo($per_id) ?>"></td>
+                        <td><a href='<?= $personService->getViewURI($per_id) ;?>'><?= $per_FirstName . " " . $per_LastName; ?></a></td>
+                        <td><?= $per_Email; ?></td>
+                    </tr>
+                    <?php }
+                }
+                ?>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php
 
