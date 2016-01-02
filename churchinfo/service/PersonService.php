@@ -38,7 +38,7 @@ class PersonService
         $validextensions = array("jpeg", "jpg", "png");
         $hasFile = false;
         while (list(, $ext) = each($validextensions)) {
-            $photoFile = "../Images/Person/thumbnails/" . $personId . "." . $ext;
+            $photoFile = "Images/Person/thumbnails/" . $personId . "." . $ext;
             if (file_exists($photoFile)) {
                 $hasFile = true;
                 $photoFile = $this->baseURL ."/Images/Person/thumbnails/" . $personId . "." . $ext;
@@ -56,7 +56,7 @@ class PersonService
     private
     function getGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
     {
-        $url = '//www.gravatar.com/avatar/';
+        $url = 'http://www.gravatar.com/avatar/';
         $url .= md5(strtolower(trim($email)));
         $url .= "?s=$s&d=$d&r=$r";
 
