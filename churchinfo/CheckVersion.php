@@ -28,6 +28,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+//Set the page title
+$sPageTitle = gettext("Software Version Check");
+
 // Set the current version of this PHP file
 // Important!  These must be updated before every software release.
 
@@ -51,123 +54,75 @@ if ($bVersionTableExists) {
         Redirect('Menu.php');
         exit;
     }
+} else {
+    $ver_version = "unknown";
 }
+
 
 // Turn ON output buffering
 ob_start();
 
 // Set the page title
-$sPageTitle = gettext('ChurchInfo: Database Version Check');
+$sPageTitle = gettext('ChurchCRM: Database Version Check');
 
-?><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+require ("Include/HeaderNotLoggedIn.php");
 
-<head>
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="css/Style.css">
-    <title><?php echo $sPageTitle; ?></title>
-</head>
-<body>
-<table>
-    <tr>
-        <td>
-            <table>
-                <tr>
-                    <td>
-<?php
+if($bVersionTableExists) {
 
+    // This code will automatically update from 1.2.14 (last good churchinfo build to 2.0.0 for ChurchCRM
+    if (strncmp($ver_version, "1.2.14", 6) == 0) {
 
-if(!$bVersionTableExists) {
-    // Display message indicating that the ChurchInfo database must be updated to version
-    // 1.2.7 using SQL scripts
+        $old_ver_version = $ver_version;
+        $sError = 'Initialize';  // Initialize error string
 
-    echo    'Error: Please update your ChurchInfo MySQL database to version 1.2.7 '
-    .       'before using version 1.2.7 (or later) of PHP code.<br>';
-    echo    'Your database and PHP code are out of sync.  ChurchInfo is in an untested '
-    .       'state and may not be stable. ';
-
-    require 'Include/Footer.php';
-    exit;
-}
-
-// This code will automatically update from 1.2.13 to 1.2.14
-if (strncmp($ver_version, "1.2.13", 6) == 0) {
-
-    $old_ver_version = $ver_version;
-    $sError = 'Initialize';  // Initialize error string
-    require 'AutoUpdate/Update1_2_13To1_2_14.php';
-
-    if ($sError) {
-        echo '<br>MySQL error while upgrading database:<br>'.$sError."<br><br>\n";
-
-        echo '<br><br>You are seeing this message because you have encountered a software bug.'
-        .    '<br>Please post to the ChurchInfo '
-        .       '<a href="http://sourceforge.net/forum/forum.php?forum_id=401180"> help forum</a> '
-        .       'for assistance. The complete query is shown below.<br>'."\n";
-
-        echo "<br>$sSQL<br>\n";
-
-        echo '<br>ChurchInfo MySQL Version = ' . $ver_version;
-        echo '<br>ChurchInfo PHP Version = ' . $_SESSION['sSoftwareInstalledVersion'];
-
-    } else {
-
-        echo '<br>Database schema has been updated from ' . $old_ver_version . ' to '
-             . $_SESSION['sSoftwareInstalledVersion'] . '.<br>'
-        .    '<BR>Please <a href="CheckVersion.php">click here</a> to continue.';
-
-$_SESSION['sSoftwareInstalledVersion'] = '1.2.14';
+        //TODO upgrade script
     }
-
-    require 'Include/Footer.php';
-    exit;
 }
+?>
 
-// This code will automatically update from 1.2.12 to 1.2.13
-if (strncmp($ver_version, "1.2.12", 6) == 0) {
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="error-page">
+            <h2 class="headline text-red">500</h2>
 
-    $old_ver_version = $ver_version;
-    $sError = 'Initialize';  // Initialize error string
-    require 'AutoUpdate/Update1_2_12To1_2_13.php';
+            <div class="error-content">
+                <h3><i class="fa fa-warning text-red"></i> Oops! Something went wrong.</h3>
+                <p>
+                    We will work on fixing that right away.
+                    Meanwhile, you may <a href="http://docs.churchcrm.io" target="_blank">return to docs or try using the search form. </a>
+                </p>
 
-    if ($sError) {
-        echo '<br>MySQL error while upgrading database:<br>'.$sError."<br><br>\n";
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="error-page">
+        <!-- /.error-page -->
+        <div class="box box-danger">
+            <div class="box-body">
+                <p>
+                There is an incompatibility between database schema and installed software. You are seeing this message because there is a software bug or an incomplete upgrade.
+                </p>
+                <p>
+                Please post to the our github <a href="https://github.com/ChurchCRM/CRM/issues" target="_blank"> github issues</a> for assistance.
+                </p>
+            </div>
+            <div class="box-footer">
+                <p>
+                    Software Database Version = <?= $ver_version; ?> <br/>
+                    Software Version = <?=  $_SESSION['sSoftwareInstalledVersion']; ?>
+                </p>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->
 
-        echo '<br><br>You are seeing this message because you have encountered a software bug.'
-        .    '<br>Please post to the ChurchInfo '
-        .       '<a href="http://sourceforge.net/forum/forum.php?forum_id=401180"> help forum</a> '
-        .       'for assistance. The complete query is shown below.<br>'."\n";
 
-        echo "<br>$sSQL<br>\n";
+<?
 
-        echo '<br>ChurchInfo MySQL Version = ' . $ver_version;
-        echo '<br>ChurchInfo PHP Version = ' . $_SESSION['sSoftwareInstalledVersion'];
-
-    } else {
-
-        echo '<br>Database schema has been updated from ' . $old_ver_version . ' to '
-             . $_SESSION['sSoftwareInstalledVersion'] . '.<br>'
-        .    '<BR>Please <a href="CheckVersion.php">click here</a> to continue.';
-
-$_SESSION['sSoftwareInstalledVersion'] = '1.2.13';
-    }
-
-    require 'Include/Footer.php';
-    exit;
-}
-
-
-// We should not get to the bottom of this file.  We only get here if there is a bug.
-
-echo    'There is an incompatibility between database schema and PHP script.  You are seeing '
-.       'this message because there is a software bug.'
-.       '<BR>Please post to the ChurchInfo '
-.       '<a href="http://sourceforge.net/forum/forum.php?forum_id=401180"> Help forum</a> '
-.       'for assistance. ';
-
-echo    '<BR>ChurchInfo MySQL Version = ' . $ver_version;
-echo    '<BR>ChurchInfo PHP Version = ' . $_SESSION['sSoftwareInstalledVersion'];
-
-require 'Include/Footer.php';
+require 'Include/FooterNotLoggedIn.php';
 
 ?>
