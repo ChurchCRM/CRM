@@ -83,7 +83,7 @@ if ($isActive) {
             <div class="box box-body">
                 <div class="alert alert-danger alert-dismissible">
                     <h4><i class="icon fa fa-ban"></i> MailChimp is not configured</h4>
-                    Please update the MailChimp API key in Setting-><a href="../SettingsGeneral.php">Edit General Settings</a>, then update mailChimpApiKey. For more info see <a href="http://dcos.churchcrm.io">our MailChimp support docs.</a>
+                    Please update the MailChimp API key in Setting-><a href="../SettingsGeneral.php">Edit General Settings</a>, then update mailChimpApiKey. For more info see our <a href="http://docs.churchcrm.io">MailChimp support docs.</a>
                 </div>
             </div>
         </div>
