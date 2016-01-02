@@ -10,29 +10,26 @@ class PersonService
         $this->baseURL = $_SESSION['sURLPath'];
     }
 
-    function photo($id)
-    {
-        $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email FROM person_per WHERE per_ID =' . $id;
-        $person = RunQuery($sSQL);
-        extract(mysql_fetch_array($person));
+    function photo($id) {
+        if ($id != "") {
+            $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email FROM person_per WHERE per_ID =' . $id;
+            $person = RunQuery($sSQL);
+            extract(mysql_fetch_array($person));
+            if ($per_ID != "") {
+                $photoFile = $this->getUploadedPhoto($per_ID);
+                if ($photoFile == "" && $per_Email != "") {
+                    $photoFile = $this->getGravatar($per_Email);
+                }
 
-        if ($per_ID != "") {
+                if ($photoFile == "") {
+                    $photoFile = $this->getDefaultPhoto();
+                }
 
-            $photoFile = $this->getUploadedPhoto($per_ID);
-
-            if ($photoFile == "" && $per_Email != "") {
-                $photoFile = $this->getGravatar($per_Email);
+                return $photoFile;
             }
-
-            if ($photoFile == "") {
-                $photoFile = $this->getDefaultPhoto();
-            }
-
-            echo $photoFile;
-        } else {
-            echo "{ error: person not found for id ".$id. "}";
         }
 
+        return $this->baseURL."/Images/x.gif";
     }
 
     private
@@ -41,7 +38,7 @@ class PersonService
         $validextensions = array("jpeg", "jpg", "png");
         $hasFile = false;
         while (list(, $ext) = each($validextensions)) {
-            $photoFile = "../Images/Person/thumbnails/" . $personId . "." . $ext;
+            $photoFile = "Images/Person/thumbnails/" . $personId . "." . $ext;
             if (file_exists($photoFile)) {
                 $hasFile = true;
                 $photoFile = $this->baseURL ."/Images/Person/thumbnails/" . $personId . "." . $ext;
@@ -59,7 +56,7 @@ class PersonService
     private
     function getGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
     {
-        $url = '//www.gravatar.com/avatar/';
+        $url = 'http://www.gravatar.com/avatar/';
         $url .= md5(strtolower(trim($email)));
         $url .= "?s=$s&d=$d&r=$r";
 
@@ -98,13 +95,13 @@ class PersonService
 
     private function getDefaultPhoto($gender, $famRole)
     {
-        $photoFile = "../Images/Person/man-128.png";
+        $photoFile = $this->baseURL."/Images/Person/man-128.png";
         if ($gender == 1 && $famRole == "Child") {
-            $photoFile = "../Images/Person/kid_boy-128.png";
+            $photoFile = $this->baseURL."/Images/Person/kid_boy-128.png";
         } else if ($gender == 2 && $famRole  != "Child") {
-            $photoFile = "../Images/Person/woman-128.png";
+            $photoFile = $this->baseURL."/Images/Person/woman-128.png";
         } else if ($gender == 2 && $famRole  == "Child") {
-            $photoFile = "../Images/Person/kid_girl-128.png";
+            $photoFile = $this->baseURL."/Images/Person/kid_girl-128.png";
         }
 
         return $photoFile;

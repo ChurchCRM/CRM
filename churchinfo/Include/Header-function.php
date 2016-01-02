@@ -27,6 +27,8 @@
 *
 ******************************************************************************/
 
+require dirname(__FILE__).'/../service/PersonService.php';
+
 function Header_head_metatag() {
 global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
 global $sPageTitle, $sURLPath;
@@ -36,31 +38,6 @@ $sURLPath = $_SESSION['sURLPath'];
     <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
     <title>ChurchCRM: <?php echo $sPageTitle; ?></title>
 <?php
-}
-
-/**
- * Get either a Gravatar URL or complete image tag for a specified email address.
- *
- * @param string $email The email address
- * @param string $s Size in pixels, defaults to 80px [ 1 - 2048 ]
- * @param string $d Default imageset to use [ 404 | mm | identicon | monsterid | wavatar ]
- * @param string $r Maximum rating (inclusive) [ g | pg | r | x ]
- * @param boole $img True to return a complete IMG tag False for just the URL
- * @param array $atts Optional, additional key/value attributes to include in the IMG tag
- * @return String containing either just a URL or a complete image tag
- * @source http://gravatar.com/site/implement/images/php/
- */
-function get_gravatar( $email, $s = 18, $d = 'mm', $r = 'g', $img = false, $atts = array() ) {
-    $url = '//www.gravatar.com/avatar/';
-    $url .= md5( strtolower( trim( $email ) ) );
-    $url .= "?s=$s&d=$d&r=$r";
-    if ( $img ) {
-        $url = '<img src="' . $url . '"';
-        foreach ( $atts as $key => $val )
-            $url .= ' ' . $key . '="' . $val . '"';
-        $url .= ' />';
-    }
-    return $url;
 }
 
 function Header_body_scripts() {
@@ -307,6 +284,8 @@ function Header_body_menu() {
 
 	$sURLPath = $_SESSION['sURLPath'];
 
+    $loggedInUserPhoto = (new PersonService())->photo($_SESSION['iUserID']);
+
     $MenuFirst = 1;
 
     if (!$bDefectiveBrowser)
@@ -344,14 +323,14 @@ function Header_body_menu() {
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="user-image" alt="User Image">
+                            <img src="<?= $loggedInUserPhoto ?>" class="user-image" alt="User Image">
                             <span class="hidden-xs"><?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> </span>
 
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="<?php echo get_gravatar($_SESSION['sEmailAddress']); ?>" class="img-circle" alt="User Image">
+                                <img src="<?= $loggedInUserPhoto ?>" class="img-circle" alt="User Image">
 
                                 <p>
                                     <?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?>
@@ -419,7 +398,7 @@ function Header_body_menu() {
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="<?php echo get_gravatar($_SESSION['sEmailAddress'],70); ?>" class="img-circle" />
+                            <img src="<?= $loggedInUserPhoto ?>" class="img-circle" />
                         </div>
                         <div class="pull-left info">
                             <p>Welcome, <?php echo $_SESSION['UserFirstName']; ?></p>
