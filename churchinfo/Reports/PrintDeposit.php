@@ -70,7 +70,7 @@ if ($iCountRows < 1){
 
 if ($output == "pdf") {
 	
-	class PDF_AccessReport extends ChurchInfoReport {
+	class PDF_DepositReport extends ChurchInfoReport {
 
 		// Private properties
 		var $_Char_Size   = 10;        // Character size
@@ -93,23 +93,25 @@ if ($output == "pdf") {
 		}
 
 		// Constructor
-		function PDF_AccessReport() {
+		function PDF_DepositReport() {
 			parent::FPDF("P", "mm", $this->paperFormat);
 
 			$this->_Font        = "Courier";
 			$this->SetMargins(0,0);
 			$this->Open();
 			$this->Set_Char_Size(10);
-			$this->AddPage();
 			$this->SetAutoPageBreak(false);
 		}
+        
+
 	}
 
 	$fundTotal = array ();
 	
 	// Instantiate the directory class and build the report.
-	$pdf = new PDF_AccessReport();
+	$pdf = new PDF_DepositReport();
 
+   
 	// Read in report settings from database
 	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 	if ($rsConfig) {
@@ -123,17 +125,31 @@ if ($output == "pdf") {
 	$rsDepositSlip = RunQuery($sSQL);
 	extract(mysql_fetch_array($rsDepositSlip));
 
-	$date1X = 12;
-	$date1Y = 35 + 7;
+    $depositSlipFrontColumns = 132;
+    
+    $depositSlipBackCheckNosX = 2;
+    $depositSlipBackCheckNosY = 45;
+    $depositSlipBackCheckNosHeight = 7.25;
+    
+    $depositSlipBackDollarsX = 30;
+    $depositSlipBackDollarsY = $depositSlipBackCheckNosY;
+    $depositSlipBackDollarsHeight = $depositSlipBackCheckNosHeight;
+    
+	$date1X = 19;
+	$date1Y = 20;
+    $cashX =  $depositSlipFrontColumns;
+    $cashY =  3;
+    $checksX = $depositSlipFrontColumns;
+    $checksY = 25;
 
 	$date2X = 185;
-	$date2Y = 90 + 7;
+	$date2Y = 5;
 
 	$titleX = 85;
-	$titleY = 90 + 7;
+	$titleY = 5;
 
 	$summaryX = 12;
-	$summaryY = 115 + 7;
+	$summaryY = 15;
 
 	$leftX = 64;
 	$topY = 0 + 7;
@@ -148,11 +164,14 @@ if ($output == "pdf") {
 	$numItemsX = 140 - 4;
 	$numItemsY = 61 + 7;
 
-	$subTotalX = 201 - 4;
-	$subTotalY = 35 + 7;
+	$subTotalX = $depositSlipFrontColumns;
+	$subTotalY = 31;
 
-	$topTotalX = 201 - 4;
-	$topTotalY = 61 + 7;
+    $cashReceivedX = $depositSlipFrontColumns;
+    $cashReceivedY = 38.9;
+    
+	$topTotalX = $depositSlipFrontColumns;
+	$topTotalY = 48;
 
 	$totalCash = 0;
 	$totalChecks = 0;
@@ -162,8 +181,10 @@ if ($output == "pdf") {
 		$summaryY -= 100;
 		$titleY -= 90;
 		$date2Y -= 90;
+        $pdf->AddPage();
 	} else {
-
+        $pdf->AddPage("L",array(150,60));
+         $pdf->Image('../Images/front.jpg',0,0,-300,-300);
 		// Print Deposit Slip portion of report
 		while ($aRow = mysql_fetch_array($rsPledges))
 		{
@@ -173,19 +194,10 @@ if ($output == "pdf") {
 			// List all the checks and total the cash
 			if ($plg_method == 'CASH') {
 				$totalCash += $plg_sum;
-			} else if ($plg_method == 'CHECK') {
-				$numItems += 1;
+			} 
+            else if ($plg_method == 'CHECK') {
 				$totalChecks += $plg_sum;
-
-				$pdf->PrintRightJustified ($curX, $curY, $plg_CheckNo);
-				$pdf->PrintRightJustified ($curX + $amountOffsetX, $curY, $plg_sum);
-
-				$curX += $intervalX;
-				if ($curX > $maxX) {
-					$curX = $leftX;
-					$curY += $intervalY;
-				}
-			}
+            }
 		}
 
 		$pdf->SetXY ($date1X, $date1Y);
@@ -193,17 +205,44 @@ if ($output == "pdf") {
 
 		if ($totalCash > 0) {
 			$totalCashStr = sprintf ("%.2f", $totalCash);
-			$pdf->PrintRightJustified ($leftX + $amountOffsetX, $topY, $totalCashStr);
-			$numItems += 1;
+			$pdf->PrintRightJustified ($cashX, $cashY, $totalCashStr);
+		}
+        
+        if ($totalChecks > 0) {
+			$totalChecksStr = sprintf ("%.2f", $totalChecks);
+			$pdf->PrintRightJustified ($checksX, $checksY, $totalChecksStr);
 		}
 
-		$pdf->PrintRightJustified ($numItemsX, $numItemsY, $numItems);
-		$pdf->PrintRightJustified ($numItemsX, $numItemsY, $numItems);
 		$grandTotalStr = sprintf ("%.2f", $totalChecks + $totalCash);
+        $cashReceivedStr = sprintf ("%.2f", 0);
+        $pdf->PrintRightJustified ($cashReceivedX, $cashReceivedY, $cashReceivedStr);
 		$pdf->PrintRightJustified ($subTotalX, $subTotalY, $grandTotalStr);
 		$pdf->PrintRightJustified ($topTotalX, $topTotalY, $grandTotalStr);
-	}
+        $pdf->AddPage("P",array(60,150));
+        $pdf->Image('../Images/back.jpg',0,0,-300,-300);
+        mysql_data_seek($rsPledges, 0);
+        while ($aRow = mysql_fetch_array($rsPledges))
+		{
+			$OutStr = "";
+			extract($aRow);
 
+			// List all the checks and total the cash
+			 if ($plg_method == 'CHECK') {
+				$pdf->PrintRightJustified ($depositSlipBackCheckNosX, ($depositSlipBackCheckNosY + $numItems *$depositSlipBackCheckNosHeight) , $plg_CheckNo);
+				$pdf->PrintRightJustified ($depositSlipBackDollarsX, ($depositSlipBackDollarsY + $numItems *$depositSlipBackDollarsHeight), $plg_sum);
+                $numItems += 1;
+
+            }
+		}
+       
+	}
+    
+    
+  
+    
+  
+    
+    $pdf->AddPage ();
 	$pdf->SetXY ($date2X, $date2Y);
 	$pdf->Write (8, $dep_Date);
 
@@ -256,7 +295,7 @@ if ($output == "pdf") {
 	$curY += 2 * $summaryIntervalY;
 
 	$totalAmount = 0;
-
+    
 	while ($aRow = mysql_fetch_array($rsPledges))
 	{
 		$pdf->SetFont('Times','', 10);
