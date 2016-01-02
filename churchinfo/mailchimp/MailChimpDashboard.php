@@ -35,7 +35,7 @@ if ($isActive) {
         <div class="col-lg-4 col-md-2 col-sm-2">
             <div class="box">
                 <div class="box-header">
-                    <b><?= $list["name"]?></b>
+                    <h3 class="box-title">List: <?= $list["name"]?></h3>
                 </div>
                 <div class="box-body">
                     <?
@@ -55,25 +55,37 @@ if ($isActive) {
     </div>
     <div class="row">
         <div class="col-lg-4 col-md-2 col-sm-2">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Generate Email Export</h3>
+                </div>
+                <div class="box-body">
+                    MailChimp offers several ways to add subscribers to your list.
+                    This will generate a subscribers CSV file to <a href="http://kb.mailchimp.com/lists/growth/import-subscribers-to-a-list" target="_blank">import.</a>
+                    <p class="text-center">
+                        <a class="btn btn-app" href="MailChimpCsvExport.php">
+                            <i class="fa fa-save"></i> Generate
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-2 col-sm-2">
         <h3>Reports</h3>
-
         <ul>
             <li><a href="MailChimpMissingReport.php">Missing emails report </a> (slow)</li>
-            <li><a href="MailChimpCsvExport.php">Create email CSV </a> (to import into mailchimp)</li>
         </ul>
         </div>
     </div>
 <?php } else { ?>
     <div class="row">
         <div class="col-lg-12 col-md-7 col-sm-3">
-        <div class="box">
-            <div class="box-warning">
-                <b>MailChimp is not configured</b>
+            <div class="box box-body">
+                <div class="alert alert-danger alert-dismissible">
+                    <h4><i class="icon fa fa-ban"></i> MailChimp is not configured</h4>
+                    Please update the MailChimp API key in Setting-><a href="../SettingsGeneral.php">Edit General Settings</a>, then update mailChimpApiKey. For more info see <a href="http://dcos.churchcrm.io">our MailChimp support docs.</a>
+                </div>
             </div>
-            <div class="box-body">
-                Please update the MailChimp API key in Setting-><a href="../SettingsGeneral.php">Edit General Settings</a>, then update mailChimpApiKey. For more info see <a href="http://dcos.churchcrm.io">our MailChimp support docs.</a>
-            </div>
-        </div>
         </div>
     </div>
 <?php }
