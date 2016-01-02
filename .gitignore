@@ -5,8 +5,8 @@
 *.iml
 ## Directory-based project format:
 .idea/
-churchinfo\Images\Family\thumbnails
-churchinfo\Images\Person\thumbnails
+churchinfo/Images/Family/thumbnails/
+churchinfo/Images/Person/thumbnails/
 ## File-based project format:
 *.ipr
 *.iws
