@@ -8,7 +8,7 @@
  *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -246,7 +246,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 	<div class="col-lg-3 col-md-3 col-sm-3">
 		<div class="box box-primary">
 			<div class="box-body box-profile">
-				<img src="<?php echo getPersonPhoto($iPersonID, $per_Gender, $sFamRole) ?>" alt="" class="profile-user-img img-responsive img-circle" />
+				<img src="<?php echo getPersonPhoto($iPersonID) ?>" alt="" class="profile-user-img img-responsive img-circle" />
 				<h3 class="profile-username text-center"><?= getGenderIcon($per_Gender). " ".FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0); ?></h3>
 
 				<p class="text-muted text-center">
@@ -351,12 +351,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         <div class="row">
             <div class="box box-header">
                 <div class="col-lg-5 col-md-4 col-sm-4">
-                    <img src="<?= getPersonPhoto($EnteredId, "", "") ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+                    <img src="<?= getPersonPhoto($EnteredId) ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
                     <?= gettext("Entered: ").FormatDate($per_DateEntered,false) ?>
                 </div>
                 <?php if (strlen($per_DateLastEdited) > 0) { ?>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <img src="<?= getPersonPhoto($EditedId, "", "") ?>" title="<?=  $EditedFirstName . " " . $EditedLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+                    <img src="<?= getPersonPhoto($EditedId) ?>" title="<?=  $EditedFirstName . " " . $EditedLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
                     <?= gettext("Updated: ").FormatDate($per_DateLastEdited,false) ?>
                 </div>
                 <?php } ?>
@@ -384,7 +384,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 							?>
 						<tr>
 							<td>
-								<img src="<?php echo getPersonPhoto($tmpPersonId, $Row["per_Gender"], $Row["sFamRole"]) ?>" width="40" height="40" class="img-circle img-bordered-sm" />
+								<img src="<?php echo getPersonPhoto($tmpPersonId) ?>" width="40" height="40" class="img-circle img-bordered-sm" />
 								<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="user-link"><?php echo $Row["per_FirstName"]." ".$Row["per_LastName"]; ?> </a>
 							</td>
 							<td class="text-center">
@@ -754,7 +754,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 										?>
 										<!-- chat item -->
 										<div class="item">
-											<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>"/>
+											<img src="<?php echo getPersonPhoto($EnteredId) ?>"/>
 											<p class="message">
 												<a href="#" class="name">
 													<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php

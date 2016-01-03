@@ -4,7 +4,7 @@
  *  filename    : GenerateSeedData.php
  *  last change : 2015-12-24
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -27,25 +27,30 @@ $sPageTitle = gettext("Generate Seed Data");
 require 'Include/Header.php';
 ?>
 
-<form id="SeedForm"  name="PledgeEditor">
-<input type="text" name="Num_Families" id="Num_Families" value="20">
-	<button type="submit" class="btn btn-primary" value="Generate Seed Data" id="SeedSubmit" name="SeedSubmit">Generate Seed Data</button>
-	<button type="button" class="btn btn-primary" value="Clear Results" name="ClearResults" onclick="javascript:$('#results').empty();">Clear Results</button>
-</form>
-<div id="results">
-
+<form id="SeedForm">
+<div class="box">
+	<div class="box-body">
+		<div class="form-group">
+			<label for="Num_Families">Families to Seed</label>
+			<input type="text" name="Num_Families" id="Num_Families" value="20">
+			<button type="submit" class="btn btn-primary ajax" value="Generate Seed Data" id="SeedSubmit" name="SeedSubmit">Generate Seed Data</button>
+		</div>
+	</div>
+    <div class="box box-footer">
+        <button type="button" class="btn btn-primary" value="Clear Results" name="ClearResults" onclick="javascript:$('#results').empty();">Clear Results</button>
+        <div id="results"></div>
+    </div>
 </div>
-
+</form>
 <script type="text/javascript">
-
-$('#SeedForm').submit(function(event) {
+    $('#SeedForm').submit(function(event) {
 		event.preventDefault();
 		console.log("submit pressed");
         // get the form data
         // there are many ways to get this data using jQuery (you can use the class or id also)
-var formData = {
-	"families" : $("#Num_Families").val()
-};
+        var formData = {
+            "families" : $("#Num_Families").val()
+        };
 		console.log(JSON.stringify(formData));
 
        //process the form
@@ -54,10 +59,15 @@ var formData = {
             url         : 'api/data/seed/families', // the url where we want to POST
             data        :  JSON.stringify(formData), // our data object
             dataType    : 'json', // what type of data do we expect back from the server
-            encode      : true
+            encode      : true,
+            beforeSend  : function () { 
+                $('#results').empty();
+                $('#results').append('<div class="text-center"><i class="fa fa-spinner"></i><h3>Loading Seed Data</h3></div>');
+            }
         })
 		 .done(function(data) {
 			console.log(data);
+             $('#results').empty();
 			$('#results').append('<pre>'+JSON.stringify(data,null,4) +'</pre>');          
 		  });
 		 
@@ -70,7 +80,8 @@ var formData = {
 
 </script>
 
-
+<!-- PACE -->
+<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/pace/pace.min.js"></script>
 <?php
 require "Include/Footer.php";
 ?>

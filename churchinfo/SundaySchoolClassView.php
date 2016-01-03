@@ -91,7 +91,7 @@ require "Include/Header.php";
                     <div class="box box-info text-center user-profile-2">
                         <div class="user-profile-inner">
                             <h4 class="white"><?php echo $per_FirstName . " " . $per_LastName ?></h4>
-                            <img src="<?php echo getPersonPhoto($per_ID, $per_Gender, "");?>" class="img-circle profile-avatar" alt="User avatar">
+                            <img src="<?php echo getPersonPhoto($per_ID);?>" class="img-circle profile-avatar" alt="User avatar">
                             <a href="mailto:<?php echo $per_Email ?>" type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</a>
                             <a href="PersonView.php?PersonID=<?php echo $per_ID ?>" type="button" class="btn btn-primary btn-info btn-block"><i class="fa fa-envelope"></i> View Profile</a>
                         </div>
@@ -172,7 +172,7 @@ require "Include/Header.php";
                     if ($kidEmail != "")
                         array_push($KidsEmails, "<".$firstName." ".$LastName."> ". $kidEmail);
                     echo "<tr>";
-                        echo "<td><img src='". getPersonPhoto($kidId, $kidGender, 'Child'). "' class=\"img-circle profile-avatar\" hight='30' width='30' > <a href='PersonView.php?PersonID=".$kidId."'>".$firstName.", ". $LastName. "</a></td>";
+                        echo "<td><img src='". getPersonPhoto($kidId). "' class=\"img-circle profile-avatar\" hight='30' width='30' > <a href='PersonView.php?PersonID=".$kidId."'>".$firstName.", ". $LastName. "</a></td>";
                         echo "<td>".$birthDate."</td>";
                         echo "<td>".FormatAge($birthMonth,$birthDay, $birthYear, "")."</td>";
                         echo "<td>".$kidEmail."</td>";

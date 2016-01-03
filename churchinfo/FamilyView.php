@@ -9,7 +9,7 @@
  *  LICENSE:
  *  (C) Free Software Foundation, Inc.
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
@@ -285,12 +285,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 		<div class="row">
 			<div class="box box-header">
 				<div class="col-lg-5 col-md-4 col-sm-4">
-					<img src="<?= getPersonPhoto($EnteredId, "", "") ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+					<img src="<?= getPersonPhoto($EnteredId) ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
 					<?= gettext("Entered: ").FormatDate($per_DateEntered,false) ?>
 				</div>
 				<?php if (strlen($per_DateLastEdited) > 0) { ?>
 					<div class="col-lg-4 col-md-4 col-sm-4">
-						<img src="<?= getPersonPhoto($EditedId, "", "") ?>" title="<?=  $EditedFirstName . " " . $EditedLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+						<img src="<?= getPersonPhoto($EditedId) ?>" title="<?=  $EditedFirstName . " " . $EditedLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
 						<?= gettext("Updated: ").FormatDate($per_DateLastEdited,false) ?>
 					</div>
 				<?php } ?>
@@ -322,7 +322,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                         ?>
                         <tr>
                             <td>
-                                <img src="<?php echo getPersonPhoto($tmpPersonId, $Row["per_Gender"], $Row["sFamRole"]) ?>" width="40" height="40" class="img-circle" />
+                                <img src="<?php echo getPersonPhoto($tmpPersonId) ?>" width="40" height="40" class="img-circle" />
                                 <a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="user-link"><?php echo $Row["per_FirstName"]." ".$Row["per_LastName"]; ?> </a>
                             </td>
                             <td class="text-center">
@@ -738,7 +738,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 										?>
 									<!-- chat item -->
 									<div class="item">
-										<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>"/>
+										<img src="<?php echo getPersonPhoto($EnteredId) ?>"/>
 										<p class="message">
 											<a href="#" class="name">
 												<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php

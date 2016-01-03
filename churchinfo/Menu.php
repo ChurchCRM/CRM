@@ -14,7 +14,7 @@
 *  Copyright Contributors
 *
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -26,6 +26,7 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'Include/PersonFunctions.php';
 
 $sSQL = "select * from family_fam order by fam_DateLastEdited desc  LIMIT 10;";
 $rsLastFamilies = RunQuery($sSQL);
@@ -207,57 +208,59 @@ require 'Include/Header.php';
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="col-lg-6 col-md-6 col-sm-3">
         <div class="box box-solid">
-            <div class="box-header">
-                <i class="fa fa-plus"></i>
-                <h3 class="box-title">Latest Members</h3>
-            </div><!-- /.box-header -->
-            <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
-                        <thead>
-                        <tr>
-                            <th data-field="name">Name</th>
-                            <th data-field="name">Created</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Latest Members</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
                         <?php while ($row = mysql_fetch_array($rsNewPeople)) { ?>
-                            <tr>
-                                <td><a href="PersonView.php?PersonID=<?php echo $row['per_ID'];?>"><?php echo $row['per_FirstName']." ".$row['per_LastName'];?></a></td>
-                                <td><?php echo FormatDate($row['per_DateEntered'], false);?></td>
-                            </tr>
+                        <li>
+                            <img src="<?= getPersonPhoto($row['per_ID']); ?>" alt="User Image">
+                            <a class="users-list-name" href="PersonView.php?PersonID=<?= $row['per_ID'];?>"><?= $row['per_FirstName']." ".$row['per_LastName'];?></a>
+                            <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false);?></span>
+                        </li>
                         <?php } ?>
-                        </tbody>
-                    </table>
+                    </ul>
+                    <!-- /.users-list -->
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="col-lg-6 col-md-6 col-sm-3">
         <div class="box box-solid">
-            <div class="box-header">
-                <i class="fa fa-check"></i>
-                <h3 class="box-title">Updated Members</h3>
-            </div><!-- /.box-header -->
-            <div class="box-body clearfix">
-                <table class="table table-striped table-condensed">
-                    <thead>
-                    <tr>
-                        <th data-field="name">Name</th>
-                        <th data-field="name">Updated</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
-                        <tr>
-                            <td><a href="PersonView.php?PersonID=<?php echo $row['per_ID'];?>"><?php echo $row['per_FirstName']." ".$row['per_LastName'];?></a></td>
-                            <td><?php echo FormatDate($row['per_DateLastEdited'], false);?></td>
-                        </tr>
-                    <?php } ?>
-                    </tbody>
-                </table>
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Updated Members</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
+                        <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
+                            <li>
+                                <img src="<?= getPersonPhoto($row['per_ID']); ?>" alt="User Image">
+                                <a class="users-list-name" href="PersonView.php?PersonID=<?= $row['per_ID'];?>"><?= $row['per_FirstName']." ".$row['per_LastName'];?></a>
+                                <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false);?></span>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                    <!-- /.users-list -->
+                </div>
             </div>
         </div>
     </div>

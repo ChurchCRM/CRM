@@ -6,7 +6,7 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2003 Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -68,12 +68,6 @@ require 'Include/Header.php';
     echo gettext('Sunday School Class List'); ?></a>
 <br><?php
 echo gettext('Export Sunday School Kids to CSV'); ?>
-</p>
-
-<a class="MediumText" href="MailChimpReport.php"><?php 
-    echo gettext('MailChimp Report'); ?></a>
-<br><?php
-echo gettext('Reports and data about your mailchimp account'); ?>
 </p>
 
 <?php

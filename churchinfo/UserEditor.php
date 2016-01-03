@@ -16,7 +16,7 @@
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
@@ -221,28 +221,13 @@ if (isset($_POST['save']) && $iPersonID > 0) {
 }
 
 // Style sheet (CSS) file selection options
-function StyleSheetOptions($dirName,$currentStyle)
-{
-    $dir = @opendir($dirName);
-    if ($dir) {
-        while($file = readdir($dir))
-        {
-            if (preg_match("/\.css/",$file))
-            {
-                echo "<option value=\"$file\"";
-                if ($file == $currentStyle)
-                    echo " selected";
-                echo '>' . substr($file,0,-4) . '</option>';
-            }
-        }
-        closedir($dir);
-    } else {
-        foreach ( array ('Style-blue.css', 'Style-green.css', 'Style-purple.css', 'Style-red.css', 'Style.css') as $stylename ) {
-            echo '<option value="'.$stylename.'"';
-            if ($stylename == $currentStyle)
-                echo ' selected';
-            echo '>' . substr($stylename,0,-4) . '</option>';
-        }
+function StyleSheetOptions($currentStyle) {
+
+    foreach ( array ('skin-blue','skin-blue-light','skin-yellow','skin-yellow-light','skin-green','skin-green-light','skin-purple','skin-purple-light','skin-red','skin-red-light','skin-black','skin-black-light') as $stylename ) {
+        echo '<option value="'.$stylename.'"';
+        if ($stylename == $currentStyle)
+            echo ' selected';
+        echo '>' . $stylename . '</option>';
     }
 }
 
@@ -432,7 +417,7 @@ if ($bShowPersonSelect) {
 
     <tr>
         <td class="LabelColumn"><?php echo gettext('Style:'); ?></td>
-        <td class="TextColumnWithBottomBorder"><select name="Style"><?php StyleSheetOptions('Include',$usr_Style); ?></select></td>
+        <td class="TextColumnWithBottomBorder"><select name="Style"><?php StyleSheetOptions($usr_Style); ?></select></td>
     </tr>
 
     <tr>

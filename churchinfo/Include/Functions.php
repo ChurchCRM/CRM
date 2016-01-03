@@ -9,7 +9,7 @@
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
@@ -24,7 +24,12 @@
 *  This file best viewed in a text editor with tabs stops set to 4 characters
 *
 ******************************************************************************/
-// Initialization common to all ChurchInfo scripts
+// Initialization common to all ChurchCRM scripts
+
+// Set the current version of this PHP file
+// Important!  These must be updated before every software release.
+
+$_SESSION['sSoftwareInstalledVersion'] = '2.0.0';
 
 //
 // Basic security checks:
