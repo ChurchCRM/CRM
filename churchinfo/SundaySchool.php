@@ -148,52 +148,52 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 
 	<tr>
 		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("First Sunday:"); ?></td>
-		<td class="TextColumn"><input type="text" name="FirstSunday" value="<?php echo $dFirstSunday; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+		<td class="TextColumn"><input type="text" name="FirstSunday" value="<?php echo $dFirstSunday; ?>" maxlength="10" id="FirstSunday" size="11"></td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("Last Sunday:"); ?></td>
-		<td class="TextColumn"><input type="text" name="LastSunday" value="<?php echo $dLastSunday; ?>" maxlength="10" id="sel2" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel2', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+		<td class="TextColumn"><input type="text" name="LastSunday" value="<?php echo $dLastSunday; ?>" maxlength="10" id="LastSunday" size="11"></td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool1" value="<?php echo $dNoSchool1; ?>" maxlength="10" id="NoSchool1" size="11">&nbsp;<input type="image" onclick="return showCalendar('NoSchool1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+		<td class="TextColumn"><input type="text" name="NoSchool1" value="<?php echo $dNoSchool1; ?>" maxlength="10" id="NoSchool1" size="11"></td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool2" value="<?php echo $dNoSchool2; ?>" maxlength="10" id="NoSchool2" size="11">&nbsp;<input type="image" onclick="return showCalendar('NoSchool2', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+		<td class="TextColumn"><input type="text" name="NoSchool2" value="<?php echo $dNoSchool2; ?>" maxlength="10" id="NoSchool2" size="11"></td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool3" value="<?php echo $dNoSchool3; ?>" maxlength="10" id="NoSchool3" size="11">&nbsp;<input type="image" onclick="return showCalendar('NoSchool3', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+		<td class="TextColumn"><input type="text" name="NoSchool3" value="<?php echo $dNoSchool3; ?>" maxlength="10" id="NoSchool3" size="11"></td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool4" value="<?php echo $dNoSchool4; ?>" maxlength="10" id="NoSchool4" size="11">&nbsp;<input type="image" onclick="return showCalendar('NoSchool4', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+		<td class="TextColumn"><input type="text" name="NoSchool4" value="<?php echo $dNoSchool4; ?>" maxlength="10" id="NoSchool4" size="11"></td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool5" value="<?php echo $dNoSchool5; ?>" maxlength="10" id="NoSchool5" size="11">&nbsp;<input type="image" onclick="return showCalendar('NoSchool5', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+		<td class="TextColumn"><input type="text" name="NoSchool5" value="<?php echo $dNoSchool5; ?>" maxlength="10" id="NoSchool5" size="11"></td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool6" value="<?php echo $dNoSchool6; ?>" maxlength="10" id="NoSchool6" size="11">&nbsp;<input type="image" onclick="return showCalendar('NoSchool6', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+		<td class="TextColumn"><input type="text" name="NoSchool6" value="<?php echo $dNoSchool6; ?>" maxlength="10" id="NoSchool6" size="11"></td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool7" value="<?php echo $dNoSchool7; ?>" maxlength="10" id="NoSchool7" size="11">&nbsp;<input type="image" onclick="return showCalendar('NoSchool7', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+		<td class="TextColumn"><input type="text" name="NoSchool7" value="<?php echo $dNoSchool7; ?>" maxlength="10" id="NoSchool7" size="11"></td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool8" value="<?php echo $dNoSchool8; ?>" maxlength="10" id="NoSchool8" size="11">&nbsp;<input type="image" onclick="return showCalendar('NoSchool8', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+		<td class="TextColumn"><input type="text" name="NoSchool8" value="<?php echo $dNoSchool8; ?>" maxlength="10" id="NoSchool8" size="11"></td>
 	</tr>
 
 	<tr>
@@ -215,6 +215,18 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 </table>
 
 </form>
+<script>
+$("#FirstSunday").datepicker();
+$("#LastSunday").datepicker();
+$("#NoSchool1").datepicker();
+$("#NoSchool2").datepicker();
+$("#NoSchool3").datepicker();
+$("#NoSchool4").datepicker();
+$("#NoSchool5").datepicker();
+$("#NoSchool6").datepicker();
+$("#NoSchool7").datepicker();
+$("#NoSchool8").datepicker();
+</script>
 
 <?php
 require "Include/Footer.php";

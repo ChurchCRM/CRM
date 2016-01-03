@@ -43,6 +43,12 @@ elseif ($_POST['Action']== "Activate" && !empty($_POST['EID']))
 $sPageTitle = gettext("Add Church Event(s)");
 
 require "Include/Header.php";
+?>
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+
+<?php
 
 // Check if we're adding an event
 if (isset($_POST["AddEvent"]))
@@ -109,30 +115,29 @@ if (isset($_POST["AddEvent"]))
 
 // Construct the form
 ?>
-<table cellpadding="4" align="center" cellspacing="0" width="100%">
+<div class="row">
+<div class="box">
+	<div class="box-header">
+		<h3 class="box-title">
+       <?php if ($numRows == 0)  { 
+            echo gettext("No church events for ".date("F")); 
+        } else {
+            echo gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F")); 
+        ?></h3>
+	</div><!-- /.box-header -->
+	<div class="box-body table-responsive">
+		<table  class="table table-striped table-bordered dataTable no-footer" id="eventsTable">
 
-<?php
-if ($numRows == 0)
-{
-?>
-        <caption>
-        <h3><?php echo gettext("No church events for ".date("F")); ?></h3>
-        <input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';">
-        </caption>
-<?php
-}
-else
-{
-?>
-       <caption><h3><?php echo gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F")); ?></h3></caption>
-         <tr class="TableHeader">
-           <td width="10%"><strong><?php echo gettext("Event Type"); ?></strong></td>
-           <td width="25%"><strong><?php echo gettext("Event Title"); ?></strong></td>
-           <td width="*"><strong><?php echo gettext("Description"); ?></strong></td>
-           <td width="10%" align="center"><strong><?php echo gettext("Start Date/Time"); ?></strong></td>
-           <td width="5%" align="center"><strong><?php echo gettext("Active"); ?></strong></td>
-           <td colspan="2" width="15%" align="center"><strong><?php echo gettext("Action"); ?></strong></td>
-        </tr>
+         <thead>
+         <tr>
+           <th><?php echo gettext("Event Type"); ?></td>
+           <th><?php echo gettext("Event Title"); ?></td>
+           <th><?php echo gettext("Description"); ?></td>
+           <th><?php echo gettext("Start Date/Time"); ?></td>
+           <th><?php echo gettext("Active"); ?></td>
+           <th><?php echo gettext("Action"); ?></td>
+          </tr>
+        </thead>
          <?php
          //Set the initial row color
          $sRowClass = "RowColorA";
@@ -146,19 +151,19 @@ else
          //Display the row
          ?>
          <tr class="<?php echo $sRowClass; ?>">
-           <td class="TextColumn"><?php echo $aEventType[$row]; ?></td>
-           <td class="TextColumn"><?php echo htmlentities(stripslashes($aEventTitle[$row]),ENT_NOQUOTES, "UTF-8"); ?></td>
-           <td class="TextColumn"><?php echo ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]); ?>
+           <td><?php echo $aEventType[$row]; ?></td>
+           <td><?php echo htmlentities(stripslashes($aEventTitle[$row]),ENT_NOQUOTES, "UTF-8"); ?></td>
+           <td><?php echo ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]); ?>
              <?php echo ($aEventText[$row] != '' ? "&nbsp;&nbsp;&nbsp;<a href=\"javascript:popUp('GetText.php?EID=".$aEventID[$row]."')\"><strong>text</strong></a>":""); ?></td>
-           <td class="TextColumn"><?php echo FormatDate($aEventStart[$row],1); ?></td>
-           <td class="TextColumn" align="center"><?php echo ($aEventStatus[$row] != 0 ? "No":"Yes"); ?></td>
-           <td class="TextColumn" align="center">
+           <td><?php echo FormatDate($aEventStart[$row],1); ?></td>
+           <td align="center"><?php echo ($aEventStatus[$row] != 0 ? "No":"Yes"); ?></td>
+           <td align="center">
              <form name="EditEvent" action="EventEditor.php" method="POST">
                <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
                <input type="submit" name="Action" <?php echo 'value="' . gettext("Edit") . '"'; ?> class="icButton">
              </form>
            </td>
-           <td class="TextColumn">
+           <td>
              <form name="DeactivateEvent" action="AddEvent.php" method="POST">
                <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
                <?php if ($aEventStatus[$row] == 0 ) { ?>
@@ -170,20 +175,16 @@ else
            </td>
          </tr>
          <?php } ?>
-         <tr>
-           <td colspan="5">
-             <table width="100%">
-               <tr>
-                 <td width="30%">&nbsp;</td>
-                 <td width="40%" align="center" valign="bottom">
-                   <input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';">
-                 </td>
-                 <td width="30%">&nbsp;</td>
-               </tr>
-             </table>
-           </td>
-           <td>
-         </tr>
+         
+          </table>
+        </div>
+    </div>
+   <div class="box">
+	<div class="box-header">
+		<h3 class="box-title">Create a New Event</h3>
+    </div>
+    <div class="box-body table-responsive">
+    <table id="createEventTable">
 <?php } ?>
                 <tr><td colspan="5"><hr></td></tr>
                 <tr>
@@ -192,7 +193,7 @@ else
                         <table width="70%" align="center">
                           <tr>
                             <td class="LabelColumn"><?php echo gettext("Event Type:"); ?></td>
-                            <td colspan="3" class="TextColumn">
+                            <td colspan="3">
                               <select name="newEventType">
 <?php
 // Get Event Names
@@ -215,63 +216,85 @@ $sSQL = "SELECT * FROM `event_types`";
                           </tr>
                           <tr>
                             <td class="LabelColumn"><?php echo gettext("Event Title:"); ?></td>
-                            <td colspan="3" class="TextColumn">
+                            <td colspan="3">
                               <input type="text" name="newEventTitle" size="40" maxlength="100">
                               <?php if ( $bNewTitleError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
                             </td>
                           </tr>
                           <tr>
                             <td class="LabelColumn"><?php echo gettext("Event Desc:"); ?></td>
-                            <td colspan="3" class="TextColumn">
+                            <td colspan="3">
                               <input type="text" name="newEventDesc" size="40" maxlength="100">
                               <?php if ( $bNewDescError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
                             </td>
                           </tr>
                           <tr>
                             <td class="LabelColumn"><?php echo gettext("Event Sermon:"); ?></td>
-                            <td colspan="3" class="TextColumn"><textarea name="newEventText" rows="10" cols="80"></textarea></td>
+                            <td colspan="3"><textarea name="newEventText" rows="10" cols="80"></textarea></td>
                           </tr>
                           <tr>
                             <td class="LabelColumn" <?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>>
                               <?php echo gettext("Start Date:"); ?>
                             </td>
-                            <td class="TextColumn">
-                              <input type="text" name="newEventStartDate" value="<?php echo $newEventStartDate; ?>" maxlength="10" id="nSD" size="11">&nbsp;
-                              <input type="image" onclick="return showCalendar('nSD', 'y-mm-dd');" src="Images/calendar.gif">
-                              <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span>
+                            <td>
+                             <div class="form-group">
+                                <label>Start Date</label>
+
+                                <div class="input-group">
+                                  <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                  </div>
+                                  <input type="text" class="form-control pull-right active" id="newEventStartDate" name="newEventStartDate">
+                                </div>
+                            </div>
                             </td>
                             <td class="LabelColumn">
                               <?php echo gettext("Start Time:"); ?>
                             </td>
-                            <td class="TextColumn">
-                              <select name="newEventStartTime" size="1">
-                              <?php createTimeDropdown(7,18,15,'',''); ?>
-                              </select>
-                              &nbsp;<span class="SmallText"><?php echo gettext("[format: HH:MM]"); ?></span>
+                            <td>
+                            <div class="form-group">
+                                <label>Start Time</label>
+
+                                <div class="input-group bootstrap-timepicker timepicker">
+                                    <input name="newEventStartTime" id="newEventStartTime" type="text" class="form-control input-small">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                </div>
+                            </div>
                             </td>
                           </tr>
                           <tr>
                             <td class="LabelColumn" <?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>>
                               <?php echo gettext("End Date:"); ?>
                             </td>
-                            <td class="TextColumn">
-                              <input type="text" name="newEventEndDate" value="<?php echo $newEventEndDate; ?>" maxlength="10" id="nED" size="11">&nbsp;
-                              <input type="image" onclick="return showCalendar('nED', 'y-mm-dd');" src="Images/calendar.gif">
-                              <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span>
+                            <td>
+                                 <div class="form-group">
+                                <label>Start Date</label>
+
+                                <div class="input-group">
+                                  <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                  </div>
+                                  <input type="text" class="form-control pull-right active" id="newEventEndDate" name="newEventEndDate">
+                                </div>
+                            </div>
                             </td>
                             <td class="LabelColumn">
                               <?php echo gettext("End Time:"); ?>
                             </td>
-                            <td class="TextColumn">
-                              <select name="newEventEndTime" size="1">
-                              <?php createTimeDropdown(7,18,15,'',''); ?>
-                              </select>
-                              &nbsp;<span class="SmallText"><?php echo gettext("[format: HH:MM]"); ?></span>
+                            <td>
+                                <div class="form-group">
+                                <label>Start Time</label>
+
+                                <div class="input-group bootstrap-timepicker timepicker">
+                                    <input name="newEventEndTime" id="newEventEndTime" type="text" class="form-control input-small">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                </div>
+                                </div>
                             </td>
                           </tr>
                           <tr>
                             <td class="LabelColumn"><?php echo gettext("Event Status:"); ?></td>
-                            <td colspan="3" class="TextColumn">
+                            <td colspan="3">
                               <input type="radio" name="newEventStatus" value="0" checked> Active <input type="radio" name="newEventStatus" value="1"> Inactive
                               <?php if ( $bNewStatusError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("Is this Active or Inactive?") . "</span></div>"; ?>
                             </td>
@@ -283,8 +306,19 @@ $sSQL = "SELECT * FROM `event_types`";
                         </form>
                       </td>
                 </tr>
+            </table>
+           </div>
+    </div>
+ </div>
 
-        </table>
+       
+       
 
-
+<script>
+$("#newEventStartDate").datepicker({format:'yyyy-mm-dd'});
+$("#newEventEndDate").datepicker({format:'yyyy-mm-dd'});
+$('#newEventStartTime').timepicker({showMeridian: false});
+$("#newEventEndTime").timepicker({showMeridian: false});
+$("#eventsTable").dataTable();
+</script>
 <?php require "Include/Footer.php"; ?>

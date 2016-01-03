@@ -311,11 +311,12 @@ require "Include/Header.php";
         <td class="LabelColumn"><?php echo gettext("Membership Date:"); ?></td>
         <td class="TextColumn">
             <table border=0 cellpadding=0 cellspacing=0>
-            <tr><td><b><?php echo gettext("From:"); ?>&nbsp;</b></td><td><input id="sell" type="text" name="MembershipDate1" size="11" maxlength="10">
-            <input type="image" value="cal" onclick="return showCalendar('sell', 'y-mm-dd');"  src="Images/calendar.gif"></td></tr>
-            <tr><td><b><?php echo gettext("To:"); ?>&nbsp;</b></td><td><input id="DateField" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
-            <input type="image" value="cal" onclick="return showCalendar('DateField', 'y-mm-dd');" src="Images/calendar.gif"></td></tr>
-            <tr><td>&nbsp;</td><td><div class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></div></td></tr>
+            <tr><td><b>
+                <?php echo gettext("From:"); ?>&nbsp;</b></td><td><input id="MembershipDate1" type="text" name="MembershipDate1" size="11" maxlength="10">
+            </td></tr>
+            <tr><td><b>
+                <?php echo gettext("To:"); ?>&nbsp;</b></td><td><input id="MembershipDate2" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
+            </td></tr>
             </table>
         </td>
     </tr>
@@ -328,8 +329,7 @@ require "Include/Header.php";
                         <b><?php echo gettext("From:"); ?>&nbsp;</b>
                     </td>
                     <td>
-                        <input id="BD1" type="text" name="BirthDate1" size="11" maxlength="10">
-                        <input type="image" value="cal" onclick="return showCalendar('BD1', 'y-mm-dd');"  src="Images/calendar.gif">
+                        <input type="text" name="BirthDate1" size="11" maxlength="10" id="BirthdayDate1">
                     </td>
                 </tr>
                 <tr>
@@ -337,11 +337,9 @@ require "Include/Header.php";
                         <b><?php echo gettext("To:"); ?>&nbsp;</b>
                     </td>
                     <td>
-                        <input id="BD2" type="text" name="BirthDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
-                        <input type="image" value="cal" onclick="return showCalendar('BD2', 'y-mm-dd');"  src="Images/calendar.gif">
+                        <input type="text" name="BirthDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>"  id="BirthdayDate2">
                     </td>
                 </tr>
-                <tr><td>&nbsp;</td><td><div class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></div></td></tr>
             </table>
         </td>
     </tr>
@@ -349,11 +347,12 @@ require "Include/Header.php";
         <td class="LabelColumn"><?php echo gettext("Anniversary Date:"); ?></td>
         <td class="TextColumn">
             <table border=0 cellpadding=0 cellspacing=0>
-            <tr><td><b><?php echo gettext("From:"); ?>&nbsp;</b></td><td><input id="AD1" type="text" name="AnniversaryDate1" size="11" maxlength="10">
-            <input type="image" value="cal" onclick="return showCalendar('AD1', 'y-mm-dd');"  src="Images/calendar.gif"></td></tr>
-            <tr><td><b><?php echo gettext("To:"); ?>&nbsp;</b></td><td><input id="AD2" type="text" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
-            <input type="image" value="cal" onclick="return showCalendar('AD2', 'y-mm-dd');" src="Images/calendar.gif"></td></tr>
-            <tr><td>&nbsp;</td><td><div class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></div></td></tr>
+            <tr><td><b>
+                <?php echo gettext("From:"); ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate1" size="11" maxlength="10" id="AnniversaryDate1">
+            </td></tr>
+            <tr><td><b>
+                <?php echo gettext("To:"); ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>" id="AnniversaryDate2">
+            </td></tr>
             </table>
         </td>
     </tr>
@@ -361,11 +360,12 @@ require "Include/Header.php";
         <td class="LabelColumn"><?php echo gettext("Date Entered:"); ?></td>
         <td class="TextColumn">
             <table border=0 cellpadding=0 cellspacing=0>
-            <tr><td><b><?php echo gettext("From:"); ?>&nbsp;</b></td><td><input id="ED1" type="text" name="EnterDate1" size="11" maxlength="10">
-            <input type="image" value="cal" onclick="return showCalendar('ED1', 'y-mm-dd');"  src="Images/calendar.gif"></td></tr>
-            <tr><td><b><?php echo gettext("To:"); ?>&nbsp;</b></td><td><input id="ED2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
-            <input type="image" value="cal" onclick="return showCalendar('ED2', 'y-mm-dd');" src="Images/calendar.gif"></td></tr>
-            <tr><td>&nbsp;</td><td><div class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></div></td></tr>
+            <tr><td><b>
+                <?php echo gettext("From:"); ?>&nbsp;</b></td><td><input id="EnterDate1" type="text" name="EnterDate1" size="11" maxlength="10">
+            </td></tr>
+            <tr><td><b>
+                <?php echo gettext("To:"); ?>&nbsp;</b></td><td><input id="EnterDate2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
+            </td></tr>
             </table>
         </td>
     </tr>
@@ -395,6 +395,16 @@ require "Include/Header.php";
   </tr>
 </table>
 </form>
+<script>
+$("#MembershipDate1").datepicker();
+$("#MembershipDate2").datepicker();
+$("#BirthdayDate1").datepicker();
+$("#BirthdayDate2").datepicker();
+$("#AnniversaryDate1").datepicker();
+$("#AnniversaryDate2").datepicker();
+$("#EnterDate1").datepicker();
+$("#EnterDate2").datepicker();
+</script>
 <?php
 require "Include/Footer.php";
 ?>

@@ -215,7 +215,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Wedding Date:"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="10" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active"><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
 	</tr>
 
 	<tr>
@@ -329,6 +329,10 @@ if (count($_SESSION['aPeopleCart']) > 0)
 }
 else
 	echo "<p align=\"center\" class=\"LargeText\">" . gettext("Your cart is empty!") . "</p>";
-
+?>
+<script>
+$("#sel1").datepicker();
+</script>
+<?php
 require "Include/Footer.php";
 ?>

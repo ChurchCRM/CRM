@@ -293,9 +293,9 @@ if (isset($_POST["ApiGet"])) {
 	<tr><td>
 		<form method="post" action="eGive.php?DepositSlipID=<?php echo $iDepositSlipID ?>" enctype="multipart/form-data">
 		<class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><b><?php echo gettext("Start Date: "); ?></b>
-			<class="TextColumn"><input type="text" name="StartDate" value="<?php echo $lwDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font><br>
+			<class="TextColumn"><input type="text" name="StartDate" value="<?php echo $lwDate; ?>" maxlength="10" id="StartDate" size="11"><font color="red"><?php echo $sDateError ?></font><br>
 			<class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><b><?php echo gettext("End Date: "); ?></b>
-			<class="TextColumn"><input type="text" name="EndDate" value="<?php echo $dDate; ?>" maxlength="10" id="sel2" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel2', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font><br><br>
+			<class="TextColumn"><input type="text" name="EndDate" value="<?php echo $dDate; ?>" maxlength="10" id="EndDate" size="11"><font color="red"><?php echo $sDateError ?></font><br><br>
 		<input type="submit" class="icButton" value="<?php echo gettext("Import eGive"); ?>" name="ApiGet">
 		<br><br><br>
 		</form>
@@ -425,6 +425,13 @@ function get_api_data($json) {
 		return 0;
 	}
 }
+?>
+<script>
+$("#StartDate").datepicker();
+$("#EndDate").datepicker();
+</script>
+
+<?php
 
 require "Include/Footer.php";
 
