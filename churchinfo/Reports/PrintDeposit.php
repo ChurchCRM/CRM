@@ -128,7 +128,7 @@ if ($output == "pdf") {
     $depositSlipFrontColumns = 132;
     
     $depositSlipBackCheckNosX = 2;
-    $depositSlipBackCheckNosY = 45;
+    $depositSlipBackCheckNosY = 42;
     $depositSlipBackCheckNosHeight = 7.25;
     
     $depositSlipBackDollarsX = 30;
@@ -184,7 +184,9 @@ if ($output == "pdf") {
         $pdf->AddPage();
 	} else {
         $pdf->AddPage("L",array(150,60));
-         $pdf->Image('../Images/front.jpg',0,0,-300,-300);
+
+            #$pdf->Image('../Images/front.jpg',0,0,-300,-300);
+
 		// Print Deposit Slip portion of report
 		while ($aRow = mysql_fetch_array($rsPledges))
 		{
@@ -219,7 +221,7 @@ if ($output == "pdf") {
 		$pdf->PrintRightJustified ($subTotalX, $subTotalY, $grandTotalStr);
 		$pdf->PrintRightJustified ($topTotalX, $topTotalY, $grandTotalStr);
         $pdf->AddPage("P",array(60,150));
-        $pdf->Image('../Images/back.jpg',0,0,-300,-300);
+        #$pdf->Image('../Images/back.jpg',0,0,-300,-300);
         mysql_data_seek($rsPledges, 0);
         while ($aRow = mysql_fetch_array($rsPledges))
 		{
