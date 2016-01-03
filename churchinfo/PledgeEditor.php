@@ -801,7 +801,7 @@ $(document).ready(function() {
 </table>
 </form>
 <script>
-$("#Date").datepicker();
+$("#Date").datepicker({format:'yyyy-mm-dd'});
 </script
 
 <?php

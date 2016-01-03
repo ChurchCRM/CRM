@@ -265,7 +265,7 @@ if ($rsDonatedItems != 0) {
 
 
 <script>
-$("#Date").datepicker();
+$("#Date").datepicker({format:'yyyy-mm-dd'});
 </script
 
 <?php

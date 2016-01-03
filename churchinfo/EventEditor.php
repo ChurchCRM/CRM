@@ -530,8 +530,8 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
 </table>
 </form>
 <script>
-$("#EventStartDate").datepicker();
-$("#EventEndDate").datepicker();
+$("#EventStartDate").datepicker({format:'yyyy-mm-dd'});
+$("#EventEndDate").datepicker({format:'yyyy-mm-dd'});
 $("#EventStartTime").timepicker({showMeridian: false});
 $("#EventEndTime").timepicker({showMeridian: false});
 </script>

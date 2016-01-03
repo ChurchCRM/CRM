@@ -427,8 +427,8 @@ function get_api_data($json) {
 }
 ?>
 <script>
-$("#StartDate").datepicker();
-$("#EndDate").datepicker();
+$("#StartDate").datepicker({format:'yyyy-mm-dd'});
+$("#EndDate").datepicker({format:'yyyy-mm-dd'});
 </script>
 
 <?php

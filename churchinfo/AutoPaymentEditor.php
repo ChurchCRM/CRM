@@ -784,7 +784,7 @@ if ($sElectronicTransactionProcessor == "Vanco") {
 </table>
 </form>
 <script>
-$("#NextPayDate").datepicker();
+$("#NextPayDate").datepicker({format:'yyyy-mm-dd'});
 </script>
 <?php
 require "Include/Footer.php";

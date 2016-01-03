@@ -238,8 +238,8 @@ while (list ($fr_ID, $fr_Date, $fr_Title) = mysql_fetch_row($rsDep))
 echo "</table>";
 ?>
 <script>
-$("#DateStart").datepicker();
-$("#DateEnd").datepicker();
+$("#DateStart").datepicker({format:'yyyy-mm-dd'});
+$("#DateEnd").datepicker({format:'yyyy-mm-dd'});
 </script>
 <?php
 require "Include/Footer.php";

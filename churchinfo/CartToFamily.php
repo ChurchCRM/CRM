@@ -331,7 +331,7 @@ else
 	echo "<p align=\"center\" class=\"LargeText\">" . gettext("Your cart is empty!") . "</p>";
 ?>
 <script>
-$("#sel1").datepicker();
+$("#sel1").datepicker({format:'yyyy-mm-dd'});
 </script>
 <?php
 require "Include/Footer.php";

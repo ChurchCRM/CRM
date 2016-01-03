@@ -1072,7 +1072,7 @@ require "Include/Header.php";
 			$("[data-mask]").inputmask();
 		});
         
-        $("#WeddingDate").datepicker();
+        $("#WeddingDate").datepicker({format:'yyyy-mm-dd'});
 	</script>
 <?php
 require "Include/Footer.php";

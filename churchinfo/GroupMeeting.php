@@ -239,7 +239,7 @@ this group will be added to the meeting as external users of WebCalendar.</p>
 	</form>
 </table>
 <script>
-$("#Date").datepicker();
+$("#Date").datepicker({format:'yyyy-mm-dd'});
 </script>
 <?php
 require "Include/Footer.php";

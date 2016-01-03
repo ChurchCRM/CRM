@@ -216,16 +216,16 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 
 </form>
 <script>
-$("#FirstSunday").datepicker();
-$("#LastSunday").datepicker();
-$("#NoSchool1").datepicker();
-$("#NoSchool2").datepicker();
-$("#NoSchool3").datepicker();
-$("#NoSchool4").datepicker();
-$("#NoSchool5").datepicker();
-$("#NoSchool6").datepicker();
-$("#NoSchool7").datepicker();
-$("#NoSchool8").datepicker();
+$("#FirstSunday").datepicker({format:'yyyy-mm-dd'});
+$("#LastSunday").datepicker({format:'yyyy-mm-dd'});
+$("#NoSchool1").datepicker({format:'yyyy-mm-dd'});
+$("#NoSchool2").datepicker({format:'yyyy-mm-dd'});
+$("#NoSchool3").datepicker({format:'yyyy-mm-dd'});
+$("#NoSchool4").datepicker({format:'yyyy-mm-dd'});
+$("#NoSchool5").datepicker({format:'yyyy-mm-dd'});
+$("#NoSchool6").datepicker({format:'yyyy-mm-dd'});
+$("#NoSchool7").datepicker({format:'yyyy-mm-dd'});
+$("#NoSchool8").datepicker({format:'yyyy-mm-dd'});
 </script>
 
 <?php

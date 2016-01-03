@@ -245,7 +245,7 @@ require "Include/Header.php";
 	</form>
 </table>
 <script>
-$("#sel1").datepicker();
+$("#sel1").datepicker({format:'yyyy-mm-dd'});
 </script>
 <?php
 require "Include/Footer.php";

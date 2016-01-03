@@ -856,7 +856,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 </div>
 
 <script>
-$("#ShowSinceDate").datepicker();
+$("#ShowSinceDate").datepicker({format:'yyyy-mm-dd'});
 </script>
 
 <?php

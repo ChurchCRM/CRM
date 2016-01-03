@@ -837,7 +837,7 @@ foreach ($depositArray as $order => $value) {
 }
 ?>
 <script>
-$("#DepositDate").datepicker();
+$("#DepositDate").datepicker({format:'yyyy-mm-dd'});
 </script>
 <?php
 require "Include/Footer.php";

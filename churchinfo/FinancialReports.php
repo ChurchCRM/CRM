@@ -312,8 +312,8 @@ if ($sReportType == "") {
 }
 ?>
 <script>
-$("#DateStart").datepicker();
-$("#DateEnd").datepicker();
+$("#DateStart").datepicker({format:'yyyy-mm-dd'});
+$("#DateEnd").datepicker({format:'yyyy-mm-dd'});
 
 </script>
 

@@ -396,14 +396,14 @@ require "Include/Header.php";
 </table>
 </form>
 <script>
-$("#MembershipDate1").datepicker();
-$("#MembershipDate2").datepicker();
-$("#BirthdayDate1").datepicker();
-$("#BirthdayDate2").datepicker();
-$("#AnniversaryDate1").datepicker();
-$("#AnniversaryDate2").datepicker();
-$("#EnterDate1").datepicker();
-$("#EnterDate2").datepicker();
+$("#MembershipDate1").datepicker({format:'yyyy-mm-dd'});
+$("#MembershipDate2").datepicker({format:'yyyy-mm-dd'});
+$("#BirthdayDate1").datepicker({format:'yyyy-mm-dd'});
+$("#BirthdayDate2").datepicker({format:'yyyy-mm-dd'});
+$("#AnniversaryDate1").datepicker({format:'yyyy-mm-dd'});
+$("#AnniversaryDate2").datepicker({format:'yyyy-mm-dd'});
+$("#EnterDate1").datepicker({format:'yyyy-mm-dd'});
+$("#EnterDate2").datepicker({format:'yyyy-mm-dd'});
 </script>
 <?php
 require "Include/Footer.php";

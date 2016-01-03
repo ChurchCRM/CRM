@@ -283,8 +283,8 @@ while (list ($dep_ID, $dep_Date, $dep_Comment, $dep_Closed, $dep_Type) = mysql_f
 echo "</table>";
 ?>
 <script>
-$("#DateStart").datepicker();
-$("#DateEnd").datepicker();
+$("#DateStart").datepicker({format:'yyyy-mm-dd'});
+$("#DateEnd").datepicker({format:'yyyy-mm-dd'});
 </script>
 
 <?php
