@@ -123,9 +123,9 @@ require "Include/Header.php"
 			<input type="submit" class="btn" name="Submit" value="<?php echo gettext("Update"); ?>">
 			<?php
 				if ($iReturn)
-					echo "&nbsp;&nbsp;<input type=\"button\" class=\"icButton\" name=\"Cancel\" value=\"" . gettext("Cancel") . "\" onclick=\"document.location='GroupView.php?GroupID=" . $iGroupID . "';\">";
+					echo "&nbsp;&nbsp;<input type=\"button\" class=\"btn\" name=\"Cancel\" value=\"" . gettext("Cancel") . "\" onclick=\"document.location='GroupView.php?GroupID=" . $iGroupID . "';\">";
 				else
-					echo "&nbsp;&nbsp;<input type=\"button\" class=\"icButton\" name=\"Cancel\" value=\"" . gettext("Cancel") . "\" onclick=\"document.location='PersonView.php?PersonID=" . $iPersonID . "';\">";
+					echo "&nbsp;&nbsp;<input type=\"button\" class=\"btn\" name=\"Cancel\" value=\"" . gettext("Cancel") . "\" onclick=\"document.location='PersonView.php?PersonID=" . $iPersonID . "';\">";
 			?>
 		</td>
 	</tr>

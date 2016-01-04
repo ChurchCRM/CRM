@@ -147,7 +147,7 @@ require "Include/Header.php";
 		<td align="center">
 			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="PaddleNumSubmit">
 			<input type="submit" class="btn" value="<?php echo gettext("Generate Statement"); ?>" name="GenerateStatement">
-			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PaddleNumSubmitAndAdd\">\n"; } ?>
+			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save and Add") . "\" name=\"PaddleNumSubmitAndAdd\">\n"; } ?>
 			<input type="button" class="btn" value="<?php echo gettext("Back"); ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>

@@ -526,9 +526,9 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
 
 // Cancel, Save Buttons
 echo "\n<tr><td>&nbsp;</td>
-    <td><input type=\"submit\" class=\"icButton\" name=\"save\" value=\"" 
+    <td><input type=\"submit\" class=\"btn\" name=\"save\" value=\""
     . gettext("Save Settings") . "\">
-    <input type=\"submit\" class=\"icButton\" name=\"cancel\" value=\"" . gettext("Cancel") . "\">
+    <input type=\"submit\" class=\"btn\" name=\"cancel\" value=\"" . gettext("Cancel") . "\">
     </td></tr></table></form>";
 
 

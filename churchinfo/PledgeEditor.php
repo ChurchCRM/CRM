@@ -548,7 +548,7 @@ require "Include/Header.php";
 		<td align="left">
 		<?php if (!$dep_Closed) { ?>
 			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="PledgeSubmit">
-			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PledgeSubmitAndAdd\">"; } ?>
+			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save and Add") . "\" name=\"PledgeSubmitAndAdd\">"; } ?>
 		<?php } ?>
 			<?php if (!$dep_Closed) {
 				$cancelText = "Cancel";
