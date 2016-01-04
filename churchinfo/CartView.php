@@ -29,6 +29,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/LabelFunctions.php";
+require "Include/PersonFunctions.php";
 
 if (isset($_POST["rmEmail"]))
 {
@@ -146,7 +147,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
                         $sValidAddy = gettext("No");
 
                 echo '<tr class="' . $sRowClass . '">';
-                echo '<td><a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
+                echo '<td><img src="'. getPersonPhoto($per_ID). '" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
 
                 echo '<td align="center">' . $sValidAddy . '</td>';
                 echo '<td align="center">' . $sValidEmail . '</td>';
@@ -347,7 +348,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
 
         $sEmailForm = ""; // Initialize to empty
 
-        ?><div align="center"><table><tr><td align="center"><?php
+        ?><div align="center"><table class="table"><tr><td align="center"><?php
         echo "<br><h2>" . gettext("Send Email To People in Cart") . "</h2>";
  
         // Check if there are pending emails that have not been delivered
@@ -517,7 +518,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
             echo "<hr>\n";
 
             // Create button to edit this message.
-            echo '<div align="center"><table><tr><td>'."\n";
+            echo '<div align="center"><table class="table"><tr><td>'."\n";
             echo '<form method="post" action="EmailEditor.php">'."\n";
 
             foreach ($email_array as $email_address) {
