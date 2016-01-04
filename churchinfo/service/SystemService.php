@@ -2,6 +2,25 @@
 
 class SystemService {
 
+    function restoreDatabaseFromBackup($params){
+         global $sUSER, $sPASSWORD, $sDATABASE;
+        $file = $_FILES['restoreFile']['tmp_name'];
+        $clearCommand = "mysqldump -u $sUSER --password=$sPASSWORD  -e 'drop database  $sDATABASE'";
+        echo $clearCommand." ";
+        exec($clearCommand, $returnString, $returnStatus);
+        echo $returnString." ".$returnStatus;
+        $createCommand = "mysql -u'$sUSER' -p'$sPASSWORD' -e 'CREATE DATABASE $CRM_DB_NAME CHARACTER SET utf8;' ";
+        echo $createCommand." ";
+        exec($createCommand, $returnString, $returnStatus);
+        echo $returnString." ".$returnStatus;
+        $restoreCommand = "mysql -u $sUSER --password=$sPASSWORD $sDATABASE < $file";
+        echo $restoreCommand." ";
+        exec($restoreCommand, $returnString, $returnStatus);
+        echo $returnString." ".$returnStatus;
+        
+        echo '{"file":"'.$file.'"}';
+        
+    }
     function getDatabaseBackup($params) {
         global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME, $sGZIPname, $sZIPname, $sPGPname; 
         $backup = new StdClass();
@@ -17,7 +36,7 @@ class SystemService {
         $bNoErrors = true;
         
 
-		$backup->saveTo = "SQL/ChurchCRM-Backup-" . date("Ymd-Gis") . ".sql";
+		$backup->saveTo = "../SQL/ChurchCRM-Backup-" . date("Ymd-Gis") . ".sql";
 		$backupCommand = "mysqldump -u $sUSER --password=$sPASSWORD --host=$sSERVERNAME $sDATABASE > $backup->saveTo";
 		exec($backupCommand, $returnString, $returnStatus);
 
@@ -65,5 +84,11 @@ class SystemService {
     
     }
 
-
+    function getConfigurationSetting($settingName,$settingValue){
+        
+    }
+    
+    function setConfigurationSetting($settingName,$settingValue){
+        
+    }
 }

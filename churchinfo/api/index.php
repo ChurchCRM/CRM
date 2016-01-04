@@ -45,32 +45,23 @@ $app->container->singleton('SystemService', function () {
 $app->group('/database', function () use ($app) {
     
     $app->post('/backup', function () use ($app) {
-        $request = $app->request();
-        $body = $request->getBody();
-        $input = json_decode($body);
-        print_r($input);
-        $backup = $app->SystemService->getDatabaseBackup($input);
-        echo json_encode($backup);
+            try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            $backup = $app->SystemService->getDatabaseBackup($input);
+            echo json_encode($backup);
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
     });
     
     $app->post('/restore', function () use ($app) {
         try {
-            global $sUSER, $sPASSWORD, $sDATABASE;
-            $file = $_FILES['restoreFile']['tmp_name'];
-            $clearCommand = "mysqldump -u $sUSER --password=$sPASSWORD  -e 'drop database  $sDATABASE'";
-            echo $clearCommand." ";
-            exec($clearCommand, $returnString, $returnStatus);
-            echo $returnString." ".$returnStatus;
-            $createCommand = "mysql -u'$sUSER' -p'$sPASSWORD' -e 'CREATE DATABASE $CRM_DB_NAME CHARACTER SET utf8;' ";
-            echo $createCommand." ";
-            exec($createCommand, $returnString, $returnStatus);
-            echo $returnString." ".$returnStatus;
-            $restoreCommand = "mysql -u $sUSER --password=$sPASSWORD $sDATABASE < $file";
-            echo $restoreCommand." ";
-            exec($restoreCommand, $returnString, $returnStatus);
-            echo $returnString." ".$returnStatus;
-            
-            echo '{"file":"'.$file.'"}';
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            $app->SystemService->restoreDatabaseFromBackup($input);
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
