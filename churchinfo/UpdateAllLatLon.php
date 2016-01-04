@@ -98,7 +98,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 }
 ob_flush ();
 
-echo '<div>';
+echo '</div>';
 
 require "Include/Footer.php";
 
