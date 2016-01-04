@@ -598,7 +598,7 @@ require "Include/Header.php";
 		<table cellpadding="3">
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date:"); ?></td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="DepositDate" size="11"><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
 
 			
@@ -836,7 +836,9 @@ foreach ($depositArray as $order => $value) {
 <?php
 }
 ?>
-
+<script>
+$("#DepositDate").datepicker({format:'yyyy-mm-dd'});
+</script>
 <?php
 require "Include/Footer.php";
 ?>

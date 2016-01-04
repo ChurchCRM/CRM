@@ -446,19 +446,16 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
       <?php echo gettext("Start Date:"); ?><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>
     </td>
     <td class="TextColumn">
-      <input type="text" name="EventStartDate" value="<?php echo ($sEventStartDate); ?>" maxlength="10" id="SD" size="11">&nbsp;
-      <input type="image" onclick="return showCalendar('SD', 'y-mm-dd');" src="Images/calendar.gif">
-      <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span>
+      <input type="text" name="EventStartDate" value="<?php echo ($sEventStartDate); ?>" maxlength="10" id="EventStartDate" size="11">
       <?php if ( $bESDError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a start date.") . "</span></div>"; ?>
     </td>
     <td class="LabelColumn"><font color="#ff0000">*</font>
       <?php echo gettext("Start Time:"); ?>
     </td>
     <td class="TextColumn">
-      <select name="EventStartTime" size="1">
-      <?php createTimeDropdown($iEventPeriodStartHr,$iEventPeriodEndHr,$iEventPeriodIntervalMin,$iEventStartHour,$iEventStartMins); ?>
-      </select>
-      &nbsp;<span class="SmallText"><?php echo gettext("[format: HH:MM]"); ?></span>
+     <div class="input-group bootstrap-timepicker timepicker">
+      <input name="EventStartTime" id="EventStartTime" type="text">
+     </div>
       <?php if ( $bESTError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a start time.") . "</span></div>"; ?>
     </td>
   </tr> 
@@ -467,18 +464,15 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
       <?php echo gettext("End Date:"); ?>
     </td>
     <td class="TextColumn">
-      <input type="text" name="EventEndDate" value="<?php echo ($sEventEndDate); ?>" maxlength="10" id="ED" size="11">&nbsp;
-      <input type="image" onclick="return showCalendar('ED', 'y-mm-dd');" src="Images/calendar.gif">
-      <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span>
+      <input type="text" name="EventEndDate" value="<?php echo ($sEventEndDate); ?>" maxlength="10" id="EventEndDate" size="11">
     </td>
     <td class="LabelColumn">
       <?php echo gettext("End Time:"); ?>
     </td>
     <td class="TextColumn">
-      <select name="EventEndTime" size="1">
-      <?php createTimeDropdown($iEventPeriodStartHr,$iEventPeriodEndHr,$iEventPeriodIntervalMin,$iEventEndHour,$iEventEndMins); ?>
-      </select>
-      &nbsp;<span class="SmallText"><?php echo gettext("[format: HH:MM]"); ?></span>
+     <div class="input-group bootstrap-timepicker timepicker">
+      <input name="EventEndTime" id="EventEndTime" type="text">
+     </div>
     </td>
   </tr>  
  
@@ -535,4 +529,10 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   </tr>
 </table>
 </form>
+<script>
+$("#EventStartDate").datepicker({format:'yyyy-mm-dd'});
+$("#EventEndDate").datepicker({format:'yyyy-mm-dd'});
+$("#EventStartTime").timepicker({showMeridian: false});
+$("#EventEndTime").timepicker({showMeridian: false});
+</script>
 <?php require "Include/Footer.php"; ?>
