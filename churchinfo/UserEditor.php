@@ -428,7 +428,7 @@ if ($bShowPersonSelect) {
 
     <tr>
         <td colspan="2" align="center">
-        <input type="submit" class="icButton" <?php echo 'value="' . gettext('Save') . '"'; ?> name="save">&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext('Cancel') . '"'; ?> onclick="javascript:document.location='UserList.php';">
+        <input type="submit" class="btn" <?php echo 'value="' . gettext('Save') . '"'; ?> name="save">&nbsp;<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext('Cancel') . '"'; ?> onclick="javascript:document.location='UserList.php';">
         </td>
     </tr>
 
@@ -468,8 +468,8 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
     // Cancel, Save Buttons every 13 rows
     if ($r == 13) {
         echo "\n".'<tr><td>&nbsp;</td>
-            <td><input type="submit" class="icButton" name="save" value="'.gettext('Save Settings').'">
-            <input type="submit" class="icButton" name="cancel" value="' . gettext('Cancel') . '">
+            <td><input type="submit" class="btn" name="save" value="'.gettext('Save Settings').'">
+            <input type="submit" class="btn" name="cancel" value="' . gettext('Cancel') . '">
             </td></tr>';
         $r = 1;
     }

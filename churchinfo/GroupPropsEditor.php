@@ -130,7 +130,7 @@ if (mysql_num_rows($rsPropList) == 0)
 <form>
 <h3><?php echo gettext("This group currently has no properties!  You can add them in the Group Editor."); ?></h3>
 <BR>
-<input type="button" class="icButton" <?php echo 'value="' . gettext("Return to Person Record") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?php echo $iPersonID; ?>';">
+<input type="button" class="btn" <?php echo 'value="' . gettext("Return to Person Record") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?php echo $iPersonID; ?>';">
 </form>
 <?php
 } else {
@@ -145,9 +145,9 @@ echo "<h2>" . gettext("Editing") . " <i>" . $grp_Name . "</i> " . gettext("data 
 	<table cellpadding="3">
 		<tr>
 			<td align="center" colspan="3">
-			<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupPropSubmit">
+			<input type="submit" class="btn" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupPropSubmit">
 			&nbsp;
-			<input type="button" class="icButton" <?php echo 'value="' . gettext("Cancel") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?php echo $iPersonID; ?>';">
+			<input type="button" class="btn" <?php echo 'value="' . gettext("Cancel") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?php echo $iPersonID; ?>';">
 			<br><br>
 			</td>
 		</tr>
@@ -184,9 +184,9 @@ echo "<h2>" . gettext("Editing") . " <i>" . $grp_Name . "</i> " . gettext("data 
 		<tr>
 			<td align="center" colspan="3">
 			<br><br>
-			<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupPropSubmit">
+			<input type="submit" class="btn" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupPropSubmit">
 			&nbsp;
-			<input type="button" class="icButton" <?php echo 'value="' . gettext("Cancel") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?php echo $iPersonID; ?>';">
+			<input type="button" class="btn" <?php echo 'value="' . gettext("Cancel") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?php echo $iPersonID; ?>';">
 			</td>
 		</tr>
 	</table>

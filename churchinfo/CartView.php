@@ -86,7 +86,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
 
         if ($iNumPersons > 16) { ?>
         <form method="get" action="CartView.php#GenerateLabels">
-        <input type="submit" class="icButton" name="gotolabels" 
+        <input type="submit" class="btn" name="gotolabels"
         value="<?php echo gettext("Go To Labels");?>">
         </form>
         <?php } ?>
@@ -493,7 +493,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
             echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
             }
 
-            echo '<input type="submit" class="icButton" name="submit" '.
+            echo '<input type="submit" class="btn" name="submit" '.
                  'value ="'.gettext("Compose Email").'">'."\n</form>";
             
         } elseif ($sEmailForm == 'sendoredit') {
@@ -535,7 +535,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
 
             echo '<input type="hidden" name="mysql" value="true">'."\n";
 
-            echo '<input type="submit" class="icButton" name="submit" '.
+            echo '<input type="submit" class="btn" name="submit" '.
                      'value ="'.gettext("Edit Email").'">'."\n</form>";
 
             // Create button to send this message
@@ -556,13 +556,13 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
             }
 
             echo '<input type="hidden" name="mysql" value="true">'."\n";
-            echo '<input type="submit" class="icButton" name="submit" '.
+            echo '<input type="submit" class="btn" name="submit" '.
                      'value ="'.gettext("Send Email").'">'."\n</form>";
             // Create button to Delete this message
             echo "</td>\n<td>";
             echo '<form method="post" action="CartView.php">'."\n";
             echo '<input type="hidden" name="rmEmail" value="true">'."\n";
-            echo '<input type="submit" class="icButton" name="rmEail" '.
+            echo '<input type="submit" class="btn" name="rmEail" '.
                  'value ="'.gettext("Delete Email").'">'."\n</form>";
 
         } elseif ($sEmailForm == 'resumeorabort') {
@@ -584,7 +584,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
 
             echo '<input type="hidden" name="resume" value="true">'."\n";
 
-            echo '<input type="submit" class="icButton" name="submit" '.
+            echo '<input type="submit" class="btn" name="submit" '.
                      'value ="'.gettext("Resume").'">'."\n</form>";
 
 
@@ -596,7 +596,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
             // The default address gets the last email
             echo '<input type="hidden" name="abort" value="true">'."\n";
 
-            echo '<input type="submit" class="icButton" name="submit" '.
+            echo '<input type="submit" class="btn" name="submit" '.
                      'value ="'.gettext("Abort").'">'."\n</form>";
 
             // Create button to view log
@@ -607,7 +607,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
             // The default address gets the last email
             echo '<input type="hidden" name="viewlog" value="true">'."\n";
 
-            echo '<input type="submit" class="icButton" name="submit" '.
+            echo '<input type="submit" class="btn" name="submit" '.
                      'value ="'.gettext("View Log").'">'."\n</form>";
 
 

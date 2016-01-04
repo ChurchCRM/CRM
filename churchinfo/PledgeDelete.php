@@ -52,8 +52,8 @@ require "Include/Header.php";
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Delete"); ?>" name="Delete">
-			<input type="submit" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel">
+			<input type="submit" class="btn" value="<?php echo gettext("Delete"); ?>" name="Delete">
+			<input type="submit" class="btn" value="<?php echo gettext("Cancel"); ?>" name="Cancel">
 		</td>
 	</tr>
 </table>

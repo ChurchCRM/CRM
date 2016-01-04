@@ -159,16 +159,16 @@ if (isset($_POST["AddEvent"]))
            <td align="center">
              <form name="EditEvent" action="EventEditor.php" method="POST">
                <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
-               <input type="submit" name="Action" <?php echo 'value="' . gettext("Edit") . '"'; ?> class="icButton">
+               <input type="submit" name="Action" <?php echo 'value="' . gettext("Edit") . '"'; ?> class="btn">
              </form>
            </td>
            <td>
              <form name="DeactivateEvent" action="AddEvent.php" method="POST">
                <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
                <?php if ($aEventStatus[$row] == 0 ) { ?>
-               <input type="submit" name="Action" value="<?php echo gettext("Deactivate"); ?>" class="icButton" onClick="return confirm('Are you sure you want to DEACTIVATE Event ID: <?php echo  $aEventID[$row]; ?>')">
+               <input type="submit" name="Action" value="<?php echo gettext("Deactivate"); ?>" class="btn" onClick="return confirm('Are you sure you want to DEACTIVATE Event ID: <?php echo  $aEventID[$row]; ?>')">
                 <?php } else { ?>
-               <input type="submit" name="Action" value="<?php echo gettext("Activate"); ?>" class="icButton">
+               <input type="submit" name="Action" value="<?php echo gettext("Activate"); ?>" class="btn">
                 <?php } ?>
              </form>
            </td>
@@ -299,7 +299,7 @@ $sSQL = "SELECT * FROM `event_types`";
                             </td>
                           </tr>
                           <tr>
-                            <td colspan="4" align="center"><input type="submit" Name="AddEvent" <?php echo 'value="' . gettext("Add Event") . '"'; ?> class="icButton"></td>
+                            <td colspan="4" align="center"><input type="submit" Name="AddEvent" <?php echo 'value="' . gettext("Add Event") . '"'; ?> class="btn"></td>
                           </tr>
                         </table>
                         </form>

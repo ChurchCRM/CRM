@@ -547,7 +547,7 @@ require "Include/Header.php";
 	<tr>
 		<td align="left">
 		<?php if (!$dep_Closed) { ?>
-			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="PledgeSubmit">
+			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="PledgeSubmit">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PledgeSubmitAndAdd\">"; } ?>
 		<?php } ?>
 			<?php if (!$dep_Closed) {
@@ -555,7 +555,7 @@ require "Include/Header.php";
 			} else {
 				$cancelText = "Return";
 			} ?>	
-			<input type="button" class="icButton" value="<?php echo gettext($cancelText); ?>" name="PledgeCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="button" class="btn" value="<?php echo gettext($cancelText); ?>" name="PledgeCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -569,7 +569,7 @@ require "Include/Header.php";
 				<td class="PaymentLabelColumn"><?php echo gettext("Envelope #"); ?></td>
 				<td class="TextColumn"><input type="text" name="Envelope" size=8 id="Envelope" value="<?php echo $iEnvelope; ?>">
 				<?php if (!$dep_Closed) { ?>
-				<input type="submit" class="icButton" value="<?php echo gettext("Find family->"); ?>" name="MatchEnvelope">
+				<input type="submit" class="btn" value="<?php echo gettext("Find family->"); ?>" name="MatchEnvelope">
 				<?php } ?>
 			</td>
 			</tr>
@@ -628,7 +628,7 @@ require "Include/Header.php";
 						} ?>
 					</select>
 					<?php if (!$dep_Closed) { ?>
-					<input type="submit" class="icButton" name="SetFundTypeSelection" value="<-Set">
+					<input type="submit" class="btn" name="SetFundTypeSelection" value="<-Set">
 					<?php } ?>
 				</td>
 			</tr>
@@ -702,7 +702,7 @@ $(document).ready(function() {
 
 				<?php if (!$iSelectedFund and !$dep_Closed) { ?>
 
-				<input type="submit" class="icButton" value="<?php echo gettext("Split to Funds by pledge"); ?>" name="SplitTotal"></td>
+				<input type="submit" class="btn" value="<?php echo gettext("Split to Funds by pledge"); ?>" name="SplitTotal"></td>
 
 			<?php } ?>
 
@@ -755,8 +755,8 @@ $(document).ready(function() {
 
 			<td align="center">
 			<?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
-				<input type="submit" class="icButton" value="<?php echo gettext("find family from check account #"); ?>" name="MatchFamily">
-				<input type="submit" class="icButton" value="<?php echo gettext("Set default check account number for family"); ?>" name="SetDefaultCheck">
+				<input type="submit" class="btn" value="<?php echo gettext("find family from check account #"); ?>" name="MatchFamily">
+				<input type="submit" class="btn" value="<?php echo gettext("Set default check account number for family"); ?>" name="SetDefaultCheck">
 	        <?php } ?>
 			</td>
 		</tr>

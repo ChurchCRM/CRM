@@ -184,9 +184,9 @@ require "Include/Header.php";
 <table cellpadding="3" align="center"> <!-- Table for the whole form -->
 	<tr> <!-- Row of buttons across the top -->
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="DonatedItemSubmit">
+			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DonatedItemSubmit">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"DonatedItemSubmitAndAdd\">"; } ?>
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="DonatedItemCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="DonatedItemCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -284,7 +284,7 @@ require "Include/Header.php";
 				<tr>
 					<td class="LabelColumn"><?php echo gettext("Replicate item"); ?></td>
 					<td class="TextColumn"><input type="text" name="NumberCopies" id="NumberCopies" value="0"></td>
-					<td><input type="button" class="icButton" value="<?php echo gettext("Go"); ?>" name="DonatedItemReplicate" onclick="javascript:document.location='DonatedItemReplicate.php?DonatedItemID=<?php echo $iDonatedItemID;?>&Count='+NumberCopies.value"></td>
+					<td><input type="button" class="btn" value="<?php echo gettext("Go"); ?>" name="DonatedItemReplicate" onclick="javascript:document.location='DonatedItemReplicate.php?DonatedItemID=<?php echo $iDonatedItemID;?>&Count='+NumberCopies.value"></td>
 				</tr>
 				
 			</table>

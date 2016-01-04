@@ -58,7 +58,7 @@ if ($resArr) {
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Back"); ?>" name="Back">
+			<input type="submit" class="btn" value="<?php echo gettext("Back"); ?>" name="Back">
 		</td>
 	</tr>
 </table>

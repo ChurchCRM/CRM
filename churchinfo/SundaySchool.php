@@ -207,9 +207,9 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 	</tr>
 
    <tr>
-      <td><input type="submit" class="icButton" name="SubmitClassList" <?php echo 'value="' . gettext("Create Class List") . '"'; ?>></td>
-      <td><input type="submit" class="icButton" name="SubmitClassAttendance" <?php echo 'value="' . gettext("Create Attendance Sheet") . '"'; ?>></td>
-      <td><input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';"></td>
+      <td><input type="submit" class="btn" name="SubmitClassList" <?php echo 'value="' . gettext("Create Class List") . '"'; ?>></td>
+      <td><input type="submit" class="btn" name="SubmitClassAttendance" <?php echo 'value="' . gettext("Create Attendance Sheet") . '"'; ?>></td>
+      <td><input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';"></td>
    </tr>
 
 </table>

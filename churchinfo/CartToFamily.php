@@ -320,7 +320,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" value="<?php echo gettext("Add to Family"); ?>">
+<input type="submit" class="btn" name="Submit" value="<?php echo gettext("Add to Family"); ?>">
 <BR><BR>
 </p>
 </form>
