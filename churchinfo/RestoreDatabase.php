@@ -26,11 +26,21 @@ if (!$_SESSION['bAdmin'])
 $sPageTitle = gettext("Restore Database");
 require 'Include/Header.php';
 ?>
+<div class="box">
+<div class="box-header">
+<h3>Select Databse Files</h3>
+</div>
+<div class="box-content">
+<p>Select a backup file to restore</p>
+<p>CAUTION: This will completely erase the existing database, and replace it with the backup</p>
+<p>If you uplload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema</p>
 
 <form id="fileupload" action="/api/database/restore" method="POST" enctype="multipart/form-data">
 <input type="file" name="restoreFile" multiple=""></span>     
 <button type="submit">Upload Files</button>
 </form>
+</div>
+</div>
 
 <!-- PACE -->
 <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/pace/pace.min.js"></script>
