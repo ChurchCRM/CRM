@@ -31,7 +31,7 @@ $sPageTitle = gettext("Directory reports");
 require "Include/Header.php";
 
 ?>
-
+<div class="box box-body">
 <form method="POST" action="Reports/DirectoryReport.php">
 
 <?php
@@ -77,7 +77,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
 
 ?>
 
-<table align="center">
+<table align="center" class="table">
 <?php if (!array_key_exists ('cartdir', $_GET))
 {
 ?>
@@ -280,11 +280,11 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
 
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Create Directory") . '"'; ?>>
-<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';">
+<input type="submit" class="btn btn-primary" name="Submit" <?php echo 'value="' . gettext("Create Directory") . '"'; ?>>
+<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';">
 </p>
 </form>
-
+</div>
 <?php
 require "Include/Footer.php";
 ?>
