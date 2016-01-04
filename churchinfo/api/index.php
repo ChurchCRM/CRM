@@ -20,6 +20,7 @@ Slim::registerAutoloader();
 require_once "../service/PersonService.php";
 require_once "../service/FamilyService.php";
 require_once "../service/DataSeedService.php";
+require_once "../service/SystemService.php";
 
 $app = new Slim();
 
@@ -36,9 +37,22 @@ $app->container->singleton('FamilyService', function () {
 $app->container->singleton('DataSeedService', function () {
     return new DataSeedService();
 });
+$app->container->singleton('SystemService', function () {
+    return new SystemService();
+});
 
 
 $app->group('/database', function () use ($app) {
+    
+    $app->post('/backup', function () use ($app) {
+        $request = $app->request();
+        $body = $request->getBody();
+        $input = json_decode($body);
+        print_r($input);
+        $backup = $app->SystemService->getDatabaseBackup($input);
+        echo json_encode($backup);
+    });
+    
     $app->post('/restore', function () use ($app) {
         try {
             global $sUSER, $sPASSWORD, $sDATABASE;

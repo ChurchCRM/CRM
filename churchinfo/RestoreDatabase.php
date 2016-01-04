@@ -28,9 +28,9 @@ require 'Include/Header.php';
 ?>
 <div class="box">
 <div class="box-header">
-<h3>Select Databse Files</h3>
+<h3 class="box-title">Select Databse Files</h3>
 </div>
-<div class="box-content">
+<div class="box-body">
 <p>Select a backup file to restore</p>
 <p>CAUTION: This will completely erase the existing database, and replace it with the backup</p>
 <p>If you uplload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema</p>
