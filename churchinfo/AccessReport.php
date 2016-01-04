@@ -29,9 +29,9 @@ require 'Include/Header.php';
 
 <p align="center">
 <br>
-<input type="submit" class="icButton" name="Submit" <?php 
+<input type="submit" class="btn" name="Submit" <?php
     echo 'value="' . gettext('Create Report') . '"'; ?>>
-<input type="button" class="icButton" name="Cancel" <?php 
+<input type="button" class="btn" name="Cancel" <?php
     echo 'value="' . gettext('Cancel') . '"'; ?> onclick="javascript:document.location='Menu.php';">
 </p>
 </form>

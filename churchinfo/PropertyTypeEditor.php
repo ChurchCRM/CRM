@@ -113,7 +113,7 @@ require "Include/Header.php";
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="document.location='PropertyTypeList.php';">
+			<input type="submit" class="btn" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>&nbsp;<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="document.location='PropertyTypeList.php';">
 		</td>
 	</tr>
 </table>

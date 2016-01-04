@@ -115,8 +115,8 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 	// Cancel, Save Buttons every 13 rows
 	if ($r == 13) {
 		echo "<tr><td>&nbsp;</td>
-			<td><input type=submit class=icButton name=save value='" . gettext("Save Settings") . "'>
-			<input type=submit class=icButton name=cancel value='" . gettext("Cancel") . "'>
+			<td><input type=submit class=btn name=save value='" . gettext("Save Settings") . "'>
+			<input type=submit class=btn name=cancel value='" . gettext("Cancel") . "'>
 			</td></tr>";
 		$r = 1;
 	}
@@ -159,8 +159,8 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 
 // Cancel, Save Buttons
 echo "<tr><td>&nbsp;</td>
-	<td><input type=submit class=icButton name=save value='" . gettext("Save Settings") . "'>
-	<input type=submit class=icButton name=cancel value='" . gettext("Cancel") . "'>
+	<td><input type=submit class=btn name=save value='" . gettext("Save Settings") . "'>
+	<input type=submit class=btn name=cancel value='" . gettext("Cancel") . "'>
 	</td></tr></table></form>";
 
 require "Include/Footer.php";

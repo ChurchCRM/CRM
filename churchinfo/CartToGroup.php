@@ -117,7 +117,9 @@ function updateGroupRoles(generated_html)
 	}
 }
 </script>
-
+<!-- Default box -->
+<div class="box">
+	<div class="box-body">
 <p align="center"><?php echo gettext("Select the group to which you would like to add your cart:"); ?></p>
 <form method="post">
 <table align="center">
@@ -142,12 +144,13 @@ function updateGroupRoles(generated_html)
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" value=<?php echo '"' . gettext("Add to Group") . '"'; ?>>
+<input type="submit" class="btn btn-primary" name="Submit" value=<?php echo '"' . gettext("Add to Group") . '"'; ?>>
 <BR><BR>--<?php echo gettext("OR"); ?>--<BR><BR>
-<a href="GroupEditor.php?EmptyCart=yes"><?php echo gettext("Create a New Group"); ?></a>
+<a href="GroupEditor.php?EmptyCart=yes" class="btn btn-info"><i class="fa fa-add"></i><?php echo gettext("Create a New Group"); ?></a>
 <BR><BR>
 </p>
 </form>
+</div></div>
 <?php
 }
 else

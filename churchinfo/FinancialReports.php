@@ -60,9 +60,9 @@ if ($sReportType == "") {
 	echo "</td></tr>";
 	// First Pass Cancel, Next Buttons
   	echo "<tr><td>&nbsp;</td>
-		<td><input type=button class=icButton name=Cancel value='".gettext("Cancel")."' 
+		<td><input type=button class=btn name=Cancel value='".gettext("Cancel")."'
 		onclick=\"javascript:document.location='ReportList.php';\">
-		<input type=submit class=icButton name=Submit1 value='" . gettext("Next") . "'>
+		<input type=submit class=btn name=Submit1 value='" . gettext("Next") . "'>
 		</td></tr>
 		</table></form>";
 
@@ -305,9 +305,9 @@ if ($sReportType == "") {
 	
 	// Back, Next Buttons
 	echo "<tr><td>&nbsp;</td>
-		<td><input type=button class=icButton name=Cancel value='" . gettext("Back") . "' 
+		<td><input type=button class=btn name=Cancel value='" . gettext("Back") . "'
 		onclick=\"javascript:document.location='FinancialReports.php';\">
-		<input type=submit class=icButton name=Submit2 value='" . gettext("Create Report") . "'>
+		<input type=submit class=btn name=Submit2 value='" . gettext("Create Report") . "'>
 		</td></tr></table></form>";
 }
 ?>

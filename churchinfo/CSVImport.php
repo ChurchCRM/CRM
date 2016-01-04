@@ -295,7 +295,7 @@ if (isset($_POST["UploadCSV"]))
         </select>
         <?= gettext("Classification"); ?>
         <BR><BR>
-        <input type="submit" class="icButton" value="<?= gettext("Perform Import"); ?>" name="DoImport">
+        <input type="submit" class="btn" value="<?= gettext("Perform Import"); ?>" name="DoImport">
         </form>
 
         <?php
@@ -871,13 +871,13 @@ if ($iStage == 1)
         <p style="color: red">' . $csvError . '</p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
         <input class="icTinyButton" type="file" name="CSVfile">
-        <input type="submit" class="icButton" value="' . gettext("Upload CSV File") . '"
+        <input type="submit" class="btn" value="' . gettext("Upload CSV File") . '"
         name="UploadCSV">
         </form><br/><br/><br/><br/>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">'
         .gettext("Are you sure?"). '
         <input type="checkbox" name="chkClear" value=' . "'0'>" . '
-        <input type="submit" class="icButton" value="'. gettext("Clear Persons and Families").'"
+        <input type="submit" class="btn" value="'. gettext("Clear Persons and Families").'"
         name="Clear">
         <p style="color: red">' .
         gettext("Warning!  Do not select this option if you plan to add to an existing database.<br/>") .

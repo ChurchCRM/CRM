@@ -282,7 +282,7 @@ if ($numRows == 0)
 {
 ?>
 	<center><h2><?php echo gettext("No properties have been added yet"); ?></h2>
-	<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
+	<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
 	</center>
 <?php
 }
@@ -301,9 +301,9 @@ else
 
 		<tr>
 			<td colspan="7" align="center">
-			<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
+			<input type="submit" class="btn" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
 			&nbsp;
-			<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
+			<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
 			</td>
 		</tr>
 
@@ -389,9 +389,9 @@ else
 				<tr>
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
+						<input type="submit" class="btn" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
 						&nbsp;
-						<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
+						<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -434,7 +434,7 @@ else
 						&nbsp;
 					</td>
 					<td>
-						<input type="submit" class="icButton" <?php echo 'value="' . gettext("Add New Field") . '"'; ?> Name="AddField">
+						<input type="submit" class="btn" <?php echo 'value="' . gettext("Add New Field") . '"'; ?> Name="AddField">
 					</td>
 					<td width="15%"></td>
 				</tr>

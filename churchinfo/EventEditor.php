@@ -404,7 +404,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
         ?></h3>
   </caption>
   <tr>
-    <td colspan="4" align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
+    <td colspan="4" align="center"><input type="button" class="btn" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
   </tr>
   <tr>
     <td colspan="4" align="center">
@@ -525,7 +525,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   </tr>
   
   <tr>
-    <td colspan="2" align="center"><input type="submit" name="SaveChanges" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> class="icButton"></td>
+    <td colspan="2" align="center"><input type="submit" name="SaveChanges" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> class="btn"></td>
   </tr>
 </table>
 </form>

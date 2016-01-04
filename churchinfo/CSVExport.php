@@ -388,7 +388,7 @@ require "Include/Header.php";
     </tr>
     <tr>
         <td>&nbsp;</td>
-        <td><input type="submit" class="icButton" value=<?php echo "\"" . gettext("Create File") . "\""; ?> name="Submit"></td>
+        <td><input type="submit" class="btn" value=<?php echo "\"" . gettext("Create File") . "\""; ?> name="Submit"></td>
     </tr>
     </table>
     </td>

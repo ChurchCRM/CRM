@@ -137,7 +137,7 @@ function updateGroupRoles(generated_html)
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" value="<?php echo gettext("Add to Group"); ?>">
+<input type="submit" class="btn" name="Submit" value="<?php echo gettext("Add to Group"); ?>">
 <BR><BR>
 </p>
 </form>

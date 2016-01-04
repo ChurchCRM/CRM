@@ -323,9 +323,9 @@ function confirmAdd() {
 
 		<tr>
 			<td colspan="2" align="center">
-				<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupSubmit">
+				<input type="submit" class="btn" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupSubmit">
 				&nbsp;
-				<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="GroupCancel" onclick="javascript:document.location='<?php
+				<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="GroupCancel" onclick="javascript:document.location='<?php
 				if (strlen($iGroupID) > 0)
 					echo "GroupView.php?GroupID=$iGroupID';\">";
 				else
