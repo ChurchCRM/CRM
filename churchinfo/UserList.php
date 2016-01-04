@@ -48,19 +48,25 @@ $sPageTitle = gettext("User Listing");
 require "Include/Header.php";
 
 ?>
-
-<p align="center"><a href="UserEditor.php"><?php echo gettext("Add a New User"); ?></a></p>
-
-<table cellpadding="4" align="center" cellspacing="0" width="100%">
-	<tr class="TableHeader">
-		<td><b><?php echo gettext("Name"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Last Login"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Total Logins"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Failed Logins"); ?></b></td>
-		<td align="center" colspan="2"><b><?php echo gettext("Password"); ?></b></td>
-		<td><b><?php echo gettext("Edit"); ?></b></td>
-		<td><b><?php echo gettext("Delete"); ?></b></td>
-	</tr>
+<!-- Default box -->
+    <div class="box">
+        <div class="box-body">
+            <a href="UserEditor.php" class="btn btn-app"><i class="fa fa-user-plus"></i>New User</a>
+            <a href="SettingsUser.php" class="btn btn-app"><i class="fa fa-wrench"></i>User Settings</a>
+        </div>
+    </div>
+<div class="box">
+    <div class="box-body no-padding">
+        <table class="table table-hover">
+            <tr>
+                <td><b><?php echo gettext("Edit"); ?></b></td>
+                <td><b><?php echo gettext("Name"); ?></b></td>
+                <td align="center"><b><?php echo gettext("Last Login"); ?></b></td>
+                <td align="center"><b><?php echo gettext("Total Logins"); ?></b></td>
+                <td align="center"><b><?php echo gettext("Failed Logins"); ?></b></td>
+                <td align="center" colspan="2"><b><?php echo gettext("Password"); ?></b></td>
+                <td><b><?php echo gettext("Delete"); ?></b></td>
+            </tr>
 <?php
 
 //Set the initial row color
@@ -76,7 +82,8 @@ while ($aRow = mysql_fetch_array($rsUsers)) {
 
 	//Display the row
 ?>
-	<tr class="<?php echo $sRowClass; ?>">
+	<tr>
+        <td><a href="UserEditor.php?PersonID=<?php echo $per_ID; ?>"><?php echo gettext("Edit"); ?></a></td>
 		<td>
 		<?php
 			echo "<a href=\"PersonView.php?PersonID=" . $per_ID . "\">" . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . "</a>";
@@ -94,13 +101,16 @@ while ($aRow = mysql_fetch_array($rsUsers)) {
 		</td>
 		<td align="right"><a href="UserPasswordChange.php?PersonID=<?php echo $per_ID; ?>&FromUserList=True"><?php echo gettext("Change"); ?></a></td>
 		<td align="left"><?php if ($per_ID != $_SESSION['iUserID']) echo "<a href=\"UserReset.php?PersonID=$per_ID&FromUserList=True\">" . gettext("Reset") . "</a>"; else echo "&nbsp;"; ?></td>
-		<td><a href="UserEditor.php?PersonID=<?php echo $per_ID; ?>"><?php echo gettext("Edit"); ?></a></td>
 		<td><a href="UserDelete.php?PersonID=<?php echo $per_ID; ?>"><?php echo gettext("Delete"); ?></a></td>
 	</tr>
 <?php
 }
 ?>
 </table>
+	</div>
+	<!-- /.box-body -->
+</div>
+<!-- /.box -->
 
 <?php
 require "Include/Footer.php";
