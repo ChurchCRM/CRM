@@ -50,14 +50,14 @@ $app->group('/database', function () use ($app) {
             $input = json_decode($body);
             $backup = $app->SystemService->getDatabaseBackup($input);
             echo json_encode($backup);
-      
     });
     
     $app->post('/restore', function () use ($app) {
         try {
             $request = $app->request();
             $body = $request->getBody();
-            $app->SystemService->restoreDatabaseFromBackup();
+            $restore = $app->SystemService->restoreDatabaseFromBackup();
+            echo json_encode($restore);
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

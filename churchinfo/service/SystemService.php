@@ -3,22 +3,38 @@
 class SystemService {
 
     function restoreDatabaseFromBackup(){
+        $restoreResult = new StdClass();
         global $sUSER, $sPASSWORD, $sDATABASE;
-        $file = $_FILES['restoreFile']['tmp_name'];
-        $clearCommand = "mysqldump -u $sUSER --password=$sPASSWORD  -e 'drop database  $sDATABASE'";
-        echo $clearCommand." ";
-        exec($clearCommand, $returnString, $returnStatus);
-        echo $returnString." ".$returnStatus;
-        $createCommand = "mysql -u'$sUSER' -p'$sPASSWORD' -e 'CREATE DATABASE $CRM_DB_NAME CHARACTER SET utf8;' ";
-        echo $createCommand." ";
-        exec($createCommand, $returnString, $returnStatus);
-        echo $returnString." ".$returnStatus;
-        $restoreCommand = "mysql -u $sUSER --password=$sPASSWORD $sDATABASE < $file";
-        echo $restoreCommand." ";
-        exec($restoreCommand, $returnString, $returnStatus);
-        echo $returnString." ".$returnStatus;
+        $file = $_FILES['restoreFile'];
+        print_r($file);
+        if ($file['type'] ==  "application/x-gzip" )
+        {
+            exec ("mkdir /tmp/restore_unzip");
+            $restoreResult->uncompressCommand = "tar -zxvf ".$file['tmp_name']." --directory /tmp/restore_unzip";
+            exec($restoreResult->uncompressCommand, $returnString, $returnStatus);
+            $restoreResult->returnString = $returnString;
+            $restoreResult->restoreCommand = "mysql -u $sUSER --password=$sPASSWORD $sDATABASE < /tmp/restore_unzip/SQL/*.sql";
+            exec ("rm -rf ../Images");
+            exec ("mv -f /tmp/restore_unzip/Images/* ../Images");
+        }
+        else
+        {
+             $restoreResult->restoreCommand = "mysql -u $sUSER --password=$sPASSWORD $sDATABASE < ".$file['tmp_name'];
+        }
         
-        echo '{"file":"'.$file.'"}';
+        $restoreResult->clearCommand = "mysqldump -u $sUSER --password=$sPASSWORD  -e 'drop database  $sDATABASE'";
+        exec($restoreResult->clearCommand, $returnString, $returnStatus);
+        $restoreResult->clearReturn = $returnString;
+
+        $restoreResult->createCommand = "mysql -u'$sUSER' -p'$sPASSWORD' -e 'CREATE DATABASE $sDATABASE CHARACTER SET utf8;' ";
+        exec($restoreResult->createCommand, $returnString, $returnStatus);
+        
+       
+        exec($restoreResult->restoreCommand, $returnString, $returnStatus);
+        
+        #exec ("rm -rf /tmp/restore_unzip");
+        
+       return $restoreResult;
         
     }
     function getDatabaseBackup($params) {
