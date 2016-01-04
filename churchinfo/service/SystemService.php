@@ -4,16 +4,16 @@ class SystemService {
 
     function restoreDatabaseFromBackup(){
         $restoreResult = new StdClass();
-        global $sUSER, $sPASSWORD, $sDATABASE;
+        global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral;
         $file = $_FILES['restoreFile'];
         print_r($file);
         if ($file['type'] ==  "application/x-gzip" )
         {
             exec ("mkdir /tmp/restore_unzip");
             $restoreResult->uncompressCommand = "tar -zxvf ".$file['tmp_name']." --directory /tmp/restore_unzip";
-            exec($restoreResult->uncompressCommand, $returnString, $returnStatus);
-            $restoreResult->returnString = $returnString;
-            $restoreResult->restoreCommand = "mysql -u $sUSER --password=$sPASSWORD $sDATABASE < /tmp/restore_unzip/SQL/*.sql";
+            exec($restoreResult->uncompressCommand, $rs1, $returnStatus);
+            #$restoreResult->uncompressReturn = $rs1;
+            $restoreResult->restoreCommand = "mysql -u$sUSER --password=$sPASSWORD $sDATABASE < /tmp/restore_unzip/SQL/*.sql";
             exec ("rm -rf ../Images");
             exec ("mv -f /tmp/restore_unzip/Images/* ../Images");
         }
@@ -21,16 +21,14 @@ class SystemService {
         {
              $restoreResult->restoreCommand = "mysql -u $sUSER --password=$sPASSWORD $sDATABASE < ".$file['tmp_name'];
         }
+                
+    
+        echo $restoreResult->restoreCommand;
         
-        $restoreResult->clearCommand = "mysqldump -u $sUSER --password=$sPASSWORD  -e 'drop database  $sDATABASE'";
-        exec($restoreResult->clearCommand, $returnString, $returnStatus);
-        $restoreResult->clearReturn = $returnString;
-
-        $restoreResult->createCommand = "mysql -u'$sUSER' -p'$sPASSWORD' -e 'CREATE DATABASE $sDATABASE CHARACTER SET utf8;' ";
-        exec($restoreResult->createCommand, $returnString, $returnStatus);
+        exec($restoreResult->restoreCommand,$rs4,$rs4s);
+        $restoreResult->restoreReturn = $rs4;
+        $restoreResult->restoreReturnStatus = $rs4s;
         
-       
-        exec($restoreResult->restoreCommand, $returnString, $returnStatus);
         
         #exec ("rm -rf /tmp/restore_unzip");
         
