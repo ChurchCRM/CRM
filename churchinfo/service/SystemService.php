@@ -3,7 +3,7 @@
 class SystemService {
 
     function restoreDatabaseFromBackup($params){
-         global $sUSER, $sPASSWORD, $sDATABASE;
+        global $sUSER, $sPASSWORD, $sDATABASE;
         $file = $_FILES['restoreFile']['tmp_name'];
         $clearCommand = "mysqldump -u $sUSER --password=$sPASSWORD  -e 'drop database  $sDATABASE'";
         echo $clearCommand." ";
@@ -26,7 +26,7 @@ class SystemService {
         $backup = new StdClass();
         $backup->headers = array();
         // Delete any old backup files
-        //exec("rm -f SQL/InfoCentral-Backup*");
+        exec("rm -f ../SQL/*");
         // Check to see whether this installation has gzip, zip, and gpg
         if (isset($sGZIPname)) $hasGZIP = true;
         if (isset($sZIPname)) $hasZIP = true;
@@ -76,7 +76,7 @@ class SystemService {
 				array_push($backup->headers, "Content-type: application/pgp-encrypted");
 		}
 
-		$backup->filename = substr($backup->saveTo, 4);
+		$backup->filename = substr($backup->saveTo, 7);
 		array_push($backup->headers, "Content-Disposition: attachment; filename=$backup->filename");
 
 		return $backup;
