@@ -27,8 +27,10 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 require "Include/GeoCoder.php";
-
+$sPageTitle = gettext("Update Latitude & Longitude");
 require "Include/Header.php";
+
+echo '<div class="box box-body">';
 
 // Lookup unknown coodinates first.  To do this set latitude = -99 for
 // every unknown record.
@@ -95,4 +97,9 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     "," . $fam_City . "," . $fam_State . "," . $fam_Zip . "</p>";
 }
 ob_flush ();
+
+echo '<div>';
+
+require "Include/Footer.php";
+
 ?>
