@@ -21,11 +21,15 @@ require "Include/Functions.php";
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bAdmin'] || !$bEnableBackupUtility)
+if (!$_SESSION['bAdmin'])
 {
 	Redirect("Menu.php");
 	exit;
 }
+
+if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+    die ("The Backup Utility will not work on a Windows based Server");
+} 
 
 // Delete any old backup files
 exec("rm -f SQL/InfoCentral-Backup*");
