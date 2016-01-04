@@ -41,16 +41,16 @@ $sPageTitle = gettext("View Your Cart");
 require "Include/Header.php";
 // Confirmation message that people where added to Event from Cart
 if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart']) == 0) {
-        if (!array_key_exists("Message", $_GET)) {
-            echo "<p align=\"center\" class=\"LargeText\">" . gettext("You have no items in your cart.") . "</p>";
-        } else {
+        if (!array_key_exists("Message", $_GET)) {?>
+            <p class="text-center callout callout-warning"><?= gettext("You have no items in your cart.") ;?> </p>
+        <? } else {
             switch ($_GET["Message"]) {
-                case "aMessage":
-                    echo '<p align="center" class="LargeText">'.$_GET["iCount"].' '.($_GET["iCount"] == 1 ? "Record":"Records").' Emptied into Event ID:'.$_GET["iEID"].'</p>'."\n";
-                break;
+                case "aMessage": ?>
+                    <p class="text-center callout callout-info"><?= $_GET["iCount"].' '.($_GET["iCount"] == 1 ? "Record":"Records").' Emptied into Event ID:'.$_GET["iEID"] ;?> </p>
+                <? break;
             }
         }
-        echo '<p align="center"><input type="button" name="Exit" class="icButton" value="'.gettext("Back to Menu").'" '."onclick=\"javascript:document.location='Menu.php';\"></p>\n";
+        echo '<p align="center"><input type="button" name="Exit" class="btn btn-primary" value="'.gettext("Back to Menu").'" '."onclick=\"javascript:document.location='Menu.php';\"></p>\n";
 
 } else {
 
