@@ -57,8 +57,7 @@ $app->group('/database', function () use ($app) {
         try {
             $request = $app->request();
             $body = $request->getBody();
-            $input = json_decode($body);
-            #$app->SystemService->restoreDatabaseFromBackup($input);
+            $app->SystemService->restoreDatabaseFromBackup();
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

@@ -59,6 +59,7 @@ require "Include/Header.php";
         <?php if ($hasGZIP) { ?><input type="radio" name="archiveType" value="0"><?php echo gettext("GZip"); ?><?php } ?>
         <?php if ($hasZIP) { ?><input type="radio" name="archiveType" value="1"><?php echo gettext("Zip"); ?><?php } ?>
         <input type="radio" name="archiveType" value="2" checked><?php echo gettext("Uncompressed"); ?>
+        <input type="radio" name="archiveType" value="3" checked><?php echo gettext("tar.gz (Include Photos)"); ?>
         <BR><BR>
         <?php if ($hasPGP) { ?>
         <input type="checkbox" name="encryptBackup" value="1"><?php echo gettext("Encrypt backup file with a password?"); ?>

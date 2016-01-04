@@ -2,7 +2,7 @@
 
 class SystemService {
 
-    function restoreDatabaseFromBackup($params){
+    function restoreDatabaseFromBackup(){
         global $sUSER, $sPASSWORD, $sDATABASE;
         $file = $_FILES['restoreFile']['tmp_name'];
         $clearCommand = "mysqldump -u $sUSER --password=$sPASSWORD  -e 'drop database  $sDATABASE'";
@@ -44,15 +44,28 @@ class SystemService {
 		{
 			case 0:
 				$compressCommand = "$sGZIPname $backup->saveTo";
+                $backup->compressCommand = $compressCommand;
 				$backup->saveTo .= ".gz";
 				exec($compressCommand, $returnString, $returnStatus);
+                $backup->archiveResult = $returnString;
 				break;
 			case 1:
 				$archiveName = substr($backup->saveTo, 0, -4);
 				$compressCommand = "$sZIPname $archiveName $backup->saveTo";
+                $backup->compressCommand = $compressCommand;
 				$backup->saveTo = $archiveName . ".zip";
 				exec($compressCommand, $returnString, $returnStatus);
+                $backup->archiveResult = $returnString;
 				break;
+            case 3:
+                $archiveName = substr($backup->saveTo, 0, -4).".tar.gz";
+				$compressCommand = "tar -zcvf $archiveName $backup->saveTo ../Images/*";
+                $backup->compressCommand = $compressCommand;
+				$backup->saveTo = $archiveName;
+				exec($compressCommand, $returnString, $returnStatus);
+                $backup->archiveResult = $returnString;
+				break;
+             
 		}
 
 		if ($params->bEncryptBackup)
