@@ -233,13 +233,17 @@ global $security_matrix, $sURLPath;
     {
         if($link){
             echo "<li><a href='$link'>";
-            if ($aMenu['icon'] != "") {
+            if (    $aMenu['icon'] != "") {
                 echo "<i class=\"fa ". $aMenu['icon'] ."\"></i>";
             }
             if ($aMenu['parent'] != "root") {
                 echo "<i class=\"fa fa-angle-double-right\"></i> ";
             }
-            echo $aMenu['content']."</a>";
+            if ($aMenu['parent'] == "root") {
+                echo "<span>".$aMenu['content'] . "</span></a>";
+            } else {
+                echo $aMenu['content'] . "</a>";
+            }
         } else {
             echo "<li class=\"treeview\">\n";
             echo "    <a href=\"#\">\n";
