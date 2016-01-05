@@ -225,8 +225,9 @@ require 'Include/Header.php';
                     <ul class="users-list clearfix">
                         <?php while ($row = mysql_fetch_array($rsNewPeople)) { ?>
                         <li>
-                            <img src="<?= getPersonPhoto($row['per_ID']); ?>" alt="User Image">
-                            <a class="users-list-name" href="PersonView.php?PersonID=<?= $row['per_ID'];?>"><?= $row['per_FirstName']." ".$row['per_LastName'];?></a>
+                            <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'];?>">
+                            <img src="<?= getPersonPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="100" height="100">
+                            <?= $row['per_FirstName']." ".$row['per_LastName'];?></a>
                             <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false);?></span>
                         </li>
                         <?php } ?>
@@ -253,8 +254,9 @@ require 'Include/Header.php';
                     <ul class="users-list clearfix">
                         <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
                             <li>
-                                <img src="<?= getPersonPhoto($row['per_ID']); ?>" alt="User Image">
-                                <a class="users-list-name" href="PersonView.php?PersonID=<?= $row['per_ID'];?>"><?= $row['per_FirstName']." ".$row['per_LastName'];?></a>
+                                <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'];?>">
+                                <img src="<?= getPersonPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="100" height="100" />
+                                <?= $row['per_FirstName']." ".$row['per_LastName'];?></a>
                                 <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false);?></span>
                             </li>
                         <?php } ?>
