@@ -115,7 +115,6 @@ if (isset($_POST["AddEvent"]))
 
 // Construct the form
 ?>
-<div class="row">
 <div class="box">
 	<div class="box-header">
 		<h3 class="box-title">
@@ -307,7 +306,6 @@ $sSQL = "SELECT * FROM `event_types`";
                       </td>
                 </tr>
             </table>
-           </div>
     </div>
  </div>
 
