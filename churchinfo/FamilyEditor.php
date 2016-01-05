@@ -1051,9 +1051,9 @@ require "Include/Header.php";
 	echo "<td colspan=\"2\" align=\"center\">";
 	echo "<input type=\"hidden\" Name=\"UpdateBirthYear\" value=\"".$UpdateBirthYear."\">";
 
-	echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\">";
-	if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"Save and Add\" name=\"FamilySubmitAndAdd\">"; }
-	echo "<input type=\"button\" class=\"icButton\" value=\"" . gettext("Cancel") . "\" Name=\"FamilyCancel\"";
+	echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\">";
+	if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn\" value=\"Save and Add\" name=\"FamilySubmitAndAdd\">"; }
+	echo "<input type=\"button\" class=\"btn\" value=\"" . gettext("Cancel") . "\" Name=\"FamilyCancel\"";
 	if ($iFamilyID > 0)
 		echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
 	else

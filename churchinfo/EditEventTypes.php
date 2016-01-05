@@ -37,7 +37,7 @@ if ( answer )
 </script>
 <table width="100%" align="center" cellpadding="4" cellspacing="0">
   <tr>
-    <td align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
+    <td align="center"><input type="button" class="btn" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
   </tr>
 </table>
 <?php
@@ -145,7 +145,7 @@ if($numCounts)
         <strong><?php echo gettext("Event Type").":".$aTypeID; ?></strong>
      </td>
      <td class="TextColumn" colspan="3" width="85%">
-        <input type="text" name="newEvtName" value="<?php echo $aTypeName; ?>" size="30" maxlength="35"> <input type="submit" Class="SmallText" Name="Action" value="<?php echo gettext("Save Name"); ?>" class="icButton">
+        <input type="text" name="newEvtName" value="<?php echo $aTypeName; ?>" size="30" maxlength="35"> <input type="submit" Class="SmallText" Name="Action" value="<?php echo gettext("Save Name"); ?>" class="btn">
               <script language="javascript"> 
                 document.UpdateEventNames.newEvtName.focus() 
               </script>
@@ -189,7 +189,7 @@ if($numCounts)
            <form name="DelEvCount" action="EditEventTypes.php" method="POST">
            <input type="hidden" name="EN_ctid" value="<?php echo $cCountID[$c]; ?>">
            <input type="hidden" name="EN_tyid" value="<?php echo $aTypeID; ?>">
-           <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("DELETE"); ?>" class="icButton")">    
+           <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("DELETE"); ?>" class="btn")">
            </form>
         </td>
       </tr>
@@ -205,7 +205,7 @@ if($numCounts)
 
            <input type="hidden" name="EN_ctid" value="new">
            <input type="hidden" name="EN_tyid" value="<?php echo $aTypeID; ?>">
-           <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("ADD"); ?>" class="icButton")">    
+           <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("ADD"); ?>" class="btn")">
            </form>
         </td>
       </tr>

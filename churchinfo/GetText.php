@@ -37,7 +37,7 @@ $aEventText = nl2br(htmlentities(stripslashes($event_text),ENT_NOQUOTES, "UTF-8"
   </tr>
   <tr>
     <td align="center" valign="bottom">
-      <input type="button" name="Action" value="Close Window" class="icButton" onclick="javascript:window.close()">
+      <input type="button" name="Action" value="Close Window" class="btn" onclick="javascript:window.close()">
     </td>
   </tr>
 </html>

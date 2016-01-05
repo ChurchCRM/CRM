@@ -115,19 +115,19 @@ if (isset($_POST["PrintReport"])) {
 	$_SESSION['envelopesToWrite'] = $envelopesToWrite;
 
 	?>
-	<input type="submit" class="icButton" value="<?php echo gettext("Confirm"); ?>" 
+	<input type="submit" class="btn" value="<?php echo gettext("Confirm"); ?>"
 			 name="Confirm">
-	<input type="submit" class="icButton" value="<?php echo gettext("Cancel"); ?>" 
+	<input type="submit" class="btn" value="<?php echo gettext("Cancel"); ?>"
 			 name="Cancel">
 	<?php
 }
 
 ?>
-<input type="submit" class="icButton" value="<?php echo gettext("Print Report"); ?>" 
+<input type="submit" class="btn" value="<?php echo gettext("Print Report"); ?>"
 		 name="PrintReport">
 
 <br><br>
-<input type="submit" class="icButton" value="<?php echo gettext("Update Family Records"); ?>" 
+<input type="submit" class="btn" value="<?php echo gettext("Update Family Records"); ?>"
 		 name="UpdateEnvelopes"> <-- Envelope #'s are not written to DB until this button is pressed
 
 <br><br>
@@ -147,7 +147,7 @@ foreach ($classification as $lst_OptionID => $lst_OptionName) {
 }
 ?>
 </select>
-<input type="submit" class="icButton" value="<?php echo gettext("Sort by"); ?>" name="Sort">
+<input type="submit" class="btn" value="<?php echo gettext("Sort by"); ?>" name="Sort">
 <input type="radio" Name="SortBy" value="name"
 <?php if ($sSortBy == "name") echo " checked"; ?>><?php echo gettext("Last Name"); ?>
 <input type="radio" Name="SortBy" value="envelope"
@@ -156,9 +156,9 @@ foreach ($classification as $lst_OptionID => $lst_OptionName) {
 </td>
 
 <td><b>Envelope</b>
-<input type="submit" class="icButton" value="<?php echo gettext("Zero"); ?>" 
+<input type="submit" class="btn" value="<?php echo gettext("Zero"); ?>"
 		 name="ZeroAll">
-<input type="submit" class="icButton" value="<?php echo gettext("Assign starting at #"); ?>" 
+<input type="submit" class="btn" value="<?php echo gettext("Assign starting at #"); ?>"
 		 name="AssignAllFamilies">
 <input type="text" name="AssignStartNum" value="<?php echo $iAssignStartNum; ?>" maxlength="5">
 

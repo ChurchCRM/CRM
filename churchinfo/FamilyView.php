@@ -485,7 +485,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 											}
 											?>
 											  </select>
-											  <input type="submit" class="icButton" value="Assign" name="Submit2" style="font-size: 8pt;">
+											  <input type="submit" class="btn" value="Assign" name="Submit2" style="font-size: 8pt;">
 										  </p>
 										</form>
 										</div>
@@ -585,7 +585,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 									<input type="checkbox" name="ShowPayments" value="1" <?php if ($_SESSION['sshowPayments']) echo " checked";?>><?php echo gettext("Show Payments"); ?>
 									 Since:
 									<input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?php echo $_SESSION['sshowSince']; ?>" maxlength="10" id="ShowSinceDate" size="15">
-									<input type="submit" class="icButton" <?php echo 'value="' . gettext("Update") . '"'; ?> name="UpdatePledgeTable" style="font-size: 8pt;">
+									<input type="submit" class="btn" <?php echo 'value="' . gettext("Update") . '"'; ?> name="UpdatePledgeTable" style="font-size: 8pt;">
 								</form>
 
 								<table cellpadding="4" cellspacing="0" width="100%">

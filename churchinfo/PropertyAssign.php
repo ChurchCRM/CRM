@@ -189,7 +189,7 @@ require "Include/Header.php";
 <?php } ?>
 </table>
 
-<p align="center"><input type="submit" class="icButton" <?php echo 'value="'; if ($sAction == "add") { echo gettext("Assign"); } else { echo gettext("Update"); } echo '"'; ?> name="Submit"></p>
+<p align="center"><input type="submit" class="btn" <?php echo 'value="'; if ($sAction == "add") { echo gettext("Assign"); } else { echo gettext("Update"); } echo '"'; ?> name="Submit"></p>
 
 </form>
 
