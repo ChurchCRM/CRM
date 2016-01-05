@@ -85,9 +85,9 @@ class SystemService {
 		if ($params->bEncryptBackup)
 		{
 			putenv("GNUPGHOME=/tmp");
-			$encryptCommand = "echo $sPassword1 | $sPGPname -q -c --batch --no-tty --passphrase-fd 0 $backup->saveTo";
+			$backup->encryptCommand = "echo $params->password | $sPGPname -q -c --batch --no-tty --passphrase-fd 0 $backup->saveTo";
 			$backup->saveTo .= ".gpg";
-			system($encryptCommand);
+			system($backup->encryptCommand);
 			$archiveType = 3;
 		}
 
