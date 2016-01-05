@@ -36,8 +36,8 @@ require 'Include/Header.php';
         <p>If you uplload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema</p>
 
         <form id="fileupload" action="/api/database/restore" method="POST" enctype="multipart/form-data">
-        <input type="file" name="restoreFile" multiple=""></span>     
-        <button type="submit">Upload Files</button>
+        <input type="file" name="restoreFile" multiple=""><br> 
+        <button type="submit" class="btn btn-primary">Upload Files</button>
         </form>
     </div>
 </div>

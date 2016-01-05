@@ -68,7 +68,7 @@ require "Include/Header.php";
         <?php echo gettext("Re-type Password:"); ?><input type="password" name="pw2">
         <BR><BR><BR>
         <?php } ?>
-        <input type="submit" name="doBackup" <?php echo 'value="' . gettext("Generate and Download Backup") . '"'; ?>>
+        <input type="submit" class="btn btn-primary" name="doBackup" <?php echo 'value="' . gettext("Generate and Download Backup") . '"'; ?>>
         </form>
     </div>
 </div>
