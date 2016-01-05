@@ -2,7 +2,7 @@
 /*******************************************************************************
  *
  *  filename    : RestoreDatabase.php
- *  last change : 2016-1-2
+ *  last change : 2016-01-04
  *
  *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
