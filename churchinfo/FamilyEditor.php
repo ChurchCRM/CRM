@@ -805,8 +805,7 @@ require "Include/Header.php";
 				<div class="row">
 					<div class="form-group col-xs-4">
 						<label><?php echo gettext("Wedding Date:"); ?></label>
-						<input type="text" class="form-control" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="12" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">
-						<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span>
+						<input type="text" class="form-control" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="12" id="WeddingDate" size="15">
 						<?php if ($sWeddingDateError) { ?> <font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font> <?php } ?>
 					</div>
 				</div>
@@ -1052,9 +1051,9 @@ require "Include/Header.php";
 	echo "<td colspan=\"2\" align=\"center\">";
 	echo "<input type=\"hidden\" Name=\"UpdateBirthYear\" value=\"".$UpdateBirthYear."\">";
 
-	echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\">";
-	if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"Save and Add\" name=\"FamilySubmitAndAdd\">"; }
-	echo "<input type=\"button\" class=\"icButton\" value=\"" . gettext("Cancel") . "\" Name=\"FamilyCancel\"";
+	echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\">";
+	if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn\" value=\"Save and Add\" name=\"FamilySubmitAndAdd\">"; }
+	echo "<input type=\"button\" class=\"btn\" value=\"" . gettext("Cancel") . "\" Name=\"FamilyCancel\"";
 	if ($iFamilyID > 0)
 		echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
 	else
@@ -1072,6 +1071,8 @@ require "Include/Header.php";
 		$(function() {
 			$("[data-mask]").inputmask();
 		});
+        
+        $("#WeddingDate").datepicker({format:'yyyy-mm-dd'});
 	</script>
 <?php
 require "Include/Footer.php";

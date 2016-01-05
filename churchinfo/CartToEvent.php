@@ -63,6 +63,7 @@ $sSQL = "SELECT * FROM events_event";
 $rsEvents = RunQuery($sSQL);
 
 ?>
+<div class="box">
 <p align="center"><?php echo gettext("Select the event to which you would like to add your cart:"); ?></p>
 <form name="CartToEvent" action="CartToEvent.php" method="POST">
 <table align="center">
@@ -88,16 +89,17 @@ $rsEvents = RunQuery($sSQL);
 </table>
 <p align="center">
 <BR>
-<input type="submit" name="Submit" value=<?php echo '"' . gettext("Add Cart to Event") . '"'; ?> class="icButton">
+<input type="submit" name="Submit" value=<?php echo '"' . gettext("Add Cart to Event") . '"'; ?> class="btn btn-primary">
 <BR><BR>--<?php echo gettext("OR"); ?>--<BR><BR>
-<a href="AddEvent.php"><?php echo gettext("Add New Event"); ?></a>
+<a href="AddEvent.php" class="btn btn-info"><?php echo gettext("Add New Event"); ?></a>
 <BR><BR>
 </p>
 </form>
+</div>
 <?php
 }
 else
-        echo "<p align=\"center\" class=\"LargeText\">" . gettext("Your cart is empty!") . "</p>";
+        echo "<p align=\"center\" class=\"callout callout-warning\">" . gettext("Your cart is empty!") . "</p>";
 
 require "Include/Footer.php";
 ?>

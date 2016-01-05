@@ -248,9 +248,7 @@ global $security_matrix, $sURLPath;
             }
             echo "<span>".$aMenu['content']."</span>\n";
             echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
-            if ($aMenu['name'] == "cart") {
-                echo "<small class=\"badge pull-right bg-green\">". count($_SESSION['aPeopleCart'])."</small>\n";
-            } else if ($aMenu['name'] == "deposit") {
+            if ($aMenu['name'] == "deposit") {
                 echo "<small class=\"badge pull-right bg-green\">". $_SESSION['iCurrentDeposit']."</small>\n";
             }
             ?>  </a>
@@ -320,6 +318,13 @@ function Header_body_menu() {
             </a>
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
+                    <li class="dropdown settings-dropdown">
+                        <a href="CartView.php">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span class="label label-success"><?= count($_SESSION['aPeopleCart'])?></span>
+                        </a>
+
+                    </li>
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -395,21 +400,12 @@ function Header_body_menu() {
     <aside class="main-sidebar">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
-                    <!-- Sidebar user panel -->
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="<?= $loggedInUserPhoto ?>" class="img-circle" />
-                        </div>
-                        <div class="pull-left info">
-                            <p>Welcome, <?php echo $_SESSION['UserFirstName']; ?></p>
-                        </div>
-                    </div>
                     <!-- search form -->
                     <form action="#" method="get" class="sidebar-form">
-                        
+
                             <select class="form-control multiSearch" style="width:100%">
                             </select>
-                        
+
                     </form>
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->

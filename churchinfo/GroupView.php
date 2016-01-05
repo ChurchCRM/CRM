@@ -376,7 +376,7 @@ if ($sPhoneLink)
         }
 
         echo '</select>';
-        echo '<input type="submit" class="icButton" value="' . gettext('Assign') . '" name="Submit" style="font-size: 8pt;">';
+        echo '<input type="submit" class="btn" value="' . gettext('Assign') . '" name="Submit" style="font-size: 8pt;">';
         echo '</p></form>';
     }
     else

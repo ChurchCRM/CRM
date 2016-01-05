@@ -510,7 +510,7 @@ if ($iMode == 1 || $iMode == 2) {
         <input type="text" name="Filter" value="<?php echo $sFilter;?>">
         <input type="hidden" name="mode" value="<?php echo $sMode;?>">
         <input type="hidden" name="Letter" value="<?php echo $sLetter;?>">
-        <input type="submit" class="icButton" <?php echo 'value="' . gettext("Apply Filter") . '"'; ?>>
+        <input type="submit" class="btn" <?php echo 'value="' . gettext("Apply Filter") . '"'; ?>>
 
         </td></tr>
 		<?php
@@ -709,10 +709,10 @@ if ($iMode == 1 || $iMode == 2) {
 			}
 		} ?>
 
-        <input type="button" class="icButton" value="<?php echo gettext("Clear Filters"); ?>" onclick="javascript:document.location='SelectList.php?mode=<?php echo $sMode; ?>&amp;Sort=<?php echo $sSort; ?>&amp;type=<?php echo $iGroupTypeMissing; ?>'"><BR><BR>
-        <input name="AddAllToCart" type="submit" class="icButton" <?php echo 'value="' . gettext("Add to Cart") . '"'; ?>>&nbsp;
-        <input name="IntersectCart" type="submit" class="icButton" <?php echo 'value="' . gettext("Intersect with Cart") . '"'; ?>>&nbsp;
-        <input name="RemoveFromCart" type="submit" class="icButton" <?php echo 'value="' . gettext("Remove from Cart") . '"'; ?>>
+        <input type="button" class="btn" value="<?php echo gettext("Clear Filters"); ?>" onclick="javascript:document.location='SelectList.php?mode=<?php echo $sMode; ?>&amp;Sort=<?php echo $sSort; ?>&amp;type=<?php echo $iGroupTypeMissing; ?>'"><BR><BR>
+        <input name="AddAllToCart" type="submit" class="btn" <?php echo 'value="' . gettext("Add to Cart") . '"'; ?>>&nbsp;
+        <input name="IntersectCart" type="submit" class="btn" <?php echo 'value="' . gettext("Intersect with Cart") . '"'; ?>>&nbsp;
+        <input name="RemoveFromCart" type="submit" class="btn" <?php echo 'value="' . gettext("Remove from Cart") . '"'; ?>>
 
         </td></tr>
 		</table></form>
@@ -1315,7 +1315,7 @@ if ($iMode == 1 || $iMode == 2) {
         </select>&nbsp;
         <input type="text" name="Filter">
         <input type="hidden" name="mode" value="family">
-        <input type="submit" class="icButton" value="<?php echo gettext("Apply Filter"); ?>">
+        <input type="submit" class="btn" value="<?php echo gettext("Apply Filter"); ?>">
         </p>
     </form>
     <?php

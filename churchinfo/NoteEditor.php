@@ -133,9 +133,9 @@ require "Include/Header.php";
 </p>
 
 <p align="center">
-	<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>
+	<input type="submit" class="btn" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>
 	&nbsp;
-	<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='<?php echo $sBackPage; ?>';">
+	<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='<?php echo $sBackPage; ?>';">
 	</form>
 </p>
 

@@ -91,7 +91,7 @@ echo '<br>' . gettext('Message:');
 echo '<br><textarea name="emailmessage" rows="20" cols="72">';
 echo htmlspecialchars($sEmailMessage) . '</textarea>'."\n";
 
-echo '<br><input class="icButton" type="submit" name="submit" value="';
+echo '<br><input class="btn" type="submit" name="submit" value="';
 echo gettext('Save Email') . '"></form></td></tr></table></div>'."\n";
 
 require "Include/Footer.php"; 

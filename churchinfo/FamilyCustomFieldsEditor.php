@@ -329,7 +329,7 @@ if ($numRows == 0)
 {
 ?>
     <center><h2><?php echo gettext("No custom Family fields have been added yet"); ?></h2>
-    <input type="button" class="icButton" value="<?php echo gettext("Exit"); ?>" Name="Exit" onclick="javascript:document.location='Menu.php';">
+    <input type="button" class="btn" value="<?php echo gettext("Exit"); ?>" Name="Exit" onclick="javascript:document.location='Menu.php';">
     </center>
 <?php
 }
@@ -348,9 +348,9 @@ else
 
         <tr>
             <td colspan="7" align="center">
-            <input type="submit" class="icButton" value="<?php echo gettext("Save Changes"); ?>" Name="SaveChanges">
+            <input type="submit" class="btn" value="<?php echo gettext("Save Changes"); ?>" Name="SaveChanges">
             &nbsp;
-            <input type="button" class="icButton" value="<?php echo gettext("Exit"); ?>" Name="Exit" onclick="javascript:document.location='Menu.php';">
+            <input type="button" class="btn" value="<?php echo gettext("Exit"); ?>" Name="Exit" onclick="javascript:document.location='Menu.php';">
             </td>
         </tr>
 
@@ -442,9 +442,9 @@ else
                 <tr>
                     <td width="30%"></td>
                     <td width="40%" align="center" valign="bottom">
-                        <input type="submit" class="icButton" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
+                        <input type="submit" class="btn" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
                         &nbsp;
-                        <input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?>" Name="Exit" onclick="javascript:document.location='Menu.php';">
+                        <input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?>" Name="Exit" onclick="javascript:document.location='Menu.php';">
                     </td>
                     <td width="30%"></td>
                 </tr>
@@ -493,7 +493,7 @@ else
                         &nbsp;
                     </td>
                     <td>
-                        <input type="submit" class="icButton" <?php echo 'value="' . gettext("Add New Field") . '"'; ?> Name="AddField">
+                        <input type="submit" class="btn" <?php echo 'value="' . gettext("Add New Field") . '"'; ?> Name="AddField">
                     </td>
                     <td width="15%"></td>
                 </tr>

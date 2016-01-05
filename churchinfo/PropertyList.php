@@ -48,20 +48,22 @@ $sPageTitle = $sTypeName . ' ' . gettext("Property List");
 $sSQL = "SELECT * FROM property_pro, propertytype_prt WHERE prt_ID = pro_prt_ID AND pro_Class = '" . $sType . "' ORDER BY prt_Name,pro_Name";
 $rsProperties = RunQuery($sSQL);
 
-require "Include/Header.php";
+require "Include/Header.php"; ?>
 
-if ($_SESSION['bMenuOptions'])
+<div class="box box-body">
+
+<? if ($_SESSION['bMenuOptions'])
 {
 	//Display the new property link
-	echo "<p align=\"center\"><a href=\"PropertyEditor.php?Type=" . $sType . "\">" . gettext("Add a New") . " " . $sTypeName . " " . gettext("Property") . "</a></p>";
+	echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyEditor.php?Type=" . $sType . "\">" . gettext("Add a New") . " " . $sTypeName . " " . gettext("Property") . "</a></p>";
 }
 
 //Start the table
-echo "<table cellspacing=\"0\" cellpadding=\"4\" align=\"center\">";
-echo "<tr class=\"TableHeader\">";
-echo "<td valign=\"top\"><b>" . gettext("Name") . "</b></td>";
-echo "<td valign=\"top\"><b>" . gettext("A") . " " . $sTypeName . " " . gettext("with this Property...") . "</b></td>";
-echo "<td valign=\"top\"><b>" . gettext("Prompt") . "</b></td>";
+echo "<table class='table'>";
+echo "<tr>";
+echo "<th valign=\"top\">" . gettext("Name") . "</th>";
+echo "<th valign=\"top\">" . gettext("A") . " " . $sTypeName . " " . gettext("with this Property...") . "</b></th>";
+echo "<th valign=\"top\">" . gettext("Prompt") . "</th>";
 if ($_SESSION['bMenuOptions'])
 {
 	echo "<td valign=\"top\"><b>" . gettext("Edit") . "</b></td>";
@@ -106,8 +108,8 @@ while ($aRow = mysql_fetch_array($rsProperties))
 	echo "<td valign=\"top\">" . $pro_Prompt . "&nbsp;</td>";
 	if ($_SESSION['bMenuOptions'])
 	{
-		echo "<td valign=\"top\"><a href=\"PropertyEditor.php?PropertyID=" . $pro_ID . "&Type=" . $sType . "\">" . gettext("Edit") . "</a></td>";
-		echo "<td valign=\"top\"><a href=\"PropertyDelete.php?PropertyID=" . $pro_ID . "&Type=" . $sType . "\">" . gettext("Delete") . "</a></td>";
+		echo "<td valign=\"top\"><a class='btn btn-primary' href=\"PropertyEditor.php?PropertyID=" . $pro_ID . "&Type=" . $sType . "\">" . gettext("Edit") . "</a></td>";
+		echo "<td valign=\"top\"><a class='btn btn-danger' href=\"PropertyDelete.php?PropertyID=" . $pro_ID . "&Type=" . $sType . "\">" . gettext("Delete") . "</a></td>";
 	}
 	echo "</tr>";
 
@@ -117,7 +119,7 @@ while ($aRow = mysql_fetch_array($rsProperties))
 }
 
 //End the table
-echo "</table>";
+echo "</table></div>";
 
 require "Include/Footer.php";
 

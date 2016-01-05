@@ -88,10 +88,10 @@ if (isset($_POST["Submit"]))
 require "Include/Header.php";
 
 ?>
-
+<div class="box box-body">
 <form method="post" action="PropertyTypeEditor.php?PropertyTypeID=<?php echo $iPropertyTypeID; ?>">
 
-<table cellpadding="4">
+<table class="table">
 	<tr>
 		<td align="right"><b><?php echo gettext("Class:"); ?></b></td>
 		<td>
@@ -113,13 +113,13 @@ require "Include/Header.php";
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="document.location='PropertyTypeList.php';">
+			<input type="submit" class="btn btn-primary" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>&nbsp;<input type="button" class="btn btn-default" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="document.location='PropertyTypeList.php';">
 		</td>
 	</tr>
 </table>
 
 </form>
-
+</div>
 <?php
 require "Include/Footer.php";
 ?>

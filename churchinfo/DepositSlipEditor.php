@@ -572,22 +572,22 @@ require "Include/Header.php";
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="DepositSlipCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
-			<input type="button" class="icButton" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?php echo ($dep_Type == 'Bank')?>';">
-			<input type="button" class="icButton" value="Download OFX" name="DownloadOFX" onclick="javascript:document.location='Reports/ExportOFX.php?deposit=<?php echo $iDepositSlipID; ?>';">
-			<input type="button" class="icButton" value="<?php echo gettext("More Reports"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
+			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
+			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="DepositSlipCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?php echo ($dep_Type == 'Bank')?>';">
+			<input type="button" class="btn" value="Download OFX" name="DownloadOFX" onclick="javascript:document.location='Reports/ExportOFX.php?deposit=<?php echo $iDepositSlipID; ?>';">
+			<input type="button" class="btn" value="<?php echo gettext("More Reports"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
 			<?php 
 			if ($iDepositSlipID and $sDepositType and !$dep_Closed) {
 				if ($sDepositType == "eGive") {
-					echo "<input type=button class=icButton value=\"".gettext("Import eGive")."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+					echo "<input type=button class=btn value=\"".gettext("Import eGive")."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
 				} else {
-					echo "<input type=button class=icButton value=\"".gettext("Add Payment")."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+					echo "<input type=button class=btn value=\"".gettext("Add Payment")."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
 				} ?>
 
 				<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
-					<input type="submit" class="icButton" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
-    					<input type="submit" class="icButton" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
+					<input type="submit" class="btn" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
+    					<input type="submit" class="btn" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
 			    	<?php } ?>
 		    <?php } ?>
 		</td>
@@ -598,7 +598,7 @@ require "Include/Header.php";
 		<table cellpadding="3">
 			<tr>
 				<td class="LabelColumn" <?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date:"); ?></td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="DepositDate" size="11"><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
 
 			
@@ -836,7 +836,9 @@ foreach ($depositArray as $order => $value) {
 <?php
 }
 ?>
-
+<script>
+$("#DepositDate").datepicker({format:'yyyy-mm-dd'});
+</script>
 <?php
 require "Include/Footer.php";
 ?>

@@ -316,13 +316,13 @@ if ( $bErrorFlag )
 }
 ?>
 
-<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
+<input type="submit" class="btn" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
 
 
 <?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') { ?>
-	<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:window.close();">
+	<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:window.close();">
 <?php } elseif ($mode != "grproles") { ?>
-	<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='<?php
+	<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='<?php
 			echo "Menu.php";
 		?>';">
 <?php } ?>
