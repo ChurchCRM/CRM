@@ -33,7 +33,7 @@ require 'Include/Header.php';
     <div class="box-body">
         <p>Select a backup file to restore</p>
         <p>CAUTION: This will completely erase the existing database, and replace it with the backup</p>
-        <p>If you uplload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema</p>
+        <p>If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema</p>
 
         <form id="restoredatabase" action="/api/database/restore" method="POST" enctype="multipart/form-data">
         <input type="file" name="restoreFile" id="restoreFile" multiple=""><br> 

@@ -7,6 +7,7 @@ class SystemService {
         global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral;
         $file = $_FILES['restoreFile'];
         $restoreResult->file = $file;
+        exec ("rm -rf ../Images");
         if ($file['type'] ==  "application/x-gzip" )
         {
             exec ("mkdir /tmp/restore_unzip");
@@ -15,13 +16,13 @@ class SystemService {
             #$restoreResult->uncompressReturn = $rs1;
             $restoreResult->SQLfiles = glob('/tmp/restore_unzip/SQL/*.sql');
             $restoreQueries = file($restoreResult->SQLfiles[0], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-            exec ("rm -rf ../Images");
             exec ("mv -f /tmp/restore_unzip/Images/* ../Images");
         }
         else
         {
              $restoreQueries = file($file['tmp_name'], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         }
+        
         $query = '';
         foreach ($restoreQueries as $line) {
             if ($line != '' && strpos($line, '--') === false) {
