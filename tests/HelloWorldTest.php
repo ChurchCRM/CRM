@@ -1,5 +1,5 @@
 <?php
-class HelloWorldTest extends PHPUnit_Framework_TestCase
+class HelloWorld extends PHPUnit_Framework_TestCase
 {
     /**
      * @var PDO
@@ -13,7 +13,7 @@ class HelloWorldTest extends PHPUnit_Framework_TestCase
     }
     public function tearDown()
     {
-        $this->pdo->query("DROP TABLE hello");
+        #$this->pdo->query("DROP TABLE hello");
     }
     public function testHelloWorld()
     {
