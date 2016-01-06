@@ -45,11 +45,16 @@ $app->container->singleton('SystemService', function () {
 $app->group('/database', function () use ($app) {
     
     $app->post('/backup', function () use ($app) {
+        try {
             $request = $app->request();
             $body = $request->getBody();
             $input = json_decode($body);
             $backup = $app->SystemService->getDatabaseBackup($input);
             echo json_encode($backup);
+        }
+        } catch (Exception $e) {
+             echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
     });
     
     $app->post('/restore', function () use ($app) {
