@@ -1,5 +1,4 @@
 <?php
-
 function loader($class)
 {
     $file = $class . '.php';
@@ -7,5 +6,4 @@ function loader($class)
         require $file;
     }
 }
-
 spl_autoload_register('loader');
