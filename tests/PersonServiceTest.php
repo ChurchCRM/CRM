@@ -54,8 +54,9 @@ class PersonServiceTest extends PHPUnit_Framework_TestCase
     {
         $_SESSION['sURLPath'] = "TEST";
         $personService = new PersonService();
-        error_reporting(0);
+        ini_set('display_errors', 0);
         $results = $personService->search("admin");
+        ini_set('display_errors', 1);
 
         $this->assertNotEmpty($results);
        
@@ -65,8 +66,9 @@ class PersonServiceTest extends PHPUnit_Framework_TestCase
     {
         $_SESSION['sURLPath'] = "TEST";
         $personService = new PersonService();
-        error_reporting(0);
+        ini_set('display_errors', 0);
         $photoURL = $personService->photo(1);
+        ini_set('display_errors', 1);
         $this->assertContains($photoURL,array("jpeg", "jpg", "png"));
     }
     
