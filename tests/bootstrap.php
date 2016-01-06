@@ -5,6 +5,7 @@ function loader($class)
     if (file_exists($file)) {
         require $file;
     }
-    #require './churchinfo/service/PersonService.php';
+    
 }
+require './churchinfo/service/PersonService.php';
 spl_autoload_register('loader');
