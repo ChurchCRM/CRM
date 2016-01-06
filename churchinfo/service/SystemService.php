@@ -13,19 +13,29 @@ class SystemService {
             $restoreResult->uncompressCommand = "tar -zxvf ".$file['tmp_name']." --directory /tmp/restore_unzip";
             exec($restoreResult->uncompressCommand, $rs1, $returnStatus);
             #$restoreResult->uncompressReturn = $rs1;
-            $restoreResult->restoreCommand = "mysql -u$sUSER --password=$sPASSWORD $sDATABASE < /tmp/restore_unzip/SQL/*.sql";
-            exec ("rm -rf ../Images");
-            exec ("mv -f /tmp/restore_unzip/Images/* ../Images");
+            $restoreResult->SQLfiles = glob('/tmp/restore_unzip/SQL/*.sql');
+            $restoreResult->restoreQueries = file($restoreResult->SQLfiles[0], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            #exec ("rm -rf ../Images");
+            #exec ("mv -f /tmp/restore_unzip/Images/* ../Images");
         }
         else
         {
-             $restoreResult->restoreCommand = "mysql -u $sUSER --password=$sPASSWORD $sDATABASE < ".$file['tmp_name'];
+             $restoreResult->restoreQueries = "mysql -u $sUSER --password=$sPASSWORD $sDATABASE < ".$file['tmp_name'];
         }
-                
-    
-        echo $restoreResult->restoreCommand;
         
-        exec($restoreResult->restoreCommand,$rs4,$rs4s);
+        $query = '';
+        echo "******************\r\n".$restoreResult->restoreQueries."\r\b******************\r\n";
+        foreach ($restoreResult->restoreQueries as $line) {
+            echo "******************\r\n".$line."\r\n******************\r\n";
+            if ($line != '' && strpos($line, '--') === false) {
+                $query .= $line;
+                if (substr($query, -1) == ';') {
+                    echo "******************\r\n".$query."\r\n******************\r\n";
+                    $person = RunQuery($query);
+                    $query = '';
+                }
+            }
+        }
         $restoreResult->restoreReturn = $rs4;
         $restoreResult->restoreReturnStatus = $rs4s;
         
