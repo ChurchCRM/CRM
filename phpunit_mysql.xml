@@ -16,7 +16,6 @@
     <filter>
         <whitelist>
             <directory>./</directory>
-            <directory>./churchinfo/service/</directory>
             <exclude>
                 <directory>./tests</directory>
             </exclude>
