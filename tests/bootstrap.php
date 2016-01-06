@@ -7,6 +7,6 @@ function loader($class)
     }
     
 }
-require './churchinfo/Include/Config.php';
+
 require './churchinfo/service/PersonService.php';
 spl_autoload_register('loader');
