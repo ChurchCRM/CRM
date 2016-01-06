@@ -714,7 +714,7 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (82, 'customfamilyfld', 'admin', 0, 'Edit Custom Family Fields', 'Edit Custom Family Fields', 'FamilyCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3, NULL),
 (91, 'seeddata', 'admin', 0, 'Generate Seed Data', 'Generate Seed Data', 'GenerateSeedData.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 14, NULL),
 (100, 'mailchimp', 'root', 0, 'MailChimp', 'MailChimp', 'mailchimp/MailChimpDashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4, 'fa-envelope'),
-(101, 'dbrestore', 'admin', 0, 'Restore Database', 'Restore Database', 'RestoreDatabase.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 6, NULL);
+(101, 'dbrestore', 'admin', 0, 'Restore Database', 'Restore Database', 'RestoreDatabase.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 5, NULL);
 
 UPDATE menuconfig_mcf SET content=content_english;
 

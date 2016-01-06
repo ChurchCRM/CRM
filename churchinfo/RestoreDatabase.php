@@ -52,28 +52,24 @@ $('#restoredatabase').submit(function(event) {
    event.preventDefault();
    var formData = new FormData($(this)[0]); 
    $.ajax({
-     url: '/api/database/restore',
-     type: 'POST',
-     data: formData,
-     cache: false,
-     contentType: false,
-     enctype: 'multipart/form-data',
-     processData: false,
-     dataType    : 'json'
+        url: '/api/database/restore',
+        type: 'POST',
+        data: formData,
+        cache: false,
+        contentType: false,
+        enctype: 'multipart/form-data',
+        processData: false,
+        dataType    : 'json'
    })
    .done(function(data) {
         console.log(data);
         $("#responseText").text(JSON.stringify(data));
     }).fail(function()  {
-    alert("Sorry. Server unavailable. ");
+        alert("Sorry. Server unavailable. ");
     });
-
    return false;
 });
-
-
 </script>
-
 <!-- PACE -->
 <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/pace/pace.min.js"></script>
 <?php

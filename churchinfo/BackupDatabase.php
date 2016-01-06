@@ -91,7 +91,7 @@ $('#BackupDatabase').submit(function(event) {
             'password'                  : $('input[name=pw1]').val()
         };
 		
-		console.log(formData);
+        console.log(formData);
 
        //process the form
        $.ajax({
@@ -101,12 +101,11 @@ $('#BackupDatabase').submit(function(event) {
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true
         })
-		 .done(function(data) {
-			console.log(data);
+        .done(function(data) {
+            console.log(data);
             var downloadButton = "<a role=\"button\" href=\""+ data.saveTo + "\" target=\"_blank\" download>" + data.filename + "</a>";
             $("#resultFiles").html(downloadButton);
-
-		  });
+        });
         event.preventDefault();
     });
 </script>
