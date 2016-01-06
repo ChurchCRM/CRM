@@ -12,18 +12,18 @@ class SystemService {
             exec ("mkdir /tmp/restore_unzip");
             $restoreResult->uncompressCommand = "tar -zxvf ".$file['tmp_name']." --directory /tmp/restore_unzip";
             exec($restoreResult->uncompressCommand, $rs1, $returnStatus);
-            $restoreResult->uncompressReturn = $rs1;
+            #$restoreResult->uncompressReturn = $rs1;
             $restoreResult->SQLfiles = glob('/tmp/restore_unzip/SQL/*.sql');
-            $restoreResult->restoreQueries = file($restoreResult->SQLfiles[0], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            $restoreQueries = file($restoreResult->SQLfiles[0], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
             exec ("rm -rf ../Images");
             exec ("mv -f /tmp/restore_unzip/Images/* ../Images");
         }
         else
         {
-             $restoreResult->restoreQueries = "mysql -u $sUSER --password=$sPASSWORD $sDATABASE < ".$file['tmp_name'];
+             $restoreQueries = file($file['tmp_name'], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         }
         $query = '';
-        foreach ($restoreResult->restoreQueries as $line) {
+        foreach ($restoreQueries as $line) {
             if ($line != '' && strpos($line, '--') === false) {
                 $query .= $line;
                 if (substr($query, -1) == ';') {
