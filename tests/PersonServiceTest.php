@@ -52,6 +52,7 @@ class PersonServiceTest extends PHPUnit_Framework_TestCase
    
     public function testSearch()
     {
+      $_SESSION['sURLPath'] = "TEST";
       $personService = new PersonService();
       $results = $personService->search("admin");
       $this->assertNotEmpty($results);
