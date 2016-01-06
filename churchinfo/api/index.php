@@ -51,7 +51,6 @@ $app->group('/database', function () use ($app) {
             $input = json_decode($body);
             $backup = $app->SystemService->getDatabaseBackup($input);
             echo json_encode($backup);
-        }
         } catch (Exception $e) {
              echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
