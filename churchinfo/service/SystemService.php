@@ -6,42 +6,33 @@ class SystemService {
         $restoreResult = new StdClass();
         global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral;
         $file = $_FILES['restoreFile'];
-        print_r($file);
+        $restoreResult->file = $file;
         if ($file['type'] ==  "application/x-gzip" )
         {
             exec ("mkdir /tmp/restore_unzip");
             $restoreResult->uncompressCommand = "tar -zxvf ".$file['tmp_name']." --directory /tmp/restore_unzip";
             exec($restoreResult->uncompressCommand, $rs1, $returnStatus);
-            #$restoreResult->uncompressReturn = $rs1;
+            $restoreResult->uncompressReturn = $rs1;
             $restoreResult->SQLfiles = glob('/tmp/restore_unzip/SQL/*.sql');
             $restoreResult->restoreQueries = file($restoreResult->SQLfiles[0], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-            #exec ("rm -rf ../Images");
-            #exec ("mv -f /tmp/restore_unzip/Images/* ../Images");
+            exec ("rm -rf ../Images");
+            exec ("mv -f /tmp/restore_unzip/Images/* ../Images");
         }
         else
         {
              $restoreResult->restoreQueries = "mysql -u $sUSER --password=$sPASSWORD $sDATABASE < ".$file['tmp_name'];
         }
-        
         $query = '';
-        echo "******************\r\n".$restoreResult->restoreQueries."\r\b******************\r\n";
         foreach ($restoreResult->restoreQueries as $line) {
-            echo "******************\r\n".$line."\r\n******************\r\n";
             if ($line != '' && strpos($line, '--') === false) {
                 $query .= $line;
                 if (substr($query, -1) == ';') {
-                    echo "******************\r\n".$query."\r\n******************\r\n";
                     $person = RunQuery($query);
                     $query = '';
                 }
             }
         }
-        $restoreResult->restoreReturn = $rs4;
-        $restoreResult->restoreReturnStatus = $rs4s;
-        
-        
-        #exec ("rm -rf /tmp/restore_unzip");
-        
+        exec ("rm -rf /tmp/restore_unzip"); 
        return $restoreResult;
         
     }
