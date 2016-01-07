@@ -8,7 +8,7 @@ class SystemServiceTest extends PHPUnit_Framework_TestCase
         $params = new StdClass();
         $params->iArchiveType=3;
         $SystemService = new SystemService();
-        $results = $SystemService->getDatabaseBackup("admin");
+        $results = $SystemService->getDatabaseBackup($params);
         print_r($results);
         $this->assertNotEmpty($results);   
         $this->assertFileExists($results->saveTo);

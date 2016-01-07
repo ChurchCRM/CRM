@@ -39,10 +39,14 @@ class SystemService {
     }
     function getDatabaseBackup($params) {
         global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME, $sGZIPname, $sZIPname, $sPGPname; 
+        
         $backup = new StdClass();
+        $backup->backupRoot="/tmp/ChurchCRMBackups";
         $backup->headers = array();
         // Delete any old backup files
-        exec("rm -f ../SQL/*");
+        exec("rm -rf  $backup->backupRoot/*");
+        exec("mkdir  $backup->backupRoot");
+        exec("mkdir  $backup->backupRoot/SQL");
         // Check to see whether this installation has gzip, zip, and gpg
         if (isset($sGZIPname)) $hasGZIP = true;
         if (isset($sZIPname)) $hasZIP = true;
@@ -51,9 +55,9 @@ class SystemService {
         $backup->params = $params;
         $bNoErrors = true;
         
-
-		$backup->saveTo = "../SQL/ChurchCRM-Backup-" . date("Ymd-Gis") . ".sql";
-		$backupCommand = "mysqldump -u $sUSER --password=$sPASSWORD --host=$sSERVERNAME $sDATABASE > $backup->saveTo";
+        $backup->saveTo = "$backup->backupRoot/ChurchCRM-".date("Ymd-Gis");
+		$backup->SQLFile = "$backup->backupRoot/SQL/ChurchCRM-Database.sql";
+		$backupCommand = "mysqldump -u $sUSER --password=$sPASSWORD --host=$sSERVERNAME $sDATABASE > $backup->SQLFile";
 		exec($backupCommand, $returnString, $returnStatus);
 
 		switch ($params->iArchiveType)
@@ -74,8 +78,8 @@ class SystemService {
                 $backup->archiveResult = $returnString;
 				break;
             case 3:
-                $archiveName = substr($backup->saveTo, 0, -4).".tar.gz";
-				$compressCommand = "tar -zcvf $archiveName $backup->saveTo ../Images/*";
+                $archiveName = $backup->saveTo.".tar.gz";
+				$compressCommand = "tar -zcvf $archiveName $backup->backupRoot ./churchinfo/Images/*";
                 $backup->compressCommand = $compressCommand;
 				$backup->saveTo = $archiveName;
 				exec($compressCommand, $returnString, $returnStatus);
