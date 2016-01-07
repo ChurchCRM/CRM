@@ -44,7 +44,7 @@ class SystemService {
         $backup->backupRoot="/tmp/ChurchCRMBackups";
         $backup->headers = array();
         // Delete any old backup files
-        exec("rm -rf  $backup->backupRoot/*");
+        exec("rm -rf  $backup->backupRoot");
         exec("mkdir  $backup->backupRoot");
         exec("mkdir  $backup->backupRoot/SQL");
         // Check to see whether this installation has gzip, zip, and gpg
@@ -63,6 +63,8 @@ class SystemService {
 		switch ($params->iArchiveType)
 		{
 			case 0:
+                $backup->saveTo.=".sql";
+                exec("mv $backup->SQLFile  $backup->saveTo");
 				$compressCommand = "$sGZIPname $backup->saveTo";
                 $backup->compressCommand = $compressCommand;
 				$backup->saveTo .= ".gz";
@@ -70,18 +72,19 @@ class SystemService {
                 $backup->archiveResult = $returnString;
 				break;
 			case 1:
-				$archiveName = substr($backup->saveTo, 0, -4);
-				$compressCommand = "$sZIPname $archiveName $backup->saveTo";
+				$backup->saveTo.=".zip";
+				$compressCommand = "$sZIPname $backup->SQLFile $backup->saveTo";
                 $backup->compressCommand = $compressCommand;
-				$backup->saveTo = $archiveName . ".zip";
 				exec($compressCommand, $returnString, $returnStatus);
                 $backup->archiveResult = $returnString;
 				break;
+            case 2:
+                $backup->saveTo.=".sql";
+                exec("mv $backup->SQLFile  $backup->saveTo");
             case 3:
-                $archiveName = $backup->saveTo.".tar.gz";
-				$compressCommand = "tar -zcvf $archiveName $backup->backupRoot ./churchinfo/Images/*";
+                $backup->saveTo.=".tar.gz";
+				$compressCommand = "tar -zcvf  $backup->saveTo $backup->backupRoot ./churchinfo/Images/*";
                 $backup->compressCommand = $compressCommand;
-				$backup->saveTo = $archiveName;
 				exec($compressCommand, $returnString, $returnStatus);
                 $backup->archiveResult = $returnString;
 				break;
