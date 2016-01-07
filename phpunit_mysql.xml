@@ -4,7 +4,7 @@
     <php>
         <var name="db_dsn" value="mysql:dbname=churchcrm_test;host=localhost"/>
         <var name="db_username" value="root"/>
-        <var name="db_password" value="root"/>
+        <var name="db_password" value=""/>
         <ini name="display_errors" value="On" />
         <ini name="display_startup_errors" value="On" />
         <ini name="error_reporting"   value="E_ALL ^ E_DEPRECATED" />
