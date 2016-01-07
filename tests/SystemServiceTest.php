@@ -11,6 +11,7 @@ class SystemServiceTest extends PHPUnit_Framework_TestCase
         $results = $SystemService->getDatabaseBackup("admin");
         print_r($results);
         $this->assertNotEmpty($results);   
+        $this->assertFileExists($results->saveTo);
     }
     
 }
