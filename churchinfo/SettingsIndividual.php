@@ -97,14 +97,15 @@ require "Include/Header.php";
 $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id=".$iPersonID
 .       " ORDER BY ucfg_id";
 $rsConfigs = RunQuery($sSQL);
-
-// Table Headings
-echo "<form method=post action=SettingsIndividual.php>";
-echo "<table cellpadding=3 align=left>";
-echo "<tr><td><h3>". gettext("Variable name") . "</h3></td>
-	<td><h3>Current Value</h3></td>
-	<td><h3>Notes</h3></td></tr>";
-
+?>
+<div class="box box-body">
+<form method=post action=SettingsIndividual.php>
+<table class="table">
+<tr><th><?= gettext("Variable name") ?></th>
+	<th>Current Value</th>
+	<th>Notes</h3></th>
+</tr>
+<?
 $r = 1;
 // List Individual Settings
 while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = mysql_fetch_row($rsConfigs)) {
@@ -155,13 +156,20 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 	// Notes
 	echo "<td>$ucfg_tooltip</td>	</tr>";
 	$r++;
-}	 
+}
+?>
 
-// Cancel, Save Buttons
-echo "<tr><td>&nbsp;</td>
-	<td><input type=submit class=btn name=save value='" . gettext("Save Settings") . "'>
-	<input type=submit class=btn name=cancel value='" . gettext("Cancel") . "'>
-	</td></tr></table></form>";
 
+<tr>
+    <td>&nbsp;</td>
+	<td>
+        <input type=submit class='btn btn-primary'  name=save value='<?=  gettext("Save Settings") ?>'>
+	    <input type=submit class=btn name=cancel value='<?= gettext("Cancel") ?>'>
+	</td>
+</tr>
+</table>
+</form>
+</div>
+<?
 require "Include/Footer.php";
 ?>
