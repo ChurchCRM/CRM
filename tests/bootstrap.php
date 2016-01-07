@@ -1,4 +1,5 @@
 <?php
+
 function loader($class)
 {
     $file = $class . '.php';
@@ -7,7 +8,20 @@ function loader($class)
     }
     
 }
-require './churchinfo/Include/Config.php';
-error_reporting(-1);
+
+global $bSuppressSessionTests,$sSERVERNAME,$sUSER,$sPASSWORD,$sDATABASE, $cnInfoCentral,$db_username,$db_password;
+
+ini_set('error_reporting', E_ALL ^ E_DEPRECATED); // or error_reporting(E_ALL);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+$bSuppressSessionTests = TRUE;
+$sSERVERNAME = 'localhost';
+$sUSER = $db_username;
+$sPASSWORD = $db_password;
+$sDATABASE = 'churchcrm_test';
+$sRootPath = '/churchinfo';
+require "./churchinfo/Include/LoadConfigs.php";
+require "./churchinfo/Include/Functions.php";
 require './churchinfo/service/PersonService.php';
 spl_autoload_register('loader');
+
