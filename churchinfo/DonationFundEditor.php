@@ -164,7 +164,11 @@ if ( answer )
 
 <form method="post" action="DonationFundEditor.php" name="FundsEditor">
 
-<?php echo gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"); ?>
+<div class="alert alert-danger">
+		<i class="fa fa-ban"></i>
+		<?php echo gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"); ?>
+
+</div>
 
 <?php
 		if ( $bErrorFlag ) echo gettext("Invalid fields or selections. Changes not saved! Please correct and try again!");

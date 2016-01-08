@@ -323,7 +323,10 @@ function confirmDeleteField( Field ) {
 	return false;
 }
 </script>
-<?php echo gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"); ?>
+<div class="alert alert-danger">
+		<i class="fa fa-ban"></i>
+		<?php echo gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"); ?>
+</div>
 <form method="post" action="FamilyCustomFieldsEditor.php" name="FamilyCustomFieldsEditor">
 <table class="table">
 
