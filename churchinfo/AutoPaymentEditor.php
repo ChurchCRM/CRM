@@ -583,7 +583,7 @@ function CreatePaymentMethod()
 		<table cellpadding="1" align="center">
 
 			<tr>
-				<td class="LabelColumn" <?php addToolTip("If a family member, select the appropriate family from the list. Otherwise, leave this as is."); ?>><?php echo gettext("Family:"); ?></td>
+				<td class="LabelColumn"><?php echo gettext("Family:"); ?></td>
 				<td class="TextColumn">
 					<select name="Family" size="8">
 						<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
@@ -612,7 +612,7 @@ function CreatePaymentMethod()
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"<?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date:"); ?></td>
+				<td class="LabelColumn"><?php echo gettext("Date:"); ?></td>
 				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?php echo $dNextPayDate; ?>" maxlength="10" id="NextPayDate" size="11" class="form-control pull-right active"></td>
 			</tr>
 
