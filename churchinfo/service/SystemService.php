@@ -73,7 +73,7 @@ class SystemService {
 				break;
 			case 1: #The user wants a .zip file
 				$backup->saveTo.=".zip";
-				$compressCommand = "$sZIPname $backup->SQLFile $backup->saveTo";
+				$compressCommand = "$sZIPname -r -y -q -9 $backup->saveTo $backup->backupRoot";
                 $backup->compressCommand = $compressCommand;
 				exec($compressCommand, $returnString, $returnStatus);
                 $backup->archiveResult = $returnString;
@@ -84,7 +84,7 @@ class SystemService {
                 break;
             case 3: #the user wants a .tar.gz file
                 $backup->saveTo.=".tar.gz";
-				$compressCommand = "tar -zcvf  $backup->saveTo $backup->backupRoot ./churchinfo/Images/*";
+				$compressCommand = "tar -zcvf  $backup->saveTo $backup->backupRoot ../churchinfo/Images/*";
                 $backup->compressCommand = $compressCommand;
 				exec($compressCommand, $returnString, $returnStatus);
                 $backup->archiveResult = $returnString;
@@ -143,8 +143,12 @@ class SystemService {
                         header("Content-type: text/plain");
                         header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\"");
                     break;
-                     case "pgp":
+                    case "pgp":
                         header("Content-type: application/pgp-encrypted");
+                        header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\"");
+                    break;
+                    case "zip":
+                        header("Content-type: application/zip");
                         header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\"");
                     break;
                         // add more headers for other content types here
