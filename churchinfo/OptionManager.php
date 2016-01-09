@@ -303,7 +303,7 @@ else
 ?>
 <div class="box">
 	<div class="box-body">
-<div method="post" action="OptionManager.php?<?php echo "mode=$mode&ListID=$listID" ?>" name="OptionManager">
+<form method="post" action="OptionManager.php?<?php echo "mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
 <div class="callout callout-warning"><?php echo gettext("Warning: Removing will reset all assignments for all persons with the assignment!"); ?></div>
 
@@ -377,7 +377,6 @@ for ($row=1; $row <= $numRows; $row++)
 		echo "Menu.php";
 		?>';">
 	<?php } ?>
-
 	</div>
 </div>
 
