@@ -45,7 +45,7 @@ if ($sAction=='Delete'){
     </tr>
   <tr><td colspan="4"></td></tr>
   <tr>
-    <td colspan="4" align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
+    <td colspan="4" align="center"><input type="button" class="btn" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
  </tr> 
    <tr><td colspan="4"></td></tr>   
   <tr class="TableHeader">
@@ -86,7 +86,7 @@ if($numAttRows!=0){
           <input type="hidden" name="EName" value="<?php echo $EvtName ?>">
           <input type="hidden" name="EDesc" value="<?php echo $EvtDesc ?>">
           <input type="hidden" name="EDate" value="<?php echo $EvtDate ?>">
-          <input type="submit" name="Action" value="<?php echo gettext("Delete"); ?>" class="icbutton" onClick="return confirm('Are you sure you want to DELETE this person from Event ID:<?php echo $EventID; ?>')">
+          <input type="submit" name="Action" value="<?php echo gettext("Delete"); ?>" class="btn" onClick="return confirm('Are you sure you want to DELETE this person from Event ID:<?php echo $EventID; ?>')">
       </form>
      </td>  
     </tr>

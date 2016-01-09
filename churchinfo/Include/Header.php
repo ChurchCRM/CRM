@@ -59,6 +59,8 @@ $sURLPath = $_SESSION['sURLPath'];
     
     <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/select2/select2.min.css">
     
+    <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet" href= "<?= $sURLPath; ?>/vendor/AdminLTE/plugins/timepicker/bootstrap-timepicker.css">
   
     <!-- jQuery 2.1.4 -->
     <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -66,9 +68,12 @@ $sURLPath = $_SESSION['sURLPath'];
     <!-- jQuery 2.1.4 -->
     <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/jQueryUI/jquery-ui.min.js"></script>
     
-      <!-- AdminLTE Select2 -->
+    <!-- AdminLTE Select2 -->
     <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/select2/select2.full.min.js"></script>
-
+    <!-- AdminLTE DatePicker -->
+    <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datepicker/bootstrap-datepicker.js"></script>
+     <!-- AdminLTE TimePicker -->
+    <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/timepicker/bootstrap-timepicker.js"></script>
 
 
     <?php Header_head_metatag(); ?>

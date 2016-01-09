@@ -125,8 +125,8 @@ function updateGroupRoles(generated_html)
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Next") . '"'; ?>>
-<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='ReportList.php';">
+<input type="submit" class="btn" name="Submit" <?php echo 'value="' . gettext("Next") . '"'; ?>>
+<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='ReportList.php';">
 </p>
 </form>
 
@@ -184,8 +184,8 @@ $rsPropFields = RunQuery($sSQL);
 
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Create Report") . '"'; ?>>
-<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';">
+<input type="submit" class="btn" name="Submit" <?php echo 'value="' . gettext("Create Report") . '"'; ?>>
+<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';">
 </p>
 </form>
 

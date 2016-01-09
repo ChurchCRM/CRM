@@ -343,7 +343,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                 <a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>&AddToPeopleCart=<?php echo $tmpPersonId; ?>">
                                         <span class="fa-stack">
                                             <i class="fa fa-square fa-stack-2x"></i>
-                                            <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                                            <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
                                         </span>
                                 </a>
                                 <?php if ($bOkToEdit) { ?>
@@ -485,7 +485,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 											}
 											?>
 											  </select>
-											  <input type="submit" class="icButton" value="Assign" name="Submit2" style="font-size: 8pt;">
+											  <input type="submit" class="btn" value="Assign" name="Submit2" style="font-size: 8pt;">
 										  </p>
 										</form>
 										</div>
@@ -584,8 +584,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 									<input type="checkbox" name="ShowPledges" value="1" <?php if ($_SESSION['sshowPledges']) echo " checked";?>><?php echo gettext("Show Pledges"); ?>
 									<input type="checkbox" name="ShowPayments" value="1" <?php if ($_SESSION['sshowPayments']) echo " checked";?>><?php echo gettext("Show Payments"); ?>
 									 Since:
-									<input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?php echo $_SESSION['sshowSince']; ?>" maxlength="10" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span>
-									<input type="submit" class="icButton" <?php echo 'value="' . gettext("Update") . '"'; ?> name="UpdatePledgeTable" style="font-size: 8pt;">
+									<input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?php echo $_SESSION['sshowSince']; ?>" maxlength="10" id="ShowSinceDate" size="15">
+									<input type="submit" class="btn" <?php echo 'value="' . gettext("Update") . '"'; ?> name="UpdatePledgeTable" style="font-size: 8pt;">
 								</form>
 
 								<table cellpadding="4" cellspacing="0" width="100%">
@@ -858,8 +858,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
-
 <script type="text/javascript" src="js/DepositSlipEditor.js"></script>
+<script>
+$("#ShowSinceDate").datepicker({format:'yyyy-mm-dd'});
+</script>
 
 
 <?php

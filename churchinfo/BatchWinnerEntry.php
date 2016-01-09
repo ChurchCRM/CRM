@@ -109,8 +109,8 @@ require "Include/Header.php";
 ?>
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Enter Winners"); ?>" name="EnterWinners">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="submit" class="btn" value="<?php echo gettext("Enter Winners"); ?>" name="EnterWinners">
+			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 	</table>

@@ -58,30 +58,24 @@ require "Include/Header.php";
 // Get settings
 $sSQL = "SELECT * FROM config_cfg WHERE cfg_section LIKE '%Report%' ORDER BY cfg_id";
 $rsConfigs = RunQuery($sSQL);
+?>
+<div class="box box-body">
 
-// Table Headings
-echo "<form method=post action=SettingsReport.php>";
-echo "<table cellpadding=3 align=left>";
-echo "<tr><td><h3>". gettext("Variable name") . "</h3></td>
-	<td><h3>Current Value</h3></td>
-	<td><h3>Default Value</h3></td>
-	<td><h3>Notes</h3></td></tr>";
-
+<form method=post action=SettingsReport.php>
+<table class="table">
+<tr>
+	<th><?= gettext("Variable name") ?></td>
+	<th>Current Value</h3></th>
+	<th>Default Value</h3></th>
+	<th>>Notes</h3></th>
+</tr>
+<?
 $r = 1;
 // List Individual Settings
 while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_tooltip, $cfg_section) = mysql_fetch_row($rsConfigs)) {
-	
-	// Cancel, Save Buttons every 13 rows
-	if ($r == 13) {
-		echo "<tr><td>&nbsp;</td>
-			<td><input type=submit class=icButton name=save value='" . gettext("Save Settings") . "'>
-			<input type=submit class=icButton name=cancel value='" . gettext("Cancel") . "'>
-			</td></tr>";
-		$r = 1;
-	}
-	
+
 	// Variable Name & Type
-	echo "<tr><td class=LabelColumn>$cfg_name</td>";
+	echo "<tr><th class=LabelColumn>$cfg_name</th>";
 	echo "<input type=hidden name='type[$cfg_id]' value='$cfg_type'>";
 	
 	// Current Value
@@ -130,12 +124,19 @@ while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_toolti
 	echo "<td>$cfg_tooltip</td>	</tr>";
 	$r++;
 }	 
+?>
 
-// Cancel, Save Buttons
-echo "<tr><td>&nbsp;</td>
-	<td><input type=submit class=icButton name=save value='" . gettext("Save Settings") . "'>
-	<input type=submit class=icButton name=cancel value='" . gettext("Cancel") . "'>
-	</td></tr></table></form>";
 
+    <tr>
+        <td>&nbsp;</td>
+        <td>
+            <input type=submit class='btn btn-primary'  name=save value='<?=  gettext("Save Settings") ?>'>
+            <input type=submit class=btn name=cancel value='<?= gettext("Cancel") ?>'>
+        </td>
+    </tr>
+</table>
+</form>
+</div>
+<?
 require "Include/Footer.php";
 ?>

@@ -985,7 +985,7 @@ require "Include/Header.php";
 <script type="text/javascript">
 	$(function() {
 		$("[data-mask]").inputmask();
-		$('.inputDatePicker').datepicker();
+		$('.inputDatePicker').datepicker({format:'yyyy-mm-dd'});
 
 	});
 </script>
