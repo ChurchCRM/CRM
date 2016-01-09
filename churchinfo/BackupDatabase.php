@@ -74,13 +74,14 @@ require "Include/Header.php";
 </div>
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">Backup Files Ready to Download</h3>
+        <h3 class="box-title">Backup Status: </h3>&nbsp;<h3 class="box-title" id="backupstatus" style="color:red">No Backup Running</h3>
     </div>
      <div class="box-body" id="resultFiles">
      </div>
 </div>
     
 <script>
+
 $('#BackupDatabase').submit(function(event) {
 
         // get the form data
@@ -90,7 +91,8 @@ $('#BackupDatabase').submit(function(event) {
             'bEncryptBackup'            : $("input[name=encryptBackup]").is(':checked'),
             'password'                  : $('input[name=pw1]').val()
         };
-		
+        $("#backupstatus").css("color","orange");
+		$("#backupstatus").html("Backup Running, Please wait.");
         console.log(formData);
 
        //process the form
@@ -103,11 +105,21 @@ $('#BackupDatabase').submit(function(event) {
         })
         .done(function(data) {
             console.log(data);
-            var downloadButton = "<a role=\"button\" href=\""+ data.saveTo + "\" target=\"_blank\" download>" + data.filename + "</a>";
+            var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\">"+data.filename+"</button>";
+            $("#backupstatus").css("color","green");
+            $("#backupstatus").html("Backup Complete, Ready for Download.");
             $("#resultFiles").html(downloadButton);
         });
         event.preventDefault();
     });
+    
+function downloadbutton(filename) {
+    window.location = "/api/database/download/"+filename;
+    $("#backupstatus").css("color","green");
+    $("#backupstatus").html("Backup Downloaded, Copy on server removed");
+    $("#downloadbutton").attr("disabled","true");
+    
+}
 </script>
 <?php
 require "Include/Footer.php";

@@ -41,7 +41,7 @@ class SystemService {
         global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME, $sGZIPname, $sZIPname, $sPGPname; 
         
         $backup = new StdClass();
-        $backup->backupRoot="/tmp/ChurchCRMBackups";
+        $backup->backupRoot='../tmp_attach/ChurchCRMBackups';
         $backup->headers = array();
         // Delete any old backup files
         exec("rm -rf  $backup->backupRoot");
@@ -62,7 +62,7 @@ class SystemService {
 
 		switch ($params->iArchiveType)
 		{
-			case 0:
+			case 0: # The user wants a gzip'd SQL file. 
                 $backup->saveTo.=".sql";
                 exec("mv $backup->SQLFile  $backup->saveTo");
 				$compressCommand = "$sGZIPname $backup->saveTo";
@@ -71,17 +71,18 @@ class SystemService {
 				exec($compressCommand, $returnString, $returnStatus);
                 $backup->archiveResult = $returnString;
 				break;
-			case 1:
+			case 1: #The user wants a .zip file
 				$backup->saveTo.=".zip";
 				$compressCommand = "$sZIPname $backup->SQLFile $backup->saveTo";
                 $backup->compressCommand = $compressCommand;
 				exec($compressCommand, $returnString, $returnStatus);
                 $backup->archiveResult = $returnString;
 				break;
-            case 2:
+            case 2: #The user wants a plain ol' SQL file
                 $backup->saveTo.=".sql";
                 exec("mv $backup->SQLFile  $backup->saveTo");
-            case 3:
+                break;
+            case 3: #the user wants a .tar.gz file
                 $backup->saveTo.=".tar.gz";
 				$compressCommand = "tar -zcvf  $backup->saveTo $backup->backupRoot ./churchinfo/Images/*";
                 $backup->compressCommand = $compressCommand;
@@ -91,7 +92,7 @@ class SystemService {
              
 		}
 
-		if ($params->bEncryptBackup)
+		if ($params->bEncryptBackup)  #the user has selected an encrypted backup
 		{
 			putenv("GNUPGHOME=/tmp");
 			$backup->encryptCommand = "echo $params->password | $sPGPname -q -c --batch --no-tty --passphrase-fd 0 $backup->saveTo";
@@ -103,7 +104,7 @@ class SystemService {
 		switch ($params->iArchiveType)
 		{
 			case 0:
-				array_push($backup->headers, "Content-type: application/x-gzip");
+				array_push($backup->headers, "");
 			case 1:
                 array_push($backup->headers, "Content-type: application/x-zip");
 			case 2:
@@ -112,12 +113,56 @@ class SystemService {
 				array_push($backup->headers, "Content-type: application/pgp-encrypted");
 		}
 
-		$backup->filename = substr($backup->saveTo, 7);
+		$backup->filename = substr($backup->saveTo, strrpos($backup->saveTo,"/",-1)+1);
 		array_push($backup->headers, "Content-Disposition: attachment; filename=$backup->filename");
 
 		return $backup;
     
     
+    }
+    
+    function download($filename) {
+        set_time_limit(0);
+        $path = "../tmp_attach/ChurchCRMBackups/$filename";
+        if (file_exists($path))
+        {
+            if ($fd = fopen ($path, "r")) {
+                $fsize = filesize($path);
+                $path_parts = pathinfo($path);
+                $ext = strtolower($path_parts["extension"]);
+                switch ($ext) {
+                    case "gz":
+                        header("Content-type: application/x-gzip");
+                        header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\"");
+                    break;
+                    case "tar.gz":
+                        header("Content-type: application/x-gzip");
+                        header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\"");
+                    break;
+                    case "sql":
+                        header("Content-type: text/plain");
+                        header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\"");
+                    break;
+                     case "pgp":
+                        header("Content-type: application/pgp-encrypted");
+                        header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\"");
+                    break;
+                        // add more headers for other content types here
+                    default;
+                        header("Content-type: application/octet-stream");
+                        header("Content-Disposition: filename=\"".$path_parts["basename"]."\"");
+                    break;
+                }
+                header("Content-length: $fsize");
+                header("Cache-control: private"); //use this to open files directly
+                while(!feof($fd)) {
+                    $buffer = fread($fd, 2048);
+                    echo $buffer;
+                }
+            }
+            fclose ($fd); 
+            exec("rm -rf  ../tmp_attach/ChurchCRMBackups");
+        }
     }
 
     function getConfigurationSetting($settingName,$settingValue){

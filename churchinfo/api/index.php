@@ -66,6 +66,15 @@ $app->group('/database', function () use ($app) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
     });
+    
+    $app->get('/download/:filename',function ($filename) use($app) {
+        try {
+                $app->SystemService->download($filename);
+            } catch (Exception $e) {
+                echo '{"error":{"text":' . $e->getMessage() . '}}';
+            }
+        
+    });
 });
 
 $app->group('/search', function () use ($app) {
