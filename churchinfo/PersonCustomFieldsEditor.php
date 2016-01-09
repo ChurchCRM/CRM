@@ -305,7 +305,7 @@ function confirmDeleteField(event) {
 }
 </script>
 
-<div class="alert alert-danger">
+<div class="alert alert-warning">
 		<i class="fa fa-ban"></i>
 		<?php echo gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"); ?>
 </div>

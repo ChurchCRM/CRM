@@ -164,7 +164,7 @@ if ( answer )
 
 <form method="post" action="DonationFundEditor.php" name="FundsEditor">
 
-<div class="alert alert-danger">
+<div class="alert alert-warning">
 		<i class="fa fa-ban"></i>
 		<?php echo gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"); ?>
 
