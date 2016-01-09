@@ -109,6 +109,9 @@ $('#BackupDatabase').submit(function(event) {
             $("#backupstatus").css("color","green");
             $("#backupstatus").html("Backup Complete, Ready for Download.");
             $("#resultFiles").html(downloadButton);
+        }).fail(function()  {
+        $("#backupstatus").css("color","red");
+        $("#backupstatus").html("Backup Error.");
         });
         event.preventDefault();
     });

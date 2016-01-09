@@ -40,16 +40,17 @@ require 'Include/Header.php';
         <button type="submit" class="btn btn-primary">Upload Files</button>
         </form>
     </div>
-    <div class="box-body">
-        <h3 class="box-title">Restore Status</h3>
-        <h4 id="responseStatus"></h4>
-        <pre id="responseText"></pre>
+</div>
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Restore Status:</h3>&nbsp;<h3 class="box-title" id="restorestatus" style="color:red">No Restore Running</h3>
     </div>
-    
 </div>
 <script>
 $('#restoredatabase').submit(function(event) {
    event.preventDefault();
+   $("#restorestatus").css("color","orange");
+   $("#restorestatus").html("Restore Running, Please wait.");
    var formData = new FormData($(this)[0]); 
    $.ajax({
         url: '/api/database/restore',
@@ -63,9 +64,11 @@ $('#restoredatabase').submit(function(event) {
    })
    .done(function(data) {
         console.log(data);
-        $("#responseText").text(JSON.stringify(data));
+        $("#restorestatus").css("color","green");
+        $("#restorestatus").html("Restore Complete");
     }).fail(function()  {
-        alert("Sorry. Server unavailable. ");
+        $("#restorestatus").css("color","red");
+        $("#restorestatus").html("Restore Error.");
     });
    return false;
 });

@@ -7,16 +7,24 @@ class SystemService {
         global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral;
         $file = $_FILES['restoreFile'];
         $restoreResult->file = $file;
-        exec ("rm -rf ../Images");
+        $restoreResult->root = dirname(dirname(__FILE__));
+        $restoreResult->backupRoot="$restoreResult->root/tmp_attach/ChurchCRMBackups";
+        $restoreResult->imagesRoot = "Images";
+        $restoreResult->headers = array();
+        // Delete any old backup files
+        exec("rm -rf  $restoreResult->backupRoot");
+        exec("mkdir  $restoreResult->backupRoot");
+        
         if ($file['type'] ==  "application/x-gzip" )
         {
-            exec ("mkdir /tmp/restore_unzip");
-            $restoreResult->uncompressCommand = "tar -zxvf ".$file['tmp_name']." --directory /tmp/restore_unzip";
+            
+            exec ("mkdir $restoreResult->backupRoot");
+            $restoreResult->uncompressCommand = "tar -zxvf ".$file['tmp_name']." --directory $restoreResult->backupRoot";
             exec($restoreResult->uncompressCommand, $rs1, $returnStatus);
-            #$restoreResult->uncompressReturn = $rs1;
-            $restoreResult->SQLfiles = glob('/tmp/restore_unzip/SQL/*.sql');
-            $restoreQueries = file($restoreResult->SQLfiles[0], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-            exec ("mv -f /tmp/restore_unzip/Images/* ../Images");
+            $restoreResult->SQLfile = "$restoreResult->backupRoot/ChurchCRM-Database.sql";
+            $restoreQueries = file($restoreResult->SQLfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            exec("rm -rf $restoreResult->root/Images");
+            exec("mv -f $restoreResult->backupRoot/Images/* $restoreResult->root/Images");
         }
         else
         {
@@ -33,7 +41,7 @@ class SystemService {
                 }
             }
         }
-        exec ("rm -rf /tmp/restore_unzip"); 
+        exec ("rm -rf $restoreResult->backupRoot"); 
        return $restoreResult;
         
     }
@@ -41,12 +49,13 @@ class SystemService {
         global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME, $sGZIPname, $sZIPname, $sPGPname; 
         
         $backup = new StdClass();
-        $backup->backupRoot='../tmp_attach/ChurchCRMBackups';
+        $backup->root = dirname(dirname(__FILE__));
+        $backup->backupRoot="$backup->root/tmp_attach/ChurchCRMBackups";
+        $backup->imagesRoot = "Images";
         $backup->headers = array();
         // Delete any old backup files
         exec("rm -rf  $backup->backupRoot");
         exec("mkdir  $backup->backupRoot");
-        exec("mkdir  $backup->backupRoot/SQL");
         // Check to see whether this installation has gzip, zip, and gpg
         if (isset($sGZIPname)) $hasGZIP = true;
         if (isset($sZIPname)) $hasZIP = true;
@@ -56,7 +65,8 @@ class SystemService {
         $bNoErrors = true;
         
         $backup->saveTo = "$backup->backupRoot/ChurchCRM-".date("Ymd-Gis");
-		$backup->SQLFile = "$backup->backupRoot/SQL/ChurchCRM-Database.sql";
+		$backup->SQLFile = "$backup->backupRoot/ChurchCRM-Database.sql";
+       
 		$backupCommand = "mysqldump -u $sUSER --password=$sPASSWORD --host=$sSERVERNAME $sDATABASE > $backup->SQLFile";
 		exec($backupCommand, $returnString, $returnStatus);
 
@@ -65,17 +75,15 @@ class SystemService {
 			case 0: # The user wants a gzip'd SQL file. 
                 $backup->saveTo.=".sql";
                 exec("mv $backup->SQLFile  $backup->saveTo");
-				$compressCommand = "$sGZIPname $backup->saveTo";
-                $backup->compressCommand = $compressCommand;
+                $backup->compressCommand =  "$sGZIPname $backup->saveTo";
 				$backup->saveTo .= ".gz";
-				exec($compressCommand, $returnString, $returnStatus);
+				exec($backup->compressCommand, $returnString, $returnStatus);
                 $backup->archiveResult = $returnString;
 				break;
 			case 1: #The user wants a .zip file
 				$backup->saveTo.=".zip";
-				$compressCommand = "$sZIPname -r -y -q -9 $backup->saveTo $backup->backupRoot";
-                $backup->compressCommand = $compressCommand;
-				exec($compressCommand, $returnString, $returnStatus);
+                $backup->compressCommand = "$sZIPname -r -y -q -9 $backup->saveTo $backup->backupRoot";
+				exec($backup->compressCommand, $returnString, $returnStatus);
                 $backup->archiveResult = $returnString;
 				break;
             case 2: #The user wants a plain ol' SQL file
@@ -84,9 +92,8 @@ class SystemService {
                 break;
             case 3: #the user wants a .tar.gz file
                 $backup->saveTo.=".tar.gz";
-				$compressCommand = "tar -zcvf  $backup->saveTo $backup->backupRoot ../churchinfo/Images/*";
-                $backup->compressCommand = $compressCommand;
-				exec($compressCommand, $returnString, $returnStatus);
+                $backup->compressCommand ="tar -zcvf $backup->saveTo -C $backup->backupRoot ChurchCRM-Database.sql -C $backup->root $backup->imagesRoot";
+				exec($backup->compressCommand, $returnString, $returnStatus);
                 $backup->archiveResult = $returnString;
 				break;
              
@@ -123,7 +130,7 @@ class SystemService {
     
     function download($filename) {
         set_time_limit(0);
-        $path = "../tmp_attach/ChurchCRMBackups/$filename";
+        $path = dirname(dirname(__FILE__))."/tmp_attach/ChurchCRMBackups/$filename";
         if (file_exists($path))
         {
             if ($fd = fopen ($path, "r")) {
@@ -165,7 +172,7 @@ class SystemService {
                 }
             }
             fclose ($fd); 
-            exec("rm -rf  ../tmp_attach/ChurchCRMBackups");
+            exec("rm -rf  ".dirname(dirname(__FILE__))."/tmp_attach/ChurchCRMBackups");
         }
     }
 
