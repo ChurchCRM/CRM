@@ -4,9 +4,11 @@ class SystemService {
 
     function restoreDatabaseFromBackup(){
         $restoreResult = new StdClass();
-        global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral;
+        global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral,$sGZIPname;
         $file = $_FILES['restoreFile'];
         $restoreResult->file = $file;
+        $restoreResult->type = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $restoreResult->type2 = pathinfo(substr($file['name'],0,strlen($file['name'])-3), PATHINFO_EXTENSION);
         $restoreResult->root = dirname(dirname(__FILE__));
         $restoreResult->backupRoot="$restoreResult->root/tmp_attach/ChurchCRMBackups";
         $restoreResult->imagesRoot = "Images";
@@ -14,23 +16,32 @@ class SystemService {
         // Delete any old backup files
         exec("rm -rf  $restoreResult->backupRoot");
         exec("mkdir  $restoreResult->backupRoot");
-        
-        if ($file['type'] ==  "application/x-gzip" )
-        {
-            
-            exec ("mkdir $restoreResult->backupRoot");
-            $restoreResult->uncompressCommand = "tar -zxvf ".$file['tmp_name']." --directory $restoreResult->backupRoot";
-            exec($restoreResult->uncompressCommand, $rs1, $returnStatus);
-            $restoreResult->SQLfile = "$restoreResult->backupRoot/ChurchCRM-Database.sql";
-            $restoreQueries = file($restoreResult->SQLfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-            exec("rm -rf $restoreResult->root/Images");
-            exec("mv -f $restoreResult->backupRoot/Images/* $restoreResult->root/Images");
+        if ($restoreResult->type ==  "gz")
+        {   
+            if ($restoreResult->type2 ==  "tar")
+            {
+                exec ("mkdir $restoreResult->backupRoot");
+                $restoreResult->uncompressCommand = "tar -zxvf ".$file['tmp_name']." --directory $restoreResult->backupRoot";
+                exec($restoreResult->uncompressCommand, $rs1, $returnStatus);
+                $restoreResult->SQLfile = "$restoreResult->backupRoot/ChurchCRM-Database.sql";
+                $restoreQueries = file($restoreResult->SQLfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+                exec("rm -rf $restoreResult->root/Images");
+                exec("mv -f $restoreResult->backupRoot/Images/* $restoreResult->root/Images");
+            }
+            else if ($restoreResult->type2 ==  "sql")
+            {
+                exec ("mkdir $restoreResult->backupRoot");
+                exec ("mv  ".$file['tmp_name']." ".$restoreResult->backupRoot."/".$file['name']);
+                $restoreResult->uncompressCommand = "gunzip $restoreResult->backupRoot/".$file['name'];
+                exec($restoreResult->uncompressCommand, $rs1, $returnStatus);;
+                $restoreResult->SQLfile = $restoreResult->backupRoot."/".substr($file['name'],0,strlen($file['name'])-3);
+                $restoreQueries = file($restoreResult->SQLfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            }
         }
-        else
+        else if ($restoreResult->type == "sql")
         {
              $restoreQueries = file($file['tmp_name'], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         }
-        
         $query = '';
         foreach ($restoreQueries as $line) {
             if ($line != '' && strpos($line, '--') === false) {
@@ -42,6 +53,7 @@ class SystemService {
             }
         }
         exec ("rm -rf $restoreResult->backupRoot"); 
+        
        return $restoreResult;
         
     }
