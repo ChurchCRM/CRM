@@ -57,7 +57,7 @@ require "Include/Header.php";
         <form method="post" action="/api/database/backup" id="BackupDatabase">
         <?php echo gettext("Select archive type:"); ?>
         <?php if ($hasGZIP) { ?><input type="radio" name="archiveType" value="0"><?php echo gettext("GZip"); ?><?php } ?>
-        <?php if ($hasZIP) { ?><input type="radio" name="archiveType" value="1"><?php echo gettext("Zip"); ?><?php } ?>
+        <!--<?php if ($hasZIP) { ?><input type="radio" name="archiveType" value="1"><?php echo gettext("Zip"); ?><?php } ?>-->
         <input type="radio" name="archiveType" value="2" checked><?php echo gettext("Uncompressed"); ?>
         <input type="radio" name="archiveType" value="3" checked><?php echo gettext("tar.gz (Include Photos)"); ?>
         <BR><BR>
@@ -66,7 +66,7 @@ require "Include/Header.php";
         &nbsp;&nbsp;&nbsp;
         <?php echo gettext("Password:"); ?><input type="password" name="pw1">
         <?php echo gettext("Re-type Password:"); ?><input type="password" name="pw2">
-        <BR><BR><BR>
+        <BR><span id="passworderror" style="color: red"></span><BR><BR>
         <?php } ?>
         <input type="submit" class="btn btn-primary" name="doBackup" <?php echo 'value="' . gettext("Generate and Download Backup") . '"'; ?>>
         </form>
@@ -83,37 +83,55 @@ require "Include/Header.php";
 <script>
 
 $('#BackupDatabase').submit(function(event) {
-
-        // get the form data
-        // there are many ways to get this data using jQuery (you can use the class or id also)
-        var formData = {
-            'iArchiveType'              : $('input[name=archiveType]:checked').val(),
-            'bEncryptBackup'            : $("input[name=encryptBackup]").is(':checked'),
-            'password'                  : $('input[name=pw1]').val()
-        };
-        $("#backupstatus").css("color","orange");
-		$("#backupstatus").html("Backup Running, Please wait.");
-        console.log(formData);
-
-       //process the form
-       $.ajax({
-            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : '/api/database/backup', // the url where we want to POST
-            data        : JSON.stringify(formData), // our data object
-            dataType    : 'json', // what type of data do we expect back from the server
-            encode      : true
-        })
-        .done(function(data) {
-            console.log(data);
-            var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\">"+data.filename+"</button>";
-            $("#backupstatus").css("color","green");
-            $("#backupstatus").html("Backup Complete, Ready for Download.");
-            $("#resultFiles").html(downloadButton);
-        }).fail(function()  {
-        $("#backupstatus").css("color","red");
-        $("#backupstatus").html("Backup Error.");
-        });
         event.preventDefault();
+        var errorflag =0;
+        if ($("input[name=encryptBackup]").is(':checked'))
+        {
+            if ($('input[name=pw1]').val() =="")
+            {
+                $("#passworderror").html("You must enter a password");
+                errorflag=1;
+            }
+            if ($('input[name=pw1]').val() != $('input[name=pw2]').val())
+            {
+                $("#passworderror").html("Passwords must match");
+                errorflag=1;
+            }
+        }
+        if (!errorflag)
+        {
+            $("#passworderror").html(" ");
+            // get the form data
+            // there are many ways to get this data using jQuery (you can use the class or id also)
+            var formData = {
+                'iArchiveType'              : $('input[name=archiveType]:checked').val(),
+                'bEncryptBackup'            : $("input[name=encryptBackup]").is(':checked'),
+                'password'                  : $('input[name=pw1]').val()
+            };
+            $("#backupstatus").css("color","orange");
+            $("#backupstatus").html("Backup Running, Please wait.");
+            console.log(formData);
+
+           //process the form
+           $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '/api/database/backup', // the url where we want to POST
+                data        : JSON.stringify(formData), // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode      : true
+            })
+            .done(function(data) {
+                console.log(data);
+                var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\">"+data.filename+"</button>";
+                $("#backupstatus").css("color","green");
+                $("#backupstatus").html("Backup Complete, Ready for Download.");
+                $("#resultFiles").html(downloadButton);
+            }).fail(function()  {
+                $("#backupstatus").css("color","red");
+                $("#backupstatus").html("Backup Error.");
+            });
+        }
+        
     });
     
 function downloadbutton(filename) {

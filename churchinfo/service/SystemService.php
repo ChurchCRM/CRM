@@ -32,7 +32,7 @@ class SystemService {
             {
                 exec ("mkdir $restoreResult->backupRoot");
                 exec ("mv  ".$file['tmp_name']." ".$restoreResult->backupRoot."/".$file['name']);
-                $restoreResult->uncompressCommand = "gunzip $restoreResult->backupRoot/".$file['name'];
+                $restoreResult->uncompressCommand = "sGZIPname -d $restoreResult->backupRoot/".$file['name'];
                 exec($restoreResult->uncompressCommand, $rs1, $returnStatus);;
                 $restoreResult->SQLfile = $restoreResult->backupRoot."/".substr($file['name'],0,strlen($file['name'])-3);
                 $restoreQueries = file($restoreResult->SQLfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -162,7 +162,7 @@ class SystemService {
                         header("Content-type: text/plain");
                         header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\"");
                     break;
-                    case "pgp":
+                    case "gpg":
                         header("Content-type: application/pgp-encrypted");
                         header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\"");
                     break;
