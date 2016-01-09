@@ -77,13 +77,22 @@ if (($sAction == 'delete') && $iOpp > 0) {
 
     $sPageTitle = gettext("Volunteer Opportunity Delete Confirmation");
     require "Include/Header.php";
-    echo "\n<br><p>" . gettext("Please confirm deletion of:") . "</p><br>";
-    echo "\n<table><tr><th>&nbsp;</th>";
-    echo "\n<th>" . gettext("Name") . "</th>";
-    echo "\n<th>" . gettext("Description") . "</th></tr>";
-    echo "\n<tr><td class=\"LabelColumn\"><b>" . $vol_Order . "</b></td>";
-    echo "\n<td class=\"TextColumn\">" . $vol_Name . "</td>";
-    echo "\n<td class=\"TextColumn\">" . $vol_Description . "</td></tr></table>";
+?>
+    <div class="box box-body">
+    <div class="callout callout-danger"><?= gettext("Please confirm deletion of:") ?></div>
+    <table class="table">
+        <tr><th>&nbsp;</th>
+        <th><?= gettext("Name") ?></th>
+        <th><?= gettext("Description") ?></th>
+    </tr>
+    <tr>
+        <td><b><?= $vol_Order ?></b></td>
+        <td><?= $vol_Name ?></td>
+        <td><?= $vol_Description ?></td>
+    </tr>
+    </table>
+
+<?
 
     // Do some error checking before deleting this Opportunity.
     // Notify user if there are currently people assigned to this
@@ -108,10 +117,11 @@ if (($sAction == 'delete') && $iOpp > 0) {
             echo "\n<br><b> $per_FirstName $per_LastName</b>";
         }
     }
-    echo "\n<br><h3><a href=\"VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=" . $iOpp . "\"> ";
-    echo gettext("Yes, delete this Volunteer Opportunity") . " </a></h3> ";
-    echo "\n<h2><a href=\"VolunteerOpportunityEditor.php\"> ";
-    echo gettext("No, cancel this deletion") . " </a></h2> ";
+    echo "\n<br><a class='btn btn-danger' href=\"VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=" . $iOpp . "\"> ";
+    echo gettext("Yes, delete this Volunteer Opportunity") . " </a>";
+    echo "\n<a href=\"VolunteerOpportunityEditor.php\" class='btn btn-default'> ";
+    echo gettext("No, cancel this deletion") . " </a>";
+    echo "</div>";
     require "Include/Footer.php";
     exit;
 }
@@ -229,10 +239,10 @@ if (isset($_POST["SaveChanges"])) {
     if (!$bErrorFlag) {
         for ( $iFieldID=1; $iFieldID <= $numRows; $iFieldID++ ) {
         	if (array_key_exists ($iFieldID, $aNameFields)) {
-	            $sSQL = "UPDATE `volunteeropportunity_vol`
-	                     SET `vol_Name` = '" . $aNameFields[$iFieldID] . "',
-	                     `vol_Description` = '" . $aDescFields[$iFieldID] .
-	                     "' WHERE `vol_ID` = '" . $aIDFields[$iFieldID] . "';";
+	            $sSQL = "UPDATE volunteeropportunity_vol
+	                     SET vol_Name = '" . $aNameFields[$iFieldID] . "',
+	                     vol_Description = '" . $aDescFields[$iFieldID] .
+	                     "' WHERE vol_ID = '" . $aIDFields[$iFieldID] . "';";
 	             RunQuery($sSQL);
         	}
          }
@@ -277,16 +287,15 @@ if (isset($_POST["SaveChanges"])) {
 // Construct the form
 
 ?>
+<div class="box box-body">
 <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
-<table cellpadding="3" width="75%" align="center">
+<table class="table">
 
 <?php
 if ($numRows == 0) {
 ?>
-    <center><h2><?php echo gettext("No volunteer opportunities have been added yet"); ?></h2>
-    <input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php'">
-    </center>
+    <div class="callout callout-warning"><?php echo gettext("No volunteer opportunities have been added yet"); ?></div>
 <?php
 } else { // if an 'action' (up/down arrow clicked, or order was input)
    if ($iRowNum and $sAction != "") {
@@ -336,25 +345,27 @@ if ($numRows == 0) {
 } // end if GET  
 
 ?>
-<tr><td colspan="5">
-<center><b><?php echo gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"); ?></b></center>
-</td></tr>
-
-<tr><td colspan="5" align="center"><span class="LargeText" style="color: red;">
-<?php
-if ( $bErrorFlag ) echo gettext("Invalid fields or selections. Changes not saved! Please correct and try again!");
-if (strlen($sDeleteError) > 0) echo $sDeleteError;
-?>
-</span></td></tr>
-
 <tr>
-<td colspan="5" align="center">
-<input type="submit" class="btn" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
-&nbsp;
-<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php'">
-</td>
+    <td colspan="5">
+        <div class="callout callout-info"><?php echo gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"); ?></div>
+    </td>
 </tr>
-
+<tr>
+    <td colspan="5">
+        <?php
+        if ( $bErrorFlag ) {
+            echo '<div class="callout callout-danger">';
+            echo gettext("Invalid fields or selections. Changes not saved! Please correct and try again!");
+            echo '</div>';
+        }
+        if (strlen($sDeleteError) > 0) {
+            echo ' <div class="callout callout-danger">';
+            echo $sDeleteError;
+            echo '</div>';
+        }
+        ?>
+    </td>
+</tr>
 <tr>
 <th></th>
 <th></th>
@@ -447,5 +458,5 @@ for ($row=1; $row <= $numRows; $row++) {
 </tr>
 </table>
 </form>
-
+</div>
 <?php require "Include/Footer.php"; ?>
