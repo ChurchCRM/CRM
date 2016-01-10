@@ -30,7 +30,7 @@
 require_once dirname(__FILE__).'/../service/PersonService.php';
 
 function Header_head_metatag() {
-global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
+global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
 global $sPageTitle, $sURLPath;
 
 $sURLPath = $_SESSION['sURLPath'];
@@ -41,7 +41,7 @@ $sURLPath = $_SESSION['sURLPath'];
 }
 
 function Header_body_scripts() {
-global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage, 
+global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage,
 $bLockURL, $URL, $sURLPath;
 
 $sURLPath = $_SESSION['sURLPath'];
@@ -233,13 +233,17 @@ global $security_matrix, $sURLPath;
     {
         if($link){
             echo "<li><a href='$link'>";
-            if ($aMenu['icon'] != "") {
+            if (    $aMenu['icon'] != "") {
                 echo "<i class=\"fa ". $aMenu['icon'] ."\"></i>";
             }
             if ($aMenu['parent'] != "root") {
                 echo "<i class=\"fa fa-angle-double-right\"></i> ";
             }
-            echo $aMenu['content']."</a>";
+            if ($aMenu['parent'] == "root") {
+                echo "<span>".$aMenu['content'] . "</span></a>";
+            } else {
+                echo $aMenu['content'] . "</a>";
+            }
         } else {
             echo "<li class=\"treeview\">\n";
             echo "    <a href=\"#\">\n";
@@ -277,7 +281,7 @@ global $security_matrix, $sURLPath;
 }
 
 function Header_body_menu() {
-    global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
+    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
     global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
 
 	$sURLPath = $_SESSION['sURLPath'];
@@ -285,9 +289,6 @@ function Header_body_menu() {
     $loggedInUserPhoto = (new PersonService())->photo($_SESSION['iUserID']);
 
     $MenuFirst = 1;
-
-    if (!$bDefectiveBrowser)
-        echo "<div style=\"position:fixed; top:0; left:0; width: 100%;\">";
 
     if ($sHeader) {
         // Optional Header Code (Entered on General Settings page - sHeader)

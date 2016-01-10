@@ -147,62 +147,62 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
    </tr>
 
 	<tr>
-		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("First Sunday:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("First Sunday:"); ?></td>
 		<td class="TextColumn"><input type="text" name="FirstSunday" value="<?php echo $dFirstSunday; ?>" maxlength="10" id="FirstSunday" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("Last Sunday:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("Last Sunday:"); ?></td>
 		<td class="TextColumn"><input type="text" name="LastSunday" value="<?php echo $dLastSunday; ?>" maxlength="10" id="LastSunday" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
 		<td class="TextColumn"><input type="text" name="NoSchool1" value="<?php echo $dNoSchool1; ?>" maxlength="10" id="NoSchool1" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
 		<td class="TextColumn"><input type="text" name="NoSchool2" value="<?php echo $dNoSchool2; ?>" maxlength="10" id="NoSchool2" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
 		<td class="TextColumn"><input type="text" name="NoSchool3" value="<?php echo $dNoSchool3; ?>" maxlength="10" id="NoSchool3" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
 		<td class="TextColumn"><input type="text" name="NoSchool4" value="<?php echo $dNoSchool4; ?>" maxlength="10" id="NoSchool4" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
 		<td class="TextColumn"><input type="text" name="NoSchool5" value="<?php echo $dNoSchool5; ?>" maxlength="10" id="NoSchool5" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
 		<td class="TextColumn"><input type="text" name="NoSchool6" value="<?php echo $dNoSchool6; ?>" maxlength="10" id="NoSchool6" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
 		<td class="TextColumn"><input type="text" name="NoSchool7" value="<?php echo $dNoSchool7; ?>" maxlength="10" id="NoSchool7" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("No Sunday School:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
 		<td class="TextColumn"><input type="text" name="NoSchool8" value="<?php echo $dNoSchool8; ?>" maxlength="10" id="NoSchool8" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php addToolTip("Number of extra rows for write-in students"); ?><?php echo gettext("Extra Students:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("Extra Students:"); ?></td>
 		<td class="TextColumn"><input type="text" name="ExtraStudents" value="<?php echo $iExtraStudents; ?>" id="ExtraStudents" size="11">&nbsp;</td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php addToolTip("Number of extra rows for write-in teachers"); ?><?php echo gettext("Extra Teachers:"); ?></td>
+		<td class="LabelColumn"><?php echo gettext("Extra Teachers:"); ?></td>
 		<td class="TextColumn"><input type="text" name="ExtraTeachers" value="<?php echo $iExtraTeachers; ?>" id="ExtraTeachers" size="11">&nbsp;</td>
 	</tr>
 
