@@ -33,13 +33,13 @@
 </footer>
 
 	<!-- Bootstrap 3.3.5 -->
-	<script src="<?= $sURLPath; ?>/vendor/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/bootstrap/js/bootstrap.min.js"></script>
 	<!-- SlimScroll -->
-	<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 	<!-- FastClick -->
-	<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/fastclick/fastclick.js"></script>
+	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/fastclick/fastclick.js"></script>
 	<!-- AdminLTE App -->
-	<script src="<?= $sURLPath; ?>/vendor/AdminLTE/dist/js/app.min.js"></script>
+	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/dist/js/app.min.js"></script>
 
 	<script src="<?= $sURLPath; ?>/js/Footer.js"></script>
 
