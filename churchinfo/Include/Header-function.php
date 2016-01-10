@@ -30,7 +30,7 @@
 require_once dirname(__FILE__).'/../service/PersonService.php';
 
 function Header_head_metatag() {
-global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
+global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
 global $sPageTitle, $sURLPath;
 
 $sURLPath = $_SESSION['sURLPath'];
@@ -41,7 +41,7 @@ $sURLPath = $_SESSION['sURLPath'];
 }
 
 function Header_body_scripts() {
-global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage,
+global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage,
 $bLockURL, $URL, $sURLPath;
 
 $sURLPath = $_SESSION['sURLPath'];
@@ -281,7 +281,7 @@ global $security_matrix, $sURLPath;
 }
 
 function Header_body_menu() {
-    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $iNavMethod, $bRegistered, $sHeader, $sGlobalMessage;
+    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
     global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
 
 	$sURLPath = $_SESSION['sURLPath'];
