@@ -25,13 +25,12 @@ $rsQueries = RunQuery($sSQL);
 
 $aFinanceQueries = explode(',', $aFinanceQueries);
 
-require "Include/Header.php";
+require "Include/Header.php";?>
 
-if ($_SESSION['bAdmin'])
-{
-	echo "<p align=\"center\"><a href=\"QuerySQL.php\">" . gettext("Run a Free-Text Query") . "</a></p>";
-}
+<div class="box box-body">
 
+<select id="querySelect">
+<?php
 while ($aRow = mysql_fetch_array($rsQueries))
 {
 
@@ -41,14 +40,29 @@ while ($aRow = mysql_fetch_array($rsQueries))
 	if ($_SESSION['bFinance'] || !in_array($qry_ID,$aFinanceQueries))
 	{
 		// Display the query name and description
-		echo "<p>";
-		echo "<a href=\"QueryView.php?QueryID=" . $qry_ID . "\">" . $qry_Name . "</a>";
-		echo "<br>";
-		echo $qry_Description;
-		echo "</p>";
+		echo "<option value=\"".$qry_ID . "\">" . $qry_Name . " - ". $qry_Description. "</option>";
 	}
 }
+?>
+</select>
+<br><br>
+Query Text:
+<textarea id="queryText" class="form-control" name="queryText" <?php if (!$_SESSION['bAdmin']) { echo "disabled"; }?>></textarea>
+<br>
 
+<input type="button" class="btn btn-success" id="submitQuery" name="submitQuery" value="Submit Query"/>
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#querySelect").select2();
+});
+$("#querySelect").on("select2:select", function (e) { 
+
+});
+
+</script>
+<?php
 require "Include/Footer.php";
 
 ?>
