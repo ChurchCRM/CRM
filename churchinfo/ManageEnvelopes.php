@@ -120,8 +120,7 @@ if (isset($_POST["PrintReport"])) {
 
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateEnvelopesModal"><?php echo gettext("Update Family Records"); ?></button>
-<input type="submit" class="btn" value="<?php echo gettext("Print Report"); ?>"
-         name="PrintReport">
+<button type="submit" class="btn" name="PrintReport"><i class="fa fa-print"></i></button>
 
 <br><br>
 
@@ -138,7 +137,7 @@ if (isset($_POST["PrintReport"])) {
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-primary" value="<?php echo gettext("Confirm"); ?>" name="Confirm">
-                    <input type="submit" class="btn btn-danger" value="<?php echo gettext("Cancel"); ?>" name="Cancel">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo gettext("Cancel"); ?></button>
                 </div>
             </div>
     </div>
