@@ -118,7 +118,15 @@ class Family
 
 // Set the page title and include HTML header
 $sPageTitle = "CSV Import";
-require "Include/Header.php";
+require "Include/Header.php";?>
+
+<div class="box">
+<div class="box-header">
+<h3 class="box-title">Import Data</h3>
+</div>
+<div class="box-body">
+
+<?php
 
 $iStage = 1;
 $csvError = "";
@@ -156,14 +164,14 @@ if (isset($_POST["UploadCSV"]))
         <?php
         echo gettext("Total number of rows in the CSV file:") . $iNumRows;
         echo "<br><br>";
-        echo "<table border=1>";
+        echo "<table class=\"table\" id=\"importTable\">";
 
         // grab and display up to the first 8 lines of data in the CSV in a table
         $iRow = 0;
         while (($aData = fgetcsv($pFile, 2048, ",")) && $iRow++ < 9)
         {
             $numCol = count($aData);
-
+            
             echo "<tr>";
             for ($col = 0; $col < $numCol; $col++) {
                 echo "<td>" . $aData[$col] . "&nbsp;</td>";
@@ -216,7 +224,7 @@ if (isset($_POST["UploadCSV"]))
         {
         ?>
             <td>
-            <select name="<?= "col" . $col ?>">
+            <select name="<?= "col" . $col ?>" class="columns">
                 <option value="0"><?= gettext("Ignore this Field"); ?></option>
                 <option value="1"><?= gettext("Title"); ?></option>
                 <option value="2"><?= gettext("First Name"); ?></option>
@@ -295,7 +303,7 @@ if (isset($_POST["UploadCSV"]))
         </select>
         <?= gettext("Classification"); ?>
         <BR><BR>
-        <input type="submit" class="btn" value="<?= gettext("Perform Import"); ?>" name="DoImport">
+        <input type="submit" class="btn btn-primary" value="<?= gettext("Perform Import"); ?>" name="DoImport">
         </form>
 
         <?php
@@ -867,22 +875,47 @@ if(isset($_POST["Clear"]))
 if ($iStage == 1)
 {
     // Display the select file form
-    echo '
-        <p style="color: red">' . $csvError . '</p>
+    ?>
+        <p style="color: red"> <?php echo $csvError ?></p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
-        <input class="icTinyButton" type="file" name="CSVfile">
-        <input type="submit" class="btn" value="' . gettext("Upload CSV File") . '"
+        <input class="icTinyButton" type="file" name="CSVfile"><br/>
+        <input type="submit" class="btn" value=" <?php echo gettext("Upload CSV File") ?> "
         name="UploadCSV">
-        </form><br/><br/><br/><br/>
-        <form method="post" action="CSVImport.php" enctype="multipart/form-data">'
-        .gettext("Are you sure?"). '
-        <input type="checkbox" name="chkClear" value=' . "'0'>" . '
-        <input type="submit" class="btn" value="'. gettext("Clear Persons and Families").'"
-        name="Clear">
-        <p style="color: red">' .
-        gettext("Warning!  Do not select this option if you plan to add to an existing database.<br/>") .
-        gettext("Use only if unsatisfied with initial import.  All person and member data will be destroyed!");
-    echo '</p></form>';
+        </form>
+        </div>
+        </div>
+        <div class="box">
+        <div class="box-header">
+        <h3 class="box-title">Clear Data</h3>
+        </div>
+        <div class="box-body">
+        <form method="post" action="CSVImport.php" enctype="multipart/form-data">
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#clearPersons"><?php echo gettext("Clear Persons and Families") ?></button>
+        <!-- Modal -->
+        <div class="modal fade" id="clearPersons" tabindex="-1" role="dialog" aria-labelledby="clearPersons" aria-hidden="true">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="upload-Image-label"><?php echo gettext("Clear Persons and Families") ?></h4>
+                        </div>
+                        <div class="modal-body">
+                        <span style="color: red">
+                            <?php
+                            echo gettext("Warning!  Do not select this option if you plan to add to an existing database.<br/>");
+                            echo gettext("Use only if unsatisfied with initial import.  All person and member data will be destroyed!");
+                            ?><br><br>
+                            <span style="color:black">I Understand &nbsp;<input type="checkbox" name="chkClear"></span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button name="Clear" type="submit" class="btn btn-danger"><?php echo gettext("Clear Persons and Families") ?></button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </p></form>
+    <?php
     echo $sClear;
 }
 
@@ -1001,6 +1034,14 @@ function GetAge($Month,$Day,$Year)
     else
         return (-1);
 }
+?>
+</div>
+</div>
 
+<script>
+$(".columns").select2();
+</script>
+
+<?php
 require "Include/Footer.php";
 ?>
