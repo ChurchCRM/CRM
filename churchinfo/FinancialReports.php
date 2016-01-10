@@ -110,7 +110,7 @@ if ($sReportType == "") {
 		$rsClassifications = RunQuery($sSQL);
 		?>
 		<tr>
-				<td class="LabelColumn" <?php addToolTip("Select the appropriate classification. These can be set using the classification manager in admin."); ?>><?php echo gettext("Classification:")."<br></td>";
+				<td class="LabelColumn"><?php echo gettext("Classification:")."<br></td>";
 				echo "<td class=TextColumnWithBottomBorder><div class=SmallText>"
 					.gettext("Use Ctrl Key to select multiple")
 					."</div><select name=classList[] size=6 multiple>";
