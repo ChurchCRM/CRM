@@ -73,14 +73,14 @@ require "Include/Header.php";
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"<?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date Start:"); ?></td>
+				<td class="LabelColumn"><?php echo gettext("Date Start:"); ?></td>
 				<td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="DateStart" size="11" value="<?php echo $dDateStart; ?>"></td>
 				<td align="center">
 					<input type="submit" class="btn" value="<?php echo gettext("Apply Filters"); ?>" name="FindFundRaiserSubmit">
 				</td>
 			</tr>
 			<tr>
-				<td class="LabelColumn"<?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date End:"); ?></td>
+				<td class="LabelColumn"><?php echo gettext("Date End:"); ?></td>
 				<td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?php echo $dDateEnd; ?>"></td>
 				<td align="center">
 					<input type="submit" class="btn" value="<?php echo gettext("Clear Filters"); ?>" name="FilterClear">
