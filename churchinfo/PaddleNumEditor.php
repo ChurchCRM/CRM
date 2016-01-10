@@ -164,7 +164,7 @@ require "Include/Header.php";
 				</tr>
 				
 				<tr>
-					<td class="LabelColumn"><?php addToolTip("Select the buyer from the list."); ?><?php echo gettext("Buyer:"); ?>
+					<td class="LabelColumn"><?php echo gettext("Buyer:"); ?>
 					</td>
 					<td class="TextColumn">
 						<select name="PerID">
