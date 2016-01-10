@@ -81,7 +81,7 @@ require 'Include/Header.php';
 </script>
 
 <!-- PACE -->
-<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/pace/pace.min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/pace/pace.min.js"></script>
 <?php
 require "Include/Footer.php";
 ?>
