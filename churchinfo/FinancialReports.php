@@ -114,12 +114,10 @@ if ($sReportType == "") {
 		$rsClassifications = RunQuery($sSQL);
 		?>
 		<tr>
-				<td class="LabelColumn"><?php echo gettext("Classification:")."<br></td>";
-				echo "<td class=TextColumnWithBottomBorder><div class=SmallText>"
-					.gettext("Use Ctrl Key to select multiple")
-					."</div><select name=classList[] size=6 multiple>";
-					echo "<option value=0 selected>".gettext("All Classifications");
-					echo "<option value=0>----------";
+				<td class="LabelColumn"><?php echo gettext("Classification:")?><br></td>
+				<td class=TextColumnWithBottomBorder><div class=SmallText>
+					</div><select name=classList[] size=6 multiple id="classList">
+                    <?php
 					while ($aRow = mysql_fetch_array($rsClassifications)) {
 						extract($aRow);
 						echo "<option value=\"" . $lst_OptionID . "\"";
@@ -129,14 +127,19 @@ if ($sReportType == "") {
 					</select>
 				</td>
 		</tr>
+        <tr>
+        <td></td>
+        <td>
+        <br/>
+        <button type="button" id="addAllClasses" class="btn">Add All Classes</button>
+        <button type="button" id="clearAllClasses" class="btn">Clear All Classes</button><br/><br/>
+        </td></tr>
 		<?php
 
 		$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
 		$rsFamilies = RunQuery($sSQL);?>
 		<tr><td class=LabelColumn><?php echo gettext("Filter by Family:")?><br></td>
-		<td class=TextColumnWithBottomBorder><div class=SmallText>"
-			<?php echo gettext("Use Ctrl Key to select multiple"); ?>
-			</div>
+		<td class=TextColumnWithBottomBorder>
             <select name="family" id="family" size=6 multiple>
 		<?php
 		// Build Criteria for Head of Household
@@ -223,19 +226,28 @@ if ($sReportType == "") {
 	if ($sReportType == "Pledge Summary" || $sReportType == "Pledge Family Summary" || $sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report" || $sReportType == "Pledge Reminders") {
 		$sSQL = "SELECT fun_ID, fun_Name, fun_Active FROM donationfund_fun ORDER BY fun_Active, fun_Name";
 		$rsFunds = RunQuery($sSQL);
-		echo "<tr><td class=LabelColumn>".gettext("Filter by Fund:")."<br></td>";
-		echo "<td class=TextColumnWithBottomBorder><div class=SmallText>"
-			.gettext("Use Ctrl Key to select multiple");
-		echo "</div><select name=funds[] size=5 multiple>";
-		echo "<option value=0 selected>".gettext("All Funds");
-		echo "<option value=0>----------";
+        ?>
+        
+		<tr><td class="LabelColumn"><?php echo gettext("Filter by Fund:")?><br></td>
+		<td><select name="fundsList" size="5" multiple id="fundsList">
+        <?php
 		while ($aRow = mysql_fetch_array($rsFunds)) {
 			extract($aRow);
 			echo "<option value=$fun_ID>$fun_Name";
 			if ($fun_Active == "false")
 				echo " &nbsp; INACTIVE";
 		}
-		echo "</select></td></tr>";
+        ?>
+		</select></td></tr>
+         <tr>
+        <td></td>
+        <td>
+        <br/>
+        <button type="button" id="addAllFunds" class="btn">Add All Funds</button>
+        <button type="button" id="clearAllFunds" class="btn">Clear All Funds</button><br/><br/>
+        </td></tr>
+        
+        <?php
 	}
 	
 	// Filter by Payment Method
@@ -336,6 +348,30 @@ var all = [];
 });
 $("#clearAllFamilies").click(function () {
       $("#family").val(null).trigger("change");
+});
+
+$("#classList").select2();
+$("#addAllClasses").click(function () {
+var all = [];
+    $("#classList > option").each(function () {
+        all.push(this.value);
+    });
+     $("#classList").val(all).trigger("change");
+});
+$("#clearAllClasses").click(function () {
+      $("#classList").val(null).trigger("change");
+});
+
+$("#fundsList").select2();
+$("#addAllFunds").click(function () {
+var all = [];
+    $("#fundsList > option").each(function () {
+        all.push(this.value);
+    });
+     $("#fundsList").val(all).trigger("change");
+});
+$("#clearAllFunds").click(function () {
+      $("#fundsList").val(null).trigger("change");
 });
 
 </script>
