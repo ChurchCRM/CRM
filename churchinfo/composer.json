@@ -24,6 +24,7 @@
     "docs": "http://docs.churchcrm.io"
   },
   "require": {
-    "almasaeed2010/adminlte": "2.3.2"
+    "almasaeed2010/adminlte": "2.3.2",
+    "mailchimp/mailchimp": ">=2.0.0"
   }
 }
