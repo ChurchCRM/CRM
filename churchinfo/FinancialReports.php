@@ -36,6 +36,10 @@ $sPageTitle = gettext("Financial Reports");
 if ($sReportType)
 	$sPageTitle .= ": $sReportType";
 require "Include/Header.php";
+?>
+<div class="box box-body">
+
+<?php 
 
 // No Records Message if previous report returned no records.
 if (array_key_exists ("ReturnMessage", $_GET) && $_GET["ReturnMessage"] == "NoRows")
@@ -128,14 +132,13 @@ if ($sReportType == "") {
 		<?php
 
 		$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
-		$rsFamilies = RunQuery($sSQL);
-		echo "<tr><td class=LabelColumn>".gettext("Filter by Family:")."<br></td>";
-		echo "<td class=TextColumnWithBottomBorder><div class=SmallText>"
-			.gettext("Use Ctrl Key to select multiple")
-			."</div><select name=family[] size=6 multiple>";
-		echo "<option value=0 selected>".gettext("All Families");
-		echo "<option value=0>----------";
-		
+		$rsFamilies = RunQuery($sSQL);?>
+		<tr><td class=LabelColumn><?php echo gettext("Filter by Family:")?><br></td>
+		<td class=TextColumnWithBottomBorder><div class=SmallText>"
+			<?php echo gettext("Use Ctrl Key to select multiple"); ?>
+			</div>
+            <select name="family" id="family" size=6 multiple>
+		<?php
 		// Build Criteria for Head of Household
 		if (!$sDirRoleHead)
 			$sDirRoleHead = "1";
@@ -165,6 +168,15 @@ if ($sReportType == "") {
 		}
 
 		echo "</select></td></tr>";
+        ?>
+        <tr>
+        <td></td>
+        <td>
+        <br/>
+        <button type="button" id="addAllFamilies" class="btn">Add All Families</button>
+        <button type="button" id="clearAllFamilies" class="btn">Clear All Families</button><br/><br/>
+        </td></tr>
+        <?php
 	}
 	
 	// Starting and Ending Dates for Report
@@ -314,9 +326,20 @@ if ($sReportType == "") {
 <script>
 $("#DateStart").datepicker({format:'yyyy-mm-dd'});
 $("#DateEnd").datepicker({format:'yyyy-mm-dd'});
+$("#family").select2();
+$("#addAllFamilies").click(function () {
+var all = [];
+    $("#family > option").each(function () {
+        all.push(this.value);
+    });
+     $("#family").val(all).trigger("change");
+});
+$("#clearAllFamilies").click(function () {
+      $("#family").val(null).trigger("change");
+});
 
 </script>
-
+</div>
 <?php
 require "Include/Footer.php";
 ?>
