@@ -10,7 +10,7 @@ if (!isset($_SESSION['iUserID'])) {
     exit;
 }
 
-require_once '../vendor/Slim/Slim.php';
+require_once '../vendor/slim/slim/Slim/Slim.php';
 
 use Slim\Slim;
 

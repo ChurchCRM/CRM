@@ -2,11 +2,11 @@
 /**
  * Slim - a micro PHP 5 framework
  *
- * @author      Josh Lockhart <info@joshlockhart.com>
+ * @author      Josh Lockhart <info@slimframework.com>
  * @copyright   2011 Josh Lockhart
  * @link        http://www.slimframework.com
  * @license     http://www.slimframework.com/license
- * @version     1.5.0
+ * @version     2.6.1
  *
  * MIT LICENSE
  *
@@ -30,17 +30,30 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/**
- * Request Slash Exception
- *
- * This Exception is thrown when Slim detects a matching route
- * (defined with a trailing slash) and the HTTP request
- * matches the route but does not have a trailing slash. This
- * exception will be caught in `Slim::run` and trigger a 301 redirect
- * to the same resource URI with a trailing slash.
- *
- * @package Slim
- * @author  Josh Lockhart <info@joshlockhart.com>
- * @since   Version 1.0
- */
-class Slim_Exception_RequestSlash extends Exception {}
+class HeadersTest extends PHPUnit_Framework_TestCase
+{
+    public function testNormalizesKey()
+    {
+        $h = new \Slim\Http\Headers();
+        $h->set('Http_Content_Type', 'text/html');
+        $prop = new \ReflectionProperty($h, 'data');
+        $prop->setAccessible(true);
+        $this->assertArrayHasKey('Content-Type', $prop->getValue($h));
+    }
+
+    public function testExtractHeaders()
+    {
+        $test = array(
+            'HTTP_HOST' => 'foo.com',
+            'SERVER_NAME' => 'foo',
+            'CONTENT_TYPE' => 'text/html',
+            'X_FORWARDED_FOR' => '127.0.0.1'
+        );
+        $results = \Slim\Http\Headers::extract($test);
+        $this->assertEquals(array(
+            'HTTP_HOST' => 'foo.com',
+            'CONTENT_TYPE' => 'text/html',
+            'X_FORWARDED_FOR' => '127.0.0.1'
+        ), $results);
+    }
+}
