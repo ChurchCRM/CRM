@@ -77,6 +77,7 @@ $(document).ready(function() {
 
 $("#querySelect").on("select2:select", function (e) { 
 console.log(e);
+ $("#queryText").empty();
 $.ajax({
     method: "POST",
     dataType: 'json',
@@ -84,7 +85,7 @@ $.ajax({
     data: JSON.stringify({"queryRequest": "SELECT qry_SQL from query_qry where qry_ID = " + e.params.data.id})
     }).done(function(data){
         console.log(data);
-        $("#queryText").text(data.rows[0].qry_SQL);
+        $("#queryText").val(data.rows[0].qry_SQL);
     });
 });
 
