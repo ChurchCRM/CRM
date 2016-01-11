@@ -27,6 +27,14 @@ $aFinanceQueries = explode(',', $aFinanceQueries);
 
 require "Include/Header.php";?>
 
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+
 <div class="box box-body">
 
 <select id="querySelect">
@@ -58,8 +66,8 @@ Query Text:
 <h3 class="box-title">Query Results</h3><h3 class="box-title" id="numRows"></h3>
 </div>
 <div class="box-body">
-<pre id="queryResults">
-</pre>
+<table class="table" id="queryResults">
+</table>
 </div>
 </div>
 <script>
@@ -82,6 +90,8 @@ $.ajax({
 
 $("#submitQuery").on("click",function (e){
    console.log(e); 
+   $("#queryResults").empty();
+    $("#numRows").empty();
     $.ajax({
     method: "POST",
     dataType: 'json',
@@ -90,7 +100,22 @@ $("#submitQuery").on("click",function (e){
     }).done(function(data){
         console.log(data);
         $("#numRows").html(" ("+data.rowcount+") ");
-        $("#queryResults").text(JSON.stringify(data.rows));
+        var thead=$("<thead>");
+        var tr= $("<tr>");
+        $.each(data.headerRow, function(column,value) {
+            $("<th>"+value+"</th>").appendTo(tr);
+        });
+        thead.append(tr);
+        $("#queryResults").append(thead);
+        
+        $.each(data.rows,function (row,value){
+             var tr= $("<tr>");
+            $.each(value, function(column,value) {
+                $("<td>"+value+"</td>").appendTo(tr);
+            });
+            $("#queryResults").append(tr);
+        });
+        $("#queryResults").dataTable();
     });
 });
 </script>
