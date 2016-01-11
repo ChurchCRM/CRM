@@ -53,14 +53,46 @@ Query Text:
 <input type="button" class="btn btn-success" id="submitQuery" name="submitQuery" value="Submit Query"/>
 
 </div>
+<div class="box">
+<div class="box-header">
+<h3 class="box-title">Query Results</h3><h3 class="box-title" id="numRows"></h3>
+</div>
+<div class="box-body">
+<pre id="queryResults">
+</pre>
+</div>
+</div>
 <script>
 $(document).ready(function() {
     $("#querySelect").select2();
 });
-$("#querySelect").on("select2:select", function (e) { 
 
+$("#querySelect").on("select2:select", function (e) { 
+console.log(e);
+$.ajax({
+    method: "POST",
+    dataType: 'json',
+    url:"/api/database/query",
+    data: JSON.stringify({"queryRequest": "SELECT qry_SQL from query_qry where qry_ID = " + e.params.data.id})
+    }).done(function(data){
+        console.log(data);
+        $("#queryText").text(data.rows[0].qry_SQL);
+    });
 });
 
+$("#submitQuery").on("click",function (e){
+   console.log(e); 
+    $.ajax({
+    method: "POST",
+    dataType: 'json',
+    url:"/api/database/query",
+    data: JSON.stringify({"queryRequest":$("#queryText").val()})
+    }).done(function(data){
+        console.log(data);
+        $("#numRows").html(" ("+data.rowcount+") ");
+        $("#queryResults").text(JSON.stringify(data.rows));
+    });
+});
 </script>
 <?php
 require "Include/Footer.php";
