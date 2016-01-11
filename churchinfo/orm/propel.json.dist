@@ -1,0 +1,8 @@
+{
+    "propel": {
+        "paths": {
+            "schemaDir": "\/var\/www\/public\/orm",
+            "phpDir": "\/var\/www\/public\/orm\/classes"
+        }
+    }
+}

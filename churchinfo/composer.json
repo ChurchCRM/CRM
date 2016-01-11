@@ -26,6 +26,7 @@
   "require": {
     "almasaeed2010/adminlte": "2.3.2",
     "mailchimp/mailchimp": "2.0.6",
-    "slim/slim": "2.6.2"
+    "slim/slim": "2.6.2",
+    "propel/propel": "~2.0@dev"
   }
 }

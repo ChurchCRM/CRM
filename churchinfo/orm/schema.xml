@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
+
+    <table name="family_fam" idMethod="native" phpName="Family">
+        <column name="fam_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="fam_Name" phpName="Name" type="VARCHAR" size="50"/>
+        <column name="fam_Address1" phpName="Address1" type="VARCHAR" size="255"/>
+        <column name="fam_Address2" phpName="Address2" type="VARCHAR" size="255"/>
+        <column name="fam_City" phpName="City" type="VARCHAR" size="50"/>
+        <column name="fam_State" phpName="State" type="VARCHAR" size="50"/>
+        <column name="fam_Zip" phpName="Zip" type="VARCHAR" size="50"/>
+        <column name="fam_Country" phpName="Country" type="VARCHAR" size="50"/>
+        <column name="fam_HomePhone" phpName="Homephone" type="VARCHAR" size="30"/>
+        <column name="fam_WorkPhone" phpName="Workphone" type="VARCHAR" size="30"/>
+        <column name="fam_CellPhone" phpName="Cellphone" type="VARCHAR" size="30"/>
+        <column name="fam_Email" phpName="Email" type="VARCHAR" size="100"/>
+        <column name="fam_WeddingDate" phpName="Weddingdate" type="DATE"/>
+        <column name="fam_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+        <column name="fam_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
+        <column name="fam_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
+        <column name="fam_EditedBy" phpName="EditedBy" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" defaultValue="0"/>
+        <column name="fam_scanCheck" phpName="ScanCheck" type="LONGVARCHAR"/>
+        <column name="fam_scanCredit" phpName="ScanCredit" type="LONGVARCHAR"/>
+        <column name="fam_SendNewsLetter" phpName="SendNewsletter" type="CHAR" sqlType="enum('FALSE','TRUE')" required="true" defaultValue="FALSE"/>
+        <column name="fam_DateDeactivated" phpName="DateDeactivated" type="DATE"/>
+        <column name="fam_OkToCanvass" phpName="OkToCanvass" type="CHAR" sqlType="enum('FALSE','TRUE')" required="true" defaultValue="FALSE"/>
+        <column name="fam_Canvasser" phpName="Canvasser" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
+        <column name="fam_Latitude" phpName="Latitude" type="DOUBLE"/>
+        <column name="fam_Longitude" phpName="Longitude" type="DOUBLE"/>
+        <column name="fam_Envelope" phpName="Envelope" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <index name="fam_ID">
+            <index-column name="fam_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    <table name="family_custom_master" idMethod="native" phpName="FamilyCustomMaster">
+        <column name="fam_custom_Order" phpName="CustomOrder" type="SMALLINT" required="true" defaultValue="0"/>
+        <column name="fam_custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue=""/>
+        <column name="fam_custom_Name" phpName="CustomName" type="VARCHAR" size="40" required="true" defaultValue=""/>
+        <column name="fam_custom_Special" phpName="CustomSpecial" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
+        <column name="fam_custom_Side" phpName="CustomSide" type="CHAR" sqlType="enum('left','right')" required="true" defaultValue="left"/>
+        <column name="fam_custom_FieldSec" phpName="CustomFieldSec" type="TINYINT" required="true" defaultValue="1"/>
+        <column name="type_ID" phpName="TypeId" type="TINYINT" required="true" defaultValue="0"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    <table name="family_custom" idMethod="native" phpName="FamilyCustom">
+    <column name="fam_ID" phpName="FamId" type="SMALLINT" size="9" primaryKey="true" required="true" defaultValue="0"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+    </table>
+    <table name="person_per" idMethod="native" phpName="Person">
+        <column name="per_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="per_Title" phpName="Title" type="VARCHAR" size="50"/>
+        <column name="per_FirstName" phpName="FirstName" type="VARCHAR" size="50"/>
+        <column name="per_MiddleName" phpName="MiddleName" type="VARCHAR" size="50"/>
+        <column name="per_LastName" phpName="LastName" type="VARCHAR" size="50"/>
+        <column name="per_Suffix" phpName="Suffix" type="VARCHAR" size="50"/>
+        <column name="per_Address1" phpName="Address1" type="VARCHAR" size="50"/>
+        <column name="per_Address2" phpName="Address2" type="VARCHAR" size="50"/>
+        <column name="per_City" phpName="City" type="VARCHAR" size="50"/>
+        <column name="per_State" phpName="State" type="VARCHAR" size="50"/>
+        <column name="per_Zip" phpName="Zip" type="VARCHAR" size="50"/>
+        <column name="per_Country" phpName="Country" type="VARCHAR" size="50"/>
+        <column name="per_HomePhone" phpName="HomePhone" type="VARCHAR" size="30"/>
+        <column name="per_WorkPhone" phpName="WorkPhone" type="VARCHAR" size="30"/>
+        <column name="per_CellPhone" phpName="CellPhone" type="VARCHAR" size="30"/>
+        <column name="per_Email" phpName="Email" type="VARCHAR" size="50"/>
+        <column name="per_WorkEmail" phpName="WorkEmail" type="VARCHAR" size="50"/>
+        <column name="per_BirthMonth" phpName="BirthMonth" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+        <column name="per_BirthDay" phpName="BirthDay" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+        <column name="per_BirthYear" phpName="BirthYear" type="INTEGER" size="4"/>
+        <column name="per_MembershipDate" phpName="MembershipDate" type="DATE"/>
+        <column name="per_Gender" phpName="Gender" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
+        <column name="per_fmr_ID" phpName="FmrId" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+        <column name="per_cls_ID" phpName="ClsId" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+        <column name="per_fam_ID" phpName="FamId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
+        <column name="per_Envelope" phpName="Envelope" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"/>
+        <column name="per_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
+        <column name="per_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+        <column name="per_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
+        <column name="per_EditedBy" phpName="EditedBy" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" defaultValue="0"/>
+        <column name="per_FriendDate" phpName="FriendDate" type="DATE"/>
+        <column name="per_Flags" phpName="Flags" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <index name="per_ID">
+            <index-column name="per_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    <table name="person_custom" idMethod="native" phpName="PersonCustom">
+        <column name="per_ID" phpName="PerId" type="SMALLINT" size="9" primaryKey="true" required="true" defaultValue="0"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    <table name="person_custom_master" idMethod="native" phpName="PersonCustomMaster">
+        <column name="custom_Order" phpName="CustomOrder" type="SMALLINT" required="true" defaultValue="0"/>
+        <column name="custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue=""/>
+        <column name="custom_Name" phpName="CustomName" type="VARCHAR" size="40" required="true" defaultValue=""/>
+        <column name="custom_Special" phpName="CustomSpecial" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
+        <column name="custom_Side" phpName="CustomSide" type="CHAR" sqlType="enum('left','right')" required="true" defaultValue="left"/>
+        <column name="custom_FieldSec" phpName="CustomFieldSec" type="TINYINT" required="true"/>
+        <column name="type_ID" phpName="TypeId" type="TINYINT" required="true" defaultValue="0"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+
+
+ <!--
+     <table name="person2group2role_p2g2r" idMethod="native" phpName="Person2group2roleP2g2r">
+        <column name="p2g2r_per_ID" phpName="P2g2rPerId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" required="true" defaultValue="0"/>
+        <column name="p2g2r_grp_ID" phpName="P2g2rGrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" required="true" defaultValue="0"/>
+        <column name="p2g2r_rle_ID" phpName="P2g2rRleId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+        <index name="p2g2r_per_ID">
+            <index-column name="p2g2r_per_ID"/>
+            <index-column name="p2g2r_grp_ID"/>
+            <index-column name="p2g2r_rle_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    <table name="person2volunteeropp_p2vo" idMethod="native" phpName="Person2volunteeroppP2vo">
+        <column name="p2vo_ID" phpName="P2voId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="p2vo_per_ID" phpName="P2voPerId" type="SMALLINT" size="9"/>
+        <column name="p2vo_vol_ID" phpName="P2voVolId" type="SMALLINT" size="9"/>
+        <unique name="p2vo_ID">
+            <unique-column name="p2vo_ID"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+
+ <table name="autopayment_aut" idMethod="native" phpName="AutopaymentAut">
+    <column name="aut_ID" phpName="AutId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="aut_FamID" phpName="AutFamid" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" defaultValue="0"/>
+    <column name="aut_EnableBankDraft" phpName="AutEnablebankdraft" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
+    <column name="aut_EnableCreditCard" phpName="AutEnablecreditcard" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
+    <column name="aut_NextPayDate" phpName="AutNextpaydate" type="DATE"/>
+    <column name="aut_FYID" phpName="AutFyid" type="SMALLINT" size="9" required="true" defaultValue="9"/>
+    <column name="aut_Amount" phpName="AutAmount" type="DECIMAL" size="6" scale="2" required="true" defaultValue="0.00"/>
+    <column name="aut_Interval" phpName="AutInterval" type="TINYINT" size="3" required="true" defaultValue="1"/>
+    <column name="aut_Fund" phpName="AutFund" type="SMALLINT" size="6" required="true" defaultValue="0"/>
+    <column name="aut_FirstName" phpName="AutFirstname" type="VARCHAR" size="50"/>
+    <column name="aut_LastName" phpName="AutLastname" type="VARCHAR" size="50"/>
+    <column name="aut_Address1" phpName="AutAddress1" type="VARCHAR" size="255"/>
+    <column name="aut_Address2" phpName="AutAddress2" type="VARCHAR" size="255"/>
+    <column name="aut_City" phpName="AutCity" type="VARCHAR" size="50"/>
+    <column name="aut_State" phpName="AutState" type="VARCHAR" size="50"/>
+    <column name="aut_Zip" phpName="AutZip" type="VARCHAR" size="50"/>
+    <column name="aut_Country" phpName="AutCountry" type="VARCHAR" size="50"/>
+    <column name="aut_Phone" phpName="AutPhone" type="VARCHAR" size="30"/>
+    <column name="aut_Email" phpName="AutEmail" type="VARCHAR" size="100"/>
+    <column name="aut_CreditCard" phpName="AutCreditcard" type="VARCHAR" size="50"/>
+    <column name="aut_ExpMonth" phpName="AutExpmonth" type="VARCHAR" size="2"/>
+    <column name="aut_ExpYear" phpName="AutExpyear" type="VARCHAR" size="4"/>
+    <column name="aut_BankName" phpName="AutBankname" type="VARCHAR" size="50"/>
+    <column name="aut_Route" phpName="AutRoute" type="VARCHAR" size="30"/>
+    <column name="aut_Account" phpName="AutAccount" type="VARCHAR" size="30"/>
+    <column name="aut_DateLastEdited" phpName="AutDatelastedited" type="TIMESTAMP"/>
+    <column name="aut_EditedBy" phpName="AutEditedby" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" defaultValue="0"/>
+    <column name="aut_Serial" phpName="AutSerial" type="SMALLINT" size="9" required="true" defaultValue="1"/>
+    <column name="aut_CreditCardVanco" phpName="AutCreditcardvanco" type="VARCHAR" size="50"/>
+    <column name="aut_AccountVanco" phpName="AutAccountvanco" type="VARCHAR" size="50"/>
+    <unique name="aut_ID">
+      <unique-column name="aut_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="canvassdata_can" idMethod="native" phpName="CanvassdataCan">
+    <column name="can_ID" phpName="CanId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="can_famID" phpName="CanFamid" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="can_Canvasser" phpName="CanCanvasser" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="can_FYID" phpName="CanFyid" type="SMALLINT" size="9"/>
+    <column name="can_date" phpName="CanDate" type="DATE"/>
+    <column name="can_Positive" phpName="CanPositive" type="LONGVARCHAR"/>
+    <column name="can_Critical" phpName="CanCritical" type="LONGVARCHAR"/>
+    <column name="can_Insightful" phpName="CanInsightful" type="LONGVARCHAR"/>
+    <column name="can_Financial" phpName="CanFinancial" type="LONGVARCHAR"/>
+    <column name="can_Suggestion" phpName="CanSuggestion" type="LONGVARCHAR"/>
+    <column name="can_NotInterested" phpName="CanNotinterested" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="can_WhyNotInterested" phpName="CanWhynotinterested" type="LONGVARCHAR"/>
+    <unique name="can_ID">
+      <unique-column name="can_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="config_cfg" idMethod="native" phpName="ConfigCfg">
+    <column name="cfg_id" phpName="CfgId" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
+    <column name="cfg_name" phpName="CfgName" type="VARCHAR" size="50" required="true" defaultValue=""/>
+    <column name="cfg_value" phpName="CfgValue" type="LONGVARCHAR"/>
+    <column name="cfg_type" phpName="CfgType" type="CHAR" sqlType="enum('text','number','date','boolean','textarea')" required="true" defaultValue="text"/>
+    <column name="cfg_default" phpName="CfgDefault" type="LONGVARCHAR" required="true"/>
+    <column name="cfg_tooltip" phpName="CfgTooltip" type="LONGVARCHAR" required="true"/>
+    <column name="cfg_section" phpName="CfgSection" type="VARCHAR" size="50" required="true" defaultValue=""/>
+    <column name="cfg_category" phpName="CfgCategory" type="VARCHAR" size="20"/>
+    <index name="cfg_id">
+      <index-column name="cfg_id"/>
+    </index>
+    <unique name="cfg_name">
+      <unique-column name="cfg_name"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="deposit_dep" idMethod="native" phpName="DepositDep">
+    <column name="dep_ID" phpName="DepId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="dep_Date" phpName="DepDate" type="DATE"/>
+    <column name="dep_Comment" phpName="DepComment" type="LONGVARCHAR"/>
+    <column name="dep_EnteredBy" phpName="DepEnteredby" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+    <column name="dep_Closed" phpName="DepClosed" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="dep_Type" phpName="DepType" type="CHAR" sqlType="enum('Bank','CreditCard','BankDraft','eGive')" required="true" defaultValue="Bank"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="donateditem_di" idMethod="native" phpName="DonateditemDi">
+    <column name="di_ID" phpName="DiId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="di_item" phpName="DiItem" type="VARCHAR" size="32" required="true"/>
+    <column name="di_FR_ID" phpName="DiFrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+    <column name="di_donor_ID" phpName="DiDonorId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="di_buyer_ID" phpName="DiBuyerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="di_multibuy" phpName="DiMultibuy" type="SMALLINT" size="1" required="true" defaultValue="0"/>
+    <column name="di_title" phpName="DiTitle" type="VARCHAR" size="128" required="true"/>
+    <column name="di_description" phpName="DiDescription" type="LONGVARCHAR"/>
+    <column name="di_sellprice" phpName="DiSellprice" type="DECIMAL" size="8" scale="2"/>
+    <column name="di_estprice" phpName="DiEstprice" type="DECIMAL" size="8" scale="2"/>
+    <column name="di_minimum" phpName="DiMinimum" type="DECIMAL" size="8" scale="2"/>
+    <column name="di_materialvalue" phpName="DiMaterialvalue" type="DECIMAL" size="8" scale="2"/>
+    <column name="di_EnteredBy" phpName="DiEnteredby" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
+    <column name="di_EnteredDate" phpName="DiEntereddate" type="DATE" required="true"/>
+    <column name="di_picture" phpName="DiPicture" type="LONGVARCHAR"/>
+    <unique name="di_ID">
+      <unique-column name="di_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="donationfund_fun" idMethod="native" phpName="DonationfundFun">
+    <column name="fun_ID" phpName="FunId" type="TINYINT" size="3" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="fun_Active" phpName="FunActive" type="CHAR" sqlType="enum('true','false')" required="true" defaultValue="true"/>
+    <column name="fun_Name" phpName="FunName" type="VARCHAR" size="30"/>
+    <column name="fun_Description" phpName="FunDescription" type="VARCHAR" size="100"/>
+    <unique name="fun_ID">
+      <unique-column name="fun_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="egive_egv" idMethod="native" phpName="EgiveEgv">
+    <column name="egv_egiveID" phpName="EgvEgiveid" type="VARCHAR" size="16" required="true"/>
+    <column name="egv_famID" phpName="EgvFamid" type="INTEGER" required="true"/>
+    <column name="egv_DateEntered" phpName="EgvDateentered" type="TIMESTAMP" required="true"/>
+    <column name="egv_DateLastEdited" phpName="EgvDatelastedited" type="TIMESTAMP" required="true"/>
+    <column name="egv_EnteredBy" phpName="EgvEnteredby" type="SMALLINT" required="true" defaultValue="0"/>
+    <column name="egv_EditedBy" phpName="EgvEditedby" type="SMALLINT" required="true" defaultValue="0"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="email_message_pending_emp" idMethod="native" phpName="EmailMessagePendingEmp">
+    <column name="emp_usr_id" phpName="EmpUsrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" defaultValue="0"/>
+    <column name="emp_to_send" phpName="EmpToSend" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
+    <column name="emp_subject" phpName="EmpSubject" type="VARCHAR" size="128" required="true"/>
+    <column name="emp_message" phpName="EmpMessage" type="LONGVARCHAR" required="true"/>
+    <column name="emp_attach_name" phpName="EmpAttachName" type="LONGVARCHAR"/>
+    <column name="emp_attach" phpName="EmpAttach" type="BOOLEAN" size="1"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="email_recipient_pending_erp" idMethod="native" phpName="EmailRecipientPendingErp">
+    <column name="erp_id" phpName="ErpId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
+    <column name="erp_usr_id" phpName="ErpUsrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" defaultValue="0"/>
+    <column name="erp_num_attempt" phpName="ErpNumAttempt" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
+    <column name="erp_failed_time" phpName="ErpFailedTime" type="TIMESTAMP"/>
+    <column name="erp_email_address" phpName="ErpEmailAddress" type="VARCHAR" size="50" required="true" defaultValue=""/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="event_attend" idMethod="native" phpName="EventAttend">
+    <column name="event_id" phpName="EventId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="person_id" phpName="PersonId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="checkin_date" phpName="CheckinDate" type="TIMESTAMP"/>
+    <column name="checkin_id" phpName="CheckinId" type="INTEGER"/>
+    <column name="checkout_date" phpName="CheckoutDate" type="TIMESTAMP"/>
+    <column name="checkout_id" phpName="CheckoutId" type="INTEGER"/>
+    <unique name="event_id">
+      <unique-column name="event_id"/>
+      <unique-column name="person_id"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="event_types" idMethod="native" phpName="EventTypes">
+    <column name="type_id" phpName="TypeId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="type_name" phpName="TypeName" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <column name="type_defstarttime" phpName="TypeDefstarttime" type="TIME" required="true" defaultValue="00:00:00"/>
+    <column name="type_defrecurtype" phpName="TypeDefrecurtype" type="CHAR" sqlType="enum('none','weekly','monthly','yearly')" required="true" defaultValue="none"/>
+    <column name="type_defrecurDOW" phpName="TypeDefrecurdow" type="CHAR" sqlType="enum('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday')" required="true" defaultValue="Sunday"/>
+    <column name="type_defrecurDOM" phpName="TypeDefrecurdom" type="CHAR" size="2" required="true" defaultValue="0"/>
+    <column name="type_defrecurDOY" phpName="TypeDefrecurdoy" type="DATE" required="true" defaultValue="0000-00-00"/>
+    <column name="type_active" phpName="TypeActive" type="INTEGER" size="1" required="true" defaultValue="1"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="eventcountnames_evctnm" idMethod="native" phpName="EventcountnamesEvctnm">
+    <column name="evctnm_countid" phpName="EvctnmCountid" type="INTEGER" size="5" autoIncrement="true" required="true"/>
+    <column name="evctnm_eventtypeid" phpName="EvctnmEventtypeid" type="SMALLINT" size="5" required="true" defaultValue="0"/>
+    <column name="evctnm_countname" phpName="EvctnmCountname" type="VARCHAR" size="20" required="true" defaultValue=""/>
+    <column name="evctnm_notes" phpName="EvctnmNotes" type="VARCHAR" size="20" required="true" defaultValue=""/>
+    <unique name="evctnm_countid">
+      <unique-column name="evctnm_countid"/>
+    </unique>
+    <unique name="evctnm_eventtypeid">
+      <unique-column name="evctnm_eventtypeid"/>
+      <unique-column name="evctnm_countname"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="eventcounts_evtcnt" idMethod="native" phpName="EventcountsEvtcnt">
+    <column name="evtcnt_eventid" phpName="EvtcntEventid" type="INTEGER" size="5" primaryKey="true" required="true" defaultValue="0"/>
+    <column name="evtcnt_countid" phpName="EvtcntCountid" type="INTEGER" size="5" primaryKey="true" required="true" defaultValue="0"/>
+    <column name="evtcnt_countname" phpName="EvtcntCountname" type="VARCHAR" size="20"/>
+    <column name="evtcnt_countcount" phpName="EvtcntCountcount" type="INTEGER" size="6"/>
+    <column name="evtcnt_notes" phpName="EvtcntNotes" type="VARCHAR" size="20"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="events_event" idMethod="native" phpName="EventsEvent">
+    <column name="event_id" phpName="EventId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="event_type" phpName="EventType" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="event_title" phpName="EventTitle" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <column name="event_desc" phpName="EventDesc" type="VARCHAR" size="255"/>
+    <column name="event_text" phpName="EventText" type="LONGVARCHAR"/>
+    <column name="event_start" phpName="EventStart" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <column name="event_end" phpName="EventEnd" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <column name="inactive" phpName="Inactive" type="INTEGER" size="1" required="true" defaultValue="0"/>
+    <column name="event_typename" phpName="EventTypename" type="VARCHAR" size="40" required="true" defaultValue=""/>
+    <index name="event_txt">
+      <index-column name="event_text"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>-->
+
+<!--  <table name="fundraiser_fr" idMethod="native" phpName="FundraiserFr">
+    <column name="fr_ID" phpName="FrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="fr_date" phpName="FrDate" type="DATE"/>
+    <column name="fr_title" phpName="FrTitle" type="VARCHAR" size="128" required="true"/>
+    <column name="fr_description" phpName="FrDescription" type="LONGVARCHAR"/>
+    <column name="fr_EnteredBy" phpName="FrEnteredby" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
+    <column name="fr_EnteredDate" phpName="FrEntereddate" type="DATE" required="true"/>
+    <unique name="fr_ID">
+      <unique-column name="fr_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="group_grp" idMethod="native" phpName="GroupGrp">
+    <column name="grp_ID" phpName="GrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="grp_Type" phpName="GrpType" type="TINYINT" required="true" defaultValue="0"/>
+    <column name="grp_RoleListID" phpName="GrpRolelistid" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <column name="grp_DefaultRole" phpName="GrpDefaultrole" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="grp_Name" phpName="GrpName" type="VARCHAR" size="50" required="true" defaultValue=""/>
+    <column name="grp_Description" phpName="GrpDescription" type="LONGVARCHAR"/>
+    <column name="grp_hasSpecialProps" phpName="GrpHasspecialprops" type="CHAR" sqlType="enum('true','false')" required="true" defaultValue="false"/>
+    <index name="grp_ID_2">
+      <index-column name="grp_ID"/>
+    </index>
+    <unique name="grp_ID">
+      <unique-column name="grp_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="groupprop_master" idMethod="native" phpName="GrouppropMaster">
+    <column name="grp_ID" phpName="GrpId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" defaultValue="0"/>
+    <column name="prop_ID" phpName="PropId" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="prop_Field" phpName="PropField" type="VARCHAR" size="5" required="true" defaultValue="0"/>
+    <column name="prop_Name" phpName="PropName" type="VARCHAR" size="40"/>
+    <column name="prop_Description" phpName="PropDescription" type="VARCHAR" size="60"/>
+    <column name="type_ID" phpName="TypeId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
+    <column name="prop_Special" phpName="PropSpecial" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+    <column name="prop_PersonDisplay" phpName="PropPersondisplay" type="CHAR" sqlType="enum('false','true')" required="true" defaultValue="false"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu">
+    <column name="lu_fam_ID" phpName="LuFamId" type="SMALLINT" size="9" primaryKey="true" required="true" defaultValue="0"/>
+    <column name="lu_LookupDateTime" phpName="LuLookupdatetime" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <column name="lu_DeliveryLine1" phpName="LuDeliveryline1" type="VARCHAR" size="255"/>
+    <column name="lu_DeliveryLine2" phpName="LuDeliveryline2" type="VARCHAR" size="255"/>
+    <column name="lu_City" phpName="LuCity" type="VARCHAR" size="50"/>
+    <column name="lu_State" phpName="LuState" type="VARCHAR" size="50"/>
+    <column name="lu_ZipAddon" phpName="LuZipaddon" type="VARCHAR" size="50"/>
+    <column name="lu_Zip" phpName="LuZip" type="VARCHAR" size="10"/>
+    <column name="lu_Addon" phpName="LuAddon" type="VARCHAR" size="10"/>
+    <column name="lu_LOTNumber" phpName="LuLotnumber" type="VARCHAR" size="10"/>
+    <column name="lu_DPCCheckdigit" phpName="LuDpccheckdigit" type="VARCHAR" size="10"/>
+    <column name="lu_RecordType" phpName="LuRecordtype" type="VARCHAR" size="10"/>
+    <column name="lu_LastLine" phpName="LuLastline" type="VARCHAR" size="255"/>
+    <column name="lu_CarrierRoute" phpName="LuCarrierroute" type="VARCHAR" size="10"/>
+    <column name="lu_ReturnCodes" phpName="LuReturncodes" type="VARCHAR" size="10"/>
+    <column name="lu_ErrorCodes" phpName="LuErrorcodes" type="VARCHAR" size="10"/>
+    <column name="lu_ErrorDesc" phpName="LuErrordesc" type="VARCHAR" size="255"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="list_lst" idMethod="native" phpName="ListLst">
+    <column name="lst_ID" phpName="LstId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <column name="lst_OptionID" phpName="LstOptionid" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <column name="lst_OptionSequence" phpName="LstOptionsequence" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="lst_OptionName" phpName="LstOptionname" type="VARCHAR" size="50" required="true" defaultValue=""/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="menuconfig_mcf" idMethod="native" phpName="MenuconfigMcf">
+    <column name="mid" phpName="Mid" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="20" required="true"/>
+    <column name="parent" phpName="Parent" type="VARCHAR" size="20" required="true"/>
+    <column name="ismenu" phpName="Ismenu" type="BOOLEAN" size="1" required="true"/>
+    <column name="content_english" phpName="ContentEnglish" type="VARCHAR" size="100" required="true"/>
+    <column name="content" phpName="Content" type="VARCHAR" size="100"/>
+    <column name="uri" phpName="Uri" type="VARCHAR" size="255" required="true"/>
+    <column name="statustext" phpName="Statustext" type="VARCHAR" size="255" required="true"/>
+    <column name="security_grp" phpName="SecurityGrp" type="VARCHAR" size="50" required="true"/>
+    <column name="session_var" phpName="SessionVar" type="VARCHAR" size="50"/>
+    <column name="session_var_in_text" phpName="SessionVarInText" type="BOOLEAN" size="1" required="true"/>
+    <column name="session_var_in_uri" phpName="SessionVarInUri" type="BOOLEAN" size="1" required="true"/>
+    <column name="url_parm_name" phpName="UrlParmName" type="VARCHAR" size="50"/>
+    <column name="active" phpName="Active" type="BOOLEAN" size="1" required="true"/>
+    <column name="sortorder" phpName="Sortorder" type="TINYINT" size="3" required="true"/>
+    <column name="icon" phpName="Icon" type="VARCHAR" size="50"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="multibuy_mb" idMethod="native" phpName="MultibuyMb">
+    <column name="mb_ID" phpName="MbId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="mb_per_ID" phpName="MbPerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="mb_item_ID" phpName="MbItemId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="mb_count" phpName="MbCount" type="DECIMAL" size="8" scale="0"/>
+    <unique name="mb_ID">
+      <unique-column name="mb_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="note_nte" idMethod="native" phpName="NoteNte">
+    <column name="nte_ID" phpName="NteId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="nte_per_ID" phpName="NtePerId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <column name="nte_fam_ID" phpName="NteFamId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <column name="nte_Private" phpName="NtePrivate" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <column name="nte_Text" phpName="NteText" type="LONGVARCHAR"/>
+    <column name="nte_DateEntered" phpName="NteDateentered" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <column name="nte_DateLastEdited" phpName="NteDatelastedited" type="TIMESTAMP"/>
+    <column name="nte_EnteredBy" phpName="NteEnteredby" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <column name="nte_EditedBy" phpName="NteEditedby" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="paddlenum_pn" idMethod="native" phpName="PaddlenumPn">
+    <column name="pn_ID" phpName="PnId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="pn_fr_ID" phpName="PnFrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+    <column name="pn_Num" phpName="PnNum" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+    <column name="pn_per_ID" phpName="PnPerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <unique name="pn_ID">
+      <unique-column name="pn_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="pledge_plg" idMethod="native" phpName="PledgePlg">
+    <column name="plg_plgID" phpName="PlgPlgid" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="plg_FamID" phpName="PlgFamid" type="SMALLINT" size="9"/>
+    <column name="plg_FYID" phpName="PlgFyid" type="SMALLINT" size="9"/>
+    <column name="plg_date" phpName="PlgDate" type="DATE"/>
+    <column name="plg_amount" phpName="PlgAmount" type="DECIMAL" size="8" scale="2"/>
+    <column name="plg_schedule" phpName="PlgSchedule" type="CHAR" sqlType="enum('Weekly','Monthly','Quarterly','Once','Other')"/>
+    <column name="plg_method" phpName="PlgMethod" type="CHAR" sqlType="enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE')"/>
+    <column name="plg_comment" phpName="PlgComment" type="LONGVARCHAR"/>
+    <column name="plg_DateLastEdited" phpName="PlgDatelastedited" type="DATE" required="true" defaultValue="0000-00-00"/>
+    <column name="plg_EditedBy" phpName="PlgEditedby" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="plg_PledgeOrPayment" phpName="PlgPledgeorpayment" type="CHAR" sqlType="enum('Pledge','Payment')" required="true" defaultValue="Pledge"/>
+    <column name="plg_fundID" phpName="PlgFundid" type="TINYINT" size="3" sqlType="tinyint(3) unsigned"/>
+    <column name="plg_depID" phpName="PlgDepid" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+    <column name="plg_CheckNo" phpName="PlgCheckno" type="BIGINT" size="16" sqlType="bigint(16) unsigned"/>
+    <column name="plg_Problem" phpName="PlgProblem" type="BOOLEAN" size="1"/>
+    <column name="plg_scanString" phpName="PlgScanstring" type="LONGVARCHAR"/>
+    <column name="plg_aut_ID" phpName="PlgAutId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="plg_aut_Cleared" phpName="PlgAutCleared" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="plg_aut_ResultID" phpName="PlgAutResultid" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="plg_NonDeductible" phpName="PlgNondeductible" type="DECIMAL" size="8" scale="2" required="true"/>
+    <column name="plg_GroupKey" phpName="PlgGroupkey" type="VARCHAR" size="64" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="property_pro" idMethod="native" phpName="PropertyPro">
+    <column name="pro_ID" phpName="ProId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="pro_Class" phpName="ProClass" type="VARCHAR" size="10" required="true" defaultValue=""/>
+    <column name="pro_prt_ID" phpName="ProPrtId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <column name="pro_Name" phpName="ProName" type="VARCHAR" size="200" required="true" defaultValue="0"/>
+    <column name="pro_Description" phpName="ProDescription" type="LONGVARCHAR" required="true"/>
+    <column name="pro_Prompt" phpName="ProPrompt" type="VARCHAR" size="255"/>
+    <index name="pro_ID_2">
+      <index-column name="pro_ID"/>
+    </index>
+    <unique name="pro_ID">
+      <unique-column name="pro_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="propertytype_prt" idMethod="native" phpName="PropertytypePrt">
+    <column name="prt_ID" phpName="PrtId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="prt_Class" phpName="PrtClass" type="VARCHAR" size="10" required="true" defaultValue=""/>
+    <column name="prt_Name" phpName="PrtName" type="VARCHAR" size="50" required="true" defaultValue=""/>
+    <column name="prt_Description" phpName="PrtDescription" type="LONGVARCHAR" required="true"/>
+    <index name="prt_ID_2">
+      <index-column name="prt_ID"/>
+    </index>
+    <unique name="prt_ID">
+      <unique-column name="prt_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="query_qry" idMethod="native" phpName="QueryQry">
+    <column name="qry_ID" phpName="QryId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="qry_SQL" phpName="QrySql" type="LONGVARCHAR" required="true"/>
+    <column name="qry_Name" phpName="QryName" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <column name="qry_Description" phpName="QryDescription" type="LONGVARCHAR" required="true"/>
+    <column name="qry_Count" phpName="QryCount" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
+    <index name="qry_ID_2">
+      <index-column name="qry_ID"/>
+    </index>
+    <unique name="qry_ID">
+      <unique-column name="qry_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="queryparameteroptions_qpo" idMethod="native" phpName="QueryparameteroptionsQpo">
+    <column name="qpo_ID" phpName="QpoId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="qpo_qrp_ID" phpName="QpoQrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <column name="qpo_Display" phpName="QpoDisplay" type="VARCHAR" size="50" required="true" defaultValue=""/>
+    <column name="qpo_Value" phpName="QpoValue" type="VARCHAR" size="50" required="true" defaultValue=""/>
+    <unique name="qpo_ID">
+      <unique-column name="qpo_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="queryparameters_qrp" idMethod="native" phpName="QueryparametersQrp">
+    <column name="qrp_ID" phpName="QrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="qrp_qry_ID" phpName="QrpQryId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <column name="qrp_Type" phpName="QrpType" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="qrp_OptionSQL" phpName="QrpOptionsql" type="LONGVARCHAR"/>
+    <column name="qrp_Name" phpName="QrpName" type="VARCHAR" size="25"/>
+    <column name="qrp_Description" phpName="QrpDescription" type="LONGVARCHAR"/>
+    <column name="qrp_Alias" phpName="QrpAlias" type="VARCHAR" size="25"/>
+    <column name="qrp_Default" phpName="QrpDefault" type="VARCHAR" size="25"/>
+    <column name="qrp_Required" phpName="QrpRequired" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="qrp_InputBoxSize" phpName="QrpInputboxsize" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="qrp_Validation" phpName="QrpValidation" type="VARCHAR" size="5" required="true" defaultValue=""/>
+    <column name="qrp_NumericMax" phpName="QrpNumericmax" type="INTEGER"/>
+    <column name="qrp_NumericMin" phpName="QrpNumericmin" type="INTEGER"/>
+    <column name="qrp_AlphaMinLength" phpName="QrpAlphaminlength" type="INTEGER"/>
+    <column name="qrp_AlphaMaxLength" phpName="QrpAlphamaxlength" type="INTEGER"/>
+    <index name="qrp_ID_2">
+      <index-column name="qrp_ID"/>
+    </index>
+    <index name="qrp_qry_ID">
+      <index-column name="qrp_qry_ID"/>
+    </index>
+    <unique name="qrp_ID">
+      <unique-column name="qrp_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="record2property_r2p" idMethod="native" phpName="Record2propertyR2p">
+    <column name="r2p_pro_ID" phpName="R2pProId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <column name="r2p_record_ID" phpName="R2pRecordId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+    <column name="r2p_Value" phpName="R2pValue" type="LONGVARCHAR" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="result_res" idMethod="native" phpName="ResultRes">
+    <column name="res_ID" phpName="ResId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="res_echotype1" phpName="ResEchotype1" type="LONGVARCHAR" required="true"/>
+    <column name="res_echotype2" phpName="ResEchotype2" type="LONGVARCHAR" required="true"/>
+    <column name="res_echotype3" phpName="ResEchotype3" type="LONGVARCHAR" required="true"/>
+    <column name="res_authorization" phpName="ResAuthorization" type="LONGVARCHAR" required="true"/>
+    <column name="res_order_number" phpName="ResOrderNumber" type="LONGVARCHAR" required="true"/>
+    <column name="res_reference" phpName="ResReference" type="LONGVARCHAR" required="true"/>
+    <column name="res_status" phpName="ResStatus" type="LONGVARCHAR" required="true"/>
+    <column name="res_avs_result" phpName="ResAvsResult" type="LONGVARCHAR" required="true"/>
+    <column name="res_security_result" phpName="ResSecurityResult" type="LONGVARCHAR" required="true"/>
+    <column name="res_mac" phpName="ResMac" type="LONGVARCHAR" required="true"/>
+    <column name="res_decline_code" phpName="ResDeclineCode" type="LONGVARCHAR" required="true"/>
+    <column name="res_tran_date" phpName="ResTranDate" type="LONGVARCHAR" required="true"/>
+    <column name="res_merchant_name" phpName="ResMerchantName" type="LONGVARCHAR" required="true"/>
+    <column name="res_version" phpName="ResVersion" type="LONGVARCHAR" required="true"/>
+    <column name="res_EchoServer" phpName="ResEchoserver" type="LONGVARCHAR" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="user_usr" idMethod="native" phpName="UserUsr">
+    <column name="usr_per_ID" phpName="UsrPerId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" required="true" defaultValue="0"/>
+    <column name="usr_Password" phpName="UsrPassword" type="LONGVARCHAR" required="true"/>
+    <column name="usr_NeedPasswordChange" phpName="UsrNeedpasswordchange" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="1"/>
+    <column name="usr_LastLogin" phpName="UsrLastlogin" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <column name="usr_LoginCount" phpName="UsrLogincount" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
+    <column name="usr_FailedLogins" phpName="UsrFailedlogins" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="usr_AddRecords" phpName="UsrAddrecords" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="usr_EditRecords" phpName="UsrEditrecords" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="usr_DeleteRecords" phpName="UsrDeleterecords" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="usr_MenuOptions" phpName="UsrMenuoptions" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="usr_ManageGroups" phpName="UsrManagegroups" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="usr_Finance" phpName="UsrFinance" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="usr_Communication" phpName="UsrCommunication" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="usr_Notes" phpName="UsrNotes" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="usr_Admin" phpName="UsrAdmin" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="usr_Workspacewidth" phpName="UsrWorkspacewidth" type="SMALLINT"/>
+    <column name="usr_BaseFontSize" phpName="UsrBasefontsize" type="TINYINT"/>
+    <column name="usr_SearchLimit" phpName="UsrSearchlimit" type="TINYINT" defaultValue="10"/>
+    <column name="usr_Style" phpName="UsrStyle" type="VARCHAR" size="50" defaultValue="Style.css"/>
+    <column name="usr_showPledges" phpName="UsrShowpledges" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="usr_showPayments" phpName="UsrShowpayments" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="usr_showSince" phpName="UsrShowsince" type="DATE" required="true" defaultValue="0000-00-00"/>
+    <column name="usr_defaultFY" phpName="UsrDefaultfy" type="SMALLINT" size="9" required="true" defaultValue="10"/>
+    <column name="usr_currentDeposit" phpName="UsrCurrentdeposit" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="usr_UserName" phpName="UsrUsername" type="VARCHAR" size="32"/>
+    <column name="usr_EditSelf" phpName="UsrEditself" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+    <column name="usr_CalStart" phpName="UsrCalstart" type="DATE"/>
+    <column name="usr_CalEnd" phpName="UsrCalend" type="DATE"/>
+    <column name="usr_CalNoSchool1" phpName="UsrCalnoschool1" type="DATE"/>
+    <column name="usr_CalNoSchool2" phpName="UsrCalnoschool2" type="DATE"/>
+    <column name="usr_CalNoSchool3" phpName="UsrCalnoschool3" type="DATE"/>
+    <column name="usr_CalNoSchool4" phpName="UsrCalnoschool4" type="DATE"/>
+    <column name="usr_CalNoSchool5" phpName="UsrCalnoschool5" type="DATE"/>
+    <column name="usr_CalNoSchool6" phpName="UsrCalnoschool6" type="DATE"/>
+    <column name="usr_CalNoSchool7" phpName="UsrCalnoschool7" type="DATE"/>
+    <column name="usr_CalNoSchool8" phpName="UsrCalnoschool8" type="DATE"/>
+    <column name="usr_SearchFamily" phpName="UsrSearchfamily" type="TINYINT" size="3"/>
+    <column name="usr_Canvasser" phpName="UsrCanvasser" type="TINYINT" size="3" required="true" defaultValue="0"/>
+    <index name="usr_per_ID">
+      <index-column name="usr_per_ID"/>
+    </index>
+    <unique name="usr_UserName">
+      <unique-column name="usr_UserName"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="userconfig_ucfg" idMethod="native" phpName="UserconfigUcfg">
+    <column name="ucfg_per_id" phpName="UcfgPerId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" required="true"/>
+    <column name="ucfg_id" phpName="UcfgId" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
+    <column name="ucfg_name" phpName="UcfgName" type="VARCHAR" size="50" required="true" defaultValue=""/>
+    <column name="ucfg_value" phpName="UcfgValue" type="LONGVARCHAR"/>
+    <column name="ucfg_type" phpName="UcfgType" type="CHAR" sqlType="enum('text','number','date','boolean','textarea')" required="true" defaultValue="text"/>
+    <column name="ucfg_tooltip" phpName="UcfgTooltip" type="LONGVARCHAR" required="true"/>
+    <column name="ucfg_permission" phpName="UcfgPermission" type="CHAR" sqlType="enum('FALSE','TRUE')" required="true" defaultValue="FALSE"/>
+    <column name="ucfg_cat" phpName="UcfgCat" type="VARCHAR" size="20" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="version_ver" idMethod="native" phpName="VersionVer">
+    <column name="ver_ID" phpName="VerId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="ver_version" phpName="VerVersion" type="VARCHAR" size="50" required="true" defaultValue=""/>
+    <column name="ver_date" phpName="VerDate" type="TIMESTAMP"/>
+    <unique name="ver_version">
+      <unique-column name="ver_version"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="volunteeropportunity_vol" idMethod="native" phpName="VolunteeropportunityVol">
+    <column name="vol_ID" phpName="VolId" type="INTEGER" size="3" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="vol_Order" phpName="VolOrder" type="INTEGER" size="3" required="true" defaultValue="0"/>
+    <column name="vol_Active" phpName="VolActive" type="CHAR" sqlType="enum('true','false')" required="true" defaultValue="true"/>
+    <column name="vol_Name" phpName="VolName" type="VARCHAR" size="30"/>
+    <column name="vol_Description" phpName="VolDescription" type="VARCHAR" size="100"/>
+    <unique name="vol_ID">
+      <unique-column name="vol_ID"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="whycame_why" idMethod="native" phpName="WhycameWhy">
+    <column name="why_ID" phpName="WhyId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="why_per_ID" phpName="WhyPerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="why_join" phpName="WhyJoin" type="LONGVARCHAR" required="true"/>
+    <column name="why_come" phpName="WhyCome" type="LONGVARCHAR" required="true"/>
+    <column name="why_suggest" phpName="WhySuggest" type="LONGVARCHAR" required="true"/>
+    <column name="why_hearOfUs" phpName="WhyHearofus" type="LONGVARCHAR" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>-->
+</database>
