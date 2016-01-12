@@ -27,11 +27,16 @@ require 'Include/Functions.php';
 //Set the page title
 $sPageTitle = gettext('Group Listing');
 
-require 'Include/Header.php';
+require 'Include/Header.php';?>
+
+<div class="box box-body">
+
+
+<?php
 
 if ($_SESSION['bManageGroups']) 
 {
-	echo '<p align="center"><a href="GroupEditor.php">';
+	echo '<p align="center"><a class="btn btn-primary" href="GroupEditor.php">';
 	echo gettext('Add a New Group') . '</a></p>';
 }
 
@@ -44,13 +49,14 @@ $sSQL = "SELECT * FROM group_grp LEFT JOIN list_lst "
 
 $rsGroups = RunQuery($sSQL);
 
-echo '	<center><table cellpadding="4" cellspacing="0" width="70%">
-		<tr class="TableHeader">
-		<td>' . gettext('Name') . '</td>
-		<td align="center">' . gettext('Members') . '</td>
-		<td align="center">' . gettext('Type') . '</td>
-		<td align="center">' . gettext('Add to Cart') . '</td>
-		<td align="center">' . gettext('Remove from Cart') . '</td></tr>';
+echo '<table class="table">
+		<thead>
+        <tr>
+		<th>' . gettext('Name') . '</th>
+		<th>' . gettext('Members') . '</th>
+		<th>' . gettext('Type') . '</th>
+		<th>' . gettext('Add to Cart') . '</th>
+		<th>' . gettext('Remove from Cart') . '</th></tr></thead>';
 
 //Set the initial row color
 $sRowClass = 'RowColorA';
@@ -84,9 +90,9 @@ while ($aRow = mysql_fetch_array($rsGroups))
 
 		echo '	<tr class="' .$sRowClass. '">
 				<td><a href="GroupView.php?GroupID=' .$grp_ID. '">' .$grp_Name. '</a></td>
-				<td align="center">' .$iCount. '</td>
-				<td align="center">' .$sGroupType. '</td>
-				<td align="center">'; // end echo
+				<td>' .$iCount. '</td>
+				<td>' .$sGroupType. '</td>
+				<td>'; // end echo
 
 		$sSQL =	"SELECT p2g2r_per_ID FROM person2group2role_p2g2r " .
 				"WHERE p2g2r_grp_ID='$grp_ID'";
@@ -111,7 +117,7 @@ while ($aRow = mysql_fetch_array($rsGroups))
 		{
 			// Add to cart ... screen should return to this location
 			// after this group is added to cart
-			echo '<a onclick="saveScrollCoordinates()" 
+			echo '<a onclick="saveScrollCoordinates()" class="btn btn-primary"
 					href="GroupList.php?AddGroupToPeopleCart=' .$grp_ID. '">' .
 					gettext('Add all') . '</a>';
 		} else {
@@ -125,7 +131,7 @@ while ($aRow = mysql_fetch_array($rsGroups))
 		{
 			// Add to cart ... screen should return to this location
 			// after this group is removed from cart
-			echo '	<a onclick="saveScrollCoordinates()"
+			echo '	<a onclick="saveScrollCoordinates()" class="btn btn-danger"
 					href="GroupList.php?RemoveGroupFromPeopleCart=' .$grp_ID. '">' .
 					gettext('Remove all') . '</a>';
 		} else {
@@ -134,9 +140,13 @@ while ($aRow = mysql_fetch_array($rsGroups))
 
 		echo '</td>';
 	}
+?>
 
-	//Close the table
-	echo '</table></center>';
+</table>
+
+</div>
+
+<?php
 
 require 'Include/Footer.php';
 ?>

@@ -95,7 +95,15 @@ $sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER B
 $rsPropList = RunQuery($sSQL);
 $numRows = mysql_num_rows($rsPropList);
 
-require 'Include/Header.php';
+require 'Include/Header.php';?>
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Group Functions</h3>
+    </div>
+    <div class="box-body">
+
+<?php
 
 if ($_SESSION['bManageGroups'])
 {
@@ -191,7 +199,18 @@ if ($sPhoneLink)
 }
 
 ?>
-<BR><BR>
+</div>
+</div>
+
+
+
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Group Properties</h3>
+    </div>
+    <div class="box-body">
+
 <table border="0" width="100%" cellspacing="0" cellpadding="5">
 <tr>
     <td width="25%" valign="top" align="center">
@@ -383,14 +402,27 @@ if ($sPhoneLink)
     {
         echo '<br><br><br>';
     }
-
-echo '</td>';
-echo '</tr>';
-echo '</table>';
-echo '<b>' . gettext('Group Members:') . '</b>';
 ?>
 
+
+
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title"><? echo gettext('Group Members:')?></h3>
+    </div>
+    <div class="box-body">
+
 <iframe width="100%" height="475px" frameborder="0" align="left" marginheight="0" marginwidth="0" src="GroupMemberList.php?GroupID=<?php echo $iGroupID; ?>"></iframe>
+</div>
+</div>
+
+
 <?php
 require 'Include/Footer.php';
 ?>
