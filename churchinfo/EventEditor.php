@@ -443,7 +443,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   
   <tr>
     <td class="LabelColumn"><font color="#ff0000">*</font>
-      <?php echo gettext("Start Date:"); ?><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>
+      <?php echo gettext("Start Date:"); ?>
     </td>
     <td class="TextColumn">
       <input type="text" name="EventStartDate" value="<?php echo ($sEventStartDate); ?>" maxlength="10" id="EventStartDate" size="11">

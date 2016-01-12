@@ -657,7 +657,6 @@ require "Include/Header.php";
 		<div class="box-body">
 			<div class="form-group col-xs-3">
 				<label><?php echo gettext("Family Role:"); ?></label>
-				<?php /* addToolTip("Select the appropriate role for the individual. If no family is assigned, do not assign a role."); */?>
 				<select name="FamilyRole" class="form-control">
 					<option value="0"><?php echo gettext("Unassigned"); ?></option>
 					<option value="0" disabled>-----------------------</option>
@@ -672,7 +671,6 @@ require "Include/Header.php";
 
 			<div class="form-group col-xs-6">
 				<label><?php echo gettext("Family:");  ?></label>
-				<?php /* addToolTip("If a family member, select the appropriate family from the list. Otherwise, leave this as is."); */ ?></td>
 				<select name="Family" size="8" class="form-control">
 					<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
 					<option value="-1"><?php echo gettext("Create a new family (using last name)"); ?></option>

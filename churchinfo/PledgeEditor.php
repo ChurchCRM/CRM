@@ -643,7 +643,7 @@ require "Include/Header.php";
 		<td valign="top" align="center">
 		<table cellpadding="2">
 			<tr>
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?><?php addToolTip("Select the pledging family from the list."); ?>><?php echo gettext("Family"); ?></td>
+				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?>><?php echo gettext("Family"); ?></td>
 				<td class="TextColumn">
 
 <script language="javascript" type="text/javascript">
@@ -687,7 +687,7 @@ $(document).ready(function() {
 
 
 			<tr>
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date"); ?></td>
+				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?>><?php echo gettext("Date"); ?></td>
 <?php	if (!$dDate)	$dDate = $dep_Date ?>
 	
 				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="Date" size="11"><font color="red"><?php echo $sDateError ?></font></td>

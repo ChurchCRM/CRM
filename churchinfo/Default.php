@@ -31,10 +31,10 @@
 // Show disable message if register_globals are turned on.
 if (ini_get('register_globals'))
 {
-    echo "<h3><b>Church</b>CRM will not operate with PHP's register_globals option turned on.<br>";
+    echo "<div class='callout callout-danger'><b>Church</b>CRM will not operate with PHP's register_globals option turned on.<br>";
     echo 'This is for your own protection as the use of this setting could entirely undermine <br>';
     echo 'all security.  You need to either turn off register_globals in your php.ini or else<br>';
-    echo 'configure your web server to turn off register_globals for the ChurchInfo directory.</h3>';
+    echo 'configure your web server to turn off register_globals for the ChurchInfo directory.</div>';
     exit;
 }
 
@@ -422,7 +422,11 @@ require ("Include/HeaderNotLoggedIn.php");
             <button type="submit" class="btn btn-primary btn-block btn-flat"><?php echo gettext('Login'); ?></button>
         </div>
     </div>
-    <input type="hidden" name="sURLPath" value="<?php echo $_GET['Proto'] . "://" . $_GET['Path'] ?>">
+    <?
+        $sURLPath = $_GET['Proto'] . "://" . $_GET['Path'];
+        setcookie("URLPath", $sURLPath);
+    ?>
+    <input type="hidden" name="sURLPath" value="<?= $sURLPath ?>">
 </form>
 
 <script language="JavaScript" type="text/JavaScript">

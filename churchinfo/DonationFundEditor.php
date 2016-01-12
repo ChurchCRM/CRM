@@ -49,7 +49,13 @@ if ($sAction = 'delete' && strlen($sFund) > 0)
 
 $sPageTitle = gettext("Donation Fund Editor");
 
-require "Include/Header.php";
+require "Include/Header.php";?>
+
+
+<div class="box box-body">
+
+
+<?php
 
 // Does the user want to save changes to text fields?
 if (isset($_POST["SaveChanges"]))
@@ -158,45 +164,35 @@ if ( answer )
 
 <form method="post" action="DonationFundEditor.php" name="FundsEditor">
 
-<table cellpadding="3" width="75%" align="center">
+<div class="alert alert-warning">
+		<i class="fa fa-ban"></i>
+		<?php echo gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"); ?>
+
+</div>
+
+<?php
+		if ( $bErrorFlag ) echo gettext("Invalid fields or selections. Changes not saved! Please correct and try again!");
+		if (strlen($sDeleteError) > 0) echo $sDeleteError;
+		?>
+
+<table class="table">
 
 <?php
 if ($numRows == 0)
 {
 ?>
 	<center><h2><?php echo gettext("No funds have been added yet"); ?></h2>
-	<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';">
 	</center>
 <?php
 }
 else
 {
 ?>
-	<tr><td colspan="5">
-		<center><b><?php echo gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"); ?></b></center>
-	</td></tr>
-
-	<tr><td colspan="5" align="center"><span class="LargeText" style="color: red;">
-		<?php
-		if ( $bErrorFlag ) echo gettext("Invalid fields or selections. Changes not saved! Please correct and try again!");
-		if (strlen($sDeleteError) > 0) echo $sDeleteError;
-		?>
-	</span></tr></td>
-
 		<tr>
-			<td colspan="5" align="center">
-			<input type="submit" class="btn" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
-			&nbsp;
-			<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';">
-			</td>
-		</tr>
-
-		<tr>
-			<th></th>
-			<th></th>
 			<th><?php echo gettext("Name"); ?></th>
 			<th><?php echo gettext("Description"); ?></th>
 			<th><?php echo gettext("Active"); ?></th>
+            <th><?php echo gettext("Delete"); ?></th>
 		</tr>
 
 	<?php
@@ -205,11 +201,7 @@ else
 	{
 		?>
 		<tr>
-			<td class="LabelColumn"><h2><b><?php echo $row ?></b></h2></td>
-
-			<td class="TextColumn" width="5%">
-				<input type="button" class="btn" value="<?php echo gettext("delete"); ?>" Name="delete" onclick="confirmDeleteFund(<?php echo "'" . $aIDFields[$row] . "'"; ?>);" >
-			</td>
+			
 
 			<td class="TextColumn" align="center">
 				<input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
@@ -226,6 +218,9 @@ else
 				<input type="radio" Name="<?php echo $row . "active" ?>" value="1" <?php if ($aActiveFields[$row]) echo " checked" ?>><?php echo gettext("Yes"); ?>
 				<input type="radio" Name="<?php echo $row . "active" ?>" value="0" <?php if (!$aActiveFields[$row]) echo " checked" ?>><?php echo gettext("No"); ?>
 			</td>
+            <td class="TextColumn" width="5%">
+				<input type="button" class="btn btn-danger" value="<?php echo gettext("delete"); ?>" Name="delete" onclick="confirmDeleteFund(<?php echo "'" . $aIDFields[$row] . "'"; ?>);" >
+			</td>
 
 		</tr>
 	<?php } ?>
@@ -236,9 +231,7 @@ else
 				<tr>
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="btn" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
-						&nbsp;
-						<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';">
+						<input type="submit" class="btn btn-primary" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -265,7 +258,7 @@ else
 						&nbsp;
 					</td>
 					<td>
-						<input type="submit" class="btn" <?php echo 'value="' . gettext("Add New Fund") . '"'; ?> Name="AddField">
+						<input type="submit" class="btn btn-primary" <?php echo 'value="' . gettext("Add New Fund") . '"'; ?> Name="AddField">
 					</td>
 					<td width="15%"></td>
 				</tr>
@@ -275,5 +268,6 @@ else
 
 	</table>
 	</form>
+</div>
 
 <?php require "Include/Footer.php"; ?>

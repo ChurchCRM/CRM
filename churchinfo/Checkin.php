@@ -457,8 +457,6 @@ if (isset ($_POST["EventID"]) ) {
 <?php require "Include/Footer.php"; 
 
 function loadperson($iPersonID){
-	global $bDefectiveBrowser;
-	
 	if ($iPersonID == 0)
 		return;
 	
@@ -620,11 +618,7 @@ function loadperson($iPersonID){
 				}
 */
 		} else {
-			// Some old / M$ browsers can't handle PNG's correctly.
-			if ($bDefectiveBrowser)
-				echo '<img border="0" src="Images/NoPhoto.gif"><br><br><br>';
-			else
-				echo '<img border="0" src="Images/NoPhoto.png"><br><br><br>';
+			echo '<img border="0" src="Images/NoPhoto.png"><br><br><br>';
 /*
 			if ($bOkToEdit) {
 				if (isset($PhotoError))
