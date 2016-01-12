@@ -116,7 +116,7 @@ if ($sReportType == "") {
         <tr>
                 <td class="LabelColumn"><?php echo gettext("Classification:")?><br></td>
                 <td class=TextColumnWithBottomBorder><div class=SmallText>
-                    </div><select name=classList[] size=6 multiple id="classList">
+                    </div><select name=classList[]style="width:100%" multiple id="classList">
                     <?php
                     while ($aRow = mysql_fetch_array($rsClassifications)) {
                         extract($aRow);
@@ -140,7 +140,7 @@ if ($sReportType == "") {
         $rsFamilies = RunQuery($sSQL);?>
         <tr><td class=LabelColumn><?php echo gettext("Filter by Family:")?><br></td>
         <td class=TextColumnWithBottomBorder>
-            <select name="family" id="family" size=6 multiple>
+            <select name="family" id="family" multiple style="width:100%">
         <?php
         // Build Criteria for Head of Household
         if (!$sDirRoleHead)
@@ -229,7 +229,7 @@ if ($sReportType == "") {
         ?>
         
         <tr><td class="LabelColumn"><?php echo gettext("Filter by Fund:")?><br></td>
-        <td><select name="fundsList" size="5" multiple id="fundsList">
+        <td><select name="fundsList" multiple id="fundsList" style="width:100%">
         <?php
         while ($aRow = mysql_fetch_array($rsFunds)) {
             extract($aRow);
