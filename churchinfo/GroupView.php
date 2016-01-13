@@ -97,6 +97,15 @@ $numRows = mysql_num_rows($rsPropList);
 
 require 'Include/Header.php';?>
 
+
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">Group Functions</h3>
@@ -417,10 +426,112 @@ if ($sPhoneLink)
         <h3 class="box-title"><? echo gettext('Group Members:')?></h3>
     </div>
     <div class="box-body">
+<!-- START GROUP MEMBERS LISTING for group $iGroupID; -->
+<?
+$personService = new PersonService();
 
-<iframe width="100%" height="475px" frameborder="0" align="left" marginheight="0" marginwidth="0" src="GroupMemberList.php?GroupID=<?php echo $iGroupID; ?>"></iframe>
+$sSQL = "SELECT grp_RoleListID,grp_hasSpecialProps FROM group_grp WHERE grp_ID =" . $iGroupID;
+$aTemp = mysql_fetch_array(RunQuery($sSQL));
+$iRoleListID = $aTemp[0];
+
+
+// Main select query
+$sSQL = "SELECT per_ID, per_FirstName, LEFT(per_MiddleName,1) AS per_MiddleName, per_LastName, per_Title, per_Suffix, per_Address1, per_Address2, per_City, per_State, per_Zip, per_CellPhone, per_Country, per_Email, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_CellPhone, fam_Email, lst_OptionName
+			FROM person_per
+			LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
+			LEFT JOIN list_lst ON p2g2r_rle_ID = lst_OptionID AND lst_ID = $iRoleListID
+			LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
+			LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
+		WHERE p2g2r_grp_ID = " . $iGroupID;
+
+
+$sSQL_Result = RunQuery($sSQL);
+?>
+
+<table class="table" id="membersTable">
+	<thead>
+    <tr>
+		<th><?php echo gettext("Name"); ?></th>
+		<th><?php echo gettext("Group Role"); ?></th>
+		<th><?php echo gettext("Address"); ?></th>
+		<th><?php echo gettext("City"); ?></th>
+		<th><?php echo gettext("State"); ?></th>
+		<th><?php echo gettext("ZIP"); ?></th>
+		<th><?php echo gettext("Cell Phone"); ?></th>
+		<th><?php echo gettext("E-mail"); ?></th>
+	</tr>
+    </thead>
+	<?php
+	//Loop through the members
+	while ($aRow = mysql_fetch_array($sSQL_Result))
+	{
+		$per_Title = "";
+		$per_FirstName = "";
+		$per_MiddleName = "";
+		$per_LastName = "";
+		$per_Suffix = "";
+		$per_Address1 = "";
+		$per_Address2 = "";
+		$per_City = "";
+		$per_State = "";
+		$per_Zip = "";
+		$per_Country = "";
+		$per_HomePhone = "";
+		$per_Email = "";
+		$fam_Name = "";
+		$fam_Address1 = "";
+		$fam_Address2 = "";
+		$fam_City = "";
+		$fam_State = "";
+		$fam_Zip = "";
+		$fam_Country = "";
+		$fam_HomePhone = "";
+		$fam_Email = "";
+
+		extract($aRow);
+
+
+		// Assign the values locally, after selecting whether to display the family or person information
+		SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, False);
+		$sCity = SelectWhichInfo($per_City, $fam_City, False);
+		$sState = SelectWhichInfo($per_State, $fam_State, False);
+		$sZip = SelectWhichInfo($per_Zip, $fam_Zip, False);
+		$sCountry = SelectWhichInfo($per_Country, $fam_Country, False);
+		$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone,$sCountry,$dummy), 
+					ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy), False); 
+		$sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
+		//Display the row
+		?>
+	<tr>
+		<td><?php
+				echo "<img src=\"". $personService->photo($per_ID). "\" class=\"direct-chat-img\"> &nbsp <a href=\"PersonView.php?PersonID=\"" . $per_ID . "\"><a target=\"_top\" href=\"PersonView.php?PersonID=$per_ID\">" . FormatFullName($per_Title, $per_LastName, $per_FirstName, $per_MiddleName, $per_Suffix, 0) . "</a>"; ?>
+		</td>		
+		<td><?php
+			if ($_SESSION['bManageGroups']) echo "<a target=\"_top\" href=\"MemberRoleChange.php?GroupID=" . $iGroupID . "&PersonID=" . $per_ID . "&Return=1\">";
+			echo $lst_OptionName;
+			if ($_SESSION['bManageGroups']) echo "</a>";
+		?></td>
+		<td><?php echo $sAddress1;?><?php if ($sAddress1 != "" && $sAddress2 != "") { echo ", "; } ?><?php if ($sAddress2 != "") echo $sAddress2; ?></td>
+		<td><?php echo $sCity ?></td>
+		<td><?php echo $sState ?></td>
+		<td><?php echo $sZip ?></td>
+		<td><?php echo $sCellPhone ?></td>
+		<td><?php echo $sEmail;?></td>
+	</tr>
+    <?php
+    }
+    
+    ?>
+</table>
+<!-- END GROUP MEMBERS LISTING -->
 </div>
 </div>
+
+<script>
+$(document).ready(function() {
+    $("#membersTable").dataTable();
+});
+</script>
 
 
 <?php

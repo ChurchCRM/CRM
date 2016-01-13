@@ -843,7 +843,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 	function GroupRemove( Group, Person ) {
 		var answer = confirm (<?php echo "'",  "'"; ?>)
 		if ( answer )
-			window.location="GroupMemberList.php?GroupID=" + Group + "&PersonToRemove=" + Person
+			window.location="GroupView.php?GroupID=" + Group
 	}
 </script>
 
