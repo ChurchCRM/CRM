@@ -229,7 +229,7 @@ if ($sReportType == "") {
         ?>
         
         <tr><td class="LabelColumn"><?php echo gettext("Filter by Fund:")?><br></td>
-        <td><select name="fundsList[]" multiple id="fundsList" style="width:100%">
+        <td><select name="funds[]" multiple id="fundsList" style="width:100%">
         <?php
         while ($aRow = mysql_fetch_array($rsFunds)) {
             extract($aRow);
