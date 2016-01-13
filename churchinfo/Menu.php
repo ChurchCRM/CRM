@@ -61,7 +61,7 @@ $sPageTitle = "Welcome to <b>Church</b>CRM";
 require 'Include/Header.php';
 ?>
 <!-- this page specific styles -->
-<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/morris/morris.min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/morris/morris.min.js"></script>
 <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/raphael/raphael-min.js"></script>
 
 <?php while ($row = mysql_fetch_array($rsQuickStat)) { ?>
