@@ -29,16 +29,30 @@ $sPageTitle = gettext('Group Listing');
 
 require 'Include/Header.php';?>
 
-<div class="box box-body">
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 
 <?php
-
 if ($_SESSION['bManageGroups']) 
-{
-    echo '<p align="center"><a class="btn btn-primary" href="GroupEditor.php">';
-    echo gettext('Add a New Group') . '</a></p>';
+{?>
+    <div class="pull-right">
+    <a class="btn btn-success" role="button" href="GroupEditor.php"> <span class="fa fa-plus" aria-hidden="true"></span> Add Group</a>
+    <p>
+    </div>
+    <br/><br/></p>
+    <?php
 }
+?>
+
+<div class="box box-body">
+
+<?php
 
 //Get all group records
 //Added "OR grp_Type = 0" to display Unassigned Groups 
@@ -48,15 +62,18 @@ $sSQL = "SELECT * FROM group_grp LEFT JOIN list_lst "
       . "ORDER BY lst_OptionSequence, grp_Name";
 
 $rsGroups = RunQuery($sSQL);
-
-echo '<table class="table">
-        <thead>
+?>
+<table class="table" id="groupsTable">
+    <thead>
         <tr>
-        <th>' . gettext('Name') . '</th>
-        <th>' . gettext('Members') . '</th>
-        <th>' . gettext('Type') . '</th>
-        <th>' . gettext('Add to Cart') . '</th>
-        <th>' . gettext('Remove from Cart') . '</th></tr></thead>';
+        <th><?php echo gettext('Name')?></th>
+        <th><?php echo gettext('Members')?></th>
+        <th><?php echo gettext('Type')?></th>
+        <th><?php echo gettext('Add to Cart')?></th>
+        <th><?php echo gettext('Remove from Cart')?></th>
+        </tr>
+    </thead>
+<?php
 
 //Set the initial row color
 $sRowClass = 'RowColorA';
@@ -88,11 +105,24 @@ while ($aRow = mysql_fetch_array($rsGroups))
 
         //Display the row
 
-        echo '    <tr class="' .$sRowClass. '">
-                <td><a href="GroupView.php?GroupID=' .$grp_ID. '">' .$grp_Name. '</a></td>
-                <td>' .$iCount. '</td>
-                <td>' .$sGroupType. '</td>
-                <td>'; // end echo
+        ?>
+        <tr>
+                <td>
+                <a href='GroupView.php?GroupID=<?php echo $grp_ID?>'>
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                        </span>
+                        </a>
+                        <a href='GroupEditor.php?GroupID=<?php echo $grp_ID?>'>
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                        </span>
+                        </a><?php echo $grp_Name?></td>
+                <td><?php echo $iCount?></td>
+                <td><?php echo $sGroupType?></td>
+                <td><?php
 
         $sSQL =    "SELECT p2g2r_per_ID FROM person2group2role_p2g2r " .
                 "WHERE p2g2r_grp_ID='$grp_ID'";
@@ -145,6 +175,9 @@ while ($aRow = mysql_fetch_array($rsGroups))
 </table>
 
 </div>
+<script>
+$("#groupsTable").dataTable();
+</script>
 
 <?php
 
