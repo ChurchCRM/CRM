@@ -277,9 +277,6 @@ require 'Include/Header.php';
             <div class="box-body">
                 <canvas id="gender-donut" style="height:250px"></canvas>
             </div>
-            <div class="body footer">
-
-            </div>
         </div>
     </div>
 </div>
