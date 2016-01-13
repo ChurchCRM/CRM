@@ -19,7 +19,7 @@ class FamilyService {
             $row_array['uri'] = $this->getViewURI($row['fam_ID']);
             array_push($families,$row_array);
         }
-        return $this->returnFamilies($families);
+        $families;
     }
 
 
@@ -37,7 +37,7 @@ class FamilyService {
       $this->returnFamilies($families);
     }
 
-    function returnFamilies($families) {
+    function getFamiliesJSON($families) {
         return '{"families": ' . json_encode($families) . '}';
     }
       

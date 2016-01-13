@@ -88,7 +88,12 @@ class PersonService {
             array_push($return, $values);
         }
 
-        return '{"persons": ' . json_encode($return) . '}';
+        return $return;
+    }
+    
+    function getPersonsJSON($persons)
+    {
+          return '{"persons": ' . json_encode($persons) . '}';
     }
 
     private function getDefaultPhoto($gender, $famRole)

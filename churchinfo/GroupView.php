@@ -459,8 +459,10 @@ $sSQL_Result = RunQuery($sSQL);
 		<th><?php echo gettext("ZIP"); ?></th>
 		<th><?php echo gettext("Cell Phone"); ?></th>
 		<th><?php echo gettext("E-mail"); ?></th>
+        <th><?php echo gettext("Remove User from Group"); ?></th>
 	</tr>
     </thead>
+    <tbody>
 	<?php
 	//Loop through the members
 	while ($aRow = mysql_fetch_array($sSQL_Result))
@@ -523,8 +525,14 @@ $sSQL_Result = RunQuery($sSQL);
     }
     
     ?>
+    </tbody>
 </table>
+</form>
 <!-- END GROUP MEMBERS LISTING -->
+<form action="#" method="get" class="sidebar-form">
+    <select class="form-control personSearch" style="width:100%">
+    </select>
+</form>
 </div>
 </div>
 
@@ -543,6 +551,58 @@ $(document).ready(function() {
         });
     });
     $("#membersTable").dataTable();
+    $("document").ready(function(){
+
+    $(".personSearch").select2({
+        minimumInputLength: 2,
+        ajax: {
+            url: function (params){
+                    return "api/persons/search/"+params.term;   
+            },
+            dataType: 'json',
+            delay: 250,
+            data: "",
+            processResults: function (data, params) {
+                var idKey = 1;
+                var results = new Array();   
+                $.each(data, function (key,value) {
+                    var groupName = Object.keys(value)[0];
+                    var ckeys = value[groupName];
+                    var resultGroup = {
+                        id: key,
+                        text: groupName,
+                        children:[]
+                    };
+                    idKey++;
+                    var children = new Array();
+                    $.each(ckeys, function (ckey,cvalue) {
+                        var childObject = {
+                            id: idKey,
+                            text: cvalue.displayName,     
+                            uri: cvalue.uri
+                        };
+                        idKey++;
+                        resultGroup.children.push(childObject);
+                    });
+                    results.push(resultGroup);
+                });
+                return {results: results}; 
+            },
+            cache: true
+        }
+    });
+    $(".personSearch").on("select2:select",function (e) { 
+        console.log(e);
+       var newRow=$("<tr>");
+       $(newRow).attr("id","uid-"+e.params.data.id);
+        for(var i = 0; i < 9; i++) {
+            newRow.append($('<td>').html(i));
+        }
+       console.log(newRow);
+      $("#membersTable tbody").append(newRow);
+    });
+    
+});
     
 });
 </script>

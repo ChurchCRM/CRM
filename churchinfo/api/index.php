@@ -58,8 +58,8 @@ $app->group('/groups', function () use ($app) {
 $app->group('/search', function () use ($app) {
     $app->get('/:query', function ($query) use ($app) {
         try {
-            echo "[ ".$app->PersonService->search($query).", ";
-            echo $app->FamilyService->search($query)."]";
+            echo "[ ".$app->PersonService->getPersonsJSON($app->PersonService->search($query)).", ";
+            echo $app->FamilyService->getFamiliesJSON($app->FamilyService->search($query))."]";
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
@@ -69,7 +69,7 @@ $app->group('/search', function () use ($app) {
 $app->group('/persons', function () use ($app) {
     $app->get('/search/:query', function ($query) use ($app) {
         try {
-            echo $app->PersonService->search($query);
+        echo "[".$app->PersonService->getPersonsJSON($app->PersonService->search($query))."]";
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
