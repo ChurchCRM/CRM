@@ -586,6 +586,7 @@ $(document).ready(function() {
         console.log(e.params.data.objid);
         addUserToGroup(e.params.data.objid);
         addTableRow(e.params.data.objid);
+        $(".personSearch").select2("val", "");
     });
     
 });
