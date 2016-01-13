@@ -36,8 +36,8 @@ require 'Include/Header.php';?>
 
 if ($_SESSION['bManageGroups']) 
 {
-	echo '<p align="center"><a class="btn btn-primary" href="GroupEditor.php">';
-	echo gettext('Add a New Group') . '</a></p>';
+    echo '<p align="center"><a class="btn btn-primary" href="GroupEditor.php">';
+    echo gettext('Add a New Group') . '</a></p>';
 }
 
 //Get all group records
@@ -50,13 +50,13 @@ $sSQL = "SELECT * FROM group_grp LEFT JOIN list_lst "
 $rsGroups = RunQuery($sSQL);
 
 echo '<table class="table">
-		<thead>
+        <thead>
         <tr>
-		<th>' . gettext('Name') . '</th>
-		<th>' . gettext('Members') . '</th>
-		<th>' . gettext('Type') . '</th>
-		<th>' . gettext('Add to Cart') . '</th>
-		<th>' . gettext('Remove from Cart') . '</th></tr></thead>';
+        <th>' . gettext('Name') . '</th>
+        <th>' . gettext('Members') . '</th>
+        <th>' . gettext('Type') . '</th>
+        <th>' . gettext('Add to Cart') . '</th>
+        <th>' . gettext('Remove from Cart') . '</th></tr></thead>';
 
 //Set the initial row color
 $sRowClass = 'RowColorA';
@@ -64,82 +64,82 @@ $sRowClass = 'RowColorA';
 //Loop through the person recordset
 while ($aRow = mysql_fetch_array($rsGroups))
 {
-	extract($aRow);
+    extract($aRow);
 
-	//Alternate the row color
-	$sRowClass = AlternateRowStyle($sRowClass);
+    //Alternate the row color
+    $sRowClass = AlternateRowStyle($sRowClass);
 
-	//Get the count for this group
-	$sSQL = "SELECT Count(*) AS iCount FROM person2group2role_p2g2r " .
-			"WHERE p2g2r_grp_ID='$grp_ID'";
-	$rsMemberCount = mysql_fetch_array(RunQuery($sSQL));
-	extract($rsMemberCount);
-		
-	//Get the group's type name
-	if ($grp_Type > 0)
-	{
-		$sSQL =	"SELECT lst_OptionName FROM list_lst WHERE " . 
-				"lst_ID=3 AND lst_OptionID = " . $grp_Type;
-		$rsGroupType = mysql_fetch_array(RunQuery($sSQL));
-		$sGroupType = $rsGroupType[0];
-	}
-	else
-		$sGroupType = gettext('Undefined');
+    //Get the count for this group
+    $sSQL = "SELECT Count(*) AS iCount FROM person2group2role_p2g2r " .
+            "WHERE p2g2r_grp_ID='$grp_ID'";
+    $rsMemberCount = mysql_fetch_array(RunQuery($sSQL));
+    extract($rsMemberCount);
+        
+    //Get the group's type name
+    if ($grp_Type > 0)
+    {
+        $sSQL =    "SELECT lst_OptionName FROM list_lst WHERE " . 
+                "lst_ID=3 AND lst_OptionID = " . $grp_Type;
+        $rsGroupType = mysql_fetch_array(RunQuery($sSQL));
+        $sGroupType = $rsGroupType[0];
+    }
+    else
+        $sGroupType = gettext('Undefined');
 
-		//Display the row
+        //Display the row
 
-		echo '	<tr class="' .$sRowClass. '">
-				<td><a href="GroupView.php?GroupID=' .$grp_ID. '">' .$grp_Name. '</a></td>
-				<td>' .$iCount. '</td>
-				<td>' .$sGroupType. '</td>
-				<td>'; // end echo
+        echo '    <tr class="' .$sRowClass. '">
+                <td><a href="GroupView.php?GroupID=' .$grp_ID. '">' .$grp_Name. '</a></td>
+                <td>' .$iCount. '</td>
+                <td>' .$sGroupType. '</td>
+                <td>'; // end echo
 
-		$sSQL =	"SELECT p2g2r_per_ID FROM person2group2role_p2g2r " .
-				"WHERE p2g2r_grp_ID='$grp_ID'";
-		$rsGroupMembers = RunQuery($sSQL);
+        $sSQL =    "SELECT p2g2r_per_ID FROM person2group2role_p2g2r " .
+                "WHERE p2g2r_grp_ID='$grp_ID'";
+        $rsGroupMembers = RunQuery($sSQL);
 
-		$bNoneInCart = TRUE;
-		$bAllInCart = TRUE;
-		//Loop through the recordset
-		while ($aPeople = mysql_fetch_array($rsGroupMembers))
-		{
-			extract($aPeople);
+        $bNoneInCart = TRUE;
+        $bAllInCart = TRUE;
+        //Loop through the recordset
+        while ($aPeople = mysql_fetch_array($rsGroupMembers))
+        {
+            extract($aPeople);
 
-			if (!isset($_SESSION['aPeopleCart']))
-				$bAllInCart = FALSE; // Cart does not exist.  This person is not in cart.
-			elseif (!in_array($p2g2r_per_ID, $_SESSION['aPeopleCart'], false))
-				$bAllInCart = FALSE; // This person is not in cart.
-			elseif (in_array($p2g2r_per_ID, $_SESSION['aPeopleCart'], false))
-				$bNoneInCart = FALSE; // This person is in the cart
-		}
+            if (!isset($_SESSION['aPeopleCart']))
+                $bAllInCart = FALSE; // Cart does not exist.  This person is not in cart.
+            elseif (!in_array($p2g2r_per_ID, $_SESSION['aPeopleCart'], false))
+                $bAllInCart = FALSE; // This person is not in cart.
+            elseif (in_array($p2g2r_per_ID, $_SESSION['aPeopleCart'], false))
+                $bNoneInCart = FALSE; // This person is in the cart
+        }
 
-		if (!$bAllInCart)
-		{
-			// Add to cart ... screen should return to this location
-			// after this group is added to cart
-			echo '<a onclick="saveScrollCoordinates()" class="btn btn-primary"
-					href="GroupList.php?AddGroupToPeopleCart=' .$grp_ID. '">' .
-					gettext('Add all') . '</a>';
-		} else {
+        if (!$bAllInCart)
+        {
+            // Add to cart ... screen should return to this location
+            // after this group is added to cart
+            echo '<a onclick="saveScrollCoordinates()" class="btn btn-primary"
+                    href="GroupList.php?AddGroupToPeopleCart=' .$grp_ID. '">' .
+                    gettext('Add all') . '</a>';
+        } else {
             echo '&nbsp;';
         }
     
 
-		echo '</td><td align="center">';
+        echo '</td><td align="center">';
 
-		if (!$bNoneInCart)
-		{
-			// Add to cart ... screen should return to this location
-			// after this group is removed from cart
-			echo '	<a onclick="saveScrollCoordinates()" class="btn btn-danger"
-					href="GroupList.php?RemoveGroupFromPeopleCart=' .$grp_ID. '">' .
-					gettext('Remove all') . '</a>';
-		} else {
+        if (!$bNoneInCart)
+        {
+            // Add to cart ... screen should return to this location
+            // after this group is removed from cart
+            echo '    <a onclick="saveScrollCoordinates()" class="btn btn-danger"
+                    href="GroupList.php?RemoveGroupFromPeopleCart=' .$grp_ID. '">' .
+                    gettext('Remove all') . '</a>';
+        } else {
             echo '&nbsp;';
         }
 
-		echo '</td>';
-	}
+        echo '</td>';
+    }
 ?>
 
 </table>
