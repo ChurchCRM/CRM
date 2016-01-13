@@ -58,8 +58,10 @@ $app->group('/groups', function () use ($app) {
 $app->group('/search', function () use ($app) {
     $app->get('/:query', function ($query) use ($app) {
         try {
-            echo "[ ".$app->PersonService->getPersonsJSON($app->PersonService->search($query)).", ";
-            echo $app->FamilyService->getFamiliesJSON($app->FamilyService->search($query))."]";
+            $resultsArray = array();
+            array_push($resultsArray, $app->PersonService->getPersonsJSON($app->PersonService->search($query)));
+            array_push($resultsArray, $app->FamilyService->getFamiliesJSON($app->FamilyService->search($query)));
+            echo "[".join(",",array_filter($resultsArray))."]";
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

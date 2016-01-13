@@ -93,7 +93,14 @@ class PersonService {
     
     function getPersonsJSON($persons)
     {
-          return '{"persons": ' . json_encode($persons) . '}';
+        if ($persons)
+        {
+            return '{"persons": ' . json_encode($persons) . '}';
+        }
+        else
+        {
+              return false;
+        }
     }
 
     private function getDefaultPhoto($gender, $famRole)
