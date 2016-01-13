@@ -20,6 +20,7 @@ Slim::registerAutoloader();
 require_once "../service/PersonService.php";
 require_once "../service/FamilyService.php";
 require_once "../service/DataSeedService.php";
+require_once "../service/GroupService.php";
 
 $app = new Slim();
 
@@ -37,6 +38,21 @@ $app->container->singleton('DataSeedService', function () {
     return new DataSeedService();
 });
 
+$app->container->singleton('GroupService', function () {
+    return new GroupService();
+});
+
+
+$app->group('/groups', function () use ($app) {
+    $app->post('/:groupID/removeuser/:userID', function ($groupID,$userID) use ($app) {
+        try {
+            $app->GroupService->removeUserFromGroup($userID,$groupID);
+            echo '{"success":"true"}';
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+});
 
 
 $app->group('/search', function () use ($app) {

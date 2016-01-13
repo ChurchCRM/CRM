@@ -502,7 +502,7 @@ $sSQL_Result = RunQuery($sSQL);
 		$sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
 		//Display the row
 		?>
-	<tr>
+	<tr id="uid-<?php echo $per_ID; ?>">
 		<td><?php
 				echo "<img src=\"". $personService->photo($per_ID). "\" class=\"direct-chat-img\"> &nbsp <a href=\"PersonView.php?PersonID=\"" . $per_ID . "\"><a target=\"_top\" href=\"PersonView.php?PersonID=$per_ID\">" . FormatFullName($per_Title, $per_LastName, $per_FirstName, $per_MiddleName, $per_Suffix, 0) . "</a>"; ?>
 		</td>		
@@ -517,6 +517,7 @@ $sSQL_Result = RunQuery($sSQL);
 		<td><?php echo $sZip ?></td>
 		<td><?php echo $sCellPhone ?></td>
 		<td><?php echo $sEmail;?></td>
+        <td><button type="button" class="btn btn-danger removeUserGroup" id="rguid-<?php echo $per_ID; ?>">Remove User from Group</button></td>
 	</tr>
     <?php
     }
@@ -529,7 +530,20 @@ $sSQL_Result = RunQuery($sSQL);
 
 <script>
 $(document).ready(function() {
+    $(".removeUserGroup").click(function(e) {
+        var userid=e.currentTarget.id.split("-")[1];
+        console.log(userid);
+        $.ajax({
+            method: "POST",
+            url: "/api/groups/<?php echo $iGroupID;?>/removeuser/"+userid,
+            dataType: "json"
+        }).done(function(data){
+            console.log("Removing #uid-"+userid);
+             $("#uid-"+userid).remove();
+        });
+    });
     $("#membersTable").dataTable();
+    
 });
 </script>
 
