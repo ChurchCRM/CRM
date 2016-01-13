@@ -98,7 +98,6 @@ class PersonService {
             LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
         WHERE per_ID = " . $per_ID;
         $result = mysql_query($fetch);
-        $person = new StdClass();
         $row = mysql_fetch_assoc($result);
         $row['photo']=$this->photo($per_ID);
         return $row;

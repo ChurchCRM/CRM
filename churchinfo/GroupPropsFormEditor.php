@@ -41,8 +41,11 @@ if ($grp_hasSpecialProps == 'false')
 
 $sPageTitle = gettext("Group-Specific Properties Form Editor:") . " &nbsp&nbsp " . $grp_Name;
 
-require "Include/Header.php";
+require "Include/Header.php";?>
 
+<div class="box box-body"> 
+
+<?php
 $bErrorFlag = false;
 $aNameErrors = array();
 $bNewNameError = false;
@@ -275,14 +278,13 @@ else
 
 <form method="post" action="GroupPropsFormEditor.php?GroupID=<?php echo $iGroupID; ?>" name="GroupPropFormEditor">
 
-<table cellpadding="3" width="100%">
+<table class="table">
 
 <?php
 if ($numRows == 0)
 {
 ?>
 	<center><h2><?php echo gettext("No properties have been added yet"); ?></h2>
-	<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
 	</center>
 <?php
 }
@@ -298,14 +300,6 @@ else
 	if ( $bErrorFlag ) echo "<span class=\"LargeText\" style=\"color: red;\">" . gettext("Invalid fields or selections. Changes not saved! Please correct and try again!") . "</span>";
 	?>
 	</td></tr>
-
-		<tr>
-			<td colspan="7" align="center">
-			<input type="submit" class="btn" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
-			&nbsp;
-			<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
-			</td>
-		</tr>
 
 		<tr>
 			<th></th>
@@ -390,8 +384,6 @@ else
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
 						<input type="submit" class="btn" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
-						&nbsp;
-						<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -444,5 +436,7 @@ else
 
 	</table>
 	</form>
+  
+</div>
 
 <?php require "Include/Footer.php"; ?>
