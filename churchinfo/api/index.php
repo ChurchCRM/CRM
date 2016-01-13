@@ -61,6 +61,7 @@ $app->group('/search', function () use ($app) {
             $resultsArray = array();
             array_push($resultsArray, $app->PersonService->getPersonsJSON($app->PersonService->search($query)));
             array_push($resultsArray, $app->FamilyService->getFamiliesJSON($app->FamilyService->search($query)));
+            array_push($resultsArray, $app->GroupService->getGroupsJSON($app->GroupService->search($query)));
             echo "[".join(",",array_filter($resultsArray))."]";
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';

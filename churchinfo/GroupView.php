@@ -530,7 +530,8 @@ $sSQL_Result = RunQuery($sSQL);
 </form>
 <!-- END GROUP MEMBERS LISTING -->
 <form action="#" method="get" class="sidebar-form">
-    <select class="form-control personSearch" style="width:100%">
+    <label for="addGroupMember"><?php echo gettext("Add Group Member: ");?></label>
+    <select class="form-control personSearch" name="addGroupMember" style="width:100%">
     </select>
 </form>
 </div>
