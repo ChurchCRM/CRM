@@ -579,6 +579,7 @@ $(document).ready(function() {
                     $.each(ckeys, function (ckey,cvalue) {
                         var childObject = {
                             id: idKey,
+                            objid:cvalue.id,
                             text: cvalue.displayName,     
                             uri: cvalue.uri
                         };
@@ -593,17 +594,22 @@ $(document).ready(function() {
         }
     });
     $(".personSearch").on("select2:select",function (e) { 
-        console.log(e);
-       var newRow=$("<tr>");
-       $(newRow).attr("id","uid-"+e.params.data.id);
-        for(var i = 0; i < 9; i++) {
-            newRow.append($('<td>').html(i));
-        }
-       console.log(newRow);
-      $("#membersTable tbody").append(newRow);
+        console.log(e.params.data.objid);
+        addTableRow(e.params.data.objid);
     });
     
 });
+
+function addTableRow(objID)
+{
+    var newRow=$("<tr>");
+    $(newRow).attr("id","uid-"+objID);
+    for(var i = 0; i < 9; i++) {
+        newRow.append($('<td>').html(i));
+    }
+    console.log(newRow);
+    $("#membersTable tbody").append(newRow);
+}
     
 });
 </script>
