@@ -539,18 +539,7 @@ $sSQL_Result = RunQuery($sSQL);
 
 <script>
 $(document).ready(function() {
-    $(".removeUserGroup").click(function(e) {
-        var userid=e.currentTarget.id.split("-")[1];
-        console.log(userid);
-        $.ajax({
-            method: "POST",
-            url: "/api/groups/<?php echo $iGroupID;?>/removeuser/"+userid,
-            dataType: "json"
-        }).done(function(data){
-            console.log("Removing #uid-"+userid);
-             $("#uid-"+userid).remove();
-        });
-    });
+   initHandlers();
     $("#membersTable").dataTable();
     $("document").ready(function(){
 
@@ -600,18 +589,76 @@ $(document).ready(function() {
     
 });
 
-function addTableRow(objID)
-{
-    var newRow=$("<tr>");
-    $(newRow).attr("id","uid-"+objID);
-    for(var i = 0; i < 9; i++) {
-        newRow.append($('<td>').html(i));
-    }
-    console.log(newRow);
-    $("#membersTable tbody").append(newRow);
-}
+
     
 });
+
+function initHandlers()
+{
+     $(".removeUserGroup").click(function(e) {
+        var userid=e.currentTarget.id.split("-")[1];
+        console.log(userid);
+        $.ajax({
+            method: "POST",
+            url: "/api/groups/<?php echo $iGroupID;?>/removeuser/"+userid,
+            dataType: "json"
+        }).done(function(data){
+            console.log("Removing #uid-"+userid);
+             $("#uid-"+userid).remove();
+        });
+    });
+}
+
+function addTableRow(objID)
+{
+    $.ajax({
+        method: "GET",
+        url:    "/api/persons/"+objID,
+        dataType:   "json"
+    }).done(function (data){
+        var person = data[0].persons; 
+        console.log(person);
+        var newRow=$("<tr>").append(
+            $('<td>').append(
+                $("<img >", { 
+                    src: person.photo,
+                    class: "direct-chat-img"
+                }),
+                $('<a />', { 
+                    href: "PersonView.php?PersonID="+person.per_ID,
+                    text: person.per_Title+" "+person.per_FirstName+" "+person.per_LastName
+                })
+            ),
+            $('<td>').append(
+                $('<a />', { 
+                    href: "MemberRoleChange.php?PersonID="+person.per_ID+"GroupID=<?php echo $iGroupID?>",
+                    text:"Member"
+                })
+            ),
+            $('<td>').text(person.per_Address1),
+            $('<td>').text(person.per_City),
+            $('<td>').text(person.per_State),
+            $('<td>').text(person.per_Zip),
+            $('<td>').text(person.per_CellPhone),
+            $('<td>').text(person.per_Email),
+            $('<td>').append(
+                $('<button>', { 
+                    class: "btn btn-danger removeUserGroup",
+                    type:"button",
+                    id : "rguid-"+person.per_ID,
+                    text : "Remve User from Group"
+                })
+            )
+            );
+        
+        $(newRow).attr("id","uid-"+person.per_ID);
+       
+        console.log(newRow);
+        $("#membersTable tbody").append(newRow);
+        initHandlers();
+    });
+   
+}
 </script>
 
 

@@ -91,6 +91,19 @@ class PersonService {
         return $return;
     }
     
+    function getPersonByID($per_ID)
+    {
+        $fetch = "SELECT per_ID, per_FirstName, LEFT(per_MiddleName,1) AS per_MiddleName, per_LastName, per_Title, per_Suffix, per_Address1, per_Address2, per_City, per_State, per_Zip, per_CellPhone, per_Country, per_Email, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_CellPhone, fam_Email
+            FROM person_per
+            LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
+        WHERE per_ID = " . $per_ID;
+        $result = mysql_query($fetch);
+        $person = new StdClass();
+        $row = mysql_fetch_assoc($result);
+        $row['photo']=$this->photo($per_ID);
+        return $row;
+    }
+    
     function getPersonsJSON($persons)
     {
         if ($persons)

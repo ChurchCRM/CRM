@@ -78,6 +78,9 @@ $app->group('/persons', function () use ($app) {
         }
     });
     $app->group('/:id', function () use ($app) {
+        $app->get('/',function($id) use ($app) {
+             echo "[".$app->PersonService->getPersonsJSON($app->PersonService->getPersonByID($id))."]";
+        });
         $app->get('/photo', function ($id) use ($app) {
             try {
                 $app->PersonService->photo($id);
