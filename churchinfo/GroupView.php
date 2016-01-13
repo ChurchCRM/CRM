@@ -584,6 +584,7 @@ $(document).ready(function() {
     });
     $(".personSearch").on("select2:select",function (e) { 
         console.log(e.params.data.objid);
+        addUserToGroup(e.params.data.objid);
         addTableRow(e.params.data.objid);
     });
     
@@ -592,6 +593,8 @@ $(document).ready(function() {
 
     
 });
+
+
 
 function initHandlers()
 {
@@ -608,7 +611,15 @@ function initHandlers()
         });
     });
 }
-
+function addUserToGroup(userid)
+{
+    $.ajax({
+            method: "POST",
+            url: "/api/groups/<?php echo $iGroupID;?>/adduser/"+userid,
+            dataType: "json"
+        });
+    
+}
 function addTableRow(objID)
 {
     $.ajax({

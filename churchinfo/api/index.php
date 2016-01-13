@@ -52,6 +52,14 @@ $app->group('/groups', function () use ($app) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
     });
+    $app->post('/:groupID/adduser/:userID', function ($groupID,$userID) use ($app) {
+        try {
+            $app->GroupService->addUserToGroup($userID,$groupID,0);
+            echo '{"success":"true"}';
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
 });
 
 

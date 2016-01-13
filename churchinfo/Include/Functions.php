@@ -383,43 +383,6 @@ function FilterInput($sInput,$type = 'string',$size = 1)
     }
 }
 
-//
-// Adds a person to a group with specified role.
-// Returns false if the operation fails. (such as person already in group)
-//
-function AddToGroup($iPersonID, $iGroupID, $iRoleID)
-{
-    global $cnInfoCentral;
-
-    // Was a RoleID passed in?
-    if ($iRoleID == 0) {
-        // No, get the Default Role for this Group
-        $sSQL = "SELECT grp_DefaultRole FROM group_grp WHERE grp_ID = " . $iGroupID;
-        $rsRoleID = RunQuery($sSQL);
-        $Row = mysql_fetch_row($rsRoleID);
-        $iRoleID = $Row[0];
-    }
-
-    $sSQL = "INSERT INTO person2group2role_p2g2r (p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID) VALUES (" . $iPersonID . ", " . $iGroupID . ", " . $iRoleID . ")";
-    $result = RunQuery($sSQL,false);
-
-    if ($result)
-    {
-        // Check if this group has special properties
-        $sSQL = "SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = " . $iGroupID;
-        $rsTemp = RunQuery($sSQL);
-        $rowTemp = mysql_fetch_row($rsTemp);
-        $bHasProp = $rowTemp[0];
-
-        if ($bHasProp == 'true')
-        {
-            $sSQL = "INSERT INTO `groupprop_" . $iGroupID . "` (`per_ID`) VALUES ('" . $iPersonID . "')";
-            RunQuery($sSQL);
-        }
-    }
-
-    return $result;
-}
 
 //
 // Adds a volunteer opportunity assignment to a person
