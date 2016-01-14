@@ -23,7 +23,7 @@ class GroupService
 
         if ($bHasProp == 'true')
         {
-            $sSQL = "DELETE FROM `groupprop_" . $iGroupID . "` WHERE `per_ID` = '" . $iPersonID . "'";
+            $sSQL = "DELETE FROM groupprop_" . $iGroupID . " WHERE per_ID = '" . $iPersonID . "'";
             RunQuery($sSQL);
         }
 
@@ -76,7 +76,7 @@ class GroupService
 
         if ($bHasProp == 'true')
         {
-            $sSQL = "INSERT INTO `groupprop_" . $iGroupID . "` (`per_ID`) VALUES ('" . $iPersonID . "')";
+            $sSQL = "INSERT INTO groupprop_" . $iGroupID . " (per_ID) VALUES ('" . $iPersonID . "')";
             RunQuery($sSQL);
         }
     }
