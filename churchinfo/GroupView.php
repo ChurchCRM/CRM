@@ -116,17 +116,54 @@ require 'Include/Header.php';?>
 
 if ($_SESSION['bManageGroups'])
 {
-    echo '<a class="SmallText" href="GroupEditor.php?GroupID=' . $grp_ID . '">' . gettext('Edit this Group') . '</a> | ';
-    echo '<a class="SmallText" href="GroupDelete.php?GroupID=' . $grp_ID . '">' . gettext('Delete this Group') . '</a> | ';
+    echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $grp_ID . '"><i class="fa fa-pencil"></i>' . gettext('Edit this Group') . '</a>';
+    echo '<a class="btn btn-app" data-toggle="modal" data-target="#deleteGroup"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</a>';
+    ?>
+    <!-- GROUP DELETE MODAL-->
+     <div class="modal fade" id="deleteGroup" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="upload-Image-label"><?php echo gettext("Confirm Delete Group") ?></h4>
+                        </div>
+                        <div class="modal-body">
+                        <span style="color: red">
+                           <?php echo gettext("Please confirm deletion of this group record:"); ?>
+                         
+                             <p class="ShadedBox">
+                                <?php echo $grp_Name; ?>
+                            </p>
+                            
+                             <p class="LargeError">
+                                <?php echo gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record."); ?>
+                            </p>
+                            <?php echo gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.");?>
+                            <br><br>
+                            <span style="color:black">I Understand &nbsp;<input type="checkbox" name="chkClear"></span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button name="deleteGroup" id="deleteGroup" type="button" class="btn btn-danger"><?php echo gettext("Delete Group") ?></button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    <!--END GROUP DELETE MODAL-->
+    
+    
+    
+   
+    <?php
     if ($grp_hasSpecialProps == 'true')
     {
-        echo '<a class="SmallText" href="GroupPropsFormEditor.php?GroupID=' . $grp_ID . '">' . gettext('Edit Group-Specific Properties Form') . '</a> | ';
+        echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID=' . $grp_ID . '"><i class="fa fa-list-alt"></i>' . gettext('Edit Group-Specific Properties Form') . '</a>';
     }
 }
-echo '<a class="SmallText" href="GroupView.php?Action=AddGroupToCart&amp;GroupID=' . $grp_ID . '">' . gettext('Add Group Members to Cart') . '</a> | ';
-echo '<a class="SmallText" href="GroupMeeting.php?GroupID=' . $grp_ID . '&amp;Name=' . $grp_Name . '&amp;linkBack=GroupView.php?GroupID=' . $grp_ID . '">' . gettext('Schedule a meeting') . '</a> | ';
+echo '<a class="btn btn-app" href="GroupView.php?Action=AddGroupToCart&amp;GroupID=' . $grp_ID . '"><i class="fa fa-users"></i>' . gettext('Add Group Members to Cart') . '</a>';
+echo '<a class="btn btn-app" href="GroupMeeting.php?GroupID=' . $grp_ID . '&amp;Name=' . $grp_Name . '&amp;linkBack=GroupView.php?GroupID=' . $grp_ID . '"><i class="fa fa-calendar-o"></i>' . gettext('Schedule a meeting') . '</a>';
 
-echo '<a class="SmallText" href="MapUsingGoogle.php?GroupID=' . $grp_ID . '">' . gettext('Map this group') . '</a>';
+echo '<a class="btn btn-app" href="MapUsingGoogle.php?GroupID=' . $grp_ID . '"><i class="fa fa-map-marker"></i>' . gettext('Map this group') . '</a>';
 
 // Email Group link
 // Note: This will email entire group, even if a specific role is currently selected.
@@ -165,8 +202,8 @@ if ($sEmailLink)
 
     if ($bEmailMailto) { // Does user have permission to email groups
     // Display link
-    echo ' | <a class="SmallText" href="mailto:'. mb_substr($sEmailLink,0,-3) .'">'.gettext('Email Group').'</a>';
-    echo ' | <a class="SmallText" href="mailto:?bcc='. mb_substr($sEmailLink,0,-3) .'">'.gettext('Email (BCC)').'</a>';
+    echo '<a class="btn btn-app" href="mailto:'. mb_substr($sEmailLink,0,-3) .'"><i class="fa fa-send-o"></i>'.gettext('Email Group').'</a>';
+    echo '<a class="btn btn-app" href="mailto:?bcc='. mb_substr($sEmailLink,0,-3) .'"><i class="fa fa-send"></i>'.gettext('Email (BCC)').'</a>';
     }
 }
 // Group Text Message Comma Delimited - added by RSBC
@@ -202,7 +239,7 @@ if ($sPhoneLink)
     if ($bEmailMailto) { // Does user have permission to email groups
 
     // Display link
-    echo ' | <a class="SmallText" href="javascript:void(0)" onclick="allPhonesCommaD()">Text Group</a>';
+    echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa fa-mobile-phone"></i> Text Group</a>';
     echo '<script>function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "'. mb_substr($sPhoneLink,0,-2) .'")};</script>';
     }
 }
@@ -387,8 +424,8 @@ if ($sPhoneLink)
     if ($_SESSION['bManageGroups'])
     {
         echo '<form method="post" action="PropertyAssign.php?GroupID=' . $iGroupID . '">';
-        echo '<p class="SmallText" align="center">';
-        echo '<span class="SmallText">' . gettext('Assign a New Property:') . '</span>';
+        echo '<p class="btn btn-app" align="center">';
+        echo '<span class="btn btn-app">' . gettext('Assign a New Property:') . '</span>';
         echo '<select name="PropertyID">';
 
         while ($aRow = mysql_fetch_array($rsProperties))
@@ -609,6 +646,19 @@ function initHandlers()
         }).done(function(data){
             console.log("Removing #uid-"+userid);
              $("#uid-"+userid).remove();
+        });
+    });
+    
+    $("#deleteGroup").click(function(e){
+      console.log(e);        
+      $.ajax({
+            method: "DELETE",
+            url: "/api/groups/<?php echo $iGroupID;?>",
+            dataType: "json"
+        }).done(function(data){
+            console.log(data);
+            if (data.success)
+                window.location.href = "GroupList.php";
         });
     });
 }

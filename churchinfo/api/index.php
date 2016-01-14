@@ -60,6 +60,14 @@ $app->group('/groups', function () use ($app) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
     });
+    $app->delete('/:groupID', function ($groupID) use ($app) {
+        try {
+            $app->GroupService->deleteGroup($groupID);
+            echo '{"success":"true"}';
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
 });
 
 

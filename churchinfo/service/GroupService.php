@@ -45,11 +45,9 @@ class GroupService
             RunQuery($sSQL);
         }
     }
-    
-   
 
-function addUserToGroup($iPersonID, $iGroupID, $iRoleID)
-{
+    function addUserToGroup($iPersonID, $iGroupID, $iRoleID)
+    {
     //
 // Adds a person to a group with specified role.
 // Returns false if the operation fails. (such as person already in group)
@@ -125,7 +123,47 @@ function addUserToGroup($iPersonID, $iGroupID, $iRoleID)
         return $this->baseURL ."/GroupView.php?GroupID=".$Id;
     }
 
+    function deleteGroup($iGroupID)
+    {
+        $sSQL = "SELECT grp_hasSpecialProps, grp_RoleListID FROM group_grp WHERE grp_ID =" . $iGroupID;
+        $rsTemp = RunQuery($sSQL);
+        $aTemp = mysql_fetch_array($rsTemp);
+        $hasSpecialProps = $aTemp[0];
+        $iRoleListID = $aTemp[1];
 
+            //Delete all Members of this group
+            $sSQL = "DELETE FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = " . $iGroupID;
+            RunQuery($sSQL);
+
+            //Delete all Roles for this Group
+            $sSQL = "DELETE FROM list_lst WHERE lst_ID = " . $iRoleListID;
+            RunQuery($sSQL);
+
+            // Remove group property data
+            $sSQL = "SELECT pro_ID FROM property_pro WHERE pro_Class='g'";
+            $rsProps = RunQuery($sSQL);
+
+            while($aRow = mysql_fetch_row($rsProps)) {
+                $sSQL = "DELETE FROM record2property_r2p WHERE r2p_pro_ID = " . $aRow[0] . " AND r2p_record_ID = " . $iGroupID;
+                RunQuery($sSQL);
+            }
+
+            if ($hasSpecialProps == 'true')
+            {
+                // Drop the group-specific properties table and all references in the master index
+                $sSQL = "DROP TABLE groupprop_" . $iGroupID;
+                RunQuery($sSQL);
+
+                $sSQL = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
+                RunQuery($sSQL);
+            }
+
+            //Delete the Group
+            $sSQL = "DELETE FROM group_grp WHERE grp_ID = " . $iGroupID;
+            RunQuery($sSQL);
+
+    }
+    
 }
 
 ?>
