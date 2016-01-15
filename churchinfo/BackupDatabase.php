@@ -122,7 +122,7 @@ $('#BackupDatabase').submit(function(event) {
             })
             .done(function(data) {
                 console.log(data);
-                var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\">"+data.filename+"</button>";
+                var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\"><i class='fa fa-download'></i>  "+data.filename+"</button>";
                 $("#backupstatus").css("color","green");
                 $("#backupstatus").html("Backup Complete, Ready for Download.");
                 $("#resultFiles").html(downloadButton);
