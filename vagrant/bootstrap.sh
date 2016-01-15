@@ -42,5 +42,5 @@ echo "==========================================================================
 echo "======== Church CRM is now hosted @ http://192.168.33.10/      =============="
 echo "======== CRM User Name: Admin                                  =============="
 echo "======== 1st time login password for Admin: changeme           =============="
-echo "======== churchinfo is active project source                   =============="
+echo "======== churchCRM is active project source                    =============="
 echo "============================================================================="
