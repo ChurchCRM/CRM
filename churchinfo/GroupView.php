@@ -577,7 +577,7 @@ $sSQL_Result = RunQuery($sSQL);
 <script>
 $(document).ready(function() {
    initHandlers();
-    $("#membersTable").dataTable();
+    $("#membersTable").DataTable();
     $("document").ready(function(){
 
     $(".personSearch").select2({
@@ -644,8 +644,9 @@ function initHandlers()
             url: "/api/groups/<?php echo $iGroupID;?>/removeuser/"+userid,
             dataType: "json"
         }).done(function(data){
+            var t = $("#membersTable").DataTable();
             console.log("Removing #uid-"+userid);
-             $("#uid-"+userid).remove();
+            t.row($("#uid-"+userid)).remove().draw(true);
         });
     });
     
@@ -679,44 +680,21 @@ function addTableRow(objID)
         dataType:   "json"
     }).done(function (data){
         var person = data[0].persons; 
-        console.log(person);
-        var newRow=$("<tr>").append(
-            $('<td>').append(
-                $("<img >", { 
-                    src: person.photo,
-                    class: "direct-chat-img"
-                }),
-                $('<a />', { 
-                    href: "PersonView.php?PersonID="+person.per_ID,
-                    text: person.per_Title+" "+person.per_FirstName+" "+person.per_LastName
-                })
-            ),
-            $('<td>').append(
-                $('<a />', { 
-                    href: "MemberRoleChange.php?PersonID="+person.per_ID+"GroupID=<?php echo $iGroupID?>",
-                    text:"Member"
-                })
-            ),
-            $('<td>').text(person.per_Address1),
-            $('<td>').text(person.per_City),
-            $('<td>').text(person.per_State),
-            $('<td>').text(person.per_Zip),
-            $('<td>').text(person.per_CellPhone),
-            $('<td>').text(person.per_Email),
-            $('<td>').append(
-                $('<button>', { 
-                    class: "btn btn-danger removeUserGroup",
-                    type:"button",
-                    id : "rguid-"+person.per_ID,
-                    text : "Remve User from Group"
-                })
-            )
-            );
-        
-        $(newRow).attr("id","uid-"+person.per_ID);
-       
-        console.log(newRow);
-        $("#membersTable tbody").append(newRow);
+        var newRow=[
+                '<img src = "'+person.photo+'" class="direct-chat-img"><a href="PersonView.php?PersonID='+person.per_ID+'">'+person.per_Title+' ' +person.per_FirstName+' '+person.per_LastName+'</a>',
+                '<a href="MemberRoleChange.php?GroupID=<?php echo $grp_ID;?>&PersonID='+person.per_ID+'&Return=1"><?php echo $sDefaultRole ?></a>',
+                person.per_Address1,
+                person.per_City,
+                person.per_State,
+                person.per_Zip,
+                person.per_CellPhone,
+                person.per_Email,
+                '<button class="btn btn-danger removeUserGroup" type="button" id="rguid-'+person.per_ID+'">Remove User from Group</button>'
+                ];       
+
+        var t = $("#membersTable").DataTable();
+        var node = t.row.add(newRow).draw( true ).node();
+        $(node).attr("id","uid-"+person.per_ID);
         initHandlers();
     });
    
