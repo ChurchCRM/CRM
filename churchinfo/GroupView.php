@@ -140,11 +140,11 @@ if ($_SESSION['bManageGroups'])
                             </p>
                             <?php echo gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.");?>
                             <br><br>
-                            <span style="color:black">I Understand &nbsp;<input type="checkbox" name="chkClear"></span>
+                            <span style="color:black">I Understand &nbsp;<input type="checkbox" name="chkClear"id="chkClear" ></span>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button name="deleteGroup" id="deleteGroup" type="button" class="btn btn-danger"><?php echo gettext("Delete Group") ?></button>
+                            <button name="deleteGroupButton" id="deleteGroupButton" type="button" class="btn btn-danger" disabled><?php echo gettext("Delete Group") ?></button>
                         </div>
                     </div>
             </div>
@@ -424,8 +424,8 @@ if ($sPhoneLink)
     if ($_SESSION['bManageGroups'])
     {
         echo '<form method="post" action="PropertyAssign.php?GroupID=' . $iGroupID . '">';
-        echo '<p class="btn btn-app" align="center">';
-        echo '<span class="btn btn-app">' . gettext('Assign a New Property:') . '</span>';
+        echo '<p align="center">';
+        echo '<span>' . gettext('Assign a New Property:') . '</span>';
         echo '<select name="PropertyID">';
 
         while ($aRow = mysql_fetch_array($rsProperties))
@@ -636,6 +636,9 @@ $(document).ready(function() {
 
 function initHandlers()
 {
+     $("#chkClear").click(function(e){
+             $("#deleteGroupButton").prop("disabled",!e.target.checked);
+     });
      $(".removeUserGroup").click(function(e) {
         var userid=e.currentTarget.id.split("-")[1];
         console.log(userid);
@@ -650,7 +653,7 @@ function initHandlers()
         });
     });
     
-    $("#deleteGroup").click(function(e){
+    $("#deleteGroupButton").click(function(e){
       console.log(e);        
       $.ajax({
             method: "DELETE",
@@ -681,7 +684,7 @@ function addTableRow(objID)
     }).done(function (data){
         var person = data[0].persons; 
         var newRow=[
-                '<img src = "'+person.photo+'" class="direct-chat-img"><a href="PersonView.php?PersonID='+person.per_ID+'">'+person.per_Title+' ' +person.per_FirstName+' '+person.per_LastName+'</a>',
+                '<img src = "'+person.photo+'" class="direct-chat-img"><a href="PersonView.php?PersonID='+person.per_ID+'">'+(person.per_Title || '')+' '+(person.per_LastName || '')+' '+ (person.per_FirstName || '')+'</a>',
                 '<a href="MemberRoleChange.php?GroupID=<?php echo $grp_ID;?>&PersonID='+person.per_ID+'&Return=1"><?php echo $sDefaultRole ?></a>',
                 person.per_Address1,
                 person.per_City,
