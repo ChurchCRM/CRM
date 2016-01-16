@@ -259,7 +259,7 @@ function confirmAdd() {
             <div class="row">
             <div class="col-xs-3">
                     <label for="GroupType"><?php echo gettext("Type of Group:"); ?></label>
-                    <select name="GroupType">
+                    <select class="form-control input-small" name="GroupType">
                         <option value="0"><?php echo gettext("Unassigned"); ?></option>
                         <option value="0">-----------------------</option>
                         <?php
@@ -283,11 +283,11 @@ function confirmAdd() {
                     <b><?php echo gettext("Group Member Roles:"); ?></b>
                     
                     <?php echo gettext("Clone roles:"); ?>
-                    <input type="checkbox" name="cloneGroupRole" value="1">
+                    <input type="checkbox" name="cloneGroupRole" id="cloneGroupRole" value="1">
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-3" id="selectGroupIDDiv">
                     <?php echo gettext("from group:"); ?>
-                    <select name="seedGroupID">
+                    <select class="form-control input-small" name="seedGroupID" id="seedGroupID" >
                     <option value="0"><?php gettext("Select a group"); ?></option>
                     
                     <?php
@@ -348,7 +348,18 @@ else
 }
 ?>
 </div></div>
-
+<script>
+$("#selectGroupIDDiv").hide();
+ $("#cloneGroupRole").click(function(e){
+    if (e.target.checked)
+        $("#selectGroupIDDiv").show();
+    else
+    {
+        $("#selectGroupIDDiv").hide();
+        $("#seedGroupID").prop('selectedIndex',0);
+    }
+     });
+</script>
 <?php
 require "Include/Footer.php";
 ?>
