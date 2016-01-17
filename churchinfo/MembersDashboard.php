@@ -33,11 +33,17 @@ $demographicStats = $dashboardService->getDemographic();
         <a href="SelectList.php?mode=person" class="btn btn-app"><i class="fa fa-user"></i><?= gettext("All People") ?></a>
         <a href="OptionManager.php?mode=classes" class="btn btn-app"><i class="fa fa-gears"></i><?= gettext("Classifications Manager") ?></a>
         <a href="VolunteerOpportunityEditor.php" class="btn btn-app"><i class="fa fa-bullhorn"></i><?= gettext("Volunteer Opportunities") ?></a>
+        <? if ($_SESSION['bAdmin']) {?>
+            <a href="PersonCustomFieldsEditor.php" class="btn btn-app"><i class="fa fa-gear"></i><?= gettext("Custom Person Fields") ?></a>
+        <? } ?>
         <br/>
         <a href="FamilyList.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext("All Families") ?></a>
         <a href="OptionManager.php?mode=famroles" class="btn btn-app"><i class="fa fa-cubes"></i><?= gettext("Family Roles") ?></a>
         <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext("Family Geographic") ?></a>
         <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map-pin"></i><?= gettext("Family Map") ?></a>
+        <? if ($_SESSION['bAdmin']) {?>
+        <a href="FamilyCustomFieldsEditor.php" class="btn btn-app"><i class="fa fa-gear"></i><?= gettext("Custom Family Fields") ?></a>
+        <? } ?>
     </div>
 </div>
 <!-- Small boxes (Stat box) -->
