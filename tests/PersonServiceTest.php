@@ -15,8 +15,16 @@ class PersonServiceTest extends PHPUnit_Framework_TestCase
     {
 
         $personService = new PersonService();
-        $photoURL = $personService->photo(1);
+        $photoURL = $personService->getPhoto(1);
         $this->assertRegExp("/jpeg|jpg|png|gif/",$photoURL);
+    }
+
+    public function testdeleteUploadedPhoto()
+    {
+
+        $personService = new PersonService();
+        $deleted = $personService->deleteUploadedPhoto(1);
+        $this->assertFalse($deleted);
     }
     
 }
