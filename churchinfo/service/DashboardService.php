@@ -32,27 +32,38 @@ class DashboardService
 
     function getDemographic() {
         $stats = array();
-        $sSQL = "select count(*) as numb, per_Gender, per_fmr_ID from person_per group by per_Gender, per_fmr_ID ;";
+        $sSQL = "select count(*) as numb, per_Gender, per_fmr_ID from person_per group by per_Gender, per_fmr_ID order by per_fmr_ID;";
         $rsGenderAndRole = RunQuery($sSQL);
         while ($row = mysql_fetch_array($rsGenderAndRole)) {
-            $role = "Unknown";
-            $gender = "Unknown";
-            if ($row['per_Gender'] == 1) {
-                $gender = "male";
-            } else if ($row['per_Gender'] == 2) {
-                $gender = "female";
-            } else {
-                $gender = "Other";
+            switch ($row['per_Gender']) {
+                case 0:
+                    $gender = "Unknown";
+                    break;
+                case 1:
+                    $gender = "Male";
+                    break;
+                case 2:
+                    $gender = "Female";
+                    break;
+                default:
+                    $gender = "Other";
             }
 
-            if ($row['per_fmr_ID'] == 1) {
-                $role = "Head of Household";
-            } else if ($row['per_fmr_ID'] == 2) {
-                $role = "Spouse";
-            } else if ($row['per_fmr_ID'] == 3) {
-                $role = "Child";
-            } else {
-                $role = "Other";
+            switch ($row['per_fmr_ID']) {
+                case 0:
+                    $role = "Unknown";
+                    break;
+                case 1:
+                    $role = "Head of Household";
+                    break;
+                case 2:
+                    $role = "Spouse";
+                    break;
+                case 3:
+                    $role = "Child";
+                    break;
+                default:
+                    $role = "Other";
             }
 
             $stats["$role - $gender"] = $row['numb'];
