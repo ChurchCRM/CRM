@@ -217,9 +217,60 @@ class GroupService
         $aDefaultRole = mysql_fetch_array(RunQuery($sSQL));
         return $aDefaultRole[0];       
     }
-    function deleteGroupRole($groupID,$groupRole)
+    function deleteGroupRole($groupID,$groupRoleID)
     {
+        $sSQL = 'SELECT \'\' FROM list_lst 
+                INNER JOIN group_grp
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                 WHERE group_grp.grp_ID = "'.$groupID.'"';
+		$rsPropList = RunQuery($sSQL);
+		$numRows = mysql_num_rows($rsPropList);
         
+		// Make sure we never delete the only option
+		if ($numRows > 1)
+		{
+			$sSQL = 'DELETE list_lst.* FROM list_lst 
+                    INNER JOIN group_grp
+                        ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                    WHERE group_grp.grp_ID = "'.$groupID.'"
+                    AND lst_OptionID = '.$groupRoleID;
+            
+			RunQuery($sSQL);
+        
+            //Shift the remaining rows up by one
+			
+			$sSQL = 'UPDATE list_lst
+                    INNER JOIN group_grp
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                    SET list_lst.lst_OptionID = list_lst.lst_OptionID -1,
+                        list_lst.lst_OptionSequence = list_lst.lst_OptionSequence -1
+                    WHERE group_grp.grp_ID ='.$groupID.'
+                    AND list_lst.lst_OptionID >= '.$groupRoleID;
+            
+			RunQuery($sSQL);
+
+
+			//check if we've deleted the old group default role.  If so, reset default to role ID 1
+			// Next, if any group members were using the deleted role, reset their role to the group default.
+
+            // Reset if default role was just removed.
+            $sSQL = "UPDATE group_grp SET grp_DefaultRole = 1 WHERE grp_ID = $groupID AND grp_DefaultRole = $groupRoleID";
+            RunQuery($sSQL);
+
+            // Get the current default role and Group ID (so we can update the p2g2r table)
+            // This seems backwards, but grp_RoleListID is unique, having a 1-1 relationship with grp_ID.
+            $sSQL = "SELECT grp_ID,grp_DefaultRole FROM group_grp WHERE grp_ID = $groupID";
+            $rsTemp = RunQuery($sSQL);
+            $aTemp = mysql_fetch_array($rsTemp);
+
+            $sSQL = "UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = 1 WHERE p2g2r_grp_ID = $groupID AND p2g2r_rle_ID = $groupRoleID";
+            RunQuery($sSQL);
+			
+		}
+		else
+        {
+            throw new Exception("You cannont delete the only group");
+        }
     }
     function addGroupRole($groupID,$groupRole)
     {

@@ -381,7 +381,7 @@ if (strlen($iGroupID) > 0)
         <td><?php echo $role['lst_OptionSequence'];?></td>
         <td><button type="button" id="roleUp-<?php echo $role["lst_OptionID"];?>" class="btn rollOrder" <?php if($role['lst_OptionSequence']==1){echo "disabled";}?>><i class="fa fa-arrow-up"></i></button></td>
         <td><button type="button" id="roleDown-<?php echo $role["lst_OptionID"];?>" class="btn rollOrder" <?php if($role['lst_OptionSequence']==count($group['roles'])){echo "disabled";}?>><i class="fa fa-arrow-down"></i></button></td>
-        <td><button type="button" class="btn btn-danger deleteRole">Delete</button></td>
+        <td><button type="button" id="roleDelete-<?php echo $role["lst_OptionID"];?>" class="btn btn-danger deleteRole">Delete</button></td>
         
     </tr>
   <?php
@@ -466,11 +466,12 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
     $(".deleteRole").click(function(e) {
         var roleID = e.currentTarget.id.split("-")[1];
         var groupID=<?php echo $iGroupID?>;
-        var roleID=e.target.id.split("-")[1];
+        console.log("deleting group role: "+roleID);
         $.ajax({
             method: "DELETE",
             url:    "/api/groups/"+groupID+"/roles/"+roleID
         }).done(function(data){
+            dataT.row($("#roleRow-"+roleID)).remove().draw(true);
         });
     });
     
