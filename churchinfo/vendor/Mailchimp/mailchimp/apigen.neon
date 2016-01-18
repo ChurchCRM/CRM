@@ -1,0 +1,28 @@
+# All source directories
+# Includes vendors that are used directly
+source:
+    - src/
+destination: docs/
+exclude:
+title: Mailchimp PHP API Wrapper
+groups: auto
+autocomplete:
+    - classes
+    - constants
+    - functions
+accessLevels:
+    - public
+    - protected
+    - private
+internal: yes
+php: no
+tree: yes
+deprecated: yes
+todo: yes
+sourceCode: yes
+report: docs/apigen.log
+wipeout: yes
+quiet: no
+progressbar: no
+colors: no
+debug: no

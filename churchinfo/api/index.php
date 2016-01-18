@@ -1,6 +1,5 @@
 <?php
 
-
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -10,17 +9,15 @@ if (!isset($_SESSION['iUserID'])) {
     exit;
 }
 
-require_once '../vendor/Slim/Slim.php';
-
-use Slim\Slim;
-
-Slim::registerAutoloader();
-
 // Services
 require_once "../service/PersonService.php";
 require_once "../service/FamilyService.php";
 require_once "../service/DataSeedService.php";
-require_once "../service/GroupService.php";
+require_once '../vendor/slim/slim/Slim/Slim.php';
+
+use Slim\Slim;
+
+Slim::registerAutoloader();
 
 $app = new Slim();
 
@@ -86,22 +83,36 @@ $app->group('/search', function () use ($app) {
 });
 
 $app->group('/persons', function () use ($app) {
-    $app->get('/search/:query', function ($query) use ($app) {
+    $personService = $app->PersonService;
+    $app->get('/search/:query', function ($query) use ($personService) {
         try {
-        echo "[".$app->PersonService->getPersonsJSON($app->PersonService->search($query))."]";
+            echo "[".$personService->getPersonsJSON($personService->search($query))."]";
         } catch (Exception $e) {
-            echo '{"error":{"text":' . $e->getMessage() . '}}';
+            echo exceptionToJSON($e);
         }
     });
-    $app->group('/:id', function () use ($app) {
-        $app->get('/',function($id) use ($app) {
-             echo "[".$app->PersonService->getPersonsJSON($app->PersonService->getPersonByID($id))."]";
+
+    $app->group('/:id', function () use ($app, $personService) {
+        $app->get('/',function($id) use ($personService) {
+             echo "[".$personService->getPersonsJSON($personService->getPersonByID($id))."]";
         });
-        $app->get('/photo', function ($id) use ($app) {
+        
+        $app->get('/photo', function ($id) use ($personService) {
             try {
-                $app->PersonService->photo($id);
+                echo $personService->getPhoto($id);
             } catch (Exception $e) {
-                echo '{"error":{"text":' . $e->getMessage() . '}}';
+                echo exceptionToJSON($e);
+            }
+        });
+        $app->delete('/photo', function ($id) use ($personService) {
+            try {
+                $deleted = $personService->deleteUploadedPhoto($id);
+                if (!$deleted)
+                    echo "{filesDeleted: no images found}";
+                else
+                    echo "{filesDeleted: yes}";
+            } catch (Exception $e) {
+                echo exceptionToJSON($e);
             }
         });
     });
@@ -112,14 +123,14 @@ $app->group('/families', function () use ($app) {
         try {
             echo $app->FamilyService->search($query);
         } catch (Exception $e) {
-            echo '{"error":{"text":' . $e->getMessage() . '}}';
+            echo exceptionToJSON($e);
         }
     });
     $app->get('/lastedited', function ($query) use ($app) {
         try {
             $app->FamilyService->lastEdited();
         } catch (Exception $e) {
-            echo '{"error":{"text":' . $e->getMessage() . '}}';
+            echo exceptionToJSON($e);
         }
     });
 });
@@ -169,6 +180,13 @@ $app->group('/data/seed', function () use ($app) {
 
 });
 
+/**
+ * @param $e
+ */
+function exceptionToJSON($e)
+{
+    return '{"error":{"text":' . $e->getMessage() . ' !}}';
+}
 
 $app->run();
 
