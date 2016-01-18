@@ -286,7 +286,7 @@ function Header_body_menu() {
 
 	$sURLPath = $_SESSION['sURLPath'];
 
-    $loggedInUserPhoto = (new PersonService())->photo($_SESSION['iUserID']);
+    $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
 
     $MenuFirst = 1;
 
