@@ -241,6 +241,12 @@ class GroupService
         
     }
     
+    function setGroupRoleAsDefault($groupID,$roleID)
+    {
+        $sSQL = "UPDATE group_grp SET grp_DefaultRole = ".$roleID." WHERE grp_ID = ".$groupID;
+		RunQuery($sSQL);
+    }
+    
 }
 
 ?>

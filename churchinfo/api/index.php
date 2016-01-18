@@ -84,6 +84,19 @@ $app->group('/groups', function () use ($app) {
             $body = $request->getBody();
             $input = json_decode($body);
             $groupService->setGroupRoleName($groupID,$roleID,$input->groupRoleName);
+            echo '{"success":"true"}';
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->post('/:groupID/defaultRole', function ($groupID) use ($app, $groupService) {
+        try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            $groupService->setGroupRoleAsDefault($groupID,$input->roleID);
+            echo '{"success":"true"}';
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
