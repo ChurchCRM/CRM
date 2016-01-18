@@ -432,22 +432,32 @@ function configureButtons(roleID,roleSequence,totalRoles)
    
    if (roleSequence == 1)
    {
-        console.log("setting " +roleID+" to down only");
+        //console.log("setting " +roleID+" to down only");
         $("#roleUp-"+roleID).prop('disabled',true);
         $("#roleDown-"+roleID).prop('disabled',false);
    }
    else if (roleSequence == totalRoles)
    {
-        console.log("setting " +roleID+" to up only");
+        //console.log("setting " +roleID+" to up only");
         $("#roleDown-"+roleID).prop('disabled',true);
         $("#roleUp-"+roleID).prop('disabled',false);
    }
    else
    {
-        console.log("setting " +roleID+" to both");
+       //console.log("setting " +roleID+" to both");
        $("#roleUp-"+roleID).prop('disabled',false);
        $("#roleDown-"+roleID).prop('disabled',false);
    }
+}
+
+function setGroupRoleOrder(groupID,roleID,groupRoleOrder)
+{
+    $.ajax({
+        method: "POST",
+        url:    "/api/groups/"+groupID+"/roles/"+roleID,
+        data:   '{"groupRoleOrder":"'+groupRoleOrder+'"}'
+    }).done(function(data){
+    });
 }
 
 
@@ -466,41 +476,40 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
     
 
     $(".rollOrder").click(function (e) {
-       var roleID = e.currentTarget.id.split("-")[1];
-       var roleSequenceAction =  e.currentTarget.id.split("-")[0];
-       console.log(roleSequenceAction);
-       var newRoleSequence =0;
-       var currentRoleSequence = dataT.cell("#roleRow-"+roleID,2).data();
-       console.log("currentRoleSequence: "+currentRoleSequence);
-       var totalRoles = dataT.data().length
-       console.log("totalRoles: "+totalRoles);
+       var groupID=<?php echo $iGroupID?>;
+       var roleID = e.currentTarget.id.split("-")[1]; // get the ID of the role that we're manipulating
+       var roleSequenceAction =  e.currentTarget.id.split("-")[0];  //determine whether we're increasing or decreasing this role's sequence number
+       var newRoleSequence =0;      //create a variable at the function scope to store the new role's sequence
+       var currentRoleSequence = dataT.cell("#roleRow-"+roleID,2).data(); //get the sequence number of the selected role
+       var totalRoles = dataT.data().length //count how many roles are in the table
        if (roleSequenceAction == "roleUp")
        {
-           newRoleSequence = Number(currentRoleSequence)-1;
+           newRoleSequence = Number(currentRoleSequence)-1;  //decrease the role's sequence number
        }
        else if(roleSequenceAction == "roleDown")
        {
-           newRoleSequence = Number(currentRoleSequence)+1;
+           newRoleSequence = Number(currentRoleSequence)+1; // increase the role's sequenc number
        }
-       console.log("newRoleSequence:" +newRoleSequence);
-       sequenceColumn = dataT.columns(2).data()[0];
-       console.log(sequenceColumn);
-       for (var i=0;i< sequenceColumn.length;i++)
+       //console.log("Perform Action: "+roleSequenceAction+" on Role with ID: "+roleID+" (current sequence "+currentRoleSequence+") with new sequence: "+newRoleSequence);
+       sequenceColumn = dataT.column(2).data()[0];  // get the column of sequence numbers so we can search it
+       
+       for (var i=0;i< totalRoles;i++)  //iterate through the sequence numbers
        {
-           console.log("comparing" +sequenceColumn[i] + " with " +newRoleSequence);
-           if (sequenceColumn[i] == newRoleSequence)
+           if (dataT.cell(i,2).data() == newRoleSequence)  //if the sequence number matches the role's new sequence nubmer, we know that we need to adjust the role in this position
            {
-               var rowID = $(dataT.row(i).node()).attr("id").split("-")[1];
-               console.log("Row ID: "+rowID+" found at position: "+i+"Setting to: "+currentRoleSequence );
-               dataT.cell(i,2).data(String(currentRoleSequence));
-               configureButtons(rowID,currentRoleSequence,totalRoles)
+               var rowID = $(dataT.row(i).node()).attr("id").split("-")[1]; // get the ID of the role occupying our role's new sequence nubmer.
+               //console.log("Moving row at position: "+i+" to: "+currentRoleSequence+" (Role ID: "+rowID+")" );
+               dataT.cell(i,2).data(String(currentRoleSequence));  //change the sequence number of the occupying role to the old sequence nubmer of our role.
+               setGroupRoleOrder(groupID,rowID,currentRoleSequence)
+               configureButtons(rowID,currentRoleSequence,totalRoles)  //fix the buttons for the displaced role
            }
        }
 
-       dataT.cell("#roleRow-"+roleID,2).data(String(newRoleSequence));
-       configureButtons(roleID,newRoleSequence,totalRoles)      
-       dataT.order([2,'asc']);
-       dataT.draw(true);
+       dataT.cell("#roleRow-"+roleID,2).data(String(newRoleSequence)); // set our role to the new sequence number
+       setGroupRoleOrder(groupID,roleID,newRoleSequence)
+       configureButtons(roleID,newRoleSequence,totalRoles)    // fix the buttons.
+       dataT.order([2,'asc']);      //sort the table
+       dataT.draw(true);            //update the table
     });
     
     
