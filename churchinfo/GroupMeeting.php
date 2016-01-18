@@ -29,8 +29,8 @@ $sPageTitle = gettext("Schedule Group Meeting");
 if (isset($_POST["Submit"]))
 {
 	$dDate = FilterInput($_POST["Date"]);
-	$iHour = FilterInput($_POST["Hour"]);
-	$iMinutes = FilterInput($_POST["Minutes"]);
+	$iHour = FilterInput($_POST["hour"]);
+	$iMinutes = FilterInput($_POST["minute"]);
 	$nNotifyAhead = FilterInput($_POST["NotifyAhead"]);
 	$tName = FilterInput($_POST["Name"]);
 	$tDescription = FilterInput($_POST["Description"]);
