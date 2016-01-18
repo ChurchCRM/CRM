@@ -272,9 +272,52 @@ class GroupService
             throw new Exception("You cannont delete the only group");
         }
     }
-    function addGroupRole($groupID,$groupRole)
+    function addGroupRole($groupID,$groupRoleName)
     {
-        
+        if (strlen($groupRoleName) == 0)
+        {
+            throw new Exception ("New field name cannot be blank");
+        }
+        else
+        {
+            // Check for a duplicate option name
+            $sSQL = 'SELECT \'\' FROM list_lst 
+                INNER JOIN group_grp
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                 WHERE group_grp.grp_ID = "'.$groupID.'" AND
+                 lst_OptionName = "' . $groupRoleName .'"';
+            $rsCount = RunQuery($sSQL);
+            if (mysql_num_rows($rsCount) > 0)
+            {
+                throw new Exception ("Field ".$groupRoleName." already exists");
+            }
+            else
+            {
+                $sSQL = "SELECT grp_RoleListID FROM group_grp WHERE grp_ID = $groupID";
+                $rsTemp = RunQuery($sSQL);
+                $listIDTemp = mysql_fetch_array($rsTemp);
+                echo $listIDTemp[0];
+                $listID = $listIDTemp[0];
+                // Get count of the options
+                $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
+                $rsTemp = RunQuery($sSQL);
+                $numRows = mysql_num_rows($rsTemp);
+                $newOptionSequence = $numRows + 1;
+
+                // Get the new OptionID
+                $sSQL = "SELECT MAX(lst_OptionID) FROM list_lst WHERE lst_ID = $listID";
+                $rsTemp = RunQuery($sSQL);
+                $aTemp = mysql_fetch_array($rsTemp);
+                $newOptionID = $aTemp[0] + 1;
+
+                // Insert into the appropriate options table
+                $sSQL = "INSERT INTO list_lst (lst_ID, lst_OptionID, lst_OptionName, lst_OptionSequence)
+                        VALUES (" . $listID . "," . $newOptionID . ",'" . $groupRoleName . "'," . $newOptionSequence . ")";
+
+                RunQuery($sSQL);
+                $iNewNameError = 0;
+            }
+        }
         
     }
     

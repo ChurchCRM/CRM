@@ -388,7 +388,7 @@ if (strlen($iGroupID) > 0)
   }
   ?>
   </table>
-  <button type="button" class="btn btn-primary">Add New Role</button>
+  <label for="newRole">New Role: </label><input type="text" class="form-control" id="newRole" name="newRole"><button type="button" id="addNewRole" class="btn btn-primary">Add New Role</button>
   
   
   <?php
@@ -463,6 +463,19 @@ function setGroupRoleOrder(groupID,roleID,groupRoleOrder)
 
 function initHandlers()  //funciton to initialize the JQuery button event handlers
 {
+    $("#addNewRole").click(function(e) {
+        var newRoleName = $("#newRole").val();
+        var groupID=<?php echo $iGroupID?>;
+        $.ajax({
+            method: "POST",
+            url:    "/api/groups/"+groupID+"/roles",
+            data:  '{"roleName":"'+newRoleName+'"}'
+        }).done(function(data){
+            //dataT.row($("#roleRow-"+roleID)).remove().draw(true);
+        });
+        
+    });
+    
     $(".deleteRole").click(function(e) {
         var roleID = e.currentTarget.id.split("-")[1];
         var groupID=<?php echo $iGroupID?>;

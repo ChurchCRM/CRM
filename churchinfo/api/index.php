@@ -107,6 +107,18 @@ $app->group('/groups', function () use ($app) {
         }
     });
     
+    $app->post('/:groupID/roles', function ($groupID) use ($app, $groupService) {
+        try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            $groupService->addGroupRole($groupID,$input->roleName);
+            echo '{"success":"true"}';
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
     $app->post('/:groupID/defaultRole', function ($groupID) use ($app, $groupService) {
         try{
             $request = $app->request();
