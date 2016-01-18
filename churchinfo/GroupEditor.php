@@ -29,6 +29,8 @@ if (!$_SESSION['bManageGroups'])
 //Set the page title
 $sPageTitle = gettext("Group Editor");
 
+$groupService = new GroupService();
+
 //Get the GroupID from the querystring
 $iGroupID = 0;
 if (array_key_exists ("GroupID", $_GET))
@@ -167,7 +169,7 @@ if (isset($_POST["GroupSubmit"]))
         {
             $iCount = 0;
             while ($element = each($_SESSION['aPeopleCart'])) {
-                AddToGroup($_SESSION['aPeopleCart'][$element['key']],$iGroupID,$iDefaultRole);
+                $groupService->AddUsertoGroup($_SESSION['aPeopleCart'][$element['key']],$iGroupID,$iDefaultRole);
                 $iCount += 1;
             }
 
@@ -366,7 +368,7 @@ if (strlen($iGroupID) > 0)
         
     <?
   // <!-- -->
-  $groupService = new GroupService();
+  
   $group = $groupService->getGroupByID($iGroupID);
   foreach ($group['roles'] as $role)
   {?>
