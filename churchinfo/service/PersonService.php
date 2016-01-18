@@ -136,7 +136,7 @@ class PersonService {
         WHERE per_ID = " . $per_ID;
         $result = mysql_query($fetch);
         $row = mysql_fetch_assoc($result);
-        $row['photo']=$this->photo($per_ID);
+        $row['photo']=$this->getPhoto($per_ID);
         return $row;
     }
     
