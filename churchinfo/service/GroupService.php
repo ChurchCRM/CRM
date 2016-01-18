@@ -198,6 +198,18 @@ class GroupService
         
     }
     
+    function setGroupRoleOrder($groupID,$groupRoleID,$groupRoleOrder)
+    {
+        $sSQL =  'UPDATE list_lst
+                 INNER JOIN group_grp
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                 SET list_lst.lst_OptionSequence = "'.$groupRoleOrder.'"
+                 WHERE group_grp.grp_ID = "'.$groupID.'"
+                    AND list_lst.lst_OptionID = '.$groupRoleID;
+        RunQuery($sSQL);
+        
+    }
+    
     function getGroupDefaultRole($groupID)
     {
         //Look up the default role name

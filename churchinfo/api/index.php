@@ -83,7 +83,24 @@ $app->group('/groups', function () use ($app) {
             $request = $app->request();
             $body = $request->getBody();
             $input = json_decode($body);
-            $groupService->setGroupRoleName($groupID,$roleID,$input->groupRoleName);
+            if (property_exists($input,"groupRoleName"))
+            {
+                $groupService->setGroupRoleName($groupID,$roleID,$input->groupRoleName);
+            }
+            elseif (property_exists($input,"groupRoleOrder"))
+            {
+                groupService->setGroupRoleOrder($groupID,$roleID,$input->groupRoleOrder);
+            }
+            
+            echo '{"success":"true"}';
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->delete('/:groupID/roles/:roleID', function ($groupID,$roleID) use ($app, $groupService) {
+        try{
+            $groupService->deleteGroupRole($groupID,$roleID);
             echo '{"success":"true"}';
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';

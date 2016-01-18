@@ -215,6 +215,14 @@ $rsGroupRoleSeed = RunQuery($sSQL);
 require "Include/Header.php";
 
 ?>
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+
 <script type="text/javascript">
 bStatus = false;
 
@@ -344,11 +352,12 @@ function confirmAdd() {
 if (strlen($iGroupID) > 0)
 {
     ?>
-    <table class="table">
+    <table class="table" id="roleTable">
         <thead>
         <tr>
             <th>Role Name</th>
             <th>Make Default</th>
+            <th>Sequence</th>
             <th>Move Up</th>
             <th>Move Down</th>
             <th>Delete</th>
@@ -363,13 +372,16 @@ if (strlen($iGroupID) > 0)
   {?>
     <tr id="roleRow-<?php echo $role["lst_OptionID"];?>">
         <td><input type="text" class="form-control roleName" id="roleName-<?php echo $role["lst_OptionID"];?>" name="roleName" value="<?php echo $role['lst_OptionName'] ?>"></td>
-        <td><?php if($group['grp_DefaultRole'] == $role['lst_OptionID']){?>
+        <td><?php if($group['grp_DefaultRole'] == $role['lst_OptionID'])  //If the role we're looking at now is equal to the default role property of the group, then echo the default string.  Otherwise, give the user a button.
+        {?>
         <strong><i class="fa fa-check"></i> Default</strong>
         <?php } else { ?>
-        <button type="button" id="defaultRole-<?php echo $role["lst_OptionID"];?>" class="btn btn-success defaultRole">Default</button></td><?php } ?>
-        <td><button type="button" class="btn"><i class="fa fa-arrow-up"></i></button></td>
-        <td><button type="button" class="btn"><i class="fa fa-arrow-down"></i></button></td>
-        <td><button type="button" class="btn btn-danger">Delete</button></td>
+        <button type="button" id="defaultRole-<?php echo $role["lst_OptionID"];?>" class="btn btn-success defaultRole">Default</button><?php } ?>
+        </td>
+        <td><?php echo $role['lst_OptionSequence'];?></td>
+        <td><button type="button" id="roleUp-<?php echo $role["lst_OptionID"];?>" class="btn rollOrder" <?php if($role['lst_OptionSequence']==1){echo "disabled";}?>><i class="fa fa-arrow-up"></i></button></td>
+        <td><button type="button" id="roleDown-<?php echo $role["lst_OptionID"];?>" class="btn rollOrder" <?php if($role['lst_OptionSequence']==count($group['roles'])){echo "disabled";}?>><i class="fa fa-arrow-down"></i></button></td>
+        <td><button type="button" class="btn btn-danger deleteRole">Delete</button></td>
         
     </tr>
   <?php
@@ -392,8 +404,10 @@ else
 ?>
 </div></div>
 <script>
+var defaultRoleID= <?php echo $group['grp_DefaultRole'] ?>;
+var dataT = 0;
 $("#selectGroupIDDiv").hide();
- $("#cloneGroupRole").click(function(e){
+$("#cloneGroupRole").click(function(e){
     if (e.target.checked)
         $("#selectGroupIDDiv").show();
     else
@@ -401,28 +415,93 @@ $("#selectGroupIDDiv").hide();
         $("#selectGroupIDDiv").hide();
         $("#seedGroupID").prop('selectedIndex',0);
     }
-     });
-     
-function getRowDefaultHTML(id,defaultID)
-{
-    if( id == defaultID)
-    {
-        return '<strong><i class="fa fa-check"></i> Default</strong>';
-    }
-    else
-    {
-        return '<button type="button" id="defaultRole-'+id+'" class="btn btn-success defaultRole">Default</button></td>';
-    }
-    
-}
-     
-   
-$("document").ready(function(){
-    initHandlers();
 });
 
-function initHandlers()
+$("document").ready(function(){
+    initHandlers(); // initialize the event handlers when the document is ready.  Don't do it here, since we need to be able to initialize these handlers on the fly in response to user action.
+    
+});
+
+function configureButtons(roleID,roleSequence,totalRoles)
 {
+   
+   if (roleSequence == 1)
+   {
+        console.log("setting " +roleID+" to down only");
+        $("#roleUp-"+roleID).prop('disabled',true);
+        $("#roleDown-"+roleID).prop('disabled',false);
+   }
+   else if (roleSequence == totalRoles)
+   {
+        console.log("setting " +roleID+" to up only");
+        $("#roleDown-"+roleID).prop('disabled',true);
+        $("#roleUp-"+roleID).prop('disabled',false);
+   }
+   else
+   {
+        console.log("setting " +roleID+" to both");
+       $("#roleUp-"+roleID).prop('disabled',false);
+       $("#roleDown-"+roleID).prop('disabled',false);
+   }
+}
+
+
+function initHandlers()  //funciton to initialize the JQuery button event handlers
+{
+    $(".deleteRole").click(function(e) {
+        var roleID = e.currentTarget.id.split("-")[1];
+        var groupID=<?php echo $iGroupID?>;
+        var roleID=e.target.id.split("-")[1];
+        $.ajax({
+            method: "DELETE",
+            url:    "/api/groups/"+groupID+"/roles/"+roleID
+        }).done(function(data){
+        });
+    });
+    
+    dataT = $("#roleTable").DataTable({
+        "order":    [[2,"asc"]]
+        
+    });
+    $(".rollOrder").click(function (e) {
+       var roleID = e.currentTarget.id.split("-")[1];
+       var roleSequenceAction =  e.currentTarget.id.split("-")[0];
+       console.log(roleSequenceAction);
+       var newRoleSequence =0;
+       var currentRoleSequence = dataT.cell("#roleRow-"+roleID,2).data();
+       console.log("currentRoleSequence: "+currentRoleSequence);
+       var totalRoles = dataT.data().length
+       console.log("totalRoles: "+totalRoles);
+       if (roleSequenceAction == "roleUp")
+       {
+           newRoleSequence = Number(currentRoleSequence)-1;
+       }
+       else if(roleSequenceAction == "roleDown")
+       {
+           newRoleSequence = Number(currentRoleSequence)+1;
+       }
+       console.log("newRoleSequence:" +newRoleSequence);
+       sequenceColumn = dataT.columns(2).data()[0];
+       console.log(sequenceColumn);
+       for (var i=0;i< sequenceColumn.length;i++)
+       {
+           console.log("comparing" +sequenceColumn[i] + " with " +newRoleSequence);
+           if (sequenceColumn[i] == newRoleSequence)
+           {
+               var rowID = $(dataT.row(i).node()).attr("id").split("-")[1];
+               console.log("Row ID: "+rowID+" found at position: "+i+"Setting to: "+currentRoleSequence );
+               dataT.cell(i,2).data(String(currentRoleSequence));
+               configureButtons(rowID,currentRoleSequence,totalRoles)
+           }
+       }
+
+       dataT.cell("#roleRow-"+roleID,2).data(String(newRoleSequence));
+       configureButtons(roleID,newRoleSequence,totalRoles)      
+       dataT.order([2,'asc']);
+       dataT.draw(true);
+    });
+    
+    
     $(".roleName").change(function(e){
         var groupID=<?php echo $iGroupID?>;
         var groupRoleName = e.target.value;
@@ -444,16 +523,24 @@ function initHandlers()
             url:    "/api/groups/"+groupID+"/defaultRole",
             data: '{"roleID":"'+roleID+'"}'
         }).done(function(data){
-            $(".table tr td:nth-child(2)").each(function(){ 
-                $(this).empty();
-                $(this).html(getRowDefaultHTML($(this).parent().attr("id").split("-")[1],roleID));
-                initHandlers();
+            $(".table tr:gt(0)").each(function(){  //iterate through all rows of the role table, skipping the first row (index0) using JQuery gt selector
+                var rowID = $(this).attr("id").split("-")[1]; //get the Role ID based on the html ID attribute
+                if ( rowID== roleID)  // If the row we're on is the row conatining the "default" button that was clicked 
+                {
+                     $("td:nth-child(2)", this).empty(); // empty the third TD element
+                     $("td:nth-child(2)", this).html('<strong><i class="fa fa-check"></i> Default</strong>');  //replace the button with the [Check] Default Text
+                }
+                else if (rowID== defaultRoleID)  // if the row we're on is the row containing the previuos default role
+                {
+                    $("td:nth-child(2)", this).empty();  // empty the third TD element.
+                     $("td:nth-child(2)", this).html('<button type="button" id="defaultRole-'+rowID+'" class="btn btn-success defaultRole">Default</button></td>');  //replace the [Check] Default text with a button to allow the user to set this as default again
+                }
             }
             );
+            defaultRoleID=roleID; //update the local variable representing the default role id
+            initHandlers(); // re-register the JQuery handlers since we changed the DOM, and new buttons will not have an action bound.
         });
-        
-    });
-    
+    }); 
 }
 </script>
 <?php

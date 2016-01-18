@@ -15,6 +15,27 @@ ChurchCRM leverages Slim 2.6.2 to provide REST access to the data elements.
 * [GET] /api/families/lastedited
   * Returns a the last 10 updated families 
 
+## Groups
+*  [POST] /api/groups/:groupID/removeuser/:userID
+  * Removes the user with ID :userID from group with ID :groupID
+  
+*  [POST] /api/groups/:groupID/adduser/:userID
+  * Adds the user with ID :userID to the group with ID :groupID
+  
+*  [DELETE] /api/groups/:groupID
+  * Deletes the group with ID :groupID
+  
+*  [GET] /api/groups/:groupID
+  * Returns a JSON objecte representing the group with ID :groupID
+  
+*  [POST] /api/groups/:groupID/roles/:roleID
+  * Alters the role with ID :roleID for group with ID :groupID/adduser/
+  * Requires JSON with either "groupRoleName", or "groupRoleOrder" properties set
+
+*  [POST]  /api/groups/:groupID/defaultRole
+  *  Sets the default role fo the group with ID :groupID 
+  *  Requres JSON in the POST body with the "roleID"  property set
+  
 ## Deposits
 No API Calls yet for Deposits
 
