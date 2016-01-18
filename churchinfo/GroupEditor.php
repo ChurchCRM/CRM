@@ -17,6 +17,7 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require "service/GroupService.php";
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bManageGroups'])
@@ -334,13 +335,37 @@ function confirmAdd() {
 <h3 class="box-title"><?php echo gettext("Group Roles:"); ?></h3>
 </div>
 <div class="box-body">
+
 <?php
 if (strlen($iGroupID) > 0)
 {
     ?>
-    <iframe width="100%" height="400px" frameborder="0" align="left" marginheight="0" marginwidth="0"
-    src="OptionManager.php?mode=grproles&ListID=<?php echo $iRoleListID; ?>"></iframe>
-    <?php
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Role Name</th>
+        </tr>
+        </thead>
+        
+    <?
+  // <!-- <iframe width="100%" height="400px" frameborder="0" align="left" marginheight="0" marginwidth="0" src="OptionManager.php?mode=grproles&ListID=php echo $iRoleListID;"></iframe>-->
+  $groupService = new GroupService();
+  foreach ($groupService->getGroupRoles($iGroupID) as $role)
+  {?>
+    <tr>
+        <td><?php echo $role['lst_OptionName'] ?></td>
+    </tr>
+  <?php
+  }
+  ?>
+  </table>
+  
+  
+  <?php
+    
+    
+    
+  
 }
 else
 {

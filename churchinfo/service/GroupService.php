@@ -106,7 +106,7 @@ class GroupService
         
     }
     
-    function getGroupsJSON($groups)
+    function getGroupJSON($groups)
     {
         if ($groups)
         {
@@ -162,6 +162,71 @@ class GroupService
             $sSQL = "DELETE FROM group_grp WHERE grp_ID = " . $iGroupID;
             RunQuery($sSQL);
 
+    }
+    
+    function getGroupRoles($groupID)
+    {
+        $groupRoles = array();
+		$sSQL = "SELECT grp_RoleListID FROM group_grp WHERE grp_ID = " . $groupID;
+		$rsTemp = RunQuery($sSQL);
+
+		// Validate that this list ID is really for a group roles list. (for security)
+		if (mysql_num_rows($rsTemp) == 0) {
+            throw new Exception("invalid request");
+		}
+
+		$grp_RoleListID = mysql_fetch_array($rsTemp);
+        
+        $sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=$grp_RoleListID[0] ORDER BY lst_OptionSequence";
+        $rsList = RunQuery($sSQL);
+        while ($row = mysql_fetch_assoc($rsList)) {
+            array_push($groupRoles, $row);
+        }
+		return $groupRoles;
+
+    }
+    
+    function getGroupDefaultRole($groupID)
+    {
+        //Look up the default role name
+        $sSQL = "SELECT lst_OptionName from list_lst INNER JOIN group_grp on (group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_DefaultRole = list_lst.lst_OptionID) WHERE group_grp.grp_ID = " . $groupID;
+        $aDefaultRole = mysql_fetch_array(RunQuery($sSQL));
+        return $aDefaultRole[0];       
+    }
+    function deleteGroupRole($groupID,$groupRole)
+    {
+        
+    }
+    function addGroupRole($groupID,$groupRole)
+    {
+        
+        
+    }
+    
+    function getGroupTotalMembers($groupID)
+    {
+        //Get the count of members
+        $sSQL = 'SELECT COUNT(*) AS iTotalMembers FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = ' . $groupID;
+        $rsTotalMembers = mysql_fetch_array(RunQuery($sSQL));
+        return $rsTotalMembers[0];
+        
+    }
+    function getGroupByID($groupID)
+    {        
+        $fetch = 'SELECT grp_ID, grp_Type, grp_Name, grp_Description FROM group_grp  WHERE grp_ID = '.$groupID;
+        $result = mysql_query($fetch);
+        if (mysql_num_rows($result) == 0) {
+            throw new Exception("no such group");
+		}
+
+        $group = mysql_fetch_assoc($result);
+        $group['defaultRole'] = $this->getGroupDefaultRole($groupID);
+        $group['uri'] = $this->getViewURI($groupID);
+        $group['roles']=$this->getGroupRoles($groupID);
+        $group['totalMembers']=$this->getGroupTotalMembers($groupID);
+
+        return $group;
+        
     }
     
 }

@@ -98,13 +98,14 @@ $numRows = mysql_num_rows($rsPropList);
 require 'Include/Header.php';?>
 
 
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
-<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 <div class="box">
     <div class="box-header with-border">
@@ -543,7 +544,7 @@ $sSQL_Result = RunQuery($sSQL);
         ?>
     <tr id="uid-<?php echo $per_ID; ?>">
         <td><?php
-                echo "<img src=\"". $personService->photo($per_ID). "\" class=\"direct-chat-img\"> &nbsp <a href=\"PersonView.php?PersonID=\"" . $per_ID . "\"><a target=\"_top\" href=\"PersonView.php?PersonID=$per_ID\">" . FormatFullName($per_Title, $per_LastName, $per_FirstName, $per_MiddleName, $per_Suffix, 0) . "</a>"; ?>
+                echo "<img src=\"". $personService->getPhoto($per_ID). "\" class=\"direct-chat-img\"> &nbsp <a href=\"PersonView.php?PersonID=\"" . $per_ID . "\"><a target=\"_top\" href=\"PersonView.php?PersonID=$per_ID\">" . FormatFullName($per_Title, $per_LastName, $per_FirstName, $per_MiddleName, $per_Suffix, 0) . "</a>"; ?>
         </td>        
         <td><?php
             if ($_SESSION['bManageGroups']) echo "<a target=\"_top\" href=\"MemberRoleChange.php?GroupID=" . $iGroupID . "&PersonID=" . $per_ID . "&Return=1\">";

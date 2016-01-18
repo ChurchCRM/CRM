@@ -13,6 +13,7 @@ if (!isset($_SESSION['iUserID'])) {
 require_once "../service/PersonService.php";
 require_once "../service/FamilyService.php";
 require_once "../service/DataSeedService.php";
+require_once "../service/GroupService.php";
 require_once '../vendor/slim/slim/Slim/Slim.php';
 
 use Slim\Slim;
@@ -41,29 +42,40 @@ $app->container->singleton('GroupService', function () {
 
 
 $app->group('/groups', function () use ($app) {
-    $app->post('/:groupID/removeuser/:userID', function ($groupID,$userID) use ($app) {
+    $groupService = $app->GroupService;
+    
+    $app->post('/:groupID/removeuser/:userID', function ($groupID,$userID) use ($groupService) {
         try {
-            $app->GroupService->removeUserFromGroup($userID,$groupID);
+            $groupService->removeUserFromGroup($userID,$groupID);
             echo '{"success":"true"}';
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
     });
-    $app->post('/:groupID/adduser/:userID', function ($groupID,$userID) use ($app) {
+    $app->post('/:groupID/adduser/:userID', function ($groupID,$userID) use ($groupService) {
         try {
-            $app->GroupService->addUserToGroup($userID,$groupID,0);
+            $groupService->addUserToGroup($userID,$groupID,0);
             echo '{"success":"true"}';
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
     });
-    $app->delete('/:groupID', function ($groupID) use ($app) {
+    $app->delete('/:groupID', function ($groupID) use ($groupService) {
         try {
-            $app->GroupService->deleteGroup($groupID);
+            $groupService->deleteGroup($groupID);
             echo '{"success":"true"}';
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
+    });
+    
+    $app->get('/:groupID', function ($groupID) use ($groupService) {
+        try{
+            echo $groupService->getGroupJSON($groupService->getGroupByID($groupID));
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+        
     });
 });
 
