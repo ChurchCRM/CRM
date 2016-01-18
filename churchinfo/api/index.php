@@ -89,7 +89,7 @@ $app->group('/groups', function () use ($app) {
             }
             elseif (property_exists($input,"groupRoleOrder"))
             {
-                groupService->setGroupRoleOrder($groupID,$roleID,$input->groupRoleOrder);
+                $groupService->setGroupRoleOrder($groupID,$roleID,$input->groupRoleOrder);
             }
             
             echo '{"success":"true"}';

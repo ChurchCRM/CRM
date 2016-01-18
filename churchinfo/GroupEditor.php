@@ -420,6 +420,11 @@ $("#cloneGroupRole").click(function(e){
 $("document").ready(function(){
     initHandlers(); // initialize the event handlers when the document is ready.  Don't do it here, since we need to be able to initialize these handlers on the fly in response to user action.
     
+    dataT = $("#roleTable").DataTable({
+        "order":    [[2,"asc"]]
+        
+    });
+    
 });
 
 function configureButtons(roleID,roleSequence,totalRoles)
@@ -459,10 +464,7 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
         });
     });
     
-    dataT = $("#roleTable").DataTable({
-        "order":    [[2,"asc"]]
-        
-    });
+
     $(".rollOrder").click(function (e) {
        var roleID = e.currentTarget.id.split("-")[1];
        var roleSequenceAction =  e.currentTarget.id.split("-")[0];
