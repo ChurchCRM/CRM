@@ -186,6 +186,18 @@ class GroupService
 
     }
     
+    function setGroupRoleName($groupID,$groupRoleID,$groupRoleName)
+    {
+        $sSQL =  'UPDATE list_lst
+                 INNER JOIN group_grp
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                 SET list_lst.lst_OptionName = "'.$groupRoleName.'"
+                 WHERE group_grp.grp_ID = "'.$groupID.'"
+                    AND list_lst.lst_OptionID = '.$groupRoleID;
+        RunQuery($sSQL);
+        
+    }
+    
     function getGroupDefaultRole($groupID)
     {
         //Look up the default role name
@@ -213,7 +225,7 @@ class GroupService
     }
     function getGroupByID($groupID)
     {        
-        $fetch = 'SELECT grp_ID, grp_Type, grp_Name, grp_Description FROM group_grp  WHERE grp_ID = '.$groupID;
+        $fetch = 'SELECT grp_ID, grp_Type, grp_Name, grp_Description, grp_DefaultRole FROM group_grp  WHERE grp_ID = '.$groupID;
         $result = mysql_query($fetch);
         if (mysql_num_rows($result) == 0) {
             throw new Exception("no such group");

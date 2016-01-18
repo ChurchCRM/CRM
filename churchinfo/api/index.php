@@ -77,6 +77,17 @@ $app->group('/groups', function () use ($app) {
         }
         
     });
+    
+    $app->post('/:groupID/roles/:roleID', function ($groupID,$roleID) use ($app, $groupService) {
+        try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            $groupService->setGroupRoleName($groupID,$roleID,$input->groupRoleName);
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
 });
 
 
@@ -86,7 +97,7 @@ $app->group('/search', function () use ($app) {
             $resultsArray = array();
             array_push($resultsArray, $app->PersonService->getPersonsJSON($app->PersonService->search($query)));
             array_push($resultsArray, $app->FamilyService->getFamiliesJSON($app->FamilyService->search($query)));
-            array_push($resultsArray, $app->GroupService->getGroupsJSON($app->GroupService->search($query)));
+            array_push($resultsArray, $app->GroupService->getGroupJSON($app->GroupService->search($query)));
             echo "[".join(",",array_filter($resultsArray))."]";
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';

@@ -335,6 +335,11 @@ function confirmAdd() {
 </div>
 <div class="box-body">
 
+<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		<strong></strong>Group name changes are saved as soon as the box loses focus</div>
+
 <?php
 if (strlen($iGroupID) > 0)
 {
@@ -353,11 +358,15 @@ if (strlen($iGroupID) > 0)
     <?
   // <!-- -->
   $groupService = new GroupService();
-  foreach ($groupService->getGroupRoles($iGroupID) as $role)
+  $group = $groupService->getGroupByID($iGroupID);
+  foreach ($group['roles'] as $role)
   {?>
     <tr>
-        <td><?php echo $role['lst_OptionName'] ?></td>
-        <td><button type="button" class="btn btn-success">Default</button></td>
+        <td><input type="text" class="form-control roleName" id="roleName-<?php echo $role["lst_OptionID"];?>" name="roleName" value="<?php echo $role['lst_OptionName'] ?>"></td>
+        <td><?php if($group['grp_DefaultRole'] == $role['lst_OptionID']){?>
+        <strong><i class="fa fa-check"></i> Default</strong>
+        <?php } else { ?>
+        <button type="button" class="btn btn-success">Default</button></td><?php } ?>
         <td><button type="button" class="btn"><i class="fa fa-arrow-up"></i></button></td>
         <td><button type="button" class="btn"><i class="fa fa-arrow-down"></i></button></td>
         <td><button type="button" class="btn btn-danger">Delete</button></td>
@@ -393,6 +402,24 @@ $("#selectGroupIDDiv").hide();
         $("#seedGroupID").prop('selectedIndex',0);
     }
      });
+     
+   
+$("document").ready(function(){
+    $(".roleName").change(function(e){
+        console.log(e);
+        var groupID=<?php echo $iGroupID?>;
+        var groupRoleName = e.target.value;
+        var roleID=e.target.id.split("-")[1];
+        $.ajax({
+            method: "POST",
+            url:    "/api/groups/"+groupID+"/roles/"+roleID,
+            data: '{"groupRoleName":"'+groupRoleName+'"}'
+        }).done(function(data){
+            console.log(data);
+        });
+        
+    });
+});
 </script>
 <?php
 require "Include/Footer.php";
