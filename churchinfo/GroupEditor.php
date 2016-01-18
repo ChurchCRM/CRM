@@ -329,7 +329,6 @@ function confirmAdd() {
 
 </div>
 </div>
-
 <div class="box">
 <div class="box-header">
 <h3 class="box-title"><?php echo gettext("Group Roles:"); ?></h3>
@@ -344,21 +343,31 @@ if (strlen($iGroupID) > 0)
         <thead>
         <tr>
             <th>Role Name</th>
+            <th>Make Default</th>
+            <th>Move Up</th>
+            <th>Move Down</th>
+            <th>Delete</th>
         </tr>
         </thead>
         
     <?
-  // <!-- <iframe width="100%" height="400px" frameborder="0" align="left" marginheight="0" marginwidth="0" src="OptionManager.php?mode=grproles&ListID=php echo $iRoleListID;"></iframe>-->
+  // <!-- -->
   $groupService = new GroupService();
   foreach ($groupService->getGroupRoles($iGroupID) as $role)
   {?>
     <tr>
         <td><?php echo $role['lst_OptionName'] ?></td>
+        <td><button type="button" class="btn btn-success">Default</button></td>
+        <td><button type="button" class="btn"><i class="fa fa-arrow-up"></i></button></td>
+        <td><button type="button" class="btn"><i class="fa fa-arrow-down"></i></button></td>
+        <td><button type="button" class="btn btn-danger">Delete</button></td>
+        
     </tr>
   <?php
   }
   ?>
   </table>
+  <button type="button" class="btn btn-primary">Add New Role</button>
   
   
   <?php
