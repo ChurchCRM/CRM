@@ -471,7 +471,19 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
             url:    "/api/groups/"+groupID+"/roles",
             data:  '{"roleName":"'+newRoleName+'"}'
         }).done(function(data){
-            //dataT.row($("#roleRow-"+roleID)).remove().draw(true);
+            var newRole = data.newRole;
+            var newRow=[
+                '<input type="text" class="form-control roleName" id="roleName-'+newRole.roleID+'" name="roleName" value="'+newRole.roleName+'">',
+                '<button type="button" id="defaultRole-'+newRole.roleID+'" class="btn btn-success defaultRole">Default</button>',
+                newRole.sequence,
+                "up",
+                "down",
+                '<button type="button" id="roleDelete-'+newRole.roleID+'" class="btn btn-danger deleteRole">Delete</button>'
+                ];       
+
+        var node = dataT.row.add(newRow).draw( true ).node();
+        $(node).attr("id","roleRow-"+newRole.roleID);
+        initHandlers();
         });
         
     });

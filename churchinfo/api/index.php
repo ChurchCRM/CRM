@@ -112,8 +112,7 @@ $app->group('/groups', function () use ($app) {
             $request = $app->request();
             $body = $request->getBody();
             $input = json_decode($body);
-            $groupService->addGroupRole($groupID,$input->roleName);
-            echo '{"success":"true"}';
+            echo $groupService->addGroupRole($groupID,$input->roleName);
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

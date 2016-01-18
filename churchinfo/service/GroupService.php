@@ -296,7 +296,6 @@ class GroupService
                 $sSQL = "SELECT grp_RoleListID FROM group_grp WHERE grp_ID = $groupID";
                 $rsTemp = RunQuery($sSQL);
                 $listIDTemp = mysql_fetch_array($rsTemp);
-                echo $listIDTemp[0];
                 $listID = $listIDTemp[0];
                 // Get count of the options
                 $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
@@ -318,7 +317,7 @@ class GroupService
                 $iNewNameError = 0;
             }
         }
-        
+        return '{"newRole":{"roleID":"'.$newOptionID.'", "roleName":"'.$groupRoleName.'", "sequence":"'.$newOptionSequence.'"}}';
     }
     
     function getGroupTotalMembers($groupID)

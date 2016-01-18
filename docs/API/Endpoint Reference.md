@@ -36,6 +36,10 @@ ChurchCRM leverages Slim 2.6.2 to provide REST access to the data elements.
   *  Sets the default role fo the group with ID :groupID 
   *  Requres JSON in the POST body with the "roleID"  property set
   
+* [POST] /api/groups/:grouID/roles/
+  * Creates a new group role for group with ID :groupID
+  * requires JSON in the POST body with roleName set to the new role's name
+  
 ## Deposits
 No API Calls yet for Deposits
 
