@@ -40,10 +40,12 @@ $demographicStats = $dashboardService->getDemographic();
         <a href="FamilyList.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext("All Families") ?></a>
         <a href="OptionManager.php?mode=famroles" class="btn btn-app"><i class="fa fa-cubes"></i><?= gettext("Family Roles") ?></a>
         <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext("Family Geographic") ?></a>
-        <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map-pin"></i><?= gettext("Family Map") ?></a>
+        <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext("Family Map") ?></a>
+        <a href="UpdateAllLatLon.php" class="btn btn-app"><i class="fa fa-map-pin"></i><?= gettext("Update All Family Coordinates") ?></a>
         <? if ($_SESSION['bAdmin']) {?>
         <a href="FamilyCustomFieldsEditor.php" class="btn btn-app"><i class="fa fa-gear"></i><?= gettext("Custom Family Fields") ?></a>
         <? } ?>
+
     </div>
 </div>
 <!-- Small boxes (Stat box) -->
