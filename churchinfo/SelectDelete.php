@@ -187,7 +187,7 @@ if (isset($_GET["Confirmed"]))
 			unlink ($photoFile);
 
 		// Redirect back to the family listing
-		Redirect("SelectList.php?mode=family");
+		Redirect("FamilyList.php");
 	}
 }
 
