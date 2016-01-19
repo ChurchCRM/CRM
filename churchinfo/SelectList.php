@@ -31,6 +31,7 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Include/PersonFunctions.php";
 
 $iTenThousand = 10000;  // Constant used to offset negative choices in drop down lists
 
@@ -890,15 +891,10 @@ if (!isset($sPersonColumn5)) {
 // Header Row for results table
 echo '<form method="get" action="SelectList.php" name="ColumnOptions">';
 echo '<table cellpadding="4" align="center" cellspacing="0" width="100%">';
-echo '<tr class="TableHeader"><td>';
+echo '<tr><th></th><th><a href="SelectList.php?mode=' .$sMode. '&amp;type=' .$iGroupTypeMissing;
+echo '&amp;Sort=name&amp;Filter=' .$sFilter. '">' . gettext("Name") . '</a></th>';
 
-if ($_SESSION['bEditRecords'])
-	echo gettext("Edit");
-
-echo '</td><td><a href="SelectList.php?mode=' .$sMode. '&amp;type=' .$iGroupTypeMissing;
-echo '&amp;Sort=name&amp;Filter=' .$sFilter. '">' . gettext("Name") . '</a></td>';
-
-echo '<td><input type="hidden" name="mode" value="' .$sMode. '">';
+echo '<th><input type="hidden" name="mode" value="' .$sMode. '">';
 if($iGroupTypeMissing > 0)
 	echo '<input type="hidden" name="type" value="' .$iGroupTypeMissing. '">';
 if(isset($sFilter))
@@ -931,12 +927,12 @@ foreach($aPersonCol3 as $s) {
 	echo '<option value="'.$s.'"'.$sel.'>'.gettext($s).'</option>';
 }
 
-echo '</select></td>';
+echo '</select></th>';
 
-echo '<td><a href="SelectList.php?mode=' .$sMode. '&amp;type=' .$iGroupTypeMissing;
-echo '&amp;Sort=family&amp;Filter=' .$sFilter. '">' . gettext("Family") . '</a></td>';
+echo '<th><a href="SelectList.php?mode=' .$sMode. '&amp;type=' .$iGroupTypeMissing;
+echo '&amp;Sort=family&amp;Filter=' .$sFilter. '">' . gettext("Family") . '</a></th>';
 
-echo '<td>';
+echo '<th>';
 echo '<select class="SmallText" name="PersonColumn5" onchange="this.form.submit()">';
 $aPersonCol5 = array("Home Phone","Work Phone","Mobile Phone","Zip/Postal Code");
 foreach($aPersonCol5 as $s) {
@@ -945,14 +941,17 @@ foreach($aPersonCol5 as $s) {
 		$sel = " selected";
 	echo '<option value="'.$s.'"'.$sel.'>'.gettext($s).'</option>';
 }
-echo "</select></td>";
+echo "</select></th><th>";
 
-echo "<td>" . gettext("Cart") . "</td>";
+if ($_SESSION['bEditRecords'])
+	echo gettext("Edit");
+
+echo "</th><th>" . gettext("Cart") . "</th>";
 
 if ($iMode == 1) {
-	echo "<td>" . gettext("Printable Record") . "</td>";
+	echo "<th>" . gettext("Print") . "</th>";
 } else {
-	echo "<td>" . gettext("Assign") . "</td>";
+	echo "<th>" . gettext("Assign") . "</th>";
 }
 
 // Table for results begins here
@@ -1015,19 +1014,17 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 	$sRowClass = AlternateRowStyle($sRowClass);
 
 	//Display the row
-	echo "<tr class=\"" .$sRowClass. "\"><td>";
-	if ($_SESSION['bEditRecords']) {
-		echo "<a href=\"PersonEditor.php?PersonID=" .$per_ID. "\">";
-		echo gettext("Edit") . "</a>";
-	}
-
-	echo "</td><td><a href=\"PersonView.php?PersonID=" .$per_ID. "\">";
-	echo FormatFullName($per_Title, $per_FirstName, $per_MiddleName,
-						$per_LastName, $per_Suffix, 3);
-	echo "</a>&nbsp;</td>";
-
-	echo "<td>";
-	if ($sPersonColumn3 == "Classification")
+	echo "<tr class=\"" .$sRowClass. "\">";?>
+	</td>
+    <td><img src="<?= getPersonPhoto($per_ID); ?>" class="direct-chat-img" width="10px" height="10px" /> </td>
+	<td>
+	    <a href="PersonView.php?PersonID=<?= $per_ID ?>" >
+	    <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3); ?>
+	    </a>
+    </td>
+    <td>
+    <?
+    if ($sPersonColumn3 == "Classification")
 		echo $aClassificationName[$per_cls_ID];
 	elseif ($sPersonColumn3 == "Family Role")
 		echo $aFamilyRoleName[$per_fmr_ID];
@@ -1063,11 +1060,20 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 			echo $zip;
 		else
 			echo gettext("unassigned");
-	}
-	echo "</td>";
-
-	echo "<td>";
-	if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
+	}?>
+	</td>
+    <td>
+	<? if ($_SESSION['bEditRecords']) {?>
+		<a href="PersonEditor.php?PersonID=<?= $per_ID ?>">
+		    <span class="fa-stack">
+                <i class="fa fa-square fa-stack-2x"></i>
+                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+	<? }?>
+    </td>
+	<td>
+	<? if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
 
 		// Add to cart option
 		if (mb_substr($sRedirect, -1, 1) == '?')
@@ -1076,9 +1082,14 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 			echo "<a href=\"" .$sRedirect. "AddToPeopleCart=" .$per_ID. "\">";
 		else
 			echo "<a href=\"" .$sRedirect. "&amp;AddToPeopleCart=" .$per_ID. "\">";
-
-		echo gettext("Add to Cart") . "</a>";
-	} else {
+        ?>
+		<span class="fa-stack">
+                <i class="fa fa-square fa-stack-2x"></i>
+                <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+    </td>
+	<? } else {
 		// Remove from cart option
 		if (mb_substr($sRedirect, -1, 1) == '?')
 			echo "<a href=\"" .$sRedirect. "RemoveFromPeopleCart=" .$per_ID. "\">";
@@ -1086,20 +1097,28 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 			echo "<a href=\"" .$sRedirect. "RemoveFromPeopleCart=" .$per_ID. "\">";
 		else
 			echo "<a href=\"" .$sRedirect. "&amp;RemoveFromPeopleCart=" .$per_ID. "\">";
-
-		echo gettext("Remove") . "</a>";
-	}
+        ?>
+		<span class="fa-stack">
+                <i class="fa fa-square fa-stack-2x"></i>
+                <i class="fa fa-remove fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+	<? }
 
 	if ($iMode == 1) {
-		echo "<td><a href=\"PrintView.php?PersonID=" .$per_ID. "\">";
-		echo gettext("Print Page") . "</a></td>";
-	} else {
+		echo "<td><a href=\"PrintView.php?PersonID=" .$per_ID. "\">"; ?>
+		<span class="fa-stack">
+                <i class="fa fa-square fa-stack-2x"></i>
+                <i class="fa fa-print fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+	<? } else {
 		echo "<td><a href=\"PersonToGroup.php?PersonID=" .$per_ID;
 		echo "&amp;prevquery=" . rawurlencode($_SERVER["QUERY_STRING"]) . "\">";
 		echo gettext("Add to Group") . "</a></td>";
 	}
 
-	echo "</tr>";
+	echo "</td></tr>";
 
 	//Store the family to enable the control break
 	$iPrevFamily = $fam_ID;
