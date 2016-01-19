@@ -460,13 +460,7 @@ require "Include/Header.php";
 <form method="get" action="SelectList.php" name="PersonList">
 <?php
 if ($iMode == 1) {
-	echo "<p align=\"center\">";
-	if ($_SESSION['bAddRecords']) {
-		echo "<a href=\"PersonEditor.php\">";
-		echo gettext("Add a New Person Record") . "</a><BR>";
-	}
-
-
+    echo "<p align=\"center\">";
 } else {
 	$sSQLtemp = "SELECT * FROM list_lst WHERE lst_ID = 3";
 	$rsGroupTypes = RunQuery($sSQLtemp);
@@ -673,7 +667,7 @@ if ($iMode == 1) {
 			$aGroupRoles[intval($lst_OptionID)]=$lst_OptionName;
 		}
 
-		echo '	<select name="grouproleid" onchange="this.form.submit()">
+		echo '	<select name="grouproleid" onchange="this.form.submit()" >
 				<option value="" ';
 		if ($iRoleID < 0) echo ' selected ';
 		echo '>' . gettext("All Roles") . '</option>';
@@ -685,22 +679,14 @@ if ($iMode == 1) {
 					echo ' selected ';
 			echo '>'.$value.'</option>';
 		}
-		/*
-		foreach ($aGroupNames as $key => $value) {
-			echo '<option value="'.($key-$iTenThousand).'"';
-			if (isset($iGroupType))
-				if ($iGroupID == ($key-$iTenThousand))
-					echo ' selected ';
-			echo '>! '.$value.'</option>';
-		}*/
 		echo '</select>';
 	}
 } ?>
 
 <input type="button" class="btn" value="<?php echo gettext("Clear Filters"); ?>" onclick="javascript:document.location='SelectList.php?mode=<?php echo $sMode; ?>&amp;Sort=<?php echo $sSort; ?>&amp;type=<?php echo $iGroupTypeMissing; ?>'"><BR><BR>
-<input name="AddAllToCart" type="submit" class="btn" <?php echo 'value="' . gettext("Add to Cart") . '"'; ?>>&nbsp;
-<input name="IntersectCart" type="submit" class="btn" <?php echo 'value="' . gettext("Intersect with Cart") . '"'; ?>>&nbsp;
-<input name="RemoveFromCart" type="submit" class="btn" <?php echo 'value="' . gettext("Remove from Cart") . '"'; ?>>
+<input name="AddAllToCart" type="submit" class="btn btn-primary" <?php echo 'value="' . gettext("Add to Cart") . '"'; ?>>&nbsp;
+<input name="IntersectCart" type="submit" class="btn btn-warning" <?php echo 'value="' . gettext("Intersect with Cart") . '"'; ?>>&nbsp;
+<input name="RemoveFromCart" type="submit" class="btn btn-danger" <?php echo 'value="' . gettext("Remove from Cart") . '"'; ?>>
 
 </td></tr>
 </table></form>
@@ -1086,27 +1072,21 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 
 		// Add to cart option
 		if (mb_substr($sRedirect, -1, 1) == '?')
-			echo "<a onclick=\"saveScrollCoordinates()\"
-					href=\"" .$sRedirect. "AddToPeopleCart=" .$per_ID. "\">";
+			echo "<a href=\"" .$sRedirect. "AddToPeopleCart=" .$per_ID. "\">";
 		elseif (mb_substr($sRedirect, -1, 1) == '&')
-			echo "<a onclick=\"saveScrollCoordinates()\"
-					href=\"" .$sRedirect. "AddToPeopleCart=" .$per_ID. "\">";
+			echo "<a href=\"" .$sRedirect. "AddToPeopleCart=" .$per_ID. "\">";
 		else
-			echo "<a onclick=\"saveScrollCoordinates()\"
-					href=\"" .$sRedirect. "&amp;AddToPeopleCart=" .$per_ID. "\">";
+			echo "<a href=\"" .$sRedirect. "&amp;AddToPeopleCart=" .$per_ID. "\">";
 
 		echo gettext("Add to Cart") . "</a>";
 	} else {
 		// Remove from cart option
 		if (mb_substr($sRedirect, -1, 1) == '?')
-			echo "<a onclick=\"saveScrollCoordinates()\"
-					href=\"" .$sRedirect. "RemoveFromPeopleCart=" .$per_ID. "\">";
+			echo "<a href=\"" .$sRedirect. "RemoveFromPeopleCart=" .$per_ID. "\">";
 		elseif (mb_substr($sRedirect, -1, 1) == '&')
-			echo "<a onclick=\"saveScrollCoordinates()\"
-					href=\"" .$sRedirect. "RemoveFromPeopleCart=" .$per_ID. "\">";
+			echo "<a href=\"" .$sRedirect. "RemoveFromPeopleCart=" .$per_ID. "\">";
 		else
-			echo "<a onclick=\"saveScrollCoordinates()\"
-					href=\"" .$sRedirect. "&amp;RemoveFromPeopleCart=" .$per_ID. "\">";
+			echo "<a href=\"" .$sRedirect. "&amp;RemoveFromPeopleCart=" .$per_ID. "\">";
 
 		echo gettext("Remove") . "</a>";
 	}
