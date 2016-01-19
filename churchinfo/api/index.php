@@ -14,7 +14,7 @@ require_once "../service/PersonService.php";
 require_once "../service/FamilyService.php";
 require_once "../service/DataSeedService.php";
 require_once '../vendor/slim/slim/Slim/Slim.php';
-
+require_once '../service/SystemService.php';
 use Slim\Slim;
 
 Slim::registerAutoloader();
@@ -40,33 +40,33 @@ $app->container->singleton('SystemService', function () {
 
 
 $app->group('/database', function () use ($app) {
-    
-    $app->post('/backup', function () use ($app) {
+    $systemService = $app->SystemService;
+    $app->post('/backup', function () use ($app, $systemService) {
         try {
             $request = $app->request();
             $body = $request->getBody();
             $input = json_decode($body);
-            $backup = $app->SystemService->getDatabaseBackup($input);
+            $backup = $systemService->getDatabaseBackup($input);
             echo json_encode($backup);
         } catch (Exception $e) {
              echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
     });
     
-    $app->post('/restore', function () use ($app) {
+    $app->post('/restore', function () use ($app, $systemService) {
         try {
             $request = $app->request();
             $body = $request->getBody();
-            $restore = $app->SystemService->restoreDatabaseFromBackup();
+            $restore = $systemService->restoreDatabaseFromBackup();
             echo json_encode($restore);
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
     });
     
-    $app->get('/download/:filename',function ($filename) use($app) {
+    $app->get('/download/:filename',function ($filename) use($app, $systemService) {
         try {
-                $app->SystemService->download($filename);
+                $systemService->download($filename);
             } catch (Exception $e) {
                 echo '{"error":{"text":' . $e->getMessage() . '}}';
             }
