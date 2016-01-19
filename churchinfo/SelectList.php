@@ -950,7 +950,6 @@ echo "</select></td>";
 echo "<td>" . gettext("Cart") . "</td>";
 
 if ($iMode == 1) {
-	echo "<td>" . gettext("vCard") . "</td>";
 	echo "<td>" . gettext("Printable Record") . "</td>";
 } else {
 	echo "<td>" . gettext("Assign") . "</td>";
@@ -1092,8 +1091,6 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 	}
 
 	if ($iMode == 1) {
-		echo "<td><a href=\"VCardCreate.php?PersonID=" .$per_ID. "\">";
-		echo gettext("Create vCard") . "</a></td>";
 		echo "<td><a href=\"PrintView.php?PersonID=" .$per_ID. "\">";
 		echo gettext("Print Page") . "</a></td>";
 	} else {
