@@ -220,15 +220,15 @@ require "Include/Header.php";
 if($sMode == 'person')
 {
 	if ($bIsUser) {
-		echo "<p class=\"LargeText\">" . gettext("Sorry, this person is a user.  An administrator must remove their user status before they may be deleted from the database.") . "<br><br>";
+		echo "<p class=\"callout callout-danger\">" . gettext("Sorry, this person is a user.  An administrator must remove their user status before they may be deleted from the database.") . "<br><br>";
 		echo "<a href=\"PersonView.php?PersonID=" . $iPersonID . "\">" . gettext("Return to Person View")."</a></p>";
 	}	else {
-		echo "<div class=\"alert alert-block alert-danger fade in\">";
-		echo "<h3>".gettext("Please confirm deletion of:") ." <strong>" . $per_FirstName . " " . $per_LastName. "</strong></h3>";
-		echo "<p>";
-		echo "<a class=\"btn btn-danger\" href=\"SelectDelete.php?mode=person&PersonID=" . $iPersonID . "&Confirmed=Yes\">" . gettext("Yes, delete this record") . "</a>" ;
-		echo "<a class=\"btn btn-info\" href=\"PersonView.php?PersonID=" . $iPersonID . "\">" . gettext("No, cancel this deletion") . "</a></h2></p>";
+		echo "<div class=\"callout callout-warning\">";
+		echo gettext("Please confirm deletion of:") ." <strong>" . $per_FirstName . " " . $per_LastName. "</strong>";
 		echo gettext(" (This action CANNOT be undone!)"). "<br/>";
+		echo "</div><p class='text-center'>";
+		echo "<a class=\"btn btn-danger\" href=\"SelectDelete.php?mode=person&PersonID=" . $iPersonID . "&Confirmed=Yes\">" . gettext("Yes, delete this record") . "</a> " ;
+		echo "<a class=\"btn btn-info\" href=\"PersonView.php?PersonID=" . $iPersonID . "\">" . gettext("No, cancel this deletion") . "</a></h2></p>";
 		echo "</p></div>";
 	}
 } else {
@@ -368,7 +368,7 @@ if($sMode == 'person')
 	} else {
 		// No Donations from family.  Normal delete confirmation
 		echo $DonationMessage;
-		echo "<p class='callout callout-danger'><b>" . gettext("Please confirm deletion of this family record:") . "</b><br/>";
+		echo "<p class='callout callout-warning'><b>" . gettext("Please confirm deletion of this family record:") . "</b><br/>";
 		echo  gettext("Note: This will also delete all Notes associated with this Family record.");
 		echo  gettext(" (this action cannot be undone)") . "</p>";
 		echo "<div>";
