@@ -37,7 +37,7 @@ $bEmptyCart = (array_key_exists ("EmptyCart", $_GET) && $_GET["EmptyCart"] == "y
                array_key_exists ('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) > 0;
 $bNameError = False;
 
-if (strlen($iGroupID) > 0)
+if ($iGroupID != 0)
 {
     $thisGroup = $groupService->getGroupByID($iGroupID);
 }
@@ -154,10 +154,7 @@ function confirmAdd() {
                         echo "<a class=\"SmallText\" href=\"GroupPropsFormEditor.php?GroupID=$iGroupID\">" . gettext("Edit Group-Specific Properties Form") . "</a>";
                     }
                     else
-                        echo "<input type=\"checkbox\" name=\"UseGroupProps\" value=\"1\" onChange=\"confirmAdd();\">";
-                ?>
-                <label for="EmptyCart"><?php echo gettext("Empty Cart to this Group?"); ?></label>
-                <input type="checkbox" name="EmptyCart" value="1" <?php if ($bEmptyCart) { echo " checked"; } ?>></td>
+                        echo "<input type=\"checkbox\" name=\"UseGroupProps\" value=\"1\" onChange=\"confirmAdd();\">"; ?>
             </div>
             </div>
             <div class="row">    
@@ -200,12 +197,12 @@ if (strlen($iGroupID) > 0)
     <?
   // <!-- -->
   
-  $group = $groupService->getGroupByID($iGroupID);
-  foreach ($group['roles'] as $role)
+
+  foreach ($thisGroup['roles'] as $role)
   {?>
     <tr id="roleRow-<?php echo $role["lst_OptionID"];?>">
         <td><input type="text" class="form-control roleName" id="roleName-<?php echo $role["lst_OptionID"];?>" name="roleName" value="<?php echo $role['lst_OptionName'] ?>"></td>
-        <td><?php if($group['grp_DefaultRole'] == $role['lst_OptionID'])  //If the role we're looking at now is equal to the default role property of the group, then echo the default string.  Otherwise, give the user a button.
+        <td><?php if($thisGroup['grp_DefaultRole'] == $role['lst_OptionID'])  //If the role we're looking at now is equal to the default role property of the group, then echo the default string.  Otherwise, give the user a button.
         {?>
         <strong><i class="fa fa-check"></i> Default</strong>
         <?php } else { ?>
@@ -213,7 +210,7 @@ if (strlen($iGroupID) > 0)
         </td>
         <td><?php echo $role['lst_OptionSequence'];?></td>
         <td><button type="button" id="roleUp-<?php echo $role["lst_OptionID"];?>" class="btn rollOrder" <?php if($role['lst_OptionSequence']==1){echo "disabled";}?>><i class="fa fa-arrow-up"></i></button></td>
-        <td><button type="button" id="roleDown-<?php echo $role["lst_OptionID"];?>" class="btn rollOrder" <?php if($role['lst_OptionSequence']==count($group['roles'])){echo "disabled";}?>><i class="fa fa-arrow-down"></i></button></td>
+        <td><button type="button" id="roleDown-<?php echo $role["lst_OptionID"];?>" class="btn rollOrder" <?php if($role['lst_OptionSequence']==count($thisGroup['roles'])){echo "disabled";}?>><i class="fa fa-arrow-down"></i></button></td>
         <td><button type="button" id="roleDelete-<?php echo $role["lst_OptionID"];?>" class="btn btn-danger deleteRole">Delete</button></td>
         
     </tr>
@@ -237,7 +234,7 @@ else
 ?>
 </div></div>
 <script>
-var defaultRoleID= <?php echo $group['grp_DefaultRole'] ?>;
+var defaultRoleID= <?php echo ($thisGroup['grp_DefaultRole']?  $thisGroup['grp_DefaultRole'] : 1) ?>;
 var dataT = 0;
 $("#selectGroupIDDiv").hide();
 $("#cloneGroupRole").click(function(e){
@@ -299,20 +296,27 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
     $("#groupEditForm").submit(function(e) {
         e.preventDefault();
         var groupID=<?php echo $iGroupID?>;
+        var POSTURL = "/api/groups";
+        if (groupID)
+            POSTURL += "/"+groupID;
+        console.log(POSTURL);
         var formData ={
             "groupName": $("input[name='Name']").val(),
             "description": $("textarea[name='Description']").val(),
-            "groupType" : $("select[name='GroupType'] option:selected").val()
+            "groupType" : $("select[name='GroupType'] option:selected").val(),
+            "useGroupSpecificProperties": $("input[name='UseGroupProps").prop('checked'),
+            "cloneGroupRole" : $("input[name='cloneGroupRole").prop('checked')
+            
         };
         console.log(formData);
         
         $.ajax({
             method: "POST",
-            url:    "/api/groups/"+groupID,
+            url:   POSTURL,
             data:  JSON.stringify(formData)
         }).done(function(data){
            console.log(data);
-           location.reload(); // this shouldn't be necessary
+           window.location.href = "/GroupView.php?GroupID=<?php echo $iGroupID?>";
         });
 
     });

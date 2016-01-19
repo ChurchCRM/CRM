@@ -87,6 +87,16 @@ $app->group('/groups', function () use ($app) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
     });
+    $app->post('/', function () use ($app, $groupService) {
+        try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            echo $groupService->createGroup($input);
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
     
     $app->post('/:groupID/roles/:roleID', function ($groupID,$roleID) use ($app, $groupService) {
         try{
