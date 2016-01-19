@@ -1595,18 +1595,6 @@ function sqlCustomField(&$sSQL, $type, $data, $col_Name, $special)
     }
 }
 
-// Runs the ToolTips
-// By default ToolTips are diplayed, unless turned off in the user settings.
-function addToolTip($ToolTip)
-{
-    global $bToolTipsOn;
-    if ($bToolTipsOn)
-    {
-        $ToolTipText = "onmouseover=\"domTT_activate(this, event, 'content', '" . $ToolTip . "');\"";
-        echo $ToolTipText;
-    }
-}
-
 // Wrapper for number_format that uses the locale information
 // There are three modes: money, integer, and intmoney (whole number money)
 function formatNumber($iNumber,$sMode = 'integer')

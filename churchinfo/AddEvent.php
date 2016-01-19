@@ -44,9 +44,9 @@ $sPageTitle = gettext("Add Church Event(s)");
 
 require "Include/Header.php";
 ?>
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 <?php
 
@@ -232,7 +232,7 @@ $sSQL = "SELECT * FROM `event_types`";
                             <td colspan="3"><textarea name="newEventText" rows="10" cols="80"></textarea></td>
                           </tr>
                           <tr>
-                            <td class="LabelColumn" <?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>>
+                            <td class="LabelColumn">
                               <?php echo gettext("Start Date:"); ?>
                             </td>
                             <td>
@@ -262,7 +262,7 @@ $sSQL = "SELECT * FROM `event_types`";
                             </td>
                           </tr>
                           <tr>
-                            <td class="LabelColumn" <?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>>
+                            <td class="LabelColumn">
                               <?php echo gettext("End Date:"); ?>
                             </td>
                             <td>

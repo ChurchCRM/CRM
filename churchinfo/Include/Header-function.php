@@ -30,7 +30,7 @@
 require_once dirname(__FILE__).'/../service/PersonService.php';
 
 function Header_head_metatag() {
-global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
+global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
 global $sPageTitle, $sURLPath;
 
 $sURLPath = $_SESSION['sURLPath'];
@@ -41,7 +41,7 @@ $sURLPath = $_SESSION['sURLPath'];
 }
 
 function Header_body_scripts() {
-global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage,
+global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage,
 $bLockURL, $URL, $sURLPath;
 
 $sURLPath = $_SESSION['sURLPath'];
@@ -281,17 +281,14 @@ global $security_matrix, $sURLPath;
 }
 
 function Header_body_menu() {
-    global $sLanguage, $bDefectiveBrowser, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
+    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
     global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
 
 	$sURLPath = $_SESSION['sURLPath'];
 
-    $loggedInUserPhoto = (new PersonService())->photo($_SESSION['iUserID']);
+    $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
 
     $MenuFirst = 1;
-
-    if (!$bDefectiveBrowser)
-        echo "<div style=\"position:fixed; top:0; left:0; width: 100%;\">";
 
     if ($sHeader) {
         // Optional Header Code (Entered on General Settings page - sHeader)

@@ -207,7 +207,7 @@ require "Include/Header.php";
 				</tr>
 
 				<tr>
-					<td class="LabelColumn"><?php addToolTip("Select the donor from the list."); ?><?php echo gettext("Donor:"); ?>
+					<td class="LabelColumn"><?php echo gettext("Donor:"); ?>
 					</td>
 					<td class="TextColumn">
 						<select name="Donor">
@@ -254,7 +254,7 @@ require "Include/Header.php";
 			<table cellpadding="3"> <!-- Table for the right side entries -->
 			
 				<tr>
-					<td class="LabelColumn"><?php addToolTip("Select the buyer from the list."); ?><?php echo gettext("Buyer:"); ?></td>
+					<td class="LabelColumn"><?php echo gettext("Buyer:"); ?></td>
 					<td class="TextColumn">
 					    <?php if ($bMultibuy) echo gettext ("Multiple"); else { ?>
 						<select name="Buyer">

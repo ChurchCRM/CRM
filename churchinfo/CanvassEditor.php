@@ -200,7 +200,7 @@ require "Include/Header.php";
 			?>
 
 			<tr>
-				<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("Date:"); ?></td>
+				<td class="LabelColumn"><?php echo gettext("Date:"); ?></td>
 				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active" ><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
 
