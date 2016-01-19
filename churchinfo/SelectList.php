@@ -184,7 +184,6 @@ if ($sMode == 'person') {
 }
 
 $iPerPage = $_SESSION['SearchLimit'];
-$sHeaderFile = "Include/Header.php";
 
 $sLimit5 = '';
 $sLimit10 = '';
@@ -451,10 +450,15 @@ $sSQL = "SELECT DISTINCT LEFT(per_LastName,1) AS letter FROM person_per ".
 		$sJoinExt . " WHERE 1 $sWhereExt ORDER BY letter";
 $rsLetters = RunQuery($sSQL);
 
-require "$sHeaderFile";
-
-echo "<form method=\"get\" action=\"SelectList.php\" name=\"PersonList\">";
-
+require "Include/Header.php";
+?>
+<div class="box box-primary">
+    <div class="box-header">
+        Filter and Cart
+    </div>
+    <div class="box-body">
+<form method="get" action="SelectList.php" name="PersonList">
+<?php
 if ($iMode == 1) {
 	echo "<p align=\"center\">";
 	if ($_SESSION['bAddRecords']) {
@@ -700,6 +704,13 @@ if ($iMode == 1) {
 
 </td></tr>
 </table></form>
+	</div>
+</div>
+<div class="box box-warning">
+	<div class="box-header">
+        Listing
+    </div>
+	<div class="box-body">
 <?php
 
 // Create Sort Links
@@ -1124,10 +1135,14 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 	$sPrevLetter = mb_strtoupper(mb_substr($per_LastName,0,1,"UTF-8"));
 
 } // end of while loop
+?>
 
-//Close the table
-echo "</table></form>\n";
+		</table>
+		</form>
+	</div>
+</div>
 
+<?
 require "Include/Footer.php";
-exit;
+
 ?>
