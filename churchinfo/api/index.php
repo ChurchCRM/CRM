@@ -77,6 +77,16 @@ $app->group('/groups', function () use ($app) {
         }
         
     });
+    $app->post('/:groupID', function ($groupID) use ($app, $groupService) {
+        try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            echo $groupService->updateGroup($groupID,$input);
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
     
     $app->post('/:groupID/roles/:roleID', function ($groupID,$roleID) use ($app, $groupService) {
         try{

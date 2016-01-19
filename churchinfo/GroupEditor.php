@@ -28,192 +28,24 @@ if (!$_SESSION['bManageGroups'])
 
 //Set the page title
 $sPageTitle = gettext("Group Editor");
-
 $groupService = new GroupService();
-
 //Get the GroupID from the querystring
 $iGroupID = 0;
 if (array_key_exists ("GroupID", $_GET))
     $iGroupID = FilterInput($_GET["GroupID"],'int');
-
 $bEmptyCart = (array_key_exists ("EmptyCart", $_GET) && $_GET["EmptyCart"] == "yes") && 
                array_key_exists ('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) > 0;
-
 $bNameError = False;
-$bErrorFlag = False;
-        
-//Is this the second pass?
-if (isset($_POST["GroupSubmit"]))
+
+if (strlen($iGroupID) > 0)
 {
-
-    //Assign everything locally
-    $sName = FilterInputArr($_POST, "Name");
-    $iGroupType = FilterInputArr($_POST, "GroupType",'int');
-    $iDefaultRole = FilterInputArr($_POST,"DefaultRole",'int');
-    $sDescription = FilterInputArr($_POST,"Description");
-    $bUseGroupProps = FilterInputArr($_POST,"UseGroupProps");
-    $cloneGroupRole = FilterInputArr($_POST,"cloneGroupRole",'int');
-    $seedGroupID = FilterInputArr($_POST,"seedGroupID",'int');
-
-    //Did they enter a Name?
-    if (strlen($sName) < 1)
-    {
-        $bNameError = True;
-        $bErrorFlag = True;
-
-    }
-
-    // If no errors, then let's update...
-    if (!$bErrorFlag)
-    {
-        // Are we creating a new group?
-        if (strlen($iGroupID) < 1)
-        {
-            //Get a new Role List ID
-            $sSQL = "SELECT MAX(lst_ID) FROM list_lst";
-            $aTemp = mysql_fetch_array(RunQuery($sSQL));
-            if ($aTemp[0] > 9)
-                $newListID = $aTemp[0] + 1;
-            else
-                $newListID = 10;
-
-            if ($bUseGroupProps)
-                $sUseProps = 'true';
-            else
-                $sUseProps = 'false';
-            $sSQL = "INSERT INTO group_grp (grp_Name, grp_Type, grp_Description, grp_hasSpecialProps, grp_DefaultRole, grp_RoleListID) VALUES ('" . $sName . "', " . $iGroupType . ", '" . $sDescription . "', '" . $sUseProps . "', '1', " . $newListID . ")";
-
-            $bGetKeyBack = True;
-            $bCreateGroupProps = $bUseGroupProps;
-        }
-        else
-        {
-            $sSQLtest = "SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = " . $iGroupID;
-            $rstest = RunQuery($sSQLtest);
-            $aRow = mysql_fetch_array($rstest);
-
-            $bCreateGroupProps = ($aRow[0] == 'false') && $bUseGroupProps;
-            $bDeleteGroupProps = ($aRow[0] == 'true') && !$bUseGroupProps;
-
-            $sSQL = "UPDATE group_grp SET grp_Name='" . $sName . "', grp_Type='" . $iGroupType . "', grp_Description='" . $sDescription . "'";
-
-            if ($bCreateGroupProps)
-                $sSQL .= ", grp_hasSpecialProps = 'true'";
-
-            if ($bDeleteGroupProps)
-            {
-                $sSQL .= ", grp_hasSpecialProps = 'false'";
-                $sSQLp = "DROP TABLE groupprop_" . $iGroupID;
-                RunQuery($sSQLp);
-
-                // need to delete the master index stuff
-                $sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
-                RunQuery($sSQLp);
-            }
-
-            $sSQL .= " WHERE grp_ID = " . $iGroupID;
-            $bGetKeyBack = False;
-        }
-
-        // execute the SQL
-        RunQuery($sSQL);
-
-        //If the user added a new record, we need to key back to the route to the GroupView page
-        if ($bGetKeyBack)
-        {
-            //Get the key back
-            $iGroupID = mysql_insert_id($cnInfoCentral);
-
-            if (($cloneGroupRole) && ($seedGroupID>0)) {
-                $sSQL = "SELECT list_lst.* FROM list_lst, group_grp WHERE group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_id = $seedGroupID ORDER BY list_lst.lst_OptionID";
-                $rsRoleSeed = RunQuery($sSQL);
-                while ($aRow = mysql_fetch_array($rsRoleSeed))
-                {
-                    extract ($aRow);
-                    $useOptionName = mysql_real_escape_string($lst_OptionName);
-                    $sSQL = "INSERT INTO list_lst VALUES ($newListID, $lst_OptionID, $lst_OptionSequence, '$useOptionName')";
-                    RunQuery($sSQL);
-                }
-            } else 
-            {
-                $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'Member')";
-                RunQuery($sSQL);
-            }
-        }
-
-        // Create a table for group-specific properties
-        if ( $bCreateGroupProps )
-        {
-            $sSQLp = "CREATE TABLE groupprop_" . $iGroupID . " (
-                        per_ID mediumint(8) unsigned NOT NULL default '0',
-                        PRIMARY KEY  (per_ID),
-                          UNIQUE KEY per_ID (per_ID)
-                        ) ENGINE=MyISAM;";
-            RunQuery($sSQLp);
-
-            // If this is an existing group, add rows in this table for each member
-            if ( !$bGetKeyBack )
-            {
-                $sSQL = "SELECT per_ID FROM person_per INNER JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID WHERE p2g2r_grp_ID = " . $iGroupID . " ORDER BY per_ID";
-                $rsGroupMembers = RunQuery($sSQL);
-
-                while ($aRow = mysql_fetch_array($rsGroupMembers))
-                {
-                    $sSQLr = "INSERT INTO groupprop_" . $iGroupID . " ( `per_ID` ) VALUES ( '" . $aRow[0] . "' );";
-                    RunQuery($sSQLr);
-                }
-            }
-        }
-
-        if (array_key_exists ("EmptyCart", $_POST) && $_POST["EmptyCart"] && count($_SESSION['aPeopleCart']) > 0)
-        {
-            $iCount = 0;
-            while ($element = each($_SESSION['aPeopleCart'])) {
-                $groupService->AddUsertoGroup($_SESSION['aPeopleCart'][$element['key']],$iGroupID,$iDefaultRole);
-                $iCount += 1;
-            }
-
-            $sGlobalMessage = $iCount . " records(s) successfully added to selected Group.";
-
-            Redirect("GroupEditor.php?GroupID=" . $iGroupID . "&Action=EmptyCart");
-        }
-        else
-        {
-            Redirect("GroupEditor.php?GroupID=$iGroupID");
-        }
-    }
-
-}
-else
-{
-    //FirstPass
-    //Are we editing or adding?
-    if (strlen($iGroupID) > 0)
-    {
-        //Editing....
-        //Get the information on this familyAge Groups for the drop down
-        $sSQL = "SELECT * FROM group_grp WHERE grp_ID = " . $iGroupID;
-        $rsGroup = RunQuery($sSQL);
-        $aRow = mysql_fetch_array($rsGroup);
-
-        $iGroupID = $aRow["grp_ID"];
-        $iGroupType = $aRow["grp_Type"];
-        $iDefaultRole = $aRow["grp_DefaultRole"];
-        $iRoleListID = $aRow["grp_RoleListID"];
-        $sName = $aRow["grp_Name"];
-        $sDescription = $aRow["grp_Description"];
-        $bHasSpecialProps = ($aRow["grp_hasSpecialProps"] == 'true');
-    }
+    $thisGroup = $groupService->getGroupByID($iGroupID);
 }
 
 // Get Group Types for the drop-down
-$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 3 ORDER BY lst_OptionSequence";
-$rsGroupTypes = RunQuery($sSQL);
-
+$rsGroupTypes = $groupService->getGroupTypes();
 //Group Group Role List 
-$sSQL = "SELECT * FROM group_grp WHERE grp_RoleListID > 0 ORDER BY grp_Name";
-$rsGroupRoleSeed = RunQuery($sSQL);
-
+$rsGroupRoleSeed = $groupService->getGroupRoleTemplateGroups();
 require "Include/Header.php";
 
 ?>
@@ -251,12 +83,12 @@ function confirmAdd() {
 <h3 class="box-title">Group Settings</h3>
 </div>
 <div class="box-body">
-    <form name="GroupEdit" method="post" action="GroupEditor.php?GroupID=<?php echo $iGroupID ?>">
+    <form name="GroupEdit" id = "groupEditForm" method="post" action="GroupEditor.php?GroupID=<?php echo $iGroupID ?>">
     <div class="form-group">
             <div class="row">
             <div class="col-xs-4">
                 <label for="Name"><?php echo gettext("Name:"); ?></label>
-                <input class="form-control" type="text" Name="Name" value="<?php echo htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8"); ?>">
+                <input class="form-control" type="text" Name="Name" value="<?php echo htmlentities(stripslashes($thisGroup['grp_Name']),ENT_NOQUOTES, "UTF-8"); ?>">
                     <br>
                     <?php if ($bNameError) echo "<font color=\"red\">" . gettext("You must enter a name.") . "</font>"; ?><br>
             </div>
@@ -264,23 +96,23 @@ function confirmAdd() {
             <div class="row">
             <div class="col-xs-4">
                 <label for="Description"><?php echo gettext("Description:"); ?></label>
-                <textarea  class="form-control" name="Description" cols="40" rows="5"><?php echo htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
+                <textarea  class="form-control" name="Description" cols="40" rows="5"><?php echo htmlentities(stripslashes($thisGroup['grp_Description']),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
             </div>
             </div>
             <div class="row">
             <div class="col-xs-3">
+            
                     <label for="GroupType"><?php echo gettext("Type of Group:"); ?></label>
                     <select class="form-control input-small" name="GroupType">
                         <option value="0"><?php echo gettext("Unassigned"); ?></option>
                         <option value="0">-----------------------</option>
                         <?php
-                        while ($aRow = mysql_fetch_array($rsGroupTypes))
+                        foreach ($rsGroupTypes as $groupType)
                         {
-                            extract($aRow);
-                            echo "<option value=\"" . $lst_OptionID . "\"";
-                            if ($iGroupType == $lst_OptionID)
+                            echo "<option value=\"" . $groupType['lst_OptionID'] . "\"";
+                            if ($thisGroup['grp_Type'] == $groupType['lst_OptionID'])
                                 echo " selected";
-                            echo ">" . $lst_OptionName . "</option>";
+                            echo ">" . $groupType['lst_OptionName']."</option>";
                         }
                         ?>
                     </select>
@@ -302,10 +134,9 @@ function confirmAdd() {
                     <option value="0"><?php gettext("Select a group"); ?></option>
                     
                     <?php
-                        while ($aRow = mysql_fetch_array($rsGroupRoleSeed))
+                       foreach($rsGroupRoleSeed as $groupRoleTemplate)
                         {
-                            extract($aRow);
-                            echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
+                            echo "<option value=\"" . $groupRoleTemplate['grp_ID'] . "\">" . $groupRoleTemplate['grp_Name'] . "</option>";
                         }
                         echo "</select>";
                     ?>
@@ -317,7 +148,7 @@ function confirmAdd() {
             <div class="col-xs-3">
                 <label for="UseGroupProps"><?php echo gettext("Use group-specific properties?"); ?></label>
                 <?php
-                    if ($bHasSpecialProps)
+                    if ($thisGroup['grp_hasSpecialProps'])
                     {
                         echo "<input  type=\"checkbox\" name=\"UseGroupProps\" value=\"1\" onChange=\"confirmDelete();\" checked><br><br>";
                         echo "<a class=\"SmallText\" href=\"GroupPropsFormEditor.php?GroupID=$iGroupID\">" . gettext("Edit Group-Specific Properties Form") . "</a>";
@@ -331,7 +162,7 @@ function confirmAdd() {
             </div>
             <div class="row">    
             <div class="col-xs-3">
-                <input type="submit" class="btn btn-primary" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupSubmit">
+                <input type="submit" id="saveGroup" class="btn btn-primary" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupSubmit">
             </div>
             </div>
         </div>
@@ -465,6 +296,26 @@ function setGroupRoleOrder(groupID,roleID,groupRoleOrder)
 
 function initHandlers()  //funciton to initialize the JQuery button event handlers
 {
+    $("#groupEditForm").submit(function(e) {
+        e.preventDefault();
+        var groupID=<?php echo $iGroupID?>;
+        var formData ={
+            "groupName": $("input[name='Name']").val(),
+            "description": $("textarea[name='Description']").val(),
+            "groupType" : $("select[name='GroupType'] option:selected").val()
+        };
+        console.log(formData);
+        
+        $.ajax({
+            method: "POST",
+            url:    "/api/groups/"+groupID,
+            data:  JSON.stringify(formData)
+        }).done(function(data){
+           console.log(data);
+           location.reload(); // this shouldn't be necessary
+        });
+
+    });
     $("#addNewRole").click(function(e) {
         var newRoleName = $("#newRole").val();
         var groupID=<?php echo $iGroupID?>;
@@ -486,6 +337,7 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
         var node = dataT.row.add(newRow).draw( true ).node();
         $(node).attr("id","roleRow-"+newRole.roleID);
         initHandlers();
+        location.reload(); // this shouldn't be necessary
         });
         
     });

@@ -328,9 +328,10 @@ class GroupService
         return $rsTotalMembers[0];
         
     }
+    
     function getGroupByID($groupID)
     {        
-        $fetch = 'SELECT grp_ID, grp_Type, grp_Name, grp_Description, grp_DefaultRole FROM group_grp  WHERE grp_ID = '.$groupID;
+        $fetch = 'SELECT * FROM group_grp WHERE grp_ID = '.$groupID;
         $result = mysql_query($fetch);
         if (mysql_num_rows($result) == 0) {
             throw new Exception("no such group");
@@ -346,12 +347,185 @@ class GroupService
         
     }
     
+    function getGroupTypes()
+    {
+        $groupTypes = array();
+        // Get Group Types for the drop-down
+        $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 3 ORDER BY lst_OptionSequence";
+        $rsGroupTypes = RunQuery($sSQL);
+        while ($aRow = mysql_fetch_assoc($rsGroupTypes))
+        {
+           array_push($groupTypes,$aRow);
+        }
+        return $groupTypes;
+    }
+    
     function setGroupRoleAsDefault($groupID,$roleID)
     {
         $sSQL = "UPDATE group_grp SET grp_DefaultRole = ".$roleID." WHERE grp_ID = ".$groupID;
 		RunQuery($sSQL);
     }
+
+    function getGroupRoleTemplateGroups()
+    {
+        $templateGroups = array();
+        $sSQL = "SELECT * FROM group_grp WHERE grp_RoleListID > 0 ORDER BY grp_Name";
+        $rsGroupRoleSeed = RunQuery($sSQL);
+        while ($aRow = mysql_fetch_assoc($rsGroupRoleSeed))
+        {
+           array_push($templateGroups,$aRow);
+        }
+        return $templateGroups;
+    }
+
+    function setGroupName($groupID,$groupName)
+    {
+        
+        
+    }
     
+    function updateGroup($groupID,$groupData)
+    {
+
+        //Assign everything locally
+        $thisGroup['grp_Name'] = $groupData->groupName;
+        $thisGroup['grp_type'] = $groupData->groupType;
+        $thisGroup['grp_Description'] = $groupData->description;
+        $bUseGroupProps = FilterInputArr($_POST,"UseGroupProps");
+        $cloneGroupRole = FilterInputArr($_POST,"cloneGroupRole",'int');
+        $seedGroupID = FilterInputArr($_POST,"seedGroupID",'int');
+
+        //Did they enter a Name?
+        if (strlen($thisGroup['grp_Name']) < 1)
+        {
+            throw new Exception("You must enter a name");
+        }
+
+        $sSQL = "UPDATE group_grp SET grp_Name='" . $thisGroup['grp_Name'] . "', grp_Type='" . $thisGroup['grp_type'] . "', grp_Description='" . $thisGroup['grp_Description'] . "'";
+        
+        $sSQL .= " WHERE grp_ID = " . $groupID;
+        // execute the SQL
+        RunQuery($sSQL);
+        return '{"success":"true"}';
+    }
+
+    function copyCartToGroup()
+    {
+        if (array_key_exists ("EmptyCart", $_POST) && $_POST["EmptyCart"] && count($_SESSION['aPeopleCart']) > 0)
+        {
+            $iCount = 0;
+            while ($element = each($_SESSION['aPeopleCart'])) {
+                $groupService->AddUsertoGroup($_SESSION['aPeopleCart'][$element['key']],$iGroupID,$thisGroup['grp_DefaultRole']);
+                $iCount += 1;
+            }
+
+            $sGlobalMessage = $iCount . " records(s) successfully added to selected Group.";
+
+            Redirect("GroupEditor.php?GroupID=" . $iGroupID . "&Action=EmptyCart");
+        }
+        else
+        {
+            Redirect("GroupEditor.php?GroupID=$iGroupID");
+        }
+    }
+   
+    function enableGroupSpecificProperties()
+    {
+         $sSQLtest = "SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = " . $iGroupID;
+        $rstest = RunQuery($sSQLtest);
+        $aRow = mysql_fetch_array($rstest);
+
+        $bCreateGroupProps = ($aRow[0] == 'false') && $bUseGroupProps;
+        $bDeleteGroupProps = ($aRow[0] == 'true') && !$bUseGroupProps;
+
+            if ($bCreateGroupProps)
+                $sSQL .= ", grp_hasSpecialProps = 'true'";
+
+            if ($bDeleteGroupProps)
+            {
+                $sSQL .= ", grp_hasSpecialProps = 'false'";
+                $sSQLp = "DROP TABLE groupprop_" . $iGroupID;
+                RunQuery($sSQLp);
+
+                // need to delete the master index stuff
+                $sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
+                RunQuery($sSQLp);
+            }
+            
+        // Create a table for group-specific properties
+        if ( $bCreateGroupProps )
+        {
+            $sSQLp = "CREATE TABLE groupprop_" . $iGroupID . " (
+                        per_ID mediumint(8) unsigned NOT NULL default '0',
+                        PRIMARY KEY  (per_ID),
+                          UNIQUE KEY per_ID (per_ID)
+                        ) ENGINE=MyISAM;";
+            RunQuery($sSQLp);
+
+            // If this is an existing group, add rows in this table for each member
+            if ( !$bGetKeyBack )
+            {
+                $sSQL = "SELECT per_ID FROM person_per INNER JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID WHERE p2g2r_grp_ID = " . $iGroupID . " ORDER BY per_ID";
+                $rsGroupMembers = RunQuery($sSQL);
+
+                while ($aRow = mysql_fetch_array($rsGroupMembers))
+                {
+                    $sSQLr = "INSERT INTO groupprop_" . $iGroupID . " ( `per_ID` ) VALUES ( '" . $aRow[0] . "' );";
+                    RunQuery($sSQLr);
+                }
+            }
+        }
+
+
+
+    }
+    
+    function addNewGroup()
+    {
+        if (strlen($iGroupID) < 1)
+        {
+            //Get a new Role List ID
+            $sSQL = "SELECT MAX(lst_ID) FROM list_lst";
+            $aTemp = mysql_fetch_array(RunQuery($sSQL));
+            if ($aTemp[0] > 9)
+                $newListID = $aTemp[0] + 1;
+            else
+                $newListID = 10;
+
+            if ($bUseGroupProps)
+                $sUseProps = 'true';
+            else
+                $sUseProps = 'false';
+            $sSQL = "INSERT INTO group_grp (grp_Name, grp_Type, grp_Description, grp_hasSpecialProps, grp_DefaultRole, grp_RoleListID) VALUES ('" . $thisGroup['grp_Name'] . "', " . $thisGroup['grp_type'] . ", '" . $thisGroup['grp_Description'] . "', '" . $sUseProps . "', '1', " . $newListID . ")";
+
+            $bGetKeyBack = True;
+            $bCreateGroupProps = $bUseGroupProps;
+        }
+        
+        //If the user added a new record, we need to key back to the route to the GroupView page
+        if ($bGetKeyBack)
+        {
+            //Get the key back
+            $iGroupID = mysql_insert_id($cnInfoCentral);
+
+            if (($cloneGroupRole) && ($seedGroupID>0)) {
+                $sSQL = "SELECT list_lst.* FROM list_lst, group_grp WHERE group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_id = $seedGroupID ORDER BY list_lst.lst_OptionID";
+                $rsRoleSeed = RunQuery($sSQL);
+                while ($aRow = mysql_fetch_array($rsRoleSeed))
+                {
+                    extract ($aRow);
+                    $useOptionName = mysql_real_escape_string($lst_OptionName);
+                    $sSQL = "INSERT INTO list_lst VALUES ($newListID, $lst_OptionID, $lst_OptionSequence, '$useOptionName')";
+                    RunQuery($sSQL);
+                }
+            } else 
+            {
+                $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'Member')";
+                RunQuery($sSQL);
+            }
+        }
+       
+    }
 }
 
 ?>
