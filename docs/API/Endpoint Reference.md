@@ -16,6 +16,9 @@ ChurchCRM leverages Slim 2.6.2 to provide REST access to the data elements.
   * Returns a the last 10 updated families 
 
 ## Groups
+*  [POST] /api/groups
+  *Creates a new group with groupData in POST Data
+  
 *  [POST] /api/groups/:groupID/removeuser/:userID
   * Removes the user with ID :userID from group with ID :groupID
   
