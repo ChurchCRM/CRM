@@ -23,5 +23,6 @@ $sRootPath = '/churchinfo';
 require "./churchinfo/Include/LoadConfigs.php";
 require "./churchinfo/Include/Functions.php";
 require './churchinfo/service/PersonService.php';
+require './churchinfo/service/SystemService.php';
 spl_autoload_register('loader');
 
