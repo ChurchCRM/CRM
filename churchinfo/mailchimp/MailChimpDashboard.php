@@ -15,7 +15,7 @@
 
 require '../Include/Config.php';
 require '../Include/Functions.php';
-require '../service/MailChimpService.php';
+require '../service/MailchimpService.php';
 
 
 $mailchimp = new MailChimpService();
