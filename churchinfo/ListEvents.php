@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : ListEvents.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  function    : List all Church Events
 *
 *  copyright   : Copyright 2005 Todd Pillars
@@ -15,7 +15,7 @@
 *  Copyright Contributors
 *
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -296,20 +296,20 @@ if ($numRows > 0)
           <input type="hidden" name="EName" value="<?php echo $aEventTitle[$row]; ?>">
           <input type="hidden" name="EDesc" value="<?php echo $aEventDesc[$row]; ?>">
           <input type="hidden" name="EDate" value="<?php echo FormatDate($aEventStartDateTime[$row],1); ?>">
-          <input type="submit" name="Action" value="<?php echo gettext("Attendees(".$attNumRows[$row].")"); ?>" class="icButton" >
+          <input type="submit" name="Action" value="<?php echo gettext("Attendees(".$attNumRows[$row].")"); ?>" class="btn" >
              </form></span>
            </td>           
            
            <td align="center"><span class="SmallText">
              <form name="EditEvent" action="EventEditor.php" method="POST">
                <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
-               <input class="SmallText" type="submit" name="Action" <?php echo 'value="' . gettext("Edit") . '"'; ?> class="icButton">
+               <input class="SmallText" type="submit" name="Action" <?php echo 'value="' . gettext("Edit") . '"'; ?> class="btn">
              </form></span>
            </td>
            <td><span class="SmallText">
              <form name="DeleteEvent" action="ListEvents.php" method="POST">
                <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
-               <input class="SmallText" type="submit" name="Action" value="<?php echo gettext("Delete"); ?>" class="icButton" onClick="return confirm('Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: <?php echo  $aEventID[$row]; ?>')">
+               <input class="SmallText" type="submit" name="Action" value="<?php echo gettext("Delete"); ?>" class="btn" onClick="return confirm('Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: <?php echo  $aEventID[$row]; ?>')">
              </form></span>
           </td>
 
@@ -364,7 +364,7 @@ if ($eType != "All" && $aNumCounts >0){
              <table width="100%">
                 <tr class="<?php echo $sRowClass; ?>">
                  <td align="center" valign="bottom">
-                   <input type="button" Name="Action" <?php echo 'value="' . gettext("Add New Event") . '"'; ?> class="icButton" onclick="javascript:document.location='EventNames.php';">
+                   <input type="button" Name="Action" <?php echo 'value="' . gettext("Add New Event") . '"'; ?> class="btn" onclick="javascript:document.location='EventNames.php';">
                  </td>
                </tr>
              </table>

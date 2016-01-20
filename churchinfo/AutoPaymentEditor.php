@@ -4,7 +4,7 @@
  *  filename    : AutoPaymentEditor.php
  *  copyright   : Copyright 2001, 2002, 2003, 2004 - 2014 Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -245,9 +245,6 @@ if (isset($_POST["Submit"]))
 }
 
 require "Include/Header.php";
-?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<?php
 
 //Get Families for the drop-down
 $sSQL = "SELECT * FROM family_fam ORDER BY fam_Name";
@@ -576,8 +573,8 @@ function CreatePaymentMethod()
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="Submit">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="Submit">
+			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -586,7 +583,7 @@ function CreatePaymentMethod()
 		<table cellpadding="1" align="center">
 
 			<tr>
-				<td class="LabelColumn" <?php addToolTip("If a family member, select the appropriate family from the list. Otherwise, leave this as is."); ?>><?php echo gettext("Family:"); ?></td>
+				<td class="LabelColumn"><?php echo gettext("Family:"); ?></td>
 				<td class="TextColumn">
 					<select name="Family" size="8">
 						<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
@@ -615,8 +612,8 @@ function CreatePaymentMethod()
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"<?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date:"); ?></td>
-				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?php echo $dNextPayDate; ?>" maxlength="10" id="NextPayDate" size="11">&nbsp;<input type="image" onclick="return showCalendar('NextPayDate', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+				<td class="LabelColumn"><?php echo gettext("Date:"); ?></td>
+				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?php echo $dNextPayDate; ?>" maxlength="10" id="NextPayDate" size="11" class="form-control pull-right active"></td>
 			</tr>
 
 			<tr>
@@ -786,7 +783,9 @@ if ($sElectronicTransactionProcessor == "Vanco") {
 		</tr>
 </table>
 </form>
-
+<script>
+$("#NextPayDate").datepicker({format:'yyyy-mm-dd'});
+</script>
 <?php
 require "Include/Footer.php";
 ?>

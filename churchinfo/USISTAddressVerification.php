@@ -2,13 +2,13 @@
 /*******************************************************************************
  *
  *  filename    : ISTAddressVerification.php
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  description : USPS address verification
  *
  *  LICENSE:
  *  (C) Free Software Foundation, Inc.
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
@@ -497,7 +497,7 @@ if ($myISTReturnCode == '4') {
 
         ?>
         <table><tr><td><form method="POST" action="USISTAddressVerification.php">
-        <input type=submit class=icButton name=StopLookup value="Stop Lookups">
+        <input type=submit class=btn name=StopLookup value="Stop Lookups">
         </form></td></tr></table>
         <?php
 
@@ -612,7 +612,7 @@ if ($myISTReturnCode == '4') {
                 if ($iSearchesLeft) {
                 ?>
                 <form method="GET" action="USISTAddressVerification.php">
-                <input type=submit class=icButton name=DoLookup value="Perform Next Lookup">
+                <input type=submit class=btn name=DoLookup value="Perform Next Lookup">
                 </form><br><br>
                 <?php
                 }
@@ -642,19 +642,19 @@ if ($myISTReturnCode == '4') {
     if (!$_GET['DoLookup'] && $iEligible){
     ?>
     <td><form method="GET" action="USISTAddressVerification.php">
-    <input type=submit class=icButton name=DoLookup value="Perform Lookups">
+    <input type=submit class=btn name=DoLookup value="Perform Lookups">
     </form></td>
     <?php } ?>
 
     <?php if ($iUSOkay) { ?>
     <td><form method="POST" action="Reports/USISTAddressReport.php">
-    <input type=submit class=icButton name=MismatchReport value="View Mismatch Report">
+    <input type=submit class=btn name=MismatchReport value="View Mismatch Report">
     </form></td>
     <?php } ?>
 
     <?php if ($iNonUSCount) { ?>
     <td><form method="POST" action="Reports/USISTAddressReport.php">
-    <input type=submit class=icButton name=NonUSReport value="View Non-US Address Report">
+    <input type=submit class=btn name=NonUSReport value="View Non-US Address Report">
     </form></td>
     <?php } ?>
 

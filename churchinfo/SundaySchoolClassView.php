@@ -91,7 +91,7 @@ require "Include/Header.php";
                     <div class="box box-info text-center user-profile-2">
                         <div class="user-profile-inner">
                             <h4 class="white"><?php echo $per_FirstName . " " . $per_LastName ?></h4>
-                            <img src="<?php echo getPersonPhoto($per_ID, $per_Gender, "");?>" class="img-circle profile-avatar" alt="User avatar">
+                            <img src="<?php echo getPersonPhoto($per_ID);?>" class="img-circle profile-avatar" alt="User avatar">
                             <a href="mailto:<?php echo $per_Email ?>" type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</a>
                             <a href="PersonView.php?PersonID=<?php echo $per_ID ?>" type="button" class="btn btn-primary btn-info btn-block"><i class="fa fa-envelope"></i> View Profile</a>
                         </div>
@@ -172,7 +172,7 @@ require "Include/Header.php";
                     if ($kidEmail != "")
                         array_push($KidsEmails, "<".$firstName." ".$LastName."> ". $kidEmail);
                     echo "<tr>";
-                        echo "<td><img src='". getPersonPhoto($kidId, $kidGender, 'Child'). "' class=\"img-circle profile-avatar\" hight='30' width='30' > <a href='PersonView.php?PersonID=".$kidId."'>".$firstName.", ". $LastName. "</a></td>";
+                        echo "<td><img src='". getPersonPhoto($kidId). "' class=\"img-circle profile-avatar\" hight='30' width='30' > <a href='PersonView.php?PersonID=".$kidId."'>".$firstName.", ". $LastName. "</a></td>";
                         echo "<td>".$birthDate."</td>";
                         echo "<td>".FormatAge($birthMonth,$birthDay, $birthYear, "")."</td>";
                         echo "<td>".$kidEmail."</td>";
@@ -257,18 +257,18 @@ function implodeUnique($array, $withQuotes) {
     </div><!-- /.modal -->
 
     <!-- FLOT CHARTS -->
-    <script src="<?php echo $sURLPath."/"; ?>js/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
     <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-    <script src="<?php echo $sURLPath."/"; ?>js/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
     <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-    <script src="<?php echo $sURLPath."/"; ?>js/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
+    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-    <script src="<?php echo $sURLPath."/"; ?>js/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
 
-    <script src="<?php echo $sURLPath."/"; ?>js/plugins/select2/select2.js" type="text/javascript"></script>
+    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/plugins/select2/select2.js" type="text/javascript"></script>
 
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/tabletools/2.2.3/css/dataTables.tableTools.css">
-    <script type="text/javascript" language="javascript" src="//cdn.datatables.net/tabletools/2.2.3/js/dataTables.tableTools.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+    <script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {

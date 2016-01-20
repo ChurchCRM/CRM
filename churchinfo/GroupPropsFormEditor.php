@@ -3,13 +3,13 @@
  *
  *  filename    : GroupPropsFormEditor.php
  *  last change : 2003-02-09
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
  *                Copyright 2013 Michael Wilt
  *
  *  function    : Editor for group-specific properties form
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -282,7 +282,7 @@ if ($numRows == 0)
 {
 ?>
 	<center><h2><?php echo gettext("No properties have been added yet"); ?></h2>
-	<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
+	<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
 	</center>
 <?php
 }
@@ -301,9 +301,9 @@ else
 
 		<tr>
 			<td colspan="7" align="center">
-			<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
+			<input type="submit" class="btn" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
 			&nbsp;
-			<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
+			<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
 			</td>
 		</tr>
 
@@ -389,9 +389,9 @@ else
 				<tr>
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
+						<input type="submit" class="btn" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
 						&nbsp;
-						<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
+						<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='GroupView.php?GroupID=<?php echo $iGroupID; ?>';">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -417,7 +417,7 @@ else
 						}
 						echo "</select>";
 					?><BR>
-					<a href="Help.php?page=Types"><?php echo gettext("Help on types.."); ?></a>
+					<a href="http://docs.churchcrm.io/"><?php echo gettext("Help on types.."); ?></a>
 					</td>
 					<td valign="top">
 						<div><?php echo gettext("Name:"); ?></div>
@@ -434,7 +434,7 @@ else
 						&nbsp;
 					</td>
 					<td>
-						<input type="submit" class="icButton" <?php echo 'value="' . gettext("Add New Field") . '"'; ?> Name="AddField">
+						<input type="submit" class="btn" <?php echo 'value="' . gettext("Add New Field") . '"'; ?> Name="AddField">
 					</td>
 					<td width="15%"></td>
 				</tr>

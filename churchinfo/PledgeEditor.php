@@ -3,11 +3,11 @@
  *
  *  filename    : PledgeEditor.php
  *  last change : 2012-06-29
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2012Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -547,15 +547,15 @@ require "Include/Header.php";
 	<tr>
 		<td align="left">
 		<?php if (!$dep_Closed) { ?>
-			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="PledgeSubmit">
-			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"PledgeSubmitAndAdd\">"; } ?>
+			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="PledgeSubmit">
+			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save and Add") . "\" name=\"PledgeSubmitAndAdd\">"; } ?>
 		<?php } ?>
 			<?php if (!$dep_Closed) {
 				$cancelText = "Cancel";
 			} else {
 				$cancelText = "Return";
 			} ?>	
-			<input type="button" class="icButton" value="<?php echo gettext($cancelText); ?>" name="PledgeCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="button" class="btn" value="<?php echo gettext($cancelText); ?>" name="PledgeCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -569,7 +569,7 @@ require "Include/Header.php";
 				<td class="PaymentLabelColumn"><?php echo gettext("Envelope #"); ?></td>
 				<td class="TextColumn"><input type="text" name="Envelope" size=8 id="Envelope" value="<?php echo $iEnvelope; ?>">
 				<?php if (!$dep_Closed) { ?>
-				<input type="submit" class="icButton" value="<?php echo gettext("Find family->"); ?>" name="MatchEnvelope">
+				<input type="submit" class="btn" value="<?php echo gettext("Find family->"); ?>" name="MatchEnvelope">
 				<?php } ?>
 			</td>
 			</tr>
@@ -628,7 +628,7 @@ require "Include/Header.php";
 						} ?>
 					</select>
 					<?php if (!$dep_Closed) { ?>
-					<input type="submit" class="icButton" name="SetFundTypeSelection" value="<-Set">
+					<input type="submit" class="btn" name="SetFundTypeSelection" value="<-Set">
 					<?php } ?>
 				</td>
 			</tr>
@@ -643,14 +643,28 @@ require "Include/Header.php";
 		<td valign="top" align="center">
 		<table cellpadding="2">
 			<tr>
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?><?php addToolTip("Select the pledging family from the list."); ?>><?php echo gettext("Family"); ?></td>
+				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?>><?php echo gettext("Family"); ?></td>
 				<td class="TextColumn">
 
 <script language="javascript" type="text/javascript">
 $(document).ready(function() {
 	$("#FamilyName").autocomplete({
-		source: "../ajax/SearchMembers.php?f=famlist_s",
-		minLength: 3,
+		source: function (request, response) {
+			$.ajax({
+				url: 'api/families/search/'+request.term,
+				dataType: 'json',
+				type: 'GET',
+				success: function (data) {
+					response($.map(data.families, function (item) {
+						return {
+                            value: item.displayName,
+                            id: item.id
+						}
+					}));
+				}
+			})
+		},
+		minLength: 2,
 		select: function(event,ui) {
 			$('[name=FamilyName]').val(ui.item.value);
 			$('[name=FamilyID]:eq(1)').val(ui.item.id);
@@ -659,8 +673,7 @@ $(document).ready(function() {
 });
 </script>
 					<input style='width:350px;' type="text" id="FamilyName" name="FamilyName" value='<?php echo $sFamilyName; ?>' />
-					<input type="hidden" name="FamilyID" value='<?php echo $iFamily; ?>'>
-					</select>
+					<input type="hidden" id="FamilyID" name="FamilyID" value='<?php echo $iFamily; ?>'>
 				</td>
 			</tr>
 
@@ -674,10 +687,10 @@ $(document).ready(function() {
 
 
 			<tr>
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date"); ?></td>
+				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?>><?php echo gettext("Date"); ?></td>
 <?php	if (!$dDate)	$dDate = $dep_Date ?>
 	
-				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="Date" size="11"><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
 
 
@@ -689,7 +702,7 @@ $(document).ready(function() {
 
 				<?php if (!$iSelectedFund and !$dep_Closed) { ?>
 
-				<input type="submit" class="icButton" value="<?php echo gettext("Split to Funds by pledge"); ?>" name="SplitTotal"></td>
+				<input type="submit" class="btn" value="<?php echo gettext("Split to Funds by pledge"); ?>" name="SplitTotal"></td>
 
 			<?php } ?>
 
@@ -742,8 +755,8 @@ $(document).ready(function() {
 
 			<td align="center">
 			<?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
-				<input type="submit" class="icButton" value="<?php echo gettext("find family from check account #"); ?>" name="MatchFamily">
-				<input type="submit" class="icButton" value="<?php echo gettext("Set default check account number for family"); ?>" name="SetDefaultCheck">
+				<input type="submit" class="btn" value="<?php echo gettext("find family from check account #"); ?>" name="MatchFamily">
+				<input type="submit" class="btn" value="<?php echo gettext("Set default check account number for family"); ?>" name="SetDefaultCheck">
 	        <?php } ?>
 			</td>
 		</tr>
@@ -787,6 +800,9 @@ $(document).ready(function() {
 	<?php } ?>
 </table>
 </form>
+<script>
+$("#Date").datepicker({format:'yyyy-mm-dd'});
+</script
 
 <?php
 

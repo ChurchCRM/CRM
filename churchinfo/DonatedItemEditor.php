@@ -3,10 +3,10 @@
  *
  *  filename    : DonatedItemEditor.php
  *  last change : 2009-04-15
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2009 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -184,9 +184,9 @@ require "Include/Header.php";
 <table cellpadding="3" align="center"> <!-- Table for the whole form -->
 	<tr> <!-- Row of buttons across the top -->
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="DonatedItemSubmit">
-			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"icButton\" value=\"" . gettext("Save and Add") . "\" name=\"DonatedItemSubmitAndAdd\">"; } ?>
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="DonatedItemCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DonatedItemSubmit">
+			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save and Add") . "\" name=\"DonatedItemSubmitAndAdd\">"; } ?>
+			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="DonatedItemCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -207,7 +207,7 @@ require "Include/Header.php";
 				</tr>
 
 				<tr>
-					<td class="LabelColumn"><?php addToolTip("Select the donor from the list."); ?><?php echo gettext("Donor:"); ?>
+					<td class="LabelColumn"><?php echo gettext("Donor:"); ?>
 					</td>
 					<td class="TextColumn">
 						<select name="Donor">
@@ -254,7 +254,7 @@ require "Include/Header.php";
 			<table cellpadding="3"> <!-- Table for the right side entries -->
 			
 				<tr>
-					<td class="LabelColumn"><?php addToolTip("Select the buyer from the list."); ?><?php echo gettext("Buyer:"); ?></td>
+					<td class="LabelColumn"><?php echo gettext("Buyer:"); ?></td>
 					<td class="TextColumn">
 					    <?php if ($bMultibuy) echo gettext ("Multiple"); else { ?>
 						<select name="Buyer">
@@ -284,7 +284,7 @@ require "Include/Header.php";
 				<tr>
 					<td class="LabelColumn"><?php echo gettext("Replicate item"); ?></td>
 					<td class="TextColumn"><input type="text" name="NumberCopies" id="NumberCopies" value="0"></td>
-					<td><input type="button" class="icButton" value="<?php echo gettext("Go"); ?>" name="DonatedItemReplicate" onclick="javascript:document.location='DonatedItemReplicate.php?DonatedItemID=<?php echo $iDonatedItemID;?>&Count='+NumberCopies.value"></td>
+					<td><input type="button" class="btn" value="<?php echo gettext("Go"); ?>" name="DonatedItemReplicate" onclick="javascript:document.location='DonatedItemReplicate.php?DonatedItemID=<?php echo $iDonatedItemID;?>&Count='+NumberCopies.value"></td>
 				</tr>
 				
 			</table>

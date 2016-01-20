@@ -3,10 +3,10 @@
  *
  *  filename    : PropertyEditor.php
  *  last change : 2003-01-07
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -181,7 +181,7 @@ require "Include/Header.php";
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="document.location='PropertyList.php?Type=<?php echo $sType; ?>';">
+			<input type="submit" class="btn" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>&nbsp;<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="document.location='PropertyList.php?Type=<?php echo $sType; ?>';">
 		</td>
 	</tr>
 </table>

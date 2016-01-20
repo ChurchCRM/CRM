@@ -3,10 +3,10 @@
  *
  *  filename    : BatchWinnerEntry.php
  *  last change : 2011-04-01
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2011 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -109,8 +109,8 @@ require "Include/Header.php";
 ?>
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Enter Winners"); ?>" name="EnterWinners">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="submit" class="btn" value="<?php echo gettext("Enter Winners"); ?>" name="EnterWinners">
+			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 	</table>

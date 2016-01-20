@@ -3,12 +3,12 @@
  *
  *  filename    : Attendance.php
  *  last change : 2005-09-18
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Todd Pillars
  *
  *  function    : List all Church Events
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -73,7 +73,7 @@ require "Include/Header.php";
 ?>
 <table cellpadding="4" align="center" cellspacing="0" width="100%">
   <tr>
-    <td align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Report Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='ReportList.php';"></td>
+    <td align="center"><input type="button" class="btn" <?php echo 'value="' . gettext("Back to Report Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='ReportList.php';"></td>
   </tr>
 </table>
 <?php
@@ -155,7 +155,7 @@ $tSQL = "SELECT COUNT(per_ID) AS tCount
 $tOpps = RunQuery($tSQL);
 $tNumTotal = mysql_result($tOpps, 0);
 ?>
-               <input type="submit" name="Type" value="<?php echo gettext("Attending Members").' ['.$cNumAttend.']'; ?>" class="icButton">
+               <input type="submit" name="Type" value="<?php echo gettext("Attending Members").' ['.$cNumAttend.']'; ?>" class="btn">
              </form>
            </td>
            <td class="TextColumn">
@@ -166,7 +166,7 @@ $tNumTotal = mysql_result($tOpps, 0);
                <input type="hidden" name="Choice" value="Nonattendees">
 <?php
 ?>
-               <input type="submit" name="Type" value="<?php echo gettext("Non-Attending Members").' ['.($tNumTotal - $cNumAttend).']'; ?>" class="icButton">
+               <input type="submit" name="Type" value="<?php echo gettext("Non-Attending Members").' ['.($tNumTotal - $cNumAttend).']'; ?>" class="btn">
              </form>
            </td>
            <td class="TextColumn">
@@ -182,7 +182,7 @@ $gSQL = "SELECT COUNT(per_ID) AS gCount
 $gOpps = RunQuery($gSQL);
 $gNumGuestAttend = mysql_result($gOpps, 0);
 ?>
-               <input <?php echo ($gNumGuestAttend == 0 ? "type=\"button\"":"type=\"submit\""); ?> name="Type" value="<?php echo gettext("Guests").' ['.$gNumGuestAttend.']'; ?>" class="icButton">
+               <input <?php echo ($gNumGuestAttend == 0 ? "type=\"button\"":"type=\"submit\""); ?> name="Type" value="<?php echo gettext("Guests").' ['.$gNumGuestAttend.']'; ?>" class="btn">
              </form>
            </td>
          </tr>

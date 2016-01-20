@@ -4,7 +4,7 @@
 *  filename    : UserEditor.php
 *  description : form for adding and editing users
 *
-*  http://www.churchdb.org/
+*  http://www.churchcrm.io/
 *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
 * 
 *  Updated 2005-03-19 by Everette L Mills: Updated to remove error that could be created
@@ -16,7 +16,7 @@
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
@@ -221,28 +221,13 @@ if (isset($_POST['save']) && $iPersonID > 0) {
 }
 
 // Style sheet (CSS) file selection options
-function StyleSheetOptions($dirName,$currentStyle)
-{
-    $dir = @opendir($dirName);
-    if ($dir) {
-        while($file = readdir($dir))
-        {
-            if (preg_match("/\.css/",$file))
-            {
-                echo "<option value=\"$file\"";
-                if ($file == $currentStyle)
-                    echo " selected";
-                echo '>' . substr($file,0,-4) . '</option>';
-            }
-        }
-        closedir($dir);
-    } else {
-        foreach ( array ('Style-blue.css', 'Style-green.css', 'Style-purple.css', 'Style-red.css', 'Style.css') as $stylename ) {
-            echo '<option value="'.$stylename.'"';
-            if ($stylename == $currentStyle)
-                echo ' selected';
-            echo '>' . substr($stylename,0,-4) . '</option>';
-        }
+function StyleSheetOptions($currentStyle) {
+
+    foreach ( array ('skin-blue','skin-blue-light','skin-yellow','skin-yellow-light','skin-green','skin-green-light','skin-purple','skin-purple-light','skin-red','skin-red-light','skin-black','skin-black-light') as $stylename ) {
+        echo '<option value="'.$stylename.'"';
+        if ($stylename == $currentStyle)
+            echo ' selected';
+        echo '>' . $stylename . '</option>';
     }
 }
 
@@ -322,8 +307,13 @@ $sPageTitle = gettext('User Editor');
 require 'Include/Header.php';
 
 ?>
-
-<form method="post" action="UserEditor.php">
+<!-- Default box -->
+<div class="box">
+    <div class="box-body">
+        <div class="callout callout-info">
+            <?= gettext('Note: Changes will not take effect until next logon.');?>
+        </div>
+        <form method="post" action="UserEditor.php">
 <input type="hidden" name="Action" value="<?php echo $sAction; ?>">
 <input type="hidden" name="NewUser" value="<?php echo $vNewUser; ?>">
 <?php
@@ -332,10 +322,10 @@ require 'Include/Header.php';
 if ($bShowPersonSelect) {
     //Yes, so display the people drop-down
 ?>
-    <table cellpadding="4" align="center">
+    <table class="table table-hover">
     <tr>
-        <td class="LabelColumn"><?php echo gettext('Person to Make User:'); ?></td>
-        <td class="TextColumn">
+        <td><?php echo gettext('Person to Make User:'); ?></td>
+        <td>
             <select name="PersonID" size="12">
     <?php
     // Loop through all the people
@@ -356,8 +346,8 @@ if ($bShowPersonSelect) {
     <input type="hidden" name="PersonID" value="<?php echo $iPersonID; ?>">
     <table cellpadding="4" align="center">
     <tr>
-        <td class="LabelColumn"><?php echo gettext('User:'); ?></td>
-        <td class="TextColumn"><?php echo $sUser; ?></td>
+        <td><?php echo gettext('User:'); ?></td>
+        <td><?php echo $sUser; ?></td>
     </tr>
 <?php
 }
@@ -369,96 +359,85 @@ if ($bShowPersonSelect) {
         </td>
     </tr><?php } ?>
     <tr>
-        <td class="LabelColumn"><?php echo gettext('Login Name:'); ?></td>
-        <td class="TextColumn"><input type="text" name="UserName" value="<?php echo $sUserName; ?>"></td>
+        <td><?php echo gettext('Login Name:'); ?></td>
+        <td><input type="text" name="UserName" value="<?php echo $sUserName; ?>"></td>
     </tr>
 
     <tr>
-        <td class="LabelColumn"><?php echo gettext('Add Records:'); ?></td>
-        <td class="TextColumn"><input type="checkbox" name="AddRecords" value="1"<?php if ($usr_AddRecords) { echo " checked"; } ?>></td>
+        <td><?php echo gettext('Add Records:'); ?></td>
+        <td><input type="checkbox" name="AddRecords" value="1"<?php if ($usr_AddRecords) { echo " checked"; } ?>></td>
     </tr>
 
     <tr>
-        <td class="LabelColumn"><?php echo gettext('Edit Records:'); ?></td>
-        <td class="TextColumn"><input type="checkbox" name="EditRecords" value="1"<?php if ($usr_EditRecords) { echo " checked"; } ?>></td>
+        <td><?php echo gettext('Edit Records:'); ?></td>
+        <td><input type="checkbox" name="EditRecords" value="1"<?php if ($usr_EditRecords) { echo " checked"; } ?>></td>
     </tr>
 
     <tr>
-        <td class="LabelColumn"><?php echo gettext('Delete Records:'); ?></td>
-        <td class="TextColumn"><input type="checkbox" name="DeleteRecords" value="1"<?php if ($usr_DeleteRecords) { echo ' checked'; } ?>></td>
+        <td><?php echo gettext('Delete Records:'); ?></td>
+        <td><input type="checkbox" name="DeleteRecords" value="1"<?php if ($usr_DeleteRecords) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td class="LabelColumn"><?php echo gettext('Manage Properties and Classifications:'); ?></td>
-        <td class="TextColumn"><input type="checkbox" name="MenuOptions" value="1"<?php if ($usr_MenuOptions) { echo ' checked'; } ?>></td>
+        <td><?php echo gettext('Manage Properties and Classifications:'); ?></td>
+        <td><input type="checkbox" name="MenuOptions" value="1"<?php if ($usr_MenuOptions) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td class="LabelColumn"><?php echo gettext('Manage Groups and Roles:'); ?></td>
-        <td class="TextColumn"><input type="checkbox" name="ManageGroups" value="1"<?php if ($usr_ManageGroups) { echo ' checked'; } ?>></td>
+        <td><?php echo gettext('Manage Groups and Roles:'); ?></td>
+        <td><input type="checkbox" name="ManageGroups" value="1"<?php if ($usr_ManageGroups) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td class="LabelColumn"><?php echo gettext('Manage Donations and Finance:'); ?></td>
-        <td class="TextColumn"><input type="checkbox" name="Finance" value="1"<?php if ($usr_Finance) { echo ' checked'; } ?>></td>
+        <td><?php echo gettext('Manage Donations and Finance:'); ?></td>
+        <td><input type="checkbox" name="Finance" value="1"<?php if ($usr_Finance) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td class="LabelColumn"><?php echo gettext('View, Add and Edit Notes:'); ?></td>
-        <td class="TextColumn"><input type="checkbox" name="Notes" value="1"<?php if ($usr_Notes) { echo ' checked'; } ?>></td>
-    </tr>
-
-<?php /*  removed until 1.3
-    <tr>
-        <td class="LabelColumn"><?php echo gettext("Send, Add and Edit Communications:"); ?></td>
-        <td class="TextColumn"><input type="checkbox" name="Communication" value="1"<?php if ($usr_Communication) { echo " checked"; } ?>></td>
-    </tr>  */ ?>
-
-
-    <tr>
-        <td class="LabelColumn"><?php echo gettext('Edit Self:'); ?></td>
-        <td class="TextColumn"><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?php echo gettext('(Edit own family only.)'); ?></span></td>
+        <td><?php echo gettext('View, Add and Edit Notes:'); ?></td>
+        <td><input type="checkbox" name="Notes" value="1"<?php if ($usr_Notes) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td class="LabelColumn"><?php echo gettext('Canvasser:'); ?></td>
-        <td class="TextColumn"><input type="checkbox" name="Canvasser" value="1"<?php if ($usr_Canvasser) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?php echo gettext('(Canvass volunteer.)'); ?></span></td>
+        <td><?php echo gettext('Edit Self:'); ?></td>
+        <td><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?php echo gettext('(Edit own family only.)'); ?></span></td>
     </tr>
-
     <tr>
-        <td class="LabelColumn"><?php echo gettext('Admin:'); ?></td>
-        <td class="TextColumn"><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?php echo gettext('(Grants all privileges.)'); ?></span></td>
+        <td><?php echo gettext('Canvasser:'); ?></td>
+        <td><input type="checkbox" name="Canvasser" value="1"<?php if ($usr_Canvasser) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?php echo gettext('(Canvass volunteer.)'); ?></span></td>
     </tr>
-
     <tr>
-        <td class="LabelColumn"><?php echo gettext('Style:'); ?></td>
-        <td class="TextColumnWithBottomBorder"><select name="Style"><?php StyleSheetOptions('Include',$usr_Style); ?></select></td>
+        <td><?php echo gettext('Admin:'); ?></td>
+        <td><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?php echo gettext('(Grants all privileges.)'); ?></span></td>
     </tr>
-
     <tr>
-        <td colspan="2"><div align="center"><?php echo gettext('Note: Changes will not take effect until next logon.'); ?></div></td>
-
+        <td><?php echo gettext('Style:'); ?></td>
+        <td class="TextColumnWithBottomBorder"><select name="Style"><?php StyleSheetOptions($usr_Style); ?></select></td>
     </tr>
-
-
     <tr>
         <td colspan="2" align="center">
-        <input type="submit" class="icButton" <?php echo 'value="' . gettext('Save') . '"'; ?> name="save">&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext('Cancel') . '"'; ?> onclick="javascript:document.location='UserList.php';">
+        <input type="submit" class="btn btn-primary" <?php echo 'value="' . gettext('Save') . '"'; ?> name="save">&nbsp;<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext('Cancel') . '"'; ?> onclick="javascript:document.location='UserList.php';">
         </td>
     </tr>
-
 </table>
+    </div>
+    <!-- /.box-body -->
+</div>
+<!-- /.box -->
+<!-- Default box -->
+<div class="box">
+    <div class="box-body box-danger">
+        <div class="callout callout-info">Set Permission True to give this user the ability to change their current value.</div>
+        <table class="table">
+            <tr>
+                <th>Permission</h3></th>
+                <th><?= gettext("Variable name") ?></th>
+                <th>Current Value</h3></th>
+                <th>Notes</th>
+            </tr>
+        <?php
 
-<?php
 
-// Table Headings
-echo '<br><br>';
-echo 'Set Permission True to give this user the ability to change their current value.<br>';
-echo '<table cellpadding="3" align="left">';
-echo "\n".'<tr><td><h3>Permission</h3></td>
-    <td><h3>'. gettext("Variable name") . '</h3></td>
-    <td><h3>Current Value</h3></td>
-    <td><h3>Notes</h3></td></tr>';
 
 //First get default settings, then overwrite with settings from this user 
 
@@ -480,15 +459,6 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
                 $ucfg_tooltip, $ucfg_permission) = $aUserRow;
     }
     
-    // Cancel, Save Buttons every 13 rows
-    if ($r == 13) {
-        echo "\n".'<tr><td>&nbsp;</td>
-            <td><input type="submit" class="icButton" name="save" value="'.gettext('Save Settings').'">
-            <input type="submit" class="icButton" name="cancel" value="' . gettext('Cancel') . '">
-            </td></tr>';
-        $r = 1;
-    }
-
     // Default Permissions
     if ($ucfg_permission=='TRUE'){
         $sel2 = 'SELECTED';
@@ -498,25 +468,25 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
         $sel2 = '';
     }   
     echo "\n<tr>";
-    echo "<td class=\"TextColumnWithBottomBorder\"><select name=\"new_permission[$ucfg_id]\">";
+    echo "<td><select name=\"new_permission[$ucfg_id]\">";
     echo "<option value=\"FALSE\" $sel1>False";
     echo "<option value=\"TRUE\" $sel2>True";
     echo '</select></td>';
     
     // Variable Name & Type
-    echo "<td class=\"LabelColumn\">$ucfg_name</td>";
+    echo "<td>$ucfg_name</td>";
     
     // Current Value
     if ($ucfg_type == 'text') {
-        echo "<td class=\"TextColumnWithBottomBorder\">
+        echo "<td>
             <input type=\"text\" size=\"30\" maxlength=\"255\" name=\"new_value[$ucfg_id]\"
             value=\"".htmlspecialchars($ucfg_value, ENT_QUOTES)."\"></td>";
     } elseif ($ucfg_type == 'textarea') {
-        echo "<td class=\"TextColumnWithBottomBorder\">
+        echo "<td>
             <textarea rows=\"4\" cols=\"30\" name=\"new_value[$ucfg_id]\">"
             .htmlspecialchars($ucfg_value, ENT_QUOTES)."</textarea></td>";
     } elseif ($ucfg_type == 'number' || $ucfg_type == 'date')   {
-        echo "<td class=\"TextColumnWithBottomBorder\"><input type=\"text\" size=\"15\""
+        echo "<td><input type=\"text\" size=\"15\""
         . " maxlength=\"15\" name=\"new_value[$ucfg_id]\" value=\"$ucfg_value\"></td>";
     } elseif ($ucfg_type == 'boolean') {
         if ($ucfg_value){
@@ -526,7 +496,7 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
             $sel1 = 'SELECTED';
             $sel2 = '';
         }   
-        echo "<td class=\"TextColumnWithBottomBorder\"><select name=\"new_value[$ucfg_id]\">";
+        echo "<td><select name=\"new_value[$ucfg_id]\">";
         echo "<option value=\"\" $sel1>False";
         echo "<option value=\"1\" $sel2>True";
         echo '</select></td>';
@@ -540,12 +510,18 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
 }    
 
 // Cancel, Save Buttons
-echo "\n<tr><td>&nbsp;</td>
-    <td><input type=\"submit\" class=\"icButton\" name=\"save\" value=\"" 
-    . gettext("Save Settings") . "\">
-    <input type=\"submit\" class=\"icButton\" name=\"cancel\" value=\"" . gettext("Cancel") . "\">
-    </td></tr></table></form>";
-
-
-require 'Include/Footer.php';
 ?>
+
+    <tr>
+        <td colspan="4" class="text-center">
+            <input type="submit" class="btn btn-primary" name="save" value="Save Settings">
+            <input type="submit" class="btn" name="cancel" value="Cancel">
+        </td>
+    </tr>
+    </table>
+</form>
+    </div>
+    <!-- /.box-body -->
+</div>
+<!-- /.box -->
+<? require 'Include/Footer.php'; ?>

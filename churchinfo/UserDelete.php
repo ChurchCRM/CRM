@@ -5,10 +5,10 @@
  *  last change : 2003-01-07
  *  description : confirms and deletes a user
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -59,14 +59,19 @@ $sPageTitle = gettext("User Delete Confirmation");
 require "Include/Header.php";
 
 ?>
+<!-- Default box -->
+<div class="box box-danger">
+	<div class="box-header with-border">
+<div class="callout callout-danger"> <?php echo gettext("Please confirm removal of user status from:")." <b>" . $sUserName ."</b>"; ?></div>
 
-<p><?php echo gettext("Please confirm removal of user status from:"); ?></p>
 
-<p class="ShadedBox"><?php echo $sUserName; ?></p>
+	<a href="UserDelete.php?Confirmed=Yes&PersonID=<?php echo $iPersonID; ?>" class="btn btn-app btn-warning"><i class="fa fa-trash"></i><?php echo gettext("Delete"); ?></a>
+	<a href="UserList.php" class="btn btn-app"><i class="fa fa-users"></i><?php echo gettext("Cancel"); ?></a>
 
-<p><a href="UserDelete.php?Confirmed=Yes&PersonID=<?php echo $iPersonID; ?>"><?php echo gettext("Yes, delete this record"); ?></a></p>
-
-<p><a href="UserList.php"><?php echo gettext("No, cancel this deletion"); ?></a></p>
+	</div>
+	<!-- /.box-body -->
+</div>
+<!-- /.box -->
 
 <?php
 require "Include/Footer.php";

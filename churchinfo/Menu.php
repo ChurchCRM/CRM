@@ -4,7 +4,7 @@
 *  filename    : Menu.php
 *  description : menu that appears after login, shows login attempts
 *
-*  http://www.churchdb.org/
+*  http://www.churchcrm.io/
 *  Copyright 2001-2002 Phillip Hullquist, Deane Barker, Michael Wilt
 *
 *  Additional Contributors:
@@ -14,7 +14,7 @@
 *  Copyright Contributors
 *
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -26,6 +26,7 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'Include/PersonFunctions.php';
 
 $sSQL = "select * from family_fam order by fam_DateLastEdited desc  LIMIT 10;";
 $rsLastFamilies = RunQuery($sSQL);
@@ -55,33 +56,13 @@ $rsQuickStat = RunQuery($sSQL);
 
 
 // Set the page title
-$sPageTitle = gettext('Welcome to ChurchInfo');
+$sPageTitle = "Welcome to <b>Church</b>CRM";
 
 require 'Include/Header.php';
 ?>
 <!-- this page specific styles -->
-<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/chartjs/Chart.min.js"></script>
 
-
-<div class="row">
-    <div class="col-lg-12 col-md-6 col-sm-4">
-        <div class="box box-solid">
-            <div class="box-body clearfix">
-                <i class="fa fa-search"></i><input type="text" class="search searchPerson" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
-
-                <a href="PersonEditor.php" class="btn btn-primary">
-                    <i class="fa fa-plus-circle fa-md"></i> Add Person
-                </a>
-
-                <a href="FamilyEditor.php" class="btn btn-primary">
-                    <i class="fa fa-plus-circle fa-md"></i> Add Family
-                </a>
-            </div>
-            </header>
-        </div>
-    </div>
-</div>
 <?php while ($row = mysql_fetch_array($rsQuickStat)) { ?>
 <!-- Small boxes (Stat box) -->
 <div class="row">
@@ -168,7 +149,7 @@ require 'Include/Header.php';
         <div class="box box-solid">
             <div class="box-header">
                 <i class="ion ion-person-add"></i>
-                <h3 class="box-title">New Families</h3>
+                <h3 class="box-title">Latest Families</h3>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">
@@ -226,100 +207,141 @@ require 'Include/Header.php';
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="col-lg-6 col-md-6 col-sm-3">
         <div class="box box-solid">
-            <div class="box-header">
-                <i class="fa fa-plus"></i>
-                <h3 class="box-title">New People</h3>
-            </div><!-- /.box-header -->
-            <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
-                        <thead>
-                        <tr>
-                            <th data-field="name">Name</th>
-                            <th data-field="name">Created</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Latest Members</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
                         <?php while ($row = mysql_fetch_array($rsNewPeople)) { ?>
-                            <tr>
-                                <td><a href="PersonView.php?PersonID=<?php echo $row['per_ID'];?>"><?php echo $row['per_FirstName']." ".$row['per_LastName'];?></a></td>
-                                <td><?php echo FormatDate($row['per_DateEntered'], false);?></td>
-                            </tr>
+                        <li>
+                            <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'];?>">
+                            <img src="<?= getPersonPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="100" height="100" /><br/>
+                            <?= $row['per_FirstName']." ".$row['per_LastName'];?></a>
+                            <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false);?></span>
+                        </li>
                         <?php } ?>
-                        </tbody>
-                    </table>
+                    </ul>
+                    <!-- /.users-list -->
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="col-lg-6 col-md-6 col-sm-3">
         <div class="box box-solid">
-            <div class="box-header">
-                <i class="fa fa-check"></i>
-                <h3 class="box-title">Modified People</h3>
-            </div><!-- /.box-header -->
-            <div class="box-body clearfix">
-                <table class="table table-striped table-condensed">
-                    <thead>
-                    <tr>
-                        <th data-field="name">Name</th>
-                        <th data-field="name">Updated</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
-                        <tr>
-                            <td><a href="PersonView.php?PersonID=<?php echo $row['per_ID'];?>"><?php echo $row['per_FirstName']." ".$row['per_LastName'];?></a></td>
-                            <td><?php echo FormatDate($row['per_DateLastEdited'], false);?></td>
-                        </tr>
-                    <?php } ?>
-                    </tbody>
-                </table>
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Updated Members</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
+                        <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
+                            <li>
+                                <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'];?>">
+                                <img src="<?= getPersonPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="100" height="100" /><br/>
+                                <?= $row['per_FirstName']." ".$row['per_LastName'];?></a>
+                                <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false);?></span>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                    <!-- /.users-list -->
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3">
-        <div class="box box-solid">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="box box-info">
             <div class="box-header">
                 <i class="ion ion-android-contacts"></i>
                 <h3 class="box-title">Gender Demographics</h3>
+                <div class="box-tools pull-right">
+                    <div id="gender-donut-legend" class="chart-legend"></div>
+                </div>
             </div><!-- /.box-header -->
-            <div class="main-box-body clearfix">
-                <div id="gender-donut"></div>
+            <div class="box-body">
+                <canvas id="gender-donut" style="height:250px"></canvas>
             </div>
         </div>
     </div>
 </div>
 
 <!-- this page specific inline scripts -->
-<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
 <script>
-    Morris.Donut({
-        element: 'gender-donut',
-        data: [
-            <?php while ($row = mysql_fetch_array($rsAdultsGender)) {
-                if ($row['per_Gender'] == 1 ) {
-                    echo "{label: \"Men\", value: ". $row['numb'] ."},";
-                }
-                if ($row['per_Gender'] == 2 ) {
-                    echo "{label: \"Women\", value: ". $row['numb'] ."},";
-                }
-            }
-            while ($row = mysql_fetch_array($rsKidsGender)) {
+
+    //-------------
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var PieData = [
+        <?php while ($row = mysql_fetch_array($rsAdultsGender)) {
             if ($row['per_Gender'] == 1 ) {
-                    echo "{label: \"Boys\", value: ". $row['numb'] ."},";
-                }
-                if ($row['per_Gender'] == 2 ) {
-                    echo "{label: \"Girls\", value: ". $row['numb'] ."}";
-                }
+                echo "{value: ". $row['numb'] ." , color: \"#003399\", highlight: \"#3366ff\", label: \"Men\" },";
             }
-            ?>
-        ],
-        colors: ['Navy', 'Pink', 'Blue', 'DarkMagenta'],
-        resize: true
-    });
+            if ($row['per_Gender'] == 2 ) {
+                echo "{value: ". $row['numb'] ." , color: \"#9900ff\", highlight: \"#ff66cc\", label: \"Women\"},";
+            }
+        }
+        while ($row = mysql_fetch_array($rsKidsGender)) {
+        if ($row['per_Gender'] == 1 ) {
+                echo "{value: ". $row['numb'] ." , color: \"#3399ff\", highlight: \"#99ccff\", label: \"Boys\"},";
+            }
+            if ($row['per_Gender'] == 2 ) {
+                echo "{value: ". $row['numb'] ." , color: \"#009933\", highlight: \"#99cc00\", label: \"Girls\",}";
+            }
+        }
+        ?>
+    ];
+    var pieOptions = {
+
+        //String - Point label font colour
+        pointLabelFontColor : "#666",
+
+        //Boolean - Whether we should show a stroke on each segment
+        segmentShowStroke: true,
+        //String - The colour of each segment stroke
+        segmentStrokeColor: "#fff",
+        //Number - The width of each segment stroke
+        segmentStrokeWidth: 2,
+        //Number - The percentage of the chart that we cut out of the middle
+        percentageInnerCutout: 50, // This is 0 for Pie charts
+        //Boolean - Whether we animate the rotation of the Doughnut
+        animateRotate: false,
+        //Boolean - whether to make the chart responsive to window resizing
+        responsive: true,
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: true,
+        //String - A legend template
+        legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
+    };
+
+    var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
+    var pieChart = new Chart(pieChartCanvas);
+
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart = pieChart.Doughnut(PieData, pieOptions);
+
+    //then you just need to generate the legend
+    var legend = pieChart.generateLegend();
+
+    //and append it to your page somewhere
+    $('#gender-donut-legend').append(legend);
 </script>
 
 <?php

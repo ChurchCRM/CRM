@@ -3,11 +3,11 @@
  *
  *  filename    : GroupEditor.php
  *  last change : 2003-04-15
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2012 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -215,7 +215,7 @@ require "Include/Header.php";
 
 ?>
 
-<script language="javascript">
+<script type="text/javascript">
 bStatus = false;
 
 function confirmDelete() {
@@ -323,9 +323,9 @@ function confirmAdd() {
 
 		<tr>
 			<td colspan="2" align="center">
-				<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupSubmit">
+				<input type="submit" class="btn" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupSubmit">
 				&nbsp;
-				<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="GroupCancel" onclick="javascript:document.location='<?php
+				<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="GroupCancel" onclick="javascript:document.location='<?php
 				if (strlen($iGroupID) > 0)
 					echo "GroupView.php?GroupID=$iGroupID';\">";
 				else

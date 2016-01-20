@@ -5,12 +5,12 @@
  *  last change : 2007-xx-x
  *  description : Quickly add attendees to an event
  *
- *  http://www.churchdb.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *  Copyright 2005 Todd Pillars
  *  Copyright 2012 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -81,7 +81,7 @@ if (!isset($_POST['EventID']) && !isset($_POST['Verify']) && !isset($_POST['Add'
 	</table>
 	<p align="center">
 	<BR>
-	<input type="submit" name="Submit" value=<?php echo '"' . gettext("Select Event") . '"'; ?> class="icButton">
+	<input type="submit" name="Submit" value=<?php echo '"' . gettext("Select Event") . '"'; ?> class="btn">
 	<BR><BR>--<?php echo gettext("OR"); ?>--<BR><BR>
 	<a href="AddEvent.php"><?php echo gettext("Add New Event"); ?></a>
 	<BR><BR>
@@ -120,9 +120,9 @@ if (isset($_POST["Submit"]) && isset($_POST['EventID']) || isset($_POST['Cancel'
 			</td>
 		<!-- Middle -->
 		  <td width="33%" valign="top" align="center">
-				<input type="submit" class="icButton" <?php echo 'value="' . gettext("Verify") . '"'; ?> Name="Verify" onclick="javascript:document.location='Checkin.php';">
-				<input type="submit" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> name="Exit" onClick="javascript:document.location='Checkin.php';">
-				<input type="button" class="icButton" <?php echo 'value="' . gettext("Add Visitor") . '"'; ?> name="Add" onClick="javascript:document.location='PersonEditor.php';"></td>
+				<input type="submit" class="btn" <?php echo 'value="' . gettext("Verify") . '"'; ?> Name="Verify" onclick="javascript:document.location='Checkin.php';">
+				<input type="submit" class="btn" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> name="Exit" onClick="javascript:document.location='Checkin.php';">
+				<input type="button" class="btn" <?php echo 'value="' . gettext("Add Visitor") . '"'; ?> name="Add" onClick="javascript:document.location='PersonEditor.php';"></td>
 		<!-- Left Side -->
 			<td width="33%" valign="top" align="left">
 				<span class="SmallText"><input type="textbox" class="textbox" name="adult">
@@ -180,9 +180,9 @@ if (isset($_POST["EventID"]) && isset($_POST['Verify']) && isset($_POST['child']
 				</td>
 			  </tr>
 			  <tr>
-				<td  align="center"><input type="submit" class="icButton" <?php echo 'value="' . gettext("Cancel") . '"'; ?> name="Cancel" onClick="javascript:document.location='Checkin.php';"></td>
-				<td  align="center"><input type="submit" class="icButton" <?php echo 'value="' . gettext("CheckIn") . '"'; ?> name="CheckIn" onClick="javascript:document.location='Checkin.php';"></td>
-				<!-- <td  align="center"><input type="submit" class="icButton" <?php echo 'value="' . gettext("CheckOut") . '"'; ?> name="CheckOut" onClick="javascript:document.location='Checkin.php';"></td> -->
+				<td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("Cancel") . '"'; ?> name="Cancel" onClick="javascript:document.location='Checkin.php';"></td>
+				<td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("CheckIn") . '"'; ?> name="CheckIn" onClick="javascript:document.location='Checkin.php';"></td>
+				<!-- <td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("CheckOut") . '"'; ?> name="CheckOut" onClick="javascript:document.location='Checkin.php';"></td> -->
 			  </tr>
 			</table>
 		<!-- right - 25% -->
@@ -237,7 +237,7 @@ if (isset($_POST["EventID"]) && isset($_POST['child']) && (isset($_POST['CheckIn
 ?>
 	<form method="post" action="Checkin.php" name="Checkin">
 	<input type="hidden" name="EventID" value="<?php echo $iEventID ; ?>">
-	<input type="submit" name="Submit" value=<?php echo '"' . gettext("Continue checkin") . '"'; ?> class="icButton">
+	<input type="submit" name="Submit" value=<?php echo '"' . gettext("Continue checkin") . '"'; ?> class="btn">
 	</form> 
   <?php      
 ?>
@@ -285,8 +285,8 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 					</td>
 				  </tr>
 				  <tr>
-					<td  align="center"><input type="submit" class="icButton" <?php echo 'value="' . gettext("Cancel") . '"'; ?> name="Cancel" onClick="javascript:document.location='Checkin.php';"></td>
-					<td  align="center"><input type="submit" class="icButton" <?php echo 'value="' . gettext("Verify CheckOut") . '"'; ?> name="VerifyCheck" onClick="javascript:document.location='Checkin.php';"></td>
+					<td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("Cancel") . '"'; ?> name="Cancel" onClick="javascript:document.location='Checkin.php';"></td>
+					<td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("Verify CheckOut") . '"'; ?> name="VerifyCheck" onClick="javascript:document.location='Checkin.php';"></td>
 				  </tr>
 				</table>
 			<!-- right - 25% -->
@@ -338,9 +338,9 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 					</td>
 				  </tr>
 				  <tr>
-					<td  align="center"><input type="submit" class="icButton" <?php echo 'value="' . gettext("Cancel") . '"'; ?> name="Cancel" onClick="javascript:document.location='Checkin.php';"></td>
-					<!-- <td  align="center"><input type="submit" class="icButton" <?php echo 'value="' . gettext("CheckIn") . '"'; ?> name="CheckIn" onClick="javascript:document.location='Checkin.php';"></td> -->
-					<td  align="center"><input type="submit" class="icButton" <?php echo 'value="' . gettext("Finalize CheckOut") . '"'; ?> name="VerifyCheckOut" onClick="javascript:document.location='Checkin.php';"></td>
+					<td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("Cancel") . '"'; ?> name="Cancel" onClick="javascript:document.location='Checkin.php';"></td>
+					<!-- <td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("CheckIn") . '"'; ?> name="CheckIn" onClick="javascript:document.location='Checkin.php';"></td> -->
+					<td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("Finalize CheckOut") . '"'; ?> name="VerifyCheckOut" onClick="javascript:document.location='Checkin.php';"></td>
 				  </tr>
 				</table>
 			<!-- right - 25% -->
@@ -438,7 +438,7 @@ if (isset ($_POST["EventID"]) ) {
 		    <form method="POST" action="Checkin.php" name="DeletePersonFromEvent">
 			  <input type="hidden" name="child" value="<?php echo $person_id; ?>">
 			  <input type="hidden" name="EventID" value="<?php echo $EventID; ?>">
-			  <input type="submit" name="Action" value="<?php echo gettext("Checkout"); ?>" class="icbutton" >
+			  <input type="submit" name="Action" value="<?php echo gettext("Checkout"); ?>" class="btn" >
 			</form>
 		 </td>  
 		</tr>
@@ -457,8 +457,6 @@ if (isset ($_POST["EventID"]) ) {
 <?php require "Include/Footer.php"; 
 
 function loadperson($iPersonID){
-	global $bDefectiveBrowser;
-	
 	if ($iPersonID == 0)
 		return;
 	
@@ -620,11 +618,7 @@ function loadperson($iPersonID){
 				}
 */
 		} else {
-			// Some old / M$ browsers can't handle PNG's correctly.
-			if ($bDefectiveBrowser)
-				echo '<img border="0" src="Images/NoPhoto.gif"><br><br><br>';
-			else
-				echo '<img border="0" src="Images/NoPhoto.png"><br><br><br>';
+			echo '<img border="0" src="Images/NoPhoto.png"><br><br><br>';
 /*
 			if ($bOkToEdit) {
 				if (isset($PhotoError))

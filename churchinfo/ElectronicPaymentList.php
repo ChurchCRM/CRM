@@ -5,10 +5,10 @@
  *  last change : 2014-11-29
  *  description : displays a list of all automatic payment records
  *
- *  http://www.churchdb.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2014 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -36,8 +36,8 @@ $sPageTitle = gettext("Electronic Payment Listing");
 require "Include/Header.php";
 ?>
 
-<script>
-function ConfirmDeleteAutoPayment (AutID)
+<script language="javascript">
+	function ConfirmDeleteAutoPayment (AutID)
 {
 	var famName = document.getElementById("FamName"+AutID).innerHTML;
 	var r = confirm("Delete automatic payment for "+famName);
@@ -175,8 +175,8 @@ function CreatePaymentMethodsForChecked()
 <?php } ?>
 </script>
 
-<script>
-function toggle(source, groupName) {
+<script language="javascript">
+	function toggle(source, groupName) {
 	  var checkboxes = document.getElementsByName(groupName);
 	  for(var i=0, n=checkboxes.length;i<n;i++) {
 	    checkboxes[i].checked = source.checked;

@@ -3,12 +3,12 @@
  *
  *  filename    : EventNames.php
  *  last change : 2005-09-10
- *  website     : http://www.terralabs.com
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Todd Pillars
  *
  *  function    : List all Church Events
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -44,7 +44,7 @@ if ( answer )
 
 <table width="100%" align="center" cellpadding="4" cellspacing="0">
   <tr>
-    <td align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
+    <td align="center"><input type="button" class="btn" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
   </tr>
 </table>
 <?php
@@ -266,7 +266,7 @@ if ($numRows > 0)
               <?php echo gettext("Total,"); ?><span class="SmallText"><?php echo gettext("[Every event type includes a Total count]"); ?></span>
               <input class="SmallText" type="Text" name="newEvtTypeCntLst" value="<?php echo $cCountList[$row]; ?>" Maxlength="50" id="nETCL" size="30"><br><span class="SmallText"><?php echo gettext("[enter a list of the attendance counts you want to include with this event. <br> Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children]"); ?></span</td>
               <td colspan="2" align="center" valign="bottom">
-              <input type="submit" Name="Action" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> class="icButton">
+              <input type="submit" Name="Action" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> class="btn">
               </td>
               </form>
               </tr>
@@ -280,19 +280,19 @@ if ($numRows > 0)
               <td class="TextColumn" align="center">
                   <form name="ProcessEventType" action="EventEditor.php" method="POST">
                   <input type="hidden" name="EN_tyid" value="<?php echo $aTypeID[$row]; ?>">
-                  <input type="submit" name="Action" value="<?php echo gettext("Create=>Event"); ?>" class="icButton")">
+                  <input type="submit" name="Action" value="<?php echo gettext("Create=>Event"); ?>" class="btn")">
                 </form> 
               </td>
               <td class="TextColumn" align="center">
                   <form name="ProcessEventType" action="EditEventTypes.php" method="POST">
                   <input type="hidden" name="EN_tyid" value="<?php echo $aTypeID[$row]; ?>">
-                  <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("Edit"); ?>" class="icButton")">
+                  <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("Edit"); ?>" class="btn")">
                 </form> 
               </td>
               <td class="TextColumn" align="center">
                 <form name="ProcessEventType" action="EventNames.php" method="POST">
                   <input type="hidden" name="theID" value="<?php echo $aTypeID[$row]; ?>">
-                  <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("Delete"); ?>" class="icButton" onClick="return confirm('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: <?php echo  $aTypeID[$row]; ?>')">
+                  <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("Delete"); ?>" class="btn" onClick="return confirm('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: <?php echo  $aTypeID[$row]; ?>')">
                 </form>
               </td>
               </tr>
@@ -307,7 +307,7 @@ if($editing=='FALSE'){
     <td colspan=8 class="TextColumn" align="center">
     <form name="AddEventNames" action="EventNames.php" method="POST">
     <span class="SmallText"><?php echo gettext("New Event Type"); ?></span>
-    <input type="submit" Name="Action" <?php echo 'value="' . gettext("Add Event Type") . '"'; ?> class="icButton">
+    <input type="submit" Name="Action" <?php echo 'value="' . gettext("Add Event Type") . '"'; ?> class="btn">
     </form>
     </td>
 </tr>

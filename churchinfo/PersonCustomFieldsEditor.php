@@ -3,12 +3,12 @@
  *
  *  filename    : PersonCustomFieldsEditor.php
  *  last change : 2003-03-28
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
  *
  *  function    : Editor for custom person fields
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -26,7 +26,12 @@ if (!$_SESSION['bAdmin'])
 
 $sPageTitle = gettext("Custom Person Fields Editor");
 
-require "Include/Header.php";
+require "Include/Header.php";?>
+
+
+<div class="box box-body">
+
+<?php
 
 $bErrorFlag = false;
 $bNewNameError = false;
@@ -292,7 +297,7 @@ function confirmDeleteField(event) {
 	var answer = confirm (<?php echo "'" . gettext("Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!") . "'"; ?>)
 	if ( answer )
 	{
-		confirm ("Field Deleted");
+        window.location=href="PersonCustomFieldsRowOps.php?Field="+event+"&Action=delete"
 		return true;
 	}
 	event.preventDefault ? event.preventDefault() : event.returnValue = false;
@@ -300,26 +305,25 @@ function confirmDeleteField(event) {
 }
 </script>
 
+<div class="alert alert-warning">
+		<i class="fa fa-ban"></i>
+		<?php echo gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"); ?>
+</div>
 <form method="post" action="PersonCustomFieldsEditor.php" name="PersonCustomFieldsEditor">
 
-<table cellpadding="3" width="75%" align="center">
+<table class="table">
 
 <?php
 if ($numRows == 0)
 {
 ?>
 	<center><h2><?php echo gettext("No custom person fields have been added yet"); ?></h2>
-	<input type="button" class="icButton" value="<?php echo gettext("Exit"); ?>" Name="Exit" onclick="javascript:document.location='Menu.php';">
 	</center>
 <?php
 }
 else
 {
 ?>
-	<tr><td colspan="7">
-	<center><b><?php echo gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"); ?></b></center>
-	</td></tr>
-
 	<tr><td colspan="6">
 	<?php
 	if ( $bErrorFlag ) echo "<span class=\"LargeText\" style=\"color: red;\"><BR>" . gettext("Invalid fields or selections. Changes not saved! Please correct and try again!") . "</span>";
@@ -327,21 +331,12 @@ else
 	</td></tr>
 
 		<tr>
-			<td colspan="7" align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Save Changes"); ?>" Name="SaveChanges">
-			&nbsp;
-			<input type="button" class="icButton" value="<?php echo gettext("Exit"); ?>" Name="Exit" onclick="javascript:document.location='Menu.php';">
-			</td>
-		</tr>
-
-		<tr>
-			<th></th>
-			<th></th>
 			<th><?php echo gettext("Type"); ?></th>
 			<th><?php echo gettext("Name"); ?></th>
 			<th><?php echo gettext("Special option"); ?></th>
 			<th><?php echo gettext("Security Option"); ?></th>
 			<th><?php echo gettext("Person-View Side"); ?></th>
+            <th><?php echo gettext("Delete"); ?></th>
 		</tr>
 
 	<?php
@@ -350,31 +345,17 @@ else
 	{
 		?>
 		<tr>
-			<td class="LabelColumn"><h2><b><?php echo $row ?></b></h2></td>
-
-			<td class="TextColumn" width="5%" nowrap>
-				<?php
-				if ($row != 1)
-					echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
-				if ($row < $numRows)
-					echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
-				?>
-				<a href="PersonCustomFieldsRowOps.php?Field=<?= $aFieldFields[$row] ?>&OrderID=<?= $row ?>&Action=delete" onclick="return confirmDeleteField(event)"><img src="Images/x.gif"></a>
+			<td class="TextColumn">
+                <?php echo $aPropTypes[$aTypeFields[$row]];	?>
 			</td>
-
-			<td class="TextColumn" style="font-size:80%;">
-			<?php echo $aPropTypes[$aTypeFields[$row]];	?>
-			</td>
-
-			<td class="TextColumn" align="center"><input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="35" maxlength="40">
+			<td class="TextColumn" align="center">
+                <input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="35" maxlength="40">
 				<?php
 				if (array_key_exists ($row, $aNameErrors) && $aNameErrors[$row])
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
 				?>
 			</td>
-
 			<td class="TextColumn" align="center">
-
 			<?php
 			if ($aTypeFields[$row] == 9)
 			{
@@ -416,6 +397,18 @@ else
 				<input type="radio" Name="<?php echo $row . "side" ?>" value="0" <?php if (!$aSideFields[$row]) echo " checked" ?>><?php echo gettext("Left"); ?>
 				<input type="radio" Name="<?php echo $row . "side" ?>" value="1" <?php if ($aSideFields[$row]) echo " checked" ?>><?php echo gettext("Right"); ?>
 			</td>
+            <td>
+                <input type="button" class="btn btn-danger" value="<?php echo gettext("delete"); ?>"   name="delete" onclick="return confirmDeleteField(<?php echo "'" . $aFieldFields[$row] . "'"; ?>);")">
+            </td>
+            <td class="TextColumn" width="5%" nowrap>
+				<?php
+				if ($row != 1)
+					echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
+				if ($row < $numRows)
+					echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
+				?>
+				
+			</td>
 		</tr>
 	<?php } ?>
 
@@ -425,9 +418,7 @@ else
 				<tr>
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
-						&nbsp;
-						<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?>" Name="Exit" onclick="javascript:document.location='Menu.php';">
+						<input type="submit" class="btn btn-primary" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -454,7 +445,7 @@ else
 						}
 						echo "</select>";
 					?><BR>
-					<a href="Help.php?page=Types"><?php echo gettext("Help on types.."); ?></a>
+					<a href="http://docs.churchcrm.io/"><?php echo gettext("Help on types.."); ?></a>
 					</td>
 					<td valign="top">
 						<div><?php echo gettext("Name:"); ?></div>
@@ -476,7 +467,7 @@ else
 						<?php echo GetSecurityList($aSecurityGrp, "newFieldSec"); ?>
 					</td>
 					<td>
-						<input type="submit" class="icButton" <?php echo 'value="' . gettext("Add New Field") . '"'; ?> Name="AddField">
+						<input type="submit" class="btn btn-primary" <?php echo 'value="' . gettext("Add New Field") . '"'; ?> Name="AddField">
 					</td>
 					<td width="15%"></td>
 				</tr>
@@ -486,5 +477,7 @@ else
 
 	</table>
 	</form>
+    
+</div>
 
 <?php require "Include/Footer.php"; ?>

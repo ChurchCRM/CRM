@@ -6,10 +6,10 @@
  *  description : Add a person record to a group after selection of group
  *  	and role.  This is a companion script to the Group Assign Helper.
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -137,7 +137,7 @@ function updateGroupRoles(generated_html)
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" value="<?php echo gettext("Add to Group"); ?>">
+<input type="submit" class="btn" name="Submit" value="<?php echo gettext("Add to Group"); ?>">
 <BR><BR>
 </p>
 </form>

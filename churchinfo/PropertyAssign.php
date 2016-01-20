@@ -5,10 +5,10 @@
  *  last change : 2003-06-04
  *  description : property assign
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -189,7 +189,7 @@ require "Include/Header.php";
 <?php } ?>
 </table>
 
-<p align="center"><input type="submit" class="icButton" <?php echo 'value="'; if ($sAction == "add") { echo gettext("Assign"); } else { echo gettext("Update"); } echo '"'; ?> name="Submit"></p>
+<p align="center"><input type="submit" class="btn" <?php echo 'value="'; if ($sAction == "add") { echo gettext("Assign"); } else { echo gettext("Update"); } echo '"'; ?> name="Submit"></p>
 
 </form>
 

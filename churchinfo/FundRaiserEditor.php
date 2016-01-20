@@ -3,10 +3,10 @@
  *
  *  filename    : FundRaiserEditor.php
  *  last change : 2009-04-15
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2009 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -153,15 +153,15 @@ require "Include/Header.php";
 
 	<tr>
 		<td align="center">
-		<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="FundRaiserSubmit">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="FundRaiserCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+		<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="FundRaiserSubmit">
+			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="FundRaiserCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 			<?php
 				if ($iFundRaiserID > 0) {
-					echo "<input type=button class=icButton value=\"".gettext("Add Donated Item")."\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
-					echo "<input type=button class=icButton value=\"".gettext("Generate Catalog")."\" name=GenerateCatalog onclick=\"javascript:document.location='Reports/FRCatalog.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-					echo "<input type=button class=icButton value=\"".gettext("Generate Bid Sheets")."\" name=GenerateBidSheets onclick=\"javascript:document.location='Reports/FRBidSheets.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-					echo "<input type=button class=icButton value=\"".gettext("Generate Certificates")."\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-					echo "<input type=button class=icButton value=\"".gettext("Batch Winner Entry")."\" name=BatchWinnerEntry onclick=\"javascript:document.location='BatchWinnerEntry.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+					echo "<input type=button class=btn value=\"".gettext("Add Donated Item")."\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+					echo "<input type=button class=btn value=\"".gettext("Generate Catalog")."\" name=GenerateCatalog onclick=\"javascript:document.location='Reports/FRCatalog.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+					echo "<input type=button class=btn value=\"".gettext("Generate Bid Sheets")."\" name=GenerateBidSheets onclick=\"javascript:document.location='Reports/FRBidSheets.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+					echo "<input type=button class=btn value=\"".gettext("Generate Certificates")."\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+					echo "<input type=button class=btn value=\"".gettext("Batch Winner Entry")."\" name=BatchWinnerEntry onclick=\"javascript:document.location='BatchWinnerEntry.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
 				}
 			?>
 		</td>
@@ -171,8 +171,8 @@ require "Include/Header.php";
 		<td>
 		<table cellpadding="3">
 			<tr>
-				<td class="LabelColumn"<?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date:"); ?></td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font></td>
+				<td class="LabelColumn"><?php echo gettext("Date:"); ?></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="Date" size="11"><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
 			
 			<tr>
@@ -262,6 +262,11 @@ if ($rsDonatedItems != 0) {
 ?>
 
 </table>
+
+
+<script>
+$("#Date").datepicker({format:'yyyy-mm-dd'});
+</script
 
 <?php
 require "Include/Footer.php";

@@ -3,10 +3,10 @@
  *
  *  filename    : GroupMeeting.php
  *  last change : 2004-11-7
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003, 2004 Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -163,8 +163,8 @@ this group will be added to the meeting as external users of WebCalendar.</p>
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Submit"); ?>" name="Submit">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="submit" class="btn" value="<?php echo gettext("Submit"); ?>" name="Submit">
+			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -182,8 +182,8 @@ this group will be added to the meeting as external users of WebCalendar.</p>
 			</tr>
 	
 			<tr>
-				<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("Date"); ?></td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font></td>
+				<td class="LabelColumn"><?php echo gettext("Date"); ?></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="Date" size="11"><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
 
 			<tr>
@@ -238,7 +238,9 @@ this group will be added to the meeting as external users of WebCalendar.</p>
 		</td>
 	</form>
 </table>
-
+<script>
+$("#Date").datepicker({format:'yyyy-mm-dd'});
+</script>
 <?php
 require "Include/Footer.php";
 ?>

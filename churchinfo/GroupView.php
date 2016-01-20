@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : GroupView.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
 *
 *  Additional Contributors:
@@ -11,7 +11,7 @@
 *
 *  Copyright Contributors
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -376,7 +376,7 @@ if ($sPhoneLink)
         }
 
         echo '</select>';
-        echo '<input type="submit" class="icButton" value="' . gettext('Assign') . '" name="Submit" style="font-size: 8pt;">';
+        echo '<input type="submit" class="btn" value="' . gettext('Assign') . '" name="Submit" style="font-size: 8pt;">';
         echo '</p></form>';
     }
     else

@@ -5,7 +5,7 @@
  *  last change : 2005-03-26
  *  description : form to invoke financial reports
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -60,9 +60,9 @@ if ($sReportType == "") {
 	echo "</td></tr>";
 	// First Pass Cancel, Next Buttons
   	echo "<tr><td>&nbsp;</td>
-		<td><input type=button class=icButton name=Cancel value='".gettext("Cancel")."' 
+		<td><input type=button class=btn name=Cancel value='".gettext("Cancel")."'
 		onclick=\"javascript:document.location='ReportList.php';\">
-		<input type=submit class=icButton name=Submit1 value='" . gettext("Next") . "'>
+		<input type=submit class=btn name=Submit1 value='" . gettext("Next") . "'>
 		</td></tr>
 		</table></form>";
 
@@ -110,7 +110,7 @@ if ($sReportType == "") {
 		$rsClassifications = RunQuery($sSQL);
 		?>
 		<tr>
-				<td class="LabelColumn" <?php addToolTip("Select the appropriate classification. These can be set using the classification manager in admin."); ?>><?php echo gettext("Classification:")."<br></td>";
+				<td class="LabelColumn"><?php echo gettext("Classification:")."<br></td>";
 				echo "<td class=TextColumnWithBottomBorder><div class=SmallText>"
 					.gettext("Use Ctrl Key to select multiple")
 					."</div><select name=classList[] size=6 multiple>";
@@ -171,9 +171,9 @@ if ($sReportType == "") {
 	if ($sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report" || $sReportType == "Zero Givers") {
 		$today = date("Y-m-d");
 		echo "<tr><td class=LabelColumn>".gettext("Report Start Date:")."</td>
-			<td class=TextColumn><input type=text name=DateStart maxlength=10 id=DateStart size=11 value='$today'>&nbsp;<input type=image onclick=\"return showCalendar('DateStart', 'y-mm-dd');\" src=Images/calendar.gif> <span class=SmallText>".gettext("[YYYY-MM-DD]")."</span></td></tr>";
+			<td class=TextColumn><input type=text name=DateStart maxlength=10 id=DateStart size=11 value='$today'></td></tr>";
 		echo "<tr><td class=LabelColumn>".gettext("Report End Date:")."</td>
-			<td class=TextColumn><input type=text name=DateEnd maxlength=10 id=DateEnd size=11 value='$today'>&nbsp;<input type=image onclick=\"return showCalendar('DateEnd', 'y-mm-dd');\" src=Images/calendar.gif> <span class=SmallText>".gettext("[YYYY-MM-DD]")."</span></td></tr>";
+			<td class=TextColumn><input type=text name=DateEnd maxlength=10 id=DateEnd size=11 value='$today'></td></tr>";
 		if ($sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report") {
 			echo "<tr><td class=LabelColumn>".gettext("Apply Report Dates To:")."</td>";
 			echo "<td class=TextColumnWithBottomBorder><input name=datetype type=radio checked value='Deposit'>".gettext("Deposit Date (Default)");
@@ -305,11 +305,18 @@ if ($sReportType == "") {
 	
 	// Back, Next Buttons
 	echo "<tr><td>&nbsp;</td>
-		<td><input type=button class=icButton name=Cancel value='" . gettext("Back") . "' 
+		<td><input type=button class=btn name=Cancel value='" . gettext("Back") . "'
 		onclick=\"javascript:document.location='FinancialReports.php';\">
-		<input type=submit class=icButton name=Submit2 value='" . gettext("Create Report") . "'>
+		<input type=submit class=btn name=Submit2 value='" . gettext("Create Report") . "'>
 		</td></tr></table></form>";
 }
+?>
+<script>
+$("#DateStart").datepicker({format:'yyyy-mm-dd'});
+$("#DateEnd").datepicker({format:'yyyy-mm-dd'});
 
+</script>
+
+<?php
 require "Include/Footer.php";
 ?>

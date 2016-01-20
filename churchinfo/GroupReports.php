@@ -5,11 +5,11 @@
  *  last change : 2003-09-03
  *  description : Detailed reports on group members
  *
- *  http://www.churchdb.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2003 Federico Nebiolo, Chris Gebhardt
  *  Copyright 2004-2012 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -125,8 +125,8 @@ function updateGroupRoles(generated_html)
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Next") . '"'; ?>>
-<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='ReportList.php';">
+<input type="submit" class="btn" name="Submit" <?php echo 'value="' . gettext("Next") . '"'; ?>>
+<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='ReportList.php';">
 </p>
 </form>
 
@@ -184,8 +184,8 @@ $rsPropFields = RunQuery($sSQL);
 
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Create Report") . '"'; ?>>
-<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';">
+<input type="submit" class="btn" name="Submit" <?php echo 'value="' . gettext("Create Report") . '"'; ?>>
+<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';">
 </p>
 </form>
 

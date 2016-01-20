@@ -5,10 +5,10 @@
  *  last change : 2003-10-09
  *  description : Add cart records to a family
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -18,6 +18,7 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Include/PersonFunctions.php";
 
 // Security: User must have add records permission
 if (!$_SESSION['bAddRecords'])
@@ -77,7 +78,7 @@ if (isset($_POST["Submit"]) && count($_SESSION['aPeopleCart']) > 0) {
 		$sEmail = SelectWhichInfo(FilterInput($_POST["Email"]),$per_Email);
 
 		if (strlen($sFamilyName) == 0) {
-			$sError = "<p class=\"MediumLargeText\" align=\"center\" style=\"color:red;\">" . gettext("No family name entered!") . "</p>";
+			$sError = "<p class=\"callout callout-warning\" align=\"center\" style=\"color:red;\">" . gettext("No family name entered!") . "</p>";
 			$bError = true;
 		}
 		else
@@ -127,11 +128,8 @@ require "Include/Header.php";
 
 echo $sError;
 ?>
-<form method="post">
-<p align="center">
-	<input type="submit" class="icButton" name="Submit" value="<?php echo gettext("Add to Family"); ?>">
-</p>
-
+<div class="box">
+    <form method="post">
 <?php
 if (count($_SESSION['aPeopleCart']) > 0)
 {
@@ -156,8 +154,8 @@ if (count($_SESSION['aPeopleCart']) > 0)
 			ORDER BY per_LastName";
 	$rsCartItems = RunQuery($sSQL);
 
-	echo "<table align=\"center\" width=\"25%\" cellpadding=\"4\" cellspacing=\"0\">\n";
-	echo "<tr class=\"TableHeader\">";
+	echo "<table class='table'>";
+	echo "<tr>";
 	echo "<td>&nbsp;</td>";
 	echo "<td><b>" . gettext("Name") . "</b></td>";
 	echo "<td align=\"center\"><b>" . gettext("Assign Role") . "</b></td>";
@@ -171,7 +169,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 		echo "<tr class=\"" . $sRowClass . "\">";
 		echo "<td align=\"center\">" . $count++ . "</td>";
-		echo "<td><a href=\"PersonView.php?PersonID=" . $per_ID . "\">" . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . "</a></td>";
+		echo "<td><img src='". getPersonPhoto($per_ID). "' class='direct-chat-img'> &nbsp <a href=\"PersonView.php?PersonID=" . $per_ID . "\">" . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . "</a></td>";
 
 		echo "<td align=\"center\">";
 		if ($per_fam_ID == 0)
@@ -184,8 +182,9 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 	echo "</table>";
 ?>
-<BR>
-<table align="center">
+    </div>
+    <div class="box">
+<table align="center" class="table table-responsive">
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Add to Family:"); ?></td>
 		<td class="TextColumn">
@@ -215,7 +214,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 	<tr>
 		<td class="LabelColumn"><?php echo gettext("Wedding Date:"); ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="10" id="sel1" size="15">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif">&nbsp;<span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?php echo $dWeddingDate; ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active"><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
 	</tr>
 
 	<tr>
@@ -321,14 +320,19 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" value="<?php echo gettext("Add to Family"); ?>">
+<input type="submit" class="btn" name="Submit" value="<?php echo gettext("Add to Family"); ?>">
 <BR><BR>
 </p>
 </form>
 <?php
 }
 else
-	echo "<p align=\"center\" class=\"LargeText\">" . gettext("Your cart is empty!") . "</p>";
-
+	echo "<p align=\"center\" class='callout callout-warning'>" . gettext("Your cart is empty!") . "</p>";
+?>
+</div>
+<script>
+$("#sel1").datepicker({format:'yyyy-mm-dd'});
+</script>
+<?php
 require "Include/Footer.php";
 ?>

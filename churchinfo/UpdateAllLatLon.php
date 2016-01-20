@@ -3,12 +3,12 @@
  *
  *  filename    : UpdateAllLatLon.php
  *  last change : 2013-02-02
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *
  *  LICENSE:
  *  (C) Free Software Foundation, Inc.
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
@@ -27,8 +27,10 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 require "Include/GeoCoder.php";
-
+$sPageTitle = gettext("Update Latitude & Longitude");
 require "Include/Header.php";
+
+echo '<div class="box box-body">';
 
 // Lookup unknown coodinates first.  To do this set latitude = -99 for
 // every unknown record.
@@ -95,4 +97,9 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     "," . $fam_City . "," . $fam_State . "," . $fam_Zip . "</p>";
 }
 ob_flush ();
+
+echo '</div>';
+
+require "Include/Footer.php";
+
 ?>

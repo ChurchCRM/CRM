@@ -2,14 +2,14 @@
 /*******************************************************************************
 *
 *  filename    : /Include/Functions.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
 *                Copyright 2004-1012 Michael Wilt
 *
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
@@ -24,7 +24,12 @@
 *  This file best viewed in a text editor with tabs stops set to 4 characters
 *
 ******************************************************************************/
-// Initialization common to all ChurchInfo scripts
+// Initialization common to all ChurchCRM scripts
+
+// Set the current version of this PHP file
+// Important!  These must be updated before every software release.
+
+$_SESSION['sSoftwareInstalledVersion'] = '2.0.0';
 
 //
 // Basic security checks:
@@ -1587,18 +1592,6 @@ function sqlCustomField(&$sSQL, $type, $data, $col_Name, $special)
         default:
             $sSQL .= $col_Name . " = '" . $data . "', ";
             break;
-    }
-}
-
-// Runs the ToolTips
-// By default ToolTips are diplayed, unless turned off in the user settings.
-function addToolTip($ToolTip)
-{
-    global $bToolTipsOn;
-    if ($bToolTipsOn)
-    {
-        $ToolTipText = "onmouseover=\"domTT_activate(this, event, 'content', '" . $ToolTip . "');\"";
-        echo $ToolTipText;
     }
 }
 
