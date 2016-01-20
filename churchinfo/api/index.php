@@ -13,7 +13,7 @@ if (!isset($_SESSION['iUserID'])) {
 require_once "../service/PersonService.php";
 require_once "../service/FamilyService.php";
 require_once "../service/DataSeedService.php";
-require_once '../vendor/slim/slim/Slim/Slim.php';
+require_once '../vendor/Slim/Slim/Slim.php';
 
 use Slim\Slim;
 
@@ -159,5 +159,3 @@ function exceptionToJSON($e)
 }
 
 $app->run();
-
-
