@@ -25,8 +25,9 @@ class SystemService {
                 exec($restoreResult->uncompressCommand, $rs1, $returnStatus);
                 $restoreResult->SQLfile = "$restoreResult->backupRoot/ChurchCRM-Database.sql";
                 $restoreQueries = file($restoreResult->SQLfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-                exec("rm -rf $restoreResult->root/Images");
+                exec("rm -rf $restoreResult->root/Images/*");
                 exec("mv -f $restoreResult->backupRoot/Images/* $restoreResult->root/Images");
+                
             }
             else if ($restoreResult->type2 ==  "sql")
             {
