@@ -185,42 +185,7 @@ if (strlen($iGroupID) > 0)
     ?>
     <table class="table" id="groupRoleTable">
 </table>
-    <table class="table" id="roleTable">
-        <thead>
-        <tr>
-            <th>Role Name</th>
-            <th>Make Default</th>
-            <th>Sequence</th>
-            <th>Move Up</th>
-            <th>Move Down</th>
-            <th>Delete</th>
-        </tr>
-        </thead>
-        
-    <?
-  // <!-- -->
-  
-
-  foreach ($thisGroup['roles'] as $role)
-  {?>
-    <tr id="roleRow-<?php echo $role["lst_OptionID"];?>">
-        <td><input type="text" class="form-control roleName" id="roleName-<?php echo $role["lst_OptionID"];?>" name="roleName" value="<?php echo $role['lst_OptionName'] ?>"></td>
-        <td><?php if($thisGroup['grp_DefaultRole'] == $role['lst_OptionID'])  //If the role we're looking at now is equal to the default role property of the group, then echo the default string.  Otherwise, give the user a button.
-        {?>
-        <strong><i class="fa fa-check"></i> Default</strong>
-        <?php } else { ?>
-        <button type="button" id="defaultRole-<?php echo $role["lst_OptionID"];?>" class="btn btn-success defaultRole">Default</button><?php } ?>
-        </td>
-        <td><?php echo $role['lst_OptionSequence'];?></td>
-        <td><button type="button" id="roleUp-<?php echo $role["lst_OptionID"];?>" class="btn rollOrder" <?php if($role['lst_OptionSequence']==1){echo "disabled";}?>><i class="fa fa-arrow-up"></i></button></td>
-        <td><button type="button" id="roleDown-<?php echo $role["lst_OptionID"];?>" class="btn rollOrder" <?php if($role['lst_OptionSequence']==count($thisGroup['roles'])){echo "disabled";}?>><i class="fa fa-arrow-down"></i></button></td>
-        <td><button type="button" id="roleDelete-<?php echo $role["lst_OptionID"];?>" class="btn btn-danger deleteRole">Delete</button></td>
-        
-    </tr>
-  <?php
-  }
-  ?>
-  </table>
+    
   <label for="newRole">New Role: </label><input type="text" class="form-control" id="newRole" name="newRole"><button type="button" id="addNewRole" class="btn btn-primary">Add New Role</button>
   
   
@@ -239,6 +204,8 @@ else
 <script>
 var defaultRoleID= <?php echo ($thisGroup['grp_DefaultRole']?  $thisGroup['grp_DefaultRole'] : 1) ?>;
 var dataT = 0;
+var groupRoleData = <?php echo json_encode($groupService->getGroupRoles($iGroupID)); ?>;
+var roleCount = groupRoleData.length;
 $("#selectGroupIDDiv").hide();
 $("#cloneGroupRole").click(function(e){
     if (e.target.checked)
@@ -253,10 +220,68 @@ $("#cloneGroupRole").click(function(e){
 $("document").ready(function(){
     initHandlers(); // initialize the event handlers when the document is ready.  Don't do it here, since we need to be able to initialize these handlers on the fly in response to user action.
     
-    dataT = $("#roleTable").DataTable({
-        "order":    [[2,"asc"]]
+    dataT =  $("#groupRoleTable").dataTable({
+    data:groupRoleData,
+    columns: [
+        {
+            width: 'auto',
+            title:'Role Name',
+            data:'lst_OptionName',
+            render: function  (data, type, full, meta ) {
+                if ( type === 'display')
+                    return '<input type="text" value="'+data+'">'; 
+                else
+                    return data;
+            }
+        },
+        {
+            width: 'auto',
+            title:'Make Default',
+            render: function  (data, type, full, meta ) {
+                   if (full.lst_OptionID == defaultRoleID)
+                   {
+                       return "<strong><i class=\"fa fa-check\"></i> Default</strong>";
+                   }
+                   else
+                   {
+                       return '<button type="button" id="defaultRole-'+ full.lst_OptionID +'" class="btn btn-success defaultRole">Default</button>';
+                   }
+            }
+        },
+        {
+            width: '200px',
+            title:'Sequence',
+            data:'lst_OptionSequence',
+            className: "dt-body-center",
+            render: function  (data, type, full, meta ) {
+                var sequenceCell = "";
+                if( data != 1 )
+                {
+                    sequenceCell += '<button type="button" id="roleUp-'+full.lst_OptionID+'" class="btn rollOrder"> <i class="fa fa-arrow-up"></i></button>&nbsp;';
+                }
+                sequenceCell += data;
+                console.log(roleCount);
+                if (data != roleCount)
+                {
+                    sequenceCell += '&nbsp;<button type="button" id="roleDown-'+full.lst_OptionID+'" class="btn rollOrder"> <i class="fa fa-arrow-down"></i></button>';
+                }
+                return sequenceCell;
+            }
+        },
+         {
+            width: 'auto',
+            title:'Delete',
+            render: function  (data, type, full, meta ) {
+                return '<button type="button" id="roleDelete-'+full.lst_OptionID+'" class="btn btn-danger deleteRole">Delete</button>';
+                   
+            }
+        },
         
+    ],
+    "order": [[ 3, "asc" ]]
     });
+    
+
     
 });
 
@@ -296,61 +321,9 @@ function setGroupRoleOrder(groupID,roleID,groupRoleOrder)
 
 function initHandlers()  //funciton to initialize the JQuery button event handlers
 {
-    var groupRoleData = <?php echo json_encode($groupService->getGroupRoles($iGroupID)); ?>;
+  
 
-    $("#groupRoleTable").dataTable({
-    data:groupRoleData,
-    columns: [
-        {
-            width: 'auto',
-            title:'Role Name',
-            data:'lst_OptionName',
-            render: function  (data, type, full, meta ) {
-                if ( type === 'display')
-                    return '<input type="text" value="'+data+'">'; 
-                else
-                    return data;
-            }
-        },
-        {
-            width: 'auto',
-            title:'Make Default',
-            render: function  (data, type, full, meta ) {
-                   if (full.lst_OptionID == defaultRoleID)
-                   {
-                       return "<strong><i class=\"fa fa-check\"></i> Default</strong>";
-                   }
-                   else
-                   {
-                       return '<button type="button" id="defaultRole-'+ full.lst_OptionID +'" class="btn btn-success defaultRole">Default</button>';
-                   }
-            }
-        },
-        {
-            width: '200px',
-            title:'Sequence',
-            data:'lst_OptionSequence',
-            render: function  (data, type, full, meta ) {
-                var sequenceCell = "";
-                sequenceCell += '<button type="button" id="roleUp-'+full.lst_OptionID+'" class="btn rollOrder"> <i class="fa fa-arrow-up"></i></button>';
-                sequenceCell += '<span>'+data+'</span>';
-                sequenceCell += '<button type="button" id="roleDown-'+full.lst_OptionID+'" class="btn rollOrder"> <i class="fa fa-arrow-down"></i></button>';
-                return sequenceCell;
-            }
-        },
-         {
-            width: 'auto',
-            title:'Delete',
-            render: function  (data, type, full, meta ) {
-                return '<button type="button" id="roleDelete-'+full.lst_OptionID+'" class="btn btn-danger deleteRole">Delete</button>';
-                   
-            }
-        },
-        
-    ]
-    });
-    
-    $("#groupEditForm").submit(function(e) {
+       $("#groupEditForm").submit(function(e) {
         e.preventDefault();
         var groupID=<?php echo $iGroupID?>;
         var POSTURL = "/api/groups";
