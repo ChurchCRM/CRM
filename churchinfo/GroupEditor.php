@@ -218,9 +218,8 @@ $("#cloneGroupRole").click(function(e){
 });
 
 $("document").ready(function(){
-    initHandlers(); // initialize the event handlers when the document is ready.  Don't do it here, since we need to be able to initialize these handlers on the fly in response to user action.
-    
-    dataT =  $("#groupRoleTable").dataTable({
+
+    dataT =  $("#groupRoleTable").DataTable({
     data:groupRoleData,
     columns: [
         {
@@ -281,32 +280,10 @@ $("document").ready(function(){
     "order": [[ 3, "asc" ]]
     });
     
+    initHandlers(); // initialize the event handlers when the document is ready.  Don't do it here, since we need to be able to initialize these handlers on the fly in response to user action.
 
-    
 });
 
-function configureButtons(roleID,roleSequence,totalRoles)
-{
-   
-   if (roleSequence == 1)
-   {
-        //console.log("setting " +roleID+" to down only");
-        $("#roleUp-"+roleID).prop('disabled',true);
-        $("#roleDown-"+roleID).prop('disabled',false);
-   }
-   else if (roleSequence == totalRoles)
-   {
-        //console.log("setting " +roleID+" to up only");
-        $("#roleDown-"+roleID).prop('disabled',true);
-        $("#roleUp-"+roleID).prop('disabled',false);
-   }
-   else
-   {
-       //console.log("setting " +roleID+" to both");
-       $("#roleUp-"+roleID).prop('disabled',false);
-       $("#roleDown-"+roleID).prop('disabled',false);
-   }
-}
 
 function setGroupRoleOrder(groupID,roleID,groupRoleOrder)
 {
@@ -321,7 +298,6 @@ function setGroupRoleOrder(groupID,roleID,groupRoleOrder)
 
 function initHandlers()  //funciton to initialize the JQuery button event handlers
 {
-  
 
        $("#groupEditForm").submit(function(e) {
         e.preventDefault();
@@ -350,6 +326,7 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
         });
 
     });
+    
     $("#addNewRole").click(function(e) {
         var newRoleName = $("#newRole").val();
         var groupID=<?php echo $iGroupID?>;
@@ -359,19 +336,12 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
             data:  '{"roleName":"'+newRoleName+'"}'
         }).done(function(data){
             var newRole = data.newRole;
-            var newRow=[
-                '<input type="text" class="form-control roleName" id="roleName-'+newRole.roleID+'" name="roleName" value="'+newRole.roleName+'">',
-                '<button type="button" id="defaultRole-'+newRole.roleID+'" class="btn btn-success defaultRole">Default</button>',
-                newRole.sequence,
-                "up",
-                "down",
-                '<button type="button" id="roleDelete-'+newRole.roleID+'" class="btn btn-danger deleteRole">Delete</button>'
-                ];       
-
-        var node = dataT.row.add(newRow).draw( true ).node();
-        $(node).attr("id","roleRow-"+newRole.roleID);
-        initHandlers();
-        location.reload(); // this shouldn't be necessary
+            var newRow={"lst_OptionName":newRole.roleName,"lst_OptionID":newRole.roleID,"lst_OptionSequence":newRole.sequence};
+            roleCount+=1;
+            var node = dataT.row.add(newRow).node();
+            dataT.rows().invalidate().draw(true);
+            initHandlers();
+            //location.reload(); // this shouldn't be necessary
         });
         
     });
@@ -384,7 +354,11 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
             method: "DELETE",
             url:    "/api/groups/"+groupID+"/roles/"+roleID
         }).done(function(data){
-            dataT.row($("#roleRow-"+roleID)).remove().draw(true);
+            
+            dataT.row(function(idx,data,node) { if  (data.lst_OptionID == roleID){return true;} } ).remove();
+            roleCount-=1;
+            dataT.rows().invalidate().draw(true);
+            initHandlers();
         });
     });
     
