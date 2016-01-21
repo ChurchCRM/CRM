@@ -76,7 +76,7 @@ $app->group('/groups', function () use ($app) {
     
     $app->get('/:groupID', function ($groupID) use ($groupService) {
         try{
-            echo $groupService->getGroupJSON($groupService->getGroupByID($groupID));
+            echo $groupService->getGroupJSON($groupService->getGroups($groupID));
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

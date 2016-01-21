@@ -467,6 +467,7 @@ if ($sPhoneLink)
 <!-- START GROUP MEMBERS LISTING for group $iGroupID; -->
 <?
 $personService = new PersonService();
+$groupService = new GroupService();
 
 $sSQL = "SELECT grp_RoleListID,grp_hasSpecialProps FROM group_grp WHERE grp_ID =" . $iGroupID;
 $aTemp = mysql_fetch_array(RunQuery($sSQL));
@@ -474,16 +475,8 @@ $iRoleListID = $aTemp[0];
 
 
 // Main select query
-$sSQL = "SELECT per_ID, per_FirstName, LEFT(per_MiddleName,1) AS per_MiddleName, per_LastName, per_Title, per_Suffix, per_Address1, per_Address2, per_City, per_State, per_Zip, per_CellPhone, per_Country, per_Email, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_CellPhone, fam_Email, lst_OptionName
-            FROM person_per
-            LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
-            LEFT JOIN list_lst ON p2g2r_rle_ID = lst_OptionID AND lst_ID = $iRoleListID
-            LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
-            LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
-        WHERE p2g2r_grp_ID = " . $iGroupID;
+$allMembers = $groupService->getGroupMembers($iGroupID);
 
-
-$sSQL_Result = RunQuery($sSQL);
 ?>
 
 <table class="table" id="membersTable">
@@ -503,7 +496,7 @@ $sSQL_Result = RunQuery($sSQL);
     <tbody>
     <?php
     //Loop through the members
-    while ($aRow = mysql_fetch_array($sSQL_Result))
+    foreach($allMembers as $member)
     {
         $per_Title = "";
         $per_FirstName = "";

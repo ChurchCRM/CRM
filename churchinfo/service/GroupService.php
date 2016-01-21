@@ -1,5 +1,5 @@
 <?php
-
+require_once "PersonService.php";
 
 class GroupService 
 {
@@ -87,19 +87,13 @@ class GroupService
     function search($searchTerm)
     {
         
-        $fetch = 'SELECT grp_ID, grp_Type, grp_Name, grp_Description,  lst_OptionName FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type WHERE grp_Name LIKE \'%' . $searchTerm . '%\' OR  grp_Description LIKE \'%' . $searchTerm . '%\' OR lst_OptionName LIKE \'%'.$searchTerm.'%\'  order by grp_Name LIMIT 15';
+        $fetch = 'SELECT grp_ID FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type WHERE grp_Name LIKE \'%' . $searchTerm . '%\' OR  grp_Description LIKE \'%' . $searchTerm . '%\' OR lst_OptionName LIKE \'%'.$searchTerm.'%\'  order by grp_Name LIMIT 15';
         $result = mysql_query($fetch);
 
         $return = array();
         while ($row = mysql_fetch_array($result)) {
-            $values['id'] = $row['grp_ID'];
-            $values['groupName'] = $row['grp_Name'];
-            $values['displayName'] = $row['grp_Name'];
-            $values['groupType'] = $row['lst_OptionName'];
-            $values['groupDescription'] = $row['grp_Description'];
-            $values['uri'] = $this->getViewURI($row['grp_ID']);
-
-            array_push($return, $values);
+            
+            array_push($return, $this->getGroups($row['grp_ID']));
         }
 
         return $return;
@@ -329,24 +323,6 @@ class GroupService
         
     }
     
-    function getGroupByID($groupID)
-    {        
-        $fetch = 'SELECT * FROM group_grp WHERE grp_ID = '.$groupID;
-        $result = mysql_query($fetch);
-        if (mysql_num_rows($result) == 0) {
-            throw new Exception("no such group");
-		}
-
-        $group = mysql_fetch_assoc($result);
-        $group['defaultRole'] = $this->getGroupDefaultRole($groupID);
-        $group['uri'] = $this->getViewURI($groupID);
-        $group['roles']=$this->getGroupRoles($groupID);
-        $group['totalMembers']=$this->getGroupTotalMembers($groupID);
-
-        return $group;
-        
-    }
-    
     function getGroupTypes()
     {
         $groupTypes = array();
@@ -519,6 +495,95 @@ class GroupService
         
        
     }
+
+    function getGroups($groupIDs = NULL)
+    {       
+        $whereClause ="";
+        if(is_numeric($groupIDs))
+        {
+            $whereClause = "WHERE grp_ID = ".$groupIDs;
+        } 
+        elseif (is_array($groupIDs))
+        {
+            $whereClause = "WHERE grp_ID in (".implode(",",$groupIDs).")";
+        }
+        elseif (is_null($groupIDs))
+        {
+            $whereClause = "";
+        }
+        $fetch = 'SELECT * FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type '.$whereClause. ' ORDER BY grp_Name ';
+        $result = mysql_query($fetch);
+        $return = array();
+        while ($row = mysql_fetch_array($result)) {
+            $values['id'] = $row['grp_ID'];
+            $values['groupName'] = $row['grp_Name'];
+            $values['displayName'] = $row['grp_Name'];
+            $values['grp_Type'] = $row['grp_Type'];
+            $values['groupType'] = $row['lst_OptionName'];
+            $values['groupDescription'] = $row['grp_Description'];
+            $values['uri'] = $this->getViewURI($row['grp_ID']);
+            $values['memberCount'] = $this->getGroupTotalMembers($row['grp_ID']);
+            $values['groupCartStatus'] = $this->checkGroupAgainstCart($row['grp_ID']);
+            $values['defaultRole'] = $this->getGroupDefaultRole($row['grp_ID']);
+            $values['roles']=$this->getGroupRoles($row['grp_ID']);
+            $values['totalMembers']=$this->getGroupTotalMembers($row['grp_ID']);
+            array_push($return, $values);
+        }
+        if (count($return) == 1)
+        {
+            return $return[0];
+        }
+        else
+        {
+            return $return;
+        }
+    }
+
+    function getGroupMembers($groupID)
+    {
+        
+        $members = array();
+        $personService = new PersonService();
+        // Main select query
+        $sSQL = "SELECT * FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = " . $groupID;
+        $result = mysql_query($sSQL);
+        while ($row = mysql_fetch_assoc($result)) 
+        {
+            array_push($members,$personService->getPersonByID($row['p2g2r_per_ID']));
+        }
+        return $members;
+        
+    }
+    function checkGroupAgainstCart($groupID)
+    {
+        $members = $this->getGroupMembers($groupID);
+        //echo "Members: ".count($members);
+        $bNoneInCart = TRUE;
+        $bAllInCart = TRUE;
+        //Loop through the recordset
+        foreach ($members as $member)
+        {
+            if (!isset($_SESSION['aPeopleCart']))
+                $bAllInCart = FALSE; // Cart does not exist.  This person is not in cart.
+            elseif (!in_array($member['per_ID'], $_SESSION['aPeopleCart'], false))
+                $bAllInCart = FALSE; // This person is not in cart.
+            elseif (in_array($member['per_ID'], $_SESSION['aPeopleCart'], false))
+                $bNoneInCart = FALSE; // This person is in the cart
+        }
+
+        if (!$bAllInCart)
+        {
+           //there is at least one person in this group who is not in the cart.  Return false
+           return false;
+        }
+        if (!$bNoneInCart)
+        {
+            //every member of this group is in the cart.  Return true
+            return true;
+        } 
+        return false;
+    }
+    
 }
 
 ?>

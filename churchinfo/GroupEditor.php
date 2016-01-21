@@ -39,7 +39,7 @@ $bNameError = False;
 
 if ($iGroupID != 0)
 {
-    $thisGroup = $groupService->getGroupByID($iGroupID);
+    $thisGroup = $groupService->getGroups($iGroupID);
 }
 
 // Get Group Types for the drop-down
@@ -83,12 +83,13 @@ function confirmAdd() {
 <h3 class="box-title">Group Settings</h3>
 </div>
 <div class="box-body">
+
     <form name="GroupEdit" id = "groupEditForm" method="post" action="GroupEditor.php?GroupID=<?php echo $iGroupID ?>">
     <div class="form-group">
             <div class="row">
             <div class="col-xs-4">
                 <label for="Name"><?php echo gettext("Name:"); ?></label>
-                <input class="form-control" type="text" Name="Name" value="<?php echo htmlentities(stripslashes($thisGroup['grp_Name']),ENT_NOQUOTES, "UTF-8"); ?>">
+                <input class="form-control" type="text" Name="Name" value="<?php echo htmlentities(stripslashes($thisGroup['groupName']),ENT_NOQUOTES, "UTF-8"); ?>">
                     <br>
                     <?php if ($bNameError) echo "<font color=\"red\">" . gettext("You must enter a name.") . "</font>"; ?><br>
             </div>
@@ -96,7 +97,7 @@ function confirmAdd() {
             <div class="row">
             <div class="col-xs-4">
                 <label for="Description"><?php echo gettext("Description:"); ?></label>
-                <textarea  class="form-control" name="Description" cols="40" rows="5"><?php echo htmlentities(stripslashes($thisGroup['grp_Description']),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
+                <textarea  class="form-control" name="Description" cols="40" rows="5"><?php echo htmlentities(stripslashes($thisGroup['groupDescription']),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
             </div>
             </div>
             <div class="row">
@@ -182,6 +183,8 @@ function confirmAdd() {
 if (strlen($iGroupID) > 0)
 {
     ?>
+    <table class="table" id="groupRoleTable">
+</table>
     <table class="table" id="roleTable">
         <thead>
         <tr>
@@ -293,6 +296,60 @@ function setGroupRoleOrder(groupID,roleID,groupRoleOrder)
 
 function initHandlers()  //funciton to initialize the JQuery button event handlers
 {
+    var groupRoleData = <?php echo json_encode($groupService->getGroupRoles($iGroupID)); ?>;
+
+    $("#groupRoleTable").dataTable({
+    data:groupRoleData,
+    columns: [
+        {
+            width: 'auto',
+            title:'Role Name',
+            data:'lst_OptionName',
+            render: function  (data, type, full, meta ) {
+                if ( type === 'display')
+                    return '<input type="text" value="'+data+'">'; 
+                else
+                    return data;
+            }
+        },
+        {
+            width: 'auto',
+            title:'Make Default',
+            render: function  (data, type, full, meta ) {
+                   if (full.lst_OptionID == defaultRoleID)
+                   {
+                       return "<strong><i class=\"fa fa-check\"></i> Default</strong>";
+                   }
+                   else
+                   {
+                       return '<button type="button" id="defaultRole-'+ full.lst_OptionID +'" class="btn btn-success defaultRole">Default</button>';
+                   }
+            }
+        },
+        {
+            width: '200px',
+            title:'Sequence',
+            data:'lst_OptionSequence',
+            render: function  (data, type, full, meta ) {
+                var sequenceCell = "";
+                sequenceCell += '<button type="button" id="roleUp-'+full.lst_OptionID+'" class="btn rollOrder"> <i class="fa fa-arrow-up"></i></button>';
+                sequenceCell += '<span>'+data+'</span>';
+                sequenceCell += '<button type="button" id="roleDown-'+full.lst_OptionID+'" class="btn rollOrder"> <i class="fa fa-arrow-down"></i></button>';
+                return sequenceCell;
+            }
+        },
+         {
+            width: 'auto',
+            title:'Delete',
+            render: function  (data, type, full, meta ) {
+                return '<button type="button" id="roleDelete-'+full.lst_OptionID+'" class="btn btn-danger deleteRole">Delete</button>';
+                   
+            }
+        },
+        
+    ]
+    });
+    
     $("#groupEditForm").submit(function(e) {
         e.preventDefault();
         var groupID=<?php echo $iGroupID?>;
