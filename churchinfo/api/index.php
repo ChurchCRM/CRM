@@ -49,6 +49,18 @@ $app->container->singleton('GroupService', function () {
 $app->group('/groups', function () use ($app) {
     $groupService = $app->GroupService;
     
+    $app->post('/:groupID/userRole/:userID', function ($groupID,$userID) use ($app, $groupService) {
+        try {
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            echo json_encode($groupService->setGroupMemberRole($groupID,$userID,$input->roleID));
+            
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
     $app->post('/:groupID/removeuser/:userID', function ($groupID,$userID) use ($groupService) {
         try {
             $groupService->removeUserFromGroup($userID,$groupID);

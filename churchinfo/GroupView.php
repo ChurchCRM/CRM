@@ -30,6 +30,9 @@ $sPageTitle = gettext('Group View');
 
 //Get the GroupID out of the querystring
 $iGroupID = FilterInput($_GET['GroupID'],'int');
+$personService = new PersonService();
+$groupService = new GroupService();
+
 
 //Do they want to add this group to their cart?
 if (array_key_exists ('Action', $_GET) and $_GET['Action'] == 'AddGroupToCart')
@@ -153,6 +156,34 @@ if ($_SESSION['bManageGroups'])
         </div>
     <!--END GROUP DELETE MODAL-->
     
+    <!-- MEMBER ROLE MODAL-->
+     <div class="modal fade" id="changeMembership" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="upload-Image-label">Change Member Role</h4>
+                        </div>
+                        <div class="modal-body">
+                        <span style="color: red"><?php echo gettext("Please select target role for member:"); ?></span>
+                        <input type="hidden" id="changeingMemberID">
+                        <p class="ShadedBox" id="changingMemberName"></p>
+                        <select name="newRoleSelection" id="newRoleSelection">
+                        <?php foreach ($groupService->getGroupRoles($iGroupID) as $role)
+                        {
+                            echo '<option value="'.$role['lst_OptionID'].'">'.$role['lst_OptionName'].'</option>';
+                        }
+                        ?>
+                        </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button name="confirmMembershipChange" id="confirmMembershipChange" type="button" class="btn btn-danger"><?php echo gettext("Change Membership") ?></button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    <!--END MEMBER ROLE MODAL-->
     
     
    
@@ -467,8 +498,6 @@ if ($sPhoneLink)
     <div class="box-body">
 <!-- START GROUP MEMBERS LISTING for group $iGroupID; -->
 <?
-$personService = new PersonService();
-$groupService = new GroupService();
 
 $sSQL = "SELECT grp_RoleListID,grp_hasSpecialProps FROM group_grp WHERE grp_ID =" . $iGroupID;
 $aTemp = mysql_fetch_array(RunQuery($sSQL));
@@ -511,7 +540,10 @@ $(document).ready(function() {
         {
             width: 'auto',
             title: 'Group Role',
-            data: 'groupRole'
+            data: 'groupRole',
+            render: function (data,type,full,meta) {
+                return data+'<button class="changeMembership" id="changeRole-'+full.per_ID+'"><i class="fa fa-pencil"></i></button>';
+            }
         },
         {
             width: 'auto',
@@ -556,6 +588,7 @@ $(document).ready(function() {
     });
     initHandlers();
 
+    
     $(".personSearch").select2({
         minimumInputLength: 2,
         ajax: {
@@ -635,6 +668,31 @@ function initHandlers()
             dataT.rows().invalidate().draw(true);
             initHandlers();
         });
+    });
+    
+     $(".changeMembership").click(function(e){
+        var userid=e.currentTarget.id.split("-")[1];
+        console.log(userid);
+        $("#changeingMemberID").val(dataT.row(function(idx,data,node) { if  (data.per_ID == userid){return true;} }).data().per_ID);
+        $("#changingMemberName").text(dataT.row(function(idx,data,node) { if  (data.per_ID == userid){return true;} }).data().displayName);
+        $('#changeMembership').modal('show');
+        
+    });
+    
+    $("#confirmMembershipChange").click(function(e){
+        var changeingMemberID = $("#changeingMemberID").val();
+        $.ajax({
+            method: "POST",
+            url: "/api/groups/<?php echo $iGroupID;?>/userRole/"+changeingMemberID,
+            data: JSON.stringify({'roleID': $("#newRoleSelection option:selected").val()}),
+            dataType: "json"
+        }).done(function(data){
+            console.log(data);
+            dataT.row(function(idx,data,node) { if  (data.per_ID == changeingMemberID){return true;} }).data(data[0]);
+            dataT.rows().invalidate().draw(true);
+            initHandlers();
+            $('#changeMembership').modal('hide');
+        }); 
     });
     
     $("#deleteGroupButton").click(function(e){

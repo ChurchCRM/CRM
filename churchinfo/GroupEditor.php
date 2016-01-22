@@ -317,7 +317,7 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
         console.log(formData);
         $.ajax({
             method: "POST",
-            url:   "/api/groups"+groupID,
+            url:   "/api/groups/"+groupID,
             data:  JSON.stringify(formData)
         }).done(function(data){
            console.log(data);

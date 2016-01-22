@@ -179,6 +179,19 @@ class GroupService
 
     }
     
+    function setGroupMemberRole($groupID,$personID,$roleID)
+    {
+       $sSQL= "UPDATE person2group2role_p2g2r
+            SET p2g2r_rle_ID = ".$roleID." 
+            WHERE 
+            p2g2r_per_ID =".$personID."
+            AND 
+             p2g2r_grp_ID =". $groupID;
+             
+        $update = RunQuery($sSQL); 
+        return $this->getGroupMembers($groupID,$personID);
+    }
+    
     function setGroupRoleName($groupID,$groupRoleID,$groupRoleName)
     {
         $sSQL =  'UPDATE list_lst
@@ -366,7 +379,7 @@ class GroupService
         $thisGroup['grp_Name'] = $groupData->groupName;
         $thisGroup['grp_type'] = $groupData->groupType;
         $thisGroup['grp_Description'] = $groupData->description;
-        $bUseGroupProps = FilterInputArr($_POST,"UseGroupProps");
+        $bUseGroupProps = $groupData->useGroupSpecificProperties;
         $cloneGroupRole = FilterInputArr($_POST,"cloneGroupRole",'int');
         $seedGroupID = FilterInputArr($_POST,"seedGroupID",'int');
 
