@@ -96,7 +96,7 @@ $app->group('/groups', function () use ($app) {
             $request = $app->request();
             $body = $request->getBody();
             $input = json_decode($body);
-            echo $groupService->createGroup($input);
+            echo json_encode($groupService->createGroup($input->groupName));
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

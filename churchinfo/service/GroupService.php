@@ -65,7 +65,6 @@ class GroupService
 
     $sSQL = "INSERT INTO person2group2role_p2g2r (p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID) VALUES (" . $iPersonID . ", " . $iGroupID . ", " . $iRoleID . ")";
     $result = RunQuery($sSQL,false);
-
     if ($result)
     {
         // Check if this group has special properties
@@ -456,9 +455,8 @@ class GroupService
 
     }
     
-    function createGroup($groupData)
+    function createGroup($groupName)
     {
-
         //Get a new Role List ID
         $sSQL = "SELECT MAX(lst_ID) FROM list_lst";
         $aTemp = mysql_fetch_array(RunQuery($sSQL));
@@ -467,17 +465,18 @@ class GroupService
         else
             $newListID = 10;
 
-        if ($groupData->useGroupSpecificProperties)
+        /*if ($groupData->useGroupSpecificProperties)
            $sUseProps = 'true';
         else
-            $sUseProps = 'false';
-        $sSQL = "INSERT INTO group_grp (grp_Name, grp_Type, grp_Description, grp_hasSpecialProps, grp_DefaultRole, grp_RoleListID) VALUES ('" . $groupData->groupName . "', " . $groupData->groupType . ", '" . $groupData->description . "', '" . $sUseProps . "', '1', " . $newListID . ")";
-        RunQuery($sSQL);
+            $sUseProps = 'false';*/
+        //$sSQL = "INSERT INTO group_grp (grp_Name, grp_Type, grp_Description, grp_hasSpecialProps, grp_DefaultRole, grp_RoleListID) VALUES ('" . $groupData->groupName . "', " . $groupData->groupType . ", '" . $groupData->description . "', '" . $sUseProps . "', '1', " . $newListID . ")";
+        $sSQL = "INSERT INTO group_grp (grp_Name, grp_DefaultRole, grp_RoleListID) VALUES ('" . $groupName . "', '1', " . $newListID . ")";
+
+        $result = mysql_query($sSQL);
         //Get the key back
         $iGroupID = mysql_insert_id();
-        echo $iGroupID;
 
-        if (($cloneGroupRole) && ($seedGroupID>0)) {
+        if (false) { // ($cloneGroupRole) && ($seedGroupID>0)
             $sSQL = "SELECT list_lst.* FROM list_lst, group_grp WHERE group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_id = $seedGroupID ORDER BY list_lst.lst_OptionID";
             $rsRoleSeed = RunQuery($sSQL);
             while ($aRow = mysql_fetch_array($rsRoleSeed))
@@ -492,6 +491,8 @@ class GroupService
             $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'Member')";
             RunQuery($sSQL);
         }
+  
+        return $this->getGroups($iGroupID);
         
        
     }
@@ -541,10 +542,12 @@ class GroupService
 
     function getGroupMembers($groupID,$personID = null)
     {
+        $whereClause = "";
         if (is_numeric($personID))
         {
             $whereClause = " AND p2g2r_per_ID = ".$personID;
         }
+       
         $members = array();
         $personService = new PersonService();
         // Main select query
@@ -558,7 +561,6 @@ class GroupService
         person2group2role_p2g2r.p2g2r_rle_ID =  list_lst.lst_OptionID 
 
         WHERE p2g2r_grp_ID =" . $groupID. " ". $whereClause;
-        
         $result = mysql_query($sSQL);
         while ($row = mysql_fetch_assoc($result)) 
         {

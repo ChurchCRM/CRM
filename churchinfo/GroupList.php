@@ -56,12 +56,35 @@ if ($_SESSION['bManageGroups'])
 <table class="table" id="groupsTable">
 </table>
 
+<br>
+<form action="#" method="get" class="sidebar-form">
+    <label for="addNewGruop"><?php echo gettext("Add New Group: ");?></label>
+    <input class="form-control newGroup" name="groupName" id="groupName" style="width:100%">
+    <button type="button" class="btn btn-primary" id ="addNewGroup" >Add New Group</button>
+</form>
+
 </div>
 <script>
 var groupData = <?php echo $groupService->getGroupJSON($groupService->getGroups()); ?>;
-
 console.log(groupData.groups);
-$("#groupsTable").dataTable({
+var dataT = 0;
+$(document).ready(function() {
+   
+    $("#addNewGroup").click(function (e){
+        var newGroup = {'groupName':$("#groupName").val()};
+        console.log(newGroup);
+        $.ajax({
+            method: "POST",
+            url:   "/api/groups",
+            data:  JSON.stringify(newGroup)
+        }).done(function(data){
+            console.log(data);
+            dataT.row.add(data);
+            dataT.rows().invalidate().draw(true);
+        });
+    });
+   
+    dataT = $("#groupsTable").DataTable({
     data:groupData.groups,
     columns: [
     {
@@ -102,6 +125,7 @@ $("#groupsTable").dataTable({
         searchable: true
     }
     ]
+});
 });
 </script>
 

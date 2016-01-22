@@ -30,18 +30,18 @@ if (!$_SESSION['bManageGroups'])
 $sPageTitle = gettext("Group Editor");
 $groupService = new GroupService();
 //Get the GroupID from the querystring
-$iGroupID = 0;
 if (array_key_exists ("GroupID", $_GET))
     $iGroupID = FilterInput($_GET["GroupID"],'int');
+else
+{
+    Redirect("GroupList.php");
+}
 $bEmptyCart = (array_key_exists ("EmptyCart", $_GET) && $_GET["EmptyCart"] == "yes") && 
                array_key_exists ('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) > 0;
 $bNameError = False;
 
-if ($iGroupID != 0)
-{
-    $thisGroup = $groupService->getGroups($iGroupID);
-}
-
+//get this group from the group service.
+$thisGroup = $groupService->getGroups($iGroupID);
 // Get Group Types for the drop-down
 $rsGroupTypes = $groupService->getGroupTypes();
 //Group Group Role List 
@@ -56,27 +56,6 @@ require "Include/Header.php";
 
 <link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
 <script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-
-<script type="text/javascript">
-bStatus = false;
-
-function confirmDelete() {
-    if (!bStatus) {
-        bStatus = confirm(<?php echo "'" . gettext("Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!") . "'"; ?>);
-        document.GroupEdit.UseGroupProps.checked = !bStatus;
-    }
-    else
-        bStatus = false;
-}
-function confirmAdd() {
-    if (!bStatus) {
-        bStatus = confirm(<?php echo "'" . gettext("This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor.") . "'"; ?>);
-        document.GroupEdit.UseGroupProps.checked = bStatus;
-    }
-    else
-        bStatus = false;
-}
-</script>
 
 <div class="box">
 <div class="box-header">
@@ -206,16 +185,6 @@ var defaultRoleID= <?php echo ($thisGroup['grp_DefaultRole']?  $thisGroup['grp_D
 var dataT = 0;
 var groupRoleData = <?php echo json_encode($groupService->getGroupRoles($iGroupID)); ?>;
 var roleCount = groupRoleData.length;
-$("#selectGroupIDDiv").hide();
-$("#cloneGroupRole").click(function(e){
-    if (e.target.checked)
-        $("#selectGroupIDDiv").show();
-    else
-    {
-        $("#selectGroupIDDiv").hide();
-        $("#seedGroupID").prop('selectedIndex',0);
-    }
-});
 
 $("document").ready(function(){
 
@@ -253,8 +222,9 @@ $("document").ready(function(){
             data:'lst_OptionSequence',
             className: "dt-body-center",
             render: function  (data, type, full, meta ) {
+                if (type === 'display'){
                 var sequenceCell = "";
-                if( data != 1 )
+                if( data > 1 )
                 {
                     sequenceCell += '<button type="button" id="roleUp-'+full.lst_OptionID+'" class="btn rollOrder"> <i class="fa fa-arrow-up"></i></button>&nbsp;';
                 }
@@ -265,6 +235,11 @@ $("document").ready(function(){
                     sequenceCell += '&nbsp;<button type="button" id="roleDown-'+full.lst_OptionID+'" class="btn rollOrder"> <i class="fa fa-arrow-down"></i></button>';
                 }
                 return sequenceCell;
+                }
+                else
+                {
+                    return data;
+                }
             }
         },
          {
@@ -281,7 +256,6 @@ $("document").ready(function(){
     });
     
     initHandlers(); // initialize the event handlers when the document is ready.  Don't do it here, since we need to be able to initialize these handlers on the fly in response to user action.
-
 });
 
 
@@ -298,14 +272,40 @@ function setGroupRoleOrder(groupID,roleID,groupRoleOrder)
 
 function initHandlers()  //funciton to initialize the JQuery button event handlers
 {
+    bStatus = false;
 
-       $("#groupEditForm").submit(function(e) {
+    function confirmDelete() {
+        if (!bStatus) {
+            bStatus = confirm(<?php echo "'" . gettext("Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!") . "'"; ?>);
+            document.GroupEdit.UseGroupProps.checked = !bStatus;
+        }
+        else
+            bStatus = false;
+    }
+    function confirmAdd() {
+        if (!bStatus) {
+            bStatus = confirm(<?php echo "'" . gettext("This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor.") . "'"; ?>);
+            document.GroupEdit.UseGroupProps.checked = bStatus;
+        }
+        else
+            bStatus = false;
+    }
+
+    $("#selectGroupIDDiv").hide();
+    
+    $("#cloneGroupRole").click(function(e){
+    if (e.target.checked)
+        $("#selectGroupIDDiv").show();
+    else
+    {
+        $("#selectGroupIDDiv").hide();
+        $("#seedGroupID").prop('selectedIndex',0);
+    }
+    });
+
+    $("#groupEditForm").submit(function(e) {
         e.preventDefault();
         var groupID=<?php echo $iGroupID?>;
-        var POSTURL = "/api/groups";
-        if (groupID)
-            POSTURL += "/"+groupID;
-        console.log(POSTURL);
         var formData ={
             "groupName": $("input[name='Name']").val(),
             "description": $("textarea[name='Description']").val(),
@@ -315,10 +315,9 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
             
         };
         console.log(formData);
-        
         $.ajax({
             method: "POST",
-            url:   POSTURL,
+            url:   "/api/groups"+groupID,
             data:  JSON.stringify(formData)
         }).done(function(data){
            console.log(data);
@@ -362,14 +361,13 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
         });
     });
     
-
     $(".rollOrder").click(function (e) {
        var groupID=<?php echo $iGroupID?>;
        var roleID = e.currentTarget.id.split("-")[1]; // get the ID of the role that we're manipulating
        var roleSequenceAction =  e.currentTarget.id.split("-")[0];  //determine whether we're increasing or decreasing this role's sequence number
        var newRoleSequence =0;      //create a variable at the function scope to store the new role's sequence
-       var currentRoleSequence = dataT.cell("#roleRow-"+roleID,2).data(); //get the sequence number of the selected role
-       var totalRoles = dataT.data().length //count how many roles are in the table
+       var currentRoleSequence = dataT.cell(function(idx,data,node) { if  (data.lst_OptionID == roleID){console.log(data); return true;} } ,2).data(); //get the sequence number of the selected role
+       console.log("current sequence: "+currentRoleSequence);
        if (roleSequenceAction == "roleUp")
        {
            newRoleSequence = Number(currentRoleSequence)-1;  //decrease the role's sequence number
@@ -378,28 +376,20 @@ function initHandlers()  //funciton to initialize the JQuery button event handle
        {
            newRoleSequence = Number(currentRoleSequence)+1; // increase the role's sequenc number
        }
-       //console.log("Perform Action: "+roleSequenceAction+" on Role with ID: "+roleID+" (current sequence "+currentRoleSequence+") with new sequence: "+newRoleSequence);
-       sequenceColumn = dataT.column(2).data()[0];  // get the column of sequence numbers so we can search it
-       
-       for (var i=0;i< totalRoles;i++)  //iterate through the sequence numbers
+       try
        {
-           if (dataT.cell(i,2).data() == newRoleSequence)  //if the sequence number matches the role's new sequence nubmer, we know that we need to adjust the role in this position
-           {
-               var rowID = $(dataT.row(i).node()).attr("id").split("-")[1]; // get the ID of the role occupying our role's new sequence nubmer.
-               //console.log("Moving row at position: "+i+" to: "+currentRoleSequence+" (Role ID: "+rowID+")" );
-               dataT.cell(i,2).data(String(currentRoleSequence));  //change the sequence number of the occupying role to the old sequence nubmer of our role.
-               setGroupRoleOrder(groupID,rowID,currentRoleSequence)
-               configureButtons(rowID,currentRoleSequence,totalRoles)  //fix the buttons for the displaced role
-           }
+      dataT.cell(function(idx,data,node) { if  (data.lst_OptionSequence == newRoleSequence){console.log("replacing datafor cell"); console.log(data); return true;}},2).data(currentRoleSequence);
        }
-
-       dataT.cell("#roleRow-"+roleID,2).data(String(newRoleSequence)); // set our role to the new sequence number
-       setGroupRoleOrder(groupID,roleID,newRoleSequence)
-       configureButtons(roleID,newRoleSequence,totalRoles)    // fix the buttons.
-       dataT.order([2,'asc']);      //sort the table
-       dataT.draw(true);            //update the table
+       catch(err)
+       {
+           console.log("no cells to replace - something was funky.");
+       }
+      dataT.cell(function(idx,data,node) { if  (data.lst_OptionID == roleID){console.log(data); return true;}}, 2).data(newRoleSequence); // set our role to the new sequence number
+      setGroupRoleOrder(groupID,roleID,newRoleSequence);       
+      dataT.rows().invalidate().draw(true);
+      dataT.order([[ 2, "asc" ]]).draw();
+      initHandlers();
     });
-    
     
     $(".roleName").change(function(e){
         var groupID=<?php echo $iGroupID?>;
