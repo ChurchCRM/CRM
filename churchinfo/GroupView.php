@@ -23,6 +23,7 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'service/GroupService.php';
 
 //Set the page title
 $sPageTitle = gettext('Group View');
@@ -474,89 +475,10 @@ $aTemp = mysql_fetch_array(RunQuery($sSQL));
 $iRoleListID = $aTemp[0];
 
 
-// Main select query
-$allMembers = $groupService->getGroupMembers($iGroupID);
 
 ?>
 
 <table class="table" id="membersTable">
-    <thead>
-    <tr>
-        <th><?php echo gettext("Name"); ?></th>
-        <th><?php echo gettext("Group Role"); ?></th>
-        <th><?php echo gettext("Address"); ?></th>
-        <th><?php echo gettext("City"); ?></th>
-        <th><?php echo gettext("State"); ?></th>
-        <th><?php echo gettext("ZIP"); ?></th>
-        <th><?php echo gettext("Cell Phone"); ?></th>
-        <th><?php echo gettext("E-mail"); ?></th>
-        <th><?php echo gettext("Remove User from Group"); ?></th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    //Loop through the members
-    foreach($allMembers as $member)
-    {
-        $per_Title = "";
-        $per_FirstName = "";
-        $per_MiddleName = "";
-        $per_LastName = "";
-        $per_Suffix = "";
-        $per_Address1 = "";
-        $per_Address2 = "";
-        $per_City = "";
-        $per_State = "";
-        $per_Zip = "";
-        $per_Country = "";
-        $per_HomePhone = "";
-        $per_Email = "";
-        $fam_Name = "";
-        $fam_Address1 = "";
-        $fam_Address2 = "";
-        $fam_City = "";
-        $fam_State = "";
-        $fam_Zip = "";
-        $fam_Country = "";
-        $fam_HomePhone = "";
-        $fam_Email = "";
-
-        extract($aRow);
-
-
-        // Assign the values locally, after selecting whether to display the family or person information
-        SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, False);
-        $sCity = SelectWhichInfo($per_City, $fam_City, False);
-        $sState = SelectWhichInfo($per_State, $fam_State, False);
-        $sZip = SelectWhichInfo($per_Zip, $fam_Zip, False);
-        $sCountry = SelectWhichInfo($per_Country, $fam_Country, False);
-        $sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone,$sCountry,$dummy), 
-                    ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy), False); 
-        $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
-        //Display the row
-        ?>
-    <tr id="uid-<?php echo $per_ID; ?>">
-        <td><?php
-                echo "<img src=\"". $personService->getPhoto($per_ID). "\" class=\"direct-chat-img\"> &nbsp <a href=\"PersonView.php?PersonID=\"" . $per_ID . "\"><a target=\"_top\" href=\"PersonView.php?PersonID=$per_ID\">" . FormatFullName($per_Title, $per_LastName, $per_FirstName, $per_MiddleName, $per_Suffix, 0) . "</a>"; ?>
-        </td>        
-        <td><?php
-            if ($_SESSION['bManageGroups']) echo "<a target=\"_top\" href=\"MemberRoleChange.php?GroupID=" . $iGroupID . "&PersonID=" . $per_ID . "&Return=1\">";
-            echo $lst_OptionName;
-            if ($_SESSION['bManageGroups']) echo "</a>";
-        ?></td>
-        <td><?php echo $sAddress1;?><?php if ($sAddress1 != "" && $sAddress2 != "") { echo ", "; } ?><?php if ($sAddress2 != "") echo $sAddress2; ?></td>
-        <td><?php echo $sCity ?></td>
-        <td><?php echo $sState ?></td>
-        <td><?php echo $sZip ?></td>
-        <td><?php echo $sCellPhone ?></td>
-        <td><?php echo $sEmail;?></td>
-        <td><button type="button" class="btn btn-danger removeUserGroup" id="rguid-<?php echo $per_ID; ?>">Remove User from Group</button></td>
-    </tr>
-    <?php
-    }
-    
-    ?>
-    </tbody>
 </table>
 </form>
 <!-- END GROUP MEMBERS LISTING -->
@@ -569,10 +491,70 @@ $allMembers = $groupService->getGroupMembers($iGroupID);
 </div>
 
 <script>
+var groupMembers = <?php echo json_encode($groupService->getGroupMembers($iGroupID)); ?>;
+console.log(groupMembers);
+var dataT = 0;
+
 $(document).ready(function() {
-   initHandlers();
-    $("#membersTable").DataTable();
-    $("document").ready(function(){
+   
+    dataT = $("#membersTable").DataTable({
+    data:groupMembers,
+    columns: [
+       {
+            width: 'auto',
+            title: 'Name',
+            data: 'name',
+            render: function (data,type,full,meta) {
+                return '<img src="'+ full.photo + '" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID="' +full.per_ID+ '"><a target="_top" href="PersonView.php?PersonID='+full.per_ID+'">'+ full.displayName+'</a>';
+            }
+        },
+        {
+            width: 'auto',
+            title: 'Group Role',
+            data: 'groupRole'
+        },
+        {
+            width: 'auto',
+            title: 'Address',
+            render: function (data,type,full,meta) {
+                return full.fam_Address1+" "+full.fam_Address2;
+            }
+        },
+        {
+            width: 'auto',
+            title: 'City',
+            data: 'fam_City'
+        },
+        {
+            width: 'auto',
+            title: 'State',
+            data: 'fam_State'
+        },
+        {
+            width: 'auto',
+            title: 'ZIP',
+            data: 'fam_Zip'
+        },
+        {
+            width: 'auto',
+            title: 'Cell Phone',
+            data: 'fam_CellPhone'
+        },
+        {
+            width: 'auto',
+            title: 'E-mail',
+            data: 'fam_Email'
+        },
+        {
+            width: 'auto',
+            title: 'Remove User from Group',
+            render: function (data,type,full,meta) {
+                return '<button type="button" class="btn btn-danger removeUserGroup" id="rguid-'+full.per_ID+'">Remove User from Group</button>';
+            }
+        }
+    ]
+    });
+    initHandlers();
 
     $(".personSearch").select2({
         minimumInputLength: 2,
@@ -614,13 +596,20 @@ $(document).ready(function() {
         }
     });
     $(".personSearch").on("select2:select",function (e) { 
-        console.log(e.params.data.objid);
-        addUserToGroup(e.params.data.objid);
-        addTableRow(e.params.data.objid);
+        $.ajax({
+            method: "POST",
+            url: "/api/groups/<?php echo $iGroupID;?>/adduser/"+e.params.data.objid,
+            dataType: "json"
+        }).done(function (data){
+           var person = data[0]; 
+           var node = dataT.row.add(person).node();
+           dataT.rows().invalidate().draw(true);
+           initHandlers();
+        });
         $(".personSearch").select2("val", "");
     });
     
-});
+
 
 
     
@@ -633,6 +622,7 @@ function initHandlers()
      $("#chkClear").click(function(e){
              $("#deleteGroupButton").prop("disabled",!e.target.checked);
      });
+     
      $(".removeUserGroup").click(function(e) {
         var userid=e.currentTarget.id.split("-")[1];
         console.log(userid);
@@ -641,9 +631,9 @@ function initHandlers()
             url: "/api/groups/<?php echo $iGroupID;?>/removeuser/"+userid,
             dataType: "json"
         }).done(function(data){
-            var t = $("#membersTable").DataTable();
-            console.log("Removing #uid-"+userid);
-            t.row($("#uid-"+userid)).remove().draw(true);
+            dataT.row(function(idx,data,node) { if  (data.per_ID == userid){return true;} } ).remove();
+            dataT.rows().invalidate().draw(true);
+            initHandlers();
         });
     });
     
@@ -660,42 +650,7 @@ function initHandlers()
         });
     });
 }
-function addUserToGroup(userid)
-{
-    $.ajax({
-            method: "POST",
-            url: "/api/groups/<?php echo $iGroupID;?>/adduser/"+userid,
-            dataType: "json"
-        });
-    
-}
-function addTableRow(objID)
-{
-    $.ajax({
-        method: "GET",
-        url:    "/api/persons/"+objID,
-        dataType:   "json"
-    }).done(function (data){
-        var person = data[0].persons; 
-        var newRow=[
-                '<img src = "'+person.photo+'" class="direct-chat-img"><a href="PersonView.php?PersonID='+person.per_ID+'">'+(person.per_Title || '')+' '+(person.per_LastName || '')+' '+ (person.per_FirstName || '')+'</a>',
-                '<a href="MemberRoleChange.php?GroupID=<?php echo $grp_ID;?>&PersonID='+person.per_ID+'&Return=1"><?php echo $sDefaultRole ?></a>',
-                person.per_Address1,
-                person.per_City,
-                person.per_State,
-                person.per_Zip,
-                person.per_CellPhone,
-                person.per_Email,
-                '<button class="btn btn-danger removeUserGroup" type="button" id="rguid-'+person.per_ID+'">Remove User from Group</button>'
-                ];       
 
-        var t = $("#membersTable").DataTable();
-        var node = t.row.add(newRow).draw( true ).node();
-        $(node).attr("id","uid-"+person.per_ID);
-        initHandlers();
-    });
-   
-}
 </script>
 
 

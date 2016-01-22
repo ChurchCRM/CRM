@@ -59,8 +59,7 @@ $app->group('/groups', function () use ($app) {
     });
     $app->post('/:groupID/adduser/:userID', function ($groupID,$userID) use ($groupService) {
         try {
-            $groupService->addUserToGroup($userID,$groupID,0);
-            echo '{"success":"true"}';
+            echo json_encode( $groupService->addUserToGroup($userID,$groupID,0));
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

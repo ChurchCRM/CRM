@@ -81,7 +81,7 @@ class GroupService
         }
     }
 
-    return $result;
+    return $this->getGroupMembers($iGroupID,$iPersonID );
 }
     
     function search($searchTerm)
@@ -539,17 +539,32 @@ class GroupService
         }
     }
 
-    function getGroupMembers($groupID)
+    function getGroupMembers($groupID,$personID = null)
     {
-        
+        if (is_numeric($personID))
+        {
+            $whereClause = " AND p2g2r_per_ID = ".$personID;
+        }
         $members = array();
         $personService = new PersonService();
         // Main select query
-        $sSQL = "SELECT * FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = " . $groupID;
+        $sSQL = "SELECT p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID, lst_OptionName FROM person2group2role_p2g2r 
+
+        INNER JOIN group_grp ON
+        person2group2role_p2g2r.p2g2r_grp_ID = group_grp.grp_ID 
+
+        INNER JOIN list_lst ON
+        group_grp.grp_RoleListID = list_lst.lst_ID AND 
+        person2group2role_p2g2r.p2g2r_rle_ID =  list_lst.lst_OptionID 
+
+        WHERE p2g2r_grp_ID =" . $groupID. " ". $whereClause;
+        
         $result = mysql_query($sSQL);
         while ($row = mysql_fetch_assoc($result)) 
         {
-            array_push($members,$personService->getPersonByID($row['p2g2r_per_ID']));
+            $person = $personService->getPersonByID($row['p2g2r_per_ID']);
+            $person['groupRole'] = $row['lst_OptionName'];
+            array_push($members,$person);
         }
         return $members;
         
