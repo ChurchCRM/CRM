@@ -40,28 +40,26 @@ require 'Include/Header.php';?>
 <script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 
-<?php
-if ($_SESSION['bManageGroups']) 
-{?>
-    <div class="pull-right">
-    <a class="btn btn-success" role="button" href="GroupEditor.php"> <span class="fa fa-plus" aria-hidden="true"></span> Add Group</a>
-    <p>
-    </div>
-    <br/><br/></p>
-    <?php
-}
-?>
+
 
 <div class="box box-body">
 <table class="table" id="groupsTable">
 </table>
-
+<?php
+if ($_SESSION['bManageGroups']) 
+{?>
+    
+    
 <br>
-<form action="#" method="get" class="sidebar-form">
+<form action="#" method="get" class="form">
     <label for="addNewGruop"><?php echo gettext("Add New Group: ");?></label>
     <input class="form-control newGroup" name="groupName" id="groupName" style="width:100%">
+    <br>
     <button type="button" class="btn btn-primary" id ="addNewGroup" >Add New Group</button>
 </form>
+<?php
+}
+?>
 
 </div>
 <script>

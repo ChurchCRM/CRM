@@ -165,7 +165,9 @@ if (strlen($iGroupID) > 0)
     <table class="table" id="groupRoleTable">
 </table>
     
-  <label for="newRole">New Role: </label><input type="text" class="form-control" id="newRole" name="newRole"><button type="button" id="addNewRole" class="btn btn-primary">Add New Role</button>
+  <label for="newRole">New Role: </label><input type="text" class="form-control" id="newRole" name="newRole">
+  <br>
+  <button type="button" id="addNewRole" class="btn btn-primary">Add New Role</button>
   
   
   <?php
