@@ -10,6 +10,19 @@ class GroupService
         $this->baseURL = $_SESSION['sURLPath'];
     }
 
+    function setGroupMemberRole($groupID,$personID,$roleID)
+    {
+       $sSQL= "UPDATE person2group2role_p2g2r
+            SET p2g2r_rle_ID = ".$roleID." 
+            WHERE 
+            p2g2r_per_ID =".$personID."
+            AND 
+             p2g2r_grp_ID =". $groupID;
+             
+        $update = RunQuery($sSQL); 
+        return $this->getGroupMembers($groupID,$personID);
+    }
+
     function removeUserFromGroup($iPersonID, $iGroupID)
     {
         $sSQL = "DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = " . $iPersonID . " AND p2g2r_grp_ID = " . $iGroupID;
@@ -116,47 +129,6 @@ class GroupService
         return $this->baseURL ."/GroupView.php?GroupID=".$Id;
     }
 
-    function deleteGroup($iGroupID)
-    {
-        $sSQL = "SELECT grp_hasSpecialProps, grp_RoleListID FROM group_grp WHERE grp_ID =" . $iGroupID;
-        $rsTemp = RunQuery($sSQL);
-        $aTemp = mysql_fetch_array($rsTemp);
-        $hasSpecialProps = $aTemp[0];
-        $iRoleListID = $aTemp[1];
-
-            //Delete all Members of this group
-            $sSQL = "DELETE FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = " . $iGroupID;
-            RunQuery($sSQL);
-
-            //Delete all Roles for this Group
-            $sSQL = "DELETE FROM list_lst WHERE lst_ID = " . $iRoleListID;
-            RunQuery($sSQL);
-
-            // Remove group property data
-            $sSQL = "SELECT pro_ID FROM property_pro WHERE pro_Class='g'";
-            $rsProps = RunQuery($sSQL);
-
-            while($aRow = mysql_fetch_row($rsProps)) {
-                $sSQL = "DELETE FROM record2property_r2p WHERE r2p_pro_ID = " . $aRow[0] . " AND r2p_record_ID = " . $iGroupID;
-                RunQuery($sSQL);
-            }
-
-            if ($hasSpecialProps == 'true')
-            {
-                // Drop the group-specific properties table and all references in the master index
-                $sSQL = "DROP TABLE groupprop_" . $iGroupID;
-                RunQuery($sSQL);
-
-                $sSQL = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
-                RunQuery($sSQL);
-            }
-
-            //Delete the Group
-            $sSQL = "DELETE FROM group_grp WHERE grp_ID = " . $iGroupID;
-            RunQuery($sSQL);
-
-    }
-    
     function getGroupRoles($groupID)
     {
         $groupRoles = array();
@@ -178,20 +150,7 @@ class GroupService
 		return $groupRoles;
 
     }
-    
-    function setGroupMemberRole($groupID,$personID,$roleID)
-    {
-       $sSQL= "UPDATE person2group2role_p2g2r
-            SET p2g2r_rle_ID = ".$roleID." 
-            WHERE 
-            p2g2r_per_ID =".$personID."
-            AND 
-             p2g2r_grp_ID =". $groupID;
-             
-        $update = RunQuery($sSQL); 
-        return $this->getGroupMembers($groupID,$personID);
-    }
-    
+      
     function setGroupRoleName($groupID,$groupRoleID,$groupRoleName)
     {
         $sSQL =  'UPDATE list_lst
@@ -223,6 +182,7 @@ class GroupService
         $aDefaultRole = mysql_fetch_array(RunQuery($sSQL));
         return $aDefaultRole[0];       
     }
+    
     function deleteGroupRole($groupID,$groupRoleID)
     {
         $sSQL = 'SELECT \'\' FROM list_lst 
@@ -278,6 +238,7 @@ class GroupService
             throw new Exception("You cannont delete the only group");
         }
     }
+    
     function addGroupRole($groupID,$groupRoleName)
     {
         if (strlen($groupRoleName) == 0)
@@ -326,6 +287,12 @@ class GroupService
         return '{"newRole":{"roleID":"'.$newOptionID.'", "roleName":"'.$groupRoleName.'", "sequence":"'.$newOptionSequence.'"}}';
     }
     
+    function setGroupRoleAsDefault($groupID,$roleID)
+    {
+        $sSQL = "UPDATE group_grp SET grp_DefaultRole = ".$roleID." WHERE grp_ID = ".$groupID;
+		RunQuery($sSQL);
+    }
+    
     function getGroupTotalMembers($groupID)
     {
         //Get the count of members
@@ -348,12 +315,6 @@ class GroupService
         return $groupTypes;
     }
     
-    function setGroupRoleAsDefault($groupID,$roleID)
-    {
-        $sSQL = "UPDATE group_grp SET grp_DefaultRole = ".$roleID." WHERE grp_ID = ".$groupID;
-		RunQuery($sSQL);
-    }
-
     function getGroupRoleTemplateGroups()
     {
         $templateGroups = array();
@@ -371,102 +332,35 @@ class GroupService
         
         
     }
-    
-    function updateGroup($groupID,$groupData)
+     
+    function enableGroupSpecificProperties($groupID)
     {
-
-        //Assign everything locally
-        $thisGroup['grp_Name'] = $groupData->groupName;
-        $thisGroup['grp_type'] = $groupData->groupType;
-        $thisGroup['grp_Description'] = $groupData->description;
-        $bUseGroupProps = $groupData->useGroupSpecificProperties;
-        $cloneGroupRole = FilterInputArr($_POST,"cloneGroupRole",'int');
-        $seedGroupID = FilterInputArr($_POST,"seedGroupID",'int');
-
-        //Did they enter a Name?
-        if (strlen($thisGroup['grp_Name']) < 1)
-        {
-            throw new Exception("You must enter a name");
-        }
-
-        $sSQL = "UPDATE group_grp SET grp_Name='" . $thisGroup['grp_Name'] . "', grp_Type='" . $thisGroup['grp_type'] . "', grp_Description='" . $thisGroup['grp_Description'] . "'";
-        
-        $sSQL .= " WHERE grp_ID = " . $groupID;
-        // execute the SQL
-        RunQuery($sSQL);
-        return '{"success":"true"}';
-    }
-
-    function copyCartToGroup()
-    {
-        if (array_key_exists ("EmptyCart", $_POST) && $_POST["EmptyCart"] && count($_SESSION['aPeopleCart']) > 0)
-        {
-            $iCount = 0;
-            while ($element = each($_SESSION['aPeopleCart'])) {
-                $groupService->AddUsertoGroup($_SESSION['aPeopleCart'][$element['key']],$iGroupID,$thisGroup['grp_DefaultRole']);
-                $iCount += 1;
-            }
-
-            $sGlobalMessage = $iCount . " records(s) successfully added to selected Group.";
-
-            Redirect("GroupEditor.php?GroupID=" . $iGroupID . "&Action=EmptyCart");
-        }
-        else
-        {
-            Redirect("GroupEditor.php?GroupID=$iGroupID");
-        }
-    }
-   
-    function enableGroupSpecificProperties()
-    {
-         $sSQLtest = "SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = " . $iGroupID;
-        $rstest = RunQuery($sSQLtest);
-        $aRow = mysql_fetch_array($rstest);
-
-        $bCreateGroupProps = ($aRow[0] == 'false') && $bUseGroupProps;
-        $bDeleteGroupProps = ($aRow[0] == 'true') && !$bUseGroupProps;
-
-            if ($bCreateGroupProps)
-                $sSQL .= ", grp_hasSpecialProps = 'true'";
-
-            if ($bDeleteGroupProps)
-            {
-                $sSQL .= ", grp_hasSpecialProps = 'false'";
-                $sSQLp = "DROP TABLE groupprop_" . $iGroupID;
-                RunQuery($sSQLp);
-
-                // need to delete the master index stuff
-                $sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
-                RunQuery($sSQLp);
-            }
-            
-        // Create a table for group-specific properties
-        if ( $bCreateGroupProps )
-        {
-            $sSQLp = "CREATE TABLE groupprop_" . $iGroupID . " (
+        $sSQLp = "CREATE TABLE groupprop_" . $iGroupID . " (
                         per_ID mediumint(8) unsigned NOT NULL default '0',
                         PRIMARY KEY  (per_ID),
                           UNIQUE KEY per_ID (per_ID)
                         ) ENGINE=MyISAM;";
-            RunQuery($sSQLp);
+        RunQuery($sSQLp);
+        $sSQL = "SELECT per_ID FROM person_per INNER JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID WHERE p2g2r_grp_ID = " . $iGroupID . " ORDER BY per_ID";
+        $rsGroupMembers = RunQuery($sSQL);
 
-            // If this is an existing group, add rows in this table for each member
-            if ( !$bGetKeyBack )
-            {
-                $sSQL = "SELECT per_ID FROM person_per INNER JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID WHERE p2g2r_grp_ID = " . $iGroupID . " ORDER BY per_ID";
-                $rsGroupMembers = RunQuery($sSQL);
-
-                while ($aRow = mysql_fetch_array($rsGroupMembers))
-                {
-                    $sSQLr = "INSERT INTO groupprop_" . $iGroupID . " ( `per_ID` ) VALUES ( '" . $aRow[0] . "' );";
-                    RunQuery($sSQLr);
-                }
-            }
+        while ($aRow = mysql_fetch_array($rsGroupMembers))
+        {
+            $sSQLr = "INSERT INTO groupprop_" . $iGroupID . " ( `per_ID` ) VALUES ( '" . $aRow[0] . "' );";
+            RunQuery($sSQLr);
         }
-
-
-
     }
+
+    function disableGroupSpecificProperties($groupID)
+    {
+        $sSQLp = "DROP TABLE groupprop_" . $iGroupID;
+        RunQuery($sSQLp);
+
+        // need to delete the master index stuff
+        $sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
+        RunQuery($sSQLp);
+    }
+    
     
     function createGroup($groupName)
     {
@@ -508,6 +402,72 @@ class GroupService
         return $this->getGroups($iGroupID);
         
        
+    }
+   
+    function deleteGroup($iGroupID)
+    {
+        $sSQL = "SELECT grp_hasSpecialProps, grp_RoleListID FROM group_grp WHERE grp_ID =" . $iGroupID;
+        $rsTemp = RunQuery($sSQL);
+        $aTemp = mysql_fetch_array($rsTemp);
+        $hasSpecialProps = $aTemp[0];
+        $iRoleListID = $aTemp[1];
+
+            //Delete all Members of this group
+            $sSQL = "DELETE FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = " . $iGroupID;
+            RunQuery($sSQL);
+
+            //Delete all Roles for this Group
+            $sSQL = "DELETE FROM list_lst WHERE lst_ID = " . $iRoleListID;
+            RunQuery($sSQL);
+
+            // Remove group property data
+            $sSQL = "SELECT pro_ID FROM property_pro WHERE pro_Class='g'";
+            $rsProps = RunQuery($sSQL);
+
+            while($aRow = mysql_fetch_row($rsProps)) {
+                $sSQL = "DELETE FROM record2property_r2p WHERE r2p_pro_ID = " . $aRow[0] . " AND r2p_record_ID = " . $iGroupID;
+                RunQuery($sSQL);
+            }
+
+            if ($hasSpecialProps == 'true')
+            {
+                // Drop the group-specific properties table and all references in the master index
+                $sSQL = "DROP TABLE groupprop_" . $iGroupID;
+                RunQuery($sSQL);
+
+                $sSQL = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
+                RunQuery($sSQL);
+            }
+
+            //Delete the Group
+            $sSQL = "DELETE FROM group_grp WHERE grp_ID = " . $iGroupID;
+            RunQuery($sSQL);
+
+    }
+    
+    function updateGroup($groupID,$groupData)
+    {
+
+        //Assign everything locally
+        $thisGroup['grp_Name'] = $groupData->groupName;
+        $thisGroup['grp_type'] = $groupData->groupType;
+        $thisGroup['grp_Description'] = $groupData->description;
+        $bUseGroupProps = $groupData->useGroupSpecificProperties;
+        $cloneGroupRole = FilterInputArr($_POST,"cloneGroupRole",'int');
+        $seedGroupID = FilterInputArr($_POST,"seedGroupID",'int');
+
+        //Did they enter a Name?
+        if (strlen($thisGroup['grp_Name']) < 1)
+        {
+            throw new Exception("You must enter a name");
+        }
+
+        $sSQL = "UPDATE group_grp SET grp_Name='" . $thisGroup['grp_Name'] . "', grp_Type='" . $thisGroup['grp_type'] . "', grp_Description='" . $thisGroup['grp_Description'] . "'";
+        
+        $sSQL .= " WHERE grp_ID = " . $groupID;
+        // execute the SQL
+        RunQuery($sSQL);
+        return '{"success":"true"}';
     }
 
     function getGroups($groupIDs = NULL)
@@ -584,6 +544,7 @@ class GroupService
         return $members;
         
     }
+    
     function checkGroupAgainstCart($groupID)
     {
         $members = $this->getGroupMembers($groupID);
@@ -614,6 +575,26 @@ class GroupService
         return false;
     }
     
+    function copyCartToGroup()
+    {
+        if (array_key_exists ("EmptyCart", $_POST) && $_POST["EmptyCart"] && count($_SESSION['aPeopleCart']) > 0)
+        {
+            $iCount = 0;
+            while ($element = each($_SESSION['aPeopleCart'])) {
+                $groupService->AddUsertoGroup($_SESSION['aPeopleCart'][$element['key']],$iGroupID,$thisGroup['grp_DefaultRole']);
+                $iCount += 1;
+            }
+
+            $sGlobalMessage = $iCount . " records(s) successfully added to selected Group.";
+
+            Redirect("GroupEditor.php?GroupID=" . $iGroupID . "&Action=EmptyCart");
+        }
+        else
+        {
+            Redirect("GroupEditor.php?GroupID=$iGroupID");
+        }
+    }
+   
 }
 
 ?>
