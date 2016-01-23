@@ -57,6 +57,27 @@ require "Include/Header.php";
 <link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
 <script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
+
+<!-- GROUP SPECIFIC PROPERTIES MODAL-->
+     <div class="modal fade" id="groupSpecificPropertiesModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="gsproperties-label"></h4>
+                        </div>
+                        <div class="modal-body">
+                        <span style="color: red">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button name="setgroupSpecificProperties" id="setgroupSpecificProperties" type="button" class="btn btn-danger">asdf</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+<!-- END GROUP SPECIFIC PROPERTIES MODAL-->
+
 <div class="box">
 <div class="box-header">
 <h3 class="box-title">Group Settings</h3>
@@ -124,19 +145,25 @@ require "Include/Header.php";
             <?php } ?>
             </div>
             </div>
+            <br>
             <div class="row">
-            <div class="col-xs-3">
-                <label for="UseGroupProps"><?php echo gettext("Use group-specific properties?"); ?></label>
+            <div class="col-xs-6">
+                <label for="UseGroupProps"><?php echo gettext("Group Specific Properties: "); ?></label>
+           
                 <?php
                     if ($thisGroup['grp_hasSpecialProps'])
                     {
-                        echo "<input  type=\"checkbox\" name=\"UseGroupProps\" value=\"1\" onChange=\"confirmDelete();\" checked><br><br>";
-                        echo "<a class=\"SmallText\" href=\"GroupPropsFormEditor.php?GroupID=$iGroupID\">" . gettext("Edit Group-Specific Properties Form") . "</a>";
+                        echo "Enabled" ;
+                        echo '<div class="btn-group"><button type="button" id="disableGroupProps" class="btn btn-danger">Disable Group Specific Properties</button>&nbsp;';
+                        echo '<button type="button" class="btn btn-success groupSpecificProperties">Edit Group Specific Properties</button></div>';// href=\"GroupPropsFormEditor.php?GroupID=$iGroupID\">" . gettext("Edit Group-Specific Properties Form") . "</a>";
                     }
                     else
-                        echo "<input type=\"checkbox\" name=\"UseGroupProps\" value=\"1\" onChange=\"confirmAdd();\">"; ?>
+                        echo "Disabled <br>" ;
+                        echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">Enable Group Specific Properties</button>&nbsp;'; 
+                ?>
             </div>
             </div>
+            <br>
             <div class="row">    
             <div class="col-xs-3">
                 <input type="submit" id="saveGroup" class="btn btn-primary" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupSubmit">
@@ -164,7 +191,7 @@ if (strlen($iGroupID) > 0)
     ?>
     <table class="table" id="groupRoleTable">
 </table>
-    
+
   <label for="newRole">New Role: </label><input type="text" class="form-control" id="newRole" name="newRole">
   <br>
   <button type="button" id="addNewRole" class="btn btn-primary">Add New Role</button>
@@ -189,6 +216,173 @@ var groupRoleData = <?php echo json_encode($groupService->getGroupRoles($iGroupI
 var roleCount = groupRoleData.length;
 
 $("document").ready(function(){
+       
+    $(".groupSpecificProperties").click(function (e){
+            var groupPropertyAction = e.currentTarget.id;
+            if (groupPropertyAction == "enableGroupProps")
+            {
+                $("#groupSpecificPropertiesModal").modal("show");
+                $("#gsproperties-label").text("Confirm Enable Group Specific Properties");
+                $("#groupSpecificPropertiesModal .modal-body span").text("This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor.");
+                $("#setgroupSpecificProperties").text("Enable Group Specific Properties");
+            }
+            else
+            {
+                  $("#groupSpecificPropertiesModal").modal("show");
+                $("#gsproperties-label").text("Confirm Disable Group Specific Properties");
+                $("#groupSpecificPropertiesModal .modal-body span").text("Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!");
+                $("#setgroupSpecificProperties").text("Disable Group Specific Properties");
+            }
+    });
+    
+    
+
+    $("#selectGroupIDDiv").hide();
+    
+    $("#cloneGroupRole").click(function(e){
+    if (e.target.checked)
+        $("#selectGroupIDDiv").show();
+    else
+    {
+        $("#selectGroupIDDiv").hide();
+        $("#seedGroupID").prop('selectedIndex',0);
+    }
+    });
+
+    $("#groupEditForm").submit(function(e) {
+        e.preventDefault();
+        var groupID=<?php echo $iGroupID?>;
+        var formData ={
+            "groupName": $("input[name='Name']").val(),
+            "description": $("textarea[name='Description']").val(),
+            "groupType" : $("select[name='GroupType'] option:selected").val()
+            
+        };
+        console.log(formData);
+        $.ajax({
+            method: "POST",
+            url:   "/api/groups/"+groupID,
+            data:  JSON.stringify(formData)
+        }).done(function(data){
+           console.log(data);
+        });
+
+    });
+    
+    $("#addNewRole").click(function(e) {
+        var newRoleName = $("#newRole").val();
+        var groupID=<?php echo $iGroupID?>;
+        $.ajax({
+            method: "POST",
+            url:    "/api/groups/"+groupID+"/roles",
+            data:  '{"roleName":"'+newRoleName+'"}'
+        }).done(function(data){
+            var newRole = data.newRole;
+            var newRow={"lst_OptionName":newRole.roleName,"lst_OptionID":newRole.roleID,"lst_OptionSequence":newRole.sequence};
+            roleCount+=1;
+            var node = dataT.row.add(newRow).node();
+            dataT.rows().invalidate().draw(true);
+            $("#newRole").val('');
+            //location.reload(); // this shouldn't be necessary
+        });
+        
+    });
+    
+    $(document).on('click','.deleteRole', function(e) {
+        var roleID = e.currentTarget.id.split("-")[1];
+        var groupID=<?php echo $iGroupID?>;
+        console.log("deleting group role: "+roleID);
+        $.ajax({
+            method: "DELETE",
+            url:    "/api/groups/"+groupID+"/roles/"+roleID
+        }).done(function(data){
+            console.log(data);
+            dataT.clear();
+            dataT.rows.add(data);
+            dataT.rows().invalidate().draw(true);
+            
+            
+            
+        });
+    });
+    
+    $(document).on('click','.rollOrder', function (e) {
+       var groupID=<?php echo $iGroupID?>;
+       var roleID = e.currentTarget.id.split("-")[1]; // get the ID of the role that we're manipulating
+       var roleSequenceAction =  e.currentTarget.id.split("-")[0];  //determine whether we're increasing or decreasing this role's sequence number
+       var newRoleSequence =0;      //create a variable at the function scope to store the new role's sequence
+       var currentRoleSequence = dataT.cell(function(idx,data,node) { if  (data.lst_OptionID == roleID){console.log(data); return true;} } ,2).data(); //get the sequence number of the selected role
+       console.log("current sequence: "+currentRoleSequence);
+       if (roleSequenceAction == "roleUp")
+       {
+           newRoleSequence = Number(currentRoleSequence)-1;  //decrease the role's sequence number
+       }
+       else if(roleSequenceAction == "roleDown")
+       {
+           newRoleSequence = Number(currentRoleSequence)+1; // increase the role's sequenc number
+       }
+       //try
+       //{
+            replaceRow = dataT.row(function(idx,data,node) { if  (data.lst_OptionSequence == newRoleSequence){return true;}});
+            console.log("------------");
+            var d = replaceRow.data();
+            console.log(d);
+            d.lst_OptionSequence=currentRoleSequence;
+            setGroupRoleOrder(groupID,d.lst_OptionID,d.lst_OptionSequence);
+            console.log(d);
+            replaceRow.data(d);
+            console.log("************");
+       //}
+       //catch(err)
+       //{
+        //   console.log("no cells to replace - something was funky.");
+       //}
+      dataT.cell(function(idx,data,node) { if  (data.lst_OptionID == roleID){return true;}}, 2).data(newRoleSequence); // set our role to the new sequence number
+      setGroupRoleOrder(groupID,roleID,newRoleSequence);       
+      dataT.rows().invalidate().draw(true);
+      dataT.order([[ 2, "asc" ]]).draw();
+      
+    });
+    
+    $(document).on('change','.roleName',function(e){
+        var groupID=<?php echo $iGroupID?>;
+        var groupRoleName = e.target.value;
+        var roleID=e.target.id.split("-")[1];
+        $.ajax({
+            method: "POST",
+            url:    "/api/groups/"+groupID+"/roles/"+roleID,
+            data: '{"groupRoleName":"'+groupRoleName+'"}'
+        }).done(function(data){
+        });
+        
+    });
+    
+    $(".defaultRole").click(function(e){
+        var groupID=<?php echo $iGroupID?>;
+        var roleID=e.target.id.split("-")[1];
+        $.ajax({
+            method: "POST",
+            url:    "/api/groups/"+groupID+"/defaultRole",
+            data: '{"roleID":"'+roleID+'"}'
+        }).done(function(data){
+            $(".table tr:gt(0)").each(function(){  //iterate through all rows of the role table, skipping the first row (index0) using JQuery gt selector
+                var rowID = $(this).attr("id").split("-")[1]; //get the Role ID based on the html ID attribute
+                if ( rowID== roleID)  // If the row we're on is the row conatining the "default" button that was clicked 
+                {
+                     $("td:nth-child(2)", this).empty(); // empty the third TD element
+                     $("td:nth-child(2)", this).html('<strong><i class="fa fa-check"></i> Default</strong>');  //replace the button with the [Check] Default Text
+                }
+                else if (rowID== defaultRoleID)  // if the row we're on is the row containing the previuos default role
+                {
+                    $("td:nth-child(2)", this).empty();  // empty the third TD element.
+                     $("td:nth-child(2)", this).html('<button type="button" id="defaultRole-'+rowID+'" class="btn btn-success defaultRole">Default</button></td>');  //replace the [Check] Default text with a button to allow the user to set this as default again
+                }
+            }
+            );
+            defaultRoleID=roleID; //update the local variable representing the default role id
+             // re-register the JQuery handlers since we changed the DOM, and new buttons will not have an action bound.
+        });
+    }); 
 
     dataT =  $("#groupRoleTable").DataTable({
     data:groupRoleData,
@@ -257,7 +451,7 @@ $("document").ready(function(){
     "order": [[ 3, "asc" ]]
     });
     
-    initHandlers(); // initialize the event handlers when the document is ready.  Don't do it here, since we need to be able to initialize these handlers on the fly in response to user action.
+     // initialize the event handlers when the document is ready.  Don't do it here, since we need to be able to initialize these handlers on the fly in response to user action.
 });
 
 
@@ -272,167 +466,7 @@ function setGroupRoleOrder(groupID,roleID,groupRoleOrder)
 }
 
 
-function initHandlers()  //funciton to initialize the JQuery button event handlers
-{
-    bStatus = false;
 
-    function confirmDelete() {
-        if (!bStatus) {
-            bStatus = confirm(<?php echo "'" . gettext("Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!") . "'"; ?>);
-            document.GroupEdit.UseGroupProps.checked = !bStatus;
-        }
-        else
-            bStatus = false;
-    }
-    function confirmAdd() {
-        if (!bStatus) {
-            bStatus = confirm(<?php echo "'" . gettext("This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor.") . "'"; ?>);
-            document.GroupEdit.UseGroupProps.checked = bStatus;
-        }
-        else
-            bStatus = false;
-    }
-
-    $("#selectGroupIDDiv").hide();
-    
-    $("#cloneGroupRole").click(function(e){
-    if (e.target.checked)
-        $("#selectGroupIDDiv").show();
-    else
-    {
-        $("#selectGroupIDDiv").hide();
-        $("#seedGroupID").prop('selectedIndex',0);
-    }
-    });
-
-    $("#groupEditForm").submit(function(e) {
-        e.preventDefault();
-        var groupID=<?php echo $iGroupID?>;
-        var formData ={
-            "groupName": $("input[name='Name']").val(),
-            "description": $("textarea[name='Description']").val(),
-            "groupType" : $("select[name='GroupType'] option:selected").val(),
-            "useGroupSpecificProperties": $("input[name='UseGroupProps").prop('checked'),
-            "cloneGroupRole" : $("input[name='cloneGroupRole").prop('checked')
-            
-        };
-        console.log(formData);
-        $.ajax({
-            method: "POST",
-            url:   "/api/groups/"+groupID,
-            data:  JSON.stringify(formData)
-        }).done(function(data){
-           console.log(data);
-           window.location.href = "/GroupView.php?GroupID=<?php echo $iGroupID?>";
-        });
-
-    });
-    
-    $("#addNewRole").click(function(e) {
-        var newRoleName = $("#newRole").val();
-        var groupID=<?php echo $iGroupID?>;
-        $.ajax({
-            method: "POST",
-            url:    "/api/groups/"+groupID+"/roles",
-            data:  '{"roleName":"'+newRoleName+'"}'
-        }).done(function(data){
-            var newRole = data.newRole;
-            var newRow={"lst_OptionName":newRole.roleName,"lst_OptionID":newRole.roleID,"lst_OptionSequence":newRole.sequence};
-            roleCount+=1;
-            var node = dataT.row.add(newRow).node();
-            dataT.rows().invalidate().draw(true);
-            initHandlers();
-            //location.reload(); // this shouldn't be necessary
-        });
-        
-    });
-    
-    $(".deleteRole").click(function(e) {
-        var roleID = e.currentTarget.id.split("-")[1];
-        var groupID=<?php echo $iGroupID?>;
-        console.log("deleting group role: "+roleID);
-        $.ajax({
-            method: "DELETE",
-            url:    "/api/groups/"+groupID+"/roles/"+roleID
-        }).done(function(data){
-            
-            dataT.row(function(idx,data,node) { if  (data.lst_OptionID == roleID){return true;} } ).remove();
-            roleCount-=1;
-            dataT.rows().invalidate().draw(true);
-            initHandlers();
-        });
-    });
-    
-    $(".rollOrder").click(function (e) {
-       var groupID=<?php echo $iGroupID?>;
-       var roleID = e.currentTarget.id.split("-")[1]; // get the ID of the role that we're manipulating
-       var roleSequenceAction =  e.currentTarget.id.split("-")[0];  //determine whether we're increasing or decreasing this role's sequence number
-       var newRoleSequence =0;      //create a variable at the function scope to store the new role's sequence
-       var currentRoleSequence = dataT.cell(function(idx,data,node) { if  (data.lst_OptionID == roleID){console.log(data); return true;} } ,2).data(); //get the sequence number of the selected role
-       console.log("current sequence: "+currentRoleSequence);
-       if (roleSequenceAction == "roleUp")
-       {
-           newRoleSequence = Number(currentRoleSequence)-1;  //decrease the role's sequence number
-       }
-       else if(roleSequenceAction == "roleDown")
-       {
-           newRoleSequence = Number(currentRoleSequence)+1; // increase the role's sequenc number
-       }
-       try
-       {
-      dataT.cell(function(idx,data,node) { if  (data.lst_OptionSequence == newRoleSequence){console.log("replacing datafor cell"); console.log(data); return true;}},2).data(currentRoleSequence);
-       }
-       catch(err)
-       {
-           console.log("no cells to replace - something was funky.");
-       }
-      dataT.cell(function(idx,data,node) { if  (data.lst_OptionID == roleID){console.log(data); return true;}}, 2).data(newRoleSequence); // set our role to the new sequence number
-      setGroupRoleOrder(groupID,roleID,newRoleSequence);       
-      dataT.rows().invalidate().draw(true);
-      dataT.order([[ 2, "asc" ]]).draw();
-      initHandlers();
-    });
-    
-    $(".roleName").change(function(e){
-        var groupID=<?php echo $iGroupID?>;
-        var groupRoleName = e.target.value;
-        var roleID=e.target.id.split("-")[1];
-        $.ajax({
-            method: "POST",
-            url:    "/api/groups/"+groupID+"/roles/"+roleID,
-            data: '{"groupRoleName":"'+groupRoleName+'"}'
-        }).done(function(data){
-        });
-        
-    });
-    
-    $(".defaultRole").click(function(e){
-        var groupID=<?php echo $iGroupID?>;
-        var roleID=e.target.id.split("-")[1];
-        $.ajax({
-            method: "POST",
-            url:    "/api/groups/"+groupID+"/defaultRole",
-            data: '{"roleID":"'+roleID+'"}'
-        }).done(function(data){
-            $(".table tr:gt(0)").each(function(){  //iterate through all rows of the role table, skipping the first row (index0) using JQuery gt selector
-                var rowID = $(this).attr("id").split("-")[1]; //get the Role ID based on the html ID attribute
-                if ( rowID== roleID)  // If the row we're on is the row conatining the "default" button that was clicked 
-                {
-                     $("td:nth-child(2)", this).empty(); // empty the third TD element
-                     $("td:nth-child(2)", this).html('<strong><i class="fa fa-check"></i> Default</strong>');  //replace the button with the [Check] Default Text
-                }
-                else if (rowID== defaultRoleID)  // if the row we're on is the row containing the previuos default role
-                {
-                    $("td:nth-child(2)", this).empty();  // empty the third TD element.
-                     $("td:nth-child(2)", this).html('<button type="button" id="defaultRole-'+rowID+'" class="btn btn-success defaultRole">Default</button></td>');  //replace the [Check] Default text with a button to allow the user to set this as default again
-                }
-            }
-            );
-            defaultRoleID=roleID; //update the local variable representing the default role id
-            initHandlers(); // re-register the JQuery handlers since we changed the DOM, and new buttons will not have an action bound.
-        });
-    }); 
-}
 </script>
 <?php
 require "Include/Footer.php";

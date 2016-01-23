@@ -183,18 +183,31 @@ class GroupService
         return $aDefaultRole[0];       
     }
     
+    function getGroupRoleOrder($groupID,$groupRoleID)
+    {
+         $sSQL = 'SELECT list_lst.lst_OptionSequence FROM list_lst 
+                INNER JOIN group_grp
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                 WHERE group_grp.grp_ID = "'.$groupID.'"
+                   AND list_lst.lst_OptionID = '.$groupRoleID;
+       
+		$rsPropList = RunQuery($sSQL);
+        $rowOrder = mysql_fetch_array($rsPropList);
+        return $rowOrder[0];
+    }
+    
     function deleteGroupRole($groupID,$groupRoleID)
     {
-        $sSQL = 'SELECT \'\' FROM list_lst 
+        $sSQL = 'SELECT * FROM list_lst 
                 INNER JOIN group_grp
                     ON group_grp.grp_RoleListID = list_lst.lst_ID 
                  WHERE group_grp.grp_ID = "'.$groupID.'"';
 		$rsPropList = RunQuery($sSQL);
 		$numRows = mysql_num_rows($rsPropList);
-        
 		// Make sure we never delete the only option
 		if ($numRows > 1)
 		{
+            $thisSequence = $this->getGroupRoleOrder($groupID,$groupRoleID);
 			$sSQL = 'DELETE list_lst.* FROM list_lst 
                     INNER JOIN group_grp
                         ON group_grp.grp_RoleListID = list_lst.lst_ID 
@@ -203,15 +216,27 @@ class GroupService
             
 			RunQuery($sSQL);
         
-            //Shift the remaining rows up by one
+            //Shift the remaining rows IDs up by one
 			
 			$sSQL = 'UPDATE list_lst
                     INNER JOIN group_grp
                     ON group_grp.grp_RoleListID = list_lst.lst_ID 
-                    SET list_lst.lst_OptionID = list_lst.lst_OptionID -1,
-                        list_lst.lst_OptionSequence = list_lst.lst_OptionSequence -1
-                    WHERE group_grp.grp_ID ='.$groupID.'
+                    SET list_lst.lst_OptionID = list_lst.lst_OptionID -1
+                    WHERE group_grp.grp_ID = '.$groupID.'
                     AND list_lst.lst_OptionID >= '.$groupRoleID;
+            
+			RunQuery($sSQL);
+
+            //Shift up the remaining row Sequences by one
+            
+            $sSQL = 'UPDATE list_lst
+                    INNER JOIN group_grp
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                    SET list_lst.lst_OptionSequence = list_lst.lst_OptionSequence -1
+                    WHERE group_grp.grp_ID ='.$groupID.'
+                    AND list_lst.lst_OptionSequence >= '.$thisSequence;
+                    
+                    //echo $sSQL;
             
 			RunQuery($sSQL);
 
@@ -231,7 +256,7 @@ class GroupService
 
             $sSQL = "UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = 1 WHERE p2g2r_grp_ID = $groupID AND p2g2r_rle_ID = $groupRoleID";
             RunQuery($sSQL);
-			
+			return $this->getGroupRoles($groupID);
 		}
 		else
         {
@@ -335,18 +360,18 @@ class GroupService
      
     function enableGroupSpecificProperties($groupID)
     {
-        $sSQLp = "CREATE TABLE groupprop_" . $iGroupID . " (
+        $sSQLp = "CREATE TABLE groupprop_" . $groupID . " (
                         per_ID mediumint(8) unsigned NOT NULL default '0',
                         PRIMARY KEY  (per_ID),
                           UNIQUE KEY per_ID (per_ID)
                         ) ENGINE=MyISAM;";
         RunQuery($sSQLp);
-        $sSQL = "SELECT per_ID FROM person_per INNER JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID WHERE p2g2r_grp_ID = " . $iGroupID . " ORDER BY per_ID";
-        $rsGroupMembers = RunQuery($sSQL);
+        
+        $groupMembers = $this->getGroupMembers($groupID);
 
-        while ($aRow = mysql_fetch_array($rsGroupMembers))
+        foreach ($groupMembers as $member)
         {
-            $sSQLr = "INSERT INTO groupprop_" . $iGroupID . " ( `per_ID` ) VALUES ( '" . $aRow[0] . "' );";
+            $sSQLr = "INSERT INTO groupprop_" . $groupID . " ( `per_ID` ) VALUES ( '" . $member['per_ID'] . "' );";
             RunQuery($sSQLr);
         }
     }
@@ -360,7 +385,6 @@ class GroupService
         $sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
         RunQuery($sSQLp);
     }
-    
     
     function createGroup($groupName)
     {
@@ -452,9 +476,6 @@ class GroupService
         $thisGroup['grp_Name'] = $groupData->groupName;
         $thisGroup['grp_type'] = $groupData->groupType;
         $thisGroup['grp_Description'] = $groupData->description;
-        $bUseGroupProps = $groupData->useGroupSpecificProperties;
-        $cloneGroupRole = FilterInputArr($_POST,"cloneGroupRole",'int');
-        $seedGroupID = FilterInputArr($_POST,"seedGroupID",'int');
 
         //Did they enter a Name?
         if (strlen($thisGroup['grp_Name']) < 1)
@@ -501,6 +522,7 @@ class GroupService
             $values['defaultRole'] = $this->getGroupDefaultRole($row['grp_ID']);
             $values['roles']=$this->getGroupRoles($row['grp_ID']);
             $values['totalMembers']=$this->getGroupTotalMembers($row['grp_ID']);
+            $values['grp_hasSpecialProps']=$row['grp_hasSpecialProps']=="true";
             array_push($return, $values);
         }
         if (count($return) == 1)

@@ -63,7 +63,13 @@ if ($_SESSION['bManageGroups'])
 
 </div>
 <script>
-var groupData = <?php echo $groupService->getGroupJSON($groupService->getGroups()); ?>;
+
+ var groupData = <?php $json = $groupService->getGroupJSON($groupService->getGroups()); if ($json) { echo $json; } else { echo 0; } ?>;
+
+if (!$.isArray(groupData.groups))
+{
+    groupData.groups=[groupData.groups];
+}
 console.log(groupData.groups);
 var dataT = 0;
 $(document).ready(function() {

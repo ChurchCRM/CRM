@@ -136,8 +136,7 @@ $app->group('/groups', function () use ($app) {
     
     $app->delete('/:groupID/roles/:roleID', function ($groupID,$roleID) use ($app, $groupService) {
         try{
-            $groupService->deleteGroupRole($groupID,$roleID);
-            echo '{"success":"true"}';
+            echo json_encode($groupService->deleteGroupRole($groupID,$roleID));
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
@@ -165,6 +164,27 @@ $app->group('/groups', function () use ($app) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
     });
+    
+    $app->post('/:groupID/setGroupSpecificPropertyStatus', function ($groupID) use ($app, $groupService) {
+        try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            if ($input->GroupSpecificPropertyStatus)
+            {
+                $groupService->enableGroupSpecificProperties($groupID);
+                return '{"status":"group specific properties enabled"}';
+            }
+            else
+            {
+                $groupService->disableGroupSpecificProperties($groupID);
+                return '{"status":"group specific properties disabled"}';
+            }
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
 });
 
 $app->group('/database', function () use ($app) {
