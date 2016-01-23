@@ -216,7 +216,26 @@ class GroupService
             
 			RunQuery($sSQL);
         
-            //Shift the remaining rows IDs up by one
+           
+
+
+			//check if we've deleted the old group default role.  If so, reset default to role ID 1
+			// Next, if any group members were using the deleted role, reset their role to the group default.
+
+            // Reset if default role was just removed.
+            $sSQL = "UPDATE group_grp SET grp_DefaultRole = 1 WHERE grp_ID = $groupID AND grp_DefaultRole = $groupRoleID";
+            RunQuery($sSQL);
+
+            // Get the current default role and Group ID (so we can update the p2g2r table)
+            // This seems backwards, but grp_RoleListID is unique, having a 1-1 relationship with grp_ID.
+            $sSQL = "SELECT grp_ID,grp_DefaultRole FROM group_grp WHERE grp_ID = $groupID";
+            $rsTemp = RunQuery($sSQL);
+            $aTemp = mysql_fetch_array($rsTemp);
+
+            $sSQL = "UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = 1 WHERE p2g2r_grp_ID = $groupID AND p2g2r_rle_ID = $groupRoleID";
+            RunQuery($sSQL);
+            
+             //Shift the remaining rows IDs up by one
 			
 			$sSQL = 'UPDATE list_lst
                     INNER JOIN group_grp
@@ -239,23 +258,7 @@ class GroupService
                     //echo $sSQL;
             
 			RunQuery($sSQL);
-
-
-			//check if we've deleted the old group default role.  If so, reset default to role ID 1
-			// Next, if any group members were using the deleted role, reset their role to the group default.
-
-            // Reset if default role was just removed.
-            $sSQL = "UPDATE group_grp SET grp_DefaultRole = 1 WHERE grp_ID = $groupID AND grp_DefaultRole = $groupRoleID";
-            RunQuery($sSQL);
-
-            // Get the current default role and Group ID (so we can update the p2g2r table)
-            // This seems backwards, but grp_RoleListID is unique, having a 1-1 relationship with grp_ID.
-            $sSQL = "SELECT grp_ID,grp_DefaultRole FROM group_grp WHERE grp_ID = $groupID";
-            $rsTemp = RunQuery($sSQL);
-            $aTemp = mysql_fetch_array($rsTemp);
-
-            $sSQL = "UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = 1 WHERE p2g2r_grp_ID = $groupID AND p2g2r_rle_ID = $groupRoleID";
-            RunQuery($sSQL);
+            
 			return $this->getGroupRoles($groupID);
 		}
 		else
