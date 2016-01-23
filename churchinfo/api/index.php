@@ -63,7 +63,7 @@ $app->group('/groups', function () use ($app) {
     
     $app->post('/:groupID/removeuser/:userID', function ($groupID,$userID) use ($groupService) {
         try {
-            $groupService->removeUserFromGroup($userID,$groupID);
+            $groupService->removeUserFromGroup($groupID,$userID);
             echo '{"success":"true"}';
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
@@ -71,7 +71,7 @@ $app->group('/groups', function () use ($app) {
     });
     $app->post('/:groupID/adduser/:userID', function ($groupID,$userID) use ($groupService) {
         try {
-            echo json_encode( $groupService->addUserToGroup($userID,$groupID,0));
+            echo json_encode( $groupService->addUserToGroup($groupID,$userID,0));
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

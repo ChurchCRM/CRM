@@ -10,6 +10,13 @@ class GroupService
         $this->baseURL = $_SESSION['sURLPath'];
     }
 
+/**
+ *  setGroupMemberRole
+ *  @param  int $groupID    group id in which to set the member's role
+ *  @param  int $personID   ID of the person who'se role to set
+ *  @param  int $roleID     Role ID to set to the person
+ *  return array containing the group member
+ */
     function setGroupMemberRole($groupID,$personID,$roleID)
     {
        $sSQL= "UPDATE person2group2role_p2g2r
@@ -22,44 +29,54 @@ class GroupService
         $update = RunQuery($sSQL); 
         return $this->getGroupMembers($groupID,$personID);
     }
-
-    function removeUserFromGroup($iPersonID, $iGroupID)
+/**
+ *  removeUserFromGroup
+ *  @param  int $groupID        Group ID from which  to remove the user
+ *  @param  int $personID       UserID to remove from the group
+ */
+    function removeUserFromGroup($groupID,$personID)
     {
-        $sSQL = "DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = " . $iPersonID . " AND p2g2r_grp_ID = " . $iGroupID;
+        $sSQL = "DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = " . $personID . " AND p2g2r_grp_ID = " . $groupID;
         RunQuery($sSQL);
 
         // Check if this group has special properties
-        $sSQL = "SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = " . $iGroupID;
+        $sSQL = "SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = " . $groupID;
         $rsTemp = RunQuery($sSQL);
         $rowTemp = mysql_fetch_row($rsTemp);
         $bHasProp = $rowTemp[0];
 
         if ($bHasProp == 'true')
         {
-            $sSQL = "DELETE FROM groupprop_" . $iGroupID . " WHERE per_ID = '" . $iPersonID . "'";
+            $sSQL = "DELETE FROM groupprop_" . $groupID . " WHERE per_ID = '" . $personID . "'";
             RunQuery($sSQL);
         }
 
         // Reset any group specific property fields of type "Person from Group" with this person assigned
-        $sSQL = "SELECT grp_ID, prop_Field FROM groupprop_master WHERE type_ID = 9 AND prop_Special = " . $iGroupID;
+        $sSQL = "SELECT grp_ID, prop_Field FROM groupprop_master WHERE type_ID = 9 AND prop_Special = " . $groupID;
         $result = RunQuery($sSQL);
         while ($aRow = mysql_fetch_array($result))
         {
-            $sSQL = "UPDATE groupprop_" . $aRow['grp_ID'] . " SET " . $aRow['prop_Field'] . " = NULL WHERE " . $aRow['prop_Field'] . " = " . $iPersonID;
+            $sSQL = "UPDATE groupprop_" . $aRow['grp_ID'] . " SET " . $aRow['prop_Field'] . " = NULL WHERE " . $aRow['prop_Field'] . " = " . $personID;
             RunQuery($sSQL);
         }
 
         // Reset any custom person fields of type "Person from Group" with this person assigned
-        $sSQL = "SELECT custom_Field FROM person_custom_master WHERE type_ID = 9 AND custom_Special = " . $iGroupID;
+        $sSQL = "SELECT custom_Field FROM person_custom_master WHERE type_ID = 9 AND custom_Special = " . $groupID;
         $result = RunQuery($sSQL);
         while ($aRow = mysql_fetch_array($result))
         {
-            $sSQL = "UPDATE person_custom SET " . $aRow['custom_Field'] . " = NULL WHERE " . $aRow['custom_Field'] . " = " . $iPersonID;
+            $sSQL = "UPDATE person_custom SET " . $aRow['custom_Field'] . " = NULL WHERE " . $aRow['custom_Field'] . " = " . $personID;
             RunQuery($sSQL);
         }
     }
 
-    function addUserToGroup($iPersonID, $iGroupID, $iRoleID)
+/**
+ *  addUserToGroup
+ *  @param  int $groupID        Group ID from which  to remove the user
+ *  @param  int $personID       UserID to remove from the group
+ *  @param  int $roleID     Role ID to set to the person
+ */
+    function addUserToGroup($iGroupID, $iPersonID, $iRoleID)
     {
     //
 // Adds a person to a group with specified role.
@@ -95,23 +112,26 @@ class GroupService
 
     return $this->getGroupMembers($iGroupID,$iPersonID );
 }
-    
+/**
+ *  search
+ *  @param  string $searchTerm  the string of text to search
+ *  @return array containing group objects of all of the gropus which match the search term.
+ */    
     function search($searchTerm)
     {
-        
-        $fetch = 'SELECT grp_ID FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type WHERE grp_Name LIKE \'%' . $searchTerm . '%\' OR  grp_Description LIKE \'%' . $searchTerm . '%\' OR lst_OptionName LIKE \'%'.$searchTerm.'%\'  order by grp_Name LIMIT 15';
-        $result = mysql_query($fetch);
-
+        $sSQL = 'SELECT grp_ID FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type WHERE grp_Name LIKE \'%' . $searchTerm . '%\' OR  grp_Description LIKE \'%' . $searchTerm . '%\' OR lst_OptionName LIKE \'%'.$searchTerm.'%\'  order by grp_Name LIMIT 15';
+        $result = mysql_query($sSQL);
         $return = array();
         while ($row = mysql_fetch_array($result)) {
-            
             array_push($return, $this->getGroups($row['grp_ID']));
         }
-
-        return $return;
-        
+        return $return; 
     }
-    
+/**
+ *  getGroupJSON
+ *  @param  array $groups array containing group objects
+ *  @return string represnting the JSON of the given array, with key
+ */     
     function getGroupJSON($groups)
     {
         if ($groups)
@@ -123,7 +143,11 @@ class GroupService
               return false;
         }
     }
-    
+/**
+ *  getViewURI
+ *  @param  int $id ID of the group for which to return the view URI
+ *  @return string represnting the view page URI for the given group
+ */     
     function getViewURI($Id)
     {
         return $this->baseURL ."/GroupView.php?GroupID=".$Id;

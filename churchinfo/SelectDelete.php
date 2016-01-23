@@ -75,7 +75,7 @@ function DeletePerson($iPersonID)
 	while ($aRow = mysql_fetch_array($rsAssignedGroups))
 	{
 		extract($aRow);
-        $groupService->removeUserFromGroup($iPersonID, $p2g2r_grp_ID);
+        $groupService->removeUserFromGroup($p2g2r_grp_ID,$iPersonID);
 	}
 
 	// Remove custom field data
