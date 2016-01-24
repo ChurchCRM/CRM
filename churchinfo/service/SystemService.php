@@ -60,6 +60,7 @@ class SystemService {
             $this->playbackSQLtoDatabase($file['tmp_name']);
         }
         exec ("rm -rf $restoreResult->backupRoot"); 
+        $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
        return $restoreResult;
         
     }
@@ -235,7 +236,7 @@ class SystemService {
         $ver_version = $this->getDatabaseVersion();
         if ($ver_version== $_SESSION['sSoftwareInstalledVersion'])
         {
-            return true;
+            return "Current";
         }
 
         // This code will automatically update from 1.2.14 (last good churchinfo build to 2.0.0 for ChurchCRM
@@ -245,7 +246,7 @@ class SystemService {
             $sError = 'Initialize';  // Initialize error string
 
             //TODO upgrade script
-            return true;
+            return "Upgraded";
         }
         
          // This code will automatically update from 1.3.0 (early build of ChurchCRM)
@@ -257,7 +258,7 @@ class SystemService {
             //TODO upgrade script
             $this->rebuildMenus();
               $this->playbackSQLtoDatabase("/vagrant/mysql/upgrade/1.3.0-2.0.0.sql");
-            return true;
+            return "Upgraded";
         }
 
         return false;
