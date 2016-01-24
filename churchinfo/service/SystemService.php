@@ -60,6 +60,7 @@ class SystemService {
             $this->playbackSQLtoDatabase($file['tmp_name']);
         }
         exec ("rm -rf $restoreResult->backupRoot"); 
+        $this->rebuildMenus();
         $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
        return $restoreResult;
         
