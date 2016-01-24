@@ -50,6 +50,7 @@ $("document").ready(function(){
             data:  JSON.stringify(formData)
         }).done(function(data){
            console.log(data);
+           window.location.href="/GroupList.php";
         });
 
     });
@@ -84,6 +85,8 @@ $("document").ready(function(){
             console.log(data);
             dataT.clear();
             dataT.rows.add(data);
+            if (roleID == defaultRoleID)        // if we delete the default group role, set the default group role to 1 before we tell the table to re-render so that the buttons work correctly
+                defaultRoleID =1;
             dataT.rows().invalidate().draw(true);
             
             
@@ -142,29 +145,16 @@ $("document").ready(function(){
         
     });
     
-    $(".defaultRole").click(function(e){
-       
+    $(document).on('click','.defaultRole', function(e){
+       console.log(e);
         var roleID=e.target.id.split("-")[1];
         $.ajax({
             method: "POST",
             url:    "/api/groups/"+groupID+"/defaultRole",
             data: '{"roleID":"'+roleID+'"}'
         }).done(function(data){
-            $(".table tr:gt(0)").each(function(){  //iterate through all rows of the role table, skipping the first row (index0) using JQuery gt selector
-                var rowID = $(this).attr("id").split("-")[1]; //get the Role ID based on the html ID attribute
-                if ( rowID== roleID)  // If the row we're on is the row conatining the "default" button that was clicked 
-                {
-                     $("td:nth-child(2)", this).empty(); // empty the third TD element
-                     $("td:nth-child(2)", this).html('<strong><i class="fa fa-check"></i> Default</strong>');  //replace the button with the [Check] Default Text
-                }
-                else if (rowID== defaultRoleID)  // if the row we're on is the row containing the previuos default role
-                {
-                    $("td:nth-child(2)", this).empty();  // empty the third TD element.
-                     $("td:nth-child(2)", this).html('<button type="button" id="defaultRole-'+rowID+'" class="btn btn-success defaultRole">Default</button></td>');  //replace the [Check] Default text with a button to allow the user to set this as default again
-                }
-            }
-            );
             defaultRoleID=roleID; //update the local variable representing the default role id
+            dataT.rows().invalidate().draw(true);
              // re-register the JQuery handlers since we changed the DOM, and new buttons will not have an action bound.
         });
     }); 
@@ -210,7 +200,6 @@ $("document").ready(function(){
                     sequenceCell += '<button type="button" id="roleUp-'+full.lst_OptionID+'" class="btn rollOrder"> <i class="fa fa-arrow-up"></i></button>&nbsp;';
                 }
                 sequenceCell += data;
-                console.log(roleCount);
                 if (data != roleCount)
                 {
                     sequenceCell += '&nbsp;<button type="button" id="roleDown-'+full.lst_OptionID+'" class="btn rollOrder"> <i class="fa fa-arrow-down"></i></button>';

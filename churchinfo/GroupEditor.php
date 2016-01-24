@@ -171,24 +171,11 @@ require "Include/Header.php";
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <strong></strong>Group name changes are saved as soon as the box loses focus
         </div>
-
-        <?php
-        if (strlen($iGroupID) > 0)
-        {
-        ?>
-            <table class="table" id="groupRoleTable">
-            </table>
-            <label for="newRole">New Role: </label><input type="text" class="form-control" id="newRole" name="newRole">
-            <br>
-            <button type="button" id="addNewRole" class="btn btn-primary">Add New Role</button>
-
-        <?php
-        }
-        else
-        {
-            ?><b class="MediumLargeText"><?php echo gettext("Initial Group Creation:  Group roles can be edited after the first save."); ?></b><br><br><?php
-        }
-        ?>
+        <table class="table" id="groupRoleTable">
+        </table>
+        <label for="newRole">New Role: </label><input type="text" class="form-control" id="newRole" name="newRole">
+        <br>
+        <button type="button" id="addNewRole" class="btn btn-primary">Add New Role</button>
     </div>
 </div>
 <script>

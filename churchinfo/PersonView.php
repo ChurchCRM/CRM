@@ -843,7 +843,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 	function GroupRemove( Group, Person ) {
 		var answer = confirm (<?php echo "'",  "'"; ?>)
 		if ( answer )
-			window.location="GroupView.php?GroupID=" + Group
+			$.ajax({
+                method: "POST",
+                url:    "/api/groups/"+Group+"/removeuser/"+Person
+            }).done(function (data){
+               location.reload(); 
+            });
 	}
 </script>
 

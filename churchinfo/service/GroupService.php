@@ -152,7 +152,11 @@ class GroupService
     {
         return $this->baseURL ."/GroupView.php?GroupID=".$Id;
     }
-
+/**
+ *  getGroupRoles
+ *  @param  int $groupID ID of the group
+ *  @return array represnting the roles of the group
+ */
     function getGroupRoles($groupID)
     {
         $groupRoles = array();
@@ -174,7 +178,13 @@ class GroupService
 		return $groupRoles;
 
     }
-      
+    
+/**
+ *  setGroupRoleName
+ *  @param  int $groupID ID of the group 
+ *  @param  int $groupRole ID of the  role in the group 
+ *  @param  string $groupRoleName Name of the group role
+ */  
     function setGroupRoleName($groupID,$groupRoleID,$groupRoleName)
     {
         $sSQL =  'UPDATE list_lst
@@ -542,6 +552,7 @@ class GroupService
             $values['displayName'] = $row['grp_Name'];
             $values['grp_Type'] = $row['grp_Type'];
             $values['groupType'] = $row['lst_OptionName'];
+            $values['grp_DefaultRole'] = $row['grp_DefaultRole'];
             $values['groupDescription'] = $row['grp_Description'];
             $values['uri'] = $this->getViewURI($row['grp_ID']);
             $values['memberCount'] = $this->getGroupTotalMembers($row['grp_ID']);
