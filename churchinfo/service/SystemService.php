@@ -241,11 +241,13 @@ class SystemService {
 
         // This code will automatically update from 1.2.14 (last good churchinfo build to 2.0.0 for ChurchCRM
         if (strncmp($ver_version, "1.2.14", 6) == 0) {
-
             $old_ver_version = $ver_version;
             $sError = 'Initialize';  // Initialize error string
-
+            $sSQL = "INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('".$_SESSION['sSoftwareInstalledVersion']."',NOW())";
+            RunQuery($sSQL); // False means do not stop on error
             //TODO upgrade script
+            $this->rebuildMenus();
+            $this->playbackSQLtoDatabase("/vagrant/mysql/upgrade/1.2.14-2.0.0.sql");
             return "Upgraded";
         }
         
@@ -257,7 +259,7 @@ class SystemService {
             RunQuery($sSQL); // False means do not stop on error
             //TODO upgrade script
             $this->rebuildMenus();
-              $this->playbackSQLtoDatabase("/vagrant/mysql/upgrade/1.3.0-2.0.0.sql");
+            $this->playbackSQLtoDatabase("/vagrant/mysql/upgrade/1.3.0-2.0.0.sql");
             return "Upgraded";
         }
 
