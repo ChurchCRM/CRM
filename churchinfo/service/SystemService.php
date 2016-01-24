@@ -256,6 +256,7 @@ class SystemService {
             RunQuery($sSQL); // False means do not stop on error
             //TODO upgrade script
             $this->rebuildMenus();
+              $this->playbackSQLtoDatabase("/vagrant/mysql/upgrade/1.3.0-2.0.0.sql");
             return true;
         }
 
