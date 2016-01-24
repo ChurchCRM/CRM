@@ -631,12 +631,6 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
 -- Table structure for table `menuconfig_mcf`
 --
 
-DROP TABLE IF EXISTS menuconfig_mcf;
-
---
--- Table structure for table `menuconfig_mcf`
---
-
 CREATE TABLE `menuconfig_mcf` (
   `mid` int(11) NOT NULL auto_increment,
   `name` varchar(20) NOT NULL,
@@ -660,6 +654,8 @@ CREATE TABLE `menuconfig_mcf` (
 --
 -- Dumping data for table `menuconfig_mcf`
 --
+
+
 INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_english`, `content`, `uri`, `statustext`, `security_grp`, `session_var`, `session_var_in_text`, `session_var_in_uri`, `url_parm_name`, `active`, `sortorder`, `icon`) VALUES
 (1, 'root', '', 1, 'Main', 'Main', '', '', 'bAll', NULL, 0, 0, NULL, 1, 0, NULL),
 (2, 'sundayschool-dash', 'sundayschool', 0, 'Dashboard', 'Dashboard', 'Reports/SundaySchoolClassList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
@@ -725,15 +721,7 @@ UPDATE menuconfig_mcf SET content=content_english;
 --
 
 
---
--- AUTO_INCREMENT for dumped tables
---
 
---
--- AUTO_INCREMENT for table `menuconfig_mcf`
---
-ALTER TABLE `menuconfig_mcf`
-  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=102;
 -- --------------------------------------------------------
 
 -- 
