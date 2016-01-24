@@ -225,11 +225,11 @@ if ($_SESSION['bNeedPasswordChange']) { ?>
                     <?php } ?>
                     <div class="form-group">
                         <label for="NewPassword1"><?php echo gettext("New Password:"); ?></label>
-                        <input type="password" name="NewPassword1" id="NewPassword1" class="form-control" value="<?php echo $sNewPassword1 ?>" autofocus >
+                        <input type="password" name="NewPassword1" id="NewPassword1" class="form-control" value="<?php echo $sNewPassword1 ?>">
                     </div>
                     <div class="form-group">
                         <label for="NewPassword2"><?php echo gettext("Confirm New Password:"); ?></label>
-                        <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control" value="<?php echo $sNewPassword2 ?>" autofocus><?php echo $sNewPasswordError ?>
+                        <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control" value="<?php echo $sNewPassword2 ?>"><?php echo $sNewPasswordError ?>
                     </div>
                 </div>
                 <!-- /.box-body -->
