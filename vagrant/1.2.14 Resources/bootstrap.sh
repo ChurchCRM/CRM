@@ -39,8 +39,8 @@ echo "Database: tables and metadata deployed"
 # Help info
 
 echo "============================================================================="
-echo "======== Church CRM is now hosted @ http://192.168.33.11/      =============="
+echo "======== ChurchInfo is now hosted @ http://192.168.33.11/      =============="
 echo "======== CRM User Name: admin                                  =============="
-echo "======== 1st time login password for admin: changeme           =============="
-echo "======== churchCRM is active project source                    =============="
+echo "======== 1st time login password for admin: churchinfoadmin    =============="
+echo "======== churchInfo is active project source                   =============="
 echo "============================================================================="
