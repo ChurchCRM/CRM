@@ -1,14 +1,31 @@
 <?php
 
+// require_once (dirname(__FILE__).DIRECTORY_SEPARATOR."/../vendor/autoload.php");
+
+// require_once "../orm/model/ChurchCRM/members/PersonQuery.php";
+
+// use ChurchCRM\members\PersonQuery as PersonQuery;
+
 class PersonService {
 
     private $baseURL;
+    private $personQuery;
 
     public function __construct() {
         $this->baseURL = $_SESSION['sURLPath'];
+        // $this->personQuery = = new \ChurchCRM\members\PersonQuery();
     }
 
-    function photo($id) {
+    function get($id) {
+        //return $this->personQuery->findPK($id);
+        $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email FROM person_per WHERE per_ID =' . $id;
+        $person = RunQuery($sSQL);
+        extract(mysql_fetch_array($person));
+        return "{id: $id, fName: $per_FirstName}";
+
+    }
+
+    function getPhoto($id) {
         if ($id != "") {
             $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email FROM person_per WHERE per_ID =' . $id;
             $person = RunQuery($sSQL);
@@ -28,6 +45,26 @@ class PersonService {
         }
 
         return $this->baseURL."/Images/x.gif";
+    }
+
+    function deleteUploadedPhoto($id) {
+        $validExtensions = array("jpeg", "jpg", "png");
+        $finalFileName = "Images/Person/" . $id;
+        $finalFileNameThumb = "Images/Person/thumbnails/" . $id;
+        $deleted = false;
+        while (list(, $ext) = each($validExtensions)) {
+            $tmpFile = $finalFileName .".".$ext;
+            if (file_exists($tmpFile)) {
+                unlink($tmpFile);
+                $deleted = true;
+            }
+            $tmpFile = $finalFileNameThumb .".".$ext;
+            if (file_exists($tmpFile)) {
+                unlink($tmpFile);
+                $deleted = true;
+            }
+        }
+        return $deleted;
     }
 
     private

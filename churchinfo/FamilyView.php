@@ -28,7 +28,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/GeoCoder.php";
 require 'Include/PersonFunctions.php';
-require 'service/MailChimpService.php';
+require 'service/MailchimpService.php';
 
 $mailchimp = new MailChimpService();
 //Set the page title

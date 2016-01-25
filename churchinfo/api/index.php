@@ -1,6 +1,5 @@
 <?php
 
-
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -10,25 +9,16 @@ if (!isset($_SESSION['iUserID'])) {
     exit;
 }
 
-require_once '../vendor/Slim/Slim.php';
-
-use Slim\Slim;
-
-Slim::registerAutoloader();
-
 // Services
 require_once "../service/PersonService.php";
 require_once "../service/FamilyService.php";
 require_once "../service/DataSeedService.php";
 require_once "../service/FinancialService.php";
+require_once '../vendor/Slim/slim/Slim/Slim.php';
+require_once '../service/SystemService.php';
+use Slim\Slim;
 
-function getJSONFromApp($app)
-{
-	
-	$request = $app->request();
-    $body = $request->getBody();
-    return json_decode($body);
-}
+Slim::registerAutoloader();
 
 $app = new Slim();
 
@@ -45,10 +35,48 @@ $app->container->singleton('FamilyService', function () {
 $app->container->singleton('DataSeedService', function () {
     return new DataSeedService();
 });
-
+$app->container->singleton('SystemService', function () {
+    return new SystemService();
+});
 
 $app->container->singleton('FinancialService', function () {
    return new FinancialService();
+});
+
+
+$app->group('/database', function () use ($app) {
+    $systemService = $app->SystemService;
+    $app->post('/backup', function () use ($app, $systemService) {
+        try {
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            $backup = $systemService->getDatabaseBackup($input);
+            echo json_encode($backup);
+        } catch (Exception $e) {
+             echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->post('/restore', function () use ($app, $systemService) {
+        try {
+            $request = $app->request();
+            $body = $request->getBody();
+            $restore = $systemService->restoreDatabaseFromBackup();
+            echo json_encode($restore);
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->get('/download/:filename',function ($filename) use($app, $systemService) {
+        try {
+                $systemService->download($filename);
+            } catch (Exception $e) {
+                echo '{"error":{"text":' . $e->getMessage() . '}}';
+            }
+        
+    });
 });
 
 $app->group('/search', function () use ($app) {
@@ -64,19 +92,39 @@ $app->group('/search', function () use ($app) {
 
 
 $app->group('/persons', function () use ($app) {
-    $app->get('/search/:query', function ($query) use ($app) {
+    $personService = $app->PersonService;
+    $app->get('/search/:query', function ($query) use ($personService) {
         try {
-            echo $app->PersonService->search($query);
+            echo $personService->search($query);
         } catch (Exception $e) {
-            echo '{"error":{"text":' . $e->getMessage() . '}}';
+            echo exceptionToJSON($e);
         }
     });
-    $app->group('/:id', function () use ($app) {
-        $app->get('/photo', function ($id) use ($app) {
+    $app->group('/:id', function () use ($app, $personService) {
+        $app->get('/', function ($id) use ($personService) {
             try {
-                $app->PersonService->photo($id);
+                $person = $personService->get($id);
+                echo $person;
             } catch (Exception $e) {
-                echo '{"error":{"text":' . $e->getMessage() . '}}';
+                echo exceptionToJSON($e);
+            }
+        });
+        $app->get('/photo', function ($id) use ($personService) {
+            try {
+                echo $personService->getPhoto($id);
+            } catch (Exception $e) {
+                echo exceptionToJSON($e);
+            }
+        });
+        $app->delete('/photo', function ($id) use ($personService) {
+            try {
+                $deleted = $personService->deleteUploadedPhoto($id);
+                if (!$deleted)
+                    echo "{filesDeleted: no images found}";
+                else
+                    echo "{filesDeleted: yes}";
+            } catch (Exception $e) {
+                echo exceptionToJSON($e);
             }
         });
     });
@@ -87,14 +135,14 @@ $app->group('/families', function () use ($app) {
         try {
             echo $app->FamilyService->search($query);
         } catch (Exception $e) {
-            echo '{"error":{"text":' . $e->getMessage() . '}}';
+            echo exceptionToJSON($e);
         }
     });
     $app->get('/lastedited', function ($query) use ($app) {
         try {
             $app->FamilyService->lastEdited();
         } catch (Exception $e) {
-            echo '{"error":{"text":' . $e->getMessage() . '}}';
+            echo exceptionToJSON($e);
         }
     });
 	$app->get('/byCheckNumber/:tScanString', function($tScanString) use ($app) 
@@ -118,7 +166,6 @@ $app->group('/families', function () use ($app) {
 });
 
 $app->group('/deposits',function () use ($app) {
-	
 	$app->get('/',function() use ($app) 
 	{
 		try {
@@ -127,7 +174,6 @@ $app->group('/deposits',function () use ($app) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
 	});
-	
 	$app->get('/:id',function($id) use ($app) 
 	{
 		try {
@@ -136,7 +182,6 @@ $app->group('/deposits',function () use ($app) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }	
 	})->conditions(array('id' => '[0-9]+'));
-	
 	$app->get('/:id/payments',function($id) use ($app) 
 	{
 		try {
@@ -156,7 +201,6 @@ $app->group('/payments',function () use ($app) {
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
-		
 	});
 	$app->post('/', function () use ($app) {
 		try {
@@ -176,9 +220,7 @@ $app->group('/payments',function () use ($app) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
-        }
-		
-		
+        }	
 	});
 	$app->get('/byFamily/:familyId(/:fyid)', function ($familyId,$fyid=-1) use ($app) {
 		try {
@@ -189,8 +231,6 @@ $app->group('/payments',function () use ($app) {
         }catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
-		
-		
 	});
 	$app->delete('/:groupKey',function ($groupKey) use ($app) {
 		try {
@@ -201,12 +241,8 @@ $app->group('/payments',function () use ($app) {
 			echo '{"status":"ok"}';
         }catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
-        }
-		
-		
+        }	
 	});
-	
-	
 });
 
 
@@ -254,7 +290,21 @@ $app->group('/data/seed', function () use ($app) {
 
 });
 
+function getJSONFromApp($app)
+{
+	
+	$request = $app->request();
+    $body = $request->getBody();
+    return json_decode($body);
+}
+
+/**
+ * @param $e
+ */
+function exceptionToJSON($e)
+{
+    return '{"error":{"text":' . $e->getMessage() . ' !}}';
+}
+
 $app->run();
-
-
 

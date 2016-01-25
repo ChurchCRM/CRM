@@ -13,7 +13,7 @@
 
 require '../Include/Config.php';
 require '../Include/Functions.php';
-require '../service/MailChimpService.php';
+require '../service/MailchimpService.php';
 require '../service/PersonService.php';
 
 $mailchimp = new MailChimpService();
@@ -52,7 +52,7 @@ $rsPeopleWithEmail = RunQuery($sSQL);
                     $mailchimpList = $mailchimp->isEmailInMailChimp($per_Email);
                     if ($mailchimpList == "") { ?>
                     <tr>
-                        <td><img class="contacts-list-img" src="<?= $personService->photo($per_id) ?>"></td>
+                        <td><img class="contacts-list-img" src="<?= $personService->getPhoto($per_id) ?>"></td>
                         <td><a href='<?= $personService->getViewURI($per_id) ;?>'><?= $per_FirstName . " " . $per_LastName; ?></a></td>
                         <td><?= $per_Email; ?></td>
                     </tr>
