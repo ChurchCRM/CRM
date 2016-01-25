@@ -2,6 +2,22 @@
 
 class SystemService {
 
+    function playbackSQLtoDatabase($fileName)
+    {
+        $query = '';
+        $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($restoreQueries as $line) {
+            if ($line != '' && strpos($line, '--') === false) {
+                $query .= $line;
+                if (substr($query, -1) == ';') {
+                    $person = RunQuery($query);
+                    $query = '';
+                }
+            }
+        }
+        
+    }
+
     function restoreDatabaseFromBackup(){
         $restoreResult = new StdClass();
         global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral,$sGZIPname;
@@ -24,7 +40,7 @@ class SystemService {
                 $restoreResult->uncompressCommand = "tar -zxvf ".$file['tmp_name']." --directory $restoreResult->backupRoot";
                 exec($restoreResult->uncompressCommand, $rs1, $returnStatus);
                 $restoreResult->SQLfile = "$restoreResult->backupRoot/ChurchCRM-Database.sql";
-                $restoreQueries = file($restoreResult->SQLfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+                $this->playbackSQLtoDatabase($restoreResult->SQLfile);
                 exec("rm -rf $restoreResult->root/Images/*");
                 exec("mv -f $restoreResult->backupRoot/Images/* $restoreResult->root/Images");
                 
@@ -36,25 +52,16 @@ class SystemService {
                 $restoreResult->uncompressCommand = "sGZIPname -d $restoreResult->backupRoot/".$file['name'];
                 exec($restoreResult->uncompressCommand, $rs1, $returnStatus);;
                 $restoreResult->SQLfile = $restoreResult->backupRoot."/".substr($file['name'],0,strlen($file['name'])-3);
-                $restoreQueries = file($restoreResult->SQLfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+                $this->playbackSQLtoDatabase($restoreResult->SQLfile);
             }
         }
         else if ($restoreResult->type == "sql")
         {
-             $restoreQueries = file($file['tmp_name'], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        }
-        $query = '';
-        foreach ($restoreQueries as $line) {
-            if ($line != '' && strpos($line, '--') === false) {
-                $query .= $line;
-                if (substr($query, -1) == ';') {
-                    $person = RunQuery($query);
-                    $query = '';
-                }
-            }
+            $this->playbackSQLtoDatabase($file['tmp_name']);
         }
         exec ("rm -rf $restoreResult->backupRoot"); 
-        
+        $this->rebuildMenus();
+        $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
        return $restoreResult;
         
     }
@@ -194,6 +201,68 @@ class SystemService {
     }
     
     function setConfigurationSetting($settingName,$settingValue){
+        
+    }
+
+    function getDatabaseVersion()
+    {
+         // Check if the table version_ver exists.  If the table does not exist then
+        // SQL scripts must be manually run to get the database up to version 1.2.7
+        $bVersionTableExists = FALSE;
+        if(mysql_num_rows(RunQuery("SHOW TABLES LIKE 'version_ver'")) == 1) {
+            $bVersionTableExists = TRUE;
+        }
+
+        // Let's see if the MySQL version matches the PHP version.  If we have a match then
+        // proceed to Menu.php.  Otherwise further error checking is needed.
+        $ver_version = "unknown";
+        if ($bVersionTableExists) {
+            $sSQL = 'SELECT * FROM version_ver ORDER BY ver_ID DESC';
+            $aRow = mysql_fetch_array(RunQuery($sSQL));
+            extract($aRow);
+            return $ver_version;
+        }
+        return false;
+        
+    }
+    
+    function rebuildMenus()
+    {
+        $root = dirname(dirname(dirname(__FILE__)));
+        $this->playbackSQLtoDatabase("/vagrant/mysql/upgrade/rebuild_nav_menus.sql");
+    }
+    
+    function checkDatabaseVersion()
+    {
+        $ver_version = $this->getDatabaseVersion();
+        if ($ver_version== $_SESSION['sSoftwareInstalledVersion'])
+        {
+            return "Current";
+        }
+
+        // This code will automatically update from 1.2.14 (last good churchinfo build to 2.0.0 for ChurchCRM
+        if (strncmp($ver_version, "1.2.14", 6) == 0) {
+            $old_ver_version = $ver_version;
+            $sSQL = "INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('".$_SESSION['sSoftwareInstalledVersion']."',NOW())";
+            RunQuery($sSQL); // False means do not stop on error
+            //TODO upgrade script
+            $this->rebuildMenus();
+            $this->playbackSQLtoDatabase("/vagrant/mysql/upgrade/1.2.14-2.0.0.sql");
+            return "Upgraded";
+        }
+        
+         // This code will automatically update from 1.3.0 (early build of ChurchCRM)
+        if (strncmp($ver_version, "1.3.0", 6) == 0) {
+            $old_ver_version = $ver_version;
+            $sSQL = "INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('".$_SESSION['sSoftwareInstalledVersion']."',NOW())";
+            RunQuery($sSQL); // False means do not stop on error
+            //TODO upgrade script
+            $this->rebuildMenus();
+            $this->playbackSQLtoDatabase("/vagrant/mysql/upgrade/1.3.0-2.0.0.sql");
+            return "Upgraded";
+        }
+
+        return false;
         
     }
 }
