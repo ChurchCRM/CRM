@@ -272,7 +272,6 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 
 <input type="hidden" name="FamilyID" id="FamilyID" value="<?php echo $iFamily; ?>">
 <input type="hidden" name="PledgeOrPayment" id="PledgeOrPayment" value="<?php echo $PledgeOrPayment; ?>">
-<<<<<<< HEAD
 <!-- Start Pledge Details Section -->
 <div class="box box-info clearfix">
 	<div class="box-header">
@@ -285,40 +284,15 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 				</thead>
 				<tbody>
 				<!-- Start Donation Envelope Section -->
-=======
 
-<table cellpadding="2" align="center">
-	<tr>
-		<td align="left">
-		<?php if (!$dep_Closed) { ?>
-			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="PledgeSubmit">
-			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save and Add") . "\" name=\"PledgeSubmitAndAdd\">"; } ?>
-		<?php } ?>
-			<?php if (!$dep_Closed) {
-				$cancelText = "Cancel";
-			} else {
-				$cancelText = "Return";
-			} ?>	
-			<input type="button" class="btn" value="<?php echo gettext($cancelText); ?>" name="PledgeCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
-		</td>
-	</tr>
-
-	<tr>
-		<td>
-		<table border="0" cellspacing="0" cellpadding="2">
-		<td valign="top" align="left">
-		<table cellpadding="2">
->>>>>>> develop
 			<?php if ($dep_Type == 'Bank' and $bUseDonationEnvelopes) {?>
 			<tr>
 				<td class="PaymentLabelColumn"><?php echo gettext("Envelope #"); ?></td>
 				<td class="TextColumn"><input type="text" name="Envelope" size=8 id="Envelope" value="<?php echo $iEnvelope; ?>">
 				<?php if (!$dep_Closed) { ?>
-<<<<<<< HEAD
+
 				<button type="button" class="btn btn-primary" value="<?php echo gettext("Find family->"); ?>" id="MatchEnvelope"><?php echo gettext("Find family->"); ?></button>
-=======
-				<input type="submit" class="btn" value="<?php echo gettext("Find family->"); ?>" name="MatchEnvelope">
->>>>>>> develop
+
 				<?php } ?>
 			</td>
 			</tr>
@@ -385,12 +359,6 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 							echo "<option value=\"" . $fun_id . "\""; if ($iSelectedFund==$fun_id) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
 						} ?>
 					</select>
-<<<<<<< HEAD
-=======
-					<?php if (!$dep_Closed) { ?>
-					<input type="submit" class="btn" name="SetFundTypeSelection" value="<-Set">
-					<?php } ?>
->>>>>>> develop
 				</td>
 			</tr>
 			<!-- End Fund Selection (or Split Option) -->
@@ -506,7 +474,7 @@ $(document).ready(function() {
 	
 		
 
-<<<<<<< HEAD
+
 						</tr>
 						</tbody>
 					</table>
@@ -549,9 +517,6 @@ $(document).ready(function() {
 			</div>
 		</div>
 		
-=======
-				<input type="submit" class="btn" value="<?php echo gettext("Split to Funds by pledge"); ?>" name="SplitTotal"></td>
->>>>>>> develop
 
 	
 <!-- End Cash Denomination Enter Section -->
@@ -587,20 +552,13 @@ $(document).ready(function() {
 		<!-- End Scanned Check Section -->
 		<!-- Start Paper Check Section -->
 
-<<<<<<< HEAD
+
 											
 		<?php if ($PledgeOrPayment=='Payment' and $dep_Type == 'Bank') {?>
 		<tr>
 		<td class="PaymentLabelColumn"><?php echo gettext("Check #"); ?></td>
 		<td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?php echo $iCheckNo; ?>"><font color="red"><?php echo $sCheckNoError ?></font></td>
-=======
-			<td align="center">
-			<?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
-				<input type="submit" class="btn" value="<?php echo gettext("find family from check account #"); ?>" name="MatchFamily">
-				<input type="submit" class="btn" value="<?php echo gettext("Set default check account number for family"); ?>" name="SetDefaultCheck">
-	        <?php } ?>
-			</td>
->>>>>>> develop
+
 		</tr>
 		<?php } ?>
 						</tbody>
