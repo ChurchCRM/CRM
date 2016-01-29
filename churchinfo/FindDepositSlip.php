@@ -114,11 +114,42 @@ $(document).ready(function() {
     },
     {
         width: 'auto',
+        title:'Closed',
+        data:'dep_Closed',
+        searchable: true,
+        render: function (data,type,full,meta) {
+            if (data == 1)
+            {
+                return "Yes";
+            }
+            else
+            {
+                return "No";
+            }
+        }
+    },
+    {
+        width: 'auto',
+        title:'Deposit Ty;e',
+        data:'dep_Type',
+        searchable: true
+    },
+    {
+        width: 'auto',
         title:'Export Deposit as OFX',
         data:'dep_ID',
         searchable: true,
         render: function  (data, type, full, meta ) {
             return '<a href=\'Reports/ExportOFX.php?deposit='+full.dep_ID+'\'><i class="fa fa-download"></i></a>'; 
+        }
+    },
+    {
+        width: 'auto',
+        title:'Delete Deposit',
+        data:'dep_ID',
+        searchable: true,
+        render: function  (data, type, full, meta ) {
+            return "<a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart="+full.dep_ID+"\">Delete</a>"; 
         }
     }
     ]
