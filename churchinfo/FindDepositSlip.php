@@ -16,6 +16,7 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require 'service/FinancialService.php';
 
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
@@ -36,64 +37,93 @@ $sCriteria = "";
 if (!$_SESSION['bFinance'])
 	$sCriteria = "WHERE dep_EnteredBy=" . $_SESSION['iUserID'];
 
+$financialService=new FinancialService();
 require "Include/Header.php";
-
-// Build SQL query
-$sSQL = "SELECT dep_ID, dep_Date, dep_Comment, dep_Closed, dep_Type FROM deposit_dep $sCriteria";
-$sSQLTotal = "SELECT COUNT(dep_id) FROM deposit_dep $sCriteria";
-
-// Execute SQL statement and get total result
-$rsDep = RunQuery($sSQL);
-$rsTotal = RunQuery($sSQLTotal);
-list ($Total) = mysql_fetch_row($rsTotal);
 ?>
+
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+
+
 
 <div class="box">
 <div class="box-body">
-<table class="table" id="DepositsTable">
-
-<?php
-
-// Column Headings
-echo "<tr class='TableHeader'>\n
-	<td width='25'>".gettext("Edit") . "</td>\n
-	<td><a href='FindDepositSlip.php?Sort=number&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd'>".gettext("Number")."</a></td>\n
-	<td><a href='FindDepositSlip.php?Sort=date'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>".gettext("Date")."</a></td>\n
-	<td>".gettext("Total Payments")."</td>\n
-	<td>".gettext("Comment")."</td>\n
-	<td><a href='FindDepositSlip.php?Sort=closed'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>".gettext("Closed")."</a></td>\n
-	<td><a href='FindDepositSlip.php?Sort=type'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>".gettext("Deposit Type")."</a></td>\n
-	<td>Download OFX</td>\n
-	</tr>";
-
-// Display Deposits
-while (list ($dep_ID, $dep_Date, $dep_Comment, $dep_Closed, $dep_Type) = mysql_fetch_row($rsDep))
-{
-	echo "<tr><td><a href='DepositSlipEditor.php?DepositSlipID=$dep_ID'>" . gettext("Edit") . "</td>";
-	echo "<td>$dep_ID</td>";
-	echo "<td>$dep_Date</td>";
-	// Get deposit total
-	$sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$dep_ID' AND plg_PledgeOrPayment = 'Payment'";
-	$rsDepositTotal = RunQuery($sSQL);
-	list ($deposit_total) = mysql_fetch_row($rsDepositTotal);
-	echo "<td>$deposit_total</td>";
-	echo "<td>$dep_Comment</td>";
-	if ($dep_Closed == 1)
-		$dep_Closed_text = "Yes";
-	else
-		$dep_Closed_text = "No";
-	echo "<td>$dep_Closed_text</td>";	
-	echo "<td>$dep_Type</td>";
-	echo "<td><a href='Reports/ExportOFX.php?deposit=$dep_ID'>Download</td>";
-}
-echo "</table>";
-?>
+<table class="table" id="depositsTable">
+</table>
+<
 </div>
 </div>
 <script>
-$("#DateStart").datepicker({format:'yyyy-mm-dd'});
-$("#DateEnd").datepicker({format:'yyyy-mm-dd'});
-$('#DepositsTable').DataTable();
+var depositData = <?php $json = $financialService->getDepositJSON($financialService->getDeposits()); if ($json) { echo $json; } else { echo 0; } ?>;
+
+if (!$.isArray(depositData.deposits))
+{
+    depositData.deposits=[depositData.deposits];
+}
+console.log(depositData.deposits);
+var dataT = 0;
+$(document).ready(function() {
+   
+    $("#addNewGroup").click(function (e){
+        var newGroup = {'groupName':$("#groupName").val()};
+        console.log(newGroup);
+        $.ajax({
+            method: "POST",
+            url:   "/api/groups",
+            data:  JSON.stringify(newGroup)
+        }).done(function(data){
+            console.log(data);
+            dataT.row.add(data);
+            dataT.rows().invalidate().draw(true);
+        });
+    });
+   
+    dataT = $("#depositsTable").DataTable({
+    data:depositData.deposits,
+    columns: [
+    {
+        width: 'auto',
+        title:'Deposit ID',
+        data:'dep_ID',
+        render: function  (data, type, full, meta ) {
+            return '<a href=\'DepositSlipEditor.php?DepositSlipID='+full.dep_ID+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a><a href=\'GroupEditor.php?GroupID='+full.id+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-pencil fa-stack-1x fa-inverse"></i></span></a>'+data; 
+        }
+    },
+    {
+        width: 'auto',
+        title:'Deposit Date',
+        data:'dep_Date',
+        searchable: true
+    },
+    {
+        width: 'auto',
+        title:'Deposit Total',
+        data:'dep_Total',
+        searchable: false,
+    },
+    {
+        width: 'auto',
+        title:'Deposit Comment',
+        data:'dep_Comment',
+        searchable: true
+    },
+    {
+        width: 'auto',
+        title:'Export Deposit as OFX',
+        data:'dep_ID',
+        searchable: true,
+        render: function  (data, type, full, meta ) {
+            return '<a href=\'Reports/ExportOFX.php?deposit='+full.dep_ID+'\'><i class="fa fa-download"></i></a>'; 
+        }
+    }
+    ]
+});
+});
 </script>
 
 <?php

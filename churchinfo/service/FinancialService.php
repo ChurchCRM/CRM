@@ -80,7 +80,7 @@ class FinancialService {
 		return str_replace("'","",$str);
 	}
 
-	function listDeposits($id=null) {
+	function getDeposits($id=null) {
 
 		$sSQL = "SELECT dep_ID, dep_Date, dep_Comment, dep_Closed, dep_Type FROM deposit_dep";
 		if ($id)
@@ -97,10 +97,25 @@ class FinancialService {
 			$values['dep_Comment']=$dep_Comment;
 			$values['dep_Closed']=$dep_Closed;
 			$values['dep_Type']=$dep_Type;
+            $values['dep_Total']=$this->getDepositTotal($dep_ID);
 			array_push($return,$values);
 		}
 		return $return;
 	}
+    
+    function getDepositTotal($id)
+    {
+        // Get deposit total
+        $sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment'";
+        $rsDepositTotal = RunQuery($sSQL);
+        list ($deposit_total) = mysql_fetch_row($rsDepositTotal);
+        return $deposit_total;    
+    }
+    
+    function getDepositJSON($deposits)
+    {
+        return '{"deposits":'.json_encode($deposits).'}';
+    }
 
 	function listPayments($id) {
 		$sSQL = "SELECT * from pledge_plg";
