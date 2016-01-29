@@ -169,7 +169,7 @@ $app->group('/deposits',function () use ($app) {
 	$app->get('/',function() use ($app) 
 	{
 		try {
-			$app->FinancialService->listDeposits();
+			echo '{"deposits": ' . json_encode($app->FinancialService->listDeposits()) . '}';
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
@@ -177,7 +177,7 @@ $app->group('/deposits',function () use ($app) {
 	$app->get('/:id',function($id) use ($app) 
 	{
 		try {
-			$app->FinancialService->listDeposits($id);
+			echo '{"deposits": ' . json_encode($app->FinancialService->listDeposits($id)) . '}';
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }	

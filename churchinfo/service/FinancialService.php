@@ -80,7 +80,7 @@ class FinancialService {
 		return str_replace("'","",$str);
 	}
 
-	function listDeposits($id) {
+	function listDeposits($id=null) {
 
 		$sSQL = "SELECT dep_ID, dep_Date, dep_Comment, dep_Closed, dep_Type FROM deposit_dep";
 		if ($id)
@@ -99,7 +99,7 @@ class FinancialService {
 			$values['dep_Type']=$dep_Type;
 			array_push($return,$values);
 		}
-		echo '{"deposits": ' . json_encode($return) . '}';
+		return $return;
 	}
 
 	function listPayments($id) {
