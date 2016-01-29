@@ -42,6 +42,7 @@ require "Include/Header.php";
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.css">
 <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
@@ -55,7 +56,11 @@ require "Include/Header.php";
 <div class="box-body">
 <table class="table" id="depositsTable">
 </table>
-<
+
+<button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>
+<button type="button" id="exportSelectedRows"  class="btn btn-success" disabled><i class="fa fa-download"></i>Export Selected Rows (OFX)</button>
+
+
 </div>
 </div>
 <script>
@@ -142,18 +147,21 @@ $(document).ready(function() {
         render: function  (data, type, full, meta ) {
             return '<a href=\'Reports/ExportOFX.php?deposit='+full.dep_ID+'\'><i class="fa fa-download"></i></a>'; 
         }
-    },
-    {
-        width: 'auto',
-        title:'Delete Deposit',
-        data:'dep_ID',
-        searchable: true,
-        render: function  (data, type, full, meta ) {
-            return "<a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart="+full.dep_ID+"\">Delete</a>"; 
-        }
     }
     ]
 });
+
+
+     $("#depositsTable tbody").on('click', 'tr', function() {
+         console.log("clicked");
+         $(this).toggleClass('selected');
+         var selectedRows = dataT.rows('.selected').data().length;
+          $("#deleteSelectedRows").prop('disabled', !(selectedRows));
+          $("#deleteSelectedRows").text("Delete ("+selectedRows+") Selected Rows");
+          $("#exportSelectedRows").prop('disabled', !(selectedRows));
+          $("#exportSelectedRows").html("<i class=\"fa fa-download\"></i>Export ("+selectedRows+") Selected Rows (OFX)");
+        
+     });
 });
 </script>
 
