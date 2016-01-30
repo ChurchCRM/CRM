@@ -754,6 +754,9 @@ $(document).ready(function() {
         width: '100px',
         title:'Family',
         data:'familyName',
+        render: function  (data, type, full, meta ) {
+            return '<a href=\'PledgeEditor.php?GroupKey='+full.plg_GroupKey+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-pencil fa-stack-1x fa-inverse"></i></span></a>'+data; 
+        }
     },
     {
         width: 'auto',

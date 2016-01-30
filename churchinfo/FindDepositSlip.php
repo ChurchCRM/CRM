@@ -161,8 +161,16 @@ $(document).ready(function() {
         title:'Deposit ID',
         data:'dep_ID',
         render: function  (data, type, full, meta ) {
-            return '<a href=\'DepositSlipEditor.php?DepositSlipID='+full.dep_ID+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a>'+data; 
-        }
+            if (type === 'display')
+            {
+                return '<a href=\'DepositSlipEditor.php?DepositSlipID='+full.dep_ID+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a>'+full.dep_ID; 
+            }
+            else
+            {
+                return parseInt(full.dep_ID);
+            }
+        },
+        type:'num'
     },
     {
         width: 'auto',
@@ -204,8 +212,10 @@ $(document).ready(function() {
         data:'dep_Type',
         searchable: true
     }
-    ]
-});
+    ],
+    order:[0,'desc']
+    });
+    
 
 
      $("#depositsTable tbody").on('click', 'tr', function() {
