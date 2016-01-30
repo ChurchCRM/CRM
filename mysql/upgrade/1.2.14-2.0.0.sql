@@ -10,7 +10,8 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 UPDATE user_usr 
     SET usr_Style = "skin-blue";
 
- CREATE TABLE `currency_denominations_cdem` (
+DROP TABLE IF EXISTS `currency_denominations_cdem`;
+CREATE TABLE `currency_denominations_cdem` (
  `cdem_denominationID` mediumint(9) NOT NULL auto_increment,
  `cdem_denominationName` text,
  `cdem_denominationValue` decimal(8,2) default NULL,
@@ -32,7 +33,7 @@ INSERT INTO `currency_denominations_cdem` (`cdem_denominationName`, `cdem_denomi
 ("$50", 50),
 ("$100", 100);
 
-
+DROP TABLE IF EXISTS `pledge_denominations_pdem`;
 CREATE TABLE `pledge_denominations_pdem`(
  `pdem_pdemID` mediumint(9) NOT NULL auto_increment,
  `pdem_plg_GroupKey` text,

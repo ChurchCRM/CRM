@@ -8,7 +8,8 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (999, 'bRegistered', '0', 'boolean', '0', 'ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General', NULL);
 UPDATE user_usr 
     SET usr_Style = "skin-blue";
-
+    
+DROP TABLE IF EXISTS `currency_denominations_cdem`;
  CREATE TABLE `currency_denominations_cdem` (
  `cdem_denominationID` mediumint(9) NOT NULL auto_increment,
  `cdem_denominationName` text,
@@ -31,7 +32,7 @@ INSERT INTO `currency_denominations_cdem` (`cdem_denominationName`, `cdem_denomi
 ("$50", 50),
 ("$100", 100);
 
-
+DROP TABLE IF EXISTS `pledge_denominations_pdem`;
 CREATE TABLE `pledge_denominations_pdem`(
  `pdem_pdemID` mediumint(9) NOT NULL auto_increment,
  `pdem_plg_GroupKey` text,
