@@ -27,6 +27,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
+require 'service/FinancialService.php';
+
+$financialService = new FinancialService();
 
 $sSQL = "select * from family_fam order by fam_DateLastEdited desc  LIMIT 10;";
 $rsLastFamilies = RunQuery($sSQL);
@@ -143,6 +146,22 @@ require 'Include/Header.php';
         </div>
     </div><!-- ./col -->
 </div><!-- /.row -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <i class="ion ion-cash"></i>
+                <h3 class="box-title">Deposit Tracking</h3>
+                <div class="box-tools pull-right">
+                    <div id="deposit-graph" class="chart-legend"></div>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
+            </div>
+            </div>
+    </div>
+</div>
 <?php } ?>
 <div class="row">
     <div class="col-lg-6 col-md-5 col-sm-4">
@@ -279,11 +298,34 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
+     
 </div>
 
 <!-- this page specific inline scripts -->
 <script>
 
+//---------------
+//- LINE CHART  -
+//---------------
+var lineDataRaw = <?php echo $financialService->getDepositJSON($financialService->getDeposits());?>;
+var lineData = {
+    labels: [],
+    datasets: [
+        {
+            data: []
+        }     
+    ]
+};
+$.each(lineDataRaw.deposits, function(i, val) {
+    lineData.labels.push(val.dep_Date);
+    lineData.datasets[0].data.push(val.dep_Total);
+});
+var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
+var lineOptions = {
+    
+    
+};
+var lineChart = new Chart(lineChartCanvas).Line(lineData,lineOptions);
     //-------------
     //- PIE CHART -
     //-------------
