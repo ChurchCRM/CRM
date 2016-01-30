@@ -1,11 +1,17 @@
 <?php
+require_once "PersonService.php";
+require_once "FamilyService.php";
 
 class FinancialService {
     
     private $baseURL;
+    private $personService;
+    private $familyService;
 
     public function __construct() {
         $this->baseURL = $_SESSION['sURLPath'];
+        $this->personService = new PersonService();
+        $this->familyService = new FamilyService();
     }
 	
 	function deletePayment($groupKey) 
@@ -189,6 +195,7 @@ class FinancialService {
 			extract ($aRow);
 			$values['plg_plgID']=$plg_plgID;
 			$values['plg_FamID']=$plg_FamID;
+            $values['familyName'] = $this->familyService->getFamilyName($plg_FamID);
 			$values['plg_FYID']=$plg_FYID;
 			$values['plg_date']=$plg_date;
 			$values['plg_amount']=$plg_amount;
@@ -219,10 +226,16 @@ class FinancialService {
     {
         $fetch = 'SELECT dep_ID, dep_Comment, dep_Date, dep_EnteredBy, dep_Type
             FROM deposit_dep
-            WHERE 
+            LEFT JOIN pledge_plg ON
+                pledge_plg.plg_depID = deposit_dep.dep_ID
+                AND
+                plg_CheckNo LIKE \'%'.$searchTerm.'%\' 
+            WHERE  
             dep_Comment LIKE \'%'.$searchTerm.'%\' 
             OR 
             dep_Date LIKE \'%'.$searchTerm.'%\' 
+            OR
+            plg_CheckNo LIKE \'%'.$searchTerm.'%\'      
             LIMIT 15';    
         $result=mysql_query($fetch);
         $deposits = array();
