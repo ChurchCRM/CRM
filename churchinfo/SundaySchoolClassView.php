@@ -64,11 +64,13 @@ require "Include/Header.php";
 
 ?>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/plugins/select2/select2.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo $sURLPath."/"; ?>css/plugins/select2/select2-bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
-    <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+    
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
     <div class="btn-group pull-right clearfix">
         <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>
@@ -264,11 +266,6 @@ function implodeUnique($array, $withQuotes) {
     <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
     <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
-
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/plugins/select2/select2.js" type="text/javascript"></script>
-
-    <link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-    <script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
