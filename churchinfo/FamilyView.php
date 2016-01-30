@@ -210,7 +210,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 		<li><a href="SelectDelete.php?FamilyID=<?php echo $iFamilyID; ?>">Delete this Family</a></li>
 		<?php } ?>
 	</ul>
-	<a class="btn btn-default" role="button" href="SelectList.php?mode=family"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+	<a class="btn btn-default" role="button" href="FamilyList.php"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
 	<?php if (($next_id > 0)) { ?>
 		<a class="btn btn-default" role="button" href="FamilyView.php?FamilyID=<?php echo $next_id;?>"><span class="fa fa-hand-o-right" aria-hidden="true"></span></a>
 	<?php } ?>

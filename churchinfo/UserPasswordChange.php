@@ -220,7 +220,7 @@ if ($_SESSION['bNeedPasswordChange']) { ?>
                     <?php if (!$bAdminOtherUser) { ?>
                     <div class="form-group">
                         <label for="OldPassword"><?= gettext("Old Password:"); ?></label>
-                        <input type="password" name="OldPassword" id="OldPassword" class="form-control" value="<?php echo $sOldPassword ?>"><?php echo $sOldPasswordError ?>
+                        <input type="password" name="OldPassword" id="OldPassword" class="form-control" value="<?php echo $sOldPassword ?>" autofocus><?php echo $sOldPasswordError ?>
                     </div>
                     <?php } ?>
                     <div class="form-group">

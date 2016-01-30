@@ -215,16 +215,13 @@ if (isset($_POST["DataFile"]))
 	exit;
 }
 
-if (isset($_POST["UpdateAllFamilies"]))
-{
-	redirect ("UpdateAllLatLon.php");
-}
-
 require "Include/Header.php";
-
-echo '<form method="POST" action="GeoPage.php" name="GeoPage">';
-echo '<table>';
-
+?>
+<div class="box">
+	<div class="box-body">
+<form method="POST" action="GeoPage.php" name="GeoPage">
+<table class="table">
+<?
 //Get Families for the list
 $sSQL = "SELECT * FROM family_fam ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
@@ -277,11 +274,18 @@ echo "</tr>";
 echo '<tr>';
 echo '<td></td>';
 echo '<td><input type="submit" class="btn" name="DataFile" value="' . gettext("Make Data File") . '"></td>';
-echo '<td><input type="submit" class="btn" name="UpdateAllFamilies" value="' . gettext("Update All Family Coordinates") . '"></td>';
-echo "</tr></table>\n";
-
-echo "<CENTER><br><br><h3>Show neighbors with these classifications.</h3>";
-echo '<table>';
+?>
+        </tr>
+    </table>
+    </div>
+</div>
+<div class="box">
+    <div class="box-header box-info">
+        <h3>Show neighbors with these classifications.</h3>
+    </div>
+    <div class="box-body">
+<table class="table">
+<?
 echo '<tr><td><br></td><td><input type="submit" class="btn" name="FindNeighbors" value="' . gettext("Show Neighbors") . '"></td></tr>'."\n";
 
 foreach ($aClassificationName as $key => $value) {
@@ -391,6 +395,6 @@ if (    $iFamily != 0 &&
     echo '</center><br>';
 
 }
-echo '</form>';
+echo '</form></div></div>';
 require 'Include/Footer.php';
 ?>
