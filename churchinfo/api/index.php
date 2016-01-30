@@ -322,6 +322,7 @@ $app->group('/deposits',function () use ($app) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
 	});
+    
 	$app->get('/:id',function($id) use ($app) 
 	{
 		try {
@@ -330,6 +331,28 @@ $app->group('/deposits',function () use ($app) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }	
 	})->conditions(array('id' => '[0-9]+'));
+    
+    $app->get('/:id/ofx',function($id) use ($app) 
+	{
+		try {
+			$OFX = $app->FinancialService->getDepositOFX($id);
+            header($OFX->header);
+            echo $OFX->content;
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }	
+	})->conditions(array('id' => '[0-9]+'));
+     
+    $app->delete('/:id',function($id) use ($app) 
+	{
+		try {
+			$app->FinancialService->deleteDeposit($id);
+            echo '{"success":"true"}';
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }	
+	})->conditions(array('id' => '[0-9]+'));
+    
 	$app->get('/:id/payments',function($id) use ($app) 
 	{
 		try {

@@ -61,7 +61,9 @@ require "Include/Header.php";
       </div>
       <div class="modal-body">
         <p>Are you sure you want to delete the selected <span id="deleteNumber"></span> Deposit(s)?</p>
-        <p>This action CANNOT be undone.  Please ensure this what you want to do.</p>
+        <p>This will also delete all payments associated with this deposit</p>
+        <p>This action CANNOT be undone, and may have legal implications!</p>
+        <p>Please ensure this what you want to do.</p>
 		<button type="button" class="btn btn-danger" id="deleteConfirmed" ><?php echo gettext("Delete"); ?></button>
       </div>
       <div class="modal-footer">
@@ -184,22 +186,31 @@ $(document).ready(function() {
     });
     
     
+    $('#exportSelectedRows').click(function() {
+        var selectedRows = dataT.rows('.selected').data()
+        $.each(selectedRows, function(index, value){
+            window.open('/api/deposits/'+value.dep_ID+'/ofx');
+        });
+    });
+    
+    
     $("#deleteConfirmed").click(function() {
 	 var deletedRows = dataT.rows('.selected').data()
-        
-        $.ajax({
+        $.each(deletedRows, function(index, value){
+            console.log(value);
+             $.ajax({
             type        : 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
-            url         : '/api/deposits/'+dep_ID, // the url where we want to POST
+            url         : '/api/deposits/'+value.dep_ID, // the url where we want to POST
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true
-        })
-		 .done(function(data) {
-			console.log(data);
-			var gk = '#row-'+groupKey.replace(/\|/g,'\\|');
-			$('#confirmDelete').modal('hide');
-
-			$(gk).remove();
-		});
+            })
+             .done(function(data) {
+                console.log(data);
+                $('#confirmDelete').modal('hide');
+                dataT.rows('.selected').remove().draw(false);
+            });
+        });
+       
 		
     });
 
