@@ -16,9 +16,11 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-
+require "service/FinancialService.php";
 require "Include/MICRFunctions.php";
 
+
+$financialService = new FinancialService();
 $linkBack = "";
 $iDepositSlipID = 0;
 $dep_Type = "";
@@ -565,6 +567,19 @@ if ($iDepositSlipID) {
 require "Include/Header.php";
 ?>
 
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+
+<div class="box">
+<div class="box-header with-border">
+    <h3 class="box-title"><?php echo gettext("Deposit Details: ");?></h3>
+</div>
+<div class="box-body">
 
 <form method="post" action="DepositSlipEditor.php?<?php echo "linkBack=" . $linkBack . "&DepositSlipID=".$iDepositSlipID?>" name="DepositSlipEditor">
 
@@ -683,156 +698,25 @@ require "Include/Header.php";
 		echo "<i><b>\$$totalChecks - Total Checks</b> &nbsp; (Items: $totalCheckItems)</i><br>";
 	echo "<br>";
 ?>
-<b><?php echo gettext("Payments on this deposit slip:"); ?></b>
-<br>
 
-<table class="table table-striped table-bordered table-hover table-condensed">
+</div>
+</div>
 
-<thead>
-<tr>
-	<th><?php echo gettext("Family"); ?></th>
-	<th><?php echo gettext("Date"); ?></th>
-	<th><?php echo gettext("Fiscal Year"); ?></th>
-<?php if ($dep_Type == 'Bank') { ?>
-	<th><?php echo gettext("Check #"); ?></th>
-<?php } ?>
-	<th><?php echo gettext("Fund"); ?></th>
-	<th><?php echo gettext("Amount"); ?></th>
-	<th><?php echo gettext("NonDeduct"); ?></th>
-	<th><?php echo gettext("Method"); ?></th>
-	<th><?php echo gettext("Comment"); ?></th>
-<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
-	<th><?php echo gettext("Cleared"); ?></th>
-<?php } ?>
-	<?php if ($dep_Closed) { ?>
-	<th><?php echo gettext("View Detail"); ?></th>
-	<?php } else { ?>
-	<th><?php echo gettext("Edit"); ?></th>
-	<th><?php echo gettext("Delete"); ?></th>
-	<?php } ?>
-<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
-	<th><?php echo gettext("Details"); ?></th>
-<?php } ?>
-</tr>
-</thead>
-
-<?php
-
-// Loop through all gifts
-// there can be multiple 'check' records that contain data for a single deposit, due to allowing a single payment to be split to several pledge funds.  We need to therefore collect information from those 'like' records and create a single deposit line from those multiple records.  We'll create a unique key that contains the family name and check number as a map key and build the record into vertical bar separated records.
-// but because we're doing this only for checks, we need to then save the data into a unique 'payment' hash and later unpack the now combined check info into that payment hash.  (there's probably a better way to do this, but this should work for now).
-
-$depositOrder = 1;
-$depositHashOrder2Key = array ();
-$depositArray = array ();
-$depositHash = array ();
-
-while ($aRow = mysql_fetch_array($rsPledges)) {
-	extract($aRow);
-
-	if (array_key_exists($plg_GroupKey, $depositHash)) {
-		// add/tweak fields so existing key'ed record contains information of new record
-		
-		// we could coherency check checkNo, famID, and date, but we won't since I don't know how we'd surface the error
-		list($e_plg_CheckNo, $e_plg_famID, $e_plg_date, $e_plg_FYID, $e_plg_amount, $e_fundName, $e_plg_comment, $e_plg_aut_Cleared, $e_plg_NonDeductible) = explode("|", $depositHash[$plg_GroupKey]);
-
-		unset($depositHash[$plg_GroupKey]);
-
-		$n_fundName = $e_fundName . "," . $fundName;
-		$n_plg_comment = $e_plg_comment . "," . $plg_comment;
-		$n_amount = $e_plg_amount + $plg_amount;
-		$n_plg_NonDeductible = $e_plg_NonDeductible + $plg_NonDeductible;
-
-		$depositHash[$plg_GroupKey] = $plg_CheckNo . "|" .  $plg_famID . "|" . $plg_date . "|" . $plg_FYID . "|" . $n_amount . "|" . $n_fundName . "|" . $n_plg_comment . "|" . $plg_aut_Cleared . "|" . $n_plg_NonDeductible . "|" . $plg_plgID . "|" . $plg_method . "|" . $FamilyName;
-
-	} else {
-		$depositArray[$depositOrder] = 0;
-		$depositHashOrder2Key[$depositOrder] = $plg_GroupKey;
-		++$depositOrder;
-		$depositHash[$plg_GroupKey] = $plg_CheckNo . "|" .  $plg_famID . "|" . $plg_date . "|" . $plg_FYID . "|" . $plg_amount . "|" . $fundName . "|" . $plg_comment . "|" . $plg_aut_Cleared . "|" . $plg_NonDeductible . "|" . $plg_plgID . "|" . $plg_method . "|" . $FamilyName;
-	}
-}
-
-if (count ($depositHashOrder2Key)) {
-	foreach ($depositHashOrder2Key as $order => $key) {
-		$depositArray[$order] = $key . "%" . $depositHash[$key];
-	}
-}
-
-$tog = 0;
-if (count ($depositArray)) {
-foreach ($depositArray as $order => $value) {
-	// key is: method-specific-id, plg_famID, plg_funID, plg_data
-
-	list($plg_GroupKey, $data) = explode("%", $value);
-	list($plg_CheckNo, $plg_famID, $plg_date, $plg_FYID, $plg_amount, $fundName, $plg_comment, $plg_aut_Cleared, $plg_NonDeductible, $plg_plgID, $plg_method, $FamilyName) = explode("|", $data);
-
-	
-	?>
-
-	<tr class="PaymentRow" id="row-<?php echo $plg_GroupKey ?>">
-		<td>
-			<?php echo $FamilyName ?>&nbsp;
-		</td>
-		<td>
-			<?php echo $plg_date ?>&nbsp;
-		</td>
-		<td>
-			<?php echo MakeFYString ($plg_FYID) ?>&nbsp;
-		</td>
-<?php if ($dep_Type == 'Bank') { ?>
-		<td>
-			<?php echo $plg_CheckNo ?>&nbsp;
-		</td>
-<?php } ?>
-		<td>
-			<?php echo $fundName ?>&nbsp;
-		</td>
-		<td align=center>
-			<?php echo $plg_amount ?>&nbsp;
-		</td>
-		<td align=center>
-			<?php echo $plg_NonDeductible ?>&nbsp;
-		</td>
-		<td>
-			<?php echo $plg_method; ?>&nbsp;
-		</td>
-		<td>
-			<?php echo $plg_comment; ?>&nbsp;
-		</td>
-<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
-		<td>
-			<?php if ($plg_aut_Cleared) echo "Yes"; else echo "No"; ?>&nbsp;
-		</td>
-<?php } ?>
-		<?php if ($dep_Closed) { ?>
-		<td>
-			<a href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">View</a>
-		</td>
-		<?php } else { ?>
-		<td>
-			<a class="btn btn-primary edit-button" href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Edit</a>
-		</td>
-		<td>
-			<button type="button" class="btn btn-primary delete-button" data-toggle="modal" data-target="#confirmDelete" id="delete:<?php echo $plg_GroupKey;?>">Delete</button>
-		</td>
-		<?php } ?>
-<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
-		<td>
-			<a href="PledgeDetails.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Details</a>
-		</td>
-<?php } ?>
-	</tr>
-<?php
-}
-} // while
-?>
-
+<div class="box">
+<div class="box-header with-border">
+    <h3 class="box-title"><?php echo gettext("Payments on this deposit slip:"); ?></h3>
+</div>
+<div class="box-body">
+<table class="table" id="paymentsTable">
 </table>
 
 <?php
 }
 ?>
+
+</div>
+</div>
+
 
 <!-- Delete Confirm Modal -->
 <div id="confirmDelete" class="modal fade" role="dialog">
@@ -858,7 +742,68 @@ foreach ($depositArray as $order => $value) {
 <script type="text/javascript" src="js/DepositSlipEditor.js"></script>
 
 <script>
+var paymentData = <?php echo $financialService->getPayments($iDepositSlipID); ?>;
 $("#DepositDate").datepicker({format:'yyyy-mm-dd'});
+
+$(document).ready(function() {
+    
+    dataT = $("#paymentsTable").DataTable({
+    data:paymentData.pledges,
+    columns: [
+    {
+        width: 'auto',
+        title:'Family',
+        data:'plg_FamID',
+    },
+    {
+        width: 'auto',
+        title:'Date',
+        data:'plg_date'
+    },
+    {
+        width: 'auto',
+        title:'Fiscal Year',
+        data:'plg_FYID'
+    },
+    {
+        width: 'auto',
+        title:'Check Number',
+        data:'plg_CheckNo',
+    },
+    {
+        width: 'auto',
+        title:'Fund',
+        data:'plg_fundID',
+    },
+    {
+        width: 'auto',
+        title:'Amount',
+        data:'plg_amount',
+    }
+    ,
+    {
+        width: 'auto',
+        title:'Non Deductible',
+        data:'plg_NonDeductible',
+    }
+    ,
+    {
+        width: 'auto',
+        title:'Method',
+        data:'plg_method',
+    }
+    ,
+    {
+        width: 'auto',
+        title:'Comment',
+        data:'plg_comment',
+    }
+    
+    ]
+});
+});
+   
+
 </script>
 
 <?php

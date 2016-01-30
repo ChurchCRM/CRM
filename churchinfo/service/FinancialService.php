@@ -1,8 +1,15 @@
 <?php
 
 class FinancialService {
+    
+    private $baseURL;
+
+    public function __construct() {
+        $this->baseURL = $_SESSION['sURLPath'];
+    }
 	
-	function deletePayment($groupKey) {
+	function deletePayment($groupKey) 
+    {
 		$sSQL = "DELETE FROM `pledge_plg` WHERE `plg_GroupKey` = '" . $groupKey . "';";
 		RunQuery($sSQL);
 	}
@@ -73,8 +80,6 @@ class FinancialService {
 		
 	}
 
-	
-
 	function sanitize($str)
 	{
 		return str_replace("'","",$str);
@@ -99,7 +104,8 @@ class FinancialService {
         
     }
     
-	function getDeposits($id=null) {
+	function getDeposits($id=null) 
+    {
 
 		$sSQL = "SELECT dep_ID, dep_Date, dep_Comment, dep_Closed, dep_Type FROM deposit_dep";
 		if ($id)
@@ -145,14 +151,36 @@ class FinancialService {
     
     function getDepositJSON($deposits)
     {
-        return '{"deposits":'.json_encode($deposits).'}';
+        if ($deposits)
+        {
+            return '{"deposits":'.json_encode($deposits).'}';
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+    
+    function getPaymentJSON($payments)
+    {
+        if ($payments)
+        {
+             return '{"payments":'.json_encode($payments).'}';
+        }
+        else
+        {
+            return false;
+        }
+       
     }
 
-	function listPayments($id) {
+	function getPayments($depID) 
+    {
 		$sSQL = "SELECT * from pledge_plg";
-		if ($id)
+		if ($depID)
 		{
-				$sSQL.=" WHERE plg_plgID = ".$id;
+				$sSQL.=" WHERE plg_depID = ".$depID;
 		}
 		$rsDep = RunQuery($sSQL);
 		$return = array();
@@ -187,7 +215,60 @@ class FinancialService {
 		
 	}
 
-	function searchMembers($query) {
+    function searchDeposits($searchTerm)
+    {
+        $fetch = 'SELECT dep_ID, dep_Comment, dep_Date, dep_EnteredBy, dep_Type
+            FROM deposit_dep
+            WHERE 
+            dep_Comment LIKE \'%'.$searchTerm.'%\' 
+            OR 
+            dep_Date LIKE \'%'.$searchTerm.'%\' 
+            LIMIT 15';    
+        $result=mysql_query($fetch);
+        $deposits = array();
+        while($row=mysql_fetch_array($result)) {
+            $row_array['id']=$row['dep_ID'];
+            $row_array['displayName']=$row['dep_Comment']." - ".$row['dep_Date'];
+            $row_array['uri'] = $this->getViewURI($row['dep_ID']);
+            array_push($deposits,$row_array);
+        }
+        return $deposits;  
+        
+    }
+    
+    function searchPayments($searchTerm)
+    {
+        $fetch = 'SELECT dep_ID, dep_Comment, dep_Date, dep_EnteredBy, dep_Type, plg_FamID, plg_amount, plg_CheckNo, plg_plgID, plg_GroupKey
+            FROM deposit_dep
+            LEFT JOIN pledge_plg ON
+                pledge_plg.plg_depID = deposit_dep.dep_ID
+            WHERE 
+            plg_CheckNo LIKE \'%'.$searchTerm.'%\' 
+            LIMIT 15';
+        $result=mysql_query($fetch);
+        $deposits = array();
+        while($row=mysql_fetch_array($result)) {
+            $row_array['id']=$row['dep_ID'];
+            $row_array['displayName']="Check #".$row['plg_CheckNo']." ".$row['dep_Comment']." - ".$row['dep_Date'];
+            $row_array['uri'] = $this->getPaymentViewURI($row['plg_GroupKey']);
+            array_push($deposits,$row_array);
+        }
+        return $deposits;  
+        
+    }
+    
+    function getPaymentViewURI($groupKey)
+    {
+        return $this->baseURL ."/PledgeEditor.php?GroupKey=".$groupKey;
+    }
+    
+    function getViewURI($Id)
+    {
+        return $this->baseURL ."/DepositSlipEditor.php?DepositSlipID=".$Id;
+    }
+    
+	function searchMembers($query) 
+    {
 			$sSearchTerm = $query;
 			$sSearchType = "person";
 			$fetch = 'SELECT per_ID, per_FirstName, per_LastName, CONCAT_WS(" ",per_FirstName,per_LastName) AS fullname, per_fam_ID  FROM `person_per` WHERE per_FirstName LIKE \'%'.$sSearchTerm.'%\' OR per_LastName LIKE \'%'.$sSearchTerm.'%\' OR per_Email LIKE \'%'.$sSearchTerm.'%\' OR CONCAT_WS(" ",per_FirstName,per_LastName) LIKE \'%'.$sSearchTerm.'%\' LIMIT 15';
@@ -195,7 +276,8 @@ class FinancialService {
 			
 	}
 
-	private function validateDate($payment) { 
+	private function validateDate($payment) 
+    { 
 		// Validate Date
 		if (strlen($payment->Date) > 0) {
 			list($iYear, $iMonth, $iDay) = sscanf($payment->Date,"%04d-%02d-%02d");
@@ -208,8 +290,8 @@ class FinancialService {
 	
 	}
 	
-
-	private function validateFund($payment) {
+	private function validateFund($payment) 
+    {
 		//Validate that the fund selection is valid:
 		//If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
 		//If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
@@ -249,7 +331,8 @@ class FinancialService {
 
 	}
 	
-	function validateChecks($payment) {
+	function validateChecks($payment) 
+    {
 	//validate that the payment options are valid
 	//If the payment method is a check, then the check nubmer must be present, and it must not already have been used for this family
 	//if the payment method is cash, there must not be a check number
@@ -282,7 +365,8 @@ class FinancialService {
 		
 	}
 	
-	function processCurrencyDenominations($payment) {
+	function processCurrencyDenominations($payment) 
+    {
 		//Process the Currency Denominations for this deposit
 			if ($payment->iMethod  == "CASH"){
 				$sGroupKey = genGroupKey("cash", $payment->FamilyID, $fun_id, $dDate);
@@ -303,7 +387,8 @@ class FinancialService {
 		
 	}
 	
-	function insertPledgeorPayment ($payment) {
+	function insertPledgeorPayment ($payment) 
+    {
 		// Only set PledgeOrPayment when the record is first created
 			// loop through all funds and create non-zero amount pledge records
 			unset($sGroupKey);
@@ -377,8 +462,8 @@ class FinancialService {
 			}
 	}
 	
-	
-	function submitPledgeOrPayment($payment) {
+	function submitPledgeOrPayment($payment) 
+    {
 
 		try {
 			echo "Validating Fund".PHP_EOL;
@@ -401,7 +486,8 @@ class FinancialService {
 		
 	}
 	
-	function getPledgeorPayment($GroupKey) {
+	function getPledgeorPayment($GroupKey) 
+    {
 		require_once "FamilyService.php";
 		$total=0;
 		$FamilyService = New FamilyService();
@@ -430,7 +516,6 @@ class FinancialService {
 		return json_encode($payment);
 		
 	}
-    
     
     function getDepositOFX($depID)
     {

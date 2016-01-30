@@ -234,6 +234,8 @@ $app->group('/search', function () use ($app) {
             array_push($resultsArray, $app->PersonService->getPersonsJSON($app->PersonService->search($query)));
             array_push($resultsArray, $app->FamilyService->getFamiliesJSON($app->FamilyService->search($query)));
             array_push($resultsArray, $app->GroupService->getGroupJSON($app->GroupService->search($query)));
+            array_push($resultsArray, $app->FinancialService->getDepositJSON($app->FinancialService->searchDeposits($query)));
+            array_push($resultsArray, $app->FinancialService->getPaymentJSON($app->FinancialService->searchPayments($query)));
             echo "[".join(",",array_filter($resultsArray))."]";
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
@@ -369,7 +371,7 @@ $app->group('/deposits',function () use ($app) {
 	$app->get('/:id/payments',function($id) use ($app) 
 	{
 		try {
-			$app->FinancialService->listPayments($id);
+			$app->FinancialService->getPayments($id);
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
