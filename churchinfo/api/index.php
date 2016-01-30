@@ -13,8 +13,11 @@ if (!isset($_SESSION['iUserID'])) {
 require_once "../service/PersonService.php";
 require_once "../service/FamilyService.php";
 require_once "../service/DataSeedService.php";
-require_once '../vendor/Slim/slim/Slim/Slim.php';
+require_once "../service/GroupService.php";
 require_once '../service/SystemService.php';
+
+require_once '../vendor/Slim/slim/Slim/Slim.php';
+
 use Slim\Slim;
 
 Slim::registerAutoloader();
@@ -38,6 +41,151 @@ $app->container->singleton('SystemService', function () {
     return new SystemService();
 });
 
+$app->container->singleton('GroupService', function () {
+    return new GroupService();
+});
+
+
+$app->group('/groups', function () use ($app) {
+    $groupService = $app->GroupService;
+    
+    $app->post('/:groupID/userRole/:userID', function ($groupID,$userID) use ($app, $groupService) {
+        try {
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            echo json_encode($groupService->setGroupMemberRole($groupID,$userID,$input->roleID));
+            
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->post('/:groupID/removeuser/:userID', function ($groupID,$userID) use ($groupService) {
+        try {
+            $groupService->removeUserFromGroup($groupID,$userID);
+            echo '{"success":"true"}';
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    $app->post('/:groupID/adduser/:userID', function ($groupID,$userID) use ($groupService) {
+        try {
+            echo json_encode( $groupService->addUserToGroup($groupID,$userID,0));
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    $app->delete('/:groupID', function ($groupID) use ($groupService) {
+        try {
+            $groupService->deleteGroup($groupID);
+            echo '{"success":"true"}';
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->get('/:groupID', function ($groupID) use ($groupService) {
+        try{
+            echo $groupService->getGroupJSON($groupService->getGroups($groupID));
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+        
+    });
+    $app->post('/:groupID', function ($groupID) use ($app, $groupService) {
+        try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            echo $groupService->updateGroup($groupID,$input);
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    $app->post('/', function () use ($app, $groupService) {
+        try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            echo json_encode($groupService->createGroup($input->groupName));
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->post('/:groupID/roles/:roleID', function ($groupID,$roleID) use ($app, $groupService) {
+        try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            if (property_exists($input,"groupRoleName"))
+            {
+                $groupService->setGroupRoleName($groupID,$roleID,$input->groupRoleName);
+            }
+            elseif (property_exists($input,"groupRoleOrder"))
+            {
+                $groupService->setGroupRoleOrder($groupID,$roleID,$input->groupRoleOrder);
+            }
+            
+            echo '{"success":"true"}';
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->delete('/:groupID/roles/:roleID', function ($groupID,$roleID) use ($app, $groupService) {
+        try{
+            echo json_encode($groupService->deleteGroupRole($groupID,$roleID));
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->post('/:groupID/roles', function ($groupID) use ($app, $groupService) {
+        try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            echo $groupService->addGroupRole($groupID,$input->roleName);
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->post('/:groupID/defaultRole', function ($groupID) use ($app, $groupService) {
+        try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            $groupService->setGroupRoleAsDefault($groupID,$input->roleID);
+            echo '{"success":"true"}';
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->post('/:groupID/setGroupSpecificPropertyStatus', function ($groupID) use ($app, $groupService) {
+        try{
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            if ($input->GroupSpecificPropertyStatus)
+            {
+                $groupService->enableGroupSpecificProperties($groupID);
+                return '{"status":"group specific properties enabled"}';
+            }
+            else
+            {
+                $groupService->disableGroupSpecificProperties($groupID);
+                return '{"status":"group specific properties disabled"}';
+            }
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+});
 
 $app->group('/database', function () use ($app) {
     $systemService = $app->SystemService;
@@ -77,8 +225,11 @@ $app->group('/database', function () use ($app) {
 $app->group('/search', function () use ($app) {
     $app->get('/:query', function ($query) use ($app) {
         try {
-            echo "[ ".$app->PersonService->search($query).", ";
-            echo $app->FamilyService->search($query)."]";
+            $resultsArray = array();
+            array_push($resultsArray, $app->PersonService->getPersonsJSON($app->PersonService->search($query)));
+            array_push($resultsArray, $app->FamilyService->getFamiliesJSON($app->FamilyService->search($query)));
+            array_push($resultsArray, $app->GroupService->getGroupJSON($app->GroupService->search($query)));
+            echo "[".join(",",array_filter($resultsArray))."]";
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
@@ -89,20 +240,17 @@ $app->group('/persons', function () use ($app) {
     $personService = $app->PersonService;
     $app->get('/search/:query', function ($query) use ($personService) {
         try {
-            echo $personService->search($query);
+            echo "[".$personService->getPersonsJSON($personService->search($query))."]";
         } catch (Exception $e) {
             echo exceptionToJSON($e);
         }
     });
+
     $app->group('/:id', function () use ($app, $personService) {
-        $app->get('/', function ($id) use ($personService) {
-            try {
-                $person = $personService->get($id);
-                echo $person;
-            } catch (Exception $e) {
-                echo exceptionToJSON($e);
-            }
+        $app->get('/',function($id) use ($personService) {
+             echo "[".$personService->getPersonsJSON($personService->getPersonByID($id))."]";
         });
+        
         $app->get('/photo', function ($id) use ($personService) {
             try {
                 echo $personService->getPhoto($id);

@@ -125,7 +125,33 @@ class PersonService {
             array_push($return, $values);
         }
 
-        return '{"persons": ' . json_encode($return) . '}';
+        return $return;
+    }
+    
+    function getPersonByID($per_ID)
+    {
+        $fetch = "SELECT per_ID, per_FirstName, LEFT(per_MiddleName,1) AS per_MiddleName, per_LastName, per_Title, per_Suffix, per_Address1, per_Address2, per_City, per_State, per_Zip, per_CellPhone, per_Country, per_Email, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_CellPhone, fam_Email
+            FROM person_per
+            LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
+        WHERE per_ID = " . $per_ID;
+        $result = mysql_query($fetch);
+        $row = mysql_fetch_assoc($result);
+        $row['photo']=$this->getPhoto($per_ID);
+        $row['displayName'] = $row['per_FirstName'] . " " . $row['per_LastName'];
+
+        return $row;
+    }
+    
+    function getPersonsJSON($persons)
+    {
+        if ($persons)
+        {
+            return '{"persons": ' . json_encode($persons) . '}';
+        }
+        else
+        {
+              return false;
+        }
     }
 
     private function getDefaultPhoto($gender, $famRole)
@@ -141,40 +167,40 @@ class PersonService {
 
         return $photoFile;
     }
-	
-	public function insertPerson($user)
+    
+    public function insertPerson($user)
     {
         $sSQL = "INSERT INTO person_per
-	(per_Title,
-	per_FirstName,
-	per_MiddleName,
-	per_LastName,
-	per_Suffix,
-	per_Gender,
-	per_Address1,
-	per_Address2,
-	per_City,
-	per_State,
-	per_Zip,
-	per_Country,
-	per_HomePhone,
-	per_WorkPhone,
-	per_CellPhone,
-	per_Email,
-	per_WorkEmail,
-	per_BirthMonth,
-	per_BirthDay,
-	per_BirthYear,
-	per_Envelope,
-	per_fam_ID,
-	per_fmr_ID,
-	per_MembershipDate,
-	per_cls_ID,
-	per_DateEntered,
-	per_EnteredBy,
-	per_FriendDate,
-	per_Flags )
-	VALUES ('" .
+    (per_Title,
+    per_FirstName,
+    per_MiddleName,
+    per_LastName,
+    per_Suffix,
+    per_Gender,
+    per_Address1,
+    per_Address2,
+    per_City,
+    per_State,
+    per_Zip,
+    per_Country,
+    per_HomePhone,
+    per_WorkPhone,
+    per_CellPhone,
+    per_Email,
+    per_WorkEmail,
+    per_BirthMonth,
+    per_BirthDay,
+    per_BirthYear,
+    per_Envelope,
+    per_fam_ID,
+    per_fmr_ID,
+    per_MembershipDate,
+    per_cls_ID,
+    per_DateEntered,
+    per_EnteredBy,
+    per_FriendDate,
+    per_Flags )
+    VALUES ('" .
            FilterInput($user->name->title) . "','" .
            FilterInput($user->name->first) . "',NULL,'" .
            FilterInput($user->name->last) . "',NULL,'";
