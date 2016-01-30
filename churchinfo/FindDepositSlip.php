@@ -74,19 +74,39 @@ require "Include/Header.php";
 </div>
 <!-- End Delete Confirm Modal -->
 
-
+<div class="box">
+<div class="box-header with-border">
+    <h3 class="box-title"><?php echo gettext("Add New Deposit: ");?></h3>
+</div>
+<div class="box-body">
+<form action="#" method="get" class="form">
+    <label for="addNewGruop">Deposit Comment</label>
+    <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
+    <select>
+        <option value="Bank">Bank</option>
+        <option value="CreditCard">Credit Card</option>
+        <option value="BankDraft">Bank Draft</option>
+        <option value="eGive">eGive</option>
+    </select>
+    <br>
+    <button type="button" class="btn btn-primary" id ="addNewGroup" >Add New Group</button>
+</form>
+</div>
+</div>
 
 <div class="box">
+<div class="box-header with-border">
+    <h3 class="box-title"><?php echo gettext("Deposits: ");?></h3>
+</div>
 <div class="box-body">
 <table class="table" id="depositsTable">
 </table>
 
 <button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>
 <button type="button" id="exportSelectedRows"  class="btn btn-success" disabled><i class="fa fa-download"></i>Export Selected Rows (OFX)</button>
-
-
 </div>
 </div>
+
 <script>
 var depositData = <?php $json = $financialService->getDepositJSON($financialService->getDeposits()); if ($json) { echo $json; } else { echo 0; } ?>;
 
