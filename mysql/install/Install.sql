@@ -627,9 +627,9 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `menuconfig_mcf`
--- 
+--
 
 CREATE TABLE `menuconfig_mcf` (
   `mid` int(11) NOT NULL auto_increment,
@@ -649,11 +649,12 @@ CREATE TABLE `menuconfig_mcf` (
   `sortorder` tinyint(3) NOT NULL,
   `icon` varchar(50) DEFAULT NULL,
   PRIMARY KEY  (`mid`)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=84 ;
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=102 ;
 
--- 
+--
 -- Dumping data for table `menuconfig_mcf`
--- 
+--
+
 
 INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_english`, `content`, `uri`, `statustext`, `security_grp`, `session_var`, `session_var_in_text`, `session_var_in_uri`, `url_parm_name`, `active`, `sortorder`, `icon`) VALUES
 (1, 'root', '', 1, 'Main', 'Main', '', '', 'bAll', NULL, 0, 0, NULL, 1, 0, NULL),
@@ -711,6 +712,11 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (101, 'dbrestore', 'admin', 0, 'Restore Database', 'Restore Database', 'RestoreDatabase.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 5, NULL);
 
 UPDATE menuconfig_mcf SET content=content_english;
+--
+-- Indexes for dumped tables
+--
+
+
 
 -- --------------------------------------------------------
 
