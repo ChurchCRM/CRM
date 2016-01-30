@@ -30,7 +30,7 @@ require "Include/GeoCoder.php";
 $sPageTitle = gettext("Update Latitude & Longitude");
 require "Include/Header.php";
 
-echo '<div class="box box-body">';
+echo '<div class="box box-body box-info">';
 
 // Lookup unknown coodinates first.  To do this set latitude = -99 for
 // every unknown record.
@@ -77,7 +77,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
             }
             // if a lookup returned zero skip this.  Don't overwrite with 0,0
             if ($sNewLatitude != 0) {
-        echo "<p>" . $fam_Name, " Latitude " .  $sNewLatitude . " Longitude " . $sNewLongitude . "</p>";
+        echo "<li>" . $fam_Name, " Latitude " .  $sNewLatitude . " Longitude " . $sNewLongitude . "</li>";
         $sSQL = "UPDATE family_fam SET fam_Latitude='" . $sNewLatitude . "',fam_Longitude='" . $sNewLongitude . "' WHERE fam_ID=" . $fam_ID;
         RunQuery ($sSQL);
             }
@@ -86,19 +86,26 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     }
     flush ();
 }
-echo '<p>' . gettext('Update Finished') . '</p>';
-
+echo '<br/><p>' . gettext('Update Finished') . '</p>';
+?>
+</div>
+<div class="box box-warning">
+<div class="box-header">
+    <b>No coordinates found</b>
+</div>
+<div class="box-body ">
+<?
 $sSQL =  "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude ";
 $sSQL .= "FROM family_fam WHERE fam_Latitude = 0";
 $rsFamilies = RunQuery ($sSQL);
 while ($aFam = mysql_fetch_array($rsFamilies)) {
     extract ($aFam);
-    echo "<p> No coordinates found for " . $fam_Name . " " . $fam_Address1 .
-    "," . $fam_City . "," . $fam_State . "," . $fam_Zip . "</p>";
+    echo "<li>". $fam_Name . " " . $fam_Address1 .
+    "," . $fam_City . "," . $fam_State . "," . $fam_Zip . "</li>";
 }
 ob_flush ();
 
-echo '</div>';
+echo '</div></div>';
 
 require "Include/Footer.php";
 

@@ -210,7 +210,6 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			echo "<li class=\"divider\"></li>";
 
 		} ?>
-		<li><a href="VCardCreate.php?PersonID=<?php echo $per_ID; ?>" ><?php echo gettext("Create vCard"); ?></a></li>
 		<li><a href="PrintView.php?PersonID=<?php echo $per_ID; ?>"><?php echo gettext("Printable Page"); ?></a></li>
 		<li><a href="PersonView.php?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>"><?php echo gettext("Add to Cart"); ?></a></li>
 		<?php if ($_SESSION['bNotes']) { ?>

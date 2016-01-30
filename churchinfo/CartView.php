@@ -151,8 +151,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
 
                 echo '<td align="center">' . $sValidAddy . '</td>';
                 echo '<td align="center">' . $sValidEmail . '</td>';
-                echo '<td><a onclick="saveScrollCoordinates()" 
-                        href="CartView.php?RemoveFromPeopleCart=' . 
+                echo '<td><a href="CartView.php?RemoveFromPeopleCart=' .
                         $per_ID . '">' . gettext("Remove") . '</a></td>';
                 echo '<td align="center">' . $aClassificationName[$per_cls_ID] . '</td>';
                 echo '<td align="center">' . $aFamilyRoleName[$per_fmr_ID] . '</td>';
