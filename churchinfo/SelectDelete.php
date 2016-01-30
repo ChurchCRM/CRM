@@ -68,13 +68,14 @@ else
 
 function DeletePerson($iPersonID)
 {
+    $groupService = new GroupService();
 	// Remove person from all groups they belonged to
 	$sSQL = "SELECT p2g2r_grp_ID FROM person2group2role_p2g2r WHERE p2g2r_per_ID = " . $iPersonID;
 	$rsAssignedGroups = RunQuery($sSQL);
 	while ($aRow = mysql_fetch_array($rsAssignedGroups))
 	{
 		extract($aRow);
-		RemoveFromGroup($iPersonID, $p2g2r_grp_ID);
+        $groupService->removeUserFromGroup($p2g2r_grp_ID,$iPersonID);
 	}
 
 	// Remove custom field data

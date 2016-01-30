@@ -8,6 +8,7 @@
 *
 *  Additional Contributors:
 *  2006 Ed Davis
+*  2016 Charles Crossan
 *
 *
 *  Copyright Contributors
@@ -23,118 +24,115 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'service/GroupService.php';
 
 //Set the page title
 $sPageTitle = gettext('Group Listing');
+$groupService = new GroupService();
+require 'Include/Header.php';?>
 
-require 'Include/Header.php';
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
+
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+
+
+
+
+<div class="box box-body">
+<table class="table" id="groupsTable">
+</table>
+<?php
 if ($_SESSION['bManageGroups']) 
-{
-	echo '<p align="center"><a href="GroupEditor.php">';
-	echo gettext('Add a New Group') . '</a></p>';
-}
-
-//Get all group records
-//Added "OR grp_Type = 0" to display Unassigned Groups 
-$sSQL = "SELECT * FROM group_grp LEFT JOIN list_lst "
-      . "ON grp_Type = lst_OptionID "
-      . "WHERE lst_ID='3' OR grp_Type = 0 "
-      . "ORDER BY lst_OptionSequence, grp_Name";
-
-$rsGroups = RunQuery($sSQL);
-
-echo '	<center><table cellpadding="4" cellspacing="0" width="70%">
-		<tr class="TableHeader">
-		<td>' . gettext('Name') . '</td>
-		<td align="center">' . gettext('Members') . '</td>
-		<td align="center">' . gettext('Type') . '</td>
-		<td align="center">' . gettext('Add to Cart') . '</td>
-		<td align="center">' . gettext('Remove from Cart') . '</td></tr>';
-
-//Set the initial row color
-$sRowClass = 'RowColorA';
-
-//Loop through the person recordset
-while ($aRow = mysql_fetch_array($rsGroups))
-{
-	extract($aRow);
-
-	//Alternate the row color
-	$sRowClass = AlternateRowStyle($sRowClass);
-
-	//Get the count for this group
-	$sSQL = "SELECT Count(*) AS iCount FROM person2group2role_p2g2r " .
-			"WHERE p2g2r_grp_ID='$grp_ID'";
-	$rsMemberCount = mysql_fetch_array(RunQuery($sSQL));
-	extract($rsMemberCount);
-		
-	//Get the group's type name
-	if ($grp_Type > 0)
-	{
-		$sSQL =	"SELECT lst_OptionName FROM list_lst WHERE " . 
-				"lst_ID=3 AND lst_OptionID = " . $grp_Type;
-		$rsGroupType = mysql_fetch_array(RunQuery($sSQL));
-		$sGroupType = $rsGroupType[0];
-	}
-	else
-		$sGroupType = gettext('Undefined');
-
-		//Display the row
-
-		echo '	<tr class="' .$sRowClass. '">
-				<td><a href="GroupView.php?GroupID=' .$grp_ID. '">' .$grp_Name. '</a></td>
-				<td align="center">' .$iCount. '</td>
-				<td align="center">' .$sGroupType. '</td>
-				<td align="center">'; // end echo
-
-		$sSQL =	"SELECT p2g2r_per_ID FROM person2group2role_p2g2r " .
-				"WHERE p2g2r_grp_ID='$grp_ID'";
-		$rsGroupMembers = RunQuery($sSQL);
-
-		$bNoneInCart = TRUE;
-		$bAllInCart = TRUE;
-		//Loop through the recordset
-		while ($aPeople = mysql_fetch_array($rsGroupMembers))
-		{
-			extract($aPeople);
-
-			if (!isset($_SESSION['aPeopleCart']))
-				$bAllInCart = FALSE; // Cart does not exist.  This person is not in cart.
-			elseif (!in_array($p2g2r_per_ID, $_SESSION['aPeopleCart'], false))
-				$bAllInCart = FALSE; // This person is not in cart.
-			elseif (in_array($p2g2r_per_ID, $_SESSION['aPeopleCart'], false))
-				$bNoneInCart = FALSE; // This person is in the cart
-		}
-
-		if (!$bAllInCart)
-		{
-			// Add to cart ... screen should return to this location
-			// after this group is added to cart
-			echo '<a href="GroupList.php?AddGroupToPeopleCart=' .$grp_ID. '">' .
-					gettext('Add all') . '</a>';
-		} else {
-            echo '&nbsp;';
-        }
+{?>
     
+    
+<br>
+<form action="#" method="get" class="form">
+    <label for="addNewGruop"><?php echo gettext("Add New Group: ");?></label>
+    <input class="form-control newGroup" name="groupName" id="groupName" style="width:100%">
+    <br>
+    <button type="button" class="btn btn-primary" id ="addNewGroup" >Add New Group</button>
+</form>
+<?php
+}
+?>
 
-		echo '</td><td align="center">';
+</div>
+<script>
 
-		if (!$bNoneInCart)
-		{
-			// Add to cart ... screen should return to this location
-			// after this group is removed from cart
-			echo '	<a href="GroupList.php?RemoveGroupFromPeopleCart=' .$grp_ID. '">' .
-					gettext('Remove all') . '</a>';
-		} else {
-            echo '&nbsp;';
+ var groupData = <?php $json = $groupService->getGroupJSON($groupService->getGroups()); if ($json) { echo $json; } else { echo 0; } ?>;
+
+if (!$.isArray(groupData.groups))
+{
+    groupData.groups=[groupData.groups];
+}
+console.log(groupData.groups);
+var dataT = 0;
+$(document).ready(function() {
+   
+    $("#addNewGroup").click(function (e){
+        var newGroup = {'groupName':$("#groupName").val()};
+        console.log(newGroup);
+        $.ajax({
+            method: "POST",
+            url:   "/api/groups",
+            data:  JSON.stringify(newGroup)
+        }).done(function(data){
+            console.log(data);
+            dataT.row.add(data);
+            dataT.rows().invalidate().draw(true);
+        });
+    });
+   
+    dataT = $("#groupsTable").DataTable({
+    data:groupData.groups,
+    columns: [
+    {
+        width: 'auto',
+        title:'Group Name',
+        data:'groupName',
+        render: function  (data, type, full, meta ) {
+            return '<a href=\'GroupView.php?GroupID='+full.id+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a><a href=\'GroupEditor.php?GroupID='+full.id+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-pencil fa-stack-1x fa-inverse"></i></span></a>'+data; 
         }
+    },
+    {
+        width: 'auto',
+        title:'Members',
+        data:'memberCount',
+        searchable: false
+    },
+    {
+        width: 'auto',
+        title:'Group Cart Status',
+        data:'groupCartStatus',
+        searchable: false,
+        render: function  (data, type, full, meta ) {
+            
+            if(data)
+            {
+                return "<span>All members of this group are in the cart</span><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart="+full.id+"\">Remove all</a>";
+            }
+            else
+            {
+                 return "<span>Not all members of this group are in the cart</span><br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart="+full.id+"\">Add all</a>";
+            }
+        }
+    },
+    {
+        width: 'auto',
+        title:'Group Type',
+        data:'groupType',
+        searchable: true
+    }
+    ]
+});
+});
+</script>
 
-		echo '</td>';
-	}
-
-	//Close the table
-	echo '</table></center>';
-
+<?php
 require 'Include/Footer.php';
 ?>

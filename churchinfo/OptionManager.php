@@ -348,7 +348,7 @@ for ($row=1; $row <= $numRows; $row++)
 		</td>
 		<td class="TextColumn">
 			<span class="SmallText">
-				<input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="40">
+				<input class="form-control input-small" type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="40">
 			</span>
 			<?php
 
@@ -360,7 +360,7 @@ for ($row=1; $row <= $numRows; $row++)
 		</td>
 		<?php
 		if ($mode == "grproles")
-			echo "<td class=\"TextColumn\"><input type=\"button\" class=\"btn\" value=\"" . gettext("Make Default") . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . "&ListID=" . $listID . "&ID=" . $aIDs[$row] . "&Action=makedefault';\" ></td>";
+			echo "<td class=\"TextColumn\"><input class=\"form-control input-small\" type=\"button\" class=\"btn\" value=\"" . gettext("Make Default") . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . "&ListID=" . $listID . "&ID=" . $aIDs[$row] . "&Action=makedefault';\" ></td>";
 		?>
 
 	</tr>
@@ -384,9 +384,9 @@ for ($row=1; $row <= $numRows; $row++)
 	<div class="box-body">
 New <?php echo $noun . " " . gettext("Name:"); ?>&nbsp;
 <span class="SmallText">
-	<input type="text" name="newFieldName" size="30" maxlength="40">
+	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
-&nbsp;
+<p>  </p>
 <input type="submit" class="btn" <?php echo 'value="' . gettext("Add New") . ' ' . $adj . ' ' . $noun . '"'?> Name="AddField">
 <?php
 	if ($iNewNameError > 0)
