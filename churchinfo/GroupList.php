@@ -111,8 +111,7 @@ while ($aRow = mysql_fetch_array($rsGroups))
 		{
 			// Add to cart ... screen should return to this location
 			// after this group is added to cart
-			echo '<a onclick="saveScrollCoordinates()" 
-					href="GroupList.php?AddGroupToPeopleCart=' .$grp_ID. '">' .
+			echo '<a href="GroupList.php?AddGroupToPeopleCart=' .$grp_ID. '">' .
 					gettext('Add all') . '</a>';
 		} else {
             echo '&nbsp;';
@@ -125,8 +124,7 @@ while ($aRow = mysql_fetch_array($rsGroups))
 		{
 			// Add to cart ... screen should return to this location
 			// after this group is removed from cart
-			echo '	<a onclick="saveScrollCoordinates()"
-					href="GroupList.php?RemoveGroupFromPeopleCart=' .$grp_ID. '">' .
+			echo '	<a href="GroupList.php?RemoveGroupFromPeopleCart=' .$grp_ID. '">' .
 					gettext('Remove all') . '</a>';
 		} else {
             echo '&nbsp;';

@@ -383,10 +383,10 @@ for ($row=1; $row <= $numRows; $row++) {
 	    if ($row == 1) {
 	      echo "<a href=\"VolunteerOpportunityEditor.php?act=na&amp;row_num=" . $row . "\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
 	    } else {
-	      echo "<a onclick=\"saveScrollCoordinates()\" href=\"VolunteerOpportunityEditor.php?act=up&amp;row_num=" . $row . "\"> <img src=\"Images/uparrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+	      echo "<a href=\"VolunteerOpportunityEditor.php?act=up&amp;row_num=" . $row . "\"> <img src=\"Images/uparrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
 	    }
 	    if ($row <> $numRows) {
-	      echo "<a onclick=\"saveScrollCoordinates()\" href=\"VolunteerOpportunityEditor.php?act=down&amp;row_num=" . $row . "\"> <img src=\"Images/downarrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+	      echo "<a href=\"VolunteerOpportunityEditor.php?act=down&amp;row_num=" . $row . "\"> <img src=\"Images/downarrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
 	    } else {
 	      echo "<a href=\"VolunteerOpportunityEditor.php?act=na&amp;row_num=" . $row . "\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
 	    }
