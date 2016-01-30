@@ -314,6 +314,19 @@ $app->group('/families', function () use ($app) {
 });
 
 $app->group('/deposits',function () use ($app) {
+    
+    $app->post('/',function() use ($app)
+    {
+        try {
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            echo json_encode($app->FinancialService->createDeposit($input->depositType, $input->depositComment, $input->depositDate));
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
 	$app->get('/',function() use ($app) 
 	{
 		try {

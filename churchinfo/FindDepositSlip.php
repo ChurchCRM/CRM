@@ -79,18 +79,33 @@ require "Include/Header.php";
     <h3 class="box-title"><?php echo gettext("Add New Deposit: ");?></h3>
 </div>
 <div class="box-body">
-<form action="#" method="get" class="form">
-    <label for="addNewGruop">Deposit Comment</label>
-    <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
-    <select>
-        <option value="Bank">Bank</option>
-        <option value="CreditCard">Credit Card</option>
-        <option value="BankDraft">Bank Draft</option>
-        <option value="eGive">eGive</option>
-    </select>
-    <br>
-    <button type="button" class="btn btn-primary" id ="addNewGroup" >Add New Group</button>
-</form>
+    <form action="#" method="get" class="form">
+    <div class="row">
+        <div class="col-xs-3">
+        <label for="addNewGruop">Deposit Comment</label>
+        <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
+        </div>
+        <div class="col-xs-3">
+        <label for="depositType">Deposit Type</label>
+        <select  class="form-control" id="depositType" name="depositType">
+            <option value="Bank">Bank</option>
+            <option value="CreditCard">Credit Card</option>
+            <option value="BankDraft">Bank Draft</option>
+            <option value="eGive">eGive</option>
+        </select>
+        </div>
+        <div class="col-xs-3">
+        <label for="addNewGruop">Deposit Date</label>
+        <input class="form-control" name="depositDate" id="depositDate" style="width:100%">
+        </div>
+    </div>
+    <p>
+    <div class="row">
+    <div class="col-xs-3">
+        <button type="button" class="btn btn-primary" id ="addNewDeposit" >Add New Deposit</button>
+    </div>
+    </div>
+    </form>
 </div>
 </div>
 
@@ -117,17 +132,23 @@ if (!$.isArray(depositData.deposits))
 console.log(depositData.deposits);
 var dataT = 0;
 $(document).ready(function() {
+    
+    $("#depositDate").datepicker({format:'yyyy-mm-dd'}).datepicker("setDate", new Date());
    
-    $("#addNewGroup").click(function (e){
-        var newGroup = {'groupName':$("#groupName").val()};
-        console.log(newGroup);
+    $("#addNewDeposit").click(function (e){
+        var newDeposit = {
+            'depositType':$("#depositType option:selected").val(),
+            'depositComment':$("#depositComment").val(),
+            'depositDate':$("#depositDate").val()
+        };
+        console.log(newDeposit);
         $.ajax({
             method: "POST",
-            url:   "/api/groups",
-            data:  JSON.stringify(newGroup)
+            url:   "/api/deposits",
+            data:  JSON.stringify(newDeposit)
         }).done(function(data){
-            console.log(data);
-            dataT.row.add(data);
+            console.log(data[0]);
+            dataT.row.add(data[0]);
             dataT.rows().invalidate().draw(true);
         });
     });

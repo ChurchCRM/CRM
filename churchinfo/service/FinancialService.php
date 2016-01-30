@@ -122,6 +122,18 @@ class FinancialService {
 		return $return;
 	}
     
+    function createDeposit($depositType, $depositComment, $depositDate)
+    {
+        	$sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy,  dep_Type) 
+			VALUES ('" . $depositDate . "','" . $depositComment . "'," . $_SESSION['iUserID'] . ",'" . $depositType . "')";
+            RunQuery($sSQL);
+            $sSQL = "SELECT MAX(dep_ID) AS iDepositSlipID FROM deposit_dep";
+			$rsDepositSlipID = RunQuery($sSQL);
+			extract(mysql_fetch_array($rsDepositSlipID));
+			$_SESSION['iCurrentDeposit'] = $iDepositSlipID;
+            return $this->getDeposits($iDepositSlipID);
+    }
+    
     function getDepositTotal($id)
     {
         // Get deposit total
