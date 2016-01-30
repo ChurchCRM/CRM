@@ -113,7 +113,7 @@ $demographicStats = $dashboardService->getDemographic();
         <table class="table table-condensed">
             <tr>
                 <th>Role / Gender</th>
-                <th></th>
+                <th>% of Members</th>
                 <th style="width: 40px">Count</th>
             </tr>
             <? foreach ($demographicStats as $key => $value) { ?>
