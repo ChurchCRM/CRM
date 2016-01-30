@@ -320,7 +320,7 @@ function Header_body_menu() {
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown settings-dropdown">
-                        <a href="CartView.php">
+                        <a href="<?php echo $sURLPath."/"; ?>CartView.php">
                             <i class="fa fa-shopping-cart"></i>
                             <span class="label label-success"><?= count($_SESSION['aPeopleCart'])?></span>
                         </a>
