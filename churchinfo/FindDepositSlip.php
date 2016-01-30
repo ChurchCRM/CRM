@@ -160,15 +160,6 @@ $(document).ready(function() {
         title:'Deposit Type',
         data:'dep_Type',
         searchable: true
-    },
-    {
-        width: 'auto',
-        title:'Export Deposit as OFX',
-        data:'dep_ID',
-        searchable: true,
-        render: function  (data, type, full, meta ) {
-            return '<a href=\'Reports/ExportOFX.php?deposit='+full.dep_ID+'\'><i class="fa fa-download"></i></a>'; 
-        }
     }
     ]
 });
