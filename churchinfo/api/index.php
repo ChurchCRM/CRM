@@ -13,12 +13,11 @@ if (!isset($_SESSION['iUserID'])) {
 require_once "../service/PersonService.php";
 require_once "../service/FamilyService.php";
 require_once "../service/DataSeedService.php";
-require_once '../vendor/slim/slim/Slim/Slim.php';
-
+require_once '../vendor/Slim/slim/Slim/Slim.php';
+require_once '../service/SystemService.php';
 use Slim\Slim;
 
 Slim::registerAutoloader();
-
 
 $app = new Slim();
 
@@ -35,8 +34,45 @@ $app->container->singleton('FamilyService', function () {
 $app->container->singleton('DataSeedService', function () {
     return new DataSeedService();
 });
+$app->container->singleton('SystemService', function () {
+    return new SystemService();
+});
 
 
+$app->group('/database', function () use ($app) {
+    $systemService = $app->SystemService;
+    $app->post('/backup', function () use ($app, $systemService) {
+        try {
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            $backup = $systemService->getDatabaseBackup($input);
+            echo json_encode($backup);
+        } catch (Exception $e) {
+             echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->post('/restore', function () use ($app, $systemService) {
+        try {
+            $request = $app->request();
+            $body = $request->getBody();
+            $restore = $systemService->restoreDatabaseFromBackup();
+            echo json_encode($restore);
+        } catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    $app->get('/download/:filename',function ($filename) use($app, $systemService) {
+        try {
+                $systemService->download($filename);
+            } catch (Exception $e) {
+                echo '{"error":{"text":' . $e->getMessage() . '}}';
+            }
+        
+    });
+});
 
 $app->group('/search', function () use ($app) {
     $app->get('/:query', function ($query) use ($app) {
