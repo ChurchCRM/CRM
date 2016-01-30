@@ -50,6 +50,28 @@ require "Include/Header.php";
 <link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
 <script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
+<!-- Delete Confirm Modal -->
+<div id="confirmDelete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirm Delete</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the selected <span id="deleteNumber"></span> Deposit(s)?</p>
+        <p>This action CANNOT be undone.  Please ensure this what you want to do.</p>
+		<button type="button" class="btn btn-danger" id="deleteConfirmed" ><?php echo gettext("Delete"); ?></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Delete Confirm Modal -->
+
 
 
 <div class="box">
@@ -135,7 +157,7 @@ $(document).ready(function() {
     },
     {
         width: 'auto',
-        title:'Deposit Ty;e',
+        title:'Deposit Type',
         data:'dep_Type',
         searchable: true
     },
@@ -162,6 +184,34 @@ $(document).ready(function() {
           $("#exportSelectedRows").html("<i class=\"fa fa-download\"></i>Export ("+selectedRows+") Selected Rows (OFX)");
         
      });
+     
+     $('#deleteSelectedRows').click(function() {
+        var deletedRows = dataT.rows('.selected').data()
+        console.log("delete-button" + deletedRows.length);
+        $("#deleteNumber").text(deletedRows.length);
+        $("#confirmDelete").modal('show');
+    });
+    
+    
+    $("#deleteConfirmed").click(function() {
+	 var deletedRows = dataT.rows('.selected').data()
+        
+        $.ajax({
+            type        : 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
+            url         : '/api/deposits/'+dep_ID, // the url where we want to POST
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode      : true
+        })
+		 .done(function(data) {
+			console.log(data);
+			var gk = '#row-'+groupKey.replace(/\|/g,'\\|');
+			$('#confirmDelete').modal('hide');
+
+			$(gk).remove();
+		});
+		
+    });
+
 });
 </script>
 
