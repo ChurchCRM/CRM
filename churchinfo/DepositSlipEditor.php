@@ -751,9 +751,9 @@ $(document).ready(function() {
     data:paymentData.pledges,
     columns: [
     {
-        width: 'auto',
+        width: '100px',
         title:'Family',
-        data:'plg_FamID',
+        data:'familyName',
     },
     {
         width: 'auto',
