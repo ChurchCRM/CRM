@@ -55,7 +55,7 @@ error_reporting(0);
 
 // Turn on all error reporting
 
-#error_reporting(-1);
+error_reporting(-1);
 
 
 // Report all errors except E_NOTICE

@@ -1,7 +1,8 @@
 <?php
 require_once "PersonService.php";
 require_once "FamilyService.php";
-require_once "./Include/Functions.php";
+require_once dirname(dirname(__FILE__))."/Include/Functions.php";
+require dirname(dirname(__FILE__))."/Include/MICRFunctions.php";
 
 class FinancialService {
     
@@ -9,12 +10,14 @@ class FinancialService {
     private $personService;
     private $familyService;
 
-    public function __construct() {
+    public function __construct() 
+    {
         $this->baseURL = $_SESSION['sURLPath'];
         $this->personService = new PersonService();
         $this->familyService = new FamilyService();
     }
-	function processAuthorizeNet()
+	
+    function processAuthorizeNet()
     {
         $donation = new AuthorizeNetAIM;
                 $donation->amount = "$plg_amount";
@@ -507,7 +510,7 @@ class FinancialService {
 	function getDeposits($id=null) 
     {
 
-		$sSQL = "SELECT dep_ID, dep_Date, dep_Comment, dep_Closed, dep_Type FROM deposit_dep";
+		$sSQL = "SELECT * FROM deposit_dep";
 		if ($id)
 		{
 				$sSQL.=" WHERE dep_ID = ".$id;
@@ -517,17 +520,24 @@ class FinancialService {
 		while ($aRow = mysql_fetch_array($rsDep))
 		{
 			extract ($aRow);
-			$values['dep_ID']=$dep_ID;
-			$values['dep_Date']=$dep_Date;
-			$values['dep_Comment']=$dep_Comment;
-			$values['dep_Closed']=$dep_Closed;
-			$values['dep_Type']=$dep_Type;
-            $values['dep_Total']=$this->getDepositTotal($dep_ID);
+            $values= new StdClass();
+			$values->dep_ID=$dep_ID;
+			$values->dep_Date=$dep_Date;
+			$values->dep_Comment=$dep_Comment;
+			$values->dep_Closed=$dep_Closed;
+			$values->dep_Type=$dep_Type;
+            $values->dep_EnteredBy = $dep_EnteredBy;
+            $values->totalCash=$this->getDepositTotal($dep_ID,'CASH');
+            $values->totalChecks=$this->getDepositTotal($dep_ID,'CHECK');
+            $values->dep_Total=$this->getDepositTotal($dep_ID);
+            $values->countCash=$this->getDepositCount($dep_ID,'CASH');
+            $values->countCheck=$this->getDepositCount($dep_ID,'CHECK');
+            $values->countTotal=$this->getDepositCount($dep_ID);
 			array_push($return,$values);
 		}
 		return $return;
 	}
-    
+        
     function createDeposit($depositType, $depositComment, $depositDate)
     {
         	$sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy,  dep_Type) 
@@ -540,13 +550,32 @@ class FinancialService {
             return $this->getDeposits($iDepositSlipID);
     }
     
-    function getDepositTotal($id)
+    function getDepositTotal($id,$type=null)
     {
+        $sqlClause = '';
+        if ($type)
+        {
+            $sqlClause = "AND plg_method = '".$type."'";
+        }
         // Get deposit total
-        $sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment'";
+        $sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment' ".$sqlClause;
         $rsDepositTotal = RunQuery($sSQL);
         list ($deposit_total) = mysql_fetch_row($rsDepositTotal);
         return $deposit_total;    
+    }
+    
+    function getDepositCount($id,$type=null)
+    {
+        $sqlClause = '';
+        if ($type)
+        {
+            $sqlClause = "AND plg_method = '".$type."'";
+        }
+        // Get deposit total
+        $sSQL = "SELECT COUNT(plg_amount) AS deposit_count FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment' ".$sqlClause;
+        $rsDepositTotal = RunQuery($sSQL);
+        list ($deposit_count) = mysql_fetch_row($rsDepositTotal);
+        return $deposit_count;    
     }
     
     function getDepositJSON($deposits)
@@ -577,7 +606,12 @@ class FinancialService {
 
 	function getPayments($depID) 
     {
-		$sSQL = "SELECT * from pledge_plg";
+		$sSQL = "SELECT * from pledge_plg
+            INNER JOIN 
+            donationfund_fun 
+            ON 
+            pledge_plg.plg_fundID = donationfund_fun.fun_ID";
+            
 		if ($depID)
 		{
 				$sSQL.=" WHERE plg_depID = ".$depID;
@@ -601,6 +635,7 @@ class FinancialService {
 			$values['plg_EditedBy']=$plg_EditedBy;
 			$values['plg_PledgeOrPayment']=$plg_PledgeOrPayment;
 			$values['plg_fundID']=$plg_fundID;
+            $values['fun_Name'] = $fun_Name;
 			$values['plg_depID']=$plg_depID;
 			$values['plg_CheckNo']=$plg_CheckNo;
 			$values['plg_Problem']=$plg_Problem;
@@ -738,7 +773,7 @@ class FinancialService {
 		
 
 	}
-	
+	    
 	function validateChecks($payment) 
     {
 	//validate that the payment options are valid
