@@ -283,7 +283,7 @@ $app->group('/persons', function () use ($app) {
 $app->group('/families', function () use ($app) {
     $app->get('/search/:query', function ($query) use ($app) {
         try {
-            echo $app->FamilyService->search($query);
+            echo $app->FamilyService->getFamiliesJSON($app->FamilyService->search($query));
         } catch (Exception $e) {
             echo exceptionToJSON($e);
         }
