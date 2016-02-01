@@ -92,18 +92,7 @@ require "Include/Header.php";
 			<input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?php echo ($thisDeposit->dep_Type == 'Bank')?>';">
 			<input type="button" class="btn" value="Download OFX" name="DownloadOFX" onclick="javascript:document.location='Reports/ExportOFX.php?deposit=<?php echo $iDepositSlipID; ?>';">
 			<input type="button" class="btn" value="<?php echo gettext("More Reports"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
-			<?php 
-			if ($iDepositSlipID and $thisDeposit->dep_Type and !$thisDeposit->dep_Closed) {
-				if ($thisDeposit->dep_Type == "eGive") {
-					echo "<input type=button class=btn value=\"".gettext("Import eGive")."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
-				} else {
-					echo "<input type=button class=btn value=\"".gettext("Add Payment")."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
-				} ?>
-				<?php if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') { ?>
-					<input type="submit" class="btn" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
-    					<input type="submit" class="btn" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
-			    	<?php } ?>
-		    <?php } ?>
+			
 		</td>
 	</tr>
 	<tr>
@@ -148,6 +137,20 @@ require "Include/Header.php";
 <div class="box">
 <div class="box-header with-border">
     <h3 class="box-title"><?php echo gettext("Payments on this deposit slip:"); ?></h3>
+    <div class="pull-right">
+    <?php 
+			if ($iDepositSlipID and $thisDeposit->dep_Type and !$thisDeposit->dep_Closed) {
+				if ($thisDeposit->dep_Type == "eGive") {
+					echo "<input type=button class=btn value=\"".gettext("Import eGive")."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+				} else {
+					echo "<input type=button class=\"btn btn-success\" value=\"".gettext("Add Payment")."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+				} ?>
+				<?php if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') { ?>
+					<input type="submit" class="btn btn-success" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
+    					<input type="submit" class="btn btn-warning" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
+			    	<?php } ?>
+		    <?php } ?>
+    </div>
 </div>
 <div class="box-body">
 <table class="table" id="paymentsTable">

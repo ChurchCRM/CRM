@@ -725,9 +725,7 @@ class FinancialService {
 		if (strlen($payment->Date) > 0) {
 			list($iYear, $iMonth, $iDay) = sscanf($payment->Date,"%04d-%02d-%02d");
 			if ( !checkdate($iMonth,$iDay,$iYear) ) {
-				$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid Date") . "</span>";
-				$bErrorFlag = true;
-				echo "bErrorFlag 156";
+				throw new Exception ("Invalid Date");
 			}
 		}
 	
@@ -740,15 +738,12 @@ class FinancialService {
 		//If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
 		$FundSplit = json_decode($payment->FundSplit);
 		if (count($FundSplit) > 1 ) { // split
-			echo "split selected";
 			$nonZeroFundAmountEntered =0;
-	
 			foreach ($FundSplit as $fun_id => $fund) {
 				//$fun_active = $fundActive[$fun_id];
 				if ($fund->Amount > 0) {
 					++$nonZeroFundAmountEntered;
 				}
-
 				if ($GLOBALS['bEnableNonDeductible']) {
 					//Validate the NonDeductible Amount
 					if ($fund->NonDeductible > $fund->Amount) { //Validate the NonDeductible Amount
@@ -756,40 +751,34 @@ class FinancialService {
 					}
 				}
 			} // end foreach
-
 			if (!$nonZeroFundAmountEntered) {
 				throw new Exception (gettext("At least one fund must have a non-zero amount."));
 			}
 		}
 		elseif (count($FundSplit) ==1 and $FundSplit[0]->FundID != "None")
 		{
-			echo "one fund selected ".$FundSplit[0]->FundID;
-			
+			//echo "one fund selected ".$FundSplit[0]->FundID;	
 		}
 		else
 		{
 			throw new Exception ("Must select a valid fund");
 		}
-		
-
 	}
-	    
+    
 	function validateChecks($payment) 
     {
-	//validate that the payment options are valid
-	//If the payment method is a check, then the check nubmer must be present, and it must not already have been used for this family
-	//if the payment method is cash, there must not be a check number
+        //validate that the payment options are valid
+        //If the payment method is a check, then the check nubmer must be present, and it must not already have been used for this family
+        //if the payment method is cash, there must not be a check number
 		try {
 			if ($payment->type=="Payment" and $payment->iMethod == "CHECK"  and  ! isset($payment->checknumber)) {
 				throw new Exception (gettext("Must specify non-zero check number"));
 			}
-		
 			// detect check inconsistencies
 			if ($payment->type=="Payment" and isset($payment->checknumber)) {
 				if ($payment->iMethod == "CASH") {
 					throw new Exception (gettext("Check number not valid for 'CASH' payment"));
 				} 
-				
 				//build routine to make sure this check number hasn't been used by this family yet (look at group key)
 				/*elseif ($payment->iMethod=='CHECK' and !$sGroupKey) {
 					$chkKey = $payment->FamilyID . "|" . $iCheckNo;
@@ -802,10 +791,8 @@ class FinancialService {
 				}*/
 			}			
 		} catch (Exception $e) {
-            echo '{"error":{"text":' . $e->getMessage() . '}}';
-        }
-		
-		
+            throw new Exception ("Error validating check: ".$e->getMessage());
+        }		
 	}
 	
 	function processCurrencyDenominations($payment) 
@@ -817,13 +804,10 @@ class FinancialService {
 				{
 					$sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, pdem_denominationID, pdem_denominationQuantity) 
 					VALUES ('". $sGroupKey ."','".$cdem_denominationID."','".$_POST['currencyCount-'.$cdem_denominationID]."')";
-				
 					if (isset ($sSQL)) {
 						RunQuery($sSQL);
 						unset($sSQL);
 					}
-					//$currencyDenomination2Name[$cdem_denominationID] = $cdem_denominationName;
-					//$currencyDenominationValue[$cdem_denominationID] = $cdem_denominationValue;
 				}
 			}
 		
@@ -907,26 +891,16 @@ class FinancialService {
 	
 	function submitPledgeOrPayment($payment) 
     {
-
-		try {
-			echo "Validating Fund".PHP_EOL;
-			$this->validateFund($payment);
-			echo "Validating checks".PHP_EOL;
-			$this->validateChecks($payment);
-			echo "Validating date".PHP_EOL;
-			$this->validateDate($payment);
-			#echo "Validating deposit".PHP_EOL;
-			#$this->validateDeposit($payment);
-			echo "no errors, update!".PHP_EOL;
-			$this->insertPledgeorPayment ($payment);
-			if ($payment->iMethod =="CASH") {
-				$this->processCurrencyDenominations($payment);
-			}
-			
-		} catch (Exception $e) {
-            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        $this->validateFund($payment);
+        $this->validateChecks($payment);
+        $this->validateDate($payment);
+        #echo "Validating deposit".PHP_EOL;
+        #$this->validateDeposit($payment);
+        $this->insertPledgeorPayment ($payment);
+        if ($payment->iMethod =="CASH") {
+            $this->processCurrencyDenominations($payment);
         }
-		
+				
 	}
 	
 	function getPledgeorPayment($GroupKey) 
