@@ -391,7 +391,21 @@ if ($output == "pdf") {
 			$curY += $summaryIntervalY;
 		}	
 	}
-
+    
+     $curY += $summaryIntervalY;
+    $pdf->SetFont('Times','B', 10);
+	$pdf->SetXY ($curX, $curY);
+	$pdf->Write (8, 'Deposit totals by Currency Type');
+	$pdf->SetFont('Courier','', 8);
+    $curY += $summaryIntervalY;
+    $pdf->SetXY ($curX, $curY);
+	$pdf->Write (8, "Checks: ");
+    $pdf->PrintRightJustified ($curX + $summaryMethodX, $curY, sprintf ("%.2f", $totalChecks));
+    $curY += $summaryIntervalY;
+    $pdf->SetXY ($curX, $curY);
+	$pdf->Write (8, "Cash: ");
+    $pdf->PrintRightJustified ($curX + $summaryMethodX, $curY, sprintf ("%.2f", $totalCash));
+    
 	header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 	if ($iPDFOutputType == 1)
 		$pdf->Output("Deposit-" . $iDepositSlipID . ".pdf", "D");
