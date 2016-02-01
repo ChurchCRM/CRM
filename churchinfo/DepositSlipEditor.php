@@ -84,7 +84,7 @@ require "Include/Header.php";
     <h3 class="box-title"><?php echo gettext("Deposit Details: ");?></h3>
 </div>
 <div class="box-body">
-<form method="post" action="DepositSlipEditor.php?<?php echo "linkBack=" . $linkBack . "&DepositSlipID=".$iDepositSlipID?>" name="DepositSlipEditor">
+<form method="post" action="#" name="DepositSlipEditor" id="DepositSlipEditor">
 <table cellpadding="3" align="center">
 	<tr>
 		<td align="center">
@@ -108,7 +108,7 @@ require "Include/Header.php";
 			</tr>
 			<tr>
 				<td class="LabelColumn"><?php echo gettext("Closed:"); ?></td>
-				<td class="TextColumn"><input type="checkbox" name="Closed" value="1" <?php if ($thisDeposit->dep_Closed) echo " checked";?>><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
+				<td class="TextColumn"><input type="checkbox" name="Closed" id="Closed" value="1" <?php if ($thisDeposit->dep_Closed) echo " checked";?>><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
 <?php 
 				if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') {
 					echo "<p>" . gettext("Important note: failed transactions will be deleted permanantly when the deposit slip is closed.") . "</p>";
@@ -190,6 +190,39 @@ var paymentData = <?php echo $financialService->getPayments($iDepositSlipID); ?>
 $("#DepositDate").datepicker({format:'yyyy-mm-dd'});
 
 $(document).ready(function() {
+    
+    $("#DepositSlipEditor").submit(function(e){
+        e.preventDefault();
+        var formData = {
+            'date'              : $('#DepositDate').val(),
+            'comment'            : $("#Comment").val(),
+            'closed'                  : $('#Closed').is(':checked')
+        };
+        $("#backupstatus").css("color","orange");
+        $("#backupstatus").html("Backup Running, Please wait.");
+        console.log(formData);
+
+        //process the form
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : '/api/deposits', // the url where we want to POST
+            data        : JSON.stringify(formData), // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode      : true
+        })
+        .done(function(data) {
+            console.log(data);
+            var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\"><i class='fa fa-download'></i>  "+data.filename+"</button>";
+            $("#backupstatus").css("color","green");
+            $("#backupstatus").html("Backup Complete, Ready for Download.");
+            $("#resultFiles").html(downloadButton);
+        }).fail(function()  {
+            $("#backupstatus").css("color","red");
+            $("#backupstatus").html("Backup Error.");
+        });
+        
+    });
+    
     
     dataT = $("#paymentsTable").DataTable({
     data:paymentData.pledges,
