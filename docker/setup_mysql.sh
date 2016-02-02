@@ -17,6 +17,6 @@ mysql -uroot -e "CREATE USER 'churchcrm'@'%' IDENTIFIED BY 'churchcrm'"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON churchcrm.* TO 'churchcrm'@'%' WITH GRANT OPTION"
 
 #Install churchcrm db
-mysql churchinfo < /app/mysql/install/Install.sql
+mysql churchinfo < /app/churchinfo/mysql/install/Install.sql
 
 mysqladmin -uroot shutdown

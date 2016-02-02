@@ -6,7 +6,7 @@ DB_USER="root"
 DB_PASS="root"
 DB_HOST="localhost"
 
-CRM_DB_INSTALL_SCRIPT="/vagrant/mysql/install/Install.sql"
+CRM_DB_INSTALL_SCRIPT="/vagrant/churchinfo/mysql/install/Install.sql"
 CRM_DB_USER="churchcrm"
 CRM_DB_PASS="churchcrm"
 CRM_DB_NAME="churchcrm"

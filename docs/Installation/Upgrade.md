@@ -39,7 +39,7 @@ To perform an in-place upgrade on an existing ChurchInfo installation:
 3.  Upload the entire churchCRM folder where ChurchInfo was.
 4.  Upload the files stashed in step 1 back to their original locations, replacing any conflicts
 3.  From a server Shell, execute the following MySQL scripts (in this order):
-    1. mysql\upgrade\1.2.14-2.0.0.sql
-    2. mysql\upgrade\rebuild_nav_menus.sql
+    1. churchinfo\mysql\upgrade\1.2.14-2.0.0.sql
+    2. churchinfo\mysql\upgrade\rebuild_nav_menus.sql
 6. Login to the database using your previous username and password
 7. Validate that the upgrade was successful.
