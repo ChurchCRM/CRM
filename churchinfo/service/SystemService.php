@@ -228,12 +228,14 @@ class SystemService {
     
     function rebuildMenus()
     {
-        $root = dirname(dirname(dirname(__FILE__)));
+
+        $root = dirname(dirname(__FILE__));
         $this->playbackSQLtoDatabase($root."/mysql/upgrade/rebuild_nav_menus.sql");
     }
     
     function checkDatabaseVersion()
     {
+        $root = dirname(dirname(__FILE__));
         $ver_version = $this->getDatabaseVersion();
         if ($ver_version== $_SESSION['sSoftwareInstalledVersion'])
         {
