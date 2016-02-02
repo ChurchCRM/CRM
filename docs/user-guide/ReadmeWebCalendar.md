@@ -13,7 +13,7 @@ feature.
     `sWebCalendarPath` must be modified to reflect the actual location.
 
 3. Update the ChurchInfo database to enable the WebCalendar option by importing this SQL file:
-   `mysql/install/AddWebCalendar.sql`
+   `churchinfo/mysql/install/AddWebCalendar.sql`
    Note that this scripts adds one menu option and two general parameters that can be
    modified later using the menu configuration pages and the general settings pages
    respectively.

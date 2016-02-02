@@ -17,7 +17,7 @@ feature.
 
 6. Install the MRBS tables by importing this SQL file from the MRBS distribution into the ChurchInfo database: `tables.my.sql`
 
-7. Update the ChurchInfo database to enable the MRBS option by importing this SQL file: `mysql/install/AddMRBS.sql`
+7. Update the ChurchInfo database to enable the MRBS option by importing this SQL file: `churchinfo/mysql/install/AddMRBS.sql`
 >**Note:** This scripts adds one menu option and two general parameters that can be modified later using the menu configuration pages and the general settings pages respectively.
 
 8. Edit the file that sets up the session in the MRBS distribution.
