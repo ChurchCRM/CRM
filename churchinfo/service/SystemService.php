@@ -228,12 +228,13 @@ class SystemService {
     
     function rebuildMenus()
     {
-        $root = dirname(dirname(dirname(__FILE__)));
-        $this->playbackSQLtoDatabase("/vagrant/mysql/upgrade/rebuild_nav_menus.sql");
+        $root = dirname(dirname(__FILE__));
+        $this->playbackSQLtoDatabase($root."/mysql/upgrade/rebuild_nav_menus.sql");
     }
     
     function checkDatabaseVersion()
     {
+        $root = dirname(dirname(__FILE__));
         $ver_version = $this->getDatabaseVersion();
         if ($ver_version== $_SESSION['sSoftwareInstalledVersion'])
         {
@@ -247,7 +248,7 @@ class SystemService {
             RunQuery($sSQL); // False means do not stop on error
             //TODO upgrade script
             $this->rebuildMenus();
-            $this->playbackSQLtoDatabase("/vagrant/mysql/upgrade/1.2.14-2.0.0.sql");
+            $this->playbackSQLtoDatabase($root."/mysql/upgrade/1.2.14-2.0.0.sql");
             return "Upgraded";
         }
         
@@ -258,7 +259,7 @@ class SystemService {
             RunQuery($sSQL); // False means do not stop on error
             //TODO upgrade script
             $this->rebuildMenus();
-            $this->playbackSQLtoDatabase("/vagrant/mysql/upgrade/1.3.0-2.0.0.sql");
+            $this->playbackSQLtoDatabase($root."/mysql/upgrade/1.3.0-2.0.0.sql");
             return "Upgraded";
         }
 

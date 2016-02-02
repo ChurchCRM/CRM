@@ -7,7 +7,7 @@ Currently as ChurchCRM is still in development an install script is not yet avai
 1. The .tar.gz file download contains a directory called "churchinfo"
 Extract the file and place the contents into a directory in the document root of your Web server or via FTP to a shared hosting account
 
-2. Within the directory you'll find a directory called "SQL"
+2. Within the directory you'll find a directory called "mysql," and another called "install"
 containing a file named "Install.sql". Contained in this file are
 the SQL statements necessary to create the ChurchCRM database.
 
