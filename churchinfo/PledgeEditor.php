@@ -439,45 +439,33 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 	<?php } ?>
 <!--End Credit card or Bank Draft Section -->
 
-	
-		
-
-
-
-
-
-
-
 <!-- Start Cash Denomination Enter Section -->
-
-		<div class="box box-info clearfix" id="CashEnter" style="display:none">
-			<div class="box-header">
-				<h3 class="box-title">Cash Denominations</h3>
-			</div><!-- /.box-header -->
-			<div class="box-body">
-				<div class="table-responsive">
-					<table class="table table-striped">
-						<thead>
-							<th>Denomination</th>
-							<th>Count</th>
-							<th>Total</th>
-						</thead>
-						<tbody>
-				<?php 
-				
-					foreach ($currencyDenomination2Name as $cdem_denominationID =>$cdem_denominationName)
-					{
-					echo "<tr><td>";
-					echo $cdem_denominationName;
-					echo "</td><td><input type=\"text\" class=\"denominationInputBox\" data-cur-value=\"".$currencyDenominationValue[$cdem_denominationID]."\" name=\"currencyCount-".$cdem_denominationID."\"></td>";
-					
-					}?>
-				
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
+<div class="box box-info clearfix" id="CashEnter" style="display:none">
+    <div class="box-header">
+        <h3 class="box-title">Cash Denominations</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <th>Denomination</th>
+                    <th>Count</th>
+                    <th>Total</th>
+                </thead>
+                <tbody>
+        <?php 
+            foreach ($currencyDenomination2Name as $cdem_denominationID =>$cdem_denominationName)
+            {
+            echo "<tr><td>";
+            echo $cdem_denominationName;
+            echo "</td><td><input type=\"text\" class=\"denominationInputBox\" data-cur-value=\"".$currencyDenominationValue[$cdem_denominationID]."\" name=\"currencyCount-".$cdem_denominationID."\"></td>";
+            
+            }?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 		
 
 	
