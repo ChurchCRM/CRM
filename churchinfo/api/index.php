@@ -353,7 +353,7 @@ $app->group('/deposits',function () use ($app) {
             $request = $app->request();
             $body = $request->getBody();
             $input = json_decode($body);
-            echo json_encode($app->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate));
+            echo json_encode($app->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate, $id, $input->depositClosed));
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

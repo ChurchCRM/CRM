@@ -81,90 +81,87 @@ require "Include/Header.php";
 <script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 <div class="box">
-<div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext("Deposit Details: ");?></h3>
-</div>
-<div class="box-body">
-<form method="post" action="#" name="DepositSlipEditor" id="DepositSlipEditor">
-<table cellpadding="3" align="center">
-	<tr>
-		<td align="center">
-			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
-			<input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?php echo ($thisDeposit->dep_Type == 'Bank')?>';">
-			<input type="button" class="btn" value="Download OFX" name="DownloadOFX" onclick="javascript:document.location='Reports/ExportOFX.php?deposit=<?php echo $iDepositSlipID; ?>';">
-			<input type="button" class="btn" value="<?php echo gettext("More Reports"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
-			
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<table cellpadding="3">
-			<tr>
-				<td class="LabelColumn"><?php echo gettext("Date:"); ?></td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $thisDeposit->dep_Date; ?>" maxlength="10" id="DepositDate" size="11"><font color="red"><?php echo $sDateError ?></font></td>
-			</tr>			
-			<tr>
-				<td class="LabelColumn"><?php echo gettext("Comment:"); ?></td>
-				<td class="TextColumn"><input type="text" size=40 name="Comment" id="Comment" value="<?php echo $thisDeposit->dep_Comment; ?>"></td>
-			</tr>
-			<tr>
-				<td class="LabelColumn"><?php echo gettext("Closed:"); ?></td>
-				<td class="TextColumn"><input type="checkbox" name="Closed" id="Closed" value="1" <?php if ($thisDeposit->dep_Closed) echo " checked";?>><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
-<?php 
-				if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') {
-					echo "<p>" . gettext("Important note: failed transactions will be deleted permanantly when the deposit slip is closed.") . "</p>";
-				}
-?>
-			</tr>
-		</table>
-		</td>
-	</form>
-</table>
+    <div class="box-header with-border">
+        <h3 class="box-title"><?php echo gettext("Deposit Details: ");?></h3>
+    </div>
+    <div class="box-body">
+    <form method="post" action="#" name="DepositSlipEditor" id="DepositSlipEditor">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="Date"><?php echo gettext("Date:"); ?></label>
+                    <input type="text" name="Date" value="<?php echo $thisDeposit->dep_Date; ?>" id="DepositDate" >
+                </div>
+                <div class="col-md-4">
+                    <label for="Comment"><?php echo gettext("Comment:"); ?></label>
+                    <input type="text" name="Comment" id="Comment" value="<?php echo $thisDeposit->dep_Comment; ?>" style="width:100%;">
+                </div>
+                <div class="col-md-2">
+                    <label for="Closed"><?php echo gettext("Closed:"); ?></label>
+                    <input type="checkbox" name="Closed" id="Closed" value="1" <?php if ($thisDeposit->dep_Closed) echo " checked";?>><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
+                </div>
+                <div class="col-md-3">
+                    <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?php echo ($thisDeposit->dep_Type == 'Bank')?>';">
+                </div>
+            </div>
 
-<br>
-<?php 
-	// Get deposit totals
-	echo "<b>".$thisDeposit->dep_Total." - TOTAL AMOUNT </b> &nbsp; (Items: $thisDeposit->countTotal)<br>";
-	if ($thisDeposit->totalCash)
-		echo "<i><b>".$thisDeposit->totalCash." - Total Cash </b> &nbsp; (Items: $thisDeposit->countCash)</i><br>";
-	if ($thisDeposit->totalChecks)
-		echo "<i><b>".$thisDeposit->totalChecks." - Total Checks</b> &nbsp; (Items: $thisDeposit->countCheck)</i><br>";
-	echo "<br>";
-?>
+        <?php 
+                        if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') {
+                            echo "<p>" . gettext("Important note: failed transactions will be deleted permanantly when the deposit slip is closed.") . "</p>";
+                        }
+        ?>
+                    
+            <div class="row">
+                <div class="col-md-3">
+                <?php 
+                    // Get deposit totals
+                    echo "<b>".$thisDeposit->dep_Total." - TOTAL AMOUNT </b> &nbsp; (Items: $thisDeposit->countTotal)<br>";
+                    ?>
+                    </div>
 
-</div>
+                <div class="col-md-3">
+                <?php if ($thisDeposit->totalCash)
+                        echo "<i><b>".$thisDeposit->totalCash." - Total Cash </b> &nbsp; (Items: $thisDeposit->countCash)</i><br>"; ?>
+                </div>
+                <div class="col-md-3">
+                    <?php
+                    if ($thisDeposit->totalChecks)
+                        echo "<i><b>".$thisDeposit->totalChecks." - Total Checks</b> &nbsp; (Items: $thisDeposit->countCheck)</i><br>";
+                ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="box">
-<div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext("Payments on this deposit slip:"); ?></h3>
-    <div class="pull-right">
-    <?php 
-			if ($iDepositSlipID and $thisDeposit->dep_Type and !$thisDeposit->dep_Closed) {
-				if ($thisDeposit->dep_Type == "eGive") {
-					echo "<input type=button class=btn value=\"".gettext("Import eGive")."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
-				} else {
-					echo "<input type=button class=\"btn btn-success\" value=\"".gettext("Add Payment")."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
-				} ?>
-				<?php if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') { ?>
-					<input type="submit" class="btn btn-success" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
-    					<input type="submit" class="btn btn-warning" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
-			    	<?php } ?>
-		    <?php } ?>
+    <div class="box-header with-border">
+        <h3 class="box-title"><?php echo gettext("Payments on this deposit slip:"); ?></h3>
+        <div class="pull-right">
+        <?php 
+                if ($iDepositSlipID and $thisDeposit->dep_Type and !$thisDeposit->dep_Closed) {
+                    if ($thisDeposit->dep_Type == "eGive") {
+                        echo "<input type=button class=btn value=\"".gettext("Import eGive")."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+                    } else {
+                        echo "<input type=button class=\"btn btn-success\" value=\"".gettext("Add Payment")."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+                    } ?>
+                    <?php if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') { ?>
+                        <input type="submit" class="btn btn-success" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
+                            <input type="submit" class="btn btn-warning" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
+                        <?php } ?>
+                <?php } ?>
+        </div>
+    </div>
+    <div class="box-body">
+        <table class="table" id="paymentsTable"></table>
+        <button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>
     </div>
 </div>
-<div class="box-body">
-<table class="table" id="paymentsTable">
-</table>
-
-
-<button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>
-
-
-
-</div>
-</div>
-
 
 <!-- Delete Confirm Modal -->
 <div id="confirmDelete" class="modal fade" role="dialog">
@@ -226,9 +223,11 @@ $(document).ready(function() {
     $("#DepositSlipEditor").submit(function(e){
         e.preventDefault();
         var formData = {
-            'date'              : $('#DepositDate').val(),
-            'comment'            : $("#Comment").val(),
-            'closed'                  : $('#Closed').is(':checked')
+            'depositDate'              : $('#DepositDate').val(),
+            'depositComment'            : $("#Comment").val(),
+            'depositClosed'                  : $('#Closed').is(':checked'),
+            'depositType'              :'<?php echo $thisDeposit->dep_Type;?>'
+            
         };
         $("#backupstatus").css("color","orange");
         $("#backupstatus").html("Backup Running, Please wait.");
@@ -237,7 +236,7 @@ $(document).ready(function() {
         //process the form
         $.ajax({
             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : '/api/deposits', // the url where we want to POST
+            url         : '/api/deposits/<?php echo $iDepositSlipID;?>', // the url where we want to POST
             data        : JSON.stringify(formData), // our data object
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true

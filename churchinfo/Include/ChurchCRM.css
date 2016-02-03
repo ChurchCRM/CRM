@@ -12,10 +12,6 @@ table.table {
 .select2-container--default .select2-selection--multiple .select2-selection__choice{background-color:#222D32}
 
 
-.row{
-    margin-top:5px;
-}
-
 label {
     display:block;
 }

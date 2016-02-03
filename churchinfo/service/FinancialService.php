@@ -538,13 +538,13 @@ class FinancialService {
 		return $return;
 	}
         
-    function setDeposit($depositType, $depositComment, $depositDate, $iDepositSlipID=null)
+    function setDeposit($depositType, $depositComment, $depositDate, $iDepositSlipID=null, $depositClosed=false)
     {
         if($iDepositSlipID)
         {
-            $sSQL = "UPDATE deposit_dep SET dep_Date = '" . $dDate . "', dep_Comment = '" . $sComment . "', dep_EnteredBy = ". $_SESSION['iUserID'] . ", dep_Closed = " . $bClosed . " WHERE dep_ID = " . $iDepositSlipID . ";";
+            $sSQL = "UPDATE deposit_dep SET dep_Date = '" . $depositDate . "', dep_Comment = '" . $depositComment . "', dep_EnteredBy = ". $_SESSION['iUserID'] . ", dep_Closed = " . intval($depositClosed) . " WHERE dep_ID = " . $iDepositSlipID . ";";
 			$bGetKeyBack = false;
-			if ($bClosed && ($dep_Type=='CreditCard' || $dep_Type == 'BankDraft')) {
+			if ($depositClosed && ($depositType=='CreditCard' || $depositType == 'BankDraft')) {
 				// Delete any failed transactions on this deposit slip now that it is closing
 				$q = "DELETE FROM pledge_plg WHERE plg_depID = " . $iDepositSlipID . " AND plg_PledgeOrPayment=\"Payment\" AND plg_aut_Cleared=0" ;
 				RunQuery($q);
