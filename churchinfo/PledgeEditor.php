@@ -278,151 +278,119 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 		<h3 class="box-title">Pledge Details</h3>
 	</div>
 	<div class="box-body">
-	<div class="table-responsive">
-		<table class="table table-striped">
-				<thead>
-				</thead>
-				<tbody>
-				<!-- Start Donation Envelope Section -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="date"><?php echo gettext("Date"); ?></label>
+                <?php	if (!$dDate)	$dDate = $dep_Date ?>
+                <input type="text" name="Date" value="<?php echo $dDate; ?>"  id="Date" >        
+            
+            </div>
+           
+                <!-- Start Donation Envelope Section -->
+                <?php if ($dep_Type == 'Bank' and $bUseDonationEnvelopes) {?>
+                    <div class="col-md-3">
+                    <label for="Envelope"><?php echo gettext("Envelope #"); ?></label>
+                    <input type="text" name="Envelope" size=8 id="Envelope" value="<?php echo $iEnvelope; ?>">
+                    <?php if (!$dep_Closed) { ?>
 
-			<?php if ($dep_Type == 'Bank' and $bUseDonationEnvelopes) {?>
-			<tr>
-				<td class="PaymentLabelColumn"><?php echo gettext("Envelope #"); ?></td>
-				<td class="TextColumn"><input type="text" name="Envelope" size=8 id="Envelope" value="<?php echo $iEnvelope; ?>">
-				<?php if (!$dep_Closed) { ?>
-
-				<button type="button" class="btn btn-primary" value="<?php echo gettext("Find family->"); ?>" id="MatchEnvelope"><?php echo gettext("Find family->"); ?></button>
-
-				<?php } ?>
-			</td>
-			</tr>
-			<?php } ?>
-			<!-- End Donation Envelope Section -->
-			<!-- Start Recurring Pledge Section -->
-			<tr>
-				<?php if ($PledgeOrPayment=='Pledge') { ?>
-					<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Payment Schedule"); ?></td>
-					<td class="TextColumnWithBottomBorder">
-						<select name="Schedule">
-							<option value="0"><?php echo gettext("Select Schedule"); ?></option>
-							<option value="Weekly" <?php if ($iSchedule == "Weekly") { echo "selected"; } ?>><?php echo gettext("Weekly"); ?></option>
-							<option value="Monthly" <?php if ($iSchedule == "Monthly") { echo "selected"; } ?>><?php echo gettext("Monthly"); ?></option>
-							<option value="Quarterly" <?php if ($iSchedule == "Quarterly") { echo "selected"; } ?>><?php echo gettext("Quarterly"); ?></option>
-							<option value="Once" <?php if ($iSchedule == "Once") { echo "selected"; } ?>><?php echo gettext("Once"); ?></option>
-							<option value="Other" <?php if ($iSchedule == "Other") { echo "selected"; } ?>><?php echo gettext("Other"); ?></option>
-						</select>
-					</td>
-				<?php }?>
-			<!-- End Recurring Pledge Section -->
-			</tr>
-			<tr>
-			<!-- Echo the verbiage for pledge / payment -->
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Payment by"); ?></td>
-				<!-- Start Payment Method Section -->
-				<td class="TextColumnWithBottomBorder">
-					<select name="Method" id="PaymentByMethod">
-						<option value="None" selected>Select a Payment Method</option>
-						<?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "Bank" or !$iCurrentDeposit) { ?>
-						<option value="CHECK"><?php echo gettext("CHECK");?></option>
-						<option value="CASH"><?php echo gettext("CASH");?></option>
-						<?php } ?>
-						<?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "CreditCard" or !$iCurrentDeposit) { ?>
-						<option value="CREDITCARD"><?php echo gettext("Credit Card"); ?></option>
-						<?php } ?>
-						<?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "BankDraft" or !$iCurrentDeposit) { ?>
-						<option value="BANKDRAFT"><?php echo gettext("Bank Draft"); ?></option>
-						<?php } ?>
-                                                <?php if ($PledgeOrPayment=='Pledge') { ?>
-                                                <option value="EGIVE" <?php if ($iMethod == "EGIVE") { echo "selected"; } ?>><?php echo
-                          gettext("eGive"); ?></option>
-                                                <?php } ?>
-					</select>
-				</td>
-				<!-- End Payment Method Section -->
-			</tr>
-			<!-- Start Fiscal Year Selection -->
-			<tr>
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Fiscal Year"); ?></td>
-				<td class="TextColumnWithBottomBorder">
-					<?php PrintFYIDSelect ($iFYID, "FYID") ?>
-				</td>
-			</tr>
-			<!-- End Fiscal Year Selection -->
-			<!-- Start Fund Selection (or Split Option) -->
-			<tr>
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Fund"); ?></td>
-				<td class="TextColumnWithBottomBorder">
-					<select name="FundSplit" id="FundSplit">
-						<option value="None" selected>Select a Fund</option>
-						<option value=0><?php echo gettext("Split");?></option>
-						<?php foreach ($fundId2Name as $fun_id => $fun_name) {
-							echo "<option value=\"" . $fun_id . "\""; if ($iSelectedFund==$fun_id) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
-						} ?>
-					</select>
-				</td>
-			</tr>
-			<!-- End Fund Selection (or Split Option) -->
-			<!-- Start Comment Section -->
-			<tr id="SingleComment">
-				<td valign="top" align="left" <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Comment"); ?></td>
-				<td <?php echo "class=\"TextColumnWithBottomBorder\">"; echo "<input type=\"text\" name=\"OneComment\" id=\"OneComment\" value=\" \""; ?>">
-			</tr>
-			<!-- Start Comment Section -->
-		
-			<tr>
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?>><?php echo gettext("Family"); ?></td>
-				<td class="TextColumn">
-
-<script language="javascript" type="text/javascript">
-$(document).ready(function() {
-	$("#FamilyName").autocomplete({
-		source: function (request, response) {
-			$.ajax({
-				url: 'api/families/search/'+request.term,
-				dataType: 'json',
-				type: 'GET',
-				success: function (data) {
-					response($.map(data.families, function (item) {
-						return {
-                            value: item.displayName,
-                            id: item.id
-						}
-					}));
-				}
-			})
-		},
-		minLength: 2,
-		select: function(event,ui) {
-			$('[name=FamilyName]').val(ui.item.value);
-			$('[name=FamilyID]:eq(1)').val(ui.item.id);
-		}
-	});
-});
-</script>
-                    <select style="width:100%" name="FamilyName" id="FamilyName">
-                    <option value="<?php echo $sFamilyName; ?>"><?php echo $sFamilyName; ?></option>
+                    <button type="button" class="btn btn-primary" value="<?php echo gettext("Find family->"); ?>" id="MatchEnvelope"><?php echo gettext("Find family->"); ?></button>
+                    
+                    <?php } ?>
+                </div>
+            
+                <?php } ?>
+                <!-- End Donation Envelope Section -->
+                <!-- Start Recurring Pledge Section -->
+               
+                    <?php if ($PledgeOrPayment=='Pledge') { ?>
+                         <div class="col-md-4">
+                        <label for="Schedule"><?php echo gettext("Payment Schedule"); ?></label>
+                            <select name="Schedule">
+                                <option value="0"><?php echo gettext("Select Schedule"); ?></option>
+                                <option value="Weekly" <?php if ($iSchedule == "Weekly") { echo "selected"; } ?>><?php echo gettext("Weekly"); ?></option>
+                                <option value="Monthly" <?php if ($iSchedule == "Monthly") { echo "selected"; } ?>><?php echo gettext("Monthly"); ?></option>
+                                <option value="Quarterly" <?php if ($iSchedule == "Quarterly") { echo "selected"; } ?>><?php echo gettext("Quarterly"); ?></option>
+                                <option value="Once" <?php if ($iSchedule == "Once") { echo "selected"; } ?>><?php echo gettext("Once"); ?></option>
+                                <option value="Other" <?php if ($iSchedule == "Other") { echo "selected"; } ?>><?php echo gettext("Other"); ?></option>
+                            </select>
+                        </div>
+                    <?php }?>
+                <!-- End Recurring Pledge Section -->
+                <!-- Echo the verbiage for pledge / payment -->
+                <div class="col-md-3">	
+                    <label for="Method"><?php  echo gettext("Payment by"); ?></label>
+                    <!-- Start Payment Method Section -->
+                        <select name="Method" id="PaymentByMethod">
+                            <option value="None" selected>Select a Payment Method</option>
+                            <?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "Bank" or !$iCurrentDeposit) { ?>
+                            <option value="CHECK"><?php echo gettext("CHECK");?></option>
+                            <option value="CASH"><?php echo gettext("CASH");?></option>
+                            <?php } ?>
+                            <?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "CreditCard" or !$iCurrentDeposit) { ?>
+                            <option value="CREDITCARD"><?php echo gettext("Credit Card"); ?></option>
+                            <?php } ?>
+                            <?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "BankDraft" or !$iCurrentDeposit) { ?>
+                            <option value="BANKDRAFT"><?php echo gettext("Bank Draft"); ?></option>
+                            <?php } ?>
+                                                    <?php if ($PledgeOrPayment=='Pledge') { ?>
+                                                    <option value="EGIVE" <?php if ($iMethod == "EGIVE") { echo "selected"; } ?>><?php echo
+                              gettext("eGive"); ?></option>
+                                                    <?php } ?>
+                        </select>
+                </div>
+                <!-- End Payment Method Section -->
+                 <div class="col-md-3">
+                    <label for="grandTotal"><?php echo gettext("Total $"); ?></label>
+                    <input id="grandTotal" type="text" name="TotalAmount" id="TotalAmount" value="<?php echo $iTotalAmount; ?>">
+                </div>
+        </div>
+                    
+            <div class="row">
+                <div class="col-md-3">
+                <!-- Start Fiscal Year Selection -->
+                    <label for="FYID"><?php echo gettext("Fiscal Year"); ?></label>
+                    <?php PrintFYIDSelect ($iFYID, "FYID") ?>
+                </div>
+                <!-- End Fiscal Year Selection -->
+                <div class="col-md-3">
+                <!-- Start Fund Selection (or Split Option) -->
+                
+                    <label for="FundSplit"><?php echo gettext("Fund"); ?></label>
+                    <select name="FundSplit" id="FundSplit">
+                        <option value="None" selected>Select a Fund</option>
+                        <option value=0><?php echo gettext("Split");?></option>
+                        <?php foreach ($fundId2Name as $fun_id => $fun_name) {
+                            echo "<option value=\"" . $fun_id . "\""; if ($iSelectedFund==$fun_id) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
+                        } ?>
                     </select>
-                        
-					
-					<input type="hidden" id="FamilyID" name="FamilyID" value='<?php echo $iFamily; ?>'>
-					<input type="hidden" id="DepositID" name="DepositID" value='<?php echo $_GET['CurrentDeposit']; ?>'>
-				</td>
-			</tr>
+                </div>
+                <!-- End Fund Selection (or Split Option) -->
+                <!-- Start Comment Section -->
+                <div class="col-md-4" id="SingleComment">
+                    <label for="OneComment"><?php  echo gettext("Comment"); ?></label>
+                    <input type="text" name="OneComment" id="OneComment" value=" ">
+                </div>
+                <!-- End Comment Section -->
+            </div>
+            <div class="row">
+                <div class="col-xs-8 col-md-8">
+                    <label for="FamilyName"><?php echo gettext("Family"); ?></label>
+                    <select style="width:100%" name="FamilyName" id="FamilyName">
+                        <option value="<?php echo $sFamilyName; ?>"><?php echo $sFamilyName; ?></option>
+                    </select>
+                </div>
+            </div>	
+            <input type="hidden" id="FamilyID" name="FamilyID" value='<?php echo $iFamily; ?>'>
+            <input type="hidden" id="DepositID" name="DepositID" value='<?php echo $_GET['CurrentDeposit']; ?>'>
+           
+        </div>
+        
+<!-- End Pledge Details -->
+</div>
+</div>
 
-			
 
-
-
-			<tr>
-				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?>><?php echo gettext("Date"); ?></td>
-<?php	if (!$dDate)	$dDate = $dep_Date ?>
-	
-				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="Date" size="11"><font color="red"><?php echo $sDateError ?></font></td>
-			</tr>
-			<tr> 
-			<td valign="top" align="left" <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Total $"); ?></td>
-			<td <?php echo "class=\"TextColumnWithBottomBorder\">"; echo "<input id=\"grandTotal\" type=\"text\" name=\"TotalAmount\" id=\"TotalAmount\" value=\" ". $iTotalAmount . "\""; ?>">
-		    
 
 <!--Start Credit card or Bank Draft Section -->
 <?php if (($dep_Type == 'CreditCard') or ($dep_Type == 'BankDraft')) {?>
@@ -475,13 +443,7 @@ $(document).ready(function() {
 		
 
 
-						</tr>
-						</tbody>
-					</table>
-<!-- End Pledge Details -->
-</div>
-</div>
-</div>
+
 
 
 
@@ -639,6 +601,31 @@ $(document).ready(function() {
 
 <script>
 $("#Date").datepicker({format:'yyyy-mm-dd'});
+
+$(document).ready(function() {
+	$("#FamilyName").autocomplete({
+		source: function (request, response) {
+			$.ajax({
+				url: 'api/families/search/'+request.term,
+				dataType: 'json',
+				type: 'GET',
+				success: function (data) {
+					response($.map(data.families, function (item) {
+						return {
+                            value: item.displayName,
+                            id: item.id
+						}
+					}));
+				}
+			})
+		},
+		minLength: 2,
+		select: function(event,ui) {
+			$('[name=FamilyName]').val(ui.item.value);
+			$('[name=FamilyID]:eq(1)').val(ui.item.id);
+		}
+	});
+});
 </script>
 
 <?php
