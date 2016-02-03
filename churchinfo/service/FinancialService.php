@@ -706,7 +706,7 @@ class FinancialService {
         $deposits = array();
         while($row=mysql_fetch_array($result)) {
             $row_array['id']=$row['dep_ID'];
-            $row_array['displayName']="Check #".$row['plg_CheckNo']." ".$row['dep_Comment']." - ".$row['dep_Date'];
+            $row_array['displayName']="Check #".$row['plg_CheckNo'].": ".$this->familyService->getFamilyName($row['plg_FamID'])." - ".$row['dep_Date'];
             $row_array['uri'] = $this->getPaymentViewURI($row['plg_GroupKey']);
             array_push($deposits,$row_array);
         }
