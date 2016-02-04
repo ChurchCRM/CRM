@@ -273,7 +273,7 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 <input type="hidden" name="FamilyID" id="FamilyID" value="<?php echo $iFamily; ?>">
 <input type="hidden" name="PledgeOrPayment" id="PledgeOrPayment" value="<?php echo $PledgeOrPayment; ?>">
 <!-- Start Pledge Details Section -->
-<div class="box box-info clearfix">
+<div class="box box-info">
 	<div class="box-header">
 		<h3 class="box-title">Pledge Details</h3>
 	</div>
@@ -391,182 +391,165 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 </div>
 
 
+<div class="container" style="margin:0px; width:100%">
+    <div class="row">
+        <div class="col-md-6">
+            <!--Start Credit card or Bank Draft Section -->
+            <?php if (($dep_Type == 'CreditCard') or ($dep_Type == 'BankDraft')) {?>
+                <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">Credit Card / Bank Draft</h3>
+                </div>
+                <div class="box-body">
+                <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Choose online payment method");?></td>
+                                    <td class="TextColumnWithBottomBorder">
+                                        <select name="AutoPay">
+                    <?php
+                                        echo "<option value=0";
+                                        if ($iAutID == 0)
+                                            echo " selected";
+                                        echo ">" . gettext ("Select online payment record") . "</option>\n";
+                                        $sSQLTmp = "SELECT aut_ID, aut_CreditCard, aut_BankName, aut_Route, aut_Account FROM autopayment_aut WHERE aut_FamID=" . $iFamily;
+                                        $rsFindAut = RunQuery($sSQLTmp);
+                                        while ($aRow = mysql_fetch_array($rsFindAut))
+                                        {
+                                            extract($aRow);
+                                            if ($aut_CreditCard <> "") {
+                                                $showStr = gettext ("Credit card ...") . substr ($aut_CreditCard, strlen ($aut_CreditCard) - 4, 4);
+                                            } else {
+                                                $showStr = gettext ("Bank account ") . $aut_BankName . " " . $aut_Route . " " . $aut_Account;
+                                            }
+                                            echo "<option value=" . $aut_ID;
+                                            if ($iAutID == $aut_ID)
+                                                echo " selected";
+                                            echo ">" . $showStr . "</option>\n";
+                                        }?>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+                <?php } ?>
+            <!--End Credit card or Bank Draft Section -->
 
-<!--Start Credit card or Bank Draft Section -->
-<?php if (($dep_Type == 'CreditCard') or ($dep_Type == 'BankDraft')) {?>
-	<div class="box box-info clearfix">
-	<div class="box-header">
-		<h3 class="box-title">Credit Card / Bank Draft</h3>
-	</div>
-	<div class="box-body">
-	<div class="table-responsive">
-			<table class="table table-striped">
-				<thead>
-				</thead>
-				<tbody>
-					<tr>
-						<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Choose online payment method");?></td>
-						<td class="TextColumnWithBottomBorder">
-							<select name="AutoPay">
-		<?php
-							echo "<option value=0";
-							if ($iAutID == 0)
-								echo " selected";
-							echo ">" . gettext ("Select online payment record") . "</option>\n";
-							$sSQLTmp = "SELECT aut_ID, aut_CreditCard, aut_BankName, aut_Route, aut_Account FROM autopayment_aut WHERE aut_FamID=" . $iFamily;
-							$rsFindAut = RunQuery($sSQLTmp);
-							while ($aRow = mysql_fetch_array($rsFindAut))
-							{
-								extract($aRow);
-								if ($aut_CreditCard <> "") {
-									$showStr = gettext ("Credit card ...") . substr ($aut_CreditCard, strlen ($aut_CreditCard) - 4, 4);
-								} else {
-									$showStr = gettext ("Bank account ") . $aut_BankName . " " . $aut_Route . " " . $aut_Account;
-								}
-								echo "<option value=" . $aut_ID;
-								if ($iAutID == $aut_ID)
-									echo " selected";
-								echo ">" . $showStr . "</option>\n";
-							}?>
-							</select>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		</div>
-	</div>
-	<?php } ?>
-<!--End Credit card or Bank Draft Section -->
-
-<!-- Start Cash Denomination Enter Section -->
-<div class="box box-info clearfix" id="CashEnter" style="display:none">
-    <div class="box-header">
-        <h3 class="box-title">Cash Denominations</h3>
-    </div><!-- /.box-header -->
-    <div class="box-body">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <th>Denomination</th>
-                    <th>Count</th>
-                    <th>Total</th>
-                </thead>
-                <tbody>
-        <?php 
-            foreach ($currencyDenomination2Name as $cdem_denominationID =>$cdem_denominationName)
-            {
-            echo "<tr><td>";
-            echo $cdem_denominationName;
-            echo "</td><td><input type=\"text\" class=\"denominationInputBox\" data-cur-value=\"".$currencyDenominationValue[$cdem_denominationID]."\" name=\"currencyCount-".$cdem_denominationID."\"></td>";
+            <!-- Start Cash Denomination Enter Section -->
+            <div class="box box-info" id="CashEnter" style="display:none">
+                <div class="box-header">
+                    <h3 class="box-title">Cash Denominations</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                    <?php 
+                        $tripFlag=true;
+                        foreach ($currencyDenomination2Name as $cdem_denominationID =>$cdem_denominationName)
+                        {
+                            if ($currencyDenominationValue[$cdem_denominationID] >1 && $tripFlag)
+                            {
+                                $tripFlag=false;
+                                echo '</div><br><br><div class="row">';
+                            }
+                        echo '<div class="col-md-4">';
+                        echo '<label for="currencyCount-'.$cdem_denominationID.'">'.$cdem_denominationName.'</label>';
+                        echo "<input type=\"text\" class=\"denominationInputBox\" data-cur-value=\"".$currencyDenominationValue[$cdem_denominationID]."\" name=\"currencyCount-".$cdem_denominationID."\"></div>";
+                        
+                        }?>
+                        </div>
+                    </div>
+                </div>
             
-            }?>
-                </tbody>
-            </table>
+            <!-- End Cash Denomination Enter Section -->
+
+
+            <!-- Start Check Details Enter Section -->
+
+                    <div class="box box-info clearfix" id="CheckEnter" style="display:none">
+                        <div class="box-header">
+                            <h3 class="box-title">Check Details</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tbody>
+                                    <!-- Start Scanned Check Section -->
+                    <?php if ($bUseScannedChecks and ($dep_Type == 'Bank' or $PledgeOrPayment=='Pledge')) {?>
+                    <td align="center">
+                    <?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
+                        <button type="button" class="btn btn-primary" value="<?php echo gettext("find family from check account #"); ?>" id="MatchFamily"><?php echo gettext("find family from check account #"); ?></button>
+                        <button  type="button" class="btn btn-primary" value="<?php echo gettext("Set default check account number for family"); ?>" id="SetDefaultCheck"><?php echo gettext("Set default check account number for family"); ?></button>
+                    <?php } ?>
+                    <td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\" align=\"center\">"; else echo "class=\"PaymentLabelColumn\" align=\"center\">";echo gettext("Scan check");?>
+                    <textarea name="ScanInput" rows="2" cols="70"><?php echo $tScanString?></textarea></td>
+                    <?php } ?>
+                    <!-- End Scanned Check Section -->
+                    <!-- Start Paper Check Section -->									
+                    <?php if ($PledgeOrPayment=='Payment' and $dep_Type == 'Bank') {?>
+                    <tr>
+                    <td class="PaymentLabelColumn"><?php echo gettext("Check #"); ?></td>
+                    <td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?php echo $iCheckNo; ?>"><font color="red"><?php echo $sCheckNoError ?></font></td>
+                    </tr>
+                    <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            <!-- End Check Denomination Enter Section -->
+        </div>
+
+        <div class="col-md-6">
+            <!-- Start Fund Selection Section -->
+                    <div class="box box-info" id="FundSelection" style="display:none">
+                        <div class="box-header">
+                            <h3 class="box-title">Fund Split</h3>
+                            <h4></h4>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Fund Name"); ?></th>
+                                        <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Amount"); ?></th>
+
+                                        <?php if ($bEnableNonDeductible) {?>
+                                            <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Non-deductible amount"); ?></th>
+                                        <?php }?>
+
+                                        <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Comment"); ?></th>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($fundId2Name as $fun_id => $fun_name) {
+                                            echo "<tr class=\"fundrow\" id=\"fundrow_". $fun_id."\" >";
+                                            echo "<td>".$fun_name."</td>";
+                                            echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fun_id . "_Amount\" id=\"" . $fun_id . "_Amount\" value=\"" . $nAmount[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
+                                            if ($bEnableNonDeductible) {
+                                            echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
+                                            }
+                                            echo "<td><input type=\"text\" size=40 name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
+                                            echo "</tr>";
+                                        }
+                                        ?>
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            <!-- End Fund Selection Section -->
         </div>
     </div>
 </div>
-		
-
-	
-<!-- End Cash Denomination Enter Section -->
-
-
-<!-- Start Check Details Enter Section -->
-
-		<div class="box box-info clearfix" id="CheckEnter" style="display:none">
-			<div class="box-header">
-				<h3 class="box-title">Check Details</h3>
-			</div><!-- /.box-header -->
-			<div class="box-body">
-				<div class="table-responsive">
-					<table class="table table-striped">
-						<tbody>
-						<!-- Start Scanned Check Section -->
-		<?php if ($bUseScannedChecks and ($dep_Type == 'Bank' or $PledgeOrPayment=='Pledge')) {?>
-		
-		
-		<td align="center">
-		<?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
-			<button type="button" class="btn btn-primary" value="<?php echo gettext("find family from check account #"); ?>" id="MatchFamily"><?php echo gettext("find family from check account #"); ?></button>
-			<button  type="button" class="btn btn-primary" value="<?php echo gettext("Set default check account number for family"); ?>" id="SetDefaultCheck"><?php echo gettext("Set default check account number for family"); ?></button>
-		<?php } ?>
-	
-		
-		
-		
-		
-		<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\" align=\"center\">"; else echo "class=\"PaymentLabelColumn\" align=\"center\">";echo gettext("Scan check");?>
-		<textarea name="ScanInput" rows="2" cols="70"><?php echo $tScanString?></textarea></td>
-		<?php } ?>
-		<!-- End Scanned Check Section -->
-		<!-- Start Paper Check Section -->
-
-
-											
-		<?php if ($PledgeOrPayment=='Payment' and $dep_Type == 'Bank') {?>
-		<tr>
-		<td class="PaymentLabelColumn"><?php echo gettext("Check #"); ?></td>
-		<td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?php echo $iCheckNo; ?>"><font color="red"><?php echo $sCheckNoError ?></font></td>
-
-		</tr>
-		<?php } ?>
-						</tbody>
-						
-					</table>
-				</div>
-			</div>
-		</div>
-
-	
-<!-- End Cash Denomination Enter Section -->
-
-
-<!-- Start Fund Selection Section -->
-
-		<div class="box box-info clearfix" id="FundSelection" style="display:none">
-			<div class="box-header">
-				<h3 class="box-title">Fund Split</h3>
-				<h4></h4>
-			</div><!-- /.box-header -->
-			<div class="box-body">
-				<div class="table-responsive">
-					<table class="table table-striped">
-						<thead>
-							<th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Fund Name"); ?></th>
-							<th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Amount"); ?></th>
-
-							<?php if ($bEnableNonDeductible) {?>
-								<th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Non-deductible amount"); ?></th>
-							<?php }?>
-
-							<th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Comment"); ?></th>
-						</thead>
-						<tbody>
-							<?php foreach ($fundId2Name as $fun_id => $fun_name) {
-								echo "<tr class=\"fundrow\" id=\"fundrow_". $fun_id."\" >";
-								echo "<td>".$fun_name."</td>";
-								echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fun_id . "_Amount\" id=\"" . $fun_id . "_Amount\" value=\"" . $nAmount[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
-								if ($bEnableNonDeductible) {
-								echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
-								}
-								echo "<td><input type=\"text\" size=40 name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
-								echo "</tr>";
-							}
-							?>
-							</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		
-
-	
-<!-- End Fund Selection Section -->
 
 
 <!--Start Save button section -->
-		<div class="box box-info clearfix">
+		<div class="box box-info">
 			<div class="box-body">
 				<?php if (!$dep_Closed) { ?>
 				<button type="submit" class="btn btn-primary" value="<?php echo gettext("Save"); ?>" id="PledgeSubmit" name="PledgeSubmit"><?php echo gettext("Save"); ?></button>
