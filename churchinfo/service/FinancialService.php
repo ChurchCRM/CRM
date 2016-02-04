@@ -1073,5 +1073,23 @@ class FinancialService {
                 
     }
        
+    function getCurrency()
+    {
+        $currencies = array();
+        // Get the list of Currency denominations
+        $sSQL = "SELECT * FROM currency_denominations_cdem";
+        $rscurrencyDenomination = RunQuery($sSQL);
+        mysql_data_seek($rscurrencyDenomination,0);
+        while ($row = mysql_fetch_array($rscurrencyDenomination)) 
+        {
+            $currency = new StdClass();
+            $currency->id = $row['cdem_denominationID'];
+            $currency->Name = $row['cdem_denominationName'];
+            $currency->Value = $row['cdem_denominationValue'];
+            $currency->cClass = $row['cdem_denominationClass'];
+            array_push($currencies,$currency);
+        } // end while
+        return $currencies;
+    }
 }
 ?>

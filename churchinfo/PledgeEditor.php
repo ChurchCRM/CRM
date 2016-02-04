@@ -19,7 +19,9 @@ global $iChecksPerDepositForm;
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require "service/FinancialService.php";
 
+$financialService = new FinancialService();
 
 
 $thisPledgeID = 0;
@@ -65,15 +67,7 @@ while ($aRow = mysql_fetch_array($rsFunds)) {
 	$fundIdActive[$fun_ID] = $fun_Active;
 } // end while
 
-// Get the list of Currency denominations
-$sSQL = "SELECT * FROM currency_denominations_cdem";
-$rscurrencyDenomination = RunQuery($sSQL);
-mysql_data_seek($rscurrencyDenomination,0);
-while ($aRow = mysql_fetch_array($rscurrencyDenomination)) {
-	extract($aRow);
-	$currencyDenomination2Name[$cdem_denominationID] = $cdem_denominationName;
-	$currencyDenominationValue[$cdem_denominationID] = $cdem_denominationValue;
-} // end while
+$currencies = $financialService->getCurrency();
 
 
 // Handle URL via _GET first
@@ -449,17 +443,17 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
                 <div class="box-body">
                     <div class="row">
                     <?php 
-                        $tripFlag=true;
-                        foreach ($currencyDenomination2Name as $cdem_denominationID =>$cdem_denominationName)
+                        $lastClass=$currencies[0]->cClass;
+                        foreach ($currencies as $currency)
                         {
-                            if ($currencyDenominationValue[$cdem_denominationID] >1 && $tripFlag)
+                            if (!($lastClass == $currency->cClass) )
                             {
-                                $tripFlag=false;
+                                $lastClass=$currency->cClass;
                                 echo '</div><br><br><div class="row">';
                             }
                         echo '<div class="col-md-4">';
-                        echo '<label for="currencyCount-'.$cdem_denominationID.'">'.$cdem_denominationName.'</label>';
-                        echo "<input type=\"text\" class=\"denominationInputBox\" data-cur-value=\"".$currencyDenominationValue[$cdem_denominationID]."\" name=\"currencyCount-".$cdem_denominationID."\"></div>";
+                        echo '<label for="currencyCount-'.$currency->id.'">'.$currency->Name.'</label>';
+                        echo "<input type=\"text\" class=\"denominationInputBox\" data-cur-value=\"".$currency->Value."\" name=\"currencyCount-".$currency->id."\"></div>";
                         
                         }?>
                         </div>
@@ -533,7 +527,7 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
                                             if ($bEnableNonDeductible) {
                                             echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
                                             }
-                                            echo "<td><input type=\"text\" size=40 name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
+                                            echo "<td><input type=\"text\" name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
                                             echo "</tr>";
                                         }
                                         ?>
