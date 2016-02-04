@@ -1091,5 +1091,22 @@ class FinancialService {
         } // end while
         return $currencies;
     }
+
+    function getFund()
+    {
+        $funds = array();
+        $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
+        $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
+        $rsFunds = RunQuery($sSQL);
+        mysql_data_seek($rsFunds,0);
+        while ($aRow = mysql_fetch_array($rsFunds)) {
+            $fund = new StdClass();
+            $fund->ID = $aRow['fun_ID'];
+            $fund->Name = $aRow['fun_Name'];
+            $fund->Description = $aRow['fun_Description'];
+            array_push($funds,$fund);
+        } // end while
+        return $funds;
+    }
 }
 ?>

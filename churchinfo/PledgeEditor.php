@@ -45,28 +45,7 @@ $sComment = array ();
 
 $checkHash = array();
 
-$currencyDenomination2Name=array();
-$currencyDenominationValue=array();
-
-// Get the list of funds
-$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
-$sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
-
-$rsFunds = RunQuery($sSQL);
-mysql_data_seek($rsFunds,0);
-while ($aRow = mysql_fetch_array($rsFunds)) {
-	extract($aRow);
-	$fundId2Name[$fun_ID] = $fun_Name;
-	$nAmount[$fun_ID] = 0.0;
-	$nNonDeductible[$fun_ID] = 0.0;
-	$sAmountError[$fun_ID] = "";
-	$sComment[$fun_ID] = "";
-	if (!isset($defaultFundID)) {
-		$defaultFundID = $fun_ID;
-	}
-	$fundIdActive[$fun_ID] = $fun_Active;
-} // end while
-
+$funds = $financialService->getFund();
 $currencies = $financialService->getCurrency();
 
 
@@ -354,8 +333,8 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
                     <select name="FundSplit" id="FundSplit">
                         <option value="None" selected>Select a Fund</option>
                         <option value=0><?php echo gettext("Split");?></option>
-                        <?php foreach ($fundId2Name as $fun_id => $fun_name) {
-                            echo "<option value=\"" . $fun_id . "\""; if ($iSelectedFund==$fun_id) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
+                        <?php foreach ($funds as $fund) {
+                            echo "<option value=\"" . $fund->ID . "\""; if ($iSelectedFund==$fund->ID) echo " selected"; echo ">"; echo gettext($fund->Name) . "</option>";
                         } ?>
                     </select>
                 </div>
@@ -520,14 +499,14 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
                                         <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Comment"); ?></th>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($fundId2Name as $fun_id => $fun_name) {
-                                            echo "<tr class=\"fundrow\" id=\"fundrow_". $fun_id."\" >";
-                                            echo "<td>".$fun_name."</td>";
-                                            echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fun_id . "_Amount\" id=\"" . $fun_id . "_Amount\" value=\"" . $nAmount[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
+                                        <?php foreach ($funds as $fund) {
+                                            echo "<tr class=\"fundrow\" id=\"fundrow_". $fund->ID."\" >";
+                                            echo "<td>".$fund->Name."</td>";
+                                            echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fund->ID . "_Amount\" id=\"" . $fund->ID . "_Amount\" value=\"" . $nAmount[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
                                             if ($bEnableNonDeductible) {
-                                            echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
+                                            echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fund->ID . "_NonDeductible\" id=\"" . $fund->ID . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
                                             }
-                                            echo "<td><input type=\"text\" name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
+                                            echo "<td><input type=\"text\" name=\"" . $fund->ID . "_Comment\" id=\"" . $fund->ID . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
                                             echo "</tr>";
                                         }
                                         ?>
