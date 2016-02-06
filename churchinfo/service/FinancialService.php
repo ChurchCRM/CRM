@@ -767,62 +767,67 @@ class FinancialService {
 		//If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
 		//If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
 		$FundSplit = json_decode($payment->FundSplit);
-		if (count($FundSplit) > 1 ) { // split
+		if (count($FundSplit) >= 1 and $FundSplit[0]->FundID != "None") 
+        { // split
 			$nonZeroFundAmountEntered =0;
-			foreach ($FundSplit as $fun_id => $fund) {
+			foreach ($FundSplit as $fun_id => $fund) 
+            {
 				//$fun_active = $fundActive[$fun_id];
-				if ($fund->Amount > 0) {
+				if ($fund->Amount > 0) 
+                {
 					++$nonZeroFundAmountEntered;
 				}
-				if ($GLOBALS['bEnableNonDeductible']) {
+				if ($GLOBALS['bEnableNonDeductible'] && isset($fund->NonDeductible)) 
+                {
 					//Validate the NonDeductible Amount
-					if ($fund->NonDeductible > $fund->Amount) { //Validate the NonDeductible Amount
+					if ($fund->NonDeductible > $fund->Amount) 
+                    { //Validate the NonDeductible Amount
 						throw new Exception (gettext("NonDeductible amount can't be greater than total amount."));
 					}
 				}
 			} // end foreach
-			if (!$nonZeroFundAmountEntered) {
+			if (!$nonZeroFundAmountEntered) 
+            {
 				throw new Exception (gettext("At least one fund must have a non-zero amount."));
 			}
 		}
-		elseif (count($FundSplit) ==1 and $FundSplit[0]->FundID != "None")
-		{
-			//echo "one fund selected ".$FundSplit[0]->FundID;	
-		}
+		
 		else
 		{
 			throw new Exception ("Must select a valid fund");
 		}
 	}
     
-	function validateChecks($payment) 
+	function locateFamilyCheck($checkNumber,$fam_ID)
+    {
+        $sSQL = "SELECT count(plg_FamID) from pledge_plg
+                 WHERE plg_CheckNo = ".$checkNumber." AND
+                 plg_FamID = ".$fam_ID;
+        $rCount=  RunQuery($sSQL);
+        return mysql_fetch_array($rCount)[0];    
+    }
+    
+    function validateChecks($payment) 
     {
         //validate that the payment options are valid
         //If the payment method is a check, then the check nubmer must be present, and it must not already have been used for this family
         //if the payment method is cash, there must not be a check number
-		try {
-			if ($payment->type=="Payment" and $payment->iMethod == "CHECK"  and  ! isset($payment->checknumber)) {
-				throw new Exception (gettext("Must specify non-zero check number"));
-			}
-			// detect check inconsistencies
-			if ($payment->type=="Payment" and isset($payment->checknumber)) {
-				if ($payment->iMethod == "CASH") {
-					throw new Exception (gettext("Check number not valid for 'CASH' payment"));
-				} 
-				//build routine to make sure this check number hasn't been used by this family yet (look at group key)
-				/*elseif ($payment->iMethod=='CHECK' and !$sGroupKey) {
-					$chkKey = $payment->FamilyID . "|" . $iCheckNo;
-					if (array_key_exists($chkKey, $checkHash)) {
-						$text = "Check number '" . $iCheckNo . "' for selected family already exists.";
-						$sCheckNoError = "<span style=\"color: red; \">" . gettext($text) . "</span>";
-						$bErrorFlag = true;
-						echo "bErrorFlag 146";
-					}
-				}*/
-			}			
-		} catch (Exception $e) {
-            throw new Exception ("Error validating check: ".$e->getMessage());
-        }		
+        if ($payment->type=="Payment" and $payment->iMethod == "CHECK"  and  ! isset($payment->iCheckNo)) 
+        {
+            throw new Exception (gettext("Must specify non-zero check number"));
+        }
+        // detect check inconsistencies
+        if ($payment->type=="Payment" and isset($payment->iCheckNo)) {
+            if ($payment->iMethod == "CASH") {
+                throw new Exception (gettext("Check number not valid for 'CASH' payment"));
+            } 
+            //build routine to make sure this check number hasn't been used by this family yet (look at group key)
+            elseif ($payment->iMethod=='CHECK' and $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) 
+            {
+                throw new Exception ("Check number '" . $payment->iCheckNo . "' for selected family already exists.");
+            }
+        }			
+		
 	}
 	
 	function processCurrencyDenominations($payment) 
@@ -850,25 +855,27 @@ class FinancialService {
 			// loop through all funds and create non-zero amount pledge records
 			unset($sGroupKey);
 			$FundSplit = json_decode($payment->FundSplit);
-			echo "funds selected: ".count($FundSplit);
-			print_r($FundSplit);
 			foreach ($FundSplit as $Fund) {
 				if ($Fund->Amount > 0) {  //Only insert a row in the pledge table if this fund has a non zero amount.
 					if (!isset($sGroupKey) )  //a GroupKey references a single familie's payment, and transcends the fund splits.  Sharing the same Group Key for this payment helps clean up reports.
 					{
-						if ($payment->iMethod  == "CHECK") {
+						if ($payment->iMethod  == "CHECK") 
+                        {
 							$sGroupKey = genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
-						} elseif ($payment->iMethod == "BANKDRAFT") {
+						} elseif ($payment->iMethod == "BANKDRAFT") 
+                        {
 							if (!$iAutID) {
 								$iAutID = "draft";
 							}
 							$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
-						} elseif ($payment->iMethod  == "CREDITCARD") {
+						} elseif ($payment->iMethod  == "CREDITCARD") 
+                        {
 							if (!$iAutID) {
 								$iAutID = "credit";
 							}
 							$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
-						} else {
+						} else 
+                        {
 							$sGroupKey = genGroupKey("cash", $payment->FamilyID, $Fund->FundID, $payment->Date);
 						} 
 					}
@@ -906,14 +913,13 @@ class FinancialService {
 						(isset($payment->iCheckNo) ? $payment->iCheckNo : "NULL") . ",'" . 
 						(isset($payment->tScanString) ? $payment->tScanString : "NULL") . "','" . 
 						(isset($payment->iAutID ) ? $payment->iAutID  : "NULL") . "','" . 
-						(isset($Fund->nNonDeductible ) ? $Fund->nNonDeductible : "NULL") . "','" . 
+						(isset($Fund->NonDeductible ) ? $Fund->NonDeductible : "NULL") . "','" . 
 						$sGroupKey . "')";
-							
-						echo "SQL: ".$sSQL;
 						
 						if (isset ($sSQL)) {
 							RunQuery($sSQL);
 							unset($sSQL);
+                            return $sGroupKey;
 						}
 				}
 			}
@@ -924,13 +930,11 @@ class FinancialService {
         $this->validateFund($payment);
         $this->validateChecks($payment);
         $this->validateDate($payment);
-        #echo "Validating deposit".PHP_EOL;
-        #$this->validateDeposit($payment);
-        $this->insertPledgeorPayment ($payment);
+        $groupKey = $this->insertPledgeorPayment ($payment);
         if ($payment->iMethod =="CASH") {
-            $this->processCurrencyDenominations($payment);
+            #$this->processCurrencyDenominations($payment);
         }
-				
+        return $this->getPledgeorPayment($groupKey);
 	}
 	
 	function getPledgeorPayment($GroupKey) 

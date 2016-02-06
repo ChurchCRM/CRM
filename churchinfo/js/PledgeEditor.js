@@ -176,7 +176,8 @@ $(document).ready(function() {
 					'iMethod'    : $('select[name=Method]').val(),
 					'comment'			:$('input[name=OneComment]').val(),
 					'total'				:$('input[name=TotalAmount]').val(),
-					'DepositID'			:$('input[name=DepositID]').val()
+					'DepositID'			:$('input[name=DepositID]').val(),
+                    'type'              :$('input[name=PledgeOrPayment').val()
 					};
 					if ($('select[name=Method]').val() == "CASH")
 					{
@@ -261,10 +262,11 @@ $(document).ready(function() {
 				var submitType = $("button[type=submit][clicked=true]").val();
 				console.log(submitType);
 				if(submitType == "Save") {
-					window.location.href = 'PledgeEditor.php';
+					window.location.href = 'DepositSlipEditor.php?DepositSlipID='+$('input[name=DepositID]').val();
 				}
 				else if(submitType = "Save and Add") {
-					window.location.href = 'DepositSlipEditor.php';
+                    window.location.href = 'PledgeEditor.php';
+					
 				}
 			  });
 			
@@ -308,7 +310,8 @@ $(document).ready(function() {
                     var childObject = {
                         id: idKey,
                         text: cvalue.displayName,     
-                        uri: cvalue.uri
+                        uri: cvalue.uri,
+                        familyID: cvalue.id
                     };
                     idKey++;
                     resultGroup.children.push(childObject);
@@ -319,7 +322,9 @@ $(document).ready(function() {
             cache: true
         }
     });
-    $("#FamilyName").on("select2:select",function (e) { alert(e.params.data.uri);});
+    $("#FamilyName").on("select2:select",function (e) {
+        $("input[name=FamilyID]").val(e.params.data.familyID);
+        });
     
 
 });

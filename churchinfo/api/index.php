@@ -404,7 +404,7 @@ $app->group('/payments',function () use ($app) {
 	$app->post('/', function () use ($app) {
 		try {
 			$payment=getJSONFromApp($app);
-			$app->FinancialService->submitPledgeOrPayment($payment);
+			echo '{"payment": '.json_encode($app->FinancialService->submitPledgeOrPayment($payment)).'}';
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
