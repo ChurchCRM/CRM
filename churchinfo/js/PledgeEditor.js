@@ -161,7 +161,7 @@ $(document).ready(function() {
 	function getDenominationSubmitData(){
 		var denominations=new Array();
 		$(".denominationInputBox").each(function(i,el){
-		var currencyObject = {currencyID: $(el).attr("Name"), Count: $(el).val()}
+		var currencyObject = {currencyID: $(el).attr("Name").split("-")[1], Count: $(el).val()}
 		denominations.push(currencyObject);
 		});
 		return JSON.stringify(denominations);	

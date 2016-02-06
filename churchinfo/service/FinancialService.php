@@ -830,23 +830,19 @@ class FinancialService {
 		
 	}
 	
-	function processCurrencyDenominations($payment) 
+	function processCurrencyDenominations($payment,$groupKey) 
     {
-		//Process the Currency Denominations for this deposit
-			if ($payment->iMethod  == "CASH"){
-				$sGroupKey = genGroupKey("cash", $payment->FamilyID, $fun_id, $dDate);
-				foreach ($currencyDenomination2Name as $cdem_denominationID =>$cdem_denominationName)
-				{
-					$sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, pdem_denominationID, pdem_denominationQuantity) 
-					VALUES ('". $sGroupKey ."','".$cdem_denominationID."','".$_POST['currencyCount-'.$cdem_denominationID]."')";
-					if (isset ($sSQL)) {
-						RunQuery($sSQL);
-						unset($sSQL);
-					}
-				}
-			}
-		
-		
+        $currencyDenoms = json_decode($payment->cashDenominations);
+        foreach ($currencyDenoms as $cdom)
+        {
+            $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity) 
+            VALUES ('". $groupKey ."','".$payment->DepositID."','".$cdom->currencyID."','".$cdom->Count."')";
+            if (isset ($sSQL)) {
+                RunQuery($sSQL);
+                unset($sSQL);
+            }
+        }
+
 	}
 	
 	function insertPledgeorPayment ($payment) 
@@ -907,7 +903,7 @@ class FinancialService {
 						$Fund->Comment . "','".
 						date("YmdHis") . "'," .
 						$_SESSION['iUserID'] . ",'" . 
-						(isset($payment->type) ? "pledge" : "payment") . "'," . 
+						$payment->type. "'," . 
 						$Fund->FundID . "," . 
 						$payment->DepositID . "," . 
 						(isset($payment->iCheckNo) ? $payment->iCheckNo : "NULL") . ",'" . 
@@ -932,7 +928,7 @@ class FinancialService {
         $this->validateDate($payment);
         $groupKey = $this->insertPledgeorPayment ($payment);
         if ($payment->iMethod =="CASH") {
-            #$this->processCurrencyDenominations($payment);
+            $this->processCurrencyDenominations($payment,$groupKey);
         }
         return $this->getPledgeorPayment($groupKey);
 	}
@@ -1091,6 +1087,21 @@ class FinancialService {
             return  $OFXReturn;   
                 
                 
+    }
+    
+    function getCurrencyTypeOnDeposit($currencyID,$depositID)
+    {
+         $currencies = array();
+        // Get the list of Currency denominations
+        $sSQL = "select sum(pdem_denominationQuantity) from pledge_denominations_pdem
+                 where  plg_depID = ".$depositID."
+                 AND
+                 pdem_denominationID = ".$currencyID;
+        $rscurrencyDenomination = RunQuery($sSQL);
+       
+       return mysql_fetch_array($rscurrencyDenomination)[0];
+
+
     }
        
     function getCurrency()

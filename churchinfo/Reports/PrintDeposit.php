@@ -18,6 +18,10 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 require "../Include/ReportConfig.php";
+require "../service/FinancialService.php";
+
+
+$financialService = new FinancialService();
 
 // Security
 //if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -392,7 +396,7 @@ if ($output == "pdf") {
 		}	
 	}
     
-     $curY += $summaryIntervalY;
+    $curY += $summaryIntervalY;
     $pdf->SetFont('Times','B', 10);
 	$pdf->SetXY ($curX, $curY);
 	$pdf->Write (8, 'Deposit totals by Currency Type');
@@ -405,6 +409,20 @@ if ($output == "pdf") {
     $pdf->SetXY ($curX, $curY);
 	$pdf->Write (8, "Cash: ");
     $pdf->PrintRightJustified ($curX + $summaryMethodX, $curY, sprintf ("%.2f", $totalCash));
+    
+    
+    $curY += 2*$summaryIntervalY;
+    $pdf->SetFont('Times','B', 10);
+	$pdf->SetXY ($curX, $curY);
+	$pdf->Write (8, 'Cash Breakdown:');
+	$pdf->SetFont('Courier','', 8);
+    foreach ($financialService->getCurrency() as $currency)
+    {
+        $curY += $summaryIntervalY;
+        $pdf->SetXY ($curX, $curY);
+        $pdf->Write (8, $currency->Name);
+        $pdf->PrintRightJustified ($curX + $summaryMethodX, $curY, sprintf ("%.2f", $financialService->getCurrencyTypeOnDeposit($currency->id,$iDepositSlipID)));
+    }
     
 	header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 	if ($iPDFOutputType == 1)
