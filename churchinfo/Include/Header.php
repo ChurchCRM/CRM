@@ -77,6 +77,20 @@ $sURLPath = $_SESSION['sURLPath'];
     <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
      <!-- AdminLTE TimePicker -->
     <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
+    
+    <script>
+    $(document).ajaxError(function(evt,xhr,settings) {
+        console.log(evt);
+        console.log(xhr);
+        console.log(settings);
+                console.log("API Fail");
+                $(".modal").modal('hide');
+                $("#APIError").modal('show');
+                $("#APIEndpoint").text("["+settings.type+"] "+settings.url); 
+                $("#APIErrorText").text(xhr.responseText);
+    });
+    
+    </script>
 
     <?php Header_head_metatag(); ?>
 </head>
@@ -84,6 +98,7 @@ $sURLPath = $_SESSION['sURLPath'];
     <!-- Site wrapper -->
     <div class="wrapper">
     <?php
+        Header_error_modal();
         Header_body_scripts();
         Header_body_menu();
     ?>
