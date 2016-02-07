@@ -422,7 +422,7 @@ require ("Include/HeaderNotLoggedIn.php");
             <button type="submit" class="btn btn-primary btn-block btn-flat"><?php echo gettext('Login'); ?></button>
         </div>
     </div>
-    <?
+    <?php
         $sURLPath = $_GET['Proto'] . "://" . $_GET['Path'];
         setcookie("URLPath", $sURLPath);
     ?>
