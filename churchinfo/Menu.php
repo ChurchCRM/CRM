@@ -225,7 +225,7 @@ require 'Include/Header.php';
                         <?php while ($row = mysql_fetch_array($rsNewPeople)) { ?>
                         <li>
                             <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'];?>">
-                            <img src="<?= getPersonPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="100" height="100" /><br/>
+                            <img src="<?= $personService->getPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="100" height="100" /><br/>
                             <?= $row['per_FirstName']." ".$row['per_LastName'];?></a>
                             <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false);?></span>
                         </li>
@@ -254,7 +254,7 @@ require 'Include/Header.php';
                         <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'];?>">
-                                <img src="<?= getPersonPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="100" height="100" /><br/>
+                                <img src="<?= $personService->getPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="100" height="100" /><br/>
                                 <?= $row['per_FirstName']." ".$row['per_LastName'];?></a>
                                 <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false);?></span>
                             </li>

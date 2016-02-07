@@ -285,12 +285,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 		<div class="row">
 			<div class="box box-header">
 				<div class="col-lg-5 col-md-4 col-sm-4">
-					<img src="<?= getPersonPhoto($EnteredId) ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+					<img src="<?= $personService->getPhoto($EnteredId) ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
 					<?= gettext("Entered: ").FormatDate($per_DateEntered,false) ?>
 				</div>
 				<?php if (strlen($per_DateLastEdited) > 0) { ?>
 					<div class="col-lg-4 col-md-4 col-sm-4">
-						<img src="<?= getPersonPhoto($EditedId) ?>" title="<?=  $EditedFirstName . " " . $EditedLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+						<img src="<?= $personService->getPhoto($EditedId) ?>" title="<?=  $EditedFirstName . " " . $EditedLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
 						<?= gettext("Updated: ").FormatDate($per_DateLastEdited,false) ?>
 					</div>
 				<?php } ?>
@@ -322,7 +322,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                         ?>
                         <tr>
                             <td>
-                                <img src="<?php echo getPersonPhoto($tmpPersonId) ?>" width="40" height="40" class="img-circle" />
+                                <img src="<?= $personService->getPhoto($tmpPersonId) ?>" width="40" height="40" class="img-circle" />
                                 <a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="user-link"><?php echo $Row["per_FirstName"]." ".$Row["per_LastName"]; ?> </a>
                             </td>
                             <td class="text-center">
@@ -738,7 +738,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 										?>
 									<!-- chat item -->
 									<div class="item">
-										<img src="<?php echo getPersonPhoto($EnteredId) ?>"/>
+										<img src="<?= $personService->getPhoto($EnteredId) ?>"/>
 										<p class="message">
 											<a href="#" class="name">
 												<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php

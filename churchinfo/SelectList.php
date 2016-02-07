@@ -1016,7 +1016,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 	//Display the row
 	echo "<tr class=\"" .$sRowClass. "\">";?>
 	</td>
-    <td><img src="<?= getPersonPhoto($per_ID); ?>" class="direct-chat-img" width="10px" height="10px" /> </td>
+    <td><img src="<?= $personService->getPhoto($per_ID); ?>" class="direct-chat-img" width="10px" height="10px" /> </td>
 	<td>
 	    <a href="PersonView.php?PersonID=<?= $per_ID ?>" >
 	    <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3); ?>

@@ -1,4 +1,6 @@
 <?php
+require_once dirname(__FILE__).'/../service/PersonService.php';
+
 /*******************************************************************************
 *
 *  filename    : /Include/Functions.php
@@ -30,7 +32,7 @@
 // Important!  These must be updated before every software release.
 
 $_SESSION['sSoftwareInstalledVersion'] = '2.0.0';
-
+$personService = new PersonService();
 //
 // Basic security checks:
 //
