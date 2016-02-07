@@ -129,7 +129,7 @@ if ($output == "pdf") {
 	$rsDepositSlip = RunQuery($sSQL);
 	extract(mysql_fetch_array($rsDepositSlip));
 
-    $depositSlipFrontColumns = 132;
+    $depositSlipFrontColumns = 135;
     
     $depositSlipBackCheckNosX = 2;
     $depositSlipBackCheckNosY = 42;
@@ -139,12 +139,15 @@ if ($output == "pdf") {
     $depositSlipBackDollarsY = $depositSlipBackCheckNosY;
     $depositSlipBackDollarsHeight = $depositSlipBackCheckNosHeight;
     
-	$date1X = 19;
-	$date1Y = 20;
+	$date1X = 15;
+	$date1Y = 27;
+    $customerName1X = 32;
+    $customerName1Y = 37;
+    
     $cashX =  $depositSlipFrontColumns;
-    $cashY =  3;
+    $cashY =  32;
     $checksX = $depositSlipFrontColumns;
-    $checksY = 25;
+    $checksY = 39;
 
 	$date2X = 185;
 	$date2Y = 5;
@@ -170,12 +173,15 @@ if ($output == "pdf") {
 
 	$subTotalX = $depositSlipFrontColumns;
 	$subTotalY = 31;
-
+    
+    $AccountNumberX=125;
+    $AccountNumberY= 15;
+    
     $cashReceivedX = $depositSlipFrontColumns;
-    $cashReceivedY = 38.9;
+    $cashReceivedY = 46;
     
 	$topTotalX = $depositSlipFrontColumns;
-	$topTotalY = 48;
+	$topTotalY = 57;
 
 	$totalCash = 0;
 	$totalChecks = 0;
@@ -187,10 +193,10 @@ if ($output == "pdf") {
 		$date2Y -= 90;
         $pdf->AddPage();
 	} else {
-        $pdf->AddPage("L",array(150,60));
-
-            #$pdf->Image('../Images/front.jpg',0,0,-300,-300);
-
+        // --------------------------------
+        // BEGIN FRONT OF BANK DEPOSIT SLIP    
+        $pdf->AddPage("L",array(187,84));
+        $pdf->SetFont('Courier','', 18);
 		// Print Deposit Slip portion of report
 		while ($aRow = mysql_fetch_array($rsPledges))
 		{
@@ -208,22 +214,42 @@ if ($output == "pdf") {
 
 		$pdf->SetXY ($date1X, $date1Y);
 		$pdf->Write (8, $dep_Date);
+        
+        $pdf->SetXY ($customerName1X, $customerName1Y);
+		$pdf->Write (8, "Faith Covenant Church");
 
+        $pdf->SetXY ($AccountNumberX, $AccountNumberY);
+		$pdf->Cell(55,7,"1111111111",1,1,'R');
+        
 		if ($totalCash > 0) {
 			$totalCashStr = sprintf ("%.2f", $totalCash);
-			$pdf->PrintRightJustified ($cashX, $cashY, $totalCashStr);
+			//$pdf->PrintRightJustified ($cashX, $cashY, $totalCashStr);
+            $pdf->SetXY ($cashX, $cashY);
+            $pdf->Cell(46,7,$totalCashStr,1,1,'R');
 		}
         
         if ($totalChecks > 0) {
 			$totalChecksStr = sprintf ("%.2f", $totalChecks);
-			$pdf->PrintRightJustified ($checksX, $checksY, $totalChecksStr);
+			//$pdf->PrintRightJustified ($checksX, $checksY, $totalChecksStr);
+            $pdf->SetXY ($checksX, $checksY);
+            $pdf->Cell(46,7,$totalChecksStr,1,1,'R');
 		}
 
 		$grandTotalStr = sprintf ("%.2f", $totalChecks + $totalCash);
         $cashReceivedStr = sprintf ("%.2f", 0);
-        $pdf->PrintRightJustified ($cashReceivedX, $cashReceivedY, $cashReceivedStr);
+        /*$pdf->PrintRightJustified ($cashReceivedX, $cashReceivedY, $cashReceivedStr);
 		$pdf->PrintRightJustified ($subTotalX, $subTotalY, $grandTotalStr);
-		$pdf->PrintRightJustified ($topTotalX, $topTotalY, $grandTotalStr);
+		$pdf->PrintRightJustified ($topTotalX, $topTotalY, $grandTotalStr);*/
+        
+        $pdf->SetXY ($cashReceivedX, $cashReceivedY);
+        $pdf->Cell(46,7,$cashReceivedStr,1,1,'R');
+        
+        $pdf->SetXY ($topTotalX, $topTotalY);
+        $pdf->Cell(46,7,$grandTotalStr,1,1,'R');
+        
+         // --------------------------------
+        // BEGIN BACK OF BANK DEPOSIT SLIP
+        
         $pdf->AddPage("P",array(60,150));
         #$pdf->Image('../Images/back.jpg',0,0,-300,-300);
         mysql_data_seek($rsPledges, 0);
