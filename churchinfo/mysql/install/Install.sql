@@ -1283,7 +1283,7 @@ CREATE TABLE `version_ver` (
   `ver_date` datetime default NULL,
   PRIMARY KEY  (`ver_ID`),
   UNIQUE KEY `ver_version` (`ver_version`)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `version_ver`
