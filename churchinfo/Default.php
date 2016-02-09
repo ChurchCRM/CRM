@@ -123,38 +123,16 @@ if ($iUserID > 0)
     extract(mysql_fetch_array(RunQuery($sSQL)));
 
     $bPasswordMatch = FALSE;
-    // Check the user password
-    
-    // Note that there are several possible encodings for the password in the database
-    $tmp = $_POST['Password'];
-    $sPasswordHashMd5 = md5($tmp);
-    
-    $tmp = $_POST['Password'].$iUserID;
-    $sPasswordHash40 = sha1(sha1($tmp).$tmp);
-    
-    $tmp = $_POST['Password'].$iUserID;
-    $sPasswordHashSha256 = hash ("sha256", $tmp);
-    
-    $bPasswordMatch = ($usr_Password == $sPasswordHashMd5 || $usr_Password == $sPasswordHash40 || $usr_Password == $sPasswordHashSha256);
 
-    if ($bPasswordMatch && $usr_Password != $sPasswordHashSha256) {
-    	// Need to make sure this field can handle the additional length before updating the password
-    	$sSQL = "ALTER IGNORE TABLE user_usr MODIFY `usr_Password` text NOT NULL default ''";
-    	RunQuery($sSQL, TRUE); // TRUE means stop on error
-    	
-        $sSQL = "UPDATE user_usr SET usr_Password='".$sPasswordHashSha256."' ".
-                "WHERE usr_per_ID ='".$iUserID."'";
-        RunQuery($sSQL);
-    }
+    // Check the user password
+    $sPasswordHashSha256 = hash ("sha256", $_POST['Password'].$iUserID);
 
     // Block the login if a maximum login failure count has been reached
     if ($iMaxFailedLogins > 0 && $usr_FailedLogins >= $iMaxFailedLogins) {
 
         $sErrorText = '<br>' . gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
-    }
-
-    // Does the password match?
-    elseif (!$bPasswordMatch) {
+    } // Does the password match?
+    elseif ($usr_Password != $sPasswordHashSha256) {
         // Increment the FailedLogins
         $sSQL = 'UPDATE user_usr SET usr_FailedLogins = usr_FailedLogins + 1 '.
                 "WHERE usr_per_ID ='$iUserID'";
