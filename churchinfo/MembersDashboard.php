@@ -18,6 +18,7 @@ $sPageTitle = "Members Dashboard";
 require 'Include/Header.php';
 
 $dashboardService = new DashboardService();
+$personCount = $dashboardService->getPersonCount();
 $personStats = $dashboardService->getPersonStats();
 $familyStats = $dashboardService->getFamilyStats();
 $sundaySchoolStats = $dashboardService->getSundaySchoolStats();
@@ -74,17 +75,17 @@ $demographicStats = $dashboardService->getDemographic();
         <div class="small-box bg-green">
             <div class="inner">
                 <h3>
-                    <?= $personStats['personCount']?>
+                    <?= $personCount['personCount']?>
                 </h3>
                 <p>
-                    Members
+                    People
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="ion ion-person"></i>
             </div>
             <a href="<?php echo $sURLPath."/"; ?>SelectList.php?mode=person" class="small-box-footer">
-                See All Member <i class="fa fa-arrow-circle-right"></i>
+                See All People <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -100,7 +101,7 @@ $demographicStats = $dashboardService->getDemographic();
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-happy"></i>
+                <i class="fa fa-child"></i>
             </div>
             <a href="<?php echo $sURLPath."/"; ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
@@ -108,26 +109,75 @@ $demographicStats = $dashboardService->getDemographic();
         </div>
     </div><!-- ./col -->
 </div><!-- /.row -->
-<div class="box">
-    <div class="box-body no-padding">
-        <table class="table table-condensed">
-            <tr>
-                <th>Role / Gender</th>
-                <th>% of Members</th>
-                <th style="width: 40px">Count</th>
-            </tr>
-            <? foreach ($demographicStats as $key => $value) { ?>
-            <tr>
-                <td><?= $key ?></td>
-                <td>
-                    <div class="progress progress-xs progress-striped active">
-                        <div class="progress-bar progress-bar-success" style="width: <?= round($value/$personStats['personCount']*100) ?>%"></div>
-                    </div>
-                </td>
-                <td><span class="badge bg-green"><?= $value ?></span></td>
-            </tr>
-            <? } ?>
-        </table>
+<div class="row">
+    <div class="col-lg-6 col-xs-4">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-pie-chart"></i>
+
+                <h3 class="box-title">Family Roles</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body no-padding">
+                <table class="table table-condensed">
+                    <tr>
+                        <th>Role / Gender</th>
+                        <th>% of Members</th>
+                        <th style="width: 40px">Count</th>
+                    </tr>
+                    <? foreach ($demographicStats as $key => $value) { ?>
+                    <tr>
+                        <td><?= $key ?></td>
+                        <td>
+                            <div class="progress progress-xs progress-striped active">
+                                <div class="progress-bar progress-bar-success" style="width: <?= round($value/$personCount['personCount']*100) ?>%"></div>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-green"><?= $value ?></span></td>
+                    </tr>
+                    <? } ?>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-xs-4">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-bar-chart-o"></i>
+
+                <h3 class="box-title">Classification</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <table class="table table-condensed">
+                <tr>
+                    <th>Classification</th>
+                    <th>% of Members</th>
+                    <th style="width: 40px">Count</th>
+                </tr>
+                <? foreach ($personStats as $key => $value) { ?>
+                    <tr>
+                        <td><?= $key ?></td>
+                        <td>
+                            <div class="progress progress-xs progress-striped active">
+                                <div class="progress-bar progress-bar-success" style="width: <?= round($value/$personCount['personCount']*100) ?>%"></div>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-green"><?= $value ?></span></td>
+                    </tr>
+                <? } ?>
+            </table>
+            <!-- /.box-body-->
+        </div>
     </div>
 </div>
 <? require 'Include/Footer.php'; ?>
