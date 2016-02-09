@@ -97,7 +97,7 @@ require 'Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="ion ion-person"></i>
             </div>
             <a href="<?php echo $sURLPath."/"; ?>SelectList.php?mode=person" class="small-box-footer">
                 See All People <i class="fa fa-arrow-circle-right"></i>
@@ -135,7 +135,7 @@ require 'Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-happy"></i>
+                <i class="fa fa-child"></i>
             </div>
             <a href="<?php echo $sURLPath."/"; ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
