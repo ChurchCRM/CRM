@@ -319,10 +319,11 @@ $(document).ready(function() {
                 results.push(resultGroup);
                 return {results: results}; 
             },
-            cache: true
+            cache: false
         }
     });
     $("#FamilyName").on("select2:select",function (e) {
+        console.log(e);
         $("input[name=FamilyID]").val(e.params.data.familyID);
         });
     

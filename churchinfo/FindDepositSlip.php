@@ -24,18 +24,11 @@ $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 $sPageTitle = gettext("Deposit Listing");
 
 // Security: User must have finance permission to use this form
-//if (!$_SESSION['bFinance'])
-//{
-//	Redirect("Menu.php");
-//	exit;
-//}
-
-//Filter Values
-
-// Build SQL Criteria
-$sCriteria = "";
 if (!$_SESSION['bFinance'])
-	$sCriteria = "WHERE dep_EnteredBy=" . $_SESSION['iUserID'];
+{
+	Redirect("Menu.php");
+	exit;
+}
 
 $financialService=new FinancialService();
 require "Include/Header.php";
