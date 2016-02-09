@@ -314,7 +314,7 @@ if ($iUserID > 0)
 }
 // Turn ON output buffering
 ob_start();
-
+$sPageTitle = "ChurchCRM - Login";
 // Set the page title and include HTML header
 require ("Include/HeaderNotLoggedIn.php");
 ?>
