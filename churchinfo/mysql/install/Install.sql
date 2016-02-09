@@ -711,13 +711,6 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (100, 'mailchimp', 'root', 0, 'MailChimp', 'MailChimp', 'mailchimp/MailChimpDashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4, 'fa-envelope'),
 (101, 'dbrestore', 'admin', 0, 'Restore Database', 'Restore Database', 'RestoreDatabase.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 5, NULL);
 
-UPDATE menuconfig_mcf SET content=content_english;
---
--- Indexes for dumped tables
---
-
-
-
 -- --------------------------------------------------------
 
 -- 
@@ -1221,7 +1214,7 @@ INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_valu
 
 CREATE TABLE `user_usr` (
   `usr_per_ID` mediumint(9) unsigned NOT NULL default '0',
-  `usr_Password` text NOT NULL default '',
+  `usr_Password` varchar(500) NOT NULL default '',
   `usr_NeedPasswordChange` tinyint(3) unsigned NOT NULL default '1',
   `usr_LastLogin` datetime NOT NULL default '0000-00-00 00:00:00',
   `usr_LoginCount` smallint(5) unsigned NOT NULL default '0',
@@ -1290,7 +1283,7 @@ CREATE TABLE `version_ver` (
   `ver_date` datetime default NULL,
   PRIMARY KEY  (`ver_ID`),
   UNIQUE KEY `ver_version` (`ver_version`)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `version_ver`
