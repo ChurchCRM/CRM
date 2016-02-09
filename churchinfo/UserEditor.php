@@ -172,11 +172,15 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $sUserName = $usr_UserName;
             $sAction = 'edit';
         } else {
-            $sSQL = "SELECT per_LastName, per_FirstName FROM person_per WHERE per_ID = " . $iPersonID;
+            $sSQL = "SELECT per_LastName, per_FirstName, per_Email FROM person_per WHERE per_ID = " . $iPersonID;
             $rsUser = RunQuery($sSQL);
             $aUser = mysql_fetch_array($rsUser);
             $sUser = $aUser['per_LastName'] . ', ' . $aUser['per_FirstName'];
-            $sUserName = $aUser['per_FirstName'] . $aUser['per_LastName'];
+            if ($aUser['per_Email'] != "") {
+                $sUserName = $aUser['per_Email'];
+            } else {
+                $sUserName = $aUser['per_FirstName'] . $aUser['per_LastName'];
+            }
             $sAction = 'add';
             $vNewUser = 'true';
             
@@ -314,15 +318,15 @@ require 'Include/Header.php';
             <?= gettext('Note: Changes will not take effect until next logon.');?>
         </div>
         <form method="post" action="UserEditor.php">
-<input type="hidden" name="Action" value="<?php echo $sAction; ?>">
-<input type="hidden" name="NewUser" value="<?php echo $vNewUser; ?>">
+        <input type="hidden" name="Action" value="<?php echo $sAction; ?>">
+        <input type="hidden" name="NewUser" value="<?php echo $vNewUser; ?>">
+        <table class="table table-hover">
 <?php
 
 // Are we adding?
 if ($bShowPersonSelect) {
     //Yes, so display the people drop-down
 ?>
-    <table class="table table-hover">
     <tr>
         <td><?php echo gettext('Person to Make User:'); ?></td>
         <td>
@@ -338,26 +342,21 @@ if ($bShowPersonSelect) {
         </td>
     </tr>
 
-<?php
-} else {
-    // No, just display the user name
-
-?>
+<?php } else { // No, just display the user name ?>
     <input type="hidden" name="PersonID" value="<?php echo $iPersonID; ?>">
-    <table cellpadding="4" align="center">
     <tr>
         <td><?php echo gettext('User:'); ?></td>
         <td><?php echo $sUser; ?></td>
     </tr>
-<?php
-}
-?>
+<?php } ?>
+
      <?php if (isset($sErrorText) <> '') { ?>
     <tr>
         <td align="center" colspan="2">
         <span style="color:red;" id="PasswordError"><?php echo $sErrorText; ?></span>
         </td>
-    </tr><?php } ?>
+    </tr>
+    <?php } ?>
     <tr>
         <td><?php echo gettext('Login Name:'); ?></td>
         <td><input type="text" name="UserName" value="<?php echo $sUserName; ?>"></td>
