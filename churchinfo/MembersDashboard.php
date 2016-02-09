@@ -23,7 +23,16 @@ $personStats = $dashboardService->getPersonStats();
 $familyStats = $dashboardService->getFamilyStats();
 $sundaySchoolStats = $dashboardService->getSundaySchoolStats();
 $demographicStats = $dashboardService->getDemographic();
+
+$sSQL = "select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;";
+$rsAdultsGender = RunQuery($sSQL);
+
+$sSQL = "select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;";
+$rsKidsGender = RunQuery($sSQL);
 ?>
+
+<!-- this page specific styles -->
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/chartjs/Chart.min.js"></script>
 
 <!-- Default box -->
 <div class="box">
@@ -178,6 +187,81 @@ $demographicStats = $dashboardService->getDemographic();
             </table>
             <!-- /.box-body-->
         </div>
+        <div class="box box-info">
+            <div class="box-header">
+                <i class="ion ion-android-contacts"></i>
+                <h3 class="box-title">Gender Demographics</h3>
+                <div class="box-tools pull-right">
+                    <div id="gender-donut-legend" class="chart-legend"></div>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <canvas id="gender-donut" style="height:250px"></canvas>
+            </div>
+        </div>
     </div>
 </div>
+
+    <!-- this page specific inline scripts -->
+    <script>
+
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var PieData = [
+            <?php while ($row = mysql_fetch_array($rsAdultsGender)) {
+                if ($row['per_Gender'] == 1 ) {
+                    echo "{value: ". $row['numb'] ." , color: \"#003399\", highlight: \"#3366ff\", label: \"Men\" },";
+                }
+                if ($row['per_Gender'] == 2 ) {
+                    echo "{value: ". $row['numb'] ." , color: \"#9900ff\", highlight: \"#ff66cc\", label: \"Women\"},";
+                }
+            }
+            while ($row = mysql_fetch_array($rsKidsGender)) {
+            if ($row['per_Gender'] == 1 ) {
+                    echo "{value: ". $row['numb'] ." , color: \"#3399ff\", highlight: \"#99ccff\", label: \"Boys\"},";
+                }
+                if ($row['per_Gender'] == 2 ) {
+                    echo "{value: ". $row['numb'] ." , color: \"#009933\", highlight: \"#99cc00\", label: \"Girls\",}";
+                }
+            }
+            ?>
+        ];
+        var pieOptions = {
+
+            //String - Point label font colour
+            pointLabelFontColor : "#666",
+
+            //Boolean - Whether we should show a stroke on each segment
+            segmentShowStroke: true,
+            //String - The colour of each segment stroke
+            segmentStrokeColor: "#fff",
+            //Number - The width of each segment stroke
+            segmentStrokeWidth: 2,
+            //Number - The percentage of the chart that we cut out of the middle
+            percentageInnerCutout: 50, // This is 0 for Pie charts
+            //Boolean - Whether we animate the rotation of the Doughnut
+            animateRotate: false,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive: true,
+            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio: true,
+            //String - A legend template
+            legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
+        };
+
+        var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
+        var pieChart = new Chart(pieChartCanvas);
+
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        pieChart = pieChart.Doughnut(PieData, pieOptions);
+
+        //then you just need to generate the legend
+        var legend = pieChart.generateLegend();
+
+        //and append it to your page somewhere
+        $('#gender-donut-legend').append(legend);
+    </script>
 <? require 'Include/Footer.php'; ?>
