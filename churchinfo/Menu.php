@@ -50,7 +50,7 @@ $sSQL = "select
         (select count(*) from family_fam ) as familyCount,
         (select count(*) from person_per where per_cls_ID = 1  ) as PersonCount,
         (select count(*) from group_grp where grp_Type = 4 ) as SundaySchoolClasses,
-        (select count(*) from person_per,`group_grp` grp, `person2group2role_p2g2r` person_grp   where person_grp.p2g2r_rle_ID = 2 and per_cls_ID = 1 and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = per_ID) as SundaySchoolKidsCount
+        (select count(*) from person_per,`group_grp` grp, `person2group2role_p2g2r` person_grp   where person_grp.p2g2r_rle_ID = 2 and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = per_ID) as SundaySchoolKidsCount
         from dual ;";
 $rsQuickStat = RunQuery($sSQL);
 
