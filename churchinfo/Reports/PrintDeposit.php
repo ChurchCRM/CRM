@@ -131,13 +131,15 @@ if ($output == "pdf") {
 
     $depositSlipFrontColumns = 135;
     
-    $depositSlipBackCheckNosX = 2;
-    $depositSlipBackCheckNosY = 42;
-    $depositSlipBackCheckNosHeight = 7.25;
+    $depositSlipBackCheckNosX = 10;
+    $depositSlipBackCheckNosY = 13;
+    $depositSlipBackCheckNosHeight = 7;
+    $depositSlipBackCheckNosWidth = 15;
     
-    $depositSlipBackDollarsX = 30;
+    $depositSlipBackDollarsX = 25;
     $depositSlipBackDollarsY = $depositSlipBackCheckNosY;
     $depositSlipBackDollarsHeight = $depositSlipBackCheckNosHeight;
+    $depositSlipBackDollarsWidth = 47;
     
 	$date1X = 15;
 	$date1Y = 27;
@@ -250,7 +252,7 @@ if ($output == "pdf") {
          // --------------------------------
         // BEGIN BACK OF BANK DEPOSIT SLIP
         
-        $pdf->AddPage("P",array(60,150));
+        $pdf->AddPage("P",array(84,187));
         #$pdf->Image('../Images/back.jpg',0,0,-300,-300);
         mysql_data_seek($rsPledges, 0);
         while ($aRow = mysql_fetch_array($rsPledges))
@@ -260,8 +262,12 @@ if ($output == "pdf") {
 
 			// List all the checks and total the cash
 			 if ($plg_method == 'CHECK') {
-				$pdf->PrintRightJustified ($depositSlipBackCheckNosX, ($depositSlipBackCheckNosY + $numItems *$depositSlipBackCheckNosHeight) , $plg_CheckNo);
-				$pdf->PrintRightJustified ($depositSlipBackDollarsX, ($depositSlipBackDollarsY + $numItems *$depositSlipBackDollarsHeight), $plg_sum);
+                $plgSumStr = sprintf ("%.2f", $plg_sum);
+                $pdf->SetFontSize(14);
+                $pdf->SetXY($depositSlipBackCheckNosX,$depositSlipBackCheckNosY + $numItems *$depositSlipBackCheckNosHeight);
+				$pdf->Cell ( $depositSlipBackCheckNosWidth,$depositSlipBackCheckNosHeight , $plg_CheckNo,1,0,'L');
+                $pdf->SetFontSize(18);
+                $pdf->Cell ( $depositSlipBackDollarsWidth,$depositSlipBackDollarsHeight ,$plgSumStr,1,1,'R');
                 $numItems += 1;
 
             }
