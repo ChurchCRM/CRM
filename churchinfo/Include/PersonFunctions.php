@@ -1,10 +1,5 @@
 <?php
 
-function getPersonPhoto($personId) {
-    $personService = new PersonService();
-    return $personService->getPhoto($personId);
-}
-
 function getGenderIcon($gender) {
     $icon = "";
     if ($gender == 1)

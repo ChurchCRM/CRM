@@ -19,14 +19,24 @@ class DashboardService
         return $data;
     }
 
-
-    function getPersonStats() {
+    function getPersonCount() {
         $sSQL = "select
-        (select count(*) from person_per where per_cls_ID = 1  ) as PersonCount
+        (select count(*) from person_per ) as PersonCount
         from dual ;";
         $rsQuickStat = RunQuery($sSQL);
         $row = mysql_fetch_array($rsQuickStat);
         $data = ['personCount' => $row['PersonCount'] ];
+        return $data;
+    }
+
+
+    function getPersonStats() {
+        $data = array();
+        $sSQL = "select lst_OptionName as Classification, count(*) as count from person_per, list_lst where per_cls_ID = lst_OptionID and lst_ID =1 group by per_cls_ID order by count desc;";
+        $rsClassification = RunQuery($sSQL);
+        while ($row = mysql_fetch_array($rsClassification)) {
+            $data[$row['Classification']] = $row['count'];
+        }
         return $data;
     }
 

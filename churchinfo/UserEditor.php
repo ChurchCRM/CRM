@@ -131,16 +131,16 @@ if (isset($_POST['save']) && $iPersonID > 0) {
 
         // Write the SQL depending on whether we're adding or editing
         if ($sAction == 'add'){
-                                    
-                            if ($undupCount == 0) {
-                                $sSQL = "INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Communication, usr_Admin, usr_Style, usr_SearchLimit, usr_defaultFY, usr_UserName, usr_EditSelf, usr_Canvasser) VALUES (" . $iPersonID . ",'" . md5($sDefault_Pass) . "',1,'" . date("Y-m-d H:i:s") . "', " . $AddRecords . ", " . $EditRecords . ", " . $DeleteRecords . ", " . $MenuOptions . ", " . $ManageGroups . ", " . $Finance . ", " . $Notes . ", " . $Communication . ", " . $Admin . ", '" . $Style . "', 10," . $defaultFY . ",\"" . $sUserName . "\"," . $EditSelf . "," . $Canvasser . ")";
-                            // Execute the SQL
-                            RunQuery($sSQL);
 
-                            }else{
-                            // Set the error text for duplicate when new user
-                            Redirect('UserEditor.php?NewPersonID='.$PersonID.'&ErrorText=Login already in use, please select a different login!');
-                            }
+            if ($undupCount == 0) {
+                $sPasswordHashSha256 = hash ("sha256", $sDefault_Pass.$iPersonID);
+                $sSQL = "INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Communication, usr_Admin, usr_Style, usr_SearchLimit, usr_defaultFY, usr_UserName, usr_EditSelf, usr_Canvasser) VALUES (" . $iPersonID . ",'" . $sPasswordHashSha256 . "',1,'" . date("Y-m-d H:i:s") . "', " . $AddRecords . ", " . $EditRecords . ", " . $DeleteRecords . ", " . $MenuOptions . ", " . $ManageGroups . ", " . $Finance . ", " . $Notes . ", " . $Communication . ", " . $Admin . ", '" . $Style . "', 10," . $defaultFY . ",\"" . $sUserName . "\"," . $EditSelf . "," . $Canvasser . ")";
+                // Execute the SQL
+                RunQuery($sSQL);
+            }else{
+                // Set the error text for duplicate when new user
+                Redirect('UserEditor.php?NewPersonID='.$PersonID.'&ErrorText=Login already in use, please select a different login!');
+            }
         } else{
         
         if ($undupCount == 0) {
@@ -172,11 +172,15 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $sUserName = $usr_UserName;
             $sAction = 'edit';
         } else {
-            $sSQL = "SELECT per_LastName, per_FirstName FROM person_per WHERE per_ID = " . $iPersonID;
+            $sSQL = "SELECT per_LastName, per_FirstName, per_Email FROM person_per WHERE per_ID = " . $iPersonID;
             $rsUser = RunQuery($sSQL);
             $aUser = mysql_fetch_array($rsUser);
             $sUser = $aUser['per_LastName'] . ', ' . $aUser['per_FirstName'];
-            $sUserName = $aUser['per_FirstName'] . $aUser['per_LastName'];
+            if ($aUser['per_Email'] != "") {
+                $sUserName = $aUser['per_Email'];
+            } else {
+                $sUserName = $aUser['per_FirstName'] . $aUser['per_LastName'];
+            }
             $sAction = 'add';
             $vNewUser = 'true';
             
@@ -314,15 +318,15 @@ require 'Include/Header.php';
             <?= gettext('Note: Changes will not take effect until next logon.');?>
         </div>
         <form method="post" action="UserEditor.php">
-<input type="hidden" name="Action" value="<?php echo $sAction; ?>">
-<input type="hidden" name="NewUser" value="<?php echo $vNewUser; ?>">
+        <input type="hidden" name="Action" value="<?php echo $sAction; ?>">
+        <input type="hidden" name="NewUser" value="<?php echo $vNewUser; ?>">
+        <table class="table table-hover">
 <?php
 
 // Are we adding?
 if ($bShowPersonSelect) {
     //Yes, so display the people drop-down
 ?>
-    <table class="table table-hover">
     <tr>
         <td><?php echo gettext('Person to Make User:'); ?></td>
         <td>
@@ -338,26 +342,21 @@ if ($bShowPersonSelect) {
         </td>
     </tr>
 
-<?php
-} else {
-    // No, just display the user name
-
-?>
+<?php } else { // No, just display the user name ?>
     <input type="hidden" name="PersonID" value="<?php echo $iPersonID; ?>">
-    <table cellpadding="4" align="center">
     <tr>
         <td><?php echo gettext('User:'); ?></td>
         <td><?php echo $sUser; ?></td>
     </tr>
-<?php
-}
-?>
+<?php } ?>
+
      <?php if (isset($sErrorText) <> '') { ?>
     <tr>
         <td align="center" colspan="2">
         <span style="color:red;" id="PasswordError"><?php echo $sErrorText; ?></span>
         </td>
-    </tr><?php } ?>
+    </tr>
+    <?php } ?>
     <tr>
         <td><?php echo gettext('Login Name:'); ?></td>
         <td><input type="text" name="UserName" value="<?php echo $sUserName; ?>"></td>

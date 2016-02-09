@@ -38,11 +38,13 @@ if (isset($_POST["rmEmail"]))
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("View Your Cart");
-require "Include/Header.php";
+require "Include/Header.php";?>
+<div class="box box-body">
+<?php
 // Confirmation message that people where added to Event from Cart
 if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart']) == 0) {
         if (!array_key_exists("Message", $_GET)) {?>
-            <p class="text-center callout callout-warning"><?= gettext("You have no items in your cart.") ;?> </p>
+             <p class="text-center callout callout-warning"><?= gettext("You have no items in your cart.") ;?> </p>
         <? } else {
             switch ($_GET["Message"]) {
                 case "aMessage": ?>
@@ -51,7 +53,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
             }
         }
         echo '<p align="center"><input type="button" name="Exit" class="btn btn-primary" value="'.gettext("Back to Menu").'" '."onclick=\"javascript:document.location='Menu.php';\"></p>\n";
-
+        echo '</div>';
 } else {
 
         // Create array with Classification Information (lst_ID = 1)
@@ -147,7 +149,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
                         $sValidAddy = gettext("No");
 
                 echo '<tr class="' . $sRowClass . '">';
-                echo '<td><img src="'. getPersonPhoto($per_ID). '" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
+                echo '<td><img src="'. $personService->getPhoto($per_ID). '" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
 
                 echo '<td align="center">' . $sValidAddy . '</td>';
                 echo '<td align="center">' . $sValidEmail . '</td>';
@@ -161,9 +163,10 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
 
         echo "</table>";
 } ?>
-    </div>
-</div>
+
+
 <!-- Default box -->
+<?php if (count($_SESSION['aPeopleCart']) > 0) { ?>
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">Cart Functions</h3>
@@ -275,6 +278,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
     <!-- /.box-body -->
 </div>
 <!-- /.box -->
+<?php } ?>
 <!-- Default box -->
 <div class="box">
     <div class="box-header with-border">
