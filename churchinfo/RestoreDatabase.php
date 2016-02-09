@@ -35,7 +35,7 @@ require 'Include/Header.php';
         <p>CAUTION: This will completely erase the existing database, and replace it with the backup</p>
         <p>If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema</p>
 
-        <form id="restoredatabase" action="/api/database/restore" method="POST" enctype="multipart/form-data">
+        <form id="restoredatabase" action="api/database/restore" method="POST" enctype="multipart/form-data">
         <input type="file" name="restoreFile" id="restoreFile" multiple=""><br> 
         <button type="submit" class="btn btn-primary">Upload Files</button>
         </form>
@@ -53,7 +53,7 @@ $('#restoredatabase').submit(function(event) {
    $("#restorestatus").html("Restore Running, Please wait.");
    var formData = new FormData($(this)[0]); 
    $.ajax({
-        url: '/api/database/restore',
+        url: 'api/database/restore',
         type: 'POST',
         data: formData,
         cache: false,
