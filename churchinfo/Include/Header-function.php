@@ -259,10 +259,11 @@ global $security_matrix, $sURLPath;
                 <ul class="treeview-menu">
             <?php
                 if ($aMenu['name'] == "sundayschool") {
+                    echo "<li><a href='".$sURLPath."/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>Dashboard</a></li>";
                     $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
                     $rsSundaySchoolClasses = RunQuery($sSQL);
                     while ($aRow = mysql_fetch_array($rsSundaySchoolClasses)) {
-                        echo "<li><a href='".$sURLPath."/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
+                        echo "<li><a href='".$sURLPath."/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
                     }
                 }
         }
