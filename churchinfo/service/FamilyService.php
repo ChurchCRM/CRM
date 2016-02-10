@@ -53,13 +53,20 @@ class FamilyService {
         $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID=" . $famID;
 		$rsFamilies = RunQuery($sSQL);
 		$aRow = mysql_fetch_array($rsFamilies);
-        extract($aRow);
-        $name = $fam_Name;
-        if (isset ($aHead[$fam_ID])) 
+        try
         {
-            $name .= ", " . $aHead[$fam_ID];
+            extract($aRow);
+            $name = $fam_Name;
+            if (isset ($aHead[$fam_ID])) 
+            {
+                $name .= ", " . $aHead[$fam_ID];
+            }
+            $name .= " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
         }
-        $name .= " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+        catch (Exception $e)
+        {
+            $name ="";
+        }
 		return $name;
         
     }

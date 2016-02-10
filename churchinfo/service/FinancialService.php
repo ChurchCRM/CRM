@@ -1,8 +1,11 @@
 <?php
 require_once "PersonService.php";
 require_once "FamilyService.php";
+require_once dirname(dirname(__FILE__))."/Include/ReportFunctions.php";
+require_once dirname(dirname(__FILE__))."/Include/ReportConfig.php";
 require_once dirname(dirname(__FILE__))."/Include/Functions.php";
-require dirname(dirname(__FILE__))."/Include/MICRFunctions.php";
+require_once dirname(dirname(__FILE__))."/Include/MICRFunctions.php";
+require_once dirname(dirname(__FILE__))."/classes/pdf_DepositReport.php";
 
 class FinancialService {
     
@@ -647,40 +650,43 @@ class FinancialService {
 				$sSQL.=" WHERE plg_depID = ".$depID;
 		}
 		$rsDep = RunQuery($sSQL);
-		$return = array();
+       
+		$payments = array();
 		while ($aRow = mysql_fetch_array($rsDep))
 		{
 			extract ($aRow);
-			$values['plg_plgID']=$plg_plgID;
-			$values['plg_FamID']=$plg_FamID;
-            $values['familyName'] = $this->familyService->getFamilyName($plg_FamID);
-			$values['plg_FYID']=$plg_FYID;
-            $values['FiscalYear']=MakeFYString($plg_FYID);
-			$values['plg_date']=$plg_date;
-			$values['plg_amount']=$plg_amount;
-			$values['plg_schedule']=$plg_schedule;
-			$values['plg_method']=$plg_method;
-			$values['plg_comment']=$plg_comment;
-			$values['plg_DateLastEdited']=$plg_DateLastEdited;
-			$values['plg_EditedBy']=$plg_EditedBy;
-			$values['plg_PledgeOrPayment']=$plg_PledgeOrPayment;
-			$values['plg_fundID']=$plg_fundID;
-            $values['fun_Name'] = $fun_Name;
-			$values['plg_depID']=$plg_depID;
-			$values['plg_CheckNo']=$plg_CheckNo;
-			$values['plg_Problem']=$plg_Problem;
-			$values['plg_scanString']=$plg_scanString;
-			$values['plg_aut_ID']=$plg_aut_ID;
-			$values['plg_aut_Cleared']=$plg_aut_Cleared;
-			$values['plg_aut_ResultID']=$plg_aut_ResultID;
-			$values['plg_NonDeductible']=$plg_NonDeductible;
-			$values['plg_GroupKey']=$plg_GroupKey;
+            $values = new StdClass();
+			$values->plg_plgID=$plg_plgID;
+			$values->plg_FamID=$plg_FamID;
+            $values->familyName = $this->familyService->getFamilyName($plg_FamID);
+			$values->plg_FYID=$plg_FYID;
+            $values->FiscalYear=MakeFYString($plg_FYID);
+			$values->plg_date=$plg_date;
+			$values->plg_amount=$plg_amount;
+			$values->plg_schedule=$plg_schedule;
+			$values->plg_method=$plg_method;
+			$values->plg_comment=$plg_comment;
+			$values->plg_DateLastEdited=$plg_DateLastEdited;
+			$values->plg_EditedBy=$plg_EditedBy;
+			$values->plg_PledgeOrPayment=$plg_PledgeOrPayment;
+			$values->plg_fundID=$plg_fundID;
+            $values->fun_Name = $fun_Name;
+			$values->plg_depID=$plg_depID;
+			$values->plg_CheckNo=$plg_CheckNo;
+			$values->plg_Problem=$plg_Problem;
+			$values->plg_scanString=$plg_scanString;
+			$values->plg_aut_ID=$plg_aut_ID;
+			$values->plg_aut_Cleared=$plg_aut_Cleared;
+			$values->plg_aut_ResultID=$plg_aut_ResultID;
+			$values->plg_NonDeductible=$plg_NonDeductible;
+			$values->plg_GroupKey=$plg_GroupKey;
 
-			array_push($return,$values);
+			array_push($payments,$values);
 		}
-		echo '{"pledges": ' . json_encode($return) . '}';
+		return $payments;
 		
 	}
+    
 
     function searchDeposits($searchTerm)
     {
@@ -1087,6 +1093,318 @@ class FinancialService {
             return  $OFXReturn;   
                 
                 
+    }
+    
+    private function generateBankDepositSlip($thisReport)
+    {
+        // --------------------------------
+        // BEGIN FRONT OF BANK DEPOSIT SLIP    
+        $thisReport->pdf->AddPage("L",array(187,84));
+        $thisReport->pdf->SetFont('Courier','', 18);
+		// Print Deposit Slip portion of report
+
+		$thisReport->pdf->SetXY ($thisReport->date1X, $thisReport->date1Y);
+		$thisReport->pdf->Write (8, $thisReport->deposit->dep_Date);
+        
+        $thisReport->pdf->SetXY ($thisReport->customerName1X, $thisReport->customerName1Y);
+		$thisReport->pdf->Write (8, "Faith Covenant Church");
+
+        $thisReport->pdf->SetXY ($thisReport->AccountNumberX, $thisReport->AccountNumberY);
+		$thisReport->pdf->Cell(55,7,"1111111111",1,1,'R');
+        
+		if ($thisReport->deposit->totalCash > 0) {
+			$totalCashStr = sprintf ("%.2f", $thisReport->deposit->totalCash);
+            $thisReport->pdf->SetXY ($thisReport->cashX, $thisReport->cashY);
+            $thisReport->pdf->Cell(46,7,$totalCashStr,1,1,'R');
+		}
+        
+        if ($thisReport->deposit->totalChecks > 0) {
+			$totalChecksStr = sprintf ("%.2f", $thisReport->deposit->totalChecks);
+            $thisReport->pdf->SetXY ($thisReport->checksX, $thisReport->checksY);
+            $thisReport->pdf->Cell(46,7,$totalChecksStr,1,1,'R');
+		}
+
+		$grandTotalStr = sprintf ("%.2f", $thisReport->deposit->dep_Total);
+        $cashReceivedStr = sprintf ("%.2f", 0);
+      
+        $thisReport->pdf->SetXY ($thisReport->cashReceivedX, $thisReport->cashReceivedY);
+        $thisReport->pdf->Cell(46,7,$cashReceivedStr,1,1,'R');
+        
+        $thisReport->pdf->SetXY ($thisReport->topTotalX, $thisReport->topTotalY);
+        $thisReport->pdf->Cell(46,7,$grandTotalStr,1,1,'R');
+        
+         // --------------------------------
+        // BEGIN BACK OF BANK DEPOSIT SLIP
+        
+       $thisReport->pdf->AddPage("P",array(84,187));
+       $numItems = 0;
+       foreach($thisReport->payments as $payment)
+        {
+			// List all the checks and total the cash
+			 if ($payment->plg_method == 'CHECK') {
+                $plgSumStr = sprintf ("%.2f", $payment->plg_amount);
+                $thisReport->pdf->SetFontSize(14);
+                $thisReport->pdf->SetXY($thisReport->depositSlipBackCheckNosX,$thisReport->depositSlipBackCheckNosY + $numItems *$thisReport->depositSlipBackCheckNosHeight);
+				$thisReport->pdf->Cell ( $thisReport->depositSlipBackCheckNosWidth,$thisReport->depositSlipBackCheckNosHeight , $payment->plg_CheckNo,1,0,'L');
+                $thisReport->pdf->SetFontSize(18);
+                $thisReport->pdf->Cell ( $thisReport->depositSlipBackDollarsWidth,$thisReport->depositSlipBackDollarsHeight ,$plgSumStr,1,1,'R');
+                $numItems += 1;
+
+            }
+		}
+        
+        
+    }
+    
+    private function generateDepositSummary($thisReport)
+    {
+        $thisReport->pdf->AddPage ();
+        $thisReport->pdf->SetXY ($thisReport->date2X, $thisReport->date2Y);
+        $thisReport->pdf->Write (8, $thisReport->deposit->dep_Date);
+
+        $thisReport->pdf->SetXY ($thisReport->titleX, $thisReport->titleY);
+        $thisReport->pdf->SetFont('Courier','B', 20);
+        $thisReport->pdf->Write (8, "Deposit Summary " . $thisReport->deposit->dep_ID);
+        $thisReport->pdf->SetFont('Times','B', 10);
+
+        $thisReport->curX = $thisReport->summaryX;
+        $thisReport->curY = $thisReport->summaryY;
+
+        $thisReport->summaryFundX = 15;
+        $thisReport->summaryMethodX = 55;
+        $thisReport->summaryFromX = 80;
+        $thisReport->summaryMemoX = 120;
+        $thisReport->summaryAmountX = 185;
+        $thisReport->summaryIntervalY = 4;
+
+        $thisReport->pdf->SetFont('Times','B', 10);
+        $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
+        $thisReport->pdf->Write (8, 'Chk No.');
+
+        $thisReport->pdf->SetXY ($thisReport->curX + $thisReport->summaryFundX, $thisReport->curY);
+        $thisReport->pdf->Write (8, 'Fund');
+
+        $thisReport->pdf->SetXY ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY);
+        $thisReport->pdf->Write (8, 'PmtMethod');
+
+        $thisReport->pdf->SetXY ($thisReport->curX + $thisReport->summaryFromX, $thisReport->curY);
+        $thisReport->pdf->Write (8, 'Rcd From');
+
+        $thisReport->pdf->SetXY ($thisReport->curX + $thisReport->summaryMemoX, $thisReport->curY);
+        $thisReport->pdf->Write (8, 'Memo');
+
+        $thisReport->pdf->SetXY ($thisReport->curX + $thisReport->summaryAmountX - 5, $thisReport->curY);
+        $thisReport->pdf->Write (8, 'Amount');
+        $thisReport->curY += 2 * $thisReport->summaryIntervalY;
+
+        $totalAmount = 0;
+        
+        //while ($aRow = mysql_fetch_array($rsPledges))
+        foreach($thisReport->payments as $payment)
+        {
+            $thisReport->pdf->SetFont('Times','', 10);
+ 
+            // Format Data
+            if (strlen($payment->plg_CheckNo) > 8)
+                $payment->plg_CheckNo = "...".substr($payment->plg_CheckNo,-8,8);
+            if (strlen($payment->fun_Name) > 20)
+                $payment->fun_Name = substr($payment->fun_Name,0,20) . "...";
+            if (strlen($payment->plg_comment) > 40)
+                $payment->plg_comment = substr($payment->plg_comment,0,38) . "...";
+            if (strlen($payment->familyName) > 25)
+                $payment->familyName = substr($payment->familyName,0,24) . "...";
+
+            $thisReport->pdf->PrintRightJustified ($thisReport->curX + 2, $thisReport->curY, $payment->plg_CheckNo);
+
+            $thisReport->pdf->SetXY ($thisReport->curX + $thisReport->summaryFundX, $thisReport->curY);
+            $thisReport->pdf->Write (8, $payment->fun_Name);
+
+            $thisReport->pdf->SetXY ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY);
+            $thisReport->pdf->Write (8, $payment->plg_method);
+
+            $thisReport->pdf->SetXY ($thisReport->curX + $thisReport->summaryFromX, $thisReport->curY);
+            $thisReport->pdf->Write (8, $payment->familyName);
+
+            $thisReport->pdf->SetXY ($thisReport->curX + $thisReport->summaryMemoX, $thisReport->curY);
+            $thisReport->pdf->Write (8, $payment->plg_comment);
+
+            $thisReport->pdf->SetFont('Courier','', 8);
+
+            $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryAmountX, $thisReport->curY, $payment->plg_amount);
+
+            $thisReport->curY += $thisReport->summaryIntervalY;
+
+            if ($thisReport->curY >= 250) {
+              $thisReport->pdf->AddPage ();
+              $thisReport->curY = $thisReport->topY;
+            }
+        }
+
+        $thisReport->curY +=  $thisReport->summaryIntervalY;
+
+        $thisReport->pdf->SetXY ($thisReport->curX + $thisReport->summaryMemoX, $thisReport->curY);
+        $thisReport->pdf->Write (8, 'Deposit total');
+
+        $grandTotalStr = sprintf ("%.2f", $thisReport->deposit->dep_Total);
+        $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryAmountX, $thisReport->curY, $grandTotalStr);
+
+        // Now print deposit totals by fund
+        $thisReport->curY += 2 * $thisReport->summaryIntervalY;
+
+        $thisReport->pdf->SetFont('Times','B', 10);
+        $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
+        $thisReport->pdf->Write (8, 'Deposit totals by fund');
+        $thisReport->pdf->SetFont('Courier','', 8);
+
+        $thisReport->curY += $thisReport->summaryIntervalY;
+
+        if (count($thisReport->funds) > 0) //if there are funds defined
+        {
+            foreach($thisReport->funds as $fund) //iterate through the defined funds
+            {
+               if (array_key_exists ($fund->Name, $thisReport->fundTotal) && $thisReport->fundTotal[$fund->Name] > 0) // if the fund exists on this deposit, and the value of the fund is greater than 0
+               {
+                $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
+                $thisReport->pdf->Write (8, $fund->Name);
+                  $amountStr = sprintf ("%.2f", $thisReport->fundTotal[$fund->Name]);
+                $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, $amountStr);
+                  $thisReport->curY += $thisReport->summaryIntervalY;
+               }
+            }
+            if (array_key_exists ('UNDESIGNATED', $thisReport->fundTotal) && $thisReport->fundTotal['UNDESIGNATED']) {
+                $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
+                $thisReport->pdf->Write (8, gettext("UNDESIGNATED"));
+                $amountStr = sprintf ("%.2f", $thisReport->fundTotal['UNDESIGNATED']);
+                $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, $amountStr);
+                $thisReport->curY += $thisReport->summaryIntervalY;
+            }	
+        }
+        
+        $thisReport->curY += $thisReport->summaryIntervalY;
+        $thisReport->pdf->SetFont('Times','B', 10);
+        $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
+        $thisReport->pdf->Write (8, 'Deposit totals by Currency Type');
+        $thisReport->pdf->SetFont('Courier','', 8);
+        $thisReport->curY += $thisReport->summaryIntervalY;
+        $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
+        $thisReport->pdf->Write (8, "Checks: ");
+        $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf ("%.2f", $thisReport->deposit->totalChecks));
+        $thisReport->curY += $thisReport->summaryIntervalY;
+        $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
+        $thisReport->pdf->Write (8, "Cash: ");
+        $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf ("%.2f", $thisReport->deposit->totalCash));
+        
+        
+        $thisReport->curY += 2*$thisReport->summaryIntervalY;
+        $thisReport->pdf->SetFont('Times','B', 10);
+        $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
+        $thisReport->pdf->Write (8, 'Cash Breakdown:');
+        $thisReport->pdf->SetFont('Courier','', 8);
+        foreach ($this->getCurrency() as $currency)
+        {
+            $thisReport->curY += $thisReport->summaryIntervalY;
+            $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
+            $thisReport->pdf->Write (8, $currency->Name);
+            $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf ("%.2f", $this->getCurrencyTypeOnDeposit($currency->id,$thisReport->deposit->dep_ID)));
+        }
+        
+        
+    }
+    
+    private function calculateFundTotals($thisReport)
+    {
+        $thisReport->fundTotal = array ();
+        foreach($thisReport->payments as $payment)
+        {
+            if (!$payment->fun_Name)
+                     $thisReport->fundTotal['UNDESIGNATED'] += $payment->plg_amount;
+            else 
+            {   
+                if (array_key_exists ($payment->fun_Name,  $thisReport->fundTotal))
+                     $thisReport->fundTotal[$payment->fun_Name] += $payment->plg_amount;
+                else
+                     $thisReport->fundTotal[$payment->fun_Name] = $payment->plg_amount;
+            }
+        }
+    }
+    
+    function getDepositPDF($depID)
+    {
+        $thisReport = new StdClass();
+        $thisReport->payments = $this->getPayments($depID);
+        if (count($thisReport->payments) <1)
+        {
+            throw new Exception("No Payments on this Deposit");
+        }
+        
+        $thisReport->pdf = new PDF_DepositReport();
+        $thisReport->deposit = $this->getDeposits($depID)[0];
+        $thisReport->funds = $this->getFund();
+        $thisReport->depositSlipFrontColumns = 135;
+        $thisReport->depositSlipBackCheckNosX = 10;
+        $thisReport->depositSlipBackCheckNosY = 13;
+        $thisReport->depositSlipBackCheckNosHeight = 7;
+        $thisReport->depositSlipBackCheckNosWidth = 15;
+        $thisReport->depositSlipBackDollarsX = 25;
+        $thisReport->depositSlipBackDollarsY =  $thisReport->depositSlipBackCheckNosY;
+        $thisReport->depositSlipBackDollarsHeight =  $thisReport->depositSlipBackCheckNosHeight;
+        $thisReport->depositSlipBackDollarsWidth = 47;
+        $thisReport->date1X = 15;
+        $thisReport->date1Y = 27;
+        $thisReport->customerName1X = 32;
+        $thisReport->customerName1Y = 37;
+        $thisReport->cashX =   $thisReport->depositSlipFrontColumns;
+        $thisReport->cashY =  32;
+        $thisReport->checksX =  $thisReport->depositSlipFrontColumns;
+        $thisReport->checksY = 39;
+        $thisReport->date2X = 185;
+        $thisReport->date2Y = 5;
+        $thisReport->titleX = 85;
+        $thisReport->titleY = 5;
+        $thisReport->summaryX = 12;
+        $thisReport->summaryY = 15;
+        $thisReport->leftX = 64;
+        $thisReport->topY = 0 + 7;
+        $thisReport->intervalX = 52 - 3;
+        $thisReport->intervalY = 7;
+        $thisReport->amountOffsetX = 35;
+        $thisReport->maxX = 200;
+        $thisReport->curX =  $thisReport->leftX +  $thisReport->intervalX;
+        $thisReport->curY =  $thisReport->topY;
+        $thisReport->numItemsX = 140 - 4;
+        $thisReport->numItemsY = 61 + 7;
+        $thisReport->subTotalX =  $thisReport->depositSlipFrontColumns;
+        $thisReport->subTotalY = 31;
+        $thisReport->AccountNumberX=125;
+        $thisReport->AccountNumberY= 15;
+        $thisReport->cashReceivedX =  $thisReport->depositSlipFrontColumns;
+        $thisReport->cashReceivedY = 46;
+        $thisReport->topTotalX =  $thisReport->depositSlipFrontColumns;
+        $thisReport->topTotalY = 57;
+        $thisReport->totalCash = 0;
+        $thisReport->totalChecks = 0;
+        $thisReport->numItems = 0; 
+
+        // Read in report settings from database
+        $rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+        if ($rsConfig) {
+            while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+                $thisReport->pdf->$cfg_name = $cfg_value;
+            }
+        }
+       
+        $this->calculateFundTotals($thisReport);
+        $this->generateBankDepositSlip($thisReport);
+        //print_r ($thisReport->fundTotal);
+        //exit;
+        $this->generateDepositSummary($thisReport);
+        
+        $PDFReturn = new StdClass();
+        $PDFReturn->content= $thisReport->pdf->Output();
+        // Export file
+        $PDFReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-DepositReport-".$depID."-" . date("Ymd-Gis") . ".pdf";
+        return  $PDFReturn; 
+        
     }
     
     function getCurrencyTypeOnDeposit($currencyID,$depositID)

@@ -189,7 +189,7 @@ require "Include/Header.php";
 <script type="text/javascript" src="js/DepositSlipEditor.js"></script>
 
 <script>
-var paymentData = <?php echo $financialService->getPayments($iDepositSlipID); ?>;
+var paymentData = <?php echo $app->FinancialService->getPaymentJSON($financialService->getPayments($iDepositSlipID)); ?>;
 $("#DepositDate").datepicker({format:'yyyy-mm-dd'});
 
 function format ( d ) {

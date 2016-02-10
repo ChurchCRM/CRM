@@ -370,6 +370,17 @@ $app->group('/deposits',function () use ($app) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }	
 	})->conditions(array('id' => '[0-9]+'));
+    
+    $app->get('/:id/pdf',function($id) use ($app) 
+	{
+		//try {
+			$PDF = $app->FinancialService->getDepositPDF($id);
+            header($PDF->header);
+            echo $PDF->content;
+		//} catch (Exception $e) {
+         //   echo '{"error":{"text":' . $e->getMessage() . '}}';
+      //  }	
+	})->conditions(array('id' => '[0-9]+'));
      
     $app->delete('/:id',function($id) use ($app) 
 	{
@@ -384,7 +395,7 @@ $app->group('/deposits',function () use ($app) {
 	$app->get('/:id/payments',function($id) use ($app) 
 	{
 		try {
-			$app->FinancialService->getPayments($id);
+			$app->FinancialService->getPaymentJSON($app->FinancialService->getPayments($id));
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
@@ -396,7 +407,7 @@ $app->group('/deposits',function () use ($app) {
 $app->group('/payments',function () use ($app) {
 	$app->get('/', function () use ($app) {
 		try {
-			$app->FinancialService->getPayments();
+			$app->FinancialService->getPaymentJSON($app->FinancialService->getPayments());
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }

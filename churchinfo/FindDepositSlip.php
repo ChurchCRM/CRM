@@ -112,6 +112,7 @@ require "Include/Header.php";
 
 <button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>
 <button type="button" id="exportSelectedRows"  class="btn btn-success" disabled><i class="fa fa-download"></i>Export Selected Rows (OFX)</button>
+<button type="button" id="generateDepositSlip" class="btn btn-success"  disabled>Generate Deposit Split for Selected Rows (PDF)</button>
 </div>
 </div>
 
@@ -219,6 +220,8 @@ $(document).ready(function() {
           $("#deleteSelectedRows").text("Delete ("+selectedRows+") Selected Rows");
           $("#exportSelectedRows").prop('disabled', !(selectedRows));
           $("#exportSelectedRows").html("<i class=\"fa fa-download\"></i>Export ("+selectedRows+") Selected Rows (OFX)");
+          $("#generateDepositSlip").prop('disabled', !(selectedRows));
+          $("#generateDepositSlip").html("<i class=\"fa fa-download\"></i>Generate Deposit Split for Selected ("+selectedRows+") Rows (PDF)");
         
      });
      
@@ -236,6 +239,15 @@ $(document).ready(function() {
             window.open('/api/deposits/'+value.dep_ID+'/ofx');
         });
     });
+    
+     $('#generateDepositSlip').click(function() {
+        var selectedRows = dataT.rows('.selected').data()
+        $.each(selectedRows, function(index, value){
+            window.open('Reports/PrintDeposit.php?BankSlip=<?php echo ($thisDeposit->dep_Type == 'Bank')?>');
+        });
+    });
+    
+   
     
     
     $("#deleteConfirmed").click(function() {
