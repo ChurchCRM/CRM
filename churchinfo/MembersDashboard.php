@@ -18,11 +18,21 @@ $sPageTitle = "Members Dashboard";
 require 'Include/Header.php';
 
 $dashboardService = new DashboardService();
+$personCount = $dashboardService->getPersonCount();
 $personStats = $dashboardService->getPersonStats();
 $familyCount = $dashboardService->getFamilyCount();
 $sundaySchoolStats = $dashboardService->getSundaySchoolStats();
 $demographicStats = $dashboardService->getDemographic();
+
+$sSQL = "select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;";
+$rsAdultsGender = RunQuery($sSQL);
+
+$sSQL = "select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;";
+$rsKidsGender = RunQuery($sSQL);
 ?>
+
+<!-- this page specific styles -->
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/chartjs/Chart.min.js"></script>
 
 <!-- Default box -->
 <div class="box">
@@ -73,17 +83,17 @@ $demographicStats = $dashboardService->getDemographic();
         <div class="small-box bg-green">
             <div class="inner">
                 <h3>
-                    <?= $personStats['personCount']?>
+                    <?= $personCount['personCount']?>
                 </h3>
                 <p>
-                    Members
+                    People
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="ion ion-person"></i>
             </div>
             <a href="<?php echo $sURLPath."/"; ?>SelectList.php?mode=person" class="small-box-footer">
-                See All Member <i class="fa fa-arrow-circle-right"></i>
+                See All People <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -99,7 +109,7 @@ $demographicStats = $dashboardService->getDemographic();
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-happy"></i>
+                <i class="fa fa-child"></i>
             </div>
             <a href="<?php echo $sURLPath."/"; ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
@@ -190,4 +200,67 @@ $demographicStats = $dashboardService->getDemographic();
         </div>
     </div>
 </div>
+
+    <!-- this page specific inline scripts -->
+    <script>
+
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var PieData = [
+            <?php while ($row = mysql_fetch_array($rsAdultsGender)) {
+                if ($row['per_Gender'] == 1 ) {
+                    echo "{value: ". $row['numb'] ." , color: \"#003399\", highlight: \"#3366ff\", label: \"Men\" },";
+                }
+                if ($row['per_Gender'] == 2 ) {
+                    echo "{value: ". $row['numb'] ." , color: \"#9900ff\", highlight: \"#ff66cc\", label: \"Women\"},";
+                }
+            }
+            while ($row = mysql_fetch_array($rsKidsGender)) {
+            if ($row['per_Gender'] == 1 ) {
+                    echo "{value: ". $row['numb'] ." , color: \"#3399ff\", highlight: \"#99ccff\", label: \"Boys\"},";
+                }
+                if ($row['per_Gender'] == 2 ) {
+                    echo "{value: ". $row['numb'] ." , color: \"#009933\", highlight: \"#99cc00\", label: \"Girls\",}";
+                }
+            }
+            ?>
+        ];
+        var pieOptions = {
+
+            //String - Point label font colour
+            pointLabelFontColor : "#666",
+
+            //Boolean - Whether we should show a stroke on each segment
+            segmentShowStroke: true,
+            //String - The colour of each segment stroke
+            segmentStrokeColor: "#fff",
+            //Number - The width of each segment stroke
+            segmentStrokeWidth: 2,
+            //Number - The percentage of the chart that we cut out of the middle
+            percentageInnerCutout: 50, // This is 0 for Pie charts
+            //Boolean - Whether we animate the rotation of the Doughnut
+            animateRotate: false,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive: true,
+            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio: true,
+            //String - A legend template
+            legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
+        };
+
+        var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
+        var pieChart = new Chart(pieChartCanvas);
+
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        pieChart = pieChart.Doughnut(PieData, pieOptions);
+
+        //then you just need to generate the legend
+        var legend = pieChart.generateLegend();
+
+        //and append it to your page somewhere
+        $('#gender-donut-legend').append(legend);
+    </script>
 <? require 'Include/Footer.php'; ?>
