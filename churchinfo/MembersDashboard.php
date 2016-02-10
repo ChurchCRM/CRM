@@ -37,7 +37,7 @@ $rsKidsGender = RunQuery($sSQL);
 <!-- Default box -->
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">Cart Functions</h3>
+        <h3 class="box-title">Members Functions</h3>
     </div>
     <div class="box-body">
         <a href="SelectList.php?mode=person" class="btn btn-app"><i class="fa fa-user"></i><?= gettext("All People") ?></a>
