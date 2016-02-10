@@ -243,7 +243,7 @@ $(document).ready(function() {
      $('#generateDepositSlip').click(function() {
         var selectedRows = dataT.rows('.selected').data()
         $.each(selectedRows, function(index, value){
-            window.open('Reports/PrintDeposit.php?BankSlip=<?php echo ($thisDeposit->dep_Type == 'Bank')?>');
+            window.open('/api/deposits/'+value.dep_ID+'/pdf');
         });
     });
     

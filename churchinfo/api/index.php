@@ -381,6 +381,17 @@ $app->group('/deposits',function () use ($app) {
          //   echo '{"error":{"text":' . $e->getMessage() . '}}';
       //  }	
 	})->conditions(array('id' => '[0-9]+'));
+    
+    $app->get('/:id/csv',function($id) use ($app) 
+	{
+		//try {
+			$CSV = $app->FinancialService->getDepositCSV($id);
+            header($CSV->header);
+            echo $CSV->content;
+		//} catch (Exception $e) {
+         //   echo '{"error":{"text":' . $e->getMessage() . '}}';
+      //  }	
+	})->conditions(array('id' => '[0-9]+'));
      
     $app->delete('/:id',function($id) use ($app) 
 	{

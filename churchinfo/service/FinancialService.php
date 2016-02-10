@@ -1407,6 +1407,39 @@ class FinancialService {
         
     }
     
+    function getDepositCSV($depID)
+    {
+        $retstring="";
+        $line=array();
+        $firstLine=true;
+        $payments = $this->getPayments($depID);
+        
+        foreach($payments[0] as $key=>$value)
+        {
+            array_push($line,$key);
+        }
+        $retstring = implode(",",$line)."\n";
+        $line=array();
+        foreach($payments as $payment)
+        {
+             $line=array();
+            foreach($payment as $key=>$value)
+            {
+               array_push($line,str_replace(",","",$value));
+            }
+            $retstring .=implode(",",$line)."\n";
+          
+        }
+        
+        $CSVReturn = new StdClass();
+        $CSVReturn->content= $retstring;
+        // Export file
+        $CSVReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-".$depID."-" . date("Ymd-Gis") . ".csv";
+        return  $CSVReturn; 
+        
+        
+    }
+    
     function getCurrencyTypeOnDeposit($currencyID,$depositID)
     {
          $currencies = array();
