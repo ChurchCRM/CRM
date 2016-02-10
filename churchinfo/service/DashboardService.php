@@ -9,7 +9,7 @@
 class DashboardService
 {
 
-    function getFamilyStats() {
+    function getFamilyCount() {
         $sSQL = "select
         (select count(*) from family_fam ) as familyCount
         from dual ;";
