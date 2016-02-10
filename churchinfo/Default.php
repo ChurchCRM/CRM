@@ -10,7 +10,7 @@
  *  Updated 2005-03-19 by Everette L Mills: Removed dropdown login box and
  *  added user entered login box
  *
- *  
+ *
  *  LICENSE:
  *  (C) Free Software Foundation, Inc.
  *
@@ -290,7 +290,7 @@ if ($iUserID > 0)
             $sSQL = "INSERT INTO mrbs_users (id, level, name, email) VALUES ('$iUserID', '$iMRBSLevel', '$UserName', '$per_Email') ON DUPLICATE KEY UPDATE level='$iMRBSLevel', name='$UserName',email='$per_Email'";
         	RunQuery($sSQL);
         }
-        
+
         if (isset($bEnableWebCalendar) && $bEnableWebCalendar) {
         	$sAdmin = ($usr_Admin ? 'Y' : 'N');
 		    $GLOBALS['login'] = $UserName;
@@ -300,13 +300,13 @@ if ($iUserID > 0)
     		$GLOBALS['email'] = $per_Email;
 		    $GLOBALS['fullname'] = "$per_FirstName $per_LastName";
 		    $GLOBALS['enabled'] = 1;
-		    
+
 		    $_SESSION['webcal_login'] = $UserName;
-		    
+
         	$sSQL = "INSERT INTO webcal_user (cal_login, cal_firstname, cal_lastname, cal_is_admin, cal_email) VALUES ('$UserName', '". mysql_real_escape_string ($per_FirstName)." ', '".mysql_real_escape_string ($per_LastName)."', '$sAdmin', '$per_Email') ON DUPLICATE KEY UPDATE cal_login='$UserName', cal_firstname='".mysql_real_escape_string ($per_FirstName)."', cal_lastname='".mysql_real_escape_string ($per_LastName)."',cal_is_admin='$sAdmin', cal_email='$per_Email'";
         	RunQuery($sSQL);
         }
-        
+
         // Redirect to the Menu
         Redirect('CheckVersion.php');
         exit;
@@ -332,52 +332,54 @@ require ("Include/HeaderNotLoggedIn.php");
 // returned by the browser in a query string
 
     if (empty($_GET['Proto']) || empty($_GET['Path'])) {
-        echo '
+?><script language="javascript" type="text/javascript">
+    var error_page1="http://www.churchcrm.io";
+    var error_page2="http://www.churchcrm.io";
 
-<script language="javascript" type="text/javascript">
-    error_page1="http://www.churchcrm.io";
-    error_page2="http://www.churchcrm.io";
-    if(window.location.href.indexOf(":") == 5) {
-        v_Proto="https";
-        v_Path=window.location.href.substring(8);
-    } else if (window.location.href.indexOf(":") == 4) {
-        v_Proto="http";
-        v_Path=window.location.href.substring(7);
-    } else {
-        window.location=error_page1;
+    if (window.location.href.indexOf(":") == 5)
+    {
+        v_Proto = "https";
+        v_Path = window.location.href.substring(8);
     }
-    v_index=v_Path.toLowerCase().indexOf("default.php")-1;
-    if(v_index < 0) {
-        window.location=error_page2;
+    else if (window.location.href.indexOf(":") == 4)
+    {
+        v_Proto = "http";
+        v_Path = window.location.href.substring(7);
     }
-    v_Path=v_Path.substring(0,v_index);
+    else
+        window.location = error_page1;
+
+    v_index = v_Path.toLowerCase().indexOf("default.php") - 1;
+    if (v_index < 0)
+        window.location = error_page2;
+
+    v_Path=v_Path.substring(0, v_index);
     v_Path=encodeURIComponent(v_Path);
-    v_QueryString="Proto="+v_Proto+"&Path="+v_Path;
-    if(window.location.href.indexOf("?") < 0 ) {
-        window.location=window.location.href+"?"+v_QueryString;
-    } else {
-        window.location=window.location.href+"&"+v_QueryString;
+    v_QueryString = "Proto=" + v_Proto + "&Path=" + v_Path;
+
+    if (window.location.href.indexOf("?") < 0)
+        window.location = window.location.href + "?" + v_QueryString;
+    else
+        window.location = window.location.href + "&" + v_QueryString;
+</script><?php
     }
 
-    </script>';
-
-    }
-
-    $loginPageMsg = "";
+    $loginPageMsg = '';
     if (isset($_GET['Proto']) && isset($_GET['Path'])) {
         if (isset($_GET['timeout'])) {
             $loginPageMsg = "Your previous session timed out.  Please login again.";
         }
-        if (isset($sErrorText) <> '') {
+        if ($sErrorText != '') {
             $loginPageMsg = $sErrorText;
         }
     }
-    if ($loginPageMsg != "") { ?>
-        <div class="alert alert-warning"><?= $loginPageMsg ?></div>
-<?php  } ?>
 
-<form class="form-signin" role="form" method="post" name="LoginForm"
-    <?php echo "action=\"Default.php?Proto=".$_GET['Proto'].
+    if ($loginPageMsg != '') { ?>
+        <div class="alert alert-warning"><?= $loginPageMsg ?></div><?php
+    }
+
+?><form class="form-signin" role="form" method="post" name="LoginForm"
+    <?= "action=\"Default.php?Proto=".$_GET['Proto'].
     "&amp;Path=".rawurlencode($_GET['Path'])."\"" ?> >
      <div class="form-group has-feedback">
         <input type="text" id="UserBox" name="User" class="form-control" placeholder="Email/Username" required autofocus>
@@ -409,16 +411,18 @@ require ("Include/HeaderNotLoggedIn.php");
 
 <script language="JavaScript" type="text/JavaScript">
     document.LoginForm.User.focus();
-</script>
-<?php
-//
-// Basic sercurity checks:
-//
-// Check if https is required:
-// Verify that page has an authorized URL in the browser address bar.
-// Otherwise redirect to login page.
-// An array of authorized URL's is specified in Config.php ... $URL
-    if (isset($bLockURL) && ($bLockURL === TRUE)) {
+</script><?php
+
+    //
+    // Basic sercurity checks:
+    //
+    // Check if https is required:
+    // Verify that page has an authorized URL in the browser address bar.
+    // Otherwise redirect to login page.
+    // An array of authorized URL's is specified in Config.php ... $URL
+    //
+    if (isset($bLockURL) && ($bLockURL === TRUE))
+    {
         echo '
     <script language="javascript" type="text/javascript">
         v_test="FAIL"'; // Set "FAIL" to assume the URL is not allowed
@@ -426,14 +430,15 @@ require ("Include/HeaderNotLoggedIn.php");
         foreach ($URL as $value) { // Default.php is 11 characters
             $value = substr($value, 0, -11);
             echo '
-        if(window.location.href.indexOf("'.$value.'") == 0) v_test="PASS";';
+        if (window.location.href.indexOf("'.$value.'") == 0) v_test="PASS";';
         }
         echo '
         if (v_test == "FAIL") window.location="'.$URL[0].'";
     </script>';
     }
-// End of basic security checks
-
+    //
+    // End of basic security checks
+    //
 ?>
         <!--<a href="#">I forgot my password</a><br>
         <a href="register.html" class="text-center">Register a new membership</a>-->

@@ -46,8 +46,8 @@ if (empty($bSuppressSessionTests))  // This is used for the login page only.
         exit;
     }
 
-    // Basic security: If $sRootPath has changed we have changed databases without logging in 
-    // redirect to the login page 
+    // Basic security: If $sRootPath has changed we have changed databases without logging in
+    // redirect to the login page
     if ($_SESSION['sRootPath'] !== $sRootPath )
     {
         Redirect("Default.php");
@@ -76,12 +76,12 @@ if (empty($bSuppressSessionTests))  // This is used for the login page only.
 
     // Check if https is required
 
-    // Note: PHP has limited ability to access the address bar 
+    // Note: PHP has limited ability to access the address bar
     // url.  PHP depends on Apache or other web server
     // to provide this information.  The web server
     // may or may not be configured to pass the address bar url
     // to PHP.  As a workaround this security check is now performed
-    // by the browser using javascript.  The browser always has 
+    // by the browser using javascript.  The browser always has
     // access to the address bar url.  Search for basic security checks
     // in Include/Header-functions.php
 
@@ -231,8 +231,8 @@ function RedirectURL($sRelativeURL)
     global $sDocumentRoot;
 
     if (empty($_SESSION['sURLPath'])) {
-        $sErrorMessage = "Fatal Error: \$_SESSION['sURLPath'] is empty.<br> <a href='Default.php'>Click here to login</a>.\n";
-        die ($sErrorMessage);
+        header('Location: Default.php?timeout');
+        exit;
     }
 
     // Test if file exists before redirecting.  May need to remove
@@ -246,7 +246,7 @@ function RedirectURL($sRelativeURL)
 
     // The idea here is to get the file path into this form:
     //     $sFullPath = $sDocumentRoot.$sRootPath.$sPathExtension
-    // The Redirect URL is then in this form: 
+    // The Redirect URL is then in this form:
     //     $sRedirectURL = $_SESSION['sURLPath'].$sPathExtension
 
     $sFullPath = str_replace('\\','/',$sDocumentRoot.'/'.$sPathExtension);
@@ -520,7 +520,7 @@ function AddToPeopleCart($sID)
     // make sure the cart array exists
     if(isset($_SESSION['aPeopleCart']))
     {
-        if (!in_array($sID, $_SESSION['aPeopleCart'], false)) 
+        if (!in_array($sID, $_SESSION['aPeopleCart'], false))
         {
             $_SESSION['aPeopleCart'][] = $sID;
         }
@@ -533,7 +533,7 @@ function AddArrayToPeopleCart($aIDs)
 {
     if(is_array($aIDs)) // Make sure we were passed an array
     {
-        foreach($aIDs as $value) 
+        foreach($aIDs as $value)
         {
             AddToPeopleCart($value);
         }
@@ -541,7 +541,7 @@ function AddArrayToPeopleCart($aIDs)
 }
 
 
-// Add group to cart 
+// Add group to cart
 function AddGroupToPeopleCart($iGroupID)
 {
     //Get all the members of this group
@@ -592,7 +592,7 @@ function RemoveArrayFromPeopleCart($aIDs)
 function RemoveGroupFromPeopleCart($iGroupID)
 {
     //Get all the members of this group
-    $sSQL = "SELECT p2g2r_per_ID FROM person2group2role_p2g2r " . 
+    $sSQL = "SELECT p2g2r_per_ID FROM person2group2role_p2g2r " .
             "WHERE p2g2r_grp_ID = " . $iGroupID;
     $rsGroupMembers = RunQuery($sSQL);
 
@@ -614,7 +614,7 @@ function FormatDate($dDate, $bWithTime=FALSE)
 {
     if ($dDate == '' || $dDate == '0000-00-00 00:00:00' || $dDate == '0000-00-00')
         return ('');
-    
+
     if (strlen($dDate)==10) // If only a date was passed append time
         $dDate = $dDate . ' 12:00:00';  // Use noon to avoid a shift in daylight time causing
                                         // a date change.
@@ -623,14 +623,14 @@ function FormatDate($dDate, $bWithTime=FALSE)
         return ('');
 
     // Verify it is a valid date
-    $sScanString = substr($dDate,0,10); 
+    $sScanString = substr($dDate,0,10);
     list($iYear, $iMonth, $iDay) = sscanf($sScanString,"%04d-%02d-%02d");
 
     if ( !checkdate($iMonth,$iDay,$iYear) )
         return ('Unknown');
 
     // PHP date() function is not used because it is only robust for dates between
-    // 1970 and 2038.  This is a problem on systems that are limited to 32 bit integers.  
+    // 1970 and 2038.  This is a problem on systems that are limited to 32 bit integers.
     // To handle a much wider range of dates use MySQL date functions.
 
     $sSQL = "SELECT DATE_FORMAT('$dDate', '%b') as mn, "
@@ -645,7 +645,7 @@ function FormatDate($dDate, $bWithTime=FALSE)
         $sAMPM = gettext('pm');
         if ($h > 12) {
             $h = $h-12;
-        } 
+        }
     } else {
         $sAMPM = gettext('am');
         if ($h == 0) {
@@ -814,7 +814,7 @@ function FormatAge($Month,$Day,$Year,$Flags)
     if (($Flags & 1) ) //||!$_SESSION['bSeePrivacyData']
     {
         return;
-    
+
     }
 
     if ($Year > 0)
@@ -1005,23 +1005,23 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
     switch ($type)
     {
         // Handler for boolean fields
-        case 1: 
+        case 1:
         	echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"true\"";
-        	if ($data == 'true') { 
-        		echo " checked"; 
-        	} 
-        	echo ">".gettext("Yes"); 
+        	if ($data == 'true') {
+        		echo " checked";
+        	}
+        	echo ">".gettext("Yes");
         	echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"false\"";
-        	if ($data == 'false') { 
-        		echo " checked"; 
-        	} 
-        	echo ">".gettext("No"); 
+        	if ($data == 'false') {
+        		echo " checked";
+        	}
+        	echo ">".gettext("No");
         	echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"\"";
-        	if (strlen($data) == 0) { 
-        		echo " checked"; 
-        	} 
-        	echo ">".gettext("Unknown"); 
-        	break; 
+        	if (strlen($data) == 0) {
+        		echo " checked";
+        	}
+        	echo ">".gettext("Unknown");
+        	break;
         // Handler for date fields
         case 2:
             echo "<input class=\"form-control\" type=\"text\" id=\"" . $fieldname . "\" Name=\"" . $fieldname . "\" maxlength=\"10\" size=\"15\" value=\"" . $data . "\">&nbsp;<input type=\"image\" class=\"form-control\" onclick=\"return showCalendar('$fieldname', 'y-mm-dd');\" src=\"Images/calendar.gif\"> " . gettext("[format: YYYY-MM-DD]");
@@ -1219,13 +1219,13 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = "future") {
         return $sScanString;
     } else {
         return FALSE;
-    }       
+    }
 
 }
 
 function parseAndValidateDate($data, $locale = "US", $pasfut = "future") {
 // This function was written because I had no luck finding a PHP
-// function that would reliably parse a human entered date string for 
+// function that would reliably parse a human entered date string for
 // dates before 1/1/1970 or after 1/19/2038 on any Operating System.
 //
 // This function has hooks for US English M/D/Y format as well as D/M/Y.  The
@@ -1243,15 +1243,15 @@ function parseAndValidateDate($data, $locale = "US", $pasfut = "future") {
 
 
     // Determine if the delimiter is "-" or "/".  The delimiter must appear
-    // twice or a FALSE will be returned. 
+    // twice or a FALSE will be returned.
 
-    if (substr_count($data,'-') == 2) { 
+    if (substr_count($data,'-') == 2) {
         // Assume format is Y-M-D
         $iFirstDelimiter = strpos($data,'-');
         $iSecondDelimiter = strpos($data,'-',$iFirstDelimiter+1);
 
         // Parse the year.
-        $sYear = substr($data, 0, $iFirstDelimiter);        
+        $sYear = substr($data, 0, $iFirstDelimiter);
 
         // Parse the month
         $sMonth = substr($data, $iFirstDelimiter+1, $iSecondDelimiter-$iFirstDelimiter-1);
@@ -1262,13 +1262,13 @@ function parseAndValidateDate($data, $locale = "US", $pasfut = "future") {
         // Put into YYYY-MM-DD form
         return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
 
-    } elseif ((substr_count($data,'/') == 2) && ($locale == "US")) { 
+    } elseif ((substr_count($data,'/') == 2) && ($locale == "US")) {
         // Assume format is M/D/Y
         $iFirstDelimiter = strpos($data,'/');
         $iSecondDelimiter = strpos($data,'/',$iFirstDelimiter+1);
 
         // Parse the month
-        $sMonth = substr($data, 0, $iFirstDelimiter);       
+        $sMonth = substr($data, 0, $iFirstDelimiter);
 
         // Parse the day
         $sDay = substr($data, $iFirstDelimiter+1, $iSecondDelimiter-$iFirstDelimiter-1);
@@ -1279,13 +1279,13 @@ function parseAndValidateDate($data, $locale = "US", $pasfut = "future") {
         // Put into YYYY-MM-DD form
         return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
 
-    } elseif (substr_count($data,'/') == 2) { 
+    } elseif (substr_count($data,'/') == 2) {
         // Assume format is D/M/Y
         $iFirstDelimiter = strpos($data,'/');
         $iSecondDelimiter = strpos($data,'/',$iFirstDelimiter+1);
 
         // Parse the day
-        $sDay = substr($data, 0, $iFirstDelimiter);     
+        $sDay = substr($data, 0, $iFirstDelimiter);
 
         // Parse the month
         $sMonth = substr($data, $iFirstDelimiter+1, $iSecondDelimiter-$iFirstDelimiter-1);
@@ -1299,19 +1299,19 @@ function parseAndValidateDate($data, $locale = "US", $pasfut = "future") {
     }
 
     // If we made it this far it means the above logic was unable to parse the date.
-    // Now try to parse using the function strtotime().  The strtotime() function does 
+    // Now try to parse using the function strtotime().  The strtotime() function does
     // not gracefully handle dates outside the range 1/1/1970 to 1/19/2038.  For this
     // reason consider strtotime() as a function of last resort.
     $timeStamp = strtotime($data);
     if ($timeStamp == FALSE || $timeStamp <= 0) {
-        // Some Operating Sytems and older versions of PHP do not gracefully handle 
+        // Some Operating Sytems and older versions of PHP do not gracefully handle
         // negative timestamps.  Bail if the timestamp is negative.
         return FALSE;
     }
 
     // Now use the date() function to convert timestamp into YYYY-MM-DD
     $dateString = date("Y-m-d", $timeStamp);
-    
+
     if (strlen($dateString) != 10) {
         // Common sense says we have a 10 charater string.  If not, something is wrong
         // and it's time to bail.
@@ -1336,7 +1336,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
     global $aLocaleInfo;
     $bErrorFlag = false;
     $aErrors[$col_Name] = "";
-    
+
     switch ($type)
     {
         // Validate a date field
@@ -1559,7 +1559,7 @@ function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSepar
     {
         $birthYear = "1000";
     }
-    else 
+    else
     {
         $birthYear = $per_BirthYear;
     }
@@ -1589,7 +1589,7 @@ function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSepar
             }
         }
     }
-    elseif (is_numeric($birthYear) && $birthYear != 1000 )  //Person Would Like Their Age Hidden 
+    elseif (is_numeric($birthYear) && $birthYear != 1000 )  //Person Would Like Their Age Hidden
     {
         $dBirthDate = $birthYear;
     }
@@ -1724,7 +1724,7 @@ function createTimeDropdown($start,$stop,$mininc,$hoursel,$minsel)
     }
 }
 
-// Figure out the class ID for "Member", should be one (1) unless they have been playing with the 
+// Figure out the class ID for "Member", should be one (1) unless they have been playing with the
 // classification manager.
 function FindMemberClassID ()
 {
@@ -1762,7 +1762,7 @@ function MySQLquote ($sfield)
     else {
         if ((substr($sfield, 0, 1) == "'") && (substr($sfield, strlen($sfield)-1, 1)) == "'")
             return $sfield;
-        else 
+        else
             return "'" . $sfield . "'";
     }
 }
