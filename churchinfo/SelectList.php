@@ -1063,17 +1063,17 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 	}?>
 	</td>
     <td>
-	<? if ($_SESSION['bEditRecords']) {?>
+	<?php if ($_SESSION['bEditRecords']) {?>
 		<a href="PersonEditor.php?PersonID=<?= $per_ID ?>">
 		    <span class="fa-stack">
                 <i class="fa fa-square fa-stack-2x"></i>
                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
             </span>
         </a>
-	<? }?>
+	<?php }?>
     </td>
 	<td>
-	<? if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
+	<?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
 
 		// Add to cart option
 		if (mb_substr($sRedirect, -1, 1) == '?')
@@ -1089,7 +1089,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
             </span>
         </a>
     </td>
-	<? } else {
+	<?php } else {
 		// Remove from cart option
 		if (mb_substr($sRedirect, -1, 1) == '?')
 			echo "<a href=\"" .$sRedirect. "RemoveFromPeopleCart=" .$per_ID. "\">";
@@ -1103,7 +1103,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
                 <i class="fa fa-remove fa-stack-1x fa-inverse"></i>
             </span>
         </a>
-	<? }
+	<?php }
 
 	if ($iMode == 1) {
 		echo "<td><a href=\"PrintView.php?PersonID=" .$per_ID. "\">"; ?>
@@ -1112,7 +1112,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
                 <i class="fa fa-print fa-stack-1x fa-inverse"></i>
             </span>
         </a>
-	<? } else {
+	<?php } else {
 		echo "<td><a href=\"PersonToGroup.php?PersonID=" .$per_ID;
 		echo "&amp;prevquery=" . rawurlencode($_SERVER["QUERY_STRING"]) . "\">";
 		echo gettext("Add to Group") . "</a></td>";

@@ -493,7 +493,7 @@ if ($sPhoneLink)
 
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title"><? echo gettext('Group Members:')?></h3>
+        <h3 class="box-title"><?php echo gettext('Group Members:')?></h3>
     </div>
     <div class="box-body">
 <!-- START GROUP MEMBERS LISTING for group $iGroupID; -->

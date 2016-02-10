@@ -523,4 +523,4 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
     <!-- /.box-body -->
 </div>
 <!-- /.box -->
-<? require 'Include/Footer.php'; ?>
+<?php require 'Include/Footer.php'; ?>
