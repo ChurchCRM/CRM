@@ -31,9 +31,9 @@ require_once dirname(__FILE__).'/../service/PersonService.php';
 
 function Header_head_metatag() {
 global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
-global $sPageTitle, $sURLPath;
+global $sPageTitle, $sRootPath;
 
-$sURLPath = $_SESSION['sURLPath'];
+$sRootPath = $_SESSION['sRootPath'];
 ?>
     <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
     <title>ChurchCRM: <?= $sPageTitle ?></title>
@@ -42,9 +42,9 @@ $sURLPath = $_SESSION['sURLPath'];
 
 function Header_body_scripts() {
 global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage,
-$bLockURL, $URL, $sURLPath;
+$bLockURL, $URL, $sRootPath;
 
-$sURLPath = $_SESSION['sURLPath'];
+$sRootPath = $_SESSION['sRootPath'];
 //
 // Basic sercurity checks:
 //
@@ -69,8 +69,8 @@ $sURLPath = $_SESSION['sURLPath'];
 // End of basic security checks
  ?>
 
-    <script type="text/javascript" src="<?= $sURLPath."/" ?>Include/jscalendar/calendar.js"></script>
-    <script type="text/javascript" src="<?= $sURLPath."/" ?>Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
+    <script type="text/javascript" src="<?= $sRootPath."/" ?>Include/jscalendar/calendar.js"></script>
+    <script type="text/javascript" src="<?= $sRootPath."/" ?>Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
 
     <script language="javascript" type="text/javascript">
 
@@ -163,10 +163,10 @@ function GetSecuritySettings() {
     $aSecurityList[] = "bCanvasser";
     $aSecurityList[] = "bAddEvent";
     $aSecurityList[] = "bSeePrivacyData";
-    
+
     $sSQL = "SELECT DISTINCT ucfg_name FROM userconfig_ucfg WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY' ORDER by ucfg_id";
     $rsSecGrpList = RunQuery($sSQL);
-            
+
     while ($aRow = mysql_fetch_array($rsSecGrpList))
     {
         $aSecurityList[] = $aRow['ucfg_name'];
@@ -186,9 +186,9 @@ function GetSecuritySettings() {
 
 function addMenu($menu) {
     global $security_matrix;
-    
+
     $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text, session_var_in_uri, url_parm_name, security_grp, icon FROM menuconfig_mcf WHERE parent = '$menu' AND active=1 ".$security_matrix." ORDER BY sortorder";
-    
+
     $rsMenu = RunQuery($sSQL);
     $item_cnt = mysql_num_rows($rsMenu);
     $idx = 1;
@@ -206,17 +206,17 @@ function addMenu($menu) {
 }
 
 function addMenuItem($aMenu,$mIdx) {
-global $security_matrix, $sURLPath;
-	$sURLPath = $_SESSION['sURLPath'];
+global $security_matrix, $sRootPath;
+	$sRootPath = $_SESSION['sRootPath'];
 
-    $link = ($aMenu['uri'] == "") ? "" : $sURLPath."/".$aMenu['uri'];
+    $link = ($aMenu['uri'] == "") ? "" : $sRootPath."/".$aMenu['uri'];
     $text = $aMenu['statustext'];
     if (!is_null($aMenu['session_var'])) {
         if (($link > "") && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
             if (strstr($link, "?")&&true) {
                 $cConnector = "&";
             } else {
-                $cConnector = "?"; 
+                $cConnector = "?";
             }
             $link .= $cConnector.$aMenu['url_parm_name']."=".$_SESSION[$aMenu['session_var']];
         }
@@ -265,7 +265,7 @@ global $security_matrix, $sURLPath;
                     $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
                     $rsSundaySchoolClasses = RunQuery($sSQL);
                     while ($aRow = mysql_fetch_array($rsSundaySchoolClasses)) {
-                        echo "<li><a href='".$sURLPath."/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
+                        echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
                     }
                 }
         }
@@ -285,9 +285,9 @@ global $security_matrix, $sURLPath;
 
 function Header_body_menu() {
     global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
-    global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
+    global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
 
-	$sURLPath = $_SESSION['sURLPath'];
+	$sRootPath = $_SESSION['sRootPath'];
 
     $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
 
@@ -305,7 +305,7 @@ function Header_body_menu() {
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="<?= $sURLPath?>/Menu.php" class="logo">
+        <a href="<?= $sRootPath?>/Menu.php" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>C</b>RM</span>
             <!-- logo for regular state and mobile devices -->
@@ -323,7 +323,7 @@ function Header_body_menu() {
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown settings-dropdown">
-                        <a href="<?= $sURLPath."/" ?>CartView.php">
+                        <a href="<?= $sRootPath . "/" ?>CartView.php">
                             <i class="fa fa-shopping-cart"></i>
                             <span class="label label-success"><?= count($_SESSION['aPeopleCart'])?></span>
                         </a>
@@ -364,10 +364,10 @@ function Header_body_menu() {
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="<?= $sURLPath."/" ?>UserPasswordChange.php" class="btn btn-default btn-flat">Change Password</a>
+                                    <a href="<?= $sRootPath . "/" ?>UserPasswordChange.php" class="btn btn-default btn-flat">Change Password</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="<?= $sURLPath."/" ?>SettingsIndividual.php" class="btn btn-default btn-flat">My Settings</a>
+                                    <a href="<?= $sRootPath . "/" ?>SettingsIndividual.php" class="btn btn-default btn-flat">My Settings</a>
                                 </div>
                             </li>
                         </ul>
@@ -390,7 +390,7 @@ function Header_body_menu() {
                         </a>
                     </li>
                     <li class="hidden-xxs">
-                        <a href="<?= $sURLPath."/" ?>Default.php?Logoff=True">
+                        <a href="<?= $sRootPath . "/" ?>Default.php?Logoff=True">
                             <i class="fa fa-power-off"></i>
                         </a>
                     </li>
@@ -415,7 +415,7 @@ function Header_body_menu() {
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="<?= $sURLPath."/" ?>Menu.php">
+                            <a href="<?= $sRootPath . "/" ?>Menu.php">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
@@ -434,7 +434,7 @@ function Header_body_menu() {
                         }?>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="<?= $sURLPath."/Menu.php" ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="<?= $sRootPath . "/Menu.php" ?>"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li class="active"><?= $sPageTitle ?></li>
                     </ol>
                 </section>
@@ -459,7 +459,7 @@ function create_side_nav($menu) {
 }
 function addSection($menu) {
     global $cnInfoCentral;
-    
+
     $security_matrix = " AND (security_grp = 'bALL'";
     if ($_SESSION['bAdmin']) {
         $security_matrix .= " OR security_grp = 'bAdmin'";
@@ -478,11 +478,11 @@ function addSection($menu) {
     }
     $security_matrix .= ")";
     $query = "SELECT name, ismenu, content, uri, statustext, session_var, session_var_in_text, session_var_in_uri, url_parm_name, security_grp FROM menuconfig_mcf WHERE parent = '$menu' AND active=1 ".$security_matrix." ORDER BY sortorder";
-    
+
     $rsMenu = mysql_query($query, $cnInfoCentral);
     $item_cnt = mysql_num_rows($rsMenu);
     $ptr = 1;
-    while ($aRow = mysql_fetch_array($rsMenu)) {    
+    while ($aRow = mysql_fetch_array($rsMenu)) {
         if (isset($aRow['admin_only']) & !$_SESSION['bAdmin']) {
         // hide admin menu
         } else {
@@ -494,9 +494,9 @@ function addSection($menu) {
 
 function addEntry($aMenu) {
 
-$sURLPath = $_SESSION['sURLPath'];
+$sRootPath = $_SESSION['sRootPath'];
 
-    $link = ($aMenu['uri'] == "") ? "" : $sURLPath."/".$aMenu['uri'];
+    $link = ($aMenu['uri'] == "") ? "" : $sRootPath."/".$aMenu['uri'];
     $text = $aMenu['statustext'];
     $content = $aMenu['content'];
     if (!is_null($aMenu['session_var'])) {

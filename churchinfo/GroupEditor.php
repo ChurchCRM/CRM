@@ -43,12 +43,12 @@ $rsGroupRoleSeed = $groupService->getGroupRoleTemplateGroups();     //Group Grou
 require "Include/Header.php";
 
 ?>
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 <!-- GROUP SPECIFIC PROPERTIES MODAL-->
      <div class="modal fade" id="groupSpecificPropertiesModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
@@ -186,7 +186,7 @@ require "Include/Header.php";
     var roleCount = groupRoleData.length; 
     var groupID=<?php echo $iGroupID?>;
 </script>
-<script src="<?= $sURLPath; ?>/js/GroupEditor.js"></script>
+<script src="<?= $sRootPath; ?>/js/GroupEditor.js"></script>
 <?php
     require "Include/Footer.php";
 ?>

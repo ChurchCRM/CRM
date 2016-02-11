@@ -12,7 +12,7 @@ class PersonService {
     private $personQuery;
 
     public function __construct() {
-        $this->baseURL = $_SESSION['sURLPath'];
+        $this->baseURL = $_SESSION['sRootPath'];
         // $this->personQuery = = new \ChurchCRM\members\PersonQuery();
     }
 

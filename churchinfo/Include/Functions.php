@@ -224,13 +224,16 @@ if (isset($_POST["BulkAddToCart"])) {
 // Some very basic functions that all scripts use
 //
 
-function RedirectURL($sRelativeURL)
 // Convert a relative URL into an absolute URL and return absolute URL.
+function RedirectURL($sRelativeURL)
 {
     global $sRootPath;
     global $sDocumentRoot;
 
-    if (empty($_SESSION['sURLPath'])) {
+    if (!isset($_SESSION['sRootPath']))
+    {
+      echo "Fuck, session root path not set";
+      exit;
         header('Location: Default.php?timeout');
         exit;
     }
@@ -247,19 +250,19 @@ function RedirectURL($sRelativeURL)
     // The idea here is to get the file path into this form:
     //     $sFullPath = $sDocumentRoot.$sRootPath.$sPathExtension
     // The Redirect URL is then in this form:
-    //     $sRedirectURL = $_SESSION['sURLPath'].$sPathExtension
+    //     $sRedirectURL = $_SESSION['sRootPath'].$sPathExtension
 
     $sFullPath = str_replace('\\','/',$sDocumentRoot.'/'.$sPathExtension);
 
     // With the query string removed we can test if file exists
     if (file_exists($sFullPath) && is_readable($sFullPath)) {
-        return ($_SESSION['sURLPath'] .'/' . $sRelativeURL);
+        return ($_SESSION['sRootPath'] .'/' . $sRelativeURL);
     } else {
         $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n";
         $sErrorMessage .= "\$sPathExtension = $sPathExtension<br>\n";
         $sErrorMessage .= "\$sDocumentRoot = $sDocumentRoot<br>\n";
-        $sErrorMessage .= "\$_SESSION['sURLPath'] = ";
-        $sErrorMessage .= $_SESSION['sURLPath'] . "<br>\n";
+        $sErrorMessage .= "\$_SESSION['sRootPath'] = ";
+        $sErrorMessage .= $_SESSION['sRootPath'] . "<br>\n";
 
         die ($sErrorMessage);
     }

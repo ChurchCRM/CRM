@@ -65,12 +65,12 @@ require "../Include/Header.php";
 ?>
 
     
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
     <div class="btn-group pull-right clearfix">
         <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>
@@ -259,13 +259,13 @@ function implodeUnique($array, $withQuotes) {
     </div><!-- /.modal -->
 
     <!-- FLOT CHARTS -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+    <script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
     <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+    <script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
     <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
+    <script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+    <script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {

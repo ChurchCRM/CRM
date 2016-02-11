@@ -34,15 +34,15 @@
 	</div><!-- ./wrapper -->
 
 	<!-- Bootstrap 3.3.5 -->
-	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/bootstrap/js/bootstrap.min.js"></script>
 	<!-- SlimScroll -->
-	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 	<!-- FastClick -->
-	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/fastclick/fastclick.js"></script>
+	<script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/fastclick/fastclick.js"></script>
 	<!-- AdminLTE App -->
-	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/dist/js/app.min.js"></script>
+	<script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/dist/js/app.min.js"></script>
 
-	<script src="<?= $sURLPath; ?>/js/Footer.js"></script>
+	<script src="<?= $sRootPath; ?>/js/Footer.js"></script>
 
 </body>
 </html>

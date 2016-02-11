@@ -116,23 +116,25 @@ if (isset($_POST['User']) && $sErrorText == '') {
 if ($iUserID > 0)
 {
     // Get the information for the selected user
-    $sSQL = "SELECT * FROM user_usr WHERE usr_per_ID ='$iUserID'";
+    $sSQL = "SELECT * FROM user_usr WHERE usr_per_ID = '$iUserID'";
     extract(mysql_fetch_array(RunQuery($sSQL)));
 
-    $sSQL = "SELECT * FROM person_per WHERE per_ID ='$iUserID'";
+    $sSQL = "SELECT * FROM person_per WHERE per_ID = '$iUserID'";
     extract(mysql_fetch_array(RunQuery($sSQL)));
 
     $bPasswordMatch = FALSE;
 
     // Check the user password
-    $sPasswordHashSha256 = hash ("sha256", $_POST['Password'].$iUserID);
+    $sPasswordHashSha256 = hash("sha256", $_POST['Password'].$iUserID);
 
     // Block the login if a maximum login failure count has been reached
-    if ($iMaxFailedLogins > 0 && $usr_FailedLogins >= $iMaxFailedLogins) {
-
+    if ($iMaxFailedLogins > 0 && $usr_FailedLogins >= $iMaxFailedLogins)
+    {
         $sErrorText = '<br>' . gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
-    } // Does the password match?
-    elseif ($usr_Password != $sPasswordHashSha256) {
+    }
+    // Does the password match?
+    elseif ($usr_Password != $sPasswordHashSha256)
+    {
         // Increment the FailedLogins
         $sSQL = 'UPDATE user_usr SET usr_FailedLogins = usr_FailedLogins + 1 '.
                 "WHERE usr_per_ID ='$iUserID'";
@@ -140,8 +142,9 @@ if ($iUserID > 0)
 
         // Set the error text
         $sErrorText = '&nbsp;' . gettext('Invalid login or password');
-    } else {
-
+    }
+    else
+    {
         // Set the LastLogin and Increment the LoginCount
         $sSQL = "UPDATE user_usr SET usr_LastLogin = NOW(), usr_LoginCount = usr_LoginCount + 1, usr_FailedLogins = 0 WHERE usr_per_ID ='$iUserID'";
         RunQuery($sSQL);
@@ -165,7 +168,8 @@ if ($iUserID > 0)
         $_SESSION['sEmailAddress'] = $per_Email;
 
         // If user has administrator privilege, override other settings and enable all permissions.
-        if ($usr_Admin) {
+        if ($usr_Admin)
+        {
             $_SESSION['bAddRecords'] = true;
             $_SESSION['bEditRecords'] = true;
             $_SESSION['bDeleteRecords'] = true;
@@ -177,9 +181,9 @@ if ($iUserID > 0)
             $_SESSION['bCanvasser'] = true;
             $_SESSION['bAdmin'] = true;
         }
-
         // Otherwise, set the individual permissions.
-        else {
+        else
+        {
             // Set the Add permission
             $_SESSION['bAddRecords'] = $usr_AddRecords;
 
@@ -247,15 +251,11 @@ if ($iUserID > 0)
         // Set the Root Path ... used in basic security check
         $_SESSION['sRootPath'] = $sRootPath;
 
-        // Set the URL Path
-        $_SESSION['sURLPath'] = $_POST['sURLPath'];
-
         // If PHP's magic quotes setting is turned off, we want to use a workaround to ensure security.
         if (function_exists('get_magic_quotes_gpc'))
             $_SESSION['bHasMagicQuotes'] = get_magic_quotes_gpc();
         else
             $_SESSION['bHasMagicQuotes'] = 0;
-
 
         // Pledge and payment preferences
         $_SESSION['sshowPledges'] = $usr_showPledges;
@@ -280,31 +280,33 @@ if ($iUserID > 0)
         $_SESSION['bSearchFamily'] = $usr_SearchFamily;
 
         if (isset($bEnableMRBS) && $bEnableMRBS) {
-		   	$_SESSION["UserName"] = $UserName; // set the session variable recognized by MRBS
-		   	// Update the MRBS user record to match this ChurchInfo user
-		   	$iMRBSLevel = 0;
-		   	if ($usr_AddRecords)
-		   		$iMRBSLevel = 1;
-        	if ($usr_Admin)
-		   		$iMRBSLevel = 2;
+            // set the session variable recognized by MRBS
+            $_SESSION["UserName"] = $UserName;
+
+            // Update the MRBS user record to match this ChurchInfo user
+            $iMRBSLevel = 0;
+            if ($usr_AddRecords) $iMRBSLevel = 1;
+            if ($usr_Admin)      $iMRBSLevel = 2;
+
             $sSQL = "INSERT INTO mrbs_users (id, level, name, email) VALUES ('$iUserID', '$iMRBSLevel', '$UserName', '$per_Email') ON DUPLICATE KEY UPDATE level='$iMRBSLevel', name='$UserName',email='$per_Email'";
-        	RunQuery($sSQL);
+            RunQuery($sSQL);
         }
 
-        if (isset($bEnableWebCalendar) && $bEnableWebCalendar) {
-        	$sAdmin = ($usr_Admin ? 'Y' : 'N');
-		    $GLOBALS['login'] = $UserName;
-		    $GLOBALS['firstname'] = $per_FirstName;
-    		$GLOBALS['lastname'] = $per_LastName;
-    		$GLOBALS['is_admin'] = $sAdmin;
-    		$GLOBALS['email'] = $per_Email;
-		    $GLOBALS['fullname'] = "$per_FirstName $per_LastName";
-		    $GLOBALS['enabled'] = 1;
+        if (isset($bEnableWebCalendar) && $bEnableWebCalendar)
+        {
+            $sAdmin = ($usr_Admin ? 'Y' : 'N');
+            $GLOBALS['login'] = $UserName;
+            $GLOBALS['firstname'] = $per_FirstName;
+            $GLOBALS['lastname'] = $per_LastName;
+            $GLOBALS['is_admin'] = $sAdmin;
+            $GLOBALS['email'] = $per_Email;
+            $GLOBALS['fullname'] = "$per_FirstName $per_LastName";
+            $GLOBALS['enabled'] = 1;
 
-		    $_SESSION['webcal_login'] = $UserName;
+            $_SESSION['webcal_login'] = $UserName;
 
-        	$sSQL = "INSERT INTO webcal_user (cal_login, cal_firstname, cal_lastname, cal_is_admin, cal_email) VALUES ('$UserName', '". mysql_real_escape_string ($per_FirstName)." ', '".mysql_real_escape_string ($per_LastName)."', '$sAdmin', '$per_Email') ON DUPLICATE KEY UPDATE cal_login='$UserName', cal_firstname='".mysql_real_escape_string ($per_FirstName)."', cal_lastname='".mysql_real_escape_string ($per_LastName)."',cal_is_admin='$sAdmin', cal_email='$per_Email'";
-        	RunQuery($sSQL);
+            $sSQL = "INSERT INTO webcal_user (cal_login, cal_firstname, cal_lastname, cal_is_admin, cal_email) VALUES ('$UserName', '". mysql_real_escape_string ($per_FirstName)." ', '".mysql_real_escape_string ($per_LastName)."', '$sAdmin', '$per_Email') ON DUPLICATE KEY UPDATE cal_login='$UserName', cal_firstname='".mysql_real_escape_string ($per_FirstName)."', cal_lastname='".mysql_real_escape_string ($per_LastName)."',cal_is_admin='$sAdmin', cal_email='$per_Email'";
+            RunQuery($sSQL);
         }
 
         // Redirect to the Menu
@@ -312,10 +314,12 @@ if ($iUserID > 0)
         exit;
     }
 }
+
 // Turn ON output buffering
 ob_start();
-$sPageTitle = "ChurchCRM - Login";
+
 // Set the page title and include HTML header
+$sPageTitle = "ChurchCRM - Login";
 require ("Include/HeaderNotLoggedIn.php");
 ?>
 
@@ -328,60 +332,21 @@ require ("Include/HeaderNotLoggedIn.php");
         <p class="login-box-msg"><?= gettext('Please Login'); ?></p>
 
 <?php
-// Show the login screen if the URL protocol and path have been
-// returned by the browser in a query string
-
-    if (empty($_GET['Proto']) || empty($_GET['Path'])) {
-?><script language="javascript" type="text/javascript">
-    var error_page1="http://www.churchcrm.io";
-    var error_page2="http://www.churchcrm.io";
-
-    if (window.location.href.indexOf(":") == 5)
-    {
-        v_Proto = "https";
-        v_Path = window.location.href.substring(8);
-    }
-    else if (window.location.href.indexOf(":") == 4)
-    {
-        v_Proto = "http";
-        v_Path = window.location.href.substring(7);
-    }
-    else
-        window.location = error_page1;
-
-    v_index = v_Path.toLowerCase().indexOf("default.php") - 1;
-    if (v_index < 0)
-        window.location = error_page2;
-
-    v_Path=v_Path.substring(0, v_index);
-    v_Path=encodeURIComponent(v_Path);
-    v_QueryString = "Proto=" + v_Proto + "&Path=" + v_Path;
-
-    if (window.location.href.indexOf("?") < 0)
-        window.location = window.location.href + "?" + v_QueryString;
-    else
-        window.location = window.location.href + "&" + v_QueryString;
-</script><?php
-    }
 
     $loginPageMsg = '';
-    if (isset($_GET['Proto']) && isset($_GET['Path'])) {
-        if (isset($_GET['timeout'])) {
-            $loginPageMsg = "Your previous session timed out.  Please login again.";
-        }
-        if ($sErrorText != '') {
-            $loginPageMsg = $sErrorText;
-        }
+    if (isset($_GET['timeout'])) {
+        $loginPageMsg = "Your previous session timed out.  Please login again.";
+    }
+    if ($sErrorText != '') {
+        $loginPageMsg = $sErrorText;
     }
 
     if ($loginPageMsg != '') { ?>
         <div class="alert alert-warning"><?= $loginPageMsg ?></div><?php
     }
 
-?><form class="form-signin" role="form" method="post" name="LoginForm"
-    <?= "action=\"Default.php?Proto=".$_GET['Proto'].
-    "&amp;Path=".rawurlencode($_GET['Path'])."\"" ?> >
-     <div class="form-group has-feedback">
+?><form class="form-signin" role="form" method="post" name="LoginForm" action="Default.php">
+    <div class="form-group has-feedback">
         <input type="text" id="UserBox" name="User" class="form-control" placeholder="Email/Username" required autofocus>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
     </div>
@@ -402,11 +367,6 @@ require ("Include/HeaderNotLoggedIn.php");
             <button type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext('Login') ?></button>
         </div>
     </div>
-    <?php
-        $sURLPath = $_GET['Proto'] . "://" . $_GET['Path'];
-        setcookie("URLPath", $sURLPath);
-    ?>
-    <input type="hidden" name="sURLPath" value="<?= $sURLPath ?>">
 </form>
 
 <script language="JavaScript" type="text/JavaScript">
@@ -414,7 +374,7 @@ require ("Include/HeaderNotLoggedIn.php");
 </script><?php
 
     //
-    // Basic sercurity checks:
+    // Basic security checks:
     //
     // Check if https is required:
     // Verify that page has an authorized URL in the browser address bar.
@@ -423,19 +383,29 @@ require ("Include/HeaderNotLoggedIn.php");
     //
     if (isset($bLockURL) && ($bLockURL === TRUE))
     {
-        echo '
-    <script language="javascript" type="text/javascript">
-        v_test="FAIL"'; // Set "FAIL" to assume the URL is not allowed
-                        // Set "PASS" if we learn it is allowed
-        foreach ($URL as $value) { // Default.php is 11 characters
-            $value = substr($value, 0, -11);
-            echo '
-        if (window.location.href.indexOf("'.$value.'") == 0) v_test="PASS";';
+        // get the URL of this page
+        $currentURL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+        // chop off the query string
+        $currentURL = explode('?', $currentURL)[0];
+
+        // check if this matches any one of teh whitelisted login URLS
+        $validURL = false;
+        foreach ($URL as $value)
+            if ($value === $currentURL)
+            {
+                $validURL = true;
+                break;
+            }
+
+        // jump to the first whitelisted url (TODO: maybe pick a ranodm URL?)
+        if (!$validURL)
+        {
+          header('Location: '.$URL[0]);
+          exit;
         }
-        echo '
-        if (v_test == "FAIL") window.location="'.$URL[0].'";
-    </script>';
     }
+
     //
     // End of basic security checks
     //
