@@ -18,7 +18,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if (array_key_exists ('Action', $_POST) and $_POST['Action']== "Retrieve" && !empty($_POST['Event']))
+if (array_key_exists ('Action', $_POST) and $_POST['Action'] == "Retrieve" && !empty($_POST['Event']))
 {
     if ($_POST['Choice'] == "Attendees")
     {
@@ -73,7 +73,7 @@ require "Include/Header.php";
 ?>
 <table cellpadding="4" align="center" cellspacing="0" width="100%">
   <tr>
-    <td align="center"><input type="button" class="btn" <?= 'value="' . gettext("Back to Report Menu") . '"' ?> Name="Exit" onclick="javascript:document.location='ReportList.php';"></td>
+    <td align="center"><input type="button" class="btn" value="<?= gettext("Back to Report Menu") ?>" Name="Exit" onclick="javascript:document.location='ReportList.php';"></td>
   </tr>
 </table>
 <?php
@@ -115,7 +115,7 @@ if (array_key_exists ('Action', $_GET) and $_GET['Action'] == "List" && $numRows
 {
 ?>
        <caption>
-         <h3><?= gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events"))." in this category" ?></h3>
+           <h3><?= gettext("There ". ($numRows == 1 ? "is " . $numRows . " event" : "are " . $numRows . " events")) . " in this category" ?></h3>
        </caption>
          <tr class="TableHeader">
            <td width="33%"><strong><?= gettext("Event Title") ?></strong></td>
@@ -218,7 +218,7 @@ elseif ($_POST['Action']== "Retrieve" && $numRows > 0)
          ?>
          <tr class="<?= $sRowClass ?>">
            <td class="TextColumn"><?= FormatFullName($aTitle[$row],$aFistName[$row],$aMiddleName[$row],$aLastName[$row],$aSuffix[$row],3) ?></td>
-           <td class="TextColumn"><?php echo ($aEmail[$row] ? '<a href="mailto:'.$aEmail[$row].'" title="Send Email">'.$aEmail[$row].'</a>':'Not Available'); ?></td>
+           <td class="TextColumn"><?= $aEmail[$row] ? '<a href="mailto:'.$aEmail[$row].'" title="Send Email">'.$aEmail[$row].'</a>':'Not Available' ?></td>
            <td class="TextColumn"><?= ($aHomePhone[$row] ? $aHomePhone[$row]:'Not Available') ?></td>
 <?php
 // AddToCart call to go here
@@ -238,7 +238,6 @@ else
 <?php
 }
 ?>
-      </table>
-<?php
-require "Include/Footer.php";
-?>
+</table>
+
+<?php require "Include/Footer.php" ?>

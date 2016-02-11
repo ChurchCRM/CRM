@@ -28,49 +28,29 @@
 ******************************************************************************/
 
 require_once dirname(__FILE__).'/../service/PersonService.php';
+require_once 'Functions.php';
 
-function Header_head_metatag() {
-global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
-global $sPageTitle, $sRootPath;
+function Header_head_metatag()
+{
+    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
+    global $sPageTitle, $sRootPath;
 
-$sRootPath = $_SESSION['sRootPath'];
-?>
-    <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
-    <title>ChurchCRM: <?= $sPageTitle ?></title>
-<?php
+    if (strlen($sMetaRefresh))
+      echo $sMetaRefresh;
+
+    ?><title>ChurchCRM: <?= $sPageTitle ?></title><?php
 }
 
-function Header_body_scripts() {
-global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage,
-$bLockURL, $URL, $sRootPath;
+function Header_body_scripts()
+{
+    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
+    global $bLockURL, $URL, $sRootPath;
 
-$sRootPath = $_SESSION['sRootPath'];
-//
-// Basic sercurity checks:
-//
-// Check if https is required:
-// Verify that page has an authorized URL in the browser address bar.
-// Otherwise redirect to login page.
-// An array of authorized URL's is specified in Config.php ... $URL
-    if (isset($bLockURL) && ($bLockURL === TRUE)) {
-        echo '
-    <script language="javascript" type="text/javascript">
-        v_test="FAIL"'; // Set "FAIL" to assume the URL is not allowed
-                        // Set "PASS" if we learn it is allowed
-        foreach ($URL as $value) { // Default.php is 11 characters
-            $value = substr($value, 0, -11);
-            echo '
-        if(window.location.href.indexOf("'.$value.'") == 0) v_test="PASS";';
-        }
-        echo '
-        if (v_test == "FAIL") window.location="'.$URL[0].'";
-    </script>';
-    }
-// End of basic security checks
+    checkAllowedURL();
  ?>
 
-    <script type="text/javascript" src="<?= $sRootPath."/" ?>Include/jscalendar/calendar.js"></script>
-    <script type="text/javascript" src="<?= $sRootPath."/" ?>Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
+    <script type="text/javascript" src="<?= $sRootPath . "/" ?>Include/jscalendar/calendar.js"></script>
+    <script type="text/javascript" src="<?= $sRootPath . "/" ?>Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
 
     <script language="javascript" type="text/javascript">
 
@@ -150,7 +130,8 @@ $sRootPath = $_SESSION['sRootPath'];
 
 $security_matrix = GetSecuritySettings();
 
-function GetSecuritySettings() {
+function GetSecuritySettings()
+{
     $aSecurityList[] = "bAdmin";
     $aSecurityList[] = "bAddRecords";
     $aSecurityList[] = "bEditRecords";
@@ -305,7 +286,7 @@ function Header_body_menu() {
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="<?= $sRootPath?>/Menu.php" class="logo">
+        <a href="<?= $sRootPath ?>/Menu.php" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>C</b>RM</span>
             <!-- logo for regular state and mobile devices -->
@@ -325,7 +306,7 @@ function Header_body_menu() {
                     <li class="dropdown settings-dropdown">
                         <a href="<?= $sRootPath . "/" ?>CartView.php">
                             <i class="fa fa-shopping-cart"></i>
-                            <span class="label label-success"><?= count($_SESSION['aPeopleCart'])?></span>
+                            <span class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
                         </a>
 
                     </li>
@@ -431,7 +412,7 @@ function Header_body_menu() {
                         echo $sPageTitle."\n";
                         if ($sPageTitleSub != "") {
                             echo "<small>".$sPageTitleSub."</small>";
-                        }?>
+                        } ?>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="<?= $sRootPath . "/Menu.php" ?>"><i class="fa fa-dashboard"></i> Home</a></li>

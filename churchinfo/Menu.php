@@ -154,9 +154,9 @@ require 'Include/Header.php';
                         <tbody>
                         <?php while ($row = mysql_fetch_array($rsNewFamilies)) { ?>
                         <tr>
-                            <td><a href="FamilyView.php?FamilyID=<?php echo $row['fam_ID'];?>"><?php echo $row['fam_Name'];?></a></td>
-                            <td><?php if ($row['fam_Address1'] != "") { echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip']; }?></td>
-                            <td><?php echo FormatDate($row['fam_DateEntered'], false);?></td>
+                            <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
+                            <td><?php if ($row['fam_Address1'] != "") { echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip']; } ?></td>
+                            <td><?= FormatDate($row['fam_DateEntered'], false) ?></td>
                         </tr>
                         <?php } ?>
                         </tbody>
@@ -184,9 +184,9 @@ require 'Include/Header.php';
                         <tbody>
                         <?php while ($row = mysql_fetch_array($rsLastFamilies)) { ?>
                             <tr>
-                                <td><a href="FamilyView.php?FamilyID=<?php echo $row['fam_ID'];?>"><?php echo $row['fam_Name'];?></a></td>
-                                <td><?php echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip'];?></td>
-                                <td><?php echo FormatDate($row['fam_DateLastEdited'], false);?></td>
+                                <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID']; ?>"><?= $row['fam_Name']; ?></a></td>
+                                <td><?= $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip']; ?></td>
+                                <td><?= FormatDate($row['fam_DateLastEdited'], false); ?></td>
                             </tr>
                         <?php } ?>
                         </tbody>
@@ -214,10 +214,10 @@ require 'Include/Header.php';
                     <ul class="users-list clearfix">
                         <?php while ($row = mysql_fetch_array($rsNewPeople)) { ?>
                         <li>
-                            <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'];?>">
+                            <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID']; ?>">
                             <img src="<?= $personService->getPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="85" height="85" /><br/>
-                            <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1);?></a>
-                            <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false);?></span>
+                            <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1); ?></a>
+                            <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false); ?></span>
                         </li>
                         <?php } ?>
                     </ul>
@@ -243,10 +243,10 @@ require 'Include/Header.php';
                     <ul class="users-list clearfix">
                         <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
                             <li>
-                                <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'];?>">
+                                <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID']; ?>">
                                 <img src="<?= $personService->getPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="85" height="85" /><br/>
-                                <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1);?></a>
-                                <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false);?></span>
+                                <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1); ?></a>
+                                <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false); ?></span>
                             </li>
                         <?php } ?>
                     </ul>
@@ -257,7 +257,4 @@ require 'Include/Header.php';
     </div>
 </div>
 
-
-<?php
-require 'Include/Footer.php';
-?>
+<?php require 'Include/Footer.php' ?>

@@ -117,7 +117,7 @@ class AuthorizeNetARB extends AuthorizeNetRequest
     protected function _setPostString()
     {
         $this->_post_string =<<<XML
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ARB{$this->_request_type} xmlns= "AnetApi/xml/v1/schema/AnetApiSchema.xsd">
     <merchantAuthentication>
         <name>{$this->_api_login}</name>

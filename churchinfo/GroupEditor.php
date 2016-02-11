@@ -180,13 +180,12 @@ require "Include/Header.php";
 </div>
 <script>
     //setup some document-global variables for later on in the javascript
-    var defaultRoleID= <?php echo ($thisGroup['grp_DefaultRole']?  $thisGroup['grp_DefaultRole'] : 1) ?>;
+    var defaultRoleID= <?= ($thisGroup['grp_DefaultRole']?  $thisGroup['grp_DefaultRole'] : 1) ?>;
     var dataT = 0;
-    var groupRoleData = <?php echo json_encode($groupService->getGroupRoles($iGroupID)); ?>;
+    var groupRoleData = <?= json_encode($groupService->getGroupRoles($iGroupID)); ?>;
     var roleCount = groupRoleData.length; 
-    var groupID=<?php echo $iGroupID?>;
+    var groupID=<?= $iGroupID ?>;
 </script>
 <script src="<?= $sRootPath; ?>/js/GroupEditor.js"></script>
-<?php
-    require "Include/Footer.php";
-?>
+
+<?php require "Include/Footer.php" ?>

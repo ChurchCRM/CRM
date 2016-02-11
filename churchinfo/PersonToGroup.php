@@ -113,8 +113,8 @@ function updateGroupRoles(generated_html)
 </script>
 
 <p align="center"><?= gettext("Select the group to add this person to:") ?></p>
-<form method="post" action="PersonToGroup.php?PersonID=<?php echo $iPersonID;?>">
-<input type="hidden" name="prevquery" value="<?php echo $sPreviousQuery;?>">
+<form method="post" action="PersonToGroup.php?PersonID=<?= $iPersonID ?>">
+<input type="hidden" name="prevquery" value="<?= $sPreviousQuery ?>">
 <table align="center">
 	<tr>
 		<td class="LabelColumn"><?= gettext("Select Group:") ?></td>
@@ -142,6 +142,4 @@ function updateGroupRoles(generated_html)
 </p>
 </form>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

@@ -29,7 +29,7 @@ if (!$_SESSION['bAdmin'])
 
 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
     die ("The Backup Utility will not work on a Windows based Server");
-} 
+}
 
 if (isset($sGZIPname)) $hasGZIP = true;
 if (isset($sZIPname)) $hasZIP = true;
@@ -79,7 +79,7 @@ require "Include/Header.php";
      <div class="box-body" id="resultFiles">
      </div>
 </div>
-    
+
 <script>
 
 $('#BackupDatabase').submit(function(event) {
@@ -131,17 +131,15 @@ $('#BackupDatabase').submit(function(event) {
                 $("#backupstatus").html("Backup Error.");
             });
         }
-        
+
     });
-    
+
 function downloadbutton(filename) {
     window.location = "<?= $sURLPath."/"; ?>api/database/download/"+filename;
     $("#backupstatus").css("color","green");
     $("#backupstatus").html("Backup Downloaded, Copy on server removed");
     $("#downloadbutton").attr("disabled","true");
-    
+
 }
 </script>
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

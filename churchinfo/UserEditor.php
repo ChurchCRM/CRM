@@ -315,7 +315,7 @@ require 'Include/Header.php';
 <div class="box">
     <div class="box-body">
         <div class="callout callout-info">
-            <?= gettext('Note: Changes will not take effect until next logon.');?>
+            <?= gettext('Note: Changes will not take effect until next logon.'); ?>
         </div>
         <form method="post" action="UserEditor.php">
         <input type="hidden" name="Action" value="<?= $sAction ?>">
@@ -415,7 +415,7 @@ if ($bShowPersonSelect) {
     </tr>
     <tr>
         <td colspan="2" align="center">
-        <input type="submit" class="btn btn-primary" <?= 'value="' . gettext('Save') . '"' ?> name="save">&nbsp;<input type="button" class="btn" name="Cancel" <?= 'value="' . gettext('Cancel') . '"' ?> onclick="javascript:document.location='UserList.php';">
+        <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="save">&nbsp;<input type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='UserList.php';">
         </td>
     </tr>
 </table>
@@ -523,4 +523,5 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
     <!-- /.box-body -->
 </div>
 <!-- /.box -->
-<?php require 'Include/Footer.php'; ?>
+
+<?php require 'Include/Footer.php' ?>

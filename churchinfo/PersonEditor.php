@@ -551,14 +551,14 @@ require "Include/Header.php";
 	<div class="alert alert-danger alert-dismissable">
 		<i class="fa fa-ban"></i>
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		<?php echo gettext("Invalid fields or selections. Changes not saved! Please correct and try again!");?>
+		<?= gettext("Invalid fields or selections. Changes not saved! Please correct and try again!"); ?>
 	</div>
 	<?php } ?>
 	<div class="box box-info clearfix">
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Personal Info") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> name="PersonSubmit">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="PersonSubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -629,7 +629,7 @@ require "Include/Header.php";
 							<option value="0"><?= gettext("Select Day") ?></option>
 							<?php for ($x=1; $x < 32; $x++) {
 								if ($x < 10) { $sDay = "0" . $x; } else { $sDay = $x; } ?>
-								<option value="<?php echo $sDay ?>" <?php if ($iBirthDay == $x) {echo "selected"; } ?>><?php echo $x ?></option>
+								<option value="<?= $sDay ?>" <?php if ($iBirthDay == $x) {echo "selected"; } ?>><?= $x ?></option>
 							<?php } ?>
 						</select>
 					</div>
@@ -651,7 +651,7 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Family Info") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> name="PersonSubmit">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="PersonSubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -670,7 +670,7 @@ require "Include/Header.php";
 			</div>
 
 			<div class="form-group col-xs-6">
-				<label><?php echo gettext("Family:");  ?></label>
+				<label><?= gettext("Family:");  ?></label>
 				<select name="Family" size="8" class="form-control">
 					<option value="0" selected><?= gettext("Unassigned") ?></option>
 					<option value="-1"><?= gettext("Create a new family (using last name)") ?></option>
@@ -690,7 +690,7 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Contact Info") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> name="PersonSubmit">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="PersonSubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -706,9 +706,9 @@ require "Include/Header.php";
 
 							if ($bFamilyAddress1)
 								echo "</span>";
-							?>
+							 ?>
 						</label>
-						<input type="text" name="Address1" value="<?= htmlentities(stripslashes($sAddress1),ENT_NOQUOTES, "UTF-8") ?>" size="30" maxlength="50" class="form-control">
+						<input type="text" name="Address1" value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, "UTF-8") ?>" size="30" maxlength="50" class="form-control">
 					</div>
 					<div class="col-xs-3">
 						<label>
@@ -719,9 +719,9 @@ require "Include/Header.php";
 
 							if ($bFamilyAddress2)
 								echo "</span>";
-							?>
+							 ?>
 						</label>
-						<input type="text" name="Address2" value="<?= htmlentities(stripslashes($sAddress2),ENT_NOQUOTES, "UTF-8") ?>" size="30" maxlength="50" class="form-control">
+						<input type="text" name="Address2" value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, "UTF-8") ?>" size="30" maxlength="50" class="form-control">
 					</div>
 					<div class="col-xs-3">
 						<label>
@@ -732,9 +732,9 @@ require "Include/Header.php";
 
 							if ($bFamilyCity)
 								echo "</span>";
-							?>
+							 ?>
 						</label>
-						<input type="text" name="City" value="<?= htmlentities(stripslashes($sCity),ENT_NOQUOTES, "UTF-8") ?>" class="form-control">
+						<input type="text" name="City" value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, "UTF-8") ?>" class="form-control">
 					</div>
 				</div>
 			</div>
@@ -749,7 +749,7 @@ require "Include/Header.php";
 
 						if ($bFamilyState)
 							echo "</span>";
-						?>
+						 ?>
 					</label>
 					<?php require "Include/StateDropDown.php"; ?>
 				</div>
@@ -767,7 +767,7 @@ require "Include/Header.php";
 
 						if ($bFamilyZip)
 							echo "</span>";
-						?>
+						 ?>
 					</label>
 					<input type="text" name="Zip" class="form-control"
 					<?php
@@ -775,7 +775,7 @@ require "Include/Header.php";
 						if($cfgForceUppercaseZip)echo 'style="text-transform:uppercase" ';
 
 						echo 'value="' . htmlentities(stripslashes($sZip),ENT_NOQUOTES, "UTF-8") . '" ';
-					?>
+					 ?>
 					maxlength="10" size="8">
 				</div>
 				<div class="form-group col-xs-2">
@@ -787,7 +787,7 @@ require "Include/Header.php";
 
 						if ($bFamilyCountry)
 							echo "</span>";
-						?>
+						 ?>
 					</label>
 					<?php require "Include/CountryDropDown.php"; ?>
 				</div>
@@ -827,7 +827,7 @@ require "Include/Header.php";
 						echo "<span style=\"color: red;\">" . gettext("Work Phone:") . "</span>";
 					else
 						echo gettext("Work Phone:");
-					?>
+					 ?>
 					</label>
 					<div class="input-group">
 						<div class="input-group-addon">
@@ -845,7 +845,7 @@ require "Include/Header.php";
 							echo "<span style=\"color: red;\">" . gettext("Mobile Phone:") . "</span>";
 						else
 							echo gettext("Mobile Phone:");
-						?>
+						 ?>
 					</label>
 					<div class="input-group">
 						<div class="input-group-addon">
@@ -865,7 +865,7 @@ require "Include/Header.php";
 								echo "<span style=\"color: red;\">" . gettext("Email:") . "</span></td>";
 							else
 								echo gettext("Email:") . "</td>";
-						?>
+						 ?>
 					</label>
 					<div class="input-group">
 						<div class="input-group-addon">
@@ -892,7 +892,7 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Membership Info") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> name="PersonSubmit">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="PersonSubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -916,7 +916,7 @@ require "Include/Header.php";
 							<i class="fa fa-calendar"></i>
 						</div>
 						<input type="text" name="MembershipDate" class="form-control inputDatePicker" value="<?= $dMembershipDate ?>" maxlength="10" id="sel1" size="11" placeholder="YYYY-MM-DD">
-						<?php if ($sMembershipDateError) { ?><font color="red"><?php echo $sMembershipDateError ?></font><?php } ?>
+						<?php if ($sMembershipDateError) { ?><font color="red"><?= $sMembershipDateError ?></font><?php } ?>
 					</div>
 				</div>
 			</div>
@@ -939,7 +939,7 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Custom Fields") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> name="PersonSubmit">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="PersonSubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -970,9 +970,9 @@ require "Include/Header.php";
 			} ?>
 		</div>
 	</div>
-	<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> name="PersonSubmit">
+	<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="PersonSubmit">
 	<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn btn-primary\" value=\"" . gettext("Save and Add") . "\" name=\"PersonSubmitAndAdd\">"; } ?>
-	<input type="button" class="btn btn-primary" <?= 'value="' . gettext("Cancel") . '"' ?> name="PersonCancel" onclick="javascript:document.location='<?php if (strlen($iPersonID) > 0) { echo "PersonView.php?PersonID=" . $iPersonID; } else {echo "SelectList.php?mode=person"; } ?>';">
+	<input type="button" class="btn btn-primary" value="<?= gettext("Cancel") ?>" name="PersonCancel" onclick="javascript:document.location='<?php if (strlen($iPersonID) > 0) { echo "PersonView.php?PersonID=" . $iPersonID; } else {echo "SelectList.php?mode=person"; } ?>';">
 </form>
 <!-- InputMask -->
 <script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
@@ -988,6 +988,4 @@ require "Include/Header.php";
 	});
 </script>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

@@ -373,42 +373,13 @@ require ("Include/HeaderNotLoggedIn.php");
     document.LoginForm.User.focus();
 </script><?php
 
-    //
-    // Basic security checks:
-    //
     // Check if https is required:
     // Verify that page has an authorized URL in the browser address bar.
     // Otherwise redirect to login page.
     // An array of authorized URL's is specified in Config.php ... $URL
     //
-    if (isset($bLockURL) && ($bLockURL === TRUE))
-    {
-        // get the URL of this page
-        $currentURL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    checkAllowedURL();
 
-        // chop off the query string
-        $currentURL = explode('?', $currentURL)[0];
-
-        // check if this matches any one of teh whitelisted login URLS
-        $validURL = false;
-        foreach ($URL as $value)
-            if ($value === $currentURL)
-            {
-                $validURL = true;
-                break;
-            }
-
-        // jump to the first whitelisted url (TODO: maybe pick a ranodm URL?)
-        if (!$validURL)
-        {
-          header('Location: '.$URL[0]);
-          exit;
-        }
-    }
-
-    //
-    // End of basic security checks
-    //
 ?>
         <!--<a href="#">I forgot my password</a><br>
         <a href="register.html" class="text-center">Register a new membership</a>-->

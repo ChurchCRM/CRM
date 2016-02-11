@@ -46,19 +46,19 @@ require "Include/Header.php";
                 extract($aRow);
             ?>
                 <tr>
-                    <td><a href='FamilyView.php?FamilyID=<?php echo $fam_ID?>'>
+                    <td><a href='FamilyView.php?FamilyID=<?= $fam_ID ?>'>
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                         </span>
                         </a>
-                        <a href='FamilyEditor.php?FamilyID=<?php echo $fam_ID?>'>
+                        <a href='FamilyEditor.php?FamilyID=<?= $fam_ID ?>'>
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                         </span>
                         </a>
-                        <?php echo $fam_Name ?></td>
+                        <?= $fam_Name ?></td>
                 <?php
                 echo "<td>".$fam_HomePhone."</td>";
                 echo "<td>".$fam_Address1." ".$fam_Address2." </td>";

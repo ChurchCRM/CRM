@@ -130,7 +130,7 @@ if (isset($_POST["PrintReport"])) {
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="upload-Image-label"><?php echo gettext("Update Envelopes") ?></h4>
+                    <h4 class="modal-title" id="upload-Image-label"><?= gettext("Update Envelopes") ?></h4>
                 </div>
                 <div class="modal-body">
                 <span style="color:red">This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?</span>

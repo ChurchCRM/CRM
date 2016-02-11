@@ -303,7 +303,7 @@ else
 ?>
 <div class="box">
 	<div class="box-body">
-<form method="post" action="OptionManager.php?<?php echo "mode=$mode&ListID=$listID" ?>" name="OptionManager">
+<form method="post" action="OptionManager.php?<?= "mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
 <div class="callout callout-warning"><?= gettext("Warning: Removing will reset all assignments for all persons with the assignment!") ?></div>
 
@@ -356,26 +356,26 @@ for ($row=1; $row <= $numRows; $row++)
 				echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
 			elseif ( $aNameErrors[$row] == 2 )
 				echo "<span style=\"color: red;\"><BR>" . gettext("Duplicate name found.") . " </span>";
-			?>
+			 ?>
 		</td>
 		<?php
 		if ($mode == "grproles")
 			echo "<td class=\"TextColumn\"><input class=\"form-control input-small\" type=\"button\" class=\"btn\" value=\"" . gettext("Make Default") . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . "&ListID=" . $listID . "&ID=" . $aIDs[$row] . "&Action=makedefault';\" ></td>";
-		?>
+		 ?>
 
 	</tr>
 <?php } ?>
 
 </table>
-	<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save Changes") . '"' ?> Name="SaveChanges">
+	<input type="submit" class="btn btn-primary" value="<?= gettext("Save Changes") ?>" Name="SaveChanges">
 
 
 	<?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') { ?>
-		<input type="button" class="btn" <?= 'value="' . gettext("Exit") . '"' ?> Name="Exit" onclick="javascript:window.close();">
+		<input type="button" class="btn" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:window.close();">
 	<?php } elseif ($mode != "grproles") { ?>
-		<input type="button" class="btn" <?= 'value="' . gettext("Exit") . '"' ?> Name="Exit" onclick="javascript:document.location='<?php
+		<input type="button" class="btn" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:document.location='<?php
 		echo "Menu.php";
-		?>';">
+		 ?>';">
 	<?php } ?>
 	</div>
 </div>
@@ -387,7 +387,7 @@ New <?= $noun . " " . gettext("Name:") ?>&nbsp;
 	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
 <p>  </p>
-<input type="submit" class="btn" <?php echo 'value="' . gettext("Add New") . ' ' . $adj . ' ' . $noun . '"'?> Name="AddField">
+<input type="submit" class="btn" value="<?= gettext("Add New") . ' ' . $adj . ' ' . $noun ?>" Name="AddField">
 <?php
 	if ($iNewNameError > 0)
 	{

@@ -490,10 +490,10 @@ if ($iMode == 1) {
 		<option value="edited" <?php if ($sSort == "edited") echo "selected";?>><?= gettext("By Recently Edited") ?></option>
 
 </select>&nbsp;
-<input type="text" name="Filter" value="<?php echo $sFilter;?>">
-<input type="hidden" name="mode" value="<?php echo $sMode;?>">
-<input type="hidden" name="Letter" value="<?php echo $sLetter;?>">
-<input type="submit" class="btn" <?= 'value="' . gettext("Apply Filter") . '"' ?>>
+<input type="text" name="Filter" value="<?= $sFilter;?>">
+<input type="hidden" name="mode" value="<?= $sMode;?>">
+<input type="hidden" name="Letter" value="<?= $sLetter;?>">
+<input type="submit" class="btn" value="<?= gettext("Apply Filter") ?>">
 
 </td></tr>
 <?php
@@ -685,9 +685,9 @@ if ($iMode == 1) {
 } ?>
 
 <input type="button" class="btn" value="<?= gettext("Clear Filters") ?>" onclick="javascript:document.location='SelectList.php?mode=<?= $sMode ?>&amp;Sort=<?= $sSort ?>&amp;type=<?= $iGroupTypeMissing ?>'"><BR><BR>
-<input name="AddAllToCart" type="submit" class="btn btn-primary" <?= 'value="' . gettext("Add to Cart") . '"' ?>>&nbsp;
-<input name="IntersectCart" type="submit" class="btn btn-warning" <?= 'value="' . gettext("Intersect with Cart") . '"' ?>>&nbsp;
-<input name="RemoveFromCart" type="submit" class="btn btn-danger" <?= 'value="' . gettext("Remove from Cart") . '"' ?>>
+<input name="AddAllToCart" type="submit" class="btn btn-primary" value="<?= gettext("Add to Cart") ?>">&nbsp;
+<input name="IntersectCart" type="submit" class="btn btn-warning" value="<?= gettext("Intersect with Cart") ?>">&nbsp;
+<input name="RemoveFromCart" type="submit" class="btn btn-danger" value="<?= gettext("Remove from Cart") ?>">
 
 </td></tr>
 </table></form>
@@ -1014,7 +1014,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 	$sRowClass = AlternateRowStyle($sRowClass);
 
 	//Display the row
-	echo "<tr class=\"" .$sRowClass. "\">";?>
+	echo "<tr class=\"" .$sRowClass. "\">"; ?>
 	</td>
     <td><img src="<?= $personService->getPhoto($per_ID); ?>" class="direct-chat-img" width="10px" height="10px" /> </td>
 	<td>
@@ -1060,17 +1060,17 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 			echo $zip;
 		else
 			echo gettext("unassigned");
-	}?>
+	} ?>
 	</td>
     <td>
-	<?php if ($_SESSION['bEditRecords']) {?>
+	<?php if ($_SESSION['bEditRecords']) { ?>
 		<a href="PersonEditor.php?PersonID=<?= $per_ID ?>">
 		    <span class="fa-stack">
                 <i class="fa fa-square fa-stack-2x"></i>
                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
             </span>
         </a>
-	<?php }?>
+	<?php } ?>
     </td>
 	<td>
 	<?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
@@ -1138,7 +1138,4 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 	</div>
 </div>
 
-<?
-require "Include/Footer.php";
-
-?>
+<? require "Include/Footer.php" ?>

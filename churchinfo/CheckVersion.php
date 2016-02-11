@@ -71,7 +71,7 @@ else        //the upgrade failed!
             </div>
             <div class="box-footer">
                 <p>
-                    Software Database Version = <?= $systemService->getDatabaseVersion();?> <br/>
+                    Software Database Version = <?= $systemService->getDatabaseVersion(); ?> <br/>
                     Software Version = <?=  $_SESSION['sSoftwareInstalledVersion']; ?>
                 </p>
             </div>

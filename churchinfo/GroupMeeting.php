@@ -205,6 +205,5 @@ this group will be added to the meeting as external users of WebCalendar.
 $("#Time").timepicker({showMeridian: false});
 $("#Date").datepicker({format:'yyyy-mm-dd'});
 </script>
-<?php
-require "Include/Footer.php";
-?>
+
+<?php require "Include/Footer.php" ?>

@@ -147,7 +147,7 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="FundRaiserEditor.php?<?php echo "linkBack=" . $linkBack . "&FundRaiserID=".$iFundRaiserID?>" name="FundRaiserEditor">
+<form method="post" action="FundRaiserEditor.php?<?= "linkBack=" . $linkBack . "&FundRaiserID=".$iFundRaiserID ?>" name="FundRaiserEditor">
 
 <table cellpadding="3" align="center">
 
@@ -163,7 +163,7 @@ require "Include/Header.php";
 					echo "<input type=button class=btn value=\"".gettext("Generate Certificates")."\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
 					echo "<input type=button class=btn value=\"".gettext("Batch Winner Entry")."\" name=BatchWinnerEntry onclick=\"javascript:document.location='BatchWinnerEntry.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
 				}
-			?>
+			 ?>
 		</td>
 	</tr>
 
@@ -223,37 +223,37 @@ if ($rsDonatedItems != 0) {
 		}
 	
 		$sRowClass = "RowColorA";
-	?>
-		<tr class="<?php echo $sRowClass ?>">
+	 ?>
+		<tr class="<?= $sRowClass ?>">
 			<td>
-				<a href="DonatedItemEditor.php?DonatedItemID=<?php echo $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID;?>"><?php echo $di_Item;?></a>
+				<a href="DonatedItemEditor.php?DonatedItemID=<?= $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID; ?>"><?= $di_Item; ?></a>
 			</td>
 			<td>
-				<?php if ($di_multibuy) echo "X";?>&nbsp;
+				<?php if ($di_multibuy) echo "X"; ?>&nbsp;
 			</td>
 			<td>
-				<?php echo $donorFirstName . " " . $donorLastName ?>&nbsp;
+				<?= $donorFirstName . " " . $donorLastName ?>&nbsp;
 			</td>
 			<td>
 				<?php if ($di_multibuy) echo gettext ("Multiple"); else echo $buyerFirstName . " " . $buyerLastName ?>&nbsp;
 			</td>
 			<td>
-				<?php echo $di_title ?>&nbsp;
+				<?= $di_title ?>&nbsp;
 			</td>
 			<td align=center>
-				<?php echo $di_sellprice ?>&nbsp;
+				<?= $di_sellprice ?>&nbsp;
 			</td>
 			<td align=center>
-				<?php echo $di_estprice ?>&nbsp;
+				<?= $di_estprice ?>&nbsp;
 			</td>
 			<td align=center>
-				<?php echo $di_materialvalue ?>&nbsp;
+				<?= $di_materialvalue ?>&nbsp;
 			</td>
 			<td align=center>
-				<?php echo $di_minimum ?>&nbsp;
+				<?= $di_minimum ?>&nbsp;
 			</td>
 			<td>
-				<a href="DonatedItemDelete.php?DonatedItemID=<?php echo $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID;?>">Delete</a>
+				<a href="DonatedItemDelete.php?DonatedItemID=<?= $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID; ?>">Delete</a>
 			</td>
 		</tr>
 	<?php
@@ -268,6 +268,4 @@ if ($rsDonatedItems != 0) {
 $("#Date").datepicker({format:'yyyy-mm-dd'});
 </script
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

@@ -87,7 +87,7 @@ $numRows = mysql_num_rows($rsOpps);
 ?>
 <table cellpadding="1" align="center" cellspacing="0" width="100%">
 <tr>
-<td align="center" width="50%"><strong><?php echo gettext("Select Event Types To Display") ?></strong><br>
+<td align="center" width="50%"><strong><?= gettext("Select Event Types To Display") ?></strong><br>
     <form name="EventTypeSelector" method="POST" action="ListEvents.php">
        <select name="WhichType" onchange="javascript:this.form.submit()">
         <option value="All">All</option>
@@ -125,7 +125,7 @@ for($r=1; $r<=$numRows; $r++){
 
 ?>
 
-<td align="center" width="50%"><strong><?php echo gettext("Display Events in Year") ?></strong><br>
+<td align="center" width="50%"><strong><?= gettext("Display Events in Year") ?></strong><br>
        <select name="WhichYear" onchange="javascript:this.form.submit()" >
         <?php
         for ($r = 1; $r <= $numRows; $r++)
@@ -303,7 +303,7 @@ if ($numRows > 0)
            <td align="center"><span class="SmallText">
              <form name="EditEvent" action="EventEditor.php" method="POST">
                <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-               <input class="SmallText" type="submit" name="Action" <?= 'value="' . gettext("Edit") . '"' ?> class="btn">
+               <input class="SmallText" type="submit" name="Action" value="<?= gettext("Edit") ?>" class="btn">
              </form></span>
            </td>
            <td><span class="SmallText">
@@ -340,7 +340,7 @@ if ($eType != "All" && $aNumCounts >0){
         ?>
         <td align="center">
           <span class="SmallText">
-          <strong>AVG<br><?php echo $avgName;?></strong>
+          <strong>AVG<br><?= $avgName ?></strong>
           <br><?= sprintf("%01.2f",$avgAvg) ?></span>
         </td> 
         <?php         
@@ -364,7 +364,7 @@ if ($eType != "All" && $aNumCounts >0){
              <table width="100%">
                 <tr class="<?= $sRowClass ?>">
                  <td align="center" valign="bottom">
-                   <input type="button" Name="Action" <?= 'value="' . gettext("Add New Event") . '"' ?> class="btn" onclick="javascript:document.location='EventNames.php';">
+                   <input type="button" Name="Action" value="<?= gettext("Add New Event") ?>" class="btn" onclick="javascript:document.location='EventNames.php';">
                  </td>
                </tr>
              </table>

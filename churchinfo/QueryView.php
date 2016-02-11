@@ -272,12 +272,12 @@ function DoQuery()
 
 	if (count($aHiddenFormField) > 0)
 	{
-		?>
+		 ?>
 		<form method="post" action="CartView.php"><p align="center">
-			<input type="hidden" value="<?= join(",",$aHiddenFormField) ?>" name="BulkAddToCart">
-			<input type="submit" class="btn" name="AddToCartSubmit" value="<?php echo gettext("Add Results To Cart");?>">&nbsp;
-			<input type="submit" class="btn" name="AndToCartSubmit" value="<?php echo gettext("Intersect Results With Cart");?>">&nbsp;
-			<input type="submit" class="btn" name="NotToCartSubmit" value="<?php echo gettext("Remove Results From Cart");?>">
+			<input type="hidden" value="<?= join(",", $aHiddenFormField) ?>" name="BulkAddToCart">
+			<input type="submit" class="btn" name="AddToCartSubmit" value="<?= gettext("Add Results To Cart") ?>">&nbsp;
+			<input type="submit" class="btn" name="AndToCartSubmit" value="<?= gettext("Intersect Results With Cart") ?>">&nbsp;
+			<input type="submit" class="btn" name="NotToCartSubmit" value="<?= gettext("Remove Results From Cart") ?>">
 		</p></form>
 		<?php
 	}
@@ -395,7 +395,7 @@ function DisplayParameterForm()
 		
 	}
 
-	?>
+	 ?>
 	
 	<td colspan="3" align="center">
 		<br>
@@ -407,9 +407,7 @@ function DisplayParameterForm()
 	</form>
 
 	<?php
-
 }
 
 require "Include/Footer.php";
-
 ?>

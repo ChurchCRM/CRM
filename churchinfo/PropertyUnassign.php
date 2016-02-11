@@ -106,7 +106,7 @@ require "Include/Header.php";
 
 ?>
 
-<?php echo gettext("Please confirm removal of this property from this") . " " . $sTypeName;?>:
+<?= gettext("Please confirm removal of this property from this") . " " . $sTypeName; ?>:
 
 
 <table cellpadding="4">
@@ -116,7 +116,7 @@ require "Include/Header.php";
 	</tr>
 	<tr>
 		<td align="right"><b><?= gettext("Unassigning:") ?></b></td>
-		<td><?php echo $sPropertyName ?></td>
+		<td><?= $sPropertyName ?></td>
 	</tr>
 </table>
 
@@ -127,6 +127,4 @@ require "Include/Header.php";
 	<a href="<?= $sBackPage ?>"><?= gettext("No, retain this assignment") ?></a>
 </p>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

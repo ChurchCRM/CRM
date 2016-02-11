@@ -38,7 +38,7 @@ if (!$_SESSION['bAdmin'])
 
 $sPageTitle = gettext("Custom Family Fields Editor");
 
-require 'Include/Header.php';?>
+require 'Include/Header.php'; ?>
 
 <div class="box box-body">
 
@@ -407,11 +407,11 @@ else
                 <?= GetSecurityList($aSecurityGrp, $row . "FieldSec", $aSecurityType[$aFieldSecurity[$row]]) ?>
             </td>
             <td class="TextColumn" align="center" nowrap>
-                <input type="radio" Name="<?php echo $row . "side" ?>" value="0" <?php if (!$aSideFields[$row]) echo " checked" ?>><?= gettext("Left") ?>
-                <input type="radio" Name="<?php echo $row . "side" ?>" value="1" <?php if ($aSideFields[$row]) echo " checked" ?>><?= gettext("Right") ?>
+                <input type="radio" Name="<?= $row ?>side" value="0" <?= !$aSideFields[$row] ? " checked" : ''?>><?= gettext("Left") ?>
+                <input type="radio" Name="<?= $row ?>side" value="1" <?= $aSideFields[$row] ? " checked" : ''?>><?= gettext("Right") ?>
             </td>
             <td>
-                <input type="button" class="btn btn-danger" value="<?= gettext("delete") ?>"   name="delete" onclick="return confirmDeleteField(<?= "'" . $aFieldFields[$row] . "'" ?>);">
+                <input type="button" class="btn btn-danger" value="<?= gettext("delete") ?>"   name="delete" onclick="return confirmDeleteField('<?= $aFieldFields[$row] ?>');">
             </td>
             <td class="TextColumn" width="5%" nowrap>
                 <?php
@@ -432,7 +432,7 @@ else
                 <tr>
                     <td width="30%"></td>
                     <td width="40%" align="center" valign="bottom">
-                        <input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save Changes") . '"' ?> Name="SaveChanges">
+                        <input type="submit" class="btn btn-primary" value="<?= gettext("Save Changes") ?>" Name="SaveChanges">
                     </td>
                     <td width="30%"></td>
                 </tr>

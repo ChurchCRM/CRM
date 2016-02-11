@@ -62,7 +62,7 @@ require "Include/Header.php";
 <!-- Default box -->
 <div class="box box-danger">
 	<div class="box-header with-border">
-<div class="callout callout-danger"> <?php echo gettext("Please confirm removal of user status from:")." <b>" . $sUserName ."</b>"; ?></div>
+<div class="callout callout-danger"> <?= gettext("Please confirm removal of user status from:")." <b>" . $sUserName ."</b>"; ?></div>
 
 
 	<a href="UserDelete.php?Confirmed=Yes&PersonID=<?= $iPersonID ?>" class="btn btn-app btn-warning"><i class="fa fa-trash"></i><?= gettext("Delete") ?></a>
@@ -73,6 +73,4 @@ require "Include/Header.php";
 </div>
 <!-- /.box -->
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

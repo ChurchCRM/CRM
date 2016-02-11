@@ -134,7 +134,7 @@ function updateGroupRoles(generated_html)
 				echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
 			}
 			echo "</select>";
-			?>
+		  ?>
 		</td>
 	</tr>
 	<tr>
@@ -144,7 +144,7 @@ function updateGroupRoles(generated_html)
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="btn btn-primary" name="Submit" value=<?= '"' . gettext("Add to Group") . '"' ?>>
+<input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext("Add to Group") ?>">
 <BR><BR>--<?= gettext("OR") ?>--<BR><BR>
 <a href="GroupEditor.php?EmptyCart=yes" class="btn btn-info"><i class="fa fa-add"></i><?= gettext("Create a New Group") ?></a>
 <BR><BR>

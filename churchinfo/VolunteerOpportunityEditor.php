@@ -420,9 +420,9 @@ for ($row=1; $row <= $numRows; $row++) {
 <tr>
 <td width="30%"></td>
 <td width="40%" align="center" valign="bottom">
-<input type="submit" class="btn" <?= 'value="' . gettext("Save Changes") . '"' ?> Name="SaveChanges">
+<input type="submit" class="btn" value="<?= gettext("Save Changes") ?>" Name="SaveChanges">
 &nbsp;
-<input type="button" class="btn" <?= 'value="' . gettext("Exit") . '"' ?> Name="Exit" onclick="javascript:document.location='Menu.php'">
+<input type="button" class="btn" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:document.location='Menu.php'">
 </td>
 <td width="30%"></td>
 </tr>
@@ -449,7 +449,7 @@ for ($row=1; $row <= $numRows; $row++) {
 &nbsp;
 </td>
 <td>
-<input type="submit" class="btn" <?= 'value="' . gettext("Add New Opportunity") . '"' ?> name="AddField">
+<input type="submit" class="btn" value="<?= gettext("Add New Opportunity") ?>" name="AddField">
 </td>
 <td width="15%"></td>
 </tr>
@@ -459,4 +459,5 @@ for ($row=1; $row <= $numRows; $row++) {
 </table>
 </form>
 </div>
-<?php require "Include/Footer.php"; ?>
+
+<?php require "Include/Footer.php" ?>

@@ -29,7 +29,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 // If user does not have CSV Export permission, redirect to the menu.
-if (!$bExportCSV) 
+if (!$bExportCSV)
 {
     Redirect("Menu.php");
     exit;
@@ -192,7 +192,7 @@ require "Include/Header.php";
   </table>
     </td>
 
-    <?php if (($numCustomFields > 0) or ($numFamCustomFields > 0)) {?>
+    <?php if (($numCustomFields > 0) or ($numFamCustomFields > 0)) { ?>
     <td width="20%" valign="top"><table border="0">
     <?php if ($numCustomFields > 0) { ?>
     <tr><td width="100%" valign="top" align="left">
@@ -258,7 +258,7 @@ require "Include/Header.php";
                 {
                     extract($aRow);
                     ?>
-                    <option value="<?php echo $lst_OptionID ?>"><?php echo $lst_OptionName ?></option>
+                    <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                     <?php
                 }
                 ?>
@@ -275,7 +275,7 @@ require "Include/Header.php";
                 {
                     extract($aRow);
                     ?>
-                    <option value="<?php echo $lst_OptionID ?>"><?php echo $lst_OptionName ?></option>
+                    <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                     <?php
                 }
                 ?>
@@ -337,7 +337,7 @@ require "Include/Header.php";
                         <b><?= gettext("To:") ?>&nbsp;</b>
                     </td>
                     <td>
-                        <input type="text" name="BirthDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>"  id="BirthdayDate2">
+                        <input type="text" name="BirthDate2" size="11" maxlength="10" value="<?=(date("Y-m-d")); ?>"  id="BirthdayDate2">
                     </td>
                 </tr>
             </table>
@@ -405,6 +405,4 @@ $("#AnniversaryDate2").datepicker({format:'yyyy-mm-dd'});
 $("#EnterDate1").datepicker({format:'yyyy-mm-dd'});
 $("#EnterDate2").datepicker({format:'yyyy-mm-dd'});
 </script>
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

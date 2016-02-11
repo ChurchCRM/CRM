@@ -203,7 +203,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 	<tr>
 		<td></td>
-		<td><p class="MediumLargeText"><?php echo gettext("If adding a new family, enter data below.");?></p></td>
+		<td><p class="MediumLargeText"><?= gettext("If adding a new family, enter data below."); ?></p></td>
 	</tr>
 
 
@@ -333,6 +333,4 @@ else
 <script>
 $("#sel1").datepicker({format:'yyyy-mm-dd'});
 </script>
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php"; ?>

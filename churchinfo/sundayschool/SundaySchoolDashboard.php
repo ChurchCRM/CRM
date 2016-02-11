@@ -32,7 +32,7 @@ $rsKidsMissing = RunQuery($sSQL);
 $sPageTitle = gettext("Sunday School Class List");
 require "../Include/Header.php";
 
-?>
+ ?>
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
 <script type="text/javascript" language="javascript" src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" language="javascript" src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
@@ -95,7 +95,7 @@ require "../Include/Header.php";
 			echo "</tr>";
 			}
 
-		?>
+		 ?>
 			</tbody>
 		</table>
 	</div>
@@ -145,7 +145,7 @@ require "../Include/Header.php";
 				echo "</tr>";
 			}
 
-			?>
+			 ?>
 			</tbody>
 		</table>
 	</div>
@@ -160,7 +160,7 @@ require "../Include/Header.php";
 
 <?php
 require "../Include/Footer.php";
-?>
+ ?>
 
 
 

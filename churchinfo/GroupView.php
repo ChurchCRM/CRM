@@ -99,7 +99,7 @@ $sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER B
 $rsPropList = RunQuery($sSQL);
 $numRows = mysql_num_rows($rsPropList);
 
-require 'Include/Header.php';?>
+require 'Include/Header.php'; ?>
 
 
 
@@ -130,7 +130,7 @@ if ($_SESSION['bManageGroups'])
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="upload-Image-label"><?php echo gettext("Confirm Delete Group") ?></h4>
+                            <h4 class="modal-title" id="upload-Image-label"><?= gettext("Confirm Delete Group") ?></h4>
                         </div>
                         <div class="modal-body">
                         <span style="color: red">
@@ -143,13 +143,13 @@ if ($_SESSION['bManageGroups'])
                              <p class="LargeError">
                                 <?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>
                             </p>
-                            <?php echo gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.");?>
+                            <?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered."); ?>
                             <br><br>
                             <span style="color:black">I Understand &nbsp;<input type="checkbox" name="chkClear"id="chkClear" ></span>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button name="deleteGroupButton" id="deleteGroupButton" type="button" class="btn btn-danger" disabled><?php echo gettext("Delete Group") ?></button>
+                            <button name="deleteGroupButton" id="deleteGroupButton" type="button" class="btn btn-danger" disabled><?= gettext("Delete Group") ?></button>
                         </div>
                     </div>
             </div>
@@ -178,7 +178,7 @@ if ($_SESSION['bManageGroups'])
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button name="confirmMembershipChange" id="confirmMembershipChange" type="button" class="btn btn-danger"><?php echo gettext("Change Membership") ?></button>
+                            <button name="confirmMembershipChange" id="confirmMembershipChange" type="button" class="btn btn-danger"><?= gettext("Change Membership") ?></button>
                         </div>
                     </div>
             </div>
@@ -301,11 +301,11 @@ if ($sPhoneLink)
             <table width="98%">
                 <tr>
                     <td align="center"><div class="TinyShadedBox"><font size="3">
-                    <?= gettext('Total Members:') ?> <?php echo $iTotalMembers ?>
+                    <?= gettext('Total Members:') ?> <?= $iTotalMembers ?>
                     <br>
-                    <?= gettext('Type of Group:') ?> <?php echo $sGroupType ?>
+                    <?= gettext('Type of Group:') ?> <?= $sGroupType ?>
                     <br>
-                    <?= gettext('Default Role:') ?> <?php echo $sDefaultRole ?>
+                    <?= gettext('Default Role:') ?> <?= $sDefaultRole ?>
                     </font></div></td>
                 </tr>
             </table>
@@ -493,7 +493,7 @@ if ($sPhoneLink)
 
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title"><?php echo gettext('Group Members:')?></h3>
+        <h3 class="box-title"><?= gettext('Group Members:') ?></h3>
     </div>
     <div class="box-body">
 <!-- START GROUP MEMBERS LISTING for group $iGroupID; -->
@@ -512,7 +512,7 @@ $iRoleListID = $aTemp[0];
 </form>
 <!-- END GROUP MEMBERS LISTING -->
 <form action="#" method="get" class="sidebar-form">
-    <label for="addGroupMember"><?php echo gettext("Add Group Member: ");?></label>
+    <label for="addGroupMember"><?= gettext("Add Group Member: "); ?></label>
     <select class="form-control personSearch" name="addGroupMember" style="width:100%">
     </select>
 </form>
@@ -520,7 +520,7 @@ $iRoleListID = $aTemp[0];
 </div>
 
 <script>
-var groupMembers = <?php echo json_encode($groupService->getGroupMembers($iGroupID)); ?>;
+var groupMembers = <?= json_encode($groupService->getGroupMembers($iGroupID)); ?>;
 console.log(groupMembers);
 var dataT = 0;
 
@@ -631,7 +631,7 @@ $(document).ready(function() {
     $(".personSearch").on("select2:select",function (e) { 
         $.ajax({
             method: "POST",
-            url: "/api/groups/<?php echo $iGroupID;?>/adduser/"+e.params.data.objid,
+            url: "/api/groups/<?= $iGroupID; ?>/adduser/"+e.params.data.objid,
             dataType: "json"
         }).done(function (data){
            var person = data[0]; 
@@ -661,7 +661,7 @@ function initHandlers()
         console.log(userid);
         $.ajax({
             method: "POST",
-            url: "/api/groups/<?php echo $iGroupID;?>/removeuser/"+userid,
+            url: "/api/groups/<?= $iGroupID; ?>/removeuser/"+userid,
             dataType: "json"
         }).done(function(data){
             dataT.row(function(idx,data,node) { if  (data.per_ID == userid){return true;} } ).remove();
@@ -683,7 +683,7 @@ function initHandlers()
         var changeingMemberID = $("#changeingMemberID").val();
         $.ajax({
             method: "POST",
-            url: "/api/groups/<?php echo $iGroupID;?>/userRole/"+changeingMemberID,
+            url: "/api/groups/<?= $iGroupID ?>/userRole/" + changeingMemberID,
             data: JSON.stringify({'roleID': $("#newRoleSelection option:selected").val()}),
             dataType: "json"
         }).done(function(data){
@@ -699,7 +699,7 @@ function initHandlers()
       console.log(e);        
       $.ajax({
             method: "DELETE",
-            url: "/api/groups/<?php echo $iGroupID;?>",
+            url: "/api/groups/<?= $iGroupID; ?>",
             dataType: "json"
         }).done(function(data){
             console.log(data);
@@ -708,10 +708,6 @@ function initHandlers()
         });
     });
 }
-
 </script>
 
-
-<?php
-require 'Include/Footer.php';
-?>
+<?php require 'Include/Footer.php' ?>

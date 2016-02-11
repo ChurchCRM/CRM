@@ -171,8 +171,8 @@ while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_toolti
 			<tr>
 				<td>&nbsp;</td>
 				<td>
-					<input type=submit class=btn name=save value='<?= gettext("Save Settings");?>'>
-					<input type=submit class=btn name=cancel value='<?= gettext("Cancel") ;?>'>
+					<input type=submit class=btn name=save value='<?= gettext("Save Settings"); ?>'>
+					<input type=submit class=btn name=cancel value='<?= gettext("Cancel") ; ?>'>
 				</td>
 			</tr>
 		</table>

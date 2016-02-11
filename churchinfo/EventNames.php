@@ -36,15 +36,15 @@ require "Include/Header.php";
 <script language="javascript">
 
 function confirmDeleteOpp( Opp ) {
-var answer = confirm (<?= '"' . gettext("Are you sure you want to delete this event?") . '"' ?>)
+var answer = confirm("<?= gettext("Are you sure you want to delete this event?") ?>");
 if ( answer )
-        window.location="EventEditor.php?Opp=" + Opp + "&Action=delete"
+    window.location="EventEditor.php?Opp=" + Opp + "&Action=delete"
 }
 </script>
 
 <table width="100%" align="center" cellpadding="4" cellspacing="0">
   <tr>
-    <td align="center"><input type="button" class="btn" <?= 'value="' . gettext("Back to Menu") . '"' ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
+    <td align="center"><input type="button" class="btn" value="<?= gettext("Back to Menu") ?>" Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
   </tr>
 </table>
 <?php
@@ -274,13 +274,13 @@ if ($numRows > 0)
             } else {
               ?>
               <td class="TextColumn"><?= $aTypeName[$row] ?></td>
-              <td class="TextColumn"><?php echo $recur[$row] ?></td>
+              <td class="TextColumn"><?= $recur[$row] ?></td>
               <td class="TextColumn"><?= $aDefStartTime[$row] ?></td>
-              <td class="TextColumn"><?php echo $cCountList[$row] ?></td>
+              <td class="TextColumn"><?= $cCountList[$row] ?></td>
               <td class="TextColumn" align="center">
                   <form name="ProcessEventType" action="EventEditor.php" method="POST">
                   <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
-                  <input type="submit" name="Action" value="<?php echo gettext("Create=>Event"); ?>" class="btn")">
+                  <input type="submit" name="Action" value="<?= gettext("Create=>Event") ?>" class="btn")">
                 </form> 
               </td>
               <td class="TextColumn" align="center">
@@ -307,16 +307,13 @@ if($editing=='FALSE'){
     <td colspan=8 class="TextColumn" align="center">
     <form name="AddEventNames" action="EventNames.php" method="POST">
     <span class="SmallText"><?= gettext("New Event Type") ?></span>
-    <input type="submit" Name="Action" <?= 'value="' . gettext("Add Event Type") . '"' ?> class="btn">
+    <input type="submit" Name="Action" value="<?= gettext("Add Event Type") ?>" class="btn">
     </form>
     </td>
 </tr>
-</table>
 <?php
-} else {
-?>
+}?>
+
 </table>
-<?php
-}
-require "Include/Footer.php";
-?>
+
+<?php require "Include/Footer.php" ?>

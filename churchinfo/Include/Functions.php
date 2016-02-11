@@ -88,23 +88,63 @@ if (empty($bSuppressSessionTests))  // This is used for the login page only.
 }
 // End of basic security checks
 
-function deletePhotos($type, $id) {
+// check if bLockURL is set and if so if the current page is accessed via an allowed URL
+function checkAllowedURL()
+{
+    global $bLockURL, $URL;
+
+    if (isset($bLockURL) && ($bLockURL === TRUE))
+    {
+        // get the URL of this page
+        $currentURL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+        // chop off the query string
+        $currentURL = explode('?', $currentURL)[0];
+
+        // check if this matches any one of teh whitelisted login URLS
+        $validURL = false;
+        foreach ($URL as $value)
+        {
+            $base = substr($value, 0, -strlen('/Default.php'));
+            if (strpos($currentURL, $base) === 0)
+            {
+                $validURL = true;
+                break;
+            }
+        }
+
+        // jump to the first whitelisted url (TODO: maybe pick a ranodm URL?)
+        if (!$validURL)
+        {
+            header('Location: '.$URL[0]);
+            exit;
+        }
+    }
+}
+
+function deletePhotos($type, $id)
+{
     $validExtensions = array("jpeg", "jpg", "png");
-    $finalFileName = "Images/".$type."/" . $id;
+    $finalFileName = "Images/" . $type . "/" . $id;
     $finalFileNameThumb = "Images/".$type."/thumbnails/" . $id;
+
     $deleted = false;
-    while (list(, $ext) = each($validExtensions)) {
-        $tmpFile = $finalFileName .".".$ext;
-        if (file_exists($tmpFile)) {
+    while (list(, $ext) = each($validExtensions))
+    {
+        $tmpFile = $finalFileName . "." . $ext;
+        if (file_exists($tmpFile))
+        {
             unlink($tmpFile);
             $deleted = true;
         }
-        $tmpFile = $finalFileNameThumb .".".$ext;
-        if (file_exists($tmpFile)) {
+        $tmpFile = $finalFileNameThumb . "." . $ext;
+        if (file_exists($tmpFile))
+        {
             unlink($tmpFile);
             $deleted = true;
         }
     }
+
     return $deleted;
 }
 
@@ -119,10 +159,9 @@ function addslashes_deep($value)
 }
 
 // If Magic Quotes is turned off, do the same thing manually..
-if (empty($_SESSION['bHasMagicQuotes']))
-{
-    foreach ($_REQUEST as $key=>$value) $value = addslashes_deep($value);
-}
+if (!isset($_SESSION['bHasMagicQuotes']))
+    foreach ($_REQUEST as $key=>$value)
+        $value = addslashes_deep($value);
 
 // Constants
 $aPropTypes = array(
@@ -155,13 +194,13 @@ if (isset($_GET["PDFEmailed"])) {
 
 // Are they adding an entire group to the cart?
 if (isset($_GET["AddGroupToPeopleCart"])) {
-    AddGroupToPeopleCart(FilterInput($_GET["AddGroupToPeopleCart"],'int'));
+    AddGroupToPeopleCart(FilterInput($_GET["AddGroupToPeopleCart"], 'int'));
     $sGlobalMessage = gettext("Group successfully added to the Cart.");
 }
 
 // Are they removing an entire group from the Cart?
 if (isset($_GET["RemoveGroupFromPeopleCart"])) {
-    RemoveGroupFromPeopleCart(FilterInput($_GET["RemoveGroupFromPeopleCart"],'int'));
+    RemoveGroupFromPeopleCart(FilterInput($_GET["RemoveGroupFromPeopleCart"], 'int'));
     $sGlobalMessage = gettext("Group successfully removed from the Cart.");
 }
 
@@ -181,13 +220,13 @@ if (isset($_GET["ProfileImageUploadedError"])) {
 
 // Are they adding a person to the Cart?
 if (isset($_GET["AddToPeopleCart"])) {
-    AddToPeopleCart(FilterInput($_GET["AddToPeopleCart"],'int'));
+    AddToPeopleCart(FilterInput($_GET["AddToPeopleCart"], 'int'));
     $sGlobalMessage = gettext("Selected record successfully added to the Cart.");
 }
 
 // Are they removing a person from the Cart?
 if (isset($_GET["RemoveFromPeopleCart"])) {
-    RemoveFromPeopleCart(FilterInput($_GET["RemoveFromPeopleCart"],'int'));
+    RemoveFromPeopleCart(FilterInput($_GET["RemoveFromPeopleCart"], 'int'));
     $sGlobalMessage = gettext("Selected record successfully removed from the Cart.");
 }
 
@@ -199,22 +238,22 @@ if (isset($_GET["Action"]) && ($_GET["Action"] == "EmptyCart")) {
 
 if (isset($_POST["BulkAddToCart"])) {
 
-    $aItemsToProcess = explode(",",$_POST["BulkAddToCart"]);
+    $aItemsToProcess = explode(",", $_POST["BulkAddToCart"]);
 
     if (isset($_POST["AndToCartSubmit"]))
     {
         if (isset($_SESSION['aPeopleCart']))
-            $_SESSION['aPeopleCart'] = array_intersect($_SESSION['aPeopleCart'],$aItemsToProcess);
+            $_SESSION['aPeopleCart'] = array_intersect($_SESSION['aPeopleCart'], $aItemsToProcess);
     }
     elseif (isset($_POST["NotToCartSubmit"]))
     {
         if (isset($_SESSION['aPeopleCart']))
-            $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'],$aItemsToProcess);
+            $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aItemsToProcess);
     }
     else
     {
         for ($iCount = 0; $iCount < count($aItemsToProcess); $iCount++) {
-            AddToPeopleCart(str_replace(",","",$aItemsToProcess[$iCount]));
+            AddToPeopleCart(str_replace(",", "", $aItemsToProcess[$iCount]));
         }
         $sGlobalMessage = $iCount . " " . gettext("item(s) added to the Cart.");
     }
@@ -232,17 +271,15 @@ function RedirectURL($sRelativeURL)
 
     if (!isset($_SESSION['sRootPath']))
     {
-      echo "Fuck, session root path not set";
-      exit;
         header('Location: Default.php?timeout');
         exit;
     }
 
     // Test if file exists before redirecting.  May need to remove
     // query string first.
-    $iQueryString = strpos($sRelativeURL,'?');
+    $iQueryString = strpos($sRelativeURL, '?');
     if ($iQueryString) {
-        $sPathExtension = substr($sRelativeURL,0,$iQueryString);
+        $sPathExtension = substr($sRelativeURL, 0, $iQueryString);
     } else {
         $sPathExtension = $sRelativeURL;
     }
@@ -252,11 +289,11 @@ function RedirectURL($sRelativeURL)
     // The Redirect URL is then in this form:
     //     $sRedirectURL = $_SESSION['sRootPath'].$sPathExtension
 
-    $sFullPath = str_replace('\\','/',$sDocumentRoot.'/'.$sPathExtension);
+    $sFullPath = str_replace('\\', '/', $sDocumentRoot . '/' . $sPathExtension);
 
     // With the query string removed we can test if file exists
     if (file_exists($sFullPath) && is_readable($sFullPath)) {
-        return ($_SESSION['sRootPath'] .'/' . $sRelativeURL);
+        return ($_SESSION['sRootPath'] . '/' . $sRelativeURL);
     } else {
         $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n";
         $sErrorMessage .= "\$sPathExtension = $sPathExtension<br>\n";
@@ -293,7 +330,6 @@ function CurrentFY()
 function PrintFYIDSelect ($iFYID, $selectName)
 {
     echo "<select name=\"" . $selectName . "\">";
-
     echo "<option value=\"0\">" . gettext("Select Fiscal Year") . "</option>";
 
     for ($fy = 1; $fy < CurrentFY() + 2; $fy++) {
@@ -301,13 +337,13 @@ function PrintFYIDSelect ($iFYID, $selectName)
         if ($iFYID == $fy)
             echo " selected";
         echo ">";
-        echo MakeFYString ($fy);
+        echo MakeFYString($fy);
     }
     echo "</select>";
 }
 
 // Formats a fiscal year string
-function MakeFYString ($iFYID)
+function MakeFYString($iFYID)
 {
     global $iFYMonth;
     $monthNow = date ("m");
@@ -338,18 +374,18 @@ function RunQuery($sSQL, $bStopOnError = true)
         return FALSE;
 }
 
-function FilterInputArr ($arr, $key, $type='string', $size=1)
+function FilterInputArr($arr, $key, $type='string', $size=1)
 {
-	if (array_key_exists ($key, $arr))
-		return FilterInput ($arr[$key], $type, $size);
-	else
-		return FilterInput ("", $type, $size);
+    if (array_key_exists($key, $arr))
+        return FilterInput($arr[$key], $type, $size);
+    else
+        return FilterInput("", $type, $size);
 }
 
 // Sanitizes user input as a security measure
 // Optionally, a filtering type and size may be specified.  By default, strip any tags from a string.
 // Note that a database connection must already be established for the mysql_real_escape_string function to work.
-function FilterInput($sInput,$type = 'string',$size = 1)
+function FilterInput($sInput, $type = 'string', $size = 1)
 {
     if (strlen($sInput) > 0)
     {
@@ -362,13 +398,13 @@ function FilterInput($sInput,$type = 'string',$size = 1)
                 $sInput = mysql_real_escape_string($sInput);
                 return $sInput;
             case 'htmltext':
-                $sInput = strip_tags(trim($sInput),'<a><b><i><u>');
+                $sInput = strip_tags(trim($sInput), '<a><b><i><u>');
                 if (get_magic_quotes_gpc())
                     $sInput = stripslashes($sInput);
                 $sInput = mysql_real_escape_string($sInput);
                 return $sInput;
             case 'char':
-                $sInput = substr(trim($sInput),0,$size);
+                $sInput = substr(trim($sInput), 0, $size);
                 if (get_magic_quotes_gpc())
                     $sInput = stripslashes($sInput);
                 $sInput = mysql_real_escape_string($sInput);
@@ -379,7 +415,7 @@ function FilterInput($sInput,$type = 'string',$size = 1)
                 return (float) floatval(trim($sInput));
             case 'date':
                 // Attempts to take a date in any format and convert it to YYYY-MM-DD format
-                return date("Y-m-d",strtotime($sInput));
+                return date("Y-m-d", strtotime($sInput));
         }
     }
     else
@@ -395,7 +431,7 @@ function FilterInput($sInput,$type = 'string',$size = 1)
 function AddVolunteerOpportunity($iPersonID, $iVolID)
 {
     $sSQL = "INSERT INTO person2volunteeropp_p2vo (p2vo_per_ID, p2vo_vol_ID) VALUES (" . $iPersonID . ", " . $iVolID . ")";
-    $result = RunQuery($sSQL,false);
+    $result = RunQuery($sSQL, false);
     return $result;
 }
 
@@ -515,7 +551,7 @@ function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddres
 
 function ChopLastCharacter($sText)
 {
-    return substr($sText,0,strlen($sText) - 1);
+    return substr($sText, 0, strlen($sText) - 1);
 }
 
 function AddToPeopleCart($sID)
@@ -577,7 +613,7 @@ function RemoveFromPeopleCart($sID)
     {
         unset($aTempArray); // may not need this line, but make sure $aTempArray is empty
         $aTempArray[] = $sID; // the only element in this array is the ID to be removed
-        $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'],$aTempArray);
+        $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aTempArray);
     }
 }
 
@@ -587,7 +623,7 @@ function RemoveArrayFromPeopleCart($aIDs)
     // we can't remove anybody if there is no cart
     if(isset($_SESSION['aPeopleCart']) && is_array($aIDs))
     {
-        $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'],$aIDs);
+        $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aIDs);
     }
 }
 
@@ -626,10 +662,10 @@ function FormatDate($dDate, $bWithTime=FALSE)
         return ('');
 
     // Verify it is a valid date
-    $sScanString = substr($dDate,0,10);
-    list($iYear, $iMonth, $iDay) = sscanf($sScanString,"%04d-%02d-%02d");
+    $sScanString = substr($dDate, 0, 10);
+    list($iYear, $iMonth, $iDay) = sscanf($sScanString, "%04d-%02d-%02d");
 
-    if ( !checkdate($iMonth,$iDay,$iYear) )
+    if ( !checkdate($iMonth, $iDay, $iYear) )
         return ('Unknown');
 
     // PHP date() function is not used because it is only robust for dates between
@@ -688,7 +724,7 @@ function ConvertToBoolean($sInput)
         else
         {
             $sInput = strtolower($sInput);
-            if (in_array($sInput,array("true","yes","si"))) {
+            if (in_array($sInput, array("true", "yes", "si"))) {
                 return True;
             } else {
                 return False;
@@ -712,38 +748,37 @@ function ConvertFromBoolean($sInput)
 //
 // Need to add other countries besides the US...
 //
-function CollapsePhoneNumber($sPhoneNumber,$sPhoneCountry)
+function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
 {
     switch ($sPhoneCountry) {
+        case "United States":
+            $sCollapsedPhoneNumber = "";
+            $bHasExtension = false;
 
-    case "United States":
-        $sCollapsedPhoneNumber = "";
-        $bHasExtension = false;
+            // Loop through the input string
+            for ($iCount = 0; $iCount <= strlen($sPhoneNumber); $iCount++) {
 
-        // Loop through the input string
-        for ($iCount = 0; $iCount <= strlen($sPhoneNumber); $iCount++) {
+                // Take one character...
+                $sThisCharacter = substr($sPhoneNumber, $iCount, 1);
 
-            // Take one character...
-            $sThisCharacter = substr($sPhoneNumber, $iCount, 1);
-
-            // Is it a number?
-            if (Ord($sThisCharacter) >= 48 && Ord($sThisCharacter) <= 57) {
-                // Yes, add it to the returned value.
-                $sCollapsedPhoneNumber .= $sThisCharacter;
+                // Is it a number?
+                if (Ord($sThisCharacter) >= 48 && Ord($sThisCharacter) <= 57) {
+                    // Yes, add it to the returned value.
+                    $sCollapsedPhoneNumber .= $sThisCharacter;
+                }
+                // Is the user trying to add an extension?
+                else if (!$bHasExtension && ($sThisCharacter == "e" || $sThisCharacter == "E")) {
+                    // Yes, add the extension identifier 'e' to the stored string.
+                    $sCollapsedPhoneNumber .= "e";
+                    // From now on, ignore other non-digits and process normally
+                    $bHasExtension = true;
+                }
             }
-            // Is the user trying to add an extension?
-            else if (!$bHasExtension && ($sThisCharacter == "e" || $sThisCharacter == "E")) {
-                // Yes, add the extension identifier 'e' to the stored string.
-                $sCollapsedPhoneNumber .= "e";
-                // From now on, ignore other non-digits and process normally
-                $bHasExtension = true;
-            }
-        }
-        break;
+            break;
 
-    default:
-        $sCollapsedPhoneNumber = $sPhoneNumber;
-        break;
+        default:
+            $sCollapsedPhoneNumber = $sPhoneNumber;
+            break;
     }
 
     return $sCollapsedPhoneNumber;
@@ -760,59 +795,58 @@ function CollapsePhoneNumber($sPhoneNumber,$sPhoneCountry)
 //
 // Need to add other countries besides the US...
 //
-function ExpandPhoneNumber($sPhoneNumber,$sPhoneCountry,&$bWeird)
+function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
 {
     $bWeird = false;
     $length = strlen($sPhoneNumber);
 
     switch ($sPhoneCountry) {
+        case "United States":
 
-    case "United States":
+            if ($length == 0)
+                return "";
 
-        if ($length == 0)
-            return "";
+            // 7 digit phone # with extension
+            else if (substr($sPhoneNumber, 7, 1) == "e")
+                return substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . " Ext." . substr($sPhoneNumber, 8, 6);
 
-        // 7 digit phone # with extension
-        else if (substr($sPhoneNumber,7,1) == "e")
-            return substr($sPhoneNumber,0,3) . "-" . substr($sPhoneNumber,3,4) . " Ext." . substr($sPhoneNumber,8,6);
+            // 10 digit phone # with extension
+            else if (substr($sPhoneNumber, 10, 1) == "e")
+                return substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . " Ext." . substr($sPhoneNumber, 11, 6);
 
-        // 10 digit phone # with extension
-        else if (substr($sPhoneNumber,10,1) == "e")
-            return substr($sPhoneNumber,0,3) . "-" . substr($sPhoneNumber,3,3) . "-" . substr($sPhoneNumber,6,4) . " Ext." . substr($sPhoneNumber,11,6);
+            else if ($length == 7)
+                return substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4);
 
-        else if ($length == 7)
-            return substr($sPhoneNumber,0,3) . "-" . substr($sPhoneNumber,3,4);
+            else if ($length == 10)
+                return substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4);
 
-        else if ($length == 10)
-            return substr($sPhoneNumber,0,3) . "-" . substr($sPhoneNumber,3,3) . "-" . substr($sPhoneNumber,6,4);
+            // Otherwise, there is something weird stored, so just leave it untouched and set the flag
+            else
+            {
+                $bWeird = true;
+                return $sPhoneNumber;
+            }
 
-        // Otherwise, there is something weird stored, so just leave it untouched and set the flag
-        else
-        {
-            $bWeird = true;
+        break;
+
+        // If the country is unknown, we don't know how to format it, so leave it untouched
+        default:
             return $sPhoneNumber;
-        }
-
-    break;
-
-    // If the country is unknown, we don't know how to format it, so leave it untouched
-    default:
-        return $sPhoneNumber;
     }
 }
 
 //
 // Prints age in years, or in months if less than one year old
 //
-function PrintAge($Month,$Day,$Year,$Flags)
+function PrintAge($Month, $Day, $Year, $Flags)
 {
-    echo FormatAge ($Month,$Day,$Year,$Flags);
+    echo FormatAge($Month, $Day, $Year, $Flags);
 }
 
 //
 // Formats an age string: age in years, or in months if less than one year old
 //
-function FormatAge($Month,$Day,$Year,$Flags)
+function FormatAge($Month, $Day, $Year, $Flags)
 {
     if (($Flags & 1) ) //||!$_SESSION['bSeePrivacyData']
     {
@@ -950,7 +984,7 @@ function displayCustomField($type, $data, $special)
         // Handler for extended text fields (MySQL type TEXT, Max length: 2^16-1)
         case 5:
             /*if (strlen($data) > 100) {
-                return substr($data,0,100) . "...";
+                return substr($data, 0, 100) . "...";
             }else{
                 return $data;
             }
@@ -976,7 +1010,7 @@ function displayCustomField($type, $data, $special)
 
         // Handler for phone numbers
         case 11:
-            return ExpandPhoneNumber($data,$special,$dummy);
+            return ExpandPhoneNumber($data, $special, $dummy);
             break;
 
         // Handler for custom lists
@@ -1009,22 +1043,22 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
     {
         // Handler for boolean fields
         case 1:
-        	echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"true\"";
-        	if ($data == 'true') {
-        		echo " checked";
-        	}
-        	echo ">".gettext("Yes");
-        	echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"false\"";
-        	if ($data == 'false') {
-        		echo " checked";
-        	}
-        	echo ">".gettext("No");
-        	echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"\"";
-        	if (strlen($data) == 0) {
-        		echo " checked";
-        	}
-        	echo ">".gettext("Unknown");
-        	break;
+            echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"true\"";
+            if ($data == 'true') {
+                echo " checked";
+            }
+            echo ">".gettext("Yes");
+            echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"false\"";
+            if ($data == 'false') {
+                echo " checked";
+            }
+            echo ">".gettext("No");
+            echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"\"";
+            if (strlen($data) == 0) {
+                echo " checked";
+            }
+            echo ">".gettext("Unknown");
+            break;
         // Handler for date fields
         case 2:
             echo "<input class=\"form-control\" type=\"text\" id=\"" . $fieldname . "\" Name=\"" . $fieldname . "\" maxlength=\"10\" size=\"15\" value=\"" . $data . "\">&nbsp;<input type=\"image\" class=\"form-control\" onclick=\"return showCalendar('$fieldname', 'y-mm-dd');\" src=\"Images/calendar.gif\"> " . gettext("[format: YYYY-MM-DD]");
@@ -1032,17 +1066,17 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
 
         // Handler for 50 character max. text fields
         case 3:
-            echo "<input class=\"form-control\" type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"50\" size=\"50\" value=\"" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "\">";
+            echo "<input class=\"form-control\" type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"50\" size=\"50\" value=\"" . htmlentities(stripslashes($data), ENT_NOQUOTES, "UTF-8") . "\">";
             break;
 
         // Handler for 100 character max. text fields
         case 4:
-            echo "<textarea class=\"form-control\" Name=\"" . $fieldname . "\" cols=\"40\" rows=\"2\" onKeyPress=\"LimitTextSize(this,100)\">" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "</textarea>";
+            echo "<textarea class=\"form-control\" Name=\"" . $fieldname . "\" cols=\"40\" rows=\"2\" onKeyPress=\"LimitTextSize(this, 100)\">" . htmlentities(stripslashes($data), ENT_NOQUOTES, "UTF-8") . "</textarea>";
             break;
 
         // Handler for extended text fields (MySQL type TEXT, Max length: 2^16-1)
         case 5:
-            echo "<textarea class=\"form-control\" Name=\"" . $fieldname . "\" cols=\"60\" rows=\"4\" onKeyPress=\"LimitTextSize(this, 65535)\">" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "</textarea>";
+            echo "<textarea class=\"form-control\" Name=\"" . $fieldname . "\" cols=\"60\" rows=\"4\" onKeyPress=\"LimitTextSize(this, 65535)\">" . htmlentities(stripslashes($data), ENT_NOQUOTES, "UTF-8") . "</textarea>";
             break;
 
         // Handler for 4-digit year
@@ -1117,11 +1151,11 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
             // this business of overloading the special field is really troublesome when trying to follow the code.
             if ($bFirstPassFlag)
                 // in this case, $special is the phone country
-                $data = ExpandPhoneNumber($data,$special,$bNoFormat_Phone);
+                $data = ExpandPhoneNumber($data, $special, $bNoFormat_Phone);
             if (isset($_POST[$fieldname . "noformat"]))
                 $bNoFormat_Phone = true;
 
-            echo "<input class=\"form-control\"  type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"30\" size=\"30\" value=\"" . htmlentities(stripslashes($data),ENT_NOQUOTES, "UTF-8") . "\">";
+            echo "<input class=\"form-control\"  type=\"text\" Name=\"" . $fieldname . "\" maxlength=\"30\" size=\"30\" value=\"" . htmlentities(stripslashes($data), ENT_NOQUOTES, "UTF-8") . "\">";
             echo "<br><input type=\"checkbox\" name=\"" . $fieldname . "noformat\" value=\"1\"";
             if ($bNoFormat_Phone) echo " checked";
             echo ">" . gettext("Do not auto-format");
@@ -1168,25 +1202,25 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = "future") {
     // two digit year maps to past or future 4 digit year.
     if (strlen($sYear) == 2) {
         $thisYear = date('Y');
-        $twoDigit = substr($thisYear,2,2);
+        $twoDigit = substr($thisYear, 2, 2);
         if ($sYear == $twoDigit) {
             // Assume 2 digit year is this year
-            $sYear = substr($thisYear,0,4);
+            $sYear = substr($thisYear, 0, 4);
         } elseif ($pasfut == "future") {
             // Assume 2 digit year is in next 99 years
             if ($sYear > $twoDigit) {
-                $sYear = substr($thisYear,0,2) . $sYear;
+                $sYear = substr($thisYear, 0, 2) . $sYear;
             } else {
                 $sNextCentury = $thisYear + 100;
-                $sYear = substr($sNextCentury,0,2) . $sYear;
+                $sYear = substr($sNextCentury, 0, 2) . $sYear;
             }
         } else {
             // Assume 2 digit year was is last 99 years
             if ($sYear < $twoDigit) {
-                $sYear = substr($thisYear,0,2) . $sYear;
+                $sYear = substr($thisYear, 0, 2) . $sYear;
             } else {
                 $sLastCentury = $thisYear - 100;
-                $sYear = substr($sLastCentury,0,2) . $sYear;
+                $sYear = substr($sLastCentury, 0, 2) . $sYear;
             }
         }
     } elseif (strlen($sYear) == 4) {
@@ -1216,9 +1250,9 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = "future") {
     }
 
     $sScanString = $sYear . "-" . $sMonth . "-" . $sDay;
-    list($iYear, $iMonth, $iDay) = sscanf($sScanString,"%04d-%02d-%02d");
+    list($iYear, $iMonth, $iDay) = sscanf($sScanString, "%04d-%02d-%02d");
 
-    if ( checkdate($iMonth,$iDay,$iYear) )  {
+    if (checkdate($iMonth, $iDay, $iYear))  {
         return $sScanString;
     } else {
         return FALSE;
@@ -1248,10 +1282,10 @@ function parseAndValidateDate($data, $locale = "US", $pasfut = "future") {
     // Determine if the delimiter is "-" or "/".  The delimiter must appear
     // twice or a FALSE will be returned.
 
-    if (substr_count($data,'-') == 2) {
+    if (substr_count($data, '-') == 2) {
         // Assume format is Y-M-D
-        $iFirstDelimiter = strpos($data,'-');
-        $iSecondDelimiter = strpos($data,'-',$iFirstDelimiter+1);
+        $iFirstDelimiter = strpos($data, '-');
+        $iSecondDelimiter = strpos($data, '-', $iFirstDelimiter+1);
 
         // Parse the year.
         $sYear = substr($data, 0, $iFirstDelimiter);
@@ -1265,10 +1299,10 @@ function parseAndValidateDate($data, $locale = "US", $pasfut = "future") {
         // Put into YYYY-MM-DD form
         return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
 
-    } elseif ((substr_count($data,'/') == 2) && ($locale == "US")) {
+    } elseif ((substr_count($data, '/') == 2) && ($locale == "US")) {
         // Assume format is M/D/Y
-        $iFirstDelimiter = strpos($data,'/');
-        $iSecondDelimiter = strpos($data,'/',$iFirstDelimiter+1);
+        $iFirstDelimiter = strpos($data, '/');
+        $iSecondDelimiter = strpos($data, '/', $iFirstDelimiter+1);
 
         // Parse the month
         $sMonth = substr($data, 0, $iFirstDelimiter);
@@ -1282,10 +1316,10 @@ function parseAndValidateDate($data, $locale = "US", $pasfut = "future") {
         // Put into YYYY-MM-DD form
         return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
 
-    } elseif (substr_count($data,'/') == 2) {
+    } elseif (substr_count($data, '/') == 2) {
         // Assume format is D/M/Y
-        $iFirstDelimiter = strpos($data,'/');
-        $iSecondDelimiter = strpos($data,'/',$iFirstDelimiter+1);
+        $iFirstDelimiter = strpos($data, '/');
+        $iSecondDelimiter = strpos($data, '/', $iFirstDelimiter+1);
 
         // Parse the day
         $sDay = substr($data, 0, $iFirstDelimiter);
@@ -1512,7 +1546,7 @@ function sqlCustomField(&$sSQL, $type, $data, $col_Name, $special)
         case 11:
             if (strlen($data) > 0) {
                 if (!isset($_POST[$col_Name . "noformat"]))
-                    $sSQL .= $col_Name . " = '" . CollapsePhoneNumber($data,$special) . "', ";
+                    $sSQL .= $col_Name . " = '" . CollapsePhoneNumber($data, $special) . "', ";
                 else
                     $sSQL .= $col_Name . " = '" . $data . "', ";
             }
@@ -1529,27 +1563,27 @@ function sqlCustomField(&$sSQL, $type, $data, $col_Name, $special)
 
 // Wrapper for number_format that uses the locale information
 // There are three modes: money, integer, and intmoney (whole number money)
-function formatNumber($iNumber,$sMode = 'integer')
+function formatNumber($iNumber, $sMode = 'integer')
 {
     global $aLocaleInfo;
 
     switch ($sMode) {
         case 'money':
-            return $aLocaleInfo["currency_symbol"] . ' ' . number_format($iNumber,$aLocaleInfo["frac_digits"],$aLocaleInfo["mon_decimal_point"],$aLocaleInfo["mon_thousands_sep"]);
+            return $aLocaleInfo["currency_symbol"] . ' ' . number_format($iNumber, $aLocaleInfo["frac_digits"], $aLocaleInfo["mon_decimal_point"], $aLocaleInfo["mon_thousands_sep"]);
             break;
 
         case 'intmoney':
-            return $aLocaleInfo["currency_symbol"] . ' ' . number_format($iNumber,0,'',$aLocaleInfo["mon_thousands_sep"]);
+            return $aLocaleInfo["currency_symbol"] . ' ' . number_format($iNumber, 0, '', $aLocaleInfo["mon_thousands_sep"]);
             break;
 
         case 'float':
             $iDecimals = 2; // need to calculate # decimals in original number
-            return number_format($iNumber,$iDecimals,$aLocaleInfo["mon_decimal_point"],$aLocaleInfo["mon_thousands_sep"]);
+            return number_format($iNumber, $iDecimals, $aLocaleInfo["mon_decimal_point"], $aLocaleInfo["mon_thousands_sep"]);
             break;
 
         case 'integer':
         default:
-            return number_format($iNumber,0,'',$aLocaleInfo["mon_thousands_sep"]);
+            return number_format($iNumber, 0, '', $aLocaleInfo["mon_thousands_sep"]);
             break;
     }
 }
@@ -1582,7 +1616,7 @@ function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSepar
         if (is_numeric($birthYear))
         {
             $dBirthDate = $birthYear . $sSeparator . $dBirthDate;
-            if (checkdate($dBirthMonth,$dBirthDay,$birthYear))
+            if (checkdate($dBirthMonth, $dBirthDay, $birthYear))
             {
                $dBirthDate = FormatDate($dBirthDate);
                     if (substr($dBirthDate, -6, 6) == ", 1000")
@@ -1640,7 +1674,7 @@ function FontFromName($fontname)
 }
 
 // Added for AddEvent.php
-function createTimeDropdown($start,$stop,$mininc,$hoursel,$minsel)
+function createTimeDropdown($start, $stop, $mininc, $hoursel, $minsel)
 {
     for ($hour = $start; $hour <= $stop; $hour++)
     {
@@ -1729,7 +1763,7 @@ function createTimeDropdown($start,$stop,$mininc,$hoursel,$minsel)
 
 // Figure out the class ID for "Member", should be one (1) unless they have been playing with the
 // classification manager.
-function FindMemberClassID ()
+function FindMemberClassID()
 {
     //Get Classifications
     $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
@@ -1750,7 +1784,7 @@ function FindMemberClassID ()
 // to insert the character string "NULL" because it will be inserted as a MySQL NULL!
 // This will produce a database error if NULL's are not allowed!  Do not use this
 // function if you intend to insert the character string "NULL" into a field.
-function MySQLquote ($sfield)
+function MySQLquote($sfield)
 {
     $sfield = trim($sfield);
 
@@ -1776,7 +1810,8 @@ function MySQLquote ($sfield)
 //Future use may be to enable a Admin option to enable these options
 //domainCheck verifies domain is valid using dns, verify uses SMTP to verify actual account exists on server
 
-function checkEmail($email, $domainCheck = false, $verify = false, $return_errors=false) {
+function checkEmail($email, $domainCheck = false, $verify = false, $return_errors = false)
+{
     global $checkEmailDebug;
     if($checkEmailDebug) {echo "<pre>";}
     # Check syntax with regex
@@ -1867,21 +1902,21 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
     }
 }
 
-function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSearchTerm = 0) {
-
+function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSearchTerm = 0)
+{
     if ($classification) {
-	if($sSearchTerm) {
-		$whereClause = " WHERE per_cls_ID='" . $classification . "' AND fam_Name LIKE '%".$sSearchTerm."%' ";
-	} else {
-		$whereClause = " WHERE per_cls_ID='" . $classification . "' ";
-	}
+        if($sSearchTerm) {
+            $whereClause = " WHERE per_cls_ID='" . $classification . "' AND fam_Name LIKE '%".$sSearchTerm."%' ";
+        } else {
+            $whereClause = " WHERE per_cls_ID='" . $classification . "' ";
+        }
         $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID $whereClause ORDER BY fam_Name";
     } else {
-	if($sSearchTerm) {
-		$whereClause = " WHERE fam_Name LIKE '%".$sSearchTerm."%' ";
-	} else {
-		$whereClause = "";
-	}
+        if($sSearchTerm) {
+            $whereClause = " WHERE fam_Name LIKE '%".$sSearchTerm."%' ";
+        } else {
+            $whereClause = "";
+        }
         $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam $whereClause ORDER BY fam_Name";
     }
 
@@ -1922,7 +1957,8 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
     return $familyArray;
 }
 
-function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse) {
+function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse)
+{
     //Get Families for the drop-down
     $familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse);
     foreach ($familyArray as $fam_ID => $fam_Data) {
@@ -1935,7 +1971,8 @@ function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse) {
     return $html;
 }
 
-function genGroupKey($methodSpecificID, $famID, $fundIDs, $date) {
+function genGroupKey($methodSpecificID, $famID, $fundIDs, $date)
+{
     $uniqueNum = 0;
     while (1) {
         $GroupKey = $methodSpecificID . "|" . $uniqueNum . "|" . $famID . "|" . $fundIDs . "|" . $date;
@@ -1950,15 +1987,16 @@ function genGroupKey($methodSpecificID, $famID, $fundIDs, $date) {
     }
 }
 
-function getMailingAddress($Address1,$Address2,$City,$State,$Zip,$Country){
-	$mailingAddress= "";
-	if ($Address1 != "") { $mailingAddress .= $Address1. " " ; }
-	if ($Address2 != "") { $mailingAddress .= $Address2. " " ; }
-	if ($City != "") { $mailingAddress .= $City . ", "; }
-	if ($State != "") { $mailingAddress .= $State; }
-	if ($Zip != "") { $mailingAddress .= " " . $Zip ." "; }
-	if ($Country != "") {$mailingAddress .= $Country; }
-	return $mailingAddress;
+function getMailingAddress($Address1, $Address2, $City, $State, $Zip, $Country)
+{
+    $mailingAddress= "";
+    if ($Address1 != "") { $mailingAddress .= $Address1. " " ; }
+    if ($Address2 != "") { $mailingAddress .= $Address2. " " ; }
+    if ($City != "") { $mailingAddress .= $City . ", "; }
+    if ($State != "") { $mailingAddress .= $State; }
+    if ($Zip != "") { $mailingAddress .= " " . $Zip ." "; }
+    if ($Country != "") {$mailingAddress .= $Country; }
+    return $mailingAddress;
 }
 
 ?>

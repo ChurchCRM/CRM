@@ -30,14 +30,14 @@ require "Include/Header.php";
 ?>
 <script language="javascript">
 function confirmDeleteOpp( Opp ) {
-var answer = confirm (<?= '"' . gettext("Are you sure you want to delete this event?") . '"' ?>)
+var answer = confirm("<?= gettext("Are you sure you want to delete this event?") ?>");
 if ( answer )
-        window.location="EventEditor.php?Opp=" + Opp + "&Action=delete"
+    window.location="EventEditor.php?Opp=" + Opp + "&Action=delete"
 }
 </script>
 <table width="100%" align="center" cellpadding="4" cellspacing="0">
   <tr>
-    <td align="center"><input type="button" class="btn" <?= 'value="' . gettext("Back to Menu") . '"' ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
+    <td align="center"><input type="button" class="btn" value="<?= gettext("Back to Menu") ?>" Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
   </tr>
 </table>
 <?php
@@ -142,7 +142,7 @@ if($numCounts)
   </caption>
   <tr>
      <td class="LabelColumn" width="15%">
-        <strong><?= gettext("Event Type").":".$aTypeID ?></strong>
+        <strong><?= gettext("Event Type") . ":" . $aTypeID ?></strong>
      </td>
      <td class="TextColumn" colspan="3" width="85%">
         <input type="text" name="newEvtName" value="<?= $aTypeName ?>" size="30" maxlength="35"> <input type="submit" Class="SmallText" Name="Action" value="<?= gettext("Save Name") ?>" class="btn">
@@ -211,7 +211,5 @@ if($numCounts)
       </tr>
 
 </table>
-<?php
 
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

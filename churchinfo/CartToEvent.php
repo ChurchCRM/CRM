@@ -24,8 +24,8 @@ require "Include/Functions.php";
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups'])
 {
-        Redirect("Menu.php");
-        exit;
+    Redirect("Menu.php");
+    exit;
 }
 
 // Was the form submitted?
@@ -41,7 +41,7 @@ if (isset($_POST["Submit"]) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
             $sSQL = "INSERT IGNORE INTO event_attend (event_id, person_id)";
             $sSQL .= " VALUES ('".$iEventID."','".$_SESSION['aPeopleCart'][$element['key']]."')";
             RunQuery($sSQL);
-        $iCount++;
+            $iCount++;
         }
 
         $sGlobalMessage = $iCount . " records(s) successfully added to selected Event.";
@@ -99,7 +99,7 @@ $rsEvents = RunQuery($sSQL);
 <?php
 }
 else
-        echo "<p align=\"center\" class=\"callout callout-warning\">" . gettext("Your cart is empty!") . "</p>";
+    echo "<p align=\"center\" class=\"callout callout-warning\">" . gettext("Your cart is empty!") . "</p>";
 
 require "Include/Footer.php";
 ?>

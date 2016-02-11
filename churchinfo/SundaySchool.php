@@ -135,7 +135,7 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 			echo "</select><br>";
 			echo "Multiple groups will have a Page Break between Groups<br>";
 			echo "<input type=\"checkbox\" Name=\"allroles\" value=\"1\" checked>"; echo "List all Roles (unchecked will list Teacher/Student roles only)";	
-			?>
+			 ?>
 		</td>
 	</tr>
 
@@ -207,9 +207,9 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 	</tr>
 
    <tr>
-      <td><input type="submit" class="btn" name="SubmitClassList" <?= 'value="' . gettext("Create Class List") . '"' ?>></td>
-      <td><input type="submit" class="btn" name="SubmitClassAttendance" <?= 'value="' . gettext("Create Attendance Sheet") . '"' ?>></td>
-      <td><input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="javascript:document.location='Menu.php';"></td>
+      <td><input type="submit" class="btn" name="SubmitClassList" value="<?= gettext("Create Class List") ?>"></td>
+      <td><input type="submit" class="btn" name="SubmitClassAttendance" value="<?= gettext("Create Attendance Sheet") ?>"></td>
+      <td><input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel") ?>" onclick="javascript:document.location='Menu.php';"></td>
    </tr>
 
 </table>

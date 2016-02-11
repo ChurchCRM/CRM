@@ -51,7 +51,7 @@ require "Include/Header.php";
 <form method="post">
 
 <center><table><tr>
-    <td class="LabelColumn"> <?php echo gettext("Export Results to CSV file") ?> </td>
+    <td class="LabelColumn"> <?= gettext("Export Results to CSV file") ?> </td>
     <td class="TextColumn"><input name="CSV" type="checkbox" id="CSV" value="1"></td>
 </tr></table></center>
 
@@ -59,7 +59,7 @@ require "Include/Header.php";
 	<textarea style="font-family:courier,fixed; font-size:9pt; padding:1;" cols="60" rows="10" name="SQL"><?= $sSQL ?></textarea>
 </p>
 <p align="center">
-	<input type="submit" class="btn" name="Submit" <?= 'value="' . gettext("Execute SQL") . '"' ?>>
+	<input type="submit" class="btn" name="Submit" value="<?= gettext("Execute SQL") ?>">
 </p>
 
 </form>
@@ -208,7 +208,7 @@ function RunFreeQuery()
 
 			if (count($aHiddenFormField) > 0)
 			{
-				?>
+				 ?>
 				<form method="post" action="CartView.php"><p align="center">
 					<input type="hidden" value="<?= join(",",$aHiddenFormField) ?>" name="BulkAddToCart">
 					<input type="submit" class="btn" name="AddToCartSubmit" value="<?php echo gettext("Add Results To Cart");?>">&nbsp;

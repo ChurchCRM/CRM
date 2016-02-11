@@ -312,16 +312,16 @@ if ($fam_ID)
 
 		// Display the family member
 	?>
-		<tr class="<?php echo $sRowClass ?>">
+		<tr class="<?= $sRowClass ?>">
 			<td>
-				<?php echo $per_FirstName . " " . $per_LastName ?>
+				<?= $per_FirstName . " " . $per_LastName ?>
 				<br>
 			</td>
 			<td>
 				<?php switch ($per_Gender) {case 1: echo gettext("Male"); break; case 2: echo gettext("Female"); break; default: echo "";} ?>&nbsp;
 			</td>
 			<td>
-				<?php echo $sFamRole ?>&nbsp;
+				<?= $sFamRole ?>&nbsp;
 			</td>
 			<td>
 				<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear, $per_Flags); ?>

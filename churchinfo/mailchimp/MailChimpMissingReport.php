@@ -31,7 +31,7 @@ if (!$mailchimp->isActive()) {
 $sSQL = "SELECT per_FirstName, per_LastName, per_Email, per_id FROM person_per where per_Email != '' order by per_DateLastEdited desc";
 $rsPeopleWithEmail = RunQuery($sSQL);
 
-?>
+ ?>
 
 <div class="row">
     <div class="col-lg-8 col-md-4 col-sm-4">
@@ -53,7 +53,7 @@ $rsPeopleWithEmail = RunQuery($sSQL);
                     if ($mailchimpList == "") { ?>
                     <tr>
                         <td><img class="contacts-list-img" src="<?= $personService->getPhoto($per_id) ?>"></td>
-                        <td><a href='<?= $personService->getViewURI($per_id) ;?>'><?= $per_FirstName . " " . $per_LastName; ?></a></td>
+                        <td><a href='<?= $personService->getViewURI($per_id) ; ?>'><?= $per_FirstName . " " . $per_LastName; ?></a></td>
                         <td><?= $per_Email; ?></td>
                     </tr>
                     <?php }
@@ -68,4 +68,4 @@ $rsPeopleWithEmail = RunQuery($sSQL);
 <?php
 
 require "../Include/Footer.php";
-?>
+ ?>

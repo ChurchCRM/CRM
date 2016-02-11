@@ -564,12 +564,12 @@ require "Include/Header.php";
 		<table border="0" cellspacing="0" cellpadding="2">
 		<td valign="top" align="left">
 		<table cellpadding="2">
-			<?php if ($dep_Type == 'Bank' and $bUseDonationEnvelopes) {?>
+			<?php if ($dep_Type == 'Bank' and $bUseDonationEnvelopes) { ?>
 			<tr>
 				<td class="PaymentLabelColumn"><?= gettext("Envelope #") ?></td>
 				<td class="TextColumn"><input type="text" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
 				<?php if (!$dep_Closed) { ?>
-				<input type="submit" class="btn" value="<?php echo gettext("Find family->"); ?>" name="MatchEnvelope">
+				<input type="submit" class="btn" value="<?= gettext("Find family->"); ?>" name="MatchEnvelope">
 				<?php } ?>
 			</td>
 			</tr>
@@ -587,7 +587,7 @@ require "Include/Header.php";
 							<option value="Other" <?php if ($iSchedule == "Other") { echo "selected"; } ?>><?= gettext("Other") ?></option>
 						</select>
 					</td>
-				<?php }?>
+				<?php } ?>
 
 			</tr>
 			<tr>
@@ -595,8 +595,8 @@ require "Include/Header.php";
 				<td class="TextColumnWithBottomBorder">
 					<select name="Method">
 						<?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "Bank" or !$iCurrentDeposit) { ?>
-						<option value="CHECK" <?php if ($iMethod == "CHECK") { echo "selected"; } ?>><?php echo gettext("CHECK"); 						?></option>
-						<option value="CASH" <?php if ($iMethod == "CASH") { echo "selected"; } ?>><?php echo gettext("CASH"); 						?></option>
+						<option value="CHECK" <?php if ($iMethod == "CHECK") { echo "selected"; } ?>><?= gettext("CHECK"); 						 ?></option>
+						<option value="CASH" <?php if ($iMethod == "CASH") { echo "selected"; } ?>><?= gettext("CASH"); 						 ?></option>
 						<?php } ?>
 						<?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "CreditCard" or !$iCurrentDeposit) { ?>
 						<option value="CREDITCARD" <?php if ($iMethod == "CREDITCARD") { echo "selected"; } ?>><?= 						gettext("Credit Card") ?></option>
@@ -605,7 +605,7 @@ require "Include/Header.php";
 						<option value="BANKDRAFT" <?php if ($iMethod == "BANKDRAFT") { echo "selected"; } ?>><?= 						gettext("Bank Draft") ?></option>
 						<?php } ?>
                                                 <?php if ($PledgeOrPayment=='Pledge') { ?>
-                                                <option value="EGIVE" <?php if ($iMethod == "EGIVE") { echo "selected"; } ?>><?php echo
+                                                <option value="EGIVE" <?php if ($iMethod == "EGIVE") { echo "selected"; } ?>><?=
                           gettext("eGive"); ?></option>
                                                 <?php } ?>
 					</select>
@@ -622,7 +622,7 @@ require "Include/Header.php";
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Fund"); ?></td>
 				<td class="TextColumnWithBottomBorder">
 					<select name="FundSplit">
-						<option value=0 <?php if (!$iSelectedFund) { echo ' selected'; } ?>><?php echo gettext("Split");?></option>
+						<option value=0 <?php if (!$iSelectedFund) { echo ' selected'; } ?>><?= gettext("Split"); ?></option>
 						<?php foreach ($fundId2Name as $fun_id => $fun_name) {
 							echo "<option value=\"" . $fun_id . "\""; if ($iSelectedFund==$fun_id) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
 						} ?>
@@ -635,8 +635,8 @@ require "Include/Header.php";
 			<tr>
 			<?php if ($iSelectedFund) { ?>
 				<td valign="top" align="left" <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Comment"); ?></td>
-				<td <?php echo "class=\"TextColumnWithBottomBorder\">"; echo "<input type=\"text\" name=\"OneComment\" id=\"OneComment\" value=\" ". $sComment[$iSelectedFund] . "\""; ?>">
-			<?php }?>
+				<td <?= "class=\"TextColumnWithBottomBorder\">"; echo "<input type=\"text\" name=\"OneComment\" id=\"OneComment\" value=\" ". $sComment[$iSelectedFund] . "\""; ?>">
+			<?php } ?>
 			</tr>
 		</table>
 		</td>
@@ -677,7 +677,7 @@ $(document).ready(function() {
 				</td>
 			</tr>
 
-			<?php if ($PledgeOrPayment=='Payment' and $dep_Type == 'Bank') {?>
+			<?php if ($PledgeOrPayment=='Payment' and $dep_Type == 'Bank') { ?>
 				<tr>
 					<td class="PaymentLabelColumn"><?= gettext("Check #") ?></td>
 					<td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"><font color="red"><?php echo $sCheckNoError ?></font></td>
@@ -697,7 +697,7 @@ $(document).ready(function() {
 
 		<tr> 
 			<td valign="top" align="left" <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Total $"); ?></td>
-			<td <?php echo "class=\"TextColumnWithBottomBorder\">"; echo "<input type=\"text\" name=\"TotalAmount\" id=\"TotalAmount\" value=\" ". $iTotalAmount . "\""; ?>">
+			<td <?= "class=\"TextColumnWithBottomBorder\">"; echo "<input type=\"text\" name=\"TotalAmount\" id=\"TotalAmount\" value=\" ". $iTotalAmount . "\""; ?>">
 		    <?php if ($PledgeOrPayment=='Payment') { ?>
 
 				<?php if (!$iSelectedFund and !$dep_Closed) { ?>
@@ -714,7 +714,7 @@ $(document).ready(function() {
 			if (($dep_Type == 'CreditCard') or ($dep_Type == 'BankDraft')) {
 ?>
 			<tr>
-				<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Choose online payment method");?></td>
+				<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">";echo gettext("Choose online payment method"); ?></td>
 				<td class="TextColumnWithBottomBorder">
 					<select name="AutoPay">
 <?php
@@ -748,9 +748,9 @@ $(document).ready(function() {
 		</td>
 
 		<tr>
-		<?php if ($bUseScannedChecks and ($dep_Type == 'Bank' or $PledgeOrPayment=='Pledge')) {?>
-			<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\" align=\"center\">"; else echo "class=\"PaymentLabelColumn\" align=\"center\">";echo gettext("Scan check");?>
-			<textarea name="ScanInput" rows="2" cols="70"><?php echo $tScanString?></textarea></td>
+		<?php if ($bUseScannedChecks and ($dep_Type == 'Bank' or $PledgeOrPayment=='Pledge')) { ?>
+			<td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\" align=\"center\">"; else echo "class=\"PaymentLabelColumn\" align=\"center\">";echo gettext("Scan check"); ?>
+			<textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea></td>
 		<?php } ?>
 
 			<td align="center">
@@ -793,7 +793,7 @@ $(document).ready(function() {
 				echo "<td class=\"TextColumn\"><input type=\"text\" size=40 name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
 				echo "</tr>";
 			}
-			?>
+			 ?>
 		</td>
 		</table>
 		</tr>
@@ -804,7 +804,4 @@ $(document).ready(function() {
 $("#Date").datepicker({format:'yyyy-mm-dd'});
 </script
 
-<?php
-
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

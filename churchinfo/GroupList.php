@@ -29,7 +29,7 @@ require 'service/GroupService.php';
 //Set the page title
 $sPageTitle = gettext('Group Listing');
 $groupService = new GroupService();
-require 'Include/Header.php';?>
+require 'Include/Header.php'; ?>
 
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
 <script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -47,12 +47,12 @@ require 'Include/Header.php';?>
 </table>
 <?php
 if ($_SESSION['bManageGroups']) 
-{?>
+{ ?>
     
     
 <br>
 <form action="#" method="get" class="form">
-    <label for="addNewGruop"><?php echo gettext("Add New Group: ");?></label>
+    <label for="addNewGruop"><?= gettext("Add New Group: "); ?></label>
     <input class="form-control newGroup" name="groupName" id="groupName" style="width:100%">
     <br>
     <button type="button" class="btn btn-primary" id ="addNewGroup" >Add New Group</button>
