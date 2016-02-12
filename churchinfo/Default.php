@@ -43,7 +43,6 @@ require 'Include/Config.php';
 $bSuppressSessionTests = TRUE;
 require 'Include/Functions.php';
 // Initialize the variables
-$sErrorText = '';
 
 // Is the user requesting to logoff or timed out?
 if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
@@ -88,7 +87,7 @@ if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
 
 $iUserID = 0;
 // Get the UserID out of user name submitted in form results
-if (isset($_POST['User']) && $sErrorText == '') {
+if (isset($_POST['User']) && !isset($sErrorText)) {
 
     // Get the information for the selected user
     $UserName = FilterInput($_POST['User'],'string',32);
@@ -97,7 +96,7 @@ if (isset($_POST['User']) && $sErrorText == '') {
     $usQueryResultSet = mysql_fetch_array($usQueryResult);
     if ($usQueryResultSet == Null){
         // Set the error text
-        $sErrorText = '&nbsp;' . gettext('Invalid login or password');
+        $sErrorText = gettext('Invalid login or password');
     }else{
         //Set user Id based on login name provided
         $iUserID = $usQueryResultSet['usr_per_id'];
@@ -130,7 +129,7 @@ if ($iUserID > 0)
     // Block the login if a maximum login failure count has been reached
     if ($iMaxFailedLogins > 0 && $usr_FailedLogins >= $iMaxFailedLogins)
     {
-        $sErrorText = '<br>' . gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
+        $sErrorText = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
     }
     // Does the password match?
     elseif ($usr_Password != $sPasswordHashSha256)
@@ -141,7 +140,7 @@ if ($iUserID > 0)
         RunQuery($sSQL);
 
         // Set the error text
-        $sErrorText = '&nbsp;' . gettext('Invalid login or password');
+        $sErrorText = gettext('Invalid login or password');
     }
     else
     {
@@ -332,20 +331,17 @@ require ("Include/HeaderNotLoggedIn.php");
         <p class="login-box-msg"><?= gettext('Please Login'); ?></p>
 
 <?php
+if (isset($_GET['timeout']))
+    $loginPageMsg = "Your previous session timed out.  Please login again.";
 
-    $loginPageMsg = '';
-    if (isset($_GET['timeout'])) {
-        $loginPageMsg = "Your previous session timed out.  Please login again.";
-    }
-    if ($sErrorText != '') {
-        $loginPageMsg = $sErrorText;
-    }
+// output warning and error messages
+if (isset($sErrorText))
+    echo '<div class="alert alert-error">' . $sErrorText . '</div>';
+if (isset($loginPageMsg))
+    echo '<div class="alert alert-warning">' . $loginPageMsg . '</div>';
+?>
 
-    if ($loginPageMsg != '') { ?>
-        <div class="alert alert-warning"><?= $loginPageMsg ?></div><?php
-    }
-
-?><form class="form-signin" role="form" method="post" name="LoginForm" action="Default.php">
+<form class="form-signin" role="form" method="post" name="LoginForm" action="Default.php">
     <div class="form-group has-feedback">
         <input type="text" id="UserBox" name="User" class="form-control" placeholder="Email/Username" required autofocus>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -371,28 +367,25 @@ require ("Include/HeaderNotLoggedIn.php");
 
 <script language="JavaScript" type="text/JavaScript">
     document.LoginForm.User.focus();
-</script><?php
+</script>
 
-    // Check if https is required:
-    // Verify that page has an authorized URL in the browser address bar.
-    // Otherwise redirect to login page.
-    // An array of authorized URL's is specified in Config.php ... $URL
-    //
-    checkAllowedURL();
-
+<?php
+// Check if the login page is following thre required URL schema
+// including the desired protocol, hiotsname, and path.
+// Otherwise redirect to login page.
+// An array of authorized URL's is specified in Config.php in the $URL array
+checkAllowedURL();
 ?>
         <!--<a href="#">I forgot my password</a><br>
         <a href="register.html" class="text-center">Register a new membership</a>-->
-
     </div>
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
 
 <?php
-// Set the page title and include HTML header
+// Add the page footer
 require ("Include/FooterNotLoggedIn.php");
-
 
 // Turn OFF output buffering
 ob_end_flush();
