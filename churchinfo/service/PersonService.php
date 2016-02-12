@@ -6,23 +6,26 @@
 
 // use ChurchCRM\members\PersonQuery as PersonQuery;
 
-class PersonService {
-
+class PersonService
+{
     private $baseURL;
     private $personQuery;
 
-    public function __construct() {
-        $this->baseURL = $_SESSION['sRootPath'];
+    public function __construct()
+    {
+        global $sRootPath;
+
+        $this->baseURL = $sRootPath;
         // $this->personQuery = = new \ChurchCRM\members\PersonQuery();
     }
 
-    function get($id) {
+    function get($id)
+    {
         //return $this->personQuery->findPK($id);
         $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email FROM person_per WHERE per_ID =' . $id;
         $person = RunQuery($sSQL);
         extract(mysql_fetch_array($person));
         return "{id: $id, fName: $per_FirstName}";
-
     }
 
     function getPhoto($id) {
@@ -102,7 +105,7 @@ class PersonService {
             return "";
         }
     }
-    
+
     function getViewURI($Id)
     {
         return $this->baseURL ."/PersonView.php?PersonID=".$Id;
@@ -127,7 +130,7 @@ class PersonService {
 
         return $return;
     }
-    
+
     function getPersonByID($per_ID)
     {
         $fetch = "SELECT per_ID, per_FirstName, LEFT(per_MiddleName,1) AS per_MiddleName, per_LastName, per_Title, per_Suffix, per_Address1, per_Address2, per_City, per_State, per_Zip, per_CellPhone, per_Country, per_Email, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_CellPhone, fam_Email
@@ -141,7 +144,7 @@ class PersonService {
 
         return $row;
     }
-    
+
     function getPersonsJSON($persons)
     {
         if ($persons)
@@ -167,7 +170,7 @@ class PersonService {
 
         return $photoFile;
     }
-    
+
     public function insertPerson($user)
     {
         $sSQL = "INSERT INTO person_per

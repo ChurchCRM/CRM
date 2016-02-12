@@ -291,7 +291,7 @@ function VancoErrorString (errNo)
 		case 67: return "Transaction must have at least one transaction fund.";
 		case 68: return "User is Inactive";
 		case 69: return "Expiration Date Invalid";
-		case 70: return "Account Type must be �C�, �S' for ACH and must be blank for Credit Card";
+		case 70: return "Account Type must be C, S' for ACH and must be blank for Credit Card";
 		case 71: return "Class Code must be PPD, CCD, TEL, WEB, RCK or blank.";
 		case 72: return "Missing Client Data: Client ID";
 		case 73: return "Missing Customer Data: Customer ID or Name or Last Name & First Name";
@@ -431,7 +431,7 @@ function VancoErrorString (errNo)
 		case 572: return "Canadian Provence Required";
 		case 573: return "Canadian Postal Code Required";
 		case 574: return "Country Code Required";
-		case 578: return "Unable to Read Card Information. Please Click �Click to Swipe� Button and Try Again.";
+		case 578: return "Unable to Read Card Information. Please Click 'Click to Swipe' Button and Try Again.";
 		case 610: return "Invalid Banking Information. Previous Notification of Change Received for this Account";
 		case 629: return "Invalid CVV2";
 		case 641: return "Fund ID Not Found";

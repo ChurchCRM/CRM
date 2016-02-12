@@ -54,7 +54,7 @@ $URL[0] = 'http://192.168.33.10/Default.php';
 error_reporting(0);
 
 // Turn on all error reporting
- error_reporting(-1);
+error_reporting(-1);
 
 // Report all errors except E_NOTICE
 // error_reporting(E_STRICT & E_ALL & ~E_NOTICE);
@@ -76,5 +76,5 @@ ini_set('display_errors', 0);
 
 // Absolute path must be specified since this file is called
 // from scripts located in other directories
-require (dirname(__FILE__).DIRECTORY_SEPARATOR.'LoadConfigs.php');
+require (dirname(__FILE__) . DIRECTORY_SEPARATOR . 'LoadConfigs.php');
 ?>
