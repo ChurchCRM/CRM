@@ -34,8 +34,6 @@ require_once ('Header-function.php');
 
 // Top level menu index counter
 $MenuFirst = 1;
-
-$sRootPath = $_SESSION['sRootPath'];
 ?>
 <!DOCTYPE HTML>
 <html>

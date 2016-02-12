@@ -157,7 +157,7 @@ function GetSecuritySettings()
 
     $sSecurityCond = " AND (security_grp = 'bALL'";
     for ($i = 0; $i < count($aSecurityList); $i++) {
-    	if (array_key_exists ($aSecurityList[$i], $_SESSION) && $_SESSION[$aSecurityList[$i]]) {
+        if (array_key_exists ($aSecurityList[$i], $_SESSION) && $_SESSION[$aSecurityList[$i]]) {
             $sSecurityCond .= " OR security_grp = '" . $aSecurityList[$i] . "'";
         }
     }
@@ -186,9 +186,9 @@ function addMenu($menu) {
     }
 }
 
-function addMenuItem($aMenu,$mIdx) {
-global $security_matrix, $sRootPath;
-	$sRootPath = $_SESSION['sRootPath'];
+function addMenuItem($aMenu,$mIdx)
+{
+    global $security_matrix, $sRootPath;
 
     $link = ($aMenu['uri'] == "") ? "" : $sRootPath."/".$aMenu['uri'];
     $text = $aMenu['statustext'];
@@ -255,8 +255,8 @@ global $security_matrix, $sRootPath;
             addMenu($aMenu['name']);
             echo "</ul>\n</li>\n";
         } else {
-			echo "</li>\n";
-		}
+            echo "</li>\n";
+        }
 
         return true;
     } else {
@@ -264,11 +264,10 @@ global $security_matrix, $sRootPath;
     }
 }
 
-function Header_body_menu() {
+function Header_body_menu()
+{
     global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
     global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
-
-	$sRootPath = $_SESSION['sRootPath'];
 
     $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
 
@@ -279,7 +278,7 @@ function Header_body_menu() {
         // Must first set a table with a background color, or content scrolls across
         // the background of the custom code when using a non-defective browser
         echo "<table width=\"100%\" bgcolor=white cellpadding=0 cellspacing=0 border=0><tr><td width=\"100%\">";
-        echo html_entity_decode($sHeader,ENT_QUOTES);
+        echo html_entity_decode($sHeader, ENT_QUOTES);
         echo "</td></tr></table>";
     }
 ?>
@@ -473,9 +472,9 @@ function addSection($menu) {
     }
 }
 
-function addEntry($aMenu) {
-
-$sRootPath = $_SESSION['sRootPath'];
+function addEntry($aMenu)
+{
+    global $sRootPath;
 
     $link = ($aMenu['uri'] == "") ? "" : $sRootPath."/".$aMenu['uri'];
     $text = $aMenu['statustext'];
