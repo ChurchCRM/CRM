@@ -45,7 +45,7 @@ require 'Include/Functions.php';
 // Initialize the variables
 
 // Is the user requesting to logoff or timed out?
-if (isset($_GET["Logoff"]) || isset($_GET['timeout'])) {
+if (isset($_GET["Logoff"]) || isset($_GET['Timeout'])) {
     if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == ''))
         $_SESSION['sshowPledges'] = 0;
     if (!isset($_SESSION['sshowPayments']) || ($_SESSION['sshowPayments'] == ''))
@@ -331,7 +331,7 @@ require ("Include/HeaderNotLoggedIn.php");
         <p class="login-box-msg"><?= gettext('Please Login'); ?></p>
 
 <?php
-if (isset($_GET['timeout']))
+if (isset($_GET['Timeout']))
     $loginPageMsg = "Your previous session timed out.  Please login again.";
 
 // output warning and error messages

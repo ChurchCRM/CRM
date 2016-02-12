@@ -59,7 +59,7 @@ if (empty($bSuppressSessionTests))  // This is used for the login page only.
     {
         if ((time() - $_SESSION['tLastOperation']) > $sSessionTimeout)
         {
-            Redirect("Default.php?timeout");
+            Redirect("Default.php?Timeout");
             exit;
         }
         else {
@@ -269,12 +269,6 @@ function RedirectURL($sRelativeURL)
     global $sRootPath;
     global $sDocumentRoot;
 
-    if (!isset($_SESSION['sRootPath']))
-    {
-        header('Location: Default.php?timeout');
-        exit;
-    }
-
     // Test if file exists before redirecting.  May need to remove
     // query string first.
     $iQueryString = strpos($sRelativeURL, '?');
@@ -285,21 +279,23 @@ function RedirectURL($sRelativeURL)
     }
 
     // The idea here is to get the file path into this form:
-    //     $sFullPath = $sDocumentRoot.$sRootPath.$sPathExtension
+    //     $sFullPath = $sDocumentRoot . $sRootPath . $sPathExtension
     // The Redirect URL is then in this form:
-    //     $sRedirectURL = $_SESSION['sRootPath'].$sPathExtension
-
+    //     $sRedirectURL = $sRootPath . $sPathExtension
     $sFullPath = str_replace('\\', '/', $sDocumentRoot . '/' . $sPathExtension);
 
     // With the query string removed we can test if file exists
-    if (file_exists($sFullPath) && is_readable($sFullPath)) {
-        return ($_SESSION['sRootPath'] . '/' . $sRelativeURL);
-    } else {
-        $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n";
-        $sErrorMessage .= "\$sPathExtension = $sPathExtension<br>\n";
-        $sErrorMessage .= "\$sDocumentRoot = $sDocumentRoot<br>\n";
-        $sErrorMessage .= "\$_SESSION['sRootPath'] = ";
-        $sErrorMessage .= $_SESSION['sRootPath'] . "<br>\n";
+    if (file_exists($sFullPath) && is_readable($sFullPath))
+    {
+        return ($sRootPath . '/' . $sRelativeURL);
+    }
+    else
+    {
+        $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n"
+                       . "\$sPathExtension = $sPathExtension<br>\n"
+                       . "\$sDocumentRoot = $sDocumentRoot<br>\n"
+                       . "\$_SESSION['sRootPath'] = "
+                       . $sRootPath . "<br>\n";
 
         die ($sErrorMessage);
     }
