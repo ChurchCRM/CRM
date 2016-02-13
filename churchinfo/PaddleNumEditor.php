@@ -138,17 +138,17 @@ $sPeopleSQL = "SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_Cit
 
 require "Include/Header.php";
 
-?>
+ ?>
 
-<form method="post" action="PaddleNumEditor.php?<?php echo "CurrentFundraiser=" . $iCurrentFundraiser . "&PaddleNumID=" . $iPaddleNumID . "&linkBack=" . $linkBack; ?>" name="PaddleNumEditor">
+<form method="post" action="PaddleNumEditor.php?<?= "CurrentFundraiser=" . $iCurrentFundraiser . "&PaddleNumID=" . $iPaddleNumID . "&linkBack=" . $linkBack; ?>" name="PaddleNumEditor">
 
 <table cellpadding="3" align="center">
 	<tr>
 		<td align="center">
-			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="PaddleNumSubmit">
-			<input type="submit" class="btn" value="<?php echo gettext("Generate Statement"); ?>" name="GenerateStatement">
+			<input type="submit" class="btn" value="<?= gettext("Save"); ?>" name="PaddleNumSubmit">
+			<input type="submit" class="btn" value="<?= gettext("Generate Statement"); ?>" name="GenerateStatement">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save and Add") . "\" name=\"PaddleNumSubmitAndAdd\">\n"; } ?>
-			<input type="button" class="btn" value="<?php echo gettext("Back"); ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="button" class="btn" value="<?= gettext("Back"); ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -159,16 +159,16 @@ require "Include/Header.php";
 			<td width="50%" valign="top" align="left">
 			<table cellpadding="3">
 				<tr>
-					<td class="LabelColumn"><?php echo gettext("Number:"); ?></td>
-					<td class="TextColumn"><input type="text" name="Num" id="Num" value="<?php echo $iNum; ?>"></td>
+					<td class="LabelColumn"><?= gettext("Number:"); ?></td>
+					<td class="TextColumn"><input type="text" name="Num" id="Num" value="<?= $iNum; ?>"></td>
 				</tr>
 				
 				<tr>
-					<td class="LabelColumn"><?php echo gettext("Buyer:"); ?>
+					<td class="LabelColumn"><?= gettext("Buyer:"); ?>
 					</td>
 					<td class="TextColumn">
 						<select name="PerID">
-							<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
+							<option value="0" selected><?= gettext("Unassigned"); ?></option>
 							<?php
 							$rsPeople = RunQuery($sPeopleSQL);
 							while ($aRow = mysql_fetch_array($rsPeople))
@@ -179,7 +179,7 @@ require "Include/Header.php";
 								echo ">" . $per_LastName . ", " . $per_FirstName;
 								echo " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 							}
-							?>
+							 ?>
 	
 						</select>
 					</td>
@@ -203,14 +203,14 @@ require "Include/Header.php";
 						} else {
 							$mb_count = 0;
 						}
-					?>
+					 ?>
 						<tr>
-							<td class="LabelColumn"><?php echo $di_title; ?></td>
-							<td class="TextColumn"><input type="text" name="MBItem<?php echo $di_ID; ?>" id="MBItem<?php echo $di_ID; ?>" value="<?php echo $mb_count; ?>"></td>
+							<td class="LabelColumn"><?= $di_title; ?></td>
+							<td class="TextColumn"><input type="text" name="MBItem<?= $di_ID; ?>" id="MBItem<?= $di_ID; ?>" value="<?= $mb_count; ?>"></td>
 						</tr>
 					<?php
 					}
-					?>
+					 ?>
 				
 			</table>
 			</td>
@@ -224,4 +224,4 @@ require "Include/Header.php";
 
 <?php
 require "Include/Footer.php";
-?>
+ ?>

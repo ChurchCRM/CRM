@@ -563,20 +563,20 @@ if ($iDepositSlipID) {
 }
 
 require "Include/Header.php";
-?>
+ ?>
 
 
-<form method="post" action="DepositSlipEditor.php?<?php echo "linkBack=" . $linkBack . "&DepositSlipID=".$iDepositSlipID?>" name="DepositSlipEditor">
+<form method="post" action="DepositSlipEditor.php?<?= "linkBack=" . $linkBack . "&DepositSlipID=".$iDepositSlipID ?>" name="DepositSlipEditor">
 
 <table cellpadding="3" align="center">
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
-			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="DepositSlipCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
-			<input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?php echo ($dep_Type == 'Bank')?>';">
-			<input type="button" class="btn" value="Download OFX" name="DownloadOFX" onclick="javascript:document.location='Reports/ExportOFX.php?deposit=<?php echo $iDepositSlipID; ?>';">
-			<input type="button" class="btn" value="<?php echo gettext("More Reports"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
+			<input type="submit" class="btn" value="<?= gettext("Save"); ?>" name="DepositSlipSubmit">
+			<input type="button" class="btn" value="<?= gettext("Cancel"); ?>" name="DepositSlipCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="button" class="btn" value="<?= gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?= ($dep_Type == 'Bank') ?>';">
+			<input type="button" class="btn" value="Download OFX" name="DownloadOFX" onclick="javascript:document.location='Reports/ExportOFX.php?deposit=<?= $iDepositSlipID; ?>';">
+			<input type="button" class="btn" value="<?= gettext("More Reports"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
 			<?php 
 			if ($iDepositSlipID and $sDepositType and !$dep_Closed) {
 				if ($sDepositType == "eGive") {
@@ -586,8 +586,8 @@ require "Include/Header.php";
 				} ?>
 
 				<?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
-					<input type="submit" class="btn" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
-    					<input type="submit" class="btn" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
+					<input type="submit" class="btn" value="<?= gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
+    					<input type="submit" class="btn" value="<?= gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
 			    	<?php } ?>
 		    <?php } ?>
 		</td>
@@ -597,8 +597,8 @@ require "Include/Header.php";
 		<td>
 		<table cellpadding="3">
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Date:"); ?></td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="DepositDate" size="11"><font color="red"><?php echo $sDateError ?></font></td>
+				<td class="LabelColumn"><?= gettext("Date:"); ?></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate; ?>" maxlength="10" id="DepositDate" size="11"><font color="red"><?= $sDateError ?></font></td>
 			</tr>
 
 			
@@ -626,21 +626,21 @@ require "Include/Header.php";
 			} else {
 				echo "<input type=hidden name=DepositType id=DepositType value=\"$sDepositType\"></td></td>";
 			}
-			?>
+			 ?>
 			
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Comment:"); ?></td>
-				<td class="TextColumn"><input type="text" size=40 name="Comment" id="Comment" value="<?php echo $sComment; ?>"></td>
+				<td class="LabelColumn"><?= gettext("Comment:"); ?></td>
+				<td class="TextColumn"><input type="text" size=40 name="Comment" id="Comment" value="<?= $sComment; ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Closed:"); ?></td>
-				<td class="TextColumn"><input type="checkbox" name="Closed" value="1" <?php if ($bClosed) echo " checked";?>><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
+				<td class="LabelColumn"><?= gettext("Closed:"); ?></td>
+				<td class="TextColumn"><input type="checkbox" name="Closed" value="1" <?php if ($bClosed) echo " checked"; ?>><?= gettext("Close deposit slip (remember to press Save)"); ?>
 <?php 
 				if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') {
 					echo "<p>" . gettext("Important note: failed transactions will be deleted permanantly when the deposit slip is closed.") . "</p>";
 				}
-?>
+ ?>
 			</tr>
 
 		</table>
@@ -682,35 +682,35 @@ require "Include/Header.php";
 	if ($totalChecks)
 		echo "<i><b>\$$totalChecks - Total Checks</b> &nbsp; (Items: $totalCheckItems)</i><br>";
 	echo "<br>";
-?>
-<b><?php echo gettext("Payments on this deposit slip:"); ?></b>
+ ?>
+<b><?= gettext("Payments on this deposit slip:"); ?></b>
 <br>
 
 <table cellpadding="5" cellspacing="0" width="100%">
 
 <tr class="TableHeader">
-	<td><?php echo gettext("Family"); ?></td>
-	<td><?php echo gettext("Date"); ?></td>
-	<td><?php echo gettext("Fiscal Year"); ?></td>
+	<td><?= gettext("Family"); ?></td>
+	<td><?= gettext("Date"); ?></td>
+	<td><?= gettext("Fiscal Year"); ?></td>
 <?php if ($dep_Type == 'Bank') { ?>
-	<td><?php echo gettext("Check #"); ?></td>
+	<td><?= gettext("Check #"); ?></td>
 <?php } ?>
-	<td><?php echo gettext("Fund"); ?></td>
-	<td><?php echo gettext("Amount"); ?></td>
-	<td><?php echo gettext("NonDeduct"); ?></td>
-	<td><?php echo gettext("Method"); ?></td>
-	<td><?php echo gettext("Comment"); ?></td>
+	<td><?= gettext("Fund"); ?></td>
+	<td><?= gettext("Amount"); ?></td>
+	<td><?= gettext("NonDeduct"); ?></td>
+	<td><?= gettext("Method"); ?></td>
+	<td><?= gettext("Comment"); ?></td>
 <?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
-	<td><?php echo gettext("Cleared"); ?></td>
+	<td><?= gettext("Cleared"); ?></td>
 <?php } ?>
 	<?php if ($dep_Closed) { ?>
-	<td><?php echo gettext("View Detail"); ?></td>
+	<td><?= gettext("View Detail"); ?></td>
 	<?php } else { ?>
-	<td><?php echo gettext("Edit"); ?></td>
-	<td><?php echo gettext("Delete"); ?></td>
+	<td><?= gettext("Edit"); ?></td>
+	<td><?= gettext("Delete"); ?></td>
 	<?php } ?>
 <?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
-	<td><?php echo gettext("Details"); ?></td>
+	<td><?= gettext("Details"); ?></td>
 <?php } ?>
 </tr>
 
@@ -771,37 +771,37 @@ foreach ($depositArray as $order => $value) {
 		$sRowClass = "PaymentRowColorA";
 	else
 		$sRowClass = "PaymentRowColorB";
-	?>
+	 ?>
 
-	<tr class="<?php echo $sRowClass ?>">
+	<tr class="<?= $sRowClass ?>">
 		<td>
-			<?php echo $FamilyName ?>&nbsp;
+			<?= $FamilyName ?>&nbsp;
 		</td>
 		<td>
-			<?php echo $plg_date ?>&nbsp;
+			<?= $plg_date ?>&nbsp;
 		</td>
 		<td>
-			<?php echo MakeFYString ($plg_FYID) ?>&nbsp;
+			<?= MakeFYString ($plg_FYID) ?>&nbsp;
 		</td>
 <?php if ($dep_Type == 'Bank') { ?>
 		<td>
-			<?php echo $plg_CheckNo ?>&nbsp;
+			<?= $plg_CheckNo ?>&nbsp;
 		</td>
 <?php } ?>
 		<td>
-			<?php echo $fundName ?>&nbsp;
+			<?= $fundName ?>&nbsp;
 		</td>
 		<td align=center>
-			<?php echo $plg_amount ?>&nbsp;
+			<?= $plg_amount ?>&nbsp;
 		</td>
 		<td align=center>
-			<?php echo $plg_NonDeductible ?>&nbsp;
+			<?= $plg_NonDeductible ?>&nbsp;
 		</td>
 		<td>
-			<?php echo $plg_method; ?>&nbsp;
+			<?= $plg_method; ?>&nbsp;
 		</td>
 		<td>
-			<?php echo $plg_comment; ?>&nbsp;
+			<?= $plg_comment; ?>&nbsp;
 		</td>
 <?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
 		<td>
@@ -810,35 +810,35 @@ foreach ($depositArray as $order => $value) {
 <?php } ?>
 		<?php if ($dep_Closed) { ?>
 		<td>
-			<a href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">View</a>
+			<a href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID; ?>">View</a>
 		</td>
 		<?php } else { ?>
 		<td>
-			<a href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Edit</a>
+			<a href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID; ?>">Edit</a>
 		</td>
 		<td>
-			<a href="PledgeDelete.php?GroupKey=<?php echo $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Delete</a>
+			<a href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID; ?>">Delete</a>
 		</td>
 		<?php } ?>
 <?php if ($dep_Type == 'BankDraft' || $dep_Type == 'CreditCard') { ?>
 		<td>
-			<a href="PledgeDetails.php?PledgeID=<?php echo $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID;?>">Details</a>
+			<a href="PledgeDetails.php?PledgeID=<?= $plg_plgID . "&linkBack=DepositSlipEditor.php?DepositSlipID=" . $iDepositSlipID; ?>">Details</a>
 		</td>
 <?php } ?>
 	</tr>
 <?php
 }
 } // while
-?>
+ ?>
 
 </table>
 
 <?php
 }
-?>
+ ?>
 <script>
 $("#DepositDate").datepicker({format:'yyyy-mm-dd'});
 </script>
 <?php
 require "Include/Footer.php";
-?>
+ ?>

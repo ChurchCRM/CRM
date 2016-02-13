@@ -36,7 +36,7 @@ $sPageTitle = gettext("Financial Reports");
 if ($sReportType)
     $sPageTitle .= ": $sReportType";
 require "Include/Header.php";
-?>
+ ?>
 <div class="box box-body">
 
 <?php 
@@ -114,7 +114,7 @@ if ($sReportType == "") {
         $rsClassifications = RunQuery($sSQL);
         ?>
         <tr>
-                <td class="LabelColumn"><?php echo gettext("Classification:")?><br></td>
+                <td class="LabelColumn"><?= gettext("Classification:") ?><br></td>
                 <td class=TextColumnWithBottomBorder><div class=SmallText>
                     </div><select name="classList[]" style="width:100%" multiple id="classList">
                     <?php
@@ -137,8 +137,8 @@ if ($sReportType == "") {
         <?php
 
         $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
-        $rsFamilies = RunQuery($sSQL);?>
-        <tr><td class=LabelColumn><?php echo gettext("Filter by Family:")?><br></td>
+        $rsFamilies = RunQuery($sSQL); ?>
+        <tr><td class=LabelColumn><?= gettext("Filter by Family:") ?><br></td>
         <td class=TextColumnWithBottomBorder>
             <select name="family[]" id="family" multiple style="width:100%">
         <?php
@@ -228,7 +228,7 @@ if ($sReportType == "") {
         $rsFunds = RunQuery($sSQL);
         ?>
         
-        <tr><td class="LabelColumn"><?php echo gettext("Filter by Fund:")?><br></td>
+        <tr><td class="LabelColumn"><?= gettext("Filter by Fund:") ?><br></td>
         <td><select name="funds[]" multiple id="fundsList" style="width:100%">
         <?php
         while ($aRow = mysql_fetch_array($rsFunds)) {
@@ -334,7 +334,7 @@ if ($sReportType == "") {
         <input type=submit class=btn name=Submit2 value='" . gettext("Create Report") . "'>
         </td></tr></table></form>";
 }
-?>
+ ?>
 <script>
 $("#DateStart").datepicker({format:'yyyy-mm-dd'});
 $("#DateEnd").datepicker({format:'yyyy-mm-dd'});
@@ -378,4 +378,4 @@ $("#clearAllFunds").click(function () {
 </div>
 <?php
 require "Include/Footer.php";
-?>
+ ?>

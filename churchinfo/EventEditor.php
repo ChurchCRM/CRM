@@ -387,11 +387,11 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
 }
 
 // Construct the form
-?>
+ ?>
 
 <form method="post" action="EventEditor.php" name="EventsEditor">
-<input type="hidden" name="EventID" value="<?php echo ($iEventID); ?>">
-<input type="hidden" name="EventExists" value="<?php echo $EventExists ;?>">
+<input type="hidden" name="EventID" value="<?= ($iEventID); ?>">
+<input type="hidden" name="EventExists" value="<?= $EventExists ; ?>">
 <?php // used to be ($iEventID ? $iEventID : $aEventID_POST['EID']) ?>
 <table cellpadding="3" width="75%" align="center">
   <caption>
@@ -404,7 +404,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
         ?></h3>
   </caption>
   <tr>
-    <td colspan="4" align="center"><input type="button" class="btn" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
+    <td colspan="4" align="center"><input type="button" class="btn" <?= 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
   </tr>
   <tr>
     <td colspan="4" align="center">
@@ -420,37 +420,37 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
     </td>
   </tr>
   <tr>
-    <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Type:"); ?></td>
+    <td class="LabelColumn"><font color="#ff0000">*</font><?= gettext("Event Type:"); ?></td>
     <td colspan="3" class="TextColumn">
-    <input type="hidden" name="EventTypeName" value="<?php echo ($sTypeName); ?>">
-    <input type="hidden" name="EventTypeID" value="<?php echo ($iTypeID); ?>">
-    <?php echo ($iTypeID."-".$sTypeName); ?>
+    <input type="hidden" name="EventTypeName" value="<?= ($sTypeName); ?>">
+    <input type="hidden" name="EventTypeID" value="<?= ($iTypeID); ?>">
+    <?= ($iTypeID."-".$sTypeName); ?>
     </td>
   </tr>
   
   <tr>
-    <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Title:"); ?></td>
+    <td class="LabelColumn"><font color="#ff0000">*</font><?= gettext("Event Title:"); ?></td>
     <td colspan="1" class="TextColumn">
-      <input type="text" name="EventTitle" value="<?php echo ($sEventTitle); ?>" size="30" maxlength="100">
+      <input type="text" name="EventTitle" value="<?= ($sEventTitle); ?>" size="30" maxlength="100">
       <?php if ( $bTitleError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a title.") . "</span></div>"; ?>
     </td>
-    <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Desc:"); ?></td>
+    <td class="LabelColumn"><font color="#ff0000">*</font><?= gettext("Event Desc:"); ?></td>
     <td colspan="1" class="TextColumn">
-      <input type="text" name="EventDesc" value="<?php echo ($sEventDesc); ?>" size="30" maxlength="100">
+      <input type="text" name="EventDesc" value="<?= ($sEventDesc); ?>" size="30" maxlength="100">
       <?php if ( $bDescError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a description.") . "</span></div>"; ?>
     </td>
   </tr>
   
   <tr>
     <td class="LabelColumn"><font color="#ff0000">*</font>
-      <?php echo gettext("Start Date:"); ?>
+      <?= gettext("Start Date:"); ?>
     </td>
     <td class="TextColumn">
-      <input type="text" name="EventStartDate" value="<?php echo ($sEventStartDate); ?>" maxlength="10" id="EventStartDate" size="11">
+      <input type="text" name="EventStartDate" value="<?= ($sEventStartDate); ?>" maxlength="10" id="EventStartDate" size="11">
       <?php if ( $bESDError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a start date.") . "</span></div>"; ?>
     </td>
     <td class="LabelColumn"><font color="#ff0000">*</font>
-      <?php echo gettext("Start Time:"); ?>
+      <?= gettext("Start Time:"); ?>
     </td>
     <td class="TextColumn">
      <div class="input-group bootstrap-timepicker timepicker">
@@ -461,13 +461,13 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   </tr> 
   <tr>
     <td class="LabelColumn">
-      <?php echo gettext("End Date:"); ?>
+      <?= gettext("End Date:"); ?>
     </td>
     <td class="TextColumn">
-      <input type="text" name="EventEndDate" value="<?php echo ($sEventEndDate); ?>" maxlength="10" id="EventEndDate" size="11">
+      <input type="text" name="EventEndDate" value="<?= ($sEventEndDate); ?>" maxlength="10" id="EventEndDate" size="11">
     </td>
     <td class="LabelColumn">
-      <?php echo gettext("End Time:"); ?>
+      <?= gettext("End Time:"); ?>
     </td>
     <td class="TextColumn">
      <div class="input-group bootstrap-timepicker timepicker">
@@ -477,9 +477,9 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   </tr>  
  
   <tr>
-    <td class="LabelColumn"><?php echo gettext("Attendance Counts"); ?></td>
+    <td class="LabelColumn"><?= gettext("Attendance Counts"); ?></td>
     <td class="TextColumn" colspan="3">
-      <input type="hidden" name="NumAttendCounts" value="<?php echo $nCnts; ?>"> 
+      <input type="hidden" name="NumAttendCounts" value="<?= $nCnts; ?>"> 
       <?php
       if($nCnts==0){
       echo gettext("No Attendance counts recorded");
@@ -489,19 +489,19 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
       <?php
       for ($c=0; $c<$nCnts; $c++){
         ?><tr>
-          <td><strong><?php echo ($aCountName[$c].": "); ?></strong></td>
+          <td><strong><?= ($aCountName[$c].": "); ?></strong></td>
         <td>
-        <input type="text" name="EventCount[]" value="<?php echo ($aCount[$c]);?>" size="8">
-        <input type="hidden" name="EventCountID[]" value="<?php echo ($aCountID[$c]);?>">
-        <input type="hidden" name="EventCountName[]" value="<?php echo ($aCountName[$c]);?>">
+        <input type="text" name="EventCount[]" value="<?= ($aCount[$c]); ?>" size="8">
+        <input type="hidden" name="EventCountID[]" value="<?= ($aCountID[$c]); ?>">
+        <input type="hidden" name="EventCountName[]" value="<?= ($aCountName[$c]); ?>">
         </td>
         </tr>
       <?php
       } //end for loop
       ?>
       <tr>
-      <td><strong><?php echo gettext("Attendance Notes: "); ?></strong></td>
-        <td><input type="text" name="EventCountNotes" value="<?php echo $sCountNotes; ?>">
+      <td><strong><?= gettext("Attendance Notes: "); ?></strong></td>
+        <td><input type="text" name="EventCountNotes" value="<?= $sCountNotes; ?>">
         </td>
         </tr>
         </table>
@@ -512,20 +512,20 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   </tr>  
   
   <tr>
-    <td class="LabelColumn"><?php echo gettext("Event Sermon:"); ?></td>
-    <td colspan="3" class="TextColumn"><textarea name="EventText" rows="5" cols="80"><?php echo ($sEventText); ?></textarea></td>
+    <td class="LabelColumn"><?= gettext("Event Sermon:"); ?></td>
+    <td colspan="3" class="TextColumn"><textarea name="EventText" rows="5" cols="80"><?= ($sEventText); ?></textarea></td>
   </tr>
 
   <tr>
-    <td class="LabelColumn"><font color="#ff0000">*</font><?php echo gettext("Event Status:"); ?></td>
+    <td class="LabelColumn"><font color="#ff0000">*</font><?= gettext("Event Status:"); ?></td>
     <td colspan="3" class="TextColumn">
-      <input type="radio" name="EventStatus" value="0"<?php if ($iEventStatus == 0) echo " checked";?>> Active <input type="radio" name="EventStatus" value="1"<?php if ($iEventStatus == 1) echo " checked"; ?>> Inactive
+      <input type="radio" name="EventStatus" value="0"<?php if ($iEventStatus == 0) echo " checked"; ?>> Active <input type="radio" name="EventStatus" value="1"<?php if ($iEventStatus == 1) echo " checked"; ?>> Inactive
       <?php if ( $bStatusError ) echo "<div><span style=\"color: red;\">" . gettext("Is this Active or Inactive?") . "</span></div>"; ?>
     </td>
   </tr>
   
   <tr>
-    <td colspan="2" align="center"><input type="submit" name="SaveChanges" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> class="btn"></td>
+    <td colspan="2" align="center"><input type="submit" name="SaveChanges" <?= 'value="' . gettext("Save Changes") . '"'; ?> class="btn"></td>
   </tr>
 </table>
 </form>

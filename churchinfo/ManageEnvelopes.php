@@ -87,7 +87,7 @@ while ($aRow = mysql_fetch_array($rsClassifications)) {
 
 require "Include/Header.php";
 
-?>
+ ?>
 
 <div class="box box-body">
 <form method="post" action="ManageEnvelopes.php" name="ManageEnvelopes">
@@ -119,7 +119,7 @@ if (isset($_POST["PrintReport"])) {
 
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateEnvelopesModal"><?php echo gettext("Update Family Records"); ?></button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateEnvelopesModal"><?= gettext("Update Family Records"); ?></button>
 <button type="submit" class="btn" name="PrintReport"><i class="fa fa-print"></i></button>
 
 <br><br>
@@ -130,14 +130,14 @@ if (isset($_POST["PrintReport"])) {
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="upload-Image-label"><?php echo gettext("Update Envelopes") ?></h4>
+                    <h4 class="modal-title" id="upload-Image-label"><?= gettext("Update Envelopes") ?></h4>
                 </div>
                 <div class="modal-body">
                 <span style="color:red">This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?</span>
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-primary" value="<?php echo gettext("Confirm"); ?>" name="Confirm">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo gettext("Cancel"); ?></button>
+                    <input type="submit" class="btn btn-primary" value="<?= gettext("Confirm"); ?>" name="Confirm">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel"); ?></button>
                 </div>
             </div>
     </div>
@@ -149,7 +149,7 @@ if (isset($_POST["PrintReport"])) {
     <th>
     <b>Family Select</b> with at least one: 
         <select name="Classification">
-        <option value="0"><?php echo gettext("All"); ?></option>
+        <option value="0"><?= gettext("All"); ?></option>
         <?php
         foreach ($classification as $lst_OptionID => $lst_OptionName) {
             echo "<option value=\"" . $lst_OptionID . "\"";
@@ -158,19 +158,19 @@ if (isset($_POST["PrintReport"])) {
         }
         ?>
         </select>
-        <input type="submit" class="btn" value="<?php echo gettext("Sort by"); ?>" name="Sort">
+        <input type="submit" class="btn" value="<?= gettext("Sort by"); ?>" name="Sort">
         <input type="radio" Name="SortBy" value="name"
-        <?php if ($sSortBy == "name") echo " checked"; ?>><?php echo gettext("Last Name"); ?>
+        <?php if ($sSortBy == "name") echo " checked"; ?>><?= gettext("Last Name"); ?>
         <input type="radio" Name="SortBy" value="envelope"
-        <?php if ($sSortBy == "envelope") echo " checked"; ?>><?php echo gettext("Envelope #"); ?>
+        <?php if ($sSortBy == "envelope") echo " checked"; ?>><?= gettext("Envelope #"); ?>
     </th>
     <th>
         <b>Envelope</b>
-        <input type="submit" class="btn" value="<?php echo gettext("Zero"); ?>"
+        <input type="submit" class="btn" value="<?= gettext("Zero"); ?>"
                  name="ZeroAll">
-        <input type="submit" class="btn" value="<?php echo gettext("Assign starting at #"); ?>"
+        <input type="submit" class="btn" value="<?= gettext("Assign starting at #"); ?>"
                  name="AssignAllFamilies">
-        <input type="text" name="AssignStartNum" value="<?php echo $iAssignStartNum; ?>" maxlength="5">
+        <input type="text" name="AssignStartNum" value="<?= $iAssignStartNum; ?>" maxlength="5">
     </th>
 </tr>
 </thead>
@@ -200,12 +200,12 @@ foreach ($arrayToLoop as $fam_ID => $value) {
         $duplicateEnvelopeHash[$envelope] = $fam_ID;
         $tdTag = "<td>";
     }
-    echo $tdTag;?><class="TextColumn">
-    <input type="text" name="EnvelopeID_<?php echo $fam_ID; ?>" value="<?php echo $envelope; ?>" maxlength="10">
+    echo $tdTag; ?><class="TextColumn">
+    <input type="text" name="EnvelopeID_<?= $fam_ID; ?>" value="<?= $envelope; ?>" maxlength="10">
     </td></tr>
     <?php
 }
-?>    
+ ?>    
 </table><br>
 </form>
 </div>
@@ -231,4 +231,4 @@ function getEnvelopes($classification) {
 }
 
 require "Include/Footer.php";
-?>
+ ?>

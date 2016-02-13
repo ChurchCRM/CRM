@@ -26,7 +26,7 @@ if (!$_SESSION['bAdmin'])
 
 $sPageTitle = gettext("Custom Person Fields Editor");
 
-require "Include/Header.php";?>
+require "Include/Header.php"; ?>
 
 
 <div class="box box-body">
@@ -290,11 +290,11 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt='bAll') {
 }
 
 // Construct the form
-?>
+ ?>
 <script language="javascript">
 
 function confirmDeleteField(event) {
-	var answer = confirm (<?php echo "'" . gettext("Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!") . "'"; ?>)
+	var answer = confirm (<?= "'" . gettext("Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!") . "'"; ?>)
 	if ( answer )
 	{
         window.location=href="PersonCustomFieldsRowOps.php?Field="+event+"&Action=delete"
@@ -307,7 +307,7 @@ function confirmDeleteField(event) {
 
 <div class="alert alert-warning">
 		<i class="fa fa-ban"></i>
-		<?php echo gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"); ?>
+		<?= gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"); ?>
 </div>
 <form method="post" action="PersonCustomFieldsEditor.php" name="PersonCustomFieldsEditor">
 
@@ -316,44 +316,44 @@ function confirmDeleteField(event) {
 <?php
 if ($numRows == 0)
 {
-?>
-	<center><h2><?php echo gettext("No custom person fields have been added yet"); ?></h2>
+ ?>
+	<center><h2><?= gettext("No custom person fields have been added yet"); ?></h2>
 	</center>
 <?php
 }
 else
 {
-?>
+ ?>
 	<tr><td colspan="6">
 	<?php
 	if ( $bErrorFlag ) echo "<span class=\"LargeText\" style=\"color: red;\"><BR>" . gettext("Invalid fields or selections. Changes not saved! Please correct and try again!") . "</span>";
-	?>
+	 ?>
 	</td></tr>
 
 		<tr>
-			<th><?php echo gettext("Type"); ?></th>
-			<th><?php echo gettext("Name"); ?></th>
-			<th><?php echo gettext("Special option"); ?></th>
-			<th><?php echo gettext("Security Option"); ?></th>
-			<th><?php echo gettext("Person-View Side"); ?></th>
-            <th><?php echo gettext("Delete"); ?></th>
+			<th><?= gettext("Type"); ?></th>
+			<th><?= gettext("Name"); ?></th>
+			<th><?= gettext("Special option"); ?></th>
+			<th><?= gettext("Security Option"); ?></th>
+			<th><?= gettext("Person-View Side"); ?></th>
+            <th><?= gettext("Delete"); ?></th>
 		</tr>
 
 	<?php
 
 	for ($row=1; $row <= $numRows; $row++)
 	{
-		?>
+		 ?>
 		<tr>
 			<td class="TextColumn">
-                <?php echo $aPropTypes[$aTypeFields[$row]];	?>
+                <?= $aPropTypes[$aTypeFields[$row]];	 ?>
 			</td>
 			<td class="TextColumn" align="center">
-                <input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="35" maxlength="40">
+                <input type="text" name="<?= $row . "name"; ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="35" maxlength="40">
 				<?php
 				if (array_key_exists ($row, $aNameErrors) && $aNameErrors[$row])
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
-				?>
+				 ?>
 			</td>
 			<td class="TextColumn" align="center">
 			<?php
@@ -381,7 +381,7 @@ else
 				echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=custom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">" . gettext("Edit List Options") . "</a>";
 			else
 				echo "&nbsp;";
-			?>
+			 ?>
 
 			</td>
 			<td class="TextColumn" align="center" nowrap>
@@ -391,14 +391,14 @@ else
 				} else {
 					echo GetSecurityList($aSecurityGrp, $row . "FieldSec");
 				}
-				?>
+				 ?>
 			</td>
 			<td class="TextColumn" align="center" nowrap>
-				<input type="radio" Name="<?php echo $row . "side" ?>" value="0" <?php if (!$aSideFields[$row]) echo " checked" ?>><?php echo gettext("Left"); ?>
-				<input type="radio" Name="<?php echo $row . "side" ?>" value="1" <?php if ($aSideFields[$row]) echo " checked" ?>><?php echo gettext("Right"); ?>
+				<input type="radio" Name="<?= $row . "side" ?>" value="0" <?php if (!$aSideFields[$row]) echo " checked" ?>><?= gettext("Left"); ?>
+				<input type="radio" Name="<?= $row . "side" ?>" value="1" <?php if ($aSideFields[$row]) echo " checked" ?>><?= gettext("Right"); ?>
 			</td>
             <td>
-                <input type="button" class="btn btn-danger" value="<?php echo gettext("delete"); ?>"   name="delete" onclick="return confirmDeleteField(<?php echo "'" . $aFieldFields[$row] . "'"; ?>);")">
+                <input type="button" class="btn btn-danger" value="<?= gettext("delete"); ?>"   name="delete" onclick="return confirmDeleteField(<?= "'" . $aFieldFields[$row] . "'"; ?>);")">
             </td>
             <td class="TextColumn" width="5%" nowrap>
 				<?php
@@ -406,7 +406,7 @@ else
 					echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
 				if ($row < $numRows)
 					echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
-				?>
+				 ?>
 				
 			</td>
 		</tr>
@@ -418,7 +418,7 @@ else
 				<tr>
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="btn btn-primary" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
+						<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -434,7 +434,7 @@ else
 				<tr>
 					<td width="15%"></td>
 					<td valign="top">
-					<div><?php echo gettext("Type:"); ?></div>
+					<div><?= gettext("Type:"); ?></div>
 					<?php
 						echo "<select name=\"newFieldType\">";
 
@@ -444,30 +444,30 @@ else
 							echo ">" . $aPropTypes[$iOptionID] ."</option>";
 						}
 						echo "</select>";
-					?><BR>
-					<a href="http://docs.churchcrm.io/"><?php echo gettext("Help on types.."); ?></a>
+					 ?><BR>
+					<a href="http://docs.churchcrm.io/"><?= gettext("Help on types.."); ?></a>
 					</td>
 					<td valign="top">
-						<div><?php echo gettext("Name:"); ?></div>
+						<div><?= gettext("Name:"); ?></div>
 						<input type="text" name="newFieldName" size="30" maxlength="40">
 						<?php
 							if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name") . "</span></div>";
 							if ( $bDuplicateNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("That field name already exists.") . "</span></div>";
-						?>
+						 ?>
 						&nbsp;
 					</td>
 					<td valign="top" nowrap>
-						<div><?php echo gettext("Side:"); ?></div>
-						<input type="radio" name="newFieldSide" value="0" checked><?php echo gettext("Left"); ?>
-						<input type="radio" name="newFieldSide" value="1"><?php echo gettext("Right"); ?>
+						<div><?= gettext("Side:"); ?></div>
+						<input type="radio" name="newFieldSide" value="0" checked><?= gettext("Left"); ?>
+						<input type="radio" name="newFieldSide" value="1"><?= gettext("Right"); ?>
 						&nbsp;
 					</td>
 					<td valign="top" nowrap>
-						<div><?php echo gettext("Security Option"); ?></div>
-						<?php echo GetSecurityList($aSecurityGrp, "newFieldSec"); ?>
+						<div><?= gettext("Security Option"); ?></div>
+						<?= GetSecurityList($aSecurityGrp, "newFieldSec"); ?>
 					</td>
 					<td>
-						<input type="submit" class="btn btn-primary" <?php echo 'value="' . gettext("Add New Field") . '"'; ?> Name="AddField">
+						<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Add New Field") . '"'; ?> Name="AddField">
 					</td>
 					<td width="15%"></td>
 				</tr>

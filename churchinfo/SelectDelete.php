@@ -214,7 +214,7 @@ else
 
 require "Include/Header.php";
 
-?>
+ ?>
 <div class="box">
 	<div class="box-body">
 <?php
@@ -306,19 +306,19 @@ if($sMode == 'person')
 				 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 				 WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
 		$rsPledges = RunQuery($sSQL);
-		?>
+		 ?>
 		<table cellpadding="5" cellspacing="0" width="100%">
 			<tr class="TableHeader">
-			<td><?php echo gettext("Type"); ?></td>
-			<td><?php echo gettext("Fund"); ?></td>
-			<td><?php echo gettext("Fiscal Year"); ?></td>
-			<td><?php echo gettext("Date"); ?></td>
-			<td><?php echo gettext("Amount"); ?></td>
-			<td><?php echo gettext("Schedule"); ?></td>
-			<td><?php echo gettext("Method"); ?></td>
-			<td><?php echo gettext("Comment"); ?></td>
-			<td><?php echo gettext("Date Updated"); ?></td>
-			<td><?php echo gettext("Updated By"); ?></td>
+			<td><?= gettext("Type"); ?></td>
+			<td><?= gettext("Fund"); ?></td>
+			<td><?= gettext("Fiscal Year"); ?></td>
+			<td><?= gettext("Date"); ?></td>
+			<td><?= gettext("Amount"); ?></td>
+			<td><?= gettext("Schedule"); ?></td>
+			<td><?= gettext("Method"); ?></td>
+			<td><?= gettext("Comment"); ?></td>
+			<td><?= gettext("Date Updated"); ?></td>
+			<td><?= gettext("Updated By"); ?></td>
 		</tr>
 		<?php
 		$tog = 0;
@@ -348,18 +348,18 @@ if($sMode == 'person')
 				else
 					$sRowClass = "PaymentRowColorB";
 			}
-			?>
-			<tr class="<?php echo $sRowClass ?>">
-				<td><?php echo $plg_PledgeOrPayment ?>&nbsp;</td>
-				<td><?php echo $fundName ?>&nbsp;</td>
-				<td><?php echo MakeFYString ($plg_FYID) ?>&nbsp;</td>
-				<td><?php echo $plg_date ?>&nbsp;</td>
-				<td><?php echo $plg_amount ?>&nbsp;</td>
-				<td><?php echo $plg_schedule ?>&nbsp;</td>
-				<td><?php echo $plg_method; ?>&nbsp;</td>
-				<td><?php echo $plg_comment; ?>&nbsp;</td>
-				<td><?php echo $plg_DateLastEdited; ?>&nbsp;</td>
-				<td><?php echo $EnteredFirstName . " " . $EnteredLastName; ?>&nbsp;</td>
+			 ?>
+			<tr class="<?= $sRowClass ?>">
+				<td><?= $plg_PledgeOrPayment ?>&nbsp;</td>
+				<td><?= $fundName ?>&nbsp;</td>
+				<td><?= MakeFYString ($plg_FYID) ?>&nbsp;</td>
+				<td><?= $plg_date ?>&nbsp;</td>
+				<td><?= $plg_amount ?>&nbsp;</td>
+				<td><?= $plg_schedule ?>&nbsp;</td>
+				<td><?= $plg_method; ?>&nbsp;</td>
+				<td><?= $plg_comment; ?>&nbsp;</td>
+				<td><?= $plg_DateLastEdited; ?>&nbsp;</td>
+				<td><?= $EnteredFirstName . " " . $EnteredLastName; ?>&nbsp;</td>
 			</tr>
 			<?php
 		}
@@ -390,9 +390,9 @@ if($sMode == 'person')
 		echo "<a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . "\">" . gettext("Delete Family Record AND Family Members") . "</a> ";
 		echo "<a class='btn btn-info' href=\"FamilyView.php?FamilyID=".$iFamilyID."\">" . gettext("No, cancel this deletion</a>") . "</p>";
 	}
-}?>
+} ?>
 	</div>
 </div>
 <?php
 require "Include/Footer.php";
-?>
+ ?>

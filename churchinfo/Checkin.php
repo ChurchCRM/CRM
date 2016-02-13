@@ -54,18 +54,18 @@ $rsEvents = RunQuery($sSQL);
 
 //Page loading for the first time
 if (!isset($_POST['EventID']) && !isset($_POST['Verify']) && !isset($_POST['Add']) && !isset($_POST['Checkout']) || isset($_POST['Exit']) ) {
-?>
+ ?>
 
-	<p align="center"><?php echo gettext("Select the event to which you would like to check people in for:"); ?></p>
+	<p align="center"><?= gettext("Select the event to which you would like to check people in for:"); ?></p>
 	<form name="Checkin" action="Checkin.php" method="POST">
 	<table align="center" >
 			<?php if ($sGlobalMessage) { ?>
 			<tr>
-			  <td colspan="2"><?php echo $sGlobalMessage; ?></td>
+			  <td colspan="2"><?= $sGlobalMessage; ?></td>
 			</tr>
 			<?php } ?>
 			<tr>
-					<td class="LabelColumn"><?php echo gettext("Select Event:"); ?></td>
+					<td class="LabelColumn"><?= gettext("Select Event:"); ?></td>
 					<td class="TextColumn">
                       <?php
 							// Create the group select drop-down
@@ -75,22 +75,22 @@ if (!isset($_POST['EventID']) && !isset($_POST['Verify']) && !isset($_POST['Add'
 									echo "<option value=\"".$event_id."\">".$event_title."</option>";
 							}
 							echo "</select>";
-							?>
+							 ?>
 					</td>
 			</tr>
 	</table>
 	<p align="center">
 	<BR>
-	<input type="submit" name="Submit" value=<?php echo '"' . gettext("Select Event") . '"'; ?> class="btn">
-	<BR><BR>--<?php echo gettext("OR"); ?>--<BR><BR>
-	<a href="AddEvent.php"><?php echo gettext("Add New Event"); ?></a>
+	<input type="submit" name="Submit" value=<?= '"' . gettext("Select Event") . '"'; ?> class="btn">
+	<BR><BR>--<?= gettext("OR"); ?>--<BR><BR>
+	<a href="AddEvent.php"><?= gettext("Add New Event"); ?></a>
 	<BR><BR>
 	</p>
 	</form>
 <?php
 }
 //End Picking Event to checkin
-?>
+ ?>
 
 <!-- Add Atendees Here -->
 <?php
@@ -102,14 +102,14 @@ if (isset($_POST["Submit"]) && isset($_POST['EventID']) || isset($_POST['Cancel'
 	$rsEvents = RunQuery($sSQL);
 	$aRow = mysql_fetch_array($rsEvents);
 	extract($aRow);
-?>
+ ?>
 	<form method="post" action="Checkin.php" name="Checkin">
-	<input type="hidden" name="EventID" value="<?php echo $iEventID ; ?>">
+	<input type="hidden" name="EventID" value="<?= $iEventID ; ?>">
 		<table cellpadding="0" cellspacing="0" width="100%" align="center" border="1">
 		<tr>
 		<td>
 			<caption>
-				<h3><?php echo gettext("Add Attendees for Event: $event_title"); ?></h3>
+				<h3><?= gettext("Add Attendees for Event: $event_title"); ?></h3>
 			</caption>
 		</td>
 		</tr>
@@ -120,9 +120,9 @@ if (isset($_POST["Submit"]) && isset($_POST['EventID']) || isset($_POST['Cancel'
 			</td>
 		<!-- Middle -->
 		  <td width="33%" valign="top" align="center">
-				<input type="submit" class="btn" <?php echo 'value="' . gettext("Verify") . '"'; ?> Name="Verify" onclick="javascript:document.location='Checkin.php';">
-				<input type="submit" class="btn" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> name="Exit" onClick="javascript:document.location='Checkin.php';">
-				<input type="button" class="btn" <?php echo 'value="' . gettext("Add Visitor") . '"'; ?> name="Add" onClick="javascript:document.location='PersonEditor.php';"></td>
+				<input type="submit" class="btn" <?= 'value="' . gettext("Verify") . '"'; ?> Name="Verify" onclick="javascript:document.location='Checkin.php';">
+				<input type="submit" class="btn" <?= 'value="' . gettext("Back to Menu") . '"'; ?> name="Exit" onClick="javascript:document.location='Checkin.php';">
+				<input type="button" class="btn" <?= 'value="' . gettext("Add Visitor") . '"'; ?> name="Add" onClick="javascript:document.location='PersonEditor.php';"></td>
 		<!-- Left Side -->
 			<td width="33%" valign="top" align="left">
 				<span class="SmallText"><input type="textbox" class="textbox" name="adult">
@@ -154,11 +154,11 @@ if (isset($_POST["EventID"]) && isset($_POST['Verify']) && isset($_POST['child']
 	$rsEvents = RunQuery($sSQL);
 	$aRow = mysql_fetch_array($rsEvents);
 	extract($aRow);
-?>
+ ?>
 	<form method="post" action="Checkin.php" name="Checkin">
-	<input type="hidden" name="EventID" value="<?php echo $iEventID ; ?>">
-	<input type="hidden" name="child" value="<?php echo $iChildID ; ?>">
-	<input type="hidden" name="adult" value="<?php echo $iAdultID ; ?>">
+	<input type="hidden" name="EventID" value="<?= $iEventID ; ?>">
+	<input type="hidden" name="child" value="<?= $iChildID ; ?>">
+	<input type="hidden" name="adult" value="<?= $iAdultID ; ?>">
 
 	<table width="100%" border="0" cellpadding="4" cellspacing="0">
 		<tr>
@@ -166,7 +166,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Verify']) && isset($_POST['child']
 			<div class="LightShadedBox">
 			<?php
 				loadperson($iChildID);
-			?>
+			 ?>
 			</div>
 		</td>
 	<!-- Center - 75% -->
@@ -175,14 +175,14 @@ if (isset($_POST["EventID"]) && isset($_POST['Verify']) && isset($_POST['child']
 			  <tr>
 				<td colspan="3" align="center">
 					<p>
-						<h3><?php echo gettext("Event: $event_title"); ?></h3>
+						<h3><?= gettext("Event: $event_title"); ?></h3>
 					</p>
 				</td>
 			  </tr>
 			  <tr>
-				<td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("Cancel") . '"'; ?> name="Cancel" onClick="javascript:document.location='Checkin.php';"></td>
-				<td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("CheckIn") . '"'; ?> name="CheckIn" onClick="javascript:document.location='Checkin.php';"></td>
-				<!-- <td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("CheckOut") . '"'; ?> name="CheckOut" onClick="javascript:document.location='Checkin.php';"></td> -->
+				<td  align="center"><input type="submit" class="btn" <?= 'value="' . gettext("Cancel") . '"'; ?> name="Cancel" onClick="javascript:document.location='Checkin.php';"></td>
+				<td  align="center"><input type="submit" class="btn" <?= 'value="' . gettext("CheckIn") . '"'; ?> name="CheckIn" onClick="javascript:document.location='Checkin.php';"></td>
+				<!-- <td  align="center"><input type="submit" class="btn" <?= 'value="' . gettext("CheckOut") . '"'; ?> name="CheckOut" onClick="javascript:document.location='Checkin.php';"></td> -->
 			  </tr>
 			</table>
 		<!-- right - 25% -->
@@ -193,7 +193,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Verify']) && isset($_POST['child']
 					loadperson($iAdultID); 
 				}
 
-			?>
+			 ?>
 			</div>
 		</td>
 	</table>
@@ -234,13 +234,13 @@ if (isset($_POST["EventID"]) && isset($_POST['child']) && (isset($_POST['CheckIn
 //        die($sSQL);
 		RunQuery($sSQL);
 	}
-?>
+ ?>
 	<form method="post" action="Checkin.php" name="Checkin">
-	<input type="hidden" name="EventID" value="<?php echo $iEventID ; ?>">
-	<input type="submit" name="Submit" value=<?php echo '"' . gettext("Continue checkin") . '"'; ?> class="btn">
+	<input type="hidden" name="EventID" value="<?= $iEventID ; ?>">
+	<input type="submit" name="Submit" value=<?= '"' . gettext("Continue checkin") . '"'; ?> class="btn">
 	</form> 
   <?php      
-?>
+ ?>
 
 <?php
 }
@@ -260,10 +260,10 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 
 	if(isset($_POST['Action']) ){
 
-	?>
+	 ?>
 	<form method="post" action="Checkin.php" name="Checkin">
-		<input type="hidden" name="EventID" value="<?php echo $iEventID ; ?>">
-		<input type="hidden" name="child" value="<?php echo $iChildID ; ?>">
+		<input type="hidden" name="EventID" value="<?= $iEventID ; ?>">
+		<input type="hidden" name="child" value="<?= $iChildID ; ?>">
 
 		<table width="100%" border="0" cellpadding="4" cellspacing="0">
 			<tr>
@@ -271,7 +271,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 				<div class="LightShadedBox">
 				<?php
 					loadperson($iChildID);
-				?>
+				 ?>
 				</div>
 			</td>
 		<!-- Center - 75% -->
@@ -280,13 +280,13 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 				  <tr>
 					<td colspan="3" align="center">
 						<p>
-							<h3><?php echo gettext("Event: $event_title"); ?></h3>
+							<h3><?= gettext("Event: $event_title"); ?></h3>
 						</p>
 					</td>
 				  </tr>
 				  <tr>
-					<td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("Cancel") . '"'; ?> name="Cancel" onClick="javascript:document.location='Checkin.php';"></td>
-					<td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("Verify CheckOut") . '"'; ?> name="VerifyCheck" onClick="javascript:document.location='Checkin.php';"></td>
+					<td  align="center"><input type="submit" class="btn" <?= 'value="' . gettext("Cancel") . '"'; ?> name="Cancel" onClick="javascript:document.location='Checkin.php';"></td>
+					<td  align="center"><input type="submit" class="btn" <?= 'value="' . gettext("Verify CheckOut") . '"'; ?> name="VerifyCheck" onClick="javascript:document.location='Checkin.php';"></td>
 				  </tr>
 				</table>
 			<!-- right - 25% -->
@@ -312,11 +312,11 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 	}
 	if(isset($_POST['VerifyCheck']) ){
 		$iAdultID = FilterInput($_POST["adult"],'int');
-		?>
+		 ?>
 		<form method="post" action="Checkin.php" name="Checkin">
-		<input type="hidden" name="EventID" value="<?php echo $iEventID ; ?>">
-		<input type="hidden" name="child" value="<?php echo $iChildID ; ?>">
-		<input type="hidden" name="adult" value="<?php echo $iAdultID ; ?>">
+		<input type="hidden" name="EventID" value="<?= $iEventID ; ?>">
+		<input type="hidden" name="child" value="<?= $iChildID ; ?>">
+		<input type="hidden" name="adult" value="<?= $iAdultID ; ?>">
 
 		<table width="100%" border="0" cellpadding="4" cellspacing="0">
 			<tr>
@@ -324,7 +324,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 				<div class="LightShadedBox">
 				<?php
 					loadperson($iChildID);
-				?>
+				 ?>
 				</div>
 			</td>
 		<!-- Center - 75% -->
@@ -333,14 +333,14 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 				  <tr>
 					<td colspan="3" align="center">
 						<p>
-							<h3><?php echo gettext("Event: $event_title"); ?></h3>
+							<h3><?= gettext("Event: $event_title"); ?></h3>
 						</p>
 					</td>
 				  </tr>
 				  <tr>
-					<td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("Cancel") . '"'; ?> name="Cancel" onClick="javascript:document.location='Checkin.php';"></td>
-					<!-- <td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("CheckIn") . '"'; ?> name="CheckIn" onClick="javascript:document.location='Checkin.php';"></td> -->
-					<td  align="center"><input type="submit" class="btn" <?php echo 'value="' . gettext("Finalize CheckOut") . '"'; ?> name="VerifyCheckOut" onClick="javascript:document.location='Checkin.php';"></td>
+					<td  align="center"><input type="submit" class="btn" <?= 'value="' . gettext("Cancel") . '"'; ?> name="Cancel" onClick="javascript:document.location='Checkin.php';"></td>
+					<!-- <td  align="center"><input type="submit" class="btn" <?= 'value="' . gettext("CheckIn") . '"'; ?> name="CheckIn" onClick="javascript:document.location='Checkin.php';"></td> -->
+					<td  align="center"><input type="submit" class="btn" <?= 'value="' . gettext("Finalize CheckOut") . '"'; ?> name="VerifyCheckOut" onClick="javascript:document.location='Checkin.php';"></td>
 				  </tr>
 				</table>
 			<!-- right - 25% -->
@@ -348,7 +348,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 				<div class="LightShadedBox">
 				<?php
 					loadperson($iAdultID);
-				?>
+				 ?>
 				</div>
 			</td>
 		</table>
@@ -357,18 +357,18 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 	}
 }
 //End checkout
-?>
+ ?>
 
 <!-- ********************************************************************************************************** -->
 <table width="100%">
    <tr><td colspan="4"></td></tr>   
   <tr class="TableHeader">
-    <td width="20%"><strong><?php echo gettext("Name"); ?></strong></td>
-    <td width="15%"><strong><?php echo gettext("Checked In Time"); ?></strong></td>
-    <td width="20%"><strong><?php echo gettext("Checked In By"); ?></strong></td>
-    <td width="15%"><strong><?php echo gettext("Checked Out Time"); ?></strong></td>
-    <td width="20%"><strong><?php echo gettext("Checked Out By"); ?></strong></td>
-	  <td width="10%" nowrap><strong><?php echo gettext("Action"); ?></strong></td>
+    <td width="20%"><strong><?= gettext("Name"); ?></strong></td>
+    <td width="15%"><strong><?= gettext("Checked In Time"); ?></strong></td>
+    <td width="20%"><strong><?= gettext("Checked In By"); ?></strong></td>
+    <td width="15%"><strong><?= gettext("Checked Out Time"); ?></strong></td>
+    <td width="20%"><strong><?= gettext("Checked Out By"); ?></strong></td>
+	  <td width="10%" nowrap><strong><?= gettext("Action"); ?></strong></td>
   </tr>
 
 <?php 
@@ -426,19 +426,19 @@ if (isset ($_POST["EventID"]) ) {
 		}
 		$per_Title='';$per_FirstName='';$per_MiddleName='';$per_LastName='';$per_Suffix='';
 		$sRowClass = AlternateRowStyle($sRowClass);
-		?>
-		<tr class="<?php echo $sRowClass; ?>">
-			<td class="TextColumn"><?php echo $sPerson; ?></td>
-			<td class="TextColumn"><?php echo $checkin_date; ?></td>
-			<td class="TextColumn"><?php echo $sCheckinby; ?></td>
-			<td class="TextColumn"><?php echo $checkout_date; ?></td>
-			<td class="TextColumn"><?php echo $sCheckoutby; ?></td>
+		 ?>
+		<tr class="<?= $sRowClass; ?>">
+			<td class="TextColumn"><?= $sPerson; ?></td>
+			<td class="TextColumn"><?= $checkin_date; ?></td>
+			<td class="TextColumn"><?= $sCheckinby; ?></td>
+			<td class="TextColumn"><?= $checkout_date; ?></td>
+			<td class="TextColumn"><?= $sCheckoutby; ?></td>
 			<td  class="TextColumn" colspan="1" align="center">
 	
 		    <form method="POST" action="Checkin.php" name="DeletePersonFromEvent">
-			  <input type="hidden" name="child" value="<?php echo $person_id; ?>">
-			  <input type="hidden" name="EventID" value="<?php echo $EventID; ?>">
-			  <input type="submit" name="Action" value="<?php echo gettext("Checkout"); ?>" class="btn" >
+			  <input type="hidden" name="child" value="<?= $person_id; ?>">
+			  <input type="hidden" name="EventID" value="<?= $EventID; ?>">
+			  <input type="submit" name="Action" value="<?= gettext("Checkout"); ?>" class="btn" >
 			</form>
 		 </td>  
 		</tr>
@@ -446,12 +446,12 @@ if (isset ($_POST["EventID"]) ) {
 	  }
   }
 } else {
-?>
-<tr><td colspan="4" align="center"><?php echo gettext("No Attendees Assigned to Event") ?></td></tr>
+ ?>
+<tr><td colspan="4" align="center"><?= gettext("No Attendees Assigned to Event") ?></td></tr>
 <?php
 }
 
-?>
+ ?>
 </table>
     
 <?php require "Include/Footer.php"; 
@@ -636,4 +636,4 @@ function loadperson($iPersonID){
 */
 		}
 }
-?>
+ ?>

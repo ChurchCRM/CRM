@@ -89,31 +89,31 @@ require "Include/Header.php";
 
 ?>
 <div class="box box-body">
-<form method="post" action="PropertyTypeEditor.php?PropertyTypeID=<?php echo $iPropertyTypeID; ?>">
+<form method="post" action="PropertyTypeEditor.php?PropertyTypeID=<?= $iPropertyTypeID; ?>">
 
 <table class="table">
 	<tr>
-		<td align="right"><b><?php echo gettext("Class:"); ?></b></td>
+		<td align="right"><b><?= gettext("Class:"); ?></b></td>
 		<td>
 			<select name="Class">
-				<option value="p" <?php if($sClass == "p") {echo "selected";} ?>><?php echo gettext("Person"); ?></option>
-				<option value="f" <?php if($sClass == "f") {echo "selected";} ?>><?php echo gettext("Family"); ?></option>
-				<option value="g" <?php if($sClass == "g") {echo "selected";} ?>><?php echo gettext("Group"); ?></option>
+				<option value="p" <?php if($sClass == "p") {echo "selected";} ?>><?= gettext("Person"); ?></option>
+				<option value="f" <?php if($sClass == "f") {echo "selected";} ?>><?= gettext("Family"); ?></option>
+				<option value="g" <?php if($sClass == "g") {echo "selected";} ?>><?= gettext("Group"); ?></option>
 			</select>
 		</td>
 	</tr>
 	<tr>
-		<td align="right"><b><?php echo gettext("Name:"); ?></b></td>
-		<td><input type="text" name="Name" value="<?php echo htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8"); ?>" size="40"> 			<?php echo $sNameError; ?>
+		<td align="right"><b><?= gettext("Name:"); ?></b></td>
+		<td><input type="text" name="Name" value="<?= htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8"); ?>" size="40"> 			<?= $sNameError; ?>
 		</td>
 	</tr>
 	<tr>
-		<td align="right" valign="top"><b><?php echo gettext("Description:"); ?></b></td>
-		<td><textarea name="Description" cols="60" rows="10"><?php echo htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
+		<td align="right" valign="top"><b><?= gettext("Description:"); ?></b></td>
+		<td><textarea name="Description" cols="60" rows="10"><?= htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<input type="submit" class="btn btn-primary" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>&nbsp;<input type="button" class="btn btn-default" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="document.location='PropertyTypeList.php';">
+			<input type="submit" class="btn btn-primary" name="Submit" <?= 'value="' . gettext("Save") . '"'; ?>>&nbsp;<input type="button" class="btn btn-default" name="Cancel" <?= 'value="' . gettext("Cancel") . '"'; ?> onclick="document.location='PropertyTypeList.php';">
 		</td>
 	</tr>
 </table>

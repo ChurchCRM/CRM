@@ -38,4 +38,4 @@ ob_start();
 				<tr>
 					<td valign="top">
 						<br>
-						<p class="PageTitle"><?php echo $sPageTitle; ?></p>						
+						<p class="PageTitle"><?= $sPageTitle; ?></p>						

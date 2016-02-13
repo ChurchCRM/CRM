@@ -177,16 +177,16 @@ $sPaddleSQL = "SELECT pn_ID, pn_Num, pn_per_ID,
 
 require "Include/Header.php";
 
-?>
+ ?>
 
-<form method="post" action="DonatedItemEditor.php?<?php echo "CurrentFundraiser=" . $iCurrentFundraiser . "&DonatedItemID=" . $iDonatedItemID . "&linkBack=" . $linkBack; ?>" name="DonatedItemEditor">
+<form method="post" action="DonatedItemEditor.php?<?= "CurrentFundraiser=" . $iCurrentFundraiser . "&DonatedItemID=" . $iDonatedItemID . "&linkBack=" . $linkBack; ?>" name="DonatedItemEditor">
 
 <table cellpadding="3" align="center"> <!-- Table for the whole form -->
 	<tr> <!-- Row of buttons across the top -->
 		<td align="center">
-			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DonatedItemSubmit">
+			<input type="submit" class="btn" value="<?= gettext("Save"); ?>" name="DonatedItemSubmit">
 			<?php if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save and Add") . "\" name=\"DonatedItemSubmitAndAdd\">"; } ?>
-			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="DonatedItemCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="button" class="btn" value="<?= gettext("Cancel"); ?>" name="DonatedItemCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -197,21 +197,21 @@ require "Include/Header.php";
 			<td width="50%" valign="top" align="left">
 			<table cellpadding="3">
 				<tr>
-					<td class="LabelColumn"><?php echo gettext("Item:"); ?></td>
-					<td class="TextColumn"><input type="text" name="Item" id="Item" value="<?php echo $sItem; ?>"></td>
+					<td class="LabelColumn"><?= gettext("Item:"); ?></td>
+					<td class="TextColumn"><input type="text" name="Item" id="Item" value="<?= $sItem; ?>"></td>
 				</tr>
 				
 				<tr>
-					<td class="LabelColumn"><?php echo gettext("Multiple items:"); ?></td>
-					<td class="TextColumn"><input type="checkbox" name="Multibuy" value="1" <?php if ($bMultibuy) echo " checked";?>><?php echo gettext("Sell to everyone"); ?>
+					<td class="LabelColumn"><?= gettext("Multiple items:"); ?></td>
+					<td class="TextColumn"><input type="checkbox" name="Multibuy" value="1" <?php if ($bMultibuy) echo " checked"; ?>><?= gettext("Sell to everyone"); ?>
 				</tr>
 
 				<tr>
-					<td class="LabelColumn"><?php echo gettext("Donor:"); ?>
+					<td class="LabelColumn"><?= gettext("Donor:"); ?>
 					</td>
 					<td class="TextColumn">
 						<select name="Donor">
-							<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
+							<option value="0" selected><?= gettext("Unassigned"); ?></option>
 							<?php
 							$rsPeople = RunQuery($sPeopleSQL);
 							while ($aRow = mysql_fetch_array($rsPeople))
@@ -222,30 +222,30 @@ require "Include/Header.php";
 								echo ">" . $per_LastName . ", " . $per_FirstName;
 								echo " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 							}
-							?>
+							 ?>
 	
 						</select>
 					</td>
 				</tr>
 	
 				<tr>
-					<td class="LabelColumn"><?php echo gettext("Title:"); ?></td>
-					<td class="TextColumn"><input type="text" name="Title" id="Title" value="<?php echo htmlentities ($sTitle); ?>"/></td>
+					<td class="LabelColumn"><?= gettext("Title:"); ?></td>
+					<td class="TextColumn"><input type="text" name="Title" id="Title" value="<?= htmlentities ($sTitle); ?>"/></td>
 				</tr>
 				
 				<tr>
-					<td class="LabelColumn"><?php echo gettext("Estimated Price:"); ?></td>
-					<td class="TextColumn"><input type="text" name="EstPrice" id="EstPrice" value="<?php echo $nEstPrice; ?>"></td>
+					<td class="LabelColumn"><?= gettext("Estimated Price:"); ?></td>
+					<td class="TextColumn"><input type="text" name="EstPrice" id="EstPrice" value="<?= $nEstPrice; ?>"></td>
 				</tr>
 				
 				<tr>
-					<td class="LabelColumn"><?php echo gettext("Material Value:"); ?></td>
-					<td class="TextColumn"><input type="text" name="MaterialValue" id="MaterialValue" value="<?php echo $nMaterialValue; ?>"></td>
+					<td class="LabelColumn"><?= gettext("Material Value:"); ?></td>
+					<td class="TextColumn"><input type="text" name="MaterialValue" id="MaterialValue" value="<?= $nMaterialValue; ?>"></td>
 				</tr>
 
 				<tr>
-					<td class="LabelColumn"><?php echo gettext("Minimum Price:"); ?></td>
-					<td class="TextColumn"><input type="text" name="MinimumPrice" id="MinimumPrice" value="<?php echo $nMinimumPrice; ?>"></td>
+					<td class="LabelColumn"><?= gettext("Minimum Price:"); ?></td>
+					<td class="TextColumn"><input type="text" name="MinimumPrice" id="MinimumPrice" value="<?= $nMinimumPrice; ?>"></td>
 				</tr>
 			</table> <!-- Table for the left side entries -->
 			</td>
@@ -254,11 +254,11 @@ require "Include/Header.php";
 			<table cellpadding="3"> <!-- Table for the right side entries -->
 			
 				<tr>
-					<td class="LabelColumn"><?php echo gettext("Buyer:"); ?></td>
+					<td class="LabelColumn"><?= gettext("Buyer:"); ?></td>
 					<td class="TextColumn">
 					    <?php if ($bMultibuy) echo gettext ("Multiple"); else { ?>
 						<select name="Buyer">
-							<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
+							<option value="0" selected><?= gettext("Unassigned"); ?></option>
 							<?php
 							$rsBuyers = RunQuery($sPaddleSQL);
 							while ($aRow = mysql_fetch_array($rsBuyers))
@@ -275,16 +275,16 @@ require "Include/Header.php";
 				</tr>
 				
 				<tr>
-					<td class="LabelColumn"><?php echo gettext("Final Price:"); ?></td>
-					<td class="TextColumn"><input type="text" name="SellPrice" id="SellPrice" value="<?php echo $nSellPrice; ?>"></td>
+					<td class="LabelColumn"><?= gettext("Final Price:"); ?></td>
+					<td class="TextColumn"><input type="text" name="SellPrice" id="SellPrice" value="<?= $nSellPrice; ?>"></td>
 				</tr>
 				
 				<tr><td>&nbsp;</td></tr> <!-- Make an empty row to segregate the replication controls -->
 				
 				<tr>
-					<td class="LabelColumn"><?php echo gettext("Replicate item"); ?></td>
+					<td class="LabelColumn"><?= gettext("Replicate item"); ?></td>
 					<td class="TextColumn"><input type="text" name="NumberCopies" id="NumberCopies" value="0"></td>
-					<td><input type="button" class="btn" value="<?php echo gettext("Go"); ?>" name="DonatedItemReplicate" onclick="javascript:document.location='DonatedItemReplicate.php?DonatedItemID=<?php echo $iDonatedItemID;?>&Count='+NumberCopies.value"></td>
+					<td><input type="button" class="btn" value="<?= gettext("Go"); ?>" name="DonatedItemReplicate" onclick="javascript:document.location='DonatedItemReplicate.php?DonatedItemID=<?= $iDonatedItemID; ?>&Count='+NumberCopies.value"></td>
 				</tr>
 				
 			</table>
@@ -297,20 +297,20 @@ require "Include/Header.php";
 			<table cellpadding="3"> <!-- Table for the bottom full-width entries -->
 	
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Description");?></td>
-				<td><textarea name="Description" rows="8" cols="90"><?php echo htmlentities ($sDescription);?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Description"); ?></td>
+				<td><textarea name="Description" rows="8" cols="90"><?= htmlentities ($sDescription); ?></textarea></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Picture URL");?></td>
-				<td><textarea name="PictureURL" rows="1" cols="90"><?php echo htmlentities ($sPictureURL);?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Picture URL"); ?></td>
+				<td><textarea name="PictureURL" rows="1" cols="90"><?= htmlentities ($sPictureURL); ?></textarea></td>
 			</tr>
 			
-			<?php if ($sPictureURL != "") {?>
+			<?php if ($sPictureURL != "") { ?>
 			<tr>
-				<td colspan="2" width="100%"><img src="<?php echo htmlentities ($sPictureURL);?>"/></td>
+				<td colspan="2" width="100%"><img src="<?= htmlentities ($sPictureURL); ?>"/></td>
 			</tr>				
-			<?php }?>
+			<?php } ?>
 
 			</table> <!-- Table for the bottom full-width entries -->
 			</td>
@@ -320,4 +320,4 @@ require "Include/Header.php";
 
 <?php
 require "Include/Footer.php";
-?>
+ ?>

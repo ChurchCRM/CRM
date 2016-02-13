@@ -69,29 +69,29 @@ require "Include/Header.php";
 ?>
 
 <form method="get" action="FindDepositSlip.php" name="FindDepositSlip">
-<input name="sort" type="hidden" value="<?php echo $sSort; ?>"
+<input name="sort" type="hidden" value="<?= $sSort; ?>"
 <table cellpadding="3" align="center">
 
 	<tr>
 		<td>
 		<table cellpadding="3">
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Number:"); ?></td>
-				<td class="TextColumn"><input type="text" name="ID" id="ID" value="<?php echo $iID; ?>"></td>
+				<td class="LabelColumn"><?= gettext("Number:"); ?></td>
+				<td class="TextColumn"><input type="text" name="ID" id="ID" value="<?= $iID; ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Date Start:"); ?></td>
-				<td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="DateStart" size="11" value="<?php echo $dDateStart; ?>"></span></td>
+				<td class="LabelColumn"><?= gettext("Date Start:"); ?></td>
+				<td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="DateStart" size="11" value="<?= $dDateStart; ?>"></span></td>
 				<td align="center">
-					<input type="submit" class="btn" value="<?php echo gettext("Apply Filters"); ?>" name="FindDepositSlipSubmit">
+					<input type="submit" class="btn" value="<?= gettext("Apply Filters"); ?>" name="FindDepositSlipSubmit">
 				</td>
 			</tr>
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Date End:"); ?></td>
-				<td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?php echo $dDateEnd; ?>"></span></td>
+				<td class="LabelColumn"><?= gettext("Date End:"); ?></td>
+				<td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?= $dDateEnd; ?>"></span></td>
 				<td align="center">
-					<input type="submit" class="btn" value="<?php echo gettext("Clear Filters"); ?>" name="FilterClear">
+					<input type="submit" class="btn" value="<?= gettext("Clear Filters"); ?>" name="FilterClear">
 				</td>
 			</tr>
 		</table>

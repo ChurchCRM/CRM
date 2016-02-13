@@ -53,7 +53,7 @@ $rsGroups = RunQuery($sSQL);
 $sPageTitle = gettext("Add Person to Group");
 require "Include/Header.php";
 
-?>
+ ?>
 
 <script type="text/javascript">
 var IFrameObj; // our IFrame object
@@ -105,19 +105,19 @@ function UpdateRoles()
 function updateGroupRoles(generated_html)
 {
 	if (generated_html == "invalid") {
-		document.getElementById('GroupRoles').innerHTML = '<p class="LargeError"><?php echo gettext("Invalid Group or No Roles Available!"); ?><p>';
+		document.getElementById('GroupRoles').innerHTML = '<p class="LargeError"><?= gettext("Invalid Group or No Roles Available!"); ?><p>';
 	} else {
 		document.getElementById('GroupRoles').innerHTML = generated_html;
 	}
 }
 </script>
 
-<p align="center"><?php echo gettext("Select the group to add this person to:"); ?></p>
-<form method="post" action="PersonToGroup.php?PersonID=<?php echo $iPersonID;?>">
-<input type="hidden" name="prevquery" value="<?php echo $sPreviousQuery;?>">
+<p align="center"><?= gettext("Select the group to add this person to:"); ?></p>
+<form method="post" action="PersonToGroup.php?PersonID=<?= $iPersonID; ?>">
+<input type="hidden" name="prevquery" value="<?= $sPreviousQuery; ?>">
 <table align="center">
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Group:"); ?></td>
+		<td class="LabelColumn"><?= gettext("Select Group:"); ?></td>
 		<td class="TextColumn">
 			<?php
 			// Create the group select drop-down
@@ -127,21 +127,21 @@ function updateGroupRoles(generated_html)
 				echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
 			}
 			echo "</select>";
-			?>
+			 ?>
 		</td>
 	</tr>
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Role:"); ?></td>
-		<td class="TextColumn"><span id="GroupRoles"><?php echo gettext("No Group Selected"); ?></span></td>
+		<td class="LabelColumn"><?= gettext("Select Role:"); ?></td>
+		<td class="TextColumn"><span id="GroupRoles"><?= gettext("No Group Selected"); ?></span></td>
 	</tr>
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="btn" name="Submit" value="<?php echo gettext("Add to Group"); ?>">
+<input type="submit" class="btn" name="Submit" value="<?= gettext("Add to Group"); ?>">
 <BR><BR>
 </p>
 </form>
 
 <?php
 require "Include/Footer.php";
-?>
+ ?>

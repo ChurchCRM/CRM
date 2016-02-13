@@ -291,12 +291,12 @@ if (isset($_POST["ApiGet"])) {
 } else  { ?>
 	<table cellpadding="3" align="left">
 	<tr><td>
-		<form method="post" action="eGive.php?DepositSlipID=<?php echo $iDepositSlipID ?>" enctype="multipart/form-data">
-		<class="LabelColumn"><b><?php echo gettext("Start Date: "); ?></b>
-			<class="TextColumn"><input type="text" name="StartDate" value="<?php echo $lwDate; ?>" maxlength="10" id="StartDate" size="11"><font color="red"><?php echo $sDateError ?></font><br>
-			<class="LabelColumn"><b><?php echo gettext("End Date: "); ?></b>
-			<class="TextColumn"><input type="text" name="EndDate" value="<?php echo $dDate; ?>" maxlength="10" id="EndDate" size="11"><font color="red"><?php echo $sDateError ?></font><br><br>
-		<input type="submit" class="btn" value="<?php echo gettext("Import eGive"); ?>" name="ApiGet">
+		<form method="post" action="eGive.php?DepositSlipID=<?= $iDepositSlipID ?>" enctype="multipart/form-data">
+		<class="LabelColumn"><b><?= gettext("Start Date: "); ?></b>
+			<class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate; ?>" maxlength="10" id="StartDate" size="11"><font color="red"><?= $sDateError ?></font><br>
+			<class="LabelColumn"><b><?= gettext("End Date: "); ?></b>
+			<class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate; ?>" maxlength="10" id="EndDate" size="11"><font color="red"><?= $sDateError ?></font><br><br>
+		<input type="submit" class="btn" value="<?= gettext("Import eGive"); ?>" name="ApiGet">
 		<br><br><br>
 		</form>
 		</td>
@@ -354,8 +354,8 @@ function importDoneFixOrContinue() {
 	global $egiveID2NameWithUnderscores;
 	global $familySelectHtml;
 	
-	?>
-	<form method="post" action="eGive.php?<?php echo "DepositSlipID=".$iDepositSlipID?>">
+	 ?>
+	<form method="post" action="eGive.php?<?= "DepositSlipID=".$iDepositSlipID ?>">
 	<?php
 	if ($importError) { // the only way we can fail to import data is if we're missing the egive IDs, so build a table, with text input, and prompt for it.
         ?>
@@ -368,30 +368,30 @@ function importDoneFixOrContinue() {
 			$name = preg_replace('/_/', ' ', $nameWithUnderscores);
 			echo "<tr>";
 			echo "<td>" . $name . "&nbsp;</td>"; ?>
-			<td><class="TextColumn"><input type="text" name="MissingEgive_ID_<?php echo $nameWithUnderscores; ?>" value="<?php echo $egiveID; ?>" maxlength="10"></td>
+			<td><class="TextColumn"><input type="text" name="MissingEgive_ID_<?= $nameWithUnderscores; ?>" value="<?= $egiveID; ?>" maxlength="10"></td>
 			<td class="TextColumn">
-			<select name="MissingEgive_FamID_<?php echo $nameWithUnderscores; ?>">
-			<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
+			<select name="MissingEgive_FamID_<?= $nameWithUnderscores; ?>">
+			<option value="0" selected><?= gettext("Unassigned"); ?></option>
 			<?php
 			echo $familySelectHtml;
-			?>
+			 ?>
 			</select>
 			</td>
-			<td><input type="checkbox" name="MissingEgive_Set_<?php echo $nameWithUnderscores; ?>" value="1" checked></td>
+			<td><input type="checkbox" name="MissingEgive_Set_<?= $nameWithUnderscores; ?>" value="1" checked></td>
 			<?php 
 			echo "</tr>";
 		 }
- 		?>
+ 		 ?>
 		</table><br>
 
-		<input type="submit" class="btn" value="<?php echo gettext("Re-import to selected family"); ?>" name="ReImport">
+		<input type="submit" class="btn" value="<?= gettext("Re-import to selected family"); ?>" name="ReImport">
 	<?php
 	}
 
  ?>
 
-	<p class="MediumLargeText"> <?php echo gettext("Data import results: ") . $importCreated . gettext(" gifts were imported, ") .  $importNoChange . gettext(" gifts unchanged, and ") . $importError . gettext(" gifts not imported due to problems");?></p>
-	<input type="button" class="btn" value="<?php echo gettext("Back to Deposit Slip");?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?php echo $iDepositSlipID;?>'"
+	<p class="MediumLargeText"> <?= gettext("Data import results: ") . $importCreated . gettext(" gifts were imported, ") .  $importNoChange . gettext(" gifts unchanged, and ") . $importError . gettext(" gifts not imported due to problems"); ?></p>
+	<input type="button" class="btn" value="<?= gettext("Back to Deposit Slip"); ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID; ?>'"
 <?php
 }
 
@@ -418,14 +418,14 @@ function get_api_data($json) {
 	if (empty($error)) {
 		return $result;
 	} else {
-	?>
-		<font color="red"><?php echo gettext("Fatal error in eGive API datastream: '") . $error;?>"'</font><br><br>
- 		<input type="button" class="btn" value="<?php echo gettext("Back to Deposit Slip");?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?php echo $iDepositSlipID;?>'"
+	 ?>
+		<font color="red"><?= gettext("Fatal error in eGive API datastream: '") . $error; ?>"'</font><br><br>
+ 		<input type="button" class="btn" value="<?= gettext("Back to Deposit Slip"); ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID; ?>'"
 	<?php
 		return 0;
 	}
 }
-?>
+ ?>
 <script>
 $("#StartDate").datepicker({format:'yyyy-mm-dd'});
 $("#EndDate").datepicker({format:'yyyy-mm-dd'});

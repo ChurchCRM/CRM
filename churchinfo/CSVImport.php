@@ -118,7 +118,7 @@ class Family
 
 // Set the page title and include HTML header
 $sPageTitle = "CSV Import";
-require "Include/Header.php";?>
+require "Include/Header.php"; ?>
 
 <div class="box">
 <div class="box-header">
@@ -267,8 +267,8 @@ if (isset($_POST["UploadCSV"]))
 
         <BR><BR>
         <select name="FamilyMode">
-            <option value="0"><?= gettext("Patriarch");?></option>
-            <option value="1"><?= gettext("Matriarch");?></option>
+            <option value="0"><?= gettext("Patriarch"); ?></option>
+            <option value="1"><?= gettext("Matriarch"); ?></option>
         </select>
         <?= gettext("Family Type: used with Make Family records... option above"); ?>
         <BR><BR>
@@ -876,10 +876,10 @@ if ($iStage == 1)
 {
     // Display the select file form
     ?>
-        <p style="color: red"> <?php echo $csvError ?></p>
+        <p style="color: red"> <?= $csvError ?></p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
         <input class="icTinyButton" type="file" name="CSVfile"><br/>
-        <input type="submit" class="btn" value=" <?php echo gettext("Upload CSV File") ?> "
+        <input type="submit" class="btn" value=" <?= gettext("Upload CSV File") ?> "
         name="UploadCSV">
         </form>
         </div>
@@ -890,14 +890,14 @@ if ($iStage == 1)
         </div>
         <div class="box-body">
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#clearPersons"><?php echo gettext("Clear Persons and Families") ?></button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#clearPersons"><?= gettext("Clear Persons and Families") ?></button>
         <!-- Modal -->
         <div class="modal fade" id="clearPersons" tabindex="-1" role="dialog" aria-labelledby="clearPersons" aria-hidden="true">
             <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="upload-Image-label"><?php echo gettext("Clear Persons and Families") ?></h4>
+                            <h4 class="modal-title" id="upload-Image-label"><?= gettext("Clear Persons and Families") ?></h4>
                         </div>
                         <div class="modal-body">
                         <span style="color: red">
@@ -909,7 +909,7 @@ if ($iStage == 1)
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button name="Clear" type="submit" class="btn btn-danger"><?php echo gettext("Clear Persons and Families") ?></button>
+                            <button name="Clear" type="submit" class="btn btn-danger"><?= gettext("Clear Persons and Families") ?></button>
                         </div>
                     </div>
             </div>
@@ -1034,7 +1034,7 @@ function GetAge($Month,$Day,$Year)
     else
         return (-1);
 }
-?>
+ ?>
 </div>
 </div>
 
@@ -1044,4 +1044,4 @@ $(".columns").select2();
 
 <?php
 require "Include/Footer.php";
-?>
+ ?>

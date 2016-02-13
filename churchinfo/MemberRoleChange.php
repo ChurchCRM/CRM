@@ -74,25 +74,25 @@ $rsAllRoles = RunQuery($sSQL);
 //Include the header
 require "Include/Header.php"
 
-?>
+ ?>
 
-<form method="post" action="MemberRoleChange.php?GroupID=<?php echo $iGroupID ?>&PersonID=<?php echo $iPersonID ?>&Return=<?php echo $iReturn ?>">
+<form method="post" action="MemberRoleChange.php?GroupID=<?= $iGroupID ?>&PersonID=<?= $iPersonID ?>&Return=<?= $iReturn ?>">
 
 <table cellpadding="4">
 	<tr>
-		<td align="right"><b><?php echo gettext("Group Name:"); ?></b></td>
-		<td><?php echo $grp_Name ?></td>
+		<td align="right"><b><?= gettext("Group Name:"); ?></b></td>
+		<td><?= $grp_Name ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?php echo gettext("Member's Name:"); ?></b></td>
-		<td><?php echo $per_LastName . ", " . $per_FirstName ?></td>
+		<td align="right"><b><?= gettext("Member's Name:"); ?></b></td>
+		<td><?= $per_LastName . ", " . $per_FirstName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?php echo gettext("Current Role:"); ?></b></td>
-		<td><?php echo $sRoleName ?></td>
+		<td align="right"><b><?= gettext("Current Role:"); ?></b></td>
+		<td><?= $sRoleName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?php echo gettext("New Role:"); ?></b></td>
+		<td align="right"><b><?= gettext("New Role:"); ?></b></td>
 		<td>
 			<select name="NewRole">
 				<?php
@@ -114,23 +114,23 @@ require "Include/Header.php"
 					//Write the <option> tag
 					echo "<option value=\"" . $lst_OptionID . "\" " . $sSelected . ">" . $lst_OptionName . "</option>";
 				}
-				?>
+				 ?>
 			</select>
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<input type="submit" class="btn" name="Submit" value="<?php echo gettext("Update"); ?>">
+			<input type="submit" class="btn" name="Submit" value="<?= gettext("Update"); ?>">
 			<?php
 				if ($iReturn)
 					echo "&nbsp;&nbsp;<input type=\"button\" class=\"btn\" name=\"Cancel\" value=\"" . gettext("Cancel") . "\" onclick=\"document.location='GroupView.php?GroupID=" . $iGroupID . "';\">";
 				else
 					echo "&nbsp;&nbsp;<input type=\"button\" class=\"btn\" name=\"Cancel\" value=\"" . gettext("Cancel") . "\" onclick=\"document.location='PersonView.php?PersonID=" . $iPersonID . "';\">";
-			?>
+			 ?>
 		</td>
 	</tr>
 </table>
 </form>
 <?php
 require "Include/Footer.php";
-?>
+ ?>

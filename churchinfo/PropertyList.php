@@ -52,7 +52,7 @@ require "Include/Header.php"; ?>
 
 <div class="box box-body">
 
-<? if ($_SESSION['bMenuOptions'])
+<?php if ($_SESSION['bMenuOptions'])
 {
 	//Display the new property link
 	echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyEditor.php?Type=" . $sType . "\">" . gettext("Add a New") . " " . $sTypeName . " " . gettext("Property") . "</a></p>";

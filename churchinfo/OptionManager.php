@@ -300,12 +300,12 @@ else
 	include "Include/Header.php";
 }
 
-?>
+ ?>
 <div class="box">
 	<div class="box-body">
-<form method="post" action="OptionManager.php?<?php echo "mode=$mode&ListID=$listID" ?>" name="OptionManager">
+<form method="post" action="OptionManager.php?<?= "mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
-<div class="callout callout-warning"><?php echo gettext("Warning: Removing will reset all assignments for all persons with the assignment!"); ?></div>
+<div class="callout callout-warning"><?= gettext("Warning: Removing will reset all assignments for all persons with the assignment!"); ?></div>
 
 <?php
 
@@ -315,7 +315,7 @@ if ( $bErrorFlag )
 	if ($bDuplicateFound) echo "<br>" . gettext("Error: Duplicate") . " " . $adj . " " . $noun . gettext("s are not allowed.");
 	echo "<br>" . gettext("Invalid fields or selections. Changes not saved! Please correct and try again!") . "</span><br><br>";
 }
-?>
+ ?>
 
 <br>
 <table cellpadding="3" width="30%" align="center">
@@ -323,7 +323,7 @@ if ( $bErrorFlag )
 <?php
 for ($row=1; $row <= $numRows; $row++)
 {
-	?>
+	 ?>
 	<tr align="center">
 		<td class="LabelColumn">
 			<b>
@@ -331,7 +331,7 @@ for ($row=1; $row <= $numRows; $row++)
 			if ($mode == "grproles" && $aIDs[$row] == $iDefaultRole)
 				echo gettext("Default") . " ";
 			echo $row;
-			?>
+			 ?>
 			</b>
 		</td>
 
@@ -344,11 +344,11 @@ for ($row=1; $row <= $numRows; $row++)
 				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
 			if ($numRows > 0)
 				echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>";
-			?>
+			 ?>
 		</td>
 		<td class="TextColumn">
 			<span class="SmallText">
-				<input class="form-control input-small" type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="40">
+				<input class="form-control input-small" type="text" name="<?= $row . "name"; ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="40">
 			</span>
 			<?php
 
@@ -356,38 +356,38 @@ for ($row=1; $row <= $numRows; $row++)
 				echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
 			elseif ( $aNameErrors[$row] == 2 )
 				echo "<span style=\"color: red;\"><BR>" . gettext("Duplicate name found.") . " </span>";
-			?>
+			 ?>
 		</td>
 		<?php
 		if ($mode == "grproles")
 			echo "<td class=\"TextColumn\"><input class=\"form-control input-small\" type=\"button\" class=\"btn\" value=\"" . gettext("Make Default") . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . "&ListID=" . $listID . "&ID=" . $aIDs[$row] . "&Action=makedefault';\" ></td>";
-		?>
+		 ?>
 
 	</tr>
 <?php } ?>
 
 </table>
-	<input type="submit" class="btn btn-primary" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
+	<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
 
 
 	<?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') { ?>
-		<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:window.close();">
+		<input type="button" class="btn" <?= 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:window.close();">
 	<?php } elseif ($mode != "grproles") { ?>
-		<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='<?php
+		<input type="button" class="btn" <?= 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='<?php
 		echo "Menu.php";
-		?>';">
+		 ?>';">
 	<?php } ?>
 	</div>
 </div>
 
 <div class="box box-primary">
 	<div class="box-body">
-New <?php echo $noun . " " . gettext("Name:"); ?>&nbsp;
+New <?= $noun . " " . gettext("Name:"); ?>&nbsp;
 <span class="SmallText">
 	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
 <p>  </p>
-<input type="submit" class="btn" <?php echo 'value="' . gettext("Add New") . ' ' . $adj . ' ' . $noun . '"'?> Name="AddField">
+<input type="submit" class="btn" <?= 'value="' . gettext("Add New") . ' ' . $adj . ' ' . $noun . '"' ?> Name="AddField">
 <?php
 	if ($iNewNameError > 0)
 	{
@@ -398,7 +398,7 @@ New <?php echo $noun . " " . gettext("Name:"); ?>&nbsp;
 			echo gettext("Error: A ") . $noun . gettext(" by that name already exists.");
 		echo "</span></div>";
 	}
-?>
+ ?>
 </center>
 </form>
 	</div>
@@ -408,4 +408,4 @@ if ($embedded)
 	echo "</body></html>";
 else
 	include "Include/Footer.php";
-?>
+ ?>

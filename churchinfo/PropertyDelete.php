@@ -52,21 +52,21 @@ require "Include/Header.php";
 ?>
 
 <p>
-	<?php echo gettext("Please confirm deletion of this property:"); ?>
+	<?= gettext("Please confirm deletion of this property:"); ?>
 </p>
 
 <p class="ShadedBox">
-	<?php echo $pro_Name; ?>
+	<?= $pro_Name; ?>
 </p>
 
 <p>
-	<?php echo gettext("Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."); ?>
+	<?= gettext("Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."); ?>
 </p>
 
 <p align="center">
-	<a href="PropertyDelete.php?Confirmed=Yes&PropertyID=<?php echo $iPropertyID ?>&Type=<?php echo $sType; ?>"><?php echo gettext("Yes, delete this record"); ?></a> <?php echo gettext("(this action cannot be undone)"); ?>
+	<a href="PropertyDelete.php?Confirmed=Yes&PropertyID=<?= $iPropertyID ?>&Type=<?= $sType; ?>"><?= gettext("Yes, delete this record"); ?></a> <?= gettext("(this action cannot be undone)"); ?>
 	 |
-	<a href="PropertyList.php?Type=<?php echo $sType; ?>"><?php echo gettext("No, cancel this deletion"); ?></a>
+	<a href="PropertyList.php?Type=<?= $sType; ?>"><?= gettext("No, cancel this deletion"); ?></a>
 </p>
 
 </p>

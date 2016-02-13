@@ -39,7 +39,7 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 	}
 }
 
-?>
+ ?>
 
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
 
@@ -48,7 +48,7 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
         <div id="map" style="width: 800px; height: 600px; float:left;"></div>
         <script type="text/javascript">
             var mapOptions = {
-               center: new google.maps.LatLng(<?php echo $nChurchLatitude . ", " . $nChurchLongitude; ?>),
+               center: new google.maps.LatLng(<?= $nChurchLatitude . ", " . $nChurchLongitude; ?>),
                zoom: 4,
                mapTypeId: google.maps.MapTypeId.ROADMAP
             };
@@ -63,11 +63,11 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
             var churchMark = new google.maps.Marker({
                 icon: "http://google-maps-icons.googlecode.com/files/church2.png",
                 shadow: shadow,
-                position: new google.maps.LatLng(<?php echo $nChurchLatitude . ", " . $nChurchLongitude; ?>),
+                position: new google.maps.LatLng(<?= $nChurchLatitude . ", " . $nChurchLongitude; ?>),
                 map: map});
 	 
 
-            var churchInfoWin = new google.maps.InfoWindow({content: "<?php echo $sChurchName . "<p>" . $sChurchAddress . "<p>" . $sChurchCity . ", " . $sChurchState . "  " . $sChurchZip;?>"});
+            var churchInfoWin = new google.maps.InfoWindow({content: "<?= $sChurchName . "<p>" . $sChurchAddress . "<p>" . $sChurchCity . ", " . $sChurchState . "  " . $sChurchZip; ?>"});
 
             google.maps.event.addListener(churchMark, "click", function() {
                 churchInfoWin.open(map,churchMark);
@@ -112,7 +112,7 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
                     if ($fam_longitude != 0 && $fam_latitude != 0) {
             ?>
 
-                                 var image = new google.maps.MarkerImage('http://www.google.com/intl/en_us/mapfiles/ms/micons/<?php echo (array_key_exists ($per_cls_ID, $markerIcons) ? $markerIcons[$per_cls_ID] : 0); ?>.png',
+                                 var image = new google.maps.MarkerImage('http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= (array_key_exists ($per_cls_ID, $markerIcons) ? $markerIcons[$per_cls_ID] : 0); ?>.png',
                                              new google.maps.Size(32, 32),
                                              new google.maps.Point(0,0),
                                              new google.maps.Point(0, 32));
@@ -121,8 +121,8 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
                                              new google.maps.Point(0,0),
                                              new google.maps.Point(-4, 34));
 
-                        var famMark<?php echo $fam_ID; ?> = new google.maps.Marker({
-                                                                                position: new google.maps.LatLng(<?php echo $fam_latitude . ", " . $fam_longitude; ?>),
+                        var famMark<?= $fam_ID; ?> = new google.maps.Marker({
+                                                                                position: new google.maps.LatLng(<?= $fam_latitude . ", " . $fam_longitude; ?>),
                                                                                 shadow:shadow,
                                                                                 icon: image,
                                                                                 map: map
@@ -131,15 +131,15 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
                             $famDescription = MakeSalutationUtility ($fam_ID);
                             $famDescription .= "<p>" . $fam_Address1 . "<p>" . $fam_City . ", " . $fam_State . "  " . $fam_Zip;
                         ?>
-                                    var fam<?php echo $fam_ID; ?>InfoWin = new google.maps.InfoWindow({content: "<?php echo $famDescription; ?>"});
-                        google.maps.event.addListener(famMark<?php echo $fam_ID; ?>, "click", function() {
-                                                                  fam<?php echo $fam_ID; ?>InfoWin.open(map,famMark<?php echo $fam_ID;?>);
+                                    var fam<?= $fam_ID; ?>InfoWin = new google.maps.InfoWindow({content: "<?= $famDescription; ?>"});
+                        google.maps.event.addListener(famMark<?= $fam_ID; ?>, "click", function() {
+                                                                  fam<?= $fam_ID; ?>InfoWin.open(map,famMark<?= $fam_ID; ?>);
                                                                  });
             <?php
 		}
 
 	}
-?>
+ ?>
 
     //]]>
     </script>
@@ -157,8 +157,8 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
                     extract ($aIcons);
                         ?>
                   <tr>
-                       <td><img style="vertical-align:middle;" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?php echo $markerIcons[$lst_OptionID]; ?>.png'/></td>
-                       <td><?php echo $lst_OptionName; ?></td>
+                       <td><img style="vertical-align:middle;" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$lst_OptionID]; ?>.png'/></td>
+                       <td><?= $lst_OptionName; ?></td>
                  </tr>
         <?php
                 }
@@ -168,4 +168,4 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 </div>
 <?php
 require "Include/Footer.php";
-?>
+ ?>

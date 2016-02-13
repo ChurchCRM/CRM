@@ -160,25 +160,25 @@ meeting is scheduled any changes must be made within WebCalendar.  All members o
 this group will be added to the meeting as external users of WebCalendar.
 </div>
 <div class="box box-body">
-<form method="post" action="GroupMeeting.php?<?php echo "GroupID=" . $iGroupID . "&linkBack=" . $linkBack . "&Name=" . $tName; ?>" name="GroupMeeting">
+<form method="post" action="GroupMeeting.php?<?= "GroupID=" . $iGroupID . "&linkBack=" . $linkBack . "&Name=" . $tName; ?>" name="GroupMeeting">
     <div class="form-group">
         <div class="row">
             <div class="col-xs-2">
-            <label for="Name"><?php echo gettext("Meeting name"); ?></label>
-            <input class="form-control input-small" type="text" name="Name" id="Name" value="<?php echo $tName; ?>">
+            <label for="Name"><?= gettext("Meeting name"); ?></label>
+            <input class="form-control input-small" type="text" name="Name" id="Name" value="<?= $tName; ?>">
             </div>
       </div> <p> </p> <div class="row">
             <div class="col-xs-2">
-            <label for="Description"><?php echo gettext("Meeting description"); ?></label>
-            <input class="form-control input-small" type="text" name="Description" id="Description" value="<?php echo $tDescription; ?>">
+            <label for="Description"><?= gettext("Meeting description"); ?></label>
+            <input class="form-control input-small" type="text" name="Description" id="Description" value="<?= $tDescription; ?>">
             </div>
       </div> <p> </p> <div class="row">
             <div class="col-xs-2">
-            <label for="Date"><?php echo gettext("Date"); ?></label>
-            <input class="form-control input-small" type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="Date" size="11"><font color="red"><?php echo $sDateError ?></font>
+            <label for="Date"><?= gettext("Date"); ?></label>
+            <input class="form-control input-small" type="text" name="Date" value="<?= $dDate; ?>" maxlength="10" id="Date" size="11"><font color="red"><?= $sDateError ?></font>
             </div>
             <div class="col-xs-2">
-            <label for="Time"><?php echo gettext("Time"); ?></label>
+            <label for="Time"><?= gettext("Time"); ?></label>
             <div class="input-group bootstrap-timepicker timepicker">
                 <input name="Time" id="Time" type="text" class="form-control input-small">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
@@ -186,15 +186,15 @@ this group will be added to the meeting as external users of WebCalendar.
             </div>
       </div> <p> </p> <div class="row">
             <div class="col-xs-2">
-            <?php echo gettext("Duration (hours)"); ?>
-            <input class="form-control input-small" type="text" name="Duration" id="Duration" value="<?php echo $nDuration; ?>">
+            <?= gettext("Duration (hours)"); ?>
+            <input class="form-control input-small" type="text" name="Duration" id="Duration" value="<?= $nDuration; ?>">
 
-                            <?php echo gettext("Notify ahead (days)"); ?>
-                            <input type="text" name="NotifyAhead" id="NotifyAhead" value="<?php echo $nNotifyAhead; ?>">
+                            <?= gettext("Notify ahead (days)"); ?>
+                            <input type="text" name="NotifyAhead" id="NotifyAhead" value="<?= $nNotifyAhead; ?>">
             </div>
       </div> <p> </p> <div class="row">
             <div class="col-xs-2">
-                <input type="submit" class="btn btn-primary" value="<?php echo gettext("Submit"); ?>" name="Submit">
+                <input type="submit" class="btn btn-primary" value="<?= gettext("Submit"); ?>" name="Submit">
             </div>
         </div>
     </div>

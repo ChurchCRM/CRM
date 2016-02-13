@@ -126,11 +126,11 @@ require "Include/Header.php";
 
 if (mysql_num_rows($rsPropList) == 0)
 {
-?>
+ ?>
 <form>
-<h3><?php echo gettext("This group currently has no properties!  You can add them in the Group Editor."); ?></h3>
+<h3><?= gettext("This group currently has no properties!  You can add them in the Group Editor."); ?></h3>
 <BR>
-<input type="button" class="btn" <?php echo 'value="' . gettext("Return to Person Record") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?php echo $iPersonID; ?>';">
+<input type="button" class="btn" <?= 'value="' . gettext("Return to Person Record") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID; ?>';">
 </form>
 <?php
 } else {
@@ -139,15 +139,15 @@ echo "<h2>" . gettext("Editing") . " <i>" . $grp_Name . "</i> " . gettext("data 
 
 // Construct the form
 
-?>
-	<form method="post" action="GroupPropsEditor.php?<?php echo "PersonID=" . $iPersonID . "&GroupID=" . $iGroupID; ?>" name="GroupPropEditor">
+ ?>
+	<form method="post" action="GroupPropsEditor.php?<?= "PersonID=" . $iPersonID . "&GroupID=" . $iGroupID; ?>" name="GroupPropEditor">
 
 	<table cellpadding="3">
 		<tr>
 			<td align="center" colspan="3">
-			<input type="submit" class="btn" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupPropSubmit">
+			<input type="submit" class="btn" <?= 'value="' . gettext("Save") . '"'; ?> Name="GroupPropSubmit">
 			&nbsp;
-			<input type="button" class="btn" <?php echo 'value="' . gettext("Cancel") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?php echo $iPersonID; ?>';">
+			<input type="button" class="btn" <?= 'value="' . gettext("Cancel") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID; ?>';">
 			<br><br>
 			</td>
 		</tr>
@@ -161,9 +161,9 @@ echo "<h2>" . gettext("Editing") . " <i>" . $grp_Name . "</i> " . gettext("data 
 	{
 		extract($rowPropList);
 
-		?>
+		 ?>
 		<tr>
-			<td class="LabelColumn"><?php echo $prop_Name; ?></td>
+			<td class="LabelColumn"><?= $prop_Name; ?></td>
 			<td class="TextColumn">
 
 			<?php
@@ -175,18 +175,18 @@ echo "<h2>" . gettext("Editing") . " <i>" . $grp_Name . "</i> " . gettext("data 
 			formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST["GroupPropSubmit"]));
 
 			if (array_key_exists ($prop_Field, $aPropErrors)) echo "<span style=\"color: red; \">" . $aPropErrors[$prop_Field] . "</span>";
-			?></td>
+			 ?></td>
 
-			<td class="TextColumn"><?php echo $prop_Description; ?></td>
+			<td class="TextColumn"><?= $prop_Description; ?></td>
 		</tr>
 	<?php } ?>
 
 		<tr>
 			<td align="center" colspan="3">
 			<br><br>
-			<input type="submit" class="btn" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupPropSubmit">
+			<input type="submit" class="btn" <?= 'value="' . gettext("Save") . '"'; ?> Name="GroupPropSubmit">
 			&nbsp;
-			<input type="button" class="btn" <?php echo 'value="' . gettext("Cancel") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?php echo $iPersonID; ?>';">
+			<input type="button" class="btn" <?= 'value="' . gettext("Cancel") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID; ?>';">
 			</td>
 		</tr>
 	</table>
@@ -196,4 +196,4 @@ echo "<h2>" . gettext("Editing") . " <i>" . $grp_Name . "</i> " . gettext("data 
 }
 
 require "Include/Footer.php";
-?>
+ ?>
