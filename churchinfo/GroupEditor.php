@@ -79,21 +79,21 @@ require "Include/Header.php";
             <div class="form-group">
                 <div class="row">
                 <div class="col-xs-4">
-                    <label for="Name"><?php echo gettext("Name:"); ?></label>
-                    <input class="form-control" type="text" Name="Name" value="<?php echo htmlentities(stripslashes($thisGroup['groupName']),ENT_NOQUOTES, "UTF-8"); ?>">
+                    <label for="Name"><?= gettext("Name:") ?></label>
+                    <input class="form-control" type="text" Name="Name" value="<?= htmlentities(stripslashes($thisGroup['groupName']),ENT_NOQUOTES, "UTF-8") ?>">
                 </div>
                 </div>
                 <div class="row">
                 <div class="col-xs-4">
-                    <label for="Description"><?php echo gettext("Description:"); ?></label>
-                    <textarea  class="form-control" name="Description" cols="40" rows="5"><?php echo htmlentities(stripslashes($thisGroup['groupDescription']),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
+                    <label for="Description"><?= gettext("Description:") ?></label>
+                    <textarea  class="form-control" name="Description" cols="40" rows="5"><?= htmlentities(stripslashes($thisGroup['groupDescription']),ENT_NOQUOTES, "UTF-8") ?></textarea></td>
                 </div>
                 </div>
                 <div class="row">
                 <div class="col-xs-3">
-                        <label for="GroupType"><?php echo gettext("Type of Group:"); ?></label>
+                        <label for="GroupType"><?= gettext("Type of Group:") ?></label>
                         <select class="form-control input-small" name="GroupType">
-                            <option value="0"><?php echo gettext("Unassigned"); ?></option>
+                            <option value="0"><?= gettext("Unassigned") ?></option>
                             <option value="0">-----------------------</option>
                             <?php
                             foreach ($rsGroupTypes as $groupType)
@@ -112,13 +112,13 @@ require "Include/Header.php";
                     <?php 
                     // Show Role Clone fields only when adding new group
                     if (strlen($iGroupID) < 1) { ?>
-                        <b><?php echo gettext("Group Member Roles:"); ?></b>
+                        <b><?= gettext("Group Member Roles:") ?></b>
                         
-                        <?php echo gettext("Clone roles:"); ?>
+                        <?= gettext("Clone roles:") ?>
                         <input type="checkbox" name="cloneGroupRole" id="cloneGroupRole" value="1">
                         </div>
                         <div class="col-xs-3" id="selectGroupIDDiv">
-                        <?php echo gettext("from group:"); ?>
+                        <?= gettext("from group:") ?>
                         <select class="form-control input-small" name="seedGroupID" id="seedGroupID" >
                         <option value="0"><?php gettext("Select a group"); ?></option>
                         
@@ -136,7 +136,7 @@ require "Include/Header.php";
                 <br>
                 <div class="row">
                 <div class="col-xs-6">
-                    <label for="UseGroupProps"><?php echo gettext("Group Specific Properties: "); ?></label>
+                    <label for="UseGroupProps"><?= gettext("Group Specific Properties: ") ?></label>
                
                     <?php
                         if ($thisGroup['grp_hasSpecialProps'])
@@ -154,7 +154,7 @@ require "Include/Header.php";
                 <br>
                 <div class="row">    
                 <div class="col-xs-3">
-                    <input type="submit" id="saveGroup" class="btn btn-primary" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupSubmit">
+                    <input type="submit" id="saveGroup" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> Name="GroupSubmit">
                 </div>
                 </div>
             </div>
@@ -163,7 +163,7 @@ require "Include/Header.php";
 </div>
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title"><?php echo gettext("Group Roles:"); ?></h3>
+        <h3 class="box-title"><?= gettext("Group Roles:") ?></h3>
     </div>
     <div class="box-body">
         <div class="alert alert-info alert-dismissable">

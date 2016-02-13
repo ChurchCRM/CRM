@@ -184,34 +184,34 @@ function CreatePaymentMethodsForChecked()
 }
 </script>
 
-<p align="center"><a href="AutoPaymentEditor.php?linkBack=ElectronicPaymentList.php"><?php echo gettext("Add a New Electronic Payment Method"); ?></a></p>
+<p align="center"><a href="AutoPaymentEditor.php?linkBack=ElectronicPaymentList.php"><?= gettext("Add a New Electronic Payment Method") ?></a></p>
 
 <table id="PaymentMethodTable" cellpadding="4" align="center" cellspacing="0" width="100%">
 	<tr class="TableHeader">
 		<td>
 		<input type=checkbox onclick="toggle(this, 'SelectForAction')" />
 		</td>
-		<td align="center"><b><?php echo gettext("Family"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Type"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Fiscal Year"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Next Date"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Amount"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Interval"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Fund"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Bank"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Routing"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Account"); ?></b></td>
+		<td align="center"><b><?= gettext("Family") ?></b></td>
+		<td align="center"><b><?= gettext("Type") ?></b></td>
+		<td align="center"><b><?= gettext("Fiscal Year") ?></b></td>
+		<td align="center"><b><?= gettext("Next Date") ?></b></td>
+		<td align="center"><b><?= gettext("Amount") ?></b></td>
+		<td align="center"><b><?= gettext("Interval") ?></b></td>
+		<td align="center"><b><?= gettext("Fund") ?></b></td>
+		<td align="center"><b><?= gettext("Bank") ?></b></td>
+		<td align="center"><b><?= gettext("Routing") ?></b></td>
+		<td align="center"><b><?= gettext("Account") ?></b></td>
 		<?php if ($sElectronicTransactionProcessor == "Vanco") {?> 
-		<td align="center"><b><?php echo gettext("Vanco ACH"); ?></b></td>
+		<td align="center"><b><?= gettext("Vanco ACH") ?></b></td>
 		<?php }?>
-		<td align="center"><b><?php echo gettext("Credit Card"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Month"); ?></b></td>
-		<td align="center"><b><?php echo gettext("Year"); ?></b></td>
+		<td align="center"><b><?= gettext("Credit Card") ?></b></td>
+		<td align="center"><b><?= gettext("Month") ?></b></td>
+		<td align="center"><b><?= gettext("Year") ?></b></td>
 		<?php if ($sElectronicTransactionProcessor == "Vanco") {?> 
-		<td align="center"><b><?php echo gettext("Vanco CC"); ?></b></td>
+		<td align="center"><b><?= gettext("Vanco CC") ?></b></td>
 		<?php }?>
-		<td><b><?php echo gettext("Edit"); ?></b></td>
-		<td><b><?php echo gettext("Delete"); ?></b></td>
+		<td><b><?= gettext("Edit") ?></b></td>
+		<td><b><?= gettext("Delete") ?></b></td>
 	</tr>
 <?php
 
@@ -228,7 +228,7 @@ while ($aRow = mysql_fetch_array($rsAutopayments)) {
 
 	//Display the row
 ?>
-	<tr id="PaymentMethodRow<?php echo $aut_ID; ?>" class="<?php echo $sRowClass; ?>">
+	<tr id="PaymentMethodRow<?= $aut_ID ?>" class="<?= $sRowClass ?>">
 		<td>
 		<?php
 			echo "<input type=checkbox id=Select$aut_ID name=SelectForAction />"; 
@@ -259,18 +259,18 @@ while ($aRow = mysql_fetch_array($rsAutopayments)) {
 		<td><?php echo $fun_Name;?></td>
 		<td><?php echo $aut_BankName;?></td>
 		<td><?php if (strlen($aut_Route)==9) echo "*****".substr($aut_Route,5,4);?></td>
-		<td id="Account<?php echo $aut_ID; ?>"><?php if (strlen($aut_Account)>4) echo "*****".substr($aut_Account,strlen($aut_Account)-4,4);?></td>
+		<td id="Account<?= $aut_ID ?>"><?php if (strlen($aut_Account)>4) echo "*****".substr($aut_Account,strlen($aut_Account)-4,4);?></td>
 		<?php if ($sElectronicTransactionProcessor == "Vanco") {?> 
-		<td align="center" id="AccountVanco<?php echo $aut_ID; ?>"><?php echo $aut_AccountVanco; ?></td>
+		<td align="center" id="AccountVanco<?= $aut_ID ?>"><?= $aut_AccountVanco ?></td>
 		<?php }?>
-		<td id="CreditCard<?php echo $aut_ID; ?>"><?php if (strlen($aut_CreditCard)==16) echo "*************".substr($aut_CreditCard,12,4);?></td>
+		<td id="CreditCard<?= $aut_ID ?>"><?php if (strlen($aut_CreditCard)==16) echo "*************".substr($aut_CreditCard,12,4);?></td>
 		<td><?php echo $aut_ExpMonth;?></td>
 		<td><?php echo $aut_ExpYear;?></td>
 		<?php if ($sElectronicTransactionProcessor == "Vanco") {?> 
-		<td align="center" id="CreditCardVanco<?php echo $aut_ID; ?>"><?php echo $aut_CreditCardVanco; ?></td>
+		<td align="center" id="CreditCardVanco<?= $aut_ID ?>"><?= $aut_CreditCardVanco ?></td>
 		<?php }?>
-		<td><a href="AutoPaymentEditor.php?AutID=<?php echo $aut_ID; ?>&amp;FamilyID=<?php echo $fam_ID?>&amp;linkBack=ElectronicPaymentList.php"><?php echo gettext("Edit"); ?></a></td>
-		<td><button onclick="ConfirmDeleteAutoPayment(<?php echo $aut_ID; ?>)"><?php echo gettext("Delete"); ?></button></td>
+		<td><a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?php echo $fam_ID?>&amp;linkBack=ElectronicPaymentList.php"><?= gettext("Edit") ?></a></td>
+		<td><button onclick="ConfirmDeleteAutoPayment(<?= $aut_ID ?>)"><?= gettext("Delete") ?></button></td>
 	</tr>
 	<?php
 }

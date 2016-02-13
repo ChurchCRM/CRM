@@ -43,7 +43,7 @@ if (isset($_POST["Submit"])) {
 <table cellpadding="3" align="left">
 
    <tr>
-      <td class="LabelColumn"><?php echo gettext("Fiscal Year:"); ?></td>
+      <td class="LabelColumn"><?= gettext("Fiscal Year:") ?></td>
       <td class="TextColumnWithBottomBorder">
 		<?php PrintFYIDSelect ($iFYID, "FYID") ?>
       </td>
@@ -53,8 +53,8 @@ if (isset($_POST["Submit"])) {
 
 <table cellpadding="3" align="left">
    <tr>
-      <input type="submit" class="btn" name="Submit" <?php echo 'value="' . gettext("Create Report") . '"'; ?>>
-      <input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';">
+      <input type="submit" class="btn" name="Submit" <?= 'value="' . gettext("Create Report") . '"' ?>>
+      <input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="javascript:document.location='Menu.php';">
    </tr>
 </table>
 
