@@ -203,7 +203,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 	<tr>
 		<td></td>
-		<td><p class="MediumLargeText"><?= gettext("If adding a new family, enter data below."); ?></p></td>
+		<td><p class="MediumLargeText"><?= gettext("If adding a new family, enter data below.") ></p></td>
 	</tr>
 
 

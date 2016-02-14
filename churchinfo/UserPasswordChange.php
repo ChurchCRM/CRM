@@ -197,7 +197,7 @@ if ($_SESSION['bNeedPasswordChange']) { ?>
     <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-        <?= gettext("Your account record indicates that you need to change your password before proceding."); ?>
+        <?= gettext("Your account record indicates that you need to change your password before proceding.") >
         </div>
 <?php } ?>
 
@@ -219,7 +219,7 @@ if ($_SESSION['bNeedPasswordChange']) { ?>
                 <div class="box-body">
                     <?php if (!$bAdminOtherUser) { ?>
                     <div class="form-group">
-                        <label for="OldPassword"><?= gettext("Old Password:"); ?></label>
+                        <label for="OldPassword"><?= gettext("Old Password:") ></label>
                         <input type="password" name="OldPassword" id="OldPassword" class="form-control" value="<?= $sOldPassword ?>" autofocus><?= $sOldPasswordError ?>
                     </div>
                     <?php } ?>

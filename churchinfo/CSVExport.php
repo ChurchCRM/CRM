@@ -337,7 +337,7 @@ require "Include/Header.php";
                         <b><?= gettext("To:") ?>&nbsp;</b>
                     </td>
                     <td>
-                        <input type="text" name="BirthDate2" size="11" maxlength="10" value="<?=(date("Y-m-d")); ?>"  id="BirthdayDate2">
+                        <input type="text" name="BirthDate2" size="11" maxlength="10" value="<?=(date("Y-m-d")) >"  id="BirthdayDate2">
                     </td>
                 </tr>
             </table>

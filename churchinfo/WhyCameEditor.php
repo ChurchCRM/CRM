@@ -95,22 +95,22 @@ require "Include/Header.php";
 		<td>
 		<table cellpadding="3">
 			<tr>
-				<td class="LabelColumn"><?= gettext("Why did you come to the church?"); ?></td>
+				<td class="LabelColumn"><?= gettext("Why did you come to the church?") ></td>
 				<td><textarea name="Join" rows="3" cols="90"><?= $tJoin ?></textarea></td>
 			</tr>
 	
 			<tr>
-				<td class="LabelColumn"><?= gettext("Why do you keep coming?"); ?></td>
+				<td class="LabelColumn"><?= gettext("Why do you keep coming?") ></td>
 				<td><textarea name="Come" rows="3" cols="90"><?= $tCome ?></textarea></td>
 			</tr>
 	
 			<tr>
-				<td class="LabelColumn"><?= gettext("Do you have any suggestions for us?"); ?></td>
+				<td class="LabelColumn"><?= gettext("Do you have any suggestions for us?") ></td>
 				<td><textarea name="Suggest" rows="3" cols="90"><?= $tSuggest ?></textarea></td>
 			</tr>
 	
 			<tr>
-				<td class="LabelColumn"><?= gettext("How did you learn of the church?"); ?></td>
+				<td class="LabelColumn"><?= gettext("How did you learn of the church?") ></td>
 				<td><textarea name="HearOfUs" rows="3" cols="90"><?= $tHearOfUs ?></textarea></td>
 			</tr>
 		</table>

@@ -226,7 +226,7 @@ if ($rsDonatedItems != 0) {
 	 ?>
 		<tr class="<?= $sRowClass ?>">
 			<td>
-				<a href="DonatedItemEditor.php?DonatedItemID=<?= $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID; ?>"><?= $di_Item; ?></a>
+				<a href="DonatedItemEditor.php?DonatedItemID=<?= $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID >"><?= $di_Item ></a>
 			</td>
 			<td>
 				<?php if ($di_multibuy) echo "X"; ?>&nbsp;
@@ -253,7 +253,7 @@ if ($rsDonatedItems != 0) {
 				<?= $di_minimum ?>&nbsp;
 			</td>
 			<td>
-				<a href="DonatedItemDelete.php?DonatedItemID=<?= $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID; ?>">Delete</a>
+				<a href="DonatedItemDelete.php?DonatedItemID=<?= $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID >">Delete</a>
 			</td>
 		</tr>
 	<?php

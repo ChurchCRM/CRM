@@ -502,8 +502,8 @@ function CreatePaymentMethod()
         type: "POST",
         url: "<?php if ($VancoTest) echo "https://www.vancodev.com/cgi-bin/wsnvptest.vps";
                                else echo "https://www.vancoservices.com/cgi-bin/wsnvp.vps"; ?>",
-        data: { "sessionid":"<?= $sessionid; ?>",
-    	        "nvpvar":"<?= $nvpvarcontent; ?>",
+        data: { "sessionid":"<?= $sessionid >",
+    	        "nvpvar":"<?= $nvpvarcontent >",
     	        "newcustomer":"true",
     	        "accounttype":accountType,
     	        "accountnumber":accountNum,
@@ -526,7 +526,7 @@ function CreatePaymentMethod()
         	var errorList = vancodata["errorlist"];
             $.ajax({
                 type: "POST",
-                url: "<?= $VancoUrltoredirect; ?>",
+                url: "<?= $VancoUrltoredirect >",
                 data: vancodata,
                 dataType: 'json',
                 async: true,
@@ -548,7 +548,7 @@ function CreatePaymentMethod()
                     	for (var i = 0; i < errorArr.length; i++)
                         	errorStr += "Error " + errorArr[i] + ": " + VancoErrorString(Number(errorArr[i])) + "\n";
                 		alert (errorStr);
-                		window.location = "<?= RedirectURL ("AutoPaymentEditor.php")."?AutID=$iAutID&FamilyID=$aut_FamID$&linkBack=$linkBack"; ?>";
+                		window.location = "<?= RedirectURL ("AutoPaymentEditor.php")."?AutID=$iAutID&FamilyID=$aut_FamID$&linkBack=$linkBack" >";
                 	}
                 },
                 error: function (jqXHR, textStatus, errorThrown, nashuadata) {
@@ -625,12 +625,12 @@ function CreatePaymentMethod()
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Payment amount"); ?></td>
+				<td class="LabelColumn"><?= gettext("Payment amount") ></td>
 				<td class="TextColumn"><input type="text" name="Amount" value="<?= $nAmount ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Payment interval (months)"); ?></td>
+				<td class="LabelColumn"><?= gettext("Payment interval (months)") ></td>
 				<td class="TextColumn"><input type="text" name="Interval" value="<?= $iInterval ?>"></td>
 			</tr>
 
@@ -659,64 +659,64 @@ function CreatePaymentMethod()
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("First name"); ?></td>
+				<td class="LabelColumn"><?= gettext("First name") ></td>
 				<td class="TextColumn"><input type="text" id="FirstName" name="FirstName" value="<?= $tFirstName ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Last name"); ?></td>
+				<td class="LabelColumn"><?= gettext("Last name") ></td>
 				<td class="TextColumn"><input type="text" id="LastName" name="LastName" value="<?= $tLastName ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Address 1"); ?></td>
+				<td class="LabelColumn"><?= gettext("Address 1") ></td>
 				<td class="TextColumn"><input type="text" id="Address1" name="Address1" value="<?= $tAddress1 ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Address 2"); ?></td>
+				<td class="LabelColumn"><?= gettext("Address 2") ></td>
 				<td class="TextColumn"><input type="text" id="Address2" name="Address2" value="<?= $tAddress2 ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("City"); ?></td>
+				<td class="LabelColumn"><?= gettext("City") ></td>
 				<td class="TextColumn"><input type="text" id="City" name="City" value="<?= $tCity ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("State"); ?></td>
+				<td class="LabelColumn"><?= gettext("State") ></td>
 				<td class="TextColumn"><input type="text" id="State" name="State" value="<?= $tState ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Zip code"); ?></td>
+				<td class="LabelColumn"><?= gettext("Zip code") ></td>
 				<td class="TextColumn"><input type="text" id="Zip" name="Zip" value="<?= $tZip ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Country"); ?></td>
+				<td class="LabelColumn"><?= gettext("Country") ></td>
 				<td class="TextColumn"><input type="text" id="Country" name="Country" value="<?= $tCountry ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Phone"); ?></td>
+				<td class="LabelColumn"><?= gettext("Phone") ></td>
 				<td class="TextColumn"><input type="text" id="Phone" name="Phone" value="<?= $tPhone ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Email"); ?></td>
+				<td class="LabelColumn"><?= gettext("Email") ></td>
 				<td class="TextColumn"><input type="text" id="Email" name="Email" value="<?= $tEmail ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Credit Card"); ?></td>
+				<td class="LabelColumn"><?= gettext("Credit Card") ></td>
 				<td class="TextColumn"><input type="text" id="CreditCard" name="CreditCard" value="<?= $tCreditCard ?>"></td>
 			</tr>
 <?php
 if ($sElectronicTransactionProcessor == "Vanco") {
 ?>
 			<tr>
-				<td class="LabelColumn"><?= gettext("Vanco Credit Card Method"); ?></td>
+				<td class="LabelColumn"><?= gettext("Vanco Credit Card Method") ></td>
 				<td class="TextColumn"><input type="text" id="CreditCardVanco" name="CreditCardVanco" value="<?= $tCreditCardVanco ?>" readonly></td>
 			</tr>
 <?php
@@ -724,34 +724,34 @@ if ($sElectronicTransactionProcessor == "Vanco") {
 ?>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Expiration Month"); ?></td>
+				<td class="LabelColumn"><?= gettext("Expiration Month") ></td>
 				<td class="TextColumn"><input type="text" id="ExpMonth" name="ExpMonth" value="<?= $tExpMonth ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Expiration Year"); ?></td>
+				<td class="LabelColumn"><?= gettext("Expiration Year") ></td>
 				<td class="TextColumn"><input type="text" id="ExpYear" name="ExpYear" value="<?= $tExpYear ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Bank Name"); ?></td>
+				<td class="LabelColumn"><?= gettext("Bank Name") ></td>
 				<td class="TextColumn"><input type="text" id="BankName" name="BankName" value="<?= $tBankName ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Bank Route Number"); ?></td>
+				<td class="LabelColumn"><?= gettext("Bank Route Number") ></td>
 				<td class="TextColumn"><input type="text" id="Route" name="Route" value="<?= $tRoute ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Bank Account Number"); ?></td>
+				<td class="LabelColumn"><?= gettext("Bank Account Number") ></td>
 				<td class="TextColumn"><input type="text" id="Account" name="Account" value="<?= $tAccount ?>"></td>
 			</tr>
 <?php
 if ($sElectronicTransactionProcessor == "Vanco") {
 ?>
 			<tr>
-				<td class="LabelColumn"><?= gettext("Vanco Bank Account Method"); ?></td>
+				<td class="LabelColumn"><?= gettext("Vanco Bank Account Method") ></td>
 				<td class="TextColumn"><input type="text" id="AccountVanco" name="AccountVanco" value="<?= $tAccountVanco ?>" readonly></td>
 			</tr>
 <?php

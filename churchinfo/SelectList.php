@@ -490,9 +490,9 @@ if ($iMode == 1) {
 		<option value="edited" <?php if ($sSort == "edited") echo "selected";?>><?= gettext("By Recently Edited") ?></option>
 
 </select>&nbsp;
-<input type="text" name="Filter" value="<?= $sFilter;?>">
-<input type="hidden" name="mode" value="<?= $sMode;?>">
-<input type="hidden" name="Letter" value="<?= $sLetter;?>">
+<input type="text" name="Filter" value="<?= $sFilter >">
+<input type="hidden" name="mode" value="<?= $sMode >">
+<input type="hidden" name="Letter" value="<?= $sLetter >">
 <input type="submit" class="btn" value="<?= gettext("Apply Filter") ?>">
 
 </td></tr>
@@ -1019,7 +1019,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
     <td><img src="<?= $personService->getPhoto($per_ID); ?>" class="direct-chat-img" width="10px" height="10px" /> </td>
 	<td>
 	    <a href="PersonView.php?PersonID=<?= $per_ID ?>" >
-	    <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3); ?>
+	    <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3) >
 	    </a>
     </td>
     <td>

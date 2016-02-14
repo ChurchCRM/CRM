@@ -103,13 +103,13 @@ require 'Include/Header.php'; ?>
 
 
 
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 <div class="box">
     <div class="box-header with-border">
@@ -143,7 +143,7 @@ if ($_SESSION['bManageGroups'])
                              <p class="LargeError">
                                 <?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>
                             </p>
-                            <?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered."); ?>
+                            <?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") >
                             <br><br>
                             <span style="color:black">I Understand &nbsp;<input type="checkbox" name="chkClear"id="chkClear" ></span>
                         </div>
@@ -512,7 +512,7 @@ $iRoleListID = $aTemp[0];
 </form>
 <!-- END GROUP MEMBERS LISTING -->
 <form action="#" method="get" class="sidebar-form">
-    <label for="addGroupMember"><?= gettext("Add Group Member: "); ?></label>
+    <label for="addGroupMember"><?= gettext("Add Group Member: ") ></label>
     <select class="form-control personSearch" name="addGroupMember" style="width:100%">
     </select>
 </form>
@@ -631,7 +631,7 @@ $(document).ready(function() {
     $(".personSearch").on("select2:select",function (e) { 
         $.ajax({
             method: "POST",
-            url: "/api/groups/<?= $iGroupID; ?>/adduser/"+e.params.data.objid,
+            url: "/api/groups/<?= $iGroupID >/adduser/"+e.params.data.objid,
             dataType: "json"
         }).done(function (data){
            var person = data[0]; 
@@ -661,7 +661,7 @@ function initHandlers()
         console.log(userid);
         $.ajax({
             method: "POST",
-            url: "/api/groups/<?= $iGroupID; ?>/removeuser/"+userid,
+            url: "/api/groups/<?= $iGroupID >/removeuser/"+userid,
             dataType: "json"
         }).done(function(data){
             dataT.row(function(idx,data,node) { if  (data.per_ID == userid){return true;} } ).remove();
@@ -699,7 +699,7 @@ function initHandlers()
       console.log(e);        
       $.ajax({
             method: "DELETE",
-            url: "/api/groups/<?= $iGroupID; ?>",
+            url: "/api/groups/<?= $iGroupID >",
             dataType: "json"
         }).done(function(data){
             console.log(data);

@@ -185,7 +185,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 ?>
 <div class="btn-group pull-right">
 	<?php if (($previous_id > 0)) { ?>
-		  <a class="btn btn-default" role="button" href="FamilyView.php?FamilyID=<?= $previous_id; ?>"> <span class="fa fa-hand-o-left" aria-hidden="true"></span></a>
+		  <a class="btn btn-default" role="button" href="FamilyView.php?FamilyID=<?= $previous_id >"> <span class="fa fa-hand-o-left" aria-hidden="true"></span></a>
 	<?php } ?>
 	<a role="button" class="btn btn-warning" href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Family</a>
 	<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -212,7 +212,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 	</ul>
 	<a class="btn btn-default" role="button" href="FamilyList.php"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
 	<?php if (($next_id > 0)) { ?>
-		<a class="btn btn-default" role="button" href="FamilyView.php?FamilyID=<?= $next_id; ?>"><span class="fa fa-hand-o-right" aria-hidden="true"></span></a>
+		<a class="btn btn-default" role="button" href="FamilyView.php?FamilyID=<?= $next_id >"><span class="fa fa-hand-o-right" aria-hidden="true"></span></a>
 	<?php } ?>
 </div>
 <p><br/><br/></p>
@@ -221,7 +221,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 		<div class="box box-primary">
 			<div class="box-body">
 				<img src="<?= getFamilyPhoto($fam_ID) ?>" alt="" class="img-circle img-responsive profile-user-img" />
-                <h3 class="profile-username text-center"><?= gettext("The") . " $fam_Name " . gettext("Family"); ?></h3>
+                <h3 class="profile-username text-center"><?= gettext("The") . " $fam_Name " . gettext("Family") ></h3>
                 <?php if ($bOkToEdit) { ?>
                     <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="btn btn-primary btn-block"><b>Edit</b></a>
                 <?php } ?>
@@ -285,12 +285,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 		<div class="row">
 			<div class="box box-header">
 				<div class="col-lg-5 col-md-4 col-sm-4">
-					<img src="<?= $personService->getPhoto($EnteredId) ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+					<img src="<?= $personService->getPhoto($EnteredId) ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName >" width="40" height="40" class="img-circle img-bordered-sm"/>
 					<?= gettext("Entered: ").FormatDate($per_DateEntered,false) ?>
 				</div>
 				<?php if (strlen($per_DateLastEdited) > 0) { ?>
 					<div class="col-lg-4 col-md-4 col-sm-4">
-						<img src="<?= $personService->getPhoto($EditedId) ?>" title="<?=  $EditedFirstName . " " . $EditedLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+						<img src="<?= $personService->getPhoto($EditedId) ?>" title="<?=  $EditedFirstName . " " . $EditedLastName >" width="40" height="40" class="img-circle img-bordered-sm"/>
 						<?= gettext("Updated: ").FormatDate($per_DateLastEdited,false) ?>
 					</div>
 				<?php } ?>
@@ -555,10 +555,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 												<?= $fundName ?>&nbsp;
 											</td>
 											<td>
-												<a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID; ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID; ?>">Edit</a>
+												<a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID >&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID >">Edit</a>
 											</td>
 											<td>
-												<a href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID; ?>">Delete</a>
+												<a href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID >">Delete</a>
 											</td>
 											<td>
 												<?= $aut_DateLastEdited ?>&nbsp;
@@ -681,10 +681,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 													<?= $plg_comment ?>&nbsp;
 												</td>
 												<td>
-													<a href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID; ?>">Edit</a>
+													<a href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID >">Edit</a>
 												</td>
 												<td>
-													<a href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID; ?>">Delete</a>
+													<a href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID >">Delete</a>
 												</td>
 												<td>
 													<?= $plg_DateLastEdited ?>&nbsp;
@@ -788,7 +788,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 <!-- Modal -->
 <div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label" aria-hidden="true">
 	<div class="modal-dialog">
-		<form action="ImageUpload.php?FamilyID=<?= $iFamilyID; ?>" method="post" enctype="multipart/form-data" id="UploadForm">
+		<form action="ImageUpload.php?FamilyID=<?= $iFamilyID >" method="post" enctype="multipart/form-data" id="UploadForm">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

@@ -44,11 +44,11 @@ require "Include/Header.php"; ?>
 // Confirmation message that people where added to Event from Cart
 if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart']) == 0) {
         if (!array_key_exists("Message", $_GET)) { ?>
-             <p class="text-center callout callout-warning"><?= gettext("You have no items in your cart.") ; ?> </p>
+             <p class="text-center callout callout-warning"><?= gettext("You have no items in your cart.")  > </p>
         <?php } else {
             switch ($_GET["Message"]) {
                 case "aMessage": ?>
-                    <p class="text-center callout callout-info"><?= $_GET["iCount"].' '.($_GET["iCount"] == 1 ? "Record":"Records").' Emptied into Event ID:'.$_GET["iEID"] ; ?> </p>
+                    <p class="text-center callout callout-info"><?= $_GET["iCount"].' '.($_GET["iCount"] == 1 ? "Record":"Records").' Emptied into Event ID:'.$_GET["iEID"]  > </p>
                 <?php break;
             }
         }
@@ -89,13 +89,13 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
         if ($iNumPersons > 16) { ?>
         <form method="get" action="CartView.php#GenerateLabels">
         <input type="submit" class="btn" name="gotolabels"
-        value="<?= gettext("Go To Labels"); ?>">
+        value="<?= gettext("Go To Labels") >">
         </form>
         <?php } ?>
 <!-- Default box -->
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext("Your cart contains") . ' ' . $iNumPersons . ' ' . gettext("persons from") . ' ' . $iNumFamilies . ' ' . gettext("families."); ?></h3>
+        <h3 class="box-title"><?= gettext("Your cart contains") . ' ' . $iNumPersons . ' ' . gettext("persons from") . ' ' . $iNumFamilies . ' ' . gettext("families.") ></h3>
     </div>
     <div class="box-body">
         <table class="table table-hover">
@@ -282,7 +282,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
 <!-- Default box -->
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext("Generate Labels"); ?></h3>
+        <h3 class="box-title"><?= gettext("Generate Labels") ></h3>
     </div>
     <div class="box-body">
     <form method="get" action="Reports/PDFLabel.php" name="labelform">
@@ -321,7 +321,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
 
                 <tr>
                         <td></td>
-                        <td><input type="submit" class="btn btn-primary" value="<?= gettext("Generate Labels"); ?>" name="Submit"></td>
+                        <td><input type="submit" class="btn btn-primary" value="<?= gettext("Generate Labels") >" name="Submit"></td>
                 </tr>
     </table></form></td></tr></table>
     </div>

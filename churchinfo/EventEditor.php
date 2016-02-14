@@ -491,9 +491,9 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
         ?><tr>
           <td><strong><?= ($aCountName[$c].": ") ?></strong></td>
         <td>
-        <input type="text" name="EventCount[]" value="<?= ($aCount[$c]); ?>" size="8">
-        <input type="hidden" name="EventCountID[]" value="<?= ($aCountID[$c]); ?>">
-        <input type="hidden" name="EventCountName[]" value="<?= ($aCountName[$c]); ?>">
+        <input type="text" name="EventCount[]" value="<?= ($aCount[$c]) >" size="8">
+        <input type="hidden" name="EventCountID[]" value="<?= ($aCountID[$c]) >">
+        <input type="hidden" name="EventCountName[]" value="<?= ($aCountName[$c]) >">
         </td>
         </tr>
       <?php

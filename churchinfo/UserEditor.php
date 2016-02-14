@@ -315,7 +315,7 @@ require 'Include/Header.php';
 <div class="box">
     <div class="box-body">
         <div class="callout callout-info">
-            <?= gettext('Note: Changes will not take effect until next logon.'); ?>
+            <?= gettext('Note: Changes will not take effect until next logon.') >
         </div>
         <form method="post" action="UserEditor.php">
         <input type="hidden" name="Action" value="<?= $sAction ?>">

@@ -116,7 +116,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 			 name="SetDefaultFY">
 		</td>
 		<td align="left" width="75%">
-			<p><input type="checkbox" name="SetDefaultFYConfirm"><?= gettext("Check to confirm"); ?></p>
+			<p><input type="checkbox" name="SetDefaultFYConfirm"><?= gettext("Check to confirm") ></p>
 		</td>
 	</tr>
 
@@ -127,7 +127,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 		</td>
 		<td align="left" width="75%">
 			<?= gettext("Randomly assign canvassers to all Families.  The Canvassers are
-			taken from the &quot;Canvassers&quot; Group."); ?>
+			taken from the &quot;Canvassers&quot; Group.") >
 			<p><input type="checkbox" name="AssignCanvassersConfirm"><?= gettext("Check to confirm") ?></p>
 		</td>
 	</tr>
@@ -139,7 +139,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 		</td>
 		<td align="left" width="75%">
 			<?= gettext("Randomly assign canvassers to non-pledging Families.  The Canvassers are
-			taken from the &quot;BraveCanvassers&quot; Group."); ?>
+			taken from the &quot;BraveCanvassers&quot; Group.") >
 			<p><input type="checkbox" name="AssignNonPledgingConfirm"><?= gettext("Check to confirm") ?></p>
 		</td>
 	</tr>
@@ -152,7 +152,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 		<td align="left" width="75%">
 			<?= gettext("Clear all the canvasser assignments for all families.  <p>Important
 			note: this will lose any canvasser assignments that have been made by hand.</p>"); ?>
-			<input type="checkbox" name="ClearCanvasserAssignmentsConfirm"><?= gettext("Check to confirm"); ?>
+			<input type="checkbox" name="ClearCanvasserAssignmentsConfirm"><?= gettext("Check to confirm") >
 		</td>
 	</tr>
 
@@ -164,7 +164,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 		<td align="left" width="75%">
 			<?= gettext("Turn on the &quot;Ok To Canvass&quot; field for all Families.  <p>Important
 			note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand.</p>"); ?>
-			<input type="checkbox" name="SetAllOkToCanvassConfirm"><?= gettext("Check to confirm"); ?>
+			<input type="checkbox" name="SetAllOkToCanvassConfirm"><?= gettext("Check to confirm") >
 		</td>
 	</tr>
 
@@ -176,7 +176,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 		<td align="left" width="75%">
 			<?= gettext("Turn off the &quot;Ok To Canvass&quot; field for all Families.  <p>Important
 			note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand.</p>"); ?>
-			<input type="checkbox" name="ClearAllOkToCanvassConfirm"><?= gettext("Check to confirm"); ?>
+			<input type="checkbox" name="ClearAllOkToCanvassConfirm"><?= gettext("Check to confirm") >
 		</td>
 	</tr>
 

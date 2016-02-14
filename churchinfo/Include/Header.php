@@ -49,36 +49,36 @@ $MenuFirst = 1;
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/dist/css/AdminLTE.min.css" />
+    <link rel="stylesheet" type="text/css" href="<?= $sRootPath >/vendor/almasaeed2010/adminlte/dist/css/AdminLTE.min.css" />
 
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="<?= $sRootPath >/vendor/almasaeed2010/adminlte/dist/css/skins/_all-skins.min.css">
 
-    <link rel="stylesheet" href="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/select2/select2.min.css">
+    <link rel="stylesheet" href="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/select2/select2.min.css">
 
-    <link rel="stylesheet" href="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datepicker/datepicker3.css">
-    <link rel="stylesheet" href= "<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/timepicker/bootstrap-timepicker.css">
+    <link rel="stylesheet" href="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet" href= "<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/timepicker/bootstrap-timepicker.css">
 
     <!-- Custom ChurchCRM styles -->
-    <link rel="stylesheet" href="<?= $sRootPath; ?>/Include/ChurchCRM.css">
+    <link rel="stylesheet" href="<?= $sRootPath >/Include/ChurchCRM.css">
 
     <!-- jQuery 2.1.4 -->
-    <script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
     <!-- jQuery 2.1.4 -->
-    <script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/jQueryUI/jquery-ui.min.js"></script>
+    <script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/jQueryUI/jquery-ui.min.js"></script>
 
     <!-- AdminLTE Select2 -->
-    <script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/select2/select2.full.min.js"></script>
+    <script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/select2/select2.full.min.js"></script>
     <!-- AdminLTE DatePicker -->
-    <script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
      <!-- AdminLTE TimePicker -->
-    <script src="<?= $sRootPath; ?>/vendor/almasaeed2010/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
+    <script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
 
     <?php Header_head_metatag(); ?>
 </head>
-<body class="hold-transition <?= $_SESSION['sStyle']; ?> sidebar-mini">
+<body class="hold-transition <?= $_SESSION['sStyle'] > sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
     <?php

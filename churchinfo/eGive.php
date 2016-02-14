@@ -390,8 +390,8 @@ function importDoneFixOrContinue() {
 
 ?>
 
-	<p class="MediumLargeText"> <?= gettext("Data import results: ") . $importCreated . gettext(" gifts were imported, ") .  $importNoChange . gettext(" gifts unchanged, and ") . $importError . gettext(" gifts not imported due to problems"); ?></p>
-	<input type="button" class="btn" value="<?= gettext("Back to Deposit Slip"); ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID; ?>'"
+	<p class="MediumLargeText"> <?= gettext("Data import results: ") . $importCreated . gettext(" gifts were imported, ") .  $importNoChange . gettext(" gifts unchanged, and ") . $importError . gettext(" gifts not imported due to problems") ></p>
+	<input type="button" class="btn" value="<?= gettext("Back to Deposit Slip") >" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID >'"
 <?php
 }
 
@@ -419,8 +419,8 @@ function get_api_data($json) {
 		return $result;
 	} else {
 	 ?>
-		<font color="red"><?= gettext("Fatal error in eGive API datastream: '") . $error; ?>"'</font><br><br>
- 		<input type="button" class="btn" value="<?= gettext("Back to Deposit Slip"); ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID; ?>'"
+		<font color="red"><?= gettext("Fatal error in eGive API datastream: '") . $error >"'</font><br><br>
+ 		<input type="button" class="btn" value="<?= gettext("Back to Deposit Slip") >" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID >'"
 	<?php
 		return 0;
 	}
