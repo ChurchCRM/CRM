@@ -103,7 +103,7 @@ function updateGroupRoles(generated_html)
 				echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
 			}
 			echo "</select>";
-			 ?>
+			?>
 		</td>
 	</tr>
 	<tr>
@@ -177,7 +177,7 @@ $rsPropFields = RunQuery($sSQL);
 				}
 				else
 					echo gettext("None");
-			 ?>
+			?>
 		</td>
 	</tr>
 </table>

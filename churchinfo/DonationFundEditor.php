@@ -173,7 +173,7 @@ if ( answer )
 <?php
 		if ( $bErrorFlag ) echo gettext("Invalid fields or selections. Changes not saved! Please correct and try again!");
 		if (strlen($sDeleteError) > 0) echo $sDeleteError;
-		 ?>
+		?>
 
 <table class="table">
 
@@ -199,7 +199,7 @@ else
 
 	for ($row=1; $row <= $numRows; $row++)
 	{
-		 ?>
+		?>
 		<tr>
 
 
@@ -208,7 +208,7 @@ else
 				<?php
 				if ($aNameErrors[$row])
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
-				 ?>
+				?>
 			</td>
 
 			<td class="TextColumn">

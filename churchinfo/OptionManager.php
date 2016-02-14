@@ -356,12 +356,12 @@ for ($row=1; $row <= $numRows; $row++)
 				echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
 			elseif ( $aNameErrors[$row] == 2 )
 				echo "<span style=\"color: red;\"><BR>" . gettext("Duplicate name found.") . " </span>";
-			 ?>
+			?>
 		</td>
 		<?php
 		if ($mode == "grproles")
 			echo "<td class=\"TextColumn\"><input class=\"form-control input-small\" type=\"button\" class=\"btn\" value=\"" . gettext("Make Default") . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . "&ListID=" . $listID . "&ID=" . $aIDs[$row] . "&Action=makedefault';\" ></td>";
-		 ?>
+		?>
 
 	</tr>
 <?php } ?>
@@ -375,7 +375,7 @@ for ($row=1; $row <= $numRows; $row++)
 	<?php } elseif ($mode != "grproles") { ?>
 		<input type="button" class="btn" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:document.location='<?php
 		echo "Menu.php";
-		 ?>';">
+		?>';">
 	<?php } ?>
 	</div>
 </div>

@@ -196,7 +196,7 @@ require "Include/Header.php";
 				}
 				echo "</select></td></tr>";
 			}
-			 ?>
+			?>
 
 			<tr>
 				<td class="LabelColumn"><?= gettext("Date:") ?></td>

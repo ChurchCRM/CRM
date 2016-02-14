@@ -306,7 +306,7 @@ if($sMode == 'person')
 				 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 				 WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
 		$rsPledges = RunQuery($sSQL);
-		 ?>
+		?>
 		<table cellpadding="5" cellspacing="0" width="100%">
 			<tr class="TableHeader">
 			<td><?= gettext("Type") ?></td>

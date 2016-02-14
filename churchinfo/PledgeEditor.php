@@ -595,8 +595,8 @@ require "Include/Header.php";
 				<td class="TextColumnWithBottomBorder">
 					<select name="Method">
 						<?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "Bank" or !$iCurrentDeposit) { ?>
-						<option value="CHECK" <?php if ($iMethod == "CHECK") { echo "selected"; } ?>><?= gettext("CHECK"); 						 ?></option>
-						<option value="CASH" <?php if ($iMethod == "CASH") { echo "selected"; } ?>><?= gettext("CASH"); 						 ?></option>
+						<option value="CHECK" <?php if ($iMethod == "CHECK") { echo "selected"; } ?>><?= gettext("CHECK"); 						?></option>
+						<option value="CASH" <?php if ($iMethod == "CASH") { echo "selected"; } ?>><?= gettext("CASH"); 						?></option>
 						<?php } ?>
 						<?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "CreditCard" or !$iCurrentDeposit) { ?>
 						<option value="CREDITCARD" <?php if ($iMethod == "CREDITCARD") { echo "selected"; } ?>><?= 						gettext("Credit Card") ?></option>
@@ -793,7 +793,7 @@ $(document).ready(function() {
 				echo "<td class=\"TextColumn\"><input type=\"text\" size=40 name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
 				echo "</tr>";
 			}
-			 ?>
+			?>
 		</td>
 		</table>
 		</tr>

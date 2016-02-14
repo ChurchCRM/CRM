@@ -704,7 +704,7 @@ require "Include/Header.php";
 							  echo gettext("Postal Code:");
 							else
 							  echo gettext("Zip:");
-							 ?></label>
+							?></label>
 						<input type="text" Name="Zip"  class="form-control" <?php
 							// bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
 							if($cfgForceUppercaseZip)echo 'style="text-transform:uppercase" ';
@@ -944,7 +944,7 @@ require "Include/Header.php";
 
 		for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++)
 		{
-		 ?>
+		?>
 		<input type="hidden" name="PersonID<?= $iCount ?>" value="<?= $aPersonIDs[$iCount] ?>">
 		<tr>
 			<td class="TextColumn">
@@ -979,7 +979,7 @@ require "Include/Header.php";
 					if ($aRoles[$iCount] == $aFamilyRoleIDs[$c]) echo " selected";
 					echo ">" . $aFamilyRoleNames[$c] . "</option>";
 				}
-				 ?>
+				?>
 				</select>
 			</td>
 			<td class="TextColumn">
@@ -1005,7 +1005,7 @@ require "Include/Header.php";
 					<?php for ($x=1; $x < 32; $x++)
 					{
 						if ($x < 10) { $sDay = "0" . $x; } else { $sDay = $x; }
-					 ?>
+					?>
 					<option value="<?= $sDay ?>" <?php if ($aBirthDays[$iCount] == $x) {echo "selected"; } ?>><?= $x ?></option>
 				<?php } ?>
 				</select>
@@ -1014,7 +1014,7 @@ require "Include/Header.php";
 			<?php	if ((!array_key_exists ($iCount, $aperFlags) || (!$aperFlags[$iCount])) or ($_SESSION['bSeePrivacyData']))
 			{
 				$UpdateBirthYear = 1;
-			 ?>
+			?>
 				<input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" size="4" maxlength="4">
 				<div><font color="red"><?php if (array_key_exists ($iCount, $aBirthDateError)) echo $aBirthDateError[$iCount]; ?></font></div>
 			<?php }
@@ -1022,7 +1022,7 @@ require "Include/Header.php";
 			{ 
 				$UpdateBirthYear = 0;
 			}
-			 ?>
+			?>
 				&nbsp;
 			</td>
 			<td>

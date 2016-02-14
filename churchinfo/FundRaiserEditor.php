@@ -163,7 +163,7 @@ require "Include/Header.php";
 					echo "<input type=button class=btn value=\"".gettext("Generate Certificates")."\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
 					echo "<input type=button class=btn value=\"".gettext("Batch Winner Entry")."\" name=BatchWinnerEntry onclick=\"javascript:document.location='BatchWinnerEntry.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
 				}
-			 ?>
+			?>
 		</td>
 	</tr>
 
@@ -223,7 +223,7 @@ if ($rsDonatedItems != 0) {
 		}
 	
 		$sRowClass = "RowColorA";
-	 ?>
+	?>
 		<tr class="<?= $sRowClass ?>">
 			<td>
 				<a href="DonatedItemEditor.php?DonatedItemID=<?= $di_ID . "&linkBack=FundRaiserEditor.php?FundRaiserID=" . $iFundRaiserID >"><?= $di_Item ?></a>

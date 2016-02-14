@@ -135,7 +135,7 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 			echo "</select><br>";
 			echo "Multiple groups will have a Page Break between Groups<br>";
 			echo "<input type=\"checkbox\" Name=\"allroles\" value=\"1\" checked>"; echo "List all Roles (unchecked will list Teacher/Student roles only)";	
-			 ?>
+			?>
 		</td>
 	</tr>
 

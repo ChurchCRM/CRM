@@ -626,7 +626,7 @@ require "Include/Header.php";
 			} else {
 				echo "<input type=hidden name=DepositType id=DepositType value=\"$sDepositType\"></td></td>";
 			}
-			 ?>
+			?>
 
 			<tr>
 				<td class="LabelColumn"><?= gettext("Comment:") ?></td>
@@ -771,7 +771,7 @@ foreach ($depositArray as $order => $value) {
 		$sRowClass = "PaymentRowColorA";
 	else
 		$sRowClass = "PaymentRowColorB";
-	 ?>
+	?>
 
 	<tr class="<?= $sRowClass ?>">
 		<td>

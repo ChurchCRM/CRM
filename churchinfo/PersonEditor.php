@@ -706,7 +706,7 @@ require "Include/Header.php";
 
 							if ($bFamilyAddress1)
 								echo "</span>";
-							 ?>
+							?>
 						</label>
 						<input type="text" name="Address1" value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, "UTF-8") ?>" size="30" maxlength="50" class="form-control">
 					</div>
@@ -719,7 +719,7 @@ require "Include/Header.php";
 
 							if ($bFamilyAddress2)
 								echo "</span>";
-							 ?>
+							?>
 						</label>
 						<input type="text" name="Address2" value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, "UTF-8") ?>" size="30" maxlength="50" class="form-control">
 					</div>
@@ -732,7 +732,7 @@ require "Include/Header.php";
 
 							if ($bFamilyCity)
 								echo "</span>";
-							 ?>
+							?>
 						</label>
 						<input type="text" name="City" value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, "UTF-8") ?>" class="form-control">
 					</div>
@@ -749,7 +749,7 @@ require "Include/Header.php";
 
 						if ($bFamilyState)
 							echo "</span>";
-						 ?>
+						?>
 					</label>
 					<?php require "Include/StateDropDown.php"; ?>
 				</div>
@@ -767,7 +767,7 @@ require "Include/Header.php";
 
 						if ($bFamilyZip)
 							echo "</span>";
-						 ?>
+						?>
 					</label>
 					<input type="text" name="Zip" class="form-control"
 					<?php
@@ -775,7 +775,7 @@ require "Include/Header.php";
 						if($cfgForceUppercaseZip)echo 'style="text-transform:uppercase" ';
 
 						echo 'value="' . htmlentities(stripslashes($sZip),ENT_NOQUOTES, "UTF-8") . '" ';
-					 ?>
+					?>
 					maxlength="10" size="8">
 				</div>
 				<div class="form-group col-xs-2">
@@ -787,7 +787,7 @@ require "Include/Header.php";
 
 						if ($bFamilyCountry)
 							echo "</span>";
-						 ?>
+						?>
 					</label>
 					<?php require "Include/CountryDropDown.php"; ?>
 				</div>
@@ -827,7 +827,7 @@ require "Include/Header.php";
 						echo "<span style=\"color: red;\">" . gettext("Work Phone:") . "</span>";
 					else
 						echo gettext("Work Phone:");
-					 ?>
+					?>
 					</label>
 					<div class="input-group">
 						<div class="input-group-addon">
@@ -845,7 +845,7 @@ require "Include/Header.php";
 							echo "<span style=\"color: red;\">" . gettext("Mobile Phone:") . "</span>";
 						else
 							echo gettext("Mobile Phone:");
-						 ?>
+						?>
 					</label>
 					<div class="input-group">
 						<div class="input-group-addon">
@@ -865,7 +865,7 @@ require "Include/Header.php";
 								echo "<span style=\"color: red;\">" . gettext("Email:") . "</span></td>";
 							else
 								echo gettext("Email:") . "</td>";
-						 ?>
+						?>
 					</label>
 					<div class="input-group">
 						<div class="input-group-addon">

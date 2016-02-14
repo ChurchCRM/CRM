@@ -483,7 +483,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 													echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
 												}
 											}
-											 ?>
+											?>
 											  </select>
 											  <input type="submit" class="btn" value="Assign" name="Submit2" style="font-size: 8pt;">
 										  </p>
@@ -536,7 +536,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 										else
 											$sRowClass = "RowColorB";
 
-										 ?>
+										?>
 
 										<tr class="<?= $sRowClass ?>">
 											<td>
@@ -650,7 +650,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 													$sRowClass = "PaymentRowColorB";
 											}
 
-											 ?>
+											?>
 
 											<tr class="<?= $sRowClass ?>" align="center">
 												<td>
@@ -698,7 +698,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 									}
 								} // if bShowPledges
 
-								 ?>
+								?>
 
 								</table>
 
@@ -735,7 +735,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 									//Loop through all the notes
 									while($aRow = mysql_fetch_array($rsNotes)){
 										extract($aRow);
-										 ?>
+										?>
 									<!-- chat item -->
 									<div class="item">
 										<img src="<?= $personService->getPhoto($EnteredId) ?>"/>

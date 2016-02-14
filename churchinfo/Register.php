@@ -75,7 +75,7 @@ RunQuery($sSQL);
 		<?php
 		echo gettext ("Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  ");
 		echo gettext ("This information is used only to track the usage of this software.  ");
-		 ?>
+		?>
 	</div>
 	<form method="post" action="EmailSend.php" name="Register">
 	<div class="box-body">
@@ -88,7 +88,7 @@ RunQuery($sSQL);
 			echo '<br>' . gettext('Message:');
 			echo '<br><textarea class="form-control" name="emailmessage" rows="20" cols="72">';
 			echo htmlspecialchars($sEmailMessage) . '</textarea>'."\n";
-			 ?>
+			?>
 	</div>
 	<div class="box-footer">
 		<div class="pull-right">

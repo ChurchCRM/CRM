@@ -599,7 +599,7 @@ function CreatePaymentMethod()
 							if ($iFamily == $fam_ID) { echo " selected"; }
 							echo ">" . $fam_Name . "&nbsp;" . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 						}
-						 ?>
+						?>
 
 					</select>
 				</td>
@@ -653,7 +653,7 @@ function CreatePaymentMethod()
 						if ($fun_active != 'true') echo " (" . gettext("inactive") . ")";
 						echo "</option>" ;
 					}
-					 ?>
+					?>
 					</select>
 				</td>
 			</tr>

@@ -14,7 +14,7 @@ $data = FilterInput($_GET['data'],'int');
 switch ($mode)
 {
 	case CartCounter:
-		 ?>
+		?>
 			windowOnload = function()
 			{
 				window.parent.updateCartCounter('<?= count($_SESSION['aPeopleCart']) ?>');
@@ -53,7 +53,7 @@ switch ($mode)
 			if ($sZip != "") { $sGeneratedHTML .= " " . $sZip; }
 			if ($sCountry != "") {$sGeneratedHTML .= "<br>" . $sCountry; }
 		}
-		 ?>
+		?>
 			windowOnload = function()
 			{
 				window.parent.updateAddressInfo('<?= $sGeneratedHTML ?>');
@@ -90,7 +90,7 @@ switch ($mode)
 		} else {
 			$sGeneratedHTML = gettext("No Group Selected");
 		}
-		 ?>
+		?>
 			windowOnload = function()
 			{
 				window.parent.updateGroupRoles('<?= $sGeneratedHTML ?>');

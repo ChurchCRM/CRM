@@ -538,7 +538,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 														echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
 													}
 												}
-												 ?>
+												?>
 											</select>
 											<input type="submit" class="btn-primary" value="<?= gettext("Assign") ?>" name="GroupAssign">
 											<br>
@@ -748,7 +748,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 									//Loop through all the notes
 									while($aRow = mysql_fetch_array($rsNotes)){
 										extract($aRow);
-										 ?>
+										?>
 										<!-- chat item -->
 										<div class="item">
 											<img src="<?= $personService->getPhoto($EnteredId) ?>"/>

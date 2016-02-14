@@ -298,7 +298,7 @@ else
 	<tr><td colspan="7" align="center">
 	<?php
 	if ( $bErrorFlag ) echo "<span class=\"LargeText\" style=\"color: red;\">" . gettext("Invalid fields or selections. Changes not saved! Please correct and try again!") . "</span>";
-	 ?>
+	?>
 	</td></tr>
 
 		<tr>
@@ -315,7 +315,7 @@ else
 
 	for ($row=1; $row <= $numRows; $row++)
 	{
-		 ?>
+		?>
 		<tr>
 			<td class="LabelColumn"><h2><b><?= $row ?></b></h2></td>
 			<td class="TextColumn" width="5%" nowrap>
@@ -324,19 +324,19 @@ else
 					echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
 				if ($row < $numRows)
 					echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
-				 ?>
+				?>
 				
 				<?= "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>"; ?>
 			</td>
 			<td class="TextColumn" style="font-size:70%;">
-			<?= $aPropTypes[$aTypeFields[$row]];	 ?>
+			<?= $aPropTypes[$aTypeFields[$row]]; ?>
 			</td>
 
 			<td class="TextColumn"><input type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, "UTF-8") ?>" size="25" maxlength="40">
 				<?php
 				if ( array_key_exists ($row, $aNameErrors) && $aNameErrors[$row] )
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
-				 ?>
+				?>
 			</td>
 
 			<td class="TextColumn"><textarea name="<?= $row . "desc" ?>" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?= htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8") ?></textarea></td>
@@ -369,7 +369,7 @@ else
 			elseif ($aTypeFields[$row] == 12)
 				echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=groupcustom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">Edit List Options</a>";
 			else { echo "&nbsp;"; }
-			 ?></td>
+			?></td>
 
 			<td class="TextColumn">
 				<input type="checkbox" Name="<?= $row . "show" ?>" value="1"	<?php if ($aPersonDisplayFields[$row]) echo " checked" ?>>
@@ -417,7 +417,7 @@ else
 						<?php
 						if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>";
 						if ( $bDuplicateNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("That field name already exists.") . "</span></div>";
-						 ?>
+						?>
 						&nbsp;
 					</td>
 					<td valign="top">

@@ -327,7 +327,7 @@ else
 	<tr><td colspan="6">
 	<?php
 	if ( $bErrorFlag ) echo "<span class=\"LargeText\" style=\"color: red;\"><BR>" . gettext("Invalid fields or selections. Changes not saved! Please correct and try again!") . "</span>";
-	 ?>
+	?>
 	</td></tr>
 
 		<tr>
@@ -343,17 +343,17 @@ else
 
 	for ($row=1; $row <= $numRows; $row++)
 	{
-		 ?>
+		?>
 		<tr>
 			<td class="TextColumn">
-                <?= $aPropTypes[$aTypeFields[$row]];	 ?>
+                <?= $aPropTypes[$aTypeFields[$row]]; ?>
 			</td>
 			<td class="TextColumn" align="center">
                 <input type="text" name="<?= $row . ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, "UTF-8") ?>" size="35" maxlength="40">
 				<?php
 				if (array_key_exists ($row, $aNameErrors) && $aNameErrors[$row])
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
-				 ?>
+				?>
 			</td>
 			<td class="TextColumn" align="center">
 			<?php
@@ -381,7 +381,7 @@ else
 				echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=custom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">" . gettext("Edit List Options") . "</a>";
 			else
 				echo "&nbsp;";
-			 ?>
+			?>
 
 			</td>
 			<td class="TextColumn" align="center" nowrap>
@@ -391,7 +391,7 @@ else
 				} else {
 					echo GetSecurityList($aSecurityGrp, $row . "FieldSec");
 				}
-				 ?>
+				?>
 			</td>
 			<td class="TextColumn" align="center" nowrap>
 				<input type="radio" Name="<?= $row ?>side" value="0" <?php if (!$aSideFields[$row]) echo " checked" ?>><?= gettext("Left") ?>
@@ -406,7 +406,7 @@ else
 					echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
 				if ($row < $numRows)
 					echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
-				 ?>
+				?>
 				
 			</td>
 		</tr>
@@ -453,7 +453,7 @@ else
 						<?php
 							if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name") . "</span></div>";
 							if ( $bDuplicateNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("That field name already exists.") . "</span></div>";
-						 ?>
+						?>
 						&nbsp;
 					</td>
 					<td valign="top" nowrap>

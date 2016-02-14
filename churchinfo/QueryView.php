@@ -272,7 +272,7 @@ function DoQuery()
 
 	if (count($aHiddenFormField) > 0)
 	{
-		 ?>
+		?>
 		<form method="post" action="CartView.php"><p align="center">
 			<input type="hidden" value="<?= join(",", $aHiddenFormField) ?>" name="BulkAddToCart">
 			<input type="submit" class="btn" name="AddToCartSubmit" value="<?= gettext("Add Results To Cart") ?>">&nbsp;
@@ -395,7 +395,7 @@ function DisplayParameterForm()
 		
 	}
 
-	 ?>
+	?>
 	
 	<td colspan="3" align="center">
 		<br>

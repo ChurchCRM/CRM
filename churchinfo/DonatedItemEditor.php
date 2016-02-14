@@ -222,7 +222,7 @@ require "Include/Header.php";
 								echo ">" . $per_LastName . ", " . $per_FirstName;
 								echo " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 							}
-							 ?>
+							?>
 
 						</select>
 					</td>

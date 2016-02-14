@@ -175,7 +175,7 @@ echo "<h2>" . gettext("Editing") . " <i>" . $grp_Name . "</i> " . gettext("data 
 			formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST["GroupPropSubmit"]));
 
 			if (array_key_exists ($prop_Field, $aPropErrors)) echo "<span style=\"color: red; \">" . $aPropErrors[$prop_Field] . "</span>";
-			 ?></td>
+			?></td>
 
 			<td class="TextColumn"><?= $prop_Description ?></td>
 		</tr>

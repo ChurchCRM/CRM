@@ -166,7 +166,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Verify']) && isset($_POST['child']
 			<div class="LightShadedBox">
 			<?php
 				loadperson($iChildID);
-			 ?>
+			?>
 			</div>
 		</td>
 	<!-- Center - 75% -->
@@ -193,7 +193,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Verify']) && isset($_POST['child']
 					loadperson($iAdultID);
 				}
 
-			 ?>
+			?>
 			</div>
 		</td>
 	</table>
@@ -260,7 +260,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 
 	if(isset($_POST['Action']) ){
 
-	 ?>
+	?>
 	<form method="post" action="Checkin.php" name="Checkin">
 		<input type="hidden" name="EventID" value="<?= $iEventID  ?>">
 		<input type="hidden" name="child" value="<?= $iChildID  ?>">
@@ -271,7 +271,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 				<div class="LightShadedBox">
 				<?php
 					loadperson($iChildID);
-				 ?>
+				?>
 				</div>
 			</td>
 		<!-- Center - 75% -->
@@ -312,7 +312,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 	}
 	if(isset($_POST['VerifyCheck']) ){
 		$iAdultID = FilterInput($_POST["adult"],'int');
-		 ?>
+		?>
 		<form method="post" action="Checkin.php" name="Checkin">
 		<input type="hidden" name="EventID" value="<?= $iEventID ?>">
 		<input type="hidden" name="child" value="<?= $iChildID ?>">
@@ -324,7 +324,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 				<div class="LightShadedBox">
 				<?php
 					loadperson($iChildID);
-				 ?>
+				?>
 				</div>
 			</td>
 		<!-- Center - 75% -->
@@ -348,7 +348,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 				<div class="LightShadedBox">
 				<?php
 					loadperson($iAdultID);
-				 ?>
+				?>
 				</div>
 			</td>
 		</table>

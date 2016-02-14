@@ -208,7 +208,7 @@ function RunFreeQuery()
 
 			if (count($aHiddenFormField) > 0)
 			{
-				 ?>
+				?>
 				<form method="post" action="CartView.php"><p align="center">
 					<input type="hidden" value="<?= join(",",$aHiddenFormField) ?>" name="BulkAddToCart">
 					<input type="submit" class="btn" name="AddToCartSubmit" value="<?php echo gettext("Add Results To Cart");?>">&nbsp;
