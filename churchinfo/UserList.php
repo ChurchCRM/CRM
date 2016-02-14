@@ -59,13 +59,13 @@ require "Include/Header.php";
     <div class="box-body no-padding">
         <table class="table table-hover">
             <tr>
-                <td><b><?php echo gettext("Edit"); ?></b></td>
-                <td><b><?php echo gettext("Name"); ?></b></td>
-                <td align="center"><b><?php echo gettext("Last Login"); ?></b></td>
-                <td align="center"><b><?php echo gettext("Total Logins"); ?></b></td>
-                <td align="center"><b><?php echo gettext("Failed Logins"); ?></b></td>
-                <td align="center" colspan="2"><b><?php echo gettext("Password"); ?></b></td>
-                <td><b><?php echo gettext("Delete"); ?></b></td>
+                <td><b><?= gettext("Edit") ?></b></td>
+                <td><b><?= gettext("Name") ?></b></td>
+                <td align="center"><b><?= gettext("Last Login") ?></b></td>
+                <td align="center"><b><?= gettext("Total Logins") ?></b></td>
+                <td align="center"><b><?= gettext("Failed Logins") ?></b></td>
+                <td align="center" colspan="2"><b><?= gettext("Password") ?></b></td>
+                <td><b><?= gettext("Delete") ?></b></td>
             </tr>
 <?php
 
@@ -83,14 +83,14 @@ while ($aRow = mysql_fetch_array($rsUsers)) {
 	//Display the row
 ?>
 	<tr>
-        <td><a href="UserEditor.php?PersonID=<?php echo $per_ID; ?>"><?php echo gettext("Edit"); ?></a></td>
+        <td><a href="UserEditor.php?PersonID=<?= $per_ID ?>"><?= gettext("Edit") ?></a></td>
 		<td>
 		<?php
 			echo "<a href=\"PersonView.php?PersonID=" . $per_ID . "\">" . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . "</a>";
 		?>
 		</td>
-		<td align="center"><?php echo $usr_LastLogin; ?></td>
-		<td align="center"><?php echo $usr_LoginCount; ?></td>
+		<td align="center"><?= $usr_LastLogin ?></td>
+		<td align="center"><?= $usr_LoginCount ?></td>
 		<td align="center">
 		<?php
 			if ($iMaxFailedLogins > 0 && $usr_FailedLogins >= $iMaxFailedLogins)
@@ -99,9 +99,9 @@ while ($aRow = mysql_fetch_array($rsUsers)) {
 				echo $usr_FailedLogins;
 		?>
 		</td>
-		<td align="right"><a href="UserPasswordChange.php?PersonID=<?php echo $per_ID; ?>&FromUserList=True"><?php echo gettext("Change"); ?></a></td>
+		<td align="right"><a href="UserPasswordChange.php?PersonID=<?= $per_ID ?>&FromUserList=True"><?= gettext("Change") ?></a></td>
 		<td align="left"><?php if ($per_ID != $_SESSION['iUserID']) echo "<a href=\"UserReset.php?PersonID=$per_ID&FromUserList=True\">" . gettext("Reset") . "</a>"; else echo "&nbsp;"; ?></td>
-		<td><a href="UserDelete.php?PersonID=<?php echo $per_ID; ?>"><?php echo gettext("Delete"); ?></a></td>
+		<td><a href="UserDelete.php?PersonID=<?= $per_ID ?>"><?= gettext("Delete") ?></a></td>
 	</tr>
 <?php
 }

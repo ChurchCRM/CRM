@@ -74,7 +74,7 @@ $rsKidsGender = RunQuery($sSQL);
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>FamilyList.php" class="small-box-footer">
+            <a href="<?= $sURLPath."/" ?>FamilyList.php" class="small-box-footer">
                 See all Families <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -93,7 +93,7 @@ $rsKidsGender = RunQuery($sSQL);
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>SelectList.php?mode=person" class="small-box-footer">
+            <a href="<?= $sURLPath."/" ?>SelectList.php?mode=person" class="small-box-footer">
                 See All People <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -112,7 +112,7 @@ $rsKidsGender = RunQuery($sSQL);
             <div class="icon">
                 <i class="fa fa-child"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
+            <a href="<?= $sURLPath."/" ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>

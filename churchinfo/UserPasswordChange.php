@@ -215,7 +215,7 @@ if ($_SESSION['bNeedPasswordChange']) { ?>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="post" action="UserPasswordChange.php?<?php echo "PersonID=" . $iPersonID ?>&FromUserList=<?php echo (array_key_exists ("FromUserList", $_GET) ? $_GET["FromUserList"] : ""); ?>">
+            <form method="post" action="UserPasswordChange.php?<?php echo "PersonID=" . $iPersonID ?>&FromUserList=<?= (array_key_exists ("FromUserList", $_GET) ? $_GET["FromUserList"] : "") ?>">
                 <div class="box-body">
                     <?php if (!$bAdminOtherUser) { ?>
                     <div class="form-group">
@@ -224,18 +224,18 @@ if ($_SESSION['bNeedPasswordChange']) { ?>
                     </div>
                     <?php } ?>
                     <div class="form-group">
-                        <label for="NewPassword1"><?php echo gettext("New Password:"); ?></label>
+                        <label for="NewPassword1"><?= gettext("New Password:") ?></label>
                         <input type="password" name="NewPassword1" id="NewPassword1" class="form-control" value="<?php echo $sNewPassword1 ?>">
                     </div>
                     <div class="form-group">
-                        <label for="NewPassword2"><?php echo gettext("Confirm New Password:"); ?></label>
+                        <label for="NewPassword2"><?= gettext("Confirm New Password:") ?></label>
                         <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control" value="<?php echo $sNewPassword2 ?>"><?php echo $sNewPasswordError ?>
                     </div>
                 </div>
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <input type="submit" class="btn btn-primary" name="Submit" value="<?php echo gettext("Save"); ?>">
+                    <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext("Save") ?>">
                 </div>
             </form>
         </div>

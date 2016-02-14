@@ -77,116 +77,116 @@ require "Include/Header.php";
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
 <tr>
     <td width="20%" valign="top" align="left">
-        <h3><?php echo gettext("Standard Fields"); ?></h3>
+        <h3><?= gettext("Standard Fields") ?></h3>
         <table cellpadding="4" align="left">
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Last Name:"); ?></td>
-            <td class="TextColumn"><?php echo gettext("Required"); ?></td>
+            <td class="LabelColumn"><?= gettext("Last Name:") ?></td>
+            <td class="TextColumn"><?= gettext("Required") ?></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Title:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Title:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="Title" value="1"></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("First Name:"); ?></td>
+            <td class="LabelColumn"><?= gettext("First Name:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="FirstName" value="1" checked></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Middle Name:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Middle Name:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="MiddleName" value="1"></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Suffix:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Suffix:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="Suffix" value="1"></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Address1:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Address1:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="Address1" value="1" checked></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Address2:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Address2:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="Address2" value="1" checked></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("City:"); ?></td>
+            <td class="LabelColumn"><?= gettext("City:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="City" value="1" checked></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("State:"); ?></td>
+            <td class="LabelColumn"><?= gettext("State:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="State" value="1" checked></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Zip:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Zip:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="Zip" value="1" checked></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Envelope:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Envelope:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="Envelope" value="1"></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Country:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Country:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="Country" value="1" checked></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Home Phone:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Home Phone:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="HomePhone" value="1"></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Work Phone:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Work Phone:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="WorkPhone" value="1"></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Mobile Phone:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Mobile Phone:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="CellPhone" value="1"></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Email:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Email:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="Email" value="1"></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Work/Other Email:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Work/Other Email:") ?></td>
             <td class="TextColumn"><input type="checkbox" name="WorkEmail" value="1"></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Membership Date:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Membership Date:") ?></td>
             <td class="TextColumnWithBottomBorder"><input type="checkbox" name="MembershipDate" value="1"></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("* Birth / Anniversary Date:"); ?></td>
+            <td class="LabelColumn"><?= gettext("* Birth / Anniversary Date:") ?></td>
             <td class="TextColumnWithBottomBorder"><input type="checkbox" name="BirthdayDate" value="1"></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("* Age / Years Married:"); ?></td>
+            <td class="LabelColumn"><?= gettext("* Age / Years Married:") ?></td>
             <td class="TextColumnWithBottomBorder"><input type="checkbox" name="Age" value="1"></td>
         </tr>
 
         <tr>
-            <td class="LabelColumn"><?php echo gettext("Family Role:"); ?></td>
+            <td class="LabelColumn"><?= gettext("Family Role:") ?></td>
             <td class="TextColumnWithBottomBorder"><input type="checkbox" name="PrintFamilyRole" value="1"></td>
         </tr>
 
         <tr>
-            <td colspan="2"><?php echo gettext("* Depends whether using person or family output method"); ?></td>
+            <td colspan="2"><?= gettext("* Depends whether using person or family output method") ?></td>
         </tr>
 
   </table>
@@ -196,7 +196,7 @@ require "Include/Header.php";
     <td width="20%" valign="top"><table border="0">
     <?php if ($numCustomFields > 0) { ?>
     <tr><td width="100%" valign="top" align="left">
-        <h3><?php echo gettext("Custom Person Fields"); ?></h3>
+        <h3><?= gettext("Custom Person Fields") ?></h3>
         <table cellpadding="4" align="left">
         <?php
             // Display the custom fields
@@ -215,7 +215,7 @@ require "Include/Header.php";
 
     <?php if ($numFamCustomFields > 0) { ?>
     <tr><td width="100%" valign="top" align="left">
-        <h3><?php echo gettext("Custom Family Fields"); ?></h3>
+        <h3><?= gettext("Custom Family Fields") ?></h3>
         <table cellpadding="4" align="left">
         <?php
             // Display the family custom fields
@@ -236,22 +236,22 @@ require "Include/Header.php";
 
     <td valign="top" align="left">
 
-    <h3><?php echo gettext("Filters"); ?></h3>
+    <h3><?= gettext("Filters") ?></h3>
 
     <table cellpadding="4" align="left">
     <tr>
-        <td class="LabelColumn"><?php echo gettext("Records to export:"); ?></td>
+        <td class="LabelColumn"><?= gettext("Records to export:") ?></td>
         <td class="TextColumnWithBottomBorder">
             <select name="Source">
-                <option value="filters"><?php echo gettext("Based on filters below.."); ?></option>
-                <option value="cart" <?php if (array_key_exists ("Source", $_GET) and $_GET["Source"] == 'cart') echo "selected";?>><?php echo gettext("People in Cart (filters ignored)"); ?></option>
+                <option value="filters"><?= gettext("Based on filters below..") ?></option>
+                <option value="cart" <?php if (array_key_exists ("Source", $_GET) and $_GET["Source"] == 'cart') echo "selected";?>><?= gettext("People in Cart (filters ignored)") ?></option>
             </select>
         </td>
     </tr>
     <tr>
-        <td class="LabelColumn"><?php echo gettext("Classification:"); ?></td>
+        <td class="LabelColumn"><?= gettext("Classification:") ?></td>
         <td class="TextColumn">
-            <div class="SmallText"><?php echo gettext("Use Ctrl Key to select multiple"); ?></div>
+            <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
             <select name="Classification[]" size="5" multiple>
                 <?php
                 while ($aRow =mysql_fetch_array($rsClassifications))
@@ -266,9 +266,9 @@ require "Include/Header.php";
         </td>
     </tr>
     <tr>
-        <td class="LabelColumn"><?php echo gettext("Family Role:"); ?></td>
+        <td class="LabelColumn"><?= gettext("Family Role:") ?></td>
         <td class="TextColumn">
-            <div class="SmallText"><?php echo gettext("Use Ctrl Key to select multiple"); ?></div>
+            <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
             <select name="FamilyRole[]" size="5" multiple>
                 <?php
                 while ($aRow = mysql_fetch_array($rsFamilyRoles))
@@ -283,19 +283,19 @@ require "Include/Header.php";
         </td>
     </tr>
     <tr>
-        <td class="LabelColumn"><?php echo gettext("Gender:"); ?></td>
+        <td class="LabelColumn"><?= gettext("Gender:") ?></td>
         <td class="TextColumn">
             <select name="Gender">
-                <option value="0"><?php echo gettext("Don't Filter"); ?></option>
-                <option value="1"><?php echo gettext("Male"); ?></option>
-                <option value="2"><?php echo gettext("Female"); ?></option>
+                <option value="0"><?= gettext("Don't Filter") ?></option>
+                <option value="1"><?= gettext("Male") ?></option>
+                <option value="2"><?= gettext("Female") ?></option>
             </select>
         </td>
     </tr>
     <tr>
-        <td class="LabelColumn"><?php echo gettext("Group Membership:"); ?></td>
+        <td class="LabelColumn"><?= gettext("Group Membership:") ?></td>
         <td class="TextColumn">
-            <div class="SmallText"><?php echo gettext("Use Ctrl Key to select multiple"); ?></div>
+            <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
             <select name="GroupID[]" size="5" multiple>
                 <?php
                 while ($aRow = mysql_fetch_array($rsGroups))
@@ -308,25 +308,25 @@ require "Include/Header.php";
         </td>
     </tr>
     <tr>
-        <td class="LabelColumn"><?php echo gettext("Membership Date:"); ?></td>
+        <td class="LabelColumn"><?= gettext("Membership Date:") ?></td>
         <td class="TextColumn">
             <table border=0 cellpadding=0 cellspacing=0>
             <tr><td><b>
-                <?php echo gettext("From:"); ?>&nbsp;</b></td><td><input id="MembershipDate1" type="text" name="MembershipDate1" size="11" maxlength="10">
+                <?= gettext("From:") ?>&nbsp;</b></td><td><input id="MembershipDate1" type="text" name="MembershipDate1" size="11" maxlength="10">
             </td></tr>
             <tr><td><b>
-                <?php echo gettext("To:"); ?>&nbsp;</b></td><td><input id="MembershipDate2" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
+                <?= gettext("To:") ?>&nbsp;</b></td><td><input id="MembershipDate2" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
             </td></tr>
             </table>
         </td>
     </tr>
     <tr>
-        <td class="LabelColumn"><?php echo gettext("Birthday Date:"); ?></td>
+        <td class="LabelColumn"><?= gettext("Birthday Date:") ?></td>
         <td class="TextColumn">
             <table border=0 cellpadding=0 cellspacing=0>
                 <tr>
                     <td>
-                        <b><?php echo gettext("From:"); ?>&nbsp;</b>
+                        <b><?= gettext("From:") ?>&nbsp;</b>
                     </td>
                     <td>
                         <input type="text" name="BirthDate1" size="11" maxlength="10" id="BirthdayDate1">
@@ -334,7 +334,7 @@ require "Include/Header.php";
                 </tr>
                 <tr>
                     <td>
-                        <b><?php echo gettext("To:"); ?>&nbsp;</b>
+                        <b><?= gettext("To:") ?>&nbsp;</b>
                     </td>
                     <td>
                         <input type="text" name="BirthDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>"  id="BirthdayDate2">
@@ -344,43 +344,43 @@ require "Include/Header.php";
         </td>
     </tr>
     <tr>
-        <td class="LabelColumn"><?php echo gettext("Anniversary Date:"); ?></td>
+        <td class="LabelColumn"><?= gettext("Anniversary Date:") ?></td>
         <td class="TextColumn">
             <table border=0 cellpadding=0 cellspacing=0>
             <tr><td><b>
-                <?php echo gettext("From:"); ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate1" size="11" maxlength="10" id="AnniversaryDate1">
+                <?= gettext("From:") ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate1" size="11" maxlength="10" id="AnniversaryDate1">
             </td></tr>
             <tr><td><b>
-                <?php echo gettext("To:"); ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>" id="AnniversaryDate2">
+                <?= gettext("To:") ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>" id="AnniversaryDate2">
             </td></tr>
             </table>
         </td>
     </tr>
     <tr>
-        <td class="LabelColumn"><?php echo gettext("Date Entered:"); ?></td>
+        <td class="LabelColumn"><?= gettext("Date Entered:") ?></td>
         <td class="TextColumn">
             <table border=0 cellpadding=0 cellspacing=0>
             <tr><td><b>
-                <?php echo gettext("From:"); ?>&nbsp;</b></td><td><input id="EnterDate1" type="text" name="EnterDate1" size="11" maxlength="10">
+                <?= gettext("From:") ?>&nbsp;</b></td><td><input id="EnterDate1" type="text" name="EnterDate1" size="11" maxlength="10">
             </td></tr>
             <tr><td><b>
-                <?php echo gettext("To:"); ?>&nbsp;</b></td><td><input id="EnterDate2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
+                <?= gettext("To:") ?>&nbsp;</b></td><td><input id="EnterDate2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
             </td></tr>
             </table>
         </td>
     </tr>
     <tr>
-        <td class="LabelColumn"><?php echo gettext("Output Method:"); ?></td>
+        <td class="LabelColumn"><?= gettext("Output Method:") ?></td>
         <td class="TextColumnWithBottomBorder">
             <select name="Format">
-                <option value="Default"><?php echo gettext("CSV Individual Records"); ?></option>
-                <option value="Rollup"><?php echo gettext("CSV Combine Families"); ?></option>
-                <option value="AddToCart"><?php echo gettext("Add Individuals to Cart"); ?></option>
+                <option value="Default"><?= gettext("CSV Individual Records") ?></option>
+                <option value="Rollup"><?= gettext("CSV Combine Families") ?></option>
+                <option value="AddToCart"><?= gettext("Add Individuals to Cart") ?></option>
             </select>
         </td>
     </tr>
     <tr>
-        <td colspan=2 align="center"><input type="checkbox" name="SkipIncompleteAddr" value="1"><?php echo gettext("Skip records with incomplete mail address"); ?></td>
+        <td colspan=2 align="center"><input type="checkbox" name="SkipIncompleteAddr" value="1"><?= gettext("Skip records with incomplete mail address") ?></td>
     </tr>
     <tr>
         <td>&nbsp;</td>
@@ -388,7 +388,7 @@ require "Include/Header.php";
     </tr>
     <tr>
         <td>&nbsp;</td>
-        <td><input type="submit" class="btn" value=<?php echo "\"" . gettext("Create File") . "\""; ?> name="Submit"></td>
+        <td><input type="submit" class="btn" value=<?= "\"" . gettext("Create File") . "\"" ?> name="Submit"></td>
     </tr>
     </table>
     </td>

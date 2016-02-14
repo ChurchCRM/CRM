@@ -64,19 +64,19 @@ require "Include/Header.php";
 ?>
 
 <p>
-	<?php echo gettext("Please confirm deletion of this note:"); ?>
+	<?= gettext("Please confirm deletion of this note:") ?>
 </p>
 
 <p class="ShadedBox">
-	<?php echo $nte_Text; ?>
+	<?= $nte_Text ?>
 </p>
 
 <p>
-	<a href="NoteDelete.php?Confirmed=Yes&NoteID=<?php echo $iNoteID ?>"><?php echo gettext("Yes, delete this record"); ?></a> <?php echo gettext("(this action cannot be undone)"); ?>
+	<a href="NoteDelete.php?Confirmed=Yes&NoteID=<?php echo $iNoteID ?>"><?= gettext("Yes, delete this record") ?></a> <?= gettext("(this action cannot be undone)") ?>
 </p>
 
 <p>
-	<a href="<?php echo $sReroute ?>"><?php echo gettext("No, cancel this deletion"); ?></a>
+	<a href="<?php echo $sReroute ?>"><?= gettext("No, cancel this deletion") ?></a>
 </p>
 
 <?php

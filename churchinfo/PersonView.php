@@ -210,12 +210,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			echo "<li class=\"divider\"></li>";
 
 		} ?>
-		<li><a href="PrintView.php?PersonID=<?php echo $per_ID; ?>"><?php echo gettext("Printable Page"); ?></a></li>
-		<li><a href="PersonView.php?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>"><?php echo gettext("Add to Cart"); ?></a></li>
+		<li><a href="PrintView.php?PersonID=<?= $per_ID ?>"><?= gettext("Printable Page") ?></a></li>
+		<li><a href="PersonView.php?PersonID=<?= $per_ID ?>&AddToPeopleCart=<?= $per_ID ?>"><?= gettext("Add to Cart") ?></a></li>
 		<?php if ($_SESSION['bNotes']) { ?>
 			<li class="divider"></li>
-			<li><a href="WhyCameEditor.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Edit \"Why Came\" Notes"); ?></a></li>
-			<li><a href="NoteEditor.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Add a Note to this Record"); ?></a></li>
+			<li><a href="WhyCameEditor.php?PersonID=<?php echo $per_ID ?>"><?= gettext("Edit \"Why Came\" Notes") ?></a></li>
+			<li><a href="NoteEditor.php?PersonID=<?php echo $per_ID ?>"><?= gettext("Add a Note to this Record") ?></a></li>
 		<?php } ?>
 			<li class="divider"></li>
 		<?php
@@ -239,7 +239,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 <div class="alert alert-warning alert-dismissable">
 	<i class="fa fa-magic"></i>
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<b><span style="color: red;"><?php echo gettext("Red text"); ?></span></b> <?php echo gettext("indicates items inherited from the associated family record.");?>
+	<b><span style="color: red;"><?= gettext("Red text") ?></span></b> <?php echo gettext("indicates items inherited from the associated family record.");?>
 </div>
 <div class="row">
 	<div class="col-lg-3 col-md-3 col-sm-3">
@@ -281,8 +281,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 					<li><i class="fa-li fa fa-group"></i>Family: <span>
 							<?php
 							if ($fam_ID != "") { ?>
-								<a href="FamilyView.php?FamilyID=<?php echo $fam_ID; ?>"><?php echo $fam_Name; ?> </a>
-								<a href="FamilyEditor.php?FamilyID=<?php echo $fam_ID; ?>" class="table-link">
+								<a href="FamilyView.php?FamilyID=<?= $fam_ID ?>"><?= $fam_Name ?> </a>
+								<a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
 									<span class="fa-stack">
 										<i class="fa fa-square fa-stack-2x"></i>
 										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
@@ -293,37 +293,37 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 							?>
 						</span></li>
 					<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
-						<a href="http://maps.google.com/?q=<?php echo $plaintextMailingAddress; ?>" target="_blank">
+						<a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
 						<?php
 						echo $formattedMailingAddress;
 						?>
 						</a>
 						</span></li>
 					<?php if ($dBirthDate) {?>
-					<li><i class="fa-li fa fa-calendar"></i><?php echo gettext("Birthdate:"); ?> <span><?php echo $dBirthDate; ?></span> (<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?>)</li>
+					<li><i class="fa-li fa fa-calendar"></i><?= gettext("Birthdate:") ?> <span><?= $dBirthDate ?></span> (<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?>)</li>
 					<?php } if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
-					<li><i class="fa-li fa fa-tasks"></i><?php echo gettext("Friend Date:"); ?> <span><?php echo FormatDate($per_FriendDate,false); ?></span></li>
+					<li><i class="fa-li fa fa-tasks"></i><?= gettext("Friend Date:") ?> <span><?= FormatDate($per_FriendDate,false) ?></span></li>
 					<?php } if ($sCellPhone) {?>
-					<li><i class="fa-li fa fa-mobile-phone"></i><?php echo gettext("Mobile Phone:"); ?> <span><?php echo $sCellPhone; ?></span></li>
+					<li><i class="fa-li fa fa-mobile-phone"></i><?= gettext("Mobile Phone:") ?> <span><?= $sCellPhone ?></span></li>
 					<?php }
 					if ($sHomePhone) {
 						?>
-						<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Home Phone:"); ?>
-							<span><?php echo $sHomePhone; ?></span></li>
+						<li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?>
+							<span><?= $sHomePhone ?></span></li>
 					<?php
 					}
 					if ($sEmail != "") { ?>
-					<li><i class="fa-li fa fa-envelope"></i><?php echo gettext("Email:"); ?> <span><?php echo "<a href=\"mailto:" . $sUnformattedEmail . "\">" . $sEmail . "</a>"; ?></span></li>
+					<li><i class="fa-li fa fa-envelope"></i><?= gettext("Email:") ?> <span><?php echo "<a href=\"mailto:" . $sUnformattedEmail . "\">" . $sEmail . "</a>"; ?></span></li>
 						<?php if ($mailchimp->isActive()) { ?>
 							<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($sEmail);?></span></li>
 						<?php }
 					}
 					if ($sWorkPhone) {
 					?>
-						<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Work Phone:"); ?> <span><?php echo $sWorkPhone; ?></span></li>
+						<li><i class="fa-li fa fa-phone"></i><?= gettext("Work Phone:") ?> <span><?= $sWorkPhone ?></span></li>
 					<?php } ?>
 					<?php if ($per_WorkEmail != "") { ?>
-					<li><i class="fa-li fa fa-envelope"></i><?php echo gettext("Work/Other Email:"); ?> <span><?php  echo "<a href=\"mailto:" . $per_WorkEmail . "\">" . $per_WorkEmail . "</a>"; ?></span></li>
+					<li><i class="fa-li fa fa-envelope"></i><?= gettext("Work/Other Email:") ?> <span><?php  echo "<a href=\"mailto:" . $per_WorkEmail . "\">" . $per_WorkEmail . "</a>"; ?></span></li>
 						<?php if ($mailchimp->isActive()) { ?>
 							<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
 						<?php
@@ -384,7 +384,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 						<tr>
 							<td>
 								<img src="<?= $personService->getPhoto($tmpPersonId) ?>" width="40" height="40" class="img-circle img-bordered-sm" />
-								<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="user-link"><?php echo $Row["per_FirstName"]." ".$Row["per_LastName"]; ?> </a>
+								<a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $Row["per_FirstName"]." ".$Row["per_LastName"] ?> </a>
 							</td>
 							<td class="text-center">
 								<?php echo getRoleLabel($Row["sFamRole"]) ?>
@@ -395,24 +395,24 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 							<td>
 								<?php $tmpEmail = $Row["per_Email"];
 								if ($tmpEmail != "") { ?>
-								<a href="#"><a href="mailto:<?php echo $tmpEmail; ?>"><?php echo $tmpEmail; ?></a></a>
+								<a href="#"><a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a></a>
 								<?php } ?>
 							</td>
 							<td style="width: 20%;">
-								<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>&AddToPeopleCart=<?php echo $tmpPersonId; ?>">
+								<a href="PersonView.php?PersonID=<?= $tmpPersonId ?>&AddToPeopleCart=<?= $tmpPersonId ?>">
 									<span class="fa-stack">
 										<i class="fa fa-square fa-stack-2x"></i>
 										<i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
 									</span>
 								</a>
 								<?php if ($bOkToEdit) { ?>
-								<a href="PersonEditor.php?PersonID=<?php echo $tmpPersonId; ?>">
+								<a href="PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
 									<span class="fa-stack">
 										<i class="fa fa-square fa-stack-2x"></i>
 										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 									</span>
 								</a>
-								<a href="SelectDelete.php?mode=person&PersonID=<?php echo $tmpPersonId; ?>">
+								<a href="SelectDelete.php?mode=person&PersonID=<?= $tmpPersonId ?>">
 									<span class="fa-stack">
 										<i class="fa fa-square fa-stack-2x"></i>
 										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -436,11 +436,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			<div class="nav-tabs-custom">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?php echo gettext("Assigned Groups"); ?></a></li>
-					<li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?php echo gettext("Assigned Properties"); ?></a></li>
-					<li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?php echo gettext("Volunteer opportunities"); ?></a></li>
+					<li role="presentation" class="active"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?= gettext("Assigned Groups") ?></a></li>
+					<li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
+					<li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext("Volunteer opportunities") ?></a></li>
 					<?php if ($_SESSION['bNotes']) { ?>
-						<li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?php echo gettext("Notes"); ?></a></li>
+						<li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext("Notes") ?></a></li>
 					<?php } ?>
 				</ul>
 
@@ -454,7 +454,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								if (mysql_num_rows($rsAssignedGroups) == 0) {?>
 									<br>
 									<div class="alert alert-warning">
-										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?php echo gettext("No group assignments."); ?></span>
+										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No group assignments.") ?></span>
 									</div>
 								<?php } else {
 									echo "<div class=\"row\">";
@@ -466,7 +466,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 											<!-- Info box -->
 											<div class="box box-info">
 												<div class="box-header">
-													<h3 class="box-title"><a href="GroupView.php?GroupID=<?php echo $grp_ID ?>"><?php echo $grp_Name; ?></a></h3>
+													<h3 class="box-title"><a href="GroupView.php?GroupID=<?php echo $grp_ID ?>"><?= $grp_Name ?></a></h3>
 													<div class="box-tools pull-right">
 														<div class="label bg-aqua"><?php echo $roleName;?></div>
 													</div>
@@ -507,9 +507,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 																	<span class="sr-only">Toggle Dropdown</span>
 																</button>
 																<ul class="dropdown-menu" role="menu">
-																	<li><a href="MemberRoleChange.php?GroupID=<?php echo $grp_ID; ?>&PersonID=<?php echo $iPersonID; ?>" >Change Role</a></li>
+																	<li><a href="MemberRoleChange.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>" >Change Role</a></li>
 																	<?php if ($grp_hasSpecialProps == 'true') { ?>
-																		<li><a href="GroupPropsEditor.php?GroupID=<?php echo $grp_ID; ?>&PersonID=<?php echo $iPersonID; ?>">Update Properties</a></li>
+																		<li><a href="GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>">Update Properties</a></li>
 																	<?php } ?>
 																</ul>
 															</div>
@@ -528,7 +528,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								if ($_SESSION['bManageGroups']) { ?>
 									<div class="alert alert-info">
 										<h4><strong>Assign New Group</strong></h4>
-										<i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?php echo gettext("Person will be assigned to the Group in the Default Role."); ?></span>
+										<i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?= gettext("Person will be assigned to the Group in the Default Role.") ?></span>
 										<p><br></p>
 										<form method="post" action="PersonView.php?PersonID=<?php echo $iPersonID ?>">
 											<select name="GroupAssignID">
@@ -542,7 +542,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 												}
 												?>
 											</select>
-											<input type="submit" class="btn-primary" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="GroupAssign">
+											<input type="submit" class="btn-primary" <?= 'value="' . gettext("Assign") . '"' ?> name="GroupAssign">
 											<br>
 										</form>
 									</div>
@@ -560,7 +560,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								if (mysql_num_rows($rsAssignedProperties) == 0) { ?>
 									<br>
 									<div class="alert alert-warning">
-										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?php echo gettext("No property assignments."); ?></span>
+										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No property assignments.") ?></span>
 									</div>
 								<?php } else {
 									//Yes, start the table
@@ -637,9 +637,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								<?php if ($bOkToEdit && mysql_num_rows($rsProperties) != 0) { ?>
 									<div class="alert alert-info">
 										<div>
-											<h4><strong><?php echo gettext("Assign a New Property:"); ?></strong></h4>
+											<h4><strong><?= gettext("Assign a New Property:") ?></strong></h4>
 											<p><br></p>
-											<form method="post" action="PropertyAssign.php?PersonID=<?php echo $iPersonID; ?>">
+											<form method="post" action="PropertyAssign.php?PersonID=<?= $iPersonID ?>">
 												<select name="PropertyID">
 													<?php
 													while ($aRow = mysql_fetch_array($rsProperties)) {
@@ -651,7 +651,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 													}
 													?>
 												</select>
-												<input type="submit" class="btn-primary" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="Submit" >
+												<input type="submit" class="btn-primary" <?= 'value="' . gettext("Assign") . '"' ?> name="Submit" >
 											</form>
 										</div>
 									</div>
@@ -673,7 +673,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								if (mysql_num_rows($rsAssignedVolunteerOpps) == 0)  {?>
 									<br>
 									<div class="alert alert-warning">
-										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?php echo gettext("No volunteer opportunity assignments."); ?></span>
+										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No volunteer opportunity assignments.") ?></span>
 									</div>
 								<?php } else {
 									echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
@@ -711,7 +711,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								<?php if ($_SESSION['bEditRecords']) { ?>
 									<div class="alert alert-info">
 										<div>
-											<h4><strong><?php echo gettext("Assign a New Volunteer Opportunity:"); ?></strong></h4>
+											<h4><strong><?= gettext("Assign a New Volunteer Opportunity:") ?></strong></h4>
 											<p><br></p>
 											<form method="post" action="PersonView.php?PersonID=<?php echo $iPersonID ?>">
 												<select name="VolunteerOpportunityIDs[]", size=6, multiple>
@@ -725,7 +725,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 													}
 													?>
 												</select>
-												<input type="submit" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="VolunteerOpportunityAssign" class="btn-primary">
+												<input type="submit" <?= 'value="' . gettext("Assign") . '"' ?> name="VolunteerOpportunityAssign" class="btn-primary">
 											</form>
 										</div>
 									</div>
@@ -740,7 +740,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 									<p>
 									<div class="pull-right top-page-ui text-center clearfix">
 										<div class="profile-message-btn btn-group">
-											<a class="btn btn-primary active" role="button" href="NoteEditor.php?FamilyID=<?php echo $fam_ID; ?>"><span class="fa fa-plus" aria-hidden="true"></span> Add Note</a>
+											<a class="btn btn-primary active" role="button" href="NoteEditor.php?FamilyID=<?= $fam_ID ?>"><span class="fa fa-plus" aria-hidden="true"></span> Add Note</a>
 										</div>
 									</div>
 									<br></p>
@@ -840,7 +840,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 </div>
 <script language="javascript">
 	function GroupRemove( Group, Person ) {
-		var answer = confirm (<?php echo "'",  "'"; ?>)
+		var answer = confirm (<?= "'",  "'" ?>)
 		if ( answer )
 			$.ajax({
                 method: "POST",

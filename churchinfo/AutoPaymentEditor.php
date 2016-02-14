@@ -291,7 +291,7 @@ function VancoErrorString (errNo)
 		case 67: return "Transaction must have at least one transaction fund.";
 		case 68: return "User is Inactive";
 		case 69: return "Expiration Date Invalid";
-		case 70: return "Account Type must be “C”, “S' for ACH and must be blank for Credit Card";
+		case 70: return "Account Type must be ï¿½Cï¿½, ï¿½S' for ACH and must be blank for Credit Card";
 		case 71: return "Class Code must be PPD, CCD, TEL, WEB, RCK or blank.";
 		case 72: return "Missing Client Data: Client ID";
 		case 73: return "Missing Customer Data: Customer ID or Name or Last Name & First Name";
@@ -431,7 +431,7 @@ function VancoErrorString (errNo)
 		case 572: return "Canadian Provence Required";
 		case 573: return "Canadian Postal Code Required";
 		case 574: return "Country Code Required";
-		case 578: return "Unable to Read Card Information. Please Click “Click to Swipe” Button and Try Again.";
+		case 578: return "Unable to Read Card Information. Please Click ï¿½Click to Swipeï¿½ Button and Try Again.";
 		case 610: return "Invalid Banking Information. Previous Notification of Change Received for this Account";
 		case 629: return "Invalid CVV2";
 		case 641: return "Fund ID Not Found";
@@ -501,8 +501,8 @@ function CreatePaymentMethod()
     $.ajax({
         type: "POST",
         url: "<?php if ($VancoTest) echo "https://www.vancodev.com/cgi-bin/wsnvptest.vps"; else echo "https://www.vancoservices.com/cgi-bin/wsnvp.vps";?>",
-        data: { "sessionid":"<?php echo $sessionid; ?>", 
-    	        "nvpvar":"<?php echo $nvpvarcontent; ?>",
+        data: { "sessionid":"<?= $sessionid ?>", 
+    	        "nvpvar":"<?= $nvpvarcontent ?>",
     	        "newcustomer":"true", 
     	        "accounttype":accountType, 
     	        "accountnumber":accountNum, 
@@ -567,14 +567,14 @@ function CreatePaymentMethod()
 }
 ?>
 
-<form method="post" action="AutoPaymentEditor.php?<?php echo "AutID=" . $iAutID . "&FamilyID=" . $iFamily . "&linkBack=" . $linkBack; ?>" name="AutoPaymentEditor">
+<form method="post" action="AutoPaymentEditor.php?<?= "AutID=" . $iAutID . "&FamilyID=" . $iFamily . "&linkBack=" . $linkBack ?>" name="AutoPaymentEditor">
 
 <table cellpadding="1" align="center">
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="Submit">
-			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="submit" class="btn" value="<?= gettext("Save") ?>" name="Submit">
+			<input type="button" class="btn" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -583,10 +583,10 @@ function CreatePaymentMethod()
 		<table cellpadding="1" align="center">
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Family:"); ?></td>
+				<td class="LabelColumn"><?= gettext("Family:") ?></td>
 				<td class="TextColumn">
 					<select name="Family" size="8">
-						<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
+						<option value="0" selected><?= gettext("Unassigned") ?></option>
 						<option value="0">-----------------------</option>
 
 						<?php
@@ -605,19 +605,19 @@ function CreatePaymentMethod()
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Automatic payment type"); ?></td>
+				<td class="LabelColumn"><?= gettext("Automatic payment type") ?></td>
 				<td class="TextColumn"><input type="radio" Name="EnableButton" value="1" id="EnableBankDraft"<?php if ($bEnableBankDraft) echo " checked"; ?>>Bank Draft
 				                       <input type="radio" Name="EnableButton" value="2" id="EnableCreditCard" <?php if ($bEnableCreditCard) echo " checked"; ?>>Credit Card
 											  <input type="radio" Name="EnableButton" value="3"  id="Disable" <?php if ((!$bEnableBankDraft)&&(!$bEnableCreditCard)) echo " checked"; ?>>Disable</td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Date:"); ?></td>
-				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?php echo $dNextPayDate; ?>" maxlength="10" id="NextPayDate" size="11" class="form-control pull-right active"></td>
+				<td class="LabelColumn"><?= gettext("Date:") ?></td>
+				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?= $dNextPayDate ?>" maxlength="10" id="NextPayDate" size="11" class="form-control pull-right active"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Fiscal Year:"); ?></td>
+				<td class="LabelColumn"><?= gettext("Fiscal Year:") ?></td>
 				<td class="TextColumnWithBottomBorder">
 					<?php PrintFYIDSelect ($iFYID, "FYID") ?>
 				</td>
@@ -634,10 +634,10 @@ function CreatePaymentMethod()
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Fund:"); ?></td>
+				<td class="LabelColumn"><?= gettext("Fund:") ?></td>
 				<td class="TextColumn">
 					<select name="Fund">
-					<option value="0"><?php echo gettext("None"); ?></option>
+					<option value="0"><?= gettext("None") ?></option>
 					<?php
 					mysql_data_seek($rsFunds,0);
 					while ($row = mysql_fetch_array($rsFunds))

@@ -481,19 +481,19 @@ if ($iMode == 1) {
 ?>
 
 <table align="center"><tr><td align="center">
-<?php echo gettext("Sort order:"); ?>
+<?= gettext("Sort order:") ?>
 <select name="Sort" onchange="this.form.submit()">
-		<option value="name" <?php if ($sSort == "name" || empty($sSort)) echo "selected";?>><?php echo gettext("By Name"); ?></option>
-		<option value="family" <?php if ($sSort == "family") echo "selected";?>><?php echo gettext("By Family"); ?></option>
-		<option value="zip" <?php if ($sSort == "zip") echo "selected";?>><?php echo gettext("By ZIP/Postal Code"); ?></option>
-		<option value="entered" <?php if ($sSort == "entered") echo "selected";?>><?php echo gettext("By Newest Entries"); ?></option>
-		<option value="edited" <?php if ($sSort == "edited") echo "selected";?>><?php echo gettext("By Recently Edited"); ?></option>
+		<option value="name" <?php if ($sSort == "name" || empty($sSort)) echo "selected";?>><?= gettext("By Name") ?></option>
+		<option value="family" <?php if ($sSort == "family") echo "selected";?>><?= gettext("By Family") ?></option>
+		<option value="zip" <?php if ($sSort == "zip") echo "selected";?>><?= gettext("By ZIP/Postal Code") ?></option>
+		<option value="entered" <?php if ($sSort == "entered") echo "selected";?>><?= gettext("By Newest Entries") ?></option>
+		<option value="edited" <?php if ($sSort == "edited") echo "selected";?>><?= gettext("By Recently Edited") ?></option>
 
 </select>&nbsp;
 <input type="text" name="Filter" value="<?php echo $sFilter;?>">
 <input type="hidden" name="mode" value="<?php echo $sMode;?>">
 <input type="hidden" name="Letter" value="<?php echo $sLetter;?>">
-<input type="submit" class="btn" <?php echo 'value="' . gettext("Apply Filter") . '"'; ?>>
+<input type="submit" class="btn" <?= 'value="' . gettext("Apply Filter") . '"' ?>>
 
 </td></tr>
 <?php
@@ -684,10 +684,10 @@ if ($iMode == 1) {
 	}
 } ?>
 
-<input type="button" class="btn" value="<?php echo gettext("Clear Filters"); ?>" onclick="javascript:document.location='SelectList.php?mode=<?php echo $sMode; ?>&amp;Sort=<?php echo $sSort; ?>&amp;type=<?php echo $iGroupTypeMissing; ?>'"><BR><BR>
-<input name="AddAllToCart" type="submit" class="btn btn-primary" <?php echo 'value="' . gettext("Add to Cart") . '"'; ?>>&nbsp;
-<input name="IntersectCart" type="submit" class="btn btn-warning" <?php echo 'value="' . gettext("Intersect with Cart") . '"'; ?>>&nbsp;
-<input name="RemoveFromCart" type="submit" class="btn btn-danger" <?php echo 'value="' . gettext("Remove from Cart") . '"'; ?>>
+<input type="button" class="btn" value="<?= gettext("Clear Filters") ?>" onclick="javascript:document.location='SelectList.php?mode=<?= $sMode ?>&amp;Sort=<?= $sSort ?>&amp;type=<?= $iGroupTypeMissing ?>'"><BR><BR>
+<input name="AddAllToCart" type="submit" class="btn btn-primary" <?= 'value="' . gettext("Add to Cart") . '"' ?>>&nbsp;
+<input name="IntersectCart" type="submit" class="btn btn-warning" <?= 'value="' . gettext("Intersect with Cart") . '"' ?>>&nbsp;
+<input name="RemoveFromCart" type="submit" class="btn btn-danger" <?= 'value="' . gettext("Remove from Cart") . '"' ?>>
 
 </td></tr>
 </table></form>
