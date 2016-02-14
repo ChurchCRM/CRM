@@ -106,7 +106,7 @@ require "Include/Header.php";
 
 ?>
 
-<?= gettext("Please confirm removal of this property from this") . " " . $sTypeName >:
+<?= gettext("Please confirm removal of this property from this") . " " . $sTypeName ?>:
 
 
 <table cellpadding="4">

@@ -116,7 +116,7 @@ require "Include/Header.php";
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Canvasser Comments:") ></td>
+				<td class="LabelColumn"><?= gettext("Canvasser Comments:") ?></td>
 				<td><textarea name="Comments" rows="3" cols="90"><?= $tComments ?></textarea></td>
 			</tr>
 

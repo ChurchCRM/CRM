@@ -328,7 +328,7 @@ require ("Include/HeaderNotLoggedIn.php");
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg"><?= gettext('Please Login') ></p>
+        <p class="login-box-msg"><?= gettext('Please Login') ?></p>
 
 <?php
 if (isset($_GET['Timeout']))

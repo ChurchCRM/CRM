@@ -246,7 +246,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 		<div class="box box-primary">
 			<div class="box-body box-profile">
 				<img src="<?= $personService->getPhoto($iPersonID) ?>" alt="" class="profile-user-img img-responsive img-circle" />
-				<h3 class="profile-username text-center"><?= getGenderIcon($per_Gender). " ".FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ></h3>
+				<h3 class="profile-username text-center"><?= getGenderIcon($per_Gender). " ".FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
 
 				<p class="text-muted text-center">
 				<?php
@@ -263,7 +263,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 					} ?>
 				</p>
 				<?php if ($bOkToEdit) { ?>
-					<a href="PersonEditor.php?PersonID=<?= $per_ID >" class="btn btn-primary btn-block"><b>Edit</b></a>
+					<a href="PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b>Edit</b></a>
 				<?php } ?>
 			</div>
 			<!-- /.box-body -->
@@ -348,12 +348,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         <div class="row">
             <div class="box box-header">
                 <div class="col-lg-5 col-md-4 col-sm-4">
-                    <img src="<?= $personService->getPhoto($EnteredId) ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName >" width="40" height="40" class="img-circle img-bordered-sm"/>
+                    <img src="<?= $personService->getPhoto($EnteredId) ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
                     <?= gettext("Entered: ").FormatDate($per_DateEntered,false) ?>
                 </div>
                 <?php if (strlen($per_DateLastEdited) > 0) { ?>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <img src="<?= $personService->getPhoto($EditedId) ?>" title="<?=  $EditedFirstName . " " . $EditedLastName >" width="40" height="40" class="img-circle img-bordered-sm"/>
+                    <img src="<?= $personService->getPhoto($EditedId) ?>" title="<?=  $EditedFirstName . " " . $EditedLastName ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
                     <?= gettext("Updated: ").FormatDate($per_DateLastEdited,false) ?>
                 </div>
                 <?php } ?>
@@ -388,7 +388,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								<?= getRoleLabel($Row["sFamRole"]) ?>
 							</td>
 							<td>
-								<?= FormatBirthDate($Row["per_BirthYear"], $Row["per_BirthMonth"], $Row["per_BirthDay"],"-",$Row["per_Flags"]) >
+								<?= FormatBirthDate($Row["per_BirthYear"], $Row["per_BirthMonth"], $Row["per_BirthDay"],"-",$Row["per_Flags"]) ?>
 							</td>
 							<td>
 								<?php $tmpEmail = $Row["per_Email"];
@@ -466,7 +466,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 												<div class="box-header">
 													<h3 class="box-title"><a href="GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 													<div class="box-tools pull-right">
-														<div class="label bg-aqua"><?= $roleName ></div>
+														<div class="label bg-aqua"><?= $roleName ?></div>
 													</div>
 												</div>
 												<?php
@@ -511,7 +511,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 																	<?php } ?>
 																</ul>
 															</div>
-															<a href="#" onclick="GroupRemove(<?= $grp_ID . ", " . $iPersonID  >);" class="btn btn-danger" role="button"><i class="fa fa-trash-o"></i></a>
+															<a href="#" onclick="GroupRemove(<?= $grp_ID . ", " . $iPersonID  ?>);" class="btn btn-danger" role="button"><i class="fa fa-trash-o"></i></a>
 														<?php } ?>
 													</code>
 												</div><!-- /.box-footer-->
@@ -799,7 +799,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 <!-- Modal -->
 <div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label" aria-hidden="true">
 	<div class="modal-dialog">
-		<form action="ImageUpload.php?PersonID=<?= $iPersonID >" method="post" enctype="multipart/form-data" id="UploadForm">
+		<form action="ImageUpload.php?PersonID=<?= $iPersonID ?>" method="post" enctype="multipart/form-data" id="UploadForm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -831,7 +831,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<a href="ImageDelete.php?PersonID=<?= $iPersonID >" class="btn btn-danger danger">Delete</a>
+				<a href="ImageDelete.php?PersonID=<?= $iPersonID ?>" class="btn btn-danger danger">Delete</a>
 			</div>
 		</div>
 	</div>

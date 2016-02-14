@@ -60,7 +60,7 @@ function ClearAccounts (AutID)
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.uniqueid = AutID;
 
-    xmlhttp.open("GET","<?= RedirectURL("AutoPaymentClearAccounts.php") >?customerid="+AutID,true);
+    xmlhttp.open("GET","<?= RedirectURL("AutoPaymentClearAccounts.php") ?>?customerid="+AutID,true);
     xmlhttp.PaymentID = AutID; // So we can see it when the request finishes
     
     xmlhttp.onreadystatechange=function() {
@@ -128,7 +128,7 @@ function CreatePaymentMethodsForChecked()
 		    var id = checkboxes[i].id.split("Select")[1];
 		    var xmlhttp = new XMLHttpRequest();
 		    xmlhttp.uniqueid = id;
-		    xmlhttp.open("GET","<?= RedirectURL("ConvertOnePaymentXML.php") >?autid="+id,true);
+		    xmlhttp.open("GET","<?= RedirectURL("ConvertOnePaymentXML.php") ?>?autid="+id,true);
 		    xmlhttp.onreadystatechange=function() {
 				if (this.readyState==4 && this.status==200) {
 		            var jsonresp=JSON.parse(this.response);

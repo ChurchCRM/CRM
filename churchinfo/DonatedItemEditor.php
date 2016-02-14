@@ -297,18 +297,18 @@ require "Include/Header.php";
 			<table cellpadding="3"> <!-- Table for the bottom full-width entries -->
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Description") ></td>
-				<td><textarea name="Description" rows="8" cols="90"><?= htmlentities ($sDescription) ></textarea></td>
+				<td class="LabelColumn"><?= gettext("Description") ?></td>
+				<td><textarea name="Description" rows="8" cols="90"><?= htmlentities ($sDescription) ?></textarea></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Picture URL") ></td>
-				<td><textarea name="PictureURL" rows="1" cols="90"><?= htmlentities ($sPictureURL) ></textarea></td>
+				<td class="LabelColumn"><?= gettext("Picture URL") ?></td>
+				<td><textarea name="PictureURL" rows="1" cols="90"><?= htmlentities ($sPictureURL) ?></textarea></td>
 			</tr>
 
 			<?php if ($sPictureURL != "") { ?>
 			<tr>
-				<td colspan="2" width="100%"><img src="<?= htmlentities ($sPictureURL) >"/></td>
+				<td colspan="2" width="100%"><img src="<?= htmlentities ($sPictureURL) ?>"/></td>
 			</tr>
 			<?php } ?>
 

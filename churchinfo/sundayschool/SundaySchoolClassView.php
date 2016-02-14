@@ -69,8 +69,8 @@ require "../Include/Header.php";
 <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
     <div class="btn-group pull-right clearfix">
         <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>
@@ -259,13 +259,13 @@ function implodeUnique($array, $withQuotes) {
     </div><!-- /.modal -->
 
     <!-- FLOT CHARTS -->
-    <script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+    <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
     <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-    <script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+    <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
     <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-    <script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
+    <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-    <script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+    <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
@@ -302,29 +302,29 @@ function implodeUnique($array, $withQuotes) {
                     $iMonth = $row['birthMonth'];
                     $iKidsCount = $row['numb'];
                     if ($iMonth == 1 ) { ?>
-                        ["January", <?= $iKidsCount >],
+                        ["January", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 2 ) { ?>
-                        ["February", <?= $iKidsCount >],
+                        ["February", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 3 ) { ?>
-                        ["March", <?= $iKidsCount >],
+                        ["March", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 4 ) { ?>
-                        ["April", <?= $iKidsCount >],
+                        ["April", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 5 ) { ?>
-                        ["May", <?= $iKidsCount >],
+                        ["May", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 6 ) { ?>
-                        ["June", <?= $iKidsCount >],
+                        ["June", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 7 ) { ?>
-                        ["July", <?= $iKidsCount >],
+                        ["July", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 8 ) { ?>
-                        ["August", <?= $iKidsCount >],
+                        ["August", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 9 ) { ?>
-                        ["September", <?= $iKidsCount >],
+                        ["September", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 10 ) { ?>
-                        ["October", <?= $iKidsCount >],
+                        ["October", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 11 ) { ?>
-                        ["November", <?= $iKidsCount >],
+                        ["November", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 12 ) { ?>
-                        ["December", <?= $iKidsCount >]
+                        ["December", <?= $iKidsCount ?>]
                     <?php }
                 } ?>
             ],

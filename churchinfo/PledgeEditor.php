@@ -606,7 +606,7 @@ require "Include/Header.php";
 						<?php } ?>
                                                 <?php if ($PledgeOrPayment=='Pledge') { ?>
                                                 <option value="EGIVE" <?php if ($iMethod == "EGIVE") { echo "selected"; } ?>><?=
-                          gettext("eGive") ></option>
+                          gettext("eGive") ?></option>
                                                 <?php } ?>
 					</select>
 				</td>
@@ -622,7 +622,7 @@ require "Include/Header.php";
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; echo gettext("Fund"); ?></td>
 				<td class="TextColumnWithBottomBorder">
 					<select name="FundSplit">
-						<option value=0 <?php if (!$iSelectedFund) { echo ' selected'; } ?>><?= gettext("Split") ></option>
+						<option value=0 <?php if (!$iSelectedFund) { echo ' selected'; } ?>><?= gettext("Split") ?></option>
 						<?php foreach ($fundId2Name as $fun_id => $fun_name) {
 							echo "<option value=\"" . $fun_id . "\""; if ($iSelectedFund==$fun_id) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
 						} ?>

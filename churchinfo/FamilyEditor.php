@@ -886,7 +886,7 @@ require "Include/Header.php";
 			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) { ?>
 			<div class="row">
 				<div class="form-group col-xs-5">
-				<label><?= $fam_custom_Name  > </label>
+				<label><?= $fam_custom_Name  ?> </label>
 				<?php $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
 						if ($type_ID == 11) $fam_custom_Special = $sCountry;
@@ -1061,11 +1061,11 @@ require "Include/Header.php";
 	echo "</td></tr></form></table>";
 ?>
 	<!-- InputMask -->
-	<script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
-	<script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
-	<script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
+	<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+	<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+	<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
 
-	<script src="<?= $sRootPath >/vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+	<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
 
 	<script type="text/javascript">
 		$(function() {
