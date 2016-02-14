@@ -305,7 +305,7 @@ function MakeDefinitionFile($file, $type, $enc, $embed, $map, $info)
 		else
 			$s .= '$originalsize = '.$info['OriginalSize'].";\n";
 	}
-	$s .= " ?>\n";
+	$s .= "?>\n";
 	SaveToFile($file, $s, 't');
 }
 
@@ -370,4 +370,4 @@ if(PHP_SAPI=='cli')
 		$embed = true;
 	MakeFont($fontfile, $enc, $embed);
 }
- ?>
+?>

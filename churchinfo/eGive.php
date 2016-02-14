@@ -355,7 +355,7 @@ function importDoneFixOrContinue() {
 	global $familySelectHtml;
 	
 	?>
-	<form method="post" action="eGive.php?<?= "DepositSlipID=".$iDepositSlipID ?>">
+	<form method="post" action="eGive.php?DepositSlipID=<?= $iDepositSlipID ?>">
 	<?php
 	if ($importError) { // the only way we can fail to import data is if we're missing the egive IDs, so build a table, with text input, and prompt for it.
         ?>

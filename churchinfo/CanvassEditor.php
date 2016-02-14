@@ -235,7 +235,7 @@ require "Include/Header.php";
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Why Not Interested?") ></td>
+				<td class="LabelColumn"><?= gettext("Why Not Interested?") ?></td>
 				<td><textarea name="WhyNotInterested" rows="1" cols="90"><?= $tWhyNotInterested ?></textarea></td>
 			</tr>
 

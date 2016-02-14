@@ -532,7 +532,7 @@ function CreatePaymentMethod()
                 async: true,
                 traditional: false,
                 success: function (postbackdata) {
-                	if (gotPaymentRef ?> 0) {
+                	if (gotPaymentRef > 0) {
         	        	if (document.getElementById("EnableBankDraft").checked) {
             	        	accountVal = document.getElementById("Account").value;
         	            	document.getElementById("Account").value = "*****" + accountVal.substr (accountVal.length-4,4);
@@ -548,7 +548,7 @@ function CreatePaymentMethod()
                     	for (var i = 0; i < errorArr.length; i++)
                         	errorStr += "Error " + errorArr[i] + ": " + VancoErrorString(Number(errorArr[i])) + "\n";
                 		alert (errorStr);
-                		window.location = "<?= RedirectURL ("AutoPaymentEditor.php")."?AutID=$iAutID&FamilyID=$aut_FamID$&linkBack=$linkBack" >";
+                		window.location = "<?= RedirectURL ("AutoPaymentEditor.php")."?AutID=$iAutID&FamilyID=$aut_FamID$&linkBack=$linkBack" ?>";
                 	}
                 },
                 error: function (jqXHR, textStatus, errorThrown, nashuadata) {

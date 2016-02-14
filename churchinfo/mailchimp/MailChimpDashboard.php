@@ -29,7 +29,7 @@ $isActive = $mailchimp->isActive();
 
 if ($isActive) {
     $mcLists =  $mailchimp->getLists();
- ?>
+?>
     <div class="row">
         <?php foreach ($mcLists as $list) { ?>
         <div class="col-lg-4 col-md-2 col-sm-2">

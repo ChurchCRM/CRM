@@ -94,8 +94,7 @@ require "../Include/Header.php";
 			echo "<td>".$momEmail."</td>";
 			echo "</tr>";
 			}
-
-		 ?>
+		?>
 			</tbody>
 		</table>
 	</div>
@@ -145,7 +144,7 @@ require "../Include/Header.php";
 				echo "</tr>";
 			}
 
-			 ?>
+			?>
 			</tbody>
 		</table>
 	</div>
@@ -158,9 +157,4 @@ require "../Include/Header.php";
 	} );
 </script>
 
-<?php
-require "../Include/Footer.php";
- ?>
-
-
-
+<?php require "../Include/Footer.php" ?>

@@ -332,14 +332,14 @@ else
 			<?= $aPropTypes[$aTypeFields[$row]]; ?>
 			</td>
 
-			<td class="TextColumn"><input type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, "UTF-8") ?>" size="25" maxlength="40">
+			<td class="TextColumn"><input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, "UTF-8") ?>" size="25" maxlength="40">
 				<?php
 				if ( array_key_exists ($row, $aNameErrors) && $aNameErrors[$row] )
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
 				?>
 			</td>
 
-			<td class="TextColumn"><textarea name="<?= $row . "desc" ?>" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?= htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8") ?></textarea></td>
+			<td class="TextColumn"><textarea name="<?= $row ?>desc" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?= htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8") ?></textarea></td>
 
 			<td class="TextColumn">
 			<?php
@@ -372,7 +372,7 @@ else
 			?></td>
 
 			<td class="TextColumn">
-				<input type="checkbox" Name="<?= $row . "show" ?>" value="1"	<?php if ($aPersonDisplayFields[$row]) echo " checked" ?>>
+				<input type="checkbox" name="<?= $row ?>show" value="1"	<?php if ($aPersonDisplayFields[$row]) echo " checked" ?>>
 			</td>
 		</tr>
 	<?php } ?>

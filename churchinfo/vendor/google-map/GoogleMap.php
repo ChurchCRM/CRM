@@ -132,7 +132,7 @@ class GoogleMapAPI {
     /**
      * use onLoad() to load the map javascript.
      * if enabled, be sure to include on your webpage:
-     * <?=$mapobj->printOnLoad ?> or manually create an onload function 
+     * <?=$mapobj->printOnLoad?> or manually create an onload function 
      * that calls the map's onload function using $this->printOnLoadFunction
      *
      * @var bool
@@ -2807,4 +2807,4 @@ class GoogleMapAPI {
         return $id;
     }
 }
- ?>
+?>

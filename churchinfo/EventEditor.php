@@ -391,7 +391,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
 
 <form method="post" action="EventEditor.php" name="EventsEditor">
 <input type="hidden" name="EventID" value="<?= ($iEventID) ?>">
-<input type="hidden" name="EventExists" value="<?= $EventExists  ?>">
+<input type="hidden" name="EventExists" value="<?= $EventExists ?>">
 <?php // used to be ($iEventID ? $iEventID : $aEventID_POST['EID']) ?>
 <table cellpadding="3" width="75%" align="center">
   <caption>
