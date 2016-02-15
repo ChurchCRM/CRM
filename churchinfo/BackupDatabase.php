@@ -44,31 +44,31 @@ require "Include/Header.php";
 ?>
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title"><?php echo gettext("This tool will assist you in manually backing up the ChurchCRM database."); ?></h3>
+        <h3 class="box-title"><?= gettext("This tool will assist you in manually backing up the ChurchCRM database.") ?></h3>
     </div>
     <div class="box-body">
         <ul>
-        <li><?php echo gettext("You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."); ?></li><br>
-        <li><?php echo gettext("After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."); ?></li><br>
-        <li><?php echo gettext("If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"); ?></li><br>
-        <li><?php echo gettext("For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."); ?></li>
+        <li><?= gettext("You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems.") ?></li><br>
+        <li><?= gettext("After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site.") ?></li><br>
+        <li><?= gettext("If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others") ?></li><br>
+        <li><?= gettext("For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however.") ?></li>
         </ul>
         <BR><BR>
-        <form method="post" action="api/database/backup" id="BackupDatabase">
-        <?php echo gettext("Select archive type:"); ?>
-        <?php if ($hasGZIP) { ?><input type="radio" name="archiveType" value="0"><?php echo gettext("GZip"); ?><?php } ?>
-        <!--<?php if ($hasZIP) { ?><input type="radio" name="archiveType" value="1"><?php echo gettext("Zip"); ?><?php } ?>-->
-        <input type="radio" name="archiveType" value="2" checked><?php echo gettext("Uncompressed"); ?>
-        <input type="radio" name="archiveType" value="3" checked><?php echo gettext("tar.gz (Include Photos)"); ?>
+        <form method="post" action=<?= $sURLPath."/"; ?>"api/database/backup" id="BackupDatabase">
+        <?= gettext("Select archive type:") ?>
+        <?php if ($hasGZIP) { ?><input type="radio" name="archiveType" value="0"><?= gettext("GZip") ?><?php } ?>
+        <!--<?php if ($hasZIP) { ?><input type="radio" name="archiveType" value="1"><?= gettext("Zip") ?><?php } ?>-->
+        <input type="radio" name="archiveType" value="2" checked><?= gettext("Uncompressed") ?>
+        <input type="radio" name="archiveType" value="3" checked><?= gettext("tar.gz (Include Photos)") ?>
         <BR><BR>
         <?php if ($hasPGP) { ?>
-        <input type="checkbox" name="encryptBackup" value="1"><?php echo gettext("Encrypt backup file with a password?"); ?>
+        <input type="checkbox" name="encryptBackup" value="1"><?= gettext("Encrypt backup file with a password?") ?>
         &nbsp;&nbsp;&nbsp;
-        <?php echo gettext("Password:"); ?><input type="password" name="pw1">
-        <?php echo gettext("Re-type Password:"); ?><input type="password" name="pw2">
+        <?= gettext("Password:") ?><input type="password" name="pw1">
+        <?= gettext("Re-type Password:") ?><input type="password" name="pw2">
         <BR><span id="passworderror" style="color: red"></span><BR><BR>
         <?php } ?>
-        <input type="submit" class="btn btn-primary" name="doBackup" <?php echo 'value="' . gettext("Generate and Download Backup") . '"'; ?>>
+        <input type="submit" class="btn btn-primary" name="doBackup" <?= 'value="' . gettext("Generate and Download Backup") . '"' ?>>
         </form>
     </div>
 </div>

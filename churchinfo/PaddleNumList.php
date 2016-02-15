@@ -49,10 +49,10 @@ if ($iFundRaiserID > 0)
 <table cellpadding="5" cellspacing="5">
 
 <tr class="TableHeader">
-	<td><?php echo gettext("Select"); ?></td>
-	<td><?php echo gettext("Number"); ?></td>
-	<td><?php echo gettext("Buyer"); ?></td>
-	<td><?php echo gettext("Delete"); ?></td>
+	<td><?= gettext("Select") ?></td>
+	<td><?= gettext("Number") ?></td>
+	<td><?= gettext("Buyer") ?></td>
+	<td><?= gettext("Delete") ?></td>
 </tr>
 
 <?php

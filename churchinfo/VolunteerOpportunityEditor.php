@@ -295,7 +295,7 @@ if (isset($_POST["SaveChanges"])) {
 <?php
 if ($numRows == 0) {
 ?>
-    <div class="callout callout-warning"><?php echo gettext("No volunteer opportunities have been added yet"); ?></div>
+    <div class="callout callout-warning"><?= gettext("No volunteer opportunities have been added yet") ?></div>
 <?php
 } else { // if an 'action' (up/down arrow clicked, or order was input)
    if ($iRowNum and $sAction != "") {
@@ -347,7 +347,7 @@ if ($numRows == 0) {
 ?>
 <tr>
     <td colspan="5">
-        <div class="callout callout-info"><?php echo gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"); ?></div>
+        <div class="callout callout-info"><?= gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'") ?></div>
     </td>
 </tr>
 <tr>
@@ -369,8 +369,8 @@ if ($numRows == 0) {
 <tr>
 <th></th>
 <th></th>
-<th><?php echo gettext("Name"); ?></th>
-<th><?php echo gettext("Description"); ?></th>
+<th><?= gettext("Name") ?></th>
+<th><?= gettext("Description") ?></th>
 </tr>
 
 <?php
@@ -395,7 +395,7 @@ for ($row=1; $row <= $numRows; $row++) {
 	   ?>
 	
 	   <td class="TextColumn" align="center">
-	   <input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
+	   <input type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="20" maxlength="30">
 	   <?php
 	      
 	   if (array_key_exists ($row, $aNameErrors) && $aNameErrors[$row] ) {
@@ -405,7 +405,7 @@ for ($row=1; $row <= $numRows; $row++) {
 	   </td>
 	
 	   <td class="TextColumn">
-	   <input type="text" Name="<?php echo $row . "desc" ?>" value="<?php echo htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="40" maxlength="100">
+	   <input type="text" Name="<?php echo $row . "desc" ?>" value="<?= htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="40" maxlength="100">
 	   </td>
 	
 	   </tr>
@@ -420,9 +420,9 @@ for ($row=1; $row <= $numRows; $row++) {
 <tr>
 <td width="30%"></td>
 <td width="40%" align="center" valign="bottom">
-<input type="submit" class="btn" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
+<input type="submit" class="btn" <?= 'value="' . gettext("Save Changes") . '"' ?> Name="SaveChanges">
 &nbsp;
-<input type="button" class="btn" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php'">
+<input type="button" class="btn" <?= 'value="' . gettext("Exit") . '"' ?> Name="Exit" onclick="javascript:document.location='Menu.php'">
 </td>
 <td width="30%"></td>
 </tr>
@@ -438,18 +438,18 @@ for ($row=1; $row <= $numRows; $row++) {
 <tr>
 <td width="15%"></td>
 <td valign="top">
-<div><?php echo gettext("Name:"); ?></div>
+<div><?= gettext("Name:") ?></div>
 <input type="text" name="newFieldName" size="30" maxlength="30">
 <?php if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
 &nbsp;
 </td>
 <td valign="top">
-<div><?php echo gettext("Description:"); ?></div>
+<div><?= gettext("Description:") ?></div>
 <input type="text" name="newFieldDesc" size="40" maxlength="100">
 &nbsp;
 </td>
 <td>
-<input type="submit" class="btn" <?php echo 'value="' . gettext("Add New Opportunity") . '"'; ?> name="AddField">
+<input type="submit" class="btn" <?= 'value="' . gettext("Add New Opportunity") . '"' ?> name="AddField">
 </td>
 <td width="15%"></td>
 </tr>

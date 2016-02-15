@@ -111,7 +111,7 @@ function UpdateRoles()
 function updateGroupRoles(generated_html)
 {
 	if (generated_html == "invalid") {
-		document.getElementById('GroupRoles').innerHTML = '<p class="LargeError"><?php echo gettext("Invalid Group or No Roles Available!"); ?><p>';
+		document.getElementById('GroupRoles').innerHTML = '<p class="LargeError"><?= gettext("Invalid Group or No Roles Available!") ?><p>';
 	} else {
 		document.getElementById('GroupRoles').innerHTML = generated_html;
 	}
@@ -120,11 +120,11 @@ function updateGroupRoles(generated_html)
 <!-- Default box -->
 <div class="box">
 	<div class="box-body">
-<p align="center"><?php echo gettext("Select the group to which you would like to add your cart:"); ?></p>
+<p align="center"><?= gettext("Select the group to which you would like to add your cart:") ?></p>
 <form method="post">
 <table align="center">
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Group:"); ?></td>
+		<td class="LabelColumn"><?= gettext("Select Group:") ?></td>
 		<td class="TextColumn">
 			<?php
 			// Create the group select drop-down
@@ -138,15 +138,15 @@ function updateGroupRoles(generated_html)
 		</td>
 	</tr>
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Role:"); ?></td>
-		<td class="TextColumn"><span id="GroupRoles"><?php echo gettext("No Group Selected"); ?></span></td>
+		<td class="LabelColumn"><?= gettext("Select Role:") ?></td>
+		<td class="TextColumn"><span id="GroupRoles"><?= gettext("No Group Selected") ?></span></td>
 	</tr>
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="btn btn-primary" name="Submit" value=<?php echo '"' . gettext("Add to Group") . '"'; ?>>
-<BR><BR>--<?php echo gettext("OR"); ?>--<BR><BR>
-<a href="GroupEditor.php?EmptyCart=yes" class="btn btn-info"><i class="fa fa-add"></i><?php echo gettext("Create a New Group"); ?></a>
+<input type="submit" class="btn btn-primary" name="Submit" value=<?= '"' . gettext("Add to Group") . '"' ?>>
+<BR><BR>--<?= gettext("OR") ?>--<BR><BR>
+<a href="GroupEditor.php?EmptyCart=yes" class="btn btn-info"><i class="fa fa-add"></i><?= gettext("Create a New Group") ?></a>
 <BR><BR>
 </p>
 </form>
