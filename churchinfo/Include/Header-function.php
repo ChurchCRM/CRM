@@ -232,17 +232,19 @@ global $security_matrix, $sURLPath;
     if (!($aMenu['ismenu']) || ($numItems > 0))
     {
         if($link){
-            echo "<li><a href='$link'>";
-            if (    $aMenu['icon'] != "") {
-                echo "<i class=\"fa ". $aMenu['icon'] ."\"></i>";
-            }
-            if ($aMenu['parent'] != "root") {
-                echo "<i class=\"fa fa-angle-double-right\"></i> ";
-            }
-            if ($aMenu['parent'] == "root") {
-                echo "<span>".$aMenu['content'] . "</span></a>";
-            } else {
-                echo $aMenu['content'] . "</a>";
+            if ($aMenu['name'] != "sundayschool-dash") { # HACK to remove the sunday school 2nd dashboard
+                echo "<li><a href='$link'>";
+                if ($aMenu['icon'] != "") {
+                    echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>";
+                }
+                if ($aMenu['parent'] != "root") {
+                    echo "<i class=\"fa fa-angle-double-right\"></i> ";
+                }
+                if ($aMenu['parent'] == "root") {
+                    echo "<span>" . $aMenu['content'] . "</span></a>";
+                } else {
+                    echo $aMenu['content'] . "</a>";
+                }
             }
         } else {
             echo "<li class=\"treeview\">\n";

@@ -108,7 +108,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-university"></i>
             </div>
-            <a href="<?= $sURLPath."/"; ?>SundaySchool.php" class="small-box-footer">
+            <a href="<?= $sURLPath."/"; ?>sundayschool\SundaySchoolDashboard.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -118,16 +118,16 @@ require 'Include/Header.php';
         <div class="small-box bg-red">
             <div class="inner">
                 <h3>
-                    <?= $sundaySchoolStats['kids'] ?>
+                    TBD
                 </h3>
                 <p>
-                    Sunday School Kids
+                    Groups
                 </p>
             </div>
             <div class="icon">
-                <i class="fa fa-child"></i>
+                <i class="fa fa-users"></i>
             </div>
-            <a href="<?= $sURLPath."/"; ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
+            <a href="<?= $sURLPath."/"; ?>GroupList.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
