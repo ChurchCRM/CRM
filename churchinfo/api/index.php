@@ -13,6 +13,7 @@ if (!isset($_SESSION['iUserID'])) {
 require_once "../service/PersonService.php";
 require_once "../service/FamilyService.php";
 require_once "../service/DataSeedService.php";
+require_once "../service/FinancialService.php";
 require_once "../service/GroupService.php";
 require_once '../service/SystemService.php';
 
@@ -39,6 +40,10 @@ $app->container->singleton('DataSeedService', function () {
 });
 $app->container->singleton('SystemService', function () {
     return new SystemService();
+});
+
+$app->container->singleton('FinancialService', function () {
+   return new FinancialService();
 });
 
 $app->container->singleton('GroupService', function () {
@@ -229,12 +234,15 @@ $app->group('/search', function () use ($app) {
             array_push($resultsArray, $app->PersonService->getPersonsJSON($app->PersonService->search($query)));
             array_push($resultsArray, $app->FamilyService->getFamiliesJSON($app->FamilyService->search($query)));
             array_push($resultsArray, $app->GroupService->getGroupJSON($app->GroupService->search($query)));
+            array_push($resultsArray, $app->FinancialService->getDepositJSON($app->FinancialService->searchDeposits($query)));
+            array_push($resultsArray, $app->FinancialService->getPaymentJSON($app->FinancialService->searchPayments($query)));
             echo "[".join(",",array_filter($resultsArray))."]";
         } catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
     });
 });
+
 
 $app->group('/persons', function () use ($app) {
     $personService = $app->PersonService;
@@ -287,6 +295,175 @@ $app->group('/families', function () use ($app) {
             echo exceptionToJSON($e);
         }
     });
+	$app->get('/byCheckNumber/:tScanString', function($tScanString) use ($app) 
+	{
+		try {
+			$app->FinancialService->getMemberByScanString($sstrnig);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+		
+	});
+	$app->get('/byEnvelopeNumber/:tEnvelopeNumber',function($tEnvelopeNumber) use ($app) 
+	{
+		try {
+			$app->FamilyService->getFamilyStringByEnvelope($tEnvelopeNumber);
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+	});
+	
+});
+
+$app->group('/deposits',function () use ($app) {
+    
+    $app->post('/',function() use ($app)
+    {
+        try {
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            echo json_encode($app->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate));
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+	$app->get('/',function() use ($app) 
+	{
+		try {
+			echo '{"deposits": ' . json_encode($app->FinancialService->getDeposits()) . '}';
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+	});
+    
+	$app->get('/:id',function($id) use ($app) 
+	{
+		try {
+			echo '{"deposits": ' . json_encode($app->FinancialService->getDeposits($id)) . '}';
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }	
+	})->conditions(array('id' => '[0-9]+'));
+    
+    $app->post('/:id',function($id) use ($app)
+    {
+        try {
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            echo json_encode($app->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate, $id, $input->depositClosed));
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+    });
+    
+    
+    $app->get('/:id/ofx',function($id) use ($app) 
+	{
+		try {
+			$OFX = $app->FinancialService->getDepositOFX($id);
+            header($OFX->header);
+            echo $OFX->content;
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }	
+	})->conditions(array('id' => '[0-9]+'));
+    
+    $app->get('/:id/pdf',function($id) use ($app) 
+	{
+		//try {
+			$PDF = $app->FinancialService->getDepositPDF($id);
+            header($PDF->header);
+            echo $PDF->content;
+		//} catch (Exception $e) {
+         //   echo '{"error":{"text":' . $e->getMessage() . '}}';
+      //  }	
+	})->conditions(array('id' => '[0-9]+'));
+    
+    $app->get('/:id/csv',function($id) use ($app) 
+	{
+		//try {
+			$CSV = $app->FinancialService->getDepositCSV($id);
+            header($CSV->header);
+            echo $CSV->content;
+		//} catch (Exception $e) {
+         //   echo '{"error":{"text":' . $e->getMessage() . '}}';
+      //  }	
+	})->conditions(array('id' => '[0-9]+'));
+     
+    $app->delete('/:id',function($id) use ($app) 
+	{
+		try {
+			$app->FinancialService->deleteDeposit($id);
+            echo '{"success":"true"}';
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }	
+	})->conditions(array('id' => '[0-9]+'));
+    
+	$app->get('/:id/payments',function($id) use ($app) 
+	{
+		try {
+			$app->FinancialService->getPaymentJSON($app->FinancialService->getPayments($id));
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+	})->conditions(array('id' => '[0-9]+'));
+});
+
+
+
+$app->group('/payments',function () use ($app) {
+	$app->get('/', function () use ($app) {
+		try {
+			$app->FinancialService->getPaymentJSON($app->FinancialService->getPayments());
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+	});
+	$app->post('/', function () use ($app) {
+		try {
+			$payment=getJSONFromApp($app);
+			echo '{"payment": '.json_encode($app->FinancialService->submitPledgeOrPayment($payment)).'}';
+		} catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+		
+	});
+	$app->get('/:id',function ($id) use ($app) {
+		try {
+			#$request = $app->request();
+			#$body = $request->getBody();
+			#$payment = json_decode($body);	
+			#$app->FinancialService->getDepositsByFamilyID($fid);
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }	
+	});
+	$app->get('/byFamily/:familyId(/:fyid)', function ($familyId,$fyid=-1) use ($app) {
+		try {
+			#$request = $app->request();
+			#$body = $request->getBody();
+			#$payment = json_decode($body);	
+			#$app->FinancialService->getDepositsByFamilyID($fid);
+        }catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }
+	});
+	$app->delete('/:groupKey',function ($groupKey) use ($app) {
+		try {
+			if (!$_SESSION['bAddRecords']) {
+				throw new Exception (gettext("You must have at least AddRecords permission to use this API call"));
+			}
+			$app->FinancialService->deletePayment($groupKey);
+			echo '{"status":"ok"}';
+        }catch (Exception $e) {
+            echo '{"error":{"text":' . $e->getMessage() . '}}';
+        }	
+	});
 });
 
 
@@ -334,6 +511,14 @@ $app->group('/data/seed', function () use ($app) {
 
 });
 
+function getJSONFromApp($app)
+{
+	
+	$request = $app->request();
+    $body = $request->getBody();
+    return json_decode($body);
+}
+
 /**
  * @param $e
  */
@@ -343,5 +528,4 @@ function exceptionToJSON($e)
 }
 
 $app->run();
-
 
