@@ -100,7 +100,7 @@ require "../Include/Header.php";
 		</table>
 	</div>
 	<div class="box-footer">
-		<a href="../Reports/SundaySchoolClassListExport.php" role="button" class="btn btn-info"><i class="glyphicon glyphicon-export"></i> Export to CSV</a>
+		<a href="SundaySchoolClassListExport.php" role="button" class="btn btn-info"><i class="glyphicon glyphicon-export"></i> Export to CSV</a>
 	</div>
 </div>
 
