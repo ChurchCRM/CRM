@@ -406,7 +406,7 @@ $app->group('/deposits',function () use ($app) {
 	$app->get('/:id/payments',function($id) use ($app) 
 	{
 		try {
-			$app->FinancialService->getPaymentJSON($app->FinancialService->getPayments($id));
+			echo $app->FinancialService->getPaymentJSON($app->FinancialService->getPayments($id));
 		} catch (Exception $e) {
             echo '{"error":{"text":' . $e->getMessage() . '}}';
         }
