@@ -304,12 +304,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 					<?php } if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
 					<li><i class="fa-li fa fa-tasks"></i><?= gettext("Friend Date:") ?> <span><?= FormatDate($per_FriendDate,false) ?></span></li>
 					<?php } if ($sCellPhone) {?>
-					<li><i class="fa-li fa fa-mobile-phone"></i><?= gettext("Mobile Phone:") ?> <span><?= $sCellPhone ?></span></li>
+					<li><i class="fa-li fa fa-mobile-phone"></i><?= gettext("Mobile Phone:") ?> <span><? echo "<a href=\"tel:" . $sCellPhone . "\">" . $sCellPhone . "</a>"; ?></span></li>
 					<?php }
 					if ($sHomePhone) {
 						?>
-						<li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?>
-							<span><?= $sHomePhone ?></span></li>
+						<li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?><span><?echo "<a href=\"tel:" . $sHomePhone . "\">" . $sHomePhone . "</a>";?></span></li>
 					<?php
 					}
 					if ($sEmail != "") { ?>
@@ -320,7 +319,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 					}
 					if ($sWorkPhone) {
 					?>
-						<li><i class="fa-li fa fa-phone"></i><?= gettext("Work Phone:") ?> <span><?= $sWorkPhone ?></span></li>
+						<li><i class="fa-li fa fa-phone"></i><?= gettext("Work Phone:") ?> <span><? echo "<a href=\"tel:" . $sWorkPhone . "\">" . $sWorkPhone . "</a>";?></span></li>
 					<?php } ?>
 					<?php if ($per_WorkEmail != "") { ?>
 					<li><i class="fa-li fa fa-envelope"></i><?= gettext("Work/Other Email:") ?> <span><?php  echo "<a href=\"mailto:" . $per_WorkEmail . "\">" . $per_WorkEmail . "</a>"; ?></span></li>

@@ -252,13 +252,13 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 						<li><i class="fa-li fa fa-phone"></i><?= gettext("Envelope Number") ?> <span><?= $fam_Envelope ?></span></li>
 					<?php  }
 					if ($sHomePhone != "") { ?>
-						<li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><?= $sHomePhone ?></span></li>
+						<li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><? echo "<a href=\"tel:" . $sHomePhone . "\">" . $sHomePhone . "</a>";?></span></li>
 					<?php  }
 					if ($sWorkPhone != "") { ?>
-						<li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone:") ?> <span><?= $sWorkPhone ?></span></li>
+						<li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone:") ?> <span><? echo "<a href=\"tel:" . $sWorkPhone . "\">" . $sWorkPhone . "</a>";?></span></li>
 					<?php  }
 					if ($sCellPhone != "") { ?>
-						<li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone:") ?> <span><?= $sCellPhone ?></span></li>
+						<li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone:") ?> <span><? echo "<a href=\"tel:" . $sCellPhone . "\">" . $sCellPhone . "</a>";?></span></li>
 					<?php  }
 					if ($fam_Email != "") { ?>
 						<li><i class="fa-li fa fa-envelope"></i><?= gettext("Email:") ?><a href="mailto:<?= $fam_Email ?>"> <span><?= $fam_Email ?></span></a></li>
