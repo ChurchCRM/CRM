@@ -458,7 +458,7 @@ class FinancialService {
 		}
 		else
 		{
-			throw new Exception("status":"Scanned Checks is disabled");
+			throw new Exception("Scanned Checks is disabled");
 		}	
 	}
 
