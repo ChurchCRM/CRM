@@ -246,7 +246,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 		<div class="box box-primary">
 			<div class="box-body box-profile">
 				<img src="<?= $personService->getPhoto($iPersonID) ?>" alt="" class="profile-user-img img-responsive img-circle" />
-				<h3 class="profile-username text-center"><?= getGenderIcon($per_Gender). " ".FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0); ?></h3>
+				<h3 class="profile-username text-center"><?= getGenderIcon($per_Gender). " ".FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
 
 				<p class="text-muted text-center">
 				<?php
@@ -257,14 +257,14 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 					?>
 				</p>
 				<p class="text-muted text-center">
-				<?php echo $sClassName;
+				<?= $sClassName;
 					if ($per_MembershipDate) {
 						echo " since: ".FormatDate($per_MembershipDate,false);
 					} ?>
 				</p>
-				<?php if ($bOkToEdit) {?>
-					<a href="PersonEditor.php?PersonID=<?php echo $per_ID;?>" class="btn btn-primary btn-block"><b>Edit</b></a>
-				<?php }?>
+				<?php if ($bOkToEdit) { ?>
+					<a href="PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b>Edit</b></a>
+				<?php } ?>
 			</div>
 			<!-- /.box-body -->
 		</div>
@@ -294,9 +294,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 						</span></li>
 					<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
 						<a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
-						<?php
-						echo $formattedMailingAddress;
-						?>
+						<?= $formattedMailingAddress ?>
 						</a>
 						</span></li>
 					<?php if ($dBirthDate) {?>
@@ -314,7 +312,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 					if ($sEmail != "") { ?>
 					<li><i class="fa-li fa fa-envelope"></i><?= gettext("Email:") ?> <span><?php echo "<a href=\"mailto:" . $sUnformattedEmail . "\">" . $sEmail . "</a>"; ?></span></li>
 						<?php if ($mailchimp->isActive()) { ?>
-							<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($sEmail);?></span></li>
+							<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($sEmail); ?></span></li>
 						<?php }
 					}
 					if ($sWorkPhone) {
@@ -324,7 +322,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 					<?php if ($per_WorkEmail != "") { ?>
 					<li><i class="fa-li fa fa-envelope"></i><?= gettext("Work/Other Email:") ?> <span><?php  echo "<a href=\"mailto:" . $per_WorkEmail . "\">" . $per_WorkEmail . "</a>"; ?></span></li>
 						<?php if ($mailchimp->isActive()) { ?>
-							<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
+							<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
 						<?php
 						}
 					}
@@ -349,12 +347,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         <div class="row">
             <div class="box box-header">
                 <div class="col-lg-5 col-md-4 col-sm-4">
-                    <img src="<?= $personService->getPhoto($EnteredId) ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+                    <img src="<?= $personService->getPhoto($EnteredId) ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
                     <?= gettext("Entered: ").FormatDate($per_DateEntered,false) ?>
                 </div>
                 <?php if (strlen($per_DateLastEdited) > 0) { ?>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <img src="<?= $personService->getPhoto($EditedId) ?>" title="<?=  $EditedFirstName . " " . $EditedLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+                    <img src="<?= $personService->getPhoto($EditedId) ?>" title="<?=  $EditedFirstName . " " . $EditedLastName ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
                     <?= gettext("Updated: ").FormatDate($per_DateLastEdited,false) ?>
                 </div>
                 <?php } ?>
@@ -386,10 +384,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								<a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $Row["per_FirstName"]." ".$Row["per_LastName"] ?> </a>
 							</td>
 							<td class="text-center">
-								<?php echo getRoleLabel($Row["sFamRole"]) ?>
+								<?= getRoleLabel($Row["sFamRole"]) ?>
 							</td>
 							<td>
-								<?php echo FormatBirthDate($Row["per_BirthYear"], $Row["per_BirthMonth"], $Row["per_BirthDay"],"-",$Row["per_Flags"]);?>
+								<?= FormatBirthDate($Row["per_BirthYear"], $Row["per_BirthMonth"], $Row["per_BirthDay"],"-",$Row["per_Flags"]) ?>
 							</td>
 							<td>
 								<?php $tmpEmail = $Row["per_Email"];
@@ -450,7 +448,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 							<div class="main-box-body clearfix">
 								<?php
 								//Was anything returned?
-								if (mysql_num_rows($rsAssignedGroups) == 0) {?>
+								if (mysql_num_rows($rsAssignedGroups) == 0) { ?>
 									<br>
 									<div class="alert alert-warning">
 										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No group assignments.") ?></span>
@@ -465,9 +463,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 											<!-- Info box -->
 											<div class="box box-info">
 												<div class="box-header">
-													<h3 class="box-title"><a href="GroupView.php?GroupID=<?php echo $grp_ID ?>"><?= $grp_Name ?></a></h3>
+													<h3 class="box-title"><a href="GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 													<div class="box-tools pull-right">
-														<div class="label bg-aqua"><?php echo $roleName;?></div>
+														<div class="label bg-aqua"><?= $roleName ?></div>
 													</div>
 												</div>
 												<?php
@@ -497,8 +495,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 												} ?>
 												<div class="box-footer">
 													<code>
-														<?php if ($_SESSION['bManageGroups']) {?>
-															<a href="GroupView.php?GroupID=<?php echo $grp_ID ?>" class="btn btn-default" role="button"><i class="glyphicon glyphicon-list"></i></a>
+														<?php if ($_SESSION['bManageGroups']) { ?>
+															<a href="GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="glyphicon glyphicon-list"></i></a>
 															<div class="btn-group">
 																<button type="button" class="btn btn-default">Action</button>
 																<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -512,7 +510,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 																	<?php } ?>
 																</ul>
 															</div>
-															<a href="#" onclick="GroupRemove(<?php echo $grp_ID . ", " . $iPersonID ;?>);" class="btn btn-danger" role="button"><i class="fa fa-trash-o"></i></a>
+															<a href="#" onclick="GroupRemove(<?= $grp_ID . ", " . $iPersonID  ?>);" class="btn btn-danger" role="button"><i class="fa fa-trash-o"></i></a>
 														<?php } ?>
 													</code>
 												</div><!-- /.box-footer-->
@@ -529,7 +527,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 										<h4><strong>Assign New Group</strong></h4>
 										<i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?= gettext("Person will be assigned to the Group in the Default Role.") ?></span>
 										<p><br></p>
-										<form method="post" action="PersonView.php?PersonID=<?php echo $iPersonID ?>">
+										<form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
 											<select name="GroupAssignID">
 												<?php while ($aRow = mysql_fetch_array($rsGroups)) {
 													extract($aRow);
@@ -541,7 +539,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 												}
 												?>
 											</select>
-											<input type="submit" class="btn-primary" <?= 'value="' . gettext("Assign") . '"' ?> name="GroupAssign">
+											<input type="submit" class="btn-primary" value="<?= gettext("Assign") ?>" name="GroupAssign">
 											<br>
 										</form>
 									</div>
@@ -650,7 +648,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 													}
 													?>
 												</select>
-												<input type="submit" class="btn-primary" <?= 'value="' . gettext("Assign") . '"' ?> name="Submit" >
+												<input type="submit" class="btn-primary" value="<?= gettext("Assign") ?>" name="Submit" >
 											</form>
 										</div>
 									</div>
@@ -669,7 +667,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								$sAssignedVolunteerOpps = ",";
 
 								//Was anything returned?
-								if (mysql_num_rows($rsAssignedVolunteerOpps) == 0)  {?>
+								if (mysql_num_rows($rsAssignedVolunteerOpps) == 0)  { ?>
 									<br>
 									<div class="alert alert-warning">
 										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No volunteer opportunity assignments.") ?></span>
@@ -712,7 +710,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 										<div>
 											<h4><strong><?= gettext("Assign a New Volunteer Opportunity:") ?></strong></h4>
 											<p><br></p>
-											<form method="post" action="PersonView.php?PersonID=<?php echo $iPersonID ?>">
+											<form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
 												<select name="VolunteerOpportunityIDs[]", size=6, multiple>
 													<?php
 													while ($aRow = mysql_fetch_array($rsVolunteerOpps)) {
@@ -724,7 +722,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 													}
 													?>
 												</select>
-												<input type="submit" <?= 'value="' . gettext("Assign") . '"' ?> name="VolunteerOpportunityAssign" class="btn-primary">
+												<input type="submit" value="<?= gettext("Assign") ?>" name="VolunteerOpportunityAssign" class="btn-primary">
 											</form>
 										</div>
 									</div>
@@ -766,19 +764,19 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 														echo $EnteredFirstName . " " . $EnteredLastName;
 													} else {
 														echo $EditedFirstName . " " . $EditedLastName;
-													}?>
+													} ?>
 												</a>
-												<?php echo $nte_Text ?>
+												<?= $nte_Text ?>
 											</p>
 											<?php if ($_SESSION['bNotes']) { ?>
 												<div class="pull-right">
-													<a href="NoteEditor.php?PersonID=<?php echo $iPersonID ?>&NoteID=<?php echo $nte_ID ?>">
+													<a href="NoteEditor.php?PersonID=<?= $iPersonID ?>&NoteID=<?= $nte_ID ?>">
 											<span class="fa-stack">
 												<i class="fa fa-square fa-stack-2x"></i>
 												<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 											</span>
 													</a>
-													<a href="NoteDelete.php?NoteID=<?php echo $nte_ID ?>">
+													<a href="NoteDelete.php?NoteID=<?= $nte_ID ?>">
 											<span class="fa-stack">
 												<i class="fa fa-square fa-stack-2x"></i>
 												<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -800,11 +798,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 <!-- Modal -->
 <div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label" aria-hidden="true">
 	<div class="modal-dialog">
-		<form action="ImageUpload.php?PersonID=<?php echo $iPersonID;?>" method="post" enctype="multipart/form-data" id="UploadForm">
+		<form action="ImageUpload.php?PersonID=<?= $iPersonID ?>" method="post" enctype="multipart/form-data" id="UploadForm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="upload-Image-label"><?php echo gettext("Upload Photo") ?></h4>
+				<h4 class="modal-title" id="upload-Image-label"><?= gettext("Upload Photo") ?></h4>
 			</div>
 			<div class="modal-body">
 				<input type="file" name="file" size="50" />
@@ -832,7 +830,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<a href="ImageDelete.php?PersonID=<?php echo $iPersonID;?>" class="btn btn-danger danger">Delete</a>
+				<a href="ImageDelete.php?PersonID=<?= $iPersonID ?>" class="btn btn-danger danger">Delete</a>
 			</div>
 		</div>
 	</div>
@@ -850,6 +848,4 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 	}
 </script>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

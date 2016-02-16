@@ -79,6 +79,4 @@ require "Include/Header.php";
 	<a href="<?php echo $sReroute ?>"><?= gettext("No, cancel this deletion") ?></a>
 </p>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

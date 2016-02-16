@@ -118,7 +118,7 @@ class Family
 
 // Set the page title and include HTML header
 $sPageTitle = "CSV Import";
-require "Include/Header.php";?>
+require "Include/Header.php"; ?>
 
 <div class="box">
 <div class="box-header">
@@ -225,29 +225,29 @@ if (isset($_POST["UploadCSV"]))
         ?>
             <td>
             <select name="<?= "col" . $col ?>" class="columns">
-                <option value="0"><?= gettext("Ignore this Field"); ?></option>
-                <option value="1"><?= gettext("Title"); ?></option>
-                <option value="2"><?= gettext("First Name"); ?></option>
-                <option value="3"><?= gettext("Middle Name"); ?></option>
-                <option value="4"><?= gettext("Last Name"); ?></option>
-                <option value="5"><?= gettext("Suffix"); ?></option>
-                <option value="6"><?= gettext("Gender"); ?></option>
-                <option value="7"><?= gettext("Donation Envelope"); ?></option>
-                <option value="8"><?= gettext("Address1"); ?></option>
-                <option value="9"><?= gettext("Address2"); ?></option>
-                <option value="10"><?= gettext("City"); ?></option>
-                <option value="11"><?= gettext("State"); ?></option>
-                <option value="12"><?= gettext("Zip"); ?></option>
-                <option value="13"><?= gettext("Country"); ?></option>
-                <option value="14"><?= gettext("Home Phone"); ?></option>
-                <option value="15"><?= gettext("Work Phone"); ?></option>
-                <option value="16"><?= gettext("Mobile Phone"); ?></option>
-                <option value="17"><?= gettext("Email"); ?></option>
-                <option value="18"><?= gettext("Work / Other Email"); ?></option>
-                <option value="19"><?= gettext("Birth Date"); ?></option>
-                <option value="20"><?= gettext("Membership Date"); ?></option>
-                <option value="21"><?= gettext("Wedding Date"); ?></option>
-                <?= $sPerCustomFieldList.$sFamCustomFieldList; ?>
+                <option value="0"><?= gettext("Ignore this Field") ?></option>
+                <option value="1"><?= gettext("Title") ?></option>
+                <option value="2"><?= gettext("First Name") ?></option>
+                <option value="3"><?= gettext("Middle Name") ?></option>
+                <option value="4"><?= gettext("Last Name") ?></option>
+                <option value="5"><?= gettext("Suffix") ?></option>
+                <option value="6"><?= gettext("Gender") ?></option>
+                <option value="7"><?= gettext("Donation Envelope") ?></option>
+                <option value="8"><?= gettext("Address1") ?></option>
+                <option value="9"><?= gettext("Address2") ?></option>
+                <option value="10"><?= gettext("City") ?></option>
+                <option value="11"><?= gettext("State") ?></option>
+                <option value="12"><?= gettext("Zip") ?></option>
+                <option value="13"><?= gettext("Country") ?></option>
+                <option value="14"><?= gettext("Home Phone") ?></option>
+                <option value="15"><?= gettext("Work Phone") ?></option>
+                <option value="16"><?= gettext("Mobile Phone") ?></option>
+                <option value="17"><?= gettext("Email") ?></option>
+                <option value="18"><?= gettext("Work / Other Email") ?></option>
+                <option value="19"><?= gettext("Birth Date") ?></option>
+                <option value="20"><?= gettext("Membership Date") ?></option>
+                <option value="21"><?= gettext("Wedding Date") ?></option>
+                <?= $sPerCustomFieldList.$sFamCustomFieldList ?>
             </select>
             </td>
         <?php
@@ -256,28 +256,28 @@ if (isset($_POST["UploadCSV"]))
         echo "</table>";
         ?>
         <BR>
-        <input type="checkbox" value="1" name="IgnoreFirstRow"><?= gettext("Ignore first CSV row (to exclude a header)"); ?>
+        <input type="checkbox" value="1" name="IgnoreFirstRow"><?= gettext("Ignore first CSV row (to exclude a header)") ?>
         <BR><BR>
         <BR>
         <input type="checkbox" value="1" name="MakeFamilyRecords" checked="true">
         <select name="MakeFamilyRecordsMode">
             <option value="0"><?= gettext("Make Family records based on last name and address") ?></option>
-            <?= $sPerCustomFieldList.$sFamCustomFieldList; ?>
+            <?= $sPerCustomFieldList.$sFamCustomFieldList ?>
         </select>
 
         <BR><BR>
         <select name="FamilyMode">
-            <option value="0"><?= gettext("Patriarch");?></option>
-            <option value="1"><?= gettext("Matriarch");?></option>
+            <option value="0"><?= gettext("Patriarch") ?></option>
+            <option value="1"><?= gettext("Matriarch") ?></option>
         </select>
-        <?= gettext("Family Type: used with Make Family records... option above"); ?>
+        <?= gettext("Family Type: used with Make Family records... option above") ?>
         <BR><BR>
         <select name="DateMode">
             <option value="1">YYYY-MM-DD</option>
             <option value="2">MM-DD-YYYY</option>
             <option value="3">DD-MM-YYYY</option>
         </select>
-        <?= gettext("NOTE: Separators (dashes, etc.) or lack thereof do not matter"); ?>
+        <?= gettext("NOTE: Separators (dashes, etc.) or lack thereof do not matter") ?>
         <BR><BR>
         <?php
             $sCountry = $sDefaultCountry;
@@ -289,7 +289,7 @@ if (isset($_POST["UploadCSV"]))
         ?>
         <BR><BR>
         <select name="Classification">
-            <option value="0"><?= gettext("Unassigned"); ?></option>
+            <option value="0"><?= gettext("Unassigned") ?></option>
             <option value="0">-----------------------</option>
 
             <?php
@@ -301,9 +301,9 @@ if (isset($_POST["UploadCSV"]))
                 }
             ?>
         </select>
-        <?= gettext("Classification"); ?>
+        <?= gettext("Classification") ?>
         <BR><BR>
-        <input type="submit" class="btn btn-primary" value="<?= gettext("Perform Import"); ?>" name="DoImport">
+        <input type="submit" class="btn btn-primary" value="<?= gettext("Perform Import") ?>" name="DoImport">
         </form>
 
         <?php
@@ -876,10 +876,10 @@ if ($iStage == 1)
 {
     // Display the select file form
     ?>
-        <p style="color: red"> <?php echo $csvError ?></p>
+        <p style="color: red"> <?= $csvError ?></p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
         <input class="icTinyButton" type="file" name="CSVfile"><br/>
-        <input type="submit" class="btn" value=" <?php echo gettext("Upload CSV File") ?> "
+        <input type="submit" class="btn" value=" <?= gettext("Upload CSV File") ?> "
         name="UploadCSV">
         </form>
         </div>
@@ -890,14 +890,14 @@ if ($iStage == 1)
         </div>
         <div class="box-body">
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#clearPersons"><?php echo gettext("Clear Persons and Families") ?></button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#clearPersons"><?= gettext("Clear Persons and Families") ?></button>
         <!-- Modal -->
         <div class="modal fade" id="clearPersons" tabindex="-1" role="dialog" aria-labelledby="clearPersons" aria-hidden="true">
             <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="upload-Image-label"><?php echo gettext("Clear Persons and Families") ?></h4>
+                            <h4 class="modal-title" id="upload-Image-label"><?= gettext("Clear Persons and Families") ?></h4>
                         </div>
                         <div class="modal-body">
                         <span style="color: red">
@@ -909,7 +909,7 @@ if ($iStage == 1)
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button name="Clear" type="submit" class="btn btn-danger"><?php echo gettext("Clear Persons and Families") ?></button>
+                            <button name="Clear" type="submit" class="btn btn-danger"><?= gettext("Clear Persons and Families") ?></button>
                         </div>
                     </div>
             </div>

@@ -112,6 +112,4 @@ while ($aRow = mysql_fetch_array($rsUsers)) {
 </div>
 <!-- /.box -->
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

@@ -655,7 +655,7 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Family Info") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> name="FamilySubmit"  class="form-control">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit"  class="form-control">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -663,7 +663,7 @@ require "Include/Header.php";
 				<div class="row">
 					<div class="col-xs-3">
 						<label><?= gettext("Family Name:") ?></label>
-						<input type="text" Name="Name" id="FamilyName" value="<?= htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8") ?>" maxlength="48"  class="form-control">
+						<input type="text" Name="Name" id="FamilyName" value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, "UTF-8") ?>" maxlength="48"  class="form-control">
 						<?php if ($sNameError) { ?><font color="red"><?= $sNameError ?></font><?php } ?>
 					</div>
 				</div>
@@ -671,15 +671,15 @@ require "Include/Header.php";
 				<div class="row">
 					<div class="col-xs-6">
 						<label><?= gettext("Address1:") ?></label>
-							<input type="text" Name="Address1" value="<?= htmlentities(stripslashes($sAddress1),ENT_NOQUOTES, "UTF-8") ?>" size="50" maxlength="250"  class="form-control">
+							<input type="text" Name="Address1" value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, "UTF-8") ?>" size="50" maxlength="250"  class="form-control">
 					</div>
 					<div class="col-xs-3">
 						<label><?= gettext("Address2:") ?></label>
-						<input type="text" Name="Address2" value="<?= htmlentities(stripslashes($sAddress2),ENT_NOQUOTES, "UTF-8") ?>" size="50" maxlength="250"  class="form-control">
+						<input type="text" Name="Address2" value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, "UTF-8") ?>" size="50" maxlength="250"  class="form-control">
 					</div>
 					<div class="col-xs-3">
 						<label><?= gettext("City:") ?></label>
-						<input type="text" Name="City" value="<?= htmlentities(stripslashes($sCity),ENT_NOQUOTES, "UTF-8") ?>" maxlength="50"  class="form-control">
+						<input type="text" Name="City" value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, "UTF-8") ?>" maxlength="50"  class="form-control">
 					</div>
 				</div>
 				<p/>
@@ -691,7 +691,7 @@ require "Include/Header.php";
 							echo gettext("Province:");
 						}else{
 							echo gettext("State:");
-						}?>
+						} ?>
 						</label>
 						<?php require "Include/StateDropDown.php"; ?>
 					</div>
@@ -737,7 +737,7 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Contact Info") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> name="FamilySubmit" >
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit" >
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -759,7 +759,7 @@ require "Include/Header.php";
 							<i class="fa fa-phone"></i>
 						</div>
 						<input type="text" name="WorkPhone" value="<?= htmlentities(stripslashes($sWorkPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask/>
-						<input type="checkbox" class="form-control" name="NoFormat_WorkPhone" value="1" <?php if ($bNoFormat_WorkPhone) echo " checked";?>><?= gettext("Do not auto-format") ?>
+						<input type="checkbox" class="form-control" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? " checked" : ''?>><?= gettext("Do not auto-format") ?>
 					</div>
 				</div>
 				<div class="form-group col-xs-3">
@@ -769,7 +769,7 @@ require "Include/Header.php";
 							<i class="fa fa-phone"></i>
 						</div>
 						<input type="text" name="CellPhone" value="<?= htmlentities(stripslashes($sCellPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
-						<input type="checkbox" class="form-control" name="NoFormat_CellPhone" value="1" <?php if ($bNoFormat_CellPhone) echo " checked";?>><?= gettext("Do not auto-format") ?>
+						<input type="checkbox" class="form-control" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? " checked" : '' ?>><?= gettext("Do not auto-format") ?>
 					</div>
 				</div>
 			</div>
@@ -796,7 +796,7 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Other Info") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="form-control" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> name="FamilySubmit">
+				<input type="submit" class="form-control" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -806,14 +806,14 @@ require "Include/Header.php";
 					<div class="form-group col-xs-4">
 						<label><?= gettext("Wedding Date:") ?></label>
 						<input type="text" class="form-control" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="12" id="WeddingDate" size="15">
-						<?php if ($sWeddingDateError) { ?> <font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font> <?php } ?>
+						<?php if ($sWeddingDateError) { ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php } ?>
 					</div>
 				</div>
 			<?php } /* Wedding date can be hidden - General Settings */ ?>
 			<div class="row">
 				<?php if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser ?>
 					<div class="form-group col-xs-4">
-						<label><?php echo gettext("Ok To Canvass:") ?> </label><br/>
+						<label><?= gettext("Ok To Canvass:") ?> </label><br/>
 						<input type="checkbox" class="form-control" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) echo " checked "; ?> >
 					</div>
 				<?php }
@@ -858,7 +858,7 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3><?= gettext("Envelope Info") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="form-control" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> name="FamilySubmit">
+				<input type="submit" class="form-control" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -876,17 +876,17 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Custom Fields") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> name="FamilySubmit">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
 		<?php mysql_data_seek($rsCustomFields,0);
 		while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
 			extract($rowCustomField);
-			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {?>
+			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) { ?>
 			<div class="row">
 				<div class="form-group col-xs-5">
-				<label><?php echo $fam_custom_Name ;?> </label>
+				<label><?= $fam_custom_Name  ?> </label>
 				<?php $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
 						if ($type_ID == 11) $fam_custom_Special = $sCountry;
@@ -903,7 +903,7 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Family Members") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> name="FamilySubmit">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -912,7 +912,7 @@ require "Include/Header.php";
 
 	<tr>
 		<td colspan="2">
-		<div class="MediumText"><center><?php if ($iFamilyID<0) { echo gettext("You may create family members now or add them later.  All entries will become <i>new</i> person records."); }?></center></div><br><br>
+		<div class="MediumText"><center><?php if ($iFamilyID<0) { echo gettext("You may create family members now or add them later.  All entries will become <i>new</i> person records."); } ?></center></div><br><br>
 		<table cellpadding="3" cellspacing="0" width="100%">
 		<thead>
 		<tr class="TableHeader" align="center">
@@ -945,20 +945,20 @@ require "Include/Header.php";
 		for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++)
 		{
 		?>
-		<input type="hidden" name="PersonID<?php echo $iCount ?>" value="<?php echo $aPersonIDs[$iCount] ?>">
+		<input type="hidden" name="PersonID<?= $iCount ?>" value="<?= $aPersonIDs[$iCount] ?>">
 		<tr>
 			<td class="TextColumn">
-				<input name="FirstName<?php echo $iCount ?>" type="text" value="<?php echo $aFirstNames[$iCount] ?>" size="10">
+				<input name="FirstName<?= $iCount ?>" type="text" value="<?= $aFirstNames[$iCount] ?>" size="10">
 				<div><font color="red"><?php if (array_key_exists ($iCount, $aFirstNameError)) echo $aFirstNameError[$iCount]; ?></font></div>
 			</td>
 			<td class="TextColumn">
-				<input name="MiddleName<?php echo $iCount ?>" type="text" value="<?php echo $aMiddleNames[$iCount] ?>" size="10">
+				<input name="MiddleName<?= $iCount ?>" type="text" value="<?= $aMiddleNames[$iCount] ?>" size="10">
 			</td>
 			<td class="TextColumn">
-				<input name="LastName<?php echo $iCount ?>" type="text" value="<?php echo $aLastNames[$iCount] ?>" size="10">
+				<input name="LastName<?= $iCount ?>" type="text" value="<?= $aLastNames[$iCount] ?>" size="10">
 			</td>
 			<td class="TextColumn">
-				<input name="Suffix<?php echo $iCount ?>" type="text" value="<?php echo $aSuffix[$iCount] ?>" size="10">
+				<input name="Suffix<?= $iCount ?>" type="text" value="<?= $aSuffix[$iCount] ?>" size="10">
 			</td>
 			<td class="TextColumn">
 				<select name="Gender<?php echo $iCount ?>">
@@ -1000,13 +1000,13 @@ require "Include/Header.php";
 				</select>
 			</td>
 			<td class="TextColumn">
-				<select name="BirthDay<?php echo $iCount ?>">
+				<select name="BirthDay<?= $iCount ?>">
 					<option value="0">Unk</option>
 					<?php for ($x=1; $x < 32; $x++)
 					{
 						if ($x < 10) { $sDay = "0" . $x; } else { $sDay = $x; }
 					?>
-					<option value="<?php echo $sDay ?>" <?php if ($aBirthDays[$iCount] == $x) {echo "selected"; } ?>><?php echo $x ?></option>
+					<option value="<?= $sDay ?>" <?php if ($aBirthDays[$iCount] == $x) {echo "selected"; } ?>><?= $x ?></option>
 				<?php } ?>
 				</select>
 			</td>
@@ -1015,7 +1015,7 @@ require "Include/Header.php";
 			{
 				$UpdateBirthYear = 1;
 			?>
-				<input name="BirthYear<?php echo $iCount ?>" type="text" value="<?php echo $aBirthYears[$iCount] ?>" size="4" maxlength="4">
+				<input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" size="4" maxlength="4">
 				<div><font color="red"><?php if (array_key_exists ($iCount, $aBirthDateError)) echo $aBirthDateError[$iCount]; ?></font></div>
 			<?php }
 			else 
@@ -1061,11 +1061,11 @@ require "Include/Header.php";
 	echo "</td></tr></form></table>";
 ?>
 	<!-- InputMask -->
-	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
-	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
-	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
+	<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+	<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+	<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
 
-	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+	<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
 
 	<script type="text/javascript">
 		$(function() {
@@ -1074,6 +1074,4 @@ require "Include/Header.php";
         
         $("#WeddingDate").datepicker({format:'yyyy-mm-dd'});
 	</script>
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

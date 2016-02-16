@@ -76,7 +76,7 @@ require "Include/Header.php"
 
 ?>
 
-<form method="post" action="MemberRoleChange.php?GroupID=<?php echo $iGroupID ?>&PersonID=<?php echo $iPersonID ?>&Return=<?php echo $iReturn ?>">
+<form method="post" action="MemberRoleChange.php?GroupID=<?= $iGroupID ?>&PersonID=<?= $iPersonID ?>&Return=<?= $iReturn ?>">
 
 <table cellpadding="4">
 	<tr>
@@ -131,6 +131,5 @@ require "Include/Header.php"
 	</tr>
 </table>
 </form>
-<?php
-require "Include/Footer.php";
-?>
+
+<?php require "Include/Footer.php" ?>

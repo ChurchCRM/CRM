@@ -95,29 +95,27 @@ require "Include/Header.php";
 		<td>
 		<table cellpadding="3">
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Why did you come to the church?");?></td>
-				<td><textarea name="Join" rows="3" cols="90"><?php echo $tJoin?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Why did you come to the church?") ?></td>
+				<td><textarea name="Join" rows="3" cols="90"><?= $tJoin ?></textarea></td>
 			</tr>
 	
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Why do you keep coming?");?></td>
-				<td><textarea name="Come" rows="3" cols="90"><?php echo $tCome?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Why do you keep coming?") ?></td>
+				<td><textarea name="Come" rows="3" cols="90"><?= $tCome ?></textarea></td>
 			</tr>
 	
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Do you have any suggestions for us?");?></td>
-				<td><textarea name="Suggest" rows="3" cols="90"><?php echo $tSuggest?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Do you have any suggestions for us?") ?></td>
+				<td><textarea name="Suggest" rows="3" cols="90"><?= $tSuggest ?></textarea></td>
 			</tr>
 	
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("How did you learn of the church?");?></td>
-				<td><textarea name="HearOfUs" rows="3" cols="90"><?php echo $tHearOfUs?></textarea></td>
+				<td class="LabelColumn"><?= gettext("How did you learn of the church?") ?></td>
+				<td><textarea name="HearOfUs" rows="3" cols="90"><?= $tHearOfUs ?></textarea></td>
 			</tr>
 		</table>
 		</td>
 	</form>
 </table>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>
