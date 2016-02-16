@@ -32,7 +32,7 @@ $rsKidsGender = RunQuery($sSQL);
 ?>
 
 <!-- this page specific styles -->
-<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/chartjs/Chart.min.js"></script>
+<script src="<?= $sURLPath; ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
 
 <!-- Default box -->
 <div class="box">

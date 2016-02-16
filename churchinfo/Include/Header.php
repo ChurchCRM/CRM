@@ -45,38 +45,38 @@ $sURLPath = $_SESSION['sURLPath'];
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="<?= $sURLPath ?>/vendor/almasaeed2010/adminlte/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= $sURLPath ?>/skin/adminlte/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?= $sURLPath ?>/skin/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="<?= $sURLPath ?>/skin/ionicons/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/dist/css/AdminLTE.min.css" />
+    <link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/skin/adminlte/dist/css/AdminLTE.min.css" />
 
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="<?= $sURLPath; ?>/skin/adminlte/dist/css/skins/_all-skins.min.css">
 
-    <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/select2/select2.min.css">
+    <link rel="stylesheet" href="<?= $sURLPath; ?>/skin/adminlte/plugins/select2/select2.min.css">
 
-    <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datepicker/datepicker3.css">
-    <link rel="stylesheet" href= "<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/timepicker/bootstrap-timepicker.css">
+    <link rel="stylesheet" href="<?= $sURLPath; ?>/skin/adminlte/plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet" href= "<?= $sURLPath; ?>/skin/adminlte/plugins/timepicker/bootstrap-timepicker.css">
 
     <!-- Custom ChurchCRM styles -->
     <link rel="stylesheet" href="<?= $sURLPath; ?>/Include/ChurchCRM.css">
 
     <!-- jQuery 2.1.4 -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="<?= $sURLPath; ?>/skin/adminlte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
     <!-- jQuery 2.1.4 -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/jQueryUI/jquery-ui.min.js"></script>
+    <script src="<?= $sURLPath; ?>/skin/adminlte/plugins/jQueryUI/jquery-ui.min.js"></script>
 
     <!-- AdminLTE Select2 -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/select2/select2.full.min.js"></script>
+    <script src="<?= $sURLPath; ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
     <!-- AdminLTE DatePicker -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="<?= $sURLPath; ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
      <!-- AdminLTE TimePicker -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
+    <script src="<?= $sURLPath; ?>/skin/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
 
     <?php Header_head_metatag(); ?>
 </head>
