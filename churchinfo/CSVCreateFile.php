@@ -503,7 +503,7 @@ else
 							$type_ID = "";
 
 							extract($aCustomField);
-							if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+							if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]])
 							{
 								if (isset($_POST["$custom_Field"]))
 								{

@@ -950,7 +950,7 @@ require "Include/Header.php";
 				{
 					extract($rowCustomField);
 
-					if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+					if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]])
 					{
 						echo "<div class='row'><div class=\"form-group col-xs-3\"><label>" . $custom_Name . "</label>";
 

@@ -18,7 +18,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if (array_key_exists ('Action', $_POST) and $_POST['Action'] == "Retrieve" && !empty($_POST['Event']))
+if (array_key_exists('Action', $_POST) && $_POST['Action'] == "Retrieve" && !empty($_POST['Event']))
 {
     if ($_POST['Choice'] == "Attendees")
     {
@@ -63,7 +63,7 @@ if (array_key_exists ('Action', $_POST) and $_POST['Action'] == "Retrieve" && !e
         $sPageTitle = gettext("Event Guests");
     }
 }
-elseif (array_key_exists ('Action', $_GET) and $_GET['Action']== "List" && !empty($_GET['Event']))
+elseif (array_key_exists('Action', $_GET) && $_GET['Action']== "List" && !empty($_GET['Event']))
 {
     $sSQL = "SELECT * FROM events_event WHERE event_type = ".$_GET['Event']." ORDER BY event_start";
 
@@ -87,7 +87,7 @@ for ($row = 1; $row <= $numRows; $row++)
     $aRow = mysql_fetch_assoc($rsOpps);
     extract($aRow);
 
-    if (array_key_exists ('Action', $_GET) and $_GET['Action'] == "List")
+    if (array_key_exists ('Action', $_GET) & $_GET['Action'] == "List")
     {
         $aEventID[$row] = $event_id;
         $aEventTitle[$row] = htmlentities(stripslashes($event_title),ENT_NOQUOTES, "UTF-8");
@@ -111,7 +111,7 @@ for ($row = 1; $row <= $numRows; $row++)
 <table cellpadding="4" align="center" cellspacing="0" width="60%">
 
 <?php
-if (array_key_exists ('Action', $_GET) and $_GET['Action'] == "List" && $numRows > 0)
+if (array_key_exists ('Action', $_GET) && $_GET['Action'] == "List" && $numRows > 0)
 {
 ?>
        <caption>
@@ -218,8 +218,8 @@ elseif ($_POST['Action']== "Retrieve" && $numRows > 0)
          ?>
          <tr class="<?= $sRowClass ?>">
            <td class="TextColumn"><?= FormatFullName($aTitle[$row],$aFistName[$row],$aMiddleName[$row],$aLastName[$row],$aSuffix[$row],3) ?></td>
-           <td class="TextColumn"><?= $aEmail[$row] ? '<a href="mailto:'.$aEmail[$row].'" title="Send Email">'.$aEmail[$row].'</a>':'Not Available' ?></td>
-           <td class="TextColumn"><?= ($aHomePhone[$row] ? $aHomePhone[$row]:'Not Available') ?></td>
+           <td class="TextColumn"><?= $aEmail[$row] ? '<a href="mailto:' . $aEmail[$row] . '" title="Send Email">' . $aEmail[$row] . '</a>' : 'Not Available' ?></td>
+           <td class="TextColumn"><?= $aHomePhone[$row] ? $aHomePhone[$row] : 'Not Available' ?></td>
 <?php
 // AddToCart call to go here
 ?>
@@ -232,7 +232,7 @@ else
 {
 ?>
        <caption>
-         <h3><?= ($_GET ? gettext("There are no events in this category"):gettext("There are no Records")) ?><br><br></h3>
+         <h3><?= $_GET ? gettext("There are no events in this category") : gettext("There are no Records") ?><br><br></h3>
        </caption>
        <tr><td>&nbsp;</td></tr>
 <?php

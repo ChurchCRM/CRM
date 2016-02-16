@@ -229,7 +229,7 @@ if (isset($_POST["PledgeSubmit"]) or
 		else
 			$iMethod = 'Check';
 	}
-	if (!$iEnvelope and $iFamily) {
+	if (!$iEnvelope && $iFamily) {
 		$sSQL = "SELECT fam_Envelope FROM family_fam WHERE fam_ID=\"" . $iFamily . "\";";
 		$rsEnv = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsEnv));
@@ -256,7 +256,7 @@ if ($PledgeOrPayment == 'Pledge') { // Don't assign the deposit slip if this is 
 	}
 }
 
-if ($iMethod == "CASH" or $iMethod == "CHECK")
+if ($iMethod == "CASH" || $iMethod == "CHECK")
 	$dep_Type = "Bank";
 elseif ($iMethod == "CREDITCARD")
 	$dep_Type = "CreditCard";
@@ -267,7 +267,7 @@ if ($PledgeOrPayment == 'Payment') {
 	$bEnableNonDeductible = 1; // this could/should be a config parm?  regardless, having a non-deductible amount for a pledge doesn't seem possible
 }
 
-if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
+if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"])) {
 	//Initialize the error flag
 	$bErrorFlag = false;
 
@@ -307,17 +307,17 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		$iAutID = FilterInput($_POST["AutoPay"]);
 	//$iEnvelope = FilterInput($_POST["Envelope"], 'int');
 
-	if ($PledgeOrPayment=='Payment' and !$iCheckNo and $iMethod == "CHECK") {
+	if ($PledgeOrPayment=='Payment' && !$iCheckNo && $iMethod == "CHECK") {
 		$sCheckNoError = "<span style=\"color: red; \">" . gettext("Must specify non-zero check number") . "</span>";
 		$bErrorFlag = true;
 	}
 
 	// detect check inconsistencies
-	if ($PledgeOrPayment=='Payment' and $iCheckNo) {
+	if ($PledgeOrPayment=='Payment' && $iCheckNo) {
 		if ($iMethod == "CASH") {
 			$sCheckNoError = "<span style=\"color: red; \">" . gettext("Check number not valid for 'CASH' payment") . "</span>";
 			$bErrorFlag = true;
-		} elseif ($iMethod=='CHECK' and !$sGroupKey) {
+		} elseif ($iMethod=='CHECK' && !$sGroupKey) {
 			$chkKey = $iFamily . "|" . $iCheckNo;
 			if (array_key_exists($chkKey, $checkHash)) {
 				$text = "Check number '" . $iCheckNo . "' for selected family already exists.";
@@ -337,13 +337,13 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 	}
 
 	//If no errors, then let's update...
-	if (!$bErrorFlag and !$dep_Closed) {
+	if (!$bErrorFlag && !$dep_Closed) {
 		// Only set PledgeOrPayment when the record is first created
 		// loop through all funds and create non-zero amount pledge records
 		foreach ($fundId2Name as $fun_id => $fun_name) {
 			if (!$iCheckNo) { $iCheckNo = 0; }
 			unset($sSQL);
-			if ($fund2PlgIds and array_key_exists($fun_id, $fund2PlgIds)) {
+			if ($fund2PlgIds && array_key_exists($fun_id, $fund2PlgIds)) {
 				if ($nAmount[$fun_id] > 0) {
 					$sSQL = "UPDATE pledge_plg SET plg_famID = '" . $iFamily . "',plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount[$fun_id] . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment[$fun_id] . "'";
 					$sSQL .= ", plg_DateLastEdited = '" . date("YmdHis") . "', plg_EditedBy = " . $_SESSION['iUserID'] . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_id] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "'";
@@ -351,7 +351,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 					$sSQL = "DELETE FROM pledge_plg WHERE plg_plgID =" . $fund2PlgIds[$fun_id];
 				}
 			} elseif ($nAmount[$fun_id] > 0) {
-				if ($iMethod <> "CHECK") {
+				if ($iMethod != "CHECK") {
 					$iCheckNo = "NULL";
 				}
 				if (!$sGroupKey) {
@@ -393,11 +393,11 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 			Redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=" . $PledgeOrPayment . "&linkBack=", $linkBack);
 		}
 	} // end if !$bErrorFlag
-} elseif (isset($_POST["MatchFamily"]) or isset($_POST["MatchEnvelope"]) or isset($_POST["SetDefaultCheck"]) or isset($_POST["TotalAmount"])) {
+} elseif (isset($_POST["MatchFamily"]) || isset($_POST["MatchEnvelope"]) || isset($_POST["SetDefaultCheck"]) || isset($_POST["TotalAmount"])) {
 
 	//$iCheckNo = 0;
 	// Take care of match-family first- select the family based on the scanned check
-	if ($bUseScannedChecks and isset($_POST["MatchFamily"])) {
+	if ($bUseScannedChecks && isset($_POST["MatchFamily"])) {
 		$tScanString = FilterInput($_POST["ScanInput"]);
 
 		$routeAndAccount = $micrObj->FindRouteAndAccount ($tScanString); // use routing and account number for matching
@@ -417,7 +417,7 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 		// Match envelope is similar to match check- use the envelope number to choose a family
 		
 		$iEnvelope = FilterInput($_POST["Envelope"], 'int');
-		if ($iEnvelope and strlen($iEnvelope) > 0) {
+		if ($iEnvelope && strlen($iEnvelope) > 0) {
 			$sSQL = "SELECT fam_ID FROM family_fam WHERE fam_Envelope=" . $iEnvelope;
 			$rsFam = RunQuery($sSQL);
 			$numRows = mysql_num_rows($rsFam);
@@ -445,13 +445,13 @@ if (isset($_POST["PledgeSubmit"]) or isset($_POST["PledgeSubmitAndAdd"])) {
 				$calcAmount = round($iTotalAmount * ($plgAmount / $totalPledgeAmount), 2);
 
 				$nAmount[$fundID] = number_format($calcAmount, 2, ".", "");
-				if ($fundID <> $defaultFundID) {
+				if ($fundID != $defaultFundID) {
 					$calcOtherFunds = $calcOtherFunds + $calcAmount;
 				}
 
 				$calcTotal += $calcAmount;
 			}
-			if ($calcTotal <> $iTotalAmount) {
+			if ($calcTotal != $iTotalAmount) {
 				$nAmount[$defaultFundID] = number_format($iTotalAmount - $calcOtherFunds, 2, ".", "");
 			}
 		} else {
@@ -498,7 +498,7 @@ if ($PledgeOrPayment == 'Pledge') {
 	while ($aRow = mysql_fetch_array($rsChecksThisDep)) {
 		extract($aRow);
 		$chkKey = $plg_FamID . "|" . $plg_checkNo;
-		if ($plg_method=='CHECK' and (!array_key_exists($chkKey, $checkHash))) {
+		if ($plg_method == 'CHECK' && (!array_key_exists($chkKey, $checkHash))) {
 			$checkHash[$chkKey] = $plg_plgID;
 			++$depositCount;
 		}
@@ -564,7 +564,7 @@ require "Include/Header.php";
 		<table border="0" cellspacing="0" cellpadding="2">
 		<td valign="top" align="left">
 		<table cellpadding="2">
-			<?php if ($dep_Type == 'Bank' and $bUseDonationEnvelopes) { ?>
+			<?php if ($dep_Type == 'Bank' && $bUseDonationEnvelopes) { ?>
 			<tr>
 				<td class="PaymentLabelColumn"><?= gettext("Envelope #") ?></td>
 				<td class="TextColumn"><input type="text" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
@@ -604,7 +604,7 @@ require "Include/Header.php";
 						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "BankDraft" || !$iCurrentDeposit) { ?>
 						<option value="BANKDRAFT" <?php if ($iMethod == "BANKDRAFT") { echo "selected"; } ?>><?= 						gettext("Bank Draft") ?></option>
 						<?php } ?>
-                                                <?php if ($PledgeOrPayment=='Pledge') { ?>
+                                                <?php if ($PledgeOrPayment == 'Pledge') { ?>
                                                 <option value="EGIVE" <?= $iMethod == "EGIVE" ? 'selected' : '' ?>><?=
                           gettext("eGive") ?></option>
                                                 <?php } ?>
@@ -622,10 +622,10 @@ require "Include/Header.php";
 				<td class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext("Fund") ?></td>
 				<td class="TextColumnWithBottomBorder">
 					<select name="FundSplit">
-						<option value=0 <?php if (!$iSelectedFund) { echo ' selected'; } ?>><?= gettext("Split") ?></option>
-						<?php foreach ($fundId2Name as $fun_id => $fun_name) {
-							echo "<option value=\"" . $fun_id . "\""; if ($iSelectedFund==$fun_id) echo " selected"; echo ">"; echo gettext($fun_name) . "</option>";
-						} ?>
+						<option value=0 <?= !$iSelectedFund ? 'selected' : '' ?>><?= gettext("Split") ?></option>
+						<?php foreach ($fundId2Name as $fun_id => $fun_name) { ?>
+							<option value="<?= $fun_id ?>" <?= $iSelectedFund == $fun_id ? 'selected' : '' ?>><?= gettext($fun_name) ?></option>
+						<?php } ?> 
 					</select>
 					<?php if (!$dep_Closed) { ?>
 					<input type="submit" class="btn" name="SetFundTypeSelection" value="<-Set">
