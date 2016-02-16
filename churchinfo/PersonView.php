@@ -5,10 +5,10 @@
  *  last change : 2003-04-14
  *  description : Displays all the information about a single person
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -19,9 +19,9 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require 'Include/PersonFunctions.php';
-require 'Include/MailchimpFunctions.php';
+require 'service/MailchimpService.php';
 
-$mailchimp = new ChurchInfoMailchimp();
+$mailchimp = new MailChimpService();
 
 // Get the person ID from the querystring
 $iPersonID = FilterInput($_GET["PersonID"],'int');
@@ -210,13 +210,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			echo "<li class=\"divider\"></li>";
 
 		} ?>
-		<li><a href="VCardCreate.php?PersonID=<?php echo $per_ID; ?>" ><?php echo gettext("Create vCard"); ?></a></li>
-		<li><a href="PrintView.php?PersonID=<?php echo $per_ID; ?>"><?php echo gettext("Printable Page"); ?></a></li>
-		<li><a href="PersonView.php?PersonID=<?php echo $per_ID; ?>&AddToPeopleCart=<?php echo $per_ID; ?>"><?php echo gettext("Add to Cart"); ?></a></li>
+		<li><a href="PrintView.php?PersonID=<?= $per_ID ?>"><?= gettext("Printable Page") ?></a></li>
+		<li><a href="PersonView.php?PersonID=<?= $per_ID ?>&AddToPeopleCart=<?= $per_ID ?>"><?= gettext("Add to Cart") ?></a></li>
 		<?php if ($_SESSION['bNotes']) { ?>
 			<li class="divider"></li>
-			<li><a href="WhyCameEditor.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Edit \"Why Came\" Notes"); ?></a></li>
-			<li><a href="NoteEditor.php?PersonID=<?php echo $per_ID ?>"><?php echo gettext("Add a Note to this Record"); ?></a></li>
+			<li><a href="WhyCameEditor.php?PersonID=<?php echo $per_ID ?>"><?= gettext("Edit \"Why Came\" Notes") ?></a></li>
+			<li><a href="NoteEditor.php?PersonID=<?php echo $per_ID ?>"><?= gettext("Add a Note to this Record") ?></a></li>
 		<?php } ?>
 			<li class="divider"></li>
 		<?php
@@ -240,143 +239,133 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 <div class="alert alert-warning alert-dismissable">
 	<i class="fa fa-magic"></i>
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<b><span style="color: red;"><?php echo gettext("Red text"); ?></span></b> <?php echo gettext("indicates items inherited from the associated family record.");?>
+	<b><span style="color: red;"><?= gettext("Red text") ?></span></b> <?php echo gettext("indicates items inherited from the associated family record.");?>
 </div>
 <div class="row">
-	<div class="col-lg-3 col-md-4 col-sm-4">
-		<div class="box box-solid box-info">
-			<div class="box-header">
-				<h3 class='box-title'>
-					<?php
-					echo getGenderIcon($per_Gender). " ".FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0). " ";
-					if ($bOkToEdit) {?>
-						<a href="PersonEditor.php?PersonID=<?php echo $per_ID;?>">
-						<span class="fa-stack">
-							<i class="fa fa-square fa-stack-2x"></i>
-							<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-						</span>
-						</a>
-					<?php }?>
-				</h3>
+	<div class="col-lg-3 col-md-3 col-sm-3">
+		<div class="box box-primary">
+			<div class="box-body box-profile">
+				<img src="<?= $personService->getPhoto($iPersonID) ?>" alt="" class="profile-user-img img-responsive img-circle" />
+				<h3 class="profile-username text-center"><?= getGenderIcon($per_Gender). " ".FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0); ?></h3>
+
+				<p class="text-muted text-center">
+				<?php
+					if ($sFamRole != "")
+						echo $sFamRole;
+					else
+						echo gettext("Member");
+					?>
+				</p>
+				<p class="text-muted text-center">
+				<?php echo $sClassName;
+					if ($per_MembershipDate) {
+						echo " since: ".FormatDate($per_MembershipDate,false);
+					} ?>
+				</p>
+				<?php if ($bOkToEdit) {?>
+					<a href="PersonEditor.php?PersonID=<?php echo $per_ID;?>" class="btn btn-primary btn-block"><b>Edit</b></a>
+				<?php }?>
 			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+
+		<!-- About Me Box -->
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h3 class="box-title text-center">About Me</h3>
+			</div>
+			<!-- /.box-header -->
 			<div class="box-body">
-				<div class="box-tools">
-					<div class="label bg-light-blue"><?php
-						if ($sFamRole != "")
-							echo $sFamRole;
-						else
-							echo gettext("Member");
-						?>
-					</div>
-					<p />
-				</div>
-				<img src="<?php echo getPersonPhoto($iPersonID, $per_Gender, $sFamRole) ?>" alt="" class="img-circle center-block" />
-
-				<div class="box-tools">
-					<div class="label bg-olive">
-						<?php
-						echo $sClassName;
-						if ($per_MembershipDate) {
-							echo " since: ".FormatDate($per_MembershipDate,false);
-						} ?>
-					</div>
-				</div>
-				<p><hr/></p>
-				<div class="profile-details">
-					<ul class="fa-ul">
-						<li><i class="fa-li fa fa-group"></i>Family: <span>
-								<?php
-								if ($fam_ID != "") { ?>
-									<a href="FamilyView.php?FamilyID=<?php echo $fam_ID; ?>"><?php echo $fam_Name; ?> </a>
-									<a href="FamilyEditor.php?FamilyID=<?php echo $fam_ID; ?>" class="table-link">
-										<span class="fa-stack">
-											<i class="fa fa-square fa-stack-2x"></i>
-											<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-										</span>
-									</a>
-								<?php } else
-									echo gettext("(No assigned family)");
-								?>
-							</span></li>
-						<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
-							<a href="http://maps.google.com/?q=<?php echo $plaintextMailingAddress; ?>" target="_blank">
+				<ul class="fa-ul">
+					<li><i class="fa-li fa fa-group"></i>Family: <span>
 							<?php
-							echo $formattedMailingAddress;
+							if ($fam_ID != "") { ?>
+								<a href="FamilyView.php?FamilyID=<?= $fam_ID ?>"><?= $fam_Name ?> </a>
+								<a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
+									<span class="fa-stack">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+									</span>
+								</a>
+							<?php } else
+								echo gettext("(No assigned family)");
 							?>
-							</a>
-							</span></li>
-						<?php if ($dBirthDate) {?>
-						<li><i class="fa-li fa fa-calendar"></i><?php echo gettext("Birthdate:"); ?> <span><?php echo $dBirthDate; ?></span> (<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?>)</li>
-						<?php } if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
-						<li><i class="fa-li fa fa-tasks"></i><?php echo gettext("Friend Date:"); ?> <span><?php echo FormatDate($per_FriendDate,false); ?></span></li>
-						<?php } if ($sCellPhone) {?>
-						<li><i class="fa-li fa fa-mobile-phone"></i><?php echo gettext("Mobile Phone:"); ?> <span><?php echo $sCellPhone; ?></span></li>
+						</span></li>
+					<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
+						<a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
+						<?php
+						echo $formattedMailingAddress;
+						?>
+						</a>
+						</span></li>
+					<?php if ($dBirthDate) {?>
+					<li><i class="fa-li fa fa-calendar"></i><?= gettext("Birthdate:") ?> <span><?= $dBirthDate ?></span> (<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear,$per_Flags); ?>)</li>
+					<?php } if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
+					<li><i class="fa-li fa fa-tasks"></i><?= gettext("Friend Date:") ?> <span><?= FormatDate($per_FriendDate,false) ?></span></li>
+					<?php } if ($sCellPhone) {?>
+					<li><i class="fa-li fa fa-mobile-phone"></i><?= gettext("Mobile Phone:") ?> <span><?= $sCellPhone ?></span></li>
+					<?php }
+					if ($sHomePhone) {
+						?>
+						<li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?>
+							<span><?= $sHomePhone ?></span></li>
+					<?php
+					}
+					if ($sEmail != "") { ?>
+					<li><i class="fa-li fa fa-envelope"></i><?= gettext("Email:") ?> <span><?php echo "<a href=\"mailto:" . $sUnformattedEmail . "\">" . $sEmail . "</a>"; ?></span></li>
+						<?php if ($mailchimp->isActive()) { ?>
+							<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($sEmail);?></span></li>
 						<?php }
-						if ($sHomePhone) {
-							?>
-							<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Home Phone:"); ?>
-								<span><?php echo $sHomePhone; ?></span></li>
+					}
+					if ($sWorkPhone) {
+					?>
+						<li><i class="fa-li fa fa-phone"></i><?= gettext("Work Phone:") ?> <span><?= $sWorkPhone ?></span></li>
+					<?php } ?>
+					<?php if ($per_WorkEmail != "") { ?>
+					<li><i class="fa-li fa fa-envelope"></i><?= gettext("Work/Other Email:") ?> <span><?php  echo "<a href=\"mailto:" . $per_WorkEmail . "\">" . $per_WorkEmail . "</a>"; ?></span></li>
+						<?php if ($mailchimp->isActive()) { ?>
+							<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
 						<?php
 						}
-						if ($sEmail != "") { ?>
-						<li><i class="fa-li fa fa-envelope"></i><?php echo gettext("Email:"); ?> <span><?php echo "<a href=\"mailto:" . $sUnformattedEmail . "\">" . $sEmail . "</a>"; ?></span></li>
-							<?php if ($mailchimp->isActive()) { ?>
-								<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($sEmail);?></span></li>
-							<?php }
-						}
-						if ($sWorkPhone) {
-						?>
-							<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Work Phone:"); ?> <span><?php echo $sWorkPhone; ?></span></li>
-						<?php } ?>
-						<?php if ($per_WorkEmail != "") { ?>
-						<li><i class="fa-li fa fa-envelope"></i><?php echo gettext("Work/Other Email:"); ?>: <span><?php  echo "<a href=\"mailto:" . $per_WorkEmail . "\">" . $per_WorkEmail . "</a>"; ?></span></li>
-							<?php if ($mailchimp->isActive()) { ?>
-								<li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?php echo $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
-							<?php
-							}
-						}
+					}
 
-						// Display the right-side custom fields
-						while ($Row = mysql_fetch_array($rsCustomFields)) {
-							extract($Row);
-							$currentData = trim($aCustomData[$custom_Field]);
-							if ($currentData != "") {
-								if ($type_ID == 11) $custom_Special = $sPhoneCountry;
-								echo "<li><i class=\"fa-li glyphicon glyphicon-tag\"></i>" . $custom_Name . ": <span>";
-								echo nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
-								echo "</span></li>";
-							}
+					// Display the right-side custom fields
+					while ($Row = mysql_fetch_array($rsCustomFields)) {
+						extract($Row);
+						$currentData = trim($aCustomData[$custom_Field]);
+						if ($currentData != "") {
+							if ($type_ID == 11) $custom_Special = $sPhoneCountry;
+							echo "<li><i class=\"fa-li glyphicon glyphicon-tag\"></i>" . $custom_Name . ": <span>";
+							echo nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
+							echo "</span></li>";
 						}
-						?>
-					</ul>
-				</div>
+					}
+					?>
+				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="col-lg-9 col-md-8 col-sm-8">
-		<div class="box box-solid">
-			<div class="box-body clearfix">
-				<table width="100%">
-					<tr>
-						<td width="50%">
-							<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>" alt="" width="40" height="40" class="img-circle"/>
-							<?php echo gettext("Entered: ").FormatDate($per_DateEntered,false).gettext(" by ").$EnteredFirstName . " " . $EnteredLastName; ?>
-						</td>
-						<?php if (strlen($per_DateLastEdited) > 0) { ?>
-						<td width="50%">
-							<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>" alt="" width="40" height="40" class="img-circle"/>
-							<?php  echo gettext("Updated: "). FormatDate($per_DateLastEdited,false) .gettext(" by ") . $EditedFirstName . " " . $EditedLastName."<br>"; ?>
-						</td>
-						<?php } ?>
-					</tr>
-				</table>
-			</div>
-		</div>
+        <div class="row">
+            <div class="box box-header">
+                <div class="col-lg-5 col-md-4 col-sm-4">
+                    <img src="<?= $personService->getPhoto($EnteredId) ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+                    <?= gettext("Entered: ").FormatDate($per_DateEntered,false) ?>
+                </div>
+                <?php if (strlen($per_DateLastEdited) > 0) { ?>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <img src="<?= $personService->getPhoto($EditedId) ?>" title="<?=  $EditedFirstName . " " . $EditedLastName; ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
+                    <?= gettext("Updated: ").FormatDate($per_DateLastEdited,false) ?>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
 	</div>
 	<div class="col-lg-9 col-md-8 col-sm-8">
 		<?php if (mysql_num_rows($rsOtherFamily) != 0) { ?>
 		<div class="row">
-			<div class="box box-solid">
+			<div class="box box-success">
 				<div class="box-body table-responsive clearfix">
 					<table class="table user-list table-hover">
 						<thead>
@@ -394,8 +383,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 							?>
 						<tr>
 							<td>
-								<img src="<?php echo getPersonPhoto($tmpPersonId, $Row["per_Gender"], $Row["sFamRole"]) ?>" width="40" height="40" class="img-circle" />
-								<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="user-link"><?php echo $Row["per_FirstName"]." ".$Row["per_LastName"]; ?> </a>
+								<img src="<?= $personService->getPhoto($tmpPersonId) ?>" width="40" height="40" class="img-circle img-bordered-sm" />
+								<a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $Row["per_FirstName"]." ".$Row["per_LastName"] ?> </a>
 							</td>
 							<td class="text-center">
 								<?php echo getRoleLabel($Row["sFamRole"]) ?>
@@ -406,24 +395,24 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 							<td>
 								<?php $tmpEmail = $Row["per_Email"];
 								if ($tmpEmail != "") { ?>
-								<a href="#"><a href="mailto:<?php echo $tmpEmail; ?>"><?php echo $tmpEmail; ?></a></a>
+								<a href="#"><a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a></a>
 								<?php } ?>
 							</td>
 							<td style="width: 20%;">
-								<a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>&AddToPeopleCart=<?php echo $tmpPersonId; ?>">
+								<a href="PersonView.php?PersonID=<?= $tmpPersonId ?>&AddToPeopleCart=<?= $tmpPersonId ?>">
 									<span class="fa-stack">
 										<i class="fa fa-square fa-stack-2x"></i>
-										<i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+										<i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
 									</span>
 								</a>
 								<?php if ($bOkToEdit) { ?>
-								<a href="PersonEditor.php?PersonID=<?php echo $tmpPersonId; ?>">
+								<a href="PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
 									<span class="fa-stack">
 										<i class="fa fa-square fa-stack-2x"></i>
 										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 									</span>
 								</a>
-								<a href="SelectDelete.php?mode=person&PersonID=<?php echo $tmpPersonId; ?>">
+								<a href="SelectDelete.php?mode=person&PersonID=<?= $tmpPersonId ?>">
 									<span class="fa-stack">
 										<i class="fa fa-square fa-stack-2x"></i>
 										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -447,11 +436,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			<div class="nav-tabs-custom">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?php echo gettext("Assigned Groups"); ?></a></li>
-					<li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?php echo gettext("Assigned Properties"); ?></a></li>
-					<li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?php echo gettext("Volunteer opportunities"); ?></a></li>
+					<li role="presentation" class="active"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?= gettext("Assigned Groups") ?></a></li>
+					<li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
+					<li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext("Volunteer opportunities") ?></a></li>
 					<?php if ($_SESSION['bNotes']) { ?>
-						<li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?php echo gettext("Notes"); ?></a></li>
+						<li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext("Notes") ?></a></li>
 					<?php } ?>
 				</ul>
 
@@ -465,7 +454,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								if (mysql_num_rows($rsAssignedGroups) == 0) {?>
 									<br>
 									<div class="alert alert-warning">
-										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?php echo gettext("No group assignments."); ?></span>
+										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No group assignments.") ?></span>
 									</div>
 								<?php } else {
 									echo "<div class=\"row\">";
@@ -477,7 +466,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 											<!-- Info box -->
 											<div class="box box-info">
 												<div class="box-header">
-													<h3 class="box-title"><a href="GroupView.php?GroupID=<?php echo $grp_ID ?>"><?php echo $grp_Name; ?></a></h3>
+													<h3 class="box-title"><a href="GroupView.php?GroupID=<?php echo $grp_ID ?>"><?= $grp_Name ?></a></h3>
 													<div class="box-tools pull-right">
 														<div class="label bg-aqua"><?php echo $roleName;?></div>
 													</div>
@@ -518,9 +507,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 																	<span class="sr-only">Toggle Dropdown</span>
 																</button>
 																<ul class="dropdown-menu" role="menu">
-																	<li><a href="MemberRoleChange.php?GroupID=<?php echo $grp_ID; ?>&PersonID=<?php echo $iPersonID; ?>" >Change Role</a></li>
+																	<li><a href="MemberRoleChange.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>" >Change Role</a></li>
 																	<?php if ($grp_hasSpecialProps == 'true') { ?>
-																		<li><a href="GroupPropsEditor.php?GroupID=<?php echo $grp_ID; ?>&PersonID=<?php echo $iPersonID; ?>">Update Properties</a></li>
+																		<li><a href="GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>">Update Properties</a></li>
 																	<?php } ?>
 																</ul>
 															</div>
@@ -539,7 +528,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								if ($_SESSION['bManageGroups']) { ?>
 									<div class="alert alert-info">
 										<h4><strong>Assign New Group</strong></h4>
-										<i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?php echo gettext("Person will be assigned to the Group in the Default Role."); ?></span>
+										<i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?= gettext("Person will be assigned to the Group in the Default Role.") ?></span>
 										<p><br></p>
 										<form method="post" action="PersonView.php?PersonID=<?php echo $iPersonID ?>">
 											<select name="GroupAssignID">
@@ -553,7 +542,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 												}
 												?>
 											</select>
-											<input type="submit" class="btn-primary" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="GroupAssign">
+											<input type="submit" class="btn-primary" <?= 'value="' . gettext("Assign") . '"' ?> name="GroupAssign">
 											<br>
 										</form>
 									</div>
@@ -571,7 +560,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								if (mysql_num_rows($rsAssignedProperties) == 0) { ?>
 									<br>
 									<div class="alert alert-warning">
-										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?php echo gettext("No property assignments."); ?></span>
+										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No property assignments.") ?></span>
 									</div>
 								<?php } else {
 									//Yes, start the table
@@ -648,9 +637,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								<?php if ($bOkToEdit && mysql_num_rows($rsProperties) != 0) { ?>
 									<div class="alert alert-info">
 										<div>
-											<h4><strong><?php echo gettext("Assign a New Property:"); ?></strong></h4>
+											<h4><strong><?= gettext("Assign a New Property:") ?></strong></h4>
 											<p><br></p>
-											<form method="post" action="PropertyAssign.php?PersonID=<?php echo $iPersonID; ?>">
+											<form method="post" action="PropertyAssign.php?PersonID=<?= $iPersonID ?>">
 												<select name="PropertyID">
 													<?php
 													while ($aRow = mysql_fetch_array($rsProperties)) {
@@ -662,7 +651,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 													}
 													?>
 												</select>
-												<input type="submit" class="btn-primary" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="Submit" >
+												<input type="submit" class="btn-primary" <?= 'value="' . gettext("Assign") . '"' ?> name="Submit" >
 											</form>
 										</div>
 									</div>
@@ -684,7 +673,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								if (mysql_num_rows($rsAssignedVolunteerOpps) == 0)  {?>
 									<br>
 									<div class="alert alert-warning">
-										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?php echo gettext("No volunteer opportunity assignments."); ?></span>
+										<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No volunteer opportunity assignments.") ?></span>
 									</div>
 								<?php } else {
 									echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
@@ -722,7 +711,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 								<?php if ($_SESSION['bEditRecords']) { ?>
 									<div class="alert alert-info">
 										<div>
-											<h4><strong><?php echo gettext("Assign a New Volunteer Opportunity:"); ?></strong></h4>
+											<h4><strong><?= gettext("Assign a New Volunteer Opportunity:") ?></strong></h4>
 											<p><br></p>
 											<form method="post" action="PersonView.php?PersonID=<?php echo $iPersonID ?>">
 												<select name="VolunteerOpportunityIDs[]", size=6, multiple>
@@ -736,7 +725,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 													}
 													?>
 												</select>
-												<input type="submit" <?php echo 'value="' . gettext("Assign") . '"'; ?> name="VolunteerOpportunityAssign" class="btn-primary">
+												<input type="submit" <?= 'value="' . gettext("Assign") . '"' ?> name="VolunteerOpportunityAssign" class="btn-primary">
 											</form>
 										</div>
 									</div>
@@ -751,7 +740,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 									<p>
 									<div class="pull-right top-page-ui text-center clearfix">
 										<div class="profile-message-btn btn-group">
-											<a class="btn btn-primary active" role="button" href="NoteEditor.php?FamilyID=<?php echo $fam_ID; ?>"><span class="fa fa-plus" aria-hidden="true"></span> Add Note</a>
+											<a class="btn btn-primary active" role="button" href="NoteEditor.php?FamilyID=<?= $fam_ID ?>"><span class="fa fa-plus" aria-hidden="true"></span> Add Note</a>
 										</div>
 									</div>
 									<br></p>
@@ -764,7 +753,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 										?>
 										<!-- chat item -->
 										<div class="item">
-											<img src="<?php echo getPersonPhoto($EnteredId, "", "") ?>"/>
+											<img src="<?= $personService->getPhoto($EnteredId) ?>"/>
 											<p class="message">
 												<a href="#" class="name">
 													<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php
@@ -851,16 +840,17 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 </div>
 <script language="javascript">
 	function GroupRemove( Group, Person ) {
-		var answer = confirm (<?php echo "'",  "'"; ?>)
+		var answer = confirm (<?= "'",  "'" ?>)
 		if ( answer )
-			window.location="GroupMemberList.php?GroupID=" + Group + "&PersonToRemove=" + Person
+			$.ajax({
+                method: "POST",
+                url:    "/api/groups/"+Group+"/removeuser/"+Person
+            }).done(function (data){
+               location.reload(); 
+            });
 	}
 </script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 <?php
 require "Include/Footer.php";
 ?>

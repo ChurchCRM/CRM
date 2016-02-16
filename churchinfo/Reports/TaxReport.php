@@ -5,7 +5,7 @@
 *  last change : 2005-03-26
 *  description : Creates a PDF with all the tax letters for a particular calendar year.
 *
-*  InfoCentral is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -68,6 +68,10 @@ if (!empty($_POST["classList"])) {
 		$inClassList .= ")";
 		$notInClassList .= ")";
 	}
+
+	// all classes were selected. this should behave as if no filter classes were specified
+	if ($notInClassList == '()')
+		unset($classList);
 }
 
 // Build SQL Query
@@ -86,7 +90,7 @@ $sSQL .= " WHERE plg_PledgeOrPayment='Payment' ";
 if ($iDepID > 0)
 	$sSQL .= " AND plg_depID='$iDepID' ";
 else {
-	$today = date("Y-m-d");	
+	$today = date("Y-m-d");
 	if (!$sDateEnd && $sDateStart)
 		$sDateEnd = $sDateStart;
 	if (!$sDateStart && $sDateEnd)
@@ -156,7 +160,7 @@ $rsReport = RunQuery($sSQL);
 // Exit if no rows returned
 $iCountRows = mysql_num_rows($rsReport);
 if ($iCountRows < 1){
-	header("Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report"); 
+	header("Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report");
 }
 
 // Create Giving Report -- PDF
@@ -220,15 +224,15 @@ if ($output == "pdf") {
 			$this->WriteAt ($this->leftX, $curY, "Sincerely,");
 			$curY += 4 * $this->incrementY;
 			$this->WriteAt ($this->leftX, $curY, $this->sTaxSigner);
-			
+
 			if ($remittance == "yes"){
 				// Add remittance slip
 				$curY = 194;
 				$curX = 60;
 				$this->WriteAt ($curX, $curY, gettext("Please detach this slip and mail with your next gift."));
 				$curY += (1.5 * $this->incrementY);
-				$church_mailing = gettext("Please mail you next gift to ") . $this->sChurchName . ", " 
-					. $this->sChurchAddress . ", " . $this->sChurchCity . ", " . $this->sChurchState . "  " 
+				$church_mailing = gettext("Please mail you next gift to ") . $this->sChurchName . ", "
+					. $this->sChurchAddress . ", " . $this->sChurchCity . ", " . $this->sChurchState . "  "
 					. $this->sChurchZip . gettext(", Phone: ") . $this->sChurchPhone;
 				$this->SetFont('Times','I', 10);
 				$this->WriteAt ($this->leftX, $curY, $church_mailing);
@@ -269,7 +273,7 @@ if ($output == "pdf") {
 
 	// Instantiate the directory class and build the report.
 	$pdf = new PDF_TaxReport();
-	
+
 	// Read in report settings from database
 	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
    if ($rsConfig) {
@@ -282,7 +286,7 @@ if ($output == "pdf") {
 	$currentFamilyID = 0;
 	while ($row = mysql_fetch_array($rsReport)) {
 		extract ($row);
-		
+
 		// Check for minimum amount
 		if ($iMinimum > 0){
 			$temp = "SELECT SUM(plg_amount) AS total_gifts FROM pledge_plg
@@ -323,7 +327,7 @@ if ($output == "pdf") {
 					// Leave blank space at top on all pages for pre-printed letterhead
 					$curY = 20 + ($summaryIntervalY * 3) + 25;
 					$pdf->SetY($curY);
-				} else {	
+				} else {
 					$curY = 20;
 					$pdf->SetY(20);
 				}
@@ -386,7 +390,7 @@ if ($output == "pdf") {
 				// Leave blank space at top on all pages for pre-printed letterhead
 				$curY = 20 + ($summaryIntervalY * 3) + 25;
 				$pdf->SetY($curY);
-			} else {	
+			} else {
 				$curY = 20;
 				$pdf->SetY(20);
 			}
@@ -430,7 +434,7 @@ if ($output == "pdf") {
 				// Leave blank space at top on all pages for pre-printed letterhead
 				$curY = 20 + ($summaryIntervalY * 3) + 25;
 				$pdf->SetY($curY);
-			} else {	
+			} else {
 				$curY = 20;
 				$pdf->SetY(20);
 			}
@@ -454,7 +458,7 @@ if ($output == "pdf") {
 	// Settings
 	$delimiter = ",";
 	$eol = "\r\n";
-	
+
 	// Build headings row
         preg_match ("/SELECT (.*) FROM /i", $sSQL, $result);
 	$headings = explode(",",$result[1]);
@@ -464,7 +468,7 @@ if ($output == "pdf") {
 	}
 	// Remove trailing delimiter and add eol
 	$buffer = substr($buffer,0,-1) . $eol;
-	
+
 	// Add data
 	while ($row = mysql_fetch_row($rsReport)) {
 		foreach ($row as $field) {
@@ -474,11 +478,11 @@ if ($output == "pdf") {
 		// Remove trailing delimiter and add eol
 		$buffer = substr($buffer,0,-1) . $eol;
 	}
-	
+
 	// Export file
 	header("Content-type: text/x-csv");
 	header("Content-Disposition: attachment; filename=ChurchInfo-" . date("Ymd-Gis") . ".csv");
 	echo $buffer;
 }
-	
+
 ?>

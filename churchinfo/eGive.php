@@ -292,11 +292,11 @@ if (isset($_POST["ApiGet"])) {
 	<table cellpadding="3" align="left">
 	<tr><td>
 		<form method="post" action="eGive.php?DepositSlipID=<?php echo $iDepositSlipID ?>" enctype="multipart/form-data">
-		<class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><b><?php echo gettext("Start Date: "); ?></b>
-			<class="TextColumn"><input type="text" name="StartDate" value="<?php echo $lwDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font><br>
-			<class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><b><?php echo gettext("End Date: "); ?></b>
-			<class="TextColumn"><input type="text" name="EndDate" value="<?php echo $dDate; ?>" maxlength="10" id="sel2" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel2', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font><br><br>
-		<input type="submit" class="icButton" value="<?php echo gettext("Import eGive"); ?>" name="ApiGet">
+		<class="LabelColumn"><b><?= gettext("Start Date: ") ?></b>
+			<class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate ?>" maxlength="10" id="StartDate" size="11"><font color="red"><?php echo $sDateError ?></font><br>
+			<class="LabelColumn"><b><?= gettext("End Date: ") ?></b>
+			<class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate ?>" maxlength="10" id="EndDate" size="11"><font color="red"><?php echo $sDateError ?></font><br><br>
+		<input type="submit" class="btn" value="<?= gettext("Import eGive") ?>" name="ApiGet">
 		<br><br><br>
 		</form>
 		</td>
@@ -368,30 +368,30 @@ function importDoneFixOrContinue() {
 			$name = preg_replace('/_/', ' ', $nameWithUnderscores);
 			echo "<tr>";
 			echo "<td>" . $name . "&nbsp;</td>"; ?>
-			<td><class="TextColumn"><input type="text" name="MissingEgive_ID_<?php echo $nameWithUnderscores; ?>" value="<?php echo $egiveID; ?>" maxlength="10"></td>
+			<td><class="TextColumn"><input type="text" name="MissingEgive_ID_<?= $nameWithUnderscores ?>" value="<?= $egiveID ?>" maxlength="10"></td>
 			<td class="TextColumn">
-			<select name="MissingEgive_FamID_<?php echo $nameWithUnderscores; ?>">
-			<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
+			<select name="MissingEgive_FamID_<?= $nameWithUnderscores ?>">
+			<option value="0" selected><?= gettext("Unassigned") ?></option>
 			<?php
 			echo $familySelectHtml;
 			?>
 			</select>
 			</td>
-			<td><input type="checkbox" name="MissingEgive_Set_<?php echo $nameWithUnderscores; ?>" value="1" checked></td>
+			<td><input type="checkbox" name="MissingEgive_Set_<?= $nameWithUnderscores ?>" value="1" checked></td>
 			<?php 
 			echo "</tr>";
 		 }
  		?>
 		</table><br>
 
-		<input type="submit" class="icButton" value="<?php echo gettext("Re-import to selected family"); ?>" name="ReImport">
+		<input type="submit" class="btn" value="<?= gettext("Re-import to selected family") ?>" name="ReImport">
 	<?php
 	}
 
  ?>
 
 	<p class="MediumLargeText"> <?php echo gettext("Data import results: ") . $importCreated . gettext(" gifts were imported, ") .  $importNoChange . gettext(" gifts unchanged, and ") . $importError . gettext(" gifts not imported due to problems");?></p>
-	<input type="button" class="icButton" value="<?php echo gettext("Back to Deposit Slip");?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?php echo $iDepositSlipID;?>'"
+	<input type="button" class="btn" value="<?php echo gettext("Back to Deposit Slip");?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?php echo $iDepositSlipID;?>'"
 <?php
 }
 
@@ -420,11 +420,18 @@ function get_api_data($json) {
 	} else {
 	?>
 		<font color="red"><?php echo gettext("Fatal error in eGive API datastream: '") . $error;?>"'</font><br><br>
- 		<input type="button" class="icButton" value="<?php echo gettext("Back to Deposit Slip");?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?php echo $iDepositSlipID;?>'"
+ 		<input type="button" class="btn" value="<?php echo gettext("Back to Deposit Slip");?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?php echo $iDepositSlipID;?>'"
 	<?php
 		return 0;
 	}
 }
+?>
+<script>
+$("#StartDate").datepicker({format:'yyyy-mm-dd'});
+$("#EndDate").datepicker({format:'yyyy-mm-dd'});
+</script>
+
+<?php
 
 require "Include/Footer.php";
 

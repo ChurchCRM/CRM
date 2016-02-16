@@ -3,10 +3,10 @@
  *
  *  filename    : CanvassAutomation.php
  *  last change : 2005-02-21
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2005 Deane Barker, Chris Gebhardt, Michael Wilt, Tim Dearborn
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -113,7 +113,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 <table border width="100%" align="left">
 	<tr>
 		<td align="center" width="25%">
-			<input type="submit" class="icButton" value="<?php echo gettext("Set default fiscal year"); ?>" 
+			<input type="submit" class="btn" value="<?= gettext("Set default fiscal year") ?>"
 			 name="SetDefaultFY">
 		</td>
 		<td align="left" width="75%">
@@ -123,31 +123,31 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 
 	<tr>
 		<td align="center" width="25%">
-			<input type="submit" class="icButton" value="<?php echo gettext("Assign Canvassers"); ?>" 
+			<input type="submit" class="btn" value="<?= gettext("Assign Canvassers") ?>"
 			 name="AssignCanvassers">
 		</td>
 		<td align="left" width="75%">
-			<?php echo gettext("Randomly assign canvassers to all Families.  The Canvassers are 
-			taken from the &quot;Canvassers&quot; Group."); ?>
+			<?= gettext("Randomly assign canvassers to all Families.  The Canvassers are 
+			taken from the &quot;Canvassers&quot; Group.") ?>
 			<p><input type="checkbox" name="AssignCanvassersConfirm"><?php echo gettext("Check to confirm");?></p>
 		</td>
 	</tr>
 
 	<tr>
 		<td align="center" width="25%">
-			<input type="submit" class="icButton" value="<?php echo gettext("Assign To Non Pledging"); ?>" 
+			<input type="submit" class="btn" value="<?= gettext("Assign To Non Pledging") ?>"
 			 name="AssignNonPledging">
 		</td>
 		<td align="left" width="75%">
-			<?php echo gettext("Randomly assign canvassers to non-pledging Families.  The Canvassers are 
-			taken from the &quot;BraveCanvassers&quot; Group."); ?>
+			<?= gettext("Randomly assign canvassers to non-pledging Families.  The Canvassers are 
+			taken from the &quot;BraveCanvassers&quot; Group.") ?>
 			<p><input type="checkbox" name="AssignNonPledgingConfirm"><?php echo gettext("Check to confirm");?></p>
 		</td>
 	</tr>
 
 	<tr>
 		<td align="center" width="25%">
-			<input type="submit" class="icButton" value="<?php echo gettext("Clear Canvasser Assignments"); ?>" 
+			<input type="submit" class="btn" value="<?= gettext("Clear Canvasser Assignments") ?>"
 			 name="ClearCanvasserAssignments">
 		</td>
 		<td align="left" width="75%">
@@ -159,7 +159,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 
 	<tr>
 		<td align="center" width="25%">
-			<input type="submit" class="icButton" value="<?php echo gettext("Enable Canvass for All Families"); ?>" 
+			<input type="submit" class="btn" value="<?= gettext("Enable Canvass for All Families") ?>"
 			 name="SetAllOkToCanvass">
 		</td>
 		<td align="left" width="75%">
@@ -171,7 +171,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 
 	<tr>
 		<td align="center" width="25%">
-			<input type="submit" class="icButton" value="<?php echo gettext("Disable Canvass for All Families"); ?>" 
+			<input type="submit" class="btn" value="<?= gettext("Disable Canvass for All Families") ?>"
 			 name="ClearAllOkToCanvass">
 		</td>
 		<td align="left" width="75%">
@@ -183,44 +183,44 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 
 	<tr>
 		<td align="center" width="25%">
-			<input type="submit" class="icButton" value="<?php echo gettext("Briefing Sheets"); ?>" 
+			<input type="submit" class="btn" value="<?= gettext("Briefing Sheets") ?>"
 			 name="BriefingSheets">
 		</td>
 		<td align="left" width="75%">
-			<?php echo gettext("Generate a PDF containing briefing sheets for all Families, sorted by canvasser."); ?>
+			<?= gettext("Generate a PDF containing briefing sheets for all Families, sorted by canvasser.") ?>
 		</td>
 	</tr>
 
 	<tr>
 		<td align="center" width="25%">
-			<input type="submit" class="icButton" value="<?php echo gettext("Progress Report"); ?>" 
+			<input type="submit" class="btn" value="<?= gettext("Progress Report") ?>"
 			 name="ProgressReport">
 		</td>
 		<td align="left" width="75%">
-			<?php echo gettext("Generate a PDF containing a progress report.  The progress report includes
-			information on the overall progress of the canvass, and the progress of individual canvassers."); ?>
+			<?= gettext("Generate a PDF containing a progress report.  The progress report includes
+			information on the overall progress of the canvass, and the progress of individual canvassers.") ?>
 		</td>
 	</tr>
 
 	<tr>
 		<td align="center" width="25%">
-			<input type="submit" class="icButton" value="<?php echo gettext("Summary Report"); ?>" 
+			<input type="submit" class="btn" value="<?= gettext("Summary Report") ?>"
 			 name="SummaryReport">
 		</td>
 		<td align="left" width="75%">
-			<?php echo gettext("Generate a PDF containing a summary report.  The summary report includes
-			comments extracted from the canvass data."); ?>
+			<?= gettext("Generate a PDF containing a summary report.  The summary report includes
+			comments extracted from the canvass data.") ?>
 		</td>
 	</tr>
 
 	<tr>
 		<td align="center" width="25%">
-			<input type="submit" class="icButton" value="<?php echo gettext("Not Interested Report"); ?>" 
+			<input type="submit" class="btn" value="<?= gettext("Not Interested Report") ?>"
 			 name="NotInterestedReport">
 		</td>
 		<td align="left" width="75%">
-			<?php echo gettext("Generate a PDF containing a report of the families marked &quot;Not Interested&quot; 
-			                    by the canvasser."); ?>
+			<?= gettext("Generate a PDF containing a report of the families marked &quot;Not Interested&quot; 
+			                    by the canvasser.") ?>
 		</td>
 	</tr>
 </table>

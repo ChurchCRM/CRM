@@ -3,10 +3,10 @@
  *
  *  filename    : ReportList.php
  *  last change : 2003-03-20
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2003 Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -37,17 +37,17 @@ require 'Include/Header.php';
 
 <?php if ($bCreateDirectory) { ?>
 	<p>
-	<a class="MediumText" href="DirectoryReports.php"><?php echo gettext('Members Directory'); ?></a>
+	<a class="MediumText" href="DirectoryReports.php"><?= gettext('Members Directory') ?></a>
 	<br>
-	<?php echo gettext('Printable directory of all members, grouped by family where assigned'); ?>
+	<?= gettext('Printable directory of all members, grouped by family where assigned') ?>
 	</p>
 <?php } ?>
 
 <?php /*
 <p>
-<a href=''><?php echo gettext('Members Directory w/Photos'); ?></a>
+<a href=''><?= gettext('Members Directory w/Photos') ?></a>
 <br>
-<?php echo gettext('Printable directory of all members. Family photos where available / Individual photos otherwise.'); ?>
+<?= gettext('Printable directory of all members. Family photos where available / Individual photos otherwise.') ?>
 </p> */ ?>
 
 <p>
@@ -70,12 +70,6 @@ require 'Include/Header.php';
 echo gettext('Export Sunday School Kids to CSV'); ?>
 </p>
 
-<a class="MediumText" href="MailChimpReport.php"><?php 
-    echo gettext('MailChimp Report'); ?></a>
-<br><?php
-echo gettext('Reports and data about your mailchimp account'); ?>
-</p>
-
 <?php
     if ($_SESSION['bFinance']) {
 	echo '<p>';
@@ -95,9 +89,9 @@ echo gettext('Reports and data about your mailchimp account'); ?>
 ?>
 
 <p>
-<span class="MediumText"><u><?php echo gettext("Event Attendance"); ?></u></span>
+<span class="MediumText"><u><?= gettext("Event Attendance") ?></u></span>
 <br>
-<?php echo gettext("Generate attendance -AND- non-attendance reports for events"); ?>
+<?= gettext("Generate attendance -AND- non-attendance reports for events") ?>
 <br>
 <?php
 //$sSQL = "SELECT * FROM event_types";

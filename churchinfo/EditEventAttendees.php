@@ -28,10 +28,10 @@ if ($sAction=='Delete'){
 ?>
 
 <form method="post" action="EditEventAttendees.php" name="AttendeeEditor">
-<input type="hidden" name="EID" value="<?php echo $EventID ; ?>">
+<input type="hidden" name="EID" value="<?= $EventID  ?>">
 <table cellpadding="0" cellspacing="0" width="75%" align="center">
   <caption>
-    <h3><?php echo gettext("Attendees for Event ID: $EventID"); ?></h3>
+    <h3><?= gettext("Attendees for Event ID: $EventID") ?></h3>
   </caption>
   <tr ><td colspan="4">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -45,14 +45,14 @@ if ($sAction=='Delete'){
     </tr>
   <tr><td colspan="4"></td></tr>
   <tr>
-    <td colspan="4" align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
+    <td colspan="4" align="center"><input type="button" class="btn" <?= 'value="' . gettext("Back to Menu") . '"' ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
  </tr> 
    <tr><td colspan="4"></td></tr>   
   <tr class="TableHeader">
-    <td width="35%"><strong><?php echo gettext("Name"); ?></strong></td>
-    <td width="25%"><strong><?php echo gettext("Email"); ?></strong></td>
-    <td width="25%"><strong><?php echo gettext("Home Phone"); ?></strong></td>
-	  <td width="15%" nowrap><strong><?php echo gettext("Action"); ?></strong></td>
+    <td width="35%"><strong><?= gettext("Name") ?></strong></td>
+    <td width="25%"><strong><?= gettext("Email") ?></strong></td>
+    <td width="25%"><strong><?= gettext("Home Phone") ?></strong></td>
+	  <td width="15%" nowrap><strong><?= gettext("Action") ?></strong></td>
   </tr>
 <?php 
 $sSQL = 'SELECT person_id, per_LastName FROM event_attend JOIN person_per ON person_per.per_id = event_attend.person_id WHERE event_id = '.$EventID.' ORDER by per_LastName, per_FirstName';
@@ -74,19 +74,19 @@ if($numAttRows!=0){
 	$sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
     
     ?>
-    <tr class="<?php echo $sRowClass; ?>">
-        <td class="TextColumn"><?php echo FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3); ?></td>
+    <tr class="<?= $sRowClass ?>">
+        <td class="TextColumn"><?= FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3) ?></td>
         <td class="TextColumn"><?php echo ($sEmail ? '<a href="mailto:'.$sEmail.'" title="Send Email">'.$sEmail.'</a>':'Not Available'); ?></td>
-        <td class="TextColumn"><?php echo ($sHomePhone ? $sHomePhone :'Not Available'); ?></td>
+        <td class="TextColumn"><?= ($sHomePhone ? $sHomePhone :'Not Available') ?></td>
     <td  class="TextColumn" colspan="1" align="center">
       <form method="POST" action="EditEventAttendees.php" name="DeletePersonFromEvent">
-          <input type="hidden" name="DelPerID" value="<?php echo $per_ID; ?>">
-          <input type="hidden" name="DelPerEventID" value="<?php echo $EventID; ?>">
-          <input type="hidden" name="EID" value="<?php echo $EventID; ?>">
+          <input type="hidden" name="DelPerID" value="<?= $per_ID ?>">
+          <input type="hidden" name="DelPerEventID" value="<?= $EventID ?>">
+          <input type="hidden" name="EID" value="<?= $EventID ?>">
           <input type="hidden" name="EName" value="<?php echo $EvtName ?>">
           <input type="hidden" name="EDesc" value="<?php echo $EvtDesc ?>">
           <input type="hidden" name="EDate" value="<?php echo $EvtDate ?>">
-          <input type="submit" name="Action" value="<?php echo gettext("Delete"); ?>" class="icbutton" onClick="return confirm('Are you sure you want to DELETE this person from Event ID:<?php echo $EventID; ?>')">
+          <input type="submit" name="Action" value="<?= gettext("Delete") ?>" class="btn" onClick="return confirm('Are you sure you want to DELETE this person from Event ID:<?= $EventID ?>')">
       </form>
      </td>  
     </tr>

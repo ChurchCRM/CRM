@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : Reports/PDFLabel.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  description : Creates a PDF document containing the addresses of
 *                The people in the Cart
 *
@@ -18,7 +18,7 @@
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.

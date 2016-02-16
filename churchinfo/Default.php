@@ -4,7 +4,7 @@
  *  filename    : Default.php
  *  description : login page that checks for correct username and password
  *
- *  http://www.churchdb.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker,
  *
  *  Updated 2005-03-19 by Everette L Mills: Removed dropdown login box and
@@ -14,7 +14,7 @@
  *  LICENSE:
  *  (C) Free Software Foundation, Inc.
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
@@ -31,10 +31,10 @@
 // Show disable message if register_globals are turned on.
 if (ini_get('register_globals'))
 {
-    echo "<h3>ChurchInfo will not operate with PHP's register_globals option turned on.<br>";
+    echo "<div class='callout callout-danger'><b>Church</b>CRM will not operate with PHP's register_globals option turned on.<br>";
     echo 'This is for your own protection as the use of this setting could entirely undermine <br>';
     echo 'all security.  You need to either turn off register_globals in your php.ini or else<br>';
-    echo 'configure your web server to turn off register_globals for the ChurchInfo directory.</h3>';
+    echo 'configure your web server to turn off register_globals for the ChurchInfo directory.</div>';
     exit;
 }
 
@@ -123,39 +123,16 @@ if ($iUserID > 0)
     extract(mysql_fetch_array(RunQuery($sSQL)));
 
     $bPasswordMatch = FALSE;
-    // Check the user password
-    
-    // Note that there are several possible encodings for the password in the database
-    $tmp = $_POST['Password'];
-    $sPasswordHashMd5 = md5($tmp);
-    
-    $tmp = $_POST['Password'].$iUserID;
-    $sPasswordHash40 = sha1(sha1($tmp).$tmp);
-    
-    $tmp = $_POST['Password'].$iUserID;
-    $sPasswordHashSha256 = hash ("sha256", $tmp);
-    
-    $bPasswordMatch = ($usr_Password == $sPasswordHashMd5 || $usr_Password == $sPasswordHash40 || $usr_Password == $sPasswordHashSha256);
 
-    if ($bPasswordMatch && $usr_Password != $sPasswordHashSha256) {
-    	// Need to make sure this field can handle the additional length before updating the password
-    	$sSQL = "ALTER IGNORE TABLE user_usr MODIFY `usr_Password` text NOT NULL default ''";
-    	RunQuery($sSQL, TRUE); // TRUE means stop on error
-    	
-        $sSQL = "UPDATE user_usr SET usr_Password='".$sPasswordHashSha256."' ".
-                "WHERE usr_per_ID ='".$iUserID."'";
-        RunQuery($sSQL);
-    }
+    // Check the user password
+    $sPasswordHashSha256 = hash ("sha256", $_POST['Password'].$iUserID);
 
     // Block the login if a maximum login failure count has been reached
     if ($iMaxFailedLogins > 0 && $usr_FailedLogins >= $iMaxFailedLogins) {
 
         $sErrorText = '<br>' . gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
-    }
-
-    // Does the password match?
-    elseif (!$bPasswordMatch) {
-
+    } // Does the password match?
+    elseif ($usr_Password != $sPasswordHashSha256) {
         // Increment the FailedLogins
         $sSQL = 'UPDATE user_usr SET usr_FailedLogins = usr_FailedLogins + 1 '.
                 "WHERE usr_per_ID ='$iUserID'";
@@ -337,23 +314,19 @@ if ($iUserID > 0)
 }
 // Turn ON output buffering
 ob_start();
-
+$sPageTitle = "ChurchCRM - Login";
 // Set the page title and include HTML header
+require ("Include/HeaderNotLoggedIn.php");
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="Content-Type" content="text/html">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/Style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/signin.css" >
-    <title><?php echo gettext('ChurchInfo: Login'); ?></title>
-</head>
-<body>
+
+<div class="login-box">
+    <div class="login-logo">
+        <b>Church</b>CRM</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg"><?= gettext('Please Login'); ?></p>
+
 <?php
 // Show the login screen if the URL protocol and path have been
 // returned by the browser in a query string
@@ -362,8 +335,8 @@ ob_start();
         echo '
 
 <script language="javascript" type="text/javascript">
-    error_page1="http://www.churchdb.org";
-    error_page2="http://www.churchdb.org";
+    error_page1="http://www.churchcrm.io";
+    error_page2="http://www.churchcrm.io";
     if(window.location.href.indexOf(":") == 5) {
         v_Proto="https";
         v_Path=window.location.href.substring(8);
@@ -385,13 +358,11 @@ ob_start();
     } else {
         window.location=window.location.href+"&"+v_QueryString;
     }
-        
+
     </script>';
 
     }
-?>
 
-<?php
     $loginPageMsg = "";
     if (isset($_GET['Proto']) && isset($_GET['Path'])) {
         if (isset($_GET['timeout'])) {
@@ -401,27 +372,40 @@ ob_start();
             $loginPageMsg = $sErrorText;
         }
     }
-?>
+    if ($loginPageMsg != "") { ?>
+        <div class="alert alert-warning"><?= $loginPageMsg ?></div>
+<?php  } ?>
 
-
-
-<div class="container">
-    <form class="form-signin" role="form" method="post" name="LoginForm"
-        <?php echo "action=\"Default.php?Proto=".$_GET['Proto'].
-        "&amp;Path=".rawurlencode($_GET['Path'])."\"" ?> >
-        <h2 class="form-signin-heading"><?php echo gettext('Please Login'); ?></h2>
-        <?php    if ($loginPageMsg != "") { ?>
-            <div class="alert alert-danger" role="alert"><p class="bg-danger"><?php echo $loginPageMsg; ?></p></div>
-        <?php   } ?>
-        <label for="inputEmail" class="sr-only"><?php echo gettext('Enter your user name:'); ?></label>
-        <input type="text" id="UserBox" class="form-control" name="User" size="10" placeholder="<?php echo gettext('Enter your user name:'); ?>" required autofocus>
-        <label for="inputPassword" class="sr-only"><?php echo gettext('Enter your password:'); ?></label>
-        <input type="password" id="PasswordBox" class="form-control" name="Password" size="10" placeholder="<?php echo gettext('Enter your password:'); ?>" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit"><?php echo gettext('Login'); ?></button>
-        <input type="hidden" name="sURLPath" value="<?php echo $_GET['Proto'] . "://" . $_GET['Path'] ?>">
-    </form>
-
-</div> <!-- /container -->
+<form class="form-signin" role="form" method="post" name="LoginForm"
+    <?php echo "action=\"Default.php?Proto=".$_GET['Proto'].
+    "&amp;Path=".rawurlencode($_GET['Path'])."\"" ?> >
+     <div class="form-group has-feedback">
+        <input type="text" id="UserBox" name="User" class="form-control" placeholder="Email/Username" required autofocus>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+    </div>
+    <div class="form-group has-feedback">
+        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="Password" required autofocus>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+    </div>
+    <div class="row">
+        <div class="col-xs-8">
+            <!--<div class="checkbox icheck">
+                <label>
+                    <input type="checkbox"> Remember Me
+                </label>
+            </div>-->
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext('Login') ?></button>
+        </div>
+    </div>
+    <?php
+        $sURLPath = $_GET['Proto'] . "://" . $_GET['Path'];
+        setcookie("URLPath", $sURLPath);
+    ?>
+    <input type="hidden" name="sURLPath" value="<?= $sURLPath ?>">
+</form>
 
 <script language="JavaScript" type="text/JavaScript">
     document.LoginForm.User.focus();
@@ -451,11 +435,19 @@ ob_start();
 // End of basic security checks
 
 ?>
+        <!--<a href="#">I forgot my password</a><br>
+        <a href="register.html" class="text-center">Register a new membership</a>-->
 
-</body>
-</html>
+    </div>
+    <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
 
 <?php
+// Set the page title and include HTML header
+require ("Include/FooterNotLoggedIn.php");
+
+
 // Turn OFF output buffering
 ob_end_flush();
 ?>

@@ -5,7 +5,7 @@
  *  last change : 2013-02-19
  *  description : form to modify general global configuration settings
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -87,6 +87,7 @@ if (isset ($_POST['save'])){
 		$rsUpdate = RunQuery($sSQL);
 		next($type);
 	}
+    $sGlobalMessage ="Setting saved";
 }
 
 // Set the page title and include HTML header
@@ -96,27 +97,24 @@ require "Include/Header.php";
 // Get settings
 $sSQL = "SELECT * FROM config_cfg WHERE cfg_section='general' $sCategory_Filter ORDER BY cfg_id";
 $rsConfigs = RunQuery($sSQL);
+?>
+<div class="row">
+	<div class="col-md-12">
+		<div class="box">
+			<div class="box-body">
+				<form method=post action=SettingsGeneral.php>
+				<table class="table table-bordered">
+				<tr>
+					<th><?= gettext("Variable name") ?></th>
+					<th>Current Value</th>
+					<th>Default Value</th>
+					<th>Notes</th>
+				</tr>
 
-// Table Headings
-echo "<form method=post action=SettingsGeneral.php>";
-echo "<table cellpadding=3 align=left>";
-echo "<tr><td><h3>". gettext("Variable name") . "</h3></td>
-	<td><h3>Current Value</h3></td>
-	<td><h3>Default Value</h3></td>
-	<td><h3>Notes</h3></td></tr>";
-
+<?php
 $r = 1;
 // List Individual Settings
 while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_tooltip, $cfg_section) = mysql_fetch_row($rsConfigs)) {
-	
-	// Cancel, Save Buttons every 13 rows
-	if ($r == 13) {
-		echo "<tr><td>&nbsp;</td>
-			<td><input type=submit class=icButton name=save value='" . gettext("Save Settings") . "'>
-			<input type=submit class=icButton name=cancel value='" . gettext("Cancel") . "'>
-			</td></tr>";
-		$r = 1;
-	}
 	
 	// Variable Name & Type
 	echo "<tr><td class=LabelColumn>$cfg_name</td>";
@@ -169,12 +167,18 @@ while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_toolti
 	echo "<td>$cfg_tooltip</td>	</tr>";
 	$r++;
 }	 
-
-// Cancel, Save Buttons
-echo "<tr><td>&nbsp;</td>
-	<td><input type=submit class=icButton name=save value='" . gettext("Save Settings") . "'>
-	<input type=submit class=icButton name=cancel value='" . gettext("Cancel") . "'>
-	</td></tr></table></form>";
-
-require "Include/Footer.php";
+?>
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+					<input type=submit class=btn name=save value='<?= gettext("Save Settings");?>'>
+					<input type=submit class=btn name=cancel value='<?= gettext("Cancel") ;?>'>
+				</td>
+			</tr>
+		</table>
+		</form>
+		</div>
+	</div>
+</div>
+<?php require "Include/Footer.php";
 ?>

@@ -6,10 +6,10 @@
  *  description : Add a person record to a group after selection of group
  *  	and role.  This is a companion script to the Group Assign Helper.
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -105,19 +105,19 @@ function UpdateRoles()
 function updateGroupRoles(generated_html)
 {
 	if (generated_html == "invalid") {
-		document.getElementById('GroupRoles').innerHTML = '<p class="LargeError"><?php echo gettext("Invalid Group or No Roles Available!"); ?><p>';
+		document.getElementById('GroupRoles').innerHTML = '<p class="LargeError"><?= gettext("Invalid Group or No Roles Available!") ?><p>';
 	} else {
 		document.getElementById('GroupRoles').innerHTML = generated_html;
 	}
 }
 </script>
 
-<p align="center"><?php echo gettext("Select the group to add this person to:"); ?></p>
+<p align="center"><?= gettext("Select the group to add this person to:") ?></p>
 <form method="post" action="PersonToGroup.php?PersonID=<?php echo $iPersonID;?>">
 <input type="hidden" name="prevquery" value="<?php echo $sPreviousQuery;?>">
 <table align="center">
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Group:"); ?></td>
+		<td class="LabelColumn"><?= gettext("Select Group:") ?></td>
 		<td class="TextColumn">
 			<?php
 			// Create the group select drop-down
@@ -131,13 +131,13 @@ function updateGroupRoles(generated_html)
 		</td>
 	</tr>
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Role:"); ?></td>
-		<td class="TextColumn"><span id="GroupRoles"><?php echo gettext("No Group Selected"); ?></span></td>
+		<td class="LabelColumn"><?= gettext("Select Role:") ?></td>
+		<td class="TextColumn"><span id="GroupRoles"><?= gettext("No Group Selected") ?></span></td>
 	</tr>
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" value="<?php echo gettext("Add to Group"); ?>">
+<input type="submit" class="btn" name="Submit" value="<?= gettext("Add to Group") ?>">
 <BR><BR>
 </p>
 </form>

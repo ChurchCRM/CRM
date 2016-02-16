@@ -2,7 +2,7 @@
 /*******************************************************************************
  *
  *  filename    : /Include/Initialize.php
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
  *  description : This is a minimal script initialization common to InfoCentral
  *              : Scripts which do not need Functions.php can use this instead
@@ -10,7 +10,7 @@
  *  LICENSE:
  *  (C) Free Software Foundation, Inc.
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.

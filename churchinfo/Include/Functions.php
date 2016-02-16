@@ -1,15 +1,17 @@
 <?php
+require_once dirname(__FILE__).'/../service/PersonService.php';
+
 /*******************************************************************************
 *
 *  filename    : /Include/Functions.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
 *                Copyright 2004-1012 Michael Wilt
 *
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
@@ -24,8 +26,13 @@
 *  This file best viewed in a text editor with tabs stops set to 4 characters
 *
 ******************************************************************************/
-// Initialization common to all ChurchInfo scripts
+// Initialization common to all ChurchCRM scripts
 
+// Set the current version of this PHP file
+// Important!  These must be updated before every software release.
+
+$_SESSION['sSoftwareInstalledVersion'] = '2.0.0';
+$personService = new PersonService();
 //
 // Basic security checks:
 //
@@ -223,10 +230,10 @@ function RedirectURL($sRelativeURL)
     global $sRootPath;
     global $sDocumentRoot;
 
-if (empty($_SESSION['sURLPath'])) {
-    $sErrorMessage = "Fatal Error: \$_SESSION['sURLPath'] is empty.<br> <a href='Default.php'>Click here to login</a>.\n";
-    die ($sErrorMessage);
-}
+    if (empty($_SESSION['sURLPath'])) {
+        $sErrorMessage = "Fatal Error: \$_SESSION['sURLPath'] is empty.<br> <a href='Default.php'>Click here to login</a>.\n";
+        die ($sErrorMessage);
+    }
 
     // Test if file exists before redirecting.  May need to remove
     // query string first.
@@ -378,79 +385,6 @@ function FilterInput($sInput,$type = 'string',$size = 1)
     }
 }
 
-//
-// Adds a person to a group with specified role.
-// Returns false if the operation fails. (such as person already in group)
-//
-function AddToGroup($iPersonID, $iGroupID, $iRoleID)
-{
-    global $cnInfoCentral;
-
-    // Was a RoleID passed in?
-    if ($iRoleID == 0) {
-        // No, get the Default Role for this Group
-        $sSQL = "SELECT grp_DefaultRole FROM group_grp WHERE grp_ID = " . $iGroupID;
-        $rsRoleID = RunQuery($sSQL);
-        $Row = mysql_fetch_row($rsRoleID);
-        $iRoleID = $Row[0];
-    }
-
-    $sSQL = "INSERT INTO person2group2role_p2g2r (p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID) VALUES (" . $iPersonID . ", " . $iGroupID . ", " . $iRoleID . ")";
-    $result = RunQuery($sSQL,false);
-
-    if ($result)
-    {
-        // Check if this group has special properties
-        $sSQL = "SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = " . $iGroupID;
-        $rsTemp = RunQuery($sSQL);
-        $rowTemp = mysql_fetch_row($rsTemp);
-        $bHasProp = $rowTemp[0];
-
-        if ($bHasProp == 'true')
-        {
-            $sSQL = "INSERT INTO `groupprop_" . $iGroupID . "` (`per_ID`) VALUES ('" . $iPersonID . "')";
-            RunQuery($sSQL);
-        }
-    }
-
-    return $result;
-}
-
-function RemoveFromGroup($iPersonID, $iGroupID)
-{
-    $sSQL = "DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = " . $iPersonID . " AND p2g2r_grp_ID = " . $iGroupID;
-    RunQuery($sSQL);
-
-    // Check if this group has special properties
-    $sSQL = "SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = " . $iGroupID;
-    $rsTemp = RunQuery($sSQL);
-    $rowTemp = mysql_fetch_row($rsTemp);
-    $bHasProp = $rowTemp[0];
-
-    if ($bHasProp == 'true')
-    {
-        $sSQL = "DELETE FROM `groupprop_" . $iGroupID . "` WHERE `per_ID` = '" . $iPersonID . "'";
-        RunQuery($sSQL);
-    }
-
-    // Reset any group specific property fields of type "Person from Group" with this person assigned
-    $sSQL = "SELECT grp_ID, prop_Field FROM groupprop_master WHERE type_ID = 9 AND prop_Special = " . $iGroupID;
-    $result = RunQuery($sSQL);
-    while ($aRow = mysql_fetch_array($result))
-    {
-        $sSQL = "UPDATE groupprop_" . $aRow['grp_ID'] . " SET " . $aRow['prop_Field'] . " = NULL WHERE " . $aRow['prop_Field'] . " = " . $iPersonID;
-        RunQuery($sSQL);
-    }
-
-    // Reset any custom person fields of type "Person from Group" with this person assigned
-    $sSQL = "SELECT custom_Field FROM person_custom_master WHERE type_ID = 9 AND custom_Special = " . $iGroupID;
-    $result = RunQuery($sSQL);
-    while ($aRow = mysql_fetch_array($result))
-    {
-        $sSQL = "UPDATE person_custom SET " . $aRow['custom_Field'] . " = NULL WHERE " . $aRow['custom_Field'] . " = " . $iPersonID;
-        RunQuery($sSQL);
-    }
-}
 
 //
 // Adds a volunteer opportunity assignment to a person
@@ -1587,18 +1521,6 @@ function sqlCustomField(&$sSQL, $type, $data, $col_Name, $special)
         default:
             $sSQL .= $col_Name . " = '" . $data . "', ";
             break;
-    }
-}
-
-// Runs the ToolTips
-// By default ToolTips are diplayed, unless turned off in the user settings.
-function addToolTip($ToolTip)
-{
-    global $bToolTipsOn;
-    if ($bToolTipsOn)
-    {
-        $ToolTipText = "onmouseover=\"domTT_activate(this, event, 'content', '" . $ToolTip . "');\"";
-        echo $ToolTipText;
     }
 }
 

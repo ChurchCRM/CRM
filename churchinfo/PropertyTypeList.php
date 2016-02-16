@@ -3,10 +3,10 @@
  *
  *  filename    : PropertyTypeList.php
  *  last change : 2003-03-27
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -25,23 +25,25 @@ $sSQL = "SELECT prt_ID, prt_Class, prt_Name, COUNT(pro_ID) AS Properties FROM pr
 $rsPropertyTypes = RunQuery($sSQL);
 
 require "Include/Header.php";
-
+?>
+<div class="box box-body">
+<?
 //Display the new property link
 if ($_SESSION['bMenuOptions'])
 {
-	echo "<p align=\"center\"><a href=\"PropertyTypeEditor.php\">" . gettext("Add a New Property Type") . "</a></p>";
+	echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyTypeEditor.php\">" . gettext("Add a New Property Type") . "</a></p>";
 }
 
 //Start the table
-echo "<table cellspacing=\"0\" cellpadding=\"4\" align=\"center\">";
-echo "<tr class=\"TableHeader\">";
-echo "<td>" . gettext("Name") . "</td>";
-echo "<td>" . gettext("Class") . "</td>";
-echo "<td align=\"center\">" . gettext("Properties") . "</td>";
+echo "<table class='table'>";
+echo "<tr>";
+echo "<th>" . gettext("Name") . "</th>";
+echo "<th>" . gettext("Class") . "</th>";
+echo "<th align=\"center\">" . gettext("Properties") . "</th>";
 if ($_SESSION['bMenuOptions'])
 {
-	echo "<td>" . gettext("Edit") . "</td>";
-	echo "<td>" . gettext("Delete") . "</td>";
+	echo "<th>" . gettext("Edit") . "</th>";
+	echo "<th>" . gettext("Delete") . "</th>";
 }
 echo "</tr>";
 
@@ -62,17 +64,17 @@ while ($aRow = mysql_fetch_array($rsPropertyTypes))
 	echo "<td align=\"center\">" . $Properties . "</td>";
 	if ($_SESSION['bMenuOptions'])
 	{
-		echo "<td><a href=\"PropertyTypeEditor.php?PropertyTypeID=" . $prt_ID . "\">" . gettext("Edit") . "</a></td>";
+		echo "<td><a class='btn btn-info' href=\"PropertyTypeEditor.php?PropertyTypeID=" . $prt_ID . "\">" . gettext("Edit") . "</a></td>";
 		if ($Properties == 0)
-			echo "<td><a href=\"PropertyTypeDelete.php?PropertyTypeID=" . $prt_ID . "\">" . gettext("Delete") . "</a></td>";
+			echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=" . $prt_ID . "\">" . gettext("Delete") . "</a></td>";
 		else
-			echo "<td><a href=\"PropertyTypeDelete.php?PropertyTypeID=" . $prt_ID . "&Warn\">" . gettext("Delete") . "</a></td>";
+			echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=" . $prt_ID . "&Warn\">" . gettext("Delete") . "</a></td>";
 	}
 	echo "</tr>";
 }
 
 //End the table
-echo "</table>";
+echo "</table></div>";
 
 require "Include/Footer.php";
 

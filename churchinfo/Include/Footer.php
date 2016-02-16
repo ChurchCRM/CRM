@@ -5,40 +5,45 @@
  *  last change : 2002-04-22
  *  description : footer that appear on the bottom of all pages
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
  *
  ******************************************************************************/
 ?>
-
 			</section><!-- /.content -->
+
 		</aside><!-- /.right-side -->
+        <!-- /.control-sidebar -->
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<b>Version</b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
+			</div>
+			<strong>Copyright &copy; 2015-2016 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> All rights reserved.
+		</footer>
+
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+        </div>
+        <!-- ./wrapper -->
 	</div><!-- ./wrapper -->
 
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
+	<!-- Bootstrap 3.3.5 -->
+	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/bootstrap/js/bootstrap.min.js"></script>
+	<!-- SlimScroll -->
+	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<!-- FastClick -->
+	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/fastclick/fastclick.js"></script>
 	<!-- AdminLTE App -->
-	<script type="text/javascript" src="<?php echo $sURLPath."/"; ?>js/AdminLTE/app.js"></script>
+	<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/dist/js/app.min.js"></script>
 
-	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-	<script language="javascript" type="text/javascript">
-		$("document").ready(function(){
-			$(".searchPerson").autocomplete({
-				source: "ajax/SearchMembers.php?searchtype=person",
-				minLength: 2,
-				select: function(event, ui) {
-					var location = 'PersonView.php?PersonID='+ui.item.id;
-					window.location.replace(location);
-					$('#add_per_ID').val(ui.item.id);
-				}
-			});
-		});
-	</script>
+	<script src="<?= $sURLPath; ?>/js/Footer.js"></script>
+
 </body>
 </html>
 <?php

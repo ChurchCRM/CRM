@@ -17,7 +17,7 @@ switch ($mode)
 		?>
 			windowOnload = function()
 			{
-				window.parent.updateCartCounter('<?php echo count($_SESSION['aPeopleCart']); ?>');
+				window.parent.updateCartCounter('<?= count($_SESSION['aPeopleCart']) ?>');
 			}
 		<?php
 	break;
@@ -56,7 +56,7 @@ switch ($mode)
 		?>
 			windowOnload = function()
 			{
-				window.parent.updateAddressInfo('<?php echo $sGeneratedHTML; ?>');
+				window.parent.updateAddressInfo('<?= $sGeneratedHTML ?>');
 			}
 		<?php
 	break;
@@ -93,7 +93,7 @@ switch ($mode)
 		?>
 			windowOnload = function()
 			{
-				window.parent.updateGroupRoles('<?php echo $sGeneratedHTML; ?>');
+				window.parent.updateGroupRoles('<?= $sGeneratedHTML ?>');
 			}
 		<?php
 	break;

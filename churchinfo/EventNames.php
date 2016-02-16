@@ -3,12 +3,12 @@
  *
  *  filename    : EventNames.php
  *  last change : 2005-09-10
- *  website     : http://www.terralabs.com
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Todd Pillars
  *
  *  function    : List all Church Events
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -36,7 +36,7 @@ require "Include/Header.php";
 <script language="javascript">
 
 function confirmDeleteOpp( Opp ) {
-var answer = confirm (<?php echo '"' . gettext("Are you sure you want to delete this event?") . '"'; ?>)
+var answer = confirm (<?= '"' . gettext("Are you sure you want to delete this event?") . '"' ?>)
 if ( answer )
         window.location="EventEditor.php?Opp=" + Opp + "&Action=delete"
 }
@@ -44,7 +44,7 @@ if ( answer )
 
 <table width="100%" align="center" cellpadding="4" cellspacing="0">
   <tr>
-    <td align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
+    <td align="center"><input type="button" class="btn" <?= 'value="' . gettext("Back to Menu") . '"' ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
   </tr>
 </table>
 <?php
@@ -186,15 +186,15 @@ if ($numRows > 0)
 {
 ?>
   <caption>
-    <h3><?php echo gettext("There currently ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." custom event types")); ?></h3>
+    <h3><?= gettext("There currently ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." custom event types")) ?></h3>
   </caption>
      <tr class="TableHeader">
-        <td align="center" width="5%"><strong><?php echo gettext("Event Type"); ?></strong></td>
-        <td align="left" width="23%"><strong><?php echo gettext("Name"); ?></strong></td>
-        <td align="left" width="23%"><strong><?php echo gettext("Recurrance Pattern"); ?></strong></td>
-        <td align="left" width="12%"><strong><?php echo gettext("Start Time"); ?></strong></td>
-        <td align="left" width="20%"><strong><?php echo gettext("Attendance Counts"); ?></strong></td>
-        <td align="center" colspan=3 width="17%"><strong><?php echo gettext("Action"); ?></strong></td>
+        <td align="center" width="5%"><strong><?= gettext("Event Type") ?></strong></td>
+        <td align="left" width="23%"><strong><?= gettext("Name") ?></strong></td>
+        <td align="left" width="23%"><strong><?= gettext("Recurrance Pattern") ?></strong></td>
+        <td align="left" width="12%"><strong><?= gettext("Start Time") ?></strong></td>
+        <td align="left" width="20%"><strong><?= gettext("Attendance Counts") ?></strong></td>
+        <td align="center" colspan=3 width="17%"><strong><?= gettext("Action") ?></strong></td>
       </tr>
 <?php
       $sRowClass = "RowColorA";
@@ -202,8 +202,8 @@ if ($numRows > 0)
       {
         $sRowClass = AlternateRowStyle($sRowClass);
 ?>
-        <tr class="<?php echo $sRowClass; ?>">
-          <td class="TextColumn" align="center"><?php echo $aTypeID[$row]; ?></td>
+        <tr class="<?= $sRowClass ?>">
+          <td class="TextColumn" align="center"><?= $aTypeID[$row] ?></td>
           
           <?php
           $t = 0;
@@ -213,25 +213,25 @@ if ($numRows > 0)
           {
           ?>
               <form name="UpdateEventNames" action="EventNames.php" method="POST">
-              <input type="hidden" name="theID" value="<?php echo $aTypeID[$row]; ?>">
+              <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
               <td class="TextColumn">
-              <strong><?php echo gettext("EVENT TYPE NAME"); ?></strong><br>
-              <input class="SmallText" type="text" name="newEvtName" value="<?php echo $aTypeName[$row]; ?>" size="30" maxlength="35"></td> 
+              <strong><?= gettext("EVENT TYPE NAME") ?></strong><br>
+              <input class="SmallText" type="text" name="newEvtName" value="<?= $aTypeName[$row] ?>" size="30" maxlength="35"></td> 
               <script language="javascript"> 
                 document.UpdateEventNames.newEvtName.focus() 
               </script>
     
               <td class="TextColumn">
-              <strong><?php echo gettext("RECURRANCE PATTERN"); ?></strong><br>
+              <strong><?= gettext("RECURRANCE PATTERN") ?></strong><br>
               <input class="SmallText" type="radio" name="newEvtTypeRecur" value=none>None</input><br><hr>
               <input class="SmallText" type="radio" name="newEvtTypeRecur" value=weekly>Weekly on <select name="newEvtRecurDOW" size="1">
-                  <option class="SmallText" value=1><?php echo gettext("Sundays"); ?></option>
-                  <option class="SmallText" value=2><?php echo gettext("Mondays"); ?></option>    
-                  <option class="SmallText" value=3><?php echo gettext("Tuesdays"); ?></option>
-                  <option class="SmallText" value=4><?php echo gettext("Wednesdays"); ?></option>    
-                  <option class="SmallText" value=5><?php echo gettext("Thursdays"); ?></option>    
-                  <option class="SmallText" value=6><?php echo gettext("Fridays"); ?></option> 
-                  <option class="SmallText" value=7><?php echo gettext("Saturdays"); ?></option>  
+                  <option class="SmallText" value=1><?= gettext("Sundays") ?></option>
+                  <option class="SmallText" value=2><?= gettext("Mondays") ?></option>    
+                  <option class="SmallText" value=3><?= gettext("Tuesdays") ?></option>
+                  <option class="SmallText" value=4><?= gettext("Wednesdays") ?></option>    
+                  <option class="SmallText" value=5><?= gettext("Thursdays") ?></option>    
+                  <option class="SmallText" value=6><?= gettext("Fridays") ?></option> 
+                  <option class="SmallText" value=7><?= gettext("Saturdays") ?></option>  
                  </select>                                                                                                   
               </input><br><hr>
               <input class="SmallText" type="radio" name="newEvtTypeRecur" value=monthly>Monthly on 
@@ -242,57 +242,57 @@ if ($numRows > 0)
                     {
                       $DOM = date('dS',mktime(0,0,0,1,$kk,2000));
                       ?>
-                      <option class="SmallText" value=<?php echo $kk; ?>><?php echo $DOM; ?></option>
+                      <option class="SmallText" value=<?= $kk ?>><?= $DOM ?></option>
                       <?php
                     }
                   ?>
                  </select>                                                                                                   
               </input><br><hr>
               <input class="SmallText" type="radio" name="newEvtTypeRecur" value=yearly>Yearly on 
-              <input class="SmallText" type="text" name="newEvtRecurDOY" value="<?php echo $aDefRecurDOY[$row]; ?>" maxlength="10" id="nSD" size="11">&nbsp;
+              <input class="SmallText" type="text" name="newEvtRecurDOY" value="<?= $aDefRecurDOY[$row] ?>" maxlength="10" id="nSD" size="11">&nbsp;
               <input class="SmallText" type="image" onclick="return showCalendar('nSD', 'y-mm-dd');" src="Images/calendar.gif">
-              <span class="SmallText"><br><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>                                                           
+              <span class="SmallText"><br><?= gettext("[format: YYYY-MM-DD]") ?></span></td>                                                           
               </input>
               </td>
               <td class="TextColumn"> 
-              <strong><?php echo gettext("DEFAULT"); ?><br><?php echo gettext("START TIME"); ?></strong><br>                             
+              <strong><?= gettext("DEFAULT") ?><br><?= gettext("START TIME") ?></strong><br>                             
               <select class="SmallText" name="newEvtStartTime" size="1">
                 <?php createTimeDropdown(7,22,15,'',''); ?>
               </select>&nbsp;
-              <span class="SmallText"><?php echo gettext("[format: HH:MM]"); ?></span>
+              <span class="SmallText"><?= gettext("[format: HH:MM]") ?></span>
               </td>              
               <td class="TextColumn">
-              <strong><?php echo gettext("ATTENDANCE COUNTS"); ?></strong><br>
-              <?php echo gettext("Total,"); ?><span class="SmallText"><?php echo gettext("[Every event type includes a Total count]"); ?></span>
-              <input class="SmallText" type="Text" name="newEvtTypeCntLst" value="<?php echo $cCountList[$row]; ?>" Maxlength="50" id="nETCL" size="30"><br><span class="SmallText"><?php echo gettext("[enter a list of the attendance counts you want to include with this event. <br> Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children]"); ?></span</td>
+              <strong><?= gettext("ATTENDANCE COUNTS") ?></strong><br>
+              <?= gettext("Total,") ?><span class="SmallText"><?= gettext("[Every event type includes a Total count]") ?></span>
+              <input class="SmallText" type="Text" name="newEvtTypeCntLst" value="<?= $cCountList[$row] ?>" Maxlength="50" id="nETCL" size="30"><br><span class="SmallText"><?php echo gettext("[enter a list of the attendance counts you want to include with this event. <br> Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children]"); ?></span</td>
               <td colspan="2" align="center" valign="bottom">
-              <input type="submit" Name="Action" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> class="icButton">
+              <input type="submit" Name="Action" <?= 'value="' . gettext("Save Changes") . '"' ?> class="btn">
               </td>
               </form>
               </tr>
               <?php 
             } else {
               ?>
-              <td class="TextColumn"><?php echo $aTypeName[$row]; ?></td>
+              <td class="TextColumn"><?= $aTypeName[$row] ?></td>
               <td class="TextColumn"><?php echo $recur[$row] ?></td>
-              <td class="TextColumn"><?php echo $aDefStartTime[$row]; ?></td>
+              <td class="TextColumn"><?= $aDefStartTime[$row] ?></td>
               <td class="TextColumn"><?php echo $cCountList[$row] ?></td>
               <td class="TextColumn" align="center">
                   <form name="ProcessEventType" action="EventEditor.php" method="POST">
-                  <input type="hidden" name="EN_tyid" value="<?php echo $aTypeID[$row]; ?>">
-                  <input type="submit" name="Action" value="<?php echo gettext("Create=>Event"); ?>" class="icButton")">
+                  <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
+                  <input type="submit" name="Action" value="<?php echo gettext("Create=>Event"); ?>" class="btn")">
                 </form> 
               </td>
               <td class="TextColumn" align="center">
                   <form name="ProcessEventType" action="EditEventTypes.php" method="POST">
-                  <input type="hidden" name="EN_tyid" value="<?php echo $aTypeID[$row]; ?>">
-                  <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("Edit"); ?>" class="icButton")">
+                  <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
+                  <input type="submit" class="SmallText" name="Action" value="<?= gettext("Edit") ?>" class="btn")">
                 </form> 
               </td>
               <td class="TextColumn" align="center">
                 <form name="ProcessEventType" action="EventNames.php" method="POST">
-                  <input type="hidden" name="theID" value="<?php echo $aTypeID[$row]; ?>">
-                  <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("Delete"); ?>" class="icButton" onClick="return confirm('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: <?php echo  $aTypeID[$row]; ?>')">
+                  <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
+                  <input type="submit" class="SmallText" name="Action" value="<?= gettext("Delete") ?>" class="btn" onClick="return confirm('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: <?=  $aTypeID[$row] ?>')">
                 </form>
               </td>
               </tr>
@@ -306,8 +306,8 @@ if($editing=='FALSE'){
 <tr align="center">
     <td colspan=8 class="TextColumn" align="center">
     <form name="AddEventNames" action="EventNames.php" method="POST">
-    <span class="SmallText"><?php echo gettext("New Event Type"); ?></span>
-    <input type="submit" Name="Action" <?php echo 'value="' . gettext("Add Event Type") . '"'; ?> class="icButton">
+    <span class="SmallText"><?= gettext("New Event Type") ?></span>
+    <input type="submit" Name="Action" <?= 'value="' . gettext("Add Event Type") . '"' ?> class="btn">
     </form>
     </td>
 </tr>

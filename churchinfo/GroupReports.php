@@ -5,11 +5,11 @@
  *  last change : 2003-09-03
  *  description : Detailed reports on group members
  *
- *  http://www.churchdb.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2003 Federico Nebiolo, Chris Gebhardt
  *  Copyright 2004-2012 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -89,11 +89,11 @@ function updateGroupRoles(generated_html)
 
 <?php if (!isset($_POST["GroupID"])) { ?>
 
-<p align="center"><?php echo gettext("Select the group you would like to report:"); ?></p>
+<p align="center"><?= gettext("Select the group you would like to report:") ?></p>
 <form method="POST" action="GroupReports.php">
 <table align="center">
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Group:"); ?></td>
+		<td class="LabelColumn"><?= gettext("Select Group:") ?></td>
 		<td class="TextColumn">
 			<?php
 			// Create the group select drop-down
@@ -107,26 +107,26 @@ function updateGroupRoles(generated_html)
 		</td>
 	</tr>
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Role:"); ?></td>
-		<td class="TextColumn"><span id="GroupRole"><?php echo gettext("No Group Selected"); ?></span></td>
+		<td class="LabelColumn"><?= gettext("Select Role:") ?></td>
+		<td class="TextColumn"><span id="GroupRole"><?= gettext("No Group Selected") ?></span></td>
 	</tr>
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Only cart persons?:"); ?></td>
+		<td class="LabelColumn"><?= gettext("Only cart persons?:") ?></td>
 		<td class="TextColumn"><input type="checkbox" Name="OnlyCart" value="1"></td>
 	</tr>
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Report Model:"); ?></td>
+		<td class="LabelColumn"><?= gettext("Report Model:") ?></td>
 		<td class="TextColumn">
-			<input type="radio" Name="ReportModel" value="1" checked><?php echo gettext("Report for group and role selected"); ?><br>
-			<input type="radio" Name="ReportModel" value="2"><?php echo gettext("Report for any role in group selected"); ?><br>
-<?php //			<input type="radio" Name="ReportModel" value="3"><?php echo gettext("Report any group and role"); ?>
+			<input type="radio" Name="ReportModel" value="1" checked><?= gettext("Report for group and role selected") ?><br>
+			<input type="radio" Name="ReportModel" value="2"><?= gettext("Report for any role in group selected") ?><br>
+<?php //			<input type="radio" Name="ReportModel" value="3"><?= gettext("Report any group and role") ?>
 		</td>
 	</tr>
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Next") . '"'; ?>>
-<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='ReportList.php';">
+<input type="submit" class="btn" name="Submit" <?= 'value="' . gettext("Next") . '"' ?>>
+<input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="javascript:document.location='ReportList.php';">
 </p>
 </form>
 
@@ -149,11 +149,11 @@ $rsPropFields = RunQuery($sSQL);
 
 ?>
 
-<p align="center" class="MediumText"><?php echo gettext("Select which information you want to include"); ?></p>
+<p align="center" class="MediumText"><?= gettext("Select which information you want to include") ?></p>
 
 <table align="center">
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Standard Info:"); ?></td>
+		<td class="LabelColumn"><?= gettext("Standard Info:") ?></td>
 		<td class="TextColumn">
 			<input type="checkbox" Name="AddressEnable" value="1"> <?php echo gettext("Address");?> <br>
 			<input type="checkbox" Name="HomePhoneEnable" value="1"> <?php echo gettext("Home Phone");?> <br>
@@ -165,7 +165,7 @@ $rsPropFields = RunQuery($sSQL);
 		</td>
 	</tr>
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Group-Specific Property Fields:"); ?></td>
+		<td class="LabelColumn"><?= gettext("Group-Specific Property Fields:") ?></td>
 		<td class="TextColumn">
 			<?php
 				if (mysql_num_rows($rsPropFields) > 0)
@@ -184,8 +184,8 @@ $rsPropFields = RunQuery($sSQL);
 
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Create Report") . '"'; ?>>
-<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';">
+<input type="submit" class="btn" name="Submit" <?= 'value="' . gettext("Create Report") . '"' ?>>
+<input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="javascript:document.location='Menu.php';">
 </p>
 </form>
 

@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : ListEvents.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  function    : List all Church Events
 *
 *  copyright   : Copyright 2005 Todd Pillars
@@ -15,7 +15,7 @@
 *  Copyright Contributors
 *
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -98,7 +98,7 @@ $numRows = mysql_num_rows($rsOpps);
           extract($aRow);
 //          foreach($aRow as $t)echo "$t\n\r";
           ?>
-          <option value="<?php echo $type_id ?>" <?php if($type_id==$eType) echo "selected" ?>><?php echo $type_name; ?></option>
+          <option value="<?php echo $type_id ?>" <?php if($type_id==$eType) echo "selected" ?>><?= $type_name ?></option>
           <?php
          }
          ?>
@@ -131,7 +131,7 @@ for($r=1; $r<=$numRows; $r++){
         for ($r = 1; $r <= $numRows; $r++)
         {
           ?>
-          <option value="<?php echo $Yr[$r] ?>" <?php if($Yr[$r]==$EventYear) echo "selected" ?>><?php echo $Yr[$r]; ?></option>
+          <option value="<?php echo $Yr[$r] ?>" <?php if($Yr[$r]==$EventYear) echo "selected" ?>><?= $Yr[$r] ?></option>
           <?php
          }
          ?>
@@ -216,16 +216,16 @@ if ($numRows > 0)
 {
 ?>
        <caption>
-         <h3><?php echo gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F", mktime(0, 0, 0, $mVal, 1, $currYear))); ?></h3>
+         <h3><?= gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
        </caption>
          <tr class="TableHeader">
-           <td width="15%"><strong><?php echo gettext("Event Type"); ?></strong></td>
-           <td width="20%"><strong><?php echo gettext("Event Title"); ?><br></strong>
-           <strong><?php echo gettext("Description"); ?></strong></td>
-           <td width="35%" align="center"><strong><?php echo gettext("Attendance Counts"); ?></strong></td>
-           <td width="10%" align="center"><strong><?php echo gettext("Start Date/Time"); ?></strong></td>
-           <td width="5%" align="center"><strong><?php echo gettext("Active"); ?></strong></td>
-           <td colspan="3" width="15%" align="center"><strong><?php echo gettext("Action"); ?></strong></td>
+           <td width="15%"><strong><?= gettext("Event Type") ?></strong></td>
+           <td width="20%"><strong><?= gettext("Event Title") ?><br></strong>
+           <strong><?= gettext("Description") ?></strong></td>
+           <td width="35%" align="center"><strong><?= gettext("Attendance Counts") ?></strong></td>
+           <td width="10%" align="center"><strong><?= gettext("Start Date/Time") ?></strong></td>
+           <td width="5%" align="center"><strong><?= gettext("Active") ?></strong></td>
+           <td colspan="3" width="15%" align="center"><strong><?= gettext("Action") ?></strong></td>
         </tr>
          <?php
 
@@ -237,10 +237,10 @@ if ($numRows > 0)
 
          //Display the row
          ?>
-         <tr class="<?php echo $sRowClass; ?>">
-           <td><span class="SmallText"><?php echo $aEventType[$row]; ?></span></td>
-           <td><span class="SmallText"><?php echo $aEventTitle[$row]; ?><br>
-           <?php echo ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]); ?>
+         <tr class="<?= $sRowClass ?>">
+           <td><span class="SmallText"><?= $aEventType[$row] ?></span></td>
+           <td><span class="SmallText"><?= $aEventTitle[$row] ?><br>
+           <?= ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]) ?>
              <?php echo ($aEventText[$row] != '' ? "&nbsp;&nbsp;&nbsp;<a href=\"javascript:popUp('GetText.php?EID=".$aEventID[$row]."')\"><strong>Sermon Text</strong></a>":""); ?></span>
            </td>
            <td>
@@ -267,8 +267,8 @@ if ($numRows > 0)
                   ?>
                   <td align="center">
                   <span class="SmallText">
-                    <strong><?php echo $evtcnt_countname; ?></strong>
-                    <br><?php echo $evtcnt_countcount; ?></span>
+                    <strong><?= $evtcnt_countname ?></strong>
+                    <br><?= $evtcnt_countcount ?></span>
                   </td> 
                   <?php         
                 }
@@ -276,7 +276,7 @@ if ($numRows > 0)
                   ?>
                   <td align="center">
                     <span class="SmallText">
-                    <strong><?php echo gettext("No Attendance Recorded"); ?></strong>
+                    <strong><?= gettext("No Attendance Recorded") ?></strong>
                     </span>
                   </td> 
                   <?php     
@@ -286,30 +286,30 @@ if ($numRows > 0)
            </tr>
            </table>
            </td>
-           <td><span class="SmallText"><?php echo FormatDate($aEventStartDateTime[$row],1); ?></span></td>
+           <td><span class="SmallText"><?= FormatDate($aEventStartDateTime[$row],1) ?></span></td>
            
-           <td class="SmallText" align="center"><?php echo ($aEventStatus[$row] != 0 ? "No":"Yes"); ?></span></td>
+           <td class="SmallText" align="center"><?= ($aEventStatus[$row] != 0 ? "No":"Yes") ?></span></td>
            
           <td><span class="SmallText">
           <form name="EditAttendees" action="EditEventAttendees.php" method="POST">
-          <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
-          <input type="hidden" name="EName" value="<?php echo $aEventTitle[$row]; ?>">
-          <input type="hidden" name="EDesc" value="<?php echo $aEventDesc[$row]; ?>">
-          <input type="hidden" name="EDate" value="<?php echo FormatDate($aEventStartDateTime[$row],1); ?>">
-          <input type="submit" name="Action" value="<?php echo gettext("Attendees(".$attNumRows[$row].")"); ?>" class="icButton" >
+          <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
+          <input type="hidden" name="EName" value="<?= $aEventTitle[$row] ?>">
+          <input type="hidden" name="EDesc" value="<?= $aEventDesc[$row] ?>">
+          <input type="hidden" name="EDate" value="<?= FormatDate($aEventStartDateTime[$row],1) ?>">
+          <input type="submit" name="Action" value="<?= gettext("Attendees(".$attNumRows[$row].")") ?>" class="btn" >
              </form></span>
            </td>           
            
            <td align="center"><span class="SmallText">
              <form name="EditEvent" action="EventEditor.php" method="POST">
-               <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
-               <input class="SmallText" type="submit" name="Action" <?php echo 'value="' . gettext("Edit") . '"'; ?> class="icButton">
+               <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
+               <input class="SmallText" type="submit" name="Action" <?= 'value="' . gettext("Edit") . '"' ?> class="btn">
              </form></span>
            </td>
            <td><span class="SmallText">
              <form name="DeleteEvent" action="ListEvents.php" method="POST">
-               <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
-               <input class="SmallText" type="submit" name="Action" value="<?php echo gettext("Delete"); ?>" class="icButton" onClick="return confirm('Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: <?php echo  $aEventID[$row]; ?>')">
+               <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
+               <input class="SmallText" type="submit" name="Action" value="<?= gettext("Delete") ?>" class="btn" onClick="return confirm('Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: <?=  $aEventID[$row] ?>')">
              </form></span>
           </td>
 
@@ -326,7 +326,7 @@ if ($eType != "All" && $aNumCounts >0){
 
     ?>
     <tr>
-    <td class="LabelColumn" colspan="2"><?php echo gettext(" Monthly Averages"); ?></td>
+    <td class="LabelColumn" colspan="2"><?= gettext(" Monthly Averages") ?></td>
     <td>
        <table width="100%" cellpadding="0" cellspacing="0" border="0">
        <tr>
@@ -341,7 +341,7 @@ if ($eType != "All" && $aNumCounts >0){
         <td align="center">
           <span class="SmallText">
           <strong>AVG<br><?php echo $avgName;?></strong>
-          <br><?php echo sprintf("%01.2f",$avgAvg); ?></span>
+          <br><?= sprintf("%01.2f",$avgAvg) ?></span>
         </td> 
         <?php         
       }
@@ -362,9 +362,9 @@ if ($eType != "All" && $aNumCounts >0){
 } // end for-each month loop
 ?>
              <table width="100%">
-                <tr class="<?php echo $sRowClass; ?>">
+                <tr class="<?= $sRowClass ?>">
                  <td align="center" valign="bottom">
-                   <input type="button" Name="Action" <?php echo 'value="' . gettext("Add New Event") . '"'; ?> class="icButton" onclick="javascript:document.location='EventNames.php';">
+                   <input type="button" Name="Action" <?= 'value="' . gettext("Add New Event") . '"' ?> class="btn" onclick="javascript:document.location='EventNames.php';">
                  </td>
                </tr>
              </table>

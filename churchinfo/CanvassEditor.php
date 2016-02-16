@@ -3,10 +3,10 @@
  *
  *  filename    : CanvassEditor.php
  *  last change : 2013-02-22
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003, 2013 Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -152,14 +152,14 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="CanvassEditor.php?<?php echo "FamilyID=" . $iFamily . "&FYID=".$iFYID . "&CanvassID=" . $iCanvassID . "&linkBack=" . $linkBack; ?>" name="CanvassEditor">
+<form method="post" action="CanvassEditor.php?<?= "FamilyID=" . $iFamily . "&FYID=".$iFYID . "&CanvassID=" . $iCanvassID . "&linkBack=" . $linkBack ?>" name="CanvassEditor">
 
 <table cellpadding="3" align="center">
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="Submit">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="submit" class="btn" value="<?= gettext("Save") ?>" name="Submit">
+			<input type="button" class="btn" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -200,8 +200,8 @@ require "Include/Header.php";
 			?>
 
 			<tr>
-				<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("Date:"); ?></td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font></td>
+				<td class="LabelColumn"><?= gettext("Date:") ?></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active" ><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
 
 
@@ -231,7 +231,7 @@ require "Include/Header.php";
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Not Interested"); ?></td>
+				<td class="LabelColumn"><?= gettext("Not Interested") ?></td>
 				<td class="TextColumn"><input type="checkbox" Name="NotInterested" value="1" <?php if ($bNotInterested) echo " checked"; ?>></td>
 			</tr>
 
@@ -244,7 +244,9 @@ require "Include/Header.php";
 		</td>
 	</form>
 </table>
-
+<script>
+$("#sel1").datepicker({format:'yyyy-mm-dd'});
+</script>
 <?php
 require "Include/Footer.php";
 ?>

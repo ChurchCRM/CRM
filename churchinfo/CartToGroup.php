@@ -5,10 +5,10 @@
  *  last change : 2003-06-23
  *  description : Add cart records to a group
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -111,18 +111,20 @@ function UpdateRoles()
 function updateGroupRoles(generated_html)
 {
 	if (generated_html == "invalid") {
-		document.getElementById('GroupRoles').innerHTML = '<p class="LargeError"><?php echo gettext("Invalid Group or No Roles Available!"); ?><p>';
+		document.getElementById('GroupRoles').innerHTML = '<p class="LargeError"><?= gettext("Invalid Group or No Roles Available!") ?><p>';
 	} else {
 		document.getElementById('GroupRoles').innerHTML = generated_html;
 	}
 }
 </script>
-
-<p align="center"><?php echo gettext("Select the group to which you would like to add your cart:"); ?></p>
+<!-- Default box -->
+<div class="box">
+	<div class="box-body">
+<p align="center"><?= gettext("Select the group to which you would like to add your cart:") ?></p>
 <form method="post">
 <table align="center">
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Group:"); ?></td>
+		<td class="LabelColumn"><?= gettext("Select Group:") ?></td>
 		<td class="TextColumn">
 			<?php
 			// Create the group select drop-down
@@ -136,18 +138,19 @@ function updateGroupRoles(generated_html)
 		</td>
 	</tr>
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Role:"); ?></td>
-		<td class="TextColumn"><span id="GroupRoles"><?php echo gettext("No Group Selected"); ?></span></td>
+		<td class="LabelColumn"><?= gettext("Select Role:") ?></td>
+		<td class="TextColumn"><span id="GroupRoles"><?= gettext("No Group Selected") ?></span></td>
 	</tr>
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="icButton" name="Submit" value=<?php echo '"' . gettext("Add to Group") . '"'; ?>>
-<BR><BR>--<?php echo gettext("OR"); ?>--<BR><BR>
-<a href="GroupEditor.php?EmptyCart=yes"><?php echo gettext("Create a New Group"); ?></a>
+<input type="submit" class="btn btn-primary" name="Submit" value=<?= '"' . gettext("Add to Group") . '"' ?>>
+<BR><BR>--<?= gettext("OR") ?>--<BR><BR>
+<a href="GroupEditor.php?EmptyCart=yes" class="btn btn-info"><i class="fa fa-add"></i><?= gettext("Create a New Group") ?></a>
 <BR><BR>
 </p>
 </form>
+</div></div>
 <?php
 }
 else

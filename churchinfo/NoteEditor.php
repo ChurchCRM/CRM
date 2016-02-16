@@ -3,10 +3,10 @@
  *
  *  filename    : NoteEditor.php
  *  last change : 2003-01-07
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -121,21 +121,21 @@ require "Include/Header.php";
 <form method="post">
 
 <p align="center">
-	<input type="hidden" name="PersonID" value="<?php echo $iPersonID; ?>">
-	<input type="hidden" name="FamilyID" value="<?php echo $iFamilyID; ?>">
-	<input type="hidden" name="NoteID" value="<?php echo $iNoteID; ?>">
-	<textarea name="NoteText" cols="70" rows="10"><?php echo $sNoteText; ?></textarea>
-	<?php echo $sNoteTextError; ?>
+	<input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
+	<input type="hidden" name="FamilyID" value="<?= $iFamilyID ?>">
+	<input type="hidden" name="NoteID" value="<?= $iNoteID ?>">
+	<textarea name="NoteText" cols="70" rows="10"><?= $sNoteText ?></textarea>
+	<?= $sNoteTextError ?>
 </p>
 
 <p align="center">
-	<input type="checkbox" value="1" name="Private" <?php if ($nte_Private != 0) { echo "checked"; } ?>>&nbsp;<?php echo gettext("Private"); ?>
+	<input type="checkbox" value="1" name="Private" <?php if ($nte_Private != 0) { echo "checked"; } ?>>&nbsp;<?= gettext("Private") ?>
 </p>
 
 <p align="center">
-	<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>
+	<input type="submit" class="btn" name="Submit" <?= 'value="' . gettext("Save") . '"' ?>>
 	&nbsp;
-	<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='<?php echo $sBackPage; ?>';">
+	<input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="javascript:document.location='<?= $sBackPage ?>';">
 	</form>
 </p>
 

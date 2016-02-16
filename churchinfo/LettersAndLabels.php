@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : LettersAndLabels.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *
 *  Contributors:
 *  2006 Ed Davis
@@ -10,7 +10,7 @@
 *
 *  Copyright 2006 Contributors
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -61,11 +61,11 @@ if (isset($_POST["SubmitNewsLetter"]) || isset($_POST["SubmitConfirmReport"]) ||
     ?>
 
    <tr>
-      <td><input type="submit" class="icButton" name="SubmitNewsLetter" <?php echo 'value="' . gettext("Newsletter labels") . '"'; ?>></td>
-      <td><input type="submit" class="icButton" name="SubmitConfirmReport" <?php echo 'value="' . gettext("Confirm data letter") . '"'; ?>></td>
-	  <td><input type="submit" class="icButton" name="SubmitConfirmReportEmail" <?php echo 'value="' . gettext("Confirm data Email") . '"'; ?>></td>
-      <td><input type="submit" class="icButton" name="SubmitConfirmLabels" <?php echo 'value="' . gettext("Confirm data labels") . '"'; ?>></td>
-      <td><input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';"></td>
+      <td><input type="submit" class="btn" name="SubmitNewsLetter" <?= 'value="' . gettext("Newsletter labels") . '"' ?>></td>
+      <td><input type="submit" class="btn" name="SubmitConfirmReport" <?= 'value="' . gettext("Confirm data letter") . '"' ?>></td>
+	  <td><input type="submit" class="btn" name="SubmitConfirmReportEmail" <?= 'value="' . gettext("Confirm data Email") . '"' ?>></td>
+      <td><input type="submit" class="btn" name="SubmitConfirmLabels" <?= 'value="' . gettext("Confirm data labels") . '"' ?>></td>
+      <td><input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="javascript:document.location='Menu.php';"></td>
    </tr>
 
 </table>

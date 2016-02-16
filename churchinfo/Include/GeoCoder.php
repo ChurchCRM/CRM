@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : /Include/GeoCoder.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *
 *  Contributors:
 *  2006-07 Ed Davis
@@ -10,7 +10,7 @@
 *
 *  Copyright Contributors
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -19,10 +19,9 @@
 *
 ******************************************************************************/
 
-require('GoogleMapAPI/GoogleMapAPI.class.php');
+require "vendor/google-map/GoogleMap.php";
 
 $googleMapObj = new GoogleMapAPI('map');
-$googleMapObj->setAPIKey($sGoogleMapKey);
 $googleMapObj->setLookupService('GOOGLE'); // or 'YAHOO'
 
 
