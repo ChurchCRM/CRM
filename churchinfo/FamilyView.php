@@ -240,7 +240,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 							}
 						?>
 					<?php if (!$bHideLatLon) { /* Lat/Lon can be hidden - General Settings */ ?>
-						<li><i class="fa-li fa fa-compass"></i><?= gettext("Latitude/Longitude") ?> <span><?= $fam_Latitude . " / ", $fam_Longitude ?></span></li>
+						<li><i class="fa-li fa fa-compass"></i><?= gettext("Latitude/Longitude") ?> <span><?= $fam_Latitude . " / " . $fam_Longitude ?></span></li>
 					<?php }
 					if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
 						<li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send newsletter:") ?> <span><?= $fam_SendNewsLetter ?></span></li>
@@ -252,24 +252,24 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 						<li><i class="fa-li fa fa-phone"></i><?= gettext("Envelope Number") ?> <span><?= $fam_Envelope ?></span></li>
 					<?php  }
 					if ($sHomePhone != "") { ?>
-						<li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><? echo "<a href=\"tel:" . $sHomePhone . "\">" . $sHomePhone . "</a>";?></span></li>
+						<li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><a href="tel:<?= $sHomePhone ?>"><?= $sHomePhone ?></a></span></li>
 					<?php  }
 					if ($sWorkPhone != "") { ?>
-						<li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone:") ?> <span><? echo "<a href=\"tel:" . $sWorkPhone . "\">" . $sWorkPhone . "</a>";?></span></li>
+						<li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone:") ?> <span><a href="tel:<?= $sWorkPhone ?>"><?= $sWorkPhone ?></a></span></li>
 					<?php  }
 					if ($sCellPhone != "") { ?>
-						<li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone:") ?> <span><? echo "<a href=\"tel:" . $sCellPhone . "\">" . $sCellPhone . "</a>";?></span></li>
+						<li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone:") ?> <span><a href="tel:<?= $sCellPhone ?>"><?= $sCellPhone ?></a></span></li>
 					<?php  }
 					if ($fam_Email != "") { ?>
 						<li><i class="fa-li fa fa-envelope"></i><?= gettext("Email:") ?><a href="mailto:<?= $fam_Email ?>"> <span><?= $fam_Email ?></span></a></li>
 						<?php if ($mailchimp->isActive()) { ?>
-							<li><i class="fa-li glyphicon glyphicon-send"></i><?= gettext("Email:") ?> <span><?php echo $mailchimp->isEmailInMailChimp($fam_Email); ?></span></a></li>
+							<li><i class="fa-li glyphicon glyphicon-send"></i><?= gettext("Email:") ?> <span><?= $mailchimp->isEmailInMailChimp($fam_Email) ?></span></a></li>
 					<?php }
 					}
 					// Display the left-side custom fields
 					while ($Row = mysql_fetch_array($rsFamCustomFields)) {
 						extract($Row);
-						if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+						if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
 						{
 							$currentData = trim($aFamCustomData[$fam_custom_Field]);
 							if ($type_ID == 11) $fam_custom_Special = $sPhoneCountry;
