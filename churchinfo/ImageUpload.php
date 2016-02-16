@@ -34,11 +34,9 @@ $imageLocationThumb=$imageLocation."thumbnails/";
 $uploaded = false;
 if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
     $foo = new Upload($_FILES['file']);
-    $foo->file_max_size = '102400'; // 100KB
     $foo->allowed = array('"image/png"','image/jpg','image/jpeg');
-    echo "here1";
+
     if ($foo->uploaded) {
-        echo "here2";
         $foo->file_new_name_body = $finalFileName;
         $foo->file_overwrite = true;
         $foo->Process($imageLocation);
@@ -57,6 +55,8 @@ if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
         } else {
             $uploaded = true;
         }
+    } else {
+        echo $foo->error;
     }
     $foo->Clean();
 }
