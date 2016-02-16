@@ -80,10 +80,14 @@ $sURLPath = $_SESSION['sURLPath'];
     
     <script>
     $(document).ajaxError(function(evt,xhr,settings) {
-        $(".modal").modal('hide');
-        $("#APIError").modal('show');
-        $("#APIEndpoint").text("["+settings.type+"] "+settings.url); 
-        $("#APIErrorText").text(xhr.responseText);
+        if (evt.severity >0)
+        {
+            console.log(evt);
+            $(".modal").modal('hide');
+            $("#APIError").modal('show');
+            $("#APIEndpoint").text("["+settings.type+"] "+settings.url); 
+            $("#APIErrorText").text(xhr.responseText);
+        }
     });
     </script>
 

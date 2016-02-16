@@ -499,9 +499,10 @@ function getJSONFromApp($app)
 /**
  * @param $e
  */
-function exceptionToJSON($e)
-{
-    return '{"error":{"text":' . $e->getMessage() . ' !}}';
+function exceptionToJSON($e,$customSeverity=0)
+{   
+    http_response_code(404);
+    return '{"error":{"text":"' . $e->getMessage() . '","severity":"'.$customSeverity.'"}}';
 }
 
 $app->run();
