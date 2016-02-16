@@ -1,8 +1,8 @@
 <?php
 
-require "Include/Config.php";
-require "Include/Functions.php";
-require "Include/PersonFunctions.php";
+require "../Include/Config.php";
+require "../Include/Functions.php";
+require "../Include/PersonFunctions.php";
 
 $iGroupId = "-1";
 $iGroupName = "Unknown";
@@ -60,7 +60,7 @@ $TeachersEmails = array();
 $KidsEmails = array();
 $ParentsEmails = array();
 
-require "Include/Header.php";
+require "../Include/Header.php";
 
 ?>
 
@@ -74,7 +74,7 @@ require "Include/Header.php";
 
     <div class="btn-group pull-right clearfix">
         <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>
-        <a class="btn btn-info" href="GroupView.php?GroupID=<?php echo $iGroupId?>"><i class="fa fa-eye-slash"></i> LegacyView </a>
+        <a class="btn btn-info" href="../GroupView.php?GroupID=<?php echo $iGroupId?>"><i class="fa fa-eye-slash"></i> LegacyView </a>
     </div>
 
     <p><br/></p><p><br/></p>
@@ -93,9 +93,9 @@ require "Include/Header.php";
                     <div class="box box-info text-center user-profile-2">
                         <div class="user-profile-inner">
                             <h4 class="white"><?php echo $per_FirstName . " " . $per_LastName ?></h4>
-                            <img src="<?= $personService->getPhoto($per_ID);?>" class="img-circle profile-avatar" alt="User avatar">
+                            <img src="<?= $personService->getPhoto($per_ID);?>" class="img-circle profile-avatar" alt="User avatar" width="80" height="80">
                             <a href="mailto:<?php echo $per_Email ?>" type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</a>
-                            <a href="PersonView.php?PersonID=<?php echo $per_ID ?>" type="button" class="btn btn-primary btn-info btn-block"><i class="fa fa-envelope"></i> View Profile</a>
+                            <a href="../PersonView.php?PersonID=<?php echo $per_ID ?>" type="button" class="btn btn-primary btn-info btn-block"><i class="fa fa-envelope"></i> View Profile</a>
                         </div>
                     </div>
                 </div>
@@ -174,17 +174,17 @@ require "Include/Header.php";
                     if ($kidEmail != "")
                         array_push($KidsEmails, "<".$firstName." ".$LastName."> ". $kidEmail);
                     echo "<tr>";
-                        echo "<td><img src='". $personService->getPhoto($kidId). "' class=\"img-circle profile-avatar\" hight='30' width='30' > <a href='PersonView.php?PersonID=".$kidId."'>".$firstName.", ". $LastName. "</a></td>";
+                        echo "<td><img src='". $personService->getPhoto($kidId). "' hight='30' width='30' > <a href='../PersonView.php?PersonID=" .$kidId."'>".$firstName.", ". $LastName. "</a></td>";
                         echo "<td>".$birthDate."</td>";
                         echo "<td>".FormatAge($birthMonth,$birthDay, $birthYear, "")."</td>";
                         echo "<td>".$kidEmail."</td>";
                         echo "<td>".$mobilePhone."</td>";
                         echo "<td>".$homePhone."</td>";
                         echo "<td>".$Address1." ".$Address2." ".$city." ".$state." ".$zip."</td>";
-                        echo "<td><a href='PersonView.php?PersonID=".$dadId."'>".$dadFirstName." ".$dadLastName."</a></td>";
+                        echo "<td><a href='../PersonView.php?PersonID=" .$dadId."'>".$dadFirstName." ".$dadLastName."</a></td>";
                         echo "<td>".$dadCellPhone."</td>";
                         echo "<td>".$dadEmail."</td>";
-                        echo "<td><a href='PersonView.php?PersonID=".$momId."'>".$momFirstName." ".$momLastName."</td>";
+                        echo "<td><a href='../PersonView.php?PersonID=" .$momId."'>".$momFirstName." ".$momLastName."</td>";
                         echo "<td>".$momCellPhone."</td>";
                         echo "<td>".$momEmail."</td>";
                     echo "</tr>";
@@ -405,6 +405,6 @@ xaxis: {
 
 <?php
 
-require "Include/Footer.php";
+require "../Include/Footer.php";
 
 ?>
