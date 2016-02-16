@@ -38,20 +38,22 @@ if (isset($_POST["rmEmail"]))
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("View Your Cart");
-require "Include/Header.php";
+require "Include/Header.php";?>
+<div class="box box-body">
+<?php
 // Confirmation message that people where added to Event from Cart
 if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart']) == 0) {
         if (!array_key_exists("Message", $_GET)) {?>
-            <p class="text-center callout callout-warning"><?= gettext("You have no items in your cart.") ;?> </p>
-        <? } else {
+             <p class="text-center callout callout-warning"><?= gettext("You have no items in your cart.") ;?> </p>
+        <?php } else {
             switch ($_GET["Message"]) {
                 case "aMessage": ?>
                     <p class="text-center callout callout-info"><?= $_GET["iCount"].' '.($_GET["iCount"] == 1 ? "Record":"Records").' Emptied into Event ID:'.$_GET["iEID"] ;?> </p>
-                <? break;
+                <?php break;
             }
         }
         echo '<p align="center"><input type="button" name="Exit" class="btn btn-primary" value="'.gettext("Back to Menu").'" '."onclick=\"javascript:document.location='Menu.php';\"></p>\n";
-
+        echo '</div>';
 } else {
 
         // Create array with Classification Information (lst_ID = 1)
@@ -161,26 +163,27 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
 
         echo "</table>";
 } ?>
-    </div>
-</div>
+
+
 <!-- Default box -->
+<?php if (count($_SESSION['aPeopleCart']) > 0) { ?>
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">Cart Functions</h3>
     </div>
     <div class="box-body">
         <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i class="fa fa-trash"></i><?= gettext("Empty Cart") ?></a>
-        <? if ($_SESSION['bManageGroups']) { ?>
+        <?php if ($_SESSION['bManageGroups']) { ?>
             <a href="CartToGroup.php" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext("Empty Cart to Group") ?></a>
-        <? } ?>
-        <? if ($_SESSION['bAddRecords']) { ?>
+        <?php } ?>
+        <?php if ($_SESSION['bAddRecords']) { ?>
             <a href="CartToFamily.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext("Empty Cart to Family")  ?></a>
-        <? } ?>
+        <?php } ?>
         <a href="CartToEvent.php" class="btn btn-app"><i class="fa fa-ticket"></i><?=  gettext("Empty Cart to Event")  ?></a>
 
-        <?  if ($bExportCSV) { ?>
+        <?php  if ($bExportCSV) { ?>
             <a href="CSVExport.php?Source=cart" class="btn btn-app"><i class="fa fa-file-excel-o"></i><?=  gettext("CSV Export")  ?></a>
-        <? } ?>
+        <?php } ?>
         <a href="MapUsingGoogle.php?GroupID=0" class="btn btn-app"><i class="fa fa-map-marker"></i><?= gettext("Map Cart") ?></a>
         <a href="Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-app"><i class="fa fa-file-pdf-o"></i><?= gettext("Name Tags")  ?></a>
         <?
@@ -275,6 +278,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
     <!-- /.box-body -->
 </div>
 <!-- /.box -->
+<?php } ?>
 <!-- Default box -->
 <div class="box">
     <div class="box-header with-border">

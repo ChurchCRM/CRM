@@ -1,11 +1,9 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
  * User: George Dawoud
  * Date: 1/17/2016
  * Time: 8:01 AM
  */
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
@@ -53,7 +51,7 @@ $rsKidsGender = RunQuery($sSQL);
         <a href="VolunteerOpportunityEditor.php" class="btn btn-app"><i class="fa fa-bullhorn"></i><?= gettext("Volunteer Opportunities") ?></a>
         <a href="PersonCustomFieldsEditor.php" class="btn btn-app"><i class="fa fa-gear"></i><?= gettext("Custom Person Fields") ?></a>
         <a href="FamilyCustomFieldsEditor.php" class="btn btn-app"><i class="fa fa-gear"></i><?= gettext("Custom Family Fields") ?></a>
-        <? } ?>
+        <?php } ?>
 
     </div>
 </div>
@@ -73,7 +71,7 @@ $rsKidsGender = RunQuery($sSQL);
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>FamilyList.php" class="small-box-footer">
+            <a href="<?= $sURLPath."/" ?>FamilyList.php" class="small-box-footer">
                 See all Families <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -92,7 +90,7 @@ $rsKidsGender = RunQuery($sSQL);
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>SelectList.php?mode=person" class="small-box-footer">
+            <a href="<?= $sURLPath."/" ?>SelectList.php?mode=person" class="small-box-footer">
                 See All People <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -111,7 +109,7 @@ $rsKidsGender = RunQuery($sSQL);
             <div class="icon">
                 <i class="fa fa-child"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>sundayschool\SundaySchoolDashboard.php" class="small-box-footer">
+            <a href="<?= $sURLPath."/" ?>sundayschool\SundaySchoolDashboard.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -157,9 +155,7 @@ $rsKidsGender = RunQuery($sSQL);
         <div class="box box-primary">
             <div class="box-header with-border">
                 <i class="fa fa-bar-chart-o"></i>
-
                 <h3 class="box-title">People Classification</h3>
-
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>

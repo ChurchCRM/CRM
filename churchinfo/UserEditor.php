@@ -131,16 +131,16 @@ if (isset($_POST['save']) && $iPersonID > 0) {
 
         // Write the SQL depending on whether we're adding or editing
         if ($sAction == 'add'){
-                                    
-                            if ($undupCount == 0) {
-                                $sSQL = "INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Communication, usr_Admin, usr_Style, usr_SearchLimit, usr_defaultFY, usr_UserName, usr_EditSelf, usr_Canvasser) VALUES (" . $iPersonID . ",'" . md5($sDefault_Pass) . "',1,'" . date("Y-m-d H:i:s") . "', " . $AddRecords . ", " . $EditRecords . ", " . $DeleteRecords . ", " . $MenuOptions . ", " . $ManageGroups . ", " . $Finance . ", " . $Notes . ", " . $Communication . ", " . $Admin . ", '" . $Style . "', 10," . $defaultFY . ",\"" . $sUserName . "\"," . $EditSelf . "," . $Canvasser . ")";
-                            // Execute the SQL
-                            RunQuery($sSQL);
 
-                            }else{
-                            // Set the error text for duplicate when new user
-                            Redirect('UserEditor.php?NewPersonID='.$PersonID.'&ErrorText=Login already in use, please select a different login!');
-                            }
+            if ($undupCount == 0) {
+                $sPasswordHashSha256 = hash ("sha256", $sDefault_Pass.$iPersonID);
+                $sSQL = "INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Communication, usr_Admin, usr_Style, usr_SearchLimit, usr_defaultFY, usr_UserName, usr_EditSelf, usr_Canvasser) VALUES (" . $iPersonID . ",'" . $sPasswordHashSha256 . "',1,'" . date("Y-m-d H:i:s") . "', " . $AddRecords . ", " . $EditRecords . ", " . $DeleteRecords . ", " . $MenuOptions . ", " . $ManageGroups . ", " . $Finance . ", " . $Notes . ", " . $Communication . ", " . $Admin . ", '" . $Style . "', 10," . $defaultFY . ",\"" . $sUserName . "\"," . $EditSelf . "," . $Canvasser . ")";
+                // Execute the SQL
+                RunQuery($sSQL);
+            }else{
+                // Set the error text for duplicate when new user
+                Redirect('UserEditor.php?NewPersonID='.$PersonID.'&ErrorText=Login already in use, please select a different login!');
+            }
         } else{
         
         if ($undupCount == 0) {
@@ -172,11 +172,15 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $sUserName = $usr_UserName;
             $sAction = 'edit';
         } else {
-            $sSQL = "SELECT per_LastName, per_FirstName FROM person_per WHERE per_ID = " . $iPersonID;
+            $sSQL = "SELECT per_LastName, per_FirstName, per_Email FROM person_per WHERE per_ID = " . $iPersonID;
             $rsUser = RunQuery($sSQL);
             $aUser = mysql_fetch_array($rsUser);
             $sUser = $aUser['per_LastName'] . ', ' . $aUser['per_FirstName'];
-            $sUserName = $aUser['per_FirstName'] . $aUser['per_LastName'];
+            if ($aUser['per_Email'] != "") {
+                $sUserName = $aUser['per_Email'];
+            } else {
+                $sUserName = $aUser['per_FirstName'] . $aUser['per_LastName'];
+            }
             $sAction = 'add';
             $vNewUser = 'true';
             
@@ -314,17 +318,17 @@ require 'Include/Header.php';
             <?= gettext('Note: Changes will not take effect until next logon.');?>
         </div>
         <form method="post" action="UserEditor.php">
-<input type="hidden" name="Action" value="<?php echo $sAction; ?>">
-<input type="hidden" name="NewUser" value="<?php echo $vNewUser; ?>">
+        <input type="hidden" name="Action" value="<?= $sAction ?>">
+        <input type="hidden" name="NewUser" value="<?= $vNewUser ?>">
+        <table class="table table-hover">
 <?php
 
 // Are we adding?
 if ($bShowPersonSelect) {
     //Yes, so display the people drop-down
 ?>
-    <table class="table table-hover">
     <tr>
-        <td><?php echo gettext('Person to Make User:'); ?></td>
+        <td><?= gettext('Person to Make User:') ?></td>
         <td>
             <select name="PersonID" size="12">
     <?php
@@ -332,91 +336,86 @@ if ($bShowPersonSelect) {
     while ($aRow =mysql_fetch_array($rsPeople)) {
         extract($aRow);
     ?>
-                <option value="<?php echo $per_ID; ?>"<?php if ($per_ID == $iPersonID) { echo ' selected'; } ?>><?php echo $per_LastName . ', ' .  $per_FirstName; ?></option>
+                <option value="<?= $per_ID ?>"<?php if ($per_ID == $iPersonID) { echo ' selected'; } ?>><?= $per_LastName . ', ' .  $per_FirstName ?></option>
     <?php } ?>
             </select>
         </td>
     </tr>
 
-<?php
-} else {
-    // No, just display the user name
-
-?>
-    <input type="hidden" name="PersonID" value="<?php echo $iPersonID; ?>">
-    <table cellpadding="4" align="center">
+<?php } else { // No, just display the user name ?>
+    <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
     <tr>
-        <td><?php echo gettext('User:'); ?></td>
-        <td><?php echo $sUser; ?></td>
+        <td><?= gettext('User:') ?></td>
+        <td><?= $sUser ?></td>
     </tr>
-<?php
-}
-?>
+<?php } ?>
+
      <?php if (isset($sErrorText) <> '') { ?>
     <tr>
         <td align="center" colspan="2">
-        <span style="color:red;" id="PasswordError"><?php echo $sErrorText; ?></span>
+        <span style="color:red;" id="PasswordError"><?= $sErrorText ?></span>
         </td>
-    </tr><?php } ?>
+    </tr>
+    <?php } ?>
     <tr>
-        <td><?php echo gettext('Login Name:'); ?></td>
-        <td><input type="text" name="UserName" value="<?php echo $sUserName; ?>"></td>
+        <td><?= gettext('Login Name:') ?></td>
+        <td><input type="text" name="UserName" value="<?= $sUserName ?>"></td>
     </tr>
 
     <tr>
-        <td><?php echo gettext('Add Records:'); ?></td>
+        <td><?= gettext('Add Records:') ?></td>
         <td><input type="checkbox" name="AddRecords" value="1"<?php if ($usr_AddRecords) { echo " checked"; } ?>></td>
     </tr>
 
     <tr>
-        <td><?php echo gettext('Edit Records:'); ?></td>
+        <td><?= gettext('Edit Records:') ?></td>
         <td><input type="checkbox" name="EditRecords" value="1"<?php if ($usr_EditRecords) { echo " checked"; } ?>></td>
     </tr>
 
     <tr>
-        <td><?php echo gettext('Delete Records:'); ?></td>
+        <td><?= gettext('Delete Records:') ?></td>
         <td><input type="checkbox" name="DeleteRecords" value="1"<?php if ($usr_DeleteRecords) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td><?php echo gettext('Manage Properties and Classifications:'); ?></td>
+        <td><?= gettext('Manage Properties and Classifications:') ?></td>
         <td><input type="checkbox" name="MenuOptions" value="1"<?php if ($usr_MenuOptions) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td><?php echo gettext('Manage Groups and Roles:'); ?></td>
+        <td><?= gettext('Manage Groups and Roles:') ?></td>
         <td><input type="checkbox" name="ManageGroups" value="1"<?php if ($usr_ManageGroups) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td><?php echo gettext('Manage Donations and Finance:'); ?></td>
+        <td><?= gettext('Manage Donations and Finance:') ?></td>
         <td><input type="checkbox" name="Finance" value="1"<?php if ($usr_Finance) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td><?php echo gettext('View, Add and Edit Notes:'); ?></td>
+        <td><?= gettext('View, Add and Edit Notes:') ?></td>
         <td><input type="checkbox" name="Notes" value="1"<?php if ($usr_Notes) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td><?php echo gettext('Edit Self:'); ?></td>
-        <td><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?php echo gettext('(Edit own family only.)'); ?></span></td>
+        <td><?= gettext('Edit Self:') ?></td>
+        <td><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?= gettext('(Edit own family only.)') ?></span></td>
     </tr>
     <tr>
-        <td><?php echo gettext('Canvasser:'); ?></td>
-        <td><input type="checkbox" name="Canvasser" value="1"<?php if ($usr_Canvasser) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?php echo gettext('(Canvass volunteer.)'); ?></span></td>
+        <td><?= gettext('Canvasser:') ?></td>
+        <td><input type="checkbox" name="Canvasser" value="1"<?php if ($usr_Canvasser) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?= gettext('(Canvass volunteer.)') ?></span></td>
     </tr>
     <tr>
-        <td><?php echo gettext('Admin:'); ?></td>
-        <td><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?php echo gettext('(Grants all privileges.)'); ?></span></td>
+        <td><?= gettext('Admin:') ?></td>
+        <td><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
     </tr>
     <tr>
-        <td><?php echo gettext('Style:'); ?></td>
+        <td><?= gettext('Style:') ?></td>
         <td class="TextColumnWithBottomBorder"><select name="Style"><?php StyleSheetOptions($usr_Style); ?></select></td>
     </tr>
     <tr>
         <td colspan="2" align="center">
-        <input type="submit" class="btn btn-primary" <?php echo 'value="' . gettext('Save') . '"'; ?> name="save">&nbsp;<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext('Cancel') . '"'; ?> onclick="javascript:document.location='UserList.php';">
+        <input type="submit" class="btn btn-primary" <?= 'value="' . gettext('Save') . '"' ?> name="save">&nbsp;<input type="button" class="btn" name="Cancel" <?= 'value="' . gettext('Cancel') . '"' ?> onclick="javascript:document.location='UserList.php';">
         </td>
     </tr>
 </table>
@@ -524,4 +523,4 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
     <!-- /.box-body -->
 </div>
 <!-- /.box -->
-<? require 'Include/Footer.php'; ?>
+<?php require 'Include/Footer.php'; ?>

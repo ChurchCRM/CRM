@@ -309,16 +309,16 @@ if($sMode == 'person')
 		?>
 		<table cellpadding="5" cellspacing="0" width="100%">
 			<tr class="TableHeader">
-			<td><?php echo gettext("Type"); ?></td>
-			<td><?php echo gettext("Fund"); ?></td>
-			<td><?php echo gettext("Fiscal Year"); ?></td>
-			<td><?php echo gettext("Date"); ?></td>
-			<td><?php echo gettext("Amount"); ?></td>
-			<td><?php echo gettext("Schedule"); ?></td>
-			<td><?php echo gettext("Method"); ?></td>
-			<td><?php echo gettext("Comment"); ?></td>
-			<td><?php echo gettext("Date Updated"); ?></td>
-			<td><?php echo gettext("Updated By"); ?></td>
+			<td><?= gettext("Type") ?></td>
+			<td><?= gettext("Fund") ?></td>
+			<td><?= gettext("Fiscal Year") ?></td>
+			<td><?= gettext("Date") ?></td>
+			<td><?= gettext("Amount") ?></td>
+			<td><?= gettext("Schedule") ?></td>
+			<td><?= gettext("Method") ?></td>
+			<td><?= gettext("Comment") ?></td>
+			<td><?= gettext("Date Updated") ?></td>
+			<td><?= gettext("Updated By") ?></td>
 		</tr>
 		<?php
 		$tog = 0;
@@ -356,10 +356,10 @@ if($sMode == 'person')
 				<td><?php echo $plg_date ?>&nbsp;</td>
 				<td><?php echo $plg_amount ?>&nbsp;</td>
 				<td><?php echo $plg_schedule ?>&nbsp;</td>
-				<td><?php echo $plg_method; ?>&nbsp;</td>
-				<td><?php echo $plg_comment; ?>&nbsp;</td>
-				<td><?php echo $plg_DateLastEdited; ?>&nbsp;</td>
-				<td><?php echo $EnteredFirstName . " " . $EnteredLastName; ?>&nbsp;</td>
+				<td><?= $plg_method ?>&nbsp;</td>
+				<td><?= $plg_comment ?>&nbsp;</td>
+				<td><?= $plg_DateLastEdited ?>&nbsp;</td>
+				<td><?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;</td>
 			</tr>
 			<?php
 		}

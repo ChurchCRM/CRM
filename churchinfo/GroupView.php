@@ -134,14 +134,14 @@ if ($_SESSION['bManageGroups'])
                         </div>
                         <div class="modal-body">
                         <span style="color: red">
-                           <?php echo gettext("Please confirm deletion of this group record:"); ?>
+                           <?= gettext("Please confirm deletion of this group record:") ?>
                          
                              <p class="ShadedBox">
-                                <?php echo $grp_Name; ?>
+                                <?= $grp_Name ?>
                             </p>
                             
                              <p class="LargeError">
-                                <?php echo gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record."); ?>
+                                <?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>
                             </p>
                             <?php echo gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.");?>
                             <br><br>
@@ -165,7 +165,7 @@ if ($_SESSION['bManageGroups'])
                             <h4 class="modal-title" id="upload-Image-label">Change Member Role</h4>
                         </div>
                         <div class="modal-body">
-                        <span style="color: red"><?php echo gettext("Please select target role for member:"); ?></span>
+                        <span style="color: red"><?= gettext("Please select target role for member:") ?></span>
                         <input type="hidden" id="changeingMemberID">
                         <p class="ShadedBox" id="changingMemberName"></p>
                         <select name="newRoleSelection" id="newRoleSelection">
@@ -294,18 +294,18 @@ if ($sPhoneLink)
 <tr>
     <td width="25%" valign="top" align="center">
         <div class="LightShadedBox">
-            <b class="LargeText"><?php echo $grp_Name; ?></b>
+            <b class="LargeText"><?= $grp_Name ?></b>
             <br>
-            <?php echo $grp_Description; ?>
+            <?= $grp_Description ?>
             <br><br>
             <table width="98%">
                 <tr>
                     <td align="center"><div class="TinyShadedBox"><font size="3">
-                    <?php echo gettext('Total Members:'); ?> <?php echo $iTotalMembers ?>
+                    <?= gettext('Total Members:') ?> <?php echo $iTotalMembers ?>
                     <br>
-                    <?php echo gettext('Type of Group:'); ?> <?php echo $sGroupType ?>
+                    <?= gettext('Type of Group:') ?> <?php echo $sGroupType ?>
                     <br>
-                    <?php echo gettext('Default Role:'); ?> <?php echo $sDefaultRole ?>
+                    <?= gettext('Default Role:') ?> <?php echo $sDefaultRole ?>
                     </font></div></td>
                 </tr>
             </table>
@@ -313,7 +313,7 @@ if ($sPhoneLink)
     </td>
     <td width="75%" valign="top" align="left">
 
-    <b><?php echo gettext('Group-Specific Properties:'); ?></b>
+    <b><?= gettext('Group-Specific Properties:') ?></b>
 
     <?php
     if ($grp_hasSpecialProps == 'true')
@@ -341,9 +341,9 @@ if ($sPhoneLink)
             ?>
             <table width="100%" cellpadding="2" cellspacing="0">
             <tr class="TableHeader">
-                <td><?php echo gettext('Type'); ?></td>
-                <td><?php echo gettext('Name'); ?></td>
-                <td><?php echo gettext('Description'); ?></td>
+                <td><?= gettext('Type') ?></td>
+                <td><?= gettext('Name') ?></td>
+                <td><?= gettext('Description') ?></td>
             </tr>
             <?php
 
@@ -380,9 +380,9 @@ if ($sPhoneLink)
         ?>
         <table width="100%" cellpadding="2" cellspacing="0">
         <tr class="TableHeader">
-        <td width="15%" valign="top"><b><?php echo gettext('Type'); ?></b>
-        <td valign="top"><b><?php echo gettext('Name'); ?></b>
-        <td valign="top"><b><?php echo gettext('Value'); ?></td>
+        <td width="15%" valign="top"><b><?= gettext('Type') ?></b>
+        <td valign="top"><b><?= gettext('Name') ?></b>
+        <td valign="top"><b><?= gettext('Value') ?></td>
         <?php
 
         if ($_SESSION['bManageGroups'])
@@ -493,7 +493,7 @@ if ($sPhoneLink)
 
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title"><? echo gettext('Group Members:')?></h3>
+        <h3 class="box-title"><?php echo gettext('Group Members:')?></h3>
     </div>
     <div class="box-body">
 <!-- START GROUP MEMBERS LISTING for group $iGroupID; -->

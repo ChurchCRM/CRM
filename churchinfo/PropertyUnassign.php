@@ -112,19 +112,19 @@ require "Include/Header.php";
 <table cellpadding="4">
 	<tr>
 		<td align="right"><b><?php echo $sTypeName ?>:</b></td>
-		<td><?php echo $sName; ?></td>
+		<td><?= $sName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?php echo gettext("Unassigning:"); ?></b></td>
+		<td align="right"><b><?= gettext("Unassigning:") ?></b></td>
 		<td><?php echo $sPropertyName ?></td>
 	</tr>
 </table>
 
 <p>
-	<a href="PropertyUnassign.php<?php echo $sQuerystring . "&PropertyID=" . $iPropertyID . "&Confirmed=Yes"; ?>"><?php echo gettext("Yes, unassign this Property"); ?></a>
+	<a href="PropertyUnassign.php<?= $sQuerystring . "&PropertyID=" . $iPropertyID . "&Confirmed=Yes" ?>"><?= gettext("Yes, unassign this Property") ?></a>
 </p>
 <p>
-	<a href="<?php echo $sBackPage; ?>"><?php echo gettext("No, retain this assignment"); ?></a>
+	<a href="<?= $sBackPage ?>"><?= gettext("No, retain this assignment") ?></a>
 </p>
 
 <?php

@@ -70,7 +70,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>
             </div>
-            <a href="<?= $sURLPath."/"; ?>FamilyList.php" class="small-box-footer">
+            <a href="<?= $sURLPath."/" ?>FamilyList.php" class="small-box-footer">
                 See all Families <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -89,7 +89,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="<?= $sURLPath."/"; ?>SelectList.php?mode=person" class="small-box-footer">
+            <a href="<?= $sURLPath."/" ?>SelectList.php?mode=person" class="small-box-footer">
                 See All People <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -109,6 +109,7 @@ require 'Include/Header.php';
                 <i class="ion ion-university"></i>
             </div>
             <a href="<?= $sURLPath."/"; ?>sundayschool\SundaySchoolDashboard.php" class="small-box-footer">
+
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -125,9 +126,9 @@ require 'Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="fa fa-users"></i>
+                <i class="fa fa-child"></i>
             </div>
-            <a href="<?= $sURLPath."/"; ?>GroupList.php" class="small-box-footer">
+            <a href="<?= $sURLPath."/" ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
