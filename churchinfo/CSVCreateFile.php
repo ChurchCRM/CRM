@@ -295,7 +295,7 @@ else
 		while($aFamRow = mysql_fetch_array($rsFamCustomFields))
 		{
 			extract($aFamRow);
-			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
 			{			
 				if (isset($_POST["$fam_custom_Field"]))
 				{
@@ -311,7 +311,7 @@ else
 		while($aFamRow = mysql_fetch_array($rsFamCustomFields))
 		{
 			extract($aFamRow);
-			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
 			{			
 				if (isset($_POST["$fam_custom_Field"]))
 				{

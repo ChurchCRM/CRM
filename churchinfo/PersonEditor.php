@@ -255,7 +255,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	{
 		extract($rowCustomField);
 		
-		if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+		if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]])
 		{
 			$currentFieldData = FilterInput($_POST[$custom_Field]);
 
@@ -374,7 +374,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 			while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
 			{
 				extract($rowCustomField);
-				if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+				if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]])
 				{
 					$currentFieldData = trim($aCustomData[$custom_Field]);
 					sqlCustomField($sSQL, $type_ID, $currentFieldData, $custom_Field, $sPhoneCountry);

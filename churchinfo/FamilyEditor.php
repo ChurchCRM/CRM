@@ -480,7 +480,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
 			{
 				extract($rowCustomField);
-				if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+				if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
 				{
 					$currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
@@ -883,7 +883,7 @@ require "Include/Header.php";
 		<?php mysql_data_seek($rsCustomFields,0);
 		while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
 			extract($rowCustomField);
-			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) { ?>
+			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) { ?>
 			<div class="row">
 				<div class="form-group col-xs-5">
 				<label><?= $fam_custom_Name  ?> </label>
@@ -912,7 +912,9 @@ require "Include/Header.php";
 
 	<tr>
 		<td colspan="2">
-		<div class="MediumText"><center><?php if ($iFamilyID<0) { echo gettext("You may create family members now or add them later.  All entries will become <i>new</i> person records."); } ?></center></div><br><br>
+		<div class="MediumText">
+			<center><?= $iFamilyID < 0 ? gettext("You may create family members now or add them later.  All entries will become <i>new</i> person records.") : '' ?></center>
+		</div><br><br>
 		<table cellpadding="3" cellspacing="0" width="100%">
 		<thead>
 		<tr class="TableHeader" align="center">
@@ -1011,7 +1013,7 @@ require "Include/Header.php";
 				</select>
 			</td>
 			<td class="TextColumn">
-			<?php	if ((!array_key_exists ($iCount, $aperFlags) || (!$aperFlags[$iCount])) or ($_SESSION['bSeePrivacyData']))
+			<?php	if (!array_key_exists ($iCount, $aperFlags) || !$aperFlags[$iCount] || $_SESSION['bSeePrivacyData'])
 			{
 				$UpdateBirthYear = 1;
 			?>
