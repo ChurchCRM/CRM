@@ -353,24 +353,24 @@ $app->group('/deposits',function () use ($app) {
     
     $app->get('/:id/pdf',function($id) use ($app) 
 	{
-		//try {
+		try {
 			$PDF = $app->FinancialService->getDepositPDF($id);
             header($PDF->header);
             echo $PDF->content;
-		//} catch (Exception $e) {
-         //    echo exceptionToJSON($e);
-      //  }	
+		} catch (Exception $e) {
+             echo exceptionToJSON($e);
+        }	
 	})->conditions(array('id' => '[0-9]+'));
     
     $app->get('/:id/csv',function($id) use ($app) 
 	{
-		//try {
+		try {
 			$CSV = $app->FinancialService->getDepositCSV($id);
             header($CSV->header);
             echo $CSV->content;
-		//} catch (Exception $e) {
-         //    echo exceptionToJSON($e);
-      //  }	
+		} catch (Exception $e) {
+             echo exceptionToJSON($e);
+        }	
 	})->conditions(array('id' => '[0-9]+'));
      
     $app->delete('/:id',function($id) use ($app) 
@@ -414,16 +414,18 @@ $app->group('/payments',function () use ($app) {
 	});
 	$app->get('/:id',function ($id) use ($app) {
 		try {
-			$payment = getJSONFromApp($app);
-			echo $app->FinancialService->getDepositsByFamilyID($fid); //This might not work yet...
+			//$payment = getJSONFromApp($app);
+			//echo $app->FinancialService->getDepositsByFamilyID($fid); //This might not work yet...
+            echo '{"status":"Not implemented"}';
         }catch (Exception $e) {
              echo exceptionToJSON($e);
         }	
 	});
 	$app->get('/byFamily/:familyId(/:fyid)', function ($familyId,$fyid=-1) use ($app) {
 		try {
-			$payment = getJSONFromApp($app);
-			#$app->FinancialService->getDepositsByFamilyID($fid);
+            echo '{"status":"Not implemented"}';
+			//$payment = getJSONFromApp($app);
+			#$app->FinancialService->getDepositsByFamilyID($fid);//This might not work yet...
         }catch (Exception $e) {
              echo exceptionToJSON($e);
         }
