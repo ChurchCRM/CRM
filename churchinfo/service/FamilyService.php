@@ -47,8 +47,71 @@ class FamilyService {
               return false;
         }
     }
-      
-    function insertFamily($user)
+	
+    function getFamilyName($famID)
+    {
+        $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID=" . $famID;
+		$rsFamilies = RunQuery($sSQL);
+		$aRow = mysql_fetch_array($rsFamilies);
+        try
+        {
+            extract($aRow);
+            $name = $fam_Name;
+            if (isset ($aHead[$fam_ID])) 
+            {
+                $name .= ", " . $aHead[$fam_ID];
+            }
+            $name .= " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+        }
+        catch (Exception $e)
+        {
+            $name ="";
+        }
+		return $name;
+        
+    }
+    
+	function getFamilyStringByEnvelope($iEnvelope)
+	{
+		$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_Envelope=" . $iEnvelope;
+		$rsFamilies = RunQuery($sSQL);
+		$familyArray = array();
+		while ($aRow = mysql_fetch_array($rsFamilies)) {
+			extract($aRow);
+			$name = $this->getFamilyName($fam_ID);
+			$familyArray = array("fam_ID"=> $fam_ID, "Name" => $name);
+		}
+		return json_encode($familyArray);
+	}
+	
+	function getFamilyStringByID($fam_ID)
+	{
+		$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID=" . $fam_ID;
+		$rsFamilies = RunQuery($sSQL);
+		$familyArray = array();
+		while ($aRow = mysql_fetch_array($rsFamilies)) {
+			extract($aRow);
+			$name = $fam_Name;
+			if (isset ($aHead[$fam_ID])) 
+			{
+				$name .= ", " . $aHead[$fam_ID];
+			}
+			$name .= " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+
+			$familyArray = array("fam_ID"=> $fam_ID, "Name" => $name);
+		}
+		return json_encode($familyArray);
+	}
+	
+	
+	function setFamilyCheckingAccountDetails($tScanString,$iFamily) {
+	//Set the Routing and Account Number for a family
+		$routeAndAccount = $micrObj->FindRouteAndAccount ($tScanString); // use routing and account number for matching
+		$sSQL = "UPDATE family_fam SET fam_scanCheck=\"" . $routeAndAccount . "\" WHERE fam_ID = " . $iFamily;
+		RunQuery($sSQL);
+	}
+	
+	function insertFamily($user)
     {
         $dWeddingDate = "NULL";
         $iCanvasser = 0;
