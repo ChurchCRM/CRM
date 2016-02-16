@@ -152,14 +152,14 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="CanvassEditor.php?<?php echo "FamilyID=" . $iFamily . "&FYID=".$iFYID . "&CanvassID=" . $iCanvassID . "&linkBack=" . $linkBack; ?>" name="CanvassEditor">
+<form method="post" action="CanvassEditor.php?<?= "FamilyID=" . $iFamily . "&FYID=".$iFYID . "&CanvassID=" . $iCanvassID . "&linkBack=" . $linkBack ?>" name="CanvassEditor">
 
 <table cellpadding="3" align="center">
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="Submit">
-			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="submit" class="btn" value="<?= gettext("Save") ?>" name="Submit">
+			<input type="button" class="btn" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -200,8 +200,8 @@ require "Include/Header.php";
 			?>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Date:"); ?></td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active" ><font color="red"><?php echo $sDateError ?></font></td>
+				<td class="LabelColumn"><?= gettext("Date:") ?></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active" ><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
 
 
@@ -231,7 +231,7 @@ require "Include/Header.php";
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Not Interested"); ?></td>
+				<td class="LabelColumn"><?= gettext("Not Interested") ?></td>
 				<td class="TextColumn"><input type="checkbox" Name="NotInterested" value="1" <?php if ($bNotInterested) echo " checked"; ?>></td>
 			</tr>
 

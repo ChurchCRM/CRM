@@ -373,7 +373,7 @@ require ("Include/HeaderNotLoggedIn.php");
         }
     }
     if ($loginPageMsg != "") { ?>
-        <div class="alert alert-warning"><?php echo $loginPageMsg; ?></div>
+        <div class="alert alert-warning"><?= $loginPageMsg ?></div>
 <?php  } ?>
 
 <form class="form-signin" role="form" method="post" name="LoginForm"
@@ -397,7 +397,7 @@ require ("Include/HeaderNotLoggedIn.php");
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat"><?php echo gettext('Login'); ?></button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext('Login') ?></button>
         </div>
     </div>
     <?php

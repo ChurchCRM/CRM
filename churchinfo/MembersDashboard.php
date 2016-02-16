@@ -43,18 +43,18 @@ $rsKidsGender = RunQuery($sSQL);
         <a href="SelectList.php?mode=person" class="btn btn-app"><i class="fa fa-user"></i><?= gettext("All People") ?></a>
         <a href="OptionManager.php?mode=classes" class="btn btn-app"><i class="fa fa-gears"></i><?= gettext("Classifications Manager") ?></a>
         <a href="VolunteerOpportunityEditor.php" class="btn btn-app"><i class="fa fa-bullhorn"></i><?= gettext("Volunteer Opportunities") ?></a>
-        <? if ($_SESSION['bAdmin']) {?>
+        <?php if ($_SESSION['bAdmin']) {?>
             <a href="PersonCustomFieldsEditor.php" class="btn btn-app"><i class="fa fa-gear"></i><?= gettext("Custom Person Fields") ?></a>
-        <? } ?>
+        <?php } ?>
         <br/>
         <a href="FamilyList.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext("All Families") ?></a>
         <a href="OptionManager.php?mode=famroles" class="btn btn-app"><i class="fa fa-cubes"></i><?= gettext("Family Roles") ?></a>
         <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext("Family Geographic") ?></a>
         <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext("Family Map") ?></a>
         <a href="UpdateAllLatLon.php" class="btn btn-app"><i class="fa fa-map-pin"></i><?= gettext("Update All Family Coordinates") ?></a>
-        <? if ($_SESSION['bAdmin']) {?>
+        <?php if ($_SESSION['bAdmin']) {?>
         <a href="FamilyCustomFieldsEditor.php" class="btn btn-app"><i class="fa fa-gear"></i><?= gettext("Custom Family Fields") ?></a>
-        <? } ?>
+        <?php } ?>
 
     </div>
 </div>
@@ -74,7 +74,7 @@ $rsKidsGender = RunQuery($sSQL);
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>FamilyList.php" class="small-box-footer">
+            <a href="<?= $sURLPath."/" ?>FamilyList.php" class="small-box-footer">
                 See all Families <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -93,7 +93,7 @@ $rsKidsGender = RunQuery($sSQL);
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>SelectList.php?mode=person" class="small-box-footer">
+            <a href="<?= $sURLPath."/" ?>SelectList.php?mode=person" class="small-box-footer">
                 See All People <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -112,7 +112,7 @@ $rsKidsGender = RunQuery($sSQL);
             <div class="icon">
                 <i class="fa fa-child"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
+            <a href="<?= $sURLPath."/" ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -139,7 +139,7 @@ $rsKidsGender = RunQuery($sSQL);
                         <th>% of Members</th>
                         <th style="width: 40px">Count</th>
                     </tr>
-                    <? foreach ($demographicStats as $key => $value) { ?>
+                    <?php foreach ($demographicStats as $key => $value) { ?>
                     <tr>
                         <td><?= $key ?></td>
                         <td>
@@ -149,7 +149,7 @@ $rsKidsGender = RunQuery($sSQL);
                         </td>
                         <td><span class="badge bg-green"><?= $value ?></span></td>
                     </tr>
-                    <? } ?>
+                    <?php } ?>
                 </table>
             </div>
         </div>
@@ -173,7 +173,7 @@ $rsKidsGender = RunQuery($sSQL);
                     <th>% of Members</th>
                     <th style="width: 40px">Count</th>
                 </tr>
-                <? foreach ($personStats as $key => $value) { ?>
+                <?php foreach ($personStats as $key => $value) { ?>
                     <tr>
                         <td><?= $key ?></td>
                         <td>
@@ -183,7 +183,7 @@ $rsKidsGender = RunQuery($sSQL);
                         </td>
                         <td><span class="badge bg-green"><?= $value ?></span></td>
                     </tr>
-                <? } ?>
+                <?php } ?>
             </table>
             <!-- /.box-body-->
         </div>
@@ -264,4 +264,4 @@ $rsKidsGender = RunQuery($sSQL);
         //and append it to your page somewhere
         $('#gender-donut-legend').append(legend);
     </script>
-<? require 'Include/Footer.php'; ?>
+<?php require 'Include/Footer.php'; ?>

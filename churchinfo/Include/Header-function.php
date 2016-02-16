@@ -36,7 +36,7 @@ global $sPageTitle, $sURLPath;
 $sURLPath = $_SESSION['sURLPath'];
 ?>
     <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
-    <title>ChurchCRM: <?php echo $sPageTitle; ?></title>
+    <title>ChurchCRM: <?= $sPageTitle ?></title>
 <?php
 }
 
@@ -95,8 +95,8 @@ $sURLPath = $_SESSION['sURLPath'];
 // End of basic security checks
  ?>
 
-    <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jscalendar/calendar.js"></script>
-    <script type="text/javascript" src="<?php echo $sURLPath."/"; ?>Include/jscalendar/lang/calendar-<?php echo substr($sLanguage,0,2); ?>.js"></script>
+    <script type="text/javascript" src="<?= $sURLPath."/" ?>Include/jscalendar/calendar.js"></script>
+    <script type="text/javascript" src="<?= $sURLPath."/" ?>Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
 
     <script language="javascript" type="text/javascript">
 
@@ -346,7 +346,7 @@ function Header_body_menu() {
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown settings-dropdown">
-                        <a href="<?php echo $sURLPath."/"; ?>CartView.php">
+                        <a href="<?= $sURLPath."/" ?>CartView.php">
                             <i class="fa fa-shopping-cart"></i>
                             <span class="label label-success"><?= count($_SESSION['aPeopleCart'])?></span>
                         </a>
@@ -356,7 +356,7 @@ function Header_body_menu() {
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="<?= $loggedInUserPhoto ?>" class="user-image" alt="User Image">
-                            <span class="hidden-xs"><?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?> </span>
+                            <span class="hidden-xs"><?= $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'] ?> </span>
 
                         </a>
                         <ul class="dropdown-menu">
@@ -365,7 +365,7 @@ function Header_body_menu() {
                                 <img src="<?= $loggedInUserPhoto ?>" class="img-circle" alt="User Image">
 
                                 <p>
-                                    <?php echo $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName']; ?>
+                                    <?= $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'] ?>
                                     <!--<small>Member since Nov. 2012</small>-->
                                 </p>
                             </li>
@@ -387,10 +387,10 @@ function Header_body_menu() {
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="<?php echo $sURLPath."/"; ?>UserPasswordChange.php" class="btn btn-default btn-flat">Change Password</a>
+                                    <a href="<?= $sURLPath."/" ?>UserPasswordChange.php" class="btn btn-default btn-flat">Change Password</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="<?php echo $sURLPath."/"; ?>SettingsIndividual.php" class="btn btn-default btn-flat">My Settings</a>
+                                    <a href="<?= $sURLPath."/" ?>SettingsIndividual.php" class="btn btn-default btn-flat">My Settings</a>
                                 </div>
                             </li>
                         </ul>
@@ -413,7 +413,7 @@ function Header_body_menu() {
                         </a>
                     </li>
                     <li class="hidden-xxs">
-                        <a href="<?php echo $sURLPath."/"; ?>Default.php?Logoff=True">
+                        <a href="<?= $sURLPath."/" ?>Default.php?Logoff=True">
                             <i class="fa fa-power-off"></i>
                         </a>
                     </li>
@@ -438,7 +438,7 @@ function Header_body_menu() {
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="<?php echo $sURLPath."/"; ?>Menu.php">
+                            <a href="<?= $sURLPath."/" ?>Menu.php">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
@@ -457,8 +457,8 @@ function Header_body_menu() {
                         }?>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="<?php echo $sURLPath."/Menu.php"; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active"><?php echo $sPageTitle; ?></li>
+                        <li><a href="<?= $sURLPath."/Menu.php" ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active"><?= $sPageTitle ?></li>
                     </ol>
                 </section>
                 <!-- Main content -->
@@ -468,7 +468,7 @@ function Header_body_menu() {
                         <div class="alert alert-info fade in">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i>
-                            <?php echo $sGlobalMessage; ?>
+                            <?= $sGlobalMessage ?>
                         </div>
                     </div>
                     <?php }

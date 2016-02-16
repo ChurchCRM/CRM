@@ -194,7 +194,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 	</button>
 
 	<ul class="dropdown-menu" role="menu">
-		<li><a href="Reports/ConfirmReport.php?familyId=<?php echo $iFamilyID; ?>"><?php echo gettext("Family Record PDF"); ?></a></li>
+		<li><a href="Reports/ConfirmReport.php?familyId=<?= $iFamilyID ?>"><?= gettext("Family Record PDF") ?></a></li>
 		<?php if ($bOkToEdit) { ?>
 		<li><a href="#" data-toggle="modal" data-target="#upload-image">Upload Family Photo </a></li>
 		<li><a href="#" data-toggle="modal" data-target="#confirm-delete-image">Delete Family Photo </a></li>
@@ -203,11 +203,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 		<li class="divider"></li>
 		<?php }
 		if ($_SESSION['bNotes']) { ?>
-		<li><a href="NoteEditor.php?FamilyID=<?php echo $iFamilyID; ?>">Add a Note to this Record</a></li>
+		<li><a href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>">Add a Note to this Record</a></li>
 		<li class="divider"></li>
 		<?php }
 		if ($_SESSION['bDeleteRecords']) { ?>
-		<li><a href="SelectDelete.php?FamilyID=<?php echo $iFamilyID; ?>">Delete this Family</a></li>
+		<li><a href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>">Delete this Family</a></li>
 		<?php } ?>
 	</ul>
 	<a class="btn btn-default" role="button" href="FamilyList.php"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
@@ -228,7 +228,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                 <hr/>
 				<ul class="fa-ul">
 					<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
-					<a href="http://maps.google.com/?q=<?php echo getMailingAddress($fam_Address1,$fam_Address2,$fam_City,$fam_State,$fam_Zip,$fam_Country); ?>" target="_blank"><?php
+					<a href="http://maps.google.com/?q=<?= getMailingAddress($fam_Address1,$fam_Address2,$fam_City,$fam_State,$fam_Zip,$fam_Country) ?>" target="_blank"><?php
 							echo getMailingAddress($fam_Address1,$fam_Address2,$fam_City,$fam_State,$fam_Zip,$fam_Country);				
 							echo "</a></span><br>";
 							if ($fam_Latitude && $fam_Longitude) {
@@ -240,30 +240,30 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 							}
 						?>
 					<?php if (!$bHideLatLon) { /* Lat/Lon can be hidden - General Settings */ ?>
-						<li><i class="fa-li fa fa-compass"></i><?php echo gettext("Latitude/Longitude"); ?> <span><?php echo $fam_Latitude . " / ", $fam_Longitude; ?></span></li>
+						<li><i class="fa-li fa fa-compass"></i><?= gettext("Latitude/Longitude") ?> <span><?= $fam_Latitude . " / ", $fam_Longitude ?></span></li>
 					<?php }
 					if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
-						<li><i class="fa-li fa fa-hacker-news"></i><?php echo gettext("Send newsletter:"); ?> <span><?php echo $fam_SendNewsLetter; ?></span></li>
+						<li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send newsletter:") ?> <span><?= $fam_SendNewsLetter ?></span></li>
 					<?php }
 					if (!$bHideWeddingDate) { /* Wedding Date can be hidden - General Settings */ ?>
-						<li><i class="fa-li fa fa-magic"></i><?php echo gettext("Wedding Date:"); ?> <span><?php echo FormatDate($fam_WeddingDate,false); ?></span></li>
+						<li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date:") ?> <span><?= FormatDate($fam_WeddingDate,false) ?></span></li>
 					<?php }
 					if ($bUseDonationEnvelopes) { ?>
-						<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Envelope Number"); ?> <span><?php echo $fam_Envelope; ?></span></li>
+						<li><i class="fa-li fa fa-phone"></i><?= gettext("Envelope Number") ?> <span><?= $fam_Envelope ?></span></li>
 					<?php  }
 					if ($sHomePhone != "") { ?>
-						<li><i class="fa-li fa fa-phone"></i><?php echo gettext("Home Phone:"); ?> <span><?php echo $sHomePhone; ?></span></li>
+						<li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><?= $sHomePhone ?></span></li>
 					<?php  }
 					if ($sWorkPhone != "") { ?>
-						<li><i class="fa-li fa fa-building"></i><?php echo gettext("Work Phone:"); ?> <span><?php echo $sWorkPhone; ?></span></li>
+						<li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone:") ?> <span><?= $sWorkPhone ?></span></li>
 					<?php  }
 					if ($sCellPhone != "") { ?>
-						<li><i class="fa-li fa fa-mobile"></i><?php echo gettext("Mobile Phone:"); ?> <span><?php echo $sCellPhone; ?></span></li>
+						<li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone:") ?> <span><?= $sCellPhone ?></span></li>
 					<?php  }
 					if ($fam_Email != "") { ?>
-						<li><i class="fa-li fa fa-envelope"></i><?php echo gettext("Email:"); ?><a href="mailto:<?php echo $fam_Email; ?>"> <span><?php echo $fam_Email; ?></span></a></li>
+						<li><i class="fa-li fa fa-envelope"></i><?= gettext("Email:") ?><a href="mailto:<?= $fam_Email ?>"> <span><?= $fam_Email ?></span></a></li>
 						<?php if ($mailchimp->isActive()) { ?>
-							<li><i class="fa-li glyphicon glyphicon-send"></i><?php echo gettext("Email:"); ?> <span><?php echo $mailchimp->isEmailInMailChimp($fam_Email); ?></span></a></li>
+							<li><i class="fa-li glyphicon glyphicon-send"></i><?= gettext("Email:") ?> <span><?php echo $mailchimp->isEmailInMailChimp($fam_Email); ?></span></a></li>
 					<?php }
 					}
 					// Display the left-side custom fields
@@ -302,7 +302,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
             <div class="box box-solid">
                 <div class="box-body table-responsive clearfix">
                     <div class="btn-group pull-right clearfix">
-                        <a class="btn btn-info" href="PersonEditor.php?FamilyID=<?php echo $iFamilyID; ?>">
+                        <a class="btn btn-info" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>">
                             <i class="fa fa-plus-square"></i> Add New Member
                         </a>
                     </div>
@@ -323,7 +323,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                         <tr>
                             <td>
                                 <img src="<?= $personService->getPhoto($tmpPersonId) ?>" width="40" height="40" class="img-circle" />
-                                <a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>" class="user-link"><?php echo $Row["per_FirstName"]." ".$Row["per_LastName"]; ?> </a>
+                                <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $Row["per_FirstName"]." ".$Row["per_LastName"] ?> </a>
                             </td>
                             <td class="text-center">
                                 <?php echo getRoleLabel($Row["sFamRole"]) ?>
@@ -336,24 +336,24 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                 if ($tmpEmail != "") {
                                     array_push($sFamilyEmails, $tmpEmail);
                                 ?>
-                                    <a href="#"><a href="mailto:<?php echo $tmpEmail; ?>"><?php echo $tmpEmail; ?></a></a>
+                                    <a href="#"><a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a></a>
                                 <?php } ?>
                             </td>
                             <td style="width: 20%;">
-                                <a href="PersonView.php?PersonID=<?php echo $tmpPersonId; ?>&AddToPeopleCart=<?php echo $tmpPersonId; ?>">
+                                <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>&AddToPeopleCart=<?= $tmpPersonId ?>">
                                         <span class="fa-stack">
                                             <i class="fa fa-square fa-stack-2x"></i>
                                             <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
                                         </span>
                                 </a>
                                 <?php if ($bOkToEdit) { ?>
-                                <a href="PersonEditor.php?PersonID=<?php echo $tmpPersonId; ?>" class="table-link">
+                                <a href="PersonEditor.php?PersonID=<?= $tmpPersonId ?>" class="table-link">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                     </span>
                                 </a>
-                                <a href="SelectDelete.php?mode=person&PersonID=<?php echo $tmpPersonId; ?>" class="table-link">
+                                <a href="SelectDelete.php?mode=person&PersonID=<?= $tmpPersonId ?>" class="table-link">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -377,13 +377,13 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 				<div role="person-tabs">
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?php echo gettext("Assigned Properties"); ?></a></li>
+						<li role="presentation" class="active"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
 						<?php if ($_SESSION['bFinance']) { ?>
-							<li role="presentation"><a href="#finance" aria-controls="finance" role="tab" data-toggle="tab"><?php echo gettext("Automatic Payments"); ?></a></li>
-							<li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab" data-toggle="tab"><?php echo gettext("Pledges and Payments"); ?></a></li>
+							<li role="presentation"><a href="#finance" aria-controls="finance" role="tab" data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
+							<li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab" data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
 						<?php }
 						if ($_SESSION['bNotes']) { ?>
-							<li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?php echo gettext("Notes"); ?></a></li>
+							<li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext("Notes") ?></a></li>
 						<?php } ?>
 					</ul>
 
@@ -398,7 +398,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 									if (mysql_num_rows($rsAssignedProperties) == 0) { ?>
 										<br>
 										<div class="alert alert-warning">
-											<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?php echo gettext("No property assignments."); ?></span>
+											<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No property assignments.") ?></span>
 										</div>
 									<?php } else {
 										//Yes, start the table
@@ -469,7 +469,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 									if ($bOkToEdit) { ?>
 									<div class="alert alert-info">
 										<div>
-											<h4><strong><?php echo gettext("Assign a New Property:"); ?></strong></h4>
+											<h4><strong><?= gettext("Assign a New Property:") ?></strong></h4>
 											<p><br></p>
 											<form method="post" action="PropertyAssign.php?FamilyID=<?php echo $iFamilyID ?>">
 											  <select name="PropertyID">
@@ -502,15 +502,15 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 								<table cellpadding="5" cellspacing="0" width="100%">
 
 								<tr class="TableHeader">
-									<td><?php echo gettext("Type"); ?></td>
-									<td><?php echo gettext("Next payment date"); ?></td>
-									<td><?php echo gettext("Amount"); ?></td>
-									<td><?php echo gettext("Interval (months)"); ?></td>
-									<td><?php echo gettext("Fund"); ?></td>
-									<td><?php echo gettext("Edit"); ?></td>
-									<td><?php echo gettext("Delete"); ?></td>
-									<td><?php echo gettext("Date Updated"); ?></td>
-									<td><?php echo gettext("Updated By"); ?></td>
+									<td><?= gettext("Type") ?></td>
+									<td><?= gettext("Next payment date") ?></td>
+									<td><?= gettext("Amount") ?></td>
+									<td><?= gettext("Interval (months)") ?></td>
+									<td><?= gettext("Fund") ?></td>
+									<td><?= gettext("Edit") ?></td>
+									<td><?= gettext("Delete") ?></td>
+									<td><?= gettext("Date Updated") ?></td>
+									<td><?= gettext("Updated By") ?></td>
 								</tr>
 
 								<?php
@@ -561,10 +561,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 												<button type="button" class="btn btn-primary delete-button" id="delete:<?php echo $plg_GroupKey;?>" ><?php echo gettext("Delete"); ?></button>
 											</td>
 											<td>
-												<?php echo $aut_DateLastEdited; ?>&nbsp;
+												<?= $aut_DateLastEdited ?>&nbsp;
 											</td>
 											<td>
-												<?php echo $EnteredFirstName . " " . $EnteredLastName; ?>&nbsp;
+												<?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
 											</td>
 										</tr>
 										<?php
@@ -572,7 +572,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 								</table>
 								<?php } ?>
 									<p align="center">
-										<a class="SmallText" href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo gettext("Add a new automatic payment"); ?></a>
+										<a class="SmallText" href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?= gettext("Add a new automatic payment") ?></a>
 									</p>
 								</div>
 							</div>
@@ -580,30 +580,30 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 						<div role="tab-pane fade" class="tab-pane" id="pledges">
 							<div class="main-box clearfix">
 								<div class="main-box-body clearfix">
-								<form method="post" action="FamilyView.php?FamilyID=<?php echo $iFamilyID; ?>">
-									<input type="checkbox" name="ShowPledges" value="1" <?php if ($_SESSION['sshowPledges']) echo " checked";?>><?php echo gettext("Show Pledges"); ?>
-									<input type="checkbox" name="ShowPayments" value="1" <?php if ($_SESSION['sshowPayments']) echo " checked";?>><?php echo gettext("Show Payments"); ?>
+								<form method="post" action="FamilyView.php?FamilyID=<?= $iFamilyID ?>">
+									<input type="checkbox" name="ShowPledges" value="1" <?php if ($_SESSION['sshowPledges']) echo " checked";?>><?= gettext("Show Pledges") ?>
+									<input type="checkbox" name="ShowPayments" value="1" <?php if ($_SESSION['sshowPayments']) echo " checked";?>><?= gettext("Show Payments") ?>
 									 Since:
-									<input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?php echo $_SESSION['sshowSince']; ?>" maxlength="10" id="ShowSinceDate" size="15">
-									<input type="submit" class="btn" <?php echo 'value="' . gettext("Update") . '"'; ?> name="UpdatePledgeTable" style="font-size: 8pt;">
+									<input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?= $_SESSION['sshowSince'] ?>" maxlength="10" id="ShowSinceDate" size="15">
+									<input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?> name="UpdatePledgeTable" style="font-size: 8pt;">
 								</form>
 
 								<table cellpadding="4" cellspacing="0" width="100%">
 
 								<tr class="TableHeader" align="center">
-									<td><?php echo gettext("Pledge or Payment"); ?></td>
-									<td><?php echo gettext("Fund"); ?></td>
-									<td><?php echo gettext("Fiscal Year"); ?></td>
-									<td><?php echo gettext("Date"); ?></td>
-									<td><?php echo gettext("Amount"); ?></td>
-									<td><?php echo gettext("NonDeductible"); ?></td>
-									<td><?php echo gettext("Schedule"); ?></td>
-									<td><?php echo gettext("Method"); ?></td>
-									<td><?php echo gettext("Comment"); ?></td>
-									<td><?php echo gettext("Edit"); ?></td>
-									<td><?php echo gettext("Delete"); ?></td>
-									<td><?php echo gettext("Date Updated"); ?></td>
-									<td><?php echo gettext("Updated By"); ?></td>
+									<td><?= gettext("Pledge or Payment") ?></td>
+									<td><?= gettext("Fund") ?></td>
+									<td><?= gettext("Fiscal Year") ?></td>
+									<td><?= gettext("Date") ?></td>
+									<td><?= gettext("Amount") ?></td>
+									<td><?= gettext("NonDeductible") ?></td>
+									<td><?= gettext("Schedule") ?></td>
+									<td><?= gettext("Method") ?></td>
+									<td><?= gettext("Comment") ?></td>
+									<td><?= gettext("Edit") ?></td>
+									<td><?= gettext("Delete") ?></td>
+									<td><?= gettext("Date Updated") ?></td>
+									<td><?= gettext("Updated By") ?></td>
 								</tr>
 
 								<?php
@@ -675,10 +675,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 													<?php echo $plg_schedule ?>&nbsp;
 												</td>
 												<td>
-													<?php echo $plg_method; ?>&nbsp;
+													<?= $plg_method ?>&nbsp;
 												</td>
 												<td>
-													<?php echo $plg_comment; ?>&nbsp;
+													<?= $plg_comment ?>&nbsp;
 												</td>
 												<td>
 													<a href="PledgeEditor.php?GroupKey=<?php echo $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Edit</a>
@@ -687,10 +687,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 													<a href="PledgeDelete.php?GroupKey=<?php echo $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>">Delete</a>
 												</td>
 												<td>
-													<?php echo $plg_DateLastEdited; ?>&nbsp;
+													<?= $plg_DateLastEdited ?>&nbsp;
 												</td>
 												<td>
-													<?php echo $EnteredFirstName . " " . $EnteredLastName; ?>&nbsp;
+													<?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
 												</td>
 											</tr>
 											<?php
@@ -703,8 +703,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 								</table>
 
 								<p align="center">
-									<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&amp;PledgeOrPayment=Pledge"><?php echo gettext("Add a new pledge"); ?></a>
-									<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&amp;PledgeOrPayment=Payment"><?php echo gettext("Add a new payment"); ?></a>
+									<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&amp;PledgeOrPayment=Pledge"><?= gettext("Add a new pledge") ?></a>
+									<a class="SmallText" href="PledgeEditor.php?FamilyID=<?php echo $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>&amp;PledgeOrPayment=Payment"><?= gettext("Add a new payment") ?></a>
 								</p>
 
 								<?php } ?>
@@ -712,7 +712,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 								<?php if ($_SESSION['bCanvasser']) { ?>
 
 								<p align="center">
-									<a class="SmallText" href="CanvassEditor.php?FamilyID=<?php echo $fam_ID;?>&amp;FYID=<?php echo $_SESSION['idefaultFY'];?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?php echo MakeFYString ($_SESSION['idefaultFY']) . gettext(" Canvass Entry"); ?></a>
+									<a class="SmallText" href="CanvassEditor.php?FamilyID=<?php echo $fam_ID;?>&amp;FYID=<?php echo $_SESSION['idefaultFY'];?>&amp;linkBack=FamilyView.php?FamilyID=<?php echo $iFamilyID;?>"><?= MakeFYString ($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
 								</p>
 								</div>
 							</div>
@@ -725,7 +725,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 									<p>
 									<div class="pull-right top-page-ui text-center clearfix">
 										<div class="profile-message-btn btn-group">
-											<a class="btn btn-primary active" role="button" href="NoteEditor.php?FamilyID=<?php echo $fam_ID; ?>"><span class="fa fa-plus" aria-hidden="true"></span> Add Note</a>
+											<a class="btn btn-primary active" role="button" href="NoteEditor.php?FamilyID=<?= $fam_ID ?>"><span class="fa fa-plus" aria-hidden="true"></span> Add Note</a>
 										</div>
 									</div>
 									<br></p>

@@ -449,21 +449,22 @@ class FinancialService {
 				$rsFam = RunQuery($sSQL);
 				extract(mysql_fetch_array($rsFam));
 				$iCheckNo = $micrObj->FindCheckNo ($tScanString);
-				echo '{"ScanString": "'.$tScanString.'" , "RouteAndAccount": "'.$routeAndAccount.'" , "CheckNumber": "'.$iCheckNo.'" ,"fam_ID": "'.$fam_ID.'" , "fam_Name": "'.$fam_Name.'"}';
+				return '{"ScanString": "'.$tScanString.'" , "RouteAndAccount": "'.$routeAndAccount.'" , "CheckNumber": "'.$iCheckNo.'" ,"fam_ID": "'.$fam_ID.'" , "fam_Name": "'.$fam_Name.'"}';
 			}
 			else
 			{
-				echo '{"status":"error in locating family"}';
+				throw new Exception("error in locating family");
 			}
 		}
 		else
 		{
-			echo '{"status":"Scanned Checks is disabled"}';
+			throw new Exception("status":"Scanned Checks is disabled");
 		}	
 	}
 
 	function getDepositsByFamilyID($fid)
 	{
+        //This might not be finished....
 		$sSQL = "SELECT plg_fundID, plg_amount from pledge_plg where plg_famID=\"" . $familyId . "\" AND plg_PledgeOrPayment=\"Pledge\"";
 			if ($fyid != -1)
 			{
@@ -1292,8 +1293,7 @@ class FinancialService {
         $thisReport->curY += $thisReport->summaryIntervalY;
         $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->Write (8, "Cash: ");
-        $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf ("%.2f", $thisReport->deposit->totalCash));
-        
+        $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf ("%.2f", $thisReport->deposit->totalCash));        
         
         $thisReport->curY += 2*$thisReport->summaryIntervalY;
         $thisReport->pdf->SetFont('Times','B', 10);
@@ -1307,7 +1307,6 @@ class FinancialService {
             $thisReport->pdf->Write (8, $currency->Name);
             $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf ("%.2f", $this->getCurrencyTypeOnDeposit($currency->id,$thisReport->deposit->dep_ID)));
         }
-        
         
     }
     
@@ -1440,6 +1439,7 @@ class FinancialService {
         
     }
     
+
     function getCurrencyTypeOnDeposit($currencyID,$depositID)
     {
          $currencies = array();

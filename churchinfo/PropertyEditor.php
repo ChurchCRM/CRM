@@ -139,13 +139,13 @@ require "Include/Header.php";
 ?>
 <div class="box box-body">
 
-<form method="post" action="PropertyEditor.php?PropertyID=<?php echo $iPropertyID; ?>&Type=<?php echo $sType; ?>">
+<form method="post" action="PropertyEditor.php?PropertyID=<?= $iPropertyID ?>&Type=<?= $sType ?>">
     <div class="form-group">
         <div class="row">
             <div class="col-xs-3">
-                <label for="Class"><?php echo gettext("Type:"); ?></label>
+                <label for="Class"><?= gettext("Type:") ?></label>
                 <select  class="form-control input-small" name="Class">
-                    <option value=""><?php echo gettext("Select Property Type"); ?></option>
+                    <option value=""><?= gettext("Select Property Type") ?></option>
                     <?php
                     while ($aRow = mysql_fetch_array($rsPropertyTypes))
                     {
@@ -162,27 +162,27 @@ require "Include/Header.php";
         </div>
         <div class="row">
             <div class="col-xs-3">
-                <label for="Name"><?php echo gettext("Name:"); ?></label>
-                <input class="form-control input-small" type="text" name="Name" value="<?php echo htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8"); ?>" size="50">
+                <label for="Name"><?= gettext("Name:") ?></label>
+                <input class="form-control input-small" type="text" name="Name" value="<?= htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8") ?>" size="50">
                 <?php echo $sNameError ?>
            </div>
        </div>
        <div class="row">
             <div class="col-xs-3">
-                <label for="Description">"<?php echo gettext("A"); ?> <?php echo $sTypeName ?><BR><?php echo gettext("with this property.."); ?>":</label>
-                <textarea class="form-control input-small" name="Description" cols="60" rows="3"><?php echo htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8"); ?></textarea>
+                <label for="Description">"<?= gettext("A") ?> <?php echo $sTypeName ?><BR><?= gettext("with this property..") ?>":</label>
+                <textarea class="form-control input-small" name="Description" cols="60" rows="3"><?= htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8") ?></textarea>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-3">
-                <label for="Prompt"><?php echo gettext("Prompt:"); ?></label>
+                <label for="Prompt"><?= gettext("Prompt:") ?></label>
                 <input class="form-control input-small" type="text" name="Prompt" value="<?php echo htmlentities(stripslashes($sPrompt),ENT_NOQUOTES, "UTF-8") ?>" size="50">
-                <span class="SmallText"><?php echo gettext("Entering a Prompt value will allow the association of a free-form value."); ?></span>
+                <span class="SmallText"><?= gettext("Entering a Prompt value will allow the association of a free-form value.") ?></span>
             </div>
         </div>
         <div class="row">
           <div class="col-xs-3">
-            <input type="submit" class="btn" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>&nbsp;<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="document.location='PropertyList.php?Type=<?php echo $sType; ?>';">
+            <input type="submit" class="btn" name="Submit" <?= 'value="' . gettext("Save") . '"' ?>>&nbsp;<input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="document.location='PropertyList.php?Type=<?= $sType ?>';">
         </div>
         </div>
     </div>

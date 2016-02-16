@@ -64,13 +64,13 @@ if (isset($_GET['Warn'])) { ?>
 <?php } ?>
 
 <p align="center" class="MediumLargeText">
-	<?php echo gettext("Please confirm deletion of this Property Type:"); ?> <b><?php echo $prt_Name; ?></b>
+	<?= gettext("Please confirm deletion of this Property Type:") ?> <b><?= $prt_Name ?></b>
 </p>
 
 <p align="center">
-	<a href="PropertyTypeDelete.php?Confirmed=Yes&PropertyTypeID=<?php echo $iPropertyTypeID ?>"><?php echo gettext("Yes, delete this record"); ?></a>
+	<a href="PropertyTypeDelete.php?Confirmed=Yes&PropertyTypeID=<?php echo $iPropertyTypeID ?>"><?= gettext("Yes, delete this record") ?></a>
 	&nbsp;&nbsp;
-	<a href="PropertyTypeList.php?Type=<?php echo $sType; ?>"><?php echo gettext("No, cancel this deletion"); ?></a>
+	<a href="PropertyTypeList.php?Type=<?= $sType ?>"><?= gettext("No, cancel this deletion") ?></a>
 
 </p>
 

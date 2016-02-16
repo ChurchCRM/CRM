@@ -81,7 +81,7 @@ class FamilyService {
 			$name = $this->getFamilyName($fam_ID);
 			$familyArray = array("fam_ID"=> $fam_ID, "Name" => $name);
 		}
-		echo json_encode($familyArray);
+		return json_encode($familyArray);
 	}
 	
 	function getFamilyStringByID($fam_ID)

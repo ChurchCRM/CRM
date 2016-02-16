@@ -169,27 +169,27 @@ $sPageTitle = $sTypeName . gettext(" Property Assignment");
 require "Include/Header.php";
 ?>
 
-<form method="post" action="PropertyAssign.php<?php echo $sQuerystring . "&PropertyID=" . $iPropertyID; ?>">
+<form method="post" action="PropertyAssign.php<?= $sQuerystring . "&PropertyID=" . $iPropertyID ?>">
 <input type="hidden" name="SecondPass" value="True">
-<input type="hidden" name="Action" value="<?php echo $sAction; ?>">
+<input type="hidden" name="Action" value="<?= $sAction ?>">
 
 <table cellpadding="4">
 	<tr>
 		<td align="right"><b><?php echo $sTypeName ?>:</b></td>
-		<td><?php echo $sName; ?></td>
+		<td><?= $sName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?php echo gettext("Assigning:"); ?></b></td>
+		<td align="right"><b><?= gettext("Assigning:") ?></b></td>
 		<td><?php echo $sPropertyName ?></td>
 <?php if (strlen($sPrompt)) { ?>
 		<tr>
-			<td align="right" valign="top"><b><?php echo gettext("Value:"); ?></b></td>
-			<td><?php echo $sPrompt; ?><br><textarea name="Value" cols="60" rows="10"><?php echo $sValue; ?></textarea></td>
+			<td align="right" valign="top"><b><?= gettext("Value:") ?></b></td>
+			<td><?= $sPrompt ?><br><textarea name="Value" cols="60" rows="10"><?= $sValue ?></textarea></td>
 		</tr>
 <?php } ?>
 </table>
 
-<p align="center"><input type="submit" class="btn" <?php echo 'value="'; if ($sAction == "add") { echo gettext("Assign"); } else { echo gettext("Update"); } echo '"'; ?> name="Submit"></p>
+<p align="center"><input type="submit" class="btn" <?= 'value="'; if ($sAction == "add") { echo gettext("Assign"); } else { echo gettext("Update"); } echo '"' ?> name="Submit"></p>
 
 </form>
 

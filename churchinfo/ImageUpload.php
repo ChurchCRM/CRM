@@ -49,8 +49,8 @@ if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
         $foo->file_overwrite = true;
         $foo->image_resize          = true;
         $foo->image_ratio_fill      = true;
-        $foo->image_y               = 150;
-        $foo->image_x               = 150;
+        $foo->image_y               = 250;
+        $foo->image_x               = 250;
         $foo->Process($imageLocationThumb);
         if (!$foo->processed) {
             echo 'error : ' . $foo->error;

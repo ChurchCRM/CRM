@@ -240,7 +240,6 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 
 ?>
 
-
 <form id="PledgeForm" action="PledgeEditor.php?<?php echo "CurrentDeposit=" . $iCurrentDeposit . "&GroupKey=" . $sGroupKey . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
 
 <input type="hidden" name="FamilyID" id="FamilyID" value="<?php echo $iFamily; ?>">
@@ -571,7 +570,6 @@ $(document).ready(function() {
 	});
 });
 </script>
-
 <?php
 if ($sGroupKey) {
 	?><script type="text/javascript">
