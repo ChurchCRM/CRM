@@ -255,8 +255,7 @@ $(document).ready(function() {
         });
         
     });
-    
-    
+ 
     dataT = $("#paymentsTable").DataTable({
     data:paymentData.pledges,
     columns: [
@@ -306,7 +305,6 @@ $(document).ready(function() {
             return '<a href=\'PledgeDetails.php?PledgeID='+data+'\'>Details</a>'
         }
     }<?php } ?>
-    
     ]
     });
     
@@ -328,7 +326,6 @@ $(document).ready(function() {
         }
     } );
     
-    
     $("#paymentsTable tbody").on('click', 'tr', function() {
          console.log("clicked");
          $(this).toggleClass('selected');
@@ -345,8 +342,7 @@ $(document).ready(function() {
         $("#deleteNumber").text(deletedRows.length);
         $("#confirmDelete").modal('show');
     });
-    
-    
+
     $("#deleteConfirmed").click(function() {
 	 var deletedRows = dataT.rows('.selected').data()
         $.each(deletedRows, function(index, value){
@@ -363,13 +359,8 @@ $(document).ready(function() {
                 dataT.rows('.selected').remove().draw(false);
             });
         });
-       
-		
     });
-    
 });
-   
-
 </script>
 
 <?php

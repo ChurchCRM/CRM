@@ -192,7 +192,7 @@ require "Include/Header.php";
   </table>
     </td>
 
-    <?php if (($numCustomFields > 0) or ($numFamCustomFields > 0)) { ?>
+    <?php if ($numCustomFields > 0 || $numFamCustomFields > 0) { ?>
     <td width="20%" valign="top"><table border="0">
     <?php if ($numCustomFields > 0) { ?>
     <tr><td width="100%" valign="top" align="left">
@@ -202,7 +202,7 @@ require "Include/Header.php";
             // Display the custom fields
             while ($Row = mysql_fetch_array($rsCustomFields)) {
                 extract($Row);
-                if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+                if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]])
                 {
                     echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td>";
                     echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $custom_Field . " value=\"1\"></td></tr>";
@@ -221,7 +221,7 @@ require "Include/Header.php";
             // Display the family custom fields
             while ($Row = mysql_fetch_array($rsFamCustomFields)) {
                 extract($Row);
-                if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+                if ($aSecurityType[$fam_custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$fam_custom_FieldSec]])
                 {
                     echo "<tr><td class=\"LabelColumn\">" . $fam_custom_Name . "</td>";
                     echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $fam_custom_Field . " value=\"1\"></td></tr>";
@@ -244,7 +244,7 @@ require "Include/Header.php";
         <td class="TextColumnWithBottomBorder">
             <select name="Source">
                 <option value="filters"><?= gettext("Based on filters below..") ?></option>
-                <option value="cart" <?php if (array_key_exists ("Source", $_GET) and $_GET["Source"] == 'cart') echo "selected";?>><?= gettext("People in Cart (filters ignored)") ?></option>
+                <option value="cart" <?php if (array_key_exists("Source", $_GET) && $_GET["Source"] == 'cart') echo "selected";?>><?= gettext("People in Cart (filters ignored)") ?></option>
             </select>
         </td>
     </tr>

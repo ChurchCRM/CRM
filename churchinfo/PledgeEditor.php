@@ -125,7 +125,7 @@ if ($sGroupKey) {
 		else
 			$iMethod = 'Check';
 	}
-	if (!$iEnvelope and $iFamily) {
+	if (!$iEnvelope && $iFamily) {
 		$sSQL = "SELECT fam_Envelope FROM family_fam WHERE fam_ID=\"" . $iFamily . "\";";
 		$rsEnv = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsEnv));
@@ -152,7 +152,7 @@ if ($PledgeOrPayment == 'Pledge') { // Don't assign the deposit slip if this is 
 	}
 }
 
-if ($iMethod == "CASH" or $iMethod == "CHECK")
+if ($iMethod == "CASH" || $iMethod == "CHECK")
 	$dep_Type = "Bank";
 elseif ($iMethod == "CREDITCARD")
 	$dep_Type = "CreditCard";
@@ -162,9 +162,6 @@ elseif ($iMethod == "BANKDRAFT")
 if ($PledgeOrPayment == 'Payment') {
 	$bEnableNonDeductible = 1; // this could/should be a config parm?  regardless, having a non-deductible amount for a pledge doesn't seem possible
 }
-
-
-
 
 // Set Current Deposit setting for user
 if ($iCurrentDeposit) {
@@ -187,7 +184,7 @@ if ($PledgeOrPayment == 'Pledge') {
 	while ($aRow = mysql_fetch_array($rsChecksThisDep)) {
 		extract($aRow);
 		$chkKey = $plg_FamID . "|" . $plg_checkNo;
-		if ($plg_method=='CHECK' and (!array_key_exists($chkKey, $checkHash))) {
+		if ($plg_method == 'CHECK' && (!array_key_exists($chkKey, $checkHash))) {
 			$checkHash[$chkKey] = $plg_plgID;
 			++$depositCount;
 		}
@@ -546,6 +543,7 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 $("#Date").datepicker({format:'yyyy-mm-dd'});
 
 
+
 $(document).ready(function() {
 	$("#FamilyName").autocomplete({
 		source: function (request, response) {
@@ -570,7 +568,7 @@ $(document).ready(function() {
 		}
 	});
 });
-</script>
+
 <?php
 if ($sGroupKey) {
 	?><script type="text/javascript">
@@ -583,3 +581,4 @@ echo "var thisPayment = " . $FinancialService->getPledgeorPayment($sGroupKey) ;
 }
 require "Include/Footer.php";
 ?>
+

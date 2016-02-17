@@ -42,7 +42,7 @@ require "Include/Header.php"; ?>
 <div class="box box-body">
 <?php
 // Confirmation message that people where added to Event from Cart
-if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart']) == 0) {
+if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) == 0) {
         if (!array_key_exists("Message", $_GET)) { ?>
              <p class="text-center callout callout-warning"><?= gettext("You have no items in your cart.") ?> </p>
         <?php } else {
@@ -294,19 +294,19 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
                 echo '  <td>';
                 echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
                 echo '  id="BulkMailPresort" value="1" ';
-                if (array_key_exists ("buildmailpresort", $_COOKIE) and $_COOKIE["bulkmailpresort"])
+                if (array_key_exists("buildmailpresort", $_COOKIE) && $_COOKIE["bulkmailpresort"])
                     echo "checked";
                 echo '  ><br></td></tr>';
 
                 echo '  <tr><td>' . gettext("Quiet Presort") . '</td>';
                 echo '  <td>';
                 echo '  <input ';
-                if (array_key_exists ("buildmailpresort", $_COOKIE) and !$_COOKIE["bulkmailpresort"])
+                if (array_key_exists("buildmailpresort", $_COOKIE) && !$_COOKIE["bulkmailpresort"])
                     echo 'disabled ';   // This would be better with $_SESSION variable
                                         // instead of cookie ... (save $_SESSION in MySQL)
                 echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
                 echo '  id="QuietBulkMail" value="1" ';
-                if (array_key_exists ("bulkmailquiet", $_COOKIE) and $_COOKIE["bulkmailquiet"] && array_key_exists ("buildmailpresort", $_COOKIE) and $_COOKIE["bulkmailpresort"])
+                if (array_key_exists("bulkmailquiet", $_COOKIE) && $_COOKIE["bulkmailquiet"] && array_key_exists("buildmailpresort", $_COOKIE) && $_COOKIE["bulkmailpresort"])
                     echo "checked";
                 echo '  ><br></td></tr>';
 
@@ -382,7 +382,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
             $aRow = mysql_fetch_array($rsPendingEmail);
             extract($aRow);
 
-            if ($emp_to_send==0 && $countrecipients==0) {
+            if ($emp_to_send == 0 && $countrecipients == 0) {
                 // if both are zero the email job has not started.  In this
                 // case the user may edit the email and/or change the distribution
 

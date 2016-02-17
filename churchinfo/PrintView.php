@@ -187,7 +187,7 @@ if ($fam_ID)
 			{
 				$Row = mysql_fetch_array($rsCustomFields);
 				extract($Row);
-				if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+				if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]])
 				{
 					$currentData = trim($aCustomData[$custom_Field]);
 					if ($type_ID == 11) $custom_Special = $sCountry;

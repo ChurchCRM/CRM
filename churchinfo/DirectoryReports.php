@@ -189,7 +189,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
          <?php
          if ($numCustomFields > 0) {
             while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_ASSOC) ){
-					if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') or ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]]))
+					if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') || ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]]))
 					{ ?>
 		            <input type="checkbox" Name="bCustom<?= $rowCustomField['custom_Order'] ?>" value="1" checked><?= $rowCustomField['custom_Name'] ?><br>
          <?php
