@@ -28,29 +28,49 @@
 ******************************************************************************/
 
 require_once dirname(__FILE__).'/../service/PersonService.php';
-require_once 'Functions.php';
 
-function Header_head_metatag()
-{
-    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
-    global $sPageTitle, $sRootPath;
+function Header_head_metatag() {
+global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
+global $sPageTitle, $sURLPath;
 
-    if (strlen($sMetaRefresh))
-      echo $sMetaRefresh;
-
-    ?><title>ChurchCRM: <?= $sPageTitle ?></title><?php
+$sURLPath = $_SESSION['sURLPath'];
+?>
+    <?php if (strlen($sMetaRefresh)) echo $sMetaRefresh; ?>
+    <title>ChurchCRM: <?= $sPageTitle ?></title>
+<?php
 }
 
-function Header_body_scripts()
-{
-    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
-    global $bLockURL, $URL, $sRootPath;
+function Header_body_scripts() {
+global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage,
+$bLockURL, $URL, $sURLPath;
 
-    checkAllowedURL();
+$sURLPath = $_SESSION['sURLPath'];
+//
+// Basic sercurity checks:
+//
+// Check if https is required:
+// Verify that page has an authorized URL in the browser address bar.
+// Otherwise redirect to login page.
+// An array of authorized URL's is specified in Config.php ... $URL
+    if (isset($bLockURL) && ($bLockURL === TRUE)) {
+        echo '
+    <script language="javascript" type="text/javascript">
+        v_test="FAIL"'; // Set "FAIL" to assume the URL is not allowed
+                        // Set "PASS" if we learn it is allowed
+        foreach ($URL as $value) { // Default.php is 11 characters
+            $value = substr($value, 0, -11);
+            echo '
+        if(window.location.href.indexOf("'.$value.'") == 0) v_test="PASS";';
+        }
+        echo '
+        if (v_test == "FAIL") window.location="'.$URL[0].'";
+    </script>';
+    }
+// End of basic security checks
  ?>
 
-    <script type="text/javascript" src="<?= $sRootPath . "/" ?>Include/jscalendar/calendar.js"></script>
-    <script type="text/javascript" src="<?= $sRootPath . "/" ?>Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
+    <script type="text/javascript" src="<?= $sURLPath."/" ?>Include/jscalendar/calendar.js"></script>
+    <script type="text/javascript" src="<?= $sURLPath."/" ?>Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
 
     <script language="javascript" type="text/javascript">
 
@@ -130,8 +150,7 @@ function Header_body_scripts()
 
 $security_matrix = GetSecuritySettings();
 
-function GetSecuritySettings()
-{
+function GetSecuritySettings() {
     $aSecurityList[] = "bAdmin";
     $aSecurityList[] = "bAddRecords";
     $aSecurityList[] = "bEditRecords";
@@ -144,10 +163,10 @@ function GetSecuritySettings()
     $aSecurityList[] = "bCanvasser";
     $aSecurityList[] = "bAddEvent";
     $aSecurityList[] = "bSeePrivacyData";
-
+    
     $sSQL = "SELECT DISTINCT ucfg_name FROM userconfig_ucfg WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY' ORDER by ucfg_id";
     $rsSecGrpList = RunQuery($sSQL);
-
+            
     while ($aRow = mysql_fetch_array($rsSecGrpList))
     {
         $aSecurityList[] = $aRow['ucfg_name'];
@@ -157,7 +176,7 @@ function GetSecuritySettings()
 
     $sSecurityCond = " AND (security_grp = 'bALL'";
     for ($i = 0; $i < count($aSecurityList); $i++) {
-        if (array_key_exists ($aSecurityList[$i], $_SESSION) && $_SESSION[$aSecurityList[$i]]) {
+    	if (array_key_exists ($aSecurityList[$i], $_SESSION) && $_SESSION[$aSecurityList[$i]]) {
             $sSecurityCond .= " OR security_grp = '" . $aSecurityList[$i] . "'";
         }
     }
@@ -167,9 +186,9 @@ function GetSecuritySettings()
 
 function addMenu($menu) {
     global $security_matrix;
-
+    
     $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text, session_var_in_uri, url_parm_name, security_grp, icon FROM menuconfig_mcf WHERE parent = '$menu' AND active=1 ".$security_matrix." ORDER BY sortorder";
-
+    
     $rsMenu = RunQuery($sSQL);
     $item_cnt = mysql_num_rows($rsMenu);
     $idx = 1;
@@ -186,18 +205,18 @@ function addMenu($menu) {
     }
 }
 
-function addMenuItem($aMenu,$mIdx)
-{
-    global $security_matrix, $sRootPath;
+function addMenuItem($aMenu,$mIdx) {
+global $security_matrix, $sURLPath;
+	$sURLPath = $_SESSION['sURLPath'];
 
-    $link = ($aMenu['uri'] == "") ? "" : $sRootPath."/".$aMenu['uri'];
+    $link = ($aMenu['uri'] == "") ? "" : $sURLPath."/".$aMenu['uri'];
     $text = $aMenu['statustext'];
     if (!is_null($aMenu['session_var'])) {
         if (($link > "") && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
             if (strstr($link, "?")&&true) {
                 $cConnector = "&";
             } else {
-                $cConnector = "?";
+                $cConnector = "?"; 
             }
             $link .= $cConnector.$aMenu['url_parm_name']."=".$_SESSION[$aMenu['session_var']];
         }
@@ -213,19 +232,17 @@ function addMenuItem($aMenu,$mIdx)
     if (!($aMenu['ismenu']) || ($numItems > 0))
     {
         if($link){
-            if ($aMenu['name'] != "sundayschool-dash") { # HACK to remove the sunday school 2nd dashboard
-                echo "<li><a href='$link'>";
-                if ($aMenu['icon'] != "") {
-                    echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>";
-                }
-                if ($aMenu['parent'] != "root") {
-                    echo "<i class=\"fa fa-angle-double-right\"></i> ";
-                }
-                if ($aMenu['parent'] == "root") {
-                    echo "<span>" . $aMenu['content'] . "</span></a>";
-                } else {
-                    echo $aMenu['content'] . "</a>";
-                }
+            echo "<li><a href='$link'>";
+            if (    $aMenu['icon'] != "") {
+                echo "<i class=\"fa ". $aMenu['icon'] ."\"></i>";
+            }
+            if ($aMenu['parent'] != "root") {
+                echo "<i class=\"fa fa-angle-double-right\"></i> ";
+            }
+            if ($aMenu['parent'] == "root") {
+                echo "<span>".$aMenu['content'] . "</span></a>";
+            } else {
+                echo $aMenu['content'] . "</a>";
             }
         } else {
             echo "<li class=\"treeview\">\n";
@@ -242,11 +259,10 @@ function addMenuItem($aMenu,$mIdx)
                 <ul class="treeview-menu">
             <?php
                 if ($aMenu['name'] == "sundayschool") {
-                    echo "<li><a href='".$sURLPath."/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>Dashboard</a></li>";
                     $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
                     $rsSundaySchoolClasses = RunQuery($sSQL);
                     while ($aRow = mysql_fetch_array($rsSundaySchoolClasses)) {
-                        echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
+                        echo "<li><a href='".$sURLPath."/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
                     }
                 }
         }
@@ -255,8 +271,8 @@ function addMenuItem($aMenu,$mIdx)
             addMenu($aMenu['name']);
             echo "</ul>\n</li>\n";
         } else {
-            echo "</li>\n";
-        }
+			echo "</li>\n";
+		}
 
         return true;
     } else {
@@ -264,10 +280,11 @@ function addMenuItem($aMenu,$mIdx)
     }
 }
 
-function Header_body_menu()
-{
+function Header_body_menu() {
     global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
-    global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
+    global $MenuFirst, $sPageTitle, $sPageTitleSub, $sURLPath;
+
+	$sURLPath = $_SESSION['sURLPath'];
 
     $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
 
@@ -277,19 +294,23 @@ function Header_body_menu()
         // Optional Header Code (Entered on General Settings page - sHeader)
         // Must first set a table with a background color, or content scrolls across
         // the background of the custom code when using a non-defective browser
-        echo "<table width=\"100%\" bgcolor=white cellpadding=0 cellspacing=0 border=0><tr><td width=\"100%\">";
-        echo html_entity_decode($sHeader, ENT_QUOTES);
-        echo "</td></tr></table>";
+        // echo "<table width=\"100%\" cellpadding=0 cellspacing=0 border=0><tr><td width=\"100%\"><span style=\"color:white\">";
+        // echo html_entity_decode($sHeader,ENT_QUOTES);
+        // echo "</span></td></tr></table>";
     }
 ?>
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="<?= $sRootPath ?>/Menu.php" class="logo">
+        <a href="<?= $sURLPath?>/Menu.php" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>C</b>RM</span>
             <!-- logo for regular state and mobile devices -->
+            <?php if ($sHeader) {  ?>
+            <span class="logo-lg"><?= html_entity_decode($sHeader,ENT_QUOTES) ?></span>
+             <?php } Else{ ?>
             <span class="logo-lg"><b>Church</b>CRM</span>
+             <?php } ?>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -303,9 +324,9 @@ function Header_body_menu()
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown settings-dropdown">
-                        <a href="<?= $sRootPath . "/" ?>CartView.php">
+                        <a href="<?= $sURLPath."/" ?>CartView.php">
                             <i class="fa fa-shopping-cart"></i>
-                            <span class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
+                            <span class="label label-success"><?= count($_SESSION['aPeopleCart'])?></span>
                         </a>
 
                     </li>
@@ -344,10 +365,10 @@ function Header_body_menu()
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="<?= $sRootPath . "/" ?>UserPasswordChange.php" class="btn btn-default btn-flat">Change Password</a>
+                                    <a href="<?= $sURLPath."/" ?>UserPasswordChange.php" class="btn btn-default btn-flat">Change Password</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="<?= $sRootPath . "/" ?>SettingsIndividual.php" class="btn btn-default btn-flat">My Settings</a>
+                                    <a href="<?= $sURLPath."/" ?>SettingsIndividual.php" class="btn btn-default btn-flat">My Settings</a>
                                 </div>
                             </li>
                         </ul>
@@ -370,7 +391,7 @@ function Header_body_menu()
                         </a>
                     </li>
                     <li class="hidden-xxs">
-                        <a href="<?= $sRootPath . "/" ?>Default.php?Logoff=True">
+                        <a href="<?= $sURLPath."/" ?>Default.php?Logoff=True">
                             <i class="fa fa-power-off"></i>
                         </a>
                     </li>
@@ -395,7 +416,7 @@ function Header_body_menu()
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="<?= $sRootPath . "/" ?>Menu.php">
+                            <a href="<?= $sURLPath."/" ?>Menu.php">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
@@ -411,10 +432,10 @@ function Header_body_menu()
                         echo $sPageTitle."\n";
                         if ($sPageTitleSub != "") {
                             echo "<small>".$sPageTitleSub."</small>";
-                        } ?>
+                        }?>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="<?= $sRootPath . "/Menu.php" ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="<?= $sURLPath."/Menu.php" ?>"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li class="active"><?= $sPageTitle ?></li>
                     </ol>
                 </section>
@@ -439,7 +460,7 @@ function create_side_nav($menu) {
 }
 function addSection($menu) {
     global $cnInfoCentral;
-
+    
     $security_matrix = " AND (security_grp = 'bALL'";
     if ($_SESSION['bAdmin']) {
         $security_matrix .= " OR security_grp = 'bAdmin'";
@@ -458,11 +479,11 @@ function addSection($menu) {
     }
     $security_matrix .= ")";
     $query = "SELECT name, ismenu, content, uri, statustext, session_var, session_var_in_text, session_var_in_uri, url_parm_name, security_grp FROM menuconfig_mcf WHERE parent = '$menu' AND active=1 ".$security_matrix." ORDER BY sortorder";
-
+    
     $rsMenu = mysql_query($query, $cnInfoCentral);
     $item_cnt = mysql_num_rows($rsMenu);
     $ptr = 1;
-    while ($aRow = mysql_fetch_array($rsMenu)) {
+    while ($aRow = mysql_fetch_array($rsMenu)) {    
         if (isset($aRow['admin_only']) & !$_SESSION['bAdmin']) {
         // hide admin menu
         } else {
@@ -472,11 +493,11 @@ function addSection($menu) {
     }
 }
 
-function addEntry($aMenu)
-{
-    global $sRootPath;
+function addEntry($aMenu) {
 
-    $link = ($aMenu['uri'] == "") ? "" : $sRootPath."/".$aMenu['uri'];
+$sURLPath = $_SESSION['sURLPath'];
+
+    $link = ($aMenu['uri'] == "") ? "" : $sURLPath."/".$aMenu['uri'];
     $text = $aMenu['statustext'];
     $content = $aMenu['content'];
     if (!is_null($aMenu['session_var'])) {
