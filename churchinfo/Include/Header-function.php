@@ -30,10 +30,10 @@
 require_once dirname(__FILE__).'/../service/PersonService.php';
 require_once 'Functions.php';
 
-function Header_head_metatag()
-{
-    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
-    global $sPageTitle, $sRootPath;
+
+function Header_head_metatag() {
+global $sLanguage, $bExportCSV, $sMetaRefresh, $bRegistered, $sHeader, $sGlobalMessage;
+global $sPageTitle, $sRootPath;
 
     if (strlen($sMetaRefresh))
       echo $sMetaRefresh;
@@ -43,7 +43,7 @@ function Header_head_metatag()
 
 function Header_body_scripts()
 {
-    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
+    global $sLanguage, $bExportCSV, $sMetaRefresh, $bRegistered, $sHeader, $sGlobalMessage;
     global $bLockURL, $URL, $sRootPath;
 
     checkAllowedURL();
@@ -266,7 +266,7 @@ function addMenuItem($aMenu,$mIdx)
 
 function Header_body_menu()
 {
-    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
+    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage, $sGlobalMessageClass;
     global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
 
     $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
@@ -418,7 +418,7 @@ function Header_body_menu()
                 <section class="content">
                     <?php if ($sGlobalMessage) { ?>
                     <div class="main-box-body clearfix">
-                        <div class="alert alert-info fade in">
+                        <div class="callout callout-<?= $sGlobalMessageClass ?> fade in">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i>
                             <?= $sGlobalMessage ?>
