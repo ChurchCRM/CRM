@@ -809,7 +809,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 			</div>
 			<div class="modal-body">
 				<input type="file" name="file" size="50" /> <br/>
-				Max Photo size: <?= $upload_max_size = ini_get('upload_max_filesize') ?>
+				Max Photo size: <?= ini_get('upload_max_filesize') ?>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
