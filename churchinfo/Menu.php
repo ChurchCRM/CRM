@@ -283,21 +283,6 @@ if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's di
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-6">
-        <div class="box box-info">
-            <div class="box-header">
-                <i class="ion ion-android-contacts"></i>
-                <h3 class="box-title">Gender Demographics</h3>
-                <div class="box-tools pull-right">
-                    <div id="gender-donut-legend" class="chart-legend"></div>
-                </div>
-            </div><!-- /.box-header -->
-            <div class="box-body">
-                <canvas id="gender-donut" style="height:250px"></canvas>
-            </div>
-        </div>
-    </div>
-     
 </div>
 
 <!-- this page specific inline scripts -->
