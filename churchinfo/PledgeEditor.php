@@ -240,10 +240,10 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 
 ?>
 
-<form id="PledgeForm" action="PledgeEditor.php?<?php echo "CurrentDeposit=" . $iCurrentDeposit . "&GroupKey=" . $sGroupKey . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
+<form id="PledgeForm" action="PledgeEditor.php?<?= "CurrentDeposit=" . $iCurrentDeposit . "&GroupKey=" . $sGroupKey . "&PledgeOrPayment=" . $PledgeOrPayment. "&linkBack=" . $linkBack; ?>" name="PledgeEditor">
 
-<input type="hidden" name="FamilyID" id="FamilyID" value="<?php echo $iFamily; ?>">
-<input type="hidden" name="PledgeOrPayment" id="PledgeOrPayment" value="<?php echo $PledgeOrPayment; ?>">
+<input type="hidden" name="FamilyID" id="FamilyID" value="<?= $iFamily; ?>">
+<input type="hidden" name="PledgeOrPayment" id="PledgeOrPayment" value="<?= $PledgeOrPayment; ?>">
 <!-- Start Pledge Details Section -->
 <div class="box box-info">
 	<div class="box-header">
@@ -253,20 +253,20 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <label for="date"><?php echo gettext("Date"); ?></label>
+                <label for="date"><?= gettext("Date"); ?></label>
                 <?php	if (!$dDate)	$dDate = $dep_Date ?>
-                <input type="text" name="Date" value="<?php echo $dDate; ?>"  id="Date" >        
+                <input type="text" name="Date" value="<?= $dDate; ?>"  id="Date" >        
             
             </div>
            
                 <!-- Start Donation Envelope Section -->
                 <?php if ($dep_Type == 'Bank' and $bUseDonationEnvelopes) {?>
                     <div class="col-md-3">
-                    <label for="Envelope"><?php echo gettext("Envelope #"); ?></label>
-                    <input type="text" name="Envelope" size=8 id="Envelope" value="<?php echo $iEnvelope; ?>">
+                    <label for="Envelope"><?= gettext("Envelope #"); ?></label>
+                    <input type="text" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope; ?>">
                     <?php if (!$dep_Closed) { ?>
 
-                    <button type="button" class="btn btn-primary" value="<?php echo gettext("Find family->"); ?>" id="MatchEnvelope"><?php echo gettext("Find family->"); ?></button>
+                    <button type="button" class="btn btn-primary" value="<?= gettext("Find family->"); ?>" id="MatchEnvelope"><?= gettext("Find family->"); ?></button>
                     
                     <?php } ?>
                 </div>
@@ -277,14 +277,14 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
                
                     <?php if ($PledgeOrPayment=='Pledge') { ?>
                          <div class="col-md-4">
-                        <label for="Schedule"><?php echo gettext("Payment Schedule"); ?></label>
+                        <label for="Schedule"><?= gettext("Payment Schedule"); ?></label>
                             <select name="Schedule">
-                                <option value="0"><?php echo gettext("Select Schedule"); ?></option>
-                                <option value="Weekly" <?php if ($iSchedule == "Weekly") { echo "selected"; } ?>><?php echo gettext("Weekly"); ?></option>
-                                <option value="Monthly" <?php if ($iSchedule == "Monthly") { echo "selected"; } ?>><?php echo gettext("Monthly"); ?></option>
-                                <option value="Quarterly" <?php if ($iSchedule == "Quarterly") { echo "selected"; } ?>><?php echo gettext("Quarterly"); ?></option>
-                                <option value="Once" <?php if ($iSchedule == "Once") { echo "selected"; } ?>><?php echo gettext("Once"); ?></option>
-                                <option value="Other" <?php if ($iSchedule == "Other") { echo "selected"; } ?>><?php echo gettext("Other"); ?></option>
+                                <option value="0"><?= gettext("Select Schedule"); ?></option>
+                                <option value="Weekly" <?php if ($iSchedule == "Weekly") { echo "selected"; } ?>><?= gettext("Weekly"); ?></option>
+                                <option value="Monthly" <?php if ($iSchedule == "Monthly") { echo "selected"; } ?>><?= gettext("Monthly"); ?></option>
+                                <option value="Quarterly" <?php if ($iSchedule == "Quarterly") { echo "selected"; } ?>><?= gettext("Quarterly"); ?></option>
+                                <option value="Once" <?php if ($iSchedule == "Once") { echo "selected"; } ?>><?= gettext("Once"); ?></option>
+                                <option value="Other" <?php if ($iSchedule == "Other") { echo "selected"; } ?>><?= gettext("Other"); ?></option>
                             </select>
                         </div>
                     <?php }?>
@@ -296,42 +296,42 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
                         <select name="Method" id="PaymentByMethod">
                             <option value="None" selected>Select a Payment Method</option>
                             <?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "Bank" or !$iCurrentDeposit) { ?>
-                            <option value="CHECK"><?php echo gettext("CHECK");?></option>
-                            <option value="CASH"><?php echo gettext("CASH");?></option>
+                            <option value="CHECK"><?= gettext("CHECK");?></option>
+                            <option value="CASH"><?= gettext("CASH");?></option>
                             <?php } ?>
                             <?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "CreditCard" or !$iCurrentDeposit) { ?>
-                            <option value="CREDITCARD"><?php echo gettext("Credit Card"); ?></option>
+                            <option value="CREDITCARD"><?= gettext("Credit Card"); ?></option>
                             <?php } ?>
                             <?php if ($PledgeOrPayment=='Pledge' or $dep_Type == "BankDraft" or !$iCurrentDeposit) { ?>
-                            <option value="BANKDRAFT"><?php echo gettext("Bank Draft"); ?></option>
+                            <option value="BANKDRAFT"><?= gettext("Bank Draft"); ?></option>
                             <?php } ?>
                                                     <?php if ($PledgeOrPayment=='Pledge') { ?>
-                                                    <option value="EGIVE" <?php if ($iMethod == "EGIVE") { echo "selected"; } ?>><?php echo
+                                                    <option value="EGIVE" <?php if ($iMethod == "EGIVE") { echo "selected"; } ?>><?=
                               gettext("eGive"); ?></option>
                                                     <?php } ?>
                         </select>
                 </div>
                 <!-- End Payment Method Section -->
                  <div class="col-md-3">
-                    <label for="grandTotal"><?php echo gettext("Total $"); ?></label>
-                    <input id="grandTotal" type="text" name="TotalAmount" id="TotalAmount" value="<?php echo $iTotalAmount; ?>">
+                    <label for="grandTotal"><?= gettext("Total $"); ?></label>
+                    <input id="grandTotal" type="text" name="TotalAmount" id="TotalAmount" value="<?= $iTotalAmount; ?>">
                 </div>
         </div>
                     
             <div class="row">
                 <div class="col-md-3">
                 <!-- Start Fiscal Year Selection -->
-                    <label for="FYID"><?php echo gettext("Fiscal Year"); ?></label>
+                    <label for="FYID"><?= gettext("Fiscal Year"); ?></label>
                     <?php PrintFYIDSelect ($iFYID, "FYID") ?>
                 </div>
                 <!-- End Fiscal Year Selection -->
                 <div class="col-md-3">
                 <!-- Start Fund Selection (or Split Option) -->
                 
-                    <label for="FundSplit"><?php echo gettext("Fund"); ?></label>
+                    <label for="FundSplit"><?= gettext("Fund"); ?></label>
                     <select name="FundSplit" id="FundSplit">
                         <option value="None" selected>Select a Fund</option>
-                        <option value=0><?php echo gettext("Split");?></option>
+                        <option value=0><?= gettext("Split");?></option>
                         <?php foreach ($funds as $fund) {
                             echo "<option value=\"" . $fund->ID . "\""; if ($iSelectedFund==$fund->ID) echo " selected"; echo ">"; echo gettext($fund->Name) . "</option>";
                         } ?>
@@ -347,14 +347,14 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
             </div>
             <div class="row">
                 <div class="col-xs-8 col-md-8">
-                    <label for="FamilyName"><?php echo gettext("Family"); ?></label>
+                    <label for="FamilyName"><?= gettext("Family"); ?></label>
                     <select style="width:100%" name="FamilyName" id="FamilyName">
-                        <option value="<?php echo $sFamilyName; ?>"><?php echo $sFamilyName; ?></option>
+                        <option value="<?= $sFamilyName; ?>"><?= $sFamilyName; ?></option>
                     </select>
                 </div>
             </div>	
-            <input type="hidden" id="FamilyID" name="FamilyID" value='<?php echo $iFamily; ?>'>
-            <input type="hidden" id="DepositID" name="DepositID" value='<?php echo $_GET['CurrentDeposit']; ?>'>
+            <input type="hidden" id="FamilyID" name="FamilyID" value='<?= $iFamily; ?>'>
+            <input type="hidden" id="DepositID" name="DepositID" value='<?= $_GET['CurrentDeposit']; ?>'>
            
         </div>
         
@@ -455,18 +455,18 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
                     <?php if ($bUseScannedChecks and ($dep_Type == 'Bank' or $PledgeOrPayment=='Pledge')) {?>
                     <td align="center">
                     <?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
-                        <button type="button" class="btn btn-primary" value="<?php echo gettext("find family from check account #"); ?>" id="MatchFamily"><?php echo gettext("find family from check account #"); ?></button>
-                        <button  type="button" class="btn btn-primary" value="<?php echo gettext("Set default check account number for family"); ?>" id="SetDefaultCheck"><?php echo gettext("Set default check account number for family"); ?></button>
+                        <button type="button" class="btn btn-primary" value="<?= gettext("find family from check account #"); ?>" id="MatchFamily"><?= gettext("find family from check account #"); ?></button>
+                        <button  type="button" class="btn btn-primary" value="<?= gettext("Set default check account number for family"); ?>" id="SetDefaultCheck"><?= gettext("Set default check account number for family"); ?></button>
                     <?php } ?>
                     <td <?php  if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\" align=\"center\">"; else echo "class=\"PaymentLabelColumn\" align=\"center\">";echo gettext("Scan check");?>
-                    <textarea name="ScanInput" rows="2" cols="70"><?php echo $tScanString?></textarea></td>
+                    <textarea name="ScanInput" rows="2" cols="70"><?= $tScanString?></textarea></td>
                     <?php } ?>
                     <!-- End Scanned Check Section -->
                     <!-- Start Paper Check Section -->									
                     <?php if ($PledgeOrPayment=='Payment' and $dep_Type == 'Bank') {?>
                     <tr>
-                    <td class="PaymentLabelColumn"><?php echo gettext("Check #"); ?></td>
-                    <td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?php echo $iCheckNo; ?>"><font color="red"><?php echo $sCheckNoError ?></font></td>
+                    <td class="PaymentLabelColumn"><?= gettext("Check #"); ?></td>
+                    <td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?= $iCheckNo; ?>"><font color="red"><?= $sCheckNoError ?></font></td>
                     </tr>
                     <?php } ?>
                                     </tbody>
@@ -488,14 +488,14 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
-                                        <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Fund Name"); ?></th>
-                                        <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Amount"); ?></th>
+                                        <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?= gettext("Fund Name"); ?></th>
+                                        <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?= gettext("Amount"); ?></th>
 
                                         <?php if ($bEnableNonDeductible) {?>
-                                            <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Non-deductible amount"); ?></th>
+                                            <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?= gettext("Non-deductible amount"); ?></th>
                                         <?php }?>
 
-                                        <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?php echo gettext("Comment"); ?></th>
+                                        <th <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\">"; else echo "class=\"PaymentLabelColumn\">"; ?><?= gettext("Comment"); ?></th>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($funds as $fund) {
@@ -524,7 +524,7 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 		<div class="box box-info">
 			<div class="box-body">
 				<?php if (!$dep_Closed) { ?>
-				<button type="submit" class="btn btn-primary" value="<?php echo gettext("Save"); ?>" id="PledgeSubmit" name="PledgeSubmit"><?php echo gettext("Save"); ?></button>
+				<button type="submit" class="btn btn-primary" value="<?= gettext("Save"); ?>" id="PledgeSubmit" name="PledgeSubmit"><?= gettext("Save"); ?></button>
 				<?php if ($_SESSION['bAddRecords']) { echo "<button type=\"submit\" class=\"btn btn-primary\" value=\"" . gettext("Save and Add") . "\" id=\"PledgeSubmitAndAdd\" name=\"PledgeSubmitAndAdd\">". gettext("Save and Add") ."</button>"; } ?>
 			<?php } ?>
 				<?php if (!$dep_Closed) {
@@ -532,8 +532,8 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 				} else {
 					$cancelText = "Return";
 				} ?>	
-				<button type="button" class="btn btn-primary" value="<?php echo gettext($cancelText); ?>" name="PledgeCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';"><?php echo gettext($cancelText); ?></button>
-				<button type="button" class="btn btn-primary" name="ResetForm" id="ResetForm"><?php echo gettext("Reset Form"); ?></button>
+				<button type="button" class="btn btn-primary" value="<?= gettext($cancelText); ?>" name="PledgeCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';"><?= gettext($cancelText); ?></button>
+				<button type="button" class="btn btn-primary" name="ResetForm" id="ResetForm"><?= gettext("Reset Form"); ?></button>
 
 			</div>
 		</div>
@@ -544,6 +544,7 @@ if (true) //If the requested page is to edit a deposit, then we need to get the 
 
 <script>
 $("#Date").datepicker({format:'yyyy-mm-dd'});
+
 
 $(document).ready(function() {
 	$("#FamilyName").autocomplete({

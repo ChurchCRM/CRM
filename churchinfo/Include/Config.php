@@ -19,15 +19,15 @@ $sDATABASE = 'churchcrm';
 // Another example, if you will be accessing from http://www.yourdomain.com
 // then you would enter '' ... an empty string for a top level installation.
 // This path SHOULD NOT end with slash.  This is case sensitive.
-$sRootPath = '/churchinfo';
+$sRootPath = '';
 
 // Set $bLockURL=TRUE to enforce https access by specifying exactly
 // which URL's your users may use to log into ChurchInfo.
-$bLockURL = FALSE;
+$bLockURL = TRUE;
 
 // URL[0] is the URL that you prefer most users use when they
 // log in.  These are case sensitive.  Only used when $bLockURL = TRUE
-$URL[0] = 'https://mychurch.org/churchinfo/Default.php';
+$URL[0] = 'http://192.168.33.10/Default.php';
 // List as many other URL's as may be needed. Number them sequentially.
 //$URL[1] = 'http://localhost/churchinfo/Default.php';
 //$URL[2] = 'http://localhost:8080/churchinfo/Default.php';
@@ -36,7 +36,7 @@ $URL[0] = 'https://mychurch.org/churchinfo/Default.php';
 //$URL[5] = 'https://mychurch.org/churchinfo/Default.php';
 //$URL[6] = 'https://ssl.sharedsslserver.com/mychurch.org/churchinfo/Default.php';
 
-// If you are using a non-standard port number be sure to include the 
+// If you are using a non-standard port number be sure to include the
 // port number in the URL. See example $URL[2]
 
 // To enforce https access make sure that "https" is specified in all of the
@@ -58,6 +58,7 @@ error_reporting(0);
 error_reporting(-1);
 
 
+
 // Report all errors except E_NOTICE
 // error_reporting(E_STRICT & E_ALL & ~E_NOTICE);
 
@@ -66,7 +67,7 @@ error_reporting(-1);
 ini_set('display_errors', 0);
 
 // Rather than display errors on the screen it is more secure to
-// send error messages to a file.  Make sure that your web 
+// send error messages to a file.  Make sure that your web
 // server has permission to write to this file.
 // Warning: The error_log file can grow very large over time.
 // ini_set('log_errors', 1);
@@ -76,7 +77,7 @@ ini_set('display_errors', 0);
 // SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE
 //
 
-// Absolute path must be specified since this file is called 
+// Absolute path must be specified since this file is called
 // from scripts located in other directories
-require (dirname(__FILE__).DIRECTORY_SEPARATOR.'LoadConfigs.php');
+require (dirname(__FILE__) . DIRECTORY_SEPARATOR . 'LoadConfigs.php');
 ?>

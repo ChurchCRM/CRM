@@ -74,7 +74,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>
             </div>
-            <a href="<?= $sURLPath."/" ?>FamilyList.php" class="small-box-footer">
+            <a href="<?= $sRootPath ?>/FamilyList.php" class="small-box-footer">
                 See all Families <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -93,7 +93,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="<?= $sURLPath."/" ?>SelectList.php?mode=person" class="small-box-footer">
+            <a href="<?= $sRootPath ?>/SelectList.php?mode=person" class="small-box-footer">
                 See All People <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -112,8 +112,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-university"></i>
             </div>
-            <a href="<?= $sURLPath."/"; ?>sundayschool\SundaySchoolDashboard.php" class="small-box-footer">
-
+            <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -132,7 +131,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="fa fa-child"></i>
             </div>
-            <a href="<?= $sURLPath."/" ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
+            <a href="<?= $sRootPath ?>/Reports\SundaySchoolClassList.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -183,9 +182,9 @@ if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's di
                         <tbody>
                         <?php while ($row = mysql_fetch_array($rsNewFamilies)) { ?>
                         <tr>
-                            <td><a href="FamilyView.php?FamilyID=<?php echo $row['fam_ID'];?>"><?php echo $row['fam_Name'];?></a></td>
-                            <td><?php if ($row['fam_Address1'] != "") { echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip']; }?></td>
-                            <td><?php echo FormatDate($row['fam_DateEntered'], false);?></td>
+                            <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
+                            <td><?php if ($row['fam_Address1'] != "") { echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip']; } ?></td>
+                            <td><?= FormatDate($row['fam_DateEntered'], false) ?></td>
                         </tr>
                         <?php } ?>
                         </tbody>
@@ -213,9 +212,9 @@ if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's di
                         <tbody>
                         <?php while ($row = mysql_fetch_array($rsLastFamilies)) { ?>
                             <tr>
-                                <td><a href="FamilyView.php?FamilyID=<?php echo $row['fam_ID'];?>"><?php echo $row['fam_Name'];?></a></td>
-                                <td><?php echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip'];?></td>
-                                <td><?php echo FormatDate($row['fam_DateLastEdited'], false);?></td>
+                                <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
+                                <td><?= $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip'] ?></td>
+                                <td><?= FormatDate($row['fam_DateLastEdited'], false) ?></td>
                             </tr>
                         <?php } ?>
                         </tbody>
@@ -243,10 +242,10 @@ if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's di
                     <ul class="users-list clearfix">
                         <?php while ($row = mysql_fetch_array($rsNewPeople)) { ?>
                         <li>
-                            <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'];?>">
+                            <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
                             <img src="<?= $personService->getPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="85" height="85" /><br/>
-                            <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1);?></a>
-                            <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false);?></span>
+                            <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1) ?></a>
+                            <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false) ?></span>
                         </li>
                         <?php } ?>
                     </ul>
@@ -272,10 +271,10 @@ if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's di
                     <ul class="users-list clearfix">
                         <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
                             <li>
-                                <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'];?>">
+                                <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
                                 <img src="<?= $personService->getPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="85" height="85" /><br/>
-                                <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1);?></a>
-                                <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false);?></span>
+                                <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1) ?></a>
+                                <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false) ?></span>
                             </li>
                         <?php } ?>
                     </ul>
@@ -398,3 +397,4 @@ var lineChart = new Chart(lineChartCanvas).Line(lineData,lineOptions);
 <?php
 require 'Include/Footer.php';
 ?>
+

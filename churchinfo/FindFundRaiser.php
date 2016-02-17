@@ -241,6 +241,5 @@ echo "</table>";
 $("#DateStart").datepicker({format:'yyyy-mm-dd'});
 $("#DateEnd").datepicker({format:'yyyy-mm-dd'});
 </script>
-<?php
-require "Include/Footer.php";
-?>
+
+<?php require "Include/Footer.php" ?>

@@ -28,10 +28,12 @@ if (array_key_exists ("DepositSlipID", $_GET))
 	$iDepositSlipID = FilterInput($_GET["DepositSlipID"], 'int');
 
 if ($iDepositSlipID) {
+
     
     $thisDeposit = $financialService->GetDeposits($iDepositSlipID)[0];
    // Set the session variable for default payment type so the new payment form will come up correctly
 	if ($thisDeposit->dep_Type == "Bank") 
+
 		$_SESSION['idefaultPaymentMethod'] = "CHECK";
 	else if ($thisDeposit->dep_Type == "CreditCard")
 		$_SESSION['idefaultPaymentMethod'] = "CREDITCARD";
@@ -39,7 +41,7 @@ if ($iDepositSlipID) {
 		$_SESSION['idefaultPaymentMethod'] = "BANKDRAFT";
 	else if ($thisDeposit->dep_Type == "eGive")
 		$_SESSION['idefaultPaymentMethod'] = "EGIVE";
-	
+
 	// Security: User must have finance permission or be the one who created this deposit
 	if (! ($_SESSION['bFinance'] || $_SESSION['iUserID']==$thisDeposit->dep_EnteredBy)) {
 		Redirect("Menu.php");

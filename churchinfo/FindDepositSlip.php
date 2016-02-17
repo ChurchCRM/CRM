@@ -283,6 +283,4 @@ $(document).ready(function() {
 });
 </script>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

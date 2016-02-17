@@ -75,6 +75,4 @@ require "Include/Header.php";
 </table>
 </form>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

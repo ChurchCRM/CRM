@@ -44,9 +44,9 @@ $sPageTitle = gettext("Add Church Event(s)");
 
 require "Include/Header.php";
 ?>
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 <?php
 
@@ -118,10 +118,10 @@ if (isset($_POST["AddEvent"]))
 <div class="box">
 	<div class="box-header">
 		<h3 class="box-title">
-       <?php if ($numRows == 0)  { 
-            echo gettext("No church events for ".date("F")); 
+       <?php if ($numRows == 0)  {
+            echo gettext("No church events for ".date("F"));
         } else {
-            echo gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F")); 
+            echo gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F"));
         ?></h3>
 	</div><!-- /.box-header -->
 	<div class="box-body table-responsive">
@@ -174,7 +174,7 @@ if (isset($_POST["AddEvent"]))
            </td>
          </tr>
          <?php } ?>
-         
+
           </table>
         </div>
     </div>
@@ -309,8 +309,8 @@ $sSQL = "SELECT * FROM `event_types`";
     </div>
  </div>
 
-       
-       
+
+
 
 <script>
 $("#newEventStartDate").datepicker({format:'yyyy-mm-dd'});
@@ -319,4 +319,4 @@ $('#newEventStartTime').timepicker({showMeridian: false});
 $("#newEventEndTime").timepicker({showMeridian: false});
 $("#eventsTable").dataTable();
 </script>
-<?php require "Include/Footer.php"; ?>
+<?php require "Include/Footer.php" ?>
