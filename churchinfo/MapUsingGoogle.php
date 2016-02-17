@@ -67,7 +67,7 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
                 map: map});
 	 
 
-            var churchInfoWin = new google.maps.InfoWindow({content: "<?php echo $sChurchName . "<p>" . $sChurchAddress . "<p>" . $sChurchCity . ", " . $sChurchState . "  " . $sChurchZip;?>"});
+            var churchInfoWin = new google.maps.InfoWindow({content: "<?= $sChurchName . "<p>" . $sChurchAddress . "<p>" . $sChurchCity . ", " . $sChurchState . "  " . $sChurchZip; ?>"});
 
             google.maps.event.addListener(churchMark, "click", function() {
                 churchInfoWin.open(map,churchMark);
@@ -166,6 +166,5 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
         </table>
     </div>
 </div>
-<?php
-require "Include/Footer.php";
-?>
+
+<?php require "Include/Footer.php" ?>

@@ -60,7 +60,7 @@ function ClearAccounts (AutID)
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.uniqueid = AutID;
 
-    xmlhttp.open("GET","<?php echo RedirectURL("AutoPaymentClearAccounts.php");?>?customerid="+AutID,true);
+    xmlhttp.open("GET","<?= RedirectURL("AutoPaymentClearAccounts.php") ?>?customerid="+AutID,true);
     xmlhttp.PaymentID = AutID; // So we can see it when the request finishes
     
     xmlhttp.onreadystatechange=function() {
@@ -82,7 +82,7 @@ function DeleteAutoPayment (AutID)
 
     var params="Delete=1"; // post with Delete already set so the page goes straight into the delete
     	    
-    xmlhttp.open("POST","<?php echo RedirectURL("AutoPaymentDelete.php");?>?linkBack=<?php echo RedirectURL("ElectronicPaymentList.php");?>&AutID="+AutID,true);
+    xmlhttp.open("POST","<?= RedirectURL("AutoPaymentDelete.php") ?>?linkBack=<?= RedirectURL("ElectronicPaymentList.php") ?>&AutID="+AutID,true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.setRequestHeader("Content-length", params.length);
     xmlhttp.setRequestHeader("Connection", "close");
@@ -128,7 +128,7 @@ function CreatePaymentMethodsForChecked()
 		    var id = checkboxes[i].id.split("Select")[1];
 		    var xmlhttp = new XMLHttpRequest();
 		    xmlhttp.uniqueid = id;
-		    xmlhttp.open("GET","<?php echo RedirectURL("ConvertOnePaymentXML.php");?>?autid="+id,true);
+		    xmlhttp.open("GET","<?= RedirectURL("ConvertOnePaymentXML.php") ?>?autid="+id,true);
 		    xmlhttp.onreadystatechange=function() {
 				if (this.readyState==4 && this.status==200) {
 		            var jsonresp=JSON.parse(this.response);
@@ -252,20 +252,20 @@ while ($aRow = mysql_fetch_array($rsAutopayments)) {
 		?>
 		</td>
 
-		<td><?php echo MakeFYString ($aut_FYID);?></td>
-		<td><?php echo $aut_NextPayDate;?></td>
-		<td><?php echo $aut_Amount;?></td>
-		<td><?php echo $aut_Interval;?></td>
-		<td><?php echo $fun_Name;?></td>
-		<td><?php echo $aut_BankName;?></td>
+		<td><?= MakeFYString ($aut_FYID) ?></td>
+		<td><?= $aut_NextPayDate ?></td>
+		<td><?= $aut_Amount ?></td>
+		<td><?= $aut_Interval ?></td>
+		<td><?= $fun_Name ?></td>
+		<td><?= $aut_BankName ?></td>
 		<td><?php if (strlen($aut_Route)==9) echo "*****".substr($aut_Route,5,4);?></td>
 		<td id="Account<?= $aut_ID ?>"><?php if (strlen($aut_Account)>4) echo "*****".substr($aut_Account,strlen($aut_Account)-4,4);?></td>
 		<?php if ($sElectronicTransactionProcessor == "Vanco") {?> 
 		<td align="center" id="AccountVanco<?= $aut_ID ?>"><?= $aut_AccountVanco ?></td>
 		<?php }?>
 		<td id="CreditCard<?= $aut_ID ?>"><?php if (strlen($aut_CreditCard)==16) echo "*************".substr($aut_CreditCard,12,4);?></td>
-		<td><?php echo $aut_ExpMonth;?></td>
-		<td><?php echo $aut_ExpYear;?></td>
+		<td><?= $aut_ExpMonth ?></td>
+		<td><?= $aut_ExpYear ?></td>
 		<?php if ($sElectronicTransactionProcessor == "Vanco") {?> 
 		<td align="center" id="CreditCardVanco<?= $aut_ID ?>"><?= $aut_CreditCardVanco ?></td>
 		<?php }?>
@@ -279,10 +279,8 @@ while ($aRow = mysql_fetch_array($rsAutopayments)) {
 <b>With checked:</b>
 <?php if ($sElectronicTransactionProcessor == "Vanco") { ?>
 <input type="button" id="CreatePaymentMethodsForChecked" value="Store Private Data at Vanco" onclick="CreatePaymentMethodsForChecked();" />
-<?php }?>
+<?php } ?>
 <input type="button" id="DeleteChecked" value="Delete" onclick="DeleteChecked();" />
 <input type="button" id="DeleteChecked" value="Clear Account Numbers" onclick="ClearAccountsChecked();" />
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

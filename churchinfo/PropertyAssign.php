@@ -175,7 +175,7 @@ require "Include/Header.php";
 
 <table cellpadding="4">
 	<tr>
-		<td align="right"><b><?php echo $sTypeName ?>:</b></td>
+		<td align="right"><b><?= $sTypeName ?>:</b></td>
 		<td><?= $sName ?></td>
 	</tr>
 	<tr>
@@ -193,6 +193,4 @@ require "Include/Header.php";
 
 </form>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

@@ -34,15 +34,16 @@
 	</div><!-- ./wrapper -->
 
 	<!-- Bootstrap 3.3.5 -->
-	<script src="<?= $sURLPath; ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
-	<!-- SlimScroll -->
-	<script src="<?= $sURLPath; ?>/skin/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-	<!-- FastClick -->
-	<script src="<?= $sURLPath; ?>/skin/adminlte/plugins/fastclick/fastclick.js"></script>
-	<!-- AdminLTE App -->
-	<script src="<?= $sURLPath; ?>/skin/adminlte/dist/js/app.min.js"></script>
 
-	<script src="<?= $sURLPath; ?>/js/Footer.js"></script>
+	<script src="<?= $sRootPath ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
+	<!-- SlimScroll -->
+	<script src="<?= $sRootPath ?>/skin/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<!-- FastClick -->
+	<script src="<?= $sRootPath ?>/skin/adminlte/plugins/fastclick/fastclick.js"></script>
+	<!-- AdminLTE App -->
+	<script src="<?= $sRootPath ?>/skin/adminlte/dist/js/app.min.js"></script>
+
+	<script src="<?= $sRootPath ?>/js/Footer.js"></script>
 
 </body>
 </html>

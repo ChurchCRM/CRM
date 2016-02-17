@@ -29,7 +29,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 // If user does not have CSV Export permission, redirect to the menu.
-if (!$bExportCSV) 
+if (!$bExportCSV)
 {
     Redirect("Menu.php");
     exit;
@@ -192,7 +192,7 @@ require "Include/Header.php";
   </table>
     </td>
 
-    <?php if (($numCustomFields > 0) or ($numFamCustomFields > 0)) {?>
+    <?php if ($numCustomFields > 0 || $numFamCustomFields > 0) { ?>
     <td width="20%" valign="top"><table border="0">
     <?php if ($numCustomFields > 0) { ?>
     <tr><td width="100%" valign="top" align="left">
@@ -202,7 +202,7 @@ require "Include/Header.php";
             // Display the custom fields
             while ($Row = mysql_fetch_array($rsCustomFields)) {
                 extract($Row);
-                if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+                if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]])
                 {
                     echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td>";
                     echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $custom_Field . " value=\"1\"></td></tr>";
@@ -221,7 +221,7 @@ require "Include/Header.php";
             // Display the family custom fields
             while ($Row = mysql_fetch_array($rsFamCustomFields)) {
                 extract($Row);
-                if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+                if ($aSecurityType[$fam_custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$fam_custom_FieldSec]])
                 {
                     echo "<tr><td class=\"LabelColumn\">" . $fam_custom_Name . "</td>";
                     echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $fam_custom_Field . " value=\"1\"></td></tr>";
@@ -244,7 +244,7 @@ require "Include/Header.php";
         <td class="TextColumnWithBottomBorder">
             <select name="Source">
                 <option value="filters"><?= gettext("Based on filters below..") ?></option>
-                <option value="cart" <?php if (array_key_exists ("Source", $_GET) and $_GET["Source"] == 'cart') echo "selected";?>><?= gettext("People in Cart (filters ignored)") ?></option>
+                <option value="cart" <?php if (array_key_exists("Source", $_GET) && $_GET["Source"] == 'cart') echo "selected";?>><?= gettext("People in Cart (filters ignored)") ?></option>
             </select>
         </td>
     </tr>
@@ -258,7 +258,7 @@ require "Include/Header.php";
                 {
                     extract($aRow);
                     ?>
-                    <option value="<?php echo $lst_OptionID ?>"><?php echo $lst_OptionName ?></option>
+                    <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                     <?php
                 }
                 ?>
@@ -275,7 +275,7 @@ require "Include/Header.php";
                 {
                     extract($aRow);
                     ?>
-                    <option value="<?php echo $lst_OptionID ?>"><?php echo $lst_OptionName ?></option>
+                    <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                     <?php
                 }
                 ?>
@@ -337,7 +337,7 @@ require "Include/Header.php";
                         <b><?= gettext("To:") ?>&nbsp;</b>
                     </td>
                     <td>
-                        <input type="text" name="BirthDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>"  id="BirthdayDate2">
+                        <input type="text" name="BirthDate2" size="11" maxlength="10" value="<?= date("Y-m-d") ?>"  id="BirthdayDate2">
                     </td>
                 </tr>
             </table>
@@ -405,6 +405,4 @@ $("#AnniversaryDate2").datepicker({format:'yyyy-mm-dd'});
 $("#EnterDate1").datepicker({format:'yyyy-mm-dd'});
 $("#EnterDate2").datepicker({format:'yyyy-mm-dd'});
 </script>
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

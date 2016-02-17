@@ -7,7 +7,7 @@ class GroupService
     private $baseURL;
 
     public function __construct() {
-        $this->baseURL = $_SESSION['sURLPath'];
+        $this->baseURL = $_SESSION['sRootPath'];
     }
 
 /**

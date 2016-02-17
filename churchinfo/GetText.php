@@ -30,7 +30,7 @@ $aEventText = nl2br(htmlentities(stripslashes($event_text),ENT_NOQUOTES, "UTF-8"
 </html>
 <table cellpadding="4" align="center" cellspacing="0" width="100%">
   <caption>
-    <h3><?= gettext("Text for Event ID: ".$aEventTitle) ?></h3>
+    <h3><?= gettext("Text for Event ID: " . $aEventTitle) ?></h3>
   </caption>
   <tr>
     <td><?= $aEventText ?></td>

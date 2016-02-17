@@ -118,7 +118,4 @@ if ($bUSAddressVerification) {
 ?>
 </p>
 
-
-<?php
-require 'Include/Footer.php';
-?>
+<?php require 'Include/Footer.php' ?>

@@ -52,12 +52,12 @@ if (isset($_POST["EnterWinners"])) {
 // Get Items for the drop-down
 $sDonatedItemsSQL = "SELECT di_ID, di_Item, di_title, di_multibuy
                      FROM donateditem_di
-                     WHERE di_FR_ID = '" . $iCurrentFundraiser . "' ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR(di_Item,2,3),SIGNED)"; 
+                     WHERE di_FR_ID = '" . $iCurrentFundraiser . "' ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR(di_Item,2,3),SIGNED)";
 $rsDonatedItems = RunQuery($sDonatedItemsSQL);
 
 //Get Paddles for the drop-down
-$sPaddleSQL = "SELECT pn_ID, pn_Num, pn_per_ID, 
-                      a.per_FirstName AS buyerFirstName, 
+$sPaddleSQL = "SELECT pn_ID, pn_Num, pn_per_ID,
+                      a.per_FirstName AS buyerFirstName,
                       a.per_LastName AS buyerLastName
                       FROM paddlenum_pn
                       LEFT JOIN person_per a on a.per_ID=pn_per_ID
@@ -116,6 +116,4 @@ require "Include/Header.php";
 	</table>
 </form>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

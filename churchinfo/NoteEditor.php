@@ -139,6 +139,4 @@ require "Include/Header.php";
 	</form>
 </p>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

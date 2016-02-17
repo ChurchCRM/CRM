@@ -29,33 +29,30 @@ require 'service/GroupService.php';
 //Set the page title
 $sPageTitle = gettext('Group Listing');
 $groupService = new GroupService();
-require 'Include/Header.php';?>
+require 'Include/Header.php'; ?>
 
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<script src="<?= $sURLPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sURLPath; ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 
-
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 <div class="box box-body">
 <table class="table" id="groupsTable">
 </table>
 <?php
 if ($_SESSION['bManageGroups']) 
-{?>
+{ ?>
     
     
 <br>
 <form action="#" method="get" class="form">
-    <label for="addNewGruop"><?php echo gettext("Add New Group: ");?></label>
+    <label for="addNewGruop"><?= gettext("Add New Group: ") ?></label>
     <input class="form-control newGroup" name="groupName" id="groupName" style="width:100%">
     <br>
-    <button type="button" class="btn btn-primary" id ="addNewGroup" >Add New Group</button>
+    <button type="button" class="btn btn-primary" id="addNewGroup">Add New Group</button>
 </form>
 <?php
 }
