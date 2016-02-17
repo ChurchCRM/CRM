@@ -8,9 +8,9 @@ if [ $? == 0 ]
 then
   echo "The following files have DOS line endings:"
   echo $OUT
-  echo -e "\e[1m\e[7m\e[91m Failed \e[0m"
+  echo -e "\033[41m\033[1;37m Failed \033[0m"
   exit 1
 fi
 
 # otherwise we output a bright green inverted "Passed"
-echo -e "\e[1m\e[7m\e[92m Passed \e[0m"
+echo -e "\033[42m\033[1;37m Passed \033[0m"
