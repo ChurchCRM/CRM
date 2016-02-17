@@ -30,12 +30,6 @@ $iRemoveVO = 0;
 if (array_key_exists ("RemoveVO", $_GET))
 	$iRemoveVO = FilterInput($_GET["RemoveVO"],'int');
 
-if ( isset($_POST["GroupAssign"]) && $_SESSION['bManageGroups'] )
-{
-	$iGroupID = FilterInput($_POST["GroupAssignID"],'int');
-	AddToGroup($iPersonID,$iGroupID,0);
-}
-
 if ( isset($_POST["VolunteerOpportunityAssign"]) && $_SESSION['bEditRecords'])
 {
 	$volIDs = $_POST["VolunteerOpportunityIDs"];
@@ -527,8 +521,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 										<h4><strong>Assign New Group</strong></h4>
 										<i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?= gettext("Person will be assigned to the Group in the Default Role.") ?></span>
 										<p><br></p>
-										<form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
-											<select name="GroupAssignID">
+											<select style="color:#000000" name="GroupAssignID">
 												<?php while ($aRow = mysql_fetch_array($rsGroups)) {
 													extract($aRow);
 
@@ -539,9 +532,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 												}
 												?>
 											</select>
-											<input type="submit" class="btn-primary" value="<?= gettext("Assign") ?>" name="GroupAssign">
+											<a href="#" onclick="GroupAdd()" class="btn btn-success" role="button">Assign User to Group</a>
 											<br>
-										</form>
 									</div>
 								<?php } ?>
 							</div>
@@ -836,6 +828,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 	</div>
 </div>
 <script language="javascript">
+var person_ID = <?= $iPersonID ?>;
 	function GroupRemove( Group, Person ) {
 		var answer = confirm (<?= "'",  "'" ?>)
 		if ( answer )
@@ -846,6 +839,16 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                location.reload(); 
             });
 	}
+    
+    function GroupAdd (Group, Person) {
+        var GroupAssignID = $("select[name='GroupAssignID'] option:selected").val();
+        $.ajax({
+                method: "POST",
+                url:    "/api/groups/"+GroupAssignID+"/adduser/"+person_ID
+            }).done(function (data){
+               location.reload(); 
+            });
+    }
 </script>
 
 <?php require "Include/Footer.php" ?>
