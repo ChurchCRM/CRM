@@ -273,14 +273,6 @@ function Header_body_menu()
 
     $MenuFirst = 1;
 
-    if ($sHeader) {
-        // Optional Header Code (Entered on General Settings page - sHeader)
-        // Must first set a table with a background color, or content scrolls across
-        // the background of the custom code when using a non-defective browser
-        echo "<table width=\"100%\" bgcolor=white cellpadding=0 cellspacing=0 border=0><tr><td width=\"100%\">";
-        echo html_entity_decode($sHeader, ENT_QUOTES);
-        echo "</td></tr></table>";
-    }
 ?>
 
     <header class="main-header">
@@ -289,7 +281,11 @@ function Header_body_menu()
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>C</b>RM</span>
             <!-- logo for regular state and mobile devices -->
+        <?php if ($sHeader) { ?>
+            <span class="logo-lg"><?= html_entity_decode($sHeader,ENT_QUOTES) ?></span>
+        <?php } Else { ?>
             <span class="logo-lg"><b>Church</b>CRM</span>
+        <?php } ?>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
