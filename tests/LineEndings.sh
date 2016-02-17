@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# grep for ^M (DOS line endings) in all files recursively (except for the .git dir)
-OUT=$(egrep '^M$' `ls` -R -l)
+# compile a list of all files to check
+OUT=$(find . -type f -and \( -name "*.php" -or -name "*.sh" -or -name "*.js" -or -name "*.css" -or -name "*.sql" -or -name "*.md" \) -print0 | xargs -0 egrep '$' -U -l)
 
 # if the return code is 0 egrep found a match - this is bad
 if [ $? == 0 ]
