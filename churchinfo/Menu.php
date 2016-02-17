@@ -27,6 +27,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
+require 'service/FinancialService.php';
+
+$financialService = new FinancialService();
 
 require_once "service/DashboardService.php";
 
@@ -53,6 +56,7 @@ $sPageTitle = "Welcome to <b>Church</b>CRM";
 
 require 'Include/Header.php';
 ?>
+<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/chartjs/Chart.min.js"></script>
 
 <!-- Small boxes (Stat box) -->
 <div class="row">
@@ -133,6 +137,30 @@ require 'Include/Header.php';
         </div>
     </div><!-- ./col -->
 </div><!-- /.row -->
+
+<?php 
+if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's display the deposit line chart
+{ 
+?>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <i class="ion ion-cash"></i>
+                <h3 class="box-title">Deposit Tracking</h3>
+                <div class="box-tools pull-right">
+                    <div id="deposit-graph" class="chart-legend"></div>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
+            </div>
+            </div>
+    </div>
+</div>
+<?php 
+}  //END IF block for Finance permissions to include HTML for Deposit Chart
+ ?>
 
 <div class="row">
     <div class="col-lg-6 col-md-5 col-sm-4">
@@ -255,6 +283,118 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="box box-info">
+            <div class="box-header">
+                <i class="ion ion-android-contacts"></i>
+                <h3 class="box-title">Gender Demographics</h3>
+                <div class="box-tools pull-right">
+                    <div id="gender-donut-legend" class="chart-legend"></div>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <canvas id="gender-donut" style="height:250px"></canvas>
+            </div>
+        </div>
+    </div>
+     
 </div>
 
-<?php require 'Include/Footer.php' ?>
+<!-- this page specific inline scripts -->
+<script>
+<?php 
+if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's display the deposit line chart
+{ 
+?>
+   
+//---------------
+//- LINE CHART  -
+//---------------
+var lineDataRaw = <?=$financialService->getDepositJSON($financialService->getDeposits());?>;
+var lineData = {
+    labels: [],
+    datasets: [
+        {
+            data: []
+        }     
+    ]
+};
+$.each(lineDataRaw.deposits, function(i, val) {
+    lineData.labels.push(val.dep_Date);
+    lineData.datasets[0].data.push(val.dep_Total);
+});
+var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
+var lineOptions = {
+    
+    
+};
+var lineChart = new Chart(lineChartCanvas).Line(lineData,lineOptions);
+<?php 
+}  //END IF block for Finance permissions to include JS for Deposit Chart
+ ?>
+
+    //-------------
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var PieData = [
+        <?php while ($row = mysql_fetch_array($rsAdultsGender)) {
+            if ($row['per_Gender'] == 1 ) {
+                echo "{value: ". $row['numb'] ." , color: \"#003399\", highlight: \"#3366ff\", label: \"Men\" },";
+            }
+            if ($row['per_Gender'] == 2 ) {
+                echo "{value: ". $row['numb'] ." , color: \"#9900ff\", highlight: \"#ff66cc\", label: \"Women\"},";
+            }
+        }
+        while ($row = mysql_fetch_array($rsKidsGender)) {
+        if ($row['per_Gender'] == 1 ) {
+                echo "{value: ". $row['numb'] ." , color: \"#3399ff\", highlight: \"#99ccff\", label: \"Boys\"},";
+            }
+            if ($row['per_Gender'] == 2 ) {
+                echo "{value: ". $row['numb'] ." , color: \"#009933\", highlight: \"#99cc00\", label: \"Girls\",}";
+            }
+        }
+        ?>
+    ];
+    var pieOptions = {
+
+        //String - Point label font colour
+        pointLabelFontColor : "#666",
+
+        //Boolean - Whether we should show a stroke on each segment
+        segmentShowStroke: true,
+        //String - The colour of each segment stroke
+        segmentStrokeColor: "#fff",
+        //Number - The width of each segment stroke
+        segmentStrokeWidth: 2,
+        //Number - The percentage of the chart that we cut out of the middle
+        percentageInnerCutout: 50, // This is 0 for Pie charts
+        //Boolean - Whether we animate the rotation of the Doughnut
+        animateRotate: false,
+        //Boolean - whether to make the chart responsive to window resizing
+        responsive: true,
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: true,
+        //String - A legend template
+        legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
+    };
+
+    var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
+    var pieChart = new Chart(pieChartCanvas);
+
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart = pieChart.Doughnut(PieData, pieOptions);
+
+    //then you just need to generate the legend
+    var legend = pieChart.generateLegend();
+
+    //and append it to your page somewhere
+    $('#gender-donut-legend').append(legend);
+</script>
+
+
+<?php
+require 'Include/Footer.php';
+?>
+
