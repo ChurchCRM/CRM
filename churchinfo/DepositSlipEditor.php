@@ -575,7 +575,6 @@ require "Include/Header.php";
 			<input type="submit" class="btn" value="<?= gettext("Save") ?>" name="DepositSlipSubmit">
 			<input type="button" class="btn" value="<?= gettext("Cancel") ?>" name="DepositSlipCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 			<input type="button" class="btn" value="<?= gettext("Deposit Slip Report") ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='Reports/PrintDeposit.php?BankSlip=<?php echo ($dep_Type == 'Bank')?>';">
-			<input type="button" class="btn" value="Download OFX" name="DownloadOFX" onclick="javascript:document.location='Reports/ExportOFX.php?deposit=<?= $iDepositSlipID ?>';">
 			<input type="button" class="btn" value="<?= gettext("More Reports") ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
 			<?php
 			if ($iDepositSlipID && $sDepositType && !$dep_Closed) {
