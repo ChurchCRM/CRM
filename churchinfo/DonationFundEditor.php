@@ -49,7 +49,7 @@ if ($sAction = 'delete' && strlen($sFund) > 0)
 
 $sPageTitle = gettext("Donation Fund Editor");
 
-require "Include/Header.php";?>
+require "Include/Header.php"; ?>
 
 
 <div class="box box-body">
@@ -201,7 +201,7 @@ else
 	{
 		?>
 		<tr>
-			
+
 
 			<td class="TextColumn" align="center">
 				<input type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="20" maxlength="30">
@@ -215,11 +215,11 @@ else
 				<input type="text" Name="<?php echo $row . "desc" ?>" value="<?= htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="40" maxlength="100">
 			</td>
 			<td class="TextColumn" align="center" nowrap>
-				<input type="radio" Name="<?php echo $row . "active" ?>" value="1" <?php if ($aActiveFields[$row]) echo " checked" ?>><?= gettext("Yes") ?>
-				<input type="radio" Name="<?php echo $row . "active" ?>" value="0" <?php if (!$aActiveFields[$row]) echo " checked" ?>><?= gettext("No") ?>
+				<input type="radio" Name="<?= $row ?>active" value="1" <?php if ($aActiveFields[$row]) echo " checked" ?>><?= gettext("Yes") ?>
+				<input type="radio" Name="<?= $row ?>active" value="0" <?php if (!$aActiveFields[$row]) echo " checked" ?>><?= gettext("No") ?>
 			</td>
             <td class="TextColumn" width="5%">
-				<input type="button" class="btn btn-danger" value="<?= gettext("delete") ?>" Name="delete" onclick="confirmDeleteFund(<?= "'" . $aIDFields[$row] . "'" ?>);" >
+				<input type="button" class="btn btn-danger" value="<?= gettext("delete") ?>" Name="delete" onclick="confirmDeleteFund('<?= $aIDFields[$row] ?>');" >
 			</td>
 
 		</tr>
@@ -231,7 +231,7 @@ else
 				<tr>
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save Changes") . '"' ?> Name="SaveChanges">
+						<input type="submit" class="btn btn-primary" value="<?= gettext("Save Changes") ?>" Name="SaveChanges">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -258,7 +258,7 @@ else
 						&nbsp;
 					</td>
 					<td>
-						<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Add New Fund") . '"' ?> Name="AddField">
+						<input type="submit" class="btn btn-primary" value="<?= gettext("Add New Fund") ?>" Name="AddField">
 					</td>
 					<td width="15%"></td>
 				</tr>
@@ -270,4 +270,4 @@ else
 	</form>
 </div>
 
-<?php require "Include/Footer.php"; ?>
+<?php require "Include/Footer.php" ?>

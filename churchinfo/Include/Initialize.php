@@ -47,7 +47,7 @@ if (!isset($_SESSION['iUserID']))
 if ($sSessionTimeout > 0)
 {
     if ((time() - $_SESSION['tLastOperation']) > $sSessionTimeout) {
-        Redirect("Default.php?timeout");
+        Redirect("Default.php?Timeout");
         exit;
     } else {
         $_SESSION['tLastOperation'] = time();

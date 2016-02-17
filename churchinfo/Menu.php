@@ -28,6 +28,8 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
 
+require_once "service/DashboardService.php";
+
 $sSQL = "select * from family_fam order by fam_DateLastEdited desc  LIMIT 10;";
 $rsLastFamilies = RunQuery($sSQL);
 
@@ -40,13 +42,10 @@ $rsLastPeople = RunQuery($sSQL);
 $sSQL = "select * from person_per where per_DateLastEdited is null order by per_DateEntered desc LIMIT 10;";
 $rsNewPeople = RunQuery($sSQL);
 
-$sSQL = "select
-        (select count(*) from family_fam ) as familyCount,
-        (select count(*) from person_per ) as PersonCount,
-        (select count(*) from group_grp where grp_Type = 4 ) as SundaySchoolClasses,
-        (select count(*) from person_per,`group_grp` grp, `person2group2role_p2g2r` person_grp   where person_grp.p2g2r_rle_ID = 2 and per_cls_ID = 1 and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = per_ID) as SundaySchoolKidsCount
-        from dual ;";
-$rsQuickStat = RunQuery($sSQL);
+$dashboardService = new DashboardService();
+$personCount = $dashboardService->getPersonCount();
+$familyCount = $dashboardService->getFamilyCount();
+$sundaySchoolStats = $dashboardService->getSundaySchoolStats();
 
 
 // Set the page title
@@ -55,7 +54,6 @@ $sPageTitle = "Welcome to <b>Church</b>CRM";
 require 'Include/Header.php';
 ?>
 
-<?php while ($row = mysql_fetch_array($rsQuickStat)) { ?>
 <!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-3 col-xs-6">
@@ -63,7 +61,7 @@ require 'Include/Header.php';
         <div class="small-box bg-aqua">
             <div class="inner">
                 <h3>
-                    <?php echo $row['familyCount'];?>
+                    <?= $familyCount['familyCount'] ?>
                 </h3>
                 <p>
                     Families
@@ -72,7 +70,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>
             </div>
-            <a href="<?= $sURLPath."/" ?>FamilyList.php" class="small-box-footer">
+            <a href="<?= $sRootPath ?>/FamilyList.php" class="small-box-footer">
                 See all Families <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -82,7 +80,7 @@ require 'Include/Header.php';
         <div class="small-box bg-green">
             <div class="inner">
                 <h3>
-                    <?php echo $row['PersonCount'];?>
+                    <?= $personCount['personCount'] ?>
                 </h3>
                 <p>
                     People
@@ -91,7 +89,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="<?= $sURLPath."/" ?>SelectList.php?mode=person" class="small-box-footer">
+            <a href="<?= $sRootPath ?>/SelectList.php?mode=person" class="small-box-footer">
                 See All People <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -101,7 +99,7 @@ require 'Include/Header.php';
         <div class="small-box bg-yellow">
             <div class="inner">
                 <h3>
-                    <?php echo $row['SundaySchoolClasses'];?>
+                    <?= $sundaySchoolStats['classes'] ?>
                 </h3>
                 <p>
                     Sunday School Classes
@@ -110,7 +108,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-university"></i>
             </div>
-            <a href="<?= $sURLPath."/" ?>SundaySchool.php" class="small-box-footer">
+            <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -120,22 +118,22 @@ require 'Include/Header.php';
         <div class="small-box bg-red">
             <div class="inner">
                 <h3>
-                    <?php echo $row['SundaySchoolKidsCount'];?>
+                    TBD
                 </h3>
                 <p>
-                    Sunday School Kids
+                    Groups
                 </p>
             </div>
             <div class="icon">
                 <i class="fa fa-child"></i>
             </div>
-            <a href="<?= $sURLPath."/" ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
+            <a href="<?= $sRootPath ?>/Reports\SundaySchoolClassList.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
 </div><!-- /.row -->
-<?php } ?>
+
 <div class="row">
     <div class="col-lg-6 col-md-5 col-sm-4">
         <div class="box box-solid">
@@ -156,9 +154,9 @@ require 'Include/Header.php';
                         <tbody>
                         <?php while ($row = mysql_fetch_array($rsNewFamilies)) { ?>
                         <tr>
-                            <td><a href="FamilyView.php?FamilyID=<?php echo $row['fam_ID'];?>"><?php echo $row['fam_Name'];?></a></td>
-                            <td><?php if ($row['fam_Address1'] != "") { echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip']; }?></td>
-                            <td><?php echo FormatDate($row['fam_DateEntered'], false);?></td>
+                            <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
+                            <td><?php if ($row['fam_Address1'] != "") { echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip']; } ?></td>
+                            <td><?= FormatDate($row['fam_DateEntered'], false) ?></td>
                         </tr>
                         <?php } ?>
                         </tbody>
@@ -186,9 +184,9 @@ require 'Include/Header.php';
                         <tbody>
                         <?php while ($row = mysql_fetch_array($rsLastFamilies)) { ?>
                             <tr>
-                                <td><a href="FamilyView.php?FamilyID=<?php echo $row['fam_ID'];?>"><?php echo $row['fam_Name'];?></a></td>
-                                <td><?php echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip'];?></td>
-                                <td><?php echo FormatDate($row['fam_DateLastEdited'], false);?></td>
+                                <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
+                                <td><?= $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip'] ?></td>
+                                <td><?= FormatDate($row['fam_DateLastEdited'], false) ?></td>
                             </tr>
                         <?php } ?>
                         </tbody>
@@ -216,10 +214,10 @@ require 'Include/Header.php';
                     <ul class="users-list clearfix">
                         <?php while ($row = mysql_fetch_array($rsNewPeople)) { ?>
                         <li>
-                            <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'];?>">
+                            <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
                             <img src="<?= $personService->getPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="85" height="85" /><br/>
-                            <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1);?></a>
-                            <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false);?></span>
+                            <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1) ?></a>
+                            <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false) ?></span>
                         </li>
                         <?php } ?>
                     </ul>
@@ -245,10 +243,10 @@ require 'Include/Header.php';
                     <ul class="users-list clearfix">
                         <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
                             <li>
-                                <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'];?>">
+                                <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
                                 <img src="<?= $personService->getPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="85" height="85" /><br/>
-                                <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1);?></a>
-                                <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false);?></span>
+                                <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1) ?></a>
+                                <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false) ?></span>
                             </li>
                         <?php } ?>
                     </ul>
@@ -259,7 +257,4 @@ require 'Include/Header.php';
     </div>
 </div>
 
-
-<?php
-require 'Include/Footer.php';
-?>
+<?php require 'Include/Footer.php' ?>

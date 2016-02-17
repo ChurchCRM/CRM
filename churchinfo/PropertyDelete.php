@@ -71,6 +71,4 @@ require "Include/Header.php";
 
 </p>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

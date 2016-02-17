@@ -64,12 +64,6 @@ require 'Include/Header.php';
     echo gettext('Generate class lists and attendance sheets'); ?>
 </p>
 
-<a class="MediumText" href="Reports/SundaySchoolClassList.php"><?php
-    echo gettext('Sunday School Class List'); ?></a>
-<br><?php
-echo gettext('Export Sunday School Kids to CSV'); ?>
-</p>
-
 <?php
     if ($_SESSION['bFinance']) {
 	echo '<p>';
@@ -124,7 +118,4 @@ if ($bUSAddressVerification) {
 ?>
 </p>
 
-
-<?php
-require 'Include/Footer.php';
-?>
+<?php require 'Include/Footer.php' ?>

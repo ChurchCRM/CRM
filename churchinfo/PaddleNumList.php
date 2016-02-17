@@ -66,19 +66,19 @@ if ($rsPaddleNums) {
 	
 		$sRowClass = "RowColorA";
 	?>
-		<tr class="<?php echo $sRowClass ?>">
+		<tr class="<?= $sRowClass ?>">
 			<td>
-				<input type="checkbox" name="Chk<?php echo $pn_ID."\""; if (isset($_GET["SelectAll"])) echo " checked=\"yes\"";?>></input>
+				<input type="checkbox" name="Chk<?= $pn_ID."\""; if (isset($_GET["SelectAll"])) echo " checked=\"yes\"" ?>></input>
 			</td>
 			<td>
-				<?php echo "<a href=\"PaddleNumEditor.php?PaddleNumID=$pn_ID&linkBack=PaddleNumList.php\"> $pn_Num</a>\n"; ?>
+				<?= "<a href=\"PaddleNumEditor.php?PaddleNumID=$pn_ID&linkBack=PaddleNumList.php\"> $pn_Num</a>\n" ?>
 			</td>
 				
 			<td>
-				<?php echo $buyerFirstName . " " . $buyerLastName ?>&nbsp;
+				<?= $buyerFirstName . " " . $buyerLastName ?>&nbsp;
 			</td>
 			<td>
-				<a href="PaddleNumDelete.php?PaddleNumID=<?php echo $pn_ID . "&linkBack=PaddleNumList.php?FundRaiserID=" . $iFundRaiserID;?>">Delete</a>
+				<a href="PaddleNumDelete.php?PaddleNumID=<?= $pn_ID . "&linkBack=PaddleNumList.php?FundRaiserID=" . $iFundRaiserID ?>">Delete</a>
 			</td>
 		</tr>
 	<?php
@@ -89,6 +89,4 @@ if ($rsPaddleNums) {
 </table>
 </form>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

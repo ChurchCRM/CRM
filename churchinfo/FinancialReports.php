@@ -114,7 +114,7 @@ if ($sReportType == "") {
         $rsClassifications = RunQuery($sSQL);
         ?>
         <tr>
-                <td class="LabelColumn"><?php echo gettext("Classification:")?><br></td>
+                <td class="LabelColumn"><?= gettext("Classification:") ?><br></td>
                 <td class=TextColumnWithBottomBorder><div class=SmallText>
                     </div><select name="classList[]" style="width:100%" multiple id="classList">
                     <?php
@@ -137,8 +137,8 @@ if ($sReportType == "") {
         <?php
 
         $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
-        $rsFamilies = RunQuery($sSQL);?>
-        <tr><td class=LabelColumn><?php echo gettext("Filter by Family:")?><br></td>
+        $rsFamilies = RunQuery($sSQL); ?>
+        <tr><td class=LabelColumn><?= gettext("Filter by Family:") ?><br></td>
         <td class=TextColumnWithBottomBorder>
             <select name="family[]" id="family" multiple style="width:100%">
         <?php
@@ -228,7 +228,7 @@ if ($sReportType == "") {
         $rsFunds = RunQuery($sSQL);
         ?>
         
-        <tr><td class="LabelColumn"><?php echo gettext("Filter by Fund:")?><br></td>
+        <tr><td class="LabelColumn"><?= gettext("Filter by Fund:") ?><br></td>
         <td><select name="funds[]" multiple id="fundsList" style="width:100%">
         <?php
         while ($aRow = mysql_fetch_array($rsFunds)) {
@@ -284,7 +284,7 @@ if ($sReportType == "") {
             ." &nbsp; <input name=only_owe type=radio value='no'>".gettext("All Families")."</td></tr>";
     }
     
-    if ($sReportType == "Giving Report" or $sReportType == "Zero Givers"){
+    if ($sReportType == "Giving Report" || $sReportType == "Zero Givers"){
         echo "<tr><td class=LabelColumn>".gettext("Report Heading:")."</td>"
             ."<td class=TextColumnWithBottomBorder><input name=letterhead type=radio value='graphic'>".gettext("Graphic")
             ." <input name=letterhead type=radio value='address' checked>".gettext("Church Address")

@@ -41,7 +41,7 @@ if ($grp_hasSpecialProps == 'false')
 
 $sPageTitle = gettext("Group-Specific Properties Form Editor:") . " &nbsp&nbsp " . $grp_Name;
 
-require "Include/Header.php";?>
+require "Include/Header.php"; ?>
 
 <div class="box box-body"> 
 
@@ -317,7 +317,7 @@ else
 	{
 		?>
 		<tr>
-			<td class="LabelColumn"><h2><b><?php echo $row ?></b></h2></td>
+			<td class="LabelColumn"><h2><b><?= $row ?></b></h2></td>
 			<td class="TextColumn" width="5%" nowrap>
 				<?php
 				if ($row != 1)
@@ -326,20 +326,20 @@ else
 					echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
 				?>
 				
-				<?php echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>";?>
+				<?= "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>"; ?>
 			</td>
 			<td class="TextColumn" style="font-size:70%;">
-			<?php echo $aPropTypes[$aTypeFields[$row]];	?>
+			<?= $aPropTypes[$aTypeFields[$row]]; ?>
 			</td>
 
-			<td class="TextColumn"><input type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="25" maxlength="40">
+			<td class="TextColumn"><input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, "UTF-8") ?>" size="25" maxlength="40">
 				<?php
 				if ( array_key_exists ($row, $aNameErrors) && $aNameErrors[$row] )
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
 				?>
 			</td>
 
-			<td class="TextColumn"><textarea name="<?= $row . "desc" ?>" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?= htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8") ?></textarea></td>
+			<td class="TextColumn"><textarea name="<?= $row ?>desc" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?= htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8") ?></textarea></td>
 
 			<td class="TextColumn">
 			<?php
@@ -372,7 +372,7 @@ else
 			?></td>
 
 			<td class="TextColumn">
-				<input type="checkbox" Name="<?php echo $row . "show" ?>" value="1"	<?php if ($aPersonDisplayFields[$row]) echo " checked" ?>>
+				<input type="checkbox" name="<?= $row ?>show" value="1"	<?php if ($aPersonDisplayFields[$row]) echo " checked" ?>>
 			</td>
 		</tr>
 	<?php } ?>
@@ -383,7 +383,7 @@ else
 				<tr>
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="btn" <?= 'value="' . gettext("Save Changes") . '"' ?> Name="SaveChanges">
+						<input type="submit" class="btn" value="<?= gettext("Save Changes") ?>" Name="SaveChanges">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -426,7 +426,7 @@ else
 						&nbsp;
 					</td>
 					<td>
-						<input type="submit" class="btn" <?= 'value="' . gettext("Add New Field") . '"' ?> Name="AddField">
+						<input type="submit" class="btn" value="<?= gettext("Add New Field") ?>" Name="AddField">
 					</td>
 					<td width="15%"></td>
 				</tr>
@@ -439,4 +439,4 @@ else
   
 </div>
 
-<?php require "Include/Footer.php"; ?>
+<?php require "Include/Footer.php" ?>

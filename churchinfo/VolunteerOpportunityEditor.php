@@ -298,17 +298,14 @@ if ($numRows == 0) {
     <div class="callout callout-warning"><?= gettext("No volunteer opportunities have been added yet") ?></div>
 <?php
 } else { // if an 'action' (up/down arrow clicked, or order was input)
-   if ($iRowNum and $sAction != "") {
+   if ($iRowNum && $sAction != "") {
       // cast as int and couple with switch for sql injection prevention for $row_num
-      if ($sAction == 'up' or $sAction == 'down') {
-         $swapRow = $iRowNum;
-         if ($sAction == 'up') {
-            $newRow = --$iRowNum;
-         } else if ($sAction == 'down') {
-            $newRow = ++$iRowNum;
-         }
+      $swapRow = $iRowNum;
+      if ($sAction == 'up') {
+         $newRow = --$iRowNum;
+      } else if ($sAction == 'down') {
+         $newRow = ++$iRowNum;
       } else {
-         $swapRow = $iRowNum;
       	 $newRow = $iRowNum;
       }
 
@@ -353,7 +350,7 @@ if ($numRows == 0) {
 <tr>
     <td colspan="5">
         <?php
-        if ( $bErrorFlag ) {
+        if ($bErrorFlag) {
             echo '<div class="callout callout-danger">';
             echo gettext("Invalid fields or selections. Changes not saved! Please correct and try again!");
             echo '</div>';
@@ -405,7 +402,7 @@ for ($row=1; $row <= $numRows; $row++) {
 	   </td>
 	
 	   <td class="TextColumn">
-	   <input type="text" Name="<?php echo $row . "desc" ?>" value="<?= htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="40" maxlength="100">
+	   <input type="text" name="<?= $row ?>desc" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, "UTF-8") ?>" size="40" maxlength="100">
 	   </td>
 	
 	   </tr>
@@ -420,9 +417,9 @@ for ($row=1; $row <= $numRows; $row++) {
 <tr>
 <td width="30%"></td>
 <td width="40%" align="center" valign="bottom">
-<input type="submit" class="btn" <?= 'value="' . gettext("Save Changes") . '"' ?> Name="SaveChanges">
+<input type="submit" class="btn" value="<?= gettext("Save Changes") ?>" Name="SaveChanges">
 &nbsp;
-<input type="button" class="btn" <?= 'value="' . gettext("Exit") . '"' ?> Name="Exit" onclick="javascript:document.location='Menu.php'">
+<input type="button" class="btn" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:document.location='Menu.php'">
 </td>
 <td width="30%"></td>
 </tr>
@@ -449,7 +446,7 @@ for ($row=1; $row <= $numRows; $row++) {
 &nbsp;
 </td>
 <td>
-<input type="submit" class="btn" <?= 'value="' . gettext("Add New Opportunity") . '"' ?> name="AddField">
+<input type="submit" class="btn" value="<?= gettext("Add New Opportunity") ?>" name="AddField">
 </td>
 <td width="15%"></td>
 </tr>
@@ -459,4 +456,5 @@ for ($row=1; $row <= $numRows; $row++) {
 </table>
 </form>
 </div>
-<?php require "Include/Footer.php"; ?>
+
+<?php require "Include/Footer.php" ?>
