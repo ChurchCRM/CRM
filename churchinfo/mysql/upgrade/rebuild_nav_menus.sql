@@ -112,7 +112,6 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (109, 'cvsimport', 'admin', 0, 'CSV Import', 'CSV Import', 'CSVImport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 10, NULL),
 (110, 'seeddata', 'admin', 0, 'Generate Seed Data', 'Generate Seed Data', 'GenerateSeedData.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 11, NULL),
 (111, 'register', 'admin', 0, 'Register ChurchCRM', 'Update ChurchCRM Registration', 'Register.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 12, NULL);
->>>>>>> develop
 
 UPDATE menuconfig_mcf SET content=content_english;
 --
