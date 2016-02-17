@@ -53,8 +53,8 @@ if (isset($_POST["Submit"])) {
 
 <table cellpadding="3" align="left">
    <tr>
-      <input type="submit" class="btn" name="Submit" <?= 'value="' . gettext("Create Report") . '"' ?>>
-      <input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="javascript:document.location='Menu.php';">
+      <input type="submit" class="btn" name="Submit" value="<?= gettext("Create Report") ?>">
+      <input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel") ?>" onclick="javascript:document.location='Menu.php';">
    </tr>
 </table>
 

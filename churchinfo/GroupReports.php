@@ -80,7 +80,7 @@ function UpdateRoles()
 function updateGroupRoles(generated_html)
 {
 	if (generated_html == "invalid") {
-		document.getElementById('GroupRole').innerHTML = <?php echo '\'<p class="LargeError">' . gettext("Invalid Group or No Roles Available!") . '<p>\';'; ?>
+		document.getElementById('GroupRole').innerHTML = <?= '\'<p class="LargeError">' . gettext("Invalid Group or No Roles Available!") . '<p>\';'; ?>
 	} else {
 		document.getElementById('GroupRole').innerHTML = generated_html;
 	}
@@ -125,8 +125,8 @@ function updateGroupRoles(generated_html)
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="btn" name="Submit" <?= 'value="' . gettext("Next") . '"' ?>>
-<input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="javascript:document.location='ReportList.php';">
+<input type="submit" class="btn" name="Submit" value="<?= gettext("Next") ?>">
+<input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel") ?>" onclick="javascript:document.location='ReportList.php';">
 </p>
 </form>
 
@@ -137,10 +137,10 @@ $iGroupID = FilterInput($_POST['GroupID'],'int');
 ?>
 
 <form method="POST" action="Reports/GroupReport.php">
-<input type="hidden" Name="GroupID" <?php echo "value=\"" . $iGroupID . "\"";?>>
-<input type="hidden" Name="GroupRole" <?php if (array_key_exists ('GroupRole', $_POST)) { echo "value=\"" . $_POST['GroupRole'] . "\""; }?>>
+<input type="hidden" Name="GroupID" <?= "value=\"" . $iGroupID . "\"" ?>>
+<input type="hidden" Name="GroupRole" <?php if (array_key_exists ('GroupRole', $_POST)) { echo "value=\"" . $_POST['GroupRole'] . "\""; } ?>>
 <input type="hidden" Name="OnlyCart" <?php if (array_key_exists ('OnlyCart', $_POST)) { echo "value=\"" . $_POST['OnlyCart'] . "\""; } ?>>
-<input type="hidden" Name="ReportModel" <?php echo "value=\"" . $_POST['ReportModel'] . "\"";?>>
+<input type="hidden" Name="ReportModel" <?= "value=\"" . $_POST['ReportModel'] . "\"" ?>>
 
 <?php
 
@@ -155,13 +155,13 @@ $rsPropFields = RunQuery($sSQL);
 	<tr>
 		<td class="LabelColumn"><?= gettext("Standard Info:") ?></td>
 		<td class="TextColumn">
-			<input type="checkbox" Name="AddressEnable" value="1"> <?php echo gettext("Address");?> <br>
-			<input type="checkbox" Name="HomePhoneEnable" value="1"> <?php echo gettext("Home Phone");?> <br>
-			<input type="checkbox" Name="WorkPhoneEnable" value="1"> <?php echo gettext("Work Phone");?> <br>
-			<input type="checkbox" Name="CellPhoneEnable" value="1"> <?php echo gettext("Cell Phone");?> <br>
-			<input type="checkbox" Name="EmailEnable" value="1"> <?php echo gettext("Email");?> <br>
-			<input type="checkbox" Name="OtherEmailEnable" value="1"> <?php echo gettext("Other Email");?> <br>
-			<input type="checkbox" Name="GroupRoleEnable" value="1"> <?php echo gettext("GroupRole");?> <br>
+			<input type="checkbox" Name="AddressEnable" value="1"> <?= gettext("Address") ?> <br>
+			<input type="checkbox" Name="HomePhoneEnable" value="1"> <?= gettext("Home Phone") ?> <br>
+			<input type="checkbox" Name="WorkPhoneEnable" value="1"> <?= gettext("Work Phone") ?> <br>
+			<input type="checkbox" Name="CellPhoneEnable" value="1"> <?= gettext("Cell Phone") ?> <br>
+			<input type="checkbox" Name="EmailEnable" value="1"> <?= gettext("Email") ?> <br>
+			<input type="checkbox" Name="OtherEmailEnable" value="1"> <?= gettext("Other Email") ?> <br>
+			<input type="checkbox" Name="GroupRoleEnable" value="1"> <?= gettext("GroupRole") ?> <br>
 		</td>
 	</tr>
 	<tr>
@@ -184,14 +184,11 @@ $rsPropFields = RunQuery($sSQL);
 
 <p align="center">
 <BR>
-<input type="submit" class="btn" name="Submit" <?= 'value="' . gettext("Create Report") . '"' ?>>
-<input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="javascript:document.location='Menu.php';">
+<input type="submit" class="btn" name="Submit" value="<?= gettext("Create Report") ?>">
+<input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel") ?>" onclick="javascript:document.location='Menu.php';">
 </p>
 </form>
 
 <?php } ?>
 
-
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

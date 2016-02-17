@@ -26,7 +26,7 @@ if (!$_SESSION['bAdmin'])
 
 $sPageTitle = gettext("Custom Person Fields Editor");
 
-require "Include/Header.php";?>
+require "Include/Header.php"; ?>
 
 
 <div class="box box-body">
@@ -294,7 +294,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt='bAll') {
 <script language="javascript">
 
 function confirmDeleteField(event) {
-	var answer = confirm (<?= "'" . gettext("Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!") . "'" ?>)
+	var answer = confirm('<?= gettext("Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!") ?>')
 	if ( answer )
 	{
         window.location=href="PersonCustomFieldsRowOps.php?Field="+event+"&Action=delete"
@@ -346,10 +346,10 @@ else
 		?>
 		<tr>
 			<td class="TextColumn">
-                <?php echo $aPropTypes[$aTypeFields[$row]];	?>
+                <?= $aPropTypes[$aTypeFields[$row]]; ?>
 			</td>
 			<td class="TextColumn" align="center">
-                <input type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="35" maxlength="40">
+                <input type="text" name="<?= $row . ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, "UTF-8") ?>" size="35" maxlength="40">
 				<?php
 				if (array_key_exists ($row, $aNameErrors) && $aNameErrors[$row])
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
@@ -394,8 +394,8 @@ else
 				?>
 			</td>
 			<td class="TextColumn" align="center" nowrap>
-				<input type="radio" Name="<?php echo $row . "side" ?>" value="0" <?php if (!$aSideFields[$row]) echo " checked" ?>><?= gettext("Left") ?>
-				<input type="radio" Name="<?php echo $row . "side" ?>" value="1" <?php if ($aSideFields[$row]) echo " checked" ?>><?= gettext("Right") ?>
+				<input type="radio" Name="<?= $row ?>side" value="0" <?php if (!$aSideFields[$row]) echo " checked" ?>><?= gettext("Left") ?>
+				<input type="radio" Name="<?= $row ?>side" value="1" <?php if ($aSideFields[$row]) echo " checked" ?>><?= gettext("Right") ?>
 			</td>
             <td>
                 <input type="button" class="btn btn-danger" value="<?= gettext("delete") ?>"   name="delete" onclick="return confirmDeleteField(<?= "'" . $aFieldFields[$row] . "'" ?>);")">
@@ -418,7 +418,7 @@ else
 				<tr>
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Save Changes") . '"' ?> Name="SaveChanges">
+						<input type="submit" class="btn btn-primary" value="<?= gettext("Save Changes") ?>" Name="SaveChanges">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -467,7 +467,7 @@ else
 						<?= GetSecurityList($aSecurityGrp, "newFieldSec") ?>
 					</td>
 					<td>
-						<input type="submit" class="btn btn-primary" <?= 'value="' . gettext("Add New Field") . '"' ?> Name="AddField">
+						<input type="submit" class="btn btn-primary" value="<?= gettext("Add New Field") ?>" Name="AddField">
 					</td>
 					<td width="15%"></td>
 				</tr>

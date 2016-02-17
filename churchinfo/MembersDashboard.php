@@ -30,7 +30,7 @@ $rsKidsGender = RunQuery($sSQL);
 ?>
 
 <!-- this page specific styles -->
-<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/chartjs/Chart.min.js"></script>
+<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/chartjs/Chart.min.js"></script>
 
 <!-- Default box -->
 <div class="box">
@@ -46,11 +46,11 @@ $rsKidsGender = RunQuery($sSQL);
         <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext("Family Geographic") ?></a>
         <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext("Family Map") ?></a>
         <a href="UpdateAllLatLon.php" class="btn btn-app"><i class="fa fa-map-pin"></i><?= gettext("Update All Family Coordinates") ?></a>
-        <? if ($_SESSION['bAdmin']) {?>
-        <br/>
-        <a href="VolunteerOpportunityEditor.php" class="btn btn-app"><i class="fa fa-bullhorn"></i><?= gettext("Volunteer Opportunities") ?></a>
-        <a href="PersonCustomFieldsEditor.php" class="btn btn-app"><i class="fa fa-gear"></i><?= gettext("Custom Person Fields") ?></a>
-        <a href="FamilyCustomFieldsEditor.php" class="btn btn-app"><i class="fa fa-gear"></i><?= gettext("Custom Family Fields") ?></a>
+        <?php if ($_SESSION['bAdmin']) { ?>
+            <br/>
+            <a href="VolunteerOpportunityEditor.php" class="btn btn-app"><i class="fa fa-bullhorn"></i><?= gettext("Volunteer Opportunities") ?></a>
+            <a href="PersonCustomFieldsEditor.php" class="btn btn-app"><i class="fa fa-gear"></i><?= gettext("Custom Person Fields") ?></a>
+            <a href="FamilyCustomFieldsEditor.php" class="btn btn-app"><i class="fa fa-gear"></i><?= gettext("Custom Family Fields") ?></a>
         <?php } ?>
 
     </div>
@@ -71,7 +71,7 @@ $rsKidsGender = RunQuery($sSQL);
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>
             </div>
-            <a href="<?= $sURLPath."/" ?>FamilyList.php" class="small-box-footer">
+            <a href="<?= $sRootPath . "/" ?>FamilyList.php" class="small-box-footer">
                 See all Families <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -81,7 +81,7 @@ $rsKidsGender = RunQuery($sSQL);
         <div class="small-box bg-green">
             <div class="inner">
                 <h3>
-                    <?= $personCount['personCount']?>
+                    <?= $personCount['personCount'] ?>
                 </h3>
                 <p>
                     People
@@ -90,7 +90,7 @@ $rsKidsGender = RunQuery($sSQL);
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="<?= $sURLPath."/" ?>SelectList.php?mode=person" class="small-box-footer">
+            <a href="<?= $sRootPath . "/" ?>SelectList.php?mode=person" class="small-box-footer">
                 See All People <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -109,7 +109,7 @@ $rsKidsGender = RunQuery($sSQL);
             <div class="icon">
                 <i class="fa fa-child"></i>
             </div>
-            <a href="<?= $sURLPath."/" ?>sundayschool\SundaySchoolDashboard.php" class="small-box-footer">
+            <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -259,4 +259,5 @@ $rsKidsGender = RunQuery($sSQL);
         //and append it to your page somewhere
         $('#gender-donut-legend').append(legend);
     </script>
-<? require 'Include/Footer.php'; ?>
+
+<?php require 'Include/Footer.php' ?>

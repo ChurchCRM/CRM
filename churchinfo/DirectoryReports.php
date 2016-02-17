@@ -113,11 +113,11 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
             </select>
         </td>
     </tr>
-    
+
 <?php
 }
 ?>
-    
+
     <tr>
         <td class="LabelColumn"><?= gettext("Which role is the head of household?") ?></td>
         <td class="TextColumn">
@@ -171,27 +171,27 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
     <tr>
         <td class="LabelColumn"><?= gettext("Information to Include:") ?></td>
         <td class="TextColumn">
-            <input type="checkbox" Name="bDirAddress" value="1" checked><?php echo gettext("Address");?><br>
-            <input type="checkbox" Name="bDirWedding" value="1" checked><?php echo gettext("Wedding Date");?><br>
-            <input type="checkbox" Name="bDirBirthday" value="1" checked><?php echo gettext("Birthday");?><br>
+            <input type="checkbox" Name="bDirAddress" value="1" checked><?= gettext("Address") ?><br>
+            <input type="checkbox" Name="bDirWedding" value="1" checked><?= gettext("Wedding Date") ?><br>
+            <input type="checkbox" Name="bDirBirthday" value="1" checked><?= gettext("Birthday") ?><br>
 
-            <input type="checkbox" Name="bDirFamilyPhone" value="1" checked><?php echo gettext("Family Home Phone");?><br>
-            <input type="checkbox" Name="bDirFamilyWork" value="1" checked><?php echo gettext("Family Work Phone");?><br>
-            <input type="checkbox" Name="bDirFamilyCell" value="1" checked><?php echo gettext("Family Cell Phone");?><br>
-            <input type="checkbox" Name="bDirFamilyEmail" value="1" checked><?php echo gettext("Family Email");?><br>
+            <input type="checkbox" Name="bDirFamilyPhone" value="1" checked><?= gettext("Family Home Phone") ?><br>
+            <input type="checkbox" Name="bDirFamilyWork" value="1" checked><?= gettext("Family Work Phone") ?><br>
+            <input type="checkbox" Name="bDirFamilyCell" value="1" checked><?= gettext("Family Cell Phone") ?><br>
+            <input type="checkbox" Name="bDirFamilyEmail" value="1" checked><?= gettext("Family Email") ?><br>
 
-            <input type="checkbox" Name="bDirPersonalPhone" value="1" checked><?php echo gettext("Personal Home Phone");?><br>
-            <input type="checkbox" Name="bDirPersonalWork" value="1" checked><?php echo gettext("Personal Work Phone");?><br>
-            <input type="checkbox" Name="bDirPersonalCell" value="1" checked><?php echo gettext("Personal Cell Phone");?><br>
-            <input type="checkbox" Name="bDirPersonalEmail" value="1" checked><?php echo gettext("Personal Email");?><br>
-            <input type="checkbox" Name="bDirPersonalWorkEmail" value="1" checked><?php echo gettext("Personal Work/Other Email");?><br>
-            <input type="checkbox" Name="bDirPhoto" value="1" checked><?php echo gettext("Photos");?><br>
-         <?php 
+            <input type="checkbox" Name="bDirPersonalPhone" value="1" checked><?= gettext("Personal Home Phone") ?><br>
+            <input type="checkbox" Name="bDirPersonalWork" value="1" checked><?= gettext("Personal Work Phone") ?><br>
+            <input type="checkbox" Name="bDirPersonalCell" value="1" checked><?= gettext("Personal Cell Phone") ?><br>
+            <input type="checkbox" Name="bDirPersonalEmail" value="1" checked><?= gettext("Personal Email") ?><br>
+            <input type="checkbox" Name="bDirPersonalWorkEmail" value="1" checked><?= gettext("Personal Work/Other Email") ?><br>
+            <input type="checkbox" Name="bDirPhoto" value="1" checked><?= gettext("Photos") ?><br>
+         <?php
          if ($numCustomFields > 0) {
-            while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_ASSOC) ){ 
-					if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') or ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]]))
+            while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_ASSOC) ){
+					if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') || ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]]))
 					{ ?>
-		            <input type="checkbox" Name="bCustom<?php echo $rowCustomField['custom_Order'];?>" value="1" checked><?php echo $rowCustomField['custom_Name'];?><br>
+		            <input type="checkbox" Name="bCustom<?= $rowCustomField['custom_Order'] ?>" value="1" checked><?= $rowCustomField['custom_Name'] ?><br>
          <?php
 	            }
 	         }
@@ -241,31 +241,31 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
                 </tr>
                 <tr>
                     <td><?= gettext("Church Name") ?></td>
-                    <td><input type="text" Name="sChurchName" value="<?php echo $sChurchName;?>"></td>
+                    <td><input type="text" Name="sChurchName" value="<?= $sChurchName ?>"></td>
                 </tr>
                 <tr>
                     <td><?= gettext("Address") ?></td>
-                    <td><input type="text" Name="sChurchAddress" value="<?php echo $sChurchAddress;?>"></td>
+                    <td><input type="text" Name="sChurchAddress" value="<?= $sChurchAddress ?>"></td>
                 </tr>
                 <tr>
                     <td><?= gettext("City") ?></td>
-                    <td><input type="text" Name="sChurchCity" value="<?php echo $sChurchCity;?>"></td>
+                    <td><input type="text" Name="sChurchCity" value="<?= $sChurchCity ?>"></td>
                 </tr>
                 <tr>
                     <td><?= gettext("State") ?></td>
-                    <td><input type="text" Name="sChurchState" value="<?php echo $sChurchState;?>"></td>
+                    <td><input type="text" Name="sChurchState" value="<?= $sChurchState ?>"></td>
                 </tr>
                 <tr>
                     <td><?= gettext("Zip") ?></td>
-                    <td><input type="text" Name="sChurchZip" value="<?php echo $sChurchZip;?>"></td>
+                    <td><input type="text" Name="sChurchZip" value="<?= $sChurchZip ?>"></td>
                 </tr>
                 <tr>
                     <td><?= gettext("Phone") ?></td>
-                    <td><input type="text" Name="sChurchPhone" value="<?php echo $sChurchPhone;?>"></td>
+                    <td><input type="text" Name="sChurchPhone" value="<?= $sChurchPhone ?>"></td>
                 </tr>
                 <tr>
                     <td><?= gettext("Disclaimer") ?></td>
-                    <td><textarea Name="sDirectoryDisclaimer" cols="35" rows="4"><?php echo "$sDirectoryDisclaimer1 $sDirectoryDisclaimer2";?></textarea></td>
+                    <td><textarea Name="sDirectoryDisclaimer" cols="35" rows="4"><?= "$sDirectoryDisclaimer1 $sDirectoryDisclaimer2" ?></textarea></td>
                 </tr>
 
             </table>
@@ -280,11 +280,9 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
 
 <p align="center">
 <BR>
-<input type="submit" class="btn btn-primary" name="Submit" <?= 'value="' . gettext("Create Directory") . '"' ?>>
+<input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext("Create Directory") ?>">
 <input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="javascript:document.location='Menu.php';">
 </p>
 </form>
 </div>
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

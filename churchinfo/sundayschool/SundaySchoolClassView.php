@@ -64,17 +64,17 @@ require "../Include/Header.php";
 
 ?>
 
-    
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
     <div class="btn-group pull-right clearfix">
         <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>
-        <a class="btn btn-info" href="../GroupView.php?GroupID=<?php echo $iGroupId?>"><i class="fa fa-eye-slash"></i> LegacyView </a>
+        <a class="btn btn-info" href="../GroupView.php?GroupID=<?= $iGroupId?>"><i class="fa fa-eye-slash"></i> LegacyView </a>
     </div>
 
     <p><br/></p><p><br/></p>
@@ -92,10 +92,10 @@ require "../Include/Header.php";
                     <!-- Begin user profile -->
                     <div class="box box-info text-center user-profile-2">
                         <div class="user-profile-inner">
-                            <h4 class="white"><?php echo $per_FirstName . " " . $per_LastName ?></h4>
+                            <h4 class="white"><?= $per_FirstName . " " . $per_LastName ?></h4>
                             <img src="<?= $personService->getPhoto($per_ID);?>" class="img-circle profile-avatar" alt="User avatar" width="80" height="80">
-                            <a href="mailto:<?php echo $per_Email ?>" type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</a>
-                            <a href="../PersonView.php?PersonID=<?php echo $per_ID ?>" type="button" class="btn btn-primary btn-info btn-block"><i class="fa fa-envelope"></i> View Profile</a>
+                            <a href="mailto:<?= $per_Email ?>" type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</a>
+                            <a href="../PersonView.php?PersonID=<?= $per_ID ?>" type="button" class="btn btn-primary btn-info btn-block"><i class="fa fa-envelope"></i> View Profile</a>
                         </div>
                     </div>
                 </div>
@@ -225,15 +225,15 @@ function implodeUnique($array, $withQuotes) {
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Kids Emails</label>
-                            <input name="email_to" class="form-control email-recepients-kids" value="<?php echo implodeUnique($KidsEmails, false) ?>">
+                            <input name="email_to" class="form-control email-recepients-kids" value="<?= implodeUnique($KidsEmails, false) ?>">
                         </div>
                         <div class="form-group">
                             <label>Parents Emails</label>
-                            <input name="email_to_2" class="form-control email-recepients-parents" value="<?php echo implodeUnique($ParentsEmails, false) ?>">
+                            <input name="email_to_2" class="form-control email-recepients-parents" value="<?= implodeUnique($ParentsEmails, false) ?>">
                         </div>
                         <div class="form-group">
                             <label>Teachers Emails</label>
-                            <input name="email_cc" class="form-control email-recepients-teachers" value="<?php echo implodeUnique($TeachersEmails, false) ?>">
+                            <input name="email_cc" class="form-control email-recepients-teachers" value="<?= implodeUnique($TeachersEmails, false) ?>">
                         </div>
                         <div class="form-group">
                             <textarea name="message" id="email_message" class="form-control" placeholder="Message" style="height: 120px;"></textarea>
@@ -259,13 +259,13 @@ function implodeUnique($array, $withQuotes) {
     </div><!-- /.modal -->
 
     <!-- FLOT CHARTS -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+    <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
     <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+    <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
     <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
+    <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+    <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
@@ -283,11 +283,11 @@ function implodeUnique($array, $withQuotes) {
             });
             $('.email-recepients-teachers').select2({
                 placeholder: 'Enter recepients',
-                tags: [<?php echo implodeUnique($TeachersEmails, true) ?>]
+                tags: [<?= implodeUnique($TeachersEmails, true) ?>]
             });
             $('.email-recepients-parents').select2({
                 placeholder: 'Enter recepients',
-                tags: [<?php echo implodeUnique($ParentsEmails, true) ?>]
+                tags: [<?= implodeUnique($ParentsEmails, true) ?>]
             });
         } );
 
@@ -302,31 +302,31 @@ function implodeUnique($array, $withQuotes) {
                     $iMonth = $row['birthMonth'];
                     $iKidsCount = $row['numb'];
                     if ($iMonth == 1 ) { ?>
-                        ["January", <?php echo $iKidsCount;?>],
+                        ["January", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 2 ) { ?>
-                        ["February", <?php echo $iKidsCount;?>],
+                        ["February", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 3 ) { ?>
-                        ["March", <?php echo $iKidsCount;?>],
+                        ["March", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 4 ) { ?>
-                        ["April", <?php echo $iKidsCount;?>],
+                        ["April", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 5 ) { ?>
-                        ["May", <?php echo $iKidsCount;?>],
+                        ["May", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 6 ) { ?>
-                        ["June", <?php echo $iKidsCount;?>],
+                        ["June", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 7 ) { ?>
-                        ["July", <?php echo $iKidsCount;?>],
+                        ["July", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 8 ) { ?>
-                        ["August", <?php echo $iKidsCount;?>],
+                        ["August", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 9 ) { ?>
-                        ["September", <?php echo $iKidsCount;?>],
+                        ["September", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 10 ) { ?>
-                        ["October", <?php echo $iKidsCount;?>],
+                        ["October", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 11 ) { ?>
-                        ["November", <?php echo $iKidsCount;?>],
+                        ["November", <?= $iKidsCount ?>],
                     <?php } else if ($iMonth == 12 ) { ?>
-                        ["December", <?php echo $iKidsCount;?>]
+                        ["December", <?= $iKidsCount ?>]
                     <?php }
-                }?>
+                } ?>
             ],
             color: "#3c8dbc"
 };

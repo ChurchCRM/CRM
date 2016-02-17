@@ -74,7 +74,7 @@ $('#restoredatabase').submit(function(event) {
 });
 </script>
 <!-- PACE -->
-<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/pace/pace.min.js"></script>
+<script src="<?= $sRootPath ?>/vendor/AdminLTE/plugins/pace/pace.min.js"></script>
 <?php
 require "Include/Footer.php";
 ?>

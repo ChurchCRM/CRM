@@ -146,7 +146,7 @@ class PDF_Label extends ChurchInfoReport
 	// Print a label
 	function Add_PDF_Label($texte) {
 		// We are in a new page, then we must add a page
-		if (($this->_COUNTX==0) and ($this->_COUNTY==0)) {
+		if ($this->_COUNTX == 0 && $this->_COUNTY == 0) {
 			$this->AddPage();
 		}
 

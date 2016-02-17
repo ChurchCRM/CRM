@@ -102,13 +102,13 @@ function LabelGroupSelect($fieldname)
 	echo "<td class=\"TextColumn\">";
 	echo "<input name=\"$fieldname\" type=\"radio\" value=\"indiv\" ";
 
-	if (array_key_exists ($fieldname, $_COOKIE) and $_COOKIE[$fieldname] != "fam")
+	if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] != "fam")
 		echo "checked";
 	
 	echo ">" . gettext("All Individuals") . "<br>";
 	echo "<input name=\"$fieldname\" type=\"radio\" value=\"fam\" ";
 
-	if (array_key_exists ($fieldname, $_COOKIE) and $_COOKIE[$fieldname] == "fam")
+	if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == "fam")
 		echo "checked";
 
 	echo ">" . gettext("Grouped by Family") . "<br></td></tr>";
@@ -122,7 +122,7 @@ function ToParentsOfCheckBox($fieldname)
 	echo "<input name=\"$fieldname\" type=\"checkbox\" ";
 	echo "id=\"ToParent\" value=\"1\" ";
 
-	if (array_key_exists ($fieldname, $_COOKIE) and $_COOKIE[$fieldname])
+	if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname])
 		echo "checked";
 	
 	echo "><br></td></tr>";
