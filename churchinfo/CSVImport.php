@@ -421,7 +421,7 @@ if (isset($_POST["DoImport"]))
             for ($col = 0; $col < $numCol; $col++)
             {
                 // Is it not a custom field?
-                if (!$aColumnCustom[$col] and !$aFamColumnCustom[$col])
+                if (!$aColumnCustom[$col] && !$aFamColumnCustom[$col])
                 {
                     $currentType = $aColumnID[$col];
 
@@ -567,7 +567,7 @@ if (isset($_POST["DoImport"]))
             for ($col = 0; $col < $numCol; $col++)
             {
                 // Is it not a custom field?
-                if (!$aColumnCustom[$col] and !$aFamColumnCustom[$col])
+                if (!$aColumnCustom[$col] && !$aFamColumnCustom[$col])
                 {
                     $currentType = $aColumnID[$col];
                     switch($currentType)

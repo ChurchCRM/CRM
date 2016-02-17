@@ -578,7 +578,7 @@ require "Include/Header.php";
 			<input type="button" class="btn" value="Download OFX" name="DownloadOFX" onclick="javascript:document.location='Reports/ExportOFX.php?deposit=<?= $iDepositSlipID ?>';">
 			<input type="button" class="btn" value="<?= gettext("More Reports") ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
 			<?php
-			if ($iDepositSlipID and $sDepositType and !$dep_Closed) {
+			if ($iDepositSlipID && $sDepositType && !$dep_Closed) {
 				if ($sDepositType == "eGive") {
 					echo "<input type=button class=btn value=\"".gettext("Import eGive")."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
 				} else {
@@ -603,7 +603,7 @@ require "Include/Header.php";
 
 
 			<?php
-			if (!$iDepositSlipID or !$sDepositType)
+			if (!$iDepositSlipID || !$sDepositType)
 			{
 				$selectOther = "";
 				$selectCreditCard = "";

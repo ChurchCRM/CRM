@@ -43,7 +43,7 @@ if (!function_exists(stream_get_contents)) {
 	}
 }
 
-if (!$_SESSION['bFinance'] and !$_SESSION['bAdmin']) {
+if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
     Redirect("Menu.php");
     exit;
 }
@@ -126,7 +126,7 @@ if (isset($_POST["ApiGet"])) {
 	//$status = $logon["status"];
 	//$message = $login["message"];
 
-	if ($logon and $logon['status'] == 'success') {
+	if ($logon && $logon['status'] == 'success') {
 		$api_error = 0;
  		$token = $logon["token"];
 
@@ -142,7 +142,7 @@ if (isset($_POST["ApiGet"])) {
 		$json = stream_get_contents($fp);
 		fclose($fp);
 		$data = get_api_data($json, true);
-		if ($data and $data['status'] == 'success') {
+		if ($data && $data['status'] == 'success') {
 			$api_error = 0;
 
 		// each transaction has these fields: 'transactionID' 'envelopeID' 'giftID' 'frequency' 'amount'
@@ -163,7 +163,7 @@ if (isset($_POST["ApiGet"])) {
 				$date = yearFirstDate($dateTime[0]);
 				$famID = 0;
 
-				if ($egiveID2FamID and array_key_exists($egiveID, $egiveID2FamID)) {
+				if ($egiveID2FamID && array_key_exists($egiveID, $egiveID2FamID)) {
 					$famID = $egiveID2FamID[$egiveID];
 				} else {
 					$patterns[0] = '/\s+/'; // any whitespace
@@ -313,7 +313,7 @@ function updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $f
 	global $importNoChange;
 
 	$keyExisting = eGiveExistingKey($transId, $famID, $date, $fundId, $comment);
-	if ($eGiveExisting and array_key_exists($keyExisting, $eGiveExisting)) {
+	if ($eGiveExisting && array_key_exists($keyExisting, $eGiveExisting)) {
 		++$importNoChange;
 	} elseif ($famID) { //  insert a new record
 		$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_NonDeductible, plg_GroupKey) VALUES ('" . $famID . "','" . $iFYID . "','" . $date . "','" . $amount . "','" . $frequency . "','EGIVE','" . $comment . "','" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'Payment'," . $fundId . ",'" . $iDepositSlipID . "','" . $transId . "','0','" . $groupKey . "')";

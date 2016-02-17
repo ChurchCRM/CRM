@@ -284,7 +284,7 @@ if ($sReportType == "") {
             ." &nbsp; <input name=only_owe type=radio value='no'>".gettext("All Families")."</td></tr>";
     }
     
-    if ($sReportType == "Giving Report" or $sReportType == "Zero Givers"){
+    if ($sReportType == "Giving Report" || $sReportType == "Zero Givers"){
         echo "<tr><td class=LabelColumn>".gettext("Report Heading:")."</td>"
             ."<td class=TextColumnWithBottomBorder><input name=letterhead type=radio value='graphic'>".gettext("Graphic")
             ." <input name=letterhead type=radio value='address' checked>".gettext("Church Address")
