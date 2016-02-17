@@ -139,6 +139,10 @@ require 'Include/Header.php';
     </div><!-- ./col -->
 </div><!-- /.row -->
 
+<?php 
+if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's display the deposit line chart
+{ 
+?>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="box box-info">
@@ -155,6 +159,9 @@ require 'Include/Header.php';
             </div>
     </div>
 </div>
+<?php 
+}  //END IF block for Finance permissions to include HTML for Deposit Chart
+ ?>
 
 <div class="row">
     <div class="col-lg-6 col-md-5 col-sm-4">
@@ -296,11 +303,15 @@ require 'Include/Header.php';
 
 <!-- this page specific inline scripts -->
 <script>
-
+<?php 
+if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's display the deposit line chart
+{ 
+?>
+   
 //---------------
 //- LINE CHART  -
 //---------------
-var lineDataRaw = <?php echo $financialService->getDepositJSON($financialService->getDeposits());?>;
+var lineDataRaw = <?=$financialService->getDepositJSON($financialService->getDeposits());?>;
 var lineData = {
     labels: [],
     datasets: [
@@ -319,6 +330,10 @@ var lineOptions = {
     
 };
 var lineChart = new Chart(lineChartCanvas).Line(lineData,lineOptions);
+<?php 
+}  //END IF block for Finance permissions to include JS for Deposit Chart
+ ?>
+
     //-------------
     //- PIE CHART -
     //-------------
