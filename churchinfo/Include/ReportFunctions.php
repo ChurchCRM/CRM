@@ -22,7 +22,7 @@ function LoadLib_FPDF()
 	if ($sFPDF_PATH{0} == "/" || substr($sFPDF_PATH,1,2) == ":\\")
 		$sfpdfpath = $sFPDF_PATH;
 	else
-		$sfpdfpath = "../" . $sFPDF_PATH;
+		$sfpdfpath = dirname(dirname(__FILE__)) .'/'. $sFPDF_PATH;
 
 	$sfpdflib = $sfpdfpath . "/fpdf.php";
 
