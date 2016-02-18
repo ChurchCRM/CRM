@@ -56,7 +56,7 @@ $sPageTitle = "Welcome to <b>Church</b>CRM";
 
 require 'Include/Header.php';
 ?>
-<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/chartjs/Chart.min.js"></script>
+<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/chartjs/Chart.min.js"></script>
 
 <!-- Small boxes (Stat box) -->
 <div class="row">
@@ -272,7 +272,7 @@ if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's di
                         <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
-                                <img src="<?= $personService->getPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="85" height="85" /><br/>
+                                <img src="<?= $personService->getPhoto($row['per_ID']) ?>" alt="User Image" class="user-image" width="85" height="85" /><br/>
                                 <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1) ?></a>
                                 <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false) ?></span>
                             </li>
@@ -291,29 +291,28 @@ if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's di
 if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's display the deposit line chart
 { 
 ?>
-   
-//---------------
-//- LINE CHART  -
-//---------------
-var lineDataRaw = <?=$financialService->getDepositJSON($financialService->getDeposits());?>;
-var lineData = {
-    labels: [],
-    datasets: [
-        {
-            data: []
-        }     
-    ]
-};
-$.each(lineDataRaw.deposits, function(i, val) {
-    lineData.labels.push(val.dep_Date);
-    lineData.datasets[0].data.push(val.dep_Total);
-});
-var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
-var lineOptions = {
+    //---------------
+    //- LINE CHART  -
+    //---------------
+    var lineDataRaw = <?= $financialService->getDepositJSON($financialService->getDeposits()) ?>;
+
+    var lineData = {
+        labels: [],
+        datasets: [
+            {
+                data: []
+            }     
+        ]
+    };
     
-    
-};
-var lineChart = new Chart(lineChartCanvas).Line(lineData,lineOptions);
+    $.each(lineDataRaw.deposits, function(i, val) {
+        lineData.labels.push(val.dep_Date);
+        lineData.datasets[0].data.push(val.dep_Total);
+    });
+
+    var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
+
+    var lineChart = new Chart(lineChartCanvas).Line(lineData);
 <?php 
 }  //END IF block for Finance permissions to include JS for Deposit Chart
  ?>
@@ -341,8 +340,8 @@ var lineChart = new Chart(lineChartCanvas).Line(lineData,lineOptions);
         }
         ?>
     ];
+    
     var pieOptions = {
-
         //String - Point label font colour
         pointLabelFontColor : "#666",
 
