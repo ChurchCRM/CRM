@@ -19,7 +19,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require 'Include/PersonFunctions.php';
-require 'service/MailchimpService.php';
+require 'Service/MailchimpService.php';
 
 $mailchimp = new MailChimpService();
 

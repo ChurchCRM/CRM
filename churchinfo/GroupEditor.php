@@ -17,7 +17,7 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "service/GroupService.php";
+require "Service/GroupService.php";
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bManageGroups'])

@@ -23,7 +23,7 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'service/GroupService.php';
+require 'Service/GroupService.php';
 
 //Set the page title
 $sPageTitle = gettext('Group View');

@@ -27,7 +27,7 @@
 *
 ******************************************************************************/
 
-require_once dirname(__FILE__).'/../service/PersonService.php';
+require_once dirname(__FILE__).'/../Service/PersonService.php';
 require_once 'Functions.php';
 
 
