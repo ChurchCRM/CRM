@@ -74,16 +74,15 @@ $MenuFirst = 1;
     <!-- AdminLTE DatePicker -->
     <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
      <!-- AdminLTE TimePicker -->
-    <script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
+    <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
     
     <script>
     $(document).ajaxError(function(evt,xhr,settings) {
-        if (evt.severity >0)
+        if (evt.severity > 0)
         {
-            console.log(evt);
             $(".modal").modal('hide');
             $("#APIError").modal('show');
-            $("#APIEndpoint").text("["+settings.type+"] "+settings.url); 
+            $("#APIEndpoint").text("[" + settings.type + "] " + settings.url); 
             $("#APIErrorText").text(xhr.responseText);
         }
     });
