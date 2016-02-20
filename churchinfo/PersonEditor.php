@@ -641,7 +641,7 @@ require "Include/Header.php";
 					</div>
 					<div class="col-xs-2">
 						<label><?= gettext("Hide Age") ?></label><br/>
-						<input type="checkbox" name="HideAge" value="1" <?php if ($bHideAge) echo " checked";?> class="form-control">
+						<input type="checkbox" name="HideAge" value="1" <?php if ($bHideAge) echo " checked";?> />
 					</div>
 				</div>
 			</div>

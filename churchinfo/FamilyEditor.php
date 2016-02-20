@@ -749,7 +749,7 @@ require "Include/Header.php";
 							<i class="fa fa-phone"></i>
 						</div>
 						<input type="text" Name="HomePhone" value="<?= htmlentities(stripslashes($sHomePhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
-						<input type="checkbox" class="form-control" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) echo " checked";?>><?= gettext("Do not auto-format") ?>
+						<input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) echo " checked";?>><?= gettext("Do not auto-format") ?>
 					</div>
 				</div>
 				<div class="form-group col-xs-3">
@@ -759,7 +759,7 @@ require "Include/Header.php";
 							<i class="fa fa-phone"></i>
 						</div>
 						<input type="text" name="WorkPhone" value="<?= htmlentities(stripslashes($sWorkPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask/>
-						<input type="checkbox" class="form-control" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? " checked" : ''?>><?= gettext("Do not auto-format") ?>
+						<input type="checkbox" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? " checked" : ''?>><?= gettext("Do not auto-format") ?>
 					</div>
 				</div>
 				<div class="form-group col-xs-3">
@@ -786,7 +786,7 @@ require "Include/Header.php";
 				<?php if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
 				<div class="form-group col-xs-4">
 					<label><?= gettext("Send Newsletter:") ?></label><br/>
-					<input type="checkbox" class="form-control" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) echo " checked"; ?>>
+					<input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) echo " checked"; ?>>
 				</div>
 				<?php } ?>
 			</div>
@@ -814,7 +814,7 @@ require "Include/Header.php";
 				<?php if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser ?>
 					<div class="form-group col-xs-4">
 						<label><?= gettext("Ok To Canvass:") ?> </label><br/>
-						<input type="checkbox" class="form-control" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) echo " checked "; ?> >
+						<input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) echo " checked "; ?> >
 					</div>
 				<?php }
 
