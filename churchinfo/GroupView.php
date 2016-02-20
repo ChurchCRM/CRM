@@ -629,7 +629,7 @@ $(document).ready(function() {
     $(".personSearch").on("select2:select",function (e) { 
         $.ajax({
             method: "POST",
-            url: "/api/groups/<?= $iGroupID ?>/adduser/"+e.params.data.objid,
+            url: window.CRM.root + "/api/groups/<?= $iGroupID ?>/adduser/"+e.params.data.objid,
             dataType: "json"
         }).done(function (data){
            var person = data[0]; 
@@ -659,7 +659,7 @@ function initHandlers()
         console.log(userid);
         $.ajax({
             method: "POST",
-            url: "/api/groups/<?= $iGroupID ?>/removeuser/"+userid,
+            url: window.CRM.root + "/api/groups/<?= $iGroupID ?>/removeuser/"+userid,
             dataType: "json"
         }).done(function(data){
             dataT.row(function(idx,data,node) { if  (data.per_ID == userid){return true;} } ).remove();
@@ -681,7 +681,7 @@ function initHandlers()
         var changeingMemberID = $("#changeingMemberID").val();
         $.ajax({
             method: "POST",
-            url: "/api/groups/<?= $iGroupID ?>/userRole/" + changeingMemberID,
+            url: window.CRM.root + "/api/groups/<?= $iGroupID ?>/userRole/" + changeingMemberID,
             data: JSON.stringify({'roleID': $("#newRoleSelection option:selected").val()}),
             dataType: "json"
         }).done(function(data){
@@ -697,7 +697,7 @@ function initHandlers()
       console.log(e);        
       $.ajax({
             method: "DELETE",
-            url: "/api/groups/<?= $iGroupID ?>",
+            url: window.CRM.root + "/api/groups/<?= $iGroupID ?>",
             dataType: "json"
         }).done(function(data){
             console.log(data);

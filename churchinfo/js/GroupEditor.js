@@ -46,7 +46,7 @@ $("document").ready(function(){
         console.log(formData);
         $.ajax({
             method: "POST",
-            url:   "/api/groups/"+groupID,
+            url:   window.CRM.root + "/api/groups/"+groupID,
             data:  JSON.stringify(formData)
         }).done(function(data){
            console.log(data);
@@ -60,7 +60,7 @@ $("document").ready(function(){
        
         $.ajax({
             method: "POST",
-            url:    "/api/groups/"+groupID+"/roles",
+            url:    window.CRM.root + "/api/groups/"+groupID+"/roles",
             data:  '{"roleName":"'+newRoleName+'"}'
         }).done(function(data){
             var newRole = data.newRole;
@@ -80,7 +80,7 @@ $("document").ready(function(){
         console.log("deleting group role: "+roleID);
         $.ajax({
             method: "DELETE",
-            url:    "/api/groups/"+groupID+"/roles/"+roleID
+            url:    window.CRM.root + "/api/groups/"+groupID+"/roles/"+roleID
         }).done(function(data){
             console.log(data);
             dataT.clear();
@@ -138,7 +138,7 @@ $("document").ready(function(){
         var roleID=e.target.id.split("-")[1];
         $.ajax({
             method: "POST",
-            url:    "/api/groups/"+groupID+"/roles/"+roleID,
+            url:    window.CRM.root + "/api/groups/"+groupID+"/roles/"+roleID,
             data: '{"groupRoleName":"'+groupRoleName+'"}'
         }).done(function(data){
         });
@@ -150,7 +150,7 @@ $("document").ready(function(){
         var roleID=e.target.id.split("-")[1];
         $.ajax({
             method: "POST",
-            url:    "/api/groups/"+groupID+"/defaultRole",
+            url:    window.CRM.root + "/api/groups/"+groupID+"/defaultRole",
             data: '{"roleID":"'+roleID+'"}'
         }).done(function(data){
             defaultRoleID=roleID; //update the local variable representing the default role id
@@ -233,7 +233,7 @@ function setGroupRoleOrder(groupID,roleID,groupRoleOrder)
 {
     $.ajax({
         method: "POST",
-        url:    "/api/groups/"+groupID+"/roles/"+roleID,
+        url:    window.CRM.root + "/api/groups/"+groupID+"/roles/"+roleID,
         data:   '{"groupRoleOrder":"'+groupRoleOrder+'"}'
     }).done(function(data){
     });

@@ -76,7 +76,7 @@ $(document).ready(function() {
         console.log(newGroup);
         $.ajax({
             method: "POST",
-            url:   "/api/groups",
+            url:   window.CRM.root + "/api/groups",
             data:  JSON.stringify(newGroup)
         }).done(function(data){
             console.log(data);
