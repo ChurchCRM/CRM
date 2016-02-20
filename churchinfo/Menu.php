@@ -316,65 +316,6 @@ if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's di
 <?php 
 }  //END IF block for Finance permissions to include JS for Deposit Chart
  ?>
-
-    //-------------
-    //- PIE CHART -
-    //-------------
-    // Get context with jQuery - using jQuery's .get() method.
-    var PieData = [
-        <?php while ($row = mysql_fetch_array($rsAdultsGender)) {
-            if ($row['per_Gender'] == 1 ) {
-                echo "{value: ". $row['numb'] ." , color: \"#003399\", highlight: \"#3366ff\", label: \"Men\" },";
-            }
-            if ($row['per_Gender'] == 2 ) {
-                echo "{value: ". $row['numb'] ." , color: \"#9900ff\", highlight: \"#ff66cc\", label: \"Women\"},";
-            }
-        }
-        while ($row = mysql_fetch_array($rsKidsGender)) {
-        if ($row['per_Gender'] == 1 ) {
-                echo "{value: ". $row['numb'] ." , color: \"#3399ff\", highlight: \"#99ccff\", label: \"Boys\"},";
-            }
-            if ($row['per_Gender'] == 2 ) {
-                echo "{value: ". $row['numb'] ." , color: \"#009933\", highlight: \"#99cc00\", label: \"Girls\",}";
-            }
-        }
-        ?>
-    ];
-    
-    var pieOptions = {
-        //String - Point label font colour
-        pointLabelFontColor : "#666",
-
-        //Boolean - Whether we should show a stroke on each segment
-        segmentShowStroke: true,
-        //String - The colour of each segment stroke
-        segmentStrokeColor: "#fff",
-        //Number - The width of each segment stroke
-        segmentStrokeWidth: 2,
-        //Number - The percentage of the chart that we cut out of the middle
-        percentageInnerCutout: 50, // This is 0 for Pie charts
-        //Boolean - Whether we animate the rotation of the Doughnut
-        animateRotate: false,
-        //Boolean - whether to make the chart responsive to window resizing
-        responsive: true,
-        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-        maintainAspectRatio: true,
-        //String - A legend template
-        legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
-    };
-
-    var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
-    var pieChart = new Chart(pieChartCanvas);
-
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    pieChart = pieChart.Doughnut(PieData, pieOptions);
-
-    //then you just need to generate the legend
-    var legend = pieChart.generateLegend();
-
-    //and append it to your page somewhere
-    $('#gender-donut-legend').append(legend);
 </script>
 
 
