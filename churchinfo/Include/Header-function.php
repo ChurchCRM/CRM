@@ -53,6 +53,7 @@ function Header_body_scripts()
     <script type="text/javascript" src="<?= $sRootPath . "/" ?>Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
 
     <script language="javascript" type="text/javascript">
+        window.CRM = { root: "<?= $sRootPath ?>" };
 
         // Popup Calendar stuff
         function selected(cal, date)
