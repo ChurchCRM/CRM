@@ -1,7 +1,7 @@
 
 
 $("document").ready(function(){
-       
+
     $(".groupSpecificProperties").click(function (e){
             var groupPropertyAction = e.currentTarget.id;
             if (groupPropertyAction == "enableGroupProps")
@@ -19,11 +19,11 @@ $("document").ready(function(){
                 $("#setgroupSpecificProperties").text("Disable Group Specific Properties");
             }
     });
-    
-    
+
+
 
     $("#selectGroupIDDiv").hide();
-    
+
     $("#cloneGroupRole").click(function(e){
     if (e.target.checked)
         $("#selectGroupIDDiv").show();
@@ -36,28 +36,26 @@ $("document").ready(function(){
 
     $("#groupEditForm").submit(function(e) {
         e.preventDefault();
-       
+
         var formData ={
             "groupName": $("input[name='Name']").val(),
             "description": $("textarea[name='Description']").val(),
             "groupType" : $("select[name='GroupType'] option:selected").val()
-            
+
         };
-        console.log(formData);
         $.ajax({
             method: "POST",
             url:   window.CRM.root + "/api/groups/"+groupID,
             data:  JSON.stringify(formData)
         }).done(function(data){
-           console.log(data);
-           window.location.href="/GroupList.php";
+           window.location.href = CRM.root + "/GroupList.php";
         });
 
     });
-    
+
     $("#addNewRole").click(function(e) {
         var newRoleName = $("#newRole").val();
-       
+
         $.ajax({
             method: "POST",
             url:    window.CRM.root + "/api/groups/"+groupID+"/roles",
@@ -71,12 +69,12 @@ $("document").ready(function(){
             $("#newRole").val('');
             //location.reload(); // this shouldn't be necessary
         });
-        
+
     });
-    
+
     $(document).on('click','.deleteRole', function(e) {
         var roleID = e.currentTarget.id.split("-")[1];
-       
+
         console.log("deleting group role: "+roleID);
         $.ajax({
             method: "DELETE",
@@ -88,14 +86,14 @@ $("document").ready(function(){
             if (roleID == defaultRoleID)        // if we delete the default group role, set the default group role to 1 before we tell the table to re-render so that the buttons work correctly
                 defaultRoleID =1;
             dataT.rows().invalidate().draw(true);
-            
-            
-            
+
+
+
         });
     });
-    
+
     $(document).on('click','.rollOrder', function (e) {
-      
+
        var roleID = e.currentTarget.id.split("-")[1]; // get the ID of the role that we're manipulating
        var roleSequenceAction =  e.currentTarget.id.split("-")[0];  //determine whether we're increasing or decreasing this role's sequence number
        var newRoleSequence =0;      //create a variable at the function scope to store the new role's sequence
@@ -126,14 +124,14 @@ $("document").ready(function(){
         //   console.log("no cells to replace - something was funky.");
        //}
       dataT.cell(function(idx,data,node) { if  (data.lst_OptionID == roleID){return true;}}, 2).data(newRoleSequence); // set our role to the new sequence number
-      setGroupRoleOrder(groupID,roleID,newRoleSequence);       
+      setGroupRoleOrder(groupID,roleID,newRoleSequence);
       dataT.rows().invalidate().draw(true);
       dataT.order([[ 2, "asc" ]]).draw();
-      
+
     });
-    
+
     $(document).on('change','.roleName',function(e){
-       
+
         var groupRoleName = e.target.value;
         var roleID=e.target.id.split("-")[1];
         $.ajax({
@@ -142,9 +140,9 @@ $("document").ready(function(){
             data: '{"groupRoleName":"'+groupRoleName+'"}'
         }).done(function(data){
         });
-        
+
     });
-    
+
     $(document).on('click','.defaultRole', function(e){
        console.log(e);
         var roleID=e.target.id.split("-")[1];
@@ -157,7 +155,7 @@ $("document").ready(function(){
             dataT.rows().invalidate().draw(true);
              // re-register the JQuery handlers since we changed the DOM, and new buttons will not have an action bound.
         });
-    }); 
+    });
 
     dataT =  $("#groupRoleTable").DataTable({
     data:groupRoleData,
@@ -168,7 +166,7 @@ $("document").ready(function(){
             data:'lst_OptionName',
             render: function  (data, type, full, meta ) {
                 if ( type === 'display')
-                    return '<input type="text" value="'+data+'">'; 
+                    return '<input type="text" value="'+data+'">';
                 else
                     return data;
             }
@@ -217,14 +215,14 @@ $("document").ready(function(){
             title:'Delete',
             render: function  (data, type, full, meta ) {
                 return '<button type="button" id="roleDelete-'+full.lst_OptionID+'" class="btn btn-danger deleteRole">Delete</button>';
-                   
+
             }
         },
-        
+
     ],
     "order": [[ 3, "asc" ]]
     });
-    
+
      // initialize the event handlers when the document is ready.  Don't do it here, since we need to be able to initialize these handlers on the fly in response to user action.
 });
 
