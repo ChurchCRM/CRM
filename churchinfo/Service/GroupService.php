@@ -1,7 +1,7 @@
 <?php
 require_once "PersonService.php";
 
-class GroupService 
+class GroupService
 {
 
     private $baseURL;
@@ -20,13 +20,13 @@ class GroupService
     function setGroupMemberRole($groupID,$personID,$roleID)
     {
        $sSQL= "UPDATE person2group2role_p2g2r
-            SET p2g2r_rle_ID = ".$roleID." 
-            WHERE 
+            SET p2g2r_rle_ID = ".$roleID."
+            WHERE
             p2g2r_per_ID =".$personID."
-            AND 
+            AND
              p2g2r_grp_ID =". $groupID;
-             
-        $update = RunQuery($sSQL); 
+
+        $update = RunQuery($sSQL);
         return $this->getGroupMembers($groupID,$personID);
     }
 /**
@@ -116,7 +116,7 @@ class GroupService
  *  search
  *  @param  string $searchTerm  the string of text to search
  *  @return array containing group objects of all of the gropus which match the search term.
- */    
+ */
     function search($searchTerm)
     {
         $sSQL = 'SELECT grp_ID FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type WHERE grp_Name LIKE \'%' . $searchTerm . '%\' OR  grp_Description LIKE \'%' . $searchTerm . '%\' OR lst_OptionName LIKE \'%'.$searchTerm.'%\'  order by grp_Name LIMIT 15';
@@ -125,13 +125,13 @@ class GroupService
         while ($row = mysql_fetch_array($result)) {
             array_push($return, $this->getGroups($row['grp_ID']));
         }
-        return $return; 
+        return $return;
     }
 /**
  *  getGroupJSON
  *  @param  array $groups array containing group objects
  *  @return string represnting the JSON of the given array, with key
- */     
+ */
     function getGroupJSON($groups)
     {
         if ($groups)
@@ -147,7 +147,7 @@ class GroupService
  *  getViewURI
  *  @param  int $id ID of the group for which to return the view URI
  *  @return string represnting the view page URI for the given group
- */     
+ */
     function getViewURI($Id)
     {
         return $this->baseURL ."/GroupView.php?GroupID=".$Id;
@@ -169,7 +169,7 @@ class GroupService
 		}
 
 		$grp_RoleListID = mysql_fetch_array($rsTemp);
-        
+
         $sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=$grp_RoleListID[0] ORDER BY lst_OptionSequence";
         $rsList = RunQuery($sSQL);
         while ($row = mysql_fetch_assoc($rsList)) {
@@ -178,63 +178,63 @@ class GroupService
 		return $groupRoles;
 
     }
-    
+
 /**
  *  setGroupRoleName
- *  @param  int $groupID ID of the group 
- *  @param  int $groupRole ID of the  role in the group 
+ *  @param  int $groupID ID of the group
+ *  @param  int $groupRole ID of the  role in the group
  *  @param  string $groupRoleName Name of the group role
- */  
+ */
     function setGroupRoleName($groupID,$groupRoleID,$groupRoleName)
     {
         $sSQL =  'UPDATE list_lst
                  INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID
                  SET list_lst.lst_OptionName = "'.$groupRoleName.'"
                  WHERE group_grp.grp_ID = "'.$groupID.'"
                     AND list_lst.lst_OptionID = '.$groupRoleID;
         RunQuery($sSQL);
-        
+
     }
-    
+
     function setGroupRoleOrder($groupID,$groupRoleID,$groupRoleOrder)
     {
         $sSQL =  'UPDATE list_lst
                  INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID
                  SET list_lst.lst_OptionSequence = "'.$groupRoleOrder.'"
                  WHERE group_grp.grp_ID = "'.$groupID.'"
                     AND list_lst.lst_OptionID = '.$groupRoleID;
         RunQuery($sSQL);
-        
+
     }
-    
+
     function getGroupDefaultRole($groupID)
     {
         //Look up the default role name
         $sSQL = "SELECT lst_OptionName from list_lst INNER JOIN group_grp on (group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_DefaultRole = list_lst.lst_OptionID) WHERE group_grp.grp_ID = " . $groupID;
         $aDefaultRole = mysql_fetch_array(RunQuery($sSQL));
-        return $aDefaultRole[0];       
+        return $aDefaultRole[0];
     }
-    
+
     function getGroupRoleOrder($groupID,$groupRoleID)
     {
-         $sSQL = 'SELECT list_lst.lst_OptionSequence FROM list_lst 
+         $sSQL = 'SELECT list_lst.lst_OptionSequence FROM list_lst
                 INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID
                  WHERE group_grp.grp_ID = "'.$groupID.'"
                    AND list_lst.lst_OptionID = '.$groupRoleID;
-       
+
 		$rsPropList = RunQuery($sSQL);
         $rowOrder = mysql_fetch_array($rsPropList);
         return $rowOrder[0];
     }
-    
+
     function deleteGroupRole($groupID,$groupRoleID)
     {
-        $sSQL = 'SELECT * FROM list_lst 
+        $sSQL = 'SELECT * FROM list_lst
                 INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID
                  WHERE group_grp.grp_ID = "'.$groupID.'"';
 		$rsPropList = RunQuery($sSQL);
 		$numRows = mysql_num_rows($rsPropList);
@@ -242,15 +242,15 @@ class GroupService
 		if ($numRows > 1)
 		{
             $thisSequence = $this->getGroupRoleOrder($groupID,$groupRoleID);
-			$sSQL = 'DELETE list_lst.* FROM list_lst 
+			$sSQL = 'DELETE list_lst.* FROM list_lst
                     INNER JOIN group_grp
-                        ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                        ON group_grp.grp_RoleListID = list_lst.lst_ID
                     WHERE group_grp.grp_ID = "'.$groupID.'"
                     AND lst_OptionID = '.$groupRoleID;
-            
+
 			RunQuery($sSQL);
-        
-           
+
+
 
 
 			//check if we've deleted the old group default role.  If so, reset default to role ID 1
@@ -268,31 +268,31 @@ class GroupService
 
             $sSQL = "UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = 1 WHERE p2g2r_grp_ID = $groupID AND p2g2r_rle_ID = $groupRoleID";
             RunQuery($sSQL);
-            
+
              //Shift the remaining rows IDs up by one
-			
+
 			$sSQL = 'UPDATE list_lst
                     INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID
                     SET list_lst.lst_OptionID = list_lst.lst_OptionID -1
                     WHERE group_grp.grp_ID = '.$groupID.'
                     AND list_lst.lst_OptionID >= '.$groupRoleID;
-            
+
 			RunQuery($sSQL);
 
             //Shift up the remaining row Sequences by one
-            
+
             $sSQL = 'UPDATE list_lst
                     INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID
                     SET list_lst.lst_OptionSequence = list_lst.lst_OptionSequence -1
                     WHERE group_grp.grp_ID ='.$groupID.'
                     AND list_lst.lst_OptionSequence >= '.$thisSequence;
-                    
+
                     //echo $sSQL;
-            
+
 			RunQuery($sSQL);
-            
+
 			return $this->getGroupRoles($groupID);
 		}
 		else
@@ -300,7 +300,7 @@ class GroupService
             throw new Exception("You cannont delete the only group");
         }
     }
-    
+
     function addGroupRole($groupID,$groupRoleName)
     {
         if (strlen($groupRoleName) == 0)
@@ -310,9 +310,9 @@ class GroupService
         else
         {
             // Check for a duplicate option name
-            $sSQL = 'SELECT \'\' FROM list_lst 
+            $sSQL = 'SELECT \'\' FROM list_lst
                 INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID 
+                    ON group_grp.grp_RoleListID = list_lst.lst_ID
                  WHERE group_grp.grp_ID = "'.$groupID.'" AND
                  lst_OptionName = "' . $groupRoleName .'"';
             $rsCount = RunQuery($sSQL);
@@ -348,22 +348,22 @@ class GroupService
         }
         return '{"newRole":{"roleID":"'.$newOptionID.'", "roleName":"'.$groupRoleName.'", "sequence":"'.$newOptionSequence.'"}}';
     }
-    
+
     function setGroupRoleAsDefault($groupID,$roleID)
     {
         $sSQL = "UPDATE group_grp SET grp_DefaultRole = ".$roleID." WHERE grp_ID = ".$groupID;
 		RunQuery($sSQL);
     }
-    
+
     function getGroupTotalMembers($groupID)
     {
         //Get the count of members
         $sSQL = 'SELECT COUNT(*) AS iTotalMembers FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = ' . $groupID;
         $rsTotalMembers = mysql_fetch_array(RunQuery($sSQL));
         return $rsTotalMembers[0];
-        
+
     }
-    
+
     function getGroupTypes()
     {
         $groupTypes = array();
@@ -376,7 +376,7 @@ class GroupService
         }
         return $groupTypes;
     }
-    
+
     function getGroupRoleTemplateGroups()
     {
         $templateGroups = array();
@@ -391,10 +391,10 @@ class GroupService
 
     function setGroupName($groupID,$groupName)
     {
-        
-        
+
+
     }
-     
+
     function enableGroupSpecificProperties($groupID)
     {
         $sSQLp = "CREATE TABLE groupprop_" . $groupID . " (
@@ -403,7 +403,7 @@ class GroupService
                           UNIQUE KEY per_ID (per_ID)
                         ) ENGINE=MyISAM;";
         RunQuery($sSQLp);
-        
+
         $groupMembers = $this->getGroupMembers($groupID);
 
         foreach ($groupMembers as $member)
@@ -422,7 +422,7 @@ class GroupService
         $sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
         RunQuery($sSQLp);
     }
-    
+
     function createGroup($groupName)
     {
         //Get a new Role List ID
@@ -438,7 +438,7 @@ class GroupService
         else
             $sUseProps = 'false';*/
         //$sSQL = "INSERT INTO group_grp (grp_Name, grp_Type, grp_Description, grp_hasSpecialProps, grp_DefaultRole, grp_RoleListID) VALUES ('" . $groupData->groupName . "', " . $groupData->groupType . ", '" . $groupData->description . "', '" . $sUseProps . "', '1', " . $newListID . ")";
-        $sSQL = "INSERT INTO group_grp (grp_Name, grp_DefaultRole, grp_RoleListID) VALUES ('" . $groupName . "', '1', " . $newListID . ")";
+        $sSQL = "INSERT INTO group_grp (grp_Name, grp_DefaultRole, grp_RoleListID) VALUES ('" . mysql_real_escape_string($groupName) . "', '1', " . $newListID . ")";
 
         $result = mysql_query($sSQL);
         //Get the key back
@@ -454,17 +454,17 @@ class GroupService
                 $sSQL = "INSERT INTO list_lst VALUES ($newListID, $lst_OptionID, $lst_OptionSequence, '$useOptionName')";
                 RunQuery($sSQL);
             }
-        } else 
+        } else
         {
             $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'Member')";
             RunQuery($sSQL);
         }
-  
+
         return $this->getGroups($iGroupID);
-        
-       
+
+
     }
-   
+
     function deleteGroup($iGroupID)
     {
         $sSQL = "SELECT grp_hasSpecialProps, grp_RoleListID FROM group_grp WHERE grp_ID =" . $iGroupID;
@@ -505,7 +505,7 @@ class GroupService
             RunQuery($sSQL);
 
     }
-    
+
     function updateGroup($groupID,$groupData)
     {
 
@@ -520,8 +520,8 @@ class GroupService
             throw new Exception("You must enter a name");
         }
 
-        $sSQL = "UPDATE group_grp SET grp_Name='" . $thisGroup['grp_Name'] . "', grp_Type='" . $thisGroup['grp_type'] . "', grp_Description='" . $thisGroup['grp_Description'] . "'";
-        
+        $sSQL = "UPDATE group_grp SET grp_Name='" . mysql_real_escape_string($thisGroup['grp_Name']) . "', grp_Type='" . $thisGroup['grp_type'] . "', grp_Description='" . mysql_real_escape_string($thisGroup['grp_Description']) . "'";
+
         $sSQL .= " WHERE grp_ID = " . $groupID;
         // execute the SQL
         RunQuery($sSQL);
@@ -529,12 +529,12 @@ class GroupService
     }
 
     function getGroups($groupIDs = NULL)
-    {       
+    {
         $whereClause ="";
         if(is_numeric($groupIDs))
         {
             $whereClause = "WHERE grp_ID = ".$groupIDs;
-        } 
+        }
         elseif (is_array($groupIDs))
         {
             $whereClause = "WHERE grp_ID in (".implode(",",$groupIDs).")";
@@ -580,31 +580,31 @@ class GroupService
         {
             $whereClause = " AND p2g2r_per_ID = ".$personID;
         }
-       
+
         $members = array();
         $personService = new PersonService();
         // Main select query
-        $sSQL = "SELECT p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID, lst_OptionName FROM person2group2role_p2g2r 
+        $sSQL = "SELECT p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID, lst_OptionName FROM person2group2role_p2g2r
 
         INNER JOIN group_grp ON
-        person2group2role_p2g2r.p2g2r_grp_ID = group_grp.grp_ID 
+        person2group2role_p2g2r.p2g2r_grp_ID = group_grp.grp_ID
 
         INNER JOIN list_lst ON
-        group_grp.grp_RoleListID = list_lst.lst_ID AND 
-        person2group2role_p2g2r.p2g2r_rle_ID =  list_lst.lst_OptionID 
+        group_grp.grp_RoleListID = list_lst.lst_ID AND
+        person2group2role_p2g2r.p2g2r_rle_ID =  list_lst.lst_OptionID
 
         WHERE p2g2r_grp_ID =" . $groupID. " ". $whereClause;
         $result = mysql_query($sSQL);
-        while ($row = mysql_fetch_assoc($result)) 
+        while ($row = mysql_fetch_assoc($result))
         {
             $person = $personService->getPersonByID($row['p2g2r_per_ID']);
             $person['groupRole'] = $row['lst_OptionName'];
             array_push($members,$person);
         }
         return $members;
-        
+
     }
-    
+
     function checkGroupAgainstCart($groupID)
     {
         $members = $this->getGroupMembers($groupID);
@@ -631,10 +631,10 @@ class GroupService
         {
             //every member of this group is in the cart.  Return true
             return true;
-        } 
+        }
         return false;
     }
-    
+
     function copyCartToGroup()
     {
         if (array_key_exists ("EmptyCart", $_POST) && $_POST["EmptyCart"] && count($_SESSION['aPeopleCart']) > 0)
@@ -654,7 +654,7 @@ class GroupService
             Redirect("GroupEditor.php?GroupID=$iGroupID");
         }
     }
-   
+
 }
 
 ?>
