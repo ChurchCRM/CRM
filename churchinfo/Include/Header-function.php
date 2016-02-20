@@ -27,13 +27,13 @@
 *
 ******************************************************************************/
 
-require_once dirname(__FILE__).'/../service/PersonService.php';
+require_once dirname(__FILE__).'/../Service/PersonService.php';
 require_once 'Functions.php';
 
-function Header_head_metatag()
-{
-    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
-    global $sPageTitle, $sRootPath;
+
+function Header_head_metatag() {
+global $sLanguage, $bExportCSV, $sMetaRefresh, $bRegistered, $sHeader, $sGlobalMessage;
+global $sPageTitle, $sRootPath;
 
     if (strlen($sMetaRefresh))
       echo $sMetaRefresh;
@@ -43,7 +43,7 @@ function Header_head_metatag()
 
 function Header_body_scripts()
 {
-    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
+    global $sLanguage, $bExportCSV, $sMetaRefresh, $bRegistered, $sHeader, $sGlobalMessage;
     global $bLockURL, $URL, $sRootPath;
 
     checkAllowedURL();
@@ -53,6 +53,7 @@ function Header_body_scripts()
     <script type="text/javascript" src="<?= $sRootPath . "/" ?>Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
 
     <script language="javascript" type="text/javascript">
+        window.CRM = { root: "<?= $sRootPath ?>" };
 
         // Popup Calendar stuff
         function selected(cal, date)
@@ -266,21 +267,13 @@ function addMenuItem($aMenu,$mIdx)
 
 function Header_body_menu()
 {
-    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage;
+    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage, $sGlobalMessageClass;
     global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
 
     $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
 
     $MenuFirst = 1;
 
-    if ($sHeader) {
-        // Optional Header Code (Entered on General Settings page - sHeader)
-        // Must first set a table with a background color, or content scrolls across
-        // the background of the custom code when using a non-defective browser
-        echo "<table width=\"100%\" bgcolor=white cellpadding=0 cellspacing=0 border=0><tr><td width=\"100%\">";
-        echo html_entity_decode($sHeader, ENT_QUOTES);
-        echo "</td></tr></table>";
-    }
 ?>
 
     <header class="main-header">
@@ -289,7 +282,11 @@ function Header_body_menu()
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>C</b>RM</span>
             <!-- logo for regular state and mobile devices -->
+        <?php if ($sHeader) { ?>
+            <span class="logo-lg"><?= html_entity_decode($sHeader,ENT_QUOTES) ?></span>
+        <?php } Else { ?>
             <span class="logo-lg"><b>Church</b>CRM</span>
+        <?php } ?>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -422,7 +419,7 @@ function Header_body_menu()
                 <section class="content">
                     <?php if ($sGlobalMessage) { ?>
                     <div class="main-box-body clearfix">
-                        <div class="alert alert-info fade in">
+                        <div class="callout callout-<?= $sGlobalMessageClass ?> fade in">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i>
                             <?= $sGlobalMessage ?>

@@ -31,7 +31,7 @@ require 'service/FinancialService.php';
 
 $financialService = new FinancialService();
 
-require_once "service/DashboardService.php";
+require_once "Service/DashboardService.php";
 
 $sSQL = "select * from family_fam order by fam_DateLastEdited desc  LIMIT 10;";
 $rsLastFamilies = RunQuery($sSQL);
