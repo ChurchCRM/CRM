@@ -101,15 +101,13 @@ $numRows = mysql_num_rows($rsPropList);
 
 require 'Include/Header.php'; ?>
 
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 <div class="box">
     <div class="box-header with-border">

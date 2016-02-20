@@ -1,0 +1,31 @@
+{
+  "name": "churchCRM/CRM",
+  "version": "2.0.0",
+  "type": "project",
+  "keywords": [
+    "church",
+    "crm"
+  ],
+  "homepage": "http://www.churchcrm.io",
+  "time": "2014-10-01",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "George Dawoud",
+      "homepage": "http://blog.dawouds.com",
+      "role": "Lead Developer"
+    }
+  ],
+  "support": {
+    "email": "info@churchcrm.io",
+    "issues": "https://github.com/ChurchCRM/CRM/issues",
+    "irc": "http://webchat.freenode.net/?randomnick=1&channels=ChurchCRM&prompt=1&uio=d4",
+    "source": "https://github.com/ChurchCRM/CRM",
+    "docs": "http://docs.churchcrm.io"
+  },
+  "require": {
+    "almasaeed2010/adminlte": "2.3.2",
+    "driftyco/ionicons": "2.0.1",
+    "components/font-awesome": "4.5.0"
+  }
+}

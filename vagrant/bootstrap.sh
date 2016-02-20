@@ -11,6 +11,8 @@ CRM_DB_USER="churchcrm"
 CRM_DB_PASS="churchcrm"
 CRM_DB_NAME="churchcrm"
 
+echo "========================== DB   =========================================="
+
 RET=1
 while [[ RET -ne 0 ]]; do
     echo "Database: Waiting for confirmation of MySQL service startup"
@@ -33,7 +35,6 @@ echo "Database: user created with needed PRIVILEGES"
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT
 
 echo "Database: tables and metadata deployed"
-
 
 #=============================================================================
 # Help info

@@ -44,9 +44,10 @@ $sPageTitle = gettext("Add Church Event(s)");
 
 require "Include/Header.php";
 ?>
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 <?php
 
