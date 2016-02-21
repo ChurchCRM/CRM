@@ -834,7 +834,7 @@ var person_ID = <?= $iPersonID ?>;
 		if ( answer )
 			$.ajax({
                 method: "POST",
-                url:    "/api/groups/"+Group+"/removeuser/"+Person
+                url:    window.CRM.root + "/api/groups/"+Group+"/removeuser/"+Person
             }).done(function (data){
                location.reload(); 
             });
