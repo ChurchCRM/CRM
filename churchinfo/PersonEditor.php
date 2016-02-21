@@ -106,7 +106,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	$sLastName = FilterInput($_POST["LastName"]);
 	$sSuffix = FilterInput($_POST["Suffix"]);
 	$iGender = FilterInput($_POST["Gender"],'int');
-	
+
 	// Person address stuff is normally surpressed in favor of family address info
 	$sAddress1 = ""; $sAddress2 = ""; $sCity = ""; $sZip = ""; $sCountry = "";
 	if (array_key_exists ("Address1", $_POST))
@@ -123,7 +123,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 
 	if (array_key_exists ("Country", $_POST))
 		$sCountry = FilterInput($_POST["Country"]);
-	
+
 	$iFamily = FilterInput($_POST["Family"],'int');
 	$iFamilyRole = FilterInput($_POST["FamilyRole"],'int');
 
@@ -204,7 +204,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	{
 		$dateString = parseAndValidateDate($dFriendDate, $locale = "US", $pasfut = "past");
 		if ( $dateString === FALSE ) {
-			$sFriendDateError = "<span style=\"color: red; \">" 
+			$sFriendDateError = "<span style=\"color: red; \">"
 								. gettext("Not a valid Friend Date") . "</span>";
 			$bErrorFlag = true;
 		} else {
@@ -217,7 +217,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	{
 		$dateString = parseAndValidateDate($dMembershipDate, $locale = "US", $pasfut = "past");
 		if ( $dateString === FALSE ) {
-			$sMembershipDateError = "<span style=\"color: red; \">" 
+			$sMembershipDateError = "<span style=\"color: red; \">"
 								. gettext("Not a valid Membership Date") . "</span>";
 			$bErrorFlag = true;
 		} else {
@@ -229,19 +229,19 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	if (strlen($sEmail) > 0)
 	{
 		if ( checkEmail($sEmail) == false ) {
-			$sEmailError = "<span style=\"color: red; \">" 
+			$sEmailError = "<span style=\"color: red; \">"
 								. gettext("Email is Not Valid") . "</span>";
 			$bErrorFlag = true;
 		} else {
 			$sEmail = $sEmail;
 		}
 	}
-	
+
 	// Validate Work Email
 	if (strlen($sWorkEmail) > 0)
 	{
 		if ( checkEmail($sWorkEmail) == false ) {
-			$sWorkEmailError = "<span style=\"color: red; \">" 
+			$sWorkEmailError = "<span style=\"color: red; \">"
 								. gettext("Work Email is Not Valid") . "</span>";
 			$bErrorFlag = true;
 		} else {
@@ -254,7 +254,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 	while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
 	{
 		extract($rowCustomField);
-		
+
 		if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]])
 		{
 			$currentFieldData = FilterInput($_POST[$custom_Field]);
@@ -284,7 +284,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 		}
 
 		// New Family (add)
-		// Family will be named by the Last Name. 
+		// Family will be named by the Last Name.
 		if ($iFamily == -1)
 		{
 			$sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
@@ -301,13 +301,13 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 			$per_Flags = 1;
 		} else {
 			$per_Flags = 0;
-		} 
+		}
 
 		// New Person (add)
 		if ($iPersonID < 1) {
 			$iEnvelope = 0;
 
-			$sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags ) 
+			$sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags )
 			         VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . "," . $iBirthDay . "," . $iBirthYear . "," . $iEnvelope . "," . $iFamily . "," . $iFamilyRole . ",";
 			if ( strlen($dMembershipDate) > 0 )
 				$sSQL .= "\"" . $dMembershipDate . "\"";
@@ -640,8 +640,11 @@ require "Include/Header.php";
 						<?php if ($sBirthDateError) { ?><font color="red"><?php echo $sBirthDateError ?></font><?php } ?>
 					</div>
 					<div class="col-xs-2">
-						<label><?= gettext("Hide Age") ?></label><br/>
-						<input type="checkbox" name="HideAge" value="1" <?php if ($bHideAge) echo " checked";?> />
+						<label><?= gettext("Hide Age") ?></label><br />
+						<label class='c-checkbox'>
+							<input type="checkbox" name="HideAge" value="1" <?php if ($bHideAge) echo " checked";?> />
+							<div class='c-indicator'></div>
+						</label>
 					</div>
 				</div>
 			</div>
