@@ -85,7 +85,7 @@ $UpdateBirthYear = 0;
 
 $aFirstNameError = array();
 $aBirthDateError = array();
-$aperFlags = array(); 
+$aperFlags = array();
 
 //Is this the second pass?
 if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
@@ -151,7 +151,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$nEnvelope = 0;
 	if (array_key_exists ("Envelope", $_POST))
 		$nEnvelope = FilterInput($_POST["Envelope"], "int");
-	
+
 	if(is_numeric($nEnvelope)){ // Only integers are allowed as Envelope Numbers
 		if(intval($nEnvelope)==floatval($nEnvelope))
 			$nEnvelope= "'" . intval($nEnvelope) . "'";
@@ -180,7 +180,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$bNoFormat_HomePhone = isset($_POST["NoFormat_HomePhone"]);
 	$bNoFormat_WorkPhone = isset($_POST["NoFormat_WorkPhone"]);
 	$bNoFormat_CellPhone = isset($_POST["NoFormat_CellPhone"]);
-	
+
 	//Loop through the Family Member 'quick entry' form fields
 	for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++)
 	{
@@ -209,7 +209,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		}
 
 		// Validate any family member birthdays
-		if ((strlen($aFirstNames[$iCount]) > 0) && (strlen($aBirthYears[$iCount]) > 0)) 
+		if ((strlen($aFirstNames[$iCount]) > 0) && (strlen($aBirthYears[$iCount]) > 0))
 		{
 			if (($aBirthYears[$iCount] > 2155) || ($aBirthYears[$iCount] < 1901))
 			{
@@ -239,7 +239,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != "0000-00-00")) {
 		$dateString = parseAndValidateDate($dWeddingDate, $locale = "US", $pasfut = "past");
 		if ( $dateString === FALSE ) {
-			$sWeddingDateError = "<span style=\"color: red; \">" 
+			$sWeddingDateError = "<span style=\"color: red; \">"
 								. gettext("Not a valid Wedding Date") . "</span>";
 			$bErrorFlag = true;
 		} else {
@@ -253,7 +253,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	if (strlen($sEmail) > 0)
 	{
 		if ( checkEmail($sEmail) == false ) {
-			$sEmailError = "<span style=\"color: red; \">" 
+			$sEmailError = "<span style=\"color: red; \">"
 								. gettext("Email is Not Valid") . "</span>";
 			$bErrorFlag = true;
 		} else {
@@ -296,42 +296,42 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		if ($iFamilyID < 1)
 		{
 			$sSQL = "INSERT INTO family_fam (
-						fam_Name, 
-						fam_Address1, 
-						fam_Address2, 
-						fam_City, 
-						fam_State, 
-						fam_Zip, 
-						fam_Country, 
-						fam_HomePhone, 
-						fam_WorkPhone, 
-						fam_CellPhone, 
-						fam_Email, 
-						fam_WeddingDate, 
-						fam_DateEntered, 
-						fam_EnteredBy, 
+						fam_Name,
+						fam_Address1,
+						fam_Address2,
+						fam_City,
+						fam_State,
+						fam_Zip,
+						fam_Country,
+						fam_HomePhone,
+						fam_WorkPhone,
+						fam_CellPhone,
+						fam_Email,
+						fam_WeddingDate,
+						fam_DateEntered,
+						fam_EnteredBy,
 						fam_SendNewsLetter,
 						fam_OkToCanvass,
 						fam_Canvasser,
 						fam_Latitude,
 						fam_Longitude,
 						fam_Envelope)
-					VALUES ('"							. 
-						$sName					. "','" . 
-						$sAddress1				. "','" . 
-						$sAddress2				. "','" . 
-						$sCity					. "','" . 
-						$sState					. "','" . 
-						$sZip					. "','" . 
-						$sCountry				. "','" . 
-						$sHomePhone				. "','" . 
-						$sWorkPhone				. "','" . 
-						$sCellPhone				. "','" . 
-						$sEmail					. "'," . 
-						$dWeddingDate			. ",'" . 
-						date("YmdHis")			. "'," . 
-						$_SESSION['iUserID']	. "," . 
-						$bSendNewsLetterString	. "," . 
+					VALUES ('"							.
+						$sName					. "','" .
+						$sAddress1				. "','" .
+						$sAddress2				. "','" .
+						$sCity					. "','" .
+						$sState					. "','" .
+						$sZip					. "','" .
+						$sCountry				. "','" .
+						$sHomePhone				. "','" .
+						$sWorkPhone				. "','" .
+						$sCellPhone				. "','" .
+						$sEmail					. "'," .
+						$dWeddingDate			. ",'" .
+						date("YmdHis")			. "'," .
+						$_SESSION['iUserID']	. "," .
+						$bSendNewsLetterString	. "," .
 						$bOkToCanvassString		. ",'" .
 						$iCanvasser				. "'," .
 						$nLatitude				. "," .
@@ -360,7 +360,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						"fam_EditedBy = " . $_SESSION['iUserID'] . "," .
 						"fam_SendNewsLetter = " . $bSendNewsLetterString;
 			if ($_SESSION['bCanvasser'])
-				$sSQL .= ", fam_OkToCanvass = " . $bOkToCanvassString . 
+				$sSQL .= ", fam_OkToCanvass = " . $bOkToCanvassString .
 									", fam_Canvasser = '" . $iCanvasser . "'";
 				$sSQL .= " WHERE fam_ID = " . $iFamilyID;
 			$bGetKeyBack = false;
@@ -379,7 +379,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 			$sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $iFamilyID . "')";
 			RunQuery($sSQL);
-			
+
 			// Add property if assigned
 			if ($iPropertyID)
 			{
@@ -437,7 +437,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 								$aBirthYears[$iCount],
 								$aClassification[$iCount])";
 					RunQuery($sSQL);
-					$sSQL = "INSERT INTO person_custom (per_ID) VALUES (" 
+					$sSQL = "INSERT INTO person_custom (per_ID) VALUES ("
 								. mysql_insert_id() . ")";
 					RunQuery($sSQL);
 					RunQuery("UNLOCK TABLES");
@@ -470,7 +470,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 				}
 			}
 		}
-		
+
 		// Update the custom person fields.
 		if ($numCustomFields > 0)
 		{
@@ -520,7 +520,7 @@ else
 		$sSQL = "SELECT * FROM family_fam WHERE fam_ID = " . $iFamilyID;
 		$rsFamily = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsFamily));
-		
+
 		$iFamilyID = $fam_ID;
 		$sName = $fam_Name;
 		$sAddress1 = $fam_Address1;
@@ -548,16 +548,16 @@ else
 		$sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
 		$rsCustomData = RunQuery($sSQL);
 		$aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
-		
+
 		$aCustomErrors = array();
-		
+
 		if ($numCustomFields >0) {
 			mysql_data_seek($rsCustomFields,0);
 			while ($rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
 				$aCustomErrors[$rowCustomField['fam_custom_Field']] = false;
 			}
 		}
-				
+
 		$sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID =" . $iFamilyID . " ORDER BY per_fmr_ID";
 		$rsMembers = RunQuery($sSQL);
 		$iCount = 0;
@@ -569,8 +569,8 @@ else
 			$iFamilyMemberRows++;
 			$aFirstNames[$iCount] = $per_FirstName;
 			$aMiddleNames[$iCount] = $per_MiddleName;
-			$aLastNames[$iCount] = $per_LastName;		
-			$aSuffix[$iCount] = $per_Suffix;		
+			$aLastNames[$iCount] = $per_LastName;
+			$aSuffix[$iCount] = $per_Suffix;
 			$aGenders[$iCount] = $per_Gender;
 			$aRoles[$iCount] = $per_fmr_ID;
 			$aBirthMonths[$iCount] = $per_BirthMonth;
@@ -594,7 +594,7 @@ else
 		$iClassification = "0";
 		$iFamilyMemberRows = 6;
 		$bOkToCanvass = 1;
-		
+
 		$iFamilyID = -1;
 		$sName = "";
 		$sAddress1 = "";
@@ -611,7 +611,7 @@ else
 		$iCanvasser = -1;
 		$dWeddingDate = "";
 		$nLatitude = 0.0;
-		$nLongitude = 0.0;		
+		$nLongitude = 0.0;
 
 		//Loop through the Family Member 'quick entry' form fields
 		for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++)
@@ -630,7 +630,7 @@ else
 			$aPersonIDs[$iCount] = 0;
 			$aUpdateBirthYear[$iCount] = 0;
 		}
-		
+
 		$aCustomData = array ();
 		$aCustomErrors = array ();
 		if ($numCustomFields > 0) {
@@ -640,7 +640,7 @@ else
 				$aCustomData[$fam_custom_Field] = '';
 				$aCustomErrors[$fam_custom_Field] = false;
 			}
-		}		
+		}
 	}
 }
 
@@ -654,7 +654,7 @@ require "Include/Header.php";
 	<div class="box box-info clearfix">
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Family Info") ?></h3>
-			<div class="pull-right"><br/>
+			<div class="pull-right">
 				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit"  class="form-control">
 			</div>
 		</div><!-- /.box-header -->
@@ -684,7 +684,7 @@ require "Include/Header.php";
 				</div>
 				<p/>
 				<div class="row">
-					<div class="form-group col-xs-2">
+					<div class="form-group col-xs-3">
 						<label for="StatleTextBox">
 						<?php
 						if($sCountry == "Canada") {
@@ -695,11 +695,11 @@ require "Include/Header.php";
 						</label>
 						<?php require "Include/StateDropDown.php"; ?>
 					</div>
-					<div class="form-group col-xs-2">
-						<label><?= gettext("None US/CND State:") ?></label>
+					<div class="form-group col-xs-3">
+						<label><?= gettext("Ex-US/CND State:") ?></label>
 						<input type="text"  class="form-control" name="StateTextbox" value="<?php if ($sCountry != "United States" && $sCountry != "Canada") echo htmlentities(stripslashes($sState),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
 					</div>
-					<div class="form-group col-xs-2">
+					<div class="form-group col-xs-3">
 						<label> <?php if($sCountry == "Canada")
 							  echo gettext("Postal Code:");
 							else
@@ -711,7 +711,7 @@ require "Include/Header.php";
 							echo 'value="' . htmlentities(stripslashes($sZip), ENT_NOQUOTES, "UTF-8") . '" '; ?>
 							maxlength="10" size="8">
 					</div>
-					<div class="form-group col-xs-2">
+					<div class="form-group col-xs-3">
 						<label> <?= gettext("Country:") ?></label>
 						<?php require "Include/CountryDropDown.php" ?>
 					</div>
@@ -719,11 +719,11 @@ require "Include/Header.php";
 				<?php if (!$bHideLatLon) { /* Lat/Lon can be hidden - General Settings */
 					if (!$bHaveXML) { // No point entering if values will just be overwritten ?>
 				<div class="row">
-					<div class="form-group col-xs-2">
+					<div class="form-group col-xs-3">
 						<label><?= gettext("Latitude:") ?></label>
 						<input type="text" class="form-control" Name="Latitude" value="<?= $nLatitude ?>" size="30" maxlength="50">
 					</div>
-					<div class="form-group col-xs-2">
+					<div class="form-group col-xs-3">
 						<label><?= gettext("Longitude:") ?></label>
 						<input type="text" class="form-control" Name="Longitude" value="<?= $nLongitude ?>" size="30" maxlength="50">
 					</div>
@@ -736,7 +736,7 @@ require "Include/Header.php";
 	<div class="box box-info clearfix">
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Contact Info") ?></h3>
-			<div class="pull-right"><br/>
+			<div class="pull-right">
 				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit" >
 			</div>
 		</div><!-- /.box-header -->
@@ -749,8 +749,12 @@ require "Include/Header.php";
 							<i class="fa fa-phone"></i>
 						</div>
 						<input type="text" Name="HomePhone" value="<?= htmlentities(stripslashes($sHomePhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
-						<input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) echo " checked";?>><?= gettext("Do not auto-format") ?>
 					</div>
+					<label class='c-checkbox'>
+						<input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) echo " checked";?>>
+						<div class='c-indicator'></div>
+						<?= gettext("Do not auto-format") ?>
+					</label>
 				</div>
 				<div class="form-group col-xs-3">
 					<label><?= gettext("Work Phone:") ?></label>
@@ -759,8 +763,12 @@ require "Include/Header.php";
 							<i class="fa fa-phone"></i>
 						</div>
 						<input type="text" name="WorkPhone" value="<?= htmlentities(stripslashes($sWorkPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask/>
-						<input type="checkbox" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? " checked" : ''?>><?= gettext("Do not auto-format") ?>
 					</div>
+					<label class='c-checkbox'>
+						<input type="checkbox" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? " checked" : ''?>>
+						<div class='c-indicator'></div>
+						<?= gettext("Do not auto-format") ?>
+					</label>
 				</div>
 				<div class="form-group col-xs-3">
 					<label><?= gettext("Mobile Phone:") ?></label>
@@ -769,8 +777,12 @@ require "Include/Header.php";
 							<i class="fa fa-phone"></i>
 						</div>
 						<input type="text" name="CellPhone" value="<?= htmlentities(stripslashes($sCellPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
-						<input type="checkbox" class="form-control" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? " checked" : '' ?>><?= gettext("Do not auto-format") ?>
 					</div>
+					<label class='c-checkbox'>
+						<input type="checkbox" class="form-control" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? " checked" : '' ?>>
+						<div class='c-indicator'></div>
+						<?= gettext("Do not auto-format") ?>
+					</label>
 				</div>
 			</div>
 			<div class="row">
@@ -785,8 +797,11 @@ require "Include/Header.php";
 				</div>
 				<?php if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
 				<div class="form-group col-xs-4">
-					<label><?= gettext("Send Newsletter:") ?></label><br/>
-					<input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) echo " checked"; ?>>
+					<label><?= gettext("Send Newsletter:") ?></label>
+					<label class='c-checkbox'>
+						<input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) echo " checked"; ?>>
+						<div class='c-indicator'></div>
+					</label>
 				</div>
 				<?php } ?>
 			</div>
@@ -795,8 +810,8 @@ require "Include/Header.php";
 	<div class="box box-info clearfix">
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Other Info") ?></h3>
-			<div class="pull-right"><br/>
-				<input type="submit" class="form-control" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
+			<div class="pull-right">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -813,8 +828,11 @@ require "Include/Header.php";
 			<div class="row">
 				<?php if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser ?>
 					<div class="form-group col-xs-4">
-						<label><?= gettext("Ok To Canvass:") ?> </label><br/>
-						<input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) echo " checked "; ?> >
+						<label><?= gettext("Ok To Canvass:") ?></label>
+						<label class='c-checkbox'>
+							<input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) echo " checked "; ?> >
+							<div class='c-indicator'></div>
+						</label>
 					</div>
 				<?php }
 
@@ -857,7 +875,7 @@ require "Include/Header.php";
 	<div class="box box-info clearfix">
 		<div class="box-header">
 			<h3><?= gettext("Envelope Info") ?></h3>
-			<div class="pull-right"><br/>
+			<div class="pull-right">
 				<input type="submit" class="form-control" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
@@ -875,7 +893,7 @@ require "Include/Header.php";
 	<div class="box box-info clearfix">
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Custom Fields") ?></h3>
-			<div class="pull-right"><br/>
+			<div class="pull-right">
 				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
@@ -902,7 +920,7 @@ require "Include/Header.php";
 	<div class="box box-info clearfix">
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Family Members") ?></h3>
-			<div class="pull-right"><br/>
+			<div class="pull-right">
 				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
@@ -914,7 +932,7 @@ require "Include/Header.php";
 		<td colspan="2">
 		<div class="MediumText">
 			<center><?= $iFamilyID < 0 ? gettext("You may create family members now or add them later.  All entries will become <i>new</i> person records.") : '' ?></center>
-		</div><br><br>
+		</div>
 		<table cellpadding="3" cellspacing="0" width="100%">
 		<thead>
 		<tr class="TableHeader" align="center">
@@ -1020,8 +1038,8 @@ require "Include/Header.php";
 				<input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" size="4" maxlength="4">
 				<div><font color="red"><?php if (array_key_exists ($iCount, $aBirthDateError)) echo $aBirthDateError[$iCount]; ?></font></div>
 			<?php }
-			else 
-			{ 
+			else
+			{
 				$UpdateBirthYear = 0;
 			}
 			?>
@@ -1049,13 +1067,13 @@ require "Include/Header.php";
 		echo "</table>";
 	echo "</div></div>";
 	}
-	
+
 	echo "<td colspan=\"2\" align=\"center\">";
 	echo "<input type=\"hidden\" Name=\"UpdateBirthYear\" value=\"".$UpdateBirthYear."\">";
 
-	echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\">";
-	if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn\" value=\"Save and Add\" name=\"FamilySubmitAndAdd\">"; }
-	echo "<input type=\"button\" class=\"btn\" value=\"" . gettext("Cancel") . "\" Name=\"FamilyCancel\"";
+	echo "<input type=\"submit\" class=\"btn btn-primary\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\"> ";
+	if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn btn-primary\" value=\"Save and Add\" name=\"FamilySubmitAndAdd\"> "; }
+	echo "<input type=\"button\" class=\"btn btn-primary\" value=\"" . gettext("Cancel") . "\" Name=\"FamilyCancel\"";
 	if ($iFamilyID > 0)
 		echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
 	else
@@ -1073,7 +1091,7 @@ require "Include/Header.php";
 		$(function() {
 			$("[data-mask]").inputmask();
 		});
-        
+
         $("#WeddingDate").datepicker({format:'yyyy-mm-dd'});
 	</script>
 <?php require "Include/Footer.php" ?>
