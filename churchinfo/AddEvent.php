@@ -118,13 +118,16 @@ if (isset($_POST["AddEvent"]))
 ?>
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title">
-       <?php if ($numRows == 0)  {
-            echo gettext("No church events for ".date("F"));
-        } else {
-            echo gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F"));
-        ?></h3>
+    <h3 class="box-title">
+      <?php if ($numRows == 0)  {
+        echo gettext("No church events for ".date("F"));
+      } else {
+        echo gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F"));
+      } ?>
+    </h3>
 	</div><!-- /.box-header -->
+
+  <?php if ($numRows > 0) { ?>
 	<div class="box-body table-responsive">
 		<table  class="table table-striped table-bordered dataTable no-footer" id="eventsTable">
 
@@ -176,25 +179,24 @@ if (isset($_POST["AddEvent"]))
          </tr>
          <?php } ?>
 
-          </table>
-        </div>
-    </div>
-   <div class="box">
+        </table>
+      </div>
+    <?php } // if $numRows == 0 ?>
+  </div>
+
+<div class="box">
+
 	<div class="box-header">
 		<h3 class="box-title">Create a New Event</h3>
-    </div>
-    <div class="box-body table-responsive">
-    <table id="createEventTable">
-<?php } ?>
-                <tr><td colspan="5"><hr></td></tr>
-                <tr>
-                  <td colspan="5">
-                      <form method="post" action="AddEvent.php" name="AddEvent">
-                        <table width="70%" align="center">
-                          <tr>
-                            <td class="LabelColumn"><?= gettext("Event Type:") ?></td>
-                            <td colspan="3">
-                              <select name="newEventType">
+  </div>
+
+  <div class="box-body table-responsive">
+    <form method="post" action="AddEvent.php" name="AddEvent">
+      <table class='table'>
+        <tr>
+          <td class="LabelColumn" width='120'><?= gettext("Event Type:") ?></td>
+          <td colspan="3">
+            <select name="newEventType" class='form-control'>
 <?php
 // Get Event Names
 $sSQL = "SELECT * FROM `event_types`";
@@ -211,106 +213,100 @@ $sSQL = "SELECT * FROM `event_types`";
                 echo '<option value="'.$type_id.'">'.$type_name.'</option>';
         }
 ?>
-                              </select>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelColumn"><?= gettext("Event Title:") ?></td>
-                            <td colspan="3">
-                              <input type="text" name="newEventTitle" size="40" maxlength="100">
-                              <?php if ( $bNewTitleError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelColumn"><?= gettext("Event Desc:") ?></td>
-                            <td colspan="3">
-                              <input type="text" name="newEventDesc" size="40" maxlength="100">
-                              <?php if ( $bNewDescError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelColumn"><?= gettext("Event Sermon:") ?></td>
-                            <td colspan="3"><textarea name="newEventText" rows="10" cols="80"></textarea></td>
-                          </tr>
-                          <tr>
-                            <td class="LabelColumn">
-                              <?= gettext("Start Date:") ?>
-                            </td>
-                            <td>
-                             <div class="form-group">
-                                <label>Start Date</label>
-
-                                <div class="input-group">
-                                  <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                  </div>
-                                  <input type="text" class="form-control pull-right active" id="newEventStartDate" name="newEventStartDate">
-                                </div>
-                            </div>
-                            </td>
-                            <td class="LabelColumn">
-                              <?= gettext("Start Time:") ?>
-                            </td>
-                            <td>
-                            <div class="form-group">
-                                <label>Start Time</label>
-
-                                <div class="input-group bootstrap-timepicker timepicker">
-                                    <input name="newEventStartTime" id="newEventStartTime" type="text" class="form-control input-small">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                                </div>
-                            </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelColumn">
-                              <?= gettext("End Date:") ?>
-                            </td>
-                            <td>
-                                 <div class="form-group">
-                                <label>Start Date</label>
-
-                                <div class="input-group">
-                                  <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                  </div>
-                                  <input type="text" class="form-control pull-right active" id="newEventEndDate" name="newEventEndDate">
-                                </div>
-                            </div>
-                            </td>
-                            <td class="LabelColumn">
-                              <?= gettext("End Time:") ?>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                <label>Start Time</label>
-
-                                <div class="input-group bootstrap-timepicker timepicker">
-                                    <input name="newEventEndTime" id="newEventEndTime" type="text" class="form-control input-small">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                                </div>
-                                </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelColumn"><?= gettext("Event Status:") ?></td>
-                            <td colspan="3">
-                              <input type="radio" name="newEventStatus" value="0" checked> Active <input type="radio" name="newEventStatus" value="1"> Inactive
-                              <?php if ( $bNewStatusError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("Is this Active or Inactive?") . "</span></div>"; ?>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td colspan="4" align="center"><input type="submit" Name="AddEvent" <?= 'value="' . gettext("Add Event") . '"' ?> class="btn"></td>
-                          </tr>
-                        </table>
-                        </form>
-                      </td>
-                </tr>
-            </table>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="LabelColumn"><?= gettext("Event Title:") ?></td>
+          <td colspan="3">
+            <input type="text" name="newEventTitle" size="40" maxlength="100" class='form-control'>
+            <?php if ( $bNewTitleError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
+          </td>
+        </tr>
+        <tr>
+          <td class="LabelColumn"><?= gettext("Event Desc:") ?></td>
+          <td colspan="3">
+            <input type="text" name="newEventDesc" size="40" maxlength="100" class='form-control'>
+            <?php if ( $bNewDescError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
+          </td>
+        </tr>
+        <tr>
+          <td class="LabelColumn"><?= gettext("Event Sermon:") ?></td>
+          <td colspan="3"><textarea name="newEventText" rows="10" cols="80" class='form-control'></textarea></td>
+        </tr>
+        <tr>
+          <td class="LabelColumn">
+            <?= gettext("Start Date:") ?>
+          </td>
+          <td>
+           <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right active" id="newEventStartDate" name="newEventStartDate">
+              </div>
+          </div>
+          </td>
+          <td class="LabelColumn text-right" width='120'>
+            <?= gettext("Start Time:") ?>
+          </td>
+          <td>
+          <div class="form-group">
+              <div class="input-group bootstrap-timepicker timepicker">
+                  <input name="newEventStartTime" id="newEventStartTime" type="text" class="form-control input-small">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+              </div>
+          </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="LabelColumn">
+            <?= gettext("End Date:") ?>
+          </td>
+          <td>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right active" id="newEventEndDate" name="newEventEndDate">
+              </div>
+            </div>
+          </td>
+          <td class="LabelColumn text-right" width='120'>
+            <?= gettext("End Time:") ?>
+          </td>
+          <td>
+            <div class="form-group">
+              <div class="input-group bootstrap-timepicker timepicker">
+                  <input name="newEventEndTime" id="newEventEndTime" type="text" class="form-control input-small">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="LabelColumn"><?= gettext("Event Status:") ?></td>
+          <td colspan="3">
+            <label class='c-radio'>
+              <input type="radio" name="newEventStatus" value="0" checked>
+              <div class='c-indicator'></div> Active
+            </label>
+            <label class='c-radio'>
+              <input type="radio" name="newEventStatus" value="1">
+              <div class='c-indicator'></div> Inactive
+            </label>
+            <?php if ( $bNewStatusError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("Is this Active or Inactive?") . "</span></div>"; ?>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input type="submit" Name="AddEvent" <?= 'value="' . gettext("Add Event") . '"' ?> class="btn btn-primary"></td>
+        </tr>
+      </table>
+      </form>
     </div>
  </div>
-
-
 
 
 <script>
