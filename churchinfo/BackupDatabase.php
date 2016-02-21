@@ -54,7 +54,7 @@ require "Include/Header.php";
         <li><?= gettext("For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however.") ?></li>
         </ul>
         <BR><BR>
-        <form method="post" action="<?= $sURLPath."/"; ?>api/database/backup" id="BackupDatabase">
+        <form method="post" action="<?= sRootPath ?>/api/database/backup" id="BackupDatabase">
         <?= gettext("Select archive type:") ?>
         <?php if ($hasGZIP) { ?><input type="radio" name="archiveType" value="0"><?= gettext("GZip") ?><?php } ?>
         <!--<?php if ($hasZIP) { ?><input type="radio" name="archiveType" value="1"><?= gettext("Zip") ?><?php } ?>-->
@@ -115,7 +115,7 @@ $('#BackupDatabase').submit(function(event) {
            //process the form
            $.ajax({
                 type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url         : '<?= $sURLPath."/"; ?>api/database/backup', // the url where we want to POST
+                url         : window.CRM.root +'/api/database/backup', // the url where we want to POST
                 data        : JSON.stringify(formData), // our data object
                 dataType    : 'json', // what type of data do we expect back from the server
                 encode      : true
@@ -135,7 +135,7 @@ $('#BackupDatabase').submit(function(event) {
     });
 
 function downloadbutton(filename) {
-    window.location = "<?= $sURLPath."/"; ?>api/database/download/"+filename;
+    window.location = window.CRM.root +"api/database/download/"+filename;
     $("#backupstatus").css("color","green");
     $("#backupstatus").html("Backup Downloaded, Copy on server removed");
     $("#downloadbutton").attr("disabled","true");

@@ -35,7 +35,7 @@ require 'Include/Header.php';
         <p>CAUTION: This will completely erase the existing database, and replace it with the backup</p>
         <p>If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema</p>
 
-        <form id="restoredatabase" action="<?= $sURLPath."/"; ?>api/database/restore" method="POST" enctype="multipart/form-data">
+        <form id="restoredatabase" action="<?= sRootPath ?>/api/database/restore" method="POST" enctype="multipart/form-data">
         <input type="file" name="restoreFile" id="restoreFile" multiple=""><br> 
         <button type="submit" class="btn btn-primary">Upload Files</button>
         </form>
