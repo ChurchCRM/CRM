@@ -403,8 +403,8 @@ function Header_body_menu()
                     </ul>
                 </section>
             </aside>
-            <!-- Right side column. Contains the navbar and content of the page -->
-            <aside class="right-side">
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
                 <section class="content-header">
                     <h1>
                         <?php

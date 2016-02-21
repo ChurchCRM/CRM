@@ -17,8 +17,8 @@
 ?>
 			</section><!-- /.content -->
 
-		</aside><!-- /.right-side -->
-        <!-- /.control-sidebar -->
+			</div>
+			<!-- /.content-wrapper -->
 		<footer class="main-footer">
 			<div class="pull-right hidden-xs">
 				<b>Version</b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
