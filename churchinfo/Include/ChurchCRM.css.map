@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";;;;;AACA,WAAY;EACR,OAAO,EAAE,KAAK;EACd,UAAU,EAAE,MAAM;;ACFtB,yBAA0B;EACtB,mDAAoD;IAChD,KAAK,EAAE,OAAO;AAItB,mFAAmF;EAAC,gBAAgB,EAAC,OAAO",
+"sources": ["../scss/_tables.scss","../scss/_dropdowns.scss"],
+"names": [],
+"file": "ChurchCRM.css"
+}

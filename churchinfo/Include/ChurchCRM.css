@@ -1,12 +1,16 @@
-/* Make tables scrollable in x-direction */
-table.horizontal-scroll {
-    display: block;
-    overflow-x: scroll;
-}
-@media (max-width: 767px) {
-    .skin-blue .main-header .navbar .dropdown-menu li a {
-        color: #000000;
-    }
-}
+/* DO NOT MANUALLY EDIT include/ChurchCRM.css
+   Please make changes to scss/*.scss and recompile with SASS. http://sass-lang.com/
 
-.select2-container--default .select2-selection--multiple .select2-selection__choice{background-color:#222D32}
+   sass --watch churchinfo/scss/ChurchCRM.scss:churchinfo/include/ChurchCRM.css
+*/
+table.table {
+  display: block;
+  overflow-x: scroll; }
+
+@media (max-width: 767px) {
+  .skin-blue .main-header .navbar .dropdown-menu li a {
+    color: #000000; } }
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #222D32; }
+
+/*# sourceMappingURL=ChurchCRM.css.map */
