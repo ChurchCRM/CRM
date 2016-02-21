@@ -24,24 +24,24 @@
 function FontSelect($fieldname)
 {
     global $sFPDF_PATH;
-    
+
     $d = dir($sFPDF_PATH."/font/");
     $fontnames = array();
     $family = " ";
-    while (false !== ($entry = $d->read())) 
+    while (false !== ($entry = $d->read()))
     {
         $len = strlen($entry);
         if($len > 3){
             if(strtoupper(substr($entry, $len-3))=='PHP')
             { // php files only
                 $filename = substr($entry, 0, $len-4);
-                if(substr($filename, 0, strlen($family)) != $family)  
+                if(substr($filename, 0, strlen($family)) != $family)
                     $family = $filename;
-                $fontnames[] = FilenameToFontname($filename, $family);                    
+                $fontnames[] = FilenameToFontname($filename, $family);
             }
         }
     }
-    
+
 	echo "<tr>";
 	echo "<td class=\"LabelColumn\">" . gettext("Font:") . "</td>";
 	echo "<td class=\"TextColumn\">";
@@ -49,7 +49,7 @@ function FontSelect($fieldname)
     foreach($fontnames as $n)
     {
         $sel = "";
-        if(array_key_exists ($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $n) 
+        if(array_key_exists ($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $n)
             $sel = " selected";
 		echo "<option value=\"".$n."\"".$sel.">".gettext("$n")."</option>";
 	}
@@ -68,7 +68,7 @@ function FontSizeSelect($fieldname)
     foreach($sizes as $s)
     {
         $sel = "";
-        if(array_key_exists ($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $s) 
+        if(array_key_exists ($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $s)
             $sel = " selected";
 		echo "<option value=\"".$s."\"".$sel.">".gettext("$s")."</option>";
     }
@@ -87,7 +87,7 @@ function LabelSelect($fieldname)
     foreach($labels as $l)
     {
         $sel = "";
-        if(array_key_exists ($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $l) 
+        if(array_key_exists ($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $l)
             $sel = " selected";
         echo "<option value=\"".$l."\"".$sel.">".gettext("$l")."</option>";
     }
@@ -100,18 +100,18 @@ function LabelGroupSelect($fieldname)
 {
 	echo "<tr><td class=\"LabelColumn\">" . gettext("Label Grouping") . "</td>";
 	echo "<td class=\"TextColumn\">";
-	echo "<input name=\"$fieldname\" type=\"radio\" value=\"indiv\" ";
+	echo "<label class='c-radio'><input name=\"$fieldname\" type=\"radio\" value=\"indiv\" ";
 
 	if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] != "fam")
 		echo "checked";
-	
-	echo ">" . gettext("All Individuals") . "<br>";
-	echo "<input name=\"$fieldname\" type=\"radio\" value=\"fam\" ";
+
+	echo "><div class='c-indicator'></div>" . gettext("All Individuals") . "</label>";
+	echo "<label class='c-radio'><input name=\"$fieldname\" type=\"radio\" value=\"fam\" ";
 
 	if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == "fam")
 		echo "checked";
 
-	echo ">" . gettext("Grouped by Family") . "<br></td></tr>";
+	echo "><div class='c-indicator'></div>" . gettext("Grouped by Family") . "</label></td></tr>";
 }
 
 
@@ -119,18 +119,18 @@ function ToParentsOfCheckBox($fieldname)
 {
 	echo "<tr><td class=\"LabelColumn\">" . gettext("To the parents of:") . "</td>";
 	echo "<td class=\"TextColumn\">";
-	echo "<input name=\"$fieldname\" type=\"checkbox\" ";
+	echo "<label class='c-checkbox'><input name=\"$fieldname\" type=\"checkbox\" ";
 	echo "id=\"ToParent\" value=\"1\" ";
 
 	if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname])
 		echo "checked";
-	
-	echo "><br></td></tr>";
+
+	echo "><div class='c-indicator'></div></label></td></tr>";
 }
 
 function StartRowStartColumn()
 {
-	echo '	
+	echo '
 	<tr>
 	<td class="LabelColumn">'. gettext("Start Row:") . '
 	</td>
@@ -154,7 +154,7 @@ function IgnoreIncompleteAddresses()
 	<td class="LabelColumn">' . gettext("Ignore Incomplete<br>Addresses:") . '
 	</td>
 	<td class="TextColumn">
-	<input type="checkbox" name="onlyfull" id="onlyfull" value="1" checked>
+	<label class="c-checkbox"><input type="checkbox" name="onlyfull" id="onlyfull" value="1" checked /><div class="c-indicator"></div></label>
 	</td>
 	</tr>';
 }

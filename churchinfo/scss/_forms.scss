@@ -2,14 +2,24 @@ $custom-input-color: #0074d9;
 
 .c-checkbox, .c-radio {
   position: relative;
-  display: inline;
+  display: block;
   padding-left: 24px;
   cursor: pointer;
+  min-height: 18px;
+  font-weight: 400;
+  margin: 0;
 
   input {
     position: absolute;
     z-index: -1;
     opacity: 0;
+  }
+
+}
+
+input, .c-checkbox, .c-radio, .input-group {
+  + .c-checkbox, + .c-radio {
+    margin-top: 5px;
   }
 }
 

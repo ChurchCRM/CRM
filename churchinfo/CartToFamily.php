@@ -173,7 +173,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 		echo "<td align=\"center\">";
 		if ($per_fam_ID == 0)
-			echo "<select name=\"role" . $per_ID . "\">" . $sRoleOptionsHTML . "</select>";
+			echo "<select class='form-control' name=\"role" . $per_ID . "\">" . $sRoleOptionsHTML . "</select>";
 		else
 			echo gettext("Already in a family");
 		echo "</td>";
@@ -190,7 +190,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 		<td class="TextColumn">
 			<?php
 			// Create the family select drop-down
-			echo "<select name=\"FamilyID\">";
+			echo "<select class='form-control' name=\"FamilyID\">";
 			echo "<option value=\"0\">" . gettext("Create new family") . "</option>";
 			while ($aRow = mysql_fetch_array($rsFamilies)) {
 				extract($aRow);
@@ -209,7 +209,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 	<tr>
 		<td class="LabelColumn"><?= gettext("Family Name:") ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="FamilyName" value="<?= $sName ?>" maxlength="48"><font color="red"><?= $sNameError ?></font></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="FamilyName" value="<?= $sName ?>" maxlength="48" class='form-control'><font color="red"><?= $sNameError ?></font></td>
 	</tr>
 
 	<tr>
@@ -221,7 +221,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 		<td class="LabelColumn"><?= gettext("Use address/contact data from:") ?></td>
 		<td class="TextColumn">
 			<?php
-			echo "<select name=\"PersonAddress\">";
+			echo "<select name=\"PersonAddress\" class='form-control'>";
 			echo "<option value=\"0\">" . gettext("Only the new data below") . "</option>";
 
 			mysql_data_seek($rsCartItems,0);
@@ -238,17 +238,17 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 	<tr>
 		<td class="LabelColumn"><?= gettext("Address1:") ?></td>
-		<td class="TextColumn"><input type="text" Name="Address1" value="<?= $sAddress1 ?>" size="50" maxlength="250"></td>
+		<td class="TextColumn"><input type="text" Name="Address1" value="<?= $sAddress1 ?>" size="50" maxlength="250" class='form-control'></td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?= gettext("Address2:") ?></td>
-		<td class="TextColumn"><input type="text" Name="Address2" value="<?= $sAddress2 ?>" size="50" maxlength="250"></td>
+		<td class="TextColumn"><input type="text" Name="Address2" value="<?= $sAddress2 ?>" size="50" maxlength="250" class='form-control'></td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?= gettext("City:") ?></td>
-		<td class="TextColumn"><input type="text" Name="City" value="<?= $sCity ?>" maxlength="50"></td>
+		<td class="TextColumn"><input type="text" Name="City" value="<?= $sCity ?>" maxlength="50" class='form-control'></td>
 	</tr>
 
 	<tr>
@@ -256,7 +256,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 		<td class="TextColumn">
 			<?php require "Include/StateDropDown.php"; ?>
 			OR
-			<input type="text" name="StateTextbox" value="<?php if ($sCountry != "United States" && $sCountry != "Canada") echo $sState ?>" size="20" maxlength="30">
+			<input type="text" name="StateTextbox" value="<?php if ($sCountry != "United States" && $sCountry != "Canada") echo $sState ?>" size="20" maxlength="30" class='form-control'>
 			<BR><?= gettext("(Use the textbox for countries other than US and Canada)") ?>
 		</td>
 	</tr>
@@ -271,7 +271,11 @@ if (count($_SESSION['aPeopleCart']) > 0)
 			?>
 		</td>
 		<td class="TextColumn">
-			<input type="text" Name="Zip" value="<?= $sZip ?>" maxlength="10" size="8">
+			<div class='row'>
+				<div class='col-xs-6'>
+					<input type="text" Name="Zip" value="<?= $sZip ?>" maxlength="10" size="8" class='form-control'>
+				</div>
+			</div>
 		</td>
 
 	</tr>
@@ -290,37 +294,49 @@ if (count($_SESSION['aPeopleCart']) > 0)
 	<tr>
 		<td class="LabelColumn"><?= gettext("Home Phone:") ?></td>
 		<td class="TextColumn">
-			<input type="text" Name="HomePhone" value="<?= $sHomePhone ?>" size="30" maxlength="30">
-			<input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) echo " checked";?>><?= gettext("Do not auto-format") ?>
+			<input type="text" Name="HomePhone" value="<?= $sHomePhone ?>" size="30" maxlength="30" class='form-control'>
+			<label class="c-checkbox">
+				<input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) echo " checked";?>>
+				<div class='c-indicator'></div>
+				<?= gettext("Do not auto-format") ?>
+			</label>
 		</td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?= gettext("Work Phone:") ?></td>
 		<td class="TextColumn">
-			<input type="text" name="WorkPhone" value="<?php echo $sWorkPhone ?>" size="30" maxlength="30">
-			<input type="checkbox" name="NoFormat_WorkPhone" value="1" <?php if ($bNoFormat_WorkPhone) echo " checked";?>><?= gettext("Do not auto-format") ?>
+			<input type="text" name="WorkPhone" value="<?php echo $sWorkPhone ?>" size="30" maxlength="30" class='form-control'>
+			<label class="c-checkbox">
+				<input type="checkbox" name="NoFormat_WorkPhone" value="1" <?php if ($bNoFormat_WorkPhone) echo " checked";?>>
+				<div class='c-indicator'></div>
+				<?= gettext("Do not auto-format") ?>
+			</label>
 		</td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?= gettext("Mobile Phone:") ?></td>
 		<td class="TextColumn">
-			<input type="text" name="CellPhone" value="<?php echo $sCellPhone ?>" size="30" maxlength="30">
-			<input type="checkbox" name="NoFormat_CellPhone" value="1" <?php if ($bNoFormat_CellPhone) echo " checked";?>><?= gettext("Do not auto-format") ?>
+			<input type="text" name="CellPhone" value="<?php echo $sCellPhone ?>" size="30" maxlength="30" class='form-control'>
+			<label class="c-checkbox">
+				<input type="checkbox" name="NoFormat_CellPhone" value="1" <?php if ($bNoFormat_CellPhone) echo " checked";?>>
+				<div class='c-indicator'></div>
+				<?= gettext("Do not auto-format") ?>
+			</label>
 		</td>
 	</tr>
 
 	<tr>
 		<td class="LabelColumn"><?= gettext("Email:") ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="Email" value="<?= $sEmail ?>" size="30" maxlength="50"></td>
+		<td class="TextColumnWithBottomBorder"><input type="email" Name="Email" value="<?= $sEmail ?>" size="30" maxlength="50" class='form-control'></td>
 	</tr>
 
 </table>
 
 <p align="center">
 <BR>
-<input type="submit" class="btn" name="Submit" value="<?= gettext("Add to Family") ?>">
+<input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext("Add to Family") ?>">
 <BR><BR>
 </p>
 </form>

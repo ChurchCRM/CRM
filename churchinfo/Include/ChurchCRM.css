@@ -3,10 +3,6 @@
 
    sass --watch churchinfo/scss/ChurchCRM.scss:churchinfo/include/ChurchCRM.css
 */
-table.table {
-  display: block;
-  overflow-x: scroll; }
-
 @media (max-width: 767px) {
   .skin-blue .main-header .navbar .dropdown-menu li a {
     color: #000000; } }
@@ -15,13 +11,19 @@ table.table {
 
 .c-checkbox, .c-radio {
   position: relative;
-  display: inline;
+  display: block;
   padding-left: 24px;
-  cursor: pointer; }
+  cursor: pointer;
+  min-height: 18px;
+  font-weight: 400;
+  margin: 0; }
   .c-checkbox input, .c-radio input {
     position: absolute;
     z-index: -1;
     opacity: 0; }
+
+input + .c-checkbox, input + .c-radio, .c-checkbox + .c-checkbox, .c-checkbox + .c-radio, .c-radio + .c-checkbox, .c-radio + .c-radio, .input-group + .c-checkbox, .input-group + .c-radio {
+  margin-top: 5px; }
 
 .c-checkbox input:checked ~ .c-indicator {
   color: #fff;
