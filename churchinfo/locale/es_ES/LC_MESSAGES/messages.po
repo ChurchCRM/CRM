@@ -1510,11 +1510,11 @@ msgstr "Importación de datos con éxito."
 msgid "persons were imported"
 msgstr "las personas que fueron importados"
 
-#: Default.php:100 Default.php:165
+#: Login.php:100 Login.php:165
 msgid "Invalid login or password"
 msgstr "Inicio de sesión o contraseña no válidos"
 
-#: Default.php:153
+#: Login.php:153
 msgid ""
 "Too many failed logins: your account has been locked.  Please contact an "
 "administrator."
@@ -1522,23 +1522,23 @@ msgstr ""
 "Demasiado accesos invalidos: su cuenta ha sido bloqueada. Póngase en "
 "contacto con el administrador."
 
-#: Default.php:349
+#: Login.php:349
 msgid "ChurchInfo: Login"
 msgstr "ChurchInfo: Ingresar"
 
-#: Default.php:393
+#: Login.php:393
 msgid "Please Login"
 msgstr "Ingrese"
 
-#: Default.php:413
+#: Login.php:413
 msgid "Enter your user name:"
 msgstr "Ingrese su Usuario"
 
-#: Default.php:420
+#: Login.php:420
 msgid "Enter your password:"
 msgstr "Ingrese su contraseña"
 
-#: Default.php:428
+#: Login.php:428
 msgid "Login"
 msgstr "Ingresar"
 

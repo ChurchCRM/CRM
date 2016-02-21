@@ -1494,11 +1494,11 @@ msgstr "Data import compleet."
 msgid "persons were imported"
 msgstr "Personen werden geimporteerd"
 
-#: Default.php:100 Default.php:165
+#: Login.php:100 Login.php:165
 msgid "Invalid login or password"
 msgstr "Onjuist login of wachtwoord"
 
-#: Default.php:153
+#: Login.php:153
 msgid ""
 "Too many failed logins: your account has been locked.  Please contact an "
 "administrator."
@@ -1506,23 +1506,23 @@ msgstr ""
 "Teveel mislukte logins: uw toegang is geblokkeerd. Neem contact op met een "
 "Administrateur."
 
-#: Default.php:349
+#: Login.php:349
 msgid "ChurchInfo: Login"
 msgstr "KerkInfo : Login"
 
-#: Default.php:393
+#: Login.php:393
 msgid "Please Login"
 msgstr "Aub inloggen"
 
-#: Default.php:413
+#: Login.php:413
 msgid "Enter your user name:"
 msgstr "Voer uw gebruikersnaam in:"
 
-#: Default.php:420
+#: Login.php:420
 msgid "Enter your password:"
 msgstr "Voer uw wachtwoord in:"
 
-#: Default.php:428
+#: Login.php:428
 msgid "Login"
 msgstr "Login"
 

@@ -1547,12 +1547,12 @@ msgstr "Dati importati con successo."
 msgid "persons were imported"
 msgstr "persone sono state importate"
 
-#: Default.php:100 Default.php:165
+#: Login.php:100 Login.php:165
 #, fuzzy
 msgid "Invalid login or password"
 msgstr "Password non valida"
 
-#: Default.php:153
+#: Login.php:153
 msgid ""
 "Too many failed logins: your account has been locked.  Please contact an "
 "administrator."
@@ -1560,25 +1560,25 @@ msgstr ""
 "Troppi login falliti: il tuo account è stato bloccato.  Per favore contatta "
 "un amministratore."
 
-#: Default.php:349
+#: Login.php:349
 #, fuzzy
 msgid "ChurchInfo: Login"
 msgstr "InfoCentral: Login"
 
-#: Default.php:393
+#: Login.php:393
 msgid "Please Login"
 msgstr "Per favore, identificati"
 
-#: Default.php:413
+#: Login.php:413
 #, fuzzy
 msgid "Enter your user name:"
 msgstr "Seleziona il tuo nome utente:"
 
-#: Default.php:420
+#: Login.php:420
 msgid "Enter your password:"
 msgstr "Inserisci la password:"
 
-#: Default.php:428
+#: Login.php:428
 msgid "Login"
 msgstr "Entra"
 
