@@ -212,7 +212,7 @@ $numRows = mysql_num_rows($rsList);
 $aNameErrors = array();
 for ($row = 1; $row <= $numRows; $row++)
 	$aNameErrors[$row] = 0;
-	
+
 if (isset($_POST["SaveChanges"]))
 {
 	for ($row = 1; $row <= $numRows; $row++)
@@ -360,7 +360,7 @@ for ($row=1; $row <= $numRows; $row++)
 		</td>
 		<?php
 		if ($mode == "grproles")
-			echo "<td class=\"TextColumn\"><input class=\"form-control input-small\" type=\"button\" class=\"btn\" value=\"" . gettext("Make Default") . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . "&ListID=" . $listID . "&ID=" . $aIDs[$row] . "&Action=makedefault';\" ></td>";
+			echo "<td class=\"TextColumn\"><input class=\"form-control input-small\" type=\"button\" class=\"btn btn-default\" value=\"" . gettext("Make Default") . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . "&ListID=" . $listID . "&ID=" . $aIDs[$row] . "&Action=makedefault';\" ></td>";
 		?>
 
 	</tr>
@@ -371,9 +371,9 @@ for ($row=1; $row <= $numRows; $row++)
 
 
 	<?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') { ?>
-		<input type="button" class="btn" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:window.close();">
+		<input type="button" class="btn btn-default" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:window.close();">
 	<?php } elseif ($mode != "grproles") { ?>
-		<input type="button" class="btn" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:document.location='<?php
+		<input type="button" class="btn btn-default" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:document.location='<?php
 		echo "Menu.php";
 		?>';">
 	<?php } ?>
@@ -387,7 +387,7 @@ New <?= $noun . " " . gettext("Name:") ?>&nbsp;
 	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
 <p>  </p>
-<input type="submit" class="btn" value="<?= gettext("Add New") . ' ' . $adj . ' ' . $noun ?>" Name="AddField">
+<input type="submit" class="btn btn-default" value="<?= gettext("Add New") . ' ' . $adj . ' ' . $noun ?>" Name="AddField">
 <?php
 	if ($iNewNameError > 0)
 	{
