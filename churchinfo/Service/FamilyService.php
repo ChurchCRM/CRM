@@ -14,8 +14,9 @@ class FamilyService {
         while($row=mysql_fetch_array($result)) {
             $row_array['id']=$row['fam_ID'];
             $row_array['familyName']=$row['fam_Name'];
+            $row_array['street']=$row['fam_Address1'];
             $row_array['city']=$row['fam_City'];
-            $row_array['displayName']=$row['fam_Name']." - ".$row['fam_City'];
+            $row_array['displayName']=$row['fam_Name']." - ".$row['fam_Address1']." - ".$row['fam_City'];
             $row_array['uri'] = $this->getViewURI($row['fam_ID']);
             array_push($families,$row_array);
         }
