@@ -651,7 +651,7 @@ $(document).ready(function() {
 	$("#FamilyName").autocomplete({
 		source: function (request, response) {
 			$.ajax({
-				url: 'api/families/search/'+request.term,
+				url: window.CRM.root + '/api/families/search/'+request.term,
 				dataType: 'json',
 				type: 'GET',
 				success: function (data) {

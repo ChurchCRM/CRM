@@ -53,7 +53,7 @@ $('#restoredatabase').submit(function(event) {
    $("#restorestatus").html("Restore Running, Please wait.");
    var formData = new FormData($(this)[0]); 
    $.ajax({
-        url: '<?= $sURLPath."/"; ?>api/database/restore',
+        url: window.CRM.root + '/api/database/restore',
         type: 'POST',
         data: formData,
         cache: false,
