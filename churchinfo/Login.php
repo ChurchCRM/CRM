@@ -1,7 +1,7 @@
 <?php
 /*******************************************************************************
  *
- *  filename    : Default.php
+ *  filename    : Login.php
  *  description : login page that checks for correct username and password
  *
  *  http://www.churchcrm.io/
@@ -341,7 +341,7 @@ if (isset($loginPageMsg))
     echo '<div class="alert alert-warning">' . $loginPageMsg . '</div>';
 ?>
 
-<form class="form-signin" role="form" method="post" name="LoginForm" action="Default.php">
+<form class="form-signin" role="form" method="post" name="LoginForm" action="Login.php">
     <div class="form-group has-feedback">
         <input type="text" id="UserBox" name="User" class="form-control" placeholder="Email/Username" required autofocus>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

@@ -367,7 +367,7 @@ function Header_body_menu()
                         </a>
                     </li>
                     <li class="hidden-xxs">
-                        <a href="<?= $sRootPath . "/" ?>Default.php?Logoff=True">
+                        <a href="<?= $sRootPath ?>/Login.php?Logoff=True">
                             <i class="fa fa-power-off"></i>
                         </a>
                     </li>

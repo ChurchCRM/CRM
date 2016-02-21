@@ -42,7 +42,7 @@ if (empty($bSuppressSessionTests))  // This is used for the login page only.
     // Basic security: If the UserID isn't set (no session), redirect to the login page
     if (!isset($_SESSION['iUserID']))
     {
-        Redirect("Default.php");
+        Redirect("Login.php");
         exit;
     }
 
@@ -50,7 +50,7 @@ if (empty($bSuppressSessionTests))  // This is used for the login page only.
     // redirect to the login page
     if ($_SESSION['sRootPath'] !== $sRootPath )
     {
-        Redirect("Default.php");
+        Redirect("Login.php");
         exit;
     }
 
@@ -59,7 +59,7 @@ if (empty($bSuppressSessionTests))  // This is used for the login page only.
     {
         if ((time() - $_SESSION['tLastOperation']) > $sSessionTimeout)
         {
-            Redirect("Default.php?Timeout");
+            Redirect("Login.php?Timeout");
             exit;
         }
         else {
@@ -105,7 +105,7 @@ function checkAllowedURL()
         $validURL = false;
         foreach ($URL as $value)
         {
-            $base = substr($value, 0, -strlen('/Default.php'));
+            $base = substr($value, 0, -strlen('/Login.php'));
             if (strpos($currentURL, $base) === 0)
             {
                 $validURL = true;

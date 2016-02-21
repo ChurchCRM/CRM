@@ -65,7 +65,7 @@ $('#restoredatabase').submit(function(event) {
    .done(function(data) {
         console.log(data);
         $("#restorestatus").css("color","green");
-        $("#restorestatus").html('Restore Complete <a href="Default.php?Logoff=True" class="btn btn-primary">Login to restored Database</a>');
+        $("#restorestatus").html('Restore Complete <a href="Login.php?Logoff=True" class="btn btn-primary">Login to restored Database</a>');
     }).fail(function()  {
         $("#restorestatus").css("color","red");
         $("#restorestatus").html("Restore Error.");
@@ -74,7 +74,7 @@ $('#restoredatabase').submit(function(event) {
 });
 </script>
 <!-- PACE -->
-<script src="<?= $sRootPath ?>/vendor/AdminLTE/plugins/pace/pace.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
 <?php
 require "Include/Footer.php";
 ?>

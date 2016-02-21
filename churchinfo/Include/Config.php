@@ -27,12 +27,13 @@ $bLockURL = TRUE;
 
 // URL[0] is the URL that you prefer most users use when they
 // log in.  These are case sensitive.  Only used when $bLockURL = TRUE
-$URL[0] = 'http://192.168.33.10/Default.php';
+$URL[0] = 'http://192.168.33.10/';
 // List as many other URL's as may be needed. Number them sequentially.
-//$URL[1] = 'https://www.church.org/churchcrm/Default.php';
-//$URL[2] = 'https://www.church.org:8080/churchcrm/Default.php';
-//$URL[3] = 'https://www.mychurch.org/churchinfo/Default.php';
-//$URL[4] = 'https://ssl.sharedsslserver.com/mychurch.org/churchinfo/Default.php';
+//$URL[1] = 'https://www.mychurch.org/churchcrm/';
+//$URL[2] = 'https://www.mychurch.org:8080/churchcrm/';
+//$URL[3] = 'https://www.mychurch.org/churchcrm/';
+//$URL[4] = 'https://ssl.sharedsslserver.com/mychurch.org/churchcrm/';
+//$URL[5] = 'https://crm.mychurch.org/';
 
 // If you are using a non-standard port number be sure to include the
 // port number in the URL. See example $URL[2]
