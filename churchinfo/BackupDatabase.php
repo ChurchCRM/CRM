@@ -135,7 +135,7 @@ $('#BackupDatabase').submit(function(event) {
     });
 
 function downloadbutton(filename) {
-    window.location = window.CRM.root +"api/database/download/"+filename;
+    window.location = window.CRM.root +"/api/database/download/"+filename;
     $("#backupstatus").css("color","green");
     $("#backupstatus").html("Backup Downloaded, Copy on server removed");
     $("#downloadbutton").attr("disabled","true");
