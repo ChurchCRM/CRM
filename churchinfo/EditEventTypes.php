@@ -166,7 +166,7 @@ if($numCounts)
   </tr>
 
    <tr>
-      <td class="LabelColumn" align="center" width="15%" rowspan="<?= $nr ?>" colspan="1">
+      <td class="LabelColumn" width="15%" rowspan="<?= $nr ?>" colspan="1">
         <strong><?= gettext("Attendance Counts") ?></strong>
       </td>
     </tr>

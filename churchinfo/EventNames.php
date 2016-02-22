@@ -299,7 +299,7 @@ if ($numRows > 0)
                 <div class="SmallText"><?php echo gettext("[enter a list of the attendance counts you want to include with this event. <br> Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children]"); ?></div>
               </td>
               <td colspan="2" align="center" valign="bottom">
-                <input type="submit" Name="Action" <?= 'value="' . gettext("Save Changes") . '"' ?> class="btn btn-default">
+                <input type="submit" Name="Action" <?= 'value="' . gettext("Save Changes") . '"' ?> class="btn btn-primary">
               </td>
               </form>
               </tr>
@@ -313,19 +313,19 @@ if ($numRows > 0)
               <td class="TextColumn" align="center">
                 <form name="ProcessEventType" action="EventEditor.php" method="POST" class="pull-left">
                   <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
-                  <input type="submit" name="Action" value="<?= gettext("Create Event") ?>" class="btn btn-default">
+                  <input type="submit" name="Action" value="<?= gettext("Create Event") ?>" class="btn btn-default btn-sm">
                 </form>
               </td>
               <td class="TextColumn" align="center">
                 <form name="ProcessEventType" action="EditEventTypes.php" method="POST" class="pull-left">
                   <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
-                  <input type="submit" class="SmallText btn btn-default" name="Action" value="<?= gettext("Edit") ?>">
+                  <input type="submit" class="SmallText btn btn-default btn-sm" name="Action" value="<?= gettext("Edit") ?>">
                 </form>
               </td>
               <td class="TextColumn" align="center">
                 <form name="ProcessEventType" action="EventNames.php" method="POST" class="pull-left">
                   <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
-                  <input type="submit" class="SmallText btn btn-default" name="Action" value="<?= gettext("Delete") ?>" onClick="return confirm('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: <?=  $aTypeID[$row] ?>')">
+                  <input type="submit" class="SmallText btn btn-default btn-sm" name="Action" value="<?= gettext("Delete") ?>" onClick="return confirm('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: <?=  $aTypeID[$row] ?>')">
                 </form>
               </td>
               </tr>
