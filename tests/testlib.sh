@@ -11,12 +11,13 @@ egrepTest ()
     # if the return code is 0 egrep found a match - this is bad
     if [ $? == 0 ]
     then
-      echo "The following files $4:"
+      echo "The following files $2:"
       echo $OUT
       echo -e "\033[41m\033[1;37m Failed \033[0m"
       exit 1
     fi
 
     # otherwise we output a bright green inverted "Passed"
+    echo "No files $2 :-)"
     echo -e "\033[42m\033[1;37m Passed \033[0m"
 }
