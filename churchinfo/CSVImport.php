@@ -164,14 +164,14 @@ if (isset($_POST["UploadCSV"]))
         <?php
         echo gettext("Total number of rows in the CSV file:") . $iNumRows;
         echo "<br><br>";
-        echo "<table class=\"table\" id=\"importTable\">";
+        echo "<table class=\"table horizontal-scroll\" id=\"importTable\">";
 
         // grab and display up to the first 8 lines of data in the CSV in a table
         $iRow = 0;
         while (($aData = fgetcsv($pFile, 2048, ",")) && $iRow++ < 9)
         {
             $numCol = count($aData);
-            
+
             echo "<tr>";
             for ($col = 0; $col < $numCol; $col++) {
                 echo "<td>" . $aData[$col] . "&nbsp;</td>";
