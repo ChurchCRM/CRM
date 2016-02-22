@@ -166,7 +166,7 @@ $("document").ready(function(){
             data:'lst_OptionName',
             render: function  (data, type, full, meta ) {
                 if ( type === 'display')
-                    return '<input type="text" value="'+data+'">';
+                    return '<input id="roleName-' + full.lst_OptionID + '" type="text" value="'+data+'" class="roleName form-control">';
                 else
                     return data;
             }

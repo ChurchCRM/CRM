@@ -121,15 +121,15 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
 
                 $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
                 if (strlen($sEmail) == 0 && strlen ($per_WorkEmail) > 0) {
-                	$sEmail = $per_WorkEmail;                	
+                	$sEmail = $per_WorkEmail;
                 }
-                
+
                 if (strlen($sEmail)) {
                     $sValidEmail = gettext("Yes");
                     if (!stristr($sEmailLink, $sEmail)) {
                         $email_array[] = $sEmail;
 
-                        if ($iEmailNum == 0) {       
+                        if ($iEmailNum == 0) {
                         	// Comma is not needed before first email address
                             $sEmailLink .= $sEmail;
                             $iEmailNum++;
@@ -292,15 +292,15 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
 
                 echo '  <tr><td>' . gettext("Bulk Mail Presort") . '</td>';
                 echo '  <td>';
-                echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
+                echo '  <label class="c-checkbox"><input name="bulkmailpresort" type="checkbox" onclick="codename()"';
                 echo '  id="BulkMailPresort" value="1" ';
                 if (array_key_exists("buildmailpresort", $_COOKIE) && $_COOKIE["bulkmailpresort"])
                     echo "checked";
-                echo '  ><br></td></tr>';
+                echo '  ><div class="c-indicator"></div></label></td></tr>';
 
                 echo '  <tr><td>' . gettext("Quiet Presort") . '</td>';
                 echo '  <td>';
-                echo '  <input ';
+                echo '  <label class="c-checkbox"><input ';
                 if (array_key_exists("buildmailpresort", $_COOKIE) && !$_COOKIE["bulkmailpresort"])
                     echo 'disabled ';   // This would be better with $_SESSION variable
                                         // instead of cookie ... (save $_SESSION in MySQL)
@@ -308,7 +308,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
                 echo '  id="QuietBulkMail" value="1" ';
                 if (array_key_exists("bulkmailquiet", $_COOKIE) && $_COOKIE["bulkmailquiet"] && array_key_exists("buildmailpresort", $_COOKIE) && $_COOKIE["bulkmailpresort"])
                     echo "checked";
-                echo '  ><br></td></tr>';
+                echo '  ><div class="c-indicator"></div></label></td></tr>';
 
                 ToParentsOfCheckBox("toparents");
                 LabelSelect("labeltype");
@@ -317,7 +317,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
                 StartRowStartColumn();
                 IgnoreIncompleteAddresses();
                 LabelFileType();
-                ?>                             
+                ?>
 
                 <tr>
                         <td></td>
@@ -353,10 +353,10 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
 
         ?><div align="center"><table class="table"><tr><td align="center"><?php
         echo "<br><h2>" . gettext("Send Email To People in Cart") . "</h2>";
- 
+
         // Check if there are pending emails that have not been delivered
         // A user cannot send a new email until the previous email has been sent
-    
+
         $sSQL  = "SELECT COUNT(emp_usr_id) as countjobs "
                . "FROM email_message_pending_emp "
                . "WHERE emp_usr_id='".$_SESSION['iUserID']."'";
@@ -402,10 +402,10 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
 	        		$hasAttach = 1;
                 	move_uploaded_file ($_FILES['Attach']['tmp_name'], "tmp_attach/".$attachName);
 		        }
-                
+
                 if (strlen($sEmailSubject.$sEmailMessage)) {
 
-                    // User has edited a message.  Update MySQL.                
+                    // User has edited a message.  Update MySQL.
                     $sSQLu = "UPDATE email_message_pending_emp ".
                              "SET emp_subject='".mysql_real_escape_string($sEmailSubject)."',".
                              "    emp_message='".mysql_real_escape_string($sEmailMessage)."', ".
@@ -428,9 +428,9 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
                     $attachName = $emp_attach_name;
                 }
 
-                $sEmailForm = "sendoredit";                
+                $sEmailForm = "sendoredit";
 
-            } else { 
+            } else {
                 // This job has already started.  The user may not change the message
                 // or the distribution once emails have actually been sent.
                 $sEmailForm = 'resumeorabort';
@@ -444,11 +444,11 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
 			$sEmailMessage = "";
 			$hasAttach = 0;
 			$attachName = "";
-        	
+
 			if (array_key_exists ('emailsubject', $_POST))
 	            $sEmailSubject = stripslashes($_POST['emailsubject']);
 			if (array_key_exists ('emailmessage', $_POST))
-	            $sEmailMessage = stripslashes($_POST['emailmessage']);	            
+	            $sEmailMessage = stripslashes($_POST['emailmessage']);
             if (array_key_exists ('Attach', $_FILES)) {
 	        	$attachName = $_FILES['Attach']['name'];
 	        	$hasAttach = 1;
@@ -458,9 +458,9 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
             if (strlen($sEmailSubject.$sEmailMessage)) {
 
                 // User has written a message.  Store it in MySQL.
-                // Since this is the first time use INSERT instead of UPDATE                
+                // Since this is the first time use INSERT instead of UPDATE
                 $sSQL = "INSERT INTO email_message_pending_emp ".
-                        "SET " . 
+                        "SET " .
                             "emp_usr_id='" .$_SESSION['iUserID']. "',".
                             "emp_to_send='0'," .
                             "emp_subject='" . mysql_real_escape_string($sEmailSubject). "',".
@@ -498,7 +498,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
 
             echo '<input type="submit" class="btn" name="submit" '.
                  'value ="'.gettext("Compose Email").'">'."\n</form>";
-            
+
         } elseif ($sEmailForm == 'sendoredit') {
 
             //Print the From, To, and Email List with the Subject and Message
@@ -511,7 +511,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
             echo '<b>'.gettext("To (blind):").'</b> '.$bcc_list.'<br>'."\n";
 
             echo '<b>'.gettext("Subject:").'</b> '.htmlspecialchars($sEmailSubject).'<br>';
-            
+
             if (strlen ($attachName) > 0) {
             	echo '<b>'.gettext("Attach file:").'</b> '.htmlspecialchars($attachName).'<br>';
             }
@@ -636,7 +636,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
                 echo '<br>'.$sSQL;
 
             } else {
-                $sHTMLLog = '<br><br><div align="center"><table>';            
+                $sHTMLLog = '<br><br><div align="center"><table>';
                 while ($aRow = mysql_fetch_array($rsEJL)) {
                     extract($aRow);
 
