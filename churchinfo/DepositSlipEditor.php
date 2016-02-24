@@ -675,7 +675,7 @@ require "Include/Header.php";
 	list ($totalCheckItems) = mysql_fetch_row($rsDepositTotal);
 	if (!$totalCheckItems)
 		$totalCheckItems = "0";
-	echo "<b>\$$deposit_total - ".gettext("Total Amount"." </b> &nbsp; (".gettext("Items").": $totalItems)<br>";
+	echo "<b>\$$deposit_total - ".gettext("Total Amount")." </b> &nbsp; (".gettext("Items").": $totalItems)<br>";
 	if ($totalCash)
 		echo "<i><b>\$$totalCash - ".gettext("Total Cash")." </b> &nbsp; ".gettext("Items").": $totalCashItems)</i><br>";
 	if ($totalChecks)
