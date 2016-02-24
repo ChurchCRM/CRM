@@ -30,8 +30,8 @@ class Renderer
   }
 
   // Renders a typical box header element around the given HTML content.
-  public function BoxHeader($content) {
-    ?><div class="box-header with-border">
+  public function BoxHeader($content, $border=false) {
+    ?><div class="box-header <?= $border ? 'with-border' : '' ?>">
       <h3 class="box-title"><?= $content ?></h3>
     </div>
 <?php
