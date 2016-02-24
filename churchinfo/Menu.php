@@ -49,6 +49,7 @@ $dashboardService = new DashboardService();
 $personCount = $dashboardService->getPersonCount();
 $familyCount = $dashboardService->getFamilyCount();
 $sundaySchoolStats = $dashboardService->getSundaySchoolStats();
+$depositData = $financialService->getDeposits();
 
 
 // Set the page title
@@ -139,7 +140,7 @@ require 'Include/Header.php';
 </div><!-- /.row -->
 
 <?php 
-if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's display the deposit line chart
+if ($_SESSION['bFinance'] && count($depositData) > 1) // If the user has Finance permissions, then let's display the deposit line chart
 { 
 ?>
 <div class="row">
@@ -288,13 +289,13 @@ if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's di
 <!-- this page specific inline scripts -->
 <script>
 <?php 
-if ($_SESSION['bFinance']) // If the user has Finance permissions, then let's display the deposit line chart
+if ($_SESSION['bFinance'] && count($depositData) > 1) // If the user has Finance permissions, then let's display the deposit line chart
 { 
 ?>
     //---------------
     //- LINE CHART  -
     //---------------
-    var lineDataRaw = <?= $financialService->getDepositJSON($financialService->getDeposits()) ?>;
+    var lineDataRaw = <?= $financialService->getDepositJSON($depositData) ?>;
 
     var lineData = {
         labels: [],
