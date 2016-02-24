@@ -675,11 +675,11 @@ require "Include/Header.php";
 	list ($totalCheckItems) = mysql_fetch_row($rsDepositTotal);
 	if (!$totalCheckItems)
 		$totalCheckItems = "0";
-	echo "<b>\$$deposit_total - TOTAL AMOUNT </b> &nbsp; (Items: $totalItems)<br>";
+	echo "<b>\$$deposit_total - ".gettext("Total Amount"." </b> &nbsp; (".gettext("Items").": $totalItems)<br>";
 	if ($totalCash)
-		echo "<i><b>\$$totalCash - Total Cash </b> &nbsp; (Items: $totalCashItems)</i><br>";
+		echo "<i><b>\$$totalCash - ".gettext("Total Cash")." </b> &nbsp; ".gettext("Items").": $totalCashItems)</i><br>";
 	if ($totalChecks)
-		echo "<i><b>\$$totalChecks - Total Checks</b> &nbsp; (Items: $totalCheckItems)</i><br>";
+		echo "<i><b>\$$totalChecks - ".gettext("Total Checks")."</b> &nbsp; ".gettext("Items").": $totalCheckItems)</i><br>";
 	echo "<br>";
 ?>
 <b><?= gettext("Payments on this deposit slip:") ?></b>

@@ -16,7 +16,7 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require 'service/FinancialService.php';
+require 'Service/FinancialService.php';
 
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
@@ -26,22 +26,22 @@ $sPageTitle = gettext("Deposit Listing");
 // Security: User must have finance permission to use this form
 if (!$_SESSION['bFinance'])
 {
-	Redirect("Menu.php");
-	exit;
+    Redirect("Menu.php");
+    exit;
 }
 
 $financialService=new FinancialService();
 require "Include/Header.php";
 ?>
 
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.css">
-<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.css">
+<script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 <!-- Delete Confirm Modal -->
 <div id="confirmDelete" class="modal fade" role="dialog">
@@ -57,7 +57,7 @@ require "Include/Header.php";
         <p>This will also delete all payments associated with this deposit</p>
         <p>This action CANNOT be undone, and may have legal implications!</p>
         <p>Please ensure this what you want to do.</p>
-		<button type="button" class="btn btn-danger" id="deleteConfirmed" ><?php echo gettext("Delete"); ?></button>
+        <button type="button" class="btn btn-danger" id="deleteConfirmed" ><?php echo gettext("Delete"); ?></button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -124,25 +124,20 @@ if (!$.isArray(depositData.deposits))
 {
     depositData.deposits=[depositData.deposits];
 }
-console.log(depositData.deposits);
 var dataT = 0;
 $(document).ready(function() {
-    
     $("#depositDate").datepicker({format:'yyyy-mm-dd'}).datepicker("setDate", new Date());
-   
     $("#addNewDeposit").click(function (e){
         var newDeposit = {
             'depositType':$("#depositType option:selected").val(),
             'depositComment':$("#depositComment").val(),
             'depositDate':$("#depositDate").val()
         };
-        console.log(newDeposit);
         $.ajax({
             method: "POST",
             url:   "/api/deposits",
             data:  JSON.stringify(newDeposit)
         }).done(function(data){
-            console.log(data[0]);
             dataT.row.add(data[0]);
             dataT.rows().invalidate().draw(true);
         });
@@ -191,14 +186,7 @@ $(document).ready(function() {
         data:'dep_Closed',
         searchable: true,
         render: function (data,type,full,meta) {
-            if (data == 1)
-            {
-                return "Yes";
-            }
-            else
-            {
-                return "No";
-            }
+            return data == 1 ? 'Yes' : 'No';
         }
     },
     {
@@ -211,10 +199,7 @@ $(document).ready(function() {
     order:[0,'desc']
     });
     
-
-
-     $("#depositsTable tbody").on('click', 'tr', function() {
-         console.log("clicked");
+    $("#depositsTable tbody").on('click', 'tr', function() {
          $(this).toggleClass('selected');
          var selectedRows = dataT.rows('.selected').data().length;
           $("#deleteSelectedRows").prop('disabled', !(selectedRows));
@@ -225,12 +210,10 @@ $(document).ready(function() {
           $("#exportSelectedRowsCSV").html("<i class=\"fa fa-download\"></i>Export ("+selectedRows+") Selected Rows (CSV)");
           $("#generateDepositSlip").prop('disabled', !(selectedRows));
           $("#generateDepositSlip").html("<i class=\"fa fa-download\"></i>Generate Deposit Split for Selected ("+selectedRows+") Rows (PDF)");
-        
-     });
+    });
      
-     $('#deleteSelectedRows').click(function() {
+    $('#deleteSelectedRows').click(function() {
         var deletedRows = dataT.rows('.selected').data()
-        console.log("delete-button" + deletedRows.length);
         $("#deleteNumber").text(deletedRows.length);
         $("#confirmDelete").modal('show');
     });
@@ -250,36 +233,28 @@ $(document).ready(function() {
         });
     });
     
-     $('#generateDepositSlip').click(function() {
+    $('#generateDepositSlip').click(function() {
         var selectedRows = dataT.rows('.selected').data()
         $.each(selectedRows, function(index, value){
             window.open('/api/deposits/'+value.dep_ID+'/pdf');
         });
     });
-    
-   
-    
-    
+
     $("#deleteConfirmed").click(function() {
-	 var deletedRows = dataT.rows('.selected').data()
+        var deletedRows = dataT.rows('.selected').data()
         $.each(deletedRows, function(index, value){
-            console.log(value);
-             $.ajax({
-            type        : 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
-            url         : '/api/deposits/'+value.dep_ID, // the url where we want to POST
-            dataType    : 'json', // what type of data do we expect back from the server
-            encode      : true
+            $.ajax({
+                type        : 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '/api/deposits/'+value.dep_ID, // the url where we want to POST
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode      : true
             })
-             .done(function(data) {
-                console.log(data);
+            .done(function(data) {
                 $('#confirmDelete').modal('hide');
                 dataT.rows('.selected').remove().draw(false);
             });
         });
-       
-		
     });
-
 });
 </script>
 
