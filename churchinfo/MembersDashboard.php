@@ -8,7 +8,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
 
-require_once "service/DashboardService.php";
+require_once "Service/DashboardService.php";
 
 // Set the page title
 $sPageTitle = "Members Dashboard";
@@ -30,7 +30,7 @@ $rsKidsGender = RunQuery($sSQL);
 ?>
 
 <!-- this page specific styles -->
-<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/chartjs/Chart.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
 
 <!-- Default box -->
 <div class="box">

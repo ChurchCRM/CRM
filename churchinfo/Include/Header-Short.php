@@ -26,7 +26,10 @@ ob_start();
 <html>
 
 <head>
-	<?php Header_head_metatag(); ?>
+<?php
+	require 'Header-HTML-Scripts.php';
+	Header_head_metatag();
+?>
 </head>
 
 <body>
