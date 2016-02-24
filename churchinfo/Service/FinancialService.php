@@ -976,7 +976,7 @@ class FinancialService {
 
         // Exit if no rows returned
         $iCountRows = mysql_num_rows($rsPledges);
-        if ($iCountRows < 1)
+        if ($iCountRows == 0 )
         {
            throw new Exception("No payments on this deposit");
         }
@@ -1306,7 +1306,7 @@ class FinancialService {
     {
         $thisReport = new StdClass();
         $thisReport->payments = $this->getPayments($depID);
-        if (count($thisReport->payments) <1)
+        if (count($thisReport->payments) == 0)
         {
             throw new Exception("No Payments on this Deposit");
         }
@@ -1389,7 +1389,7 @@ class FinancialService {
         $line=array();
         $firstLine=true;
         $payments = $this->getPayments($depID);
-        if (count($payments) < 1)
+        if (count($payments) == 0 )
         {
            throw new Exception("No payments on this deposit");
         }
