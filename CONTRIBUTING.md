@@ -17,10 +17,6 @@ We love to hear ideas from other ChurchInfo and ChurchCRM users!  It's what make
 * Make commits of logical units.  "Commit Early, Commit Often" is a great motto.
 * Check for unnecessary whitespace with `git diff --check` before committing.
 
-### Documentation
-* If you're changing anything in the API, please update the API documentation.  
-* If you are changing something that affects the user interface, please update the appropriate documentation and help files to ensure continued user friendliness of the application.
-
 ## Submitting Changes
 
 * Push your changes to a topic branch in your fork of the repository.
@@ -29,15 +25,20 @@ We love to hear ideas from other ChurchInfo and ChurchCRM users!  It's what make
 * After feedback has been given we expect responses within two weeks. After two
   weeks we may close the pull request if it isn't showing any activity.
   
+## Documentation
+
+* If you're changing anything in the API, please update the API documentation.  
+* If you are changing something that affects the user interface, please update the appropriate documentation and help files to ensure continued user friendliness of the application.
+  
 ## Style Guide
 
 ### Spacing
 
-We represent "tab" as 4 spaces.  We have unit tests to ensure that the code style stays clean.  Please configure your editor accordingly.
+*  We represent "tab" as 4 spaces.  We have unit tests to ensure that the code style stays clean.  Please configure your editor accordingly.
 
 ### HTML
 
-Please ensure all HMTML nodes are indented appropriately
+*  Please ensure all HMTML nodes are indented appropriately
 
 ### PHP Tags
 
