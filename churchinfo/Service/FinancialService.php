@@ -1306,7 +1306,7 @@ class FinancialService {
     {
         $thisReport = new StdClass();
         $thisReport->payments = $this->getPayments($depID);
-        if (count($thisReport->payments) == 0)
+        if (count($thisReport->payments) == 0 )
         {
             throw new Exception("No Payments on this Deposit");
         }
