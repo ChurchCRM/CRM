@@ -38,7 +38,7 @@ We love to hear ideas from other ChurchInfo and ChurchCRM users!  It's what make
 
 ### HTML
 
-*  Please ensure all HMTML nodes are indented appropriately
+*  Please ensure all HTML nodes are indented appropriately
 
 ### PHP Tags
 
