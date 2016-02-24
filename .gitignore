@@ -11,6 +11,8 @@
 *.iws
 
 #Exclude composer vendor folders
+vendor
+composer.lock
 churchinfo/vendor/bin
 churchinfo/composer.lock
 churchinfo/vendor/composer

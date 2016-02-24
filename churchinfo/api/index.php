@@ -10,12 +10,12 @@ if (!isset($_SESSION['iUserID'])) {
 }
 
 // Services
-require_once "../service/PersonService.php";
-require_once "../service/FamilyService.php";
-require_once "../service/DataSeedService.php";
-require_once "../service/FinancialService.php";
-require_once "../service/GroupService.php";
-require_once '../service/SystemService.php';
+require_once "../Service/PersonService.php";
+require_once "../Service/FamilyService.php";
+require_once "../Service/DataSeedService.php";
+require_once "../Service/FinancialService.php";
+require_once "../Service/GroupService.php";
+require_once '../Service/SystemService.php';
 
 require_once '../vendor/Slim/slim/Slim/Slim.php';
 

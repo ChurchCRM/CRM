@@ -19,7 +19,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require 'Include/PersonFunctions.php';
-require 'service/MailchimpService.php';
+require 'Service/MailchimpService.php';
 
 $mailchimp = new MailChimpService();
 
@@ -29,12 +29,6 @@ $iPersonID = FilterInput($_GET["PersonID"],'int');
 $iRemoveVO = 0;
 if (array_key_exists ("RemoveVO", $_GET))
 	$iRemoveVO = FilterInput($_GET["RemoveVO"],'int');
-
-if ( isset($_POST["GroupAssign"]) && $_SESSION['bManageGroups'] )
-{
-	$iGroupID = FilterInput($_POST["GroupAssignID"],'int');
-	AddToGroup($iPersonID,$iGroupID,0);
-}
 
 if ( isset($_POST["VolunteerOpportunityAssign"]) && $_SESSION['bEditRecords'])
 {
@@ -527,8 +521,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 										<h4><strong>Assign New Group</strong></h4>
 										<i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?= gettext("Person will be assigned to the Group in the Default Role.") ?></span>
 										<p><br></p>
-										<form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
-											<select name="GroupAssignID">
+											<select style="color:#000000" name="GroupAssignID">
 												<?php while ($aRow = mysql_fetch_array($rsGroups)) {
 													extract($aRow);
 
@@ -539,9 +532,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 												}
 												?>
 											</select>
-											<input type="submit" class="btn-primary" value="<?= gettext("Assign") ?>" name="GroupAssign">
+											<a href="#" onclick="GroupAdd()" class="btn btn-success" role="button">Assign User to Group</a>
 											<br>
-										</form>
 									</div>
 								<?php } ?>
 							</div>
@@ -805,7 +797,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 				<h4 class="modal-title" id="upload-Image-label"><?= gettext("Upload Photo") ?></h4>
 			</div>
 			<div class="modal-body">
-				<input type="file" name="file" size="50" />
+				<input type="file" name="file" size="50" /> <br/>
+				Max Photo size: <?= ini_get('upload_max_filesize') ?>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -836,16 +829,27 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 	</div>
 </div>
 <script language="javascript">
+var person_ID = <?= $iPersonID ?>;
 	function GroupRemove( Group, Person ) {
 		var answer = confirm (<?= "'",  "'" ?>)
 		if ( answer )
 			$.ajax({
                 method: "POST",
-                url:    "/api/groups/"+Group+"/removeuser/"+Person
+                url:    window.CRM.root + "/api/groups/"+Group+"/removeuser/"+Person
             }).done(function (data){
                location.reload(); 
             });
 	}
+    
+    function GroupAdd (Group, Person) {
+        var GroupAssignID = $("select[name='GroupAssignID'] option:selected").val();
+        $.ajax({
+                method: "POST",
+                url:    "/api/groups/"+GroupAssignID+"/adduser/"+person_ID
+            }).done(function (data){
+               location.reload(); 
+            });
+    }
 </script>
 
 <?php require "Include/Footer.php" ?>

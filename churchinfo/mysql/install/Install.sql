@@ -40,7 +40,7 @@ CREATE TABLE `autopayment_aut` (
   UNIQUE KEY `aut_ID` (`aut_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Dumping data for table `autopayment_aut`
 -- 
 

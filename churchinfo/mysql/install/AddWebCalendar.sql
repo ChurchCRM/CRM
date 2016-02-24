@@ -7,3 +7,4 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 
 INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES
 (71, 'sWebCalendarPath', '/WebCalendar-1.2.7', 'text', '/WebCalendar-1.2.7', '', 'General', NULL);
+ 

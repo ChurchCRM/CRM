@@ -1,6 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+##################################################
+#
+# Startup vagrant on 192.168.33.10
+# Map the churchinfo dir to the default httpd www/public dir
+
+
 Vagrant.configure("2") do |config|
 
   config.vm.box = "scotch/box"
