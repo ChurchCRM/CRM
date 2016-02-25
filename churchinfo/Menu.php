@@ -27,6 +27,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
+require 'service/FinancialService.php';
+
+$financialService = new FinancialService();
 
 require_once "Service/DashboardService.php";
 
@@ -46,6 +49,8 @@ $dashboardService = new DashboardService();
 $personCount = $dashboardService->getPersonCount();
 $familyCount = $dashboardService->getFamilyCount();
 $sundaySchoolStats = $dashboardService->getSundaySchoolStats();
+$depositData = $financialService->getDeposits();  //Get the deposit data from the financialService
+$shouldDisplayDeposits = $_SESSION['bFinance'] && count($depositData) > 1;  //Determine whether or not we should display the deposit line graph
 
 
 // Set the page title
@@ -53,6 +58,7 @@ $sPageTitle = "Welcome to <b>Church</b>CRM";
 
 require 'Include/Header.php';
 ?>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
 
 <!-- Small boxes (Stat box) -->
 <div class="row">
@@ -133,6 +139,30 @@ require 'Include/Header.php';
         </div>
     </div><!-- ./col -->
 </div><!-- /.row -->
+
+<?php 
+if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's display the deposit line chart
+{ 
+?>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <i class="ion ion-cash"></i>
+                <h3 class="box-title">Deposit Tracking</h3>
+                <div class="box-tools pull-right">
+                    <div id="deposit-graph" class="chart-legend"></div>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
+            </div>
+            </div>
+    </div>
+</div>
+<?php 
+}  //END IF block for Finance permissions to include HTML for Deposit Chart
+ ?>
 
 <div class="row">
     <div class="col-lg-6 col-md-5 col-sm-4">
@@ -244,7 +274,7 @@ require 'Include/Header.php';
                         <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
-                                <img src="<?= $personService->getPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="85" height="85" /><br/>
+                                <img src="<?= $personService->getPhoto($row['per_ID']) ?>" alt="User Image" class="user-image" width="85" height="85" /><br/>
                                 <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1) ?></a>
                                 <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false) ?></span>
                             </li>
@@ -257,4 +287,41 @@ require 'Include/Header.php';
     </div>
 </div>
 
-<?php require 'Include/Footer.php' ?>
+<!-- this page specific inline scripts -->
+<script>
+<?php 
+if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's display the deposit line chart
+{ 
+?>
+    //---------------
+    //- LINE CHART  -
+    //---------------
+    var lineDataRaw = <?= $financialService->getDepositJSON($depositData) ?>;
+
+    var lineData = {
+        labels: [],
+        datasets: [
+            {
+                data: []
+            }     
+        ]
+    };
+    
+    $.each(lineDataRaw.deposits, function(i, val) {
+        lineData.labels.push(val.dep_Date);
+        lineData.datasets[0].data.push(val.dep_Total);
+    });
+
+    var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
+
+    var lineChart = new Chart(lineChartCanvas).Line(lineData);
+<?php 
+}  //END IF block for Finance permissions to include JS for Deposit Chart
+ ?>
+</script>
+
+
+<?php
+require 'Include/Footer.php';
+?>
+
