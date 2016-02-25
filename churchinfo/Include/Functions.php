@@ -105,8 +105,8 @@ function checkAllowedURL()
         $validURL = false;
         foreach ($URL as $value)
         {
-            $base = substr($value, 0, -strlen('/Login.php'));
-            if (strpos($currentURL, $base) === 0)
+            $base = substr($value, 0, -strlen('/'));
+            if (strpos($currentURL, $value) === 0)
             {
                 $validURL = true;
                 break;
