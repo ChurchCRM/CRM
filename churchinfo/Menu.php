@@ -27,7 +27,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
-require 'service/FinancialService.php';
+require 'Service/FinancialService.php';
 
 $financialService = new FinancialService();
 
