@@ -41,6 +41,32 @@ global $sPageTitle, $sRootPath;
     ?><title>ChurchCRM: <?= $sPageTitle ?></title><?php
 }
 
+function Header_error_modal() 
+{
+?>
+    <!-- API Call Error Modal -->
+    <div id="APIError" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">ERROR!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Error making API Call to: <span id="APIEndpoint"></span></p>
+                    <p>Error text: <span id="APIErrorText"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Delete Confirm Modal -->
+<?php
+}
+
 function Header_body_scripts()
 {
     global $sLanguage, $bExportCSV, $sMetaRefresh, $bRegistered, $sHeader, $sGlobalMessage;
