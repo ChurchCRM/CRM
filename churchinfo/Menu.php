@@ -49,7 +49,8 @@ $dashboardService = new DashboardService();
 $personCount = $dashboardService->getPersonCount();
 $familyCount = $dashboardService->getFamilyCount();
 $sundaySchoolStats = $dashboardService->getSundaySchoolStats();
-$depositData = $financialService->getDeposits();
+$depositData = $financialService->getDeposits();  //Get the deposit data from the financialService
+$shouldDisplayDeposits = $_SESSION['bFinance'] && count($depositData) > 1;  //Determine whether or not we should display the deposit line graph
 
 
 // Set the page title
@@ -140,7 +141,7 @@ require 'Include/Header.php';
 </div><!-- /.row -->
 
 <?php 
-if ($_SESSION['bFinance'] && count($depositData) > 1) // If the user has Finance permissions, then let's display the deposit line chart
+if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's display the deposit line chart
 { 
 ?>
 <div class="row">
@@ -289,7 +290,7 @@ if ($_SESSION['bFinance'] && count($depositData) > 1) // If the user has Finance
 <!-- this page specific inline scripts -->
 <script>
 <?php 
-if ($_SESSION['bFinance'] && count($depositData) > 1) // If the user has Finance permissions, then let's display the deposit line chart
+if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's display the deposit line chart
 { 
 ?>
     //---------------
