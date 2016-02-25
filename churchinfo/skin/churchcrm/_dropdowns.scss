@@ -1,8 +1,4 @@
-/* Make tables scrollable in x-direction */
-table.horizontal-scroll {
-    display: block;
-    overflow-x: scroll;
-}
+
 @media (max-width: 767px) {
     .skin-blue .main-header .navbar .dropdown-menu li a {
         color: #000000;
