@@ -42,10 +42,20 @@ $MenuFirst = 1;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script>
+    $(document).ajaxError(function(evt,xhr,settings) {
+        if (evt.severity > 0)
+        {
+            $(".modal").modal('hide');
+            $("#APIError").modal('show');
+            $("#APIEndpoint").text("[" + settings.type + "] " + settings.url); 
+            $("#APIErrorText").text(xhr.responseText);
+        }
+    });
+    </script>
 
 <?php
     require 'Header-HTML-Scripts.php';
-
     Header_head_metatag();
 ?>
 </head>
@@ -53,6 +63,7 @@ $MenuFirst = 1;
     <!-- Site wrapper -->
     <div class="wrapper">
     <?php
+        Header_error_modal();
         Header_body_scripts();
         Header_body_menu();
     ?>
