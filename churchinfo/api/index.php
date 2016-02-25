@@ -501,11 +501,11 @@ function getJSONFromApp($app)
  */
 function exceptionToJSON($e)
 {   
-    if(!isset($e->customSeverity)  // if there is no custom severity in the passed exception object, assign a "1"
+    if(!isset($e->customSeverity))  // if there is no custom severity in the passed exception object, assign a "1"
     {
         $e->customSeverity = 1;  //Use a custom severity code so that user-side code can determine what level of error should generate a UI Modal dialog.  Anything >0 currently causes a modal.
     }
-    if(!isset($e->responseCode) // if there is no response code, assume unhandled exception (500)
+    if(!isset($e->responseCode)) // if there is no response code, assume unhandled exception (500)
     {
         $e->responseCode = 500;
     }
