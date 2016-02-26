@@ -67,9 +67,9 @@ if (isset ($_POST['Action']) && isset ($_POST['EID'])) {
 	{
 	    $sSQL = "DELETE FROM events_event WHERE event_id = ".$eID." LIMIT 1";
 	    RunQuery($sSQL);
-	    
+
 	    $sSQL = "DELETE FROM eventcounts_evtcnt WHERE evtcnt_eventid = ".$eID;
-	    RunQuery($sSQL);	
+	    RunQuery($sSQL);
 	}
 	elseif ($action == "Activate" && $eID)
 	{
@@ -85,11 +85,11 @@ $rsOpps = RunQuery($sSQL);
 $numRows = mysql_num_rows($rsOpps);
 
 ?>
-<table cellpadding="1" align="center" cellspacing="0" width="100%">
+<table cellpadding="1" align="center" cellspacing="0" class='table'>
 <tr>
-<td align="center" width="50%"><strong><?= gettext("Select Event Types To Display") ?></strong><br>
+<td align="center" width="50%"><p><strong><?= gettext("Select Event Types To Display") ?></strong></p>
     <form name="EventTypeSelector" method="POST" action="ListEvents.php">
-       <select name="WhichType" onchange="javascript:this.form.submit()">
+       <select name="WhichType" onchange="javascript:this.form.submit()" class='form-control'>
         <option value="All">All</option>
         <?php
         for ($r = 1; $r <= $numRows; $r++)
@@ -111,7 +111,7 @@ if($eType=="All"){
   $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) FROM events_event WHERE YEAR(events_event.event_start)";
 } else {
   $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) FROM events_event WHERE events_event.event_type = '$eType' AND YEAR(events_event.event_start)";
-}  
+}
 $rsOpps = RunQuery($sSQL);
 $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
 @extract($aRow); // @ needed to suppress error messages when no church events
@@ -125,8 +125,8 @@ for($r=1; $r<=$numRows; $r++){
 
 ?>
 
-<td align="center" width="50%"><strong><?= gettext("Display Events in Year") ?></strong><br>
-       <select name="WhichYear" onchange="javascript:this.form.submit()" >
+<td align="center" width="50%"><p><strong><?= gettext("Display Events in Year") ?></strong></p>
+       <select name="WhichYear" onchange="javascript:this.form.submit()" class='form-control'>
         <?php
         for ($r = 1; $r <= $numRows; $r++)
         {
@@ -136,8 +136,8 @@ for($r=1; $r<=$numRows; $r++){
          }
          ?>
          </select>
-    </form>        
-</td>  
+    </form>
+</td>
 </tr>
 </table>
 <?php
@@ -193,10 +193,10 @@ foreach ($allMonths as $mKey => $mVal) {
                 $aEventStartDateTime[$row] = $event_start;
                 $aEventEndDateTime[$row] = $event_end;
                 $aEventStatus[$row] = $inactive;
-                // get the list of attend-counts that exists in event_attend for this 
+                // get the list of attend-counts that exists in event_attend for this
                 $attendSQL="SELECT * FROM event_attend WHERE event_id=$event_id";
                 $attOpps = RunQuery($attendSQL);
-                if($attOpps) 
+                if($attOpps)
                   $attNumRows[$row] = mysql_num_rows($attOpps);
                 else
                   $attNumRows[$row]=0;
@@ -204,20 +204,17 @@ foreach ($allMonths as $mKey => $mVal) {
         }
 
 // Construct the form
-?>
-<table cellpadding="4" align="center" cellspacing="0" width="100%">
-
-<?php
-
 //Set the initial row color
 $sRowClass = "RowColorA";
 
 if ($numRows > 0)
 {
 ?>
-       <caption>
-         <h3><?= gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
-       </caption>
+<div class='box'>
+  <div class='box-header'>
+    <h3 class='box-title'><?= gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
+  </div>
+<table class='table'>
          <tr class="TableHeader">
            <td width="15%"><strong><?= gettext("Event Type") ?></strong></td>
            <td width="20%"><strong><?= gettext("Event Title") ?><br></strong>
@@ -246,31 +243,31 @@ if ($numRows > 0)
            <td>
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
-           <?php 
-// RETRIEVE THE list of counts associated with the current event 
+           <?php
+// RETRIEVE THE list of counts associated with the current event
 //
-                $cvSQL= "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$aEventID[$row]' ORDER BY evtcnt_countid ASC"; 
+                $cvSQL= "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$aEventID[$row]' ORDER BY evtcnt_countid ASC";
 //        echo $cvSQL;
                 $cvOpps = RunQuery($cvSQL);
                 $aNumCounts = mysql_num_rows($cvOpps);
 //        echo "numcounts = {$aNumCounts}\n\l";
                 if($aNumCounts) {
-                
+
                 for($c = 0; $c <$aNumCounts; $c++){
                   $cRow = mysql_fetch_array($cvOpps, MYSQL_BOTH);
                   extract($cRow);
                   $cCountID[$c] = $evtcnt_countid;
-                  $cCountName[$c] = $evtcnt_countname;     
+                  $cCountName[$c] = $evtcnt_countname;
                   $cCount[$c]= $evtcnt_countcount;
-                  $cCountNotes = $evtcnt_notes; 
+                  $cCountNotes = $evtcnt_notes;
 //                  $cCountSum[$c]+= $evtcnt_countcount;
                   ?>
                   <td align="center">
                   <span class="SmallText">
                     <strong><?= $evtcnt_countname ?></strong>
                     <br><?= $evtcnt_countcount ?></span>
-                  </td> 
-                  <?php         
+                  </td>
+                  <?php
                 }
                 } else {
                   ?>
@@ -278,49 +275,49 @@ if ($numRows > 0)
                     <span class="SmallText">
                     <strong><?= gettext("No Attendance Recorded") ?></strong>
                     </span>
-                  </td> 
-                  <?php     
-//                  $aAvgRows -=1;                                   
-                }       
+                  </td>
+                  <?php
+//                  $aAvgRows -=1;
+                }
            ?>
            </tr>
            </table>
            </td>
            <td><span class="SmallText"><?= FormatDate($aEventStartDateTime[$row],1) ?></span></td>
-           
+
            <td class="SmallText" align="center"><?= ($aEventStatus[$row] != 0 ? "No":"Yes") ?></span></td>
-           
+
           <td><span class="SmallText">
           <form name="EditAttendees" action="EditEventAttendees.php" method="POST">
           <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
           <input type="hidden" name="EName" value="<?= $aEventTitle[$row] ?>">
           <input type="hidden" name="EDesc" value="<?= $aEventDesc[$row] ?>">
           <input type="hidden" name="EDate" value="<?= FormatDate($aEventStartDateTime[$row],1) ?>">
-          <input type="submit" name="Action" value="<?= gettext("Attendees(".$attNumRows[$row].")") ?>" class="btn" >
+          <input type="submit" name="Action" value="<?= gettext("Attendees(".$attNumRows[$row].")") ?>" class="btn btn-default btn-sm" >
              </form></span>
-           </td>           
-           
+           </td>
+
            <td align="center"><span class="SmallText">
              <form name="EditEvent" action="EventEditor.php" method="POST">
                <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-               <input class="SmallText" type="submit" name="Action" value="<?= gettext("Edit") ?>" class="btn">
+               <input type="submit" name="Action" value="<?= gettext("Edit") ?>" class="btn btn-default btn-sm">
              </form></span>
            </td>
            <td><span class="SmallText">
              <form name="DeleteEvent" action="ListEvents.php" method="POST">
                <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-               <input class="SmallText" type="submit" name="Action" value="<?= gettext("Delete") ?>" class="btn" onClick="return confirm('Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: <?=  $aEventID[$row] ?>')">
+               <input type="submit" name="Action" value="<?= gettext("Delete") ?>" class="btn btn-default btn-sm" onClick="return confirm('Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: <?=  $aEventID[$row] ?>')">
              </form></span>
           </td>
 
          </tr>
 <?php
          } // end of for loop for # rows for this month
-         
+
 // calculate averages if this is a single type list
 if ($eType != "All" && $aNumCounts >0){
     $avgSQL="SELECT evtcnt_countid, evtcnt_countname, AVG(evtcnt_countcount) from eventcounts_evtcnt, events_event WHERE eventcounts_evtcnt.evtcnt_eventid=events_event.event_id AND events_event.event_type='$eType' AND MONTH(events_event.event_start)='$mVal' GROUP BY eventcounts_evtcnt.evtcnt_countid ASC ";
-    
+
     $avgOpps = RunQuery($avgSQL);
     $aAvgRows = mysql_num_rows($avgOpps);
 
@@ -330,7 +327,7 @@ if ($eType != "All" && $aNumCounts >0){
     <td>
        <table width="100%" cellpadding="0" cellspacing="0" border="0">
        <tr>
-      <?php 
+      <?php
       // calculate and report averages
       for($c = 0; $c <$aAvgRows; $c++){
         $avgRow = mysql_fetch_array($avgOpps, MYSQL_BOTH);
@@ -342,8 +339,8 @@ if ($eType != "All" && $aNumCounts >0){
           <span class="SmallText">
           <strong>AVG<br><?= $avgName ?></strong>
           <br><?= sprintf("%01.2f",$avgAvg) ?></span>
-        </td> 
-        <?php         
+        </td>
+        <?php
       }
       ?>
       </tr>
@@ -351,23 +348,22 @@ if ($eType != "All" && $aNumCounts >0){
       </td>
       <td class="TextColumn" colspan="3"></td>
       </tr>
-<?php } 
+<?php }
 ?>
          <tr><td class="TextColumn" colspan="6">&nbsp;</td></tr>
+       </table>
+     </div>
 <?php
-    }
-?>
-      </table>
-<?php
+  }
 } // end for-each month loop
 ?>
-             <table width="100%">
-                <tr class="<?= $sRowClass ?>">
-                 <td align="center" valign="bottom">
-                   <input type="button" Name="Action" value="<?= gettext("Add New Event") ?>" class="btn" onclick="javascript:document.location='EventNames.php';">
-                 </td>
-               </tr>
-             </table>
+
+<div class='text-center'>
+  <a href="EventEditor.php" class='btn btn-primary'>
+    <?= gettext("Add New Event") ?>
+  </a>
+</div>
+
 <?php
 require 'Include/Footer.php';
 ?>
