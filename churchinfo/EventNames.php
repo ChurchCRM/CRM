@@ -22,6 +22,7 @@
 
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Include/RenderFunctions.php";
 
 if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent'])
 {
@@ -221,20 +222,12 @@ if ($numRows > 0)
               <strong><?= gettext("RECURRANCE PATTERN") ?></strong>
               <div class='row'>
                 <div class='col-xs-12'>
-                  <label class="c-radio">
-                    <input class="SmallText" type="radio" name="newEvtTypeRecur" value="none" />
-                    <div class='c-indicator'></div>
-                    None
-                  </label>
+                  <?php $render->Radio('None', 'newEvtTypeRecur', 'none'); ?>
                 </div>
               </div>
               <div class='row'>
                 <div class='col-xs-5'>
-                  <label class="c-radio">
-                    <input class="SmallText" type="radio" name="newEvtTypeRecur" value="weekly" />
-                    <div class='c-indicator'></div>
-                    Weekly
-                  </label>
+                  <?php $render->Radio('Weekly', 'newEvtTypeRecur', 'weekly'); ?>
                 </div>
                 <div class='col-xs-7'>
                   <select name="newEvtRecurDOW" size="1" class='form-control pull-left'>
@@ -250,11 +243,7 @@ if ($numRows > 0)
               </div>
               <div class='row'>
                 <div class='col-xs-5'>
-                  <label class="c-radio">
-                    <input class="SmallText" type="radio" name="newEvtTypeRecur" value="monthly" />
-                    <div class='c-indicator'></div>
-                    Monthly
-                  </label>
+                  <?php $render->Radio('Monthly', 'newEvtTypeRecur', 'monthly'); ?>
                 </div>
                 <div class='col-xs-7'>
                   <select name="newEvtRecurDOM" size="1" class='form-control pull-left'>
@@ -272,11 +261,7 @@ if ($numRows > 0)
               </div>
               <div class='row'>
                 <div class='col-xs-5'>
-                  <label class='c-radio'>
-                    <input class="SmallText" type="radio" name="newEvtTypeRecur" value=yearly>
-                    <div class='c-indicator'></div>
-                    Yearly
-                  </label>
+                  <?php $render->Radio('Yearly', 'newEvtTypeRecur', 'yearly'); ?>
                 </div>
                 <div class='col-xs-7'>
                   <input type="text" class="form-control" name="newEvtRecurDOY" maxlength="10" id="nSD" size="11" placeholder='YYYY-MM-DD' data-provide="datepicker" data-format='mm/dd/yyyy' />
