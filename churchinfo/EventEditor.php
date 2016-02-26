@@ -27,6 +27,7 @@
 
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Include/RenderFunctions.php";
 
 $sPageTitle = gettext("Church Event Editor");
 
@@ -551,16 +552,8 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Status:") ?></td>
     <td colspan="3" class="TextColumn">
-			<label class='c-radio'>
-				<input type="radio" name="EventStatus" value="0"<?= $iEventStatus == 0 ? " checked" : '' ?> />
-				<div class='c-indicator'></div>
-				Inactive
-			</label>
-			<label class='c-radio'>
-				<input type="radio" name="EventStatus" value="1"<?= $iEventStatus == 1 ? " checked" : '' ?> />
-				<div class='c-indicator'></div>
-				Active
-			</label>
+      <?php $render->Radio("Inactive", "EventStatus", 0, ($iEventStatus == 0)); ?>
+      <?php $render->Radio("Active",   "EventStatus", 1, ($iEventStatus == 1)); ?>
       <?php if ( $bStatusError ) echo "<div><span style=\"color: red;\">" . gettext("Is this Active or Inactive?") . "</span></div>"; ?>
     </td>
   </tr>
