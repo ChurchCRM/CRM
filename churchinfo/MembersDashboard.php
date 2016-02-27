@@ -116,7 +116,7 @@ $rsKidsGender = RunQuery($sSQL);
     </div><!-- ./col -->
 </div><!-- /.row -->
 <div class="row">
-    <div class="col-lg-6 col-xs-12">
+    <div class="col-lg-6">
         <div class="box box-primary">
             <div class="box-header with-border">
                 <i class="fa fa-pie-chart"></i>
@@ -151,7 +151,7 @@ $rsKidsGender = RunQuery($sSQL);
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-xs-12">
+    <div class="col-lg-6">
         <div class="box box-primary">
             <div class="box-header with-border">
                 <i class="fa fa-bar-chart-o"></i>

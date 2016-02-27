@@ -197,7 +197,7 @@ require 'Include/Header.php';
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-6 col-xs-12"">
+    <div class="col-lg-6"">
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
@@ -226,7 +226,7 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-xs-12"">
+    <div class="col-lg-6"">
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
