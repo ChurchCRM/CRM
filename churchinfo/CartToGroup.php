@@ -18,6 +18,9 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require_once "Service/GroupService.php";
+
+$groupService = new GroupService();
 
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups'])
@@ -39,7 +42,7 @@ if (isset($_POST["Submit"]) && count($_SESSION['aPeopleCart']) > 0) {
 	// Loop through the session array
 	$iCount = 0;
 	while ($element = each($_SESSION['aPeopleCart'])) {
-		AddToGroup($_SESSION['aPeopleCart'][$element['key']],$iGroupID,$iGroupRole);
+        $groupService->addUserToGroup($iGroupID, $_SESSION['aPeopleCart'][$element['key']], $iGroupRole);
 		$iCount += 1;
 	}
 
