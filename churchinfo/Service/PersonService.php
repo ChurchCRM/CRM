@@ -28,31 +28,21 @@ class PersonService
         return "{id: $id, fName: $per_FirstName}";
     }
 
-    function getPhoto($id,$photoSource=false) {
+    function getPhoto($id) {
         if ($id != "") {
             $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email FROM person_per WHERE per_ID =' . $id;
             $person = RunQuery($sSQL);
             extract(mysql_fetch_array($person));
             if ($per_ID != "") {
                 $photoFile = $this->getUploadedPhoto($per_ID);
-                $source="uploaded";
                 if ($photoFile == "" && $per_Email != "") {
                     $photoFile = $this->getGravatar($per_Email);
-                    $source="gravatar";
                 }
 
                 if ($photoFile == "") {
                     $photoFile = $this->getDefaultPhoto($per_Gender, "");
-                    $source="default";
                 }
-                if ($photoSource)
-                {
-                    return $source;
-                }
-                else
-                {
-                    return $photoFile;
-                }
+                return $photoFile;
             }
         }
 
