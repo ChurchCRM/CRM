@@ -10,12 +10,12 @@ if (!isset($_SESSION['iUserID'])) {
 }
 
 // Services
-require_once "../service/PersonService.php";
-require_once "../service/FamilyService.php";
-require_once "../service/DataSeedService.php";
-require_once "../service/FinancialService.php";
-require_once "../service/GroupService.php";
-require_once '../service/SystemService.php';
+require_once "../Service/PersonService.php";
+require_once "../Service/FamilyService.php";
+require_once "../Service/DataSeedService.php";
+require_once "../Service/FinancialService.php";
+require_once "../Service/GroupService.php";
+require_once '../Service/SystemService.php';
 
 require_once '../vendor/Slim/slim/Slim/Slim.php';
 
@@ -500,8 +500,17 @@ function getJSONFromApp($app)
  * @param $e
  */
 function exceptionToJSON($e)
-{
-    return '{"error":{"text":' . $e->getMessage() . ' !}}';
+{   
+    if(!isset($e->customSeverity))  // if there is no custom severity in the passed exception object, assign a "1"
+    {
+        $e->customSeverity = 1;  //Use a custom severity code so that user-side code can determine what level of error should generate a UI Modal dialog.  Anything >0 currently causes a modal.
+    }
+    if(!isset($e->responseCode)) // if there is no response code, assume unhandled exception (500)
+    {
+        $e->responseCode = 500;
+    }
+    http_response_code($e->responseCode);
+    return '{"error":{"text":"' . $e->getMessage() . '","severity":"'.$e->customSeverity.'"}}';
 }
 
 $app->run();

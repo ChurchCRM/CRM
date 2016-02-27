@@ -28,7 +28,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/GeoCoder.php";
 require 'Include/PersonFunctions.php';
-require 'service/MailchimpService.php';
+require 'Service/MailchimpService.php';
 
 $mailchimp = new MailChimpService();
 //Set the page title
@@ -797,6 +797,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 				</div>
 				<div class="modal-body">
 					<input type="file" name="file" size="50" />
+					Max Photo size: <?= ini_get('upload_max_filesize') ?>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

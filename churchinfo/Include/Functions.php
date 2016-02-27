@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__).'/../service/PersonService.php';
+require_once dirname(__FILE__).'/../Service/PersonService.php';
 
 /*******************************************************************************
 *
@@ -214,7 +214,7 @@ if (isset($_GET["ProfileImageUploaded"])) {
 
 if (isset($_GET["ProfileImageUploadedError"])) {
     $sGlobalMessage = gettext("Profile Image upload Error.");
-    $sGlobalMessageClass = "error";
+    $sGlobalMessageClass = "danger";
 }
 
 

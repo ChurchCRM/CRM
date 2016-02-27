@@ -26,5 +26,6 @@ before_script:
 # use the $DB env variable to determine the phpunit.xml to use
 script: 
   - if [[ "$DB" == "mysql" ]]; then mysql churchcrm_test < ./churchinfo/mysql/install/Install.sql -uroot; fi
+  - tests/LineEndings.sh
   - phpunit --configuration phpunit_$DB.xml --coverage-text
 

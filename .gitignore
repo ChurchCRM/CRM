@@ -11,6 +11,8 @@
 *.iws
 
 #Exclude composer vendor folders
+vendor
+composer.lock
 churchinfo/vendor/bin
 churchinfo/composer.lock
 churchinfo/vendor/composer
@@ -24,3 +26,6 @@ churchinfo/vendor/almasaeed2010/adminlte/pages/
 # Uploaded Images
 churchinfo/Images/Family/thumbnails/
 churchinfo/Images/Person/thumbnails/
+
+# SASS
+.sass-cache

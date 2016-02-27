@@ -50,14 +50,8 @@ $URL[0] = 'http://192.168.33.10/Default.php';
 
 // Set error reporting
 
-// Turn off all error reporting
+// Turn off (0)/ on (-1) all error reporting 
 error_reporting(0);
-
-// Turn on all error reporting
-
-error_reporting(-1);
-
-
 
 // Report all errors except E_NOTICE
 // error_reporting(E_STRICT & E_ALL & ~E_NOTICE);

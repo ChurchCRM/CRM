@@ -23,7 +23,7 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'service/GroupService.php';
+require 'Service/GroupService.php';
 
 //Set the page title
 $sPageTitle = gettext('Group View');
@@ -101,15 +101,13 @@ $numRows = mysql_num_rows($rsPropList);
 
 require 'Include/Header.php'; ?>
 
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 <div class="box">
     <div class="box-header with-border">
@@ -631,7 +629,7 @@ $(document).ready(function() {
     $(".personSearch").on("select2:select",function (e) { 
         $.ajax({
             method: "POST",
-            url: "/api/groups/<?= $iGroupID ?>/adduser/"+e.params.data.objid,
+            url: window.CRM.root + "/api/groups/<?= $iGroupID ?>/adduser/"+e.params.data.objid,
             dataType: "json"
         }).done(function (data){
            var person = data[0]; 
@@ -661,7 +659,7 @@ function initHandlers()
         console.log(userid);
         $.ajax({
             method: "POST",
-            url: "/api/groups/<?= $iGroupID ?>/removeuser/"+userid,
+            url: window.CRM.root + "/api/groups/<?= $iGroupID ?>/removeuser/"+userid,
             dataType: "json"
         }).done(function(data){
             dataT.row(function(idx,data,node) { if  (data.per_ID == userid){return true;} } ).remove();
@@ -683,7 +681,7 @@ function initHandlers()
         var changeingMemberID = $("#changeingMemberID").val();
         $.ajax({
             method: "POST",
-            url: "/api/groups/<?= $iGroupID ?>/userRole/" + changeingMemberID,
+            url: window.CRM.root + "/api/groups/<?= $iGroupID ?>/userRole/" + changeingMemberID,
             data: JSON.stringify({'roleID': $("#newRoleSelection option:selected").val()}),
             dataType: "json"
         }).done(function(data){
@@ -699,7 +697,7 @@ function initHandlers()
       console.log(e);        
       $.ajax({
             method: "DELETE",
-            url: "/api/groups/<?= $iGroupID ?>",
+            url: window.CRM.root + "/api/groups/<?= $iGroupID ?>",
             dataType: "json"
         }).done(function(data){
             console.log(data);
