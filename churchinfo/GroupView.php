@@ -591,7 +591,7 @@ $(document).ready(function() {
         minimumInputLength: 2,
         ajax: {
             url: function (params){
-                    return window.CRM.root "/api/persons/search/"+params.term;
+                    return window.CRM.root + "/api/persons/search/"+params.term;
             },
             dataType: 'json',
             delay: 250,
