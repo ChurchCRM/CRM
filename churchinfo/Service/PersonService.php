@@ -40,7 +40,6 @@ class PersonService
                 if ($photoFile == "") {
                     $photoFile = $this->getDefaultPhoto($per_Gender, "");
                 }
-
                 return $photoFile;
             }
         }
@@ -68,7 +67,6 @@ class PersonService
         return $deleted;
     }
 
-    private
     function getUploadedPhoto($personId)
     {
         $validextensions = array("jpeg", "jpg", "png");

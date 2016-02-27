@@ -200,7 +200,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 		<?php
 		if ($bOkToEdit) {
 			echo "<li><a href=\"#\" data-toggle=\"modal\" data-target=\"#upload-image\">". gettext("Upload Photo") ."</a></li>";
-			echo "<li><a href=\"#\" data-toggle=\"modal\" data-target=\"#confirm-delete-image\">". gettext("Delete Photo") ."</a></li>";
+            if ($personService->getUploadedPhoto($iPersonID) !== "")
+            {
+                echo "<li><a href=\"#\" data-toggle=\"modal\" data-target=\"#confirm-delete-image\">". gettext("Delete Photo") ."</a></li>";
+            }
 			echo "<li class=\"divider\"></li>";
 
 		} ?>
