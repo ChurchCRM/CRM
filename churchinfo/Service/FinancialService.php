@@ -14,7 +14,7 @@ class FinancialService {
 
     public function __construct() 
     {
-        $this->baseURL = $_SESSION['sURLPath'];
+        $this->baseURL = $_SESSION['sRootPath'];
         $this->personService = new PersonService();
         $this->familyService = new FamilyService();
     }

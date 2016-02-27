@@ -1476,11 +1476,11 @@ msgstr "Импорт данных успешным."
 msgid "persons were imported"
 msgstr "человек были импортированы"
 
-#: Default.php:100 Default.php:165
+#: Login.php:100 Login.php:165
 msgid "Invalid login or password"
 msgstr "Неверный Логин или пароль"
 
-#: Default.php:153
+#: Login.php:153
 msgid ""
 "Too many failed logins: your account has been locked.  Please contact an "
 "administrator."
@@ -1488,23 +1488,23 @@ msgstr ""
 "Слишком много неудачных попыток: ваша учетная запись была заблокирована. "
 "Пожалуйста, свяжитесь с администратором."
 
-#: Default.php:349
+#: Login.php:349
 msgid "ChurchInfo: Login"
 msgstr "ChurchInfo: Войти"
 
-#: Default.php:393
+#: Login.php:393
 msgid "Please Login"
 msgstr "Пожалуйста, войдите"
 
-#: Default.php:413
+#: Login.php:413
 msgid "Enter your user name:"
 msgstr "Введите имя пользователя:"
 
-#: Default.php:420
+#: Login.php:420
 msgid "Enter your password:"
 msgstr "Введите пароль:"
 
-#: Default.php:428
+#: Login.php:428
 msgid "Login"
 msgstr "Вход"
 

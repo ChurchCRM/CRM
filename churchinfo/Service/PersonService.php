@@ -13,9 +13,7 @@ class PersonService
 
     public function __construct()
     {
-        global $sRootPath;
-
-        $this->baseURL = $sRootPath;
+        $this->baseURL = $_SESSION['sRootPath'];
         // $this->personQuery = = new \ChurchCRM\members\PersonQuery();
     }
 
