@@ -8,7 +8,7 @@ class FamilyService {
     }
     
     function search($searchTerm) {
-        $fetch = 'SELECT fam_ID, fam_Name, fam_City, fam_State FROM family_fam WHERE family_fam.fam_Name LIKE \'%'.$searchTerm.'%\' LIMIT 15';
+        $fetch = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE family_fam.fam_Name LIKE \'%'.$searchTerm.'%\' LIMIT 15';
         $result=mysql_query($fetch);
         $families = array();
         while($row=mysql_fetch_array($result)) {
@@ -17,11 +17,11 @@ class FamilyService {
             $row_array['street']=$row['fam_Address1'];
             $row_array['city']=$row['fam_City'];
             $familyDisplayNameArray = array();
-            array_push($row['fam_Name']);
+            array_push($familyDisplayNameArray, $row['fam_Name']);
             if ($row['fam_Address1'] != "") {
-                array_push($row['fam_Address1']);
+                array_push($familyDisplayNameArray, $row['fam_Address1']);
             }
-            array_push($row['fam_City']);
+            array_push($familyDisplayNameArray, $row['fam_City']);
             $row_array['displayName']= join(" - ",array_filter($familyDisplayNameArray));
             $row_array['uri'] = $this->getViewURI($row['fam_ID']);
             array_push($families,$row_array);
