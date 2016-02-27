@@ -56,7 +56,6 @@ $MenuFirst = 1;
     }
 
     $(document).ajaxError(function(evt,xhr,settings) {
-        console.log("Handling Error");
         if ( xhr.status== 400 ) {
             displayMessage("[" + settings.type + "] " + settings.url, "Invalid Request.");
         }
