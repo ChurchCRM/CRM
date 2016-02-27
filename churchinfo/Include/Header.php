@@ -47,13 +47,13 @@ $MenuFirst = 1;
     Header_head_metatag();
 ?>
 <script>
-function displayMessage(endpoint,message)
-{
-    $(".modal").modal('hide');
-    $("#APIError").modal('show');
-    $("#APIEndpoint").text(endpoint); 
-    $("#APIErrorText").text(message);
-}
+    function displayMessage(endpoint,message)
+    {
+        $(".modal").modal('hide');
+        $("#APIError").modal('show');
+        $("#APIEndpoint").text(endpoint); 
+        $("#APIErrorText").text(message);
+    }
 
     $(document).ajaxError(function(evt,xhr,settings) {
         console.log("Handling Error");
@@ -65,8 +65,9 @@ function displayMessage(endpoint,message)
             displayMessage("[" + settings.type + "] " + settings.url, xhr.responseText);
         }
     });
-    </script>
+</script>
 </head>
+
 <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
