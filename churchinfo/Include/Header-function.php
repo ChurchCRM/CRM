@@ -73,7 +73,6 @@ function Header_body_scripts()
     global $bLockURL, $URL, $sRootPath;
 
     checkAllowedURL();
-
  ?>
 
     <script type="text/javascript" src="<?= $sRootPath . "/" ?>Include/jscalendar/calendar.js"></script>

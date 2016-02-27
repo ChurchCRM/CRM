@@ -58,7 +58,6 @@ $MenuFirst = 1;
     require 'Header-HTML-Scripts.php';
     Header_head_metatag();
 ?>
-
 </head>
 <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
     <!-- Site wrapper -->
