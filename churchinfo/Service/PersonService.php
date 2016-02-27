@@ -69,7 +69,6 @@ class PersonService
         return $deleted;
     }
 
-    private
     function getUploadedPhoto($personId)
     {
         $validextensions = array("jpeg", "jpg", "png");
