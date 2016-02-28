@@ -135,7 +135,7 @@ require 'Include/Header.php';
 </div><!-- /.row -->
 
 <div class="row">
-    <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-6">
         <div class="box box-solid">
             <div class="box-header">
                 <i class="ion ion-person-add"></i>
@@ -165,7 +165,7 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-6">
         <div class="box box-solid">
             <div class="box-header">
                 <i class="fa fa-check"></i>
