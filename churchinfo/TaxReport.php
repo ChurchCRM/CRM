@@ -42,16 +42,16 @@ if (isset($_POST["Submit"])) {
 <table cellpadding="3" align="left">
 
    <tr>
-      <td class="LabelColumn"><?php echo gettext("Calendar Year:"); ?></td>
-		<td class="TextColumn"><input type="text" name="Year" id="Year" value="<?php echo $iYear; ?>"></td>
+      <td class="LabelColumn"><?= gettext("Calendar Year:") ?></td>
+		<td class="TextColumn"><input type="text" name="Year" id="Year" value="<?= $iYear ?>"></td>
    </tr>
 
 </table>
 
 <table cellpadding="3" align="left">
    <tr>
-      <input type="submit" class="btn" name="Submit" <?php echo 'value="' . gettext("Create Report") . '"'; ?>>
-      <input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';">
+      <input type="submit" class="btn" name="Submit" value="<?= gettext("Create Report") ?>">
+      <input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel") ?>" onclick="javascript:document.location='Menu.php';">
    </tr>
 </table>
 
@@ -59,6 +59,4 @@ if (isset($_POST["Submit"])) {
 </p>
 </form>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

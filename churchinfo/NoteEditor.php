@@ -121,24 +121,22 @@ require "Include/Header.php";
 <form method="post">
 
 <p align="center">
-	<input type="hidden" name="PersonID" value="<?php echo $iPersonID; ?>">
-	<input type="hidden" name="FamilyID" value="<?php echo $iFamilyID; ?>">
-	<input type="hidden" name="NoteID" value="<?php echo $iNoteID; ?>">
-	<textarea name="NoteText" cols="70" rows="10"><?php echo $sNoteText; ?></textarea>
-	<?php echo $sNoteTextError; ?>
+	<input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
+	<input type="hidden" name="FamilyID" value="<?= $iFamilyID ?>">
+	<input type="hidden" name="NoteID" value="<?= $iNoteID ?>">
+	<textarea name="NoteText" cols="70" rows="10"><?= $sNoteText ?></textarea>
+	<?= $sNoteTextError ?>
 </p>
 
 <p align="center">
-	<input type="checkbox" value="1" name="Private" <?php if ($nte_Private != 0) { echo "checked"; } ?>>&nbsp;<?php echo gettext("Private"); ?>
+	<input type="checkbox" value="1" name="Private" <?php if ($nte_Private != 0) { echo "checked"; } ?>>&nbsp;<?= gettext("Private") ?>
 </p>
 
 <p align="center">
-	<input type="submit" class="btn" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>
+	<input type="submit" class="btn" name="Submit" <?= 'value="' . gettext("Save") . '"' ?>>
 	&nbsp;
-	<input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='<?php echo $sBackPage; ?>';">
+	<input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="javascript:document.location='<?= $sBackPage ?>';">
 	</form>
 </p>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

@@ -26,7 +26,7 @@
 *
 ******************************************************************************/
 
-//  
+//
 // Turn ON output buffering
 ob_start();
 
@@ -34,8 +34,6 @@ require_once ('Header-function.php');
 
 // Top level menu index counter
 $MenuFirst = 1;
-
-$sURLPath = $_SESSION['sURLPath'];
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -44,44 +42,36 @@ $sURLPath = $_SESSION['sURLPath'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="<?= $sURLPath ?>/vendor/AdminLTE/bootstrap/css/bootstrap.min.css">
-    <!-- google font libraries -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/dist/css/AdminLTE.min.css" />
+<?php
+    require 'Header-HTML-Scripts.php';
+    Header_head_metatag();
+?>
+<script>
+    function displayMessage(endpoint,message)
+    {
+        $(".modal").modal('hide');
+        $("#APIError").modal('show');
+        $("#APIEndpoint").text(endpoint); 
+        $("#APIErrorText").text(message);
+    }
 
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/AdminLTE/dist/css/skins/_all-skins.min.css">
-    
-    <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/select2/select2.min.css">
-    
-    <link rel="stylesheet" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datepicker/datepicker3.css">
-    <link rel="stylesheet" href= "<?= $sURLPath; ?>/vendor/AdminLTE/plugins/timepicker/bootstrap-timepicker.css">
-  
-    <!-- jQuery 2.1.4 -->
-    <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-
-    <!-- jQuery 2.1.4 -->
-    <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/jQueryUI/jquery-ui.min.js"></script>
-    
-    <!-- AdminLTE Select2 -->
-    <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/select2/select2.full.min.js"></script>
-    <!-- AdminLTE DatePicker -->
-    <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datepicker/bootstrap-datepicker.js"></script>
-     <!-- AdminLTE TimePicker -->
-    <script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/timepicker/bootstrap-timepicker.js"></script>
-
-
-    <?php Header_head_metatag(); ?>
+    $(document).ajaxError(function(evt,xhr,settings) {
+        if ( xhr.status== 400 ) {
+            displayMessage("[" + settings.type + "] " + settings.url, "Invalid Request.");
+        }
+        else if (evt.severity > 0)
+        {
+            displayMessage("[" + settings.type + "] " + settings.url, xhr.responseText);
+        }
+    });
+</script>
 </head>
-<body class="hold-transition <?= $_SESSION['sStyle']; ?> sidebar-mini">
+
+<body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
     <?php
+        Header_error_modal();
         Header_body_scripts();
         Header_body_menu();
     ?>

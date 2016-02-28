@@ -62,17 +62,15 @@ require "Include/Header.php";
 <!-- Default box -->
 <div class="box box-danger">
 	<div class="box-header with-border">
-<div class="callout callout-danger"> <?php echo gettext("Please confirm removal of user status from:")." <b>" . $sUserName ."</b>"; ?></div>
+<div class="callout callout-danger"> <?= gettext("Please confirm removal of user status from:")." <b>" . $sUserName ."</b>"; ?></div>
 
 
-	<a href="UserDelete.php?Confirmed=Yes&PersonID=<?php echo $iPersonID; ?>" class="btn btn-app btn-warning"><i class="fa fa-trash"></i><?php echo gettext("Delete"); ?></a>
-	<a href="UserList.php" class="btn btn-app"><i class="fa fa-users"></i><?php echo gettext("Cancel"); ?></a>
+	<a href="UserDelete.php?Confirmed=Yes&PersonID=<?= $iPersonID ?>" class="btn btn-app btn-warning"><i class="fa fa-trash"></i><?= gettext("Delete") ?></a>
+	<a href="UserList.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext("Cancel") ?></a>
 
 	</div>
 	<!-- /.box-body -->
 </div>
 <!-- /.box -->
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

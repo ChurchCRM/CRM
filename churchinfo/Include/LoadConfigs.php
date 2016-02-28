@@ -3,10 +3,10 @@
 *
 *  filename    : Include/LoadConfigs.php
 *  website     : http://www.churchcrm.io
-*  description : global configuration 
+*  description : global configuration
 *                   The code in this file used to be part of part of Config.php
 *
-*  Copyright 2001-2005 Phillip Hullquist, Deane Barker, Chris Gebhardt, 
+*  Copyright 2001-2005 Phillip Hullquist, Deane Barker, Chris Gebhardt,
 *                      Michael Wilt, Timothy Dearborn
 *
 *
@@ -31,18 +31,32 @@
 *
 ******************************************************************************/
 
-// Establish the database connection
-$cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD) 
-        or die ('Cannot connect to the MySQL server because: ' . mysql_error());
+function mysql_failure($message) {
+  require ("Include/HeaderNotLoggedIn.php");
+  ?>
+    <div class='container'>
+      <h3>ChurchCRM – Setup failure</h3>
+      <div class='alert alert-danger text-center' style='margin-top: 20px;'>
+        <?= $message ?>
+      </div>
+    </div>
+  <?php
+  require ("Include/FooterNotLoggedIn.php");
+  exit();
+}
 
-mysql_select_db($sDATABASE) 
-        or die ('Cannot select the MySQL database because: ' . mysql_error());
+// Establish the database connection
+$cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD)
+  or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" .$sUSER . "</strong>. Please check the settings in <strong>include/Config.php</strong>.");
+
+mysql_select_db($sDATABASE)
+  or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>include/Config.php</strong>.");
 
 $sql = "SHOW TABLES FROM `$sDATABASE`";
 $tablecheck = mysql_num_rows( mysql_query($sql) );
 
 if (!$tablecheck) {
-    die ("There are no tables installed in your database.  Please install the tables.");
+  mysql_failure("There are no tables installed in your database. Please run the migration script in <strong>mysql/install/install.sql</strong>.");
 }
 
 // Initialize the session
@@ -71,7 +85,7 @@ if ($rsConfig) {
     }
 }
 
-if (isset($_SESSION['iUserID'])) {      // Not set on Default.php
+if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
     // Load user variables from user config table.
     // **************************************************
     $sSQL = "SELECT ucfg_name, ucfg_value AS value "
@@ -81,7 +95,6 @@ if (isset($_SESSION['iUserID'])) {      // Not set on Default.php
         while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
             $$ucfg_name = $value;
                 $_SESSION[$ucfg_name] = $value;
-//              echo "<br>".$ucfg_name." ".$_SESSION[$ucfg_name];
         }
     }
 }

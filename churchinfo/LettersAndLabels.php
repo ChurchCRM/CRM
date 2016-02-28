@@ -61,17 +61,15 @@ if (isset($_POST["SubmitNewsLetter"]) || isset($_POST["SubmitConfirmReport"]) ||
     ?>
 
    <tr>
-      <td><input type="submit" class="btn" name="SubmitNewsLetter" <?php echo 'value="' . gettext("Newsletter labels") . '"'; ?>></td>
-      <td><input type="submit" class="btn" name="SubmitConfirmReport" <?php echo 'value="' . gettext("Confirm data letter") . '"'; ?>></td>
-	  <td><input type="submit" class="btn" name="SubmitConfirmReportEmail" <?php echo 'value="' . gettext("Confirm data Email") . '"'; ?>></td>
-      <td><input type="submit" class="btn" name="SubmitConfirmLabels" <?php echo 'value="' . gettext("Confirm data labels") . '"'; ?>></td>
-      <td><input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';"></td>
+      <td><input type="submit" class="btn" name="SubmitNewsLetter" value="<?= gettext("Newsletter labels") ?>"></td>
+      <td><input type="submit" class="btn" name="SubmitConfirmReport" value="<?= gettext("Confirm data letter") ?>"></td>
+	  <td><input type="submit" class="btn" name="SubmitConfirmReportEmail" value="<?= gettext("Confirm data Email") ?>"></td>
+      <td><input type="submit" class="btn" name="SubmitConfirmLabels" value="<?= gettext("Confirm data labels") ?>"></td>
+      <td><input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel") ?>" onclick="javascript:document.location='Menu.php';"></td>
    </tr>
 
 </table>
 
 </form>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

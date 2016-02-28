@@ -1449,33 +1449,33 @@ msgstr "Adatok importálása sikeres."
 msgid "persons were imported"
 msgstr "személy importálta"
 
-#: Default.php:100 Default.php:165
+#: Login.php:100 Login.php:165
 msgid "Invalid login or password"
 msgstr "Érvénytelen login vagy jelszó"
 
-#: Default.php:153
+#: Login.php:153
 msgid ""
 "Too many failed logins: your account has been locked.  Please contact an "
 "administrator."
 msgstr "Túl sok sikertelen bejelentkezési: fiókját zárolták. Kérjük, forduljon a rendszergazda."
 
-#: Default.php:349
+#: Login.php:349
 msgid "ChurchInfo: Login"
 msgstr "ChurchInfo: Bejelentkezés"
 
-#: Default.php:393
+#: Login.php:393
 msgid "Please Login"
 msgstr "Kérem, jelentkezzen"
 
-#: Default.php:413
+#: Login.php:413
 msgid "Enter your user name:"
 msgstr "Adja meg a felhasználói nevét:"
 
-#: Default.php:420
+#: Login.php:420
 msgid "Enter your password:"
 msgstr "Adja meg a jelszót:"
 
-#: Default.php:428
+#: Login.php:428
 msgid "Login"
 msgstr "Bejelentkezés"
 

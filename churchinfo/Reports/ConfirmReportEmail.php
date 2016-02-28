@@ -384,8 +384,8 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 }
 
 if ($_GET["familyId"]) {
-	header("Location: ".$_SESSION['sURLPath']."/FamilyView.php?FamilyID=" . $_GET["familyId"]."&PDFEmailed=".$familyEmailSent);
+	header("Location: ".$_SESSION['sRootPath']."/FamilyView.php?FamilyID=" . $_GET["familyId"]."&PDFEmailed=".$familyEmailSent);
 } else {
-	header("Location: ".$_SESSION['sURLPath']."/FamilyList.php&AllPDFsEmailed=".$familiesEmailed);
+	header("Location: ".$_SESSION['sRootPath']."/FamilyList.php&AllPDFsEmailed=".$familiesEmailed);
 }
 ?>

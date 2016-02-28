@@ -37,17 +37,17 @@ require 'Include/Header.php';
 
 <?php if ($bCreateDirectory) { ?>
 	<p>
-	<a class="MediumText" href="DirectoryReports.php"><?php echo gettext('Members Directory'); ?></a>
+	<a class="MediumText" href="DirectoryReports.php"><?= gettext('Members Directory') ?></a>
 	<br>
-	<?php echo gettext('Printable directory of all members, grouped by family where assigned'); ?>
+	<?= gettext('Printable directory of all members, grouped by family where assigned') ?>
 	</p>
 <?php } ?>
 
 <?php /*
 <p>
-<a href=''><?php echo gettext('Members Directory w/Photos'); ?></a>
+<a href=''><?= gettext('Members Directory w/Photos') ?></a>
 <br>
-<?php echo gettext('Printable directory of all members. Family photos where available / Individual photos otherwise.'); ?>
+<?= gettext('Printable directory of all members. Family photos where available / Individual photos otherwise.') ?>
 </p> */ ?>
 
 <p>
@@ -62,12 +62,6 @@ require 'Include/Header.php';
     echo gettext('Sunday School Reports'); ?></a>
 <br><?php 
     echo gettext('Generate class lists and attendance sheets'); ?>
-</p>
-
-<a class="MediumText" href="Reports/SundaySchoolClassList.php"><?php
-    echo gettext('Sunday School Class List'); ?></a>
-<br><?php
-echo gettext('Export Sunday School Kids to CSV'); ?>
 </p>
 
 <?php
@@ -89,9 +83,9 @@ echo gettext('Export Sunday School Kids to CSV'); ?>
 ?>
 
 <p>
-<span class="MediumText"><u><?php echo gettext("Event Attendance"); ?></u></span>
+<span class="MediumText"><u><?= gettext("Event Attendance") ?></u></span>
 <br>
-<?php echo gettext("Generate attendance -AND- non-attendance reports for events"); ?>
+<?= gettext("Generate attendance -AND- non-attendance reports for events") ?>
 <br>
 <?php
 //$sSQL = "SELECT * FROM event_types";
@@ -124,7 +118,4 @@ if ($bUSAddressVerification) {
 ?>
 </p>
 
-
-<?php
-require 'Include/Footer.php';
-?>
+<?php require 'Include/Footer.php' ?>

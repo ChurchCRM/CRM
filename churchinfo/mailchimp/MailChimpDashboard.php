@@ -15,7 +15,7 @@
 
 require '../Include/Config.php';
 require '../Include/Functions.php';
-require '../service/MailChimpService.php';
+require '../Service/MailchimpService.php';
 
 
 $mailchimp = new MailChimpService();
@@ -31,11 +31,11 @@ if ($isActive) {
     $mcLists =  $mailchimp->getLists();
 ?>
     <div class="row">
-        <?php foreach ($mcLists as $list) {?>
+        <?php foreach ($mcLists as $list) { ?>
         <div class="col-lg-4 col-md-2 col-sm-2">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">List: <?= $list["name"]?></h3>
+                    <h3 class="box-title">List: <?= $list["name"] ?></h3>
                 </div>
                 <div class="box-body">
                     <?

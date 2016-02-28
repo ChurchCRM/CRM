@@ -26,7 +26,10 @@ ob_start();
 <html>
 
 <head>
-	<?php Header_head_metatag(); ?>
+<?php
+	require 'Header-HTML-Scripts.php';
+	Header_head_metatag();
+?>
 </head>
 
 <body>
@@ -38,4 +41,4 @@ ob_start();
 				<tr>
 					<td valign="top">
 						<br>
-						<p class="PageTitle"><?php echo $sPageTitle; ?></p>						
+						<p class="PageTitle"><?= $sPageTitle ?></p>						

@@ -46,18 +46,16 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="PledgeDelete.php?<?php echo "GroupKey=" . $sGroupKey . "&linkBack=" . $linkBack; ?>" name="PledgeDelete">
+<form method="post" action="PledgeDelete.php?<?= "GroupKey=" . $sGroupKey . "&linkBack=" . $linkBack ?>" name="PledgeDelete">
 
 <table cellpadding="3" align="center">
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="btn" value="<?php echo gettext("Delete"); ?>" name="Delete">
-			<input type="submit" class="btn" value="<?php echo gettext("Cancel"); ?>" name="Cancel">
+			<input type="submit" class="btn" value="<?= gettext("Delete") ?>" name="Delete">
+			<input type="submit" class="btn" value="<?= gettext("Cancel") ?>" name="Cancel">
 		</td>
 	</tr>
 </table>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

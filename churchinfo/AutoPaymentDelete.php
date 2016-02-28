@@ -62,19 +62,17 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="AutoPaymentDelete.php?<?php echo "AutID=" . $iAutID . "&linkBack=" . $linkBack; ?>" name="AutoPaymentDelete">
+<form method="post" action="AutoPaymentDelete.php?<?= "AutID=" . $iAutID . "&linkBack=" . $linkBack ?>" name="AutoPaymentDelete">
 
 <table cellpadding="3" align="center">
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="btn" value="<?php echo gettext("Delete"); ?>" name="Delete">
-			<input type="submit" class="btn" value="<?php echo gettext("Cancel"); ?>" name="Cancel">
+			<input type="submit" class="btn" value="<?= gettext("Delete") ?>" name="Delete">
+			<input type="submit" class="btn" value="<?= gettext("Cancel") ?>" name="Cancel">
 		</td>
 	</tr>
 </table>
 </form>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

@@ -197,7 +197,7 @@ if ($_SESSION['bNeedPasswordChange']) { ?>
     <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-        <?= gettext("Your account record indicates that you need to change your password before proceding."); ?>
+        <?= gettext("Your account record indicates that you need to change your password before proceding.") ?>
         </div>
 <?php } ?>
 
@@ -215,33 +215,31 @@ if ($_SESSION['bNeedPasswordChange']) { ?>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="post" action="UserPasswordChange.php?<?php echo "PersonID=" . $iPersonID ?>&FromUserList=<?php echo (array_key_exists ("FromUserList", $_GET) ? $_GET["FromUserList"] : ""); ?>">
+            <form method="post" action="UserPasswordChange.php?<?= "PersonID=" . $iPersonID ?>&FromUserList=<?= array_key_exists ("FromUserList", $_GET) ? $_GET["FromUserList"] : '' ?>">
                 <div class="box-body">
                     <?php if (!$bAdminOtherUser) { ?>
                     <div class="form-group">
-                        <label for="OldPassword"><?= gettext("Old Password:"); ?></label>
-                        <input type="password" name="OldPassword" id="OldPassword" class="form-control" value="<?php echo $sOldPassword ?>"><?php echo $sOldPasswordError ?>
+                        <label for="OldPassword"><?= gettext("Old Password:") ?></label>
+                        <input type="password" name="OldPassword" id="OldPassword" class="form-control" value="<?= $sOldPassword ?>" autofocus><?= $sOldPasswordError ?>
                     </div>
                     <?php } ?>
                     <div class="form-group">
-                        <label for="NewPassword1"><?php echo gettext("New Password:"); ?></label>
-                        <input type="password" name="NewPassword1" id="NewPassword1" class="form-control" value="<?php echo $sNewPassword1 ?>">
+                        <label for="NewPassword1"><?= gettext("New Password:") ?></label>
+                        <input type="password" name="NewPassword1" id="NewPassword1" class="form-control" value="<?= $sNewPassword1 ?>">
                     </div>
                     <div class="form-group">
-                        <label for="NewPassword2"><?php echo gettext("Confirm New Password:"); ?></label>
-                        <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control" value="<?php echo $sNewPassword2 ?>"><?php echo $sNewPasswordError ?>
+                        <label for="NewPassword2"><?= gettext("Confirm New Password:") ?></label>
+                        <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control" value="<?= $sNewPassword2 ?>"><?= $sNewPasswordError ?>
                     </div>
                 </div>
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <input type="submit" class="btn btn-primary" name="Submit" value="<?php echo gettext("Save"); ?>">
+                    <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext("Save") ?>">
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

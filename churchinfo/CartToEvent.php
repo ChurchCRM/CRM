@@ -24,8 +24,8 @@ require "Include/Functions.php";
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups'])
 {
-        Redirect("Menu.php");
-        exit;
+    Redirect("Menu.php");
+    exit;
 }
 
 // Was the form submitted?
@@ -41,7 +41,7 @@ if (isset($_POST["Submit"]) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
             $sSQL = "INSERT IGNORE INTO event_attend (event_id, person_id)";
             $sSQL .= " VALUES ('".$iEventID."','".$_SESSION['aPeopleCart'][$element['key']]."')";
             RunQuery($sSQL);
-        $iCount++;
+            $iCount++;
         }
 
         $sGlobalMessage = $iCount . " records(s) successfully added to selected Event.";
@@ -64,16 +64,16 @@ $rsEvents = RunQuery($sSQL);
 
 ?>
 <div class="box">
-<p align="center"><?php echo gettext("Select the event to which you would like to add your cart:"); ?></p>
+<p align="center"><?= gettext("Select the event to which you would like to add your cart:") ?></p>
 <form name="CartToEvent" action="CartToEvent.php" method="POST">
 <table align="center">
         <?php if ($sGlobalMessage) { ?>
         <tr>
-          <td colspan="2"><?php echo $sGlobalMessage; ?></td>
+          <td colspan="2"><?= $sGlobalMessage ?></td>
         </tr>
         <?php } ?>
         <tr>
-                <td class="LabelColumn"><?php echo gettext("Select Event:"); ?></td>
+                <td class="LabelColumn"><?= gettext("Select Event:") ?></td>
                 <td class="TextColumn">
                         <?php
                         // Create the group select drop-down
@@ -89,9 +89,9 @@ $rsEvents = RunQuery($sSQL);
 </table>
 <p align="center">
 <BR>
-<input type="submit" name="Submit" value=<?php echo '"' . gettext("Add Cart to Event") . '"'; ?> class="btn btn-primary">
-<BR><BR>--<?php echo gettext("OR"); ?>--<BR><BR>
-<a href="AddEvent.php" class="btn btn-info"><?php echo gettext("Add New Event"); ?></a>
+<input type="submit" name="Submit" value=<?= '"' . gettext("Add Cart to Event") . '"' ?> class="btn btn-primary">
+<BR><BR>--<?= gettext("OR") ?>--<BR><BR>
+<a href="AddEvent.php" class="btn btn-info"><?= gettext("Add New Event") ?></a>
 <BR><BR>
 </p>
 </form>
@@ -99,7 +99,7 @@ $rsEvents = RunQuery($sSQL);
 <?php
 }
 else
-        echo "<p align=\"center\" class=\"callout callout-warning\">" . gettext("Your cart is empty!") . "</p>";
+    echo "<p align=\"center\" class=\"callout callout-warning\">" . gettext("Your cart is empty!") . "</p>";
 
 require "Include/Footer.php";
 ?>

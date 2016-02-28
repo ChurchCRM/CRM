@@ -92,16 +92,14 @@ RunQuery($sSQL);
 	</div>
 	<div class="box-footer">
 		<div class="pull-right">
-				<input type="submit" class="btn btn-primary" value="<?php echo gettext("Send"); ?>" name="Submit">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Send") ?>" name="Submit">
 		</div>
-		<input type="button" class="btn btn-default" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='Menu.php';">
+		<input type="button" class="btn btn-default" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='Menu.php';">
 	</div>
 	</form>
 </div>
 <div class="box box-warning">
-	<?= gettext ("If you need to make changes go to Admin->Edit General Settings and Admin->Edit Report Settings.  ");?>
+	<?= gettext ("If you need to make changes go to Admin->Edit General Settings and Admin->Edit Report Settings.  "); ?>
 </div>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

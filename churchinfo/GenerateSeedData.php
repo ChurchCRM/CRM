@@ -56,8 +56,8 @@ require 'Include/Header.php';
        //process the form
        $.ajax({
             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : 'api/data/seed/families', // the url where we want to POST
-            data        :  JSON.stringify(formData), // our data object
+            url         : window.CRM.root + '/api/data/seed/families', // the url where we want to POST
+            data        : JSON.stringify(formData), // our data object
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true,
             beforeSend  : function () { 
@@ -81,7 +81,7 @@ require 'Include/Header.php';
 </script>
 
 <!-- PACE -->
-<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/pace/pace.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
 <?php
 require "Include/Footer.php";
 ?>

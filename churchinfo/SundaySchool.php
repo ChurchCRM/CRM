@@ -123,7 +123,7 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 
 <table cellpadding="3" align="left">
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Group: \nTo select multiple hold CTL"); ?></td>
+		<td class="LabelColumn"><?= gettext("Select Group: \nTo select multiple hold CTL") ?></td>
 		<td class="TextColumn">
 			<?php
 			// Create the group select drop-down
@@ -140,76 +140,76 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 	</tr>
 
    <tr>
-      <td class="LabelColumn"><?php echo gettext("Fiscal Year:"); ?></td>
+      <td class="LabelColumn"><?= gettext("Fiscal Year:") ?></td>
       <td class="TextColumnWithBottomBorder">
 		<?php PrintFYIDSelect ($iFYID, "FYID") ?>
       </td>
    </tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("First Sunday:"); ?></td>
-		<td class="TextColumn"><input type="text" name="FirstSunday" value="<?php echo $dFirstSunday; ?>" maxlength="10" id="FirstSunday" size="11"></td>
+		<td class="LabelColumn"><?= gettext("First Sunday:") ?></td>
+		<td class="TextColumn"><input type="text" name="FirstSunday" value="<?= $dFirstSunday ?>" maxlength="10" id="FirstSunday" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Last Sunday:"); ?></td>
-		<td class="TextColumn"><input type="text" name="LastSunday" value="<?php echo $dLastSunday; ?>" maxlength="10" id="LastSunday" size="11"></td>
+		<td class="LabelColumn"><?= gettext("Last Sunday:") ?></td>
+		<td class="TextColumn"><input type="text" name="LastSunday" value="<?= $dLastSunday ?>" maxlength="10" id="LastSunday" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool1" value="<?php echo $dNoSchool1; ?>" maxlength="10" id="NoSchool1" size="11"></td>
+		<td class="LabelColumn"><?= gettext("No Sunday School:") ?></td>
+		<td class="TextColumn"><input type="text" name="NoSchool1" value="<?= $dNoSchool1 ?>" maxlength="10" id="NoSchool1" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool2" value="<?php echo $dNoSchool2; ?>" maxlength="10" id="NoSchool2" size="11"></td>
+		<td class="LabelColumn"><?= gettext("No Sunday School:") ?></td>
+		<td class="TextColumn"><input type="text" name="NoSchool2" value="<?= $dNoSchool2 ?>" maxlength="10" id="NoSchool2" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool3" value="<?php echo $dNoSchool3; ?>" maxlength="10" id="NoSchool3" size="11"></td>
+		<td class="LabelColumn"><?= gettext("No Sunday School:") ?></td>
+		<td class="TextColumn"><input type="text" name="NoSchool3" value="<?= $dNoSchool3 ?>" maxlength="10" id="NoSchool3" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool4" value="<?php echo $dNoSchool4; ?>" maxlength="10" id="NoSchool4" size="11"></td>
+		<td class="LabelColumn"><?= gettext("No Sunday School:") ?></td>
+		<td class="TextColumn"><input type="text" name="NoSchool4" value="<?= $dNoSchool4 ?>" maxlength="10" id="NoSchool4" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool5" value="<?php echo $dNoSchool5; ?>" maxlength="10" id="NoSchool5" size="11"></td>
+		<td class="LabelColumn"><?= gettext("No Sunday School:") ?></td>
+		<td class="TextColumn"><input type="text" name="NoSchool5" value="<?= $dNoSchool5 ?>" maxlength="10" id="NoSchool5" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool6" value="<?php echo $dNoSchool6; ?>" maxlength="10" id="NoSchool6" size="11"></td>
+		<td class="LabelColumn"><?= gettext("No Sunday School:") ?></td>
+		<td class="TextColumn"><input type="text" name="NoSchool6" value="<?= $dNoSchool6 ?>" maxlength="10" id="NoSchool6" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool7" value="<?php echo $dNoSchool7; ?>" maxlength="10" id="NoSchool7" size="11"></td>
+		<td class="LabelColumn"><?= gettext("No Sunday School:") ?></td>
+		<td class="TextColumn"><input type="text" name="NoSchool7" value="<?= $dNoSchool7 ?>" maxlength="10" id="NoSchool7" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("No Sunday School:"); ?></td>
-		<td class="TextColumn"><input type="text" name="NoSchool8" value="<?php echo $dNoSchool8; ?>" maxlength="10" id="NoSchool8" size="11"></td>
+		<td class="LabelColumn"><?= gettext("No Sunday School:") ?></td>
+		<td class="TextColumn"><input type="text" name="NoSchool8" value="<?= $dNoSchool8 ?>" maxlength="10" id="NoSchool8" size="11"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Extra Students:"); ?></td>
-		<td class="TextColumn"><input type="text" name="ExtraStudents" value="<?php echo $iExtraStudents; ?>" id="ExtraStudents" size="11">&nbsp;</td>
+		<td class="LabelColumn"><?= gettext("Extra Students:") ?></td>
+		<td class="TextColumn"><input type="text" name="ExtraStudents" value="<?= $iExtraStudents ?>" id="ExtraStudents" size="11">&nbsp;</td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Extra Teachers:"); ?></td>
-		<td class="TextColumn"><input type="text" name="ExtraTeachers" value="<?php echo $iExtraTeachers; ?>" id="ExtraTeachers" size="11">&nbsp;</td>
+		<td class="LabelColumn"><?= gettext("Extra Teachers:") ?></td>
+		<td class="TextColumn"><input type="text" name="ExtraTeachers" value="<?= $iExtraTeachers ?>" id="ExtraTeachers" size="11">&nbsp;</td>
 	</tr>
 
    <tr>
-      <td><input type="submit" class="btn" name="SubmitClassList" <?php echo 'value="' . gettext("Create Class List") . '"'; ?>></td>
-      <td><input type="submit" class="btn" name="SubmitClassAttendance" <?php echo 'value="' . gettext("Create Attendance Sheet") . '"'; ?>></td>
-      <td><input type="button" class="btn" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="javascript:document.location='Menu.php';"></td>
+      <td><input type="submit" class="btn" name="SubmitClassList" value="<?= gettext("Create Class List") ?>"></td>
+      <td><input type="submit" class="btn" name="SubmitClassAttendance" value="<?= gettext("Create Attendance Sheet") ?>"></td>
+      <td><input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel") ?>" onclick="javascript:document.location='Menu.php';"></td>
    </tr>
 
 </table>

@@ -30,14 +30,14 @@ require "Include/Header.php";
 ?>
 <script language="javascript">
 function confirmDeleteOpp( Opp ) {
-var answer = confirm (<?php echo '"' . gettext("Are you sure you want to delete this event?") . '"'; ?>)
+var answer = confirm("<?= gettext("Are you sure you want to delete this event?") ?>");
 if ( answer )
-        window.location="EventEditor.php?Opp=" + Opp + "&Action=delete"
+    window.location="EventEditor.php?Opp=" + Opp + "&Action=delete"
 }
 </script>
 <table width="100%" align="center" cellpadding="4" cellspacing="0">
   <tr>
-    <td align="center"><input type="button" class="btn" <?php echo 'value="' . gettext("Back to Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
+    <td align="center"><input type="button" class="btn" value="<?= gettext("Back to Menu") ?>" Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
   </tr>
 </table>
 <?php
@@ -136,16 +136,16 @@ if($numCounts)
 ?>
 <table width="100%" align="center" cellpadding="1" cellspacing="0">
 <form method="POST" action="EditEventTypes.php" name="EventTypeEditForm">
-  <input type="hidden" name="EN_tyid" value="<?php echo $aTypeID; ?>">
+  <input type="hidden" name="EN_tyid" value="<?= $aTypeID ?>">
   <caption>
-    <h3><?php echo gettext("Edit Event Type"); ?></h3>
+    <h3><?= gettext("Edit Event Type") ?></h3>
   </caption>
   <tr>
      <td class="LabelColumn" width="15%">
-        <strong><?php echo gettext("Event Type").":".$aTypeID; ?></strong>
+        <strong><?= gettext("Event Type") . ":" . $aTypeID ?></strong>
      </td>
      <td class="TextColumn" colspan="3" width="85%">
-        <input type="text" name="newEvtName" value="<?php echo $aTypeName; ?>" size="30" maxlength="35"> <input type="submit" Class="SmallText" Name="Action" value="<?php echo gettext("Save Name"); ?>" class="btn">
+        <input type="text" name="newEvtName" value="<?= $aTypeName ?>" size="30" maxlength="35"> <input type="submit" Class="SmallText" Name="Action" value="<?= gettext("Save Name") ?>" class="btn">
               <script language="javascript"> 
                 document.UpdateEventNames.newEvtName.focus() 
               </script>
@@ -154,42 +154,42 @@ if($numCounts)
   </tr>
   <tr>
    <td class="LabelColumn" width="15%">
-      <strong><?php echo gettext("Recurrance Pattern"); ?></strong>
+      <strong><?= gettext("Recurrance Pattern") ?></strong>
    </td>
    <td class="TextColumn" width="35%">
-      <?php echo $recur; ?>
+      <?= $recur ?>
    </td>
    <td class="LabelColumn" align="left" width="15%">
-        <strong><?php echo gettext("Start Time"); ?></strong>
+        <strong><?= gettext("Start Time") ?></strong>
    </td>
    <td class="TextColumn" width="35%">
         <form method="POST" action="EditEventTypes.php" name="EventTypeEditForm">  
-        <input type="hidden" name="EN_tyid" value="<?php echo $aTypeID; ?>"> 
+        <input type="hidden" name="EN_tyid" value="<?= $aTypeID ?>"> 
         <input type="hidden" name="Action" value="Save Time">    
         <select name="newEvtStartTime" size="1" onchange="javascript:this.form.submit()">
          <?php createTimeDropdown(7,18,15,$aEventStartHour,$aEventStartMins); ?>
         </select>
-        &nbsp;<span class="SmallText"><?php echo gettext("[format: HH:MM]"); ?></span>
+        &nbsp;<span class="SmallText"><?= gettext("[format: HH:MM]") ?></span>
         </form>
    </td>
    </tr>
 
   <tr><td colspan="4"></td></tr>
    <tr>
-      <td class="LabelColumn" align="center" width="15%" rowspan="<?php echo $nr; ?>" colspan="1">
-        <strong><?php echo gettext("Attendance Counts"); ?></strong>
+      <td class="LabelColumn" align="center" width="15%" rowspan="<?= $nr ?>" colspan="1">
+        <strong><?= gettext("Attendance Counts") ?></strong>
       </td>
     </tr>
     <?php
     for($c = 1; $c <=$numCounts; $c++){ 
       ?>
       <tr>
-        <td class="TextColumn" colspan="1" width="35%"><?php echo $cCountName[$c]; ?></td>
+        <td class="TextColumn" colspan="1" width="35%"><?= $cCountName[$c] ?></td>
         <td class="TextColumn" colspan="2" width="50%">
            <form name="DelEvCount" action="EditEventTypes.php" method="POST">
-           <input type="hidden" name="EN_ctid" value="<?php echo $cCountID[$c]; ?>">
-           <input type="hidden" name="EN_tyid" value="<?php echo $aTypeID; ?>">
-           <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("DELETE"); ?>" class="btn")">
+           <input type="hidden" name="EN_ctid" value="<?= $cCountID[$c] ?>">
+           <input type="hidden" name="EN_tyid" value="<?= $aTypeID ?>">
+           <input type="submit" class="SmallText" name="Action" value="<?= gettext("DELETE") ?>" class="btn")">
            </form>
         </td>
       </tr>
@@ -204,14 +204,12 @@ if($numCounts)
         <td class="TextColumn" colspan="2" width="50%">
 
            <input type="hidden" name="EN_ctid" value="new">
-           <input type="hidden" name="EN_tyid" value="<?php echo $aTypeID; ?>">
-           <input type="submit" class="SmallText" name="Action" value="<?php echo gettext("ADD"); ?>" class="btn")">
+           <input type="hidden" name="EN_tyid" value="<?= $aTypeID ?>">
+           <input type="submit" class="SmallText" name="Action" value="<?= gettext("ADD") ?>" class="btn")">
            </form>
         </td>
       </tr>
 
 </table>
-<?php
 
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

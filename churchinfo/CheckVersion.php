@@ -27,53 +27,20 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'Service/SystemService.php';
+$systemService = new SystemService();
 
 //Set the page title
 $sPageTitle = gettext("Software Version Check");
 
-// Check if the table version_ver exists.  If the table does not exist then
-// SQL scripts must be manually run to get the database up to version 1.2.7
-$bVersionTableExists = FALSE;
-if(mysql_num_rows(RunQuery("SHOW TABLES LIKE 'version_ver'")) == 1) {
-    $bVersionTableExists = TRUE;
+if ($systemService->checkDatabaseVersion())  //either the DB is good, or the upgrade was successful.
+{
+    Redirect('Menu.php');
+    exit;
 }
-
-// Let's see if the MySQL version matches the PHP version.  If we have a match then
-// proceed to Menu.php.  Otherwise further error checking is needed.
-$ver_version = "unknown";
-if ($bVersionTableExists) {
-    $sSQL = 'SELECT * FROM version_ver ORDER BY ver_ID DESC';
-    $aRow = mysql_fetch_array(RunQuery($sSQL));
-    extract($aRow);
-
-    if ($ver_version == $_SESSION['sSoftwareInstalledVersion']) {
-        Redirect('Menu.php');
-        exit;
-    }
-}
-
-
-// Turn ON output buffering
-ob_start();
-
-// Set the page title
-$sPageTitle = gettext('ChurchCRM: Database Version Check');
-
-require ("Include/HeaderNotLoggedIn.php");
-
-if($bVersionTableExists) {
-
-    // This code will automatically update from 1.2.14 (last good churchinfo build to 2.0.0 for ChurchCRM
-    if (strncmp($ver_version, "1.2.14", 6) == 0) {
-
-        $old_ver_version = $ver_version;
-        $sError = 'Initialize';  // Initialize error string
-
-        //TODO upgrade script
-    }
-}
+else        //the upgrade failed!
+{
 ?>
-
 <!-- Main content -->
 <section class="content">
     <div class="row">
@@ -104,8 +71,8 @@ if($bVersionTableExists) {
             </div>
             <div class="box-footer">
                 <p>
-                    Software Database Version = <?= $ver_version; ?> <br/>
-                    Software Version = <?=  $_SESSION['sSoftwareInstalledVersion']; ?>
+                    Software Database Version = <?= $systemService->getDatabaseVersion(); ?> <br/>
+                    Software Version = <?=  $_SESSION['sSoftwareInstalledVersion'] ?>
                 </p>
             </div>
         </div>
@@ -116,6 +83,7 @@ if($bVersionTableExists) {
 
 
 <?
+}
 
 require 'Include/FooterNotLoggedIn.php';
 

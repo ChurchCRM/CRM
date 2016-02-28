@@ -66,7 +66,7 @@ if (isset($_POST["Submit"]))
 	if ($iCanvassID < 1) {
 		$sSQL = "INSERT INTO canvassdata_can (can_famID, can_Canvasser, can_FYID, can_date, can_Positive,
 		                                      can_Critical, can_Insightful, can_Financial, can_Suggestion,
-											  can_NotInterested, can_WhyNotInterested) 
+											  can_NotInterested, can_WhyNotInterested)
 					VALUES (" . $iFamily . "," .
 							$iCanvasser . "," .
 							$iFYID . "," .
@@ -95,7 +95,7 @@ if (isset($_POST["Submit"]))
 		                                  "can_Financial=\"" . $tFinancial . "\"," .
 		                                  "can_Suggestion=\"" . $tSuggestion . "\"," .
 		                                  "can_NotInterested=\"" . $bNotInterested . "\"," .
-		                                  "can_WhyNotInterested=\"" . $tWhyNotInterested . 
+		                                  "can_WhyNotInterested=\"" . $tWhyNotInterested .
 										  "\" WHERE can_FamID = " . $iFamily;
 		//Execute the SQL
 		RunQuery($sSQL);
@@ -132,7 +132,7 @@ if (isset($_POST["Submit"]))
 		// Set some default values
 		$iCanvasser = $_SESSION['iUserID'];
 		$dDate = date("Y-m-d");
-		
+
 		$dDate = "";
 		$tPositive = "";
 		$tCritical = "";
@@ -149,17 +149,16 @@ $rsCanvassers = CanvassGetCanvassers (gettext ("Canvassers"));
 $rsBraveCanvassers = CanvassGetCanvassers (gettext ("BraveCanvassers"));
 
 require "Include/Header.php";
-
 ?>
 
-<form method="post" action="CanvassEditor.php?<?php echo "FamilyID=" . $iFamily . "&FYID=".$iFYID . "&CanvassID=" . $iCanvassID . "&linkBack=" . $linkBack; ?>" name="CanvassEditor">
+<form method="post" action="CanvassEditor.php?<?= "FamilyID=" . $iFamily . "&FYID=".$iFYID . "&CanvassID=" . $iCanvassID . "&linkBack=" . $linkBack ?>" name="CanvassEditor">
 
 <table cellpadding="3" align="center">
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="Submit">
-			<input type="button" class="btn" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="submit" class="btn" value="<?= gettext("Save") ?>" name="Submit">
+			<input type="button" class="btn" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -169,7 +168,7 @@ require "Include/Header.php";
 		<table cellpadding="3">
 
 			<?php
-			if (($rsBraveCanvassers <> 0 && mysql_num_rows($rsBraveCanvassers) > 0) || 
+			if (($rsBraveCanvassers <> 0 && mysql_num_rows($rsBraveCanvassers) > 0) ||
 			    ($rsCanvassers <> 0 && mysql_num_rows($rsCanvassers) > 0)) {
 				echo "<tr><td class='LabelColumn'>" . gettext("Canvasser:") . "</td>\n";
 				echo "<td class='TextColumnWithBottomBorder'>";
@@ -200,44 +199,44 @@ require "Include/Header.php";
 			?>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Date:"); ?></td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active" ><font color="red"><?php echo $sDateError ?></font></td>
+				<td class="LabelColumn"><?= gettext("Date:") ?></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active" ?><font color="red"><?= $sDateError ?></font></td>
 			</tr>
 
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Positive");?></td>
-				<td><textarea name="Positive" rows="3" cols="90"><?php echo $tPositive?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Positive") ?></td>
+				<td><textarea name="Positive" rows="3" cols="90"><?= $tPositive ?></textarea></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Critical");?></td>
-				<td><textarea name="Critical" rows="3" cols="90"><?php echo $tCritical?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Critical") ?></td>
+				<td><textarea name="Critical" rows="3" cols="90"><?= $tCritical ?></textarea></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Insightful");?></td>
-				<td><textarea name="Insightful" rows="3" cols="90"><?php echo $tInsightful?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Insightful") ?></td>
+				<td><textarea name="Insightful" rows="3" cols="90"><?= $tInsightful ?></textarea></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Financial");?></td>
-				<td><textarea name="Financial" rows="3" cols="90"><?php echo $tFinancial?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Financial") ?></td>
+				<td><textarea name="Financial" rows="3" cols="90"><?= $tFinancial ?></textarea></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Suggestions");?></td>
-				<td><textarea name="Suggestion" rows="3" cols="90"><?php echo $tSuggestion?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Suggestions") ?></td>
+				<td><textarea name="Suggestion" rows="3" cols="90"><?= $tSuggestion ?></textarea></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Not Interested"); ?></td>
+				<td class="LabelColumn"><?= gettext("Not Interested") ?></td>
 				<td class="TextColumn"><input type="checkbox" Name="NotInterested" value="1" <?php if ($bNotInterested) echo " checked"; ?>></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Why Not Interested?");?></td>
-				<td><textarea name="WhyNotInterested" rows="1" cols="90"><?php echo $tWhyNotInterested?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Why Not Interested?") ?></td>
+				<td><textarea name="WhyNotInterested" rows="1" cols="90"><?= $tWhyNotInterested ?></textarea></td>
 			</tr>
 
 		</table>
@@ -245,8 +244,6 @@ require "Include/Header.php";
 	</form>
 </table>
 <script>
-$("#sel1").datepicker({format:'yyyy-mm-dd'});
+    $("#sel1").datepicker({format:'yyyy-mm-dd'});
 </script>
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php"; ?>

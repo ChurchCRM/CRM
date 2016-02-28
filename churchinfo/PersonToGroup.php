@@ -19,6 +19,9 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require_once "Service/GroupService.php";
+
+$groupService = new GroupService();
 
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups'])
@@ -37,8 +40,7 @@ if (isset($_POST["Submit"]))
 	$iGroupRole = FilterInput($_POST["GroupRole"],'int');
 
 	$sPreviousQuery = strip_tags($_POST["prevquery"]);
-
-	AddToGroup($iPersonID,$iGroupID,$iGroupRole);
+    $groupService->addUserToGroup($iGroupID, $iPersonID, $iGroupRole);
 
 	Redirect("SelectList.php?$sPreviousQuery");
 }
@@ -105,19 +107,19 @@ function UpdateRoles()
 function updateGroupRoles(generated_html)
 {
 	if (generated_html == "invalid") {
-		document.getElementById('GroupRoles').innerHTML = '<p class="LargeError"><?php echo gettext("Invalid Group or No Roles Available!"); ?><p>';
+		document.getElementById('GroupRoles').innerHTML = '<p class="LargeError"><?= gettext("Invalid Group or No Roles Available!") ?><p>';
 	} else {
 		document.getElementById('GroupRoles').innerHTML = generated_html;
 	}
 }
 </script>
 
-<p align="center"><?php echo gettext("Select the group to add this person to:"); ?></p>
-<form method="post" action="PersonToGroup.php?PersonID=<?php echo $iPersonID;?>">
-<input type="hidden" name="prevquery" value="<?php echo $sPreviousQuery;?>">
+<p align="center"><?= gettext("Select the group to add this person to:") ?></p>
+<form method="post" action="PersonToGroup.php?PersonID=<?= $iPersonID ?>">
+<input type="hidden" name="prevquery" value="<?= $sPreviousQuery ?>">
 <table align="center">
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Group:"); ?></td>
+		<td class="LabelColumn"><?= gettext("Select Group:") ?></td>
 		<td class="TextColumn">
 			<?php
 			// Create the group select drop-down
@@ -131,17 +133,15 @@ function updateGroupRoles(generated_html)
 		</td>
 	</tr>
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Role:"); ?></td>
-		<td class="TextColumn"><span id="GroupRoles"><?php echo gettext("No Group Selected"); ?></span></td>
+		<td class="LabelColumn"><?= gettext("Select Role:") ?></td>
+		<td class="TextColumn"><span id="GroupRoles"><?= gettext("No Group Selected") ?></span></td>
 	</tr>
 </table>
 <p align="center">
 <BR>
-<input type="submit" class="btn" name="Submit" value="<?php echo gettext("Add to Group"); ?>">
+<input type="submit" class="btn" name="Submit" value="<?= gettext("Add to Group") ?>">
 <BR><BR>
 </p>
 </form>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

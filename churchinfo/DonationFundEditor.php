@@ -49,7 +49,7 @@ if ($sAction = 'delete' && strlen($sFund) > 0)
 
 $sPageTitle = gettext("Donation Fund Editor");
 
-require "Include/Header.php";?>
+require "Include/Header.php"; ?>
 
 
 <div class="box box-body">
@@ -156,7 +156,7 @@ else
 <script language="javascript">
 
 function confirmDeleteFund( Fund ) {
-var answer = confirm (<?php echo '"' . gettext("Are you sure you want to delete this fund?") . '"'; ?>)
+var answer = confirm (<?= '"' . gettext("Are you sure you want to delete this fund?") . '"' ?>)
 if ( answer )
 	window.location="DonationFundEditor.php?Fund=" + Fund + "&Action=delete"
 }
@@ -166,7 +166,7 @@ if ( answer )
 
 <div class="alert alert-warning">
 		<i class="fa fa-ban"></i>
-		<?php echo gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"); ?>
+		<?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!") ?>
 
 </div>
 
@@ -181,7 +181,7 @@ if ( answer )
 if ($numRows == 0)
 {
 ?>
-	<center><h2><?php echo gettext("No funds have been added yet"); ?></h2>
+	<center><h2><?= gettext("No funds have been added yet") ?></h2>
 	</center>
 <?php
 }
@@ -189,10 +189,10 @@ else
 {
 ?>
 		<tr>
-			<th><?php echo gettext("Name"); ?></th>
-			<th><?php echo gettext("Description"); ?></th>
-			<th><?php echo gettext("Active"); ?></th>
-            <th><?php echo gettext("Delete"); ?></th>
+			<th><?= gettext("Name") ?></th>
+			<th><?= gettext("Description") ?></th>
+			<th><?= gettext("Active") ?></th>
+            <th><?= gettext("Delete") ?></th>
 		</tr>
 
 	<?php
@@ -201,10 +201,10 @@ else
 	{
 		?>
 		<tr>
-			
+
 
 			<td class="TextColumn" align="center">
-				<input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
+				<input type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="20" maxlength="30">
 				<?php
 				if ($aNameErrors[$row])
 					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
@@ -212,14 +212,14 @@ else
 			</td>
 
 			<td class="TextColumn">
-				<input type="text" Name="<?php echo $row . "desc" ?>" value="<?php echo htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="40" maxlength="100">
+				<input type="text" Name="<?php echo $row . "desc" ?>" value="<?= htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="40" maxlength="100">
 			</td>
 			<td class="TextColumn" align="center" nowrap>
-				<input type="radio" Name="<?php echo $row . "active" ?>" value="1" <?php if ($aActiveFields[$row]) echo " checked" ?>><?php echo gettext("Yes"); ?>
-				<input type="radio" Name="<?php echo $row . "active" ?>" value="0" <?php if (!$aActiveFields[$row]) echo " checked" ?>><?php echo gettext("No"); ?>
+				<input type="radio" Name="<?= $row ?>active" value="1" <?php if ($aActiveFields[$row]) echo " checked" ?>><?= gettext("Yes") ?>
+				<input type="radio" Name="<?= $row ?>active" value="0" <?php if (!$aActiveFields[$row]) echo " checked" ?>><?= gettext("No") ?>
 			</td>
             <td class="TextColumn" width="5%">
-				<input type="button" class="btn btn-danger" value="<?php echo gettext("delete"); ?>" Name="delete" onclick="confirmDeleteFund(<?php echo "'" . $aIDFields[$row] . "'"; ?>);" >
+				<input type="button" class="btn btn-danger" value="<?= gettext("delete") ?>" Name="delete" onclick="confirmDeleteFund('<?= $aIDFields[$row] ?>');" >
 			</td>
 
 		</tr>
@@ -231,7 +231,7 @@ else
 				<tr>
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="btn btn-primary" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
+						<input type="submit" class="btn btn-primary" value="<?= gettext("Save Changes") ?>" Name="SaveChanges">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -247,18 +247,18 @@ else
 				<tr>
 					<td width="15%"></td>
 					<td valign="top">
-						<div><?php echo gettext("Name:"); ?></div>
+						<div><?= gettext("Name:") ?></div>
 						<input type="text" name="newFieldName" size="30" maxlength="30">
 						<?php if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
 						&nbsp;
 					</td>
 					<td valign="top">
-						<div><?php echo gettext("Description:"); ?></div>
+						<div><?= gettext("Description:") ?></div>
 						<input type="text" name="newFieldDesc" size="40" maxlength="100">
 						&nbsp;
 					</td>
 					<td>
-						<input type="submit" class="btn btn-primary" <?php echo 'value="' . gettext("Add New Fund") . '"'; ?> Name="AddField">
+						<input type="submit" class="btn btn-primary" value="<?= gettext("Add New Fund") ?>" Name="AddField">
 					</td>
 					<td width="15%"></td>
 				</tr>
@@ -270,4 +270,4 @@ else
 	</form>
 </div>
 
-<?php require "Include/Footer.php"; ?>
+<?php require "Include/Footer.php" ?>

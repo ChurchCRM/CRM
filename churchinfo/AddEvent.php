@@ -44,9 +44,10 @@ $sPageTitle = gettext("Add Church Event(s)");
 
 require "Include/Header.php";
 ?>
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 <?php
 
@@ -118,10 +119,10 @@ if (isset($_POST["AddEvent"]))
 <div class="box">
 	<div class="box-header">
 		<h3 class="box-title">
-       <?php if ($numRows == 0)  { 
-            echo gettext("No church events for ".date("F")); 
+       <?php if ($numRows == 0)  {
+            echo gettext("No church events for ".date("F"));
         } else {
-            echo gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F")); 
+            echo gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F"));
         ?></h3>
 	</div><!-- /.box-header -->
 	<div class="box-body table-responsive">
@@ -129,12 +130,12 @@ if (isset($_POST["AddEvent"]))
 
          <thead>
          <tr>
-           <th><?php echo gettext("Event Type"); ?></td>
-           <th><?php echo gettext("Event Title"); ?></td>
-           <th><?php echo gettext("Description"); ?></td>
-           <th><?php echo gettext("Start Date/Time"); ?></td>
-           <th><?php echo gettext("Active"); ?></td>
-           <th><?php echo gettext("Action"); ?></td>
+           <th><?= gettext("Event Type") ?></td>
+           <th><?= gettext("Event Title") ?></td>
+           <th><?= gettext("Description") ?></td>
+           <th><?= gettext("Start Date/Time") ?></td>
+           <th><?= gettext("Active") ?></td>
+           <th><?= gettext("Action") ?></td>
           </tr>
         </thead>
          <?php
@@ -149,32 +150,32 @@ if (isset($_POST["AddEvent"]))
 
          //Display the row
          ?>
-         <tr class="<?php echo $sRowClass; ?>">
-           <td><?php echo $aEventType[$row]; ?></td>
-           <td><?php echo htmlentities(stripslashes($aEventTitle[$row]),ENT_NOQUOTES, "UTF-8"); ?></td>
-           <td><?php echo ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]); ?>
+         <tr class="<?= $sRowClass ?>">
+           <td><?= $aEventType[$row] ?></td>
+           <td><?= htmlentities(stripslashes($aEventTitle[$row]),ENT_NOQUOTES, "UTF-8") ?></td>
+           <td><?= ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]) ?>
              <?php echo ($aEventText[$row] != '' ? "&nbsp;&nbsp;&nbsp;<a href=\"javascript:popUp('GetText.php?EID=".$aEventID[$row]."')\"><strong>text</strong></a>":""); ?></td>
-           <td><?php echo FormatDate($aEventStart[$row],1); ?></td>
-           <td align="center"><?php echo ($aEventStatus[$row] != 0 ? "No":"Yes"); ?></td>
+           <td><?= FormatDate($aEventStart[$row],1) ?></td>
+           <td align="center"><?= ($aEventStatus[$row] != 0 ? "No":"Yes") ?></td>
            <td align="center">
              <form name="EditEvent" action="EventEditor.php" method="POST">
-               <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
-               <input type="submit" name="Action" <?php echo 'value="' . gettext("Edit") . '"'; ?> class="btn">
+               <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
+               <input type="submit" name="Action" <?= 'value="' . gettext("Edit") . '"' ?> class="btn">
              </form>
            </td>
            <td>
              <form name="DeactivateEvent" action="AddEvent.php" method="POST">
-               <input type="hidden" name="EID" value="<?php echo $aEventID[$row]; ?>">
+               <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
                <?php if ($aEventStatus[$row] == 0 ) { ?>
-               <input type="submit" name="Action" value="<?php echo gettext("Deactivate"); ?>" class="btn" onClick="return confirm('Are you sure you want to DEACTIVATE Event ID: <?php echo  $aEventID[$row]; ?>')">
+               <input type="submit" name="Action" value="<?= gettext("Deactivate") ?>" class="btn" onClick="return confirm('Are you sure you want to DEACTIVATE Event ID: <?=  $aEventID[$row] ?>')">
                 <?php } else { ?>
-               <input type="submit" name="Action" value="<?php echo gettext("Activate"); ?>" class="btn">
+               <input type="submit" name="Action" value="<?= gettext("Activate") ?>" class="btn">
                 <?php } ?>
              </form>
            </td>
          </tr>
          <?php } ?>
-         
+
           </table>
         </div>
     </div>
@@ -191,7 +192,7 @@ if (isset($_POST["AddEvent"]))
                       <form method="post" action="AddEvent.php" name="AddEvent">
                         <table width="70%" align="center">
                           <tr>
-                            <td class="LabelColumn"><?php echo gettext("Event Type:"); ?></td>
+                            <td class="LabelColumn"><?= gettext("Event Type:") ?></td>
                             <td colspan="3">
                               <select name="newEventType">
 <?php
@@ -214,26 +215,26 @@ $sSQL = "SELECT * FROM `event_types`";
                             </td>
                           </tr>
                           <tr>
-                            <td class="LabelColumn"><?php echo gettext("Event Title:"); ?></td>
+                            <td class="LabelColumn"><?= gettext("Event Title:") ?></td>
                             <td colspan="3">
                               <input type="text" name="newEventTitle" size="40" maxlength="100">
                               <?php if ( $bNewTitleError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
                             </td>
                           </tr>
                           <tr>
-                            <td class="LabelColumn"><?php echo gettext("Event Desc:"); ?></td>
+                            <td class="LabelColumn"><?= gettext("Event Desc:") ?></td>
                             <td colspan="3">
                               <input type="text" name="newEventDesc" size="40" maxlength="100">
                               <?php if ( $bNewDescError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
                             </td>
                           </tr>
                           <tr>
-                            <td class="LabelColumn"><?php echo gettext("Event Sermon:"); ?></td>
+                            <td class="LabelColumn"><?= gettext("Event Sermon:") ?></td>
                             <td colspan="3"><textarea name="newEventText" rows="10" cols="80"></textarea></td>
                           </tr>
                           <tr>
                             <td class="LabelColumn">
-                              <?php echo gettext("Start Date:"); ?>
+                              <?= gettext("Start Date:") ?>
                             </td>
                             <td>
                              <div class="form-group">
@@ -248,7 +249,7 @@ $sSQL = "SELECT * FROM `event_types`";
                             </div>
                             </td>
                             <td class="LabelColumn">
-                              <?php echo gettext("Start Time:"); ?>
+                              <?= gettext("Start Time:") ?>
                             </td>
                             <td>
                             <div class="form-group">
@@ -263,7 +264,7 @@ $sSQL = "SELECT * FROM `event_types`";
                           </tr>
                           <tr>
                             <td class="LabelColumn">
-                              <?php echo gettext("End Date:"); ?>
+                              <?= gettext("End Date:") ?>
                             </td>
                             <td>
                                  <div class="form-group">
@@ -278,7 +279,7 @@ $sSQL = "SELECT * FROM `event_types`";
                             </div>
                             </td>
                             <td class="LabelColumn">
-                              <?php echo gettext("End Time:"); ?>
+                              <?= gettext("End Time:") ?>
                             </td>
                             <td>
                                 <div class="form-group">
@@ -292,14 +293,14 @@ $sSQL = "SELECT * FROM `event_types`";
                             </td>
                           </tr>
                           <tr>
-                            <td class="LabelColumn"><?php echo gettext("Event Status:"); ?></td>
+                            <td class="LabelColumn"><?= gettext("Event Status:") ?></td>
                             <td colspan="3">
                               <input type="radio" name="newEventStatus" value="0" checked> Active <input type="radio" name="newEventStatus" value="1"> Inactive
                               <?php if ( $bNewStatusError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("Is this Active or Inactive?") . "</span></div>"; ?>
                             </td>
                           </tr>
                           <tr>
-                            <td colspan="4" align="center"><input type="submit" Name="AddEvent" <?php echo 'value="' . gettext("Add Event") . '"'; ?> class="btn"></td>
+                            <td colspan="4" align="center"><input type="submit" Name="AddEvent" <?= 'value="' . gettext("Add Event") . '"' ?> class="btn"></td>
                           </tr>
                         </table>
                         </form>
@@ -309,8 +310,8 @@ $sSQL = "SELECT * FROM `event_types`";
     </div>
  </div>
 
-       
-       
+
+
 
 <script>
 $("#newEventStartDate").datepicker({format:'yyyy-mm-dd'});
@@ -319,4 +320,4 @@ $('#newEventStartTime').timepicker({showMeridian: false});
 $("#newEventEndTime").timepicker({showMeridian: false});
 $("#eventsTable").dataTable();
 </script>
-<?php require "Include/Footer.php"; ?>
+<?php require "Include/Footer.php" ?>

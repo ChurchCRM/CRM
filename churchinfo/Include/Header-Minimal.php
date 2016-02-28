@@ -23,7 +23,10 @@
 <head>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="Include/<?php echo $_SESSION['sStyle']; ?>">
+
+<?php
+	 	require 'Header-HTML-Scripts.php';
+?>
 </head>
 
 <body>

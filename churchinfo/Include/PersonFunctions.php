@@ -1,12 +1,7 @@
 <?php
 
-function getPersonPhoto($personId) {
-    $personService = new PersonService();
-    return $personService->photo($personId);
-}
-
 function getGenderIcon($gender) {
-    $icon = "?";
+    $icon = "";
     if ($gender == 1)
         $icon = "<i class=\"fa fa-male\"></i>";
     if ($gender == 2)

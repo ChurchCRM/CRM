@@ -38,20 +38,22 @@ if (isset($_POST["rmEmail"]))
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("View Your Cart");
-require "Include/Header.php";
+require "Include/Header.php"; ?>
+<div class="box box-body">
+<?php
 // Confirmation message that people where added to Event from Cart
-if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart']) == 0) {
-        if (!array_key_exists("Message", $_GET)) {?>
-            <p class="text-center callout callout-warning"><?= gettext("You have no items in your cart.") ;?> </p>
-        <? } else {
+if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) == 0) {
+        if (!array_key_exists("Message", $_GET)) { ?>
+             <p class="text-center callout callout-warning"><?= gettext("You have no items in your cart.") ?> </p>
+        <?php } else {
             switch ($_GET["Message"]) {
                 case "aMessage": ?>
-                    <p class="text-center callout callout-info"><?= $_GET["iCount"].' '.($_GET["iCount"] == 1 ? "Record":"Records").' Emptied into Event ID:'.$_GET["iEID"] ;?> </p>
-                <? break;
+                    <p class="text-center callout callout-info"><?= $_GET["iCount"].' '.($_GET["iCount"] == 1 ? "Record":"Records").' Emptied into Event ID:'.$_GET["iEID"]  ?> </p>
+                <?php break;
             }
         }
         echo '<p align="center"><input type="button" name="Exit" class="btn btn-primary" value="'.gettext("Back to Menu").'" '."onclick=\"javascript:document.location='Menu.php';\"></p>\n";
-
+        echo '</div>';
 } else {
 
         // Create array with Classification Information (lst_ID = 1)
@@ -87,13 +89,13 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
         if ($iNumPersons > 16) { ?>
         <form method="get" action="CartView.php#GenerateLabels">
         <input type="submit" class="btn" name="gotolabels"
-        value="<?php echo gettext("Go To Labels");?>">
+        value="<?= gettext("Go To Labels") ?>">
         </form>
         <?php } ?>
 <!-- Default box -->
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext("Your cart contains") . ' ' . $iNumPersons . ' ' . gettext("persons from") . ' ' . $iNumFamilies . ' ' . gettext("families.");?></h3>
+        <h3 class="box-title"><?= gettext("Your cart contains") . ' ' . $iNumPersons . ' ' . gettext("persons from") . ' ' . $iNumFamilies . ' ' . gettext("families.") ?></h3>
     </div>
     <div class="box-body">
         <table class="table table-hover">
@@ -147,12 +149,11 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
                         $sValidAddy = gettext("No");
 
                 echo '<tr class="' . $sRowClass . '">';
-                echo '<td><img src="'. getPersonPhoto($per_ID). '" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
+                echo '<td><img src="'. $personService->getPhoto($per_ID). '" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
 
                 echo '<td align="center">' . $sValidAddy . '</td>';
                 echo '<td align="center">' . $sValidEmail . '</td>';
-                echo '<td><a onclick="saveScrollCoordinates()" 
-                        href="CartView.php?RemoveFromPeopleCart=' . 
+                echo '<td><a href="CartView.php?RemoveFromPeopleCart=' .
                         $per_ID . '">' . gettext("Remove") . '</a></td>';
                 echo '<td align="center">' . $aClassificationName[$per_cls_ID] . '</td>';
                 echo '<td align="center">' . $aFamilyRoleName[$per_fmr_ID] . '</td>';
@@ -162,28 +163,29 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
 
         echo "</table>";
 } ?>
-    </div>
-</div>
+
+
 <!-- Default box -->
+<?php if (count($_SESSION['aPeopleCart']) > 0) { ?>
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">Cart Functions</h3>
     </div>
     <div class="box-body">
         <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i class="fa fa-trash"></i><?= gettext("Empty Cart") ?></a>
-        <? if ($_SESSION['bManageGroups']) { ?>
+        <?php if ($_SESSION['bManageGroups']) { ?>
             <a href="CartToGroup.php" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext("Empty Cart to Group") ?></a>
-        <? } ?>
-        <? if ($_SESSION['bAddRecords']) { ?>
-            <a href="CartToFamily.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext("Empty Cart to Family")  ?></a>
-        <? } ?>
-        <a href="CartToEvent.php" class="btn btn-app"><i class="fa fa-ticket"></i><?=  gettext("Empty Cart to Event")  ?></a>
+        <?php } ?>
+        <?php if ($_SESSION['bAddRecords']) { ?>
+            <a href="CartToFamily.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext("Empty Cart to Family") ?></a>
+        <?php } ?>
+        <a href="CartToEvent.php" class="btn btn-app"><i class="fa fa-ticket"></i><?=  gettext("Empty Cart to Event") ?></a>
 
-        <?  if ($bExportCSV) { ?>
-            <a href="CSVExport.php?Source=cart" class="btn btn-app"><i class="fa fa-file-excel-o"></i><?=  gettext("CSV Export")  ?></a>
-        <? } ?>
+        <?php  if ($bExportCSV) { ?>
+            <a href="CSVExport.php?Source=cart" class="btn btn-app"><i class="fa fa-file-excel-o"></i><?=  gettext("CSV Export") ?></a>
+        <?php } ?>
         <a href="MapUsingGoogle.php?GroupID=0" class="btn btn-app"><i class="fa fa-map-marker"></i><?= gettext("Map Cart") ?></a>
-        <a href="Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-app"><i class="fa fa-file-pdf-o"></i><?= gettext("Name Tags")  ?></a>
+        <a href="Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-app"><i class="fa fa-file-pdf-o"></i><?= gettext("Name Tags") ?></a>
         <?
         if (count($_SESSION['aPeopleCart']) != 0) {
 
@@ -276,10 +278,11 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
     <!-- /.box-body -->
 </div>
 <!-- /.box -->
+<?php } ?>
 <!-- Default box -->
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title"><?php echo gettext("Generate Labels");?></h3>
+        <h3 class="box-title"><?= gettext("Generate Labels") ?></h3>
     </div>
     <div class="box-body">
     <form method="get" action="Reports/PDFLabel.php" name="labelform">
@@ -291,19 +294,19 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
                 echo '  <td>';
                 echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
                 echo '  id="BulkMailPresort" value="1" ';
-                if (array_key_exists ("buildmailpresort", $_COOKIE) and $_COOKIE["bulkmailpresort"])
+                if (array_key_exists("buildmailpresort", $_COOKIE) && $_COOKIE["bulkmailpresort"])
                     echo "checked";
                 echo '  ><br></td></tr>';
 
                 echo '  <tr><td>' . gettext("Quiet Presort") . '</td>';
                 echo '  <td>';
                 echo '  <input ';
-                if (array_key_exists ("buildmailpresort", $_COOKIE) and !$_COOKIE["bulkmailpresort"])
+                if (array_key_exists("buildmailpresort", $_COOKIE) && !$_COOKIE["bulkmailpresort"])
                     echo 'disabled ';   // This would be better with $_SESSION variable
                                         // instead of cookie ... (save $_SESSION in MySQL)
                 echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
                 echo '  id="QuietBulkMail" value="1" ';
-                if (array_key_exists ("bulkmailquiet", $_COOKIE) and $_COOKIE["bulkmailquiet"] && array_key_exists ("buildmailpresort", $_COOKIE) and $_COOKIE["bulkmailpresort"])
+                if (array_key_exists("bulkmailquiet", $_COOKIE) && $_COOKIE["bulkmailquiet"] && array_key_exists("buildmailpresort", $_COOKIE) && $_COOKIE["bulkmailpresort"])
                     echo "checked";
                 echo '  ><br></td></tr>';
 
@@ -318,7 +321,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
 
                 <tr>
                         <td></td>
-                        <td><input type="submit" class="btn btn-primary" value="<?php echo gettext("Generate Labels");?>" name="Submit"></td>
+                        <td><input type="submit" class="btn btn-primary" value="<?= gettext("Generate Labels") ?>" name="Submit"></td>
                 </tr>
     </table></form></td></tr></table>
     </div>
@@ -379,7 +382,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
             $aRow = mysql_fetch_array($rsPendingEmail);
             extract($aRow);
 
-            if ($emp_to_send==0 && $countrecipients==0) {
+            if ($emp_to_send == 0 && $countrecipients == 0) {
                 // if both are zero the email job has not started.  In this
                 // case the user may edit the email and/or change the distribution
 
@@ -669,5 +672,4 @@ function rmEmail()
     RunQuery($sSQL);
         echo '<font class="SmallError">Deleted Email message succesfuly</font>';
 }
-
 ?>

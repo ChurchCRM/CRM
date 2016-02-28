@@ -52,17 +52,15 @@ require "Include/Header.php";
 <!-- Default box -->
 <div class="box box-info">
 	<div class="box-header with-border">
-<p><?php echo gettext("Please confirm the password reset of this user:"); ?></p>
+<p><?= gettext("Please confirm the password reset of this user:") ?></p>
 
-<p class="ShadedBox"><?php echo $aRow["per_LastName"] . ", " . $aRow["per_FirstName"] ?></p>
+<p class="ShadedBox"><?= $aRow["per_LastName"] . ", " . $aRow["per_FirstName"] ?></p>
 
-<a href="UserReset.php?PersonID=<?php echo $iPersonID ?>&Confirmed=Yes" class="btn btn-primary"><?php echo gettext("Yes, reset this User's password"); ?></a>
-<a href="UserList.php" class="btn btn-default"><?php echo gettext("No, cancel this operation"); ?></a>
+<a href="UserReset.php?PersonID=<?php echo $iPersonID ?>&Confirmed=Yes" class="btn btn-primary"><?= gettext("Yes, reset this User's password") ?></a>
+<a href="UserList.php" class="btn btn-default"><?= gettext("No, cancel this operation") ?></a>
 </div>
 <!-- /.box-body -->
 </div>
 <!-- /.box -->
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>
