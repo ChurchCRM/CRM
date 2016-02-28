@@ -181,15 +181,13 @@ $app->group('/database', function () use ($app) {
     
     $app->post('/query',function() use ($app) {
         try {
-            $request = $app->request();
-            $body = $request->getBody();
-            $input = json_decode($body);
+            $input = getJSONFromApp($app);
             $queryRequest = $input->queryRequest;
             echo json_encode($app->SystemService->queryDatabase($queryRequest));
         } catch (Exception $e) {
               echo exceptionToJSON($e);
         }
-    }
+    });
     
     $app->post('/backup', function () use ($app, $systemService) {
         try {

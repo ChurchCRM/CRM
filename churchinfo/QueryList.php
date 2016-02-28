@@ -27,13 +27,13 @@ $aFinanceQueries = explode(',', $aFinanceQueries);
 
 require "Include/Header.php";?>
 
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
-<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<script src="<?= $sURLPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sURLPath; ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/vendor/AdminLTE/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= $sURLPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sURLPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 <div class="box box-body">
 
