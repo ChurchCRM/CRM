@@ -16,6 +16,7 @@ require_once "../Service/DataSeedService.php";
 require_once "../Service/FinancialService.php";
 require_once "../Service/GroupService.php";
 require_once '../Service/SystemService.php';
+require_once '../Service/NoteService.php';
 
 require_once '../vendor/Slim/slim/Slim/Slim.php';
 
@@ -50,6 +51,9 @@ $app->container->singleton('GroupService', function () {
     return new GroupService();
 });
 
+$app->container->singleton('NoteService', function () {
+    return new NoteService();
+});
 
 $app->group('/groups', function () use ($app) {
     $groupService = $app->GroupService;
@@ -443,6 +447,28 @@ $app->group('/payments',function () use ($app) {
 	});
 });
 
+$app->group('/notes', function () use ($app) {
+    $noteService = $app->NoteService;
+
+    $app->delete('/:noteID', function ($noteID) use ($noteService) {
+        try {
+            $noteService->deleteNoteById($noteID);
+            echo '{"success":"true"}';
+        } catch (Exception $e) {
+            echo exceptionToJSON($e);
+        }
+    });
+
+    $app->get('/:noteId', function ($noteId) use ($noteService) {
+        try{
+            echo json_encode($noteService->getNoteById($noteId));
+        } catch (Exception $e) {
+            echo exceptionToJSON($e);
+        }
+
+    });
+
+});
 
 $app->group('/data/seed', function () use ($app) {
     $app->post('/families', function () use ($app) {
