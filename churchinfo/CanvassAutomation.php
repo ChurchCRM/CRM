@@ -127,7 +127,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 		</td>
 		<td align="left" width="75%">
 			<?= gettext("Randomly assign canvassers to all Families.  The Canvassers are
-			taken from the &quot;Canvassers&quot; Group.") >
+			taken from the &quot;Canvassers&quot; Group.") ?>
 			<p><input type="checkbox" name="AssignCanvassersConfirm"><?= gettext("Check to confirm") ?></p>
 		</td>
 	</tr>
@@ -139,7 +139,7 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
 		</td>
 		<td align="left" width="75%">
 			<?= gettext("Randomly assign canvassers to non-pledging Families.  The Canvassers are
-			taken from the &quot;BraveCanvassers&quot; Group.") >
+			taken from the &quot;BraveCanvassers&quot; Group.") ?>
 			<p><input type="checkbox" name="AssignNonPledgingConfirm"><?= gettext("Check to confirm") ?></p>
 		</td>
 	</tr>

@@ -16,6 +16,7 @@ require_once "../Service/DataSeedService.php";
 require_once "../Service/FinancialService.php";
 require_once "../Service/GroupService.php";
 require_once '../Service/SystemService.php';
+require_once "../Service/ReportingService.php";
 
 require_once '../vendor/Slim/slim/Slim/Slim.php';
 
@@ -48,6 +49,10 @@ $app->container->singleton('FinancialService', function () {
 
 $app->container->singleton('GroupService', function () {
     return new GroupService();
+});
+
+$app->container->singleton('ReportingService', function () {
+    return new ReportingService();
 });
 
     $app->group('/groups', function () use ($app) {
@@ -229,6 +234,7 @@ $app->group('/search', function () use ($app) {
             array_push($resultsArray, $app->GroupService->getGroupJSON($app->GroupService->search($query)));
             array_push($resultsArray, $app->FinancialService->getDepositJSON($app->FinancialService->searchDeposits($query)));
             array_push($resultsArray, $app->FinancialService->getPaymentJSON($app->FinancialService->searchPayments($query)));
+             array_push($resultsArray, $app->ReportingService->getReportJSON($app->ReportingService->search($query)));
             echo "[".join(",",array_filter($resultsArray))."]";
         } catch (Exception $e) {
              echo exceptionToJSON($e);
