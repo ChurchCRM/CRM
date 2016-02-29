@@ -29,28 +29,12 @@ require "Include/Functions.php";
 require "Include/GeoCoder.php";
 require 'Include/PersonFunctions.php';
 require 'Service/MailchimpService.php';
+require 'Service/FamilyService.php';
 
 $mailchimp = new MailChimpService();
+$familyService = new FamilyService();
 //Set the page title
 $sPageTitle = gettext("Family View");
-
-function getFamilyPhoto($iFamilyID) {
-	$validExtensions = array("jpeg", "jpg", "png");
-	$hasFile = false;
-	while (list(, $ext) = each($validExtensions)) {
-		$photoFile = "Images/Family/thumbnails/" . $iFamilyID . ".".$ext;
-		if (file_exists($photoFile)) {
-			$hasFile = true;
-			break;
-		}
-	}
-
-	if ($hasFile)  {
-		return  $photoFile;
-	} else {
-	 	return "Images/Family/family-128.png";
- 	}
-}
 
 //Get the FamilyID out of the querystring
 $iFamilyID = FilterInput($_GET["FamilyID"],'int');
@@ -187,7 +171,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 	<div class="col-lg-3 col-md-4 col-sm-4">
 		<div class="box box-primary">
 			<div class="box-body">
-				<img src="<?= getFamilyPhoto($fam_ID) ?>" alt="" class="img-circle img-responsive profile-user-img" />
+				<img src="<?= $familyService->getFamilyPhoto($fam_ID) ?>" alt="" class="img-circle img-responsive profile-user-img" />
                 <h3 class="profile-username text-center"><?= gettext("The") . " $fam_Name " . gettext("Family") ?></h3>
                 <?php if ($bOkToEdit) { ?>
                     <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="btn btn-primary btn-block"><b>Edit</b></a>
@@ -196,7 +180,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 				<ul class="fa-ul">
 					<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
 					<a href="http://maps.google.com/?q=<?= getMailingAddress($fam_Address1,$fam_Address2,$fam_City,$fam_State,$fam_Zip,$fam_Country) ?>" target="_blank"><?php
-							echo getMailingAddress($fam_Address1,$fam_Address2,$fam_City,$fam_State,$fam_Zip,$fam_Country);				
+							echo getMailingAddress($fam_Address1,$fam_Address2,$fam_City,$fam_State,$fam_Zip,$fam_Country);
 							echo "</a></span><br>";
 							if ($fam_Latitude && $fam_Longitude) {
 								if ($nChurchLatitude && $nChurchLongitude) {
@@ -265,8 +249,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                 <br/>
                 <?php if ($bOkToEdit) { ?>
                     <a class="btn btn-app" href="#" data-toggle="modal" data-target="#upload-image"><i class="fa fa-camera"></i> Upload Photo </a>
-                    <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i>Remove Photo </a>
-                <?php }
+                  <?php if ($familyService->getUploadedPhoto($iFamilyID) != "") { ?>
+                  <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i>Remove Photo </a>
+                  <?php }
+                }
                 if ($_SESSION['bNotes']) { ?>
                     <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-sticky-note"></i> Add a Note</a>
                 <?php } ?>
