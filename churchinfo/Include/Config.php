@@ -63,5 +63,5 @@ error_reporting(E_ERROR);
 //
 // Absolute path must be specified since this file is called
 // from scripts located in other directories
-require (dirname(__FILE__) . DIRECTORY_SEPARATOR . 'LoadConfigs.php');
+require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . 'LoadConfigs.php');
 ?>
