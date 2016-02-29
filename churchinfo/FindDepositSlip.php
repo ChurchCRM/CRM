@@ -2,9 +2,9 @@
 /*******************************************************************************
  *
  *  filename    : FindDepositSlip.php
- *  last change : 2005-02-06
+ *  last change : 2016-02-28
  *  website     : http://www.churchcrm.io
- *  copyright   : Copyright 2001-2005 Deane Barker, Chris Gebhardt, Michael Wilt, Tim Dearborn
+ *  copyright   : Copyright 2016 ChurchCRM
  *
  *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -68,53 +68,53 @@ require "Include/Header.php";
 <!-- End Delete Confirm Modal -->
 
 <div class="box">
-<div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext("Add New Deposit: ");?></h3>
-</div>
-<div class="box-body">
-    <form action="#" method="get" class="form">
-    <div class="row">
-        <div class="col-xs-3">
-        <label for="addNewGruop">Deposit Comment</label>
-        <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
-        </div>
-        <div class="col-xs-3">
-        <label for="depositType">Deposit Type</label>
-        <select  class="form-control" id="depositType" name="depositType">
-            <option value="Bank">Bank</option>
-            <option value="CreditCard">Credit Card</option>
-            <option value="BankDraft">Bank Draft</option>
-            <option value="eGive">eGive</option>
-        </select>
-        </div>
-        <div class="col-xs-3">
-        <label for="addNewGruop">Deposit Date</label>
-        <input class="form-control" name="depositDate" id="depositDate" style="width:100%">
-        </div>
+    <div class="box-header with-border">
+        <h3 class="box-title"><?php echo gettext("Add New Deposit: ");?></h3>
     </div>
-    <p>
-    <div class="row">
-    <div class="col-xs-3">
-        <button type="button" class="btn btn-primary" id ="addNewDeposit" >Add New Deposit</button>
+    <div class="box-body">
+        <form action="#" method="get" class="form">
+            <div class="row">
+                <div class="col-xs-3">
+                    <label for="addNewGruop">Deposit Comment</label>
+                    <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
+                </div>
+                <div class="col-xs-3">
+                    <label for="depositType">Deposit Type</label>
+                    <select  class="form-control" id="depositType" name="depositType">
+                        <option value="Bank">Bank</option>
+                        <option value="CreditCard">Credit Card</option>
+                        <option value="BankDraft">Bank Draft</option>
+                        <option value="eGive">eGive</option>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <label for="addNewGruop">Deposit Date</label>
+                    <input class="form-control" name="depositDate" id="depositDate" style="width:100%">
+                </div>
+            </div>
+            <p>
+            <div class="row">
+                <div class="col-xs-3">
+                    <button type="button" class="btn btn-primary" id ="addNewDeposit" >Add New Deposit</button>
+                </div>
+            </div>
+        </form>
     </div>
-    </div>
-    </form>
-</div>
 </div>
 
 <div class="box">
-<div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext("Deposits: ");?></h3>
-</div>
-<div class="box-body">
-<table class="table" id="depositsTable">
-</table>
+    <div class="box-header with-border">
+        <h3 class="box-title"><?php echo gettext("Deposits: ");?></h3>
+    </div>
+    <div class="box-body">
+        <table class="table" id="depositsTable">
+        </table>
 
-<button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>
-<button type="button" id="exportSelectedRows"  class="btn btn-success" disabled><i class="fa fa-download"></i>Export Selected Rows (OFX)</button>
-<button type="button" id="exportSelectedRowsCSV"  class="btn btn-success" disabled><i class="fa fa-download"></i>Export Selected Rows (CSV)</button>
-<button type="button" id="generateDepositSlip" class="btn btn-success"  disabled>Generate Deposit Split for Selected Rows (PDF)</button>
-</div>
+        <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> Delete Selected Rows</button>
+        <button type="button" id="exportSelectedRows" class="btn btn-success" disabled><i class="fa fa-download"></i> Export Selected Rows (OFX)</button>
+        <button type="button" id="exportSelectedRowsCSV" class="btn btn-success" disabled><i class="fa fa-download"></i> Export Selected Rows (CSV)</button>
+        <button type="button" id="generateDepositSlip" class="btn btn-success" disabled> Generate Deposit Split for Selected Rows (PDF)</button>
+    </div>
 </div>
 
 <script>
@@ -205,11 +205,11 @@ $(document).ready(function() {
           $("#deleteSelectedRows").prop('disabled', !(selectedRows));
           $("#deleteSelectedRows").text("Delete ("+selectedRows+") Selected Rows");
           $("#exportSelectedRows").prop('disabled', !(selectedRows));
-          $("#exportSelectedRows").html("<i class=\"fa fa-download\"></i>Export ("+selectedRows+") Selected Rows (OFX)");
+          $("#exportSelectedRows").html("<i class=\"fa fa-download\"></i> Export ("+selectedRows+") Selected Rows (OFX)");
           $("#exportSelectedRowsCSV").prop('disabled', !(selectedRows));
-          $("#exportSelectedRowsCSV").html("<i class=\"fa fa-download\"></i>Export ("+selectedRows+") Selected Rows (CSV)");
+          $("#exportSelectedRowsCSV").html("<i class=\"fa fa-download\"></i> Export ("+selectedRows+") Selected Rows (CSV)");
           $("#generateDepositSlip").prop('disabled', !(selectedRows));
-          $("#generateDepositSlip").html("<i class=\"fa fa-download\"></i>Generate Deposit Split for Selected ("+selectedRows+") Rows (PDF)");
+          $("#generateDepositSlip").html("<i class=\"fa fa-download\"></i> Generate Deposit Split for Selected ("+selectedRows+") Rows (PDF)");
     });
      
     $('#deleteSelectedRows').click(function() {
