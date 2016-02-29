@@ -696,15 +696,6 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 						<?php if ($_SESSION['bNotes']) { ?>
 						<div role="tab-pane fade" class="tab-pane" id="notes">
 							<div class="box box-solid">
-								<div class="box-header">
-									<p>
-									<div class="pull-right top-page-ui text-center clearfix">
-										<div class="profile-message-btn btn-group">
-											<a class="btn btn-primary active" role="button" href="NoteEditor.php?FamilyID=<?= $fam_ID ?>"><span class="fa fa-plus" aria-hidden="true"></span> Add Note</a>
-										</div>
-									</div>
-									<br></p>
-								</div>
 								<div class="box-body chat" id="chat-box">
 									<?php
 									//Loop through all the notes
