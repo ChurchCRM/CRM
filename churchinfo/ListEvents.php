@@ -203,163 +203,161 @@ foreach ($allMonths as $mKey => $mVal) {
 
         }
 
-// Construct the form
-//Set the initial row color
-$sRowClass = "RowColorA";
-
 if ($numRows > 0)
 {
-?>
-<div class='box'>
-  <div class='box-header'>
-    <h3 class='box-title'><?= gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
-  </div>
-<table class='table data-table'>
-         <tr class="TableHeader">
-           <td width="15%"><strong><?= gettext("Event Type") ?></strong></td>
-           <td width="20%"><strong><?= gettext("Event Title") ?><br></strong>
-           <strong><?= gettext("Description") ?></strong></td>
-           <td width="35%" align="center"><strong><?= gettext("Attendance Counts") ?></strong></td>
-           <td width="10%" align="center"><strong><?= gettext("Start Date/Time") ?></strong></td>
-           <td width="5%" align="center"><strong><?= gettext("Active") ?></strong></td>
-           <td colspan="3" width="15%" align="center"><strong><?= gettext("Action") ?></strong></td>
-        </tr>
-         <?php
-
-         for ($row=1; $row <= $numRows; $row++)
-         {
-
-         //Alternate the row color
-         $sRowClass = AlternateRowStyle($sRowClass);
-
-         //Display the row
-         ?>
-         <tr class="<?= $sRowClass ?>">
-           <td><span class="SmallText"><?= $aEventType[$row] ?></span></td>
-           <td><span class="SmallText"><?= $aEventTitle[$row] ?><br>
-           <?= ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]) ?>
-             <?php echo ($aEventText[$row] != '' ? "&nbsp;&nbsp;&nbsp;<a href=\"javascript:popUp('GetText.php?EID=".$aEventID[$row]."')\"><strong>Sermon Text</strong></a>":""); ?></span>
-           </td>
-           <td>
-              <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-           <?php
-// RETRIEVE THE list of counts associated with the current event
-//
-                $cvSQL= "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$aEventID[$row]' ORDER BY evtcnt_countid ASC";
-//        echo $cvSQL;
-                $cvOpps = RunQuery($cvSQL);
-                $aNumCounts = mysql_num_rows($cvOpps);
-//        echo "numcounts = {$aNumCounts}\n\l";
-                if($aNumCounts) {
-
-                for($c = 0; $c <$aNumCounts; $c++){
-                  $cRow = mysql_fetch_array($cvOpps, MYSQL_BOTH);
-                  extract($cRow);
-                  $cCountID[$c] = $evtcnt_countid;
-                  $cCountName[$c] = $evtcnt_countname;
-                  $cCount[$c]= $evtcnt_countcount;
-                  $cCountNotes = $evtcnt_notes;
-//                  $cCountSum[$c]+= $evtcnt_countcount;
-                  ?>
-                  <td align="center">
-                  <span class="SmallText">
-                    <strong><?= $evtcnt_countname ?></strong>
-                    <br><?= $evtcnt_countcount ?></span>
-                  </td>
+  ?>
+  <div class='box'>
+    <div class='box-header'>
+      <h3 class='box-title'><?= gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
+    </div>
+    <div class='box-body'>
+  <table class='table data-table table-striped table-bordered'>
+    <thead>
+      <tr class="TableHeader">
+        <th><?= gettext("Event Type") ?></th>
+        <th><?= gettext("Description") ?></th>
+        <th><?= gettext("Attendance Counts") ?></th>
+        <th><?= gettext("Start Date/Time") ?></th>
+        <th><?= gettext("Active") ?></th>
+        <th><?= gettext("Action") ?></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+        for ($row=1; $row <= $numRows; $row++)
+        {
+          ?>
+          <tr>
+            <td><?= $aEventType[$row] ?></td>
+            <td>
+              <?= $aEventTitle[$row] ?>
+              <?= ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]) ?>
+              <?php if ($aEventText[$row] != '') { ?>
+                <div class='text-bold'><a href="javascript:popUp('GetText.php?EID=<?=$aEventID[$row]?>')">Sermon Text</a></div>
+              <?php } ?>
+            </td>
+            <td>
+              <table width='100%' class='table-simple-padding'>
+                <tr>
                   <?php
-                }
-                } else {
+                    // RETRIEVE THE list of counts associated with the current event
+                    $cvSQL= "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$aEventID[$row]' ORDER BY evtcnt_countid ASC";
+                    $cvOpps = RunQuery($cvSQL);
+                    $aNumCounts = mysql_num_rows($cvOpps);
+
+                    if($aNumCounts) {
+                      for($c = 0; $c <$aNumCounts; $c++){
+                        $cRow = mysql_fetch_array($cvOpps, MYSQL_BOTH);
+                        extract($cRow);
+                        $cCountID[$c] = $evtcnt_countid;
+                        $cCountName[$c] = $evtcnt_countname;
+                        $cCount[$c]= $evtcnt_countcount;
+                        $cCountNotes = $evtcnt_notes;
+                        ?>
+                        <td>
+                          <div class='text-bold'><?= $evtcnt_countname ?></div>
+                          <div><?= $evtcnt_countcount ?></div>
+                        </td>
+                        <?php
+                      }
+                    } else {
+                      ?>
+                      <td>
+                        <?= gettext("No Attendance Recorded") ?>
+                      </td>
+                      <?php
+                    }
+                  ?>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <?= FormatDate($aEventStartDateTime[$row],1) ?>
+            </td>
+            <td>
+              <?= ($aEventStatus[$row] != 0 ? "No":"Yes") ?>
+            </td>
+            <td>
+              <table class='table-simple-padding'>
+                <tr>
+                  <td>
+                    <form name="EditAttendees" action="EditEventAttendees.php" method="POST">
+                      <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
+                      <input type="hidden" name="EName" value="<?= $aEventTitle[$row] ?>">
+                      <input type="hidden" name="EDesc" value="<?= $aEventDesc[$row] ?>">
+                      <input type="hidden" name="EDate" value="<?= FormatDate($aEventStartDateTime[$row],1) ?>">
+                      <input type="submit" name="Action" value="<?= gettext("Attendees(".$attNumRows[$row].")") ?>" class="btn btn-default btn-sm btn-block" >
+                    </form>
+                  </td>
+                  <td>
+                    <form name="EditEvent" action="EventEditor.php" method="POST">
+                      <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
+                      <button type="submit" name="Action" title="<?= gettext('Edit') ?>" value="<?= gettext("Edit") ?>" data-tooltip class="btn btn-default btn-sm">
+                        <i class='fa fa-pencil'></i>
+                      </button>
+                    </form>
+                  </td>
+                  <td>
+                    <form name="DeleteEvent" action="ListEvents.php" method="POST">
+                      <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
+                      <button type="submit" name="Action" title="<?=gettext("Delete") ?>" data-tooltip value="<?= gettext("Delete") ?>" class="btn btn-default btn-sm" onClick="return confirm('Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: <?=  $aEventID[$row] ?>')">
+                        <i class='fa fa-trash'></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <?php
+        } // end of for loop for # rows for this month
+
+        // calculate averages if this is a single type list
+        if ($eType != "All" && $aNumCounts >0)
+        {
+          $avgSQL="SELECT evtcnt_countid, evtcnt_countname, AVG(evtcnt_countcount) from eventcounts_evtcnt, events_event WHERE eventcounts_evtcnt.evtcnt_eventid=events_event.event_id AND events_event.event_type='$eType' AND MONTH(events_event.event_start)='$mVal' GROUP BY eventcounts_evtcnt.evtcnt_countid ASC ";
+          $avgOpps = RunQuery($avgSQL);
+          $aAvgRows = mysql_num_rows($avgOpps);
+          ?>
+          <tr>
+            <td class="LabelColumn" colspan="2"><?= gettext(" Monthly Averages") ?></td>
+            <td>
+              <div class='row'>
+                <?php
+                // calculate and report averages
+                for($c = 0; $c <$aAvgRows; $c++){
+                  $avgRow = mysql_fetch_array($avgOpps, MYSQL_BOTH);
+                  extract($avgRow);
+                  $avgName = $avgRow['evtcnt_countname'];
+                  $avgAvg = $avgRow[2];
                   ?>
                   <td align="center">
                     <span class="SmallText">
-                    <strong><?= gettext("No Attendance Recorded") ?></strong>
-                    </span>
+                    <strong>AVG<br><?= $avgName ?></strong>
+                    <br><?= sprintf("%01.2f",$avgAvg) ?></span>
                   </td>
                   <?php
-//                  $aAvgRows -=1;
                 }
-           ?>
-           </tr>
-           </table>
-           </td>
-           <td><span class="SmallText"><?= FormatDate($aEventStartDateTime[$row],1) ?></span></td>
-
-           <td class="SmallText" align="center"><?= ($aEventStatus[$row] != 0 ? "No":"Yes") ?></span></td>
-
-          <td><span class="SmallText">
-          <form name="EditAttendees" action="EditEventAttendees.php" method="POST">
-          <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-          <input type="hidden" name="EName" value="<?= $aEventTitle[$row] ?>">
-          <input type="hidden" name="EDesc" value="<?= $aEventDesc[$row] ?>">
-          <input type="hidden" name="EDate" value="<?= FormatDate($aEventStartDateTime[$row],1) ?>">
-          <input type="submit" name="Action" value="<?= gettext("Attendees(".$attNumRows[$row].")") ?>" class="btn btn-default btn-sm" >
-             </form></span>
-           </td>
-
-           <td align="center"><span class="SmallText">
-             <form name="EditEvent" action="EventEditor.php" method="POST">
-               <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-               <input type="submit" name="Action" value="<?= gettext("Edit") ?>" class="btn btn-default btn-sm">
-             </form></span>
-           </td>
-           <td><span class="SmallText">
-             <form name="DeleteEvent" action="ListEvents.php" method="POST">
-               <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-               <input type="submit" name="Action" value="<?= gettext("Delete") ?>" class="btn btn-default btn-sm" onClick="return confirm('Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: <?=  $aEventID[$row] ?>')">
-             </form></span>
-          </td>
-
-         </tr>
-<?php
-         } // end of for loop for # rows for this month
-
-// calculate averages if this is a single type list
-if ($eType != "All" && $aNumCounts >0){
-    $avgSQL="SELECT evtcnt_countid, evtcnt_countname, AVG(evtcnt_countcount) from eventcounts_evtcnt, events_event WHERE eventcounts_evtcnt.evtcnt_eventid=events_event.event_id AND events_event.event_type='$eType' AND MONTH(events_event.event_start)='$mVal' GROUP BY eventcounts_evtcnt.evtcnt_countid ASC ";
-
-    $avgOpps = RunQuery($avgSQL);
-    $aAvgRows = mysql_num_rows($avgOpps);
-
-    ?>
-    <tr>
-    <td class="LabelColumn" colspan="2"><?= gettext(" Monthly Averages") ?></td>
-    <td>
-       <table width="100%" cellpadding="0" cellspacing="0" border="0">
-       <tr>
-      <?php
-      // calculate and report averages
-      for($c = 0; $c <$aAvgRows; $c++){
-        $avgRow = mysql_fetch_array($avgOpps, MYSQL_BOTH);
-        extract($avgRow);
-        $avgName = $avgRow['evtcnt_countname'];
-        $avgAvg = $avgRow[2];
+                ?>
+              </div>
+            </td>
+            <td class="TextColumn" colspan="3"></td>
+          </tr>
+          <?php
+        }
         ?>
-        <td align="center">
-          <span class="SmallText">
-          <strong>AVG<br><?= $avgName ?></strong>
-          <br><?= sprintf("%01.2f",$avgAvg) ?></span>
-        </td>
-        <?php
-      }
-      ?>
-      </tr>
-      </table>
-      </td>
-      <td class="TextColumn" colspan="3"></td>
-      </tr>
-<?php }
-?>
-         <tr><td class="TextColumn" colspan="6">&nbsp;</td></tr>
-       </table>
-     </div>
-<?php
-  }
+      </tbody>
+    </table>
+  </div>
+  </div>
+  <?php
+}
 } // end for-each month loop
 ?>
 
 <div class='text-center'>
   <a href="EventEditor.php" class='btn btn-primary'>
+    <i class='fa fa-ticket'></i>
     <?= gettext("Add New Event") ?>
   </a>
 </div>

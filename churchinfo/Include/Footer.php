@@ -44,6 +44,7 @@
 	<script src="<?= $sRootPath ?>/skin/adminlte/dist/js/app.min.js"></script>
 
 	<script src="<?= $sRootPath ?>/js/DataTables.js"></script>
+	<script src="<?= $sRootPath ?>/js/Tooltips.js"></script>
 	<script src="<?= $sRootPath ?>/js/Footer.js"></script>
 
 </body>
