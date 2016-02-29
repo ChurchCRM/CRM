@@ -23,7 +23,7 @@
 *  settings are using badly overloaded values, with positive, negative, and not-set
 *  all significant.  Originally it relied on the old php behavior of not-set quietly
 *  acting as nothing or zero, but the newer version of php does not permit this.
-*  Fixing it for the new version of php involved adding a whole lot of calls to 
+*  Fixing it for the new version of php involved adding a whole lot of calls to
 *  isset().
 *
 ******************************************************************************/
@@ -151,7 +151,7 @@ if ($sMode == 'person') {
 		$iClassification = FilterInput($_GET["Classification"],'int');
 	if (array_key_exists ("FamilyRole", $_GET) && $_GET["FamilyRole"] != "")
 		$iFamilyRole = FilterInput($_GET["FamilyRole"],'int');
-    if (array_key_exists ("Gender", $_GET) && $_GET["Gender"] != "") 
+    if (array_key_exists ("Gender", $_GET) && $_GET["Gender"] != "")
 		$iGender = FilterInput($_GET["Gender"],'int');
 	if (array_key_exists ("PersonProperties", $_GET) && $_GET["PersonProperties"] != "")
 		$iPersonProperty = FilterInput($_GET["PersonProperties"],'int');
@@ -194,7 +194,7 @@ $sLimit50 = '';
 $sLimit100 = '';
 $sLimit200 = '';
 $sLimit500 = '';
-		
+
 // SQL for group-assignment helper
 if ($iMode == 2) {
 	$sBaseSQL = "SELECT *, IF(LENGTH(per_Zip) > 0,per_Zip,fam_Zip) AS zip " .
@@ -1023,7 +1023,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 	    </a>
     </td>
     <td>
-    <?
+    <?php
     if ($sPersonColumn3 == "Classification")
 		echo $aClassificationName[$per_cls_ID];
 	elseif ($sPersonColumn3 == "Family Role")
@@ -1138,4 +1138,4 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 	</div>
 </div>
 
-<? require "Include/Footer.php" ?>
+<?php require "Include/Footer.php" ?>
