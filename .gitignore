@@ -29,3 +29,8 @@ churchinfo/Images/Person/thumbnails/
 
 # SASS
 .sass-cache
+
+# Configuration files with passwords
+churchinfo/Include/Config.php
+churchinfo/mysql/database_setup_and_install.sh
+
