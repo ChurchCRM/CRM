@@ -214,7 +214,7 @@ if ($numRows > 0)
   <div class='box-header'>
     <h3 class='box-title'><?= gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
   </div>
-<table class='table'>
+<table class='table data-table'>
          <tr class="TableHeader">
            <td width="15%"><strong><?= gettext("Event Type") ?></strong></td>
            <td width="20%"><strong><?= gettext("Event Title") ?><br></strong>

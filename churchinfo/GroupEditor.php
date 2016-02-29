@@ -39,17 +39,10 @@ else
 
 $thisGroup = $groupService->getGroups($iGroupID);   //get this group from the group service.
 $rsGroupTypes = $groupService->getGroupTypes();     // Get Group Types for the drop-down
-$rsGroupRoleSeed = $groupService->getGroupRoleTemplateGroups();     //Group Group Role List 
+$rsGroupRoleSeed = $groupService->getGroupRoleTemplateGroups();     //Group Group Role List
 require "Include/Header.php";
 
 ?>
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
-
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-
 <!-- GROUP SPECIFIC PROPERTIES MODAL-->
      <div class="modal fade" id="groupSpecificPropertiesModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
             <div class="modal-dialog">
@@ -109,11 +102,11 @@ require "Include/Header.php";
                 </div>
                 <div class="row">
                 <div class="col-xs-3">
-                    <?php 
+                    <?php
                     // Show Role Clone fields only when adding new group
                     if (strlen($iGroupID) < 1) { ?>
                         <b><?= gettext("Group Member Roles:") ?></b>
-                        
+
                         <?= gettext("Clone roles:") ?>
                         <input type="checkbox" name="cloneGroupRole" id="cloneGroupRole" value="1">
                         </div>
@@ -121,7 +114,7 @@ require "Include/Header.php";
                         <?= gettext("from group:") ?>
                         <select class="form-control input-small" name="seedGroupID" id="seedGroupID" >
                         <option value="0"><?php gettext("Select a group"); ?></option>
-                        
+
                         <?php
                            foreach($rsGroupRoleSeed as $groupRoleTemplate)
                             {
@@ -137,7 +130,7 @@ require "Include/Header.php";
                 <div class="row">
                 <div class="col-xs-6">
                     <label for="UseGroupProps"><?= gettext("Group Specific Properties: ") ?></label>
-               
+
                     <?php
                         if ($thisGroup['grp_hasSpecialProps'])
                         {
@@ -147,12 +140,12 @@ require "Include/Header.php";
                         }
                         else
                             echo "Disabled <br>" ;
-                            echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">Enable Group Specific Properties</button>&nbsp;'; 
+                            echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">Enable Group Specific Properties</button>&nbsp;';
                     ?>
                 </div>
                 </div>
                 <br>
-                <div class="row">    
+                <div class="row">
                 <div class="col-xs-3">
                     <input type="submit" id="saveGroup" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> Name="GroupSubmit">
                 </div>
@@ -183,7 +176,7 @@ require "Include/Header.php";
     var defaultRoleID= <?= ($thisGroup['grp_DefaultRole']?  $thisGroup['grp_DefaultRole'] : 1) ?>;
     var dataT = 0;
     var groupRoleData = <?= json_encode($groupService->getGroupRoles($iGroupID)); ?>;
-    var roleCount = groupRoleData.length; 
+    var roleCount = groupRoleData.length;
     var groupID=<?= $iGroupID ?>;
 </script>
 <script src="<?= $sRootPath ?>/js/GroupEditor.js"></script>

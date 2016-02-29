@@ -41,7 +41,7 @@ global $sPageTitle, $sRootPath;
     ?><title>ChurchCRM: <?= $sPageTitle ?></title><?php
 }
 
-function Header_error_modal() 
+function Header_error_modal()
 {
 ?>
     <!-- API Call Error Modal -->
@@ -75,8 +75,8 @@ function Header_body_scripts()
     checkAllowedURL();
  ?>
 
-    <script type="text/javascript" src="<?= $sRootPath . "/" ?>Include/jscalendar/calendar.js"></script>
-    <script type="text/javascript" src="<?= $sRootPath . "/" ?>Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
+    <script type="text/javascript" src="<?= $sRootPath ?>/Include/jscalendar/calendar.js"></script>
+    <script type="text/javascript" src="<?= $sRootPath ?>/Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
 
     <script language="javascript" type="text/javascript">
         window.CRM = { root: "<?= $sRootPath ?>" };
