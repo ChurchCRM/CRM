@@ -29,28 +29,12 @@ require "Include/Functions.php";
 require "Include/GeoCoder.php";
 require 'Include/PersonFunctions.php';
 require 'Service/MailchimpService.php';
+require 'Service/FamilyService.php';
 
 $mailchimp = new MailChimpService();
+$familyService = new FamilyService();
 //Set the page title
 $sPageTitle = gettext("Family View");
-
-function getFamilyPhoto($iFamilyID) {
-	$validExtensions = array("jpeg", "jpg", "png");
-	$hasFile = false;
-	while (list(, $ext) = each($validExtensions)) {
-		$photoFile = "Images/Family/thumbnails/" . $iFamilyID . ".".$ext;
-		if (file_exists($photoFile)) {
-			$hasFile = true;
-			break;
-		}
-	}
-
-	if ($hasFile)  {
-		return  $photoFile;
-	} else {
-	 	return "Images/Family/family-128.png";
- 	}
-}
 
 //Get the FamilyID out of the querystring
 $iFamilyID = FilterInput($_GET["FamilyID"],'int');
@@ -183,44 +167,11 @@ require "Include/Header.php";
 
 $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID'])));
 ?>
-<div class="btn-group pull-right">
-	<?php if (($previous_id > 0)) { ?>
-		  <a class="btn btn-default" role="button" href="FamilyView.php?FamilyID=<?= $previous_id ?>"> <span class="fa fa-hand-o-left" aria-hidden="true"></span></a>
-	<?php } ?>
-	<a role="button" class="btn btn-warning" href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Family</a>
-	<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-		<span class="caret"></span>
-		<span class="sr-only">Toggle Dropdown</span>
-	</button>
-
-	<ul class="dropdown-menu" role="menu">
-		<li><a href="Reports/ConfirmReport.php?familyId=<?= $iFamilyID ?>"><?= gettext("Family Record PDF") ?></a></li>
-		<?php if ($bOkToEdit) { ?>
-		<li><a href="#" data-toggle="modal" data-target="#upload-image">Upload Family Photo </a></li>
-		<li><a href="#" data-toggle="modal" data-target="#confirm-delete-image">Delete Family Photo </a></li>
-		<li class="divider"></li>
-		<li><a href="#" data-toggle="modal" data-target="#confirm-email-pdf"> Email Confirmation PDF Report</a></li>
-		<li class="divider"></li>
-		<?php }
-		if ($_SESSION['bNotes']) { ?>
-		<li><a href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>">Add a Note to this Record</a></li>
-		<li class="divider"></li>
-		<?php }
-		if ($_SESSION['bDeleteRecords']) { ?>
-		<li><a href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>">Delete this Family</a></li>
-		<?php } ?>
-	</ul>
-	<a class="btn btn-default" role="button" href="FamilyList.php"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
-	<?php if (($next_id > 0)) { ?>
-		<a class="btn btn-default" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><span class="fa fa-hand-o-right" aria-hidden="true"></span></a>
-	<?php } ?>
-</div>
-<p><br/><br/></p>
 <div class="row">
 	<div class="col-lg-3 col-md-4 col-sm-4">
 		<div class="box box-primary">
 			<div class="box-body">
-				<img src="<?= getFamilyPhoto($fam_ID) ?>" alt="" class="img-circle img-responsive profile-user-img" />
+				<img src="<?= $familyService->getFamilyPhoto($fam_ID) ?>" alt="" class="img-circle img-responsive profile-user-img" />
                 <h3 class="profile-username text-center"><?= gettext("The") . " $fam_Name " . gettext("Family") ?></h3>
                 <?php if ($bOkToEdit) { ?>
                     <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="btn btn-primary btn-block"><b>Edit</b></a>
@@ -229,7 +180,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 				<ul class="fa-ul">
 					<li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
 					<a href="http://maps.google.com/?q=<?= getMailingAddress($fam_Address1,$fam_Address2,$fam_City,$fam_State,$fam_Zip,$fam_Country) ?>" target="_blank"><?php
-							echo getMailingAddress($fam_Address1,$fam_Address2,$fam_City,$fam_State,$fam_Zip,$fam_Country);				
+							echo getMailingAddress($fam_Address1,$fam_Address2,$fam_City,$fam_State,$fam_Zip,$fam_Country);
 							echo "</a></span><br>";
 							if ($fam_Latitude && $fam_Longitude) {
 								if ($nChurchLatitude && $nChurchLongitude) {
@@ -282,6 +233,35 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 		</div>
 	</div>
 	<div class="col-lg-9 col-md-8 col-sm-8">
+        <div class="row">
+            <div class="box"><br/>
+                <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-plus-square"></i> Add New Member</a>
+                <?php if (($previous_id > 0)) { ?>
+                    <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i class="fa fa-hand-o-left"></i> Previous Family</a>
+                <?php } ?>
+                <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i class="fa fa-list-ul"></i> Family List</a>
+                <?php if (($next_id > 0)) { ?>
+                    <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i class="fa fa-hand-o-right"></i>Next Family </a>
+                <?php } ?>
+                <?php if ($_SESSION['bDeleteRecords']) { ?>
+                    <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-trash-o"></i> Delete this Family</a>
+                <?php } ?>
+                <br/>
+                <?php if ($bOkToEdit) { ?>
+                    <a class="btn btn-app" href="#" data-toggle="modal" data-target="#upload-image"><i class="fa fa-camera"></i> Upload Photo </a>
+                  <?php if ($familyService->getUploadedPhoto($iFamilyID) != "") { ?>
+                  <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i>Remove Photo </a>
+                  <?php }
+                }
+                if ($_SESSION['bNotes']) { ?>
+                    <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-sticky-note"></i> Add a Note</a>
+                <?php } ?>
+                <a class="btn btn-app" href="Reports/ConfirmReport.php?familyId=<?= $iFamilyID ?>"><i class="fa fa-download"></i> Download PDF Report</a>
+                <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-email-pdf"><i class="fa fa-send"></i> Email PDF Report</a>
+            </div>
+        </div>
+    </div>
+	<div class="col-lg-9 col-md-8 col-sm-8">
 		<div class="row">
 			<div class="box box-header">
 				<div class="col-lg-5 col-md-4 col-sm-4">
@@ -301,11 +281,6 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
         <div class="row">
             <div class="box box-solid">
                 <div class="box-body table-responsive clearfix">
-                    <div class="btn-group pull-right clearfix">
-                        <a class="btn btn-info" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>">
-                            <i class="fa fa-plus-square"></i> Add New Member
-                        </a>
-                    </div>
                     <table class="table user-list table-hover">
                     <thead>
                     <tr>
@@ -721,15 +696,6 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 						<?php if ($_SESSION['bNotes']) { ?>
 						<div role="tab-pane fade" class="tab-pane" id="notes">
 							<div class="box box-solid">
-								<div class="box-header">
-									<p>
-									<div class="pull-right top-page-ui text-center clearfix">
-										<div class="profile-message-btn btn-group">
-											<a class="btn btn-primary active" role="button" href="NoteEditor.php?FamilyID=<?= $fam_ID ?>"><span class="fa fa-plus" aria-hidden="true"></span> Add Note</a>
-										</div>
-									</div>
-									<br></p>
-								</div>
 								<div class="box-body chat" id="chat-box">
 									<?php
 									//Loop through all the notes
