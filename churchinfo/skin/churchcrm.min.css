@@ -70,6 +70,16 @@ input + .c-checkbox, input + .c-radio, .c-checkbox + .c-checkbox, .c-checkbox + 
   .c-radio .c-indicator {
     border-radius: 50%; }
 
+.form-radio-list, .form-checkbox-list {
+  padding-top: 7px;
+  margin-bottom: 0; }
+  .form-radio-list .form-control, .form-checkbox-list .form-control {
+    margin-top: -5px;
+    margin-bottom: -5px;
+    padding-top: 4px;
+    height: inherit;
+    padding-bottom: 4px; }
+
 table.horizontal-scroll {
   display: block;
   overflow-x: scroll; }

@@ -47,24 +47,11 @@ if ( answer )
 //
 //  process the ACTION button inputs from the form page
 //
-$editing='FALSE';
-$editID = 0;
 
 if (isset ($_POST['Action'])) {
 	switch (FilterInput($_POST['Action'])){
-	case gettext("Add Event Type"):
-	    // Insert into the event_name table
-	    $sSQL = "INSERT INTO event_types () VALUES()";
-	    RunQuery($sSQL);
-	    $theID = mysql_insert_id();
-	    $editID=$theID;
-	    $editing='TRUE';
-	    $_POST['Action']='';
-	    break;
-
-	case gettext("Save Changes"):
-
-	  $editing='FALSE';
+    case "CREATE":
+    // Insert into the event_name table
 	  $eName = $_POST["newEvtName"];
 	  $eTime = $_POST["newEvtStartTime"];
 	  $eDOM = $_POST["newEvtRecurDOM"];
@@ -77,9 +64,16 @@ if (isset ($_POST['Action'])) {
 	  $eCntNum = count($eCntArray);
 	  $theID=$_POST["theID"];
 
-	  $sSQL = "UPDATE event_types SET type_name='$eName', type_defstarttime='$eTime',type_defrecurtype='$eRecur', type_defrecurDOW='$eDOW',type_defrecurDOM='$eDOM',type_defrecurDOY='$eDOY' WHERE type_id='$theID'";
+	  $sSQL = "INSERT INTO event_types (type_name, type_defstarttime, type_defrecurtype, type_defrecurDOW, type_defrecurDOM, type_defrecurDOY)
+             VALUES ('" . mysql_real_escape_string($eName)  . "',
+                     '" . mysql_real_escape_string($eTime)  . "',
+                     '" . mysql_real_escape_string($eRecur) . "',
+                     '" . mysql_real_escape_string($eDOW)   . "',
+                     '" . mysql_real_escape_string($eDOM)   . "',
+                     '" . mysql_real_escape_string($eDOY)   . "')";
 
 	  RunQuery($sSQL);
+    $theID = mysql_insert_id();
 
 	  for($j=0; $j<$eCntNum; $j++)
 	  {
@@ -87,26 +81,16 @@ if (isset ($_POST['Action'])) {
 	    $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('$theID','$cCnt') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
 	    RunQuery($sSQL);
 	  }
-	  $editID='';
-	  $theID='';
-	  $_POST['Action']='';
-	  break;
-	//
-	//case "Edit":
-	//  $theID = $_POST["theID"];
-	//  break;
-	//
-	case gettext("Delete"):
+    Redirect("EventNames.php"); // clear POST
+    break;
+
+	case "DELETE":
 	  $theID = $_POST["theID"];
 	  $sSQL = "DELETE FROM event_types WHERE type_id='$theID' LIMIT 1";
-	//  echo "$sSQL";
 	  RunQuery($sSQL);
 	  $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$theID'";
-	//  echo "$sSQL";
 	  RunQuery($sSQL);
 	  $theID='';
-	  $editID='';
-	  $editing='FALSE';
 	  $_POST['Action']='';
 	  break;
 	}
@@ -174,6 +158,112 @@ $numRows = mysql_num_rows($rsOpps);
                  }
         }
 
+if (FilterInput($_POST["Action"]) == "NEW")
+{
+  ?>
+  <div class='box box-primary'>
+    <div class='box-body'>
+      <form name="UpdateEventNames" action="EventNames.php" method="POST" class='form-horizontal'>
+        <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
+        <div class='row form-group'>
+          <div class='col-sm-4 control-label text-bold'>
+            <?= gettext("EVENT TYPE NAME") ?>
+          </div>
+          <div class='col-sm-6'>
+            <input class="form-control" type="text" name="newEvtName" value="<?= $aTypeName[$row] ?>" size="30" maxlength="35" autofocus>
+          </div>
+        </div>
+        <div class='row form-group'>
+          <div class='col-sm-4 control-label text-bold'>
+            <?= gettext("RECURRANCE PATTERN") ?>
+          </div>
+          <div class='col-sm-6'>
+            <div class='row form-radio-list'>
+              <div class='col-xs-12'>
+                <?php $render->Radio('None', 'newEvtTypeRecur', 'none'); ?>
+              </div>
+            </div>
+            <div class='row form-radio-list'>
+              <div class='col-xs-5'>
+                <?php $render->Radio('Weekly', 'newEvtTypeRecur', 'weekly'); ?>
+              </div>
+              <div class='col-xs-7'>
+                <select name="newEvtRecurDOW" size="1" class='form-control pull-left'>
+                  <option value=1><?= gettext("Sundays") ?></option>
+                  <option value=2><?= gettext("Mondays") ?></option>
+                  <option value=3><?= gettext("Tuesdays") ?></option>
+                  <option value=4><?= gettext("Wednesdays") ?></option>
+                  <option value=5><?= gettext("Thursdays") ?></option>
+                  <option value=6><?= gettext("Fridays") ?></option>
+                  <option value=7><?= gettext("Saturdays") ?></option>
+                </select>
+              </div>
+            </div>
+            <div class='row form-radio-list'>
+              <div class='col-xs-5'>
+                <?php $render->Radio('Monthly', 'newEvtTypeRecur', 'monthly'); ?>
+              </div>
+              <div class='col-xs-7'>
+                <select name="newEvtRecurDOM" size="1" class='form-control pull-left'>
+                  <?php
+                    for($kk=1; $kk<=31; $kk++)
+                    {
+                      $DOM = date('dS',mktime(0,0,0,1,$kk,2000));
+                      ?>
+                      <option class="SmallText" value=<?= $kk ?>><?= $DOM ?></option>
+                      <?php
+                    }
+                  ?>
+                 </select>
+               </div>
+            </div>
+            <div class='row form-radio-list'>
+              <div class='col-xs-5'>
+                <?php $render->Radio('Yearly', 'newEvtTypeRecur', 'yearly'); ?>
+              </div>
+              <div class='col-xs-7'>
+                <input type="text" class="form-control" name="newEvtRecurDOY" maxlength="10" id="nSD" size="11" placeholder='YYYY-MM-DD' data-provide="datepicker" data-format='mm/dd/yyyy' />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='row form-group'>
+          <div class='col-sm-4 control-label text-bold'>
+            <?= gettext("DEFAULT START TIME") ?>
+          </div>
+          <div class='col-sm-6'>
+            <select class="form-control" name="newEvtStartTime">
+              <?php createTimeDropdown(7,22,15,'',''); ?>
+            </select>
+          </div>
+        </div>
+        <div class='row form-group'>
+          <div class='col-sm-4 control-label text-bold'>
+            <?= gettext("ATTENDANCE COUNTS") ?>
+          </div>
+          <div class='col-sm-6'>
+            <input class="form-control" type="Text" name="newEvtTypeCntLst" value="<?= $cCountList[$row] ?>" Maxlength="50" id="nETCL" size="30">
+            <div class='text-sm'><?= gettext("Enter a list of the attendance counts you want to include with this event.")?></div>
+            <div class='text-sm'><?= gettext("Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"); ?></div>
+            <div class='text-sm'><?= gettext("Every event type includes a Total count, you do not need to include it.") ?></div>
+          </div>
+        </div>
+        <div class='row form-group'>
+          <div class='col-sm-8 col-sm-offset-4'>
+            <a href="EventNames.php" class='btn btn-default'>
+              <?= gettext('Cancel') ?>
+            </a>
+            <button type="submit" Name="Action" value="CREATE" class="btn btn-primary">
+              <?= gettext("Save Changes") ?>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <?php
+}
+
 // Construct the form
 ?>
 <div class="box">
@@ -183,154 +273,87 @@ $numRows = mysql_num_rows($rsOpps);
     <?php } ?>
   </div>
 
-<table class="table">
-<?php
-if ($numRows > 0)
-{
-?>
-     <tr class="TableHeader">
-        <td align="center" width="70px"><strong><?= gettext("Event Type") ?></strong></td>
-        <td align="left"><strong><?= gettext("Name") ?></strong></td>
-        <td align="left" width="250px"><strong><?= gettext("Recurrance Pattern") ?></strong></td>
-        <td align="left" width="100px"><strong><?= gettext("Start Time") ?></strong></td>
-        <td align="left"><strong><?= gettext("Attendance Counts") ?></strong></td>
-        <td align="center" colspan="3"><strong><?= gettext("Action") ?></strong></td>
-      </tr>
-<?php
-      $sRowClass = "RowColorA";
-      for ($row=1; $row <= $numRows; $row++)
-      {
-        $sRowClass = AlternateRowStyle($sRowClass);
-?>
-        <tr class="<?= $sRowClass ?>">
-          <td class="TextColumn" align="center"><?= $aTypeID[$row] ?></td>
-
+  <div class='box-body'>
+    <?php
+    if ($numRows > 0)
+    {
+      ?>
+      <table class="table table-striped table-bordered data-table">
+        <thead>
+         <tr>
+            <th><?= gettext("Event Type") ?></th>
+            <th><?= gettext("Name") ?></th>
+            <th><?= gettext("Recurrance Pattern") ?></th>
+            <th><?= gettext("Start Time") ?></th>
+            <th><?= gettext("Attendance Counts") ?></th>
+            <th><?= gettext("Action") ?></th>
+          </tr>
+        </thead>
+        <tbody>
           <?php
-          $t = 0;
-          if (isset ($_POST["theID"]))
-          	$t=FilterInput ($_POST["theID"], 'int');
-          if($aTypeID[$row]==$editID)
+          for ($row=1; $row <= $numRows; $row++)
           {
+            ?>
+            <tr>
+              <td><?= $aTypeID[$row] ?></td>
+              <td><?= $aTypeName[$row] ?></td>
+              <td><?= $recur[$row] ?></td>
+              <td><?= $aDefStartTime[$row] ?></td>
+              <td><?= $cCountList[$row] ?></td>
+              <td>
+                <table class='table-simple-padding'>
+                  <tr>
+                    <td>
+                      <form name="ProcessEventType" action="EventEditor.php" method="POST" class="pull-left">
+                        <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
+                        <button type="submit" name="Action" value="<?= gettext("Create Event") ?>" class="btn btn-default btn-sm">
+                          <?= gettext("Create Event") ?>
+                        </button>
+                      </form>
+                    </td>
+                    <td>
+                      <form name="ProcessEventType" action="EditEventTypes.php" method="POST" class="pull-left">
+                        <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
+                        <button type="submit" class="btn btn-default btn-sm" name="Action" title="<?= gettext("Edit") ?>" data-tooltip value="<?= gettext("Edit") ?>">
+                          <i class='fa fa-pencil'></i>
+                        </button>
+                      </form>
+                    </td>
+                    <td>
+                      <form name="ProcessEventType" action="EventNames.php" method="POST" class="pull-left">
+                        <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
+                        <button type="submit" class="btn btn-default btn-sm" title="<?= gettext("Delete") ?>" data-tooltip name="Action" value="DELETE" onClick="return confirm('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: <?=  $aTypeID[$row] ?>')">
+                          <i class='fa fa-trash'></i>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <?php
+          }
           ?>
-              <form name="UpdateEventNames" action="EventNames.php" method="POST">
-              <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
-              <td class="TextColumn">
-              <strong><?= gettext("EVENT TYPE NAME") ?></strong>
-              <input class="SmallText form-control" type="text" name="newEvtName" value="<?= $aTypeName[$row] ?>" size="30" maxlength="35" autofocus></td>
-
-              <td class="TextColumn">
-              <strong><?= gettext("RECURRANCE PATTERN") ?></strong>
-              <div class='row'>
-                <div class='col-xs-12'>
-                  <?php $render->Radio('None', 'newEvtTypeRecur', 'none'); ?>
-                </div>
-              </div>
-              <div class='row'>
-                <div class='col-xs-5'>
-                  <?php $render->Radio('Weekly', 'newEvtTypeRecur', 'weekly'); ?>
-                </div>
-                <div class='col-xs-7'>
-                  <select name="newEvtRecurDOW" size="1" class='form-control pull-left'>
-                    <option class="SmallText" value=1><?= gettext("Sundays") ?></option>
-                    <option class="SmallText" value=2><?= gettext("Mondays") ?></option>
-                    <option class="SmallText" value=3><?= gettext("Tuesdays") ?></option>
-                    <option class="SmallText" value=4><?= gettext("Wednesdays") ?></option>
-                    <option class="SmallText" value=5><?= gettext("Thursdays") ?></option>
-                    <option class="SmallText" value=6><?= gettext("Fridays") ?></option>
-                    <option class="SmallText" value=7><?= gettext("Saturdays") ?></option>
-                  </select>
-                </div>
-              </div>
-              <div class='row'>
-                <div class='col-xs-5'>
-                  <?php $render->Radio('Monthly', 'newEvtTypeRecur', 'monthly'); ?>
-                </div>
-                <div class='col-xs-7'>
-                  <select name="newEvtRecurDOM" size="1" class='form-control pull-left'>
-                    <?php
-                      for($kk=1; $kk<=31; $kk++)
-                      {
-                        $DOM = date('dS',mktime(0,0,0,1,$kk,2000));
-                        ?>
-                        <option class="SmallText" value=<?= $kk ?>><?= $DOM ?></option>
-                        <?php
-                      }
-                    ?>
-                   </select>
-                 </div>
-              </div>
-              <div class='row'>
-                <div class='col-xs-5'>
-                  <?php $render->Radio('Yearly', 'newEvtTypeRecur', 'yearly'); ?>
-                </div>
-                <div class='col-xs-7'>
-                  <input type="text" class="form-control" name="newEvtRecurDOY" maxlength="10" id="nSD" size="11" placeholder='YYYY-MM-DD' data-provide="datepicker" data-format='mm/dd/yyyy' />
-                </div>
-              </div>
-              </input>
-              </td>
-              <td class="TextColumn">
-                <strong><?= gettext("DEFAULT") ?><br><?= gettext("START TIME") ?></strong>
-                <div>
-                  <select class="SmallText form-control" name="newEvtStartTime" size="1">
-                    <?php createTimeDropdown(7,22,15,'',''); ?>
-                  </select>
-                </div>
-              </td>
-              <td class="TextColumn" colspan="2">
-                <strong><?= gettext("ATTENDANCE COUNTS") ?></strong>
-                <div><?= gettext("Total,") ?><?= gettext("[Every event type includes a Total count]") ?></div>
-                <input class="SmallText form-control" type="Text" name="newEvtTypeCntLst" value="<?= $cCountList[$row] ?>" Maxlength="50" id="nETCL" size="30">
-                <div class="SmallText"><?php echo gettext("[enter a list of the attendance counts you want to include with this event. <br> Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children]"); ?></div>
-              </td>
-              <td colspan="2" align="center" valign="bottom">
-                <input type="submit" Name="Action" <?= 'value="' . gettext("Save Changes") . '"' ?> class="btn btn-primary">
-              </td>
-              </form>
-              </tr>
-              <?php
-            } else {
-              ?>
-              <td class="TextColumn"><?= $aTypeName[$row] ?></td>
-              <td class="TextColumn"><?= $recur[$row] ?></td>
-              <td class="TextColumn"><?= $aDefStartTime[$row] ?></td>
-              <td class="TextColumn"><?= $cCountList[$row] ?></td>
-              <td class="TextColumn" align="center">
-                <form name="ProcessEventType" action="EventEditor.php" method="POST" class="pull-left">
-                  <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
-                  <input type="submit" name="Action" value="<?= gettext("Create Event") ?>" class="btn btn-default btn-sm">
-                </form>
-              </td>
-              <td class="TextColumn" align="center">
-                <form name="ProcessEventType" action="EditEventTypes.php" method="POST" class="pull-left">
-                  <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
-                  <input type="submit" class="SmallText btn btn-default btn-sm" name="Action" value="<?= gettext("Edit") ?>">
-                </form>
-              </td>
-              <td class="TextColumn" align="center">
-                <form name="ProcessEventType" action="EventNames.php" method="POST" class="pull-left">
-                  <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
-                  <input type="submit" class="SmallText btn btn-default btn-sm" name="Action" value="<?= gettext("Delete") ?>" onClick="return confirm('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: <?=  $aTypeID[$row] ?>')">
-                </form>
-              </td>
-              </tr>
-              <?php
-            }
-
-        }
-}
-if($editing=='FALSE'){
-?>
-<tr align="center">
-    <td colspan=8 class="TextColumn" align="center">
-    <form name="AddEventNames" action="EventNames.php" method="POST">
-    <input type="submit" Name="Action" value="<?= gettext("Add Event Type") ?>" class="btn btn-primary">
-    </form>
-    </td>
-</tr>
-<?php } // if $numRows > 0 ?>
-
-</table>
+        </tbody>
+      </table>
+      <?php
+    }
+    ?>
+  </div>
 </div>
 
+<?php
+if (FilterInput($_POST["Action"]) != "NEW")
+{
+  ?>
+  <div class="text-center">
+    <form name="AddEventNames" action="EventNames.php" method="POST">
+      <button type="submit" Name="Action" value="NEW" class="btn btn-primary">
+        <?= gettext("Add Event Type") ?>
+      </button
+    </form>
+  </div>
+  <?php
+}
+?>
 <?php require "Include/Footer.php" ?>
