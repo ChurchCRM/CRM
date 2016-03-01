@@ -35,7 +35,7 @@ require 'Include/Header.php';
         <p>CAUTION: This will completely erase the existing database, and replace it with the backup</p>
         <p>If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema</p>
 
-        <form id="restoredatabase" action="<?= $sURLPath."/"; ?>api/database/restore" method="POST" enctype="multipart/form-data">
+        <form id="restoredatabase" action="<?= sRootPath ?>/api/database/restore" method="POST" enctype="multipart/form-data">
         <input type="file" name="restoreFile" id="restoreFile" multiple=""><br> 
         <button type="submit" class="btn btn-primary">Upload Files</button>
         </form>
@@ -53,7 +53,7 @@ $('#restoredatabase').submit(function(event) {
    $("#restorestatus").html("Restore Running, Please wait.");
    var formData = new FormData($(this)[0]); 
    $.ajax({
-        url: '<?= $sURLPath."/"; ?>api/database/restore',
+        url: window.CRM.root + '/api/database/restore',
         type: 'POST',
         data: formData,
         cache: false,
@@ -65,7 +65,7 @@ $('#restoredatabase').submit(function(event) {
    .done(function(data) {
         console.log(data);
         $("#restorestatus").css("color","green");
-        $("#restorestatus").html('Restore Complete <a href="Default.php?Logoff=True" class="btn btn-primary">Login to restored Database</a>');
+        $("#restorestatus").html('Restore Complete <a href="Login.php?Logoff=True" class="btn btn-primary">Login to restored Database</a>');
     }).fail(function()  {
         $("#restorestatus").css("color","red");
         $("#restorestatus").html("Restore Error.");
@@ -74,7 +74,7 @@ $('#restoredatabase').submit(function(event) {
 });
 </script>
 <!-- PACE -->
-<script src="<?= $sRootPath ?>/vendor/AdminLTE/plugins/pace/pace.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
 <?php
 require "Include/Footer.php";
 ?>

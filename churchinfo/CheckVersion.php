@@ -82,7 +82,7 @@ else        //the upgrade failed!
 <!-- /.content -->
 
 
-<?
+<?php
 }
 
 require 'Include/FooterNotLoggedIn.php';

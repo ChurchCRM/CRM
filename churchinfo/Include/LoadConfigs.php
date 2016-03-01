@@ -85,7 +85,7 @@ if ($rsConfig) {
     }
 }
 
-if (isset($_SESSION['iUserID'])) {      // Not set on Default.php
+if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
     // Load user variables from user config table.
     // **************************************************
     $sSQL = "SELECT ucfg_name, ucfg_value AS value "
@@ -95,7 +95,6 @@ if (isset($_SESSION['iUserID'])) {      // Not set on Default.php
         while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
             $$ucfg_name = $value;
                 $_SESSION[$ucfg_name] = $value;
-//              echo "<br>".$ucfg_name." ".$_SESSION[$ucfg_name];
         }
     }
 }
