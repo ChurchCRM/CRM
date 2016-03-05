@@ -1995,4 +1995,17 @@ function getMailingAddress($Address1, $Address2, $City, $State, $Zip, $Country)
     return $mailingAddress;
 }
 
+function requireUserGroupMembership($allowedRoles)
+{
+        if ($_SESSION[$allowedRoles])
+        {
+            return true;
+        }
+        else
+        {
+            throw new Exception("User is not authorized to access ".debug_backtrace()[1]['function'];
+        }
+
+}
+
 ?>
