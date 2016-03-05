@@ -18,7 +18,7 @@ class FinancialService {
         $this->personService = new PersonService();
         $this->familyService = new FamilyService();
     }
-	
+
     function processAuthorizeNet()
     {
         $donation = new AuthorizeNetAIM;
@@ -35,50 +35,50 @@ class FinancialService {
                 $donation->phone = $phone;
         
                 // not setting these
-        //		$donation->allow_partial_auth
-        //		$donation->auth_code
-        //		$donation->authentication_indicator
-        //		$donation->bank_aba_code
-        //		$donation->bank_check_number
-        //		$donation->card_code
-        //		$donation->cardholder_authentication_value
-        //		$donation->company
-        //		$donation->cust_id
-        //		$donation->customer_ip
-        //		$donation->delim_char
-        //		$donation->delim_data
-        //		$donation->duplicate_window
-        //		$donation->duty
-        //		$donation->echeck_type
-        //		$donation->email_customer
-        //		$donation->encap_char
-        //		$donation->fax
-        //		$donation->footer_email_receipt
-        //		$donation->freight
-        //		$donation->header_email_receipt
-        //		$donation->invoice_num
-        //		$donation->line_item
-        //		$donation->login
-        //		$donation->method
-        //		$donation->po_num
-        //		$donation->recurring_billing
-        //		$donation->relay_response
-        //		$donation->ship_to_address
-        //		$donation->ship_to_city
-        //		$donation->ship_to_company
-        //		$donation->ship_to_country
-        //		$donation->ship_to_first_name
-        //		$donation->ship_to_last_name
-        //		$donation->ship_to_state
-        //		$donation->ship_to_zip
-        //		$donation->split_tender_id
-        //		$donation->tax
-        //		$donation->tax_exempt
-        //		$donation->test_request
-        //		$donation->tran_key
-        //		$donation->trans_id
-        //		$donation->type
-        //		$donation->version
+        //        $donation->allow_partial_auth
+        //        $donation->auth_code
+        //        $donation->authentication_indicator
+        //        $donation->bank_aba_code
+        //        $donation->bank_check_number
+        //        $donation->card_code
+        //        $donation->cardholder_authentication_value
+        //        $donation->company
+        //        $donation->cust_id
+        //        $donation->customer_ip
+        //        $donation->delim_char
+        //        $donation->delim_data
+        //        $donation->duplicate_window
+        //        $donation->duty
+        //        $donation->echeck_type
+        //        $donation->email_customer
+        //        $donation->encap_char
+        //        $donation->fax
+        //        $donation->footer_email_receipt
+        //        $donation->freight
+        //        $donation->header_email_receipt
+        //        $donation->invoice_num
+        //        $donation->line_item
+        //        $donation->login
+        //        $donation->method
+        //        $donation->po_num
+        //        $donation->recurring_billing
+        //        $donation->relay_response
+        //        $donation->ship_to_address
+        //        $donation->ship_to_city
+        //        $donation->ship_to_company
+        //        $donation->ship_to_country
+        //        $donation->ship_to_first_name
+        //        $donation->ship_to_last_name
+        //        $donation->ship_to_state
+        //        $donation->ship_to_zip
+        //        $donation->split_tender_id
+        //        $donation->tax
+        //        $donation->tax_exempt
+        //        $donation->test_request
+        //        $donation->tran_key
+        //        $donation->trans_id
+        //        $donation->type
+        //        $donation->version
             
                 if ($dep_Type == "CreditCard") {
                     $donation->card_num = $creditCard;
@@ -125,13 +125,13 @@ class FinancialService {
                 if ($plg_aut_ResultID) {
                     // Already have a result record, update it.
                     $sSQL = "UPDATE result_res SET " .
-                                    "res_echotype1	='" . $response->response_reason_code	. "'," .
-                                    "res_echotype2	='" . $response->response_reason_text	. "'," .
-                                    "res_echotype3	='" . $response->response_code	. "'," .
-                                    "res_authorization	='" . $response->response_subcode	. "'," .
-                                    "res_order_number	='" . $response->authorization_code	. "'," .
-                                    "res_reference	='" . $response->avs_response	. "'," .
-                                    "res_status	='" . $response->transaction_id	. "'" .
+                                    "res_echotype1    ='" . $response->response_reason_code    . "'," .
+                                    "res_echotype2    ='" . $response->response_reason_text    . "'," .
+                                    "res_echotype3    ='" . $response->response_code    . "'," .
+                                    "res_authorization    ='" . $response->response_subcode    . "'," .
+                                    "res_order_number    ='" . $response->authorization_code    . "'," .
+                                    "res_reference    ='" . $response->avs_response    . "'," .
+                                    "res_status    ='" . $response->transaction_id    . "'" .
                                 " WHERE res_ID=" . $plg_aut_ResultID;
                     RunQuery($sSQL);
                 } else {
@@ -244,7 +244,7 @@ class FinancialService {
                 if ($plg_aut_ResultID) {
                     // Already have a result record, update it.
                     
-                    $sSQL = "UPDATE result_res SET res_echotype2='" . mysql_real_escape_string($errStr)	. "' WHERE res_ID=" . $plg_aut_ResultID;
+                    $sSQL = "UPDATE result_res SET res_echotype2='" . mysql_real_escape_string($errStr) . "' WHERE res_ID=" . $plg_aut_ResultID;
                     RunQuery($sSQL);
                 } else {
                     // Need to make a new result record
@@ -413,7 +413,7 @@ class FinancialService {
         }
     }
     
-	function deletePayment($groupKey) 
+    function deletePayment($groupKey) 
     {
         $sSQL = "SELECT deposit_dep.dep_Closed FROM pledge_plg 
         INNER JOIN deposit_dep ON
@@ -434,117 +434,108 @@ class FinancialService {
         }
         
     }
-	
-	function getMemberByScanString($sstrnig)
-	{
-		global $bUseScannedChecks;
-		if ($bUseScannedChecks) 
-		{ 
-			require "../Include/MICRFunctions.php";
-			$micrObj = new MICRReader(); // Instantiate the MICR class
-			$routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
-			if ($routeAndAccount) {
-				$sSQL = "SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck=\"" . $routeAndAccount . "\"";
-				$rsFam = RunQuery($sSQL);
-				extract(mysql_fetch_array($rsFam));
-				$iCheckNo = $micrObj->FindCheckNo ($tScanString);
-				return '{"ScanString": "'.$tScanString.'" , "RouteAndAccount": "'.$routeAndAccount.'" , "CheckNumber": "'.$iCheckNo.'" ,"fam_ID": "'.$fam_ID.'" , "fam_Name": "'.$fam_Name.'"}';
-			}
-			else
-			{
-				throw new Exception("error in locating family");
-			}
-		}
-		else
-		{
-			throw new Exception("Scanned Checks is disabled");
-		}	
-	}
+    
+    function getMemberByScanString($sstrnig)
+    {
+        global $bUseScannedChecks;
+        if ($bUseScannedChecks) 
+        { 
+            require "../Include/MICRFunctions.php";
+            $micrObj = new MICRReader(); // Instantiate the MICR class
+            $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
+            if ($routeAndAccount) {
+                $sSQL = "SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck=\"" . $routeAndAccount . "\"";
+                $rsFam = RunQuery($sSQL);
+                extract(mysql_fetch_array($rsFam));
+                $iCheckNo = $micrObj->FindCheckNo ($tScanString);
+                return '{"ScanString": "'.$tScanString.'" , "RouteAndAccount": "'.$routeAndAccount.'" , "CheckNumber": "'.$iCheckNo.'" ,"fam_ID": "'.$fam_ID.'" , "fam_Name": "'.$fam_Name.'"}';
+            }
+            else
+            {
+                throw new Exception("error in locating family");
+            }
+        }
+        else
+        {
+            throw new Exception("Scanned Checks is disabled");
+        }    
+    }
 
-	function getDepositsByFamilyID($fid)
-	{
+    function getDepositsByFamilyID($fid)
+    {
         //This might not be finished....
-		$sSQL = "SELECT plg_fundID, plg_amount from pledge_plg where plg_famID=\"" . $familyId . "\" AND plg_PledgeOrPayment=\"Pledge\"";
-			if ($fyid != -1)
-			{
-				$sSQL .= " AND plg_FYID=\"" . $fyid . "\";";
-			}
-			echo $sSQL;
-			$rsPledge = RunQuery($sSQL);
-			$totalPledgeAmount = 0;
-			while ($row = mysql_fetch_array($rsPledge)) {
-				$fundID = $row["plg_fundID"];
-				$plgAmount = $row["plg_amount"];
-				$fundID2Pledge[$fundID] = $plgAmount;
-				$totalPledgeAmount = $totalPledgeAmount + $plgAmount;
-			} 
-			if ($fundID2Pledge) {
-				// division rounding can cause total of calculations to not equal total.  Keep track of running total, and asssign any rounding error to 'default' fund
-				$calcTotal = 0;
-				$calcOtherFunds = 0;
-				foreach ($fundID2Pledge as $fundID => $plgAmount) {
-					$calcAmount = round($iTotalAmount * ($plgAmount / $totalPledgeAmount), 2);
+        $sSQL = "SELECT plg_fundID, plg_amount from pledge_plg where plg_famID=\"" . $familyId . "\" AND plg_PledgeOrPayment=\"Pledge\"";
+            if ($fyid != -1)
+            {
+                $sSQL .= " AND plg_FYID=\"" . $fyid . "\";";
+            }
+            echo $sSQL;
+            $rsPledge = RunQuery($sSQL);
+            $totalPledgeAmount = 0;
+            while ($row = mysql_fetch_array($rsPledge)) {
+                $fundID = $row["plg_fundID"];
+                $plgAmount = $row["plg_amount"];
+                $fundID2Pledge[$fundID] = $plgAmount;
+                $totalPledgeAmount = $totalPledgeAmount + $plgAmount;
+            } 
+            if ($fundID2Pledge) {
+                // division rounding can cause total of calculations to not equal total.  Keep track of running total, and asssign any rounding error to 'default' fund
+                $calcTotal = 0;
+                $calcOtherFunds = 0;
+                foreach ($fundID2Pledge as $fundID => $plgAmount) {
+                    $calcAmount = round($iTotalAmount * ($plgAmount / $totalPledgeAmount), 2);
 
-					$nAmount[$fundID] = number_format($calcAmount, 2, ".", "");
-					if ($fundID <> $defaultFundID) {
-						$calcOtherFunds = $calcOtherFunds + $calcAmount;
-					}
+                    $nAmount[$fundID] = number_format($calcAmount, 2, ".", "");
+                    if ($fundID <> $defaultFundID) {
+                        $calcOtherFunds = $calcOtherFunds + $calcAmount;
+                    }
 
-					$calcTotal += $calcAmount;
-				}
-				if ($calcTotal <> $iTotalAmount) {
-					$nAmount[$defaultFundID] = number_format($iTotalAmount - $calcOtherFunds, 2, ".", "");
-				}
-			} else {
-				$nAmount[$defaultFundID] = number_format($iTotalAmount, 2, ".", "");
-			}
-		
-		
-	}
+                    $calcTotal += $calcAmount;
+                }
+                if ($calcTotal <> $iTotalAmount) {
+                    $nAmount[$defaultFundID] = number_format($iTotalAmount - $calcOtherFunds, 2, ".", "");
+                }
+            } else {
+                $nAmount[$defaultFundID] = number_format($iTotalAmount, 2, ".", "");
+            }
+        
+        
+    }
 
-	function sanitize($str)
-	{
-		return str_replace("'","",$str);
-	}
+    function sanitize($str)
+    {
+        return str_replace("'","",$str);
+    }
     
     function deleteDeposit($id)
     {
         $DeleteDeposits = "DELETE FROM deposit_dep 
             WHERE dep_ID = ".$id;
         RunQuery($DeleteDeposits);
-            
         $DeletePledges = "DELETE FROM pledge_plg 
             WHERE plg_depID = ".$id;
         RunQuery($DeletePledges);
-            
-        $DeletePledgeDenominations = "DELETE FROM pledge_denominations_pdem 
-            WHERE plg_depID = ".$id;    
-        RunQuery($DeletePledgeDenominations);
-            
-        
-        
-        
     }
     
-	function getDeposits($id=null) 
+    function getDeposits($id=null) 
     {
 
-		$sSQL = "SELECT * FROM deposit_dep";
-		if ($id)
-		{
-				$sSQL.=" WHERE dep_ID = ".$id;
-		}
-		$rsDep = RunQuery($sSQL);
-		$return = array();
-		while ($aRow = mysql_fetch_array($rsDep))
-		{
-			extract ($aRow);
+        $sSQL = "SELECT * FROM deposit_dep";
+        if ($id)
+        {
+                $sSQL.=" WHERE dep_ID = ".$id;
+        }
+        $rsDep = RunQuery($sSQL);
+        $return = array();
+        while ($aRow = mysql_fetch_array($rsDep))
+        {
+            extract ($aRow);
             $values= new StdClass();
-			$values->dep_ID=$dep_ID;
-			$values->dep_Date=$dep_Date;
-			$values->dep_Comment=$dep_Comment;
-			$values->dep_Closed=$dep_Closed;
-			$values->dep_Type=$dep_Type;
+            $values->dep_ID=$dep_ID;
+            $values->dep_Date=$dep_Date;
+            $values->dep_Comment=$dep_Comment;
+            $values->dep_Closed=$dep_Closed;
+            $values->dep_Type=$dep_Type;
             $values->dep_EnteredBy = $dep_EnteredBy;
             $values->totalCash=$this->getDepositTotal($dep_ID,'CASH');
             $values->totalChecks=$this->getDepositTotal($dep_ID,'CHECK');
@@ -552,33 +543,33 @@ class FinancialService {
             $values->countCash=$this->getDepositCount($dep_ID,'CASH');
             $values->countCheck=$this->getDepositCount($dep_ID,'CHECK');
             $values->countTotal=$this->getDepositCount($dep_ID);
-			array_push($return,$values);
-		}
-		return $return;
-	}
+            array_push($return,$values);
+        }
+        return $return;
+    }
         
     function setDeposit($depositType, $depositComment, $depositDate, $iDepositSlipID=null, $depositClosed=false)
     {
         if($iDepositSlipID)
         {
             $sSQL = "UPDATE deposit_dep SET dep_Date = '" . $depositDate . "', dep_Comment = '" . $depositComment . "', dep_EnteredBy = ". $_SESSION['iUserID'] . ", dep_Closed = " . intval($depositClosed) . " WHERE dep_ID = " . $iDepositSlipID . ";";
-			$bGetKeyBack = false;
-			if ($depositClosed && ($depositType=='CreditCard' || $depositType == 'BankDraft')) {
-				// Delete any failed transactions on this deposit slip now that it is closing
-				$q = "DELETE FROM pledge_plg WHERE plg_depID = " . $iDepositSlipID . " AND plg_PledgeOrPayment=\"Payment\" AND plg_aut_Cleared=0" ;
-				RunQuery($q);
-			}
+            $bGetKeyBack = false;
+            if ($depositClosed && ($depositType=='CreditCard' || $depositType == 'BankDraft')) {
+                // Delete any failed transactions on this deposit slip now that it is closing
+                $q = "DELETE FROM pledge_plg WHERE plg_depID = " . $iDepositSlipID . " AND plg_PledgeOrPayment=\"Payment\" AND plg_aut_Cleared=0" ;
+                RunQuery($q);
+            }
             RunQuery($sSQL);
         }
         else
         {
             $sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy,  dep_Type) 
-			VALUES ('" . $depositDate . "','" . $depositComment . "'," . $_SESSION['iUserID'] . ",'" . $depositType . "')";
+            VALUES ('" . $depositDate . "','" . $depositComment . "'," . $_SESSION['iUserID'] . ",'" . $depositType . "')";
             RunQuery($sSQL);
             $sSQL = "SELECT MAX(dep_ID) AS iDepositSlipID FROM deposit_dep";
-			$rsDepositSlipID = RunQuery($sSQL);
-			$iDepositSlipID = mysql_fetch_array($rsDepositSlipID)[0];
-        }   	
+            $rsDepositSlipID = RunQuery($sSQL);
+            $iDepositSlipID = mysql_fetch_array($rsDepositSlipID)[0];
+        }       
         $_SESSION['iCurrentDeposit'] = $iDepositSlipID;
         return $this->getDeposits($iDepositSlipID);
     }
@@ -637,55 +628,55 @@ class FinancialService {
        
     }
 
-	function getPayments($depID) 
+    function getPayments($depID) 
     {
-		$sSQL = "SELECT * from pledge_plg
+        $sSQL = "SELECT * from pledge_plg
             INNER JOIN 
             donationfund_fun 
             ON 
             pledge_plg.plg_fundID = donationfund_fun.fun_ID";
             
-		if ($depID)
-		{
-				$sSQL.=" WHERE plg_depID = ".$depID;
-		}
-		$rsDep = RunQuery($sSQL);
+        if ($depID)
+        {
+                $sSQL.=" WHERE plg_depID = ".$depID;
+        }
+        $rsDep = RunQuery($sSQL);
        
-		$payments = array();
-		while ($aRow = mysql_fetch_array($rsDep))
-		{
-			extract ($aRow);
+        $payments = array();
+        while ($aRow = mysql_fetch_array($rsDep))
+        {
+            extract ($aRow);
             $values = new StdClass();
-			$values->plg_plgID=$plg_plgID;
-			$values->plg_FamID=$plg_FamID;
+            $values->plg_plgID=$plg_plgID;
+            $values->plg_FamID=$plg_FamID;
             $values->familyName = $this->familyService->getFamilyName($plg_FamID);
-			$values->plg_FYID=$plg_FYID;
+            $values->plg_FYID=$plg_FYID;
             $values->FiscalYear=MakeFYString($plg_FYID);
-			$values->plg_date=$plg_date;
-			$values->plg_amount=$plg_amount;
-			$values->plg_schedule=$plg_schedule;
-			$values->plg_method=$plg_method;
-			$values->plg_comment=$plg_comment;
-			$values->plg_DateLastEdited=$plg_DateLastEdited;
-			$values->plg_EditedBy=$plg_EditedBy;
-			$values->plg_PledgeOrPayment=$plg_PledgeOrPayment;
-			$values->plg_fundID=$plg_fundID;
+            $values->plg_date=$plg_date;
+            $values->plg_amount=$plg_amount;
+            $values->plg_schedule=$plg_schedule;
+            $values->plg_method=$plg_method;
+            $values->plg_comment=$plg_comment;
+            $values->plg_DateLastEdited=$plg_DateLastEdited;
+            $values->plg_EditedBy=$plg_EditedBy;
+            $values->plg_PledgeOrPayment=$plg_PledgeOrPayment;
+            $values->plg_fundID=$plg_fundID;
             $values->fun_Name = $fun_Name;
-			$values->plg_depID=$plg_depID;
-			$values->plg_CheckNo=$plg_CheckNo;
-			$values->plg_Problem=$plg_Problem;
-			$values->plg_scanString=$plg_scanString;
-			$values->plg_aut_ID=$plg_aut_ID;
-			$values->plg_aut_Cleared=$plg_aut_Cleared;
-			$values->plg_aut_ResultID=$plg_aut_ResultID;
-			$values->plg_NonDeductible=$plg_NonDeductible;
-			$values->plg_GroupKey=$plg_GroupKey;
+            $values->plg_depID=$plg_depID;
+            $values->plg_CheckNo=$plg_CheckNo;
+            $values->plg_Problem=$plg_Problem;
+            $values->plg_scanString=$plg_scanString;
+            $values->plg_aut_ID=$plg_aut_ID;
+            $values->plg_aut_Cleared=$plg_aut_Cleared;
+            $values->plg_aut_ResultID=$plg_aut_ResultID;
+            $values->plg_NonDeductible=$plg_NonDeductible;
+            $values->plg_GroupKey=$plg_GroupKey;
 
-			array_push($payments,$values);
-		}
-		return $payments;
-		
-	}
+            array_push($payments,$values);
+        }
+        return $payments;
+        
+    }
     
 
     function searchDeposits($searchTerm)
@@ -746,65 +737,65 @@ class FinancialService {
         return $this->baseURL ."/DepositSlipEditor.php?DepositSlipID=".$Id;
     }
     
-	function searchMembers($query) 
+    function searchMembers($query) 
     {
-			$sSearchTerm = $query;
-			$sSearchType = "person";
-			$fetch = 'SELECT per_ID, per_FirstName, per_LastName, CONCAT_WS(" ",per_FirstName,per_LastName) AS fullname, per_fam_ID  FROM `person_per` WHERE per_FirstName LIKE \'%'.$sSearchTerm.'%\' OR per_LastName LIKE \'%'.$sSearchTerm.'%\' OR per_Email LIKE \'%'.$sSearchTerm.'%\' OR CONCAT_WS(" ",per_FirstName,per_LastName) LIKE \'%'.$sSearchTerm.'%\' LIMIT 15';
-			$result=mysql_query($fetch);
-			
-	}
+            $sSearchTerm = $query;
+            $sSearchType = "person";
+            $fetch = 'SELECT per_ID, per_FirstName, per_LastName, CONCAT_WS(" ",per_FirstName,per_LastName) AS fullname, per_fam_ID  FROM `person_per` WHERE per_FirstName LIKE \'%'.$sSearchTerm.'%\' OR per_LastName LIKE \'%'.$sSearchTerm.'%\' OR per_Email LIKE \'%'.$sSearchTerm.'%\' OR CONCAT_WS(" ",per_FirstName,per_LastName) LIKE \'%'.$sSearchTerm.'%\' LIMIT 15';
+            $result=mysql_query($fetch);
+            
+    }
 
-	private function validateDate($payment) 
+    private function validateDate($payment) 
     { 
-		// Validate Date
-		if (strlen($payment->Date) > 0) {
-			list($iYear, $iMonth, $iDay) = sscanf($payment->Date,"%04d-%02d-%02d");
-			if ( !checkdate($iMonth,$iDay,$iYear) ) {
-				throw new Exception ("Invalid Date");
-			}
-		}
-	
-	}
-	
-	private function validateFund($payment) 
-    {
-		//Validate that the fund selection is valid:
-		//If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
-		//If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
-		$FundSplit = json_decode($payment->FundSplit);
-		if (count($FundSplit) >= 1 and $FundSplit[0]->FundID != "None") 
-        { // split
-			$nonZeroFundAmountEntered =0;
-			foreach ($FundSplit as $fun_id => $fund) 
-            {
-				//$fun_active = $fundActive[$fun_id];
-				if ($fund->Amount > 0) 
-                {
-					++$nonZeroFundAmountEntered;
-				}
-				if ($GLOBALS['bEnableNonDeductible'] && isset($fund->NonDeductible)) 
-                {
-					//Validate the NonDeductible Amount
-					if ($fund->NonDeductible > $fund->Amount) 
-                    { //Validate the NonDeductible Amount
-						throw new Exception (gettext("NonDeductible amount can't be greater than total amount."));
-					}
-				}
-			} // end foreach
-			if (!$nonZeroFundAmountEntered) 
-            {
-				throw new Exception (gettext("At least one fund must have a non-zero amount."));
-			}
-		}
-		
-		else
-		{
-			throw new Exception ("Must select a valid fund");
-		}
-	}
+        // Validate Date
+        if (strlen($payment->Date) > 0) {
+            list($iYear, $iMonth, $iDay) = sscanf($payment->Date,"%04d-%02d-%02d");
+            if ( !checkdate($iMonth,$iDay,$iYear) ) {
+                throw new Exception ("Invalid Date");
+            }
+        }
     
-	function locateFamilyCheck($checkNumber,$fam_ID)
+    }
+    
+    private function validateFund($payment) 
+    {
+        //Validate that the fund selection is valid:
+        //If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
+        //If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
+        $FundSplit = json_decode($payment->FundSplit);
+        if (count($FundSplit) >= 1 and $FundSplit[0]->FundID != "None") 
+        { // split
+            $nonZeroFundAmountEntered =0;
+            foreach ($FundSplit as $fun_id => $fund) 
+            {
+                //$fun_active = $fundActive[$fun_id];
+                if ($fund->Amount > 0) 
+                {
+                    ++$nonZeroFundAmountEntered;
+                }
+                if ($GLOBALS['bEnableNonDeductible'] && isset($fund->NonDeductible)) 
+                {
+                    //Validate the NonDeductible Amount
+                    if ($fund->NonDeductible > $fund->Amount) 
+                    { //Validate the NonDeductible Amount
+                        throw new Exception (gettext("NonDeductible amount can't be greater than total amount."));
+                    }
+                }
+            } // end foreach
+            if (!$nonZeroFundAmountEntered) 
+            {
+                throw new Exception (gettext("At least one fund must have a non-zero amount."));
+            }
+        }
+        
+        else
+        {
+            throw new Exception ("Must select a valid fund");
+        }
+    }
+    
+    function locateFamilyCheck($checkNumber,$fam_ID)
     {
         $sSQL = "SELECT count(plg_FamID) from pledge_plg
                  WHERE plg_CheckNo = ".$checkNumber." AND
@@ -832,125 +823,133 @@ class FinancialService {
             {
                 throw new Exception ("Check number '" . $payment->iCheckNo . "' for selected family already exists.");
             }
-        }			
-		
-	}
-	
-	function insertPledgeorPayment ($payment) 
+        }            
+        
+    }
+    
+    function insertPledgeorPayment ($payment) 
     {
-		// Only set PledgeOrPayment when the record is first created
-			// loop through all funds and create non-zero amount pledge records
-			unset($sGroupKey);
-			$FundSplit = json_decode($payment->FundSplit);
-			foreach ($FundSplit as $Fund) {
-				if ($Fund->Amount > 0) {  //Only insert a row in the pledge table if this fund has a non zero amount.
-					if (!isset($sGroupKey) )  //a GroupKey references a single familie's payment, and transcends the fund splits.  Sharing the same Group Key for this payment helps clean up reports.
-					{
-						if ($payment->iMethod  == "CHECK") 
+        // Only set PledgeOrPayment when the record is first created
+        // loop through all funds and create non-zero amount pledge records
+        unset($sGroupKey);
+        $FundSplit = json_decode($payment->FundSplit);
+        foreach ($FundSplit as $Fund) 
+        {
+            if ($Fund->Amount > 0) 
+            {  //Only insert a row in the pledge table if this fund has a non zero amount.
+                if (!isset($sGroupKey) )  //a GroupKey references a single familie's payment, and transcends the fund splits.  Sharing the same Group Key for this payment helps clean up reports.
+                {
+                    if ($payment->iMethod  == "CHECK") 
+                    {
+                        $sGroupKey = genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
+                    } 
+                    elseif ($payment->iMethod == "BANKDRAFT") 
+                    {
+                        if (!$iAutID) 
                         {
-							$sGroupKey = genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
-						} elseif ($payment->iMethod == "BANKDRAFT") 
+                            $iAutID = "draft";
+                        }
+                        $sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
+                    } 
+                    elseif ($payment->iMethod  == "CREDITCARD") 
+                    {
+                        if (!$iAutID) 
                         {
-							if (!$iAutID) {
-								$iAutID = "draft";
-							}
-							$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
-						} elseif ($payment->iMethod  == "CREDITCARD") 
-                        {
-							if (!$iAutID) {
-								$iAutID = "credit";
-							}
-							$sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
-						} else 
-                        {
-							$sGroupKey = genGroupKey("cash", $payment->FamilyID, $Fund->FundID, $payment->Date);
-						} 
-					}
-					$sSQL = "INSERT INTO pledge_plg
-						(plg_famID,
-						plg_FYID, 
-						plg_date, 
-						plg_amount,
-						plg_schedule, 
-						plg_method, 
-						plg_comment, 
-						plg_DateLastEdited, 
-						plg_EditedBy, 
-						plg_PledgeOrPayment, 
-						plg_fundID, 
-						plg_depID, 
-						plg_CheckNo, 
-						plg_scanString, 
-						plg_aut_ID, 
-						plg_NonDeductible, 
-						plg_GroupKey)
-						VALUES ('" . 
-						$payment->FamilyID . "','" . 
-						$payment->FYID . "','" . 
-						$payment->Date . "','" .
-						$Fund->Amount . "','" . 
-						(isset($payment->schedule) ? $payment->schedule : "NULL") . "','" . 
-						$payment->iMethod  . "','" . 
-						$Fund->Comment . "','".
-						date("YmdHis") . "'," .
-						$_SESSION['iUserID'] . ",'" . 
-						$payment->type. "'," . 
-						$Fund->FundID . "," . 
-						$payment->DepositID . "," . 
-						(isset($payment->iCheckNo) ? $payment->iCheckNo : "NULL") . ",'" . 
-						(isset($payment->tScanString) ? $payment->tScanString : "NULL") . "','" . 
-						(isset($payment->iAutID ) ? $payment->iAutID  : "NULL") . "','" . 
-						(isset($Fund->NonDeductible ) ? $Fund->NonDeductible : "NULL") . "','" . 
-						$sGroupKey . "')";
-						
-						if (isset ($sSQL)) {
-							RunQuery($sSQL);
-							unset($sSQL);
-                            return $sGroupKey;
-						}
-				}
-			}
-	}
-	
-	function submitPledgeOrPayment($payment) 
+                            $iAutID = "credit";
+                        }
+                        $sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
+                    } 
+                    else 
+                    {
+                        $sGroupKey = genGroupKey("cash", $payment->FamilyID, $Fund->FundID, $payment->Date);
+                    } 
+                }
+                $sSQL = "INSERT INTO pledge_plg
+                    (plg_famID,
+                    plg_FYID, 
+                    plg_date, 
+                    plg_amount,
+                    plg_schedule, 
+                    plg_method, 
+                    plg_comment, 
+                    plg_DateLastEdited, 
+                    plg_EditedBy, 
+                    plg_PledgeOrPayment, 
+                    plg_fundID, 
+                    plg_depID, 
+                    plg_CheckNo, 
+                    plg_scanString, 
+                    plg_aut_ID, 
+                    plg_NonDeductible, 
+                    plg_GroupKey)
+                    VALUES ('" . 
+                    $payment->FamilyID . "','" . 
+                    $payment->FYID . "','" . 
+                    $payment->Date . "','" .
+                    $Fund->Amount . "','" . 
+                    (isset($payment->schedule) ? $payment->schedule : "NULL") . "','" . 
+                    $payment->iMethod  . "','" . 
+                    $Fund->Comment . "','".
+                    date("YmdHis") . "'," .
+                    $_SESSION['iUserID'] . ",'" . 
+                    $payment->type. "'," . 
+                    $Fund->FundID . "," . 
+                    $payment->DepositID . "," . 
+                    (isset($payment->iCheckNo) ? $payment->iCheckNo : "NULL") . ",'" . 
+                    (isset($payment->tScanString) ? $payment->tScanString : "NULL") . "','" . 
+                    (isset($payment->iAutID ) ? $payment->iAutID  : "NULL") . "','" . 
+                    (isset($Fund->NonDeductible ) ? $Fund->NonDeductible : "NULL") . "','" . 
+                    $sGroupKey . "')";
+                    
+                    if (isset ($sSQL)) 
+                    {
+                        RunQuery($sSQL);
+                        unset($sSQL);
+                        return $sGroupKey;
+                    }
+            }
+        }
+    }
+    
+    function submitPledgeOrPayment($payment) 
     {
         $this->validateFund($payment);
         $this->validateChecks($payment);
         $this->validateDate($payment);
         $groupKey = $this->insertPledgeorPayment ($payment);
         return $this->getPledgeorPayment($groupKey);
-	}
-	
-	function getPledgeorPayment($GroupKey) 
+    }
+    
+    function getPledgeorPayment($GroupKey) 
     {
-		require_once "FamilyService.php";
-		$total=0;
-		$FamilyService = New FamilyService();
-		$sSQL = "SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey=\"" . $GroupKey . "\"";
-		$rsKeys = RunQuery($sSQL);
-		$payment=new stdClass();
-		$payment->funds = array();
-		while ($aRow = mysql_fetch_array($rsKeys)) {
-			extract($aRow);
-			$payment->Family = $FamilyService->getFamilyStringByID($plg_FamID);
-			$payment->Date = $plg_date;
-			$payment->FYID = $plg_FYID;
-			$payment->iMethod = $plg_method;
-			$fund['FundID']=$plg_fundID;
-			$fund['Amount']=$plg_amount;
-			$fund['NonDeductible']=$plg_NonDeductible;
-			$fund['Comment']=$plg_comment ;
-			array_push($payment->funds,$fund);
-			$total += $plg_amount;
-			$onePlgID = $aRow["plg_plgID"];
-			$oneFundID = $aRow["plg_fundID"];
-			$iOriginalSelectedFund = $oneFundID; // remember the original fund in case we switch to splitting
-			$fund2PlgIds[$oneFundID] = $onePlgID;
-		}
-		$payment->total = $total;
-		return json_encode($payment);
-		
-	}
+        require_once "FamilyService.php";
+        $total=0;
+        $FamilyService = New FamilyService();
+        $sSQL = "SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey=\"" . $GroupKey . "\"";
+        $rsKeys = RunQuery($sSQL);
+        $payment=new stdClass();
+        $payment->funds = array();
+        while ($aRow = mysql_fetch_array($rsKeys)) {
+            extract($aRow);
+            $payment->Family = $FamilyService->getFamilyStringByID($plg_FamID);
+            $payment->Date = $plg_date;
+            $payment->FYID = $plg_FYID;
+            $payment->iMethod = $plg_method;
+            $fund['FundID']=$plg_fundID;
+            $fund['Amount']=$plg_amount;
+            $fund['NonDeductible']=$plg_NonDeductible;
+            $fund['Comment']=$plg_comment ;
+            array_push($payment->funds,$fund);
+            $total += $plg_amount;
+            $onePlgID = $aRow["plg_plgID"];
+            $oneFundID = $aRow["plg_fundID"];
+            $iOriginalSelectedFund = $oneFundID; // remember the original fund in case we switch to splitting
+            $fund2PlgIds[$oneFundID] = $onePlgID;
+        }
+        $payment->total = $total;
+        return json_encode($payment);
+        
+    }
     
     function getDepositOFX($depID)
     {
@@ -976,7 +975,7 @@ class FinancialService {
 
         // Exit if no rows returned
         $iCountRows = mysql_num_rows($rsPledges);
-        if ($iCountRows < 1)
+        if ($iCountRows == 0 )
         {
            throw new Exception("No payments on this deposit");
         }
@@ -1020,93 +1019,100 @@ class FinancialService {
             "</STATUS>";
                 
 
-            if (mysql_num_rows ($rsFunds) > 0) 
+        if (mysql_num_rows ($rsFunds) > 0) 
+        {
+            mysql_data_seek($rsFunds,0);
+            while ($row = mysql_fetch_array($rsFunds))
             {
-                mysql_data_seek($rsFunds,0);
-                while ($row = mysql_fetch_array($rsFunds))
-                {
                 $fun_name = $row["fun_Name"];
-                    if (array_key_exists ($fun_name, $fundTotal) && $fundTotal[$fun_name] > 0) 
-                    {
-                         $OFXReturn->content.="<STMTRS>".
-                              "<CURDEF>USD".
-                              "<BANKACCTFROM>".
-                                "<BANKID>".$orgName.
-                                "<ACCTID>".$fun_name.
-                                "<ACCTTYPE>SAVINGS".
-                             "</BANKACCTFROM>";
-                         $OFXReturn->content.=
-                        "<STMTTRN>".
-                            "<TRNTYPE>CREDIT".
-                            "<DTPOSTED>".date("Ymd", strtotime($dep_date)).
-                            "<TRNAMT>".$fundTotal[$fun_name].
-                            "<FITID>". 
-                            "<NAME>".$dep_comment.
-                            "<MEMO>".$fun_name.
-                        "</STMTTRN></STMTRS>";
-                    }
-                }
-                if (array_key_exists ('UNDESIGNATED', $fundTotal) && $fundTotal['UNDESIGNATED']) 
+                if (array_key_exists ($fun_name, $fundTotal) && $fundTotal[$fun_name] > 0) 
                 {
-                        $OFXReturn->content.="<STMTRS>".
-                              "<CURDEF>USD".
-                              "<BANKACCTFROM>".
-                                "<BANKID>".$orgName.
-                                "<ACCTID>General".
-                                "<ACCTTYPE>SAVINGS".
-                             "</BANKACCTFROM>";
-                         $OFXReturn->content.=
-                        "<STMTTRN>".
-                            "<TRNTYPE>CREDIT".
-                            "<DTPOSTED>".date("Ymd", strtotime($dep_date)).
-                            "<TRNAMT>".$fundTotal[$fun_name].
-                            "<FITID>". 
-                            "<NAME>".$dep_comment.
-                            "<MEMO>General".
-                        "</STMTTRN></STMTRS>";
-                    
-                }	
+                    $OFXReturn->content.="<STMTRS>".
+                          "<CURDEF>USD".
+                          "<BANKACCTFROM>".
+                            "<BANKID>".$orgName.
+                            "<ACCTID>".$fun_name.
+                            "<ACCTTYPE>SAVINGS".
+                         "</BANKACCTFROM>";
+                    $OFXReturn->content.=
+                    "<STMTTRN>".
+                        "<TRNTYPE>CREDIT".
+                        "<DTPOSTED>".date("Ymd", strtotime($dep_date)).
+                        "<TRNAMT>".$fundTotal[$fun_name].
+                        "<FITID>". 
+                        "<NAME>".$dep_comment.
+                        "<MEMO>".$fun_name.
+                    "</STMTTRN></STMTRS>";
+                }
             }
+            if (array_key_exists ('UNDESIGNATED', $fundTotal) && $fundTotal['UNDESIGNATED']) 
+            {
+                    $OFXReturn->content.="<STMTRS>".
+                          "<CURDEF>USD".
+                          "<BANKACCTFROM>".
+                            "<BANKID>".$orgName.
+                            "<ACCTID>General".
+                            "<ACCTTYPE>SAVINGS".
+                         "</BANKACCTFROM>";
+                     $OFXReturn->content.=
+                    "<STMTTRN>".
+                        "<TRNTYPE>CREDIT".
+                        "<DTPOSTED>".date("Ymd", strtotime($dep_date)).
+                        "<TRNAMT>".$fundTotal[$fun_name].
+                        "<FITID>". 
+                        "<NAME>".$dep_comment.
+                        "<MEMO>General".
+                    "</STMTTRN></STMTRS>";
+                
+            }    
+        }
 
-             $OFXReturn->content.= "
-              </STMTTRNRS></BANKTRANLIST></OFX>";
-            // Export file
-             $OFXReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-Deposit-".$depID."-" . date("Ymd-Gis") . ".ofx";
-            return  $OFXReturn;   
-                
-                
+        $OFXReturn->content.= "</STMTTRNRS></BANKTRANLIST></OFX>";
+        // Export file
+        $OFXReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-Deposit-".$depID."-" . date("Ymd-Gis") . ".ofx";
+        return  $OFXReturn;        
     }
     
     private function generateBankDepositSlip($thisReport)
     {
+        $rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+        if ($rsConfig) 
+        {
+            while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) 
+            {
+                $$cfg_name = $cfg_value;
+            }
+        }
         // --------------------------------
         // BEGIN FRONT OF BANK DEPOSIT SLIP    
         $thisReport->pdf->AddPage("L",array(187,84));
         $thisReport->pdf->SetFont('Courier','', 18);
-		// Print Deposit Slip portion of report
+        // Print Deposit Slip portion of report
 
-		$thisReport->pdf->SetXY ($thisReport->date1X, $thisReport->date1Y);
-		$thisReport->pdf->Write (8, $thisReport->deposit->dep_Date);
+        $thisReport->pdf->SetXY ($thisReport->date1X, $thisReport->date1Y);
+        $thisReport->pdf->Write (8, $thisReport->deposit->dep_Date);
         
         $thisReport->pdf->SetXY ($thisReport->customerName1X, $thisReport->customerName1Y);
-		$thisReport->pdf->Write (8, "Faith Covenant Church");
+        $thisReport->pdf->Write (8, $sChurchName);
 
         $thisReport->pdf->SetXY ($thisReport->AccountNumberX, $thisReport->AccountNumberY);
-		$thisReport->pdf->Cell(55,7,"1111111111",1,1,'R');
+        $thisReport->pdf->Cell(55,7,$sChurchChkAcctNum,1,1,'R');
         
-		if ($thisReport->deposit->totalCash > 0) {
-			$totalCashStr = sprintf ("%.2f", $thisReport->deposit->totalCash);
+        if ($thisReport->deposit->totalCash > 0) 
+        {
+            $totalCashStr = sprintf ("%.2f", $thisReport->deposit->totalCash);
             $thisReport->pdf->SetXY ($thisReport->cashX, $thisReport->cashY);
             $thisReport->pdf->Cell(46,7,$totalCashStr,1,1,'R');
-		}
+        }
         
-        if ($thisReport->deposit->totalChecks > 0) {
-			$totalChecksStr = sprintf ("%.2f", $thisReport->deposit->totalChecks);
+        if ($thisReport->deposit->totalChecks > 0) 
+        {
+            $totalChecksStr = sprintf ("%.2f", $thisReport->deposit->totalChecks);
             $thisReport->pdf->SetXY ($thisReport->checksX, $thisReport->checksY);
             $thisReport->pdf->Cell(46,7,$totalChecksStr,1,1,'R');
-		}
+        }
 
-		$grandTotalStr = sprintf ("%.2f", $thisReport->deposit->dep_Total);
+        $grandTotalStr = sprintf ("%.2f", $thisReport->deposit->dep_Total);
         $cashReceivedStr = sprintf ("%.2f", 0);
       
         $thisReport->pdf->SetXY ($thisReport->cashReceivedX, $thisReport->cashReceivedY);
@@ -1121,21 +1127,19 @@ class FinancialService {
        $thisReport->pdf->AddPage("P",array(84,187));
        $numItems = 0;
        foreach($thisReport->payments as $payment)
-        {
-			// List all the checks and total the cash
-			 if ($payment->plg_method == 'CHECK') {
+       {
+            // List all the checks and total the cash
+            if ($payment->plg_method == 'CHECK') 
+            {
                 $plgSumStr = sprintf ("%.2f", $payment->plg_amount);
                 $thisReport->pdf->SetFontSize(14);
                 $thisReport->pdf->SetXY($thisReport->depositSlipBackCheckNosX,$thisReport->depositSlipBackCheckNosY + $numItems *$thisReport->depositSlipBackCheckNosHeight);
-				$thisReport->pdf->Cell ( $thisReport->depositSlipBackCheckNosWidth,$thisReport->depositSlipBackCheckNosHeight , $payment->plg_CheckNo,1,0,'L');
+                $thisReport->pdf->Cell ( $thisReport->depositSlipBackCheckNosWidth,$thisReport->depositSlipBackCheckNosHeight , $payment->plg_CheckNo,1,0,'L');
                 $thisReport->pdf->SetFontSize(18);
                 $thisReport->pdf->Cell ( $thisReport->depositSlipBackDollarsWidth,$thisReport->depositSlipBackDollarsHeight ,$plgSumStr,1,1,'R');
                 $numItems += 1;
-
             }
-		}
-        
-        
+        }
     }
     
     private function generateDepositSummary($thisReport)
@@ -1196,7 +1200,7 @@ class FinancialService {
             if (strlen($payment->familyName) > 25)
                 $payment->familyName = substr($payment->familyName,0,24) . "...";
 
-            $thisReport->pdf->PrintRightJustified ($thisReport->curX + 2, $thisReport->curY, $payment->plg_CheckNo);
+            $thisReport->pdf->PrintRightJustified ($thisReport->curX + 2, $thisReport->curY,$payment->plg_CheckNo);
 
             $thisReport->pdf->SetXY ($thisReport->curX + $thisReport->summaryFundX, $thisReport->curY);
             $thisReport->pdf->Write (8, $payment->fun_Name);
@@ -1216,7 +1220,8 @@ class FinancialService {
 
             $thisReport->curY += $thisReport->summaryIntervalY;
 
-            if ($thisReport->curY >= 250) {
+            if ($thisReport->curY >= 250) 
+            {
               $thisReport->pdf->AddPage ();
               $thisReport->curY = $thisReport->topY;
             }
@@ -1244,22 +1249,23 @@ class FinancialService {
         {
             foreach($thisReport->funds as $fund) //iterate through the defined funds
             {
-               if (array_key_exists ($fund->Name, $thisReport->fundTotal) && $thisReport->fundTotal[$fund->Name] > 0) // if the fund exists on this deposit, and the value of the fund is greater than 0
-               {
-                $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
-                $thisReport->pdf->Write (8, $fund->Name);
-                  $amountStr = sprintf ("%.2f", $thisReport->fundTotal[$fund->Name]);
-                $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, $amountStr);
-                  $thisReport->curY += $thisReport->summaryIntervalY;
+                if (array_key_exists ($fund->Name, $thisReport->fundTotal) && $thisReport->fundTotal[$fund->Name] > 0) // if the fund exists on this deposit, and the value of the fund is greater than 0
+                {
+                    $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
+                    $thisReport->pdf->Write (8, $fund->Name);
+                    $amountStr = sprintf ("%.2f", $thisReport->fundTotal[$fund->Name]);
+                    $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, $amountStr);
+                    $thisReport->curY += $thisReport->summaryIntervalY;
                }
             }
-            if (array_key_exists ('UNDESIGNATED', $thisReport->fundTotal) && $thisReport->fundTotal['UNDESIGNATED']) {
+            if (array_key_exists ('UNDESIGNATED', $thisReport->fundTotal) && $thisReport->fundTotal['UNDESIGNATED']) 
+            {
                 $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
                 $thisReport->pdf->Write (8, gettext("UNDESIGNATED"));
                 $amountStr = sprintf ("%.2f", $thisReport->fundTotal['UNDESIGNATED']);
                 $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, $amountStr);
                 $thisReport->curY += $thisReport->summaryIntervalY;
-            }	
+            }    
         }
         
         $thisReport->curY += $thisReport->summaryIntervalY;
@@ -1299,7 +1305,7 @@ class FinancialService {
     {
         $thisReport = new StdClass();
         $thisReport->payments = $this->getPayments($depID);
-        if (count($thisReport->payments) <1)
+        if (count($thisReport->payments) == 0 )
         {
             throw new Exception("No Payments on this Deposit");
         }
@@ -1354,8 +1360,10 @@ class FinancialService {
 
         // Read in report settings from database
         $rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-        if ($rsConfig) {
-            while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+        if ($rsConfig) 
+        {
+            while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) 
+            {
                 $thisReport->pdf->$cfg_name = $cfg_value;
             }
         }
@@ -1380,7 +1388,10 @@ class FinancialService {
         $line=array();
         $firstLine=true;
         $payments = $this->getPayments($depID);
-        
+        if (count($payments) == 0 )
+        {
+           throw new Exception("No payments on this deposit");
+        }
         foreach($payments[0] as $key=>$value)
         {
             array_push($line,$key);
@@ -1403,10 +1414,7 @@ class FinancialService {
         // Export file
         $CSVReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-".$depID."-" . date("Ymd-Gis") . ".csv";
         return  $CSVReturn; 
-        
-        
     }
-    
 
     function getFund()
     {
@@ -1415,7 +1423,8 @@ class FinancialService {
         $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
         $rsFunds = RunQuery($sSQL);
         mysql_data_seek($rsFunds,0);
-        while ($aRow = mysql_fetch_array($rsFunds)) {
+        while ($aRow = mysql_fetch_array($rsFunds)) 
+        {
             $fund = new StdClass();
             $fund->ID = $aRow['fun_ID'];
             $fund->Name = $aRow['fun_Name'];
