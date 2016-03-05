@@ -19,6 +19,9 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require_once "Service/GroupService.php";
+
+$groupService = new GroupService();
 
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups'])
@@ -37,8 +40,7 @@ if (isset($_POST["Submit"]))
 	$iGroupRole = FilterInput($_POST["GroupRole"],'int');
 
 	$sPreviousQuery = strip_tags($_POST["prevquery"]);
-
-	AddToGroup($iPersonID,$iGroupID,$iGroupRole);
+    $groupService->addUserToGroup($iGroupID, $iPersonID, $iGroupRole);
 
 	Redirect("SelectList.php?$sPreviousQuery");
 }

@@ -39,7 +39,7 @@ mysql_select_db($sDATABASE);
 // Basic security: If the UserID isn't set (no session), redirect to the login page
 if (!isset($_SESSION['iUserID']))
 {
-    Redirect("Default.php");
+    Redirect("Login.php");
     exit;
 }
 
@@ -47,7 +47,7 @@ if (!isset($_SESSION['iUserID']))
 if ($sSessionTimeout > 0)
 {
     if ((time() - $_SESSION['tLastOperation']) > $sSessionTimeout) {
-        Redirect("Default.php?Timeout");
+        Redirect("Login.php?Timeout");
         exit;
     } else {
         $_SESSION['tLastOperation'] = time();

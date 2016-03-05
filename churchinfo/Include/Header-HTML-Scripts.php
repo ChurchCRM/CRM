@@ -6,8 +6,7 @@
 
 <!-- jQuery 2.1.4 -->
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-
-<!-- jQuery 2.1.4 -->
+<!-- jQuery UI -->
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/jQueryUI/jquery-ui.min.js"></script>
 
 <!-- AdminLTE Select2 -->

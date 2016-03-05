@@ -1435,34 +1435,34 @@ msgstr "Importering lyckades."
 msgid "persons were imported"
 msgstr "personer importerade"
 
-#: Default.php:107 Default.php:167
+#: Login.php:107 Login.php:167
 msgid "Invalid login or password"
 msgstr "Ogiltig användernamn eller lösenord"
 
-#: Default.php:155
+#: Login.php:155
 msgid ""
 "Too many failed logins: your account has been locked.  Please contact an "
 "administrator."
 msgstr ""
 "För många felaktiga inloggningar:  ditt konto är låst.  Kontaka administratören."
 
-#: Default.php:318
+#: Login.php:318
 msgid "ChurchInfo: Login"
 msgstr "ChurchInfo: Logga in"
 
-#: Default.php:325
+#: Login.php:325
 msgid "Please Login"
 msgstr "Var snäll och logga in"
 
-#: Default.php:342
+#: Login.php:342
 msgid "Enter your user name:"
 msgstr "Ange ditt användernamn:"
 
-#: Default.php:349
+#: Login.php:349
 msgid "Enter your password:"
 msgstr "Ange ditt lösenord:"
 
-#: Default.php:356
+#: Login.php:356
 msgid "Login"
 msgstr "logga in"
 

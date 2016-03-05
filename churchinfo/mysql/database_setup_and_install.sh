@@ -19,7 +19,7 @@ MYSQLPATH=`readlink $(which mysql) | cut -c-10`
 if [[ "x$MYSQLPATH" != "x../Cellar/" ]]; then
   # it is not!
   SUDO="sudo"
-  PASS="-p\"$DB_PASS\""
+  PASS="-p$DB_PASS"
 fi
 
 RET=1

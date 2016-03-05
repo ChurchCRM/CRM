@@ -166,7 +166,7 @@ if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's d
  ?>
 
 <div class="row">
-    <div class="col-lg-6 col-md-5 col-sm-4">
+    <div class="col-lg-6">
         <div class="box box-solid">
             <div class="box-header">
                 <i class="ion ion-person-add"></i>
@@ -196,7 +196,7 @@ if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's d
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-md-5 col-sm-4">
+    <div class="col-lg-6">
         <div class="box box-solid">
             <div class="box-header">
                 <i class="fa fa-check"></i>
@@ -228,7 +228,7 @@ if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's d
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-3">
+    <div class="col-lg-6">
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
@@ -257,7 +257,7 @@ if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's d
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-3">
+    <div class="col-lg-6">
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
