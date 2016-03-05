@@ -30,19 +30,20 @@
 *  of hard tab characters.
 *
 ******************************************************************************/
-
-function mysql_failure($message) {
-  require ("Include/HeaderNotLoggedIn.php");
-  ?>
-    <div class='container'>
-      <h3>ChurchCRM – Setup failure</h3>
-      <div class='alert alert-danger text-center' style='margin-top: 20px;'>
-        <?= $message ?>
-      </div>
-    </div>
-  <?php
-  require ("Include/FooterNotLoggedIn.php");
-  exit();
+if (!function_exists("mysql_failure")) {
+    function mysql_failure($message) {
+      require ("Include/HeaderNotLoggedIn.php");
+      ?>
+        <div class='container'>
+          <h3>ChurchCRM – Setup failure</h3>
+          <div class='alert alert-danger text-center' style='margin-top: 20px;'>
+            <?= $message ?>
+          </div>
+        </div>
+      <?php
+      require ("Include/FooterNotLoggedIn.php");
+      exit();
+    }
 }
 
 // Establish the database connection
