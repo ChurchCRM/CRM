@@ -823,11 +823,26 @@ class FinancialService {
             {
                 throw new Exception ("Check number '" . $payment->iCheckNo . "' for selected family already exists.");
             }
-        }            
-        
-    }
-    
-    function insertPledgeorPayment ($payment) 
+        }			
+		
+	}
+	
+	function processCurrencyDenominations($payment,$groupKey) 
+    {
+        $currencyDenoms = json_decode($payment->cashDenominations);
+        foreach ($currencyDenoms as $cdom)
+        {
+            $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity) 
+            VALUES ('". $groupKey ."','".$payment->DepositID."','".$cdom->currencyID."','".$cdom->Count."')";
+            if (isset ($sSQL)) {
+                RunQuery($sSQL);
+                unset($sSQL);
+            }
+        }
+
+	}
+	
+	function insertPledgeorPayment ($payment) 
     {
         // Only set PledgeOrPayment when the record is first created
         // loop through all funds and create non-zero amount pledge records
@@ -917,6 +932,9 @@ class FinancialService {
         $this->validateChecks($payment);
         $this->validateDate($payment);
         $groupKey = $this->insertPledgeorPayment ($payment);
+        if ($payment->iMethod =="CASH") {
+            $this->processCurrencyDenominations($payment,$groupKey);
+        }
         return $this->getPledgeorPayment($groupKey);
     }
     
@@ -1280,8 +1298,21 @@ class FinancialService {
         $thisReport->curY += $thisReport->summaryIntervalY;
         $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->Write (8, "Cash: ");
-        $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf ("%.2f", $thisReport->deposit->totalCash));
-                
+        $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf ("%.2f", $thisReport->deposit->totalCash));        
+        
+        $thisReport->curY += 2*$thisReport->summaryIntervalY;
+        $thisReport->pdf->SetFont('Times','B', 10);
+        $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
+        $thisReport->pdf->Write (8, 'Cash Breakdown:');
+        $thisReport->pdf->SetFont('Courier','', 8);
+        foreach ($this->getCurrency() as $currency)
+        {
+            $thisReport->curY += $thisReport->summaryIntervalY;
+            $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
+            $thisReport->pdf->Write (8, $currency->Name);
+            $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf ("%.2f", $this->getCurrencyTypeOnDeposit($currency->id,$thisReport->deposit->dep_ID)));
+        }
+        
     }
     
     private function calculateFundTotals($thisReport)
@@ -1414,6 +1445,40 @@ class FinancialService {
         // Export file
         $CSVReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-".$depID."-" . date("Ymd-Gis") . ".csv";
         return  $CSVReturn; 
+    }
+
+    function getCurrencyTypeOnDeposit($currencyID,$depositID)
+    {
+         $currencies = array();
+        // Get the list of Currency denominations
+        $sSQL = "select sum(pdem_denominationQuantity) from pledge_denominations_pdem
+                 where  plg_depID = ".$depositID."
+                 AND
+                 pdem_denominationID = ".$currencyID;
+        $rscurrencyDenomination = RunQuery($sSQL);
+       
+       return mysql_fetch_array($rscurrencyDenomination)[0];
+
+
+    }
+       
+    function getCurrency()
+    {
+        $currencies = array();
+        // Get the list of Currency denominations
+        $sSQL = "SELECT * FROM currency_denominations_cdem";
+        $rscurrencyDenomination = RunQuery($sSQL);
+        mysql_data_seek($rscurrencyDenomination,0);
+        while ($row = mysql_fetch_array($rscurrencyDenomination)) 
+        {
+            $currency = new StdClass();
+            $currency->id = $row['cdem_denominationID'];
+            $currency->Name = $row['cdem_denominationName'];
+            $currency->Value = $row['cdem_denominationValue'];
+            $currency->cClass = $row['cdem_denominationClass'];
+            array_push($currencies,$currency);
+        } // end while
+        return $currencies;
     }
 
     function getFund()

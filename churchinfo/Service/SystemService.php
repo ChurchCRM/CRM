@@ -228,6 +228,7 @@ class SystemService {
     
     function rebuildMenus()
     {
+
         $root = dirname(dirname(__FILE__));
         $this->playbackSQLtoDatabase($root."/mysql/upgrade/rebuild_nav_menus.sql");
     }

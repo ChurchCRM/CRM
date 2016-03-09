@@ -686,10 +686,9 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 
 (60, 'deposit', 'root', 1, 'Deposit', 'Deposit', '', '', 'bFinance', NULL, 0, 0, NULL, 1, 6, 'fa-bank'),
 (61, 'envelopmgr', 'deposit', 0, 'Envelope Manager', 'Envelope Manager', 'ManageEnvelopes.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
-(62, 'newdeposit', 'deposit', 0, 'Create New Deposit', 'Create New Deposit', 'DepositSlipEditor.php?DepositType=Bank', '', 'bFinance', NULL, 0, 0, NULL, 1, 2, NULL),
-(63, 'viewdeposit', 'deposit', 0, 'View All Deposits', 'View All Deposits', 'FindDepositSlip.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 3, NULL),
-(64, 'depositreport', 'deposit', 0, 'Deposit Reports', 'Deposit Reports', 'FinancialReports.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 4, NULL),
-(65, 'depositslip', 'deposit', 0, 'Edit Deposit Slip', 'Edit Deposit Slip', 'DepositSlipEditor.php', '', 'bFinance', 'iCurrentDeposit', 1, 1, 'DepositSlipID', 1, 5, NULL),
+(62, 'viewdeposit', 'deposit', 0, 'View All Deposits', 'View All Deposits', 'FindDepositSlip.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 3, NULL),
+(63, 'depositreport', 'deposit', 0, 'Deposit Reports', 'Deposit Reports', 'FinancialReports.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 4, NULL),
+(64, 'depositslip', 'deposit', 0, 'Edit Deposit Slip', 'Edit Deposit Slip', 'DepositSlipEditor.php', '', 'bFinance', 'iCurrentDeposit', 1, 1, 'DepositSlipID', 1, 5, NULL),
 
 (70, 'fundraiser', 'root', 1, 'Fundraiser', 'Fundraiser', '', '', 'bAll', NULL, 0, 0, NULL, 1, 7, 'fa-money'),
 (71, 'viewfundraiser', 'fundraiser', 0, 'View All Fundraisers', 'View All Fundraisers', 'FindFundRaiser.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
@@ -721,7 +720,6 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (109, 'cvsimport', 'admin', 0, 'CSV Import', 'CSV Import', 'CSVImport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 10, NULL),
 (110, 'seeddata', 'admin', 0, 'Generate Seed Data', 'Generate Seed Data', 'GenerateSeedData.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 11, NULL),
 (111, 'register', 'admin', 0, 'Register ChurchCRM', 'Update ChurchCRM Registration', 'Register.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 12, NULL);
-
 
 -- --------------------------------------------------------
 
@@ -907,6 +905,39 @@ CREATE TABLE `pledge_plg` (
 -- Dumping data for table `pledge_plg`
 -- 
 
+
+CREATE TABLE `currency_denominations_cdem` (
+ `cdem_denominationID` mediumint(9) NOT NULL auto_increment,
+ `cdem_denominationName` text,
+ `cdem_denominationValue` decimal(8,2) default NULL,
+ `cdem_denominationClass` text,
+ PRIMARY KEY  (`cdem_denominationID`)
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+INSERT INTO `currency_denominations_cdem` (`cdem_denominationName`, `cdem_denominationValue`, `cdem_denominationClass`) VALUES 
+("1¢", 0.01,'COIN'),
+("5¢", .05,'COIN'),
+("10¢", .10,'COIN'),
+("25¢", .25,'COIN'),
+("50¢", .5,'COIN'),
+("$1 Coin", 1,'COIN'),
+("$1", 1,'BILL'),
+("$2", 2,'BILL'),
+("$5", 5,'BILL'),
+("$10", 10,'BILL'),
+("$20", 20,'BILL'),
+("$50", 50,'BILL'),
+("$100", 100,'BILL');
+
+
+CREATE TABLE `pledge_denominations_pdem`(
+ `pdem_pdemID` mediumint(9) NOT NULL auto_increment,
+ `pdem_plg_GroupKey` text,
+ `plg_depID` mediumint(9) unsigned default NULL,
+ `pdem_denominationID` text,
+ `pdem_denominationQuantity` mediumint(9) default NULL,
+ PRIMARY KEY  (`pdem_pdemID`)
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

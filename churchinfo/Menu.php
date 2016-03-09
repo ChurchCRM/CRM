@@ -28,10 +28,9 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
 require 'Service/FinancialService.php';
+require_once "Service/DashboardService.php";
 
 $financialService = new FinancialService();
-
-require_once "Service/DashboardService.php";
 
 $sSQL = "select * from family_fam order by fam_DateLastEdited desc  LIMIT 10;";
 $rsLastFamilies = RunQuery($sSQL);
@@ -58,7 +57,9 @@ $sPageTitle = "Welcome to <b>Church</b>CRM";
 
 require 'Include/Header.php';
 ?>
+
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
+
 
 <!-- Small boxes (Stat box) -->
 <div class="row">
@@ -285,6 +286,21 @@ if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's d
             </div>
         </div>
     </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="box box-info">
+            <div class="box-header">
+                <i class="ion ion-android-contacts"></i>
+                <h3 class="box-title">Gender Demographics</h3>
+                <div class="box-tools pull-right">
+                    <div id="gender-donut-legend" class="chart-legend"></div>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <canvas id="gender-donut" style="height:250px"></canvas>
+            </div>
+        </div>
+    </div>
+     
 </div>
 
 <!-- this page specific inline scripts -->
@@ -317,7 +333,7 @@ if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's d
     var lineChart = new Chart(lineChartCanvas).Line(lineData);
 <?php 
 }  //END IF block for Finance permissions to include JS for Deposit Chart
- ?>
+?>
 </script>
 
 

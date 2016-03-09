@@ -533,7 +533,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 												<a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
 											</td>
 											<td>
-												<a href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
+												<button type="button" class="btn btn-primary delete-button" id="delete:<?= $plg_GroupKey;?>" ><?= gettext("Delete"); ?></button>
+
 											</td>
 											<td>
 												<?= $aut_DateLastEdited ?>&nbsp;
@@ -822,8 +823,15 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 	</div>
 </div>
 
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+<script type="text/javascript" src="js/DepositSlipEditor.js"></script>
 <script>
 $("#ShowSinceDate").datepicker({format:'yyyy-mm-dd'});
 </script>
 
-<?php require "Include/Footer.php" ?>
+<?php
+require "Include/Footer.php";
+?>
+
