@@ -16,14 +16,12 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Service/ReportingService.php";
 
 //Set the page title
 $sPageTitle = gettext("Query Listing");
 
-$sSQL = "SELECT * FROM query_qry ORDER BY qry_Name";
-$rsQueries = RunQuery($sSQL);
-
-$aFinanceQueries = explode(',', $aFinanceQueries);
+$reportingService = new ReportingService();
 
 require "Include/Header.php";?>
 
@@ -39,16 +37,14 @@ require "Include/Header.php";?>
 
 <select id="querySelect">
 <?php
-while ($aRow = mysql_fetch_array($rsQueries))
+$queries = $reportingService->getQuery();
+foreach($queries as $query)
 {
-
-	extract($aRow);
-
 	// Filter out finance-related queries if the user doesn't have finance permissions
 	if ($_SESSION['bFinance'] || !in_array($qry_ID,$aFinanceQueries))
 	{
 		// Display the query name and description
-		echo "<option value=\"".$qry_ID . "\">" . $qry_Name . " - ". $qry_Description. "</option>";
+		echo "<option value=\"".$query['qry_ID']. "\">" . $query['qry_Name'] . " - ". $query['qry_Description']. "</option>";
 	}
 }
 ?>

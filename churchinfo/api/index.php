@@ -180,11 +180,31 @@ $app->container->singleton('ReportingService', function () {
             }
         });
     });
-
-$app->group('/database', function () use ($app) {
-    $systemService = $app->SystemService;
     
-    $app->post('/query',function() use ($app) {
+$app->group('/queries', function () use ($app) {
+   $reportingService = $app->ReportingService;
+
+    $app->get("/", function () use ($app, $reportingService) {
+        try
+        {
+            echo $reportingService->getQueriesJSON($reportingService->getQuery());
+        } catch (Exception $e) {
+              echo exceptionToJSON($e);
+        
+        }
+    });
+    
+    $app->get("/:id", function ($id) use ($app, $reportingService) {
+        try
+        {
+            echo $reportingService->getQueriesJSON($reportingService->getQuery($id));
+        } catch (Exception $e) {
+            echo exceptionToJSON($e);
+        }
+        
+    });
+    
+    $app->post('/',function() use ($app) {
         try {
             $input = getJSONFromApp($app);
             $queryRequest = $input->queryRequest;
@@ -193,6 +213,11 @@ $app->group('/database', function () use ($app) {
               echo exceptionToJSON($e);
         }
     });
+    
+});
+
+$app->group('/database', function () use ($app) {
+    $systemService = $app->SystemService;
     
     $app->post('/backup', function () use ($app, $systemService) {
         try {

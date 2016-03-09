@@ -55,4 +55,49 @@ class ReportingService {
         }
     }
     
+    function getQuery($qry_ID = null, $qry_Args=null)
+    {
+        if ($qry_ID == null )
+        {
+            $sSQL = "SELECT qry_ID,qry_Name,qry_Description FROM query_qry ORDER BY qry_Name";
+            $rsQueries = RunQuery($sSQL);
+            $result = array();
+            while ($row=mysql_fetch_assoc($rsQueries))
+            {
+                array_push($result,$row);
+            }
+            return $result;
+        }
+        else
+        {
+            if($qry_Args==null)
+            {
+                $sSQL = "SELECT qry_ID,qry_Name,qry_Description FROM query_qry where qry_ID=".$qry_ID;
+                $rsQueries = RunQuery($sSQL);
+                $result = array();
+                while ($row=mysql_fetch_assoc($rsQueries))
+                {
+                    array_push($result,$row);
+                }
+                return $result;
+            }
+            else
+            {
+                
+            }
+            
+        }
+    }
+    
+    function getQueriesJSON($queries) {
+        if ($queries)
+        {
+            return '{"queries": ' . json_encode($queries) . '}';
+        }
+        else
+        {
+              return false;
+        }
+    }
+    
 }
