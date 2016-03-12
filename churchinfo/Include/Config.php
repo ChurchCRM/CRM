@@ -13,16 +13,16 @@ $sUSER = 'churchcrm';
 $sPASSWORD = 'churchcrm';
 $sDATABASE = 'churchcrm';
 
-// Root path of your ChurchInfo installation ( THIS MUST BE SET CORRECTLY! )
-// For example, if you will be accessing from http://www.yourdomain.com/web/churchinfo
-// then you would enter '/web/churchinfo' here.
+// Root path of your ChurchCRM installation ( THIS MUST BE SET CORRECTLY! )
+// For example, if you will be accessing from http://www.yourdomain.com/web/churchcrm
+// then you would enter '/web/churchcrm' here.
 // Another example, if you will be accessing from http://www.yourdomain.com
 // then you would enter '' ... an empty string for a top level installation.
 // This path SHOULD NOT end with slash.  This is case sensitive.
 $sRootPath = '';
 
 // Set $bLockURL=TRUE to enforce https access by specifying exactly
-// which URL's your users may use to log into ChurchInfo.
+// which URL's your users may use to log into ChurchCRM.
 $bLockURL = TRUE;
 
 // URL[0] is the URL that you prefer most users use when they
