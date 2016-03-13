@@ -848,7 +848,7 @@ var person_ID = <?= $iPersonID ?>;
         var GroupAssignID = $("select[name='GroupAssignID'] option:selected").val();
         $.ajax({
                 method: "POST",
-                url:    "/api/groups/"+GroupAssignID+"/adduser/"+person_ID
+                url:    window.CRM.root + "/api/groups/"+GroupAssignID+"/adduser/"+person_ID
             }).done(function (data){
                location.reload(); 
             });
