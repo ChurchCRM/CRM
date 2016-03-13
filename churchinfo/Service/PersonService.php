@@ -28,7 +28,10 @@ class PersonService
 
     function getPhoto($id) {
         if ($id != "") {
-            $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email FROM person_per WHERE per_ID =' . $id;
+            $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email, fmr.lst_OptionName AS sFamRole
+                        FROM person_per per
+                          LEFT JOIN list_lst fmr ON per.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
+                          WHERE per_ID =' . $id;
             $person = RunQuery($sSQL);
             extract(mysql_fetch_array($person));
             if ($per_ID != "") {
@@ -38,7 +41,7 @@ class PersonService
                 }
 
                 if ($photoFile == "") {
-                    $photoFile = $this->getDefaultPhoto($per_Gender, "");
+                    $photoFile = $this->getDefaultPhoto($per_Gender, $sFamRole);
                 }
                 return $photoFile;
             }
