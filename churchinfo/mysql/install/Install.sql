@@ -114,7 +114,6 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (14, 'sMinPasswordChange', '4', 'number', '4', 'Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature', 'General', NULL),
 (15, 'sDisallowedPasswords', 'churchcrm,password,god,jesus,church,christian', 'text', 'churchcrm,password,god,jesus,church,christian', 'A comma-seperated list of disallowed (too obvious) passwords.', 'General', NULL),
 (16, 'iMaxFailedLogins', '50', 'number', '50', 'Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature.', 'General', NULL),
-(19, 'bFamListFirstNames', '1', 'boolean', '1', 'Show family member firstnames in Family Listing?', 'General', NULL),
 (20, 'iPDFOutputType', '1', 'number', '1', 'PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window', 'General', NULL),
 (21, 'sDefaultCity', '', 'text', '', 'Default City', 'General', NULL),
 (22, 'sDefaultState', '', 'text', '', 'Default State - Must be 2-letter abbreviation!', 'General', NULL),
@@ -126,9 +125,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (28, 'sSMTPAuth', '1', 'boolean', '1', 'Does your SMTP server require auththentication (username/password)?', 'General', NULL),
 (29, 'sSMTPUser', '', 'text', '', 'SMTP Username', 'General', NULL),
 (30, 'sSMTPPass', '', 'text', '', 'SMTP Password', 'General', NULL),
-(31, 'sWordWrap', '72', 'number', '72', 'Word Wrap point. Default for most email programs is 72', 'General', NULL),
 (33, 'bShowFamilyData', '1', 'boolean', '1', 'Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person''s assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ', 'General', NULL),
-(34, 'bOldVCardVersion', '', 'boolean', '', 'Use vCard 2.1 rather than vCard 3.0 standard.', 'General', NULL),
 (36, 'sGZIPname', 'gzip', 'text', 'gzip', '', 'General', NULL),
 (37, 'sZIPname', 'zip', 'text', 'zip', '', 'General', NULL),
 (38, 'sPGPname', 'gpg', 'text', 'gpg', '', 'General', NULL),
@@ -158,11 +155,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (64, 'sDistanceUnit', 'miles', 'text', 'miles', 'Unit used to measure distance, miles or km.', 'General', NULL),
 (65, 'sTimeZone', 'America/New_York', 'text', 'America/New_York', 'Time zone- see http://php.net/manual/en/timezones.php for valid choices.', 'General', NULL),
 (66, 'sGMapIcons', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'text', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'Names of markers for Google Maps in order of classification', 'General',NULL),
---
--- bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param below
---
 (67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General', NULL),
-
 (2001, 'mailChimpApiKey', '', 'text', '', 'see http://kb.mailchimp.com/accounts/management/about-api-keys', 'General', NULL),
 
 
@@ -708,10 +701,9 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (93, 'groupproperty', 'properties', 0, 'Group Properties', 'Group Properties', 'PropertyList.php?Type=g', '', 'bAll', NULL, 0, 0, NULL, 1, 3, NULL),
 (94, 'propertytype', 'properties', 0, 'Property Types', 'Property Types', 'PropertyTypeList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
 
-(100, 'generalsetting', 'admin', 0, 'Edit General Settings', 'Edit General Settings', 'SettingsGeneral.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
+(100, 'generalsetting', 'admin', 0, 'Edit General Settings', 'Edit General Settings', 'SystemSettings.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
 (101, 'editusers', 'admin', 0, 'System Users', 'System Users', 'UserList.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 2, NULL),
 (102, 'accessreport', 'admin', 0, 'Access report', 'Access report', 'AccessReport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3, NULL),
-(103, 'reportsetting', 'admin', 0, 'Edit Report Settings', 'Edit Report Settings', 'SettingsReport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 4, NULL),
 (104, 'customfamilyfld', 'admin', 0, 'Edit Custom Family Fields', 'Edit Custom Family Fields', 'FamilyCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 5, NULL),
 (105, 'custompersonfld', 'admin', 0, 'Edit Custom Person Fields', 'Edit Custom Person Fields', 'PersonCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 6, NULL),
 (106, 'donationfund', 'admin', 0, 'Edit Donation Funds', 'Edit Donation Funds', 'DonationFundEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 7, NULL),
