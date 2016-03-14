@@ -23,16 +23,15 @@ if (!$_SESSION['bAdmin'])
 	Redirect("Menu.php");
 	exit;
 }
+if (isset ($_POST['cancel'])){
+  Redirect("SystemSettings.php");
+}
 
-$scfgCategory = "";
-if (isset ($_GET["Cat"]))
-	$scfgCategory = FilterInput($_GET["Cat"],'string');
-
-$sCategory_Filter = ($scfgCategory == "") ? " AND cfg_category is NULL" : " AND cfg_category = '$scfgCategory' ";
-
-// Figure out where $sHeader is stored.  Special handling is needed to preserve
-// HTML tags.
-$sSQL = "SELECT * FROM config_cfg WHERE cfg_section='General' ORDER BY cfg_id";
+$sSQL = "SELECT * FROM config_cfg ORDER BY cfg_id";
+if (isset ($_GET["Cat"])) {
+  $scfgCategory = FilterInput($_GET["Cat"], 'string');
+  $sSQL = "SELECT * FROM config_cfg WHERE cfg_category='" . $scfgCategory . "' ORDER BY cfg_order";
+}
 
 $rsConfigs = RunQuery($sSQL);
 $iRowCount=0;
@@ -91,25 +90,22 @@ if (isset ($_POST['save'])){
 }
 
 // Set the page title and include HTML header
-$sPageTitle = gettext("General Configuration Settings");
+$sPageTitle = gettext("General Configuration Settings") ." ". $_GET["Cat"];
 require "Include/Header.php";
 
 // Get settings
-$sSQL = "SELECT * FROM config_cfg WHERE cfg_section='general' $sCategory_Filter ORDER BY cfg_id";
 $rsConfigs = RunQuery($sSQL);
 ?>
-<div class="row">
-	<div class="col-md-12">
-		<div class="box">
-			<div class="box-body">
-				<form method=post action=SettingsGeneral.php>
-				<table class="table table-bordered">
-				<tr>
-					<th><?= gettext("Variable name") ?></th>
-					<th>Current Value</th>
-					<th>Default Value</th>
-					<th>Notes</th>
-				</tr>
+<div class="box box-body">
+
+<form method=post action=EditSettings.php>
+<table class="table">
+<tr>
+    <th><?= gettext("Variable name") ?></th>
+    <th>Current Value</th>
+    <th>Default Value</th>
+    <th>Notes</th>
+</tr>
 
 <?php
 $r = 1;
@@ -171,14 +167,11 @@ while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_toolti
 			<tr>
 				<td>&nbsp;</td>
 				<td>
-					<input type=submit class=btn name=save value='<?= gettext("Save Settings") ?>'>
+					<input type=submit class='btn btn-primary' name=save value='<?= gettext("Save Settings") ?>'>
 					<input type=submit class=btn name=cancel value='<?= gettext("Cancel") ?>'>
 				</td>
 			</tr>
 		</table>
 		</form>
 		</div>
-	</div>
-</div>
-<?php require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php"; ?>
