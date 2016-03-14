@@ -104,6 +104,7 @@ UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='21' WHERE `cfg_id`=
 UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='22' WHERE `cfg_id`='1031';
 UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='23' WHERE `cfg_id`='1032';
 UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='24' WHERE `cfg_id`='1033';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='25' WHERE `cfg_id`='1034';
 
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='0' WHERE `cfg_id`='20';
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='1' WHERE `cfg_id`='40';
