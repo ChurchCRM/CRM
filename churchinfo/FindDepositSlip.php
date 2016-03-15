@@ -121,6 +121,6 @@ require "Include/Header.php";
 var depositData = <?php $json = $financialService->getDepositJSON($financialService->getDeposits()); if ($json) { echo $json; } else { echo 0; } ?>;
 </script>
 
-<script src="<?= $sRootPath; ?>/js/FindDepositSlip.js"></script>
+<script src="<?= $sRootPath; ?>/skin/js/FindDepositSlip.js"></script>
 
 <?php require "Include/Footer.php" ?>
