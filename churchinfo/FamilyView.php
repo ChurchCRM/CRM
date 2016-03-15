@@ -248,9 +248,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                 <?php } ?>
                 <br/>
                 <?php if ($bOkToEdit) { ?>
-                    <a class="btn btn-app" href="#" data-toggle="modal" data-target="#upload-image"><i class="fa fa-camera"></i> Upload Photo </a>
+                    <a class="btn btn-app" href="#" data-toggle="modal" data-target="#upload-image"><i class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
                   <?php if ($familyService->getUploadedPhoto($iFamilyID) != "") { ?>
-                  <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i>Remove Photo </a>
+                  <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i> <?= gettext("Delete Photo") ?> </a>
                   <?php }
                 }
                 if ($_SESSION['bNotes']) { ?>
