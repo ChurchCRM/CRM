@@ -60,43 +60,6 @@ switch ($mode)
 			}
 		<?php
 	break;
-
-	case GroupRolesSelect:
-		// Security check
-		if (!$_SESSION['bManageGroups']) exit;
-
-		if ($data > 0) {
-			$sSQL = "SELECT grp_DefaultRole,grp_RoleListID FROM group_grp WHERE grp_ID = " . $data;
-			$rsQuery = RunQuery($sSQL);
-			extract(mysql_fetch_array($rsQuery));
-
-			$sSQL = "SELECT lst_OptionID,lst_OptionName FROM list_lst WHERE lst_ID = " . $grp_RoleListID . " ORDER BY lst_OptionSequence";
-			$rsQuery = RunQuery($sSQL);
-
-			if (mysql_num_rows($rsQuery) == 0)
-				$sGeneratedHTML = "invalid";
-			else
-			{
-				$sGeneratedHTML = "<select name=\"GroupRole\">";
-				while($aRow = mysql_fetch_array($rsQuery))
-				{
-					extract($aRow);
-					$sGeneratedHTML .= "<option value=\"" . $lst_OptionID . "\"";
-					if ($lst_OptionID == $grp_DefaultRole) $sGeneratedHTML .= " selected";
-					$sGeneratedHTML .= ">" . $lst_OptionName . "</option>";
-				}
-				$sGeneratedHTML .= "</select>";
-			}
-		} else {
-			$sGeneratedHTML = gettext("No Group Selected");
-		}
-		?>
-			windowOnload = function()
-			{
-				window.parent.updateGroupRoles('<?= $sGeneratedHTML ?>');
-			}
-		<?php
-	break;
 }
 ?>
 </script>

@@ -57,62 +57,7 @@ require "Include/Header.php";
 
 ?>
 
-<script type="text/javascript">
-var IFrameObj; // our IFrame object
-
-function UpdateRoles()
-{
-	var group_ID = document.getElementById('GroupID').value;
-	if (!document.createElement) {return true};
-	var IFrameDoc;
-	var URL = 'RPCdummy.php?mode=GroupRolesSelect&data=' + group_ID;
-	if (!IFrameObj && document.createElement) {
-		var tempIFrame=document.createElement('iframe');
-		tempIFrame.setAttribute('id','RSIFrame');
-		tempIFrame.style.border='0px';
-		tempIFrame.style.width='0px';
-		tempIFrame.style.height='0px';
-		IFrameObj = document.body.appendChild(tempIFrame);
-
-		if (document.frames) {
-			// For IE5 Mac
-			IFrameObj = document.frames['RSIFrame'];
-		}
-	}
-
-	if (navigator.userAgent.indexOf('Gecko') !=-1
-		&& !IFrameObj.contentDocument) {
-		// For NS6
-		setTimeout('AddToCart()',10);
-		return false;
-	}
-
-	if (IFrameObj.contentDocument) {
-		// For NS6
-		IFrameDoc = IFrameObj.contentDocument;
-	} else if (IFrameObj.contentWindow) {
-		// For IE5.5 and IE6
-		IFrameDoc = IFrameObj.contentWindow.document;
-	} else if (IFrameObj.document) {
-		// For IE5
-		IFrameDoc = IFrameObj.document;
-	} else {
-		return true;
-	}
-
-	IFrameDoc.location.replace(URL);
-	return false;
-}
-
-function updateGroupRoles(generated_html)
-{
-	if (generated_html == "invalid") {
-		document.getElementById('GroupRoles').innerHTML = '<p class="LargeError"><?= gettext("Invalid Group or No Roles Available!") ?><p>';
-	} else {
-		document.getElementById('GroupRoles').innerHTML = generated_html;
-	}
-}
-</script>
+<script src="js/RPCDummyAjax.js"></script>
 
 <p align="center"><?= gettext("Select the group to add this person to:") ?></p>
 <form method="post" action="PersonToGroup.php?PersonID=<?= $iPersonID ?>">
@@ -134,7 +79,11 @@ function updateGroupRoles(generated_html)
 	</tr>
 	<tr>
 		<td class="LabelColumn"><?= gettext("Select Role:") ?></td>
-		<td class="TextColumn"><span id="GroupRoles"><?= gettext("No Group Selected") ?></span></td>
+		<td class="TextColumn"> 
+                    <select name="GroupRole" id="GroupRole">
+                        <option><?= gettext("No Group Selected") ?></option>
+                    </select>
+                </td>
 	</tr>
 </table>
 <p align="center">
