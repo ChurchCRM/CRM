@@ -56,7 +56,8 @@ class SystemService
       $this->playbackSQLtoDatabase($file['tmp_name']);
     }
     exec("rm -rf $restoreResult->backupRoot");
-    $this->rebuildMenus();
+    $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
+    $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
     $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
     return $restoreResult;
 
@@ -224,10 +225,10 @@ class SystemService
 
   }
 
-  function rebuildMenus()
+  function rebuildWithSQL($SQLFile)
   {
     $root = dirname(dirname(__FILE__));
-    $this->playbackSQLtoDatabase($root . "/mysql/upgrade/rebuild_nav_menus.sql");
+    $this->playbackSQLtoDatabase($root . $SQLFile);
   }
 
   function checkDatabaseVersion()
