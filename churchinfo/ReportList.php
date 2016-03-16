@@ -88,32 +88,39 @@ require 'Include/Header.php';
             ?>
         </div>
     </div><!-- ./col -->
-    <?php } ?>
+    <?php } 
     
-    <div class="box col-lg-4 col-xs-4">
-        <div class="box-header with-border">
-            <h3 class="box-title">Event Attendance Reports</h3>
-        </div>
-        <div class="box-body">
-            <?php
-            //$sSQL = "SELECT * FROM event_types";
-            $sSQL = "SELECT DISTINCT event_types.* FROM event_types RIGHT JOIN events_event ON event_types.type_id=events_event.event_type ORDER BY type_id ";
-            $rsOpps = RunQuery($sSQL);
-            $numRows = mysql_num_rows($rsOpps);
-
-            // List all events
-                for ($row = 1; $row <= $numRows; $row++)
-                {
-                    $aRow = mysql_fetch_array($rsOpps);
-                    extract($aRow);
-                    echo '&nbsp;&nbsp;&nbsp;<a href="EventAttendance.php?Action=List&Event='.
-                        $type_id.'&Type='.gettext($type_name).'" title="List All '.
-                        gettext($type_name).' Events"><strong>'.gettext($type_name).
-                        '</strong></a>'."<br>\n";
-                }
+        #Conditionally Display the Event Reports, only if there are actually events in the database.  Otherwise, Don't render the Event reports section.
+        //$sSQL = "SELECT * FROM event_types";
+        $sSQL = "SELECT DISTINCT event_types.* FROM event_types RIGHT JOIN events_event ON event_types.type_id=events_event.event_type ORDER BY type_id ";
+        $rsOpps = RunQuery($sSQL);
+        $numRows = mysql_num_rows($rsOpps);
+        if ($numRows > 0)
+        {
             ?>
-        </div>
-    </div><!-- ./col -->
+            <div class="box col-lg-4 col-xs-4">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Event Attendance Reports</h3>
+                </div>
+                <div class="box-body">
+                   <?php
+
+                    // List all events
+                        for ($row = 1; $row <= $numRows; $row++)
+                        {
+                            $aRow = mysql_fetch_array($rsOpps);
+                            extract($aRow);
+                            echo '&nbsp;&nbsp;&nbsp;<a href="EventAttendance.php?Action=List&Event='.
+                                $type_id.'&Type='.gettext($type_name).'" title="List All '.
+                                gettext($type_name).' Events"><strong>'.gettext($type_name).
+                                '</strong></a>'."<br>\n";
+                        }
+                    ?>
+                </div>
+            </div><!-- ./col -->
+            <?php
+        }
+    ?>
 </div>
 
 
