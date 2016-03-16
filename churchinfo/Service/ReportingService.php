@@ -6,9 +6,11 @@ class ReportingService {
     {
         $returnObject = new StdClass();
         $returnObject->query = $queryRequest;
+        $returnObject->sql=$this->getQuerySQL($queryRequest->queryID,$queryRequest->queryParameters);
         $returnObject->rows = array();
         $returnObject->headerRow = null;
-        $result=mysql_query($queryRequest);
+        
+        $result=mysql_query($returnObject->sql);
         $returnObject->rowcount = mysql_num_rows($result);
         while($row=mysql_fetch_assoc($result)) {
             if (!isset($returnObject->headerRow))
@@ -22,6 +24,7 @@ class ReportingService {
             array_push($returnObject->rows,$row);
         }
         return $returnObject;
+       
         
     }
     
@@ -53,6 +56,19 @@ class ReportingService {
         {
               return false;
         }
+    }
+    
+    function getQuerySQL($qry_ID,$qry_Parameters)
+    {
+        $sSQL = "SELECT qry_SQL FROM query_qry where qry_ID=".$qry_ID;
+        $rsQueries = RunQuery($sSQL);
+        $query=mysql_fetch_assoc($rsQueries);
+        $sql = $query['qry_SQL'];
+        foreach($qry_Parameters as $parameter)
+        {
+            $sql = str_replace("~".$parameter->qrp_alias."~", $parameter->value,$sql);
+        }
+        return $sql;
     }
     
     function getQuery($qry_ID = null, $qry_Args=null)
