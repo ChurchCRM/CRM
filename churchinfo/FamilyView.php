@@ -460,7 +460,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 											}
 											?>
 											  </select>
-											  <input type="submit" class="btn" value="Assign" name="Submit2" style="font-size: 8pt;">
+											  <input type="submit" class="btn btn-default" value="Assign" name="Submit2" style="font-size: 8pt;">
 										  </p>
 										</form>
 										</div>
