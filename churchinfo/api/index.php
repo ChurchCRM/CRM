@@ -204,6 +204,16 @@ $app->group('/queries', function () use ($app) {
         
     });
     
+      $app->get("/:id/details", function ($id) use ($app, $reportingService) {
+        try
+        {
+            echo $reportingService->getQueriesJSON($reportingService->getQuery($id));
+        } catch (Exception $e) {
+            echo exceptionToJSON($e);
+        }
+        
+    });
+    
     $app->post('/',function() use ($app) {
         try {
             $input = getJSONFromApp($app);

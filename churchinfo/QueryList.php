@@ -75,13 +75,13 @@ $("#querySelect").on("select2:select", function (e) {
 console.log(e);
  $("#queryText").empty();
 $.ajax({
-    method: "POST",
+    method: "GET",
     dataType: 'json',
-    url:"/api/database/query",
-    data: JSON.stringify({"queryRequest": "SELECT qry_SQL from query_qry where qry_ID = " + e.params.data.id})
+    url: window.CRM.root + "/api/queries/"+e.params.data.id+"/details",
+    data: JSON.stringify()
     }).done(function(data){
         console.log(data);
-        $("#queryText").val(data.rows[0].qry_SQL);
+        $("#queryText").val(data.queries[0].qry_SQL);
     });
 });
 
@@ -92,7 +92,7 @@ $("#submitQuery").on("click",function (e){
     $.ajax({
     method: "POST",
     dataType: 'json',
-    url:"/api/database/query",
+    url: window.CRM.root + "/api/queries/"+e.params.data.id",
     data: JSON.stringify({"queryRequest":$("#queryText").val()})
     }).done(function(data){
         console.log(data);

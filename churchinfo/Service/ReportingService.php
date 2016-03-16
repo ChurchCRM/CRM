@@ -72,7 +72,7 @@ class ReportingService {
         {
             if($qry_Args==null)
             {
-                $sSQL = "SELECT qry_ID,qry_Name,qry_Description FROM query_qry where qry_ID=".$qry_ID;
+                $sSQL = "SELECT qry_ID,qry_Name,qry_Description, FROM query_qry where qry_ID=".$qry_ID;
                 $rsQueries = RunQuery($sSQL);
                 $result = array();
                 while ($row=mysql_fetch_assoc($rsQueries))
