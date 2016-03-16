@@ -215,11 +215,10 @@ $app->group('/queries', function () use ($app) {
         
     });
     
-    $app->post('/:id',function() use ($app) {
+    $app->post('/:id',function() use ($app, $reportingService) {
         try {
             $input = getJSONFromApp($app);
-            $queryRequest = $input->queryRequest;
-            echo json_encode($reportingService->queryDatabase($queryRequest));
+            echo json_encode($reportingService->queryDatabase($input));
         } catch (Exception $e) {
               echo exceptionToJSON($e);
         }

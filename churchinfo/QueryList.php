@@ -54,8 +54,8 @@ Query Parameters:
 <div id="Parameters">
     
 </div>
-Query Text:
-<textarea id="queryText" class="form-control" name="queryText" <?php if (!$_SESSION['bAdmin']) { echo "disabled"; }?>></textarea>
+<!--Query Text:
+<textarea id="queryText" class="form-control" name="queryText" <?php if (!$_SESSION['bAdmin']) { echo "disabled"; }?>></textarea>!-->
 <br>
 
 <input type="button" class="btn btn-success" id="submitQuery" name="submitQuery" value="Submit Query"/>
@@ -99,14 +99,16 @@ $.ajax({
 });
 
 $("#submitQuery").on("click",function (e){
-   console.log(e); 
-   $("#queryResults").empty();
+    console.log(e); 
+    $("#queryResults").empty();
     $("#numRows").empty();
+    var queryParameterData = $(".queryParameter").map(function() { return {"qrp_alias":this.name,"value":this.value}}).get();
+    console.log(queryParameterData);
     $.ajax({
     method: "POST",
     dataType: 'json',
     url: window.CRM.root + "/api/queries/" + queryID,
-    data: JSON.stringify({"queryID":queryID})
+    data: JSON.stringify({"queryID":queryID,"queryParameters":queryParameterData})
     }).done(function(data){
         console.log(data);
         $("#numRows").html(" ("+data.rowcount+") ");
