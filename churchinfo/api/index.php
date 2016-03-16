@@ -207,18 +207,19 @@ $app->group('/queries', function () use ($app) {
       $app->get("/:id/details", function ($id) use ($app, $reportingService) {
         try
         {
-            echo $reportingService->getQueriesJSON($reportingService->getQuery($id));
+            echo '{"Query":'.json_encode($reportingService->getQuery($id)).' , "Parameters":' .  json_encode($reportingService->getQueryParameters($id)).'}';
+            
         } catch (Exception $e) {
             echo exceptionToJSON($e);
         }
         
     });
     
-    $app->post('/',function() use ($app) {
+    $app->post('/:id',function() use ($app) {
         try {
             $input = getJSONFromApp($app);
             $queryRequest = $input->queryRequest;
-            echo json_encode($app->SystemService->queryDatabase($queryRequest));
+            echo json_encode($reportingService->queryDatabase($queryRequest));
         } catch (Exception $e) {
               echo exceptionToJSON($e);
         }

@@ -50,6 +50,10 @@ foreach($queries as $query)
 ?>
 </select>
 <br><br>
+Query Parameters:
+<div id="Parameters">
+    
+</div>
 Query Text:
 <textarea id="queryText" class="form-control" name="queryText" <?php if (!$_SESSION['bAdmin']) { echo "disabled"; }?>></textarea>
 <br>
@@ -71,17 +75,26 @@ $(document).ready(function() {
     $("#querySelect").select2();
 });
 
+var queryID;
+
 $("#querySelect").on("select2:select", function (e) { 
 console.log(e);
  $("#queryText").empty();
 $.ajax({
     method: "GET",
     dataType: 'json',
-    url: window.CRM.root + "/api/queries/"+e.params.data.id+"/details",
+    url: window.CRM.root + "/api/queries/" + e.params.data.id + "/details",
     data: JSON.stringify()
     }).done(function(data){
         console.log(data);
-        $("#queryText").val(data.queries[0].qry_SQL);
+        queryID = data.Query[0].qry_ID;
+        $("#queryText").val(JSON.stringify(data.Query));
+         $("#Parameters").html(" ");
+        $.each(data.Parameters, function(index,value){
+            $("<label for=\""+value.qrp_Alias+"\">"+value.qrp_Name+" - "+value.qrp_Description+"</label>").appendTo("#Parameters");
+            $("<input class=\"queryParameter\" type=\"text\" name=\""+value.qrp_Alias+"\"></input>").appendTo("#Parameters");
+            $("<br>").appendTo("#Parameters");
+        })
     });
 });
 
@@ -92,8 +105,8 @@ $("#submitQuery").on("click",function (e){
     $.ajax({
     method: "POST",
     dataType: 'json',
-    url: window.CRM.root + "/api/queries/"+e.params.data.id",
-    data: JSON.stringify({"queryRequest":$("#queryText").val()})
+    url: window.CRM.root + "/api/queries/" + queryID,
+    data: JSON.stringify({"queryID":queryID})
     }).done(function(data){
         console.log(data);
         $("#numRows").html(" ("+data.rowcount+") ");

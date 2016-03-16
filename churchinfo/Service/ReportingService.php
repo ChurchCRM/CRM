@@ -72,7 +72,7 @@ class ReportingService {
         {
             if($qry_Args==null)
             {
-                $sSQL = "SELECT qry_ID,qry_Name,qry_Description, FROM query_qry where qry_ID=".$qry_ID;
+                $sSQL = "SELECT qry_ID,qry_Name,qry_Description FROM query_qry where qry_ID=".$qry_ID;
                 $rsQueries = RunQuery($sSQL);
                 $result = array();
                 while ($row=mysql_fetch_assoc($rsQueries))
@@ -81,13 +81,37 @@ class ReportingService {
                 }
                 return $result;
             }
-            else
+            elseif (is_array($qry_Args))
             {
                 
             }
             
         }
     }
+    
+    function getQueryParameters($qry_ID=null)
+    {
+        $sSQL = "SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID=".$qry_ID;
+        $rsQueries = RunQuery($sSQL);
+        $result = array();
+        while ($row=mysql_fetch_assoc($rsQueries))
+        {
+            if ($row['qrp_OptionSQL'])
+            {
+                $optionSQLResultArray = array();
+                $optionSQLResults = RunQuery($row['qrp_OptionSQL']);
+                while ($r2 =mysql_fetch_assoc($optionSQLResults) )
+                {
+                    array_push($optionSQLResultArray,$r2);
+                }
+                $row["qrp_OptionSQL_Results"]=$optionSQLResultArray;
+            }
+            array_push($result,$row);
+        }
+        return $result;
+        
+    }
+
     
     function getQueriesJSON($queries) {
         if ($queries)
