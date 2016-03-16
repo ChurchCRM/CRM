@@ -468,7 +468,7 @@ function SelectWhichInfo($sPersonInfo, $sFamilyInfo, $bFormat = false)
     if ($bShowFamilyData) {
 
         if ($bFormat) {
-            $sFamilyInfoBegin = "<span style=\"color: red;\">";
+            $sFamilyInfoBegin = "<span style='color: red;'>";
             $sFamilyInfoEnd = "</span>";
         }
 
