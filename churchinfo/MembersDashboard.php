@@ -19,7 +19,7 @@ $dashboardService = new DashboardService();
 $personCount = $dashboardService->getPersonCount();
 $personStats = $dashboardService->getPersonStats();
 $familyCount = $dashboardService->getFamilyCount();
-$sundaySchoolStats = $dashboardService->getSundaySchoolStats();
+$groupStats = $dashboardService->getGroupStats();
 $demographicStats = $dashboardService->getDemographic();
 
 $sSQL = "select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;";
@@ -57,7 +57,7 @@ $rsKidsGender = RunQuery($sSQL);
 </div>
 <!-- Small boxes (Stat box) -->
 <div class="row">
-    <div class="col-lg-4 col-xs-4">
+    <div class="col-lg-3">
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
@@ -76,7 +76,7 @@ $rsKidsGender = RunQuery($sSQL);
             </a>
         </div>
     </div><!-- ./col -->
-    <div class="col-lg-4 col-xs-4">
+    <div class="col-lg-3">
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
@@ -95,12 +95,12 @@ $rsKidsGender = RunQuery($sSQL);
             </a>
         </div>
     </div><!-- ./col -->
-    <div class="col-lg-4 col-xs-4">
+    <div class="col-lg-3">
         <!-- small box -->
-        <div class="small-box bg-red">
+        <div class="small-box bg-yellow">
             <div class="inner">
                 <h3>
-                    <?= $sundaySchoolStats['kids'] ?>
+                    <?= $groupStats['sundaySchoolkids'] ?>
                 </h3>
                 <p>
                     Sunday School Kids
@@ -114,6 +114,26 @@ $rsKidsGender = RunQuery($sSQL);
             </a>
         </div>
     </div><!-- ./col -->
+  <div class="col-lg-3">
+    <!-- small box -->
+    <div class="small-box bg-red">
+      <div class="inner">
+        <h3>
+          <?= $groupStats['groups'] -$groupStats['sundaySchoolClasses']  ?>
+        </h3>
+        <p>
+          Groups
+        </p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-gg"></i>
+      </div>
+      <a href="<?= $sRootPath ?>/grouplist" class="small-box-footer">
+        More info <i class="fa fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div><!-- ./col -->
+
 </div><!-- /.row -->
 <div class="row">
     <div class="col-lg-6">
