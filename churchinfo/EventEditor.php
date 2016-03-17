@@ -522,7 +522,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
       <?php
       for ($c=0; $c<$nCnts; $c++){
         ?><tr>
-          <td><strong><?= ($aCountName[$c].": ") ?></strong></td>
+          <td><strong><?= ($aCountName[$c].": ") ?>&nbsp;</strong></td>
         <td>
         <input type="text" name="EventCount[]" value="<?= ($aCount[$c]) ?>" size="8" class='form-control'>
         <input type="hidden" name="EventCountID[]" value="<?= ($aCountID[$c]) ?>">
@@ -533,7 +533,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
       } //end for loop
       ?>
       <tr>
-      <td><strong><?= gettext("Attendance Notes: ") ?></strong></td>
+      <td><strong><?= gettext("Attendance Notes: ") ?>&nbsp;</strong></td>
         <td><input type="text" name="EventCountNotes" value="<?= $sCountNotes ?>" class='form-control'>
         </td>
         </tr>
