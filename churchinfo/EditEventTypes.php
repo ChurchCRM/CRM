@@ -27,15 +27,7 @@ if (!$_SESSION['bAdmin'])
 }
 $sPageTitle = gettext("Edit Event Types");
 require "Include/Header.php";
-?>
-<script language="javascript">
-function confirmDeleteOpp( Opp ) {
-var answer = confirm("<?= gettext("Are you sure you want to delete this event?") ?>");
-if ( answer )
-    window.location="EventEditor.php?Opp=" + Opp + "&Action=delete"
-}
-</script>
-<?php
+
 //
 //  process the ACTION button inputs from the form page
 //
