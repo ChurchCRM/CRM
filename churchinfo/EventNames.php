@@ -48,7 +48,7 @@ if (isset ($_POST['Action'])) {
 	  $eDOY = $_POST["newEvtRecurDOY"];
 	  $eRecur=$_POST["newEvtTypeRecur"];
 	  $eCntLst = $_POST["newEvtTypeCntLst"];
-	  $eCntArray = explode(",",$eCntLst);
+	  $eCntArray = array_filter(array_map('trim', explode(",", $eCntLst)));
 	  $eCntArray[] = "Total";
 	  $eCntNum = count($eCntArray);
 	  $theID=$_POST["theID"];
@@ -231,7 +231,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
             <?= gettext("ATTENDANCE COUNTS") ?>
           </div>
           <div class='col-sm-6'>
-            <input class="form-control" type="Text" name="newEvtTypeCntLst" value="<?= $cCountList[$row] ?>" Maxlength="50" id="nETCL" size="30">
+            <input class="form-control" type="Text" name="newEvtTypeCntLst" value="<?= $cCountList[$row] ?>" Maxlength="50" id="nETCL" size="30" placeholder="<?= gettext('Optional') ?>">
             <div class='text-sm'><?= gettext("Enter a list of the attendance counts you want to include with this event.")?></div>
             <div class='text-sm'><?= gettext("Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"); ?></div>
             <div class='text-sm'><?= gettext("Every event type includes a Total count, you do not need to include it.") ?></div>
