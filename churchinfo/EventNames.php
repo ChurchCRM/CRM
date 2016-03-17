@@ -177,10 +177,10 @@ if (FilterInput($_POST["Action"]) == "NEW")
           <div class='col-sm-4 control-label text-bold'>
             <?= gettext("RECURRANCE PATTERN") ?>
           </div>
-          <div class='col-sm-6'>
+          <div class='col-sm-6 event-recurrance-patterns'>
             <div class='row form-radio-list'>
               <div class='col-xs-12'>
-                <?php $render->Radio('None', 'newEvtTypeRecur', 'none'); ?>
+                <?php $render->Radio('None', 'newEvtTypeRecur', 'none', true); ?>
               </div>
             </div>
             <div class='row form-radio-list'>
@@ -188,7 +188,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
                 <?php $render->Radio('Weekly', 'newEvtTypeRecur', 'weekly'); ?>
               </div>
               <div class='col-xs-7'>
-                <select name="newEvtRecurDOW" size="1" class='form-control pull-left'>
+                <select name="newEvtRecurDOW" size="1" class='form-control pull-left' disabled>
                   <option value=1><?= gettext("Sundays") ?></option>
                   <option value=2><?= gettext("Mondays") ?></option>
                   <option value=3><?= gettext("Tuesdays") ?></option>
@@ -204,7 +204,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
                 <?php $render->Radio('Monthly', 'newEvtTypeRecur', 'monthly'); ?>
               </div>
               <div class='col-xs-7'>
-                <select name="newEvtRecurDOM" size="1" class='form-control pull-left'>
+                <select name="newEvtRecurDOM" size="1" class='form-control pull-left' disabled>
                   <?php
                     for($kk=1; $kk<=31; $kk++)
                     {
@@ -222,7 +222,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
                 <?php $render->Radio('Yearly', 'newEvtTypeRecur', 'yearly'); ?>
               </div>
               <div class='col-xs-7'>
-                <input type="text" class="form-control" name="newEvtRecurDOY" maxlength="10" id="nSD" size="11" placeholder='YYYY-MM-DD' data-provide="datepicker" data-format='mm/dd/yyyy' />
+                <input type="text" disabled class="form-control" name="newEvtRecurDOY" maxlength="10" id="nSD" size="11" placeholder='YYYY-MM-DD' data-provide="datepicker" data-format='mm/dd/yyyy' />
               </div>
             </div>
           </div>

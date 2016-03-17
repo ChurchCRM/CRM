@@ -45,6 +45,7 @@
 
 	<script src="<?= $sRootPath ?>/skin/js/DataTables.js"></script>
 	<script src="<?= $sRootPath ?>/skin/js/Tooltips.js"></script>
+	<script src="<?= $sRootPath ?>/skin/js/Events.js"></script>
 	<script src="<?= $sRootPath ?>/skin/js/Footer.js"></script>
 
 </body>
