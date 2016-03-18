@@ -29,13 +29,11 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-function XMLparseIST($xmlstr, $xmlfield)
-{
+function XMLparseIST($xmlstr, $xmlfield) {
     // Function to parse XML data from Intelligent Search Technolgy, Ltd.
 
     if (!(strpos($xmlstr, "<$xmlfield>") === FALSE) ||
-            strpos($xmlstr, "</$xmlfield>" === FALSE))
-    {
+            strpos($xmlstr, "</$xmlfield>" === FALSE)) {
 
         $startpos = strpos($xmlstr, "<$xmlfield>") + strlen("<$xmlfield>");
         $endpos = strpos($xmlstr, "</$xmlfield>");
@@ -49,108 +47,88 @@ function XMLparseIST($xmlstr, $xmlfield)
     return '';
 }
 
-class ISTAddressLookup
-{
+class ISTAddressLookup {
 
     // This code is written to work with XML lookups provide by
     // Intelligent Search Technology, Ltd.
     // https://www.intelligentsearch.com/Hosted/User/
 
-    function GetAddress1()
-    {
+    function GetAddress1() {
         return $this->DeliveryLine1;
     }
 
-    function GetAddress2()
-    {
+    function GetAddress2() {
         return $this->DeliveryLine2;
     }
 
-    function GetCity()
-    {
+    function GetCity() {
         return $this->City;
     }
 
-    function GetState()
-    {
+    function GetState() {
         return $this->State;
     }
 
-    function GetZip()
-    {
+    function GetZip() {
         return $this->ZipAddon;
     }
 
-    function GetZip5()
-    {
+    function GetZip5() {
         return $this->Zip;
     }
 
-    function GetZip4()
-    {
+    function GetZip4() {
         return $this->Addon;
     }
 
-    function GetLOTNumber()
-    {
+    function GetLOTNumber() {
         return $this->LOTNumber;
     }
 
-    function GetDPCCheckdigit()
-    {
+    function GetDPCCheckdigit() {
         return $this->DPCCheckdigit;
     }
 
-    function GetRecordType()
-    {
+    function GetRecordType() {
         return $this->RecordType;
     }
 
-    function GetLastLine()
-    {
+    function GetLastLine() {
         return $this->LastLine;
     }
 
-    function GetCarrierRoute()
-    {
+    function GetCarrierRoute() {
         return $this->CarrierRoute;
     }
 
-    function GetReturnCode()
-    {
+    function GetReturnCode() {
         return $this->ReturnCode;
     }
 
-    function GetReturnCodes()
-    {
+    function GetReturnCodes() {
         return $this->ReturnCodes;
     }
 
-    function GetErrorCodes()
-    {
+    function GetErrorCodes() {
         return $this->ErrorCodes;
     }
 
-    function GetErrorDesc()
-    {
+    function GetErrorDesc() {
         return $this->ErrorDesc;
     }
 
-    function GetSearchesLeft()
-    {
+    function GetSearchesLeft() {
         return $this->SearchesLeft;
     }
 
-    function SetAddress($address1, $address2, $city, $state)
-    {
+    function SetAddress($address1, $address2, $city, $state) {
         $this->address1 = trim($address1);
         $this->address2 = trim($address2);
         $this->city = trim($city);
         $this->state = trim($state);
     }
 
-    function getAccountInfo($sISTusername, $sISTpassword)
-    {
+    function getAccountInfo($sISTusername, $sISTpassword) {
         // Returns account related information.  Currently, it is used to retrieve
         // remaining number of transactions.  Return codes are:
         // 0 - information retrieved successfully 
@@ -190,24 +168,21 @@ class ISTAddressLookup
         $this->SearchesLeft = '';
         $this->ReturnCode = '';
 
-        if (!$response)
-        {
+        if (!$response) {
             $this->ReturnCode = '9';
             $this->SearchesLeft = 'Connection failure: ' . $base . '<br>';
             $this->SearchesLeft .= ' Incorrect server name and/or path or server unavailable.<br>';
 
             // This feature requires that "allow_url_fopen = On" in the php.ini file.
-            if (!ini_get('allow_url_fopen'))
-            {
+            if (!ini_get('allow_url_fopen')) {
                 $this->SearchesLeft .= '<br>IMPORTANT: This feature requires "allow_url_fopen = On" in php.ini';
                 $this->SearchesLeft .= '<br>Please check your php.ini file for "allow_url_fopen"<br>';
             }
-        } else
-        {
+        }
+        else {
             $this->ReturnCode = XMLparseIST($response, 'ReturnCode');
 
-            switch ($this->ReturnCode)
-            {
+            switch ($this->ReturnCode) {
                 case '0':
                     $this->SearchesLeft = XMLparseIST($response, 'SearchesLeft');
                     break;
@@ -228,8 +203,7 @@ class ISTAddressLookup
         }
     }
 
-    function wsCorrectA($sISTusername, $sISTpassword)
-    {
+    function wsCorrectA($sISTusername, $sISTpassword) {
 
         // Lookup and Correct US address
 
@@ -269,8 +243,7 @@ class ISTAddressLookup
             'batchname' => $batchname
         );
 
-        foreach ($params as $key => $value)
-        {
+        foreach ($params as $key => $value) {
             $query_string .= "$key=" . urlencode($value) . "&";
         }
 
@@ -299,16 +272,15 @@ class ISTAddressLookup
         $this->ErrorDesc = '';
         $this->SearchesLeft = '';
 
-        if (!$response)
-        {
+        if (!$response) {
             $this->DeliveryLine1 = "Connection failure.\n";
             $this->DeliveryLine1 .= $base . "\n";
             $this->DeliveryLine1 .= 'Incorrect server name and/or path or server unavailable.';
             $this->ErrorCodes = 'xx';
             $this->ErrorDesc = 'Incorrect server name and/or path or server unavailable.';
             $this->SearchesLeft = '0';
-        } else
-        {
+        }
+        else {
             $this->DeliveryLine1 = XMLparseIST($response, 'DeliveryLine1');
             $this->DeliveryLine2 = XMLparseIST($response, 'DeliveryLine2');
             $this->City = XMLparseIST($response, 'City');
@@ -340,11 +312,11 @@ class ISTAddressLookup
 //            }
         }
     }
+
 }
 
 // If user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'])
-{
+if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
     exit;
 }
@@ -353,8 +325,7 @@ if (!$_SESSION['bAdmin'])
 $sPageTitle = gettext('US Address Verification');
 require 'Include/Header.php';
 
-if (strlen($sISTusername) && strlen($sISTpassword))
-{
+if (strlen($sISTusername) && strlen($sISTpassword)) {
 
     $myISTAddressLookup = new ISTAddressLookup;
 
@@ -362,22 +333,21 @@ if (strlen($sISTusername) && strlen($sISTpassword))
 
     $myISTReturnCode = $myISTAddressLookup->GetReturnCode();
     $myISTSearchesLeft = $myISTAddressLookup->GetSearchesLeft();
-} else
-{
+}
+else {
 
     $myISTReturnCode = '9';
     $myISTSearchesLeft = 'Missing sISTusername or sISTpassword';
 }
 
-if ($myISTReturnCode == '4')
-{
+if ($myISTReturnCode == '4') {
     ?>
     <div class="row">
         <div class="col-lg-12 col-md-7 col-sm-3">
             <div class="box box-body">
                 <div class="alert alert-danger alert-dismissible">
                     <h4><i class="icon fa fa-ban"></i>The Intelligent Search Technology, Ltd. XML web service is temporarily unavailable.</h4>
-                    <?php echo 'getAccountInfo ReturnCode = ' . $myISTReturnCode ?>
+    <?php echo 'getAccountInfo ReturnCode = ' . $myISTReturnCode ?>
                     Please try again in 30 minutes.
                     You may follow the URL below to log in and manage your Intelligent Search ';
                     Technology account settings.  This link may also provide information pertaining to ';
@@ -387,11 +357,10 @@ if ($myISTReturnCode == '4')
             </div>
         </div>
     </div>
-<?php
-} 
-elseif ($myISTReturnCode != '0')
-{
-?>
+    <?php
+}
+elseif ($myISTReturnCode != '0') {
+    ?>
     <div class="row">
         <div class="col-lg-12 col-md-7 col-sm-3">
             <div class="box box-body">
@@ -417,10 +386,9 @@ elseif ($myISTReturnCode != '0')
             </div>
         </div>
     </div>
-<?php
-} 
-elseif ($myISTSearchesLeft == 'X')
-{
+    <?php
+}
+elseif ($myISTSearchesLeft == 'X') {
     echo "<br>\n";
     echo "Searches Left = $myISTSearchesLeft<br><br>\n";
     echo 'Follow the URL below to log in and manage your Intelligent Search Technology account ';
@@ -431,9 +399,8 @@ elseif ($myISTSearchesLeft == 'X')
 
     echo 'This software was written to work best with the service CorrectAddress(R) ';
     echo 'with Addons. <br><br><br>';
-} 
-else
-{
+}
+else {
     // IST account is valid and working.  Time to get to work.
 
     echo "<h3>\n";
@@ -453,8 +420,7 @@ else
     $sSQL = 'SELECT lu_fam_ID FROM istlookup_lu ';
     $rsIST = RunQuery($sSQL);
     $iOrphanCount = 0;
-    while ($aRow = mysql_fetch_array($rsIST))
-    {
+    while ($aRow = mysql_fetch_array($rsIST)) {
         extract($aRow);
         // verify that this ID exists in family_fam with 
         // fam_Country = 'United States'
@@ -463,8 +429,7 @@ else
         $sSQL .= "AND fam_Country='United States'";
         $rsExists = RunQuery($sSQL);
         extract(mysql_fetch_array($rsExists));
-        if ($idexists == '0')
-        {
+        if ($idexists == '0') {
             $sSQL = "DELETE FROM istlookup_lu WHERE lu_fam_ID='$lu_fam_ID'";
             RunQuery($sSQL);
             $iOrphanCount++;
@@ -489,8 +454,7 @@ else
     $sSQL .= 'AND fam_DateLastEdited IS NOT NULL';
     $rsUpdated = RunQuery($sSQL);
     $iUpdatedCount = 0;
-    while ($aRow = mysql_fetch_array($rsUpdated))
-    {
+    while ($aRow = mysql_fetch_array($rsUpdated)) {
         extract($aRow);
 
         $sFamilyAddress = $fam_Address1 . $fam_Address2 . $fam_City .
@@ -499,8 +463,7 @@ else
                 $lu_State . $lu_ZipAddon;
 
         // compare addresses
-        if (strtoupper($sFamilyAddress) != strtoupper($sLookupAddress))
-        {
+        if (strtoupper($sFamilyAddress) != strtoupper($sLookupAddress)) {
             // only delete mismatches from lookup table
             $sSQL = "DELETE FROM istlookup_lu WHERE lu_fam_ID='$fam_ID'";
             RunQuery($sSQL);
@@ -520,8 +483,7 @@ else
     $sSQL .= "WHERE '$twoYearsAgo' > lu_LookupDateTime";
     $rsResult = RunQuery($sSQL);
     $iOutdatedCount = 0;
-    while ($aRow = mysql_fetch_array($rsResult))
-    {
+    while ($aRow = mysql_fetch_array($rsResult)) {
         extract($aRow);
         $sSQL = "DELETE FROM istlookup_lu WHERE lu_fam_ID='$lu_fam_ID'";
         RunQuery($sSQL);
@@ -537,8 +499,7 @@ else
     $rsResult = RunQuery($sSQL);
     extract(mysql_fetch_array($rsResult));
     $iNonUSCount = intval($nonustotal);
-    if ($iNonUSCount)
-    {
+    if ($iNonUSCount) {
         echo $iNonUSCount . " Non US addresses in database will not be verified.<br>\n";
     }
 
@@ -548,8 +509,7 @@ else
     $rsResult = RunQuery($sSQL);
     extract(mysql_fetch_array($rsResult));
     $iUSCount = intval($ustotal);
-    if ($iUSCount)
-    {
+    if ($iUSCount) {
         echo $iUSCount . " Total US addresses in database.<br>\n";
     }
 
@@ -558,8 +518,7 @@ else
     $rsResult = RunQuery($sSQL);
     extract(mysql_fetch_array($rsResult));
     $iUSOkay = intval($usokay);
-    if ($iUSOkay)
-    {
+    if ($iUSOkay) {
         echo $iUSOkay . " US addresses have had lookups performed.<br>\n";
     }
 
@@ -576,8 +535,7 @@ else
         echo "There are no US addresses eligible for lookup.<br>\n";
     echo "</h4>";
 
-    if ($_GET['DoLookup'])
-    {
+    if ($_GET['DoLookup']) {
         $startTime = time();  // keep tabs on how long this runs to avoid server timeouts
 
 
@@ -595,12 +553,10 @@ else
         $rsResult = RunQuery($sSQL);
 
         $bNormalFinish = TRUE;
-        while ($aRow = mysql_fetch_array($rsResult))
-        {
+        while ($aRow = mysql_fetch_array($rsResult)) {
 
             extract($aRow);
-            if (strlen($fam_Address2))
-            {
+            if (strlen($fam_Address2)) {
                 $fam_Address1 = $fam_Address2;
                 $fam_Address2 = "";
             }
@@ -645,8 +601,7 @@ else
                 echo " " . $myISTAddressLookup->GetErrorDesc();
             echo "<br><br>";
 
-            if ($lu_ErrorCodes != "'xx'")
-            {
+            if ($lu_ErrorCodes != "'xx'") {
                 // Error code xx is one of the following
                 // 1) Connection failure 2) Invalid username or password 3) No searches left 
                 //
@@ -670,10 +625,8 @@ else
                 RunQuery($sSQL);
             }
 
-            if ($iSearchesLeft < 30)
-            {
-                if ($lu_ErrorCodes != "'xx'")
-                {
+            if ($iSearchesLeft < 30) {
+                if ($lu_ErrorCodes != "'xx'") {
                     echo "<h3>There are " . $iSearchesLeft . " searches remaining ";
                     echo "in your account.  Searches will be performed one at a time until ";
                     echo "your account balance is zero.  To enable bulk lookups you will ";
@@ -681,8 +634,8 @@ else
                     echo "at the following link.<br>";
                     echo "<a href=\"https://www.intelligentsearch.com/Hosted/User/\">";
                     echo gettext("https://www.intelligentsearch.com/Hosted/User/") . "</a><br></h3>";
-                } else
-                {
+                }
+                else {
                     echo "<h4>Lookup failed.  There is a problem with the connection or with your account.</h4>";
                     echo "Please verify that your Intelligent Search Technology, Ltd. username and password ";
                     echo "are correct.<br><br>";
@@ -700,8 +653,7 @@ else
                     echo "but may be back online if you try again later.<br><br>\n";
                 }
 
-                if ($iSearchesLeft)
-                {
+                if ($iSearchesLeft) {
                     ?>
                     <form method="GET" action="USISTAddressVerification.php">
                         <input type=submit class=btn name=DoLookup value="Perform Next Lookup">
@@ -714,39 +666,36 @@ else
 
             $now = time();    // This code used to prevent browser and server timeouts
             // Keep doing fresh reloads of this page until complete.
-            if ($now - $startTime > 17)
-            {  // run for 17 seconds, then reload page
+            if ($now - $startTime > 17) {  // run for 17 seconds, then reload page
                 // total cycle is about 20 seconds per page reload
                 ?><meta http-equiv="refresh" content="2;URL=USISTAddressVerification.php?DoLookup=Perform+Lookups" /><?php
                 $bNormalFinish = FALSE;
                 break;
             }
         }
-        if ($bNormalFinish)
-        {
+        if ($bNormalFinish) {
             ?><meta http-equiv="refresh" content="2;URL=USISTAddressVerification.php" /><?php
         }
     }
     ?>
     <table><tr>
     <?php
-    if (!$_GET['DoLookup'] && $iEligible)
-    {
+    if (!$_GET['DoLookup'] && $iEligible) {
         ?>
                 <td><form method="GET" action="USISTAddressVerification.php">
                         <input type=submit class=btn name=DoLookup value="Perform Lookups">
                     </form></td>
     <?php } ?>
 
-    <?php if ($iUSOkay)
-    { ?>
+    <?php if ($iUSOkay) {
+        ?>
                 <td><form method="POST" action="Reports/USISTAddressReport.php">
                         <input type=submit class=btn name=MismatchReport value="View Mismatch Report">
                     </form></td>
     <?php } ?>
 
-    <?php if ($iNonUSCount)
-    { ?>
+    <?php if ($iNonUSCount) {
+        ?>
                 <td><form method="POST" action="Reports/USISTAddressReport.php">
                         <input type=submit class=btn name=NonUSReport value="View Non-US Address Report">
                     </form></td>
