@@ -101,14 +101,6 @@ $numRows = mysql_num_rows($rsPropList);
 
 require 'Include/Header.php'; ?>
 
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">Group Functions</h3>
@@ -133,11 +125,11 @@ if ($_SESSION['bManageGroups'])
                         <div class="modal-body">
                         <span style="color: red">
                            <?= gettext("Please confirm deletion of this group record:") ?>
-                         
+
                              <p class="ShadedBox">
                                 <?= $grp_Name ?>
                             </p>
-                            
+
                              <p class="LargeError">
                                 <?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>
                             </p>
@@ -153,7 +145,7 @@ if ($_SESSION['bManageGroups'])
             </div>
         </div>
     <!--END GROUP DELETE MODAL-->
-    
+
     <!-- MEMBER ROLE MODAL-->
      <div class="modal fade" id="changeMembership" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
             <div class="modal-dialog">
@@ -182,9 +174,9 @@ if ($_SESSION['bManageGroups'])
             </div>
         </div>
     <!--END MEMBER ROLE MODAL-->
-    
-    
-   
+
+
+
     <?php
     if ($grp_hasSpecialProps == 'true')
     {
@@ -203,11 +195,11 @@ $sSQL = "SELECT per_Email, fam_Email
             LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
             LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
             LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
-        WHERE per_ID NOT IN 
-            (SELECT per_ID 
-                FROM person_per 
-                INNER JOIN record2property_r2p ON r2p_record_ID = per_ID 
-                INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not Email') 
+        WHERE per_ID NOT IN
+            (SELECT per_ID
+                FROM person_per
+                INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
+                INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not Email')
             AND p2g2r_grp_ID = " . $iGroupID;
 $rsEmailList = RunQuery($sSQL);
 $sEmailLink = '';
@@ -226,7 +218,7 @@ while (list ($per_Email, $fam_Email) = mysql_fetch_row($rsEmailList))
 if ($sEmailLink)
 {
     // Add default email if default email has been set and is not already in string
-    if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress' 
+    if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress'
                                && !stristr($sEmailLink, $sToEmailAddress))
         $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
@@ -244,11 +236,11 @@ $sSQL = "SELECT per_CellPhone, fam_CellPhone
             LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
             LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
             LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
-        WHERE per_ID NOT IN 
-            (SELECT per_ID 
-            FROM person_per 
-            INNER JOIN record2property_r2p ON r2p_record_ID = per_ID 
-            INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not SMS') 
+        WHERE per_ID NOT IN
+            (SELECT per_ID
+            FROM person_per
+            INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
+            INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not SMS')
         AND p2g2r_grp_ID = " . $iGroupID;
 $rsPhoneList = RunQuery($sSQL);
 $sPhoneLink = '';
@@ -523,7 +515,7 @@ console.log(groupMembers);
 var dataT = 0;
 
 $(document).ready(function() {
-   
+
     dataT = $("#membersTable").DataTable({
     data:groupMembers,
     columns: [
@@ -586,7 +578,7 @@ $(document).ready(function() {
     });
     initHandlers();
 
-    
+
     $(".personSearch").select2({
         minimumInputLength: 2,
         ajax: {
@@ -598,7 +590,7 @@ $(document).ready(function() {
             data: "",
             processResults: function (data, params) {
                 var idKey = 1;
-                var results = new Array();   
+                var results = new Array();
                 $.each(data, function (key,value) {
                     var groupName = Object.keys(value)[0];
                     var ckeys = value[groupName];
@@ -613,7 +605,7 @@ $(document).ready(function() {
                         var childObject = {
                             id: idKey,
                             objid:cvalue.id,
-                            text: cvalue.displayName,     
+                            text: cvalue.displayName,
                             uri: cvalue.uri
                         };
                         idKey++;
@@ -621,29 +613,29 @@ $(document).ready(function() {
                     });
                     results.push(resultGroup);
                 });
-                return {results: results}; 
+                return {results: results};
             },
             cache: true
         }
     });
-    $(".personSearch").on("select2:select",function (e) { 
+    $(".personSearch").on("select2:select",function (e) {
         $.ajax({
             method: "POST",
             url: window.CRM.root + "/api/groups/<?= $iGroupID ?>/adduser/"+e.params.data.objid,
             dataType: "json"
         }).done(function (data){
-           var person = data[0]; 
+           var person = data[0];
            var node = dataT.row.add(person).node();
            dataT.rows().invalidate().draw(true);
            initHandlers();
         });
         $(".personSearch").select2("val", "");
     });
-    
 
 
 
-    
+
+
 });
 
 
@@ -653,7 +645,7 @@ function initHandlers()
      $("#chkClear").click(function(e){
              $("#deleteGroupButton").prop("disabled",!e.target.checked);
      });
-     
+
      $(".removeUserGroup").click(function(e) {
         var userid=e.currentTarget.id.split("-")[1];
         console.log(userid);
@@ -667,16 +659,16 @@ function initHandlers()
             initHandlers();
         });
     });
-    
+
      $(".changeMembership").click(function(e){
         var userid=e.currentTarget.id.split("-")[1];
         console.log(userid);
         $("#changeingMemberID").val(dataT.row(function(idx,data,node) { if  (data.per_ID == userid){return true;} }).data().per_ID);
         $("#changingMemberName").text(dataT.row(function(idx,data,node) { if  (data.per_ID == userid){return true;} }).data().displayName);
         $('#changeMembership').modal('show');
-        
+
     });
-    
+
     $("#confirmMembershipChange").click(function(e){
         var changeingMemberID = $("#changeingMemberID").val();
         $.ajax({
@@ -690,11 +682,11 @@ function initHandlers()
             dataT.rows().invalidate().draw(true);
             initHandlers();
             $('#changeMembership').modal('hide');
-        }); 
+        });
     });
-    
+
     $("#deleteGroupButton").click(function(e){
-      console.log(e);        
+      console.log(e);
       $.ajax({
             method: "DELETE",
             url: window.CRM.root + "/api/groups/<?= $iGroupID ?>",

@@ -67,3 +67,15 @@ input, .c-checkbox, .c-radio, .input-group {
     border-radius: 50%;
   }
 }
+
+.form-radio-list, .form-checkbox-list {
+  padding-top: 7px;
+  margin-bottom: 0;
+  .form-control {
+    margin-top: -5px;
+    margin-bottom: -5px;
+    padding-top: 4px;
+    height: inherit;
+    padding-bottom: 4px;
+  }
+}
