@@ -77,7 +77,7 @@ require "Include/Header.php";
             <div class="box-body">
                 <div class="col-md-4">
                     <label><?= gettext("Last Name:") ?></label>
-<?= gettext("Required") ?>
+                    <?= gettext("Required") ?>
                 </div>
 
 
@@ -180,13 +180,13 @@ require "Include/Header.php";
                     <label><?= gettext("Family Role:") ?></label>
                     <input type="checkbox" name="PrintFamilyRole" value="1">
                 </div>
-<?= gettext("* Depends whether using person or family output method") ?>
+                <?= gettext("* Depends whether using person or family output method") ?>
             </div>
         </div>
     </div>
-<?php
-if ($numCustomFields > 0 || $numFamCustomFields > 0) {
-    ?>
+    <?php
+    if ($numCustomFields > 0 || $numFamCustomFields > 0) {
+        ?>
         <div class="row">
             <div class="box col-lg-4 col-xs-4">
                 <div class="box-header with-border">
@@ -194,49 +194,49 @@ if ($numCustomFields > 0 || $numFamCustomFields > 0) {
                 </div>
                 <div class="box-body">
                     <table border="0">
-    <?php
-    if ($numCustomFields > 0) {
-        ?>
+                        <?php
+                        if ($numCustomFields > 0) {
+                            ?>
                             <tr><td width="100%" valign="top" align="left">
                                     <h3><?= gettext("Custom Person Fields") ?></h3>
                                     <table cellpadding="4" align="left">
-        <?php
-        // Display the custom fields
-        while ($Row = mysql_fetch_array($rsCustomFields)) {
-            extract($Row);
-            if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
-                echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td>";
-                echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $custom_Field . " value=\"1\"></td></tr>";
-            }
-        }
-        ?>
+                                        <?php
+                                        // Display the custom fields
+                                        while ($Row = mysql_fetch_array($rsCustomFields)) {
+                                            extract($Row);
+                                            if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+                                                echo "<tr><td class=\"LabelColumn\">" . $custom_Name . "</td>";
+                                                echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $custom_Field . " value=\"1\"></td></tr>";
+                                            }
+                                        }
+                                        ?>
                                     </table>
                                 </td></tr>
-                                        <?php
-                                    }
-                                    if ($numFamCustomFields > 0) {
-                                        ?>
+                            <?php
+                        }
+                        if ($numFamCustomFields > 0) {
+                            ?>
                             <tr><td width="100%" valign="top" align="left">
                                     <h3><?= gettext("Custom Family Fields") ?></h3>
                                     <table cellpadding="4" align="left">
-                            <?php
-                            // Display the family custom fields
-                            while ($Row = mysql_fetch_array($rsFamCustomFields)) {
-                                extract($Row);
-                                if ($aSecurityType[$fam_custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
-                                    echo "<tr><td class=\"LabelColumn\">" . $fam_custom_Name . "</td>";
-                                    echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $fam_custom_Field . " value=\"1\"></td></tr>";
-                                }
-                            }
-                            ?>
+                                        <?php
+                                        // Display the family custom fields
+                                        while ($Row = mysql_fetch_array($rsFamCustomFields)) {
+                                            extract($Row);
+                                            if ($aSecurityType[$fam_custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
+                                                echo "<tr><td class=\"LabelColumn\">" . $fam_custom_Name . "</td>";
+                                                echo "<td class=\"TextColumn\"><input type=\"checkbox\" name=" . $fam_custom_Field . " value=\"1\"></td></tr>";
+                                            }
+                                        }
+                                        ?>
                                     </table>
                                 </td></tr>
-                                    <?php } ?>
+                        <?php } ?>
                     </table>
                 </div>
             </div>
         </div>                  
-<?php } ?>
+    <?php } ?>
 
     <div class="row">
         <div class="box col-lg-4 col-xs-4">
@@ -282,14 +282,14 @@ if ($numCustomFields > 0 || $numFamCustomFields > 0) {
                             <!-- /.box-header -->
                             <div class="box-body no-padding">
                                 <select name="Classification[]" size="5" multiple>
-<?php
-while ($aRow = mysql_fetch_array($rsClassifications)) {
-    extract($aRow);
-    ?>
+                                    <?php
+                                    while ($aRow = mysql_fetch_array($rsClassifications)) {
+                                        extract($aRow);
+                                        ?>
                                         <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
-    <?php
-}
-?>
+                                        <?php
+                                    }
+                                    ?>
                                 </select>
                                 <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
                             </div>
@@ -312,14 +312,14 @@ while ($aRow = mysql_fetch_array($rsClassifications)) {
                             <!-- /.box-header -->
                             <div class="box-body no-padding">
                                 <select name="FamilyRole[]" size="5" multiple>
-<?php
-while ($aRow = mysql_fetch_array($rsFamilyRoles)) {
-    extract($aRow);
-    ?>
+                                    <?php
+                                    while ($aRow = mysql_fetch_array($rsFamilyRoles)) {
+                                        extract($aRow);
+                                        ?>
                                         <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
-    <?php
-}
-?>
+                                        <?php
+                                    }
+                                    ?>
                                 </select>
                                 <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
                             </div>
@@ -367,12 +367,12 @@ while ($aRow = mysql_fetch_array($rsFamilyRoles)) {
                             <div class="box-body no-padding">
                                 <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
                                 <select name="GroupID[]" size="5" multiple>
-<?php
-while ($aRow = mysql_fetch_array($rsGroups)) {
-    extract($aRow);
-    echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
-}
-?>
+                                    <?php
+                                    while ($aRow = mysql_fetch_array($rsGroups)) {
+                                        extract($aRow);
+                                        echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -393,8 +393,8 @@ while ($aRow = mysql_fetch_array($rsGroups)) {
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body no-padding">
-<?= gettext("From:") ?>&nbsp;</b></td><td><input id="MembershipDate1" type="text" name="MembershipDate1" size="11" maxlength="10">
-<?= gettext("To:") ?>&nbsp;</b></td><td><input id="MembershipDate2" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
+                                <?= gettext("From:") ?>&nbsp;</b></td><td><input id="MembershipDate1" type="text" name="MembershipDate1" size="11" maxlength="10">
+                                    <?= gettext("To:") ?>&nbsp;</b></td><td><input id="MembershipDate2" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
                             </div>
                         </div>
                     </div>
@@ -435,8 +435,8 @@ while ($aRow = mysql_fetch_array($rsGroups)) {
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body no-padding">
-<?= gettext("From:") ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate1" size="11" maxlength="10" id="AnniversaryDate1">
-<?= gettext("To:") ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>" id="AnniversaryDate2">
+                                <?= gettext("From:") ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate1" size="11" maxlength="10" id="AnniversaryDate1">
+                                    <?= gettext("To:") ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>" id="AnniversaryDate2">
                             </div>
                         </div>
                     </div>
@@ -456,8 +456,8 @@ while ($aRow = mysql_fetch_array($rsGroups)) {
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body no-padding">
-<?= gettext("From:") ?>&nbsp;</b></td><td><input id="EnterDate1" type="text" name="EnterDate1" size="11" maxlength="10">
-<?= gettext("To:") ?>&nbsp;</b></td><td><input id="EnterDate2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
+                                <?= gettext("From:") ?>&nbsp;</b></td><td><input id="EnterDate1" type="text" name="EnterDate1" size="11" maxlength="10">
+                                    <?= gettext("To:") ?>&nbsp;</b></td><td><input id="EnterDate2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
                             </div>
                         </div>
                     </div>

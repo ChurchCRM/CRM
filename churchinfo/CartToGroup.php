@@ -72,15 +72,15 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                     <tr>
                         <td class="LabelColumn"><?= gettext("Select Group:") ?></td>
                         <td class="TextColumn">
-    <?php
-    // Create the group select drop-down
-    echo "<select id=\"GroupID\" name=\"GroupID\" onChange=\"UpdateRoles();\"><option value=\"0\">" . gettext("None") . "</option>";
-    while ($aRow = mysql_fetch_array($rsGroups)) {
-        extract($aRow);
-        echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
-    }
-    echo "</select>";
-    ?>
+                            <?php
+                            // Create the group select drop-down
+                            echo "<select id=\"GroupID\" name=\"GroupID\" onChange=\"UpdateRoles();\"><option value=\"0\">" . gettext("None") . "</option>";
+                            while ($aRow = mysql_fetch_array($rsGroups)) {
+                                extract($aRow);
+                                echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
+                            }
+                            echo "</select>";
+                            ?>
                         </td>
                     </tr>
                     <tr>

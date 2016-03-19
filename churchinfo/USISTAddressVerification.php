@@ -347,7 +347,7 @@ if ($myISTReturnCode == '4') {
             <div class="box box-body">
                 <div class="alert alert-danger alert-dismissible">
                     <h4><i class="icon fa fa-ban"></i>The Intelligent Search Technology, Ltd. XML web service is temporarily unavailable.</h4>
-    <?php echo 'getAccountInfo ReturnCode = ' . $myISTReturnCode ?>
+                    <?php echo 'getAccountInfo ReturnCode = ' . $myISTReturnCode ?>
                     Please try again in 30 minutes.
                     You may follow the URL below to log in and manage your Intelligent Search ';
                     Technology account settings.  This link may also provide information pertaining to ';
@@ -679,27 +679,27 @@ else {
     }
     ?>
     <table><tr>
-    <?php
-    if (!$_GET['DoLookup'] && $iEligible) {
-        ?>
+            <?php
+            if (!$_GET['DoLookup'] && $iEligible) {
+                ?>
                 <td><form method="GET" action="USISTAddressVerification.php">
                         <input type=submit class=btn name=DoLookup value="Perform Lookups">
                     </form></td>
-    <?php } ?>
+            <?php } ?>
 
-    <?php if ($iUSOkay) {
-        ?>
+            <?php if ($iUSOkay) {
+                ?>
                 <td><form method="POST" action="Reports/USISTAddressReport.php">
                         <input type=submit class=btn name=MismatchReport value="View Mismatch Report">
                     </form></td>
-    <?php } ?>
+            <?php } ?>
 
-    <?php if ($iNonUSCount) {
-        ?>
+            <?php if ($iNonUSCount) {
+                ?>
                 <td><form method="POST" action="Reports/USISTAddressReport.php">
                         <input type=submit class=btn name=NonUSReport value="View Non-US Address Report">
                     </form></td>
-    <?php } ?>
+            <?php } ?>
 
         </tr></table>
 
