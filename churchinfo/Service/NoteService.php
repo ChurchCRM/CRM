@@ -29,15 +29,16 @@ class NoteService
     function getNoteById($noteId) {
         $sSQL = "SELECT * FROM note_nte WHERE nte_ID = " . $noteId;
         $rsNote = RunQuery($sSQL);
-        $note['id'] = $rsNote['nte_ID'];
-        $note['familyId'] = $rsNote['nte_fam_ID'];
-        $note['personId'] = $rsNote['nte_per_ID'];
-        $note['private'] = $rsNote['nte_Private'];
-        $note['text'] = $rsNote['nte_Text'];
-        $note['entered'] = $rsNote['nte_DateEntered'];
-        $note['enteredById'] = $rsNote['nte_EnteredBy'];
-        $note['edited'] = $rsNote['nte_DateLastEdited'];
-        $note['editedById'] = $rsNote['nte_EditedBy'];
+        extract(mysql_fetch_array($rsNote));
+        $note['id'] = $nte_ID;
+        $note['familyId'] = $nte_fam_ID;
+        $note['personId'] = $nte_per_ID;
+        $note['private'] = $nte_Private;
+        $note['text'] = $nte_Text;
+        $note['entered'] = $nte_DateEntered;
+        $note['enteredById'] = $nte_EnteredBy;
+        $note['edited'] = $nte_DateLastEdited;
+        $note['editedById'] = $nte_EditedBy;
         return $note;
     }
 
