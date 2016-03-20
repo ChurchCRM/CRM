@@ -16,6 +16,7 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Service/NoteService.php";
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
@@ -24,6 +25,8 @@ if (!$_SESSION['bNotes'])
 	Redirect("Menu.php");
 	exit;
 }
+
+$noteService = new NoteService();
 
 //Set the page title
 $sPageTitle = gettext("Note Editor");
@@ -77,16 +80,12 @@ if (isset($_POST["Submit"]))
 		//Are we adding or editing?
 		if ($iNoteID <= 0)
 		{
-			$sSQL = "INSERT INTO note_nte (nte_per_ID, nte_fam_ID, nte_Private, nte_Text, nte_EnteredBy, nte_DateEntered) VALUES (" . $iPersonID . "," . $iFamilyID . "," . $bPrivate . ",'" . $sNoteText . "'," . $_SESSION['iUserID'] . ",'" . date("YmdHis") . "')";
+			$noteService->addNote( $iPersonID ,  $iFamilyID  ,  $bPrivate , $sNoteText );
 		}
-
 		else
 		{
-			$sSQL = "UPDATE note_nte SET nte_Private = " . $bPrivate . ", nte_Text = '" . $sNoteText . "', nte_DateLastEdited = '" . date("YmdHis") . "', nte_EditedBy = " . $_SESSION['iUserID'] . " WHERE nte_ID = " . $iNoteID;
+			$noteService->updateNote($iNoteID, $bPrivate , $sNoteText );
 		}
-
-		//Execute the SQL
-		RunQuery($sSQL);
 
 		//Send them back to whereever they came from
 		Redirect($sBackPage);
@@ -101,16 +100,12 @@ else
 		//Get the NoteID from the querystring
 		$iNoteID = FilterInput($_GET["NoteID"],'int');
 
-		//Get the data for this note
-		$sSQL = "SELECT * FROM note_nte WHERE nte_ID = " . $iNoteID;
-		$rsNote = RunQuery($sSQL);
-		extract(mysql_fetch_array($rsNote));
-
+		$note = $noteService->getNoteById($iNoteID);
 		//Assign everything locally
-		$sNoteText = $nte_Text;
-		$bPrivate = $nte_Private;
-		$iPersonID = $nte_per_ID;
-		$iFamilyID = $nte_fam_ID;
+		$sNoteText = $note['text'];
+		$bPrivate = $note['private'];
+		$iPersonID = $note['personId'];
+		$iFamilyID = $note['familyId'];
 	}
 }
 
@@ -133,9 +128,9 @@ require "Include/Header.php";
 </p>
 
 <p align="center">
-	<input type="submit" class="btn" name="Submit" <?= 'value="' . gettext("Save") . '"' ?>>
+	<input type="submit" class="btn btn-success" name="Submit" value="<?= gettext("Save") ?>" >
 	&nbsp;
-	<input type="button" class="btn" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="javascript:document.location='<?= $sBackPage ?>';">
+	<input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel")  ?>" onclick="javascript:document.location='<?= $sBackPage ?>';">
 	</form>
 </p>
 
