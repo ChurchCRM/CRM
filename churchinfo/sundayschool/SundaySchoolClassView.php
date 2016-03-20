@@ -3,6 +3,9 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/PersonFunctions.php";
+require "../Service/SundaySchoolService.php";
+
+$sundaySchoolService = new SundaySchoolService();
 
 $iGroupId = "-1";
 $iGroupName = "Unknown";
@@ -47,13 +50,7 @@ group by kid.per_Gender";
 
 $rsKidsByGender = RunQuery($sSQL);
 
-$sSQL = "select person_per.*
-from person_per,`group_grp` grp, `person2group2role_p2g2r` person_grp
-
-where person_grp.p2g2r_rle_ID = 1 and grp.grp_ID = ".$iGroupId." and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = per_ID
-order by per_FirstName";
-
-$rsTeachers = RunQuery($sSQL);
+$rsTeachers = $sundaySchoolService->getClassByRole($iGroupId, "Teacher");
 $sPageTitle = gettext("Sunday School: " . $iGroupName);
 
 $TeachersEmails = array();
@@ -76,18 +73,17 @@ require "../Include/Header.php";
             <h3 class="box-title">Teachers</h3>
         </div><!-- /.box-header -->
         <div class="box-body row">
-            <?php while ($aRow = mysql_fetch_array($rsTeachers)) {
-                extract($aRow);
-                array_push($TeachersEmails, "<".$per_FirstName . " " . $per_LastName."> ". $per_Email);
+            <?php foreach ($rsTeachers as $teacher) {
+                array_push($TeachersEmails, "<".$teacher['per_FirstName'] . " " . $teacher['per_LastName']."> ". $teacher['per_Email']);
                 ?>
                 <div class="col-sm-2">
                     <!-- Begin user profile -->
                     <div class="box box-info text-center user-profile-2">
                         <div class="user-profile-inner">
-                            <h4 class="white"><?= $per_FirstName . " " . $per_LastName ?></h4>
-                            <img src="<?= $personService->getPhoto($per_ID);?>" class="img-circle profile-avatar" alt="User avatar" width="80" height="80">
-                            <a href="mailto:<?= $per_Email ?>" type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</a>
-                            <a href="../PersonView.php?PersonID=<?= $per_ID ?>" type="button" class="btn btn-primary btn-info btn-block"><i class="fa fa-envelope"></i> View Profile</a>
+                            <h4 class="white"><?= $teacher['per_FirstName'] . " " . $teacher['per_LastName'] ?></h4>
+                            <img src="<?= $personService->getPhoto($teacher['per_ID']);?>" class="img-circle profile-avatar" alt="User avatar" width="80" height="80">
+                            <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</a>
+                            <a href="../PersonView.php?PersonID=<?= $teacher['per_ID'] ?>" type="button" class="btn btn-primary btn-info btn-block"><i class="fa fa-info"></i> View Profile</a>
                         </div>
                     </div>
                 </div>
