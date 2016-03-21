@@ -308,7 +308,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
       <a class="btn btn-app" href="PersonView.php?PersonID=<?= $per_ID ?>&AddToPeopleCart=<?= $per_ID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
       <?php if ($_SESSION['bNotes']) { ?>
         <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?php echo $per_ID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
-        <a class="btn btn-app" href="NoteEditor.php?PersonID=<?php echo $per_ID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note to this Record") ?></a>
+        <a class="btn btn-app" href="NoteEditor.php?PersonID=<?php echo $per_ID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
       <?php }
       if ($_SESSION['bDeleteRecords']) { ?>
         <a class="btn btn-app bg-maroon" href="SelectDelete.php?mode=person&PersonID=<?= $per_ID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>

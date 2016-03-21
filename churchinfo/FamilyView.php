@@ -704,7 +704,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 										?>
 									<!-- chat item -->
 									<div class="item">
-										<img src="<?= $personService->getPhoto($EnteredId) ?>"/>
+                    <?php $noteBy = $nte_EnteredBy; if (!strlen($nte_EditedBy)) { $noteBy = $nte_EditedBy; } ?>
+										<img src="<?= $personService->getPhoto($noteBy) ?>"/>
 										<p class="message">
 											<a href="#" class="name">
 												<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php
@@ -724,7 +725,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 										</p>
 										<?php if ($_SESSION['bNotes']) { ?>
 											<div class="pull-right">
-												<a href="NoteEditor.php?PersonID=<?= $iPersonID ?>&NoteID=<?= $nte_ID ?>">
+												<a href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>&NoteID=<?= $nte_ID ?>">
 												<span class="fa-stack">
 													<i class="fa fa-square fa-stack-2x"></i>
 													<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
