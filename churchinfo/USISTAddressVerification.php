@@ -1,5 +1,5 @@
 <?php
-/* * *****************************************************************************
+/*******************************************************************************
  *
  *  filename    : ISTAddressVerification.php
  *  website     : http://www.churchcrm.io
@@ -20,7 +20,7 @@
  *
  *  http://www.gnu.org/licenses
  *
- * **************************************************************************** */
+ ******************************************************************************/
 
 // This file verifies family address information using an on-line XML
 // service provided by Intelligent Search Technology, Ltd.  Fees required.
