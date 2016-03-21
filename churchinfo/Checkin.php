@@ -83,7 +83,7 @@ if (!isset($_POST['EventID']) && !isset($_POST['Verify']) && !isset($_POST['Add'
 	<BR>
 	<input type="submit" name="Submit" value="<?= gettext("Select Event") ?>" class="btn">
 	<BR><BR>--<?= gettext("OR") ?>--<BR><BR>
-	<a href="AddEvent.php"><?= gettext("Add New Event") ?></a>
+	<a href="EventEditor.php"><?= gettext("Add New Event") ?></a>
 	<BR><BR>
 	</p>
 	</form>

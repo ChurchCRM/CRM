@@ -522,6 +522,7 @@ class GroupService
     $result = mysql_query($fetch);
     $return = array();
     while ($row = mysql_fetch_array($result)) {
+      $totalMembers = $this->getGroupTotalMembers($row['grp_ID']);
       $values['id'] = $row['grp_ID'];
       $values['groupName'] = $row['grp_Name'];
       $values['displayName'] = $row['grp_Name'];
@@ -530,11 +531,11 @@ class GroupService
       $values['grp_DefaultRole'] = $row['grp_DefaultRole'];
       $values['groupDescription'] = $row['grp_Description'];
       $values['uri'] = $this->getViewURI($row['grp_ID']);
-      $values['memberCount'] = $this->getGroupTotalMembers($row['grp_ID']);
+      $values['memberCount'] = $totalMembers;
       $values['groupCartStatus'] = $this->checkGroupAgainstCart($row['grp_ID']);
       $values['defaultRole'] = $this->getGroupDefaultRole($row['grp_ID']);
       $values['roles'] = $this->getGroupRoles($row['grp_ID']);
-      $values['totalMembers'] = $this->getGroupTotalMembers($row['grp_ID']);
+      $values['totalMembers'] = $totalMembers ;
       $values['grp_hasSpecialProps'] = $row['grp_hasSpecialProps'] == "true";
       array_push($return, $values);
     }

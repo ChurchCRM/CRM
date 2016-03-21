@@ -91,7 +91,7 @@ $rsEvents = RunQuery($sSQL);
 <BR>
 <input type="submit" name="Submit" value=<?= '"' . gettext("Add Cart to Event") . '"' ?> class="btn btn-primary">
 <BR><BR>--<?= gettext("OR") ?>--<BR><BR>
-<a href="AddEvent.php" class="btn btn-info"><?= gettext("Add New Event") ?></a>
+<a href="EventEditor.php" class="btn btn-info"><?= gettext("Add New Event") ?></a>
 <BR><BR>
 </p>
 </form>

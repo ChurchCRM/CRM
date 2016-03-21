@@ -12,7 +12,7 @@ fam.fam_Email famEmail, fam.fam_Address1 Address1, fam.fam_Address2 Address2, fa
 from person_per kid, family_fam fam
 left Join person_per dad on fam.fam_id = dad.per_fam_id and dad.per_Gender = 1 and dad.per_fmr_ID = 1
 left join person_per mom on fam.fam_id = mom.per_fam_id and mom.per_Gender = 2 and mom.per_fmr_ID = 2
-,`group_grp` grp, `person2group2role_p2g2r` person_grp  
+,`group_grp` grp, `person2group2role_p2g2r` person_grp
 
 where kid.per_fam_id = fam.fam_ID and person_grp.p2g2r_rle_ID = 2 and kid.per_cls_ID = 2 and
 grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = kid.per_ID
@@ -33,16 +33,13 @@ $sPageTitle = gettext("Sunday School Class List");
 require "../Include/Header.php";
 
  ?>
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" language="javascript" src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 <div class="box">
 	<div class="box-header">
 		<h3 class="box-title">Current Sunday School Kids</h3>
 	</div><!-- /.box-header -->
 	<div class="box-body table-responsive">
-		<table id="sundayschool" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		<table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
 			<thead>
 			<tr>
 				<th></th>
@@ -109,7 +106,7 @@ require "../Include/Header.php";
 		<h3 class="box-title">Kids not in a Sunday School Class</h3>
 	</div><!-- /.box-header -->
 	<div class="box-body table-responsive">
-		<table id="sundayschoolMissing" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		<table id="sundayschoolMissing" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
 			<thead>
 			<tr>
 				<th></th>
@@ -149,12 +146,5 @@ require "../Include/Header.php";
 		</table>
 	</div>
 </div>
-
-<script type="text/javascript" charset="utf-8">
-	$(document).ready(function() {
-		$('#sundayschool').dataTable();
-		$('#sundayschoolMissing').dataTable();
-	} );
-</script>
 
 <?php require "../Include/Footer.php" ?>
