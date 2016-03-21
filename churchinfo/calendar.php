@@ -8,7 +8,7 @@ $year = date("Y");
 
 foreach ($birthDays as $birthDay) {
   $event = "{ title: '". $birthDay["firstName"] . " " . $birthDay["lastName"]  ."',
-              start: new Date(". $year. ", ". $birthDay["birthMonth"]. ", ". $birthDay["birthDay"]. "),
+              start: '". $year. "-". $birthDay["birthMonth"]. "-". $birthDay["birthDay"]. "',
               url: '".$birthDay["uri"]."',
               backgroundColor: '#f56954', //red
               borderColor: '#f56954', //red
