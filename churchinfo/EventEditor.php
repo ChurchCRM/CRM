@@ -355,41 +355,55 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
         {
           if($EventExists==0){
             $sSQL = "INSERT events_event
-                     SET `event_type` = '".$iTypeID."',
-                     `event_title` = '".$sEventTitle."',
-                     `event_desc` = '".$sEventDesc."',
-                     `event_text` = '".$sEventText."',
-                     `event_start` = '".$sEventStart."',
-                     `event_end` = '".$sEventEnd."',
-                     `inactive` = '".$iEventStatus."',
-                     `event_typename` = '".$sTypeName."'";
+                     SET `event_type` = '". mysql_real_escape_string($iTypeID)."',
+                     `event_title` = '".mysql_real_escape_string($sEventTitle)."',
+                     `event_desc` = '".mysql_real_escape_string($sEventDesc)."',
+                     `event_text` = '".mysql_real_escape_string($sEventText)."',
+                     `event_start` = '".mysql_real_escape_string($sEventStart)."',
+                     `event_end` = '".mysql_real_escape_string($sEventEnd)."',
+                     `inactive` = '".mysql_real_escape_string($iEventStatus)."',
+                     `event_typename` = '".mysql_real_escape_string($sTypeName)."'";
             RunQuery($sSQL);
             $iEventID = mysql_insert_id();
             for($c=0; $c<$iNumCounts; $c++)
             {
               $cCnt = ltrim(rtrim($aCountName[$c]));
-              $sSQL = "INSERT eventcounts_evtcnt (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes) VALUES ('$iEventID','$aCountID[$c]','$aCountName[$c]','$aCount[$c]','$sCountNotes') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+              $sSQL = "INSERT eventcounts_evtcnt
+											 (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
+											 VALUES
+											 ('".mysql_real_escape_string($iEventID)."',
+											  '".mysql_real_escape_string($aCountID[$c])."',
+												'".mysql_real_escape_string($aCountName[$c])."',
+												'".mysql_real_escape_string($aCount[$c])."',
+												'".mysql_real_escape_string($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
 //              echo $sSQL;
               RunQuery($sSQL);
             }
 
           } else {
             $sSQL = "UPDATE events_event
-                     SET `event_type` = '".$iTypeID."',
-                     `event_title` = '".$sEventTitle."',
-                     `event_desc` = '".$sEventDesc."',
-                     `event_text` = '".$sEventText."',
-                     `event_start` = '".$sEventStart."',
-                     `event_end` = '".$sEventEnd."',
-                     `inactive` = '".$iEventStatus."',
-                     `event_typename` = '".$sTypeName."'".
-                    " WHERE `event_id` = '" . $iEventID."';";
+                     SET `event_type` = '".mysql_real_escape_string($iTypeID)."',
+                     `event_title` = '".mysql_real_escape_string($sEventTitle)."',
+                     `event_desc` = '".mysql_real_escape_string($sEventDesc)."',
+                     `event_text` = '".mysql_real_escape_string($sEventText)."',
+                     `event_start` = '".mysql_real_escape_string($sEventStart)."',
+                     `event_end` = '".mysql_real_escape_string($sEventEnd)."',
+                     `inactive` = '".mysql_real_escape_string($iEventStatus)."',
+                     `event_typename` = '".mysql_real_escape_string($sTypeName)."'".
+                    " WHERE `event_id` = '" . mysql_real_escape_string($iEventID)."';";
 //            echo $sSQL;
             RunQuery($sSQL);
             for($c=0; $c<$iNumCounts; $c++)
             {
               $cCnt = ltrim(rtrim($aCountName[$c]));
-              $sSQL = "INSERT eventcounts_evtcnt (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes) VALUES ('$iEventID','$aCountID[$c]','$aCountName[$c]','$aCount[$c]','$sCountNotes') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+              $sSQL = "INSERT eventcounts_evtcnt
+											 (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
+											 VALUES
+											 ('".mysql_real_escape_string($iEventID)."',
+											  '".mysql_real_escape_string($aCountID[$c])."',
+												'".mysql_real_escape_string($aCountName[$c])."',
+												'".mysql_real_escape_string($aCount[$c])."',
+												'".mysql_real_escape_string($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
               RunQuery($sSQL);
             }
           }
