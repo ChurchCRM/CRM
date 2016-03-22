@@ -4,11 +4,9 @@ require_once "PersonService.php";
 
 class GroupService {
 
-    private
-            $baseURL;
+    private $baseURL;
 
-    public
-            function __construct () {
+    public function __construct () {
         $this->baseURL = $_SESSION[ 'sRootPath' ];
     }
 
@@ -76,9 +74,9 @@ class GroupService {
      */
     function addUserToGroup ( $iGroupID,$iPersonID,$iRoleID ) {
         //
-// Adds a person to a group with specified role.
-// Returns false if the operation fails. (such as person already in group)
-//
+        // Adds a person to a group with specified role.
+        // Returns false if the operation fails. (such as person already in group)
+        //
         global $cnInfoCentral;
 
         // Was a RoleID passed in?
