@@ -52,76 +52,16 @@ if ($_SESSION['bManageGroups'])
 
 </div>
 <script>
-
- var groupData = <?php $json = $groupService->getGroupJSON($groupService->getGroups()); if ($json) { echo $json; } else { echo 0; } ?>;
-
-if (!$.isArray(groupData.groups))
-{
-    groupData.groups=[groupData.groups];
-}
-console.log(groupData.groups);
-var dataT = 0;
-$(document).ready(function() {
-
-    $("#addNewGroup").click(function (e){
-        var newGroup = {'groupName':$("#groupName").val()};
-        console.log(newGroup);
-        $.ajax({
-            method: "POST",
-            url:   window.CRM.root + "/api/groups",
-            data:  JSON.stringify(newGroup)
-        }).done(function(data){
-            console.log(data);
-            dataT.row.add(data);
-            dataT.rows().invalidate().draw(true);
-        });
-    });
-
-    dataT = $("#groupsTable").DataTable({
-    data:groupData.groups,
-    columns: [
+    //get the group data from the GroupService.
+    var groupData = <?php $json = $groupService->getGroupJSON($groupService->getGroups()); if ($json) { echo $json; } else { echo 0; } ?>;    
+    //if the data is not an array, make it into one so that the dataTables code can parse it correctly.
+    if (!$.isArray(groupData.groups))
     {
-        width: 'auto',
-        title:'Group Name',
-        data:'groupName',
-        render: function  (data, type, full, meta ) {
-            return '<a href=\'GroupView.php?GroupID='+full.id+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a><a href=\'GroupEditor.php?GroupID='+full.id+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-pencil fa-stack-1x fa-inverse"></i></span></a>'+data;
-        }
-    },
-    {
-        width: 'auto',
-        title:'Members',
-        data:'memberCount',
-        searchable: false
-    },
-    {
-        width: 'auto',
-        title:'Group Cart Status',
-        data:'groupCartStatus',
-        searchable: false,
-        render: function  (data, type, full, meta ) {
-
-            if(data)
-            {
-                return "<span>All members of this group are in the cart</span><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart="+full.id+"\">Remove all</a>";
-            }
-            else
-            {
-                 return "<span>Not all members of this group are in the cart</span><br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart="+full.id+"\">Add all</a>";
-            }
-        }
-    },
-    {
-        width: 'auto',
-        title:'Group Type',
-        data:'groupType',
-        searchable: true
+        groupData.groups=[groupData.groups];
     }
-    ]
-});
-});
+    var dataT = 0; //make a new global variable for the dataTable.
 </script>
-
+<script src="skin/js/GroupList.js" type="text/javascript"></script>
 <?php
 require 'Include/Footer.php';
 ?>
