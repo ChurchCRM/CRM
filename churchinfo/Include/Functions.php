@@ -25,7 +25,8 @@ require_once dirname(__FILE__).'/../Service/PersonService.php';
 *
 *  This file best viewed in a text editor with tabs stops set to 4 characters
 *
-******************************************************************************
+******************************************************************************/
+
 // Initialization common to all ChurchCRM scripts
 
 // Set the current version of this PHP file
