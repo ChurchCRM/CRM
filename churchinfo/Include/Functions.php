@@ -794,41 +794,34 @@ function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
 //
 function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
 {
-$bWeird = false;
-$length = strlen($sPhoneNumber);
+  $bWeird = false;
+  $length = strlen($sPhoneNumber);
 
-switch ($sPhoneCountry) {
-  case "United States":
+  switch ($sPhoneCountry) {
+    case "United States":
+      if ($length == 0) {
+        return "";
+      } // 7 digit phone # with extension
+      else if (substr($sPhoneNumber, 7, 1) == "e") {
+        return "<a href='tel:" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . ",,," . substr($sPhoneNumber, 8, 6) . "'>" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . " Ext." . substr($sPhoneNumber, 8, 6) . "</a>";
+      } // 10 digit phone # with extension
+      else if (substr($sPhoneNumber, 10, 1) == "e") {
+        return "<a href='tel:" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . ",,," . substr($sPhoneNumber, 11, 6) . "'>" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . " Ext." . substr($sPhoneNumber, 11, 6) . "</a>";
+      } else if ($length == 7) {
+        return "<a href='tel:" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . "'>" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . "</a>";
+      } else if ($length == 10) {
+        return "<a href='tel:" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . "'>" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . "</a>";
+      } // Otherwise, there is something weird stored, so just leave it untouched and set the flag
+      else {
+        $bWeird = true;
+        return $sPhoneNumber;
+      }
+      break;
 
-    if ($length == 0)
-      return "";
-
-    // 7 digit phone # with extension
-    else if (substr($sPhoneNumber, 7, 1) == "e")
-      return "<a href='tel:" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . ",,," . substr($sPhoneNumber, 8, 6) . "'>" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . " Ext." . substr($sPhoneNumber, 8, 6) . "</a>";
-
-    // 10 digit phone # with extension
-    else if (substr($sPhoneNumber, 10, 1) == "e")
-      return "<a href='tel:" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . ",,," . substr($sPhoneNumber, 11, 6) . "'>" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . " Ext." . substr($sPhoneNumber, 11, 6) . "</a>";
-
-    else if ($length == 7)
-      return "<a href='tel:" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . "'>" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . "</a>";
-
-    else if ($length == 10)
-      return "<a href='tel:" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . "'>" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . "</a>";
-
-    // Otherwise, there is something weird stored, so just leave it untouched and set the flag
-    else
-    {
-      $bWeird = true;
+    // If the country is unknown, we don't know how to format it, so leave it untouched
+    default:
       return $sPhoneNumber;
-    }
-
-    break;
-
-  // If the country is unknown, we don't know how to format it, so leave it untouched
-  default:
-    return $sPhoneNumber;
+  }
 }
 
 
