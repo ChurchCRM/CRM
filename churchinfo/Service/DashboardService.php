@@ -85,15 +85,16 @@ class DashboardService
     return $stats;
   }
 
-    function getGroupStats() {
-        $sSQL = "select
+  function getGroupStats()
+  {
+    $sSQL = "select
         (select count(*) from group_grp) as Groups,
         (select count(*) from group_grp where grp_Type = 4 ) as SundaySchoolClasses,
         (select count(*) from person_per,group_grp grp, person2group2role_p2g2r person_grp  where person_grp.p2g2r_rle_ID = 2 and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = per_ID) as SundaySchoolKidsCount
         from dual ;";
-        $rsQuickStat = RunQuery($sSQL);
-        $row = mysql_fetch_array($rsQuickStat);
-        $data = ['groups' => $row['Groups'] , 'sundaySchoolClasses' => $row['SundaySchoolClasses'],  'sundaySchoolkids' => $row['SundaySchoolKidsCount'] ];
-        return $data;
-    }
+    $rsQuickStat = RunQuery($sSQL);
+    $row = mysql_fetch_array($rsQuickStat);
+    $data = ['groups' => $row['Groups'], 'sundaySchoolClasses' => $row['SundaySchoolClasses'], 'sundaySchoolkids' => $row['SundaySchoolKidsCount']];
+    return $data;
+  }
 }
