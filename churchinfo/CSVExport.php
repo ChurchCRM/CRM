@@ -245,14 +245,11 @@ require "Include/Header.php";
             </div>
             <div class="box-body">
                 <div class="col-lg-4">
-                    <div class="box box-solid collapsed-box">
-                        <div class="box box-danger">
+                        <div class="box box-danger collapsed-box">
                             <div class="box-header with-border">
                                 <h3 class="box-title"><?= gettext("Records to export:") ?></h3>
                                 <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
@@ -264,201 +261,168 @@ require "Include/Header.php";
                                 </select>
                             </div>
                         </div>
-                    </div>
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="box box-solid collapsed-box">
-                        <div class="box box-danger">
-                            <div class="box-header with-border">
-                                <h3 class="box-title"><?= gettext("Classification:") ?></h3>
-                                <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                                    </button>
-                                </div>
+                    <div class="box box-danger collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><?= gettext("Classification:") ?></h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
                             </div>
-                            <!-- /.box-header -->
-                            <div class="box-body no-padding">
-                                <select name="Classification[]" size="5" multiple>
-                                    <?php
-                                    while ($aRow = mysql_fetch_array($rsClassifications)) {
-                                        extract($aRow);
-                                        ?>
-                                        <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
-                                        <?php
-                                    }
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <select name="Classification[]" size="5" multiple>
+                                <?php
+                                while ($aRow = mysql_fetch_array($rsClassifications)) {
+                                    extract($aRow);
                                     ?>
-                                </select>
-                                <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="box box-solid collapsed-box">
-                        <div class="box box-danger">
-                            <div class="box-header with-border">
-                                <h3 class="box-title"><?= gettext("Family Role:") ?></h3>
-                                <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body no-padding">
-                                <select name="FamilyRole[]" size="5" multiple>
+                                    <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                                     <?php
-                                    while ($aRow = mysql_fetch_array($rsFamilyRoles)) {
-                                        extract($aRow);
-                                        ?>
-                                        <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
-                                        <?php
-                                    }
+                                }
+                                ?>
+                            </select>
+                            <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="box box-danger collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><?= gettext("Family Role:") ?></h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <select name="FamilyRole[]" size="5" multiple>
+                                <?php
+                                while ($aRow = mysql_fetch_array($rsFamilyRoles)) {
+                                    extract($aRow);
                                     ?>
-                                </select>
-                                <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="box box-solid collapsed-box">
-                        <div class="box box-danger">
-                            <div class="box-header with-border">
-                                <h3 class="box-title"><?= gettext("Gender:") ?></h3>
-                                <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body no-padding">
-                                <select name="Gender">
-                                    <option value="0"><?= gettext("Don't Filter") ?></option>
-                                    <option value="1"><?= gettext("Male") ?></option>
-                                    <option value="2"><?= gettext("Female") ?></option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="box box-solid collapsed-box">
-                        <div class="box box-danger">
-                            <div class="box-header with-border">
-                                <h3 class="box-title"><?= gettext("Group Membership:") ?></h3>
-                                <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body no-padding">
-                                <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
-                                <select name="GroupID[]" size="5" multiple>
+                                    <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                                     <?php
-                                    while ($aRow = mysql_fetch_array($rsGroups)) {
-                                        extract($aRow);
-                                        echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
+                                }
+                                ?>
+                            </select>
+                            <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="box box-solid collapsed-box">
-                        <div class="box box-danger">
-                            <div class="box-header with-border">
-                                <h3 class="box-title"><?= gettext("Membership Date:") ?></h3>
-                                <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                                    </button>
-                                </div>
+                    <div class="box box-danger collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><?= gettext("Gender:") ?></h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
                             </div>
-                            <!-- /.box-header -->
-                            <div class="box-body no-padding">
-                                <?= gettext("From:") ?>&nbsp;</b></td><td><input id="MembershipDate1" type="text" name="MembershipDate1" size="11" maxlength="10">
-                                    <?= gettext("To:") ?>&nbsp;</b></td><td><input id="MembershipDate2" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
-                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <select name="Gender">
+                                <option value="0"><?= gettext("Don't Filter") ?></option>
+                                <option value="1"><?= gettext("Male") ?></option>
+                                <option value="2"><?= gettext("Female") ?></option>
+                            </select>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="box box-solid collapsed-box">
-                        <div class="box box-danger">
-                            <div class="box-header with-border">
-                                <h3 class="box-title"><?= gettext("Birthday Date:") ?></h3>
-                                <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                                    </button>
-                                </div>
+                    <div class="box box-danger collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><?= gettext("Group Membership:") ?></h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
                             </div>
-                            <!-- /.box-header -->
-                            <div class="box-body no-padding">
-                                <b><?= gettext("From:") ?>&nbsp;</b><input type="text" name="BirthDate1" size="11" maxlength="10" id="BirthdayDate1">
-                                <b><?= gettext("To:") ?>&nbsp;</b><input type="text" name="BirthDate2" size="11" maxlength="10" value="<?= date("Y-m-d") ?>"  id="BirthdayDate2">
-                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
+                            <select name="GroupID[]" size="5" multiple>
+                                <?php
+                                while ($aRow = mysql_fetch_array($rsGroups)) {
+                                    extract($aRow);
+                                    echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="box box-solid collapsed-box">
-                        <div class="box box-danger">
-                            <div class="box-header with-border">
-                                <h3 class="box-title"><?= gettext("Anniversary Date:") ?></h3>
-                                <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                                    </button>
-                                </div>
+                    <div class="box box-danger collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><?= gettext("Membership Date:") ?></h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
                             </div>
-                            <!-- /.box-header -->
-                            <div class="box-body no-padding">
-                                <?= gettext("From:") ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate1" size="11" maxlength="10" id="AnniversaryDate1">
-                                    <?= gettext("To:") ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>" id="AnniversaryDate2">
-                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <?= gettext("From:") ?>&nbsp;</b></td><td><input id="MembershipDate1" type="text" name="MembershipDate1" size="11" maxlength="10">
+                                <?= gettext("To:") ?>&nbsp;</b></td><td><input id="MembershipDate2" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="box box-solid collapsed-box">
-                        <div class="box box-danger">
-                            <div class="box-header with-border">
-                                <h3 class="box-title"><?= gettext("Date Entered:") ?></h3>
-                                <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                                    </button>
-                                </div>
+                    <div class="box box-danger collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><?= gettext("Birthday Date:") ?></h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
                             </div>
-                            <!-- /.box-header -->
-                            <div class="box-body no-padding">
-                                <?= gettext("From:") ?>&nbsp;</b></td><td><input id="EnterDate1" type="text" name="EnterDate1" size="11" maxlength="10">
-                                    <?= gettext("To:") ?>&nbsp;</b></td><td><input id="EnterDate2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <b><?= gettext("From:") ?>&nbsp;</b><input type="text" name="BirthDate1" size="11" maxlength="10" id="BirthdayDate1">
+                            <b><?= gettext("To:") ?>&nbsp;</b><input type="text" name="BirthDate2" size="11" maxlength="10" value="<?= date("Y-m-d") ?>"  id="BirthdayDate2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="box box-danger collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><?= gettext("Anniversary Date:") ?></h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
                             </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <?= gettext("From:") ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate1" size="11" maxlength="10" id="AnniversaryDate1">
+                                <?= gettext("To:") ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>" id="AnniversaryDate2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="box box-danger collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><?= gettext("Date Entered:") ?></h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <?= gettext("From:") ?>&nbsp;</b></td><td><input id="EnterDate1" type="text" name="EnterDate1" size="11" maxlength="10">
+                                <?= gettext("To:") ?>&nbsp;</b></td><td><input id="EnterDate2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
                         </div>
                     </div>
                 </div>
