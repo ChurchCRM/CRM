@@ -274,7 +274,6 @@ $app->group('/search', function () use ($app) {
             array_push($resultsArray, $app->GroupService->getGroupJSON($app->GroupService->search($query)));
             array_push($resultsArray, $app->FinancialService->getDepositJSON($app->FinancialService->searchDeposits($query)));
             array_push($resultsArray, $app->FinancialService->getPaymentJSON($app->FinancialService->searchPayments($query)));
-             array_push($resultsArray, $app->ReportingService->getReportJSON($app->ReportingService->search($query)));
             echo "[".join(",",array_filter($resultsArray))."]";
         } catch (Exception $e) {
              echo exceptionToJSON($e);
