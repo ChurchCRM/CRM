@@ -100,10 +100,21 @@ if (isset($_POST["NotInterestedReport"])) {
 
 require "Include/Header.php";
 
-echo "<p>" . $processNews . "</p>"; // Report any action just taken by button processing
+if($processNews != "") {
+    
 ?>
+<div class="alert alert-warning alert-dismissable">
+    <i class="fa fa-info"></i>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong><span style="color: red;"><?= $processNews ?></span></strong>
+</div>
+<?php 
+}
+?>
+
 <div class="row">
-    <div class="box col-lg-4 col-xs-4">
+    <div class="col-lg-12">
+        <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">Report Details</h3>
         </div>
@@ -229,6 +240,8 @@ echo "<p>" . $processNews . "</p>"; // Report any action just taken by button pr
             </table>
             </form>
         </div>
+    </div>
+
     </div>
 </div>
 <?php require "Include/Footer.php" ?>

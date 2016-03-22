@@ -51,7 +51,8 @@ if (isset($_POST["SubmitNewsLetter"]) || isset($_POST["SubmitConfirmReport"]) ||
 
 ?>
 <div class="row">
-    <div class="box col-lg-4 col-xs-4">
+    <div class="col-lg-12">
+        <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">Member Reports</h3>
         </div>
@@ -78,7 +79,7 @@ if (isset($_POST["SubmitNewsLetter"]) || isset($_POST["SubmitConfirmReport"]) ||
             </form>
         </div>
     </div>
-    
+    </div>
 </div>
 
 <?php require "Include/Footer.php" ?>

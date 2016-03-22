@@ -70,7 +70,8 @@ require "Include/Header.php";
 ?>
 <form method="post" action="CSVCreateFile.php">
     <div class="row">
-        <div class="box col-lg-4 col-xs-4">
+        <div class="col-lg-12">
+        <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">Field Selection</h3>
             </div>
@@ -183,6 +184,8 @@ require "Include/Header.php";
                 <?= gettext("* Depends whether using person or family output method") ?>
             </div>
         </div>
+    
+        </div>
     </div>
     <?php
     if ($numCustomFields > 0 || $numFamCustomFields > 0) {
@@ -239,7 +242,8 @@ require "Include/Header.php";
     <?php } ?>
 
     <div class="row">
-        <div class="box col-lg-4 col-xs-4">
+        <div class="col-lg-12">
+        <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">Filters</h3>
             </div>
@@ -428,24 +432,26 @@ require "Include/Header.php";
                 </div>
             </div>
         </div>
+        </div>
     </div>
-
     <div class="row">
-        <div class="box col-lg-4 col-xs-4">
-            <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext("Output Method:") ?></h3>
-            </div>
-            <div class="box-body">
-                <select name="Format">
-                    <option value="Default"><?= gettext("CSV Individual Records") ?></option>
-                    <option value="Rollup"><?= gettext("CSV Combine Families") ?></option>
-                    <option value="AddToCart"><?= gettext("Add Individuals to Cart") ?></option>
-                </select>
+        <div class="col-lg-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><?= gettext("Output Method:") ?></h3>
+                </div>
+                <div class="box-body">
+                    <select name="Format">
+                        <option value="Default"><?= gettext("CSV Individual Records") ?></option>
+                        <option value="Rollup"><?= gettext("CSV Combine Families") ?></option>
+                        <option value="AddToCart"><?= gettext("Add Individuals to Cart") ?></option>
+                    </select>
 
-                <label><?= gettext("Skip records with incomplete mail address") ?></label><input type="checkbox" name="SkipIncompleteAddr" value="1">
+                    <label><?= gettext("Skip records with incomplete mail address") ?></label><input type="checkbox" name="SkipIncompleteAddr" value="1">
 
-                <input type="submit" class="btn" value=<?= "\"" . gettext("Create File") . "\"" ?> name="Submit"></td>
+                    <input type="submit" class="btn" value=<?= "\"" . gettext("Create File") . "\"" ?> name="Submit"></td>
 
+                </div>
             </div>
         </div>
     </div>
