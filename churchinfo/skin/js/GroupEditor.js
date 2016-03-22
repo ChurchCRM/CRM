@@ -1,5 +1,3 @@
-
-
 $("document").ready(function(){
 
     $(".groupSpecificProperties").click(function (e){
@@ -166,7 +164,7 @@ $("document").ready(function(){
             data:'lst_OptionName',
             render: function  (data, type, full, meta ) {
                 if ( type === 'display')
-                    return '<input type="text" value="'+data+'">';
+                    return '<input type="text" class="roleName" id="roleName-'+full.lst_OptionID+'" value="'+data+'">';
                 else
                     return data;
             }
