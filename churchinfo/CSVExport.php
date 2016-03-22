@@ -191,7 +191,8 @@ require "Include/Header.php";
     if ($numCustomFields > 0 || $numFamCustomFields > 0) {
         ?>
         <div class="row">
-            <div class="box col-lg-4 col-xs-4">
+            <div class="col-lg-12">
+                <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title">Custom Field Selection</h3>
                 </div>
@@ -238,7 +239,8 @@ require "Include/Header.php";
                     </table>
                 </div>
             </div>
-        </div>                  
+            </div>                  
+        </div>
     <?php } ?>
 
     <div class="row">
