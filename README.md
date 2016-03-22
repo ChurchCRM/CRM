@@ -17,7 +17,7 @@ Welcome to Church Web CRM
 
 ##  Change Log
 
-[2.0.0 Development ] (http://docs.churchcrm.io/en/latest/About/release-notes/)
+see [Checkout our Change Log] (CHANGELOG.md)
 
 ### Demo Account
 

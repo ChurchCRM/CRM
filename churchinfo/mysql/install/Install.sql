@@ -1,9 +1,9 @@
 -- Install Version 2.0.0
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `autopayment_aut`
--- 
+--
 
 CREATE TABLE `autopayment_aut` (
   `aut_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -17,7 +17,7 @@ CREATE TABLE `autopayment_aut` (
   `aut_Fund` mediumint(6) NOT NULL default '0',
   `aut_FirstName` varchar(50) default NULL,
   `aut_LastName` varchar(50) default NULL,
-  `aut_Address1` varchar(255) default NULL, 
+  `aut_Address1` varchar(255) default NULL,
   `aut_Address2` varchar(255) default NULL,
   `aut_City` varchar(50) default NULL,
   `aut_State` varchar(50) default NULL,
@@ -42,14 +42,14 @@ CREATE TABLE `autopayment_aut` (
 
 --
 -- Dumping data for table `autopayment_aut`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `canvassdata_can`
--- 
+--
 
 CREATE TABLE `canvassdata_can` (
   `can_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -68,16 +68,16 @@ CREATE TABLE `canvassdata_can` (
   UNIQUE KEY `can_ID` (`can_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Dumping data for table `canvassdata_can`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `config_cfg`
--- 
+--
 
 CREATE TABLE `config_cfg` (
   `cfg_id` int(11) NOT NULL default '0',
@@ -93,11 +93,11 @@ CREATE TABLE `config_cfg` (
   KEY `cfg_id` (`cfg_id`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `config_cfg`
--- 
+--
 
-INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES 
+INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES
 (1, 'sWEBCALENDARDB', '', 'text', '', 'WebCalendar database name', 'General', NULL),
 (2, 'debug', '1', 'boolean', '1', 'Set debug mode\r\nThis may be helpful for when you''re first setting up ChurchCRM, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you''ll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.', 'General', NULL),
 (3, 'sJPGRAPH_PATH', 'Include/jpgraph-1.13/src', 'text', 'Include/jpgraph-1.13/src', 'JPGraph library', 'General', NULL),
@@ -114,8 +114,6 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (14, 'sMinPasswordChange', '4', 'number', '4', 'Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature', 'General', NULL),
 (15, 'sDisallowedPasswords', 'churchcrm,password,god,jesus,church,christian', 'text', 'churchcrm,password,god,jesus,church,christian', 'A comma-seperated list of disallowed (too obvious) passwords.', 'General', NULL),
 (16, 'iMaxFailedLogins', '50', 'number', '50', 'Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature.', 'General', NULL),
-(18, 'iNavMethod', '1', 'number', '1', 'Interface navigation method\r1 = Javascript MenuBar (default)\r2 = Flat Sidebar (alternative for buggy browsers)', 'General', NULL),
-(19, 'bFamListFirstNames', '1', 'boolean', '1', 'Show family member firstnames in Family Listing?', 'General', NULL),
 (20, 'iPDFOutputType', '1', 'number', '1', 'PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window', 'General', NULL),
 (21, 'sDefaultCity', '', 'text', '', 'Default City', 'General', NULL),
 (22, 'sDefaultState', '', 'text', '', 'Default State - Must be 2-letter abbreviation!', 'General', NULL),
@@ -127,9 +125,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (28, 'sSMTPAuth', '1', 'boolean', '1', 'Does your SMTP server require auththentication (username/password)?', 'General', NULL),
 (29, 'sSMTPUser', '', 'text', '', 'SMTP Username', 'General', NULL),
 (30, 'sSMTPPass', '', 'text', '', 'SMTP Password', 'General', NULL),
-(31, 'sWordWrap', '72', 'number', '72', 'Word Wrap point. Default for most email programs is 72', 'General', NULL),
 (33, 'bShowFamilyData', '1', 'boolean', '1', 'Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person''s assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ', 'General', NULL),
-(34, 'bOldVCardVersion', '', 'boolean', '', 'Use vCard 2.1 rather than vCard 3.0 standard.', 'General', NULL),
 (36, 'sGZIPname', 'gzip', 'text', 'gzip', '', 'General', NULL),
 (37, 'sZIPname', 'zip', 'text', 'zip', '', 'General', NULL),
 (38, 'sPGPname', 'gpg', 'text', 'gpg', '', 'General', NULL),
@@ -159,12 +155,8 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (64, 'sDistanceUnit', 'miles', 'text', 'miles', 'Unit used to measure distance, miles or km.', 'General', NULL),
 (65, 'sTimeZone', 'America/New_York', 'text', 'America/New_York', 'Time zone- see http://php.net/manual/en/timezones.php for valid choices.', 'General', NULL),
 (66, 'sGMapIcons', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'text', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'Names of markers for Google Maps in order of classification', 'General',NULL),
---
--- bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param below
---
 (67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General', NULL),
-
-(2001, 'mailChimpApiKey', '', 'text', '', 'see http://kb.mailchimp.com/accounts/management/about-api-keys', 'General', NULL),
+(2000, 'mailChimpApiKey', '', 'text', '', 'see http://kb.mailchimp.com/accounts/management/about-api-keys', 'General', NULL),
 
 
 -- Save 68, 69 for MRBS if installed
@@ -207,11 +199,141 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1033, 'sZeroGivers3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
 (1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'ChurchInfoReport', NULL);
 
+ALTER TABLE `config_cfg`
+ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
+
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='0' WHERE `cfg_id`='1003';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='1' WHERE `cfg_id`='1004';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='2' WHERE `cfg_id`='1005';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='3' WHERE `cfg_id`='1006';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='4' WHERE `cfg_id`='1007';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='5' WHERE `cfg_id`='1008';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='7' WHERE `cfg_id`='1009';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='6' WHERE `cfg_id`='1010';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='8' WHERE `cfg_id`='65';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='9' WHERE `cfg_id`='45';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='10' WHERE `cfg_id`='46';
+
+UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='0' WHERE `cfg_id`='12';
+UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='1' WHERE `cfg_id`='13';
+UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='3' WHERE `cfg_id`='14';
+UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='4' WHERE `cfg_id`='16';
+UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='5' WHERE `cfg_id`='9';
+UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='6' WHERE `cfg_id`='15';
+
+UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='1' WHERE `cfg_id`='25';
+UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='2' WHERE `cfg_id`='27';
+UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='3' WHERE `cfg_id`='28';
+UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='4' WHERE `cfg_id`='29';
+UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='5' WHERE `cfg_id`='30';
+UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='7' WHERE `cfg_id`='31';
+UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='0' WHERE `cfg_id`='24';
+UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='6' WHERE `cfg_id`='26';
+UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='8' WHERE `cfg_id`='2000';
+
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='0' WHERE `cfg_id`='5';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='1' WHERE `cfg_id`='6';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='2' WHERE `cfg_id`='7';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='3' WHERE `cfg_id`='8';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='4' WHERE `cfg_id`='21';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='5' WHERE `cfg_id`='22';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='6' WHERE `cfg_id`='23';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='7' WHERE `cfg_id`='33';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='8' WHERE `cfg_id`='47';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='9' WHERE `cfg_id`='48';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='10' WHERE `cfg_id`='49';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='11' WHERE `cfg_id`='50';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='12' WHERE `cfg_id`='51';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='13' WHERE `cfg_id`='67';
+UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='15' WHERE `cfg_id`='19';
+
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='0' WHERE `cfg_id`='2';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='1' WHERE `cfg_id`='35';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='2' WHERE `cfg_id`='999';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='3' WHERE `cfg_id`='39';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='4' WHERE `cfg_id`='4';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='5' WHERE `cfg_id`='3';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='6' WHERE `cfg_id`='41';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='7' WHERE `cfg_id`='36';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='8' WHERE `cfg_id`='37';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='9' WHERE `cfg_id`='38';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='10' WHERE `cfg_id`='34';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='12' WHERE `cfg_id`='64';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='11' WHERE `cfg_id`='11';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='13' WHERE `cfg_id`='1';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='14' WHERE `cfg_id`='53';
+
+UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='0' WHERE `cfg_id`='44';
+UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='1' WHERE `cfg_id`='56';
+UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='2' WHERE `cfg_id`='66';
+UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='3' WHERE `cfg_id`='54';
+UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='4' WHERE `cfg_id`='55';
+UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='5' WHERE `cfg_id`='42';
+UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='6' WHERE `cfg_id`='43';
+
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='0' WHERE `cfg_id`='1001';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='1' WHERE `cfg_id`='1002';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='2' WHERE `cfg_id`='1011';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='3' WHERE `cfg_id`='1012';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='4' WHERE `cfg_id`='1013';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='5' WHERE `cfg_id`='1014';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='6' WHERE `cfg_id`='1015';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='7' WHERE `cfg_id`='1016';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='8' WHERE `cfg_id`='1017';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='9' WHERE `cfg_id`='1018';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='10' WHERE `cfg_id`='1019';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='11' WHERE `cfg_id`='1020';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='12' WHERE `cfg_id`='1021';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='13' WHERE `cfg_id`='1022';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='14' WHERE `cfg_id`='1023';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='15' WHERE `cfg_id`='1024';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='16' WHERE `cfg_id`='1025';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='17' WHERE `cfg_id`='1026';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='18' WHERE `cfg_id`='1027';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='19' WHERE `cfg_id`='1028';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='20' WHERE `cfg_id`='1029';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='21' WHERE `cfg_id`='1030';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='22' WHERE `cfg_id`='1031';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='23' WHERE `cfg_id`='1032';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='24' WHERE `cfg_id`='1033';
+UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='25' WHERE `cfg_id`='1034';
+
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='0' WHERE `cfg_id`='20';
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='1' WHERE `cfg_id`='40';
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='2' WHERE `cfg_id`='52';
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='3' WHERE `cfg_id`='57';
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='4' WHERE `cfg_id`='58';
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='5' WHERE `cfg_id`='73';
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='6' WHERE `cfg_id`='61';
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='7' WHERE `cfg_id`='62';
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='8' WHERE `cfg_id`='63';
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='9' WHERE `cfg_id`='72';
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='10' WHERE `cfg_id`='10';
+
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1011';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1012';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1013';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1015';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1017';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1018';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1019';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1020';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1021';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1022';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1023';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1024';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1026';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1027';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1028';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1029';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1031';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1032';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1033';
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `deposit_dep`
--- 
+--
 
 CREATE TABLE `deposit_dep` (
   `dep_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -223,16 +345,16 @@ CREATE TABLE `deposit_dep` (
   PRIMARY KEY  (`dep_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Dumping data for table `deposit_dep`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `donationfund_fun`
--- 
+--
 
 CREATE TABLE `donationfund_fun` (
   `fun_ID` tinyint(3) NOT NULL auto_increment,
@@ -243,18 +365,18 @@ CREATE TABLE `donationfund_fun` (
   UNIQUE KEY `fun_ID` (`fun_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
--- 
+--
 -- Dumping data for table `donationfund_fun`
--- 
+--
 
-INSERT INTO `donationfund_fun` (`fun_ID`, `fun_Active`, `fun_Name`, `fun_Description`) VALUES 
+INSERT INTO `donationfund_fun` (`fun_ID`, `fun_Active`, `fun_Name`, `fun_Description`) VALUES
 (1, 'true', 'Pledges', 'Pledge income for the operating budget');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `email_message_pending_emp`
--- 
+--
 
 CREATE TABLE `email_message_pending_emp` (
   `emp_usr_id` mediumint(9) unsigned NOT NULL default '0',
@@ -265,16 +387,16 @@ CREATE TABLE `email_message_pending_emp` (
   `emp_attach` tinyint(1)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `email_message_pending_emp`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `email_recipient_pending_erp`
--- 
+--
 
 CREATE TABLE `email_recipient_pending_erp` (
   `erp_id` smallint(5) unsigned NOT NULL default '0',
@@ -284,16 +406,16 @@ CREATE TABLE `email_recipient_pending_erp` (
   `erp_email_address` varchar(50) NOT NULL default ''
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `email_recipient_pending_erp`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `eventcountnames_evctnm`
--- 
+--
 
 CREATE TABLE `eventcountnames_evctnm` (
   `evctnm_countid` int(5) NOT NULL auto_increment,
@@ -304,11 +426,11 @@ CREATE TABLE `eventcountnames_evctnm` (
   UNIQUE KEY `evctnm_eventtypeid` (`evctnm_eventtypeid`,`evctnm_countname`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=7 ;
 
--- 
+--
 -- Dumping data for table `eventcountnames_evctnm`
--- 
+--
 
-INSERT INTO `eventcountnames_evctnm` (`evctnm_countid`, `evctnm_eventtypeid`, `evctnm_countname`, `evctnm_notes`) VALUES 
+INSERT INTO `eventcountnames_evctnm` (`evctnm_countid`, `evctnm_eventtypeid`, `evctnm_countname`, `evctnm_notes`) VALUES
 (1, 1, 'Total', ''),
 (2, 1, 'Members', ''),
 (3, 1, 'Visitors', ''),
@@ -318,9 +440,9 @@ INSERT INTO `eventcountnames_evctnm` (`evctnm_countid`, `evctnm_eventtypeid`, `e
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `eventcounts_evtcnt`
--- 
+--
 
 CREATE TABLE `eventcounts_evtcnt` (
   `evtcnt_eventid` int(5) NOT NULL default '0',
@@ -331,16 +453,16 @@ CREATE TABLE `eventcounts_evtcnt` (
   PRIMARY KEY  (`evtcnt_eventid`,`evtcnt_countid`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `eventcounts_evtcnt`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `events_event`
--- 
+--
 
 CREATE TABLE `events_event` (
   `event_id` int(11) NOT NULL auto_increment,
@@ -356,16 +478,16 @@ CREATE TABLE `events_event` (
   FULLTEXT KEY `event_txt` (`event_text`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Dumping data for table `events_event`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `event_attend`
--- 
+--
 
 CREATE TABLE `event_attend` (
   `event_id` int(11) NOT NULL default '0',
@@ -377,16 +499,16 @@ CREATE TABLE `event_attend` (
   UNIQUE KEY `event_id` (`event_id`,`person_id`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `event_attend`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `event_types`
--- 
+--
 
 CREATE TABLE `event_types` (
   `type_id` int(11) NOT NULL auto_increment,
@@ -400,35 +522,35 @@ CREATE TABLE `event_types` (
   PRIMARY KEY  (`type_id`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=3 ;
 
--- 
+--
 -- Dumping data for table `event_types`
--- 
+--
 
-INSERT INTO `event_types` (`type_id`, `type_name`, `type_defstarttime`, `type_defrecurtype`, `type_defrecurDOW`, `type_defrecurDOM`, `type_defrecurDOY`, `type_active`) VALUES 
+INSERT INTO `event_types` (`type_id`, `type_name`, `type_defstarttime`, `type_defrecurtype`, `type_defrecurDOW`, `type_defrecurDOM`, `type_defrecurDOY`, `type_active`) VALUES
 (1, 'Church Service', '10:30:00', 'weekly', 'Sunday', '', '0000-00-00', 1),
 (2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `family_custom`
--- 
+--
 
 CREATE TABLE `family_custom` (
   `fam_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `family_custom`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `family_custom_master`
--- 
+--
 
 CREATE TABLE `family_custom_master` (
   `fam_custom_Order` smallint(6) NOT NULL default '0',
@@ -440,16 +562,16 @@ CREATE TABLE `family_custom_master` (
   `type_ID` tinyint(4) NOT NULL default '0'
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `family_custom_master`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `family_fam`
--- 
+--
 
 CREATE TABLE `family_fam` (
   `fam_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -482,16 +604,16 @@ CREATE TABLE `family_fam` (
   KEY `fam_ID` (`fam_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Dumping data for table `family_fam`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `groupprop_master`
--- 
+--
 
 CREATE TABLE `groupprop_master` (
   `grp_ID` mediumint(9) unsigned NOT NULL default '0',
@@ -504,16 +626,16 @@ CREATE TABLE `groupprop_master` (
   `prop_PersonDisplay` enum('false','true') NOT NULL default 'false'
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT='Group-specific properties order, name, description, type';
 
--- 
+--
 -- Dumping data for table `groupprop_master`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `group_grp`
--- 
+--
 
 CREATE TABLE `group_grp` (
   `grp_ID` mediumint(8) unsigned NOT NULL auto_increment,
@@ -528,16 +650,16 @@ CREATE TABLE `group_grp` (
   KEY `grp_ID_2` (`grp_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Dumping data for table `group_grp`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `istlookup_lu`
--- 
+--
 
 CREATE TABLE `istlookup_lu` (
   `lu_fam_ID` mediumint(9) NOT NULL default '0',
@@ -560,16 +682,16 @@ CREATE TABLE `istlookup_lu` (
   PRIMARY KEY  (`lu_fam_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT='US Address Verification Lookups From Intelligent Search Tech';
 
--- 
+--
 -- Dumping data for table `istlookup_lu`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `list_lst`
--- 
+--
 
 CREATE TABLE `list_lst` (
   `lst_ID` mediumint(8) unsigned NOT NULL default '0',
@@ -578,11 +700,11 @@ CREATE TABLE `list_lst` (
   `lst_OptionName` varchar(50) NOT NULL default ''
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `list_lst`
--- 
+--
 
-INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_OptionName`) VALUES 
+INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_OptionName`) VALUES
 (1, 1, 1, 'Member'),
 (1, 2, 2, 'Regular Attender'),
 (1, 3, 3, 'Guest'),
@@ -659,46 +781,47 @@ CREATE TABLE `menuconfig_mcf` (
 
 INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_english`, `content`, `uri`, `statustext`, `security_grp`, `session_var`, `session_var_in_text`, `session_var_in_uri`, `url_parm_name`, `active`, `sortorder`, `icon`) VALUES
 (1, 'root', '', 1, 'Main', 'Main', '', '', 'bAll', NULL, 0, 0, NULL, 1, 0, NULL),
+(2, 'calendar', 'root', 0, 'Calendar', 'Calendar', 'calendar.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, 'fa-calendar'),
 
-(10, 'people', 'root', 1, 'Members', 'Members', '', 'Members', 'bAll', NULL, 0, 0, NULL, 1, 1, 'fa-users'),
+(10, 'people', 'root', 1, 'Members', 'Members', '', 'Members', 'bAll', NULL, 0, 0, NULL, 1, 2, 'fa-users'),
 (11, 'membdash', 'people', 0, 'Dashboard', 'Dashboard', 'MembersDashboard.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 1, NULL),
 (12, 'newperson', 'people', 0, 'Add New Person', 'Add New Person', 'PersonEditor.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 2, NULL),
 (13, 'viewperson', 'people', 0, 'View All Persons', 'View All Persons', 'SelectList.php?mode=person', '', 'bAll', NULL, 0, 0, NULL, 1, 3, NULL),
 (14, 'newfamily', 'people', 0, 'Add New Family', 'Add New Family', 'FamilyEditor.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 4, NULL),
 (15, 'viewfamily', 'people', 0, 'View All Families', 'View All Families', 'FamilyList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 5, NULL),
 
-(20, 'groups', 'root', 1, 'Groups', 'Groups', '', '', 'bAll', NULL, 0, 0, NULL, 1, 2, 'fa-tag'),
+(20, 'groups', 'root', 1, 'Groups', 'Groups', '', '', 'bAll', NULL, 0, 0, NULL, 1, 3, 'fa-tag'),
 (21, 'listgroups', 'groups', 0, 'List Groups', 'List Groups', 'GroupList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
-(22, 'newgroup', 'groups', 0, 'Add a New Group', 'Add a New Group', 'GroupEditor.php', '', 'bManageGroups', NULL, 0, 0, NULL, 1, 2, NULL),
+
 (23, 'editgroup', 'groups', 0, 'Edit Group Types', 'Edit Group Types', 'OptionManager.php?mode=grptypes', '', 'bMenuOptions', NULL, 0, 0, NULL, 1, 3, NULL),
 (24, 'assigngroup', 'groups', 0, 'Group Assignment Helper', 'Group Assignment Helper', 'SelectList.php?mode=groupassign', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
 
-(30, 'sundayschool', 'root', 1, 'Sunday School', 'Sunday School', '', '', 'bAll', NULL, 0, 0, NULL, 1, 3, 'fa-child'),
+(30, 'sundayschool', 'root', 1, 'Sunday School', 'Sunday School', '', '', 'bAll', NULL, 0, 0, NULL, 1, 4, 'fa-child'),
 (31, 'sundayschool-dash', 'sundayschool', 0, 'Dashboard', 'Dashboard', 'sundayschool/SundaySchoolDashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
 
-(40, 'mailchimp', 'root', 0, 'MailChimp', 'MailChimp', 'mailchimp/MailChimpDashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4, 'fa-envelope'),
+(40, 'mailchimp', 'root', 0, 'MailChimp', 'MailChimp', 'mailchimp/MailChimpDashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 5, 'fa-envelope'),
 
-(50, 'events', 'root', 1, 'Events', 'Events', '', 'Events', 'bAll', NULL, 0, 0, NULL, 1, 5, 'fa-ticket'),
+(50, 'events', 'root', 1, 'Events', 'Events', '', 'Events', 'bAll', NULL, 0, 0, NULL, 1,6, 'fa-ticket'),
 (51, 'listevent', 'events', 0, 'List Church Events', 'List Church Events', 'ListEvents.php', 'List Church Events', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
-(52, 'addevent', 'events', 0, 'Add Church Event', 'Add Church Event', 'EventNames.php', 'Add Church Event', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
+(52, 'addevent', 'events', 0, 'Add Church Event', 'Add Church Event', 'EventEditor.php', 'Add Church Event', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
 (53, 'eventype', 'events', 0, 'List Event Types', 'List Event Types', 'EventNames.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3, NULL),
 (54, 'eventcheckin', 'events', 0, 'Check-in and Check-out', 'Check-in and Check-out', 'Checkin.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
 
-(60, 'deposit', 'root', 1, 'Deposit', 'Deposit', '', '', 'bFinance', NULL, 0, 0, NULL, 1, 6, 'fa-bank'),
+(60, 'deposit', 'root', 1, 'Deposit', 'Deposit', '', '', 'bFinance', NULL, 0, 0, NULL, 1, 7, 'fa-bank'),
 (61, 'envelopmgr', 'deposit', 0, 'Envelope Manager', 'Envelope Manager', 'ManageEnvelopes.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
 (62, 'newdeposit', 'deposit', 0, 'Create New Deposit', 'Create New Deposit', 'DepositSlipEditor.php?DepositType=Bank', '', 'bFinance', NULL, 0, 0, NULL, 1, 2, NULL),
 (63, 'viewdeposit', 'deposit', 0, 'View All Deposits', 'View All Deposits', 'FindDepositSlip.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 3, NULL),
 (64, 'depositreport', 'deposit', 0, 'Deposit Reports', 'Deposit Reports', 'FinancialReports.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 4, NULL),
 (65, 'depositslip', 'deposit', 0, 'Edit Deposit Slip', 'Edit Deposit Slip', 'DepositSlipEditor.php', '', 'bFinance', 'iCurrentDeposit', 1, 1, 'DepositSlipID', 1, 5, NULL),
 
-(70, 'fundraiser', 'root', 1, 'Fundraiser', 'Fundraiser', '', '', 'bAll', NULL, 0, 0, NULL, 1, 7, 'fa-money'),
+(70, 'fundraiser', 'root', 1, 'Fundraiser', 'Fundraiser', '', '', 'bAll', NULL, 0, 0, NULL, 1, 8, 'fa-money'),
 (71, 'viewfundraiser', 'fundraiser', 0, 'View All Fundraisers', 'View All Fundraisers', 'FindFundRaiser.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
 (72, 'newfundraiser', 'fundraiser', 0, 'Create New Fundraiser', 'Create New Fundraiser', 'FundRaiserEditor.php?FundRaiserID=-1', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
 (73, 'editfundraiser', 'fundraiser', 0, 'Edit Fundraiser', 'Edit Fundraiser', 'FundRaiserEditor.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 3, NULL),
 (74, 'viewbuyers', 'fundraiser', 0, 'View Buyers', 'View Buyers', 'PaddleNumList.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 4, NULL),
 (75, 'adddonors', 'fundraiser', 0, 'Add Donors to Buyer List', 'Add Donors to Buyer List', 'AddDonors.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5, NULL),
 
-(80, 'report', 'root', 1, 'Data/Reports', 'Data/Reports', '', '', 'bAll', NULL, 0, 0, NULL, 1, 8, 'fa-file-pdf-o'),
+(80, 'report', 'root', 1, 'Data/Reports', 'Data/Reports', '', '', 'bAll', NULL, 0, 0, NULL, 1, 9, 'fa-file-pdf-o'),
 (81, 'reportmenu', 'report', 0, 'Reports Menu', 'Reports Menu', 'ReportList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
 (82, 'querymenu', 'report', 0, 'Query Menu', 'Query Menu', 'QueryList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
 (83, 'cvsexport', 'report', 0, 'CSV Export Records', 'CSV Export Records', 'CSVExport.php', '', 'bAll', NULL, 0, 0, NULL, 1, 3, NULL),
@@ -709,10 +832,9 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (93, 'groupproperty', 'properties', 0, 'Group Properties', 'Group Properties', 'PropertyList.php?Type=g', '', 'bAll', NULL, 0, 0, NULL, 1, 3, NULL),
 (94, 'propertytype', 'properties', 0, 'Property Types', 'Property Types', 'PropertyTypeList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
 
-(100, 'generalsetting', 'admin', 0, 'Edit General Settings', 'Edit General Settings', 'SettingsGeneral.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
+(100, 'generalsetting', 'admin', 0, 'Edit General Settings', 'Edit General Settings', 'SystemSettings.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
 (101, 'editusers', 'admin', 0, 'System Users', 'System Users', 'UserList.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 2, NULL),
 (102, 'accessreport', 'admin', 0, 'Access report', 'Access report', 'AccessReport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3, NULL),
-(103, 'reportsetting', 'admin', 0, 'Edit Report Settings', 'Edit Report Settings', 'SettingsReport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 4, NULL),
 (104, 'customfamilyfld', 'admin', 0, 'Edit Custom Family Fields', 'Edit Custom Family Fields', 'FamilyCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 5, NULL),
 (105, 'custompersonfld', 'admin', 0, 'Edit Custom Person Fields', 'Edit Custom Person Fields', 'PersonCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 6, NULL),
 (106, 'donationfund', 'admin', 0, 'Edit Donation Funds', 'Edit Donation Funds', 'DonationFundEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 7, NULL),
@@ -725,9 +847,9 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `note_nte`
--- 
+--
 
 CREATE TABLE `note_nte` (
   `nte_ID` mediumint(8) unsigned NOT NULL auto_increment,
@@ -742,16 +864,16 @@ CREATE TABLE `note_nte` (
   PRIMARY KEY  (`nte_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Dumping data for table `note_nte`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `person2group2role_p2g2r`
--- 
+--
 
 CREATE TABLE `person2group2role_p2g2r` (
   `p2g2r_per_ID` mediumint(8) unsigned NOT NULL default '0',
@@ -761,16 +883,16 @@ CREATE TABLE `person2group2role_p2g2r` (
   KEY `p2g2r_per_ID` (`p2g2r_per_ID`,`p2g2r_grp_ID`,`p2g2r_rle_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `person2group2role_p2g2r`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `person2volunteeropp_p2vo`
--- 
+--
 
 CREATE TABLE `person2volunteeropp_p2vo` (
   `p2vo_ID` mediumint(9) NOT NULL auto_increment,
@@ -780,32 +902,32 @@ CREATE TABLE `person2volunteeropp_p2vo` (
   UNIQUE KEY `p2vo_ID` (`p2vo_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Dumping data for table `person2volunteeropp_p2vo`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `person_custom`
--- 
+--
 
 CREATE TABLE `person_custom` (
   `per_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`per_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `person_custom`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `person_custom_master`
--- 
+--
 
 CREATE TABLE `person_custom_master` (
   `custom_Order` smallint(6) NOT NULL default '0',
@@ -817,16 +939,16 @@ CREATE TABLE `person_custom_master` (
   `type_ID` tinyint(4) NOT NULL default '0'
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `person_custom_master`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `person_per`
--- 
+--
 
 CREATE TABLE `person_per` (
   `per_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -865,18 +987,18 @@ CREATE TABLE `person_per` (
   KEY `per_ID` (`per_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
--- 
+--
 -- Dumping data for table `person_per`
--- 
+--
 
-INSERT INTO `person_per` (`per_ID`, `per_Title`, `per_FirstName`, `per_MiddleName`, `per_LastName`, `per_Suffix`, `per_Address1`, `per_Address2`, `per_City`, `per_State`, `per_Zip`, `per_Country`, `per_HomePhone`, `per_WorkPhone`, `per_CellPhone`, `per_Email`, `per_WorkEmail`, `per_BirthMonth`, `per_BirthDay`, `per_BirthYear`, `per_MembershipDate`, `per_Gender`, `per_fmr_ID`, `per_cls_ID`, `per_fam_ID`, `per_Envelope`, `per_DateLastEdited`, `per_DateEntered`, `per_EnteredBy`, `per_EditedBy`, `per_FriendDate`, `per_Flags`) VALUES 
+INSERT INTO `person_per` (`per_ID`, `per_Title`, `per_FirstName`, `per_MiddleName`, `per_LastName`, `per_Suffix`, `per_Address1`, `per_Address2`, `per_City`, `per_State`, `per_Zip`, `per_Country`, `per_HomePhone`, `per_WorkPhone`, `per_CellPhone`, `per_Email`, `per_WorkEmail`, `per_BirthMonth`, `per_BirthDay`, `per_BirthYear`, `per_MembershipDate`, `per_Gender`, `per_fmr_ID`, `per_cls_ID`, `per_fam_ID`, `per_Envelope`, `per_DateLastEdited`, `per_DateEntered`, `per_EnteredBy`, `per_EditedBy`, `per_FriendDate`, `per_Flags`) VALUES
 (1, NULL, 'Church', NULL, 'Admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0000, NULL, 0, 0, 0, 0, NULL, NULL, '2004-08-25 18:00:00', 1, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `pledge_plg`
--- 
+--
 
 CREATE TABLE `pledge_plg` (
   `plg_plgID` mediumint(9) NOT NULL auto_increment,
@@ -903,16 +1025,16 @@ CREATE TABLE `pledge_plg` (
   PRIMARY KEY  (`plg_plgID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Dumping data for table `pledge_plg`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `propertytype_prt`
--- 
+--
 
 CREATE TABLE `propertytype_prt` (
   `prt_ID` mediumint(9) NOT NULL auto_increment,
@@ -924,20 +1046,20 @@ CREATE TABLE `propertytype_prt` (
   KEY `prt_ID_2` (`prt_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=4 ;
 
--- 
+--
 -- Dumping data for table `propertytype_prt`
--- 
+--
 
-INSERT INTO `propertytype_prt` (`prt_ID`, `prt_Class`, `prt_Name`, `prt_Description`) VALUES 
+INSERT INTO `propertytype_prt` (`prt_ID`, `prt_Class`, `prt_Name`, `prt_Description`) VALUES
 (1, 'p', 'General', 'General Person Properties'),
 (2, 'f', 'General', 'General Family Properties'),
 (3, 'g', 'General', 'General Group Properties');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `property_pro`
--- 
+--
 
 CREATE TABLE `property_pro` (
   `pro_ID` mediumint(8) unsigned NOT NULL auto_increment,
@@ -951,20 +1073,20 @@ CREATE TABLE `property_pro` (
   KEY `pro_ID_2` (`pro_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=4 ;
 
--- 
+--
 -- Dumping data for table `property_pro`
--- 
+--
 
-INSERT INTO `property_pro` (`pro_ID`, `pro_Class`, `pro_prt_ID`, `pro_Name`, `pro_Description`, `pro_Prompt`) VALUES 
+INSERT INTO `property_pro` (`pro_ID`, `pro_Class`, `pro_prt_ID`, `pro_Name`, `pro_Description`, `pro_Prompt`) VALUES
 (1, 'p', 1, 'Disabled', 'has a disability.', 'What is the nature of the disability?'),
 (2, 'f', 2, 'Single Parent', 'is a single-parent household.', ''),
 (3, 'g', 3, 'Youth', 'is youth-oriented.', '');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `queryparameteroptions_qpo`
--- 
+--
 
 CREATE TABLE `queryparameteroptions_qpo` (
   `qpo_ID` smallint(5) unsigned NOT NULL auto_increment,
@@ -975,11 +1097,11 @@ CREATE TABLE `queryparameteroptions_qpo` (
   UNIQUE KEY `qpo_ID` (`qpo_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=28 ;
 
--- 
+--
 -- Dumping data for table `queryparameteroptions_qpo`
--- 
+--
 
-INSERT INTO `queryparameteroptions_qpo` (`qpo_ID`, `qpo_qrp_ID`, `qpo_Display`, `qpo_Value`) VALUES 
+INSERT INTO `queryparameteroptions_qpo` (`qpo_ID`, `qpo_qrp_ID`, `qpo_Display`, `qpo_Value`) VALUES
 (1, 4, 'Male', '1'),
 (2, 4, 'Female', '2'),
 (3, 6, 'Male', '1'),
@@ -1019,9 +1141,9 @@ INSERT INTO `queryparameteroptions_qpo` (`qpo_ID`, `qpo_qrp_ID`, `qpo_Display`, 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `queryparameters_qrp`
--- 
+--
 
 CREATE TABLE `queryparameters_qrp` (
   `qrp_ID` mediumint(8) unsigned NOT NULL auto_increment,
@@ -1045,11 +1167,11 @@ CREATE TABLE `queryparameters_qrp` (
   KEY `qrp_qry_ID` (`qrp_qry_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=102 ;
 
--- 
+--
 -- Dumping data for table `queryparameters_qrp`
--- 
+--
 
-INSERT INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_OptionSQL`, `qrp_Name`, `qrp_Description`, `qrp_Alias`, `qrp_Default`, `qrp_Required`, `qrp_InputBoxSize`, `qrp_Validation`, `qrp_NumericMax`, `qrp_NumericMin`, `qrp_AlphaMinLength`, `qrp_AlphaMaxLength`) VALUES 
+INSERT INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_OptionSQL`, `qrp_Name`, `qrp_Description`, `qrp_Alias`, `qrp_Default`, `qrp_Required`, `qrp_InputBoxSize`, `qrp_Validation`, `qrp_NumericMax`, `qrp_NumericMin`, `qrp_AlphaMinLength`, `qrp_AlphaMaxLength`) VALUES
 (1, 4, 0, NULL, 'Minimum Age', 'The minimum age for which you want records returned.', 'min', '0', 0, 5, 'n', 120, 0, NULL, NULL),
 (2, 4, 0, NULL, 'Maximum Age', 'The maximum age for which you want records returned.', 'max', '120', 1, 5, 'n', 120, 0, NULL, NULL),
 (4, 6, 1, '', 'Gender', 'The desired gender to search the database for.', 'gender', '1', 1, 0, '', 0, 0, 0, 0),
@@ -1082,9 +1204,9 @@ INSERT INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_Opti
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `query_qry`
--- 
+--
 
 CREATE TABLE `query_qry` (
   `qry_ID` mediumint(8) unsigned NOT NULL auto_increment,
@@ -1097,11 +1219,11 @@ CREATE TABLE `query_qry` (
   KEY `qry_ID_2` (`qry_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=101 ;
 
--- 
+--
 -- Dumping data for table `query_qry`
--- 
+--
 
-INSERT INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qry_Count`) VALUES 
+INSERT INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qry_Count`) VALUES
 (2, 'SELECT COUNT(per_ID)\nAS ''Count''\nFROM person_per', 'Person Count', 'Returns the total number of people in the database.', 0),
 (3, 'SELECT CONCAT(''<a href=FamilyView.php?FamilyID='',fam_ID,''>'',fam_Name,''</a>'') AS ''Family Name'', COUNT(*) AS ''No.''\nFROM person_per\nINNER JOIN family_fam\nON fam_ID = per_fam_ID\nGROUP BY per_fam_ID\nORDER BY ''No.'' DESC', 'Family Member Count', 'Returns each family and the total number of people assigned to them.', 0),
 (4, 'SELECT per_ID as AddToCart,CONCAT(''<a\r\nhref=PersonView.php?PersonID='',per_ID,''>'',per_FirstName,''\r\n'',per_LastName,''</a>'') AS Name,\r\nCONCAT(per_BirthMonth,''/'',per_BirthDay,''/'',per_BirthYear) AS ''Birth Date'',\r\nDATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(CONCAT(per_BirthYear,''-'',per_BirthMonth,''-'',per_BirthDay))),''%Y'')+0 AS  ''Age''\r\nFROM person_per\r\nWHERE\r\nDATE_ADD(CONCAT(per_BirthYear,''-'',per_BirthMonth,''-'',per_BirthDay),INTERVAL\r\n~min~ YEAR) <= CURDATE()\r\nAND\r\nDATE_ADD(CONCAT(per_BirthYear,''-'',per_BirthMonth,''-'',per_BirthDay),INTERVAL\r\n(~max~ + 1) YEAR) >= CURDATE()', 'Person by Age', 'Returns any person records with ages between two given ages.', 1),
@@ -1130,9 +1252,9 @@ INSERT INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qr
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `record2property_r2p`
--- 
+--
 
 CREATE TABLE `record2property_r2p` (
   `r2p_pro_ID` mediumint(8) unsigned NOT NULL default '0',
@@ -1140,16 +1262,16 @@ CREATE TABLE `record2property_r2p` (
   `r2p_Value` text NOT NULL
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `record2property_r2p`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `result_res`
--- 
+--
 
 CREATE TABLE `result_res` (
   `res_ID` mediumint(9) NOT NULL auto_increment,
@@ -1171,16 +1293,16 @@ CREATE TABLE `result_res` (
   PRIMARY KEY  (`res_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Dumping data for table `result_res`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `userconfig_ucfg`
--- 
+--
 
 CREATE TABLE `userconfig_ucfg` (
   `ucfg_per_id` mediumint(9) unsigned NOT NULL,
@@ -1194,11 +1316,11 @@ CREATE TABLE `userconfig_ucfg` (
   PRIMARY KEY  (`ucfg_per_id`,`ucfg_id`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `userconfig_ucfg`
--- 
+--
 
-INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`, `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`, `ucfg_cat`) VALUES 
+INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`, `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`, `ucfg_cat`) VALUES
 (0, 0, 'bEmailMailto', '1', 'boolean', 'User permission to send email via mailto: links', 'TRUE', ''),
 (0, 1, 'sMailtoDelimiter', ',', 'text', 'Delimiter to separate emails in mailto: links', 'TRUE', ''),
 (0, 2, 'bSendPHPMail', '0', 'boolean', 'User permission to send email using PHPMailer', 'FALSE', ''),
@@ -1220,9 +1342,9 @@ INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_valu
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `user_usr`
--- 
+--
 
 CREATE TABLE `user_usr` (
   `usr_per_ID` mediumint(9) unsigned NOT NULL default '0',
@@ -1268,26 +1390,26 @@ CREATE TABLE `user_usr` (
   KEY `usr_per_ID` (`usr_per_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
--- 
+--
 -- Dumping data for table `user_usr`
--- 
+--
 
-INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, `usr_LastLogin`, 
-`usr_LoginCount`, `usr_FailedLogins`, `usr_AddRecords`, `usr_EditRecords`, `usr_DeleteRecords`, 
-`usr_MenuOptions`, `usr_ManageGroups`, `usr_Finance`, `usr_Communication`, `usr_Notes`, `usr_Admin`, 
-`usr_Workspacewidth`, `usr_BaseFontSize`, `usr_SearchLimit`, `usr_Style`, `usr_showPledges`, 
-`usr_showPayments`, `usr_showSince`, `usr_defaultFY`, `usr_currentDeposit`, `usr_UserName`, `usr_EditSelf`, 
-`usr_CalStart`, `usr_CalEnd`, `usr_CalNoSchool1`, `usr_CalNoSchool2`, `usr_CalNoSchool3`, `usr_CalNoSchool4`, 
-`usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`, 
-`usr_Canvasser`) 
-VALUES 
+INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, `usr_LastLogin`,
+`usr_LoginCount`, `usr_FailedLogins`, `usr_AddRecords`, `usr_EditRecords`, `usr_DeleteRecords`,
+`usr_MenuOptions`, `usr_ManageGroups`, `usr_Finance`, `usr_Communication`, `usr_Notes`, `usr_Admin`,
+`usr_Workspacewidth`, `usr_BaseFontSize`, `usr_SearchLimit`, `usr_Style`, `usr_showPledges`,
+`usr_showPayments`, `usr_showSince`, `usr_defaultFY`, `usr_currentDeposit`, `usr_UserName`, `usr_EditSelf`,
+`usr_CalStart`, `usr_CalEnd`, `usr_CalNoSchool1`, `usr_CalNoSchool2`, `usr_CalNoSchool3`, `usr_CalNoSchool4`,
+`usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`,
+`usr_Canvasser`)
+VALUES
 (1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '0000-00-00 00:00:00', 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 580, 9, 10, 'skin-blue', 0, 0, '0000-00-00', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `version_ver`
--- 
+--
 
 CREATE TABLE `version_ver` (
   `ver_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -1297,22 +1419,22 @@ CREATE TABLE `version_ver` (
   UNIQUE KEY `ver_version` (`ver_version`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Dumping data for table `version_ver`
--- 
+--
 
-INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES 
+INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES
 ('2.0.0', NOW() );
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `volunteeropportunity_vol`
--- 
+--
 
 CREATE TABLE `volunteeropportunity_vol` (
   `vol_ID` int(3) NOT NULL auto_increment,
-  `vol_Order` int(3) NOT NULL default '0', 
+  `vol_Order` int(3) NOT NULL default '0',
   `vol_Active` enum('true','false') NOT NULL default 'true',
   `vol_Name` varchar(30) default NULL,
   `vol_Description` varchar(100) default NULL,
@@ -1320,16 +1442,16 @@ CREATE TABLE `volunteeropportunity_vol` (
   UNIQUE KEY `vol_ID` (`vol_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Dumping data for table `volunteeropportunity_vol`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `whycame_why`
--- 
+--
 
 CREATE TABLE `whycame_why` (
   `why_ID` mediumint(9) NOT NULL auto_increment,
@@ -1343,7 +1465,7 @@ CREATE TABLE `whycame_why` (
 
 --
 -- Fundraiser support added 4/11/2009 Michael Wilt
--- 
+--
 
 CREATE TABLE `paddlenum_pn` (
   `pn_ID` mediumint(9) unsigned NOT NULL auto_increment,

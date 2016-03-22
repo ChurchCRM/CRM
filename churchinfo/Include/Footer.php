@@ -43,7 +43,10 @@
 	<!-- AdminLTE App -->
 	<script src="<?= $sRootPath ?>/skin/adminlte/dist/js/app.min.js"></script>
 
-	<script src="<?= $sRootPath ?>/js/Footer.js"></script>
+	<script src="<?= $sRootPath ?>/skin/js/DataTables.js"></script>
+	<script src="<?= $sRootPath ?>/skin/js/Tooltips.js"></script>
+	<script src="<?= $sRootPath ?>/skin/js/Events.js"></script>
+	<script src="<?= $sRootPath ?>/skin/js/Footer.js"></script>
 
 </body>
 </html>

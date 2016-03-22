@@ -26,6 +26,26 @@ class PersonService
     return "{id: $id, fName: $per_FirstName}";
   }
 
+  function getBirthDays() {
+    //return $this->personQuery->findPK($id);
+    $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_BirthMonth, per_BirthDay FROM person_per';
+    $result = mysql_query($sSQL);
+
+    $return = array();
+    while ($row = mysql_fetch_array($result)) {
+      $values['id'] = $row['per_ID'];
+      $values['firstName'] = $row['per_FirstName'];
+      $values['lastName'] = $row['per_LastName'];
+      $values['birthDay'] = $row['per_BirthDay'];
+      $values['birthMonth'] = $row['per_BirthMonth'];
+      $values['uri'] = $this->getViewURI($row['per_ID']);
+
+      array_push($return, $values);
+    }
+
+    return $return;
+  }
+
   function getPhoto($id)
   {
     if ($id != "") {
