@@ -290,8 +290,8 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
         $iEventID = $_POST['EventID'];
         $iTypeID = $_POST['EventTypeID'];
         $EventExists = $_POST['EventExists'];
-        $sEventTitle = FilterInput($_POST['EventTitle']);
-        $sEventDesc = FilterInput($_POST['EventDesc']);
+        $sEventTitle = $_POST['EventTitle'];
+        $sEventDesc = $_POST['EventDesc'];
         $sEventStartDate = $_POST['EventStartDate'];
         $sEventStartTime = $_POST['EventStartTime'];
         if (empty($_POST['EventTitle'])) {
@@ -306,13 +306,13 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
                 $bEventTypeError = true;
                 $iErrors++;
         } else {
-					$sSQL = "SELECT type_name FROM event_types WHERE type_id = '" . mysql_real_escape_string($iTypeID) . "' LIMIT 1";
+					$sSQL = "SELECT type_name FROM event_types WHERE type_id = '" . FilterInput($iTypeID) . "' LIMIT 1";
 	        $rsOpps = RunQuery($sSQL);
 	        $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
 	        extract($aRow);
 					$sTypeName = $type_name;
 				}
-        $sEventText = FilterInput($_POST['EventText']);
+        $sEventText = $_POST['EventText'];
         if (empty($_POST['EventStartDate'])) {
                 $bESDError = true;
                 $iErrors++;
@@ -355,14 +355,14 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
         {
           if($EventExists==0){
             $sSQL = "INSERT events_event
-                     SET `event_type` = '". mysql_real_escape_string($iTypeID)."',
-                     `event_title` = '".mysql_real_escape_string($sEventTitle)."',
-                     `event_desc` = '".mysql_real_escape_string($sEventDesc)."',
-                     `event_text` = '".mysql_real_escape_string($sEventText)."',
-                     `event_start` = '".mysql_real_escape_string($sEventStart)."',
-                     `event_end` = '".mysql_real_escape_string($sEventEnd)."',
-                     `inactive` = '".mysql_real_escape_string($iEventStatus)."',
-                     `event_typename` = '".mysql_real_escape_string($sTypeName)."'";
+                     SET `event_type` = '". FilterInput($iTypeID)."',
+                     `event_title` = '".FilterInput($sEventTitle)."',
+                     `event_desc` = '".FilterInput($sEventDesc)."',
+                     `event_text` = '".FilterInput($sEventText)."',
+                     `event_start` = '".FilterInput($sEventStart)."',
+                     `event_end` = '".FilterInput($sEventEnd)."',
+                     `inactive` = '".FilterInput($iEventStatus)."',
+                     `event_typename` = '".FilterInput($sTypeName)."'";
             RunQuery($sSQL);
             $iEventID = mysql_insert_id();
             for($c=0; $c<$iNumCounts; $c++)
@@ -371,26 +371,25 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
               $sSQL = "INSERT eventcounts_evtcnt
 											 (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
 											 VALUES
-											 ('".mysql_real_escape_string($iEventID)."',
-											  '".mysql_real_escape_string($aCountID[$c])."',
-												'".mysql_real_escape_string($aCountName[$c])."',
-												'".mysql_real_escape_string($aCount[$c])."',
-												'".mysql_real_escape_string($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
-//              echo $sSQL;
+											 ('".FilterInput($iEventID)."',
+											  '".FilterInput($aCountID[$c])."',
+												'".FilterInput($aCountName[$c])."',
+												'".FilterInput($aCount[$c])."',
+												'".FilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
               RunQuery($sSQL);
             }
 
           } else {
             $sSQL = "UPDATE events_event
-                     SET `event_type` = '".mysql_real_escape_string($iTypeID)."',
-                     `event_title` = '".mysql_real_escape_string($sEventTitle)."',
-                     `event_desc` = '".mysql_real_escape_string($sEventDesc)."',
-                     `event_text` = '".mysql_real_escape_string($sEventText)."',
-                     `event_start` = '".mysql_real_escape_string($sEventStart)."',
-                     `event_end` = '".mysql_real_escape_string($sEventEnd)."',
-                     `inactive` = '".mysql_real_escape_string($iEventStatus)."',
-                     `event_typename` = '".mysql_real_escape_string($sTypeName)."'".
-                    " WHERE `event_id` = '" . mysql_real_escape_string($iEventID)."';";
+                     SET `event_type` = '".FilterInput($iTypeID)."',
+                     `event_title` = '".FilterInput($sEventTitle)."',
+                     `event_desc` = '".FilterInput($sEventDesc)."',
+                     `event_text` = '".FilterInput($sEventText)."',
+                     `event_start` = '".FilterInput($sEventStart)."',
+                     `event_end` = '".FilterInput($sEventEnd)."',
+                     `inactive` = '".FilterInput($iEventStatus)."',
+                     `event_typename` = '".FilterInput($sTypeName)."'".
+                    " WHERE `event_id` = '" . FilterInput($iEventID)."';";
 //            echo $sSQL;
             RunQuery($sSQL);
             for($c=0; $c<$iNumCounts; $c++)
@@ -399,11 +398,11 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
               $sSQL = "INSERT eventcounts_evtcnt
 											 (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
 											 VALUES
-											 ('".mysql_real_escape_string($iEventID)."',
-											  '".mysql_real_escape_string($aCountID[$c])."',
-												'".mysql_real_escape_string($aCountName[$c])."',
-												'".mysql_real_escape_string($aCount[$c])."',
-												'".mysql_real_escape_string($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+											 ('".FilterInput($iEventID)."',
+											  '".FilterInput($aCountID[$c])."',
+												'".FilterInput($aCountName[$c])."',
+												'".FilterInput($aCount[$c])."',
+												'".FilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
               RunQuery($sSQL);
             }
           }

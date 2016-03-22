@@ -51,7 +51,7 @@ if(strpos($_POST['Action'], 'DELETE_', 0) === 0) {
     $editing='FALSE';
     $eName = $_POST["newEvtName"];
     $theID=$_POST["EN_tyid"];
-    $sSQL = "UPDATE event_types SET type_name='" . mysql_real_escape_string($eName) . "' WHERE type_id='" . mysql_real_escape_string($theID) . "'";
+    $sSQL = "UPDATE event_types SET type_name='" . FilterInput($eName) . "' WHERE type_id='" . FilterInput($theID) . "'";
     RunQuery($sSQL);
     $theID='';
     $_POST['Action']='';
@@ -61,7 +61,7 @@ if(strpos($_POST['Action'], 'DELETE_', 0) === 0) {
     $editing='FALSE';
     $eTime = $_POST["newEvtStartTime"];
     $theID=$_POST["EN_tyid"];
-    $sSQL = "UPDATE event_types SET type_defstarttime='" . mysql_real_escape_string($eTime) . "' WHERE type_id='" . mysql_real_escape_string($theID) . "'";
+    $sSQL = "UPDATE event_types SET type_defstarttime='" . FilterInput($eTime) . "' WHERE type_id='" . FilterInput($theID) . "'";
     RunQuery($sSQL);
     $theID='';
     $_POST['Action']='';
