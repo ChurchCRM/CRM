@@ -1,6 +1,6 @@
 <?php
 
-/* * *****************************************************************************
+/*******************************************************************************
  *
  *  filename    : Reports/ConfirmReportEmail.php
  *  last change : 2014-11-28
@@ -12,7 +12,7 @@
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
  *
- * **************************************************************************** */
+ ******************************************************************************/
 
 require "../Include/Config.php";
 require "../Include/Functions.php";
