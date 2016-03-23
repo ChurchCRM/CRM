@@ -63,6 +63,7 @@ if (!$tablecheck) {
 }
 
 // Initialize the session
+session_name('CRM@' . $sRootPath);
 session_start();
 
 // Avoid consecutive slashes when $sRootPath = '/'
