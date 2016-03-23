@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
-
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0-B4...HEAD)
+## [2.0.0-B5](https://github.com/ChurchCRM/CRM/tree/2.0.0-B5) (2016-03-22)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0-B4...2.0.0-B5)
 
 **Implemented enhancements:**
 
@@ -15,17 +14,27 @@
 **Fixed bugs:**
 
 - SundaySchool: Teacher View Profile icon incorrect [\#472](https://github.com/ChurchCRM/CRM/issues/472)
+- Groups: Group Editors Role name does not save [\#471](https://github.com/ChurchCRM/CRM/issues/471)
 - Group Role Name Changes Do Not Commit [\#442](https://github.com/ChurchCRM/CRM/issues/442)
+- Add New Group Nav link redirects to Group List [\#440](https://github.com/ChurchCRM/CRM/issues/440)
+- New Group accepts empty string as Group Name [\#436](https://github.com/ChurchCRM/CRM/issues/436)
 - Sunday School member issue [\#420](https://github.com/ChurchCRM/CRM/issues/420)
 - Family Assign a New Property text is white on white [\#418](https://github.com/ChurchCRM/CRM/issues/418)
 - Theme: NoteEditor.php [\#386](https://github.com/ChurchCRM/CRM/issues/386)
 - Add event Link is the same as list event type [\#352](https://github.com/ChurchCRM/CRM/issues/352)
 - Theme: Events [\#188](https://github.com/ChurchCRM/CRM/issues/188)
+- Small Group Fixes [\#484](https://github.com/ChurchCRM/CRM/pull/484) ([crossan007](https://github.com/crossan007))
+- Fix \#471 [\#483](https://github.com/ChurchCRM/CRM/pull/483) ([crossan007](https://github.com/crossan007))
 - Note editor refactor \#386 [\#475](https://github.com/ChurchCRM/CRM/pull/475) ([DawoudIO](https://github.com/DawoudIO))
 - SundaySchool View Page fixes [\#474](https://github.com/ChurchCRM/CRM/pull/474) ([DawoudIO](https://github.com/DawoudIO))
 
+**Closed issues:**
+
+- Need a CHANGELOG.md [\#481](https://github.com/ChurchCRM/CRM/issues/481)
+
 **Merged pull requests:**
 
+- Generate Changelog.md [\#482](https://github.com/ChurchCRM/CRM/pull/482) ([DawoudIO](https://github.com/DawoudIO))
 - Fix Add to Cart from family view [\#453](https://github.com/ChurchCRM/CRM/pull/453) ([rakess70](https://github.com/rakess70))
 
 ## [2.0.0-B4](https://github.com/ChurchCRM/CRM/tree/2.0.0-B4) (2016-03-16)
