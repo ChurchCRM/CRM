@@ -30,7 +30,7 @@ class ReportingService
 
   function search($searchTerm)
   {
-    $fetch = 'SELECT * from query_qry WHERE qry_Name LIKE \'%' . $searchTerm . '%\' LIMIT 15';
+    $fetch = 'SELECT * from query_qry WHERE qry_Name LIKE \'%' . FilterInput($searchTerm) . '%\' LIMIT 15';
     $result = mysql_query($fetch);
     $reports = array();
     while ($row = mysql_fetch_array($result))
@@ -63,7 +63,7 @@ class ReportingService
 
   function getQuerySQL($qry_ID, $qry_Parameters)
   {
-    $sSQL = "SELECT qry_SQL FROM query_qry where qry_ID=" . $qry_ID;
+    $sSQL = "SELECT qry_SQL FROM query_qry where qry_ID=" . FilterInput($qry_ID,"int");
     $rsQueries = RunQuery($sSQL);
     $query = mysql_fetch_assoc($rsQueries);
     $sql = $query['qry_SQL'];
@@ -91,7 +91,7 @@ class ReportingService
     {
       if ($qry_Args == null)
       {
-        $sSQL = "SELECT qry_ID,qry_Name,qry_Description FROM query_qry where qry_ID=" . $qry_ID;
+        $sSQL = "SELECT qry_ID,qry_Name,qry_Description FROM query_qry where qry_ID=" . FilterInput($qry_ID,"int");
         $rsQueries = RunQuery($sSQL);
         $result = array();
         while ($row = mysql_fetch_assoc($rsQueries))
@@ -109,7 +109,7 @@ class ReportingService
 
   function getQueryParameters($qry_ID = null)
   {
-    $sSQL = "SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID=" . $qry_ID;
+    $sSQL = "SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID=" . FilterInput($qry_ID,"int");
     $rsQueries = RunQuery($sSQL);
     $result = array();
     while ($row = mysql_fetch_assoc($rsQueries))
