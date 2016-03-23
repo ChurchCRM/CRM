@@ -15,7 +15,7 @@ We love to hear ideas from other ChurchInfo and ChurchCRM users!  It's what make
 * Create a topic branch from where you want to base your work.
   * Use the following logic to determine your branch's base:
     * For new features, use develop
-    * For bug fixes to exsiting features, use master
+    * For bug fixes to existing features, use master
   * To quickly create a topic branch based on master; `git checkout -b fixes-issue-#<your issue number>`. Please avoid working directly on the `master` branch, as this makes PRs difficult
 * Make commits of logical units.  "Commit Early, Commit Often" is a great motto.
 * Check for unnecessary whitespace with `git diff --check` before committing.
@@ -43,16 +43,60 @@ Please familiarize yourself with the [documentation](http://docs.churchcrm.io/en
 
 ### General Code Formatting
 
-*  We represent "tab" as 2 spaces.  We have unit tests to ensure that the code style stays clean.  Please configure your editor accordingly.
+*  We use [editorconfig](http://editorconfig.org/) to normalize code styling.
+*  Not all code styles are supported for normalization within editorconfig, so please refer to the list below
+*  All files use LF (Unix) line endings.  CI Tests will fail for any PR containing CRLF or CR line endings.
 
-### HTML
+####  Tabs and Indents
+* All tabs are represented as spaces
+* A single "tab" is expanded to 2 spaces
 
-*  Please ensure all HTML nodes are indented appropriately
+#### Alignment 
+* A new line should follow the following clauses:
+    * else
+    * elseif
+    * while
+    * finally
+    * catch
+* New lines should not follow class or scope definitions like "class", "public", or "private" 
+
+#### Braces
+* All braces should be on a new line
+    * Class definitions
+    * Method declarations
+    * if, else, elseif
+    * for, foreach
+    * while
+    * do 
+    * switch 
+    * try, catch, finally
+
+#### Spaces 
+* A spaces should occur:
+    * before the parentheses in the following statements:
+        * if, elseif
+        * for, foreach
+        * while
+        * catch
+        * switch
+    * before and after the following statements:
+        * Binary operators ( < > == )
+        * Ternary Operators ( $b ? $a : $b )
+        * String Concatenation Operator ' . '
+        * Key => Value Operator
+        * Assignment Operator ($b = 5)
+    * After
+        * Comma
+        * Semicolon
+        * Type-casts
+        * Short PHP Tag
+    * Before
+        * Close PHP Tag
+
 
 ### PHP Tags
 
-* We don't use short tags.
-* If you find any, please replace them
+* We don't use PHP short tags
 * We do use <?= in place of <?php echo.
 
 ### JavaScript
