@@ -41,7 +41,7 @@ global $sPageTitle, $sRootPath;
     ?><title>ChurchCRM: <?= $sPageTitle ?></title><?php
 }
 
-function Header_error_modal()
+function Header_modals()
 {
 ?>
     <!-- API Call Error Modal -->
@@ -63,7 +63,48 @@ function Header_error_modal()
             </div>
         </div>
     </div>
-    <!-- End Delete Confirm Modal -->
+    <!-- End API Call Error Modal -->
+    
+    <!-- Issue Report Modal -->
+    <div id="IssueReportModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <form name="issueReport">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Issue Report!</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-xl-3">
+                       <label for="issueTitle">Enter a Title for your bug / feature report: </label>
+                      </div>
+                      <div class="col-xl-3">
+                       <input type="text" name="issueTitle"></input>
+                      </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-xl-3">
+                        <label for="issueDescription">What were you doing when you noticed the bug / feature opportunity?</label>
+                       </div>
+                       <div class="col-xl-3">
+                        <textarea rows="10" cols="50" name="issueDescription"></textarea>
+                       </div>
+                    </div>
+                  </div>
+                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="submitIssue">Submit</button>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Issue Report Modal -->
+    
 <?php
 }
 
@@ -74,7 +115,7 @@ function Header_body_scripts()
 
     checkAllowedURL();
  ?>
-
+    <script type="text/javascript" src="<?= $sRootPath ?>/skin/js/IssueReporter.js" type="text/javascript"></script>
     <script type="text/javascript" src="<?= $sRootPath ?>/Include/jscalendar/calendar.js"></script>
     <script type="text/javascript" src="<?= $sRootPath ?>/Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
 
@@ -390,6 +431,11 @@ function Header_body_menu()
                     <li class="hidden-xxs">
                         <a href="http://docs.churchcrm.io" target="_blank">
                             <i class="fa fa-support"></i>
+                        </a>
+                    </li>
+                    <li class="hidden-xxs">
+                      <a href="#" data-toggle="modal" data-target="#IssueReportModal">
+                            <i class="fa fa-bug"></i>
                         </a>
                     </li>
                     <li class="hidden-xxs">

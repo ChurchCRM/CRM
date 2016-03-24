@@ -71,7 +71,7 @@ $MenuFirst = 1;
     <!-- Site wrapper -->
     <div class="wrapper">
     <?php
-        Header_error_modal();
+        Header_modals();
         Header_body_scripts();
         Header_body_menu();
     ?>
