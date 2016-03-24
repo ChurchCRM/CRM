@@ -151,18 +151,18 @@ class GroupService {
      */
     function getGroupRoles ( $groupID ) {
         $groupRoles = array ();
-        $sSQL = "SELECT grp_RoleListID FROM group_grp WHERE grp_ID = " . $groupID;
-        $rsTemp = RunQuery ( $sSQL );
+        $sSQL = "SELECT grp_ID, lst_OptionName, lst_OptionID, lst_OptionSequence
+                  FROM group_grp
+                  LEFT JOIN list_lst ON
+                  list_lst.lst_ID = group_grp.grp_RoleListID
+                  WHERE group_grp.grp_ID = " . $groupID;
+        $rsList = RunQuery ( $sSQL );
 
         // Validate that this list ID is really for a group roles list. (for security)
-        if ( mysql_num_rows ( $rsTemp ) == 0 ) {
+        if ( mysql_num_rows ( $rsList ) == 0 ) {
             throw new Exception ( "invalid request" );
         }
 
-        $grp_RoleListID = mysql_fetch_array ( $rsTemp );
-
-        $sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=" . $grp_RoleListID[ 0 ] . " ORDER BY lst_OptionSequence";
-        $rsList = RunQuery ( $sSQL );
         while ( $row = mysql_fetch_assoc ( $rsList ) ) {
             array_push ( $groupRoles,$row );
         }
@@ -509,7 +509,7 @@ class GroupService {
             $values[ 'uri' ] = $this->getViewURI ( $row[ 'grp_ID' ] );
             $values[ 'memberCount' ] = $totalMembers;
             $values[ 'groupCartStatus' ] = $this->checkGroupAgainstCart ( $row[ 'grp_ID' ] );
-            $values[ 'defaultRole' ] = $this->getGroupDefaultRole ( $row[ 'grp_ID' ] );
+            $values[ 'defaultRole' ] = $row[ 'grp_DefaultRole' ];
             $values[ 'roles' ] = $this->getGroupRoles ( $row[ 'grp_ID' ] );
             $values[ 'totalMembers' ] = $totalMembers;
             $values[ 'grp_hasSpecialProps' ] = $row[ 'grp_hasSpecialProps' ] == "true";
