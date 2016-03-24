@@ -16,7 +16,7 @@
  *
  ******************************************************************************/
 
-require "Include/Config.php";
+require 'Include/LoadConfigs.php';
 require "Include/Functions.php";
 
 // Security: user must be allowed to edit records to use this page.

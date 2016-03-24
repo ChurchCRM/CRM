@@ -14,7 +14,7 @@
  ******************************************************************************/
 
 //Include the function library
-require "Include/Config.php";
+require 'Include/LoadConfigs.php';
 require "Include/Functions.php";
 
 $iCanvas05ID = FilterInput($_GET["Canvas05ID"],'int');
