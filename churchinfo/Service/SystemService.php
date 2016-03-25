@@ -245,7 +245,7 @@ class SystemService
       $sSQL = "INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('" . $_SESSION['sSoftwareInstalledVersion'] . "',NOW())";
       RunQuery($sSQL); // False means do not stop on error
       //TODO upgrade script
-      $this->rebuildMenus();
+      $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
       $this->playbackSQLtoDatabase($root . "/mysql/upgrade/1.2.14-2.0.0.sql");
       return "Upgraded";
     }
@@ -256,7 +256,7 @@ class SystemService
       $sSQL = "INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('" . $_SESSION['sSoftwareInstalledVersion'] . "',NOW())";
       RunQuery($sSQL); // False means do not stop on error
       //TODO upgrade script
-      $this->rebuildMenus();
+      $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
       $this->playbackSQLtoDatabase($root . "/mysql/upgrade/1.3.0-2.0.0.sql");
       return "Upgraded";
     }
