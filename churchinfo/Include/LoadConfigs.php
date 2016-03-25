@@ -25,8 +25,7 @@
 *
 *  http://www.gnu.org/licenses
 *
-*  This file best viewed in a text editor with tabs stops set to 4 characters.
-*  Please configure your editor to use soft tabs (4 spaces for a tab) instead
+*  Please configure your editor to use soft tabs (2 spaces for a tab) instead
 *  of hard tab characters.
 *
 ******************************************************************************/
@@ -38,7 +37,8 @@ if (!file_exists('Include/Config.php'))
 else
   require_once 'Include/Config.php';
 
-if (!function_exists("mysql_failure")) {
+if (!function_exists("mysql_failure"))
+{
   function mysql_failure($message)
   {
     require("Include/HeaderNotLoggedIn.php");
@@ -66,7 +66,8 @@ or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE
 $sql = "SHOW TABLES FROM `$sDATABASE`";
 $tablecheck = mysql_num_rows(mysql_query($sql));
 
-if (!$tablecheck) {
+if (!$tablecheck)
+{
   mysql_failure("There are no tables installed in your database. Please run the migration script in <strong>mysql/install/install.sql</strong>.");
 }
 
@@ -81,7 +82,8 @@ $sDocumentRoot = dirname(dirname(__FILE__));
 
 $version = mysql_fetch_row(mysql_query("SELECT version()"));
 
-if (substr($version[0], 0, 3) >= "4.1") {
+if (substr($version[0], 0, 3) >= "4.1")
+{
   mysql_query("SET NAMES 'utf8'");
 }
 
@@ -90,13 +92,17 @@ if (substr($version[0], 0, 3) >= "4.1") {
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
   . "FROM config_cfg WHERE cfg_section='General'";
 $rsConfig = mysql_query($sSQL);         // Can't use RunQuery -- not defined yet
-if ($rsConfig) {
-  while (list($cfg_name, $value) = mysql_fetch_row($rsConfig)) {
+if ($rsConfig)
+{
+  while (list($cfg_name, $value) = mysql_fetch_row($rsConfig))
+  {
     $$cfg_name = $value;
   }
 }
 
-if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
+// Not set on Login.php
+if (isset($_SESSION['iUserID']))
+{
   // Load user variables from user config table.
   // **************************************************
   $sSQL = "SELECT ucfg_name, ucfg_value AS value "
@@ -114,25 +120,24 @@ $sMetaRefresh = '';  // Initialize to empty
 
 require_once("winlocalelist.php");
 
-if (!function_exists("stripos")) {
+if (!function_exists("stripos"))
+{
   function stripos($str, $needle)
   {
     return strpos(strtolower($str), strtolower($needle));
   }
 }
 
-if (!(stripos(php_uname('s'), "windows") === false)) {
-//  $sLanguage = $lang_map_windows[strtolower($sLanguage)];
+if (!(stripos(php_uname('s'), "windows") === false))
   $sLang_Code = $lang_map_windows[strtolower($sLanguage)];
-} else {
+else
   $sLang_Code = $sLanguage;
-}
+
 putenv("LANG=$sLang_Code");
 setlocale(LC_ALL, $sLang_Code, $sLang_Code . ".utf8", $sLang_Code . ".UTF8", $sLang_Code . ".utf-8", $sLang_Code . ".UTF-8");
 
-if (isset($sTimeZone)) {
+if (isset($sTimeZone))
   date_default_timezone_set($sTimeZone);
-}
 
 // Get numeric and monetary locale settings.
 $aLocaleInfo = localeconv();
@@ -141,12 +146,14 @@ $aLocaleInfo = localeconv();
 setlocale(LC_NUMERIC, 'C');
 
 // patch some missing data for Italian.  This shouldn't be necessary!
-if ($sLanguage == 'it_IT') {
+if ($sLanguage == 'it_IT')
+{
   $aLocaleInfo['thousands_sep'] = '.';
   $aLocaleInfo['frac_digits'] = '2';
 }
 
-if (function_exists('bindtextdomain')) {
+if (function_exists('bindtextdomain'))
+{
   $domain = 'messages';
 
   $sLocaleDir = 'locale';
@@ -156,8 +163,11 @@ if (function_exists('bindtextdomain')) {
   bind_textdomain_codeset($domain, 'UTF-8');
   bindtextdomain($domain, $sLocaleDir);
   textdomain($domain);
-} else {
-  if ($sLanguage != 'en_US') {
+}
+else
+{
+  if ($sLanguage != 'en_US')
+  {
     // PHP array version of the l18n strings
     $sLocaleMessages = "locale/$sLanguage/LC_MESSAGES/messages.php";
 
@@ -176,7 +186,9 @@ if (function_exists('bindtextdomain')) {
       else
         return $text;
     }
-  } else {
+  }
+  else
+  {
     // dummy gettext function
     function gettext($text)
     {
