@@ -7,13 +7,14 @@ $birthDays = $personService->getBirthDays();
 $year = date("Y");
 
 foreach ($birthDays as $birthDay) {
-  $event = "{ title: '". $birthDay["firstName"] . " " . $birthDay["lastName"]  ."',
-              start: '". $year. "-". $birthDay["birthMonth"]. "-". $birthDay["birthDay"]. "',
-              url: '".$birthDay["uri"]."',
-              backgroundColor: '#f56954', //red
-              borderColor: '#f56954', //red
-              allDay: true
-            }";
+  $event = array(
+             "title" => $birthDay["firstName"] . " " . $birthDay["lastName"],
+             "start" => $year . "-" . $birthDay["birthMonth"] . "-" . $birthDay["birthDay"],
+             "url"   => $birthDay["uri"],
+             "backgroundColor" => '#f56954', //red
+             "borderColor"     => '#f56954', //red
+             "allDay" => true
+           );
 
   array_push($events, $event);
 }
@@ -70,9 +71,7 @@ require "Include/Header.php"; ?>
         day: 'day'
       },
       //Random default events
-      events: [
-        <?= implode(",", $events) ?>
-      ]
+      events: <?= json_encode($events) ?>
     });
  });
 </script>
