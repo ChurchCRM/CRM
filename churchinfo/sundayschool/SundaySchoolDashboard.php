@@ -32,119 +32,121 @@ $rsKidsMissing = RunQuery($sSQL);
 $sPageTitle = gettext("Sunday School Class List");
 require "../Include/Header.php";
 
- ?>
+?>
 
 <div class="box">
-	<div class="box-header">
-		<h3 class="box-title">Current Sunday School Kids</h3>
-	</div><!-- /.box-header -->
-	<div class="box-body table-responsive">
-		<table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
-			<thead>
-			<tr>
-				<th></th>
-				<th>Class</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Birth Date</th>
-				<th>Age</th>
-				<th>Mobile</th>
-				<th>Home Phone</th>
-				<th>Home Address</th>
-				<th>Dad Name</th>
-				<th>Dad Mobile</th>
-				<th>Dad Email</th>
-				<th>Mom Name</th>
-				<th>Mom Mobile</th>
-				<th>Mom Email</th>
-			</tr>
-			</thead>
-			<tbody>
-		<?php
+  <div class="box-header">
+    <h3 class="box-title">Current Sunday School Kids</h3>
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body table-responsive">
+    <table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Class</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Birth Date</th>
+        <th>Age</th>
+        <th>Mobile</th>
+        <th>Home Phone</th>
+        <th>Home Address</th>
+        <th>Dad Name</th>
+        <th>Dad Mobile</th>
+        <th>Dad Email</th>
+        <th>Mom Name</th>
+        <th>Mom Mobile</th>
+        <th>Mom Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <?php
 
-		while ($aRow = mysql_fetch_array($rsKids)) {
-			extract($aRow);
-			$birthDate = "";
-			if ($birthYear != "") {
-				$birthDate = $birthDay."/".$birthMonth."/".$birthYear;
-			}
+      while ($aRow = mysql_fetch_array($rsKids)) {
+        extract($aRow);
+        $birthDate = "";
+        if ($birthYear != "") {
+          $birthDate = $birthDay . "/" . $birthMonth . "/" . $birthYear;
+        }
 
-			echo "<tr>";
-			echo "<td><a href='../PersonView.php?PersonID=".$kidId."'>";
-			echo "	<span class=\"fa-stack\">";
-			echo "	<i class=\"fa fa-square fa-stack-2x\"></i>";
-			echo "	<i class=\"fa fa-search-plus fa-stack-1x fa-inverse\"></i>";
-			echo "	</span></a></td>";
-			echo "<td>".$sundayschoolClass."</td>";
-			echo "<td>".$firstName."</td>";
-			echo "<td>".$LastName."</td>";
-			echo "<td>".$birthDate."</td>";
-			echo "<td>".FormatAge($birthMonth,$birthDay, $birthYear, "")."</td>";
-			echo "<td>".$mobilePhone."</td>";
-			echo "<td>".$homePhone."</td>";
-			echo "<td>".$Address1." ".$Address2." ".$city." ".$state." ".$zip."</td>";
-			echo "<td>".$dadFirstName." ".$dadLastName."</td>";
-			echo "<td>".$dadCellPhone."</td>";
-			echo "<td>".$dadEmail."</td>";
-			echo "<td>".$momFirstName." ".$momLastName."</td>";
-			echo "<td>".$momCellPhone."</td>";
-			echo "<td>".$momEmail."</td>";
-			echo "</tr>";
-			}
-		?>
-			</tbody>
-		</table>
-	</div>
-	<div class="box-footer">
-		<a href="SundaySchoolClassListExport.php" role="button" class="btn btn-info"><i class="glyphicon glyphicon-export"></i> Export to CSV</a>
-	</div>
+        echo "<tr>";
+        echo "<td><a href='../PersonView.php?PersonID=" . $kidId . "'>";
+        echo "	<span class=\"fa-stack\">";
+        echo "	<i class=\"fa fa-square fa-stack-2x\"></i>";
+        echo "	<i class=\"fa fa-search-plus fa-stack-1x fa-inverse\"></i>";
+        echo "	</span></a></td>";
+        echo "<td>" . $sundayschoolClass . "</td>";
+        echo "<td>" . $firstName . "</td>";
+        echo "<td>" . $LastName . "</td>";
+        echo "<td>" . $birthDate . "</td>";
+        echo "<td>" . FormatAge($birthMonth, $birthDay, $birthYear, "") . "</td>";
+        echo "<td>" . $mobilePhone . "</td>";
+        echo "<td>" . $homePhone . "</td>";
+        echo "<td>" . $Address1 . " " . $Address2 . " " . $city . " " . $state . " " . $zip . "</td>";
+        echo "<td>" . $dadFirstName . " " . $dadLastName . "</td>";
+        echo "<td>" . $dadCellPhone . "</td>";
+        echo "<td>" . $dadEmail . "</td>";
+        echo "<td>" . $momFirstName . " " . $momLastName . "</td>";
+        echo "<td>" . $momCellPhone . "</td>";
+        echo "<td>" . $momEmail . "</td>";
+        echo "</tr>";
+      }
+      ?>
+      </tbody>
+    </table>
+  </div>
+  <div class="box-footer">
+    <a href="SundaySchoolClassListExport.php" role="button" class="btn btn-info"><i class="glyphicon glyphicon-export"></i> Export to CSV</a>
+  </div>
 </div>
 
 
 <div class="box">
-	<div class="box-header">
-		<h3 class="box-title">Kids not in a Sunday School Class</h3>
-	</div><!-- /.box-header -->
-	<div class="box-body table-responsive">
-		<table id="sundayschoolMissing" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
-			<thead>
-			<tr>
-				<th></th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Birth Date</th>
-				<th>Age</th>
-				<th>Home Address</th>
-			</tr>
-			</thead>
-			<tbody>
-			<?php
+  <div class="box-header">
+    <h3 class="box-title">Kids not in a Sunday School Class</h3>
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body table-responsive">
+    <table id="sundayschoolMissing" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+      <thead>
+      <tr>
+        <th></th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Birth Date</th>
+        <th>Age</th>
+        <th>Home Address</th>
+      </tr>
+      </thead>
+      <tbody>
+      <?php
 
-			while ($aRow = mysql_fetch_array($rsKidsMissing)) {
-				extract($aRow);
-				$birthDate = "";
-				if ($birthYear != "") {
-					$birthDate = $birthDay."/".$birthMonth."/".$birthYear;
-				}
+      while ($aRow = mysql_fetch_array($rsKidsMissing)) {
+        extract($aRow);
+        $birthDate = "";
+        if ($birthYear != "") {
+          $birthDate = $birthDay . "/" . $birthMonth . "/" . $birthYear;
+        }
 
-				echo "<tr>";
-				echo "<td><a href='../PersonView.php?PersonID=".$kidId."'>";
-				echo "	<span class=\"fa-stack\">";
-				echo "	<i class=\"fa fa-square fa-stack-2x\"></i>";
-				echo "	<i class=\"fa fa-search-plus fa-stack-1x fa-inverse\"></i>";
-				echo "	</span></a></td>";
-				echo "<td>".$firstName."</td>";
-				echo "<td>".$LastName."</td>";
-				echo "<td>".$birthDate."</td>";
-				echo "<td>".FormatAge($birthMonth,$birthDay, $birthYear, "")."</td>";
-				echo "<td>".$Address1." ".$Address2." ".$city." ".$state." ".$zip."</td>";
-				echo "</tr>";
-			}
+        echo "<tr>";
+        echo "<td><a href='../PersonView.php?PersonID=" . $kidId . "'>";
+        echo "	<span class=\"fa-stack\">";
+        echo "	<i class=\"fa fa-square fa-stack-2x\"></i>";
+        echo "	<i class=\"fa fa-search-plus fa-stack-1x fa-inverse\"></i>";
+        echo "	</span></a></td>";
+        echo "<td>" . $firstName . "</td>";
+        echo "<td>" . $LastName . "</td>";
+        echo "<td>" . $birthDate . "</td>";
+        echo "<td>" . FormatAge($birthMonth, $birthDay, $birthYear, "") . "</td>";
+        echo "<td>" . $Address1 . " " . $Address2 . " " . $city . " " . $state . " " . $zip . "</td>";
+        echo "</tr>";
+      }
 
-			?>
-			</tbody>
-		</table>
-	</div>
+      ?>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <?php require "../Include/Footer.php" ?>

@@ -1,11 +1,11 @@
 <?php
 /*******************************************************************************
-*
-*  filename    : Include/Config.php
-*  website     : http://www.churchdb.org
-*  description : global configuration
-*
-******************************************************************************/
+ *
+ *  filename    : Include/Config.php
+ *  website     : http://www.churchdb.org
+ *  description : global configuration
+ *
+ ******************************************************************************/
 
 // Database connection constants
 $sSERVERNAME = 'localhost';
@@ -63,5 +63,5 @@ error_reporting(E_ERROR);
 //
 // Absolute path must be specified since this file is called
 // from scripts located in other directories
-require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . 'LoadConfigs.php');
+require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'LoadConfigs.php');
 ?>
