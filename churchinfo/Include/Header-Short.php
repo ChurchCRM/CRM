@@ -15,7 +15,7 @@
  *
  ******************************************************************************/
 
- require_once('Header-function.php');
+require_once('Header-function.php');
 
 // Turn ON output buffering
 ob_start();
@@ -26,19 +26,20 @@ ob_start();
 <html>
 
 <head>
-<?php
-	require 'Header-HTML-Scripts.php';
-	Header_head_metatag();
-?>
+  <?php
+  require 'Header-HTML-Scripts.php';
+  Header_head_metatag();
+  ?>
 </head>
 
 <body>
 
 <table height="100%" width="100%" border="0" cellpadding="5" cellspacing="0" align="center">
-	<tr>
-		<td valign="top" width="100%" align="center">
-			<table width="98%" border="0">
-				<tr>
-					<td valign="top">
-						<br>
-						<p class="PageTitle"><?= $sPageTitle ?></p>						
+  <tr>
+    <td valign="top" width="100%" align="center">
+      <table width="98%" border="0">
+        <tr>
+          <td valign="top">
+            <br>
+
+            <p class="PageTitle"><?= $sPageTitle ?></p>
