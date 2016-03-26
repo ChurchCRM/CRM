@@ -1,60 +1,62 @@
 <?php
 /*******************************************************************************
-*
-*  filename    : Include/LoadConfigs.php
-*  website     : http://www.churchcrm.io
-*  description : global configuration
-*                   The code in this file used to be part of part of Config.php
-*
-*  Copyright 2001-2005 Phillip Hullquist, Deane Barker, Chris Gebhardt,
-*                      Michael Wilt, Timothy Dearborn
-*
-*
-*  LICENSE:
-*  (C) Free Software Foundation, Inc.
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 3 of the License, or
-*  (at your option) any later version.
-*
-*  This program is distributed in the hope that it will be useful, but
-*  WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-*  General Public License for more details.
-*
-*  http://www.gnu.org/licenses
-*
-*  This file best viewed in a text editor with tabs stops set to 4 characters.
-*  Please configure your editor to use soft tabs (4 spaces for a tab) instead
-*  of hard tab characters.
-*
-******************************************************************************/
+ *
+ *  filename    : Include/LoadConfigs.php
+ *  website     : http://www.churchcrm.io
+ *  description : global configuration
+ *                   The code in this file used to be part of part of Config.php
+ *
+ *  Copyright 2001-2005 Phillip Hullquist, Deane Barker, Chris Gebhardt,
+ *                      Michael Wilt, Timothy Dearborn
+ *
+ *
+ *  LICENSE:
+ *  (C) Free Software Foundation, Inc.
+ *
+ *  ChurchCRM is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful, but
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ *  General Public License for more details.
+ *
+ *  http://www.gnu.org/licenses
+ *
+ *  This file best viewed in a text editor with tabs stops set to 4 characters.
+ *  Please configure your editor to use soft tabs (4 spaces for a tab) instead
+ *  of hard tab characters.
+ *
+ ******************************************************************************/
 if (!function_exists("mysql_failure")) {
-    function mysql_failure($message) {
-      require ("Include/HeaderNotLoggedIn.php");
-      ?>
-        <div class='container'>
-          <h3>ChurchCRM – Setup failure</h3>
-          <div class='alert alert-danger text-center' style='margin-top: 20px;'>
-            <?= $message ?>
-          </div>
-        </div>
-      <?php
-      require ("Include/FooterNotLoggedIn.php");
-      exit();
-    }
+  function mysql_failure($message)
+  {
+    require("Include/HeaderNotLoggedIn.php");
+    ?>
+    <div class='container'>
+      <h3>ChurchCRM – Setup failure</h3>
+
+      <div class='alert alert-danger text-center' style='margin-top: 20px;'>
+        <?= $message ?>
+      </div>
+    </div>
+    <?php
+    require("Include/FooterNotLoggedIn.php");
+    exit();
+  }
 }
 
 // Establish the database connection
-$cnInfoCentral = mysql_connect($sSERVERNAME,$sUSER,$sPASSWORD)
-  or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" .$sUSER . "</strong>. Please check the settings in <strong>include/Config.php</strong>.");
+$cnInfoCentral = mysql_connect($sSERVERNAME, $sUSER, $sPASSWORD)
+or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>include/Config.php</strong>.");
 
 mysql_select_db($sDATABASE)
-  or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>include/Config.php</strong>.");
+or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>include/Config.php</strong>.");
 
 $sql = "SHOW TABLES FROM `$sDATABASE`";
-$tablecheck = mysql_num_rows( mysql_query($sql) );
+$tablecheck = mysql_num_rows(mysql_query($sql));
 
 if (!$tablecheck) {
   mysql_failure("There are no tables installed in your database. Please run the migration script in <strong>mysql/install/install.sql</strong>.");
@@ -71,33 +73,33 @@ $sDocumentRoot = dirname(dirname(__FILE__));
 
 $version = mysql_fetch_row(mysql_query("SELECT version()"));
 
-if (substr($version[0],0,3) >= "4.1") {
-    mysql_query("SET NAMES 'utf8'");
+if (substr($version[0], 0, 3) >= "4.1") {
+  mysql_query("SET NAMES 'utf8'");
 }
 
 // Read values from config table into local variables
 // **************************************************
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
-      . "FROM config_cfg WHERE cfg_section='General'";
+  . "FROM config_cfg WHERE cfg_section='General'";
 $rsConfig = mysql_query($sSQL);         // Can't use RunQuery -- not defined yet
 if ($rsConfig) {
-    while (list($cfg_name, $value) = mysql_fetch_row($rsConfig)) {
-        $$cfg_name = $value;
-    }
+  while (list($cfg_name, $value) = mysql_fetch_row($rsConfig)) {
+    $$cfg_name = $value;
+  }
 }
 
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
-    // Load user variables from user config table.
-    // **************************************************
-    $sSQL = "SELECT ucfg_name, ucfg_value AS value "
-          . "FROM userconfig_ucfg WHERE ucfg_per_ID='".$_SESSION['iUserID']."'";
-    $rsConfig = mysql_query($sSQL);     // Can't use RunQuery -- not defined yet
-    if ($rsConfig) {
-        while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
-            $$ucfg_name = $value;
-                $_SESSION[$ucfg_name] = $value;
-        }
+  // Load user variables from user config table.
+  // **************************************************
+  $sSQL = "SELECT ucfg_name, ucfg_value AS value "
+    . "FROM userconfig_ucfg WHERE ucfg_per_ID='" . $_SESSION['iUserID'] . "'";
+  $rsConfig = mysql_query($sSQL);     // Can't use RunQuery -- not defined yet
+  if ($rsConfig) {
+    while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
+      $$ucfg_name = $value;
+      $_SESSION[$ucfg_name] = $value;
     }
+  }
 }
 
 $sMetaRefresh = '';  // Initialize to empty
@@ -105,22 +107,23 @@ $sMetaRefresh = '';  // Initialize to empty
 require_once("winlocalelist.php");
 
 if (!function_exists("stripos")) {
-  function stripos($str,$needle) {
-   return strpos(strtolower($str),strtolower($needle));
+  function stripos($str, $needle)
+  {
+    return strpos(strtolower($str), strtolower($needle));
   }
 }
 
 if (!(stripos(php_uname('s'), "windows") === false)) {
 //  $sLanguage = $lang_map_windows[strtolower($sLanguage)];
-    $sLang_Code = $lang_map_windows[strtolower($sLanguage)];
+  $sLang_Code = $lang_map_windows[strtolower($sLanguage)];
 } else {
-    $sLang_Code = $sLanguage;
+  $sLang_Code = $sLanguage;
 }
 putenv("LANG=$sLang_Code");
-setlocale(LC_ALL, $sLang_Code, $sLang_Code.".utf8", $sLang_Code.".UTF8", $sLang_Code.".utf-8", $sLang_Code.".UTF-8");
+setlocale(LC_ALL, $sLang_Code, $sLang_Code . ".utf8", $sLang_Code . ".UTF8", $sLang_Code . ".utf-8", $sLang_Code . ".UTF-8");
 
 if (isset($sTimeZone)) {
-    date_default_timezone_set($sTimeZone);
+  date_default_timezone_set($sTimeZone);
 }
 
 // Get numeric and monetary locale settings.
@@ -130,56 +133,52 @@ $aLocaleInfo = localeconv();
 setlocale(LC_NUMERIC, 'C');
 
 // patch some missing data for Italian.  This shouldn't be necessary!
-if ($sLanguage == 'it_IT')
-{
-    $aLocaleInfo['thousands_sep'] = '.';
-    $aLocaleInfo['frac_digits'] = '2';
+if ($sLanguage == 'it_IT') {
+  $aLocaleInfo['thousands_sep'] = '.';
+  $aLocaleInfo['frac_digits'] = '2';
 }
 
-if (function_exists('bindtextdomain'))
-{
-    $domain = 'messages';
+if (function_exists('bindtextdomain')) {
+  $domain = 'messages';
 
-    $sLocaleDir = 'locale';
-    if (!is_dir($sLocaleDir))
-        $sLocaleDir = '../' . $sLocaleDir;
+  $sLocaleDir = 'locale';
+  if (!is_dir($sLocaleDir))
+    $sLocaleDir = '../' . $sLocaleDir;
 
-    bind_textdomain_codeset ($domain, 'UTF-8' );
-    bindtextdomain($domain, $sLocaleDir);
-    textdomain($domain);
-}
-else
-{
-    if ($sLanguage != 'en_US')
+  bind_textdomain_codeset($domain, 'UTF-8');
+  bindtextdomain($domain, $sLocaleDir);
+  textdomain($domain);
+} else {
+  if ($sLanguage != 'en_US') {
+    // PHP array version of the l18n strings
+    $sLocaleMessages = "locale/$sLanguage/LC_MESSAGES/messages.php";
+
+    if (!is_readable($sLocaleMessages))
+      $sLocaleMessages = "../$sLocaleMessages";
+
+    require($sLocaleMessages);
+
+    // replacement implementation of gettext for broken installs
+    function gettext($text)
     {
-        // PHP array version of the l18n strings
-        $sLocaleMessages = "locale/$sLanguage/LC_MESSAGES/messages.php";
+      global $locale;
 
-        if (!is_readable($sLocaleMessages))
-            $sLocaleMessages = "../$sLocaleMessages";
-
-        require ($sLocaleMessages);
-
-        // replacement implementation of gettext for broken installs
-        function gettext($text)
-        {
-            global $locale;
-
-            if (!empty($locale[$text]))
-                return $locale[$text];
-            else
-                return $text;
-        }
+      if (!empty($locale[$text]))
+        return $locale[$text];
+      else
+        return $text;
     }
-    else
+  } else {
+    // dummy gettext function
+    function gettext($text)
     {
-        // dummy gettext function
-        function gettext($text)
-        {
-            return $text;
-        }
+      return $text;
     }
+  }
 
-    function _($text) { return gettext($text); }
+  function _($text)
+  {
+    return gettext($text);
+  }
 }
 ?>

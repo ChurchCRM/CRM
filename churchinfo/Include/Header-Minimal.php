@@ -21,12 +21,10 @@
 <html>
 
 <head>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 
-<?php
-	 	require 'Header-HTML-Scripts.php';
-?>
+  <?php require 'Header-HTML-Scripts.php'; ?>
 </head>
 
 <body>
