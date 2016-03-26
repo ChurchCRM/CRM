@@ -5,7 +5,7 @@
 	<option value="Canada"<?php if ($sCountry == "Canada") { echo " selected"; } ?>>Canada
 	<option value="Afghanistan"<?php if ($sCountry == "Afghanistan") { echo " selected"; } ?>>Afghanistan
 	<option value="Albania"<?php if ($sCountry == "Albania") { echo " selected"; } ?>>Albania
-	<option value="Algeria "<?php if ($sCountry == "Algeria") { echo " selected"; } ?>>Algeria 
+	<option value="Algeria "<?php if ($sCountry == "Algeria") { echo " selected"; } ?>>Algeria
 	<option value="Andorra"<?php if ($sCountry == "Andorra") { echo " selected"; } ?>>Andorra
 	<option value="Angola"<?php if ($sCountry == "Angola") { echo " selected"; } ?>>Angola
 	<option value="Anguilla/St. Kitt"<?php if ($sCountry == "Anguilla/St. Kitt") { echo " selected"; } ?>>Anguilla/St. Kitt
@@ -47,7 +47,7 @@
 	<option value="China"<?php if ($sCountry == "China") { echo " selected"; } ?>>China
 	<option value="Christmas Island"<?php if ($sCountry == "Christmas Island") { echo " selected"; } ?>>Christmas Island
 	<option value="Cocos/Keeling Island"<?php if ($sCountry == "Cocos/Keeling Island") { echo " selected"; } ?>>Cocos/Keeling Island
-	<option value="Colombia "<?php if ($sCountry == "Colombia") { echo " selected"; } ?>>Colombia 
+	<option value="Colombia "<?php if ($sCountry == "Colombia") { echo " selected"; } ?>>Colombia
 	<option value="Comoros Island"<?php if ($sCountry == "Comoros Island") { echo " selected"; } ?>>Comoros Island
 	<option value="Congo Brazzavill"<?php if ($sCountry == "Congo Brazzavill") { echo " selected"; } ?>>Congo Brazzavill
 	<option value="Cook Island"<?php if ($sCountry == "Cook Island") { echo " selected"; } ?>>Cook Island

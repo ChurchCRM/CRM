@@ -54,12 +54,12 @@ if (isset ($_POST['Action'])) {
 	  $theID=$_POST["theID"];
 
 	  $sSQL = "INSERT INTO event_types (type_name, type_defstarttime, type_defrecurtype, type_defrecurDOW, type_defrecurDOM, type_defrecurDOY)
-             VALUES ('" . mysql_real_escape_string($eName)  . "',
-                     '" . mysql_real_escape_string($eTime)  . "',
-                     '" . mysql_real_escape_string($eRecur) . "',
-                     '" . mysql_real_escape_string($eDOW)   . "',
-                     '" . mysql_real_escape_string($eDOM)   . "',
-                     '" . mysql_real_escape_string($eDOY)   . "')";
+             VALUES ('" . FilterInput($eName)  . "',
+                     '" . FilterInput($eTime)  . "',
+                     '" . FilterInput($eRecur) . "',
+                     '" . FilterInput($eDOW)   . "',
+                     '" . FilterInput($eDOM)   . "',
+                     '" . FilterInput($eDOY)   . "')";
 
 	  RunQuery($sSQL);
     $theID = mysql_insert_id();
@@ -67,7 +67,7 @@ if (isset ($_POST['Action'])) {
 	  for($j=0; $j<$eCntNum; $j++)
 	  {
 	    $cCnt = ltrim(rtrim($eCntArray[$j]));
-	    $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('$theID','$cCnt') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
+	    $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('".FilterInput($theID)."','".FilterInput($cCnt)."') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
 	    RunQuery($sSQL);
 	  }
     Redirect("EventNames.php"); // clear POST
@@ -75,9 +75,9 @@ if (isset ($_POST['Action'])) {
 
 	case "DELETE":
 	  $theID = $_POST["theID"];
-	  $sSQL = "DELETE FROM event_types WHERE type_id='$theID' LIMIT 1";
+	  $sSQL = "DELETE FROM event_types WHERE type_id='" . FilterInput($theID) . "' LIMIT 1";
 	  RunQuery($sSQL);
-	  $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$theID'";
+	  $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='" . FilterInput($theID) . "'";
 	  RunQuery($sSQL);
 	  $theID='';
 	  $_POST['Action']='';
