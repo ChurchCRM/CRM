@@ -26,7 +26,8 @@ class PersonService
     return "{id: $id, fName: $per_FirstName}";
   }
 
-  function getBirthDays() {
+  function getBirthDays()
+  {
     //return $this->personQuery->findPK($id);
     $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_BirthMonth, per_BirthDay FROM person_per';
     $result = mysql_query($sSQL);

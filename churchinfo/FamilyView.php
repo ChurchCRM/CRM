@@ -258,6 +258,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                 <?php } ?>
                 <a class="btn btn-app" href="Reports/ConfirmReport.php?familyId=<?= $iFamilyID ?>"><i class="fa fa-download"></i> Download PDF Report</a>
                 <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-email-pdf"><i class="fa fa-send"></i> Email PDF Report</a>
+                <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i class="fa fa-cart-plus"></i> Add All Family Members to Cart</a>
             </div>
         </div>
     </div>
