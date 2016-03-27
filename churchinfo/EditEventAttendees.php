@@ -2,7 +2,7 @@
 //*******************************************************************************
 
 
-require "Include/Config.php";
+require 'Include/LoadConfigs.php';
 require "Include/Functions.php";
 require "Include/Header.php";
 

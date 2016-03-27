@@ -13,7 +13,7 @@
 *
 ******************************************************************************/
 
-require "../Include/Config.php";
+require "../Include/LoadConfigs.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 require "../Include/ReportConfig.php";
@@ -384,8 +384,8 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 }
 
 if ($_GET["familyId"]) {
-	header("Location: ".$_SESSION['sRootPath']."/FamilyView.php?FamilyID=" . $_GET["familyId"]."&PDFEmailed=".$familyEmailSent);
+  Redirect("FamilyView.php?FamilyID=" . $_GET["familyId"]."&PDFEmailed=".$familyEmailSent);
 } else {
-	header("Location: ".$_SESSION['sRootPath']."/FamilyList.php&AllPDFsEmailed=".$familiesEmailed);
+  Redirect("FamilyList.php?AllPDFsEmailed=".$familiesEmailed);
 }
 ?>

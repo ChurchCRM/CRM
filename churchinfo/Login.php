@@ -39,7 +39,7 @@ if (ini_get('register_globals'))
 }
 
 // Include the function library
-require 'Include/Config.php';
+require 'Include/LoadConfigs.php';
 $bSuppressSessionTests = TRUE;
 require 'Include/Functions.php';
 // Initialize the variables
