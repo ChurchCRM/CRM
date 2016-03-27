@@ -28,16 +28,6 @@
  *
  ******************************************************************************/
 
-// Show disable message if register_globals are turned on.
-if (ini_get('register_globals'))
-{
-    echo "<div class='callout callout-danger'><b>Church</b>CRM will not operate with PHP's register_globals option turned on.<br>";
-    echo 'This is for your own protection as the use of this setting could entirely undermine <br>';
-    echo 'all security.  You need to either turn off register_globals in your php.ini or else<br>';
-    echo 'configure your web server to turn off register_globals for the ChurchInfo directory.</div>';
-    exit;
-}
-
 // Include the function library
 require 'Include/Config.php';
 $bSuppressSessionTests = TRUE;
