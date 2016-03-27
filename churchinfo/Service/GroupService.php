@@ -1,4 +1,5 @@
 <?php
+
 require_once "PersonService.php";
 
 class GroupService
@@ -78,9 +79,9 @@ class GroupService
   function addUserToGroup($iGroupID, $iPersonID, $iRoleID)
   {
     //
-// Adds a person to a group with specified role.
-// Returns false if the operation fails. (such as person already in group)
-//
+    // Adds a person to a group with specified role.
+    // Returns false if the operation fails. (such as person already in group)
+    //
     global $cnInfoCentral;
 
     // Was a RoleID passed in?
@@ -163,18 +164,17 @@ class GroupService
 
     // Validate that this list ID is really for a group roles list. (for security)
     if (mysql_num_rows($rsTemp) == 0) {
-      throw new Exception("invalid request");
+      throw new Exception ("invalid request");
     }
 
     $grp_RoleListID = mysql_fetch_array($rsTemp);
 
-    $sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=$grp_RoleListID[0] ORDER BY lst_OptionSequence";
+    $sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=" . $grp_RoleListID[0] . " ORDER BY lst_OptionSequence";
     $rsList = RunQuery($sSQL);
     while ($row = mysql_fetch_assoc($rsList)) {
       array_push($groupRoles, $row);
     }
     return $groupRoles;
-
   }
 
   /**
@@ -192,7 +192,6 @@ class GroupService
                  WHERE group_grp.grp_ID = "' . $groupID . '"
                     AND list_lst.lst_OptionID = ' . $groupRoleID;
     RunQuery($sSQL);
-
   }
 
   function setGroupRoleOrder($groupID, $groupRoleID, $groupRoleOrder)
@@ -204,7 +203,6 @@ class GroupService
                  WHERE group_grp.grp_ID = "' . $groupID . '"
                     AND list_lst.lst_OptionID = ' . $groupRoleID;
     RunQuery($sSQL);
-
   }
 
   function getGroupDefaultRole($groupID)
@@ -250,7 +248,6 @@ class GroupService
 
       //check if we've deleted the old group default role.  If so, reset default to role ID 1
       // Next, if any group members were using the deleted role, reset their role to the group default.
-
       // Reset if default role was just removed.
       $sSQL = "UPDATE group_grp SET grp_DefaultRole = 1 WHERE grp_ID = $groupID AND grp_DefaultRole = $groupRoleID";
       RunQuery($sSQL);
@@ -290,7 +287,7 @@ class GroupService
 
       return $this->getGroupRoles($groupID);
     } else {
-      throw new Exception("You cannont delete the only group");
+      throw new Exception ("You cannont delete the only group");
     }
   }
 
@@ -348,7 +345,6 @@ class GroupService
     $sSQL = 'SELECT COUNT(*) AS iTotalMembers FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = ' . $groupID;
     $rsTotalMembers = mysql_fetch_array(RunQuery($sSQL));
     return $rsTotalMembers[0];
-
   }
 
   function getGroupTypes()
@@ -376,7 +372,6 @@ class GroupService
 
   function setGroupName($groupID, $groupName)
   {
-
 
   }
 
@@ -409,6 +404,9 @@ class GroupService
 
   function createGroup($groupName)
   {
+    if (!$groupName) {   //If there's no group name, throw an exception
+      throw new Exception ("Unable to create a group without a name");
+    }
     //Get a new Role List ID
     $sSQL = "SELECT MAX(lst_ID) FROM list_lst";
     $aTemp = mysql_fetch_array(RunQuery($sSQL));
@@ -417,10 +415,10 @@ class GroupService
     else
       $newListID = 10;
 
-    /*if ($groupData->useGroupSpecificProperties)
-       $sUseProps = 'true';
-    else
-        $sUseProps = 'false';*/
+    /* if ($groupData->useGroupSpecificProperties)
+      $sUseProps = 'true';
+      else
+      $sUseProps = 'false'; */
     //$sSQL = "INSERT INTO group_grp (grp_Name, grp_Type, grp_Description, grp_hasSpecialProps, grp_DefaultRole, grp_RoleListID) VALUES ('" . $groupData->groupName . "', " . $groupData->groupType . ", '" . $groupData->description . "', '" . $sUseProps . "', '1', " . $newListID . ")";
     $sSQL = "INSERT INTO group_grp (grp_Name, grp_DefaultRole, grp_RoleListID) VALUES ('" . mysql_real_escape_string($groupName) . "', '1', " . $newListID . ")";
 
@@ -443,8 +441,6 @@ class GroupService
     }
 
     return $this->getGroups($iGroupID);
-
-
   }
 
   function deleteGroup($iGroupID)
@@ -484,7 +480,6 @@ class GroupService
     //Delete the Group
     $sSQL = "DELETE FROM group_grp WHERE grp_ID = " . $iGroupID;
     RunQuery($sSQL);
-
   }
 
   function updateGroup($groupID, $groupData)
@@ -497,7 +492,7 @@ class GroupService
 
     //Did they enter a Name?
     if (strlen($thisGroup['grp_Name']) < 1) {
-      throw new Exception("You must enter a name");
+      throw new Exception ("You must enter a name");
     }
 
     $sSQL = "UPDATE group_grp SET grp_Name='" . mysql_real_escape_string($thisGroup['grp_Name']) . "', grp_Type='" . $thisGroup['grp_type'] . "', grp_Description='" . mysql_real_escape_string($thisGroup['grp_Description']) . "'";
@@ -535,7 +530,7 @@ class GroupService
       $values['groupCartStatus'] = $this->checkGroupAgainstCart($row['grp_ID']);
       $values['defaultRole'] = $this->getGroupDefaultRole($row['grp_ID']);
       $values['roles'] = $this->getGroupRoles($row['grp_ID']);
-      $values['totalMembers'] = $totalMembers ;
+      $values['totalMembers'] = $totalMembers;
       $values['grp_hasSpecialProps'] = $row['grp_hasSpecialProps'] == "true";
       array_push($return, $values);
     }
@@ -573,7 +568,6 @@ class GroupService
       array_push($members, $person);
     }
     return $members;
-
   }
 
   function checkGroupAgainstCart($groupID)
@@ -584,7 +578,7 @@ class GroupService
     $bAllInCart = TRUE;
     //Loop through the recordset
     foreach ($members as $member) {
-      if (!isset($_SESSION['aPeopleCart']))
+      if (!isset ($_SESSION['aPeopleCart']))
         $bAllInCart = FALSE; // Cart does not exist.  This person is not in cart.
       elseif (!in_array($member['per_ID'], $_SESSION['aPeopleCart'], false))
         $bAllInCart = FALSE; // This person is not in cart.

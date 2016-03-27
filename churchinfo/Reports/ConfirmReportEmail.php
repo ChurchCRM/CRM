@@ -406,12 +406,9 @@ while ($aFam = mysql_fetch_array($rsFamilies))
   }
 }
 
-if ($_GET["familyId"])
-{
-  header("Location: " . $_SESSION['sRootPath'] . "/FamilyView.php?FamilyID=" . $_GET["familyId"] . "&PDFEmailed=" . $familyEmailSent);
-}
-else
-{
-  header("Location: " . $_SESSION['sRootPath'] . "/FamilyList.php?AllPDFsEmailed=" . $familiesEmailed);
+if ($_GET["familyId"]) {
+  Redirect("FamilyView.php?FamilyID=" . $_GET["familyId"]."&PDFEmailed=".$familyEmailSent);
+} else {
+  Redirect("FamilyList.php?AllPDFsEmailed=".$familiesEmailed);
 }
 ?>

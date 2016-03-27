@@ -3,7 +3,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 
 header("Content-type: text/csv");
-header("Content-Disposition: attachment; filename=SundaySchool-".date("Ymd").".csv");
+header("Content-Disposition: attachment; filename=SundaySchool-" . date("Ymd") . ".csv");
 header("Pragma: no-cache");
 header("Expires: 0");
 
@@ -27,20 +27,20 @@ order by grp.grp_Name, fam.fam_Name";
 $rsKids = RunQuery($sSQL);
 
 fputcsv($out, array("Class",
-	"First Name","Last Name", "Birth Date", "Mobile",
-	"Home Phone","Home Address",
-	"Dad Name", "Dad Mobile", "Dad Email" ,
-	"Mom Name", "Mom Mobile", "Mom Email"));
+  "First Name", "Last Name", "Birth Date", "Mobile",
+  "Home Phone", "Home Address",
+  "Dad Name", "Dad Mobile", "Dad Email",
+  "Mom Name", "Mom Mobile", "Mom Email"));
 
 while ($aRow = mysql_fetch_array($rsKids)) {
-	extract($aRow);
-	$birthDate = "";
-	if ($birthYear != "") {
-		$birthDate = $birthDay."/".$birthMonth."/".$birthYear;
-	}
-	fputcsv($out, array($sundayschoolClass,$firstName, $LastName, $birthDate,$mobilePhone, $homePhone,$Address1." ".$Address2." ".$city." ".$state." ".$zip,
-		$dadFirstName." ".$dadLastName, $dadCellPhone,  $dadEmail,
-		$momFirstName." ".$momLastName, $momCellPhone, $momEmail));
+  extract($aRow);
+  $birthDate = "";
+  if ($birthYear != "") {
+    $birthDate = $birthDay . "/" . $birthMonth . "/" . $birthYear;
+  }
+  fputcsv($out, array($sundayschoolClass, $firstName, $LastName, $birthDate, $mobilePhone, $homePhone, $Address1 . " " . $Address2 . " " . $city . " " . $state . " " . $zip,
+    $dadFirstName . " " . $dadLastName, $dadCellPhone, $dadEmail,
+    $momFirstName . " " . $momLastName, $momCellPhone, $momEmail));
 }
 
 fclose($out);
