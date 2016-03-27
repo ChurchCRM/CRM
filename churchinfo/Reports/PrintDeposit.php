@@ -14,7 +14,7 @@
 
 global $iChecksPerDepositForm;
 
-require "../Include/LoadConfigs.php";
+require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 require "../Include/ReportConfig.php";

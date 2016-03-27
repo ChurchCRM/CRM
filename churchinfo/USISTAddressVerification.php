@@ -27,7 +27,7 @@
 // See https://www.intelligentsearch.com/Hosted/User/
 
 // Include the function library
-require 'Include/LoadConfigs.php';
+require 'Include/Config.php';
 require 'Include/Functions.php';
 
 function XMLparseIST($xmlstr,$xmlfield) {

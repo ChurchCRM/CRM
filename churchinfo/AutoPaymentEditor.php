@@ -12,7 +12,7 @@
  ******************************************************************************/
 
 //Include the function library
-require 'Include/LoadConfigs.php';
+require "Include/Config.php";
 require "Include/Functions.php";
 
 $linkBack = FilterInput($_GET["linkBack"]);

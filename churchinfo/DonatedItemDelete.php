@@ -13,7 +13,7 @@
 *
 ******************************************************************************/
 
-require 'Include/LoadConfigs.php';
+require "Include/Config.php";
 require "Include/Functions.php";
 
 $iDonatedItemID = FilterInput($_GET["DonatedItemID"],'int');
