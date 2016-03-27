@@ -3,6 +3,45 @@
 class SundaySchoolService
 {
 
+  function getClassStats()
+  {
+    $sSQL = "select grp.grp_id, grp.grp_name, lst.lst_OptionName, count(*) as total
+              from person_per,group_grp grp, person2group2role_p2g2r person_grp, list_lst lst
+            where grp_Type = 4
+              and grp.grp_ID = person_grp.p2g2r_grp_ID
+              and person_grp.p2g2r_per_ID = per_ID
+              and lst.lst_ID = grp.grp_RoleListID
+              and lst.lst_OptionID = person_grp.p2g2r_rle_ID
+              group by grp.grp_name, lst.lst_OptionName
+              order by grp.grp_name, lst.lst_OptionName";
+    $rsClassCounts = RunQuery($sSQL);
+    $classInfo = array();
+    $lastClassId = 0;
+    $curClass = array();
+    while ($row = mysql_fetch_assoc($rsClassCounts)) {
+      if ($lastClassId != $row["grp_id"]) {
+        if ($lastClassId != 0) {
+          array_push($classInfo, $curClass);
+        }
+        $curClass = array();
+        $curClass ["id"] = $row["grp_id"];
+        $curClass ["name"] = $row["grp_name"];
+
+      }
+      if ($row["lst_OptionName"] == "Teacher")
+        $curClass ["teachers"] = $row["total"];
+      else if ($row["lst_OptionName"] == "Student")
+        $curClass ["kids"] = $row["total"];
+
+      if ($lastClassId != $row["grp_id"]) {
+        $lastClassId = $row["grp_id"];
+      }
+    }
+    array_push($classInfo, $curClass);
+    return $classInfo;
+
+  }
+
   function getClassByRole($groupId, $role)
   {
     $sql = "select person_per.*
@@ -120,7 +159,7 @@ class SundaySchoolService
   {
     // Get all the groups
     $sSQL = "select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_Gender kidGender, kid.per_FirstName firstName, kid.per_Email kidEmail, kid.per_LastName LastName, kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, kid.per_CellPhone mobilePhone,
-                fam.fam_HomePhone homePhone,
+                fam.fam_HomePhone homePhone,fam.fam_id,
 
                 dad.per_ID dadId, dad.per_FirstName dadFirstName, dad.per_LastName dadLastName, dad.per_CellPhone dadCellPhone, dad.per_Email dadEmail,
                 mom.per_ID momId, mom.per_FirstName momFirstName, mom.per_LastName momLastName, mom.per_CellPhone momCellPhone, mom.per_Email momEmail,

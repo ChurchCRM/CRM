@@ -1,108 +1,157 @@
 <?php
 require "../Include/Config.php";
 require "../Include/Functions.php";
+require "../Service/SundaySchoolService.php";
 
-// Get all the groups
-$sSQL = "select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_FirstName firstName, kid.per_LastName LastName, kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, kid.per_CellPhone mobilePhone,
-fam.fam_HomePhone homePhone,
-dad.per_FirstName dadFirstName, dad.per_LastName dadLastName, dad.per_CellPhone dadCellPhone, dad.per_Email dadEmail,
-mom.per_FirstName momFirstName, mom.per_LastName momLastName, mom.per_CellPhone momCellPhone, mom.per_Email momEmail,
-fam.fam_Email famEmail, fam.fam_Address1 Address1, fam.fam_Address2 Address2, fam.fam_City city, fam.fam_State state, fam.fam_Zip zip
+$sundaySchoolService = new SundaySchoolService();
 
-from person_per kid, family_fam fam
-left Join person_per dad on fam.fam_id = dad.per_fam_id and dad.per_Gender = 1 and dad.per_fmr_ID = 1
-left join person_per mom on fam.fam_id = mom.per_fam_id and mom.per_Gender = 2 and mom.per_fmr_ID = 2
-,`group_grp` grp, `person2group2role_p2g2r` person_grp
+$kidsWithoutClasses = $sundaySchoolService->getKidsWithoutClasses();
+$classStats = $sundaySchoolService->getClassStats();
+$classes = 0;
+$teachers = 0;
+$kids = 0;
+$families = 0;
+$maleKids = 0;
+$femaleKids = 0;
+$familyIds = array();
+foreach ($classStats as $class) {
+  $classes++;
+  $kids = $kids + $class['kids'];
+  $teachers = $teachers + $class['teachers'];
+  $classKids = $sundaySchoolService->getKidsFullDetails($class["id"]);
+  foreach ($classKids as $kid) {
+    array_push($familyIds, $kid["fam_id"]);
+    if ($kid["kidGender"] == "1") {
+      $maleKids++;
+    } else if ($kid["kidGender"] == "2") {
+      $femaleKids++;
+    }
+  }
+}
 
-where kid.per_fam_id = fam.fam_ID and person_grp.p2g2r_rle_ID = 2 and kid.per_cls_ID = 2 and
-grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = kid.per_ID
-order by grp.grp_Name, fam.fam_Name";
-$rsKids = RunQuery($sSQL);
-
-$sSQL = "select kid.per_ID kidId, kid.per_FirstName firstName, kid.per_LastName LastName, kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, kid.per_CellPhone mobilePhone,
-fam.fam_Address1 Address1, fam.fam_Address2 Address2, fam.fam_City city, fam.fam_State state, fam.fam_Zip zip
-from person_per kid, family_fam fam
-where per_fam_id = fam.fam_ID and per_cls_ID = 2 and kid.per_fmr_ID = 3 and
-	per_ID not in
-	(select per_id from person_per,`group_grp` grp, `person2group2role_p2g2r` person_grp
-		where person_grp.p2g2r_rle_ID = 2 and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = kid.per_ID)";
-$rsKidsMissing = RunQuery($sSQL);
 
 // Set the page title and include HTML header
-$sPageTitle = gettext("Sunday School Class List");
+$sPageTitle = gettext("Sunday School Dashboard");
 require "../Include/Header.php";
 
 ?>
+<!-- Small boxes (Stat box) -->
+<div class="row">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-aqua"><i class="fa fa-gg"></i></span>
 
-<div class="box">
-  <div class="box-header">
-    <h3 class="box-title">Current Sunday School Kids</h3>
+      <div class="info-box-content">
+        <span class="info-box-text">Classes</span>
+        <span class="info-box-number"> <?= $classes ?> <br/>
+          <a href="SundaySchoolClassListExport.php" class="btn btn-info"><i class="glyphicon glyphicon-export"></i>CSV</a>
+        </span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
   </div>
-  <!-- /.box-header -->
-  <div class="box-body table-responsive">
-    <table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-olive"><i class="fa fa-group"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Teachers</span>
+        <span class="info-box-number"> <?= $teachers ?>
+          <small></small></span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-orange"><i class="fa fa-child"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Kids</span>
+        <span class="info-box-number"> <?= $kids ?>
+          <small></small></span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-gray"><i class="fa fa-user"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Families</span>
+        <span class="info-box-number"> <?= count(array_unique($familyIds)) ?>
+          <small></small></span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-blue"><i class="fa fa-male"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Boys</span>
+        <span class="info-box-number"> <?= $maleKids ?>
+          <small></small></span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-fuchsia"><i class="fa fa-female"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Girls</span>
+        <span class="info-box-number"> <?= $femaleKids ?>
+          <small></small></span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+</div><!-- /.row -->
+
+<div class="box box-info">
+  <div class="box-header">
+    <h3 class="box-title">Sunday School Classes</h3>
+  </div>
+  <div class="box-body">
+    <table id="sundayschoolMissing" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
       <thead>
       <tr>
         <th></th>
         <th>Class</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Birth Date</th>
-        <th>Age</th>
-        <th>Mobile</th>
-        <th>Home Phone</th>
-        <th>Home Address</th>
-        <th>Dad Name</th>
-        <th>Dad Mobile</th>
-        <th>Dad Email</th>
-        <th>Mom Name</th>
-        <th>Mom Mobile</th>
-        <th>Mom Email</th>
+        <th>Teachers</th>
+        <th>Kids</th>
       </tr>
       </thead>
       <tbody>
-      <?php
-
-      while ($aRow = mysql_fetch_array($rsKids)) {
-        extract($aRow);
-        $birthDate = "";
-        if ($birthYear != "") {
-          $birthDate = $birthDay . "/" . $birthMonth . "/" . $birthYear;
-        }
-
-        echo "<tr>";
-        echo "<td><a href='../PersonView.php?PersonID=" . $kidId . "'>";
-        echo "	<span class=\"fa-stack\">";
-        echo "	<i class=\"fa fa-square fa-stack-2x\"></i>";
-        echo "	<i class=\"fa fa-search-plus fa-stack-1x fa-inverse\"></i>";
-        echo "	</span></a></td>";
-        echo "<td>" . $sundayschoolClass . "</td>";
-        echo "<td>" . $firstName . "</td>";
-        echo "<td>" . $LastName . "</td>";
-        echo "<td>" . $birthDate . "</td>";
-        echo "<td>" . FormatAge($birthMonth, $birthDay, $birthYear, "") . "</td>";
-        echo "<td>" . $mobilePhone . "</td>";
-        echo "<td>" . $homePhone . "</td>";
-        echo "<td>" . $Address1 . " " . $Address2 . " " . $city . " " . $state . " " . $zip . "</td>";
-        echo "<td>" . $dadFirstName . " " . $dadLastName . "</td>";
-        echo "<td>" . $dadCellPhone . "</td>";
-        echo "<td>" . $dadEmail . "</td>";
-        echo "<td>" . $momFirstName . " " . $momLastName . "</td>";
-        echo "<td>" . $momCellPhone . "</td>";
-        echo "<td>" . $momEmail . "</td>";
-        echo "</tr>";
-      }
-      ?>
+      <?php foreach ($classStats as $class) { ?>
+        <tr>
+          <td><a href='SundaySchoolClassView.php?groupId=<?= $class['id'] ?>'>
+            <span class="fa-stack">
+            <i class="fa fa-square fa-stack-2x"></i>
+            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+          </td>
+          <td><?= $class['name'] ?></td>
+          <td><?= $class['teachers'] ?></td>
+          <td><?= $class['kids'] ?></td>
+        </tr>
+      <?php } ?>
       </tbody>
     </table>
-  </div>
-  <div class="box-footer">
-    <a href="SundaySchoolClassListExport.php" role="button" class="btn btn-info"><i class="glyphicon glyphicon-export"></i> Export to CSV</a>
   </div>
 </div>
 
 
-<div class="box">
+<div class="box box-danger">
   <div class="box-header">
     <h3 class="box-title">Kids not in a Sunday School Class</h3>
   </div>
@@ -122,8 +171,8 @@ require "../Include/Header.php";
       <tbody>
       <?php
 
-      while ($aRow = mysql_fetch_array($rsKidsMissing)) {
-        extract($aRow);
+      foreach ($kidsWithoutClasses as $child) {
+        extract($child);
         $birthDate = "";
         if ($birthYear != "") {
           $birthDate = $birthDay . "/" . $birthMonth . "/" . $birthYear;
