@@ -2,7 +2,7 @@
 -- No Longer require password change
 --
 
-
+update user_usr set usr_NeedPasswordChange = 0 where usr_per_ID = 1;
 
 --
 -- All mail will go to local mailcatcher
