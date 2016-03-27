@@ -57,6 +57,4 @@ error_reporting(E_ERROR);
 // Warning: The error_log file can grow very large over time.
 // ini_set('log_errors', 1);
 // ini_set('error_log','/tmp/churchCRM.log');
-
-require 'Include/LoadConfigs.php';
 ?>
