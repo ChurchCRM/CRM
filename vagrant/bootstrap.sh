@@ -38,6 +38,11 @@ echo "Database: user created with needed PRIVILEGES"
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT
 
 echo "Database: tables and metadata deployed"
+echo "=========================================================="
+echo "=================   MailCatcher Setup  ==================="
+echo "=========================================================="
+
+sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
 
 echo "=========================================================="
 echo "=========================================================="
