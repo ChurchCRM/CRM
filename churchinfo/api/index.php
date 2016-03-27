@@ -16,6 +16,7 @@ require_once "../Service/DataSeedService.php";
 require_once "../Service/FinancialService.php";
 require_once "../Service/GroupService.php";
 require_once '../Service/SystemService.php';
+require_once "../Service/ReportingService.php";
 require_once '../Service/NoteService.php';
 
 require_once '../vendor/Slim/slim/Slim/Slim.php';
@@ -53,6 +54,10 @@ $app->container->singleton('GroupService', function () {
 
 $app->container->singleton('NoteService', function () {
   return new NoteService();
+});
+
+$app->container->singleton('ReportingService', function () {
+  return new ReportingService();
 });
 
 $app->group('/groups', function () use ($app) {
@@ -174,6 +179,60 @@ $app->group('/groups', function () use ($app) {
     }
   });
 
+});
+
+$app->group('/queries', function () use ($app)
+{
+  $reportingService = $app->ReportingService;
+
+  $app->get("/", function () use ($app, $reportingService)
+  {
+    try
+    {
+      echo $reportingService->getQueriesJSON($reportingService->getQuery());
+    }
+    catch (Exception $e)
+    {
+      echo exceptionToJSON($e);
+    }
+  });
+
+  $app->get("/:id", function ($id) use ($app, $reportingService)
+  {
+    try
+    {
+      echo $reportingService->getQueriesJSON($reportingService->getQuery($id));
+    }
+    catch (Exception $e)
+    {
+      echo exceptionToJSON($e);
+    }
+  });
+
+  $app->get("/:id/details", function ($id) use ($app, $reportingService)
+  {
+    try
+    {
+      echo '{"Query":' . json_encode($reportingService->getQuery($id)) . ' , "Parameters":' . json_encode($reportingService->getQueryParameters($id)) . '}';
+    }
+    catch (Exception $e)
+    {
+      echo exceptionToJSON($e);
+    }
+  });
+
+  $app->post('/:id', function() use ($app, $reportingService)
+  {
+    try
+    {
+      $input = getJSONFromApp($app);
+      echo json_encode($reportingService->queryDatabase($input));
+    }
+    catch (Exception $e)
+    {
+      echo exceptionToJSON($e);
+    }
+  });
 });
 
 $app->group('/database', function () use ($app) {
