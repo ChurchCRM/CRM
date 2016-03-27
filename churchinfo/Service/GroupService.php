@@ -387,18 +387,18 @@ class GroupService
     $groupMembers = $this->getGroupMembers($groupID);
 
     foreach ($groupMembers as $member) {
-      $sSQLr = "INSERT INTO groupprop_" . $groupID . " ( `per_ID` ) VALUES ( '" . $member['per_ID'] . "' );";
+      $sSQLr = "INSERT INTO groupprop_" . $groupID . " ( per_ID ) VALUES ( '" . $member['per_ID'] . "' );";
       RunQuery($sSQLr);
     }
   }
 
   function disableGroupSpecificProperties($groupID)
   {
-    $sSQLp = "DROP TABLE groupprop_" . $iGroupID;
+    $sSQLp = "DROP TABLE groupprop_" . $groupID;
     RunQuery($sSQLp);
 
     // need to delete the master index stuff
-    $sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
+    $sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $groupID;
     RunQuery($sSQLp);
   }
 
@@ -602,7 +602,7 @@ class GroupService
     if (array_key_exists("EmptyCart", $_POST) && $_POST["EmptyCart"] && count($_SESSION['aPeopleCart']) > 0) {
       $iCount = 0;
       while ($element = each($_SESSION['aPeopleCart'])) {
-        $groupService->AddUsertoGroup($_SESSION['aPeopleCart'][$element['key']], $iGroupID, $thisGroup['grp_DefaultRole']);
+        AddUsertoGroup($_SESSION['aPeopleCart'][$element['key']], $iGroupID, $thisGroup['grp_DefaultRole']);
         $iCount += 1;
       }
 
