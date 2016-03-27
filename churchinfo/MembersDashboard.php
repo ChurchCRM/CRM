@@ -4,7 +4,7 @@
  * Date: 1/17/2016
  * Time: 8:01 AM
  */
-require 'Include/Config.php';
+require 'Include/LoadConfigs.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
 

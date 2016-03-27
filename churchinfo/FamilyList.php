@@ -1,5 +1,5 @@
 <?php
-require "Include/Config.php";
+require 'Include/LoadConfigs.php';
 require "Include/Functions.php";
 
 $sSQL = "select * from family_fam fam order by fam_Name";

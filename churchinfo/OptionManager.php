@@ -17,7 +17,7 @@
  ******************************************************************************/
 
 //Include the function library
-require "Include/Config.php";
+require 'Include/LoadConfigs.php';
 require "Include/Functions.php";
 
 $mode = trim($_GET["mode"]);

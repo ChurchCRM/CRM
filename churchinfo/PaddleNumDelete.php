@@ -13,7 +13,7 @@
 *
 ******************************************************************************/
 
-require "Include/Config.php";
+require 'Include/LoadConfigs.php';
 require "Include/Functions.php";
 
 $iPaddleNumID = FilterInput($_GET["PaddleNumID"],'int');

@@ -25,7 +25,7 @@
  ******************************************************************************/
 
 // Include the function library
-require "Include/Config.php";
+require 'Include/LoadConfigs.php';
 require "Include/Functions.php";
 
 // If user does not have CSV Export permission, redirect to the menu.

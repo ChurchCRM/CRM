@@ -19,7 +19,7 @@
  *  fields
  *
  ******************************************************************************/
-require "Include/Config.php";
+require 'Include/LoadConfigs.php';
 require "Include/Functions.php";
 if (!$_SESSION['bAdmin'])
 {

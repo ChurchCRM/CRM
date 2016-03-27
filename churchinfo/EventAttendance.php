@@ -15,7 +15,7 @@
  *
  ******************************************************************************/
 
-require "Include/Config.php";
+require 'Include/LoadConfigs.php';
 require "Include/Functions.php";
 
 if (array_key_exists('Action', $_POST) && $_POST['Action'] == "Retrieve" && !empty($_POST['Event']))
