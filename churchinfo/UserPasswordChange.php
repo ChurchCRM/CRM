@@ -24,7 +24,7 @@
  ******************************************************************************/
 
 // Include the function library
-require 'Include/LoadConfigs.php';
+require "Include/Config.php";
 $bNoPasswordRedirect = true; // Subdue UserPasswordChange redirect to prevent looping
 require "Include/Functions.php";
 

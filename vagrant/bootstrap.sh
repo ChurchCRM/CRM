@@ -39,25 +39,21 @@ sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SC
 
 echo "Database: tables and metadata deployed"
 
-cp /var/www/public/Include/Config.php.example /var/www/public/Include/Config.php
-
-echo "ChurchCRM configured"
-
 echo "=========================================================="
 echo "=========================================================="
-echo "===   .o88b. db   db db    db d8888b.  .o88b. db   db  ==="
-echo "===  d8P  Y8 88   88 88    88 88  '8D d8P  Y8 88   88  ==="
-echo "===  8P      88ooo88 88    88 88oobY' 8P      88ooo88  ==="
-echo "===  8b      88~~~88 88    88 88'8b   8b      88~~~88  ==="
-echo "===  Y8b  d8 88   88 88b  d88 88 '88. Y8b  d8 88   88  ==="
-echo "===   'Y88P' YP   YP ~Y8888P' 88   YD  'Y88P' YP   YP  ==="
+echo "===   .o88b. db   db db    db d8888b.  .o88b. db   db  ==="     
+echo "===  d8P  Y8 88   88 88    88 88  '8D d8P  Y8 88   88  ==="  
+echo "===  8P      88ooo88 88    88 88oobY' 8P      88ooo88  ==="  
+echo "===  8b      88~~~88 88    88 88'8b   8b      88~~~88  ===" 
+echo "===  Y8b  d8 88   88 88b  d88 88 '88. Y8b  d8 88   88  ===" 
+echo "===   'Y88P' YP   YP ~Y8888P' 88   YD  'Y88P' YP   YP  ===" 
 echo "===                                                    ==="
 echo "===                         .o88b. d8888b. .88b  d88.  ==="
 echo "===                        d8P  Y8 88  '8D 88'YbdP'88  ==="
 echo "===                        8P      88oobY' 88  88  88  ==="
 echo "===                        8b      88'8b   88  88  88  ==="
 echo "===                        Y8b  d8 88 '88. 88  88  88  ==="
-echo "===                         'Y88P' 88   YD YP  YP  YP  ==="
+echo "===                         'Y88P' 88   YD YP  YP  YP  ==="                           
 echo "=========================================================="
 echo "=========================================================="
 echo "====== Visit  http://192.168.33.10/               ========"

@@ -1,5 +1,5 @@
 <?php
-require 'Include/LoadConfigs.php';
+require "Include/Config.php";
 require "Include/Functions.php";
 
 $events = array();

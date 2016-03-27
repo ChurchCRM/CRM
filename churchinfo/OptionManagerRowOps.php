@@ -15,7 +15,7 @@
 
  ******************************************************************************/
 
-require 'Include/LoadConfigs.php';
+require "Include/Config.php";
 require "Include/Functions.php";
 
 // Get the Order, ID, Mode, and Action from the querystring

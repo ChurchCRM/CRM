@@ -33,7 +33,7 @@
 $bEmailLog = FALSE;
 
 // Include the function library
-require 'Include/LoadConfigs.php';
+require 'Include/Config.php';
 require 'Include/Functions.php';
 
 $iUserID = $_SESSION['iUserID']; // Read into local variable for faster access

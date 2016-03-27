@@ -14,5 +14,5 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "scotchbox"
   config.vm.synced_folder "churchinfo", "/var/www/public", :mount_options => ["dmode=777", "fmode=666"]
 
-  config.vm.provision :shell, :path => "vagrant/bootstrap.sh"
+   config.vm.provision :shell, :path => "vagrant/bootstrap.sh"
 end

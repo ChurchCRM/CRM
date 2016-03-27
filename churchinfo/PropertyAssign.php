@@ -16,7 +16,7 @@
  ******************************************************************************/
 
 // Include the function library
-require 'Include/LoadConfigs.php';
+require "Include/Config.php";
 require "Include/Functions.php";
 
 // Security: User must have Manage Groups or Edit Records permissions

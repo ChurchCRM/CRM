@@ -8,7 +8,7 @@
  ******************************************************************************/
 
 // Include the function library
-require 'Include/LoadConfigs.php';
+require "Include/Config.php";
 require "Include/Functions.php";
 
 if( !function_exists(json_decode) ) {

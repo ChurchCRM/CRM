@@ -14,7 +14,7 @@
  *  (at your option) any later version.
  *
  ******************************************************************************/
-require 'Include/LoadConfigs.php';
+require "Include/Config.php";
 require "Include/Functions.php";
 
 $sSQL = "SELECT * FROM events_event WHERE event_id = ".$_GET['EID'];

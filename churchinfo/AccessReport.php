@@ -12,7 +12,7 @@
  ******************************************************************************/
 
 // Include the function library
-require 'Include/LoadConfigs.php';
+require 'Include/Config.php';
 require 'Include/Functions.php';
 
 // If user is not admin, redirect to the menu.

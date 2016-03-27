@@ -14,7 +14,7 @@
  *  (at your option) any later version.
  ******************************************************************************/
 
-require 'Include/LoadConfigs.php';
+require "Include/Config.php";
 require "Include/Functions.php";
 
 // Security: user must be administrator to use this page
