@@ -156,7 +156,7 @@ class GroupService
    * @param  int $groupID ID of the group
    * @return array represnting the roles of the group
    */
-  function getGroupRoles ( $groupID ) 
+  function getGroupRoles($groupID)
   {
     $groupRoles = array ();
     $sSQL = "SELECT grp_ID, lst_OptionName, lst_OptionID, lst_OptionSequence
@@ -164,17 +164,17 @@ class GroupService
               LEFT JOIN list_lst ON
               list_lst.lst_ID = group_grp.grp_RoleListID
               WHERE group_grp.grp_ID = " . $groupID;
-    $rsList = RunQuery ( $sSQL );
+    $rsList = RunQuery($sSQL);
 
     // Validate that this list ID is really for a group roles list. (for security)
-    if ( mysql_num_rows ( $rsList ) == 0 ) 
+    if(mysql_num_rows($rsList) == 0)
     {
-      throw new Exception ( "invalid request" );
+      throw new Exception("invalid request");
     }
 
-    while ( $row = mysql_fetch_assoc ( $rsList ) ) 
+    while ($row = mysql_fetch_assoc( $rsList ))
     {
-      array_push ( $groupRoles,$row );
+      array_push($groupRoles,$row);
     }
     
     return $groupRoles;
