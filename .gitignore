@@ -11,17 +11,10 @@
 *.iws
 
 #Exclude composer vendor folders
-vendor
 composer.lock
 churchinfo/vendor/bin
 churchinfo/composer.lock
 churchinfo/vendor/composer
-
-#almasaeed2010 extra
-churchinfo/vendor/almasaeed2010/adminlte/*html
-churchinfo/vendor/almasaeed2010/adminlte/build/
-churchinfo/vendor/almasaeed2010/adminlte/documentation/
-churchinfo/vendor/almasaeed2010/adminlte/pages/
 
 # Uploaded Images
 churchinfo/Images/Family/thumbnails/
