@@ -13,16 +13,16 @@
  *
  ******************************************************************************/
 
-function TranslateMenuOptions ()
+function TranslateMenuOptions()
 {
-	$sSQL = "SELECT content_english from menuconfig_mcf";
-	$rsMenuOptions = RunQuery ($sSQL);
-	
-	while($myrow = mysql_fetch_row($rsMenuOptions)) {
-		$optStr = $myrow[0];
-		$sSQL = "update menuconfig_mcf set content='" . gettext ($optStr) . "' where content_english='". $optStr . "'";
-		RunQuery ($sSQL);
-	}
+  $sSQL = "SELECT content_english from menuconfig_mcf";
+  $rsMenuOptions = RunQuery($sSQL);
+
+  while ($myrow = mysql_fetch_row($rsMenuOptions)) {
+    $optStr = $myrow[0];
+    $sSQL = "update menuconfig_mcf set content='" . gettext($optStr) . "' where content_english='" . $optStr . "'";
+    RunQuery($sSQL);
+  }
 }
 
 ?>
