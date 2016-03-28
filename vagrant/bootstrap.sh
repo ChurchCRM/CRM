@@ -7,6 +7,7 @@ DB_PASS="root"
 DB_HOST="localhost"
 
 CRM_DB_INSTALL_SCRIPT="/vagrant/churchinfo/mysql/install/Install.sql"
+CRM_DB_VAGRANT_SCRIPT="/vagrant/vagrant/vagrant.sql"
 CRM_DB_USER="churchcrm"
 CRM_DB_PASS="churchcrm"
 CRM_DB_NAME="churchcrm"
@@ -38,6 +39,15 @@ echo "Database: user created with needed PRIVILEGES"
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT
 
 echo "Database: tables and metadata deployed"
+
+echo "=========================================================="
+echo "==============   Development DB Setup  ==================="
+echo "=========================================================="
+
+sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_VAGRANT_SCRIPT
+
+echo "Database: development seed data deployed"
+
 echo "=========================================================="
 echo "=================   MailCatcher Setup  ==================="
 echo "=========================================================="
