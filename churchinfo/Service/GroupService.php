@@ -589,7 +589,7 @@ class GroupService
         WHERE p2g2r_grp_ID =" . $groupID;
     $result = mysql_query($sSQL);
     while ($row = mysql_fetch_assoc($result)) {
-      $person["id"] = $row['p2g2r_per_ID'];
+      $person = array( "id" => $row['p2g2r_per_ID']);
       array_push($members, $person);
     }
     return $members;
