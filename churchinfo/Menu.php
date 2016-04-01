@@ -49,9 +49,11 @@ $dashboardService = new DashboardService();
 $personCount = $dashboardService->getPersonCount();
 $familyCount = $dashboardService->getFamilyCount();
 $sundaySchoolStats = $dashboardService->getSundaySchoolStats();
-$depositData = $financialService->getDeposits();  //Get the deposit data from the financialService
-$shouldDisplayDeposits = $_SESSION['bFinance'] && count($depositData) > 1;  //Determine whether or not we should display the deposit line graph
 
+$shouldDisplayDeposits = $_SESSION['bFinance'] && count($depositData) > 1;  //Determine whether or not we should display the deposit line graph
+if ($shouldDisplayDeposits) {
+$depositData = $financialService->getDeposits();  //Get the deposit data from the financialService
+}
 
 // Set the page title
 $sPageTitle = "Welcome to <b>Church</b>CRM";

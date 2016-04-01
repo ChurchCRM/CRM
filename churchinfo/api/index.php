@@ -27,6 +27,12 @@ $app = new Slim();
 
 $app->contentType('application/json');
 
+$app->error(function(\Exception $e) use ($app) {
+    if ($e instanceof \PDOException) {
+        return "test";
+    }
+});
+
 $app->container->singleton('PersonService', function () {
     return new PersonService();
 });
@@ -181,13 +187,11 @@ $app->group('/groups', function () use ($app) {
 $app->group('/database', function () use ($app) {
     $systemService = $app->SystemService;
     $app->post('/backup', function () use ($app, $systemService) {
-        try {
+        
             $input = getJSONFromApp($app);
             $backup = $systemService->getDatabaseBackup($input);
             echo json_encode($backup);
-        } catch (Exception $e) {
-              echo exceptionToJSON($e);
-        }
+        
     });
     
     $app->post('/restore', function () use ($app, $systemService) {
@@ -512,6 +516,8 @@ function exceptionToJSON($e)
     http_response_code($e->responseCode);
     return '{"error":{"text":"' . $e->getMessage() . '","severity":"'.$e->customSeverity.'"}}';
 }
+
+
 
 $app->run();
 

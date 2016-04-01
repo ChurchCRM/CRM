@@ -1995,17 +1995,29 @@ function getMailingAddress($Address1, $Address2, $City, $State, $Zip, $Country)
     return $mailingAddress;
 }
 
-function requireUserGroupMembership($allowedRoles)
+function requireUserGroupMembership($allowedRoles=null)
 {
-        if ($_SESSION[$allowedRoles])
-        {
-            return true;
-        }
-        else
-        {
-            throw new Exception("User is not authorized to access ".debug_backtrace()[1]['function'];
-        }
-
+  if(!$allowedRoles)
+  {
+    throw new Exception("Role(s) must be defined for the function which you are trying to access.  End users should never see this error unless something went horribly wrong.");
+  }
+  if (is_array($allowedRoles))
+  {
+     foreach($allowedRoles as $role)
+     {
+       if($_SESSION[$role])
+       {
+         // The current allowed role is in the user's session variable
+         return true;
+       }
+     }
+  }
+  elseif ($_SESSION[$allowedRoles])
+  {
+    return true;
+  }
+  //if we get to this point in the code, then the user is not authorized.
+  throw new Exception("User is not authorized to access ".debug_backtrace()[1]['function']);
 }
 
 ?>

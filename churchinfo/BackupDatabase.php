@@ -23,8 +23,8 @@ require "Include/Functions.php";
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bAdmin'])
 {
-	Redirect("Menu.php");
-	exit;
+	#Redirect("Menu.php");
+	#exit;
 }
 
 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
