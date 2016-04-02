@@ -7,6 +7,8 @@ class SystemServiceTest extends PHPUnit_Framework_TestCase
     
    public function getBackupArray($type)
    {
+        $_SESSION = array();
+        $_SESSION['bAdmin']=true;
         $params = new StdClass();
         $params->iArchiveType=$type;
         $results = $this->SystemService->getDatabaseBackup($params);
