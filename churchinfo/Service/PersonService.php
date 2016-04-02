@@ -74,6 +74,7 @@ class PersonService
 
   function deleteUploadedPhoto($id)
   {
+    requireUserGroupMembership("bEditRecords");
     $validExtensions = array("jpeg", "jpg", "png");
     $finalFileName = "Images/Person/" . $id;
     $finalFileNameThumb = "Images/Person/thumbnails/" . $id;
@@ -192,6 +193,7 @@ class PersonService
 
   public function insertPerson($user)
   {
+    requireUserGroupMembership("bAddRecords");
     $sSQL = "INSERT INTO person_per
     (per_Title,
     per_FirstName,

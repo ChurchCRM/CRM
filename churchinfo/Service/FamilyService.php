@@ -139,6 +139,7 @@ class FamilyService
 
   function insertFamily($user)
   {
+    requireUserGroupMembership("bAddRecords");
     $dWeddingDate = "NULL";
     $iCanvasser = 0;
     $nLatitude = 0;
