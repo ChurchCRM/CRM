@@ -29,6 +29,12 @@ $app = new Slim();
 
 $app->contentType('application/json');
 
+$app->error(function(\Exception $e) use ($app) {
+    if ($e instanceof \PDOException) {
+        return "test";
+    }
+});
+
 $app->container->singleton('PersonService', function () {
   return new PersonService();
 });

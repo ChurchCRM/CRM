@@ -48,10 +48,7 @@ else if (file_exists($fileName))
 }
 else
 {
-  // Unknown page, must be 404
-  header('HTTP/1.0 404 Not Found');
-  echo "<head><title>404 Not Found</title></head>";
-  echo "<h1>Not Found</h1>";
-  echo "<p>The requested URL ". $_SERVER['REQUEST_URI'] ." was not found on this server.</p>";
+  Header("Location: index.php");
+  exit;
 }
 ?>
