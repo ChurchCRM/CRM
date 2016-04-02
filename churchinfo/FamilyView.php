@@ -825,9 +825,6 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 	</div>
 </div>
 
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 <script type="text/javascript" src="js/DepositSlipEditor.js"></script>
 <script>
 $("#ShowSinceDate").datepicker({format:'yyyy-mm-dd'});
