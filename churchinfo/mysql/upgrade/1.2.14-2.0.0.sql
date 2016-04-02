@@ -15,7 +15,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 UPDATE user_usr
 SET usr_Style = "skin-blue";
 
-ROP TABLE IF EXISTS `currency_denominations_cdem`;
+DROP TABLE IF EXISTS `currency_denominations_cdem`;
 CREATE TABLE `currency_denominations_cdem` (
  `cdem_denominationID` mediumint(9) NOT NULL auto_increment,
  `cdem_denominationName` text,
