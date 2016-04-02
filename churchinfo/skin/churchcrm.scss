@@ -1,6 +1,6 @@
 /*! DO NOT MANUALLY EDIT skin/churchcrm.min.css
 
-    Please make changes to skin/churchcrm/*.scss and recompile with SASS. http://sass-lang.com/
+    Please make changes to skin/scss/*.scss and recompile with SASS. http://sass-lang.com/
 
     sass --watch churchinfo/skin/churchcrm.scss:churchinfo/skin/churchcrm.min.css --style compressed
 
@@ -24,6 +24,6 @@
 
 // Import ChurchCRM custom styles
 
-@import 'churchcrm/dropdowns';
-@import 'churchcrm/forms';
-@import 'churchcrm/tables';
+@import 'scss/dropdowns';
+@import 'scss/forms';
+@import 'scss/tables';

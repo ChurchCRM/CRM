@@ -224,6 +224,12 @@ if (isset($_GET["AddToPeopleCart"])) {
     $sGlobalMessage = gettext("Selected record successfully added to the Cart.");
 }
 
+if (isset($_GET["AddFamilyToPeopleCart"]))
+{
+  AddFamilyToPeopleCart(FilterInput($_GET["AddFamilyToPeopleCart"], 'int'));
+  $sGlobalMessage = gettext("Family successfully added to the Cart.");
+}
+
 // Are they removing a person from the Cart?
 if (isset($_GET["RemoveFromPeopleCart"])) {
     RemoveFromPeopleCart(FilterInput($_GET["RemoveFromPeopleCart"], 'int'));
@@ -468,7 +474,7 @@ function SelectWhichInfo($sPersonInfo, $sFamilyInfo, $bFormat = false)
     if ($bShowFamilyData) {
 
         if ($bFormat) {
-            $sFamilyInfoBegin = "<span style=\"color: red;\">";
+            $sFamilyInfoBegin = "<span style='color: red;'>";
             $sFamilyInfoEnd = "</span>";
         }
 
@@ -592,6 +598,22 @@ function AddGroupToPeopleCart($iGroupID)
         //Add each person to the cart
         AddToPeopleCart($p2g2r_per_ID);
     }
+}
+
+function AddFamilyToPeopleCart($iFamID)
+{
+  $sSQL = "SELECT per_ID from person_per where per_fam_id = ".$iFamID;
+  $rsFamilyMembers = RunQuery($sSQL);
+
+   //Loop through the recordset
+   while ($aRow = mysql_fetch_array($rsFamilyMembers))
+   {
+       extract($aRow);
+
+       //Add each person to the cart
+       AddToPeopleCart($per_ID);
+   }
+  
 }
 
 function IntersectArrayWithPeopleCart($aIDs)

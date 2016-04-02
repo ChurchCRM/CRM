@@ -13,7 +13,7 @@ $(document).ready(function() {
         };
         $.ajax({
             method: "POST",
-            url:   "/api/deposits",
+            url:   window.CRM.root+"/api/deposits",
             data:  JSON.stringify(newDeposit)
         }).done(function(data){
             dataT.row.add(data[0]);
@@ -100,21 +100,21 @@ $(document).ready(function() {
     $('#exportSelectedRows').click(function() {
         var selectedRows = dataT.rows('.selected').data()
         $.each(selectedRows, function(index, value){
-            window.open('/api/deposits/'+value.dep_ID+'/ofx');
+            window.open(window.CRM.root+'/api/deposits/'+value.dep_ID+'/ofx');
         });
     });
     
     $('#exportSelectedRowsCSV').click(function() {
         var selectedRows = dataT.rows('.selected').data()
         $.each(selectedRows, function(index, value){
-            window.open('/api/deposits/'+value.dep_ID+'/csv');
+            window.open(window.CRM.root+'/api/deposits/'+value.dep_ID+'/csv');
         });
     });
     
     $('#generateDepositSlip').click(function() {
         var selectedRows = dataT.rows('.selected').data()
         $.each(selectedRows, function(index, value){
-            window.open('/api/deposits/'+value.dep_ID+'/pdf');
+            window.open(window.CRM.root+'/api/deposits/'+value.dep_ID+'/pdf');
         });
     });
 
@@ -123,7 +123,7 @@ $(document).ready(function() {
         $.each(deletedRows, function(index, value){
             $.ajax({
                 type        : 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
-                url         : '/api/deposits/'+value.dep_ID, // the url where we want to POST
+                url         : window.CRM.root+'/api/deposits/'+value.dep_ID, // the url where we want to POST
                 dataType    : 'json', // what type of data do we expect back from the server
                 encode      : true
             })

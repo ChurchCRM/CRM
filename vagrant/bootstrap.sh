@@ -7,6 +7,7 @@ DB_PASS="root"
 DB_HOST="localhost"
 
 CRM_DB_INSTALL_SCRIPT="/vagrant/churchinfo/mysql/install/Install.sql"
+CRM_DB_VAGRANT_SCRIPT="/vagrant/vagrant/vagrant.sql"
 CRM_DB_USER="churchcrm"
 CRM_DB_PASS="churchcrm"
 CRM_DB_NAME="churchcrm"
@@ -14,7 +15,8 @@ CRM_DB_NAME="churchcrm"
 echo "=========================================================="
 echo "====================   DB Setup  ========================="
 echo "=========================================================="
-
+sudo sed -i 's/^bind-address.*$/bind-address=0.0.0.0/g' /etc/mysql/my.cnf
+sudo service mysql restart
 RET=1
 while [[ RET -ne 0 ]]; do
     echo "Database: Waiting for confirmation of MySQL service startup"
@@ -29,14 +31,28 @@ sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "CREATE DATABASE $CRM_DB_NAME CHARACTER 
 
 echo "Database: created"
 
-sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "CREATE USER '$CRM_DB_USER'@'$DB_HOST' IDENTIFIED BY '$CRM_DB_PASS';"
-sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "GRANT ALL PRIVILEGES ON $CRM_DB_NAME.* TO '$CRM_DB_NAME'@'$DB_HOST' WITH GRANT OPTION;"
+sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "CREATE USER '$CRM_DB_USER'@'%' IDENTIFIED BY '$CRM_DB_PASS';"
+sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "GRANT ALL PRIVILEGES ON $CRM_DB_NAME.* TO '$CRM_DB_NAME'@'%' WITH GRANT OPTION;"
 
 echo "Database: user created with needed PRIVILEGES"
 
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT
 
 echo "Database: tables and metadata deployed"
+
+echo "=========================================================="
+echo "==============   Development DB Setup  ==================="
+echo "=========================================================="
+
+sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_VAGRANT_SCRIPT
+
+echo "Database: development seed data deployed"
+
+echo "=========================================================="
+echo "=================   MailCatcher Setup  ==================="
+echo "=========================================================="
+
+sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
 
 echo "=========================================================="
 echo "=========================================================="

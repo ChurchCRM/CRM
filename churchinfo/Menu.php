@@ -47,7 +47,7 @@ $rsNewPeople = RunQuery($sSQL);
 $dashboardService = new DashboardService();
 $personCount = $dashboardService->getPersonCount();
 $familyCount = $dashboardService->getFamilyCount();
-$sundaySchoolStats = $dashboardService->getSundaySchoolStats();
+$groupStats = $dashboardService->getGroupStats();
 $depositData = $financialService->getDeposits();  //Get the deposit data from the financialService
 $shouldDisplayDeposits = $_SESSION['bFinance'] && count($depositData) > 1;  //Determine whether or not we should display the deposit line graph
 
@@ -106,14 +106,14 @@ require 'Include/Header.php';
         <div class="small-box bg-yellow">
             <div class="inner">
                 <h3>
-                    <?= $sundaySchoolStats['classes'] ?>
+                    <?= $groupStats['sundaySchoolClasses'] ?>
                 </h3>
                 <p>
                     Sunday School Classes
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-university"></i>
+                <i class="fa fa-child"></i>
             </div>
             <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
@@ -125,16 +125,16 @@ require 'Include/Header.php';
         <div class="small-box bg-red">
             <div class="inner">
                 <h3>
-                    TBD
+                  <?= $groupStats['groups'] -$groupStats['sundaySchoolClasses']  ?>
                 </h3>
                 <p>
                     Groups
                 </p>
             </div>
             <div class="icon">
-                <i class="fa fa-child"></i>
+                <i class="fa fa-gg"></i>
             </div>
-            <a href="<?= $sRootPath ?>/Reports\SundaySchoolClassList.php" class="small-box-footer">
+            <a href="<?= $sRootPath ?>/grouplist" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>

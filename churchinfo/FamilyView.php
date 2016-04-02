@@ -248,9 +248,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                 <?php } ?>
                 <br/>
                 <?php if ($bOkToEdit) { ?>
-                    <a class="btn btn-app" href="#" data-toggle="modal" data-target="#upload-image"><i class="fa fa-camera"></i> Upload Photo </a>
+                    <a class="btn btn-app" href="#" data-toggle="modal" data-target="#upload-image"><i class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
                   <?php if ($familyService->getUploadedPhoto($iFamilyID) != "") { ?>
-                  <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i>Remove Photo </a>
+                  <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i> <?= gettext("Delete Photo") ?> </a>
                   <?php }
                 }
                 if ($_SESSION['bNotes']) { ?>
@@ -258,6 +258,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                 <?php } ?>
                 <a class="btn btn-app" href="Reports/ConfirmReport.php?familyId=<?= $iFamilyID ?>"><i class="fa fa-download"></i> Download PDF Report</a>
                 <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-email-pdf"><i class="fa fa-send"></i> Email PDF Report</a>
+                <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i class="fa fa-cart-plus"></i> Add All Family Members to Cart</a>
             </div>
         </div>
     </div>
@@ -315,7 +316,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                 <?php } ?>
                             </td>
                             <td style="width: 20%;">
-                                <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>&AddToPeopleCart=<?= $tmpPersonId ?>">
+                                <a href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddToPeopleCart=<?= $tmpPersonId ?>">
                                         <span class="fa-stack">
                                             <i class="fa fa-square fa-stack-2x"></i>
                                             <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
@@ -460,7 +461,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 											}
 											?>
 											  </select>
-											  <input type="submit" class="btn" value="Assign" name="Submit2" style="font-size: 8pt;">
+											  <input type="submit" class="btn btn-default" value="Assign" name="Submit2" style="font-size: 8pt;">
 										  </p>
 										</form>
 										</div>
@@ -705,7 +706,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 										?>
 									<!-- chat item -->
 									<div class="item">
-										<img src="<?= $personService->getPhoto($EnteredId) ?>"/>
+                    <?php $noteBy = $nte_EnteredBy; if (!strlen($nte_EditedBy)) { $noteBy = $nte_EditedBy; } ?>
+										<img src="<?= $personService->getPhoto($noteBy) ?>"/>
 										<p class="message">
 											<a href="#" class="name">
 												<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php
@@ -725,7 +727,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 										</p>
 										<?php if ($_SESSION['bNotes']) { ?>
 											<div class="pull-right">
-												<a href="NoteEditor.php?PersonID=<?= $iPersonID ?>&NoteID=<?= $nte_ID ?>">
+												<a href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>&NoteID=<?= $nte_ID ?>">
 												<span class="fa-stack">
 													<i class="fa fa-square fa-stack-2x"></i>
 													<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
