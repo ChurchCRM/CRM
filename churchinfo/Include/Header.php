@@ -55,11 +55,12 @@ $MenuFirst = 1;
     }
 
     $(document).ajaxError(function (evt, xhr, settings) {
+    var CRMResponse = JSON.parse(xhr.responseText).error;
       if (xhr.status == 400) {
         displayMessage("[" + settings.type + "] " + settings.url, "Invalid Request.");
       }
-      else if (evt.severity > 0) {
-        displayMessage("[" + settings.type + "] " + settings.url, xhr.responseText);
+      else if (CRMResponse.severity > 0) {
+        displayMessage("[" + settings.type + "] " + settings.url, CRMResponse.text);
       }
     });
   </script>

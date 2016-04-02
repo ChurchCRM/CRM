@@ -26,13 +26,21 @@ use Slim\Slim;
 Slim::registerAutoloader();
 
 $app = new Slim();
+$app->config('debug',false);
 
 $app->contentType('application/json');
 
-$app->error(function(\Exception $e) use ($app) {
-    if ($e instanceof \PDOException) {
-        return "test";
-    }
+$app->error(function(Exception $e) use ($app) {
+  if (!isset($e->customSeverity))  // if there is no custom severity in the passed exception object, assign a "1"
+  {
+    $e->customSeverity = 1;  //Use a custom severity code so that user-side code can determine what level of error should generate a UI Modal dialog.  Anything >0 currently causes a modal.
+  }
+  if (!isset($e->responseCode)) // if there is no response code, assume unhandled exception (500)
+  {
+    $e->responseCode = 500;
+  }
+  http_response_code($e->responseCode);
+  echo '{"error":{"text":"' . $e->getMessage() . '","severity":"' . $e->customSeverity . '"}}';
 });
 
 $app->container->singleton('PersonService', function () {
@@ -249,7 +257,7 @@ $app->group('/database', function () use ($app) {
       $backup = $systemService->getDatabaseBackup($input);
       echo json_encode($backup);
     } catch (Exception $e) {
-      echo exceptionToJSON($e);
+      throw $e;
     }
   });
 
@@ -569,22 +577,6 @@ function getJSONFromApp($app)
   return json_decode($body);
 }
 
-/**
- * @param $e
- */
-function exceptionToJSON($e)
-{
-  if (!isset($e->customSeverity))  // if there is no custom severity in the passed exception object, assign a "1"
-  {
-    $e->customSeverity = 1;  //Use a custom severity code so that user-side code can determine what level of error should generate a UI Modal dialog.  Anything >0 currently causes a modal.
-  }
-  if (!isset($e->responseCode)) // if there is no response code, assume unhandled exception (500)
-  {
-    $e->responseCode = 500;
-  }
-  http_response_code($e->responseCode);
-  return '{"error":{"text":"' . $e->getMessage() . '","severity":"' . $e->customSeverity . '"}}';
-}
 
 $app->run();
 

@@ -51,7 +51,7 @@ $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
 $shouldDisplayDeposits = $_SESSION['bFinance'] && count($depositData) > 1;  //Determine whether or not we should display the deposit line graph
 if ($shouldDisplayDeposits) {
-$depositData = $financialService->getDeposits();  //Get the deposit data from the financialService
+  $depositData = $financialService->getDeposits();  //Get the deposit data from the financialService
 }
 
 // Set the page title
