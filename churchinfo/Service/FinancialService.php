@@ -22,7 +22,7 @@ class FinancialService
 
   function processAuthorizeNet()
   {
-    requireUserGroupMembership("bAdmin");
+    requireUserGroupMembership("bFinance");
     $donation = new AuthorizeNetAIM;
     $donation->amount = "$plg_amount";
     $donation->first_name = $firstName;

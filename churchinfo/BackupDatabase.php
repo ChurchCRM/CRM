@@ -24,7 +24,7 @@ require "Include/Functions.php";
 if (!$_SESSION['bAdmin'])
 {
   Redirect("Menu.php");
-	exit;
+  exit;
 }
 
 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
