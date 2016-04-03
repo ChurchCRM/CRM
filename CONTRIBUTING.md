@@ -8,7 +8,7 @@ We love to hear ideas from other ChurchInfo and ChurchCRM users!  It's what make
   * Clearly describe the issue including steps to reproduce when it is a bug.
   * Make sure you fill in the earliest version that you know has the issue.
 * Fork the repository on GitHub into your personal account.
-* Install [vagrant](http://docs.churchcrm.io/en/develop/Development/Vagrant/)
+* Install [vagrant](http://docs.churchcrm.io/en/develop/Development/Vagrant/) so you can test your changes in a *safe* environment.
 
 ## Making Changes
 
@@ -19,6 +19,7 @@ We love to hear ideas from other ChurchInfo and ChurchCRM users!  It's what make
   * To quickly create a topic branch based on master; `git checkout -b fixes-issue-#<your issue number>`. Please avoid working directly on the `master` branch, as this makes PRs difficult
 * Make commits of logical units.  "Commit Early, Commit Often" is a great motto.
 * Check for unnecessary whitespace with `git diff --check` before committing.
+* Changes to ChurchCRM will trigger version number changes in accordance with [Semantic Versioning 2.0.0](http://semver.org/)
 
 ## Submitting Changes
 
@@ -31,15 +32,19 @@ We love to hear ideas from other ChurchInfo and ChurchCRM users!  It's what make
 ## Documentation
 
 Please familiarize yourself with the [documentation](http://docs.churchcrm.io/en/latest/) for the part(s) of code that you're changing.
+
 * If you're changing anything in the API, please update the API documentation.  
 * If you are changing something that affects the user interface, please update the appropriate documentation and help files to ensure continued user friendliness of the application.
   
-## Style Guide
+## Code / Style Guide
+
+### API
+  The API is built with [Slim version 2.0](http://docs.slimframework.com/)
 
 ### UI Standards
 
-*  We use the [AdminLTE theme](https://almsaeedstudio.com/preview) to generate a consistent UX for our users.  Before you make any UI changes please review the [AdminLTE documentation](https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html) for the best way to leverage the theme's build in JavaScript and CSS. 
-*  AdminLTE contains many JavaScript [Plugins](https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html#plugins) (including JQuery), so before adding any external components, please evaluate the plugins already in the project.
+*  We use the [AdminLTE theme](https://almsaeedstudio.com/preview) to generate a consistent UX for our users.  Before you make any UI changes please review the [AdminLTE documentation](https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html) for the best way to leverage the theme's built in JavaScript and CSS. 
+*  AdminLTE contains many JavaScript [Plugins](https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html#plugins) (including [JQuery](http://www.w3schools.com/jquery/) and [Bootstrap](http://www.w3schools.com/bootstrap/)), so before adding any external components, please evaluate the plugins already in the project.
 
 ### General Code Formatting
 
@@ -61,7 +66,7 @@ Please familiarize yourself with the [documentation](http://docs.churchcrm.io/en
 * New lines should not follow class or scope definitions like "class", "public", or "private" 
 
 #### Braces
-* All braces should be on a new line
+* All open braces should be on the same line as the control statement:
     * Class definitions
     * Method declarations
     * if, else, elseif
@@ -70,16 +75,17 @@ Please familiarize yourself with the [documentation](http://docs.churchcrm.io/en
     * do 
     * switch 
     * try, catch, finally
+* All close braces should be on their own line.
 
 #### Spaces 
-* A spaces should occur:
-    * before the parentheses in the following statements:
+* A space should occur:
+    * Inside the parentheses in the following statements:
         * if, elseif
         * for, foreach
         * while
         * catch
         * switch
-    * before and after the following statements:
+    * Before and after the following elements:
         * Binary operators ( < > == )
         * Ternary Operators ( $b ? $a : $b )
         * String Concatenation Operator ' . '
