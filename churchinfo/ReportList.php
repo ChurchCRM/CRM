@@ -57,20 +57,7 @@ require 'Include/Header.php';
     </div>
   </div>
   <!-- ./col -->
-  <div class="col-lg-12">
-    <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title">Sunday School Reports</h3>
-      </div>
-      <div class="box-body">
-        <p>
-          <a class="MediumText" href="SundaySchool.php"><?php echo gettext('Sunday School Reports'); ?></a>
-          <br><?php echo gettext('Generate class lists and attendance sheets'); ?>
-        </p>
-      </div>
-    </div>
-  </div>
-  <!-- ./col -->
+
   <?php if ($_SESSION['bFinance'])
   {
     ?>
