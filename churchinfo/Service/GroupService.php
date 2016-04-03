@@ -357,7 +357,6 @@ class GroupService
   function getGroupTotalMembers($groupID)
   {
     requireUserGroupMembership("bManageGroups");
-    requireUserGroupMembership("bManageGroups");
     //Get the count of members
     $sSQL = 'SELECT COUNT(*) AS iTotalMembers FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = ' . $groupID;
     $rsTotalMembers = mysql_fetch_array(RunQuery($sSQL));

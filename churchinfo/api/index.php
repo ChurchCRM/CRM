@@ -84,7 +84,7 @@ $app->group('/groups', function () use ($app) {
   $app->post('/:groupID/removeuser/:userID', function ($groupID, $userID) use ($groupService) {
 
     $groupService->removeUserFromGroup($groupID, $userID);
-    echo '{"success":"true"}';
+    echo json_encode(["success" => true]);
   });
   $app->post('/:groupID/adduser/:userID', function ($groupID, $userID) use ($groupService) {
 
@@ -93,18 +93,20 @@ $app->group('/groups', function () use ($app) {
   $app->delete('/:groupID', function ($groupID) use ($groupService) {
 
     $groupService->deleteGroup($groupID);
-    echo '{"success":"true"}';
+    echo json_encode(["success" => true]);
   });
 
   $app->get('/:groupID', function ($groupID) use ($groupService) {
 
     echo $groupService->getGroupJSON($groupService->getGroups($groupID));
   });
+
   $app->post('/:groupID', function ($groupID) use ($app, $groupService) {
 
     $input = getJSONFromApp($app);
     echo $groupService->updateGroup($groupID, $input);
   });
+
   $app->post('/', function () use ($app, $groupService) {
 
     $input = getJSONFromApp($app);
@@ -121,7 +123,7 @@ $app->group('/groups', function () use ($app) {
       $groupService->setGroupRoleOrder($groupID, $roleID, $input->groupRoleOrder);
     }
 
-    echo '{"success":"true"}';
+    echo json_encode(["success" => true]);
   });
 
   $app->delete('/:groupID/roles/:roleID', function ($groupID, $roleID) use ($app, $groupService) {
@@ -139,7 +141,7 @@ $app->group('/groups', function () use ($app) {
 
     $input = getJSONFromApp($app);
     $groupService->setGroupRoleAsDefault($groupID, $input->roleID);
-    echo '{"success":"true"}';
+    echo json_encode(["success" => true]);
   });
 
   $app->post('/:groupID/setGroupSpecificPropertyStatus', function ($groupID) use ($app, $groupService) {
@@ -147,11 +149,11 @@ $app->group('/groups', function () use ($app) {
     $input = getJSONFromApp($app);
     if ($input->GroupSpecificPropertyStatus) {
       $groupService->enableGroupSpecificProperties($groupID);
-      return '{"status":"group specific properties enabled"}';
+      echo json_encode(["status" => "group specific properties enabled"]);
     }
     else {
       $groupService->disableGroupSpecificProperties($groupID);
-      return '{"status":"group specific properties disabled"}';
+      echo json_encode(["status" => "group specific properties disabled"]);
     }
   });
 });
@@ -164,17 +166,14 @@ $app->group('/queries', function () use ($app) {
   });
 
   $app->get("/:id", function ($id) use ($app, $reportingService) {
-
     echo $reportingService->getQueriesJSON($reportingService->getQuery($id));
   });
 
   $app->get("/:id/details", function ($id) use ($app, $reportingService) {
-
     echo '{"Query":' . json_encode($reportingService->getQuery($id)) . ' , "Parameters":' . json_encode($reportingService->getQueryParameters($id)) . '}';
   });
 
   $app->post('/:id', function() use ($app, $reportingService) {
-
     $input = getJSONFromApp($app);
     echo json_encode($reportingService->queryDatabase($input));
   });
@@ -206,12 +205,27 @@ $app->group('/search', function () use ($app) {
   $app->get('/:query', function ($query) use ($app) {
 
     $resultsArray = array();
-    try{ array_push($resultsArray, $app->PersonService->getPersonsJSON($app->PersonService->search($query)));}catch (Exception $e){}
-    try{ array_push($resultsArray, $app->FamilyService->getFamiliesJSON($app->FamilyService->search($query)));}catch (Exception $e){}
-    try{ array_push($resultsArray, $app->GroupService->getGroupJSON($app->GroupService->search($query)));}catch (Exception $e){}
-    try{ array_push($resultsArray, $app->FinancialService->getDepositJSON($app->FinancialService->searchDeposits($query)));}catch (Exception $e){}
-    try{ array_push($resultsArray, $app->FinancialService->getPaymentJSON($app->FinancialService->searchPayments($query)));}catch (Exception $e){}
-    echo "[" . join(",", array_filter($resultsArray)) . "]";
+    try { array_push($resultsArray, $app->PersonService->getPersonsJSON($app->PersonService->search($query))); }
+    catch (Exception $e) {
+      
+    }
+    try { array_push($resultsArray, $app->FamilyService->getFamiliesJSON($app->FamilyService->search($query))); }
+    catch (Exception $e) {
+      
+    }
+    try { array_push($resultsArray, $app->GroupService->getGroupJSON($app->GroupService->search($query))); }
+    catch (Exception $e) {
+      
+    }
+    try { array_push($resultsArray, $app->FinancialService->getDepositJSON($app->FinancialService->searchDeposits($query))); }
+    catch (Exception $e) {
+      
+    }
+    try { array_push($resultsArray, $app->FinancialService->getPaymentJSON($app->FinancialService->searchPayments($query))); }
+    catch (Exception $e) {
+      
+    }
+  echo json_encode(["results" => array_filter($resultsArray)]);
   });
 });
 
@@ -236,9 +250,9 @@ $app->group('/persons', function () use ($app) {
 
       $deleted = $personService->deleteUploadedPhoto($id);
       if (!$deleted)
-        echo "{filesDeleted: no images found}";
+        echo json_encode(["filesDeleted" => "no images found"]);
       else
-        echo "{filesDeleted: yes}";
+        echo json_encode(["filesDeleted" => true]);
     });
   });
 });
@@ -272,12 +286,12 @@ $app->group('/deposits', function () use ($app) {
 
   $app->get('/', function () use ($app) {
 
-    echo '{"deposits": ' . json_encode($app->FinancialService->getDeposits()) . '}';
+    echo json_encode(["deposits" => json_encode($app->FinancialService->getDeposits())]);
   });
 
   $app->get('/:id', function ($id) use ($app) {
 
-    echo '{"deposits": ' . json_encode($app->FinancialService->getDeposits($id)) . '}';
+    echo json_encode(["deposits" => json_encode($app->FinancialService->getDeposits($id))]);
   })->conditions(array('id' => '[0-9]+'));
 
   $app->post('/:id', function ($id) use ($app) {
@@ -311,7 +325,7 @@ $app->group('/deposits', function () use ($app) {
   $app->delete('/:id', function ($id) use ($app) {
 
     $app->FinancialService->deleteDeposit($id);
-    echo '{"success":"true"}';
+    echo json_encode(["success" => true]);
   })->conditions(array('id' => '[0-9]+'));
 
   $app->get('/:id/payments', function ($id) use ($app) {
@@ -329,24 +343,24 @@ $app->group('/payments', function () use ($app) {
   $app->post('/', function () use ($app) {
 
     $payment = getJSONFromApp($app);
-    echo '{"payment": ' . json_encode($app->FinancialService->submitPledgeOrPayment($payment)) . '}';
+    echo json_encode(["payment" => json_encode($app->FinancialService->submitPledgeOrPayment($payment))]);
   });
   $app->get('/:id', function ($id) use ($app) {
 
-    //$payment = getJSONFromApp($app);
-    //echo $app->FinancialService->getDepositsByFamilyID($fid); //This might not work yet...
-    echo '{"status":"Not implemented"}';
+//$payment = getJSONFromApp($app);
+//echo $app->FinancialService->getDepositsByFamilyID($fid); //This might not work yet...
+    echo json_encode(["status" => "Not Implemented"]);
   });
   $app->get('/byFamily/:familyId(/:fyid)', function ($familyId, $fyid = -1) use ($app) {
 
     echo '{"status":"Not implemented"}';
-    //$payment = getJSONFromApp($app);
-    #$app->FinancialService->getDepositsByFamilyID($fid);//This might not work yet...
+//$payment = getJSONFromApp($app);
+#$app->FinancialService->getDepositsByFamilyID($fid);//This might not work yet...
   });
   $app->delete('/:groupKey', function ($groupKey) use ($app) {
 
     $app->FinancialService->deletePayment($groupKey);
-    echo '{"status":"ok"}';
+    echo json_encode(["status" => "ok"]);
   });
 });
 
@@ -356,7 +370,7 @@ $app->group('/notes', function () use ($app) {
   $app->delete('/:noteID', function ($noteID) use ($noteService) {
 
     $noteService->deleteNoteById($noteID);
-    echo '{"success":"true"}';
+    echo json_encode(["success" => true]);
   });
 
   $app->get('/:noteId', function ($noteId) use ($noteService) {

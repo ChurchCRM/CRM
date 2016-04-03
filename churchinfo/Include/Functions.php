@@ -2043,7 +2043,7 @@ function requireUserGroupMembership($allowedRoles=null)
     return true;
   }
   //if we get to this point in the code, then the user is not authorized.
-  throw new Exception("User is not authorized to access ".debug_backtrace()[1]['function']);
+  throw new Exception("User is not authorized to access " . debug_backtrace()[1]['function']);
 }
 
 ?>
