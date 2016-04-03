@@ -25,6 +25,7 @@ We love to hear ideas from other ChurchInfo and ChurchCRM users!  It's what make
 
 * Push your changes to a topic branch in your fork of the repository.
 * Submit a pull request to the repository in the ChurchCRM organization.
+    * Please include a screenshot or screencast if your changes affect the UI/UX ([LICEcap](http://www.cockos.com/licecap/) is a free animated GIF screen cast application)
 * The core team looks at Pull Requests on a regular basis.
 * After feedback has been given we expect responses within two weeks. After two
   weeks we may close the pull request if it isn't showing any activity.
