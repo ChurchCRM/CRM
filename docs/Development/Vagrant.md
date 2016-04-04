@@ -2,9 +2,7 @@
 
 ## Get Started
 
-Thanks to Scotch box https://github.com/scotch-io/scotch-box a the LAMP base box.
-
-https://github.com/scotch-io/scotch-box#get-started
+[Scotch box](https://github.com/scotch-io/scotch-box#get-started) provides us a quick LAMP stack in the Vagrant environment.
 
 
 ## Steps  
@@ -17,7 +15,7 @@ Just clone and run Vagrant up
 
 ## Server
 
-Access the Project at http://192.168.33.10/
+Access the Project at [http://192.168.33.10](http://192.168.33.10/)
 
 
 ### Login Info
@@ -47,3 +45,10 @@ DB Password: `churchcrm`
 > jdbc:mysql://192.168.33.10:3306/churchcrm?zeroDateTimeBehavior=convertToNull
 6. Click "Test Connection"
 7. You should now be able to browse the database schema, and execute queries from the NetBeans IDE.
+
+### Vagrant Email
+- All outbound email from ChurchCRM should be directed at the local instance of [MailCatcher](http://mailcatcher.me/).  
+    - MailCatcher prevents messages from actually being delivered over the internet, but still allows you (as a developer) to see all of the headers and content of the messages
+- The SMTP service listens on 127.0.0.1, port 1025 (You must manually configure your development instance of ChurchCRM to send mail to this address.)
+- The Vagrant bootstrap.sh script will automatically start MailCatcher on all IP addresses owned by the Vagrant VM.
+- You can view (in realtime) the messages sent by ChurchCRM by opening [http://192.168.33.10:1080](http://192.168.33.10:1080) on the machine hosting the Vagrant environment

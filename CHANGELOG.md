@@ -1,5 +1,64 @@
 # Change Log
 
+## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
+
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0-B5...HEAD)
+
+**Implemented enhancements:**
+
+- Sunday School: Queries [\#479](https://github.com/ChurchCRM/CRM/issues/479)
+- Move SundaySchool Reports [\#478](https://github.com/ChurchCRM/CRM/issues/478)
+- Mailchimp's Generate Email Export should export a person's groups [\#457](https://github.com/ChurchCRM/CRM/issues/457)
+- Restyle Sunday School Dashboard to match Menu and Member Dashboard [\#422](https://github.com/ChurchCRM/CRM/issues/422)
+- Skin: WhyCameEditor.php [\#373](https://github.com/ChurchCRM/CRM/issues/373)
+- Search by Check Number [\#241](https://github.com/ChurchCRM/CRM/issues/241)
+- MailChimp CSV Now include groups Closes \#457 [\#512](https://github.com/ChurchCRM/CRM/pull/512) ([DawoudIO](https://github.com/DawoudIO))
+- Sunday school reports Closes \#478 [\#509](https://github.com/ChurchCRM/CRM/pull/509) ([DawoudIO](https://github.com/DawoudIO))
+- Sunday school updates [\#507](https://github.com/ChurchCRM/CRM/pull/507) ([DawoudIO](https://github.com/DawoudIO))
+- Use JSON functionality to build bday list [\#505](https://github.com/ChurchCRM/CRM/pull/505) ([dschwen](https://github.com/dschwen))
+- Improve Performance of getGroupRoles [\#499](https://github.com/ChurchCRM/CRM/pull/499) ([crossan007](https://github.com/crossan007))
+- Use Redirect\(\) instead of Header\(\) in ConfirmReportEmail.php [\#498](https://github.com/ChurchCRM/CRM/pull/498) ([crossan007](https://github.com/crossan007))
+- Allow adding all family members to cart [\#496](https://github.com/ChurchCRM/CRM/pull/496) ([crossan007](https://github.com/crossan007))
+- Fix Reports Theme [\#402](https://github.com/ChurchCRM/CRM/pull/402) ([crossan007](https://github.com/crossan007))
+
+**Fixed bugs:**
+
+- Names containing single quotes break the calendar [\#502](https://github.com/ChurchCRM/CRM/issues/502)
+- Pretty URL proxy should check if the session is valid [\#490](https://github.com/ChurchCRM/CRM/issues/490)
+- PersonCustomFieldsEditor doesn't parse [\#486](https://github.com/ChurchCRM/CRM/issues/486)
+- Query: Person Count Should be deleted [\#480](https://github.com/ChurchCRM/CRM/issues/480)
+- Events: Type Edit does not escape char [\#464](https://github.com/ChurchCRM/CRM/issues/464)
+- GroupList.php loading takes over 40s [\#437](https://github.com/ChurchCRM/CRM/issues/437)
+- Skin: WhyCameEditor.php [\#373](https://github.com/ChurchCRM/CRM/issues/373)
+- ConfirmReportEmail.php needs to use Redirect\(\) [\#316](https://github.com/ChurchCRM/CRM/issues/316)
+- There is no way to add a family to a group or cart [\#232](https://github.com/ChurchCRM/CRM/issues/232)
+- Theme: Reports [\#186](https://github.com/ChurchCRM/CRM/issues/186)
+- Fix the speed of the GroupList Page [\#511](https://github.com/ChurchCRM/CRM/pull/511) ([DawoudIO](https://github.com/DawoudIO))
+- Theme: Why Come [\#510](https://github.com/ChurchCRM/CRM/pull/510) ([DawoudIO](https://github.com/DawoudIO))
+- Use JSON functionality to build bday list [\#505](https://github.com/ChurchCRM/CRM/pull/505) ([dschwen](https://github.com/dschwen))
+- Replace non-existent rebuildMenus call [\#493](https://github.com/ChurchCRM/CRM/pull/493) ([dschwen](https://github.com/dschwen))
+- Customize session name to allow multiple CRM instances [\#491](https://github.com/ChurchCRM/CRM/pull/491) ([dschwen](https://github.com/dschwen))
+- Escape input when inserting/updating events and event types [\#488](https://github.com/ChurchCRM/CRM/pull/488) ([sethjeffery](https://github.com/sethjeffery))
+- removed extra . Closes \#486 [\#487](https://github.com/ChurchCRM/CRM/pull/487) ([DawoudIO](https://github.com/DawoudIO))
+
+**Closed issues:**
+
+- username and password issue [\#513](https://github.com/ChurchCRM/CRM/issues/513)
+- Move Config.php to Config.php.example [\#503](https://github.com/ChurchCRM/CRM/issues/503)
+- test [\#501](https://github.com/ChurchCRM/CRM/issues/501)
+- test [\#500](https://github.com/ChurchCRM/CRM/issues/500)
+- CRM complains about missing FPDF library [\#494](https://github.com/ChurchCRM/CRM/issues/494)
+- Error on Restore Database [\#492](https://github.com/ChurchCRM/CRM/issues/492)
+
+**Merged pull requests:**
+
+- Vagrant db changes [\#508](https://github.com/ChurchCRM/CRM/pull/508) ([DawoudIO](https://github.com/DawoudIO))
+- Removed Person Count from Query List & Others [\#506](https://github.com/ChurchCRM/CRM/pull/506) ([DawoudIO](https://github.com/DawoudIO))
+- Move Config.php out of version control [\#504](https://github.com/ChurchCRM/CRM/pull/504) ([dschwen](https://github.com/dschwen))
+- Add MailCatcher Script and Documentation [\#495](https://github.com/ChurchCRM/CRM/pull/495) ([crossan007](https://github.com/crossan007))
+- Update contributing.MD for code styles [\#489](https://github.com/ChurchCRM/CRM/pull/489) ([crossan007](https://github.com/crossan007))
+- reformating via IDEA [\#485](https://github.com/ChurchCRM/CRM/pull/485) ([DawoudIO](https://github.com/DawoudIO))
+
 ## [2.0.0-B5](https://github.com/ChurchCRM/CRM/tree/2.0.0-B5) (2016-03-22)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0-B4...2.0.0-B5)
 

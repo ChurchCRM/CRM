@@ -158,22 +158,25 @@ class GroupService
    */
   function getGroupRoles($groupID)
   {
-    $groupRoles = array();
-    $sSQL = "SELECT grp_RoleListID FROM group_grp WHERE grp_ID = " . $groupID;
-    $rsTemp = RunQuery($sSQL);
+    $groupRoles = array ();
+    $sSQL = "SELECT grp_ID, lst_OptionName, lst_OptionID, lst_OptionSequence
+              FROM group_grp
+              LEFT JOIN list_lst ON
+              list_lst.lst_ID = group_grp.grp_RoleListID
+              WHERE group_grp.grp_ID = " . $groupID;
+    $rsList = RunQuery($sSQL);
 
     // Validate that this list ID is really for a group roles list. (for security)
-    if (mysql_num_rows($rsTemp) == 0) {
-      throw new Exception ("invalid request");
+    if(mysql_num_rows($rsList) == 0)
+    {
+      throw new Exception("invalid request");
     }
 
-    $grp_RoleListID = mysql_fetch_array($rsTemp);
-
-    $sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=" . $grp_RoleListID[0] . " ORDER BY lst_OptionSequence";
-    $rsList = RunQuery($sSQL);
-    while ($row = mysql_fetch_assoc($rsList)) {
-      array_push($groupRoles, $row);
+    while ($row = mysql_fetch_assoc( $rsList ))
+    {
+      array_push($groupRoles,$row);
     }
+    
     return $groupRoles;
   }
 
@@ -387,18 +390,18 @@ class GroupService
     $groupMembers = $this->getGroupMembers($groupID);
 
     foreach ($groupMembers as $member) {
-      $sSQLr = "INSERT INTO groupprop_" . $groupID . " ( `per_ID` ) VALUES ( '" . $member['per_ID'] . "' );";
+      $sSQLr = "INSERT INTO groupprop_" . $groupID . " ( per_ID ) VALUES ( '" . $member['per_ID'] . "' );";
       RunQuery($sSQLr);
     }
   }
 
   function disableGroupSpecificProperties($groupID)
   {
-    $sSQLp = "DROP TABLE groupprop_" . $iGroupID;
+    $sSQLp = "DROP TABLE groupprop_" . $groupID;
     RunQuery($sSQLp);
 
     // need to delete the master index stuff
-    $sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
+    $sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $groupID;
     RunQuery($sSQLp);
   }
 
@@ -570,9 +573,31 @@ class GroupService
     return $members;
   }
 
+  function getGroupMembersIds($groupID)
+  {
+    $members = array();
+    // Main select query
+    $sSQL = "SELECT p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID, lst_OptionName FROM person2group2role_p2g2r
+
+        INNER JOIN group_grp ON
+        person2group2role_p2g2r.p2g2r_grp_ID = group_grp.grp_ID
+
+        INNER JOIN list_lst ON
+        group_grp.grp_RoleListID = list_lst.lst_ID AND
+        person2group2role_p2g2r.p2g2r_rle_ID =  list_lst.lst_OptionID
+
+        WHERE p2g2r_grp_ID =" . $groupID;
+    $result = mysql_query($sSQL);
+    while ($row = mysql_fetch_assoc($result)) {
+      $person = array( "id" => $row['p2g2r_per_ID']);
+      array_push($members, $person);
+    }
+    return $members;
+  }
+
   function checkGroupAgainstCart($groupID)
   {
-    $members = $this->getGroupMembers($groupID);
+    $members = $this->getGroupMembersIds($groupID);
     //echo "Members: ".count($members);
     $bNoneInCart = TRUE;
     $bAllInCart = TRUE;
@@ -580,9 +605,9 @@ class GroupService
     foreach ($members as $member) {
       if (!isset ($_SESSION['aPeopleCart']))
         $bAllInCart = FALSE; // Cart does not exist.  This person is not in cart.
-      elseif (!in_array($member['per_ID'], $_SESSION['aPeopleCart'], false))
+      elseif (!in_array($member['id'], $_SESSION['aPeopleCart'], false))
         $bAllInCart = FALSE; // This person is not in cart.
-      elseif (in_array($member['per_ID'], $_SESSION['aPeopleCart'], false))
+      elseif (in_array($member['id'], $_SESSION['aPeopleCart'], false))
         $bNoneInCart = FALSE; // This person is in the cart
     }
 
@@ -602,7 +627,7 @@ class GroupService
     if (array_key_exists("EmptyCart", $_POST) && $_POST["EmptyCart"] && count($_SESSION['aPeopleCart']) > 0) {
       $iCount = 0;
       while ($element = each($_SESSION['aPeopleCart'])) {
-        $groupService->AddUsertoGroup($_SESSION['aPeopleCart'][$element['key']], $iGroupID, $thisGroup['grp_DefaultRole']);
+        AddUsertoGroup($_SESSION['aPeopleCart'][$element['key']], $iGroupID, $thisGroup['grp_DefaultRole']);
         $iCount += 1;
       }
 
