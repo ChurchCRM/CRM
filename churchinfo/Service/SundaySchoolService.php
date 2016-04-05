@@ -37,7 +37,9 @@ class SundaySchoolService
         $lastClassId = $row["grp_id"];
       }
     }
-    array_push($classInfo, $curClass);
+    if (!empty($curClass)) {
+      array_push($classInfo, $curClass);
+    }
     return $classInfo;
 
   }
