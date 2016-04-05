@@ -2023,27 +2023,24 @@ function requireUserGroupMembership($allowedRoles=null)
   {
     throw new Exception("Role(s) must be defined for the function which you are trying to access.  End users should never see this error unless something went horribly wrong.");
   }
-  if (is_array($allowedRoles))
-  {
-     foreach($allowedRoles as $role)
-     {
-       if($_SESSION[$role])
-       {
-         // The current allowed role is in the user's session variable
-         return true;
-       }
-     }
-  }
-  elseif ($_SESSION[$allowedRoles])
+  if ($_SESSION[$allowedRoles] || $_SESSION['bAdmin'])  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
   {
     return true;
   }
-  elseif ($_SESSION['bAdmin'])
+  elseif (is_array($allowedRoles))  //sometimes we might have an array of allowed roles.
   {
-    return true;
+    foreach($allowedRoles as $role)
+    {
+      if($_SESSION[$role])
+      {
+        // The current allowed role is in the user's session variable
+        return true;
+      }
+    }
   }
+ 
   //if we get to this point in the code, then the user is not authorized.
-  throw new Exception("User is not authorized to access " . debug_backtrace()[1]['function']);
+  throw new Exception("User is not authorized to access " . debug_backtrace()[1]['function'], 401);
 }
 
 ?>

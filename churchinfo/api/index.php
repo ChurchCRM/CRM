@@ -31,14 +31,8 @@ $app->config('debug', false);
 $app->contentType('application/json');
 
 $app->error(function(Exception $e) use ($app) {
-  if (!isset($e->customSeverity)) {  // if there is no custom severity in the passed exception object, assign a "1"
-    $e->customSeverity = 1;  //Use a custom severity code so that user-side code can determine what level of error should generate a UI Modal dialog.  Anything >0 currently causes a modal.
-  }
-  if (!isset($e->responseCode)) { // if there is no response code, assume unhandled exception (500)
-    $e->responseCode = 500;
-  }
-  http_response_code($e->responseCode);
-  echo '{"error":{"text":"' . $e->getMessage() . '","severity":"' . $e->customSeverity . '"}}';
+  $app->response->setStatus($e->getCode());
+  echo json_encode(["error" => ["text" => $e->getMessage()]]);
 });
 
 $app->container->singleton('PersonService', function () {
@@ -170,7 +164,7 @@ $app->group('/queries', function () use ($app) {
   });
 
   $app->get("/:id/details", function ($id) use ($app, $reportingService) {
-    echo '{"Query":' . json_encode($reportingService->getQuery($id)) . ' , "Parameters":' . json_encode($reportingService->getQueryParameters($id)) . '}';
+    echo json_encode(["Query" => $reportingService->getQuery($id),"Parameters" => $reportingService->getQueryParameters($id)]);
   });
 
   $app->post('/:id', function() use ($app, $reportingService) {
@@ -286,12 +280,12 @@ $app->group('/deposits', function () use ($app) {
 
   $app->get('/', function () use ($app) {
 
-    echo json_encode(["deposits" => json_encode($app->FinancialService->getDeposits())]);
+    echo json_encode(["deposits" => $app->FinancialService->getDeposits()]);
   });
 
   $app->get('/:id', function ($id) use ($app) {
 
-    echo json_encode(["deposits" => json_encode($app->FinancialService->getDeposits($id))]);
+    echo json_encode(["deposits" => $app->FinancialService->getDeposits($id)]);
   })->conditions(array('id' => '[0-9]+'));
 
   $app->post('/:id', function ($id) use ($app) {
@@ -343,7 +337,7 @@ $app->group('/payments', function () use ($app) {
   $app->post('/', function () use ($app) {
 
     $payment = getJSONFromApp($app);
-    echo json_encode(["payment" => json_encode($app->FinancialService->submitPledgeOrPayment($payment))]);
+    echo json_encode(["payment" => $app->FinancialService->submitPledgeOrPayment($payment)]);
   });
   $app->get('/:id', function ($id) use ($app) {
 
