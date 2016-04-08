@@ -1,6 +1,15 @@
 #Credits and Thanks
 
 ##The ChurchCRM team:
+  
+
+  * [Charles Crossan](http://www.ccrossan.com)
+  * Daniel Schwen
+  * [George Dawoud](http://blog.dawouds.com/)
+  * Rod Kesselring
+  
+  
+
 
 
 ##Other Open Source code used in this project:
@@ -16,4 +25,4 @@
 *	FPDF by Olivier Plathey
 *	JpGraph by Johan Persson
 
-ChurchCRM is a spin-off from ChurchInfo, which is a spin-off from InfoCentral.  Refer to the ChurchInfo and InfoCentral project sites for additional credits and history.
+ChurchCRM is a fork of [ChurchInfo](http://www.churchdb.org/), which is a fork from [InfoCentral](https://sourceforge.net/projects/infocentral/).  Refer to the ChurchInfo and InfoCentral project sites for additional credits and history.
