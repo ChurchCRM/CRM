@@ -5,7 +5,7 @@ language: php
 php:
 # aliased to a recent 5.6.x version
   - 5.6
-
+  
 notifications:
   webhooks:
     urls:
@@ -13,17 +13,19 @@ notifications:
     on_success: change  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
     on_start: never     # options: [always|never|change] default: always
-
+  
 # optionally specify a list of environments, for example to test different RDBMS
 env:
   - DB=mysql
 
 # execute any number of scripts before the test run, custom env's are available as variables
 before_script:
-  - if [[ "$DB" == "mysql" ]]; then mysql -e "CREATE DATABASE IF NOT EXISTS churchcrm CHARACTER SET utf8;" -uroot; fi
-  - if [[ "$DB" == "mysql" ]]; then mysql -e "CREATE USER 'churchcrm'@'churchcrm' IDENTIFIED BY 'churchcrm';" -uroot; fi
-  - if [[ "$DB" == "mysql" ]]; then mysql -e "GRANT ALL PRIVILEGES ON churchcrm.* TO 'churchcrm'@'churchcrm' WITH GRANT OPTION;" -uroot; fi
+  - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS churchcrm_test;" -uroot; fi
 
 # omitting "script:" will default to phpunit
 # use the $DB env variable to determine the phpunit.xml to use
-script: phpunit --configuration phpunit_$DB.xml --coverage-text
+script: 
+  - if [[ "$DB" == "mysql" ]]; then mysql churchcrm_test < ./churchinfo/mysql/install/Install.sql -uroot; fi
+  - tests/LineEndings.sh
+  - phpunit --configuration phpunit_$DB.xml --coverage-text
+

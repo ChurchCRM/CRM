@@ -4,7 +4,7 @@
  *  filename    : AutoPaymentEditor.php
  *  copyright   : Copyright 2001, 2002, 2003, 2004 - 2014 Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -42,7 +42,7 @@ if ($iAutID <= 0) {  // Need to create the record so there is a place to store t
 	$tEmail=$fam_Email;
 	$iInterval = 1;
 	$iFund = 1;
-	
+
 	$bEnableBankDraft=0;
 	$bEnableCreditCard=0;
 
@@ -58,9 +58,9 @@ if ($iAutID <= 0) {  // Need to create the record so there is a place to store t
 	$tRoute="";
 	$tAccount="";
 	$tAccountVanco="";
-	
+
 	$nAmount = 0;
-	
+
 	$sSQL = "INSERT INTO autopayment_aut (
 	           aut_FamID,
 				  aut_EnableBankDraft,
@@ -117,9 +117,9 @@ if ($iAutID <= 0) {  // Need to create the record so there is a place to store t
 					"'" . 1 . "'," .
 					"'" . date ("YmdHis") . "'," .
 					$_SESSION['iUserID'] .
-					")";	
+					")";
 	RunQuery($sSQL);
-	
+
 	$sSQL = "SELECT MAX(aut_ID) AS iAutID FROM autopayment_aut";
 	$rsAutID = RunQuery($sSQL);
 	extract(mysql_fetch_array($rsAutID));
@@ -165,7 +165,7 @@ if (isset($_POST["Submit"]))
 	$tCreditCard = FilterInput ($_POST["CreditCard"]);
 	$tExpMonth = FilterInput ($_POST["ExpMonth"]);
 	$tExpYear = FilterInput ($_POST["ExpYear"]);
-	
+
 	$tBankName = FilterInput ($_POST["BankName"]);
 	$tRoute = FilterInput ($_POST["Route"]);
 	$tAccount = FilterInput ($_POST["Account"]);
@@ -245,9 +245,6 @@ if (isset($_POST["Submit"]))
 }
 
 require "Include/Header.php";
-?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<?php
 
 //Get Families for the drop-down
 $sSQL = "SELECT * FROM family_fam ORDER BY fam_Name";
@@ -263,7 +260,7 @@ if ($sElectronicTransactionProcessor == "Vanco") {
 	$customerid = "$iAutID"; // This is an optional value that can be used to indicate a unique customer ID that is used in your system
 	// put aut_ID into the $customerid field
 	// Create object to preform API calls
-	
+
 	$workingobj = new VancoTools($VancoUserid, $VancoPassword, $VancoClientid, $VancoEnc_key, $VancoTest);
 	// Call Login API to receive a session ID to be used in future API calls
 	$sessionid = $workingobj->vancoLoginRequest();
@@ -272,7 +269,7 @@ if ($sElectronicTransactionProcessor == "Vanco") {
 }
 ?>
 
-<?php 
+<?php
 if ($sElectronicTransactionProcessor == "Vanco") {
 ?>
 
@@ -294,7 +291,7 @@ function VancoErrorString (errNo)
 		case 67: return "Transaction must have at least one transaction fund.";
 		case 68: return "User is Inactive";
 		case 69: return "Expiration Date Invalid";
-		case 70: return "Account Type must be “C”, “S' for ACH and must be blank for Credit Card";
+		case 70: return "Account Type must be C, S' for ACH and must be blank for Credit Card";
 		case 71: return "Class Code must be PPD, CCD, TEL, WEB, RCK or blank.";
 		case 72: return "Missing Client Data: Client ID";
 		case 73: return "Missing Customer Data: Customer ID or Name or Last Name & First Name";
@@ -434,7 +431,7 @@ function VancoErrorString (errNo)
 		case 572: return "Canadian Provence Required";
 		case 573: return "Canadian Postal Code Required";
 		case 574: return "Country Code Required";
-		case 578: return "Unable to Read Card Information. Please Click “Click to Swipe” Button and Try Again.";
+		case 578: return "Unable to Read Card Information. Please Click 'Click to Swipe' Button and Try Again.";
 		case 610: return "Invalid Banking Information. Previous Notification of Change Received for this Account";
 		case 629: return "Invalid CVV2";
 		case 641: return "Fund ID Not Found";
@@ -485,7 +482,7 @@ function VancoErrorString (errNo)
 		case 1070: return "Transaction Cannot Be Voided";
 		case 1073: return "Transaction Processed More Than 25 Minutes Ago";
 		case 1127: return "Declined - Tran Not Permitted";
-		case 1128: return "Unable To Process, Please Try Again"; 
+		case 1128: return "Unable To Process, Please Try Again";
 	}
 }
 
@@ -500,24 +497,25 @@ function CreatePaymentMethod()
 		accountNum = Account.value;
 	if (document.getElementById("EnableCreditCard").checked)
 		accountNum = CreditCard.value;
-    
+
     $.ajax({
         type: "POST",
-        url: "<?php if ($VancoTest) echo "https://www.vancodev.com/cgi-bin/wsnvptest.vps"; else echo "https://www.vancoservices.com/cgi-bin/wsnvp.vps";?>",
-        data: { "sessionid":"<?php echo $sessionid; ?>", 
-    	        "nvpvar":"<?php echo $nvpvarcontent; ?>",
-    	        "newcustomer":"true", 
-    	        "accounttype":accountType, 
-    	        "accountnumber":accountNum, 
-    	        "routingnumber":Route.value, 
-    	        "expmonth": ExpMonth.value, 
-    	        "expyear": ExpYear.value, 
+        url: "<?php if ($VancoTest) echo "https://www.vancodev.com/cgi-bin/wsnvptest.vps";
+                               else echo "https://www.vancoservices.com/cgi-bin/wsnvp.vps"; ?>",
+        data: { "sessionid":"<?= $sessionid ?>",
+    	        "nvpvar":"<?= $nvpvarcontent ?>",
+    	        "newcustomer":"true",
+    	        "accounttype":accountType,
+    	        "accountnumber":accountNum,
+    	        "routingnumber":Route.value,
+    	        "expmonth": ExpMonth.value,
+    	        "expyear": ExpYear.value,
     	        "email": Email.value,
-    	        "name":FirstName.value + " " + LastName.value, 
-    	        "billingaddr1":Address1.value, 
-    	        "billingcity":City.value, 
-                "billingstate":State.value, 
-                "billingzip":Zip.value, 
+    	        "name":FirstName.value + " " + LastName.value,
+    	        "billingaddr1":Address1.value,
+    	        "billingcity":City.value,
+                "billingstate":State.value,
+                "billingzip":Zip.value,
                 "name_on_card":FirstName.value + " " + LastName.value
         },
         dataType: 'jsonp',
@@ -528,7 +526,7 @@ function CreatePaymentMethod()
         	var errorList = vancodata["errorlist"];
             $.ajax({
                 type: "POST",
-                url: "<?php echo $VancoUrltoredirect;?>",
+                url: "<?= $VancoUrltoredirect ?>",
                 data: vancodata,
                 dataType: 'json',
                 async: true,
@@ -548,9 +546,9 @@ function CreatePaymentMethod()
                     	errorArr = errorList.split(',');
                     	errorStr = "";
                     	for (var i = 0; i < errorArr.length; i++)
-                        	errorStr += "Error " + errorArr[i] + ": " + VancoErrorString(Number(errorArr[i])) + "\n"; 
+                        	errorStr += "Error " + errorArr[i] + ": " + VancoErrorString(Number(errorArr[i])) + "\n";
                 		alert (errorStr);
-                		window.location = "<?php echo RedirectURL ("AutoPaymentEditor.php")."?AutID=$iAutID&FamilyID=$aut_FamID$&linkBack=$linkBack";?>";
+                		window.location = "<?= RedirectURL ("AutoPaymentEditor.php")."?AutID=$iAutID&FamilyID=$aut_FamID$&linkBack=$linkBack" ?>";
                 	}
                 },
                 error: function (jqXHR, textStatus, errorThrown, nashuadata) {
@@ -566,18 +564,18 @@ function CreatePaymentMethod()
     });
 }
 </script>
-<?php 
+<?php
 }
 ?>
 
-<form method="post" action="AutoPaymentEditor.php?<?php echo "AutID=" . $iAutID . "&FamilyID=" . $iFamily . "&linkBack=" . $linkBack; ?>" name="AutoPaymentEditor">
+<form method="post" action="AutoPaymentEditor.php?<?= "AutID=" . $iAutID . "&FamilyID=" . $iFamily . "&linkBack=" . $linkBack ?>" name="AutoPaymentEditor">
 
 <table cellpadding="1" align="center">
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="Submit">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="submit" class="btn" value="<?= gettext("Save") ?>" name="Submit">
+			<input type="button" class="btn" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -586,10 +584,10 @@ function CreatePaymentMethod()
 		<table cellpadding="1" align="center">
 
 			<tr>
-				<td class="LabelColumn" <?php addToolTip("If a family member, select the appropriate family from the list. Otherwise, leave this as is."); ?>><?php echo gettext("Family:"); ?></td>
+				<td class="LabelColumn"><?= gettext("Family:") ?></td>
 				<td class="TextColumn">
 					<select name="Family" size="8">
-						<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
+						<option value="0" selected><?= gettext("Unassigned") ?></option>
 						<option value="0">-----------------------</option>
 
 						<?php
@@ -608,39 +606,39 @@ function CreatePaymentMethod()
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Automatic payment type"); ?></td>
+				<td class="LabelColumn"><?= gettext("Automatic payment type") ?></td>
 				<td class="TextColumn"><input type="radio" Name="EnableButton" value="1" id="EnableBankDraft"<?php if ($bEnableBankDraft) echo " checked"; ?>>Bank Draft
 				                       <input type="radio" Name="EnableButton" value="2" id="EnableCreditCard" <?php if ($bEnableCreditCard) echo " checked"; ?>>Credit Card
 											  <input type="radio" Name="EnableButton" value="3"  id="Disable" <?php if ((!$bEnableBankDraft)&&(!$bEnableCreditCard)) echo " checked"; ?>>Disable</td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"<?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date:"); ?></td>
-				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?php echo $dNextPayDate; ?>" maxlength="10" id="NextPayDate" size="11">&nbsp;<input type="image" onclick="return showCalendar('NextPayDate', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span></td>
+				<td class="LabelColumn"><?= gettext("Date:") ?></td>
+				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?= $dNextPayDate ?>" maxlength="10" id="NextPayDate" size="11" class="form-control pull-right active"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Fiscal Year:"); ?></td>
+				<td class="LabelColumn"><?= gettext("Fiscal Year:") ?></td>
 				<td class="TextColumnWithBottomBorder">
 					<?php PrintFYIDSelect ($iFYID, "FYID") ?>
 				</td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Payment amount");?></td>
-				<td class="TextColumn"><input type="text" name="Amount" value="<?php echo $nAmount?>"></td>
+				<td class="LabelColumn"><?= gettext("Payment amount") ?></td>
+				<td class="TextColumn"><input type="text" name="Amount" value="<?= $nAmount ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Payment interval (months)");?></td>
-				<td class="TextColumn"><input type="text" name="Interval" value="<?php echo $iInterval?>"></td>
+				<td class="LabelColumn"><?= gettext("Payment interval (months)") ?></td>
+				<td class="TextColumn"><input type="text" name="Interval" value="<?= $iInterval ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Fund:"); ?></td>
+				<td class="LabelColumn"><?= gettext("Fund:") ?></td>
 				<td class="TextColumn">
 					<select name="Fund">
-					<option value="0"><?php echo gettext("None"); ?></option>
+					<option value="0"><?= gettext("None") ?></option>
 					<?php
 					mysql_data_seek($rsFunds,0);
 					while ($row = mysql_fetch_array($rsFunds))
@@ -659,126 +657,126 @@ function CreatePaymentMethod()
 					</select>
 				</td>
 			</tr>
-			
+
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("First name");?></td>
-				<td class="TextColumn"><input type="text" id="FirstName" name="FirstName" value="<?php echo $tFirstName?>"></td>
+				<td class="LabelColumn"><?= gettext("First name") ?></td>
+				<td class="TextColumn"><input type="text" id="FirstName" name="FirstName" value="<?= $tFirstName ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Last name");?></td>
-				<td class="TextColumn"><input type="text" id="LastName" name="LastName" value="<?php echo $tLastName?>"></td>
+				<td class="LabelColumn"><?= gettext("Last name") ?></td>
+				<td class="TextColumn"><input type="text" id="LastName" name="LastName" value="<?= $tLastName ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Address 1");?></td>
-				<td class="TextColumn"><input type="text" id="Address1" name="Address1" value="<?php echo $tAddress1?>"></td>
+				<td class="LabelColumn"><?= gettext("Address 1") ?></td>
+				<td class="TextColumn"><input type="text" id="Address1" name="Address1" value="<?= $tAddress1 ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Address 2");?></td>
-				<td class="TextColumn"><input type="text" id="Address2" name="Address2" value="<?php echo $tAddress2?>"></td>
+				<td class="LabelColumn"><?= gettext("Address 2") ?></td>
+				<td class="TextColumn"><input type="text" id="Address2" name="Address2" value="<?= $tAddress2 ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("City");?></td>
-				<td class="TextColumn"><input type="text" id="City" name="City" value="<?php echo $tCity?>"></td>
+				<td class="LabelColumn"><?= gettext("City") ?></td>
+				<td class="TextColumn"><input type="text" id="City" name="City" value="<?= $tCity ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("State");?></td>
-				<td class="TextColumn"><input type="text" id="State" name="State" value="<?php echo $tState?>"></td>
+				<td class="LabelColumn"><?= gettext("State") ?></td>
+				<td class="TextColumn"><input type="text" id="State" name="State" value="<?= $tState ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Zip code");?></td>
-				<td class="TextColumn"><input type="text" id="Zip" name="Zip" value="<?php echo $tZip?>"></td>
+				<td class="LabelColumn"><?= gettext("Zip code") ?></td>
+				<td class="TextColumn"><input type="text" id="Zip" name="Zip" value="<?= $tZip ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Country");?></td>
-				<td class="TextColumn"><input type="text" id="Country" name="Country" value="<?php echo $tCountry?>"></td>
+				<td class="LabelColumn"><?= gettext("Country") ?></td>
+				<td class="TextColumn"><input type="text" id="Country" name="Country" value="<?= $tCountry ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Phone");?></td>
-				<td class="TextColumn"><input type="text" id="Phone" name="Phone" value="<?php echo $tPhone?>"></td>
+				<td class="LabelColumn"><?= gettext("Phone") ?></td>
+				<td class="TextColumn"><input type="text" id="Phone" name="Phone" value="<?= $tPhone ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Email");?></td>
-				<td class="TextColumn"><input type="text" id="Email" name="Email" value="<?php echo $tEmail?>"></td>
+				<td class="LabelColumn"><?= gettext("Email") ?></td>
+				<td class="TextColumn"><input type="text" id="Email" name="Email" value="<?= $tEmail ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Credit Card");?></td>
-				<td class="TextColumn"><input type="text" id="CreditCard" name="CreditCard" value="<?php echo $tCreditCard?>"></td>
+				<td class="LabelColumn"><?= gettext("Credit Card") ?></td>
+				<td class="TextColumn"><input type="text" id="CreditCard" name="CreditCard" value="<?= $tCreditCard ?>"></td>
 			</tr>
-<?php 
+<?php
 if ($sElectronicTransactionProcessor == "Vanco") {
 ?>
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Vanco Credit Card Method");?></td>
-				<td class="TextColumn"><input type="text" id="CreditCardVanco" name="CreditCardVanco" value="<?php echo $tCreditCardVanco?>" readonly></td>
+				<td class="LabelColumn"><?= gettext("Vanco Credit Card Method") ?></td>
+				<td class="TextColumn"><input type="text" id="CreditCardVanco" name="CreditCardVanco" value="<?= $tCreditCardVanco ?>" readonly></td>
 			</tr>
-<?php 
+<?php
 }
 ?>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Expiration Month");?></td>
-				<td class="TextColumn"><input type="text" id="ExpMonth" name="ExpMonth" value="<?php echo $tExpMonth?>"></td>
+				<td class="LabelColumn"><?= gettext("Expiration Month") ?></td>
+				<td class="TextColumn"><input type="text" id="ExpMonth" name="ExpMonth" value="<?= $tExpMonth ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Expiration Year");?></td>
-				<td class="TextColumn"><input type="text" id="ExpYear" name="ExpYear" value="<?php echo $tExpYear?>"></td>
+				<td class="LabelColumn"><?= gettext("Expiration Year") ?></td>
+				<td class="TextColumn"><input type="text" id="ExpYear" name="ExpYear" value="<?= $tExpYear ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Bank Name");?></td>
-				<td class="TextColumn"><input type="text" id="BankName" name="BankName" value="<?php echo $tBankName?>"></td>
+				<td class="LabelColumn"><?= gettext("Bank Name") ?></td>
+				<td class="TextColumn"><input type="text" id="BankName" name="BankName" value="<?= $tBankName ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Bank Route Number");?></td>
-				<td class="TextColumn"><input type="text" id="Route" name="Route" value="<?php echo $tRoute?>"></td>
+				<td class="LabelColumn"><?= gettext("Bank Route Number") ?></td>
+				<td class="TextColumn"><input type="text" id="Route" name="Route" value="<?= $tRoute ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Bank Account Number");?></td>
-				<td class="TextColumn"><input type="text" id="Account" name="Account" value="<?php echo $tAccount?>"></td>
-			</tr>		
-<?php 
+				<td class="LabelColumn"><?= gettext("Bank Account Number") ?></td>
+				<td class="TextColumn"><input type="text" id="Account" name="Account" value="<?= $tAccount ?>"></td>
+			</tr>
+<?php
 if ($sElectronicTransactionProcessor == "Vanco") {
 ?>
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Vanco Bank Account Method");?></td>
-				<td class="TextColumn"><input type="text" id="AccountVanco" name="AccountVanco" value="<?php echo $tAccountVanco?>" readonly></td>
-			</tr>		
-<?php 
+				<td class="LabelColumn"><?= gettext("Vanco Bank Account Method") ?></td>
+				<td class="TextColumn"><input type="text" id="AccountVanco" name="AccountVanco" value="<?= $tAccountVanco ?>" readonly></td>
+			</tr>
+<?php
 	}
 ?>
 
-<?php 
+<?php
 	if ($sElectronicTransactionProcessor == "Vanco") {
 ?>
 			<tr>
 				<td>
-<?php 
+<?php
 	if ($iAutID > 0) {
 ?>
 		<input type="button" id="PressToCreatePaymentMethod" value="Store Private Data at Vanco" onclick="CreatePaymentMethod();" />
-<?php 
+<?php
 	} else {
 ?>
 		<b>Save this record to enable storing private data at Vanco</b>
-<?php 
+<?php
 	}
 ?>
 				</td>
 			</tr>
-<?php 
+<?php
 	}
 ?>
 		</table>
@@ -786,7 +784,7 @@ if ($sElectronicTransactionProcessor == "Vanco") {
 		</tr>
 </table>
 </form>
-
-<?php
-require "Include/Footer.php";
-?>
+<script>
+$("#NextPayDate").datepicker({format:'yyyy-mm-dd'});
+</script>
+<?php require "Include/Footer.php" ?>

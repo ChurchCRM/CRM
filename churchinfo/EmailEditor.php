@@ -4,12 +4,12 @@
 *  filename    : EmailEditor.php
 *  description : Form for entering email subject and message
 *
-*  http://www.churchdb.org/
+*  http://www.churchcrm.io/
 *
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
@@ -41,7 +41,7 @@ $sEmailSubject = "";
 $sEmailMessage = "";
 $sEmailAttachName = "";
 
-if (array_key_exists ('mysql', $_POST) and $_POST['mysql'] == 'true') {
+if (array_key_exists ('mysql', $_POST) && $_POST['mysql'] == 'true') {
 
     // There is a subject and message already stored in mysql
     $sSQL = "SELECT * FROM email_message_pending_emp ".
@@ -91,7 +91,7 @@ echo '<br>' . gettext('Message:');
 echo '<br><textarea name="emailmessage" rows="20" cols="72">';
 echo htmlspecialchars($sEmailMessage) . '</textarea>'."\n";
 
-echo '<br><input class="icButton" type="submit" name="submit" value="';
+echo '<br><input class="btn" type="submit" name="submit" value="';
 echo gettext('Save Email') . '"></form></td></tr></table></div>'."\n";
 
 require "Include/Footer.php"; 

@@ -5,10 +5,10 @@
  *  last change : 2003-06-23
  *  description : Add cart records to a group
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -18,35 +18,39 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require_once "Service/GroupService.php";
+
+$groupService = new GroupService();
 
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups'])
 {
-	Redirect("Menu.php");
-	exit;
+  Redirect("Menu.php");
+  exit;
 }
 
 // Was the form submitted?
-if (isset($_POST["Submit"]) && count($_SESSION['aPeopleCart']) > 0) {
+if (isset($_POST["Submit"]) && count($_SESSION['aPeopleCart']) > 0)
+{
 
-	// Get the GroupID
-	$iGroupID = FilterInput($_POST["GroupID"],'int');
-	if (array_key_exists ("GroupRole", $_POST))
-		$iGroupRole = FilterInput($_POST["GroupRole"],'int');
-	else
-		$iGroupRole = 0;
+  // Get the GroupID
+  $iGroupID = FilterInput($_POST["GroupID"], 'int');
+  if (array_key_exists("GroupRole", $_POST))
+    $iGroupRole = FilterInput($_POST["GroupRole"], 'int');
+  else
+    $iGroupRole = 0;
 
-	// Loop through the session array
-	$iCount = 0;
-	while ($element = each($_SESSION['aPeopleCart'])) {
-		AddToGroup($_SESSION['aPeopleCart'][$element['key']],$iGroupID,$iGroupRole);
-		$iCount += 1;
-	}
+  // Loop through the session array
+  $iCount = 0;
+  while ($element = each($_SESSION['aPeopleCart']))
+  {
+    $groupService->addUserToGroup($iGroupID, $_SESSION['aPeopleCart'][$element['key']], $iGroupRole);
+    $iCount += 1;
+  }
 
-	$sGlobalMessage = $iCount . " records(s) successfully added to selected Group.";
+  $sGlobalMessage = $iCount . " records(s) successfully added to selected Group.";
 
-	Redirect("GroupView.php?GroupID=" . $iGroupID . "&Action=EmptyCart");
-
+  Redirect("GroupView.php?GroupID=" . $iGroupID . "&Action=EmptyCart");
 }
 
 // Get all the groups
@@ -59,99 +63,53 @@ require "Include/Header.php";
 
 if (count($_SESSION['aPeopleCart']) > 0)
 {
-?>
+  ?>
 
-<script type="text/javascript">
-var IFrameObj; // our IFrame object
+  <script src="js/RPCDummyAjax.js"></script>
 
-function UpdateRoles()
-{
-	var group_ID = document.getElementById('GroupID').value;
-	if (!document.createElement) {return true};
-	var IFrameDoc;
-	var URL = 'RPCdummy.php?mode=GroupRolesSelect&data=' + group_ID;
-	if (!IFrameObj && document.createElement) {
-		var tempIFrame=document.createElement('iframe');
-		tempIFrame.setAttribute('id','RSIFrame');
-		tempIFrame.style.border='0px';
-		tempIFrame.style.width='0px';
-		tempIFrame.style.height='0px';
-		IFrameObj = document.body.appendChild(tempIFrame);
-
-		if (document.frames) {
-			// For IE5 Mac
-			IFrameObj = document.frames['RSIFrame'];
-		}
-	}
-
-	if (navigator.userAgent.indexOf('Gecko') !=-1
-		&& !IFrameObj.contentDocument) {
-		// For NS6
-		setTimeout('AddToCart()',10);
-		return false;
-	}
-
-	if (IFrameObj.contentDocument) {
-		// For NS6
-		IFrameDoc = IFrameObj.contentDocument;
-	} else if (IFrameObj.contentWindow) {
-		// For IE5.5 and IE6
-		IFrameDoc = IFrameObj.contentWindow.document;
-	} else if (IFrameObj.document) {
-		// For IE5
-		IFrameDoc = IFrameObj.document;
-	} else {
-		return true;
-	}
-
-	IFrameDoc.location.replace(URL);
-	return false;
-}
-
-function updateGroupRoles(generated_html)
-{
-	if (generated_html == "invalid") {
-		document.getElementById('GroupRoles').innerHTML = '<p class="LargeError"><?php echo gettext("Invalid Group or No Roles Available!"); ?><p>';
-	} else {
-		document.getElementById('GroupRoles').innerHTML = generated_html;
-	}
-}
-</script>
-
-<p align="center"><?php echo gettext("Select the group to which you would like to add your cart:"); ?></p>
-<form method="post">
-<table align="center">
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Group:"); ?></td>
-		<td class="TextColumn">
-			<?php
-			// Create the group select drop-down
-			echo "<select id=\"GroupID\" name=\"GroupID\" onChange=\"UpdateRoles();\"><option value=\"0\">" . gettext("None") . "</option>";
-			while ($aRow = mysql_fetch_array($rsGroups)) {
-				extract($aRow);
-				echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
-			}
-			echo "</select>";
-			?>
-		</td>
-	</tr>
-	<tr>
-		<td class="LabelColumn"><?php echo gettext("Select Role:"); ?></td>
-		<td class="TextColumn"><span id="GroupRoles"><?php echo gettext("No Group Selected"); ?></span></td>
-	</tr>
-</table>
-<p align="center">
-<BR>
-<input type="submit" class="icButton" name="Submit" value=<?php echo '"' . gettext("Add to Group") . '"'; ?>>
-<BR><BR>--<?php echo gettext("OR"); ?>--<BR><BR>
-<a href="GroupEditor.php?EmptyCart=yes"><?php echo gettext("Create a New Group"); ?></a>
-<BR><BR>
-</p>
-</form>
-<?php
+  <!-- Default box -->
+  <div class="box">
+    <div class="box-body">
+      <p align="center"><?= gettext("Select the group to which you would like to add your cart:") ?></p>
+      <form method="post">
+        <table align="center">
+          <tr>
+            <td class="LabelColumn"><?= gettext("Select Group:") ?></td>
+            <td class="TextColumn">
+              <?php
+              // Create the group select drop-down
+              echo "<select id=\"GroupID\" name=\"GroupID\" onChange=\"UpdateRoles();\"><option value=\"0\">" . gettext("None") . "</option>";
+              while ($aRow = mysql_fetch_array($rsGroups))
+              {
+                extract($aRow);
+                echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
+              }
+              echo "</select>";
+              ?>
+            </td>
+          </tr>
+          <tr>
+            <td class="LabelColumn"><?= gettext("Select Role:") ?></td>
+            <td class="TextColumn">
+              <select name="GroupRole" id="GroupRole">
+                <option><?= gettext("No Group Selected") ?></option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <p align="center">
+          <BR>
+          <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext("Add to Group") ?>">
+          <BR><BR>--<?= gettext("OR") ?>--<BR><BR>
+          <a href="GroupEditor.php?EmptyCart=yes" class="btn btn-info"><i class="fa fa-add"></i><?= gettext("Create a New Group") ?></a>
+          <BR><BR>
+        </p>
+      </form>
+    </div></div>
+  <?php
 }
 else
-	echo "<p align=\"center\" class=\"LargeText\">" . gettext("Your cart is empty!") . "</p>";
+  echo "<p align=\"center\" class=\"LargeText\">" . gettext("Your cart is empty!") . "</p>";
 
 require "Include/Footer.php";
 ?>

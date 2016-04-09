@@ -4,7 +4,7 @@
 *  filename    : Menu.php
 *  description : menu that appears after login, shows login attempts
 *
-*  http://www.churchdb.org/
+*  http://www.churchcrm.io/
 *  Copyright 2001-2002 Phillip Hullquist, Deane Barker, Michael Wilt
 *
 *  Additional Contributors:
@@ -14,7 +14,7 @@
 *  Copyright Contributors
 *
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -26,6 +26,12 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'Include/PersonFunctions.php';
+require 'Service/FinancialService.php';
+
+$financialService = new FinancialService();
+
+require_once "Service/DashboardService.php";
 
 $sSQL = "select * from family_fam order by fam_DateLastEdited desc  LIMIT 10;";
 $rsLastFamilies = RunQuery($sSQL);
@@ -39,50 +45,22 @@ $rsLastPeople = RunQuery($sSQL);
 $sSQL = "select * from person_per where per_DateLastEdited is null order by per_DateEntered desc LIMIT 10;";
 $rsNewPeople = RunQuery($sSQL);
 
-$sSQL = "select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;";
-$rsAdultsGender = RunQuery($sSQL);
-
-$sSQL = "select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;";
-$rsKidsGender = RunQuery($sSQL);
-
-$sSQL = "select
-        (select count(*) from family_fam ) as familyCount,
-        (select count(*) from person_per where per_cls_ID = 1  ) as PersonCount,
-        (select count(*) from group_grp where grp_Type = 4 ) as SundaySchoolClasses,
-        (select count(*) from person_per,`group_grp` grp, `person2group2role_p2g2r` person_grp   where person_grp.p2g2r_rle_ID = 2 and per_cls_ID = 1 and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = per_ID) as SundaySchoolKidsCount
-        from dual ;";
-$rsQuickStat = RunQuery($sSQL);
-
+$dashboardService = new DashboardService();
+$personCount = $dashboardService->getPersonCount();
+$familyCount = $dashboardService->getFamilyCount();
+$groupStats = $dashboardService->getGroupStats();
+$depositData = false;  //Determine whether or not we should display the deposit line graph
+if ($_SESSION['bFinance']) {
+  $depositData = $financialService->getDeposits();  //Get the deposit data from the financialService
+}
 
 // Set the page title
-$sPageTitle = gettext('Welcome to ChurchInfo');
+$sPageTitle = "Welcome to <b>Church</b>CRM";
 
 require 'Include/Header.php';
 ?>
-<!-- this page specific styles -->
-<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
 
-
-<div class="row">
-    <div class="col-lg-12 col-md-6 col-sm-4">
-        <div class="box box-solid">
-            <div class="box-body clearfix">
-                <i class="fa fa-search"></i><input type="text" class="search searchPerson" placeholder="Search..." onfocus="ClearFieldOnce(this);"/>
-
-                <a href="PersonEditor.php" class="btn btn-primary">
-                    <i class="fa fa-plus-circle fa-md"></i> Add Person
-                </a>
-
-                <a href="FamilyEditor.php" class="btn btn-primary">
-                    <i class="fa fa-plus-circle fa-md"></i> Add Family
-                </a>
-            </div>
-            </header>
-        </div>
-    </div>
-</div>
-<?php while ($row = mysql_fetch_array($rsQuickStat)) { ?>
 <!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-3 col-xs-6">
@@ -90,7 +68,7 @@ require 'Include/Header.php';
         <div class="small-box bg-aqua">
             <div class="inner">
                 <h3>
-                    <?php echo $row['familyCount'];?>
+                    <?= $familyCount['familyCount'] ?>
                 </h3>
                 <p>
                     Families
@@ -99,7 +77,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>FamilyList.php" class="small-box-footer">
+            <a href="<?= $sRootPath ?>/FamilyList.php" class="small-box-footer">
                 See all Families <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -109,17 +87,17 @@ require 'Include/Header.php';
         <div class="small-box bg-green">
             <div class="inner">
                 <h3>
-                    <?php echo $row['PersonCount'];?>
+                    <?= $personCount['personCount'] ?>
                 </h3>
                 <p>
-                    Members
+                    People
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="ion ion-person"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>SelectList.php?mode=person" class="small-box-footer">
-                See All Member <i class="fa fa-arrow-circle-right"></i>
+            <a href="<?= $sRootPath ?>/SelectList.php?mode=person" class="small-box-footer">
+                See All People <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -128,16 +106,16 @@ require 'Include/Header.php';
         <div class="small-box bg-yellow">
             <div class="inner">
                 <h3>
-                    <?php echo $row['SundaySchoolClasses'];?>
+                    <?= $groupStats['sundaySchoolClasses'] ?>
                 </h3>
                 <p>
                     Sunday School Classes
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-university"></i>
+                <i class="fa fa-child"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>SundaySchool.php" class="small-box-footer">
+            <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -147,28 +125,52 @@ require 'Include/Header.php';
         <div class="small-box bg-red">
             <div class="inner">
                 <h3>
-                    <?php echo $row['SundaySchoolKidsCount'];?>
+                  <?= $groupStats['groups'] -$groupStats['sundaySchoolClasses']  ?>
                 </h3>
                 <p>
-                    Sunday School Kids
+                    Groups
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-happy"></i>
+                <i class="fa fa-gg"></i>
             </div>
-            <a href="<?php echo $sURLPath."/"; ?>Reports\SundaySchoolClassList.php" class="small-box-footer">
+            <a href="<?= $sRootPath ?>/grouplist" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
 </div><!-- /.row -->
-<?php } ?>
+
+<?php 
+if ($depositData) // If the user has Finance permissions, then let's display the deposit line chart
+{ 
+?>
 <div class="row">
-    <div class="col-lg-6 col-md-5 col-sm-4">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <i class="ion ion-cash"></i>
+                <h3 class="box-title">Deposit Tracking</h3>
+                <div class="box-tools pull-right">
+                    <div id="deposit-graph" class="chart-legend"></div>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
+            </div>
+            </div>
+    </div>
+</div>
+<?php 
+}  //END IF block for Finance permissions to include HTML for Deposit Chart
+ ?>
+
+<div class="row">
+    <div class="col-lg-6">
         <div class="box box-solid">
             <div class="box-header">
                 <i class="ion ion-person-add"></i>
-                <h3 class="box-title">New Families</h3>
+                <h3 class="box-title">Latest Families</h3>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">
@@ -183,9 +185,9 @@ require 'Include/Header.php';
                         <tbody>
                         <?php while ($row = mysql_fetch_array($rsNewFamilies)) { ?>
                         <tr>
-                            <td><a href="FamilyView.php?FamilyID=<?php echo $row['fam_ID'];?>"><?php echo $row['fam_Name'];?></a></td>
-                            <td><?php if ($row['fam_Address1'] != "") { echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip']; }?></td>
-                            <td><?php echo FormatDate($row['fam_DateEntered'], false);?></td>
+                            <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
+                            <td><?php if ($row['fam_Address1'] != "") { echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip']; } ?></td>
+                            <td><?= FormatDate($row['fam_DateEntered'], false) ?></td>
                         </tr>
                         <?php } ?>
                         </tbody>
@@ -194,7 +196,7 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-md-5 col-sm-4">
+    <div class="col-lg-6">
         <div class="box box-solid">
             <div class="box-header">
                 <i class="fa fa-check"></i>
@@ -213,9 +215,9 @@ require 'Include/Header.php';
                         <tbody>
                         <?php while ($row = mysql_fetch_array($rsLastFamilies)) { ?>
                             <tr>
-                                <td><a href="FamilyView.php?FamilyID=<?php echo $row['fam_ID'];?>"><?php echo $row['fam_Name'];?></a></td>
-                                <td><?php echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip'];?></td>
-                                <td><?php echo FormatDate($row['fam_DateLastEdited'], false);?></td>
+                                <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
+                                <td><?= $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip'] ?></td>
+                                <td><?= FormatDate($row['fam_DateLastEdited'], false) ?></td>
                             </tr>
                         <?php } ?>
                         </tbody>
@@ -226,102 +228,101 @@ require 'Include/Header.php';
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="col-lg-6">
         <div class="box box-solid">
-            <div class="box-header">
-                <i class="fa fa-plus"></i>
-                <h3 class="box-title">New People</h3>
-            </div><!-- /.box-header -->
-            <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
-                        <thead>
-                        <tr>
-                            <th data-field="name">Name</th>
-                            <th data-field="name">Created</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Latest Members</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
                         <?php while ($row = mysql_fetch_array($rsNewPeople)) { ?>
-                            <tr>
-                                <td><a href="PersonView.php?PersonID=<?php echo $row['per_ID'];?>"><?php echo $row['per_FirstName']." ".$row['per_LastName'];?></a></td>
-                                <td><?php echo FormatDate($row['per_DateEntered'], false);?></td>
-                            </tr>
+                        <li>
+                            <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
+                            <img src="<?= $personService->getPhoto($row['per_ID']); ?>" alt="User Image" class="user-image" width="85" height="85" /><br/>
+                            <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1) ?></a>
+                            <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false) ?></span>
+                        </li>
                         <?php } ?>
-                        </tbody>
-                    </table>
+                    </ul>
+                    <!-- /.users-list -->
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="col-lg-6">
         <div class="box box-solid">
-            <div class="box-header">
-                <i class="fa fa-check"></i>
-                <h3 class="box-title">Modified People</h3>
-            </div><!-- /.box-header -->
-            <div class="box-body clearfix">
-                <table class="table table-striped table-condensed">
-                    <thead>
-                    <tr>
-                        <th data-field="name">Name</th>
-                        <th data-field="name">Updated</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
-                        <tr>
-                            <td><a href="PersonView.php?PersonID=<?php echo $row['per_ID'];?>"><?php echo $row['per_FirstName']." ".$row['per_LastName'];?></a></td>
-                            <td><?php echo FormatDate($row['per_DateLastEdited'], false);?></td>
-                        </tr>
-                    <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-3">
-        <div class="box box-solid">
-            <div class="box-header">
-                <i class="ion ion-android-contacts"></i>
-                <h3 class="box-title">Gender Demographics</h3>
-            </div><!-- /.box-header -->
-            <div class="main-box-body clearfix">
-                <div id="gender-donut"></div>
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Updated Members</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
+                        <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
+                            <li>
+                                <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
+                                <img src="<?= $personService->getPhoto($row['per_ID']) ?>" alt="User Image" class="user-image" width="85" height="85" /><br/>
+                                <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1) ?></a>
+                                <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false) ?></span>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                    <!-- /.users-list -->
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <!-- this page specific inline scripts -->
-<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
 <script>
-    Morris.Donut({
-        element: 'gender-donut',
-        data: [
-            <?php while ($row = mysql_fetch_array($rsAdultsGender)) {
-                if ($row['per_Gender'] == 1 ) {
-                    echo "{label: \"Men\", value: ". $row['numb'] ."},";
-                }
-                if ($row['per_Gender'] == 2 ) {
-                    echo "{label: \"Women\", value: ". $row['numb'] ."},";
-                }
-            }
-            while ($row = mysql_fetch_array($rsKidsGender)) {
-            if ($row['per_Gender'] == 1 ) {
-                    echo "{label: \"Boys\", value: ". $row['numb'] ."},";
-                }
-                if ($row['per_Gender'] == 2 ) {
-                    echo "{label: \"Girls\", value: ". $row['numb'] ."}";
-                }
-            }
-            ?>
-        ],
-        colors: ['Navy', 'Pink', 'Blue', 'DarkMagenta'],
-        resize: true
+<?php 
+if ($depositData) // If the user has Finance permissions, then let's display the deposit line chart
+{ 
+?>
+    //---------------
+    //- LINE CHART  -
+    //---------------
+    var lineDataRaw = <?= $financialService->getDepositJSON($depositData) ?>;
+
+    var lineData = {
+        labels: [],
+        datasets: [
+            {
+                data: []
+            }     
+        ]
+    };
+    
+    $.each(lineDataRaw.deposits, function(i, val) {
+        lineData.labels.push(val.dep_Date);
+        lineData.datasets[0].data.push(val.dep_Total);
     });
+
+    var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
+
+    var lineChart = new Chart(lineChartCanvas).Line(lineData);
+<?php 
+}  //END IF block for Finance permissions to include JS for Deposit Chart
+ ?>
 </script>
+
 
 <?php
 require 'Include/Footer.php';
 ?>
+

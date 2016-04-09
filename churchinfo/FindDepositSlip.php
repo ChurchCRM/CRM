@@ -2,11 +2,11 @@
 /*******************************************************************************
  *
  *  filename    : FindDepositSlip.php
- *  last change : 2005-02-06
- *  website     : http://www.infocentral.org
- *  copyright   : Copyright 2001-2005 Deane Barker, Chris Gebhardt, Michael Wilt, Tim Dearborn
+ *  last change : 2016-02-28
+ *  website     : http://www.churchcrm.io
+ *  copyright   : Copyright 2016 ChurchCRM
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -16,6 +16,7 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require 'Service/FinancialService.php';
 
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
@@ -23,262 +24,103 @@ $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 $sPageTitle = gettext("Deposit Listing");
 
 // Security: User must have finance permission to use this form
-//if (!$_SESSION['bFinance'])
-//{
-//	Redirect("Menu.php");
-//	exit;
-//}
-
-//Filter Values
-$dDateStart = FilterInputArr($_GET,"DateStart");
-$dDateEnd = FilterInputArr($_GET,"DateEnd");
-$iID = FilterInputArr($_GET,"ID");
-$sSort = FilterInputArr($_GET,"Sort");
-
-// Build SQL Criteria
-$sCriteria = "";
 if (!$_SESSION['bFinance'])
-	$sCriteria = "WHERE dep_EnteredBy=" . $_SESSION['iUserID'];
-
-if ($dDateStart || $dDateEnd) {
-	if (!$dDateStart && $dDateEnd)
-		$dDateStart = $dDateEnd;
-	if (!$dDateEnd && $dDateStart)
-		$dDateEnd = $dDateStart;
-	if ($sCriteria == "")
-		$sCriteria .= " WHERE dep_Date BETWEEN '$dDateStart' AND '$dDateEnd' ";
-	else
-		$sCriteria .= " AND dep_Date BETWEEN '$dDateStart' AND '$dDateEnd' ";
+{
+    Redirect("index.php");
+    exit;
 }
 
-if ($iID) {
-	if ($sCriteria)
-		$sCrieria .= "OR dep_ID = '$iID' ";
-	else
-		$sCriteria = " WHERE dep_ID = '$iID' ";
-}
-
-if (array_key_exists ("FilterClear", $_GET) && $_GET["FilterClear"]) {
-	$sCriteria = "";
-	$dDateStart = "";
-	$dDateEnd = "";
-	$iID = "";
-}
+$financialService=new FinancialService();
 require "Include/Header.php";
-
 ?>
 
-<form method="get" action="FindDepositSlip.php" name="FindDepositSlip">
-<input name="sort" type="hidden" value="<?php echo $sSort; ?>"
-<table cellpadding="3" align="center">
-
-	<tr>
-		<td>
-		<table cellpadding="3">
-			<tr>
-				<td class="LabelColumn"><?php echo gettext("Number:"); ?></td>
-				<td class="TextColumn"><input type="text" name="ID" id="ID" value="<?php echo $iID; ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"<?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date Start:"); ?></td>
-				<td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="sel1" size="11" value="<?php echo $dDateStart; ?>">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[YYYY-MM-DD]"); ?></span></td>
-				<td align="center">
-					<input type="submit" class="icButton" value="<?php echo gettext("Apply Filters"); ?>" name="FindDepositSlipSubmit">
-				</td>
-			</tr>
-			<tr>
-				<td class="LabelColumn"<?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?>><?php echo gettext("Date End:"); ?></td>
-				<td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="sel2" size="11" value="<?php echo $dDateEnd; ?>">&nbsp;<input type="image" onclick="return showCalendar('sel2', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[YYYY-MM-DD]"); ?></span></td>
-				<td align="center">
-					<input type="submit" class="icButton" value="<?php echo gettext("Clear Filters"); ?>" name="FilterClear">
-				</td>
-			</tr>
-		</table>
-		</td>
-	</form>
-</table>
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.css">
+<script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 
 
-<?php
-// List Deposits
-// Save record limit if changed
-if (isset($_GET["Number"]))
-{
-	$_SESSION['SearchLimit'] = FilterInput($_GET["Number"],'int');
-	$uSQL = "UPDATE user_usr SET usr_SearchLimit = " . $_SESSION['SearchLimit'] . " WHERE usr_per_ID = " . $_SESSION['iUserID'];
-	$rsUser = RunQuery($uSQL);
-}
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
-// Select the proper sort SQL
-switch($sSort)
-{
-	case "type":
-		$sOrderSQL = "ORDER BY dep_Type, dep_Date DESC, dep_ID DESC";
-		break;
-	case "number":
-		$sOrderSQL = "ORDER BY dep_ID DESC";
-		break;
-	case "closed":
-		$sOrderSQL = "ORDER BY dep_closed, dep_Date DESC, dep_ID DESC";
-		break;
-	default:
-		$sOrderSQL = " ORDER BY dep_Date DESC, dep_ID DESC";
-		break;
-}
+<!-- Delete Confirm Modal -->
+<div id="confirmDelete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirm Delete</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the selected <span id="deleteNumber"></span> Deposit(s)?</p>
+        <p>This will also delete all payments associated with this deposit</p>
+        <p>This action CANNOT be undone, and may have legal implications!</p>
+        <p>Please ensure this what you want to do.</p>
+        <button type="button" class="btn btn-danger" id="deleteConfirmed" ><?php echo gettext("Delete"); ?></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Delete Confirm Modal -->
 
-// Append a LIMIT clause to the SQL statement
-$iPerPage = $_SESSION['SearchLimit'];
-if (empty($_GET['Result_Set']))
-	$Result_Set = 0;
-else
-	$Result_Set = FilterInput($_GET['Result_Set'],'int');
-$sLimitSQL = " LIMIT $Result_Set, $iPerPage";
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title"><?php echo gettext("Add New Deposit: ");?></h3>
+    </div>
+    <div class="box-body">
+        <form action="#" method="get" class="form">
+            <div class="row">
+                <div class="col-xs-3">
+                    <label for="addNewGruop">Deposit Comment</label>
+                    <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
+                </div>
+                <div class="col-xs-3">
+                    <label for="depositType">Deposit Type</label>
+                    <select  class="form-control" id="depositType" name="depositType">
+                        <option value="Bank">Bank</option>
+                        <option value="CreditCard">Credit Card</option>
+                        <option value="BankDraft">Bank Draft</option>
+                        <option value="eGive">eGive</option>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <label for="addNewGruop">Deposit Date</label>
+                    <input class="form-control" name="depositDate" id="depositDate" style="width:100%">
+                </div>
+            </div>
+            <p>
+            <div class="row">
+                <div class="col-xs-3">
+                    <button type="button" class="btn btn-primary" id ="addNewDeposit" >Add New Deposit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
-// Build SQL query
-$sSQL = "SELECT dep_ID, dep_Date, dep_Comment, dep_Closed, dep_Type FROM deposit_dep $sCriteria $sOrderSQL $sLimitSQL";
-$sSQLTotal = "SELECT COUNT(dep_id) FROM deposit_dep $sCriteria";
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title"><?php echo gettext("Deposits: ");?></h3>
+    </div>
+    <div class="box-body">
+        <table class="table" id="depositsTable">
+        </table>
 
-// Execute SQL statement and get total result
-$rsDep = RunQuery($sSQL);
-$rsTotal = RunQuery($sSQLTotal);
-list ($Total) = mysql_fetch_row($rsTotal);
+        <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext("Delete Selected Rows") ?> </button>
+        <button type="button" id="exportSelectedRows" class="btn btn-success" disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (OFX)") ?></button>
+        <button type="button" id="exportSelectedRowsCSV" class="btn btn-success" disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (CSV)") ?></button>
+        <button type="button" id="generateDepositSlip" class="btn btn-success" disabled> <?= gettext("Generate Deposit Split for Selected Rows (PDF)") ?></button>
+    </div>
+</div>
 
-echo '<div align="center">';
-echo  '<form action="FindDepositSlip.php" method="get" name="ListNumber">';
-// Show previous-page link unless we're at the first page
-if ($Result_Set < $Total && $Result_Set > 0)
-{
-	$thisLinkResult = $Result_Set - $iPerPage;
-	if ($thisLinkResult < 0)
-		$thisLinkResult = 0;
-	echo '<a href="FindDepositSlip.php?Result_Set='.$thisLinkResult.'&Sort='.$sSort.'">'. gettext("Previous Page") . '</a>&nbsp;&nbsp;';
-}
+<script>
+var depositData = <?php $json = $financialService->getDepositJSON($financialService->getDeposits()); if ($json) { echo $json; } else { echo 0; } ?>;
+</script>
 
-// Calculate starting and ending Page-Number Links
-$Pages = ceil($Total / $iPerPage);
-$startpage =  (ceil($Result_Set / $iPerPage)) - 6;
-if ($startpage <= 2)
-	$startpage = 1;
-$endpage = (ceil($Result_Set / $iPerPage)) + 9;
-if ($endpage >= ($Pages - 1))
-	$endpage = $Pages;
+<script src="<?= $sRootPath; ?>/skin/js/FindDepositSlip.js"></script>
 
-// Show Link "1 ..." if startpage does not start at 1
-if ($startpage != 1)
-	echo "<a href=\"FindDepositSlip.php?Result_Set=0&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">1</a> ... ";
-
-	$dDateStart = FilterInputArr($_GET,"DateStart");
-	$dDateEnd = FilterInputArr($_GET,"DateEnd");
-	$iID = FilterInputArr($_GET,"ID");
-	$sSort = FilterInputArr($_GET,"Sort");
-
-// Display page links
-if ($Pages > 1)
-{
-	for ($c = $startpage; $c <= $endpage; $c++)
-	{
-		$b = $c - 1;
-		$thisLinkResult = $iPerPage * $b;
-		if ($thisLinkResult != $Result_Set)
-			echo "<a href=\"FindDepositSlip.php?Result_Set=$thisLinkResult&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">$c</a>&nbsp;";
-		else
-			echo "&nbsp;&nbsp;[ " . $c . " ]&nbsp;&nbsp;";
-	}
-}
-
-// Show Link "... xx" if endpage is not the maximum number of pages
-if ($endpage != $Pages)
-{
-	$thisLinkResult = ($Pages - 1) * $iPerPage;
-		echo " <a href=\"FindDepositSlip.php?Result_Set=$thisLinkResult&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">$Pages</a>";
-}
-
-// Show next-page link unless we're at the last page
-if ($Result_Set >= 0 && $Result_Set < $Total)
-{
-	$thisLinkResult=$Result_Set+$iPerPage;
-	if ($thisLinkResult<$Total)
-		echo "&nbsp;&nbsp;<a href='FindDepositSlip.php?Result_Set=$thisLinkResult&Sort=$sSort'>". gettext("Next Page") . "</a>&nbsp;&nbsp;";
-}
-
-
-$sLimit5 = "";
-$sLimit10 = "";
-$sLimit20 = "";
-$sLimit25 = "";
-$sLimit50 = "";
-$sLimit100 = "";
-$sLimit200 = "";
-$sLimit500 = "";
-
-// Display Record Limit
-echo "<input type=\"hidden\" name=\"Result_Set\" value=\"" . $Result_Set . "\">";
-if(isset($sSort))
-	echo "<input type=\"hidden\" name=\"Sort\" value=\"" . $sSort . "\">";
-if ($_SESSION['SearchLimit'] == "5")
-	$sLimit5 = "selected";
-if ($_SESSION['SearchLimit'] == "10")
-	$sLimit10 = "selected";
-if ($_SESSION['SearchLimit'] == "20")
-	$sLimit20 = "selected";
-if ($_SESSION['SearchLimit'] == "25")
-	$sLimit25 = "selected";
-if ($_SESSION['SearchLimit'] == "50")
-	$sLimit50 = "selected";
-if ($_SESSION['SearchLimit'] == "100")
-	$sLimit100 = "selected";
-if ($_SESSION['SearchLimit'] == "200")
-	$sLimit200 = "selected";
-if ($_SESSION['SearchLimit'] == "500")
-	$sLimit500 = "selected";
-	
-echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;". gettext("Display:") . "&nbsp;
-	<select class=\"SmallText\" name=\"Number\">
-		<option value=\"5\" $sLimit5>5</option>
-		<option value=\"10\" $sLimit10>10</option>
-		<option value=\"20\" $sLimit20>20</option>
-		<option value=\"25\" $sLimit25>25</option>
-		<option value=\"50\" $sLimit50>50</option>
-		<option value=\"100\" $sLimit100>100</option>
-		<option value=\"200\" $sLimit200>200</option>
-		<option value=\"500\" $sLimit500>500</option>
-	</select>&nbsp;
-	<input type=\"submit\" class=\"icTinyButton\" value=\"". gettext("Go") ."\">
-	</form></div><br>";
-
-// Column Headings
-echo "<table cellpadding='4' align='center' cellspacing='0' width='100%'>\n
-	<tr class='TableHeader'>\n
-	<td width='25'>".gettext("Edit") . "</td>\n
-	<td><a href='FindDepositSlip.php?Sort=number&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd'>".gettext("Number")."</a></td>\n
-	<td><a href='FindDepositSlip.php?Sort=date'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>".gettext("Date")."</a></td>\n
-	<td>".gettext("Total Payments")."</td>\n
-	<td>".gettext("Comment")."</td>\n
-	<td><a href='FindDepositSlip.php?Sort=closed'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>".gettext("Closed")."</a></td>\n
-	<td><a href='FindDepositSlip.php?Sort=type'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>".gettext("Deposit Type")."</a></td>\n
-	</tr>";
-
-// Display Deposits
-while (list ($dep_ID, $dep_Date, $dep_Comment, $dep_Closed, $dep_Type) = mysql_fetch_row($rsDep))
-{
-	echo "<tr><td><a href='DepositSlipEditor.php?DepositSlipID=$dep_ID'>" . gettext("Edit") . "</td>";
-	echo "<td>$dep_ID</td>";
-	echo "<td>$dep_Date</td>";
-	// Get deposit total
-	$sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$dep_ID' AND plg_PledgeOrPayment = 'Payment'";
-	$rsDepositTotal = RunQuery($sSQL);
-	list ($deposit_total) = mysql_fetch_row($rsDepositTotal);
-	echo "<td>$deposit_total</td>";
-	echo "<td>$dep_Comment</td>";
-	if ($dep_Closed == 1)
-		$dep_Closed_text = "Yes";
-	else
-		$dep_Closed_text = "No";
-	echo "<td>$dep_Closed_text</td>";	
-	echo "<td>$dep_Type</td>";
-}
-echo "</table>";
-
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

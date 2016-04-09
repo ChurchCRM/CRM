@@ -6,7 +6,7 @@
 *  description : Creates a PDF with all the confirmation letters asking member
 *                families to verify the information in the database.
 *
-*  InfoCentral is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -31,7 +31,7 @@ class PDF_ConfirmReport extends ChurchInfoReport {
 	}
 
 	function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) {
-      $curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
+    $curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country,"graphic");
 		$curY += 2 * $this->incrementY;
 		$blurb = $this->sConfirm1;
 		$this->WriteAt ($this->leftX, $curY, $blurb);

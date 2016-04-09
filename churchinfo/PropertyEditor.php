@@ -3,10 +3,10 @@
  *
  *  filename    : PropertyEditor.php
  *  last change : 2003-01-07
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -137,57 +137,56 @@ $rsPropertyTypes = RunQuery($sSQL);
 require "Include/Header.php";
 
 ?>
+<div class="box box-body">
 
-<form method="post" action="PropertyEditor.php?PropertyID=<?php echo $iPropertyID; ?>&Type=<?php echo $sType; ?>">
+<form method="post" action="PropertyEditor.php?PropertyID=<?= $iPropertyID ?>&Type=<?= $sType ?>">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-3">
+                <label for="Class"><?= gettext("Type:") ?></label>
+                <select  class="form-control input-small" name="Class">
+                    <option value=""><?= gettext("Select Property Type") ?></option>
+                    <?php
+                    while ($aRow = mysql_fetch_array($rsPropertyTypes))
+                    {
+                        extract($aRow);
 
-<table cellpadding="4">
-	<tr>
-		<td valign="top" align="right"><b><?php echo gettext("Type:"); ?></b></td>
-		<td>
-			<select name="Class">
-				<option value=""><?php echo gettext("Select Property Type"); ?></option>
-				<?php
-				while ($aRow = mysql_fetch_array($rsPropertyTypes))
-				{
-					extract($aRow);
-
-					echo "<option value=\"" . $prt_ID . "\"";
-					if ($iType == $prt_ID) { echo "selected"; }
-					echo ">" . $prt_Name . "</option>";
-				}
-				?>
-			</select>
-			<?php echo $sClassError ?>
-		</td>
-	</tr>
-	<tr>
-		<td valign="top" align="right"><b><?php echo gettext("Name:"); ?></b></td>
-		<td>
-			<input type="text" name="Name" value="<?php echo htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8"); ?>" size="50">
-			<?php echo $sNameError ?>
-		</td>
-	</tr>
-	<tr>
-		<td align="right" valign="top"><b>"<?php echo gettext("A"); ?> <?php echo $sTypeName ?><BR><?php echo gettext("with this property.."); ?>":</b></td>
-		<td><textarea name="Description" cols="60" rows="3"><?php echo htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
-	</tr>
-	<tr>
-		<td align="right" valign="top"><b><?php echo gettext("Prompt:"); ?></b></td>
-		<td valign="top">
-			<input type="text" name="Prompt" value="<?php echo htmlentities(stripslashes($sPrompt),ENT_NOQUOTES, "UTF-8") ?>" size="50">
-			<br>
-			<span class="SmallText"><?php echo gettext("Entering a Prompt value will allow the association of a free-form value."); ?></span>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2" align="center">
-			<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="document.location='PropertyList.php?Type=<?php echo $sType; ?>';">
-		</td>
-	</tr>
-</table>
-
+                        echo "<option value=\"" . $prt_ID . "\"";
+                        if ($iType == $prt_ID) { echo "selected"; }
+                        echo ">" . $prt_Name . "</option>";
+                    }
+                    ?>
+                </select>
+                <?= $sClassError ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <label for="Name"><?= gettext("Name:") ?></label>
+                <input class="form-control input-small" type="text" name="Name" value="<?= htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8") ?>" size="50">
+                <?php echo $sNameError ?>
+           </div>
+       </div>
+       <div class="row">
+            <div class="col-xs-3">
+                <label for="Description">"<?= gettext("A") ?> <?php echo $sTypeName ?><BR><?= gettext("with this property..") ?>":</label>
+                <textarea class="form-control input-small" name="Description" cols="60" rows="3"><?= htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8") ?></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <label for="Prompt"><?= gettext("Prompt:") ?></label>
+                <input class="form-control input-small" type="text" name="Prompt" value="<?php echo htmlentities(stripslashes($sPrompt),ENT_NOQUOTES, "UTF-8") ?>" size="50">
+                <span class="SmallText"><?= gettext("Entering a Prompt value will allow the association of a free-form value.") ?></span>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">
+            <input type="submit" class="btn" name="Submit" value="<?= gettext("Save") ?>">&nbsp;<input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel") ?>" onclick="document.location='PropertyList.php?Type=<?= $sType ?>';">
+        </div>
+        </div>
+    </div>
 </form>
+</div>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

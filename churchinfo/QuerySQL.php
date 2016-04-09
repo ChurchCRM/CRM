@@ -3,10 +3,10 @@
  *
  *  filename    : QuerySQL.php
  *  last change : 2003-01-04
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -51,15 +51,15 @@ require "Include/Header.php";
 <form method="post">
 
 <center><table><tr>
-    <td class="LabelColumn"> <?php echo gettext("Export Results to CSV file") ?> </td>
+    <td class="LabelColumn"> <?= gettext("Export Results to CSV file") ?> </td>
     <td class="TextColumn"><input name="CSV" type="checkbox" id="CSV" value="1"></td>
 </tr></table></center>
 
 <p align="center">
-	<textarea style="font-family:courier,fixed; font-size:9pt; padding:1;" cols="60" rows="10" name="SQL"><?php echo $sSQL; ?></textarea>
+	<textarea style="font-family:courier,fixed; font-size:9pt; padding:1;" cols="60" rows="10" name="SQL"><?= $sSQL ?></textarea>
 </p>
 <p align="center">
-	<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Execute SQL") . '"'; ?>>
+	<input type="submit" class="btn" name="Submit" value="<?= gettext("Execute SQL") ?>">
 </p>
 
 </form>
@@ -210,10 +210,10 @@ function RunFreeQuery()
 			{
 				?>
 				<form method="post" action="CartView.php"><p align="center">
-					<input type="hidden" value="<?php echo join(",",$aHiddenFormField); ?>" name="BulkAddToCart">
-					<input type="submit" class="icButton" name="AddToCartSubmit" value="<?php echo gettext("Add Results To Cart");?>">&nbsp;
-					<input type="submit" class="icButton" name="AndToCartSubmit" value="<?php echo gettext("Intersect Results With Cart");?>">&nbsp;
-					<input type="submit" class="icButton" name="NotToCartSubmit" value="<?php echo gettext("Remove Results From Cart");?>">
+					<input type="hidden" value="<?= join(",",$aHiddenFormField) ?>" name="BulkAddToCart">
+					<input type="submit" class="btn" name="AddToCartSubmit" value="<?php echo gettext("Add Results To Cart");?>">&nbsp;
+					<input type="submit" class="btn" name="AndToCartSubmit" value="<?php echo gettext("Intersect Results With Cart");?>">&nbsp;
+					<input type="submit" class="btn" name="NotToCartSubmit" value="<?php echo gettext("Remove Results From Cart");?>">
 				</p></form>
 				<?php
 			}

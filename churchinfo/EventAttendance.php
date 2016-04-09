@@ -3,12 +3,12 @@
  *
  *  filename    : Attendance.php
  *  last change : 2005-09-18
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Todd Pillars
  *
  *  function    : List all Church Events
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -18,7 +18,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if (array_key_exists ('Action', $_POST) and $_POST['Action']== "Retrieve" && !empty($_POST['Event']))
+if (array_key_exists('Action', $_POST) && $_POST['Action'] == "Retrieve" && !empty($_POST['Event']))
 {
     if ($_POST['Choice'] == "Attendees")
     {
@@ -63,7 +63,7 @@ if (array_key_exists ('Action', $_POST) and $_POST['Action']== "Retrieve" && !em
         $sPageTitle = gettext("Event Guests");
     }
 }
-elseif (array_key_exists ('Action', $_GET) and $_GET['Action']== "List" && !empty($_GET['Event']))
+elseif (array_key_exists('Action', $_GET) && $_GET['Action']== "List" && !empty($_GET['Event']))
 {
     $sSQL = "SELECT * FROM events_event WHERE event_type = ".$_GET['Event']." ORDER BY event_start";
 
@@ -73,7 +73,7 @@ require "Include/Header.php";
 ?>
 <table cellpadding="4" align="center" cellspacing="0" width="100%">
   <tr>
-    <td align="center"><input type="button" class="icButton" <?php echo 'value="' . gettext("Back to Report Menu") . '"'; ?> Name="Exit" onclick="javascript:document.location='ReportList.php';"></td>
+    <td align="center"><input type="button" class="btn" value="<?= gettext("Back to Report Menu") ?>" Name="Exit" onclick="javascript:document.location='ReportList.php';"></td>
   </tr>
 </table>
 <?php
@@ -87,7 +87,7 @@ for ($row = 1; $row <= $numRows; $row++)
     $aRow = mysql_fetch_assoc($rsOpps);
     extract($aRow);
 
-    if (array_key_exists ('Action', $_GET) and $_GET['Action'] == "List")
+    if (array_key_exists ('Action', $_GET) & $_GET['Action'] == "List")
     {
         $aEventID[$row] = $event_id;
         $aEventTitle[$row] = htmlentities(stripslashes($event_title),ENT_NOQUOTES, "UTF-8");
@@ -111,16 +111,16 @@ for ($row = 1; $row <= $numRows; $row++)
 <table cellpadding="4" align="center" cellspacing="0" width="60%">
 
 <?php
-if (array_key_exists ('Action', $_GET) and $_GET['Action'] == "List" && $numRows > 0)
+if (array_key_exists ('Action', $_GET) && $_GET['Action'] == "List" && $numRows > 0)
 {
 ?>
        <caption>
-         <h3><?php echo gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events"))." in this category"; ?></h3>
+           <h3><?= gettext("There ". ($numRows == 1 ? "is " . $numRows . " event" : "are " . $numRows . " events")) . " in this category" ?></h3>
        </caption>
          <tr class="TableHeader">
-           <td width="33%"><strong><?php echo gettext("Event Title"); ?></strong></td>
-           <td width="33%"><strong><?php echo gettext("Event Date"); ?></strong></td>
-           <td colspan="3" width="34%" align="center"><strong><?php echo gettext("Generate Report"); ?></strong></td>
+           <td width="33%"><strong><?= gettext("Event Title") ?></strong></td>
+           <td width="33%"><strong><?= gettext("Event Date") ?></strong></td>
+           <td colspan="3" width="34%" align="center"><strong><?= gettext("Generate Report") ?></strong></td>
         </tr>
          <?php
          //Set the initial row color
@@ -134,13 +134,13 @@ if (array_key_exists ('Action', $_GET) and $_GET['Action'] == "List" && $numRows
 
          //Display the row
          ?>
-         <tr class="<?php echo $sRowClass; ?>">
-           <td class="TextColumn"><?php echo $aEventTitle[$row]; ?></td>
-           <td class="TextColumn"><?php echo FormatDate($aEventStartDateTime[$row],1); ?></td>
+         <tr class="<?= $sRowClass ?>">
+           <td class="TextColumn"><?= $aEventTitle[$row] ?></td>
+           <td class="TextColumn"><?= FormatDate($aEventStartDateTime[$row],1) ?></td>
            <td class="TextColumn" align="center">
              <form name="Attend" action="EventAttendance.php" method="POST">
-               <input type="hidden" name="Event" value="<?php echo $aEventID[$row]; ?>">
-               <input type="hidden" name="Type" value="<?php echo $_GET['Type']; ?>">
+               <input type="hidden" name="Event" value="<?= $aEventID[$row] ?>">
+               <input type="hidden" name="Type" value="<?= $_GET['Type'] ?>">
                <input type="hidden" name="Action" value="Retrieve">
                <input type="hidden" name="Choice" value="Attendees">
 <?php
@@ -155,24 +155,24 @@ $tSQL = "SELECT COUNT(per_ID) AS tCount
 $tOpps = RunQuery($tSQL);
 $tNumTotal = mysql_result($tOpps, 0);
 ?>
-               <input type="submit" name="Type" value="<?php echo gettext("Attending Members").' ['.$cNumAttend.']'; ?>" class="icButton">
+               <input type="submit" name="Type" value="<?= gettext("Attending Members").' ['.$cNumAttend.']' ?>" class="btn">
              </form>
            </td>
            <td class="TextColumn">
              <form name="NonAttend" action="EventAttendance.php" method="POST">
-               <input type="hidden" name="Event" value="<?php echo $aEventID[$row]; ?>">
-               <input type="hidden" name="Type" value="<?php echo $_GET['Type']; ?>">
+               <input type="hidden" name="Event" value="<?= $aEventID[$row] ?>">
+               <input type="hidden" name="Type" value="<?= $_GET['Type'] ?>">
                <input type="hidden" name="Action" value="Retrieve">
                <input type="hidden" name="Choice" value="Nonattendees">
 <?php
 ?>
-               <input type="submit" name="Type" value="<?php echo gettext("Non-Attending Members").' ['.($tNumTotal - $cNumAttend).']'; ?>" class="icButton">
+               <input type="submit" name="Type" value="<?= gettext("Non-Attending Members").' ['.($tNumTotal - $cNumAttend).']' ?>" class="btn">
              </form>
            </td>
            <td class="TextColumn">
              <form name="GuestAttend" action="EventAttendance.php" method="POST">
-               <input type="hidden" name="Event" value="<?php echo $aEventID[$row]; ?>">
-               <input type="hidden" name="Type" value="<?php echo $_GET['Type']; ?>">
+               <input type="hidden" name="Event" value="<?= $aEventID[$row] ?>">
+               <input type="hidden" name="Type" value="<?= $_GET['Type'] ?>">
                <input type="hidden" name="Action" value="Retrieve">
                <input type="hidden" name="Choice" value="Guests">
 <?php
@@ -182,7 +182,7 @@ $gSQL = "SELECT COUNT(per_ID) AS gCount
 $gOpps = RunQuery($gSQL);
 $gNumGuestAttend = mysql_result($gOpps, 0);
 ?>
-               <input <?php echo ($gNumGuestAttend == 0 ? "type=\"button\"":"type=\"submit\""); ?> name="Type" value="<?php echo gettext("Guests").' ['.$gNumGuestAttend.']'; ?>" class="icButton">
+               <input <?= ($gNumGuestAttend == 0 ? "type=\"button\"":"type=\"submit\"") ?> name="Type" value="<?= gettext("Guests").' ['.$gNumGuestAttend.']' ?>" class="btn">
              </form>
            </td>
          </tr>
@@ -196,12 +196,12 @@ elseif ($_POST['Action']== "Retrieve" && $numRows > 0)
 {
 ?>
        <caption>
-         <h3><?php echo gettext("There ".($numRows == 1 ? "was ".$numRows." ".$_POST['Choice']:"were ".$numRows." ".$_POST['Choice']))." for this Event"; ?></h3>
+         <h3><?= gettext("There ".($numRows == 1 ? "was ".$numRows." ".$_POST['Choice']:"were ".$numRows." ".$_POST['Choice']))." for this Event" ?></h3>
        </caption>
          <tr class="TableHeader">
-           <td width="35%"><strong><?php echo gettext("Name"); ?></strong></td>
-           <td width="25%"><strong><?php echo gettext("Email"); ?></strong></td>
-           <td width="25%"><strong><?php echo gettext("Home Phone"); ?></strong></td>
+           <td width="35%"><strong><?= gettext("Name") ?></strong></td>
+           <td width="25%"><strong><?= gettext("Email") ?></strong></td>
+           <td width="25%"><strong><?= gettext("Home Phone") ?></strong></td>
 	   <td width="15%" nowrap><strong><?php /* echo gettext("Cart"); */ ?>&nbsp;</strong></td>
         </tr>
 <?php
@@ -216,10 +216,10 @@ elseif ($_POST['Action']== "Retrieve" && $numRows > 0)
 
          //Display the row
          ?>
-         <tr class="<?php echo $sRowClass; ?>">
-           <td class="TextColumn"><?php echo FormatFullName($aTitle[$row],$aFistName[$row],$aMiddleName[$row],$aLastName[$row],$aSuffix[$row],3); ?></td>
-           <td class="TextColumn"><?php echo ($aEmail[$row] ? '<a href="mailto:'.$aEmail[$row].'" title="Send Email">'.$aEmail[$row].'</a>':'Not Available'); ?></td>
-           <td class="TextColumn"><?php echo ($aHomePhone[$row] ? $aHomePhone[$row]:'Not Available'); ?></td>
+         <tr class="<?= $sRowClass ?>">
+           <td class="TextColumn"><?= FormatFullName($aTitle[$row],$aFistName[$row],$aMiddleName[$row],$aLastName[$row],$aSuffix[$row],3) ?></td>
+           <td class="TextColumn"><?= $aEmail[$row] ? '<a href="mailto:' . $aEmail[$row] . '" title="Send Email">' . $aEmail[$row] . '</a>' : 'Not Available' ?></td>
+           <td class="TextColumn"><?= $aHomePhone[$row] ? $aHomePhone[$row] : 'Not Available' ?></td>
 <?php
 // AddToCart call to go here
 ?>
@@ -232,13 +232,12 @@ else
 {
 ?>
        <caption>
-         <h3><?php echo ($_GET ? gettext("There are no events in this category"):gettext("There are no Records")); ?><br><br></h3>
+         <h3><?= $_GET ? gettext("There are no events in this category") : gettext("There are no Records") ?><br><br></h3>
        </caption>
        <tr><td>&nbsp;</td></tr>
 <?php
 }
 ?>
-      </table>
-<?php
-require "Include/Footer.php";
-?>
+</table>
+
+<?php require "Include/Footer.php" ?>

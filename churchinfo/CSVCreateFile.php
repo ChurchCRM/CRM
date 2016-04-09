@@ -3,10 +3,10 @@
  *
  *  filename    : CSVCreateFile.php
  *  last change : 2003-06-11
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -295,7 +295,7 @@ else
 		while($aFamRow = mysql_fetch_array($rsFamCustomFields))
 		{
 			extract($aFamRow);
-			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
 			{			
 				if (isset($_POST["$fam_custom_Field"]))
 				{
@@ -311,7 +311,7 @@ else
 		while($aFamRow = mysql_fetch_array($rsFamCustomFields))
 		{
 			extract($aFamRow);
-			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
+			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
 			{			
 				if (isset($_POST["$fam_custom_Field"]))
 				{
@@ -503,7 +503,7 @@ else
 							$type_ID = "";
 
 							extract($aCustomField);
-							if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+							if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]])
 							{
 								if (isset($_POST["$custom_Field"]))
 								{

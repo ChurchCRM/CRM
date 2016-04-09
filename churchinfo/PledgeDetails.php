@@ -4,7 +4,7 @@
  *  filename    : PledgeDetails.php
  *  copyright   : Copyright 2001, 2002, 2003, 2004 Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -52,17 +52,15 @@ if ($resArr) {
 
 ?>
 
-<form method="post" action="PledgeDetails.php?<?php echo "PledgeID=" . $iPledgeID . "&linkBack=" . $linkBack; ?>" name="PledgeDelete">
+<form method="post" action="PledgeDetails.php?<?= "PledgeID=" . $iPledgeID . "&linkBack=" . $linkBack ?>" name="PledgeDelete">
 
 <table cellpadding="3" align="center">
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Back"); ?>" name="Back">
+			<input type="submit" class="btn" value="<?= gettext("Back") ?>" name="Back">
 		</td>
 	</tr>
 </table>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

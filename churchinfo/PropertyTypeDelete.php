@@ -3,10 +3,10 @@
  *
  *  filename    : PropertyTypeDelete.php
  *  last change : 2003-06-04
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -59,21 +59,19 @@ require "Include/Header.php";
 
 if (isset($_GET['Warn'])) { ?>
 	<p align="center" class="LargeError">
-		<?php echo "<b>" . gettext("Warning") . ": </b>" . gettext("This property type is still being used by at least one property.") . "<BR>" . gettext("If you delete this type, you will also remove all properties using") . "<BR>" . gettext("it and lose any corresponding property assignments."); ?>
+		<?= "<b>" . gettext("Warning") . ": </b>" . gettext("This property type is still being used by at least one property.") . "<BR>" . gettext("If you delete this type, you will also remove all properties using") . "<BR>" . gettext("it and lose any corresponding property assignments."); ?>
 	</p>
 <?php } ?>
 
 <p align="center" class="MediumLargeText">
-	<?php echo gettext("Please confirm deletion of this Property Type:"); ?> <b><?php echo $prt_Name; ?></b>
+	<?= gettext("Please confirm deletion of this Property Type:") ?> <b><?= $prt_Name ?></b>
 </p>
 
 <p align="center">
-	<a href="PropertyTypeDelete.php?Confirmed=Yes&PropertyTypeID=<?php echo $iPropertyTypeID ?>"><?php echo gettext("Yes, delete this record"); ?></a>
+	<a href="PropertyTypeDelete.php?Confirmed=Yes&PropertyTypeID=<?php echo $iPropertyTypeID ?>"><?= gettext("Yes, delete this record") ?></a>
 	&nbsp;&nbsp;
-	<a href="PropertyTypeList.php?Type=<?php echo $sType; ?>"><?php echo gettext("No, cancel this deletion"); ?></a>
+	<a href="PropertyTypeList.php?Type=<?= $sType ?>"><?= gettext("No, cancel this deletion") ?></a>
 
 </p>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

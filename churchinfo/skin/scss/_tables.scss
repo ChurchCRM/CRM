@@ -1,0 +1,11 @@
+// Make tables scrollable in x-direction
+table.horizontal-scroll {
+    display: block;
+    overflow-x: scroll;
+}
+
+.table-simple-padding {
+  td:not(:first-child) {
+    padding-left: 5px;
+  }
+}

@@ -3,11 +3,11 @@
  *
  *  filename    : GroupEditor.php
  *  last change : 2003-04-15
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2012 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -17,347 +17,168 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Service/GroupService.php";
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bManageGroups'])
 {
-	Redirect("Menu.php");
-	exit;
+    Redirect("Menu.php");
+    exit;
 }
 
 //Set the page title
 $sPageTitle = gettext("Group Editor");
-
-//Get the GroupID from the querystring
-$iGroupID = 0;
+$groupService = new GroupService();
+//Get the GroupID from the querystring.  Redirect to Menu if no groupID is present, since this is an edit-only form.
 if (array_key_exists ("GroupID", $_GET))
-	$iGroupID = FilterInput($_GET["GroupID"],'int');
-
-$bEmptyCart = (array_key_exists ("EmptyCart", $_GET) && $_GET["EmptyCart"] == "yes") && 
-               array_key_exists ('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) > 0;
-
-$bNameError = False;
-$bErrorFlag = False;
-		
-//Is this the second pass?
-if (isset($_POST["GroupSubmit"]))
-{
-
-	//Assign everything locally
-	$sName = FilterInputArr($_POST, "Name");
-	$iGroupType = FilterInputArr($_POST, "GroupType",'int');
-	$iDefaultRole = FilterInputArr($_POST,"DefaultRole",'int');
-	$sDescription = FilterInputArr($_POST,"Description");
-	$bUseGroupProps = FilterInputArr($_POST,"UseGroupProps");
-	$cloneGroupRole = FilterInputArr($_POST,"cloneGroupRole",'int');
-	$seedGroupID = FilterInputArr($_POST,"seedGroupID",'int');
-
-	//Did they enter a Name?
-	if (strlen($sName) < 1)
-	{
-		$bNameError = True;
-		$bErrorFlag = True;
-
-	}
-
-	// If no errors, then let's update...
-	if (!$bErrorFlag)
-	{
-		// Are we creating a new group?
-		if (strlen($iGroupID) < 1)
-		{
-			//Get a new Role List ID
-			$sSQL = "SELECT MAX(lst_ID) FROM list_lst";
-			$aTemp = mysql_fetch_array(RunQuery($sSQL));
-			if ($aTemp[0] > 9)
-				$newListID = $aTemp[0] + 1;
-			else
-				$newListID = 10;
-
-			if ($bUseGroupProps)
-				$sUseProps = 'true';
-			else
-				$sUseProps = 'false';
-			$sSQL = "INSERT INTO group_grp (grp_Name, grp_Type, grp_Description, grp_hasSpecialProps, grp_DefaultRole, grp_RoleListID) VALUES ('" . $sName . "', " . $iGroupType . ", '" . $sDescription . "', '" . $sUseProps . "', '1', " . $newListID . ")";
-
-			$bGetKeyBack = True;
-			$bCreateGroupProps = $bUseGroupProps;
-		}
-		else
-		{
-			$sSQLtest = "SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = " . $iGroupID;
-			$rstest = RunQuery($sSQLtest);
-			$aRow = mysql_fetch_array($rstest);
-
-			$bCreateGroupProps = ($aRow[0] == 'false') && $bUseGroupProps;
-			$bDeleteGroupProps = ($aRow[0] == 'true') && !$bUseGroupProps;
-
-			$sSQL = "UPDATE group_grp SET grp_Name='" . $sName . "', grp_Type='" . $iGroupType . "', grp_Description='" . $sDescription . "'";
-
-			if ($bCreateGroupProps)
-				$sSQL .= ", grp_hasSpecialProps = 'true'";
-
-			if ($bDeleteGroupProps)
-			{
-				$sSQL .= ", grp_hasSpecialProps = 'false'";
-				$sSQLp = "DROP TABLE groupprop_" . $iGroupID;
-				RunQuery($sSQLp);
-
-				// need to delete the master index stuff
-				$sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
-				RunQuery($sSQLp);
-			}
-
-			$sSQL .= " WHERE grp_ID = " . $iGroupID;
-			$bGetKeyBack = False;
-		}
-
-		// execute the SQL
-		RunQuery($sSQL);
-
-		//If the user added a new record, we need to key back to the route to the GroupView page
-		if ($bGetKeyBack)
-		{
-			//Get the key back
-			$iGroupID = mysql_insert_id($cnInfoCentral);
-
-			if (($cloneGroupRole) && ($seedGroupID>0)) {
-				$sSQL = "SELECT list_lst.* FROM list_lst, group_grp WHERE group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_id = $seedGroupID ORDER BY list_lst.lst_OptionID";
-				$rsRoleSeed = RunQuery($sSQL);
-				while ($aRow = mysql_fetch_array($rsRoleSeed))
-				{
-					extract ($aRow);
-					$useOptionName = mysql_real_escape_string($lst_OptionName);
-					$sSQL = "INSERT INTO list_lst VALUES ($newListID, $lst_OptionID, $lst_OptionSequence, '$useOptionName')";
-					RunQuery($sSQL);
-				}
-			} else 
-			{
-				$sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'Member')";
-				RunQuery($sSQL);
-			}
-		}
-
-		// Create a table for group-specific properties
-		if ( $bCreateGroupProps )
-		{
-			$sSQLp = "CREATE TABLE groupprop_" . $iGroupID . " (
-						per_ID mediumint(8) unsigned NOT NULL default '0',
-						PRIMARY KEY  (per_ID),
-  						UNIQUE KEY per_ID (per_ID)
-						) ENGINE=MyISAM;";
-			RunQuery($sSQLp);
-
-			// If this is an existing group, add rows in this table for each member
-			if ( !$bGetKeyBack )
-			{
-				$sSQL = "SELECT per_ID FROM person_per INNER JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID WHERE p2g2r_grp_ID = " . $iGroupID . " ORDER BY per_ID";
-				$rsGroupMembers = RunQuery($sSQL);
-
-				while ($aRow = mysql_fetch_array($rsGroupMembers))
-				{
-					$sSQLr = "INSERT INTO groupprop_" . $iGroupID . " ( `per_ID` ) VALUES ( '" . $aRow[0] . "' );";
-					RunQuery($sSQLr);
-				}
-			}
-		}
-
-		if (array_key_exists ("EmptyCart", $_POST) && $_POST["EmptyCart"] && count($_SESSION['aPeopleCart']) > 0)
-		{
-			$iCount = 0;
-			while ($element = each($_SESSION['aPeopleCart'])) {
-				AddToGroup($_SESSION['aPeopleCart'][$element['key']],$iGroupID,$iDefaultRole);
-				$iCount += 1;
-			}
-
-			$sGlobalMessage = $iCount . " records(s) successfully added to selected Group.";
-
-			Redirect("GroupEditor.php?GroupID=" . $iGroupID . "&Action=EmptyCart");
-		}
-		else
-		{
-			Redirect("GroupEditor.php?GroupID=$iGroupID");
-		}
-	}
-
-}
+    $iGroupID = FilterInput($_GET["GroupID"],'int');
 else
 {
-	//FirstPass
-	//Are we editing or adding?
-	if (strlen($iGroupID) > 0)
-	{
-		//Editing....
-		//Get the information on this familyAge Groups for the drop down
-		$sSQL = "SELECT * FROM group_grp WHERE grp_ID = " . $iGroupID;
-		$rsGroup = RunQuery($sSQL);
-		$aRow = mysql_fetch_array($rsGroup);
-
-		$iGroupID = $aRow["grp_ID"];
-		$iGroupType = $aRow["grp_Type"];
-		$iDefaultRole = $aRow["grp_DefaultRole"];
-		$iRoleListID = $aRow["grp_RoleListID"];
-		$sName = $aRow["grp_Name"];
-		$sDescription = $aRow["grp_Description"];
-		$bHasSpecialProps = ($aRow["grp_hasSpecialProps"] == 'true');
-	}
+    Redirect("GroupList.php");
 }
 
-// Get Group Types for the drop-down
-$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 3 ORDER BY lst_OptionSequence";
-$rsGroupTypes = RunQuery($sSQL);
-
-//Group Group Role List 
-$sSQL = "SELECT * FROM group_grp WHERE grp_RoleListID > 0 ORDER BY grp_Name";
-$rsGroupRoleSeed = RunQuery($sSQL);
-
+$thisGroup = $groupService->getGroups($iGroupID);   //get this group from the group service.
+$rsGroupTypes = $groupService->getGroupTypes();     // Get Group Types for the drop-down
+$rsGroupRoleSeed = $groupService->getGroupRoleTemplateGroups();     //Group Group Role List
 require "Include/Header.php";
 
 ?>
+<!-- GROUP SPECIFIC PROPERTIES MODAL-->
+     <div class="modal fade" id="groupSpecificPropertiesModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="gsproperties-label"></h4>
+                        </div>
+                        <div class="modal-body">
+                        <span style="color: red">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button name="setgroupSpecificProperties" id="setgroupSpecificProperties" type="button" class="btn btn-danger">asdf</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+<!-- END GROUP SPECIFIC PROPERTIES MODAL-->
 
-<script language="javascript">
-bStatus = false;
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Group Settings</h3>
+    </div>
+    <div class="box-body">
+        <form name="groupEditForm" id="groupEditForm">
+            <div class="form-group">
+                <div class="row">
+                <div class="col-xs-4">
+                    <label for="Name"><?= gettext("Name:") ?></label>
+                    <input class="form-control" type="text" Name="Name" value="<?= htmlentities(stripslashes($thisGroup['groupName']),ENT_NOQUOTES, "UTF-8") ?>">
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-xs-4">
+                    <label for="Description"><?= gettext("Description:") ?></label>
+                    <textarea  class="form-control" name="Description" cols="40" rows="5"><?= htmlentities(stripslashes($thisGroup['groupDescription']),ENT_NOQUOTES, "UTF-8") ?></textarea></td>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-xs-3">
+                        <label for="GroupType"><?= gettext("Type of Group:") ?></label>
+                        <select class="form-control input-small" name="GroupType">
+                            <option value="0"><?= gettext("Unassigned") ?></option>
+                            <option value="0">-----------------------</option>
+                            <?php
+                            foreach ($rsGroupTypes as $groupType)
+                            {
+                                echo "<option value=\"" . $groupType['lst_OptionID'] . "\"";
+                                if ($thisGroup['grp_Type'] == $groupType['lst_OptionID'])
+                                    echo " selected";
+                                echo ">" . $groupType['lst_OptionName']."</option>";
+                            }
+                            ?>
+                        </select>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-xs-3">
+                    <?php
+                    // Show Role Clone fields only when adding new group
+                    if (strlen($iGroupID) < 1) { ?>
+                        <b><?= gettext("Group Member Roles:") ?></b>
 
-function confirmDelete() {
-	if (!bStatus) {
-		bStatus = confirm(<?php echo "'" . gettext("Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!") . "'"; ?>);
-		document.GroupEdit.UseGroupProps.checked = !bStatus;
-	}
-	else
-		bStatus = false;
-}
-function confirmAdd() {
-	if (!bStatus) {
-		bStatus = confirm(<?php echo "'" . gettext("This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor.") . "'"; ?>);
-		document.GroupEdit.UseGroupProps.checked = bStatus;
-	}
-	else
-		bStatus = false;
-}
+                        <?= gettext("Clone roles:") ?>
+                        <input type="checkbox" name="cloneGroupRole" id="cloneGroupRole" value="1">
+                        </div>
+                        <div class="col-xs-3" id="selectGroupIDDiv">
+                        <?= gettext("from group:") ?>
+                        <select class="form-control input-small" name="seedGroupID" id="seedGroupID" >
+                        <option value="0"><?php gettext("Select a group"); ?></option>
+
+                        <?php
+                           foreach($rsGroupRoleSeed as $groupRoleTemplate)
+                            {
+                                echo "<option value=\"" . $groupRoleTemplate['grp_ID'] . "\">" . $groupRoleTemplate['grp_Name'] . "</option>";
+                            }
+                            echo "</select>";
+                        ?>
+
+                <?php } ?>
+                </div>
+                </div>
+                <br>
+                <div class="row">
+                <div class="col-xs-6">
+                    <label for="UseGroupProps"><?= gettext("Group Specific Properties: ") ?></label>
+
+                    <?php
+                        if ($thisGroup['grp_hasSpecialProps'])
+                        {
+                            echo "Enabled" ;
+                            echo '<div class="btn-group"><button type="button" id="disableGroupProps" class="btn btn-danger">Disable Group Specific Properties</button>&nbsp;';
+                            echo '<button type="button" class="btn btn-success groupSpecificProperties">Edit Group Specific Properties</button></div>';// href=\"GroupPropsFormEditor.php?GroupID=$iGroupID\">" . gettext("Edit Group-Specific Properties Form") . "</a>";
+                        }
+                        else
+                            echo "Disabled <br>" ;
+                            echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">Enable Group Specific Properties</button>&nbsp;';
+                    ?>
+                </div>
+                </div>
+                <br>
+                <div class="row">
+                <div class="col-xs-3">
+                    <input type="submit" id="saveGroup" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> Name="GroupSubmit">
+                </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title"><?= gettext("Group Roles:") ?></h3>
+    </div>
+    <div class="box-body">
+        <div class="alert alert-info alert-dismissable">
+            <i class="fa fa-info"></i>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <strong></strong>Group role name changes are saved as soon as the box loses focus
+        </div>
+        <table class="table" id="groupRoleTable">
+        </table>
+        <label for="newRole">New Role: </label><input type="text" class="form-control" id="newRole" name="newRole">
+        <br>
+        <button type="button" id="addNewRole" class="btn btn-primary">Add New Role</button>
+    </div>
+</div>
+<script>
+    //setup some document-global variables for later on in the javascript
+    var defaultRoleID= <?= ($thisGroup['grp_DefaultRole']?  $thisGroup['grp_DefaultRole'] : 1) ?>;
+    var dataT = 0;
+    var groupRoleData = <?= json_encode($groupService->getGroupRoles($iGroupID)); ?>;
+    var roleCount = groupRoleData.length;
+    var groupID=<?= $iGroupID ?>;
 </script>
+<script src="<?= $sRootPath ?>/skin/js/GroupEditor.js"></script>
 
-
-<table border="0" width="100%">
-<tr>
-
-<td width="40%" valign="top" align="center">
-	<form name="GroupEdit" method="post" action="GroupEditor.php?GroupID=<?php echo $iGroupID ?>">
-	<table cellpadding="3">
-		<tr>
-			<td class="LabelColumn"><b><?php echo gettext("Name:"); ?></b></td>
-			<td class="TextColumn"><input type="text" Name="Name" value="<?php echo htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8"); ?>" size="40" maxlength="50">
-			<?php if ($bNameError) echo "<br><font color=\"red\">" . gettext("You must enter a name.") . "</font>"; ?>
-			</td>
-		</tr>
-
-		<tr>
-			<td class="LabelColumn"><b><?php echo gettext("Description:"); ?></b></td>
-			<td class="TextColumnWithBottomBorder"><textarea name="Description" cols="40" rows="5"><?php echo htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
-		</tr>
-
-		<tr>
-			<td class="LabelColumn"><b><?php echo gettext("Type of Group:"); ?></b></td>
-			<td class="TextColumnWithBottomBorder">
-				<select name="GroupType">
-					<option value="0"><?php echo gettext("Unassigned"); ?></option>
-					<option value="0">-----------------------</option>
-					<?php
-					while ($aRow = mysql_fetch_array($rsGroupTypes))
-					{
-						extract($aRow);
-						echo "<option value=\"" . $lst_OptionID . "\"";
-						if ($iGroupType == $lst_OptionID)
-							echo " selected";
-						echo ">" . $lst_OptionName . "</option>";
-					}
-					?>
-				</select>
-			</td>
-		</tr>
-
-		<?php 
-		// Show Role Clone fields only when adding new group
-		if (strlen($iGroupID) < 1) { ?>
-		<tr>
-			<td class="LabelColumn"><b><?php echo gettext("Group Member Roles:"); ?></b></td>
-			<td class="TextColumnWithBottomBorder">
-			<?php echo gettext("Clone roles:"); ?>
-			<input type="checkbox" name="cloneGroupRole" value="1"><br>
-			<?php echo gettext("from group:"); ?>
-			<select name="seedGroupID">
-			<option value="0"><?php gettext("Select a group"); ?></option>
-			
-			<?php
-				while ($aRow = mysql_fetch_array($rsGroupRoleSeed))
-				{
-					extract($aRow);
-					echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
-				}
-				echo "</select>";
-			?>
-			</td>
-		</tr>
-		<?php } ?>
-
-		<tr>
-			<td class="LabelColumn"><b><?php echo gettext("Group-Specific<br>Properties:"); ?></b></td>
-			<td class="TextColumnWithBottomBorder">
-				<?php echo gettext("Use group-specific properties?"); ?>
-				<?php
-				if ($bHasSpecialProps)
-				{
-					echo "<input type=\"checkbox\" name=\"UseGroupProps\" value=\"1\" onChange=\"confirmDelete();\" checked><br><br>";
-					echo "<a class=\"SmallText\" href=\"GroupPropsFormEditor.php?GroupID=$iGroupID\">" . gettext("Edit Group-Specific Properties Form") . "</a>";
-				}
-				else
-					echo "<input type=\"checkbox\" name=\"UseGroupProps\" value=\"1\" onChange=\"confirmAdd();\">";
-				?>
-			</td>
-		</tr>
-
-		<tr>
-			<td class="SmallShadedBox" colspan="2" align="center"><input type="checkbox" name="EmptyCart" value="1" <?php if ($bEmptyCart) { echo " checked"; } ?>>&nbsp;&nbsp;<b><?php echo gettext("Empty Cart to this Group?"); ?></b></td>
-		</tr>
-
-		<tr><td><br></td></tr>
-
-		<tr>
-			<td colspan="2" align="center">
-				<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupSubmit">
-				&nbsp;
-				<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="GroupCancel" onclick="javascript:document.location='<?php
-				if (strlen($iGroupID) > 0)
-					echo "GroupView.php?GroupID=$iGroupID';\">";
-				else
-					echo "GroupList.php';\">";
-				?>
-			</td>
-		</tr>
-	</table>
-	</form>
-</td>
-
-<td align="center">
-
-<?php
-if (strlen($iGroupID) > 0)
-{
-	?>
-	<b class="MediumLargeText"><?php echo gettext("Group Roles:"); ?></b><br><br>
-	<iframe width="100%" height="400px" frameborder="0" align="left" marginheight="0" marginwidth="0"
-	src="OptionManager.php?mode=grproles&ListID=<?php echo $iRoleListID; ?>"></iframe>
-	<?php
-}
-else
-{
-	?><b class="MediumLargeText"><?php echo gettext("Initial Group Creation:  Group roles can be edited after the first save."); ?></b><br><br><?php
-}
-?>
-</td>
-
-</tr>
-</table>
-
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

@@ -5,10 +5,10 @@
  *  last change : 2003-06-04
  *  description : property assign
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -169,30 +169,28 @@ $sPageTitle = $sTypeName . gettext(" Property Assignment");
 require "Include/Header.php";
 ?>
 
-<form method="post" action="PropertyAssign.php<?php echo $sQuerystring . "&PropertyID=" . $iPropertyID; ?>">
+<form method="post" action="PropertyAssign.php<?= $sQuerystring . "&PropertyID=" . $iPropertyID ?>">
 <input type="hidden" name="SecondPass" value="True">
-<input type="hidden" name="Action" value="<?php echo $sAction; ?>">
+<input type="hidden" name="Action" value="<?= $sAction ?>">
 
 <table cellpadding="4">
 	<tr>
-		<td align="right"><b><?php echo $sTypeName ?>:</b></td>
-		<td><?php echo $sName; ?></td>
+		<td align="right"><b><?= $sTypeName ?>:</b></td>
+		<td><?= $sName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?php echo gettext("Assigning:"); ?></b></td>
+		<td align="right"><b><?= gettext("Assigning:") ?></b></td>
 		<td><?php echo $sPropertyName ?></td>
 <?php if (strlen($sPrompt)) { ?>
 		<tr>
-			<td align="right" valign="top"><b><?php echo gettext("Value:"); ?></b></td>
-			<td><?php echo $sPrompt; ?><br><textarea name="Value" cols="60" rows="10"><?php echo $sValue; ?></textarea></td>
+			<td align="right" valign="top"><b><?= gettext("Value:") ?></b></td>
+			<td><?= $sPrompt ?><br><textarea name="Value" cols="60" rows="10"><?= $sValue ?></textarea></td>
 		</tr>
 <?php } ?>
 </table>
 
-<p align="center"><input type="submit" class="icButton" <?php echo 'value="'; if ($sAction == "add") { echo gettext("Assign"); } else { echo gettext("Update"); } echo '"'; ?> name="Submit"></p>
+<p align="center"><input type="submit" class="btn" <?= 'value="'; if ($sAction == "add") { echo gettext("Assign"); } else { echo gettext("Update"); } echo '"' ?> name="Submit"></p>
 
 </form>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

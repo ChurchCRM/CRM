@@ -2,14 +2,14 @@
 /*******************************************************************************
 *
 *  filename    : CartView.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *
 *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
 *
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
@@ -24,121 +24,36 @@
 *  This file best viewed in a text editor with tabs stops set to 4 characters
 *
 ******************************************************************************/
-
-function ExportCartToCSV()
-{
-    $sSQL  =    " DROP TEMPORARY TABLE IF EXISTS tmp_canvassers ";
-    RunQuery($sSQL);
-
-    // Make temporary copy of person_per table and call it tmp_canvassers
-    $sSQL  =    " CREATE TEMPORARY TABLE tmp_canvassers ".
-                " SELECT * FROM person_per ";
-    RunQuery($sSQL);
-
-    $sSQL  =    " SELECT lst_OptionName AS Classification, fam_Name AS Family, ".
-                " person_per.per_LastName AS Last_Name, ".
-                " person_per.per_FirstName AS First_Name, ".
-                " fam_HomePhone, person_per.per_HomePhone AS per_HomePhone, ".
-                " fam_Address1, fam_Address2, fam_City, ".
-                " fam_State, fam_Zip, person_per.per_DateEntered AS DateEntered, ".
-                " tmp_canvassers.per_LastName AS Cnvsr_Last_Name, ".
-                " tmp_canvassers.per_FirstName AS Cnvsr_First_Name ".
-                " FROM person_per ".
-                " LEFT JOIN family_fam ON fam_ID = person_per.per_fam_ID ".
-                " LEFT JOIN list_lst ON lst_OptionID = person_per.per_cls_ID ".
-                " LEFT JOIN tmp_canvassers ON tmp_canvassers.per_ID = fam_Canvasser ".
-                " WHERE person_per.per_ID ".
-                "     IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ".
-                " AND lst_ID='1' ".
-                " ORDER BY fam_Name, fam_ID, Last_Name, First_Name ";
-    
-    //Run the SQL
-    $rsQueryResults = RunQuery($sSQL);
-
-    $sCSVstring = "";
-
-    if (mysql_error() != "")
-    {
-        $sCSVstring = gettext("An error occured: ") . mysql_errno() . "--" . mysql_error();
-    }
-    else
-    {
-
-        //Loop through the fields and write the header row
-        for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
-        {
-            $sCSVstring .= mysql_field_name($rsQueryResults,$iCount) . ",";
-        }
-
-        $sCSVstring .= "\n";
-
-        //Loop through the recordsert
-        while($aRow =mysql_fetch_array($rsQueryResults))
-        {
-            //Loop through the fields and write each one
-            for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
-            {
-                $sCSVstring .= $aRow[$iCount] . ",";
-            }
-
-            $sCSVstring .= "\n";
-        }
-    }
-
-    header("Content-type: application/csv");
-    header("Content-Disposition: attachment; filename=Cart-" . date("Ymd-Gis") . ".csv");
-    header("Content-Transfer-Encoding: binary");
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-    header('Pragma: public'); 
-    echo $sCSVstring;
-    exit;
-
-}
-
-
 // Include the function library
 
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/LabelFunctions.php";
+require "Include/PersonFunctions.php";
 
 if (isset($_POST["rmEmail"]))
 {
      rmEmail();
 }
 
-if (isset($_POST["cartcsv"]))
-{
-
-    // If user does not have CSV Export permission, redirect to the menu.
-    if (!$bExportCSV) 
-    {
-       Redirect("Menu.php");
-       exit;
-    }
-
-    ExportCartToCSV();
-    exit;
-}
-
 // Set the page title and include HTML header
 $sPageTitle = gettext("View Your Cart");
-require "Include/Header.php";
-
+require "Include/Header.php"; ?>
+<div class="box box-body">
+<?php
 // Confirmation message that people where added to Event from Cart
-if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart']) == 0) {
-        if (!array_key_exists("Message", $_GET)) {
-            echo "<p align=\"center\" class=\"LargeText\">" . gettext("You have no items in your cart.") . "</p>";
-        } else {
+if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) == 0) {
+        if (!array_key_exists("Message", $_GET)) { ?>
+             <p class="text-center callout callout-warning"><?= gettext("You have no items in your cart.") ?> </p>
+        <?php } else {
             switch ($_GET["Message"]) {
-                case "aMessage":
-                    echo '<p align="center" class="LargeText">'.$_GET["iCount"].' '.($_GET["iCount"] == 1 ? "Record":"Records").' Emptied into Event ID:'.$_GET["iEID"].'</p>'."\n";
-                break;
+                case "aMessage": ?>
+                    <p class="text-center callout callout-info"><?= $_GET["iCount"].' '.($_GET["iCount"] == 1 ? "Record":"Records").' Emptied into Event ID:'.$_GET["iEID"]  ?> </p>
+                <?php break;
             }
         }
-        echo '<p align="center"><input type="button" name="Exit" class="icButton" value="'.gettext("Back to Menu").'" '."onclick=\"javascript:document.location='Menu.php';\"></p>\n";
-
+        echo '<p align="center"><input type="button" name="Exit" class="btn btn-primary" value="'.gettext("Back to Menu").'" '."onclick=\"javascript:document.location='Menu.php';\"></p>\n";
+        echo '</div>';
 } else {
 
         // Create array with Classification Information (lst_ID = 1)
@@ -171,28 +86,28 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
         $sSQL = "SELECT distinct per_fam_ID FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY per_fam_ID";
         $iNumFamilies = mysql_num_rows(RunQuery($sSQL));
 
-        if ($iNumPersons > 16)
-        {
-        ?>
-        <center>
+        if ($iNumPersons > 16) { ?>
         <form method="get" action="CartView.php#GenerateLabels">
-        <input type="submit" class="icButton" name="gotolabels" 
-        value="<?php echo gettext("Go To Labels");?>">
-        </form></center>
+        <input type="submit" class="btn" name="gotolabels"
+        value="<?= gettext("Go To Labels") ?>">
+        </form>
+        <?php } ?>
+<!-- Default box -->
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title"><?= gettext("Your cart contains") . ' ' . $iNumPersons . ' ' . gettext("persons from") . ' ' . $iNumFamilies . ' ' . gettext("families.") ?></h3>
+    </div>
+    <div class="box-body">
+        <table class="table table-hover">
+        <tr>
+            <th><?= gettext("Name") ?></th>
+            <th><?=  gettext("Address?") ?></th>
+            <th><?=  gettext("Email?") ?></th>
+            <th><?= gettext("Remove") ?></th>
+            <th><?=  gettext("Classification") ?></th>
+            <th><?=  gettext("Family Role") ?></th>
+        </tr>
         <?php
-        }
-
-        echo '<p align="center">' . gettext("Your cart contains") . ' ' . $iNumPersons . ' ' . gettext("persons from") . ' ' . $iNumFamilies . ' ' . gettext("families.") . '</p>';
-
-        echo '<table align="center" width="70%" cellpadding="4" cellspacing="0">';
-        echo '<tr class="TableHeader">';
-        echo '<td><b>' . gettext("Name") . '</b></td>';
-        echo '<td align="center"><b>' . gettext("Address?") . '</b></td>';
-        echo '<td align="center"><b>' . gettext("Email?") . '</b></td>';
-        echo '<td><b>' . gettext("Remove") . '</b></td>';
-        echo '<td align="center"><b>' . gettext("Classification") . '</b></td>';
-        echo '<td align="center"><b>' . gettext("Family Role") . '</b></td>';
-
         $sEmailLink = "";
         $iEmailNum = 0;
         $sRowClass = "RowColorA";
@@ -234,12 +149,11 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
                         $sValidAddy = gettext("No");
 
                 echo '<tr class="' . $sRowClass . '">';
-                echo '<td><a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
+                echo '<td><img src="'. $personService->getPhoto($per_ID). '" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
 
                 echo '<td align="center">' . $sValidAddy . '</td>';
                 echo '<td align="center">' . $sValidEmail . '</td>';
-                echo '<td><a onclick="saveScrollCoordinates()" 
-                        href="CartView.php?RemoveFromPeopleCart=' . 
+                echo '<td><a href="CartView.php?RemoveFromPeopleCart=' .
                         $per_ID . '">' . gettext("Remove") . '</a></td>';
                 echo '<td align="center">' . $aClassificationName[$per_cls_ID] . '</td>';
                 echo '<td align="center">' . $aFamilyRoleName[$per_fmr_ID] . '</td>';
@@ -248,107 +162,104 @@ if (array_key_exists('aPeopleCart', $_SESSION) and count($_SESSION['aPeopleCart'
         }
 
         echo "</table>";
-}
+} ?>
 
-if (count($_SESSION['aPeopleCart']) != 0)
-{
-        echo "<br><table align=\"center\" cellpadding=\"15\"><tr><td valign=\"top\">";
-        echo "<p align=\"center\" class=\"MediumText\">";
-        echo "<b>" . gettext("Cart Functions") . "</b><br>";
-        echo "<br>";
-        echo "<a href=\"CartView.php?Action=EmptyCart\">" . gettext("Empty Cart") . "</a>";
 
-        if ($_SESSION['bManageGroups']) {
-                echo "<br>";
-                echo "<a href=\"CartToGroup.php\">" . gettext("Empty Cart to Group") . "</a>";
-        }
-        if ($_SESSION['bAddRecords']) {
-                echo "<br>";
-                echo "<a href=\"CartToFamily.php\">" . gettext("Empty Cart to Family") . "</a>";
-        }
-        echo "<br>";
-        echo "<a href=\"CartToEvent.php\">" . gettext("Empty Cart to Event") . "</a>";
+<!-- Default box -->
+<?php if (count($_SESSION['aPeopleCart']) > 0) { ?>
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Cart Functions</h3>
+    </div>
+    <div class="box-body">
+        <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i class="fa fa-trash"></i><?= gettext("Empty Cart") ?></a>
+        <?php if ($_SESSION['bManageGroups']) { ?>
+            <a href="CartToGroup.php" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext("Empty Cart to Group") ?></a>
+        <?php } ?>
+        <?php if ($_SESSION['bAddRecords']) { ?>
+            <a href="CartToFamily.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext("Empty Cart to Family") ?></a>
+        <?php } ?>
+        <a href="CartToEvent.php" class="btn btn-app"><i class="fa fa-ticket"></i><?=  gettext("Empty Cart to Event") ?></a>
 
-        // Only show CSV export link if user is allowed to CSV export.
-        if ($bExportCSV) 
-        {
-            /* Link to CSV export */
-            echo "<br>";
-            echo "<a href=\"CSVExport.php?Source=cart\">" . gettext("CSV Export") . "</a>";
-        }
-// Email Cart links	
-// Note: This will email entire group, even if a specific role is currently selected.
-$sSQL = "SELECT per_Email, fam_Email
-            FROM person_per
-            LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
-            LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
-            LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
-        WHERE per_ID NOT IN (SELECT per_ID FROM person_per INNER JOIN record2property_r2p ON r2p_record_ID = per_ID INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not Email') AND per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ")";
-$rsEmailList = RunQuery($sSQL);
-$sEmailLink = '';
-while (list ($per_Email, $fam_Email) = mysql_fetch_row($rsEmailList))
-{
-    $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
-    if ($sEmail)
-    {
-        /* if ($sEmailLink) // Don't put delimiter before first email
-            $sEmailLink .= $sMailtoDelimiter; */
-        // Add email only if email address is not already in string
-        if (!stristr($sEmailLink, $sEmail))
-            $sEmailLink .= $sEmail .= $sMailtoDelimiter;
-    }
-}
-if ($sEmailLink)
-{
-    // Add default email if default email has been set and is not already in string
-    if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress' 
-                               && !stristr($sEmailLink, $sToEmailAddress))
-        $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
-    $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
+        <?php  if ($bExportCSV) { ?>
+            <a href="CSVExport.php?Source=cart" class="btn btn-app"><i class="fa fa-file-excel-o"></i><?=  gettext("CSV Export") ?></a>
+        <?php } ?>
+        <a href="MapUsingGoogle.php?GroupID=0" class="btn btn-app"><i class="fa fa-map-marker"></i><?= gettext("Map Cart") ?></a>
+        <a href="Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-app"><i class="fa fa-file-pdf-o"></i><?= gettext("Name Tags") ?></a>
+        <?
+        if (count($_SESSION['aPeopleCart']) != 0) {
 
-    if ($bEmailMailto) { // Does user have permission to email groups
-    // Display link
-    echo "<br><a href=\"mailto:" . mb_substr($sEmailLink,0,-3) . "\">". gettext("Email Cart") . "</a>";
-    echo "<br><a href=\"mailto:?bcc=". mb_substr($sEmailLink,0,-3) ."\">".gettext("Email (BCC)")."</a>";
-    }
-}
-//Text Cart Link
-$sSQL = "SELECT per_CellPhone, fam_CellPhone FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID NOT IN (SELECT per_ID FROM person_per INNER JOIN record2property_r2p ON r2p_record_ID = per_ID INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not SMS') AND per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ")";
-        $rsPhoneList = RunQuery($sSQL);       
-        $sPhoneLink = "";
-        $sCommaDelimiter = ', ';
 
-	while (list ($per_CellPhone, $fam_CellPhone) = mysql_fetch_row($rsPhoneList))
-	{
-	    $sPhone = SelectWhichInfo($per_CellPhone, $fam_CellPhone, False);
-	    if ($sPhone)
-	    {
-	        /* if ($sPhoneLink) // Don't put delimiter before first phone
-	            $sPhoneLink .= $sCommaDelimiter;  */
-	        // Add phone only if phone is not already in string
-	        if (!stristr($sPhoneLink, $sPhone))
-	            $sPhoneLink .= $sPhone .= $sCommaDelimiter;
-	    }
-	}
-	if ($sPhoneLink)
-	{
-	    if ($bEmailMailto) { // Does user have permission to email groups
-	
-	    // Display link
-	    echo '<br><a href="javascript:void(0)" onclick="allPhonesCommaD()">Text Cart</a>';
-	    echo '<script>function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "'. mb_substr($sPhoneLink,0,-2) .'")};</script>';
-	    }
-	}
-//Other Links	
-        echo "<br><a href=\"MapUsingGoogle.php?GroupID=0\">" . gettext("Map Cart") . "</a>";
-        echo "<br><a href=\"Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36\">" . gettext("Name Tags") . "</a>";
-        echo "</p></td>";
+            // Email Cart links
+            // Note: This will email entire group, even if a specific role is currently selected.
+            $sSQL = "SELECT per_Email, fam_Email
+                        FROM person_per
+                        LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
+                        LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
+                        LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
+                    WHERE per_ID NOT IN (SELECT per_ID FROM person_per INNER JOIN record2property_r2p ON r2p_record_ID = per_ID INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not Email') AND per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ")";
+            $rsEmailList = RunQuery($sSQL);
+            $sEmailLink = '';
+            while (list ($per_Email, $fam_Email) = mysql_fetch_row($rsEmailList))
+            {
+                $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
+                if ($sEmail)
+                {
+                    /* if ($sEmailLink) // Don't put delimiter before first email
+                        $sEmailLink .= $sMailtoDelimiter; */
+                    // Add email only if email address is not already in string
+                    if (!stristr($sEmailLink, $sEmail))
+                        $sEmailLink .= $sEmail .= $sMailtoDelimiter;
+                }
+            }
+            if ($sEmailLink)
+            {
+                // Add default email if default email has been set and is not already in string
+                if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress'
+                                           && !stristr($sEmailLink, $sToEmailAddress))
+                    $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
+                $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
+
+                if ($bEmailMailto) { // Does user have permission to email groups
+                // Display link
+                echo "<a href='mailto:" . mb_substr($sEmailLink,0,-3) . "' class='btn btn-app'><i class='fa fa-send-o'></i>". gettext("Email Cart") . "</a>";
+                echo "<a href='mailto:?bcc=". mb_substr($sEmailLink,0,-3) ."' class='btn btn-app'><i class='fa fa-send'></i>".gettext("Email (BCC)")."</a>";
+                }
+            }
+
+            //Text Cart Link
+            $sSQL = "SELECT per_CellPhone, fam_CellPhone FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID NOT IN (SELECT per_ID FROM person_per INNER JOIN record2property_r2p ON r2p_record_ID = per_ID INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not SMS') AND per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ")";
+            $rsPhoneList = RunQuery($sSQL);
+            $sPhoneLink = "";
+            $sCommaDelimiter = ', ';
+
+            while (list ($per_CellPhone, $fam_CellPhone) = mysql_fetch_row($rsPhoneList))
+            {
+                $sPhone = SelectWhichInfo($per_CellPhone, $fam_CellPhone, False);
+                if ($sPhone)
+                {
+                    /* if ($sPhoneLink) // Don't put delimiter before first phone
+                        $sPhoneLink .= $sCommaDelimiter;  */
+                    // Add phone only if phone is not already in string
+                    if (!stristr($sPhoneLink, $sPhone))
+                        $sPhoneLink .= $sPhone .= $sCommaDelimiter;
+                }
+            }
+            if ($sPhoneLink)
+            {
+                if ($bEmailMailto) { // Does user have permission to email groups
+
+                // Display link
+                echo '<a href="javascript:void(0)" onclick="allPhonesCommaD()" class="btn btn-app"><i class="fa fa-mobile-phone"></i>Text Cart';
+                echo '<script>function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "'. mb_substr($sPhoneLink,0,-2) .'")};</script>';
+                }
+            }
+
 ?>
-        <td>
-        <a name="GenerateLabels"></a>
+        <a href="DirectoryReports.php?cartdir=Cart+Directory" class="btn btn-app"><i class="fa fa-book"></i><?= gettext("Create Directory From Cart") ?></a>
 
         <script language="JavaScript" type="text/javascript"><!--
-        function codename() 
+        function codename()
         {
             if(document.labelform.bulkmailpresort.checked)
             {
@@ -360,34 +271,42 @@ $sSQL = "SELECT per_CellPhone, fam_CellPhone FROM person_per LEFT JOIN family_fa
                 document.labelform.bulkmailquiet.checked=false;
             }
         }
-    
+
         //-->
         </SCRIPT>
-
-
-
+    </div>
+    <!-- /.box-body -->
+</div>
+<!-- /.box -->
+<?php } ?>
+<!-- Default box -->
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title"><?= gettext("Generate Labels") ?></h3>
+    </div>
+    <div class="box-body">
     <form method="get" action="Reports/PDFLabel.php" name="labelform">
-        <table cellpadding="4" align="center">
+        <table class="table table-responsive">
                 <?php
                 LabelGroupSelect("groupbymode");
 
-                echo '  <tr><td class="LabelColumn">' . gettext("Bulk Mail Presort") . '</td>';
-                echo '  <td class="TextColumn">';
+                echo '  <tr><td>' . gettext("Bulk Mail Presort") . '</td>';
+                echo '  <td>';
                 echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
                 echo '  id="BulkMailPresort" value="1" ';
-                if (array_key_exists ("buildmailpresort", $_COOKIE) and $_COOKIE["bulkmailpresort"])
+                if (array_key_exists("buildmailpresort", $_COOKIE) && $_COOKIE["bulkmailpresort"])
                     echo "checked";
                 echo '  ><br></td></tr>';
 
-                echo '  <tr><td class="LabelColumn">' . gettext("Quiet Presort") . '</td>';
-                echo '  <td class="TextColumn">';
+                echo '  <tr><td>' . gettext("Quiet Presort") . '</td>';
+                echo '  <td>';
                 echo '  <input ';
-                if (array_key_exists ("buildmailpresort", $_COOKIE) and !$_COOKIE["bulkmailpresort"])
+                if (array_key_exists("buildmailpresort", $_COOKIE) && !$_COOKIE["bulkmailpresort"])
                     echo 'disabled ';   // This would be better with $_SESSION variable
                                         // instead of cookie ... (save $_SESSION in MySQL)
                 echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
                 echo '  id="QuietBulkMail" value="1" ';
-                if (array_key_exists ("bulkmailquiet", $_COOKIE) and $_COOKIE["bulkmailquiet"] && array_key_exists ("buildmailpresort", $_COOKIE) and $_COOKIE["bulkmailpresort"])
+                if (array_key_exists("bulkmailquiet", $_COOKIE) && $_COOKIE["bulkmailquiet"] && array_key_exists("buildmailpresort", $_COOKIE) && $_COOKIE["bulkmailpresort"])
                     echo "checked";
                 echo '  ><br></td></tr>';
 
@@ -402,37 +321,15 @@ $sSQL = "SELECT per_CellPhone, fam_CellPhone FROM person_per LEFT JOIN family_fa
 
                 <tr>
                         <td></td>
-                        <td><input type="submit" class="icButton" value="<?php echo gettext("Generate Labels");?>" name="Submit"></td>
+                        <td><input type="submit" class="btn btn-primary" value="<?= gettext("Generate Labels") ?>" name="Submit"></td>
                 </tr>
     </table></form></td></tr></table>
-
-<?php
-// Only show CSV export link if user is allowed to CSV export.
-if ($bExportCSV) 
-{
-    ?>
-    <div align="center">
-    <form method="post" action="CartView.php">
-    <?php echo "<br><h2>" . gettext("Export Cart to CSV File") . "</h2>"; ?>
-    <input type="submit" class="icButton" name="cartcsv" 
-            value="<?php echo gettext("Create CSV File");?>">
-    </form>
     </div>
-    <?php
-} 
+    <!-- /.box-body -->
+</div>
 
-// Only show create directory link if user is allowed to create directories
-if ($bCreateDirectory)
-{
-?>
-<div align="center"><form method="get" action="DirectoryReports.php">
-<?php echo "<br><h2>" . gettext("Create Directory From Cart") . "</h2>"; ?>
-<input type="submit" class="icButton" name="cartdir" 
-       value="<?php echo gettext("Cart Directory");?>">
-</form></div>
+
 <?php
-}
-
     if (($bEmailSend) && ($bSendPHPMail)) {
         if (isset($email_array)) {
             $bcc_list = "";
@@ -454,7 +351,7 @@ if ($bCreateDirectory)
 
         $sEmailForm = ""; // Initialize to empty
 
-        ?><div align="center"><table><tr><td align="center"><?php
+        ?><div align="center"><table class="table"><tr><td align="center"><?php
         echo "<br><h2>" . gettext("Send Email To People in Cart") . "</h2>";
  
         // Check if there are pending emails that have not been delivered
@@ -485,7 +382,7 @@ if ($bCreateDirectory)
             $aRow = mysql_fetch_array($rsPendingEmail);
             extract($aRow);
 
-            if ($emp_to_send==0 && $countrecipients==0) {
+            if ($emp_to_send == 0 && $countrecipients == 0) {
                 // if both are zero the email job has not started.  In this
                 // case the user may edit the email and/or change the distribution
 
@@ -599,7 +496,7 @@ if ($bCreateDirectory)
             echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
             }
 
-            echo '<input type="submit" class="icButton" name="submit" '.
+            echo '<input type="submit" class="btn" name="submit" '.
                  'value ="'.gettext("Compose Email").'">'."\n</form>";
             
         } elseif ($sEmailForm == 'sendoredit') {
@@ -624,7 +521,7 @@ if ($bCreateDirectory)
             echo "<hr>\n";
 
             // Create button to edit this message.
-            echo '<div align="center"><table><tr><td>'."\n";
+            echo '<div align="center"><table class="table"><tr><td>'."\n";
             echo '<form method="post" action="EmailEditor.php">'."\n";
 
             foreach ($email_array as $email_address) {
@@ -641,7 +538,7 @@ if ($bCreateDirectory)
 
             echo '<input type="hidden" name="mysql" value="true">'."\n";
 
-            echo '<input type="submit" class="icButton" name="submit" '.
+            echo '<input type="submit" class="btn" name="submit" '.
                      'value ="'.gettext("Edit Email").'">'."\n</form>";
 
             // Create button to send this message
@@ -662,13 +559,13 @@ if ($bCreateDirectory)
             }
 
             echo '<input type="hidden" name="mysql" value="true">'."\n";
-            echo '<input type="submit" class="icButton" name="submit" '.
+            echo '<input type="submit" class="btn" name="submit" '.
                      'value ="'.gettext("Send Email").'">'."\n</form>";
             // Create button to Delete this message
             echo "</td>\n<td>";
             echo '<form method="post" action="CartView.php">'."\n";
             echo '<input type="hidden" name="rmEmail" value="true">'."\n";
-            echo '<input type="submit" class="icButton" name="rmEail" '.
+            echo '<input type="submit" class="btn" name="rmEail" '.
                  'value ="'.gettext("Delete Email").'">'."\n</form>";
 
         } elseif ($sEmailForm == 'resumeorabort') {
@@ -690,7 +587,7 @@ if ($bCreateDirectory)
 
             echo '<input type="hidden" name="resume" value="true">'."\n";
 
-            echo '<input type="submit" class="icButton" name="submit" '.
+            echo '<input type="submit" class="btn" name="submit" '.
                      'value ="'.gettext("Resume").'">'."\n</form>";
 
 
@@ -702,7 +599,7 @@ if ($bCreateDirectory)
             // The default address gets the last email
             echo '<input type="hidden" name="abort" value="true">'."\n";
 
-            echo '<input type="submit" class="icButton" name="submit" '.
+            echo '<input type="submit" class="btn" name="submit" '.
                      'value ="'.gettext("Abort").'">'."\n</form>";
 
             // Create button to view log
@@ -713,7 +610,7 @@ if ($bCreateDirectory)
             // The default address gets the last email
             echo '<input type="hidden" name="viewlog" value="true">'."\n";
 
-            echo '<input type="submit" class="icButton" name="submit" '.
+            echo '<input type="submit" class="btn" name="submit" '.
                      'value ="'.gettext("View Log").'">'."\n</form>";
 
 
@@ -775,5 +672,4 @@ function rmEmail()
     RunQuery($sSQL);
         echo '<font class="SmallError">Deleted Email message succesfuly</font>';
 }
-
 ?>

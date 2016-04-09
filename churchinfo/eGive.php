@@ -12,7 +12,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 if( !function_exists(json_decode) ) {
-   require_once 'Include/JSON/JSON.php';
+   require_once 'vendor/JSON/JSON.php';
    function json_decode($data, $bool) {
        if ($bool) {
            $json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
@@ -43,7 +43,7 @@ if (!function_exists(stream_get_contents)) {
 	}
 }
 
-if (!$_SESSION['bFinance'] and !$_SESSION['bAdmin']) {
+if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
     Redirect("Menu.php");
     exit;
 }
@@ -126,7 +126,7 @@ if (isset($_POST["ApiGet"])) {
 	//$status = $logon["status"];
 	//$message = $login["message"];
 
-	if ($logon and $logon['status'] == 'success') {
+	if ($logon && $logon['status'] == 'success') {
 		$api_error = 0;
  		$token = $logon["token"];
 
@@ -142,7 +142,7 @@ if (isset($_POST["ApiGet"])) {
 		$json = stream_get_contents($fp);
 		fclose($fp);
 		$data = get_api_data($json, true);
-		if ($data and $data['status'] == 'success') {
+		if ($data && $data['status'] == 'success') {
 			$api_error = 0;
 
 		// each transaction has these fields: 'transactionID' 'envelopeID' 'giftID' 'frequency' 'amount'
@@ -163,7 +163,7 @@ if (isset($_POST["ApiGet"])) {
 				$date = yearFirstDate($dateTime[0]);
 				$famID = 0;
 
-				if ($egiveID2FamID and array_key_exists($egiveID, $egiveID2FamID)) {
+				if ($egiveID2FamID && array_key_exists($egiveID, $egiveID2FamID)) {
 					$famID = $egiveID2FamID[$egiveID];
 				} else {
 					$patterns[0] = '/\s+/'; // any whitespace
@@ -292,11 +292,11 @@ if (isset($_POST["ApiGet"])) {
 	<table cellpadding="3" align="left">
 	<tr><td>
 		<form method="post" action="eGive.php?DepositSlipID=<?php echo $iDepositSlipID ?>" enctype="multipart/form-data">
-		<class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><b><?php echo gettext("Start Date: "); ?></b>
-			<class="TextColumn"><input type="text" name="StartDate" value="<?php echo $lwDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font><br>
-			<class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><b><?php echo gettext("End Date: "); ?></b>
-			<class="TextColumn"><input type="text" name="EndDate" value="<?php echo $dDate; ?>" maxlength="10" id="sel2" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel2', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font><br><br>
-		<input type="submit" class="icButton" value="<?php echo gettext("Import eGive"); ?>" name="ApiGet">
+		<class="LabelColumn"><b><?= gettext("Start Date: ") ?></b>
+			<class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate ?>" maxlength="10" id="StartDate" size="11"><font color="red"><?php echo $sDateError ?></font><br>
+			<class="LabelColumn"><b><?= gettext("End Date: ") ?></b>
+			<class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate ?>" maxlength="10" id="EndDate" size="11"><font color="red"><?php echo $sDateError ?></font><br><br>
+		<input type="submit" class="btn" value="<?= gettext("Import eGive") ?>" name="ApiGet">
 		<br><br><br>
 		</form>
 		</td>
@@ -313,7 +313,7 @@ function updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $f
 	global $importNoChange;
 
 	$keyExisting = eGiveExistingKey($transId, $famID, $date, $fundId, $comment);
-	if ($eGiveExisting and array_key_exists($keyExisting, $eGiveExisting)) {
+	if ($eGiveExisting && array_key_exists($keyExisting, $eGiveExisting)) {
 		++$importNoChange;
 	} elseif ($famID) { //  insert a new record
 		$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_NonDeductible, plg_GroupKey) VALUES ('" . $famID . "','" . $iFYID . "','" . $date . "','" . $amount . "','" . $frequency . "','EGIVE','" . $comment . "','" . date("YmdHis") . "'," . $_SESSION['iUserID'] . ",'Payment'," . $fundId . ",'" . $iDepositSlipID . "','" . $transId . "','0','" . $groupKey . "')";
@@ -355,7 +355,7 @@ function importDoneFixOrContinue() {
 	global $familySelectHtml;
 	
 	?>
-	<form method="post" action="eGive.php?<?php echo "DepositSlipID=".$iDepositSlipID?>">
+	<form method="post" action="eGive.php?DepositSlipID=<?= $iDepositSlipID ?>">
 	<?php
 	if ($importError) { // the only way we can fail to import data is if we're missing the egive IDs, so build a table, with text input, and prompt for it.
         ?>
@@ -368,30 +368,30 @@ function importDoneFixOrContinue() {
 			$name = preg_replace('/_/', ' ', $nameWithUnderscores);
 			echo "<tr>";
 			echo "<td>" . $name . "&nbsp;</td>"; ?>
-			<td><class="TextColumn"><input type="text" name="MissingEgive_ID_<?php echo $nameWithUnderscores; ?>" value="<?php echo $egiveID; ?>" maxlength="10"></td>
+			<td><class="TextColumn"><input type="text" name="MissingEgive_ID_<?= $nameWithUnderscores ?>" value="<?= $egiveID ?>" maxlength="10"></td>
 			<td class="TextColumn">
-			<select name="MissingEgive_FamID_<?php echo $nameWithUnderscores; ?>">
-			<option value="0" selected><?php echo gettext("Unassigned"); ?></option>
+			<select name="MissingEgive_FamID_<?= $nameWithUnderscores ?>">
+			<option value="0" selected><?= gettext("Unassigned") ?></option>
 			<?php
 			echo $familySelectHtml;
 			?>
 			</select>
 			</td>
-			<td><input type="checkbox" name="MissingEgive_Set_<?php echo $nameWithUnderscores; ?>" value="1" checked></td>
+			<td><input type="checkbox" name="MissingEgive_Set_<?= $nameWithUnderscores ?>" value="1" checked></td>
 			<?php 
 			echo "</tr>";
 		 }
  		?>
 		</table><br>
 
-		<input type="submit" class="icButton" value="<?php echo gettext("Re-import to selected family"); ?>" name="ReImport">
+		<input type="submit" class="btn" value="<?= gettext("Re-import to selected family") ?>" name="ReImport">
 	<?php
 	}
 
- ?>
+?>
 
-	<p class="MediumLargeText"> <?php echo gettext("Data import results: ") . $importCreated . gettext(" gifts were imported, ") .  $importNoChange . gettext(" gifts unchanged, and ") . $importError . gettext(" gifts not imported due to problems");?></p>
-	<input type="button" class="icButton" value="<?php echo gettext("Back to Deposit Slip");?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?php echo $iDepositSlipID;?>'"
+	<p class="MediumLargeText"> <?= gettext("Data import results: ") . $importCreated . gettext(" gifts were imported, ") .  $importNoChange . gettext(" gifts unchanged, and ") . $importError . gettext(" gifts not imported due to problems") ?></p>
+	<input type="button" class="btn" value="<?= gettext("Back to Deposit Slip") ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
 <?php
 }
 
@@ -419,12 +419,19 @@ function get_api_data($json) {
 		return $result;
 	} else {
 	?>
-		<font color="red"><?php echo gettext("Fatal error in eGive API datastream: '") . $error;?>"'</font><br><br>
- 		<input type="button" class="icButton" value="<?php echo gettext("Back to Deposit Slip");?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?php echo $iDepositSlipID;?>'"
+		<font color="red"><?= gettext("Fatal error in eGive API datastream: '") . $error ?>"'</font><br><br>
+ 		<input type="button" class="btn" value="<?= gettext("Back to Deposit Slip") ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
 	<?php
 		return 0;
 	}
 }
+?>
+<script>
+$("#StartDate").datepicker({format:'yyyy-mm-dd'});
+$("#EndDate").datepicker({format:'yyyy-mm-dd'});
+</script>
+
+<?php
 
 require "Include/Footer.php";
 
