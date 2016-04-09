@@ -31,7 +31,7 @@ class PDF_ConfirmReport extends ChurchInfoReport {
 	}
 
 	function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) {
-      $curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
+    $curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country,"graphic");
 		$curY += 2 * $this->incrementY;
 		$blurb = $this->sConfirm1;
 		$this->WriteAt ($this->leftX, $curY, $blurb);
