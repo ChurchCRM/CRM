@@ -134,13 +134,15 @@ require "Include/Header.php";
                     <?php
                         if ($thisGroup['grp_hasSpecialProps'])
                         {
-                            echo "Enabled" ;
-                            echo '<div class="btn-group"><button type="button" id="disableGroupProps" class="btn btn-danger">Disable Group Specific Properties</button>&nbsp;';
-                            echo '<button type="button" class="btn btn-success groupSpecificProperties">Edit Group Specific Properties</button></div>';// href=\"GroupPropsFormEditor.php?GroupID=$iGroupID\">" . gettext("Edit Group-Specific Properties Form") . "</a>";
+                            echo "Enabled<br/>" ;
+                            echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">Disable Group Specific Properties</button><br/>';
+                            echo '<a  class="btn btn-success" href="GroupPropsFormEditor.php?GroupID=' . $iGroupID . '">' . gettext("Edit Group-Specific Properties Form") . ' </a>';
                         }
                         else
+                        {
                             echo "Disabled <br>" ;
                             echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">Enable Group Specific Properties</button>&nbsp;';
+                        }
                     ?>
                 </div>
                 </div>
