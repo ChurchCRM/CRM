@@ -30,21 +30,19 @@
 require_once dirname(__FILE__) . '/../Service/PersonService.php';
 require_once 'Functions.php';
 
-
-function Header_head_metatag()
-{
+function Header_head_metatag() {
   global $sLanguage, $bExportCSV, $sMetaRefresh, $bRegistered, $sHeader, $sGlobalMessage;
   global $sPageTitle, $sRootPath;
 
   if (strlen($sMetaRefresh)) {
     echo $sMetaRefresh;
-  } ?>
+  }
+  ?>
   <title>ChurchCRM: <?= $sPageTitle ?></title>
   <?php
 }
 
-function Header_modals()
-{
+function Header_modals() {
   ?>
   <!-- API Call Error Modal -->
   <div id="APIError" class="modal fade" role="dialog">
@@ -66,82 +64,86 @@ function Header_modals()
       </div>
     </div>
   </div>
-    <!-- End API Call Error Modal -->
-    
-    <!-- Issue Report Modal -->
-    <div id="IssueReportModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-              <form name="issueReport">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Issue Report!</h4>
+  <!-- End API Call Error Modal -->
+
+  <!-- Issue Report Modal -->
+  <div id="IssueReportModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <form name="issueReport">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Issue Report!</h4>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-3">
+                  <label for="issueTitle">Enter a Title for your bug / feature report: </label>
                 </div>
-                <div class="modal-body">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-xl-3">
-                       <label for="issueTitle">Enter a Title for your bug / feature report: </label>
-                      </div>
-                      <div class="col-xl-3">
-                       <input type="text" name="issueTitle"></input>
-                      </div>
-                    </div>
-                    <div class="row">
-                       <div class="col-xl-3">
-                        <label for="issueDescription">What were you doing when you noticed the bug / feature opportunity?</label>
-                       </div>
-                       <div class="col-xl-3">
-                        <textarea rows="10" cols="50" name="issueDescription"></textarea>
-                       </div>
-                    </div>
-                  </div>
-                
+                <div class="col-xl-3">
+                  <input type="text" name="issueTitle"></input>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="submitIssue">Submit</button>
+              </div>
+              <div class="row">
+                <div class="col-xl-3">
+                  <label for="issueDescription">What were you doing when you noticed the bug / feature opportunity?</label>
                 </div>
-              </form>
+                <div class="col-xl-3">
+                  <textarea rows="10" cols="50" name="issueDescription"></textarea>
+                </div>
+              </div>
             </div>
-        </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="submitIssue">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <!-- End Issue Report Modal -->
-    
-<?php
+  </div>
+  <!-- End Issue Report Modal -->
+
+  <?php
 }
 
-function Header_body_scripts()
-{
+function Header_body_scripts() {
   global $sLanguage, $bExportCSV, $sMetaRefresh, $bRegistered, $sHeader, $sGlobalMessage;
   global $bLockURL, $URL, $sRootPath;
 
-    checkAllowedURL();
- ?>
-    <script type="text/javascript" src="<?= $sRootPath ?>/skin/js/IssueReporter.js" type="text/javascript"></script>
-    <script type="text/javascript" src="<?= $sRootPath ?>/Include/jscalendar/calendar.js"></script>
-    <script type="text/javascript" src="<?= $sRootPath ?>/Include/jscalendar/lang/calendar-<?= substr($sLanguage,0,2) ?>.js"></script>
+  checkAllowedURL();
+  ?>
+  <script type="text/javascript" src="<?= $sRootPath ?>/skin/js/IssueReporter.js" type="text/javascript"></script>
+  <script type="text/javascript" src="<?= $sRootPath ?>/Include/jscalendar/calendar.js"></script>
+  <script type="text/javascript" src="<?= $sRootPath ?>/Include/jscalendar/lang/calendar-<?= substr($sLanguage, 0, 2) ?>.js"></script>
 
   <script language="javascript" type="text/javascript">
     window.CRM = {root: "<?= $sRootPath ?>"};
 
     // Popup Calendar stuff
-    function selected(cal, date) {
+    function selected(cal, date)
+    {
       cal.sel.value = date; // update the date in the input field.
-      if (cal.dateClicked)
+      if(cal.dateClicked)
         cal.callCloseHandler();
     }
 
-    function closeHandler(cal) {
+    function closeHandler(cal)
+    {
       cal.hide(); // hide the calendar
     }
 
-    function showCalendar(id, format) {
+    function showCalendar(id, format)
+    {
       var el = document.getElementById(id);
-      if (calendar != null) {
+      if(calendar != null)
+      {
         calendar.hide();
       }
-      else {
+      else
+      {
         var cal = new Calendar(false, null, selected, closeHandler);
         cal.weekNumbers = false;
         calendar = cal;                  // remember it in the global var
@@ -160,29 +162,37 @@ function Header_body_scripts()
     var DAY = 24 * HOUR;
     var WEEK = 7 * DAY;
 
-    function isDisabled(date) {
+    function isDisabled(date)
+    {
       var today = new Date();
       return (Math.abs(date.getTime() - today.getTime()) / DAY) > 10;
     }
 
     // Clear a field on the first focus
     var priorSelect = new Array();
-    function ClearFieldOnce(sField) {
-      if (priorSelect[sField.id]) {
+    function ClearFieldOnce(sField)
+    {
+      if(priorSelect[sField.id])
+      {
         sField.select();
-      } else {
+      }
+      else
+      {
         sField.value = "";
         priorSelect[sField.id] = true;
       }
     }
 
-    function LimitTextSize(theTextArea, size) {
-      if (theTextArea.value.length > size) {
+    function LimitTextSize(theTextArea, size)
+    {
+      if(theTextArea.value.length > size)
+      {
         theTextArea.value = theTextArea.value.substr(0, size);
       }
     }
 
-    function popUp(URL) {
+    function popUp(URL)
+    {
       day = new Date();
       id = day.getTime();
       eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
@@ -194,8 +204,7 @@ function Header_body_scripts()
 
 $security_matrix = GetSecuritySettings();
 
-function GetSecuritySettings()
-{
+function GetSecuritySettings() {
   $aSecurityList[] = "bAdmin";
   $aSecurityList[] = "bAddRecords";
   $aSecurityList[] = "bEditRecords";
@@ -228,8 +237,7 @@ function GetSecuritySettings()
   return $sSecurityCond;
 }
 
-function addMenu($menu)
-{
+function addMenu($menu) {
   global $security_matrix;
 
   $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text, session_var_in_uri, url_parm_name, security_grp, icon FROM menuconfig_mcf WHERE parent = '$menu' AND active=1 " . $security_matrix . " ORDER BY sortorder";
@@ -244,269 +252,272 @@ function addMenu($menu)
         $idx++;
       }
       $ptr++;
-    } else {
+    }
+    else {
       $item_cnt--;
     }
   }
 }
 
-function addMenuItem($aMenu, $mIdx)
-{
-global $security_matrix, $sRootPath;
+function addMenuItem($aMenu, $mIdx) {
+  global $security_matrix, $sRootPath;
 
-$link = ($aMenu['uri'] == "") ? "" : $sRootPath . "/" . $aMenu['uri'];
-$text = $aMenu['statustext'];
-if (!is_null($aMenu['session_var'])) {
-  if (($link > "") && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
-    if (strstr($link, "?") && true) {
-      $cConnector = "&";
-    } else {
-      $cConnector = "?";
+  $link = ($aMenu['uri'] == "") ? "" : $sRootPath . "/" . $aMenu['uri'];
+  $text = $aMenu['statustext'];
+  if (!is_null($aMenu['session_var'])) {
+    if (($link > "") && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
+      if (strstr($link, "?") && true) {
+        $cConnector = "&";
+      }
+      else {
+        $cConnector = "?";
+      }
+      $link .= $cConnector . $aMenu['url_parm_name'] . "=" . $_SESSION[$aMenu['session_var']];
     }
-    $link .= $cConnector . $aMenu['url_parm_name'] . "=" . $_SESSION[$aMenu['session_var']];
-  }
-  if (($text > "") && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
-    $text .= " " . $_SESSION[$aMenu['session_var']];
-  }
-}
-if ($aMenu['ismenu']) {
-  $sSQL = "SELECT name FROM menuconfig_mcf WHERE parent = '" . $aMenu['name'] . "' AND active=1 " . $security_matrix . " ORDER BY sortorder";
-  $rsItemCnt = RunQuery($sSQL);
-  $numItems = mysql_num_rows($rsItemCnt);
-}
-if (!($aMenu['ismenu']) || ($numItems > 0))
-{
-if ($link){
-  if ($aMenu['name'] != "sundayschool-dash") { # HACK to remove the sunday school 2nd dashboard
-    echo "<li><a href='$link'>";
-    if ($aMenu['icon'] != "") {
-      echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>";
-    }
-    if ($aMenu['parent'] != "root") {
-      echo "<i class=\"fa fa-angle-double-right\"></i> ";
-    }
-    if ($aMenu['parent'] == "root") {
-      echo "<span>" . $aMenu['content'] . "</span></a>";
-    } else {
-      echo $aMenu['content'] . "</a>";
+    if (($text > "") && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
+      $text .= " " . $_SESSION[$aMenu['session_var']];
     }
   }
-} else {
-echo "<li class=\"treeview\">\n";
-echo "    <a href=\"#\">\n";
-if ($aMenu['icon'] != "") {
-  echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>\n";
-}
-echo "<span>" . $aMenu['content'] . "</span>\n";
-echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
-if ($aMenu['name'] == "deposit") {
-  echo "<small class=\"badge pull-right bg-green\">" . $_SESSION['iCurrentDeposit'] . "</small>\n";
-}
-?>  </a>
-<ul class="treeview-menu">
-  <?php
-  if ($aMenu['name'] == "sundayschool") {
-    echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>Dashboard</a></li>";
-    $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
-    $rsSundaySchoolClasses = RunQuery($sSQL);
-    while ($aRow = mysql_fetch_array($rsSundaySchoolClasses)) {
-      echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
+  if ($aMenu['ismenu']) {
+    $sSQL = "SELECT name FROM menuconfig_mcf WHERE parent = '" . $aMenu['name'] . "' AND active=1 " . $security_matrix . " ORDER BY sortorder";
+    $rsItemCnt = RunQuery($sSQL);
+    $numItems = mysql_num_rows($rsItemCnt);
+  }
+  if (!($aMenu['ismenu']) || ($numItems > 0)) {
+    if ($link) {
+      if ($aMenu['name'] != "sundayschool-dash") { # HACK to remove the sunday school 2nd dashboard
+        echo "<li><a href='$link'>";
+        if ($aMenu['icon'] != "") {
+          echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>";
+        }
+        if ($aMenu['parent'] != "root") {
+          echo "<i class=\"fa fa-angle-double-right\"></i> ";
+        }
+        if ($aMenu['parent'] == "root") {
+          echo "<span>" . $aMenu['content'] . "</span></a>";
+        }
+        else {
+          echo $aMenu['content'] . "</a>";
+        }
+      }
     }
-  }
-  }
-  if (($aMenu['ismenu']) && ($numItems > 0)) {
-    echo "\n";
-    addMenu($aMenu['name']);
-    echo "</ul>\n</li>\n";
-  } else {
-    echo "</li>\n";
-  }
+    else {
+      echo "<li class=\"treeview\">\n";
+      echo "    <a href=\"#\">\n";
+      if ($aMenu['icon'] != "") {
+        echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>\n";
+      }
+      echo "<span>" . $aMenu['content'] . "</span>\n";
+      echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
+      if ($aMenu['name'] == "deposit") {
+        echo "<small class=\"badge pull-right bg-green\">" . $_SESSION['iCurrentDeposit'] . "</small>\n";
+      }
+      ?>  </a>
+      <ul class="treeview-menu">
+      <?php
+      if ($aMenu['name'] == "sundayschool") {
+        echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>Dashboard</a></li>";
+        $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
+        $rsSundaySchoolClasses = RunQuery($sSQL);
+        while ($aRow = mysql_fetch_array($rsSundaySchoolClasses)) {
+          echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
+        }
+      }
+    }
+    if (($aMenu['ismenu']) && ($numItems > 0)) {
+      echo "\n";
+      addMenu($aMenu['name']);
+      echo "</ul>\n</li>\n";
+    }
+    else {
+      echo "</li>\n";
+    }
 
-  return true;
-  } else {
+    return true;
+  }
+  else {
     return false;
   }
-  }
+}
 
-  function Header_body_menu()
-  {
+function Header_body_menu() {
   global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage, $sGlobalMessageClass;
   global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
 
   $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
 
   $MenuFirst = 1;
-
   ?>
 
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="<?= $sRootPath ?>/Menu.php" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>C</b>RM</span>
-      <!-- logo for regular state and mobile devices -->
-      <?php if ($sHeader) { ?>
-        <span class="logo-lg"><?= html_entity_decode($sHeader, ENT_QUOTES) ?></span>
-      <?php } Else { ?>
-        <span class="logo-lg"><b>Church</b>CRM</span>
-      <?php } ?>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="<?= $sRootPath ?>/Menu.php" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>C</b>RM</span>
+        <!-- logo for regular state and mobile devices -->
+  <?php if ($sHeader) { ?>
+          <span class="logo-lg"><?= html_entity_decode($sHeader, ENT_QUOTES) ?></span>
+        <?php }
+        Else { ?>
+          <span class="logo-lg"><b>Church</b>CRM</span>
+        <?php } ?>
       </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
 
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <li class="dropdown settings-dropdown">
-            <a href="<?= $sRootPath . "/" ?>CartView.php">
-              <i class="fa fa-shopping-cart"></i>
-              <span class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
-            </a>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="dropdown settings-dropdown">
+              <a href="<?= $sRootPath . "/" ?>CartView.php">
+                <i class="fa fa-shopping-cart"></i>
+                <span class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
+              </a>
 
-          </li>
-          <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?= $loggedInUserPhoto ?>" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?= $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'] ?> </span>
+            </li>
+            <!-- User Account: style can be found in dropdown.less -->
+            <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="<?= $loggedInUserPhoto ?>" class="user-image" alt="User Image">
+                <span class="hidden-xs"><?= $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'] ?> </span>
 
-            </a>
-                        <ul class="dropdown-menu">
-                            <!-- User image -->
-                            <li class="user-header">
-                                <img src="<?= $loggedInUserPhoto ?>" class="img-circle" alt="User Image">
+              </a>
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                  <img src="<?= $loggedInUserPhoto ?>" class="img-circle" alt="User Image">
 
-                                <p>
-                                    <?= $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'] ?>
-                                    <!--<small>Member since Nov. 2012</small>-->
-                                </p>
-                            </li>
-                            <!-- Menu Body
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </div>
-                                <!-- /.row --
-                            </li>-->
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="<?= $sRootPath . "/" ?>UserPasswordChange.php" class="btn btn-default btn-flat">Change Password</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="<?= $sRootPath . "/" ?>SettingsIndividual.php" class="btn btn-default btn-flat">My Settings</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <?php if ($_SESSION['bAdmin']) { ?>
-                        <li class="dropdown settings-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="user-body">
-                                        <?php addMenu("admin"); ?>
-                                </li>
-                            </ul>
-                        </li>
-                    <?php } ?>
-                    <li class="hidden-xxs">
-                        <a href="http://docs.churchcrm.io" target="_blank">
-                            <i class="fa fa-support"></i>
-                        </a>
-                    </li>
-                    <li class="hidden-xxs">
-                      <a href="#" data-toggle="modal" data-target="#IssueReportModal">
-                            <i class="fa fa-bug"></i>
-                        </a>
-                    </li>
-                    <li class="hidden-xxs">
-                        <a href="<?= $sRootPath ?>/Login.php?Logoff=True">
-                            <i class="fa fa-power-off"></i>
-                        </a>
-                    </li>
+                  <p>
+  <?= $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'] ?>
+                      <!--<small>Member since Nov. 2012</small>-->
+                  </p>
+                </li>
+                <!-- Menu Body
+                <li class="user-body">
+                    <div class="row">
+                        <div class="col-xs-4 text-center">
+                            <a href="#">Followers</a>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <a href="#">Sales</a>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <a href="#">Friends</a>
+                        </div>
+                    </div>
+                <!-- /.row --
+                </li>-->
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                  <div class="pull-left">
+                    <a href="<?= $sRootPath . "/" ?>UserPasswordChange.php" class="btn btn-default btn-flat">Change Password</a>
+                  </div>
+                  <div class="pull-right">
+                    <a href="<?= $sRootPath . "/" ?>SettingsIndividual.php" class="btn btn-default btn-flat">My Settings</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+  <?php if ($_SESSION['bAdmin']) { ?>
+              <li class="dropdown settings-dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-cog"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="user-body">
+    <?php addMenu("admin"); ?>
+                  </li>
                 </ul>
-            </div>
-        </nav>
+              </li>
+  <?php } ?>
+            <li class="hidden-xxs">
+              <a href="http://docs.churchcrm.io" target="_blank">
+                <i class="fa fa-support"></i>
+              </a>
+            </li>
+            <li class="hidden-xxs">
+              <a href="#" data-toggle="modal" data-target="#IssueReportModal">
+                <i class="fa fa-bug"></i>
+              </a>
+            </li>
+            <li class="hidden-xxs">
+              <a href="<?= $sRootPath ?>/Login.php?Logoff=True">
+                <i class="fa fa-power-off"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </header>
     <!-- =============================================== -->
 
     <!-- Left side column. contains the sidebar -->
     <aside class="main-sidebar">
-                <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-                    <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
 
-                            <select class="form-control multiSearch" style="width:100%">
-                            </select>
+          <select class="form-control multiSearch" style="width:100%">
+          </select>
 
-                    </form>
-                    <!-- /.search form -->
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu">
-                        <li>
-                            <a href="<?= $sRootPath . "/" ?>Menu.php">
-                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <?php addMenu("root"); ?>
-                    </ul>
-                </section>
-            </aside>
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <section class="content-header">
-                    <h1>
-                        <?php
-                        echo $sPageTitle . "\n";
-                        if ($sPageTitleSub != "") {
-                            echo "<small>" . $sPageTitleSub . "</small>";
-                        } ?>
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="<?= $sRootPath . "/Menu.php" ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active"><?= $sPageTitle ?></li>
-                    </ol>
-                </section>
-                <!-- Main content -->
-                <section class="content">
-                    <?php if ($sGlobalMessage) { ?>
-                    <div class="main-box-body clearfix">
-                        <div class="callout callout-<?= $sGlobalMessageClass ?> fade in">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i>
-                            <?= $sGlobalMessage ?>
-                        </div>
-                    </div>
-                    <?php }
-}
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+          <li>
+            <a href="<?= $sRootPath . "/" ?>Menu.php">
+              <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            </a>
+          </li>
+  <?php addMenu("root"); ?>
+        </ul>
+      </section>
+    </aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <section class="content-header">
+        <h1>
+  <?php
+  echo $sPageTitle . "\n";
+  if ($sPageTitleSub != "") {
+    echo "<small>" . $sPageTitleSub . "</small>";
+  }
+  ?>
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="<?= $sRootPath . "/Menu.php" ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active"><?= $sPageTitle ?></li>
+        </ol>
+      </section>
+      <!-- Main content -->
+      <section class="content">
+        <?php if ($sGlobalMessage) { ?>
+          <div class="main-box-body clearfix">
+            <div class="callout callout-<?= $sGlobalMessageClass ?> fade in">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i>
+              <?= $sGlobalMessage ?>
+            </div>
+          </div>
+        <?php
+ }
+      }
 
-      function create_side_nav($menu)
-      {
+      function create_side_nav($menu) {
 
         echo "<p>";
         addSection($menu);
         echo "</p>\n";
       }
 
-      function addSection($menu)
-      {
+      function addSection($menu) {
         global $cnInfoCentral;
 
         $security_matrix = " AND (security_grp = 'bALL'";
@@ -534,15 +545,15 @@ if ($aMenu['name'] == "deposit") {
         while ($aRow = mysql_fetch_array($rsMenu)) {
           if (isset($aRow['admin_only']) & !$_SESSION['bAdmin']) {
             // hide admin menu
-          } else {
+          }
+          else {
             addEntry($aRow);
           }
           $ptr++;
         }
       }
 
-      function addEntry($aMenu)
-      {
+      function addEntry($aMenu) {
         global $sRootPath;
 
         $link = ($aMenu['uri'] == "") ? "" : $sRootPath . "/" . $aMenu['uri'];
@@ -564,7 +575,8 @@ if ($aMenu['name'] == "deposit") {
         }
         if ($link > "") {
           echo "<a class=\"SmallText\" href=\"" . $link . "\">" . $content . "</a>";
-        } else {
+        }
+        else {
           echo $content;
         }
         echo "<br>\n";
@@ -572,5 +584,4 @@ if ($aMenu['name'] == "deposit") {
           addSection($aMenu['name']);
         }
       }
-
       ?>
