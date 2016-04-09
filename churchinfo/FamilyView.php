@@ -203,13 +203,13 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 						<li><i class="fa-li fa fa-phone"></i><?= gettext("Envelope Number") ?> <span><?= $fam_Envelope ?></span></li>
 					<?php  }
 					if ($sHomePhone != "") { ?>
-						<li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><a href="tel:<?= $sHomePhone ?>"><?= $sHomePhone ?></a></span></li>
+						<li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><?= $sHomePhone ?></span></li>
 					<?php  }
 					if ($sWorkPhone != "") { ?>
-						<li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone:") ?> <span><a href="tel:<?= $sWorkPhone ?>"><?= $sWorkPhone ?></a></span></li>
+						<li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone:") ?> <span><?= $sWorkPhone ?></span></li>
 					<?php  }
 					if ($sCellPhone != "") { ?>
-						<li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone:") ?> <span><a href="tel:<?= $sCellPhone ?>"><?= $sCellPhone ?></a></span></li>
+						<li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone:") ?> <span><?= $sCellPhone ?></span></li>
 					<?php  }
 					if ($fam_Email != "") { ?>
 						<li><i class="fa-li fa fa-envelope"></i><?= gettext("Email:") ?><a href="mailto:<?= $fam_Email ?>"> <span><?= $fam_Email ?></span></a></li>
@@ -258,6 +258,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                 <?php } ?>
                 <a class="btn btn-app" href="Reports/ConfirmReport.php?familyId=<?= $iFamilyID ?>"><i class="fa fa-download"></i> Download PDF Report</a>
                 <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-email-pdf"><i class="fa fa-send"></i> Email PDF Report</a>
+                <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i class="fa fa-cart-plus"></i> Add All Family Members to Cart</a>
             </div>
         </div>
     </div>
