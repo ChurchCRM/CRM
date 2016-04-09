@@ -65,6 +65,7 @@ function Header_modals()
         </div>
       </div>
     </div>
+  </div>
     <!-- End API Call Error Modal -->
     
     <!-- Issue Report Modal -->
@@ -376,22 +377,6 @@ if ($aMenu['name'] == "deposit") {
               <span class="hidden-xs"><?= $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'] ?> </span>
 
             </a>
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown settings-dropdown">
-                        <a href="<?= $sRootPath . "/" ?>CartView.php">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
-                        </a>
-
-                    </li>
-                    <!-- User Account: style can be found in dropdown.less -->
-                    <li class="dropdown user user-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="<?= $loggedInUserPhoto ?>" class="user-image" alt="User Image">
-                            <span class="hidden-xs"><?= $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'] ?> </span>
-
-                        </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
@@ -489,9 +474,9 @@ if ($aMenu['name'] == "deposit") {
                 <section class="content-header">
                     <h1>
                         <?php
-                        echo $sPageTitle."\n";
+                        echo $sPageTitle . "\n";
                         if ($sPageTitleSub != "") {
-                            echo "<small>".$sPageTitleSub."</small>";
+                            echo "<small>" . $sPageTitleSub . "</small>";
                         } ?>
                     </h1>
                     <ol class="breadcrumb">

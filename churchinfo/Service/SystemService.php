@@ -269,54 +269,35 @@ class SystemService
 
   }
 
-  function reportIssue($data)
-  {
-   
-    try
-    {
-      
-      $serviceURL = "http://192.168.33.11";
-      
-      $issueDescription = FilterInput($data->issueDescription) . "\r\n\r\n\r\n".
-              "Collected Value Title |  Data \r\n" .
-              "----------------------|----------------\r\n".
-              "Platform Information | " . php_uname($mode="a"). "\r\n" . 
-              "ChurchCRM Version |" . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
-              "Reporting Browser |" . $_SERVER['HTTP_USER_AGENT']."\r\n".
-              "Apache Modules    |" . implode(",", apache_get_modules());
-      
-      $postdata = new stdClass();
-      $postdata->issueTitle = FilterInput($data->issueTitle);
-      $postdata->issueDescription = $issueDescription;
-      
-      $curlService = curl_init($serviceURL);
+  function reportIssue($data) {
 
-      curl_setopt($curlService, CURLOPT_POST, true);
-      curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($postdata));
-      curl_setopt($curlService,CURLOPT_RETURNTRANSFER,true);
-      
-      try
-      {
-        $result = curl_exec($curlService);
-        if ($result === FALSE)
-        {
-          die(curl_error($curlService));
-        }
-        echo $result;
-      }
-      catch (Exception $ex)
-      {
-        print_r($ex);
-      }
+    $serviceURL = "http://192.168.33.11";
+
+    $issueDescription = FilterInput($data->issueDescription) . "\r\n\r\n\r\n" .
+            "Collected Value Title |  Data \r\n" .
+            "----------------------|----------------\r\n" .
+            "Platform Information | " . php_uname($mode = "a") . "\r\n" .
+            "ChurchCRM Version |" . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
+            "Reporting Browser |" . $_SERVER['HTTP_USER_AGENT'] . "\r\n" .
+            "Apache Modules    |" . implode(",", apache_get_modules());
+
+    $postdata = new stdClass();
+    $postdata->issueTitle = FilterInput($data->issueTitle);
+    $postdata->issueDescription = $issueDescription;
+
+    $curlService = curl_init($serviceURL);
+
+    curl_setopt($curlService, CURLOPT_POST, true);
+    curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($postdata));
+    curl_setopt($curlService, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curlService, CURLOPT_CONNECTTIMEOUT, 1);
+
+
+    $result = curl_exec($curlService);
+    if ($result === FALSE) {
+      throw new Exception("Unable to reach the issue bridge", 500);
     }
-    catch (Exception $ex)
-    {
-      print_r($ex);
-    }
-   
-    
-    
+    echo $result;
   }
-  
-  
+
 }

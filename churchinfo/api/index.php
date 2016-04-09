@@ -424,7 +424,7 @@ $app->group('/issues', function () use ($app)
         $body = $request->getBody();
         $input = json_decode($body);
         $app->SystemService->reportIssue($input);
-    });
+  });
   
 });
 

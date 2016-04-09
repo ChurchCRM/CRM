@@ -56,16 +56,7 @@ $MenuFirst = 1;
 
     $(document).ajaxError(function (evt, xhr, settings) {
       var CRMResponse = JSON.parse(xhr.responseText).error;
-      
-      if (xhr.status == 400) {
-        displayMessage("[" + settings.type + "] " + settings.url, "Invalid Request.");
-      }
-      else if (CRMResponse && CRMResponse.severity > 0) {
-        displayMessage("[" + settings.type + "] " + settings.url, CRMResponse.text);
-      }
-      else {
-        displayMessage("[" + settings.type + "] " + settings.url, "Something terrible happened that should have never happened.  Please make a bug report and tell us what you did to receive this error.");
-      }
+      displayMessage("[" + settings.type + "] " + settings.url, " " +CRMResponse.text);
     });
   </script>
 </head>
