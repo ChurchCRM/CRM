@@ -10,6 +10,7 @@ $("document").ready(function()
       $("#gsproperties-label").text("Confirm Enable Group Specific Properties");
       $("#groupSpecificPropertiesModal .modal-body span").text("This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor.");
       $("#setgroupSpecificProperties").text("Enable Group Specific Properties");
+      $("#setgroupSpecificProperties").data("action",1);
     }
     else
     {
@@ -17,14 +18,28 @@ $("document").ready(function()
       $("#gsproperties-label").text("Confirm Disable Group Specific Properties");
       $("#groupSpecificPropertiesModal .modal-body span").text("Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!");
       $("#setgroupSpecificProperties").text("Disable Group Specific Properties");
+      $("#setgroupSpecificProperties").data("action",0);
     }
   });
 
+  $("#setgroupSpecificProperties").click(function(e)
+  {
+   var action = $("#setgroupSpecificProperties").data("action");
+   console.log(action);
+     $.ajax({
+      method: "POST",
+      url: window.CRM.root + "/api/groups/" + groupID + "/setGroupSpecificPropertyStatus",
+      data: '{"GroupSpecificPropertyStatus":"' + action + '"}'
+    }).done(function(data)
+    {
+      console.log(data);
+      location.reload(); // this shouldn't be necessary
+    });
+  });
 
 
   $("#selectGroupIDDiv").hide();
-
-  $("#cloneGroupRole").click(function(e)
+          $("#cloneGroupRole").click(function(e)
   {
     if(e.target.checked)
       $("#selectGroupIDDiv").show();

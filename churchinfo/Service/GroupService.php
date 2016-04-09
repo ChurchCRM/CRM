@@ -396,13 +396,16 @@ class GroupService
   function enableGroupSpecificProperties($groupID)
   {
     requireUserGroupMembership("bManageGroups");
+    $sSQL = "UPDATE group_grp SET grp_hasSpecialProps = true
+            WHERE grp_ID = " . $groupID;
+     RunQuery($sSQL);
     $sSQLp = "CREATE TABLE groupprop_" . $groupID . " (
                         per_ID mediumint(8) unsigned NOT NULL default '0',
                         PRIMARY KEY  (per_ID),
                           UNIQUE KEY per_ID (per_ID)
                         ) ENGINE=MyISAM;";
     RunQuery($sSQLp);
-
+    
     $groupMembers = $this->getGroupMembers($groupID);
 
     foreach ($groupMembers as $member) {
@@ -420,6 +423,11 @@ class GroupService
     // need to delete the master index stuff
     $sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $groupID;
     RunQuery($sSQLp);
+    
+     $sSQL = "UPDATE group_grp SET grp_hasSpecialProps = false
+            WHERE grp_ID = " . $groupID;
+    
+     RunQuery($sSQL);
   }
 
   function createGroup($groupName)
