@@ -130,6 +130,7 @@ class FamilyService
 
   function setFamilyCheckingAccountDetails($tScanString, $iFamily)
   {
+    requireUserGroupMembership("bFinance");
     //Set the Routing and Account Number for a family
     $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
     $sSQL = "UPDATE family_fam SET fam_scanCheck=\"" . $routeAndAccount . "\" WHERE fam_ID = " . $iFamily;
@@ -138,6 +139,7 @@ class FamilyService
 
   function insertFamily($user)
   {
+    requireUserGroupMembership("bAddRecords");
     $dWeddingDate = "NULL";
     $iCanvasser = 0;
     $nLatitude = 0;

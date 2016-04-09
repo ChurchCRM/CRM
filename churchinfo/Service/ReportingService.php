@@ -5,6 +5,7 @@ class ReportingService
 
   function queryDatabase($queryRequest)
   {
+    requireUserGroupMembership("bAdmin");
     $returnObject = new StdClass();
     $returnObject->query = $queryRequest;
     $returnObject->sql = $this->getQuerySQL($queryRequest->queryID, $queryRequest->queryParameters);
@@ -63,6 +64,7 @@ class ReportingService
 
   function getQuerySQL($qry_ID, $qry_Parameters)
   {
+    requireUserGroupMembership("bAdmin");
     $sSQL = "SELECT qry_SQL FROM query_qry where qry_ID=" . FilterInput($qry_ID,"int");
     $rsQueries = RunQuery($sSQL);
     $query = mysql_fetch_assoc($rsQueries);
@@ -76,6 +78,7 @@ class ReportingService
 
   function getQuery($qry_ID = null, $qry_Args = null)
   {
+    requireUserGroupMembership("bAdmin");
     if ($qry_ID == null)
     {
       $sSQL = "SELECT qry_ID,qry_Name,qry_Description FROM query_qry ORDER BY qry_Name";
@@ -109,6 +112,7 @@ class ReportingService
 
   function getQueryParameters($qry_ID = null)
   {
+    requireUserGroupMembership("bAdmin");
     $sSQL = "SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID=" . FilterInput($qry_ID,"int");
     $rsQueries = RunQuery($sSQL);
     $result = array();
