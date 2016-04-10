@@ -1,5 +1,5 @@
 <?php
-/* * *****************************************************************************
+/*******************************************************************************
  *
  *  filename    : Include/Header-functions.php
  *  website     : http://www.churchcrm.io
@@ -25,7 +25,7 @@
  *
  *  This file best viewed in a text editor with tabs stops set to 4 characters
  *
- * **************************************************************************** */
+ ******************************************************************************/
 
 require_once dirname(__FILE__) . '/../Service/PersonService.php';
 require_once 'Functions.php';
