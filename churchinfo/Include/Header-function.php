@@ -1,5 +1,5 @@
 <?php
-/*******************************************************************************
+/* * *****************************************************************************
  *
  *  filename    : Include/Header-functions.php
  *  website     : http://www.churchcrm.io
@@ -25,7 +25,7 @@
  *
  *  This file best viewed in a text editor with tabs stops set to 4 characters
  *
- ******************************************************************************/
+ * **************************************************************************** */
 
 require_once dirname(__FILE__) . '/../Service/PersonService.php';
 require_once 'Functions.php';
@@ -66,51 +66,51 @@ function Header_modals() {
   </div>
   <!-- End API Call Error Modal -->
 
-    <!-- Issue Report Modal -->
-    <div id="IssueReportModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <form name="issueReport">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Issue Report!</h4>
-            </div>
-            <div class="modal-body">
-              <div class="container">
-                <div class="row">
-                  <div class="col-xl-3">
-                    <label for="issueTitle">Enter a Title for your bug / feature report: </label>
-                  </div>
-                  <div class="col-xl-3">
-                    <input type="text" name="issueTitle"></input>
-                  </div>
+  <!-- Issue Report Modal -->
+  <div id="IssueReportModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <form name="issueReport">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Issue Report!</h4>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-3">
+                  <label for="issueTitle">Enter a Title for your bug / feature report: </label>
                 </div>
-                <div class="row">
-                  <div class="col-xl-3">
-                    <label for="issueDescription">What were you doing when you noticed the bug / feature opportunity?</label>
-                  </div>
-                  <div class="col-xl-3">
-                    <textarea rows="10" cols="50" name="issueDescription"></textarea>
-                  </div>
+                <div class="col-xl-3">
+                  <input type="text" name="issueTitle"></input>
                 </div>
               </div>
-              <ul>
-                <li>When you click "submit," an error report will be posted to the ChurchCRM GitHub Issue tracker.</li>
-                <li>Please do not include any confidential information.</li>
-                <li>Some general information about your system will be submitted along with the request such as Server version and browser headers.</li>
-                <li>No personally identifiable information will be submitted unless you purposefully include it.</li>
-              </ul>
+              <div class="row">
+                <div class="col-xl-3">
+                  <label for="issueDescription">What were you doing when you noticed the bug / feature opportunity?</label>
+                </div>
+                <div class="col-xl-3">
+                  <textarea rows="10" cols="50" name="issueDescription"></textarea>
+                </div>
+              </div>
             </div>
-            <div class="modal-footer">
+            <ul>
+              <li>When you click "submit," an error report will be posted to the ChurchCRM GitHub Issue tracker.</li>
+              <li>Please do not include any confidential information.</li>
+              <li>Some general information about your system will be submitted along with the request such as Server version and browser headers.</li>
+              <li>No personally identifiable information will be submitted unless you purposefully include it.</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
 
-              <button type="button" class="btn btn-primary" id="submitIssue">Submit</button>
-            </div>
-          </form>
-        </div>
+            <button type="button" class="btn btn-primary" id="submitIssue">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
-    <!-- End Issue Report Modal -->
+  </div>
+  <!-- End Issue Report Modal -->
 
   <?php
 }
@@ -129,27 +129,22 @@ function Header_body_scripts() {
     window.CRM = {root: "<?= $sRootPath ?>"};
 
     // Popup Calendar stuff
-    function selected(cal, date)
-    {
+    function selected(cal, date) {
       cal.sel.value = date; // update the date in the input field.
       if(cal.dateClicked)
         cal.callCloseHandler();
     }
 
-    function closeHandler(cal)
-    {
+    function closeHandler(cal) {
       cal.hide(); // hide the calendar
     }
 
-    function showCalendar(id, format)
-    {
+    function showCalendar(id, format) {
       var el = document.getElementById(id);
-      if(calendar != null)
-      {
+      if(calendar != null) {
         calendar.hide();
       }
-      else
-      {
+      else {
         var cal = new Calendar(false, null, selected, closeHandler);
         cal.weekNumbers = false;
         calendar = cal;                  // remember it in the global var
@@ -168,37 +163,30 @@ function Header_body_scripts() {
     var DAY = 24 * HOUR;
     var WEEK = 7 * DAY;
 
-    function isDisabled(date)
-    {
+    function isDisabled(date) {
       var today = new Date();
       return (Math.abs(date.getTime() - today.getTime()) / DAY) > 10;
     }
 
     // Clear a field on the first focus
     var priorSelect = new Array();
-    function ClearFieldOnce(sField)
-    {
-      if(priorSelect[sField.id])
-      {
+    function ClearFieldOnce(sField) {
+      if(priorSelect[sField.id]) {
         sField.select();
       }
-      else
-      {
+      else {
         sField.value = "";
         priorSelect[sField.id] = true;
       }
     }
 
-    function LimitTextSize(theTextArea, size)
-    {
-      if(theTextArea.value.length > size)
-      {
+    function LimitTextSize(theTextArea, size) {
+      if(theTextArea.value.length > size) {
         theTextArea.value = theTextArea.value.substr(0, size);
       }
     }
 
-    function popUp(URL)
-    {
+    function popUp(URL) {
       day = new Date();
       id = day.getTime();
       eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
@@ -320,40 +308,40 @@ function addMenuItem($aMenu, $mIdx) {
       }
       ?>  </a>
       <ul class="treeview-menu">
-      <?php
-      if ($aMenu['name'] == "sundayschool") {
-        echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>Dashboard</a></li>";
-        $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
-        $rsSundaySchoolClasses = RunQuery($sSQL);
-        while ($aRow = mysql_fetch_array($rsSundaySchoolClasses)) {
-          echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
+        <?php
+        if ($aMenu['name'] == "sundayschool") {
+          echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>Dashboard</a></li>";
+          $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
+          $rsSundaySchoolClasses = RunQuery($sSQL);
+          while ($aRow = mysql_fetch_array($rsSundaySchoolClasses)) {
+            echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
+          }
         }
       }
-    }
-    if (($aMenu['ismenu']) && ($numItems > 0)) {
-      echo "\n";
-      addMenu($aMenu['name']);
-      echo "</ul>\n</li>\n";
+      if (($aMenu['ismenu']) && ($numItems > 0)) {
+        echo "\n";
+        addMenu($aMenu['name']);
+        echo "</ul>\n</li>\n";
+      }
+      else {
+        echo "</li>\n";
+      }
+
+      return true;
     }
     else {
-      echo "</li>\n";
+      return false;
     }
-
-    return true;
   }
-  else {
-    return false;
-  }
-}
 
-function Header_body_menu() {
-  global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage, $sGlobalMessageClass;
-  global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
+  function Header_body_menu() {
+    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage, $sGlobalMessageClass;
+    global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
 
-  $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
+    $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
 
-  $MenuFirst = 1;
-  ?>
+    $MenuFirst = 1;
+    ?>
 
     <header class="main-header">
       <!-- Logo -->
@@ -361,12 +349,13 @@ function Header_body_menu() {
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>C</b>RM</span>
         <!-- logo for regular state and mobile devices -->
-  <?php if ($sHeader) { ?>
+        <?php if ($sHeader) { ?>
           <span class="logo-lg"><?= html_entity_decode($sHeader, ENT_QUOTES) ?></span>
         <?php }
-        Else { ?>
+        Else {
+          ?>
           <span class="logo-lg"><b>Church</b>CRM</span>
-        <?php } ?>
+  <?php } ?>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top" role="navigation">
@@ -490,12 +479,12 @@ function Header_body_menu() {
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-  <?php
-  echo $sPageTitle . "\n";
-  if ($sPageTitleSub != "") {
-    echo "<small>" . $sPageTitleSub . "</small>";
-  }
-  ?>
+          <?php
+          echo $sPageTitle . "\n";
+          if ($sPageTitleSub != "") {
+            echo "<small>" . $sPageTitleSub . "</small>";
+          }
+          ?>
         </h1>
         <ol class="breadcrumb">
           <li><a href="<?= $sRootPath . "/Menu.php" ?>"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -504,16 +493,16 @@ function Header_body_menu() {
       </section>
       <!-- Main content -->
       <section class="content">
-        <?php if ($sGlobalMessage) { ?>
+  <?php if ($sGlobalMessage) { ?>
           <div class="main-box-body clearfix">
             <div class="callout callout-<?= $sGlobalMessageClass ?> fade in">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
               <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i>
-              <?= $sGlobalMessage ?>
+    <?= $sGlobalMessage ?>
             </div>
           </div>
-        <?php
- }
+          <?php
+        }
       }
 
       function create_side_nav($menu) {
