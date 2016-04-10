@@ -263,6 +263,7 @@ class SystemService {
             "Collected Value Title |  Data \r\n" .
             "----------------------|----------------\r\n" .
             "Platform Information | " . php_uname($mode = "a") . "\r\n" .
+            "PHP Version | " . phpversion() . "\r\n" .
             "ChurchCRM Version |" . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
             "Reporting Browser |" . $_SERVER['HTTP_USER_AGENT'] . "\r\n" .
             "Apache Modules    |" . implode(",", apache_get_modules());

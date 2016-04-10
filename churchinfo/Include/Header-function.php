@@ -68,42 +68,48 @@ function Header_modals() {
 
   <!-- Issue Report Modal -->
   <div id="IssueReportModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <form name="issueReport">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Issue Report!</h4>
-          </div>
-          <div class="modal-body">
-            <div class="container">
-              <div class="row">
-                <div class="col-xl-3">
-                  <label for="issueTitle">Enter a Title for your bug / feature report: </label>
-                </div>
-                <div class="col-xl-3">
-                  <input type="text" name="issueTitle"></input>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xl-3">
-                  <label for="issueDescription">What were you doing when you noticed the bug / feature opportunity?</label>
-                </div>
-                <div class="col-xl-3">
-                  <textarea rows="10" cols="50" name="issueDescription"></textarea>
-                </div>
-              </div>
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <form name="issueReport">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Issue Report!</h4>
             </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="row">
+                  <div class="col-xl-3">
+                    <label for="issueTitle">Enter a Title for your bug / feature report: </label>
+                  </div>
+                  <div class="col-xl-3">
+                    <input type="text" name="issueTitle"></input>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-3">
+                    <label for="issueDescription">What were you doing when you noticed the bug / feature opportunity?</label>
+                  </div>
+                  <div class="col-xl-3">
+                    <textarea rows="10" cols="50" name="issueDescription"></textarea>
+                  </div>
+                </div>
+              </div>
+              <ul>
+                <li>When you click "submit," an error report will be posted to the ChurchCRM GitHub Issue tracker.</li>
+                <li>Please do not include any confidential information.</li>
+                <li>Some general information about your system will be submitted along with the request such as Server version and browser headers.</li>
+                <li>No personally identifiable information will be submitted unless you purposefully include it.</li>
+              </ul>
+            </div>
+            <div class="modal-footer">
 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="submitIssue">Submit</button>
-          </div>
-        </form>
+              <button type="button" class="btn btn-primary" id="submitIssue">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
   <!-- End Issue Report Modal -->
 
   <?php
