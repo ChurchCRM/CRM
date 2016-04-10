@@ -1,7 +1,8 @@
 DELETE FROM config_cfg
-WHERE cfg_id IN (2, 4, 15, 17, 24, 32, 35, 999);
+ WHERE cfg_id IN (2, 4, 15, 17, 24, 32, 35, 999);
 
-INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES
+INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) 
+ VALUES
   (2, 'debug', '1', 'boolean', '1',
    'Set debug mode\r\nThis may be helpful for when you''re first setting up ChurchCRM, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you''ll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.',
    'General', NULL),
@@ -12,4 +13,4 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
    'ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General', NULL),
   (1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'ChurchInfoReport', NULL);
 UPDATE user_usr
-SET usr_Style = "skin-blue";
+ SET usr_Style = "skin-blue";

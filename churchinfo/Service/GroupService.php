@@ -21,6 +21,7 @@ class GroupService
    */
   function setGroupMemberRole($groupID, $personID, $roleID)
   {
+    requireUserGroupMembership("bManageGroups");
     $sSQL = "UPDATE person2group2role_p2g2r
             SET p2g2r_rle_ID = " . $roleID . "
             WHERE
@@ -39,6 +40,7 @@ class GroupService
    */
   function removeUserFromGroup($groupID, $personID)
   {
+    requireUserGroupMembership("bManageGroups");
     $sSQL = "DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = " . $personID . " AND p2g2r_grp_ID = " . $groupID;
     RunQuery($sSQL);
 
@@ -78,6 +80,7 @@ class GroupService
    */
   function addUserToGroup($iGroupID, $iPersonID, $iRoleID)
   {
+    requireUserGroupMembership("bManageGroups");
     //
     // Adds a person to a group with specified role.
     // Returns false if the operation fails. (such as person already in group)
@@ -118,6 +121,7 @@ class GroupService
    */
   function search($searchTerm)
   {
+   requireUserGroupMembership("bManageGroups"); 
     $sSQL = 'SELECT grp_ID FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type WHERE grp_Name LIKE \'%' . $searchTerm . '%\' OR  grp_Description LIKE \'%' . $searchTerm . '%\' OR lst_OptionName LIKE \'%' . $searchTerm . '%\'  order by grp_Name LIMIT 15';
     $result = mysql_query($sSQL);
     $return = array();
@@ -158,6 +162,7 @@ class GroupService
    */
   function getGroupRoles($groupID)
   {
+    requireUserGroupMembership("bManageGroups");
     $groupRoles = array ();
     $sSQL = "SELECT grp_ID, lst_OptionName, lst_OptionID, lst_OptionSequence
               FROM group_grp
@@ -188,6 +193,7 @@ class GroupService
    */
   function setGroupRoleName($groupID, $groupRoleID, $groupRoleName)
   {
+    requireUserGroupMembership("bManageGroups");
     $sSQL = 'UPDATE list_lst
                  INNER JOIN group_grp
                     ON group_grp.grp_RoleListID = list_lst.lst_ID
@@ -199,6 +205,7 @@ class GroupService
 
   function setGroupRoleOrder($groupID, $groupRoleID, $groupRoleOrder)
   {
+    requireUserGroupMembership("bManageGroups");
     $sSQL = 'UPDATE list_lst
                  INNER JOIN group_grp
                     ON group_grp.grp_RoleListID = list_lst.lst_ID
@@ -210,6 +217,7 @@ class GroupService
 
   function getGroupDefaultRole($groupID)
   {
+    requireUserGroupMembership("bManageGroups");
     //Look up the default role name
     $sSQL = "SELECT lst_OptionName from list_lst INNER JOIN group_grp on (group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_DefaultRole = list_lst.lst_OptionID) WHERE group_grp.grp_ID = " . $groupID;
     $aDefaultRole = mysql_fetch_array(RunQuery($sSQL));
@@ -218,6 +226,7 @@ class GroupService
 
   function getGroupRoleOrder($groupID, $groupRoleID)
   {
+    requireUserGroupMembership("bManageGroups");
     $sSQL = 'SELECT list_lst.lst_OptionSequence FROM list_lst
                 INNER JOIN group_grp
                     ON group_grp.grp_RoleListID = list_lst.lst_ID
@@ -231,6 +240,7 @@ class GroupService
 
   function deleteGroupRole($groupID, $groupRoleID)
   {
+    requireUserGroupMembership("bManageGroups");
     $sSQL = 'SELECT * FROM list_lst
                 INNER JOIN group_grp
                     ON group_grp.grp_RoleListID = list_lst.lst_ID
@@ -296,6 +306,7 @@ class GroupService
 
   function addGroupRole($groupID, $groupRoleName)
   {
+    requireUserGroupMembership("bManageGroups");
     if (strlen($groupRoleName) == 0) {
       throw new Exception ("New field name cannot be blank");
     } else {
@@ -338,12 +349,14 @@ class GroupService
 
   function setGroupRoleAsDefault($groupID, $roleID)
   {
+    requireUserGroupMembership("bManageGroups");
     $sSQL = "UPDATE group_grp SET grp_DefaultRole = " . $roleID . " WHERE grp_ID = " . $groupID;
     RunQuery($sSQL);
   }
 
   function getGroupTotalMembers($groupID)
   {
+    requireUserGroupMembership("bManageGroups");
     //Get the count of members
     $sSQL = 'SELECT COUNT(*) AS iTotalMembers FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = ' . $groupID;
     $rsTotalMembers = mysql_fetch_array(RunQuery($sSQL));
@@ -352,6 +365,7 @@ class GroupService
 
   function getGroupTypes()
   {
+    requireUserGroupMembership("bManageGroups");
     $groupTypes = array();
     // Get Group Types for the drop-down
     $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 3 ORDER BY lst_OptionSequence";
@@ -364,6 +378,7 @@ class GroupService
 
   function getGroupRoleTemplateGroups()
   {
+    requireUserGroupMembership("bManageGroups");
     $templateGroups = array();
     $sSQL = "SELECT * FROM group_grp WHERE grp_RoleListID > 0 ORDER BY grp_Name";
     $rsGroupRoleSeed = RunQuery($sSQL);
@@ -375,11 +390,12 @@ class GroupService
 
   function setGroupName($groupID, $groupName)
   {
-
+    requireUserGroupMembership("bManageGroups");
   }
 
   function enableGroupSpecificProperties($groupID)
   {
+    requireUserGroupMembership("bManageGroups");
     $sSQLp = "CREATE TABLE groupprop_" . $groupID . " (
                         per_ID mediumint(8) unsigned NOT NULL default '0',
                         PRIMARY KEY  (per_ID),
@@ -397,6 +413,7 @@ class GroupService
 
   function disableGroupSpecificProperties($groupID)
   {
+    requireUserGroupMembership("bManageGroups");
     $sSQLp = "DROP TABLE groupprop_" . $groupID;
     RunQuery($sSQLp);
 
@@ -407,6 +424,7 @@ class GroupService
 
   function createGroup($groupName)
   {
+    requireUserGroupMembership("bManageGroups");
     if (!$groupName) {   //If there's no group name, throw an exception
       throw new Exception ("Unable to create a group without a name");
     }
@@ -448,6 +466,7 @@ class GroupService
 
   function deleteGroup($iGroupID)
   {
+    requireUserGroupMembership("bManageGroups");
     $sSQL = "SELECT grp_hasSpecialProps, grp_RoleListID FROM group_grp WHERE grp_ID =" . $iGroupID;
     $rsTemp = RunQuery($sSQL);
     $aTemp = mysql_fetch_array($rsTemp);
@@ -487,7 +506,7 @@ class GroupService
 
   function updateGroup($groupID, $groupData)
   {
-
+    requireUserGroupMembership("bManageGroups");
     //Assign everything locally
     $thisGroup['grp_Name'] = $groupData->groupName;
     $thisGroup['grp_type'] = $groupData->groupType;
@@ -508,6 +527,7 @@ class GroupService
 
   function getGroups($groupIDs = NULL)
   {
+    requireUserGroupMembership("bManageGroups");
     $whereClause = "";
     if (is_numeric($groupIDs)) {
       $whereClause = "WHERE grp_ID = " . $groupIDs;
@@ -546,6 +566,7 @@ class GroupService
 
   function getGroupMembers($groupID, $personID = null)
   {
+    requireUserGroupMembership("bManageGroups");
     $whereClause = "";
     if (is_numeric($personID)) {
       $whereClause = " AND p2g2r_per_ID = " . $personID;
@@ -575,6 +596,7 @@ class GroupService
 
   function getGroupMembersIds($groupID)
   {
+    requireUserGroupMembership("bManageGroups");
     $members = array();
     // Main select query
     $sSQL = "SELECT p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID, lst_OptionName FROM person2group2role_p2g2r
@@ -597,6 +619,7 @@ class GroupService
 
   function checkGroupAgainstCart($groupID)
   {
+    requireUserGroupMembership("bManageGroups");
     $members = $this->getGroupMembersIds($groupID);
     //echo "Members: ".count($members);
     $bNoneInCart = TRUE;
@@ -624,6 +647,7 @@ class GroupService
 
   function copyCartToGroup()
   {
+    requireUserGroupMembership("bManageGroups");
     if (array_key_exists("EmptyCart", $_POST) && $_POST["EmptyCart"] && count($_SESSION['aPeopleCart']) > 0) {
       $iCount = 0;
       while ($element = each($_SESSION['aPeopleCart'])) {

@@ -49,9 +49,10 @@ $dashboardService = new DashboardService();
 $personCount = $dashboardService->getPersonCount();
 $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
-$depositData = $financialService->getDeposits();  //Get the deposit data from the financialService
-$shouldDisplayDeposits = $_SESSION['bFinance'] && count($depositData) > 1;  //Determine whether or not we should display the deposit line graph
-
+$depositData = false;  //Determine whether or not we should display the deposit line graph
+if ($_SESSION['bFinance']) {
+  $depositData = $financialService->getDeposits();  //Get the deposit data from the financialService
+}
 
 // Set the page title
 $sPageTitle = "Welcome to <b>Church</b>CRM";
@@ -141,7 +142,7 @@ require 'Include/Header.php';
 </div><!-- /.row -->
 
 <?php 
-if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's display the deposit line chart
+if ($depositData) // If the user has Finance permissions, then let's display the deposit line chart
 { 
 ?>
 <div class="row">
@@ -290,7 +291,7 @@ if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's d
 <!-- this page specific inline scripts -->
 <script>
 <?php 
-if ($shouldDisplayDeposits) // If the user has Finance permissions, then let's display the deposit line chart
+if ($depositData) // If the user has Finance permissions, then let's display the deposit line chart
 { 
 ?>
     //---------------

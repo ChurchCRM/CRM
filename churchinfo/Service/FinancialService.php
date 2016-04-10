@@ -22,6 +22,7 @@ class FinancialService
 
   function processAuthorizeNet()
   {
+    requireUserGroupMembership("bFinance");
     $donation = new AuthorizeNetAIM;
     $donation->amount = "$plg_amount";
     $donation->first_name = $firstName;
@@ -169,6 +170,7 @@ class FinancialService
 
   function processVanco()
   {
+    requireUserGroupMembership("bFinance");
     $customerid = "$aut_ID";  // This is an optional value that can be used to indicate a unique customer ID that is used in your system
     // put aut_ID into the $customerid field
     // Create object to preform API calls
@@ -267,6 +269,7 @@ class FinancialService
 
   function runTransactions($depID)
   {
+    requireUserGroupMembership("bFinance");
     // Process all the transactions
 
     //Get the payments for this deposit slip
@@ -330,6 +333,7 @@ class FinancialService
 
   function loadAuthorized($depID)
   {
+    requireUserGroupMembership("bFinance");
 
     // Create all the payment records that have been authorized
 
@@ -412,6 +416,7 @@ class FinancialService
 
   function deletePayment($groupKey)
   {
+    requireUserGroupMembership("bFinance");
     $sSQL = "SELECT deposit_dep.dep_Closed FROM pledge_plg
         INNER JOIN deposit_dep ON
         pledge_plg.plg_depID = deposit_dep.dep_ID
@@ -431,6 +436,7 @@ class FinancialService
 
   function getMemberByScanString($sstrnig)
   {
+    requireUserGroupMembership("bFinance");
     global $bUseScannedChecks;
     if ($bUseScannedChecks) {
       require "../Include/MICRFunctions.php";
@@ -452,6 +458,7 @@ class FinancialService
 
   function getDepositsByFamilyID($fid)
   {
+    requireUserGroupMembership("bFinance");
     //This might not be finished....
     $sSQL = "SELECT plg_fundID, plg_amount from pledge_plg where plg_famID=\"" . $familyId . "\" AND plg_PledgeOrPayment=\"Pledge\"";
     if ($fyid != -1) {
@@ -497,6 +504,7 @@ class FinancialService
 
   function deleteDeposit($id)
   {
+    requireUserGroupMembership("bFinance");
     $DeleteDeposits = "DELETE FROM deposit_dep
             WHERE dep_ID = " . $id;
     RunQuery($DeleteDeposits);
@@ -507,7 +515,7 @@ class FinancialService
 
   function getDeposits($id = null)
   {
-
+    requireUserGroupMembership("bFinance");
     $sSQL = "SELECT * FROM deposit_dep";
     if ($id) {
       $sSQL .= " WHERE dep_ID = " . $id;
@@ -559,6 +567,7 @@ class FinancialService
 
   function getDepositTotal($id, $type = null)
   {
+    requireUserGroupMembership("bFinance");
     $sqlClause = '';
     if ($type) {
       $sqlClause = "AND plg_method = '" . $type . "'";
@@ -572,6 +581,7 @@ class FinancialService
 
   function getDepositCount($id, $type = null)
   {
+    requireUserGroupMembership("bFinance");
     $sqlClause = '';
     if ($type) {
       $sqlClause = "AND plg_method = '" . $type . "'";
@@ -605,6 +615,7 @@ class FinancialService
 
   function getPayments($depID)
   {
+    requireUserGroupMembership("bFinance");
     $sSQL = "SELECT * from pledge_plg
             INNER JOIN 
             donationfund_fun 
@@ -654,6 +665,7 @@ class FinancialService
 
   function searchDeposits($searchTerm)
   {
+    requireUserGroupMembership("bFinance");
     $fetch = 'SELECT dep_ID, dep_Comment, dep_Date, dep_EnteredBy, dep_Type
             FROM deposit_dep
             LEFT JOIN pledge_plg ON
@@ -681,6 +693,7 @@ class FinancialService
 
   function searchPayments($searchTerm)
   {
+    requireUserGroupMembership("bFinance");
     $fetch = 'SELECT dep_ID, dep_Comment, dep_Date, dep_EnteredBy, dep_Type, plg_FamID, plg_amount, plg_CheckNo, plg_plgID, plg_GroupKey
             FROM deposit_dep
             LEFT JOIN pledge_plg ON
@@ -712,6 +725,7 @@ class FinancialService
 
   function searchMembers($query)
   {
+    requireUserGroupMembership("bFinance");
     $sSearchTerm = $query;
     $sSearchType = "person";
     $fetch = 'SELECT per_ID, per_FirstName, per_LastName, CONCAT_WS(" ",per_FirstName,per_LastName) AS fullname, per_fam_ID  FROM `person_per` WHERE per_FirstName LIKE \'%' . $sSearchTerm . '%\' OR per_LastName LIKE \'%' . $sSearchTerm . '%\' OR per_Email LIKE \'%' . $sSearchTerm . '%\' OR CONCAT_WS(" ",per_FirstName,per_LastName) LIKE \'%' . $sSearchTerm . '%\' LIMIT 15';
@@ -761,6 +775,7 @@ class FinancialService
 
   function locateFamilyCheck($checkNumber, $fam_ID)
   {
+    requireUserGroupMembership("bFinance");
     $sSQL = "SELECT count(plg_FamID) from pledge_plg
                  WHERE plg_CheckNo = " . $checkNumber . " AND
                  plg_FamID = " . $fam_ID;
@@ -770,6 +785,7 @@ class FinancialService
 
   function validateChecks($payment)
   {
+    requireUserGroupMembership("bFinance");
     //validate that the payment options are valid
     //If the payment method is a check, then the check nubmer must be present, and it must not already have been used for this family
     //if the payment method is cash, there must not be a check number
@@ -790,6 +806,7 @@ class FinancialService
 
   function insertPledgeorPayment($payment)
   {
+    requireUserGroupMembership("bFinance");
     // Only set PledgeOrPayment when the record is first created
     // loop through all funds and create non-zero amount pledge records
     unset($sGroupKey);
@@ -862,6 +879,7 @@ class FinancialService
 
   function submitPledgeOrPayment($payment)
   {
+    requireUserGroupMembership("bFinance");
     $this->validateFund($payment);
     $this->validateChecks($payment);
     $this->validateDate($payment);
@@ -871,6 +889,7 @@ class FinancialService
 
   function getPledgeorPayment($GroupKey)
   {
+    requireUserGroupMembership("bFinance");
     require_once "FamilyService.php";
     $total = 0;
     $FamilyService = New FamilyService();
@@ -902,6 +921,7 @@ class FinancialService
 
   function getDepositOFX($depID)
   {
+    requireUserGroupMembership("bFinance");
     $fundTotal = array();
     $iDepositComment = "";
     $iDepositSlipID = 0;
@@ -1292,6 +1312,7 @@ class FinancialService
 
   function getDepositPDF($depID)
   {
+    requireUserGroupMembership("bFinance");
     $thisReport = new StdClass();
     $thisReport->payments = $this->getPayments($depID);
     if (count($thisReport->payments) == 0) {
@@ -1370,6 +1391,7 @@ class FinancialService
 
   function getDepositCSV($depID)
   {
+    requireUserGroupMembership("bFinance");
     $retstring = "";
     $line = array();
     $firstLine = true;
@@ -1400,6 +1422,7 @@ class FinancialService
 
   function getFund()
   {
+    requireUserGroupMembership("bFinance");
     $funds = array();
     $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
     $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.

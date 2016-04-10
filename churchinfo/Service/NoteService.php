@@ -5,6 +5,7 @@ class NoteService
 
   function addNote($personID, $familyID, $private, $text)
   {
+    requireUserGroupMembership("bNotes");
     $sSQL = "INSERT INTO note_nte (nte_per_ID, nte_fam_ID, nte_Private, nte_Text, nte_EnteredBy, nte_DateEntered)
                 VALUES (" . $personID . "," . $familyID . "," . $private . ",'" . $text . "'," .
       $_SESSION['iUserID'] . ",'" . date("YmdHis") . "')";
@@ -16,6 +17,7 @@ class NoteService
 
   function updateNote($noteId, $private, $text)
   {
+    requireUserGroupMembership("bNotes");
     $sSQL = "UPDATE note_nte SET
                 nte_Private = " . $private . ",
                 nte_Text = '" . $text . "' ,
@@ -30,6 +32,7 @@ class NoteService
 
   function getNoteById($noteId)
   {
+    requireUserGroupMembership("bNotes");
     $sSQL = "SELECT * FROM note_nte WHERE nte_ID = " . $noteId;
     $rsNote = RunQuery($sSQL);
     extract(mysql_fetch_array($rsNote));
@@ -47,6 +50,7 @@ class NoteService
 
   function deleteNoteById($noteId)
   {
+    requireUserGroupMembership("bNotes");
     $sSQL = "DELETE FROM note_nte WHERE nte_ID = " . $noteId;
     return RunQuery($sSQL);
   }
