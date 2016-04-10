@@ -66,8 +66,8 @@ function Header_modals() {
   </div>
   <!-- End API Call Error Modal -->
 
-  <!-- Issue Report Modal -->
-  <div id="IssueReportModal" class="modal fade" role="dialog">
+    <!-- Issue Report Modal -->
+    <div id="IssueReportModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -110,7 +110,7 @@ function Header_modals() {
         </div>
       </div>
     </div>
-  <!-- End Issue Report Modal -->
+    <!-- End Issue Report Modal -->
 
   <?php
 }
