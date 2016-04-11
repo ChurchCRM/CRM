@@ -14,3 +14,6 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
   (1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'ChurchInfoReport', NULL);
 UPDATE user_usr
  SET usr_Style = "skin-blue";
+
+ALTER TABLE `config_cfg`
+ ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
