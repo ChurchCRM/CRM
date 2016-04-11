@@ -8,7 +8,13 @@
 
 class PersonService
 {
-
+  private $baseURL;
+  
+  public function __construct()
+  {
+    $this->baseURL = $_SESSION['sRootPath'];
+  }
+  
   function get($id)
   {
     //return $this->personQuery->findPK($id);
@@ -61,7 +67,7 @@ class PersonService
       }
     }
 
-    return $sRootPath . "/Images/x.gif";
+    return $this->baseURL . "/Images/x.gif";
   }
 
   function deleteUploadedPhoto($id)
@@ -94,7 +100,7 @@ class PersonService
       $photoFile = dirname(__FILE__) . "/../Images/Person/thumbnails/" . $personId . "." . $ext;
       if (file_exists($photoFile)) {
         $hasFile = true;
-        $photoFile = $sRootPath . "/Images/Person/thumbnails/" . $personId . "." . $ext;
+        $photoFile = $this->baseURL . "/Images/Person/thumbnails/" . $personId . "." . $ext;
         break;
       }
     }
@@ -123,7 +129,7 @@ class PersonService
 
   function getViewURI($Id)
   {
-    return $sRootPath . "/PersonView.php?PersonID=" . $Id;
+    return $this->baseURL . "/PersonView.php?PersonID=" . $Id;
   }
 
   function search($searchTerm)
@@ -171,13 +177,13 @@ class PersonService
 
   private function getDefaultPhoto($gender, $famRole)
   {
-    $photoFile = $sRootPath . "/Images/Person/man-128.png";
+    $photoFile = $this->baseURL . "/Images/Person/man-128.png";
     if ($gender == 1 && $famRole == "Child") {
-      $photoFile = $sRootPath . "/Images/Person/kid_boy-128.png";
+      $photoFile = $this->baseURL . "/Images/Person/kid_boy-128.png";
     } else if ($gender == 2 && $famRole != "Child") {
-      $photoFile = $sRootPath . "/Images/Person/woman-128.png";
+      $photoFile = $this->baseURL . "/Images/Person/woman-128.png";
     } else if ($gender == 2 && $famRole == "Child") {
-      $photoFile = $sRootPath . "/Images/Person/kid_girl-128.png";
+      $photoFile = $this->baseURL . "/Images/Person/kid_girl-128.png";
     }
 
     return $photoFile;
