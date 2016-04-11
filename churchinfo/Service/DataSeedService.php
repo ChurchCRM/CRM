@@ -4,7 +4,7 @@ class DataSeedService
 {
   private function getPerson($rs, &$personPointer)
   {
-    $user = $rs[$personPointer]->user;
+    $user = $rs[$personPointer];
     $personPointer += 1;
     return $user;
   }
@@ -33,9 +33,9 @@ class DataSeedService
     $rTotalChildren = 0;
 
     for ($i = 0; $i < $families; $i++) {
-
+      
       $hoh = $this->getPerson($rs, $personPointer);
-
+      
       $FamilyID = $FamilyService->insertFamily($hoh);
       $familyName = $hoh->name->last;
       $hoh->famID = $FamilyID;
