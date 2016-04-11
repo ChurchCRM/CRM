@@ -7,8 +7,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
-ALTER TABLE `config_cfg`
- ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
 
 UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='0' WHERE `cfg_id`='1003';
 UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='1' WHERE `cfg_id`='1004';
