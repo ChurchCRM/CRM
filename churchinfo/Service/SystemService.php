@@ -5,6 +5,7 @@ class SystemService
 
   function playbackSQLtoDatabase($fileName)
   {
+    requireUserGroupMembership("bAdmin");
     $query = '';
     $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($restoreQueries as $line) {
@@ -21,6 +22,7 @@ class SystemService
 
   function restoreDatabaseFromBackup()
   {
+    requireUserGroupMembership("bAdmin");
     $restoreResult = new StdClass();
     global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $sGZIPname;
     $file = $_FILES['restoreFile'];
@@ -65,6 +67,7 @@ class SystemService
 
   function getDatabaseBackup($params)
   {
+    requireUserGroupMembership("bAdmin");
     global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME, $sGZIPname, $sZIPname, $sPGPname;
 
     $backup = new StdClass();
@@ -147,6 +150,7 @@ class SystemService
 
   function download($filename)
   {
+    requireUserGroupMembership("bAdmin");
     set_time_limit(0);
     $path = dirname(dirname(__FILE__)) . "/tmp_attach/ChurchCRMBackups/$filename";
     if (file_exists($path)) {
@@ -195,12 +199,12 @@ class SystemService
 
   function getConfigurationSetting($settingName, $settingValue)
   {
-
+    requireUserGroupMembership("bAdmin");
   }
 
   function setConfigurationSetting($settingName, $settingValue)
   {
-
+    requireUserGroupMembership("bAdmin");
   }
 
   function getDatabaseVersion()

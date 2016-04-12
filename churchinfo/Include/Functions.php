@@ -26,6 +26,7 @@ require_once dirname(__FILE__).'/../Service/PersonService.php';
 *  This file best viewed in a text editor with tabs stops set to 4 characters
 *
 ******************************************************************************/
+
 // Initialization common to all ChurchCRM scripts
 
 // Set the current version of this PHP file
@@ -510,7 +511,7 @@ function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddres
     if ($bShowFamilyData) {
 
         if ($bFormat) {
-            $sFamilyInfoBegin = "<span style=\"color: red;\">";
+            $sFamilyInfoBegin = "<span style='color: red;'>";
             $sFamilyInfoEnd = "</span>";
         }
 
@@ -815,43 +816,36 @@ function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
 //
 function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
 {
-    $bWeird = false;
-    $length = strlen($sPhoneNumber);
+  $bWeird = false;
+  $length = strlen($sPhoneNumber);
 
-    switch ($sPhoneCountry) {
-        case "United States":
+  switch ($sPhoneCountry) {
+    case "United States":
+      if ($length == 0) {
+        return "";
+      } // 7 digit phone # with extension
+      else if (substr($sPhoneNumber, 7, 1) == "e") {
+        return "<a href='tel:" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . ",,," . substr($sPhoneNumber, 8, 6) . "'>" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . " Ext." . substr($sPhoneNumber, 8, 6) . "</a>";
+      } // 10 digit phone # with extension
+      else if (substr($sPhoneNumber, 10, 1) == "e") {
+        return "<a href='tel:" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . ",,," . substr($sPhoneNumber, 11, 6) . "'>" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . " Ext." . substr($sPhoneNumber, 11, 6) . "</a>";
+      } else if ($length == 7) {
+        return "<a href='tel:" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . "'>" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . "</a>";
+      } else if ($length == 10) {
+        return "<a href='tel:" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . "'>" . substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . "</a>";
+      } // Otherwise, there is something weird stored, so just leave it untouched and set the flag
+      else {
+        $bWeird = true;
+        return $sPhoneNumber;
+      }
+      break;
 
-            if ($length == 0)
-                return "";
-
-            // 7 digit phone # with extension
-            else if (substr($sPhoneNumber, 7, 1) == "e")
-                return substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4) . " Ext." . substr($sPhoneNumber, 8, 6);
-
-            // 10 digit phone # with extension
-            else if (substr($sPhoneNumber, 10, 1) == "e")
-                return substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4) . " Ext." . substr($sPhoneNumber, 11, 6);
-
-            else if ($length == 7)
-                return substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 4);
-
-            else if ($length == 10)
-                return substr($sPhoneNumber, 0, 3) . "-" . substr($sPhoneNumber, 3, 3) . "-" . substr($sPhoneNumber, 6, 4);
-
-            // Otherwise, there is something weird stored, so just leave it untouched and set the flag
-            else
-            {
-                $bWeird = true;
-                return $sPhoneNumber;
-            }
-
-        break;
-
-        // If the country is unknown, we don't know how to format it, so leave it untouched
-        default:
-            return $sPhoneNumber;
-    }
+    // If the country is unknown, we don't know how to format it, so leave it untouched
+    default:
+      return $sPhoneNumber;
+  }
 }
+
 
 //
 // Prints age in years, or in months if less than one year old
@@ -2015,6 +2009,32 @@ function getMailingAddress($Address1, $Address2, $City, $State, $Zip, $Country)
     if ($Zip != "") { $mailingAddress .= " " . $Zip ." "; }
     if ($Country != "") {$mailingAddress .= $Country; }
     return $mailingAddress;
+}
+
+function requireUserGroupMembership($allowedRoles=null)
+{
+  if(!$allowedRoles)
+  {
+    throw new Exception("Role(s) must be defined for the function which you are trying to access.  End users should never see this error unless something went horribly wrong.");
+  }
+  if ($_SESSION[$allowedRoles] || $_SESSION['bAdmin'])  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
+  {
+    return true;
+  }
+  elseif (is_array($allowedRoles))  //sometimes we might have an array of allowed roles.
+  {
+    foreach($allowedRoles as $role)
+    {
+      if($_SESSION[$role])
+      {
+        // The current allowed role is in the user's session variable
+        return true;
+      }
+    }
+  }
+ 
+  //if we get to this point in the code, then the user is not authorized.
+  throw new Exception("User is not authorized to access " . debug_backtrace()[1]['function'], 401);
 }
 
 ?>

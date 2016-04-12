@@ -2,9 +2,7 @@
 
 ## Get Started
 
-Thanks to Scotch box https://github.com/scotch-io/scotch-box a the LAMP base box.
-
-https://github.com/scotch-io/scotch-box#get-started
+[Scotch box](https://github.com/scotch-io/scotch-box#get-started) provides us a quick LAMP stack in the Vagrant environment.
 
 
 ## Steps  
@@ -17,7 +15,7 @@ Just clone and run Vagrant up
 
 ## Server
 
-Access the Project at http://192.168.33.10/
+Access the Project at [http://192.168.33.10](http://192.168.33.10/)
 
 
 ### Login Info

@@ -2,14 +2,14 @@
 
 class DataSeedService
 {
-  function getPerson($rs, &$personPointer)
+  private function getPerson($rs, &$personPointer)
   {
-    $user = $rs[$personPointer]->user;
+    $user = $rs[$personPointer];
     $personPointer += 1;
     return $user;
   }
 
-  function savePersonImage($person, $id)
+  private function savePersonImage($person, $id)
   {
     $dest = "../Images/Person/thumbnails/" . $id . ".jpg";
     #echo "Saving image for: ".$person->name->first." from: ".$person->picture->thumbnail. " to: ". $dest;
@@ -18,6 +18,7 @@ class DataSeedService
 
   function generateFamilies($families)
   {
+    requireUserGroupMembership("bAdmin");
     $PersonService = new PersonService();
     $FamilyService = new FamilyService();
     $kidsPerFamily = 3;
@@ -32,9 +33,9 @@ class DataSeedService
     $rTotalChildren = 0;
 
     for ($i = 0; $i < $families; $i++) {
-
+      
       $hoh = $this->getPerson($rs, $personPointer);
-
+      
       $FamilyID = $FamilyService->insertFamily($hoh);
       $familyName = $hoh->name->last;
       $hoh->famID = $FamilyID;
@@ -72,25 +73,25 @@ class DataSeedService
 
   function generateSundaySchoolClasses($classes, $childrenPerTeacher)
   {
-
+    requireUserGroupMembership("bAdmin");
     echo '{"status":"Sunday School Seed Data Not Implemented"}';
-
   }
 
   function generateEvents($events, $averageAttendance)
   {
-
+    requireUserGroupMembership("bAdmin");
     echo '{"status":"Events Seed Data Not Implemented"}';
-
   }
 
   function generateDeposits($deposits, $averagedepositvalue)
   {
+    requireUserGroupMembership("bAdmin");
     echo '{"status":"Deposits Seed Data Not Implemented"}';
   }
 
   function generateFundRaisers($fundraisers, $averageItems, $averageItemPrice)
   {
+    requireUserGroupMembership("bAdmin");
     echo '{"status":"Fundraisers Seed Data Not Implemented"}';
   }
 

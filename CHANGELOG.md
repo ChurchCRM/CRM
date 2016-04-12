@@ -1,8 +1,26 @@
 # Change Log
 
-## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
+## [2.0.0-RC1](https://github.com/ChurchCRM/CRM/tree/2.0.0-RC1) (2016-04-09)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0-B6...2.0.0-RC1)
 
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0-B5...HEAD)
+**Fixed bugs:**
+
+- Slim Debug Mode [\#516](https://github.com/ChurchCRM/CRM/issues/516)
+- Sunday school dashboard error with a fresh install [\#514](https://github.com/ChurchCRM/CRM/issues/514)
+- Home Phone Number Click to call has \<span style='color: red;'\> [\#438](https://github.com/ChurchCRM/CRM/issues/438)
+- API code does not respect permissions [\#282](https://github.com/ChurchCRM/CRM/issues/282)
+- Edit established member [\#70](https://github.com/ChurchCRM/CRM/issues/70)
+- extra check for empty class [\#522](https://github.com/ChurchCRM/CRM/pull/522) ([DawoudIO](https://github.com/DawoudIO))
+- API security Closes \#516 [\#515](https://github.com/ChurchCRM/CRM/pull/515) ([crossan007](https://github.com/crossan007))
+- Fix the Letterhead on ConfirmReport.php [\#497](https://github.com/ChurchCRM/CRM/pull/497) ([crossan007](https://github.com/crossan007))
+- Fix Telephone Link with red text inherited from family record [\#444](https://github.com/ChurchCRM/CRM/pull/444) ([rakess70](https://github.com/rakess70))
+
+**Closed issues:**
+
+- Church CRM Twitter doesn't exist, but is still on homepage [\#518](https://github.com/ChurchCRM/CRM/issues/518)
+
+## [2.0.0-B6](https://github.com/ChurchCRM/CRM/tree/2.0.0-B6) (2016-04-03)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0-B5...2.0.0-B6)
 
 **Implemented enhancements:**
 
@@ -44,7 +62,6 @@
 **Closed issues:**
 
 - username and password issue [\#513](https://github.com/ChurchCRM/CRM/issues/513)
-- Move Config.php to Config.php.example [\#503](https://github.com/ChurchCRM/CRM/issues/503)
 - test [\#501](https://github.com/ChurchCRM/CRM/issues/501)
 - test [\#500](https://github.com/ChurchCRM/CRM/issues/500)
 - CRM complains about missing FPDF library [\#494](https://github.com/ChurchCRM/CRM/issues/494)
@@ -52,6 +69,7 @@
 
 **Merged pull requests:**
 
+- Update Dev Docs [\#519](https://github.com/ChurchCRM/CRM/pull/519) ([crossan007](https://github.com/crossan007))
 - Vagrant db changes [\#508](https://github.com/ChurchCRM/CRM/pull/508) ([DawoudIO](https://github.com/DawoudIO))
 - Removed Person Count from Query List & Others [\#506](https://github.com/ChurchCRM/CRM/pull/506) ([DawoudIO](https://github.com/DawoudIO))
 - Move Config.php out of version control [\#504](https://github.com/ChurchCRM/CRM/pull/504) ([dschwen](https://github.com/dschwen))
@@ -197,7 +215,6 @@
 - Family Count is inaccurate [\#221](https://github.com/ChurchCRM/CRM/issues/221)
 - Theme: GeoPage.php [\#182](https://github.com/ChurchCRM/CRM/issues/182)
 - Session Expired Error / Theme [\#175](https://github.com/ChurchCRM/CRM/issues/175)
-- AdminLTE 2 containers allow overflow [\#138](https://github.com/ChurchCRM/CRM/issues/138)
 - Small Bug Fixes [\#435](https://github.com/ChurchCRM/CRM/pull/435) ([DawoudIO](https://github.com/DawoudIO))
 - fixed sundayschool dashboard link [\#419](https://github.com/ChurchCRM/CRM/pull/419) ([DawoudIO](https://github.com/DawoudIO))
 - Fixes \#399 [\#400](https://github.com/ChurchCRM/CRM/pull/400) ([crossan007](https://github.com/crossan007))
