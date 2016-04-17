@@ -6,13 +6,13 @@
 *  description : utility to convert individuals to families
 *
 *  Must be run manually by an administrator.  Type this URL.
-*    http://www.mydomain.com/churchinfo/ConvertIndividualToFamily.php
+*    http://www.mydomain.com/churchcrm/ConvertIndividualToFamily.php
 *
 *  By default this script does one at a time.  To do all entries 
 *  at once use this URL
-*    http://www.mydomain.com/churchinfo/ConvertIndividualToFamily.php?all=true
+*    http://www.mydomain.com/churchcrm/ConvertIndividualToFamily.php?all=true
 *
-*  Your URL may vary.  Replace "churchinfo" with $sRootPath
+*  Your URL may vary.  Replace "churchcrm" with $sRootPath
 *
 *  Contributors:
 *  2007 Ed Davis

@@ -862,7 +862,7 @@ if(isset($_POST["Clear"]))
         RunQuery($sSQL);
         $sSQL = "TRUNCATE `family_custom`;";
         RunQuery($sSQL);
-        $sSQL = "INSERT INTO person_per VALUES (1,NULL,'ChurchInfo',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0000,NULL,0,0,0,0,NULL,NULL,'2004-08-25 18:00:00',0,0,NULL,0);";
+        $sSQL = "INSERT INTO person_per VALUES (1,NULL,'ChurchCRM',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0000,NULL,0,0,0,0,NULL,NULL,'2004-08-25 18:00:00',0,0,NULL,0);";
         RunQuery($sSQL);
         $sClear = gettext("Data Cleared Successfully!");
     }

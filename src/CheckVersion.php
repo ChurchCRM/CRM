@@ -3,7 +3,7 @@
 *
 *  filename     : CheckVersion.php
 *  website      : http://www.churchcrm.io
-*  description  : This file checks that the ChurchInfo MySQL database is in
+*  description  : This file checks that the ChurchCRM MySQL database is in
 *                   sync with the PHP code.  
 *
 *

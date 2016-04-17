@@ -481,7 +481,7 @@ if ($output == "pdf") {
 
 	// Export file
 	header("Content-type: text/x-csv");
-	header("Content-Disposition: attachment; filename=ChurchInfo-" . date("Ymd-Gis") . ".csv");
+	header("Content-Disposition: attachment; filename=ChurchCRM-" . date("Ymd-Gis") . ".csv");
 	echo $buffer;
 }
 

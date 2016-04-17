@@ -23,7 +23,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 // Set the page title
-$sPageTitle = gettext('ChurchInfo WebCalendar Portal');
+$sPageTitle = gettext('ChurchCRM WebCalendar Portal');
 
 require 'Include/Header.php';
 

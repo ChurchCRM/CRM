@@ -326,7 +326,7 @@ else
 	$headerString .= "\n";
 
 	header("Content-type: text/x-csv");
-	header("Content-Disposition: attachment; filename=churchinfo-export-" . date("Ymd-Gis") . ".csv");
+	header("Content-Disposition: attachment; filename=churchcrm-export-" . date("Ymd-Gis") . ".csv");
 
 	echo $headerString;
 

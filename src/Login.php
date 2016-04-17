@@ -272,7 +272,7 @@ if ($iUserID > 0)
             // set the session variable recognized by MRBS
             $_SESSION["UserName"] = $UserName;
 
-            // Update the MRBS user record to match this ChurchInfo user
+            // Update the MRBS user record to match this churchCRM user
             $iMRBSLevel = 0;
             if ($usr_AddRecords) $iMRBSLevel = 1;
             if ($usr_Admin)      $iMRBSLevel = 2;

@@ -61,7 +61,7 @@ class PDF_AccessReport extends ChurchInfoReport {
 		$this->_Margin_Top  = 12;
 
 		$this->Set_Char_Size(20);
-		$this->Write (10, 'ChurchInfo Users Starting With Most Recently Logged In');
+		$this->Write (10, 'ChurchCRM Users Starting With Most Recently Logged In');
 		$this->Set_Char_Size(12);
 	}
 

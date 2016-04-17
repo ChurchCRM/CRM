@@ -412,7 +412,7 @@ elseif ($myISTReturnCode != '0')
           If you are sure that your account username and password are correct and that your
           account is in good standing it is possible that the server is currently unavailable
           but may be back online if you try again later.<br><br>
-          ChurchInfo uses XML web services provided by Intelligent
+          ChurchCRM uses XML web services provided by Intelligent
           Search Technology, Ltd.  For information about CorrectAddress(R) Online Address
           Verification Service visit the following URL. This software was written to work
           best with the service CorrectAddress(R) with Addons. <br><br>

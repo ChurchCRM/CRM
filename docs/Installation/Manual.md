@@ -4,7 +4,7 @@ Currently as ChurchCRM is still in development an install script is not yet avai
 
 ## How Do I Install ChurchCRM?
 
-1. The .tar.gz file download contains a directory called "churchinfo"
+1. The .tar.gz file download contains a directory called "churchcrm"
 Extract the file and place the contents into a directory in the document root of your Web server or via FTP to a shared hosting account
 
 2. Within the directory you'll find a directory called "mysql," and another called "install"
@@ -126,14 +126,14 @@ the general settings page.
 Security Considerations:
 ---------------------
 - If you are using the database backup utility, you need to make sure
-that the churchinfo/SQL directory is not accessible to your users!
+that the churchcrm/SQL directory is not accessible to your users!
 Otherwise, with the right timing, anybody can download the temporary
 files used in creating database backups and thus read the entire contents
 of the database!  Different web servers have different means of access
 control.  In Apache, for example, you might add a section something
 like this to your httpd.conf:
 
-<Directory /home/httpd/html/churchinfo/SQL>
+<Directory /home/httpd/html/churchcrm/SQL>
  Order deny,allow
  Deny from all
 </Directory>

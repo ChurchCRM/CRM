@@ -23,7 +23,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 // Set the page title
-$sPageTitle = gettext('ChurchInfo MRBS Portal');
+$sPageTitle = gettext('ChurchCRM MRBS Portal');
 
 require 'Include/Header.php';
 

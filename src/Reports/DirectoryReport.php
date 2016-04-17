@@ -671,7 +671,7 @@ if($mysqlversion >= 4){
     $sSQL = "SELECT DISTINCT * FROM tmp ORDER BY SortMe";
 
 }else{
-    die(gettext("This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchInfo."));
+    die(gettext("This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."));
 }
 
 $rsRecords = RunQuery($sSQL);
