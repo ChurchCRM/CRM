@@ -8,7 +8,7 @@ Running your Church CRM Docker image
 
 Start your image binding the external ports 80 and 3306 in all interfaces to your container:
 
-	docker run -d -p 80:80 -p 3306:3306 churchwebcrm/crm
+	docker run -d -p 80:80 -p 3306:3306 churchcrm/crm
 
 Usage
 -----
