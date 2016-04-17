@@ -23,7 +23,7 @@ $sRootPath = '';
 
 // Set $bLockURL=TRUE to enforce https access by specifying exactly
 // which URL's your users may use to log into ChurchCRM.
-$bLockURL = TRUE;
+$bLockURL = FALSE;
 
 // URL[0] is the URL that you prefer most users use when they
 // log in.  These are case sensitive.  Only used when $bLockURL = TRUE

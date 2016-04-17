@@ -1,14 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-/usr/bin/mysqld_safe > /dev/null 2>&1 &
-
-RET=1
-while [[ RET -ne 0 ]]; do
-    echo "=> Waiting for confirmation of MySQL service startup"
-    sleep 5
-    mysql -uroot -e "status" > /dev/null 2>&1
-    RET=$?
-done
+echo "=========================================================="
+echo "====================  ChurchCRM DB Setup  ========================="
+echo "=========================================================="
 
 echo "=> Creating MySQL churchcrm user with churchcrm password"
 
@@ -19,4 +13,3 @@ mysql -uroot -e "GRANT ALL PRIVILEGES ON churchcrm.* TO 'churchcrm'@'%' WITH GRA
 #Install churchcrm db
 mysql churchcrm < /app/mysql/install/Install.sql
 
-mysqladmin -uroot shutdown
