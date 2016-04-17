@@ -9,4 +9,4 @@ COPY setup_mysql.sh /setup_mysql.sh
 RUN chmod 755 /*.sh
 
 EXPOSE 80 3306
-CMD ["/setup_mysql.sh"]
+CMD ["/run.sh"]
