@@ -3,10 +3,10 @@
  *
  *  filename    : MemberRoleChange.php
  *  last change : 2003-04-03
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Lewis Franklin
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -76,23 +76,23 @@ require "Include/Header.php"
 
 ?>
 
-<form method="post" action="MemberRoleChange.php?GroupID=<?php echo $iGroupID ?>&PersonID=<?php echo $iPersonID ?>&Return=<?php echo $iReturn ?>">
+<form method="post" action="MemberRoleChange.php?GroupID=<?= $iGroupID ?>&PersonID=<?= $iPersonID ?>&Return=<?= $iReturn ?>">
 
 <table cellpadding="4">
 	<tr>
-		<td align="right"><b><?php echo gettext("Group Name:"); ?></b></td>
+		<td align="right"><b><?= gettext("Group Name:") ?></b></td>
 		<td><?php echo $grp_Name ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?php echo gettext("Member's Name:"); ?></b></td>
+		<td align="right"><b><?= gettext("Member's Name:") ?></b></td>
 		<td><?php echo $per_LastName . ", " . $per_FirstName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?php echo gettext("Current Role:"); ?></b></td>
+		<td align="right"><b><?= gettext("Current Role:") ?></b></td>
 		<td><?php echo $sRoleName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?php echo gettext("New Role:"); ?></b></td>
+		<td align="right"><b><?= gettext("New Role:") ?></b></td>
 		<td>
 			<select name="NewRole">
 				<?php
@@ -120,17 +120,16 @@ require "Include/Header.php"
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<input type="submit" class="icButton" name="Submit" value="<?php echo gettext("Update"); ?>">
+			<input type="submit" class="btn" name="Submit" value="<?= gettext("Update") ?>">
 			<?php
 				if ($iReturn)
-					echo "&nbsp;&nbsp;<input type=\"button\" class=\"icButton\" name=\"Cancel\" value=\"" . gettext("Cancel") . "\" onclick=\"document.location='GroupView.php?GroupID=" . $iGroupID . "';\">";
+					echo "&nbsp;&nbsp;<input type=\"button\" class=\"btn\" name=\"Cancel\" value=\"" . gettext("Cancel") . "\" onclick=\"document.location='GroupView.php?GroupID=" . $iGroupID . "';\">";
 				else
-					echo "&nbsp;&nbsp;<input type=\"button\" class=\"icButton\" name=\"Cancel\" value=\"" . gettext("Cancel") . "\" onclick=\"document.location='PersonView.php?PersonID=" . $iPersonID . "';\">";
+					echo "&nbsp;&nbsp;<input type=\"button\" class=\"btn\" name=\"Cancel\" value=\"" . gettext("Cancel") . "\" onclick=\"document.location='PersonView.php?PersonID=" . $iPersonID . "';\">";
 			?>
 		</td>
 	</tr>
 </table>
 </form>
-<?php
-require "Include/Footer.php";
-?>
+
+<?php require "Include/Footer.php" ?>

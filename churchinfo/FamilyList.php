@@ -11,14 +11,6 @@ require "Include/Header.php";
 
 ?>
 
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
-<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/tabletools/2.2.3/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="//cdn.datatables.net/tabletools/2.2.3/js/dataTables.tableTools.min.js"></script>
-
 <div class="pull-right">
     <a class="btn btn-success" role="button" href="FamilyEditor.php"> <span class="fa fa-plus" aria-hidden="true"></span> Add Family</a>
 </div>
@@ -45,19 +37,19 @@ require "Include/Header.php";
                 extract($aRow);
             ?>
                 <tr>
-                    <td><a href='FamilyView.php?FamilyID=<?php echo $fam_ID?>'>
+                    <td><a href='FamilyView.php?FamilyID=<?= $fam_ID ?>'>
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                         </span>
                         </a>
-                        <a href='FamilyEditor.php?FamilyID=<?php echo $fam_ID?>'>
+                        <a href='FamilyEditor.php?FamilyID=<?= $fam_ID ?>'>
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                         </span>
                         </a>
-                        <?php echo $fam_Name ?></td>
+                        <?= $fam_Name ?></td>
                 <?php
                 echo "<td>".$fam_HomePhone."</td>";
                 echo "<td>".$fam_Address1." ".$fam_Address2." </td>";
@@ -73,7 +65,7 @@ require "Include/Header.php";
     </div>
 </div>
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
     $(document).ready(function() {
         $('#families').dataTable( {
             "dom": 'T<"clear">lfrtip',
@@ -87,6 +79,3 @@ require "Include/Header.php";
 <?php
 require "Include/Footer.php";
 ?>
-
-
-

@@ -24,7 +24,7 @@ The VM's Host only interface IP address is: 192.168.59.103
 
 	curl http://{dockerip}/
 	
-Default login are `admin/churchinfoadmin`	
+Default login are `admin/changeme`	
 
 Connecting to the bundled MySQL server from outside the container
 -----------------------------------------------------------------

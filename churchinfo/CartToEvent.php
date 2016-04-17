@@ -5,12 +5,12 @@
  *  last change : 2005-09-09
  *  description : Add cart records to an event
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *  Copyright 2005 Todd Pillars
  *  Copyright 2012 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -24,8 +24,8 @@ require "Include/Functions.php";
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups'])
 {
-        Redirect("Menu.php");
-        exit;
+    Redirect("Menu.php");
+    exit;
 }
 
 // Was the form submitted?
@@ -41,7 +41,7 @@ if (isset($_POST["Submit"]) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
             $sSQL = "INSERT IGNORE INTO event_attend (event_id, person_id)";
             $sSQL .= " VALUES ('".$iEventID."','".$_SESSION['aPeopleCart'][$element['key']]."')";
             RunQuery($sSQL);
-        $iCount++;
+            $iCount++;
         }
 
         $sGlobalMessage = $iCount . " records(s) successfully added to selected Event.";
@@ -63,16 +63,17 @@ $sSQL = "SELECT * FROM events_event";
 $rsEvents = RunQuery($sSQL);
 
 ?>
-<p align="center"><?php echo gettext("Select the event to which you would like to add your cart:"); ?></p>
+<div class="box">
+<p align="center"><?= gettext("Select the event to which you would like to add your cart:") ?></p>
 <form name="CartToEvent" action="CartToEvent.php" method="POST">
 <table align="center">
         <?php if ($sGlobalMessage) { ?>
         <tr>
-          <td colspan="2"><?php echo $sGlobalMessage; ?></td>
+          <td colspan="2"><?= $sGlobalMessage ?></td>
         </tr>
         <?php } ?>
         <tr>
-                <td class="LabelColumn"><?php echo gettext("Select Event:"); ?></td>
+                <td class="LabelColumn"><?= gettext("Select Event:") ?></td>
                 <td class="TextColumn">
                         <?php
                         // Create the group select drop-down
@@ -88,16 +89,17 @@ $rsEvents = RunQuery($sSQL);
 </table>
 <p align="center">
 <BR>
-<input type="submit" name="Submit" value=<?php echo '"' . gettext("Add Cart to Event") . '"'; ?> class="icButton">
-<BR><BR>--<?php echo gettext("OR"); ?>--<BR><BR>
-<a href="AddEvent.php"><?php echo gettext("Add New Event"); ?></a>
+<input type="submit" name="Submit" value=<?= '"' . gettext("Add Cart to Event") . '"' ?> class="btn btn-primary">
+<BR><BR>--<?= gettext("OR") ?>--<BR><BR>
+<a href="EventEditor.php" class="btn btn-info"><?= gettext("Add New Event") ?></a>
 <BR><BR>
 </p>
 </form>
+</div>
 <?php
 }
 else
-        echo "<p align=\"center\" class=\"LargeText\">" . gettext("Your cart is empty!") . "</p>";
+    echo "<p align=\"center\" class=\"callout callout-warning\">" . gettext("Your cart is empty!") . "</p>";
 
 require "Include/Footer.php";
 ?>

@@ -2,14 +2,14 @@
 /*******************************************************************************
  *
  *  filename    : UserPasswordChange.php
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
  *  			  Copyright 2004-2012 Michael Wilt
  *
  *  LICENSE:
  *  (C) Free Software Foundation, Inc.
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
@@ -193,36 +193,53 @@ if (isset($_POST["Submit"]))
 $sPageTitle = gettext("User Password Change");
 require "Include/Header.php";
 
-if ($_SESSION['bNeedPasswordChange']) echo "<p>" . gettext("Your account record indicates that you need to change your password before proceding.") . "</p>";
-
-if (!$bAdminOtherUser)
-    echo "<p>" . gettext("Enter your current password, then your new password twice.  Passwords must be at least") . ' ' . $sMinPasswordLength . ' ' . gettext("characters in length.") . "</p>";
-else
-    echo "<p>" . gettext("Enter a new password for this user.") . "</p>";
-?>
-
-<form method="post" action="UserPasswordChange.php?<?php echo "PersonID=" . $iPersonID ?>&FromUserList=<?php echo (array_key_exists ("FromUserList", $_GET) ? $_GET["FromUserList"] : ""); ?>">
-<table cellpadding="4">
-<?php if (!$bAdminOtherUser) { ?>
-    <tr>
-        <td class="LabelColumn"><b><?php echo gettext("Old Password:"); ?></b></td>
-        <td class="TextColumn"><input type="password" name="OldPassword" value="<?php echo $sOldPassword ?>"><?php echo $sOldPasswordError ?></td>
-    </tr>
+if ($_SESSION['bNeedPasswordChange']) { ?>
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+        <?= gettext("Your account record indicates that you need to change your password before proceding.") ?>
+        </div>
 <?php } ?>
-    <tr>
-        <td class="LabelColumn"><b><?php echo gettext("New Password:"); ?></b></td>
-        <td class="TextColumn"><input type="password" name="NewPassword1" value="<?php echo $sNewPassword1 ?>"></td>
-    </tr>
-    <tr>
-        <td class="LabelColumn"><b><?php echo gettext("Confirm New Password:"); ?></td>
-        <td class="TextColumnWithBottomBorder"><input type="password" name="NewPassword2" value="<?php echo $sNewPassword2 ?>"><?php echo $sNewPasswordError ?></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center"><input type="submit" class="icButton" name="Submit" value="<?php echo gettext("Save"); ?>"></td>
-    </tr>
-</table>
-</form>
 
-<?php
-require "Include/Footer.php";
-?>
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-8">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <?php if (!$bAdminOtherUser)
+                    echo "<p>" . gettext("Enter your current password, then your new password twice.  Passwords must be at least") . ' ' . $sMinPasswordLength . ' ' . gettext("characters in length.") . "</p>";
+                else
+                    echo "<p>" . gettext("Enter a new password for this user.") . "</p>";
+                ?>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form method="post" action="UserPasswordChange.php?<?= "PersonID=" . $iPersonID ?>&FromUserList=<?= array_key_exists ("FromUserList", $_GET) ? $_GET["FromUserList"] : '' ?>">
+                <div class="box-body">
+                    <?php if (!$bAdminOtherUser) { ?>
+                    <div class="form-group">
+                        <label for="OldPassword"><?= gettext("Old Password:") ?></label>
+                        <input type="password" name="OldPassword" id="OldPassword" class="form-control" value="<?= $sOldPassword ?>" autofocus><?= $sOldPasswordError ?>
+                    </div>
+                    <?php } ?>
+                    <div class="form-group">
+                        <label for="NewPassword1"><?= gettext("New Password:") ?></label>
+                        <input type="password" name="NewPassword1" id="NewPassword1" class="form-control" value="<?= $sNewPassword1 ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="NewPassword2"><?= gettext("Confirm New Password:") ?></label>
+                        <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control" value="<?= $sNewPassword2 ?>"><?= $sNewPasswordError ?>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext("Save") ?>">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php require "Include/Footer.php" ?>

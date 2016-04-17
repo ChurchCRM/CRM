@@ -9,7 +9,7 @@
 *  LICENSE:
 *  (C) Free Software Foundation, Inc.
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 3 of the License, or
 *  (at your option) any later version.
@@ -76,6 +76,10 @@ if (!empty($_POST["classList"])) {
         $inClassList .= ")";
         $notInClassList .= ")";
     }
+
+    // all classes were selected. this should behave as if no filter classes were specified
+    if ($notInClassList == '()')
+        unset($classList);
 }
 
 
@@ -124,7 +128,7 @@ if ($classList[0]) {
         $criteria .= " AND" . $q;
     } else {
         $criteria = $q;
-    }   
+    }
 }
 
 if (!$criteria) {
@@ -234,7 +238,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     }
 
     // Get pledges and payments for this family and this fiscal year
-    $sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
+    $sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg
              LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
              WHERE plg_FamID = " . $fam_ID . " AND plg_FYID = " . $iFYID . $sSQLFundCriteria . " ORDER BY plg_date";
 
@@ -273,14 +277,14 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     $curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fundOnlyString, $iFYID);
 
     // Get pledges only
-    $sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
+    $sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg
              LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
              WHERE plg_FamID = " . $fam_ID . " AND plg_FYID = " . $iFYID . $sSQLFundCriteria . " AND plg_PledgeOrPayment = 'Pledge' ORDER BY plg_date";
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPledges = 0;
     $fundPledgeTotal = array ();
-    
+
     $summaryDateX = $pdf->leftX;
     $summaryFundX = 45;
     $summaryAmountX = 80;
@@ -313,13 +317,13 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
         $totalAmount = 0;
         $cnt = 0;
-        
+
         while ($aRow = mysql_fetch_array($rsPledges)) {
             extract ($aRow);
-        
+
             if (strlen($fundName) > 19)
                 $fundName = substr($fundName,0,18) . "...";
-            
+
             $pdf->SetFont('Times','', 10);
 
             $pdf->WriteAtCell ($summaryDateX, $curY, $summaryDateWid, $plg_date);
@@ -350,7 +354,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     }
 
     // Get payments only
-    $sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg 
+    $sSQL = "SELECT *, b.fun_Name AS fundName FROM pledge_plg
              LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
              WHERE plg_FamID = " . $fam_ID . " AND plg_FYID = " . $iFYID . $sSQLFundCriteria . " AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date";
     $rsPledges = RunQuery($sSQL);
@@ -397,7 +401,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
         $cnt = 0;
         while ($aRow = mysql_fetch_array($rsPledges)) {
             extract ($aRow);
-            
+
             // Format Data
             if (strlen($plg_CheckNo) > 8)
                 $plg_CheckNo = "...".substr($plg_CheckNo,-8,8);
@@ -405,7 +409,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
                 $fundName = substr($fundName,0,18) . "...";
             if (strlen($plg_comment) > 30)
                 $plg_comment = substr($plg_comment,0,30) . "...";
-            
+
             $pdf->SetFont('Times','', 10);
 
             $pdf->WriteAtCell ($summaryDateX, $curY, $summaryDateWid, $plg_date);
@@ -426,7 +430,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	        $cnt += 1;
 
             $curY += $summaryIntervalY;
-            
+
             if ($curY > 220) {
                 $pdf->AddPage ();
                 $curY = 20;
@@ -473,5 +477,5 @@ if ($iPDFOutputType == 1) {
 } else {
     $pdf->Output();
 }
-    
+
 ?>

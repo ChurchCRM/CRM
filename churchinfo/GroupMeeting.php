@@ -3,10 +3,10 @@
  *
  *  filename    : GroupMeeting.php
  *  last change : 2004-11-7
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003, 2004 Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -29,8 +29,8 @@ $sPageTitle = gettext("Schedule Group Meeting");
 if (isset($_POST["Submit"]))
 {
 	$dDate = FilterInput($_POST["Date"]);
-	$iHour = FilterInput($_POST["Hour"]);
-	$iMinutes = FilterInput($_POST["Minutes"]);
+	$iHour = FilterInput($_POST["hour"]);
+	$iMinutes = FilterInput($_POST["minute"]);
 	$nNotifyAhead = FilterInput($_POST["NotifyAhead"]);
 	$tName = FilterInput($_POST["Name"]);
 	$tDescription = FilterInput($_POST["Description"]);
@@ -153,92 +153,57 @@ require "Include/Header.php";
 
 ?>
 
-<p>Important note: this form may be used to schedule a WebCalendar meeting.  Once the 
+<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;&nbsp;Important note: this form may be used to schedule a WebCalendar meeting.  Once the 
 meeting is scheduled any changes must be made within WebCalendar.  All members of
-this group will be added to the meeting as external users of WebCalendar.</p>
+this group will be added to the meeting as external users of WebCalendar.
+</div>
+<div class="box box-body">
+<form method="post" action="GroupMeeting.php?<?= "GroupID=" . $iGroupID . "&linkBack=" . $linkBack . "&Name=" . $tName ?>" name="GroupMeeting">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-2">
+            <label for="Name"><?= gettext("Meeting name") ?></label>
+            <input class="form-control input-small" type="text" name="Name" id="Name" value="<?= $tName ?>">
+            </div>
+      </div> <p> </p> <div class="row">
+            <div class="col-xs-2">
+            <label for="Description"><?= gettext("Meeting description") ?></label>
+            <input class="form-control input-small" type="text" name="Description" id="Description" value="<?= $tDescription ?>">
+            </div>
+      </div> <p> </p> <div class="row">
+            <div class="col-xs-2">
+            <label for="Date"><?= gettext("Date") ?></label>
+            <input class="form-control input-small" type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11"><font color="red"><?php echo $sDateError ?></font>
+            </div>
+            <div class="col-xs-2">
+            <label for="Time"><?= gettext("Time") ?></label>
+            <div class="input-group bootstrap-timepicker timepicker">
+                <input name="Time" id="Time" type="text" class="form-control input-small">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+            </div>
+            </div>
+      </div> <p> </p> <div class="row">
+            <div class="col-xs-2">
+            <?= gettext("Duration (hours)") ?>
+            <input class="form-control input-small" type="text" name="Duration" id="Duration" value="<?= $nDuration ?>">
 
-<form method="post" action="GroupMeeting.php?<?php echo "GroupID=" . $iGroupID . "&linkBack=" . $linkBack . "&Name=" . $tName; ?>" name="GroupMeeting">
+                            <?= gettext("Notify ahead (days)") ?>
+                            <input type="text" name="NotifyAhead" id="NotifyAhead" value="<?= $nNotifyAhead ?>">
+            </div>
+      </div> <p> </p> <div class="row">
+            <div class="col-xs-2">
+                <input type="submit" class="btn btn-primary" value="<?= gettext("Submit") ?>" name="Submit">
+            </div>
+        </div>
+    </div>
+<form>
 
-<table cellpadding="3" align="center">
+</div>
+<script>
+$("#Time").timepicker({showMeridian: false});
+$("#Date").datepicker({format:'yyyy-mm-dd'});
+</script>
 
-	<tr>
-		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Submit"); ?>" name="Submit">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
-		</td>
-	</tr>
-
-	<tr>
-		<td>
-		<table cellpadding="3">
-			<tr>
-				<td class="LabelColumn"><?php echo gettext("Meeting name"); ?></td>
-				<td class="TextColumn"><input type="text" name="Name" id="Name" value="<?php echo $tName; ?>"></td>
-			</tr>
-	
-			<tr>
-				<td class="LabelColumn"><?php echo gettext("Meeting description"); ?></td>
-				<td class="TextColumn"><input type="text" name="Description" id="Description" value="<?php echo $tDescription; ?>"></td>
-			</tr>
-	
-			<tr>
-				<td class="LabelColumn"><?php addToolTip("Format: YYYY-MM-DD<br>or enter the date by clicking on the calendar icon to the right."); ?><?php echo gettext("Date"); ?></td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?php echo $dDate; ?>" maxlength="10" id="sel1" size="11">&nbsp;<input type="image" onclick="return showCalendar('sel1', 'y-mm-dd');" src="Images/calendar.gif"> <span class="SmallText"><?php echo gettext("[format: YYYY-MM-DD]"); ?></span><font color="red"><?php echo $sDateError ?></font></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?php echo gettext("Time"); ?></td>
-				<td class="TextColumnWithBottomBorder">
-					<select name="Hour">
-						<option value="0" <?php if ($iHour == 0) { echo "selected"; } ?>><?php echo gettext("Midnight"); ?></option>
-						<option value="1" <?php if ($iHour == 1) { echo "selected"; } ?>><?php echo gettext("1"); ?></option>
-						<option value="2" <?php if ($iHour == 2) { echo "selected"; } ?>><?php echo gettext("2"); ?></option>
-						<option value="3" <?php if ($iHour == 3) { echo "selected"; } ?>><?php echo gettext("3"); ?></option>
-						<option value="4" <?php if ($iHour == 4) { echo "selected"; } ?>><?php echo gettext("4"); ?></option>
-						<option value="5" <?php if ($iHour == 5) { echo "selected"; } ?>><?php echo gettext("5"); ?></option>
-						<option value="6" <?php if ($iHour == 6) { echo "selected"; } ?>><?php echo gettext("6"); ?></option>
-						<option value="7" <?php if ($iHour == 7) { echo "selected"; } ?>><?php echo gettext("7"); ?></option>
-						<option value="8" <?php if ($iHour == 8) { echo "selected"; } ?>><?php echo gettext("8"); ?></option>
-						<option value="9" <?php if ($iHour == 9) { echo "selected"; } ?>><?php echo gettext("9"); ?></option>
-						<option value="10" <?php if ($iHour == 10) { echo "selected"; } ?>><?php echo gettext("10"); ?></option>
-						<option value="11" <?php if ($iHour == 11) { echo "selected"; } ?>><?php echo gettext("11"); ?></option>
-						<option value="12" <?php if ($iHour == 12) { echo "selected"; } ?>><?php echo gettext("Noon"); ?></option>
-						<option value="13" <?php if ($iHour == 13) { echo "selected"; } ?>><?php echo gettext("1"); ?></option>
-						<option value="14" <?php if ($iHour == 14) { echo "selected"; } ?>><?php echo gettext("2"); ?></option>
-						<option value="15" <?php if ($iHour == 15) { echo "selected"; } ?>><?php echo gettext("3"); ?></option>
-						<option value="16" <?php if ($iHour == 16) { echo "selected"; } ?>><?php echo gettext("4"); ?></option>
-						<option value="17" <?php if ($iHour == 17) { echo "selected"; } ?>><?php echo gettext("5"); ?></option>
-						<option value="18" <?php if ($iHour == 18) { echo "selected"; } ?>><?php echo gettext("6"); ?></option>
-						<option value="19" <?php if ($iHour == 19) { echo "selected"; } ?>><?php echo gettext("7"); ?></option>
-						<option value="20" <?php if ($iHour == 20) { echo "selected"; } ?>><?php echo gettext("8"); ?></option>
-						<option value="21" <?php if ($iHour == 21) { echo "selected"; } ?>><?php echo gettext("9"); ?></option>
-						<option value="22" <?php if ($iHour == 22) { echo "selected"; } ?>><?php echo gettext("10"); ?></option>
-						<option value="23" <?php if ($iHour == 23) { echo "selected"; } ?>><?php echo gettext("11"); ?></option>
-					</select>
-					<select name="Minutes">
-						<option value="00" <?php if ($iMinutes == 0) { echo "selected"; } ?>><?php echo gettext("00"); ?></option>
-						<option value="15" <?php if ($iMinutes == 15) { echo "selected"; } ?>><?php echo gettext("15"); ?></option>
-						<option value="30" <?php if ($iMinutes == 30) { echo "selected"; } ?>><?php echo gettext("30"); ?></option>
-						<option value="45" <?php if ($iMinutes == 45) { echo "selected"; } ?>><?php echo gettext("45"); ?></option>
-					</select>
-				</td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?php echo gettext("Duration (hours)"); ?></td>
-				<td class="TextColumn"><input type="text" name="Duration" id="Duration" value="<?php echo $nDuration; ?>"></td>
-			</tr>
-	
-			<tr>
-				<td class="LabelColumn"><?php echo gettext("Notify ahead (days)"); ?></td>
-				<td class="TextColumn"><input type="text" name="NotifyAhead" id="NotifyAhead" value="<?php echo $nNotifyAhead; ?>"></td>
-			</tr>
-	
-		</table>
-		</td>
-	</form>
-</table>
-
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

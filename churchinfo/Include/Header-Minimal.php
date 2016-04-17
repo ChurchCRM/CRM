@@ -5,10 +5,10 @@
  *  last change : 2003-05-29
  *  description : page header (Bare minimum, not for use with Footer.php)
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -21,9 +21,10 @@
 <html>
 
 <head>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="Include/<?php echo $_SESSION['sStyle']; ?>">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+  <?php require 'Header-HTML-Scripts.php'; ?>
 </head>
 
 <body>

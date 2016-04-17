@@ -5,6 +5,26 @@
 *.iml
 ## Directory-based project format:
 .idea/
+
 ## File-based project format:
 *.ipr
 *.iws
+
+#Exclude composer vendor folders
+vendor
+composer.lock
+churchinfo/vendor/bin
+churchinfo/composer.lock
+churchinfo/vendor/composer
+
+# Uploaded Images
+churchinfo/Images/Family/thumbnails/
+churchinfo/Images/Person/thumbnails/
+
+# SASS
+.sass-cache
+
+# Configuration files with passwords
+churchinfo/Include/Config.php
+churchinfo/mysql/database_setup_and_install.sh
+

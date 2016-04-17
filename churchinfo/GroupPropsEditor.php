@@ -3,13 +3,13 @@
  *
  *  filename    : GroupPropsEditor.php
  *  last change : 2013-02-07
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
  *                Copyright 2013 Michael Wilt
  *
  *  function    : Editor for the special properties of a group member
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -128,9 +128,9 @@ if (mysql_num_rows($rsPropList) == 0)
 {
 ?>
 <form>
-<h3><?php echo gettext("This group currently has no properties!  You can add them in the Group Editor."); ?></h3>
+<h3><?= gettext("This group currently has no properties!  You can add them in the Group Editor.") ?></h3>
 <BR>
-<input type="button" class="icButton" <?php echo 'value="' . gettext("Return to Person Record") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?php echo $iPersonID; ?>';">
+<input type="button" class="btn" value="<?= gettext("Return to Person Record") ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
 </form>
 <?php
 } else {
@@ -140,14 +140,14 @@ echo "<h2>" . gettext("Editing") . " <i>" . $grp_Name . "</i> " . gettext("data 
 // Construct the form
 
 ?>
-	<form method="post" action="GroupPropsEditor.php?<?php echo "PersonID=" . $iPersonID . "&GroupID=" . $iGroupID; ?>" name="GroupPropEditor">
+	<form method="post" action="GroupPropsEditor.php?<?= "PersonID=" . $iPersonID . "&GroupID=" . $iGroupID ?>" name="GroupPropEditor">
 
 	<table cellpadding="3">
 		<tr>
 			<td align="center" colspan="3">
-			<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupPropSubmit">
+			<input type="submit" class="btn" value="<?= gettext("Save") ?>" Name="GroupPropSubmit">
 			&nbsp;
-			<input type="button" class="icButton" <?php echo 'value="' . gettext("Cancel") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?php echo $iPersonID; ?>';">
+			<input type="button" class="btn" value="<?= gettext("Cancel") ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
 			<br><br>
 			</td>
 		</tr>
@@ -163,7 +163,7 @@ echo "<h2>" . gettext("Editing") . " <i>" . $grp_Name . "</i> " . gettext("data 
 
 		?>
 		<tr>
-			<td class="LabelColumn"><?php echo $prop_Name; ?></td>
+			<td class="LabelColumn"><?= $prop_Name ?></td>
 			<td class="TextColumn">
 
 			<?php
@@ -177,16 +177,16 @@ echo "<h2>" . gettext("Editing") . " <i>" . $grp_Name . "</i> " . gettext("data 
 			if (array_key_exists ($prop_Field, $aPropErrors)) echo "<span style=\"color: red; \">" . $aPropErrors[$prop_Field] . "</span>";
 			?></td>
 
-			<td class="TextColumn"><?php echo $prop_Description; ?></td>
+			<td class="TextColumn"><?= $prop_Description ?></td>
 		</tr>
 	<?php } ?>
 
 		<tr>
 			<td align="center" colspan="3">
 			<br><br>
-			<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save") . '"'; ?> Name="GroupPropSubmit">
+			<input type="submit" class="btn" value="<?= gettext("Save") ?>" Name="GroupPropSubmit">
 			&nbsp;
-			<input type="button" class="icButton" <?php echo 'value="' . gettext("Cancel") . '"'; ?> Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?php echo $iPersonID; ?>';">
+			<input type="button" class="btn" value="<?=  gettext("Cancel") ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
 			</td>
 		</tr>
 	</table>

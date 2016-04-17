@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : GeoPage.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  copyright   : Copyright 2004-2005 Michael Wilt
 *
 *  Additional Contributors:
@@ -11,7 +11,7 @@
 *
 *  Copyright Contributors
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -215,16 +215,13 @@ if (isset($_POST["DataFile"]))
 	exit;
 }
 
-if (isset($_POST["UpdateAllFamilies"]))
-{
-	redirect ("UpdateAllLatLon.php");
-}
-
 require "Include/Header.php";
-
-echo '<form method="POST" action="GeoPage.php" name="GeoPage">';
-echo '<table>';
-
+?>
+<div class="box">
+	<div class="box-body">
+<form method="POST" action="GeoPage.php" name="GeoPage">
+<table class="table">
+<?
 //Get Families for the list
 $sSQL = "SELECT * FROM family_fam ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
@@ -276,13 +273,20 @@ echo "</tr>";
 
 echo '<tr>';
 echo '<td></td>';
-echo '<td><input type="submit" class="icButton" name="DataFile" value="' . gettext("Make Data File") . '"></td>';
-echo '<td><input type="submit" class="icButton" name="UpdateAllFamilies" value="' . gettext("Update All Family Coordinates") . '"></td>';
-echo "</tr></table>\n";
-
-echo "<CENTER><br><br><h3>Show neighbors with these classifications.</h3>";
-echo '<table>';
-echo '<tr><td><br></td><td><input type="submit" class="icButton" name="FindNeighbors" value="' . gettext("Show Neighbors") . '"></td></tr>'."\n";
+echo '<td><input type="submit" class="btn" name="DataFile" value="' . gettext("Make Data File") . '"></td>';
+?>
+        </tr>
+    </table>
+    </div>
+</div>
+<div class="box">
+    <div class="box-header box-info">
+        <h3>Show neighbors with these classifications.</h3>
+    </div>
+    <div class="box-body">
+<table class="table">
+<?
+echo '<tr><td><br></td><td><input type="submit" class="btn" name="FindNeighbors" value="' . gettext("Show Neighbors") . '"></td></tr>'."\n";
 
 foreach ($aClassificationName as $key => $value) {
     echo '<tr><td class="LabelColumn">'.$value.'</td>';
@@ -385,11 +389,12 @@ if (    $iFamily != 0 &&
     $sPersonIDList = implode(",", $aPersonIDs);
     echo '<input type="hidden" name="PersonIDList" value="'.$sPersonIDList.'">';
     echo '<br><center>';
-    echo '<input name="AddAllToCart" type="submit" class="icButton" value="' . gettext("Add to Cart") . '">&nbsp';
-    echo '<input name="IntersectCart" type="submit" class="icButton" value="' . gettext("Intersect with Cart") . '">&nbsp';
-    echo '<input name="RemoveFromCart" type="submit" class="icButton" value="' . gettext("Remove from Cart") . '">';
+    echo '<input name="AddAllToCart" type="submit" class="btn" value="' . gettext("Add to Cart") . '">&nbsp';
+    echo '<input name="IntersectCart" type="submit" class="btn" value="' . gettext("Intersect with Cart") . '">&nbsp';
+    echo '<input name="RemoveFromCart" type="submit" class="btn" value="' . gettext("Remove from Cart") . '">';
     echo '</center><br>';
 
 }
-echo '</form>';
+echo '</form></div></div>';
+require 'Include/Footer.php';
 ?>

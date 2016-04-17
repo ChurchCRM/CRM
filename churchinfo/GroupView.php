@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : GroupView.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
 *
 *  Additional Contributors:
@@ -11,7 +11,7 @@
 *
 *  Copyright Contributors
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -23,15 +23,19 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'Service/GroupService.php';
 
 //Set the page title
 $sPageTitle = gettext('Group View');
 
 //Get the GroupID out of the querystring
 $iGroupID = FilterInput($_GET['GroupID'],'int');
+$personService = new PersonService();
+$groupService = new GroupService();
+
 
 //Do they want to add this group to their cart?
-if (array_key_exists ('Action', $_GET) and $_GET['Action'] == 'AddGroupToCart')
+if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'AddGroupToCart')
 {
     //Get all the members of this group
     $sSQL = 'SELECT per_ID FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = ' . $iGroupID;
@@ -95,21 +99,94 @@ $sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER B
 $rsPropList = RunQuery($sSQL);
 $numRows = mysql_num_rows($rsPropList);
 
-require 'Include/Header.php';
+require 'Include/Header.php'; ?>
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Group Functions</h3>
+    </div>
+    <div class="box-body">
+
+<?php
 
 if ($_SESSION['bManageGroups'])
 {
-    echo '<a class="SmallText" href="GroupEditor.php?GroupID=' . $grp_ID . '">' . gettext('Edit this Group') . '</a> | ';
-    echo '<a class="SmallText" href="GroupDelete.php?GroupID=' . $grp_ID . '">' . gettext('Delete this Group') . '</a> | ';
+    echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $grp_ID . '"><i class="fa fa-pencil"></i>' . gettext('Edit this Group') . '</a>';
+    echo '<a class="btn btn-app" data-toggle="modal" data-target="#deleteGroup"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</a>';
+    ?>
+    <!-- GROUP DELETE MODAL-->
+     <div class="modal fade" id="deleteGroup" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="upload-Image-label"><?= gettext("Confirm Delete Group") ?></h4>
+                        </div>
+                        <div class="modal-body">
+                        <span style="color: red">
+                           <?= gettext("Please confirm deletion of this group record:") ?>
+
+                             <p class="ShadedBox">
+                                <?= $grp_Name ?>
+                            </p>
+
+                             <p class="LargeError">
+                                <?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>
+                            </p>
+                            <?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?>
+                            <br><br>
+                            <span style="color:black">I Understand &nbsp;<input type="checkbox" name="chkClear"id="chkClear" ></span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button name="deleteGroupButton" id="deleteGroupButton" type="button" class="btn btn-danger" disabled><?= gettext("Delete Group") ?></button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    <!--END GROUP DELETE MODAL-->
+
+    <!-- MEMBER ROLE MODAL-->
+     <div class="modal fade" id="changeMembership" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="upload-Image-label">Change Member Role</h4>
+                        </div>
+                        <div class="modal-body">
+                        <span style="color: red"><?= gettext("Please select target role for member:") ?></span>
+                        <input type="hidden" id="changeingMemberID">
+                        <p class="ShadedBox" id="changingMemberName"></p>
+                        <select name="newRoleSelection" id="newRoleSelection">
+                        <?php foreach ($groupService->getGroupRoles($iGroupID) as $role)
+                        {
+                            echo '<option value="'.$role['lst_OptionID'].'">'.$role['lst_OptionName'].'</option>';
+                        }
+                        ?>
+                        </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button name="confirmMembershipChange" id="confirmMembershipChange" type="button" class="btn btn-danger"><?= gettext("Change Membership") ?></button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    <!--END MEMBER ROLE MODAL-->
+
+
+
+    <?php
     if ($grp_hasSpecialProps == 'true')
     {
-        echo '<a class="SmallText" href="GroupPropsFormEditor.php?GroupID=' . $grp_ID . '">' . gettext('Edit Group-Specific Properties Form') . '</a> | ';
+        echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID=' . $grp_ID . '"><i class="fa fa-list-alt"></i>' . gettext('Edit Group-Specific Properties Form') . '</a>';
     }
 }
-echo '<a class="SmallText" href="GroupView.php?Action=AddGroupToCart&amp;GroupID=' . $grp_ID . '">' . gettext('Add Group Members to Cart') . '</a> | ';
-echo '<a class="SmallText" href="GroupMeeting.php?GroupID=' . $grp_ID . '&amp;Name=' . $grp_Name . '&amp;linkBack=GroupView.php?GroupID=' . $grp_ID . '">' . gettext('Schedule a meeting') . '</a> | ';
+echo '<a class="btn btn-app" href="GroupView.php?Action=AddGroupToCart&amp;GroupID=' . $grp_ID . '"><i class="fa fa-users"></i>' . gettext('Add Group Members to Cart') . '</a>';
+echo '<a class="btn btn-app" href="GroupMeeting.php?GroupID=' . $grp_ID . '&amp;Name=' . $grp_Name . '&amp;linkBack=GroupView.php?GroupID=' . $grp_ID . '"><i class="fa fa-calendar-o"></i>' . gettext('Schedule a meeting') . '</a>';
 
-echo '<a class="SmallText" href="MapUsingGoogle.php?GroupID=' . $grp_ID . '">' . gettext('Map this group') . '</a>';
+echo '<a class="btn btn-app" href="MapUsingGoogle.php?GroupID=' . $grp_ID . '"><i class="fa fa-map-marker"></i>' . gettext('Map this group') . '</a>';
 
 // Email Group link
 // Note: This will email entire group, even if a specific role is currently selected.
@@ -118,11 +195,11 @@ $sSQL = "SELECT per_Email, fam_Email
             LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
             LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
             LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
-        WHERE per_ID NOT IN 
-            (SELECT per_ID 
-                FROM person_per 
-                INNER JOIN record2property_r2p ON r2p_record_ID = per_ID 
-                INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not Email') 
+        WHERE per_ID NOT IN
+            (SELECT per_ID
+                FROM person_per
+                INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
+                INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not Email')
             AND p2g2r_grp_ID = " . $iGroupID;
 $rsEmailList = RunQuery($sSQL);
 $sEmailLink = '';
@@ -141,15 +218,15 @@ while (list ($per_Email, $fam_Email) = mysql_fetch_row($rsEmailList))
 if ($sEmailLink)
 {
     // Add default email if default email has been set and is not already in string
-    if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress' 
+    if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress'
                                && !stristr($sEmailLink, $sToEmailAddress))
         $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
     if ($bEmailMailto) { // Does user have permission to email groups
     // Display link
-    echo ' | <a class="SmallText" href="mailto:'. mb_substr($sEmailLink,0,-3) .'">'.gettext('Email Group').'</a>';
-    echo ' | <a class="SmallText" href="mailto:?bcc='. mb_substr($sEmailLink,0,-3) .'">'.gettext('Email (BCC)').'</a>';
+    echo '<a class="btn btn-app" href="mailto:'. mb_substr($sEmailLink,0,-3) .'"><i class="fa fa-send-o"></i>'.gettext('Email Group').'</a>';
+    echo '<a class="btn btn-app" href="mailto:?bcc='. mb_substr($sEmailLink,0,-3) .'"><i class="fa fa-send"></i>'.gettext('Email (BCC)').'</a>';
     }
 }
 // Group Text Message Comma Delimited - added by RSBC
@@ -159,11 +236,11 @@ $sSQL = "SELECT per_CellPhone, fam_CellPhone
             LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
             LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
             LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
-        WHERE per_ID NOT IN 
-            (SELECT per_ID 
-            FROM person_per 
-            INNER JOIN record2property_r2p ON r2p_record_ID = per_ID 
-            INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not SMS') 
+        WHERE per_ID NOT IN
+            (SELECT per_ID
+            FROM person_per
+            INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
+            INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not SMS')
         AND p2g2r_grp_ID = " . $iGroupID;
 $rsPhoneList = RunQuery($sSQL);
 $sPhoneLink = '';
@@ -185,29 +262,40 @@ if ($sPhoneLink)
     if ($bEmailMailto) { // Does user have permission to email groups
 
     // Display link
-    echo ' | <a class="SmallText" href="javascript:void(0)" onclick="allPhonesCommaD()">Text Group</a>';
+    echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa fa-mobile-phone"></i> Text Group</a>';
     echo '<script>function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "'. mb_substr($sPhoneLink,0,-2) .'")};</script>';
     }
 }
 
 ?>
-<BR><BR>
+</div>
+</div>
+
+
+
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Group Properties</h3>
+    </div>
+    <div class="box-body">
+
 <table border="0" width="100%" cellspacing="0" cellpadding="5">
 <tr>
     <td width="25%" valign="top" align="center">
         <div class="LightShadedBox">
-            <b class="LargeText"><?php echo $grp_Name; ?></b>
+            <b class="LargeText"><?= $grp_Name ?></b>
             <br>
-            <?php echo $grp_Description; ?>
+            <?= $grp_Description ?>
             <br><br>
             <table width="98%">
                 <tr>
                     <td align="center"><div class="TinyShadedBox"><font size="3">
-                    <?php echo gettext('Total Members:'); ?> <?php echo $iTotalMembers ?>
+                    <?= gettext('Total Members:') ?> <?= $iTotalMembers ?>
                     <br>
-                    <?php echo gettext('Type of Group:'); ?> <?php echo $sGroupType ?>
+                    <?= gettext('Type of Group:') ?> <?= $sGroupType ?>
                     <br>
-                    <?php echo gettext('Default Role:'); ?> <?php echo $sDefaultRole ?>
+                    <?= gettext('Default Role:') ?> <?= $sDefaultRole ?>
                     </font></div></td>
                 </tr>
             </table>
@@ -215,7 +303,7 @@ if ($sPhoneLink)
     </td>
     <td width="75%" valign="top" align="left">
 
-    <b><?php echo gettext('Group-Specific Properties:'); ?></b>
+    <b><?= gettext('Group-Specific Properties:') ?></b>
 
     <?php
     if ($grp_hasSpecialProps == 'true')
@@ -243,9 +331,9 @@ if ($sPhoneLink)
             ?>
             <table width="100%" cellpadding="2" cellspacing="0">
             <tr class="TableHeader">
-                <td><?php echo gettext('Type'); ?></td>
-                <td><?php echo gettext('Name'); ?></td>
-                <td><?php echo gettext('Description'); ?></td>
+                <td><?= gettext('Type') ?></td>
+                <td><?= gettext('Name') ?></td>
+                <td><?= gettext('Description') ?></td>
             </tr>
             <?php
 
@@ -282,9 +370,9 @@ if ($sPhoneLink)
         ?>
         <table width="100%" cellpadding="2" cellspacing="0">
         <tr class="TableHeader">
-        <td width="15%" valign="top"><b><?php echo gettext('Type'); ?></b>
-        <td valign="top"><b><?php echo gettext('Name'); ?></b>
-        <td valign="top"><b><?php echo gettext('Value'); ?></td>
+        <td width="15%" valign="top"><b><?= gettext('Type') ?></b>
+        <td valign="top"><b><?= gettext('Name') ?></b>
+        <td valign="top"><b><?= gettext('Value') ?></td>
         <?php
 
         if ($_SESSION['bManageGroups'])
@@ -359,8 +447,8 @@ if ($sPhoneLink)
     if ($_SESSION['bManageGroups'])
     {
         echo '<form method="post" action="PropertyAssign.php?GroupID=' . $iGroupID . '">';
-        echo '<p class="SmallText" align="center">';
-        echo '<span class="SmallText">' . gettext('Assign a New Property:') . '</span>';
+        echo '<p align="center">';
+        echo '<span>' . gettext('Assign a New Property:') . '</span>';
         echo '<select name="PropertyID">';
 
         while ($aRow = mysql_fetch_array($rsProperties))
@@ -376,21 +464,240 @@ if ($sPhoneLink)
         }
 
         echo '</select>';
-        echo '<input type="submit" class="icButton" value="' . gettext('Assign') . '" name="Submit" style="font-size: 8pt;">';
+        echo '<input type="submit" class="btn" value="' . gettext('Assign') . '" name="Submit" style="font-size: 8pt;">';
         echo '</p></form>';
     }
     else
     {
         echo '<br><br><br>';
     }
-
-echo '</td>';
-echo '</tr>';
-echo '</table>';
-echo '<b>' . gettext('Group Members:') . '</b>';
 ?>
 
-<iframe width="100%" height="475px" frameborder="0" align="left" marginheight="0" marginwidth="0" src="GroupMemberList.php?GroupID=<?php echo $iGroupID; ?>"></iframe>
-<?php
-require 'Include/Footer.php';
+
+
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title"><?= gettext('Group Members:') ?></h3>
+    </div>
+    <div class="box-body">
+<!-- START GROUP MEMBERS LISTING for group $iGroupID; -->
+<?
+
+$sSQL = "SELECT grp_RoleListID,grp_hasSpecialProps FROM group_grp WHERE grp_ID =" . $iGroupID;
+$aTemp = mysql_fetch_array(RunQuery($sSQL));
+$iRoleListID = $aTemp[0];
+
+
+
 ?>
+
+<table class="table" id="membersTable">
+</table>
+</form>
+<!-- END GROUP MEMBERS LISTING -->
+<form action="#" method="get" class="sidebar-form">
+    <label for="addGroupMember"><?= gettext("Add Group Member: ") ?></label>
+    <select class="form-control personSearch" name="addGroupMember" style="width:100%">
+    </select>
+</form>
+</div>
+</div>
+
+<script>
+var groupMembers = <?= json_encode($groupService->getGroupMembers($iGroupID)); ?>;
+console.log(groupMembers);
+var dataT = 0;
+
+$(document).ready(function() {
+
+    dataT = $("#membersTable").DataTable({
+    data:groupMembers,
+    columns: [
+       {
+            width: 'auto',
+            title: 'Name',
+            data: 'name',
+            render: function (data,type,full,meta) {
+                return '<img src="'+ full.photo + '" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID="' +full.per_ID+ '"><a target="_top" href="PersonView.php?PersonID='+full.per_ID+'">'+ full.displayName+'</a>';
+            }
+        },
+        {
+            width: 'auto',
+            title: 'Group Role',
+            data: 'groupRole',
+            render: function (data,type,full,meta) {
+                return data+'<button class="changeMembership" id="changeRole-'+full.per_ID+'"><i class="fa fa-pencil"></i></button>';
+            }
+        },
+        {
+            width: 'auto',
+            title: 'Address',
+            render: function (data,type,full,meta) {
+                return full.fam_Address1+" "+full.fam_Address2;
+            }
+        },
+        {
+            width: 'auto',
+            title: 'City',
+            data: 'fam_City'
+        },
+        {
+            width: 'auto',
+            title: 'State',
+            data: 'fam_State'
+        },
+        {
+            width: 'auto',
+            title: 'ZIP',
+            data: 'fam_Zip'
+        },
+        {
+            width: 'auto',
+            title: 'Cell Phone',
+            data: 'fam_CellPhone'
+        },
+        {
+            width: 'auto',
+            title: 'E-mail',
+            data: 'fam_Email'
+        },
+        {
+            width: 'auto',
+            title: 'Remove User from Group',
+            render: function (data,type,full,meta) {
+                return '<button type="button" class="btn btn-danger removeUserGroup" id="rguid-'+full.per_ID+'">Remove User from Group</button>';
+            }
+        }
+    ]
+    });
+    initHandlers();
+
+
+    $(".personSearch").select2({
+        minimumInputLength: 2,
+        ajax: {
+            url: function (params){
+                    return window.CRM.root + "/api/persons/search/"+params.term;
+            },
+            dataType: 'json',
+            delay: 250,
+            data: "",
+            processResults: function (data, params) {
+                var idKey = 1;
+                var results = new Array();
+                $.each(data, function (key,value) {
+                    var groupName = Object.keys(value)[0];
+                    var ckeys = value[groupName];
+                    var resultGroup = {
+                        id: key,
+                        text: groupName,
+                        children:[]
+                    };
+                    idKey++;
+                    var children = new Array();
+                    $.each(ckeys, function (ckey,cvalue) {
+                        var childObject = {
+                            id: idKey,
+                            objid:cvalue.id,
+                            text: cvalue.displayName,
+                            uri: cvalue.uri
+                        };
+                        idKey++;
+                        resultGroup.children.push(childObject);
+                    });
+                    results.push(resultGroup);
+                });
+                return {results: results};
+            },
+            cache: true
+        }
+    });
+    $(".personSearch").on("select2:select",function (e) {
+        $.ajax({
+            method: "POST",
+            url: window.CRM.root + "/api/groups/<?= $iGroupID ?>/adduser/"+e.params.data.objid,
+            dataType: "json"
+        }).done(function (data){
+           var person = data[0];
+           var node = dataT.row.add(person).node();
+           dataT.rows().invalidate().draw(true);
+           initHandlers();
+        });
+        $(".personSearch").select2("val", "");
+    });
+
+
+
+
+
+});
+
+
+
+function initHandlers()
+{
+     $("#chkClear").click(function(e){
+             $("#deleteGroupButton").prop("disabled",!e.target.checked);
+     });
+
+     $(".removeUserGroup").click(function(e) {
+        var userid=e.currentTarget.id.split("-")[1];
+        console.log(userid);
+        $.ajax({
+            method: "POST",
+            url: window.CRM.root + "/api/groups/<?= $iGroupID ?>/removeuser/"+userid,
+            dataType: "json"
+        }).done(function(data){
+            dataT.row(function(idx,data,node) { if  (data.per_ID == userid){return true;} } ).remove();
+            dataT.rows().invalidate().draw(true);
+            initHandlers();
+        });
+    });
+
+     $(".changeMembership").click(function(e){
+        var userid=e.currentTarget.id.split("-")[1];
+        console.log(userid);
+        $("#changeingMemberID").val(dataT.row(function(idx,data,node) { if  (data.per_ID == userid){return true;} }).data().per_ID);
+        $("#changingMemberName").text(dataT.row(function(idx,data,node) { if  (data.per_ID == userid){return true;} }).data().displayName);
+        $('#changeMembership').modal('show');
+
+    });
+
+    $("#confirmMembershipChange").click(function(e){
+        var changeingMemberID = $("#changeingMemberID").val();
+        $.ajax({
+            method: "POST",
+            url: window.CRM.root + "/api/groups/<?= $iGroupID ?>/userRole/" + changeingMemberID,
+            data: JSON.stringify({'roleID': $("#newRoleSelection option:selected").val()}),
+            dataType: "json"
+        }).done(function(data){
+            console.log(data);
+            dataT.row(function(idx,data,node) { if  (data.per_ID == changeingMemberID){return true;} }).data(data[0]);
+            dataT.rows().invalidate().draw(true);
+            initHandlers();
+            $('#changeMembership').modal('hide');
+        });
+    });
+
+    $("#deleteGroupButton").click(function(e){
+      console.log(e);
+      $.ajax({
+            method: "DELETE",
+            url: window.CRM.root + "/api/groups/<?= $iGroupID ?>",
+            dataType: "json"
+        }).done(function(data){
+            console.log(data);
+            if (data.success)
+                window.location.href = "GroupList.php";
+        });
+    });
+}
+</script>
+
+<?php require 'Include/Footer.php' ?>

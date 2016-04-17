@@ -6,11 +6,17 @@ DB_USER="root"
 DB_PASS="root"
 DB_HOST="localhost"
 
-CRM_DB_INSTALL_SCRIPT="/vagrant/mysql/install/Install.sql"
+CRM_DB_INSTALL_SCRIPT="/vagrant/churchinfo/mysql/install/Install.sql"
+CRM_DB_VAGRANT_SCRIPT="/vagrant/vagrant/vagrant.sql"
 CRM_DB_USER="churchcrm"
 CRM_DB_PASS="churchcrm"
 CRM_DB_NAME="churchcrm"
 
+echo "=========================================================="
+echo "====================   DB Setup  ========================="
+echo "=========================================================="
+sudo sed -i 's/^bind-address.*$/bind-address=0.0.0.0/g' /etc/mysql/my.cnf
+sudo service mysql restart
 RET=1
 while [[ RET -ne 0 ]]; do
     echo "Database: Waiting for confirmation of MySQL service startup"
@@ -25,8 +31,8 @@ sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "CREATE DATABASE $CRM_DB_NAME CHARACTER 
 
 echo "Database: created"
 
-sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "CREATE USER '$CRM_DB_USER'@'$DB_HOST' IDENTIFIED BY '$CRM_DB_PASS';"
-sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "GRANT ALL PRIVILEGES ON $CRM_DB_NAME.* TO '$CRM_DB_NAME'@'$DB_HOST' WITH GRANT OPTION;"
+sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "CREATE USER '$CRM_DB_USER'@'%' IDENTIFIED BY '$CRM_DB_PASS';"
+sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "GRANT ALL PRIVILEGES ON $CRM_DB_NAME.* TO '$CRM_DB_NAME'@'%' WITH GRANT OPTION;"
 
 echo "Database: user created with needed PRIVILEGES"
 
@@ -34,13 +40,40 @@ sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SC
 
 echo "Database: tables and metadata deployed"
 
+echo "=========================================================="
+echo "==============   Development DB Setup  ==================="
+echo "=========================================================="
 
-#=============================================================================
-# Help info
+sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_VAGRANT_SCRIPT
 
-echo "============================================================================="
-echo "======== Church CRM is now hosted @ http://192.168.33.10/      =============="
-echo "======== CRM User Name: Admin                                  =============="
-echo "======== 1st time login password for Admin: churchinfoadmin    =============="
-echo "======== churchinfo is active project source                   =============="
-echo "============================================================================="
+echo "Database: development seed data deployed"
+
+echo "=========================================================="
+echo "=================   MailCatcher Setup  ==================="
+echo "=========================================================="
+
+sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
+
+echo "=========================================================="
+echo "=========================================================="
+echo "===   .o88b. db   db db    db d8888b.  .o88b. db   db  ==="     
+echo "===  d8P  Y8 88   88 88    88 88  '8D d8P  Y8 88   88  ==="  
+echo "===  8P      88ooo88 88    88 88oobY' 8P      88ooo88  ==="  
+echo "===  8b      88~~~88 88    88 88'8b   8b      88~~~88  ===" 
+echo "===  Y8b  d8 88   88 88b  d88 88 '88. Y8b  d8 88   88  ===" 
+echo "===   'Y88P' YP   YP ~Y8888P' 88   YD  'Y88P' YP   YP  ===" 
+echo "===                                                    ==="
+echo "===                         .o88b. d8888b. .88b  d88.  ==="
+echo "===                        d8P  Y8 88  '8D 88'YbdP'88  ==="
+echo "===                        8P      88oobY' 88  88  88  ==="
+echo "===                        8b      88'8b   88  88  88  ==="
+echo "===                        Y8b  d8 88 '88. 88  88  88  ==="
+echo "===                         'Y88P' 88   YD YP  YP  YP  ==="                           
+echo "=========================================================="
+echo "=========================================================="
+echo "====== Visit  http://192.168.33.10/               ========"
+echo "====== login username            : admin          ========"
+echo "====== initial admin password    : changeme       ========"
+echo "=========================================================="
+echo "====== Dev Chat: https://gitter.im/ChurchCRM/CRM  ========"
+echo "=========================================================="

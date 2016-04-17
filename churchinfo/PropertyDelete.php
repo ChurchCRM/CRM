@@ -3,10 +3,10 @@
  *
  *  filename    : PropertyDelete.php
  *  last change : 2003-01-07
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -52,25 +52,23 @@ require "Include/Header.php";
 ?>
 
 <p>
-	<?php echo gettext("Please confirm deletion of this property:"); ?>
+	<?= gettext("Please confirm deletion of this property:") ?>
 </p>
 
 <p class="ShadedBox">
-	<?php echo $pro_Name; ?>
+	<?= $pro_Name ?>
 </p>
 
 <p>
-	<?php echo gettext("Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."); ?>
+	<?= gettext("Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records.") ?>
 </p>
 
 <p align="center">
-	<a href="PropertyDelete.php?Confirmed=Yes&PropertyID=<?php echo $iPropertyID ?>&Type=<?php echo $sType; ?>"><?php echo gettext("Yes, delete this record"); ?></a> <?php echo gettext("(this action cannot be undone)"); ?>
+	<a href="PropertyDelete.php?Confirmed=Yes&PropertyID=<?php echo $iPropertyID ?>&Type=<?= $sType ?>"><?= gettext("Yes, delete this record") ?></a> <?= gettext("(this action cannot be undone)") ?>
 	 |
-	<a href="PropertyList.php?Type=<?php echo $sType; ?>"><?php echo gettext("No, cancel this deletion"); ?></a>
+	<a href="PropertyList.php?Type=<?= $sType ?>"><?= gettext("No, cancel this deletion") ?></a>
 </p>
 
 </p>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

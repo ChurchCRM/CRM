@@ -3,10 +3,10 @@
  *
  *  filename    : BatchWinnerEntry.php
  *  last change : 2011-04-01
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2011 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -52,12 +52,12 @@ if (isset($_POST["EnterWinners"])) {
 // Get Items for the drop-down
 $sDonatedItemsSQL = "SELECT di_ID, di_Item, di_title, di_multibuy
                      FROM donateditem_di
-                     WHERE di_FR_ID = '" . $iCurrentFundraiser . "' ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR(di_Item,2,3),SIGNED)"; 
+                     WHERE di_FR_ID = '" . $iCurrentFundraiser . "' ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR(di_Item,2,3),SIGNED)";
 $rsDonatedItems = RunQuery($sDonatedItemsSQL);
 
 //Get Paddles for the drop-down
-$sPaddleSQL = "SELECT pn_ID, pn_Num, pn_per_ID, 
-                      a.per_FirstName AS buyerFirstName, 
+$sPaddleSQL = "SELECT pn_ID, pn_Num, pn_per_ID,
+                      a.per_FirstName AS buyerFirstName,
                       a.per_LastName AS buyerLastName
                       FROM paddlenum_pn
                       LEFT JOIN person_per a on a.per_ID=pn_per_ID
@@ -68,13 +68,13 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="BatchWinnerEntry.php?<?php echo "CurrentFundraiser=" . "&linkBack=" . $linkBack; ?>" name="BatchWinnerEntry">
+<form method="post" action="BatchWinnerEntry.php?<?= "CurrentFundraiser=" . "&linkBack=" . $linkBack ?>" name="BatchWinnerEntry">
 
 <table cellpadding="3" align="center">
 	<tr>
-		<td class="LabelColumn"><?php echo gettext("Item"); ?></td>
-		<td class="LabelColumn"><?php echo gettext("Winner"); ?></td>
-		<td class="LabelColumn"><?php echo gettext("Price"); ?></td>
+		<td class="LabelColumn"><?= gettext("Item") ?></td>
+		<td class="LabelColumn"><?= gettext("Winner") ?></td>
+		<td class="LabelColumn"><?= gettext("Price") ?></td>
 	</tr>
 <?php
 	for ($row = 0; $row < 10; $row += 1) {
@@ -109,13 +109,11 @@ require "Include/Header.php";
 ?>
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Enter Winners"); ?>" name="EnterWinners">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="submit" class="btn" value="<?= gettext("Enter Winners") ?>" name="EnterWinners">
+			<input type="button" class="btn" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 	</table>
 </form>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

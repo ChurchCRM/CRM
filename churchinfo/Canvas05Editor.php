@@ -3,10 +3,10 @@
  *
  *  filename    : Canvas05Editor.php
  *  last change : 2004-6-12
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -81,14 +81,14 @@ require "Include/Header.php";
 
 ?>
 
-<form method="post" action="Canvas05Editor.php?<?php echo "FamilyID=" . $iFamily . "&linkBack=" . $linkBack; ?>" name="Canvas05Editor">
+<form method="post" action="Canvas05Editor.php?<?= "FamilyID=" . $iFamily . "&linkBack=" . $linkBack ?>" name="Canvas05Editor">
 
 <table cellpadding="3" align="center">
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Save"); ?>" name="Submit">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
+			<input type="submit" class="btn" value="<?= gettext("Save") ?>" name="Submit">
+			<input type="button" class="btn" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 		</td>
 	</tr>
 
@@ -96,35 +96,33 @@ require "Include/Header.php";
 		<td>
 		<table cellpadding="3">
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Do you like the color of the church?");?></td>
-				<td><textarea name="ChurchColor" rows="3" cols="90"><?php echo $tChurchColor?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Do you like the color of the church?") ?></td>
+				<td><textarea name="ChurchColor" rows="3" cols="90"><?= $tChurchColor ?></textarea></td>
 			</tr>
-	
+
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("What are we doing right?");?></td>
-				<td><textarea name="DoingRight" rows="3" cols="90"><?php echo $tDoingRight?></textarea></td>
+				<td class="LabelColumn"><?= gettext("What are we doing right?") ?></td>
+				<td><textarea name="DoingRight" rows="3" cols="90"><?= $tDoingRight ?></textarea></td>
 			</tr>
-	
+
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("How can we improve?");?></td>
-				<td><textarea name="CanImprove" rows="3" cols="90"><?php echo $tCanImprove?></textarea></td>
+				<td class="LabelColumn"><?= gettext("How can we improve?") ?></td>
+				<td><textarea name="CanImprove" rows="3" cols="90"><?= $tCanImprove ?></textarea></td>
 			</tr>
-	
+
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Will you pledge by March 31?");?></td>
-				<td><textarea name="PledgeByMar31" rows="3" cols="90"><?php echo $tPledgeByMar31?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Will you pledge by March 31?") ?></td>
+				<td><textarea name="PledgeByMar31" rows="3" cols="90"><?= $tPledgeByMar31 ?></textarea></td>
 			</tr>
-	
+
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Canvasser Comments:");?></td>
-				<td><textarea name="Comments" rows="3" cols="90"><?php echo $tComments?></textarea></td>
+				<td class="LabelColumn"><?= gettext("Canvasser Comments:") ?></td>
+				<td><textarea name="Comments" rows="3" cols="90"><?= $tComments ?></textarea></td>
 			</tr>
-	
+
 		</table>
 		</td>
 	</form>
 </table>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

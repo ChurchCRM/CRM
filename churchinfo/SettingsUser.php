@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : SettingsUser.php
-*  website     : http://www.churchdb.org
+*  website     : http://www.churchcrm.io
 *  description : Default User Settings 
 *                   File copied from SettingsGeneral.php with minor edits.
 *                   Controls default settings for new users.
@@ -13,7 +13,7 @@
 *
 *  Copyright Contributors
 *
-*  ChurchInfo is free software; you can redistribute it and/or modify
+*  ChurchCRM is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
 *  the Free Software Foundation; either version 2 of the License, or
 *  (at your option) any later version.
@@ -81,16 +81,21 @@ require "Include/Header.php";
 // Get settings
 $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
 $rsConfigs = RunQuery($sSQL);
+?>
+<!-- Default box -->
+<div class="box">
+	<div class="box-header with-border">
 
-// Table Headings
-echo "<form method=post action=SettingsUser.php>";
-echo gettext ("Set Permission True to give new users the ability to change their current value.<BR>");
-echo "<table cellpadding=3 align=left>";
-echo "<tr><td><h3>" . gettext("Permission") . "</h3></td>
-    <td><h3>". gettext("Variable name") . "</h3></td>
-	<td><h3>". gettext("Current Value"). "</h3></td>
-	<td><h3>".gettext("Notes")."</h3></td></tr>";
-
+	<form method=post action=SettingsUser.php'>
+		<div class="callout callout-info"> <?= gettext ("Set Permission True to give new users the ability to change their current value.<BR>"); ?></div>
+		<table class='table table-responsive'>
+		<tr>
+			<th> <?= gettext("Permission") ?></th>
+			<th><?= gettext("Variable name") ?></th>
+			<th><?= gettext("Current Value") ?></th>
+			<th><?=gettext("Notes") ?></th>
+		</tr>
+<?
 $r = 1;
 // List Individual Settings
 while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = mysql_fetch_row($rsConfigs)) {
@@ -98,9 +103,9 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 	// Cancel, Save Buttons every 13 rows
 	if ($r == 13) {
 		echo "<tr><td>&nbsp;</td>
-			<td><input type=submit class=icButton name=save value=\"" 
+			<td><input type=submit class=btn name=save value=\""
             . gettext("Save Settings") . "\">
-			<input type=submit class=icButton name=cancel value=\"" 
+			<input type=submit class=btn name=cancel value=\""
             . gettext("Cancel") . "\">
 			</td></tr>";
 		$r = 1;
@@ -159,11 +164,15 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 	$r++;
 }	 
 
-// Cancel, Save Buttons
-echo "<tr><td>&nbsp;</td>
-	<td><input type=submit class=icButton name=save value=\"" . gettext("Save Settings") . "\">
-	<input type=submit class=icButton name=cancel value=\"" . gettext("Cancel") . "\">
-	</td></tr></table></form>";
-
+?>
+<tr>
+	<td colspan='4' class='text-center'>
+		<input type=submit class='btn btn-primary' name=save value="<?=  gettext("Save Settings") ?> ">
+		<input type=submit class=btn name=cancel value="<?= gettext("Cancel") ?>">
+	</td>
+</tr>
+</table>
+</form>
+<?
 require "Include/Footer.php";
 ?>

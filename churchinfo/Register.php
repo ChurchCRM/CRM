@@ -2,10 +2,10 @@
 /*******************************************************************************
  *
  *  filename    : Register.php
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -16,13 +16,12 @@
 require "Include/Config.php";
 
 require "Include/Functions.php";
+
+// Set the page title and include HTML header
+$sPageTitle = gettext("Software Registration");
+
 require "Include/Header.php";
 
-echo gettext ("Please register your copy of ChurchInfo by checking over this information and pressing the Send button.  ");
-echo gettext ("If you need to make changes go to Admin->Edit General Settings and Admin->Edit Report Settings.  ");
-echo gettext ("This information is used only to track the usage of this software.  ");
-echo gettext ("With this information, we are able to maintain a credible presence as a free option in the largely commercial world of church management software.  ");
-echo gettext ("We will never sell or otherwise distribute this information.");
 
 // Read in report settings from database
 $rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
@@ -40,7 +39,7 @@ $sCountry = $sDefaultCountry;
 $sComments = "";
 $sEmail = $reportConfig["sChurchEmail"];
 
-$sEmailSubject = "ChurchInfo registration";
+$sEmailSubject = "ChurchCRM registration";
 
 $sEmailMessage =
 	"Church name: " . $sName . "\n" .
@@ -71,32 +70,36 @@ RunQuery($sSQL);
 
 ?>
 
-<form method="post" action="EmailSend.php" name="Register">
+<div class="box">
+	<div class="box-header">
+		<?php
+		echo gettext ("Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  ");
+		echo gettext ("This information is used only to track the usage of this software.  ");
+		?>
+	</div>
+	<form method="post" action="EmailSend.php" name="Register">
+	<div class="box-body">
+		<input type="hidden" name="emaillist[]" class="form-control" value="info@churchcrm.io">
+			<?php
+			echo gettext('Subject:');
+			echo '<br><input type="text" class="form-control" name="emailsubject" size="80" value="';
+			echo htmlspecialchars($sEmailSubject) . '"></input>'."\n";
 
-<input type="hidden" name="emaillist[]" value="register@churchdb.org">
+			echo '<br>' . gettext('Message:');
+			echo '<br><textarea class="form-control" name="emailmessage" rows="20" cols="72">';
+			echo htmlspecialchars($sEmailMessage) . '</textarea>'."\n";
+			?>
+	</div>
+	<div class="box-footer">
+		<div class="pull-right">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Send") ?>" name="Submit">
+		</div>
+		<input type="button" class="btn btn-default" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='Menu.php';">
+	</div>
+	</form>
+</div>
+<div class="box box-warning">
+	<?= gettext ("If you need to make changes go to Admin->Edit General Settings and Admin->Edit Report Settings.  "); ?>
+</div>
 
-<table cellpadding="1" align="center">
-
-	<tr>
-		<td align="center">
-			<input type="submit" class="icButton" value="<?php echo gettext("Send"); ?>" name="Submit">
-			<input type="button" class="icButton" value="<?php echo gettext("Cancel"); ?>" name="Cancel" onclick="javascript:document.location='Menu.php';">
-		</td>
-	</tr>
-</table>
-
-<?php
-echo gettext('Subject:');
-echo '<br><input type="text" name="emailsubject" size="80" value="';
-echo htmlspecialchars($sEmailSubject) . '"></input>'."\n";
-
-echo '<br>' . gettext('Message:');
-echo '<br><textarea name="emailmessage" rows="20" cols="72">';
-echo htmlspecialchars($sEmailMessage) . '</textarea>'."\n";
-?>
-
-</form>
-
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

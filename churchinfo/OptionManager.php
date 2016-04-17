@@ -3,13 +3,13 @@
  *
  *  filename    : OptionsManager.php
  *  last change : 2003-04-16
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2003 Chris Gebhardt
  *
  *  OptionName : Interface for editing simple selection options such as those
  *              : used for Family Roles, Classifications, and Group Types
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -301,10 +301,11 @@ else
 }
 
 ?>
+<div class="box">
+	<div class="box-body">
+<form method="post" action="OptionManager.php?<?= "mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
-<form method="post" action="OptionManager.php?<?php echo "mode=$mode&ListID=$listID" ?>" name="OptionManager">
-
-<center><b><?php echo gettext("Warning: Removing will reset all assignments for all persons with the assignment!"); ?></b><br><br>
+<div class="callout callout-warning"><?= gettext("Warning: Removing will reset all assignments for all persons with the assignment!") ?></div>
 
 <?php
 
@@ -316,18 +317,6 @@ if ( $bErrorFlag )
 }
 ?>
 
-<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
-
-
-<?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') { ?>
-	<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:window.close();">
-<?php } elseif ($mode != "grproles") { ?>
-	<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='<?php
-			echo "Menu.php";
-		?>';">
-<?php } ?>
-
-</center>
 <br>
 <table cellpadding="3" width="30%" align="center">
 
@@ -359,7 +348,7 @@ for ($row=1; $row <= $numRows; $row++)
 		</td>
 		<td class="TextColumn">
 			<span class="SmallText">
-				<input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="30" maxlength="40">
+				<input class="form-control input-small" type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="30" maxlength="40">
 			</span>
 			<?php
 
@@ -371,22 +360,34 @@ for ($row=1; $row <= $numRows; $row++)
 		</td>
 		<?php
 		if ($mode == "grproles")
-			echo "<td class=\"TextColumn\"><input type=\"button\" class=\"icTinyButton\" value=\"" . gettext("Make Default") . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . "&ListID=" . $listID . "&ID=" . $aIDs[$row] . "&Action=makedefault';\" ></td>";
+			echo "<td class=\"TextColumn\"><input class=\"form-control input-small\" type=\"button\" class=\"btn\" value=\"" . gettext("Make Default") . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . "&ListID=" . $listID . "&ID=" . $aIDs[$row] . "&Action=makedefault';\" ></td>";
 		?>
 
 	</tr>
 <?php } ?>
 
 </table>
+	<input type="submit" class="btn btn-primary" value="<?= gettext("Save Changes") ?>" Name="SaveChanges">
 
-<br>
-<center>
-New <?php echo $noun . " " . gettext("Name:"); ?>&nbsp;
+
+	<?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') { ?>
+		<input type="button" class="btn" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:window.close();">
+	<?php } elseif ($mode != "grproles") { ?>
+		<input type="button" class="btn" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:document.location='<?php
+		echo "Menu.php";
+		?>';">
+	<?php } ?>
+	</div>
+</div>
+
+<div class="box box-primary">
+	<div class="box-body">
+New <?= $noun . " " . gettext("Name:") ?>&nbsp;
 <span class="SmallText">
-	<input type="text" name="newFieldName" size="30" maxlength="40">
+	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
-&nbsp;
-<input type="submit" class="icTinyButton" <?php echo 'value="' . gettext("Add New") . ' ' . $adj . ' ' . $noun . '"'?> Name="AddField">
+<p>  </p>
+<input type="submit" class="btn" value="<?= gettext("Add New") . ' ' . $adj . ' ' . $noun ?>" Name="AddField">
 <?php
 	if ($iNewNameError > 0)
 	{
@@ -400,7 +401,8 @@ New <?php echo $noun . " " . gettext("Name:"); ?>&nbsp;
 ?>
 </center>
 </form>
-
+	</div>
+</div>
 <?php
 if ($embedded)
 	echo "</body></html>";

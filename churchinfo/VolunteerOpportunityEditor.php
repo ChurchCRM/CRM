@@ -2,13 +2,13 @@
 /*******************************************************************************
  *
  *  filename    : VolunteerOpportunityEditor.php
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Michael Wilt
  *
  *  LICENSE:
  *  (C) Free Software Foundation, Inc.
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
@@ -77,13 +77,22 @@ if (($sAction == 'delete') && $iOpp > 0) {
 
     $sPageTitle = gettext("Volunteer Opportunity Delete Confirmation");
     require "Include/Header.php";
-    echo "\n<br><p>" . gettext("Please confirm deletion of:") . "</p><br>";
-    echo "\n<table><tr><th>&nbsp;</th>";
-    echo "\n<th>" . gettext("Name") . "</th>";
-    echo "\n<th>" . gettext("Description") . "</th></tr>";
-    echo "\n<tr><td class=\"LabelColumn\"><b>" . $vol_Order . "</b></td>";
-    echo "\n<td class=\"TextColumn\">" . $vol_Name . "</td>";
-    echo "\n<td class=\"TextColumn\">" . $vol_Description . "</td></tr></table>";
+?>
+    <div class="box box-body">
+    <div class="callout callout-danger"><?= gettext("Please confirm deletion of:") ?></div>
+    <table class="table">
+        <tr><th>&nbsp;</th>
+        <th><?= gettext("Name") ?></th>
+        <th><?= gettext("Description") ?></th>
+    </tr>
+    <tr>
+        <td><b><?= $vol_Order ?></b></td>
+        <td><?= $vol_Name ?></td>
+        <td><?= $vol_Description ?></td>
+    </tr>
+    </table>
+
+<?
 
     // Do some error checking before deleting this Opportunity.
     // Notify user if there are currently people assigned to this
@@ -108,10 +117,11 @@ if (($sAction == 'delete') && $iOpp > 0) {
             echo "\n<br><b> $per_FirstName $per_LastName</b>";
         }
     }
-    echo "\n<br><h3><a href=\"VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=" . $iOpp . "\"> ";
-    echo gettext("Yes, delete this Volunteer Opportunity") . " </a></h3> ";
-    echo "\n<h2><a href=\"VolunteerOpportunityEditor.php\"> ";
-    echo gettext("No, cancel this deletion") . " </a></h2> ";
+    echo "\n<br><a class='btn btn-danger' href=\"VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=" . $iOpp . "\"> ";
+    echo gettext("Yes, delete this Volunteer Opportunity") . " </a>";
+    echo "\n<a href=\"VolunteerOpportunityEditor.php\" class='btn btn-default'> ";
+    echo gettext("No, cancel this deletion") . " </a>";
+    echo "</div>";
     require "Include/Footer.php";
     exit;
 }
@@ -229,10 +239,10 @@ if (isset($_POST["SaveChanges"])) {
     if (!$bErrorFlag) {
         for ( $iFieldID=1; $iFieldID <= $numRows; $iFieldID++ ) {
         	if (array_key_exists ($iFieldID, $aNameFields)) {
-	            $sSQL = "UPDATE `volunteeropportunity_vol`
-	                     SET `vol_Name` = '" . $aNameFields[$iFieldID] . "',
-	                     `vol_Description` = '" . $aDescFields[$iFieldID] .
-	                     "' WHERE `vol_ID` = '" . $aIDFields[$iFieldID] . "';";
+	            $sSQL = "UPDATE volunteeropportunity_vol
+	                     SET vol_Name = '" . $aNameFields[$iFieldID] . "',
+	                     vol_Description = '" . $aDescFields[$iFieldID] .
+	                     "' WHERE vol_ID = '" . $aIDFields[$iFieldID] . "';";
 	             RunQuery($sSQL);
         	}
          }
@@ -277,29 +287,25 @@ if (isset($_POST["SaveChanges"])) {
 // Construct the form
 
 ?>
+<div class="box box-body">
 <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
-<table cellpadding="3" width="75%" align="center">
+<table class="table">
 
 <?php
 if ($numRows == 0) {
 ?>
-    <center><h2><?php echo gettext("No volunteer opportunities have been added yet"); ?></h2>
-    <input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php'">
-    </center>
+    <div class="callout callout-warning"><?= gettext("No volunteer opportunities have been added yet") ?></div>
 <?php
 } else { // if an 'action' (up/down arrow clicked, or order was input)
-   if ($iRowNum and $sAction != "") {
+   if ($iRowNum && $sAction != "") {
       // cast as int and couple with switch for sql injection prevention for $row_num
-      if ($sAction == 'up' or $sAction == 'down') {
-         $swapRow = $iRowNum;
-         if ($sAction == 'up') {
-            $newRow = --$iRowNum;
-         } else if ($sAction == 'down') {
-            $newRow = ++$iRowNum;
-         }
+      $swapRow = $iRowNum;
+      if ($sAction == 'up') {
+         $newRow = --$iRowNum;
+      } else if ($sAction == 'down') {
+         $newRow = ++$iRowNum;
       } else {
-         $swapRow = $iRowNum;
       	 $newRow = $iRowNum;
       }
 
@@ -336,30 +342,32 @@ if ($numRows == 0) {
 } // end if GET  
 
 ?>
-<tr><td colspan="5">
-<center><b><?php echo gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"); ?></b></center>
-</td></tr>
-
-<tr><td colspan="5" align="center"><span class="LargeText" style="color: red;">
-<?php
-if ( $bErrorFlag ) echo gettext("Invalid fields or selections. Changes not saved! Please correct and try again!");
-if (strlen($sDeleteError) > 0) echo $sDeleteError;
-?>
-</span></td></tr>
-
 <tr>
-<td colspan="5" align="center">
-<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
-&nbsp;
-<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php'">
-</td>
+    <td colspan="5">
+        <div class="callout callout-info"><?= gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'") ?></div>
+    </td>
 </tr>
-
+<tr>
+    <td colspan="5">
+        <?php
+        if ($bErrorFlag) {
+            echo '<div class="callout callout-danger">';
+            echo gettext("Invalid fields or selections. Changes not saved! Please correct and try again!");
+            echo '</div>';
+        }
+        if (strlen($sDeleteError) > 0) {
+            echo ' <div class="callout callout-danger">';
+            echo $sDeleteError;
+            echo '</div>';
+        }
+        ?>
+    </td>
+</tr>
 <tr>
 <th></th>
 <th></th>
-<th><?php echo gettext("Name"); ?></th>
-<th><?php echo gettext("Description"); ?></th>
+<th><?= gettext("Name") ?></th>
+<th><?= gettext("Description") ?></th>
 </tr>
 
 <?php
@@ -372,10 +380,10 @@ for ($row=1; $row <= $numRows; $row++) {
 	    if ($row == 1) {
 	      echo "<a href=\"VolunteerOpportunityEditor.php?act=na&amp;row_num=" . $row . "\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
 	    } else {
-	      echo "<a onclick=\"saveScrollCoordinates()\" href=\"VolunteerOpportunityEditor.php?act=up&amp;row_num=" . $row . "\"> <img src=\"Images/uparrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+	      echo "<a href=\"VolunteerOpportunityEditor.php?act=up&amp;row_num=" . $row . "\"> <img src=\"Images/uparrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
 	    }
 	    if ($row <> $numRows) {
-	      echo "<a onclick=\"saveScrollCoordinates()\" href=\"VolunteerOpportunityEditor.php?act=down&amp;row_num=" . $row . "\"> <img src=\"Images/downarrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+	      echo "<a href=\"VolunteerOpportunityEditor.php?act=down&amp;row_num=" . $row . "\"> <img src=\"Images/downarrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
 	    } else {
 	      echo "<a href=\"VolunteerOpportunityEditor.php?act=na&amp;row_num=" . $row . "\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
 	    }
@@ -384,7 +392,7 @@ for ($row=1; $row <= $numRows; $row++) {
 	   ?>
 	
 	   <td class="TextColumn" align="center">
-	   <input type="text" name="<?php echo $row . "name"; ?>" value="<?php echo htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
+	   <input type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="20" maxlength="30">
 	   <?php
 	      
 	   if (array_key_exists ($row, $aNameErrors) && $aNameErrors[$row] ) {
@@ -394,7 +402,7 @@ for ($row=1; $row <= $numRows; $row++) {
 	   </td>
 	
 	   <td class="TextColumn">
-	   <input type="text" Name="<?php echo $row . "desc" ?>" value="<?php echo htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8"); ?>" size="40" maxlength="100">
+	   <input type="text" name="<?= $row ?>desc" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, "UTF-8") ?>" size="40" maxlength="100">
 	   </td>
 	
 	   </tr>
@@ -409,9 +417,9 @@ for ($row=1; $row <= $numRows; $row++) {
 <tr>
 <td width="30%"></td>
 <td width="40%" align="center" valign="bottom">
-<input type="submit" class="icButton" <?php echo 'value="' . gettext("Save Changes") . '"'; ?> Name="SaveChanges">
+<input type="submit" class="btn" value="<?= gettext("Save Changes") ?>" Name="SaveChanges">
 &nbsp;
-<input type="button" class="icButton" <?php echo 'value="' . gettext("Exit") . '"'; ?> Name="Exit" onclick="javascript:document.location='Menu.php'">
+<input type="button" class="btn" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:document.location='Menu.php'">
 </td>
 <td width="30%"></td>
 </tr>
@@ -427,18 +435,18 @@ for ($row=1; $row <= $numRows; $row++) {
 <tr>
 <td width="15%"></td>
 <td valign="top">
-<div><?php echo gettext("Name:"); ?></div>
+<div><?= gettext("Name:") ?></div>
 <input type="text" name="newFieldName" size="30" maxlength="30">
 <?php if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
 &nbsp;
 </td>
 <td valign="top">
-<div><?php echo gettext("Description:"); ?></div>
+<div><?= gettext("Description:") ?></div>
 <input type="text" name="newFieldDesc" size="40" maxlength="100">
 &nbsp;
 </td>
 <td>
-<input type="submit" class="icButton" <?php echo 'value="' . gettext("Add New Opportunity") . '"'; ?> name="AddField">
+<input type="submit" class="btn" value="<?= gettext("Add New Opportunity") ?>" name="AddField">
 </td>
 <td width="15%"></td>
 </tr>
@@ -447,5 +455,6 @@ for ($row=1; $row <= $numRows; $row++) {
 </tr>
 </table>
 </form>
+</div>
 
-<?php require "Include/Footer.php"; ?>
+<?php require "Include/Footer.php" ?>

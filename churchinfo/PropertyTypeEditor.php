@@ -3,10 +3,10 @@
  *
  *  filename    : PropertyTypeEditor.php
  *  last change : 2003-01-07
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -88,38 +88,37 @@ if (isset($_POST["Submit"]))
 require "Include/Header.php";
 
 ?>
+<div class="box box-body">
+<form method="post" action="PropertyTypeEditor.php?PropertyTypeID=<?= $iPropertyTypeID ?>">
 
-<form method="post" action="PropertyTypeEditor.php?PropertyTypeID=<?php echo $iPropertyTypeID; ?>">
-
-<table cellpadding="4">
+<table class="table">
 	<tr>
-		<td align="right"><b><?php echo gettext("Class:"); ?></b></td>
+		<td align="right"><b><?= gettext("Class:") ?></b></td>
 		<td>
 			<select name="Class">
-				<option value="p" <?php if($sClass == "p") {echo "selected";} ?>><?php echo gettext("Person"); ?></option>
-				<option value="f" <?php if($sClass == "f") {echo "selected";} ?>><?php echo gettext("Family"); ?></option>
-				<option value="g" <?php if($sClass == "g") {echo "selected";} ?>><?php echo gettext("Group"); ?></option>
+				<option value="p" <?php if($sClass == "p") {echo "selected";} ?>><?= gettext("Person") ?></option>
+				<option value="f" <?php if($sClass == "f") {echo "selected";} ?>><?= gettext("Family") ?></option>
+				<option value="g" <?php if($sClass == "g") {echo "selected";} ?>><?= gettext("Group") ?></option>
 			</select>
 		</td>
 	</tr>
 	<tr>
-		<td align="right"><b><?php echo gettext("Name:"); ?></b></td>
-		<td><input type="text" name="Name" value="<?php echo htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8"); ?>" size="40"> 			<?php echo $sNameError; ?>
+		<td align="right"><b><?= gettext("Name:") ?></b></td>
+		<td><input type="text" name="Name" value="<?= htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8") ?>" size="40"> 			<?= $sNameError ?>
 		</td>
 	</tr>
 	<tr>
-		<td align="right" valign="top"><b><?php echo gettext("Description:"); ?></b></td>
-		<td><textarea name="Description" cols="60" rows="10"><?php echo htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8"); ?></textarea></td>
+		<td align="right" valign="top"><b><?= gettext("Description:") ?></b></td>
+		<td><textarea name="Description" cols="60" rows="10"><?= htmlentities(stripslashes($sDescription),ENT_NOQUOTES, "UTF-8") ?></textarea></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<input type="submit" class="icButton" name="Submit" <?php echo 'value="' . gettext("Save") . '"'; ?>>&nbsp;<input type="button" class="icButton" name="Cancel" <?php echo 'value="' . gettext("Cancel") . '"'; ?> onclick="document.location='PropertyTypeList.php';">
+			<input type="submit" class="btn btn-primary" name="Submit" <?= 'value="' . gettext("Save") . '"' ?>>&nbsp;<input type="button" class="btn btn-default" name="Cancel" <?= 'value="' . gettext("Cancel") . '"' ?> onclick="document.location='PropertyTypeList.php';">
 		</td>
 	</tr>
 </table>
 
 </form>
+</div>
 
-<?php
-require "Include/Footer.php";
-?>
+<?php require "Include/Footer.php" ?>

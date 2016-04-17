@@ -3,10 +3,10 @@
  *
  *  filename    : SelectDelete
  *  last change : 2003-01-07
- *  website     : http://www.infocentral.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Lewis Franklin
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -16,6 +16,7 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Service/GroupService.php";
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
@@ -68,13 +69,14 @@ else
 
 function DeletePerson($iPersonID)
 {
+    $groupService = new GroupService();
 	// Remove person from all groups they belonged to
 	$sSQL = "SELECT p2g2r_grp_ID FROM person2group2role_p2g2r WHERE p2g2r_per_ID = " . $iPersonID;
 	$rsAssignedGroups = RunQuery($sSQL);
 	while ($aRow = mysql_fetch_array($rsAssignedGroups))
 	{
 		extract($aRow);
-		RemoveFromGroup($iPersonID, $p2g2r_grp_ID);
+        $groupService->removeUserFromGroup($p2g2r_grp_ID,$iPersonID);
 	}
 
 	// Remove custom field data
@@ -187,7 +189,7 @@ if (isset($_GET["Confirmed"]))
 			unlink ($photoFile);
 
 		// Redirect back to the family listing
-		Redirect("SelectList.php?mode=family");
+		Redirect("FamilyList.php");
 	}
 }
 
@@ -214,22 +216,21 @@ else
 require "Include/Header.php";
 
 ?>
-<div class="row">
-	<div class="col-lg-6">
-		<div class="main-box clearfix">
+<div class="box">
+	<div class="box-body">
 <?php
 if($sMode == 'person')
 {
 	if ($bIsUser) {
-		echo "<p class=\"LargeText\">" . gettext("Sorry, this person is a user.  An administrator must remove their user status before they may be deleted from the database.") . "<br><br>";
+		echo "<p class=\"callout callout-danger\">" . gettext("Sorry, this person is a user.  An administrator must remove their user status before they may be deleted from the database.") . "<br><br>";
 		echo "<a href=\"PersonView.php?PersonID=" . $iPersonID . "\">" . gettext("Return to Person View")."</a></p>";
 	}	else {
-		echo "<div class=\"alert alert-block alert-danger fade in\">";
-		echo "<h3>".gettext("Please confirm deletion of:") ." <strong>" . $per_FirstName . " " . $per_LastName. "</strong></h3>";
-		echo "<p>";
-		echo "<a class=\"btn btn-danger\" href=\"SelectDelete.php?mode=person&PersonID=" . $iPersonID . "&Confirmed=Yes\">" . gettext("Yes, delete this record") . "</a>" ;
-		echo "<a class=\"btn btn-info\" href=\"PersonView.php?PersonID=" . $iPersonID . "\">" . gettext("No, cancel this deletion") . "</a></h2></p>";
+		echo "<div class=\"callout callout-warning\">";
+		echo gettext("Please confirm deletion of:") ." <strong>" . $per_FirstName . " " . $per_LastName. "</strong>";
 		echo gettext(" (This action CANNOT be undone!)"). "<br/>";
+		echo "</div><p class='text-center'>";
+		echo "<a class=\"btn btn-danger\" href=\"SelectDelete.php?mode=person&PersonID=" . $iPersonID . "&Confirmed=Yes\">" . gettext("Yes, delete this record") . "</a> " ;
+		echo "<a class=\"btn btn-info\" href=\"PersonView.php?PersonID=" . $iPersonID . "\">" . gettext("No, cancel this deletion") . "</a></h2></p>";
 		echo "</p></div>";
 	}
 } else {
@@ -309,16 +310,16 @@ if($sMode == 'person')
 		?>
 		<table cellpadding="5" cellspacing="0" width="100%">
 			<tr class="TableHeader">
-			<td><?php echo gettext("Type"); ?></td>
-			<td><?php echo gettext("Fund"); ?></td>
-			<td><?php echo gettext("Fiscal Year"); ?></td>
-			<td><?php echo gettext("Date"); ?></td>
-			<td><?php echo gettext("Amount"); ?></td>
-			<td><?php echo gettext("Schedule"); ?></td>
-			<td><?php echo gettext("Method"); ?></td>
-			<td><?php echo gettext("Comment"); ?></td>
-			<td><?php echo gettext("Date Updated"); ?></td>
-			<td><?php echo gettext("Updated By"); ?></td>
+			<td><?= gettext("Type") ?></td>
+			<td><?= gettext("Fund") ?></td>
+			<td><?= gettext("Fiscal Year") ?></td>
+			<td><?= gettext("Date") ?></td>
+			<td><?= gettext("Amount") ?></td>
+			<td><?= gettext("Schedule") ?></td>
+			<td><?= gettext("Method") ?></td>
+			<td><?= gettext("Comment") ?></td>
+			<td><?= gettext("Date Updated") ?></td>
+			<td><?= gettext("Updated By") ?></td>
 		</tr>
 		<?php
 		$tog = 0;
@@ -349,17 +350,17 @@ if($sMode == 'person')
 					$sRowClass = "PaymentRowColorB";
 			}
 			?>
-			<tr class="<?php echo $sRowClass ?>">
-				<td><?php echo $plg_PledgeOrPayment ?>&nbsp;</td>
-				<td><?php echo $fundName ?>&nbsp;</td>
-				<td><?php echo MakeFYString ($plg_FYID) ?>&nbsp;</td>
-				<td><?php echo $plg_date ?>&nbsp;</td>
-				<td><?php echo $plg_amount ?>&nbsp;</td>
-				<td><?php echo $plg_schedule ?>&nbsp;</td>
-				<td><?php echo $plg_method; ?>&nbsp;</td>
-				<td><?php echo $plg_comment; ?>&nbsp;</td>
-				<td><?php echo $plg_DateLastEdited; ?>&nbsp;</td>
-				<td><?php echo $EnteredFirstName . " " . $EnteredLastName; ?>&nbsp;</td>
+			<tr class="<?= $sRowClass ?>">
+				<td><?= $plg_PledgeOrPayment ?>&nbsp;</td>
+				<td><?= $fundName ?>&nbsp;</td>
+				<td><?= MakeFYString ($plg_FYID) ?>&nbsp;</td>
+				<td><?= $plg_date ?>&nbsp;</td>
+				<td><?= $plg_amount ?>&nbsp;</td>
+				<td><?= $plg_schedule ?>&nbsp;</td>
+				<td><?= $plg_method ?>&nbsp;</td>
+				<td><?= $plg_comment ?>&nbsp;</td>
+				<td><?= $plg_DateLastEdited ?>&nbsp;</td>
+				<td><?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;</td>
 			</tr>
 			<?php
 		}
@@ -369,31 +370,29 @@ if($sMode == 'person')
 	} else {
 		// No Donations from family.  Normal delete confirmation
 		echo $DonationMessage;
-		echo "<p>" . gettext("Please confirm deletion of this family record:") . "</p>";
-		echo "<p>" . gettext("Note: This will also delete all Notes associated with this Family record.") . "</p>";
-		echo "<div class=\"ShadedBox\">";
-		echo "<div class=\"LightShadedBox\"><strong>" . gettext("Family Name:") . "</strong></div>";
+		echo "<p class='callout callout-warning'><b>" . gettext("Please confirm deletion of this family record:") . "</b><br/>";
+		echo  gettext("Note: This will also delete all Notes associated with this Family record.");
+		echo  gettext(" (this action cannot be undone)") . "</p>";
+		echo "<div>";
+		echo "<strong>" . gettext("Family Name:") . "</strong>";
 		echo "&nbsp;" . $fam_Name;
-		echo "</div>";
-		echo "<p class=\"MediumText\"><a href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . "\">" . gettext("Delete Family Record ONLY") . "</a>" . gettext(" (this action cannot be undone)") . "</p>";
-		echo "<div class=\"ShadedBox\">";
-		echo "<div class=\"LightShadedBox\"><strong>" . gettext("Family Members:") . "</strong></div>";
+		echo "</div><br/>";
+		echo "<div><strong>" . gettext("Family Members:") . "</strong><ul>";
 		//List Family Members
 		$sSQL = "SELECT * FROM person_per WHERE per_fam_ID = " . $iFamilyID;
 		$rsPerson = RunQuery($sSQL);
 		while($aRow = mysql_fetch_array($rsPerson)) {
 			extract($aRow);
-			echo "&nbsp;" . $per_FirstName . " " . $per_LastName . "<br>";
+			echo "<li>" . $per_FirstName . " " . $per_LastName . "</li>";
 			RunQuery($sSQL);
 		}
-		echo "</div>";
-		echo "<p class=\"MediumText\"><a href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . "\">" . gettext("Delete Family Record AND Family Members") . "</a>" . gettext(" (this action cannot be undone)") . "</p>";
-		echo "<br><p class=\"LargeText\"><a href=\"FamilyView.php?FamilyID=".$iFamilyID."\">" . gettext("No, cancel this deletion</a>") . "</p>";
+		echo "</ul></div>";
+		echo "<p class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . "\">" . gettext("Delete Family Record ONLY") . "</a> ";
+		echo "<a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . "\">" . gettext("Delete Family Record AND Family Members") . "</a> ";
+		echo "<a class='btn btn-info' href=\"FamilyView.php?FamilyID=".$iFamilyID."\">" . gettext("No, cancel this deletion</a>") . "</p>";
 	}
-}?>
-		</div>
+} ?>
 	</div>
 </div>
-<?php
-require "Include/Footer.php";
-?>
+
+<?php require "Include/Footer.php" ?>

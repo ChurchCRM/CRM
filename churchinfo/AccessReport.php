@@ -4,7 +4,7 @@
  *  filename    : AccessReport.php
  *  description : form to invoke user access report
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -29,9 +29,9 @@ require 'Include/Header.php';
 
 <p align="center">
 <br>
-<input type="submit" class="icButton" name="Submit" <?php 
+<input type="submit" class="btn" name="Submit" <?php
     echo 'value="' . gettext('Create Report') . '"'; ?>>
-<input type="button" class="icButton" name="Cancel" <?php 
+<input type="button" class="btn" name="Cancel" <?php
     echo 'value="' . gettext('Cancel') . '"'; ?> onclick="javascript:document.location='Menu.php';">
 </p>
 </form>

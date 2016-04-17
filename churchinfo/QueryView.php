@@ -3,11 +3,11 @@
  *
  *  filename    : QueryView.php
  *  last change : 2012-07-22
- *  website     : http://www.churchdb.org
+ *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
  *                Copyright 2004-2012 Michael Wilt
  *
- *  ChurchInfo is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -274,10 +274,10 @@ function DoQuery()
 	{
 		?>
 		<form method="post" action="CartView.php"><p align="center">
-			<input type="hidden" value="<?php echo join(",",$aHiddenFormField); ?>" name="BulkAddToCart">
-			<input type="submit" class="icButton" name="AddToCartSubmit" value="<?php echo gettext("Add Results To Cart");?>">&nbsp;
-			<input type="submit" class="icButton" name="AndToCartSubmit" value="<?php echo gettext("Intersect Results With Cart");?>">&nbsp;
-			<input type="submit" class="icButton" name="NotToCartSubmit" value="<?php echo gettext("Remove Results From Cart");?>">
+			<input type="hidden" value="<?= join(",", $aHiddenFormField) ?>" name="BulkAddToCart">
+			<input type="submit" class="btn" name="AddToCartSubmit" value="<?= gettext("Add Results To Cart") ?>">&nbsp;
+			<input type="submit" class="btn" name="AndToCartSubmit" value="<?= gettext("Intersect Results With Cart") ?>">&nbsp;
+			<input type="submit" class="btn" name="NotToCartSubmit" value="<?= gettext("Remove Results From Cart") ?>">
 		</p></form>
 		<?php
 	}
@@ -399,7 +399,7 @@ function DisplayParameterForm()
 	
 	<td colspan="3" align="center">
 		<br>
-		<input class="icButton" type="Submit" value="<?php echo gettext("Execute Query"); ?>" name="Submit">
+		<input class="btn" type="Submit" value="<?= gettext("Execute Query") ?>" name="Submit">
 	</p>
 
 	</table>
@@ -407,9 +407,7 @@ function DisplayParameterForm()
 	</form>
 
 	<?php
-
 }
 
 require "Include/Footer.php";
-
 ?>

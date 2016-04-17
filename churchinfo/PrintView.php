@@ -4,10 +4,10 @@
  *  filename    : PrintView.php
  *  last change : 2003-01-29
  *
- *  http://www.infocentral.org/
+ *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *
- *  InfoCentral is free software; you can redistribute it and/or modify
+ *  ChurchCRM is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
@@ -163,19 +163,19 @@ if ($fam_ID)
 	<td width="33%" valign="top" align="left">
 		<table cellspacing="1" cellpadding="4">
 		<tr>
-			<td class="LabelColumn"><?php echo gettext("Home Phone:"); ?></td>
-			<td width="<?php echo $iTableSpacerWidth; ?>"></td>
-			<td class="TextColumn"><?php echo $sHomePhone; ?>&nbsp;</td>
+			<td class="LabelColumn"><?= gettext("Home Phone:") ?></td>
+			<td width="<?= $iTableSpacerWidth ?>"></td>
+			<td class="TextColumn"><?= $sHomePhone ?>&nbsp;</td>
 		</tr>
 		<tr>
-			<td class="LabelColumn"><?php echo gettext("Work Phone:"); ?></td>
-			<td width="<?php echo $iTableSpacerWidth; ?>"></td>
-			<td class="TextColumn"><?php echo $sWorkPhone; ?>&nbsp;</td>
+			<td class="LabelColumn"><?= gettext("Work Phone:") ?></td>
+			<td width="<?= $iTableSpacerWidth ?>"></td>
+			<td class="TextColumn"><?= $sWorkPhone ?>&nbsp;</td>
 		</tr>
 		<tr>
-			<td class="LabelColumn"><?php echo gettext("Mobile Phone:"); ?></td>
-			<td width="<?php echo $iTableSpacerWidth; ?>"></td>
-			<td class="TextColumn"><?php echo $sCellPhone; ?>&nbsp;</td>
+			<td class="LabelColumn"><?= gettext("Mobile Phone:") ?></td>
+			<td width="<?= $iTableSpacerWidth ?>"></td>
+			<td class="TextColumn"><?= $sCellPhone ?>&nbsp;</td>
 		</tr>
 		<?php
 			$numColumn3Fields = floor($numCustomFields / 3);
@@ -187,7 +187,7 @@ if ($fam_ID)
 			{
 				$Row = mysql_fetch_array($rsCustomFields);
 				extract($Row);
-				if (($aSecurityType[$custom_FieldSec] == 'bAll') or ($_SESSION[$aSecurityType[$custom_FieldSec]]))
+				if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]])
 				{
 					$currentData = trim($aCustomData[$custom_Field]);
 					if ($type_ID == 11) $custom_Special = $sCountry;
@@ -202,8 +202,8 @@ if ($fam_ID)
 	<td width="33%" valign="top" align="left">
 		<table cellspacing="1" cellpadding="4">
 		<tr>
-			<td class="LabelColumn"><?php echo gettext("Gender:"); ?></td>
-			<td width="<?php echo $iTableSpacerWidth; ?>"></td>
+			<td class="LabelColumn"><?= gettext("Gender:") ?></td>
+			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn">
 				<?php
 				switch (strtolower($per_Gender))
@@ -218,20 +218,20 @@ if ($fam_ID)
 			</td>
 		</tr>
 		<tr>
-			<td class="LabelColumn"><?php echo gettext("BirthDate:"); ?></td>
-			<td width="<?php echo $iTableSpacerWidth; ?>"></td>
-			<td class="TextColumn"><?php echo $dBirthDate; ?>&nbsp;</td>
+			<td class="LabelColumn"><?= gettext("BirthDate:") ?></td>
+			<td width="<?= $iTableSpacerWidth ?>"></td>
+			<td class="TextColumn"><?= $dBirthDate ?>&nbsp;</td>
 		</tr>
 		<tr>
-			<td class="LabelColumn"><?php echo gettext("Family:"); ?></td>
-			<td width="<?php echo $iTableSpacerWidth; ?>"></td>
+			<td class="LabelColumn"><?= gettext("Family:") ?></td>
+			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn">
 			<?php if ($fam_Name != "") { echo $fam_Name; } else { echo "Unassigned"; } ?>
 			&nbsp;</td>
 		</tr>
 		<tr>
-			<td class="LabelColumn"><?php echo gettext("Family Role:"); ?></td>
-			<td width="<?php echo $iTableSpacerWidth; ?>"></td>
+			<td class="LabelColumn"><?= gettext("Family Role:") ?></td>
+			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumnWithBottomBorder"><?php if ($sFamRole != "") { echo $sFamRole; } else { echo "Unassigned"; } ?>&nbsp;</td>
 		</tr>
 		<?php
@@ -250,24 +250,24 @@ if ($fam_ID)
 	<td width="33%" valign="top" align="left">
 		<table cellspacing="1" cellpadding="4">
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Email:"); ?></td>
-				<td width="<?php echo $iTableSpacerWidth; ?>"></td>
-				<td class="TextColumnWithBottomBorder"><?php echo $sUnformattedEmail; ?>&nbsp;</td>
+				<td class="LabelColumn"><?= gettext("Email:") ?></td>
+				<td width="<?= $iTableSpacerWidth ?>"></td>
+				<td class="TextColumnWithBottomBorder"><?= $sUnformattedEmail ?>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Work / Other Email:"); ?></td>
-				<td width="<?php echo $iTableSpacerWidth; ?>"></td>
-				<td class="TextColumnWithBottomBorder"><?php echo $sWorkEmail; ?>&nbsp;</td>
+				<td class="LabelColumn"><?= gettext("Work / Other Email:") ?></td>
+				<td width="<?= $iTableSpacerWidth ?>"></td>
+				<td class="TextColumnWithBottomBorder"><?= $sWorkEmail ?>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Membership Date:"); ?></td>
-				<td width="<?php echo $iTableSpacerWidth; ?>"></td>
-				<td class="TextColumn"><?php echo FormatDate($per_MembershipDate,false); ?>&nbsp;</td>
+				<td class="LabelColumn"><?= gettext("Membership Date:") ?></td>
+				<td width="<?= $iTableSpacerWidth ?>"></td>
+				<td class="TextColumn"><?= FormatDate($per_MembershipDate,false) ?>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="LabelColumn"><?php echo gettext("Classification:"); ?></td>
-				<td width="<?php echo $iTableSpacerWidth; ?>"></td>
-				<td class="TextColumnWithBottomBorder"><?php echo $sClassName; ?>&nbsp;</td>
+				<td class="LabelColumn"><?= gettext("Classification:") ?></td>
+				<td width="<?= $iTableSpacerWidth ?>"></td>
+				<td class="TextColumnWithBottomBorder"><?= $sClassName ?>&nbsp;</td>
 			</tr>
 		<?php
 			for($i = 1; $i <= $numColumn3Fields; $i++)
@@ -288,13 +288,13 @@ if ($fam_ID)
 
 <?php if ($fam_ID) {  ?>
 
-<b><?php echo gettext("Family Members:"); ?></b>
+<b><?= gettext("Family Members:") ?></b>
 <table cellpadding=5 cellspacing=0 width="100%">
 	<tr class="TableHeader">
-		<td><?php echo gettext("Name"); ?></td>
-		<td><?php echo gettext("Gender"); ?></td>
-		<td><?php echo gettext("Role"); ?></td>
-		<td><?php echo gettext("Age"); ?></td>
+		<td><?= gettext("Name") ?></td>
+		<td><?= gettext("Gender") ?></td>
+		<td><?= gettext("Role") ?></td>
+		<td><?= gettext("Age") ?></td>
 	</tr>
 <?php
 	$sRowClass = "RowColorA";
@@ -312,16 +312,16 @@ if ($fam_ID)
 
 		// Display the family member
 	?>
-		<tr class="<?php echo $sRowClass ?>">
+		<tr class="<?= $sRowClass ?>">
 			<td>
-				<?php echo $per_FirstName . " " . $per_LastName ?>
+				<?= $per_FirstName . " " . $per_LastName ?>
 				<br>
 			</td>
 			<td>
 				<?php switch ($per_Gender) {case 1: echo gettext("Male"); break; case 2: echo gettext("Female"); break; default: echo "";} ?>&nbsp;
 			</td>
 			<td>
-				<?php echo $sFamRole ?>&nbsp;
+				<?= $sFamRole ?>&nbsp;
 			</td>
 			<td>
 				<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear, $per_Flags); ?>
@@ -333,7 +333,7 @@ if ($fam_ID)
 }
 ?>
 <BR>
-<b><?php echo gettext("Assigned Groups:"); ?></b>
+<b><?= gettext("Assigned Groups:") ?></b>
 
 <?php
 
@@ -408,7 +408,7 @@ else
 }
 ?>
 <BR>
-<b><?php echo gettext("Assigned Properties:"); ?></b>
+<b><?= gettext("Assigned Properties:") ?></b>
 
 <?php
 
