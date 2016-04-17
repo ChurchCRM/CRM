@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: ChurchInfo 1.2.13\n"
+"Project-Id-Version: ChurchCRM 1.2.13\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-19 13:42-1000\n"
 "PO-Revision-Date: 2014-12-02 13:39-0500\n"
@@ -1140,8 +1140,8 @@ msgid "Only jpeg photos can be uploaded."
 msgstr "Только JPEG фотографии могут быть загружены."
 
 #: CheckVersion.php:62
-msgid "ChurchInfo: Database Version Check"
-msgstr "ChurchInfo: Версия базы данных Проверка"
+msgid "ChurchCRM: Database Version Check"
+msgstr "ChurchCRM: Версия базы данных Проверка"
 
 #: ConvertIndividualToFamily.php:46
 msgid "Convert Individuals to Families"
@@ -1489,8 +1489,8 @@ msgstr ""
 "Пожалуйста, свяжитесь с администратором."
 
 #: Login.php:349
-msgid "ChurchInfo: Login"
-msgstr "ChurchInfo: Войти"
+msgid "ChurchCRM: Login"
+msgstr "ChurchCRM: Войти"
 
 #: Login.php:393
 msgid "Please Login"
@@ -3588,8 +3588,8 @@ msgid "New Role:"
 msgstr "Новая роль:"
 
 #: Menu.php:31
-msgid "Welcome to ChurchInfo"
-msgstr "Добро пожаловать в ChurchInfo"
+msgid "Welcome to ChurchCRM"
+msgstr "Добро пожаловать в ChurchCRM"
 
 #: Menu.php:36
 msgid "Hi"
@@ -3807,9 +3807,9 @@ msgid "Edit User Default Settings"
 msgstr "Редактировать пользовательские настройки по умолчанию"
 
 #: MenuStrings.php:18
-msgid "Please select this option to register ChurchInfo after configuring."
+msgid "Please select this option to register ChurchCRM after configuring."
 msgstr ""
-"Пожалуйста, выберите эту опцию, чтобы зарегистрировать ChurchInfo после "
+"Пожалуйста, выберите эту опцию, чтобы зарегистрировать ChurchCRM после "
 "настройки."
 
 #: MenuStrings.php:19
@@ -3979,8 +3979,8 @@ msgid "Help"
 msgstr "Помогите"
 
 #: MenuStrings.php:66
-msgid "About ChurchInfo"
-msgstr "О ChurchInfo"
+msgid "About ChurchCRM"
+msgstr "О ChurchCRM"
 
 #: MenuStrings.php:67
 msgid "Wiki Documentation"
@@ -4031,8 +4031,8 @@ msgid "Edit Custom Family Fields"
 msgstr "Edit Custom Семья Поля"
 
 #: mrbs.php:26
-msgid "ChurchInfo MRBS Portal"
-msgstr "ChurchInfo MRBS портал"
+msgid "ChurchCRM MRBS Portal"
+msgstr "ChurchCRM MRBS портал"
 
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
@@ -4716,10 +4716,10 @@ msgstr "Выполнить запрос"
 
 #: Register.php:21
 msgid ""
-"Please register your copy of ChurchInfo by checking over this information "
+"Please register your copy of ChurchCRM by checking over this information "
 "and pressing the Send button.  "
 msgstr ""
-"Пожалуйста, зарегистрируйтесь копию ChurchInfo, проверяя по этой информации "
+"Пожалуйста, зарегистрируйтесь копию ChurchCRM, проверяя по этой информации "
 "и нажав на кнопку Отправить.  "
 
 #: Register.php:22
@@ -5385,8 +5385,8 @@ msgid "Add New Opportunity"
 msgstr "Добавить новую возможность"
 
 #: webcalendar.php:26
-msgid "ChurchInfo WebCalendar Portal"
-msgstr "ChurchInfo WebCalendar портал"
+msgid "ChurchCRM WebCalendar Portal"
+msgstr "ChurchCRM WebCalendar портал"
 
 #: WhyCameEditor.php:29
 msgid "\"Why Came\" notes for "
@@ -5786,10 +5786,10 @@ msgstr "Работа / Другая Email"
 #: Reports/DirectoryReport.php:667
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchInfo."
+"button to return to ChurchCRM."
 msgstr ""
 "Эта опция требует, по крайней мере, версия 3.22 MySQL! Хит-браузер кнопку "
-"назад, чтобы вернуться к ChurchInfo."
+"назад, чтобы вернуться к ChurchCRM."
 
 #: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:162
 msgid " for all funds"

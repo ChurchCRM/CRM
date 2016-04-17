@@ -1226,8 +1226,8 @@ msgstr ""
 "t&eacute;l&eacute;charg&eacute;e."
 
 #: CheckVersion.php:62
-msgid "ChurchInfo: Database Version Check"
-msgstr "ChurchInfo: Version Base de données Check"
+msgid "ChurchCRM: Database Version Check"
+msgstr "ChurchCRM: Version Base de données Check"
 
 #: ConvertIndividualToFamily.php:46
 #, fuzzy
@@ -1589,7 +1589,7 @@ msgstr "Trop de connexions échouées: votre compte a été verrouillé. S&#39;i
 
 #: Login.php:349
 #, fuzzy
-msgid "ChurchInfo: Login"
+msgid "ChurchCRM: Login"
 msgstr "InfoCentral: Identifiant"
 
 #: Login.php:393
@@ -3831,7 +3831,7 @@ msgstr "Nouveau R&ocirc;le:"
 
 #: Menu.php:31
 #, fuzzy
-msgid "Welcome to ChurchInfo"
+msgid "Welcome to ChurchCRM"
 msgstr "Bienvenue dans InfoCentral"
 
 #: Menu.php:36
@@ -4064,8 +4064,8 @@ msgid "Edit User Default Settings"
 msgstr "Modifier les paramètres utilisateur par défaut"
 
 #: MenuStrings.php:18
-msgid "Please select this option to register ChurchInfo after configuring."
-msgstr "S&#39;il vous plaît sélectionner cette option pour enregistrer ChurchInfo après la configuration."
+msgid "Please select this option to register ChurchCRM after configuring."
+msgstr "S&#39;il vous plaît sélectionner cette option pour enregistrer ChurchCRM après la configuration."
 
 #: MenuStrings.php:19
 msgid "People/Families"
@@ -4246,7 +4246,7 @@ msgstr "Aide"
 
 #: MenuStrings.php:66
 #, fuzzy
-msgid "About ChurchInfo"
+msgid "About ChurchCRM"
 msgstr "A propos de InfoCentral"
 
 #: MenuStrings.php:67
@@ -4301,8 +4301,8 @@ msgid "Edit Custom Family Fields"
 msgstr "Modifiez Champs Personnalis&eacute;s"
 
 #: mrbs.php:26
-msgid "ChurchInfo MRBS Portal"
-msgstr "ChurchInfo MRBS Portail"
+msgid "ChurchCRM MRBS Portal"
+msgstr "ChurchCRM MRBS Portail"
 
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
@@ -5041,9 +5041,9 @@ msgstr "Ex&eacute;cutez la Requ&ecirc;te "
 
 #: Register.php:21
 msgid ""
-"Please register your copy of ChurchInfo by checking over this information "
+"Please register your copy of ChurchCRM by checking over this information "
 "and pressing the Send button.  "
-msgstr "S&#39;il vous plaît enregistrer votre copie de ChurchInfo en vérifiant sur ces informations et en appuyant sur le bouton Envoyer."
+msgstr "S&#39;il vous plaît enregistrer votre copie de ChurchCRM en vérifiant sur ces informations et en appuyant sur le bouton Envoyer."
 
 #: Register.php:22
 msgid ""
@@ -5728,8 +5728,8 @@ msgid "Add New Opportunity"
 msgstr "Ajouter Nouvelle Association"
 
 #: webcalendar.php:26
-msgid "ChurchInfo WebCalendar Portal"
-msgstr "Portail WebCalendar ChurchInfo"
+msgid "ChurchCRM WebCalendar Portal"
+msgstr "Portail WebCalendar ChurchCRM"
 
 #: WhyCameEditor.php:29
 msgid "\"Why Came\" notes for "
@@ -6164,8 +6164,8 @@ msgstr "Email Travail/Autre"
 #: Reports/DirectoryReport.php:667
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchInfo."
-msgstr "Cette option nécessite au moins la version 3.22 de MySQL! Toucher le bouton retour du navigateur pour revenir à ChurchInfo."
+"button to return to ChurchCRM."
+msgstr "Cette option nécessite au moins la version 3.22 de MySQL! Toucher le bouton retour du navigateur pour revenir à ChurchCRM."
 
 #: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:162
 msgid " for all funds"

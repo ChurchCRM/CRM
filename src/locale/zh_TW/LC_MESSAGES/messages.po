@@ -1119,8 +1119,8 @@ msgid "Only jpeg photos can be uploaded."
 msgstr "只有JPEG格式的照片可以上傳。"
 
 #: CheckVersion.php:62
-msgid "ChurchInfo: Database Version Check"
-msgstr "ChurchInfo：數據庫版本檢查"
+msgid "ChurchCRM: Database Version Check"
+msgstr "ChurchCRM：數據庫版本檢查"
 
 #: ConvertIndividualToFamily.php:46
 msgid "Convert Individuals to Families"
@@ -1460,8 +1460,8 @@ msgid ""
 msgstr "太多次失敗登錄您的帳戶已被鎖定。請與管理員聯繫。"
 
 #: Login.php:349
-msgid "ChurchInfo: Login"
-msgstr "ChurchInfo：登錄"
+msgid "ChurchCRM: Login"
+msgstr "ChurchCRM：登錄"
 
 #: Login.php:393
 msgid "Please Login"
@@ -3529,8 +3529,8 @@ msgid "New Role:"
 msgstr "新角色："
 
 #: Menu.php:31
-msgid "Welcome to ChurchInfo"
-msgstr "歡迎來到ChurchInfo"
+msgid "Welcome to ChurchCRM"
+msgstr "歡迎來到ChurchCRM"
 
 #: Menu.php:36
 msgid "Hi"
@@ -3745,8 +3745,8 @@ msgid "Edit User Default Settings"
 msgstr "編輯用戶默認設置"
 
 #: MenuStrings.php:18
-msgid "Please select this option to register ChurchInfo after configuring."
-msgstr "請選擇此選項，註冊ChurchInfo後配置。"
+msgid "Please select this option to register ChurchCRM after configuring."
+msgstr "請選擇此選項，註冊ChurchCRM後配置。"
 
 #: MenuStrings.php:19
 msgid "People/Families"
@@ -3915,8 +3915,8 @@ msgid "Help"
 msgstr "幫助"
 
 #: MenuStrings.php:66
-msgid "About ChurchInfo"
-msgstr "關於ChurchInfo"
+msgid "About ChurchCRM"
+msgstr "關於ChurchCRM"
 
 #: MenuStrings.php:67
 msgid "Wiki Documentation"
@@ -3967,8 +3967,8 @@ msgid "Edit Custom Family Fields"
 msgstr "編輯自定義家庭領域"
 
 #: mrbs.php:26
-msgid "ChurchInfo MRBS Portal"
-msgstr "ChurchInfo MRBS門戶網站"
+msgid "ChurchCRM MRBS Portal"
+msgstr "ChurchCRM MRBS門戶網站"
 
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
@@ -4644,9 +4644,9 @@ msgstr "執行查詢"
 
 #: Register.php:21
 msgid ""
-"Please register your copy of ChurchInfo by checking over this information "
+"Please register your copy of ChurchCRM by checking over this information "
 "and pressing the Send button.  "
-msgstr "通過檢查此資訊，按下“發送”按鈕，請註冊您的ChurchInfo的。"
+msgstr "通過檢查此資訊，按下“發送”按鈕，請註冊您的ChurchCRM的。"
 
 #: Register.php:22
 msgid ""
@@ -5280,8 +5280,8 @@ msgid "Add New Opportunity"
 msgstr "添加新機遇"
 
 #: webcalendar.php:26
-msgid "ChurchInfo WebCalendar Portal"
-msgstr "ChurchInfo台網路行事歷門戶網站"
+msgid "ChurchCRM WebCalendar Portal"
+msgstr "ChurchCRM台網路行事歷門戶網站"
 
 #: WhyCameEditor.php:29
 msgid "\"Why Came\" notes for "
@@ -5679,8 +5679,8 @@ msgstr "工作/其他電子郵件"
 #: Reports/DirectoryReport.php:667
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchInfo."
-msgstr "此選項需要至少3.22版本的MySQL！命中瀏覽器的“後退”按鈕返回到ChurchInfo的。"
+"button to return to ChurchCRM."
+msgstr "此選項需要至少3.22版本的MySQL！命中瀏覽器的“後退”按鈕返回到ChurchCRM的。"
 
 #: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:162
 msgid " for all funds"

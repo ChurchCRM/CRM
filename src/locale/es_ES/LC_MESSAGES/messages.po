@@ -1172,8 +1172,8 @@ msgid "Only jpeg photos can be uploaded."
 msgstr "solo archivos .jpg pueden ser usados"
 
 #: CheckVersion.php:62
-msgid "ChurchInfo: Database Version Check"
-msgstr "ChurchInfo: verificacion de base de datos"
+msgid "ChurchCRM: Database Version Check"
+msgstr "ChurchCRM: verificacion de base de datos"
 
 #: ConvertIndividualToFamily.php:46
 msgid "Convert Individuals to Families"
@@ -1523,8 +1523,8 @@ msgstr ""
 "contacto con el administrador."
 
 #: Login.php:349
-msgid "ChurchInfo: Login"
-msgstr "ChurchInfo: Ingresar"
+msgid "ChurchCRM: Login"
+msgstr "ChurchCRM: Ingresar"
 
 #: Login.php:393
 msgid "Please Login"
@@ -3654,7 +3654,7 @@ msgid "New Role:"
 msgstr "Nueva función:"
 
 #: Menu.php:31
-msgid "Welcome to ChurchInfo"
+msgid "Welcome to ChurchCRM"
 msgstr "Bienvenido al Sistema de Gestión de Donadores"
 
 #: Menu.php:36
@@ -3872,7 +3872,7 @@ msgid "Edit User Default Settings"
 msgstr "Editar configuraciones de usuario por defecto"
 
 #: MenuStrings.php:18
-msgid "Please select this option to register ChurchInfo after configuring."
+msgid "Please select this option to register ChurchCRM after configuring."
 msgstr "Seleccione esta opción para registrar"
 
 #: MenuStrings.php:19
@@ -4045,7 +4045,7 @@ msgid "Help"
 msgstr "Ayuda"
 
 #: MenuStrings.php:66
-msgid "About ChurchInfo"
+msgid "About ChurchCRM"
 msgstr "Acerca del Sistema"
 
 #: MenuStrings.php:67
@@ -4098,8 +4098,8 @@ msgstr "Editar campos personalizados de Institución"
 
 #: mrbs.php:26
 #, fuzzy
-msgid "ChurchInfo MRBS Portal"
-msgstr "ChurchInfo: Ingresar"
+msgid "ChurchCRM MRBS Portal"
+msgstr "ChurchCRM: Ingresar"
 
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
@@ -4796,7 +4796,7 @@ msgstr "Ejecutar búsqueda"
 
 #: Register.php:21
 msgid ""
-"Please register your copy of ChurchInfo by checking over this information "
+"Please register your copy of ChurchCRM by checking over this information "
 "and pressing the Send button.  "
 msgstr "Reguistrar copia"
 
@@ -5452,8 +5452,8 @@ msgid "Add New Opportunity"
 msgstr "Añadir nueva oportunidad"
 
 #: webcalendar.php:26
-msgid "ChurchInfo WebCalendar Portal"
-msgstr "ChurchInfo Portal WebCalendar"
+msgid "ChurchCRM WebCalendar Portal"
+msgstr "ChurchCRM Portal WebCalendar"
 
 #: WhyCameEditor.php:29
 msgid "\"Why Came\" notes for "
@@ -5851,8 +5851,8 @@ msgstr "Trabajo / Email Otros"
 #: Reports/DirectoryReport.php:667
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchInfo."
-msgstr "Esta opción requiere al menos la versión 3.22 de MySQL! Pulse el botón Atrás de su navegador para volver a ChurchInfo."
+"button to return to ChurchCRM."
+msgstr "Esta opción requiere al menos la versión 3.22 de MySQL! Pulse el botón Atrás de su navegador para volver a ChurchCRM."
 
 #: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:162
 msgid " for all funds"

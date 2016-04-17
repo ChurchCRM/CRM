@@ -1119,7 +1119,7 @@ msgid "Only jpeg photos can be uploaded."
 msgstr ""
 
 #: CheckVersion.php:62
-msgid "ChurchInfo: Database Version Check"
+msgid "ChurchCRM: Database Version Check"
 msgstr ""
 
 #: ConvertIndividualToFamily.php:46
@@ -1460,7 +1460,7 @@ msgid ""
 msgstr ""
 
 #: Login.php:349
-msgid "ChurchInfo: Login"
+msgid "ChurchCRM: Login"
 msgstr ""
 
 #: Login.php:393
@@ -3529,7 +3529,7 @@ msgid "New Role:"
 msgstr ""
 
 #: Menu.php:31
-msgid "Welcome to ChurchInfo"
+msgid "Welcome to ChurchCRM"
 msgstr ""
 
 #: Menu.php:36
@@ -3745,7 +3745,7 @@ msgid "Edit User Default Settings"
 msgstr ""
 
 #: MenuStrings.php:18
-msgid "Please select this option to register ChurchInfo after configuring."
+msgid "Please select this option to register ChurchCRM after configuring."
 msgstr ""
 
 #: MenuStrings.php:19
@@ -3915,7 +3915,7 @@ msgid "Help"
 msgstr ""
 
 #: MenuStrings.php:66
-msgid "About ChurchInfo"
+msgid "About ChurchCRM"
 msgstr ""
 
 #: MenuStrings.php:67
@@ -3967,7 +3967,7 @@ msgid "Edit Custom Family Fields"
 msgstr ""
 
 #: mrbs.php:26
-msgid "ChurchInfo MRBS Portal"
+msgid "ChurchCRM MRBS Portal"
 msgstr ""
 
 #: NoteDelete.php:29
@@ -4644,7 +4644,7 @@ msgstr ""
 
 #: Register.php:21
 msgid ""
-"Please register your copy of ChurchInfo by checking over this information "
+"Please register your copy of ChurchCRM by checking over this information "
 "and pressing the Send button.  "
 msgstr ""
 
@@ -5280,7 +5280,7 @@ msgid "Add New Opportunity"
 msgstr ""
 
 #: webcalendar.php:26
-msgid "ChurchInfo WebCalendar Portal"
+msgid "ChurchCRM WebCalendar Portal"
 msgstr ""
 
 #: WhyCameEditor.php:29
@@ -5679,7 +5679,7 @@ msgstr ""
 #: Reports/DirectoryReport.php:667
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchInfo."
+"button to return to ChurchCRM."
 msgstr ""
 
 #: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:162

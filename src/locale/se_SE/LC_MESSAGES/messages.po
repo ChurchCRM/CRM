@@ -1111,8 +1111,8 @@ msgid "Only jpeg photos can be uploaded."
 msgstr "Endast JPG foto kan uppladdas"
 
 #: CheckVersion.php:61
-msgid "ChurchInfo: Database Version Check"
-msgstr "ChurchInfo: Databas Version Kontroll"
+msgid "ChurchCRM: Database Version Check"
+msgstr "ChurchCRM: Databas Version Kontroll"
 
 #: ConvertIndividualToFamily.php:46
 msgid "Convert Individuals to Families"
@@ -1447,8 +1447,8 @@ msgstr ""
 "För många felaktiga inloggningar:  ditt konto är låst.  Kontaka administratören."
 
 #: Login.php:318
-msgid "ChurchInfo: Login"
-msgstr "ChurchInfo: Logga in"
+msgid "ChurchCRM: Login"
+msgstr "ChurchCRM: Logga in"
 
 #: Login.php:325
 msgid "Please Login"
@@ -3338,7 +3338,7 @@ msgid "New Role:"
 msgstr "Ny roll:"
 
 #: Menu.php:31
-msgid "Welcome to ChurchInfo"
+msgid "Welcome to ChurchCRM"
 msgstr "Välkomen till kyrkoinformation"
 
 #: Menu.php:36
@@ -4132,10 +4132,10 @@ msgstr "Gör förfrågan"
 
 #: Register.php:21
 msgid ""
-"Please register your copy of ChurchInfo by checking over this information "
+"Please register your copy of ChurchCRM by checking over this information "
 "and pressing the Send button.  "
 msgstr ""
-"Var snäll och anmälla din kopia av ChurchInfo igenom att kolla denna information "
+"Var snäll och anmälla din kopia av ChurchCRM igenom att kolla denna information "
 "och trycka på Skicka knappen.  "
 
 #: Register.php:22
@@ -4906,10 +4906,10 @@ msgstr "Arbet/övriga epost"
 #: Reports\DirectoryReport.php:649
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchInfo."
+"button to return to ChurchCRM."
 msgstr ""
 "Denna val krävs att minst version 3.22 av MySql! Slå på din webbrowsers "
-"tillbaka knapp för att återgå till ChurchInfo."
+"tillbaka knapp för att återgå till ChurchCRM."
 
 #: Reports\GroupReport.php:58
 msgid "Group Directory"
@@ -5244,8 +5244,8 @@ msgstr "Redigera rapport inställningar"
 msgid "Edit User Default Settings" 
 msgstr "Redigera användare standard inställningar"
 
-msgid "Please select this option to register ChurchInfo after configuring." 
-msgstr "Please select this option to register ChurchInfo after configuring."
+msgid "Please select this option to register ChurchCRM after configuring."
+msgstr "Please select this option to register ChurchCRM after configuring."
 
 msgid "People/Families" 
 msgstr "Personer/Familjer"
@@ -5345,8 +5345,8 @@ msgstr "Egenskapartyper"
 
 msgid "Help" msgstr "Hjälp"
 
-msgid "About ChurchInfo" 
-msgstr "Om ChurchInfo"
+msgid "About ChurchCRM"
+msgstr "Om ChurchCRM"
 
 msgid "Wiki Documentation" 
 msgstr "Wiki Dokumentation"

@@ -1158,8 +1158,8 @@ msgid "Only jpeg photos can be uploaded."
 msgstr "Kun JPEG bilder kan lastes opp."
 
 #: CheckVersion.php:62
-msgid "ChurchInfo: Database Version Check"
-msgstr "ChurchInfo: Database versjon Sjekk"
+msgid "ChurchCRM: Database Version Check"
+msgstr "ChurchCRM: Database versjon Sjekk"
 
 #: ConvertIndividualToFamily.php:46
 msgid "Convert Individuals to Families"
@@ -1506,8 +1506,8 @@ msgstr ""
 "en administrator."
 
 #: Login.php:349
-msgid "ChurchInfo: Login"
-msgstr "ChurchInfo: Logg inn"
+msgid "ChurchCRM: Login"
+msgstr "ChurchCRM: Logg inn"
 
 #: Login.php:393
 msgid "Please Login"
@@ -3635,8 +3635,8 @@ msgid "New Role:"
 msgstr "Ny rolle:"
 
 #: Menu.php:31
-msgid "Welcome to ChurchInfo"
-msgstr "Velkommen til ChurchInfo"
+msgid "Welcome to ChurchCRM"
+msgstr "Velkommen til ChurchCRM"
 
 #: Menu.php:36
 msgid "Hi"
@@ -3854,9 +3854,9 @@ msgid "Edit User Default Settings"
 msgstr "Redigere standardinnstillinger"
 
 #: MenuStrings.php:18
-msgid "Please select this option to register ChurchInfo after configuring."
+msgid "Please select this option to register ChurchCRM after configuring."
 msgstr ""
-"Vennligst velg dette alternativet for å registrere ChurchInfo etter "
+"Vennligst velg dette alternativet for å registrere ChurchCRM etter "
 "konfigureringen."
 
 #: MenuStrings.php:19
@@ -4029,8 +4029,8 @@ msgid "Help"
 msgstr "Hjelp"
 
 #: MenuStrings.php:66
-msgid "About ChurchInfo"
-msgstr "Om ChurchInfo"
+msgid "About ChurchCRM"
+msgstr "Om ChurchCRM"
 
 #: MenuStrings.php:67
 msgid "Wiki Documentation"
@@ -4082,8 +4082,8 @@ msgstr "Rediger tilpassede Family Fields"
 
 #: mrbs.php:26
 #, fuzzy
-msgid "ChurchInfo MRBS Portal"
-msgstr "ChurchInfo: Logg inn"
+msgid "ChurchCRM MRBS Portal"
+msgstr "ChurchCRM: Logg inn"
 
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
@@ -4783,10 +4783,10 @@ msgstr "Utfør Query"
 
 #: Register.php:21
 msgid ""
-"Please register your copy of ChurchInfo by checking over this information "
+"Please register your copy of ChurchCRM by checking over this information "
 "and pressing the Send button.  "
 msgstr ""
-"Vennligst registrer din kopi av ChurchInfo ved å sjekke i denne "
+"Vennligst registrer din kopi av ChurchCRM ved å sjekke i denne "
 "informasjonen og trykke på Send-knappen."
 
 #: Register.php:22
@@ -5454,8 +5454,8 @@ msgid "Add New Opportunity"
 msgstr "Legg til ny Opportunity"
 
 #: webcalendar.php:26
-msgid "ChurchInfo WebCalendar Portal"
-msgstr "ChurchInfo WebCalendar Portal"
+msgid "ChurchCRM WebCalendar Portal"
+msgstr "ChurchCRM WebCalendar Portal"
 
 #: WhyCameEditor.php:29
 msgid "\"Why Came\" notes for "
@@ -5853,10 +5853,10 @@ msgstr "Arbeid / Annet Epost"
 #: Reports/DirectoryReport.php:667
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchInfo."
+"button to return to ChurchCRM."
 msgstr ""
 "Dette alternativet krever minst versjon 3.22 av MySQL! Hit leseren tilbake-"
-"knappen for å gå tilbake til ChurchInfo."
+"knappen for å gå tilbake til ChurchCRM."
 
 #: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:162
 msgid " for all funds"

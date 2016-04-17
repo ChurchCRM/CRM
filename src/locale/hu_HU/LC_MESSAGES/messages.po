@@ -1119,8 +1119,8 @@ msgid "Only jpeg photos can be uploaded."
 msgstr "Csak jpeg képek is feltölthetők."
 
 #: CheckVersion.php:62
-msgid "ChurchInfo: Database Version Check"
-msgstr "ChurchInfo: Database Version Check"
+msgid "ChurchCRM: Database Version Check"
+msgstr "ChurchCRM: Database Version Check"
 
 #: ConvertIndividualToFamily.php:46
 msgid "Convert Individuals to Families"
@@ -1460,8 +1460,8 @@ msgid ""
 msgstr "Túl sok sikertelen bejelentkezési: fiókját zárolták. Kérjük, forduljon a rendszergazda."
 
 #: Login.php:349
-msgid "ChurchInfo: Login"
-msgstr "ChurchInfo: Bejelentkezés"
+msgid "ChurchCRM: Login"
+msgstr "ChurchCRM: Bejelentkezés"
 
 #: Login.php:393
 msgid "Please Login"
@@ -3529,8 +3529,8 @@ msgid "New Role:"
 msgstr "Új Szerep:"
 
 #: Menu.php:31
-msgid "Welcome to ChurchInfo"
-msgstr "Üdvözöljük a ChurchInfo"
+msgid "Welcome to ChurchCRM"
+msgstr "Üdvözöljük a ChurchCRM"
 
 #: Menu.php:36
 msgid "Hi"
@@ -3745,8 +3745,8 @@ msgid "Edit User Default Settings"
 msgstr "Felhasználó szerkesztése Alapértelmezett beállítások"
 
 #: MenuStrings.php:18
-msgid "Please select this option to register ChurchInfo after configuring."
-msgstr "Kérjük, válassza ki ezt az opciót regisztrációja ChurchInfo konfigurálása után."
+msgid "Please select this option to register ChurchCRM after configuring."
+msgstr "Kérjük, válassza ki ezt az opciót regisztrációja ChurchCRM konfigurálása után."
 
 #: MenuStrings.php:19
 msgid "People/Families"
@@ -3915,8 +3915,8 @@ msgid "Help"
 msgstr "Segítség"
 
 #: MenuStrings.php:66
-msgid "About ChurchInfo"
-msgstr "A ChurchInfo"
+msgid "About ChurchCRM"
+msgstr "A ChurchCRM"
 
 #: MenuStrings.php:67
 msgid "Wiki Documentation"
@@ -3967,8 +3967,8 @@ msgid "Edit Custom Family Fields"
 msgstr "Szerkesztése Egyéni Family mezők"
 
 #: mrbs.php:26
-msgid "ChurchInfo MRBS Portal"
-msgstr "ChurchInfo MRBS Portal"
+msgid "ChurchCRM MRBS Portal"
+msgstr "ChurchCRM MRBS Portal"
 
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
@@ -4644,9 +4644,9 @@ msgstr "Execute Query"
 
 #: Register.php:21
 msgid ""
-"Please register your copy of ChurchInfo by checking over this information "
+"Please register your copy of ChurchCRM by checking over this information "
 "and pressing the Send button.  "
-msgstr "Kérjük regisztrálja másolatát ChurchInfo ellenőrzésével át ezt az információt, és nyomja meg a Küldés gombot."
+msgstr "Kérjük regisztrálja másolatát ChurchCRM ellenőrzésével át ezt az információt, és nyomja meg a Küldés gombot."
 
 #: Register.php:22
 msgid ""
@@ -5280,8 +5280,8 @@ msgid "Add New Opportunity"
 msgstr "Új Opportunity"
 
 #: webcalendar.php:26
-msgid "ChurchInfo WebCalendar Portal"
-msgstr "ChurchInfo WebCalendar Portal"
+msgid "ChurchCRM WebCalendar Portal"
+msgstr "ChurchCRM WebCalendar Portal"
 
 #: WhyCameEditor.php:29
 msgid "\"Why Came\" notes for "
@@ -5679,8 +5679,8 @@ msgstr "Munka / Egyéb Email"
 #: Reports/DirectoryReport.php:667
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchInfo."
-msgstr "Ez a lehetőség szerint legalább verziója 3,22 MySQL! Hit böngésző Vissza gombot, hogy visszatérjen ChurchInfo."
+"button to return to ChurchCRM."
+msgstr "Ez a lehetőség szerint legalább verziója 3,22 MySQL! Hit böngésző Vissza gombot, hogy visszatérjen ChurchCRM."
 
 #: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:162
 msgid " for all funds"

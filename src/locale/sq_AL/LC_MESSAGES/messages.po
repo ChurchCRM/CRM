@@ -1111,8 +1111,8 @@ msgid "Only jpeg photos can be uploaded."
 msgstr "Vetëm fotot jpeg mund të jetë i ngarkuar."
 
 #: CheckVersion.php:62
-msgid "ChurchInfo: Database Version Check"
-msgstr "ChurchInfo: Baza e të dhënave Version Kontrollo"
+msgid "ChurchCRM: Database Version Check"
+msgstr "ChurchCRM: Baza e të dhënave Version Kontrollo"
 
 #: ConvertIndividualToFamily.php:46
 msgid "Convert Individuals to Families"
@@ -1452,8 +1452,8 @@ msgid ""
 msgstr "Shumë hyrje të dështuara: llogaria juaj ka qenë e mbyllur. Ju lutem kontaktoni një administrator."
 
 #: Login.php:349
-msgid "ChurchInfo: Login"
-msgstr "ChurchInfo: Login"
+msgid "ChurchCRM: Login"
+msgstr "ChurchCRM: Login"
 
 #: Login.php:393
 msgid "Please Login"
@@ -3513,8 +3513,8 @@ msgid "New Role:"
 msgstr "Roli i ri:"
 
 #: Menu.php:31
-msgid "Welcome to ChurchInfo"
-msgstr "Mirë se vini në ChurchInfo"
+msgid "Welcome to ChurchCRM"
+msgstr "Mirë se vini në ChurchCRM"
 
 #: Menu.php:36
 msgid "Hi"
@@ -3729,8 +3729,8 @@ msgid "Edit User Default Settings"
 msgstr "Edit User Default Settings"
 
 #: MenuStrings.php:18
-msgid "Please select this option to register ChurchInfo after configuring."
-msgstr "Ju lutemi zgjidhni këtë opsion për të regjistruar ChurchInfo pas konfigurimin."
+msgid "Please select this option to register ChurchCRM after configuring."
+msgstr "Ju lutemi zgjidhni këtë opsion për të regjistruar ChurchCRM pas konfigurimin."
 
 #: MenuStrings.php:19
 msgid "People/Families"
@@ -3899,8 +3899,8 @@ msgid "Help"
 msgstr "Ndihmë"
 
 #: MenuStrings.php:66
-msgid "About ChurchInfo"
-msgstr "Rreth ChurchInfo"
+msgid "About ChurchCRM"
+msgstr "Rreth ChurchCRM"
 
 #: MenuStrings.php:67
 msgid "Wiki Documentation"
@@ -3951,8 +3951,8 @@ msgid "Edit Custom Family Fields"
 msgstr "Edit Fushat Custom Family"
 
 #: mrbs.php:26
-msgid "ChurchInfo MRBS Portal"
-msgstr "ChurchInfo MRBS Portal"
+msgid "ChurchCRM MRBS Portal"
+msgstr "ChurchCRM MRBS Portal"
 
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
@@ -4628,9 +4628,9 @@ msgstr "Execute Query"
 
 #: Register.php:21
 msgid ""
-"Please register your copy of ChurchInfo by checking over this information "
+"Please register your copy of ChurchCRM by checking over this information "
 "and pressing the Send button.  "
-msgstr "Ju lutemi regjistrohuni kopje të ChurchInfo duke kontrolluar mbi këtë informacion dhe të shtypur butonin Send.  "
+msgstr "Ju lutemi regjistrohuni kopje të ChurchCRM duke kontrolluar mbi këtë informacion dhe të shtypur butonin Send.  "
 
 #: Register.php:22
 msgid ""
@@ -5263,8 +5263,8 @@ msgid "Add New Opportunity"
 msgstr "Shto mundësi e re"
 
 #: webcalendar.php:26
-msgid "ChurchInfo WebCalendar Portal"
-msgstr "ChurchInfo WebCalendar Portal"
+msgid "ChurchCRM WebCalendar Portal"
+msgstr "ChurchCRM WebCalendar Portal"
 
 #: WhyCameEditor.php:29
 msgid "Why Came notes for "
@@ -5662,8 +5662,8 @@ msgstr "Puna / tjera Email"
 #: Reports/DirectoryReport.php:667
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchInfo."
-msgstr "Ky opsion kërkon të paktën versionin 3.22 të MySQL! Shfletuesi goditi përsëri button për t'u kthyer në ChurchInfo."
+"button to return to ChurchCRM."
+msgstr "Ky opsion kërkon të paktën versionin 3.22 të MySQL! Shfletuesi goditi përsëri button për t'u kthyer në ChurchCRM."
 
 #: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:162
 msgid " for all funds"

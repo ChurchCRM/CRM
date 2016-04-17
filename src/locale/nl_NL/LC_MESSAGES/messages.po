@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Churchinfo\n"
+"Project-Id-Version: ChurchCRM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-19 13:42-1000\n"
 "PO-Revision-Date: 2014-02-28 15:41+0100\n"
@@ -1159,7 +1159,7 @@ msgid "Only jpeg photos can be uploaded."
 msgstr "Alleen jpeg foto's kunnen worden ge-upload."
 
 #: CheckVersion.php:62
-msgid "ChurchInfo: Database Version Check"
+msgid "ChurchCRM: Database Version Check"
 msgstr "KerkInfo: Database Versie Check"
 
 #: ConvertIndividualToFamily.php:46
@@ -1507,7 +1507,7 @@ msgstr ""
 "Administrateur."
 
 #: Login.php:349
-msgid "ChurchInfo: Login"
+msgid "ChurchCRM: Login"
 msgstr "KerkInfo : Login"
 
 #: Login.php:393
@@ -3607,7 +3607,7 @@ msgid "New Role:"
 msgstr "Nieuwe Rol:"
 
 #: Menu.php:31
-msgid "Welcome to ChurchInfo"
+msgid "Welcome to ChurchCRM"
 msgstr "Welkom bij het Lidmaatschap Programma"
 
 #: Menu.php:36
@@ -3825,7 +3825,7 @@ msgid "Edit User Default Settings"
 msgstr "Gebruikers Standaard Instellingen"
 
 #: MenuStrings.php:18
-msgid "Please select this option to register ChurchInfo after configuring."
+msgid "Please select this option to register ChurchCRM after configuring."
 msgstr "Selecteer deze optie om Kerkinfo te registreren na configuratie."
 
 #: MenuStrings.php:19
@@ -3995,7 +3995,7 @@ msgid "Help"
 msgstr "Hulp"
 
 #: MenuStrings.php:66
-msgid "About ChurchInfo"
+msgid "About ChurchCRM"
 msgstr "Over KerkInfo"
 
 #: MenuStrings.php:67
@@ -4047,7 +4047,7 @@ msgid "Edit Custom Family Fields"
 msgstr "Wijzig aanpasbare Persoons-Velden"
 
 #: mrbs.php:26
-msgid "ChurchInfo MRBS Portal"
+msgid "ChurchCRM MRBS Portal"
 msgstr "KerkInfo MRBS Portaal"
 
 #: NoteDelete.php:29
@@ -4736,7 +4736,7 @@ msgstr "Execute Query"
 
 #: Register.php:21
 msgid ""
-"Please register your copy of ChurchInfo by checking over this information "
+"Please register your copy of ChurchCRM by checking over this information "
 "and pressing the Send button.  "
 msgstr ""
 "Registreer aub uw exemplaar van het KerkInfo pakket door het invullen van de "
@@ -5406,8 +5406,8 @@ msgid "Add New Opportunity"
 msgstr "Voeg een Nieuwe Vrijwilligers klus toe"
 
 #: webcalendar.php:26
-msgid "ChurchInfo WebCalendar Portal"
-msgstr "ChurchInfo WebCalendar Portal"
+msgid "ChurchCRM WebCalendar Portal"
+msgstr "ChurchCRM WebCalendar Portal"
 
 #: WhyCameEditor.php:29
 msgid "\"Why Came\" notes for "
@@ -5808,7 +5808,7 @@ msgstr "Werk/Andere Email"
 #: Reports/DirectoryReport.php:667
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchInfo."
+"button to return to ChurchCRM."
 msgstr ""
 "Deze optie vereist op zijn minst verie 3.22 of MySQL! Ga terug naar de "
 "vorige pagina om weer gebruik te maken van KerkInfo."

@@ -1119,8 +1119,8 @@ msgid "Only jpeg photos can be uploaded."
 msgstr "Numai fotografii JPEG pot fi încărcate."
 
 #: CheckVersion.php:62
-msgid "ChurchInfo: Database Version Check"
-msgstr "ChurchInfo: Database Versiunea Plecare"
+msgid "ChurchCRM: Database Version Check"
+msgstr "ChurchCRM: Database Versiunea Plecare"
 
 #: ConvertIndividualToFamily.php:46
 msgid "Convert Individuals to Families"
@@ -1460,8 +1460,8 @@ msgid ""
 msgstr "Prea mulți datele de conectare nu a reușit: contul dvs. a fost blocat. Vă rugăm să contactați un administrator."
 
 #: Login.php:349
-msgid "ChurchInfo: Login"
-msgstr "ChurchInfo: Login"
+msgid "ChurchCRM: Login"
+msgstr "ChurchCRM: Login"
 
 #: Login.php:393
 msgid "Please Login"
@@ -3529,8 +3529,8 @@ msgid "New Role:"
 msgstr "Noul rol:"
 
 #: Menu.php:31
-msgid "Welcome to ChurchInfo"
-msgstr "Bine ati venit la ChurchInfo"
+msgid "Welcome to ChurchCRM"
+msgstr "Bine ati venit la ChurchCRM"
 
 #: Menu.php:36
 msgid "Hi"
@@ -3745,8 +3745,8 @@ msgid "Edit User Default Settings"
 msgstr "Editare implicite setarile utilizatorului"
 
 #: MenuStrings.php:18
-msgid "Please select this option to register ChurchInfo after configuring."
-msgstr "Vă rugăm să selectați această opțiune pentru a înregistra ChurchInfo după configurarea."
+msgid "Please select this option to register ChurchCRM after configuring."
+msgstr "Vă rugăm să selectați această opțiune pentru a înregistra ChurchCRM după configurarea."
 
 #: MenuStrings.php:19
 msgid "People/Families"
@@ -3915,8 +3915,8 @@ msgid "Help"
 msgstr "Ajutor"
 
 #: MenuStrings.php:66
-msgid "About ChurchInfo"
-msgstr "Despre ChurchInfo"
+msgid "About ChurchCRM"
+msgstr "Despre ChurchCRM"
 
 #: MenuStrings.php:67
 msgid "Wiki Documentation"
@@ -3967,8 +3967,8 @@ msgid "Edit Custom Family Fields"
 msgstr "Edit custom fields Familii"
 
 #: mrbs.php:26
-msgid "ChurchInfo MRBS Portal"
-msgstr "ChurchInfo MRBS Portal"
+msgid "ChurchCRM MRBS Portal"
+msgstr "ChurchCRM MRBS Portal"
 
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
@@ -4644,9 +4644,9 @@ msgstr "Executa interogări"
 
 #: Register.php:21
 msgid ""
-"Please register your copy of ChurchInfo by checking over this information "
+"Please register your copy of ChurchCRM by checking over this information "
 "and pressing the Send button.  "
-msgstr "Vă rugăm să înregistrați copia dvs. de ChurchInfo prin verificarea pe aceste informații și apăsând butonul Trimite."
+msgstr "Vă rugăm să înregistrați copia dvs. de ChurchCRM prin verificarea pe aceste informații și apăsând butonul Trimite."
 
 #: Register.php:22
 msgid ""
@@ -5280,8 +5280,8 @@ msgid "Add New Opportunity"
 msgstr "Adauga oportunitate nou"
 
 #: webcalendar.php:26
-msgid "ChurchInfo WebCalendar Portal"
-msgstr "ChurchInfo Portal WebCalendar"
+msgid "ChurchCRM WebCalendar Portal"
+msgstr "ChurchCRM Portal WebCalendar"
 
 #: WhyCameEditor.php:29
 msgid "\"Why Came\" notes for "
@@ -5679,8 +5679,8 @@ msgstr "Munca / Alte e-mail"
 #: Reports/DirectoryReport.php:667
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchInfo."
-msgstr "Această opțiune solicită cel puțin versiunea 3.22 a MySQL! Hit butonul back al browser pentru a reveni la ChurchInfo."
+"button to return to ChurchCRM."
+msgstr "Această opțiune solicită cel puțin versiunea 3.22 a MySQL! Hit butonul back al browser pentru a reveni la ChurchCRM."
 
 #: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:162
 msgid " for all funds"

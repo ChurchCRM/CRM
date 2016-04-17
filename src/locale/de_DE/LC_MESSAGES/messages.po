@@ -1172,8 +1172,8 @@ msgid "Only jpeg photos can be uploaded."
 msgstr "Es können nur jpeg Fotos hochgeladen werden"
 
 #: CheckVersion.php:62
-msgid "ChurchInfo: Database Version Check"
-msgstr "ChurchInfo: Datenbank Versionsüberprüfung"
+msgid "ChurchCRM: Database Version Check"
+msgstr "ChurchCRM: Datenbank Versionsüberprüfung"
 
 #: ConvertIndividualToFamily.php:46
 msgid "Convert Individuals to Families"
@@ -1524,8 +1524,8 @@ msgstr ""
 "bei dem Administrator."
 
 #: Login.php:349
-msgid "ChurchInfo: Login"
-msgstr "ChurchInfol: Anmeldung"
+msgid "ChurchCRM: Login"
+msgstr "ChurchCRMl: Anmeldung"
 
 #: Login.php:393
 msgid "Please Login"
@@ -3637,8 +3637,8 @@ msgid "New Role:"
 msgstr "Neue Rolle:"
 
 #: Menu.php:31
-msgid "Welcome to ChurchInfo"
-msgstr "Willkommen bei ChurchInfo"
+msgid "Welcome to ChurchCRM"
+msgstr "Willkommen bei ChurchCRM"
 
 #: Menu.php:36
 msgid "Hi"
@@ -3855,9 +3855,9 @@ msgid "Edit User Default Settings"
 msgstr "Benutzervoreinstellungen bearbeiten"
 
 #: MenuStrings.php:18
-msgid "Please select this option to register ChurchInfo after configuring."
+msgid "Please select this option to register ChurchCRM after configuring."
 msgstr ""
-"Bitte verwenden sie diese Option um Churchinfo nach der Konfiguration zu "
+"Bitte verwenden sie diese Option um ChurchCRM nach der Konfiguration zu "
 "registrieren"
 
 #: MenuStrings.php:19
@@ -4032,8 +4032,8 @@ msgid "Help"
 msgstr "Hilfe"
 
 #: MenuStrings.php:66
-msgid "About ChurchInfo"
-msgstr "Über ChurchInfo"
+msgid "About ChurchCRM"
+msgstr "Über ChurchCRM"
 
 #: MenuStrings.php:67
 msgid "Wiki Documentation"
@@ -4085,8 +4085,8 @@ msgstr "Benutzerspezifische Familienfelder bearbeiten"
 
 #: mrbs.php:26
 #, fuzzy
-msgid "ChurchInfo MRBS Portal"
-msgstr "ChurchInfol: Anmeldung"
+msgid "ChurchCRM MRBS Portal"
+msgstr "ChurchCRMl: Anmeldung"
 
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
@@ -4778,10 +4778,10 @@ msgstr "Abrage starten"
 
 #: Register.php:21
 msgid ""
-"Please register your copy of ChurchInfo by checking over this information "
+"Please register your copy of ChurchCRM by checking over this information "
 "and pressing the Send button.  "
 msgstr ""
-"Bitte registrieren sie ihre Kopie von ChurchInfo indem sie diese Information "
+"Bitte registrieren sie ihre Kopie von ChurchCRM indem sie diese Information "
 "überprüfend und versenden."
 
 #: Register.php:22
@@ -5464,8 +5464,8 @@ msgid "Add New Opportunity"
 msgstr "Neuen Fähigkeit hinzufügen"
 
 #: webcalendar.php:26
-msgid "ChurchInfo WebCalendar Portal"
-msgstr "ChurchInfo WebCalendar Portal"
+msgid "ChurchCRM WebCalendar Portal"
+msgstr "ChurchCRM WebCalendar Portal"
 
 #: WhyCameEditor.php:29
 msgid "\"Why Came\" notes for "
@@ -5870,7 +5870,7 @@ msgstr "Email geschäftlich/weitere"
 #: Reports/DirectoryReport.php:667
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchInfo."
+"button to return to ChurchCRM."
 msgstr ""
 "Diese Option benötigt mindesten MySQL Version 3.22! Bitte drücken sie den "
 "Zurück-Knop ihres Browsers."
