@@ -5,7 +5,7 @@ MAINTAINER George Dawoud <george@dawouds.com>
 RUN rm -fr /app && git clone https://github.com/ChurchCRM/CRM.git /churchcrm && mv /churchcrm/src /app
 
 # MySQL utils
-COPY setup_mysql.sh /setup_mysql.sh
+COPY mysql-setup.sh /mysql-setup.sh
 RUN chmod 755 /*.sh
 
 EXPOSE 80 3306
