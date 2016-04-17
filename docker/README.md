@@ -1,13 +1,14 @@
-#Church CRM Docker
-
+Church CRM Docker
+--------------------------------
 Docker Image for running Church CRM
 
-##Default username/password
-
+Default username/password
+--------------------------------
 * User: `admin`
 * Password: `changeme`
 
-##Links
+Links
+--------
 
 * [Site] (http://churchcrm.io)
 * [Demo Site] (http://demo.churchcrm.io)
