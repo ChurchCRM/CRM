@@ -416,12 +416,26 @@ $app->group('/data/seed', function () use ($app) {
   });
 });
 
-function getJSONFromApp($app) {
+$app->group('/issues', function () use ($app)
+{
+  $systemService = $app->SystemService;
+  $app->post('/', function () use ($app, $systemService) {
+        $request = $app->request();
+        $body = $request->getBody();
+        $input = json_decode($body);
+        $app->SystemService->reportIssue($input);
+  });
+  
+});
 
-  $request = $app->request();
+function getJSONFromApp($app)
+{
+	$request = $app->request();
   $body = $request->getBody();
   return json_decode($body);
 }
+
+
 
 $app->run();
 
