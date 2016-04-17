@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "============= Install and run github change-log generator =================================="
+
 sudo apt-get install -y ruby
 
 gem install github_changelog_generator
