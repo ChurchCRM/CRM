@@ -1,10 +1,8 @@
 <?php
 
-class SystemService
-{
+class SystemService {
 
-  function playbackSQLtoDatabase($fileName)
-  {
+  function playbackSQLtoDatabase($fileName) {
     requireUserGroupMembership("bAdmin");
     $query = '';
     $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -17,11 +15,9 @@ class SystemService
         }
       }
     }
-
   }
 
-  function restoreDatabaseFromBackup()
-  {
+  function restoreDatabaseFromBackup() {
     requireUserGroupMembership("bAdmin");
     $restoreResult = new StdClass();
     global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $sGZIPname;
@@ -45,16 +41,17 @@ class SystemService
         $this->playbackSQLtoDatabase($restoreResult->SQLfile);
         exec("rm -rf $restoreResult->root/Images/*");
         exec("mv -f $restoreResult->backupRoot/Images/* $restoreResult->root/Images");
-
-      } else if ($restoreResult->type2 == "sql") {
+      }
+      else if ($restoreResult->type2 == "sql") {
         exec("mkdir $restoreResult->backupRoot");
         exec("mv  " . $file['tmp_name'] . " " . $restoreResult->backupRoot . "/" . $file['name']);
         $restoreResult->uncompressCommand = "sGZIPname -d $restoreResult->backupRoot/" . $file['name'];
-        exec($restoreResult->uncompressCommand, $rs1, $returnStatus);;
+        exec($restoreResult->uncompressCommand, $rs1, $returnStatus); ;
         $restoreResult->SQLfile = $restoreResult->backupRoot . "/" . substr($file['name'], 0, strlen($file['name']) - 3);
         $this->playbackSQLtoDatabase($restoreResult->SQLfile);
       }
-    } else if ($restoreResult->type == "sql") {
+    }
+    else if ($restoreResult->type == "sql") {
       $this->playbackSQLtoDatabase($file['tmp_name']);
     }
     exec("rm -rf $restoreResult->backupRoot");
@@ -62,11 +59,9 @@ class SystemService
     $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
     $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
     return $restoreResult;
-
   }
 
-  function getDatabaseBackup($params)
-  {
+  function getDatabaseBackup($params) {
     requireUserGroupMembership("bAdmin");
     global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME, $sGZIPname, $sZIPname, $sPGPname;
 
@@ -79,9 +74,12 @@ class SystemService
     exec("rm -rf  $backup->backupRoot");
     exec("mkdir  $backup->backupRoot");
     // Check to see whether this installation has gzip, zip, and gpg
-    if (isset($sGZIPname)) $hasGZIP = true;
-    if (isset($sZIPname)) $hasZIP = true;
-    if (isset($sPGPname)) $hasPGP = true;
+    if (isset($sGZIPname))
+      $hasGZIP = true;
+    if (isset($sZIPname))
+      $hasZIP = true;
+    if (isset($sPGPname))
+      $hasPGP = true;
 
     $backup->params = $params;
     $bNoErrors = true;
@@ -92,7 +90,7 @@ class SystemService
     $backupCommand = "mysqldump -u $sUSER --password=$sPASSWORD --host=$sSERVERNAME $sDATABASE > $backup->SQLFile";
     exec($backupCommand, $returnString, $returnStatus);
 
-    switch ($params->iArchiveType) {
+    switch($params->iArchiveType) {
       case 0: # The user wants a gzip'd SQL file.
         $backup->saveTo .= ".sql";
         exec("mv $backup->SQLFile  $backup->saveTo");
@@ -117,11 +115,9 @@ class SystemService
         exec($backup->compressCommand, $returnString, $returnStatus);
         $backup->archiveResult = $returnString;
         break;
-
     }
 
-    if ($params->bEncryptBackup)  #the user has selected an encrypted backup
-    {
+    if ($params->bEncryptBackup) {  #the user has selected an encrypted backup
       putenv("GNUPGHOME=/tmp");
       $backup->encryptCommand = "echo $params->password | $sPGPname -q -c --batch --no-tty --passphrase-fd 0 $backup->saveTo";
       $backup->saveTo .= ".gpg";
@@ -129,7 +125,7 @@ class SystemService
       $archiveType = 3;
     }
 
-    switch ($params->iArchiveType) {
+    switch($params->iArchiveType) {
       case 0:
         array_push($backup->headers, "");
       case 1:
@@ -144,12 +140,9 @@ class SystemService
     array_push($backup->headers, "Content-Disposition: attachment; filename=$backup->filename");
 
     return $backup;
-
-
   }
 
-  function download($filename)
-  {
+  function download($filename) {
     requireUserGroupMembership("bAdmin");
     set_time_limit(0);
     $path = dirname(dirname(__FILE__)) . "/tmp_attach/ChurchCRMBackups/$filename";
@@ -158,7 +151,7 @@ class SystemService
         $fsize = filesize($path);
         $path_parts = pathinfo($path);
         $ext = strtolower($path_parts["extension"]);
-        switch ($ext) {
+        switch($ext) {
           case "gz":
             header("Content-type: application/x-gzip");
             header("Content-Disposition: attachment; filename=\"" . $path_parts["basename"] . "\"");
@@ -197,18 +190,15 @@ class SystemService
     }
   }
 
-  function getConfigurationSetting($settingName, $settingValue)
-  {
+  function getConfigurationSetting($settingName, $settingValue) {
     requireUserGroupMembership("bAdmin");
   }
 
-  function setConfigurationSetting($settingName, $settingValue)
-  {
+  function setConfigurationSetting($settingName, $settingValue) {
     requireUserGroupMembership("bAdmin");
   }
 
-  function getDatabaseVersion()
-  {
+  function getDatabaseVersion() {
     // Check if the table version_ver exists.  If the table does not exist then
     // SQL scripts must be manually run to get the database up to version 1.2.7
     $bVersionTableExists = FALSE;
@@ -226,17 +216,14 @@ class SystemService
       return $ver_version;
     }
     return false;
-
   }
 
-  function rebuildWithSQL($SQLFile)
-  {
+  function rebuildWithSQL($SQLFile) {
     $root = dirname(dirname(__FILE__));
     $this->playbackSQLtoDatabase($root . $SQLFile);
   }
 
-  function checkDatabaseVersion()
-  {
+  function checkDatabaseVersion() {
     $root = dirname(dirname(__FILE__));
     $ver_version = $this->getDatabaseVersion();
     if ($ver_version == $_SESSION['sSoftwareInstalledVersion']) {
@@ -266,6 +253,38 @@ class SystemService
     }
 
     return false;
-
   }
+
+  function reportIssue($data) {
+
+    $serviceURL = "http://demo.churchcrm.io/issues/";
+
+    $issueDescription = FilterInput($data->issueDescription) . "\r\n\r\n\r\n" .
+            "Collected Value Title |  Data \r\n" .
+            "----------------------|----------------\r\n" .
+            "Platform Information | " . php_uname($mode = "a") . "\r\n" .
+            "PHP Version | " . phpversion() . "\r\n" .
+            "ChurchCRM Version |" . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
+            "Reporting Browser |" . $_SERVER['HTTP_USER_AGENT'] . "\r\n" .
+            "Apache Modules    |" . implode(",", apache_get_modules());
+
+    $postdata = new stdClass();
+    $postdata->issueTitle = FilterInput($data->issueTitle);
+    $postdata->issueDescription = $issueDescription;
+
+    $curlService = curl_init($serviceURL);
+
+    curl_setopt($curlService, CURLOPT_POST, true);
+    curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($postdata));
+    curl_setopt($curlService, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curlService, CURLOPT_CONNECTTIMEOUT, 1);
+
+
+    $result = curl_exec($curlService);
+    if ($result === FALSE) {
+      throw new Exception("Unable to reach the issue bridge", 500);
+    }
+    echo $result;
+  }
+
 }
