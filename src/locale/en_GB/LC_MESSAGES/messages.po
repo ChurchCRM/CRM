@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: en_AU V1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-02 19:34-0000\n"
+"PO-Revision-Date: 2011-05-07 20:48-0000\n"
+"Last-Translator: Mike King <mikeking1@live.co.uk>\n"
+"Language-Team: Australian <kym@farnik.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: C:\\Users\\Mike\\Downloads\\ChurchCRM-1.2.12\\ChurchCRM\\\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: AutoPaymentEditor.php:372
+msgid "State"
+msgstr "County"
+
+#: AutoPaymentEditor.php:377
+#, fuzzy
+msgid "Zip code"
+msgstr "Postcode"
+
+#: CartToFamily.php:256
+msgid "State:"
+msgstr "County:"
+
+#: CartToFamily.php:261
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(Use the textbox for countries other than the UK)"
+
+#: CartToFamily.php:269
+msgid "Postal Code:"
+msgstr "Postcode:"
+
+#: CartToFamily.php:271
+msgid "Zip:"
+msgstr "Postcode:"
+
+#: DirectoryReports.php:179
+msgid "Family Cell Phone"
+msgstr "Family Mobile"
+
+#: DirectoryReports.php:184
+msgid "Personal Cell Phone"
+msgstr "Personal Mobile"
+
+#: FinancialReports.php:234
+msgid "Check"
+msgstr "Cheque"
+
+#: Menu.php:31
+msgid "Welcome to ChurchCRM"
+msgstr "Welcome to ChurchCRM UK version"
+
+#: PledgeEditor.php:543
+msgid "CHECK"
+msgstr "Cheque"
+
+#: PledgeEditor.php:618
+msgid "Total $"
+msgstr "Total"
+
+#: PledgeEditor.php:671
+msgid "Scan check"
+msgstr "scan cheque"
+
+#: SelectList.php:485
+msgid "By ZIP/Postal Code"
+msgstr "By Postcode"
+
+#: Include/Functions.php:1116
+msgid "Fall"
+msgstr "Autumn"
+
+#: Reports/ConfirmReport.php:124
+msgid "City, State, Zip"
+msgstr "City, Pcode"
+
+#: Reports/ConfirmReport.php:175
+#: Reports/ConfirmReport.php:194
+msgid "Cell phone"
+msgstr "Mobile Phone"
+
+#: Reports/DirectoryReport.php:327
+#: Reports/DirectoryReport.php:393
+#: Reports/DirectoryReport.php:454
+#: Reports/DirectoryReport.php:757
+#: Reports/GroupReport.php:273
+msgid "Cell"
+msgstr "Mobile"
+

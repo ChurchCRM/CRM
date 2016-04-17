@@ -25,7 +25,7 @@ to add/update a new ui dependency
 
 see vagrant/install-sass.sh and vagrant/build-sass.sh
  
-1. update churchinfo/skin/churchcrm.scss as needed
+1. update src/skin/churchcrm.scss as needed
 2. ssh into vagrant box (vagrant/vagrant)
 3. run install-sass.sh once
 4. run build-sass.sh

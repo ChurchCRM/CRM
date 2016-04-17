@@ -1,5 +1,33 @@
 # Change Log
 
+## [2.0.0-RC2](https://github.com/ChurchCRM/CRM/tree/2.0.0-RC2) (2016-04-17)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0-RC1...2.0.0-RC2)
+
+**Fixed bugs:**
+
+- 2.0.0-RC1 Uprgade Fails [\#533](https://github.com/ChurchCRM/CRM/issues/533)
+- 2.0.0-RC1 Deposit Graph not visible on Menu.php [\#530](https://github.com/ChurchCRM/CRM/issues/530)
+- Groups: Enable Group Specific Properties does not work [\#468](https://github.com/ChurchCRM/CRM/issues/468)
+- 468 group specific properties [\#535](https://github.com/ChurchCRM/CRM/pull/535) ([crossan007](https://github.com/crossan007))
+- Fix deposit graph on menu.php \(Broken by \#515\) [\#532](https://github.com/ChurchCRM/CRM/pull/532) ([crossan007](https://github.com/crossan007))
+
+**Closed issues:**
+
+- Test Bug [\#552](https://github.com/ChurchCRM/CRM/issues/552)
+- Person images don't work in subdirectories [\#546](https://github.com/ChurchCRM/CRM/issues/546)
+- Seed Data does not work in develop [\#539](https://github.com/ChurchCRM/CRM/issues/539)
+- Test Version [\#538](https://github.com/ChurchCRM/CRM/issues/538)
+- Test [\#537](https://github.com/ChurchCRM/CRM/issues/537)
+
+**Merged pull requests:**
+
+- Master -\> develop [\#555](https://github.com/ChurchCRM/CRM/pull/555) ([DawoudIO](https://github.com/DawoudIO))
+- Merge Develop 2.0.0 to Master [\#554](https://github.com/ChurchCRM/CRM/pull/554) ([DawoudIO](https://github.com/DawoudIO))
+- 546 - Fix sRootPath in Person Service [\#547](https://github.com/ChurchCRM/CRM/pull/547) ([crossan007](https://github.com/crossan007))
+- Update the seed service API object definition [\#545](https://github.com/ChurchCRM/CRM/pull/545) ([crossan007](https://github.com/crossan007))
+- 455 in app bug reporting [\#536](https://github.com/ChurchCRM/CRM/pull/536) ([crossan007](https://github.com/crossan007))
+- Fix MySQL Upgrade Scripts [\#534](https://github.com/ChurchCRM/CRM/pull/534) ([crossan007](https://github.com/crossan007))
+
 ## [2.0.0-RC1](https://github.com/ChurchCRM/CRM/tree/2.0.0-RC1) (2016-04-09)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0-B6...2.0.0-RC1)
 
