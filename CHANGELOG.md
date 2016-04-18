@@ -1,5 +1,18 @@
 # Change Log
 
+## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
+
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0-RC2...HEAD)
+
+**Fixed bugs:**
+
+- Fix docker image [\#556](https://github.com/ChurchCRM/CRM/issues/556)
+- Fix docker hub [\#557](https://github.com/ChurchCRM/CRM/pull/557) ([DawoudIO](https://github.com/DawoudIO))
+
+**Merged pull requests:**
+
+- Master -\> Develop [\#558](https://github.com/ChurchCRM/CRM/pull/558) ([DawoudIO](https://github.com/DawoudIO))
+
 ## [2.0.0-RC2](https://github.com/ChurchCRM/CRM/tree/2.0.0-RC2) (2016-04-17)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0-RC1...2.0.0-RC2)
 
