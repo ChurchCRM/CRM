@@ -258,15 +258,20 @@ class SystemService {
   function reportIssue($data) {
 
     $serviceURL = "http://demo.churchcrm.io/issues/";
-
+    $headers = array();
+    $headers[] = "Content-type: application/json";
+    
     $issueDescription = FilterInput($data->issueDescription) . "\r\n\r\n\r\n" .
             "Collected Value Title |  Data \r\n" .
             "----------------------|----------------\r\n" .
             "Platform Information | " . php_uname($mode = "a") . "\r\n" .
             "PHP Version | " . phpversion() . "\r\n" .
             "ChurchCRM Version |" . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
-            "Reporting Browser |" . $_SERVER['HTTP_USER_AGENT'] . "\r\n" .
-            "Apache Modules    |" . implode(",", apache_get_modules());
+            "Reporting Browser |" . $_SERVER['HTTP_USER_AGENT'] . "\r\n";
+    if (function_exists("apache_get_modules"))
+    {
+      $issueDescription .= "Apache Modules    |" . implode(",", apache_get_modules());
+    }
 
     $postdata = new stdClass();
     $postdata->issueTitle = FilterInput($data->issueTitle);
@@ -274,6 +279,7 @@ class SystemService {
 
     $curlService = curl_init($serviceURL);
 
+    curl_setopt($curlService, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($curlService, CURLOPT_POST, true);
     curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($postdata));
     curl_setopt($curlService, CURLOPT_RETURNTRANSFER, true);
