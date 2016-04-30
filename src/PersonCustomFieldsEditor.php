@@ -162,7 +162,7 @@ require "Include/Header.php"; ?>
           RunQuery($sSQL);
 
           // Insert into the custom fields table
-          $sSQL = "ALTER TABLE person_custom ADD c" . $newFieldNum;
+          $sSQL = "ALTER TABLE person_custom ADD c" . $newFieldNum." ";
 
           switch ($newFieldType) {
             case 1:
