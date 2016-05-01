@@ -39,61 +39,57 @@ $sCountry = $sDefaultCountry;
 $sComments = "";
 $sEmail = $reportConfig["sChurchEmail"];
 
-$sEmailSubject = "ChurchCRM registration";
-
 $sEmailMessage =
-	"Church name: " . $sName . "\n" .
-	"Address: " . $sAddress . "\n" .
+	"Church name: " . $sName . "\n\n" .
+
+  "Email: " .$sEmail . "\n\n" .
+
+  "Address: " . $sAddress . "\n" .
 	"City: " .$sCity . "\n" .
 	"State: " .$sState . "\n" .
 	"Zip: " .$sZip . "\n" .
-	"Country:  " .$sCountry . "\n" .
-	"Email: " .$sEmail . "\n" .
+	"Country:  " .$sCountry . "\n\n" .
+
 	"Additional comments: " . $sComments . "\n";
 
-// Poke the message into email_message_pending_emp so EmailSend can find it
-$sSQL = "INSERT INTO email_message_pending_emp ".
-        "SET " . 
-			"emp_usr_id='" .$_SESSION['iUserID']. "',".
-			"emp_to_send='0'," .
-			"emp_subject='" . mysql_real_escape_string($sEmailSubject). "',".
-			"emp_message='" . mysql_real_escape_string($sEmailMessage). "'";
-RunQuery($sSQL);
+// Save Settings
+if (isset ($_POST['Submit'])) {
+  require 'Service/EmailService.php';
 
-// Turn off the registration flag so the menu option is less obtrusive
-$sSQL = "UPDATE config_cfg SET cfg_value = 1 WHERE cfg_name='bRegistered'";
-RunQuery($sSQL);
-$bRegistered = 1;
+  $emailService = new EmailService();
 
-$sSQL = "UPDATE menuconfig_mcf SET content = 'Update registration' WHERE name = 'register' AND parent = 'admin'";
-RunQuery($sSQL);
+  $sEmailMessage =  $_POST['emailmessage'];
+
+  $emailService->sentRegistration($sEmailMessage);
+
+  // Turn off the registration flag so the menu option is less obtrusive
+  $sSQL = "UPDATE config_cfg SET cfg_value = 1 WHERE cfg_name='bRegistered'";
+  RunQuery($sSQL);
+  $bRegistered = 1;
+  Redirect("Menu.php?Registored=true");
+}
 
 ?>
 
-<div class="box">
+<p class="callout callout-info">
+  To Change the info bellow please visit the <a href="SystemSettings.php">sittings page</a> </p>
+</p>
+
+<div class="box box-primary">
 	<div class="box-header">
 		<?php
 		echo gettext ("Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  ");
 		echo gettext ("This information is used only to track the usage of this software.  ");
 		?>
 	</div>
-	<form method="post" action="EmailSend.php" name="Register">
+	<form method="post" action="Register.php" name="Register">
 	<div class="box-body">
 		<input type="hidden" name="emaillist[]" class="form-control" value="info@churchcrm.io">
-			<?php
-			echo gettext('Subject:');
-			echo '<br><input type="text" class="form-control" name="emailsubject" size="80" value="';
-			echo htmlspecialchars($sEmailSubject) . '"></input>'."\n";
-
-			echo '<br>' . gettext('Message:');
-			echo '<br><textarea class="form-control" name="emailmessage" rows="20" cols="72">';
-			echo htmlspecialchars($sEmailMessage) . '</textarea>'."\n";
-			?>
+		<br> <?= gettext('Message:') ?>
+		<br><textarea class="form-control" name="emailmessage" rows="20" cols="72"><?= htmlspecialchars($sEmailMessage) ?> </textarea>
 	</div>
 	<div class="box-footer">
-		<div class="pull-right">
-				<input type="submit" class="btn btn-primary" value="<?= gettext("Send") ?>" name="Submit">
-		</div>
+		<input type="submit" class="btn btn-primary" value="<?= gettext("Send") ?>" name="Submit">
 		<input type="button" class="btn btn-default" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='Menu.php';">
 	</div>
 	</form>
