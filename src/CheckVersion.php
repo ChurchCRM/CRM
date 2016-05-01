@@ -65,8 +65,13 @@ else        //the upgrade failed!
         <div class="box box-danger">
             <div class="box-body">
                 <p>
-                Please post to the our github <a href="https://github.com/ChurchCRM/CRM/issues" target="_blank"> github issues</a> for assistance.
-                </p>
+                  For assestance you can checkout the following for assistance:
+                <ul>
+                  <li><a href="https://github.com/ChurchCRM/CRM/issues" target="_blank">GitHub issues</a></li>
+                  <li><a href="https://gitter.im/ChurchCRM/CRM" target="_blank">Developer Chat</a></li>
+                  <li><a href="http://docs.churchcrm.io" target="_blank">Docs</a></li>
+              </ul>
+              </p>
             </div>
             <div class="box-footer">
                 <p>
