@@ -1,0 +1,29 @@
+/*! DO NOT MANUALLY EDIT skin/churchcrm.min.css
+
+    Please make changes to skin/scss/*.scss and recompile with SASS. http://sass-lang.com/
+
+    sass --watch src/skin/churchcrm.scss:src/skin/churchcrm.min.css --style compressed
+
+*/
+
+
+// Import Libraries
+
+// The only library we do not embed is Bootstrap, because it's very big
+// and we don't want to incur IE's CSS limits.
+// ( http://spaceninja.com/2015/03/31/ie-css-limits/ )
+
+@import 'adminlte/dist/css/AdminLTE.css';
+@import 'adminlte/dist/css/skins/_all-skins.css';
+@import 'adminlte/plugins/select2/select2.css';
+@import 'adminlte/plugins/datepicker/datepicker3.css';
+@import 'adminlte/plugins/timepicker/bootstrap-timepicker.css';
+@import 'font-awesome/css/font-awesome.css';
+@import 'ionicons/css/ionicons.css';
+
+
+// Import ChurchCRM custom styles
+
+@import 'scss/dropdowns';
+@import 'scss/forms';
+@import 'scss/tables';

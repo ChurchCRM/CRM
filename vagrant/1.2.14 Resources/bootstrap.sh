@@ -6,10 +6,10 @@ DB_USER="root"
 DB_PASS="root"
 DB_HOST="localhost"
 
-CRM_DB_INSTALL_SCRIPT="/vagrant/churchinfo/SQL/Install.sql"
-CRM_DB_USER="churchinfo"
-CRM_DB_PASS="churchinfo"
-CRM_DB_NAME="churchinfo"
+CRM_DB_INSTALL_SCRIPT="/vagrant/src/SQL/Install.sql"
+CRM_DB_USER="churchcrm"
+CRM_DB_PASS="churchcrm"
+CRM_DB_NAME="churchcrm"
 
 RET=1
 while [[ RET -ne 0 ]]; do
@@ -39,8 +39,7 @@ echo "Database: tables and metadata deployed"
 # Help info
 
 echo "============================================================================="
-echo "======== ChurchInfo is now hosted @ http://192.168.33.11/      =============="
+echo "======== ChurchCRM is now hosted @ http://192.168.33.11/       =============="
 echo "======== CRM User Name: admin                                  =============="
-echo "======== 1st time login password for admin: churchinfoadmin    =============="
-echo "======== churchInfo is active project source                   =============="
+echo "======== 1st time login password for admin: changeme           =============="
 echo "============================================================================="

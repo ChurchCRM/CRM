@@ -1,7 +1,10 @@
 ## Docker
 
-1. Download and install [docker] (http://www.docker.com) toolbox
-2. download church crm docker image via
-  "docker pull churchwebcrm/crm"
+* Download and install [docker] (http://www.docker.com) toolbox
+* Docker Pull Command
 
-*Also see our [Docker Hub](https://hub.docker.com/r/churchwebcrm/crm/)*
+  ```
+  docker pull churchcrm/crm
+  ```
+
+*Also see our [Docker Hub](https://hub.docker.com/r/churchcrm/crm/)*
