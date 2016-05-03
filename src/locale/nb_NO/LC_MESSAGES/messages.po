@@ -1,0 +1,6038 @@
+ # SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-19 13:42-1000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: AccessReport.php:25 MenuStrings.php:13
+msgid "Access report"
+msgstr "Access-rapport"
+
+#: AccessReport.php:33 FinancialReports.php:310 GroupReports.php:187
+#: ReminderReport.php:56 TaxReport.php:53
+msgid "Create Report"
+msgstr "Opprett rapport"
+
+#: AccessReport.php:35 AutoPaymentDelete.php:72 AutoPaymentEditor.php:278
+#: BatchWinnerEntry.php:113 Canvas05Editor.php:91 CanvassEditor.php:149
+#: Checkin.php:183 Checkin.php:288 Checkin.php:341 DepositSlipEditor.php:458
+#: DirectoryReports.php:284 DonatedItemEditor.php:185 FamilyEditor.php:664
+#: FamilyEditor.php:1078 FinancialReports.php:63 FundRaiserEditor.php:157
+#: GroupMeeting.php:167 GroupPropsEditor.php:150 GroupPropsEditor.php:189
+#: GroupReports.php:129 GroupReports.php:188 LettersAndLabels.php:65
+#: ManageEnvelopes.php:120 MemberRoleChange.php:126 MemberRoleChange.php:128
+#: NoteEditor.php:138 PaddleNumEditor.php:166 PersonEditor.php:553
+#: PersonEditor.php:915 PledgeDelete.php:56 PropertyEditor.php:183
+#: PropertyTypeEditor.php:116 Register.php:83 ReminderReport.php:57
+#: SettingsGeneral.php:116 SettingsGeneral.php:176 SettingsIndividual.php:119
+#: SettingsIndividual.php:163 SettingsReport.php:78 SettingsReport.php:137
+#: SettingsUser.php:104 SettingsUser.php:165 SundaySchool.php:212
+#: TaxReport.php:54 UserEditor.php:446 UserEditor.php:487 UserEditor.php:546
+#: WhyCameEditor.php:90
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: AddEvent.php:43
+msgid "Add Church Event(s)"
+msgstr "Legg Kirkens aktiviteter (er)"
+
+#: AddEvent.php:119
+msgid "No church events for "
+msgstr "Ingen kirke hendelser for"
+
+#: AddEvent.php:120 AddEvent.php:179 CartView.php:140 Checkin.php:124
+#: EditEventAttendees.php:48 EditEventTypes.php:40 EventEditor.php:407
+#: EventNames.php:47
+msgid "Back to Menu"
+msgstr "Tilbake til menyen"
+
+#: AddEvent.php:127 EventAttendance.php:118 EventAttendance.php:199
+#: ListEvents.php:219
+msgid "There "
+msgstr "Det"
+
+#: AddEvent.php:127 ListEvents.php:219
+msgid " for "
+msgstr "for"
+
+#: AddEvent.php:129 EditEventTypes.php:145 EventNames.php:192
+#: ListEvents.php:222
+msgid "Event Type"
+msgstr "Hendelsestype"
+
+#: AddEvent.php:130 EventAttendance.php:121 ListEvents.php:223
+msgid "Event Title"
+msgstr "Hendelse Tittel"
+
+#: AddEvent.php:131 DonatedItemEditor.php:284 DonationFundEditor.php:198
+#: GroupPropsFormEditor.php:315 GroupView.php:206 ListEvents.php:224
+#: PersonView.php:756 VolunteerOpportunityEditor.php:83
+#: VolunteerOpportunityEditor.php:353
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: AddEvent.php:132 ListEvents.php:226
+msgid "Start Date/Time"
+msgstr "Startdato / tid"
+
+#: AddEvent.php:133 DonationFundEditor.php:199 ListEvents.php:227
+#: MenuSetup.php:79
+msgid "Active"
+msgstr "Aktiv"
+
+#: AddEvent.php:134 Checkin.php:371 EditEventAttendees.php:55
+#: EventNames.php:197 ListEvents.php:228
+msgid "Action"
+msgstr "Handling"
+
+#: AddEvent.php:158 DepositSlipEditor.php:590 EventEditor.php:241
+#: EventNames.php:289 FamilyView.php:593 FamilyView.php:695 FamilyView.php:788
+#: FindDepositSlip.php:253 FindDepositSlip.php:265 FindFundRaiser.php:223
+#: FindFundRaiser.php:232 ListEvents.php:306 MenuSetup.php:88
+#: PersonView.php:520 PersonView.php:562 PropertyList.php:67
+#: PropertyList.php:109 PropertyTypeList.php:43 PropertyTypeList.php:65
+#: SelectList.php:915 SelectList.php:1041 SelectList.php:1433
+#: SelectList.php:1500 SelectListFormatted.php:953
+#: SelectListFormatted.php:1082 SelectListFormatted.php:1531
+#: SelectListFormatted.php:1615 UserList.php:61 UserList.php:97
+msgid "Edit"
+msgstr "Redigere"
+
+#: AddEvent.php:165
+msgid "Deactivate"
+msgstr "Deaktiver"
+
+#: AddEvent.php:167
+msgid "Activate"
+msgstr "Aktivere"
+
+#: AddEvent.php:194 EventEditor.php:423
+msgid "Event Type:"
+msgstr "Arrangementtype:"
+
+#: AddEvent.php:217 EventEditor.php:432
+msgid "Event Title:"
+msgstr "Hendelse Tittel:"
+
+#: AddEvent.php:220 AddEvent.php:227 DonationFundEditor.php:218
+#: DonationFundEditor.php:259 FamilyCustomFieldsEditor.php:388
+#: FamilyCustomFieldsEditorSave.php:384 GroupEditor.php:249
+#: GroupPropsFormEditor.php:344 GroupPropsFormEditor.php:426
+#: OptionManager.php:367 OptionManagerSave.php:364
+#: PersonCustomFieldsEditor.php:368 VolunteerOpportunityEditor.php:382
+#: VolunteerOpportunityEditor.php:423
+msgid "You must enter a name."
+msgstr "Du må angi et navn."
+
+#: AddEvent.php:224 EventEditor.php:437
+msgid "Event Desc:"
+msgstr "Hendelse Desc:"
+
+#: AddEvent.php:231 EventEditor.php:521
+msgid "Event Sermon:"
+msgstr "Hendelse Sermon:"
+
+#: AddEvent.php:236 EventEditor.php:446
+msgid "Start Date:"
+msgstr "Startdato:"
+
+#: AddEvent.php:241 AddEvent.php:260 AutoPaymentEditor.php:317
+#: CanvassEditor.php:190 CartToFamily.php:218 CSVExport.php:318
+#: CSVExport.php:344 CSVExport.php:356 CSVExport.php:368
+#: DepositSlipEditor.php:482 eGive.php:296 eGive.php:298 EventEditor.php:451
+#: EventEditor.php:472 EventNames.php:254 FamilyEditor.php:871
+#: FamilyView.php:772 FundRaiserEditor.php:175 GroupMeeting.php:186
+#: PersonEditor.php:840 PersonEditor.php:845 PledgeEditor.php:679
+#: SundaySchool.php:151 SundaySchool.php:156 SundaySchool.php:161
+#: SundaySchool.php:166 SundaySchool.php:171 SundaySchool.php:176
+#: SundaySchool.php:181 SundaySchool.php:186 SundaySchool.php:191
+#: SundaySchool.php:196 Include/Functions.php:1046
+msgid "[format: YYYY-MM-DD]"
+msgstr "[Format: ÅÅÅÅ-MM-DD]"
+
+#: AddEvent.php:244 EventEditor.php:455
+msgid "Start Time:"
+msgstr "Starttid:"
+
+#: AddEvent.php:250 AddEvent.php:269 EditEventTypes.php:172
+#: EventEditor.php:461 EventEditor.php:481 EventNames.php:262
+msgid "[format: HH:MM]"
+msgstr "[Format: HH: MM]"
+
+#: AddEvent.php:255 EventEditor.php:467
+msgid "End Date:"
+msgstr "Sluttdato:"
+
+#: AddEvent.php:263 EventEditor.php:475
+msgid "End Time:"
+msgstr "Slutt tid:"
+
+#: AddEvent.php:273 EventEditor.php:526
+msgid "Event Status:"
+msgstr "Hendelse Status:"
+
+#: AddEvent.php:276 EventEditor.php:529
+msgid "Is this Active or Inactive?"
+msgstr "Er dette Aktiv eller Inaktiv?"
+
+#: AddEvent.php:280
+msgid "Add Event"
+msgstr "Legg til aktivitet"
+
+#: AutoPaymentDelete.php:21
+msgid "Confirm Delete Automatic payment"
+msgstr "Bekreft sletting Automatisk betaling"
+
+#: AutoPaymentDelete.php:71 DepositSlipEditor.php:591
+#: EditEventAttendees.php:89 EventNames.php:103 EventNames.php:295
+#: FamilyView.php:696 FamilyView.php:789 FundRaiserEditor.php:209
+#: ListEvents.php:312 MenuSetup.php:89 PaddleNumList.php:55
+#: PledgeDelete.php:55 PropertyList.php:68 PropertyList.php:110
+#: PropertyTypeList.php:44 PropertyTypeList.php:67 PropertyTypeList.php:69
+#: UserList.php:62 UserList.php:98
+msgid "Delete"
+msgstr "Slett"
+
+#: AutoPaymentEditor.php:31
+msgid "Automatic payment configuration for the "
+msgstr "Automatisk betaling konfigurasjon for"
+
+#: AutoPaymentEditor.php:31 Canvas05Editor.php:29 CanvassEditor.php:41
+msgid " family"
+msgstr "familie"
+
+#: AutoPaymentEditor.php:277 Canvas05Editor.php:90 CanvassEditor.php:148
+#: DepositSlipEditor.php:457 DonatedItemEditor.php:183 FamilyEditor.php:662
+#: FamilyEditor.php:1076 FundRaiserEditor.php:156 GroupEditor.php:326
+#: GroupPropsEditor.php:148 GroupPropsEditor.php:187 MenuEditor.php:371
+#: NoteEditor.php:136 PaddleNumEditor.php:163 PersonEditor.php:551
+#: PersonEditor.php:913 PledgeEditor.php:549 PropertyEditor.php:183
+#: PropertyTypeEditor.php:116 UserEditor.php:446 UserPasswordChange.php:221
+#: WhyCameEditor.php:89
+msgid "Save"
+msgstr "Lagre"
+
+#: AutoPaymentEditor.php:287 PersonEditor.php:614 PrintView.php:226
+msgid "Family:"
+msgstr "Familie:"
+
+#: AutoPaymentEditor.php:290 BatchWinnerEntry.php:84 BatchWinnerEntry.php:96
+#: CSVImport.php:280 DonatedItemEditor.php:210 DonatedItemEditor.php:256
+#: eGive.php:374 FamilyEditor.php:1052 GroupEditor.php:262
+#: PaddleNumEditor.php:186 PersonEditor.php:617 PersonEditor.php:640
+#: PersonEditor.php:852 SelectDelete.php:255 Include/Functions.php:1109
+#: Include/Functions.php:1152
+msgid "Unassigned"
+msgstr "Unassigned"
+
+#: AutoPaymentEditor.php:309
+msgid "Automatic payment type"
+msgstr "Automatisk betaling typen"
+
+#: AutoPaymentEditor.php:316 CanvassEditor.php:189 DepositSlipEditor.php:481
+#: FundRaiserEditor.php:174
+msgid "Date:"
+msgstr "Dato:"
+
+#: AutoPaymentEditor.php:321 FinancialReports.php:186 ReminderReport.php:46
+#: SundaySchool.php:143
+msgid "Fiscal Year:"
+msgstr "Regnskapsåret:"
+
+#: AutoPaymentEditor.php:328
+msgid "Payment amount"
+msgstr "Betalingsbeløp"
+
+#: AutoPaymentEditor.php:333
+msgid "Payment interval (months)"
+msgstr "Betaling intervall (måneder)"
+
+#: AutoPaymentEditor.php:338
+msgid "Fund:"
+msgstr "Fond:"
+
+#: AutoPaymentEditor.php:341 CartToGroup.php:129 GroupReports.php:100
+#: GroupReports.php:179 PersonToGroup.php:124 SundaySchool.php:130
+msgid "None"
+msgstr "Ingen"
+
+#: AutoPaymentEditor.php:353
+msgid "inactive"
+msgstr "inaktiv"
+
+#: AutoPaymentEditor.php:362
+msgid "First name"
+msgstr "Fornavn"
+
+#: AutoPaymentEditor.php:367
+msgid "Last name"
+msgstr "Etternavn"
+
+#: AutoPaymentEditor.php:372 Reports/ConfirmReport.php:116
+msgid "Address 1"
+msgstr "Adresse 1"
+
+#: AutoPaymentEditor.php:377 Reports/ConfirmReport.php:120
+msgid "Address 2"
+msgstr "Adresse 2"
+
+#: AutoPaymentEditor.php:382 CSVImport.php:230 DirectoryReports.php:251
+#: GeoPage.php:323 GroupMemberList.php:320 SelectList.php:1438
+#: SelectListFormatted.php:1547
+msgid "City"
+msgstr "By"
+
+#: AutoPaymentEditor.php:387 CSVImport.php:231 DirectoryReports.php:255
+#: GeoPage.php:324 GroupMemberList.php:321 SelectList.php:1439
+#: SelectListFormatted.php:1550
+msgid "State"
+msgstr "Stat"
+
+#: AutoPaymentEditor.php:392
+msgid "Zip code"
+msgstr "Postnummer"
+
+#: AutoPaymentEditor.php:397 CSVImport.php:233
+msgid "Country"
+msgstr "Land"
+
+#: AutoPaymentEditor.php:402 DirectoryReports.php:263
+#: Reports/DirectoryReport.php:326 Reports/DirectoryReport.php:395
+#: Reports/DirectoryReport.php:458 Reports/DirectoryReport.php:769
+#: Reports/GroupReport.php:263
+msgid "Phone"
+msgstr "Telefon"
+
+#: AutoPaymentEditor.php:407 CSVImport.php:237 EditEventAttendees.php:53
+#: EventAttendance.php:203 GroupReports.php:162 Reports/CanvassReports.php:263
+#: Reports/ConfirmReport.php:173 Reports/ConfirmReport.php:192
+#: Reports/DirectoryReport.php:332 Reports/DirectoryReport.php:406
+#: Reports/DirectoryReport.php:469 Reports/DirectoryReport.php:780
+#: Reports/GroupReport.php:277
+msgid "Email"
+msgstr "E-post"
+
+#: AutoPaymentEditor.php:412 DepositSlipEditor.php:504
+#: FinancialReports.php:238 PledgeEditor.php:601
+msgid "Credit Card"
+msgstr "Kredittkort"
+
+#: AutoPaymentEditor.php:417
+msgid "Expiration Month"
+msgstr "Utløpsmåned"
+
+#: AutoPaymentEditor.php:422
+msgid "Expiration Year"
+msgstr "Utløpsår"
+
+#: AutoPaymentEditor.php:427
+msgid "Bank Name"
+msgstr "Banknavn"
+
+#: AutoPaymentEditor.php:432
+msgid "Bank Route Number"
+msgstr "Bank rutenummer"
+
+#: AutoPaymentEditor.php:437
+msgid "Bank Account Number"
+msgstr "Bankkontonummer"
+
+#: BackupDatabase.php:50
+msgid "Password values entered were not the same! Please re-type them."
+msgstr ""
+"Passord verdier som angis var ikke det samme! Vennligst re-skriver dem."
+
+#: BackupDatabase.php:55
+msgid ""
+"You must enter a password of at least 8 characters to encrypt this backup."
+msgstr ""
+"Du må skrive inn et passord på minst 8 tegn for å kryptere denne "
+"sikkerhetskopien."
+
+#: BackupDatabase.php:115 MenuStrings.php:11
+msgid "Backup Database"
+msgstr "Backup Database"
+
+#: BackupDatabase.php:120
+msgid ""
+"This tool will assist you in manually backing up the InfoCentral database."
+msgstr ""
+"Dette verktøyet vil hjelpe deg i manuell sikkerhetskopiering av InfoCentral "
+"databasen."
+
+#: BackupDatabase.php:122
+msgid "TIPS:"
+msgstr "TIPS:"
+
+#: BackupDatabase.php:124
+msgid ""
+"You should make a manual backup at least once a week unless you already have "
+"a regular backup procedule for your systems."
+msgstr ""
+"Du bør foreta en manuell backup minst en gang i uken, med mindre du allerede "
+"har en vanlig backup procedule for dine systemer."
+
+#: BackupDatabase.php:125
+msgid ""
+"After you download the backup file, you should make two copies. Put one of "
+"them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr ""
+"Når du har lastet sikkerhetskopifilen, bør du lage to kopier. Sette en av "
+"dem i en brannsikker safe på stedet, og den andre på et trygt sted utenfor "
+"området."
+
+#: BackupDatabase.php:126
+msgid ""
+"If you are concerned about confidentiality of data stored in the InfoCentral "
+"database, you should encrypt the backup data if it will be stored somewhere "
+"potentially accessible to others"
+msgstr ""
+"Hvis du er bekymret for konfidensialitet av data som er lagret i InfoCentral "
+"databasen, bør du kryptere backup av data om det vil bli lagret et sted "
+"potensielt tilgjengelig for andre"
+
+#: BackupDatabase.php:127
+msgid ""
+"For added backup security, you can e-mail the backup to yourself at an e-"
+"mail account hosted off-site or to a trusted friend.  Be sure to use "
+"encryption if you do this, however."
+msgstr ""
+"For ekstra backup sikkerhet, kan du sende e-post til backup til deg selv på "
+"en e-postkonto vert off-site eller en betrodd venn. Pass på å bruke "
+"kryptering hvis du gjør dette, men."
+
+#: BackupDatabase.php:131
+msgid "Select archive type:"
+msgstr "Velg arkiv type:"
+
+#: BackupDatabase.php:132
+msgid "GZip"
+msgstr "GZip"
+
+#: BackupDatabase.php:133 CSVImport.php:232 DirectoryReports.php:259
+#: GeoPage.php:325
+msgid "Zip"
+msgstr "Zip"
+
+#: BackupDatabase.php:134
+msgid "Uncompressed"
+msgstr "Ukomprimert"
+
+#: BackupDatabase.php:137
+msgid "Encrypt backup file with a password?"
+msgstr "Krypter backup-fil med et passord?"
+
+#: BackupDatabase.php:139
+msgid "Password:"
+msgstr "Passord:"
+
+#: BackupDatabase.php:140
+msgid "Re-type Password:"
+msgstr "Re-type Passord:"
+
+#: BackupDatabase.php:143
+msgid "Generate and Download Backup"
+msgstr "Generer og last ned Backup"
+
+#: BackupDatabase.php:144
+msgid "Delete Temp Files"
+msgstr "Slett temp-filer"
+
+#: BatchWinnerEntry.php:36 FundRaiserEditor.php:164
+msgid "Batch Winner Entry"
+msgstr "Batch Vinner Entry"
+
+#: BatchWinnerEntry.php:75 FundRaiserEditor.php:200
+#, fuzzy
+msgid "Item"
+msgstr "element"
+
+#: BatchWinnerEntry.php:76
+#, fuzzy
+msgid "Winner"
+msgstr "Vinter"
+
+#: BatchWinnerEntry.php:77
+#, fuzzy
+msgid "Price"
+msgstr "Provins:"
+
+#: BatchWinnerEntry.php:112
+msgid "Enter Winners"
+msgstr "Inn Vinnere"
+
+#: Canvas05Editor.php:29
+msgid "Canvas 2005 Input for the "
+msgstr "Canvas 2005 Input for"
+
+#: Canvas05Editor.php:99
+msgid "Do you like the color of the church?"
+msgstr "Liker du fargen på kirken?"
+
+#: Canvas05Editor.php:104
+msgid "What are we doing right?"
+msgstr "Hva gjør vi rett?"
+
+#: Canvas05Editor.php:109
+msgid "How can we improve?"
+msgstr "Hvordan kan vi forbedre?"
+
+#: Canvas05Editor.php:114
+msgid "Will you pledge by March 31?"
+msgstr "Vil du løfte av mars 31?"
+
+#: Canvas05Editor.php:119
+msgid "Canvasser Comments:"
+msgstr "Canvasser Kommentarer:"
+
+#: CanvassAutomation.php:23 ReportList.php:80
+msgid "Canvass Automation"
+msgstr "Canvass Automation"
+
+#: CanvassAutomation.php:43 CanvassAutomation.php:50 CanvassAutomation.php:57
+#: CanvassAutomation.php:65 CanvassAutomation.php:73
+msgid "Not confirmed."
+msgstr "Ikke bekreftet."
+
+#: CanvassAutomation.php:48 CanvassEditor.php:135 FamilyEditor.php:59
+msgid "Canvassers"
+msgstr "Canvassers"
+
+#: CanvassAutomation.php:55 CanvassEditor.php:136 FamilyEditor.php:60
+msgid "BraveCanvassers"
+msgstr "BraveCanvassers"
+
+#: CanvassAutomation.php:63
+msgid "Cleared all canvasser assignments."
+msgstr "Fjernet alle canvasser oppdrag."
+
+#: CanvassAutomation.php:71
+msgid "Set Ok To Canvass for all families."
+msgstr "Satt OK å canvass for alle familier."
+
+#: CanvassAutomation.php:79
+msgid "Disabled Ok To Canvass for all families."
+msgstr "Deaktivert OK å canvass for alle familier."
+
+#: CanvassAutomation.php:81
+msgid "ClearAllOkToCanvass button not confimed."
+msgstr "ClearAllOkToCanvass knappen ikke confimed."
+
+#: CanvassAutomation.php:112
+msgid "Set default fiscal year"
+msgstr "Sett standard regnskapsåret"
+
+#: CanvassAutomation.php:116 CanvassAutomation.php:128
+#: CanvassAutomation.php:140 CanvassAutomation.php:152
+#: CanvassAutomation.php:164 CanvassAutomation.php:176
+msgid "Check to confirm"
+msgstr "Sjekk for å bekrefte"
+
+#: CanvassAutomation.php:122
+msgid "Assign Canvassers"
+msgstr "Tildele Canvassers"
+
+#: CanvassAutomation.php:126
+msgid ""
+"Randomly assign canvassers to all Families.  The Canvassers are \n"
+"			taken from the &quot;Canvassers&quot; Group."
+msgstr ""
+"Tilfeldig tildele canvassers til alle familier. De Canvassers er tatt fra "
+"\"Canvassers\" Group."
+
+#: CanvassAutomation.php:134
+msgid "Assign To Non Pledging"
+msgstr "Tildele til ikke Pantsettelse"
+
+#: CanvassAutomation.php:138
+msgid ""
+"Randomly assign canvassers to non-pledging Families.  The Canvassers are \n"
+"			taken from the &quot;BraveCanvassers&quot; Group."
+msgstr ""
+"Tilfeldig tildele canvassers til ikke-pantsettelse familier. De Canvassers "
+"er tatt fra \"BraveCanvassers\" Group."
+
+#: CanvassAutomation.php:146
+msgid "Clear Canvasser Assignments"
+msgstr "Klare Canvasser Oppdrag"
+
+#: CanvassAutomation.php:150
+msgid ""
+"Clear all the canvasser assignments for all families.  <p>Important\n"
+"			note: this will lose any canvasser assignments that have been made by "
+"hand.</p>"
+msgstr ""
+"Fjern alle canvasser oppdrag for alle familier. <p> Viktig merknad: Dette "
+"vil miste noen canvasser oppgavene som er laget for hånd. </p>"
+
+#: CanvassAutomation.php:158
+msgid "Enable Canvass for All Families"
+msgstr "Aktiver canvass for alle familier"
+
+#: CanvassAutomation.php:162
+msgid ""
+"Turn on the &quot;Ok To Canvass&quot; field for all Families.  <p>Important\n"
+"			note: this will lose any &quot;Ok To Canvass&quot; fields that have "
+"been set by hand.</p>"
+msgstr ""
+"Slå på \"OK å canvass\"-feltet for alle familier. <p> Viktig merknad: Dette "
+"vil miste noen \"OK å canvass\" feltene som er satt for hånd. </p>"
+
+#: CanvassAutomation.php:170
+msgid "Disable Canvass for All Families"
+msgstr "Deaktiver canvass for alle familier"
+
+#: CanvassAutomation.php:174
+msgid ""
+"Turn off the &quot;Ok To Canvass&quot; field for all Families.  "
+"<p>Important\n"
+"			note: this will lose any &quot;Ok To Canvass&quot; fields that have "
+"been set by hand.</p>"
+msgstr ""
+"Slå av \"OK å canvass\"-feltet for alle familier. <p> Viktig merknad: Dette "
+"vil miste noen \"OK å canvass\" feltene som er satt for hånd. </p>"
+
+#: CanvassAutomation.php:182
+msgid "Briefing Sheets"
+msgstr "Briefing Sheets"
+
+#: CanvassAutomation.php:186
+msgid ""
+"Generate a PDF containing briefing sheets for all Families, sorted by "
+"canvasser."
+msgstr ""
+"Generere en PDF-fil med briefing ark for alle familier, sortert etter "
+"canvasser."
+
+#: CanvassAutomation.php:192
+msgid "Progress Report"
+msgstr "Progress Report"
+
+#: CanvassAutomation.php:196
+msgid ""
+"Generate a PDF containing a progress report.  The progress report includes\n"
+"			information on the overall progress of the canvass, and the progress "
+"of individual canvassers."
+msgstr ""
+"Generere en PDF-fil med en fremdriftsrapport. Fremdriftsrapport inneholder "
+"informasjon om den generelle fremdriften i canvass, og fremdriften av "
+"individuelle canvassers."
+
+#: CanvassAutomation.php:203
+msgid "Summary Report"
+msgstr "Oppsummeringsrapport"
+
+#: CanvassAutomation.php:207
+msgid ""
+"Generate a PDF containing a summary report.  The summary report includes\n"
+"			comments extracted from the canvass data."
+msgstr ""
+"Generere en PDF-fil med en oppsummerende rapport. Oppsummeringsrapporten "
+"inneholder kommentarer hentet fra canvass data."
+
+#: CanvassAutomation.php:214
+msgid "Not Interested Report"
+msgstr "Ikke interessert Rapporter"
+
+#: CanvassAutomation.php:218
+msgid ""
+"Generate a PDF containing a report of the families marked &quot;Not "
+"Interested&quot; \n"
+"			                    by the canvasser."
+msgstr ""
+"Generere en PDF-fil med en rapport av familiene som er merket \"Ikke "
+"interessert\" av canvasser."
+
+#: CanvassEditor.php:41
+msgid " Canvass Input for the "
+msgstr "Canvass Input for"
+
+#: CanvassEditor.php:162 UserEditor.php:424
+msgid "Canvasser:"
+msgstr "Canvasser:"
+
+#: CanvassEditor.php:195
+msgid "Positive"
+msgstr "Positiv"
+
+#: CanvassEditor.php:200
+msgid "Critical"
+msgstr "Kritisk"
+
+#: CanvassEditor.php:205
+msgid "Insightful"
+msgstr "Innsiktsfulle"
+
+#: CanvassEditor.php:210
+msgid "Financial"
+msgstr "Financial"
+
+#: CanvassEditor.php:215
+msgid "Suggestions"
+msgstr "Forslag"
+
+#: CanvassEditor.php:220
+msgid "Not Interested"
+msgstr "Ikke interessert"
+
+#: CanvassEditor.php:225
+msgid "Why Not Interested?"
+msgstr "Hvorfor ikke er interessert?"
+
+#: CartToEvent.php:56 CartToEvent.php:91
+msgid "Add Cart to Event"
+msgstr "Legg Cart til Event"
+
+#: CartToEvent.php:66
+msgid "Select the event to which you would like to add your cart:"
+msgstr "Velg hendelsen som du ønsker å legge til i handlekurven:"
+
+#: CartToEvent.php:75 Checkin.php:68
+msgid "Select Event:"
+msgstr "Velg Event:"
+
+#: CartToEvent.php:92 CartToGroup.php:146 Checkin.php:85
+msgid "OR"
+msgstr "ELLER"
+
+#: CartToEvent.php:93 Checkin.php:86 ListEvents.php:367
+msgid "Add New Event"
+msgstr "Legg til ny begivenhet"
+
+#: CartToEvent.php:100 CartToFamily.php:331 CartToGroup.php:154
+msgid "Your cart is empty!"
+msgstr "Handlekurven er tom!"
+
+#: CartToFamily.php:80
+msgid "No family name entered!"
+msgstr "Ingen etternavn angitt!"
+
+#: CartToFamily.php:125
+msgid "Add Cart to Family"
+msgstr "Legg Cart til Family"
+
+#: CartToFamily.php:132 CartToFamily.php:324
+msgid "Add to Family"
+msgstr "Legg til Family"
+
+#: CartToFamily.php:162 CartView.php:189 Checkin.php:366
+#: DonationFundEditor.php:197 EditEventAttendees.php:52
+#: EventAttendance.php:202 EventNames.php:193 FamilyCustomFieldsEditor.php:357
+#: FamilyCustomFieldsEditorSave.php:353 FamilyView.php:461 FamilyView.php:587
+#: GeoPage.php:321 GroupList.php:49 GroupMemberList.php:317
+#: GroupPropsFormEditor.php:314 GroupView.php:205 GroupView.php:244
+#: PersonCustomFieldsEditor.php:337 PersonView.php:515 PersonView.php:755
+#: PrintView.php:294 PrintView.php:429 PropertyList.php:62
+#: PropertyTypeList.php:38 SelectList.php:918 SelectList.php:1158
+#: SelectListFormatted.php:956 SelectListFormatted.php:1200 UserList.php:56
+#: VolunteerOpportunityEditor.php:82 VolunteerOpportunityEditor.php:352
+#: Reports/CanvassReports.php:257 Reports/FRBidSheets.php:95
+msgid "Name"
+msgstr "Navn"
+
+#: CartToFamily.php:163
+msgid "Assign Role"
+msgstr "Tildele Rolle"
+
+#: CartToFamily.php:180
+msgid "Already in a family"
+msgstr "Allerede i en familie"
+
+#: CartToFamily.php:190
+msgid "Add to Family:"
+msgstr "Legg til Familie:"
+
+#: CartToFamily.php:195
+msgid "Create new family"
+msgstr "Opprett ny familie"
+
+#: CartToFamily.php:207
+msgid "If adding a new family, enter data below."
+msgstr "Hvis du legger til en ny familie, legge inn data under."
+
+#: CartToFamily.php:212 FamilyEditor.php:676 SelectDelete.php:251
+#: SelectDelete.php:373
+msgid "Family Name:"
+msgstr "Etternavn:"
+
+#: CartToFamily.php:217 FamilyEditor.php:870 FamilyView.php:408
+msgid "Wedding Date:"
+msgstr "Bryllup Dato:"
+
+#: CartToFamily.php:222
+msgid "Use address/contact data from:"
+msgstr "Bruk adresse / kontakt data fra:"
+
+#: CartToFamily.php:226
+msgid "Only the new data below"
+msgstr "Bare de nye dataene nedenfor"
+
+#: CartToFamily.php:241 CSVExport.php:109 FamilyEditor.php:685
+#: PersonEditor.php:663
+msgid "Address1:"
+msgstr "Adresse1:"
+
+#: CartToFamily.php:246 CSVExport.php:114 FamilyEditor.php:690
+#: PersonEditor.php:668
+msgid "Address2:"
+msgstr "Adresse2:"
+
+#: CartToFamily.php:251 CSVExport.php:119 FamilyEditor.php:695
+#: PersonEditor.php:673
+msgid "City:"
+msgstr "By:"
+
+#: CartToFamily.php:256 CSVExport.php:124 FamilyEditor.php:705
+#: PersonEditor.php:678
+msgid "State:"
+msgstr "Tilstand:"
+
+#: CartToFamily.php:261 FamilyEditor.php:712 PersonEditor.php:683
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(Bruk tekstboksen for andre land enn USA og Canada)"
+
+#: CartToFamily.php:269 FamilyEditor.php:720
+msgid "Postal Code:"
+msgstr "Postnummer:"
+
+#: CartToFamily.php:271 CSVExport.php:129 FamilyEditor.php:722
+#: PersonEditor.php:688
+msgid "Zip:"
+msgstr "Zip:"
+
+#: CartToFamily.php:281 CSVExport.php:139 FamilyEditor.php:739
+#: PersonEditor.php:700
+msgid "Country:"
+msgstr "Land:"
+
+#: CartToFamily.php:292 CSVExport.php:144 FamilyEditor.php:750
+#: FamilyView.php:368 PersonEditor.php:723 PersonEditor.php:725
+#: PersonView.php:460 PrintView.php:166
+msgid "Home Phone:"
+msgstr "Hjem Telefon:"
+
+#: CartToFamily.php:295 CartToFamily.php:303 CartToFamily.php:311
+#: FamilyEditor.php:753 FamilyEditor.php:761 FamilyEditor.php:769
+#: PersonEditor.php:730 PersonEditor.php:745 PersonEditor.php:760
+#: Include/Functions.php:1143
+msgid "Do not auto-format"
+msgstr "Ikke auto-format"
+
+#: CartToFamily.php:300 CSVExport.php:149 FamilyEditor.php:758
+#: FamilyView.php:372 PersonEditor.php:738 PersonEditor.php:740
+#: PersonView.php:464 PrintView.php:171
+msgid "Work Phone:"
+msgstr "Arbeid Telefon:"
+
+#: CartToFamily.php:308 CSVExport.php:154 FamilyEditor.php:766
+#: FamilyView.php:376 PersonEditor.php:753 PersonEditor.php:755
+#: PersonView.php:468 PrintView.php:176
+msgid "Mobile Phone:"
+msgstr "Mobiltelefon:"
+
+#: CartToFamily.php:316 CSVExport.php:159 FamilyEditor.php:774
+#: FamilyView.php:380 PersonEditor.php:768 PersonEditor.php:770
+#: PersonView.php:472 PrintView.php:253
+msgid "Email:"
+msgstr "E-post:"
+
+#: CartToGroup.php:57
+msgid "Add Cart to Group"
+msgstr "Legg Cart til gruppe"
+
+#: CartToGroup.php:114 GroupReports.php:83 PersonToGroup.php:108
+msgid "Invalid Group or No Roles Available!"
+msgstr "Ugyldig gruppe eller ingen roller tilgjengelig!"
+
+#: CartToGroup.php:121
+msgid "Select the group to which you would like to add your cart:"
+msgstr "Velg gruppen du ønsker å legge til i handlekurven:"
+
+#: CartToGroup.php:125 GroupReports.php:96 PersonToGroup.php:120
+msgid "Select Group:"
+msgstr "Velg Gruppe:"
+
+#: CartToGroup.php:139 GroupReports.php:110 PersonToGroup.php:134
+msgid "Select Role:"
+msgstr "Velg Rolle:"
+
+#: CartToGroup.php:140 GroupReports.php:111 PersonToGroup.php:135
+#: RPCdummy.php:91
+msgid "No Group Selected"
+msgstr "Ingen gruppe valgt"
+
+#: CartToGroup.php:145 PersonToGroup.php:140 SelectList.php:1127
+#: SelectListFormatted.php:1169
+msgid "Add to Group"
+msgstr "Legg til i gruppe"
+
+#: CartToGroup.php:147
+msgid "Create a New Group"
+msgstr "Opprett en ny gruppe"
+
+#: CartView.php:62 QuerySQL.php:96 QuerySQL.php:150
+msgid "An error occured: "
+msgstr "Det oppstod en feil:"
+
+#: CartView.php:126
+msgid "View Your Cart"
+msgstr "Se Kurven din"
+
+#: CartView.php:132
+msgid "You have no items in your cart."
+msgstr "Du har ingen varer i handlekurven."
+
+#: CartView.php:180
+msgid "Go To Labels"
+msgstr "Gå til etiketter"
+
+#: CartView.php:185
+msgid "Your cart contains"
+msgstr "Handlekurven inneholder"
+
+#: CartView.php:185
+msgid "persons from"
+msgstr "personer fra"
+
+#: CartView.php:185
+msgid "families."
+msgstr "familier."
+
+#: CartView.php:190
+msgid "Address?"
+msgstr "Adresse?"
+
+#: CartView.php:191
+msgid "Email?"
+msgstr "E-post?"
+
+#: CartView.php:192 CartView.php:243 FamilyView.php:467 FamilyView.php:516
+#: GroupView.php:251 GroupView.php:299 PersonView.php:521 PersonView.php:568
+#: PersonView.php:641 PersonView.php:667 PersonView.php:758 PersonView.php:774
+#: SelectList.php:1116 SelectListFormatted.php:1158
+msgid "Remove"
+msgstr "Fjern"
+
+#: CartView.php:193 CSVImport.php:292 FamilyEditor.php:950 FamilyView.php:591
+#: OptionManager.php:71 OptionManagerSave.php:71
+msgid "Classification"
+msgstr "Klassifisering"
+
+#: CartView.php:194
+msgid "Family Role"
+msgstr "Familie Rolle"
+
+#: CartView.php:213 CartView.php:232 DonationFundEditor.php:226
+#: FinancialReports.php:269 MenuEditor.php:288 MenuEditor.php:322
+#: MenuEditor.php:334 MenuEditor.php:346 MenuEditor.php:355 MenuEditor.php:416
+#: MenuEditor.php:464 MenuEditor.php:473 MenuEditor.php:482
+#: Include/Functions.php:947 Include/Functions.php:1032
+msgid "Yes"
+msgstr "Ja"
+
+#: CartView.php:225 CartView.php:234 DonationFundEditor.php:227
+#: FinancialReports.php:270 MenuEditor.php:290 MenuEditor.php:324
+#: MenuEditor.php:336 MenuEditor.php:348 MenuEditor.php:356 MenuEditor.php:417
+#: MenuEditor.php:465 MenuEditor.php:474 MenuEditor.php:483
+#: Include/Functions.php:949 Include/Functions.php:1037
+msgid "No"
+msgstr "Ingen"
+
+#: CartView.php:257
+msgid "Cart Functions"
+msgstr "Handlevogn funksjoner"
+
+#: CartView.php:259 MenuStrings.php:47
+msgid "Empty Cart"
+msgstr "Tom Handlekurven"
+
+#: CartView.php:263 MenuStrings.php:48
+msgid "Empty Cart to Group"
+msgstr "Tom Handlekurven til gruppe"
+
+#: CartView.php:267 MenuStrings.php:49
+msgid "Empty Cart to Family"
+msgstr "Tom Handlekurven til familien"
+
+#: CartView.php:270 MenuStrings.php:50
+msgid "Empty Cart to Event"
+msgstr "Tom Handlekurven til Event"
+
+#: CartView.php:277 CSVExport.php:70
+msgid "CSV Export"
+msgstr "CSV Eksport"
+
+#: CartView.php:286
+msgid "Email Cart"
+msgstr "E Cart"
+
+#: CartView.php:287 GroupView.php:147
+msgid "Email (BCC)"
+msgstr "E-post (BCC)"
+
+#: CartView.php:290
+msgid "Map Cart"
+msgstr "Kart Cart"
+
+#: CartView.php:291
+#, fuzzy
+msgid "Name Tags"
+msgstr "Navn"
+
+#: CartView.php:321
+msgid "Bulk Mail Presort"
+msgstr "Bulk Mail Presort"
+
+#: CartView.php:329
+msgid "Quiet Presort"
+msgstr "Stille Presort"
+
+#: CartView.php:352
+msgid "Generate Labels"
+msgstr "Generere etiketter"
+
+#: CartView.php:363
+msgid "Export Cart to CSV File"
+msgstr "Eksportere Cart til CSV-fil"
+
+#: CartView.php:365
+msgid "Create CSV File"
+msgstr "Lag CSV-fil"
+
+#: CartView.php:376
+msgid "Create Directory From Cart"
+msgstr "Lag katalog fra Cart"
+
+#: CartView.php:378
+msgid "Cart Directory"
+msgstr "Cart Directory"
+
+#: CartView.php:405
+msgid "Send Email To People in Cart"
+msgstr "Send e-post til folk i handlekurven"
+
+#: CartView.php:550 EmailEditor.php:67
+msgid "Compose Email"
+msgstr "Lag e-post"
+
+#: CartView.php:559 CSVExport.php:314 CSVExport.php:328 CSVExport.php:352
+#: CSVExport.php:364 EmailEditor.php:73
+msgid "From:"
+msgstr "Fra:"
+
+#: CartView.php:561 EmailEditor.php:75
+msgid "To (blind):"
+msgstr "Til (blind):"
+
+#: CartView.php:563 EmailEditor.php:83 Register.php:89
+msgid "Subject:"
+msgstr "Emne:"
+
+#: CartView.php:566 EmailEditor.php:87
+msgid "Attach file:"
+msgstr "Legg ved fil:"
+
+#: CartView.php:592
+msgid "Edit Email"
+msgstr "Redigere e"
+
+#: CartView.php:613
+msgid "Send Email"
+msgstr "Send e-post"
+
+#: CartView.php:619
+msgid "Delete Email"
+msgstr "Slett e-post"
+
+#: CartView.php:641
+msgid "Resume"
+msgstr "Gjenoppta"
+
+#: CartView.php:653
+msgid "Abort"
+msgstr "Abort"
+
+#: CartView.php:664
+msgid "View Log"
+msgstr "Vis logg"
+
+#: Checkin.php:25
+msgid "Event Checkin"
+msgstr "Hendelse Checkin"
+
+#: Checkin.php:59
+msgid "Select the event to which you would like to check people in for:"
+msgstr "Velg hendelsen som du ønsker å kontrollere folk i for:"
+
+#: Checkin.php:84
+msgid "Select Event"
+msgstr "Velg hendelse"
+
+#: Checkin.php:123
+msgid "Verify"
+msgstr "Verifisere"
+
+#: Checkin.php:125
+msgid "Add Visitor"
+msgstr "Legg besøkende"
+
+#: Checkin.php:184 Checkin.php:342
+msgid "CheckIn"
+msgstr "CheckIn"
+
+#: Checkin.php:185
+msgid "CheckOut"
+msgstr "CheckOut"
+
+#: Checkin.php:240
+msgid "Continue checkin"
+msgstr "Fortsett checkin"
+
+#: Checkin.php:289
+msgid "Verify CheckOut"
+msgstr "Bekreft CheckOut"
+
+#: Checkin.php:343
+msgid "Finalize CheckOut"
+msgstr "Sluttføre CheckOut"
+
+#: Checkin.php:367
+msgid "Checked In Time"
+msgstr "Sjekket In Time"
+
+#: Checkin.php:368
+msgid "Checked In By"
+msgstr "Sjekket inn av"
+
+#: Checkin.php:369
+msgid "Checked Out Time"
+msgstr "Sjekket ut Tid"
+
+#: Checkin.php:370
+msgid "Checked Out By"
+msgstr "Sjekket ut av"
+
+#: Checkin.php:441
+msgid "Checkout"
+msgstr "Checkout"
+
+#: Checkin.php:450 EditEventAttendees.php:97
+msgid "No Attendees Assigned to Event"
+msgstr "Ingen deltakere Assigned til Event"
+
+#: Checkin.php:520 PersonView.php:246 Include/Functions.php:1769
+#: Reports/CanvassReports.php:261 Reports/VotingMembers.php:92
+msgid "Member"
+msgstr "Medlem"
+
+#: Checkin.php:521 PersonView.php:247
+msgid " of the"
+msgstr "av"
+
+#: Checkin.php:521 PersonView.php:247
+msgid " family)"
+msgstr "familie)"
+
+#: Checkin.php:524 PersonView.php:250
+msgid "(No assigned family)"
+msgstr "(Ingen tildelt familie)"
+
+#: Checkin.php:546 FamilyView.php:262 PersonView.php:293
+msgid "No photo selected for uploading."
+msgstr "Ingen bilder er valgt for opplasting."
+
+#: Checkin.php:548 FamilyView.php:264 PersonView.php:295
+msgid "Only jpeg photos can be uploaded."
+msgstr "Kun JPEG bilder kan lastes opp."
+
+#: CheckVersion.php:62
+msgid "ChurchCRM: Database Version Check"
+msgstr "ChurchCRM: Database versjon Sjekk"
+
+#: ConvertIndividualToFamily.php:46
+msgid "Convert Individuals to Families"
+msgstr "Konverter enkeltpersoner til familier"
+
+#: ConvertIndividualToFamily.php:148
+msgid "Convert Next"
+msgstr "Konverter Neste"
+
+#: ConvertIndividualToFamily.php:149
+msgid "Convert All"
+msgstr "Konverter alle"
+
+#: CSVExport.php:80 PersonEditor.php:571
+msgid "Standard Fields"
+msgstr "Standard Fields"
+
+#: CSVExport.php:84 PersonEditor.php:589
+msgid "Last Name:"
+msgstr "Etternavn:"
+
+#: CSVExport.php:85
+msgid "Required"
+msgstr "Påkrevd"
+
+#: CSVExport.php:89 DonatedItemEditor.php:228 FundRaiserEditor.php:179
+#: PersonEditor.php:574
+msgid "Title:"
+msgstr "Tittel:"
+
+#: CSVExport.php:94 PersonEditor.php:579
+msgid "First Name:"
+msgstr "Fornavn:"
+
+#: CSVExport.php:99 PersonEditor.php:584
+msgid "Middle Name:"
+msgstr "Mellomnavn:"
+
+#: CSVExport.php:104 PersonEditor.php:594
+msgid "Suffix:"
+msgstr "Suffiks:"
+
+#: CSVExport.php:134 Reports/TaxReport.php:195
+#, fuzzy
+msgid "Envelope:"
+msgstr "Konvolutt"
+
+#: CSVExport.php:164 PersonView.php:476
+msgid "Work/Other Email:"
+msgstr "Arbeid / Other E-post:"
+
+#: CSVExport.php:169 CSVExport.php:311 PersonEditor.php:844 PersonView.php:432
+#: PrintView.php:263
+msgid "Membership Date:"
+msgstr "Medlemskap Dato:"
+
+#: CSVExport.php:174
+msgid "* Birth / Anniversary Date:"
+msgstr "* Fødsel / Anniversary Dato:"
+
+#: CSVExport.php:179
+msgid "* Age / Years Married:"
+msgstr "* Alder / år Gift:"
+
+#: CSVExport.php:184 CSVExport.php:269 PersonEditor.php:637 PrintView.php:233
+msgid "Family Role:"
+msgstr "Familie Rolle:"
+
+#: CSVExport.php:189
+msgid "* Depends whether using person or family output method"
+msgstr "* Avhengig enten du bruker person eller familie utskriftsmetode"
+
+#: CSVExport.php:199
+msgid "Custom Person Fields"
+msgstr "Tilpassede Person Fields"
+
+#: CSVExport.php:218
+msgid "Custom Family Fields"
+msgstr "Tilpassede Family Fields"
+
+#: CSVExport.php:239 FinancialReports.php:103
+msgid "Filters"
+msgstr "Filtre"
+
+#: CSVExport.php:243
+msgid "Records to export:"
+msgstr "Poster å eksportere:"
+
+#: CSVExport.php:246
+msgid "Based on filters below.."
+msgstr "Basert på filtrene nedenfor .."
+
+#: CSVExport.php:247
+msgid "People in Cart (filters ignored)"
+msgstr "Folk i handlekurven (filtre ignorert)"
+
+#: CSVExport.php:252 FinancialReports.php:113 PersonEditor.php:849
+#: PersonView.php:436 PrintView.php:268
+msgid "Classification:"
+msgstr "Klassifisering:"
+
+#: CSVExport.php:254 CSVExport.php:271 CSVExport.php:298
+#: DirectoryReports.php:87 DirectoryReports.php:104 DirectoryReports.php:124
+#: DirectoryReports.php:140 DirectoryReports.php:157 FinancialReports.php:115
+#: FinancialReports.php:134 FinancialReports.php:216 FinancialReports.php:233
+msgid "Use Ctrl Key to select multiple"
+msgstr "Bruk Ctrl-tasten for å velge flere"
+
+#: CSVExport.php:286 PersonEditor.php:599 PersonView.php:402 PrintView.php:205
+msgid "Gender:"
+msgstr "Kjønn:"
+
+#: CSVExport.php:289
+msgid "Don't Filter"
+msgstr "Ikke filtrer"
+
+#: CSVExport.php:290 FamilyEditor.php:988 FamilyView.php:652
+#: PersonEditor.php:603 PersonView.php:408 PrintView.php:212 PrintView.php:321
+#: SelectList.php:528 SelectList.php:1056 SelectListFormatted.php:548
+#: SelectListFormatted.php:1098
+msgid "Male"
+msgstr "Mann"
+
+#: CSVExport.php:291 FamilyEditor.php:989 FamilyView.php:652
+#: PersonEditor.php:604 PersonView.php:411 PrintView.php:215 PrintView.php:321
+#: SelectList.php:533 SelectList.php:1057 SelectListFormatted.php:553
+#: SelectListFormatted.php:1101
+msgid "Female"
+msgstr "Kvinne"
+
+#: CSVExport.php:296 DirectoryReports.php:102
+msgid "Group Membership:"
+msgstr "Gruppe Medlemskap:"
+
+#: CSVExport.php:316 CSVExport.php:337 CSVExport.php:354 CSVExport.php:366
+msgid "To:"
+msgstr "Til:"
+
+#: CSVExport.php:323
+msgid "Birthday Date:"
+msgstr "Bursdag Dato:"
+
+#: CSVExport.php:349
+msgid "Anniversary Date:"
+msgstr "Jubileum Dato:"
+
+#: CSVExport.php:361
+msgid "Date Entered:"
+msgstr "Datoen som er angitt:"
+
+#: CSVExport.php:373 FinancialReports.php:299
+msgid "Output Method:"
+msgstr "Utskriftsmetode:"
+
+#: CSVExport.php:376
+msgid "CSV Individual Records"
+msgstr "CSV Individual Records"
+
+#: CSVExport.php:377
+msgid "CSV Combine Families"
+msgstr "CSV Combine Familier"
+
+#: CSVExport.php:378
+msgid "Add Individuals to Cart"
+msgstr "Legg Enkeltpersoner i handlekurven"
+
+#: CSVExport.php:383
+msgid "Skip records with incomplete mail address"
+msgstr "Hopp poster med ufullstendig postadresse"
+
+#: CSVExport.php:391
+msgid "Create File"
+msgstr "Lag File"
+
+#: CSVImport.php:132
+msgid "No file selected for upload."
+msgstr "Ingen fil valgt for opplasting."
+
+#: CSVImport.php:157
+msgid "Total number of rows in the CSV file:"
+msgstr "Totalt antall rader i CSV-filen:"
+
+#: CSVImport.php:220
+msgid "Ignore this Field"
+msgstr "Ignorer dette feltet"
+
+#: CSVImport.php:221 FindFundRaiser.php:226 FundRaiserEditor.php:204
+msgid "Title"
+msgstr "Tittel"
+
+#: CSVImport.php:222 SelectList.php:1436 SelectListFormatted.php:1541
+msgid "First Name"
+msgstr "Fornavn"
+
+#: CSVImport.php:223
+msgid "Middle Name"
+msgstr "Mellomnavn"
+
+#: CSVImport.php:224 ManageEnvelopes.php:152
+msgid "Last Name"
+msgstr "Etternavn"
+
+#: CSVImport.php:225 FamilyEditor.php:944
+msgid "Suffix"
+msgstr "Suffiks"
+
+#: CSVImport.php:226 FamilyEditor.php:945 FamilyView.php:588 PrintView.php:295
+msgid "Gender"
+msgstr "Kjønn"
+
+#: CSVImport.php:227
+msgid "Donation Envelope"
+msgstr "Donasjon konvolutt"
+
+#: CSVImport.php:228
+msgid "Address1"
+msgstr "Adresse1"
+
+#: CSVImport.php:229
+msgid "Address2"
+msgstr "Adresse2"
+
+#: CSVImport.php:234 EditEventAttendees.php:54 EventAttendance.php:204
+#: GroupMemberList.php:323 GroupReports.php:159 SelectList.php:1160
+#: SelectListFormatted.php:1208
+msgid "Home Phone"
+msgstr "Home Phone"
+
+#: CSVImport.php:235 GroupReports.php:160 SelectList.php:1161
+#: SelectListFormatted.php:1211
+msgid "Work Phone"
+msgstr "Arbeid Phone"
+
+#: CSVImport.php:236
+msgid "Mobile Phone"
+msgstr "Mobile Phone"
+
+#: CSVImport.php:238
+msgid "Work / Other Email"
+msgstr "Arbeid / Annet Epost"
+
+#: CSVImport.php:239 FamilyEditor.php:937
+msgid "Birth Date"
+msgstr "Fødselsdato"
+
+#: CSVImport.php:240
+msgid "Membership Date"
+msgstr "Medlemskap Dato"
+
+#: CSVImport.php:241 DirectoryReports.php:175
+msgid "Wedding Date"
+msgstr "Wedding Date"
+
+#: CSVImport.php:252
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "Ignorer første CSV rad (for å utelukke en header)"
+
+#: CSVImport.php:255
+msgid "Make Family records based on last name and address"
+msgstr "Gjør Family poster basert på etternavn og adresse"
+
+#: CSVImport.php:258
+msgid "Patriarch"
+msgstr "Patriark"
+
+#: CSVImport.php:259
+msgid "Matriarch"
+msgstr "Matriark"
+
+#: CSVImport.php:261
+msgid "Family Type: used with Make Family records... option above"
+msgstr "Familie Type: brukes med Gjør Family Records ... alternativet ovenfor"
+
+#: CSVImport.php:268
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "MERK: Separatorer (streker, etc.) eller mangel derav ikke saken"
+
+#: CSVImport.php:273
+msgid "Default country if none specified otherwise"
+msgstr "Standardland hvis ingen spesifisert"
+
+#: CSVImport.php:294
+msgid "Perform Import"
+msgstr "Utfør Import"
+
+#: CSVImport.php:813
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "FEIL: den opplastede CSV-filen eksisterer ikke lenger!"
+
+#: CSVImport.php:832
+msgid "Data Cleared Successfully!"
+msgstr "Data Slettet Vellykket!"
+
+#: CSVImport.php:836
+msgid "Please select the confirmation checkbox"
+msgstr "Vennligst velg bekreftelse boksen"
+
+#: CSVImport.php:847
+msgid "Upload CSV File"
+msgstr "Last CSV-fil"
+
+#: CSVImport.php:851
+msgid "Are you sure?"
+msgstr "Er du sikker?"
+
+#: CSVImport.php:853
+msgid "Clear Persons and Families"
+msgstr "Klare personer og familier"
+
+#: CSVImport.php:856
+msgid ""
+"Warning!  Do not select this option if you plan to add to an existing "
+"database.<br/>"
+msgstr ""
+"Advarsel! Ikke velg dette alternativet hvis du har tenkt å legge til en "
+"eksisterende database. <br/>"
+
+#: CSVImport.php:857
+msgid ""
+"Use only if unsatisfied with initial import.  All person and member data "
+"will be destroyed!"
+msgstr ""
+"Bruk kun hvis misfornøyd med første importen. Alle person-og medlemsdata vil "
+"bli ødelagt!"
+
+#: CSVImport.php:864
+msgid "Data import successful."
+msgstr "Data importerer vellykket."
+
+#: CSVImport.php:864
+msgid "persons were imported"
+msgstr "personer ble importert"
+
+#: Login.php:100 Login.php:165
+msgid "Invalid login or password"
+msgstr "Ugyldig brukernavn eller passord"
+
+#: Login.php:153
+msgid ""
+"Too many failed logins: your account has been locked.  Please contact an "
+"administrator."
+msgstr ""
+"For mange mislykkede pålogginger: kontoen din har blitt låst. Ta kontakt med "
+"en administrator."
+
+#: Login.php:349
+msgid "ChurchCRM: Login"
+msgstr "ChurchCRM: Logg inn"
+
+#: Login.php:393
+msgid "Please Login"
+msgstr "Vennligst Logg inn"
+
+#: Login.php:413
+msgid "Enter your user name:"
+msgstr "Skriv inn ditt brukernavn:"
+
+#: Login.php:420
+msgid "Enter your password:"
+msgstr "Skriv inn passordet ditt:"
+
+#: Login.php:428
+msgid "Login"
+msgstr "Logg"
+
+#: DepositSlipEditor.php:52
+msgid "Deposit Slip Number: TBD"
+msgstr "Innskudd Slip Antall: TBD"
+
+#: DepositSlipEditor.php:54
+msgid "Deposit Slip Number: "
+msgstr "Innskudd Slip Antall:"
+
+#: DepositSlipEditor.php:78 FundRaiserEditor.php:57 GroupMeeting.php:45
+#: PledgeEditor.php:333
+msgid "Not a valid Date"
+msgstr "Ikke en gyldig dato"
+
+#: DepositSlipEditor.php:459
+msgid "Deposit Slip Report"
+msgstr "Innskudd Slip Rapporter"
+
+#: DepositSlipEditor.php:460
+msgid "More Reports"
+msgstr "Flere rapporter"
+
+#: DepositSlipEditor.php:464 eGive.php:299
+msgid "Import eGive"
+msgstr "Importer eGive"
+
+#: DepositSlipEditor.php:466
+msgid "Add Payment"
+msgstr "Legg Betaling"
+
+#: DepositSlipEditor.php:470
+msgid "Load Authorized Transactions"
+msgstr "Last Autoriserte Transaksjoner"
+
+#: DepositSlipEditor.php:471
+msgid "Run Transactions"
+msgstr "Kjør Transaksjoner"
+
+#: DepositSlipEditor.php:494
+msgid "Deposit Type:"
+msgstr "Innskudd Type:"
+
+#: DepositSlipEditor.php:503
+msgid "Bank"
+msgstr "Bank"
+
+#: DepositSlipEditor.php:505 FinancialReports.php:239 PledgeEditor.php:604
+msgid "Bank Draft"
+msgstr "Bankremisser"
+
+#: DepositSlipEditor.php:506 FinancialReports.php:240 PledgeEditor.php:608
+msgid "eGive"
+msgstr "eGive"
+
+#: DepositSlipEditor.php:513
+msgid "Comment:"
+msgstr "Kommentar:"
+
+#: DepositSlipEditor.php:518
+msgid "Closed:"
+msgstr "Stengt:"
+
+#: DepositSlipEditor.php:519
+msgid "Close deposit slip (remember to press Save)"
+msgstr "Lukk innskudd slip (husk å trykke Save)"
+
+#: DepositSlipEditor.php:522
+msgid ""
+"Important note: failed transactions will be deleted permanantly when the "
+"deposit slip is closed."
+msgstr ""
+"Viktig merknad: mislykkede transaksjoner vil bli slettet permanent når "
+"innskuddet slip er lukket."
+
+#: DepositSlipEditor.php:567
+msgid "Payments on this deposit slip:"
+msgstr "Betalinger på dette innskuddet slip:"
+
+#: DepositSlipEditor.php:573 FamilyView.php:199 FinancialReports.php:277
+#: OptionManager.php:64 OptionManagerSave.php:64 PledgeEditor.php:645
+#: PropertyAssign.php:79 PropertyEditor.php:46 PropertyList.php:31
+#: PropertyTypeEditor.php:100 PropertyTypeList.php:61 SelectList.php:956
+#: SelectListFormatted.php:995 Include/Header-function.php:443
+msgid "Family"
+msgstr "Familie"
+
+#: DepositSlipEditor.php:574 FamilyView.php:782 FindDepositSlip.php:255
+#: FindFundRaiser.php:225 GroupMeeting.php:185 PledgeEditor.php:676
+#: SelectDelete.php:313 Include/Functions.php:103
+msgid "Date"
+msgstr "Dato"
+
+#: DepositSlipEditor.php:575 FamilyView.php:781 PledgeEditor.php:615
+#: SelectDelete.php:312
+msgid "Fiscal Year"
+msgstr "Regnskapsåret"
+
+#: DepositSlipEditor.php:577 PledgeEditor.php:668
+msgid "Check #"
+msgstr "Sjekk #"
+
+#: DepositSlipEditor.php:579 FamilyView.php:694 FamilyView.php:780
+#: FinancialReports.php:276 PledgeEditor.php:621 SelectDelete.php:311
+msgid "Fund"
+msgstr "Fond"
+
+#: DepositSlipEditor.php:580 FamilyView.php:692 FamilyView.php:783
+#: PledgeEditor.php:763 SelectDelete.php:314
+msgid "Amount"
+msgstr "Beløp"
+
+#: DepositSlipEditor.php:581
+msgid "NonDeduct"
+msgstr "NonDeduct"
+
+#: DepositSlipEditor.php:582 FamilyView.php:786 SelectDelete.php:316
+msgid "Method"
+msgstr "Metode"
+
+#: DepositSlipEditor.php:583 FamilyView.php:787 FindDepositSlip.php:257
+#: PledgeEditor.php:636 PledgeEditor.php:769 SelectDelete.php:317
+msgid "Comment"
+msgstr "Kommentar"
+
+#: DepositSlipEditor.php:585
+msgid "Cleared"
+msgstr "Slettet"
+
+#: DepositSlipEditor.php:588
+#, fuzzy
+msgid "View Detail"
+msgstr "Detaljer"
+
+#: DepositSlipEditor.php:594
+msgid "Details"
+msgstr "Detaljer"
+
+#: DirectoryReports.php:30
+msgid "Directory reports"
+msgstr "Directory rapporter"
+
+#: DirectoryReports.php:85
+msgid "Select classifications to include"
+msgstr "Velg klassifikasjoner å inkludere"
+
+#: DirectoryReports.php:122
+msgid "Which role is the head of household?"
+msgstr "Hvilken rolle er leder av husholdningen?"
+
+#: DirectoryReports.php:138
+msgid "Which role is the spouse?"
+msgstr "Hvilken rolle er ektefelle?"
+
+#: DirectoryReports.php:155
+msgid "Which role is a child?"
+msgstr "Hvilken rolle er et barn?"
+
+#: DirectoryReports.php:172
+msgid "Information to Include:"
+msgstr "Informasjon til Inkluder:"
+
+#: DirectoryReports.php:174 DirectoryReports.php:247 GeoPage.php:322
+#: GroupMemberList.php:319 GroupReports.php:158 SelectList.php:1159
+#: SelectList.php:1437 SelectListFormatted.php:1203
+#: SelectListFormatted.php:1544
+msgid "Address"
+msgstr "Adresse"
+
+#: DirectoryReports.php:176 Reports/ConfirmReport.php:174
+#: Reports/ConfirmReport.php:193
+msgid "Birthday"
+msgstr "Bursdag"
+
+#: DirectoryReports.php:178
+msgid "Family Home Phone"
+msgstr "Familie Home Phone"
+
+#: DirectoryReports.php:179
+msgid "Family Work Phone"
+msgstr "Familie Work Phone"
+
+#: DirectoryReports.php:180
+msgid "Family Cell Phone"
+msgstr "Familie Cell Phone"
+
+#: DirectoryReports.php:181
+msgid "Family Email"
+msgstr "Familien e"
+
+#: DirectoryReports.php:183
+msgid "Personal Home Phone"
+msgstr "Personal Home Phone"
+
+#: DirectoryReports.php:184
+msgid "Personal Work Phone"
+msgstr "Personlig Work Phone"
+
+#: DirectoryReports.php:185
+msgid "Personal Cell Phone"
+msgstr "Personlig Cell Phone"
+
+#: DirectoryReports.php:186
+msgid "Personal Email"
+msgstr "Personlig e"
+
+#: DirectoryReports.php:187
+msgid "Personal Work/Other Email"
+msgstr "Personlig Arbeid / Other Email"
+
+#: DirectoryReports.php:188
+msgid "Photos"
+msgstr "Bilder"
+
+#: DirectoryReports.php:204
+msgid "Number of Columns:"
+msgstr "Antall kolonner:"
+
+#: DirectoryReports.php:212
+msgid "Paper Size:"
+msgstr "Papirstørrelse:"
+
+#: DirectoryReports.php:219 Include/LabelFunctions.php:65
+msgid "Font Size:"
+msgstr "Skriftstørrelse:"
+
+#: DirectoryReports.php:235
+msgid "Title page:"
+msgstr "Tittelside:"
+
+#: DirectoryReports.php:239
+msgid "Use Title Page"
+msgstr "Bruk Tittelside"
+
+#: DirectoryReports.php:243
+msgid "Church Name"
+msgstr "Kirke Navn"
+
+#: DirectoryReports.php:267
+msgid "Disclaimer"
+msgstr "Ansvarsfraskrivelse"
+
+#: DirectoryReports.php:283
+msgid "Create Directory"
+msgstr "Lag Directory"
+
+#: DonatedItemEditor.php:44
+#, fuzzy
+msgid "Donated Item Editor"
+msgstr "Menyelement Editor"
+
+#: DonatedItemEditor.php:184 FamilyEditor.php:663 PaddleNumEditor.php:165
+#: PersonEditor.php:552 PersonEditor.php:914 PledgeEditor.php:550
+msgid "Save and Add"
+msgstr "Lagre og legg til"
+
+#: DonatedItemEditor.php:196
+#, fuzzy
+msgid "Item:"
+msgstr "element"
+
+#: DonatedItemEditor.php:201
+msgid "Multiple items:"
+msgstr "Flere elementer:"
+
+#: DonatedItemEditor.php:202
+msgid "Sell to everyone"
+msgstr "Selge til alle"
+
+#: DonatedItemEditor.php:206
+msgid "Donor:"
+msgstr "Donor:"
+
+#: DonatedItemEditor.php:233
+msgid "Estimated Price:"
+msgstr "Estimert Pris:"
+
+#: DonatedItemEditor.php:238
+msgid "Material Value:"
+msgstr "Materiale Verdi:"
+
+#: DonatedItemEditor.php:242
+#, fuzzy
+msgid "Minimum Price:"
+msgstr "Maksimal avstand"
+
+#: DonatedItemEditor.php:252 PaddleNumEditor.php:182
+#, fuzzy
+msgid "Buyer:"
+msgstr "Nummer:"
+
+#: DonatedItemEditor.php:254 FundRaiserEditor.php:201 FundRaiserEditor.php:238
+msgid "Multiple"
+msgstr "Multiple"
+
+#: DonatedItemEditor.php:273
+#, fuzzy
+msgid "Final Price:"
+msgstr "Økonomi"
+
+#: DonationFundEditor.php:50
+msgid "Donation Fund Editor"
+msgstr "Donasjon Fund Editor"
+
+#: DonationFundEditor.php:153
+msgid "Are you sure you want to delete this fund?"
+msgstr "Er du sikker på at du vil slette dette fondet?"
+
+#: DonationFundEditor.php:167
+msgid "No funds have been added yet"
+msgstr "Ingen midler har blitt lagt til ennå"
+
+#: DonationFundEditor.php:168 DonationFundEditor.php:190
+#: DonationFundEditor.php:241 FamilyCustomFieldsEditor.php:328
+#: FamilyCustomFieldsEditor.php:349 FamilyCustomFieldsEditor.php:443
+#: FamilyCustomFieldsEditorSave.php:324 FamilyCustomFieldsEditorSave.php:345
+#: FamilyCustomFieldsEditorSave.php:439 GroupEditor.php:328
+#: GroupPropsFormEditor.php:285 GroupPropsFormEditor.php:306
+#: GroupPropsFormEditor.php:394 MenuManager.php:205 OptionManager.php:323
+#: OptionManager.php:325 OptionManagerSave.php:317 OptionManagerSave.php:319
+#: PersonCustomFieldsEditor.php:308 PersonCustomFieldsEditor.php:329
+#: PersonCustomFieldsEditor.php:426 VolunteerOpportunityEditor.php:279
+#: VolunteerOpportunityEditor.php:345 VolunteerOpportunityEditor.php:405
+msgid "Exit"
+msgstr "Utgang"
+
+#: DonationFundEditor.php:176
+msgid ""
+"Warning: Field changes will be lost if you do not 'Save Changes' before "
+"using a delete or 'add new' button!"
+msgstr ""
+"Advarsel: Felt endringer vil gå tapt hvis du ikke \"Lagre endringer\" før du "
+"bruker en sletting eller &#39;Legg til ny&#39; knappen!"
+
+#: DonationFundEditor.php:181 FamilyCustomFieldsEditor.php:341
+#: FamilyCustomFieldsEditorSave.php:337 GroupPropsFormEditor.php:298
+#: MenuEditor.php:378 MenuManager.php:198 OptionManager.php:315
+#: OptionManagerSave.php:309 PersonCustomFieldsEditor.php:321
+#: PersonEditor.php:564 VolunteerOpportunityEditor.php:336
+msgid ""
+"Invalid fields or selections. Changes not saved! Please correct and try "
+"again!"
+msgstr ""
+"Ugyldige felt eller valg. Endringer ikke lagret! Rett opp og prøv igjen!"
+
+#: DonationFundEditor.php:188 DonationFundEditor.php:239 EventEditor.php:534
+#: EventNames.php:69 EventNames.php:269 FamilyCustomFieldsEditor.php:347
+#: FamilyCustomFieldsEditor.php:441 FamilyCustomFieldsEditorSave.php:343
+#: FamilyCustomFieldsEditorSave.php:437 GroupPropsFormEditor.php:304
+#: GroupPropsFormEditor.php:392 MenuManager.php:202 OptionManager.php:319
+#: OptionManagerSave.php:313 PersonCustomFieldsEditor.php:327
+#: PersonCustomFieldsEditor.php:424 VolunteerOpportunityEditor.php:343
+#: VolunteerOpportunityEditor.php:403
+msgid "Save Changes"
+msgstr "Lagre endringer"
+
+#: DonationFundEditor.php:211
+msgid "delete"
+msgstr "slette"
+
+#: DonationFundEditor.php:257 FamilyCustomFieldsEditor.php:473
+#: FamilyCustomFieldsEditorSave.php:469 GroupEditor.php:247
+#: GroupPropsFormEditor.php:423 MenuManager.php:261 OptionManager.php:384
+#: OptionManagerSave.php:381 PersonCustomFieldsEditor.php:456
+#: PropertyEditor.php:163 PropertyTypeEditor.php:106
+#: VolunteerOpportunityEditor.php:421
+msgid "Name:"
+msgstr "Navn:"
+
+#: DonationFundEditor.php:263 FundRaiserEditor.php:184 GroupEditor.php:254
+#: GroupPropsFormEditor.php:432 PropertyTypeEditor.php:111
+#: VolunteerOpportunityEditor.php:427
+msgid "Description:"
+msgstr "Beskrivelse:"
+
+#: DonationFundEditor.php:268
+msgid "Add New Fund"
+msgstr "Legg til ny Fund"
+
+#: EditEventAttendees.php:9 EventEditor.php:32
+msgid "Church Event Editor"
+msgstr "Kirke begivenhet Editor"
+
+#: EditEventTypes.php:28 EventNames.php:31
+msgid "Edit Event Types"
+msgstr "Redigere hendelsestyper"
+
+#: EditEventTypes.php:33 EventNames.php:39
+msgid "Are you sure you want to delete this event?"
+msgstr "Er du sikker på at du vil slette denne hendelsen?"
+
+#: EditEventTypes.php:141
+msgid "Edit Event Type"
+msgstr "Redigere Hendelsestype"
+
+#: EditEventTypes.php:148
+msgid "Save Name"
+msgstr "Lagre navn"
+
+#: EditEventTypes.php:157 EventNames.php:194
+msgid "Recurrance Pattern"
+msgstr "Recurrance Mønster"
+
+#: EditEventTypes.php:163 EventNames.php:195
+msgid "Start Time"
+msgstr "Starttid"
+
+#: EditEventTypes.php:180 EventEditor.php:486 EventNames.php:196
+#: ListEvents.php:225
+msgid "Attendance Counts"
+msgstr "Oppmøte teller"
+
+#: EditEventTypes.php:192
+msgid "DELETE"
+msgstr "SLETT"
+
+#: EditEventTypes.php:208
+msgid "ADD"
+msgstr "ADD"
+
+#: eGive.php:295
+#, fuzzy
+msgid "Start Date: "
+msgstr "Startdato:"
+
+#: eGive.php:297
+#, fuzzy
+msgid "End Date: "
+msgstr "Sluttdato:"
+
+#: eGive.php:387
+msgid "Re-import to selected family"
+msgstr "Re-import til utvalgte familie"
+
+#: eGive.php:393
+#, fuzzy
+msgid "Data import results: "
+msgstr "Data importerer vellykket."
+
+#: eGive.php:393
+#, fuzzy
+msgid " gifts were imported, "
+msgstr "personer ble importert"
+
+#: eGive.php:393
+msgid " gifts unchanged, and "
+msgstr "gaver uendret, og"
+
+#: eGive.php:393
+msgid " gifts not imported due to problems"
+msgstr "gaver ikke importert på grunn av problemer"
+
+#: eGive.php:394 eGive.php:423
+#, fuzzy
+msgid "Back to Deposit Slip"
+msgstr "Redigere Deposit Slip"
+
+#: eGive.php:422
+msgid "Fatal error in eGive API datastream: '"
+msgstr "Fatal feil i eGive API datastrøm: &#39;"
+
+#: EmailEditor.php:90 Register.php:93
+msgid "Message:"
+msgstr "Melding:"
+
+#: EmailEditor.php:95
+msgid "Save Email"
+msgstr "Lagre e-post"
+
+#: EmailSend.php:495
+msgid "Email Sent"
+msgstr "E-post sendt"
+
+#: EmailSend.php:499
+msgid "ERROR: PHPMailer is not properly installed on this server."
+msgstr "FEIL: PHPMailer er ikke riktig installert på denne serveren."
+
+#: EmailSend.php:500
+msgid "PHPMailer is required in order to send emails from this server."
+msgstr "PHPMailer er nødvendig for å sende e-post fra denne serveren."
+
+#: EventAttendance.php:29
+msgid "Event Attendees"
+msgstr "Event deltakere"
+
+#: EventAttendance.php:55
+msgid "Event Nonattendees"
+msgstr "Event Nonattendees"
+
+#: EventAttendance.php:63
+msgid "Event Guests"
+msgstr "Hendelsesgjester"
+
+#: EventAttendance.php:70
+msgid "All "
+msgstr "Alle"
+
+#: EventAttendance.php:70 FamilyCustomFieldsEditor.php:356
+#: FamilyCustomFieldsEditorSave.php:352 FamilyView.php:460 FamilyView.php:690
+#: GroupList.php:51 GroupPropsFormEditor.php:313 GroupView.php:204
+#: GroupView.php:243 OptionManager.php:77 OptionManagerSave.php:77
+#: PersonCustomFieldsEditor.php:336 PersonView.php:514 SelectDelete.php:310
+msgid "Type"
+msgstr "Type"
+
+#: EventAttendance.php:70
+msgid " Events"
+msgstr "Hendelser"
+
+#: EventAttendance.php:76
+msgid "Back to Report Menu"
+msgstr "Tilbake til rapport Meny"
+
+#: EventAttendance.php:122
+msgid "Event Date"
+msgstr "Hendelse Dato"
+
+#: EventAttendance.php:123
+msgid "Generate Report"
+msgstr "Generer Rapporter"
+
+#: EventAttendance.php:158
+msgid "Attending Members"
+msgstr "Møtende medlemmer"
+
+#: EventAttendance.php:169
+msgid "Non-Attending Members"
+msgstr "Non-møtende medlemmer"
+
+#: EventAttendance.php:185
+msgid "Guests"
+msgstr "Gjester"
+
+#: EventAttendance.php:235
+msgid "There are no events in this category"
+msgstr "Det er ingen aktiviteter i denne kategorien"
+
+#: EventAttendance.php:235
+msgid "There are no Records"
+msgstr "Det er ingen Records"
+
+#: EventEditor.php:59 EventNames.php:283
+msgid "Create=>Event"
+msgstr "Opprett => Event"
+
+#: EventEditor.php:400
+msgid "Editing Event ID: (ID will be created once saved)"
+msgstr "Redigerer Event ID: (ID vil bli opprettet en gang reddet)"
+
+#: EventEditor.php:402
+msgid "Editing Event ID: "
+msgstr "Redigerer Event ID:"
+
+#: EventEditor.php:413
+#, fuzzy
+msgid "There were "
+msgstr "Det var"
+
+#: EventEditor.php:413
+msgid " errors. Please see below"
+msgstr "feil. Vennligst se nedenfor"
+
+#: EventEditor.php:417
+#, fuzzy
+msgid "Items with a "
+msgstr "Produkter i handlekurven"
+
+#: EventEditor.php:417
+#, fuzzy
+msgid " are required"
+msgstr "Denne verdien er nødvendig."
+
+#: EventEditor.php:435
+msgid "You must enter a title."
+msgstr "Du må angi en tittel."
+
+#: EventEditor.php:440
+msgid "You must enter a description."
+msgstr "Du må angi en beskrivelse."
+
+#: EventEditor.php:452
+msgid "You must enter a start date."
+msgstr "Du må angi en startdato."
+
+#: EventEditor.php:462
+msgid "You must enter a start time."
+msgstr "Du må angi et starttidspunkt."
+
+#: EventEditor.php:491
+msgid "No Attendance counts recorded"
+msgstr "Ingen Tilskuere teller opp"
+
+#: EventEditor.php:509
+msgid "Attendance Notes: "
+msgstr "Oppmøte Merknader:"
+
+#: EventNames.php:59 EventNames.php:310
+msgid "Add Event Type"
+msgstr "Legg Hendelsestype"
+
+#: EventNames.php:189
+msgid "There currently "
+msgstr "Det er nå"
+
+#: EventNames.php:218
+msgid "EVENT TYPE NAME"
+msgstr "EVENT TYPE NAME"
+
+#: EventNames.php:225
+msgid "RECURRANCE PATTERN"
+msgstr "RECURRANCE MØNSTER"
+
+#: EventNames.php:228
+msgid "Sundays"
+msgstr "Søndager"
+
+#: EventNames.php:229
+msgid "Mondays"
+msgstr "Mondays"
+
+#: EventNames.php:230
+msgid "Tuesdays"
+msgstr "Tuesdays"
+
+#: EventNames.php:231
+msgid "Wednesdays"
+msgstr "Onsdager"
+
+#: EventNames.php:232
+msgid "Thursdays"
+msgstr "Torsdager"
+
+#: EventNames.php:233
+msgid "Fridays"
+msgstr "Fredager"
+
+#: EventNames.php:234
+msgid "Saturdays"
+msgstr "Lørdager"
+
+#: EventNames.php:258
+msgid "DEFAULT"
+msgstr "DEFAULT"
+
+#: EventNames.php:258
+msgid "START TIME"
+msgstr "START TIME"
+
+#: EventNames.php:265
+msgid "ATTENDANCE COUNTS"
+msgstr "DELTAKELSE TELLER"
+
+#: EventNames.php:266
+msgid "Total,"
+msgstr "Totalt,"
+
+#: EventNames.php:266
+msgid "[Every event type includes a Total count]"
+msgstr "[Hver hendelse type inkluderer en Total teller]"
+
+#: EventNames.php:267
+msgid ""
+"[enter a list of the attendance counts you want to include with this event. "
+"<br> Separate each count_name with a comma. e.g. Members, Visitors, Campus, "
+"Children]"
+msgstr ""
+"[Skriv en liste over fremmøte teller du ønsker å ta med denne hendelsen. "
+"<br> Skill hver count_name med komma. f.eks Medlemmer, besøkende, Campus, "
+"Barn]"
+
+#: EventNames.php:309
+msgid "New Event Type"
+msgstr "Ny Hendelsestype"
+
+#: FamilyCustomFieldsEditor.php:39 FamilyCustomFieldsEditorSave.php:39
+msgid "Custom Family Fields Editor"
+msgstr "Custom Familie Fields Editor"
+
+#: FamilyCustomFieldsEditor.php:189 FamilyCustomFieldsEditorSave.php:186
+#: PersonCustomFieldsEditor.php:170
+msgid "Default Option"
+msgstr "Standard Option"
+
+#: FamilyCustomFieldsEditor.php:312 FamilyCustomFieldsEditorSave.php:308
+msgid ""
+"Warning:  By deleting this field, you will irrevokably lose all family data "
+"assigned for this field!"
+msgstr ""
+"Advarsel: Ved å slette dette feltet, vil du irrevokably miste alle familiens "
+"data tilordnet dette feltet!"
+
+#: FamilyCustomFieldsEditor.php:327 FamilyCustomFieldsEditorSave.php:323
+msgid "No custom Family fields have been added yet"
+msgstr "Ingen egendefinerte Familie felt er lagt til ennå"
+
+#: FamilyCustomFieldsEditor.php:336 FamilyCustomFieldsEditorSave.php:332
+#: PersonCustomFieldsEditor.php:316
+msgid ""
+"Warning: Arrow and delete buttons take effect immediately.  Field name "
+"changes will be lost if you do not 'Save Changes' before using an up, down, "
+"delete or 'add new' button!"
+msgstr ""
+"Advarsel: Arrow og Slett trer i kraft umiddelbart. Feltnavn endringer vil gå "
+"tapt hvis du ikke \"Lagre endringer\" før du bruker opp, ned, slette eller "
+"&#39;Legg til ny&#39; knappen!"
+
+#: FamilyCustomFieldsEditor.php:358 FamilyCustomFieldsEditorSave.php:354
+#: GroupPropsFormEditor.php:316 PersonCustomFieldsEditor.php:338
+msgid "Special option"
+msgstr "Ekstrautstyr"
+
+#: FamilyCustomFieldsEditor.php:359 FamilyCustomFieldsEditor.php:482
+#: FamilyCustomFieldsEditorSave.php:355 FamilyCustomFieldsEditorSave.php:478
+#: PersonCustomFieldsEditor.php:339 PersonCustomFieldsEditor.php:471
+msgid "Security Option"
+msgstr "Sikkerhet Option"
+
+#: FamilyCustomFieldsEditor.php:360 FamilyCustomFieldsEditorSave.php:356
+msgid "Family-View Side"
+msgstr "Familie-View Side"
+
+#: FamilyCustomFieldsEditor.php:413 FamilyCustomFieldsEditorSave.php:409
+#: GroupPropsFormEditor.php:373 PersonCustomFieldsEditor.php:393
+msgid "You must select a group."
+msgstr "Du må velge en gruppe."
+
+#: FamilyCustomFieldsEditor.php:418 FamilyCustomFieldsEditorSave.php:414
+#: MenuSetup.php:92 PersonCustomFieldsEditor.php:396
+msgid "Edit List Options"
+msgstr "Redigere Liste alternativer"
+
+#: FamilyCustomFieldsEditor.php:429 FamilyCustomFieldsEditor.php:487
+#: FamilyCustomFieldsEditorSave.php:425 FamilyCustomFieldsEditorSave.php:483
+#: PersonCustomFieldsEditor.php:412 PersonCustomFieldsEditor.php:466
+msgid "Left"
+msgstr "Venstre"
+
+#: FamilyCustomFieldsEditor.php:430 FamilyCustomFieldsEditor.php:488
+#: FamilyCustomFieldsEditorSave.php:426 FamilyCustomFieldsEditorSave.php:484
+#: PersonCustomFieldsEditor.php:413 PersonCustomFieldsEditor.php:467
+msgid "Right"
+msgstr "Høyre"
+
+#: FamilyCustomFieldsEditor.php:459 FamilyCustomFieldsEditorSave.php:455
+#: GroupPropsFormEditor.php:410 PersonCustomFieldsEditor.php:442
+#: PropertyEditor.php:144
+msgid "Type:"
+msgstr "Type:"
+
+#: FamilyCustomFieldsEditor.php:470 FamilyCustomFieldsEditorSave.php:466
+#: GroupPropsFormEditor.php:420 PersonCustomFieldsEditor.php:453
+msgid "Help on types.."
+msgstr "Hjelp på typer .."
+
+#: FamilyCustomFieldsEditor.php:476 FamilyCustomFieldsEditorSave.php:472
+#: PersonCustomFieldsEditor.php:459 PropertyTypeEditor.php:49
+msgid "You must enter a name"
+msgstr "Du må angi et navn"
+
+#: FamilyCustomFieldsEditor.php:477 FamilyCustomFieldsEditorSave.php:473
+#: GroupPropsFormEditor.php:427 PersonCustomFieldsEditor.php:460
+msgid "That field name already exists."
+msgstr "Dette feltet navnet finnes allerede."
+
+#: FamilyCustomFieldsEditor.php:486 FamilyCustomFieldsEditorSave.php:482
+#: PersonCustomFieldsEditor.php:465
+msgid "Side:"
+msgstr "Side:"
+
+#: FamilyCustomFieldsEditor.php:492 FamilyCustomFieldsEditorSave.php:488
+#: GroupPropsFormEditor.php:437 PersonCustomFieldsEditor.php:475
+msgid "Add New Field"
+msgstr "Legg til nytt felt"
+
+#: FamilyEditor.php:23
+msgid "Family Editor"
+msgstr "Family Editor"
+
+#: FamilyEditor.php:206
+msgid "First name must be entered"
+msgstr "Fornavnet må skrives"
+
+#: FamilyEditor.php:216 PersonEditor.php:192
+msgid "Invalid Year: allowable values are 1901 to 2155"
+msgstr "Ugyldig år: tillatte verdier er 1901-2155"
+
+#: FamilyEditor.php:223 PersonEditor.php:196
+msgid "Invalid Birth Date."
+msgstr "Ugyldig Fødselsdato."
+
+#: FamilyEditor.php:233
+msgid "You must enter a Name."
+msgstr "Du må angi et navn."
+
+#: FamilyEditor.php:243
+msgid "Not a valid Wedding Date"
+msgstr "Ikke en gyldig Wedding Date"
+
+#: FamilyEditor.php:257 PersonEditor.php:233
+msgid "Email is Not Valid"
+msgstr "E-post er ikke gyldig"
+
+#: FamilyEditor.php:703
+msgid "Province:"
+msgstr "Provins:"
+
+#: FamilyEditor.php:779
+msgid "Send Newsletter:"
+msgstr "Send Nyhetsbrev:"
+
+#: FamilyEditor.php:785
+msgid "Ok To Canvass:"
+msgstr "Ok å canvass:"
+
+#: FamilyEditor.php:794
+msgid "Assign a Canvasser:"
+msgstr "Tilordne en Canvasser:"
+
+#: FamilyEditor.php:812
+msgid "Assign a Brave Canvasser:"
+msgstr "Tildele en Brave Canvasser:"
+
+#: FamilyEditor.php:831
+msgid "Envelope number:"
+msgstr "Konvolutt nummer:"
+
+#: FamilyEditor.php:850
+msgid "Assign a Property:"
+msgstr "Tilordne en Eiendom:"
+
+#: FamilyEditor.php:879
+msgid "Latitude:"
+msgstr "Breddegrad:"
+
+#: FamilyEditor.php:883
+msgid "Longitude:"
+msgstr "Lengdegrad:"
+
+#: FamilyEditor.php:895 MenuStrings.php:79 PersonEditor.php:876
+msgid "Custom Fields"
+msgstr "Custom Fields"
+
+#: FamilyEditor.php:931
+msgid ""
+"You may create family members now or add them later.  All entries will "
+"become <i>new</i> person records."
+msgstr ""
+"Du kan opprette familiemedlemmer nå eller legg dem senere. Alle bidrag vil "
+"bli <i>nye</i> personer poster."
+
+#: FamilyEditor.php:935
+msgid "Complete Name"
+msgstr "Komplett navn"
+
+#: FamilyEditor.php:940
+msgid "Family Members"
+msgstr "Familiemedlemmer"
+
+#: FamilyEditor.php:941
+msgid "First"
+msgstr "Første"
+
+#: FamilyEditor.php:942
+msgid "Middle"
+msgstr "Midt"
+
+#: FamilyEditor.php:943
+msgid "Last"
+msgstr "Siste"
+
+#: FamilyEditor.php:946 FamilyView.php:589 OptionManager.php:65
+#: OptionManager.php:89 OptionManagerSave.php:65 OptionManagerSave.php:89
+#: PersonView.php:637 PrintView.php:296 PrintView.php:355
+#: Reports/CanvassReports.php:259 Reports/GroupReport.php:252
+msgid "Role"
+msgstr "Rolle"
+
+#: FamilyEditor.php:947
+msgid "Month"
+msgstr "Måned"
+
+#: FamilyEditor.php:948
+msgid "Day"
+msgstr "Dag"
+
+#: FamilyEditor.php:949 Include/Functions.php:107
+msgid "Year"
+msgstr "År"
+
+#: FamilyEditor.php:987 PersonEditor.php:602
+msgid "Select Gender"
+msgstr "Velg Kjønn"
+
+#: FamilyEditor.php:995
+msgid "Select Role"
+msgstr "Velg Rolle"
+
+#: FamilyEditor.php:1009 PersonEditor.php:788 Include/Functions.php:869
+#: Include/Functions.php:1042
+msgid "Unknown"
+msgstr "Ukjent"
+
+#: FamilyEditor.php:1010 PersonEditor.php:789
+msgid "January"
+msgstr "Januar"
+
+#: FamilyEditor.php:1011 PersonEditor.php:790
+msgid "February"
+msgstr "Februar"
+
+#: FamilyEditor.php:1012 PersonEditor.php:791
+msgid "March"
+msgstr "Mars"
+
+#: FamilyEditor.php:1013 PersonEditor.php:792
+msgid "April"
+msgstr "April"
+
+#: FamilyEditor.php:1014 PersonEditor.php:793
+msgid "May"
+msgstr "Mai"
+
+#: FamilyEditor.php:1015 PersonEditor.php:794
+msgid "June"
+msgstr "Juni"
+
+#: FamilyEditor.php:1016 PersonEditor.php:795
+msgid "July"
+msgstr "Juli"
+
+#: FamilyEditor.php:1017 PersonEditor.php:796
+msgid "August"
+msgstr "August"
+
+#: FamilyEditor.php:1018 PersonEditor.php:797
+msgid "September"
+msgstr "September"
+
+#: FamilyEditor.php:1019 PersonEditor.php:798
+msgid "October"
+msgstr "Oktober"
+
+#: FamilyEditor.php:1020 PersonEditor.php:799
+msgid "November"
+msgstr "November"
+
+#: FamilyEditor.php:1021 PersonEditor.php:800
+msgid "December"
+msgstr "Desember"
+
+#: FamilyView.php:32
+msgid "Family View"
+msgstr "Familievisning"
+
+#: FamilyView.php:72
+msgid "Previous Family"
+msgstr "Forrige Family"
+
+#: FamilyView.php:77
+msgid "Next Family"
+msgstr "Neste Family"
+
+#: FamilyView.php:183 FamilyView.php:561 PersonView.php:207 PersonView.php:817
+msgid "Edit this Record"
+msgstr "Redigere denne Record"
+
+#: FamilyView.php:184 FamilyView.php:562 PersonView.php:210 PersonView.php:818
+msgid "Delete this Record"
+msgstr "Slett denne Record"
+
+#: FamilyView.php:199
+msgid "The"
+msgstr "Den"
+
+#: FamilyView.php:238 FamilyView.php:254
+msgid "MapQuest"
+msgstr "MapQuest"
+
+#: FamilyView.php:243
+msgid "USPS"
+msgstr "USPS"
+
+#: FamilyView.php:248
+msgid "Google Maps"
+msgstr "Google Maps"
+
+#: FamilyView.php:331 PersonView.php:365
+msgid "Delete Photo"
+msgstr "Slett bilde"
+
+#: FamilyView.php:338 FamilyView.php:340
+msgid "No Family Photo Found"
+msgstr "Ingen Family Photo funnet"
+
+#: FamilyView.php:352 PersonView.php:385
+msgid "Upload Photo"
+msgstr "Last bilde"
+
+#: FamilyView.php:361 PersonView.php:395
+msgid "General Information:"
+msgstr "Generell informasjon:"
+
+#: FamilyView.php:402
+msgid "Send newsletter:"
+msgstr "Send nyhetsbrev:"
+
+#: FamilyView.php:414
+msgid "Latitude/Longitude"
+msgstr "Breddegrad / lengdegrad"
+
+#: FamilyView.php:420
+msgid "Envelope Number"
+msgstr "Konvolutt nummer"
+
+#: FamilyView.php:443 GroupView.php:228 PersonView.php:498 PrintView.php:411
+msgid "Assigned Properties:"
+msgstr "Tilordnede Egenskaper:"
+
+#: FamilyView.php:452 GroupView.php:235 PersonView.php:507 PrintView.php:423
+msgid "No property assignments."
+msgstr "Ingen av oppdrag."
+
+#: FamilyView.php:462 GroupMemberList.php:410 GroupView.php:245
+#: PersonView.php:516 PersonView.php:693 PrintView.php:430
+msgid "Value"
+msgstr "Verdi"
+
+#: FamilyView.php:466 FamilyView.php:509 GroupView.php:250 GroupView.php:290
+msgid "Edit Value"
+msgstr "Rediger verdi"
+
+#: FamilyView.php:535 GroupView.php:321 PersonView.php:585
+msgid "Assign a New Property:"
+msgstr "Tildele en ny egenskap:"
+
+#: FamilyView.php:571 FamilyView.php:929 PersonView.php:846 PersonView.php:884
+#: PrintView.php:464
+msgid "Entered:"
+msgstr "Angitt:"
+
+#: FamilyView.php:577 PersonView.php:853
+msgid "Last edited:"
+msgstr "Sist endret:"
+
+#: FamilyView.php:577 FamilyView.php:929 FamilyView.php:935 PersonView.php:846
+#: PersonView.php:853 PersonView.php:884 PersonView.php:890 PrintView.php:468
+msgid "by"
+msgstr "av"
+
+#: FamilyView.php:582 PrintView.php:291 SelectDelete.php:378
+msgid "Family Members:"
+msgstr "Familiemedlemmer:"
+
+#: FamilyView.php:590 PrintView.php:297 Reports/CanvassReports.php:260
+msgid "Age"
+msgstr "Alder"
+
+#: FamilyView.php:684
+msgid "Automatic Payments:"
+msgstr "Automatiske betalinger:"
+
+#: FamilyView.php:691
+msgid "Next payment date"
+msgstr "Neste utbetalingsdato"
+
+#: FamilyView.php:693
+msgid "Interval (months)"
+msgstr "Intervall (måneder)"
+
+#: FamilyView.php:697 FamilyView.php:790 SelectDelete.php:318
+msgid "Date Updated"
+msgstr "Dato oppdatert"
+
+#: FamilyView.php:698 FamilyView.php:791 SelectDelete.php:319
+msgid "Updated By"
+msgstr "Oppdatert av"
+
+#: FamilyView.php:765
+msgid "Pledges and Payments:"
+msgstr "Løfter og Betaling:"
+
+#: FamilyView.php:769
+msgid "Show Pledges"
+msgstr "Vis Pantstillelser"
+
+#: FamilyView.php:770
+msgid "Show Payments"
+msgstr "Vis betalinger"
+
+#: FamilyView.php:773 MemberRoleChange.php:123 PropertyAssign.php:192
+msgid "Update"
+msgstr "Oppdater"
+
+#: FamilyView.php:779
+msgid "Pledge or Payment"
+msgstr "Pantsette eller betaling"
+
+#: FamilyView.php:784
+msgid "NonDeductible"
+msgstr "Nondeductible"
+
+#: FamilyView.php:785 SelectDelete.php:315
+msgid "Schedule"
+msgstr "Planlegg"
+
+#: FamilyView.php:891
+msgid "Add a new pledge"
+msgstr "Legg til en ny pant"
+
+#: FamilyView.php:892
+msgid "Add a new payment"
+msgstr "Legg til en ny betaling"
+
+#: FamilyView.php:893
+msgid "Add a new automatic payment"
+msgstr "Legg til en ny automatisk betaling"
+
+#: FamilyView.php:901
+msgid " Canvass Entry"
+msgstr "Canvass Entry"
+
+#: FamilyView.php:910 PersonView.php:864 PrintView.php:457
+msgid "Notes:"
+msgstr "Merknader:"
+
+#: FamilyView.php:914 PersonView.php:870
+msgid "Add a Note to this Record"
+msgstr "Legg til et notat til denne posten"
+
+#: FamilyView.php:935 PersonView.php:890 PrintView.php:468
+msgid "Last Edited:"
+msgstr "Sist endret:"
+
+#: FamilyView.php:939 PersonView.php:894
+msgid "Edit This Note"
+msgstr "Rediger denne Note"
+
+#: FamilyView.php:941 PersonView.php:895
+msgid "Delete This Note"
+msgstr "Slette dette notatet"
+
+#: FinancialReports.php:35 ReportList.php:71
+msgid "Financial Reports"
+msgstr "Finansielle rapporter"
+
+#: FinancialReports.php:42
+msgid "No records were returned from the previous report."
+msgstr "Ingen poster ble returnert fra forrige rapport."
+
+#: FinancialReports.php:48 FinancialReports.php:278 FinancialReports.php:292
+msgid "Report Type:"
+msgstr "Rapport Type:"
+
+#: FinancialReports.php:50
+msgid "Select Report Type"
+msgstr "Velg Rapporter Type"
+
+#: FinancialReports.php:51
+msgid "Pledge Summary"
+msgstr "Pledge Oppsummering"
+
+#: FinancialReports.php:52
+#, fuzzy
+msgid "Pledge FamilySummary"
+msgstr "Pledge Oppsummering"
+
+#: FinancialReports.php:53
+msgid "Pledge Reminders"
+msgstr "Pantsette Påminnelser"
+
+#: FinancialReports.php:54
+msgid "Voting Members"
+msgstr "Stemmeberettigede medlemmer"
+
+#: FinancialReports.php:55
+msgid "Giving Report (Tax Statements)"
+msgstr "Å gi Rapport (Tax Uttalelser)"
+
+#: FinancialReports.php:56
+msgid "Zero Givers"
+msgstr "Null Givers"
+
+#: FinancialReports.php:57
+msgid "Individual Deposit Report"
+msgstr "Individuell Deposit Rapporter"
+
+#: FinancialReports.php:58
+msgid "Advanced Deposit Report"
+msgstr "Avansert Deposit Rapporter"
+
+#: FinancialReports.php:65 GroupReports.php:128
+msgid "Next"
+msgstr "Neste"
+
+#: FinancialReports.php:117 SelectList.php:541 SelectListFormatted.php:561
+msgid "All Classifications"
+msgstr "Alle Klassifikasjoner"
+
+#: FinancialReports.php:132
+msgid "Filter by Family:"
+msgstr "Filtrer etter Familie:"
+
+#: FinancialReports.php:136 FinancialReports.php:260 GeoPage.php:267
+msgid "All Families"
+msgstr "Alle familier"
+
+#: FinancialReports.php:173
+msgid "Report Start Date:"
+msgstr "Rapport Startdato:"
+
+#: FinancialReports.php:174 FinancialReports.php:176 FindDepositSlip.php:85
+#: FindDepositSlip.php:92 FindFundRaiser.php:77 FindFundRaiser.php:84
+msgid "[YYYY-MM-DD]"
+msgstr "[ÅÅÅÅ-MM-DD]"
+
+#: FinancialReports.php:175
+msgid "Report End Date:"
+msgstr "Rapport Sluttdato:"
+
+#: FinancialReports.php:178
+msgid "Apply Report Dates To:"
+msgstr "Påfør Rapport datoer:"
+
+#: FinancialReports.php:179
+msgid "Deposit Date (Default)"
+msgstr "Innskudd Dato (Standard)"
+
+#: FinancialReports.php:180
+msgid "Payment Date"
+msgstr "Betalingsdato"
+
+#: FinancialReports.php:196
+msgid "Filter by Deposit:"
+msgstr "Filtrer etter Depositum:"
+
+#: FinancialReports.php:199
+msgid "If deposit is selected, date criteria will be ignored."
+msgstr "Hvis innskuddet er valgt, vil dato kriterier bli ignorert."
+
+#: FinancialReports.php:202
+msgid "All deposits within date range"
+msgstr "Alle innskudd innen datointervall"
+
+#: FinancialReports.php:214
+msgid "Filter by Fund:"
+msgstr "Filtrer etter fond:"
+
+#: FinancialReports.php:218 Reports/FamilyPledgeSummary.php:141
+#: Reports/ReminderReport.php:161
+msgid "All Funds"
+msgstr "Alle midler"
+
+#: FinancialReports.php:231
+msgid "Filter by Payment Type:"
+msgstr "Filtrer etter betaling Type:"
+
+#: FinancialReports.php:235
+msgid "All Methods"
+msgstr "Alle metoder"
+
+#: FinancialReports.php:236
+msgid "Check"
+msgstr "Sjekk"
+
+#: FinancialReports.php:237
+msgid "Cash"
+msgstr "Kontanter"
+
+#: FinancialReports.php:245
+msgid "Minimun Total Amount:"
+msgstr "Minimun Totalbeløp:"
+
+#: FinancialReports.php:247
+msgid "0 - No Minimum"
+msgstr "0 - Ingen Minimum"
+
+#: FinancialReports.php:252
+msgid "Other Settings"
+msgstr "Andre innstillinger"
+
+#: FinancialReports.php:255
+msgid "Include:"
+msgstr "Inkluder:"
+
+#: FinancialReports.php:256
+msgid "Only Payments with Pledges"
+msgstr "Bare betalinger med Pantstillelser"
+
+#: FinancialReports.php:257
+msgid "All Payments"
+msgstr "Alle betalinger"
+
+#: FinancialReports.php:258
+msgid "Generate:"
+msgstr "Generere:"
+
+#: FinancialReports.php:259
+msgid "Only Families with unpaid pledges"
+msgstr "Bare Familier med ubetalte løfter"
+
+#: FinancialReports.php:264
+msgid "Report Heading:"
+msgstr "Rapport Tittel:"
+
+#: FinancialReports.php:265
+msgid "Graphic"
+msgstr "Grafisk"
+
+#: FinancialReports.php:266
+msgid "Church Address"
+msgstr "Church Adresse"
+
+#: FinancialReports.php:267
+msgid "Blank"
+msgstr "Blank"
+
+#: FinancialReports.php:268
+msgid "Remittance Slip:"
+msgstr "Remittering Slip:"
+
+#: FinancialReports.php:274
+msgid "Sort Data by:"
+msgstr "Sortere data etter:"
+
+#: FinancialReports.php:275 MenuStrings.php:34
+msgid "Deposit"
+msgstr "Innskudd"
+
+#: FinancialReports.php:279
+msgid "All Data"
+msgstr "Alle data"
+
+#: FinancialReports.php:280
+msgid "Moderate Detail"
+msgstr "Moderat Detalj"
+
+#: FinancialReports.php:281
+msgid "Summary Data"
+msgstr "Oppsummeringsdata"
+
+#: FinancialReports.php:285
+msgid ""
+"Voting members must have made<br>\n"
+"			a donation within this many years<br>\n"
+"			(0 to not require a donation):"
+msgstr ""
+"Stemmeberettigede medlemmer må ha gjort <br> en donasjon innenfor dette "
+"mange år <br> (0 å ikke kreve en donasjon):"
+
+#: FinancialReports.php:293
+msgid "Deposit Slip"
+msgstr "Innskudd Slip"
+
+#: FinancialReports.php:294
+msgid "Deposit Report"
+msgstr "Innskudd Rapporter"
+
+#: FinancialReports.php:300
+msgid "PDF"
+msgstr "PDF"
+
+#: FinancialReports.php:301
+msgid "CSV"
+msgstr "CSV"
+
+#: FinancialReports.php:308 PledgeDetails.php:61
+msgid "Back"
+msgstr "Tilbake"
+
+#: FindDepositSlip.php:23
+msgid "Deposit Listing"
+msgstr "Innskudd Listing"
+
+#: FindDepositSlip.php:79 FindFundRaiser.php:71 PaddleNumEditor.php:177
+msgid "Number:"
+msgstr "Nummer:"
+
+#: FindDepositSlip.php:84 FindFundRaiser.php:76
+msgid "Date Start:"
+msgstr "Dato Start:"
+
+#: FindDepositSlip.php:87 FindFundRaiser.php:79
+msgid "Apply Filters"
+msgstr "Bruk filtre"
+
+#: FindDepositSlip.php:91 FindFundRaiser.php:83
+msgid "Date End:"
+msgstr "Dato Slutt:"
+
+#: FindDepositSlip.php:94 FindFundRaiser.php:86 SelectList.php:712
+#: SelectListFormatted.php:736
+msgid "Clear Filters"
+msgstr "Tøm filter"
+
+#: FindDepositSlip.php:155 FindFundRaiser.php:141 GroupMemberList.php:217
+#: SelectList.php:746 SelectListFormatted.php:784
+msgid "Previous Page"
+msgstr "Forrige Side"
+
+#: FindDepositSlip.php:202 FindFundRaiser.php:183 GroupMemberList.php:259
+#: SelectList.php:783 SelectList.php:1380 SelectListFormatted.php:821
+#: SelectListFormatted.php:1475
+msgid "Next Page"
+msgstr "Neste side"
+
+#: FindDepositSlip.php:236 FindFundRaiser.php:209 GroupMemberList.php:289
+#: SelectList.php:847 SelectList.php:1411 SelectListFormatted.php:885
+#: SelectListFormatted.php:1506
+msgid "Display:"
+msgstr "Skjerm:"
+
+#: FindDepositSlip.php:247 FindFundRaiser.php:217 GroupMemberList.php:187
+#: GroupMemberList.php:297 SelectList.php:1422 SelectListFormatted.php:1517
+msgid "Go"
+msgstr "Gå"
+
+#: FindDepositSlip.php:254 FindFundRaiser.php:224 PaddleNumList.php:53
+#: Include/Functions.php:109
+msgid "Number"
+msgstr "Nummer"
+
+#: FindDepositSlip.php:256
+msgid "Total Payments"
+msgstr "Totale utbetalinger"
+
+#: FindDepositSlip.php:258
+msgid "Closed"
+msgstr "Stengt"
+
+#: FindDepositSlip.php:259
+msgid "Deposit Type"
+msgstr "Innskudd Type"
+
+#: FindFundRaiser.php:21
+#, fuzzy
+msgid "Fundraiser Listing"
+msgstr "Bruker Liste"
+
+#: FundRaiserEditor.php:33
+msgid "Fund Raiser #"
+msgstr "Fondet Raiser #"
+
+#: FundRaiserEditor.php:35
+#, fuzzy
+msgid "Create New Fund Raiser"
+msgstr "Opprett ny familie"
+
+#: FundRaiserEditor.php:160
+msgid "Add Donated Item"
+msgstr "Legg Donert Element"
+
+#: FundRaiserEditor.php:161
+#, fuzzy
+msgid "Generate Catalog"
+msgstr "Generere etiketter"
+
+#: FundRaiserEditor.php:162
+#, fuzzy
+msgid "Generate Bid Sheets"
+msgstr "Generere etiketter"
+
+#: FundRaiserEditor.php:163
+#, fuzzy
+msgid "Generate Certificates"
+msgstr "Generer Rapporter"
+
+#: FundRaiserEditor.php:194
+msgid "Donated items for this fundraiser:"
+msgstr "Donert elementer for denne fundraiser:"
+
+#: FundRaiserEditor.php:202
+msgid "Donor"
+msgstr "Donor"
+
+#: FundRaiserEditor.php:203 PaddleNumList.php:54
+msgid "Buyer"
+msgstr "Kjøper"
+
+#: FundRaiserEditor.php:205
+msgid "Sale Price"
+msgstr "Salgspris"
+
+#: FundRaiserEditor.php:206
+#, fuzzy
+msgid "Est Value"
+msgstr "Rediger verdi"
+
+#: FundRaiserEditor.php:207
+msgid "Material Value"
+msgstr "Materiell verdi"
+
+#: FundRaiserEditor.php:208
+#, fuzzy
+msgid "Minimum Price"
+msgstr "Maksimal avstand"
+
+#: GeoPage.php:91
+msgid "Family Geographic Utilities"
+msgstr "Familie Geographic Utilities"
+
+#: GeoPage.php:233
+msgid "Select Family:"
+msgstr "Velg Familie:"
+
+#: GeoPage.php:247
+msgid "Maximum number of neighbors:"
+msgstr "Maksimalt antall naboer:"
+
+#: GeoPage.php:252
+msgid "Maximum distance"
+msgstr "Maksimal avstand"
+
+#: GeoPage.php:257
+msgid "Data file format:"
+msgstr "Data filformat:"
+
+#: GeoPage.php:259
+msgid "GPS Visualizer"
+msgstr "GPS Visualizer"
+
+#: GeoPage.php:260
+msgid "Street Atlas USA"
+msgstr "Street Atlas USA"
+
+#: GeoPage.php:265
+msgid "Include families in coordinate file:"
+msgstr "Inkludere familier i koordinatsystem fil:"
+
+#: GeoPage.php:268
+msgid "Neighbor Families"
+msgstr "Nabo Familier"
+
+#: GeoPage.php:273
+msgid "Coordinate data base file name"
+msgstr "Koordinere data basisfilnavnet"
+
+#: GeoPage.php:279
+msgid "Make Data File"
+msgstr "Gjør datafil"
+
+#: GeoPage.php:280
+msgid "Update All Family Coordinates"
+msgstr "Oppdater alle Family Koordinater"
+
+#: GeoPage.php:285
+msgid "Show Neighbors"
+msgstr "Vis Naboer"
+
+#: GeoPage.php:319
+msgid "Distance"
+msgstr "Avstand"
+
+#: GeoPage.php:320
+msgid "Direction"
+msgstr "Retning"
+
+#: GeoPage.php:326
+msgid "Latitude"
+msgstr "Latitude"
+
+#: GeoPage.php:327
+msgid "Longitude"
+msgstr "Lengde"
+
+#: GeoPage.php:388 GroupList.php:52 PersonView.php:214 PersonView.php:822
+#: SelectList.php:713 SelectList.php:1103 SelectListFormatted.php:745
+#: SelectListFormatted.php:1145
+msgid "Add to Cart"
+msgstr "Legg til handlevogn"
+
+#: GeoPage.php:389 SelectList.php:714 SelectListFormatted.php:748
+msgid "Intersect with Cart"
+msgstr "Snitt med Cart"
+
+#: GeoPage.php:390 GroupList.php:53 SelectList.php:715
+#: SelectListFormatted.php:751
+msgid "Remove from Cart"
+msgstr "Fjern fra handlekurven"
+
+#: GetText.php:33
+msgid "Text for Event ID: "
+msgstr "Tekst for hendelses-ID:"
+
+#: GroupDelete.php:29
+msgid "Group Delete Confirmation"
+msgstr "Gruppe Slett Bekreftelse"
+
+#: GroupDelete.php:89
+msgid "Please confirm deletion of this group record:"
+msgstr "Vennligst bekrefte sletting av denne gruppen posten:"
+
+#: GroupDelete.php:97
+msgid ""
+"This will also delete all Roles and Group-Specific Property data associated "
+"with this Group record."
+msgstr ""
+"Dette vil også slette alle Roller og Gruppe-spesifikk egenskap data knyttet "
+"til denne gruppen posten."
+
+#: GroupDelete.php:101 NoteDelete.php:75 PropertyDelete.php:67
+#: PropertyTypeDelete.php:71 SelectDelete.php:228 UserDelete.php:67
+msgid "Yes, delete this record"
+msgstr "Ja, slett denne posten"
+
+#: GroupDelete.php:101 NoteDelete.php:75 PropertyDelete.php:67
+msgid "(this action cannot be undone)"
+msgstr "(Denne handlingen kan ikke omgjøres)"
+
+#: GroupDelete.php:104 NoteDelete.php:79 PropertyDelete.php:69
+#: PropertyTypeDelete.php:73 SelectDelete.php:229 UserDelete.php:69
+#: VolunteerOpportunityEditor.php:114
+msgid "No, cancel this deletion"
+msgstr "Nei, avbryt denne slettingen"
+
+#: GroupEditor.php:29
+msgid "Group Editor"
+msgstr "Gruppe Editor"
+
+#: GroupEditor.php:223
+msgid ""
+"Are you sure you want to remove the group-specific person properties?  All "
+"group member properties data will be lost!"
+msgstr ""
+"Er du sikker på at du vil fjerne de gruppe-spesifikke person egenskaper? "
+"Alle gruppemedlem egenskaper data vil gå tapt!"
+
+#: GroupEditor.php:231
+msgid ""
+"This will create a group-specific properties table for this group.  You "
+"should then add needed properties with the Group-Specific Properties Form "
+"Editor."
+msgstr ""
+"Dette vil skape en gruppe-spesifikke egenskaper tabellen for denne gruppen. "
+"Deretter må du legge nødvendige egenskaper med konsernets-spesifikke "
+"egenskaper Form Editor."
+
+#: GroupEditor.php:259 GroupView.php:166
+msgid "Type of Group:"
+msgstr "Type Gruppe:"
+
+#: GroupEditor.php:282
+msgid "Group Member Roles:"
+msgstr "Gruppemedlem Roller:"
+
+#: GroupEditor.php:284
+msgid "Clone roles:"
+msgstr "Klone roller:"
+
+#: GroupEditor.php:286
+msgid "from group:"
+msgstr "fra gruppe:"
+
+#: GroupEditor.php:288 GroupPropsFormEditor.php:356
+msgid "Select a group"
+msgstr "Velg en gruppe"
+
+#: GroupEditor.php:303
+msgid "Group-Specific<br>Properties:"
+msgstr "Gruppe-Specific <br> Egenskaper:"
+
+#: GroupEditor.php:305
+msgid "Use group-specific properties?"
+msgstr "Bruk gruppe-spesifikke egenskaper?"
+
+#: GroupEditor.php:310 GroupView.php:106
+msgid "Edit Group-Specific Properties Form"
+msgstr "Rediger gruppe-spesifikke egenskaper Form"
+
+#: GroupEditor.php:319
+msgid "Empty Cart to this Group?"
+msgstr "Tom Handlekurven til denne gruppen?"
+
+#: GroupEditor.php:346
+msgid "Group Roles:"
+msgstr "Gruppe Roller:"
+
+#: GroupEditor.php:353
+msgid ""
+"Initial Group Creation:  Group roles can be edited after the first save."
+msgstr ""
+"Initial Group Creation: Gruppe roller kan redigeres etter de første redning."
+
+#: GroupList.php:28
+msgid "Group Listing"
+msgstr "Gruppe Listing"
+
+#: GroupList.php:35 MenuStrings.php:57
+msgid "Add a New Group"
+msgstr "Legg til en ny gruppe"
+
+#: GroupList.php:50
+msgid "Members"
+msgstr "Medlemmer"
+
+#: GroupList.php:81 GroupView.php:73
+msgid "Undefined"
+msgstr "Udefinert"
+
+#: GroupList.php:116
+msgid "Add all"
+msgstr "Legg til alle"
+
+#: GroupList.php:130
+msgid "Remove all"
+msgstr "Fjern alle"
+
+#: GroupMeeting.php:26
+msgid "Schedule Group Meeting"
+msgstr "Planlegg Group Meeting"
+
+#: GroupMeeting.php:166
+msgid "Submit"
+msgstr "Send inn"
+
+#: GroupMeeting.php:175
+msgid "Meeting name"
+msgstr "Møtenavnet"
+
+#: GroupMeeting.php:180
+msgid "Meeting description"
+msgstr "Møte beskrivelse"
+
+#: GroupMeeting.php:190
+msgid "Time"
+msgstr "Tid"
+
+#: GroupMeeting.php:193
+msgid "Midnight"
+msgstr "Midnatt"
+
+#: GroupMeeting.php:194 GroupMeeting.php:206
+msgid "1"
+msgstr "1"
+
+#: GroupMeeting.php:195 GroupMeeting.php:207
+msgid "2"
+msgstr "2"
+
+#: GroupMeeting.php:196 GroupMeeting.php:208
+msgid "3"
+msgstr "3"
+
+#: GroupMeeting.php:197 GroupMeeting.php:209
+msgid "4"
+msgstr "4"
+
+#: GroupMeeting.php:198 GroupMeeting.php:210
+msgid "5"
+msgstr "5"
+
+#: GroupMeeting.php:199 GroupMeeting.php:211
+msgid "6"
+msgstr "6"
+
+#: GroupMeeting.php:200 GroupMeeting.php:212
+msgid "7"
+msgstr "7"
+
+#: GroupMeeting.php:201 GroupMeeting.php:213
+msgid "8"
+msgstr "8"
+
+#: GroupMeeting.php:202 GroupMeeting.php:214
+msgid "9"
+msgstr "9"
+
+#: GroupMeeting.php:203 GroupMeeting.php:215
+msgid "10"
+msgstr "10"
+
+#: GroupMeeting.php:204 GroupMeeting.php:216
+msgid "11"
+msgstr "11"
+
+#: GroupMeeting.php:205
+msgid "Noon"
+msgstr "Noon"
+
+#: GroupMeeting.php:219
+msgid "00"
+msgstr "00"
+
+#: GroupMeeting.php:220
+msgid "15"
+msgstr "15"
+
+#: GroupMeeting.php:221
+msgid "30"
+msgstr "30"
+
+#: GroupMeeting.php:222
+msgid "45"
+msgstr "45"
+
+#: GroupMeeting.php:228
+msgid "Duration (hours)"
+msgstr "Varighet (timer)"
+
+#: GroupMeeting.php:233
+msgid "Notify ahead (days)"
+msgstr "Varsle fremover (dager)"
+
+#: GroupMemberList.php:153
+msgid "Group Member List"
+msgstr "Gruppe Medlemsliste"
+
+#: GroupMemberList.php:169 GroupMemberList.php:198 SelectList.php:725
+#: SelectList.php:1324 SelectListFormatted.php:762
+#: SelectListFormatted.php:1418
+msgid "View All"
+msgstr "Vis alle"
+
+#: GroupMemberList.php:184
+msgid "Show only"
+msgstr "Vis bare"
+
+#: GroupMemberList.php:191
+#, fuzzy
+msgid "Add Group View to Cart"
+msgstr "Legg Gruppemedlemmer i handlekurven"
+
+#: GroupMemberList.php:301 SelectList.php:1123 SelectListFormatted.php:1165
+msgid "Print Page"
+msgstr "Skriv ut siden"
+
+#: GroupMemberList.php:307
+msgid "Hide Group-Specific Properties"
+msgstr "Skjul Group-spesifikke egenskaper"
+
+#: GroupMemberList.php:309
+msgid "Show Group-Specific Properties"
+msgstr "Vis Group-spesifikke egenskaper"
+
+#: GroupMemberList.php:318
+msgid "Group Role"
+msgstr "Gruppe Rolle"
+
+#: GroupMemberList.php:322
+msgid "ZIP"
+msgstr "ZIP"
+
+#: GroupMemberList.php:324
+msgid "E-mail"
+msgstr "E-post"
+
+#: GroupMemberList.php:410 PersonView.php:693 PropertyList.php:56
+msgid "Property"
+msgstr "Eiendom"
+
+#: GroupPropsEditor.php:29
+msgid "Group Member Properties Editor"
+msgstr "Gruppe Member Properties Editor"
+
+#: GroupPropsEditor.php:131
+msgid ""
+"This group currently has no properties!  You can add them in the Group "
+"Editor."
+msgstr ""
+"Denne gruppen har i dag ingen egenskaper! Du kan legge dem i konsernet "
+"Editor."
+
+#: GroupPropsEditor.php:133
+msgid "Return to Person Record"
+msgstr "Tilbake til Person Record"
+
+#: GroupPropsEditor.php:138
+msgid "Editing"
+msgstr "Redigering"
+
+#: GroupPropsEditor.php:138
+msgid "data for member"
+msgstr "data for medlem"
+
+#: GroupPropsFormEditor.php:42
+msgid "Group-Specific Properties Form Editor:"
+msgstr "Gruppe-spesifikke egenskaper Form Redaktør:"
+
+#: GroupPropsFormEditor.php:187
+msgid "'Default Option'"
+msgstr "&#39;Standard Option&#39;"
+
+#: GroupPropsFormEditor.php:284
+msgid "No properties have been added yet"
+msgstr "Ingen egenskaper er ennå ikke lagt"
+
+#: GroupPropsFormEditor.php:293
+msgid ""
+"Warning: Field changes will be lost if you do not 'Save Changes' before "
+"using an up, down, delete, or 'add new' button!"
+msgstr ""
+"Advarsel: Felt endringer vil gå tapt hvis du ikke \"Lagre endringer\" før du "
+"bruker opp, ned, slette eller &#39;Legg til ny&#39; knappen!"
+
+#: GroupPropsFormEditor.php:317
+msgid "Show in"
+msgstr "Vis i"
+
+#: GroupPropsFormEditor.php:317 PersonView.php:193
+msgid "Person View"
+msgstr "Person Vis"
+
+#: GroupReports.php:28
+msgid "Group reports"
+msgstr "Gruppe rapporter"
+
+#: GroupReports.php:92
+msgid "Select the group you would like to report:"
+msgstr "Velg gruppen du ønsker å rapportere:"
+
+#: GroupReports.php:114
+msgid "Only cart persons?:"
+msgstr "Kun cart personer?:"
+
+#: GroupReports.php:118
+msgid "Report Model:"
+msgstr "Rapport Modell:"
+
+#: GroupReports.php:120
+msgid "Report for group and role selected"
+msgstr "Rapport for gruppen og rolle valgt"
+
+#: GroupReports.php:121
+msgid "Report for any role in group selected"
+msgstr "Rapport for noen rolle i gruppe valgt"
+
+#: GroupReports.php:152
+msgid "Select which information you want to include"
+msgstr "Velg hvilken informasjon du ønsker å inkludere"
+
+#: GroupReports.php:156
+msgid "Standard Info:"
+msgstr "Standard Info:"
+
+#: GroupReports.php:161 SelectList.php:1162 SelectListFormatted.php:1214
+#: Reports/CanvassReports.php:262
+msgid "Cell Phone"
+msgstr "Cell Phone"
+
+#: GroupReports.php:163 Reports/GroupReport.php:280
+msgid "Other Email"
+msgstr "Annet Epost"
+
+#: GroupReports.php:164
+msgid "GroupRole"
+msgstr "GroupRole"
+
+#: GroupReports.php:168
+msgid "Group-Specific Property Fields:"
+msgstr "Gruppespesifikke Eiendom Fields:"
+
+#: GroupView.php:28
+msgid "Group View"
+msgstr "Group Vis"
+
+#: GroupView.php:102
+msgid "Edit this Group"
+msgstr "Rediger denne gruppen"
+
+#: GroupView.php:103
+msgid "Delete this Group"
+msgstr "Slett denne gruppen"
+
+#: GroupView.php:109
+msgid "Add Group Members to Cart"
+msgstr "Legg Gruppemedlemmer i handlekurven"
+
+#: GroupView.php:110
+msgid "Schedule a meeting"
+msgstr "Planlegg et møte"
+
+#: GroupView.php:112
+msgid "Map this group"
+msgstr "Kartlegge denne gruppen"
+
+#: GroupView.php:146
+msgid "Email Group"
+msgstr "E Gruppe"
+
+#: GroupView.php:164
+msgid "Total Members:"
+msgstr "Totalt antall medlemmer:"
+
+#: GroupView.php:168
+msgid "Default Role:"
+msgstr "Standard Rolle:"
+
+#: GroupView.php:176
+msgid "Group-Specific Properties:"
+msgstr "Gruppe-spesifikke egenskaper:"
+
+#: GroupView.php:224
+msgid "Disabled for this group."
+msgstr "Deaktivert for denne gruppen."
+
+#: GroupView.php:337 PersonView.php:600 PersonView.php:729 PersonView.php:800
+#: PropertyAssign.php:192 SelectList.php:975 SelectListFormatted.php:1015
+msgid "Assign"
+msgstr "Tildele"
+
+#: GroupView.php:348
+msgid "Group Members:"
+msgstr "Gruppemedlemmer:"
+
+#: LettersAndLabels.php:29 ReportList.php:55
+msgid "Letters and Mailing Labels"
+msgstr "Brev og Postetiketter"
+
+#: LettersAndLabels.php:62
+msgid "Newsletter labels"
+msgstr "Nyhetsbrev etiketter"
+
+#: LettersAndLabels.php:63
+msgid "Confirm data letter"
+msgstr "Bekreft data brev"
+
+#: LettersAndLabels.php:64
+msgid "Confirm data labels"
+msgstr "Bekreft dataetiketter"
+
+#: ListEvents.php:47
+msgid "Listing All Church Events"
+msgstr "Notering Alle kirkelige handlinger"
+
+#: ListEvents.php:90
+msgid "Select Event Types To Display"
+msgstr "Velg hendelse typer Å Vise"
+
+#: ListEvents.php:128
+msgid "Display Events in Year"
+msgstr "Vise hendelser i år"
+
+#: ListEvents.php:279
+msgid "No Attendance Recorded"
+msgstr "Ingen Oppmøte Innspilt"
+
+#: ListEvents.php:299
+msgid "Attendees("
+msgstr "Deltakere ("
+
+#: ListEvents.php:299
+msgid ")"
+msgstr ")"
+
+#: ListEvents.php:329
+msgid " Monthly Averages"
+msgstr "Månedlige gjennomsnitt"
+
+#: ManageEnvelopes.php:23 MenuStrings.php:17
+msgid "Envelope Manager"
+msgstr "Konvolutt leder"
+
+#: ManageEnvelopes.php:118
+#, fuzzy
+msgid "Confirm"
+msgstr "Bekreft sletting"
+
+#: ManageEnvelopes.php:126
+#, fuzzy
+msgid "Print Report"
+msgstr "Opprett rapport"
+
+#: ManageEnvelopes.php:130
+#, fuzzy
+msgid "Update Family Records"
+msgstr "Legg til en ny familie Record"
+
+#: ManageEnvelopes.php:141
+#, fuzzy
+msgid "All"
+msgstr "Alle"
+
+#: ManageEnvelopes.php:150
+#, fuzzy
+msgid "Sort by"
+msgstr "Sortere data etter:"
+
+#: ManageEnvelopes.php:154 PledgeEditor.php:568
+#, fuzzy
+msgid "Envelope #"
+msgstr "Konvolutt"
+
+#: ManageEnvelopes.php:159
+#, fuzzy
+msgid "Zero"
+msgstr "Person"
+
+#: ManageEnvelopes.php:161
+#, fuzzy
+msgid "Assign starting at #"
+msgstr "Tilordning:"
+
+#: MemberRoleChange.php:28
+msgid "Member Role Change"
+msgstr "Medlem Rolle Endre"
+
+#: MemberRoleChange.php:83
+msgid "Group Name:"
+msgstr "Gruppenavn:"
+
+#: MemberRoleChange.php:87
+msgid "Member's Name:"
+msgstr "Medlem navn:"
+
+#: MemberRoleChange.php:91
+msgid "Current Role:"
+msgstr "Nåværende rolle:"
+
+#: MemberRoleChange.php:95
+msgid "New Role:"
+msgstr "Ny rolle:"
+
+#: Menu.php:31
+msgid "Welcome to ChurchCRM"
+msgstr "Velkommen til ChurchCRM"
+
+#: Menu.php:36
+msgid "Hi"
+msgstr "Hei"
+
+#: Menu.php:40
+msgid "This is your first login"
+msgstr "Dette er din første pålogging"
+
+#: Menu.php:49
+msgid "Welcome back"
+msgstr "Velkommen tilbake"
+
+#: Menu.php:51
+msgid "You last logged in on"
+msgstr "Du sist logget inn på"
+
+#: Menu.php:52
+msgid "at"
+msgstr "på"
+
+#: Menu.php:54
+msgid "There were"
+msgstr "Det var"
+
+#: Menu.php:55
+msgid "failed login attempt(s) since your last successful login"
+msgstr "mislykket påloggingsforsøk (s) siden sist vellykket pålogging"
+
+#: MenuEditor.php:69 MenuSetup.php:28
+msgid "Menu Item Editor"
+msgstr "Menyelement Editor"
+
+#: MenuEditor.php:135
+msgid "Must provide menu text"
+msgstr "Må gi menyteksten"
+
+#: MenuEditor.php:143
+msgid "Missing Session Variable name"
+msgstr "Manglende Session Variabelnavn"
+
+#: MenuEditor.php:270
+msgid "Are you sure to delete this menu entry? Action cannot be redone!"
+msgstr ""
+"Er du sikker på at du vil slette denne kommandoen? Handlingen kan ikke "
+"gjøres om!"
+
+#: MenuEditor.php:274 MenuEditor.php:382
+msgid "Menu Text"
+msgstr "Meny tekst"
+
+#: MenuEditor.php:279 MenuEditor.php:389
+msgid "In Menu:"
+msgstr "I Meny:"
+
+#: MenuEditor.php:284 MenuEditor.php:413
+msgid "Open another sub-menu?"
+msgstr "Åpne en annen sub-menyen?"
+
+#: MenuEditor.php:296 MenuEditor.php:422
+msgid "Link URL:"
+msgstr "Link URL:"
+
+#: MenuEditor.php:301 MenuEditor.php:427
+msgid "Text on Status Line:"
+msgstr "Tekst på Status Line:"
+
+#: MenuEditor.php:306 MenuEditor.php:432
+msgid "Security Group:"
+msgstr "Security Group:"
+
+#: MenuEditor.php:310 MenuEditor.php:449
+msgid "Parameter"
+msgstr "Parameter"
+
+#: MenuEditor.php:314 MenuEditor.php:454
+msgid "Session Variable Name:"
+msgstr "Session Variabel Navn:"
+
+#: MenuEditor.php:318 MenuEditor.php:461
+msgid "Session Variable in Status"
+msgstr "Session variabel i Status"
+
+#: MenuEditor.php:330 MenuEditor.php:470
+msgid "Session Variable in Link Address"
+msgstr "Session variabel i Link Adresse"
+
+#: MenuEditor.php:342
+msgid "Currently Active?"
+msgstr "Foreløpig Active?"
+
+#: MenuEditor.php:372 UserList.php:90 UserList.php:96
+msgid "Reset"
+msgstr "Tilbakestille"
+
+#: MenuEditor.php:382
+msgid "Text appears on menu"
+msgstr "Teksten vises på menyen"
+
+#: MenuEditor.php:389
+msgid "belongs to menu..."
+msgstr "tilhører meny ..."
+
+#: MenuEditor.php:413
+msgid "Does this item open another menu?"
+msgstr "Åpner dette elementet annen meny?"
+
+#: MenuEditor.php:422
+msgid "Link URL"
+msgstr "Link URL"
+
+#: MenuEditor.php:461
+msgid "Show session variable in status?"
+msgstr "Vis session variabel i status?"
+
+#: MenuEditor.php:470
+msgid "Need evaluated session variable in Link Address?"
+msgstr "Trenger evaluert økt variabel i Link adresse?"
+
+#: MenuEditor.php:479
+msgid "Do you want to make this menu item available?"
+msgstr "Ønsker du å gjøre dette menypunktet tilgjengelig?"
+
+#: MenuEditor.php:479
+msgid "Active?"
+msgstr "Aktiv?"
+
+#: MenuManager.php:31
+msgid "Menu Tree"
+msgstr "Menytreet"
+
+#: MenuManager.php:32
+msgid "Definition"
+msgstr "Definisjon"
+
+#: MenuManager.php:118
+msgid "Name cannot be duplicated"
+msgstr "Navnet kan ikke dupliseres"
+
+#: MenuManager.php:197 OptionManager.php:314 OptionManagerSave.php:308
+msgid "Error: Duplicate"
+msgstr "Feil: Duplikat"
+
+#: MenuManager.php:197 OptionManager.php:314 OptionManagerSave.php:308
+msgid "s are not allowed."
+msgstr "s er ikke tillatt."
+
+#: MenuManager.php:241 MenuManager.php:272
+msgid "Name cannot be empty"
+msgstr "Navnet kan ikke være tomt"
+
+#: MenuManager.php:244 MenuManager.php:274
+msgid "Duplicate name"
+msgstr "Duplisere navn"
+
+#: MenuManager.php:266 OptionManager.php:389 OptionManagerSave.php:386
+msgid "Add New"
+msgstr "Legg til ny"
+
+#: MenuSetup.php:81
+msgid "Inactive"
+msgstr "Inaktiv"
+
+# Below are strings found in the menu options
+#: MenuStrings.php:2
+msgid "Main"
+msgstr "Main"
+
+#: MenuStrings.php:3
+msgid "Log Off"
+msgstr "Logg av"
+
+#: MenuStrings.php:4
+msgid "Change My Password"
+msgstr "Endre mitt passord"
+
+#: MenuStrings.php:5
+msgid "Change My Settings"
+msgstr "Endre mine innstillinger"
+
+#: MenuStrings.php:6
+msgid "Admin"
+msgstr "Admin"
+
+#: MenuStrings.php:7
+msgid "Edit Users"
+msgstr "Redigere Brukere"
+
+#: MenuStrings.php:8
+msgid "Add New User"
+msgstr "Legg til ny bruker"
+
+#: MenuStrings.php:9
+msgid "Edit Custom Person Fields"
+msgstr "Rediger tilpassede Person Fields"
+
+#: MenuStrings.php:10
+msgid "Edit Donation Funds"
+msgstr "Redigere Donasjon Funds"
+
+#: MenuStrings.php:12
+msgid "CSV Import"
+msgstr "CSV Import"
+
+#: MenuStrings.php:14
+msgid "Edit General Settings"
+msgstr "Redigere Generelle innstillinger"
+
+#: MenuStrings.php:15
+msgid "Edit Report Settings"
+msgstr "Redigere Rapportinnstillinger"
+
+#: MenuStrings.php:16
+msgid "Edit User Default Settings"
+msgstr "Redigere standardinnstillinger"
+
+#: MenuStrings.php:18
+msgid "Please select this option to register ChurchCRM after configuring."
+msgstr ""
+"Vennligst velg dette alternativet for å registrere ChurchCRM etter "
+"konfigureringen."
+
+#: MenuStrings.php:19
+msgid "People/Families"
+msgstr "Personer / familier"
+
+#: MenuStrings.php:20
+msgid "Add New Person"
+msgstr "Legg til ny Person"
+
+#: MenuStrings.php:21
+msgid "View All Persons"
+msgstr "Se alle personer"
+
+#: MenuStrings.php:22
+msgid "Classification Manager"
+msgstr "Klassifisering leder"
+
+#: MenuStrings.php:23
+msgid "Edit volunteer opportunities"
+msgstr "Redigere frivillig muligheter"
+
+#: MenuStrings.php:24
+msgid "Add New Family"
+msgstr "Legg til ny familie"
+
+#: MenuStrings.php:25
+msgid "View All Families"
+msgstr "Se alle familier"
+
+#: MenuStrings.php:26
+msgid "Family Geographic Utilties"
+msgstr "Familie Geografiske Utilties"
+
+#: MenuStrings.php:27
+msgid "Family Map"
+msgstr "Familien Kart"
+
+#: MenuStrings.php:28
+msgid "Family Roles Manager"
+msgstr "Familie Roller leder"
+
+#: MenuStrings.php:29 MenuStrings.php:82
+msgid "Events"
+msgstr "Hendelser"
+
+#: MenuStrings.php:30
+msgid "List Church Events"
+msgstr "Liste kirkelige handlinger"
+
+#: MenuStrings.php:31
+msgid "Add Church Event"
+msgstr "Legg Kirkens begivenhet"
+
+#: MenuStrings.php:32
+msgid "List Event Types"
+msgstr "Liste hendelsestyper"
+
+#: MenuStrings.php:33
+msgid "Check-in and Check-out"
+msgstr "Innsjekking og utsjekking"
+
+#: MenuStrings.php:35
+msgid "Create New Deposit"
+msgstr "Opprett ny Deposit"
+
+#: MenuStrings.php:36
+msgid "View All Deposits"
+msgstr "Se alle innskudd"
+
+#: MenuStrings.php:37
+msgid "Deposit Reports"
+msgstr "Innskudd rapporter"
+
+#: MenuStrings.php:38
+msgid "Edit Deposit Slip"
+msgstr "Redigere Deposit Slip"
+
+#: MenuStrings.php:39 MenuStrings.php:73
+msgid "Fundraiser"
+msgstr "Fundraiser"
+
+#: MenuStrings.php:40
+#, fuzzy
+msgid "Create New Fundraiser"
+msgstr "Opprett ny familie"
+
+#: MenuStrings.php:41
+#, fuzzy
+msgid "View All Fundraisers"
+msgstr "Se alle familier"
+
+#: MenuStrings.php:42
+#, fuzzy
+msgid "Edit Fundraiser"
+msgstr "Rediger bruker"
+
+#: MenuStrings.php:43
+msgid "View Buyers"
+msgstr "Se Kjøpere"
+
+#: MenuStrings.php:44
+msgid "Add Donors to Buyer List"
+msgstr "Legg Givere til Kjøper List"
+
+#: MenuStrings.php:45 MenuStrings.php:76 SelectList.php:969
+#: SelectListFormatted.php:1009
+msgid "Cart"
+msgstr "Cart"
+
+#: MenuStrings.php:46
+msgid "List Cart Items"
+msgstr "Liste handlekurven Vare"
+
+#: MenuStrings.php:51
+msgid "Data/Reports"
+msgstr "Data / Rapporter"
+
+#: MenuStrings.php:52
+msgid "CSV Export Records"
+msgstr "CSV Eksport Records"
+
+#: MenuStrings.php:53
+msgid "Query Menu"
+msgstr "Query Meny"
+
+#: MenuStrings.php:54
+msgid "Reports Menu"
+msgstr "Rapporter Meny"
+
+#: MenuStrings.php:55 MenuStrings.php:71
+msgid "Groups"
+msgstr "Grupper"
+
+#: MenuStrings.php:56
+msgid "List Groups"
+msgstr "Liste Grupper"
+
+#: MenuStrings.php:58
+msgid "Edit Group Types"
+msgstr "Redigere Gruppe Typer"
+
+#: MenuStrings.php:59 SelectList.php:174 SelectListFormatted.php:170
+msgid "Group Assignment Helper"
+msgstr "Gruppeoppgave Helper"
+
+#: MenuStrings.php:60 MenuStrings.php:77 PersonView.php:640
+#: PropertyTypeList.php:40
+msgid "Properties"
+msgstr "Egenskaper"
+
+#: MenuStrings.php:61
+msgid "People Properties"
+msgstr "Folk Properties"
+
+#: MenuStrings.php:62
+msgid "Family Properties"
+msgstr "Familiens eiendommer"
+
+#: MenuStrings.php:63
+msgid "Group Properties"
+msgstr "Gruppeegenskaper"
+
+#: MenuStrings.php:64
+msgid "Property Types"
+msgstr "Eiendomstyper"
+
+#: MenuStrings.php:65
+msgid "Help"
+msgstr "Hjelp"
+
+#: MenuStrings.php:66
+msgid "About ChurchCRM"
+msgstr "Om ChurchCRM"
+
+#: MenuStrings.php:67
+msgid "Wiki Documentation"
+msgstr "Wiki Documentation"
+
+#: MenuStrings.php:68 Include/Header-function.php:577
+msgid "People"
+msgstr "Folk"
+
+#: MenuStrings.php:69 Include/Header-function.php:584
+msgid "Families"
+msgstr "Familier"
+
+#: MenuStrings.php:70
+msgid "Geographic features"
+msgstr "Geografiske"
+
+#: MenuStrings.php:72
+msgid "Finances"
+msgstr "Økonomi"
+
+#: MenuStrings.php:74
+msgid "Reports"
+msgstr "Rapporter"
+
+#: MenuStrings.php:75
+msgid "Administration"
+msgstr "Administrasjon"
+
+#: MenuStrings.php:78 SettingsUser.php:92
+msgid "Notes"
+msgstr "Merknader"
+
+#: MenuStrings.php:80
+msgid "Classifications"
+msgstr "Klassifikasjoner"
+
+#: MenuStrings.php:81
+msgid "Canvass Support"
+msgstr "Canvass Support"
+
+#: MenuStrings.php:83
+msgid "Menu Options"
+msgstr "Menyvalg"
+
+#: MenuStrings.php:84
+msgid "Edit Custom Family Fields"
+msgstr "Rediger tilpassede Family Fields"
+
+#: mrbs.php:26
+#, fuzzy
+msgid "ChurchCRM MRBS Portal"
+msgstr "ChurchCRM: Logg inn"
+
+#: NoteDelete.php:29
+msgid "Note Delete Confirmation"
+msgstr "Merk Slett Bekreftelse"
+
+#: NoteDelete.php:67
+msgid "Please confirm deletion of this note:"
+msgstr "Vennligst bekrefte sletting av dette notatet:"
+
+#: NoteEditor.php:29
+msgid "Note Editor"
+msgstr "Note Editor"
+
+#: NoteEditor.php:132
+msgid "Private"
+msgstr "Privat"
+
+#: OptionManager.php:70 OptionManagerSave.php:70 PropertyAssign.php:47
+#: PropertyEditor.php:42 PropertyList.php:27 PropertyTypeEditor.php:99
+#: PropertyTypeList.php:61 Include/Header-function.php:443
+msgid "Person"
+msgstr "Person"
+
+#: OptionManager.php:76 OptionManager.php:83 OptionManagerSave.php:76
+#: OptionManagerSave.php:83 PropertyAssign.php:63 PropertyEditor.php:50
+#: PropertyList.php:35 PropertyTypeEditor.php:101 PropertyTypeList.php:61
+msgid "Group"
+msgstr "Gruppe"
+
+#: OptionManager.php:82 OptionManagerSave.php:82
+msgid "Security"
+msgstr "Sikkerhet"
+
+#: OptionManager.php:88 OptionManagerSave.php:88
+msgid "Group Member"
+msgstr "Gruppemedlem"
+
+#: OptionManager.php:107 OptionManagerSave.php:107
+msgid "Person Custom List"
+msgstr "Person egendefinert liste"
+
+#: OptionManager.php:108 OptionManager.php:124 OptionManager.php:140
+#: OptionManagerSave.php:108 OptionManagerSave.php:124
+#: OptionManagerSave.php:140
+msgid "Option"
+msgstr "Alternativet"
+
+#: OptionManager.php:123 OptionManagerSave.php:123
+msgid "Custom List"
+msgstr "Egendefinert liste"
+
+#: OptionManager.php:139 OptionManagerSave.php:139
+msgid "Family Custom List"
+msgstr "Familie egendefinert liste"
+
+#: OptionManager.php:307 OptionManagerSave.php:301
+msgid ""
+"Warning: Removing will reset all assignments for all persons with the "
+"assignment!"
+msgstr ""
+"Advarsel: Fjerne vil tilbakestille alle oppdrag for alle personer med "
+"oppdraget!"
+
+#: OptionManager.php:343 OptionManagerSave.php:340
+msgid "Default"
+msgstr "Standard"
+
+#: OptionManager.php:369 OptionManagerSave.php:366
+msgid "Duplicate name found."
+msgstr "Duplisere navn funnet."
+
+#: OptionManager.php:374 OptionManagerSave.php:371
+msgid "Make Default"
+msgstr "Bruk som standard"
+
+#: OptionManager.php:395 OptionManagerSave.php:392
+msgid "Error: You must enter a name."
+msgstr "Feil: Du må oppgi et navn."
+
+#: OptionManager.php:397 OptionManagerSave.php:394
+msgid "Error: A "
+msgstr "Feil: A"
+
+#: OptionManager.php:397 OptionManagerSave.php:394
+msgid " by that name already exists."
+msgstr "ved det navnet finnes allerede."
+
+#: PaddleNumEditor.php:43
+#, fuzzy
+msgid "Buyer Number Editor"
+msgstr "Bruker Editor"
+
+#: PaddleNumEditor.php:164
+#, fuzzy
+msgid "Generate Statement"
+msgstr "Generer Rapporter"
+
+#: PaddleNumList.php:36
+msgid "Buyers for this fundraiser:"
+msgstr "Kjøpere for denne fundraiser:"
+
+#: PaddleNumList.php:43
+#, fuzzy
+msgid "Select all"
+msgstr "Velg Rolle"
+
+#: PaddleNumList.php:44
+#, fuzzy
+msgid "Select none"
+msgstr "Velg Rolle"
+
+#: PaddleNumList.php:45
+#, fuzzy
+msgid "Add Buyer"
+msgstr "Legg til ny"
+
+#: PaddleNumList.php:46
+msgid "Generate Statements for Selected"
+msgstr "Generer uttalelser for Selected"
+
+#: PaddleNumList.php:52
+#, fuzzy
+msgid "Select"
+msgstr "Velg Rolle"
+
+#: PersonCustomFieldsEditor.php:27
+msgid "Custom Person Fields Editor"
+msgstr "Custom Person Fields Editor"
+
+#: PersonCustomFieldsEditor.php:292
+msgid ""
+"Warning:  By deleting this field, you will irrevokably lose all person data "
+"assigned for this field!"
+msgstr ""
+"Advarsel: Ved å slette dette feltet, vil du irrevokably miste alle personer "
+"data tilordnet dette feltet!"
+
+#: PersonCustomFieldsEditor.php:307
+msgid "No custom person fields have been added yet"
+msgstr "Ingen egendefinerte person felt er lagt til ennå"
+
+#: PersonCustomFieldsEditor.php:340
+msgid "Person-View Side"
+msgstr "Person-View Side"
+
+#: PersonEditor.php:21
+msgid "Person Editor"
+msgstr "Person Editor"
+
+#: PersonEditor.php:176
+msgid "You must enter a Last Name if no Family is selected."
+msgstr "Du må angi et etternavn hvis ingen familie er valgt."
+
+#: PersonEditor.php:208
+msgid "Not a valid Friend Date"
+msgstr "Ikke en gyldig Friend Dato"
+
+#: PersonEditor.php:221
+msgid "Not a valid Membership Date"
+msgstr "Ikke en gyldig medlemskap Dato"
+
+#: PersonEditor.php:245
+msgid "Work Email is Not Valid"
+msgstr "Arbeid post er ikke gyldig"
+
+#: PersonEditor.php:559
+msgid "Items in"
+msgstr "Elementer i"
+
+#: PersonEditor.php:559
+msgid "red"
+msgstr "red"
+
+#: PersonEditor.php:559
+msgid "have corresponding values on the associated family record."
+msgstr "har tilsvarende verdier på den tilknyttede familien posten."
+
+#: PersonEditor.php:618
+msgid "Create a new family (using last name)"
+msgstr "Opprett en ny familie (med etternavn)"
+
+#: PersonEditor.php:776 PrintView.php:258
+msgid "Work / Other Email:"
+msgstr "Arbeid / Other E-post:"
+
+#: PersonEditor.php:785
+msgid "Birth Date:"
+msgstr "Fødselsdato:"
+
+#: PersonEditor.php:803
+msgid "Unk"
+msgstr "Unk"
+
+#: PersonEditor.php:820
+msgid "Birth Year:"
+msgstr "Født år:"
+
+#: PersonEditor.php:821
+msgid "Must be four-digit format."
+msgstr "Må være fire-sifret."
+
+#: PersonEditor.php:822
+msgid "Hide Age"
+msgstr "Skjul Alder"
+
+#: PersonEditor.php:839 PersonView.php:427
+msgid "Friend Date:"
+msgstr "Venn Dato:"
+
+#: PersonToGroup.php:53
+msgid "Add Person to Group"
+msgstr "Legg til person i gruppen"
+
+#: PersonToGroup.php:115
+msgid "Select the group to add this person to:"
+msgstr "Velg gruppen for å legge til denne personen:"
+
+#: PersonView.php:74
+msgid "Previous Person"
+msgstr "Forrige Person"
+
+#: PersonView.php:78
+msgid "Next Person"
+msgstr "Neste Person"
+
+#: PersonView.php:190
+msgid "Not assigned"
+msgstr "Ikke tildelt"
+
+#: PersonView.php:212 PersonView.php:820 SelectList.php:1121
+#: SelectListFormatted.php:1163
+msgid "Create vCard"
+msgstr "Lag vCard"
+
+#: PersonView.php:213 PersonView.php:821
+msgid "Printable Page"
+msgstr "Utskriftsvennlig side"
+
+#: PersonView.php:221 PersonView.php:829
+msgid "Make User"
+msgstr "Gjør Bruker"
+
+#: PersonView.php:223 PersonView.php:831
+msgid "Edit User"
+msgstr "Rediger bruker"
+
+#: PersonView.php:230 PersonView.php:838
+msgid "List View"
+msgstr "Listevisning"
+
+#: PersonView.php:286
+msgid "View Map"
+msgstr "Vis kart"
+
+#: PersonView.php:418
+msgid "Birthdate:"
+msgstr "Fødselsdag:"
+
+#: PersonView.php:422
+msgid "Age:"
+msgstr "Alder:"
+
+#: PersonView.php:610 PrintView.php:336
+msgid "Assigned Groups:"
+msgstr "Tilordnede grupper:"
+
+#: PersonView.php:614
+msgid ""
+"Warning: If you remove this group membership, you will irrevokably lose any "
+"member data assigned"
+msgstr ""
+"Advarsel: Hvis du fjerner denne gruppen medlemskap, vil du irrevokably miste "
+"noen medlemsdata tildelt"
+
+#: PersonView.php:630 PrintView.php:348
+msgid "No group assignments."
+msgstr "Ingen gruppeoppgaver."
+
+#: PersonView.php:636 PrintView.php:354
+msgid "Group Name"
+msgstr "Gruppenavn"
+
+#: PersonView.php:664
+msgid "View/Edit"
+msgstr "Vis / rediger"
+
+#: PersonView.php:714
+msgid "Assign a New Group:"
+msgstr "Tildele en ny gruppe:"
+
+#: PersonView.php:731
+msgid "(Person will be assigned to the Group in the Default Role.)"
+msgstr "(Person vil bli tildelt konsernet i Standard Rolle.)"
+
+#: PersonView.php:737
+msgid "Volunteer opportunities:"
+msgstr "Frivillig muligheter:"
+
+#: PersonView.php:749
+msgid "No volunteer opportunity assignments."
+msgstr "Ingen frivillige mulighet oppdrag."
+
+#: PersonView.php:788
+msgid "Assign a New Volunteer Opportunity:"
+msgstr "Tildele en ny frivillig Opportunity:"
+
+#: PersonView.php:842
+msgid "Red text"
+msgstr "Rød tekst"
+
+#: PersonView.php:842
+msgid "indicates items inherited from the associated family record."
+msgstr "indikerer elementer arvet fra den tilknyttede familien posten."
+
+#: PersonView.php:868
+msgid "Edit \"Why Came\" Notes"
+msgstr "Redigere \"Hvorfor kom\" Notater"
+
+#: PledgeDelete.php:21
+msgid "Confirm Delete"
+msgstr "Bekreft sletting"
+
+#: PledgeDetails.php:19
+msgid "Electronic Transaction Details"
+msgstr "Elektronisk transaksjon detaljer"
+
+#: PledgeEditor.php:288
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr "Nondeductible beløpet kan ikke være større enn totalbeløpet."
+
+#: PledgeEditor.php:295
+msgid "At least one fund must have a non-zero amount."
+msgstr "Minst ett fond må ha en ikke-null verdi."
+
+#: PledgeEditor.php:310
+msgid "Must specify non-zero check number"
+msgstr "Må angi ikke-null sjekknummer"
+
+#: PledgeEditor.php:317
+msgid "Check number not valid for 'CASH' payment"
+msgstr "Sjekk nummeret ikke gyldig for &#39;Cash&#39; betaling"
+
+#: PledgeEditor.php:487
+msgid "Pledge Editor"
+msgstr "Pledge Editor"
+
+#: PledgeEditor.php:489
+msgid "Payment Editor: "
+msgstr "Betaling Redaktør:"
+
+#: PledgeEditor.php:489
+msgid " Deposit Slip #"
+msgstr "Innskudd Slip #"
+
+#: PledgeEditor.php:510
+#, fuzzy
+msgid " more entries will fit."
+msgstr "flere kontroller vil passe."
+
+#: PledgeEditor.php:515
+msgid "Payment Editor - Modify Existing Payment"
+msgstr "Betaling Editor - Endre eksisterende betaling"
+
+#: PledgeEditor.php:517
+msgid "Payment Editor - New Deposit Slip Will Be Created"
+msgstr "Betaling Editor - New Deposit Slip vil bli opprettet"
+
+#: PledgeEditor.php:571
+#, fuzzy
+msgid "Find family->"
+msgstr "familie"
+
+#: PledgeEditor.php:578
+#, fuzzy
+msgid "Payment Schedule"
+msgstr "Betalingsplan:"
+
+#: PledgeEditor.php:581
+msgid "Select Schedule"
+msgstr "Velg Planlegg"
+
+#: PledgeEditor.php:582
+msgid "Weekly"
+msgstr "Ukentlig"
+
+#: PledgeEditor.php:583
+msgid "Monthly"
+msgstr "Månedlig"
+
+#: PledgeEditor.php:584
+msgid "Quarterly"
+msgstr "Kvartalsvis"
+
+#: PledgeEditor.php:585
+msgid "Once"
+msgstr "Gang"
+
+#: PledgeEditor.php:586
+msgid "Other"
+msgstr "Andre"
+
+#: PledgeEditor.php:593
+#, fuzzy
+msgid "Payment by"
+msgstr "Betalingsdato"
+
+#: PledgeEditor.php:597
+msgid "CHECK"
+msgstr "SJEKK"
+
+#: PledgeEditor.php:598
+msgid "CASH"
+msgstr "CASH"
+
+#: PledgeEditor.php:624
+msgid "Split"
+msgstr "Split"
+
+#: PledgeEditor.php:685
+#, fuzzy
+msgid "Total $"
+msgstr "Totalt,"
+
+#: PledgeEditor.php:691
+msgid "Split to Funds by pledge"
+msgstr "Split til Funds ved pant"
+
+#: PledgeEditor.php:703
+msgid "Choose online payment method"
+msgstr "Velg betalingsmetode"
+
+#: PledgeEditor.php:710
+msgid "Select online payment record"
+msgstr "Velg online betaling posten"
+
+#: PledgeEditor.php:717
+msgid "Credit card ..."
+msgstr "Kredittkort ..."
+
+#: PledgeEditor.php:719
+msgid "Bank account "
+msgstr "Bankkonto"
+
+#: PledgeEditor.php:738
+msgid "Scan check"
+msgstr "Skanne sjekk"
+
+#: PledgeEditor.php:744
+msgid "find family from check account #"
+msgstr "finne familie fra sjekk-konto #"
+
+#: PledgeEditor.php:745
+#, fuzzy
+msgid "Set default check account number for family"
+msgstr "Angi standard sjekk for familien"
+
+#: PledgeEditor.php:762
+#, fuzzy
+msgid "Fund Name"
+msgstr "Banknavn"
+
+#: PledgeEditor.php:766
+#, fuzzy
+msgid "Non-deductible amount"
+msgstr "Nondeductible"
+
+#: PrintView.php:119
+msgid "Printable View"
+msgstr "Printable View"
+
+#: PrintView.php:221
+msgid "BirthDate:"
+msgstr "Fødselsdag:"
+
+#: PropertyAssign.php:133 PropertyAssign.php:152
+msgid "Property successfully assigned."
+msgstr "Eiendom vellykket tildelt."
+
+#: PropertyAssign.php:168
+msgid " Property Assignment"
+msgstr "Eiendom Assignment"
+
+#: PropertyAssign.php:182
+msgid "Assigning:"
+msgstr "Tilordning:"
+
+#: PropertyAssign.php:186
+msgid "Value:"
+msgstr "Verdi:"
+
+#: PropertyDelete.php:27
+msgid "Property Delete Confirmation"
+msgstr "Eiendom Slett Bekreftelse"
+
+#: PropertyDelete.php:55
+msgid "Please confirm deletion of this property:"
+msgstr "Vennligst bekreft sletting av denne eiendommen:"
+
+#: PropertyDelete.php:63
+msgid ""
+"Deleting this Property will also delete all assignments of this Property to "
+"any People, Family, or Group records."
+msgstr ""
+"Slette dette Property vil også slette alle oppdrag for denne egenskapen til "
+"noen folk, familie eller gruppe poster."
+
+#: PropertyEditor.php:60
+msgid "Property Editor"
+msgstr "Eiendom Editor"
+
+#: PropertyEditor.php:75
+msgid "You must enter a Name"
+msgstr "Du må angi et navn"
+
+#: PropertyEditor.php:82
+msgid "You must select a Type"
+msgstr "Du må velge en type"
+
+#: PropertyEditor.php:147
+msgid "Select Property Type"
+msgstr "Velg Eiendomstype"
+
+#: PropertyEditor.php:170 PropertyList.php:63
+msgid "A"
+msgstr "A"
+
+#: PropertyEditor.php:170
+msgid "with this property.."
+msgstr "med denne egenskapen .."
+
+#: PropertyEditor.php:174
+msgid "Prompt:"
+msgstr "Spør:"
+
+#: PropertyEditor.php:178
+msgid ""
+"Entering a Prompt value will allow the association of a free-form value."
+msgstr ""
+"Legge inn en Prompt verdi vil tillate sammenslutning av en fri form verdi."
+
+#: PropertyList.php:45
+msgid "Property List"
+msgstr "Eiendom Liste"
+
+#: PropertyList.php:56
+msgid "Add a New"
+msgstr "Legg til en ny"
+
+#: PropertyList.php:63
+msgid "with this Property..."
+msgstr "med denne egenskapen ..."
+
+#: PropertyList.php:64
+msgid "Prompt"
+msgstr "Spør"
+
+#: PropertyTypeDelete.php:28
+msgid "Property Type Delete Confirmation"
+msgstr "Eiendomstype Slett Bekreftelse"
+
+#: PropertyTypeDelete.php:62
+msgid "Warning"
+msgstr "Advarsel"
+
+#: PropertyTypeDelete.php:62
+msgid "This property type is still being used by at least one property."
+msgstr "Denne egenskapen attraksjon fortsatt brukes av minst en egenskap."
+
+#: PropertyTypeDelete.php:62
+msgid "If you delete this type, you will also remove all properties using"
+msgstr ""
+"Hvis du sletter denne typen, vil du også fjerne alle egenskapene ved å bruke"
+
+#: PropertyTypeDelete.php:62
+msgid "it and lose any corresponding property assignments."
+msgstr "det og miste noen tilsvarende eiendom oppdrag."
+
+#: PropertyTypeDelete.php:67
+msgid "Please confirm deletion of this Property Type:"
+msgstr "Vennligst bekreft sletting av denne Eiendomstype:"
+
+#: PropertyTypeEditor.php:28
+msgid "Property Type Editor"
+msgstr "Eiendomstype Editor"
+
+#: PropertyTypeEditor.php:96
+msgid "Class:"
+msgstr "Klasse:"
+
+#: PropertyTypeList.php:21
+msgid "Property Type List"
+msgstr "Eiendomstype List"
+
+#: PropertyTypeList.php:32
+msgid "Add a New Property Type"
+msgstr "Legg til en ny Eiendomstype"
+
+#: PropertyTypeList.php:39
+msgid "Class"
+msgstr "Klasse"
+
+#: PropertyUnassign.php:102
+msgid " Property Unassignment"
+msgstr "Eiendom Unassignment"
+
+#: PropertyUnassign.php:109
+msgid "Please confirm removal of this property from this"
+msgstr "Vennligst bekreft fjerning av denne eiendommen fra dette"
+
+#: PropertyUnassign.php:118
+msgid "Unassigning:"
+msgstr "Unassigning:"
+
+#: PropertyUnassign.php:124
+msgid "Yes, unassign this Property"
+msgstr "Ja, fjern tilordning denne eiendommen"
+
+#: PropertyUnassign.php:127
+msgid "No, retain this assignment"
+msgstr "Nei, beholde dette oppdraget"
+
+#: QueryList.php:21
+msgid "Query Listing"
+msgstr "Query Oppføring"
+
+#: QueryList.php:32
+msgid "Run a Free-Text Query"
+msgstr "Kjør en fritekst-Query"
+
+#: QuerySQL.php:21
+msgid "Free-Text Query"
+msgstr "Fritekst-Query"
+
+#: QuerySQL.php:54
+msgid "Export Results to CSV file"
+msgstr "Eksporter resultater til CSV-fil"
+
+#: QuerySQL.php:62
+msgid "Execute SQL"
+msgstr "Utføre SQL"
+
+#: QueryView.php:22
+msgid "Query View"
+msgstr "Query Vis"
+
+#: QueryView.php:99
+msgid "This value is required."
+msgstr "Denne verdien er nødvendig."
+
+#: QueryView.php:115
+msgid "This value must be numeric."
+msgstr "Denne verdien må være numerisk."
+
+#: QueryView.php:123
+msgid "This value must be at least "
+msgstr "Denne verdien må være minst"
+
+#: QueryView.php:129 QueryView.php:143
+msgid "This value cannot be more than "
+msgstr "Denne verdien kan ikke være mer enn"
+
+#: QueryView.php:143 QueryView.php:149
+msgid " characters long"
+msgstr "tegn"
+
+#: QueryView.php:149
+msgid "This value cannot be less than "
+msgstr "Denne verdien kan ikke være mindre enn"
+
+#: QueryView.php:197
+msgid " record(s) returned"
+msgstr "posten (e) returnerte"
+
+#: QueryView.php:278
+msgid "Add Results To Cart"
+msgstr "Legg resultater i handlevognen"
+
+#: QueryView.php:279
+msgid "Intersect Results With Cart"
+msgstr "Snitt resultater med Cart"
+
+#: QueryView.php:280
+msgid "Remove Results From Cart"
+msgstr "Fjern Resultater fra handlekurven"
+
+#: QueryView.php:285
+msgid "Run Query Again"
+msgstr "Kjør spørringen på nytt"
+
+#: QueryView.php:286
+msgid "Return to Query Menu"
+msgstr "Tilbake til Query Meny"
+
+#: QueryView.php:402
+msgid "Execute Query"
+msgstr "Utfør Query"
+
+#: Register.php:21
+msgid ""
+"Please register your copy of ChurchCRM by checking over this information "
+"and pressing the Send button.  "
+msgstr ""
+"Vennligst registrer din kopi av ChurchCRM ved å sjekke i denne "
+"informasjonen og trykke på Send-knappen."
+
+#: Register.php:22
+msgid ""
+"If you need to make changes go to Admin->Edit General Settings and Admin-"
+">Edit Report Settings.  "
+msgstr ""
+"Hvis du trenger å gjøre endringer gå til Administratorinnstillinger-> "
+"Rediger Generelle innstillinger og Admin-> Rediger rapportinnstillingene."
+
+#: Register.php:23
+msgid "This information is used only to track the usage of this software.  "
+msgstr ""
+"Denne informasjonen brukes kun til å spore bruken av denne programvaren."
+
+#: Register.php:24
+msgid ""
+"With this information, we are able to maintain a credible presence as a free "
+"option in the largely commercial world of church management software.  "
+msgstr ""
+"Med denne informasjonen, er vi i stand til å opprettholde en troverdig "
+"nærvær som et gratis alternativ i stor grad kommersielle verden av kirken "
+"management software."
+
+#: Register.php:25
+msgid "We will never sell or otherwise distribute this information."
+msgstr ""
+"Vi vil aldri selge eller på annen måte distribuere denne informasjonen."
+
+#: Register.php:82
+msgid "Send"
+msgstr "Send"
+
+#: ReminderReport.php:27
+msgid "Pledge Reminder Report"
+msgstr "Pledge Påminnelse Rapporter"
+
+#: ReportList.php:20
+msgid "Report Menu"
+msgstr "Rapporter Meny"
+
+#: ReportList.php:31
+msgid "Reports on groups and roles"
+msgstr "Rapporter om grupper og roller"
+
+#: ReportList.php:34
+msgid "Report on group and roles selected (it may be a multi-page PDF)."
+msgstr "Rapport om gruppen og roller valgt (det kan være en multi-siders PDF)."
+
+#: ReportList.php:40
+msgid "Members Directory"
+msgstr "Medlemmer Directory"
+
+#: ReportList.php:42
+msgid "Printable directory of all members, grouped by family where assigned"
+msgstr ""
+"Utskriftsvennlig katalog over alle medlemmene gruppert etter familie der "
+"tildelt"
+
+#: ReportList.php:57
+msgid "Generate letters and mailing labels."
+msgstr "Generere brev og adresseetiketter."
+
+#: ReportList.php:62 SundaySchool.php:25
+msgid "Sunday School Reports"
+msgstr "Søndagsskole rapporter"
+
+#: ReportList.php:64
+msgid "Generate class lists and attendance sheets"
+msgstr "Generer klasselister og deltakelse ark"
+
+#: ReportList.php:72
+msgid "Pledges and Payments"
+msgstr "Pantstillelser og Betaling"
+
+#: ReportList.php:81
+msgid "Automated support for conducting an every-member canvass."
+msgstr "Automatisert støtte for å gjennomføre en hver medlem lerret."
+
+#: ReportList.php:86
+msgid "Event Attendance"
+msgstr "Hendelse Oppmøte"
+
+#: ReportList.php:88
+msgid "Generate attendance -AND- non-attendance reports for events"
+msgstr "Generer påmeldings-ikke-oppmøte rapporter for hendelser"
+
+#: ReportList.php:114
+msgid "US Address Verification Report"
+msgstr "USA-adressen senderapport"
+
+#: ReportList.php:115
+msgid "Generate report comparing all US family addresses "
+msgstr "Generere rapporten sammenligner alle amerikanske familien adresser"
+
+#: ReportList.php:116
+msgid "with United States Postal Service Standard Address Format.<br>"
+msgstr "med United States Postal Service Standard Adresse Format. <br>"
+
+#: RPCdummy.php:48
+msgid "Address Info:"
+msgstr "Adresse Info:"
+
+#: SelectDelete.php:59
+msgid "All donations from this family have been moved to another family."
+msgstr ""
+"Alle donasjoner fra denne familien har blitt flyttet til en annen familie."
+
+#: SelectDelete.php:65
+msgid "Person Delete Confirmation"
+msgstr "Person Slett Bekreftelse"
+
+#: SelectDelete.php:67
+msgid "Family Delete Confirmation"
+msgstr "Familie Slett Bekreftelse"
+
+#: SelectDelete.php:220
+msgid ""
+"Sorry, this person is a user.  An administrator must remove their user "
+"status before they may be deleted from the database."
+msgstr ""
+"Beklager, denne personen er en bruker. En administrator må fjerne sin bruker "
+"status før de kan slettes fra databasen."
+
+#: SelectDelete.php:221
+msgid "Return to Person View"
+msgstr "Tilbake til Person Vis"
+
+#: SelectDelete.php:225 VolunteerOpportunityEditor.php:80
+msgid "Please confirm deletion of:"
+msgstr "Vennligst bekreft sletting av:"
+
+#: SelectDelete.php:228
+msgid " (This action CANNOT be undone!)"
+msgstr "(Denne handlingen kan ikke angres!)"
+
+#: SelectDelete.php:242
+msgid ""
+"Sorry, there are records of donations from this family. This family may not "
+"be deleted."
+msgstr ""
+"Beklager, det er registreringer av donasjoner fra denne familien. Denne "
+"familien kan ikke slettes."
+
+#: SelectDelete.php:243
+msgid "Return to Family View"
+msgstr "Tilbake til Familievisning"
+
+#: SelectDelete.php:248
+msgid ""
+"WARNING: This family has records of donations and may NOT be deleted until "
+"these donations are associated with another family."
+msgstr ""
+"ADVARSEL: Denne familien har registreringer av donasjoner og kan ikke "
+"slettes før disse donasjoner er forbundet med en annen familie."
+
+#: SelectDelete.php:252
+msgid "Please select another family with whom to associate these donations:"
+msgstr ""
+"Vennligst velg en annen familie med hvem du skal knytte disse donasjoner:"
+
+#: SelectDelete.php:253
+msgid "WARNING: This action can not be undone and may have legal implications!"
+msgstr ""
+"ADVARSEL: Denne handlingen kan ikke angres, og kan ha rettslige konsekvenser!"
+
+#: SelectDelete.php:287
+msgid "CURRENT FAMILY WITH DONATIONS"
+msgstr "Gjeldende familien med donasjoner"
+
+#: SelectDelete.php:370
+msgid "Please confirm deletion of this family record:"
+msgstr "Vennligst bekreft sletting av denne familien posten:"
+
+#: SelectDelete.php:371
+msgid ""
+"Note: This will also delete all Notes associated with this Family record."
+msgstr ""
+"Merk: Dette vil også slette alle notater knyttet til denne Family posten."
+
+#: SelectDelete.php:376
+msgid "Delete Family Record ONLY"
+msgstr "Slett Family Record KUN"
+
+#: SelectDelete.php:376 SelectDelete.php:388
+msgid " (this action cannot be undone)"
+msgstr "(Denne handlingen kan ikke omgjøres)"
+
+#: SelectDelete.php:388
+msgid "Delete Family Record AND Family Members"
+msgstr "Slett Family Record og familiemedlemmer"
+
+#: SelectDelete.php:389
+msgid "No, cancel this deletion</a>"
+msgstr "Nei, avbryt denne slettingen"
+
+#: SelectList.php:149 SelectListFormatted.php:145
+msgid "Person Listing"
+msgstr "Person Listing"
+
+#: SelectList.php:188 SelectListFormatted.php:184
+msgid "Family Listing"
+msgstr "Familie Listing"
+
+#: SelectList.php:473 SelectListFormatted.php:460
+msgid "Add a New Person Record"
+msgstr "En ny person Record"
+
+#: SelectList.php:481 SelectListFormatted.php:468
+msgid "View Printable Page of this Listing"
+msgstr "Vis utskriftsvennlig side av denne oppføringen"
+
+#: SelectList.php:485 SelectListFormatted.php:472
+msgid "Show people <b>not</b> in this group type:"
+msgstr "Vis folk <b>som ikke er</b> i denne gruppen type:"
+
+#: SelectList.php:501 SelectList.php:1311 SelectListFormatted.php:488
+#: SelectListFormatted.php:1398
+msgid "Sort order:"
+msgstr "Sorteringsrekkefølge:"
+
+#: SelectList.php:503 SelectList.php:1313 SelectListFormatted.php:495
+#: SelectListFormatted.php:1402
+msgid "By Name"
+msgstr "Etter navn"
+
+#: SelectList.php:504 SelectListFormatted.php:501
+msgid "By Family"
+msgstr "Av Family"
+
+#: SelectList.php:505 SelectListFormatted.php:507
+msgid "By ZIP/Postal Code"
+msgstr "Av ZIP / Postal Code"
+
+#: SelectList.php:506 SelectList.php:1314 SelectListFormatted.php:513
+#: SelectListFormatted.php:1405
+msgid "By Newest Entries"
+msgstr "Av Nyeste innlegg"
+
+#: SelectList.php:507 SelectListFormatted.php:519
+msgid "By Recently Edited"
+msgstr "Ved Nylig Redigert"
+
+#: SelectList.php:513 SelectList.php:1318 SelectListFormatted.php:533
+#: SelectListFormatted.php:1411
+msgid "Apply Filter"
+msgstr "Apply Filter"
+
+#: SelectList.php:523 SelectListFormatted.php:543
+msgid "Male & Female"
+msgstr "Mann & Kvinne"
+
+#: SelectList.php:564 SelectListFormatted.php:586
+msgid "All Family Roles"
+msgstr "Alle Familie Roller"
+
+#: SelectList.php:587 SelectListFormatted.php:611
+msgid "All Contact Properties"
+msgstr "All kontakt Properties"
+
+#: SelectList.php:614 SelectListFormatted.php:638
+msgid "All Group Types"
+msgstr "Alle konsernets typer"
+
+#: SelectList.php:648 SelectListFormatted.php:672
+msgid "All Groups"
+msgstr "Alle grupper"
+
+#: SelectList.php:691 SelectListFormatted.php:713
+msgid "All Roles"
+msgstr "Alle Roller"
+
+#: SelectList.php:972 SelectListFormatted.php:1012
+msgid "vCard"
+msgstr "vCard"
+
+#: SelectList.php:973 SelectListFormatted.php:1013
+msgid "Printable Record"
+msgstr "Utskriftsvennlig Record"
+
+#: SelectList.php:1085 SelectListFormatted.php:1128
+msgid "unassigned"
+msgstr "tilordnet"
+
+#: SelectList.php:1159 SelectListFormatted.php:1205
+msgid "City, State Zip"
+msgstr "City, State Zip"
+
+#: SelectList.php:1163 SelectListFormatted.php:1217
+msgid "Primary E-mail"
+msgstr "Primære E-post"
+
+#: SelectList.php:1164 SelectListFormatted.php:1220
+msgid "Work / Other E-mail"
+msgstr "Arbeid / Other E-post"
+
+#: SelectList.php:1165 SelectListFormatted.php:1223
+msgid "Date Entered"
+msgstr "Datoen som er angitt"
+
+#: SelectList.php:1306 SelectListFormatted.php:1392
+msgid "Add a New Family Record"
+msgstr "Legg til en ny familie Record"
+
+#: SelectList.php:1435 SelectListFormatted.php:1537
+msgid "Family Name"
+msgstr "Etternavn"
+
+#: SelectList.php:1440 SelectListFormatted.php:1553
+msgid "Last Edited"
+msgstr "Sist redigert"
+
+#: SettingsGeneral.php:93
+msgid "General Configuration Settings"
+msgstr "Generelle Konfigurasjonsinnstillinger"
+
+#: SettingsGeneral.php:103 SettingsIndividual.php:104 SettingsReport.php:65
+#: SettingsUser.php:90 UserEditor.php:459
+msgid "Variable name"
+msgstr "Variabelnavn"
+
+#: SettingsGeneral.php:115 SettingsGeneral.php:175 SettingsIndividual.php:118
+#: SettingsIndividual.php:162 SettingsReport.php:77 SettingsReport.php:136
+#: SettingsUser.php:102 SettingsUser.php:164 UserEditor.php:486
+#: UserEditor.php:545
+msgid "Save Settings"
+msgstr "Lagre innstillinger"
+
+#: SettingsIndividual.php:93
+msgid "My User Settings"
+msgstr "Mine Brukerinnstillinger"
+
+#: SettingsReport.php:55
+msgid "Report Settings"
+msgstr "Rapportinnstillinger"
+
+#: SettingsUser.php:78
+msgid "Default User Settings"
+msgstr "Standard brukerinnstillinger"
+
+#: SettingsUser.php:87
+msgid ""
+"Set Permission True to give new users the ability to change their current "
+"value.<BR>"
+msgstr "Still tillatelse Tro gi nye brukere muligheten til å endre sin nåværende verdi. <BR>"
+
+#: SettingsUser.php:89
+#, fuzzy
+msgid "Permission"
+msgstr "Person"
+
+#: SettingsUser.php:91
+#, fuzzy
+msgid "Current Value"
+msgstr "Nåværende rolle:"
+
+#: SundaySchool.php:101
+#, fuzzy
+msgid ""
+"At least one group must be selected to make class lists or attendance sheets."
+msgstr "Generer klasselister og deltakelse ark"
+
+#: SundaySchool.php:126
+msgid ""
+"Select Group: \n"
+"To select multiple hold CTL"
+msgstr "Velg Gruppe: Slik velger du flere hold CTL"
+
+#: SundaySchool.php:150
+msgid "First Sunday:"
+msgstr "Første søndag:"
+
+#: SundaySchool.php:155
+msgid "Last Sunday:"
+msgstr "Sist søndag:"
+
+#: SundaySchool.php:160 SundaySchool.php:165 SundaySchool.php:170
+#: SundaySchool.php:175 SundaySchool.php:180 SundaySchool.php:185
+#: SundaySchool.php:190 SundaySchool.php:195
+msgid "No Sunday School:"
+msgstr "Ingen Søndagsskolen:"
+
+#: SundaySchool.php:200
+msgid "Extra Students:"
+msgstr "Ekstra Studenter:"
+
+#: SundaySchool.php:205
+msgid "Extra Teachers:"
+msgstr "Ekstra Lærere:"
+
+#: SundaySchool.php:210
+msgid "Create Class List"
+msgstr "Lag Class List"
+
+#: SundaySchool.php:211
+msgid "Create Attendance Sheet"
+msgstr "Lag Oppmøte Sheet"
+
+#: TaxReport.php:27
+msgid "Tax Report"
+msgstr "Skatt Rapporter"
+
+#: TaxReport.php:45
+msgid "Calendar Year:"
+msgstr "Kalenderår:"
+
+#: UserDelete.php:58
+msgid "User Delete Confirmation"
+msgstr "Bruker Slett Bekreftelse"
+
+#: UserDelete.php:63
+msgid "Please confirm removal of user status from:"
+msgstr "Vennligst bekreft fjerning av brukeren status fra:"
+
+#: UserEditor.php:321
+msgid "User Editor"
+msgstr "Bruker Editor"
+
+#: UserEditor.php:337
+msgid "Person to Make User:"
+msgstr "Person til å gjøre Bruker:"
+
+#: UserEditor.php:359 Include/Header-function.php:455
+msgid "User:"
+msgstr "Bruker:"
+
+#: UserEditor.php:372
+msgid "Login Name:"
+msgstr "Logg Navn:"
+
+#: UserEditor.php:377
+msgid "Add Records:"
+msgstr "Legg Records:"
+
+#: UserEditor.php:382
+msgid "Edit Records:"
+msgstr "Edit Records:"
+
+#: UserEditor.php:387
+msgid "Delete Records:"
+msgstr "Slett Records:"
+
+#: UserEditor.php:392
+msgid "Manage Properties and Classifications:"
+msgstr "Administrere Egenskaper og klassifikasjoner:"
+
+#: UserEditor.php:397
+msgid "Manage Groups and Roles:"
+msgstr "Administrere grupper og roller:"
+
+#: UserEditor.php:402
+msgid "Manage Donations and Finance:"
+msgstr "Administrere Donasjoner og finans:"
+
+#: UserEditor.php:407
+msgid "View, Add and Edit Notes:"
+msgstr "Vise, til og redigere notater:"
+
+#: UserEditor.php:419
+msgid "Edit Self:"
+msgstr "Rediger deg selv:"
+
+#: UserEditor.php:420
+msgid "(Edit own family only.)"
+msgstr "(Rediger egen familie bare.)"
+
+#: UserEditor.php:425
+msgid "(Canvass volunteer.)"
+msgstr "(Canvass frivillig.)"
+
+#: UserEditor.php:429
+msgid "Admin:"
+msgstr "Admin:"
+
+#: UserEditor.php:430
+msgid "(Grants all privileges.)"
+msgstr "(Grants alle privilegier.)"
+
+#: UserEditor.php:434
+msgid "Style:"
+msgstr "Stil:"
+
+#: UserEditor.php:439
+msgid "Note: Changes will not take effect until next logon."
+msgstr "Merk: Endringer vil ikke tre i kraft før neste pålogging."
+
+#: UserList.php:47
+msgid "User Listing"
+msgstr "Bruker Liste"
+
+#: UserList.php:52
+msgid "Add a New User"
+msgstr "Legg til en ny bruker"
+
+#: UserList.php:57
+msgid "Last Login"
+msgstr "Sist logget inn"
+
+#: UserList.php:58
+msgid "Total Logins"
+msgstr "Totalt pålogginger"
+
+#: UserList.php:59
+msgid "Failed Logins"
+msgstr "Mislykkede pålogginger"
+
+#: UserList.php:60
+msgid "Password"
+msgstr "Passord"
+
+#: UserList.php:95
+msgid "Change"
+msgstr "Endre"
+
+#: UserPasswordChange.php:64
+msgid "You must enter a password in both boxes"
+msgstr "Du må skrive inn et passord i begge boksene"
+
+#: UserPasswordChange.php:70 UserPasswordChange.php:135
+msgid "You must enter the same password in both boxes"
+msgstr "Du må angi det samme passordet i begge boksene"
+
+#: UserPasswordChange.php:123
+msgid "Invalid password"
+msgstr "Ugyldig passord"
+
+#: UserPasswordChange.php:129
+msgid "You must enter your new password in both boxes"
+msgstr "Du må angi nytt passord i begge boksene"
+
+#: UserPasswordChange.php:141
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr "Ditt passord valget er for opplagt. Velg noe annet."
+
+#: UserPasswordChange.php:147
+msgid "Your new password must be at least"
+msgstr "Ditt nye passord må være minst"
+
+#: UserPasswordChange.php:147
+msgid "characters"
+msgstr "tegn"
+
+#: UserPasswordChange.php:153
+msgid "You need to actually change your password (nice try, though!)"
+msgstr "Du må faktisk endre passordet ditt (godt forsøk, though!)"
+
+#: UserPasswordChange.php:158
+msgid "Your new password is too similar to your old one.  Be more creative!"
+msgstr "Ditt nye passord er for lik den gamle. Bli mer kreativ!"
+
+#: UserPasswordChange.php:193
+msgid "User Password Change"
+msgstr "Bruker Passord Change"
+
+#: UserPasswordChange.php:196
+msgid ""
+"Your account record indicates that you need to change your password before "
+"proceding."
+msgstr ""
+"Din firmapost indikerer at du trenger å endre passordet ditt før du "
+"fortsetter."
+
+#: UserPasswordChange.php:199
+msgid ""
+"Enter your current password, then your new password twice.  Passwords must "
+"be at least"
+msgstr ""
+"Skriv inn gjeldende passord, så ditt nye passord to ganger. Passord må være "
+"minst"
+
+#: UserPasswordChange.php:199
+msgid "characters in length."
+msgstr "tegn."
+
+#: UserPasswordChange.php:201
+msgid "Enter a new password for this user."
+msgstr "Tast inn et nytt passord for denne brukeren."
+
+#: UserPasswordChange.php:208
+msgid "Old Password:"
+msgstr "Gammelt passord:"
+
+#: UserPasswordChange.php:213
+msgid "New Password:"
+msgstr "Nytt passord:"
+
+#: UserPasswordChange.php:217
+msgid "Confirm New Password:"
+msgstr "Bekreft nytt passord:"
+
+#: UserReset.php:48
+msgid "User Reset"
+msgstr "Bruker Reset"
+
+#: UserReset.php:53
+msgid "Please confirm the password reset of this user:"
+msgstr "Vennligst bekreft passordet reset av denne brukeren:"
+
+#: UserReset.php:57
+msgid "Yes, reset this User's password"
+msgstr "Ja, nullstille denne brukerens passord"
+
+#: UserReset.php:59
+msgid "No, cancel this operation"
+msgstr "Nei, avbryte operasjonen"
+
+#: USISTAddressVerification.php:276
+msgid "US Address Verification"
+msgstr "USA Adressebekreftelse"
+
+#: USISTAddressVerification.php:310 USISTAddressVerification.php:327
+#: USISTAddressVerification.php:351 USISTAddressVerification.php:593
+#: USISTAddressVerification.php:605
+#, fuzzy
+msgid "https://www.intelligentsearch.com/Hosted/User/"
+msgstr ""
+"http://www.intelligentsearch.com/address_verification/verify_address.html"
+
+#: USISTAddressVerification.php:339
+msgid ""
+"http://www.intelligentsearch.com/address_verification/verify_address.html"
+msgstr ""
+"http://www.intelligentsearch.com/address_verification/verify_address.html"
+
+#: VolunteerOpportunityEditor.php:78
+#, fuzzy
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Frivillig Opportunity Editor"
+
+#: VolunteerOpportunityEditor.php:101
+#, fuzzy
+msgid "Warning!"
+msgstr "Advarsel"
+
+#: VolunteerOpportunityEditor.php:102
+#, fuzzy
+msgid "There are people assigned to this Volunteer Opportunity."
+msgstr "Tildele en ny frivillig Opportunity:"
+
+#: VolunteerOpportunityEditor.php:103
+msgid "Volunteer Opportunity will be unassigned for the following people."
+msgstr "Frivillig Opportunity vil bli tilordnet for følgende personer."
+
+#: VolunteerOpportunityEditor.php:112
+#, fuzzy
+msgid "Yes, delete this Volunteer Opportunity"
+msgstr "Tildele en ny frivillig Opportunity:"
+
+#: VolunteerOpportunityEditor.php:189
+msgid "Volunteer Opportunity Editor"
+msgstr "Frivillig Opportunity Editor"
+
+#: VolunteerOpportunityEditor.php:278
+msgid "No volunteer opportunities have been added yet"
+msgstr "Ingen frivillige muligheter er lagt til ennå"
+
+#: VolunteerOpportunityEditor.php:331
+msgid ""
+"NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or "
+"Desc fields must be saved by pressing 'Save Changes'"
+msgstr "MERK: Legg til, slett og Bestilling endringene er umiddelbar. Endringer i Navn eller Desc felt må lagres ved å trykke \"Lagre endringer\""
+
+#: VolunteerOpportunityEditor.php:432
+msgid "Add New Opportunity"
+msgstr "Legg til ny Opportunity"
+
+#: webcalendar.php:26
+msgid "ChurchCRM WebCalendar Portal"
+msgstr "ChurchCRM WebCalendar Portal"
+
+#: WhyCameEditor.php:29
+msgid "\"Why Came\" notes for "
+msgstr "\"Hvorfor kom\" notater for"
+
+#: WhyCameEditor.php:29
+msgid " "
+msgstr ""
+
+#: WhyCameEditor.php:98
+msgid "Why did you come to the church?"
+msgstr "Hvorfor kom du til kirken?"
+
+#: WhyCameEditor.php:103
+msgid "Why do you keep coming?"
+msgstr "Hvorfor holder du kommer?"
+
+#: WhyCameEditor.php:108
+msgid "Do you have any suggestions for us?"
+msgstr "Har du noen forslag til oss?"
+
+#: WhyCameEditor.php:113
+msgid "How did you learn of the church?"
+msgstr "Hvordan fikk du vite av kirken?"
+
+#: Include/CanvassUtilities.php:70
+msgid "No families need canvassers assigned"
+msgstr "Ingen familier trenger canvassers tildelt"
+
+#: Include/CanvassUtilities.php:82
+#, php-format
+msgid "Canvassers assigned at random to %d families."
+msgstr "Canvassers tildelt tilfeldig til% d familier."
+
+#: Include/CanvassUtilities.php:115
+#, php-format
+msgid "Canvassers assigned at random to %d non-pledging families."
+msgstr "Canvassers tildelt tilfeldig til% d ikke-pantsettelse familier."
+
+#: Include/EnvelopeFunctions.php:39
+msgid "Assigned envelope numbers to all families with at least one member."
+msgstr "Tilordnet konvolutt nummer til alle familier med minst ett medlem."
+
+#: Include/EnvelopeFunctions.php:41
+msgid "Assigned envelope numbers to all families."
+msgstr "Tilordnet konvolutt nummer til alle familier."
+
+#: Include/Functions.php:102
+msgid "True / False"
+msgstr "True / False"
+
+#: Include/Functions.php:104
+msgid "Text Field (50 char)"
+msgstr "Tekstfelt (50 tegn)"
+
+#: Include/Functions.php:105
+msgid "Text Field (100 char)"
+msgstr "Tekstfelt (100 tegn)"
+
+#: Include/Functions.php:106
+msgid "Text Field (long)"
+msgstr "Tekstfelt (lang)"
+
+#: Include/Functions.php:108
+msgid "Season"
+msgstr "Årstid"
+
+#: Include/Functions.php:110
+msgid "Person from Group"
+msgstr "Person fra gruppen"
+
+#: Include/Functions.php:111
+msgid "Money"
+msgstr "Penger"
+
+#: Include/Functions.php:112
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
+#: Include/Functions.php:113
+msgid "Custom Drop-Down List"
+msgstr "Custom Rullegardinliste"
+
+#: Include/Functions.php:119
+msgid "Group successfully added to the Cart."
+msgstr "Gruppen er lagt til handlevognen."
+
+#: Include/Functions.php:125
+msgid "Group successfully removed from the Cart."
+msgstr "Gruppe fjernet fra handlekurven."
+
+#: Include/Functions.php:131
+msgid "Selected record successfully added to the Cart."
+msgstr "Valgte posten er lagt til handlevognen."
+
+#: Include/Functions.php:137
+msgid "Selected record successfully removed from the Cart."
+msgstr "Valgte posten slettet fra Cart."
+
+#: Include/Functions.php:143
+msgid "Your cart has been successfully emptied."
+msgstr "Handlekurven har blitt tømt."
+
+#: Include/Functions.php:165
+msgid "item(s) added to the Cart."
+msgstr "element (er) lagt i handlevognen."
+
+#: Include/Functions.php:240
+msgid "Select Fiscal Year"
+msgstr "Velg Regnskapsår"
+
+#: Include/Functions.php:276 Include/Initialize.php:99
+msgid "Cannot execute query."
+msgstr "Kan ikke utføre spørringen."
+
+#: Include/Functions.php:664
+msgid "pm"
+msgstr "pm"
+
+#: Include/Functions.php:669
+msgid "am"
+msgstr "am"
+
+#: Include/Functions.php:847 Include/Functions.php:859
+msgid "1 month old"
+msgstr "1 måned gammel"
+
+#: Include/Functions.php:849 Include/Functions.php:861
+msgid "months old"
+msgstr "måneder gamle"
+
+#: Include/Functions.php:857
+msgid "1 year old"
+msgstr "1 år gammel"
+
+#: Include/Functions.php:864 Include/Functions.php:866
+msgid "years old"
+msgstr "år"
+
+#: Include/Functions.php:1011
+msgid "Invalid Editor ID!"
+msgstr "Ugyldig Editor ID!"
+
+#: Include/Functions.php:1072
+msgid "Select Season"
+msgstr "Velg Season"
+
+#: Include/Functions.php:1075
+msgid "Winter"
+msgstr "Vinter"
+
+#: Include/Functions.php:1078
+msgid "Spring"
+msgstr "Vår"
+
+#: Include/Functions.php:1081
+msgid "Summer"
+msgstr "Sommer"
+
+#: Include/Functions.php:1084
+msgid "Fall"
+msgstr "Høst"
+
+#: Include/Functions.php:1168
+msgid "Error: Invalid Editor ID!"
+msgstr "Feil: Ugyldig Editor ID!"
+
+#: Include/Functions.php:1367
+msgid "Not a valid date"
+msgstr "Ikke en gyldig dato"
+
+#: Include/Functions.php:1381
+msgid "Invalid Year"
+msgstr "Ugyldig år"
+
+#: Include/Functions.php:1386
+msgid "Out of range: Allowable values are 1901 to 2155"
+msgstr "Utenfor rekkevidde: Tillatte verdier er 1901-2155"
+
+#: Include/Functions.php:1401 Include/Functions.php:1420
+msgid "Invalid Number"
+msgstr "Ugyldig nummer"
+
+#: Include/Functions.php:1406
+msgid "Number too large. Must be between -2147483648 and 2147483647"
+msgstr "Tallet er for stort. Må være mellom -2147483648 og 2147483647"
+
+#: Include/Functions.php:1425
+msgid "Money amount too large. Maximum is $999999999.99"
+msgstr "Pengene beløp for stor. Maksimum er $ 999,999,999.99"
+
+#: Include/Functions.php:1645
+msgid " Bold Italic"
+msgstr "Fet Kursiv"
+
+#: Include/Functions.php:1650
+msgid " Italic"
+msgstr "Kursiv"
+
+#: Include/Functions.php:1652
+msgid " Bold"
+msgstr "Fet"
+
+#: Include/Header-function.php:442
+msgid "Search"
+msgstr "Søk"
+
+#: Include/Header-function.php:447
+msgid "Current deposit slip"
+msgstr "Gjeldende innskudd slip"
+
+#: Include/Header-function.php:451
+msgid "Items in Cart"
+msgstr "Produkter i handlekurven"
+
+#: Include/LabelFunctions.php:46
+msgid "Font:"
+msgstr "Font:"
+
+#: Include/LabelFunctions.php:84
+msgid "Label Type:"
+msgstr "Label Type:"
+
+#: Include/LabelFunctions.php:101
+msgid "Label Grouping"
+msgstr "Etiketten gruppering"
+
+#: Include/LabelFunctions.php:108
+msgid "All Individuals"
+msgstr "Alle individer"
+
+#: Include/LabelFunctions.php:114
+msgid "Grouped by Family"
+msgstr "Gruppert etter familie"
+
+#: Include/LabelFunctions.php:120
+msgid "To the parents of:"
+msgstr "Til foreldrene:"
+
+#: Include/LabelFunctions.php:135
+msgid "Start Row:"
+msgstr "Starter Row:"
+
+#: Include/LabelFunctions.php:142
+msgid "Start Column:"
+msgstr "Start-kolonnen:"
+
+#: Include/LabelFunctions.php:154
+msgid "Ignore Incomplete<br>Addresses:"
+msgstr "Ignorer Ufullstendig <br> Adresser:"
+
+#: Include/LabelFunctions.php:166
+msgid "File Type:"
+msgstr "File Type:"
+
+#: Include/ReportFunctions.php:37
+msgid "ERROR: FPDF Library was not found in your path <i>or</i> at: "
+msgstr "FEIL: FPDF Library ble ikke funnet i banen <i>eller</i> på:"
+
+#: Include/ReportFunctions.php:65
+msgid "ERROR: JPGraph Library was not found in your path <i>or</i> at: "
+msgstr "FEIL: JPGraph Library ble ikke funnet i banen <i>eller</i> på:"
+
+#: Reports/AdvancedDeposit.php:358 Reports/AdvancedDeposit.php:375
+#: Reports/AdvancedDeposit.php:451 Reports/AdvancedDeposit.php:464
+#: Reports/AdvancedDeposit.php:505 Reports/AdvancedDeposit.php:522
+#: Reports/AdvancedDeposit.php:598 Reports/AdvancedDeposit.php:611
+#: Reports/AdvancedDeposit.php:652 Reports/AdvancedDeposit.php:669
+#: Reports/AdvancedDeposit.php:745 Reports/AdvancedDeposit.php:758
+#: Reports/AdvancedDeposit.php:773
+msgid "items"
+msgstr "elementer"
+
+#: Reports/AdvancedDeposit.php:360 Reports/AdvancedDeposit.php:377
+#: Reports/AdvancedDeposit.php:453 Reports/AdvancedDeposit.php:466
+#: Reports/AdvancedDeposit.php:507 Reports/AdvancedDeposit.php:524
+#: Reports/AdvancedDeposit.php:600 Reports/AdvancedDeposit.php:613
+#: Reports/AdvancedDeposit.php:654 Reports/AdvancedDeposit.php:671
+#: Reports/AdvancedDeposit.php:747 Reports/AdvancedDeposit.php:760
+#: Reports/AdvancedDeposit.php:775
+msgid "item"
+msgstr "element"
+
+#: Reports/CanvassReports.php:224
+msgid "Did not pledge"
+msgstr "Gjorde ikke pantsette"
+
+#: Reports/CanvassReports.php:228
+msgid "Top pledger"
+msgstr "Top Pledger"
+
+#: Reports/CanvassReports.php:230
+msgid "Pledged"
+msgstr "Pantsatt"
+
+#: Reports/CanvassReports.php:237
+msgid "Pledge status: "
+msgstr "Pledge status:"
+
+#: Reports/CanvassReports.php:258 Reports/ConfirmReport.php:171
+#: Reports/ConfirmReport.php:190
+msgid "M/F"
+msgstr "M / F"
+
+#: Reports/ClassAttendance.php:183
+msgid "Totals"
+msgstr "Totals"
+
+#: Reports/ClassAttendance.php:350 Reports/ClassList.php:89
+msgid "Teacher"
+msgstr "Lærer"
+
+#: Reports/ClassAttendance.php:355 Reports/ClassList.php:137
+msgid "Student"
+msgstr "Student"
+
+#: Reports/ClassAttendance.php:363 Reports/ClassAttendance.php:364
+#: Reports/ClassList.php:110 Reports/ClassList.php:111
+msgid "Liaison"
+msgstr "Liaison"
+
+#: Reports/ConfirmReport.php:112
+msgid "Family name"
+msgstr "Etternavn"
+
+#: Reports/ConfirmReport.php:124
+msgid "City, State, Zip"
+msgstr "City, State, Zip"
+
+#: Reports/ConfirmReport.php:128
+msgid "Home phone"
+msgstr "Hjemmetelefon"
+
+#: Reports/ConfirmReport.php:132
+msgid "Send Newsletter"
+msgstr "Send nyhetsbrev"
+
+#: Reports/ConfirmReport.php:141
+msgid "Anniversary Date"
+msgstr "Jubileum Dato"
+
+#: Reports/ConfirmReport.php:147
+msgid "Family E-Mail"
+msgstr "Familien E-post"
+
+#: Reports/ConfirmReport.php:170 Reports/ConfirmReport.php:189
+msgid "Member Name"
+msgstr "Medlemsnavn"
+
+#: Reports/ConfirmReport.php:172 Reports/ConfirmReport.php:191
+msgid "Adult/Child"
+msgstr "Voksen / barn"
+
+#: Reports/ConfirmReport.php:175 Reports/ConfirmReport.php:194
+msgid "Cell phone"
+msgstr "Mobiltelefon"
+
+#: Reports/ConfirmReport.php:176 Reports/ConfirmReport.php:195
+msgid "Member/Friend"
+msgstr "Medlem / Friend"
+
+#: Reports/DirectoryReport.php:59 Reports/DirectoryReport.php:101
+msgid "Directory"
+msgstr "Katalog"
+
+#: Reports/DirectoryReport.php:78
+msgid "Page"
+msgstr "Side"
+
+#: Reports/DirectoryReport.php:328 Reports/DirectoryReport.php:399
+#: Reports/DirectoryReport.php:462 Reports/DirectoryReport.php:773
+#: Reports/GroupReport.php:268
+msgid "Work"
+msgstr "Arbeid"
+
+#: Reports/DirectoryReport.php:330 Reports/DirectoryReport.php:403
+#: Reports/DirectoryReport.php:466 Reports/DirectoryReport.php:777
+#: Reports/GroupReport.php:273
+msgid "Cell"
+msgstr "Cell"
+
+#: Reports/DirectoryReport.php:334
+msgid "Wedding"
+msgstr "Bryllup"
+
+#: Reports/DirectoryReport.php:361
+msgid "and"
+msgstr "og"
+
+#: Reports/DirectoryReport.php:408 Reports/DirectoryReport.php:471
+#: Reports/DirectoryReport.php:782
+msgid "Work/Other Email"
+msgstr "Arbeid / Annet Epost"
+
+#: Reports/DirectoryReport.php:667
+msgid ""
+"This option requires at least version 3.22 of MySQL!  Hit browser back "
+"button to return to ChurchCRM."
+msgstr ""
+"Dette alternativet krever minst versjon 3.22 av MySQL! Hit leseren tilbake-"
+"knappen for å gå tilbake til ChurchCRM."
+
+#: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:162
+msgid " for all funds"
+msgstr "for alle fond"
+
+#: Reports/FamilyPledgeSummary.php:144 Reports/ReminderReport.php:164
+msgid " for fund "
+msgstr "for fondet"
+
+#: Reports/FamilyPledgeSummary.php:146 Reports/ReminderReport.php:166
+msgid "for funds "
+msgstr "om midler"
+
+#: Reports/FRBidSheets.php:84 Reports/FRCatalog.php:93
+#: Reports/FRCertificates.php:85
+#, fuzzy
+msgid "Estimated value "
+msgstr "Rediger verdi"
+
+#: Reports/FRBidSheets.php:86 Reports/FRCatalog.php:95
+#: Reports/FRCertificates.php:87
+msgid "Donated by "
+msgstr "Donert av"
+
+#: Reports/FRBidSheets.php:96
+#, fuzzy
+msgid "Paddle"
+msgstr "Midt"
+
+#: Reports/FRBidSheets.php:97
+msgid "Bid"
+msgstr "Bud"
+
+#: Reports/FRCatalog.php:91
+msgid "Minimum bid "
+msgstr "Minimumsbudet"
+
+#: Reports/FRCertificates.php:45
+msgid "Certificate of Ownership"
+msgstr "Sertifikat av eierskap"
+
+#: Reports/FundRaiserStatement.php:96
+msgid "Donated Items:"
+msgstr "Donert elementer:"
+
+#: Reports/FundRaiserStatement.php:147
+msgid "Purchased Items:"
+msgstr "Kjøpte elementer:"
+
+#: Reports/FundRaiserStatement.php:219
+msgid "Total of all purchases: $"
+msgstr "Summen av alle kjøpene: $"
+
+#: Reports/FundRaiserStatement.php:224
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr ""
+
+#: Reports/FundRaiserStatement.php:226
+msgid "Buyer # "
+msgstr "Kjøper #"
+
+#: Reports/FundRaiserStatement.php:226
+msgid "Total purchases: $"
+msgstr "Totalt kjøp: $"
+
+#: Reports/FundRaiserStatement.php:226
+msgid "Amount paid: ________________"
+msgstr "Utbetalt beløp: ________________"
+
+#: Reports/FundRaiserStatement.php:228
+msgid ""
+"Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ "
+"__    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "Betalt av () Cash () sjekk () Kredittkort ________________________________ Exp __ / __"
+
+#: Reports/FundRaiserStatement.php:230
+msgid ""
+"                                        Signature "
+"________________________________________________________________"
+msgstr "Signatur ________________________________________________________________"
+
+#: Reports/GroupReport.php:58
+msgid "Group Directory"
+msgstr "Gruppe Directory"
+
+#: Reports/PrintDeposit.php:345
+msgid "UNDESIGNATED"
+msgstr "Undesignated"
+
+#: Reports/TaxReport.php:200
+msgid "Fiscal Year "
+msgstr "Regnskapsåret"
+
+#: Reports/TaxReport.php:236
+msgid "Please detach this slip and mail with your next gift."
+msgstr "Vennligst koble denne slip og post med din neste gave."
+
+#: Reports/TaxReport.php:238
+msgid "Please mail you next gift to "
+msgstr "Vennligst send deg neste gave til"
+
+#: Reports/TaxReport.php:240
+msgid ", Phone: "
+msgstr ", Tlf:"
+
+#: Reports/TaxReport.php:268
+msgid "Gift Amount:"
+msgstr "Gave Beløp:"
+
+#: Reports/TaxReport.php:271
+msgid "Gift Designation:"
+msgstr "Gave Betegnelse:"
+
+#: Reports/VotingMembers.php:53
+msgid "Voting members "
+msgstr "Stemmeberettigede medlemmer"
+
+#~ msgid "Geocode"
+#~ msgstr "Geokode"
+
+#~ msgid ""
+#~ "Warning:  By deleting this field, you will irrevokably lose all group "
+#~ "member data assigned for this field!"
+#~ msgstr ""
+#~ "Advarsel: Ved å slette dette feltet, vil du irrevokably miste alle "
+#~ "gruppemedlem data tilordnet dette feltet!"
+
+#~ msgid "Assign envelopes to all familes"
+#~ msgstr "Tildele konvolutter til alle familes"
+
+#~ msgid ""
+#~ "<p>Assign new envelope numbers to all families.  Any existing assignments "
+#~ "will be replaced.  This feature will only execute if &quot;Check fo "
+#~ "Confirm&quot; is enabled to inhibit accidental execution.</p>"
+#~ msgstr ""
+#~ "<p> Tildele ny konvolutt nummer til alle familier. Alle eksisterende "
+#~ "oppgaver vil bli erstattet. Denne funksjonen vil bare utføre hvis \"Sjekk "
+#~ "fo Bekreft\" er i stand til å hemme utilsiktet kjøring. </p>"
+
+#~ msgid "Members only (families with at least one church member)"
+#~ msgstr "Medlemmer bare (familier med minst ett medlem av Kirken)"
+
+#~ msgid "Envelope List"
+#~ msgstr "Konvolutt List"
+
+#~ msgid ""
+#~ "Generate a PDF containing all the envelope assignments, sorted by family "
+#~ "name."
+#~ msgstr ""
+#~ "Generere en PDF-fil med alle konvoluttene oppdrag, sortert etter "
+#~ "etternavn."
+
+#~ msgid "You must enter an Amount."
+#~ msgstr "Du må angi et beløp."
+
+#~ msgid "Check number:"
+#~ msgstr "Sjekk nummer:"
+
+#~ msgid "Total Amount:"
+#~ msgstr "Totalt beløp:"
+
+#~ msgid "Non Deductible Amount:<br>($0 if all is deductible)"
+#~ msgstr ""
+#~ "Ikke fradragsberettigede beløp: <br> ($ 0 hvis alt er fradragsberettiget)"
+
+#~ msgid "Payment Method:"
+#~ msgstr "Betalingsmåte:"
+
+#~ msgid "Match family to envelope"
+#~ msgstr "Match familien til konvolutt"
+
+#~ msgid "Match family to check"
+#~ msgstr "Match familien å sjekke"
+
+#~ msgid "https://www.name-searching.com/CaddressASP"
+#~ msgstr "https://www.name-searching.com/CaddressASP"
+
+#~ msgid "---------------------------"
+#~ msgstr "---------------------------"

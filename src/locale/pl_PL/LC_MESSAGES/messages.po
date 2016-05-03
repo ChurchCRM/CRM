@@ -1,0 +1,6633 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pl_PL v0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-19 13:42-1000\n"
+"PO-Revision-Date: 2013-05-04 21:27+0100\n"
+"Last-Translator: Bartosz D <dzidek23@gmail.com>\n"
+"Language-Team: Polish <dzidek23@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: POLAND\n"
+
+#: AccessReport.php:25
+#: MenuStrings.php:13
+msgid "Access report"
+msgstr "Pokaż Raport"
+
+#: AccessReport.php:33
+#: FinancialReports.php:310
+#: GroupReports.php:187
+#: ReminderReport.php:56
+#: TaxReport.php:53
+msgid "Create Report"
+msgstr "Utwórz Raport"
+
+#: AccessReport.php:35
+#: AutoPaymentDelete.php:72
+#: AutoPaymentEditor.php:278
+#: BatchWinnerEntry.php:113
+#: Canvas05Editor.php:91
+#: CanvassEditor.php:149
+#: Checkin.php:183
+#: Checkin.php:288
+#: Checkin.php:341
+#: DepositSlipEditor.php:458
+#: DirectoryReports.php:284
+#: DonatedItemEditor.php:185
+#: FamilyEditor.php:664
+#: FamilyEditor.php:1078
+#: FinancialReports.php:63
+#: FundRaiserEditor.php:157
+#: GroupMeeting.php:167
+#: GroupPropsEditor.php:150
+#: GroupPropsEditor.php:189
+#: GroupReports.php:129
+#: GroupReports.php:188
+#: LettersAndLabels.php:65
+#: ManageEnvelopes.php:120
+#: MemberRoleChange.php:126
+#: MemberRoleChange.php:128
+#: NoteEditor.php:138
+#: PaddleNumEditor.php:166
+#: PersonEditor.php:553
+#: PersonEditor.php:915
+#: PledgeDelete.php:56
+#: PropertyEditor.php:183
+#: PropertyTypeEditor.php:116
+#: Register.php:83
+#: ReminderReport.php:57
+#: SettingsGeneral.php:116
+#: SettingsGeneral.php:176
+#: SettingsIndividual.php:119
+#: SettingsIndividual.php:163
+#: SettingsReport.php:78
+#: SettingsReport.php:137
+#: SettingsUser.php:104
+#: SettingsUser.php:165
+#: SundaySchool.php:212
+#: TaxReport.php:54
+#: UserEditor.php:446
+#: UserEditor.php:487
+#: UserEditor.php:546
+#: WhyCameEditor.php:90
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: AddEvent.php:43
+msgid "Add Church Event(s)"
+msgstr "Dodaj Nowe Wydarzenie"
+
+#: AddEvent.php:119
+msgid "No church events for "
+msgstr "Nie ma żadnych nowych wydarzeń dla"
+
+#: AddEvent.php:120
+#: AddEvent.php:179
+#: CartView.php:140
+#: Checkin.php:124
+#: EditEventAttendees.php:48
+#: EditEventTypes.php:40
+#: EventEditor.php:407
+#: EventNames.php:47
+msgid "Back to Menu"
+msgstr "Powrót do Strony Głównej"
+
+#: AddEvent.php:127
+#: EventAttendance.php:118
+#: EventAttendance.php:199
+#: ListEvents.php:219
+msgid "There "
+msgstr "Tam"
+
+#: AddEvent.php:127
+#: ListEvents.php:219
+msgid " for "
+msgstr "dla"
+
+#: AddEvent.php:129
+#: EditEventTypes.php:145
+#: EventNames.php:192
+#: ListEvents.php:222
+msgid "Event Type"
+msgstr "Rodzaj Wydarzenia"
+
+#: AddEvent.php:130
+#: EventAttendance.php:121
+#: ListEvents.php:223
+msgid "Event Title"
+msgstr "Tytuł Wydarzenia"
+
+#: AddEvent.php:131
+#: DonatedItemEditor.php:284
+#: DonationFundEditor.php:198
+#: GroupPropsFormEditor.php:315
+#: GroupView.php:206
+#: ListEvents.php:224
+#: PersonView.php:756
+#: VolunteerOpportunityEditor.php:83
+#: VolunteerOpportunityEditor.php:353
+msgid "Description"
+msgstr "Opis"
+
+#: AddEvent.php:132
+#: ListEvents.php:226
+msgid "Start Date/Time"
+msgstr "Data/Czas Rozpoczęcia"
+
+#: AddEvent.php:133
+#: DonationFundEditor.php:199
+#: ListEvents.php:227
+#: MenuSetup.php:79
+msgid "Active"
+msgstr "Aktywne"
+
+#: AddEvent.php:134
+#: Checkin.php:371
+#: EditEventAttendees.php:55
+#: EventNames.php:197
+#: ListEvents.php:228
+msgid "Action"
+msgstr "Akcja"
+
+#: AddEvent.php:158
+#: DepositSlipEditor.php:590
+#: EventEditor.php:241
+#: EventNames.php:289
+#: FamilyView.php:593
+#: FamilyView.php:695
+#: FamilyView.php:788
+#: FindDepositSlip.php:253
+#: FindDepositSlip.php:265
+#: FindFundRaiser.php:223
+#: FindFundRaiser.php:232
+#: ListEvents.php:306
+#: MenuSetup.php:88
+#: PersonView.php:520
+#: PersonView.php:562
+#: PropertyList.php:67
+#: PropertyList.php:109
+#: PropertyTypeList.php:43
+#: PropertyTypeList.php:65
+#: SelectList.php:915
+#: SelectList.php:1041
+#: SelectList.php:1433
+#: SelectList.php:1500
+#: SelectListFormatted.php:953
+#: SelectListFormatted.php:1082
+#: SelectListFormatted.php:1531
+#: SelectListFormatted.php:1615
+#: UserList.php:61
+#: UserList.php:97
+msgid "Edit"
+msgstr "Edytuj"
+
+#: AddEvent.php:165
+msgid "Deactivate"
+msgstr "Deaktywuj"
+
+#: AddEvent.php:167
+msgid "Activate"
+msgstr "Aktywuj"
+
+#: AddEvent.php:194
+#: EventEditor.php:423
+msgid "Event Type:"
+msgstr "Rodzaj wydarzenia:"
+
+#: AddEvent.php:217
+#: EventEditor.php:432
+msgid "Event Title:"
+msgstr "Tytył Wydarzenia:"
+
+#: AddEvent.php:220
+#: AddEvent.php:227
+#: DonationFundEditor.php:218
+#: DonationFundEditor.php:259
+#: FamilyCustomFieldsEditor.php:388
+#: FamilyCustomFieldsEditorSave.php:384
+#: GroupEditor.php:249
+#: GroupPropsFormEditor.php:344
+#: GroupPropsFormEditor.php:426
+#: OptionManager.php:367
+#: OptionManagerSave.php:364
+#: PersonCustomFieldsEditor.php:368
+#: VolunteerOpportunityEditor.php:382
+#: VolunteerOpportunityEditor.php:423
+msgid "You must enter a name."
+msgstr "Musisz podać nazwę."
+
+#: AddEvent.php:224
+#: EventEditor.php:437
+msgid "Event Desc:"
+msgstr "Opis Wydarzenia:"
+
+#: AddEvent.php:231
+#: EventEditor.php:521
+msgid "Event Sermon:"
+msgstr "Prowadzący:"
+
+#: AddEvent.php:236
+#: EventEditor.php:446
+msgid "Start Date:"
+msgstr "Data Rozpoczęcia:"
+
+#: AddEvent.php:241
+#: AddEvent.php:260
+#: AutoPaymentEditor.php:317
+#: CanvassEditor.php:190
+#: CartToFamily.php:218
+#: CSVExport.php:318
+#: CSVExport.php:344
+#: CSVExport.php:356
+#: CSVExport.php:368
+#: DepositSlipEditor.php:482
+#: eGive.php:296
+#: eGive.php:298
+#: EventEditor.php:451
+#: EventEditor.php:472
+#: EventNames.php:254
+#: FamilyEditor.php:871
+#: FamilyView.php:772
+#: FundRaiserEditor.php:175
+#: GroupMeeting.php:186
+#: PersonEditor.php:840
+#: PersonEditor.php:845
+#: PledgeEditor.php:679
+#: SundaySchool.php:151
+#: SundaySchool.php:156
+#: SundaySchool.php:161
+#: SundaySchool.php:166
+#: SundaySchool.php:171
+#: SundaySchool.php:176
+#: SundaySchool.php:181
+#: SundaySchool.php:186
+#: SundaySchool.php:191
+#: SundaySchool.php:196
+#: Include/Functions.php:1046
+msgid "[format: YYYY-MM-DD]"
+msgstr "[Format: YYYY-MM-DD]"
+
+#: AddEvent.php:244
+#: EventEditor.php:455
+msgid "Start Time:"
+msgstr "Czas Rozpoczęcia:"
+
+#: AddEvent.php:250
+#: AddEvent.php:269
+#: EditEventTypes.php:172
+#: EventEditor.php:461
+#: EventEditor.php:481
+#: EventNames.php:262
+msgid "[format: HH:MM]"
+msgstr "[Format: HH:MM]"
+
+#: AddEvent.php:255
+#: EventEditor.php:467
+msgid "End Date:"
+msgstr "Data Zakończenia:"
+
+#: AddEvent.php:263
+#: EventEditor.php:475
+msgid "End Time:"
+msgstr "Czas Zakończenia:"
+
+#: AddEvent.php:273
+#: EventEditor.php:526
+msgid "Event Status:"
+msgstr "Status Wydarzenia:"
+
+#: AddEvent.php:276
+#: EventEditor.php:529
+msgid "Is this Active or Inactive?"
+msgstr "Aktywne czy Nieaktywne?"
+
+#: AddEvent.php:280
+msgid "Add Event"
+msgstr "Dodaj Wydarzenie"
+
+#: AutoPaymentDelete.php:21
+msgid "Confirm Delete Automatic payment"
+msgstr "Potwierdź Automatyczne Usunięcie płatności"
+
+#: AutoPaymentDelete.php:71
+#: DepositSlipEditor.php:591
+#: EditEventAttendees.php:89
+#: EventNames.php:103
+#: EventNames.php:295
+#: FamilyView.php:696
+#: FamilyView.php:789
+#: FundRaiserEditor.php:209
+#: ListEvents.php:312
+#: MenuSetup.php:89
+#: PaddleNumList.php:55
+#: PledgeDelete.php:55
+#: PropertyList.php:68
+#: PropertyList.php:110
+#: PropertyTypeList.php:44
+#: PropertyTypeList.php:67
+#: PropertyTypeList.php:69
+#: UserList.php:62
+#: UserList.php:98
+msgid "Delete"
+msgstr "Skasuj"
+
+#: AutoPaymentEditor.php:31
+msgid "Automatic payment configuration for the "
+msgstr "Ustawienie Automatycznej płatności dla rodziny"
+
+#: AutoPaymentEditor.php:31
+#: Canvas05Editor.php:29
+#: CanvassEditor.php:41
+msgid " family"
+msgstr " rodziny"
+
+#: AutoPaymentEditor.php:277
+#: Canvas05Editor.php:90
+#: CanvassEditor.php:148
+#: DepositSlipEditor.php:457
+#: DonatedItemEditor.php:183
+#: FamilyEditor.php:662
+#: FamilyEditor.php:1076
+#: FundRaiserEditor.php:156
+#: GroupEditor.php:326
+#: GroupPropsEditor.php:148
+#: GroupPropsEditor.php:187
+#: MenuEditor.php:371
+#: NoteEditor.php:136
+#: PaddleNumEditor.php:163
+#: PersonEditor.php:551
+#: PersonEditor.php:913
+#: PledgeEditor.php:549
+#: PropertyEditor.php:183
+#: PropertyTypeEditor.php:116
+#: UserEditor.php:446
+#: UserPasswordChange.php:221
+#: WhyCameEditor.php:89
+msgid "Save"
+msgstr "Zapisz"
+
+#: AutoPaymentEditor.php:287
+#: PersonEditor.php:614
+#: PrintView.php:226
+msgid "Family:"
+msgstr "Rodzina:"
+
+#: AutoPaymentEditor.php:290
+#: BatchWinnerEntry.php:84
+#: BatchWinnerEntry.php:96
+#: CSVImport.php:280
+#: DonatedItemEditor.php:210
+#: DonatedItemEditor.php:256
+#: eGive.php:374
+#: FamilyEditor.php:1052
+#: GroupEditor.php:262
+#: PaddleNumEditor.php:186
+#: PersonEditor.php:617
+#: PersonEditor.php:640
+#: PersonEditor.php:852
+#: SelectDelete.php:255
+#: Include/Functions.php:1109
+#: Include/Functions.php:1152
+msgid "Unassigned"
+msgstr "Nie przypisany"
+
+#: AutoPaymentEditor.php:309
+msgid "Automatic payment type"
+msgstr "Rodzaj Automatycznej płatności"
+
+#: AutoPaymentEditor.php:316
+#: CanvassEditor.php:189
+#: DepositSlipEditor.php:481
+#: FundRaiserEditor.php:174
+msgid "Date:"
+msgstr "Data:"
+
+#: AutoPaymentEditor.php:321
+#: FinancialReports.php:186
+#: ReminderReport.php:46
+#: SundaySchool.php:143
+msgid "Fiscal Year:"
+msgstr "Rok Podatkowy:"
+
+#: AutoPaymentEditor.php:328
+msgid "Payment amount"
+msgstr "Kwota Wpłaty"
+
+#: AutoPaymentEditor.php:333
+msgid "Payment interval (months)"
+msgstr "Częstotliwość Wpłat (miesiące)"
+
+#: AutoPaymentEditor.php:338
+msgid "Fund:"
+msgstr "Cel:"
+
+#: AutoPaymentEditor.php:341
+#: CartToGroup.php:129
+#: GroupReports.php:100
+#: GroupReports.php:179
+#: PersonToGroup.php:124
+#: SundaySchool.php:130
+msgid "None"
+msgstr "Żaden"
+
+#: AutoPaymentEditor.php:353
+msgid "inactive"
+msgstr "nieaktywne"
+
+#: AutoPaymentEditor.php:362
+msgid "First name"
+msgstr "Imię"
+
+#: AutoPaymentEditor.php:367
+msgid "Last name"
+msgstr "Nazwisko"
+
+#: AutoPaymentEditor.php:372
+#: Reports/ConfirmReport.php:116
+msgid "Address 1"
+msgstr "Adres 1"
+
+#: AutoPaymentEditor.php:377
+#: Reports/ConfirmReport.php:120
+msgid "Address 2"
+msgstr "Adres 2"
+
+#: AutoPaymentEditor.php:382
+#: CSVImport.php:230
+#: DirectoryReports.php:251
+#: GeoPage.php:323
+#: GroupMemberList.php:320
+#: SelectList.php:1438
+#: SelectListFormatted.php:1547
+msgid "City"
+msgstr "Miasto"
+
+#: AutoPaymentEditor.php:387
+#: CSVImport.php:231
+#: DirectoryReports.php:255
+#: GeoPage.php:324
+#: GroupMemberList.php:321
+#: SelectList.php:1439
+#: SelectListFormatted.php:1550
+msgid "State"
+msgstr "Hrabstwo"
+
+#: AutoPaymentEditor.php:392
+msgid "Zip code"
+msgstr "Kod pocztowy"
+
+#: AutoPaymentEditor.php:397
+#: CSVImport.php:233
+msgid "Country"
+msgstr "Kraj"
+
+#: AutoPaymentEditor.php:402
+#: DirectoryReports.php:263
+#: Reports/DirectoryReport.php:326
+#: Reports/DirectoryReport.php:395
+#: Reports/DirectoryReport.php:458
+#: Reports/DirectoryReport.php:769
+#: Reports/GroupReport.php:263
+msgid "Phone"
+msgstr "Tel."
+
+#: AutoPaymentEditor.php:407
+#: CSVImport.php:237
+#: EditEventAttendees.php:53
+#: EventAttendance.php:203
+#: GroupReports.php:162
+#: Reports/CanvassReports.php:263
+#: Reports/ConfirmReport.php:173
+#: Reports/ConfirmReport.php:192
+#: Reports/DirectoryReport.php:332
+#: Reports/DirectoryReport.php:406
+#: Reports/DirectoryReport.php:469
+#: Reports/DirectoryReport.php:780
+#: Reports/GroupReport.php:277
+msgid "Email"
+msgstr "Email"
+
+#: AutoPaymentEditor.php:412
+#: DepositSlipEditor.php:504
+#: FinancialReports.php:238
+#: PledgeEditor.php:601
+msgid "Credit Card"
+msgstr "Numer Karty Płatniczej"
+
+#: AutoPaymentEditor.php:417
+msgid "Expiration Month"
+msgstr "Data Ważności (miesiąć)"
+
+#: AutoPaymentEditor.php:422
+msgid "Expiration Year"
+msgstr "Data Ważności (rok)"
+
+#: AutoPaymentEditor.php:427
+msgid "Bank Name"
+msgstr "Nazwa Banku"
+
+#: AutoPaymentEditor.php:432
+msgid "Bank Route Number"
+msgstr "Sort Code"
+
+#: AutoPaymentEditor.php:437
+msgid "Bank Account Number"
+msgstr "Numer Konta"
+
+#: BackupDatabase.php:50
+msgid "Password values entered were not the same! Please re-type them."
+msgstr "Wpisane hasła NIE są jednakowe! Proszę wpisać je ponownie."
+
+#: BackupDatabase.php:55
+msgid "You must enter a password of at least 8 characters to encrypt this backup."
+msgstr "Musisz wprowadzić hasło o długości przynajmniej 8 znaków aby zabezpieczyć tę kopię."
+
+#: BackupDatabase.php:115
+#: MenuStrings.php:11
+msgid "Backup Database"
+msgstr "Archiwizuj Bazę Danych"
+
+#: BackupDatabase.php:120
+msgid "This tool will assist you in manually backing up the InfoCentral database."
+msgstr "To narzędzie poprowadzi cię przez proces ręcznej archiwizacji Bazy Danych Church Info."
+
+#: BackupDatabase.php:122
+msgid "TIPS:"
+msgstr "Podpowiedź:"
+
+#: BackupDatabase.php:124
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+msgstr "Kopia zapasowa powinna być robiona przynajmniej raz w tygodniu, chyba że system robi to za Ciebie."
+
+#: BackupDatabase.php:125
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "Po zapisaniu kopii zapasowej, powinny zostać zrobione dwa duplikaty. Jeden zachowany lokalnie oraz jeden przechowywany w bezpiecznej lokalizacji."
+
+#: BackupDatabase.php:126
+msgid "If you are concerned about confidentiality of data stored in the InfoCentral database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "Jeżeli obawiasz się o bezpieczeństwo swojej kopii zapasowej, powinna ona zostać zaszyfrowana jeżeli będzie w miejscu potencjalnie dostępnym przez innych."
+
+#: BackupDatabase.php:127
+msgid "For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."
+msgstr "Dla dodatkowego bezpieczeństwa możesz wysłać Kopię Zapasową na zewnętrzne konto email. Pamiętaj że powinna być zaszyfrowana przed wysłaniem."
+
+#: BackupDatabase.php:131
+msgid "Select archive type:"
+msgstr "Wybierz rodzaj archiwum:"
+
+#: BackupDatabase.php:132
+msgid "GZip"
+msgstr "Gzip"
+
+#: BackupDatabase.php:133
+#: CSVImport.php:232
+#: DirectoryReports.php:259
+#: GeoPage.php:325
+msgid "Zip"
+msgstr "Zip"
+
+#: BackupDatabase.php:134
+msgid "Uncompressed"
+msgstr "Nieskompresowane"
+
+#: BackupDatabase.php:137
+msgid "Encrypt backup file with a password?"
+msgstr "Zaszyfrować Kopię Zapasową?"
+
+#: BackupDatabase.php:139
+msgid "Password:"
+msgstr "Hasło:"
+
+#: BackupDatabase.php:140
+msgid "Re-type Password:"
+msgstr "Ponów Hasło:"
+
+#: BackupDatabase.php:143
+msgid "Generate and Download Backup"
+msgstr "Utwórz i Pobierz Kopię Zapasową"
+
+#: BackupDatabase.php:144
+msgid "Delete Temp Files"
+msgstr "Usuń Pliki Tymczasowe"
+
+#: BatchWinnerEntry.php:36
+#: FundRaiserEditor.php:164
+msgid "Batch Winner Entry"
+msgstr "Wygrany wielu przedmiotów"
+
+#: BatchWinnerEntry.php:75
+#: FundRaiserEditor.php:200
+msgid "Item"
+msgstr "Pozycja"
+
+#: BatchWinnerEntry.php:76
+msgid "Winner"
+msgstr "Wygrany"
+
+#: BatchWinnerEntry.php:77
+msgid "Price"
+msgstr "Cena:"
+
+#: BatchWinnerEntry.php:112
+msgid "Enter Winners"
+msgstr "Wprowadź Wygranych"
+
+#: Canvas05Editor.php:29
+msgid "Canvas 2005 Input for the "
+msgstr "Dane z ankiety 2005 "
+
+#: Canvas05Editor.php:99
+msgid "Do you like the color of the church?"
+msgstr "Czy lubisz kolor naszego kościoła"
+
+#: Canvas05Editor.php:104
+msgid "What are we doing right?"
+msgstr "Co robimy dobrze?"
+
+#: Canvas05Editor.php:109
+msgid "How can we improve?"
+msgstr "Co możemy ulepszyć?"
+
+#: Canvas05Editor.php:114
+msgid "Will you pledge by March 31?"
+msgstr "Czy złożysz datek przed 31 Marca?"
+
+#: Canvas05Editor.php:119
+msgid "Canvasser Comments:"
+msgstr "Kometarz Ankietera:"
+
+#: CanvassAutomation.php:23
+#: ReportList.php:80
+msgid "Canvass Automation"
+msgstr "Automatyzacja Ankiety"
+
+#: CanvassAutomation.php:43
+#: CanvassAutomation.php:50
+#: CanvassAutomation.php:57
+#: CanvassAutomation.php:65
+#: CanvassAutomation.php:73
+msgid "Not confirmed."
+msgstr "Nie potrwierdzone."
+
+#: CanvassAutomation.php:48
+#: CanvassEditor.php:135
+#: FamilyEditor.php:59
+msgid "Canvassers"
+msgstr "Ankieterzy"
+
+#: CanvassAutomation.php:55
+#: CanvassEditor.php:136
+#: FamilyEditor.php:60
+msgid "BraveCanvassers"
+msgstr "Odwarzni Ankieterzy"
+
+#: CanvassAutomation.php:63
+msgid "Cleared all canvasser assignments."
+msgstr "Usuń wszystkie przypisania dla Ankietera."
+
+#: CanvassAutomation.php:71
+msgid "Set Ok To Canvass for all families."
+msgstr "Ustaw 'Wyrażam zgodę na ankietę' dla wszystkich Rodzin."
+
+#: CanvassAutomation.php:79
+msgid "Disabled Ok To Canvass for all families."
+msgstr "Usuń 'Wyrażam zgodę na ankietę' dla wszystkich Rodzin."
+
+#: CanvassAutomation.php:81
+msgid "ClearAllOkToCanvass button not confimed."
+msgstr "Nie zatwierdzono 'Usuń Wyrażam Zgodę'."
+
+#: CanvassAutomation.php:112
+msgid "Set default fiscal year"
+msgstr "Ustaw domyślny rok podatkowy"
+
+#: CanvassAutomation.php:116
+#: CanvassAutomation.php:128
+#: CanvassAutomation.php:140
+#: CanvassAutomation.php:152
+#: CanvassAutomation.php:164
+#: CanvassAutomation.php:176
+msgid "Check to confirm"
+msgstr "Zaznacz aby potwierdzić"
+
+#: CanvassAutomation.php:122
+msgid "Assign Canvassers"
+msgstr "Przypisz Ankietera"
+
+#: CanvassAutomation.php:126
+msgid ""
+"Randomly assign canvassers to all Families.  The Canvassers are \n"
+"\t\t\ttaken from the &quot;Canvassers&quot; Group."
+msgstr ""
+"Przypisz losowo Ankieterów do wszytskich Rodzin. Ankieterzy \n"
+"			są wybierani z Grupy &quot;Ankieterzy&quot; ."
+
+#: CanvassAutomation.php:134
+msgid "Assign To Non Pledging"
+msgstr "Przypisz do Non Pledging"
+
+#: CanvassAutomation.php:138
+msgid ""
+"Randomly assign canvassers to non-pledging Families.  The Canvassers are \n"
+"\t\t\ttaken from the &quot;BraveCanvassers&quot; Group."
+msgstr ""
+"Przypisz losowo Ankieterów do non-pledging Rodzin. Ankieterzy \n"
+"			są wybierani z Grupy &quot;Ankieterzy&quot; ."
+
+#: CanvassAutomation.php:146
+msgid "Clear Canvasser Assignments"
+msgstr "Usuń przyporządkowania dla Ankietera."
+
+#: CanvassAutomation.php:150
+msgid ""
+"Clear all the canvasser assignments for all families.  <p>Important\n"
+"\t\t\tnote: this will lose any canvasser assignments that have been made by hand.</p>"
+msgstr ""
+"Wyczyść wszystkie przypisania dla Ankietera dla wszystkich rodzin.  <p>Ważna\n"
+"			Uwaga: spowoduje usunięcie wszystkich ręcznie dodanych przypisań.</p>"
+
+#: CanvassAutomation.php:158
+msgid "Enable Canvass for All Families"
+msgstr "Aktywuj Ankietę dla Wszystkich Rodzin."
+
+#: CanvassAutomation.php:162
+msgid ""
+"Turn on the &quot;Ok To Canvass&quot; field for all Families.  <p>Important\n"
+"\t\t\tnote: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand.</p>"
+msgstr ""
+"Zaznacz pole &quot;Wyrażam Zgodę na Ankietę&quot; dla Wszytskich Rodzin.  <p>Ważne\n"
+"			usuniętę będą wszystkie pola &quot;Wyrażam Zgodę na Ankietę&quot; które zostały ustawione ręcznie.</p>"
+
+#: CanvassAutomation.php:170
+msgid "Disable Canvass for All Families"
+msgstr "Wyłącz Ankietę dla Wszystkich Rodzin"
+
+#: CanvassAutomation.php:174
+msgid ""
+"Turn off the &quot;Ok To Canvass&quot; field for all Families.  <p>Important\n"
+"\t\t\tnote: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand.</p>"
+msgstr ""
+"Odznacz pole &quot;Wyrażam Zgodę na Ankietę&quot; dla Wszytskich Rodzin.  <p>Ważne\n"
+"			usuniętę będą wszystkie pola &quot;Wyrażam Zgodę na Ankietę&quot; które zostały ustawione ręcznie.</p>"
+
+#: CanvassAutomation.php:182
+msgid "Briefing Sheets"
+msgstr "Ankieta"
+
+#: CanvassAutomation.php:186
+msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
+msgstr "Wygeneruj plik PDF zawierający Ankiety dla wszystkich rodzin, pogrupowane według Ankietera."
+
+#: CanvassAutomation.php:192
+msgid "Progress Report"
+msgstr "Raport Postępu"
+
+#: CanvassAutomation.php:196
+msgid ""
+"Generate a PDF containing a progress report.  The progress report includes\n"
+"\t\t\tinformation on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr ""
+"Wygeneruj plik PDF zawierający Raport Postępu. Raport zawiera \n"
+"			informacje o postępie całej Ankiety, oraz postępie indywiduwalnych Ankieterów."
+
+#: CanvassAutomation.php:203
+msgid "Summary Report"
+msgstr "Raport Podsumowujący"
+
+#: CanvassAutomation.php:207
+msgid ""
+"Generate a PDF containing a summary report.  The summary report includes\n"
+"\t\t\tcomments extracted from the canvass data."
+msgstr ""
+"Wygeneruj plik PDF zawierający Raport Podsumowujący. Raport zawiera\n"
+"			komentarze pobrane z Ankiety."
+
+#: CanvassAutomation.php:214
+msgid "Not Interested Report"
+msgstr "Raport Niezainteresowanych"
+
+#: CanvassAutomation.php:218
+msgid ""
+"Generate a PDF containing a report of the families marked &quot;Not Interested&quot; \n"
+"\t\t\t                    by the canvasser."
+msgstr ""
+"Wygeneruj plik PDF zawierający Raport z wykazem Rodzin oznaczonych przez Ankietera jako\n"
+" 			                    &quotNie zainteresowany&quot; "
+
+#: CanvassEditor.php:41
+msgid " Canvass Input for the "
+msgstr "Dane Ankiety dla"
+
+#: CanvassEditor.php:162
+#: UserEditor.php:424
+msgid "Canvasser:"
+msgstr "Ankieter:"
+
+#: CanvassEditor.php:195
+msgid "Positive"
+msgstr "Pozytywny"
+
+#: CanvassEditor.php:200
+msgid "Critical"
+msgstr "Negatywny"
+
+#: CanvassEditor.php:205
+msgid "Insightful"
+msgstr "Insightful"
+
+#: CanvassEditor.php:210
+msgid "Financial"
+msgstr "Finansowy"
+
+#: CanvassEditor.php:215
+msgid "Suggestions"
+msgstr "Sugestie"
+
+#: CanvassEditor.php:220
+msgid "Not Interested"
+msgstr "Nie zainteresowany"
+
+#: CanvassEditor.php:225
+msgid "Why Not Interested?"
+msgstr "Dlaczego Nie zainteresowany?"
+
+#: CartToEvent.php:56
+#: CartToEvent.php:91
+msgid "Add Cart to Event"
+msgstr "Dodaj Koszyk do Wydarzenia"
+
+#: CartToEvent.php:66
+msgid "Select the event to which you would like to add your cart:"
+msgstr "Wybierz Wydarzenie do którego chciałbyś dodać Koszyk:"
+
+#: CartToEvent.php:75
+#: Checkin.php:68
+msgid "Select Event:"
+msgstr "Wybierz Wydarzenie:"
+
+#: CartToEvent.php:92
+#: CartToGroup.php:146
+#: Checkin.php:85
+msgid "OR"
+msgstr "LUB"
+
+#: CartToEvent.php:93
+#: Checkin.php:86
+#: ListEvents.php:367
+msgid "Add New Event"
+msgstr "Dodaj Nowe Wydarzenie"
+
+#: CartToEvent.php:100
+#: CartToFamily.php:331
+#: CartToGroup.php:154
+msgid "Your cart is empty!"
+msgstr "Twój Koszyk jest pusty!"
+
+#: CartToFamily.php:80
+msgid "No family name entered!"
+msgstr "Nie podano nazwy Rodziny!"
+
+#: CartToFamily.php:125
+msgid "Add Cart to Family"
+msgstr "Dodaj Koszyk do Rodziny"
+
+#: CartToFamily.php:132
+#: CartToFamily.php:324
+msgid "Add to Family"
+msgstr "Dodaj do Rodziny"
+
+#: CartToFamily.php:162
+#: CartView.php:189
+#: Checkin.php:366
+#: DonationFundEditor.php:197
+#: EditEventAttendees.php:52
+#: EventAttendance.php:202
+#: EventNames.php:193
+#: FamilyCustomFieldsEditor.php:357
+#: FamilyCustomFieldsEditorSave.php:353
+#: FamilyView.php:461
+#: FamilyView.php:587
+#: GeoPage.php:321
+#: GroupList.php:49
+#: GroupMemberList.php:317
+#: GroupPropsFormEditor.php:314
+#: GroupView.php:205
+#: GroupView.php:244
+#: PersonCustomFieldsEditor.php:337
+#: PersonView.php:515
+#: PersonView.php:755
+#: PrintView.php:294
+#: PrintView.php:429
+#: PropertyList.php:62
+#: PropertyTypeList.php:38
+#: SelectList.php:918
+#: SelectList.php:1158
+#: SelectListFormatted.php:956
+#: SelectListFormatted.php:1200
+#: UserList.php:56
+#: VolunteerOpportunityEditor.php:82
+#: VolunteerOpportunityEditor.php:352
+#: Reports/CanvassReports.php:257
+#: Reports/FRBidSheets.php:95
+msgid "Name"
+msgstr "Nazwa"
+
+#: CartToFamily.php:163
+msgid "Assign Role"
+msgstr "Przypisz Rolę"
+
+#: CartToFamily.php:180
+msgid "Already in a family"
+msgstr "Już przypisano do Rodziny"
+
+#: CartToFamily.php:190
+msgid "Add to Family:"
+msgstr "Dodaj do Rodziny:"
+
+#: CartToFamily.php:195
+msgid "Create new family"
+msgstr "Utwórz nową Rodzinę"
+
+#: CartToFamily.php:207
+msgid "If adding a new family, enter data below."
+msgstr "Jeżeli dodajesz nową rodzinę, wpisz dane poniżej."
+
+#: CartToFamily.php:212
+#: FamilyEditor.php:676
+#: SelectDelete.php:251
+#: SelectDelete.php:373
+msgid "Family Name:"
+msgstr "Nazwa Rodziny:"
+
+#: CartToFamily.php:217
+#: FamilyEditor.php:870
+#: FamilyView.php:408
+msgid "Wedding Date:"
+msgstr "Data ślubu:"
+
+#: CartToFamily.php:222
+msgid "Use address/contact data from:"
+msgstr "Użyj adres / kontakt z:"
+
+#: CartToFamily.php:226
+msgid "Only the new data below"
+msgstr "Tylko nowe dane poniżej"
+
+#: CartToFamily.php:241
+#: CSVExport.php:109
+#: FamilyEditor.php:685
+#: PersonEditor.php:663
+msgid "Address1:"
+msgstr "Adres1:"
+
+#: CartToFamily.php:246
+#: CSVExport.php:114
+#: FamilyEditor.php:690
+#: PersonEditor.php:668
+msgid "Address2:"
+msgstr "Adres2:"
+
+#: CartToFamily.php:251
+#: CSVExport.php:119
+#: FamilyEditor.php:695
+#: PersonEditor.php:673
+msgid "City:"
+msgstr "Miasto:"
+
+#: CartToFamily.php:256
+#: CSVExport.php:124
+#: FamilyEditor.php:705
+#: PersonEditor.php:678
+msgid "State:"
+msgstr "Stan:"
+
+#: CartToFamily.php:261
+#: FamilyEditor.php:712
+#: PersonEditor.php:683
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(Użyj pola tekstowego dla krajów innych niż USA i Kanada)"
+
+#: CartToFamily.php:269
+#: FamilyEditor.php:720
+msgid "Postal Code:"
+msgstr "Kod pocztowy"
+
+#: CartToFamily.php:271
+#: CSVExport.php:129
+#: FamilyEditor.php:722
+#: PersonEditor.php:688
+msgid "Zip:"
+msgstr "Kod pocztowy:"
+
+#: CartToFamily.php:281
+#: CSVExport.php:139
+#: FamilyEditor.php:739
+#: PersonEditor.php:700
+msgid "Country:"
+msgstr "Kraj:"
+
+#: CartToFamily.php:292
+#: CSVExport.php:144
+#: FamilyEditor.php:750
+#: FamilyView.php:368
+#: PersonEditor.php:723
+#: PersonEditor.php:725
+#: PersonView.php:460
+#: PrintView.php:166
+msgid "Home Phone:"
+msgstr "Tel. Domowy:"
+
+#: CartToFamily.php:295
+#: CartToFamily.php:303
+#: CartToFamily.php:311
+#: FamilyEditor.php:753
+#: FamilyEditor.php:761
+#: FamilyEditor.php:769
+#: PersonEditor.php:730
+#: PersonEditor.php:745
+#: PersonEditor.php:760
+#: Include/Functions.php:1143
+msgid "Do not auto-format"
+msgstr "Bez autoformatowania"
+
+#: CartToFamily.php:300
+#: CSVExport.php:149
+#: FamilyEditor.php:758
+#: FamilyView.php:372
+#: PersonEditor.php:738
+#: PersonEditor.php:740
+#: PersonView.php:464
+#: PrintView.php:171
+msgid "Work Phone:"
+msgstr "Tel. Praca:"
+
+#: CartToFamily.php:308
+#: CSVExport.php:154
+#: FamilyEditor.php:766
+#: FamilyView.php:376
+#: PersonEditor.php:753
+#: PersonEditor.php:755
+#: PersonView.php:468
+#: PrintView.php:176
+msgid "Mobile Phone:"
+msgstr "Tel. Komórkowy:"
+
+#: CartToFamily.php:316
+#: CSVExport.php:159
+#: FamilyEditor.php:774
+#: FamilyView.php:380
+#: PersonEditor.php:768
+#: PersonEditor.php:770
+#: PersonView.php:472
+#: PrintView.php:253
+msgid "Email:"
+msgstr "Email:"
+
+#: CartToGroup.php:57
+msgid "Add Cart to Group"
+msgstr "Dodaj Koszyk do Grupy"
+
+#: CartToGroup.php:114
+#: GroupReports.php:83
+#: PersonToGroup.php:108
+msgid "Invalid Group or No Roles Available!"
+msgstr "Nieprawidłowa Grupa lub Brak Dostępnej Roli!"
+
+#: CartToGroup.php:121
+msgid "Select the group to which you would like to add your cart:"
+msgstr "Wybierz Grupę do której chciałbyś dodać Koszyk:"
+
+#: CartToGroup.php:125
+#: GroupReports.php:96
+#: PersonToGroup.php:120
+msgid "Select Group:"
+msgstr "Wybierz Grupę:"
+
+#: CartToGroup.php:139
+#: GroupReports.php:110
+#: PersonToGroup.php:134
+msgid "Select Role:"
+msgstr "Wybierz Rolę:"
+
+#: CartToGroup.php:140
+#: GroupReports.php:111
+#: PersonToGroup.php:135
+#: RPCdummy.php:91
+msgid "No Group Selected"
+msgstr "Nie wybrano Grupy"
+
+#: CartToGroup.php:145
+#: PersonToGroup.php:140
+#: SelectList.php:1127
+#: SelectListFormatted.php:1169
+msgid "Add to Group"
+msgstr "Dodaj do Grupy"
+
+#: CartToGroup.php:147
+msgid "Create a New Group"
+msgstr "Utwórz Nową Grupę"
+
+#: CartView.php:62
+#: QuerySQL.php:96
+#: QuerySQL.php:150
+msgid "An error occured: "
+msgstr "Wystąpił błąd:"
+
+#: CartView.php:126
+msgid "View Your Cart"
+msgstr "Pokaż Koszyk"
+
+#: CartView.php:132
+msgid "You have no items in your cart."
+msgstr "Koszyk jest pusty."
+
+#: CartView.php:180
+msgid "Go To Labels"
+msgstr "Idź do etykiet"
+
+#: CartView.php:185
+msgid "Your cart contains"
+msgstr "Koszyk zawiera"
+
+#: CartView.php:185
+msgid "persons from"
+msgstr "osób z"
+
+#: CartView.php:185
+msgid "families."
+msgstr "Rodzin / Rodziny."
+
+#: CartView.php:190
+msgid "Address?"
+msgstr "Adres?"
+
+#: CartView.php:191
+msgid "Email?"
+msgstr "Email?"
+
+#: CartView.php:192
+#: CartView.php:243
+#: FamilyView.php:467
+#: FamilyView.php:516
+#: GroupView.php:251
+#: GroupView.php:299
+#: PersonView.php:521
+#: PersonView.php:568
+#: PersonView.php:641
+#: PersonView.php:667
+#: PersonView.php:758
+#: PersonView.php:774
+#: SelectList.php:1116
+#: SelectListFormatted.php:1158
+msgid "Remove"
+msgstr "Usuń"
+
+#: CartView.php:193
+#: CSVImport.php:292
+#: FamilyEditor.php:950
+#: FamilyView.php:591
+#: OptionManager.php:71
+#: OptionManagerSave.php:71
+msgid "Classification"
+msgstr "Klasyfikacja"
+
+#: CartView.php:194
+msgid "Family Role"
+msgstr "Rola w Rodzinie"
+
+#: CartView.php:213
+#: CartView.php:232
+#: DonationFundEditor.php:226
+#: FinancialReports.php:269
+#: MenuEditor.php:288
+#: MenuEditor.php:322
+#: MenuEditor.php:334
+#: MenuEditor.php:346
+#: MenuEditor.php:355
+#: MenuEditor.php:416
+#: MenuEditor.php:464
+#: MenuEditor.php:473
+#: MenuEditor.php:482
+#: Include/Functions.php:947
+#: Include/Functions.php:1032
+msgid "Yes"
+msgstr "Tak"
+
+#: CartView.php:225
+#: CartView.php:234
+#: DonationFundEditor.php:227
+#: FinancialReports.php:270
+#: MenuEditor.php:290
+#: MenuEditor.php:324
+#: MenuEditor.php:336
+#: MenuEditor.php:348
+#: MenuEditor.php:356
+#: MenuEditor.php:417
+#: MenuEditor.php:465
+#: MenuEditor.php:474
+#: MenuEditor.php:483
+#: Include/Functions.php:949
+#: Include/Functions.php:1037
+msgid "No"
+msgstr "Nie"
+
+#: CartView.php:257
+msgid "Cart Functions"
+msgstr "Fukcje Koszyka"
+
+#: CartView.php:259
+#: MenuStrings.php:47
+msgid "Empty Cart"
+msgstr "Wyczyść Koszyk"
+
+#: CartView.php:263
+#: MenuStrings.php:48
+msgid "Empty Cart to Group"
+msgstr "Opróżnij Koszyk do Grupy"
+
+#: CartView.php:267
+#: MenuStrings.php:49
+msgid "Empty Cart to Family"
+msgstr "Opróżnij Koszyk do Rodziny"
+
+#: CartView.php:270
+#: MenuStrings.php:50
+msgid "Empty Cart to Event"
+msgstr "Opróżnij Koszyk do Wydarzenia"
+
+#: CartView.php:277
+#: CSVExport.php:70
+msgid "CSV Export"
+msgstr "Eksportuj do CSV"
+
+#: CartView.php:286
+msgid "Email Cart"
+msgstr "Wyślij Koszyk (email)"
+
+#: CartView.php:287
+#: GroupView.php:147
+msgid "Email (BCC)"
+msgstr "Email (BCC)"
+
+#: CartView.php:290
+msgid "Map Cart"
+msgstr "Pokaż Koszyk na mapie"
+
+#: CartView.php:291
+msgid "Name Tags"
+msgstr "Plakietki imienne"
+
+#: CartView.php:321
+msgid "Bulk Mail Presort"
+msgstr "Posortuj pocztę"
+
+#: CartView.php:329
+msgid "Quiet Presort"
+msgstr "Szybkie sortowanie"
+
+#: CartView.php:352
+msgid "Generate Labels"
+msgstr "Wygeneruj Etykiety"
+
+#: CartView.php:363
+msgid "Export Cart to CSV File"
+msgstr "Eksportuj Koszyk do pliku CSV"
+
+#: CartView.php:365
+msgid "Create CSV File"
+msgstr "Utwórz plik CSV"
+
+#: CartView.php:376
+msgid "Create Directory From Cart"
+msgstr "Utwórz Spis z Koszyka"
+
+#: CartView.php:378
+msgid "Cart Directory"
+msgstr "Spis Koszyka"
+
+#: CartView.php:405
+msgid "Send Email To People in Cart"
+msgstr "Wyślij email do Osób z Koszyka"
+
+#: CartView.php:550
+#: EmailEditor.php:67
+msgid "Compose Email"
+msgstr "Napisz email"
+
+#: CartView.php:559
+#: CSVExport.php:314
+#: CSVExport.php:328
+#: CSVExport.php:352
+#: CSVExport.php:364
+#: EmailEditor.php:73
+msgid "From:"
+msgstr "Od:"
+
+#: CartView.php:561
+#: EmailEditor.php:75
+msgid "To (blind):"
+msgstr "Do (BCC):"
+
+#: CartView.php:563
+#: EmailEditor.php:83
+#: Register.php:89
+msgid "Subject:"
+msgstr "Temat:"
+
+#: CartView.php:566
+#: EmailEditor.php:87
+msgid "Attach file:"
+msgstr "Załącz plik:"
+
+#: CartView.php:592
+msgid "Edit Email"
+msgstr "Edytuj Email"
+
+#: CartView.php:613
+msgid "Send Email"
+msgstr "Wyślij Email"
+
+#: CartView.php:619
+msgid "Delete Email"
+msgstr "Usuń Email"
+
+#: CartView.php:641
+msgid "Resume"
+msgstr "Wznów"
+
+#: CartView.php:653
+msgid "Abort"
+msgstr "Przerwij"
+
+#: CartView.php:664
+msgid "View Log"
+msgstr "Pokaż rejestr wydarzeń"
+
+#: Checkin.php:25
+msgid "Event Checkin"
+msgstr "Zapis do wydarzenia"
+
+#: Checkin.php:59
+msgid "Select the event to which you would like to check people in for:"
+msgstr "Wybierz Wydarzenie do którego chciałbyś dodać Osoby:"
+
+#: Checkin.php:84
+msgid "Select Event"
+msgstr "Wybierz Wydarzenie"
+
+#: Checkin.php:123
+msgid "Verify"
+msgstr "Potwierdź"
+
+#: Checkin.php:125
+msgid "Add Visitor"
+msgstr "Dodaj Gościa"
+
+#: Checkin.php:184
+#: Checkin.php:342
+msgid "CheckIn"
+msgstr "Wpisz"
+
+#: Checkin.php:185
+msgid "CheckOut"
+msgstr "Wypisz"
+
+#: Checkin.php:240
+msgid "Continue checkin"
+msgstr "Kontynuuj Wpisz"
+
+#: Checkin.php:289
+msgid "Verify CheckOut"
+msgstr "Potwierdź Wypisz"
+
+#: Checkin.php:343
+msgid "Finalize CheckOut"
+msgstr "Zakończ Wypisz"
+
+#: Checkin.php:367
+msgid "Checked In Time"
+msgstr "Czas Wpisu"
+
+#: Checkin.php:368
+msgid "Checked In By"
+msgstr "Wpisany przez"
+
+#: Checkin.php:369
+msgid "Checked Out Time"
+msgstr "Czas Wypisania"
+
+#: Checkin.php:370
+msgid "Checked Out By"
+msgstr "Wypisany przez"
+
+#: Checkin.php:441
+msgid "Checkout"
+msgstr "Wypisz"
+
+#: Checkin.php:450
+#: EditEventAttendees.php:97
+msgid "No Attendees Assigned to Event"
+msgstr "Nie przypisano żadnych uczestników dla tego Wydarzenia"
+
+#: Checkin.php:520
+#: PersonView.php:246
+#: Include/Functions.php:1769
+#: Reports/CanvassReports.php:261
+#: Reports/VotingMembers.php:92
+msgid "Member"
+msgstr "Członek"
+
+#: Checkin.php:521
+#: PersonView.php:247
+msgid " of the"
+msgstr "Rodziny"
+
+#: Checkin.php:521
+#: PersonView.php:247
+msgid " family)"
+msgstr ")"
+
+#: Checkin.php:524
+#: PersonView.php:250
+msgid "(No assigned family)"
+msgstr "(Brak przypisanej Rodziny)"
+
+#: Checkin.php:546
+#: FamilyView.php:262
+#: PersonView.php:293
+msgid "No photo selected for uploading."
+msgstr "Nie wybrano zdjęcia do załadowania."
+
+#: Checkin.php:548
+#: FamilyView.php:264
+#: PersonView.php:295
+msgid "Only jpeg photos can be uploaded."
+msgstr "Tylko obraz *.jpeg może zostać dodany."
+
+#: CheckVersion.php:62
+msgid "ChurchCRM: Database Version Check"
+msgstr "ChurchCRM: Sprawdzenie wersji bazy danych"
+
+#: ConvertIndividualToFamily.php:46
+msgid "Convert Individuals to Families"
+msgstr "Przekształć Osoby w Rodziny"
+
+#: ConvertIndividualToFamily.php:148
+msgid "Convert Next"
+msgstr "Przekształć następną"
+
+#: ConvertIndividualToFamily.php:149
+msgid "Convert All"
+msgstr "Przekształć wszystkie"
+
+#: CSVExport.php:80
+#: PersonEditor.php:571
+msgid "Standard Fields"
+msgstr "Pola Podstawowe"
+
+#: CSVExport.php:84
+#: PersonEditor.php:589
+msgid "Last Name:"
+msgstr "Nazwisko:"
+
+#: CSVExport.php:85
+msgid "Required"
+msgstr "Wymagane"
+
+#: CSVExport.php:89
+#: DonatedItemEditor.php:228
+#: FundRaiserEditor.php:179
+#: PersonEditor.php:574
+msgid "Title:"
+msgstr "Tytuł:"
+
+#: CSVExport.php:94
+#: PersonEditor.php:579
+msgid "First Name:"
+msgstr "Imię:"
+
+#: CSVExport.php:99
+#: PersonEditor.php:584
+msgid "Middle Name:"
+msgstr "Drugie Imię:"
+
+#: CSVExport.php:104
+#: PersonEditor.php:594
+msgid "Suffix:"
+msgstr "Suffix:"
+
+#: CSVExport.php:134
+#: Reports/TaxReport.php:195
+msgid "Envelope:"
+msgstr "Koperta:"
+
+#: CSVExport.php:164
+#: PersonView.php:476
+msgid "Work/Other Email:"
+msgstr "Email Inny/Firmowy:"
+
+#: CSVExport.php:169
+#: CSVExport.php:311
+#: PersonEditor.php:844
+#: PersonView.php:432
+#: PrintView.php:263
+msgid "Membership Date:"
+msgstr "Data dodania:"
+
+#: CSVExport.php:174
+msgid "* Birth / Anniversary Date:"
+msgstr "* Data urodzenia / Data ślubu:"
+
+#: CSVExport.php:179
+msgid "* Age / Years Married:"
+msgstr "* Wiek / Lat małżeństwa:"
+
+#: CSVExport.php:184
+#: CSVExport.php:269
+#: PersonEditor.php:637
+#: PrintView.php:233
+msgid "Family Role:"
+msgstr "Rola w Rodzinie:"
+
+#: CSVExport.php:189
+msgid "* Depends whether using person or family output method"
+msgstr "* w zależności czy dotyczy Osoby czy Rodziny"
+
+#: CSVExport.php:199
+msgid "Custom Person Fields"
+msgstr "Dodatkowe Pole Osoby"
+
+#: CSVExport.php:218
+msgid "Custom Family Fields"
+msgstr "Dodatkowe Pole Rodziny"
+
+#: CSVExport.php:239
+#: FinancialReports.php:103
+msgid "Filters"
+msgstr "Sortuj"
+
+#: CSVExport.php:243
+msgid "Records to export:"
+msgstr "Rekordy (dane) do eksportu:"
+
+#: CSVExport.php:246
+msgid "Based on filters below.."
+msgstr "W oparciu o filtry poniżej..."
+
+#: CSVExport.php:247
+msgid "People in Cart (filters ignored)"
+msgstr "Osoby w Koszyku (filtry ignorowane)"
+
+#: CSVExport.php:252
+#: FinancialReports.php:113
+#: PersonEditor.php:849
+#: PersonView.php:436
+#: PrintView.php:268
+msgid "Classification:"
+msgstr "Klasyfikacja:"
+
+#: CSVExport.php:254
+#: CSVExport.php:271
+#: CSVExport.php:298
+#: DirectoryReports.php:87
+#: DirectoryReports.php:104
+#: DirectoryReports.php:124
+#: DirectoryReports.php:140
+#: DirectoryReports.php:157
+#: FinancialReports.php:115
+#: FinancialReports.php:134
+#: FinancialReports.php:216
+#: FinancialReports.php:233
+msgid "Use Ctrl Key to select multiple"
+msgstr "Użyj klawisza Ctrl aby zaznaczyć kilka"
+
+#: CSVExport.php:286
+#: PersonEditor.php:599
+#: PersonView.php:402
+#: PrintView.php:205
+msgid "Gender:"
+msgstr "Płeć:"
+
+#: CSVExport.php:289
+msgid "Don't Filter"
+msgstr "Nie filtruj"
+
+#: CSVExport.php:290
+#: FamilyEditor.php:988
+#: FamilyView.php:652
+#: PersonEditor.php:603
+#: PersonView.php:408
+#: PrintView.php:212
+#: PrintView.php:321
+#: SelectList.php:528
+#: SelectList.php:1056
+#: SelectListFormatted.php:548
+#: SelectListFormatted.php:1098
+msgid "Male"
+msgstr "Mężczyzna"
+
+#: CSVExport.php:291
+#: FamilyEditor.php:989
+#: FamilyView.php:652
+#: PersonEditor.php:604
+#: PersonView.php:411
+#: PrintView.php:215
+#: PrintView.php:321
+#: SelectList.php:533
+#: SelectList.php:1057
+#: SelectListFormatted.php:553
+#: SelectListFormatted.php:1101
+msgid "Female"
+msgstr "Kobieta"
+
+#: CSVExport.php:296
+#: DirectoryReports.php:102
+msgid "Group Membership:"
+msgstr "Przynależność do Grupy:"
+
+#: CSVExport.php:316
+#: CSVExport.php:337
+#: CSVExport.php:354
+#: CSVExport.php:366
+msgid "To:"
+msgstr "Do:"
+
+#: CSVExport.php:323
+msgid "Birthday Date:"
+msgstr "Data Urodzenia:"
+
+#: CSVExport.php:349
+msgid "Anniversary Date:"
+msgstr "Data Ślubu:"
+
+#: CSVExport.php:361
+msgid "Date Entered:"
+msgstr "Data wpisu:"
+
+#: CSVExport.php:373
+#: FinancialReports.php:299
+msgid "Output Method:"
+msgstr "Sposób zapisu:"
+
+#: CSVExport.php:376
+msgid "CSV Individual Records"
+msgstr "CSV - pojedyncze Osoby"
+
+#: CSVExport.php:377
+msgid "CSV Combine Families"
+msgstr "CSV - pogrupowane Rodziny"
+
+#: CSVExport.php:378
+msgid "Add Individuals to Cart"
+msgstr "Dodaj Osoby do Koszyka"
+
+#: CSVExport.php:383
+msgid "Skip records with incomplete mail address"
+msgstr "Pomiń osoby o niekompletnym adresie email"
+
+#: CSVExport.php:391
+msgid "Create File"
+msgstr "Utwórz plik (file)"
+
+#: CSVImport.php:132
+msgid "No file selected for upload."
+msgstr "Nie wybrano żadnego pliku do załadowania."
+
+#: CSVImport.php:157
+msgid "Total number of rows in the CSV file:"
+msgstr "Ogólna liczba wierszy w pliku CSV:"
+
+#: CSVImport.php:220
+msgid "Ignore this Field"
+msgstr "Pomiń to pole"
+
+#: CSVImport.php:221
+#: FindFundRaiser.php:226
+#: FundRaiserEditor.php:204
+msgid "Title"
+msgstr "Tytuł"
+
+#: CSVImport.php:222
+#: SelectList.php:1436
+#: SelectListFormatted.php:1541
+msgid "First Name"
+msgstr "Imię"
+
+#: CSVImport.php:223
+msgid "Middle Name"
+msgstr "Drugie Imię"
+
+#: CSVImport.php:224
+#: ManageEnvelopes.php:152
+msgid "Last Name"
+msgstr "Nazwisko"
+
+#: CSVImport.php:225
+#: FamilyEditor.php:944
+msgid "Suffix"
+msgstr "Suffix"
+
+#: CSVImport.php:226
+#: FamilyEditor.php:945
+#: FamilyView.php:588
+#: PrintView.php:295
+msgid "Gender"
+msgstr "Płeć"
+
+#: CSVImport.php:227
+msgid "Donation Envelope"
+msgstr "Numer Koperty"
+
+#: CSVImport.php:228
+msgid "Address1"
+msgstr "Adres1"
+
+#: CSVImport.php:229
+msgid "Address2"
+msgstr "Adres2"
+
+#: CSVImport.php:234
+#: EditEventAttendees.php:54
+#: EventAttendance.php:204
+#: GroupMemberList.php:323
+#: GroupReports.php:159
+#: SelectList.php:1160
+#: SelectListFormatted.php:1208
+msgid "Home Phone"
+msgstr "Tel. Domowy"
+
+#: CSVImport.php:235
+#: GroupReports.php:160
+#: SelectList.php:1161
+#: SelectListFormatted.php:1211
+msgid "Work Phone"
+msgstr "Tel. Praca"
+
+#: CSVImport.php:236
+msgid "Mobile Phone"
+msgstr "Tel. Kom."
+
+#: CSVImport.php:238
+msgid "Work / Other Email"
+msgstr "Email Inny/Firmowy"
+
+#: CSVImport.php:239
+#: FamilyEditor.php:937
+msgid "Birth Date"
+msgstr "Data Urodzenia"
+
+#: CSVImport.php:240
+msgid "Membership Date"
+msgstr "Data Dodania"
+
+#: CSVImport.php:241
+#: DirectoryReports.php:175
+msgid "Wedding Date"
+msgstr "Data Ślubu:"
+
+#: CSVImport.php:252
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "Pomiń pierwszy rząd z pliku CSV (aby pominąć nagłówek)"
+
+#: CSVImport.php:255
+msgid "Make Family records based on last name and address"
+msgstr "Utwórz wpisy Rodzin korzystając z Nazwisk i adresów"
+
+#: CSVImport.php:258
+msgid "Patriarch"
+msgstr "Głowa Rodziny (Mężczyzna)"
+
+#: CSVImport.php:259
+msgid "Matriarch"
+msgstr "Głowa Rodziny (Kobieta)"
+
+#: CSVImport.php:261
+msgid "Family Type: used with Make Family records... option above"
+msgstr "Typ Rodziny: potrzebny do stworzenia wpisu Rodziny... wybierz z powyższych opcji"
+
+#: CSVImport.php:268
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "Podpowiedź: spacje, myślniki, etc. albo ich brak nie ma znaczenia"
+
+#: CSVImport.php:273
+msgid "Default country if none specified otherwise"
+msgstr "Domyślny kraj jeżeli nie wybrano innego"
+
+#: CSVImport.php:294
+msgid "Perform Import"
+msgstr "Importuj"
+
+#: CSVImport.php:813
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "Błąd: brak wcześniej załadowanego pliku CSV!"
+
+#: CSVImport.php:832
+msgid "Data Cleared Successfully!"
+msgstr "Dane pomyślnie usunięte."
+
+#: CSVImport.php:836
+msgid "Please select the confirmation checkbox"
+msgstr "Proszę zaznaczyć pole potwierdzenia"
+
+#: CSVImport.php:847
+msgid "Upload CSV File"
+msgstr "Załaduj plik CSV"
+
+#: CSVImport.php:851
+msgid "Are you sure?"
+msgstr "Czy jesteś tego pewny?"
+
+#: CSVImport.php:853
+msgid "Clear Persons and Families"
+msgstr "Usuń Osoby i Rodziny"
+
+#: CSVImport.php:856
+msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
+msgstr "Uwaga! Proszę nie wybierać tej opcji jeżeli zamierzasz dodać do już istniejącej bazy danych.<br/>"
+
+#: CSVImport.php:857
+msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
+msgstr "Użyj tylko gdy nie jesteś zadowolony z pierwotnego importu. Wszystkie dotychczasowe dane zostaną usunięte!"
+
+#: CSVImport.php:864
+msgid "Data import successful."
+msgstr "Import zakończony Powidzeniem."
+
+#: CSVImport.php:864
+msgid "persons were imported"
+msgstr "osób zostało zaimportowanych"
+
+#: Login.php:100
+#: Login.php:165
+msgid "Invalid login or password"
+msgstr "Nieprawidłowa Nazwa Użytkownika lub Hasło"
+
+#: Login.php:153
+msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
+msgstr "Zbyt wiele niepoprawnych logowań: twoje konto zostało zablokowane. Prosimy o kontakt z administratorem."
+
+#: Login.php:349
+msgid "ChurchCRM: Login"
+msgstr "ChurchCRM: Logowanie"
+
+#: Login.php:393
+msgid "Please Login"
+msgstr "Prosimy się zalogować"
+
+#: Login.php:413
+msgid "Enter your user name:"
+msgstr "Podaj Nazwę Użytkownika:"
+
+#: Login.php:420
+msgid "Enter your password:"
+msgstr "Podaj Hasło:"
+
+#: Login.php:428
+msgid "Login"
+msgstr "Zaloguj"
+
+#: DepositSlipEditor.php:52
+msgid "Deposit Slip Number: TBD"
+msgstr "Deposit Slip Number: TBD"
+
+#: DepositSlipEditor.php:54
+msgid "Deposit Slip Number: "
+msgstr "Deposit Slip Number: "
+
+#: DepositSlipEditor.php:78
+#: FundRaiserEditor.php:57
+#: GroupMeeting.php:45
+#: PledgeEditor.php:333
+msgid "Not a valid Date"
+msgstr "Dane nieprawidłowe"
+
+#: DepositSlipEditor.php:459
+msgid "Deposit Slip Report"
+msgstr "Raport Odcinków Wpłaty"
+
+#: DepositSlipEditor.php:460
+msgid "More Reports"
+msgstr "Więcej Raportów"
+
+#: DepositSlipEditor.php:464
+#: eGive.php:299
+msgid "Import eGive"
+msgstr "Importuj eGive"
+
+#: DepositSlipEditor.php:466
+msgid "Add Payment"
+msgstr "Dodaj Płatność"
+
+#: DepositSlipEditor.php:470
+msgid "Load Authorized Transactions"
+msgstr "Załaduj Zaakceptowaną Transakcję"
+
+#: DepositSlipEditor.php:471
+msgid "Run Transactions"
+msgstr "Rozpocznij Transakcję"
+
+#: DepositSlipEditor.php:494
+msgid "Deposit Type:"
+msgstr "Typ Depozytu:"
+
+#: DepositSlipEditor.php:503
+msgid "Bank"
+msgstr "Bank"
+
+#: DepositSlipEditor.php:505
+#: FinancialReports.php:239
+#: PledgeEditor.php:604
+msgid "Bank Draft"
+msgstr "Weksel"
+
+#: DepositSlipEditor.php:506
+#: FinancialReports.php:240
+#: PledgeEditor.php:608
+msgid "eGive"
+msgstr "eGive"
+
+#: DepositSlipEditor.php:513
+msgid "Comment:"
+msgstr "Komentarz:"
+
+#: DepositSlipEditor.php:518
+msgid "Closed:"
+msgstr "Zamknięte:"
+
+#: DepositSlipEditor.php:519
+msgid "Close deposit slip (remember to press Save)"
+msgstr "Zamknij Odcinek Wpłaty (pamiętaj aby nacisnąć &quot;Zapisz&quot;)"
+
+#: DepositSlipEditor.php:522
+msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+msgstr "Ważna uwaga: nie udane transakcje będą całkowicie usuniętę gdy Odcinek Wpłaty zostanie zamknięty."
+
+#: DepositSlipEditor.php:567
+msgid "Payments on this deposit slip:"
+msgstr "Płatności na tym Odcinku Wpłaty:"
+
+#: DepositSlipEditor.php:573
+#: FamilyView.php:199
+#: FinancialReports.php:277
+#: OptionManager.php:64
+#: OptionManagerSave.php:64
+#: PledgeEditor.php:645
+#: PropertyAssign.php:79
+#: PropertyEditor.php:46
+#: PropertyList.php:31
+#: PropertyTypeEditor.php:100
+#: PropertyTypeList.php:61
+#: SelectList.php:956
+#: SelectListFormatted.php:995
+#: Include/Header-function.php:443
+msgid "Family"
+msgstr "Rodzina"
+
+#: DepositSlipEditor.php:574
+#: FamilyView.php:782
+#: FindDepositSlip.php:255
+#: FindFundRaiser.php:225
+#: GroupMeeting.php:185
+#: PledgeEditor.php:676
+#: SelectDelete.php:313
+#: Include/Functions.php:103
+msgid "Date"
+msgstr "Data"
+
+#: DepositSlipEditor.php:575
+#: FamilyView.php:781
+#: PledgeEditor.php:615
+#: SelectDelete.php:312
+msgid "Fiscal Year"
+msgstr "Rok Podatkowy"
+
+#: DepositSlipEditor.php:577
+#: PledgeEditor.php:668
+msgid "Check #"
+msgstr "Czek #"
+
+#: DepositSlipEditor.php:579
+#: FamilyView.php:694
+#: FamilyView.php:780
+#: FinancialReports.php:276
+#: PledgeEditor.php:621
+#: SelectDelete.php:311
+msgid "Fund"
+msgstr "Cel"
+
+#: DepositSlipEditor.php:580
+#: FamilyView.php:692
+#: FamilyView.php:783
+#: PledgeEditor.php:763
+#: SelectDelete.php:314
+msgid "Amount"
+msgstr "Kwota"
+
+#: DepositSlipEditor.php:581
+msgid "NonDeduct"
+msgstr "Nie odliczalna"
+
+#: DepositSlipEditor.php:582
+#: FamilyView.php:786
+#: SelectDelete.php:316
+msgid "Method"
+msgstr "Sposób"
+
+#: DepositSlipEditor.php:583
+#: FamilyView.php:787
+#: FindDepositSlip.php:257
+#: PledgeEditor.php:636
+#: PledgeEditor.php:769
+#: SelectDelete.php:317
+msgid "Comment"
+msgstr "Komentarz"
+
+#: DepositSlipEditor.php:585
+msgid "Cleared"
+msgstr "Zapłacone"
+
+#: DepositSlipEditor.php:588
+msgid "View Detail"
+msgstr "Pokaż szczegóły"
+
+#: DepositSlipEditor.php:594
+msgid "Details"
+msgstr "Szczegóły"
+
+#: DirectoryReports.php:30
+msgid "Directory reports"
+msgstr "Spisy"
+
+#: DirectoryReports.php:85
+msgid "Select classifications to include"
+msgstr "Wybierz klasyfikację które mają być uwzględnione"
+
+#: DirectoryReports.php:122
+msgid "Which role is the head of household?"
+msgstr "Którą rolę pełni Głowa Rodziny?"
+
+#: DirectoryReports.php:138
+msgid "Which role is the spouse?"
+msgstr "Którą rolę pełni Małżonek?"
+
+#: DirectoryReports.php:155
+msgid "Which role is a child?"
+msgstr "Którą rolę pełni Dziecko?"
+
+#: DirectoryReports.php:172
+msgid "Information to Include:"
+msgstr "Informacje które powinny być zawarte:"
+
+#: DirectoryReports.php:174
+#: DirectoryReports.php:247
+#: GeoPage.php:322
+#: GroupMemberList.php:319
+#: GroupReports.php:158
+#: SelectList.php:1159
+#: SelectList.php:1437
+#: SelectListFormatted.php:1203
+#: SelectListFormatted.php:1544
+msgid "Address"
+msgstr "Adres"
+
+#: DirectoryReports.php:176
+#: Reports/ConfirmReport.php:174
+#: Reports/ConfirmReport.php:193
+msgid "Birthday"
+msgstr "Data Urodzenia"
+
+#: DirectoryReports.php:178
+msgid "Family Home Phone"
+msgstr "Tel. Domowy"
+
+#: DirectoryReports.php:179
+msgid "Family Work Phone"
+msgstr "Tel. Praca"
+
+#: DirectoryReports.php:180
+msgid "Family Cell Phone"
+msgstr "Tel. Kom."
+
+#: DirectoryReports.php:181
+msgid "Family Email"
+msgstr "Email"
+
+#: DirectoryReports.php:183
+msgid "Personal Home Phone"
+msgstr "Tel. Domowy"
+
+#: DirectoryReports.php:184
+msgid "Personal Work Phone"
+msgstr "Tel. Praca"
+
+#: DirectoryReports.php:185
+msgid "Personal Cell Phone"
+msgstr "Tel. Kom."
+
+#: DirectoryReports.php:186
+msgid "Personal Email"
+msgstr "Email"
+
+#: DirectoryReports.php:187
+msgid "Personal Work/Other Email"
+msgstr "Email Praca / Inny"
+
+#: DirectoryReports.php:188
+msgid "Photos"
+msgstr "Zdjęcia"
+
+#: DirectoryReports.php:204
+msgid "Number of Columns:"
+msgstr "Liczba Kolumn:"
+
+#: DirectoryReports.php:212
+msgid "Paper Size:"
+msgstr "Rozmiar Papieru:"
+
+#: DirectoryReports.php:219
+#: Include/LabelFunctions.php:65
+msgid "Font Size:"
+msgstr "Rozmiar Czcionki:"
+
+#: DirectoryReports.php:235
+msgid "Title page:"
+msgstr "Tytuł Strony:"
+
+#: DirectoryReports.php:239
+msgid "Use Title Page"
+msgstr "Użyj Tytuł"
+
+#: DirectoryReports.php:243
+msgid "Church Name"
+msgstr "Nazwa Kościoła"
+
+#: DirectoryReports.php:267
+msgid "Disclaimer"
+msgstr "Objaśnienia"
+
+#: DirectoryReports.php:283
+msgid "Create Directory"
+msgstr "Utwórz Spis (Directory)"
+
+#: DonatedItemEditor.php:44
+msgid "Donated Item Editor"
+msgstr "Edytor Darowanych Przedmiotów"
+
+#: DonatedItemEditor.php:184
+#: FamilyEditor.php:663
+#: PaddleNumEditor.php:165
+#: PersonEditor.php:552
+#: PersonEditor.php:914
+#: PledgeEditor.php:550
+msgid "Save and Add"
+msgstr "Zapisz i Dodaj"
+
+#: DonatedItemEditor.php:196
+msgid "Item:"
+msgstr "Przedmiot:"
+
+#: DonatedItemEditor.php:201
+msgid "Multiple items:"
+msgstr "Wiele przedmiotów:"
+
+#: DonatedItemEditor.php:202
+msgid "Sell to everyone"
+msgstr "Sprzedaj Wszystkim"
+
+#: DonatedItemEditor.php:206
+msgid "Donor:"
+msgstr "Darczyńca:"
+
+#: DonatedItemEditor.php:233
+msgid "Estimated Price:"
+msgstr "Szacowana Wartość:"
+
+#: DonatedItemEditor.php:238
+msgid "Material Value:"
+msgstr "Cena Materiału:"
+
+#: DonatedItemEditor.php:242
+msgid "Minimum Price:"
+msgstr "Cena Minimalna:"
+
+#: DonatedItemEditor.php:252
+#: PaddleNumEditor.php:182
+msgid "Buyer:"
+msgstr "Nabywca:"
+
+#: DonatedItemEditor.php:254
+#: FundRaiserEditor.php:201
+#: FundRaiserEditor.php:238
+msgid "Multiple"
+msgstr "Wiele"
+
+#: DonatedItemEditor.php:273
+msgid "Final Price:"
+msgstr "Cena Końcowa:"
+
+#: DonationFundEditor.php:50
+msgid "Donation Fund Editor"
+msgstr "Edytor Datków (Celu)"
+
+#: DonationFundEditor.php:153
+msgid "Are you sure you want to delete this fund?"
+msgstr "Czy jesteś pewny że chcesz usunąć ten Cel (Fund)?"
+
+#: DonationFundEditor.php:167
+msgid "No funds have been added yet"
+msgstr "Nie dodano Celu (Fund)"
+
+#: DonationFundEditor.php:168
+#: DonationFundEditor.php:190
+#: DonationFundEditor.php:241
+#: FamilyCustomFieldsEditor.php:328
+#: FamilyCustomFieldsEditor.php:349
+#: FamilyCustomFieldsEditor.php:443
+#: FamilyCustomFieldsEditorSave.php:324
+#: FamilyCustomFieldsEditorSave.php:345
+#: FamilyCustomFieldsEditorSave.php:439
+#: GroupEditor.php:328
+#: GroupPropsFormEditor.php:285
+#: GroupPropsFormEditor.php:306
+#: GroupPropsFormEditor.php:394
+#: MenuManager.php:205
+#: OptionManager.php:323
+#: OptionManager.php:325
+#: OptionManagerSave.php:317
+#: OptionManagerSave.php:319
+#: PersonCustomFieldsEditor.php:308
+#: PersonCustomFieldsEditor.php:329
+#: PersonCustomFieldsEditor.php:426
+#: VolunteerOpportunityEditor.php:279
+#: VolunteerOpportunityEditor.php:345
+#: VolunteerOpportunityEditor.php:405
+msgid "Exit"
+msgstr "Wyjdź"
+
+#: DonationFundEditor.php:176
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
+msgstr "Uwaga: Zmiany nie zostaną zapisane do póki nie klikniesz 'Zapisz Zmiany', pamiętaj aby zapisać przed kliknięciem 'Usuń' lub 'Dodaj Nowe'!"
+
+#: DonationFundEditor.php:181
+#: FamilyCustomFieldsEditor.php:341
+#: FamilyCustomFieldsEditorSave.php:337
+#: GroupPropsFormEditor.php:298
+#: MenuEditor.php:378
+#: MenuManager.php:198
+#: OptionManager.php:315
+#: OptionManagerSave.php:309
+#: PersonCustomFieldsEditor.php:321
+#: PersonEditor.php:564
+#: VolunteerOpportunityEditor.php:336
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
+msgstr "Nieprawidłowe pola lub wybór. Nie zapisano zmian! Proszę spróbować ponownie!"
+
+#: DonationFundEditor.php:188
+#: DonationFundEditor.php:239
+#: EventEditor.php:534
+#: EventNames.php:69
+#: EventNames.php:269
+#: FamilyCustomFieldsEditor.php:347
+#: FamilyCustomFieldsEditor.php:441
+#: FamilyCustomFieldsEditorSave.php:343
+#: FamilyCustomFieldsEditorSave.php:437
+#: GroupPropsFormEditor.php:304
+#: GroupPropsFormEditor.php:392
+#: MenuManager.php:202
+#: OptionManager.php:319
+#: OptionManagerSave.php:313
+#: PersonCustomFieldsEditor.php:327
+#: PersonCustomFieldsEditor.php:424
+#: VolunteerOpportunityEditor.php:343
+#: VolunteerOpportunityEditor.php:403
+msgid "Save Changes"
+msgstr "Zapisz Zmiany"
+
+#: DonationFundEditor.php:211
+msgid "delete"
+msgstr "Usuń"
+
+#: DonationFundEditor.php:257
+#: FamilyCustomFieldsEditor.php:473
+#: FamilyCustomFieldsEditorSave.php:469
+#: GroupEditor.php:247
+#: GroupPropsFormEditor.php:423
+#: MenuManager.php:261
+#: OptionManager.php:384
+#: OptionManagerSave.php:381
+#: PersonCustomFieldsEditor.php:456
+#: PropertyEditor.php:163
+#: PropertyTypeEditor.php:106
+#: VolunteerOpportunityEditor.php:421
+msgid "Name:"
+msgstr "Nazwa:"
+
+#: DonationFundEditor.php:263
+#: FundRaiserEditor.php:184
+#: GroupEditor.php:254
+#: GroupPropsFormEditor.php:432
+#: PropertyTypeEditor.php:111
+#: VolunteerOpportunityEditor.php:427
+msgid "Description:"
+msgstr "Opis:"
+
+#: DonationFundEditor.php:268
+msgid "Add New Fund"
+msgstr "Dodaj Nowy Cel (Fund)"
+
+#: EditEventAttendees.php:9
+#: EventEditor.php:32
+msgid "Church Event Editor"
+msgstr "Edytuj Wydarzenia"
+
+#: EditEventTypes.php:28
+#: EventNames.php:31
+msgid "Edit Event Types"
+msgstr "Edytuj Typy Wydarzeń"
+
+#: EditEventTypes.php:33
+#: EventNames.php:39
+msgid "Are you sure you want to delete this event?"
+msgstr "Jesteś pewny że chcesz usunąć to Wydarzenie?"
+
+#: EditEventTypes.php:141
+msgid "Edit Event Type"
+msgstr "Edytuj Typ Wydarzenia"
+
+#: EditEventTypes.php:148
+msgid "Save Name"
+msgstr "Zapisz Nazwę"
+
+#: EditEventTypes.php:157
+#: EventNames.php:194
+msgid "Recurrance Pattern"
+msgstr "Częstotliwość Wydarzenia"
+
+#: EditEventTypes.php:163
+#: EventNames.php:195
+msgid "Start Time"
+msgstr "Czas Rozpoczęcia"
+
+#: EditEventTypes.php:180
+#: EventEditor.php:486
+#: EventNames.php:196
+#: ListEvents.php:225
+msgid "Attendance Counts"
+msgstr "Ilość Uczestników"
+
+#: EditEventTypes.php:192
+msgid "DELETE"
+msgstr "USUŃ"
+
+#: EditEventTypes.php:208
+msgid "ADD"
+msgstr "DODAJ"
+
+#: eGive.php:295
+msgid "Start Date: "
+msgstr "Data Rozpoczęcia:"
+
+#: eGive.php:297
+msgid "End Date: "
+msgstr "Data Zakończenia:"
+
+#: eGive.php:387
+msgid "Re-import to selected family"
+msgstr "Importuj ponownie do zaznaczonej Rodziny"
+
+#: eGive.php:393
+msgid "Data import results: "
+msgstr "Wynik importu danych:"
+
+#: eGive.php:393
+msgid " gifts were imported, "
+msgstr "datki zostały zaimportowane,"
+
+#: eGive.php:393
+msgid " gifts unchanged, and "
+msgstr "datki niezmienione, i"
+
+#: eGive.php:393
+msgid " gifts not imported due to problems"
+msgstr "datki nie zaimportowane z powodu błędów"
+
+#: eGive.php:394
+#: eGive.php:423
+msgid "Back to Deposit Slip"
+msgstr "Powrót do Odcinków Wpłaty"
+
+#: eGive.php:422
+msgid "Fatal error in eGive API datastream: '"
+msgstr "Krytyczny problem w systemie eGive:"
+
+#: EmailEditor.php:90
+#: Register.php:93
+msgid "Message:"
+msgstr "Wiadomość:"
+
+#: EmailEditor.php:95
+msgid "Save Email"
+msgstr "Zapisz email"
+
+#: EmailSend.php:495
+msgid "Email Sent"
+msgstr "Wysłano Wiadomość"
+
+#: EmailSend.php:499
+msgid "ERROR: PHPMailer is not properly installed on this server."
+msgstr "BŁĄD: PHPMailer nie jest prawidłowo zainstalowany na serwerze."
+
+#: EmailSend.php:500
+msgid "PHPMailer is required in order to send emails from this server."
+msgstr "PHPMailer jest wymagany aby móc wysłać email z tego serwera."
+
+#: EventAttendance.php:29
+msgid "Event Attendees"
+msgstr "Uczestnicy"
+
+#: EventAttendance.php:55
+msgid "Event Nonattendees"
+msgstr "Nieobecni-Nie biorący udziału"
+
+#: EventAttendance.php:63
+msgid "Event Guests"
+msgstr "Goście"
+
+#: EventAttendance.php:70
+msgid "All "
+msgstr "Wszyscy"
+
+#: EventAttendance.php:70
+#: FamilyCustomFieldsEditor.php:356
+#: FamilyCustomFieldsEditorSave.php:352
+#: FamilyView.php:460
+#: FamilyView.php:690
+#: GroupList.php:51
+#: GroupPropsFormEditor.php:313
+#: GroupView.php:204
+#: GroupView.php:243
+#: OptionManager.php:77
+#: OptionManagerSave.php:77
+#: PersonCustomFieldsEditor.php:336
+#: PersonView.php:514
+#: SelectDelete.php:310
+msgid "Type"
+msgstr "Typ"
+
+#: EventAttendance.php:70
+msgid " Events"
+msgstr "Wydarzenia"
+
+#: EventAttendance.php:76
+msgid "Back to Report Menu"
+msgstr "Spowrotem do Menu Raportu"
+
+#: EventAttendance.php:122
+msgid "Event Date"
+msgstr "Data Wydarzenia"
+
+#: EventAttendance.php:123
+msgid "Generate Report"
+msgstr "Wygeneruj Raport"
+
+#: EventAttendance.php:158
+msgid "Attending Members"
+msgstr "Członkowie biorący udział"
+
+#: EventAttendance.php:169
+msgid "Non-Attending Members"
+msgstr "Członkowie nie biorący udziału"
+
+#: EventAttendance.php:185
+msgid "Guests"
+msgstr "Goście"
+
+#: EventAttendance.php:235
+msgid "There are no events in this category"
+msgstr "Nie ma Wydarzeń w tej Kategorii"
+
+#: EventAttendance.php:235
+msgid "There are no Records"
+msgstr "Brak wpisów"
+
+#: EventEditor.php:59
+#: EventNames.php:283
+msgid "Create=>Event"
+msgstr "Utwórz=>Wydarzenie"
+
+#: EventEditor.php:400
+msgid "Editing Event ID: (ID will be created once saved)"
+msgstr "Edytuj ID Wydarzenia: (ID zostanie przydzielone automatycznie po zapisaniu)"
+
+#: EventEditor.php:402
+msgid "Editing Event ID: "
+msgstr "Edytuj ID Wydarzenia:"
+
+#: EventEditor.php:413
+msgid "There were "
+msgstr " "
+
+#: EventEditor.php:413
+msgid " errors. Please see below"
+msgstr "Błędy. Popatrz poniżej"
+
+#: EventEditor.php:417
+msgid "Items with a "
+msgstr "Pola z "
+
+#: EventEditor.php:417
+msgid " are required"
+msgstr "są wymagane"
+
+#: EventEditor.php:435
+msgid "You must enter a title."
+msgstr "Musisz podać Tytuł."
+
+#: EventEditor.php:440
+msgid "You must enter a description."
+msgstr "Musisz podać Opis."
+
+#: EventEditor.php:452
+msgid "You must enter a start date."
+msgstr "Musisz podać Datę Rozpoczęcia."
+
+#: EventEditor.php:462
+msgid "You must enter a start time."
+msgstr "Musisz podać Czas Rozpoczęcia."
+
+#: EventEditor.php:491
+msgid "No Attendance counts recorded"
+msgstr "Nie odnotowano Uczestników"
+
+#: EventEditor.php:509
+msgid "Attendance Notes: "
+msgstr "Notatki od Uczestników:"
+
+#: EventNames.php:59
+#: EventNames.php:310
+msgid "Add Event Type"
+msgstr "Dodaj Rodzaj Wydarzenia"
+
+#: EventNames.php:189
+msgid "There currently "
+msgstr "Obecnie"
+
+#: EventNames.php:218
+msgid "EVENT TYPE NAME"
+msgstr "RODZAJ WYDARZENIA"
+
+#: EventNames.php:225
+msgid "RECURRANCE PATTERN"
+msgstr "CZĘSTOTLIWOŚĆ WYDARZENIA"
+
+#: EventNames.php:228
+msgid "Sundays"
+msgstr "Niedziela"
+
+#: EventNames.php:229
+msgid "Mondays"
+msgstr "Poniedziałek"
+
+#: EventNames.php:230
+msgid "Tuesdays"
+msgstr "Wtorek"
+
+#: EventNames.php:231
+msgid "Wednesdays"
+msgstr "Środa"
+
+#: EventNames.php:232
+msgid "Thursdays"
+msgstr "Czwartek"
+
+#: EventNames.php:233
+msgid "Fridays"
+msgstr "Piątek"
+
+#: EventNames.php:234
+msgid "Saturdays"
+msgstr "Sobota"
+
+#: EventNames.php:258
+msgid "DEFAULT"
+msgstr "DOMYŚLNE"
+
+#: EventNames.php:258
+msgid "START TIME"
+msgstr "CZAS ROZPOCZĘCIA"
+
+#: EventNames.php:265
+msgid "ATTENDANCE COUNTS"
+msgstr "LICZBA UCZESTNIKÓW"
+
+#: EventNames.php:266
+msgid "Total,"
+msgstr "Razem,"
+
+#: EventNames.php:266
+msgid "[Every event type includes a Total count]"
+msgstr "[Każdy rodzaj wydarzenia zawiera (Total count)]"
+
+#: EventNames.php:267
+msgid "[enter a list of the attendance counts you want to include with this event. <br> Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children]"
+msgstr "[wpisz listę obecności dla tego wydarzenia. <br> Oddziel każdą kategorię przecinkiem np.: Członkowie, Goście, Dzieci, itp.]"
+
+#: EventNames.php:309
+msgid "New Event Type"
+msgstr "Nowy Typ Wydarzenia"
+
+#: FamilyCustomFieldsEditor.php:39
+#: FamilyCustomFieldsEditorSave.php:39
+msgid "Custom Family Fields Editor"
+msgstr "Edytor Dodatkowych Pól Rodziny"
+
+#: FamilyCustomFieldsEditor.php:189
+#: FamilyCustomFieldsEditorSave.php:186
+#: PersonCustomFieldsEditor.php:170
+msgid "Default Option"
+msgstr "Opcje Domyślne"
+
+#: FamilyCustomFieldsEditor.php:312
+#: FamilyCustomFieldsEditorSave.php:308
+msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
+msgstr "Uwaga: Usuwając to pole, nieodwracalnie utracisz wszystkie dane Rodziny powiązane z tym polem!"
+
+#: FamilyCustomFieldsEditor.php:327
+#: FamilyCustomFieldsEditorSave.php:323
+msgid "No custom Family fields have been added yet"
+msgstr "Nie ustawiono żadnych dodatkowych pól dla Rodziny"
+
+#: FamilyCustomFieldsEditor.php:336
+#: FamilyCustomFieldsEditorSave.php:332
+#: PersonCustomFieldsEditor.php:316
+msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Uwaga: Przycisk Strzałęk i Usuń działają natychmiastowo. Wszelkie zmiany zostaną utracone jeżeli nie będą zapisane - 'Zapisz Zmiany' !"
+
+#: FamilyCustomFieldsEditor.php:358
+#: FamilyCustomFieldsEditorSave.php:354
+#: GroupPropsFormEditor.php:316
+#: PersonCustomFieldsEditor.php:338
+msgid "Special option"
+msgstr "Opcje Dodatkowe"
+
+#: FamilyCustomFieldsEditor.php:359
+#: FamilyCustomFieldsEditor.php:482
+#: FamilyCustomFieldsEditorSave.php:355
+#: FamilyCustomFieldsEditorSave.php:478
+#: PersonCustomFieldsEditor.php:339
+#: PersonCustomFieldsEditor.php:471
+msgid "Security Option"
+msgstr "Uprawnienia"
+
+#: FamilyCustomFieldsEditor.php:360
+#: FamilyCustomFieldsEditorSave.php:356
+msgid "Family-View Side"
+msgstr "Strona - Widok Rodziny"
+
+#: FamilyCustomFieldsEditor.php:413
+#: FamilyCustomFieldsEditorSave.php:409
+#: GroupPropsFormEditor.php:373
+#: PersonCustomFieldsEditor.php:393
+msgid "You must select a group."
+msgstr "Musisz wybrać Grupę."
+
+#: FamilyCustomFieldsEditor.php:418
+#: FamilyCustomFieldsEditorSave.php:414
+#: MenuSetup.php:92
+#: PersonCustomFieldsEditor.php:396
+msgid "Edit List Options"
+msgstr "Edytuj opcje Listy"
+
+#: FamilyCustomFieldsEditor.php:429
+#: FamilyCustomFieldsEditor.php:487
+#: FamilyCustomFieldsEditorSave.php:425
+#: FamilyCustomFieldsEditorSave.php:483
+#: PersonCustomFieldsEditor.php:412
+#: PersonCustomFieldsEditor.php:466
+msgid "Left"
+msgstr "Lewo"
+
+#: FamilyCustomFieldsEditor.php:430
+#: FamilyCustomFieldsEditor.php:488
+#: FamilyCustomFieldsEditorSave.php:426
+#: FamilyCustomFieldsEditorSave.php:484
+#: PersonCustomFieldsEditor.php:413
+#: PersonCustomFieldsEditor.php:467
+msgid "Right"
+msgstr "Prawo"
+
+#: FamilyCustomFieldsEditor.php:459
+#: FamilyCustomFieldsEditorSave.php:455
+#: GroupPropsFormEditor.php:410
+#: PersonCustomFieldsEditor.php:442
+#: PropertyEditor.php:144
+msgid "Type:"
+msgstr "Typ:"
+
+#: FamilyCustomFieldsEditor.php:470
+#: FamilyCustomFieldsEditorSave.php:466
+#: GroupPropsFormEditor.php:420
+#: PersonCustomFieldsEditor.php:453
+msgid "Help on types.."
+msgstr "Pomoc na temat Typów.."
+
+#: FamilyCustomFieldsEditor.php:476
+#: FamilyCustomFieldsEditorSave.php:472
+#: PersonCustomFieldsEditor.php:459
+#: PropertyTypeEditor.php:49
+msgid "You must enter a name"
+msgstr "Musisz podać Nazwę"
+
+#: FamilyCustomFieldsEditor.php:477
+#: FamilyCustomFieldsEditorSave.php:473
+#: GroupPropsFormEditor.php:427
+#: PersonCustomFieldsEditor.php:460
+msgid "That field name already exists."
+msgstr "Tak nazwane Pole już istnieje."
+
+#: FamilyCustomFieldsEditor.php:486
+#: FamilyCustomFieldsEditorSave.php:482
+#: PersonCustomFieldsEditor.php:465
+msgid "Side:"
+msgstr "Strona:"
+
+#: FamilyCustomFieldsEditor.php:492
+#: FamilyCustomFieldsEditorSave.php:488
+#: GroupPropsFormEditor.php:437
+#: PersonCustomFieldsEditor.php:475
+msgid "Add New Field"
+msgstr "Dodaj Nowe Pole"
+
+#: FamilyEditor.php:23
+msgid "Family Editor"
+msgstr "Edytor Rodziny"
+
+#: FamilyEditor.php:206
+msgid "First name must be entered"
+msgstr "Musisz podać Imię"
+
+#: FamilyEditor.php:216
+#: PersonEditor.php:192
+msgid "Invalid Year: allowable values are 1901 to 2155"
+msgstr "Niepoprawny Rok: dopuszczalny przedział to 1901 - 2155"
+
+#: FamilyEditor.php:223
+#: PersonEditor.php:196
+msgid "Invalid Birth Date."
+msgstr "Nieprawidłowa Data Urodzenia."
+
+#: FamilyEditor.php:233
+msgid "You must enter a Name."
+msgstr "Musisz podać Nazwę."
+
+#: FamilyEditor.php:243
+msgid "Not a valid Wedding Date"
+msgstr "Nieprawidłowa Data Ślubu"
+
+#: FamilyEditor.php:257
+#: PersonEditor.php:233
+msgid "Email is Not Valid"
+msgstr "Nie poprawny Email"
+
+#: FamilyEditor.php:703
+msgid "Province:"
+msgstr "Hrabstwo:"
+
+#: FamilyEditor.php:779
+msgid "Send Newsletter:"
+msgstr "Wyślij Newsletter:"
+
+#: FamilyEditor.php:785
+msgid "Ok To Canvass:"
+msgstr "Wyrażam zgodę na Ankietę:"
+
+#: FamilyEditor.php:794
+msgid "Assign a Canvasser:"
+msgstr "Przypisz Ankietera:"
+
+#: FamilyEditor.php:812
+msgid "Assign a Brave Canvasser:"
+msgstr "Przypisz 'Odwarznego' Ankietera:"
+
+#: FamilyEditor.php:831
+msgid "Envelope number:"
+msgstr "Nr. Koperty:"
+
+#: FamilyEditor.php:850
+msgid "Assign a Property:"
+msgstr "Przypisz Właściowści:"
+
+#: FamilyEditor.php:879
+msgid "Latitude:"
+msgstr "Szer. Geograficzna:"
+
+#: FamilyEditor.php:883
+msgid "Longitude:"
+msgstr "Dł. Geograficzna"
+
+#: FamilyEditor.php:895
+#: MenuStrings.php:79
+#: PersonEditor.php:876
+msgid "Custom Fields"
+msgstr "Pola Dodatkowe"
+
+#: FamilyEditor.php:931
+msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
+msgstr "Możesz Utworzyć członków teraz lub dodać ich później. Wszystkie wpisy staną się <i>nowymi</i> Osobami ."
+
+#: FamilyEditor.php:935
+msgid "Complete Name"
+msgstr "Pełna Nazwa"
+
+#: FamilyEditor.php:940
+msgid "Family Members"
+msgstr "Członkowie Rodziny"
+
+#: FamilyEditor.php:941
+msgid "First"
+msgstr "Imię"
+
+#: FamilyEditor.php:942
+msgid "Middle"
+msgstr "Drugie Imię"
+
+#: FamilyEditor.php:943
+msgid "Last"
+msgstr "Nazwisko"
+
+#: FamilyEditor.php:946
+#: FamilyView.php:589
+#: OptionManager.php:65
+#: OptionManager.php:89
+#: OptionManagerSave.php:65
+#: OptionManagerSave.php:89
+#: PersonView.php:637
+#: PrintView.php:296
+#: PrintView.php:355
+#: Reports/CanvassReports.php:259
+#: Reports/GroupReport.php:252
+msgid "Role"
+msgstr "Rola"
+
+#: FamilyEditor.php:947
+msgid "Month"
+msgstr "Miesiąc"
+
+#: FamilyEditor.php:948
+msgid "Day"
+msgstr "Dzień"
+
+#: FamilyEditor.php:949
+#: Include/Functions.php:107
+msgid "Year"
+msgstr "Rok"
+
+#: FamilyEditor.php:987
+#: PersonEditor.php:602
+msgid "Select Gender"
+msgstr "Wybierz Płeć"
+
+#: FamilyEditor.php:995
+msgid "Select Role"
+msgstr "Wybierz Rolę"
+
+#: FamilyEditor.php:1009
+#: PersonEditor.php:788
+#: Include/Functions.php:869
+#: Include/Functions.php:1042
+msgid "Unknown"
+msgstr "Nieznane"
+
+#: FamilyEditor.php:1010
+#: PersonEditor.php:789
+msgid "January"
+msgstr "Styczeń"
+
+#: FamilyEditor.php:1011
+#: PersonEditor.php:790
+msgid "February"
+msgstr "Luty"
+
+#: FamilyEditor.php:1012
+#: PersonEditor.php:791
+msgid "March"
+msgstr "Marzec"
+
+#: FamilyEditor.php:1013
+#: PersonEditor.php:792
+msgid "April"
+msgstr "Kwiecień"
+
+#: FamilyEditor.php:1014
+#: PersonEditor.php:793
+msgid "May"
+msgstr "Maj"
+
+#: FamilyEditor.php:1015
+#: PersonEditor.php:794
+msgid "June"
+msgstr "Czerwiec"
+
+#: FamilyEditor.php:1016
+#: PersonEditor.php:795
+msgid "July"
+msgstr "Lipiec"
+
+#: FamilyEditor.php:1017
+#: PersonEditor.php:796
+msgid "August"
+msgstr "Sierpień"
+
+#: FamilyEditor.php:1018
+#: PersonEditor.php:797
+msgid "September"
+msgstr "Wrzesień"
+
+#: FamilyEditor.php:1019
+#: PersonEditor.php:798
+msgid "October"
+msgstr "Październik"
+
+#: FamilyEditor.php:1020
+#: PersonEditor.php:799
+msgid "November"
+msgstr "Listopad"
+
+#: FamilyEditor.php:1021
+#: PersonEditor.php:800
+msgid "December"
+msgstr "Grudzień"
+
+#: FamilyView.php:32
+msgid "Family View"
+msgstr "Widok Rodziny"
+
+#: FamilyView.php:72
+msgid "Previous Family"
+msgstr "Poprzednia Rodzina"
+
+#: FamilyView.php:77
+msgid "Next Family"
+msgstr "Następna Rodzina"
+
+#: FamilyView.php:183
+#: FamilyView.php:561
+#: PersonView.php:207
+#: PersonView.php:817
+msgid "Edit this Record"
+msgstr "Edytuj ten Wpis"
+
+#: FamilyView.php:184
+#: FamilyView.php:562
+#: PersonView.php:210
+#: PersonView.php:818
+msgid "Delete this Record"
+msgstr "Usuń ten Wpis"
+
+#: FamilyView.php:199
+msgid "The"
+msgstr "The"
+
+#: FamilyView.php:238
+#: FamilyView.php:254
+msgid "MapQuest"
+msgstr "MapQuest"
+
+#: FamilyView.php:243
+msgid "USPS"
+msgstr "USPS"
+
+#: FamilyView.php:248
+msgid "Google Maps"
+msgstr "Google Maps"
+
+#: FamilyView.php:331
+#: PersonView.php:365
+msgid "Delete Photo"
+msgstr "Usuń Zdjęcie"
+
+#: FamilyView.php:338
+#: FamilyView.php:340
+msgid "No Family Photo Found"
+msgstr "Nie zanleziono zdjęcia Rodzinnego"
+
+#: FamilyView.php:352
+#: PersonView.php:385
+msgid "Upload Photo"
+msgstr "Załaduj Zdjęcie"
+
+#: FamilyView.php:361
+#: PersonView.php:395
+msgid "General Information:"
+msgstr "Informacje Ogólne:"
+
+#: FamilyView.php:402
+msgid "Send newsletter:"
+msgstr "Wyślij Newsletter"
+
+#: FamilyView.php:414
+msgid "Latitude/Longitude"
+msgstr "Szer. / Gł. Geograficzna"
+
+#: FamilyView.php:420
+msgid "Envelope Number"
+msgstr "Nr. Koperty"
+
+#: FamilyView.php:443
+#: GroupView.php:228
+#: PersonView.php:498
+#: PrintView.php:411
+msgid "Assigned Properties:"
+msgstr "Przypisane właściwości:"
+
+#: FamilyView.php:452
+#: GroupView.php:235
+#: PersonView.php:507
+#: PrintView.php:423
+msgid "No property assignments."
+msgstr "Nie przypisano właściwości"
+
+#: FamilyView.php:462
+#: GroupMemberList.php:410
+#: GroupView.php:245
+#: PersonView.php:516
+#: PersonView.php:693
+#: PrintView.php:430
+msgid "Value"
+msgstr "Wartość"
+
+#: FamilyView.php:466
+#: FamilyView.php:509
+#: GroupView.php:250
+#: GroupView.php:290
+msgid "Edit Value"
+msgstr "Edytuj Wartość"
+
+#: FamilyView.php:535
+#: GroupView.php:321
+#: PersonView.php:585
+msgid "Assign a New Property:"
+msgstr "Przypisz Nowe Właściowści:"
+
+#: FamilyView.php:571
+#: FamilyView.php:929
+#: PersonView.php:846
+#: PersonView.php:884
+#: PrintView.php:464
+msgid "Entered:"
+msgstr "Wpisane:"
+
+#: FamilyView.php:577
+#: PersonView.php:853
+msgid "Last edited:"
+msgstr "Ostatnia Modyfikacja:"
+
+#: FamilyView.php:577
+#: FamilyView.php:929
+#: FamilyView.php:935
+#: PersonView.php:846
+#: PersonView.php:853
+#: PersonView.php:884
+#: PersonView.php:890
+#: PrintView.php:468
+msgid "by"
+msgstr "przez"
+
+#: FamilyView.php:582
+#: PrintView.php:291
+#: SelectDelete.php:378
+msgid "Family Members:"
+msgstr "Członkowie Rodziny:"
+
+#: FamilyView.php:590
+#: PrintView.php:297
+#: Reports/CanvassReports.php:260
+msgid "Age"
+msgstr "Wiek"
+
+#: FamilyView.php:684
+msgid "Automatic Payments:"
+msgstr "Automatyczne Płatności:"
+
+#: FamilyView.php:691
+msgid "Next payment date"
+msgstr "Data kolejnej Płatności"
+
+#: FamilyView.php:693
+msgid "Interval (months)"
+msgstr "Częstotliwość (miesiące)"
+
+#: FamilyView.php:697
+#: FamilyView.php:790
+#: SelectDelete.php:318
+msgid "Date Updated"
+msgstr "Data Aktualizacji"
+
+#: FamilyView.php:698
+#: FamilyView.php:791
+#: SelectDelete.php:319
+msgid "Updated By"
+msgstr "Zaktualizowane Przez"
+
+#: FamilyView.php:765
+msgid "Pledges and Payments:"
+msgstr "Datki i Płatności:"
+
+#: FamilyView.php:769
+msgid "Show Pledges"
+msgstr "Pokaż Datki"
+
+#: FamilyView.php:770
+msgid "Show Payments"
+msgstr "Pokaż Płatności"
+
+#: FamilyView.php:773
+#: MemberRoleChange.php:123
+#: PropertyAssign.php:192
+msgid "Update"
+msgstr "Aktualizuj"
+
+#: FamilyView.php:779
+msgid "Pledge or Payment"
+msgstr "Datek lub Płatność"
+
+#: FamilyView.php:784
+msgid "NonDeductible"
+msgstr "Niepotrancalne"
+
+#: FamilyView.php:785
+#: SelectDelete.php:315
+msgid "Schedule"
+msgstr "Termin"
+
+#: FamilyView.php:891
+msgid "Add a new pledge"
+msgstr "Dodaj nowy Datek"
+
+#: FamilyView.php:892
+msgid "Add a new payment"
+msgstr "Dodaj nową Płatność"
+
+#: FamilyView.php:893
+msgid "Add a new automatic payment"
+msgstr "Dodaj nową Automatyczną Płatność"
+
+#: FamilyView.php:901
+msgid " Canvass Entry"
+msgstr "Wpis Ankiety"
+
+#: FamilyView.php:910
+#: PersonView.php:864
+#: PrintView.php:457
+msgid "Notes:"
+msgstr "Notatki:"
+
+#: FamilyView.php:914
+#: PersonView.php:870
+msgid "Add a Note to this Record"
+msgstr "Dodaj Notatkę do tego Wpisu"
+
+#: FamilyView.php:935
+#: PersonView.php:890
+#: PrintView.php:468
+msgid "Last Edited:"
+msgstr "Ostatnio edytowane:"
+
+#: FamilyView.php:939
+#: PersonView.php:894
+msgid "Edit This Note"
+msgstr "Edytuj tę Notatkę"
+
+#: FamilyView.php:941
+#: PersonView.php:895
+msgid "Delete This Note"
+msgstr "Usuń tę Notatkę"
+
+#: FinancialReports.php:35
+#: ReportList.php:71
+msgid "Financial Reports"
+msgstr "Raporty Finansowe"
+
+#: FinancialReports.php:42
+msgid "No records were returned from the previous report."
+msgstr "Pojawiły się nowe wpisy od czasu ostatniego Raportu."
+
+#: FinancialReports.php:48
+#: FinancialReports.php:278
+#: FinancialReports.php:292
+msgid "Report Type:"
+msgstr "Typ Raportu:"
+
+#: FinancialReports.php:50
+msgid "Select Report Type"
+msgstr "Wybierz Typ Raportu"
+
+#: FinancialReports.php:51
+msgid "Pledge Summary"
+msgstr "Suma Datków"
+
+#: FinancialReports.php:52
+msgid "Pledge FamilySummary"
+msgstr "Datki - Podsumowanie Rodziny"
+
+#: FinancialReports.php:53
+msgid "Pledge Reminders"
+msgstr "Datki - Przypomnienia"
+
+#: FinancialReports.php:54
+msgid "Voting Members"
+msgstr "Członkowie Głosujący:"
+
+#: FinancialReports.php:55
+msgid "Giving Report (Tax Statements)"
+msgstr "Wykaz Datków (Wyciąg na potrzeby Fiskusa)"
+
+#: FinancialReports.php:56
+msgid "Zero Givers"
+msgstr "Zerowe Datki"
+
+#: FinancialReports.php:57
+msgid "Individual Deposit Report"
+msgstr "Raport "
+
+#: FinancialReports.php:58
+msgid "Advanced Deposit Report"
+msgstr "Zaawansowany Raport"
+
+#: FinancialReports.php:65
+#: GroupReports.php:128
+msgid "Next"
+msgstr "Następny"
+
+#: FinancialReports.php:117
+#: SelectList.php:541
+#: SelectListFormatted.php:561
+msgid "All Classifications"
+msgstr "Wszystkie Klasyfikacje"
+
+#: FinancialReports.php:132
+msgid "Filter by Family:"
+msgstr "Sortuj wg Rodziny"
+
+#: FinancialReports.php:136
+#: FinancialReports.php:260
+#: GeoPage.php:267
+msgid "All Families"
+msgstr "Wszystkie Rodziny"
+
+#: FinancialReports.php:173
+msgid "Report Start Date:"
+msgstr "Data Rozpoczęcia Raportu:"
+
+#: FinancialReports.php:174
+#: FinancialReports.php:176
+#: FindDepositSlip.php:85
+#: FindDepositSlip.php:92
+#: FindFundRaiser.php:77
+#: FindFundRaiser.php:84
+msgid "[YYYY-MM-DD]"
+msgstr "[YYYY-MM-DD]"
+
+#: FinancialReports.php:175
+msgid "Report End Date:"
+msgstr "Data Końca Raportu:"
+
+#: FinancialReports.php:178
+msgid "Apply Report Dates To:"
+msgstr "Przypisz Daty Raportu do:"
+
+#: FinancialReports.php:179
+msgid "Deposit Date (Default)"
+msgstr "Data Deposit (Domyślna)"
+
+#: FinancialReports.php:180
+msgid "Payment Date"
+msgstr "Data Płatności:"
+
+#: FinancialReports.php:196
+msgid "Filter by Deposit:"
+msgstr "Sortuj wg Deposit:"
+
+#: FinancialReports.php:199
+msgid "If deposit is selected, date criteria will be ignored."
+msgstr "Jeżeli wybrano Deposit, Data zostanie zignorowana."
+
+#: FinancialReports.php:202
+msgid "All deposits within date range"
+msgstr "Wszystkie deposits w przedziale czasowym"
+
+#: FinancialReports.php:214
+msgid "Filter by Fund:"
+msgstr "Sortuj wg. Celu:"
+
+#: FinancialReports.php:218
+#: Reports/FamilyPledgeSummary.php:141
+#: Reports/ReminderReport.php:161
+msgid "All Funds"
+msgstr "Wszystkie Cele"
+
+#: FinancialReports.php:231
+msgid "Filter by Payment Type:"
+msgstr "Sortuj wg. Sposobu Płatności:"
+
+#: FinancialReports.php:235
+msgid "All Methods"
+msgstr "Wszystkie Sposoby"
+
+#: FinancialReports.php:236
+msgid "Check"
+msgstr "Czek"
+
+#: FinancialReports.php:237
+msgid "Cash"
+msgstr "Gotówka"
+
+#: FinancialReports.php:245
+msgid "Minimun Total Amount:"
+msgstr "Kwota Minimalna:"
+
+#: FinancialReports.php:247
+msgid "0 - No Minimum"
+msgstr "0 - bez Minimum"
+
+#: FinancialReports.php:252
+msgid "Other Settings"
+msgstr "Inne Ustawienia"
+
+#: FinancialReports.php:255
+msgid "Include:"
+msgstr "Wliczając (include):"
+
+#: FinancialReports.php:256
+msgid "Only Payments with Pledges"
+msgstr "Tylko Płatności z Datkami (Pledges)"
+
+#: FinancialReports.php:257
+msgid "All Payments"
+msgstr "Wszystkie płatności"
+
+#: FinancialReports.php:258
+msgid "Generate:"
+msgstr "Wygeneruj:"
+
+#: FinancialReports.php:259
+msgid "Only Families with unpaid pledges"
+msgstr "Tylko Rodziny z nieopłaconymi Pledges"
+
+#: FinancialReports.php:264
+msgid "Report Heading:"
+msgstr "Nagłówek Raportu:"
+
+#: FinancialReports.php:265
+msgid "Graphic"
+msgstr "Grafika"
+
+#: FinancialReports.php:266
+msgid "Church Address"
+msgstr "Adres Kościoła"
+
+#: FinancialReports.php:267
+msgid "Blank"
+msgstr "Puste"
+
+#: FinancialReports.php:268
+msgid "Remittance Slip:"
+msgstr "Odcinek Wpłaty:"
+
+#: FinancialReports.php:274
+msgid "Sort Data by:"
+msgstr "Sortuj Dane wg.:"
+
+#: FinancialReports.php:275
+#: MenuStrings.php:34
+msgid "Deposit"
+msgstr "Deposit"
+
+#: FinancialReports.php:279
+msgid "All Data"
+msgstr "Wszystkie Dane"
+
+#: FinancialReports.php:280
+msgid "Moderate Detail"
+msgstr "Zarządzaj Szczegółami"
+
+#: FinancialReports.php:281
+msgid "Summary Data"
+msgstr "Dane Podsumowujące"
+
+#: FinancialReports.php:285
+msgid ""
+"Voting members must have made<br>\n"
+"\t\t\ta donation within this many years<br>\n"
+"\t\t\t(0 to not require a donation):"
+msgstr ""
+"Głosujący Członkowie powinni dokonać<br>\n"
+"			 płatności w ciągu tylu lat<br>\n"
+"			(0 gdy płatności nie są wymagane):"
+
+#: FinancialReports.php:293
+msgid "Deposit Slip"
+msgstr "Odcinek Deposit"
+
+#: FinancialReports.php:294
+msgid "Deposit Report"
+msgstr "Deposit Report"
+
+#: FinancialReports.php:300
+msgid "PDF"
+msgstr "PDF"
+
+#: FinancialReports.php:301
+msgid "CSV"
+msgstr "CSV"
+
+#: FinancialReports.php:308
+#: PledgeDetails.php:61
+msgid "Back"
+msgstr "Wstecz"
+
+#: FindDepositSlip.php:23
+msgid "Deposit Listing"
+msgstr "Lista Deposit"
+
+#: FindDepositSlip.php:79
+#: FindFundRaiser.php:71
+#: PaddleNumEditor.php:177
+msgid "Number:"
+msgstr "Numer:"
+
+#: FindDepositSlip.php:84
+#: FindFundRaiser.php:76
+msgid "Date Start:"
+msgstr "Data Rozpoczęcia:"
+
+#: FindDepositSlip.php:87
+#: FindFundRaiser.php:79
+msgid "Apply Filters"
+msgstr "Sortuj wg."
+
+#: FindDepositSlip.php:91
+#: FindFundRaiser.php:83
+msgid "Date End:"
+msgstr "Data Końcowa:"
+
+#: FindDepositSlip.php:94
+#: FindFundRaiser.php:86
+#: SelectList.php:712
+#: SelectListFormatted.php:736
+msgid "Clear Filters"
+msgstr "Usuń Sortowanie"
+
+#: FindDepositSlip.php:155
+#: FindFundRaiser.php:141
+#: GroupMemberList.php:217
+#: SelectList.php:746
+#: SelectListFormatted.php:784
+msgid "Previous Page"
+msgstr "Poprzednia Strona"
+
+#: FindDepositSlip.php:202
+#: FindFundRaiser.php:183
+#: GroupMemberList.php:259
+#: SelectList.php:783
+#: SelectList.php:1380
+#: SelectListFormatted.php:821
+#: SelectListFormatted.php:1475
+msgid "Next Page"
+msgstr "Następna Strona"
+
+#: FindDepositSlip.php:236
+#: FindFundRaiser.php:209
+#: GroupMemberList.php:289
+#: SelectList.php:847
+#: SelectList.php:1411
+#: SelectListFormatted.php:885
+#: SelectListFormatted.php:1506
+msgid "Display:"
+msgstr "Wyświetl:"
+
+#: FindDepositSlip.php:247
+#: FindFundRaiser.php:217
+#: GroupMemberList.php:187
+#: GroupMemberList.php:297
+#: SelectList.php:1422
+#: SelectListFormatted.php:1517
+msgid "Go"
+msgstr "Idź"
+
+#: FindDepositSlip.php:254
+#: FindFundRaiser.php:224
+#: PaddleNumList.php:53
+#: Include/Functions.php:109
+msgid "Number"
+msgstr "Numer"
+
+#: FindDepositSlip.php:256
+msgid "Total Payments"
+msgstr "Wpłaty Razem"
+
+#: FindDepositSlip.php:258
+msgid "Closed"
+msgstr "Zamknięty"
+
+#: FindDepositSlip.php:259
+msgid "Deposit Type"
+msgstr "Typ Depozytu"
+
+#: FindFundRaiser.php:21
+msgid "Fundraiser Listing"
+msgstr "Lista Przedmiotów w Zbiórce"
+
+#: FundRaiserEditor.php:33
+msgid "Fund Raiser #"
+msgstr "Zbiórka #"
+
+#: FundRaiserEditor.php:35
+msgid "Create New Fund Raiser"
+msgstr "Utwórz nową Zbiórkę"
+
+#: FundRaiserEditor.php:160
+msgid "Add Donated Item"
+msgstr "Dodaj Nowy Przedmiot"
+
+#: FundRaiserEditor.php:161
+msgid "Generate Catalog"
+msgstr "Wygeneruj Listę"
+
+#: FundRaiserEditor.php:162
+msgid "Generate Bid Sheets"
+msgstr "Wygeneruj Listę Licytujących"
+
+#: FundRaiserEditor.php:163
+msgid "Generate Certificates"
+msgstr "Wygeneruj Potwierdzenia Wygranej"
+
+#: FundRaiserEditor.php:194
+msgid "Donated items for this fundraiser:"
+msgstr "Podaruj przedmioty do tej Zbiórki"
+
+#: FundRaiserEditor.php:202
+msgid "Donor"
+msgstr "Darczyńca"
+
+#: FundRaiserEditor.php:203
+#: PaddleNumList.php:54
+msgid "Buyer"
+msgstr "Kupujący"
+
+#: FundRaiserEditor.php:205
+msgid "Sale Price"
+msgstr "Cena"
+
+#: FundRaiserEditor.php:206
+msgid "Est Value"
+msgstr "Przewidywana Wartość"
+
+#: FundRaiserEditor.php:207
+msgid "Material Value"
+msgstr "Cena Materiału"
+
+#: FundRaiserEditor.php:208
+msgid "Minimum Price"
+msgstr "Cena Minimalna"
+
+#: GeoPage.php:91
+msgid "Family Geographic Utilities"
+msgstr "Narzędzia Geo dla Rodziny"
+
+#: GeoPage.php:233
+msgid "Select Family:"
+msgstr "Wybierz Rodzinę:"
+
+#: GeoPage.php:247
+msgid "Maximum number of neighbors:"
+msgstr "Maksymalna liczba Sąsiadów:"
+
+#: GeoPage.php:252
+msgid "Maximum distance"
+msgstr "Maksymalna odległość"
+
+#: GeoPage.php:257
+msgid "Data file format:"
+msgstr "Format danych:"
+
+#: GeoPage.php:259
+msgid "GPS Visualizer"
+msgstr "Wizualizacja GPS"
+
+#: GeoPage.php:260
+msgid "Street Atlas USA"
+msgstr "Atlas Ulica USA"
+
+#: GeoPage.php:265
+msgid "Include families in coordinate file:"
+msgstr "Dołącz rodziny z pliku ze współżędnymi "
+
+#: GeoPage.php:268
+msgid "Neighbor Families"
+msgstr "Sąsiadujące Rodziny"
+
+#: GeoPage.php:273
+msgid "Coordinate data base file name"
+msgstr "Nazwa pliku ze współżędnymi"
+
+#: GeoPage.php:279
+msgid "Make Data File"
+msgstr "Utwórz plik z danymi"
+
+#: GeoPage.php:280
+msgid "Update All Family Coordinates"
+msgstr "Aktualizuj Współżędne dla Wszystkich Rodzin"
+
+#: GeoPage.php:285
+msgid "Show Neighbors"
+msgstr "Pokaż Sąsiadów"
+
+#: GeoPage.php:319
+msgid "Distance"
+msgstr "Odległość"
+
+#: GeoPage.php:320
+msgid "Direction"
+msgstr "KIerunek"
+
+#: GeoPage.php:326
+msgid "Latitude"
+msgstr "Szer. Geog"
+
+#: GeoPage.php:327
+msgid "Longitude"
+msgstr "Dł. Geog"
+
+#: GeoPage.php:388
+#: GroupList.php:52
+#: PersonView.php:214
+#: PersonView.php:822
+#: SelectList.php:713
+#: SelectList.php:1103
+#: SelectListFormatted.php:745
+#: SelectListFormatted.php:1145
+msgid "Add to Cart"
+msgstr "Dodaj do Koszyka"
+
+#: GeoPage.php:389
+#: SelectList.php:714
+#: SelectListFormatted.php:748
+msgid "Intersect with Cart"
+msgstr "Porównaj z Koszykiem"
+
+#: GeoPage.php:390
+#: GroupList.php:53
+#: SelectList.php:715
+#: SelectListFormatted.php:751
+msgid "Remove from Cart"
+msgstr "Usuń z Koszyka"
+
+#: GetText.php:33
+msgid "Text for Event ID: "
+msgstr "Tekst dla Wydarzenia (ID):"
+
+#: GroupDelete.php:29
+msgid "Group Delete Confirmation"
+msgstr "Potwierdzenie Usunięcia Grupy"
+
+#: GroupDelete.php:89
+msgid "Please confirm deletion of this group record:"
+msgstr "Proszę potwierdzić USUNIĘCIE tej Grupy:"
+
+#: GroupDelete.php:97
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "Spowoduję USUNIĘCIE Wszystkich Ról oraz osobnych ustawień powiązanych z tą Grupą."
+
+#: GroupDelete.php:101
+#: NoteDelete.php:75
+#: PropertyDelete.php:67
+#: PropertyTypeDelete.php:71
+#: SelectDelete.php:228
+#: UserDelete.php:67
+msgid "Yes, delete this record"
+msgstr "Tak, USUŃ ten Wpis"
+
+#: GroupDelete.php:101
+#: NoteDelete.php:75
+#: PropertyDelete.php:67
+msgid "(this action cannot be undone)"
+msgstr "(ta operacja jest nieodwracalna)"
+
+#: GroupDelete.php:104
+#: NoteDelete.php:79
+#: PropertyDelete.php:69
+#: PropertyTypeDelete.php:73
+#: SelectDelete.php:229
+#: UserDelete.php:69
+#: VolunteerOpportunityEditor.php:114
+msgid "No, cancel this deletion"
+msgstr "Nie, przerwij Usuwanie"
+
+#: GroupEditor.php:29
+msgid "Group Editor"
+msgstr "Edytor Grup"
+
+#: GroupEditor.php:223
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "Czy napewno chcesz USUNĄĆ specyficzne ustawienia dla tej Grupy? Wszystkie ustawienia członków tej Grupy zostaną UTRACONE!"
+
+#: GroupEditor.php:231
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "Zostanie Utworzona tabela ustawień specyficznych dla tej Grupy.Aby dodać nowe właściwości, użyj Edytora Ustawień Dodatkowych dla Grupy"
+
+#: GroupEditor.php:259
+#: GroupView.php:166
+msgid "Type of Group:"
+msgstr "Typ Grupy"
+
+#: GroupEditor.php:282
+msgid "Group Member Roles:"
+msgstr "Role Członków Grupy"
+
+#: GroupEditor.php:284
+msgid "Clone roles:"
+msgstr "Powiel Role"
+
+#: GroupEditor.php:286
+msgid "from group:"
+msgstr "z Grupy:"
+
+#: GroupEditor.php:288
+#: GroupPropsFormEditor.php:356
+msgid "Select a group"
+msgstr "Wybierz Grupę"
+
+#: GroupEditor.php:303
+msgid "Group-Specific<br>Properties:"
+msgstr "Ustawienia Dodatkowe<br>Grupy:"
+
+#: GroupEditor.php:305
+msgid "Use group-specific properties?"
+msgstr "Użyć Dodatkowych Ustawień Grupy?"
+
+#: GroupEditor.php:310
+#: GroupView.php:106
+msgid "Edit Group-Specific Properties Form"
+msgstr "Edytuj Ustwatawienia Dodatkowe dla Grupy"
+
+#: GroupEditor.php:319
+msgid "Empty Cart to this Group?"
+msgstr "Czy opróżnić Koszyk do tej grupy?"
+
+#: GroupEditor.php:346
+msgid "Group Roles:"
+msgstr "Rola w Grupie"
+
+#: GroupEditor.php:353
+msgid "Initial Group Creation:  Group roles can be edited after the first save."
+msgstr "Tworzenie Grupy: Role w Grupie mogą być modyfikowane po pierwszym zapisaniu."
+
+#: GroupList.php:28
+msgid "Group Listing"
+msgstr "Lista Grup"
+
+#: GroupList.php:35
+#: MenuStrings.php:57
+msgid "Add a New Group"
+msgstr "Dodaj Nową Grupę"
+
+#: GroupList.php:50
+msgid "Members"
+msgstr "Członkowie"
+
+#: GroupList.php:81
+#: GroupView.php:73
+msgid "Undefined"
+msgstr "Niezadefiniowane"
+
+#: GroupList.php:116
+msgid "Add all"
+msgstr "Dodaj Wszystkich"
+
+#: GroupList.php:130
+msgid "Remove all"
+msgstr "Usuń Wszystkicj"
+
+#: GroupMeeting.php:26
+msgid "Schedule Group Meeting"
+msgstr "Wyznacz Spotkanie Grupy"
+
+#: GroupMeeting.php:166
+msgid "Submit"
+msgstr "Zapisz"
+
+#: GroupMeeting.php:175
+msgid "Meeting name"
+msgstr "Nazwa dla Spotkania"
+
+#: GroupMeeting.php:180
+msgid "Meeting description"
+msgstr "Opis Spotkania"
+
+#: GroupMeeting.php:190
+msgid "Time"
+msgstr "Czas"
+
+#: GroupMeeting.php:193
+msgid "Midnight"
+msgstr "Północ"
+
+#: GroupMeeting.php:194
+#: GroupMeeting.php:206
+msgid "1"
+msgstr "1"
+
+#: GroupMeeting.php:195
+#: GroupMeeting.php:207
+msgid "2"
+msgstr "2"
+
+#: GroupMeeting.php:196
+#: GroupMeeting.php:208
+msgid "3"
+msgstr "3"
+
+#: GroupMeeting.php:197
+#: GroupMeeting.php:209
+msgid "4"
+msgstr "4"
+
+#: GroupMeeting.php:198
+#: GroupMeeting.php:210
+msgid "5"
+msgstr "5"
+
+#: GroupMeeting.php:199
+#: GroupMeeting.php:211
+msgid "6"
+msgstr "6"
+
+#: GroupMeeting.php:200
+#: GroupMeeting.php:212
+msgid "7"
+msgstr "7"
+
+#: GroupMeeting.php:201
+#: GroupMeeting.php:213
+msgid "8"
+msgstr "8"
+
+#: GroupMeeting.php:202
+#: GroupMeeting.php:214
+msgid "9"
+msgstr "9"
+
+#: GroupMeeting.php:203
+#: GroupMeeting.php:215
+msgid "10"
+msgstr "10"
+
+#: GroupMeeting.php:204
+#: GroupMeeting.php:216
+msgid "11"
+msgstr "11"
+
+#: GroupMeeting.php:205
+msgid "Noon"
+msgstr "Południe"
+
+#: GroupMeeting.php:219
+msgid "00"
+msgstr "00"
+
+#: GroupMeeting.php:220
+msgid "15"
+msgstr "15"
+
+#: GroupMeeting.php:221
+msgid "30"
+msgstr "30"
+
+#: GroupMeeting.php:222
+msgid "45"
+msgstr "45"
+
+#: GroupMeeting.php:228
+msgid "Duration (hours)"
+msgstr "Czas Trwania (godzin)"
+
+#: GroupMeeting.php:233
+msgid "Notify ahead (days)"
+msgstr "Poinformuj przed (dni)"
+
+#: GroupMemberList.php:153
+msgid "Group Member List"
+msgstr "Lista Członków Grupy"
+
+#: GroupMemberList.php:169
+#: GroupMemberList.php:198
+#: SelectList.php:725
+#: SelectList.php:1324
+#: SelectListFormatted.php:762
+#: SelectListFormatted.php:1418
+msgid "View All"
+msgstr "Pokaż Wszystko"
+
+#: GroupMemberList.php:184
+msgid "Show only"
+msgstr "Pokaż tylko"
+
+#: GroupMemberList.php:191
+msgid "Add Group View to Cart"
+msgstr "Dodaj Widok Grupy do Koszyka"
+
+#: GroupMemberList.php:301
+#: SelectList.php:1123
+#: SelectListFormatted.php:1165
+msgid "Print Page"
+msgstr "Drukuj stronę"
+
+#: GroupMemberList.php:307
+msgid "Hide Group-Specific Properties"
+msgstr "Ukryj Ustawienia Dodatkowe dla Grupy"
+
+#: GroupMemberList.php:309
+msgid "Show Group-Specific Properties"
+msgstr "Pokaż Ustawienia Dodatkowe dla Grupy"
+
+#: GroupMemberList.php:318
+msgid "Group Role"
+msgstr "Rola w Grupie"
+
+#: GroupMemberList.php:322
+msgid "ZIP"
+msgstr "Kod pocztowy"
+
+#: GroupMemberList.php:324
+msgid "E-mail"
+msgstr "Email"
+
+#: GroupMemberList.php:410
+#: PersonView.php:693
+#: PropertyList.php:56
+msgid "Property"
+msgstr "Ustawienia"
+
+#: GroupPropsEditor.php:29
+msgid "Group Member Properties Editor"
+msgstr "Edytor Ustawień dla Członka Grupy"
+
+#: GroupPropsEditor.php:131
+msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr "Ta Grupa nie ma żadnych Ustawień! Możesz dodać je używając Edytora Grup."
+
+#: GroupPropsEditor.php:133
+msgid "Return to Person Record"
+msgstr "Wróć to Danych Osoby"
+
+#: GroupPropsEditor.php:138
+msgid "Editing"
+msgstr "Edytowanie danych"
+
+#: GroupPropsEditor.php:138
+msgid "data for member"
+msgstr "dla"
+
+#: GroupPropsFormEditor.php:42
+msgid "Group-Specific Properties Form Editor:"
+msgstr "Edytor Ustawień Dodatkowych dla Grupy:"
+
+#: GroupPropsFormEditor.php:187
+msgid "'Default Option'"
+msgstr "'Ustawienia Domyślne'"
+
+#: GroupPropsFormEditor.php:284
+msgid "No properties have been added yet"
+msgstr "Nie dodano jeszcze żadnych nowych Ustawień"
+
+#: GroupPropsFormEditor.php:293
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+msgstr "Uwaga: Wprowadzone zmiany zostaną UTRACONE jeżeli nie 'Zapiszesz Zmian' przed wykonaniem inne operacji!"
+
+#: GroupPropsFormEditor.php:317
+msgid "Show in"
+msgstr "Pokaż"
+
+#: GroupPropsFormEditor.php:317
+#: PersonView.php:193
+msgid "Person View"
+msgstr "Widok Osoby"
+
+#: GroupReports.php:28
+msgid "Group reports"
+msgstr "Raport Grupy"
+
+#: GroupReports.php:92
+msgid "Select the group you would like to report:"
+msgstr "Zaznacz Grupę dla której chcesz:Select the group you would like to report:"
+
+#: GroupReports.php:114
+msgid "Only cart persons?:"
+msgstr "Czy chcesz tylko dodać Osoby do Koszyka?"
+
+#: GroupReports.php:118
+msgid "Report Model:"
+msgstr "Rodzaj Raportu"
+
+#: GroupReports.php:120
+msgid "Report for group and role selected"
+msgstr "Raport dla wybranej Grupy i Roli w Grupie"
+
+#: GroupReports.php:121
+msgid "Report for any role in group selected"
+msgstr "Raport dla dowolnej Roli w wybranej Grupie"
+
+#: GroupReports.php:152
+msgid "Select which information you want to include"
+msgstr "Wybierz jakie informacje mają być zawarte"
+
+#: GroupReports.php:156
+msgid "Standard Info:"
+msgstr "Dane Podstawowe (Standard)"
+
+#: GroupReports.php:161
+#: SelectList.php:1162
+#: SelectListFormatted.php:1214
+#: Reports/CanvassReports.php:262
+msgid "Cell Phone"
+msgstr "Tel. Kom."
+
+#: GroupReports.php:163
+#: Reports/GroupReport.php:280
+msgid "Other Email"
+msgstr "Inny email"
+
+#: GroupReports.php:164
+msgid "GroupRole"
+msgstr "Rola w Grupie"
+
+#: GroupReports.php:168
+msgid "Group-Specific Property Fields:"
+msgstr "Pola Ustawień Dodatkowych dla Grupy: "
+
+#: GroupView.php:28
+msgid "Group View"
+msgstr "Widok Grupy"
+
+#: GroupView.php:102
+msgid "Edit this Group"
+msgstr "Edytuj Grupę"
+
+#: GroupView.php:103
+msgid "Delete this Group"
+msgstr "Usuń Grupę"
+
+#: GroupView.php:109
+msgid "Add Group Members to Cart"
+msgstr "Dodaj Członków Grupy do Koszyka"
+
+#: GroupView.php:110
+msgid "Schedule a meeting"
+msgstr "Wyznacz Spotkanie"
+
+#: GroupView.php:112
+msgid "Map this group"
+msgstr "Pokaż Grupę na Mapie"
+
+#: GroupView.php:146
+msgid "Email Group"
+msgstr "Wyślij Email do Grupy"
+
+#: GroupView.php:164
+msgid "Total Members:"
+msgstr "Liczba Członków:"
+
+#: GroupView.php:168
+msgid "Default Role:"
+msgstr "Domyślna Rola:"
+
+#: GroupView.php:176
+msgid "Group-Specific Properties:"
+msgstr "Ustawienia Dodatkowe dla Grupy:"
+
+#: GroupView.php:224
+msgid "Disabled for this group."
+msgstr "Wyłącz dla tej Grupy."
+
+#: GroupView.php:337
+#: PersonView.php:600
+#: PersonView.php:729
+#: PersonView.php:800
+#: PropertyAssign.php:192
+#: SelectList.php:975
+#: SelectListFormatted.php:1015
+msgid "Assign"
+msgstr "Przypisz"
+
+#: GroupView.php:348
+msgid "Group Members:"
+msgstr "Członkowie Grupy:"
+
+#: LettersAndLabels.php:29
+#: ReportList.php:55
+msgid "Letters and Mailing Labels"
+msgstr "Listy i Naklejki Adresowe"
+
+#: LettersAndLabels.php:62
+msgid "Newsletter labels"
+msgstr "Naklejki Newsletter"
+
+#: LettersAndLabels.php:63
+msgid "Confirm data letter"
+msgstr "Potwierdź data letter"
+
+#: LettersAndLabels.php:64
+msgid "Confirm data labels"
+msgstr "Potwierdź data labels"
+
+#: ListEvents.php:47
+msgid "Listing All Church Events"
+msgstr "Pokaż Wszystkie Wydarzenia"
+
+#: ListEvents.php:90
+msgid "Select Event Types To Display"
+msgstr "Zaznacz Typy Wydarzeń do Pokazania"
+
+#: ListEvents.php:128
+msgid "Display Events in Year"
+msgstr "Pokaż Wydarzenia w Roku"
+
+#: ListEvents.php:279
+msgid "No Attendance Recorded"
+msgstr "Nie odnotowane obecnych"
+
+#: ListEvents.php:299
+msgid "Attendees("
+msgstr "Uczestnicy("
+
+#: ListEvents.php:299
+msgid ")"
+msgstr ")"
+
+#: ListEvents.php:329
+msgid " Monthly Averages"
+msgstr " Średnia w Miesiącu"
+
+#: ManageEnvelopes.php:23
+#: MenuStrings.php:17
+msgid "Envelope Manager"
+msgstr "Zarządzanie Kopertami"
+
+#: ManageEnvelopes.php:118
+msgid "Confirm"
+msgstr "Potwierdź"
+
+#: ManageEnvelopes.php:126
+msgid "Print Report"
+msgstr "Wydrukuj Raport"
+
+#: ManageEnvelopes.php:130
+msgid "Update Family Records"
+msgstr "Aktualizuj Wpis Rodziny"
+
+#: ManageEnvelopes.php:141
+msgid "All"
+msgstr "Wszystkie"
+
+#: ManageEnvelopes.php:150
+msgid "Sort by"
+msgstr "Sortuj wg."
+
+#: ManageEnvelopes.php:154
+#: PledgeEditor.php:568
+msgid "Envelope #"
+msgstr "Koperta #"
+
+#: ManageEnvelopes.php:159
+msgid "Zero"
+msgstr "Zero"
+
+#: ManageEnvelopes.php:161
+msgid "Assign starting at #"
+msgstr "Przypisz Numer zaczynając od #"
+
+#: MemberRoleChange.php:28
+msgid "Member Role Change"
+msgstr "Zmiana Roli Członka"
+
+#: MemberRoleChange.php:83
+msgid "Group Name:"
+msgstr "Nazwa Grupy:"
+
+#: MemberRoleChange.php:87
+msgid "Member's Name:"
+msgstr "Członkowie:"
+
+#: MemberRoleChange.php:91
+msgid "Current Role:"
+msgstr "Rola"
+
+#: MemberRoleChange.php:95
+msgid "New Role:"
+msgstr "Nowa Rola"
+
+#: Menu.php:31
+msgid "Welcome to ChurchCRM"
+msgstr "Witamy w ChurchCRM"
+
+#: Menu.php:36
+msgid "Hi"
+msgstr "Witaj"
+
+#: Menu.php:40
+msgid "This is your first login"
+msgstr "To twoje pierwsze logowanie"
+
+#: Menu.php:49
+msgid "Welcome back"
+msgstr "Witaj Ponownie"
+
+#: Menu.php:51
+msgid "You last logged in on"
+msgstr "Ostatnie logowanie"
+
+#: Menu.php:52
+msgid "at"
+msgstr " "
+
+#: Menu.php:54
+msgid "There were"
+msgstr "Było"
+
+#: Menu.php:55
+msgid "failed login attempt(s) since your last successful login"
+msgstr "nieudanych prób od ostatniego poprawnego logowaia"
+
+#: MenuEditor.php:69
+#: MenuSetup.php:28
+msgid "Menu Item Editor"
+msgstr "Edytor Menu"
+
+#: MenuEditor.php:135
+msgid "Must provide menu text"
+msgstr "Musisz podać nazwę dla wpisu"
+
+#: MenuEditor.php:143
+msgid "Missing Session Variable name"
+msgstr "Brakuje nazwy zmiennych sesji"
+
+#: MenuEditor.php:270
+msgid "Are you sure to delete this menu entry? Action cannot be redone!"
+msgstr "Czy napewno chcesz USUNĄĆ ten wpis? Zmiana jest nieodwracalna!"
+
+#: MenuEditor.php:274
+#: MenuEditor.php:382
+msgid "Menu Text"
+msgstr "Tekst Menu"
+
+#: MenuEditor.php:279
+#: MenuEditor.php:389
+msgid "In Menu:"
+msgstr "W menu:"
+
+#: MenuEditor.php:284
+#: MenuEditor.php:413
+msgid "Open another sub-menu?"
+msgstr "Utwórz kolejne pod-menu?"
+
+#: MenuEditor.php:296
+#: MenuEditor.php:422
+msgid "Link URL:"
+msgstr "Skrót URL:"
+
+#: MenuEditor.php:301
+#: MenuEditor.php:427
+msgid "Text on Status Line:"
+msgstr "Podpowiedź na pasku statusu:"
+
+#: MenuEditor.php:306
+#: MenuEditor.php:432
+msgid "Security Group:"
+msgstr "Grupa Bezpieczeństwa (Security):"
+
+#: MenuEditor.php:310
+#: MenuEditor.php:449
+msgid "Parameter"
+msgstr "Parametr"
+
+#: MenuEditor.php:314
+#: MenuEditor.php:454
+msgid "Session Variable Name:"
+msgstr "Nazwa zmiennej dla sesji:"
+
+#: MenuEditor.php:318
+#: MenuEditor.php:461
+msgid "Session Variable in Status"
+msgstr "Zmienna sesji na pasku statusu"
+
+#: MenuEditor.php:330
+#: MenuEditor.php:470
+msgid "Session Variable in Link Address"
+msgstr "Zmienna sesji w adresie linku"
+
+#: MenuEditor.php:342
+msgid "Currently Active?"
+msgstr "Aktywny?"
+
+#: MenuEditor.php:372
+#: UserList.php:90
+#: UserList.php:96
+msgid "Reset"
+msgstr "Zresetuj"
+
+#: MenuEditor.php:382
+msgid "Text appears on menu"
+msgstr "Tekst występuje w menu "
+
+#: MenuEditor.php:389
+msgid "belongs to menu..."
+msgstr "przynależy do menu..."
+
+#: MenuEditor.php:413
+msgid "Does this item open another menu?"
+msgstr "Czy ten wpis otwiera nowe menu?"
+
+#: MenuEditor.php:422
+msgid "Link URL"
+msgstr "Adres URL"
+
+#: MenuEditor.php:461
+msgid "Show session variable in status?"
+msgstr "Czy pokazać zmienne sesji w pasku statusu"
+
+#: MenuEditor.php:470
+msgid "Need evaluated session variable in Link Address?"
+msgstr "Czy potrzeba zatwierdzonej (evaluated) zmiennej sesji w adresie linku?"
+
+#: MenuEditor.php:479
+msgid "Do you want to make this menu item available?"
+msgstr "Czy chcesz uaktywnić ten wpis w menu?"
+
+#: MenuEditor.php:479
+msgid "Active?"
+msgstr "Aktywne?"
+
+#: MenuManager.php:31
+msgid "Menu Tree"
+msgstr "Drzewo Menu"
+
+#: MenuManager.php:32
+msgid "Definition"
+msgstr "Definicja"
+
+#: MenuManager.php:118
+msgid "Name cannot be duplicated"
+msgstr "Nazwa nie może być duplikatem"
+
+#: MenuManager.php:197
+#: OptionManager.php:314
+#: OptionManagerSave.php:308
+msgid "Error: Duplicate"
+msgstr "Błąd: Istnieje Duplikat"
+
+#: MenuManager.php:197
+#: OptionManager.php:314
+#: OptionManagerSave.php:308
+msgid "s are not allowed."
+msgstr "(s) nie są dopuszczalne."
+
+#: MenuManager.php:241
+#: MenuManager.php:272
+msgid "Name cannot be empty"
+msgstr "Nazwa nie może być pusta"
+
+#: MenuManager.php:244
+#: MenuManager.php:274
+msgid "Duplicate name"
+msgstr "Duplikat nazwy"
+
+#: MenuManager.php:266
+#: OptionManager.php:389
+#: OptionManagerSave.php:386
+msgid "Add New"
+msgstr "Dodaj Nowe"
+
+#: MenuSetup.php:81
+msgid "Inactive"
+msgstr "Nieaktywne"
+
+#: MenuStrings.php:2
+msgid "Main"
+msgstr "Główne"
+
+#: MenuStrings.php:3
+msgid "Log Off"
+msgstr "Wyloguj"
+
+#: MenuStrings.php:4
+msgid "Change My Password"
+msgstr "Zmień Moje Hasło"
+
+#: MenuStrings.php:5
+msgid "Change My Settings"
+msgstr "Zmień Moje Ustawienia"
+
+#: MenuStrings.php:6
+msgid "Admin"
+msgstr "Administarcja"
+
+#: MenuStrings.php:7
+msgid "Edit Users"
+msgstr "Edytuj Użytkowników"
+
+#: MenuStrings.php:8
+msgid "Add New User"
+msgstr "Dodaj Nowego Użytkownika"
+
+#: MenuStrings.php:9
+msgid "Edit Custom Person Fields"
+msgstr "Edytuj Dodatkowe Pola Osoby"
+
+#: MenuStrings.php:10
+msgid "Edit Donation Funds"
+msgstr "Edytuj Donation Funds"
+
+#: MenuStrings.php:12
+msgid "CSV Import"
+msgstr "Importuj CSV"
+
+#: MenuStrings.php:14
+msgid "Edit General Settings"
+msgstr "Edytuj Ustawienia Domyślne"
+
+#: MenuStrings.php:15
+msgid "Edit Report Settings"
+msgstr "Edytuj Ustawienia Rapotrów"
+
+#: MenuStrings.php:16
+msgid "Edit User Default Settings"
+msgstr "Edytuj Ustawienia Użytkowników"
+
+#: MenuStrings.php:18
+msgid "Please select this option to register ChurchCRM after configuring."
+msgstr "Proszę zaznaczyć tę opcję aby zarejestrować ChurchCRM po skonfigurowaniu."
+
+#: MenuStrings.php:19
+msgid "People/Families"
+msgstr "Osoby / Rodziny"
+
+#: MenuStrings.php:20
+msgid "Add New Person"
+msgstr "Dodaj Nową Osobę"
+
+#: MenuStrings.php:21
+msgid "View All Persons"
+msgstr "Pokaż Wszystkie Osoby"
+
+#: MenuStrings.php:22
+msgid "Classification Manager"
+msgstr "Menadżer Klasyfikacji"
+
+#: MenuStrings.php:23
+msgid "Edit volunteer opportunities"
+msgstr "Edytuj zadania dla Wolontariuszy"
+
+#: MenuStrings.php:24
+msgid "Add New Family"
+msgstr "Dodaj Nową Rodzinę"
+
+#: MenuStrings.php:25
+msgid "View All Families"
+msgstr "Pokaż Wszystkie Rodziny"
+
+#: MenuStrings.php:26
+msgid "Family Geographic Utilties"
+msgstr "Narzędzia Geo dla Rodziny"
+
+#: MenuStrings.php:27
+msgid "Family Map"
+msgstr "Mapa Rodzin"
+
+#: MenuStrings.php:28
+msgid "Family Roles Manager"
+msgstr "Menadżer Ról Rodzinnych"
+
+#: MenuStrings.php:29
+#: MenuStrings.php:82
+msgid "Events"
+msgstr "Wydarzenia"
+
+#: MenuStrings.php:30
+msgid "List Church Events"
+msgstr "Pokaż Wydarzenia"
+
+#: MenuStrings.php:31
+msgid "Add Church Event"
+msgstr "Dodaj Wydarzenie"
+
+#: MenuStrings.php:32
+msgid "List Event Types"
+msgstr "Pokaż Typy Wydarzeń"
+
+#: MenuStrings.php:33
+msgid "Check-in and Check-out"
+msgstr "Lista Obecności (Wpisz / Wypisz)"
+
+#: MenuStrings.php:35
+msgid "Create New Deposit"
+msgstr "Dodaj Wpłaty"
+
+#: MenuStrings.php:36
+msgid "View All Deposits"
+msgstr "Pokaż Wszystkie Wpłaty"
+
+#: MenuStrings.php:37
+msgid "Deposit Reports"
+msgstr "Raporty Wpłat"
+
+#: MenuStrings.php:38
+msgid "Edit Deposit Slip"
+msgstr "Edytuj Odcinki Wpłaty"
+
+#: MenuStrings.php:39
+#: MenuStrings.php:73
+msgid "Fundraiser"
+msgstr "Zbiórki / Aukcje"
+
+#: MenuStrings.php:40
+msgid "Create New Fundraiser"
+msgstr "Dodaj Nową Zbiórkę"
+
+#: MenuStrings.php:41
+msgid "View All Fundraisers"
+msgstr "Pokaż Wszystkie Zbiórki"
+
+#: MenuStrings.php:42
+msgid "Edit Fundraiser"
+msgstr "Edytuj Zbiórkę"
+
+#: MenuStrings.php:43
+msgid "View Buyers"
+msgstr "Pokaż Kupujących"
+
+#: MenuStrings.php:44
+msgid "Add Donors to Buyer List"
+msgstr "Dodaj Darczyńcę do listy Kupujących"
+
+#: MenuStrings.php:45
+#: MenuStrings.php:76
+#: SelectList.php:969
+#: SelectListFormatted.php:1009
+msgid "Cart"
+msgstr "Koszyk"
+
+#: MenuStrings.php:46
+msgid "List Cart Items"
+msgstr "Pokaż wpisy z Koszyka"
+
+#: MenuStrings.php:51
+msgid "Data/Reports"
+msgstr "Dane / Raporty"
+
+#: MenuStrings.php:52
+msgid "CSV Export Records"
+msgstr "Eksportuj Wpisy do CSV"
+
+#: MenuStrings.php:53
+msgid "Query Menu"
+msgstr "Menu Wyszukiwania"
+
+#: MenuStrings.php:54
+msgid "Reports Menu"
+msgstr "Menu Raportów"
+
+#: MenuStrings.php:55
+#: MenuStrings.php:71
+msgid "Groups"
+msgstr "Grupy"
+
+#: MenuStrings.php:56
+msgid "List Groups"
+msgstr "Pokaż Grupy"
+
+#: MenuStrings.php:58
+msgid "Edit Group Types"
+msgstr "Edytuj Typy Grup"
+
+#: MenuStrings.php:59
+#: SelectList.php:174
+#: SelectListFormatted.php:170
+msgid "Group Assignment Helper"
+msgstr "Asystem Przypiswyania Grup"
+
+#: MenuStrings.php:60
+#: MenuStrings.php:77
+#: PersonView.php:640
+#: PropertyTypeList.php:40
+msgid "Properties"
+msgstr "Właściwości"
+
+#: MenuStrings.php:61
+msgid "People Properties"
+msgstr "Właściowści Osób"
+
+#: MenuStrings.php:62
+msgid "Family Properties"
+msgstr "Właściowści Rodzin"
+
+#: MenuStrings.php:63
+msgid "Group Properties"
+msgstr "Właściowści Grup"
+
+#: MenuStrings.php:64
+msgid "Property Types"
+msgstr "Typy Właściwości"
+
+#: MenuStrings.php:65
+msgid "Help"
+msgstr "Pomoc"
+
+#: MenuStrings.php:66
+msgid "About ChurchCRM"
+msgstr "O ChurchCRM"
+
+#: MenuStrings.php:67
+msgid "Wiki Documentation"
+msgstr "Wiki Dokumentacja"
+
+#: MenuStrings.php:68
+#: Include/Header-function.php:577
+msgid "People"
+msgstr "Osoby"
+
+#: MenuStrings.php:69
+#: Include/Header-function.php:584
+msgid "Families"
+msgstr "Rodziny"
+
+#: MenuStrings.php:70
+msgid "Geographic features"
+msgstr "Narzędzia Geo"
+
+#: MenuStrings.php:72
+msgid "Finances"
+msgstr "Finanse"
+
+#: MenuStrings.php:74
+msgid "Reports"
+msgstr "Raporty"
+
+#: MenuStrings.php:75
+msgid "Administration"
+msgstr "Administracja"
+
+#: MenuStrings.php:78
+#: SettingsUser.php:92
+msgid "Notes"
+msgstr "Notatki"
+
+#: MenuStrings.php:80
+msgid "Classifications"
+msgstr "Klasyfikacja"
+
+#: MenuStrings.php:81
+msgid "Canvass Support"
+msgstr "Pomoc z Ankietą"
+
+#: MenuStrings.php:83
+msgid "Menu Options"
+msgstr "Opcje Menu"
+
+#: MenuStrings.php:84
+msgid "Edit Custom Family Fields"
+msgstr "Edytuj Dodatkowe Pola Rodziny"
+
+#: mrbs.php:26
+msgid "ChurchCRM MRBS Portal"
+msgstr "Portal ChurchCRM MRBS"
+
+#: NoteDelete.php:29
+msgid "Note Delete Confirmation"
+msgstr "Potwierdzenie Usunięcia Notatki"
+
+#: NoteDelete.php:67
+msgid "Please confirm deletion of this note:"
+msgstr "Proszę potwierdzić USUNIĘCIE tej notatki:"
+
+#: NoteEditor.php:29
+msgid "Note Editor"
+msgstr "Edytor Notatek"
+
+#: NoteEditor.php:132
+msgid "Private"
+msgstr "Prywatne"
+
+#: OptionManager.php:70
+#: OptionManagerSave.php:70
+#: PropertyAssign.php:47
+#: PropertyEditor.php:42
+#: PropertyList.php:27
+#: PropertyTypeEditor.php:99
+#: PropertyTypeList.php:61
+#: Include/Header-function.php:443
+msgid "Person"
+msgstr "Osoba"
+
+#: OptionManager.php:76
+#: OptionManager.php:83
+#: OptionManagerSave.php:76
+#: OptionManagerSave.php:83
+#: PropertyAssign.php:63
+#: PropertyEditor.php:50
+#: PropertyList.php:35
+#: PropertyTypeEditor.php:101
+#: PropertyTypeList.php:61
+msgid "Group"
+msgstr "Grupa"
+
+#: OptionManager.php:82
+#: OptionManagerSave.php:82
+msgid "Security"
+msgstr "Bezpieczeństwo (Security)"
+
+#: OptionManager.php:88
+#: OptionManagerSave.php:88
+msgid "Group Member"
+msgstr "Członek Grupy"
+
+#: OptionManager.php:107
+#: OptionManagerSave.php:107
+msgid "Person Custom List"
+msgstr "Person Custom List"
+
+#: OptionManager.php:108
+#: OptionManager.php:124
+#: OptionManager.php:140
+#: OptionManagerSave.php:108
+#: OptionManagerSave.php:124
+#: OptionManagerSave.php:140
+msgid "Option"
+msgstr "Opcje"
+
+#: OptionManager.php:123
+#: OptionManagerSave.php:123
+msgid "Custom List"
+msgstr "Lista niestandardowa"
+
+#: OptionManager.php:139
+#: OptionManagerSave.php:139
+msgid "Family Custom List"
+msgstr "Niestandardowa Lista Rodziny"
+
+#: OptionManager.php:307
+#: OptionManagerSave.php:301
+msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+msgstr "Uwaga: Usunięcie spowoduje wymazanie wszystkich przypisań dla wszystkich osób z tym przypisaniem!"
+
+#: OptionManager.php:343
+#: OptionManagerSave.php:340
+msgid "Default"
+msgstr "Domyślne"
+
+#: OptionManager.php:369
+#: OptionManagerSave.php:366
+msgid "Duplicate name found."
+msgstr "Znaleziono duplikat Nazwy."
+
+#: OptionManager.php:374
+#: OptionManagerSave.php:371
+msgid "Make Default"
+msgstr "Uczyń Domyślnym"
+
+#: OptionManager.php:395
+#: OptionManagerSave.php:392
+msgid "Error: You must enter a name."
+msgstr "Błąd: Musisz podać nazwę."
+
+#: OptionManager.php:397
+#: OptionManagerSave.php:394
+msgid "Error: A "
+msgstr "Błąd: "
+
+#: OptionManager.php:397
+#: OptionManagerSave.php:394
+msgid " by that name already exists."
+msgstr " nazwa już istnieje."
+
+#: PaddleNumEditor.php:43
+msgid "Buyer Number Editor"
+msgstr "Edytor Numeru Kupującego"
+
+#: PaddleNumEditor.php:164
+msgid "Generate Statement"
+msgstr "Wygeneruj Wyciąg"
+
+#: PaddleNumList.php:36
+msgid "Buyers for this fundraiser:"
+msgstr "Kupujący dla tej Zbiórki"
+
+#: PaddleNumList.php:43
+msgid "Select all"
+msgstr "Zaznacz wszystko"
+
+#: PaddleNumList.php:44
+msgid "Select none"
+msgstr "Odznacz wszystko"
+
+#: PaddleNumList.php:45
+msgid "Add Buyer"
+msgstr "Dodaj Kupującego"
+
+#: PaddleNumList.php:46
+msgid "Generate Statements for Selected"
+msgstr "Wygeneruj Wyciąg dla Zaznaczonych"
+
+#: PaddleNumList.php:52
+msgid "Select"
+msgstr "Zaznacz"
+
+#: PersonCustomFieldsEditor.php:27
+msgid "Custom Person Fields Editor"
+msgstr "Edytor Pól Dodatkowych (Osoba)"
+
+#: PersonCustomFieldsEditor.php:292
+msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
+msgstr "Uwaga: Usuwając to pole, nie odwracalnie utracisz wszystkie dane przypisane do tego pola!"
+
+#: PersonCustomFieldsEditor.php:307
+msgid "No custom person fields have been added yet"
+msgstr "Nie dodano jeszcze żadnych dodatkowych pól"
+
+#: PersonCustomFieldsEditor.php:340
+msgid "Person-View Side"
+msgstr "Widok Osoby"
+
+#: PersonEditor.php:21
+msgid "Person Editor"
+msgstr "Edytor Osób"
+
+#: PersonEditor.php:176
+msgid "You must enter a Last Name if no Family is selected."
+msgstr "Musisz podać Nazwisko jeżeli nie jest wybrana Rodzina"
+
+#: PersonEditor.php:208
+msgid "Not a valid Friend Date"
+msgstr "Nie prawidłowa data w polu Przyjaciel"
+
+#: PersonEditor.php:221
+msgid "Not a valid Membership Date"
+msgstr "Nie prawidłowa data w polu Członkostwo"
+
+#: PersonEditor.php:245
+msgid "Work Email is Not Valid"
+msgstr "Email (Praca) nie jest porawny"
+
+#: PersonEditor.php:559
+msgid "Items in"
+msgstr "Pola"
+
+#: PersonEditor.php:559
+msgid "red"
+msgstr "zaznaczone na czerwono"
+
+#: PersonEditor.php:559
+msgid "have corresponding values on the associated family record."
+msgstr "są powiązane z polami Rodziny"
+
+#: PersonEditor.php:618
+msgid "Create a new family (using last name)"
+msgstr "Utwórz Nową Rodzinę (używając Nazwiska)"
+
+#: PersonEditor.php:776
+#: PrintView.php:258
+msgid "Work / Other Email:"
+msgstr "Email Praca / Inny:"
+
+#: PersonEditor.php:785
+msgid "Birth Date:"
+msgstr "Data Urodzenia:"
+
+#: PersonEditor.php:803
+msgid "Unk"
+msgstr "NN"
+
+#: PersonEditor.php:820
+msgid "Birth Year:"
+msgstr "Rok Urodzenia:"
+
+#: PersonEditor.php:821
+msgid "Must be four-digit format."
+msgstr "Musi być w formacie czterocyfrowym"
+
+#: PersonEditor.php:822
+msgid "Hide Age"
+msgstr "Ukryj Wiek"
+
+#: PersonEditor.php:839
+#: PersonView.php:427
+msgid "Friend Date:"
+msgstr "Przyjaciel Od:"
+
+#: PersonToGroup.php:53
+msgid "Add Person to Group"
+msgstr "Dodaj Osobę do Grupy"
+
+#: PersonToGroup.php:115
+msgid "Select the group to add this person to:"
+msgstr "Wybierz Grupę do której dodać tę Osobę:"
+
+#: PersonView.php:74
+msgid "Previous Person"
+msgstr "Poprzednia Osoba"
+
+#: PersonView.php:78
+msgid "Next Person"
+msgstr "Następna Osoba"
+
+#: PersonView.php:190
+msgid "Not assigned"
+msgstr "Nie przypisano"
+
+#: PersonView.php:212
+#: PersonView.php:820
+#: SelectList.php:1121
+#: SelectListFormatted.php:1163
+msgid "Create vCard"
+msgstr "Utwórz Wizytówkę (vCard)"
+
+#: PersonView.php:213
+#: PersonView.php:821
+msgid "Printable Page"
+msgstr "Format do Druku"
+
+#: PersonView.php:221
+#: PersonView.php:829
+msgid "Make User"
+msgstr "Utwórz Użytkownika"
+
+#: PersonView.php:223
+#: PersonView.php:831
+msgid "Edit User"
+msgstr "Edytuj Użytkownika"
+
+#: PersonView.php:230
+#: PersonView.php:838
+msgid "List View"
+msgstr "Widok Listy"
+
+#: PersonView.php:286
+msgid "View Map"
+msgstr "Widok Mapy"
+
+#: PersonView.php:418
+msgid "Birthdate:"
+msgstr "Urodziny:"
+
+#: PersonView.php:422
+msgid "Age:"
+msgstr "Wiek"
+
+#: PersonView.php:610
+#: PrintView.php:336
+msgid "Assigned Groups:"
+msgstr "Przypisane Grupy:"
+
+#: PersonView.php:614
+msgid "Warning: If you remove this group membership, you will irrevokably lose any member data assigned"
+msgstr "Uwaga: Jeżeli usuniesz przynależność do tej Grupy, nie odwracalnie utracisz wszelkie powiązania"
+
+#: PersonView.php:630
+#: PrintView.php:348
+msgid "No group assignments."
+msgstr "Nie przypisano Grupy"
+
+#: PersonView.php:636
+#: PrintView.php:354
+msgid "Group Name"
+msgstr "Nazwa Grupy"
+
+#: PersonView.php:664
+msgid "View/Edit"
+msgstr "Podgląd / Edytuj"
+
+#: PersonView.php:714
+msgid "Assign a New Group:"
+msgstr "Przypisz Nową Grupę"
+
+#: PersonView.php:731
+msgid "(Person will be assigned to the Group in the Default Role.)"
+msgstr "(Osoba zostanie przypisana do Grupy ustawionej w Domyślnych Opcjach.)"
+
+#: PersonView.php:737
+msgid "Volunteer opportunities:"
+msgstr "Zadania dla Wolontariusza:"
+
+#: PersonView.php:749
+msgid "No volunteer opportunity assignments."
+msgstr "Nie przypisano zadań dla wolontariuszy"
+
+#: PersonView.php:788
+msgid "Assign a New Volunteer Opportunity:"
+msgstr "Przypisz Nowe Zadanie dla Wolontariusza:"
+
+#: PersonView.php:842
+msgid "Red text"
+msgstr "Tekst na czerwono"
+
+#: PersonView.php:842
+msgid "indicates items inherited from the associated family record."
+msgstr "wsskazuje pola odziedziczone z ustawień Rodziny."
+
+#: PersonView.php:868
+msgid "Edit \"Why Came\" Notes"
+msgstr "Edytuj Notatkę \"Powód dopisania do Parafii\""
+
+#: PledgeDelete.php:21
+msgid "Confirm Delete"
+msgstr "Potwiedź Usunięcie"
+
+#: PledgeDetails.php:19
+msgid "Electronic Transaction Details"
+msgstr "Szczegóły Płatności Elektronicznej"
+
+#: PledgeEditor.php:288
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr "Nie Odliczalna Wartość nie może przekraczać całości Kwoty"
+
+#: PledgeEditor.php:295
+msgid "At least one fund must have a non-zero amount."
+msgstr "Przynajmniej jeden cel musisz mieć wartość większą niż zero."
+
+#: PledgeEditor.php:310
+msgid "Must specify non-zero check number"
+msgstr "Musisz podać nie zerowy numer czeku"
+
+#: PledgeEditor.php:317
+msgid "Check number not valid for 'CASH' payment"
+msgstr "Pole 'Numer Czeku' nie jest potrzebne dla płatności Gotówką"
+
+#: PledgeEditor.php:487
+msgid "Pledge Editor"
+msgstr "Edytor Datków (Pledge)"
+
+#: PledgeEditor.php:489
+msgid "Payment Editor: "
+msgstr "Edytor Płatności:"
+
+#: PledgeEditor.php:489
+msgid " Deposit Slip #"
+msgstr "Odcinek Wpłaty #"
+
+#: PledgeEditor.php:510
+msgid " more entries will fit."
+msgstr " wpisów może jeszcze zostać dodanych."
+
+#: PledgeEditor.php:515
+msgid "Payment Editor - Modify Existing Payment"
+msgstr "Edytor Płatności - Zmodyfikuj Istniejącą Wpłatę"
+
+#: PledgeEditor.php:517
+msgid "Payment Editor - New Deposit Slip Will Be Created"
+msgstr "Edytor Płatności - Nowy Odcinek Wpłaty zostanie utworzony"
+
+#: PledgeEditor.php:571
+msgid "Find family->"
+msgstr "Znajdź rodzinę->"
+
+#: PledgeEditor.php:578
+msgid "Payment Schedule"
+msgstr "Częstotliwość Wpłat"
+
+#: PledgeEditor.php:581
+msgid "Select Schedule"
+msgstr "Wybierz Częstotliwość"
+
+#: PledgeEditor.php:582
+msgid "Weekly"
+msgstr "Tygodniowo"
+
+#: PledgeEditor.php:583
+msgid "Monthly"
+msgstr "Miesięcznie"
+
+#: PledgeEditor.php:584
+msgid "Quarterly"
+msgstr "Kwartalnie"
+
+#: PledgeEditor.php:585
+msgid "Once"
+msgstr "Jednorazowo"
+
+#: PledgeEditor.php:586
+msgid "Other"
+msgstr "Inne"
+
+#: PledgeEditor.php:593
+msgid "Payment by"
+msgstr "Rodzaj wpłaty"
+
+#: PledgeEditor.php:597
+msgid "CHECK"
+msgstr "CZEK"
+
+#: PledgeEditor.php:598
+msgid "CASH"
+msgstr "GOTÓWKA"
+
+#: PledgeEditor.php:624
+msgid "Split"
+msgstr "Podziel"
+
+#: PledgeEditor.php:685
+msgid "Total $"
+msgstr "Suma £"
+
+#: PledgeEditor.php:691
+msgid "Split to Funds by pledge"
+msgstr "Podziel do Celów wg. datków"
+
+#: PledgeEditor.php:703
+msgid "Choose online payment method"
+msgstr "Wybierz Płatność online"
+
+#: PledgeEditor.php:710
+msgid "Select online payment record"
+msgstr "Wybierz Sposób Płatności online (Select record)"
+
+#: PledgeEditor.php:717
+msgid "Credit card ..."
+msgstr "Karta Płatnicza"
+
+#: PledgeEditor.php:719
+msgid "Bank account "
+msgstr "Numer konta "
+
+#: PledgeEditor.php:738
+msgid "Scan check"
+msgstr "Zeskanuj czek"
+
+#: PledgeEditor.php:744
+msgid "find family from check account #"
+msgstr "znajdź rodzinę po numerze konta czeku "
+
+#: PledgeEditor.php:745
+msgid "Set default check account number for family"
+msgstr "Ustaw domyślny numer konta dla czeków od rodziny"
+
+#: PledgeEditor.php:762
+msgid "Fund Name"
+msgstr "Cel"
+
+#: PledgeEditor.php:766
+msgid "Non-deductible amount"
+msgstr "Wartość nie odliczalna"
+
+#: PrintView.php:119
+msgid "Printable View"
+msgstr "Widok Wydruku"
+
+#: PrintView.php:221
+msgid "BirthDate:"
+msgstr "Data Urodzenia:"
+
+#: PropertyAssign.php:133
+#: PropertyAssign.php:152
+msgid "Property successfully assigned."
+msgstr "Poprawnie zapisano właściwości."
+
+#: PropertyAssign.php:168
+msgid " Property Assignment"
+msgstr " Przypisz Właściwości"
+
+#: PropertyAssign.php:182
+msgid "Assigning:"
+msgstr "Przypisz:"
+
+#: PropertyAssign.php:186
+msgid "Value:"
+msgstr "Wartość:"
+
+#: PropertyDelete.php:27
+msgid "Property Delete Confirmation"
+msgstr "Potwierdzenie Usunięcia Właściwośći"
+
+#: PropertyDelete.php:55
+msgid "Please confirm deletion of this property:"
+msgstr "Proszę potwierdzić usunięcie właściwości:"
+
+#: PropertyDelete.php:63
+msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
+msgstr "Usunięcie tej Właściwości spowoduje również usunięcie wszystkich jej powiązań do Osób, Rodzin lub Grup."
+
+#: PropertyEditor.php:60
+msgid "Property Editor"
+msgstr "Edytor Właściwości"
+
+#: PropertyEditor.php:75
+msgid "You must enter a Name"
+msgstr "Musisz podać Nazwę"
+
+#: PropertyEditor.php:82
+msgid "You must select a Type"
+msgstr "Musisz wybrać Typ"
+
+#: PropertyEditor.php:147
+msgid "Select Property Type"
+msgstr "Wybierz Typ Właściowści"
+
+#: PropertyEditor.php:170
+#: PropertyList.php:63
+msgid "A"
+msgstr " "
+
+#: PropertyEditor.php:170
+msgid "with this property.."
+msgstr "z tą własnością.."
+
+#: PropertyEditor.php:174
+msgid "Prompt:"
+msgstr "Zapytaj:"
+
+#: PropertyEditor.php:178
+msgid "Entering a Prompt value will allow the association of a free-form value."
+msgstr "Wpisując 'Zapytaj:' pozwoli na użycie pola z możliwością wpisania własnego tekstu."
+
+#: PropertyList.php:45
+msgid "Property List"
+msgstr "Lista Właściwości"
+
+#: PropertyList.php:56
+msgid "Add a New"
+msgstr "Dodaj Nową"
+
+#: PropertyList.php:63
+msgid "with this Property..."
+msgstr "z tą Właściwością"
+
+#: PropertyList.php:64
+msgid "Prompt"
+msgstr "Zapytaj"
+
+#: PropertyTypeDelete.php:28
+msgid "Property Type Delete Confirmation"
+msgstr "Potwierdzenie Usunięcia Typu Właściwości"
+
+#: PropertyTypeDelete.php:62
+msgid "Warning"
+msgstr "Uwaga"
+
+#: PropertyTypeDelete.php:62
+msgid "This property type is still being used by at least one property."
+msgstr "Ten Typ Właściowść jest wciąż używany przez conajmniej jedna Właściowść"
+
+#: PropertyTypeDelete.php:62
+msgid "If you delete this type, you will also remove all properties using"
+msgstr "Jeżeli usuniesz ten Typ, usuniesz również wszystkie waściwości które"
+
+#: PropertyTypeDelete.php:62
+msgid "it and lose any corresponding property assignments."
+msgstr "go używają oraz wszystkie ich powiązania."
+
+#: PropertyTypeDelete.php:67
+msgid "Please confirm deletion of this Property Type:"
+msgstr "Proszę potwierdzić USUNIĘCIE tego Typu Właściwości:"
+
+#: PropertyTypeEditor.php:28
+msgid "Property Type Editor"
+msgstr "Edytor Typów Właściwości"
+
+#: PropertyTypeEditor.php:96
+msgid "Class:"
+msgstr "Klasa:"
+
+#: PropertyTypeList.php:21
+msgid "Property Type List"
+msgstr "Lista Typów Właściwości"
+
+#: PropertyTypeList.php:32
+msgid "Add a New Property Type"
+msgstr "Dodaj Nowy Typ Właściwości"
+
+#: PropertyTypeList.php:39
+msgid "Class"
+msgstr "Klasa"
+
+#: PropertyUnassign.php:102
+msgid " Property Unassignment"
+msgstr "Usunięcie Przypisania Właściwości"
+
+#: PropertyUnassign.php:109
+msgid "Please confirm removal of this property from this"
+msgstr "Proszę potwierdzić USUNIĘCIE przypisania tej Właściwości z"
+
+#: PropertyUnassign.php:118
+msgid "Unassigning:"
+msgstr "Usunięcie Przypisania Właściwości"
+
+#: PropertyUnassign.php:124
+msgid "Yes, unassign this Property"
+msgstr "Tak, USUŃ Przypisanie tej Właściwości"
+
+#: PropertyUnassign.php:127
+msgid "No, retain this assignment"
+msgstr "Nie, zachowaj Przypisanie tej Właściwości"
+
+#: QueryList.php:21
+msgid "Query Listing"
+msgstr "Lista Wyszukiwania"
+
+#: QueryList.php:32
+msgid "Run a Free-Text Query"
+msgstr "Uruchom Wyszukiwaine Dowolnym Tekstem"
+
+#: QuerySQL.php:21
+msgid "Free-Text Query"
+msgstr "Wyszukiwanie Dowolnym Tekstem"
+
+#: QuerySQL.php:54
+msgid "Export Results to CSV file"
+msgstr "Eksporuj Wyniki do pliku CSV"
+
+#: QuerySQL.php:62
+msgid "Execute SQL"
+msgstr "Wyślij Zapytanie SQL"
+
+#: QueryView.php:22
+msgid "Query View"
+msgstr "Podgląd Zapytania"
+
+#: QueryView.php:99
+msgid "This value is required."
+msgstr "To pole jest wymagane."
+
+#: QueryView.php:115
+msgid "This value must be numeric."
+msgstr "To pole musi być liczbą"
+
+#: QueryView.php:123
+msgid "This value must be at least "
+msgstr "To pole musi mieć przynajmniej"
+
+#: QueryView.php:129
+#: QueryView.php:143
+msgid "This value cannot be more than "
+msgstr "To pole nie może być dłuższe niż"
+
+#: QueryView.php:143
+#: QueryView.php:149
+msgid " characters long"
+msgstr "znaków"
+
+#: QueryView.php:149
+msgid "This value cannot be less than "
+msgstr "To pole nie może być krótsze niż "
+
+#: QueryView.php:197
+msgid " record(s) returned"
+msgstr " wpisów znaleziono"
+
+#: QueryView.php:278
+msgid "Add Results To Cart"
+msgstr "Dodaj Wyniki do Koszyka"
+
+#: QueryView.php:279
+msgid "Intersect Results With Cart"
+msgstr "Intersect Wyniki z Koszykiem"
+
+#: QueryView.php:280
+msgid "Remove Results From Cart"
+msgstr "Usuń Wyniki z Koszyka"
+
+#: QueryView.php:285
+msgid "Run Query Again"
+msgstr "Wyszukaj Ponownie"
+
+#: QueryView.php:286
+msgid "Return to Query Menu"
+msgstr "Wróć do Menu Wyszukiwania"
+
+#: QueryView.php:402
+msgid "Execute Query"
+msgstr "Wyszukaj"
+
+#: Register.php:21
+msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
+msgstr "Proszę zarejestrować kopię ChurchCRM, zaznacz to pole i kliknij 'Wyślij'"
+
+#: Register.php:22
+msgid "If you need to make changes go to Admin->Edit General Settings and Admin->Edit Report Settings.  "
+msgstr "Jeżeli potrzebujesz dokonać zmian, przejdź do Administracja -> Edytuj Ustawienia Domyślne ->oraz Administracja -> Edytuj Ustawienia Rapotrów"
+
+#: Register.php:23
+msgid "This information is used only to track the usage of this software.  "
+msgstr "Informacje te zbierane są tylko to śledzenia gdzie program jest używany"
+
+#: Register.php:24
+msgid "With this information, we are able to maintain a credible presence as a free option in the largely commercial world of church management software.  "
+msgstr "Z takimi anymi możemy potwierdzić bezpłatność tego programu i potwierdzić jego miejsce w bardzo komercyjnym świecie programów dla Parafii"
+
+#: Register.php:25
+msgid "We will never sell or otherwise distribute this information."
+msgstr "Nigdy nie sprzedamy lub w inny sposób udostępnimy tych informacji."
+
+#: Register.php:82
+msgid "Send"
+msgstr "Wyślij"
+
+#: ReminderReport.php:27
+msgid "Pledge Reminder Report"
+msgstr "Raport Przypominający o Datkach"
+
+#: ReportList.php:20
+msgid "Report Menu"
+msgstr "Menu Raportów"
+
+#: ReportList.php:31
+msgid "Reports on groups and roles"
+msgstr "Raporty o grupach i rolach"
+
+#: ReportList.php:34
+msgid "Report on group and roles selected (it may be a multi-page PDF)."
+msgstr "Wybrano Raport o grupach i rolach (może to być kilka stron)"
+
+#: ReportList.php:40
+msgid "Members Directory"
+msgstr "Spis Członków"
+
+#: ReportList.php:42
+msgid "Printable directory of all members, grouped by family where assigned"
+msgstr "Spis (wydruk) wszystkich członków, pogrupowanych wg. rodzin (jeżeli przypisane)"
+
+#: ReportList.php:57
+msgid "Generate letters and mailing labels."
+msgstr "Wygeneruj Listy i Naklejki Adresowe"
+
+#: ReportList.php:62
+#: SundaySchool.php:25
+msgid "Sunday School Reports"
+msgstr "Raport Szkoły Niedzielnej"
+
+#: ReportList.php:64
+msgid "Generate class lists and attendance sheets"
+msgstr "Wygeneruj listę klas i listy obecności"
+
+#: ReportList.php:72
+msgid "Pledges and Payments"
+msgstr "Datki i Płatności"
+
+#: ReportList.php:81
+msgid "Automated support for conducting an every-member canvass."
+msgstr "Zautomatyzowany proces do Ankiety wszystkich członków."
+
+#: ReportList.php:86
+msgid "Event Attendance"
+msgstr "Lista Obecności Wydarzenia"
+
+#: ReportList.php:88
+msgid "Generate attendance -AND- non-attendance reports for events"
+msgstr "Wygeneruj listę Obecności -i- listę nieobecnych dla Wydarzenia"
+
+#: ReportList.php:114
+msgid "US Address Verification Report"
+msgstr "Raport Potwierdzający Adresy USA"
+
+#: ReportList.php:115
+msgid "Generate report comparing all US family addresses "
+msgstr "Wygeneruj Raport porównujący adresy wszystkich rodzin "
+
+#: ReportList.php:116
+msgid "with United States Postal Service Standard Address Format.<br>"
+msgstr "ze standardowym Kodem Pocztowym (USA)."
+
+#: RPCdummy.php:48
+msgid "Address Info:"
+msgstr "Informacja o Adresie:"
+
+#: SelectDelete.php:59
+msgid "All donations from this family have been moved to another family."
+msgstr "Wszystkie datki od tej rodziny zostały przeniesione do innej rodziny."
+
+#: SelectDelete.php:65
+msgid "Person Delete Confirmation"
+msgstr "Potwierdzenie Usunięcia Osoby"
+
+#: SelectDelete.php:67
+msgid "Family Delete Confirmation"
+msgstr "Potwierdzenie Usunięcia Rodziny"
+
+#: SelectDelete.php:220
+msgid "Sorry, this person is a user.  An administrator must remove their user status before they may be deleted from the database."
+msgstr "Przepraszam, ta osoba jest użytkownikiem. Administrator musi usunąć użytkownika aby można było usunąć osobę z bazy danych."
+
+#: SelectDelete.php:221
+msgid "Return to Person View"
+msgstr "Powróć do Widoku Osoby"
+
+#: SelectDelete.php:225
+#: VolunteerOpportunityEditor.php:80
+msgid "Please confirm deletion of:"
+msgstr "Proszę powierdzić USUNIĘCIE:"
+
+#: SelectDelete.php:228
+msgid " (This action CANNOT be undone!)"
+msgstr " (Ta czynność nie może zostać odwrucona)"
+
+#: SelectDelete.php:242
+msgid "Sorry, there are records of donations from this family. This family may not be deleted."
+msgstr "Przepraszam, ta rodzina złożyła datki. Nie moża usunąć Rodziny."
+
+#: SelectDelete.php:243
+msgid "Return to Family View"
+msgstr "Powróć do Widoku Rodziny"
+
+#: SelectDelete.php:248
+msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
+msgstr "UWAGA: Ta rodzina złożyła datki i nie można jej usunąć chyba że datki zostaną powiązane z inna rodziną."
+
+#: SelectDelete.php:252
+msgid "Please select another family with whom to associate these donations:"
+msgstr "Proszę wybrać rodzinę do której przypisać datki."
+
+#: SelectDelete.php:253
+msgid "WARNING: This action can not be undone and may have legal implications!"
+msgstr "UWAGA: Nie można cofnąć tego zadania a może ono prowadzić do komplikacji prawnych!"
+
+#: SelectDelete.php:287
+msgid "CURRENT FAMILY WITH DONATIONS"
+msgstr "RODZINA Z DATKAMI"
+
+#: SelectDelete.php:370
+msgid "Please confirm deletion of this family record:"
+msgstr "Proszę, potwierdzić USUNIĘCIE tej rodziny:"
+
+#: SelectDelete.php:371
+msgid "Note: This will also delete all Notes associated with this Family record."
+msgstr "Uwaga: Spowoduje to również usunięcie notatek powiązanych z tą rodziną."
+
+#: SelectDelete.php:376
+msgid "Delete Family Record ONLY"
+msgstr "Usuń TYLKO Wpis Rodziny"
+
+#: SelectDelete.php:376
+#: SelectDelete.php:388
+msgid " (this action cannot be undone)"
+msgstr " (nie można cofnąć tej operacji)"
+
+#: SelectDelete.php:388
+msgid "Delete Family Record AND Family Members"
+msgstr "Usuń Wpis Rodziny ORAZ Członków Rodziny"
+
+#: SelectDelete.php:389
+msgid "No, cancel this deletion</a>"
+msgstr "Nie, przerwij usuń"
+
+#: SelectList.php:149
+#: SelectListFormatted.php:145
+msgid "Person Listing"
+msgstr "Lista Osób"
+
+#: SelectList.php:188
+#: SelectListFormatted.php:184
+msgid "Family Listing"
+msgstr "Lista Rodzin"
+
+#: SelectList.php:473
+#: SelectListFormatted.php:460
+msgid "Add a New Person Record"
+msgstr "Dodaj Nową Osobę"
+
+#: SelectList.php:481
+#: SelectListFormatted.php:468
+msgid "View Printable Page of this Listing"
+msgstr "Pokaż Stronę Wydruku dla Tej Listy"
+
+#: SelectList.php:485
+#: SelectListFormatted.php:472
+msgid "Show people <b>not</b> in this group type:"
+msgstr "Pokaż Osoby <b>nie</b> należących do tego typu grupy:"
+
+#: SelectList.php:501
+#: SelectList.php:1311
+#: SelectListFormatted.php:488
+#: SelectListFormatted.php:1398
+msgid "Sort order:"
+msgstr "Sortuj "
+
+#: SelectList.php:503
+#: SelectList.php:1313
+#: SelectListFormatted.php:495
+#: SelectListFormatted.php:1402
+msgid "By Name"
+msgstr "wg. Nazwy"
+
+#: SelectList.php:504
+#: SelectListFormatted.php:501
+msgid "By Family"
+msgstr "wg. Rodziny"
+
+#: SelectList.php:505
+#: SelectListFormatted.php:507
+msgid "By ZIP/Postal Code"
+msgstr "wg. Kodu Pocztowego"
+
+#: SelectList.php:506
+#: SelectList.php:1314
+#: SelectListFormatted.php:513
+#: SelectListFormatted.php:1405
+msgid "By Newest Entries"
+msgstr "wg. Najnowszych Wpisów"
+
+#: SelectList.php:507
+#: SelectListFormatted.php:519
+msgid "By Recently Edited"
+msgstr "wg. Ostatnio Zmienione"
+
+#: SelectList.php:513
+#: SelectList.php:1318
+#: SelectListFormatted.php:533
+#: SelectListFormatted.php:1411
+msgid "Apply Filter"
+msgstr "Dodaj Filtr"
+
+#: SelectList.php:523
+#: SelectListFormatted.php:543
+msgid "Male & Female"
+msgstr "Kobieta i Meżczyzna"
+
+#: SelectList.php:564
+#: SelectListFormatted.php:586
+msgid "All Family Roles"
+msgstr "Wszystkie Role w Rodzinie"
+
+#: SelectList.php:587
+#: SelectListFormatted.php:611
+msgid "All Contact Properties"
+msgstr "Wszystkie Dane Kontaktowe "
+
+#: SelectList.php:614
+#: SelectListFormatted.php:638
+msgid "All Group Types"
+msgstr "Wszystkie Typy Grup"
+
+#: SelectList.php:648
+#: SelectListFormatted.php:672
+msgid "All Groups"
+msgstr "Wszystkie Grupy"
+
+#: SelectList.php:691
+#: SelectListFormatted.php:713
+msgid "All Roles"
+msgstr "Wszystkie Role"
+
+#: SelectList.php:972
+#: SelectListFormatted.php:1012
+msgid "vCard"
+msgstr "Wizytówka vCard"
+
+#: SelectList.php:973
+#: SelectListFormatted.php:1013
+msgid "Printable Record"
+msgstr "Wpis do Wydruku"
+
+#: SelectList.php:1085
+#: SelectListFormatted.php:1128
+msgid "unassigned"
+msgstr "nieprzypisane"
+
+#: SelectList.php:1159
+#: SelectListFormatted.php:1205
+msgid "City, State Zip"
+msgstr "Miasto, Hrabstwo, Kod Pocztowy"
+
+#: SelectList.php:1163
+#: SelectListFormatted.php:1217
+msgid "Primary E-mail"
+msgstr "Email"
+
+#: SelectList.php:1164
+#: SelectListFormatted.php:1220
+msgid "Work / Other E-mail"
+msgstr "Email Praca / Inny"
+
+#: SelectList.php:1165
+#: SelectListFormatted.php:1223
+msgid "Date Entered"
+msgstr "Dane Wprowadzone"
+
+#: SelectList.php:1306
+#: SelectListFormatted.php:1392
+msgid "Add a New Family Record"
+msgstr "Dodaj Nową Rodzinę"
+
+#: SelectList.php:1435
+#: SelectListFormatted.php:1537
+msgid "Family Name"
+msgstr "Nazwa Rodziny"
+
+#: SelectList.php:1440
+#: SelectListFormatted.php:1553
+msgid "Last Edited"
+msgstr "Ostatnio Zmienione"
+
+#: SettingsGeneral.php:93
+msgid "General Configuration Settings"
+msgstr "Ustawienia Główne"
+
+#: SettingsGeneral.php:103
+#: SettingsIndividual.php:104
+#: SettingsReport.php:65
+#: SettingsUser.php:90
+#: UserEditor.php:459
+msgid "Variable name"
+msgstr "Nazwa Zmiennej"
+
+#: SettingsGeneral.php:115
+#: SettingsGeneral.php:175
+#: SettingsIndividual.php:118
+#: SettingsIndividual.php:162
+#: SettingsReport.php:77
+#: SettingsReport.php:136
+#: SettingsUser.php:102
+#: SettingsUser.php:164
+#: UserEditor.php:486
+#: UserEditor.php:545
+msgid "Save Settings"
+msgstr "Zapisz Ustawienia"
+
+#: SettingsIndividual.php:93
+msgid "My User Settings"
+msgstr "Moje Ustawienia"
+
+#: SettingsReport.php:55
+msgid "Report Settings"
+msgstr "Ustawienia Raportu"
+
+#: SettingsUser.php:78
+msgid "Default User Settings"
+msgstr "Ustawienia Domyślne Użytkownika"
+
+#: SettingsUser.php:87
+msgid "Set Permission True to give new users the ability to change their current value.<BR>"
+msgstr "Ustaw True aby zezwolić użytkownikowi na zmianę wartości danego pola. <BR>"
+
+#: SettingsUser.php:89
+msgid "Permission"
+msgstr "Uprawnienia"
+
+#: SettingsUser.php:91
+msgid "Current Value"
+msgstr "Ustawione"
+
+#: SundaySchool.php:101
+msgid "At least one group must be selected to make class lists or attendance sheets."
+msgstr "Przynajmniej jedna grupa musi być zaznaczona aby utworzyć klasę lub listę obecności"
+
+#: SundaySchool.php:126
+msgid ""
+"Select Group: \n"
+"To select multiple hold CTL"
+msgstr ""
+"Wybierz Grupę: \n"
+"Aby wybrać kilka przytrzymaj CTRL"
+
+#: SundaySchool.php:150
+msgid "First Sunday:"
+msgstr "Pierwsza Niedzila:"
+
+#: SundaySchool.php:155
+msgid "Last Sunday:"
+msgstr "Ostatnia Niedziela"
+
+#: SundaySchool.php:160
+#: SundaySchool.php:165
+#: SundaySchool.php:170
+#: SundaySchool.php:175
+#: SundaySchool.php:180
+#: SundaySchool.php:185
+#: SundaySchool.php:190
+#: SundaySchool.php:195
+msgid "No Sunday School:"
+msgstr "Bez Szkoły Niedzielnej:"
+
+#: SundaySchool.php:200
+msgid "Extra Students:"
+msgstr "Dodatkowi Uczniowie:"
+
+#: SundaySchool.php:205
+msgid "Extra Teachers:"
+msgstr "Dodatkowi Nauczyciele:"
+
+#: SundaySchool.php:210
+msgid "Create Class List"
+msgstr "Utwórz Listę Klas"
+
+#: SundaySchool.php:211
+msgid "Create Attendance Sheet"
+msgstr "Utwórz Listę Obecności"
+
+#: TaxReport.php:27
+msgid "Tax Report"
+msgstr "Raport Podatkowy"
+
+#: TaxReport.php:45
+msgid "Calendar Year:"
+msgstr "Rok Kalendarzowy:"
+
+#: UserDelete.php:58
+msgid "User Delete Confirmation"
+msgstr "Potwierdznie Usunięcia Użytkownika"
+
+#: UserDelete.php:63
+msgid "Please confirm removal of user status from:"
+msgstr "Proszę potwierdzić usunięcie stanu użytkownika z:"
+
+#: UserEditor.php:321
+msgid "User Editor"
+msgstr "Edycja Użytkownika"
+
+#: UserEditor.php:337
+msgid "Person to Make User:"
+msgstr "Utwórz Użytkownika z Osoby:"
+
+#: UserEditor.php:359
+#: Include/Header-function.php:455
+msgid "User:"
+msgstr "Użytkownik"
+
+#: UserEditor.php:372
+msgid "Login Name:"
+msgstr "Nazwa Użytkownika (Login)"
+
+#: UserEditor.php:377
+msgid "Add Records:"
+msgstr "Dodaj Użytkownika:"
+
+#: UserEditor.php:382
+msgid "Edit Records:"
+msgstr "Edytuj Użytkownika:"
+
+#: UserEditor.php:387
+msgid "Delete Records:"
+msgstr "Usuń Użytkownika:"
+
+#: UserEditor.php:392
+msgid "Manage Properties and Classifications:"
+msgstr "Zarządzaj Właściwościami i Klasyfikacją:"
+
+#: UserEditor.php:397
+msgid "Manage Groups and Roles:"
+msgstr "Zarządzaj Grupami i Rolami:"
+
+#: UserEditor.php:402
+msgid "Manage Donations and Finance:"
+msgstr "Zarządzaj Datkami i Finansami"
+
+#: UserEditor.php:407
+msgid "View, Add and Edit Notes:"
+msgstr "Pokaż, Dodaj i Edytuj Notatki:"
+
+#: UserEditor.php:419
+msgid "Edit Self:"
+msgstr "Edytuj Swoje Dane:"
+
+#: UserEditor.php:420
+msgid "(Edit own family only.)"
+msgstr "(Edytuj dane Swojej Rodziny)"
+
+#: UserEditor.php:425
+msgid "(Canvass volunteer.)"
+msgstr "(Wolontariusz Ankieter.)"
+
+#: UserEditor.php:429
+msgid "Admin:"
+msgstr "Administrator"
+
+#: UserEditor.php:430
+msgid "(Grants all privileges.)"
+msgstr "(Pełne uprawnienia)"
+
+#: UserEditor.php:434
+msgid "Style:"
+msgstr "Wygląd:"
+
+#: UserEditor.php:439
+msgid "Note: Changes will not take effect until next logon."
+msgstr "Uwaga: Zmiany zaczną funkcjonować dopiero po kolejnym logowaniu."
+
+#: UserList.php:47
+msgid "User Listing"
+msgstr "Lista Użytkowników"
+
+#: UserList.php:52
+msgid "Add a New User"
+msgstr "Dodaj Nowego Użytkownika"
+
+#: UserList.php:57
+msgid "Last Login"
+msgstr "Ostatnio Zalogowany"
+
+#: UserList.php:58
+msgid "Total Logins"
+msgstr "Wyszystkich Logowań"
+
+#: UserList.php:59
+msgid "Failed Logins"
+msgstr "Błędnych Logowań"
+
+#: UserList.php:60
+msgid "Password"
+msgstr "Hasło"
+
+#: UserList.php:95
+msgid "Change"
+msgstr "Zmień"
+
+#: UserPasswordChange.php:64
+msgid "You must enter a password in both boxes"
+msgstr "Musisz wpisać hasło w obu polach"
+
+#: UserPasswordChange.php:70
+#: UserPasswordChange.php:135
+msgid "You must enter the same password in both boxes"
+msgstr "Musisz wpisać jednakowe hasło w obydwu polach"
+
+#: UserPasswordChange.php:123
+msgid "Invalid password"
+msgstr "Nieprawidłowe hasło"
+
+#: UserPasswordChange.php:129
+msgid "You must enter your new password in both boxes"
+msgstr "Musisz wpisać nowe hasło w obu polach"
+
+#: UserPasswordChange.php:141
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr "Twoje hasło jest zbyt proste. Wybierz inne hasło."
+
+#: UserPasswordChange.php:147
+msgid "Your new password must be at least"
+msgstr "Twoje hasło musi mieć przynajmniej"
+
+#: UserPasswordChange.php:147
+msgid "characters"
+msgstr "zanaków"
+
+#: UserPasswordChange.php:153
+msgid "You need to actually change your password (nice try, though!)"
+msgstr "Musisz ZMIENIĆ swoje hasło (niezła próba)"
+
+#: UserPasswordChange.php:158
+msgid "Your new password is too similar to your old one.  Be more creative!"
+msgstr "Twoje hasło jest zbyt bardzo podobne do poprzedniego. Wykaż się twórczością!"
+
+#: UserPasswordChange.php:193
+msgid "User Password Change"
+msgstr "Zmieniono Hasło Użytkownika"
+
+#: UserPasswordChange.php:196
+msgid "Your account record indicates that you need to change your password before proceding."
+msgstr "Twoje konto wymaga zmiany hasła zanim będzie można kontunuować"
+
+#: UserPasswordChange.php:199
+msgid "Enter your current password, then your new password twice.  Passwords must be at least"
+msgstr "Podaj swoje hasło, potem wpisz nowe hasło dwa razy. Hasło musi mieć przynajmniej "
+
+#: UserPasswordChange.php:199
+msgid "characters in length."
+msgstr "znaków"
+
+#: UserPasswordChange.php:201
+msgid "Enter a new password for this user."
+msgstr "Wprowadź nowe hasło dla Użytkownika."
+
+#: UserPasswordChange.php:208
+msgid "Old Password:"
+msgstr "Stare Hasło:"
+
+#: UserPasswordChange.php:213
+msgid "New Password:"
+msgstr "Nowe Hasło:"
+
+#: UserPasswordChange.php:217
+msgid "Confirm New Password:"
+msgstr "Potwierdź Nowe Hasło"
+
+#: UserReset.php:48
+msgid "User Reset"
+msgstr "Resetuj Użytkownika"
+
+#: UserReset.php:53
+msgid "Please confirm the password reset of this user:"
+msgstr "Proszę potwierdzić zmianę hasła użytkownika:"
+
+#: UserReset.php:57
+msgid "Yes, reset this User's password"
+msgstr "Tak, zresetuj hasło użytkownika:"
+
+#: UserReset.php:59
+msgid "No, cancel this operation"
+msgstr "Nie, przerwij tę operację"
+
+#: USISTAddressVerification.php:276
+msgid "US Address Verification"
+msgstr "Weryfikacja Adresu USA"
+
+#: USISTAddressVerification.php:310
+#: USISTAddressVerification.php:327
+#: USISTAddressVerification.php:351
+#: USISTAddressVerification.php:593
+#: USISTAddressVerification.php:605
+msgid "https://www.intelligentsearch.com/Hosted/User/"
+msgstr "https://www.intelligentsearch.com/Hosted/User/"
+
+#: USISTAddressVerification.php:339
+msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
+msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
+
+#: VolunteerOpportunityEditor.php:78
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Skasuj Zadanie dla Wolonatariusza "
+
+#: VolunteerOpportunityEditor.php:101
+msgid "Warning!"
+msgstr "Uwaga!"
+
+#: VolunteerOpportunityEditor.php:102
+msgid "There are people assigned to this Volunteer Opportunity."
+msgstr "Są przypisane Osoby do tego Zadania"
+
+#: VolunteerOpportunityEditor.php:103
+msgid "Volunteer Opportunity will be unassigned for the following people."
+msgstr "Zadanie zostanie usunięte od następujących Osób."
+
+#: VolunteerOpportunityEditor.php:112
+msgid "Yes, delete this Volunteer Opportunity"
+msgstr "Tak, USUŃ Zadanie Wolontariusza"
+
+#: VolunteerOpportunityEditor.php:189
+msgid "Volunteer Opportunity Editor"
+msgstr "Edytor Zadań dla Wolontariuszy"
+
+#: VolunteerOpportunityEditor.php:278
+msgid "No volunteer opportunities have been added yet"
+msgstr "Nie dodano jeszcze żadnych Zadań dla Wolonatariuszy"
+
+#: VolunteerOpportunityEditor.php:331
+msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
+msgstr "Pamiętaj: Zmiany Dodaj, Usuń i Porządkuj są natychmiastowe. Aby zmienić Nazwę lub Opis musisz kliknąć 'Zapisz Zmiany'"
+
+#: VolunteerOpportunityEditor.php:432
+msgid "Add New Opportunity"
+msgstr "Dodaj Nowe Zadanie"
+
+#: webcalendar.php:26
+msgid "ChurchCRM WebCalendar Portal"
+msgstr "Portal Kalendarza ChurchCRM"
+
+#: WhyCameEditor.php:29
+msgid "\"Why Came\" notes for "
+msgstr "Notatka \"Powód dopisania do Parafii\""
+
+#: WhyCameEditor.php:29
+msgid " "
+msgstr ""
+
+#: WhyCameEditor.php:98
+msgid "Why did you come to the church?"
+msgstr "Co spowodowało że Przyszedłeś do Parafii?"
+
+#: WhyCameEditor.php:103
+msgid "Why do you keep coming?"
+msgstr "Co powodóje że Ciągle przychodzisz?"
+
+#: WhyCameEditor.php:108
+msgid "Do you have any suggestions for us?"
+msgstr "Czy masz jakieś sugestie?"
+
+#: WhyCameEditor.php:113
+msgid "How did you learn of the church?"
+msgstr "W jaki sposób dowiedziałeś się o Parafii?"
+
+#: Include/CanvassUtilities.php:70
+msgid "No families need canvassers assigned"
+msgstr "Żadna Rodzina nie potrzebuje przypisania Ankietera"
+
+#: Include/CanvassUtilities.php:82
+#, php-format
+msgid "Canvassers assigned at random to %d families."
+msgstr "Ankieterzy losowo przypisani do %d Rodzin."
+
+#: Include/CanvassUtilities.php:115
+#, php-format
+msgid "Canvassers assigned at random to %d non-pledging families."
+msgstr "Ankieterzy losowo przypisani do %d Rodzin (bez datków)."
+
+#: Include/EnvelopeFunctions.php:39
+msgid "Assigned envelope numbers to all families with at least one member."
+msgstr "Przypisz numer Koperty do wszystkich rodzin z przynajmniej jednym członkiem."
+
+#: Include/EnvelopeFunctions.php:41
+msgid "Assigned envelope numbers to all families."
+msgstr "Przypisz numer Koperty do Wszystkich rodzin"
+
+#: Include/Functions.php:102
+msgid "True / False"
+msgstr "True / False"
+
+#: Include/Functions.php:104
+msgid "Text Field (50 char)"
+msgstr "Pole Tekstowe (50 znaków)"
+
+#: Include/Functions.php:105
+msgid "Text Field (100 char)"
+msgstr "Pole Tekstowe (100 znaków)"
+
+#: Include/Functions.php:106
+msgid "Text Field (long)"
+msgstr "Pole Tekstowe (długie)"
+
+#: Include/Functions.php:108
+msgid "Season"
+msgstr "Pora roku"
+
+#: Include/Functions.php:110
+msgid "Person from Group"
+msgstr "Osoby z Grupy"
+
+#: Include/Functions.php:111
+msgid "Money"
+msgstr "Pieniądze"
+
+#: Include/Functions.php:112
+msgid "Phone Number"
+msgstr "Numer Telefonu"
+
+#: Include/Functions.php:113
+msgid "Custom Drop-Down List"
+msgstr "Dodatkowa Lista Wyboru"
+
+#: Include/Functions.php:119
+msgid "Group successfully added to the Cart."
+msgstr "Grupa pomyślnie dodana do Koszyka"
+
+#: Include/Functions.php:125
+msgid "Group successfully removed from the Cart."
+msgstr "Grupa pomyślnie usunięta z Koszyka"
+
+#: Include/Functions.php:131
+msgid "Selected record successfully added to the Cart."
+msgstr "Wybrany/e wpis/y pomyślnie dodane do Koszyka"
+
+#: Include/Functions.php:137
+msgid "Selected record successfully removed from the Cart."
+msgstr "Wybrany/e wpis/y pomyślnie usunięte z Koszyka"
+
+#: Include/Functions.php:143
+msgid "Your cart has been successfully emptied."
+msgstr "Koszyk pomyślnie wyczyszczony."
+
+#: Include/Functions.php:165
+msgid "item(s) added to the Cart."
+msgstr "wpis/ów dodanych do Koszyka"
+
+#: Include/Functions.php:240
+msgid "Select Fiscal Year"
+msgstr "Wybierz Rok Podatkowy"
+
+#: Include/Functions.php:276
+#: Include/Initialize.php:99
+msgid "Cannot execute query."
+msgstr "Nie można przeprowadzić Wyszukiwania."
+
+#: Include/Functions.php:664
+msgid "pm"
+msgstr "pm"
+
+#: Include/Functions.php:669
+msgid "am"
+msgstr "am"
+
+#: Include/Functions.php:847
+#: Include/Functions.php:859
+msgid "1 month old"
+msgstr "starsze niż 1 miesiąc"
+
+#: Include/Functions.php:849
+#: Include/Functions.php:861
+msgid "months old"
+msgstr "miesiące (stare)"
+
+#: Include/Functions.php:857
+msgid "1 year old"
+msgstr "starsze niż 1 rok"
+
+#: Include/Functions.php:864
+#: Include/Functions.php:866
+msgid "years old"
+msgstr "lata (stare)"
+
+#: Include/Functions.php:1011
+msgid "Invalid Editor ID!"
+msgstr "Nieprawidłowe ID!"
+
+#: Include/Functions.php:1072
+msgid "Select Season"
+msgstr "Wybierz Porę Roku"
+
+#: Include/Functions.php:1075
+msgid "Winter"
+msgstr "Zima"
+
+#: Include/Functions.php:1078
+msgid "Spring"
+msgstr "Wiosna"
+
+#: Include/Functions.php:1081
+msgid "Summer"
+msgstr "Lato"
+
+#: Include/Functions.php:1084
+msgid "Fall"
+msgstr "Jesień"
+
+#: Include/Functions.php:1168
+msgid "Error: Invalid Editor ID!"
+msgstr "Błąd: Nieprawidłowe ID!"
+
+#: Include/Functions.php:1367
+msgid "Not a valid date"
+msgstr "Nie prawidłowa Data"
+
+#: Include/Functions.php:1381
+msgid "Invalid Year"
+msgstr "Nie poprawny Rok"
+
+#: Include/Functions.php:1386
+msgid "Out of range: Allowable values are 1901 to 2155"
+msgstr "Dopuszczalny przedział to 1901 do 2155"
+
+#: Include/Functions.php:1401
+#: Include/Functions.php:1420
+msgid "Invalid Number"
+msgstr "Nie poprawny liczba"
+
+#: Include/Functions.php:1406
+msgid "Number too large. Must be between -2147483648 and 2147483647"
+msgstr "Zbyt duża liczba. Musi mieściś się pomiędzy -2147483648 a 2147483647"
+
+#: Include/Functions.php:1425
+msgid "Money amount too large. Maximum is $999999999.99"
+msgstr "Zbyt duża suma. Maksimum to £999999999.99"
+
+#: Include/Functions.php:1645
+msgid " Bold Italic"
+msgstr "Pogrubina Kursywa"
+
+#: Include/Functions.php:1650
+msgid " Italic"
+msgstr "Kursywa"
+
+#: Include/Functions.php:1652
+msgid " Bold"
+msgstr "Pogrubione"
+
+#: Include/Header-function.php:442
+msgid "Search"
+msgstr "Szukaj"
+
+#: Include/Header-function.php:447
+msgid "Current deposit slip"
+msgstr "Odcinek Wpłaty"
+
+#: Include/Header-function.php:451
+msgid "Items in Cart"
+msgstr "Przedmioty w Koszyku"
+
+#: Include/LabelFunctions.php:46
+msgid "Font:"
+msgstr "Czcionka:"
+
+#: Include/LabelFunctions.php:84
+msgid "Label Type:"
+msgstr "Typ Naklejki:"
+
+#: Include/LabelFunctions.php:101
+msgid "Label Grouping"
+msgstr "Grupowanie Naklejek"
+
+#: Include/LabelFunctions.php:108
+msgid "All Individuals"
+msgstr "Wszystkie Osoby"
+
+#: Include/LabelFunctions.php:114
+msgid "Grouped by Family"
+msgstr "Pogrupowane wg. Rodziny"
+
+#: Include/LabelFunctions.php:120
+msgid "To the parents of:"
+msgstr "Do Rodziców:"
+
+#: Include/LabelFunctions.php:135
+msgid "Start Row:"
+msgstr "Wiersz Początkowy:"
+
+#: Include/LabelFunctions.php:142
+msgid "Start Column:"
+msgstr "Kolumna Początkowa:"
+
+#: Include/LabelFunctions.php:154
+msgid "Ignore Incomplete<br>Addresses:"
+msgstr "Zignoruj Niekompletne<br>Adresy:"
+
+#: Include/LabelFunctions.php:166
+msgid "File Type:"
+msgstr "Typ Pliku:"
+
+#: Include/ReportFunctions.php:37
+msgid "ERROR: FPDF Library was not found in your path <i>or</i> at: "
+msgstr "BŁĄD: Biblioteka FPDF nie została znaleziona w twojej ścieżce <i>lub</i> w:"
+
+#: Include/ReportFunctions.php:65
+msgid "ERROR: JPGraph Library was not found in your path <i>or</i> at: "
+msgstr "BŁĄD: Biblioteka JPGraph nie została znaleziona w twojej ścieżce <i>lub</i> w:"
+
+#: Reports/AdvancedDeposit.php:358
+#: Reports/AdvancedDeposit.php:375
+#: Reports/AdvancedDeposit.php:451
+#: Reports/AdvancedDeposit.php:464
+#: Reports/AdvancedDeposit.php:505
+#: Reports/AdvancedDeposit.php:522
+#: Reports/AdvancedDeposit.php:598
+#: Reports/AdvancedDeposit.php:611
+#: Reports/AdvancedDeposit.php:652
+#: Reports/AdvancedDeposit.php:669
+#: Reports/AdvancedDeposit.php:745
+#: Reports/AdvancedDeposit.php:758
+#: Reports/AdvancedDeposit.php:773
+msgid "items"
+msgstr "przedmioty (items)"
+
+#: Reports/AdvancedDeposit.php:360
+#: Reports/AdvancedDeposit.php:377
+#: Reports/AdvancedDeposit.php:453
+#: Reports/AdvancedDeposit.php:466
+#: Reports/AdvancedDeposit.php:507
+#: Reports/AdvancedDeposit.php:524
+#: Reports/AdvancedDeposit.php:600
+#: Reports/AdvancedDeposit.php:613
+#: Reports/AdvancedDeposit.php:654
+#: Reports/AdvancedDeposit.php:671
+#: Reports/AdvancedDeposit.php:747
+#: Reports/AdvancedDeposit.php:760
+#: Reports/AdvancedDeposit.php:775
+msgid "item"
+msgstr "przedmiot (item)"
+
+#: Reports/CanvassReports.php:224
+msgid "Did not pledge"
+msgstr "Bez datków"
+
+#: Reports/CanvassReports.php:228
+msgid "Top pledger"
+msgstr "Największy datek"
+
+#: Reports/CanvassReports.php:230
+msgid "Pledged"
+msgstr "Datek (Pledged)"
+
+#: Reports/CanvassReports.php:237
+msgid "Pledge status: "
+msgstr "Stan datku:"
+
+#: Reports/CanvassReports.php:258
+#: Reports/ConfirmReport.php:171
+#: Reports/ConfirmReport.php:190
+msgid "M/F"
+msgstr "K/M"
+
+#: Reports/ClassAttendance.php:183
+msgid "Totals"
+msgstr "Suma"
+
+#: Reports/ClassAttendance.php:350
+#: Reports/ClassList.php:89
+msgid "Teacher"
+msgstr "Nauczyciel"
+
+#: Reports/ClassAttendance.php:355
+#: Reports/ClassList.php:137
+msgid "Student"
+msgstr "Uczeń"
+
+#: Reports/ClassAttendance.php:363
+#: Reports/ClassAttendance.php:364
+#: Reports/ClassList.php:110
+#: Reports/ClassList.php:111
+msgid "Liaison"
+msgstr "Przewodniczący"
+
+#: Reports/ConfirmReport.php:112
+msgid "Family name"
+msgstr "Nazwa Rodziny"
+
+#: Reports/ConfirmReport.php:124
+msgid "City, State, Zip"
+msgstr "Miasto, Hrabstwo, Kod pocztowy"
+
+#: Reports/ConfirmReport.php:128
+msgid "Home phone"
+msgstr "Tel. Domowy"
+
+#: Reports/ConfirmReport.php:132
+msgid "Send Newsletter"
+msgstr "Wyśli Newsletter"
+
+#: Reports/ConfirmReport.php:141
+msgid "Anniversary Date"
+msgstr "Data Rocznicy Ślubu"
+
+#: Reports/ConfirmReport.php:147
+msgid "Family E-Mail"
+msgstr "Email Rodzinny"
+
+#: Reports/ConfirmReport.php:170
+#: Reports/ConfirmReport.php:189
+msgid "Member Name"
+msgstr "Inię Członka"
+
+#: Reports/ConfirmReport.php:172
+#: Reports/ConfirmReport.php:191
+msgid "Adult/Child"
+msgstr "Dorosły/Dziecko"
+
+#: Reports/ConfirmReport.php:175
+#: Reports/ConfirmReport.php:194
+msgid "Cell phone"
+msgstr "Tel. Kom"
+
+#: Reports/ConfirmReport.php:176
+#: Reports/ConfirmReport.php:195
+msgid "Member/Friend"
+msgstr "Członek/Przyjaciel"
+
+#: Reports/DirectoryReport.php:59
+#: Reports/DirectoryReport.php:101
+msgid "Directory"
+msgstr "Katalog"
+
+#: Reports/DirectoryReport.php:78
+msgid "Page"
+msgstr "Strona"
+
+#: Reports/DirectoryReport.php:328
+#: Reports/DirectoryReport.php:399
+#: Reports/DirectoryReport.php:462
+#: Reports/DirectoryReport.php:773
+#: Reports/GroupReport.php:268
+msgid "Work"
+msgstr "Praca"
+
+#: Reports/DirectoryReport.php:330
+#: Reports/DirectoryReport.php:403
+#: Reports/DirectoryReport.php:466
+#: Reports/DirectoryReport.php:777
+#: Reports/GroupReport.php:273
+msgid "Cell"
+msgstr "Tel. Kom"
+
+#: Reports/DirectoryReport.php:334
+msgid "Wedding"
+msgstr "Ślub"
+
+#: Reports/DirectoryReport.php:361
+msgid "and"
+msgstr "i"
+
+#: Reports/DirectoryReport.php:408
+#: Reports/DirectoryReport.php:471
+#: Reports/DirectoryReport.php:782
+msgid "Work/Other Email"
+msgstr "Email Praca/Inny"
+
+#: Reports/DirectoryReport.php:667
+msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
+msgstr "Ta opcja wymaga MySQL przynajmniej w wersji 3.22! Kliknij 'Wstecz' w przeglądarce aby wrócić do ChurchCRM"
+
+#: Reports/FamilyPledgeSummary.php:142
+#: Reports/ReminderReport.php:162
+msgid " for all funds"
+msgstr " dla wszystkich celów"
+
+#: Reports/FamilyPledgeSummary.php:144
+#: Reports/ReminderReport.php:164
+msgid " for fund "
+msgstr " dla celu "
+
+#: Reports/FamilyPledgeSummary.php:146
+#: Reports/ReminderReport.php:166
+msgid "for funds "
+msgstr "dla celów"
+
+#: Reports/FRBidSheets.php:84
+#: Reports/FRCatalog.php:93
+#: Reports/FRCertificates.php:85
+msgid "Estimated value "
+msgstr "Szacowana wartość:"
+
+#: Reports/FRBidSheets.php:86
+#: Reports/FRCatalog.php:95
+#: Reports/FRCertificates.php:87
+msgid "Donated by "
+msgstr "Datek od"
+
+#: Reports/FRBidSheets.php:96
+msgid "Paddle"
+msgstr "Numer"
+
+#: Reports/FRBidSheets.php:97
+msgid "Bid"
+msgstr "Kwota"
+
+#: Reports/FRCatalog.php:91
+msgid "Minimum bid "
+msgstr "Kwota minimalna (bid)"
+
+#: Reports/FRCertificates.php:45
+msgid "Certificate of Ownership"
+msgstr "Certyfikat Nabycia"
+
+#: Reports/FundRaiserStatement.php:96
+msgid "Donated Items:"
+msgstr "Przedmioty Darowane:"
+
+#: Reports/FundRaiserStatement.php:147
+msgid "Purchased Items:"
+msgstr "Przedmioty Kupione"
+
+#: Reports/FundRaiserStatement.php:219
+msgid "Total of all purchases: $"
+msgstr "Suma dla wszystkich zakupów: £"
+
+#: Reports/FundRaiserStatement.php:224
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
+
+#: Reports/FundRaiserStatement.php:226
+msgid "Buyer # "
+msgstr "Nabywca #"
+
+#: Reports/FundRaiserStatement.php:226
+msgid "Total purchases: $"
+msgstr "Suma Zakupów: £"
+
+#: Reports/FundRaiserStatement.php:226
+msgid "Amount paid: ________________"
+msgstr "Zapłacono: ________________"
+
+#: Reports/FundRaiserStatement.php:228
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "Sposób płatności (  ) Gotówka    (  ) Czek    (  ) Karta Płatnicza __ __ __ __    __ __ ____    __ __ __ __    __ __ __ __  Ważna do __ / __"
+
+#: Reports/FundRaiserStatement.php:230
+msgid "                                        Signature ________________________________________________________________"
+msgstr "                                        Podpis ________________________________________________________________"
+
+#: Reports/GroupReport.php:58
+msgid "Group Directory"
+msgstr "Katalog Grup"
+
+#: Reports/PrintDeposit.php:345
+msgid "UNDESIGNATED"
+msgstr "NIEPRZYPISANE"
+
+#: Reports/TaxReport.php:200
+msgid "Fiscal Year "
+msgstr "Rok Podatkowy"
+
+#: Reports/TaxReport.php:236
+msgid "Please detach this slip and mail with your next gift."
+msgstr "Prosimy o oderwanie tego odcinka i przesłanie z następnym Datkiem."
+
+#: Reports/TaxReport.php:238
+msgid "Please mail you next gift to "
+msgstr "Prosimy przesłać kolejny datek do"
+
+#: Reports/TaxReport.php:240
+msgid ", Phone: "
+msgstr ", Tel.:"
+
+#: Reports/TaxReport.php:268
+msgid "Gift Amount:"
+msgstr "Kwota Datku:"
+
+#: Reports/TaxReport.php:271
+msgid "Gift Designation:"
+msgstr "Cel Datku:"
+
+#: Reports/VotingMembers.php:53
+msgid "Voting members "
+msgstr "Członkowie Rady Parafialnej"
+

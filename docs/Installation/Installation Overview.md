@@ -9,7 +9,7 @@ application, which means it has two distinct sides:
 
 The "server", on which the application actually runs. This is a
 centrally located computer that stores the files and information that
-ChurchInfo needs to run
+ChurchCRM needs to run
 
 The "client", through which a user interacts with the application via
 a Web browser.
@@ -64,7 +64,7 @@ There is a simple work around if your server does not have register_globals
 turned off. Create a file called ".htaccess" with a simple text editor and 
 insert the following line into that new file:
 	php_flag register_globals off
-Save this file and upload this file into the main ChurchInfo directory.
+Save this file and upload this file into the main ChurchCRM directory.
 
 ## What kind of client computers do I need?
 

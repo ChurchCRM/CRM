@@ -19,9 +19,9 @@ $sSERVERNAME = 'localhost';
 $sUSER = $db_username;
 $sPASSWORD = $db_password;
 $sDATABASE = 'churchcrm_test';
-$sRootPath = '/churchinfo';
-require "./churchinfo/Include/LoadConfigs.php";
-require "./churchinfo/Include/Functions.php";
-require './churchinfo/Service/SystemService.php';
+$sRootPath = '/src';
+require "./src/Include/LoadConfigs.php";
+require "./src/Include/Functions.php";
+require './src/Service/SystemService.php';
 spl_autoload_register('loader');
 

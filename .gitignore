@@ -13,18 +13,18 @@
 #Exclude composer vendor folders
 vendor
 composer.lock
-churchinfo/vendor/bin
-churchinfo/composer.lock
-churchinfo/vendor/composer
+src/vendor/bin
+src/composer.lock
+src/vendor/composer
 
 # Uploaded Images
-churchinfo/Images/Family/thumbnails/
-churchinfo/Images/Person/thumbnails/
+src/Images/Family/thumbnails/
+src/Images/Person/thumbnails/
 
 # SASS
 .sass-cache
 
 # Configuration files with passwords
-churchinfo/Include/Config.php
-churchinfo/mysql/database_setup_and_install.sh
+src/Include/Config.php
+src/mysql/database_setup_and_install.sh
 
