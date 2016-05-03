@@ -232,7 +232,7 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
   ?>
   <script>
 
-  //Render a JS Object here that represents the currently selected payment entry so that we can use JQuery to set up the form later on.
+    //Render a JS Object here that represents the currently selected payment entry so that we can use JQuery to set up the form later on.
 
   </script>	
   <?php
@@ -439,8 +439,8 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
                 <div class="col-md-4">
                   <label for="currencyCount-<?= $currency->id ?>"><?= $currency->Name ?></label>
                   <input type="text" class="denominationInputBox" data-cur-value="<?= $currency->Value ?>" name="currencyCount-<?= $currency->id ?>"></div>
-              <?php
- }
+                <?php
+              }
             }
             ?>
           </div>
@@ -455,10 +455,10 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
                 <div class="col-md-4">
                   <label for="currencyCount-<?= $currency->id ?>"><?= $currency->Name ?></label>
                   <input type="text" class="denominationInputBox" data-cur-value="<?= $currency->Value ?>" name="currencyCount-<?= $currency->id ?>"></div>
-  <?php
- }
-}
-?>
+                <?php
+              }
+            }
+            ?>
           </div>
         </div>
       </div>
@@ -481,10 +481,10 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
             <!-- Start Scanned Check Section -->
             <?php if ($bUseScannedChecks and ( $dep_Type == 'Bank' or $PledgeOrPayment == 'Pledge')) { ?>
             <td align="center">
-            <?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
+              <?php if ($dep_Type == 'Bank' and $bUseScannedChecks) { ?>
                 <button type="button" class="btn btn-primary" value="<?= gettext("find family from check account #"); ?>" id="MatchFamily"><?= gettext("find family from check account #"); ?></button>
                 <button  type="button" class="btn btn-primary" value="<?= gettext("Set default check account number for family"); ?>" id="SetDefaultCheck"><?= gettext("Set default check account number for family"); ?></button>
-            <?php } ?>
+              <?php } ?>
             <td <?php
             if ($PledgeOrPayment == 'Pledge')
               echo "class=\"LabelColumn\" align=\"center\">";
@@ -492,7 +492,7 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
               echo "class=\"PaymentLabelColumn\" align=\"center\">";echo gettext("Scan check");
             ?>
               <textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea></td>
-<?php } ?>
+            <?php } ?>
           <!-- End Scanned Check Section -->
           <!-- Start Paper Check Section -->									
           <?php if ($PledgeOrPayment == 'Payment' and $dep_Type == 'Bank') { ?>
@@ -500,7 +500,7 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
               <td class="PaymentLabelColumn"><?= gettext("Check #"); ?></td>
               <td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?= $iCheckNo; ?>"><font color="red"><?= $sCheckNoError ?></font></td>
             </tr>
-<?php } ?>
+          <?php } ?>
           </tbody>
         </table>
       </div>
@@ -521,33 +521,33 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
         <table class="table table-striped">
           <thead>
           <th <?php
-            if ($PledgeOrPayment == 'Pledge')
-              echo "class=\"LabelColumn\">";
-            else
-              echo "class=\"PaymentLabelColumn\">";
-            ?><?= gettext("Fund Name"); ?></th>
+          if ($PledgeOrPayment == 'Pledge')
+            echo "class=\"LabelColumn\">";
+          else
+            echo "class=\"PaymentLabelColumn\">";
+          ?><?= gettext("Fund Name"); ?></th>
           <th <?php
-            if ($PledgeOrPayment == 'Pledge')
-              echo "class=\"LabelColumn\">";
-            else
-              echo "class=\"PaymentLabelColumn\">";
-            ?><?= gettext("Amount"); ?></th>
+          if ($PledgeOrPayment == 'Pledge')
+            echo "class=\"LabelColumn\">";
+          else
+            echo "class=\"PaymentLabelColumn\">";
+          ?><?= gettext("Amount"); ?></th>
 
           <?php if ($bEnableNonDeductible) { ?>
             <th <?php
-              if ($PledgeOrPayment == 'Pledge')
-                echo "class=\"LabelColumn\">";
-              else
-                echo "class=\"PaymentLabelColumn\">";
-              ?><?= gettext("Non-deductible amount"); ?></th>
-          <?php } ?>
-
-          <th <?php
             if ($PledgeOrPayment == 'Pledge')
               echo "class=\"LabelColumn\">";
             else
               echo "class=\"PaymentLabelColumn\">";
-            ?><?= gettext("Comment"); ?></th>
+            ?><?= gettext("Non-deductible amount"); ?></th>
+            <?php } ?>
+
+          <th <?php
+          if ($PledgeOrPayment == 'Pledge')
+            echo "class=\"LabelColumn\">";
+          else
+            echo "class=\"PaymentLabelColumn\">";
+          ?><?= gettext("Comment"); ?></th>
           </thead>
           <tbody>
             <?php
@@ -588,8 +588,8 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
       }
       ?>	
       <button type="button" class="btn btn-primary" value="<?= gettext($cancelText); ?>" name="PledgeCancel" onclick="javascript:document.location = '<?php
-              if (strlen($linkBack) > 0) { echo $linkBack; }
-              else { echo "Menu.php"; }
+      if (strlen($linkBack) > 0) { echo $linkBack; }
+      else { echo "Menu.php"; }
       ?>';"><?= gettext($cancelText); ?></button>
       <button type="button" class="btn btn-primary" name="ResetForm" id="ResetForm"><?= gettext("Reset Form"); ?></button>
 
@@ -603,21 +603,15 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
 <script>
         $("#Date").datepicker({format: 'yyyy-mm-dd'});
 
-
-
-        $(document).ready(function()
-        {
+        $(document).ready(function() {
           $("#FamilyName").autocomplete({
-            source: function(request, response)
-            {
+            source: function(request, response) {
               $.ajax({
                 url: window.CRM.root + '/api/families/search/' + request.term,
                 dataType: 'json',
                 type: 'GET',
-                success: function(data)
-                {
-                  response($.map(data.families, function(item)
-                  {
+                success: function(data) {
+                  response($.map(data.families, function(item) {
                     return {
                       value: item.displayName,
                       id: item.id
@@ -627,8 +621,7 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
               })
             },
             minLength: 2,
-            select: function(event, ui)
-            {
+            select: function(event, ui) {
               $('[name=FamilyName]').val(ui.item.value);
               $('[name=FamilyID]:eq(1)').val(ui.item.id);
             }

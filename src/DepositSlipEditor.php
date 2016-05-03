@@ -19,10 +19,8 @@ require "Include/Functions.php";
 require "service/FinancialService.php";
 
 $financialService = new FinancialService();
-$linkBack = "";
 $iDepositSlipID = 0;
-$sDateError = "";
-$thisDeposit = "";
+$thisDeposit = 0;
 
 if (array_key_exists("DepositSlipID", $_GET))
   $iDepositSlipID = FilterInput($_GET["DepositSlipID"], 'int');
@@ -154,8 +152,8 @@ require "Include/Header.php";
           ?>
           <input type="submit" class="btn btn-success" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
           <input type="submit" class="btn btn-warning" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
-        <?php
- }
+          <?php
+        }
       }
       ?>
     </div>
@@ -196,8 +194,7 @@ require "Include/Header.php";
               console.log(paymentData);
               $("#DepositDate").datepicker({format: 'yyyy-mm-dd'});
 
-              function format(d)
-              {
+              function format(d) {
                 // `d` is the original data object for the row
                 return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
                         '<tr>' +
@@ -223,11 +220,9 @@ require "Include/Header.php";
                         '</table>';
               }
 
-              $(document).ready(function()
-              {
+              $(document).ready(function() {
 
-                $("#DepositSlipEditor").submit(function(e)
-                {
+                $("#DepositSlipEditor").submit(function(e) {
                   e.preventDefault();
                   var formData = {
                     'depositDate': $('#DepositDate').val(),
@@ -248,15 +243,13 @@ require "Include/Header.php";
                     dataType: 'json', // what type of data do we expect back from the server
                     encode: true
                   })
-                          .done(function(data)
-                          {
+                          .done(function(data) {
                             console.log(data);
                             var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('" + data.filename + "')\"><i class='fa fa-download'></i>  " + data.filename + "</button>";
                             $("#backupstatus").css("color", "green");
                             $("#backupstatus").html("Backup Complete, Ready for Download.");
                             $("#resultFiles").html(downloadButton);
-                          }).fail(function()
-                  {
+                          }).fail(function() {
                     $("#backupstatus").css("color", "red");
                     $("#backupstatus").html("Backup Error.");
                   });
@@ -276,8 +269,7 @@ require "Include/Header.php";
                         width: 'auto',
                                 title:'Family',
                                 data:'familyName',
-                                render: function(data, type, full, meta)
-                                {
+                                render: function(data, type, full, meta) {
                                   return '<a href=\'PledgeEditor.php?GroupKey=' + full.plg_GroupKey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-pencil fa-stack-1x fa-inverse"></i></span></a>' + data;
                                 }
                         },
@@ -303,7 +295,7 @@ require "Include/Header.php";
                                           title:'Cleared',
                                           data:'plg_aut_Cleared',
                                   }<?php
- }
+}
 if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') {
   ?>
                           , {
@@ -318,20 +310,17 @@ if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCa
                         ]
               });
 
-              $('#paymentsTable tbody').on('click', 'td.details-control', function()
-              {
+              $('#paymentsTable tbody').on('click', 'td.details-control', function() {
                 var tr = $(this).closest('tr');
                 var row = dataT.row(tr);
 
-                if(row.child.isShown())
-                {
+                if(row.child.isShown()) {
                   // This row is already open - close it
                   row.child.hide();
                   tr.removeClass('shown');
                   tr.innerHTML('<i class="fa fa-plus-circle"></i>');
                 }
-                else
-                {
+                else {
                   // Open this row
                   row.child(format(row.data())).show();
                   tr.addClass('shown');
@@ -339,8 +328,7 @@ if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCa
                 }
               });
 
-              $("#paymentsTable tbody").on('click', 'tr', function()
-              {
+              $("#paymentsTable tbody").on('click', 'tr', function() {
                 console.log("clicked");
                 $(this).toggleClass('selected');
                 var selectedRows = dataT.rows('.selected').data().length;
@@ -349,8 +337,7 @@ if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCa
 
               });
 
-              $('#deleteSelectedRows').click(function()
-              {
+              $('#deleteSelectedRows').click(function() {
                 var deletedRows = dataT.rows('.selected').data()
                 console.log(deletedRows);
                 console.log("delete-button" + deletedRows.length);
@@ -358,11 +345,9 @@ if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCa
                 $("#confirmDelete").modal('show');
               });
 
-              $("#deleteConfirmed").click(function()
-              {
+              $("#deleteConfirmed").click(function() {
                 var deletedRows = dataT.rows('.selected').data()
-                $.each(deletedRows, function(index, value)
-                {
+                $.each(deletedRows, function(index, value) {
                   console.log(value);
                   $.ajax({
                     type: 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
@@ -370,8 +355,7 @@ if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCa
                     dataType: 'json', // what type of data do we expect back from the server
                     encode: true
                   })
-                          .done(function(data)
-                          {
+                          .done(function(data) {
                             console.log(data);
                             $('#confirmDelete').modal('hide');
                             dataT.rows('.selected').remove().draw(false);
