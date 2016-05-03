@@ -13,4 +13,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
    'ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General', NULL),
   (1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'ChurchInfoReport', NULL);
 UPDATE user_usr
- SET usr_Style = "skin-blue";
+SET usr_Style = "skin-blue";
+
+ALTER TABLE `config_cfg`
+ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
