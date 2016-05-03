@@ -1,5 +1,5 @@
 <?php
-/*******************************************************************************
+/* * *****************************************************************************
  *
  *  filename    : Include/Header.php
  *  website     : http://www.churchcrm.io
@@ -24,11 +24,10 @@
  *
  *  This file best viewed in a text editor with tabs stops set to 4 characters
  *
- ******************************************************************************/
+ * **************************************************************************** */
 require 'Service/SystemService.php';
 $systemService = new SystemService();
-if (!$systemService->checkDatabaseVersion())  //either the DB is good, or the upgrade was successful.
-{
+if (!$systemService->checkDatabaseVersion()) {  //either the DB is good, or the upgrade was successful.
   Redirect('CheckVersion.php');
   exit;
 }
@@ -44,35 +43,40 @@ $MenuFirst = 1;
 ?>
 <!DOCTYPE HTML>
 <html>
-<head>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <?php
-  require 'Header-HTML-Scripts.php';
-  Header_head_metatag();
-  ?>
-  <script>
-    function displayMessage(endpoint, message) {
-      $(".modal").modal('hide');
-      $("#APIError").modal('show');
-      $("#APIEndpoint").text(endpoint);
-      $("#APIErrorText").text(message);
-    }
-
-    $(document).ajaxError(function (evt, xhr, settings) {
-      var CRMResponse = JSON.parse(xhr.responseText).error;
-      displayMessage("[" + settings.type + "] " + settings.url, " " +CRMResponse.text);
-    });
-  </script>
-</head>
-
-<body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <?php
-        Header_modals();
-        Header_body_scripts();
-        Header_body_menu();
+    require 'Header-HTML-Scripts.php';
+    Header_head_metatag();
     ?>
+    <script>
+      function displayMessage(endpoint, message) {
+
+        $(".modal").each(function(index, object) {  //iterate through all of the modals
+          if(object.id != "APIError") {  // if the modal is NOT the API Error
+            $(object).modal('hide');    //suppress any non-APIError modals.
+          }
+        })
+        $("#APIError").modal('show'); //show the APIError modal
+        $("#APIEndpoint").text(endpoint); // set the modal text to indicate the requested endpoint
+        $("#APIErrorText").text(message);  //set the modal text to indicate the server generated error message.
+      }
+
+      $(document).ajaxError(function(evt, xhr, settings) {
+        var CRMResponse = JSON.parse(xhr.responseText).error;
+        displayMessage("[" + settings.type + "] " + settings.url, " " + CRMResponse.text);
+      });
+    </script>
+  </head>
+
+  <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+      <?php
+      Header_modals();
+      Header_body_scripts();
+      Header_body_menu();
+      ?>

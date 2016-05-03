@@ -429,7 +429,7 @@ class FinancialService
       RunQuery($sSQL);
 
     } else {
-      throw new Exception("Cannot delete a payment from a closed deposit");
+      throw new Exception("Cannot delete a payment from a closed deposit",400);
     }
 
   }
