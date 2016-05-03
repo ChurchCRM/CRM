@@ -40,7 +40,11 @@ if ($systemService->checkDatabaseVersion())  //either the DB is good, or the upg
 }
 else        //the upgrade failed!
 {
-?>
+  $sPageTitle = "ChurchCRM - Version Check";
+  require ("Include/HeaderNotLoggedIn.php");
+
+  ?>
+
 <!-- Main content -->
 <section class="content">
     <div class="row">
@@ -50,9 +54,7 @@ else        //the upgrade failed!
             <div class="error-content">
                 <h3><i class="fa fa-warning text-red"></i> Oops! Something went wrong.</h3>
                 <p>
-                    We will work on fixing that right away.
-                    Meanwhile, you may <a href="http://docs.churchcrm.io" target="_blank">return to docs or try using the search form. </a>
-                </p>
+                  There is an incompatibility between database schema and installed software. You are seeing this message because there is a software bug or an incomplete upgrade.                </p>
 
             </div>
         </div>
@@ -63,11 +65,13 @@ else        //the upgrade failed!
         <div class="box box-danger">
             <div class="box-body">
                 <p>
-                There is an incompatibility between database schema and installed software. You are seeing this message because there is a software bug or an incomplete upgrade.
-                </p>
-                <p>
-                Please post to the our github <a href="https://github.com/ChurchCRM/CRM/issues" target="_blank"> github issues</a> for assistance.
-                </p>
+                  Please check the following resources for assistance:
+                <ul>
+                  <li><a href="https://github.com/ChurchCRM/CRM/issues" target="_blank">GitHub issues</a></li>
+                  <li><a href="https://gitter.im/ChurchCRM/CRM" target="_blank">Developer Chat</a></li>
+                  <li><a href="http://docs.churchcrm.io" target="_blank">Docs</a></li>
+              </ul>
+              </p>
             </div>
             <div class="box-footer">
                 <p>
@@ -85,6 +89,6 @@ else        //the upgrade failed!
 <?php
 }
 
-require 'Include/FooterNotLoggedIn.php';
+require ("Include/FooterNotLoggedIn.php");
 
 ?>
