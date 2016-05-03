@@ -24,43 +24,11 @@ $year = $today['year'];
 
 require 'Include/Header.php';
 ?>
-<div class="row">
-  <div class="col-lg-12">
-    <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title">Member Reports</h3>
-      </div>
-      <div class="box-body">
-        <a class="MediumText" href="GroupReports.php"><?php echo gettext('Reports on groups and roles'); ?></a>
-        <br>
-        <?php echo gettext('Report on group and roles selected (it may be a multi-page PDF).'); ?>
-        </p>
-        <?php if ($bCreateDirectory)
-        {
-          ?>
-          <p><a class="MediumText" href="DirectoryReports.php"><?= gettext('Members Directory') ?></a><br><?= gettext('Printable directory of all members, grouped by family where assigned') ?></p>
-<?php } ?>
-        <a class="MediumText" href="LettersAndLabels.php"><?php echo gettext('Letters and Mailing Labels'); ?></a>
-        <br><?php echo gettext('Generate letters and mailing labels.'); ?>
-        </p>
-        <?php
-        if ($bUSAddressVerification)
-        {
-          echo '<p>';
-          echo '<a class="MediumText" href="USISTAddressVerification.php">';
-          echo gettext('US Address Verification Report') . "</a><br>\n";
-          echo gettext('Generate report comparing all US family addresses ' .
-                  'with United States Postal Service Standard Address Format.<br>') . "\n";
-        }
-        ?>
-      </div>
-    </div>
-  </div>
   <!-- ./col -->
-
   <?php if ($_SESSION['bFinance'])
   {
     ?>
+<div class="row">
     <div class="col-lg-12">
       <div class="box">
         <div class="box-header with-border">
