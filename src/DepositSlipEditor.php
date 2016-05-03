@@ -189,7 +189,7 @@ require "Include/Header.php";
 </div>
 <!-- End Delete Confirm Modal -->
 
-<script type="text/javascript" src="js/DepositSlipEditor.js"></script>
+<script type="text/javascript" src="<?= $sRootPath ?>/skin/js/DepositSlipEditor.js"></script>
 
 <script>
               var paymentData = <?php echo $financialService->getPaymentJSON($financialService->getPayments($iDepositSlipID)); ?>;

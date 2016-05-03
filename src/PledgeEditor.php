@@ -598,7 +598,7 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
   <!--End Save button section -->
 </form>
 
-<script type="text/javascript" src="js/PledgeEditor.js"></script>
+<script type="text/javascript" src="<?= $sRootPath ?>/skin/js/PledgeEditor.js"></script>
 
 <script>
         $("#Date").datepicker({format: 'yyyy-mm-dd'});
