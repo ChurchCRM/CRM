@@ -65,7 +65,7 @@ else        //the upgrade failed!
         <div class="box box-danger">
             <div class="box-body">
                 <p>
-                  For assestance you can checkout the following for assistance:
+                  Please check the following resources for assistance:
                 <ul>
                   <li><a href="https://github.com/ChurchCRM/CRM/issues" target="_blank">GitHub issues</a></li>
                   <li><a href="https://gitter.im/ChurchCRM/CRM" target="_blank">Developer Chat</a></li>
