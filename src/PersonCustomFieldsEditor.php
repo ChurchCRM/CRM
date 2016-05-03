@@ -1,5 +1,5 @@
 <?php
-/*******************************************************************************
+/* * *****************************************************************************
  *
  *  filename    : PersonCustomFieldsEditor.php
  *  last change : 2003-03-28
@@ -12,7 +12,7 @@
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
- ******************************************************************************/
+ * **************************************************************************** */
 
 require "Include/Config.php";
 require "Include/Functions.php";
@@ -25,13 +25,13 @@ if (!$_SESSION['bAdmin']) {
 
 $sPageTitle = gettext("Custom Person Fields Editor");
 
-require "Include/Header.php"; ?>
+require "Include/Header.php";
+?>
 
 
 <div class="box box-body">
 
   <?php
-
   $bErrorFlag = false;
   $bNewNameError = false;
   $bDuplicateNameError = false;
@@ -62,7 +62,8 @@ require "Include/Header.php"; ?>
       if (strlen($aNameFields[$iFieldID]) == 0) {
         $aNameErrors[$iFieldID] = true;
         $bErrorFlag = true;
-      } else {
+      }
+      else {
         $aNameErrors[$iFieldID] = false;
       }
 
@@ -75,7 +76,8 @@ require "Include/Header.php"; ?>
         if ($aSpecialFields[$iFieldID] == 0) {
           $aSpecialErrors[$iFieldID] = true;
           $bErrorFlag = true;
-        } else {
+        }
+        else {
           $aSpecialErrors[$iFieldID] = false;
         }
       }
@@ -108,10 +110,12 @@ require "Include/Header.php"; ?>
 
       if (strlen($newFieldName) == 0) {
         $bNewNameError = true;
-      } elseif (strlen($newFieldType) == 0 || $newFieldType < 1) {
+      }
+      elseif (strlen($newFieldType) == 0 || $newFieldType < 1) {
         // This should never happen, but check anyhow.
         // $bNewTypeError = true;
-      } else {
+      }
+      else {
         $sSQL = "SELECT custom_Name FROM person_custom_master";
         $rsCustomNames = RunQuery($sSQL);
         while ($aRow = mysql_fetch_array($rsCustomNames)) {
@@ -151,7 +155,8 @@ require "Include/Header.php"; ?>
             RunQuery($sSQL);
 
             $newSpecial = "'$newListID'";
-          } else
+          }
+          else
             $newSpecial = "NULL";
 
           // Insert into the master table
@@ -162,9 +167,9 @@ require "Include/Header.php"; ?>
           RunQuery($sSQL);
 
           // Insert into the custom fields table
-          $sSQL = "ALTER TABLE person_custom ADD c" . $newFieldNum." ";
+          $sSQL = "ALTER TABLE person_custom ADD c" . $newFieldNum . " ";
 
-          switch ($newFieldType) {
+          switch($newFieldType) {
             case 1:
               $sSQL .= "ENUM('false', 'true')";
               break;
@@ -240,8 +245,8 @@ require "Include/Header.php"; ?>
     extract($aRow);
     $aSecurityType[$lst_OptionID] = $lst_OptionName;
   }
-  function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
-  {
+
+  function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll') {
 
     $sOptList = "<select name=\"" . $fld_name . "\">";
     $grp_Count = count($aSecGrp);
@@ -266,7 +271,7 @@ require "Include/Header.php"; ?>
 
     function confirmDeleteField(event) {
       var answer = confirm('<?= gettext("Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!") ?>')
-      if (answer) {
+      if(answer) {
         window.location = href = "PersonCustomFieldsRowOps.php?Field=" + event + "&Action=delete"
         return true;
       }
@@ -277,7 +282,7 @@ require "Include/Header.php"; ?>
 
   <div class="alert alert-warning">
     <i class="fa fa-ban"></i>
-    <?= gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
+      <?= gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
   </div>
   <form method="post" action="PersonCustomFieldsEditor.php" name="PersonCustomFieldsEditor">
 
@@ -286,15 +291,17 @@ require "Include/Header.php"; ?>
       <?php
       if ($numRows == 0) {
         ?>
-       <h2><?= gettext("No custom person fields have been added yet") ?></h2>
-        <?php
-      } else {
-        ?>
+        <h2><?= gettext("No custom person fields have been added yet") ?></h2>
+            <?php
+          }
+          else {
+            ?>
         <tr>
           <td colspan="6">
-            <?php
-            if ($bErrorFlag) echo "<span class=\"LargeText\" style=\"color: red;\"><BR>" . gettext("Invalid fields or selections. Changes not saved! Please correct and try again!") . "</span>";
-            ?>
+  <?php
+  if ($bErrorFlag)
+    echo "<span class=\"LargeText\" style=\"color: red;\"><BR>" . gettext("Invalid fields or selections. Changes not saved! Please correct and try again!") . "</span>";
+  ?>
           </td>
         </tr>
 
@@ -307,13 +314,12 @@ require "Include/Header.php"; ?>
           <th><?= gettext("Delete") ?></th>
         </tr>
 
-        <?php
-
-        for ($row = 1; $row <= $numRows; $row++) {
-          ?>
+  <?php
+  for ($row = 1; $row <= $numRows; $row++) {
+    ?>
           <tr>
             <td class="TextColumn">
-              <?= $aPropTypes[$aTypeFields[$row]] ?>
+                     <?= $aPropTypes[$aTypeFields[$row]] ?>
             </td>
             <td class="TextColumn" align="center">
               <input type="text" name="<?= $row ?>name"
@@ -344,7 +350,8 @@ require "Include/Header.php"; ?>
                 }
 
                 echo "</select>";
-                if ($aSpecialErrors[$row]) echo "<span style=\"color: red;\"><BR>" . gettext("You must select a group.") . "</span>";
+                if ($aSpecialErrors[$row])
+                  echo "<span style=\"color: red;\"><BR>" . gettext("You must select a group.") . "</span>";
               } elseif ($aTypeFields[$row] == 12)
                 echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=custom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">" . gettext("Edit List Options") . "</a>";
               else
@@ -353,13 +360,14 @@ require "Include/Header.php"; ?>
 
             </td>
             <td class="TextColumn" align="center" nowrap>
-              <?php
-              if (isset($aSecurityType[$aFieldSecurity[$row]])) {
-                echo GetSecurityList($aSecurityGrp, $row . "FieldSec", $aSecurityType[$aFieldSecurity[$row]]);
-              } else {
-                echo GetSecurityList($aSecurityGrp, $row . "FieldSec");
-              }
-              ?>
+    <?php
+    if (isset($aSecurityType[$aFieldSecurity[$row]])) {
+      echo GetSecurityList($aSecurityGrp, $row . "FieldSec", $aSecurityType[$aFieldSecurity[$row]]);
+    }
+    else {
+      echo GetSecurityList($aSecurityGrp, $row . "FieldSec");
+    }
+    ?>
             </td>
             <td class="TextColumn" align="center" nowrap>
               <input type="radio" Name="<?= $row ?>side"
@@ -372,16 +380,16 @@ require "Include/Header.php"; ?>
                      onclick="return confirmDeleteField(<?= "'" . $aFieldFields[$row] . "'" ?>);" )">
             </td>
             <td class="TextColumn" width="5%" nowrap>
-              <?php
-              if ($row != 1)
-                echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
-              if ($row < $numRows)
-                echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
-              ?>
+          <?php
+          if ($row != 1)
+            echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
+          if ($row < $numRows)
+            echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
+          ?>
 
             </td>
           </tr>
-        <?php } ?>
+  <?php } ?>
 
         <tr>
           <td colspan="7">
@@ -398,7 +406,7 @@ require "Include/Header.php"; ?>
           </td>
           <td>
         </tr>
-      <?php } ?>
+<?php } ?>
       <tr>
         <td colspan="7">
           <hr>
@@ -425,10 +433,12 @@ require "Include/Header.php"; ?>
               <td valign="top">
                 <div><?= gettext("Name:") ?></div>
                 <input type="text" name="newFieldName" size="30" maxlength="40">
-                <?php
-                if ($bNewNameError) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name") . "</span></div>";
-                if ($bDuplicateNameError) echo "<div><span style=\"color: red;\"><BR>" . gettext("That field name already exists.") . "</span></div>";
-                ?>
+<?php
+if ($bNewNameError)
+  echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name") . "</span></div>";
+if ($bDuplicateNameError)
+  echo "<div><span style=\"color: red;\"><BR>" . gettext("That field name already exists.") . "</span></div>";
+?>
                 &nbsp;
               </td>
               <td valign="top" nowrap>
@@ -439,7 +449,7 @@ require "Include/Header.php"; ?>
               </td>
               <td valign="top" nowrap>
                 <div><?= gettext("Security Option") ?></div>
-                <?= GetSecurityList($aSecurityGrp, "newFieldSec") ?>
+<?= GetSecurityList($aSecurityGrp, "newFieldSec") ?>
               </td>
               <td>
                 <input type="submit" class="btn btn-primary" value="<?= gettext("Add New Field") ?>" Name="AddField">
