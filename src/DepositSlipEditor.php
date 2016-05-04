@@ -160,7 +160,15 @@ require "Include/Header.php";
   </div>
   <div class="box-body">
     <table class="table" id="paymentsTable"></table>
-    <button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>
+    <?php
+    if ($iDepositSlipID and $thisDeposit->dep_Type and ! $thisDeposit->dep_Closed) {
+      if ($thisDeposit->dep_Type == "Bank") {
+        ?>
+        <button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>
+        <?php
+      }
+    }
+    ?>
   </div>
 </div>
 
@@ -231,8 +239,6 @@ require "Include/Header.php";
                     'depositType': '<?php echo $thisDeposit->dep_Type; ?>'
 
                   };
-                  $("#backupstatus").css("color", "orange");
-                  $("#backupstatus").html("Backup Running, Please wait.");
                   console.log(formData);
 
                   //process the form
@@ -245,15 +251,9 @@ require "Include/Header.php";
                   })
                           .done(function(data) {
                             console.log(data);
-                            var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('" + data.filename + "')\"><i class='fa fa-download'></i>  " + data.filename + "</button>";
-                            $("#backupstatus").css("color", "green");
-                            $("#backupstatus").html("Backup Complete, Ready for Download.");
-                            $("#resultFiles").html(downloadButton);
+                            location.reload();
                           }).fail(function() {
-                    $("#backupstatus").css("color", "red");
-                    $("#backupstatus").html("Backup Error.");
                   });
-
                 });
 
                 dataT = $("#paymentsTable").DataTable({
