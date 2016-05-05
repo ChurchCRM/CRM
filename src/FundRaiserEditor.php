@@ -146,7 +146,7 @@ if ($iFundRaiserID > 0) {
 require "Include/Header.php";
 
 ?>
-
+<div class="box box-body">
 <form method="post" action="FundRaiserEditor.php?<?= "linkBack=" . $linkBack . "&FundRaiserID=".$iFundRaiserID ?>" name="FundRaiserEditor">
 
 <table cellpadding="3" align="center">
@@ -190,7 +190,8 @@ require "Include/Header.php";
 </table>
 
 <br>
-
+</div>
+<div class="box box-body">
 <b><?= gettext("Donated items for this fundraiser:") ?></b>
 <br>
 
@@ -266,6 +267,6 @@ if ($rsDonatedItems != 0) {
 
 <script>
 $("#Date").datepicker({format:'yyyy-mm-dd'});
-</script
-
+</script>
+</div>
 <?php require "Include/Footer.php" ?>
