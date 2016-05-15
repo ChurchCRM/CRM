@@ -30,6 +30,44 @@ class NoteService
 
   }
 
+  // Get the notes for this person
+  function getNotesByPerson($personId, $admin)
+  {
+    $sSQL = "SELECT nte_ID, nte_Private, nte_Text,
+	              nte_EnteredBy , nte_DateEntered, nte_EnteredBy, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName,
+	              nte_EditedBy , nte_DateLastEdited, nte_EditedBy, b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName
+              FROM note_nte
+                LEFT JOIN person_per a ON nte_EnteredBy = a.per_ID
+                LEFT JOIN person_per b ON nte_EditedBy = b.per_ID
+              WHERE nte_per_ID = " . $personId;
+
+    // Admins should see all notes, private or not.  Otherwise, only get notes marked non-private or private to the current user.
+    if (!$admin) {
+      $sSQL .= " AND (nte_Private = 0 OR nte_Private = " . $_SESSION['iUserID'] . ")";
+    }
+    $sSQL .= " order by nte_DateEntered desc";
+    $rsNotes = RunQuery($sSQL);
+    $notesArray = array();
+    while ($aRow = mysql_fetch_array($rsNotes)) {
+      extract($aRow);
+      $note['id'] = $nte_ID;
+      $note['private'] = $nte_Private;
+      $note['text'] = $nte_Text;
+
+      if ($nte_DateLastEdited != "") {
+        $note['lastUpdateDatetime'] = $nte_DateLastEdited;
+        $note['lastUpdateByName'] = $EditedFirstName . " " . $EditedLastName;
+        $note['lastUpdateById'] = $nte_EditedBy;
+      } else {
+        $note['lastUpdateDatetime'] = $nte_DateEntered;
+        $note['lastUpdateByName'] = $EnteredFirstName . " " . $EnteredLastName;
+        $note['lastUpdateById'] = $nte_EnteredBy;
+      }
+      array_push($notesArray, $note);
+    }
+    return $notesArray;
+  }
+
   function getNoteById($noteId)
   {
     requireUserGroupMembership("bNotes");

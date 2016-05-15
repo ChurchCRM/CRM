@@ -9,12 +9,12 @@
 class PersonService
 {
   private $baseURL;
-  
+
   public function __construct()
   {
     $this->baseURL = $_SESSION['sRootPath'];
   }
-  
+
   function get($id)
   {
     //return $this->personQuery->findPK($id);
@@ -23,6 +23,33 @@ class PersonService
     extract(mysql_fetch_array($person));
     return "{id: $id, fName: $per_FirstName}";
   }
+
+  function getPersonEditInfo($id)
+  {
+    $sql = "SELECT a.per_DateEntered, b.per_FirstName AS EnteredFirstName, b.Per_LastName AS EnteredLastName, b.per_ID AS EnteredId,
+		           		 a.per_DateLastEdited, c.per_FirstName AS EditedFirstName, c.per_LastName AS EditedLastName, c.per_ID AS EditedId
+			FROM person_per a
+			LEFT JOIN list_lst cls ON a.per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
+			LEFT JOIN list_lst fmr ON a.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
+			LEFT JOIN person_per b ON a.per_EnteredBy = b.per_ID
+			LEFT JOIN person_per c ON a.per_EditedBy = c.per_ID WHERE a.per_ID = " . $id;
+    $result = mysql_query($sql);
+    extract(mysql_fetch_array($result));
+    $info = array();
+    $info['createdByName'] = $EnteredFirstName . " " . $EnteredLastName;
+    $info['createdById'] = $EnteredId;
+    $info['createdByPhoto'] = $this->getPhoto($EnteredId);
+    $info['createdDate'] = $per_DateEntered;
+
+    if ($EditedId != "") {
+      $info['lastUpdateById'] = $EditedId;
+      $info['lastUpdateByName'] = $EditedFirstName . " " . $EditedLastName;
+      $info['lastUpdateByPhoto'] = $this->getPhoto($EditedId);
+      $info['lastUpdateDate'] = $per_DateLastEdited;
+    }
+    return $info;
+  }
+
 
   function getBirthDays()
   {
@@ -175,7 +202,8 @@ class PersonService
     }
   }
 
-  private function getDefaultPhoto($gender, $famRole)
+  private
+  function getDefaultPhoto($gender, $famRole)
   {
     $photoFile = $this->baseURL . "/Images/Person/man-128.png";
     if ($gender == 1 && $famRole == "Child") {
@@ -189,7 +217,7 @@ class PersonService
     return $photoFile;
   }
 
-  public function insertPerson($user)
+  function insertPerson($user)
   {
     requireUserGroupMembership("bAddRecords");
     $sSQL = "INSERT INTO person_per
