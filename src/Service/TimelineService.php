@@ -22,17 +22,11 @@ class TimelineService
 
     $notes = $this->noteService->getNotesByPerson($personID, $_SESSION['bAdmin'], $_SESSION['iUserID']);
     foreach ($notes as $note) {
-      array_push($timeline, $this->createTimeLineItem("note", $note["lastUpdateDatetime"],
+      array_push($timeline, $this->createTimeLineItem($note["type"], $note["lastUpdateDatetime"],
         "by " . $note["lastUpdateByName"], "", $note["text"],
         "NoteEditor.php?PersonID=" . $personID . "&NoteID=" . $note["id"],
         "NoteDelete.php?NoteID=" . $note["id"]));
     }
-
-    $editInfo = $this->personService->getPersonEditInfo($personID);
-
-    // $editInfo["createdByPhoto"]
-    array_push($timeline, $this->createTimeLineItem("create", $editInfo["createdDate"], $editInfo["createdByName"], "", "Created"));
-
 
     //usort($timeline, "sortFunction");
     return $timeline;
@@ -45,6 +39,9 @@ class TimelineService
     switch ($type) {
       case "create":
         $item["style"] = "fa-plus-circle bg-blue";
+        break;
+      case "edit":
+        $item["style"] = "fa-pencil bg-blue";
         break;
       case "note":
         $item["style"] = "fa-sticky-note bg-green";

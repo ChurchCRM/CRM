@@ -33,7 +33,7 @@ class NoteService
   // Get the notes for this person
   function getNotesByPerson($personId, $admin)
   {
-    $sSQL = "SELECT nte_ID, nte_Private, nte_Text,
+    $sSQL = "SELECT nte_ID, nte_Private, nte_Text, nte_Type,
 	              nte_EnteredBy , nte_DateEntered, nte_EnteredBy, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName,
 	              nte_EditedBy , nte_DateLastEdited, nte_EditedBy, b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName
               FROM note_nte
@@ -53,6 +53,7 @@ class NoteService
       $note['id'] = $nte_ID;
       $note['private'] = $nte_Private;
       $note['text'] = $nte_Text;
+      $note['type'] = $nte_Type;
 
       if ($nte_DateLastEdited != "") {
         $note['lastUpdateDatetime'] = $nte_DateLastEdited;
