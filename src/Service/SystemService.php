@@ -232,10 +232,9 @@ class SystemService {
 
     // This code will automatically update from 1.2.14 (last good churchinfo build to 2.0.0 for ChurchCRM
     if (strncmp($ver_version, "1.2.14", 6) == 0) {
-      $old_ver_version = $ver_version;
       $sSQL = "INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('" . $_SESSION['sSoftwareInstalledVersion'] . "',NOW())";
       RunQuery($sSQL); // False means do not stop on error
-      //TODO upgrade script
+
       $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
       $this->playbackSQLtoDatabase($root . "/mysql/upgrade/1.2.14-2.0.0.sql");
       return "Upgraded";
@@ -243,12 +242,17 @@ class SystemService {
 
     // This code will automatically update from 1.3.0 (early build of ChurchCRM)
     if (strncmp($ver_version, "1.3.0", 6) == 0) {
-      $old_ver_version = $ver_version;
       $sSQL = "INSERT IGNORE INTO `version_ver` (`ver_version`, `ver_date`) VALUES ('" . $_SESSION['sSoftwareInstalledVersion'] . "',NOW())";
       RunQuery($sSQL); // False means do not stop on error
-      //TODO upgrade script
+
       $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
       $this->playbackSQLtoDatabase($root . "/mysql/upgrade/1.3.0-2.0.0.sql");
+      return "Upgraded";
+    }
+
+    // This code will automatically update from 1.3.0 (early build of ChurchCRM)
+    if (strncmp($ver_version, "2.0.0", 6) == 0) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.0.sql");
       return "Upgraded";
     }
 
