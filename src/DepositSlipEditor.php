@@ -575,7 +575,7 @@ require "Include/Header.php";
 			<input type="submit" class="btn" value="<?= gettext("Save") ?>" name="DepositSlipSubmit">
 			<input type="button" class="btn" value="<?= gettext("Cancel") ?>" name="DepositSlipCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
 			<?php 
-      if ($iDepositSlipID)
+      if (mysql_num_rows($rsPledges) > 0)
       {
       ?>
       <input type="button" class="btn" value="<?= gettext("Deposit Slip Report") ?>" name="DepositSlipGeneratePDF" onclick="javascript:window.open(window.CRM.root+'/api/deposits/<?= $iDepositSlipID ?>/pdf');">
