@@ -1319,7 +1319,7 @@ class FinancialService
     $this->generateDepositSummary($thisReport);
 
    // Export file
-   $thisReport->pdf->Output("ChurchCRM-DepositttReport-" . $depID . "-" . date("Ymd-Gis") . ".pdf","D");
+   $thisReport->pdf->Output("ChurchCRM-DepositReport-" . $depID . "-" . date("Ymd-Gis") . ".pdf","D");
    
   }
 
