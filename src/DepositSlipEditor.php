@@ -574,9 +574,14 @@ require "Include/Header.php";
 		<td align="center">
 			<input type="submit" class="btn" value="<?= gettext("Save") ?>" name="DepositSlipSubmit">
 			<input type="button" class="btn" value="<?= gettext("Cancel") ?>" name="DepositSlipCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) { echo $linkBack; } else {echo "Menu.php"; } ?>';">
-			<input type="button" class="btn" value="<?= gettext("Deposit Slip Report") ?>" name="DepositSlipGeneratePDF" onclick="javascript:window.open(window.CRM.root+'/api/deposits/<?= $iDepositSlipID ?>/pdf');">
-			<input type="button" class="btn" value="<?= gettext("More Reports") ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
-			<?php
+			<?php 
+      if ($iDepositSlipID)
+      {
+      ?>
+      <input type="button" class="btn" value="<?= gettext("Deposit Slip Report") ?>" name="DepositSlipGeneratePDF" onclick="javascript:window.open(window.CRM.root+'/api/deposits/<?= $iDepositSlipID ?>/pdf');">
+      <input type="button" class="btn" value="<?= gettext("More Reports") ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location='FinancialReports.php';">
+      <?php
+      }
 			if ($iDepositSlipID && $sDepositType && !$dep_Closed) {
 				if ($sDepositType == "eGive") {
 					echo "<input type=button class=btn value=\"".gettext("Import eGive")."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
