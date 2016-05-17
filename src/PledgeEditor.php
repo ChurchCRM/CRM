@@ -254,7 +254,7 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
           <div class="col-md-3">
             <label for="date"><?= gettext("Date"); ?></label>
             <?php if (!$dDate) $dDate = $dep_Date ?>
-            <input type="text" name="Date" value="<?= $dDate; ?>"  id="Date" >        
+            <input class="form-control" type="text" name="Date" value="<?= $dDate; ?>"  id="Date" >        
 
           </div>
 
@@ -262,7 +262,7 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
           <?php if ($dep_Type == 'Bank' and $bUseDonationEnvelopes) { ?>
             <div class="col-md-3">
               <label for="Envelope"><?= gettext("Envelope #"); ?></label>
-              <input type="text" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope; ?>">
+              <input class="form-control" type="text" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope; ?>">
               <?php if (!$dep_Closed) { ?>
 
                 <button type="button" class="btn btn-primary" value="<?= gettext("Find family->"); ?>" id="MatchEnvelope"><?= gettext("Find family->"); ?></button>
@@ -277,7 +277,7 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
           <?php if ($PledgeOrPayment == 'Pledge') { ?>
             <div class="col-md-4">
               <label for="Schedule"><?= gettext("Payment Schedule"); ?></label>
-              <select name="Schedule">
+              <select class="form-control" name="Schedule">
                 <option value="0"><?= gettext("Select Schedule"); ?></option>
                 <option value="Weekly" <?php if ($iSchedule == "Weekly") { echo "selected"; } ?>><?= gettext("Weekly"); ?></option>
                 <option value="Monthly" <?php if ($iSchedule == "Monthly") { echo "selected"; } ?>><?= gettext("Monthly"); ?></option>
@@ -292,7 +292,7 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
           <div class="col-md-3">	
             <label for="Method"><?php echo gettext("Payment by"); ?></label>
             <!-- Start Payment Method Section -->
-            <select name="Method" id="PaymentByMethod">
+            <select class="form-control" name="Method" id="PaymentByMethod">
               <option value="None" selected>Select a Payment Method</option>
               <?php if ($PledgeOrPayment == 'Pledge' or $dep_Type == "Bank" or ! $iCurrentDeposit) { ?>
                 <option value="CHECK"><?= gettext("CHECK"); ?></option>
@@ -311,8 +311,13 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
           </div>
           <!-- End Payment Method Section -->
           <div class="col-md-3">
-            <label for="grandTotal"><?= gettext("Total $"); ?></label>
-            <input id="grandTotal" type="text" name="TotalAmount" id="TotalAmount" value="<?= $iTotalAmount; ?>">
+            <label for="grandTotal"><?= gettext("Total"); ?></label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-dollar"></i>
+              </span>
+              <input id="grandTotal" type="text" class="form-control" name="TotalAmount" value="<?= $iTotalAmount; ?>">
+            </div>
           </div>
         </div>
 
@@ -327,7 +332,7 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
             <!-- Start Fund Selection (or Split Option) -->
 
             <label for="FundSplit"><?= gettext("Fund"); ?></label>
-            <select name="FundSplit" id="FundSplit">
+            <select class="form-control" name="FundSplit" id="FundSplit">
               <option value="None" selected>Select a Fund</option>
               <option value=0><?= gettext("Split"); ?></option>
               <?php
@@ -342,14 +347,14 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
           <!-- Start Comment Section -->
           <div class="col-md-4" id="SingleComment">
             <label for="OneComment"><?php echo gettext("Comment"); ?></label>
-            <input type="text" name="OneComment" id="OneComment" value=" ">
+            <input class="form-control" type="text" name="OneComment" id="OneComment" value=" ">
           </div>
           <!-- End Comment Section -->
         </div>
         <div class="row">
           <div class="col-xs-8 col-md-8">
             <label for="FamilyName"><?= gettext("Family"); ?></label>
-            <select style="width:100%" name="FamilyName" id="FamilyName">
+            <select  class="form-control" name="FamilyName" id="FamilyName">
               <option value="<?= $sFamilyName; ?>"><?= $sFamilyName; ?></option>
             </select>
           </div>
@@ -434,27 +439,27 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
           <div class="row">
             <?php
             foreach ($currencies as $currency) {
-              if ($currency->cClass == "Bill") {
+              if ($currency->cClass == "BILL") {
                 ?>
                 <div class="col-md-4">
                   <label for="currencyCount-<?= $currency->id ?>"><?= $currency->Name ?></label>
-                  <input type="text" class="denominationInputBox" data-cur-value="<?= $currency->Value ?>" name="currencyCount-<?= $currency->id ?>"></div>
+                  <input type="text" class="form-control denominationInputBox" data-cur-value="<?= $currency->Value ?>" name="currencyCount-<?= $currency->id ?>"></div>
                 <?php
               }
             }
             ?>
-          </div>
+          </div> 
         </div>
         <div id="Coins" class="tab-pane fade in">
           <h4>Coins</h4>
           <div class="row">
             <?php
             foreach ($currencies as $currency) {
-              if ($currency->cClass == "Coin") {
+              if ($currency->cClass == "COIN") {
                 ?>
                 <div class="col-md-4">
                   <label for="currencyCount-<?= $currency->id ?>"><?= $currency->Name ?></label>
-                  <input type="text" class="denominationInputBox" data-cur-value="<?= $currency->Value ?>" name="currencyCount-<?= $currency->id ?>"></div>
+                  <input  type="text" class="form-control denominationInputBox" data-cur-value="<?= $currency->Value ?>" name="currencyCount-<?= $currency->id ?>"></div>
                 <?php
               }
             }
@@ -498,7 +503,7 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
           <?php if ($PledgeOrPayment == 'Payment' and $dep_Type == 'Bank') { ?>
             <tr>
               <td class="PaymentLabelColumn"><?= gettext("Check #"); ?></td>
-              <td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?= $iCheckNo; ?>"><font color="red"><?= $sCheckNoError ?></font></td>
+              <td class="TextColumn"><input type="text" class="form-control" name="CheckNo" id="CheckNo" value="<?= $iCheckNo; ?>"><font color="red"><?= $sCheckNoError ?></font></td>
             </tr>
           <?php } ?>
           </tbody>
@@ -552,14 +557,40 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
           <tbody>
             <?php
             foreach ($funds as $fund) {
-              echo "<tr class=\"fundrow\" id=\"fundrow_" . $fund->ID . "\" >";
-              echo "<td>" . $fund->Name . "</td>";
-              echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fund->ID . "_Amount\" id=\"" . $fund->ID . "_Amount\" value=\"" . $nAmount[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
-              if ($bEnableNonDeductible) {
-                echo "<td><input type=\"text\" class=\"fundSplitInputBox\" name=\"" . $fund->ID . "_NonDeductible\" id=\"" . $fund->ID . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
-              }
-              echo "<td><input type=\"text\" name=\"" . $fund->ID . "_Comment\" id=\"" . $fund->ID . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";
-              echo "</tr>";
+              ?>
+              <tr class="fundrow" id="fundrow_<?= $fund->ID ?>">
+                <td><?= $fund->Name ?></td>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-dollar"></i>
+                    </span>
+                    <input type="text" class="form-control fundSplitInputBo" name="<?= $fund->ID ?>_Amount" id="<?= $fund->ID ?>_Amount" value="<?= $nAmount[$fun_id] ?>">
+                  </div>
+                  <br>
+                  <font color="red"><?= $sAmountError[$fun_id] ?></font>
+                </td>
+                <?php
+                if ($bEnableNonDeductible) {
+                  ?>
+                  <td>
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-dollar"></i>
+                      </span>
+                      <input type="text" class="form-control fundSplitInputBox" name=" <?= $fund->ID ?>_NonDeductible" id=" <?= $fund->ID ?>_Amount" value="<?= $nNonDeductible[$fun_id] ?>">
+                    </div>
+                    <br>
+                    <font color=\"red\"><?= $sAmountError[$fun_id] ?></font>
+                  </td>
+                  <?php
+                }
+                ?>
+                <td>
+                  <input type="text" class="form-control" name="<?= $fund->ID ?>_Comment" id="<?= $fund->ID ?>_Comment" value="<?= $sComment[$fun_id] ?>">
+                </td>
+              </tr>
+              <?php
             }
             ?>
           </tbody>

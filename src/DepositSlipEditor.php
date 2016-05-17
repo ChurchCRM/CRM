@@ -74,68 +74,75 @@ require "Include/Header.php";
 
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
 <script type="text/javascript" language="javascript" src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext("Deposit Details: "); ?></h3>
+<div class="row">
+  <div class="col-lg-9">
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title"><?php echo gettext("Deposit Details: "); ?></h3>
+      </div>
+      <div class="box-body">
+        <form method="post" action="#" name="DepositSlipEditor" id="DepositSlipEditor">
+          <div class="row">
+            <div class="col-lg-4">
+              <label for="Date"><?php echo gettext("Date:"); ?></label>
+              <input type="text" class="form-control" name="Date" value="<?php echo $thisDeposit->dep_Date; ?>" id="DepositDate" >
+            </div>
+            <div class="col-lg-4">
+              <label for="Comment"><?php echo gettext("Comment:"); ?></label>
+              <input type="text" class="form-control" name="Comment" id="Comment" value="<?php echo $thisDeposit->dep_Comment; ?>"/>
+            </div>
+            <div class="col-lg-4">
+              <label for="Closed"><?php echo gettext("Closed:"); ?></label>
+              <input type="checkbox"  name="Closed" id="Closed" value="1" <?php if ($thisDeposit->dep_Closed) echo " checked"; ?>/><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6" style="text-align:center">
+              <input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
+            </div>
+            <div class="col-lg-6" style="text-align:center">
+              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location = 'Reports/PrintDeposit.php?BankSlip=<?php echo ($thisDeposit->dep_Type == 'Bank') ?>';">
+            </div>
+          </div>
+          <?php
+          if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') {
+            echo "<p>" . gettext("Important note: failed transactions will be deleted permanantly when the deposit slip is closed.") . "</p>";
+          }
+          ?>
+      </div>
+    </div>
   </div>
-  <div class="box-body">
-    <form method="post" action="#" name="DepositSlipEditor" id="DepositSlipEditor">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <label for="Date"><?php echo gettext("Date:"); ?></label>
-            <input type="text" name="Date" value="<?php echo $thisDeposit->dep_Date; ?>" id="DepositDate" >
-          </div>
-          <div class="col-md-4">
-            <label for="Comment"><?php echo gettext("Comment:"); ?></label>
-            <input type="text" name="Comment" id="Comment" value="<?php echo $thisDeposit->dep_Comment; ?>" style="width:100%;">
-          </div>
-          <div class="col-md-2">
-            <label for="Closed"><?php echo gettext("Closed:"); ?></label>
-            <input type="checkbox" name="Closed" id="Closed" value="1" <?php if ($thisDeposit->dep_Closed) echo " checked"; ?>><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3">
-            <input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
-          </div>
-          <div class="col-md-3">
-            <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location = 'Reports/PrintDeposit.php?BankSlip=<?php echo ($thisDeposit->dep_Type == 'Bank') ?>';">
-          </div>
-        </div>
+  <?php 
+  if ($thisDeposit->countTotal > 0)
+  { 
+?>
+  <div class="col-lg-3">
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title"><?php echo gettext("Deposit Summary: "); ?></h3>
+      </div>
+      <div class="box-body">
 
         <?php
-        if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') {
-          echo "<p>" . gettext("Important note: failed transactions will be deleted permanantly when the deposit slip is closed.") . "</p>";
-        }
+        // Get deposit totals
+        echo "<b>" . $thisDeposit->dep_Total . " - TOTAL AMOUNT </b> &nbsp; (Items: $thisDeposit->countTotal)<br>";
+
+        if ($thisDeposit->totalCash)
+          echo "<i><b>" . $thisDeposit->totalCash . " - Total Cash </b> &nbsp; (Items: $thisDeposit->countCash)</i><br>";
+
+        if ($thisDeposit->totalChecks)
+          echo "<i><b>" . $thisDeposit->totalChecks . " - Total Checks</b> &nbsp; (Items: $thisDeposit->countCheck)</i><br>";
         ?>
 
-        <div class="row">
-          <div class="col-md-3">
-            <?php
-            // Get deposit totals
-            echo "<b>" . $thisDeposit->dep_Total . " - TOTAL AMOUNT </b> &nbsp; (Items: $thisDeposit->countTotal)<br>";
-            ?>
-          </div>
 
-          <div class="col-md-3">
-            <?php
-            if ($thisDeposit->totalCash)
-              echo "<i><b>" . $thisDeposit->totalCash . " - Total Cash </b> &nbsp; (Items: $thisDeposit->countCash)</i><br>";
-            ?>
-          </div>
-          <div class="col-md-3">
-            <?php
-            if ($thisDeposit->totalChecks)
-              echo "<i><b>" . $thisDeposit->totalChecks . " - Total Checks</b> &nbsp; (Items: $thisDeposit->countCheck)</i><br>";
-            ?>
-          </div>
-        </div>
       </div>
-  </div>
-</div>
 
+    </div>
+  </div>
+  <?php
+  }
+  ?>
+</div>
 <div class="box">
   <div class="box-header with-border">
     <h3 class="box-title"><?php echo gettext("Payments on this deposit slip:"); ?></h3>

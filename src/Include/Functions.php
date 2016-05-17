@@ -332,7 +332,7 @@ function CurrentFY()
 // PrintFYIDSelect: make a fiscal year selection menu.
 function PrintFYIDSelect ($iFYID, $selectName)
 {
-    echo "<select name=\"" . $selectName . "\">";
+    echo "<select class=\"form-control\" name=\"" . $selectName . "\">";
     echo "<option value=\"0\">" . gettext("Select Fiscal Year") . "</option>";
 
     for ($fy = 1; $fy < CurrentFY() + 2; $fy++) {
