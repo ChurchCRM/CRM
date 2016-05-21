@@ -254,10 +254,9 @@ class SystemService {
     // This code will automatically update from 2.0.0 (early build of ChurchCRM)
     if (strncmp($db_version, "2.0.1", 6) == 0) {
       $this->rebuildWithSQL("/mysql/upgrade/2.1.0.sql");
-      $this->updateDBVersion($_SESSION['sSoftwareInstalledVersion']);
       return true;
     }
-    
+
     return false;
   }
 
