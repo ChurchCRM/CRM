@@ -3,6 +3,26 @@ if (!$.isArray(depositData.deposits))
     depositData.deposits=[depositData.deposits];
 }
 var dataT = 0;
+
+function verifyContent(url) {
+  console.log("Verifying " + url);
+  $.ajax({
+    type: 'HEAD',
+    url: url,
+    async: false,
+    statusCode: {
+      200: function() {
+        console.log("OK" + status);
+        window.open(url);
+      },
+      404: function() {
+        console.log("NO!" + status);
+        displayErrorMessage(url, "There was a problem retreiving the export for this object");
+      }
+    }
+  });
+}
+
 $(document).ready(function() {
     $("#depositDate").datepicker({format:'yyyy-mm-dd'}).datepicker("setDate", new Date());
     $("#addNewDeposit").click(function (e){
@@ -97,24 +117,13 @@ $(document).ready(function() {
     });
     
     
-    $('#exportSelectedRows').click(function() {
+
+    $('.exportButton').click(function(sender) {
         var selectedRows = dataT.rows('.selected').data()
+        var type = this .getAttribute("data-exportType");
         $.each(selectedRows, function(index, value){
-            window.open(window.CRM.root+'/api/deposits/'+value.dep_ID+'/ofx');
-        });
-    });
-    
-    $('#exportSelectedRowsCSV').click(function() {
-        var selectedRows = dataT.rows('.selected').data()
-        $.each(selectedRows, function(index, value){
-            window.open(window.CRM.root+'/api/deposits/'+value.dep_ID+'/csv');
-        });
-    });
-    
-    $('#generateDepositSlip').click(function() {
-        var selectedRows = dataT.rows('.selected').data()
-        $.each(selectedRows, function(index, value){
-            window.open(window.CRM.root+'/api/deposits/'+value.dep_ID+'/pdf');
+          verifyContent(window.CRM.root+'/api/deposits/'+value.dep_ID+'/'+type);
+           
         });
     });
 
