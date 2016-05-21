@@ -36,7 +36,7 @@ if ($iFundRaiserID > 0) {
 $sPageTitle = gettext("Buyers for this fundraiser:");
 require "Include/Header.php";
 ?>
-
+<div class="box box-body">
 <?php
 echo "<form method=\"post\" action=\"Reports/FundRaiserStatement.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID\">\n";
 if ($iFundRaiserID > 0)
@@ -45,6 +45,8 @@ if ($iFundRaiserID > 0)
 	echo "<input type=button class=btn value=\"".gettext("Add Buyer")."\" name=AddBuyer onclick=\"javascript:document.location='PaddleNumEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=PaddleNumList.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
 	echo "<input type=submit class=btn value=\"".gettext("Generate Statements for Selected")."\" name=GenerateStatements>\n";
 ?>
+</div>
+<div class="box box-body">
 
 <table cellpadding="5" cellspacing="5">
 
@@ -87,6 +89,7 @@ if ($rsPaddleNums) {
 ?>
 
 </table>
+  </div>
 </form>
 
 <?php require "Include/Footer.php" ?>

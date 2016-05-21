@@ -298,7 +298,6 @@ if ($iUserID > 0)
             RunQuery($sSQL);
         }
 
-        // Redirect to the Menu
         Redirect('CheckVersion.php');
         exit;
     }
