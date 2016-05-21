@@ -32,7 +32,7 @@ require_once dirname(__FILE__).'/../Service/PersonService.php';
 // Set the current version of this PHP file
 // Important!  These must be updated before every software release.
 
-$_SESSION['sSoftwareInstalledVersion'] = '2.0.0';
+$_SESSION['sSoftwareInstalledVersion'] = '2.0.1';
 $personService = new PersonService();
 //
 // Basic security checks:
