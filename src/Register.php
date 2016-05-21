@@ -95,7 +95,9 @@ if (isset ($_POST['Submit'])) {
 	</form>
 </div>
 <div class="box box-warning">
-	<?= gettext ("If you need to make changes go to Admin->Edit General Settings and Admin->Edit Report Settings.  "); ?>
+  <div class="box-body">
+	  <?= gettext ("If you need to make changes go to Admin->Edit General Settings and Admin->Edit Report Settings.  "); ?>
+  </div>
 </div>
 
 <?php require "Include/Footer.php" ?>
