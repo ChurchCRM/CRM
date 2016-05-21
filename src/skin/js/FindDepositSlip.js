@@ -5,18 +5,15 @@ if (!$.isArray(depositData.deposits))
 var dataT = 0;
 
 function verifyContent(url) {
-  console.log("Verifying " + url);
   $.ajax({
     type: 'HEAD',
     url: url,
     async: false,
     statusCode: {
       200: function() {
-        console.log("OK" + status);
         window.open(url);
       },
       404: function() {
-        console.log("NO!" + status);
         displayErrorMessage(url, "There was a problem retreiving the export for this object");
       }
     }
