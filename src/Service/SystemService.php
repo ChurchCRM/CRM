@@ -247,7 +247,6 @@ class SystemService {
 
     if (strncmp($db_version, "2.0.0", 6) == 0) {
       $this->rebuildWithSQL("/mysql/upgrade/2.1.0.sql");
-      $this->updateDBVersion($_SESSION['sSoftwareInstalledVersion']);
       return true;
     }
 
