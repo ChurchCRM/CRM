@@ -43,6 +43,9 @@ class TimelineService
       case "edit":
         $item["style"] = "fa-pencil bg-blue";
         break;
+      case "photo":
+        $item["style"] = "fa-camera bg-green";
+        break;
       case "note":
         $item["style"] = "fa-sticky-note bg-green";
         break;
