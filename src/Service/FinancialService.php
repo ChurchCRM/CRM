@@ -1318,12 +1318,9 @@ class FinancialService
     //exit;
     $this->generateDepositSummary($thisReport);
 
-    $PDFReturn = new StdClass();
-    $PDFReturn->content = $thisReport->pdf->Output();
-    // Export file
-    $PDFReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-DepositReport-" . $depID . "-" . date("Ymd-Gis") . ".pdf";
-    return $PDFReturn;
-
+   // Export file
+   $thisReport->pdf->Output("ChurchCRM-DepositReport-" . $depID . "-" . date("Ymd-Gis") . ".pdf","D");
+   
   }
 
   function getDepositCSV($depID)
