@@ -139,7 +139,7 @@ $sPeopleSQL = "SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_Cit
 require "Include/Header.php";
 
 ?>
-
+<div class="box box-body">
 <form method="post" action="PaddleNumEditor.php?<?= "CurrentFundraiser=" . $iCurrentFundraiser . "&PaddleNumID=" . $iPaddleNumID . "&linkBack=" . $linkBack ?>" name="PaddleNumEditor">
 
 <table cellpadding="3" align="center">
@@ -221,5 +221,5 @@ require "Include/Header.php";
 	</table>
 
 </form>
-
+</div>
 <?php require "Include/Footer.php" ?>
