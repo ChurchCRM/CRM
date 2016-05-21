@@ -59,7 +59,7 @@ if (array_key_exists ("FilterClear", $_GET) && $_GET["FilterClear"]) {
 require "Include/Header.php";
 
 ?>
-
+<div class="box box-body">
 <form method="get" action="FindFundRaiser.php" name="FindFundRaiser">
 <input name="sort" type="hidden" value="<?= $sSort ?>"
 <table cellpadding="3" align="center">
@@ -76,22 +76,22 @@ require "Include/Header.php";
 				<td class="LabelColumn"><?= gettext("Date Start:") ?></td>
 				<td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="DateStart" size="11" value="<?= $dDateStart ?>"></td>
 				<td align="center">
-					<input type="submit" class="btn" value="<?= gettext("Apply Filters") ?>" name="FindFundRaiserSubmit">
+					<input type="submit" class="btn btn-primary" value="<?= gettext("Apply Filters") ?>" name="FindFundRaiserSubmit">
 				</td>
 			</tr>
 			<tr>
 				<td class="LabelColumn"><?= gettext("Date End:") ?></td>
 				<td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?= $dDateEnd ?>"></td>
 				<td align="center">
-					<input type="submit" class="btn" value="<?= gettext("Clear Filters") ?>" name="FilterClear">
+					<input type="submit" class="btn btn-danger" value="<?= gettext("Clear Filters") ?>" name="FilterClear">
 				</td>
 			</tr>
 		</table>
 		</td>
 	</form>
 </table>
-
-
+</div>
+<div class="box box-body">
 <?php
 // List Fundraisers
 // Save record limit if changed
@@ -241,5 +241,5 @@ echo "</table>";
 $("#DateStart").datepicker({format:'yyyy-mm-dd'});
 $("#DateEnd").datepicker({format:'yyyy-mm-dd'});
 </script>
-
+</div>
 <?php require "Include/Footer.php" ?>
