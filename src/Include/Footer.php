@@ -48,6 +48,15 @@
   <script src="<?= $sRootPath ?>/skin/js/Events.js"></script>
   <script src="<?= $sRootPath ?>/skin/js/Footer.js"></script>
 
+  <?php if ($_SESSION['bAdmin']) { ?>
+  <script>
+    ((window.gitter = {}).chat = {}).options = {
+      room: 'churchcrm/crm'
+    };
+  </script>
+  <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+  <? } ?>
+
 </body>
 </html>
 <?php
