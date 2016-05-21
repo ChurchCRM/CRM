@@ -3,12 +3,12 @@
 class NoteService
 {
 
-  function addNote($personID, $familyID, $private, $text)
+  function addNote($personID, $familyID, $private, $text, $type = "system")
   {
     requireUserGroupMembership("bNotes");
-    $sSQL = "INSERT INTO note_nte (nte_per_ID, nte_fam_ID, nte_Private, nte_Text, nte_EnteredBy, nte_DateEntered)
+    $sSQL = "INSERT INTO note_nte (nte_per_ID, nte_fam_ID, nte_Private, nte_Text, nte_EnteredBy, nte_DateEntered, nte_Type)
                 VALUES (" . $personID . "," . $familyID . "," . $private . ",'" . $text . "'," .
-      $_SESSION['iUserID'] . ",'" . date("YmdHis") . "')";
+      $_SESSION['iUserID'] . ",'" . date("YmdHis") . "', '". $type ."')";
 
     //Execute the SQL
     RunQuery($sSQL);
