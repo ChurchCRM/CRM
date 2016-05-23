@@ -66,7 +66,7 @@ if (isset ($_POST['Submit'])) {
   $sSQL = "UPDATE config_cfg SET cfg_value = 1 WHERE cfg_name='bRegistered'";
   RunQuery($sSQL);
   $bRegistered = 1;
-  Redirect("Menu.php?Registored=true");
+  Redirect("Menu.php?Registered=true");
 }
 
 ?>
