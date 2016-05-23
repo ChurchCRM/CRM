@@ -1224,14 +1224,77 @@ class FinancialService
     $thisReport->curY += $thisReport->summaryIntervalY;
     $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
     $thisReport->pdf->Write(8, "Checks: ");
+    $thisReport->pdf->write(8, "(" . $thisReport->deposit->countCheck . ")");
     $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf("%.2f", $thisReport->deposit->totalChecks));
     $thisReport->curY += $thisReport->summaryIntervalY;
     $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
     $thisReport->pdf->Write(8, "Cash: ");
     $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf("%.2f", $thisReport->deposit->totalCash));
-
+    
+    $thisReport->curY += $thisReport->summaryIntervalY * 2;
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    
+    $this->generateCashDenominations($thisReport);
+    $this->generateWitnessSignature($thisReport);
+    
   }
 
+  private function generateWitnessSignature($thisReport)
+  {
+    $thisReport->curY = $thisReport->pdf->GetY() + $thisReport->summaryIntervalY;
+    $thisReport->curX = $thisReport->date2X;
+    
+    $thisReport->pdf->setXY($thisReport->curX,$thisReport->curY);
+    $thisReport->pdf->write(8,"Witness 1");
+    $thisReport->pdf->line( $thisReport->curX+17, $thisReport->curY+8, $thisReport->curX+80, $thisReport->curY+8);
+    
+    $thisReport->curY += 10;    
+    $thisReport->pdf->setXY($thisReport->curX,$thisReport->curY);
+    $thisReport->pdf->write(8,"Witness 2");
+    $thisReport->pdf->line( $thisReport->curX+17, $thisReport->curY+8, $thisReport->curX+80, $thisReport->curY+8);
+    
+    $thisReport->curY += 10;    
+    $thisReport->pdf->setXY($thisReport->curX,$thisReport->curY);
+    $thisReport->pdf->write(8,"Witness 3");
+    $thisReport->pdf->line( $thisReport->curX+17, $thisReport->curY+8, $thisReport->curX+80, $thisReport->curY+8);
+
+  }
+  
+  private function generateCashDenominations($thisReport)
+  {
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    $cashDenominations = ["0.01", "0.05","0.10","0.25","0.50","1.00"];
+    $thisReport->pdf->Cell(10, 10, "Coin", 1, 0, 'L');
+    $thisReport->pdf->Cell(20, 10, "Counts", 1, 0, 'L');
+    $thisReport->pdf->Cell(20, 10, "Totals", 1, 2, 'L');
+    $thisReport->pdf->SetX($thisReport->curX);
+    foreach ($cashDenominations as $denomination)
+    {
+      $thisReport->pdf->Cell(10,10, $denomination,  1, 0, 'L');
+      $thisReport->pdf->Cell(20,10, "",  1, 0, 'L');
+      $thisReport->pdf->Cell(20,10, "",  1, 2, 'L');
+      $thisReport->pdf->SetX($thisReport->curX);
+    }
+    $thisReport->pdf->Cell(50, 10, "Total Coin", 1, 2, 'L');
+    
+    $thisReport->curX += 70;
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    
+    $cashDenominations = ["$1","$2","$5","$10","$20","$50","$100"];
+    $thisReport->pdf->Cell(10, 10, "Bill", 1, 0, 'L');
+    $thisReport->pdf->Cell(20, 10, "Counts", 1, 0, 'L');
+    $thisReport->pdf->Cell(20, 10, "Totals", 1, 2, 'L');
+    $thisReport->pdf->SetX($thisReport->curX);
+    foreach ($cashDenominations as $denomination)
+    {
+      $thisReport->pdf->Cell(10,10, $denomination,  1, 0, 'L');
+      $thisReport->pdf->Cell(20,10, "",  1, 0, 'L');
+      $thisReport->pdf->Cell(20,10, "",  1, 2, 'L');
+      $thisReport->pdf->SetX($thisReport->curX);
+    }
+    $thisReport->pdf->Cell(50, 10, "Total Cash", 1, 2, 'L');
+  }
+  
   private function calculateFundTotals($thisReport)
   {
     $thisReport->fundTotal = array();
@@ -1276,7 +1339,7 @@ class FinancialService
     $thisReport->cashY = 32;
     $thisReport->checksX = $thisReport->depositSlipFrontColumns;
     $thisReport->checksY = 39;
-    $thisReport->date2X = 185;
+    $thisReport->date2X = 15;
     $thisReport->date2Y = 5;
     $thisReport->titleX = 85;
     $thisReport->titleY = 5;
