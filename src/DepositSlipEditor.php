@@ -1,5 +1,5 @@
 <?php
-/* * *****************************************************************************
+/*******************************************************************************
  *
  *  filename    : DepositSlipEditor.php
  *  last change : 2014-12-14
@@ -11,7 +11,7 @@
  *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
  *
- * **************************************************************************** */
+ ******************************************************************************/
 
 //Include the function library
 require "Include/Config.php";
