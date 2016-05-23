@@ -52,3 +52,4 @@ CREATE TABLE `pledge_denominations_pdem`(
 ALTER TABLE `config_cfg`
  ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
 
+INSERT IGNORE INTO version_ver (ver_version, ver_date) VALUES ('2.0.0',NOW());

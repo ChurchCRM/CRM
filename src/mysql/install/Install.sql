@@ -1,5 +1,28 @@
--- Install Version 2.0.0
+-- Install Version 2.1.0
 -- --------------------------------------------------------
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `version_ver`
+--
+
+CREATE TABLE `version_ver` (
+  `ver_ID` mediumint(9) unsigned NOT NULL auto_increment,
+  `ver_version` varchar(50) NOT NULL default '',
+  `ver_update_start` datetime default NULL,
+  `ver_update_end` datetime default NULL,
+  PRIMARY KEY  (`ver_ID`),
+  UNIQUE KEY `ver_version` (`ver_version`)
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `version_ver`
+--
+
+INSERT INTO version_ver (ver_version, ver_update_start)
+VALUES ('2.1.0', now());
 
 --
 -- Table structure for table `autopayment_aut`
@@ -1431,26 +1454,6 @@ INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, 
 VALUES
 (1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '0000-00-00 00:00:00', 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 580, 9, 10, 'skin-blue', 0, 0, '0000-00-00', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `version_ver`
---
-
-CREATE TABLE `version_ver` (
-  `ver_ID` mediumint(9) unsigned NOT NULL auto_increment,
-  `ver_version` varchar(50) NOT NULL default '',
-  `ver_date` datetime default NULL,
-  PRIMARY KEY  (`ver_ID`),
-  UNIQUE KEY `ver_version` (`ver_version`)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `version_ver`
---
-
-INSERT INTO `version_ver` (`ver_version`, `ver_date`) VALUES
-('2.0.0', NOW() );
 
 -- --------------------------------------------------------
 
@@ -1550,3 +1553,6 @@ CREATE TABLE `egive_egv` (
   `egv_EnteredBy` smallint(6) NOT NULL default '0',
   `egv_EditedBy` smallint(6) NOT NULL default '0'
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+
+update version_ver set ver_update_end = now();
