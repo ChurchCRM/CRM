@@ -235,34 +235,21 @@ class SystemService {
     // This code will automatically update from 1.2.14 (last good churchinfo build to 2.0.0 for ChurchCRM
     if (strncmp($db_version, "1.2.14", 6) == 0) {
       $this->rebuildWithSQL("/mysql/upgrade/1.2.14-2.0.0.sql");
-      $this->updateDBVersion($_SESSION['sSoftwareInstalledVersion']);
       return true;
     }
 
     // This code will automatically update from 1.3.0 (early build of ChurchCRM)
     if (strncmp($db_version, "1.3.0", 6) == 0) {
       $this->rebuildWithSQL("/mysql/upgrade/1.3.0-2.0.0.sql");
-      $this->updateDBVersion($_SESSION['sSoftwareInstalledVersion']);
       return true;
     }
 
-    if (strncmp($db_version, "2.0.0", 6) == 0) {
-      $this->rebuildWithSQL("/mysql/upgrade/2.1.0.sql");
-      return true;
-    }
-
-    // This code will automatically update from 2.0.0 (early build of ChurchCRM)
-    if (strncmp($db_version, "2.0.1", 6) == 0) {
-      $this->rebuildWithSQL("/mysql/upgrade/2.1.0.sql");
+    if (strncmp($db_version, "2.0", 3) == 0) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.0.x-2.1.0.sql");
       return true;
     }
 
     return false;
-  }
-
-  function updateDBVersion($version) {
-    $sSQL = "INSERT IGNORE INTO version_ver (ver_version, ver_date) VALUES ('" . $version . "',NOW())";
-    RunQuery($sSQL); // False means do not stop on error
   }
 
   function reportIssue($data) {
