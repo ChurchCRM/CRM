@@ -13,7 +13,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
    'ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General', NULL),
   (1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'ChurchInfoReport', NULL);
 UPDATE user_usr
-SET usr_Style = "skin-blue";
+ SET usr_Style = "skin-blue";
 
 DROP TABLE IF EXISTS `currency_denominations_cdem`;
 CREATE TABLE `currency_denominations_cdem` (
@@ -48,3 +48,7 @@ CREATE TABLE `pledge_denominations_pdem`(
  `pdem_denominationQuantity` mediumint(9) default NULL,
  PRIMARY KEY  (`pdem_pdemID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+ALTER TABLE `config_cfg`
+ ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
+
