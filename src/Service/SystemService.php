@@ -246,7 +246,7 @@ class SystemService {
       return true;
     }
 
-    if (strncmp($db_version, "2.0", 3) == 0) {
+    if (strncmp($db_version, "2.0.0", 6) == 0) {
       $this->updateDBVersion($_SESSION['sSoftwareInstalledVersion']);
       return true;
     }
