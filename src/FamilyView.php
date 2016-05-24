@@ -267,12 +267,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 			<div class="box box-header">
 				<div class="col-lg-5 col-md-4 col-sm-4">
 					<img src="<?= $personService->getPhoto($EnteredId) ?>" title="<?=  $EnteredFirstName . " " . $EnteredLastName ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
-					<?= gettext("Entered: ").FormatDate($per_DateEntered,false) ?>
+					<?= gettext("Entered: ").FormatDate($fam_DateEntered,false) ?>
 				</div>
-				<?php if (strlen($per_DateLastEdited) > 0) { ?>
+				<?php if (strlen($fam_DateLastEdited) > 0) { ?>
 					<div class="col-lg-4 col-md-4 col-sm-4">
 						<img src="<?= $personService->getPhoto($EditedId) ?>" title="<?=  $EditedFirstName . " " . $EditedLastName ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
-						<?= gettext("Updated: ").FormatDate($per_DateLastEdited,false) ?>
+						<?= gettext("Updated: ").FormatDate($fam_DateLastEdited,false) ?>
 					</div>
 				<?php } ?>
 			</div>
