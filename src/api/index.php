@@ -303,10 +303,8 @@ $app->group('/deposits', function () use ($app) {
   })->conditions(array('id' => '[0-9]+'));
 
   $app->get('/:id/pdf', function ($id) use ($app) {
-
-    $PDF = $app->FinancialService->getDepositPDF($id);
-    header($PDF->header);
-    echo $PDF->content;
+    $app->contentType("application/x-download");
+    $app->FinancialService->getDepositPDF($id);
   })->conditions(array('id' => '[0-9]+'));
 
   $app->get('/:id/csv', function ($id) use ($app) {

@@ -2,19 +2,65 @@
 
 ## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
 
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0...HEAD)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.1...HEAD)
+
+**Merged pull requests:**
+
+- add upgrade steps [\#627](https://github.com/ChurchCRM/CRM/pull/627) ([crossan007](https://github.com/crossan007))
+
+## [2.0.1](https://github.com/ChurchCRM/CRM/tree/2.0.1) (2016-05-23)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0...2.0.1)
+
+**Implemented enhancements:**
+
+- Bug Reporting from within App [\#455](https://github.com/ChurchCRM/CRM/issues/455)
+- Gitter SideCar Chat for Admins [\#621](https://github.com/ChurchCRM/CRM/pull/621) ([DawoudIO](https://github.com/DawoudIO))
+- fix theme in many fundraiser pages [\#598](https://github.com/ChurchCRM/CRM/pull/598) ([crossan007](https://github.com/crossan007))
+- Member reports now are part of the member dashboard [\#593](https://github.com/ChurchCRM/CRM/pull/593) ([DawoudIO](https://github.com/DawoudIO))
+
+**Fixed bugs:**
+
+- SystemService duplicated SQL Functions. [\#610](https://github.com/ChurchCRM/CRM/issues/610)
+- update\_config.sql breaks during restore [\#548](https://github.com/ChurchCRM/CRM/issues/548)
+- Deposit Slip With no Payments Export [\#617](https://github.com/ChurchCRM/CRM/issues/617)
+- Donated Item Editor Theme [\#597](https://github.com/ChurchCRM/CRM/issues/597)
+- Database error or invalid data [\#583](https://github.com/ChurchCRM/CRM/issues/583)
+- Just added a new person and dates are wrong. [\#523](https://github.com/ChurchCRM/CRM/issues/523)
+- CheckVersion can be bypassed [\#211](https://github.com/ChurchCRM/CRM/issues/211)
+- Fixes \#583 SQL Error on Custom Person Field Add [\#585](https://github.com/ChurchCRM/CRM/pull/585) ([crossan007](https://github.com/crossan007))
+- fix version location [\#626](https://github.com/ChurchCRM/CRM/pull/626) ([crossan007](https://github.com/crossan007))
+- fixed bad source of Family Entered / Updated [\#622](https://github.com/ChurchCRM/CRM/pull/622) ([DawoudIO](https://github.com/DawoudIO))
+- fix \#603 bad header import [\#620](https://github.com/ChurchCRM/CRM/pull/620) ([DawoudIO](https://github.com/DawoudIO))
+- closes \#600 [\#604](https://github.com/ChurchCRM/CRM/pull/604) ([crossan007](https://github.com/crossan007))
+- Version check bug fixes [\#591](https://github.com/ChurchCRM/CRM/pull/591) ([DawoudIO](https://github.com/DawoudIO))
 
 **Closed issues:**
 
+- Members-\>View All Persons not working [\#607](https://github.com/ChurchCRM/CRM/issues/607)
+- test [\#605](https://github.com/ChurchCRM/CRM/issues/605)
+- Installation Problem [\#602](https://github.com/ChurchCRM/CRM/issues/602)
+- API PDF MIME Type Wrong [\#600](https://github.com/ChurchCRM/CRM/issues/600)
+- kj [\#590](https://github.com/ChurchCRM/CRM/issues/590)
+- Custom Field [\#588](https://github.com/ChurchCRM/CRM/issues/588)
+- Add New Person To New Family [\#587](https://github.com/ChurchCRM/CRM/issues/587)
+- Deposit Slip Wrong Report [\#586](https://github.com/ChurchCRM/CRM/issues/586)
 - test [\#579](https://github.com/ChurchCRM/CRM/issues/579)
 - develop test [\#577](https://github.com/ChurchCRM/CRM/issues/577)
 - Test post  \#571 [\#575](https://github.com/ChurchCRM/CRM/issues/575)
 - Update Demo site, landing pages to match 2.0.0 and 2.1.0 [\#563](https://github.com/ChurchCRM/CRM/issues/563)
 - Vagrant test [\#559](https://github.com/ChurchCRM/CRM/issues/559)
+- Clean up whitespace and style issues in source code [\#333](https://github.com/ChurchCRM/CRM/issues/333)
 
 **Merged pull requests:**
 
+- 2.1.0 tweaks [\#624](https://github.com/ChurchCRM/CRM/pull/624) ([crossan007](https://github.com/crossan007))
+- Merge master into develop [\#611](https://github.com/ChurchCRM/CRM/pull/611) ([crossan007](https://github.com/crossan007))
+- Tweak deposit report [\#606](https://github.com/ChurchCRM/CRM/pull/606) ([crossan007](https://github.com/crossan007))
+- Fixes 548 [\#589](https://github.com/ChurchCRM/CRM/pull/589) ([crossan007](https://github.com/crossan007))
 - update develop from master [\#576](https://github.com/ChurchCRM/CRM/pull/576) ([crossan007](https://github.com/crossan007))
+- Updated Code and DB to 2.0.1 [\#619](https://github.com/ChurchCRM/CRM/pull/619) ([DawoudIO](https://github.com/DawoudIO))
+- Deposit Slip With no Payments Export [\#618](https://github.com/ChurchCRM/CRM/pull/618) ([crossan007](https://github.com/crossan007))
+- Fix deposit slip bug [\#595](https://github.com/ChurchCRM/CRM/pull/595) ([crossan007](https://github.com/crossan007))
 
 ## [2.0.0](https://github.com/ChurchCRM/CRM/tree/2.0.0) (2016-04-18)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0-RC2...2.0.0)
@@ -90,6 +136,7 @@
 
 **Fixed bugs:**
 
+- Sunday School [\#603](https://github.com/ChurchCRM/CRM/issues/603)
 - Fix docker image [\#556](https://github.com/ChurchCRM/CRM/issues/556)
 - 2.0.0-RC1 Deposit Graph not visible on Menu.php [\#530](https://github.com/ChurchCRM/CRM/issues/530)
 - Slim Debug Mode [\#516](https://github.com/ChurchCRM/CRM/issues/516)

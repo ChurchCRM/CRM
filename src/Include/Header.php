@@ -25,7 +25,7 @@
  *  This file best viewed in a text editor with tabs stops set to 4 characters
  *
  ******************************************************************************/
-require 'Service/SystemService.php';
+require_once dirname(dirname(__FILE__)) . '/Service/SystemService.php';
 $systemService = new SystemService();
 if (!$systemService->checkDatabaseVersion())  //either the DB is good, or the upgrade was successful.
 {
@@ -53,19 +53,7 @@ $MenuFirst = 1;
   require 'Header-HTML-Scripts.php';
   Header_head_metatag();
   ?>
-  <script>
-    function displayMessage(endpoint, message) {
-      $(".modal").modal('hide');
-      $("#APIError").modal('show');
-      $("#APIEndpoint").text(endpoint);
-      $("#APIErrorText").text(message);
-    }
-
-    $(document).ajaxError(function (evt, xhr, settings) {
-      var CRMResponse = JSON.parse(xhr.responseText).error;
-      displayMessage("[" + settings.type + "] " + settings.url, " " +CRMResponse.text);
-    });
-  </script>
+  <script src="<?= $sRootPath; ?>/skin/js/APIErrorHandler.js" type="text/javascript"></script>
 </head>
 
 <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
