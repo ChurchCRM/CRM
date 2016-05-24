@@ -75,7 +75,7 @@ require "Include/Header.php";
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
 <script type="text/javascript" language="javascript" src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 <div class="row">
-  <div class="col-lg-9">
+  <div class="col-lg-8">
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title"><?php echo gettext("Deposit Details: "); ?></h3>
@@ -116,23 +116,40 @@ require "Include/Header.php";
   if ($thisDeposit->countTotal > 0)
   { 
 ?>
-  <div class="col-lg-3">
+  <div class="col-lg-4">
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title"><?php echo gettext("Deposit Summary: "); ?></h3>
       </div>
       <div class="box-body">
-
-        <?php
-        // Get deposit totals
-        echo "<b>" . $thisDeposit->dep_Total . " - TOTAL AMOUNT </b> &nbsp; (Items: $thisDeposit->countTotal)<br>";
-
-        if ($thisDeposit->totalCash)
+        <script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
+        <div class="col-lg-6">
+          <canvas id="type-donut" style="height:250px"></canvas>
+          <?php
+          // Get deposit totals
+          echo "<b>" . $thisDeposit->dep_Total . " - TOTAL AMOUNT </b> &nbsp; (Items: $thisDeposit->countTotal)<br>";
+          if ($thisDeposit->totalCash)
           echo "<i><b>" . $thisDeposit->totalCash . " - Total Cash </b> &nbsp; (Items: $thisDeposit->countCash)</i><br>";
-
-        if ($thisDeposit->totalChecks)
+          if ($thisDeposit->totalChecks)
           echo "<i><b>" . $thisDeposit->totalChecks . " - Total Checks</b> &nbsp; (Items: $thisDeposit->countCheck)</i><br>";
-        ?>
+          ?>
+        </div>
+         <div class="col-lg-6">
+          <canvas id="fund-donut" style="height:250px"></canvas>
+          <?php
+          // Get deposit totals
+          echo "<b>" . $thisDeposit->dep_Total . " - TOTAL AMOUNT </b> &nbsp; (Items: $thisDeposit->countTotal)<br>";
+          if ($thisDeposit->totalCash)
+          echo "<i><b>" . $thisDeposit->totalCash . " - Total Cash </b> &nbsp; (Items: $thisDeposit->countCash)</i><br>";
+          if ($thisDeposit->totalChecks)
+          echo "<i><b>" . $thisDeposit->totalChecks . " - Total Checks</b> &nbsp; (Items: $thisDeposit->countCheck)</i><br>";
+          ?>
+        </div>
+        
+        
+        
+         
+       
 
 
       </div>
@@ -203,10 +220,38 @@ require "Include/Header.php";
 <!-- End Delete Confirm Modal -->
 
 
-
+<script type="text/javascript" src="<?= $sRootPath ?>/skin/js/DepositSlipEditor.js"></script>
 <script>
 var paymentData = <?php echo $financialService->getPaymentJSON($financialService->getPayments($iDepositSlipID)); ?>;
-
+var typePieData = [
+  {
+    value: <?= $thisDeposit->totalCash ?> , 
+    color: "#197A05", 
+    highlight: "#4AFF23", 
+    label: "Cash" 
+  },
+  {
+    value:  <?= $thisDeposit->totalChecks ?  $thisDeposit->totalChecks : "0" ?>, 
+    color: "#003399", 
+    highlight: "#3366ff", 
+    label: "Checks" 
+  }
+  ];
+  
+var fundPieData = [
+  {
+    value: <?= $thisDeposit->totalCash ?> , 
+    color: "#003399", 
+    highlight: "#3366ff", 
+    label: "Cash" 
+  },
+  {
+    value:  <?= $thisDeposit->totalChecks ?  $thisDeposit->totalChecks : "0" ?>, 
+    color: "#003399", 
+    highlight: "#3366ff", 
+    label: "Checks" 
+  }
+  ];
 var depositType = '<?php echo $thisDeposit->dep_Type; ?>';
 var depositSlipID = <?php echo $iDepositSlipID; ?>;
 
@@ -267,11 +312,12 @@ if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCa
           ]
 });
 
-
+initDepositSlipEditor();
 });
+
 </script>
 
-<script type="text/javascript" src="<?= $sRootPath ?>/skin/js/DepositSlipEditor.js"></script>
+
 
 <?php
 require "Include/Footer.php";
