@@ -183,7 +183,7 @@ $aPropTypes = array(
 $sGlobalMessageClass = "success";
 
 if (isset($_GET["Registered"])) {
-  $sGlobalMessage = gettext("Thank you for registoring your ChurchCRM installation.");
+  $sGlobalMessage = gettext("Thank you for registering your ChurchCRM installation.");
 }
 
 if (isset($_GET["AllPDFsEmailed"])) {
