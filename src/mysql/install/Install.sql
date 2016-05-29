@@ -884,6 +884,7 @@ CREATE TABLE `note_nte` (
   `nte_DateLastEdited` datetime default NULL,
   `nte_EnteredBy` mediumint(8) unsigned NOT NULL default '0',
   `nte_EditedBy` mediumint(8) unsigned NOT NULL default '0',
+  `nte_Type` varchar(50) DEFAULT NULL,
   PRIMARY KEY  (`nte_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
