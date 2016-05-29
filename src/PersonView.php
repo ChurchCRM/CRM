@@ -285,7 +285,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
       </div>
     </div>
   </div>
-  <div class="col-lg-9 col-md-6 col-sm-4">
+  <div class="col-lg-9 col-md-9 col-sm-9">
     <div class="box box-primary box-body">
       <?php if ($bOkToEdit) { ?>
         <a href="#" class="btn btn-app" data-toggle="modal" data-target="#upload-image"><i class="fa fa-camera"></i><?= gettext("Upload Photo") ?></a>
@@ -313,7 +313,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
       <a class="btn btn-app" role="button" href="SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
     </div>
   </div>
-  <div class="col-lg-9 col-md-6 col-sm-4">
+  <div class="col-lg-9 col-md-9 col-sm-9">
     <div class="nav-tabs-custom">
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
