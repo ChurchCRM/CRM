@@ -2,14 +2,14 @@
 
 function loader($class)
 {
-    $file = $class . '.php';
-    if (file_exists($file)) {
-        require $file;
-    }
-    
+  $file = $class . '.php';
+  if (file_exists($file)) {
+    require $file;
+  }
+
 }
 
-global $bSuppressSessionTests,$sSERVERNAME,$sUSER,$sPASSWORD,$sDATABASE, $cnInfoCentral,$db_username,$db_password;
+global $bSuppressSessionTests, $sSERVERNAME, $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $db_username, $db_password;
 
 ini_set('error_reporting', E_ALL ^ E_DEPRECATED); // or error_reporting(E_ALL);
 ini_set('display_errors', '1');
