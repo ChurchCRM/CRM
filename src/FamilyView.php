@@ -35,6 +35,7 @@ $mailchimp = new MailChimpService();
 $familyService = new FamilyService();
 //Set the page title
 $sPageTitle = gettext("Family View");
+require "Include/Header.php";
 
 //Get the FamilyID out of the querystring
 $iFamilyID = FilterInput($_GET["FamilyID"],'int');
@@ -79,6 +80,8 @@ $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS Entere
 		WHERE fam_ID = " . $iFamilyID;
 $rsFamily = RunQuery($sSQL);
 extract(mysql_fetch_array($rsFamily));
+
+if ($iFamilyID == $fam_ID) {
 
 // Get the lists of custom person fields
 $sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
@@ -162,8 +165,6 @@ $sWorkPhone = ExpandPhoneNumber($fam_WorkPhone,$fam_Country,$dummy);
 $sCellPhone = ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy);
 
 $sFamilyEmails = array();
-
-require "Include/Header.php";
 
 $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID'])));
 ?>
@@ -827,5 +828,19 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 <script>
 $("#ShowSinceDate").datepicker({format:'yyyy-mm-dd'});
 </script>
+<?php } else { ?>
+  <div class="error-page">
+    <h2 class="headline text-yellow"> 404</h2>
 
-<?php require "Include/Footer.php" ?>
+    <div class="error-content">
+      <h3><i class="fa fa-warning text-yellow"></i> Oops! Family not found.</h3>
+
+      <p>
+        We could not find the family you were looking for.
+        Meanwhile, you may <a href="/MembersDashboard.php">return to member dashboard</a>
+      </p>
+    </div>
+  </div>
+  <?php
+}
+require "Include/Footer.php" ?>
