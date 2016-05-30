@@ -3,7 +3,7 @@
 egrepTest ()
 {
     # compile a list of all files to check
-    OUT=$(find . -type d \( -path "./.*" -o -path "./src/skin" -o -path "./Include/phpmailer" -o -path "./src/Include/jscalendar" -o -path "./src/vendor" \) -prune -o \
+    OUT=$(find . -type d \( -path "./.*" -o -path "./src/skin" -o -path "./src/vendor" -o -path "./src/Include" \) -prune -o \
                -type f -and \( -name "*.php" -o -name "*.sh" -o -name "*.js" -o \
                                -name "*.css" -o -name "*.sql" -o -name "*.md" \) -print0 |\
         xargs -0 egrep $1 -U -l)
