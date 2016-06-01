@@ -15,7 +15,7 @@ There's really only two system requirements for a testing machine:
 
 1. Oracle Virtual Box
   * Oracle VirtualBox allows you to run virtual machines on your system for free.
-2. Vagrant
+2. Vagrant 
   * At a 10,000 ft view, Vagrant is a tool that automagically provisions a virutal machine in Oracle VritualBox with all of the prerequisites, settings, files, and other artifacts that are required for running an instance of ChurchCRM.  Since ChurchCRM is a web application, the "vagrant image" also includes a fully functional LAMP stack.
   
 ### Testing ChurchCRM
