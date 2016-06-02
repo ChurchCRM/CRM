@@ -430,7 +430,14 @@ function addMenuItem($aMenu, $mIdx) {
                   </li>
                 </ul>
               </li>
-  <?php } ?>
+              <?php if ($bRegistered != 1) { ?>
+              <li class="hidden-xxs">
+                <a href="Register.php">
+                  <i class="fa fa-chevron-circle-up"></i>
+                 </a>
+              </li>
+      <?php       }
+          } ?>
             <li class="hidden-xxs">
               <a href="http://docs.churchcrm.io" target="_blank">
                 <i class="fa fa-support"></i>
