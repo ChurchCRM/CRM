@@ -423,6 +423,11 @@ function addMenuItem($aMenu, $mIdx) {
               </ul>
             </li>
   <?php if ($_SESSION['bAdmin']) { ?>
+              <li class="hidden-xxs">
+                <a class="js-gitter-toggle-chat-button">
+                  <i class="fa fa-comments"></i>
+                </a>
+              </li>
               <li class="dropdown settings-dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-cog"></i>
