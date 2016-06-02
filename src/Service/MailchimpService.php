@@ -53,6 +53,8 @@ class MailChimpService
         array_push($listNames, $val["name"]);
       }
       return implode(",", $listNames);
+    } catch (Mailchimp_Invalid_ApiKey $e) {
+      return "Invalid ApiKey";
     } catch (Mailchimp_List_NotSubscribed $e) {
       return "";
     } catch (Mailchimp_Email_NotExists $e) {
