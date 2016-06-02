@@ -20,10 +20,10 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2015-2016 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> All rights reserved.
-    <div class="hidden-xs">
+    <div class="pull-right hidden-xs">
       <b>Version</b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
+    <strong>Copyright &copy; 2015-2016 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> All rights reserved.
   </footer>
 
     <!-- Add the sidebar's background. This div must be placed
@@ -47,11 +47,11 @@
   <script src="<?= $sRootPath ?>/skin/js/Tooltips.js"></script>
   <script src="<?= $sRootPath ?>/skin/js/Events.js"></script>
   <script src="<?= $sRootPath ?>/skin/js/Footer.js"></script>
-
   <?php if ($_SESSION['bAdmin']) { ?>
   <script>
     ((window.gitter = {}).chat = {}).options = {
-      room: 'churchcrm/crm'
+      room: 'churchcrm/crm',
+      activationElement: false
     };
   </script>
   <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
