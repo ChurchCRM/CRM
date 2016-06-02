@@ -72,7 +72,7 @@ if (isset($_POST["Submit"])) {
   if (!$bErrorFlag) {
     //Are we adding or editing?
     if ($iNoteID <= 0) {
-      $noteService->addNote($iPersonID, $iFamilyID, $bPrivate, $sNoteText);
+      $noteService->addNote($iPersonID, $iFamilyID, $bPrivate, $sNoteText, "note");
     } else {
       $noteService->updateNote($iNoteID, $bPrivate, $sNoteText);
     }

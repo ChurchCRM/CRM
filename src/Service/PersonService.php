@@ -9,12 +9,12 @@
 class PersonService
 {
   private $baseURL;
-  
+
   public function __construct()
   {
     $this->baseURL = $_SESSION['sRootPath'];
   }
-  
+
   function get($id)
   {
     //return $this->personQuery->findPK($id);
@@ -175,7 +175,8 @@ class PersonService
     }
   }
 
-  private function getDefaultPhoto($gender, $famRole)
+  private
+  function getDefaultPhoto($gender, $famRole)
   {
     $photoFile = $this->baseURL . "/Images/Person/man-128.png";
     if ($gender == 1 && $famRole == "Child") {
@@ -189,7 +190,7 @@ class PersonService
     return $photoFile;
   }
 
-  public function insertPerson($user)
+  function insertPerson($user)
   {
     requireUserGroupMembership("bAddRecords");
     $sSQL = "INSERT INTO person_per
