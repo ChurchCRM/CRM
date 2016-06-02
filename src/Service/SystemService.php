@@ -8,7 +8,7 @@ class SystemService {
     $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($restoreQueries as $line) {
       if ($line != '' && strpos($line, '--') === false) {
-        $query .= $line;
+        $query .= " $line";
         if (substr($query, -1) == ';') {
           $person = RunQuery($query);
           $query = '';
