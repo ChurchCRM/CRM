@@ -190,13 +190,13 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1001, 'leftX', '20', 'number', '20', 'Left Margin (1 = 1/100th inch)', 'ChurchInfoReport', NULL),
 (1002, 'incrementY', '4', 'number', '4', 'Line Thickness (1 = 1/100th inch', 'ChurchInfoReport', NULL),
 (1003, 'sChurchName', 'Some Church', 'text', '', 'Church Name', 'ChurchInfoReport', NULL),
-(1004, 'sChurchAddress', '100 Main St', 'text', '', 'Church Address', 'ChurchInfoReport', NULL),
-(1005, 'sChurchCity', 'Wall', 'text', '', 'Church City', 'ChurchInfoReport', NULL),
-(1006, 'sChurchState', 'SD', 'text', '', 'Church State', 'ChurchInfoReport', NULL),
-(1007, 'sChurchZip', '11111', 'text', '', 'Church Zip', 'ChurchInfoReport', NULL),
-(1008, 'sChurchPhone', '123-456-7890', 'text', '', 'Church Phone', 'ChurchInfoReport', NULL),
-(1009, 'sChurchEmail', 'church@church.org', 'text', '', 'Church Email', 'ChurchInfoReport', NULL),
-(1010, 'sHomeAreaCode', '111', 'text', '', 'Home area code of the church', 'ChurchInfoReport', NULL),
+(1004, 'sChurchAddress', '', 'text', '', 'Church Address', 'ChurchInfoReport', NULL),
+(1005, 'sChurchCity', '', 'text', '', 'Church City', 'ChurchInfoReport', NULL),
+(1006, 'sChurchState', '', 'text', '', 'Church State', 'ChurchInfoReport', NULL),
+(1007, 'sChurchZip', '', 'text', '', 'Church Zip', 'ChurchInfoReport', NULL),
+(1008, 'sChurchPhone', '', 'text', '', 'Church Phone', 'ChurchInfoReport', NULL),
+(1009, 'sChurchEmail', '', 'text', '', 'Church Email', 'ChurchInfoReport', NULL),
+(1010, 'sHomeAreaCode', '', 'text', '', 'Home area code of the church', 'ChurchInfoReport', NULL),
 (1011, 'sTaxReport1', 'This letter shows our record of your payments for', 'text', 'This letter shows our record of your payments for', 'Verbage for top line of tax report. Dates will be appended to the end of this line.', 'ChurchInfoReport', NULL),
 (1012, 'sTaxReport2', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
 (1013, 'sTaxReport3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
@@ -822,7 +822,7 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (30, 'sundayschool', 'root', 1, 'Sunday School', 'Sunday School', '', '', 'bAll', NULL, 0, 0, NULL, 1, 4, 'fa-child'),
 (31, 'sundayschool-dash', 'sundayschool', 0, 'Dashboard', 'Dashboard', 'sundayschool/SundaySchoolDashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
 
-(40, 'mailchimp', 'root', 0, 'MailChimp', 'MailChimp', 'mailchimp/MailChimpDashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 5, 'fa-envelope'),
+(40, 'email', 'root', 0, 'email', 'email', 'email/Dashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 5, 'fa-envelope'),
 
 (50, 'events', 'root', 1, 'Events', 'Events', '', 'Events', 'bAll', NULL, 0, 0, NULL, 1,6, 'fa-ticket'),
 (51, 'listevent', 'events', 0, 'List Church Events', 'List Church Events', 'ListEvents.php', 'List Church Events', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
@@ -863,8 +863,7 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (107, 'dbbackup', 'admin', 0, 'Backup Database', 'Backup Database', 'BackupDatabase.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 8, NULL),
 (108, 'dbrestore', 'admin', 0, 'Restore Database', 'Restore Database', 'RestoreDatabase.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 9, NULL),
 (109, 'cvsimport', 'admin', 0, 'CSV Import', 'CSV Import', 'CSVImport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 10, NULL),
-(110, 'seeddata', 'admin', 0, 'Generate Seed Data', 'Generate Seed Data', 'GenerateSeedData.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 11, NULL),
-(111, 'register', 'admin', 0, 'Register ChurchCRM', 'Update ChurchCRM Registration', 'Register.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 12, NULL);
+(110, 'seeddata', 'admin', 0, 'Generate Seed Data', 'Generate Seed Data', 'GenerateSeedData.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 11, NULL);
 
 -- --------------------------------------------------------
 
@@ -882,6 +881,7 @@ CREATE TABLE `note_nte` (
   `nte_DateLastEdited` datetime default NULL,
   `nte_EnteredBy` mediumint(8) unsigned NOT NULL default '0',
   `nte_EditedBy` mediumint(8) unsigned NOT NULL default '0',
+  `nte_Type` varchar(50) DEFAULT NULL,
   PRIMARY KEY  (`nte_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 

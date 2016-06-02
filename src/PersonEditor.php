@@ -16,6 +16,9 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require 'Service/NoteService.php';
+
+$noteService = new NoteService();
 
 //Set the page title
 $sPageTitle = gettext("Person Editor");
@@ -362,9 +365,12 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"]))
 			$sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
 			$rsPersonID = RunQuery($sSQL);
 			extract(mysql_fetch_array($rsPersonID));
-			$sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('" . $iPersonID . "')";
+			$sSQL = "INSERT INTO person_custom (per_ID) VALUES ('" . $iPersonID . "')";
 			RunQuery($sSQL);
-		}
+      $noteService->addNote($iPersonID, 0, 0, "Created", "create");
+		} else {
+      $noteService->addNote($iPersonID, 0, 0, "Updated", "edit");
+    }
 
 		// Update the custom person fields.
 		if ($numCustomFields > 0)
