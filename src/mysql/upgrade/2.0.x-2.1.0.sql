@@ -6,6 +6,12 @@ CHANGE COLUMN `ver_date` `ver_update_start` datetime default NULL;
 ALTER TABLE `version_ver`
 ADD COLUMN `ver_update_end` datetime default NULL AFTER `ver_update_start`;
 
+INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`, `cfg_order`) 
+VALUES
+  (1034, 'useCurrencyDenominations', '1', 'boolean', '1',
+   'Display currency denominations during pledge entry.  If true, payment totals are calculated based on the sum of entered currencies.  If false, the payment total may be entered directly',
+   'General', "Step8",25);
+
 DROP TABLE IF EXISTS `currency_denominations_cdem`;
 CREATE TABLE `currency_denominations_cdem` (
  `cdem_denominationID` mediumint(9) NOT NULL auto_increment,
