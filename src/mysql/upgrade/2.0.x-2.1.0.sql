@@ -13,12 +13,12 @@ ALTER TABLE note_nte
 
 INSERT INTO note_nte
 	(nte_per_ID, nte_fam_ID, nte_Private, nte_Text, nte_EnteredBy, nte_DateEntered, nte_Type)
-select per_id, 0, 0, "", per_EnteredBy, per_DateEntered, "create"
+select per_id, 0, 0, "Original Entry", per_EnteredBy, per_DateEntered, "create"
 from person_per;
 
 INSERT INTO note_nte
 	(nte_per_ID, nte_fam_ID, nte_Private, nte_Text, nte_EnteredBy, nte_DateEntered, nte_Type)
-select per_id, 0, 0, "", per_EditedBy, per_DateLastEdited, "edit"
+select per_id, 0, 0, "Last Edit", per_EditedBy, per_DateLastEdited, "edit"
 from person_per
 where per_DateLastEdited is not null;
 
