@@ -467,9 +467,9 @@ function addMenuItem($aMenu, $mIdx) {
                       <?php } ?>
                     </ul><div class="slimScrollBar" style="width: 3px; position: absolute; top: 11px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 188.679px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
                 </li>
-                <li class="footer">
+                <!--<li class="footer">
                   <a href="<?= $sRootPath ?>/Tasks.php">View all tasks</a>
-                </li>
+                </li>-->
               </ul>
             </li>
       <?php  } ?>
