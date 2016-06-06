@@ -80,7 +80,7 @@ require "Include/Header.php";
       <div class="box-header with-border">
         <h3 class="box-title"><?php echo gettext("Deposit Details: "); ?></h3>
       </div>
-      <div class="box-body">
+      <div claFss="box-body">
         <form method="post" action="#" name="DepositSlipEditor" id="DepositSlipEditor">
           <div class="row">
             <div class="col-lg-4">
@@ -219,7 +219,6 @@ require "Include/Header.php";
 </div>
 <!-- End Delete Confirm Modal -->
 
-
 <script type="text/javascript" src="<?= $sRootPath ?>/skin/js/DepositSlipEditor.js"></script>
 <script>
 var paymentData = <?php echo $financialService->getPaymentJSON($financialService->getPayments($iDepositSlipID)); ?>;
@@ -270,7 +269,7 @@ $(document).ready(function() {
             title:'Family',
             data:'familyName',
             render: function(data, type, full, meta) {
-              return '<a href=\'PledgeEditor.php?GroupKey=' + full.plg_GroupKey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-pencil fa-stack-1x fa-inverse"></i></span></a>' + data;
+              return '<a href=\'PledgeEditor.php?GroupKey=' + full.plg_GroupKey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa <?= ($thisDeposit->dep_Closed ? "fa-search-plus": "fa-pencil" ); ?> fa-stack-1x fa-inverse"></i></span></a>' + data;
             }
     },
     {
