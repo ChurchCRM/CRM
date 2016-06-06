@@ -256,60 +256,62 @@ var depositType = '<?php echo $thisDeposit->dep_Type; ?>';
 var depositSlipID = <?php echo $iDepositSlipID; ?>;
 
 $(document).ready(function() {
-
-
   dataT = $("#paymentsTable").DataTable({
-  data:paymentData.payments,
-          columns: [
-          {
-          "className":      'details-control',
-                  "orderable":      false,
-                  "data":           null,
-                  "defaultContent": '<i class="fa fa-plus-circle"></i>'
-          },
-          {
-          width: 'auto',
-                  title:'Family',
-                  data:'familyName',
-                  render: function(data, type, full, meta) {
-                    return '<a href=\'PledgeEditor.php?GroupKey=' + full.plg_GroupKey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-pencil fa-stack-1x fa-inverse"></i></span></a>' + data;
+    data:paymentData.payments,
+    columns: [
+    {
+    "className":      'details-control',
+            "orderable":      false,
+            "data":           null,
+            "defaultContent": '<i class="fa fa-plus-circle"></i>'
+    },
+    {
+    width: 'auto',
+            title:'Family',
+            data:'familyName',
+            render: function(data, type, full, meta) {
+              return '<a href=\'PledgeEditor.php?GroupKey=' + full.plg_GroupKey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-pencil fa-stack-1x fa-inverse"></i></span></a>' + data;
+            }
+    },
+    {
+    width: 'auto',
+            title:'Check Number',
+            data:'plg_CheckNo',
+    },
+    {
+    width: 'auto',
+            title:'Amount',
+            data:'plg_amount',
+    }
+    ,
+    {
+    width: 'auto',
+            title:'Method',
+            data:'plg_method',
+    }
+  <?php if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') { ?>,
+                , {
+                width: 'auto',
+                        title:'Cleared',
+                        data:'plg_aut_Cleared',
+                }<?php
+  }
+  if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') {
+  ?>
+        , {
+        width: 'auto',
+                title:'Details',
+                data:'plg_plgID',
+                render: function(data, type, full, meta)
+                {
+                  return '<a href=\'PledgeDetails.php?PledgeID=' + data + '\'>Details</a>'
                   }
-          },
-          {
-          width: 'auto',
-                  title:'Check Number',
-                  data:'plg_CheckNo',
-          },
-          {
-          width: 'auto',
-                  title:'Amount',
-                  data:'plg_amount',
-          }
-          ,
-          {
-          width: 'auto',
-                  title:'Method',
-                  data:'plg_method',
-          }
-<?php if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') { ?>,
-                      , {
-                      width: 'auto',
-                              title:'Cleared',
-                              data:'plg_aut_Cleared',
-                      }<?php
-}
-if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') {
-?>
-              , {
-              width: 'auto',
-                      title:'Details',
-                      data:'plg_plgID',
-                      render: function(data, type, full, meta)
-                      {
-                        return '<a href=\'PledgeDetails.php?PledgeID=' + data + '\'>Details</a>'
-                        }
-              }<?php } ?>
-          ]
+        }<?php } ?>
+    ],
+    "createdRow" : function (row,data,index) {
+      $(row).addClass("paymentRow");
+    }
+ 
 });
 
 initDepositSlipEditor();
