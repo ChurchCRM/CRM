@@ -112,10 +112,6 @@ require "Include/Header.php";
       </div>
     </div>
   </div>
-  <?php 
-  if ($thisDeposit->countTotal > 0)
-  { 
-?>
   <div class="col-lg-4">
     <div class="box">
       <div class="box-header with-border">
@@ -156,9 +152,6 @@ require "Include/Header.php";
 
     </div>
   </div>
-  <?php
-  }
-  ?>
 </div>
 <div class="box">
   <div class="box-header with-border">
@@ -221,10 +214,10 @@ require "Include/Header.php";
 
 <script type="text/javascript" src="<?= $sRootPath ?>/skin/js/DepositSlipEditor.js"></script>
 <script>
-var paymentData = <?php echo $financialService->getPaymentJSON($financialService->getPayments($iDepositSlipID)); ?>;
+var paymentData = <?php  $pd = $financialService->getPaymentJSON($financialService->getPayments($iDepositSlipID));  echo ($pd ? $pd : 0); ?>;
 var typePieData = [
   {
-    value: <?= $thisDeposit->totalCash ?> , 
+    value: <?= $thisDeposit->totalCash ? $thisDeposit->totalCash : "0" ?> , 
     color: "#197A05", 
     highlight: "#4AFF23", 
     label: "Cash" 
@@ -239,7 +232,7 @@ var typePieData = [
   
 var fundPieData = [
   {
-    value: <?= $thisDeposit->totalCash ?> , 
+    value: <?= $thisDeposit->totalCash ? $thisDeposit->totalCash : "0" ?> , 
     color: "#003399", 
     highlight: "#3366ff", 
     label: "Cash" 

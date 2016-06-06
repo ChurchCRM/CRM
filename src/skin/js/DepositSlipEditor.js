@@ -99,6 +99,7 @@ function initDepositSlipEditor()
               .done(function(data) {
                 $('#confirmDelete').modal('hide');
                 dataT.rows('.selected').remove().draw(false);
+                location.reload();
               });
     });
   });
