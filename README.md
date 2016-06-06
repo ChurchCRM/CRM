@@ -12,6 +12,8 @@ Welcome to Church Web CRM
 
 ## Installation, Upgrades and Documentation
 
+* [Server Check] (https://github.com/ChurchCRM/Check)
+
 * [Download the lastest release] (https://github.com/ChurchCRM/CRM/releases/latest)
 
 * [Checkout our online Docs] (http://docs.churchcrm.io)
