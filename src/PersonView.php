@@ -60,6 +60,12 @@ $sSQL = "SELECT a.*, family_fam.*, cls.lst_OptionName AS sClassName, fmr.lst_Opt
 $rsPerson = RunQuery($sSQL);
 extract(mysql_fetch_array($rsPerson));
 
+// Set the page title and include HTML header
+
+$sPageTitle = "Person Profile";
+require "Include/Header.php";
+if ($per_ID == $iPersonID) {
+
 // Get the lists of custom person fields
 $sSQL = "SELECT person_custom_master.* FROM person_custom_master
 			ORDER BY custom_Order";
@@ -161,11 +167,6 @@ if ($per_Envelope > 0)
   $sEnvelope = $per_Envelope;
 else
   $sEnvelope = gettext("Not assigned");
-
-// Set the page title and include HTML header
-
-$sPageTitle = "Person Profile";
-require "Include/Header.php";
 
 $iTableSpacerWidth = 10;
 
@@ -793,4 +794,20 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
   }
 </script>
 
-<?php require "Include/Footer.php" ?>
+
+<?php } else { ?>
+  <div class="error-page">
+    <h2 class="headline text-yellow"> 404</h2>
+
+    <div class="error-content">
+      <h3><i class="fa fa-warning text-yellow"></i> Oops! Person not found.</h3>
+
+      <p>
+        We could not find the person you were looking for.
+        Meanwhile, you may <a href="//MembersDashboard.php">return to member dashboard</a>
+      </p>
+    </div>
+  </div>
+  <?php
+}
+require "Include/Footer.php" ?>
