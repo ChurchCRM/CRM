@@ -537,6 +537,7 @@ class FinancialService
       $values->countCash = $this->getDepositCount($dep_ID, 'CASH');
       $values->countCheck = $this->getDepositCount($dep_ID, 'CHECK');
       $values->countTotal = $this->getDepositCount($dep_ID);
+      $values->funds = $this->getDepositFunds($dep_ID);
       array_push($return, $values);
     }
     return $return;
@@ -577,6 +578,30 @@ class FinancialService
     $rsDepositTotal = RunQuery($sSQL);
     list ($deposit_total) = mysql_fetch_row($rsDepositTotal);
     return $deposit_total;
+  }
+  
+  function getDepositFunds($id)
+  {
+    $sSQL = "SELECT plg_plgID, plg_depID, sum(plg_amount) as fundTotal ,fun_Name FROM pledge_plg
+INNER JOIN donationfund_fun on 
+pledge_plg.plg_fundID = donationfund_fun.fun_ID
+WHERE 
+pledge_plg.plg_depID = " . $id ."
+GROUP by fun_Name";
+    
+     $rsDep = RunQuery($sSQL);
+
+    $funds = array();
+    while ($aRow = mysql_fetch_array($rsDep)) {
+      extract($aRow);
+      $fund = new StdClass();
+      $fund->plg_plgID = $plg_plgID;
+      $fund->plg_depID = $plg_depID;
+      $fund->fundTotal = $fundTotal;
+      $fund->fun_Name = $fun_Name;
+      array_push($funds, $fund);
+    }
+    return $funds;
   }
 
   function getDepositCount($id, $type = null)

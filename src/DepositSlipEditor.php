@@ -75,7 +75,7 @@ require "Include/Header.php";
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
 <script type="text/javascript" language="javascript" src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-7">
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title"><?php echo gettext("Deposit Details: "); ?></h3>
@@ -112,7 +112,7 @@ require "Include/Header.php";
       </div>
     </div>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-5">
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title"><?php echo gettext("Deposit Summary: "); ?></h3>
@@ -121,24 +121,25 @@ require "Include/Header.php";
         <script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
         <div class="col-lg-6">
           <canvas id="type-donut" style="height:250px"></canvas>
+          <ul style="margin:0px; border:0px; padding:0px;">
           <?php
           // Get deposit totals
-          echo "<b>" . $thisDeposit->dep_Total . " - TOTAL AMOUNT </b> &nbsp; (Items: $thisDeposit->countTotal)<br>";
+          echo "<li><b>TOTAL (".$thisDeposit->countTotal."):</b>".$thisDeposit->dep_Total."</li>";
           if ($thisDeposit->totalCash)
-          echo "<i><b>" . $thisDeposit->totalCash . " - Total Cash </b> &nbsp; (Items: $thisDeposit->countCash)</i><br>";
+          echo "<li><b>CASH (" . $thisDeposit->countCash . "):</b>" . $thisDeposit->totalCash . "</li>";
           if ($thisDeposit->totalChecks)
-          echo "<i><b>" . $thisDeposit->totalChecks . " - Total Checks</b> &nbsp; (Items: $thisDeposit->countCheck)</i><br>";
+          echo "<li><b>CHECKS (" . $thisDeposit->countCheck . "):</b>". $thisDeposit->totalChecks . " </li>";
           ?>
+            </ul>
         </div>
          <div class="col-lg-6">
           <canvas id="fund-donut" style="height:250px"></canvas>
+          <ul style="margin:0px; border:0px; padding:0px;">
           <?php
-          // Get deposit totals
-          echo "<b>" . $thisDeposit->dep_Total . " - TOTAL AMOUNT </b> &nbsp; (Items: $thisDeposit->countTotal)<br>";
-          if ($thisDeposit->totalCash)
-          echo "<i><b>" . $thisDeposit->totalCash . " - Total Cash </b> &nbsp; (Items: $thisDeposit->countCash)</i><br>";
-          if ($thisDeposit->totalChecks)
-          echo "<i><b>" . $thisDeposit->totalChecks . " - Total Checks</b> &nbsp; (Items: $thisDeposit->countCheck)</i><br>";
+          foreach ($thisDeposit->funds as $fund)
+          {
+            echo "<li><b>". $fund->fun_Name . "</b>:" . $fund->fundTotal."</li>";
+          }
           ?>
         </div>
         
@@ -230,20 +231,21 @@ var typePieData = [
   }
   ];
   
-var fundPieData = [
-  {
-    value: <?= $thisDeposit->totalCash ? $thisDeposit->totalCash : "0" ?> , 
-    color: "#003399", 
-    highlight: "#3366ff", 
-    label: "Cash" 
-  },
-  {
-    value:  <?= $thisDeposit->totalChecks ?  $thisDeposit->totalChecks : "0" ?>, 
-    color: "#003399", 
-    highlight: "#3366ff", 
-    label: "Checks" 
-  }
-  ];
+var fundPieData = 
+<?php
+$fundData = array() ;
+foreach ($thisDeposit->funds as $tmpfund)
+{
+  $fund = new StdClass();
+ $fund->color = "#".random_color() ;
+ $fund->highlight= "#".random_color() ;
+ $fund->label = $tmpfund->fun_Name;
+ $fund->value = $tmpfund->fundTotal;
+ array_push($fundData,$fund);
+}
+echo json_encode($fundData);
+?>
+  
 var depositType = '<?php echo $thisDeposit->dep_Type; ?>';
 var depositSlipID = <?php echo $iDepositSlipID; ?>;
 
