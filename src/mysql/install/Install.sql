@@ -1050,6 +1050,18 @@ CREATE TABLE `pledge_plg` (
 -- Dumping data for table `pledge_plg`
 --
 
+CREATE TABLE `pledgesplit_pls` (
+  `pls_pledgesplitID` mediumint(9) NOT NULL auto_increment,
+  `pls_plgID` mediumint(9) NOT NULL, 
+  `pls_amount` decimal(8,2) default NULL,
+  `pls_comment` text,
+  `pls_DateLastEdited` date NOT NULL default '0000-00-00',
+  `pls_EditedBy` mediumint(9) NOT NULL default '0',
+  `pls_fundID` tinyint(3) unsigned default NULL,
+  `pls_NonDeductible` decimal(8,2) NOT NULL default '0',
+  PRIMARY KEY  (`pls_pledgesplitID`)
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+
 
 CREATE TABLE `currency_denominations_cdem` (
  `cdem_denominationID` mediumint(9) NOT NULL auto_increment,
@@ -1556,3 +1568,42 @@ CREATE TABLE `egive_egv` (
 
 
 update version_ver set ver_update_end = now();
+DELIMITER $$ 
+DROP PROCEDURE IF EXISTS migrateGroupKey$$
+CREATE PROCEDURE migrateGroupKey (IN iGroupKey VARCHAR(64))
+BEGIN
+  DECLARE count INT default 0;
+  DECLARE done INT DEFAULT FALSE;
+  DECLARE groupKey VARCHAR(64);
+  DECLARE tmpPlgID INT(7);
+  DECLARE plgID INT(7);
+  DECLARE fundID TINYINT(3);
+  DECLARE plgAmount DECIMAL(8);
+  DECLARE cur1 CURSOR FOR SELECT plg_plgID, plg_fundID,plg_amount FROM pledge_plg where plg_GroupKey = iGroupKey COLLATE utf8_unicode_ci;
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+  OPEN cur1;
+
+  read_loop: LOOP
+    FETCH cur1 INTO plgID,fundID,plgAmount;
+    IF count > 0 THEN 
+      SET plgID = tmpPlgID; 
+    ELSE
+       SET tmpPlgID = plgID;
+    END IF;
+
+    IF done THEN
+      LEAVE read_loop;
+    END IF;
+    INSERT INTO pledgesplit_pls (pls_plgID, pls_fundID,pls_amount) VALUES (plgID, fundID, plgAmount );
+    IF count >0 THEN
+     
+      SET count = 0;
+      DELETE FROM pledge_plg WHERE plg_plgID = plgID;
+    END IF;
+    SET count = count + 1;
+ 
+  END LOOP;
+
+  CLOSE cur1;
+END;
