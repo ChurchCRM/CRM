@@ -1233,18 +1233,13 @@ GROUP by fun_Name";
 
     $thisReport->curY += $thisReport->summaryIntervalY;
 
-    if (count($thisReport->funds) > 0) //if there are funds defined
-    {
-      foreach ($thisReport->funds as $fund) //iterate through the defined funds
+      foreach ($thisReport->deposit->funds as $fund) //iterate through the defined funds
       {
-        if (array_key_exists($fund->Name, $thisReport->fundTotal) && $thisReport->fundTotal[$fund->Name] > 0) // if the fund exists on this deposit, and the value of the fund is greater than 0
-        {
           $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-          $thisReport->pdf->Write(8, $fund->Name);
-          $amountStr = sprintf("%.2f", $thisReport->fundTotal[$fund->Name]);
+          $thisReport->pdf->Write(8, $fund->fun_Name);
+          $amountStr = sprintf("%.2f", $fund->fundTotal);
           $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, $amountStr);
           $thisReport->curY += $thisReport->summaryIntervalY;
-        }
       }
       if (array_key_exists('UNDESIGNATED', $thisReport->fundTotal) && $thisReport->fundTotal['UNDESIGNATED']) {
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
@@ -1253,7 +1248,7 @@ GROUP by fun_Name";
         $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, $amountStr);
         $thisReport->curY += $thisReport->summaryIntervalY;
       }
-    }
+
 
     $thisReport->curY += $thisReport->summaryIntervalY;
     $thisReport->pdf->SetFont('Times', 'B', 10);
@@ -1338,21 +1333,7 @@ GROUP by fun_Name";
     }
     $thisReport->pdf->Cell(50, 10, "Total Cash", 1, 2, 'L');
   }
-  
-  private function calculateFundTotals($thisReport)
-  {
-    $thisReport->fundTotal = array();
-    foreach ($thisReport->payments as $payment) {
-      if (!$payment->fun_Name)
-        $thisReport->fundTotal['UNDESIGNATED'] += $payment->plg_amount;
-      else {
-        if (array_key_exists($payment->fun_Name, $thisReport->fundTotal))
-          $thisReport->fundTotal[$payment->fun_Name] += $payment->plg_amount;
-        else
-          $thisReport->fundTotal[$payment->fun_Name] = $payment->plg_amount;
-      }
-    }
-  }
+
 
   function getDepositPDF($depID)
   {
@@ -1365,7 +1346,6 @@ GROUP by fun_Name";
 
     $thisReport->pdf = new PDF_DepositReport();
     $thisReport->deposit = $this->getDeposits($depID)[0];
-    $thisReport->funds = $this->getFund();
     $thisReport->depositSlipFrontColumns = 135;
     $thisReport->depositSlipBackCheckNosX = 10;
     $thisReport->depositSlipBackCheckNosY = 13;
@@ -1419,7 +1399,6 @@ GROUP by fun_Name";
       }
     }
 
-    $this->calculateFundTotals($thisReport);
     $this->generateBankDepositSlip($thisReport);
     //print_r ($thisReport->fundTotal);
     //exit;
