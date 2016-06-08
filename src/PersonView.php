@@ -114,6 +114,13 @@ $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
   " ORDER BY prt_Name, pro_Name";
 $rsAssignedProperties = RunQuery($sSQL);
 
+// Get the Attendance assigned to this Person
+$sSQL = "SELECT t1.event_title, t1.event_desc, t1.event_start, t1.event_end, t2.person_id
+FROM events_event AS t1, event_attend AS t2
+WHERE t1.event_id = t2.event_id AND t2.person_id =" . $iPersonID .
+" ORDER BY event_start DESC LIMIT 10";
+$rsAttendance = RunQuery($sSQL);
+
 // Get all the properties
 $sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
 $rsProperties = RunQuery($sSQL);
@@ -414,6 +421,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             <li role="presentation" class="active"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?= gettext("Assigned Groups") ?></a></li>
             <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
             <li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext("Volunteer opportunities") ?></a></li>
+			<li role="presentation"><a href="#attendance" aria-controls="attendance" role="tab" data-toggle="tab"><?= gettext("Attendance") ?></a></li>
             <?php if ($_SESSION['bNotes']) { ?>
               <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext("Notes") ?></a></li>
             <?php } ?>
@@ -701,6 +709,52 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                       </div>
                     </div>
                   <?php } ?>
+                </div>
+              </div>
+            </div>			
+            <div role="tab-pane fade" class="tab-pane" id="attendance">
+              <div class="main-box clearfix">
+                <div class="main-box-body clearfix">
+                  <?php
+                  $sAssignedAttendance = ",";
+
+                  //Was anything returned?
+                  if (mysql_num_rows($rsAttendance) == 0) { ?>
+                    <br>
+                    <div class="alert alert-warning">
+                      <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No attendance recorded.") ?></span>
+                    </div>
+										
+                  <?php } else {
+                    //Yes, start the table
+                    echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
+                    echo "<tr class=\"TableHeader\">";
+                    echo "<td><b>" . gettext("Event Title") . "</b></td>";
+                    echo "<td><b>" . gettext("Event Date") . "</b></td>";
+					echo "</tr>";
+                    
+                    //Loop through the rows
+                    while ($aRow = mysql_fetch_array($rsAttendance)) {
+                      extract($aRow);
+
+					  // Alternate the row style
+                      $sRowClass = AlternateRowStyle($sRowClass);
+					  
+					  echo "<tr class=\"" . $sRowClass . "\">";
+                      echo "<td>" . $event_title . "</a></td>";
+                      echo "<td>" . FormatDate($event_start, True) . "</a></td>";
+					  
+					  
+					   echo "</tr>";
+
+                      // NOTE: this method is crude.  Need to replace this with use of an array.
+                      $sAssignedAttendance .= $vol_ID . ",";
+                    }
+                    echo "</table>";
+					  
+               
+                  }
+                  ?>
                 </div>
               </div>
             </div>
