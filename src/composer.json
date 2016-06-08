@@ -26,6 +26,7 @@
   "require": {
     "mailchimp/mailchimp": "2.0.6",
     "slim/slim": "2.6.2",
-    "authorizenet/authorizenet": "1.8.0"
+    "authorizenet/authorizenet": "1.8.0",
+    "knplabs/github-api": "~1.4"
   }
 }
