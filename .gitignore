@@ -13,9 +13,6 @@
 #Exclude composer vendor folders
 vendor
 composer.lock
-src/vendor/bin
-src/composer.lock
-src/vendor/composer
 
 # Uploaded Images
 src/Images/Family/thumbnails/

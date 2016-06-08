@@ -16,21 +16,13 @@
 // Try to find and load the FPDF library, giving preference to a user-specified copy
 function LoadLib_FPDF()
 {
-  global $sFPDF_PATH;
-
-  // Check if the Config.php given path is absolute
-  if ($sFPDF_PATH{0} == "/" || substr($sFPDF_PATH, 1, 2) == ":\\")
-    $sfpdfpath = $sFPDF_PATH;
-  else
-    $sfpdfpath = dirname(dirname(__FILE__)) . '/' . $sFPDF_PATH;
+  $sfpdfpath = dirname(dirname(__FILE__)) . '/bin/fpdf17';
 
   $sfpdflib = $sfpdfpath . "/fpdf.php";
 
   if (is_readable($sfpdflib)) {
     require $sfpdflib;
     define('FPDF_FONTPATH', $sfpdfpath . "/font/");
-  } elseif (is_readable('fpdf.php')) {
-    require 'fpdf.php';
   } else {
     echo "<h2>" . gettext("ERROR: FPDF Library was not found in your path <i>or</i> at: ") . $sfpdflib;
     exit;

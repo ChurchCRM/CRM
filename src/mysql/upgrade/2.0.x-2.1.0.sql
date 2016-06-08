@@ -24,5 +24,7 @@ where per_DateLastEdited is not null;
 
 -- ------ Notes #608 - end
 
+-- 'sFPDF_PATH', 'vendor/fpdf17'
+DELETE FROM config_cfg WHERE cfg_id IN (4);
 
 INSERT IGNORE INTO version_ver (ver_version, ver_update_start, ver_update_end) VALUES ('2.1.0',@upgradeStartTime,NOW());

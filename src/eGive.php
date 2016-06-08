@@ -12,7 +12,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 if( !function_exists(json_decode) ) {
-   require_once 'vendor/JSON/JSON.php';
+   require_once 'bin/JSON/JSON.php';
    function json_decode($data, $bool) {
        if ($bool) {
            $json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
