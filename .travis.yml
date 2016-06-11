@@ -29,3 +29,5 @@ script:
   - tests/LineEndings.sh
   - phpunit --configuration phpunit_$DB.xml --coverage-text
 
+before_script:
+  - src/composer install
