@@ -64,6 +64,12 @@ echo "=================   Composer Update  ==================="
 echo "=========================================================="
 
 sudo /usr/local/bin/composer self-update
+
+cd /vagrant
+composer update
+
+/vagrant/vagrant/build-skin.sh
+
 cd /vagrant/src
 composer update
 
