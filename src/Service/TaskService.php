@@ -12,9 +12,7 @@ class TaskService
   public function __construct()
   {
     $this->baseURL = $_SESSION['sRootPath'];
-
-    $client = new \Github\Client();
-    $this->latestVersion = $client->api('repo')->releases()->latest('churchcrm', 'crm');
+    $this->latestVersion =  $_SESSION['latestVersion'];
     $this->installedVersion = $_SESSION['sSoftwareInstalledVersion'];
   }
 
@@ -39,7 +37,7 @@ class TaskService
       array_push($tasks, $this->addTask("Set Email Settings", "/SystemSettings.php", true));
     }
 
-    if ($this->latestVersion["name"] != $this->installedVersion) {
+    if ($this->latestVersion != null && $this->latestVersion["name"] != $this->installedVersion) {
       array_push($tasks, $this->addTask("New Release ". $this->latestVersion["name"], $this->latestVersion["html_url"], true));
     }
 
