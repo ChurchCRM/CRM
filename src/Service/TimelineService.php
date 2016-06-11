@@ -25,21 +25,28 @@ class TimelineService
 
     $notes = $this->noteService->getNotesByPerson($personID, $_SESSION['bAdmin'], $_SESSION['iUserID']);
     foreach ($notes as $note) {
-      array_push($timeline, $this->createTimeLineItem($note["type"], $note["lastUpdateDatetime"],
+      $item = $this->createTimeLineItem($note["type"], $note["lastUpdateDatetime"],
         "by " . $note["lastUpdateByName"], "", $note["text"],
         "NoteEditor.php?PersonID=" . $personID . "&NoteID=" . $note["id"],
-        "NoteDelete.php?NoteID=" . $note["id"]));
+        "NoteDelete.php?NoteID=" . $note["id"]);
+      $timeline[$item["key"]] = $item;
     }
 
     $events = $this->eventService->getEventsByPerson($personID);
     foreach ($events as $event) {
-      array_push($timeline, $this->createTimeLineItem("cal", $event["date"],
-        $event["title"], "", $event["desc"], "", ""));
+      $item = $this->createTimeLineItem("cal", $event["date"],
+        $event["title"], "", $event["desc"], "", "");
+      $timeline[$item["key"]] = $item;
     }
 
-    uasort($timeline, function($a, $b) {return $a[1] - $b[1]; } );
+    krsort($timeline);
 
-    return $timeline;
+    $sortedTimeline = array();
+    foreach ($timeline as $date => $item) {
+      array_push($sortedTimeline,  $item);
+    }
+
+    return $sortedTimeline;
 
   }
 
@@ -74,9 +81,9 @@ class TimelineService
     $itemTime = strtotime($datetime);
 
     $item["datetime"] = $datetime;
-    $key = $itemTime;
+    $item["key"] = $itemTime;
 
-    return [$key => $item];
+    return $item;
   }
 
 }
