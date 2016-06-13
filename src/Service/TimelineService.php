@@ -18,10 +18,33 @@ class TimelineService
     $this->eventService = new EventService();
   }
 
-  function getForPerson($personID)
+  function getForFamily($familyID)
   {
     $timeline = array();
 
+    $notes = $this->noteService->getNotesByFamily($familyID, $_SESSION['bAdmin'], $_SESSION['iUserID']);
+    foreach ($notes as $note) {
+      $item = $this->createTimeLineItem($note["type"], $note["lastUpdateDatetime"],
+        "by " . $note["lastUpdateByName"], "", $note["text"],
+        "NoteEditor.php?FamilyID=" . $familyID . "&NoteID=" . $note["id"],
+        "NoteDelete.php?NoteID=" . $note["id"]);
+      $timeline[$item["key"]] = $item;
+    }
+
+    krsort($timeline);
+
+    $sortedTimeline = array();
+    foreach ($timeline as $date => $item) {
+      array_push($sortedTimeline, $item);
+    }
+
+    return $sortedTimeline;
+
+  }
+  
+  function getForPerson($personID)
+  {
+    $timeline = array();
 
     $notes = $this->noteService->getNotesByPerson($personID, $_SESSION['bAdmin'], $_SESSION['iUserID']);
     foreach ($notes as $note) {

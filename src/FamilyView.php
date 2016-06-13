@@ -30,7 +30,9 @@ require "Include/GeoCoder.php";
 require 'Include/PersonFunctions.php';
 require 'Service/MailchimpService.php';
 require 'Service/FamilyService.php';
+require 'Service/TimelineService.php';
 
+$timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
 $familyService = new FamilyService();
 //Set the page title
@@ -332,404 +334,398 @@ if ($iFamilyID == $fam_ID) {
   </div>
   <div class="row">
     <div class="col-lg-12 col-md-6 col-sm-3">
-      <div class="box box-solid">
-        <div class="box-body clearfix">
-          <div role="person-tabs">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext("Notes") ?></a></li>
-              <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
-              <?php if ($_SESSION['bFinance']) { ?>
-                <li role="presentation"><a href="#finance" aria-controls="finance" role="tab" data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
-                <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab" data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
-              <?php } ?>
+      <div class="nav-tabs-custom">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#timeline" aria-controls="timeline" role="tab" data-toggle="tab"><?= gettext("Timeline") ?></a></li>
+          <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
+          <?php if ($_SESSION['bFinance']) { ?>
+            <li role="presentation"><a href="#finance" aria-controls="finance" role="tab" data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
+            <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab" data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
+          <?php } ?>
 
-            </ul>
+        </ul>
 
-            <!-- Tab panes -->
-            <div class="tab-content">
-              <div role="tab-pane fade" class="tab-pane active" id="notes">
-                <div class="box box-solid">
-                  <div class="box-body chat" id="chat-box">
-                    <?php
-                    //Loop through all the notes
-                    while ($aRow = mysql_fetch_array($rsNotes)) {
-                      extract($aRow);
-                      ?>
-                      <!-- chat item -->
-                      <div class="item">
-                        <?php $noteBy = $nte_EnteredBy;
-                        if (!strlen($nte_EditedBy)) {
-                          $noteBy = $nte_EditedBy;
-                        } ?>
-                        <img src="<?= $personService->getPhoto($noteBy) ?>"/>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tab-pane fade" class="tab-pane active" id="timeline">
+            <ul class="timeline">
+              <!-- timeline time label -->
+              <li class="time-label">
+                    <span class="bg-red">
+                      <?php $now = new DateTime('');
+                      echo $now->format("Y-m-d") ?>
+                    </span>
+              </li>
+              <!-- /.timeline-label -->
 
-                        <p class="message">
-                          <a href="#" class="name">
-                            <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php
-                              if (!strlen($nte_DateLastEdited)) {
-                                echo FormatDate($nte_DateEntered, True);
-                              } else {
-                                echo FormatDate($nte_DateLastEdited, True);
-                              } ?>
-                            </small>
-                            <?php if (!strlen($nte_DateLastEdited)) {
-                              echo $EnteredFirstName . " " . $EnteredLastName;
-                            } else {
-                              echo $EditedFirstName . " " . $EditedLastName;
-                            } ?>
+              <!-- timeline item -->
+              <?php foreach ($timelineService->getForFamily($iFamilyID) as $item) { ?>
+                <li>
+                  <!-- timeline icon -->
+                  <i class="fa <?= $item['style'] ?>"></i>
+
+                  <div class="timeline-item">
+                    <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+
+                    <h3 class="timeline-header">
+                      <?php if (in_array('headerlink', $item)) { ?>
+                        <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
+                      <?php } else { ?>
+                        <?= $item['header'] ?>
+                      <?php } ?>
+                    </h3>
+
+                    <div class="timeline-body">
+                      <?= $item['text'] ?>
+                    </div>
+
+                    <?php if (($_SESSION['bNotes']) && ($item["editLink"] != "" || $item["deleteLink"] != "")) { ?>
+                      <div class="timeline-footer">
+                        <?php if ($item["editLink"] != "") { ?>
+                          <a href="<?= $item["editLink"] ?>">
+                            <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                           </a>
-                          <?= $nte_Text ?>
-                        </p>
-                        <?php if ($_SESSION['bNotes']) { ?>
-                          <div class="pull-right">
-                            <a href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>&NoteID=<?= $nte_ID ?>">
-												<span class="fa-stack">
-													<i class="fa fa-square fa-stack-2x"></i>
-													<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-												</span>
-                            </a>
-                            <a href="NoteDelete.php?NoteID=<?= $nte_ID ?>">
-												<span class="fa-stack">
-													<i class="fa fa-square fa-stack-2x"></i>
-													<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-												</span>
-                            </a>
-                          </div>
+                        <?php }
+                        if ($item["deleteLink"] != "") { ?>
+                          <a href="<?= $item["deleteLink"] ?>">
+                            <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                          </a>
                         <?php } ?>
-                      </div><!-- /.item -->
+                      </div>
                     <?php } ?>
                   </div>
-                </div>
-              </div>
-              <div role="tab-pane fade" class="tab-pane" id="properties">
-                <div class="main-box clearfix">
-                  <div class="main-box-body clearfix">
-                    <?php
-                    $sAssignedProperties = ",";
+                </li>
+              <?php } ?>
+              <!-- END timeline item -->
+            </ul>
+          </div>
+          <div role="tab-pane fade" class="tab-pane" id="properties">
+            <div class="main-box clearfix">
+              <div class="main-box-body clearfix">
+                <?php
+                $sAssignedProperties = ",";
 
-                    if (mysql_num_rows($rsAssignedProperties) == 0) { ?>
-                      <br>
-                      <div class="alert alert-warning">
-                        <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No property assignments.") ?></span>
-                      </div>
-                    <?php } else {
-                      //Yes, start the table
-                      echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
-                      echo "<tr class=\"TableHeader\">";
-                      echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Type") . "</b></td>";
-                      echo "<td width=\"15%\" valign=\"top\"><b>" . gettext("Name") . "</b></td>";
-                      echo "<td valign=\"top\"><b>" . gettext("Value") . "</b></td>";
+                if (mysql_num_rows($rsAssignedProperties) == 0) { ?>
+                  <br>
+                  <div class="alert alert-warning">
+                    <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No property assignments.") ?></span>
+                  </div>
+                <?php } else {
+                  //Yes, start the table
+                  echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
+                  echo "<tr class=\"TableHeader\">";
+                  echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Type") . "</b></td>";
+                  echo "<td width=\"15%\" valign=\"top\"><b>" . gettext("Name") . "</b></td>";
+                  echo "<td valign=\"top\"><b>" . gettext("Value") . "</b></td>";
 
-                      if ($bOkToEdit) {
-                        echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Edit Value") . "</td>";
-                        echo "<td valign=\"top\"><b>" . gettext("Remove") . "</td>";
-                      }
+                  if ($bOkToEdit) {
+                    echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Edit Value") . "</td>";
+                    echo "<td valign=\"top\"><b>" . gettext("Remove") . "</td>";
+                  }
 
-                      echo "</tr>";
+                  echo "</tr>";
 
-                      $last_pro_prt_ID = "";
-                      $bIsFirst = true;
+                  $last_pro_prt_ID = "";
+                  $bIsFirst = true;
 
-                      //Loop through the rows
-                      while ($aRow = mysql_fetch_array($rsAssignedProperties)) {
-                        $pro_Prompt = "";
-                        $r2p_Value = "";
+                  //Loop through the rows
+                  while ($aRow = mysql_fetch_array($rsAssignedProperties)) {
+                    $pro_Prompt = "";
+                    $r2p_Value = "";
 
-                        extract($aRow);
+                    extract($aRow);
 
-                        if ($pro_prt_ID != $last_pro_prt_ID) {
-                          echo "<tr class=\"";
-                          if ($bIsFirst)
-                            echo "RowColorB";
-                          else
-                            echo "RowColorC";
-                          echo "\"><td><b>" . $prt_Name . "</b></td>";
+                    if ($pro_prt_ID != $last_pro_prt_ID) {
+                      echo "<tr class=\"";
+                      if ($bIsFirst)
+                        echo "RowColorB";
+                      else
+                        echo "RowColorC";
+                      echo "\"><td><b>" . $prt_Name . "</b></td>";
 
-                          $bIsFirst = false;
-                          $last_pro_prt_ID = $pro_prt_ID;
-                          $sRowClass = "RowColorB";
-                        } else {
-                          echo "<tr class=\"" . $sRowClass . "\">";
-                          echo "<td valign=\"top\">&nbsp;</td>";
-                        }
-
-                        echo "<td valign=\"center\">" . $pro_Name . "</td>";
-                        echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
-
-                        if ($bOkToEdit) {
-                          if (strlen($pro_Prompt) > 0) {
-                            echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
-                          } else {
-                            echo "<td>&nbsp;</td>";
-                          }
-
-                          echo "<td valign=\"center\"><a href=\"PropertyUnassign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Remove") . "</a></td>";
-                        }
-
-                        echo "</tr>";
-
-                        //Alternate the row style
-                        $sRowClass = AlternateRowStyle($sRowClass);
-
-                        $sAssignedProperties .= $pro_ID . ",";
-                      }
-
-                      //Close the table
-                      echo "</table>";
-
+                      $bIsFirst = false;
+                      $last_pro_prt_ID = $pro_prt_ID;
+                      $sRowClass = "RowColorB";
+                    } else {
+                      echo "<tr class=\"" . $sRowClass . "\">";
+                      echo "<td valign=\"top\">&nbsp;</td>";
                     }
-                    if ($bOkToEdit) { ?>
-                      <div class="alert alert-info">
-                        <div>
-                          <h4><strong><?= gettext("Assign a New Property:") ?></strong></h4>
 
-                          <p><br></p>
+                    echo "<td valign=\"center\">" . $pro_Name . "</td>";
+                    echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
 
-                          <form method="post" action="PropertyAssign.php?FamilyID=<?= $iFamilyID ?>">
-                            <select name="PropertyID">
-                              <?php
-                              while ($aRow = mysql_fetch_array($rsProperties)) {
-                                extract($aRow);
-                                //If the property doesn't already exist for this Person, write the <OPTION> tag
-                                if (strlen(strstr($sAssignedProperties, "," . $pro_ID . ",")) == 0) {
-                                  echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
-                                }
-                              }
-                              ?>
-                            </select>
-                            <input type="submit" class="btn btn-default" value="Assign" name="Submit2" style="font-size: 8pt;">
-                            </p>
-                          </form>
-                        </div>
-                      </div>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div>
-              <?php if ($_SESSION['bFinance']) { ?>
-              <div role="tab-pane fade" class="tab-pane" id="finance">
-                <div class="main-box clearfix">
-                  <div class="main-box-body clearfix">
-                    <?php if (mysql_num_rows($rsAutoPayments) > 0) { ?>
-                      <table cellpadding="5" cellspacing="0" width="100%">
+                    if ($bOkToEdit) {
+                      if (strlen($pro_Prompt) > 0) {
+                        echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
+                      } else {
+                        echo "<td>&nbsp;</td>";
+                      }
 
-                        <tr class="TableHeader">
-                          <td><?= gettext("Type") ?></td>
-                          <td><?= gettext("Next payment date") ?></td>
-                          <td><?= gettext("Amount") ?></td>
-                          <td><?= gettext("Interval (months)") ?></td>
-                          <td><?= gettext("Fund") ?></td>
-                          <td><?= gettext("Edit") ?></td>
-                          <td><?= gettext("Delete") ?></td>
-                          <td><?= gettext("Date Updated") ?></td>
-                          <td><?= gettext("Updated By") ?></td>
-                        </tr>
+                      echo "<td valign=\"center\"><a href=\"PropertyUnassign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Remove") . "</a></td>";
+                    }
 
-                        <?php
+                    echo "</tr>";
 
-                        $tog = 0;
+                    //Alternate the row style
+                    $sRowClass = AlternateRowStyle($sRowClass);
 
-                        //Loop through all automatic payments
-                        while ($aRow = mysql_fetch_array($rsAutoPayments)) {
-                          $tog = (!$tog);
+                    $sAssignedProperties .= $pro_ID . ",";
+                  }
 
-                          extract($aRow);
+                  //Close the table
+                  echo "</table>";
 
-                          $payType = "Disabled";
-                          if ($aut_EnableBankDraft)
-                            $payType = "Bank Draft";
-                          if ($aut_EnableCreditCard)
-                            $payType = "Credit Card";
+                }
+                if ($bOkToEdit) { ?>
+                  <div class="alert alert-info">
+                    <div>
+                      <h4><strong><?= gettext("Assign a New Property:") ?></strong></h4>
 
-                          //Alternate the row style
-                          if ($tog)
-                            $sRowClass = "RowColorA";
-                          else
-                            $sRowClass = "RowColorB";
+                      <p><br></p>
 
-                          ?>
-
-                          <tr class="<?= $sRowClass ?>">
-                            <td>
-                              <?= $payType ?>&nbsp;
-                            </td>
-                            <td>
-                              <?= $aut_NextPayDate ?>&nbsp;
-                            </td>
-                            <td>
-                              <?= $aut_Amount ?>&nbsp;
-                            </td>
-                            <td>
-                              <?= $aut_Interval ?>&nbsp;
-                            </td>
-                            <td>
-                              <?= $fundName ?>&nbsp;
-                            </td>
-                            <td>
-                              <a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
-                            </td>
-                            <td>
-                              <a href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
-                            </td>
-                            <td>
-                              <?= $aut_DateLastEdited ?>&nbsp;
-                            </td>
-                            <td>
-                              <?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
-                            </td>
-                          </tr>
+                      <form method="post" action="PropertyAssign.php?FamilyID=<?= $iFamilyID ?>">
+                        <select name="PropertyID">
                           <?php
-                        } ?>
-                      </table>
-                    <?php } ?>
-                    <p align="center">
-                      <a class="SmallText" href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Add a new automatic payment") ?></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div role="tab-pane fade" class="tab-pane" id="pledges">
-                <div class="main-box clearfix">
-                  <div class="main-box-body clearfix">
-                    <form method="post" action="FamilyView.php?FamilyID=<?= $iFamilyID ?>">
-                      <input type="checkbox" name="ShowPledges" value="1" <?php if ($_SESSION['sshowPledges']) echo " checked"; ?>><?= gettext("Show Pledges") ?>
-                      <input type="checkbox" name="ShowPayments" value="1" <?php if ($_SESSION['sshowPayments']) echo " checked"; ?>><?= gettext("Show Payments") ?>
-                      Since:
-                      <input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?= $_SESSION['sshowSince'] ?>" maxlength="10" id="ShowSinceDate" size="15">
-                      <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?> name="UpdatePledgeTable" style="font-size: 8pt;">
-                    </form>
-
-                    <table cellpadding="4" cellspacing="0" width="100%">
-
-                      <tr class="TableHeader" align="center">
-                        <td><?= gettext("Pledge or Payment") ?></td>
-                        <td><?= gettext("Fund") ?></td>
-                        <td><?= gettext("Fiscal Year") ?></td>
-                        <td><?= gettext("Date") ?></td>
-                        <td><?= gettext("Amount") ?></td>
-                        <td><?= gettext("NonDeductible") ?></td>
-                        <td><?= gettext("Schedule") ?></td>
-                        <td><?= gettext("Method") ?></td>
-                        <td><?= gettext("Comment") ?></td>
-                        <td><?= gettext("Edit") ?></td>
-                        <td><?= gettext("Delete") ?></td>
-                        <td><?= gettext("Date Updated") ?></td>
-                        <td><?= gettext("Updated By") ?></td>
-                      </tr>
-
-                      <?php
-
-
-                      $tog = 0;
-
-                      if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments']) {
-                        //Loop through all pledges
-                        while ($aRow = mysql_fetch_array($rsPledges)) {
-                          $tog = (!$tog);
-
-                          $plg_FYID = "";
-                          $plg_date = "";
-                          $plg_amount = "";
-                          $plg_schedule = "";
-                          $plg_method = "";
-                          $plg_comment = "";
-                          $plg_plgID = 0;
-                          $plg_DateLastEdited = "";
-                          $plg_EditedBy = "";
-
-                          extract($aRow);
-
-                          //Display the pledge or payment if appropriate
-                          if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
-                              ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
-                            ) &&
-                            ($_SESSION['sshowSince'] == "" || $plg_date > $_SESSION['sshowSince'])
-                          ) {
-                            //Alternate the row style
-                            if ($tog)
-                              $sRowClass = "RowColorA";
-                            else
-                              $sRowClass = "RowColorB";
-
-                            if ($plg_PledgeOrPayment == 'Payment') {
-                              if ($tog)
-                                $sRowClass = "PaymentRowColorA";
-                              else
-                                $sRowClass = "PaymentRowColorB";
+                          while ($aRow = mysql_fetch_array($rsProperties)) {
+                            extract($aRow);
+                            //If the property doesn't already exist for this Person, write the <OPTION> tag
+                            if (strlen(strstr($sAssignedProperties, "," . $pro_ID . ",")) == 0) {
+                              echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
                             }
-
-                            ?>
-
-                            <tr class="<?= $sRowClass ?>" align="center">
-                              <td>
-                                <?= $plg_PledgeOrPayment ?>&nbsp;
-                              </td>
-                              <td>
-                                <?= $fundName ?>&nbsp;
-                              </td>
-                              <td>
-                                <?= MakeFYString($plg_FYID) ?>&nbsp;
-                              </td>
-                              <td>
-                                <?= $plg_date ?>&nbsp;
-                              </td>
-                              <td align=center>
-                                <?= $plg_amount ?>&nbsp;
-                              </td>
-                              <td align=center>
-                                <?= $plg_NonDeductible ?>&nbsp;
-                              </td>
-                              <td>
-                                <?= $plg_schedule ?>&nbsp;
-                              </td>
-                              <td>
-                                <?= $plg_method ?>&nbsp;
-                              </td>
-                              <td>
-                                <?= $plg_comment ?>&nbsp;
-                              </td>
-                              <td>
-                                <a href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
-                              </td>
-                              <td>
-                                <a href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
-                              </td>
-                              <td>
-                                <?= $plg_DateLastEdited ?>&nbsp;
-                              </td>
-                              <td>
-                                <?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
-                              </td>
-                            </tr>
-                            <?php
                           }
-                        }
-                      } // if bShowPledges
-
-                      ?>
-
-                    </table>
-
-                    <p align="center">
-                      <a class="SmallText" href="PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>&amp;PledgeOrPayment=Pledge"><?= gettext("Add a new pledge") ?></a>
-                      <a class="SmallText" href="PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>&amp;PledgeOrPayment=Payment"><?= gettext("Add a new payment") ?></a>
-                    </p>
-
-                    <?php } ?>
-
-                    <?php if ($_SESSION['bCanvasser']) { ?>
-
-                    <p align="center">
-                      <a class="SmallText" href="CanvassEditor.php?FamilyID=<?= $fam_ID ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
-                    </p>
+                          ?>
+                        </select>
+                        <input type="submit" class="btn btn-default" value="Assign" name="Submit2" style="font-size: 8pt;">
+                        </p>
+                      </form>
+                    </div>
                   </div>
-                </div>
+                <?php } ?>
               </div>
-            <?php } ?>
-
             </div>
           </div>
+          <?php if ($_SESSION['bFinance']) { ?>
+          <div role="tab-pane fade" class="tab-pane" id="finance">
+            <div class="main-box clearfix">
+              <div class="main-box-body clearfix">
+                <?php if (mysql_num_rows($rsAutoPayments) > 0) { ?>
+                  <table cellpadding="5" cellspacing="0" width="100%">
+
+                    <tr class="TableHeader">
+                      <td><?= gettext("Type") ?></td>
+                      <td><?= gettext("Next payment date") ?></td>
+                      <td><?= gettext("Amount") ?></td>
+                      <td><?= gettext("Interval (months)") ?></td>
+                      <td><?= gettext("Fund") ?></td>
+                      <td><?= gettext("Edit") ?></td>
+                      <td><?= gettext("Delete") ?></td>
+                      <td><?= gettext("Date Updated") ?></td>
+                      <td><?= gettext("Updated By") ?></td>
+                    </tr>
+
+                    <?php
+
+                    $tog = 0;
+
+                    //Loop through all automatic payments
+                    while ($aRow = mysql_fetch_array($rsAutoPayments)) {
+                      $tog = (!$tog);
+
+                      extract($aRow);
+
+                      $payType = "Disabled";
+                      if ($aut_EnableBankDraft)
+                        $payType = "Bank Draft";
+                      if ($aut_EnableCreditCard)
+                        $payType = "Credit Card";
+
+                      //Alternate the row style
+                      if ($tog)
+                        $sRowClass = "RowColorA";
+                      else
+                        $sRowClass = "RowColorB";
+
+                      ?>
+
+                      <tr class="<?= $sRowClass ?>">
+                        <td>
+                          <?= $payType ?>&nbsp;
+                        </td>
+                        <td>
+                          <?= $aut_NextPayDate ?>&nbsp;
+                        </td>
+                        <td>
+                          <?= $aut_Amount ?>&nbsp;
+                        </td>
+                        <td>
+                          <?= $aut_Interval ?>&nbsp;
+                        </td>
+                        <td>
+                          <?= $fundName ?>&nbsp;
+                        </td>
+                        <td>
+                          <a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
+                        </td>
+                        <td>
+                          <a href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
+                        </td>
+                        <td>
+                          <?= $aut_DateLastEdited ?>&nbsp;
+                        </td>
+                        <td>
+                          <?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
+                        </td>
+                      </tr>
+                      <?php
+                    } ?>
+                  </table>
+                <?php } ?>
+                <p align="center">
+                  <a class="SmallText" href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Add a new automatic payment") ?></a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div role="tab-pane fade" class="tab-pane" id="pledges">
+            <div class="main-box clearfix">
+              <div class="main-box-body clearfix">
+                <form method="post" action="FamilyView.php?FamilyID=<?= $iFamilyID ?>">
+                  <input type="checkbox" name="ShowPledges" value="1" <?php if ($_SESSION['sshowPledges']) echo " checked"; ?>><?= gettext("Show Pledges") ?>
+                  <input type="checkbox" name="ShowPayments" value="1" <?php if ($_SESSION['sshowPayments']) echo " checked"; ?>><?= gettext("Show Payments") ?>
+                  Since:
+                  <input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?= $_SESSION['sshowSince'] ?>" maxlength="10" id="ShowSinceDate" size="15">
+                  <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?> name="UpdatePledgeTable" style="font-size: 8pt;">
+                </form>
+
+                <table cellpadding="4" cellspacing="0" width="100%">
+
+                  <tr class="TableHeader" align="center">
+                    <td><?= gettext("Pledge or Payment") ?></td>
+                    <td><?= gettext("Fund") ?></td>
+                    <td><?= gettext("Fiscal Year") ?></td>
+                    <td><?= gettext("Date") ?></td>
+                    <td><?= gettext("Amount") ?></td>
+                    <td><?= gettext("NonDeductible") ?></td>
+                    <td><?= gettext("Schedule") ?></td>
+                    <td><?= gettext("Method") ?></td>
+                    <td><?= gettext("Comment") ?></td>
+                    <td><?= gettext("Edit") ?></td>
+                    <td><?= gettext("Delete") ?></td>
+                    <td><?= gettext("Date Updated") ?></td>
+                    <td><?= gettext("Updated By") ?></td>
+                  </tr>
+
+                  <?php
+
+
+                  $tog = 0;
+
+                  if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments']) {
+                    //Loop through all pledges
+                    while ($aRow = mysql_fetch_array($rsPledges)) {
+                      $tog = (!$tog);
+
+                      $plg_FYID = "";
+                      $plg_date = "";
+                      $plg_amount = "";
+                      $plg_schedule = "";
+                      $plg_method = "";
+                      $plg_comment = "";
+                      $plg_plgID = 0;
+                      $plg_DateLastEdited = "";
+                      $plg_EditedBy = "";
+
+                      extract($aRow);
+
+                      //Display the pledge or payment if appropriate
+                      if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
+                          ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
+                        ) &&
+                        ($_SESSION['sshowSince'] == "" || $plg_date > $_SESSION['sshowSince'])
+                      ) {
+                        //Alternate the row style
+                        if ($tog)
+                          $sRowClass = "RowColorA";
+                        else
+                          $sRowClass = "RowColorB";
+
+                        if ($plg_PledgeOrPayment == 'Payment') {
+                          if ($tog)
+                            $sRowClass = "PaymentRowColorA";
+                          else
+                            $sRowClass = "PaymentRowColorB";
+                        }
+
+                        ?>
+
+                        <tr class="<?= $sRowClass ?>" align="center">
+                          <td>
+                            <?= $plg_PledgeOrPayment ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= $fundName ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= MakeFYString($plg_FYID) ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= $plg_date ?>&nbsp;
+                          </td>
+                          <td align=center>
+                            <?= $plg_amount ?>&nbsp;
+                          </td>
+                          <td align=center>
+                            <?= $plg_NonDeductible ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= $plg_schedule ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= $plg_method ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= $plg_comment ?>&nbsp;
+                          </td>
+                          <td>
+                            <a href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
+                          </td>
+                          <td>
+                            <a href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
+                          </td>
+                          <td>
+                            <?= $plg_DateLastEdited ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
+                          </td>
+                        </tr>
+                        <?php
+                      }
+                    }
+                  } // if bShowPledges
+
+                  ?>
+
+                </table>
+
+                <p align="center">
+                  <a class="SmallText" href="PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>&amp;PledgeOrPayment=Pledge"><?= gettext("Add a new pledge") ?></a>
+                  <a class="SmallText" href="PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>&amp;PledgeOrPayment=Payment"><?= gettext("Add a new payment") ?></a>
+                </p>
+
+                <?php } ?>
+
+                <?php if ($_SESSION['bCanvasser']) { ?>
+
+                <p align="center">
+                  <a class="SmallText" href="CanvassEditor.php?FamilyID=<?= $fam_ID ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
+                </p>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+
         </div>
       </div>
     </div>
