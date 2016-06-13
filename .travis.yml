@@ -5,7 +5,10 @@ language: php
 php:
 # aliased to a recent 5.6.x version
   - 5.6
-  
+
+before_install:
+  - sudo composer self-update
+
 notifications:
   webhooks:
     urls:
@@ -30,4 +33,5 @@ script:
   - phpunit --configuration phpunit_$DB.xml --coverage-text
 
 before_script:
-  - src/composer install
+  - cd ./src
+  - composer install
