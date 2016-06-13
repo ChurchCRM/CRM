@@ -92,13 +92,6 @@ if ($iFamilyID == $fam_ID) {
   $rsFamCustomData = RunQuery($sSQL);
   $aFamCustomData = mysql_fetch_array($rsFamCustomData, MYSQL_BOTH);
 
-//Get the notes for this family
-  $sSQL = "SELECT nte_ID, nte_Text, nte_DateEntered, nte_EnteredBy, nte_DateLastEdited, nte_EditedBy, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName 		FROM note_nte
-		LEFT JOIN person_per a ON nte_EnteredBy = a.per_ID
-		LEFT JOIN person_per b ON nte_EditedBy = b.per_ID
-		WHERE nte_fam_ID = " . $iFamilyID . " AND (nte_Private = 0 OR nte_Private = " . $_SESSION['iUserID'] . ")";
-  $rsNotes = RunQuery($sSQL);
-
 //Get the family members for this family
   $sSQL = "SELECT per_ID, per_Title, per_FirstName, per_LastName, per_Suffix, per_Gender, per_Email,
 		per_BirthMonth, per_BirthDay, per_BirthYear, per_Flags, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole
