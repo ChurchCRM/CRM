@@ -2,11 +2,65 @@
 
 ## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
 
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.1...HEAD)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.0-RC1...HEAD)
+
+**Implemented enhancements:**
+
+- Update Build Documentation [\#662](https://github.com/ChurchCRM/CRM/issues/662)
+
+## [2.1.0-RC1](https://github.com/ChurchCRM/CRM/tree/2.1.0-RC1) (2016-06-13)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.1...2.1.0-RC1)
+
+**Implemented enhancements:**
+
+- TaskService - Update ChurchCRM [\#653](https://github.com/ChurchCRM/CRM/issues/653)
+- 404 Error page [\#176](https://github.com/ChurchCRM/CRM/issues/176)
+- Add Attendance to Person View - v2 [\#669](https://github.com/ChurchCRM/CRM/pull/669) ([DawoudIO](https://github.com/DawoudIO))
+- Check lastest version of ChurchCRM [\#658](https://github.com/ChurchCRM/CRM/pull/658) ([DawoudIO](https://github.com/DawoudIO))
+- Tweaks to people notes [\#648](https://github.com/ChurchCRM/CRM/pull/648) ([crossan007](https://github.com/crossan007))
+- System Setting page now support tabs \#167 [\#639](https://github.com/ChurchCRM/CRM/pull/639) ([DawoudIO](https://github.com/DawoudIO))
+- added gitter-toggle-chat-button Closes \#625 [\#638](https://github.com/ChurchCRM/CRM/pull/638) ([DawoudIO](https://github.com/DawoudIO))
+- Notify framework [\#637](https://github.com/ChurchCRM/CRM/pull/637) ([DawoudIO](https://github.com/DawoudIO))
+- Person Timeline - Notes [\#608](https://github.com/ChurchCRM/CRM/pull/608) ([DawoudIO](https://github.com/DawoudIO))
+- refactor the mailchimp dashboard to be more about emails [\#594](https://github.com/ChurchCRM/CRM/pull/594) ([DawoudIO](https://github.com/DawoudIO))
+- Registered System Updates  [\#592](https://github.com/ChurchCRM/CRM/pull/592) ([DawoudIO](https://github.com/DawoudIO))
+
+**Fixed bugs:**
+
+- CartView.php generates error [\#659](https://github.com/ChurchCRM/CRM/issues/659)
+- Create a Debug page for Remote Servers to check requirements  [\#654](https://github.com/ChurchCRM/CRM/issues/654)
+- TaskService - View All Tasks [\#649](https://github.com/ChurchCRM/CRM/issues/649)
+- playbackSQLtoDatabase function is broken [\#646](https://github.com/ChurchCRM/CRM/issues/646)
+- Invalid MailChimp API Key Error [\#640](https://github.com/ChurchCRM/CRM/issues/640)
+- Invalid Person ID in the PersonView should show error page [\#636](https://github.com/ChurchCRM/CRM/issues/636)
+- Gitter Sidecar Chat Buttons [\#625](https://github.com/ChurchCRM/CRM/issues/625)
+- enable short\_open\_tag [\#673](https://github.com/ChurchCRM/CRM/pull/673) ([DawoudIO](https://github.com/DawoudIO))
+- Check Version Once Per Login  [\#670](https://github.com/ChurchCRM/CRM/pull/670) ([DawoudIO](https://github.com/DawoudIO))
+- Fix MySQL Upgrade Function [\#647](https://github.com/ChurchCRM/CRM/pull/647) ([crossan007](https://github.com/crossan007))
+- catch Mailchimp\_Invalid\_ApiKey [\#642](https://github.com/ChurchCRM/CRM/pull/642) ([DawoudIO](https://github.com/DawoudIO))
+- if the person / family do not exist, show a 404 page [\#641](https://github.com/ChurchCRM/CRM/pull/641) ([DawoudIO](https://github.com/DawoudIO))
+- System Setting page now support tabs \\#167 [\#639](https://github.com/ChurchCRM/CRM/pull/639) ([DawoudIO](https://github.com/DawoudIO))
+
+**Closed issues:**
+
+- vagrant provision should also reset the VM [\#665](https://github.com/ChurchCRM/CRM/issues/665)
+- Composer Build Out of Date in Scotchbox. [\#664](https://github.com/ChurchCRM/CRM/issues/664)
+- Remove Vendor folder from git repo [\#656](https://github.com/ChurchCRM/CRM/issues/656)
+- TaskService - Update Church Info [\#652](https://github.com/ChurchCRM/CRM/issues/652)
+- Add new group not working [\#613](https://github.com/ChurchCRM/CRM/issues/613)
 
 **Merged pull requests:**
 
+- Removing skin from repo [\#671](https://github.com/ChurchCRM/CRM/pull/671) ([DawoudIO](https://github.com/DawoudIO))
+- update bootstrap so that provision resets DB [\#667](https://github.com/ChurchCRM/CRM/pull/667) ([crossan007](https://github.com/crossan007))
+- Vendor Cleanup [\#657](https://github.com/ChurchCRM/CRM/pull/657) ([DawoudIO](https://github.com/DawoudIO))
+- added gitattributes / LF eof [\#644](https://github.com/ChurchCRM/CRM/pull/644) ([DawoudIO](https://github.com/DawoudIO))
+- Revert "Revert "Moving to 2.0.2"" [\#631](https://github.com/ChurchCRM/CRM/pull/631) ([crossan007](https://github.com/crossan007))
+- Revert "Moving to 2.0.2" [\#630](https://github.com/ChurchCRM/CRM/pull/630) ([crossan007](https://github.com/crossan007))
+- Moving to 2.0.2 [\#629](https://github.com/ChurchCRM/CRM/pull/629) ([DawoudIO](https://github.com/DawoudIO))
+- merge 2.0.1 into 2.1.0  [\#628](https://github.com/ChurchCRM/CRM/pull/628) ([DawoudIO](https://github.com/DawoudIO))
 - add upgrade steps [\#627](https://github.com/ChurchCRM/CRM/pull/627) ([crossan007](https://github.com/crossan007))
+- Moved the system to 2.1.0 [\#609](https://github.com/ChurchCRM/CRM/pull/609) ([DawoudIO](https://github.com/DawoudIO))
 
 ## [2.0.1](https://github.com/ChurchCRM/CRM/tree/2.0.1) (2016-05-23)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0...2.0.1)
