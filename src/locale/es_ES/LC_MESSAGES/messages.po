@@ -4096,11 +4096,6 @@ msgstr "Opciones de Menú"
 msgid "Edit Custom Family Fields"
 msgstr "Editar campos personalizados de Institución"
 
-#: mrbs.php:26
-#, fuzzy
-msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRM: Ingresar"
-
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr "Nota Elimine Confirmación"

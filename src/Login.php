@@ -269,19 +269,6 @@ if ($iUserID > 0)
         // Search preference
         $_SESSION['bSearchFamily'] = $usr_SearchFamily;
 
-        if (isset($bEnableMRBS) && $bEnableMRBS) {
-            // set the session variable recognized by MRBS
-            $_SESSION["UserName"] = $UserName;
-
-            // Update the MRBS user record to match this churchCRM user
-            $iMRBSLevel = 0;
-            if ($usr_AddRecords) $iMRBSLevel = 1;
-            if ($usr_Admin)      $iMRBSLevel = 2;
-
-            $sSQL = "INSERT INTO mrbs_users (id, level, name, email) VALUES ('$iUserID', '$iMRBSLevel', '$UserName', '$per_Email') ON DUPLICATE KEY UPDATE level='$iMRBSLevel', name='$UserName',email='$per_Email'";
-            RunQuery($sSQL);
-        }
-
         if (isset($bEnableWebCalendar) && $bEnableWebCalendar)
         {
             $sAdmin = ($usr_Admin ? 'Y' : 'N');

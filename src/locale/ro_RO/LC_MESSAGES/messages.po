@@ -3966,10 +3966,6 @@ msgstr "Meniul de opțiuni"
 msgid "Edit Custom Family Fields"
 msgstr "Edit custom fields Familii"
 
-#: mrbs.php:26
-msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRM MRBS Portal"
-
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr "Notă Ștergerea Confirmare"

@@ -4080,11 +4080,6 @@ msgstr "Meny valmöjligheter"
 msgid "Edit Custom Family Fields"
 msgstr "Redigera fritt anpassade familj fält"
 
-#: mrbs.php:26
-#, fuzzy
-msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRM: Logga in"
-
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr "Bekräfta radera anteckningen"

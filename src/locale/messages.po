@@ -3966,10 +3966,6 @@ msgstr ""
 msgid "Edit Custom Family Fields"
 msgstr ""
 
-#: mrbs.php:26
-msgid "ChurchCRM MRBS Portal"
-msgstr ""
-
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr ""
