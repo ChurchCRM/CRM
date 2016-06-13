@@ -60,15 +60,23 @@ sudo pkill mailcatcher
 sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
 
 echo "=========================================================="
-echo "=================   Composer Update  ==================="
+echo "=================   Composer Update    ==================="
 echo "=========================================================="
 
 sudo /usr/local/bin/composer self-update
 
+echo "=========================================================="
+echo "=================   Composer Skin      ==================="
+echo "=========================================================="
+
 cd /vagrant
 composer update
 
-/vagrant/vagrant/build-skin.sh
+vagrant/build-skin.sh
+
+echo "=========================================================="
+echo "=================   Composer PHP      ==================="
+echo "=========================================================="
 
 cd /vagrant/src
 composer update
