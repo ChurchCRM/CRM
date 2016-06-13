@@ -92,6 +92,9 @@ class TimelineService
       case "cal":
         $item["style"] = "fa-calendar bg-green";
         break;
+      case "verify":
+        $item["style"] = "fa-check-circle-o bg-teal";
+        break;
       default:
         $item["style"] = "fa-gear bg-yellow";
     }
