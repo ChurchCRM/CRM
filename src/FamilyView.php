@@ -337,19 +337,72 @@ if ($iFamilyID == $fam_ID) {
           <div role="person-tabs">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
+              <li role="presentation" class="active"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext("Notes") ?></a></li>
+              <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
               <?php if ($_SESSION['bFinance']) { ?>
                 <li role="presentation"><a href="#finance" aria-controls="finance" role="tab" data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
                 <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab" data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
-              <?php }
-              if ($_SESSION['bNotes']) { ?>
-                <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext("Notes") ?></a></li>
               <?php } ?>
+
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-              <div role="tab-pane fade" class="tab-pane active" id="properties">
+              <div role="tab-pane fade" class="tab-pane active" id="notes">
+                <div class="box box-solid">
+                  <div class="box-body chat" id="chat-box">
+                    <?php
+                    //Loop through all the notes
+                    while ($aRow = mysql_fetch_array($rsNotes)) {
+                      extract($aRow);
+                      ?>
+                      <!-- chat item -->
+                      <div class="item">
+                        <?php $noteBy = $nte_EnteredBy;
+                        if (!strlen($nte_EditedBy)) {
+                          $noteBy = $nte_EditedBy;
+                        } ?>
+                        <img src="<?= $personService->getPhoto($noteBy) ?>"/>
+
+                        <p class="message">
+                          <a href="#" class="name">
+                            <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php
+                              if (!strlen($nte_DateLastEdited)) {
+                                echo FormatDate($nte_DateEntered, True);
+                              } else {
+                                echo FormatDate($nte_DateLastEdited, True);
+                              } ?>
+                            </small>
+                            <?php if (!strlen($nte_DateLastEdited)) {
+                              echo $EnteredFirstName . " " . $EnteredLastName;
+                            } else {
+                              echo $EditedFirstName . " " . $EditedLastName;
+                            } ?>
+                          </a>
+                          <?= $nte_Text ?>
+                        </p>
+                        <?php if ($_SESSION['bNotes']) { ?>
+                          <div class="pull-right">
+                            <a href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>&NoteID=<?= $nte_ID ?>">
+												<span class="fa-stack">
+													<i class="fa fa-square fa-stack-2x"></i>
+													<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+												</span>
+                            </a>
+                            <a href="NoteDelete.php?NoteID=<?= $nte_ID ?>">
+												<span class="fa-stack">
+													<i class="fa fa-square fa-stack-2x"></i>
+													<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+												</span>
+                            </a>
+                          </div>
+                        <?php } ?>
+                      </div><!-- /.item -->
+                    <?php } ?>
+                  </div>
+                </div>
+              </div>
+              <div role="tab-pane fade" class="tab-pane" id="properties">
                 <div class="main-box clearfix">
                   <div class="main-box-body clearfix">
                     <?php
@@ -674,62 +727,7 @@ if ($iFamilyID == $fam_ID) {
                 </div>
               </div>
             <?php } ?>
-              <?php if ($_SESSION['bNotes']) { ?>
-              <div role="tab-pane fade" class="tab-pane" id="notes">
-                <div class="box box-solid">
-                  <div class="box-body chat" id="chat-box">
-                    <?php
-                    //Loop through all the notes
-                    while ($aRow = mysql_fetch_array($rsNotes)) {
-                      extract($aRow);
-                      ?>
-                      <!-- chat item -->
-                      <div class="item">
-                        <?php $noteBy = $nte_EnteredBy;
-                        if (!strlen($nte_EditedBy)) {
-                          $noteBy = $nte_EditedBy;
-                        } ?>
-                        <img src="<?= $personService->getPhoto($noteBy) ?>"/>
 
-                        <p class="message">
-                          <a href="#" class="name">
-                            <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php
-                              if (!strlen($nte_DateLastEdited)) {
-                                echo FormatDate($nte_DateEntered, True);
-                              } else {
-                                echo FormatDate($nte_DateLastEdited, True);
-                              } ?>
-                            </small>
-                            <?php if (!strlen($nte_DateLastEdited)) {
-                              echo $EnteredFirstName . " " . $EnteredLastName;
-                            } else {
-                              echo $EditedFirstName . " " . $EditedLastName;
-                            } ?>
-                          </a>
-                          <?= $nte_Text ?>
-                        </p>
-                        <?php if ($_SESSION['bNotes']) { ?>
-                          <div class="pull-right">
-                            <a href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>&NoteID=<?= $nte_ID ?>">
-												<span class="fa-stack">
-													<i class="fa fa-square fa-stack-2x"></i>
-													<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-												</span>
-                            </a>
-                            <a href="NoteDelete.php?NoteID=<?= $nte_ID ?>">
-												<span class="fa-stack">
-													<i class="fa fa-square fa-stack-2x"></i>
-													<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-												</span>
-                            </a>
-                          </div>
-                        <?php } ?>
-                      </div><!-- /.item -->
-                    <?php } ?>
-                  </div>
-                </div>
-                <?php } ?>
-              </div>
             </div>
           </div>
         </div>
