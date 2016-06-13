@@ -112,7 +112,7 @@ require 'Include/Header.php'; ?>
 if ($_SESSION['bManageGroups'])
 {
     echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $grp_ID . '"><i class="fa fa-pencil"></i>' . gettext('Edit this Group') . '</a>';
-    echo '<a class="btn btn-app" data-toggle="modal" data-target="#deleteGroup"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</a>';
+  echo '<a class="btn btn-app bg-red" data-toggle="modal" data-target="#deleteGroup"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</a>';
     ?>
     <!-- GROUP DELETE MODAL-->
      <div class="modal fade" id="deleteGroup" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
@@ -183,7 +183,7 @@ if ($_SESSION['bManageGroups'])
         echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID=' . $grp_ID . '"><i class="fa fa-list-alt"></i>' . gettext('Edit Group-Specific Properties Form') . '</a>';
     }
 }
-echo '<a class="btn btn-app" href="GroupView.php?Action=AddGroupToCart&amp;GroupID=' . $grp_ID . '"><i class="fa fa-users"></i>' . gettext('Add Group Members to Cart') . '</a>';
+echo '<a class="btn btn-app" href="GroupView.php?Action=AddGroupToCart&amp;GroupID=' . $grp_ID . '"><i class="fa fa-cart-plus"></i>' . gettext('Add Members to Cart') . '</a>';
 echo '<a class="btn btn-app" href="GroupMeeting.php?GroupID=' . $grp_ID . '&amp;Name=' . $grp_Name . '&amp;linkBack=GroupView.php?GroupID=' . $grp_ID . '"><i class="fa fa-calendar-o"></i>' . gettext('Schedule a meeting') . '</a>';
 
 echo '<a class="btn btn-app" href="MapUsingGoogle.php?GroupID=' . $grp_ID . '"><i class="fa fa-map-marker"></i>' . gettext('Map this group') . '</a>';
