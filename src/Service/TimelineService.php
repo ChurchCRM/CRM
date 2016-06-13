@@ -2,17 +2,20 @@
 
 require_once "NoteService.php";
 require_once "PersonService.php";
+require_once "EventService.php";
 
 class TimelineService
 {
 
   private $personService;
   private $noteService;
+  private $eventService;
 
   public function __construct()
   {
     $this->personService = new PersonService();
     $this->noteService = new NoteService();
+    $this->eventService = new EventService();
   }
 
   function getForPerson($personID)
@@ -22,14 +25,28 @@ class TimelineService
 
     $notes = $this->noteService->getNotesByPerson($personID, $_SESSION['bAdmin'], $_SESSION['iUserID']);
     foreach ($notes as $note) {
-      array_push($timeline, $this->createTimeLineItem($note["type"], $note["lastUpdateDatetime"],
+      $item = $this->createTimeLineItem($note["type"], $note["lastUpdateDatetime"],
         "by " . $note["lastUpdateByName"], "", $note["text"],
         "NoteEditor.php?PersonID=" . $personID . "&NoteID=" . $note["id"],
-        "NoteDelete.php?NoteID=" . $note["id"]));
+        "NoteDelete.php?NoteID=" . $note["id"]);
+      $timeline[$item["key"]] = $item;
     }
 
-    //usort($timeline, "sortFunction");
-    return $timeline;
+    $events = $this->eventService->getEventsByPerson($personID);
+    foreach ($events as $event) {
+      $item = $this->createTimeLineItem("cal", $event["date"],
+        $event["title"], "", $event["desc"], "", "");
+      $timeline[$item["key"]] = $item;
+    }
+
+    krsort($timeline);
+
+    $sortedTimeline = array();
+    foreach ($timeline as $date => $item) {
+      array_push($sortedTimeline,  $item);
+    }
+
+    return $sortedTimeline;
 
   }
 
@@ -49,23 +66,24 @@ class TimelineService
       case "note":
         $item["style"] = "fa-sticky-note bg-green";
         break;
+      case "cal":
+        $item["style"] = "fa-calendar bg-green";
+        break;
       default:
         $item["style"] = "fa-gear bg-yellow";
     }
-    $item["datetime"] = $datetime;
     $item["header"] = $header;
     $item["headerLink"] = $headerLink;
     $item["text"] = $text;
     $item["editLink"] = $editLink;
     $item["deleteLink"] = $deleteLink;
 
-    return $item;
-  }
+    $itemTime = strtotime($datetime);
 
-  function sortFunction($a, $b)
-  {
-    if ($a[1] == $b[1]) return 0;
-    return strtotime($a[1]) - strtotime($b[1]);
+    $item["datetime"] = $datetime;
+    $item["key"] = $itemTime;
+
+    return $item;
   }
 
 }
