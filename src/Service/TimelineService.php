@@ -86,9 +86,6 @@ class TimelineService
       case "photo":
         $item["style"] = "fa-camera bg-green";
         break;
-      case "note":
-        $item["style"] = "fa-sticky-note bg-green";
-        break;
       case "cal":
         $item["style"] = "fa-calendar bg-green";
         break;
@@ -96,13 +93,13 @@ class TimelineService
         $item["style"] = "fa-check-circle-o bg-teal";
         break;
       default:
-        $item["style"] = "fa-gear bg-yellow";
+        $item["style"] = "fa-sticky-note bg-green";
+        $item["editLink"] = $editLink;
+        $item["deleteLink"] = $deleteLink;
     }
     $item["header"] = $header;
     $item["headerLink"] = $headerLink;
     $item["text"] = $text;
-    $item["editLink"] = $editLink;
-    $item["deleteLink"] = $deleteLink;
 
     $itemTime = strtotime($datetime);
 
