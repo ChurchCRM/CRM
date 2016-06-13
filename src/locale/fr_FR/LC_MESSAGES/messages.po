@@ -4300,10 +4300,6 @@ msgstr "Options"
 msgid "Edit Custom Family Fields"
 msgstr "Modifiez Champs Personnalis&eacute;s"
 
-#: mrbs.php:26
-msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRM MRBS Portail"
-
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr "Confirmation de la suppression de la note"

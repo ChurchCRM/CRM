@@ -4706,10 +4706,6 @@ msgstr "Opcje Menu"
 msgid "Edit Custom Family Fields"
 msgstr "Edytuj Dodatkowe Pola Rodziny"
 
-#: mrbs.php:26
-msgid "ChurchCRM MRBS Portal"
-msgstr "Portal ChurchCRM MRBS"
-
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr "Potwierdzenie Usunięcia Notatki"

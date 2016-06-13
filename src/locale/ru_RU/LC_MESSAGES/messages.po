@@ -4030,10 +4030,6 @@ msgstr "Опции меню"
 msgid "Edit Custom Family Fields"
 msgstr "Edit Custom Семья Поля"
 
-#: mrbs.php:26
-msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRM MRBS портал"
-
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr "Примечание Подтверждение удаления"

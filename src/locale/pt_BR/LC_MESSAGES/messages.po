@@ -4013,11 +4013,6 @@ msgstr "Opções de menus"
 msgid "Edit Custom Family Fields"
 msgstr "Editar campos personalizados de famílias"
 
-#: mrbs.php:26
-#, fuzzy
-msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRM: Login"
-
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr "Nota Excluir Confirmação"

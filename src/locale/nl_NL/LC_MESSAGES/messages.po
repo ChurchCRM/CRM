@@ -4046,10 +4046,6 @@ msgstr "Menu opties"
 msgid "Edit Custom Family Fields"
 msgstr "Wijzig aanpasbare Persoons-Velden"
 
-#: mrbs.php:26
-msgid "ChurchCRM MRBS Portal"
-msgstr "KerkInfo MRBS Portaal"
-
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr "Let op Verwijder Bevestiging"

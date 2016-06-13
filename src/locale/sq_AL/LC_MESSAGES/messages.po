@@ -3950,10 +3950,6 @@ msgstr "Options Menu"
 msgid "Edit Custom Family Fields"
 msgstr "Edit Fushat Custom Family"
 
-#: mrbs.php:26
-msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRM MRBS Portal"
-
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr "Shënim Fshije Konfirmimi"

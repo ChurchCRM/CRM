@@ -4083,11 +4083,6 @@ msgstr "Einstellungen"
 msgid "Edit Custom Family Fields"
 msgstr "Benutzerspezifische Familienfelder bearbeiten"
 
-#: mrbs.php:26
-#, fuzzy
-msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRMl: Anmeldung"
-
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr "Bestätigung zur Löschung von Notizen"

@@ -3966,10 +3966,6 @@ msgstr "菜单选项"
 msgid "Edit Custom Family Fields"
 msgstr "编辑自定义家庭领域"
 
-#: mrbs.php:26
-msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRM MRBS门户网站"
-
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr "注意：删除确认"
