@@ -28,6 +28,3 @@ script:
   - if [[ "$DB" == "mysql" ]]; then mysql churchcrm_test < ./src/mysql/install/Install.sql -uroot; fi
   - tests/LineEndings.sh
   - phpunit --configuration phpunit_$DB.xml --coverage-text
-
-before_script:
-  - src/composer install
