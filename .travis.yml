@@ -32,3 +32,4 @@ script:
 before_script:
   - cd ./src
   - composer install
+  - cd ..
