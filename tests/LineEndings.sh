@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # compile a list of all files to check
-OUT=$(find . -type f -and \( -name "*.php" -or -name "*.sh" -or -name "*.js" -or -name "*.css" -or -name "*.sql" -or -name "*.md" \) -not \( -path src/vendor \) -print0 | xargs -0 egrep '$' -U -l)
+OUT=$(find . -type d \( -name vendor -o -name adminlte \) -prune -o   \( -name "*.php" -or -name "*.sh" -or -name "*.js" -or -name "*.css" -or -name "*.sql" -or -name "*.md" \) -print0 | xargs -0 grep -l $'\r$' -U -l)
 
 # if the return code is 0 egrep found a match - this is bad
 if [ $? == 0 ]
