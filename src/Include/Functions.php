@@ -32,7 +32,7 @@ require_once dirname(__FILE__).'/../Service/PersonService.php';
 // Set the current version of this PHP file
 // Important!  These must be updated before every software release.
 
-$_SESSION['sSoftwareInstalledVersion'] = '2.0.2';
+$_SESSION['sSoftwareInstalledVersion'] = '2.1.0';
 $personService = new PersonService();
 //
 // Basic security checks:
@@ -181,6 +181,11 @@ $aPropTypes = array(
 );
 
 $sGlobalMessageClass = "success";
+
+if (isset($_GET["Registered"])) {
+  $sGlobalMessage = gettext("Thank you for registering your ChurchCRM installation.");
+}
+
 if (isset($_GET["AllPDFsEmailed"])) {
     $sGlobalMessage = gettext("PDFs successfully emailed ". $_GET["AllPDFsEmailed"] . " families.");
 }

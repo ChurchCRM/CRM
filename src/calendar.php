@@ -1,9 +1,14 @@
 <?php
 require "Include/Config.php";
 require "Include/Functions.php";
+require "Service/EventService.php";
+
+$eventService = new EventService();
+
+$birthDays = $personService->getBirthDays();
+$crmEvents = $eventService->getEvents();
 
 $events = array();
-$birthDays = $personService->getBirthDays();
 $year = date("Y");
 
 foreach ($birthDays as $birthDay) {
@@ -16,6 +21,18 @@ foreach ($birthDays as $birthDay) {
              "allDay" => true
            );
 
+  array_push($events, $event);
+}
+
+foreach ($crmEvents as $evnt) {
+  $event = array(
+    "title" => $evnt["title"],
+    "start" => $evnt["start"],
+    "end" => $evnt["end"],
+    "backgroundColor" => '#f39c12', //red
+    "borderColor"     => '#f39c12', //red
+    "allDay" => true
+  );
   array_push($events, $event);
 }
 
@@ -32,6 +49,9 @@ require "Include/Header.php"; ?>
     <div class="box-body">
       <div class="fc-event-container fc-day-grid-event" style="background-color:#f56954;border-color:#f56954;color: white; width: 100px">
           <div class="fc-title">Birthdays</div>
+      </div>
+      <div class="fc-event-container fc-day-grid-event" style="background-color:#f39c12;border-color:#f39c12;color: white; width: 100px">
+          <div class="fc-title">Events</div>
       </div>
     </div>
   </div>
