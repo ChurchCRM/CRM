@@ -7,6 +7,38 @@
 **Implemented enhancements:**
 
 - Update Build Documentation [\#662](https://github.com/ChurchCRM/CRM/issues/662)
+- Add attendance Information tab to Person profile [\#634](https://github.com/ChurchCRM/CRM/issues/634)
+- Add events to calender [\#632](https://github.com/ChurchCRM/CRM/issues/632)
+- Task: Release Update Notifications [\#573](https://github.com/ChurchCRM/CRM/issues/573)
+- Notes: Covert Notes to Timeline  [\#477](https://github.com/ChurchCRM/CRM/issues/477)
+- General Configuration Settings Needs better organization [\#167](https://github.com/ChurchCRM/CRM/issues/167)
+- Revamp Sundayschool Dashboard [\#161](https://github.com/ChurchCRM/CRM/issues/161)
+- Create way for a Family/Person to Verify the info [\#5](https://github.com/ChurchCRM/CRM/issues/5)
+- Family notes n verify [\#675](https://github.com/ChurchCRM/CRM/pull/675) ([DawoudIO](https://github.com/DawoudIO))
+- added events to calendar view [\#674](https://github.com/ChurchCRM/CRM/pull/674) ([DawoudIO](https://github.com/DawoudIO))
+
+**Fixed bugs:**
+
+- GitHub API causes rate errors [\#666](https://github.com/ChurchCRM/CRM/issues/666)
+- Calendar Popup Issue   [\#543](https://github.com/ChurchCRM/CRM/issues/543)
+- Group View should use cart icon for add to cart [\#521](https://github.com/ChurchCRM/CRM/issues/521)
+- Upload New Photo does not effect Updated Date for member [\#293](https://github.com/ChurchCRM/CRM/issues/293)
+
+**Closed issues:**
+
+- Multiple unnecessary composer files [\#680](https://github.com/ChurchCRM/CRM/issues/680)
+- tert [\#679](https://github.com/ChurchCRM/CRM/issues/679)
+- Error on My User Settings page [\#668](https://github.com/ChurchCRM/CRM/issues/668)
+- Move Skin to Composer [\#661](https://github.com/ChurchCRM/CRM/issues/661)
+- \#594 Unnecessary sub directory [\#633](https://github.com/ChurchCRM/CRM/issues/633)
+- MRBS, what is it [\#551](https://github.com/ChurchCRM/CRM/issues/551)
+- AddWebCalendar.sql [\#550](https://github.com/ChurchCRM/CRM/issues/550)
+
+**Merged pull requests:**
+
+- Merge 2.1.0 into master. [\#686](https://github.com/ChurchCRM/CRM/pull/686) ([DawoudIO](https://github.com/DawoudIO))
+- Fix composer build [\#682](https://github.com/ChurchCRM/CRM/pull/682) ([crossan007](https://github.com/crossan007))
+- removing webcal from the system [\#676](https://github.com/ChurchCRM/CRM/pull/676) ([DawoudIO](https://github.com/DawoudIO))
 
 ## [2.1.0-RC1](https://github.com/ChurchCRM/CRM/tree/2.1.0-RC1) (2016-06-13)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.1...2.1.0-RC1)
