@@ -41,8 +41,8 @@ foreach ($crmEvents as $evnt) {
 $sPageTitle = gettext("Church Calendar");
 require "Include/Header.php"; ?>
 
-<link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/fullcalendar.min.css">
-<link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/fullcalendar.print.css" media="print">
+<link rel="stylesheet" href="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/fullcalendar/fullcalendar.min.css">
+<link rel="stylesheet" href="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/fullcalendar/fullcalendar.print.css" media="print">
 
 <div class="col-lg-12">
   <div class="box box-primary">
@@ -73,7 +73,7 @@ require "Include/Header.php"; ?>
 
 <!-- fullCalendar 2.2.5 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/fullcalendar.min.js"></script>
+<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/fullcalendar/fullcalendar.min.js"></script>
 <script>
   $(function () {
     /* initialize the calendar

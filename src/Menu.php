@@ -59,7 +59,7 @@ $sPageTitle = "Welcome to <b>Church</b>CRM";
 
 require 'Include/Header.php';
 ?>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
+<script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/chartjs/Chart.min.js"></script>
 
 <!-- Small boxes (Stat box) -->
 <div class="row">
