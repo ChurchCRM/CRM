@@ -35,13 +35,13 @@
 
 <!-- Bootstrap 3.3.5 -->
 
-  <script src="<?= $sRootPath ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
+  <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/bootstrap/js/bootstrap.min.js"></script>
   <!-- SlimScroll -->
-  <script src="<?= $sRootPath ?>/skin/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+  <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
   <!-- FastClick -->
-  <script src="<?= $sRootPath ?>/skin/adminlte/plugins/fastclick/fastclick.js"></script>
+  <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/plugins/fastclick/fastclick.js"></script>
   <!-- AdminLTE App -->
-  <script src="<?= $sRootPath ?>/skin/adminlte/dist/js/app.min.js"></script>
+  <script src="<?= $sRootPath ?>/vendor/almasaeed2010/adminlte/dist/js/app.min.js"></script>
 
   <script src="<?= $sRootPath ?>/skin/js/DataTables.js"></script>
   <script src="<?= $sRootPath ?>/skin/js/Tooltips.js"></script>
