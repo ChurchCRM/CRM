@@ -4,7 +4,7 @@ $("document").ready(function(){
         minimumInputLength: 2,
         ajax: {
             url: function (params){
-                    return "api/search/"+params.term;   
+              return window.CRM.root + "api/search/" + params.term;
             },
             dataType: 'json',
             delay: 250,
