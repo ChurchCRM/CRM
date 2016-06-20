@@ -22,6 +22,7 @@ require __DIR__ . '/dependencies.php';
 // Register routes
 require __DIR__ . '/routes/data.php';
 require __DIR__ . '/routes/search.php';
+require __DIR__ . '/routes/persons.php';
 
 // Run app
 $app->run();
