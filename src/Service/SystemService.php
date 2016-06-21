@@ -267,6 +267,11 @@ class SystemService {
       return true;
     }
 
+    if (strncmp($db_version, "2.1.0", 5) == 0) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.0-2.1.x.sql");
+      return true;
+    }
+
     return false;
   }
 

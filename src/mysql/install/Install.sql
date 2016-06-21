@@ -1,4 +1,4 @@
--- Install Version 2.1.0
+-- Install Version 2.1.1
 -- --------------------------------------------------------
 
 
@@ -22,7 +22,7 @@ CREATE TABLE `version_ver` (
 --
 
 INSERT INTO version_ver (ver_version, ver_update_start)
-VALUES ('2.1.0', now());
+VALUES ('2.1.1', now());
 
 --
 -- Table structure for table `autopayment_aut`
