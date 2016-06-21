@@ -13,8 +13,8 @@
 
 require '../Include/Config.php';
 require '../Include/Functions.php';
-require '../Service/MailchimpService.php';
-require '../Service/PersonService.php';
+require_once '../Service/MailchimpService.php';
+require_once '../Service/PersonService.php';
 
 $mailchimp = new MailChimpService();
 $personService = new PersonService();
