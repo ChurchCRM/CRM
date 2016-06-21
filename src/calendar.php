@@ -72,7 +72,7 @@ require "Include/Header.php"; ?>
 &nbsp;
 
 <!-- fullCalendar 2.2.5 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/daterangepicker/moment.min.js"></script>
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/fullcalendar.min.js"></script>
 <script>
   $(function () {
