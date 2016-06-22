@@ -2,58 +2,56 @@
 // Routes
 
 
-$app->group('/deposits', function () use ($app) {
+$app->group('/deposits', function () {
 
-  $app->post('/', function () use ($app) {
-
-    $input = getJSONFromApp($app);
-    echo json_encode($app->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate));
+  $this->post('/', function ($request, $response, $args) {
+    $input = $request->getParsedBody();
+    echo json_encode($this->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate));
   });
 
-  $app->get('/', function () use ($app) {
-
-    echo json_encode(["deposits" => $app->FinancialService->getDeposits()]);
+  $this->get('/', function ($request, $response, $args) {
+    echo json_encode(["deposits" => $this->FinancialService->getDeposits()]);
   });
 
-  $app->get('/:id', function ($id) use ($app) {
+  $this->get('/{id:[0-9]+}', function ($request, $response, $args) {
+    $id = $args['id'];
+    echo json_encode(["deposits" => $this->FinancialService->getDeposits($id)]);
+  });
 
-    echo json_encode(["deposits" => $app->FinancialService->getDeposits($id)]);
-  })->conditions(array('id' => '[0-9]+'));
-
-  $app->post('/:id', function ($id) use ($app) {
-
-    $input = getJSONFromApp($app);
-    echo json_encode($app->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate, $id, $input->depositClosed));
+  $this->post('/{id:[0-9]+}', function ($request, $response, $args) {
+    $id = $args['id'];
+    $input = $request->getParsedBody();
+    echo json_encode($this->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate, $id, $input->depositClosed));
   });
 
 
-  $app->get('/:id/ofx', function ($id) use ($app) {
-
-    $OFX = $app->FinancialService->getDepositOFX($id);
+  $this->get('/{id:[0-9]+}/ofx', function ($request, $response, $args) {
+    $id = $args['id'];
+    $OFX = $this->FinancialService->getDepositOFX($id);
     header($OFX->header);
     echo $OFX->content;
-  })->conditions(array('id' => '[0-9]+'));
+  });
 
-  $app->get('/:id/pdf', function ($id) use ($app) {
-    $app->contentType("application/x-download");
-    $app->FinancialService->getDepositPDF($id);
-  })->conditions(array('id' => '[0-9]+'));
+  $this->get('/{id:[0-9]+}/pdf', function ($request, $response, $args) {
+    $id = $args['id'];
+    $this->FinancialService->getDepositPDF($id);
+  });
 
-  $app->get('/:id/csv', function ($id) use ($app) {
-
-    $CSV = $app->FinancialService->getDepositCSV($id);
+  $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
+    $id = $args['id'];
+    $CSV = $this->FinancialService->getDepositCSV($id);
     header($CSV->header);
     echo $CSV->content;
-  })->conditions(array('id' => '[0-9]+'));
+  });
 
-  $app->delete('/:id', function ($id) use ($app) {
-
-    $app->FinancialService->deleteDeposit($id);
+  $this->delete('/{id:[0-9]+}', function ($request, $response, $args) {
+    $id = $args['id'];
+    $this->FinancialService->deleteDeposit($id);
     echo json_encode(["success" => true]);
-  })->conditions(array('id' => '[0-9]+'));
+  });
 
-  $app->get('/:id/payments', function ($id) use ($app) {
-
-    echo $app->FinancialService->getPaymentJSON($app->FinancialService->getPayments($id));
-  })->conditions(array('id' => '[0-9]+'));
+  $this->get('/{id:[0-9]+}/payments', function ($request, $response, $args) {
+    $id = $args['id'];
+    echo $this->FinancialService->getPaymentJSON($this->FinancialService->getPayments($id));
+  });
 });

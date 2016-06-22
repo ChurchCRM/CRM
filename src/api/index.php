@@ -24,6 +24,8 @@ require __DIR__ . '/routes/data.php';
 require __DIR__ . '/routes/search.php';
 require __DIR__ . '/routes/persons.php';
 require __DIR__ . '/routes/database.php';
+require __DIR__ . '/routes/families.php';
+require __DIR__ . '/routes/deposits.php';
 
 // Run app
 $app->run();

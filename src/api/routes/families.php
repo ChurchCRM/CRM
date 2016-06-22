@@ -2,21 +2,24 @@
 // Routes
 
 
-$app->group('/families', function () use ($app) {
-  $app->get('/search/:query', function ($query) use ($app) {
+$app->group('/families', function () {
 
-    echo $app->FamilyService->getFamiliesJSON($app->FamilyService->search($query));
+  $this->get('/search/{query}', function ($request, $response, $args) {
+    $query = $args['query'];
+    echo $this->FamilyService->getFamiliesJSON($this->FamilyService->search($query));
   });
-  $app->get('/lastedited', function ($query) use ($app) {
 
-    $app->FamilyService->lastEdited();
+  $this->get('/lastedited', function ($request, $response, $args) {
+    $this->FamilyService->lastEdited();
   });
-  $app->get('/byCheckNumber/:tScanString', function ($tScanString) use ($app) {
 
-    echo $app->FinancialService->getMemberByScanString($tScanString);
+  $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {
+    $scanString = $args['scanString'];
+    echo $this->FinancialService->getMemberByScanString($scanString);
   });
-  $app->get('/byEnvelopeNumber/:tEnvelopeNumber', function ($tEnvelopeNumber) use ($app) {
 
-    echo $app->FamilyService->getFamilyStringByEnvelope($tEnvelopeNumber);
+  $this->get('/byEnvelopeNumber/{envelopeNumber:[0-9]+}', function ($request, $response, $args) {
+    $envelopeNumber = $args['envelopeNumber'];
+    echo $this->FamilyService->getFamilyStringByEnvelope($envelopeNumber);
   });
 });
