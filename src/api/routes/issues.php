@@ -1,14 +1,7 @@
 <?php
 // Routes
 
-
-$app->group('/issues', function () use ($app) {
-  $systemService = $app->SystemService;
-  $app->post('/', function () use ($app, $systemService) {
-    $request = $app->request();
-    $body = $request->getBody();
-    $input = json_decode($body);
-    $app->SystemService->reportIssue($input);
-  });
-
+$app->post('/issues', function ($request, $response, $args) {
+  $input = $request->getParsedBody();
+  return $response->withJson($this->SystemService->reportIssue($input));
 });
