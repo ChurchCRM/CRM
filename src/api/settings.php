@@ -1,6 +1,6 @@
 <?php
 return [
   'settings' => [
-    'displayErrorDetails' => false, // set to false in production
+    'displayErrorDetails' => true, // set to false in production
   ],
 ];
