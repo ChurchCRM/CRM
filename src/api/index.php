@@ -19,13 +19,19 @@ $app = new \Slim\App();
 
 // Set up dependencies
 require __DIR__ . '/dependencies.php';
-// Register routes
+
+// system routes
 require __DIR__ . '/routes/data.php';
+require __DIR__ . '/routes/database.php';
+
+// people routes
 require __DIR__ . '/routes/search.php';
 require __DIR__ . '/routes/persons.php';
-require __DIR__ . '/routes/database.php';
 require __DIR__ . '/routes/families.php';
+
+// finance routes
 require __DIR__ . '/routes/deposits.php';
+require __DIR__ . '/routes/payments.php';
 
 // Run app
 $app->run();
