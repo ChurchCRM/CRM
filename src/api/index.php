@@ -16,18 +16,22 @@ require_once dirname(__FILE__) . '/../vendor/autoload.php';
 // Instantiate the app
 $settings = require __DIR__ . '/settings.php';
 $app = new \Slim\App();
+$container = $app->getContainer();
 
-// Set up dependencies
+// Set up
 require __DIR__ . '/dependencies.php';
+require __DIR__ . '/error-handler.php';
 
 // system routes
 require __DIR__ . '/routes/data.php';
 require __DIR__ . '/routes/database.php';
+require __DIR__ . '/routes/issues.php';
 
 // people routes
 require __DIR__ . '/routes/search.php';
 require __DIR__ . '/routes/persons.php';
 require __DIR__ . '/routes/families.php';
+require __DIR__ . '/routes/groups.php';
 
 // finance routes
 require __DIR__ . '/routes/deposits.php';

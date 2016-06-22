@@ -15,8 +15,6 @@ require_once '../Service/SystemService.php';
 
 // DIC configuration
 
-$container = $app->getContainer();
-
 $container['PersonService'] = new PersonService();
 $container['FamilyService'] = new FamilyService();
 $container['GroupService'] = new GroupService();
