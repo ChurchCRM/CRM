@@ -1,86 +1,92 @@
 <?php
 // Routes
 
-$app->group('/groups', function () use ($app) {
-  $groupService = $app->GroupService;
+$app->group('/groups', function () {
 
-  $app->post('/:groupID/userRole/:userID', function ($groupID, $userID) use ($app, $groupService) {
 
-    $input = getJSONFromApp($app);
-    echo json_encode($groupService->setGroupMemberRole($groupID, $userID, $input->roleID));
+  $this->post('/', function ($request, $response, $args) {
+    $groupName = $request->getParsedBody()["groupName"];
+    $response->withJson($this->GroupService->createGroup($groupName));
   });
 
-  $app->post('/:groupID/removeuser/:userID', function ($groupID, $userID) use ($groupService) {
+  $this->post('/{groupID:[0-9]+}', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    $input = $request->getParsedBody();
+    echo $this->GroupService->updateGroup($groupID, $input);
+  });
 
-    $groupService->removeUserFromGroup($groupID, $userID);
+  $this->get('/{groupID:[0-9]+}', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    echo $this->GroupService->getGroupJSON($this->GroupService->getGroups($groupID));
+  });
+
+  $this->delete('/{groupID:[0-9]+}', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    $this->GroupService->deleteGroup($groupID);
     echo json_encode(["success" => true]);
   });
-  $app->post('/:groupID/adduser/:userID', function ($groupID, $userID) use ($groupService) {
-
-    echo json_encode($groupService->addUserToGroup($groupID, $userID, 0));
-  });
-  $app->delete('/:groupID', function ($groupID) use ($groupService) {
-
-    $groupService->deleteGroup($groupID);
+  $this->post('/{groupID:[0-9]+}/removeuser/{userID:[0-9]+}', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    $userID = $args['userID'];
+    $this->GroupService->removeUserFromGroup($groupID, $userID);
     echo json_encode(["success" => true]);
   });
-
-  $app->get('/:groupID', function ($groupID) use ($groupService) {
-
-    echo $groupService->getGroupJSON($groupService->getGroups($groupID));
+  $this->post('/{groupID:[0-9]+}/adduser/{userID:[0-9]+}', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    $userID = $args['userID'];
+    echo json_encode($this->GroupService->addUserToGroup($groupID, $userID, 0));
   });
 
-  $app->post('/:groupID', function ($groupID) use ($app, $groupService) {
 
-    $input = getJSONFromApp($app);
-    echo $groupService->updateGroup($groupID, $input);
+  $this->post('/{groupID:[0-9]+}/userRole/{userID:[0-9]+}', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    $userID = $args['userID'];
+    $roleID = $request->getParsedBody()["roleID"];
+    echo json_encode($this->GroupService->setGroupMemberRole($groupID, $userID, $roleID));
   });
 
-  $app->post('/', function () use ($app, $groupService) {
-
-    $input = getJSONFromApp($app);
-    echo json_encode($groupService->createGroup($input->groupName));
-  });
-
-  $app->post('/:groupID/roles/:roleID', function ($groupID, $roleID) use ($app, $groupService) {
-
-    $input = getJSONFromApp($app);
+  $this->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    $roleID = $args['roleID'];
+    $input = $request->getParsedBody();
     if (property_exists($input, "groupRoleName")) {
-      $groupService->setGroupRoleName($groupID, $roleID, $input->groupRoleName);
+      $this->GroupService->setGroupRoleName($groupID, $roleID, $input['groupRoleName']);
     } elseif (property_exists($input, "groupRoleOrder")) {
-      $groupService->setGroupRoleOrder($groupID, $roleID, $input->groupRoleOrder);
+      $this->GroupService->setGroupRoleOrder($groupID, $roleID, $input['groupRoleOrder']);
     }
 
     echo json_encode(["success" => true]);
   });
 
-  $app->delete('/:groupID/roles/:roleID', function ($groupID, $roleID) use ($app, $groupService) {
-
-    echo json_encode($groupService->deleteGroupRole($groupID, $roleID));
+  $this->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    $roleID = $args['roleID'];
+    echo json_encode($this->GroupService->deleteGroupRole($groupID, $roleID));
   });
 
-  $app->post('/:groupID/roles', function ($groupID) use ($app, $groupService) {
-
-    $input = getJSONFromApp($app);
-    echo $groupService->addGroupRole($groupID, $input->roleName);
+  $this->post('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    $roleName = $request->getParsedBody()["roleName"];
+    echo $this->GroupService->addGroupRole($groupID, $roleName);
   });
 
-  $app->post('/:groupID/defaultRole', function ($groupID) use ($app, $groupService) {
-
-    $input = getJSONFromApp($app);
-    $groupService->setGroupRoleAsDefault($groupID, $input->roleID);
+  $this->post('/{groupID:[0-9]+}/defaultRole', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    $roleID = $request->getParsedBody()["roleID"];
+    $this->GroupService->setGroupRoleAsDefault($groupID, $roleID);
     echo json_encode(["success" => true]);
   });
 
-  $app->post('/:groupID/setGroupSpecificPropertyStatus', function ($groupID) use ($app, $groupService) {
-
-    $input = getJSONFromApp($app);
-    if ($input->GroupSpecificPropertyStatus) {
-      $groupService->enableGroupSpecificProperties($groupID);
+  $this->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    $input = $request->getParsedBody();
+    if ($input['GroupSpecificPropertyStatus']) {
+      $this->GroupService->enableGroupSpecificProperties($groupID);
       echo json_encode(["status" => "group specific properties enabled"]);
     } else {
-      $groupService->disableGroupSpecificProperties($groupID);
+      $this->GroupService->disableGroupSpecificProperties($groupID);
       echo json_encode(["status" => "group specific properties disabled"]);
     }
   });
+
 });
