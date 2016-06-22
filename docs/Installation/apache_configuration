@@ -1,0 +1,34 @@
+Configuring apache for ChurchCRM install
+
+1. For debian related servers, edit
+
+/etc/apache2/sites-available/000-default.conf and add this after <VirtualHost *:80>
+
+<Directory "/var/www/html">
+Options Indexes FollowSymLinks MultiViews
+AllowOverride All
+Order allow,deny
+allow from all
+</Directory>
+
+2. For Windows running xampp, edit
+
+<xampp directory>/apache/conf/httpd.conf and add
+
+<Directory "<xamp directory>/htdocs">
+Options Indexes FollowSymLinks MultiViews
+AllowOverride All
+Order allow,deny
+allow from all
+</Directory>
+
+3. For opensuse linux, edit
+
+/etc/apache2/httpd.conf and add
+
+<Directory "/srv/www/htdocs">
+Options Indexes FollowSymLinks MultiViews
+AllowOverride All
+Order allow,deny
+allow from all
+</Directory>
