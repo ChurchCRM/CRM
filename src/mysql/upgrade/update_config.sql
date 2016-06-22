@@ -134,3 +134,5 @@ UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1029';
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1031';
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1032';
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1033';
+
+delete from config_cfg where cfg_id ='18'; 
