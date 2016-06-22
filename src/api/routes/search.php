@@ -1,6 +1,7 @@
 <?php
-// Routes
+// Routes search
 
+// search for a string in Persons, families, groups, Financial Deposits and Payments 
 $app->get('/search/{query}', function ($request, $response, $args) {
   $query = $args['query'];
   $resultsArray = array();
