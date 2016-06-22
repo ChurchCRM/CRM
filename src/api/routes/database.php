@@ -1,24 +1,21 @@
 <?php
 // Routes
 
-$app->group('/database', function () use ($app) {
-  $systemService = $app->SystemService;
-  $app->post('/backup', function () use ($app, $systemService) {
-    $input = getJSONFromApp($app);
-    $backup = $systemService->getDatabaseBackup($input);
+$app->group('/database', function () {
+
+  $this->post('/backup', function ($request, $response, $args) {
+    $input = $request->getParsedBody();
+    $backup = $this->SystemService->getDatabaseBackup($input);
     echo json_encode($backup);
   });
 
-  $app->post('/restore', function () use ($app, $systemService) {
-
-    $request = $app->request();
-    $body = $request->getBody();
-    $restore = $systemService->restoreDatabaseFromBackup();
+  $this->post('/restore', function ($request, $response, $args) {
+    $restore = $this->SystemService->restoreDatabaseFromBackup();
     echo json_encode($restore);
   });
 
-  $app->get('/download/:filename', function ($filename) use ($app, $systemService) {
-
-    $systemService->download($filename);
+  $this->get('/download/{filename}', function ($request, $response, $args) {
+    $filename = $args['filename'];
+    $this->SystemService->download($filename);
   });
 });
