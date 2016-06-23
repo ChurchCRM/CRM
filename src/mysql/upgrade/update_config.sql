@@ -115,6 +115,12 @@ UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='8' WHERE `cfg_id`='
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='9' WHERE `cfg_id`='72';
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='10' WHERE `cfg_id`='10';
 
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='90' WHERE `cfg_category`='';
+UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='95' WHERE `cfg_category` is null;
+
+delete from config_cfg where cfg_id ='18';
+delete from config_cfg where cfg_id ='2001';
+
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1011';
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1012';
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1013';
