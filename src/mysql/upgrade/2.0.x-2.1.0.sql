@@ -12,9 +12,6 @@ VALUES
    'Display currency denominations during pledge entry.  If true, payment totals are calculated based on the sum of entered currencies.  If false, the payment total may be entered directly',
    'General', "Step8",25);
 
--- 'sFPDF_PATH', 'vendor/fpdf17'
-DELETE FROM config_cfg WHERE cfg_id IN (4);
-
 DROP TABLE IF EXISTS `currency_denominations_cdem`;
 CREATE TABLE `currency_denominations_cdem` (
  `cdem_denominationID` mediumint(9) NOT NULL auto_increment,
@@ -49,6 +46,18 @@ CREATE TABLE `pledge_denominations_pdem`(
  PRIMARY KEY  (`pdem_pdemID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
+CREATE TABLE `pledgesplit_pls` (
+  `pls_pledgesplitID` mediumint(9) NOT NULL auto_increment,
+  `pls_plgID` mediumint(9) NOT NULL, 
+  `pls_amount` decimal(8,2) default NULL,
+  `pls_comment` text,
+  `pls_DateLastEdited` date NOT NULL default '0000-00-00',
+  `pls_EditedBy` mediumint(9) NOT NULL default '0',
+  `pls_fundID` tinyint(3) unsigned default NULL,
+  `pls_NonDeductible` decimal(8,2) NOT NULL default '0',
+  PRIMARY KEY  (`pls_pledgesplitID`)
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;
+
 -- ------ Notes - start
 
 ALTER TABLE note_nte
@@ -77,18 +86,6 @@ INSERT INTO note_nte
     "create"
   FROM family_fam;
 
-CREATE TABLE `pledgesplit_pls` (
-  `pls_pledgesplitID` mediumint(9) NOT NULL auto_increment,
-  `pls_plgID` mediumint(9) NOT NULL, 
-  `pls_amount` decimal(8,2) default NULL,
-  `pls_comment` text,
-  `pls_DateLastEdited` date NOT NULL default '0000-00-00',
-  `pls_EditedBy` mediumint(9) NOT NULL default '0',
-  `pls_fundID` tinyint(3) unsigned default NULL,
-  `pls_NonDeductible` decimal(8,2) NOT NULL default '0',
-  PRIMARY KEY  (`pls_pledgesplitID`)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;
-
 INSERT INTO note_nte
 (nte_per_ID, nte_fam_ID, nte_Private, nte_Text, nte_EnteredBy, nte_DateEntered, nte_Type)
   SELECT
@@ -103,5 +100,8 @@ INSERT INTO note_nte
   WHERE fam_DateLastEdited IS NOT NULL;
 
 -- ------ Notes - end
+
+-- 'sFPDF_PATH', 'vendor/fpdf17'
+DELETE FROM config_cfg WHERE cfg_id IN (4);
 
 INSERT IGNORE INTO version_ver (ver_version, ver_update_start, ver_update_end) VALUES ('2.1.0',@upgradeStartTime,NOW());

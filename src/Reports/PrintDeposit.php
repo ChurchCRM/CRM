@@ -106,8 +106,6 @@ if ($output == "pdf") {
 			$this->Set_Char_Size(10);
 			$this->SetAutoPageBreak(false);
 		}
-        
-
 	}
 
 	$fundTotal = array ();
@@ -115,7 +113,6 @@ if ($output == "pdf") {
 	// Instantiate the directory class and build the report.
 	$pdf = new PDF_DepositReport();
 
-   
 	// Read in report settings from database
 	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 	if ($rsConfig) {

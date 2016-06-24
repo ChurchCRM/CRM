@@ -19,7 +19,7 @@ global $iChecksPerDepositForm;
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "service/FinancialService.php";
+require "Service/FinancialService.php";
 
 $financialService = new FinancialService();
 

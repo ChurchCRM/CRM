@@ -55,10 +55,6 @@ $MenuFirst = 1;
     ?>
     <script src="<?= $sRootPath; ?>/skin/js/APIErrorHandler.js" type="text/javascript"></script>
   </head>
-  <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
-    </head>
 
   <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
     <!-- Site wrapper -->
