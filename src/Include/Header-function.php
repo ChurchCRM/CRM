@@ -78,13 +78,13 @@ function Header_modals() {
             <h4 class="modal-title">Issue Report!</h4>
           </div>
           <div class="modal-body">
-            <div class="container">
+            <div class="container-fluid">
               <div class="row">
                 <div class="col-xl-3">
                   <label for="issueTitle">Enter a Title for your bug / feature report: </label>
                 </div>
                 <div class="col-xl-3">
-                  <input type="text" name="issueTitle"></input>
+                  <input type="text" name="issueTitle" style="width:100%"></input>
                 </div>
               </div>
               <div class="row">
@@ -92,7 +92,7 @@ function Header_modals() {
                   <label for="issueDescription">What were you doing when you noticed the bug / feature opportunity?</label>
                 </div>
                 <div class="col-xl-3">
-                  <textarea rows="10" cols="50" name="issueDescription"></textarea>
+                  <textarea rows="10" cols="50" name="issueDescription" style="width:100%"></textarea>
                 </div>
               </div>
             </div>
