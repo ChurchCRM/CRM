@@ -31,7 +31,9 @@ $(document).ready(function() {
         $.ajax({
             method: "POST",
             url:   window.CRM.root+"/api/deposits",
-            data:  JSON.stringify(newDeposit)
+            data:  JSON.stringify(newDeposit),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
         }).done(function(data){
             dataT.row.add(data[0]);
             dataT.rows().invalidate().draw(true);

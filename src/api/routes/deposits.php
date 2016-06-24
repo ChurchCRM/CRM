@@ -4,12 +4,12 @@
 
 $app->group('/deposits', function () {
 
-  $this->post('/', function ($request, $response, $args) {
-    $input = $request->getParsedBody();
+  $this->post('', function ($request, $response, $args) {
+    $input = (object)$request->getParsedBody();
     echo json_encode($this->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate));
   });
 
-  $this->get('/', function ($request, $response, $args) {
+  $this->get('', function ($request, $response, $args) {
     echo json_encode(["deposits" => $this->FinancialService->getDeposits()]);
   });
 
@@ -20,7 +20,7 @@ $app->group('/deposits', function () {
 
   $this->post('/{id:[0-9]+}', function ($request, $response, $args) {
     $id = $args['id'];
-    $input = $request->getParsedBody();
+    $input = (object)$request->getParsedBody();
     echo json_encode($this->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate, $id, $input->depositClosed));
   });
 

@@ -4,7 +4,7 @@
 $app->group('/database', function () {
 
   $this->post('/backup', function ($request, $response, $args) {
-    $input = $request->getParsedBody();
+    $input = (object)$request->getParsedBody();
     $backup = $this->SystemService->getDatabaseBackup($input);
     echo json_encode($backup);
   });
