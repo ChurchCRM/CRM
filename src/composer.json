@@ -33,8 +33,12 @@
     "slim/slim": "2.6.2",
     "authorizenet/authorizenet": "1.8.0",
     "knplabs/github-api": "~1.4",
-    "almasaeed2010/adminlte": "2.3.2",
+    "almasaeed2010/adminlte": "2.3.3",
     "driftyco/ionicons": "2.0.1",
-    "components/font-awesome": "4.5.0"
+    "components/font-awesome": "4.6.3",
+    "propel/propel": "~2.0@dev"
+  },
+  "autoload": {
+    "classmap": ["orm/"]
   }
 }
