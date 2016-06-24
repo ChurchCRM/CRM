@@ -9,6 +9,6 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [QSA,L]
 
-<IfModule mod_php.so>
+<IfModule mod_php5.c>
     php_value short_open_tag On
 </IfModule>
