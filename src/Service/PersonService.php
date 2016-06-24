@@ -47,6 +47,7 @@ class PersonService
 
   function getPhoto($id)
   {
+    global $sEnableGravatarPhotos;
     if ($id != "") {
       $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email, fmr.lst_OptionName AS sFamRole
                         FROM person_per per
@@ -56,7 +57,7 @@ class PersonService
       extract(mysql_fetch_array($person));
       if ($per_ID != "") {
         $photoFile = $this->getUploadedPhoto($per_ID);
-        if ($photoFile == "" && $per_Email != "") {
+        if ($photoFile == "" && $per_Email != "" && $sEnableGravatarPhotos) {
           $photoFile = $this->getGravatar($per_Email);
         }
 
