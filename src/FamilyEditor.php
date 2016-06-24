@@ -18,6 +18,9 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/CanvassUtilities.php";
 require "Include/GeoCoder.php";
+require 'Service/NoteService.php';
+
+$noteService = new NoteService();
 
 //Set the page title
 $sPageTitle = gettext("Family Editor");
@@ -443,6 +446,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					RunQuery("UNLOCK TABLES");
 				}
 			}
+      $noteService->addNote(0, $iFamilyID, 0, "Created", "create");
 		} else {
 			for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++)
 			{
@@ -469,6 +473,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					//RunQuery("UNLOCK TABLES");
 				}
 			}
+      $noteService->addNote(0, $iFamilyID, 0, "Updated", "edit");
 		}
 		
 		// Update the custom person fields.

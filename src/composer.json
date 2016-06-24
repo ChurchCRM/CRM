@@ -1,6 +1,6 @@
 {
   "name": "churchCRM/CRM",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "type": "project",
   "keywords": [
     "church",
@@ -14,6 +14,11 @@
       "name": "George Dawoud",
       "homepage": "http://blog.dawouds.com",
       "role": "Lead Developer"
+    },
+    {
+      "name": "Charles Crossan",
+      "homepage": "http://www.ccrossan.com",
+      "role": "Developer"
     }
   ],
   "support": {
@@ -25,6 +30,11 @@
   },
   "require": {
     "mailchimp/mailchimp": "2.0.6",
-    "slim/slim": "2.6.2"
+    "slim/slim": "2.6.2",
+    "authorizenet/authorizenet": "1.8.0",
+    "knplabs/github-api": "~1.4",
+    "almasaeed2010/adminlte": "2.3.2",
+    "driftyco/ionicons": "2.0.1",
+    "components/font-awesome": "4.5.0"
   }
 }

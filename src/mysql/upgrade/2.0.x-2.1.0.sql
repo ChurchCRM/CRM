@@ -12,6 +12,9 @@ VALUES
    'Display currency denominations during pledge entry.  If true, payment totals are calculated based on the sum of entered currencies.  If false, the payment total may be entered directly',
    'General', "Step8",25);
 
+-- 'sFPDF_PATH', 'vendor/fpdf17'
+DELETE FROM config_cfg WHERE cfg_id IN (4);
+
 DROP TABLE IF EXISTS `currency_denominations_cdem`;
 CREATE TABLE `currency_denominations_cdem` (
  `cdem_denominationID` mediumint(9) NOT NULL auto_increment,
@@ -46,7 +49,7 @@ CREATE TABLE `pledge_denominations_pdem`(
  PRIMARY KEY  (`pdem_pdemID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
--- ------ Notes #608 - start
+-- ------ Notes - start
 
 ALTER TABLE note_nte
   ADD COLUMN nte_Type VARCHAR(45) NOT NULL DEFAULT 'note' AFTER nte_EditedBy;
@@ -62,7 +65,17 @@ select per_id, 0, 0, "Last Edit", per_EditedBy, per_DateLastEdited, "edit"
 from person_per
 where per_DateLastEdited is not null;
 
--- ------ Notes #608 - end
+INSERT INTO note_nte
+(nte_per_ID, nte_fam_ID, nte_Private, nte_Text, nte_EnteredBy, nte_DateEntered, nte_Type)
+  SELECT
+    0,
+    fam_ID,
+    0,
+    "Original Entry",
+    fam_EnteredBy,
+    fam_DateEntered,
+    "create"
+  FROM family_fam;
 
 CREATE TABLE `pledgesplit_pls` (
   `pls_pledgesplitID` mediumint(9) NOT NULL auto_increment,
@@ -76,5 +89,19 @@ CREATE TABLE `pledgesplit_pls` (
   PRIMARY KEY  (`pls_pledgesplitID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;
 
+INSERT INTO note_nte
+(nte_per_ID, nte_fam_ID, nte_Private, nte_Text, nte_EnteredBy, nte_DateEntered, nte_Type)
+  SELECT
+    0,
+    fam_ID,
+    0,
+    "Last Edit",
+    fam_EditedBy,
+    fam_DateLastEdited,
+    "edit"
+  FROM family_fam
+  WHERE fam_DateLastEdited IS NOT NULL;
+
+-- ------ Notes - end
 
 INSERT IGNORE INTO version_ver (ver_version, ver_update_start, ver_update_end) VALUES ('2.1.0',@upgradeStartTime,NOW());

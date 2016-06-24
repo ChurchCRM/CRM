@@ -23,7 +23,7 @@
 
 function FontSelect($fieldname)
 {
-  global $sFPDF_PATH;
+  $sFPDF_PATH = "bin/fpdf17";
 
   $d = dir($sFPDF_PATH . "/font/");
   $fontnames = array();

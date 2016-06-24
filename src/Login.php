@@ -32,6 +32,7 @@
 require 'Include/Config.php';
 $bSuppressSessionTests = TRUE;
 require 'Include/Functions.php';
+require 'Service/SystemService.php';
 // Initialize the variables
 
 // Is the user requesting to logoff or timed out?
@@ -281,23 +282,8 @@ if ($iUserID > 0)
             RunQuery($sSQL);
         }
 
-        if (isset($bEnableWebCalendar) && $bEnableWebCalendar)
-        {
-            $sAdmin = ($usr_Admin ? 'Y' : 'N');
-            $GLOBALS['login'] = $UserName;
-            $GLOBALS['firstname'] = $per_FirstName;
-            $GLOBALS['lastname'] = $per_LastName;
-            $GLOBALS['is_admin'] = $sAdmin;
-            $GLOBALS['email'] = $per_Email;
-            $GLOBALS['fullname'] = "$per_FirstName $per_LastName";
-            $GLOBALS['enabled'] = 1;
-
-            $_SESSION['webcal_login'] = $UserName;
-
-            $sSQL = "INSERT INTO webcal_user (cal_login, cal_firstname, cal_lastname, cal_is_admin, cal_email) VALUES ('$UserName', '". mysql_real_escape_string ($per_FirstName)." ', '".mysql_real_escape_string ($per_LastName)."', '$sAdmin', '$per_Email') ON DUPLICATE KEY UPDATE cal_login='$UserName', cal_firstname='".mysql_real_escape_string ($per_FirstName)."', cal_lastname='".mysql_real_escape_string ($per_LastName)."',cal_is_admin='$sAdmin', cal_email='$per_Email'";
-            RunQuery($sSQL);
-        }
-
+        $systemService = new SystemService();
+        $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         Redirect('CheckVersion.php');
         exit;
     }

@@ -13,16 +13,17 @@
 #Exclude composer vendor folders
 vendor
 composer.lock
-src/vendor/bin
-src/composer.lock
-src/vendor/composer
 
 # Uploaded Images
-src/Images/Family/thumbnails/
-src/Images/Person/thumbnails/
+thumbnails
 
 # SASS
 .sass-cache
+
+#skins
+adminlte
+font-awesome
+ionicons
 
 # Configuration files with passwords
 src/Include/Config.php
