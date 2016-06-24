@@ -71,9 +71,9 @@ class SystemService {
       $this->playbackSQLtoDatabase($file['tmp_name']);
     }
     exec("rm -rf $restoreResult->backupRoot");
+    $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
     $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
     $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
-    $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
     return $restoreResult;
   }
 
@@ -267,8 +267,8 @@ class SystemService {
       return true;
     }
 
-    if (strncmp($db_version, "2.1.0", 5) == 0) {
-      $this->rebuildWithSQL("/mysql/upgrade/2.1.0-2.1.x.sql");
+    if (strncmp($db_version, "2.1.0", 5) == 0 || strncmp($db_version, "2.1.1", 5) == 0 || strncmp($db_version, "2.1.2", 5) == 0) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.x-2.1.3.sql");
       return true;
     }
 
