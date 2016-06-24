@@ -1,6 +1,6 @@
 {
   "name": "churchCRM/CRM",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "type": "project",
   "keywords": [
     "church",
@@ -37,6 +37,10 @@
     "knplabs/github-api": "~1.4",
     "almasaeed2010/adminlte": "2.3.2",
     "driftyco/ionicons": "2.0.1",
-    "components/font-awesome": "4.5.0"
+    "components/font-awesome": "4.5.0",
+    "propel/propel": "~2.0@dev"
+  },
+  "autoload": {
+    "classmap": ["orm/"]
   }
 }
