@@ -71,25 +71,25 @@ class DataSeedService
 
   }
 
-  function generateSundaySchoolClasses($classes, $childrenPerTeacher)
+  function generateSundaySchoolClasses()
   {
     requireUserGroupMembership("bAdmin");
     echo '{"status":"Sunday School Seed Data Not Implemented"}';
   }
 
-  function generateEvents($events, $averageAttendance)
+  function generateEvents()
   {
     requireUserGroupMembership("bAdmin");
     echo '{"status":"Events Seed Data Not Implemented"}';
   }
 
-  function generateDeposits($deposits, $averagedepositvalue)
+  function generateDeposits()
   {
     requireUserGroupMembership("bAdmin");
     echo '{"status":"Deposits Seed Data Not Implemented"}';
   }
 
-  function generateFundRaisers($fundraisers, $averageItems, $averageItemPrice)
+  function generateFundRaisers()
   {
     requireUserGroupMembership("bAdmin");
     echo '{"status":"Fundraisers Seed Data Not Implemented"}';
