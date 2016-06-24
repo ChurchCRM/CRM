@@ -310,7 +310,7 @@ class SystemService {
     if ($result === FALSE) {
       throw new Exception("Unable to reach the issue bridge", 500);
     }
-    echo $result;
+    return $result;
   }
 
 }
