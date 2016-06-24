@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
-
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.1...HEAD)
+## [2.1.2](https://github.com/ChurchCRM/CRM/tree/2.1.2) (2016-06-24)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.1...2.1.2)
 
 **Implemented enhancements:**
 
@@ -11,6 +10,7 @@
 
 **Fixed bugs:**
 
+- CartView.php generates error [\#659](https://github.com/ChurchCRM/CRM/issues/659)
 - removed unused config which cased admin menu not to display 1st tab [\#714](https://github.com/ChurchCRM/CRM/pull/714) ([DawoudIO](https://github.com/DawoudIO))
 - keeping short\_open\_tag commented out [\#713](https://github.com/ChurchCRM/CRM/pull/713) ([DawoudIO](https://github.com/DawoudIO))
 
@@ -120,7 +120,6 @@
 
 **Fixed bugs:**
 
-- CartView.php generates error [\#659](https://github.com/ChurchCRM/CRM/issues/659)
 - Create a Debug page for Remote Servers to check requirements  [\#654](https://github.com/ChurchCRM/CRM/issues/654)
 
 **Closed issues:**
