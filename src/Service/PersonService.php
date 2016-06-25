@@ -116,7 +116,7 @@ class PersonService
 
   private
   function getGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
-          {
+  {
     $url = 'http://www.gravatar.com/avatar/';
     $url .= md5(strtolower(trim($email)));
     $url .= "?s=$s&d=$d&r=$r";
@@ -176,7 +176,7 @@ class PersonService
       return false;
     }
   }
-  
+
   private
   function getDefaultPhoto($gender, $famRole)
   {
@@ -226,9 +226,9 @@ class PersonService
     per_FriendDate,
     per_Flags )
     VALUES ('" .
-    FilterInput($user->name->title) . "','" .
-    FilterInput($user->name->first) . "',NULL,'" .
-    FilterInput($user->name->last) . "',NULL,'";
+      FilterInput($user->name->title) . "','" .
+      FilterInput($user->name->first) . "',NULL,'" .
+      FilterInput($user->name->last) . "',NULL,'";
     if (FilterInput($user->gender) == "male") {
       $sSQL .= "1";
     } else {
@@ -273,7 +273,7 @@ class PersonService
 
   }
 
-  function getPeopleEmailsAndGroups() 
+  function getPeopleEmailsAndGroups()
   {
     $sSQL = "SELECT per_FirstName, per_LastName, per_Email, per_ID, group_grp.grp_Name, lst_OptionName
 	            from person_per
