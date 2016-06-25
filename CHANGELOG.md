@@ -1,20 +1,59 @@
 # Change Log
 
-## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
+## [2.1.2](https://github.com/ChurchCRM/CRM/tree/2.1.2) (2016-06-24)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.1...2.1.2)
 
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.0-RC1...HEAD)
+**Implemented enhancements:**
+
+- System Setup: Install the churchcrm db it it is not setup [\#717](https://github.com/ChurchCRM/CRM/issues/717)
+- If the db is not setup then run the install script [\#716](https://github.com/ChurchCRM/CRM/pull/716) ([DawoudIO](https://github.com/DawoudIO))
+
+**Fixed bugs:**
+
+- CartView.php generates error [\#659](https://github.com/ChurchCRM/CRM/issues/659)
+- removed unused config which cased admin menu not to display 1st tab [\#714](https://github.com/ChurchCRM/CRM/pull/714) ([DawoudIO](https://github.com/DawoudIO))
+- keeping short\_open\_tag commented out [\#713](https://github.com/ChurchCRM/CRM/pull/713) ([DawoudIO](https://github.com/DawoudIO))
+
+**Merged pull requests:**
+
+- apache\_configuration [\#715](https://github.com/ChurchCRM/CRM/pull/715) ([mwendwa5](https://github.com/mwendwa5))
+- starting 2.2.0 [\#695](https://github.com/ChurchCRM/CRM/pull/695) ([DawoudIO](https://github.com/DawoudIO))
+
+## [2.1.1](https://github.com/ChurchCRM/CRM/tree/2.1.1) (2016-06-21)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.0...2.1.1)
+
+**Fixed bugs:**
+
+- MailChimpMissingReport.php 500 error [\#690](https://github.com/ChurchCRM/CRM/issues/690)
+- Can't use search in email dashboard [\#687](https://github.com/ChurchCRM/CRM/issues/687)
+- fixed imports \#690 [\#691](https://github.com/ChurchCRM/CRM/pull/691) ([DawoudIO](https://github.com/DawoudIO))
+- Search does not work in sub pages \#687 [\#689](https://github.com/ChurchCRM/CRM/pull/689) ([DawoudIO](https://github.com/DawoudIO))
+
+**Closed issues:**
+
+- calendar.php uses external library [\#683](https://github.com/ChurchCRM/CRM/issues/683)
+
+**Merged pull requests:**
+
+- using local moment.min.js [\#696](https://github.com/ChurchCRM/CRM/pull/696) ([DawoudIO](https://github.com/DawoudIO))
+- moving to 2.1.1 [\#693](https://github.com/ChurchCRM/CRM/pull/693) ([DawoudIO](https://github.com/DawoudIO))
+- Remove mrbs.sql [\#692](https://github.com/ChurchCRM/CRM/pull/692) ([DawoudIO](https://github.com/DawoudIO))
+
+## [2.1.0](https://github.com/ChurchCRM/CRM/tree/2.1.0) (2016-06-18)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.0-RC1...2.1.0)
 
 **Implemented enhancements:**
 
 - Update Build Documentation [\#662](https://github.com/ChurchCRM/CRM/issues/662)
-
-## [2.1.0-RC1](https://github.com/ChurchCRM/CRM/tree/2.1.0-RC1) (2016-06-13)
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.1...2.1.0-RC1)
-
-**Implemented enhancements:**
-
-- TaskService - Update ChurchCRM [\#653](https://github.com/ChurchCRM/CRM/issues/653)
-- 404 Error page [\#176](https://github.com/ChurchCRM/CRM/issues/176)
+- Add attendance Information tab to Person profile [\#634](https://github.com/ChurchCRM/CRM/issues/634)
+- General Configuration Settings Needs better organization [\#167](https://github.com/ChurchCRM/CRM/issues/167)
+- Revamp Sundayschool Dashboard [\#161](https://github.com/ChurchCRM/CRM/issues/161)
+- Add events to calender [\#632](https://github.com/ChurchCRM/CRM/issues/632)
+- Task: Release Update Notifications [\#573](https://github.com/ChurchCRM/CRM/issues/573)
+- Notes: Covert Notes to Timeline  [\#477](https://github.com/ChurchCRM/CRM/issues/477)
+- Create way for a Family/Person to Verify the info [\#5](https://github.com/ChurchCRM/CRM/issues/5)
+- Family notes n verify [\#675](https://github.com/ChurchCRM/CRM/pull/675) ([DawoudIO](https://github.com/DawoudIO))
+- added events to calendar view [\#674](https://github.com/ChurchCRM/CRM/pull/674) ([DawoudIO](https://github.com/DawoudIO))
 - Add Attendance to Person View - v2 [\#669](https://github.com/ChurchCRM/CRM/pull/669) ([DawoudIO](https://github.com/DawoudIO))
 - Check lastest version of ChurchCRM [\#658](https://github.com/ChurchCRM/CRM/pull/658) ([DawoudIO](https://github.com/DawoudIO))
 - Tweaks to people notes [\#648](https://github.com/ChurchCRM/CRM/pull/648) ([crossan007](https://github.com/crossan007))
@@ -27,13 +66,16 @@
 
 **Fixed bugs:**
 
-- CartView.php generates error [\#659](https://github.com/ChurchCRM/CRM/issues/659)
-- Create a Debug page for Remote Servers to check requirements  [\#654](https://github.com/ChurchCRM/CRM/issues/654)
+- Calendar Popup Issue   [\#543](https://github.com/ChurchCRM/CRM/issues/543)
+- Group View should use cart icon for add to cart [\#521](https://github.com/ChurchCRM/CRM/issues/521)
+- Upload New Photo does not effect Updated Date for member [\#293](https://github.com/ChurchCRM/CRM/issues/293)
+- GitHub API causes rate errors [\#666](https://github.com/ChurchCRM/CRM/issues/666)
 - TaskService - View All Tasks [\#649](https://github.com/ChurchCRM/CRM/issues/649)
 - playbackSQLtoDatabase function is broken [\#646](https://github.com/ChurchCRM/CRM/issues/646)
 - Invalid MailChimp API Key Error [\#640](https://github.com/ChurchCRM/CRM/issues/640)
 - Invalid Person ID in the PersonView should show error page [\#636](https://github.com/ChurchCRM/CRM/issues/636)
 - Gitter Sidecar Chat Buttons [\#625](https://github.com/ChurchCRM/CRM/issues/625)
+- SystemService duplicated SQL Functions. [\#610](https://github.com/ChurchCRM/CRM/issues/610)
 - enable short\_open\_tag [\#673](https://github.com/ChurchCRM/CRM/pull/673) ([DawoudIO](https://github.com/DawoudIO))
 - Check Version Once Per Login  [\#670](https://github.com/ChurchCRM/CRM/pull/670) ([DawoudIO](https://github.com/DawoudIO))
 - Fix MySQL Upgrade Function [\#647](https://github.com/ChurchCRM/CRM/pull/647) ([crossan007](https://github.com/crossan007))
@@ -43,24 +85,56 @@
 
 **Closed issues:**
 
+- tert [\#679](https://github.com/ChurchCRM/CRM/issues/679)
+- Error on My User Settings page [\#668](https://github.com/ChurchCRM/CRM/issues/668)
+- Move Skin to Composer [\#661](https://github.com/ChurchCRM/CRM/issues/661)
+- \#594 Unnecessary sub directory [\#633](https://github.com/ChurchCRM/CRM/issues/633)
+- Remove Downloaded Skins from src [\#685](https://github.com/ChurchCRM/CRM/issues/685)
+- Multiple unnecessary composer files [\#680](https://github.com/ChurchCRM/CRM/issues/680)
+- Remove Vendor folder from git repo [\#656](https://github.com/ChurchCRM/CRM/issues/656)
+- Update Demo site, landing pages to match 2.0.0 and 2.1.0 [\#563](https://github.com/ChurchCRM/CRM/issues/563)
+- MRBS, what is it [\#551](https://github.com/ChurchCRM/CRM/issues/551)
+- AddWebCalendar.sql [\#550](https://github.com/ChurchCRM/CRM/issues/550)
+
+**Merged pull requests:**
+
+- Fix composer build [\#682](https://github.com/ChurchCRM/CRM/pull/682) ([crossan007](https://github.com/crossan007))
+- Merge 2.1.0 into master. [\#686](https://github.com/ChurchCRM/CRM/pull/686) ([DawoudIO](https://github.com/DawoudIO))
+- removing webcal from the system [\#676](https://github.com/ChurchCRM/CRM/pull/676) ([DawoudIO](https://github.com/DawoudIO))
+- Removing skin from repo [\#671](https://github.com/ChurchCRM/CRM/pull/671) ([DawoudIO](https://github.com/DawoudIO))
+- Vendor Cleanup [\#657](https://github.com/ChurchCRM/CRM/pull/657) ([DawoudIO](https://github.com/DawoudIO))
+- added gitattributes / LF eof [\#644](https://github.com/ChurchCRM/CRM/pull/644) ([DawoudIO](https://github.com/DawoudIO))
+- merge 2.0.1 into 2.1.0  [\#628](https://github.com/ChurchCRM/CRM/pull/628) ([DawoudIO](https://github.com/DawoudIO))
+- add upgrade steps [\#627](https://github.com/ChurchCRM/CRM/pull/627) ([crossan007](https://github.com/crossan007))
+- 2.1.0 tweaks [\#624](https://github.com/ChurchCRM/CRM/pull/624) ([crossan007](https://github.com/crossan007))
+- Moved the system to 2.1.0 [\#609](https://github.com/ChurchCRM/CRM/pull/609) ([DawoudIO](https://github.com/DawoudIO))
+- Tweak deposit report [\#606](https://github.com/ChurchCRM/CRM/pull/606) ([crossan007](https://github.com/crossan007))
+
+## [2.1.0-RC1](https://github.com/ChurchCRM/CRM/tree/2.1.0-RC1) (2016-06-13)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.1...2.1.0-RC1)
+
+**Implemented enhancements:**
+
+- TaskService - Update ChurchCRM [\#653](https://github.com/ChurchCRM/CRM/issues/653)
+- 404 Error page [\#176](https://github.com/ChurchCRM/CRM/issues/176)
+
+**Fixed bugs:**
+
+- Create a Debug page for Remote Servers to check requirements  [\#654](https://github.com/ChurchCRM/CRM/issues/654)
+
+**Closed issues:**
+
 - vagrant provision should also reset the VM [\#665](https://github.com/ChurchCRM/CRM/issues/665)
 - Composer Build Out of Date in Scotchbox. [\#664](https://github.com/ChurchCRM/CRM/issues/664)
-- Remove Vendor folder from git repo [\#656](https://github.com/ChurchCRM/CRM/issues/656)
 - TaskService - Update Church Info [\#652](https://github.com/ChurchCRM/CRM/issues/652)
 - Add new group not working [\#613](https://github.com/ChurchCRM/CRM/issues/613)
 
 **Merged pull requests:**
 
-- Removing skin from repo [\#671](https://github.com/ChurchCRM/CRM/pull/671) ([DawoudIO](https://github.com/DawoudIO))
 - update bootstrap so that provision resets DB [\#667](https://github.com/ChurchCRM/CRM/pull/667) ([crossan007](https://github.com/crossan007))
-- Vendor Cleanup [\#657](https://github.com/ChurchCRM/CRM/pull/657) ([DawoudIO](https://github.com/DawoudIO))
-- added gitattributes / LF eof [\#644](https://github.com/ChurchCRM/CRM/pull/644) ([DawoudIO](https://github.com/DawoudIO))
 - Revert "Revert "Moving to 2.0.2"" [\#631](https://github.com/ChurchCRM/CRM/pull/631) ([crossan007](https://github.com/crossan007))
 - Revert "Moving to 2.0.2" [\#630](https://github.com/ChurchCRM/CRM/pull/630) ([crossan007](https://github.com/crossan007))
 - Moving to 2.0.2 [\#629](https://github.com/ChurchCRM/CRM/pull/629) ([DawoudIO](https://github.com/DawoudIO))
-- merge 2.0.1 into 2.1.0  [\#628](https://github.com/ChurchCRM/CRM/pull/628) ([DawoudIO](https://github.com/DawoudIO))
-- add upgrade steps [\#627](https://github.com/ChurchCRM/CRM/pull/627) ([crossan007](https://github.com/crossan007))
-- Moved the system to 2.1.0 [\#609](https://github.com/ChurchCRM/CRM/pull/609) ([DawoudIO](https://github.com/DawoudIO))
 
 ## [2.0.1](https://github.com/ChurchCRM/CRM/tree/2.0.1) (2016-05-23)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0...2.0.1)
@@ -74,7 +148,6 @@
 
 **Fixed bugs:**
 
-- SystemService duplicated SQL Functions. [\#610](https://github.com/ChurchCRM/CRM/issues/610)
 - update\_config.sql breaks during restore [\#548](https://github.com/ChurchCRM/CRM/issues/548)
 - Deposit Slip With no Payments Export [\#617](https://github.com/ChurchCRM/CRM/issues/617)
 - Donated Item Editor Theme [\#597](https://github.com/ChurchCRM/CRM/issues/597)
@@ -101,15 +174,12 @@
 - test [\#579](https://github.com/ChurchCRM/CRM/issues/579)
 - develop test [\#577](https://github.com/ChurchCRM/CRM/issues/577)
 - Test post  \#571 [\#575](https://github.com/ChurchCRM/CRM/issues/575)
-- Update Demo site, landing pages to match 2.0.0 and 2.1.0 [\#563](https://github.com/ChurchCRM/CRM/issues/563)
 - Vagrant test [\#559](https://github.com/ChurchCRM/CRM/issues/559)
 - Clean up whitespace and style issues in source code [\#333](https://github.com/ChurchCRM/CRM/issues/333)
 
 **Merged pull requests:**
 
-- 2.1.0 tweaks [\#624](https://github.com/ChurchCRM/CRM/pull/624) ([crossan007](https://github.com/crossan007))
 - Merge master into develop [\#611](https://github.com/ChurchCRM/CRM/pull/611) ([crossan007](https://github.com/crossan007))
-- Tweak deposit report [\#606](https://github.com/ChurchCRM/CRM/pull/606) ([crossan007](https://github.com/crossan007))
 - Fixes 548 [\#589](https://github.com/ChurchCRM/CRM/pull/589) ([crossan007](https://github.com/crossan007))
 - update develop from master [\#576](https://github.com/ChurchCRM/CRM/pull/576) ([crossan007](https://github.com/crossan007))
 - Updated Code and DB to 2.0.1 [\#619](https://github.com/ChurchCRM/CRM/pull/619) ([DawoudIO](https://github.com/DawoudIO))
