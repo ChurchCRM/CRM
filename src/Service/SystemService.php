@@ -240,7 +240,9 @@ class SystemService {
   }
 
   function checkDatabaseVersion() {
+   
     $db_version = $this->getDatabaseVersion();
+     echo "<h1>".$db_version."</h1>";
     if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
       return true;
     }
@@ -269,6 +271,11 @@ class SystemService {
 
     if (strncmp($db_version, "2.1.0", 5) == 0 || strncmp($db_version, "2.1.1", 5) == 0 || strncmp($db_version, "2.1.2", 5) == 0) {
       $this->rebuildWithSQL("/mysql/upgrade/2.1.x-2.1.3.sql");
+      return true;
+    }
+    
+    if (strncmp($db_version, "2.1.3", 5) == 0 ) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.3-2.2.0.sql");
       return true;
     }
 
