@@ -59,7 +59,17 @@ $sql = "SHOW TABLES FROM `$sDATABASE`";
 $tablecheck = mysql_num_rows(mysql_query($sql));
 
 if (!$tablecheck) {
-  mysql_failure("There are no tables installed in your database. Please run the migration script in <strong>mysql/install/install.sql</strong>.");
+  $query = '';
+  $restoreQueries = file('mysql/install/install.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+  foreach ($restoreQueries as $line) {
+    if ($line != '' && strpos($line, '--') === false) {
+      $query .= " $line";
+      if (substr($query, -1) == ';') {
+        mysql_query($query);
+        $query = '';
+      }
+    }
+  }
 }
 
 // Initialize the session

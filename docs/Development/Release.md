@@ -1,6 +1,7 @@
 # Create a release
 
 ## Do a clean clone of the branch 
+ * start the vagrant box (this will download all the 3rd party files)
  * create zip file of the  src dir named ChurchCRM-2.XX.XX.zip (matching version) 
  * rename the src dir to churchcrm
 
