@@ -240,7 +240,6 @@ class SystemService {
   }
 
   function checkDatabaseVersion() {
-   
     $db_version = $this->getDatabaseVersion();
     if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
       return true;
