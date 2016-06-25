@@ -114,8 +114,8 @@ class PersonService
     }
   }
 
-  private 
-          function getGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
+  private
+  function getGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
           {
     $url = 'http://www.gravatar.com/avatar/';
     $url .= md5(strtolower(trim($email)));
@@ -226,32 +226,32 @@ class PersonService
     per_FriendDate,
     per_Flags )
     VALUES ('" .
-            FilterInput($user->name->title) . "','" .
-            FilterInput($user->name->first) . "',NULL,'" .
-            FilterInput($user->name->last) . "',NULL,'";
+    FilterInput($user->name->title) . "','" .
+    FilterInput($user->name->first) . "',NULL,'" .
+    FilterInput($user->name->last) . "',NULL,'";
     if (FilterInput($user->gender) == "male") {
       $sSQL .= "1";
     } else {
       $sSQL .= "2";
     }
     $sSQL .= FilterInput($user->gender) . "','" .
-            FilterInput($user->location->street) . "',\"\",'" .
-            FilterInput($user->location->city) . "','" .
-            FilterInput($user->location->state) . "','" .
-            FilterInput($user->location->zip) . "','USA','" .
-            FilterInput($user->phone) . "',NULL,'" .
-            FilterInput($user->cell) . "','" .
-            FilterInput($user->email) . "',NULL," .
-            date('m', $user->dob) . "," .
-            date('d', $user->dob) . "," .
-            date('Y', $user->dob) . ",NULL,'" .
-            FilterInput($user->famID) . "'," .
-            FilterInput($user->per_fmr_id) . "," . "\"" .
-            date('Y-m-d', $user->registered) .
-            "\"" . ",1,'" .
-            date("YmdHis") .
-            "'," .
-            FilterInput($_SESSION['iUserID']) . ",";
+      FilterInput($user->location->street) . "',\"\",'" .
+      FilterInput($user->location->city) . "','" .
+      FilterInput($user->location->state) . "','" .
+      FilterInput($user->location->zip) . "','USA','" .
+      FilterInput($user->phone) . "',NULL,'" .
+      FilterInput($user->cell) . "','" .
+      FilterInput($user->email) . "',NULL," .
+      date('m', $user->dob) . "," .
+      date('d', $user->dob) . "," .
+      date('Y', $user->dob) . ",NULL,'" .
+      FilterInput($user->famID) . "'," .
+      FilterInput($user->per_fmr_id) . "," . "\"" .
+      date('Y-m-d', $user->registered) .
+      "\"" . ",1,'" .
+      date("YmdHis") .
+      "'," .
+      FilterInput($_SESSION['iUserID']) . ",";
 
     if (isset($dFriendDate) && strlen($dFriendDate) > 0)
       $sSQL .= "\"" . $dFriendDate . "\"";
@@ -270,7 +270,7 @@ class PersonService
       RunQuery($sSQL);
     }
     return $iPersonID;
-    
+
   }
 
   function getPeopleEmailsAndGroups() 
