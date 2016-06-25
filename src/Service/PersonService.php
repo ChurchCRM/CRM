@@ -6,16 +6,16 @@
 
 // use ChurchCRM\members\PersonQuery as PersonQuery;
 
-class PersonService 
+class PersonService
 {
   private $baseURL;
 
-  public function __construct() 
+  public function __construct()
   {
     $this->baseURL = $_SESSION['sRootPath'];
   }
 
-  function get($id) 
+  function get($id)
   {
     //return $this->personQuery->findPK($id);
     $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email FROM person_per WHERE per_ID =' . $id;
@@ -24,7 +24,7 @@ class PersonService
     return "{id: $id, fName: $per_FirstName}";
   }
 
-  function getBirthDays() 
+  function getBirthDays()
   {
     //return $this->personQuery->findPK($id);
     $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_BirthMonth, per_BirthDay FROM person_per';
@@ -45,7 +45,7 @@ class PersonService
     return $return;
   }
 
-  function getPhoto($id) 
+  function getPhoto($id)
   {
     global $sEnableGravatarPhotos;
     if ($id != "") {
@@ -72,7 +72,7 @@ class PersonService
     return $this->baseURL . "/Images/x.gif";
   }
 
-  function deleteUploadedPhoto($id) 
+  function deleteUploadedPhoto($id)
   {
     requireUserGroupMembership("bEditRecords");
     $validExtensions = array("jpeg", "jpg", "png");
@@ -94,7 +94,7 @@ class PersonService
     return $deleted;
   }
 
-  function getUploadedPhoto($personId) 
+  function getUploadedPhoto($personId)
   {
     $validextensions = array("jpeg", "jpg", "png");
     $hasFile = false;
@@ -109,13 +109,13 @@ class PersonService
 
     if ($hasFile) {
       return $photoFile;
-    }
-    else {
+    } else {
       return "";
     }
   }
 
-  private function getGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = array()) 
+  private 
+          function getGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
           {
     $url = 'http://www.gravatar.com/avatar/';
     $url .= md5(strtolower(trim($email)));
@@ -124,18 +124,17 @@ class PersonService
     $headers = @get_headers($url);
     if (strpos($headers[0], '404') === false) {
       return $url;
-    }
-    else {
+    } else {
       return "";
     }
   }
 
-  function getViewURI($Id) 
+  function getViewURI($Id)
   {
     return $this->baseURL . "/PersonView.php?PersonID=" . $Id;
   }
 
-  function search($searchTerm) 
+  function search($searchTerm)
   {
     $fetch = 'SELECT per_ID, per_FirstName, per_LastName, CONCAT_WS(" ",per_FirstName,per_LastName) AS fullname, per_fam_ID  FROM person_per WHERE per_FirstName LIKE \'%' . $searchTerm . '%\' OR per_LastName LIKE \'%' . $searchTerm . '%\' OR per_Email LIKE \'%' . $searchTerm . '%\' OR CONCAT_WS(" ",per_FirstName,per_LastName) LIKE \'%' . $searchTerm . '%\' order by per_FirstName LIMIT 15';
     $result = mysql_query($fetch);
@@ -155,7 +154,7 @@ class PersonService
     return $return;
   }
 
-  function getPersonByID($per_ID) 
+  function getPersonByID($per_ID)
   {
     $fetch = "SELECT per_ID, per_FirstName, LEFT(per_MiddleName,1) AS per_MiddleName, per_LastName, per_Title, per_Suffix, per_Address1, per_Address2, per_City, per_State, per_Zip, per_CellPhone, per_Country, per_Email, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_CellPhone, fam_Email
             FROM person_per
@@ -169,33 +168,31 @@ class PersonService
     return $row;
   }
 
-  function getPersonsJSON($persons) 
+  function getPersonsJSON($persons)
   {
     if ($persons) {
       return '{"persons": ' . json_encode($persons) . '}';
-    }
-    else {
+    } else {
       return false;
     }
   }
-
-  function getDefaultPhoto($gender, $famRole) 
+  
+  private
+  function getDefaultPhoto($gender, $famRole)
   {
     $photoFile = $this->baseURL . "/Images/Person/man-128.png";
     if ($gender == 1 && $famRole == "Child") {
       $photoFile = $this->baseURL . "/Images/Person/kid_boy-128.png";
-    }
-    else if ($gender == 2 && $famRole != "Child") {
+    } else if ($gender == 2 && $famRole != "Child") {
       $photoFile = $this->baseURL . "/Images/Person/woman-128.png";
-    }
-    else if ($gender == 2 && $famRole == "Child") {
+    } else if ($gender == 2 && $famRole == "Child") {
       $photoFile = $this->baseURL . "/Images/Person/kid_girl-128.png";
     }
 
     return $photoFile;
   }
 
-  function insertPerson($user) 
+  function insertPerson($user)
   {
     requireUserGroupMembership("bAddRecords");
     $sSQL = "INSERT INTO person_per
@@ -234,8 +231,7 @@ class PersonService
             FilterInput($user->name->last) . "',NULL,'";
     if (FilterInput($user->gender) == "male") {
       $sSQL .= "1";
-    }
-    else {
+    } else {
       $sSQL .= "2";
     }
     $sSQL .= FilterInput($user->gender) . "','" .
@@ -274,6 +270,7 @@ class PersonService
       RunQuery($sSQL);
     }
     return $iPersonID;
+    
   }
 
   function getPeopleEmailsAndGroups() 
