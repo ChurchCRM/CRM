@@ -66,7 +66,7 @@ class PersonService
       if ( $photoFile == "" ) {
         $photoFile = $this->getDefaultPhoto($per_Gender, $sFamRole);
       }
-       return $this->baseURL . $photoFile;
+       return $photoFile;
     }
 
     return $this->baseURL . "/Images/x.gif";
