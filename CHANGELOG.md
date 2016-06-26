@@ -1,5 +1,58 @@
 # Change Log
 
+## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
+
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.3...HEAD)
+
+**Implemented enhancements:**
+
+- Need ORM Framework [\#4](https://github.com/ChurchCRM/CRM/issues/4)
+
+**Closed issues:**
+
+- Upgrade to slim 3.x.x [\#699](https://github.com/ChurchCRM/CRM/issues/699)
+- Upgrade AdminLTE to 2.3.3  [\#697](https://github.com/ChurchCRM/CRM/issues/697)
+- 500 status message [\#578](https://github.com/ChurchCRM/CRM/issues/578)
+
+**Merged pull requests:**
+
+- fix 2.2.0 rev [\#739](https://github.com/ChurchCRM/CRM/pull/739) ([crossan007](https://github.com/crossan007))
+- Merge master \(2.1.3\) into develop \(2.2.0\) [\#737](https://github.com/ChurchCRM/CRM/pull/737) ([crossan007](https://github.com/crossan007))
+
+## [2.1.3](https://github.com/ChurchCRM/CRM/tree/2.1.3) (2016-06-25)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.2...2.1.3)
+
+**Implemented enhancements:**
+
+- People: Create a Setting to disable looking for people photos on gravatar [\#712](https://github.com/ChurchCRM/CRM/issues/712)
+- Fix 712 gravatar [\#734](https://github.com/ChurchCRM/CRM/pull/734) ([crossan007](https://github.com/crossan007))
+
+**Fixed bugs:**
+
+- \"Add Family\" Second Cell Number [\#719](https://github.com/ChurchCRM/CRM/issues/719)
+- fix \#730 [\#731](https://github.com/ChurchCRM/CRM/pull/731) ([crossan007](https://github.com/crossan007))
+- fix htaccess master [\#733](https://github.com/ChurchCRM/CRM/pull/733) ([crossan007](https://github.com/crossan007))
+- Fix \#719 [\#727](https://github.com/ChurchCRM/CRM/pull/727) ([crossan007](https://github.com/crossan007))
+- Mobile usability for bug reporting \#660 [\#721](https://github.com/ChurchCRM/CRM/pull/721) ([crossan007](https://github.com/crossan007))
+
+**Closed issues:**
+
+- CGI PHP Error 500 [\#730](https://github.com/ChurchCRM/CRM/issues/730)
+- test8 [\#726](https://github.com/ChurchCRM/CRM/issues/726)
+- test7 [\#725](https://github.com/ChurchCRM/CRM/issues/725)
+- test6 [\#724](https://github.com/ChurchCRM/CRM/issues/724)
+- test5 [\#723](https://github.com/ChurchCRM/CRM/issues/723)
+- test [\#722](https://github.com/ChurchCRM/CRM/issues/722)
+- Mobile usability for bug reporting [\#660](https://github.com/ChurchCRM/CRM/issues/660)
+
+**Merged pull requests:**
+
+- base url issues [\#736](https://github.com/ChurchCRM/CRM/pull/736) ([crossan007](https://github.com/crossan007))
+- Rev to 2.1.3 [\#735](https://github.com/ChurchCRM/CRM/pull/735) ([crossan007](https://github.com/crossan007))
+- Working ORM [\#718](https://github.com/ChurchCRM/CRM/pull/718) ([DawoudIO](https://github.com/DawoudIO))
+- Upgrade slim [\#700](https://github.com/ChurchCRM/CRM/pull/700) ([DawoudIO](https://github.com/DawoudIO))
+- Update Skins [\#698](https://github.com/ChurchCRM/CRM/pull/698) ([DawoudIO](https://github.com/DawoudIO))
+
 ## [2.1.2](https://github.com/ChurchCRM/CRM/tree/2.1.2) (2016-06-24)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.1...2.1.2)
 
@@ -175,6 +228,7 @@
 - develop test [\#577](https://github.com/ChurchCRM/CRM/issues/577)
 - Test post  \#571 [\#575](https://github.com/ChurchCRM/CRM/issues/575)
 - Vagrant test [\#559](https://github.com/ChurchCRM/CRM/issues/559)
+- Can't Log in after initial installation [\#645](https://github.com/ChurchCRM/CRM/issues/645)
 - Clean up whitespace and style issues in source code [\#333](https://github.com/ChurchCRM/CRM/issues/333)
 
 **Merged pull requests:**
