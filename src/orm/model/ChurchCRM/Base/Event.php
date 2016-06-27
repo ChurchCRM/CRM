@@ -5,12 +5,8 @@ namespace ChurchCRM\Base;
 use \DateTime;
 use \Exception;
 use \PDO;
-use ChurchCRM\Family as ChildFamily;
-use ChurchCRM\FamilyQuery as ChildFamilyQuery;
-use ChurchCRM\NoteQuery as ChildNoteQuery;
-use ChurchCRM\Person as ChildPerson;
-use ChurchCRM\PersonQuery as ChildPersonQuery;
-use ChurchCRM\Map\NoteTableMap;
+use ChurchCRM\EventQuery as ChildEventQuery;
+use ChurchCRM\Map\EventTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -25,18 +21,18 @@ use Propel\Runtime\Parser\AbstractParser;
 use Propel\Runtime\Util\PropelDateTime;
 
 /**
- * Base class that represents a row from the 'note_nte' table.
+ * Base class that represents a row from the 'events_event' table.
  *
  *
  *
  * @package    propel.generator.ChurchCRM.Base
  */
-abstract class Note implements ActiveRecordInterface
+abstract class Event implements ActiveRecordInterface
 {
     /**
      * TableMap class name
      */
-    const TABLE_MAP = '\\ChurchCRM\\Map\\NoteTableMap';
+    const TABLE_MAP = '\\ChurchCRM\\Map\\EventTableMap';
 
 
     /**
@@ -66,90 +62,73 @@ abstract class Note implements ActiveRecordInterface
     protected $virtualColumns = array();
 
     /**
-     * The value for the nte_id field.
+     * The value for the event_id field.
      *
      * @var        int
      */
-    protected $nte_id;
+    protected $event_id;
 
     /**
-     * The value for the nte_per_id field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $nte_per_id;
-
-    /**
-     * The value for the nte_fam_id field.
+     * The value for the event_type field.
      *
      * Note: this column has a database default value of: 0
      * @var        int
      */
-    protected $nte_fam_id;
+    protected $event_type;
 
     /**
-     * The value for the nte_private field.
+     * The value for the event_title field.
      *
-     * Note: this column has a database default value of: 0
-     * @var        int
+     * Note: this column has a database default value of: ''
+     * @var        string
      */
-    protected $nte_private;
+    protected $event_title;
 
     /**
-     * The value for the nte_text field.
+     * The value for the event_desc field.
      *
      * @var        string
      */
-    protected $nte_text;
+    protected $event_desc;
 
     /**
-     * The value for the nte_dateentered field.
+     * The value for the event_text field.
+     *
+     * @var        string
+     */
+    protected $event_text;
+
+    /**
+     * The value for the event_start field.
      *
      * Note: this column has a database default value of: NULL
      * @var        DateTime
      */
-    protected $nte_dateentered;
+    protected $event_start;
 
     /**
-     * The value for the nte_datelastedited field.
+     * The value for the event_end field.
      *
+     * Note: this column has a database default value of: NULL
      * @var        DateTime
      */
-    protected $nte_datelastedited;
+    protected $event_end;
 
     /**
-     * The value for the nte_enteredby field.
+     * The value for the inactive field.
      *
      * Note: this column has a database default value of: 0
      * @var        int
      */
-    protected $nte_enteredby;
+    protected $inactive;
 
     /**
-     * The value for the nte_editedby field.
+     * The value for the event_typename field.
      *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $nte_editedby;
-
-    /**
-     * The value for the nte_type field.
-     *
+     * Note: this column has a database default value of: ''
      * @var        string
      */
-    protected $nte_type;
-
-    /**
-     * @var        ChildPerson
-     */
-    protected $aPerson;
-
-    /**
-     * @var        ChildFamily
-     */
-    protected $aFamily;
+    protected $event_typename;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -167,16 +146,16 @@ abstract class Note implements ActiveRecordInterface
      */
     public function applyDefaultValues()
     {
-        $this->nte_per_id = 0;
-        $this->nte_fam_id = 0;
-        $this->nte_private = 0;
-        $this->nte_dateentered = PropelDateTime::newInstance(NULL, null, 'DateTime');
-        $this->nte_enteredby = 0;
-        $this->nte_editedby = 0;
+        $this->event_type = 0;
+        $this->event_title = '';
+        $this->event_start = PropelDateTime::newInstance(NULL, null, 'DateTime');
+        $this->event_end = PropelDateTime::newInstance(NULL, null, 'DateTime');
+        $this->inactive = 0;
+        $this->event_typename = '';
     }
 
     /**
-     * Initializes internal state of ChurchCRM\Base\Note object.
+     * Initializes internal state of ChurchCRM\Base\Event object.
      * @see applyDefaults()
      */
     public function __construct()
@@ -273,9 +252,9 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Compares this with another <code>Note</code> instance.  If
-     * <code>obj</code> is an instance of <code>Note</code>, delegates to
-     * <code>equals(Note)</code>.  Otherwise, returns <code>false</code>.
+     * Compares this with another <code>Event</code> instance.  If
+     * <code>obj</code> is an instance of <code>Event</code>, delegates to
+     * <code>equals(Event)</code>.  Otherwise, returns <code>false</code>.
      *
      * @param  mixed   $obj The object to compare to.
      * @return boolean Whether equal to the object specified.
@@ -341,7 +320,7 @@ abstract class Note implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return $this|Note The current object, for fluid interface
+     * @return $this|Event The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -403,57 +382,57 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Get the [nte_id] column value.
+     * Get the [event_id] column value.
      *
      * @return int
      */
     public function getId()
     {
-        return $this->nte_id;
+        return $this->event_id;
     }
 
     /**
-     * Get the [nte_per_id] column value.
+     * Get the [event_type] column value.
      *
      * @return int
      */
-    public function getPerId()
+    public function getType()
     {
-        return $this->nte_per_id;
+        return $this->event_type;
     }
 
     /**
-     * Get the [nte_fam_id] column value.
+     * Get the [event_title] column value.
      *
-     * @return int
+     * @return string
      */
-    public function getFamId()
+    public function getTitle()
     {
-        return $this->nte_fam_id;
+        return $this->event_title;
     }
 
     /**
-     * Get the [nte_private] column value.
+     * Get the [event_desc] column value.
      *
-     * @return int
+     * @return string
      */
-    public function getPrivate()
+    public function getDesc()
     {
-        return $this->nte_private;
+        return $this->event_desc;
     }
 
     /**
-     * Get the [nte_text] column value.
+     * Get the [event_text] column value.
      *
      * @return string
      */
     public function getText()
     {
-        return $this->nte_text;
+        return $this->event_text;
     }
 
     /**
-     * Get the [optionally formatted] temporal [nte_dateentered] column value.
+     * Get the [optionally formatted] temporal [event_start] column value.
      *
      *
      * @param      string $format The date/time format string (either date()-style or strftime()-style).
@@ -463,17 +442,17 @@ abstract class Note implements ActiveRecordInterface
      *
      * @throws PropelException - if unable to parse/validate the date/time value.
      */
-    public function getDateEntered($format = NULL)
+    public function getStart($format = NULL)
     {
         if ($format === null) {
-            return $this->nte_dateentered;
+            return $this->event_start;
         } else {
-            return $this->nte_dateentered instanceof \DateTimeInterface ? $this->nte_dateentered->format($format) : null;
+            return $this->event_start instanceof \DateTimeInterface ? $this->event_start->format($format) : null;
         }
     }
 
     /**
-     * Get the [optionally formatted] temporal [nte_datelastedited] column value.
+     * Get the [optionally formatted] temporal [event_end] column value.
      *
      *
      * @param      string $format The date/time format string (either date()-style or strftime()-style).
@@ -483,50 +462,40 @@ abstract class Note implements ActiveRecordInterface
      *
      * @throws PropelException - if unable to parse/validate the date/time value.
      */
-    public function getDateLastEdited($format = NULL)
+    public function getEnd($format = NULL)
     {
         if ($format === null) {
-            return $this->nte_datelastedited;
+            return $this->event_end;
         } else {
-            return $this->nte_datelastedited instanceof \DateTimeInterface ? $this->nte_datelastedited->format($format) : null;
+            return $this->event_end instanceof \DateTimeInterface ? $this->event_end->format($format) : null;
         }
     }
 
     /**
-     * Get the [nte_enteredby] column value.
+     * Get the [inactive] column value.
      *
      * @return int
      */
-    public function getEnteredBy()
+    public function getInActive()
     {
-        return $this->nte_enteredby;
+        return $this->inactive;
     }
 
     /**
-     * Get the [nte_editedby] column value.
-     *
-     * @return int
-     */
-    public function getEditedBy()
-    {
-        return $this->nte_editedby;
-    }
-
-    /**
-     * Get the [nte_type] column value.
+     * Get the [event_typename] column value.
      *
      * @return string
      */
-    public function getType()
+    public function getTypeName()
     {
-        return $this->nte_type;
+        return $this->event_typename;
     }
 
     /**
-     * Set the value of [nte_id] column.
+     * Set the value of [event_id] column.
      *
      * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\Event The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -534,87 +503,79 @@ abstract class Note implements ActiveRecordInterface
             $v = (int) $v;
         }
 
-        if ($this->nte_id !== $v) {
-            $this->nte_id = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_ID] = true;
+        if ($this->event_id !== $v) {
+            $this->event_id = $v;
+            $this->modifiedColumns[EventTableMap::COL_EVENT_ID] = true;
         }
 
         return $this;
     } // setId()
 
     /**
-     * Set the value of [nte_per_id] column.
+     * Set the value of [event_type] column.
      *
      * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\Event The current object (for fluent API support)
      */
-    public function setPerId($v)
+    public function setType($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->nte_per_id !== $v) {
-            $this->nte_per_id = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_PER_ID] = true;
-        }
-
-        if ($this->aPerson !== null && $this->aPerson->getId() !== $v) {
-            $this->aPerson = null;
+        if ($this->event_type !== $v) {
+            $this->event_type = $v;
+            $this->modifiedColumns[EventTableMap::COL_EVENT_TYPE] = true;
         }
 
         return $this;
-    } // setPerId()
+    } // setType()
 
     /**
-     * Set the value of [nte_fam_id] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setFamId($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_fam_id !== $v) {
-            $this->nte_fam_id = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_FAM_ID] = true;
-        }
-
-        if ($this->aFamily !== null && $this->aFamily->getId() !== $v) {
-            $this->aFamily = null;
-        }
-
-        return $this;
-    } // setFamId()
-
-    /**
-     * Set the value of [nte_private] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setPrivate($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_private !== $v) {
-            $this->nte_private = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_PRIVATE] = true;
-        }
-
-        return $this;
-    } // setPrivate()
-
-    /**
-     * Set the value of [nte_text] column.
+     * Set the value of [event_title] column.
      *
      * @param string $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\Event The current object (for fluent API support)
+     */
+    public function setTitle($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->event_title !== $v) {
+            $this->event_title = $v;
+            $this->modifiedColumns[EventTableMap::COL_EVENT_TITLE] = true;
+        }
+
+        return $this;
+    } // setTitle()
+
+    /**
+     * Set the value of [event_desc] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\Event The current object (for fluent API support)
+     */
+    public function setDesc($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->event_desc !== $v) {
+            $this->event_desc = $v;
+            $this->modifiedColumns[EventTableMap::COL_EVENT_DESC] = true;
+        }
+
+        return $this;
+    } // setDesc()
+
+    /**
+     * Set the value of [event_text] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\Event The current object (for fluent API support)
      */
     public function setText($v)
     {
@@ -622,115 +583,97 @@ abstract class Note implements ActiveRecordInterface
             $v = (string) $v;
         }
 
-        if ($this->nte_text !== $v) {
-            $this->nte_text = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_TEXT] = true;
+        if ($this->event_text !== $v) {
+            $this->event_text = $v;
+            $this->modifiedColumns[EventTableMap::COL_EVENT_TEXT] = true;
         }
 
         return $this;
     } // setText()
 
     /**
-     * Sets the value of [nte_dateentered] column to a normalized version of the date/time value specified.
+     * Sets the value of [event_start] column to a normalized version of the date/time value specified.
      *
      * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
      *               Empty strings are treated as NULL.
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\Event The current object (for fluent API support)
      */
-    public function setDateEntered($v)
+    public function setStart($v)
     {
         $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->nte_dateentered !== null || $dt !== null) {
-            if ( ($dt != $this->nte_dateentered) // normalized values don't match
+        if ($this->event_start !== null || $dt !== null) {
+            if ( ($dt != $this->event_start) // normalized values don't match
                 || ($dt->format('Y-m-d H:i:s.u') === NULL) // or the entered value matches the default
                  ) {
-                $this->nte_dateentered = $dt === null ? null : clone $dt;
-                $this->modifiedColumns[NoteTableMap::COL_NTE_DATEENTERED] = true;
+                $this->event_start = $dt === null ? null : clone $dt;
+                $this->modifiedColumns[EventTableMap::COL_EVENT_START] = true;
             }
         } // if either are not null
 
         return $this;
-    } // setDateEntered()
+    } // setStart()
 
     /**
-     * Sets the value of [nte_datelastedited] column to a normalized version of the date/time value specified.
+     * Sets the value of [event_end] column to a normalized version of the date/time value specified.
      *
      * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
      *               Empty strings are treated as NULL.
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\Event The current object (for fluent API support)
      */
-    public function setDateLastEdited($v)
+    public function setEnd($v)
     {
         $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->nte_datelastedited !== null || $dt !== null) {
-            if ($this->nte_datelastedited === null || $dt === null || $dt->format("Y-m-d H:i:s.u") !== $this->nte_datelastedited->format("Y-m-d H:i:s.u")) {
-                $this->nte_datelastedited = $dt === null ? null : clone $dt;
-                $this->modifiedColumns[NoteTableMap::COL_NTE_DATELASTEDITED] = true;
+        if ($this->event_end !== null || $dt !== null) {
+            if ( ($dt != $this->event_end) // normalized values don't match
+                || ($dt->format('Y-m-d H:i:s.u') === NULL) // or the entered value matches the default
+                 ) {
+                $this->event_end = $dt === null ? null : clone $dt;
+                $this->modifiedColumns[EventTableMap::COL_EVENT_END] = true;
             }
         } // if either are not null
 
         return $this;
-    } // setDateLastEdited()
+    } // setEnd()
 
     /**
-     * Set the value of [nte_enteredby] column.
+     * Set the value of [inactive] column.
      *
      * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\Event The current object (for fluent API support)
      */
-    public function setEnteredBy($v)
+    public function setInActive($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->nte_enteredby !== $v) {
-            $this->nte_enteredby = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_ENTEREDBY] = true;
+        if ($this->inactive !== $v) {
+            $this->inactive = $v;
+            $this->modifiedColumns[EventTableMap::COL_INACTIVE] = true;
         }
 
         return $this;
-    } // setEnteredBy()
+    } // setInActive()
 
     /**
-     * Set the value of [nte_editedby] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setEditedBy($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_editedby !== $v) {
-            $this->nte_editedby = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_EDITEDBY] = true;
-        }
-
-        return $this;
-    } // setEditedBy()
-
-    /**
-     * Set the value of [nte_type] column.
+     * Set the value of [event_typename] column.
      *
      * @param string $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\Event The current object (for fluent API support)
      */
-    public function setType($v)
+    public function setTypeName($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->nte_type !== $v) {
-            $this->nte_type = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_TYPE] = true;
+        if ($this->event_typename !== $v) {
+            $this->event_typename = $v;
+            $this->modifiedColumns[EventTableMap::COL_EVENT_TYPENAME] = true;
         }
 
         return $this;
-    } // setType()
+    } // setTypeName()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -742,27 +685,27 @@ abstract class Note implements ActiveRecordInterface
      */
     public function hasOnlyDefaultValues()
     {
-            if ($this->nte_per_id !== 0) {
+            if ($this->event_type !== 0) {
                 return false;
             }
 
-            if ($this->nte_fam_id !== 0) {
+            if ($this->event_title !== '') {
                 return false;
             }
 
-            if ($this->nte_private !== 0) {
+            if ($this->event_start && $this->event_start->format('Y-m-d H:i:s.u') !== NULL) {
                 return false;
             }
 
-            if ($this->nte_dateentered && $this->nte_dateentered->format('Y-m-d H:i:s.u') !== NULL) {
+            if ($this->event_end && $this->event_end->format('Y-m-d H:i:s.u') !== NULL) {
                 return false;
             }
 
-            if ($this->nte_enteredby !== 0) {
+            if ($this->inactive !== 0) {
                 return false;
             }
 
-            if ($this->nte_editedby !== 0) {
+            if ($this->event_typename !== '') {
                 return false;
             }
 
@@ -792,41 +735,38 @@ abstract class Note implements ActiveRecordInterface
     {
         try {
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : NoteTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : EventTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->event_id = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : NoteTableMap::translateFieldName('PerId', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_per_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : EventTableMap::translateFieldName('Type', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->event_type = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : NoteTableMap::translateFieldName('FamId', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_fam_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : EventTableMap::translateFieldName('Title', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->event_title = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : NoteTableMap::translateFieldName('Private', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_private = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : EventTableMap::translateFieldName('Desc', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->event_desc = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : NoteTableMap::translateFieldName('Text', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_text = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : EventTableMap::translateFieldName('Text', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->event_text = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : NoteTableMap::translateFieldName('DateEntered', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : EventTableMap::translateFieldName('Start', TableMap::TYPE_PHPNAME, $indexType)];
             if ($col === '0000-00-00 00:00:00') {
                 $col = null;
             }
-            $this->nte_dateentered = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
+            $this->event_start = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : NoteTableMap::translateFieldName('DateLastEdited', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : EventTableMap::translateFieldName('End', TableMap::TYPE_PHPNAME, $indexType)];
             if ($col === '0000-00-00 00:00:00') {
                 $col = null;
             }
-            $this->nte_datelastedited = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
+            $this->event_end = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : NoteTableMap::translateFieldName('EnteredBy', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_enteredby = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : EventTableMap::translateFieldName('InActive', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->inactive = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : NoteTableMap::translateFieldName('EditedBy', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_editedby = (null !== $col) ? (int) $col : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : NoteTableMap::translateFieldName('Type', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_type = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : EventTableMap::translateFieldName('TypeName', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->event_typename = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -835,10 +775,10 @@ abstract class Note implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 10; // 10 = NoteTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 9; // 9 = EventTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException(sprintf('Error populating %s object', '\\ChurchCRM\\Note'), 0, $e);
+            throw new PropelException(sprintf('Error populating %s object', '\\ChurchCRM\\Event'), 0, $e);
         }
     }
 
@@ -857,12 +797,6 @@ abstract class Note implements ActiveRecordInterface
      */
     public function ensureConsistency()
     {
-        if ($this->aPerson !== null && $this->nte_per_id !== $this->aPerson->getId()) {
-            $this->aPerson = null;
-        }
-        if ($this->aFamily !== null && $this->nte_fam_id !== $this->aFamily->getId()) {
-            $this->aFamily = null;
-        }
     } // ensureConsistency
 
     /**
@@ -886,13 +820,13 @@ abstract class Note implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getReadConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getReadConnection(EventTableMap::DATABASE_NAME);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $dataFetcher = ChildNoteQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
+        $dataFetcher = ChildEventQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
         $row = $dataFetcher->fetch();
         $dataFetcher->close();
         if (!$row) {
@@ -902,8 +836,6 @@ abstract class Note implements ActiveRecordInterface
 
         if ($deep) {  // also de-associate any related objects?
 
-            $this->aPerson = null;
-            $this->aFamily = null;
         } // if (deep)
     }
 
@@ -913,8 +845,8 @@ abstract class Note implements ActiveRecordInterface
      * @param      ConnectionInterface $con
      * @return void
      * @throws PropelException
-     * @see Note::setDeleted()
-     * @see Note::isDeleted()
+     * @see Event::setDeleted()
+     * @see Event::isDeleted()
      */
     public function delete(ConnectionInterface $con = null)
     {
@@ -923,11 +855,11 @@ abstract class Note implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(EventTableMap::DATABASE_NAME);
         }
 
         $con->transaction(function () use ($con) {
-            $deleteQuery = ChildNoteQuery::create()
+            $deleteQuery = ChildEventQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             if ($ret) {
@@ -958,7 +890,7 @@ abstract class Note implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(EventTableMap::DATABASE_NAME);
         }
 
         return $con->transaction(function () use ($con) {
@@ -977,7 +909,7 @@ abstract class Note implements ActiveRecordInterface
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                NoteTableMap::addInstanceToPool($this);
+                EventTableMap::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -1002,25 +934,6 @@ abstract class Note implements ActiveRecordInterface
         $affectedRows = 0; // initialize var to track total num of affected rows
         if (!$this->alreadyInSave) {
             $this->alreadyInSave = true;
-
-            // We call the save method on the following object(s) if they
-            // were passed to this object by their corresponding set
-            // method.  This object relates to these object(s) by a
-            // foreign key reference.
-
-            if ($this->aPerson !== null) {
-                if ($this->aPerson->isModified() || $this->aPerson->isNew()) {
-                    $affectedRows += $this->aPerson->save($con);
-                }
-                $this->setPerson($this->aPerson);
-            }
-
-            if ($this->aFamily !== null) {
-                if ($this->aFamily->isModified() || $this->aFamily->isNew()) {
-                    $affectedRows += $this->aFamily->save($con);
-                }
-                $this->setFamily($this->aFamily);
-            }
 
             if ($this->isNew() || $this->isModified()) {
                 // persist changes
@@ -1053,45 +966,42 @@ abstract class Note implements ActiveRecordInterface
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[NoteTableMap::COL_NTE_ID] = true;
-        if (null !== $this->nte_id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . NoteTableMap::COL_NTE_ID . ')');
+        $this->modifiedColumns[EventTableMap::COL_EVENT_ID] = true;
+        if (null !== $this->event_id) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . EventTableMap::COL_EVENT_ID . ')');
         }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_ID';
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_ID)) {
+            $modifiedColumns[':p' . $index++]  = 'event_id';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PER_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_per_ID';
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_TYPE)) {
+            $modifiedColumns[':p' . $index++]  = 'event_type';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_FAM_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_fam_ID';
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_TITLE)) {
+            $modifiedColumns[':p' . $index++]  = 'event_title';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PRIVATE)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_Private';
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_DESC)) {
+            $modifiedColumns[':p' . $index++]  = 'event_desc';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TEXT)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_Text';
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_TEXT)) {
+            $modifiedColumns[':p' . $index++]  = 'event_text';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATEENTERED)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_DateEntered';
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_START)) {
+            $modifiedColumns[':p' . $index++]  = 'event_start';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATELASTEDITED)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_DateLastEdited';
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_END)) {
+            $modifiedColumns[':p' . $index++]  = 'event_end';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ENTEREDBY)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_EnteredBy';
+        if ($this->isColumnModified(EventTableMap::COL_INACTIVE)) {
+            $modifiedColumns[':p' . $index++]  = 'inactive';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_EDITEDBY)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_EditedBy';
-        }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TYPE)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_Type';
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_TYPENAME)) {
+            $modifiedColumns[':p' . $index++]  = 'event_typename';
         }
 
         $sql = sprintf(
-            'INSERT INTO note_nte (%s) VALUES (%s)',
+            'INSERT INTO events_event (%s) VALUES (%s)',
             implode(', ', $modifiedColumns),
             implode(', ', array_keys($modifiedColumns))
         );
@@ -1100,35 +1010,32 @@ abstract class Note implements ActiveRecordInterface
             $stmt = $con->prepare($sql);
             foreach ($modifiedColumns as $identifier => $columnName) {
                 switch ($columnName) {
-                    case 'nte_ID':
-                        $stmt->bindValue($identifier, $this->nte_id, PDO::PARAM_INT);
+                    case 'event_id':
+                        $stmt->bindValue($identifier, $this->event_id, PDO::PARAM_INT);
                         break;
-                    case 'nte_per_ID':
-                        $stmt->bindValue($identifier, $this->nte_per_id, PDO::PARAM_INT);
+                    case 'event_type':
+                        $stmt->bindValue($identifier, $this->event_type, PDO::PARAM_INT);
                         break;
-                    case 'nte_fam_ID':
-                        $stmt->bindValue($identifier, $this->nte_fam_id, PDO::PARAM_INT);
+                    case 'event_title':
+                        $stmt->bindValue($identifier, $this->event_title, PDO::PARAM_STR);
                         break;
-                    case 'nte_Private':
-                        $stmt->bindValue($identifier, $this->nte_private, PDO::PARAM_INT);
+                    case 'event_desc':
+                        $stmt->bindValue($identifier, $this->event_desc, PDO::PARAM_STR);
                         break;
-                    case 'nte_Text':
-                        $stmt->bindValue($identifier, $this->nte_text, PDO::PARAM_STR);
+                    case 'event_text':
+                        $stmt->bindValue($identifier, $this->event_text, PDO::PARAM_STR);
                         break;
-                    case 'nte_DateEntered':
-                        $stmt->bindValue($identifier, $this->nte_dateentered ? $this->nte_dateentered->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
+                    case 'event_start':
+                        $stmt->bindValue($identifier, $this->event_start ? $this->event_start->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
                         break;
-                    case 'nte_DateLastEdited':
-                        $stmt->bindValue($identifier, $this->nte_datelastedited ? $this->nte_datelastedited->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
+                    case 'event_end':
+                        $stmt->bindValue($identifier, $this->event_end ? $this->event_end->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
                         break;
-                    case 'nte_EnteredBy':
-                        $stmt->bindValue($identifier, $this->nte_enteredby, PDO::PARAM_INT);
+                    case 'inactive':
+                        $stmt->bindValue($identifier, $this->inactive, PDO::PARAM_INT);
                         break;
-                    case 'nte_EditedBy':
-                        $stmt->bindValue($identifier, $this->nte_editedby, PDO::PARAM_INT);
-                        break;
-                    case 'nte_Type':
-                        $stmt->bindValue($identifier, $this->nte_type, PDO::PARAM_STR);
+                    case 'event_typename':
+                        $stmt->bindValue($identifier, $this->event_typename, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -1176,7 +1083,7 @@ abstract class Note implements ActiveRecordInterface
      */
     public function getByName($name, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = NoteTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = EventTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -1196,31 +1103,28 @@ abstract class Note implements ActiveRecordInterface
                 return $this->getId();
                 break;
             case 1:
-                return $this->getPerId();
+                return $this->getType();
                 break;
             case 2:
-                return $this->getFamId();
+                return $this->getTitle();
                 break;
             case 3:
-                return $this->getPrivate();
+                return $this->getDesc();
                 break;
             case 4:
                 return $this->getText();
                 break;
             case 5:
-                return $this->getDateEntered();
+                return $this->getStart();
                 break;
             case 6:
-                return $this->getDateLastEdited();
+                return $this->getEnd();
                 break;
             case 7:
-                return $this->getEnteredBy();
+                return $this->getInActive();
                 break;
             case 8:
-                return $this->getEditedBy();
-                break;
-            case 9:
-                return $this->getType();
+                return $this->getTypeName();
                 break;
             default:
                 return null;
@@ -1239,29 +1143,27 @@ abstract class Note implements ActiveRecordInterface
      *                    Defaults to TableMap::TYPE_PHPNAME.
      * @param     boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns. Defaults to TRUE.
      * @param     array $alreadyDumpedObjects List of objects to skip to avoid recursion
-     * @param     boolean $includeForeignObjects (optional) Whether to include hydrated related objects. Default to FALSE.
      *
      * @return array an associative array containing the field names (as keys) and field values
      */
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
     {
 
-        if (isset($alreadyDumpedObjects['Note'][$this->hashCode()])) {
+        if (isset($alreadyDumpedObjects['Event'][$this->hashCode()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['Note'][$this->hashCode()] = true;
-        $keys = NoteTableMap::getFieldNames($keyType);
+        $alreadyDumpedObjects['Event'][$this->hashCode()] = true;
+        $keys = EventTableMap::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getId(),
-            $keys[1] => $this->getPerId(),
-            $keys[2] => $this->getFamId(),
-            $keys[3] => $this->getPrivate(),
+            $keys[1] => $this->getType(),
+            $keys[2] => $this->getTitle(),
+            $keys[3] => $this->getDesc(),
             $keys[4] => $this->getText(),
-            $keys[5] => $this->getDateEntered(),
-            $keys[6] => $this->getDateLastEdited(),
-            $keys[7] => $this->getEnteredBy(),
-            $keys[8] => $this->getEditedBy(),
-            $keys[9] => $this->getType(),
+            $keys[5] => $this->getStart(),
+            $keys[6] => $this->getEnd(),
+            $keys[7] => $this->getInActive(),
+            $keys[8] => $this->getTypeName(),
         );
         if ($result[$keys[5]] instanceof \DateTime) {
             $result[$keys[5]] = $result[$keys[5]]->format('c');
@@ -1276,38 +1178,6 @@ abstract class Note implements ActiveRecordInterface
             $result[$key] = $virtualColumn;
         }
 
-        if ($includeForeignObjects) {
-            if (null !== $this->aPerson) {
-
-                switch ($keyType) {
-                    case TableMap::TYPE_CAMELNAME:
-                        $key = 'person';
-                        break;
-                    case TableMap::TYPE_FIELDNAME:
-                        $key = 'person_per';
-                        break;
-                    default:
-                        $key = 'Person';
-                }
-
-                $result[$key] = $this->aPerson->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
-            }
-            if (null !== $this->aFamily) {
-
-                switch ($keyType) {
-                    case TableMap::TYPE_CAMELNAME:
-                        $key = 'family';
-                        break;
-                    case TableMap::TYPE_FIELDNAME:
-                        $key = 'family_fam';
-                        break;
-                    default:
-                        $key = 'Family';
-                }
-
-                $result[$key] = $this->aFamily->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
-            }
-        }
 
         return $result;
     }
@@ -1321,11 +1191,11 @@ abstract class Note implements ActiveRecordInterface
      *                one of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
      *                TableMap::TYPE_COLNAME, TableMap::TYPE_FIELDNAME, TableMap::TYPE_NUM.
      *                Defaults to TableMap::TYPE_PHPNAME.
-     * @return $this|\ChurchCRM\Note
+     * @return $this|\ChurchCRM\Event
      */
     public function setByName($name, $value, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = NoteTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = EventTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
 
         return $this->setByPosition($pos, $value);
     }
@@ -1336,7 +1206,7 @@ abstract class Note implements ActiveRecordInterface
      *
      * @param  int $pos position in xml schema
      * @param  mixed $value field value
-     * @return $this|\ChurchCRM\Note
+     * @return $this|\ChurchCRM\Event
      */
     public function setByPosition($pos, $value)
     {
@@ -1345,31 +1215,28 @@ abstract class Note implements ActiveRecordInterface
                 $this->setId($value);
                 break;
             case 1:
-                $this->setPerId($value);
+                $this->setType($value);
                 break;
             case 2:
-                $this->setFamId($value);
+                $this->setTitle($value);
                 break;
             case 3:
-                $this->setPrivate($value);
+                $this->setDesc($value);
                 break;
             case 4:
                 $this->setText($value);
                 break;
             case 5:
-                $this->setDateEntered($value);
+                $this->setStart($value);
                 break;
             case 6:
-                $this->setDateLastEdited($value);
+                $this->setEnd($value);
                 break;
             case 7:
-                $this->setEnteredBy($value);
+                $this->setInActive($value);
                 break;
             case 8:
-                $this->setEditedBy($value);
-                break;
-            case 9:
-                $this->setType($value);
+                $this->setTypeName($value);
                 break;
         } // switch()
 
@@ -1395,37 +1262,34 @@ abstract class Note implements ActiveRecordInterface
      */
     public function fromArray($arr, $keyType = TableMap::TYPE_PHPNAME)
     {
-        $keys = NoteTableMap::getFieldNames($keyType);
+        $keys = EventTableMap::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) {
             $this->setId($arr[$keys[0]]);
         }
         if (array_key_exists($keys[1], $arr)) {
-            $this->setPerId($arr[$keys[1]]);
+            $this->setType($arr[$keys[1]]);
         }
         if (array_key_exists($keys[2], $arr)) {
-            $this->setFamId($arr[$keys[2]]);
+            $this->setTitle($arr[$keys[2]]);
         }
         if (array_key_exists($keys[3], $arr)) {
-            $this->setPrivate($arr[$keys[3]]);
+            $this->setDesc($arr[$keys[3]]);
         }
         if (array_key_exists($keys[4], $arr)) {
             $this->setText($arr[$keys[4]]);
         }
         if (array_key_exists($keys[5], $arr)) {
-            $this->setDateEntered($arr[$keys[5]]);
+            $this->setStart($arr[$keys[5]]);
         }
         if (array_key_exists($keys[6], $arr)) {
-            $this->setDateLastEdited($arr[$keys[6]]);
+            $this->setEnd($arr[$keys[6]]);
         }
         if (array_key_exists($keys[7], $arr)) {
-            $this->setEnteredBy($arr[$keys[7]]);
+            $this->setInActive($arr[$keys[7]]);
         }
         if (array_key_exists($keys[8], $arr)) {
-            $this->setEditedBy($arr[$keys[8]]);
-        }
-        if (array_key_exists($keys[9], $arr)) {
-            $this->setType($arr[$keys[9]]);
+            $this->setTypeName($arr[$keys[8]]);
         }
     }
 
@@ -1446,7 +1310,7 @@ abstract class Note implements ActiveRecordInterface
      * @param string $data The source data to import from
      * @param string $keyType The type of keys the array uses.
      *
-     * @return $this|\ChurchCRM\Note The current object, for fluid interface
+     * @return $this|\ChurchCRM\Event The current object, for fluid interface
      */
     public function importFrom($parser, $data, $keyType = TableMap::TYPE_PHPNAME)
     {
@@ -1466,37 +1330,34 @@ abstract class Note implements ActiveRecordInterface
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(NoteTableMap::DATABASE_NAME);
+        $criteria = new Criteria(EventTableMap::DATABASE_NAME);
 
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ID)) {
-            $criteria->add(NoteTableMap::COL_NTE_ID, $this->nte_id);
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_ID)) {
+            $criteria->add(EventTableMap::COL_EVENT_ID, $this->event_id);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PER_ID)) {
-            $criteria->add(NoteTableMap::COL_NTE_PER_ID, $this->nte_per_id);
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_TYPE)) {
+            $criteria->add(EventTableMap::COL_EVENT_TYPE, $this->event_type);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_FAM_ID)) {
-            $criteria->add(NoteTableMap::COL_NTE_FAM_ID, $this->nte_fam_id);
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_TITLE)) {
+            $criteria->add(EventTableMap::COL_EVENT_TITLE, $this->event_title);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PRIVATE)) {
-            $criteria->add(NoteTableMap::COL_NTE_PRIVATE, $this->nte_private);
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_DESC)) {
+            $criteria->add(EventTableMap::COL_EVENT_DESC, $this->event_desc);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TEXT)) {
-            $criteria->add(NoteTableMap::COL_NTE_TEXT, $this->nte_text);
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_TEXT)) {
+            $criteria->add(EventTableMap::COL_EVENT_TEXT, $this->event_text);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATEENTERED)) {
-            $criteria->add(NoteTableMap::COL_NTE_DATEENTERED, $this->nte_dateentered);
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_START)) {
+            $criteria->add(EventTableMap::COL_EVENT_START, $this->event_start);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATELASTEDITED)) {
-            $criteria->add(NoteTableMap::COL_NTE_DATELASTEDITED, $this->nte_datelastedited);
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_END)) {
+            $criteria->add(EventTableMap::COL_EVENT_END, $this->event_end);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ENTEREDBY)) {
-            $criteria->add(NoteTableMap::COL_NTE_ENTEREDBY, $this->nte_enteredby);
+        if ($this->isColumnModified(EventTableMap::COL_INACTIVE)) {
+            $criteria->add(EventTableMap::COL_INACTIVE, $this->inactive);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_EDITEDBY)) {
-            $criteria->add(NoteTableMap::COL_NTE_EDITEDBY, $this->nte_editedby);
-        }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TYPE)) {
-            $criteria->add(NoteTableMap::COL_NTE_TYPE, $this->nte_type);
+        if ($this->isColumnModified(EventTableMap::COL_EVENT_TYPENAME)) {
+            $criteria->add(EventTableMap::COL_EVENT_TYPENAME, $this->event_typename);
         }
 
         return $criteria;
@@ -1514,8 +1375,8 @@ abstract class Note implements ActiveRecordInterface
      */
     public function buildPkeyCriteria()
     {
-        $criteria = ChildNoteQuery::create();
-        $criteria->add(NoteTableMap::COL_NTE_ID, $this->nte_id);
+        $criteria = ChildEventQuery::create();
+        $criteria->add(EventTableMap::COL_EVENT_ID, $this->event_id);
 
         return $criteria;
     }
@@ -1552,7 +1413,7 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Generic method to set the primary key (nte_id column).
+     * Generic method to set the primary key (event_id column).
      *
      * @param       int $key Primary key.
      * @return void
@@ -1577,22 +1438,21 @@ abstract class Note implements ActiveRecordInterface
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of \ChurchCRM\Note (or compatible) type.
+     * @param      object $copyObj An object of \ChurchCRM\Event (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param      boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
      */
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
-        $copyObj->setPerId($this->getPerId());
-        $copyObj->setFamId($this->getFamId());
-        $copyObj->setPrivate($this->getPrivate());
-        $copyObj->setText($this->getText());
-        $copyObj->setDateEntered($this->getDateEntered());
-        $copyObj->setDateLastEdited($this->getDateLastEdited());
-        $copyObj->setEnteredBy($this->getEnteredBy());
-        $copyObj->setEditedBy($this->getEditedBy());
         $copyObj->setType($this->getType());
+        $copyObj->setTitle($this->getTitle());
+        $copyObj->setDesc($this->getDesc());
+        $copyObj->setText($this->getText());
+        $copyObj->setStart($this->getStart());
+        $copyObj->setEnd($this->getEnd());
+        $copyObj->setInActive($this->getInActive());
+        $copyObj->setTypeName($this->getTypeName());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setId(NULL); // this is a auto-increment column, so set to default value
@@ -1608,7 +1468,7 @@ abstract class Note implements ActiveRecordInterface
      * objects.
      *
      * @param  boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return \ChurchCRM\Note Clone of current object.
+     * @return \ChurchCRM\Event Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1622,130 +1482,21 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Declares an association between this object and a ChildPerson object.
-     *
-     * @param  ChildPerson $v
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     * @throws PropelException
-     */
-    public function setPerson(ChildPerson $v = null)
-    {
-        if ($v === null) {
-            $this->setPerId(0);
-        } else {
-            $this->setPerId($v->getId());
-        }
-
-        $this->aPerson = $v;
-
-        // Add binding for other direction of this n:n relationship.
-        // If this object has already been added to the ChildPerson object, it will not be re-added.
-        if ($v !== null) {
-            $v->addNote($this);
-        }
-
-
-        return $this;
-    }
-
-
-    /**
-     * Get the associated ChildPerson object
-     *
-     * @param  ConnectionInterface $con Optional Connection object.
-     * @return ChildPerson The associated ChildPerson object.
-     * @throws PropelException
-     */
-    public function getPerson(ConnectionInterface $con = null)
-    {
-        if ($this->aPerson === null && ($this->nte_per_id !== null)) {
-            $this->aPerson = ChildPersonQuery::create()->findPk($this->nte_per_id, $con);
-            /* The following can be used additionally to
-                guarantee the related object contains a reference
-                to this object.  This level of coupling may, however, be
-                undesirable since it could result in an only partially populated collection
-                in the referenced object.
-                $this->aPerson->addNotes($this);
-             */
-        }
-
-        return $this->aPerson;
-    }
-
-    /**
-     * Declares an association between this object and a ChildFamily object.
-     *
-     * @param  ChildFamily $v
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     * @throws PropelException
-     */
-    public function setFamily(ChildFamily $v = null)
-    {
-        if ($v === null) {
-            $this->setFamId(0);
-        } else {
-            $this->setFamId($v->getId());
-        }
-
-        $this->aFamily = $v;
-
-        // Add binding for other direction of this n:n relationship.
-        // If this object has already been added to the ChildFamily object, it will not be re-added.
-        if ($v !== null) {
-            $v->addNote($this);
-        }
-
-
-        return $this;
-    }
-
-
-    /**
-     * Get the associated ChildFamily object
-     *
-     * @param  ConnectionInterface $con Optional Connection object.
-     * @return ChildFamily The associated ChildFamily object.
-     * @throws PropelException
-     */
-    public function getFamily(ConnectionInterface $con = null)
-    {
-        if ($this->aFamily === null && ($this->nte_fam_id !== null)) {
-            $this->aFamily = ChildFamilyQuery::create()->findPk($this->nte_fam_id, $con);
-            /* The following can be used additionally to
-                guarantee the related object contains a reference
-                to this object.  This level of coupling may, however, be
-                undesirable since it could result in an only partially populated collection
-                in the referenced object.
-                $this->aFamily->addNotes($this);
-             */
-        }
-
-        return $this->aFamily;
-    }
-
-    /**
      * Clears the current object, sets all attributes to their default values and removes
      * outgoing references as well as back-references (from other objects to this one. Results probably in a database
      * change of those foreign objects when you call `save` there).
      */
     public function clear()
     {
-        if (null !== $this->aPerson) {
-            $this->aPerson->removeNote($this);
-        }
-        if (null !== $this->aFamily) {
-            $this->aFamily->removeNote($this);
-        }
-        $this->nte_id = null;
-        $this->nte_per_id = null;
-        $this->nte_fam_id = null;
-        $this->nte_private = null;
-        $this->nte_text = null;
-        $this->nte_dateentered = null;
-        $this->nte_datelastedited = null;
-        $this->nte_enteredby = null;
-        $this->nte_editedby = null;
-        $this->nte_type = null;
+        $this->event_id = null;
+        $this->event_type = null;
+        $this->event_title = null;
+        $this->event_desc = null;
+        $this->event_text = null;
+        $this->event_start = null;
+        $this->event_end = null;
+        $this->inactive = null;
+        $this->event_typename = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();
@@ -1767,8 +1518,6 @@ abstract class Note implements ActiveRecordInterface
         if ($deep) {
         } // if ($deep)
 
-        $this->aPerson = null;
-        $this->aFamily = null;
     }
 
     /**
@@ -1778,7 +1527,7 @@ abstract class Note implements ActiveRecordInterface
      */
     public function __toString()
     {
-        return (string) $this->exportTo(NoteTableMap::DEFAULT_STRING_FORMAT);
+        return (string) $this->exportTo(EventTableMap::DEFAULT_STRING_FORMAT);
     }
 
     /**

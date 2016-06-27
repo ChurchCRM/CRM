@@ -5,13 +5,26 @@ namespace ChurchCRM\Base;
 use \DateTime;
 use \Exception;
 use \PDO;
+use ChurchCRM\Family as ChildFamily;
+use ChurchCRM\FamilyQuery as ChildFamilyQuery;
+use ChurchCRM\Note as ChildNote;
+use ChurchCRM\NoteQuery as ChildNoteQuery;
+use ChurchCRM\Person as ChildPerson;
+use ChurchCRM\Person2group2roleP2g2r as ChildPerson2group2roleP2g2r;
+use ChurchCRM\Person2group2roleP2g2rQuery as ChildPerson2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery as ChildPersonQuery;
+use ChurchCRM\WhyCame as ChildWhyCame;
+use ChurchCRM\WhyCameQuery as ChildWhyCameQuery;
+use ChurchCRM\Map\NoteTableMap;
+use ChurchCRM\Map\Person2group2roleP2g2rTableMap;
 use ChurchCRM\Map\PersonTableMap;
+use ChurchCRM\Map\WhyCameTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
 use Propel\Runtime\Collection\Collection;
+use Propel\Runtime\Collection\ObjectCollection;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Exception\BadMethodCallException;
 use Propel\Runtime\Exception\LogicException;
@@ -296,12 +309,53 @@ abstract class Person implements ActiveRecordInterface
     protected $per_flags;
 
     /**
+     * @var        ChildFamily
+     */
+    protected $aFamily;
+
+    /**
+     * @var        ObjectCollection|ChildWhyCame[] Collection to store aggregation of ChildWhyCame objects.
+     */
+    protected $collWhyCames;
+    protected $collWhyCamesPartial;
+
+    /**
+     * @var        ObjectCollection|ChildNote[] Collection to store aggregation of ChildNote objects.
+     */
+    protected $collNotes;
+    protected $collNotesPartial;
+
+    /**
+     * @var        ObjectCollection|ChildPerson2group2roleP2g2r[] Collection to store aggregation of ChildPerson2group2roleP2g2r objects.
+     */
+    protected $collPerson2group2roleP2g2rs;
+    protected $collPerson2group2roleP2g2rsPartial;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
      * @var boolean
      */
     protected $alreadyInSave = false;
+
+    /**
+     * An array of objects scheduled for deletion.
+     * @var ObjectCollection|ChildWhyCame[]
+     */
+    protected $whyCamesScheduledForDeletion = null;
+
+    /**
+     * An array of objects scheduled for deletion.
+     * @var ObjectCollection|ChildNote[]
+     */
+    protected $notesScheduledForDeletion = null;
+
+    /**
+     * An array of objects scheduled for deletion.
+     * @var ObjectCollection|ChildPerson2group2roleP2g2r[]
+     */
+    protected $person2group2roleP2g2rsScheduledForDeletion = null;
 
     /**
      * Applies default values to this object.
@@ -1425,6 +1479,10 @@ abstract class Person implements ActiveRecordInterface
             $this->modifiedColumns[PersonTableMap::COL_PER_FAM_ID] = true;
         }
 
+        if ($this->aFamily !== null && $this->aFamily->getId() !== $v) {
+            $this->aFamily = null;
+        }
+
         return $this;
     } // setFamId()
 
@@ -1783,6 +1841,9 @@ abstract class Person implements ActiveRecordInterface
      */
     public function ensureConsistency()
     {
+        if ($this->aFamily !== null && $this->per_fam_id !== $this->aFamily->getId()) {
+            $this->aFamily = null;
+        }
     } // ensureConsistency
 
     /**
@@ -1821,6 +1882,13 @@ abstract class Person implements ActiveRecordInterface
         $this->hydrate($row, 0, true, $dataFetcher->getIndexType()); // rehydrate
 
         if ($deep) {  // also de-associate any related objects?
+
+            $this->aFamily = null;
+            $this->collWhyCames = null;
+
+            $this->collNotes = null;
+
+            $this->collPerson2group2roleP2g2rs = null;
 
         } // if (deep)
     }
@@ -1921,6 +1989,18 @@ abstract class Person implements ActiveRecordInterface
         if (!$this->alreadyInSave) {
             $this->alreadyInSave = true;
 
+            // We call the save method on the following object(s) if they
+            // were passed to this object by their corresponding set
+            // method.  This object relates to these object(s) by a
+            // foreign key reference.
+
+            if ($this->aFamily !== null) {
+                if ($this->aFamily->isModified() || $this->aFamily->isNew()) {
+                    $affectedRows += $this->aFamily->save($con);
+                }
+                $this->setFamily($this->aFamily);
+            }
+
             if ($this->isNew() || $this->isModified()) {
                 // persist changes
                 if ($this->isNew()) {
@@ -1930,6 +2010,57 @@ abstract class Person implements ActiveRecordInterface
                     $affectedRows += $this->doUpdate($con);
                 }
                 $this->resetModified();
+            }
+
+            if ($this->whyCamesScheduledForDeletion !== null) {
+                if (!$this->whyCamesScheduledForDeletion->isEmpty()) {
+                    \ChurchCRM\WhyCameQuery::create()
+                        ->filterByPrimaryKeys($this->whyCamesScheduledForDeletion->getPrimaryKeys(false))
+                        ->delete($con);
+                    $this->whyCamesScheduledForDeletion = null;
+                }
+            }
+
+            if ($this->collWhyCames !== null) {
+                foreach ($this->collWhyCames as $referrerFK) {
+                    if (!$referrerFK->isDeleted() && ($referrerFK->isNew() || $referrerFK->isModified())) {
+                        $affectedRows += $referrerFK->save($con);
+                    }
+                }
+            }
+
+            if ($this->notesScheduledForDeletion !== null) {
+                if (!$this->notesScheduledForDeletion->isEmpty()) {
+                    \ChurchCRM\NoteQuery::create()
+                        ->filterByPrimaryKeys($this->notesScheduledForDeletion->getPrimaryKeys(false))
+                        ->delete($con);
+                    $this->notesScheduledForDeletion = null;
+                }
+            }
+
+            if ($this->collNotes !== null) {
+                foreach ($this->collNotes as $referrerFK) {
+                    if (!$referrerFK->isDeleted() && ($referrerFK->isNew() || $referrerFK->isModified())) {
+                        $affectedRows += $referrerFK->save($con);
+                    }
+                }
+            }
+
+            if ($this->person2group2roleP2g2rsScheduledForDeletion !== null) {
+                if (!$this->person2group2roleP2g2rsScheduledForDeletion->isEmpty()) {
+                    \ChurchCRM\Person2group2roleP2g2rQuery::create()
+                        ->filterByPrimaryKeys($this->person2group2roleP2g2rsScheduledForDeletion->getPrimaryKeys(false))
+                        ->delete($con);
+                    $this->person2group2roleP2g2rsScheduledForDeletion = null;
+                }
+            }
+
+            if ($this->collPerson2group2roleP2g2rs !== null) {
+                foreach ($this->collPerson2group2roleP2g2rs as $referrerFK) {
+                    if (!$referrerFK->isDeleted() && ($referrerFK->isNew() || $referrerFK->isModified())) {
+                        $affectedRows += $referrerFK->save($con);
+                    }
+                }
             }
 
             $this->alreadyInSave = false;
@@ -2336,10 +2467,11 @@ abstract class Person implements ActiveRecordInterface
      *                    Defaults to TableMap::TYPE_PHPNAME.
      * @param     boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns. Defaults to TRUE.
      * @param     array $alreadyDumpedObjects List of objects to skip to avoid recursion
+     * @param     boolean $includeForeignObjects (optional) Whether to include hydrated related objects. Default to FALSE.
      *
      * @return array an associative array containing the field names (as keys) and field values
      */
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
 
         if (isset($alreadyDumpedObjects['Person'][$this->hashCode()])) {
@@ -2402,6 +2534,68 @@ abstract class Person implements ActiveRecordInterface
             $result[$key] = $virtualColumn;
         }
 
+        if ($includeForeignObjects) {
+            if (null !== $this->aFamily) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'family';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'family_fam';
+                        break;
+                    default:
+                        $key = 'Family';
+                }
+
+                $result[$key] = $this->aFamily->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
+            }
+            if (null !== $this->collWhyCames) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'whyCames';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'whycame_whies';
+                        break;
+                    default:
+                        $key = 'WhyCames';
+                }
+
+                $result[$key] = $this->collWhyCames->toArray(null, false, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
+            }
+            if (null !== $this->collNotes) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'notes';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'note_ntes';
+                        break;
+                    default:
+                        $key = 'Notes';
+                }
+
+                $result[$key] = $this->collNotes->toArray(null, false, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
+            }
+            if (null !== $this->collPerson2group2roleP2g2rs) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'person2group2roleP2g2rs';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'person2group2role_p2g2rs';
+                        break;
+                    default:
+                        $key = 'Person2group2roleP2g2rs';
+                }
+
+                $result[$key] = $this->collPerson2group2roleP2g2rs->toArray(null, false, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
+            }
+        }
 
         return $result;
     }
@@ -2907,6 +3101,32 @@ abstract class Person implements ActiveRecordInterface
         $copyObj->setEditedBy($this->getEditedBy());
         $copyObj->setFriendDate($this->getFriendDate());
         $copyObj->setFlags($this->getFlags());
+
+        if ($deepCopy) {
+            // important: temporarily setNew(false) because this affects the behavior of
+            // the getter/setter methods for fkey referrer objects.
+            $copyObj->setNew(false);
+
+            foreach ($this->getWhyCames() as $relObj) {
+                if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+                    $copyObj->addWhyCame($relObj->copy($deepCopy));
+                }
+            }
+
+            foreach ($this->getNotes() as $relObj) {
+                if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+                    $copyObj->addNote($relObj->copy($deepCopy));
+                }
+            }
+
+            foreach ($this->getPerson2group2roleP2g2rs() as $relObj) {
+                if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+                    $copyObj->addPerson2group2roleP2g2r($relObj->copy($deepCopy));
+                }
+            }
+
+        } // if ($deepCopy)
+
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setId(NULL); // this is a auto-increment column, so set to default value
@@ -2936,12 +3156,816 @@ abstract class Person implements ActiveRecordInterface
     }
 
     /**
+     * Declares an association between this object and a ChildFamily object.
+     *
+     * @param  ChildFamily $v
+     * @return $this|\ChurchCRM\Person The current object (for fluent API support)
+     * @throws PropelException
+     */
+    public function setFamily(ChildFamily $v = null)
+    {
+        if ($v === null) {
+            $this->setFamId(0);
+        } else {
+            $this->setFamId($v->getId());
+        }
+
+        $this->aFamily = $v;
+
+        // Add binding for other direction of this n:n relationship.
+        // If this object has already been added to the ChildFamily object, it will not be re-added.
+        if ($v !== null) {
+            $v->addPerson($this);
+        }
+
+
+        return $this;
+    }
+
+
+    /**
+     * Get the associated ChildFamily object
+     *
+     * @param  ConnectionInterface $con Optional Connection object.
+     * @return ChildFamily The associated ChildFamily object.
+     * @throws PropelException
+     */
+    public function getFamily(ConnectionInterface $con = null)
+    {
+        if ($this->aFamily === null && ($this->per_fam_id !== null)) {
+            $this->aFamily = ChildFamilyQuery::create()->findPk($this->per_fam_id, $con);
+            /* The following can be used additionally to
+                guarantee the related object contains a reference
+                to this object.  This level of coupling may, however, be
+                undesirable since it could result in an only partially populated collection
+                in the referenced object.
+                $this->aFamily->addPeople($this);
+             */
+        }
+
+        return $this->aFamily;
+    }
+
+
+    /**
+     * Initializes a collection based on the name of a relation.
+     * Avoids crafting an 'init[$relationName]s' method name
+     * that wouldn't work when StandardEnglishPluralizer is used.
+     *
+     * @param      string $relationName The name of the relation to initialize
+     * @return void
+     */
+    public function initRelation($relationName)
+    {
+        if ('WhyCame' == $relationName) {
+            return $this->initWhyCames();
+        }
+        if ('Note' == $relationName) {
+            return $this->initNotes();
+        }
+        if ('Person2group2roleP2g2r' == $relationName) {
+            return $this->initPerson2group2roleP2g2rs();
+        }
+    }
+
+    /**
+     * Clears out the collWhyCames collection
+     *
+     * This does not modify the database; however, it will remove any associated objects, causing
+     * them to be refetched by subsequent calls to accessor method.
+     *
+     * @return void
+     * @see        addWhyCames()
+     */
+    public function clearWhyCames()
+    {
+        $this->collWhyCames = null; // important to set this to NULL since that means it is uninitialized
+    }
+
+    /**
+     * Reset is the collWhyCames collection loaded partially.
+     */
+    public function resetPartialWhyCames($v = true)
+    {
+        $this->collWhyCamesPartial = $v;
+    }
+
+    /**
+     * Initializes the collWhyCames collection.
+     *
+     * By default this just sets the collWhyCames collection to an empty array (like clearcollWhyCames());
+     * however, you may wish to override this method in your stub class to provide setting appropriate
+     * to your application -- for example, setting the initial array to the values stored in database.
+     *
+     * @param      boolean $overrideExisting If set to true, the method call initializes
+     *                                        the collection even if it is not empty
+     *
+     * @return void
+     */
+    public function initWhyCames($overrideExisting = true)
+    {
+        if (null !== $this->collWhyCames && !$overrideExisting) {
+            return;
+        }
+
+        $collectionClassName = WhyCameTableMap::getTableMap()->getCollectionClassName();
+
+        $this->collWhyCames = new $collectionClassName;
+        $this->collWhyCames->setModel('\ChurchCRM\WhyCame');
+    }
+
+    /**
+     * Gets an array of ChildWhyCame objects which contain a foreign key that references this object.
+     *
+     * If the $criteria is not null, it is used to always fetch the results from the database.
+     * Otherwise the results are fetched from the database the first time, then cached.
+     * Next time the same method is called without $criteria, the cached collection is returned.
+     * If this ChildPerson is new, it will return
+     * an empty collection or the current collection; the criteria is ignored on a new object.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @return ObjectCollection|ChildWhyCame[] List of ChildWhyCame objects
+     * @throws PropelException
+     */
+    public function getWhyCames(Criteria $criteria = null, ConnectionInterface $con = null)
+    {
+        $partial = $this->collWhyCamesPartial && !$this->isNew();
+        if (null === $this->collWhyCames || null !== $criteria  || $partial) {
+            if ($this->isNew() && null === $this->collWhyCames) {
+                // return empty collection
+                $this->initWhyCames();
+            } else {
+                $collWhyCames = ChildWhyCameQuery::create(null, $criteria)
+                    ->filterByPerson($this)
+                    ->find($con);
+
+                if (null !== $criteria) {
+                    if (false !== $this->collWhyCamesPartial && count($collWhyCames)) {
+                        $this->initWhyCames(false);
+
+                        foreach ($collWhyCames as $obj) {
+                            if (false == $this->collWhyCames->contains($obj)) {
+                                $this->collWhyCames->append($obj);
+                            }
+                        }
+
+                        $this->collWhyCamesPartial = true;
+                    }
+
+                    return $collWhyCames;
+                }
+
+                if ($partial && $this->collWhyCames) {
+                    foreach ($this->collWhyCames as $obj) {
+                        if ($obj->isNew()) {
+                            $collWhyCames[] = $obj;
+                        }
+                    }
+                }
+
+                $this->collWhyCames = $collWhyCames;
+                $this->collWhyCamesPartial = false;
+            }
+        }
+
+        return $this->collWhyCames;
+    }
+
+    /**
+     * Sets a collection of ChildWhyCame objects related by a one-to-many relationship
+     * to the current object.
+     * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
+     * and new objects from the given Propel collection.
+     *
+     * @param      Collection $whyCames A Propel collection.
+     * @param      ConnectionInterface $con Optional connection object
+     * @return $this|ChildPerson The current object (for fluent API support)
+     */
+    public function setWhyCames(Collection $whyCames, ConnectionInterface $con = null)
+    {
+        /** @var ChildWhyCame[] $whyCamesToDelete */
+        $whyCamesToDelete = $this->getWhyCames(new Criteria(), $con)->diff($whyCames);
+
+
+        $this->whyCamesScheduledForDeletion = $whyCamesToDelete;
+
+        foreach ($whyCamesToDelete as $whyCameRemoved) {
+            $whyCameRemoved->setPerson(null);
+        }
+
+        $this->collWhyCames = null;
+        foreach ($whyCames as $whyCame) {
+            $this->addWhyCame($whyCame);
+        }
+
+        $this->collWhyCames = $whyCames;
+        $this->collWhyCamesPartial = false;
+
+        return $this;
+    }
+
+    /**
+     * Returns the number of related WhyCame objects.
+     *
+     * @param      Criteria $criteria
+     * @param      boolean $distinct
+     * @param      ConnectionInterface $con
+     * @return int             Count of related WhyCame objects.
+     * @throws PropelException
+     */
+    public function countWhyCames(Criteria $criteria = null, $distinct = false, ConnectionInterface $con = null)
+    {
+        $partial = $this->collWhyCamesPartial && !$this->isNew();
+        if (null === $this->collWhyCames || null !== $criteria || $partial) {
+            if ($this->isNew() && null === $this->collWhyCames) {
+                return 0;
+            }
+
+            if ($partial && !$criteria) {
+                return count($this->getWhyCames());
+            }
+
+            $query = ChildWhyCameQuery::create(null, $criteria);
+            if ($distinct) {
+                $query->distinct();
+            }
+
+            return $query
+                ->filterByPerson($this)
+                ->count($con);
+        }
+
+        return count($this->collWhyCames);
+    }
+
+    /**
+     * Method called to associate a ChildWhyCame object to this object
+     * through the ChildWhyCame foreign key attribute.
+     *
+     * @param  ChildWhyCame $l ChildWhyCame
+     * @return $this|\ChurchCRM\Person The current object (for fluent API support)
+     */
+    public function addWhyCame(ChildWhyCame $l)
+    {
+        if ($this->collWhyCames === null) {
+            $this->initWhyCames();
+            $this->collWhyCamesPartial = true;
+        }
+
+        if (!$this->collWhyCames->contains($l)) {
+            $this->doAddWhyCame($l);
+
+            if ($this->whyCamesScheduledForDeletion and $this->whyCamesScheduledForDeletion->contains($l)) {
+                $this->whyCamesScheduledForDeletion->remove($this->whyCamesScheduledForDeletion->search($l));
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param ChildWhyCame $whyCame The ChildWhyCame object to add.
+     */
+    protected function doAddWhyCame(ChildWhyCame $whyCame)
+    {
+        $this->collWhyCames[]= $whyCame;
+        $whyCame->setPerson($this);
+    }
+
+    /**
+     * @param  ChildWhyCame $whyCame The ChildWhyCame object to remove.
+     * @return $this|ChildPerson The current object (for fluent API support)
+     */
+    public function removeWhyCame(ChildWhyCame $whyCame)
+    {
+        if ($this->getWhyCames()->contains($whyCame)) {
+            $pos = $this->collWhyCames->search($whyCame);
+            $this->collWhyCames->remove($pos);
+            if (null === $this->whyCamesScheduledForDeletion) {
+                $this->whyCamesScheduledForDeletion = clone $this->collWhyCames;
+                $this->whyCamesScheduledForDeletion->clear();
+            }
+            $this->whyCamesScheduledForDeletion[]= clone $whyCame;
+            $whyCame->setPerson(null);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Clears out the collNotes collection
+     *
+     * This does not modify the database; however, it will remove any associated objects, causing
+     * them to be refetched by subsequent calls to accessor method.
+     *
+     * @return void
+     * @see        addNotes()
+     */
+    public function clearNotes()
+    {
+        $this->collNotes = null; // important to set this to NULL since that means it is uninitialized
+    }
+
+    /**
+     * Reset is the collNotes collection loaded partially.
+     */
+    public function resetPartialNotes($v = true)
+    {
+        $this->collNotesPartial = $v;
+    }
+
+    /**
+     * Initializes the collNotes collection.
+     *
+     * By default this just sets the collNotes collection to an empty array (like clearcollNotes());
+     * however, you may wish to override this method in your stub class to provide setting appropriate
+     * to your application -- for example, setting the initial array to the values stored in database.
+     *
+     * @param      boolean $overrideExisting If set to true, the method call initializes
+     *                                        the collection even if it is not empty
+     *
+     * @return void
+     */
+    public function initNotes($overrideExisting = true)
+    {
+        if (null !== $this->collNotes && !$overrideExisting) {
+            return;
+        }
+
+        $collectionClassName = NoteTableMap::getTableMap()->getCollectionClassName();
+
+        $this->collNotes = new $collectionClassName;
+        $this->collNotes->setModel('\ChurchCRM\Note');
+    }
+
+    /**
+     * Gets an array of ChildNote objects which contain a foreign key that references this object.
+     *
+     * If the $criteria is not null, it is used to always fetch the results from the database.
+     * Otherwise the results are fetched from the database the first time, then cached.
+     * Next time the same method is called without $criteria, the cached collection is returned.
+     * If this ChildPerson is new, it will return
+     * an empty collection or the current collection; the criteria is ignored on a new object.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @return ObjectCollection|ChildNote[] List of ChildNote objects
+     * @throws PropelException
+     */
+    public function getNotes(Criteria $criteria = null, ConnectionInterface $con = null)
+    {
+        $partial = $this->collNotesPartial && !$this->isNew();
+        if (null === $this->collNotes || null !== $criteria  || $partial) {
+            if ($this->isNew() && null === $this->collNotes) {
+                // return empty collection
+                $this->initNotes();
+            } else {
+                $collNotes = ChildNoteQuery::create(null, $criteria)
+                    ->filterByPerson($this)
+                    ->find($con);
+
+                if (null !== $criteria) {
+                    if (false !== $this->collNotesPartial && count($collNotes)) {
+                        $this->initNotes(false);
+
+                        foreach ($collNotes as $obj) {
+                            if (false == $this->collNotes->contains($obj)) {
+                                $this->collNotes->append($obj);
+                            }
+                        }
+
+                        $this->collNotesPartial = true;
+                    }
+
+                    return $collNotes;
+                }
+
+                if ($partial && $this->collNotes) {
+                    foreach ($this->collNotes as $obj) {
+                        if ($obj->isNew()) {
+                            $collNotes[] = $obj;
+                        }
+                    }
+                }
+
+                $this->collNotes = $collNotes;
+                $this->collNotesPartial = false;
+            }
+        }
+
+        return $this->collNotes;
+    }
+
+    /**
+     * Sets a collection of ChildNote objects related by a one-to-many relationship
+     * to the current object.
+     * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
+     * and new objects from the given Propel collection.
+     *
+     * @param      Collection $notes A Propel collection.
+     * @param      ConnectionInterface $con Optional connection object
+     * @return $this|ChildPerson The current object (for fluent API support)
+     */
+    public function setNotes(Collection $notes, ConnectionInterface $con = null)
+    {
+        /** @var ChildNote[] $notesToDelete */
+        $notesToDelete = $this->getNotes(new Criteria(), $con)->diff($notes);
+
+
+        $this->notesScheduledForDeletion = $notesToDelete;
+
+        foreach ($notesToDelete as $noteRemoved) {
+            $noteRemoved->setPerson(null);
+        }
+
+        $this->collNotes = null;
+        foreach ($notes as $note) {
+            $this->addNote($note);
+        }
+
+        $this->collNotes = $notes;
+        $this->collNotesPartial = false;
+
+        return $this;
+    }
+
+    /**
+     * Returns the number of related Note objects.
+     *
+     * @param      Criteria $criteria
+     * @param      boolean $distinct
+     * @param      ConnectionInterface $con
+     * @return int             Count of related Note objects.
+     * @throws PropelException
+     */
+    public function countNotes(Criteria $criteria = null, $distinct = false, ConnectionInterface $con = null)
+    {
+        $partial = $this->collNotesPartial && !$this->isNew();
+        if (null === $this->collNotes || null !== $criteria || $partial) {
+            if ($this->isNew() && null === $this->collNotes) {
+                return 0;
+            }
+
+            if ($partial && !$criteria) {
+                return count($this->getNotes());
+            }
+
+            $query = ChildNoteQuery::create(null, $criteria);
+            if ($distinct) {
+                $query->distinct();
+            }
+
+            return $query
+                ->filterByPerson($this)
+                ->count($con);
+        }
+
+        return count($this->collNotes);
+    }
+
+    /**
+     * Method called to associate a ChildNote object to this object
+     * through the ChildNote foreign key attribute.
+     *
+     * @param  ChildNote $l ChildNote
+     * @return $this|\ChurchCRM\Person The current object (for fluent API support)
+     */
+    public function addNote(ChildNote $l)
+    {
+        if ($this->collNotes === null) {
+            $this->initNotes();
+            $this->collNotesPartial = true;
+        }
+
+        if (!$this->collNotes->contains($l)) {
+            $this->doAddNote($l);
+
+            if ($this->notesScheduledForDeletion and $this->notesScheduledForDeletion->contains($l)) {
+                $this->notesScheduledForDeletion->remove($this->notesScheduledForDeletion->search($l));
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param ChildNote $note The ChildNote object to add.
+     */
+    protected function doAddNote(ChildNote $note)
+    {
+        $this->collNotes[]= $note;
+        $note->setPerson($this);
+    }
+
+    /**
+     * @param  ChildNote $note The ChildNote object to remove.
+     * @return $this|ChildPerson The current object (for fluent API support)
+     */
+    public function removeNote(ChildNote $note)
+    {
+        if ($this->getNotes()->contains($note)) {
+            $pos = $this->collNotes->search($note);
+            $this->collNotes->remove($pos);
+            if (null === $this->notesScheduledForDeletion) {
+                $this->notesScheduledForDeletion = clone $this->collNotes;
+                $this->notesScheduledForDeletion->clear();
+            }
+            $this->notesScheduledForDeletion[]= clone $note;
+            $note->setPerson(null);
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * If this collection has already been initialized with
+     * an identical criteria, it returns the collection.
+     * Otherwise if this Person is new, it will return
+     * an empty collection; or if this Person has previously
+     * been saved, it will retrieve related Notes from storage.
+     *
+     * This method is protected by default in order to keep the public
+     * api reasonable.  You can provide public methods for those you
+     * actually need in Person.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @param      string $joinBehavior optional join type to use (defaults to Criteria::LEFT_JOIN)
+     * @return ObjectCollection|ChildNote[] List of ChildNote objects
+     */
+    public function getNotesJoinFamily(Criteria $criteria = null, ConnectionInterface $con = null, $joinBehavior = Criteria::LEFT_JOIN)
+    {
+        $query = ChildNoteQuery::create(null, $criteria);
+        $query->joinWith('Family', $joinBehavior);
+
+        return $this->getNotes($query, $con);
+    }
+
+    /**
+     * Clears out the collPerson2group2roleP2g2rs collection
+     *
+     * This does not modify the database; however, it will remove any associated objects, causing
+     * them to be refetched by subsequent calls to accessor method.
+     *
+     * @return void
+     * @see        addPerson2group2roleP2g2rs()
+     */
+    public function clearPerson2group2roleP2g2rs()
+    {
+        $this->collPerson2group2roleP2g2rs = null; // important to set this to NULL since that means it is uninitialized
+    }
+
+    /**
+     * Reset is the collPerson2group2roleP2g2rs collection loaded partially.
+     */
+    public function resetPartialPerson2group2roleP2g2rs($v = true)
+    {
+        $this->collPerson2group2roleP2g2rsPartial = $v;
+    }
+
+    /**
+     * Initializes the collPerson2group2roleP2g2rs collection.
+     *
+     * By default this just sets the collPerson2group2roleP2g2rs collection to an empty array (like clearcollPerson2group2roleP2g2rs());
+     * however, you may wish to override this method in your stub class to provide setting appropriate
+     * to your application -- for example, setting the initial array to the values stored in database.
+     *
+     * @param      boolean $overrideExisting If set to true, the method call initializes
+     *                                        the collection even if it is not empty
+     *
+     * @return void
+     */
+    public function initPerson2group2roleP2g2rs($overrideExisting = true)
+    {
+        if (null !== $this->collPerson2group2roleP2g2rs && !$overrideExisting) {
+            return;
+        }
+
+        $collectionClassName = Person2group2roleP2g2rTableMap::getTableMap()->getCollectionClassName();
+
+        $this->collPerson2group2roleP2g2rs = new $collectionClassName;
+        $this->collPerson2group2roleP2g2rs->setModel('\ChurchCRM\Person2group2roleP2g2r');
+    }
+
+    /**
+     * Gets an array of ChildPerson2group2roleP2g2r objects which contain a foreign key that references this object.
+     *
+     * If the $criteria is not null, it is used to always fetch the results from the database.
+     * Otherwise the results are fetched from the database the first time, then cached.
+     * Next time the same method is called without $criteria, the cached collection is returned.
+     * If this ChildPerson is new, it will return
+     * an empty collection or the current collection; the criteria is ignored on a new object.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @return ObjectCollection|ChildPerson2group2roleP2g2r[] List of ChildPerson2group2roleP2g2r objects
+     * @throws PropelException
+     */
+    public function getPerson2group2roleP2g2rs(Criteria $criteria = null, ConnectionInterface $con = null)
+    {
+        $partial = $this->collPerson2group2roleP2g2rsPartial && !$this->isNew();
+        if (null === $this->collPerson2group2roleP2g2rs || null !== $criteria  || $partial) {
+            if ($this->isNew() && null === $this->collPerson2group2roleP2g2rs) {
+                // return empty collection
+                $this->initPerson2group2roleP2g2rs();
+            } else {
+                $collPerson2group2roleP2g2rs = ChildPerson2group2roleP2g2rQuery::create(null, $criteria)
+                    ->filterByPerson($this)
+                    ->find($con);
+
+                if (null !== $criteria) {
+                    if (false !== $this->collPerson2group2roleP2g2rsPartial && count($collPerson2group2roleP2g2rs)) {
+                        $this->initPerson2group2roleP2g2rs(false);
+
+                        foreach ($collPerson2group2roleP2g2rs as $obj) {
+                            if (false == $this->collPerson2group2roleP2g2rs->contains($obj)) {
+                                $this->collPerson2group2roleP2g2rs->append($obj);
+                            }
+                        }
+
+                        $this->collPerson2group2roleP2g2rsPartial = true;
+                    }
+
+                    return $collPerson2group2roleP2g2rs;
+                }
+
+                if ($partial && $this->collPerson2group2roleP2g2rs) {
+                    foreach ($this->collPerson2group2roleP2g2rs as $obj) {
+                        if ($obj->isNew()) {
+                            $collPerson2group2roleP2g2rs[] = $obj;
+                        }
+                    }
+                }
+
+                $this->collPerson2group2roleP2g2rs = $collPerson2group2roleP2g2rs;
+                $this->collPerson2group2roleP2g2rsPartial = false;
+            }
+        }
+
+        return $this->collPerson2group2roleP2g2rs;
+    }
+
+    /**
+     * Sets a collection of ChildPerson2group2roleP2g2r objects related by a one-to-many relationship
+     * to the current object.
+     * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
+     * and new objects from the given Propel collection.
+     *
+     * @param      Collection $person2group2roleP2g2rs A Propel collection.
+     * @param      ConnectionInterface $con Optional connection object
+     * @return $this|ChildPerson The current object (for fluent API support)
+     */
+    public function setPerson2group2roleP2g2rs(Collection $person2group2roleP2g2rs, ConnectionInterface $con = null)
+    {
+        /** @var ChildPerson2group2roleP2g2r[] $person2group2roleP2g2rsToDelete */
+        $person2group2roleP2g2rsToDelete = $this->getPerson2group2roleP2g2rs(new Criteria(), $con)->diff($person2group2roleP2g2rs);
+
+
+        //since at least one column in the foreign key is at the same time a PK
+        //we can not just set a PK to NULL in the lines below. We have to store
+        //a backup of all values, so we are able to manipulate these items based on the onDelete value later.
+        $this->person2group2roleP2g2rsScheduledForDeletion = clone $person2group2roleP2g2rsToDelete;
+
+        foreach ($person2group2roleP2g2rsToDelete as $person2group2roleP2g2rRemoved) {
+            $person2group2roleP2g2rRemoved->setPerson(null);
+        }
+
+        $this->collPerson2group2roleP2g2rs = null;
+        foreach ($person2group2roleP2g2rs as $person2group2roleP2g2r) {
+            $this->addPerson2group2roleP2g2r($person2group2roleP2g2r);
+        }
+
+        $this->collPerson2group2roleP2g2rs = $person2group2roleP2g2rs;
+        $this->collPerson2group2roleP2g2rsPartial = false;
+
+        return $this;
+    }
+
+    /**
+     * Returns the number of related Person2group2roleP2g2r objects.
+     *
+     * @param      Criteria $criteria
+     * @param      boolean $distinct
+     * @param      ConnectionInterface $con
+     * @return int             Count of related Person2group2roleP2g2r objects.
+     * @throws PropelException
+     */
+    public function countPerson2group2roleP2g2rs(Criteria $criteria = null, $distinct = false, ConnectionInterface $con = null)
+    {
+        $partial = $this->collPerson2group2roleP2g2rsPartial && !$this->isNew();
+        if (null === $this->collPerson2group2roleP2g2rs || null !== $criteria || $partial) {
+            if ($this->isNew() && null === $this->collPerson2group2roleP2g2rs) {
+                return 0;
+            }
+
+            if ($partial && !$criteria) {
+                return count($this->getPerson2group2roleP2g2rs());
+            }
+
+            $query = ChildPerson2group2roleP2g2rQuery::create(null, $criteria);
+            if ($distinct) {
+                $query->distinct();
+            }
+
+            return $query
+                ->filterByPerson($this)
+                ->count($con);
+        }
+
+        return count($this->collPerson2group2roleP2g2rs);
+    }
+
+    /**
+     * Method called to associate a ChildPerson2group2roleP2g2r object to this object
+     * through the ChildPerson2group2roleP2g2r foreign key attribute.
+     *
+     * @param  ChildPerson2group2roleP2g2r $l ChildPerson2group2roleP2g2r
+     * @return $this|\ChurchCRM\Person The current object (for fluent API support)
+     */
+    public function addPerson2group2roleP2g2r(ChildPerson2group2roleP2g2r $l)
+    {
+        if ($this->collPerson2group2roleP2g2rs === null) {
+            $this->initPerson2group2roleP2g2rs();
+            $this->collPerson2group2roleP2g2rsPartial = true;
+        }
+
+        if (!$this->collPerson2group2roleP2g2rs->contains($l)) {
+            $this->doAddPerson2group2roleP2g2r($l);
+
+            if ($this->person2group2roleP2g2rsScheduledForDeletion and $this->person2group2roleP2g2rsScheduledForDeletion->contains($l)) {
+                $this->person2group2roleP2g2rsScheduledForDeletion->remove($this->person2group2roleP2g2rsScheduledForDeletion->search($l));
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param ChildPerson2group2roleP2g2r $person2group2roleP2g2r The ChildPerson2group2roleP2g2r object to add.
+     */
+    protected function doAddPerson2group2roleP2g2r(ChildPerson2group2roleP2g2r $person2group2roleP2g2r)
+    {
+        $this->collPerson2group2roleP2g2rs[]= $person2group2roleP2g2r;
+        $person2group2roleP2g2r->setPerson($this);
+    }
+
+    /**
+     * @param  ChildPerson2group2roleP2g2r $person2group2roleP2g2r The ChildPerson2group2roleP2g2r object to remove.
+     * @return $this|ChildPerson The current object (for fluent API support)
+     */
+    public function removePerson2group2roleP2g2r(ChildPerson2group2roleP2g2r $person2group2roleP2g2r)
+    {
+        if ($this->getPerson2group2roleP2g2rs()->contains($person2group2roleP2g2r)) {
+            $pos = $this->collPerson2group2roleP2g2rs->search($person2group2roleP2g2r);
+            $this->collPerson2group2roleP2g2rs->remove($pos);
+            if (null === $this->person2group2roleP2g2rsScheduledForDeletion) {
+                $this->person2group2roleP2g2rsScheduledForDeletion = clone $this->collPerson2group2roleP2g2rs;
+                $this->person2group2roleP2g2rsScheduledForDeletion->clear();
+            }
+            $this->person2group2roleP2g2rsScheduledForDeletion[]= clone $person2group2roleP2g2r;
+            $person2group2roleP2g2r->setPerson(null);
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * If this collection has already been initialized with
+     * an identical criteria, it returns the collection.
+     * Otherwise if this Person is new, it will return
+     * an empty collection; or if this Person has previously
+     * been saved, it will retrieve related Person2group2roleP2g2rs from storage.
+     *
+     * This method is protected by default in order to keep the public
+     * api reasonable.  You can provide public methods for those you
+     * actually need in Person.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @param      string $joinBehavior optional join type to use (defaults to Criteria::LEFT_JOIN)
+     * @return ObjectCollection|ChildPerson2group2roleP2g2r[] List of ChildPerson2group2roleP2g2r objects
+     */
+    public function getPerson2group2roleP2g2rsJoinGroup(Criteria $criteria = null, ConnectionInterface $con = null, $joinBehavior = Criteria::LEFT_JOIN)
+    {
+        $query = ChildPerson2group2roleP2g2rQuery::create(null, $criteria);
+        $query->joinWith('Group', $joinBehavior);
+
+        return $this->getPerson2group2roleP2g2rs($query, $con);
+    }
+
+    /**
      * Clears the current object, sets all attributes to their default values and removes
      * outgoing references as well as back-references (from other objects to this one. Results probably in a database
      * change of those foreign objects when you call `save` there).
      */
     public function clear()
     {
+        if (null !== $this->aFamily) {
+            $this->aFamily->removePerson($this);
+        }
         $this->per_id = null;
         $this->per_title = null;
         $this->per_firstname = null;
@@ -2993,8 +4017,27 @@ abstract class Person implements ActiveRecordInterface
     public function clearAllReferences($deep = false)
     {
         if ($deep) {
+            if ($this->collWhyCames) {
+                foreach ($this->collWhyCames as $o) {
+                    $o->clearAllReferences($deep);
+                }
+            }
+            if ($this->collNotes) {
+                foreach ($this->collNotes as $o) {
+                    $o->clearAllReferences($deep);
+                }
+            }
+            if ($this->collPerson2group2roleP2g2rs) {
+                foreach ($this->collPerson2group2roleP2g2rs as $o) {
+                    $o->clearAllReferences($deep);
+                }
+            }
         } // if ($deep)
 
+        $this->collWhyCames = null;
+        $this->collNotes = null;
+        $this->collPerson2group2roleP2g2rs = null;
+        $this->aFamily = null;
     }
 
     /**

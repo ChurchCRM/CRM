@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Map;
 
-use ChurchCRM\Note;
-use ChurchCRM\NoteQuery;
+use ChurchCRM\FundRaiser;
+use ChurchCRM\FundRaiserQuery;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\InstancePoolTrait;
@@ -16,7 +16,7 @@ use Propel\Runtime\Map\TableMapTrait;
 
 
 /**
- * This class defines the structure of the 'note_nte' table.
+ * This class defines the structure of the 'fundraiser_fr' table.
  *
  *
  *
@@ -26,7 +26,7 @@ use Propel\Runtime\Map\TableMapTrait;
  * (i.e. if it's a text column type).
  *
  */
-class NoteTableMap extends TableMap
+class FundRaiserTableMap extends TableMap
 {
     use InstancePoolTrait;
     use TableMapTrait;
@@ -34,7 +34,7 @@ class NoteTableMap extends TableMap
     /**
      * The (dot-path) name of this class
      */
-    const CLASS_NAME = 'ChurchCRM.Map.NoteTableMap';
+    const CLASS_NAME = 'ChurchCRM.Map.FundRaiserTableMap';
 
     /**
      * The default database name for this class
@@ -44,22 +44,22 @@ class NoteTableMap extends TableMap
     /**
      * The table name for this class
      */
-    const TABLE_NAME = 'note_nte';
+    const TABLE_NAME = 'fundraiser_fr';
 
     /**
      * The related Propel class for this table
      */
-    const OM_CLASS = '\\ChurchCRM\\Note';
+    const OM_CLASS = '\\ChurchCRM\\FundRaiser';
 
     /**
      * A class that can be returned by this tableMap
      */
-    const CLASS_DEFAULT = 'ChurchCRM.Note';
+    const CLASS_DEFAULT = 'ChurchCRM.FundRaiser';
 
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 10;
+    const NUM_COLUMNS = 6;
 
     /**
      * The number of lazy-loaded columns
@@ -69,57 +69,37 @@ class NoteTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 10;
+    const NUM_HYDRATE_COLUMNS = 6;
 
     /**
-     * the column name for the nte_ID field
+     * the column name for the fr_ID field
      */
-    const COL_NTE_ID = 'note_nte.nte_ID';
+    const COL_FR_ID = 'fundraiser_fr.fr_ID';
 
     /**
-     * the column name for the nte_per_ID field
+     * the column name for the fr_date field
      */
-    const COL_NTE_PER_ID = 'note_nte.nte_per_ID';
+    const COL_FR_DATE = 'fundraiser_fr.fr_date';
 
     /**
-     * the column name for the nte_fam_ID field
+     * the column name for the fr_title field
      */
-    const COL_NTE_FAM_ID = 'note_nte.nte_fam_ID';
+    const COL_FR_TITLE = 'fundraiser_fr.fr_title';
 
     /**
-     * the column name for the nte_Private field
+     * the column name for the fr_description field
      */
-    const COL_NTE_PRIVATE = 'note_nte.nte_Private';
+    const COL_FR_DESCRIPTION = 'fundraiser_fr.fr_description';
 
     /**
-     * the column name for the nte_Text field
+     * the column name for the fr_EnteredBy field
      */
-    const COL_NTE_TEXT = 'note_nte.nte_Text';
+    const COL_FR_ENTEREDBY = 'fundraiser_fr.fr_EnteredBy';
 
     /**
-     * the column name for the nte_DateEntered field
+     * the column name for the fr_EnteredDate field
      */
-    const COL_NTE_DATEENTERED = 'note_nte.nte_DateEntered';
-
-    /**
-     * the column name for the nte_DateLastEdited field
-     */
-    const COL_NTE_DATELASTEDITED = 'note_nte.nte_DateLastEdited';
-
-    /**
-     * the column name for the nte_EnteredBy field
-     */
-    const COL_NTE_ENTEREDBY = 'note_nte.nte_EnteredBy';
-
-    /**
-     * the column name for the nte_EditedBy field
-     */
-    const COL_NTE_EDITEDBY = 'note_nte.nte_EditedBy';
-
-    /**
-     * the column name for the nte_Type field
-     */
-    const COL_NTE_TYPE = 'note_nte.nte_Type';
+    const COL_FR_ENTEREDDATE = 'fundraiser_fr.fr_EnteredDate';
 
     /**
      * The default string format for model objects of the related table
@@ -133,11 +113,11 @@ class NoteTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'PerId', 'FamId', 'Private', 'Text', 'DateEntered', 'DateLastEdited', 'EnteredBy', 'EditedBy', 'Type', ),
-        self::TYPE_CAMELNAME     => array('id', 'perId', 'famId', 'private', 'text', 'dateEntered', 'dateLastEdited', 'enteredBy', 'editedBy', 'type', ),
-        self::TYPE_COLNAME       => array(NoteTableMap::COL_NTE_ID, NoteTableMap::COL_NTE_PER_ID, NoteTableMap::COL_NTE_FAM_ID, NoteTableMap::COL_NTE_PRIVATE, NoteTableMap::COL_NTE_TEXT, NoteTableMap::COL_NTE_DATEENTERED, NoteTableMap::COL_NTE_DATELASTEDITED, NoteTableMap::COL_NTE_ENTEREDBY, NoteTableMap::COL_NTE_EDITEDBY, NoteTableMap::COL_NTE_TYPE, ),
-        self::TYPE_FIELDNAME     => array('nte_ID', 'nte_per_ID', 'nte_fam_ID', 'nte_Private', 'nte_Text', 'nte_DateEntered', 'nte_DateLastEdited', 'nte_EnteredBy', 'nte_EditedBy', 'nte_Type', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
+        self::TYPE_PHPNAME       => array('Id', 'Date', 'Title', 'Description', 'EnteredBy', 'EnteredDate', ),
+        self::TYPE_CAMELNAME     => array('id', 'date', 'title', 'description', 'enteredBy', 'enteredDate', ),
+        self::TYPE_COLNAME       => array(FundRaiserTableMap::COL_FR_ID, FundRaiserTableMap::COL_FR_DATE, FundRaiserTableMap::COL_FR_TITLE, FundRaiserTableMap::COL_FR_DESCRIPTION, FundRaiserTableMap::COL_FR_ENTEREDBY, FundRaiserTableMap::COL_FR_ENTEREDDATE, ),
+        self::TYPE_FIELDNAME     => array('fr_ID', 'fr_date', 'fr_title', 'fr_description', 'fr_EnteredBy', 'fr_EnteredDate', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, )
     );
 
     /**
@@ -147,11 +127,11 @@ class NoteTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'PerId' => 1, 'FamId' => 2, 'Private' => 3, 'Text' => 4, 'DateEntered' => 5, 'DateLastEdited' => 6, 'EnteredBy' => 7, 'EditedBy' => 8, 'Type' => 9, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'perId' => 1, 'famId' => 2, 'private' => 3, 'text' => 4, 'dateEntered' => 5, 'dateLastEdited' => 6, 'enteredBy' => 7, 'editedBy' => 8, 'type' => 9, ),
-        self::TYPE_COLNAME       => array(NoteTableMap::COL_NTE_ID => 0, NoteTableMap::COL_NTE_PER_ID => 1, NoteTableMap::COL_NTE_FAM_ID => 2, NoteTableMap::COL_NTE_PRIVATE => 3, NoteTableMap::COL_NTE_TEXT => 4, NoteTableMap::COL_NTE_DATEENTERED => 5, NoteTableMap::COL_NTE_DATELASTEDITED => 6, NoteTableMap::COL_NTE_ENTEREDBY => 7, NoteTableMap::COL_NTE_EDITEDBY => 8, NoteTableMap::COL_NTE_TYPE => 9, ),
-        self::TYPE_FIELDNAME     => array('nte_ID' => 0, 'nte_per_ID' => 1, 'nte_fam_ID' => 2, 'nte_Private' => 3, 'nte_Text' => 4, 'nte_DateEntered' => 5, 'nte_DateLastEdited' => 6, 'nte_EnteredBy' => 7, 'nte_EditedBy' => 8, 'nte_Type' => 9, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
+        self::TYPE_PHPNAME       => array('Id' => 0, 'Date' => 1, 'Title' => 2, 'Description' => 3, 'EnteredBy' => 4, 'EnteredDate' => 5, ),
+        self::TYPE_CAMELNAME     => array('id' => 0, 'date' => 1, 'title' => 2, 'description' => 3, 'enteredBy' => 4, 'enteredDate' => 5, ),
+        self::TYPE_COLNAME       => array(FundRaiserTableMap::COL_FR_ID => 0, FundRaiserTableMap::COL_FR_DATE => 1, FundRaiserTableMap::COL_FR_TITLE => 2, FundRaiserTableMap::COL_FR_DESCRIPTION => 3, FundRaiserTableMap::COL_FR_ENTEREDBY => 4, FundRaiserTableMap::COL_FR_ENTEREDDATE => 5, ),
+        self::TYPE_FIELDNAME     => array('fr_ID' => 0, 'fr_date' => 1, 'fr_title' => 2, 'fr_description' => 3, 'fr_EnteredBy' => 4, 'fr_EnteredDate' => 5, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, )
     );
 
     /**
@@ -164,23 +144,19 @@ class NoteTableMap extends TableMap
     public function initialize()
     {
         // attributes
-        $this->setName('note_nte');
-        $this->setPhpName('Note');
+        $this->setName('fundraiser_fr');
+        $this->setPhpName('FundRaiser');
         $this->setIdentifierQuoting(false);
-        $this->setClassName('\\ChurchCRM\\Note');
+        $this->setClassName('\\ChurchCRM\\FundRaiser');
         $this->setPackage('ChurchCRM');
         $this->setUseIdGenerator(true);
         // columns
-        $this->addPrimaryKey('nte_ID', 'Id', 'SMALLINT', true, 8, null);
-        $this->addForeignKey('nte_per_ID', 'PerId', 'SMALLINT', 'person_per', 'per_ID', true, 8, 0);
-        $this->addForeignKey('nte_fam_ID', 'FamId', 'SMALLINT', 'family_fam', 'fam_ID', true, 8, 0);
-        $this->addColumn('nte_Private', 'Private', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_Text', 'Text', 'LONGVARCHAR', false, null, null);
-        $this->addColumn('nte_DateEntered', 'DateEntered', 'TIMESTAMP', true, null, '0000-00-00 00:00:00');
-        $this->addColumn('nte_DateLastEdited', 'DateLastEdited', 'TIMESTAMP', false, null, null);
-        $this->addColumn('nte_EnteredBy', 'EnteredBy', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_EditedBy', 'EditedBy', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_Type', 'Type', 'VARCHAR', false, 50, null);
+        $this->addPrimaryKey('fr_ID', 'Id', 'SMALLINT', true, 9, null);
+        $this->addColumn('fr_date', 'Date', 'DATE', false, null, null);
+        $this->addColumn('fr_title', 'Title', 'VARCHAR', true, 128, null);
+        $this->addColumn('fr_description', 'Description', 'LONGVARCHAR', false, null, null);
+        $this->addColumn('fr_EnteredBy', 'EnteredBy', 'SMALLINT', true, 5, 0);
+        $this->addColumn('fr_EnteredDate', 'EnteredDate', 'DATE', true, null, null);
     } // initialize()
 
     /**
@@ -188,20 +164,6 @@ class NoteTableMap extends TableMap
      */
     public function buildRelations()
     {
-        $this->addRelation('Person', '\\ChurchCRM\\Person', RelationMap::MANY_TO_ONE, array (
-  0 =>
-  array (
-    0 => ':nte_per_ID',
-    1 => ':per_ID',
-  ),
-), null, null, null, false);
-        $this->addRelation('Family', '\\ChurchCRM\\Family', RelationMap::MANY_TO_ONE, array (
-  0 =>
-  array (
-    0 => ':nte_fam_ID',
-    1 => ':fam_ID',
-  ),
-), null, null, null, false);
     } // buildRelations()
 
     /**
@@ -261,7 +223,7 @@ class NoteTableMap extends TableMap
      */
     public static function getOMClass($withPrefix = true)
     {
-        return $withPrefix ? NoteTableMap::CLASS_DEFAULT : NoteTableMap::OM_CLASS;
+        return $withPrefix ? FundRaiserTableMap::CLASS_DEFAULT : FundRaiserTableMap::OM_CLASS;
     }
 
     /**
@@ -275,22 +237,22 @@ class NoteTableMap extends TableMap
      *
      * @throws PropelException Any exceptions caught during processing will be
      *                         rethrown wrapped into a PropelException.
-     * @return array           (Note object, last column rank)
+     * @return array           (FundRaiser object, last column rank)
      */
     public static function populateObject($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
-        $key = NoteTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
-        if (null !== ($obj = NoteTableMap::getInstanceFromPool($key))) {
+        $key = FundRaiserTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
+        if (null !== ($obj = FundRaiserTableMap::getInstanceFromPool($key))) {
             // We no longer rehydrate the object, since this can cause data loss.
             // See http://www.propelorm.org/ticket/509
             // $obj->hydrate($row, $offset, true); // rehydrate
-            $col = $offset + NoteTableMap::NUM_HYDRATE_COLUMNS;
+            $col = $offset + FundRaiserTableMap::NUM_HYDRATE_COLUMNS;
         } else {
-            $cls = NoteTableMap::OM_CLASS;
-            /** @var Note $obj */
+            $cls = FundRaiserTableMap::OM_CLASS;
+            /** @var FundRaiser $obj */
             $obj = new $cls();
             $col = $obj->hydrate($row, $offset, false, $indexType);
-            NoteTableMap::addInstanceToPool($obj, $key);
+            FundRaiserTableMap::addInstanceToPool($obj, $key);
         }
 
         return array($obj, $col);
@@ -313,18 +275,18 @@ class NoteTableMap extends TableMap
         $cls = static::getOMClass(false);
         // populate the object(s)
         while ($row = $dataFetcher->fetch()) {
-            $key = NoteTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
-            if (null !== ($obj = NoteTableMap::getInstanceFromPool($key))) {
+            $key = FundRaiserTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
+            if (null !== ($obj = FundRaiserTableMap::getInstanceFromPool($key))) {
                 // We no longer rehydrate the object, since this can cause data loss.
                 // See http://www.propelorm.org/ticket/509
                 // $obj->hydrate($row, 0, true); // rehydrate
                 $results[] = $obj;
             } else {
-                /** @var Note $obj */
+                /** @var FundRaiser $obj */
                 $obj = new $cls();
                 $obj->hydrate($row);
                 $results[] = $obj;
-                NoteTableMap::addInstanceToPool($obj, $key);
+                FundRaiserTableMap::addInstanceToPool($obj, $key);
             } // if key exists
         }
 
@@ -345,27 +307,19 @@ class NoteTableMap extends TableMap
     public static function addSelectColumns(Criteria $criteria, $alias = null)
     {
         if (null === $alias) {
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_PER_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_FAM_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_PRIVATE);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_TEXT);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_DATEENTERED);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_DATELASTEDITED);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_ENTEREDBY);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_EDITEDBY);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_TYPE);
+            $criteria->addSelectColumn(FundRaiserTableMap::COL_FR_ID);
+            $criteria->addSelectColumn(FundRaiserTableMap::COL_FR_DATE);
+            $criteria->addSelectColumn(FundRaiserTableMap::COL_FR_TITLE);
+            $criteria->addSelectColumn(FundRaiserTableMap::COL_FR_DESCRIPTION);
+            $criteria->addSelectColumn(FundRaiserTableMap::COL_FR_ENTEREDBY);
+            $criteria->addSelectColumn(FundRaiserTableMap::COL_FR_ENTEREDDATE);
         } else {
-            $criteria->addSelectColumn($alias . '.nte_ID');
-            $criteria->addSelectColumn($alias . '.nte_per_ID');
-            $criteria->addSelectColumn($alias . '.nte_fam_ID');
-            $criteria->addSelectColumn($alias . '.nte_Private');
-            $criteria->addSelectColumn($alias . '.nte_Text');
-            $criteria->addSelectColumn($alias . '.nte_DateEntered');
-            $criteria->addSelectColumn($alias . '.nte_DateLastEdited');
-            $criteria->addSelectColumn($alias . '.nte_EnteredBy');
-            $criteria->addSelectColumn($alias . '.nte_EditedBy');
-            $criteria->addSelectColumn($alias . '.nte_Type');
+            $criteria->addSelectColumn($alias . '.fr_ID');
+            $criteria->addSelectColumn($alias . '.fr_date');
+            $criteria->addSelectColumn($alias . '.fr_title');
+            $criteria->addSelectColumn($alias . '.fr_description');
+            $criteria->addSelectColumn($alias . '.fr_EnteredBy');
+            $criteria->addSelectColumn($alias . '.fr_EnteredDate');
         }
     }
 
@@ -378,7 +332,7 @@ class NoteTableMap extends TableMap
      */
     public static function getTableMap()
     {
-        return Propel::getServiceContainer()->getDatabaseMap(NoteTableMap::DATABASE_NAME)->getTable(NoteTableMap::TABLE_NAME);
+        return Propel::getServiceContainer()->getDatabaseMap(FundRaiserTableMap::DATABASE_NAME)->getTable(FundRaiserTableMap::TABLE_NAME);
     }
 
     /**
@@ -386,16 +340,16 @@ class NoteTableMap extends TableMap
      */
     public static function buildTableMap()
     {
-        $dbMap = Propel::getServiceContainer()->getDatabaseMap(NoteTableMap::DATABASE_NAME);
-        if (!$dbMap->hasTable(NoteTableMap::TABLE_NAME)) {
-            $dbMap->addTableObject(new NoteTableMap());
+        $dbMap = Propel::getServiceContainer()->getDatabaseMap(FundRaiserTableMap::DATABASE_NAME);
+        if (!$dbMap->hasTable(FundRaiserTableMap::TABLE_NAME)) {
+            $dbMap->addTableObject(new FundRaiserTableMap());
         }
     }
 
     /**
-     * Performs a DELETE on the database, given a Note or Criteria object OR a primary key value.
+     * Performs a DELETE on the database, given a FundRaiser or Criteria object OR a primary key value.
      *
-     * @param mixed               $values Criteria or Note object or primary key or array of primary keys
+     * @param mixed               $values Criteria or FundRaiser object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param  ConnectionInterface $con the connection to use
      * @return int             The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -406,27 +360,27 @@ class NoteTableMap extends TableMap
      public static function doDelete($values, ConnectionInterface $con = null)
      {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(FundRaiserTableMap::DATABASE_NAME);
         }
 
         if ($values instanceof Criteria) {
             // rename for clarity
             $criteria = $values;
-        } elseif ($values instanceof \ChurchCRM\Note) { // it's a model object
+        } elseif ($values instanceof \ChurchCRM\FundRaiser) { // it's a model object
             // create criteria based on pk values
             $criteria = $values->buildPkeyCriteria();
         } else { // it's a primary key, or an array of pks
-            $criteria = new Criteria(NoteTableMap::DATABASE_NAME);
-            $criteria->add(NoteTableMap::COL_NTE_ID, (array) $values, Criteria::IN);
+            $criteria = new Criteria(FundRaiserTableMap::DATABASE_NAME);
+            $criteria->add(FundRaiserTableMap::COL_FR_ID, (array) $values, Criteria::IN);
         }
 
-        $query = NoteQuery::create()->mergeWith($criteria);
+        $query = FundRaiserQuery::create()->mergeWith($criteria);
 
         if ($values instanceof Criteria) {
-            NoteTableMap::clearInstancePool();
+            FundRaiserTableMap::clearInstancePool();
         } elseif (!is_object($values)) { // it's a primary key, or an array of pks
             foreach ((array) $values as $singleval) {
-                NoteTableMap::removeInstanceFromPool($singleval);
+                FundRaiserTableMap::removeInstanceFromPool($singleval);
             }
         }
 
@@ -434,20 +388,20 @@ class NoteTableMap extends TableMap
     }
 
     /**
-     * Deletes all rows from the note_nte table.
+     * Deletes all rows from the fundraiser_fr table.
      *
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).
      */
     public static function doDeleteAll(ConnectionInterface $con = null)
     {
-        return NoteQuery::create()->doDeleteAll($con);
+        return FundRaiserQuery::create()->doDeleteAll($con);
     }
 
     /**
-     * Performs an INSERT on the database, given a Note or Criteria object.
+     * Performs an INSERT on the database, given a FundRaiser or Criteria object.
      *
-     * @param mixed               $criteria Criteria or Note object containing data that is used to create the INSERT statement.
+     * @param mixed               $criteria Criteria or FundRaiser object containing data that is used to create the INSERT statement.
      * @param ConnectionInterface $con the ConnectionInterface connection to use
      * @return mixed           The new primary key.
      * @throws PropelException Any exceptions caught during processing will be
@@ -456,22 +410,22 @@ class NoteTableMap extends TableMap
     public static function doInsert($criteria, ConnectionInterface $con = null)
     {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(FundRaiserTableMap::DATABASE_NAME);
         }
 
         if ($criteria instanceof Criteria) {
             $criteria = clone $criteria; // rename for clarity
         } else {
-            $criteria = $criteria->buildCriteria(); // build Criteria from Note object
+            $criteria = $criteria->buildCriteria(); // build Criteria from FundRaiser object
         }
 
-        if ($criteria->containsKey(NoteTableMap::COL_NTE_ID) && $criteria->keyContainsValue(NoteTableMap::COL_NTE_ID) ) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key ('.NoteTableMap::COL_NTE_ID.')');
+        if ($criteria->containsKey(FundRaiserTableMap::COL_FR_ID) && $criteria->keyContainsValue(FundRaiserTableMap::COL_FR_ID) ) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key ('.FundRaiserTableMap::COL_FR_ID.')');
         }
 
 
         // Set the correct dbName
-        $query = NoteQuery::create()->mergeWith($criteria);
+        $query = FundRaiserQuery::create()->mergeWith($criteria);
 
         // use transaction because $criteria could contain info
         // for more than one table (I guess, conceivably)
@@ -480,7 +434,7 @@ class NoteTableMap extends TableMap
         });
     }
 
-} // NoteTableMap
+} // FundRaiserTableMap
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-NoteTableMap::buildTableMap();
+FundRaiserTableMap::buildTableMap();

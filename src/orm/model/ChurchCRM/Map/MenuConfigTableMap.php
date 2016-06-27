@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Map;
 
-use ChurchCRM\Note;
-use ChurchCRM\NoteQuery;
+use ChurchCRM\MenuConfig;
+use ChurchCRM\MenuConfigQuery;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\InstancePoolTrait;
@@ -16,7 +16,7 @@ use Propel\Runtime\Map\TableMapTrait;
 
 
 /**
- * This class defines the structure of the 'note_nte' table.
+ * This class defines the structure of the 'menuconfig_mcf' table.
  *
  *
  *
@@ -26,7 +26,7 @@ use Propel\Runtime\Map\TableMapTrait;
  * (i.e. if it's a text column type).
  *
  */
-class NoteTableMap extends TableMap
+class MenuConfigTableMap extends TableMap
 {
     use InstancePoolTrait;
     use TableMapTrait;
@@ -34,7 +34,7 @@ class NoteTableMap extends TableMap
     /**
      * The (dot-path) name of this class
      */
-    const CLASS_NAME = 'ChurchCRM.Map.NoteTableMap';
+    const CLASS_NAME = 'ChurchCRM.Map.MenuConfigTableMap';
 
     /**
      * The default database name for this class
@@ -44,22 +44,22 @@ class NoteTableMap extends TableMap
     /**
      * The table name for this class
      */
-    const TABLE_NAME = 'note_nte';
+    const TABLE_NAME = 'menuconfig_mcf';
 
     /**
      * The related Propel class for this table
      */
-    const OM_CLASS = '\\ChurchCRM\\Note';
+    const OM_CLASS = '\\ChurchCRM\\MenuConfig';
 
     /**
      * A class that can be returned by this tableMap
      */
-    const CLASS_DEFAULT = 'ChurchCRM.Note';
+    const CLASS_DEFAULT = 'ChurchCRM.MenuConfig';
 
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 10;
+    const NUM_COLUMNS = 16;
 
     /**
      * The number of lazy-loaded columns
@@ -69,57 +69,87 @@ class NoteTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 10;
+    const NUM_HYDRATE_COLUMNS = 16;
 
     /**
-     * the column name for the nte_ID field
+     * the column name for the mid field
      */
-    const COL_NTE_ID = 'note_nte.nte_ID';
+    const COL_MID = 'menuconfig_mcf.mid';
 
     /**
-     * the column name for the nte_per_ID field
+     * the column name for the name field
      */
-    const COL_NTE_PER_ID = 'note_nte.nte_per_ID';
+    const COL_NAME = 'menuconfig_mcf.name';
 
     /**
-     * the column name for the nte_fam_ID field
+     * the column name for the parent field
      */
-    const COL_NTE_FAM_ID = 'note_nte.nte_fam_ID';
+    const COL_PARENT = 'menuconfig_mcf.parent';
 
     /**
-     * the column name for the nte_Private field
+     * the column name for the ismenu field
      */
-    const COL_NTE_PRIVATE = 'note_nte.nte_Private';
+    const COL_ISMENU = 'menuconfig_mcf.ismenu';
 
     /**
-     * the column name for the nte_Text field
+     * the column name for the content_english field
      */
-    const COL_NTE_TEXT = 'note_nte.nte_Text';
+    const COL_CONTENT_ENGLISH = 'menuconfig_mcf.content_english';
 
     /**
-     * the column name for the nte_DateEntered field
+     * the column name for the content field
      */
-    const COL_NTE_DATEENTERED = 'note_nte.nte_DateEntered';
+    const COL_CONTENT = 'menuconfig_mcf.content';
 
     /**
-     * the column name for the nte_DateLastEdited field
+     * the column name for the uri field
      */
-    const COL_NTE_DATELASTEDITED = 'note_nte.nte_DateLastEdited';
+    const COL_URI = 'menuconfig_mcf.uri';
 
     /**
-     * the column name for the nte_EnteredBy field
+     * the column name for the statustext field
      */
-    const COL_NTE_ENTEREDBY = 'note_nte.nte_EnteredBy';
+    const COL_STATUSTEXT = 'menuconfig_mcf.statustext';
 
     /**
-     * the column name for the nte_EditedBy field
+     * the column name for the security_grp field
      */
-    const COL_NTE_EDITEDBY = 'note_nte.nte_EditedBy';
+    const COL_SECURITY_GRP = 'menuconfig_mcf.security_grp';
 
     /**
-     * the column name for the nte_Type field
+     * the column name for the session_var field
      */
-    const COL_NTE_TYPE = 'note_nte.nte_Type';
+    const COL_SESSION_VAR = 'menuconfig_mcf.session_var';
+
+    /**
+     * the column name for the session_var_in_text field
+     */
+    const COL_SESSION_VAR_IN_TEXT = 'menuconfig_mcf.session_var_in_text';
+
+    /**
+     * the column name for the session_var_in_uri field
+     */
+    const COL_SESSION_VAR_IN_URI = 'menuconfig_mcf.session_var_in_uri';
+
+    /**
+     * the column name for the url_parm_name field
+     */
+    const COL_URL_PARM_NAME = 'menuconfig_mcf.url_parm_name';
+
+    /**
+     * the column name for the active field
+     */
+    const COL_ACTIVE = 'menuconfig_mcf.active';
+
+    /**
+     * the column name for the sortorder field
+     */
+    const COL_SORTORDER = 'menuconfig_mcf.sortorder';
+
+    /**
+     * the column name for the icon field
+     */
+    const COL_ICON = 'menuconfig_mcf.icon';
 
     /**
      * The default string format for model objects of the related table
@@ -133,11 +163,11 @@ class NoteTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'PerId', 'FamId', 'Private', 'Text', 'DateEntered', 'DateLastEdited', 'EnteredBy', 'EditedBy', 'Type', ),
-        self::TYPE_CAMELNAME     => array('id', 'perId', 'famId', 'private', 'text', 'dateEntered', 'dateLastEdited', 'enteredBy', 'editedBy', 'type', ),
-        self::TYPE_COLNAME       => array(NoteTableMap::COL_NTE_ID, NoteTableMap::COL_NTE_PER_ID, NoteTableMap::COL_NTE_FAM_ID, NoteTableMap::COL_NTE_PRIVATE, NoteTableMap::COL_NTE_TEXT, NoteTableMap::COL_NTE_DATEENTERED, NoteTableMap::COL_NTE_DATELASTEDITED, NoteTableMap::COL_NTE_ENTEREDBY, NoteTableMap::COL_NTE_EDITEDBY, NoteTableMap::COL_NTE_TYPE, ),
-        self::TYPE_FIELDNAME     => array('nte_ID', 'nte_per_ID', 'nte_fam_ID', 'nte_Private', 'nte_Text', 'nte_DateEntered', 'nte_DateLastEdited', 'nte_EnteredBy', 'nte_EditedBy', 'nte_Type', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
+        self::TYPE_PHPNAME       => array('Id', 'Name', 'Parent', 'Menu', 'ContentEnglish', 'Content', 'URI', 'Status', 'SecurityGroup', 'SessionVar', 'SessionVarInText', 'SessionVarInURI', 'URLParmName', 'Active', 'SortOrder', 'Icon', ),
+        self::TYPE_CAMELNAME     => array('id', 'name', 'parent', 'menu', 'contentEnglish', 'content', 'uRI', 'status', 'securityGroup', 'sessionVar', 'sessionVarInText', 'sessionVarInURI', 'uRLParmName', 'active', 'sortOrder', 'icon', ),
+        self::TYPE_COLNAME       => array(MenuConfigTableMap::COL_MID, MenuConfigTableMap::COL_NAME, MenuConfigTableMap::COL_PARENT, MenuConfigTableMap::COL_ISMENU, MenuConfigTableMap::COL_CONTENT_ENGLISH, MenuConfigTableMap::COL_CONTENT, MenuConfigTableMap::COL_URI, MenuConfigTableMap::COL_STATUSTEXT, MenuConfigTableMap::COL_SECURITY_GRP, MenuConfigTableMap::COL_SESSION_VAR, MenuConfigTableMap::COL_SESSION_VAR_IN_TEXT, MenuConfigTableMap::COL_SESSION_VAR_IN_URI, MenuConfigTableMap::COL_URL_PARM_NAME, MenuConfigTableMap::COL_ACTIVE, MenuConfigTableMap::COL_SORTORDER, MenuConfigTableMap::COL_ICON, ),
+        self::TYPE_FIELDNAME     => array('mid', 'name', 'parent', 'ismenu', 'content_english', 'content', 'uri', 'statustext', 'security_grp', 'session_var', 'session_var_in_text', 'session_var_in_uri', 'url_parm_name', 'active', 'sortorder', 'icon', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, )
     );
 
     /**
@@ -147,11 +177,11 @@ class NoteTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'PerId' => 1, 'FamId' => 2, 'Private' => 3, 'Text' => 4, 'DateEntered' => 5, 'DateLastEdited' => 6, 'EnteredBy' => 7, 'EditedBy' => 8, 'Type' => 9, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'perId' => 1, 'famId' => 2, 'private' => 3, 'text' => 4, 'dateEntered' => 5, 'dateLastEdited' => 6, 'enteredBy' => 7, 'editedBy' => 8, 'type' => 9, ),
-        self::TYPE_COLNAME       => array(NoteTableMap::COL_NTE_ID => 0, NoteTableMap::COL_NTE_PER_ID => 1, NoteTableMap::COL_NTE_FAM_ID => 2, NoteTableMap::COL_NTE_PRIVATE => 3, NoteTableMap::COL_NTE_TEXT => 4, NoteTableMap::COL_NTE_DATEENTERED => 5, NoteTableMap::COL_NTE_DATELASTEDITED => 6, NoteTableMap::COL_NTE_ENTEREDBY => 7, NoteTableMap::COL_NTE_EDITEDBY => 8, NoteTableMap::COL_NTE_TYPE => 9, ),
-        self::TYPE_FIELDNAME     => array('nte_ID' => 0, 'nte_per_ID' => 1, 'nte_fam_ID' => 2, 'nte_Private' => 3, 'nte_Text' => 4, 'nte_DateEntered' => 5, 'nte_DateLastEdited' => 6, 'nte_EnteredBy' => 7, 'nte_EditedBy' => 8, 'nte_Type' => 9, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
+        self::TYPE_PHPNAME       => array('Id' => 0, 'Name' => 1, 'Parent' => 2, 'Menu' => 3, 'ContentEnglish' => 4, 'Content' => 5, 'URI' => 6, 'Status' => 7, 'SecurityGroup' => 8, 'SessionVar' => 9, 'SessionVarInText' => 10, 'SessionVarInURI' => 11, 'URLParmName' => 12, 'Active' => 13, 'SortOrder' => 14, 'Icon' => 15, ),
+        self::TYPE_CAMELNAME     => array('id' => 0, 'name' => 1, 'parent' => 2, 'menu' => 3, 'contentEnglish' => 4, 'content' => 5, 'uRI' => 6, 'status' => 7, 'securityGroup' => 8, 'sessionVar' => 9, 'sessionVarInText' => 10, 'sessionVarInURI' => 11, 'uRLParmName' => 12, 'active' => 13, 'sortOrder' => 14, 'icon' => 15, ),
+        self::TYPE_COLNAME       => array(MenuConfigTableMap::COL_MID => 0, MenuConfigTableMap::COL_NAME => 1, MenuConfigTableMap::COL_PARENT => 2, MenuConfigTableMap::COL_ISMENU => 3, MenuConfigTableMap::COL_CONTENT_ENGLISH => 4, MenuConfigTableMap::COL_CONTENT => 5, MenuConfigTableMap::COL_URI => 6, MenuConfigTableMap::COL_STATUSTEXT => 7, MenuConfigTableMap::COL_SECURITY_GRP => 8, MenuConfigTableMap::COL_SESSION_VAR => 9, MenuConfigTableMap::COL_SESSION_VAR_IN_TEXT => 10, MenuConfigTableMap::COL_SESSION_VAR_IN_URI => 11, MenuConfigTableMap::COL_URL_PARM_NAME => 12, MenuConfigTableMap::COL_ACTIVE => 13, MenuConfigTableMap::COL_SORTORDER => 14, MenuConfigTableMap::COL_ICON => 15, ),
+        self::TYPE_FIELDNAME     => array('mid' => 0, 'name' => 1, 'parent' => 2, 'ismenu' => 3, 'content_english' => 4, 'content' => 5, 'uri' => 6, 'statustext' => 7, 'security_grp' => 8, 'session_var' => 9, 'session_var_in_text' => 10, 'session_var_in_uri' => 11, 'url_parm_name' => 12, 'active' => 13, 'sortorder' => 14, 'icon' => 15, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, )
     );
 
     /**
@@ -164,23 +194,29 @@ class NoteTableMap extends TableMap
     public function initialize()
     {
         // attributes
-        $this->setName('note_nte');
-        $this->setPhpName('Note');
+        $this->setName('menuconfig_mcf');
+        $this->setPhpName('MenuConfig');
         $this->setIdentifierQuoting(false);
-        $this->setClassName('\\ChurchCRM\\Note');
+        $this->setClassName('\\ChurchCRM\\MenuConfig');
         $this->setPackage('ChurchCRM');
         $this->setUseIdGenerator(true);
         // columns
-        $this->addPrimaryKey('nte_ID', 'Id', 'SMALLINT', true, 8, null);
-        $this->addForeignKey('nte_per_ID', 'PerId', 'SMALLINT', 'person_per', 'per_ID', true, 8, 0);
-        $this->addForeignKey('nte_fam_ID', 'FamId', 'SMALLINT', 'family_fam', 'fam_ID', true, 8, 0);
-        $this->addColumn('nte_Private', 'Private', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_Text', 'Text', 'LONGVARCHAR', false, null, null);
-        $this->addColumn('nte_DateEntered', 'DateEntered', 'TIMESTAMP', true, null, '0000-00-00 00:00:00');
-        $this->addColumn('nte_DateLastEdited', 'DateLastEdited', 'TIMESTAMP', false, null, null);
-        $this->addColumn('nte_EnteredBy', 'EnteredBy', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_EditedBy', 'EditedBy', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_Type', 'Type', 'VARCHAR', false, 50, null);
+        $this->addPrimaryKey('mid', 'Id', 'INTEGER', true, null, null);
+        $this->addColumn('name', 'Name', 'VARCHAR', true, 20, null);
+        $this->addColumn('parent', 'Parent', 'VARCHAR', true, 20, null);
+        $this->addColumn('ismenu', 'Menu', 'BOOLEAN', true, 1, null);
+        $this->addColumn('content_english', 'ContentEnglish', 'VARCHAR', true, 100, null);
+        $this->addColumn('content', 'Content', 'VARCHAR', false, 100, null);
+        $this->addColumn('uri', 'URI', 'VARCHAR', true, 255, null);
+        $this->addColumn('statustext', 'Status', 'VARCHAR', true, 255, null);
+        $this->addColumn('security_grp', 'SecurityGroup', 'VARCHAR', true, 50, null);
+        $this->addColumn('session_var', 'SessionVar', 'VARCHAR', false, 50, null);
+        $this->addColumn('session_var_in_text', 'SessionVarInText', 'BOOLEAN', true, 1, null);
+        $this->addColumn('session_var_in_uri', 'SessionVarInURI', 'BOOLEAN', true, 1, null);
+        $this->addColumn('url_parm_name', 'URLParmName', 'VARCHAR', false, 50, null);
+        $this->addColumn('active', 'Active', 'BOOLEAN', true, 1, null);
+        $this->addColumn('sortorder', 'SortOrder', 'TINYINT', true, 3, null);
+        $this->addColumn('icon', 'Icon', 'VARCHAR', false, 50, null);
     } // initialize()
 
     /**
@@ -188,20 +224,6 @@ class NoteTableMap extends TableMap
      */
     public function buildRelations()
     {
-        $this->addRelation('Person', '\\ChurchCRM\\Person', RelationMap::MANY_TO_ONE, array (
-  0 =>
-  array (
-    0 => ':nte_per_ID',
-    1 => ':per_ID',
-  ),
-), null, null, null, false);
-        $this->addRelation('Family', '\\ChurchCRM\\Family', RelationMap::MANY_TO_ONE, array (
-  0 =>
-  array (
-    0 => ':nte_fam_ID',
-    1 => ':fam_ID',
-  ),
-), null, null, null, false);
     } // buildRelations()
 
     /**
@@ -261,7 +283,7 @@ class NoteTableMap extends TableMap
      */
     public static function getOMClass($withPrefix = true)
     {
-        return $withPrefix ? NoteTableMap::CLASS_DEFAULT : NoteTableMap::OM_CLASS;
+        return $withPrefix ? MenuConfigTableMap::CLASS_DEFAULT : MenuConfigTableMap::OM_CLASS;
     }
 
     /**
@@ -275,22 +297,22 @@ class NoteTableMap extends TableMap
      *
      * @throws PropelException Any exceptions caught during processing will be
      *                         rethrown wrapped into a PropelException.
-     * @return array           (Note object, last column rank)
+     * @return array           (MenuConfig object, last column rank)
      */
     public static function populateObject($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
-        $key = NoteTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
-        if (null !== ($obj = NoteTableMap::getInstanceFromPool($key))) {
+        $key = MenuConfigTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
+        if (null !== ($obj = MenuConfigTableMap::getInstanceFromPool($key))) {
             // We no longer rehydrate the object, since this can cause data loss.
             // See http://www.propelorm.org/ticket/509
             // $obj->hydrate($row, $offset, true); // rehydrate
-            $col = $offset + NoteTableMap::NUM_HYDRATE_COLUMNS;
+            $col = $offset + MenuConfigTableMap::NUM_HYDRATE_COLUMNS;
         } else {
-            $cls = NoteTableMap::OM_CLASS;
-            /** @var Note $obj */
+            $cls = MenuConfigTableMap::OM_CLASS;
+            /** @var MenuConfig $obj */
             $obj = new $cls();
             $col = $obj->hydrate($row, $offset, false, $indexType);
-            NoteTableMap::addInstanceToPool($obj, $key);
+            MenuConfigTableMap::addInstanceToPool($obj, $key);
         }
 
         return array($obj, $col);
@@ -313,18 +335,18 @@ class NoteTableMap extends TableMap
         $cls = static::getOMClass(false);
         // populate the object(s)
         while ($row = $dataFetcher->fetch()) {
-            $key = NoteTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
-            if (null !== ($obj = NoteTableMap::getInstanceFromPool($key))) {
+            $key = MenuConfigTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
+            if (null !== ($obj = MenuConfigTableMap::getInstanceFromPool($key))) {
                 // We no longer rehydrate the object, since this can cause data loss.
                 // See http://www.propelorm.org/ticket/509
                 // $obj->hydrate($row, 0, true); // rehydrate
                 $results[] = $obj;
             } else {
-                /** @var Note $obj */
+                /** @var MenuConfig $obj */
                 $obj = new $cls();
                 $obj->hydrate($row);
                 $results[] = $obj;
-                NoteTableMap::addInstanceToPool($obj, $key);
+                MenuConfigTableMap::addInstanceToPool($obj, $key);
             } // if key exists
         }
 
@@ -345,27 +367,39 @@ class NoteTableMap extends TableMap
     public static function addSelectColumns(Criteria $criteria, $alias = null)
     {
         if (null === $alias) {
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_PER_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_FAM_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_PRIVATE);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_TEXT);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_DATEENTERED);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_DATELASTEDITED);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_ENTEREDBY);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_EDITEDBY);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_TYPE);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_MID);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_NAME);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_PARENT);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_ISMENU);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_CONTENT_ENGLISH);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_CONTENT);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_URI);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_STATUSTEXT);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_SECURITY_GRP);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_SESSION_VAR);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_SESSION_VAR_IN_TEXT);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_SESSION_VAR_IN_URI);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_URL_PARM_NAME);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_ACTIVE);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_SORTORDER);
+            $criteria->addSelectColumn(MenuConfigTableMap::COL_ICON);
         } else {
-            $criteria->addSelectColumn($alias . '.nte_ID');
-            $criteria->addSelectColumn($alias . '.nte_per_ID');
-            $criteria->addSelectColumn($alias . '.nte_fam_ID');
-            $criteria->addSelectColumn($alias . '.nte_Private');
-            $criteria->addSelectColumn($alias . '.nte_Text');
-            $criteria->addSelectColumn($alias . '.nte_DateEntered');
-            $criteria->addSelectColumn($alias . '.nte_DateLastEdited');
-            $criteria->addSelectColumn($alias . '.nte_EnteredBy');
-            $criteria->addSelectColumn($alias . '.nte_EditedBy');
-            $criteria->addSelectColumn($alias . '.nte_Type');
+            $criteria->addSelectColumn($alias . '.mid');
+            $criteria->addSelectColumn($alias . '.name');
+            $criteria->addSelectColumn($alias . '.parent');
+            $criteria->addSelectColumn($alias . '.ismenu');
+            $criteria->addSelectColumn($alias . '.content_english');
+            $criteria->addSelectColumn($alias . '.content');
+            $criteria->addSelectColumn($alias . '.uri');
+            $criteria->addSelectColumn($alias . '.statustext');
+            $criteria->addSelectColumn($alias . '.security_grp');
+            $criteria->addSelectColumn($alias . '.session_var');
+            $criteria->addSelectColumn($alias . '.session_var_in_text');
+            $criteria->addSelectColumn($alias . '.session_var_in_uri');
+            $criteria->addSelectColumn($alias . '.url_parm_name');
+            $criteria->addSelectColumn($alias . '.active');
+            $criteria->addSelectColumn($alias . '.sortorder');
+            $criteria->addSelectColumn($alias . '.icon');
         }
     }
 
@@ -378,7 +412,7 @@ class NoteTableMap extends TableMap
      */
     public static function getTableMap()
     {
-        return Propel::getServiceContainer()->getDatabaseMap(NoteTableMap::DATABASE_NAME)->getTable(NoteTableMap::TABLE_NAME);
+        return Propel::getServiceContainer()->getDatabaseMap(MenuConfigTableMap::DATABASE_NAME)->getTable(MenuConfigTableMap::TABLE_NAME);
     }
 
     /**
@@ -386,16 +420,16 @@ class NoteTableMap extends TableMap
      */
     public static function buildTableMap()
     {
-        $dbMap = Propel::getServiceContainer()->getDatabaseMap(NoteTableMap::DATABASE_NAME);
-        if (!$dbMap->hasTable(NoteTableMap::TABLE_NAME)) {
-            $dbMap->addTableObject(new NoteTableMap());
+        $dbMap = Propel::getServiceContainer()->getDatabaseMap(MenuConfigTableMap::DATABASE_NAME);
+        if (!$dbMap->hasTable(MenuConfigTableMap::TABLE_NAME)) {
+            $dbMap->addTableObject(new MenuConfigTableMap());
         }
     }
 
     /**
-     * Performs a DELETE on the database, given a Note or Criteria object OR a primary key value.
+     * Performs a DELETE on the database, given a MenuConfig or Criteria object OR a primary key value.
      *
-     * @param mixed               $values Criteria or Note object or primary key or array of primary keys
+     * @param mixed               $values Criteria or MenuConfig object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param  ConnectionInterface $con the connection to use
      * @return int             The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -406,27 +440,27 @@ class NoteTableMap extends TableMap
      public static function doDelete($values, ConnectionInterface $con = null)
      {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(MenuConfigTableMap::DATABASE_NAME);
         }
 
         if ($values instanceof Criteria) {
             // rename for clarity
             $criteria = $values;
-        } elseif ($values instanceof \ChurchCRM\Note) { // it's a model object
+        } elseif ($values instanceof \ChurchCRM\MenuConfig) { // it's a model object
             // create criteria based on pk values
             $criteria = $values->buildPkeyCriteria();
         } else { // it's a primary key, or an array of pks
-            $criteria = new Criteria(NoteTableMap::DATABASE_NAME);
-            $criteria->add(NoteTableMap::COL_NTE_ID, (array) $values, Criteria::IN);
+            $criteria = new Criteria(MenuConfigTableMap::DATABASE_NAME);
+            $criteria->add(MenuConfigTableMap::COL_MID, (array) $values, Criteria::IN);
         }
 
-        $query = NoteQuery::create()->mergeWith($criteria);
+        $query = MenuConfigQuery::create()->mergeWith($criteria);
 
         if ($values instanceof Criteria) {
-            NoteTableMap::clearInstancePool();
+            MenuConfigTableMap::clearInstancePool();
         } elseif (!is_object($values)) { // it's a primary key, or an array of pks
             foreach ((array) $values as $singleval) {
-                NoteTableMap::removeInstanceFromPool($singleval);
+                MenuConfigTableMap::removeInstanceFromPool($singleval);
             }
         }
 
@@ -434,20 +468,20 @@ class NoteTableMap extends TableMap
     }
 
     /**
-     * Deletes all rows from the note_nte table.
+     * Deletes all rows from the menuconfig_mcf table.
      *
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).
      */
     public static function doDeleteAll(ConnectionInterface $con = null)
     {
-        return NoteQuery::create()->doDeleteAll($con);
+        return MenuConfigQuery::create()->doDeleteAll($con);
     }
 
     /**
-     * Performs an INSERT on the database, given a Note or Criteria object.
+     * Performs an INSERT on the database, given a MenuConfig or Criteria object.
      *
-     * @param mixed               $criteria Criteria or Note object containing data that is used to create the INSERT statement.
+     * @param mixed               $criteria Criteria or MenuConfig object containing data that is used to create the INSERT statement.
      * @param ConnectionInterface $con the ConnectionInterface connection to use
      * @return mixed           The new primary key.
      * @throws PropelException Any exceptions caught during processing will be
@@ -456,22 +490,22 @@ class NoteTableMap extends TableMap
     public static function doInsert($criteria, ConnectionInterface $con = null)
     {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(MenuConfigTableMap::DATABASE_NAME);
         }
 
         if ($criteria instanceof Criteria) {
             $criteria = clone $criteria; // rename for clarity
         } else {
-            $criteria = $criteria->buildCriteria(); // build Criteria from Note object
+            $criteria = $criteria->buildCriteria(); // build Criteria from MenuConfig object
         }
 
-        if ($criteria->containsKey(NoteTableMap::COL_NTE_ID) && $criteria->keyContainsValue(NoteTableMap::COL_NTE_ID) ) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key ('.NoteTableMap::COL_NTE_ID.')');
+        if ($criteria->containsKey(MenuConfigTableMap::COL_MID) && $criteria->keyContainsValue(MenuConfigTableMap::COL_MID) ) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key ('.MenuConfigTableMap::COL_MID.')');
         }
 
 
         // Set the correct dbName
-        $query = NoteQuery::create()->mergeWith($criteria);
+        $query = MenuConfigQuery::create()->mergeWith($criteria);
 
         // use transaction because $criteria could contain info
         // for more than one table (I guess, conceivably)
@@ -480,7 +514,7 @@ class NoteTableMap extends TableMap
         });
     }
 
-} // NoteTableMap
+} // MenuConfigTableMap
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-NoteTableMap::buildTableMap();
+MenuConfigTableMap::buildTableMap();

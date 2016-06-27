@@ -5,12 +5,8 @@ namespace ChurchCRM\Base;
 use \DateTime;
 use \Exception;
 use \PDO;
-use ChurchCRM\Family as ChildFamily;
-use ChurchCRM\FamilyQuery as ChildFamilyQuery;
-use ChurchCRM\NoteQuery as ChildNoteQuery;
-use ChurchCRM\Person as ChildPerson;
-use ChurchCRM\PersonQuery as ChildPersonQuery;
-use ChurchCRM\Map\NoteTableMap;
+use ChurchCRM\CanvassDataQuery as ChildCanvassDataQuery;
+use ChurchCRM\Map\CanvassDataTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -25,18 +21,18 @@ use Propel\Runtime\Parser\AbstractParser;
 use Propel\Runtime\Util\PropelDateTime;
 
 /**
- * Base class that represents a row from the 'note_nte' table.
+ * Base class that represents a row from the 'canvassdata_can' table.
  *
  *
  *
  * @package    propel.generator.ChurchCRM.Base
  */
-abstract class Note implements ActiveRecordInterface
+abstract class CanvassData implements ActiveRecordInterface
 {
     /**
      * TableMap class name
      */
-    const TABLE_MAP = '\\ChurchCRM\\Map\\NoteTableMap';
+    const TABLE_MAP = '\\ChurchCRM\\Map\\CanvassDataTableMap';
 
 
     /**
@@ -66,90 +62,91 @@ abstract class Note implements ActiveRecordInterface
     protected $virtualColumns = array();
 
     /**
-     * The value for the nte_id field.
+     * The value for the can_id field.
      *
      * @var        int
      */
-    protected $nte_id;
+    protected $can_id;
 
     /**
-     * The value for the nte_per_id field.
+     * The value for the can_famid field.
      *
      * Note: this column has a database default value of: 0
      * @var        int
      */
-    protected $nte_per_id;
+    protected $can_famid;
 
     /**
-     * The value for the nte_fam_id field.
+     * The value for the can_canvasser field.
      *
      * Note: this column has a database default value of: 0
      * @var        int
      */
-    protected $nte_fam_id;
+    protected $can_canvasser;
 
     /**
-     * The value for the nte_private field.
+     * The value for the can_fyid field.
      *
-     * Note: this column has a database default value of: 0
      * @var        int
      */
-    protected $nte_private;
+    protected $can_fyid;
 
     /**
-     * The value for the nte_text field.
-     *
-     * @var        string
-     */
-    protected $nte_text;
-
-    /**
-     * The value for the nte_dateentered field.
-     *
-     * Note: this column has a database default value of: NULL
-     * @var        DateTime
-     */
-    protected $nte_dateentered;
-
-    /**
-     * The value for the nte_datelastedited field.
+     * The value for the can_date field.
      *
      * @var        DateTime
      */
-    protected $nte_datelastedited;
+    protected $can_date;
 
     /**
-     * The value for the nte_enteredby field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $nte_enteredby;
-
-    /**
-     * The value for the nte_editedby field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $nte_editedby;
-
-    /**
-     * The value for the nte_type field.
+     * The value for the can_positive field.
      *
      * @var        string
      */
-    protected $nte_type;
+    protected $can_positive;
 
     /**
-     * @var        ChildPerson
+     * The value for the can_critical field.
+     *
+     * @var        string
      */
-    protected $aPerson;
+    protected $can_critical;
 
     /**
-     * @var        ChildFamily
+     * The value for the can_insightful field.
+     *
+     * @var        string
      */
-    protected $aFamily;
+    protected $can_insightful;
+
+    /**
+     * The value for the can_financial field.
+     *
+     * @var        string
+     */
+    protected $can_financial;
+
+    /**
+     * The value for the can_suggestion field.
+     *
+     * @var        string
+     */
+    protected $can_suggestion;
+
+    /**
+     * The value for the can_notinterested field.
+     *
+     * Note: this column has a database default value of: false
+     * @var        boolean
+     */
+    protected $can_notinterested;
+
+    /**
+     * The value for the can_whynotinterested field.
+     *
+     * @var        string
+     */
+    protected $can_whynotinterested;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -167,16 +164,13 @@ abstract class Note implements ActiveRecordInterface
      */
     public function applyDefaultValues()
     {
-        $this->nte_per_id = 0;
-        $this->nte_fam_id = 0;
-        $this->nte_private = 0;
-        $this->nte_dateentered = PropelDateTime::newInstance(NULL, null, 'DateTime');
-        $this->nte_enteredby = 0;
-        $this->nte_editedby = 0;
+        $this->can_famid = 0;
+        $this->can_canvasser = 0;
+        $this->can_notinterested = false;
     }
 
     /**
-     * Initializes internal state of ChurchCRM\Base\Note object.
+     * Initializes internal state of ChurchCRM\Base\CanvassData object.
      * @see applyDefaults()
      */
     public function __construct()
@@ -273,9 +267,9 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Compares this with another <code>Note</code> instance.  If
-     * <code>obj</code> is an instance of <code>Note</code>, delegates to
-     * <code>equals(Note)</code>.  Otherwise, returns <code>false</code>.
+     * Compares this with another <code>CanvassData</code> instance.  If
+     * <code>obj</code> is an instance of <code>CanvassData</code>, delegates to
+     * <code>equals(CanvassData)</code>.  Otherwise, returns <code>false</code>.
      *
      * @param  mixed   $obj The object to compare to.
      * @return boolean Whether equal to the object specified.
@@ -341,7 +335,7 @@ abstract class Note implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return $this|Note The current object, for fluid interface
+     * @return $this|CanvassData The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -403,130 +397,150 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Get the [nte_id] column value.
+     * Get the [can_id] column value.
      *
      * @return int
      */
     public function getId()
     {
-        return $this->nte_id;
+        return $this->can_id;
     }
 
     /**
-     * Get the [nte_per_id] column value.
+     * Get the [can_famid] column value.
      *
      * @return int
      */
-    public function getPerId()
+    public function getFamilyId()
     {
-        return $this->nte_per_id;
+        return $this->can_famid;
     }
 
     /**
-     * Get the [nte_fam_id] column value.
+     * Get the [can_canvasser] column value.
      *
      * @return int
      */
-    public function getFamId()
+    public function getCanvasser()
     {
-        return $this->nte_fam_id;
+        return $this->can_canvasser;
     }
 
     /**
-     * Get the [nte_private] column value.
+     * Get the [can_fyid] column value.
      *
      * @return int
      */
-    public function getPrivate()
+    public function getFyid()
     {
-        return $this->nte_private;
+        return $this->can_fyid;
     }
 
     /**
-     * Get the [nte_text] column value.
-     *
-     * @return string
-     */
-    public function getText()
-    {
-        return $this->nte_text;
-    }
-
-    /**
-     * Get the [optionally formatted] temporal [nte_dateentered] column value.
+     * Get the [optionally formatted] temporal [can_date] column value.
      *
      *
      * @param      string $format The date/time format string (either date()-style or strftime()-style).
      *                            If format is NULL, then the raw DateTime object will be returned.
      *
-     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
+     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00
      *
      * @throws PropelException - if unable to parse/validate the date/time value.
      */
-    public function getDateEntered($format = NULL)
+    public function getDate($format = NULL)
     {
         if ($format === null) {
-            return $this->nte_dateentered;
+            return $this->can_date;
         } else {
-            return $this->nte_dateentered instanceof \DateTimeInterface ? $this->nte_dateentered->format($format) : null;
+            return $this->can_date instanceof \DateTimeInterface ? $this->can_date->format($format) : null;
         }
     }
 
     /**
-     * Get the [optionally formatted] temporal [nte_datelastedited] column value.
-     *
-     *
-     * @param      string $format The date/time format string (either date()-style or strftime()-style).
-     *                            If format is NULL, then the raw DateTime object will be returned.
-     *
-     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
-     *
-     * @throws PropelException - if unable to parse/validate the date/time value.
-     */
-    public function getDateLastEdited($format = NULL)
-    {
-        if ($format === null) {
-            return $this->nte_datelastedited;
-        } else {
-            return $this->nte_datelastedited instanceof \DateTimeInterface ? $this->nte_datelastedited->format($format) : null;
-        }
-    }
-
-    /**
-     * Get the [nte_enteredby] column value.
-     *
-     * @return int
-     */
-    public function getEnteredBy()
-    {
-        return $this->nte_enteredby;
-    }
-
-    /**
-     * Get the [nte_editedby] column value.
-     *
-     * @return int
-     */
-    public function getEditedBy()
-    {
-        return $this->nte_editedby;
-    }
-
-    /**
-     * Get the [nte_type] column value.
+     * Get the [can_positive] column value.
      *
      * @return string
      */
-    public function getType()
+    public function getPositive()
     {
-        return $this->nte_type;
+        return $this->can_positive;
     }
 
     /**
-     * Set the value of [nte_id] column.
+     * Get the [can_critical] column value.
+     *
+     * @return string
+     */
+    public function getCritical()
+    {
+        return $this->can_critical;
+    }
+
+    /**
+     * Get the [can_insightful] column value.
+     *
+     * @return string
+     */
+    public function getInsightful()
+    {
+        return $this->can_insightful;
+    }
+
+    /**
+     * Get the [can_financial] column value.
+     *
+     * @return string
+     */
+    public function getFinancial()
+    {
+        return $this->can_financial;
+    }
+
+    /**
+     * Get the [can_suggestion] column value.
+     *
+     * @return string
+     */
+    public function getSuggestion()
+    {
+        return $this->can_suggestion;
+    }
+
+    /**
+     * Get the [can_notinterested] column value.
+     *
+     * @return boolean
+     */
+    public function getNotInterested()
+    {
+        return $this->can_notinterested;
+    }
+
+    /**
+     * Get the [can_notinterested] column value.
+     *
+     * @return boolean
+     */
+    public function isNotInterested()
+    {
+        return $this->getNotInterested();
+    }
+
+    /**
+     * Get the [can_whynotinterested] column value.
+     *
+     * @return string
+     */
+    public function getWhyNotInterested()
+    {
+        return $this->can_whynotinterested;
+    }
+
+    /**
+     * Set the value of [can_id] column.
      *
      * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\CanvassData The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -534,203 +548,241 @@ abstract class Note implements ActiveRecordInterface
             $v = (int) $v;
         }
 
-        if ($this->nte_id !== $v) {
-            $this->nte_id = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_ID] = true;
+        if ($this->can_id !== $v) {
+            $this->can_id = $v;
+            $this->modifiedColumns[CanvassDataTableMap::COL_CAN_ID] = true;
         }
 
         return $this;
     } // setId()
 
     /**
-     * Set the value of [nte_per_id] column.
+     * Set the value of [can_famid] column.
      *
      * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\CanvassData The current object (for fluent API support)
      */
-    public function setPerId($v)
+    public function setFamilyId($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->nte_per_id !== $v) {
-            $this->nte_per_id = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_PER_ID] = true;
-        }
-
-        if ($this->aPerson !== null && $this->aPerson->getId() !== $v) {
-            $this->aPerson = null;
+        if ($this->can_famid !== $v) {
+            $this->can_famid = $v;
+            $this->modifiedColumns[CanvassDataTableMap::COL_CAN_FAMID] = true;
         }
 
         return $this;
-    } // setPerId()
+    } // setFamilyId()
 
     /**
-     * Set the value of [nte_fam_id] column.
+     * Set the value of [can_canvasser] column.
      *
      * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\CanvassData The current object (for fluent API support)
      */
-    public function setFamId($v)
+    public function setCanvasser($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->nte_fam_id !== $v) {
-            $this->nte_fam_id = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_FAM_ID] = true;
-        }
-
-        if ($this->aFamily !== null && $this->aFamily->getId() !== $v) {
-            $this->aFamily = null;
+        if ($this->can_canvasser !== $v) {
+            $this->can_canvasser = $v;
+            $this->modifiedColumns[CanvassDataTableMap::COL_CAN_CANVASSER] = true;
         }
 
         return $this;
-    } // setFamId()
+    } // setCanvasser()
 
     /**
-     * Set the value of [nte_private] column.
+     * Set the value of [can_fyid] column.
      *
      * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\CanvassData The current object (for fluent API support)
      */
-    public function setPrivate($v)
+    public function setFyid($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->nte_private !== $v) {
-            $this->nte_private = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_PRIVATE] = true;
+        if ($this->can_fyid !== $v) {
+            $this->can_fyid = $v;
+            $this->modifiedColumns[CanvassDataTableMap::COL_CAN_FYID] = true;
         }
 
         return $this;
-    } // setPrivate()
+    } // setFyid()
 
     /**
-     * Set the value of [nte_text] column.
+     * Sets the value of [can_date] column to a normalized version of the date/time value specified.
+     *
+     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
+     *               Empty strings are treated as NULL.
+     * @return $this|\ChurchCRM\CanvassData The current object (for fluent API support)
+     */
+    public function setDate($v)
+    {
+        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
+        if ($this->can_date !== null || $dt !== null) {
+            if ($this->can_date === null || $dt === null || $dt->format("Y-m-d") !== $this->can_date->format("Y-m-d")) {
+                $this->can_date = $dt === null ? null : clone $dt;
+                $this->modifiedColumns[CanvassDataTableMap::COL_CAN_DATE] = true;
+            }
+        } // if either are not null
+
+        return $this;
+    } // setDate()
+
+    /**
+     * Set the value of [can_positive] column.
      *
      * @param string $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\CanvassData The current object (for fluent API support)
      */
-    public function setText($v)
+    public function setPositive($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->nte_text !== $v) {
-            $this->nte_text = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_TEXT] = true;
+        if ($this->can_positive !== $v) {
+            $this->can_positive = $v;
+            $this->modifiedColumns[CanvassDataTableMap::COL_CAN_POSITIVE] = true;
         }
 
         return $this;
-    } // setText()
+    } // setPositive()
 
     /**
-     * Sets the value of [nte_dateentered] column to a normalized version of the date/time value specified.
-     *
-     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
-     *               Empty strings are treated as NULL.
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setDateEntered($v)
-    {
-        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->nte_dateentered !== null || $dt !== null) {
-            if ( ($dt != $this->nte_dateentered) // normalized values don't match
-                || ($dt->format('Y-m-d H:i:s.u') === NULL) // or the entered value matches the default
-                 ) {
-                $this->nte_dateentered = $dt === null ? null : clone $dt;
-                $this->modifiedColumns[NoteTableMap::COL_NTE_DATEENTERED] = true;
-            }
-        } // if either are not null
-
-        return $this;
-    } // setDateEntered()
-
-    /**
-     * Sets the value of [nte_datelastedited] column to a normalized version of the date/time value specified.
-     *
-     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
-     *               Empty strings are treated as NULL.
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setDateLastEdited($v)
-    {
-        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->nte_datelastedited !== null || $dt !== null) {
-            if ($this->nte_datelastedited === null || $dt === null || $dt->format("Y-m-d H:i:s.u") !== $this->nte_datelastedited->format("Y-m-d H:i:s.u")) {
-                $this->nte_datelastedited = $dt === null ? null : clone $dt;
-                $this->modifiedColumns[NoteTableMap::COL_NTE_DATELASTEDITED] = true;
-            }
-        } // if either are not null
-
-        return $this;
-    } // setDateLastEdited()
-
-    /**
-     * Set the value of [nte_enteredby] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setEnteredBy($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_enteredby !== $v) {
-            $this->nte_enteredby = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_ENTEREDBY] = true;
-        }
-
-        return $this;
-    } // setEnteredBy()
-
-    /**
-     * Set the value of [nte_editedby] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setEditedBy($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_editedby !== $v) {
-            $this->nte_editedby = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_EDITEDBY] = true;
-        }
-
-        return $this;
-    } // setEditedBy()
-
-    /**
-     * Set the value of [nte_type] column.
+     * Set the value of [can_critical] column.
      *
      * @param string $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\CanvassData The current object (for fluent API support)
      */
-    public function setType($v)
+    public function setCritical($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->nte_type !== $v) {
-            $this->nte_type = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_TYPE] = true;
+        if ($this->can_critical !== $v) {
+            $this->can_critical = $v;
+            $this->modifiedColumns[CanvassDataTableMap::COL_CAN_CRITICAL] = true;
         }
 
         return $this;
-    } // setType()
+    } // setCritical()
+
+    /**
+     * Set the value of [can_insightful] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\CanvassData The current object (for fluent API support)
+     */
+    public function setInsightful($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->can_insightful !== $v) {
+            $this->can_insightful = $v;
+            $this->modifiedColumns[CanvassDataTableMap::COL_CAN_INSIGHTFUL] = true;
+        }
+
+        return $this;
+    } // setInsightful()
+
+    /**
+     * Set the value of [can_financial] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\CanvassData The current object (for fluent API support)
+     */
+    public function setFinancial($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->can_financial !== $v) {
+            $this->can_financial = $v;
+            $this->modifiedColumns[CanvassDataTableMap::COL_CAN_FINANCIAL] = true;
+        }
+
+        return $this;
+    } // setFinancial()
+
+    /**
+     * Set the value of [can_suggestion] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\CanvassData The current object (for fluent API support)
+     */
+    public function setSuggestion($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->can_suggestion !== $v) {
+            $this->can_suggestion = $v;
+            $this->modifiedColumns[CanvassDataTableMap::COL_CAN_SUGGESTION] = true;
+        }
+
+        return $this;
+    } // setSuggestion()
+
+    /**
+     * Sets the value of the [can_notinterested] column.
+     * Non-boolean arguments are converted using the following rules:
+     *   * 1, '1', 'true',  'on',  and 'yes' are converted to boolean true
+     *   * 0, '0', 'false', 'off', and 'no'  are converted to boolean false
+     * Check on string values is case insensitive (so 'FaLsE' is seen as 'false').
+     *
+     * @param  boolean|integer|string $v The new value
+     * @return $this|\ChurchCRM\CanvassData The current object (for fluent API support)
+     */
+    public function setNotInterested($v)
+    {
+        if ($v !== null) {
+            if (is_string($v)) {
+                $v = in_array(strtolower($v), array('false', 'off', '-', 'no', 'n', '0', '')) ? false : true;
+            } else {
+                $v = (boolean) $v;
+            }
+        }
+
+        if ($this->can_notinterested !== $v) {
+            $this->can_notinterested = $v;
+            $this->modifiedColumns[CanvassDataTableMap::COL_CAN_NOTINTERESTED] = true;
+        }
+
+        return $this;
+    } // setNotInterested()
+
+    /**
+     * Set the value of [can_whynotinterested] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\CanvassData The current object (for fluent API support)
+     */
+    public function setWhyNotInterested($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->can_whynotinterested !== $v) {
+            $this->can_whynotinterested = $v;
+            $this->modifiedColumns[CanvassDataTableMap::COL_CAN_WHYNOTINTERESTED] = true;
+        }
+
+        return $this;
+    } // setWhyNotInterested()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -742,27 +794,15 @@ abstract class Note implements ActiveRecordInterface
      */
     public function hasOnlyDefaultValues()
     {
-            if ($this->nte_per_id !== 0) {
+            if ($this->can_famid !== 0) {
                 return false;
             }
 
-            if ($this->nte_fam_id !== 0) {
+            if ($this->can_canvasser !== 0) {
                 return false;
             }
 
-            if ($this->nte_private !== 0) {
-                return false;
-            }
-
-            if ($this->nte_dateentered && $this->nte_dateentered->format('Y-m-d H:i:s.u') !== NULL) {
-                return false;
-            }
-
-            if ($this->nte_enteredby !== 0) {
-                return false;
-            }
-
-            if ($this->nte_editedby !== 0) {
+            if ($this->can_notinterested !== false) {
                 return false;
             }
 
@@ -792,41 +832,44 @@ abstract class Note implements ActiveRecordInterface
     {
         try {
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : NoteTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : CanvassDataTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->can_id = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : NoteTableMap::translateFieldName('PerId', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_per_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : CanvassDataTableMap::translateFieldName('FamilyId', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->can_famid = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : NoteTableMap::translateFieldName('FamId', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_fam_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : CanvassDataTableMap::translateFieldName('Canvasser', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->can_canvasser = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : NoteTableMap::translateFieldName('Private', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_private = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : CanvassDataTableMap::translateFieldName('Fyid', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->can_fyid = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : NoteTableMap::translateFieldName('Text', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_text = (null !== $col) ? (string) $col : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : NoteTableMap::translateFieldName('DateEntered', TableMap::TYPE_PHPNAME, $indexType)];
-            if ($col === '0000-00-00 00:00:00') {
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : CanvassDataTableMap::translateFieldName('Date', TableMap::TYPE_PHPNAME, $indexType)];
+            if ($col === '0000-00-00') {
                 $col = null;
             }
-            $this->nte_dateentered = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
+            $this->can_date = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : NoteTableMap::translateFieldName('DateLastEdited', TableMap::TYPE_PHPNAME, $indexType)];
-            if ($col === '0000-00-00 00:00:00') {
-                $col = null;
-            }
-            $this->nte_datelastedited = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : CanvassDataTableMap::translateFieldName('Positive', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->can_positive = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : NoteTableMap::translateFieldName('EnteredBy', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_enteredby = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : CanvassDataTableMap::translateFieldName('Critical', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->can_critical = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : NoteTableMap::translateFieldName('EditedBy', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_editedby = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : CanvassDataTableMap::translateFieldName('Insightful', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->can_insightful = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : NoteTableMap::translateFieldName('Type', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_type = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : CanvassDataTableMap::translateFieldName('Financial', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->can_financial = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : CanvassDataTableMap::translateFieldName('Suggestion', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->can_suggestion = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 10 + $startcol : CanvassDataTableMap::translateFieldName('NotInterested', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->can_notinterested = (null !== $col) ? (boolean) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 11 + $startcol : CanvassDataTableMap::translateFieldName('WhyNotInterested', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->can_whynotinterested = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -835,10 +878,10 @@ abstract class Note implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 10; // 10 = NoteTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 12; // 12 = CanvassDataTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException(sprintf('Error populating %s object', '\\ChurchCRM\\Note'), 0, $e);
+            throw new PropelException(sprintf('Error populating %s object', '\\ChurchCRM\\CanvassData'), 0, $e);
         }
     }
 
@@ -857,12 +900,6 @@ abstract class Note implements ActiveRecordInterface
      */
     public function ensureConsistency()
     {
-        if ($this->aPerson !== null && $this->nte_per_id !== $this->aPerson->getId()) {
-            $this->aPerson = null;
-        }
-        if ($this->aFamily !== null && $this->nte_fam_id !== $this->aFamily->getId()) {
-            $this->aFamily = null;
-        }
     } // ensureConsistency
 
     /**
@@ -886,13 +923,13 @@ abstract class Note implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getReadConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getReadConnection(CanvassDataTableMap::DATABASE_NAME);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $dataFetcher = ChildNoteQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
+        $dataFetcher = ChildCanvassDataQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
         $row = $dataFetcher->fetch();
         $dataFetcher->close();
         if (!$row) {
@@ -902,8 +939,6 @@ abstract class Note implements ActiveRecordInterface
 
         if ($deep) {  // also de-associate any related objects?
 
-            $this->aPerson = null;
-            $this->aFamily = null;
         } // if (deep)
     }
 
@@ -913,8 +948,8 @@ abstract class Note implements ActiveRecordInterface
      * @param      ConnectionInterface $con
      * @return void
      * @throws PropelException
-     * @see Note::setDeleted()
-     * @see Note::isDeleted()
+     * @see CanvassData::setDeleted()
+     * @see CanvassData::isDeleted()
      */
     public function delete(ConnectionInterface $con = null)
     {
@@ -923,11 +958,11 @@ abstract class Note implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(CanvassDataTableMap::DATABASE_NAME);
         }
 
         $con->transaction(function () use ($con) {
-            $deleteQuery = ChildNoteQuery::create()
+            $deleteQuery = ChildCanvassDataQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             if ($ret) {
@@ -958,7 +993,7 @@ abstract class Note implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(CanvassDataTableMap::DATABASE_NAME);
         }
 
         return $con->transaction(function () use ($con) {
@@ -977,7 +1012,7 @@ abstract class Note implements ActiveRecordInterface
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                NoteTableMap::addInstanceToPool($this);
+                CanvassDataTableMap::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -1002,25 +1037,6 @@ abstract class Note implements ActiveRecordInterface
         $affectedRows = 0; // initialize var to track total num of affected rows
         if (!$this->alreadyInSave) {
             $this->alreadyInSave = true;
-
-            // We call the save method on the following object(s) if they
-            // were passed to this object by their corresponding set
-            // method.  This object relates to these object(s) by a
-            // foreign key reference.
-
-            if ($this->aPerson !== null) {
-                if ($this->aPerson->isModified() || $this->aPerson->isNew()) {
-                    $affectedRows += $this->aPerson->save($con);
-                }
-                $this->setPerson($this->aPerson);
-            }
-
-            if ($this->aFamily !== null) {
-                if ($this->aFamily->isModified() || $this->aFamily->isNew()) {
-                    $affectedRows += $this->aFamily->save($con);
-                }
-                $this->setFamily($this->aFamily);
-            }
 
             if ($this->isNew() || $this->isModified()) {
                 // persist changes
@@ -1053,45 +1069,51 @@ abstract class Note implements ActiveRecordInterface
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[NoteTableMap::COL_NTE_ID] = true;
-        if (null !== $this->nte_id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . NoteTableMap::COL_NTE_ID . ')');
+        $this->modifiedColumns[CanvassDataTableMap::COL_CAN_ID] = true;
+        if (null !== $this->can_id) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . CanvassDataTableMap::COL_CAN_ID . ')');
         }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_ID';
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_ID)) {
+            $modifiedColumns[':p' . $index++]  = 'can_ID';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PER_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_per_ID';
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_FAMID)) {
+            $modifiedColumns[':p' . $index++]  = 'can_famID';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_FAM_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_fam_ID';
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_CANVASSER)) {
+            $modifiedColumns[':p' . $index++]  = 'can_Canvasser';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PRIVATE)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_Private';
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_FYID)) {
+            $modifiedColumns[':p' . $index++]  = 'can_FYID';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TEXT)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_Text';
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_DATE)) {
+            $modifiedColumns[':p' . $index++]  = 'can_date';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATEENTERED)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_DateEntered';
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_POSITIVE)) {
+            $modifiedColumns[':p' . $index++]  = 'can_Positive';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATELASTEDITED)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_DateLastEdited';
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_CRITICAL)) {
+            $modifiedColumns[':p' . $index++]  = 'can_Critical';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ENTEREDBY)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_EnteredBy';
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_INSIGHTFUL)) {
+            $modifiedColumns[':p' . $index++]  = 'can_Insightful';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_EDITEDBY)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_EditedBy';
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_FINANCIAL)) {
+            $modifiedColumns[':p' . $index++]  = 'can_Financial';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TYPE)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_Type';
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_SUGGESTION)) {
+            $modifiedColumns[':p' . $index++]  = 'can_Suggestion';
+        }
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_NOTINTERESTED)) {
+            $modifiedColumns[':p' . $index++]  = 'can_NotInterested';
+        }
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_WHYNOTINTERESTED)) {
+            $modifiedColumns[':p' . $index++]  = 'can_WhyNotInterested';
         }
 
         $sql = sprintf(
-            'INSERT INTO note_nte (%s) VALUES (%s)',
+            'INSERT INTO canvassdata_can (%s) VALUES (%s)',
             implode(', ', $modifiedColumns),
             implode(', ', array_keys($modifiedColumns))
         );
@@ -1100,35 +1122,41 @@ abstract class Note implements ActiveRecordInterface
             $stmt = $con->prepare($sql);
             foreach ($modifiedColumns as $identifier => $columnName) {
                 switch ($columnName) {
-                    case 'nte_ID':
-                        $stmt->bindValue($identifier, $this->nte_id, PDO::PARAM_INT);
+                    case 'can_ID':
+                        $stmt->bindValue($identifier, $this->can_id, PDO::PARAM_INT);
                         break;
-                    case 'nte_per_ID':
-                        $stmt->bindValue($identifier, $this->nte_per_id, PDO::PARAM_INT);
+                    case 'can_famID':
+                        $stmt->bindValue($identifier, $this->can_famid, PDO::PARAM_INT);
                         break;
-                    case 'nte_fam_ID':
-                        $stmt->bindValue($identifier, $this->nte_fam_id, PDO::PARAM_INT);
+                    case 'can_Canvasser':
+                        $stmt->bindValue($identifier, $this->can_canvasser, PDO::PARAM_INT);
                         break;
-                    case 'nte_Private':
-                        $stmt->bindValue($identifier, $this->nte_private, PDO::PARAM_INT);
+                    case 'can_FYID':
+                        $stmt->bindValue($identifier, $this->can_fyid, PDO::PARAM_INT);
                         break;
-                    case 'nte_Text':
-                        $stmt->bindValue($identifier, $this->nte_text, PDO::PARAM_STR);
+                    case 'can_date':
+                        $stmt->bindValue($identifier, $this->can_date ? $this->can_date->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
                         break;
-                    case 'nte_DateEntered':
-                        $stmt->bindValue($identifier, $this->nte_dateentered ? $this->nte_dateentered->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
+                    case 'can_Positive':
+                        $stmt->bindValue($identifier, $this->can_positive, PDO::PARAM_STR);
                         break;
-                    case 'nte_DateLastEdited':
-                        $stmt->bindValue($identifier, $this->nte_datelastedited ? $this->nte_datelastedited->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
+                    case 'can_Critical':
+                        $stmt->bindValue($identifier, $this->can_critical, PDO::PARAM_STR);
                         break;
-                    case 'nte_EnteredBy':
-                        $stmt->bindValue($identifier, $this->nte_enteredby, PDO::PARAM_INT);
+                    case 'can_Insightful':
+                        $stmt->bindValue($identifier, $this->can_insightful, PDO::PARAM_STR);
                         break;
-                    case 'nte_EditedBy':
-                        $stmt->bindValue($identifier, $this->nte_editedby, PDO::PARAM_INT);
+                    case 'can_Financial':
+                        $stmt->bindValue($identifier, $this->can_financial, PDO::PARAM_STR);
                         break;
-                    case 'nte_Type':
-                        $stmt->bindValue($identifier, $this->nte_type, PDO::PARAM_STR);
+                    case 'can_Suggestion':
+                        $stmt->bindValue($identifier, $this->can_suggestion, PDO::PARAM_STR);
+                        break;
+                    case 'can_NotInterested':
+                        $stmt->bindValue($identifier, (int) $this->can_notinterested, PDO::PARAM_INT);
+                        break;
+                    case 'can_WhyNotInterested':
+                        $stmt->bindValue($identifier, $this->can_whynotinterested, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -1176,7 +1204,7 @@ abstract class Note implements ActiveRecordInterface
      */
     public function getByName($name, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = NoteTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = CanvassDataTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -1196,31 +1224,37 @@ abstract class Note implements ActiveRecordInterface
                 return $this->getId();
                 break;
             case 1:
-                return $this->getPerId();
+                return $this->getFamilyId();
                 break;
             case 2:
-                return $this->getFamId();
+                return $this->getCanvasser();
                 break;
             case 3:
-                return $this->getPrivate();
+                return $this->getFyid();
                 break;
             case 4:
-                return $this->getText();
+                return $this->getDate();
                 break;
             case 5:
-                return $this->getDateEntered();
+                return $this->getPositive();
                 break;
             case 6:
-                return $this->getDateLastEdited();
+                return $this->getCritical();
                 break;
             case 7:
-                return $this->getEnteredBy();
+                return $this->getInsightful();
                 break;
             case 8:
-                return $this->getEditedBy();
+                return $this->getFinancial();
                 break;
             case 9:
-                return $this->getType();
+                return $this->getSuggestion();
+                break;
+            case 10:
+                return $this->getNotInterested();
+                break;
+            case 11:
+                return $this->getWhyNotInterested();
                 break;
             default:
                 return null;
@@ -1239,36 +1273,33 @@ abstract class Note implements ActiveRecordInterface
      *                    Defaults to TableMap::TYPE_PHPNAME.
      * @param     boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns. Defaults to TRUE.
      * @param     array $alreadyDumpedObjects List of objects to skip to avoid recursion
-     * @param     boolean $includeForeignObjects (optional) Whether to include hydrated related objects. Default to FALSE.
      *
      * @return array an associative array containing the field names (as keys) and field values
      */
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
     {
 
-        if (isset($alreadyDumpedObjects['Note'][$this->hashCode()])) {
+        if (isset($alreadyDumpedObjects['CanvassData'][$this->hashCode()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['Note'][$this->hashCode()] = true;
-        $keys = NoteTableMap::getFieldNames($keyType);
+        $alreadyDumpedObjects['CanvassData'][$this->hashCode()] = true;
+        $keys = CanvassDataTableMap::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getId(),
-            $keys[1] => $this->getPerId(),
-            $keys[2] => $this->getFamId(),
-            $keys[3] => $this->getPrivate(),
-            $keys[4] => $this->getText(),
-            $keys[5] => $this->getDateEntered(),
-            $keys[6] => $this->getDateLastEdited(),
-            $keys[7] => $this->getEnteredBy(),
-            $keys[8] => $this->getEditedBy(),
-            $keys[9] => $this->getType(),
+            $keys[1] => $this->getFamilyId(),
+            $keys[2] => $this->getCanvasser(),
+            $keys[3] => $this->getFyid(),
+            $keys[4] => $this->getDate(),
+            $keys[5] => $this->getPositive(),
+            $keys[6] => $this->getCritical(),
+            $keys[7] => $this->getInsightful(),
+            $keys[8] => $this->getFinancial(),
+            $keys[9] => $this->getSuggestion(),
+            $keys[10] => $this->getNotInterested(),
+            $keys[11] => $this->getWhyNotInterested(),
         );
-        if ($result[$keys[5]] instanceof \DateTime) {
-            $result[$keys[5]] = $result[$keys[5]]->format('c');
-        }
-
-        if ($result[$keys[6]] instanceof \DateTime) {
-            $result[$keys[6]] = $result[$keys[6]]->format('c');
+        if ($result[$keys[4]] instanceof \DateTime) {
+            $result[$keys[4]] = $result[$keys[4]]->format('c');
         }
 
         $virtualColumns = $this->virtualColumns;
@@ -1276,38 +1307,6 @@ abstract class Note implements ActiveRecordInterface
             $result[$key] = $virtualColumn;
         }
 
-        if ($includeForeignObjects) {
-            if (null !== $this->aPerson) {
-
-                switch ($keyType) {
-                    case TableMap::TYPE_CAMELNAME:
-                        $key = 'person';
-                        break;
-                    case TableMap::TYPE_FIELDNAME:
-                        $key = 'person_per';
-                        break;
-                    default:
-                        $key = 'Person';
-                }
-
-                $result[$key] = $this->aPerson->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
-            }
-            if (null !== $this->aFamily) {
-
-                switch ($keyType) {
-                    case TableMap::TYPE_CAMELNAME:
-                        $key = 'family';
-                        break;
-                    case TableMap::TYPE_FIELDNAME:
-                        $key = 'family_fam';
-                        break;
-                    default:
-                        $key = 'Family';
-                }
-
-                $result[$key] = $this->aFamily->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
-            }
-        }
 
         return $result;
     }
@@ -1321,11 +1320,11 @@ abstract class Note implements ActiveRecordInterface
      *                one of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
      *                TableMap::TYPE_COLNAME, TableMap::TYPE_FIELDNAME, TableMap::TYPE_NUM.
      *                Defaults to TableMap::TYPE_PHPNAME.
-     * @return $this|\ChurchCRM\Note
+     * @return $this|\ChurchCRM\CanvassData
      */
     public function setByName($name, $value, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = NoteTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = CanvassDataTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
 
         return $this->setByPosition($pos, $value);
     }
@@ -1336,7 +1335,7 @@ abstract class Note implements ActiveRecordInterface
      *
      * @param  int $pos position in xml schema
      * @param  mixed $value field value
-     * @return $this|\ChurchCRM\Note
+     * @return $this|\ChurchCRM\CanvassData
      */
     public function setByPosition($pos, $value)
     {
@@ -1345,31 +1344,37 @@ abstract class Note implements ActiveRecordInterface
                 $this->setId($value);
                 break;
             case 1:
-                $this->setPerId($value);
+                $this->setFamilyId($value);
                 break;
             case 2:
-                $this->setFamId($value);
+                $this->setCanvasser($value);
                 break;
             case 3:
-                $this->setPrivate($value);
+                $this->setFyid($value);
                 break;
             case 4:
-                $this->setText($value);
+                $this->setDate($value);
                 break;
             case 5:
-                $this->setDateEntered($value);
+                $this->setPositive($value);
                 break;
             case 6:
-                $this->setDateLastEdited($value);
+                $this->setCritical($value);
                 break;
             case 7:
-                $this->setEnteredBy($value);
+                $this->setInsightful($value);
                 break;
             case 8:
-                $this->setEditedBy($value);
+                $this->setFinancial($value);
                 break;
             case 9:
-                $this->setType($value);
+                $this->setSuggestion($value);
+                break;
+            case 10:
+                $this->setNotInterested($value);
+                break;
+            case 11:
+                $this->setWhyNotInterested($value);
                 break;
         } // switch()
 
@@ -1395,37 +1400,43 @@ abstract class Note implements ActiveRecordInterface
      */
     public function fromArray($arr, $keyType = TableMap::TYPE_PHPNAME)
     {
-        $keys = NoteTableMap::getFieldNames($keyType);
+        $keys = CanvassDataTableMap::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) {
             $this->setId($arr[$keys[0]]);
         }
         if (array_key_exists($keys[1], $arr)) {
-            $this->setPerId($arr[$keys[1]]);
+            $this->setFamilyId($arr[$keys[1]]);
         }
         if (array_key_exists($keys[2], $arr)) {
-            $this->setFamId($arr[$keys[2]]);
+            $this->setCanvasser($arr[$keys[2]]);
         }
         if (array_key_exists($keys[3], $arr)) {
-            $this->setPrivate($arr[$keys[3]]);
+            $this->setFyid($arr[$keys[3]]);
         }
         if (array_key_exists($keys[4], $arr)) {
-            $this->setText($arr[$keys[4]]);
+            $this->setDate($arr[$keys[4]]);
         }
         if (array_key_exists($keys[5], $arr)) {
-            $this->setDateEntered($arr[$keys[5]]);
+            $this->setPositive($arr[$keys[5]]);
         }
         if (array_key_exists($keys[6], $arr)) {
-            $this->setDateLastEdited($arr[$keys[6]]);
+            $this->setCritical($arr[$keys[6]]);
         }
         if (array_key_exists($keys[7], $arr)) {
-            $this->setEnteredBy($arr[$keys[7]]);
+            $this->setInsightful($arr[$keys[7]]);
         }
         if (array_key_exists($keys[8], $arr)) {
-            $this->setEditedBy($arr[$keys[8]]);
+            $this->setFinancial($arr[$keys[8]]);
         }
         if (array_key_exists($keys[9], $arr)) {
-            $this->setType($arr[$keys[9]]);
+            $this->setSuggestion($arr[$keys[9]]);
+        }
+        if (array_key_exists($keys[10], $arr)) {
+            $this->setNotInterested($arr[$keys[10]]);
+        }
+        if (array_key_exists($keys[11], $arr)) {
+            $this->setWhyNotInterested($arr[$keys[11]]);
         }
     }
 
@@ -1446,7 +1457,7 @@ abstract class Note implements ActiveRecordInterface
      * @param string $data The source data to import from
      * @param string $keyType The type of keys the array uses.
      *
-     * @return $this|\ChurchCRM\Note The current object, for fluid interface
+     * @return $this|\ChurchCRM\CanvassData The current object, for fluid interface
      */
     public function importFrom($parser, $data, $keyType = TableMap::TYPE_PHPNAME)
     {
@@ -1466,37 +1477,43 @@ abstract class Note implements ActiveRecordInterface
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(NoteTableMap::DATABASE_NAME);
+        $criteria = new Criteria(CanvassDataTableMap::DATABASE_NAME);
 
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ID)) {
-            $criteria->add(NoteTableMap::COL_NTE_ID, $this->nte_id);
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_ID)) {
+            $criteria->add(CanvassDataTableMap::COL_CAN_ID, $this->can_id);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PER_ID)) {
-            $criteria->add(NoteTableMap::COL_NTE_PER_ID, $this->nte_per_id);
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_FAMID)) {
+            $criteria->add(CanvassDataTableMap::COL_CAN_FAMID, $this->can_famid);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_FAM_ID)) {
-            $criteria->add(NoteTableMap::COL_NTE_FAM_ID, $this->nte_fam_id);
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_CANVASSER)) {
+            $criteria->add(CanvassDataTableMap::COL_CAN_CANVASSER, $this->can_canvasser);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PRIVATE)) {
-            $criteria->add(NoteTableMap::COL_NTE_PRIVATE, $this->nte_private);
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_FYID)) {
+            $criteria->add(CanvassDataTableMap::COL_CAN_FYID, $this->can_fyid);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TEXT)) {
-            $criteria->add(NoteTableMap::COL_NTE_TEXT, $this->nte_text);
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_DATE)) {
+            $criteria->add(CanvassDataTableMap::COL_CAN_DATE, $this->can_date);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATEENTERED)) {
-            $criteria->add(NoteTableMap::COL_NTE_DATEENTERED, $this->nte_dateentered);
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_POSITIVE)) {
+            $criteria->add(CanvassDataTableMap::COL_CAN_POSITIVE, $this->can_positive);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATELASTEDITED)) {
-            $criteria->add(NoteTableMap::COL_NTE_DATELASTEDITED, $this->nte_datelastedited);
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_CRITICAL)) {
+            $criteria->add(CanvassDataTableMap::COL_CAN_CRITICAL, $this->can_critical);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ENTEREDBY)) {
-            $criteria->add(NoteTableMap::COL_NTE_ENTEREDBY, $this->nte_enteredby);
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_INSIGHTFUL)) {
+            $criteria->add(CanvassDataTableMap::COL_CAN_INSIGHTFUL, $this->can_insightful);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_EDITEDBY)) {
-            $criteria->add(NoteTableMap::COL_NTE_EDITEDBY, $this->nte_editedby);
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_FINANCIAL)) {
+            $criteria->add(CanvassDataTableMap::COL_CAN_FINANCIAL, $this->can_financial);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TYPE)) {
-            $criteria->add(NoteTableMap::COL_NTE_TYPE, $this->nte_type);
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_SUGGESTION)) {
+            $criteria->add(CanvassDataTableMap::COL_CAN_SUGGESTION, $this->can_suggestion);
+        }
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_NOTINTERESTED)) {
+            $criteria->add(CanvassDataTableMap::COL_CAN_NOTINTERESTED, $this->can_notinterested);
+        }
+        if ($this->isColumnModified(CanvassDataTableMap::COL_CAN_WHYNOTINTERESTED)) {
+            $criteria->add(CanvassDataTableMap::COL_CAN_WHYNOTINTERESTED, $this->can_whynotinterested);
         }
 
         return $criteria;
@@ -1514,8 +1531,8 @@ abstract class Note implements ActiveRecordInterface
      */
     public function buildPkeyCriteria()
     {
-        $criteria = ChildNoteQuery::create();
-        $criteria->add(NoteTableMap::COL_NTE_ID, $this->nte_id);
+        $criteria = ChildCanvassDataQuery::create();
+        $criteria->add(CanvassDataTableMap::COL_CAN_ID, $this->can_id);
 
         return $criteria;
     }
@@ -1552,7 +1569,7 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Generic method to set the primary key (nte_id column).
+     * Generic method to set the primary key (can_id column).
      *
      * @param       int $key Primary key.
      * @return void
@@ -1577,22 +1594,24 @@ abstract class Note implements ActiveRecordInterface
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of \ChurchCRM\Note (or compatible) type.
+     * @param      object $copyObj An object of \ChurchCRM\CanvassData (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param      boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
      */
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
-        $copyObj->setPerId($this->getPerId());
-        $copyObj->setFamId($this->getFamId());
-        $copyObj->setPrivate($this->getPrivate());
-        $copyObj->setText($this->getText());
-        $copyObj->setDateEntered($this->getDateEntered());
-        $copyObj->setDateLastEdited($this->getDateLastEdited());
-        $copyObj->setEnteredBy($this->getEnteredBy());
-        $copyObj->setEditedBy($this->getEditedBy());
-        $copyObj->setType($this->getType());
+        $copyObj->setFamilyId($this->getFamilyId());
+        $copyObj->setCanvasser($this->getCanvasser());
+        $copyObj->setFyid($this->getFyid());
+        $copyObj->setDate($this->getDate());
+        $copyObj->setPositive($this->getPositive());
+        $copyObj->setCritical($this->getCritical());
+        $copyObj->setInsightful($this->getInsightful());
+        $copyObj->setFinancial($this->getFinancial());
+        $copyObj->setSuggestion($this->getSuggestion());
+        $copyObj->setNotInterested($this->getNotInterested());
+        $copyObj->setWhyNotInterested($this->getWhyNotInterested());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setId(NULL); // this is a auto-increment column, so set to default value
@@ -1608,7 +1627,7 @@ abstract class Note implements ActiveRecordInterface
      * objects.
      *
      * @param  boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return \ChurchCRM\Note Clone of current object.
+     * @return \ChurchCRM\CanvassData Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1622,130 +1641,24 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Declares an association between this object and a ChildPerson object.
-     *
-     * @param  ChildPerson $v
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     * @throws PropelException
-     */
-    public function setPerson(ChildPerson $v = null)
-    {
-        if ($v === null) {
-            $this->setPerId(0);
-        } else {
-            $this->setPerId($v->getId());
-        }
-
-        $this->aPerson = $v;
-
-        // Add binding for other direction of this n:n relationship.
-        // If this object has already been added to the ChildPerson object, it will not be re-added.
-        if ($v !== null) {
-            $v->addNote($this);
-        }
-
-
-        return $this;
-    }
-
-
-    /**
-     * Get the associated ChildPerson object
-     *
-     * @param  ConnectionInterface $con Optional Connection object.
-     * @return ChildPerson The associated ChildPerson object.
-     * @throws PropelException
-     */
-    public function getPerson(ConnectionInterface $con = null)
-    {
-        if ($this->aPerson === null && ($this->nte_per_id !== null)) {
-            $this->aPerson = ChildPersonQuery::create()->findPk($this->nte_per_id, $con);
-            /* The following can be used additionally to
-                guarantee the related object contains a reference
-                to this object.  This level of coupling may, however, be
-                undesirable since it could result in an only partially populated collection
-                in the referenced object.
-                $this->aPerson->addNotes($this);
-             */
-        }
-
-        return $this->aPerson;
-    }
-
-    /**
-     * Declares an association between this object and a ChildFamily object.
-     *
-     * @param  ChildFamily $v
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     * @throws PropelException
-     */
-    public function setFamily(ChildFamily $v = null)
-    {
-        if ($v === null) {
-            $this->setFamId(0);
-        } else {
-            $this->setFamId($v->getId());
-        }
-
-        $this->aFamily = $v;
-
-        // Add binding for other direction of this n:n relationship.
-        // If this object has already been added to the ChildFamily object, it will not be re-added.
-        if ($v !== null) {
-            $v->addNote($this);
-        }
-
-
-        return $this;
-    }
-
-
-    /**
-     * Get the associated ChildFamily object
-     *
-     * @param  ConnectionInterface $con Optional Connection object.
-     * @return ChildFamily The associated ChildFamily object.
-     * @throws PropelException
-     */
-    public function getFamily(ConnectionInterface $con = null)
-    {
-        if ($this->aFamily === null && ($this->nte_fam_id !== null)) {
-            $this->aFamily = ChildFamilyQuery::create()->findPk($this->nte_fam_id, $con);
-            /* The following can be used additionally to
-                guarantee the related object contains a reference
-                to this object.  This level of coupling may, however, be
-                undesirable since it could result in an only partially populated collection
-                in the referenced object.
-                $this->aFamily->addNotes($this);
-             */
-        }
-
-        return $this->aFamily;
-    }
-
-    /**
      * Clears the current object, sets all attributes to their default values and removes
      * outgoing references as well as back-references (from other objects to this one. Results probably in a database
      * change of those foreign objects when you call `save` there).
      */
     public function clear()
     {
-        if (null !== $this->aPerson) {
-            $this->aPerson->removeNote($this);
-        }
-        if (null !== $this->aFamily) {
-            $this->aFamily->removeNote($this);
-        }
-        $this->nte_id = null;
-        $this->nte_per_id = null;
-        $this->nte_fam_id = null;
-        $this->nte_private = null;
-        $this->nte_text = null;
-        $this->nte_dateentered = null;
-        $this->nte_datelastedited = null;
-        $this->nte_enteredby = null;
-        $this->nte_editedby = null;
-        $this->nte_type = null;
+        $this->can_id = null;
+        $this->can_famid = null;
+        $this->can_canvasser = null;
+        $this->can_fyid = null;
+        $this->can_date = null;
+        $this->can_positive = null;
+        $this->can_critical = null;
+        $this->can_insightful = null;
+        $this->can_financial = null;
+        $this->can_suggestion = null;
+        $this->can_notinterested = null;
+        $this->can_whynotinterested = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();
@@ -1767,8 +1680,6 @@ abstract class Note implements ActiveRecordInterface
         if ($deep) {
         } // if ($deep)
 
-        $this->aPerson = null;
-        $this->aFamily = null;
     }
 
     /**
@@ -1778,7 +1689,7 @@ abstract class Note implements ActiveRecordInterface
      */
     public function __toString()
     {
-        return (string) $this->exportTo(NoteTableMap::DEFAULT_STRING_FORMAT);
+        return (string) $this->exportTo(CanvassDataTableMap::DEFAULT_STRING_FORMAT);
     }
 
     /**

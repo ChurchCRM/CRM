@@ -5,12 +5,8 @@ namespace ChurchCRM\Base;
 use \DateTime;
 use \Exception;
 use \PDO;
-use ChurchCRM\Family as ChildFamily;
-use ChurchCRM\FamilyQuery as ChildFamilyQuery;
-use ChurchCRM\NoteQuery as ChildNoteQuery;
-use ChurchCRM\Person as ChildPerson;
-use ChurchCRM\PersonQuery as ChildPersonQuery;
-use ChurchCRM\Map\NoteTableMap;
+use ChurchCRM\DonatedItemQuery as ChildDonatedItemQuery;
+use ChurchCRM\Map\DonatedItemTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -25,18 +21,18 @@ use Propel\Runtime\Parser\AbstractParser;
 use Propel\Runtime\Util\PropelDateTime;
 
 /**
- * Base class that represents a row from the 'note_nte' table.
+ * Base class that represents a row from the 'donateditem_di' table.
  *
  *
  *
  * @package    propel.generator.ChurchCRM.Base
  */
-abstract class Note implements ActiveRecordInterface
+abstract class DonatedItem implements ActiveRecordInterface
 {
     /**
      * TableMap class name
      */
-    const TABLE_MAP = '\\ChurchCRM\\Map\\NoteTableMap';
+    const TABLE_MAP = '\\ChurchCRM\\Map\\DonatedItemTableMap';
 
 
     /**
@@ -66,90 +62,113 @@ abstract class Note implements ActiveRecordInterface
     protected $virtualColumns = array();
 
     /**
-     * The value for the nte_id field.
+     * The value for the di_id field.
      *
      * @var        int
      */
-    protected $nte_id;
+    protected $di_id;
 
     /**
-     * The value for the nte_per_id field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $nte_per_id;
-
-    /**
-     * The value for the nte_fam_id field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $nte_fam_id;
-
-    /**
-     * The value for the nte_private field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $nte_private;
-
-    /**
-     * The value for the nte_text field.
+     * The value for the di_item field.
      *
      * @var        string
      */
-    protected $nte_text;
+    protected $di_item;
 
     /**
-     * The value for the nte_dateentered field.
+     * The value for the di_fr_id field.
      *
-     * Note: this column has a database default value of: NULL
-     * @var        DateTime
+     * @var        int
      */
-    protected $nte_dateentered;
+    protected $di_fr_id;
 
     /**
-     * The value for the nte_datelastedited field.
-     *
-     * @var        DateTime
-     */
-    protected $nte_datelastedited;
-
-    /**
-     * The value for the nte_enteredby field.
+     * The value for the di_donor_id field.
      *
      * Note: this column has a database default value of: 0
      * @var        int
      */
-    protected $nte_enteredby;
+    protected $di_donor_id;
 
     /**
-     * The value for the nte_editedby field.
+     * The value for the di_buyer_id field.
      *
      * Note: this column has a database default value of: 0
      * @var        int
      */
-    protected $nte_editedby;
+    protected $di_buyer_id;
 
     /**
-     * The value for the nte_type field.
+     * The value for the di_multibuy field.
+     *
+     * Note: this column has a database default value of: 0
+     * @var        int
+     */
+    protected $di_multibuy;
+
+    /**
+     * The value for the di_title field.
      *
      * @var        string
      */
-    protected $nte_type;
+    protected $di_title;
 
     /**
-     * @var        ChildPerson
+     * The value for the di_description field.
+     *
+     * @var        string
      */
-    protected $aPerson;
+    protected $di_description;
 
     /**
-     * @var        ChildFamily
+     * The value for the di_sellprice field.
+     *
+     * @var        string
      */
-    protected $aFamily;
+    protected $di_sellprice;
+
+    /**
+     * The value for the di_estprice field.
+     *
+     * @var        string
+     */
+    protected $di_estprice;
+
+    /**
+     * The value for the di_minimum field.
+     *
+     * @var        string
+     */
+    protected $di_minimum;
+
+    /**
+     * The value for the di_materialvalue field.
+     *
+     * @var        string
+     */
+    protected $di_materialvalue;
+
+    /**
+     * The value for the di_enteredby field.
+     *
+     * Note: this column has a database default value of: 0
+     * @var        int
+     */
+    protected $di_enteredby;
+
+    /**
+     * The value for the di_entereddate field.
+     *
+     * @var        DateTime
+     */
+    protected $di_entereddate;
+
+    /**
+     * The value for the di_picture field.
+     *
+     * @var        string
+     */
+    protected $di_picture;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -167,16 +186,14 @@ abstract class Note implements ActiveRecordInterface
      */
     public function applyDefaultValues()
     {
-        $this->nte_per_id = 0;
-        $this->nte_fam_id = 0;
-        $this->nte_private = 0;
-        $this->nte_dateentered = PropelDateTime::newInstance(NULL, null, 'DateTime');
-        $this->nte_enteredby = 0;
-        $this->nte_editedby = 0;
+        $this->di_donor_id = 0;
+        $this->di_buyer_id = 0;
+        $this->di_multibuy = 0;
+        $this->di_enteredby = 0;
     }
 
     /**
-     * Initializes internal state of ChurchCRM\Base\Note object.
+     * Initializes internal state of ChurchCRM\Base\DonatedItem object.
      * @see applyDefaults()
      */
     public function __construct()
@@ -273,9 +290,9 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Compares this with another <code>Note</code> instance.  If
-     * <code>obj</code> is an instance of <code>Note</code>, delegates to
-     * <code>equals(Note)</code>.  Otherwise, returns <code>false</code>.
+     * Compares this with another <code>DonatedItem</code> instance.  If
+     * <code>obj</code> is an instance of <code>DonatedItem</code>, delegates to
+     * <code>equals(DonatedItem)</code>.  Otherwise, returns <code>false</code>.
      *
      * @param  mixed   $obj The object to compare to.
      * @return boolean Whether equal to the object specified.
@@ -341,7 +358,7 @@ abstract class Note implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return $this|Note The current object, for fluid interface
+     * @return $this|DonatedItem The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -403,130 +420,170 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Get the [nte_id] column value.
+     * Get the [di_id] column value.
      *
      * @return int
      */
     public function getId()
     {
-        return $this->nte_id;
+        return $this->di_id;
     }
 
     /**
-     * Get the [nte_per_id] column value.
-     *
-     * @return int
-     */
-    public function getPerId()
-    {
-        return $this->nte_per_id;
-    }
-
-    /**
-     * Get the [nte_fam_id] column value.
-     *
-     * @return int
-     */
-    public function getFamId()
-    {
-        return $this->nte_fam_id;
-    }
-
-    /**
-     * Get the [nte_private] column value.
-     *
-     * @return int
-     */
-    public function getPrivate()
-    {
-        return $this->nte_private;
-    }
-
-    /**
-     * Get the [nte_text] column value.
+     * Get the [di_item] column value.
      *
      * @return string
      */
-    public function getText()
+    public function getItem()
     {
-        return $this->nte_text;
+        return $this->di_item;
     }
 
     /**
-     * Get the [optionally formatted] temporal [nte_dateentered] column value.
+     * Get the [di_fr_id] column value.
+     *
+     * @return int
+     */
+    public function getFrId()
+    {
+        return $this->di_fr_id;
+    }
+
+    /**
+     * Get the [di_donor_id] column value.
+     *
+     * @return int
+     */
+    public function getDonorId()
+    {
+        return $this->di_donor_id;
+    }
+
+    /**
+     * Get the [di_buyer_id] column value.
+     *
+     * @return int
+     */
+    public function getBuyerId()
+    {
+        return $this->di_buyer_id;
+    }
+
+    /**
+     * Get the [di_multibuy] column value.
+     *
+     * @return int
+     */
+    public function getMultibuy()
+    {
+        return $this->di_multibuy;
+    }
+
+    /**
+     * Get the [di_title] column value.
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->di_title;
+    }
+
+    /**
+     * Get the [di_description] column value.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->di_description;
+    }
+
+    /**
+     * Get the [di_sellprice] column value.
+     *
+     * @return string
+     */
+    public function getSellprice()
+    {
+        return $this->di_sellprice;
+    }
+
+    /**
+     * Get the [di_estprice] column value.
+     *
+     * @return string
+     */
+    public function getEstprice()
+    {
+        return $this->di_estprice;
+    }
+
+    /**
+     * Get the [di_minimum] column value.
+     *
+     * @return string
+     */
+    public function getMinimum()
+    {
+        return $this->di_minimum;
+    }
+
+    /**
+     * Get the [di_materialvalue] column value.
+     *
+     * @return string
+     */
+    public function getMaterialValue()
+    {
+        return $this->di_materialvalue;
+    }
+
+    /**
+     * Get the [di_enteredby] column value.
+     *
+     * @return int
+     */
+    public function getEnteredby()
+    {
+        return $this->di_enteredby;
+    }
+
+    /**
+     * Get the [optionally formatted] temporal [di_entereddate] column value.
      *
      *
      * @param      string $format The date/time format string (either date()-style or strftime()-style).
      *                            If format is NULL, then the raw DateTime object will be returned.
      *
-     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
+     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00
      *
      * @throws PropelException - if unable to parse/validate the date/time value.
      */
-    public function getDateEntered($format = NULL)
+    public function getEntereddate($format = NULL)
     {
         if ($format === null) {
-            return $this->nte_dateentered;
+            return $this->di_entereddate;
         } else {
-            return $this->nte_dateentered instanceof \DateTimeInterface ? $this->nte_dateentered->format($format) : null;
+            return $this->di_entereddate instanceof \DateTimeInterface ? $this->di_entereddate->format($format) : null;
         }
     }
 
     /**
-     * Get the [optionally formatted] temporal [nte_datelastedited] column value.
-     *
-     *
-     * @param      string $format The date/time format string (either date()-style or strftime()-style).
-     *                            If format is NULL, then the raw DateTime object will be returned.
-     *
-     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
-     *
-     * @throws PropelException - if unable to parse/validate the date/time value.
-     */
-    public function getDateLastEdited($format = NULL)
-    {
-        if ($format === null) {
-            return $this->nte_datelastedited;
-        } else {
-            return $this->nte_datelastedited instanceof \DateTimeInterface ? $this->nte_datelastedited->format($format) : null;
-        }
-    }
-
-    /**
-     * Get the [nte_enteredby] column value.
-     *
-     * @return int
-     */
-    public function getEnteredBy()
-    {
-        return $this->nte_enteredby;
-    }
-
-    /**
-     * Get the [nte_editedby] column value.
-     *
-     * @return int
-     */
-    public function getEditedBy()
-    {
-        return $this->nte_editedby;
-    }
-
-    /**
-     * Get the [nte_type] column value.
+     * Get the [di_picture] column value.
      *
      * @return string
      */
-    public function getType()
+    public function getPicture()
     {
-        return $this->nte_type;
+        return $this->di_picture;
     }
 
     /**
-     * Set the value of [nte_id] column.
+     * Set the value of [di_id] column.
      *
      * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -534,203 +591,293 @@ abstract class Note implements ActiveRecordInterface
             $v = (int) $v;
         }
 
-        if ($this->nte_id !== $v) {
-            $this->nte_id = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_ID] = true;
+        if ($this->di_id !== $v) {
+            $this->di_id = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_ID] = true;
         }
 
         return $this;
     } // setId()
 
     /**
-     * Set the value of [nte_per_id] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setPerId($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_per_id !== $v) {
-            $this->nte_per_id = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_PER_ID] = true;
-        }
-
-        if ($this->aPerson !== null && $this->aPerson->getId() !== $v) {
-            $this->aPerson = null;
-        }
-
-        return $this;
-    } // setPerId()
-
-    /**
-     * Set the value of [nte_fam_id] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setFamId($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_fam_id !== $v) {
-            $this->nte_fam_id = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_FAM_ID] = true;
-        }
-
-        if ($this->aFamily !== null && $this->aFamily->getId() !== $v) {
-            $this->aFamily = null;
-        }
-
-        return $this;
-    } // setFamId()
-
-    /**
-     * Set the value of [nte_private] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setPrivate($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_private !== $v) {
-            $this->nte_private = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_PRIVATE] = true;
-        }
-
-        return $this;
-    } // setPrivate()
-
-    /**
-     * Set the value of [nte_text] column.
+     * Set the value of [di_item] column.
      *
      * @param string $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
      */
-    public function setText($v)
+    public function setItem($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->nte_text !== $v) {
-            $this->nte_text = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_TEXT] = true;
+        if ($this->di_item !== $v) {
+            $this->di_item = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_ITEM] = true;
         }
 
         return $this;
-    } // setText()
+    } // setItem()
 
     /**
-     * Sets the value of [nte_dateentered] column to a normalized version of the date/time value specified.
-     *
-     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
-     *               Empty strings are treated as NULL.
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setDateEntered($v)
-    {
-        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->nte_dateentered !== null || $dt !== null) {
-            if ( ($dt != $this->nte_dateentered) // normalized values don't match
-                || ($dt->format('Y-m-d H:i:s.u') === NULL) // or the entered value matches the default
-                 ) {
-                $this->nte_dateentered = $dt === null ? null : clone $dt;
-                $this->modifiedColumns[NoteTableMap::COL_NTE_DATEENTERED] = true;
-            }
-        } // if either are not null
-
-        return $this;
-    } // setDateEntered()
-
-    /**
-     * Sets the value of [nte_datelastedited] column to a normalized version of the date/time value specified.
-     *
-     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
-     *               Empty strings are treated as NULL.
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setDateLastEdited($v)
-    {
-        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->nte_datelastedited !== null || $dt !== null) {
-            if ($this->nte_datelastedited === null || $dt === null || $dt->format("Y-m-d H:i:s.u") !== $this->nte_datelastedited->format("Y-m-d H:i:s.u")) {
-                $this->nte_datelastedited = $dt === null ? null : clone $dt;
-                $this->modifiedColumns[NoteTableMap::COL_NTE_DATELASTEDITED] = true;
-            }
-        } // if either are not null
-
-        return $this;
-    } // setDateLastEdited()
-
-    /**
-     * Set the value of [nte_enteredby] column.
+     * Set the value of [di_fr_id] column.
      *
      * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
      */
-    public function setEnteredBy($v)
+    public function setFrId($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->nte_enteredby !== $v) {
-            $this->nte_enteredby = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_ENTEREDBY] = true;
+        if ($this->di_fr_id !== $v) {
+            $this->di_fr_id = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_FR_ID] = true;
         }
 
         return $this;
-    } // setEnteredBy()
+    } // setFrId()
 
     /**
-     * Set the value of [nte_editedby] column.
+     * Set the value of [di_donor_id] column.
      *
      * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
      */
-    public function setEditedBy($v)
+    public function setDonorId($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->nte_editedby !== $v) {
-            $this->nte_editedby = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_EDITEDBY] = true;
+        if ($this->di_donor_id !== $v) {
+            $this->di_donor_id = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_DONOR_ID] = true;
         }
 
         return $this;
-    } // setEditedBy()
+    } // setDonorId()
 
     /**
-     * Set the value of [nte_type] column.
+     * Set the value of [di_buyer_id] column.
+     *
+     * @param int $v new value
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
+     */
+    public function setBuyerId($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->di_buyer_id !== $v) {
+            $this->di_buyer_id = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_BUYER_ID] = true;
+        }
+
+        return $this;
+    } // setBuyerId()
+
+    /**
+     * Set the value of [di_multibuy] column.
+     *
+     * @param int $v new value
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
+     */
+    public function setMultibuy($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->di_multibuy !== $v) {
+            $this->di_multibuy = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_MULTIBUY] = true;
+        }
+
+        return $this;
+    } // setMultibuy()
+
+    /**
+     * Set the value of [di_title] column.
      *
      * @param string $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
      */
-    public function setType($v)
+    public function setTitle($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->nte_type !== $v) {
-            $this->nte_type = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_TYPE] = true;
+        if ($this->di_title !== $v) {
+            $this->di_title = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_TITLE] = true;
         }
 
         return $this;
-    } // setType()
+    } // setTitle()
+
+    /**
+     * Set the value of [di_description] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
+     */
+    public function setDescription($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->di_description !== $v) {
+            $this->di_description = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_DESCRIPTION] = true;
+        }
+
+        return $this;
+    } // setDescription()
+
+    /**
+     * Set the value of [di_sellprice] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
+     */
+    public function setSellprice($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->di_sellprice !== $v) {
+            $this->di_sellprice = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_SELLPRICE] = true;
+        }
+
+        return $this;
+    } // setSellprice()
+
+    /**
+     * Set the value of [di_estprice] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
+     */
+    public function setEstprice($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->di_estprice !== $v) {
+            $this->di_estprice = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_ESTPRICE] = true;
+        }
+
+        return $this;
+    } // setEstprice()
+
+    /**
+     * Set the value of [di_minimum] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
+     */
+    public function setMinimum($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->di_minimum !== $v) {
+            $this->di_minimum = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_MINIMUM] = true;
+        }
+
+        return $this;
+    } // setMinimum()
+
+    /**
+     * Set the value of [di_materialvalue] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
+     */
+    public function setMaterialValue($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->di_materialvalue !== $v) {
+            $this->di_materialvalue = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_MATERIALVALUE] = true;
+        }
+
+        return $this;
+    } // setMaterialValue()
+
+    /**
+     * Set the value of [di_enteredby] column.
+     *
+     * @param int $v new value
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
+     */
+    public function setEnteredby($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->di_enteredby !== $v) {
+            $this->di_enteredby = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_ENTEREDBY] = true;
+        }
+
+        return $this;
+    } // setEnteredby()
+
+    /**
+     * Sets the value of [di_entereddate] column to a normalized version of the date/time value specified.
+     *
+     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
+     *               Empty strings are treated as NULL.
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
+     */
+    public function setEntereddate($v)
+    {
+        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
+        if ($this->di_entereddate !== null || $dt !== null) {
+            if ($this->di_entereddate === null || $dt === null || $dt->format("Y-m-d") !== $this->di_entereddate->format("Y-m-d")) {
+                $this->di_entereddate = $dt === null ? null : clone $dt;
+                $this->modifiedColumns[DonatedItemTableMap::COL_DI_ENTEREDDATE] = true;
+            }
+        } // if either are not null
+
+        return $this;
+    } // setEntereddate()
+
+    /**
+     * Set the value of [di_picture] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\DonatedItem The current object (for fluent API support)
+     */
+    public function setPicture($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->di_picture !== $v) {
+            $this->di_picture = $v;
+            $this->modifiedColumns[DonatedItemTableMap::COL_DI_PICTURE] = true;
+        }
+
+        return $this;
+    } // setPicture()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -742,27 +889,19 @@ abstract class Note implements ActiveRecordInterface
      */
     public function hasOnlyDefaultValues()
     {
-            if ($this->nte_per_id !== 0) {
+            if ($this->di_donor_id !== 0) {
                 return false;
             }
 
-            if ($this->nte_fam_id !== 0) {
+            if ($this->di_buyer_id !== 0) {
                 return false;
             }
 
-            if ($this->nte_private !== 0) {
+            if ($this->di_multibuy !== 0) {
                 return false;
             }
 
-            if ($this->nte_dateentered && $this->nte_dateentered->format('Y-m-d H:i:s.u') !== NULL) {
-                return false;
-            }
-
-            if ($this->nte_enteredby !== 0) {
-                return false;
-            }
-
-            if ($this->nte_editedby !== 0) {
+            if ($this->di_enteredby !== 0) {
                 return false;
             }
 
@@ -792,41 +931,53 @@ abstract class Note implements ActiveRecordInterface
     {
         try {
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : NoteTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : DonatedItemTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_id = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : NoteTableMap::translateFieldName('PerId', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_per_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : DonatedItemTableMap::translateFieldName('Item', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_item = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : NoteTableMap::translateFieldName('FamId', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_fam_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : DonatedItemTableMap::translateFieldName('FrId', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_fr_id = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : NoteTableMap::translateFieldName('Private', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_private = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : DonatedItemTableMap::translateFieldName('DonorId', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_donor_id = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : NoteTableMap::translateFieldName('Text', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_text = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : DonatedItemTableMap::translateFieldName('BuyerId', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_buyer_id = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : NoteTableMap::translateFieldName('DateEntered', TableMap::TYPE_PHPNAME, $indexType)];
-            if ($col === '0000-00-00 00:00:00') {
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : DonatedItemTableMap::translateFieldName('Multibuy', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_multibuy = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : DonatedItemTableMap::translateFieldName('Title', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_title = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : DonatedItemTableMap::translateFieldName('Description', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_description = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : DonatedItemTableMap::translateFieldName('Sellprice', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_sellprice = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : DonatedItemTableMap::translateFieldName('Estprice', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_estprice = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 10 + $startcol : DonatedItemTableMap::translateFieldName('Minimum', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_minimum = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 11 + $startcol : DonatedItemTableMap::translateFieldName('MaterialValue', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_materialvalue = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 12 + $startcol : DonatedItemTableMap::translateFieldName('Enteredby', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_enteredby = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 13 + $startcol : DonatedItemTableMap::translateFieldName('Entereddate', TableMap::TYPE_PHPNAME, $indexType)];
+            if ($col === '0000-00-00') {
                 $col = null;
             }
-            $this->nte_dateentered = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
+            $this->di_entereddate = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : NoteTableMap::translateFieldName('DateLastEdited', TableMap::TYPE_PHPNAME, $indexType)];
-            if ($col === '0000-00-00 00:00:00') {
-                $col = null;
-            }
-            $this->nte_datelastedited = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : NoteTableMap::translateFieldName('EnteredBy', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_enteredby = (null !== $col) ? (int) $col : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : NoteTableMap::translateFieldName('EditedBy', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_editedby = (null !== $col) ? (int) $col : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : NoteTableMap::translateFieldName('Type', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_type = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 14 + $startcol : DonatedItemTableMap::translateFieldName('Picture', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->di_picture = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -835,10 +986,10 @@ abstract class Note implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 10; // 10 = NoteTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 15; // 15 = DonatedItemTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException(sprintf('Error populating %s object', '\\ChurchCRM\\Note'), 0, $e);
+            throw new PropelException(sprintf('Error populating %s object', '\\ChurchCRM\\DonatedItem'), 0, $e);
         }
     }
 
@@ -857,12 +1008,6 @@ abstract class Note implements ActiveRecordInterface
      */
     public function ensureConsistency()
     {
-        if ($this->aPerson !== null && $this->nte_per_id !== $this->aPerson->getId()) {
-            $this->aPerson = null;
-        }
-        if ($this->aFamily !== null && $this->nte_fam_id !== $this->aFamily->getId()) {
-            $this->aFamily = null;
-        }
     } // ensureConsistency
 
     /**
@@ -886,13 +1031,13 @@ abstract class Note implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getReadConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getReadConnection(DonatedItemTableMap::DATABASE_NAME);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $dataFetcher = ChildNoteQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
+        $dataFetcher = ChildDonatedItemQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
         $row = $dataFetcher->fetch();
         $dataFetcher->close();
         if (!$row) {
@@ -902,8 +1047,6 @@ abstract class Note implements ActiveRecordInterface
 
         if ($deep) {  // also de-associate any related objects?
 
-            $this->aPerson = null;
-            $this->aFamily = null;
         } // if (deep)
     }
 
@@ -913,8 +1056,8 @@ abstract class Note implements ActiveRecordInterface
      * @param      ConnectionInterface $con
      * @return void
      * @throws PropelException
-     * @see Note::setDeleted()
-     * @see Note::isDeleted()
+     * @see DonatedItem::setDeleted()
+     * @see DonatedItem::isDeleted()
      */
     public function delete(ConnectionInterface $con = null)
     {
@@ -923,11 +1066,11 @@ abstract class Note implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(DonatedItemTableMap::DATABASE_NAME);
         }
 
         $con->transaction(function () use ($con) {
-            $deleteQuery = ChildNoteQuery::create()
+            $deleteQuery = ChildDonatedItemQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             if ($ret) {
@@ -958,7 +1101,7 @@ abstract class Note implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(DonatedItemTableMap::DATABASE_NAME);
         }
 
         return $con->transaction(function () use ($con) {
@@ -977,7 +1120,7 @@ abstract class Note implements ActiveRecordInterface
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                NoteTableMap::addInstanceToPool($this);
+                DonatedItemTableMap::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -1002,25 +1145,6 @@ abstract class Note implements ActiveRecordInterface
         $affectedRows = 0; // initialize var to track total num of affected rows
         if (!$this->alreadyInSave) {
             $this->alreadyInSave = true;
-
-            // We call the save method on the following object(s) if they
-            // were passed to this object by their corresponding set
-            // method.  This object relates to these object(s) by a
-            // foreign key reference.
-
-            if ($this->aPerson !== null) {
-                if ($this->aPerson->isModified() || $this->aPerson->isNew()) {
-                    $affectedRows += $this->aPerson->save($con);
-                }
-                $this->setPerson($this->aPerson);
-            }
-
-            if ($this->aFamily !== null) {
-                if ($this->aFamily->isModified() || $this->aFamily->isNew()) {
-                    $affectedRows += $this->aFamily->save($con);
-                }
-                $this->setFamily($this->aFamily);
-            }
 
             if ($this->isNew() || $this->isModified()) {
                 // persist changes
@@ -1053,45 +1177,60 @@ abstract class Note implements ActiveRecordInterface
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[NoteTableMap::COL_NTE_ID] = true;
-        if (null !== $this->nte_id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . NoteTableMap::COL_NTE_ID . ')');
+        $this->modifiedColumns[DonatedItemTableMap::COL_DI_ID] = true;
+        if (null !== $this->di_id) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . DonatedItemTableMap::COL_DI_ID . ')');
         }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_ID';
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_ID)) {
+            $modifiedColumns[':p' . $index++]  = 'di_ID';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PER_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_per_ID';
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_ITEM)) {
+            $modifiedColumns[':p' . $index++]  = 'di_item';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_FAM_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_fam_ID';
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_FR_ID)) {
+            $modifiedColumns[':p' . $index++]  = 'di_FR_ID';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PRIVATE)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_Private';
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_DONOR_ID)) {
+            $modifiedColumns[':p' . $index++]  = 'di_donor_ID';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TEXT)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_Text';
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_BUYER_ID)) {
+            $modifiedColumns[':p' . $index++]  = 'di_buyer_ID';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATEENTERED)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_DateEntered';
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_MULTIBUY)) {
+            $modifiedColumns[':p' . $index++]  = 'di_multibuy';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATELASTEDITED)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_DateLastEdited';
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_TITLE)) {
+            $modifiedColumns[':p' . $index++]  = 'di_title';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ENTEREDBY)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_EnteredBy';
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_DESCRIPTION)) {
+            $modifiedColumns[':p' . $index++]  = 'di_description';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_EDITEDBY)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_EditedBy';
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_SELLPRICE)) {
+            $modifiedColumns[':p' . $index++]  = 'di_sellprice';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TYPE)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_Type';
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_ESTPRICE)) {
+            $modifiedColumns[':p' . $index++]  = 'di_estprice';
+        }
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_MINIMUM)) {
+            $modifiedColumns[':p' . $index++]  = 'di_minimum';
+        }
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_MATERIALVALUE)) {
+            $modifiedColumns[':p' . $index++]  = 'di_materialvalue';
+        }
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_ENTEREDBY)) {
+            $modifiedColumns[':p' . $index++]  = 'di_EnteredBy';
+        }
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_ENTEREDDATE)) {
+            $modifiedColumns[':p' . $index++]  = 'di_EnteredDate';
+        }
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_PICTURE)) {
+            $modifiedColumns[':p' . $index++]  = 'di_picture';
         }
 
         $sql = sprintf(
-            'INSERT INTO note_nte (%s) VALUES (%s)',
+            'INSERT INTO donateditem_di (%s) VALUES (%s)',
             implode(', ', $modifiedColumns),
             implode(', ', array_keys($modifiedColumns))
         );
@@ -1100,35 +1239,50 @@ abstract class Note implements ActiveRecordInterface
             $stmt = $con->prepare($sql);
             foreach ($modifiedColumns as $identifier => $columnName) {
                 switch ($columnName) {
-                    case 'nte_ID':
-                        $stmt->bindValue($identifier, $this->nte_id, PDO::PARAM_INT);
+                    case 'di_ID':
+                        $stmt->bindValue($identifier, $this->di_id, PDO::PARAM_INT);
                         break;
-                    case 'nte_per_ID':
-                        $stmt->bindValue($identifier, $this->nte_per_id, PDO::PARAM_INT);
+                    case 'di_item':
+                        $stmt->bindValue($identifier, $this->di_item, PDO::PARAM_STR);
                         break;
-                    case 'nte_fam_ID':
-                        $stmt->bindValue($identifier, $this->nte_fam_id, PDO::PARAM_INT);
+                    case 'di_FR_ID':
+                        $stmt->bindValue($identifier, $this->di_fr_id, PDO::PARAM_INT);
                         break;
-                    case 'nte_Private':
-                        $stmt->bindValue($identifier, $this->nte_private, PDO::PARAM_INT);
+                    case 'di_donor_ID':
+                        $stmt->bindValue($identifier, $this->di_donor_id, PDO::PARAM_INT);
                         break;
-                    case 'nte_Text':
-                        $stmt->bindValue($identifier, $this->nte_text, PDO::PARAM_STR);
+                    case 'di_buyer_ID':
+                        $stmt->bindValue($identifier, $this->di_buyer_id, PDO::PARAM_INT);
                         break;
-                    case 'nte_DateEntered':
-                        $stmt->bindValue($identifier, $this->nte_dateentered ? $this->nte_dateentered->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
+                    case 'di_multibuy':
+                        $stmt->bindValue($identifier, $this->di_multibuy, PDO::PARAM_INT);
                         break;
-                    case 'nte_DateLastEdited':
-                        $stmt->bindValue($identifier, $this->nte_datelastedited ? $this->nte_datelastedited->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
+                    case 'di_title':
+                        $stmt->bindValue($identifier, $this->di_title, PDO::PARAM_STR);
                         break;
-                    case 'nte_EnteredBy':
-                        $stmt->bindValue($identifier, $this->nte_enteredby, PDO::PARAM_INT);
+                    case 'di_description':
+                        $stmt->bindValue($identifier, $this->di_description, PDO::PARAM_STR);
                         break;
-                    case 'nte_EditedBy':
-                        $stmt->bindValue($identifier, $this->nte_editedby, PDO::PARAM_INT);
+                    case 'di_sellprice':
+                        $stmt->bindValue($identifier, $this->di_sellprice, PDO::PARAM_STR);
                         break;
-                    case 'nte_Type':
-                        $stmt->bindValue($identifier, $this->nte_type, PDO::PARAM_STR);
+                    case 'di_estprice':
+                        $stmt->bindValue($identifier, $this->di_estprice, PDO::PARAM_STR);
+                        break;
+                    case 'di_minimum':
+                        $stmt->bindValue($identifier, $this->di_minimum, PDO::PARAM_STR);
+                        break;
+                    case 'di_materialvalue':
+                        $stmt->bindValue($identifier, $this->di_materialvalue, PDO::PARAM_STR);
+                        break;
+                    case 'di_EnteredBy':
+                        $stmt->bindValue($identifier, $this->di_enteredby, PDO::PARAM_INT);
+                        break;
+                    case 'di_EnteredDate':
+                        $stmt->bindValue($identifier, $this->di_entereddate ? $this->di_entereddate->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
+                        break;
+                    case 'di_picture':
+                        $stmt->bindValue($identifier, $this->di_picture, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -1176,7 +1330,7 @@ abstract class Note implements ActiveRecordInterface
      */
     public function getByName($name, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = NoteTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = DonatedItemTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -1196,31 +1350,46 @@ abstract class Note implements ActiveRecordInterface
                 return $this->getId();
                 break;
             case 1:
-                return $this->getPerId();
+                return $this->getItem();
                 break;
             case 2:
-                return $this->getFamId();
+                return $this->getFrId();
                 break;
             case 3:
-                return $this->getPrivate();
+                return $this->getDonorId();
                 break;
             case 4:
-                return $this->getText();
+                return $this->getBuyerId();
                 break;
             case 5:
-                return $this->getDateEntered();
+                return $this->getMultibuy();
                 break;
             case 6:
-                return $this->getDateLastEdited();
+                return $this->getTitle();
                 break;
             case 7:
-                return $this->getEnteredBy();
+                return $this->getDescription();
                 break;
             case 8:
-                return $this->getEditedBy();
+                return $this->getSellprice();
                 break;
             case 9:
-                return $this->getType();
+                return $this->getEstprice();
+                break;
+            case 10:
+                return $this->getMinimum();
+                break;
+            case 11:
+                return $this->getMaterialValue();
+                break;
+            case 12:
+                return $this->getEnteredby();
+                break;
+            case 13:
+                return $this->getEntereddate();
+                break;
+            case 14:
+                return $this->getPicture();
                 break;
             default:
                 return null;
@@ -1239,36 +1408,36 @@ abstract class Note implements ActiveRecordInterface
      *                    Defaults to TableMap::TYPE_PHPNAME.
      * @param     boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns. Defaults to TRUE.
      * @param     array $alreadyDumpedObjects List of objects to skip to avoid recursion
-     * @param     boolean $includeForeignObjects (optional) Whether to include hydrated related objects. Default to FALSE.
      *
      * @return array an associative array containing the field names (as keys) and field values
      */
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
     {
 
-        if (isset($alreadyDumpedObjects['Note'][$this->hashCode()])) {
+        if (isset($alreadyDumpedObjects['DonatedItem'][$this->hashCode()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['Note'][$this->hashCode()] = true;
-        $keys = NoteTableMap::getFieldNames($keyType);
+        $alreadyDumpedObjects['DonatedItem'][$this->hashCode()] = true;
+        $keys = DonatedItemTableMap::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getId(),
-            $keys[1] => $this->getPerId(),
-            $keys[2] => $this->getFamId(),
-            $keys[3] => $this->getPrivate(),
-            $keys[4] => $this->getText(),
-            $keys[5] => $this->getDateEntered(),
-            $keys[6] => $this->getDateLastEdited(),
-            $keys[7] => $this->getEnteredBy(),
-            $keys[8] => $this->getEditedBy(),
-            $keys[9] => $this->getType(),
+            $keys[1] => $this->getItem(),
+            $keys[2] => $this->getFrId(),
+            $keys[3] => $this->getDonorId(),
+            $keys[4] => $this->getBuyerId(),
+            $keys[5] => $this->getMultibuy(),
+            $keys[6] => $this->getTitle(),
+            $keys[7] => $this->getDescription(),
+            $keys[8] => $this->getSellprice(),
+            $keys[9] => $this->getEstprice(),
+            $keys[10] => $this->getMinimum(),
+            $keys[11] => $this->getMaterialValue(),
+            $keys[12] => $this->getEnteredby(),
+            $keys[13] => $this->getEntereddate(),
+            $keys[14] => $this->getPicture(),
         );
-        if ($result[$keys[5]] instanceof \DateTime) {
-            $result[$keys[5]] = $result[$keys[5]]->format('c');
-        }
-
-        if ($result[$keys[6]] instanceof \DateTime) {
-            $result[$keys[6]] = $result[$keys[6]]->format('c');
+        if ($result[$keys[13]] instanceof \DateTime) {
+            $result[$keys[13]] = $result[$keys[13]]->format('c');
         }
 
         $virtualColumns = $this->virtualColumns;
@@ -1276,38 +1445,6 @@ abstract class Note implements ActiveRecordInterface
             $result[$key] = $virtualColumn;
         }
 
-        if ($includeForeignObjects) {
-            if (null !== $this->aPerson) {
-
-                switch ($keyType) {
-                    case TableMap::TYPE_CAMELNAME:
-                        $key = 'person';
-                        break;
-                    case TableMap::TYPE_FIELDNAME:
-                        $key = 'person_per';
-                        break;
-                    default:
-                        $key = 'Person';
-                }
-
-                $result[$key] = $this->aPerson->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
-            }
-            if (null !== $this->aFamily) {
-
-                switch ($keyType) {
-                    case TableMap::TYPE_CAMELNAME:
-                        $key = 'family';
-                        break;
-                    case TableMap::TYPE_FIELDNAME:
-                        $key = 'family_fam';
-                        break;
-                    default:
-                        $key = 'Family';
-                }
-
-                $result[$key] = $this->aFamily->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
-            }
-        }
 
         return $result;
     }
@@ -1321,11 +1458,11 @@ abstract class Note implements ActiveRecordInterface
      *                one of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
      *                TableMap::TYPE_COLNAME, TableMap::TYPE_FIELDNAME, TableMap::TYPE_NUM.
      *                Defaults to TableMap::TYPE_PHPNAME.
-     * @return $this|\ChurchCRM\Note
+     * @return $this|\ChurchCRM\DonatedItem
      */
     public function setByName($name, $value, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = NoteTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = DonatedItemTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
 
         return $this->setByPosition($pos, $value);
     }
@@ -1336,7 +1473,7 @@ abstract class Note implements ActiveRecordInterface
      *
      * @param  int $pos position in xml schema
      * @param  mixed $value field value
-     * @return $this|\ChurchCRM\Note
+     * @return $this|\ChurchCRM\DonatedItem
      */
     public function setByPosition($pos, $value)
     {
@@ -1345,31 +1482,46 @@ abstract class Note implements ActiveRecordInterface
                 $this->setId($value);
                 break;
             case 1:
-                $this->setPerId($value);
+                $this->setItem($value);
                 break;
             case 2:
-                $this->setFamId($value);
+                $this->setFrId($value);
                 break;
             case 3:
-                $this->setPrivate($value);
+                $this->setDonorId($value);
                 break;
             case 4:
-                $this->setText($value);
+                $this->setBuyerId($value);
                 break;
             case 5:
-                $this->setDateEntered($value);
+                $this->setMultibuy($value);
                 break;
             case 6:
-                $this->setDateLastEdited($value);
+                $this->setTitle($value);
                 break;
             case 7:
-                $this->setEnteredBy($value);
+                $this->setDescription($value);
                 break;
             case 8:
-                $this->setEditedBy($value);
+                $this->setSellprice($value);
                 break;
             case 9:
-                $this->setType($value);
+                $this->setEstprice($value);
+                break;
+            case 10:
+                $this->setMinimum($value);
+                break;
+            case 11:
+                $this->setMaterialValue($value);
+                break;
+            case 12:
+                $this->setEnteredby($value);
+                break;
+            case 13:
+                $this->setEntereddate($value);
+                break;
+            case 14:
+                $this->setPicture($value);
                 break;
         } // switch()
 
@@ -1395,37 +1547,52 @@ abstract class Note implements ActiveRecordInterface
      */
     public function fromArray($arr, $keyType = TableMap::TYPE_PHPNAME)
     {
-        $keys = NoteTableMap::getFieldNames($keyType);
+        $keys = DonatedItemTableMap::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) {
             $this->setId($arr[$keys[0]]);
         }
         if (array_key_exists($keys[1], $arr)) {
-            $this->setPerId($arr[$keys[1]]);
+            $this->setItem($arr[$keys[1]]);
         }
         if (array_key_exists($keys[2], $arr)) {
-            $this->setFamId($arr[$keys[2]]);
+            $this->setFrId($arr[$keys[2]]);
         }
         if (array_key_exists($keys[3], $arr)) {
-            $this->setPrivate($arr[$keys[3]]);
+            $this->setDonorId($arr[$keys[3]]);
         }
         if (array_key_exists($keys[4], $arr)) {
-            $this->setText($arr[$keys[4]]);
+            $this->setBuyerId($arr[$keys[4]]);
         }
         if (array_key_exists($keys[5], $arr)) {
-            $this->setDateEntered($arr[$keys[5]]);
+            $this->setMultibuy($arr[$keys[5]]);
         }
         if (array_key_exists($keys[6], $arr)) {
-            $this->setDateLastEdited($arr[$keys[6]]);
+            $this->setTitle($arr[$keys[6]]);
         }
         if (array_key_exists($keys[7], $arr)) {
-            $this->setEnteredBy($arr[$keys[7]]);
+            $this->setDescription($arr[$keys[7]]);
         }
         if (array_key_exists($keys[8], $arr)) {
-            $this->setEditedBy($arr[$keys[8]]);
+            $this->setSellprice($arr[$keys[8]]);
         }
         if (array_key_exists($keys[9], $arr)) {
-            $this->setType($arr[$keys[9]]);
+            $this->setEstprice($arr[$keys[9]]);
+        }
+        if (array_key_exists($keys[10], $arr)) {
+            $this->setMinimum($arr[$keys[10]]);
+        }
+        if (array_key_exists($keys[11], $arr)) {
+            $this->setMaterialValue($arr[$keys[11]]);
+        }
+        if (array_key_exists($keys[12], $arr)) {
+            $this->setEnteredby($arr[$keys[12]]);
+        }
+        if (array_key_exists($keys[13], $arr)) {
+            $this->setEntereddate($arr[$keys[13]]);
+        }
+        if (array_key_exists($keys[14], $arr)) {
+            $this->setPicture($arr[$keys[14]]);
         }
     }
 
@@ -1446,7 +1613,7 @@ abstract class Note implements ActiveRecordInterface
      * @param string $data The source data to import from
      * @param string $keyType The type of keys the array uses.
      *
-     * @return $this|\ChurchCRM\Note The current object, for fluid interface
+     * @return $this|\ChurchCRM\DonatedItem The current object, for fluid interface
      */
     public function importFrom($parser, $data, $keyType = TableMap::TYPE_PHPNAME)
     {
@@ -1466,37 +1633,52 @@ abstract class Note implements ActiveRecordInterface
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(NoteTableMap::DATABASE_NAME);
+        $criteria = new Criteria(DonatedItemTableMap::DATABASE_NAME);
 
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ID)) {
-            $criteria->add(NoteTableMap::COL_NTE_ID, $this->nte_id);
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_ID)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_ID, $this->di_id);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PER_ID)) {
-            $criteria->add(NoteTableMap::COL_NTE_PER_ID, $this->nte_per_id);
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_ITEM)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_ITEM, $this->di_item);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_FAM_ID)) {
-            $criteria->add(NoteTableMap::COL_NTE_FAM_ID, $this->nte_fam_id);
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_FR_ID)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_FR_ID, $this->di_fr_id);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PRIVATE)) {
-            $criteria->add(NoteTableMap::COL_NTE_PRIVATE, $this->nte_private);
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_DONOR_ID)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_DONOR_ID, $this->di_donor_id);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TEXT)) {
-            $criteria->add(NoteTableMap::COL_NTE_TEXT, $this->nte_text);
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_BUYER_ID)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_BUYER_ID, $this->di_buyer_id);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATEENTERED)) {
-            $criteria->add(NoteTableMap::COL_NTE_DATEENTERED, $this->nte_dateentered);
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_MULTIBUY)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_MULTIBUY, $this->di_multibuy);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATELASTEDITED)) {
-            $criteria->add(NoteTableMap::COL_NTE_DATELASTEDITED, $this->nte_datelastedited);
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_TITLE)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_TITLE, $this->di_title);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ENTEREDBY)) {
-            $criteria->add(NoteTableMap::COL_NTE_ENTEREDBY, $this->nte_enteredby);
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_DESCRIPTION)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_DESCRIPTION, $this->di_description);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_EDITEDBY)) {
-            $criteria->add(NoteTableMap::COL_NTE_EDITEDBY, $this->nte_editedby);
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_SELLPRICE)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_SELLPRICE, $this->di_sellprice);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TYPE)) {
-            $criteria->add(NoteTableMap::COL_NTE_TYPE, $this->nte_type);
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_ESTPRICE)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_ESTPRICE, $this->di_estprice);
+        }
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_MINIMUM)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_MINIMUM, $this->di_minimum);
+        }
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_MATERIALVALUE)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_MATERIALVALUE, $this->di_materialvalue);
+        }
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_ENTEREDBY)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_ENTEREDBY, $this->di_enteredby);
+        }
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_ENTEREDDATE)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_ENTEREDDATE, $this->di_entereddate);
+        }
+        if ($this->isColumnModified(DonatedItemTableMap::COL_DI_PICTURE)) {
+            $criteria->add(DonatedItemTableMap::COL_DI_PICTURE, $this->di_picture);
         }
 
         return $criteria;
@@ -1514,8 +1696,8 @@ abstract class Note implements ActiveRecordInterface
      */
     public function buildPkeyCriteria()
     {
-        $criteria = ChildNoteQuery::create();
-        $criteria->add(NoteTableMap::COL_NTE_ID, $this->nte_id);
+        $criteria = ChildDonatedItemQuery::create();
+        $criteria->add(DonatedItemTableMap::COL_DI_ID, $this->di_id);
 
         return $criteria;
     }
@@ -1552,7 +1734,7 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Generic method to set the primary key (nte_id column).
+     * Generic method to set the primary key (di_id column).
      *
      * @param       int $key Primary key.
      * @return void
@@ -1577,22 +1759,27 @@ abstract class Note implements ActiveRecordInterface
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of \ChurchCRM\Note (or compatible) type.
+     * @param      object $copyObj An object of \ChurchCRM\DonatedItem (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param      boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
      */
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
-        $copyObj->setPerId($this->getPerId());
-        $copyObj->setFamId($this->getFamId());
-        $copyObj->setPrivate($this->getPrivate());
-        $copyObj->setText($this->getText());
-        $copyObj->setDateEntered($this->getDateEntered());
-        $copyObj->setDateLastEdited($this->getDateLastEdited());
-        $copyObj->setEnteredBy($this->getEnteredBy());
-        $copyObj->setEditedBy($this->getEditedBy());
-        $copyObj->setType($this->getType());
+        $copyObj->setItem($this->getItem());
+        $copyObj->setFrId($this->getFrId());
+        $copyObj->setDonorId($this->getDonorId());
+        $copyObj->setBuyerId($this->getBuyerId());
+        $copyObj->setMultibuy($this->getMultibuy());
+        $copyObj->setTitle($this->getTitle());
+        $copyObj->setDescription($this->getDescription());
+        $copyObj->setSellprice($this->getSellprice());
+        $copyObj->setEstprice($this->getEstprice());
+        $copyObj->setMinimum($this->getMinimum());
+        $copyObj->setMaterialValue($this->getMaterialValue());
+        $copyObj->setEnteredby($this->getEnteredby());
+        $copyObj->setEntereddate($this->getEntereddate());
+        $copyObj->setPicture($this->getPicture());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setId(NULL); // this is a auto-increment column, so set to default value
@@ -1608,7 +1795,7 @@ abstract class Note implements ActiveRecordInterface
      * objects.
      *
      * @param  boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return \ChurchCRM\Note Clone of current object.
+     * @return \ChurchCRM\DonatedItem Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1622,130 +1809,27 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Declares an association between this object and a ChildPerson object.
-     *
-     * @param  ChildPerson $v
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     * @throws PropelException
-     */
-    public function setPerson(ChildPerson $v = null)
-    {
-        if ($v === null) {
-            $this->setPerId(0);
-        } else {
-            $this->setPerId($v->getId());
-        }
-
-        $this->aPerson = $v;
-
-        // Add binding for other direction of this n:n relationship.
-        // If this object has already been added to the ChildPerson object, it will not be re-added.
-        if ($v !== null) {
-            $v->addNote($this);
-        }
-
-
-        return $this;
-    }
-
-
-    /**
-     * Get the associated ChildPerson object
-     *
-     * @param  ConnectionInterface $con Optional Connection object.
-     * @return ChildPerson The associated ChildPerson object.
-     * @throws PropelException
-     */
-    public function getPerson(ConnectionInterface $con = null)
-    {
-        if ($this->aPerson === null && ($this->nte_per_id !== null)) {
-            $this->aPerson = ChildPersonQuery::create()->findPk($this->nte_per_id, $con);
-            /* The following can be used additionally to
-                guarantee the related object contains a reference
-                to this object.  This level of coupling may, however, be
-                undesirable since it could result in an only partially populated collection
-                in the referenced object.
-                $this->aPerson->addNotes($this);
-             */
-        }
-
-        return $this->aPerson;
-    }
-
-    /**
-     * Declares an association between this object and a ChildFamily object.
-     *
-     * @param  ChildFamily $v
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     * @throws PropelException
-     */
-    public function setFamily(ChildFamily $v = null)
-    {
-        if ($v === null) {
-            $this->setFamId(0);
-        } else {
-            $this->setFamId($v->getId());
-        }
-
-        $this->aFamily = $v;
-
-        // Add binding for other direction of this n:n relationship.
-        // If this object has already been added to the ChildFamily object, it will not be re-added.
-        if ($v !== null) {
-            $v->addNote($this);
-        }
-
-
-        return $this;
-    }
-
-
-    /**
-     * Get the associated ChildFamily object
-     *
-     * @param  ConnectionInterface $con Optional Connection object.
-     * @return ChildFamily The associated ChildFamily object.
-     * @throws PropelException
-     */
-    public function getFamily(ConnectionInterface $con = null)
-    {
-        if ($this->aFamily === null && ($this->nte_fam_id !== null)) {
-            $this->aFamily = ChildFamilyQuery::create()->findPk($this->nte_fam_id, $con);
-            /* The following can be used additionally to
-                guarantee the related object contains a reference
-                to this object.  This level of coupling may, however, be
-                undesirable since it could result in an only partially populated collection
-                in the referenced object.
-                $this->aFamily->addNotes($this);
-             */
-        }
-
-        return $this->aFamily;
-    }
-
-    /**
      * Clears the current object, sets all attributes to their default values and removes
      * outgoing references as well as back-references (from other objects to this one. Results probably in a database
      * change of those foreign objects when you call `save` there).
      */
     public function clear()
     {
-        if (null !== $this->aPerson) {
-            $this->aPerson->removeNote($this);
-        }
-        if (null !== $this->aFamily) {
-            $this->aFamily->removeNote($this);
-        }
-        $this->nte_id = null;
-        $this->nte_per_id = null;
-        $this->nte_fam_id = null;
-        $this->nte_private = null;
-        $this->nte_text = null;
-        $this->nte_dateentered = null;
-        $this->nte_datelastedited = null;
-        $this->nte_enteredby = null;
-        $this->nte_editedby = null;
-        $this->nte_type = null;
+        $this->di_id = null;
+        $this->di_item = null;
+        $this->di_fr_id = null;
+        $this->di_donor_id = null;
+        $this->di_buyer_id = null;
+        $this->di_multibuy = null;
+        $this->di_title = null;
+        $this->di_description = null;
+        $this->di_sellprice = null;
+        $this->di_estprice = null;
+        $this->di_minimum = null;
+        $this->di_materialvalue = null;
+        $this->di_enteredby = null;
+        $this->di_entereddate = null;
+        $this->di_picture = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();
@@ -1767,8 +1851,6 @@ abstract class Note implements ActiveRecordInterface
         if ($deep) {
         } // if ($deep)
 
-        $this->aPerson = null;
-        $this->aFamily = null;
     }
 
     /**
@@ -1778,7 +1860,7 @@ abstract class Note implements ActiveRecordInterface
      */
     public function __toString()
     {
-        return (string) $this->exportTo(NoteTableMap::DEFAULT_STRING_FORMAT);
+        return (string) $this->exportTo(DonatedItemTableMap::DEFAULT_STRING_FORMAT);
     }
 
     /**

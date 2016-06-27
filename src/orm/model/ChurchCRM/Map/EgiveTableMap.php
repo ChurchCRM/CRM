@@ -2,13 +2,14 @@
 
 namespace ChurchCRM\Map;
 
-use ChurchCRM\Note;
-use ChurchCRM\NoteQuery;
+use ChurchCRM\Egive;
+use ChurchCRM\EgiveQuery;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\InstancePoolTrait;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\DataFetcher\DataFetcherInterface;
+use Propel\Runtime\Exception\LogicException;
 use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\RelationMap;
 use Propel\Runtime\Map\TableMap;
@@ -16,7 +17,7 @@ use Propel\Runtime\Map\TableMapTrait;
 
 
 /**
- * This class defines the structure of the 'note_nte' table.
+ * This class defines the structure of the 'egive_egv' table.
  *
  *
  *
@@ -26,7 +27,7 @@ use Propel\Runtime\Map\TableMapTrait;
  * (i.e. if it's a text column type).
  *
  */
-class NoteTableMap extends TableMap
+class EgiveTableMap extends TableMap
 {
     use InstancePoolTrait;
     use TableMapTrait;
@@ -34,7 +35,7 @@ class NoteTableMap extends TableMap
     /**
      * The (dot-path) name of this class
      */
-    const CLASS_NAME = 'ChurchCRM.Map.NoteTableMap';
+    const CLASS_NAME = 'ChurchCRM.Map.EgiveTableMap';
 
     /**
      * The default database name for this class
@@ -44,22 +45,22 @@ class NoteTableMap extends TableMap
     /**
      * The table name for this class
      */
-    const TABLE_NAME = 'note_nte';
+    const TABLE_NAME = 'egive_egv';
 
     /**
      * The related Propel class for this table
      */
-    const OM_CLASS = '\\ChurchCRM\\Note';
+    const OM_CLASS = '\\ChurchCRM\\Egive';
 
     /**
      * A class that can be returned by this tableMap
      */
-    const CLASS_DEFAULT = 'ChurchCRM.Note';
+    const CLASS_DEFAULT = 'ChurchCRM.Egive';
 
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 10;
+    const NUM_COLUMNS = 6;
 
     /**
      * The number of lazy-loaded columns
@@ -69,57 +70,37 @@ class NoteTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 10;
+    const NUM_HYDRATE_COLUMNS = 6;
 
     /**
-     * the column name for the nte_ID field
+     * the column name for the egv_egiveID field
      */
-    const COL_NTE_ID = 'note_nte.nte_ID';
+    const COL_EGV_EGIVEID = 'egive_egv.egv_egiveID';
 
     /**
-     * the column name for the nte_per_ID field
+     * the column name for the egv_famID field
      */
-    const COL_NTE_PER_ID = 'note_nte.nte_per_ID';
+    const COL_EGV_FAMID = 'egive_egv.egv_famID';
 
     /**
-     * the column name for the nte_fam_ID field
+     * the column name for the egv_DateEntered field
      */
-    const COL_NTE_FAM_ID = 'note_nte.nte_fam_ID';
+    const COL_EGV_DATEENTERED = 'egive_egv.egv_DateEntered';
 
     /**
-     * the column name for the nte_Private field
+     * the column name for the egv_DateLastEdited field
      */
-    const COL_NTE_PRIVATE = 'note_nte.nte_Private';
+    const COL_EGV_DATELASTEDITED = 'egive_egv.egv_DateLastEdited';
 
     /**
-     * the column name for the nte_Text field
+     * the column name for the egv_EnteredBy field
      */
-    const COL_NTE_TEXT = 'note_nte.nte_Text';
+    const COL_EGV_ENTEREDBY = 'egive_egv.egv_EnteredBy';
 
     /**
-     * the column name for the nte_DateEntered field
+     * the column name for the egv_EditedBy field
      */
-    const COL_NTE_DATEENTERED = 'note_nte.nte_DateEntered';
-
-    /**
-     * the column name for the nte_DateLastEdited field
-     */
-    const COL_NTE_DATELASTEDITED = 'note_nte.nte_DateLastEdited';
-
-    /**
-     * the column name for the nte_EnteredBy field
-     */
-    const COL_NTE_ENTEREDBY = 'note_nte.nte_EnteredBy';
-
-    /**
-     * the column name for the nte_EditedBy field
-     */
-    const COL_NTE_EDITEDBY = 'note_nte.nte_EditedBy';
-
-    /**
-     * the column name for the nte_Type field
-     */
-    const COL_NTE_TYPE = 'note_nte.nte_Type';
+    const COL_EGV_EDITEDBY = 'egive_egv.egv_EditedBy';
 
     /**
      * The default string format for model objects of the related table
@@ -133,11 +114,11 @@ class NoteTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'PerId', 'FamId', 'Private', 'Text', 'DateEntered', 'DateLastEdited', 'EnteredBy', 'EditedBy', 'Type', ),
-        self::TYPE_CAMELNAME     => array('id', 'perId', 'famId', 'private', 'text', 'dateEntered', 'dateLastEdited', 'enteredBy', 'editedBy', 'type', ),
-        self::TYPE_COLNAME       => array(NoteTableMap::COL_NTE_ID, NoteTableMap::COL_NTE_PER_ID, NoteTableMap::COL_NTE_FAM_ID, NoteTableMap::COL_NTE_PRIVATE, NoteTableMap::COL_NTE_TEXT, NoteTableMap::COL_NTE_DATEENTERED, NoteTableMap::COL_NTE_DATELASTEDITED, NoteTableMap::COL_NTE_ENTEREDBY, NoteTableMap::COL_NTE_EDITEDBY, NoteTableMap::COL_NTE_TYPE, ),
-        self::TYPE_FIELDNAME     => array('nte_ID', 'nte_per_ID', 'nte_fam_ID', 'nte_Private', 'nte_Text', 'nte_DateEntered', 'nte_DateLastEdited', 'nte_EnteredBy', 'nte_EditedBy', 'nte_Type', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
+        self::TYPE_PHPNAME       => array('EgiveId', 'FamilyId', 'DateEntered', 'DateLastEdited', 'EnteredBy', 'EditedBy', ),
+        self::TYPE_CAMELNAME     => array('egiveId', 'familyId', 'dateEntered', 'dateLastEdited', 'enteredBy', 'editedBy', ),
+        self::TYPE_COLNAME       => array(EgiveTableMap::COL_EGV_EGIVEID, EgiveTableMap::COL_EGV_FAMID, EgiveTableMap::COL_EGV_DATEENTERED, EgiveTableMap::COL_EGV_DATELASTEDITED, EgiveTableMap::COL_EGV_ENTEREDBY, EgiveTableMap::COL_EGV_EDITEDBY, ),
+        self::TYPE_FIELDNAME     => array('egv_egiveID', 'egv_famID', 'egv_DateEntered', 'egv_DateLastEdited', 'egv_EnteredBy', 'egv_EditedBy', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, )
     );
 
     /**
@@ -147,11 +128,11 @@ class NoteTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'PerId' => 1, 'FamId' => 2, 'Private' => 3, 'Text' => 4, 'DateEntered' => 5, 'DateLastEdited' => 6, 'EnteredBy' => 7, 'EditedBy' => 8, 'Type' => 9, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'perId' => 1, 'famId' => 2, 'private' => 3, 'text' => 4, 'dateEntered' => 5, 'dateLastEdited' => 6, 'enteredBy' => 7, 'editedBy' => 8, 'type' => 9, ),
-        self::TYPE_COLNAME       => array(NoteTableMap::COL_NTE_ID => 0, NoteTableMap::COL_NTE_PER_ID => 1, NoteTableMap::COL_NTE_FAM_ID => 2, NoteTableMap::COL_NTE_PRIVATE => 3, NoteTableMap::COL_NTE_TEXT => 4, NoteTableMap::COL_NTE_DATEENTERED => 5, NoteTableMap::COL_NTE_DATELASTEDITED => 6, NoteTableMap::COL_NTE_ENTEREDBY => 7, NoteTableMap::COL_NTE_EDITEDBY => 8, NoteTableMap::COL_NTE_TYPE => 9, ),
-        self::TYPE_FIELDNAME     => array('nte_ID' => 0, 'nte_per_ID' => 1, 'nte_fam_ID' => 2, 'nte_Private' => 3, 'nte_Text' => 4, 'nte_DateEntered' => 5, 'nte_DateLastEdited' => 6, 'nte_EnteredBy' => 7, 'nte_EditedBy' => 8, 'nte_Type' => 9, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
+        self::TYPE_PHPNAME       => array('EgiveId' => 0, 'FamilyId' => 1, 'DateEntered' => 2, 'DateLastEdited' => 3, 'EnteredBy' => 4, 'EditedBy' => 5, ),
+        self::TYPE_CAMELNAME     => array('egiveId' => 0, 'familyId' => 1, 'dateEntered' => 2, 'dateLastEdited' => 3, 'enteredBy' => 4, 'editedBy' => 5, ),
+        self::TYPE_COLNAME       => array(EgiveTableMap::COL_EGV_EGIVEID => 0, EgiveTableMap::COL_EGV_FAMID => 1, EgiveTableMap::COL_EGV_DATEENTERED => 2, EgiveTableMap::COL_EGV_DATELASTEDITED => 3, EgiveTableMap::COL_EGV_ENTEREDBY => 4, EgiveTableMap::COL_EGV_EDITEDBY => 5, ),
+        self::TYPE_FIELDNAME     => array('egv_egiveID' => 0, 'egv_famID' => 1, 'egv_DateEntered' => 2, 'egv_DateLastEdited' => 3, 'egv_EnteredBy' => 4, 'egv_EditedBy' => 5, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, )
     );
 
     /**
@@ -164,23 +145,19 @@ class NoteTableMap extends TableMap
     public function initialize()
     {
         // attributes
-        $this->setName('note_nte');
-        $this->setPhpName('Note');
+        $this->setName('egive_egv');
+        $this->setPhpName('Egive');
         $this->setIdentifierQuoting(false);
-        $this->setClassName('\\ChurchCRM\\Note');
+        $this->setClassName('\\ChurchCRM\\Egive');
         $this->setPackage('ChurchCRM');
-        $this->setUseIdGenerator(true);
+        $this->setUseIdGenerator(false);
         // columns
-        $this->addPrimaryKey('nte_ID', 'Id', 'SMALLINT', true, 8, null);
-        $this->addForeignKey('nte_per_ID', 'PerId', 'SMALLINT', 'person_per', 'per_ID', true, 8, 0);
-        $this->addForeignKey('nte_fam_ID', 'FamId', 'SMALLINT', 'family_fam', 'fam_ID', true, 8, 0);
-        $this->addColumn('nte_Private', 'Private', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_Text', 'Text', 'LONGVARCHAR', false, null, null);
-        $this->addColumn('nte_DateEntered', 'DateEntered', 'TIMESTAMP', true, null, '0000-00-00 00:00:00');
-        $this->addColumn('nte_DateLastEdited', 'DateLastEdited', 'TIMESTAMP', false, null, null);
-        $this->addColumn('nte_EnteredBy', 'EnteredBy', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_EditedBy', 'EditedBy', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_Type', 'Type', 'VARCHAR', false, 50, null);
+        $this->addColumn('egv_egiveID', 'EgiveId', 'VARCHAR', true, 16, null);
+        $this->addColumn('egv_famID', 'FamilyId', 'INTEGER', true, null, null);
+        $this->addColumn('egv_DateEntered', 'DateEntered', 'TIMESTAMP', true, null, null);
+        $this->addColumn('egv_DateLastEdited', 'DateLastEdited', 'TIMESTAMP', true, null, null);
+        $this->addColumn('egv_EnteredBy', 'EnteredBy', 'SMALLINT', true, null, 0);
+        $this->addColumn('egv_EditedBy', 'EditedBy', 'SMALLINT', true, null, 0);
     } // initialize()
 
     /**
@@ -188,20 +165,6 @@ class NoteTableMap extends TableMap
      */
     public function buildRelations()
     {
-        $this->addRelation('Person', '\\ChurchCRM\\Person', RelationMap::MANY_TO_ONE, array (
-  0 =>
-  array (
-    0 => ':nte_per_ID',
-    1 => ':per_ID',
-  ),
-), null, null, null, false);
-        $this->addRelation('Family', '\\ChurchCRM\\Family', RelationMap::MANY_TO_ONE, array (
-  0 =>
-  array (
-    0 => ':nte_fam_ID',
-    1 => ':fam_ID',
-  ),
-), null, null, null, false);
     } // buildRelations()
 
     /**
@@ -219,12 +182,7 @@ class NoteTableMap extends TableMap
      */
     public static function getPrimaryKeyHashFromRow($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
-        // If the PK cannot be derived from the row, return NULL.
-        if ($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)] === null) {
-            return null;
-        }
-
-        return null === $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)] || is_scalar($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)]) || is_callable([$row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)], '__toString']) ? (string) $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)] : $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
+        return null;
     }
 
     /**
@@ -241,11 +199,7 @@ class NoteTableMap extends TableMap
      */
     public static function getPrimaryKeyFromRow($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
-        return (int) $row[
-            $indexType == TableMap::TYPE_NUM
-                ? 0 + $offset
-                : self::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)
-        ];
+        return '';
     }
 
     /**
@@ -261,7 +215,7 @@ class NoteTableMap extends TableMap
      */
     public static function getOMClass($withPrefix = true)
     {
-        return $withPrefix ? NoteTableMap::CLASS_DEFAULT : NoteTableMap::OM_CLASS;
+        return $withPrefix ? EgiveTableMap::CLASS_DEFAULT : EgiveTableMap::OM_CLASS;
     }
 
     /**
@@ -275,22 +229,22 @@ class NoteTableMap extends TableMap
      *
      * @throws PropelException Any exceptions caught during processing will be
      *                         rethrown wrapped into a PropelException.
-     * @return array           (Note object, last column rank)
+     * @return array           (Egive object, last column rank)
      */
     public static function populateObject($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
-        $key = NoteTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
-        if (null !== ($obj = NoteTableMap::getInstanceFromPool($key))) {
+        $key = EgiveTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
+        if (null !== ($obj = EgiveTableMap::getInstanceFromPool($key))) {
             // We no longer rehydrate the object, since this can cause data loss.
             // See http://www.propelorm.org/ticket/509
             // $obj->hydrate($row, $offset, true); // rehydrate
-            $col = $offset + NoteTableMap::NUM_HYDRATE_COLUMNS;
+            $col = $offset + EgiveTableMap::NUM_HYDRATE_COLUMNS;
         } else {
-            $cls = NoteTableMap::OM_CLASS;
-            /** @var Note $obj */
+            $cls = EgiveTableMap::OM_CLASS;
+            /** @var Egive $obj */
             $obj = new $cls();
             $col = $obj->hydrate($row, $offset, false, $indexType);
-            NoteTableMap::addInstanceToPool($obj, $key);
+            EgiveTableMap::addInstanceToPool($obj, $key);
         }
 
         return array($obj, $col);
@@ -313,18 +267,18 @@ class NoteTableMap extends TableMap
         $cls = static::getOMClass(false);
         // populate the object(s)
         while ($row = $dataFetcher->fetch()) {
-            $key = NoteTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
-            if (null !== ($obj = NoteTableMap::getInstanceFromPool($key))) {
+            $key = EgiveTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
+            if (null !== ($obj = EgiveTableMap::getInstanceFromPool($key))) {
                 // We no longer rehydrate the object, since this can cause data loss.
                 // See http://www.propelorm.org/ticket/509
                 // $obj->hydrate($row, 0, true); // rehydrate
                 $results[] = $obj;
             } else {
-                /** @var Note $obj */
+                /** @var Egive $obj */
                 $obj = new $cls();
                 $obj->hydrate($row);
                 $results[] = $obj;
-                NoteTableMap::addInstanceToPool($obj, $key);
+                EgiveTableMap::addInstanceToPool($obj, $key);
             } // if key exists
         }
 
@@ -345,27 +299,19 @@ class NoteTableMap extends TableMap
     public static function addSelectColumns(Criteria $criteria, $alias = null)
     {
         if (null === $alias) {
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_PER_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_FAM_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_PRIVATE);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_TEXT);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_DATEENTERED);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_DATELASTEDITED);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_ENTEREDBY);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_EDITEDBY);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_TYPE);
+            $criteria->addSelectColumn(EgiveTableMap::COL_EGV_EGIVEID);
+            $criteria->addSelectColumn(EgiveTableMap::COL_EGV_FAMID);
+            $criteria->addSelectColumn(EgiveTableMap::COL_EGV_DATEENTERED);
+            $criteria->addSelectColumn(EgiveTableMap::COL_EGV_DATELASTEDITED);
+            $criteria->addSelectColumn(EgiveTableMap::COL_EGV_ENTEREDBY);
+            $criteria->addSelectColumn(EgiveTableMap::COL_EGV_EDITEDBY);
         } else {
-            $criteria->addSelectColumn($alias . '.nte_ID');
-            $criteria->addSelectColumn($alias . '.nte_per_ID');
-            $criteria->addSelectColumn($alias . '.nte_fam_ID');
-            $criteria->addSelectColumn($alias . '.nte_Private');
-            $criteria->addSelectColumn($alias . '.nte_Text');
-            $criteria->addSelectColumn($alias . '.nte_DateEntered');
-            $criteria->addSelectColumn($alias . '.nte_DateLastEdited');
-            $criteria->addSelectColumn($alias . '.nte_EnteredBy');
-            $criteria->addSelectColumn($alias . '.nte_EditedBy');
-            $criteria->addSelectColumn($alias . '.nte_Type');
+            $criteria->addSelectColumn($alias . '.egv_egiveID');
+            $criteria->addSelectColumn($alias . '.egv_famID');
+            $criteria->addSelectColumn($alias . '.egv_DateEntered');
+            $criteria->addSelectColumn($alias . '.egv_DateLastEdited');
+            $criteria->addSelectColumn($alias . '.egv_EnteredBy');
+            $criteria->addSelectColumn($alias . '.egv_EditedBy');
         }
     }
 
@@ -378,7 +324,7 @@ class NoteTableMap extends TableMap
      */
     public static function getTableMap()
     {
-        return Propel::getServiceContainer()->getDatabaseMap(NoteTableMap::DATABASE_NAME)->getTable(NoteTableMap::TABLE_NAME);
+        return Propel::getServiceContainer()->getDatabaseMap(EgiveTableMap::DATABASE_NAME)->getTable(EgiveTableMap::TABLE_NAME);
     }
 
     /**
@@ -386,16 +332,16 @@ class NoteTableMap extends TableMap
      */
     public static function buildTableMap()
     {
-        $dbMap = Propel::getServiceContainer()->getDatabaseMap(NoteTableMap::DATABASE_NAME);
-        if (!$dbMap->hasTable(NoteTableMap::TABLE_NAME)) {
-            $dbMap->addTableObject(new NoteTableMap());
+        $dbMap = Propel::getServiceContainer()->getDatabaseMap(EgiveTableMap::DATABASE_NAME);
+        if (!$dbMap->hasTable(EgiveTableMap::TABLE_NAME)) {
+            $dbMap->addTableObject(new EgiveTableMap());
         }
     }
 
     /**
-     * Performs a DELETE on the database, given a Note or Criteria object OR a primary key value.
+     * Performs a DELETE on the database, given a Egive or Criteria object OR a primary key value.
      *
-     * @param mixed               $values Criteria or Note object or primary key or array of primary keys
+     * @param mixed               $values Criteria or Egive object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param  ConnectionInterface $con the connection to use
      * @return int             The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -406,27 +352,26 @@ class NoteTableMap extends TableMap
      public static function doDelete($values, ConnectionInterface $con = null)
      {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(EgiveTableMap::DATABASE_NAME);
         }
 
         if ($values instanceof Criteria) {
             // rename for clarity
             $criteria = $values;
-        } elseif ($values instanceof \ChurchCRM\Note) { // it's a model object
-            // create criteria based on pk values
-            $criteria = $values->buildPkeyCriteria();
+        } elseif ($values instanceof \ChurchCRM\Egive) { // it's a model object
+            // create criteria based on pk value
+            $criteria = $values->buildCriteria();
         } else { // it's a primary key, or an array of pks
-            $criteria = new Criteria(NoteTableMap::DATABASE_NAME);
-            $criteria->add(NoteTableMap::COL_NTE_ID, (array) $values, Criteria::IN);
+            throw new LogicException('The Egive object has no primary key');
         }
 
-        $query = NoteQuery::create()->mergeWith($criteria);
+        $query = EgiveQuery::create()->mergeWith($criteria);
 
         if ($values instanceof Criteria) {
-            NoteTableMap::clearInstancePool();
+            EgiveTableMap::clearInstancePool();
         } elseif (!is_object($values)) { // it's a primary key, or an array of pks
             foreach ((array) $values as $singleval) {
-                NoteTableMap::removeInstanceFromPool($singleval);
+                EgiveTableMap::removeInstanceFromPool($singleval);
             }
         }
 
@@ -434,20 +379,20 @@ class NoteTableMap extends TableMap
     }
 
     /**
-     * Deletes all rows from the note_nte table.
+     * Deletes all rows from the egive_egv table.
      *
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).
      */
     public static function doDeleteAll(ConnectionInterface $con = null)
     {
-        return NoteQuery::create()->doDeleteAll($con);
+        return EgiveQuery::create()->doDeleteAll($con);
     }
 
     /**
-     * Performs an INSERT on the database, given a Note or Criteria object.
+     * Performs an INSERT on the database, given a Egive or Criteria object.
      *
-     * @param mixed               $criteria Criteria or Note object containing data that is used to create the INSERT statement.
+     * @param mixed               $criteria Criteria or Egive object containing data that is used to create the INSERT statement.
      * @param ConnectionInterface $con the ConnectionInterface connection to use
      * @return mixed           The new primary key.
      * @throws PropelException Any exceptions caught during processing will be
@@ -456,22 +401,18 @@ class NoteTableMap extends TableMap
     public static function doInsert($criteria, ConnectionInterface $con = null)
     {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(EgiveTableMap::DATABASE_NAME);
         }
 
         if ($criteria instanceof Criteria) {
             $criteria = clone $criteria; // rename for clarity
         } else {
-            $criteria = $criteria->buildCriteria(); // build Criteria from Note object
-        }
-
-        if ($criteria->containsKey(NoteTableMap::COL_NTE_ID) && $criteria->keyContainsValue(NoteTableMap::COL_NTE_ID) ) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key ('.NoteTableMap::COL_NTE_ID.')');
+            $criteria = $criteria->buildCriteria(); // build Criteria from Egive object
         }
 
 
         // Set the correct dbName
-        $query = NoteQuery::create()->mergeWith($criteria);
+        $query = EgiveQuery::create()->mergeWith($criteria);
 
         // use transaction because $criteria could contain info
         // for more than one table (I guess, conceivably)
@@ -480,7 +421,7 @@ class NoteTableMap extends TableMap
         });
     }
 
-} // NoteTableMap
+} // EgiveTableMap
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-NoteTableMap::buildTableMap();
+EgiveTableMap::buildTableMap();

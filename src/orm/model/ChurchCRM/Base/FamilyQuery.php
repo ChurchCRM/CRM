@@ -10,6 +10,7 @@ use ChurchCRM\Map\FamilyTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
+use Propel\Runtime\ActiveQuery\ModelJoin;
 use Propel\Runtime\Collection\ObjectCollection;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Exception\PropelException;
@@ -80,6 +81,28 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildFamilyQuery leftJoinWith($relation) Adds a LEFT JOIN clause and with to the query
  * @method     ChildFamilyQuery rightJoinWith($relation) Adds a RIGHT JOIN clause and with to the query
  * @method     ChildFamilyQuery innerJoinWith($relation) Adds a INNER JOIN clause and with to the query
+ *
+ * @method     ChildFamilyQuery leftJoinPerson($relationAlias = null) Adds a LEFT JOIN clause to the query using the Person relation
+ * @method     ChildFamilyQuery rightJoinPerson($relationAlias = null) Adds a RIGHT JOIN clause to the query using the Person relation
+ * @method     ChildFamilyQuery innerJoinPerson($relationAlias = null) Adds a INNER JOIN clause to the query using the Person relation
+ *
+ * @method     ChildFamilyQuery joinWithPerson($joinType = Criteria::INNER_JOIN) Adds a join clause and with to the query using the Person relation
+ *
+ * @method     ChildFamilyQuery leftJoinWithPerson() Adds a LEFT JOIN clause and with to the query using the Person relation
+ * @method     ChildFamilyQuery rightJoinWithPerson() Adds a RIGHT JOIN clause and with to the query using the Person relation
+ * @method     ChildFamilyQuery innerJoinWithPerson() Adds a INNER JOIN clause and with to the query using the Person relation
+ *
+ * @method     ChildFamilyQuery leftJoinNote($relationAlias = null) Adds a LEFT JOIN clause to the query using the Note relation
+ * @method     ChildFamilyQuery rightJoinNote($relationAlias = null) Adds a RIGHT JOIN clause to the query using the Note relation
+ * @method     ChildFamilyQuery innerJoinNote($relationAlias = null) Adds a INNER JOIN clause to the query using the Note relation
+ *
+ * @method     ChildFamilyQuery joinWithNote($joinType = Criteria::INNER_JOIN) Adds a join clause and with to the query using the Note relation
+ *
+ * @method     ChildFamilyQuery leftJoinWithNote() Adds a LEFT JOIN clause and with to the query using the Note relation
+ * @method     ChildFamilyQuery rightJoinWithNote() Adds a RIGHT JOIN clause and with to the query using the Note relation
+ * @method     ChildFamilyQuery innerJoinWithNote() Adds a INNER JOIN clause and with to the query using the Note relation
+ *
+ * @method     \ChurchCRM\PersonQuery|\ChurchCRM\NoteQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
  *
  * @method     ChildFamily findOne(ConnectionInterface $con = null) Return the first ChildFamily matching the query
  * @method     ChildFamily findOneOrCreate(ConnectionInterface $con = null) Return the first ChildFamily matching the query, or a new ChildFamily object populated from the query conditions when no match is found
@@ -1203,6 +1226,152 @@ abstract class FamilyQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(FamilyTableMap::COL_FAM_ENVELOPE, $envelope, $comparison);
+    }
+
+    /**
+     * Filter the query by a related \ChurchCRM\Person object
+     *
+     * @param \ChurchCRM\Person|ObjectCollection $person the related object to use as filter
+     * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return ChildFamilyQuery The current query, for fluid interface
+     */
+    public function filterByPerson($person, $comparison = null)
+    {
+        if ($person instanceof \ChurchCRM\Person) {
+            return $this
+                ->addUsingAlias(FamilyTableMap::COL_FAM_ID, $person->getFamId(), $comparison);
+        } elseif ($person instanceof ObjectCollection) {
+            return $this
+                ->usePersonQuery()
+                ->filterByPrimaryKeys($person->getPrimaryKeys())
+                ->endUse();
+        } else {
+            throw new PropelException('filterByPerson() only accepts arguments of type \ChurchCRM\Person or Collection');
+        }
+    }
+
+    /**
+     * Adds a JOIN clause to the query using the Person relation
+     *
+     * @param     string $relationAlias optional alias for the relation
+     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
+     *
+     * @return $this|ChildFamilyQuery The current query, for fluid interface
+     */
+    public function joinPerson($relationAlias = null, $joinType = Criteria::INNER_JOIN)
+    {
+        $tableMap = $this->getTableMap();
+        $relationMap = $tableMap->getRelation('Person');
+
+        // create a ModelJoin object for this join
+        $join = new ModelJoin();
+        $join->setJoinType($joinType);
+        $join->setRelationMap($relationMap, $this->useAliasInSQL ? $this->getModelAlias() : null, $relationAlias);
+        if ($previousJoin = $this->getPreviousJoin()) {
+            $join->setPreviousJoin($previousJoin);
+        }
+
+        // add the ModelJoin to the current object
+        if ($relationAlias) {
+            $this->addAlias($relationAlias, $relationMap->getRightTable()->getName());
+            $this->addJoinObject($join, $relationAlias);
+        } else {
+            $this->addJoinObject($join, 'Person');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Use the Person relation Person object
+     *
+     * @see useQuery()
+     *
+     * @param     string $relationAlias optional alias for the relation,
+     *                                   to be used as main alias in the secondary query
+     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
+     *
+     * @return \ChurchCRM\PersonQuery A secondary query class using the current class as primary query
+     */
+    public function usePersonQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
+    {
+        return $this
+            ->joinPerson($relationAlias, $joinType)
+            ->useQuery($relationAlias ? $relationAlias : 'Person', '\ChurchCRM\PersonQuery');
+    }
+
+    /**
+     * Filter the query by a related \ChurchCRM\Note object
+     *
+     * @param \ChurchCRM\Note|ObjectCollection $note the related object to use as filter
+     * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return ChildFamilyQuery The current query, for fluid interface
+     */
+    public function filterByNote($note, $comparison = null)
+    {
+        if ($note instanceof \ChurchCRM\Note) {
+            return $this
+                ->addUsingAlias(FamilyTableMap::COL_FAM_ID, $note->getFamId(), $comparison);
+        } elseif ($note instanceof ObjectCollection) {
+            return $this
+                ->useNoteQuery()
+                ->filterByPrimaryKeys($note->getPrimaryKeys())
+                ->endUse();
+        } else {
+            throw new PropelException('filterByNote() only accepts arguments of type \ChurchCRM\Note or Collection');
+        }
+    }
+
+    /**
+     * Adds a JOIN clause to the query using the Note relation
+     *
+     * @param     string $relationAlias optional alias for the relation
+     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
+     *
+     * @return $this|ChildFamilyQuery The current query, for fluid interface
+     */
+    public function joinNote($relationAlias = null, $joinType = Criteria::INNER_JOIN)
+    {
+        $tableMap = $this->getTableMap();
+        $relationMap = $tableMap->getRelation('Note');
+
+        // create a ModelJoin object for this join
+        $join = new ModelJoin();
+        $join->setJoinType($joinType);
+        $join->setRelationMap($relationMap, $this->useAliasInSQL ? $this->getModelAlias() : null, $relationAlias);
+        if ($previousJoin = $this->getPreviousJoin()) {
+            $join->setPreviousJoin($previousJoin);
+        }
+
+        // add the ModelJoin to the current object
+        if ($relationAlias) {
+            $this->addAlias($relationAlias, $relationMap->getRightTable()->getName());
+            $this->addJoinObject($join, $relationAlias);
+        } else {
+            $this->addJoinObject($join, 'Note');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Use the Note relation Note object
+     *
+     * @see useQuery()
+     *
+     * @param     string $relationAlias optional alias for the relation,
+     *                                   to be used as main alias in the secondary query
+     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
+     *
+     * @return \ChurchCRM\NoteQuery A secondary query class using the current class as primary query
+     */
+    public function useNoteQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
+    {
+        return $this
+            ->joinNote($relationAlias, $joinType)
+            ->useQuery($relationAlias ? $relationAlias : 'Note', '\ChurchCRM\NoteQuery');
     }
 
     /**

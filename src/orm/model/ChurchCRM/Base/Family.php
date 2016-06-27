@@ -5,13 +5,21 @@ namespace ChurchCRM\Base;
 use \DateTime;
 use \Exception;
 use \PDO;
+use ChurchCRM\Family as ChildFamily;
 use ChurchCRM\FamilyQuery as ChildFamilyQuery;
+use ChurchCRM\Note as ChildNote;
+use ChurchCRM\NoteQuery as ChildNoteQuery;
+use ChurchCRM\Person as ChildPerson;
+use ChurchCRM\PersonQuery as ChildPersonQuery;
 use ChurchCRM\Map\FamilyTableMap;
+use ChurchCRM\Map\NoteTableMap;
+use ChurchCRM\Map\PersonTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
 use Propel\Runtime\Collection\Collection;
+use Propel\Runtime\Collection\ObjectCollection;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Exception\BadMethodCallException;
 use Propel\Runtime\Exception\LogicException;
@@ -251,12 +259,36 @@ abstract class Family implements ActiveRecordInterface
     protected $fam_envelope;
 
     /**
+     * @var        ObjectCollection|ChildPerson[] Collection to store aggregation of ChildPerson objects.
+     */
+    protected $collPeople;
+    protected $collPeoplePartial;
+
+    /**
+     * @var        ObjectCollection|ChildNote[] Collection to store aggregation of ChildNote objects.
+     */
+    protected $collNotes;
+    protected $collNotesPartial;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
      * @var boolean
      */
     protected $alreadyInSave = false;
+
+    /**
+     * An array of objects scheduled for deletion.
+     * @var ObjectCollection|ChildPerson[]
+     */
+    protected $peopleScheduledForDeletion = null;
+
+    /**
+     * An array of objects scheduled for deletion.
+     * @var ObjectCollection|ChildNote[]
+     */
+    protected $notesScheduledForDeletion = null;
 
     /**
      * Applies default values to this object.
@@ -1546,6 +1578,10 @@ abstract class Family implements ActiveRecordInterface
 
         if ($deep) {  // also de-associate any related objects?
 
+            $this->collPeople = null;
+
+            $this->collNotes = null;
+
         } // if (deep)
     }
 
@@ -1654,6 +1690,40 @@ abstract class Family implements ActiveRecordInterface
                     $affectedRows += $this->doUpdate($con);
                 }
                 $this->resetModified();
+            }
+
+            if ($this->peopleScheduledForDeletion !== null) {
+                if (!$this->peopleScheduledForDeletion->isEmpty()) {
+                    \ChurchCRM\PersonQuery::create()
+                        ->filterByPrimaryKeys($this->peopleScheduledForDeletion->getPrimaryKeys(false))
+                        ->delete($con);
+                    $this->peopleScheduledForDeletion = null;
+                }
+            }
+
+            if ($this->collPeople !== null) {
+                foreach ($this->collPeople as $referrerFK) {
+                    if (!$referrerFK->isDeleted() && ($referrerFK->isNew() || $referrerFK->isModified())) {
+                        $affectedRows += $referrerFK->save($con);
+                    }
+                }
+            }
+
+            if ($this->notesScheduledForDeletion !== null) {
+                if (!$this->notesScheduledForDeletion->isEmpty()) {
+                    \ChurchCRM\NoteQuery::create()
+                        ->filterByPrimaryKeys($this->notesScheduledForDeletion->getPrimaryKeys(false))
+                        ->delete($con);
+                    $this->notesScheduledForDeletion = null;
+                }
+            }
+
+            if ($this->collNotes !== null) {
+                foreach ($this->collNotes as $referrerFK) {
+                    if (!$referrerFK->isDeleted() && ($referrerFK->isNew() || $referrerFK->isModified())) {
+                        $affectedRows += $referrerFK->save($con);
+                    }
+                }
             }
 
             $this->alreadyInSave = false;
@@ -2006,10 +2076,11 @@ abstract class Family implements ActiveRecordInterface
      *                    Defaults to TableMap::TYPE_PHPNAME.
      * @param     boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns. Defaults to TRUE.
      * @param     array $alreadyDumpedObjects List of objects to skip to avoid recursion
+     * @param     boolean $includeForeignObjects (optional) Whether to include hydrated related objects. Default to FALSE.
      *
      * @return array an associative array containing the field names (as keys) and field values
      */
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
 
         if (isset($alreadyDumpedObjects['Family'][$this->hashCode()])) {
@@ -2066,6 +2137,38 @@ abstract class Family implements ActiveRecordInterface
             $result[$key] = $virtualColumn;
         }
 
+        if ($includeForeignObjects) {
+            if (null !== $this->collPeople) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'people';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'person_pers';
+                        break;
+                    default:
+                        $key = 'People';
+                }
+
+                $result[$key] = $this->collPeople->toArray(null, false, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
+            }
+            if (null !== $this->collNotes) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'notes';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'note_ntes';
+                        break;
+                    default:
+                        $key = 'Notes';
+                }
+
+                $result[$key] = $this->collNotes->toArray(null, false, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
+            }
+        }
 
         return $result;
     }
@@ -2511,6 +2614,26 @@ abstract class Family implements ActiveRecordInterface
         $copyObj->setLatitude($this->getLatitude());
         $copyObj->setLongitude($this->getLongitude());
         $copyObj->setEnvelope($this->getEnvelope());
+
+        if ($deepCopy) {
+            // important: temporarily setNew(false) because this affects the behavior of
+            // the getter/setter methods for fkey referrer objects.
+            $copyObj->setNew(false);
+
+            foreach ($this->getPeople() as $relObj) {
+                if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+                    $copyObj->addPerson($relObj->copy($deepCopy));
+                }
+            }
+
+            foreach ($this->getNotes() as $relObj) {
+                if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+                    $copyObj->addNote($relObj->copy($deepCopy));
+                }
+            }
+
+        } // if ($deepCopy)
+
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setId(NULL); // this is a auto-increment column, so set to default value
@@ -2537,6 +2660,500 @@ abstract class Family implements ActiveRecordInterface
         $this->copyInto($copyObj, $deepCopy);
 
         return $copyObj;
+    }
+
+
+    /**
+     * Initializes a collection based on the name of a relation.
+     * Avoids crafting an 'init[$relationName]s' method name
+     * that wouldn't work when StandardEnglishPluralizer is used.
+     *
+     * @param      string $relationName The name of the relation to initialize
+     * @return void
+     */
+    public function initRelation($relationName)
+    {
+        if ('Person' == $relationName) {
+            return $this->initPeople();
+        }
+        if ('Note' == $relationName) {
+            return $this->initNotes();
+        }
+    }
+
+    /**
+     * Clears out the collPeople collection
+     *
+     * This does not modify the database; however, it will remove any associated objects, causing
+     * them to be refetched by subsequent calls to accessor method.
+     *
+     * @return void
+     * @see        addPeople()
+     */
+    public function clearPeople()
+    {
+        $this->collPeople = null; // important to set this to NULL since that means it is uninitialized
+    }
+
+    /**
+     * Reset is the collPeople collection loaded partially.
+     */
+    public function resetPartialPeople($v = true)
+    {
+        $this->collPeoplePartial = $v;
+    }
+
+    /**
+     * Initializes the collPeople collection.
+     *
+     * By default this just sets the collPeople collection to an empty array (like clearcollPeople());
+     * however, you may wish to override this method in your stub class to provide setting appropriate
+     * to your application -- for example, setting the initial array to the values stored in database.
+     *
+     * @param      boolean $overrideExisting If set to true, the method call initializes
+     *                                        the collection even if it is not empty
+     *
+     * @return void
+     */
+    public function initPeople($overrideExisting = true)
+    {
+        if (null !== $this->collPeople && !$overrideExisting) {
+            return;
+        }
+
+        $collectionClassName = PersonTableMap::getTableMap()->getCollectionClassName();
+
+        $this->collPeople = new $collectionClassName;
+        $this->collPeople->setModel('\ChurchCRM\Person');
+    }
+
+    /**
+     * Gets an array of ChildPerson objects which contain a foreign key that references this object.
+     *
+     * If the $criteria is not null, it is used to always fetch the results from the database.
+     * Otherwise the results are fetched from the database the first time, then cached.
+     * Next time the same method is called without $criteria, the cached collection is returned.
+     * If this ChildFamily is new, it will return
+     * an empty collection or the current collection; the criteria is ignored on a new object.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @return ObjectCollection|ChildPerson[] List of ChildPerson objects
+     * @throws PropelException
+     */
+    public function getPeople(Criteria $criteria = null, ConnectionInterface $con = null)
+    {
+        $partial = $this->collPeoplePartial && !$this->isNew();
+        if (null === $this->collPeople || null !== $criteria  || $partial) {
+            if ($this->isNew() && null === $this->collPeople) {
+                // return empty collection
+                $this->initPeople();
+            } else {
+                $collPeople = ChildPersonQuery::create(null, $criteria)
+                    ->filterByFamily($this)
+                    ->find($con);
+
+                if (null !== $criteria) {
+                    if (false !== $this->collPeoplePartial && count($collPeople)) {
+                        $this->initPeople(false);
+
+                        foreach ($collPeople as $obj) {
+                            if (false == $this->collPeople->contains($obj)) {
+                                $this->collPeople->append($obj);
+                            }
+                        }
+
+                        $this->collPeoplePartial = true;
+                    }
+
+                    return $collPeople;
+                }
+
+                if ($partial && $this->collPeople) {
+                    foreach ($this->collPeople as $obj) {
+                        if ($obj->isNew()) {
+                            $collPeople[] = $obj;
+                        }
+                    }
+                }
+
+                $this->collPeople = $collPeople;
+                $this->collPeoplePartial = false;
+            }
+        }
+
+        return $this->collPeople;
+    }
+
+    /**
+     * Sets a collection of ChildPerson objects related by a one-to-many relationship
+     * to the current object.
+     * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
+     * and new objects from the given Propel collection.
+     *
+     * @param      Collection $people A Propel collection.
+     * @param      ConnectionInterface $con Optional connection object
+     * @return $this|ChildFamily The current object (for fluent API support)
+     */
+    public function setPeople(Collection $people, ConnectionInterface $con = null)
+    {
+        /** @var ChildPerson[] $peopleToDelete */
+        $peopleToDelete = $this->getPeople(new Criteria(), $con)->diff($people);
+
+
+        $this->peopleScheduledForDeletion = $peopleToDelete;
+
+        foreach ($peopleToDelete as $personRemoved) {
+            $personRemoved->setFamily(null);
+        }
+
+        $this->collPeople = null;
+        foreach ($people as $person) {
+            $this->addPerson($person);
+        }
+
+        $this->collPeople = $people;
+        $this->collPeoplePartial = false;
+
+        return $this;
+    }
+
+    /**
+     * Returns the number of related Person objects.
+     *
+     * @param      Criteria $criteria
+     * @param      boolean $distinct
+     * @param      ConnectionInterface $con
+     * @return int             Count of related Person objects.
+     * @throws PropelException
+     */
+    public function countPeople(Criteria $criteria = null, $distinct = false, ConnectionInterface $con = null)
+    {
+        $partial = $this->collPeoplePartial && !$this->isNew();
+        if (null === $this->collPeople || null !== $criteria || $partial) {
+            if ($this->isNew() && null === $this->collPeople) {
+                return 0;
+            }
+
+            if ($partial && !$criteria) {
+                return count($this->getPeople());
+            }
+
+            $query = ChildPersonQuery::create(null, $criteria);
+            if ($distinct) {
+                $query->distinct();
+            }
+
+            return $query
+                ->filterByFamily($this)
+                ->count($con);
+        }
+
+        return count($this->collPeople);
+    }
+
+    /**
+     * Method called to associate a ChildPerson object to this object
+     * through the ChildPerson foreign key attribute.
+     *
+     * @param  ChildPerson $l ChildPerson
+     * @return $this|\ChurchCRM\Family The current object (for fluent API support)
+     */
+    public function addPerson(ChildPerson $l)
+    {
+        if ($this->collPeople === null) {
+            $this->initPeople();
+            $this->collPeoplePartial = true;
+        }
+
+        if (!$this->collPeople->contains($l)) {
+            $this->doAddPerson($l);
+
+            if ($this->peopleScheduledForDeletion and $this->peopleScheduledForDeletion->contains($l)) {
+                $this->peopleScheduledForDeletion->remove($this->peopleScheduledForDeletion->search($l));
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param ChildPerson $person The ChildPerson object to add.
+     */
+    protected function doAddPerson(ChildPerson $person)
+    {
+        $this->collPeople[]= $person;
+        $person->setFamily($this);
+    }
+
+    /**
+     * @param  ChildPerson $person The ChildPerson object to remove.
+     * @return $this|ChildFamily The current object (for fluent API support)
+     */
+    public function removePerson(ChildPerson $person)
+    {
+        if ($this->getPeople()->contains($person)) {
+            $pos = $this->collPeople->search($person);
+            $this->collPeople->remove($pos);
+            if (null === $this->peopleScheduledForDeletion) {
+                $this->peopleScheduledForDeletion = clone $this->collPeople;
+                $this->peopleScheduledForDeletion->clear();
+            }
+            $this->peopleScheduledForDeletion[]= clone $person;
+            $person->setFamily(null);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Clears out the collNotes collection
+     *
+     * This does not modify the database; however, it will remove any associated objects, causing
+     * them to be refetched by subsequent calls to accessor method.
+     *
+     * @return void
+     * @see        addNotes()
+     */
+    public function clearNotes()
+    {
+        $this->collNotes = null; // important to set this to NULL since that means it is uninitialized
+    }
+
+    /**
+     * Reset is the collNotes collection loaded partially.
+     */
+    public function resetPartialNotes($v = true)
+    {
+        $this->collNotesPartial = $v;
+    }
+
+    /**
+     * Initializes the collNotes collection.
+     *
+     * By default this just sets the collNotes collection to an empty array (like clearcollNotes());
+     * however, you may wish to override this method in your stub class to provide setting appropriate
+     * to your application -- for example, setting the initial array to the values stored in database.
+     *
+     * @param      boolean $overrideExisting If set to true, the method call initializes
+     *                                        the collection even if it is not empty
+     *
+     * @return void
+     */
+    public function initNotes($overrideExisting = true)
+    {
+        if (null !== $this->collNotes && !$overrideExisting) {
+            return;
+        }
+
+        $collectionClassName = NoteTableMap::getTableMap()->getCollectionClassName();
+
+        $this->collNotes = new $collectionClassName;
+        $this->collNotes->setModel('\ChurchCRM\Note');
+    }
+
+    /**
+     * Gets an array of ChildNote objects which contain a foreign key that references this object.
+     *
+     * If the $criteria is not null, it is used to always fetch the results from the database.
+     * Otherwise the results are fetched from the database the first time, then cached.
+     * Next time the same method is called without $criteria, the cached collection is returned.
+     * If this ChildFamily is new, it will return
+     * an empty collection or the current collection; the criteria is ignored on a new object.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @return ObjectCollection|ChildNote[] List of ChildNote objects
+     * @throws PropelException
+     */
+    public function getNotes(Criteria $criteria = null, ConnectionInterface $con = null)
+    {
+        $partial = $this->collNotesPartial && !$this->isNew();
+        if (null === $this->collNotes || null !== $criteria  || $partial) {
+            if ($this->isNew() && null === $this->collNotes) {
+                // return empty collection
+                $this->initNotes();
+            } else {
+                $collNotes = ChildNoteQuery::create(null, $criteria)
+                    ->filterByFamily($this)
+                    ->find($con);
+
+                if (null !== $criteria) {
+                    if (false !== $this->collNotesPartial && count($collNotes)) {
+                        $this->initNotes(false);
+
+                        foreach ($collNotes as $obj) {
+                            if (false == $this->collNotes->contains($obj)) {
+                                $this->collNotes->append($obj);
+                            }
+                        }
+
+                        $this->collNotesPartial = true;
+                    }
+
+                    return $collNotes;
+                }
+
+                if ($partial && $this->collNotes) {
+                    foreach ($this->collNotes as $obj) {
+                        if ($obj->isNew()) {
+                            $collNotes[] = $obj;
+                        }
+                    }
+                }
+
+                $this->collNotes = $collNotes;
+                $this->collNotesPartial = false;
+            }
+        }
+
+        return $this->collNotes;
+    }
+
+    /**
+     * Sets a collection of ChildNote objects related by a one-to-many relationship
+     * to the current object.
+     * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
+     * and new objects from the given Propel collection.
+     *
+     * @param      Collection $notes A Propel collection.
+     * @param      ConnectionInterface $con Optional connection object
+     * @return $this|ChildFamily The current object (for fluent API support)
+     */
+    public function setNotes(Collection $notes, ConnectionInterface $con = null)
+    {
+        /** @var ChildNote[] $notesToDelete */
+        $notesToDelete = $this->getNotes(new Criteria(), $con)->diff($notes);
+
+
+        $this->notesScheduledForDeletion = $notesToDelete;
+
+        foreach ($notesToDelete as $noteRemoved) {
+            $noteRemoved->setFamily(null);
+        }
+
+        $this->collNotes = null;
+        foreach ($notes as $note) {
+            $this->addNote($note);
+        }
+
+        $this->collNotes = $notes;
+        $this->collNotesPartial = false;
+
+        return $this;
+    }
+
+    /**
+     * Returns the number of related Note objects.
+     *
+     * @param      Criteria $criteria
+     * @param      boolean $distinct
+     * @param      ConnectionInterface $con
+     * @return int             Count of related Note objects.
+     * @throws PropelException
+     */
+    public function countNotes(Criteria $criteria = null, $distinct = false, ConnectionInterface $con = null)
+    {
+        $partial = $this->collNotesPartial && !$this->isNew();
+        if (null === $this->collNotes || null !== $criteria || $partial) {
+            if ($this->isNew() && null === $this->collNotes) {
+                return 0;
+            }
+
+            if ($partial && !$criteria) {
+                return count($this->getNotes());
+            }
+
+            $query = ChildNoteQuery::create(null, $criteria);
+            if ($distinct) {
+                $query->distinct();
+            }
+
+            return $query
+                ->filterByFamily($this)
+                ->count($con);
+        }
+
+        return count($this->collNotes);
+    }
+
+    /**
+     * Method called to associate a ChildNote object to this object
+     * through the ChildNote foreign key attribute.
+     *
+     * @param  ChildNote $l ChildNote
+     * @return $this|\ChurchCRM\Family The current object (for fluent API support)
+     */
+    public function addNote(ChildNote $l)
+    {
+        if ($this->collNotes === null) {
+            $this->initNotes();
+            $this->collNotesPartial = true;
+        }
+
+        if (!$this->collNotes->contains($l)) {
+            $this->doAddNote($l);
+
+            if ($this->notesScheduledForDeletion and $this->notesScheduledForDeletion->contains($l)) {
+                $this->notesScheduledForDeletion->remove($this->notesScheduledForDeletion->search($l));
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param ChildNote $note The ChildNote object to add.
+     */
+    protected function doAddNote(ChildNote $note)
+    {
+        $this->collNotes[]= $note;
+        $note->setFamily($this);
+    }
+
+    /**
+     * @param  ChildNote $note The ChildNote object to remove.
+     * @return $this|ChildFamily The current object (for fluent API support)
+     */
+    public function removeNote(ChildNote $note)
+    {
+        if ($this->getNotes()->contains($note)) {
+            $pos = $this->collNotes->search($note);
+            $this->collNotes->remove($pos);
+            if (null === $this->notesScheduledForDeletion) {
+                $this->notesScheduledForDeletion = clone $this->collNotes;
+                $this->notesScheduledForDeletion->clear();
+            }
+            $this->notesScheduledForDeletion[]= clone $note;
+            $note->setFamily(null);
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * If this collection has already been initialized with
+     * an identical criteria, it returns the collection.
+     * Otherwise if this Family is new, it will return
+     * an empty collection; or if this Family has previously
+     * been saved, it will retrieve related Notes from storage.
+     *
+     * This method is protected by default in order to keep the public
+     * api reasonable.  You can provide public methods for those you
+     * actually need in Family.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @param      string $joinBehavior optional join type to use (defaults to Criteria::LEFT_JOIN)
+     * @return ObjectCollection|ChildNote[] List of ChildNote objects
+     */
+    public function getNotesJoinPerson(Criteria $criteria = null, ConnectionInterface $con = null, $joinBehavior = Criteria::LEFT_JOIN)
+    {
+        $query = ChildNoteQuery::create(null, $criteria);
+        $query->joinWith('Person', $joinBehavior);
+
+        return $this->getNotes($query, $con);
     }
 
     /**
@@ -2591,8 +3208,20 @@ abstract class Family implements ActiveRecordInterface
     public function clearAllReferences($deep = false)
     {
         if ($deep) {
+            if ($this->collPeople) {
+                foreach ($this->collPeople as $o) {
+                    $o->clearAllReferences($deep);
+                }
+            }
+            if ($this->collNotes) {
+                foreach ($this->collNotes as $o) {
+                    $o->clearAllReferences($deep);
+                }
+            }
         } // if ($deep)
 
+        $this->collPeople = null;
+        $this->collNotes = null;
     }
 
     /**

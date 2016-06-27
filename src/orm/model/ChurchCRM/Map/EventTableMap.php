@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Map;
 
-use ChurchCRM\Note;
-use ChurchCRM\NoteQuery;
+use ChurchCRM\Event;
+use ChurchCRM\EventQuery;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\InstancePoolTrait;
@@ -16,7 +16,7 @@ use Propel\Runtime\Map\TableMapTrait;
 
 
 /**
- * This class defines the structure of the 'note_nte' table.
+ * This class defines the structure of the 'events_event' table.
  *
  *
  *
@@ -26,7 +26,7 @@ use Propel\Runtime\Map\TableMapTrait;
  * (i.e. if it's a text column type).
  *
  */
-class NoteTableMap extends TableMap
+class EventTableMap extends TableMap
 {
     use InstancePoolTrait;
     use TableMapTrait;
@@ -34,7 +34,7 @@ class NoteTableMap extends TableMap
     /**
      * The (dot-path) name of this class
      */
-    const CLASS_NAME = 'ChurchCRM.Map.NoteTableMap';
+    const CLASS_NAME = 'ChurchCRM.Map.EventTableMap';
 
     /**
      * The default database name for this class
@@ -44,22 +44,22 @@ class NoteTableMap extends TableMap
     /**
      * The table name for this class
      */
-    const TABLE_NAME = 'note_nte';
+    const TABLE_NAME = 'events_event';
 
     /**
      * The related Propel class for this table
      */
-    const OM_CLASS = '\\ChurchCRM\\Note';
+    const OM_CLASS = '\\ChurchCRM\\Event';
 
     /**
      * A class that can be returned by this tableMap
      */
-    const CLASS_DEFAULT = 'ChurchCRM.Note';
+    const CLASS_DEFAULT = 'ChurchCRM.Event';
 
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 10;
+    const NUM_COLUMNS = 9;
 
     /**
      * The number of lazy-loaded columns
@@ -69,57 +69,52 @@ class NoteTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 10;
+    const NUM_HYDRATE_COLUMNS = 9;
 
     /**
-     * the column name for the nte_ID field
+     * the column name for the event_id field
      */
-    const COL_NTE_ID = 'note_nte.nte_ID';
+    const COL_EVENT_ID = 'events_event.event_id';
 
     /**
-     * the column name for the nte_per_ID field
+     * the column name for the event_type field
      */
-    const COL_NTE_PER_ID = 'note_nte.nte_per_ID';
+    const COL_EVENT_TYPE = 'events_event.event_type';
 
     /**
-     * the column name for the nte_fam_ID field
+     * the column name for the event_title field
      */
-    const COL_NTE_FAM_ID = 'note_nte.nte_fam_ID';
+    const COL_EVENT_TITLE = 'events_event.event_title';
 
     /**
-     * the column name for the nte_Private field
+     * the column name for the event_desc field
      */
-    const COL_NTE_PRIVATE = 'note_nte.nte_Private';
+    const COL_EVENT_DESC = 'events_event.event_desc';
 
     /**
-     * the column name for the nte_Text field
+     * the column name for the event_text field
      */
-    const COL_NTE_TEXT = 'note_nte.nte_Text';
+    const COL_EVENT_TEXT = 'events_event.event_text';
 
     /**
-     * the column name for the nte_DateEntered field
+     * the column name for the event_start field
      */
-    const COL_NTE_DATEENTERED = 'note_nte.nte_DateEntered';
+    const COL_EVENT_START = 'events_event.event_start';
 
     /**
-     * the column name for the nte_DateLastEdited field
+     * the column name for the event_end field
      */
-    const COL_NTE_DATELASTEDITED = 'note_nte.nte_DateLastEdited';
+    const COL_EVENT_END = 'events_event.event_end';
 
     /**
-     * the column name for the nte_EnteredBy field
+     * the column name for the inactive field
      */
-    const COL_NTE_ENTEREDBY = 'note_nte.nte_EnteredBy';
+    const COL_INACTIVE = 'events_event.inactive';
 
     /**
-     * the column name for the nte_EditedBy field
+     * the column name for the event_typename field
      */
-    const COL_NTE_EDITEDBY = 'note_nte.nte_EditedBy';
-
-    /**
-     * the column name for the nte_Type field
-     */
-    const COL_NTE_TYPE = 'note_nte.nte_Type';
+    const COL_EVENT_TYPENAME = 'events_event.event_typename';
 
     /**
      * The default string format for model objects of the related table
@@ -133,11 +128,11 @@ class NoteTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'PerId', 'FamId', 'Private', 'Text', 'DateEntered', 'DateLastEdited', 'EnteredBy', 'EditedBy', 'Type', ),
-        self::TYPE_CAMELNAME     => array('id', 'perId', 'famId', 'private', 'text', 'dateEntered', 'dateLastEdited', 'enteredBy', 'editedBy', 'type', ),
-        self::TYPE_COLNAME       => array(NoteTableMap::COL_NTE_ID, NoteTableMap::COL_NTE_PER_ID, NoteTableMap::COL_NTE_FAM_ID, NoteTableMap::COL_NTE_PRIVATE, NoteTableMap::COL_NTE_TEXT, NoteTableMap::COL_NTE_DATEENTERED, NoteTableMap::COL_NTE_DATELASTEDITED, NoteTableMap::COL_NTE_ENTEREDBY, NoteTableMap::COL_NTE_EDITEDBY, NoteTableMap::COL_NTE_TYPE, ),
-        self::TYPE_FIELDNAME     => array('nte_ID', 'nte_per_ID', 'nte_fam_ID', 'nte_Private', 'nte_Text', 'nte_DateEntered', 'nte_DateLastEdited', 'nte_EnteredBy', 'nte_EditedBy', 'nte_Type', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
+        self::TYPE_PHPNAME       => array('Id', 'Type', 'Title', 'Desc', 'Text', 'Start', 'End', 'InActive', 'TypeName', ),
+        self::TYPE_CAMELNAME     => array('id', 'type', 'title', 'desc', 'text', 'start', 'end', 'inActive', 'typeName', ),
+        self::TYPE_COLNAME       => array(EventTableMap::COL_EVENT_ID, EventTableMap::COL_EVENT_TYPE, EventTableMap::COL_EVENT_TITLE, EventTableMap::COL_EVENT_DESC, EventTableMap::COL_EVENT_TEXT, EventTableMap::COL_EVENT_START, EventTableMap::COL_EVENT_END, EventTableMap::COL_INACTIVE, EventTableMap::COL_EVENT_TYPENAME, ),
+        self::TYPE_FIELDNAME     => array('event_id', 'event_type', 'event_title', 'event_desc', 'event_text', 'event_start', 'event_end', 'inactive', 'event_typename', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, )
     );
 
     /**
@@ -147,11 +142,11 @@ class NoteTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'PerId' => 1, 'FamId' => 2, 'Private' => 3, 'Text' => 4, 'DateEntered' => 5, 'DateLastEdited' => 6, 'EnteredBy' => 7, 'EditedBy' => 8, 'Type' => 9, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'perId' => 1, 'famId' => 2, 'private' => 3, 'text' => 4, 'dateEntered' => 5, 'dateLastEdited' => 6, 'enteredBy' => 7, 'editedBy' => 8, 'type' => 9, ),
-        self::TYPE_COLNAME       => array(NoteTableMap::COL_NTE_ID => 0, NoteTableMap::COL_NTE_PER_ID => 1, NoteTableMap::COL_NTE_FAM_ID => 2, NoteTableMap::COL_NTE_PRIVATE => 3, NoteTableMap::COL_NTE_TEXT => 4, NoteTableMap::COL_NTE_DATEENTERED => 5, NoteTableMap::COL_NTE_DATELASTEDITED => 6, NoteTableMap::COL_NTE_ENTEREDBY => 7, NoteTableMap::COL_NTE_EDITEDBY => 8, NoteTableMap::COL_NTE_TYPE => 9, ),
-        self::TYPE_FIELDNAME     => array('nte_ID' => 0, 'nte_per_ID' => 1, 'nte_fam_ID' => 2, 'nte_Private' => 3, 'nte_Text' => 4, 'nte_DateEntered' => 5, 'nte_DateLastEdited' => 6, 'nte_EnteredBy' => 7, 'nte_EditedBy' => 8, 'nte_Type' => 9, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
+        self::TYPE_PHPNAME       => array('Id' => 0, 'Type' => 1, 'Title' => 2, 'Desc' => 3, 'Text' => 4, 'Start' => 5, 'End' => 6, 'InActive' => 7, 'TypeName' => 8, ),
+        self::TYPE_CAMELNAME     => array('id' => 0, 'type' => 1, 'title' => 2, 'desc' => 3, 'text' => 4, 'start' => 5, 'end' => 6, 'inActive' => 7, 'typeName' => 8, ),
+        self::TYPE_COLNAME       => array(EventTableMap::COL_EVENT_ID => 0, EventTableMap::COL_EVENT_TYPE => 1, EventTableMap::COL_EVENT_TITLE => 2, EventTableMap::COL_EVENT_DESC => 3, EventTableMap::COL_EVENT_TEXT => 4, EventTableMap::COL_EVENT_START => 5, EventTableMap::COL_EVENT_END => 6, EventTableMap::COL_INACTIVE => 7, EventTableMap::COL_EVENT_TYPENAME => 8, ),
+        self::TYPE_FIELDNAME     => array('event_id' => 0, 'event_type' => 1, 'event_title' => 2, 'event_desc' => 3, 'event_text' => 4, 'event_start' => 5, 'event_end' => 6, 'inactive' => 7, 'event_typename' => 8, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, )
     );
 
     /**
@@ -164,23 +159,22 @@ class NoteTableMap extends TableMap
     public function initialize()
     {
         // attributes
-        $this->setName('note_nte');
-        $this->setPhpName('Note');
+        $this->setName('events_event');
+        $this->setPhpName('Event');
         $this->setIdentifierQuoting(false);
-        $this->setClassName('\\ChurchCRM\\Note');
+        $this->setClassName('\\ChurchCRM\\Event');
         $this->setPackage('ChurchCRM');
         $this->setUseIdGenerator(true);
         // columns
-        $this->addPrimaryKey('nte_ID', 'Id', 'SMALLINT', true, 8, null);
-        $this->addForeignKey('nte_per_ID', 'PerId', 'SMALLINT', 'person_per', 'per_ID', true, 8, 0);
-        $this->addForeignKey('nte_fam_ID', 'FamId', 'SMALLINT', 'family_fam', 'fam_ID', true, 8, 0);
-        $this->addColumn('nte_Private', 'Private', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_Text', 'Text', 'LONGVARCHAR', false, null, null);
-        $this->addColumn('nte_DateEntered', 'DateEntered', 'TIMESTAMP', true, null, '0000-00-00 00:00:00');
-        $this->addColumn('nte_DateLastEdited', 'DateLastEdited', 'TIMESTAMP', false, null, null);
-        $this->addColumn('nte_EnteredBy', 'EnteredBy', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_EditedBy', 'EditedBy', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_Type', 'Type', 'VARCHAR', false, 50, null);
+        $this->addPrimaryKey('event_id', 'Id', 'INTEGER', true, null, null);
+        $this->addColumn('event_type', 'Type', 'INTEGER', true, null, 0);
+        $this->addColumn('event_title', 'Title', 'VARCHAR', true, 255, '');
+        $this->addColumn('event_desc', 'Desc', 'VARCHAR', false, 255, null);
+        $this->addColumn('event_text', 'Text', 'LONGVARCHAR', false, null, null);
+        $this->addColumn('event_start', 'Start', 'TIMESTAMP', true, null, '0000-00-00 00:00:00');
+        $this->addColumn('event_end', 'End', 'TIMESTAMP', true, null, '0000-00-00 00:00:00');
+        $this->addColumn('inactive', 'InActive', 'INTEGER', true, 1, 0);
+        $this->addColumn('event_typename', 'TypeName', 'VARCHAR', true, 40, '');
     } // initialize()
 
     /**
@@ -188,20 +182,6 @@ class NoteTableMap extends TableMap
      */
     public function buildRelations()
     {
-        $this->addRelation('Person', '\\ChurchCRM\\Person', RelationMap::MANY_TO_ONE, array (
-  0 =>
-  array (
-    0 => ':nte_per_ID',
-    1 => ':per_ID',
-  ),
-), null, null, null, false);
-        $this->addRelation('Family', '\\ChurchCRM\\Family', RelationMap::MANY_TO_ONE, array (
-  0 =>
-  array (
-    0 => ':nte_fam_ID',
-    1 => ':fam_ID',
-  ),
-), null, null, null, false);
     } // buildRelations()
 
     /**
@@ -261,7 +241,7 @@ class NoteTableMap extends TableMap
      */
     public static function getOMClass($withPrefix = true)
     {
-        return $withPrefix ? NoteTableMap::CLASS_DEFAULT : NoteTableMap::OM_CLASS;
+        return $withPrefix ? EventTableMap::CLASS_DEFAULT : EventTableMap::OM_CLASS;
     }
 
     /**
@@ -275,22 +255,22 @@ class NoteTableMap extends TableMap
      *
      * @throws PropelException Any exceptions caught during processing will be
      *                         rethrown wrapped into a PropelException.
-     * @return array           (Note object, last column rank)
+     * @return array           (Event object, last column rank)
      */
     public static function populateObject($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
-        $key = NoteTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
-        if (null !== ($obj = NoteTableMap::getInstanceFromPool($key))) {
+        $key = EventTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
+        if (null !== ($obj = EventTableMap::getInstanceFromPool($key))) {
             // We no longer rehydrate the object, since this can cause data loss.
             // See http://www.propelorm.org/ticket/509
             // $obj->hydrate($row, $offset, true); // rehydrate
-            $col = $offset + NoteTableMap::NUM_HYDRATE_COLUMNS;
+            $col = $offset + EventTableMap::NUM_HYDRATE_COLUMNS;
         } else {
-            $cls = NoteTableMap::OM_CLASS;
-            /** @var Note $obj */
+            $cls = EventTableMap::OM_CLASS;
+            /** @var Event $obj */
             $obj = new $cls();
             $col = $obj->hydrate($row, $offset, false, $indexType);
-            NoteTableMap::addInstanceToPool($obj, $key);
+            EventTableMap::addInstanceToPool($obj, $key);
         }
 
         return array($obj, $col);
@@ -313,18 +293,18 @@ class NoteTableMap extends TableMap
         $cls = static::getOMClass(false);
         // populate the object(s)
         while ($row = $dataFetcher->fetch()) {
-            $key = NoteTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
-            if (null !== ($obj = NoteTableMap::getInstanceFromPool($key))) {
+            $key = EventTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
+            if (null !== ($obj = EventTableMap::getInstanceFromPool($key))) {
                 // We no longer rehydrate the object, since this can cause data loss.
                 // See http://www.propelorm.org/ticket/509
                 // $obj->hydrate($row, 0, true); // rehydrate
                 $results[] = $obj;
             } else {
-                /** @var Note $obj */
+                /** @var Event $obj */
                 $obj = new $cls();
                 $obj->hydrate($row);
                 $results[] = $obj;
-                NoteTableMap::addInstanceToPool($obj, $key);
+                EventTableMap::addInstanceToPool($obj, $key);
             } // if key exists
         }
 
@@ -345,27 +325,25 @@ class NoteTableMap extends TableMap
     public static function addSelectColumns(Criteria $criteria, $alias = null)
     {
         if (null === $alias) {
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_PER_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_FAM_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_PRIVATE);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_TEXT);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_DATEENTERED);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_DATELASTEDITED);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_ENTEREDBY);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_EDITEDBY);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_TYPE);
+            $criteria->addSelectColumn(EventTableMap::COL_EVENT_ID);
+            $criteria->addSelectColumn(EventTableMap::COL_EVENT_TYPE);
+            $criteria->addSelectColumn(EventTableMap::COL_EVENT_TITLE);
+            $criteria->addSelectColumn(EventTableMap::COL_EVENT_DESC);
+            $criteria->addSelectColumn(EventTableMap::COL_EVENT_TEXT);
+            $criteria->addSelectColumn(EventTableMap::COL_EVENT_START);
+            $criteria->addSelectColumn(EventTableMap::COL_EVENT_END);
+            $criteria->addSelectColumn(EventTableMap::COL_INACTIVE);
+            $criteria->addSelectColumn(EventTableMap::COL_EVENT_TYPENAME);
         } else {
-            $criteria->addSelectColumn($alias . '.nte_ID');
-            $criteria->addSelectColumn($alias . '.nte_per_ID');
-            $criteria->addSelectColumn($alias . '.nte_fam_ID');
-            $criteria->addSelectColumn($alias . '.nte_Private');
-            $criteria->addSelectColumn($alias . '.nte_Text');
-            $criteria->addSelectColumn($alias . '.nte_DateEntered');
-            $criteria->addSelectColumn($alias . '.nte_DateLastEdited');
-            $criteria->addSelectColumn($alias . '.nte_EnteredBy');
-            $criteria->addSelectColumn($alias . '.nte_EditedBy');
-            $criteria->addSelectColumn($alias . '.nte_Type');
+            $criteria->addSelectColumn($alias . '.event_id');
+            $criteria->addSelectColumn($alias . '.event_type');
+            $criteria->addSelectColumn($alias . '.event_title');
+            $criteria->addSelectColumn($alias . '.event_desc');
+            $criteria->addSelectColumn($alias . '.event_text');
+            $criteria->addSelectColumn($alias . '.event_start');
+            $criteria->addSelectColumn($alias . '.event_end');
+            $criteria->addSelectColumn($alias . '.inactive');
+            $criteria->addSelectColumn($alias . '.event_typename');
         }
     }
 
@@ -378,7 +356,7 @@ class NoteTableMap extends TableMap
      */
     public static function getTableMap()
     {
-        return Propel::getServiceContainer()->getDatabaseMap(NoteTableMap::DATABASE_NAME)->getTable(NoteTableMap::TABLE_NAME);
+        return Propel::getServiceContainer()->getDatabaseMap(EventTableMap::DATABASE_NAME)->getTable(EventTableMap::TABLE_NAME);
     }
 
     /**
@@ -386,16 +364,16 @@ class NoteTableMap extends TableMap
      */
     public static function buildTableMap()
     {
-        $dbMap = Propel::getServiceContainer()->getDatabaseMap(NoteTableMap::DATABASE_NAME);
-        if (!$dbMap->hasTable(NoteTableMap::TABLE_NAME)) {
-            $dbMap->addTableObject(new NoteTableMap());
+        $dbMap = Propel::getServiceContainer()->getDatabaseMap(EventTableMap::DATABASE_NAME);
+        if (!$dbMap->hasTable(EventTableMap::TABLE_NAME)) {
+            $dbMap->addTableObject(new EventTableMap());
         }
     }
 
     /**
-     * Performs a DELETE on the database, given a Note or Criteria object OR a primary key value.
+     * Performs a DELETE on the database, given a Event or Criteria object OR a primary key value.
      *
-     * @param mixed               $values Criteria or Note object or primary key or array of primary keys
+     * @param mixed               $values Criteria or Event object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param  ConnectionInterface $con the connection to use
      * @return int             The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -406,27 +384,27 @@ class NoteTableMap extends TableMap
      public static function doDelete($values, ConnectionInterface $con = null)
      {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(EventTableMap::DATABASE_NAME);
         }
 
         if ($values instanceof Criteria) {
             // rename for clarity
             $criteria = $values;
-        } elseif ($values instanceof \ChurchCRM\Note) { // it's a model object
+        } elseif ($values instanceof \ChurchCRM\Event) { // it's a model object
             // create criteria based on pk values
             $criteria = $values->buildPkeyCriteria();
         } else { // it's a primary key, or an array of pks
-            $criteria = new Criteria(NoteTableMap::DATABASE_NAME);
-            $criteria->add(NoteTableMap::COL_NTE_ID, (array) $values, Criteria::IN);
+            $criteria = new Criteria(EventTableMap::DATABASE_NAME);
+            $criteria->add(EventTableMap::COL_EVENT_ID, (array) $values, Criteria::IN);
         }
 
-        $query = NoteQuery::create()->mergeWith($criteria);
+        $query = EventQuery::create()->mergeWith($criteria);
 
         if ($values instanceof Criteria) {
-            NoteTableMap::clearInstancePool();
+            EventTableMap::clearInstancePool();
         } elseif (!is_object($values)) { // it's a primary key, or an array of pks
             foreach ((array) $values as $singleval) {
-                NoteTableMap::removeInstanceFromPool($singleval);
+                EventTableMap::removeInstanceFromPool($singleval);
             }
         }
 
@@ -434,20 +412,20 @@ class NoteTableMap extends TableMap
     }
 
     /**
-     * Deletes all rows from the note_nte table.
+     * Deletes all rows from the events_event table.
      *
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).
      */
     public static function doDeleteAll(ConnectionInterface $con = null)
     {
-        return NoteQuery::create()->doDeleteAll($con);
+        return EventQuery::create()->doDeleteAll($con);
     }
 
     /**
-     * Performs an INSERT on the database, given a Note or Criteria object.
+     * Performs an INSERT on the database, given a Event or Criteria object.
      *
-     * @param mixed               $criteria Criteria or Note object containing data that is used to create the INSERT statement.
+     * @param mixed               $criteria Criteria or Event object containing data that is used to create the INSERT statement.
      * @param ConnectionInterface $con the ConnectionInterface connection to use
      * @return mixed           The new primary key.
      * @throws PropelException Any exceptions caught during processing will be
@@ -456,22 +434,22 @@ class NoteTableMap extends TableMap
     public static function doInsert($criteria, ConnectionInterface $con = null)
     {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(EventTableMap::DATABASE_NAME);
         }
 
         if ($criteria instanceof Criteria) {
             $criteria = clone $criteria; // rename for clarity
         } else {
-            $criteria = $criteria->buildCriteria(); // build Criteria from Note object
+            $criteria = $criteria->buildCriteria(); // build Criteria from Event object
         }
 
-        if ($criteria->containsKey(NoteTableMap::COL_NTE_ID) && $criteria->keyContainsValue(NoteTableMap::COL_NTE_ID) ) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key ('.NoteTableMap::COL_NTE_ID.')');
+        if ($criteria->containsKey(EventTableMap::COL_EVENT_ID) && $criteria->keyContainsValue(EventTableMap::COL_EVENT_ID) ) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key ('.EventTableMap::COL_EVENT_ID.')');
         }
 
 
         // Set the correct dbName
-        $query = NoteQuery::create()->mergeWith($criteria);
+        $query = EventQuery::create()->mergeWith($criteria);
 
         // use transaction because $criteria could contain info
         // for more than one table (I guess, conceivably)
@@ -480,7 +458,7 @@ class NoteTableMap extends TableMap
         });
     }
 
-} // NoteTableMap
+} // EventTableMap
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-NoteTableMap::buildTableMap();
+EventTableMap::buildTableMap();

@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Map;
 
-use ChurchCRM\Note;
-use ChurchCRM\NoteQuery;
+use ChurchCRM\DonatedItem;
+use ChurchCRM\DonatedItemQuery;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\InstancePoolTrait;
@@ -16,7 +16,7 @@ use Propel\Runtime\Map\TableMapTrait;
 
 
 /**
- * This class defines the structure of the 'note_nte' table.
+ * This class defines the structure of the 'donateditem_di' table.
  *
  *
  *
@@ -26,7 +26,7 @@ use Propel\Runtime\Map\TableMapTrait;
  * (i.e. if it's a text column type).
  *
  */
-class NoteTableMap extends TableMap
+class DonatedItemTableMap extends TableMap
 {
     use InstancePoolTrait;
     use TableMapTrait;
@@ -34,7 +34,7 @@ class NoteTableMap extends TableMap
     /**
      * The (dot-path) name of this class
      */
-    const CLASS_NAME = 'ChurchCRM.Map.NoteTableMap';
+    const CLASS_NAME = 'ChurchCRM.Map.DonatedItemTableMap';
 
     /**
      * The default database name for this class
@@ -44,22 +44,22 @@ class NoteTableMap extends TableMap
     /**
      * The table name for this class
      */
-    const TABLE_NAME = 'note_nte';
+    const TABLE_NAME = 'donateditem_di';
 
     /**
      * The related Propel class for this table
      */
-    const OM_CLASS = '\\ChurchCRM\\Note';
+    const OM_CLASS = '\\ChurchCRM\\DonatedItem';
 
     /**
      * A class that can be returned by this tableMap
      */
-    const CLASS_DEFAULT = 'ChurchCRM.Note';
+    const CLASS_DEFAULT = 'ChurchCRM.DonatedItem';
 
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 10;
+    const NUM_COLUMNS = 15;
 
     /**
      * The number of lazy-loaded columns
@@ -69,57 +69,82 @@ class NoteTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 10;
+    const NUM_HYDRATE_COLUMNS = 15;
 
     /**
-     * the column name for the nte_ID field
+     * the column name for the di_ID field
      */
-    const COL_NTE_ID = 'note_nte.nte_ID';
+    const COL_DI_ID = 'donateditem_di.di_ID';
 
     /**
-     * the column name for the nte_per_ID field
+     * the column name for the di_item field
      */
-    const COL_NTE_PER_ID = 'note_nte.nte_per_ID';
+    const COL_DI_ITEM = 'donateditem_di.di_item';
 
     /**
-     * the column name for the nte_fam_ID field
+     * the column name for the di_FR_ID field
      */
-    const COL_NTE_FAM_ID = 'note_nte.nte_fam_ID';
+    const COL_DI_FR_ID = 'donateditem_di.di_FR_ID';
 
     /**
-     * the column name for the nte_Private field
+     * the column name for the di_donor_ID field
      */
-    const COL_NTE_PRIVATE = 'note_nte.nte_Private';
+    const COL_DI_DONOR_ID = 'donateditem_di.di_donor_ID';
 
     /**
-     * the column name for the nte_Text field
+     * the column name for the di_buyer_ID field
      */
-    const COL_NTE_TEXT = 'note_nte.nte_Text';
+    const COL_DI_BUYER_ID = 'donateditem_di.di_buyer_ID';
 
     /**
-     * the column name for the nte_DateEntered field
+     * the column name for the di_multibuy field
      */
-    const COL_NTE_DATEENTERED = 'note_nte.nte_DateEntered';
+    const COL_DI_MULTIBUY = 'donateditem_di.di_multibuy';
 
     /**
-     * the column name for the nte_DateLastEdited field
+     * the column name for the di_title field
      */
-    const COL_NTE_DATELASTEDITED = 'note_nte.nte_DateLastEdited';
+    const COL_DI_TITLE = 'donateditem_di.di_title';
 
     /**
-     * the column name for the nte_EnteredBy field
+     * the column name for the di_description field
      */
-    const COL_NTE_ENTEREDBY = 'note_nte.nte_EnteredBy';
+    const COL_DI_DESCRIPTION = 'donateditem_di.di_description';
 
     /**
-     * the column name for the nte_EditedBy field
+     * the column name for the di_sellprice field
      */
-    const COL_NTE_EDITEDBY = 'note_nte.nte_EditedBy';
+    const COL_DI_SELLPRICE = 'donateditem_di.di_sellprice';
 
     /**
-     * the column name for the nte_Type field
+     * the column name for the di_estprice field
      */
-    const COL_NTE_TYPE = 'note_nte.nte_Type';
+    const COL_DI_ESTPRICE = 'donateditem_di.di_estprice';
+
+    /**
+     * the column name for the di_minimum field
+     */
+    const COL_DI_MINIMUM = 'donateditem_di.di_minimum';
+
+    /**
+     * the column name for the di_materialvalue field
+     */
+    const COL_DI_MATERIALVALUE = 'donateditem_di.di_materialvalue';
+
+    /**
+     * the column name for the di_EnteredBy field
+     */
+    const COL_DI_ENTEREDBY = 'donateditem_di.di_EnteredBy';
+
+    /**
+     * the column name for the di_EnteredDate field
+     */
+    const COL_DI_ENTEREDDATE = 'donateditem_di.di_EnteredDate';
+
+    /**
+     * the column name for the di_picture field
+     */
+    const COL_DI_PICTURE = 'donateditem_di.di_picture';
 
     /**
      * The default string format for model objects of the related table
@@ -133,11 +158,11 @@ class NoteTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'PerId', 'FamId', 'Private', 'Text', 'DateEntered', 'DateLastEdited', 'EnteredBy', 'EditedBy', 'Type', ),
-        self::TYPE_CAMELNAME     => array('id', 'perId', 'famId', 'private', 'text', 'dateEntered', 'dateLastEdited', 'enteredBy', 'editedBy', 'type', ),
-        self::TYPE_COLNAME       => array(NoteTableMap::COL_NTE_ID, NoteTableMap::COL_NTE_PER_ID, NoteTableMap::COL_NTE_FAM_ID, NoteTableMap::COL_NTE_PRIVATE, NoteTableMap::COL_NTE_TEXT, NoteTableMap::COL_NTE_DATEENTERED, NoteTableMap::COL_NTE_DATELASTEDITED, NoteTableMap::COL_NTE_ENTEREDBY, NoteTableMap::COL_NTE_EDITEDBY, NoteTableMap::COL_NTE_TYPE, ),
-        self::TYPE_FIELDNAME     => array('nte_ID', 'nte_per_ID', 'nte_fam_ID', 'nte_Private', 'nte_Text', 'nte_DateEntered', 'nte_DateLastEdited', 'nte_EnteredBy', 'nte_EditedBy', 'nte_Type', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
+        self::TYPE_PHPNAME       => array('Id', 'Item', 'FrId', 'DonorId', 'BuyerId', 'Multibuy', 'Title', 'Description', 'Sellprice', 'Estprice', 'Minimum', 'MaterialValue', 'Enteredby', 'Entereddate', 'Picture', ),
+        self::TYPE_CAMELNAME     => array('id', 'item', 'frId', 'donorId', 'buyerId', 'multibuy', 'title', 'description', 'sellprice', 'estprice', 'minimum', 'materialValue', 'enteredby', 'entereddate', 'picture', ),
+        self::TYPE_COLNAME       => array(DonatedItemTableMap::COL_DI_ID, DonatedItemTableMap::COL_DI_ITEM, DonatedItemTableMap::COL_DI_FR_ID, DonatedItemTableMap::COL_DI_DONOR_ID, DonatedItemTableMap::COL_DI_BUYER_ID, DonatedItemTableMap::COL_DI_MULTIBUY, DonatedItemTableMap::COL_DI_TITLE, DonatedItemTableMap::COL_DI_DESCRIPTION, DonatedItemTableMap::COL_DI_SELLPRICE, DonatedItemTableMap::COL_DI_ESTPRICE, DonatedItemTableMap::COL_DI_MINIMUM, DonatedItemTableMap::COL_DI_MATERIALVALUE, DonatedItemTableMap::COL_DI_ENTEREDBY, DonatedItemTableMap::COL_DI_ENTEREDDATE, DonatedItemTableMap::COL_DI_PICTURE, ),
+        self::TYPE_FIELDNAME     => array('di_ID', 'di_item', 'di_FR_ID', 'di_donor_ID', 'di_buyer_ID', 'di_multibuy', 'di_title', 'di_description', 'di_sellprice', 'di_estprice', 'di_minimum', 'di_materialvalue', 'di_EnteredBy', 'di_EnteredDate', 'di_picture', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, )
     );
 
     /**
@@ -147,11 +172,11 @@ class NoteTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'PerId' => 1, 'FamId' => 2, 'Private' => 3, 'Text' => 4, 'DateEntered' => 5, 'DateLastEdited' => 6, 'EnteredBy' => 7, 'EditedBy' => 8, 'Type' => 9, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'perId' => 1, 'famId' => 2, 'private' => 3, 'text' => 4, 'dateEntered' => 5, 'dateLastEdited' => 6, 'enteredBy' => 7, 'editedBy' => 8, 'type' => 9, ),
-        self::TYPE_COLNAME       => array(NoteTableMap::COL_NTE_ID => 0, NoteTableMap::COL_NTE_PER_ID => 1, NoteTableMap::COL_NTE_FAM_ID => 2, NoteTableMap::COL_NTE_PRIVATE => 3, NoteTableMap::COL_NTE_TEXT => 4, NoteTableMap::COL_NTE_DATEENTERED => 5, NoteTableMap::COL_NTE_DATELASTEDITED => 6, NoteTableMap::COL_NTE_ENTEREDBY => 7, NoteTableMap::COL_NTE_EDITEDBY => 8, NoteTableMap::COL_NTE_TYPE => 9, ),
-        self::TYPE_FIELDNAME     => array('nte_ID' => 0, 'nte_per_ID' => 1, 'nte_fam_ID' => 2, 'nte_Private' => 3, 'nte_Text' => 4, 'nte_DateEntered' => 5, 'nte_DateLastEdited' => 6, 'nte_EnteredBy' => 7, 'nte_EditedBy' => 8, 'nte_Type' => 9, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
+        self::TYPE_PHPNAME       => array('Id' => 0, 'Item' => 1, 'FrId' => 2, 'DonorId' => 3, 'BuyerId' => 4, 'Multibuy' => 5, 'Title' => 6, 'Description' => 7, 'Sellprice' => 8, 'Estprice' => 9, 'Minimum' => 10, 'MaterialValue' => 11, 'Enteredby' => 12, 'Entereddate' => 13, 'Picture' => 14, ),
+        self::TYPE_CAMELNAME     => array('id' => 0, 'item' => 1, 'frId' => 2, 'donorId' => 3, 'buyerId' => 4, 'multibuy' => 5, 'title' => 6, 'description' => 7, 'sellprice' => 8, 'estprice' => 9, 'minimum' => 10, 'materialValue' => 11, 'enteredby' => 12, 'entereddate' => 13, 'picture' => 14, ),
+        self::TYPE_COLNAME       => array(DonatedItemTableMap::COL_DI_ID => 0, DonatedItemTableMap::COL_DI_ITEM => 1, DonatedItemTableMap::COL_DI_FR_ID => 2, DonatedItemTableMap::COL_DI_DONOR_ID => 3, DonatedItemTableMap::COL_DI_BUYER_ID => 4, DonatedItemTableMap::COL_DI_MULTIBUY => 5, DonatedItemTableMap::COL_DI_TITLE => 6, DonatedItemTableMap::COL_DI_DESCRIPTION => 7, DonatedItemTableMap::COL_DI_SELLPRICE => 8, DonatedItemTableMap::COL_DI_ESTPRICE => 9, DonatedItemTableMap::COL_DI_MINIMUM => 10, DonatedItemTableMap::COL_DI_MATERIALVALUE => 11, DonatedItemTableMap::COL_DI_ENTEREDBY => 12, DonatedItemTableMap::COL_DI_ENTEREDDATE => 13, DonatedItemTableMap::COL_DI_PICTURE => 14, ),
+        self::TYPE_FIELDNAME     => array('di_ID' => 0, 'di_item' => 1, 'di_FR_ID' => 2, 'di_donor_ID' => 3, 'di_buyer_ID' => 4, 'di_multibuy' => 5, 'di_title' => 6, 'di_description' => 7, 'di_sellprice' => 8, 'di_estprice' => 9, 'di_minimum' => 10, 'di_materialvalue' => 11, 'di_EnteredBy' => 12, 'di_EnteredDate' => 13, 'di_picture' => 14, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, )
     );
 
     /**
@@ -164,23 +189,28 @@ class NoteTableMap extends TableMap
     public function initialize()
     {
         // attributes
-        $this->setName('note_nte');
-        $this->setPhpName('Note');
+        $this->setName('donateditem_di');
+        $this->setPhpName('DonatedItem');
         $this->setIdentifierQuoting(false);
-        $this->setClassName('\\ChurchCRM\\Note');
+        $this->setClassName('\\ChurchCRM\\DonatedItem');
         $this->setPackage('ChurchCRM');
         $this->setUseIdGenerator(true);
         // columns
-        $this->addPrimaryKey('nte_ID', 'Id', 'SMALLINT', true, 8, null);
-        $this->addForeignKey('nte_per_ID', 'PerId', 'SMALLINT', 'person_per', 'per_ID', true, 8, 0);
-        $this->addForeignKey('nte_fam_ID', 'FamId', 'SMALLINT', 'family_fam', 'fam_ID', true, 8, 0);
-        $this->addColumn('nte_Private', 'Private', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_Text', 'Text', 'LONGVARCHAR', false, null, null);
-        $this->addColumn('nte_DateEntered', 'DateEntered', 'TIMESTAMP', true, null, '0000-00-00 00:00:00');
-        $this->addColumn('nte_DateLastEdited', 'DateLastEdited', 'TIMESTAMP', false, null, null);
-        $this->addColumn('nte_EnteredBy', 'EnteredBy', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_EditedBy', 'EditedBy', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_Type', 'Type', 'VARCHAR', false, 50, null);
+        $this->addPrimaryKey('di_ID', 'Id', 'SMALLINT', true, 9, null);
+        $this->addColumn('di_item', 'Item', 'VARCHAR', true, 32, null);
+        $this->addColumn('di_FR_ID', 'FrId', 'SMALLINT', true, 9, null);
+        $this->addColumn('di_donor_ID', 'DonorId', 'SMALLINT', true, 9, 0);
+        $this->addColumn('di_buyer_ID', 'BuyerId', 'SMALLINT', true, 9, 0);
+        $this->addColumn('di_multibuy', 'Multibuy', 'SMALLINT', true, 1, 0);
+        $this->addColumn('di_title', 'Title', 'VARCHAR', true, 128, null);
+        $this->addColumn('di_description', 'Description', 'LONGVARCHAR', false, null, null);
+        $this->addColumn('di_sellprice', 'Sellprice', 'DECIMAL', false, 8, null);
+        $this->addColumn('di_estprice', 'Estprice', 'DECIMAL', false, 8, null);
+        $this->addColumn('di_minimum', 'Minimum', 'DECIMAL', false, 8, null);
+        $this->addColumn('di_materialvalue', 'MaterialValue', 'DECIMAL', false, 8, null);
+        $this->addColumn('di_EnteredBy', 'Enteredby', 'SMALLINT', true, 5, 0);
+        $this->addColumn('di_EnteredDate', 'Entereddate', 'DATE', true, null, null);
+        $this->addColumn('di_picture', 'Picture', 'LONGVARCHAR', false, null, null);
     } // initialize()
 
     /**
@@ -188,20 +218,6 @@ class NoteTableMap extends TableMap
      */
     public function buildRelations()
     {
-        $this->addRelation('Person', '\\ChurchCRM\\Person', RelationMap::MANY_TO_ONE, array (
-  0 =>
-  array (
-    0 => ':nte_per_ID',
-    1 => ':per_ID',
-  ),
-), null, null, null, false);
-        $this->addRelation('Family', '\\ChurchCRM\\Family', RelationMap::MANY_TO_ONE, array (
-  0 =>
-  array (
-    0 => ':nte_fam_ID',
-    1 => ':fam_ID',
-  ),
-), null, null, null, false);
     } // buildRelations()
 
     /**
@@ -261,7 +277,7 @@ class NoteTableMap extends TableMap
      */
     public static function getOMClass($withPrefix = true)
     {
-        return $withPrefix ? NoteTableMap::CLASS_DEFAULT : NoteTableMap::OM_CLASS;
+        return $withPrefix ? DonatedItemTableMap::CLASS_DEFAULT : DonatedItemTableMap::OM_CLASS;
     }
 
     /**
@@ -275,22 +291,22 @@ class NoteTableMap extends TableMap
      *
      * @throws PropelException Any exceptions caught during processing will be
      *                         rethrown wrapped into a PropelException.
-     * @return array           (Note object, last column rank)
+     * @return array           (DonatedItem object, last column rank)
      */
     public static function populateObject($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
-        $key = NoteTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
-        if (null !== ($obj = NoteTableMap::getInstanceFromPool($key))) {
+        $key = DonatedItemTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
+        if (null !== ($obj = DonatedItemTableMap::getInstanceFromPool($key))) {
             // We no longer rehydrate the object, since this can cause data loss.
             // See http://www.propelorm.org/ticket/509
             // $obj->hydrate($row, $offset, true); // rehydrate
-            $col = $offset + NoteTableMap::NUM_HYDRATE_COLUMNS;
+            $col = $offset + DonatedItemTableMap::NUM_HYDRATE_COLUMNS;
         } else {
-            $cls = NoteTableMap::OM_CLASS;
-            /** @var Note $obj */
+            $cls = DonatedItemTableMap::OM_CLASS;
+            /** @var DonatedItem $obj */
             $obj = new $cls();
             $col = $obj->hydrate($row, $offset, false, $indexType);
-            NoteTableMap::addInstanceToPool($obj, $key);
+            DonatedItemTableMap::addInstanceToPool($obj, $key);
         }
 
         return array($obj, $col);
@@ -313,18 +329,18 @@ class NoteTableMap extends TableMap
         $cls = static::getOMClass(false);
         // populate the object(s)
         while ($row = $dataFetcher->fetch()) {
-            $key = NoteTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
-            if (null !== ($obj = NoteTableMap::getInstanceFromPool($key))) {
+            $key = DonatedItemTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
+            if (null !== ($obj = DonatedItemTableMap::getInstanceFromPool($key))) {
                 // We no longer rehydrate the object, since this can cause data loss.
                 // See http://www.propelorm.org/ticket/509
                 // $obj->hydrate($row, 0, true); // rehydrate
                 $results[] = $obj;
             } else {
-                /** @var Note $obj */
+                /** @var DonatedItem $obj */
                 $obj = new $cls();
                 $obj->hydrate($row);
                 $results[] = $obj;
-                NoteTableMap::addInstanceToPool($obj, $key);
+                DonatedItemTableMap::addInstanceToPool($obj, $key);
             } // if key exists
         }
 
@@ -345,27 +361,37 @@ class NoteTableMap extends TableMap
     public static function addSelectColumns(Criteria $criteria, $alias = null)
     {
         if (null === $alias) {
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_PER_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_FAM_ID);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_PRIVATE);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_TEXT);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_DATEENTERED);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_DATELASTEDITED);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_ENTEREDBY);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_EDITEDBY);
-            $criteria->addSelectColumn(NoteTableMap::COL_NTE_TYPE);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_ID);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_ITEM);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_FR_ID);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_DONOR_ID);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_BUYER_ID);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_MULTIBUY);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_TITLE);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_DESCRIPTION);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_SELLPRICE);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_ESTPRICE);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_MINIMUM);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_MATERIALVALUE);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_ENTEREDBY);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_ENTEREDDATE);
+            $criteria->addSelectColumn(DonatedItemTableMap::COL_DI_PICTURE);
         } else {
-            $criteria->addSelectColumn($alias . '.nte_ID');
-            $criteria->addSelectColumn($alias . '.nte_per_ID');
-            $criteria->addSelectColumn($alias . '.nte_fam_ID');
-            $criteria->addSelectColumn($alias . '.nte_Private');
-            $criteria->addSelectColumn($alias . '.nte_Text');
-            $criteria->addSelectColumn($alias . '.nte_DateEntered');
-            $criteria->addSelectColumn($alias . '.nte_DateLastEdited');
-            $criteria->addSelectColumn($alias . '.nte_EnteredBy');
-            $criteria->addSelectColumn($alias . '.nte_EditedBy');
-            $criteria->addSelectColumn($alias . '.nte_Type');
+            $criteria->addSelectColumn($alias . '.di_ID');
+            $criteria->addSelectColumn($alias . '.di_item');
+            $criteria->addSelectColumn($alias . '.di_FR_ID');
+            $criteria->addSelectColumn($alias . '.di_donor_ID');
+            $criteria->addSelectColumn($alias . '.di_buyer_ID');
+            $criteria->addSelectColumn($alias . '.di_multibuy');
+            $criteria->addSelectColumn($alias . '.di_title');
+            $criteria->addSelectColumn($alias . '.di_description');
+            $criteria->addSelectColumn($alias . '.di_sellprice');
+            $criteria->addSelectColumn($alias . '.di_estprice');
+            $criteria->addSelectColumn($alias . '.di_minimum');
+            $criteria->addSelectColumn($alias . '.di_materialvalue');
+            $criteria->addSelectColumn($alias . '.di_EnteredBy');
+            $criteria->addSelectColumn($alias . '.di_EnteredDate');
+            $criteria->addSelectColumn($alias . '.di_picture');
         }
     }
 
@@ -378,7 +404,7 @@ class NoteTableMap extends TableMap
      */
     public static function getTableMap()
     {
-        return Propel::getServiceContainer()->getDatabaseMap(NoteTableMap::DATABASE_NAME)->getTable(NoteTableMap::TABLE_NAME);
+        return Propel::getServiceContainer()->getDatabaseMap(DonatedItemTableMap::DATABASE_NAME)->getTable(DonatedItemTableMap::TABLE_NAME);
     }
 
     /**
@@ -386,16 +412,16 @@ class NoteTableMap extends TableMap
      */
     public static function buildTableMap()
     {
-        $dbMap = Propel::getServiceContainer()->getDatabaseMap(NoteTableMap::DATABASE_NAME);
-        if (!$dbMap->hasTable(NoteTableMap::TABLE_NAME)) {
-            $dbMap->addTableObject(new NoteTableMap());
+        $dbMap = Propel::getServiceContainer()->getDatabaseMap(DonatedItemTableMap::DATABASE_NAME);
+        if (!$dbMap->hasTable(DonatedItemTableMap::TABLE_NAME)) {
+            $dbMap->addTableObject(new DonatedItemTableMap());
         }
     }
 
     /**
-     * Performs a DELETE on the database, given a Note or Criteria object OR a primary key value.
+     * Performs a DELETE on the database, given a DonatedItem or Criteria object OR a primary key value.
      *
-     * @param mixed               $values Criteria or Note object or primary key or array of primary keys
+     * @param mixed               $values Criteria or DonatedItem object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param  ConnectionInterface $con the connection to use
      * @return int             The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -406,27 +432,27 @@ class NoteTableMap extends TableMap
      public static function doDelete($values, ConnectionInterface $con = null)
      {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(DonatedItemTableMap::DATABASE_NAME);
         }
 
         if ($values instanceof Criteria) {
             // rename for clarity
             $criteria = $values;
-        } elseif ($values instanceof \ChurchCRM\Note) { // it's a model object
+        } elseif ($values instanceof \ChurchCRM\DonatedItem) { // it's a model object
             // create criteria based on pk values
             $criteria = $values->buildPkeyCriteria();
         } else { // it's a primary key, or an array of pks
-            $criteria = new Criteria(NoteTableMap::DATABASE_NAME);
-            $criteria->add(NoteTableMap::COL_NTE_ID, (array) $values, Criteria::IN);
+            $criteria = new Criteria(DonatedItemTableMap::DATABASE_NAME);
+            $criteria->add(DonatedItemTableMap::COL_DI_ID, (array) $values, Criteria::IN);
         }
 
-        $query = NoteQuery::create()->mergeWith($criteria);
+        $query = DonatedItemQuery::create()->mergeWith($criteria);
 
         if ($values instanceof Criteria) {
-            NoteTableMap::clearInstancePool();
+            DonatedItemTableMap::clearInstancePool();
         } elseif (!is_object($values)) { // it's a primary key, or an array of pks
             foreach ((array) $values as $singleval) {
-                NoteTableMap::removeInstanceFromPool($singleval);
+                DonatedItemTableMap::removeInstanceFromPool($singleval);
             }
         }
 
@@ -434,20 +460,20 @@ class NoteTableMap extends TableMap
     }
 
     /**
-     * Deletes all rows from the note_nte table.
+     * Deletes all rows from the donateditem_di table.
      *
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).
      */
     public static function doDeleteAll(ConnectionInterface $con = null)
     {
-        return NoteQuery::create()->doDeleteAll($con);
+        return DonatedItemQuery::create()->doDeleteAll($con);
     }
 
     /**
-     * Performs an INSERT on the database, given a Note or Criteria object.
+     * Performs an INSERT on the database, given a DonatedItem or Criteria object.
      *
-     * @param mixed               $criteria Criteria or Note object containing data that is used to create the INSERT statement.
+     * @param mixed               $criteria Criteria or DonatedItem object containing data that is used to create the INSERT statement.
      * @param ConnectionInterface $con the ConnectionInterface connection to use
      * @return mixed           The new primary key.
      * @throws PropelException Any exceptions caught during processing will be
@@ -456,22 +482,22 @@ class NoteTableMap extends TableMap
     public static function doInsert($criteria, ConnectionInterface $con = null)
     {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(DonatedItemTableMap::DATABASE_NAME);
         }
 
         if ($criteria instanceof Criteria) {
             $criteria = clone $criteria; // rename for clarity
         } else {
-            $criteria = $criteria->buildCriteria(); // build Criteria from Note object
+            $criteria = $criteria->buildCriteria(); // build Criteria from DonatedItem object
         }
 
-        if ($criteria->containsKey(NoteTableMap::COL_NTE_ID) && $criteria->keyContainsValue(NoteTableMap::COL_NTE_ID) ) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key ('.NoteTableMap::COL_NTE_ID.')');
+        if ($criteria->containsKey(DonatedItemTableMap::COL_DI_ID) && $criteria->keyContainsValue(DonatedItemTableMap::COL_DI_ID) ) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key ('.DonatedItemTableMap::COL_DI_ID.')');
         }
 
 
         // Set the correct dbName
-        $query = NoteQuery::create()->mergeWith($criteria);
+        $query = DonatedItemQuery::create()->mergeWith($criteria);
 
         // use transaction because $criteria could contain info
         // for more than one table (I guess, conceivably)
@@ -480,7 +506,7 @@ class NoteTableMap extends TableMap
         });
     }
 
-} // NoteTableMap
+} // DonatedItemTableMap
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-NoteTableMap::buildTableMap();
+DonatedItemTableMap::buildTableMap();

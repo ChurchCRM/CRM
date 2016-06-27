@@ -2,15 +2,10 @@
 
 namespace ChurchCRM\Base;
 
-use \DateTime;
 use \Exception;
 use \PDO;
-use ChurchCRM\Family as ChildFamily;
-use ChurchCRM\FamilyQuery as ChildFamilyQuery;
-use ChurchCRM\NoteQuery as ChildNoteQuery;
-use ChurchCRM\Person as ChildPerson;
-use ChurchCRM\PersonQuery as ChildPersonQuery;
-use ChurchCRM\Map\NoteTableMap;
+use ChurchCRM\MenuConfigQuery as ChildMenuConfigQuery;
+use ChurchCRM\Map\MenuConfigTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -22,21 +17,20 @@ use Propel\Runtime\Exception\LogicException;
 use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\TableMap;
 use Propel\Runtime\Parser\AbstractParser;
-use Propel\Runtime\Util\PropelDateTime;
 
 /**
- * Base class that represents a row from the 'note_nte' table.
+ * Base class that represents a row from the 'menuconfig_mcf' table.
  *
  *
  *
  * @package    propel.generator.ChurchCRM.Base
  */
-abstract class Note implements ActiveRecordInterface
+abstract class MenuConfig implements ActiveRecordInterface
 {
     /**
      * TableMap class name
      */
-    const TABLE_MAP = '\\ChurchCRM\\Map\\NoteTableMap';
+    const TABLE_MAP = '\\ChurchCRM\\Map\\MenuConfigTableMap';
 
 
     /**
@@ -66,90 +60,116 @@ abstract class Note implements ActiveRecordInterface
     protected $virtualColumns = array();
 
     /**
-     * The value for the nte_id field.
+     * The value for the mid field.
      *
      * @var        int
      */
-    protected $nte_id;
+    protected $mid;
 
     /**
-     * The value for the nte_per_id field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $nte_per_id;
-
-    /**
-     * The value for the nte_fam_id field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $nte_fam_id;
-
-    /**
-     * The value for the nte_private field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $nte_private;
-
-    /**
-     * The value for the nte_text field.
+     * The value for the name field.
      *
      * @var        string
      */
-    protected $nte_text;
+    protected $name;
 
     /**
-     * The value for the nte_dateentered field.
-     *
-     * Note: this column has a database default value of: NULL
-     * @var        DateTime
-     */
-    protected $nte_dateentered;
-
-    /**
-     * The value for the nte_datelastedited field.
-     *
-     * @var        DateTime
-     */
-    protected $nte_datelastedited;
-
-    /**
-     * The value for the nte_enteredby field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $nte_enteredby;
-
-    /**
-     * The value for the nte_editedby field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $nte_editedby;
-
-    /**
-     * The value for the nte_type field.
+     * The value for the parent field.
      *
      * @var        string
      */
-    protected $nte_type;
+    protected $parent;
 
     /**
-     * @var        ChildPerson
+     * The value for the ismenu field.
+     *
+     * @var        boolean
      */
-    protected $aPerson;
+    protected $ismenu;
 
     /**
-     * @var        ChildFamily
+     * The value for the content_english field.
+     *
+     * @var        string
      */
-    protected $aFamily;
+    protected $content_english;
+
+    /**
+     * The value for the content field.
+     *
+     * @var        string
+     */
+    protected $content;
+
+    /**
+     * The value for the uri field.
+     *
+     * @var        string
+     */
+    protected $uri;
+
+    /**
+     * The value for the statustext field.
+     *
+     * @var        string
+     */
+    protected $statustext;
+
+    /**
+     * The value for the security_grp field.
+     *
+     * @var        string
+     */
+    protected $security_grp;
+
+    /**
+     * The value for the session_var field.
+     *
+     * @var        string
+     */
+    protected $session_var;
+
+    /**
+     * The value for the session_var_in_text field.
+     *
+     * @var        boolean
+     */
+    protected $session_var_in_text;
+
+    /**
+     * The value for the session_var_in_uri field.
+     *
+     * @var        boolean
+     */
+    protected $session_var_in_uri;
+
+    /**
+     * The value for the url_parm_name field.
+     *
+     * @var        string
+     */
+    protected $url_parm_name;
+
+    /**
+     * The value for the active field.
+     *
+     * @var        boolean
+     */
+    protected $active;
+
+    /**
+     * The value for the sortorder field.
+     *
+     * @var        int
+     */
+    protected $sortorder;
+
+    /**
+     * The value for the icon field.
+     *
+     * @var        string
+     */
+    protected $icon;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -160,28 +180,10 @@ abstract class Note implements ActiveRecordInterface
     protected $alreadyInSave = false;
 
     /**
-     * Applies default values to this object.
-     * This method should be called from the object's constructor (or
-     * equivalent initialization method).
-     * @see __construct()
-     */
-    public function applyDefaultValues()
-    {
-        $this->nte_per_id = 0;
-        $this->nte_fam_id = 0;
-        $this->nte_private = 0;
-        $this->nte_dateentered = PropelDateTime::newInstance(NULL, null, 'DateTime');
-        $this->nte_enteredby = 0;
-        $this->nte_editedby = 0;
-    }
-
-    /**
-     * Initializes internal state of ChurchCRM\Base\Note object.
-     * @see applyDefaults()
+     * Initializes internal state of ChurchCRM\Base\MenuConfig object.
      */
     public function __construct()
     {
-        $this->applyDefaultValues();
     }
 
     /**
@@ -273,9 +275,9 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Compares this with another <code>Note</code> instance.  If
-     * <code>obj</code> is an instance of <code>Note</code>, delegates to
-     * <code>equals(Note)</code>.  Otherwise, returns <code>false</code>.
+     * Compares this with another <code>MenuConfig</code> instance.  If
+     * <code>obj</code> is an instance of <code>MenuConfig</code>, delegates to
+     * <code>equals(MenuConfig)</code>.  Otherwise, returns <code>false</code>.
      *
      * @param  mixed   $obj The object to compare to.
      * @return boolean Whether equal to the object specified.
@@ -341,7 +343,7 @@ abstract class Note implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return $this|Note The current object, for fluid interface
+     * @return $this|MenuConfig The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -403,130 +405,210 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Get the [nte_id] column value.
+     * Get the [mid] column value.
      *
      * @return int
      */
     public function getId()
     {
-        return $this->nte_id;
+        return $this->mid;
     }
 
     /**
-     * Get the [nte_per_id] column value.
-     *
-     * @return int
-     */
-    public function getPerId()
-    {
-        return $this->nte_per_id;
-    }
-
-    /**
-     * Get the [nte_fam_id] column value.
-     *
-     * @return int
-     */
-    public function getFamId()
-    {
-        return $this->nte_fam_id;
-    }
-
-    /**
-     * Get the [nte_private] column value.
-     *
-     * @return int
-     */
-    public function getPrivate()
-    {
-        return $this->nte_private;
-    }
-
-    /**
-     * Get the [nte_text] column value.
+     * Get the [name] column value.
      *
      * @return string
      */
-    public function getText()
+    public function getName()
     {
-        return $this->nte_text;
+        return $this->name;
     }
 
     /**
-     * Get the [optionally formatted] temporal [nte_dateentered] column value.
-     *
-     *
-     * @param      string $format The date/time format string (either date()-style or strftime()-style).
-     *                            If format is NULL, then the raw DateTime object will be returned.
-     *
-     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
-     *
-     * @throws PropelException - if unable to parse/validate the date/time value.
-     */
-    public function getDateEntered($format = NULL)
-    {
-        if ($format === null) {
-            return $this->nte_dateentered;
-        } else {
-            return $this->nte_dateentered instanceof \DateTimeInterface ? $this->nte_dateentered->format($format) : null;
-        }
-    }
-
-    /**
-     * Get the [optionally formatted] temporal [nte_datelastedited] column value.
-     *
-     *
-     * @param      string $format The date/time format string (either date()-style or strftime()-style).
-     *                            If format is NULL, then the raw DateTime object will be returned.
-     *
-     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
-     *
-     * @throws PropelException - if unable to parse/validate the date/time value.
-     */
-    public function getDateLastEdited($format = NULL)
-    {
-        if ($format === null) {
-            return $this->nte_datelastedited;
-        } else {
-            return $this->nte_datelastedited instanceof \DateTimeInterface ? $this->nte_datelastedited->format($format) : null;
-        }
-    }
-
-    /**
-     * Get the [nte_enteredby] column value.
-     *
-     * @return int
-     */
-    public function getEnteredBy()
-    {
-        return $this->nte_enteredby;
-    }
-
-    /**
-     * Get the [nte_editedby] column value.
-     *
-     * @return int
-     */
-    public function getEditedBy()
-    {
-        return $this->nte_editedby;
-    }
-
-    /**
-     * Get the [nte_type] column value.
+     * Get the [parent] column value.
      *
      * @return string
      */
-    public function getType()
+    public function getParent()
     {
-        return $this->nte_type;
+        return $this->parent;
     }
 
     /**
-     * Set the value of [nte_id] column.
+     * Get the [ismenu] column value.
+     *
+     * @return boolean
+     */
+    public function getMenu()
+    {
+        return $this->ismenu;
+    }
+
+    /**
+     * Get the [ismenu] column value.
+     *
+     * @return boolean
+     */
+    public function isMenu()
+    {
+        return $this->getMenu();
+    }
+
+    /**
+     * Get the [content_english] column value.
+     *
+     * @return string
+     */
+    public function getContentEnglish()
+    {
+        return $this->content_english;
+    }
+
+    /**
+     * Get the [content] column value.
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Get the [uri] column value.
+     *
+     * @return string
+     */
+    public function getURI()
+    {
+        return $this->uri;
+    }
+
+    /**
+     * Get the [statustext] column value.
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->statustext;
+    }
+
+    /**
+     * Get the [security_grp] column value.
+     *
+     * @return string
+     */
+    public function getSecurityGroup()
+    {
+        return $this->security_grp;
+    }
+
+    /**
+     * Get the [session_var] column value.
+     *
+     * @return string
+     */
+    public function getSessionVar()
+    {
+        return $this->session_var;
+    }
+
+    /**
+     * Get the [session_var_in_text] column value.
+     *
+     * @return boolean
+     */
+    public function getSessionVarInText()
+    {
+        return $this->session_var_in_text;
+    }
+
+    /**
+     * Get the [session_var_in_text] column value.
+     *
+     * @return boolean
+     */
+    public function isSessionVarInText()
+    {
+        return $this->getSessionVarInText();
+    }
+
+    /**
+     * Get the [session_var_in_uri] column value.
+     *
+     * @return boolean
+     */
+    public function getSessionVarInURI()
+    {
+        return $this->session_var_in_uri;
+    }
+
+    /**
+     * Get the [session_var_in_uri] column value.
+     *
+     * @return boolean
+     */
+    public function isSessionVarInURI()
+    {
+        return $this->getSessionVarInURI();
+    }
+
+    /**
+     * Get the [url_parm_name] column value.
+     *
+     * @return string
+     */
+    public function getURLParmName()
+    {
+        return $this->url_parm_name;
+    }
+
+    /**
+     * Get the [active] column value.
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Get the [active] column value.
+     *
+     * @return boolean
+     */
+    public function isActive()
+    {
+        return $this->getActive();
+    }
+
+    /**
+     * Get the [sortorder] column value.
+     *
+     * @return int
+     */
+    public function getSortOrder()
+    {
+        return $this->sortorder;
+    }
+
+    /**
+     * Get the [icon] column value.
+     *
+     * @return string
+     */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * Set the value of [mid] column.
      *
      * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -534,203 +616,345 @@ abstract class Note implements ActiveRecordInterface
             $v = (int) $v;
         }
 
-        if ($this->nte_id !== $v) {
-            $this->nte_id = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_ID] = true;
+        if ($this->mid !== $v) {
+            $this->mid = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_MID] = true;
         }
 
         return $this;
     } // setId()
 
     /**
-     * Set the value of [nte_per_id] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setPerId($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_per_id !== $v) {
-            $this->nte_per_id = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_PER_ID] = true;
-        }
-
-        if ($this->aPerson !== null && $this->aPerson->getId() !== $v) {
-            $this->aPerson = null;
-        }
-
-        return $this;
-    } // setPerId()
-
-    /**
-     * Set the value of [nte_fam_id] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setFamId($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_fam_id !== $v) {
-            $this->nte_fam_id = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_FAM_ID] = true;
-        }
-
-        if ($this->aFamily !== null && $this->aFamily->getId() !== $v) {
-            $this->aFamily = null;
-        }
-
-        return $this;
-    } // setFamId()
-
-    /**
-     * Set the value of [nte_private] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setPrivate($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_private !== $v) {
-            $this->nte_private = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_PRIVATE] = true;
-        }
-
-        return $this;
-    } // setPrivate()
-
-    /**
-     * Set the value of [nte_text] column.
+     * Set the value of [name] column.
      *
      * @param string $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
      */
-    public function setText($v)
+    public function setName($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->nte_text !== $v) {
-            $this->nte_text = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_TEXT] = true;
+        if ($this->name !== $v) {
+            $this->name = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_NAME] = true;
         }
 
         return $this;
-    } // setText()
+    } // setName()
 
     /**
-     * Sets the value of [nte_dateentered] column to a normalized version of the date/time value specified.
-     *
-     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
-     *               Empty strings are treated as NULL.
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setDateEntered($v)
-    {
-        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->nte_dateentered !== null || $dt !== null) {
-            if ( ($dt != $this->nte_dateentered) // normalized values don't match
-                || ($dt->format('Y-m-d H:i:s.u') === NULL) // or the entered value matches the default
-                 ) {
-                $this->nte_dateentered = $dt === null ? null : clone $dt;
-                $this->modifiedColumns[NoteTableMap::COL_NTE_DATEENTERED] = true;
-            }
-        } // if either are not null
-
-        return $this;
-    } // setDateEntered()
-
-    /**
-     * Sets the value of [nte_datelastedited] column to a normalized version of the date/time value specified.
-     *
-     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
-     *               Empty strings are treated as NULL.
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setDateLastEdited($v)
-    {
-        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->nte_datelastedited !== null || $dt !== null) {
-            if ($this->nte_datelastedited === null || $dt === null || $dt->format("Y-m-d H:i:s.u") !== $this->nte_datelastedited->format("Y-m-d H:i:s.u")) {
-                $this->nte_datelastedited = $dt === null ? null : clone $dt;
-                $this->modifiedColumns[NoteTableMap::COL_NTE_DATELASTEDITED] = true;
-            }
-        } // if either are not null
-
-        return $this;
-    } // setDateLastEdited()
-
-    /**
-     * Set the value of [nte_enteredby] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setEnteredBy($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_enteredby !== $v) {
-            $this->nte_enteredby = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_ENTEREDBY] = true;
-        }
-
-        return $this;
-    } // setEnteredBy()
-
-    /**
-     * Set the value of [nte_editedby] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     */
-    public function setEditedBy($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->nte_editedby !== $v) {
-            $this->nte_editedby = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_EDITEDBY] = true;
-        }
-
-        return $this;
-    } // setEditedBy()
-
-    /**
-     * Set the value of [nte_type] column.
+     * Set the value of [parent] column.
      *
      * @param string $v new value
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
      */
-    public function setType($v)
+    public function setParent($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->nte_type !== $v) {
-            $this->nte_type = $v;
-            $this->modifiedColumns[NoteTableMap::COL_NTE_TYPE] = true;
+        if ($this->parent !== $v) {
+            $this->parent = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_PARENT] = true;
         }
 
         return $this;
-    } // setType()
+    } // setParent()
+
+    /**
+     * Sets the value of the [ismenu] column.
+     * Non-boolean arguments are converted using the following rules:
+     *   * 1, '1', 'true',  'on',  and 'yes' are converted to boolean true
+     *   * 0, '0', 'false', 'off', and 'no'  are converted to boolean false
+     * Check on string values is case insensitive (so 'FaLsE' is seen as 'false').
+     *
+     * @param  boolean|integer|string $v The new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setMenu($v)
+    {
+        if ($v !== null) {
+            if (is_string($v)) {
+                $v = in_array(strtolower($v), array('false', 'off', '-', 'no', 'n', '0', '')) ? false : true;
+            } else {
+                $v = (boolean) $v;
+            }
+        }
+
+        if ($this->ismenu !== $v) {
+            $this->ismenu = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_ISMENU] = true;
+        }
+
+        return $this;
+    } // setMenu()
+
+    /**
+     * Set the value of [content_english] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setContentEnglish($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->content_english !== $v) {
+            $this->content_english = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_CONTENT_ENGLISH] = true;
+        }
+
+        return $this;
+    } // setContentEnglish()
+
+    /**
+     * Set the value of [content] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setContent($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->content !== $v) {
+            $this->content = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_CONTENT] = true;
+        }
+
+        return $this;
+    } // setContent()
+
+    /**
+     * Set the value of [uri] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setURI($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->uri !== $v) {
+            $this->uri = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_URI] = true;
+        }
+
+        return $this;
+    } // setURI()
+
+    /**
+     * Set the value of [statustext] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setStatus($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->statustext !== $v) {
+            $this->statustext = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_STATUSTEXT] = true;
+        }
+
+        return $this;
+    } // setStatus()
+
+    /**
+     * Set the value of [security_grp] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setSecurityGroup($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->security_grp !== $v) {
+            $this->security_grp = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_SECURITY_GRP] = true;
+        }
+
+        return $this;
+    } // setSecurityGroup()
+
+    /**
+     * Set the value of [session_var] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setSessionVar($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->session_var !== $v) {
+            $this->session_var = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_SESSION_VAR] = true;
+        }
+
+        return $this;
+    } // setSessionVar()
+
+    /**
+     * Sets the value of the [session_var_in_text] column.
+     * Non-boolean arguments are converted using the following rules:
+     *   * 1, '1', 'true',  'on',  and 'yes' are converted to boolean true
+     *   * 0, '0', 'false', 'off', and 'no'  are converted to boolean false
+     * Check on string values is case insensitive (so 'FaLsE' is seen as 'false').
+     *
+     * @param  boolean|integer|string $v The new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setSessionVarInText($v)
+    {
+        if ($v !== null) {
+            if (is_string($v)) {
+                $v = in_array(strtolower($v), array('false', 'off', '-', 'no', 'n', '0', '')) ? false : true;
+            } else {
+                $v = (boolean) $v;
+            }
+        }
+
+        if ($this->session_var_in_text !== $v) {
+            $this->session_var_in_text = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_SESSION_VAR_IN_TEXT] = true;
+        }
+
+        return $this;
+    } // setSessionVarInText()
+
+    /**
+     * Sets the value of the [session_var_in_uri] column.
+     * Non-boolean arguments are converted using the following rules:
+     *   * 1, '1', 'true',  'on',  and 'yes' are converted to boolean true
+     *   * 0, '0', 'false', 'off', and 'no'  are converted to boolean false
+     * Check on string values is case insensitive (so 'FaLsE' is seen as 'false').
+     *
+     * @param  boolean|integer|string $v The new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setSessionVarInURI($v)
+    {
+        if ($v !== null) {
+            if (is_string($v)) {
+                $v = in_array(strtolower($v), array('false', 'off', '-', 'no', 'n', '0', '')) ? false : true;
+            } else {
+                $v = (boolean) $v;
+            }
+        }
+
+        if ($this->session_var_in_uri !== $v) {
+            $this->session_var_in_uri = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_SESSION_VAR_IN_URI] = true;
+        }
+
+        return $this;
+    } // setSessionVarInURI()
+
+    /**
+     * Set the value of [url_parm_name] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setURLParmName($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->url_parm_name !== $v) {
+            $this->url_parm_name = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_URL_PARM_NAME] = true;
+        }
+
+        return $this;
+    } // setURLParmName()
+
+    /**
+     * Sets the value of the [active] column.
+     * Non-boolean arguments are converted using the following rules:
+     *   * 1, '1', 'true',  'on',  and 'yes' are converted to boolean true
+     *   * 0, '0', 'false', 'off', and 'no'  are converted to boolean false
+     * Check on string values is case insensitive (so 'FaLsE' is seen as 'false').
+     *
+     * @param  boolean|integer|string $v The new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setActive($v)
+    {
+        if ($v !== null) {
+            if (is_string($v)) {
+                $v = in_array(strtolower($v), array('false', 'off', '-', 'no', 'n', '0', '')) ? false : true;
+            } else {
+                $v = (boolean) $v;
+            }
+        }
+
+        if ($this->active !== $v) {
+            $this->active = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_ACTIVE] = true;
+        }
+
+        return $this;
+    } // setActive()
+
+    /**
+     * Set the value of [sortorder] column.
+     *
+     * @param int $v new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setSortOrder($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->sortorder !== $v) {
+            $this->sortorder = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_SORTORDER] = true;
+        }
+
+        return $this;
+    } // setSortOrder()
+
+    /**
+     * Set the value of [icon] column.
+     *
+     * @param string $v new value
+     * @return $this|\ChurchCRM\MenuConfig The current object (for fluent API support)
+     */
+    public function setIcon($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->icon !== $v) {
+            $this->icon = $v;
+            $this->modifiedColumns[MenuConfigTableMap::COL_ICON] = true;
+        }
+
+        return $this;
+    } // setIcon()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -742,30 +966,6 @@ abstract class Note implements ActiveRecordInterface
      */
     public function hasOnlyDefaultValues()
     {
-            if ($this->nte_per_id !== 0) {
-                return false;
-            }
-
-            if ($this->nte_fam_id !== 0) {
-                return false;
-            }
-
-            if ($this->nte_private !== 0) {
-                return false;
-            }
-
-            if ($this->nte_dateentered && $this->nte_dateentered->format('Y-m-d H:i:s.u') !== NULL) {
-                return false;
-            }
-
-            if ($this->nte_enteredby !== 0) {
-                return false;
-            }
-
-            if ($this->nte_editedby !== 0) {
-                return false;
-            }
-
         // otherwise, everything was equal, so return TRUE
         return true;
     } // hasOnlyDefaultValues()
@@ -792,41 +992,53 @@ abstract class Note implements ActiveRecordInterface
     {
         try {
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : NoteTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : MenuConfigTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->mid = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : NoteTableMap::translateFieldName('PerId', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_per_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : MenuConfigTableMap::translateFieldName('Name', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->name = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : NoteTableMap::translateFieldName('FamId', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_fam_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : MenuConfigTableMap::translateFieldName('Parent', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->parent = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : NoteTableMap::translateFieldName('Private', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_private = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : MenuConfigTableMap::translateFieldName('Menu', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->ismenu = (null !== $col) ? (boolean) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : NoteTableMap::translateFieldName('Text', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_text = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : MenuConfigTableMap::translateFieldName('ContentEnglish', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->content_english = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : NoteTableMap::translateFieldName('DateEntered', TableMap::TYPE_PHPNAME, $indexType)];
-            if ($col === '0000-00-00 00:00:00') {
-                $col = null;
-            }
-            $this->nte_dateentered = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : MenuConfigTableMap::translateFieldName('Content', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->content = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : NoteTableMap::translateFieldName('DateLastEdited', TableMap::TYPE_PHPNAME, $indexType)];
-            if ($col === '0000-00-00 00:00:00') {
-                $col = null;
-            }
-            $this->nte_datelastedited = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : MenuConfigTableMap::translateFieldName('URI', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->uri = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : NoteTableMap::translateFieldName('EnteredBy', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_enteredby = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : MenuConfigTableMap::translateFieldName('Status', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->statustext = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : NoteTableMap::translateFieldName('EditedBy', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_editedby = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : MenuConfigTableMap::translateFieldName('SecurityGroup', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->security_grp = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : NoteTableMap::translateFieldName('Type', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->nte_type = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : MenuConfigTableMap::translateFieldName('SessionVar', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->session_var = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 10 + $startcol : MenuConfigTableMap::translateFieldName('SessionVarInText', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->session_var_in_text = (null !== $col) ? (boolean) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 11 + $startcol : MenuConfigTableMap::translateFieldName('SessionVarInURI', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->session_var_in_uri = (null !== $col) ? (boolean) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 12 + $startcol : MenuConfigTableMap::translateFieldName('URLParmName', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->url_parm_name = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 13 + $startcol : MenuConfigTableMap::translateFieldName('Active', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->active = (null !== $col) ? (boolean) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 14 + $startcol : MenuConfigTableMap::translateFieldName('SortOrder', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->sortorder = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 15 + $startcol : MenuConfigTableMap::translateFieldName('Icon', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->icon = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -835,10 +1047,10 @@ abstract class Note implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 10; // 10 = NoteTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 16; // 16 = MenuConfigTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException(sprintf('Error populating %s object', '\\ChurchCRM\\Note'), 0, $e);
+            throw new PropelException(sprintf('Error populating %s object', '\\ChurchCRM\\MenuConfig'), 0, $e);
         }
     }
 
@@ -857,12 +1069,6 @@ abstract class Note implements ActiveRecordInterface
      */
     public function ensureConsistency()
     {
-        if ($this->aPerson !== null && $this->nte_per_id !== $this->aPerson->getId()) {
-            $this->aPerson = null;
-        }
-        if ($this->aFamily !== null && $this->nte_fam_id !== $this->aFamily->getId()) {
-            $this->aFamily = null;
-        }
     } // ensureConsistency
 
     /**
@@ -886,13 +1092,13 @@ abstract class Note implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getReadConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getReadConnection(MenuConfigTableMap::DATABASE_NAME);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $dataFetcher = ChildNoteQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
+        $dataFetcher = ChildMenuConfigQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
         $row = $dataFetcher->fetch();
         $dataFetcher->close();
         if (!$row) {
@@ -902,8 +1108,6 @@ abstract class Note implements ActiveRecordInterface
 
         if ($deep) {  // also de-associate any related objects?
 
-            $this->aPerson = null;
-            $this->aFamily = null;
         } // if (deep)
     }
 
@@ -913,8 +1117,8 @@ abstract class Note implements ActiveRecordInterface
      * @param      ConnectionInterface $con
      * @return void
      * @throws PropelException
-     * @see Note::setDeleted()
-     * @see Note::isDeleted()
+     * @see MenuConfig::setDeleted()
+     * @see MenuConfig::isDeleted()
      */
     public function delete(ConnectionInterface $con = null)
     {
@@ -923,11 +1127,11 @@ abstract class Note implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(MenuConfigTableMap::DATABASE_NAME);
         }
 
         $con->transaction(function () use ($con) {
-            $deleteQuery = ChildNoteQuery::create()
+            $deleteQuery = ChildMenuConfigQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             if ($ret) {
@@ -958,7 +1162,7 @@ abstract class Note implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(NoteTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(MenuConfigTableMap::DATABASE_NAME);
         }
 
         return $con->transaction(function () use ($con) {
@@ -977,7 +1181,7 @@ abstract class Note implements ActiveRecordInterface
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                NoteTableMap::addInstanceToPool($this);
+                MenuConfigTableMap::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -1002,25 +1206,6 @@ abstract class Note implements ActiveRecordInterface
         $affectedRows = 0; // initialize var to track total num of affected rows
         if (!$this->alreadyInSave) {
             $this->alreadyInSave = true;
-
-            // We call the save method on the following object(s) if they
-            // were passed to this object by their corresponding set
-            // method.  This object relates to these object(s) by a
-            // foreign key reference.
-
-            if ($this->aPerson !== null) {
-                if ($this->aPerson->isModified() || $this->aPerson->isNew()) {
-                    $affectedRows += $this->aPerson->save($con);
-                }
-                $this->setPerson($this->aPerson);
-            }
-
-            if ($this->aFamily !== null) {
-                if ($this->aFamily->isModified() || $this->aFamily->isNew()) {
-                    $affectedRows += $this->aFamily->save($con);
-                }
-                $this->setFamily($this->aFamily);
-            }
 
             if ($this->isNew() || $this->isModified()) {
                 // persist changes
@@ -1053,45 +1238,63 @@ abstract class Note implements ActiveRecordInterface
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[NoteTableMap::COL_NTE_ID] = true;
-        if (null !== $this->nte_id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . NoteTableMap::COL_NTE_ID . ')');
+        $this->modifiedColumns[MenuConfigTableMap::COL_MID] = true;
+        if (null !== $this->mid) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . MenuConfigTableMap::COL_MID . ')');
         }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_ID';
+        if ($this->isColumnModified(MenuConfigTableMap::COL_MID)) {
+            $modifiedColumns[':p' . $index++]  = 'mid';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PER_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_per_ID';
+        if ($this->isColumnModified(MenuConfigTableMap::COL_NAME)) {
+            $modifiedColumns[':p' . $index++]  = 'name';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_FAM_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_fam_ID';
+        if ($this->isColumnModified(MenuConfigTableMap::COL_PARENT)) {
+            $modifiedColumns[':p' . $index++]  = 'parent';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PRIVATE)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_Private';
+        if ($this->isColumnModified(MenuConfigTableMap::COL_ISMENU)) {
+            $modifiedColumns[':p' . $index++]  = 'ismenu';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TEXT)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_Text';
+        if ($this->isColumnModified(MenuConfigTableMap::COL_CONTENT_ENGLISH)) {
+            $modifiedColumns[':p' . $index++]  = 'content_english';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATEENTERED)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_DateEntered';
+        if ($this->isColumnModified(MenuConfigTableMap::COL_CONTENT)) {
+            $modifiedColumns[':p' . $index++]  = 'content';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATELASTEDITED)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_DateLastEdited';
+        if ($this->isColumnModified(MenuConfigTableMap::COL_URI)) {
+            $modifiedColumns[':p' . $index++]  = 'uri';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ENTEREDBY)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_EnteredBy';
+        if ($this->isColumnModified(MenuConfigTableMap::COL_STATUSTEXT)) {
+            $modifiedColumns[':p' . $index++]  = 'statustext';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_EDITEDBY)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_EditedBy';
+        if ($this->isColumnModified(MenuConfigTableMap::COL_SECURITY_GRP)) {
+            $modifiedColumns[':p' . $index++]  = 'security_grp';
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TYPE)) {
-            $modifiedColumns[':p' . $index++]  = 'nte_Type';
+        if ($this->isColumnModified(MenuConfigTableMap::COL_SESSION_VAR)) {
+            $modifiedColumns[':p' . $index++]  = 'session_var';
+        }
+        if ($this->isColumnModified(MenuConfigTableMap::COL_SESSION_VAR_IN_TEXT)) {
+            $modifiedColumns[':p' . $index++]  = 'session_var_in_text';
+        }
+        if ($this->isColumnModified(MenuConfigTableMap::COL_SESSION_VAR_IN_URI)) {
+            $modifiedColumns[':p' . $index++]  = 'session_var_in_uri';
+        }
+        if ($this->isColumnModified(MenuConfigTableMap::COL_URL_PARM_NAME)) {
+            $modifiedColumns[':p' . $index++]  = 'url_parm_name';
+        }
+        if ($this->isColumnModified(MenuConfigTableMap::COL_ACTIVE)) {
+            $modifiedColumns[':p' . $index++]  = 'active';
+        }
+        if ($this->isColumnModified(MenuConfigTableMap::COL_SORTORDER)) {
+            $modifiedColumns[':p' . $index++]  = 'sortorder';
+        }
+        if ($this->isColumnModified(MenuConfigTableMap::COL_ICON)) {
+            $modifiedColumns[':p' . $index++]  = 'icon';
         }
 
         $sql = sprintf(
-            'INSERT INTO note_nte (%s) VALUES (%s)',
+            'INSERT INTO menuconfig_mcf (%s) VALUES (%s)',
             implode(', ', $modifiedColumns),
             implode(', ', array_keys($modifiedColumns))
         );
@@ -1100,35 +1303,53 @@ abstract class Note implements ActiveRecordInterface
             $stmt = $con->prepare($sql);
             foreach ($modifiedColumns as $identifier => $columnName) {
                 switch ($columnName) {
-                    case 'nte_ID':
-                        $stmt->bindValue($identifier, $this->nte_id, PDO::PARAM_INT);
+                    case 'mid':
+                        $stmt->bindValue($identifier, $this->mid, PDO::PARAM_INT);
                         break;
-                    case 'nte_per_ID':
-                        $stmt->bindValue($identifier, $this->nte_per_id, PDO::PARAM_INT);
+                    case 'name':
+                        $stmt->bindValue($identifier, $this->name, PDO::PARAM_STR);
                         break;
-                    case 'nte_fam_ID':
-                        $stmt->bindValue($identifier, $this->nte_fam_id, PDO::PARAM_INT);
+                    case 'parent':
+                        $stmt->bindValue($identifier, $this->parent, PDO::PARAM_STR);
                         break;
-                    case 'nte_Private':
-                        $stmt->bindValue($identifier, $this->nte_private, PDO::PARAM_INT);
+                    case 'ismenu':
+                        $stmt->bindValue($identifier, (int) $this->ismenu, PDO::PARAM_INT);
                         break;
-                    case 'nte_Text':
-                        $stmt->bindValue($identifier, $this->nte_text, PDO::PARAM_STR);
+                    case 'content_english':
+                        $stmt->bindValue($identifier, $this->content_english, PDO::PARAM_STR);
                         break;
-                    case 'nte_DateEntered':
-                        $stmt->bindValue($identifier, $this->nte_dateentered ? $this->nte_dateentered->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
+                    case 'content':
+                        $stmt->bindValue($identifier, $this->content, PDO::PARAM_STR);
                         break;
-                    case 'nte_DateLastEdited':
-                        $stmt->bindValue($identifier, $this->nte_datelastedited ? $this->nte_datelastedited->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
+                    case 'uri':
+                        $stmt->bindValue($identifier, $this->uri, PDO::PARAM_STR);
                         break;
-                    case 'nte_EnteredBy':
-                        $stmt->bindValue($identifier, $this->nte_enteredby, PDO::PARAM_INT);
+                    case 'statustext':
+                        $stmt->bindValue($identifier, $this->statustext, PDO::PARAM_STR);
                         break;
-                    case 'nte_EditedBy':
-                        $stmt->bindValue($identifier, $this->nte_editedby, PDO::PARAM_INT);
+                    case 'security_grp':
+                        $stmt->bindValue($identifier, $this->security_grp, PDO::PARAM_STR);
                         break;
-                    case 'nte_Type':
-                        $stmt->bindValue($identifier, $this->nte_type, PDO::PARAM_STR);
+                    case 'session_var':
+                        $stmt->bindValue($identifier, $this->session_var, PDO::PARAM_STR);
+                        break;
+                    case 'session_var_in_text':
+                        $stmt->bindValue($identifier, (int) $this->session_var_in_text, PDO::PARAM_INT);
+                        break;
+                    case 'session_var_in_uri':
+                        $stmt->bindValue($identifier, (int) $this->session_var_in_uri, PDO::PARAM_INT);
+                        break;
+                    case 'url_parm_name':
+                        $stmt->bindValue($identifier, $this->url_parm_name, PDO::PARAM_STR);
+                        break;
+                    case 'active':
+                        $stmt->bindValue($identifier, (int) $this->active, PDO::PARAM_INT);
+                        break;
+                    case 'sortorder':
+                        $stmt->bindValue($identifier, $this->sortorder, PDO::PARAM_INT);
+                        break;
+                    case 'icon':
+                        $stmt->bindValue($identifier, $this->icon, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -1176,7 +1397,7 @@ abstract class Note implements ActiveRecordInterface
      */
     public function getByName($name, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = NoteTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = MenuConfigTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -1196,31 +1417,49 @@ abstract class Note implements ActiveRecordInterface
                 return $this->getId();
                 break;
             case 1:
-                return $this->getPerId();
+                return $this->getName();
                 break;
             case 2:
-                return $this->getFamId();
+                return $this->getParent();
                 break;
             case 3:
-                return $this->getPrivate();
+                return $this->getMenu();
                 break;
             case 4:
-                return $this->getText();
+                return $this->getContentEnglish();
                 break;
             case 5:
-                return $this->getDateEntered();
+                return $this->getContent();
                 break;
             case 6:
-                return $this->getDateLastEdited();
+                return $this->getURI();
                 break;
             case 7:
-                return $this->getEnteredBy();
+                return $this->getStatus();
                 break;
             case 8:
-                return $this->getEditedBy();
+                return $this->getSecurityGroup();
                 break;
             case 9:
-                return $this->getType();
+                return $this->getSessionVar();
+                break;
+            case 10:
+                return $this->getSessionVarInText();
+                break;
+            case 11:
+                return $this->getSessionVarInURI();
+                break;
+            case 12:
+                return $this->getURLParmName();
+                break;
+            case 13:
+                return $this->getActive();
+                break;
+            case 14:
+                return $this->getSortOrder();
+                break;
+            case 15:
+                return $this->getIcon();
                 break;
             default:
                 return null;
@@ -1239,75 +1478,40 @@ abstract class Note implements ActiveRecordInterface
      *                    Defaults to TableMap::TYPE_PHPNAME.
      * @param     boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns. Defaults to TRUE.
      * @param     array $alreadyDumpedObjects List of objects to skip to avoid recursion
-     * @param     boolean $includeForeignObjects (optional) Whether to include hydrated related objects. Default to FALSE.
      *
      * @return array an associative array containing the field names (as keys) and field values
      */
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
     {
 
-        if (isset($alreadyDumpedObjects['Note'][$this->hashCode()])) {
+        if (isset($alreadyDumpedObjects['MenuConfig'][$this->hashCode()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['Note'][$this->hashCode()] = true;
-        $keys = NoteTableMap::getFieldNames($keyType);
+        $alreadyDumpedObjects['MenuConfig'][$this->hashCode()] = true;
+        $keys = MenuConfigTableMap::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getId(),
-            $keys[1] => $this->getPerId(),
-            $keys[2] => $this->getFamId(),
-            $keys[3] => $this->getPrivate(),
-            $keys[4] => $this->getText(),
-            $keys[5] => $this->getDateEntered(),
-            $keys[6] => $this->getDateLastEdited(),
-            $keys[7] => $this->getEnteredBy(),
-            $keys[8] => $this->getEditedBy(),
-            $keys[9] => $this->getType(),
+            $keys[1] => $this->getName(),
+            $keys[2] => $this->getParent(),
+            $keys[3] => $this->getMenu(),
+            $keys[4] => $this->getContentEnglish(),
+            $keys[5] => $this->getContent(),
+            $keys[6] => $this->getURI(),
+            $keys[7] => $this->getStatus(),
+            $keys[8] => $this->getSecurityGroup(),
+            $keys[9] => $this->getSessionVar(),
+            $keys[10] => $this->getSessionVarInText(),
+            $keys[11] => $this->getSessionVarInURI(),
+            $keys[12] => $this->getURLParmName(),
+            $keys[13] => $this->getActive(),
+            $keys[14] => $this->getSortOrder(),
+            $keys[15] => $this->getIcon(),
         );
-        if ($result[$keys[5]] instanceof \DateTime) {
-            $result[$keys[5]] = $result[$keys[5]]->format('c');
-        }
-
-        if ($result[$keys[6]] instanceof \DateTime) {
-            $result[$keys[6]] = $result[$keys[6]]->format('c');
-        }
-
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
             $result[$key] = $virtualColumn;
         }
 
-        if ($includeForeignObjects) {
-            if (null !== $this->aPerson) {
-
-                switch ($keyType) {
-                    case TableMap::TYPE_CAMELNAME:
-                        $key = 'person';
-                        break;
-                    case TableMap::TYPE_FIELDNAME:
-                        $key = 'person_per';
-                        break;
-                    default:
-                        $key = 'Person';
-                }
-
-                $result[$key] = $this->aPerson->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
-            }
-            if (null !== $this->aFamily) {
-
-                switch ($keyType) {
-                    case TableMap::TYPE_CAMELNAME:
-                        $key = 'family';
-                        break;
-                    case TableMap::TYPE_FIELDNAME:
-                        $key = 'family_fam';
-                        break;
-                    default:
-                        $key = 'Family';
-                }
-
-                $result[$key] = $this->aFamily->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
-            }
-        }
 
         return $result;
     }
@@ -1321,11 +1525,11 @@ abstract class Note implements ActiveRecordInterface
      *                one of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
      *                TableMap::TYPE_COLNAME, TableMap::TYPE_FIELDNAME, TableMap::TYPE_NUM.
      *                Defaults to TableMap::TYPE_PHPNAME.
-     * @return $this|\ChurchCRM\Note
+     * @return $this|\ChurchCRM\MenuConfig
      */
     public function setByName($name, $value, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = NoteTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = MenuConfigTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
 
         return $this->setByPosition($pos, $value);
     }
@@ -1336,7 +1540,7 @@ abstract class Note implements ActiveRecordInterface
      *
      * @param  int $pos position in xml schema
      * @param  mixed $value field value
-     * @return $this|\ChurchCRM\Note
+     * @return $this|\ChurchCRM\MenuConfig
      */
     public function setByPosition($pos, $value)
     {
@@ -1345,31 +1549,49 @@ abstract class Note implements ActiveRecordInterface
                 $this->setId($value);
                 break;
             case 1:
-                $this->setPerId($value);
+                $this->setName($value);
                 break;
             case 2:
-                $this->setFamId($value);
+                $this->setParent($value);
                 break;
             case 3:
-                $this->setPrivate($value);
+                $this->setMenu($value);
                 break;
             case 4:
-                $this->setText($value);
+                $this->setContentEnglish($value);
                 break;
             case 5:
-                $this->setDateEntered($value);
+                $this->setContent($value);
                 break;
             case 6:
-                $this->setDateLastEdited($value);
+                $this->setURI($value);
                 break;
             case 7:
-                $this->setEnteredBy($value);
+                $this->setStatus($value);
                 break;
             case 8:
-                $this->setEditedBy($value);
+                $this->setSecurityGroup($value);
                 break;
             case 9:
-                $this->setType($value);
+                $this->setSessionVar($value);
+                break;
+            case 10:
+                $this->setSessionVarInText($value);
+                break;
+            case 11:
+                $this->setSessionVarInURI($value);
+                break;
+            case 12:
+                $this->setURLParmName($value);
+                break;
+            case 13:
+                $this->setActive($value);
+                break;
+            case 14:
+                $this->setSortOrder($value);
+                break;
+            case 15:
+                $this->setIcon($value);
                 break;
         } // switch()
 
@@ -1395,37 +1617,55 @@ abstract class Note implements ActiveRecordInterface
      */
     public function fromArray($arr, $keyType = TableMap::TYPE_PHPNAME)
     {
-        $keys = NoteTableMap::getFieldNames($keyType);
+        $keys = MenuConfigTableMap::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) {
             $this->setId($arr[$keys[0]]);
         }
         if (array_key_exists($keys[1], $arr)) {
-            $this->setPerId($arr[$keys[1]]);
+            $this->setName($arr[$keys[1]]);
         }
         if (array_key_exists($keys[2], $arr)) {
-            $this->setFamId($arr[$keys[2]]);
+            $this->setParent($arr[$keys[2]]);
         }
         if (array_key_exists($keys[3], $arr)) {
-            $this->setPrivate($arr[$keys[3]]);
+            $this->setMenu($arr[$keys[3]]);
         }
         if (array_key_exists($keys[4], $arr)) {
-            $this->setText($arr[$keys[4]]);
+            $this->setContentEnglish($arr[$keys[4]]);
         }
         if (array_key_exists($keys[5], $arr)) {
-            $this->setDateEntered($arr[$keys[5]]);
+            $this->setContent($arr[$keys[5]]);
         }
         if (array_key_exists($keys[6], $arr)) {
-            $this->setDateLastEdited($arr[$keys[6]]);
+            $this->setURI($arr[$keys[6]]);
         }
         if (array_key_exists($keys[7], $arr)) {
-            $this->setEnteredBy($arr[$keys[7]]);
+            $this->setStatus($arr[$keys[7]]);
         }
         if (array_key_exists($keys[8], $arr)) {
-            $this->setEditedBy($arr[$keys[8]]);
+            $this->setSecurityGroup($arr[$keys[8]]);
         }
         if (array_key_exists($keys[9], $arr)) {
-            $this->setType($arr[$keys[9]]);
+            $this->setSessionVar($arr[$keys[9]]);
+        }
+        if (array_key_exists($keys[10], $arr)) {
+            $this->setSessionVarInText($arr[$keys[10]]);
+        }
+        if (array_key_exists($keys[11], $arr)) {
+            $this->setSessionVarInURI($arr[$keys[11]]);
+        }
+        if (array_key_exists($keys[12], $arr)) {
+            $this->setURLParmName($arr[$keys[12]]);
+        }
+        if (array_key_exists($keys[13], $arr)) {
+            $this->setActive($arr[$keys[13]]);
+        }
+        if (array_key_exists($keys[14], $arr)) {
+            $this->setSortOrder($arr[$keys[14]]);
+        }
+        if (array_key_exists($keys[15], $arr)) {
+            $this->setIcon($arr[$keys[15]]);
         }
     }
 
@@ -1446,7 +1686,7 @@ abstract class Note implements ActiveRecordInterface
      * @param string $data The source data to import from
      * @param string $keyType The type of keys the array uses.
      *
-     * @return $this|\ChurchCRM\Note The current object, for fluid interface
+     * @return $this|\ChurchCRM\MenuConfig The current object, for fluid interface
      */
     public function importFrom($parser, $data, $keyType = TableMap::TYPE_PHPNAME)
     {
@@ -1466,37 +1706,55 @@ abstract class Note implements ActiveRecordInterface
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(NoteTableMap::DATABASE_NAME);
+        $criteria = new Criteria(MenuConfigTableMap::DATABASE_NAME);
 
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ID)) {
-            $criteria->add(NoteTableMap::COL_NTE_ID, $this->nte_id);
+        if ($this->isColumnModified(MenuConfigTableMap::COL_MID)) {
+            $criteria->add(MenuConfigTableMap::COL_MID, $this->mid);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PER_ID)) {
-            $criteria->add(NoteTableMap::COL_NTE_PER_ID, $this->nte_per_id);
+        if ($this->isColumnModified(MenuConfigTableMap::COL_NAME)) {
+            $criteria->add(MenuConfigTableMap::COL_NAME, $this->name);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_FAM_ID)) {
-            $criteria->add(NoteTableMap::COL_NTE_FAM_ID, $this->nte_fam_id);
+        if ($this->isColumnModified(MenuConfigTableMap::COL_PARENT)) {
+            $criteria->add(MenuConfigTableMap::COL_PARENT, $this->parent);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_PRIVATE)) {
-            $criteria->add(NoteTableMap::COL_NTE_PRIVATE, $this->nte_private);
+        if ($this->isColumnModified(MenuConfigTableMap::COL_ISMENU)) {
+            $criteria->add(MenuConfigTableMap::COL_ISMENU, $this->ismenu);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TEXT)) {
-            $criteria->add(NoteTableMap::COL_NTE_TEXT, $this->nte_text);
+        if ($this->isColumnModified(MenuConfigTableMap::COL_CONTENT_ENGLISH)) {
+            $criteria->add(MenuConfigTableMap::COL_CONTENT_ENGLISH, $this->content_english);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATEENTERED)) {
-            $criteria->add(NoteTableMap::COL_NTE_DATEENTERED, $this->nte_dateentered);
+        if ($this->isColumnModified(MenuConfigTableMap::COL_CONTENT)) {
+            $criteria->add(MenuConfigTableMap::COL_CONTENT, $this->content);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_DATELASTEDITED)) {
-            $criteria->add(NoteTableMap::COL_NTE_DATELASTEDITED, $this->nte_datelastedited);
+        if ($this->isColumnModified(MenuConfigTableMap::COL_URI)) {
+            $criteria->add(MenuConfigTableMap::COL_URI, $this->uri);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_ENTEREDBY)) {
-            $criteria->add(NoteTableMap::COL_NTE_ENTEREDBY, $this->nte_enteredby);
+        if ($this->isColumnModified(MenuConfigTableMap::COL_STATUSTEXT)) {
+            $criteria->add(MenuConfigTableMap::COL_STATUSTEXT, $this->statustext);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_EDITEDBY)) {
-            $criteria->add(NoteTableMap::COL_NTE_EDITEDBY, $this->nte_editedby);
+        if ($this->isColumnModified(MenuConfigTableMap::COL_SECURITY_GRP)) {
+            $criteria->add(MenuConfigTableMap::COL_SECURITY_GRP, $this->security_grp);
         }
-        if ($this->isColumnModified(NoteTableMap::COL_NTE_TYPE)) {
-            $criteria->add(NoteTableMap::COL_NTE_TYPE, $this->nte_type);
+        if ($this->isColumnModified(MenuConfigTableMap::COL_SESSION_VAR)) {
+            $criteria->add(MenuConfigTableMap::COL_SESSION_VAR, $this->session_var);
+        }
+        if ($this->isColumnModified(MenuConfigTableMap::COL_SESSION_VAR_IN_TEXT)) {
+            $criteria->add(MenuConfigTableMap::COL_SESSION_VAR_IN_TEXT, $this->session_var_in_text);
+        }
+        if ($this->isColumnModified(MenuConfigTableMap::COL_SESSION_VAR_IN_URI)) {
+            $criteria->add(MenuConfigTableMap::COL_SESSION_VAR_IN_URI, $this->session_var_in_uri);
+        }
+        if ($this->isColumnModified(MenuConfigTableMap::COL_URL_PARM_NAME)) {
+            $criteria->add(MenuConfigTableMap::COL_URL_PARM_NAME, $this->url_parm_name);
+        }
+        if ($this->isColumnModified(MenuConfigTableMap::COL_ACTIVE)) {
+            $criteria->add(MenuConfigTableMap::COL_ACTIVE, $this->active);
+        }
+        if ($this->isColumnModified(MenuConfigTableMap::COL_SORTORDER)) {
+            $criteria->add(MenuConfigTableMap::COL_SORTORDER, $this->sortorder);
+        }
+        if ($this->isColumnModified(MenuConfigTableMap::COL_ICON)) {
+            $criteria->add(MenuConfigTableMap::COL_ICON, $this->icon);
         }
 
         return $criteria;
@@ -1514,8 +1772,8 @@ abstract class Note implements ActiveRecordInterface
      */
     public function buildPkeyCriteria()
     {
-        $criteria = ChildNoteQuery::create();
-        $criteria->add(NoteTableMap::COL_NTE_ID, $this->nte_id);
+        $criteria = ChildMenuConfigQuery::create();
+        $criteria->add(MenuConfigTableMap::COL_MID, $this->mid);
 
         return $criteria;
     }
@@ -1552,7 +1810,7 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Generic method to set the primary key (nte_id column).
+     * Generic method to set the primary key (mid column).
      *
      * @param       int $key Primary key.
      * @return void
@@ -1577,22 +1835,28 @@ abstract class Note implements ActiveRecordInterface
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of \ChurchCRM\Note (or compatible) type.
+     * @param      object $copyObj An object of \ChurchCRM\MenuConfig (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param      boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
      */
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
-        $copyObj->setPerId($this->getPerId());
-        $copyObj->setFamId($this->getFamId());
-        $copyObj->setPrivate($this->getPrivate());
-        $copyObj->setText($this->getText());
-        $copyObj->setDateEntered($this->getDateEntered());
-        $copyObj->setDateLastEdited($this->getDateLastEdited());
-        $copyObj->setEnteredBy($this->getEnteredBy());
-        $copyObj->setEditedBy($this->getEditedBy());
-        $copyObj->setType($this->getType());
+        $copyObj->setName($this->getName());
+        $copyObj->setParent($this->getParent());
+        $copyObj->setMenu($this->getMenu());
+        $copyObj->setContentEnglish($this->getContentEnglish());
+        $copyObj->setContent($this->getContent());
+        $copyObj->setURI($this->getURI());
+        $copyObj->setStatus($this->getStatus());
+        $copyObj->setSecurityGroup($this->getSecurityGroup());
+        $copyObj->setSessionVar($this->getSessionVar());
+        $copyObj->setSessionVarInText($this->getSessionVarInText());
+        $copyObj->setSessionVarInURI($this->getSessionVarInURI());
+        $copyObj->setURLParmName($this->getURLParmName());
+        $copyObj->setActive($this->getActive());
+        $copyObj->setSortOrder($this->getSortOrder());
+        $copyObj->setIcon($this->getIcon());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setId(NULL); // this is a auto-increment column, so set to default value
@@ -1608,7 +1872,7 @@ abstract class Note implements ActiveRecordInterface
      * objects.
      *
      * @param  boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return \ChurchCRM\Note Clone of current object.
+     * @return \ChurchCRM\MenuConfig Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1622,133 +1886,30 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
-     * Declares an association between this object and a ChildPerson object.
-     *
-     * @param  ChildPerson $v
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     * @throws PropelException
-     */
-    public function setPerson(ChildPerson $v = null)
-    {
-        if ($v === null) {
-            $this->setPerId(0);
-        } else {
-            $this->setPerId($v->getId());
-        }
-
-        $this->aPerson = $v;
-
-        // Add binding for other direction of this n:n relationship.
-        // If this object has already been added to the ChildPerson object, it will not be re-added.
-        if ($v !== null) {
-            $v->addNote($this);
-        }
-
-
-        return $this;
-    }
-
-
-    /**
-     * Get the associated ChildPerson object
-     *
-     * @param  ConnectionInterface $con Optional Connection object.
-     * @return ChildPerson The associated ChildPerson object.
-     * @throws PropelException
-     */
-    public function getPerson(ConnectionInterface $con = null)
-    {
-        if ($this->aPerson === null && ($this->nte_per_id !== null)) {
-            $this->aPerson = ChildPersonQuery::create()->findPk($this->nte_per_id, $con);
-            /* The following can be used additionally to
-                guarantee the related object contains a reference
-                to this object.  This level of coupling may, however, be
-                undesirable since it could result in an only partially populated collection
-                in the referenced object.
-                $this->aPerson->addNotes($this);
-             */
-        }
-
-        return $this->aPerson;
-    }
-
-    /**
-     * Declares an association between this object and a ChildFamily object.
-     *
-     * @param  ChildFamily $v
-     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
-     * @throws PropelException
-     */
-    public function setFamily(ChildFamily $v = null)
-    {
-        if ($v === null) {
-            $this->setFamId(0);
-        } else {
-            $this->setFamId($v->getId());
-        }
-
-        $this->aFamily = $v;
-
-        // Add binding for other direction of this n:n relationship.
-        // If this object has already been added to the ChildFamily object, it will not be re-added.
-        if ($v !== null) {
-            $v->addNote($this);
-        }
-
-
-        return $this;
-    }
-
-
-    /**
-     * Get the associated ChildFamily object
-     *
-     * @param  ConnectionInterface $con Optional Connection object.
-     * @return ChildFamily The associated ChildFamily object.
-     * @throws PropelException
-     */
-    public function getFamily(ConnectionInterface $con = null)
-    {
-        if ($this->aFamily === null && ($this->nte_fam_id !== null)) {
-            $this->aFamily = ChildFamilyQuery::create()->findPk($this->nte_fam_id, $con);
-            /* The following can be used additionally to
-                guarantee the related object contains a reference
-                to this object.  This level of coupling may, however, be
-                undesirable since it could result in an only partially populated collection
-                in the referenced object.
-                $this->aFamily->addNotes($this);
-             */
-        }
-
-        return $this->aFamily;
-    }
-
-    /**
      * Clears the current object, sets all attributes to their default values and removes
      * outgoing references as well as back-references (from other objects to this one. Results probably in a database
      * change of those foreign objects when you call `save` there).
      */
     public function clear()
     {
-        if (null !== $this->aPerson) {
-            $this->aPerson->removeNote($this);
-        }
-        if (null !== $this->aFamily) {
-            $this->aFamily->removeNote($this);
-        }
-        $this->nte_id = null;
-        $this->nte_per_id = null;
-        $this->nte_fam_id = null;
-        $this->nte_private = null;
-        $this->nte_text = null;
-        $this->nte_dateentered = null;
-        $this->nte_datelastedited = null;
-        $this->nte_enteredby = null;
-        $this->nte_editedby = null;
-        $this->nte_type = null;
+        $this->mid = null;
+        $this->name = null;
+        $this->parent = null;
+        $this->ismenu = null;
+        $this->content_english = null;
+        $this->content = null;
+        $this->uri = null;
+        $this->statustext = null;
+        $this->security_grp = null;
+        $this->session_var = null;
+        $this->session_var_in_text = null;
+        $this->session_var_in_uri = null;
+        $this->url_parm_name = null;
+        $this->active = null;
+        $this->sortorder = null;
+        $this->icon = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
-        $this->applyDefaultValues();
         $this->resetModified();
         $this->setNew(true);
         $this->setDeleted(false);
@@ -1767,8 +1928,6 @@ abstract class Note implements ActiveRecordInterface
         if ($deep) {
         } // if ($deep)
 
-        $this->aPerson = null;
-        $this->aFamily = null;
     }
 
     /**
@@ -1778,7 +1937,7 @@ abstract class Note implements ActiveRecordInterface
      */
     public function __toString()
     {
-        return (string) $this->exportTo(NoteTableMap::DEFAULT_STRING_FORMAT);
+        return (string) $this->exportTo(MenuConfigTableMap::DEFAULT_STRING_FORMAT);
     }
 
     /**
