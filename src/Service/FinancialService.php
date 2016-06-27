@@ -1093,7 +1093,49 @@ class FinancialService
       }
     }
   }
+  
+  private function generateQBDepositSlip($thisReport)
+  {
+    $thisReport->pdf->AddPage();
+    //logically, we print the cash in the first possible key=value pair column 
+    if ($thisReport->totalCash > 0) {
+      $totalCashStr = sprintf ("%.2f", $thisReport->totalCash);
+      $thisReport->pdf->PrintRightJustified ($thisReport->$leftX + $thisReport->$amountOffsetX, $thisReport->$topY, $totalCashStr);
+    }
+    // then all of the checks in key-value pairs, in 3 separate columns
+     if ($payment->plg_method == 'CHECK') {
+       $numItems += 1;
 
+       $thisReport->pdf->PrintRightJustified ($thisReport->curX, $thisReport->curY, $payment->plg_CheckNo);
+        $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->$amountOffsetX, $thisReport->curY, $payment->plg_amount);
+
+       $thisReport->curX += $thisReport->$intervalX;
+       if ($thisReport->curX > $thisReport->$maxX) {
+         $thisReport->curX = $thisReport->$leftX;
+         $thisReport->curY += $thisReport->$intervalY;
+       }
+     }
+
+    $thisReport->pdf->SetXY ($thisReport->date1X, $thisReport->date1Y);
+     $thisReport->pdf->Write (8, $thisReport->deposit->dep_Date);
+
+     $thisReport->pdf->SetXY ($thisReport->titleX, $thisReport->titleY);
+    $thisReport->pdf->SetFont('Courier','B', 20);
+     $thisReport->pdf->Write (8, "Deposit Summary " . $thisReport->deposit->dep_ID);
+     $thisReport->pdf->SetFont('Times','B', 10);
+
+    // Print Deposit Slip portion of report
+    foreach ($thisReport->payments as $payment)
+    {
+      $thisReport->pdf->SetXY ($thisReport->date1X, $thisReport->date1Y);
+      $thisReport->pdf->Write (8, $dep_Date);
+      $thisReport->pdf->PrintRightJustified ($numItemsX, $numItemsY, $numItems);
+      $thisReport->pdf->PrintRightJustified ($numItemsX, $numItemsY, $numItems);
+      $grandTotalStr = sprintf ("%.2f", $totalChecks + $totalCash);
+      $thisReport->pdf->PrintRightJustified ($subTotalX, $subTotalY, $grandTotalStr);
+      $thisReport->pdf->PrintRightJustified ($topTotalX, $topTotalY, $grandTotalStr);
+    }
+  }
   private function generateDepositSummary($thisReport)
   {
     $thisReport->pdf->AddPage();
@@ -1340,6 +1382,8 @@ class FinancialService
     $thisReport->cashY = 32;
     $thisReport->checksX = $thisReport->depositSlipFrontColumns;
     $thisReport->checksY = 39;
+    $thisReport->date1X = 12;
+    $thisReport->date1Y = 35 + 7;
     $thisReport->date2X = 15;
     $thisReport->date2Y = 5;
     $thisReport->titleX = 85;
@@ -1380,7 +1424,8 @@ class FinancialService
     $this->generateBankDepositSlip($thisReport);
     //print_r ($thisReport->fundTotal);
     //exit;
-    $this->generateDepositSummary($thisReport);
+    #$this->generateDepositSummary($thisReport);
+    $this->generateQBDepositSlip($thisReport);
 
    // Export file
    $thisReport->pdf->Output("ChurchCRM-DepositReport-" . $depID . "-" . date("Ymd-Gis") . ".pdf","D");
