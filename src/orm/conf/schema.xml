@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore" nameSpace="ChurchCRM">
 
-
     <table name="version_ver" idMethod="native" phpName="Version">
         <column name="ver_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="ver_version" phpName="Version" type="VARCHAR" size="50" required="true" defaultValue=""/>
@@ -51,6 +50,29 @@
         <index name="per_ID">
             <index-column name="per_ID"/>
         </index>
+        <foreign-key foreignTable="family_fam">
+            <reference local="per_fam_ID" foreign="fam_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per">
+            <reference local="per_EnteredBy" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per">
+            <reference local="per_EditedBy" foreign="per_ID"/>
+        </foreign-key>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    <table name="whycame_why" idMethod="native" phpName="WhyCame" >
+        <column name="why_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="why_per_ID" phpName="PerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <column name="why_join" phpName="Join" type="LONGVARCHAR" required="true"/>
+        <column name="why_come" phpName="Come" type="LONGVARCHAR" required="true"/>
+        <column name="why_suggest" phpName="Suggest" type="LONGVARCHAR" required="true"/>
+        <column name="why_hearOfUs" phpName="HearOfUs" type="LONGVARCHAR" required="true"/>
+        <foreign-key foreignTable="person_per">
+            <reference local="why_per_ID" foreign="per_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
@@ -104,6 +126,12 @@
         <index name="fam_ID">
             <index-column name="fam_ID"/>
         </index>
+        <foreign-key foreignTable="person_per">
+            <reference local="fam_EnteredBy" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per">
+            <reference local="fam_EditedBy" foreign="per_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
@@ -138,6 +166,113 @@
         <column name="nte_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
         <column name="nte_EditedBy" phpName="EditedBy" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
         <column name="nte_Type" phpName="Type" type="VARCHAR" size="50"/>
+        <foreign-key foreignTable="person_per">
+            <reference local="nte_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="family_fam">
+            <reference local="nte_fam_ID" foreign="fam_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per">
+            <reference local="nte_EnteredBy" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per">
+            <reference local="nte_EditedBy" foreign="per_ID"/>
+        </foreign-key>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+
+    <table name="config_cfg" idMethod="native" phpName="Config" >
+        <column name="cfg_id" phpName="Id" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
+        <column name="cfg_name" phpName="Name" type="VARCHAR" size="50" required="true" defaultValue=""/>
+        <column name="cfg_value" phpName="Value" type="LONGVARCHAR"/>
+        <column name="cfg_type" phpName="Type" type="CHAR" sqlType="enum('text','number','date','boolean','textarea')" required="true" defaultValue="text"/>
+        <column name="cfg_default" phpName="Default" type="LONGVARCHAR" required="true"/>
+        <column name="cfg_tooltip" phpName="Tooltip" type="LONGVARCHAR" required="true"/>
+        <column name="cfg_section" phpName="Section" type="VARCHAR" size="50" required="true" defaultValue=""/>
+        <column name="cfg_category" phpName="Category" type="VARCHAR" size="20"/>
+        <column name="cfg_order" phpName="Order" type="INTEGER"/>
+        <index name="cfg_id">
+            <index-column name="cfg_id"/>
+        </index>
+        <unique name="cfg_name">
+            <unique-column name="cfg_name"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+
+    <table name="menuconfig_mcf" idMethod="native" phpName="MenuConfig" >
+        <column name="mid" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="name" phpName="Name" type="VARCHAR" size="20" required="true"/>
+        <column name="parent" phpName="Parent" type="VARCHAR" size="20" required="true"/>
+        <column name="ismenu" phpName="Menu" type="BOOLEAN" size="1" required="true"/>
+        <column name="content_english" phpName="ContentEnglish" type="VARCHAR" size="100" required="true"/>
+        <column name="content" phpName="Content" type="VARCHAR" size="100"/>
+        <column name="uri" phpName="URI" type="VARCHAR" size="255" required="true"/>
+        <column name="statustext" phpName="Status" type="VARCHAR" size="255" required="true"/>
+        <column name="security_grp" phpName="SecurityGroup" type="VARCHAR" size="50" required="true"/>
+        <column name="session_var" phpName="SessionVar" type="VARCHAR" size="50"/>
+        <column name="session_var_in_text" phpName="SessionVarInText" type="BOOLEAN" size="1" required="true"/>
+        <column name="session_var_in_uri" phpName="SessionVarInURI" type="BOOLEAN" size="1" required="true"/>
+        <column name="url_parm_name" phpName="URLParmName" type="VARCHAR" size="50"/>
+        <column name="active" phpName="Active" type="BOOLEAN" size="1" required="true"/>
+        <column name="sortorder" phpName="SortOrder" type="TINYINT" size="3" required="true"/>
+        <column name="icon" phpName="Icon" type="VARCHAR" size="50"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+
+    <table name="group_grp" idMethod="native" phpName="Group" >
+        <column name="grp_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="grp_Type" phpName="Type" type="TINYINT" required="true" defaultValue="0"/>
+        <column name="grp_RoleListID" phpName="RoleListId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+        <column name="grp_DefaultRole" phpName="DefaultRole" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <column name="grp_Name" phpName="Name" type="VARCHAR" size="50" required="true" defaultValue=""/>
+        <column name="grp_Description" phpName="Description" type="LONGVARCHAR"/>
+        <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="CHAR" sqlType="enum('true','false')" required="true" defaultValue="false"/>
+        <index name="grp_ID_2">
+            <index-column name="grp_ID"/>
+        </index>
+        <unique name="grp_ID">
+            <unique-column name="grp_ID"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    <table name="groupprop_master" idMethod="native" phpName="GroupPropMaster" >
+        <column name="grp_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" defaultValue="0"/>
+        <column name="prop_ID" phpName="Id" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+        <column name="prop_Field" phpName="Field" type="VARCHAR" size="5" required="true" defaultValue="0"/>
+        <column name="prop_Name" phpName="Name" type="VARCHAR" size="40"/>
+        <column name="prop_Description" phpName="Description" type="VARCHAR" size="60"/>
+        <column name="type_ID" phpName="TypeId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
+        <column name="prop_Special" phpName="Special" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="prop_PersonDisplay" phpName="PersonDisplay" type="CHAR" sqlType="enum('false','true')" required="true" defaultValue="false"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+
+    <table name="person2group2role_p2g2r" idMethod="native" phpName="Person2group2roleP2g2r" >
+        <column name="p2g2r_per_ID" phpName="P2g2rPerId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" required="true" defaultValue="0"/>
+        <column name="p2g2r_grp_ID" phpName="P2g2rGrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" required="true" defaultValue="0"/>
+        <column name="p2g2r_rle_ID" phpName="P2g2rRleId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+        <index name="p2g2r_per_ID">
+            <index-column name="p2g2r_per_ID"/>
+            <index-column name="p2g2r_grp_ID"/>
+            <index-column name="p2g2r_rle_ID"/>
+        </index>
+        <foreign-key foreignTable="person_per">
+            <reference local="p2g2r_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="group_grp">
+            <reference local="p2g2r_grp_ID" foreign="grp_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
@@ -197,26 +332,6 @@
     <column name="can_WhyNotInterested" phpName="CanWhynotinterested" type="LONGVARCHAR"/>
     <unique name="can_ID">
       <unique-column name="can_ID"/>
-    </unique>
-    <vendor type="mysql">
-      <parameter name="Engine" value="MyISAM"/>
-    </vendor>
-  </table>
-  <table name="config_cfg" idMethod="native" phpName="ConfigCfg" >
-    <column name="cfg_id" phpName="CfgId" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
-    <column name="cfg_name" phpName="CfgName" type="VARCHAR" size="50" required="true" defaultValue=""/>
-    <column name="cfg_value" phpName="CfgValue" type="LONGVARCHAR"/>
-    <column name="cfg_type" phpName="CfgType" type="CHAR" sqlType="enum('text','number','date','boolean','textarea')" required="true" defaultValue="text"/>
-    <column name="cfg_default" phpName="CfgDefault" type="LONGVARCHAR" required="true"/>
-    <column name="cfg_tooltip" phpName="CfgTooltip" type="LONGVARCHAR" required="true"/>
-    <column name="cfg_section" phpName="CfgSection" type="VARCHAR" size="50" required="true" defaultValue=""/>
-    <column name="cfg_category" phpName="CfgCategory" type="VARCHAR" size="20"/>
-    <column name="cfg_order" phpName="CfgOrder" type="INTEGER"/>
-    <index name="cfg_id">
-      <index-column name="cfg_id"/>
-    </index>
-    <unique name="cfg_name">
-      <unique-column name="cfg_name"/>
     </unique>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
@@ -386,37 +501,6 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="group_grp" idMethod="native" phpName="GroupGrp" >
-    <column name="grp_ID" phpName="GrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-    <column name="grp_Type" phpName="GrpType" type="TINYINT" required="true" defaultValue="0"/>
-    <column name="grp_RoleListID" phpName="GrpRolelistid" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
-    <column name="grp_DefaultRole" phpName="GrpDefaultrole" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-    <column name="grp_Name" phpName="GrpName" type="VARCHAR" size="50" required="true" defaultValue=""/>
-    <column name="grp_Description" phpName="GrpDescription" type="LONGVARCHAR"/>
-    <column name="grp_hasSpecialProps" phpName="GrpHasspecialprops" type="CHAR" sqlType="enum('true','false')" required="true" defaultValue="false"/>
-    <index name="grp_ID_2">
-      <index-column name="grp_ID"/>
-    </index>
-    <unique name="grp_ID">
-      <unique-column name="grp_ID"/>
-    </unique>
-    <vendor type="mysql">
-      <parameter name="Engine" value="MyISAM"/>
-    </vendor>
-  </table>
-  <table name="groupprop_master" idMethod="native" phpName="GrouppropMaster" >
-    <column name="grp_ID" phpName="GrpId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" defaultValue="0"/>
-    <column name="prop_ID" phpName="PropId" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
-    <column name="prop_Field" phpName="PropField" type="VARCHAR" size="5" required="true" defaultValue="0"/>
-    <column name="prop_Name" phpName="PropName" type="VARCHAR" size="40"/>
-    <column name="prop_Description" phpName="PropDescription" type="VARCHAR" size="60"/>
-    <column name="type_ID" phpName="TypeId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
-    <column name="prop_Special" phpName="PropSpecial" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
-    <column name="prop_PersonDisplay" phpName="PropPersondisplay" type="CHAR" sqlType="enum('false','true')" required="true" defaultValue="false"/>
-    <vendor type="mysql">
-      <parameter name="Engine" value="MyISAM"/>
-    </vendor>
-  </table>
   <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu" >
     <column name="lu_fam_ID" phpName="LuFamId" type="SMALLINT" size="9" primaryKey="true" required="true" defaultValue="0"/>
     <column name="lu_LookupDateTime" phpName="LuLookupdatetime" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
@@ -448,27 +532,6 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="menuconfig_mcf" idMethod="native" phpName="MenuconfigMcf" >
-    <column name="mid" phpName="Mid" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
-    <column name="name" phpName="Name" type="VARCHAR" size="20" required="true"/>
-    <column name="parent" phpName="Parent" type="VARCHAR" size="20" required="true"/>
-    <column name="ismenu" phpName="Ismenu" type="BOOLEAN" size="1" required="true"/>
-    <column name="content_english" phpName="ContentEnglish" type="VARCHAR" size="100" required="true"/>
-    <column name="content" phpName="Content" type="VARCHAR" size="100"/>
-    <column name="uri" phpName="Uri" type="VARCHAR" size="255" required="true"/>
-    <column name="statustext" phpName="Statustext" type="VARCHAR" size="255" required="true"/>
-    <column name="security_grp" phpName="SecurityGrp" type="VARCHAR" size="50" required="true"/>
-    <column name="session_var" phpName="SessionVar" type="VARCHAR" size="50"/>
-    <column name="session_var_in_text" phpName="SessionVarInText" type="BOOLEAN" size="1" required="true"/>
-    <column name="session_var_in_uri" phpName="SessionVarInUri" type="BOOLEAN" size="1" required="true"/>
-    <column name="url_parm_name" phpName="UrlParmName" type="VARCHAR" size="50"/>
-    <column name="active" phpName="Active" type="BOOLEAN" size="1" required="true"/>
-    <column name="sortorder" phpName="Sortorder" type="TINYINT" size="3" required="true"/>
-    <column name="icon" phpName="Icon" type="VARCHAR" size="50"/>
-    <vendor type="mysql">
-      <parameter name="Engine" value="MyISAM"/>
-    </vendor>
-  </table>
   <table name="multibuy_mb" idMethod="native" phpName="MultibuyMb" >
     <column name="mb_ID" phpName="MbId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="mb_per_ID" phpName="MbPerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
@@ -490,19 +553,6 @@
     <unique name="pn_ID">
       <unique-column name="pn_ID"/>
     </unique>
-    <vendor type="mysql">
-      <parameter name="Engine" value="MyISAM"/>
-    </vendor>
-  </table>
-  <table name="person2group2role_p2g2r" idMethod="native" phpName="Person2group2roleP2g2r" >
-    <column name="p2g2r_per_ID" phpName="P2g2rPerId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" required="true" defaultValue="0"/>
-    <column name="p2g2r_grp_ID" phpName="P2g2rGrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" required="true" defaultValue="0"/>
-    <column name="p2g2r_rle_ID" phpName="P2g2rRleId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
-    <index name="p2g2r_per_ID">
-      <index-column name="p2g2r_per_ID"/>
-      <index-column name="p2g2r_grp_ID"/>
-      <index-column name="p2g2r_rle_ID"/>
-    </index>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
@@ -740,16 +790,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="whycame_why" idMethod="native" phpName="WhycameWhy" >
-    <column name="why_ID" phpName="WhyId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
-    <column name="why_per_ID" phpName="WhyPerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-    <column name="why_join" phpName="WhyJoin" type="LONGVARCHAR" required="true"/>
-    <column name="why_come" phpName="WhyCome" type="LONGVARCHAR" required="true"/>
-    <column name="why_suggest" phpName="WhySuggest" type="LONGVARCHAR" required="true"/>
-    <column name="why_hearOfUs" phpName="WhyHearofus" type="LONGVARCHAR" required="true"/>
-    <vendor type="mysql">
-      <parameter name="Engine" value="MyISAM"/>
-    </vendor>
-  </table>
   -->
+
+
 </database>
