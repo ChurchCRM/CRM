@@ -271,6 +271,11 @@ class SystemService {
       $this->rebuildWithSQL("/mysql/upgrade/2.1.x-2.1.3.sql");
       return true;
     }
+    
+    if (strncmp($db_version, "2.1.3", 5) == 0 ) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.3-2.2.0.sql");
+      return true;
+    }
 
     return false;
   }
@@ -310,7 +315,7 @@ class SystemService {
     if ($result === FALSE) {
       throw new Exception("Unable to reach the issue bridge", 500);
     }
-    echo $result;
+    return $result;
   }
 
 }
