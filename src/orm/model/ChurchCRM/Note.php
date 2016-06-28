@@ -17,4 +17,13 @@ use ChurchCRM\Base\Note as BaseNote;
 class Note extends BaseNote
 {
 
+  function isPrivate() {
+    return $this->getPrivate() != "0";
+  }
+
+  function isVisable($personId) {
+    return !$this->isPrivate() || $this->getPrivate() == $personId;
+  }
+
+
 }

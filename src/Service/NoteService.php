@@ -6,7 +6,6 @@ require_once dirname(__FILE__) . '/../orm/conf/config.php';
 
 use ChurchCRM\Note;
 use ChurchCRM\NoteQuery;
-use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
 
 
@@ -63,7 +62,7 @@ class NoteService
     $notesArray = array();
     foreach ($notes as $rawNote) {
       // if the user is not admin, ensure the note is not private or it is created by current user
-      if ($admin || $rawNote->getPrivate() == 0 || $rawNote->getPrivate() == $_SESSION['iUserID']) {
+      if ($admin || $rawNote->isVisable($_SESSION['iUserID'])) {
 
         $note['id'] = $rawNote->getId();
         $note['private'] = $rawNote->getPrivate();
