@@ -70,7 +70,7 @@ require "Include/Header.php";
     <?= $nte_Text ?>
   </div>
   <div class="box-footer">
-    <a class="btn btn-default" href="<?php echo $sReroute ?>"><?= gettext("No, cancel this deletion") ?></a>
+    <a class="btn btn-default" href="<?php echo $sReroute ?>"><?= gettext("Cancel") ?></a>
   	<a class="btn btn-danger" href="NoteDelete.php?Confirmed=Yes&NoteID=<?php echo $iNoteID ?>"><?= gettext("Yes, delete this record") ?></a> <?= gettext("(this action cannot be undone)") ?>
   </div>
 
