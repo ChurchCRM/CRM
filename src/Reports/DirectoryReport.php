@@ -581,7 +581,7 @@ $bNumberofColumns = FilterInput($_POST["NumCols"]);
 $bPageSize = FilterInput($_POST["PageSize"]);
 $bFontSz = FilterInput($_POST["FSize"]);
 $bLineSp = $bFontSz / 3 ;
-if($bPageSize=="letter")$bPageSize="letter"; else $bPageSize="legal";
+if($bPageSize=="letter")$bPageSize="letter"; elseif($bPageSize=="a4")$bPageSize="a4"; else $bPageSize="legal";
 //echo "ncols={$bNumberofColumns}  page size={$bPageSize}";
 
 
