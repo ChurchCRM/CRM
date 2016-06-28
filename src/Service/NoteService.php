@@ -91,25 +91,6 @@ class NoteService
     return $notesArray;
   }
 
-
-  function getNoteById($noteId)
-  {
-    requireUserGroupMembership("bNotes");
-
-    $dbNote = NoteQuery::create()->findPk($noteId);
-
-    $note['id'] = $dbNote->getId();
-    $note['familyId'] = $dbNote->getFamId();
-    $note['personId'] = $dbNote->getPerId();
-    $note['private'] = $dbNote->getPrivate();
-    $note['text'] = $dbNote->getText();
-    $note['entered'] = $dbNote->getDateEntered();
-    $note['enteredById'] = $dbNote->getEnteredBy();
-    $note['edited'] = $dbNote->getDateLastEdited();
-    $note['editedById'] = $dbNote->getEditedBy();
-    return $note;
-  }
-
   function deleteNoteById($noteId)
   {
     requireUserGroupMembership("bNotes");
