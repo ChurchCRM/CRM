@@ -172,8 +172,8 @@ class NoteTableMap extends TableMap
         $this->setUseIdGenerator(true);
         // columns
         $this->addPrimaryKey('nte_ID', 'Id', 'SMALLINT', true, 8, null);
-        $this->addColumn('nte_per_ID', 'PerId', 'SMALLINT', true, 8, 0);
-        $this->addColumn('nte_fam_ID', 'FamId', 'SMALLINT', true, 8, 0);
+        $this->addForeignKey('nte_per_ID', 'PerId', 'SMALLINT', 'person_per', 'per_ID', true, 8, 0);
+        $this->addForeignKey('nte_fam_ID', 'FamId', 'SMALLINT', 'family_fam', 'fam_ID', true, 8, 0);
         $this->addColumn('nte_Private', 'Private', 'SMALLINT', true, 8, 0);
         $this->addColumn('nte_Text', 'Text', 'LONGVARCHAR', false, null, null);
         $this->addColumn('nte_DateEntered', 'DateEntered', 'TIMESTAMP', true, null, '0000-00-00 00:00:00');
@@ -188,6 +188,20 @@ class NoteTableMap extends TableMap
      */
     public function buildRelations()
     {
+        $this->addRelation('Person', '\\ChurchCRM\\Person', RelationMap::MANY_TO_ONE, array (
+  0 =>
+  array (
+    0 => ':nte_per_ID',
+    1 => ':per_ID',
+  ),
+), null, null, null, false);
+        $this->addRelation('Family', '\\ChurchCRM\\Family', RelationMap::MANY_TO_ONE, array (
+  0 =>
+  array (
+    0 => ':nte_fam_ID',
+    1 => ':fam_ID',
+  ),
+), null, null, null, false);
     } // buildRelations()
 
     /**

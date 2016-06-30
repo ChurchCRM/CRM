@@ -52,3 +52,10 @@ DB Password: `churchcrm`
 - The SMTP service listens on 127.0.0.1, port 1025 (You must manually configure your development instance of ChurchCRM to send mail to this address.)
 - The Vagrant bootstrap.sh script will automatically start MailCatcher on all IP addresses owned by the Vagrant VM.
 - You can view (in realtime) the messages sent by ChurchCRM by opening [http://192.168.33.10:1080](http://192.168.33.10:1080) on the machine hosting the Vagrant environment
+
+### Propel Model update
+- make changes to src/orm/conf/schema.xml
+- start vagrant
+- cd /vagrant/vagrant
+- run ../src/vendor/propel/propel/bin/propel model:build
+
