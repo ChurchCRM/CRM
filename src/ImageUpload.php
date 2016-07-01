@@ -69,8 +69,7 @@ if ($_SESSION['bAddRecords'] || $bOkToEdit) {
     
     $foo->file_new_name_body = $finalFileName;
     $foo->file_overwrite = true;
-    $foo->image_resize = true;
-    
+    $foo->image_resize = true; 
     $foo->image_ratio_fill = true;
     $foo->image_y = 250;
     $foo->image_x = 250;
