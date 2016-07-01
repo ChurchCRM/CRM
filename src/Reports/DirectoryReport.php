@@ -30,7 +30,7 @@ class PDF_Directory extends ChurchInfoReport {
 
     // Private properties
     var $_Margin_Left = 16;        // Left Margin
-    var $_Margin_Top  = 0;         // Top margin 
+    var $_Margin_Top  = 0;         // Top margin
     var $_Char_Size   = 10;        // Character size
     var $_Column      = 0;
     var $_Font        = 'Times';
@@ -145,7 +145,7 @@ class PDF_Directory extends ChurchInfoReport {
     function AddCustomField($order, $use){
         $this->_Custom[$order] = $use;
     }
-    
+
     function NbLines($w,$txt){
         //Computes the number of lines a MultiCell of width w will take
         $cw=&$this->CurrentFont['cw'];
@@ -200,24 +200,24 @@ class PDF_Directory extends ChurchInfoReport {
     {
         // Need to determine if we will extend beyoned 17mm from the bottom of
         // the page.
-        
+
         $h = 0; // check image height.  id will be zero if not included
            $famimg = "../Images/Family/".$fid.".jpg";
-        if (file_exists($famimg)) 
+        if (file_exists($famimg))
         {
             $s = getimagesize($famimg);
             $h = ($this->_ColWidth / $s[0]) * $s[1];
         }
 
            $persimg = "../Images/Person/".$pid.".jpg";
-        if (file_exists($persimg)) 
+        if (file_exists($persimg))
         {
             $s = getimagesize($persimg);
             $h = ($this->_ColWidth / $s[0]) * $s[1];
         }
 
 
-//      if ($this->GetY() + $h + $numlines * 5 > $this->h - 27)  
+//      if ($this->GetY() + $h + $numlines * 5 > $this->h - 27)
         if ($this->GetY() + $h + $numlines * $this->_LS > $this->h - 27)
         {
             // Next Column or Page
@@ -227,7 +227,7 @@ class PDF_Directory extends ChurchInfoReport {
                 $this->SetY(25);
                 $this->AddPage();
             }
-            else 
+            else
             {
                 $this->_Column++;
                 $this->SetY(25);
@@ -278,14 +278,14 @@ class PDF_Directory extends ChurchInfoReport {
             $aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
             $numCustomData = mysql_num_rows($rsCustomData);
             mysql_data_seek($rsCustomFields,0);
-            $OutStr = ""; 
+            $OutStr = "";
             while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ){
                 extract($rowCustomField);
                 $sCustom = "bCustom".$custom_Order;
                 if($this->_Custom[$custom_Order]){
-                	
+
                 	$currentFieldData = displayCustomField($type_ID, $aCustomData[$custom_Field], $custom_Special);
-                	
+
 //                    $currentFieldData = trim($aCustomData[$custom_Field]);
                     if($currentFieldData != ""){
                         $OutStr .= "   " . $custom_Name . ": " . $currentFieldData .= "\n";
@@ -296,7 +296,7 @@ class PDF_Directory extends ChurchInfoReport {
         }else{
             return "";
         }
-        
+
     }
 
     // This function formats the string for the family info
@@ -378,7 +378,7 @@ class PDF_Directory extends ChurchInfoReport {
             $sHeadStr .= " " . $per_LastName;
         if (strlen ($per_Suffix))
             $sHeadStr .= " " . $per_Suffix;
-            
+
         $iTempLen = strlen($sHeadStr);
 
         if ($bDirBirthday && $per_BirthMonth && $per_BirthDay)
@@ -413,7 +413,7 @@ class PDF_Directory extends ChurchInfoReport {
             $sHeadStr .= "   " . gettext("Email") . ": " . $per_Email .= "\n";
         if ($bDirPersonalWorkEmail && strlen($per_WorkEmail))
             $sHeadStr .= "   " . gettext("Work/Other Email") . ": " . $per_WorkEmail .= "\n";
-            
+
         $sHeadStr .= $this->sGetCustomString($rsCustomFields, $aHead);
 
         // If there is no additional information for either head or spouse, there is no
@@ -492,15 +492,15 @@ class PDF_Directory extends ChurchInfoReport {
         $_PosY = $this->GetY();
 
         $this->SetXY($_PosX, $_PosY);
-        
+
         $dirimg = "";
         $famimg = "../Images/Family/".$fid.".jpg";
         if (file_exists($famimg)) $dirimg = $famimg;
-        
+
         $perimg = "../Images/Person/".$pid.".jpg";
         if (file_exists($perimg)) $dirimg = $perimg;
 
-        if ($dirimg != "") 
+        if ($dirimg != "")
         {
             $s = getimagesize($dirimg);
             $h = ($this->_ColWidth / $s[0]) * $s[1];
@@ -508,9 +508,9 @@ class PDF_Directory extends ChurchInfoReport {
             $this->Image($dirimg, $_PosX, $_PosY, $this->_ColWidth);
             $this->SetXY($_PosX, $_PosY + $h + 2);
         }
-        
+
 //        $this->MultiCell($this->_ColWidth, 5, $text, 0, 'L');
-        
+
         $this->MultiCell($this->_ColWidth, $this->_LS, iconv("UTF-8","ISO-8859-1",$text), 0, 'L');
 //        $this->SetY($this->GetY() + 5);
         $this->SetY($this->GetY() + $this->_LS);
@@ -581,9 +581,11 @@ $bNumberofColumns = FilterInput($_POST["NumCols"]);
 $bPageSize = FilterInput($_POST["PageSize"]);
 $bFontSz = FilterInput($_POST["FSize"]);
 $bLineSp = $bFontSz / 3 ;
-if($bPageSize=="letter")$bPageSize="letter"; elseif($bPageSize=="a4")$bPageSize="a4"; else $bPageSize="legal";
-//echo "ncols={$bNumberofColumns}  page size={$bPageSize}";
 
+if ($bPageSize != 'letter' && $bPageSize != 'a4')
+    $bPageSize = 'legal';
+
+//echo "ncols={$bNumberofColumns}  page size={$bPageSize}";
 
 // Instantiate the directory class and build the report.
 //echo "font sz = {$bFontSz} and line sp={$bLineSp}";
@@ -595,7 +597,7 @@ $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysql_num_rows($rsCustomFields);
 
 if ($numCustomFields > 0) {
-    while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_ASSOC) ){ 
+    while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_ASSOC) ){
         $pdf->AddCustomField($rowCustomField['custom_Order']
                             , isset($_POST["bCustom".$rowCustomField['custom_Order']])
                             );
@@ -614,7 +616,7 @@ $pdf->AddPage();
 
 if ($bDirUseTitlePage) $pdf->TitlePage();
 
-$sClassQualifier = ""; 
+$sClassQualifier = "";
 if (strlen($sDirClassifications)) $sClassQualifier = "AND per_cls_ID in (" . $sDirClassifications . ")";
 
 $sWhereExt = "";
@@ -633,10 +635,10 @@ if (!empty($_POST["GroupID"]))
 
     // This is used by per-role queries to remove duplicate rows from people assigned multiple groups.
     $sGroupBy = " GROUP BY per_ID";
-} else { 
+} else {
 	$sGroupTable = "person_per";
 	$sGroupsList = "";
-	$sWhereExt = ""; 
+	$sWhereExt = "";
 	$sGroupBy = "";
 }
 
@@ -648,8 +650,8 @@ if (array_key_exists ('cartdir', $_POST))
 $mysqlinfo = mysql_get_server_info();
 $mysqltmp = explode(".", $mysqlinfo);
 $mysqlversion = $mysqltmp[0];
-if(count($mysqltmp[1] > 1)) 
-    $mysqlsubversion = $mysqltmp[1]; 
+if(count($mysqltmp[1] > 1))
+    $mysqlsubversion = $mysqltmp[1];
     else $mysqlsubversion = 0;
 if($mysqlversion >= 4){
     // This query is similar to that of the CSV export with family roll-up.
@@ -662,9 +664,9 @@ if($mysqlversion >= 4){
     // If UNION not supported use this query with temporary table.  Prior to version 3.22 no IF EXISTS statement.
     $sSQL = "DROP TABLE IF EXISTS tmp;";
     $rsRecords = mysql_query($sSQL) or die(mysql_error());
-    $sSQL = "CREATE TABLE tmp TYPE = MyISAM SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier ;"; 
+    $sSQL = "CREATE TABLE tmp TYPE = MyISAM SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier ;";
     $rsRecords = mysql_query($sSQL) or die(mysql_error());
-    $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount = 1;"; 
+    $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount = 1;";
     $rsRecords = mysql_query($sSQL) or die(mysql_error());
     $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount > 1;";
     $rsRecords = mysql_query($sSQL) or die(mysql_error());
@@ -684,9 +686,9 @@ while ($aRow = mysql_fetch_array($rsRecords))
 {
     $OutStr = "";
     extract($aRow);
-    
+
     $pdf->sSortBy = $SortMe;
-    
+
     $isFamily = false;
 
     if ($memberCount > 1) // Here we have a family record.
@@ -700,8 +702,8 @@ while ($aRow = mysql_fetch_array($rsRecords))
         $bNoRecordName = true;
 
         // Find the Head of Household
-        $sSQL = "SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID 
-            WHERE per_fam_ID = " . $iFamilyID . " 
+        $sSQL = "SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
+            WHERE per_fam_ID = " . $iFamilyID . "
             AND per_fmr_ID in ($sDirRoleHeads) $sWhereExt $sClassQualifier $sGroupBy";
         $rsPerson = RunQuery($sSQL);
 
@@ -713,8 +715,8 @@ while ($aRow = mysql_fetch_array($rsRecords))
         }
 
         // Find the Spouse of Household
-        $sSQL = "SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID 
-            WHERE per_fam_ID = " . $iFamilyID . " 
+        $sSQL = "SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
+            WHERE per_fam_ID = " . $iFamilyID . "
             AND per_fmr_ID in ($sDirRoleSpouses) $sWhereExt $sClassQualifier $sGroupBy";
         $rsPerson = RunQuery($sSQL);
 
@@ -789,15 +791,15 @@ while ($aRow = mysql_fetch_array($rsRecords))
             $OutStr .= "   " . gettext("Email") . ": " . $sEmail . "\n";
         if ($bDirPersonalWorkEmail && strlen($per_WorkEmail))
             $OutStr .= "   " . gettext("Work/Other Email") . ": " . $per_WorkEmail .= "\n";
-            
-         // Custom Fields   
+
+         // Custom Fields
         $OutStr .= $pdf->sGetCustomString($rsCustomFields, $aRow);
-        
+
     }
 
     // Count the number of lines in the output string
     if (strlen($OutStr))
-        $numlines = $pdf->NbLines($pdf->_ColWidth,$OutStr) ; 
+        $numlines = $pdf->NbLines($pdf->_ColWidth,$OutStr) ;
     else
         $numlines = 0;
 
@@ -809,14 +811,14 @@ while ($aRow = mysql_fetch_array($rsRecords))
             $sLastLetter = strtoupper(substr($pdf->sSortBy,0,1));
             $pdf->Add_Header($sLastLetter);
         }
-        
+
         // if photo include pass the id, otherwise 0 equates to no family/pers
         $fid = 0; $pid = 0;
-        if ($bDirPhoto) 
+        if ($bDirPhoto)
         {
-            if ($isFamily) 
-                $fid = $fam_ID; 
-            else 
+            if ($isFamily)
+                $fid = $fam_ID;
+            else
                 $pid = $per_ID;
         }
         $pdf->Add_Record($pdf->sRecordName, $OutStr, $numlines, $fid, $pid);  // another hack: added +1
@@ -828,9 +830,9 @@ if($mysqlversion == 3 && $mysqlsubversion >= 22){
     mysql_query($sSQL,$cnInfoCentral);
 }
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-    
+
 if ($iPDFOutputType == 1)
     $pdf->Output("Directory-" . date("Ymd-Gis") . ".pdf", "D");
 else
-    $pdf->Output();    
+    $pdf->Output();
 ?>
