@@ -98,8 +98,9 @@ $("document").ready(function()
 
     console.log("deleting group role: " + roleID);
     $.ajax({
-      method: "DELETE",
-      url: window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID
+      method: "POST",
+      url: window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID,
+      data        : {"_METHOD":"DELETE"}
     }).done(function(data)
     {
       console.log(data);
