@@ -67,16 +67,6 @@ if ($_SESSION['bAddRecords'] || $bOkToEdit) {
         }
     }
     
-    
-    if ($false) //  should we guess about orientation based on image size?
-    {
-      if($exif['Height'] > $exif['Width'])
-      {
-        $foo->image_rotate = 90;
-      }
-      
-      
-    }
     $foo->file_new_name_body = $finalFileName;
     $foo->file_overwrite = true;
     $foo->image_resize = true;
