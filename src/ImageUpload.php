@@ -50,6 +50,24 @@ if ($_SESSION['bAddRecords'] || $bOkToEdit) {
     if (!$foo->processed) {
       echo 'error : ' . $foo->error;
     }
+    
+    $exif = exif_read_data($foo->file_dst_pathname);
+    if ( !empty($exif['Orientation']) ) {
+      switch ( $exif['Orientation'] ) {
+        case 3:
+          $foo->image_rotate = 180;
+          break;
+        
+        case 6:
+          $foo->image_rotate =  90;
+          break;
+        
+        case 8:
+          $foo->image_rotate = 270;
+          break;
+      }
+    }
+    
     $foo->file_new_name_body = $finalFileName;
     $foo->file_overwrite = true;
     $foo->image_resize = true;
