@@ -100,6 +100,7 @@ $("document").ready(function()
     $.ajax({
       method: "POST",
       url: window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID,
+      encode: true,
       data: {"_METHOD":"DELETE"}
     }).done(function(data)
     {
