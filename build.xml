@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model xlink:href="/usr/share/php5/PEAR/data/phing/etc/phing-grammar.rng"
+        type="application/xml"
+        schematypens="http://relaxng.org/ns/structure/1.0" ?>
+
+<project name="FooBar" default="dist">
+    <property file="./build.properties" />
+
+    <!-- ============================================  -->
+    <!-- Target: prepare                               -->
+    <!-- ============================================  -->
+    <target name="prepare">
+        <echo msg="deleting directory ./target" />
+        <delete dir="target" includeemptydirs="true" failonerror="true" />
+        <mkdir dir="target"/>
+
+        <echo msg="Building ${build.version}"/>
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: build                                 -->
+    <!-- ============================================  -->
+    <target name="build" depends="prepare">
+        <echo msg="Copying src to target directory..." />
+
+        <copy todir="target/churchcrm">
+            <fileset dir="src">
+                <include name="**" />
+                <exclude name="Images/Person/thumbnails/*.jpg" />
+            </fileset>
+        </copy>
+
+    </target>
+
+    <!-- ============================================  -->
+    <!-- (DEFAULT)  Target: dist                       -->
+    <!-- ============================================  -->
+    <target name="dist" depends="build">
+        <echo msg="Creating archive..." />
+
+        <zip destfile="./target/ChurchCRM-${build.version}.zip">
+            <fileset dir="./target/churchcrm">
+                <include name="*" />
+            </fileset>
+        </zip>
+
+        <echo msg="Files copied and compressed in build directory OK!" />
+    </target>
+</project>
