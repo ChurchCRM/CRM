@@ -12,12 +12,12 @@ This page should tell you everything that you need to know about if you can run 
 
 ## How Do I Install ChurchCRM?
 
-1. The .tar.gz file download contains a directory called "churchcrm"
+1. [Download the latest release] (https://github.com/ChurchCRM/CRM/releases/latest)
+
+2. The zip file download contains a directory called "churchcrm"
 Extract the file and place the contents into a directory in the document root of your Web server or via FTP to a shared hosting account
 
-2. Within the directory you'll find a directory called "mysql," and another called "install"
-containing a file named "Install.sql". Contained in this file are
-the SQL statements necessary to create the ChurchCRM database.
+2. Create a a Church CRM DB and user that have full permissions on the db.
 
  - For LAMP servers, log onto your database server under the root account (or other account
 allowed to create databases), create a database for ChurchCRM, and
