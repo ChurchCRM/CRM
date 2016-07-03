@@ -3,27 +3,27 @@
         type="application/xml"
         schematypens="http://relaxng.org/ns/structure/1.0" ?>
 
-<project name="FooBar" default="dist">
+<project name="ChurchCRM - Build" basedir="." default="dist">
     <property file="./build.properties" />
+    <property name="builddir" value="./target" />
 
     <!-- ============================================  -->
     <!-- Target: prepare                               -->
     <!-- ============================================  -->
     <target name="prepare">
-        <echo msg="deleting directory ./target" />
-        <delete dir="target" includeemptydirs="true" failonerror="true" />
-        <mkdir dir="target"/>
+        <echo message="Building ${build.version}"/>
 
-        <echo msg="Building ${build.version}"/>
+        <delete dir="${builddir}" includeemptydirs="true" />
+        <mkdir dir="${builddir}"/>
     </target>
 
     <!-- ============================================  -->
     <!-- Target: build                                 -->
     <!-- ============================================  -->
     <target name="build" depends="prepare">
-        <echo msg="Copying src to target directory..." />
+        <echo message="Copying src to ${builddir}/churchcrm directory..." />
 
-        <copy todir="target/churchcrm">
+        <copy todir="${builddir}/churchcrm">
             <fileset dir="src">
                 <include name="**" />
                 <exclude name="Images/Person/thumbnails/*.jpg" />
@@ -36,14 +36,27 @@
     <!-- (DEFAULT)  Target: dist                       -->
     <!-- ============================================  -->
     <target name="dist" depends="build">
-        <echo msg="Creating archive..." />
+        <echo message="Creating archive..." />
 
-        <zip destfile="./target/ChurchCRM-${build.version}.zip">
-            <fileset dir="./target/churchcrm">
-                <include name="*" />
+        <zip destfile="${builddir}/ChurchCRM-${build.version}.zip">
+            <fileset dir="${builddir}/churchcrm">
+                <include name="**" />
             </fileset>
         </zip>
 
-        <echo msg="Files copied and compressed in build directory OK!" />
+        <echo message="Files copied and compressed in build directory OK!" />
+    </target>
+
+    <target name="install-change-log">
+        <echo message="Installing Ruby"/>
+        <exec command="sudo apt-get install -y ruby" passthru="true"/>
+
+        <echo message="Installing github_changelog_generator"/>
+        <exec command="gem install github_changelog_generator" passthru="true"/>
+    </target>
+
+    <target name="change-log" depends="install-change-log">
+        <echo message="building changeset"/>
+        <exec command="github_changelog_generator -t ${github.token}" dir="." passthru="true"/>
     </target>
 </project>
