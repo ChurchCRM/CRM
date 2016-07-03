@@ -1,23 +1,44 @@
 # Change Log
 
-## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
-
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.3...HEAD)
+## [2.1.4](https://github.com/ChurchCRM/CRM/tree/2.1.4) (2016-07-02)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.3...2.1.4)
 
 **Implemented enhancements:**
 
 - Need ORM Framework [\#4](https://github.com/ChurchCRM/CRM/issues/4)
+- Add A4 paper size option for the members directory [\#747](https://github.com/ChurchCRM/CRM/issues/747)
+- A4 Paper Support [\#757](https://github.com/ChurchCRM/CRM/pull/757) ([DawoudIO](https://github.com/DawoudIO))
+
+**Fixed bugs:**
+
+- sEnableGravatarPhotos breaks some upgrades [\#744](https://github.com/ChurchCRM/CRM/issues/744)
+- Release Notice has invalid URL [\#720](https://github.com/ChurchCRM/CRM/issues/720)
+- Release Notice has invalid URL \#720 [\#772](https://github.com/ChurchCRM/CRM/pull/772) ([DawoudIO](https://github.com/DawoudIO))
+- fix \#744 [\#771](https://github.com/ChurchCRM/CRM/pull/771) ([DawoudIO](https://github.com/DawoudIO))
+- Fix bootstrap grid for person and family editors. [\#768](https://github.com/ChurchCRM/CRM/pull/768) ([crossan007](https://github.com/crossan007))
+- fix gridlayout [\#766](https://github.com/ChurchCRM/CRM/pull/766) ([crossan007](https://github.com/crossan007))
+- Fixes 749 orientation [\#765](https://github.com/ChurchCRM/CRM/pull/765) ([crossan007](https://github.com/crossan007))
 
 **Closed issues:**
 
+- Vagrant: Maximum Upload size is 2MB [\#763](https://github.com/ChurchCRM/CRM/issues/763)
+- Test [\#758](https://github.com/ChurchCRM/CRM/issues/758)
+- Family and person editors mobile render [\#752](https://github.com/ChurchCRM/CRM/issues/752)
 - Upgrade to slim 3.x.x [\#699](https://github.com/ChurchCRM/CRM/issues/699)
 - Upgrade AdminLTE to 2.3.3  [\#697](https://github.com/ChurchCRM/CRM/issues/697)
 - 500 status message [\#578](https://github.com/ChurchCRM/CRM/issues/578)
+- Create a Build Script [\#14](https://github.com/ChurchCRM/CRM/issues/14)
 
 **Merged pull requests:**
 
+- Modify php.ini for Vagrant Uploads [\#767](https://github.com/ChurchCRM/CRM/pull/767) ([crossan007](https://github.com/crossan007))
+- Small fix for A4 paper [\#759](https://github.com/ChurchCRM/CRM/pull/759) ([dschwen](https://github.com/dschwen))
+- working Notes CRUD [\#756](https://github.com/ChurchCRM/CRM/pull/756) ([DawoudIO](https://github.com/DawoudIO))
+- ORM Classes Update 2 [\#743](https://github.com/ChurchCRM/CRM/pull/743) ([DawoudIO](https://github.com/DawoudIO))
 - fix 2.2.0 rev [\#739](https://github.com/ChurchCRM/CRM/pull/739) ([crossan007](https://github.com/crossan007))
 - Merge master \(2.1.3\) into develop \(2.2.0\) [\#737](https://github.com/ChurchCRM/CRM/pull/737) ([crossan007](https://github.com/crossan007))
+- Build system for building the zip file [\#770](https://github.com/ChurchCRM/CRM/pull/770) ([DawoudIO](https://github.com/DawoudIO))
+- starting 2.1.4 [\#742](https://github.com/ChurchCRM/CRM/pull/742) ([DawoudIO](https://github.com/DawoudIO))
 
 ## [2.1.3](https://github.com/ChurchCRM/CRM/tree/2.1.3) (2016-06-25)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.2...2.1.3)
@@ -25,6 +46,7 @@
 **Implemented enhancements:**
 
 - People: Create a Setting to disable looking for people photos on gravatar [\#712](https://github.com/ChurchCRM/CRM/issues/712)
+- Install: System should import once we have correct db connection info [\#707](https://github.com/ChurchCRM/CRM/issues/707)
 - Fix 712 gravatar [\#734](https://github.com/ChurchCRM/CRM/pull/734) ([crossan007](https://github.com/crossan007))
 
 **Fixed bugs:**
@@ -315,6 +337,7 @@
 **Fixed bugs:**
 
 - Sunday School [\#603](https://github.com/ChurchCRM/CRM/issues/603)
+- MailChimpDashboard.php dumps php source in the "List:" box  [\#581](https://github.com/ChurchCRM/CRM/issues/581)
 - Fix docker image [\#556](https://github.com/ChurchCRM/CRM/issues/556)
 - 2.0.0-RC1 Deposit Graph not visible on Menu.php [\#530](https://github.com/ChurchCRM/CRM/issues/530)
 - Slim Debug Mode [\#516](https://github.com/ChurchCRM/CRM/issues/516)
