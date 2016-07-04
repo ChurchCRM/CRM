@@ -14,11 +14,15 @@ $sPASSWORD = 'churchcrm';
 $sDATABASE = 'churchcrm';
 
 // Root path of your ChurchCRM installation ( THIS MUST BE SET CORRECTLY! )
-// For example, if you will be accessing from http://www.yourdomain.com/web/churchcrm
-// then you would enter '/web/churchcrm' here.
-// Another example, if you will be accessing from http://www.yourdomain.com
-// then you would enter '' ... an empty string for a top level installation.
-// This path SHOULD NOT end with slash.  This is case sensitive.
+//
+// Examples:
+// - if you will be accessing from http://www.yourdomain.com/churchcrm then you would enter '/churchcrm' here.
+// - if you will be accessing from http://www.yourdomain.com then you would enter '' ... an empty string for a top level installation.
+//
+// NOTE:
+// - the path SHOULD Start end with slash, if not ''.
+// - the path SHOULD NOT end with slash.
+// - the is case sensitive.
 $sRootPath = '';
 
 // Set $bLockURL=TRUE to enforce https access by specifying exactly
@@ -27,7 +31,7 @@ $bLockURL = FALSE;
 
 // URL[0] is the URL that you prefer most users use when they
 // log in.  These are case sensitive.  Only used when $bLockURL = TRUE
-$URL[0] = 'http://192.168.33.10/';
+$URL[0] = 'http://yourdomain.com/';
 // List as many other URL's as may be needed. Number them sequentially.
 //$URL[1] = 'https://www.mychurch.org/churchcrm/';
 //$URL[2] = 'https://www.mychurch.org:8080/churchcrm/';
