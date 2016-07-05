@@ -163,22 +163,29 @@ class SystemService {
     global $sRemoteBackupType, $sRemoteBackupUsername, $sRemoteBackupPassword, $sRemoteBackupEndpoint;
     if($sRemoteBackupType == "WebDAV")
     {
-      $params = new stdClass();
-      $params->iArchiveType = 3;
-      $backup = $this->getDatabaseBackup($params);
-      $backup->credentials = $sRemoteBackupUsername.":".$sRemoteBackupPassword;
-      $backup->filesize = filesize($backup->saveTo);
-      $fh = fopen($backup->saveTo, 'r');
-      $backup->remoteUrl = $sRemoteBackupEndpoint;
-      $ch = curl_init($backup->remoteUrl . $backup->filename);
-      curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-      curl_setopt($ch, CURLOPT_USERPWD, $backup->credentials);
-      curl_setopt($ch, CURLOPT_PUT, true);
-      curl_setopt($ch, CURLOPT_INFILE, $fh);
-      curl_setopt($ch, CURLOPT_INFILESIZE, $backup->filesize);
-      $backup->result = curl_exec($ch);
-      fclose($fh);
-     return($backup);
+      if($sRemoteBackupType && $sRemoteBackupUsername && $sRemoteBackupPassword && $sRemoteBackupEndpoint)
+      {
+        $params = new stdClass();
+        $params->iArchiveType = 3;
+        $backup = $this->getDatabaseBackup($params);
+        $backup->credentials = $sRemoteBackupUsername.":".$sRemoteBackupPassword;
+        $backup->filesize = filesize($backup->saveTo);
+        $fh = fopen($backup->saveTo, 'r');
+        $backup->remoteUrl = $sRemoteBackupEndpoint;
+        $ch = curl_init($backup->remoteUrl . $backup->filename);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+        curl_setopt($ch, CURLOPT_USERPWD, $backup->credentials);
+        curl_setopt($ch, CURLOPT_PUT, true);
+        curl_setopt($ch, CURLOPT_INFILE, $fh);
+        curl_setopt($ch, CURLOPT_INFILESIZE, $backup->filesize);
+        $backup->result = curl_exec($ch);
+        fclose($fh);
+        return($backup);
+      }
+      else 
+      {
+        throw new Exception("WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set",500);
+      }
     }
   }
 

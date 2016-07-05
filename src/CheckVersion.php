@@ -27,7 +27,7 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'Service/SystemService.php';
+require_once 'Service/SystemService.php';
 $systemService = new SystemService();
 
 //Set the page title
