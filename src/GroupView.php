@@ -688,9 +688,11 @@ function initHandlers()
     $("#deleteGroupButton").click(function(e){
       console.log(e);
       $.ajax({
-            method: "DELETE",
+            method: "POST",
             url: window.CRM.root + "/api/groups/<?= $iGroupID ?>",
-            dataType: "json"
+            dataType: "json",
+            encode: true,
+            data: {"_METHOD":"DELETE"}
         }).done(function(data){
             console.log(data);
             if (data.success)
