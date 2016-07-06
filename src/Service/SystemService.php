@@ -18,6 +18,14 @@ class SystemService {
     return $release;
   }
 
+  function getInstalledVersion() {
+    $composerFile = file_get_contents(dirname(__FILE__)."/../composer.json");
+    $composerJson = json_decode($composerFile, true);
+    $version = $composerJson["version"];
+
+    return $version;
+  }
+
   function playbackSQLtoDatabase($fileName) {
     requireUserGroupMembership("bAdmin");
     $query = '';
