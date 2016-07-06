@@ -1,5 +1,33 @@
 # Change Log
 
+## [2.1.6](https://github.com/ChurchCRM/CRM/tree/2.1.6) (2016-07-06)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.5...2.1.6)
+
+**Implemented enhancements:**
+
+- Config.php Refac [\#777](https://github.com/ChurchCRM/CRM/pull/777) ([DawoudIO](https://github.com/DawoudIO))
+
+**Fixed bugs:**
+
+- address delete compatibility server issues [\#764](https://github.com/ChurchCRM/CRM/pull/764) ([crossan007](https://github.com/crossan007))
+
+**Closed issues:**
+
+- Delete function for deposits does not work [\#761](https://github.com/ChurchCRM/CRM/issues/761)
+- Group delete function not working [\#760](https://github.com/ChurchCRM/CRM/issues/760)
+
+## [2.1.5](https://github.com/ChurchCRM/CRM/tree/2.1.5) (2016-07-04)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.4...2.1.5)
+
+**Implemented enhancements:**
+
+- Build system Updates v2 [\#778](https://github.com/ChurchCRM/CRM/pull/778) ([DawoudIO](https://github.com/DawoudIO))
+
+**Merged pull requests:**
+
+- All now 2.1.5 [\#779](https://github.com/ChurchCRM/CRM/pull/779) ([DawoudIO](https://github.com/DawoudIO))
+- working build system [\#774](https://github.com/ChurchCRM/CRM/pull/774) ([DawoudIO](https://github.com/DawoudIO))
+
 ## [2.1.4](https://github.com/ChurchCRM/CRM/tree/2.1.4) (2016-07-02)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.3...2.1.4)
 
