@@ -522,6 +522,8 @@ $locale["Select Role"] =
    "S&eacute;lectionner le R&ocirc;le";
 $locale["Unknown"] =
    "Inconnu";
+$locale["Select Month"] =
+   "S&electionner un mois";
 $locale["January"] =
    "Janvier";
 $locale["February"] =
@@ -868,16 +870,26 @@ $locale["Family:"] =
    "Famille:";
 $locale["Work / Other Email:"] =
    "Travail / Autres Email:";
+$locale["Personal Info"] =
+   "Information personnelle";
 $locale["Birth Date:"] =
    "Date de Naissance:";
 $locale["Unk"] =
    "N/D";
+$locale["Birth Month:"] =
+   "Mois de Naissance:";
+$locale["Birth Day:"] =
+   "Jour de Naissance:";
 $locale["Birth Year:"] =
    "Ann&eacute;e de Naissance:";
 $locale["Must be four-digit format."] =
    "Vous devez saisir 4 chiffres.";
 $locale["Not assigned"] =
    "Non assign&eacute;";
+$locale["Hide Age"] =
+   "Masquer l'&acirc;ge";
+$locale["Family Info"] =
+   "Info famille";
 $locale["Printable Page"] =
    "Page Imprimable";
 $locale["Add to Cart"] =
@@ -1337,7 +1349,7 @@ $locale["About InfoCentral"] =
 $locale["People"] =
    "Personne";
 $locale["Families"] =
-   "Famille";
+   "Familles";
 $locale["Finances"] =
    "Finances";
 $locale["Reports"] =
