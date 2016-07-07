@@ -289,10 +289,10 @@ function addMenuItem($aMenu, $mIdx) {
           echo "<i class=\"fa fa-angle-double-right\"></i> ";
         }
         if ($aMenu['parent'] == "root") {
-          echo "<span>" . $aMenu['content'] . "</span></a>";
+          echo "<span>" . gettext($aMenu['content']) . "</span></a>";
         }
         else {
-          echo $aMenu['content'] . "</a>";
+          echo gettext($aMenu['content']) . "</a>";
         }
       }
     }
@@ -302,7 +302,7 @@ function addMenuItem($aMenu, $mIdx) {
       if ($aMenu['icon'] != "") {
         echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>\n";
       }
-      echo "<span>" . $aMenu['content'] . "</span>\n";
+      echo "<span>" . gettext($aMenu['content']) . "</span>\n";
       echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
       if ($aMenu['name'] == "deposit") {
         echo "<small class=\"badge pull-right bg-green\">" . $_SESSION['iCurrentDeposit'] . "</small>\n";
@@ -311,11 +311,11 @@ function addMenuItem($aMenu, $mIdx) {
       <ul class="treeview-menu">
         <?php
         if ($aMenu['name'] == "sundayschool") {
-          echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>Dashboard</a></li>";
+          echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>".gettext("Dashboard")."</a></li>";
           $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
           $rsSundaySchoolClasses = RunQuery($sSQL);
           while ($aRow = mysql_fetch_array($rsSundaySchoolClasses)) {
-            echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $aRow[grp_Name] . "</a></li>";
+            echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . "</a></li>";
           }
         }
       }
@@ -392,7 +392,7 @@ function addMenuItem($aMenu, $mIdx) {
                   <img src="<?= $loggedInUserPhoto ?>" class="img-circle" alt="User Image">
 
                   <p>
-  <?= $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'] ?>
+  										<?= $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'] ?>
                       <!--<small>Member since Nov. 2012</small>-->
                   </p>
                 </li>
@@ -414,15 +414,15 @@ function addMenuItem($aMenu, $mIdx) {
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="<?= $sRootPath . "/" ?>UserPasswordChange.php" class="btn btn-default btn-flat">Change Password</a>
+                    <a href="<?= $sRootPath . "/" ?>UserPasswordChange.php" class="btn btn-default btn-flat"><?= gettext("Change Password")?></a>
                   </div>
                   <div class="pull-right">
-                    <a href="<?= $sRootPath . "/" ?>SettingsIndividual.php" class="btn btn-default btn-flat">My Settings</a>
+                    <a href="<?= $sRootPath . "/" ?>SettingsIndividual.php" class="btn btn-default btn-flat"><?= gettext("My Settings")?></a>
                   </div>
                 </li>
               </ul>
             </li>
-  <?php if ($_SESSION['bAdmin']) { ?>
+  						<?php if ($_SESSION['bAdmin']) { ?>
               <li class="hidden-xxs">
                 <a class="js-gitter-toggle-chat-button">
                   <i class="fa fa-comments"></i>
@@ -510,10 +510,10 @@ function addMenuItem($aMenu, $mIdx) {
         <ul class="sidebar-menu">
           <li>
             <a href="<?= $sRootPath . "/" ?>Menu.php">
-              <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+              <i class="fa fa-dashboard"></i> <span><?= gettext("Dashboard") ?></span>
             </a>
           </li>
-  <?php addMenu("root"); ?>
+  				<?php addMenu("root"); ?>
         </ul>
       </section>
     </aside>
@@ -529,7 +529,7 @@ function addMenuItem($aMenu, $mIdx) {
           ?>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="<?= $sRootPath . "/Menu.php" ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li><a href="<?= $sRootPath . "/Menu.php" ?>"><i class="fa fa-dashboard"></i><?= gettext("Home") ?></a></li>
           <li class="active"><?= $sPageTitle ?></li>
         </ol>
       </section>
