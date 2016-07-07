@@ -2,19 +2,7 @@
 if (file_exists ( 'Include/Config.php')) {
   require_once 'Include/Config.php';
 } else {
-  $sPageTitle = "ChurchCRM – Setup failure";
-  require("Include/HeaderNotLoggedIn.php");
-  ?>
-  <div class='container'>
-    <h3>ChurchCRM – Setup failure</h3>
-
-    <div class='alert alert-danger text-center' style='margin-top: 20px;'>
-      Unable to find Include/Config.php, please review your install.
-      For steps please review the <a href="http://docs.churchcrm.io/en/latest/Installation/Manual/" target="_blank"> following doc.</a>
-    </div>
-  </div>
-  <?php
-  require("Include/FooterNotLoggedIn.php");
+  header("Location: Setup.php" );
   exit();
 }
 
