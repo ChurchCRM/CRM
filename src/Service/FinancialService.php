@@ -1129,11 +1129,20 @@ class FinancialService
     $grandTotalStr = sprintf("%.2f", $thisReport->deposit->dep_Total);
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->subTotal->x, $thisReport->QBDepositTicketParameters->subTotal->y, $grandTotalStr);
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->topTotal->x, $thisReport->QBDepositTicketParameters->topTotal->y, $grandTotalStr);
+    
+    $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY;
+    $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->titleX, $thisReport->curY );
+    $thisReport->pdf->SetFont('Courier','B', 20);
+    $thisReport->pdf->Write (8, "Deposit Summary " . $thisReport->deposit->dep_ID);
+    $thisReport->pdf->SetFont('Times','', 10);
+     $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->date2X, $thisReport->curY );
+    $thisReport->pdf->Write (8, $thisReport->deposit->dep_Date);
+
     $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x;
-    $thisReport->curY=$thisReport->QBDepositTicketParameters->perforationY+$thisReport->QBDepositTicketParameters->increment->y;
+    $thisReport->curY += 2*$thisReport->QBDepositTicketParameters->lineItemInterval->y;
     $this->generateCashDenominations($thisReport);
     $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x+125;
-    $thisReport->curY=$thisReport->QBDepositTicketParameters->perforationY+$thisReport->QBDepositTicketParameters->increment->y;
+
     $this->generateTotalsByCurrencyType($thisReport);
     $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x+125;
     $thisReport->curY=$thisReport->QBDepositTicketParameters->perforationY+30;
