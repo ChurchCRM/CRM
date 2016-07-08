@@ -4,8 +4,9 @@
         schematypens="http://relaxng.org/ns/structure/1.0" ?>
 
 <project name="ChurchCRM - Build" basedir="." default="dist">
-    <property file="./build.properties" />
-    <property name="builddir" value="./target" />
+    <property file="./build.properties"/>
+    <property name="builddir" value="./target"/>
+    <property name="sourcedir" value="${builddir}/code"/>
 
     <!-- ============================================  -->
     <!-- Target: prepare                               -->
@@ -13,7 +14,7 @@
     <target name="prepare">
         <echo message="Building ${build.version}"/>
 
-        <delete dir="${builddir}" includeemptydirs="true" />
+        <delete dir="${builddir}" includeemptydirs="true"/>
         <mkdir dir="${builddir}"/>
     </target>
 
@@ -21,12 +22,12 @@
     <!-- Target: build                                 -->
     <!-- ============================================  -->
     <target name="build" depends="prepare">
-        <echo message="Copying src to ${builddir}/churchcrm directory..." />
+        <echo message="Copying src to ${sourcedir}/churchcrm directory..."/>
 
-        <copy todir="${builddir}/churchcrm">
+        <copy todir="${sourcedir}/churchcrm">
             <fileset dir="src">
-                <include name="**" />
-                <exclude name="Images/Person/thumbnails/*.jpg" />
+                <include name="**"/>
+                <exclude name="Images/Person/thumbnails/*.jpg"/>
             </fileset>
         </copy>
 
@@ -36,16 +37,17 @@
     <!-- (DEFAULT)  Target: dist                       -->
     <!-- ============================================  -->
     <target name="dist" depends="build">
-        <echo message="Creating archive..." />
+        <echo message="Creating archive..."/>
 
-        <zip destfile="${builddir}/ChurchCRM-${build.version}.zip">
-            <fileset dir="${builddir}/churchcrm">
-                <include name="**" />
-            </fileset>
-        </zip>
+        <zip destfile="${builddir}/ChurchCRM-${build.version}.zip" basedir="${sourcedir}"/>
 
-        <echo message="Files copied and compressed in build directory OK!" />
+        <echo message="Files copied and compressed in build directory OK!"/>
     </target>
+
+
+    <!-- ============================================  -->
+    <!-- (DEFAULT)  Change Log                         -->
+    <!-- ============================================  -->
 
     <target name="install-change-log">
         <echo message="Installing Ruby"/>
