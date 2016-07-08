@@ -8,10 +8,10 @@
  ******************************************************************************/
 
 // Database connection constants
-$sSERVERNAME = 'localhost';
-$sUSER = 'churchcrm';
-$sPASSWORD = 'churchcrm';
-$sDATABASE = 'churchcrm';
+$sSERVERNAME = '||DB_SERVER_NAME||';
+$sUSER = '||DB_USER||';
+$sPASSWORD = '||DB_PASSWORD||';
+$sDATABASE = '||DB_NAME||';
 
 // Root path of your ChurchCRM installation ( THIS MUST BE SET CORRECTLY! )
 //
@@ -23,7 +23,7 @@ $sDATABASE = 'churchcrm';
 // - the path SHOULD Start end with slash, if not ''.
 // - the path SHOULD NOT end with slash.
 // - the is case sensitive.
-$sRootPath = '';
+$sRootPath = '||ROOT_PATH||';
 
 // Set $bLockURL=TRUE to enforce https access by specifying exactly
 // which URL's your users may use to log into ChurchCRM.
@@ -31,7 +31,7 @@ $bLockURL = FALSE;
 
 // URL[0] is the URL that you prefer most users use when they
 // log in.  These are case sensitive.  Only used when $bLockURL = TRUE
-$URL[0] = 'http://yourdomain.com/';
+$URL[0] = '||URL||';
 // List as many other URL's as may be needed. Number them sequentially.
 //$URL[1] = 'https://www.mychurch.org/churchcrm/';
 //$URL[2] = 'https://www.mychurch.org:8080/churchcrm/';
