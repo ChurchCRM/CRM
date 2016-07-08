@@ -220,11 +220,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1032, 'sZeroGivers2', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
 (1033, 'sZeroGivers3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
 (1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'ChurchInfoReport', NULL),
-(1035, 'sEnableGravatarPhotos', '0', 'boolean', '0', 'lookup user images on Gravatar when no local image is present', 'General', NULL),
-(1036, 'sQuickBooksDepositSlipParameters','{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"54","y":"89"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}', 'textarea','{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"54","y":"89"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}', 'QuickBooks Deposit Slip Coordinates', 'ChurchInfoReport', NULL),
-(1037, 'sPeachtreeDepositSlipParameters','', 'textarea', '' , 'Peachtree Deposit Slip Coordinates', 'ChurchInfoReport', NULL),
-(1038, 'sGenericDepositSlipParameters', '','textarea', '', 'Generic Deposit Slip Coordinates', 'ChurchInfoReport', NULL),
-(1039, 'sDepositSlipType','QBDT', 'text', 'QBDT', 'Select Bank Deposit Slip Type (QBDT,PTDT, GDT)', 'ChurchInfoReport', NULL);
+(1035, 'sEnableGravatarPhotos', '0', 'boolean', '0', 'lookup user images on Gravatar when no local image is present', 'General', NULL);
 
 ALTER TABLE `config_cfg`
 ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
@@ -325,10 +321,6 @@ UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='22' WHERE `cfg_id`=
 UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='23' WHERE `cfg_id`='1032';
 UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='24' WHERE `cfg_id`='1033';
 UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='25' WHERE `cfg_id`='1034';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='26' WHERE `cfg_id`='1036';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='27' WHERE `cfg_id`='1037';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='28' WHERE `cfg_id`='1038';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='29' WHERE `cfg_id`='1039';
 
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='0' WHERE `cfg_id`='20';
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='1' WHERE `cfg_id`='40';

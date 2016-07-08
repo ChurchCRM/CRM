@@ -1097,7 +1097,9 @@ class FinancialService
   private function generateQBDepositSlip($thisReport)
   {
     $thisReport->pdf->AddPage();
-    $thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQuickBooksDepositSlipParameters);
+    // in 2.2.0 we will store these settings in the DB as JSON, but for 2.1.7 we don't want to change schema
+    //$thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQuickBooksDepositSlipParameters);
+    $thisReport->QBDepositTicketParameters = json_decode('{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"54","y":"89"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}');
     $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
     $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
 
@@ -1408,6 +1410,8 @@ class FinancialService
         $thisReport->ReportSettings->$cfg_name = $cfg_value;
       }
     }
+    //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.
+    $thisReport->ReportSettings->sDepositSlipType == "QBDT";
 
     $this->calculateFundTotals($thisReport);
     if ( $thisReport->ReportSettings->sDepositSlipType == "QBDT" )

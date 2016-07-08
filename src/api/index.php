@@ -304,7 +304,7 @@ $app->group('/deposits', function () use ($app) {
   })->conditions(array('id' => '[0-9]+'));
 
   $app->get('/:id/pdf', function ($id) use ($app) {
-   // $app->contentType("application/x-download");
+    $app->contentType("application/x-download");
     $app->FinancialService->getDepositPDF($id);
   })->conditions(array('id' => '[0-9]+'));
 
