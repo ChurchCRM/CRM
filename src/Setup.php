@@ -1,5 +1,9 @@
 <?php
 
+if (file_exists ( 'Include/Config.php')) {
+  header("Location: index.php" );
+} 
+
 if (isset($_POST["Setup"])) {
   $template = file_get_contents("Include/Config.php.example");
   $template = str_replace("||DB_SERVER_NAME||", $_POST["DB_SERVER_NAME"], $template);
