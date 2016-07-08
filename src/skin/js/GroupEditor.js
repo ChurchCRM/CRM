@@ -29,7 +29,9 @@ $("document").ready(function()
      $.ajax({
       method: "POST",
       url: window.CRM.root + "/api/groups/" + groupID + "/setGroupSpecificPropertyStatus",
-      data: '{"GroupSpecificPropertyStatus":"' + action + '"}'
+       data: '{"GroupSpecificPropertyStatus":"' + action + '"}',
+       contentType: "application/json; charset=utf-8",
+       dataType: "json"
     }).done(function(data)
     {
       console.log(data);
@@ -63,7 +65,9 @@ $("document").ready(function()
     $.ajax({
       method: "POST",
       url: window.CRM.root + "/api/groups/" + groupID,
-      data: JSON.stringify(formData)
+      data: JSON.stringify(formData),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json"
     }).done(function(data)
     {
       window.location.href = CRM.root + "/GroupList.php";
@@ -78,7 +82,9 @@ $("document").ready(function()
     $.ajax({
       method: "POST",
       url: window.CRM.root + "/api/groups/" + groupID + "/roles",
-      data: '{"roleName":"' + newRoleName + '"}'
+      data: '{"roleName":"' + newRoleName + '"}',
+      contentType: "application/json; charset=utf-8",
+      dataType: "json"
     }).done(function(data)
     {
       var newRole = data.newRole;
@@ -180,7 +186,9 @@ $("document").ready(function()
     $.ajax({
       method: "POST",
       url: window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID,
-      data: '{"groupRoleName":"' + groupRoleName + '"}'
+      data: '{"groupRoleName":"' + groupRoleName + '"}',
+      contentType: "application/json; charset=utf-8",
+      dataType: "json"
     }).done(function(data)
     {
     });
@@ -194,7 +202,9 @@ $("document").ready(function()
     $.ajax({
       method: "POST",
       url: window.CRM.root + "/api/groups/" + groupID + "/defaultRole",
-      data: '{"roleID":"' + roleID + '"}'
+      data: '{"roleID":"' + roleID + '"}',
+      contentType: "application/json; charset=utf-8",
+      dataType: "json"
     }).done(function(data)
     {
       defaultRoleID = roleID; //update the local variable representing the default role id
@@ -282,7 +292,9 @@ function setGroupRoleOrder(groupID, roleID, groupRoleOrder)
   $.ajax({
     method: "POST",
     url: window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID,
-    data: '{"groupRoleOrder":"' + groupRoleOrder + '"}'
+    data: '{"groupRoleOrder":"' + groupRoleOrder + '"}',
+    contentType: "application/json; charset=utf-8",
+    dataType: "json"
   }).done(function(data)
   {
   });

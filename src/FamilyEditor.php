@@ -774,7 +774,7 @@ require "Include/Header.php";
 							<i class="fa fa-phone"></i>
 						</div>
 						<input type="text" name="CellPhone" value="<?= htmlentities(stripslashes($sCellPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
-						<input type="checkbox" class="form-control" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? " checked" : '' ?>><?= gettext("Do not auto-format") ?>
+						<input type="checkbox" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? " checked" : '' ?>><?= gettext("Do not auto-format") ?>
 					</div>
 				</div>
 			</div>

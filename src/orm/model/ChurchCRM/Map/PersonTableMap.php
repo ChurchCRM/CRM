@@ -305,7 +305,7 @@ class PersonTableMap extends TableMap
         $this->addColumn('per_Gender', 'Gender', 'BOOLEAN', true, 1, false);
         $this->addColumn('per_fmr_ID', 'FmrId', 'TINYINT', true, 3, 0);
         $this->addColumn('per_cls_ID', 'ClsId', 'TINYINT', true, 3, 0);
-        $this->addColumn('per_fam_ID', 'FamId', 'SMALLINT', true, 5, 0);
+        $this->addForeignKey('per_fam_ID', 'FamId', 'SMALLINT', 'family_fam', 'fam_ID', true, 5, 0);
         $this->addColumn('per_Envelope', 'Envelope', 'SMALLINT', false, 5, null);
         $this->addColumn('per_DateLastEdited', 'DateLastEdited', 'TIMESTAMP', false, null, null);
         $this->addColumn('per_DateEntered', 'DateEntered', 'TIMESTAMP', true, null, '0000-00-00 00:00:00');
@@ -320,6 +320,34 @@ class PersonTableMap extends TableMap
      */
     public function buildRelations()
     {
+        $this->addRelation('Family', '\\ChurchCRM\\Family', RelationMap::MANY_TO_ONE, array (
+  0 =>
+  array (
+    0 => ':per_fam_ID',
+    1 => ':fam_ID',
+  ),
+), null, null, null, false);
+        $this->addRelation('WhyCame', '\\ChurchCRM\\WhyCame', RelationMap::ONE_TO_MANY, array (
+  0 =>
+  array (
+    0 => ':why_per_ID',
+    1 => ':per_ID',
+  ),
+), null, null, 'WhyCames', false);
+        $this->addRelation('Note', '\\ChurchCRM\\Note', RelationMap::ONE_TO_MANY, array (
+  0 =>
+  array (
+    0 => ':nte_per_ID',
+    1 => ':per_ID',
+  ),
+), null, null, 'Notes', false);
+        $this->addRelation('Person2group2roleP2g2r', '\\ChurchCRM\\Person2group2roleP2g2r', RelationMap::ONE_TO_MANY, array (
+  0 =>
+  array (
+    0 => ':p2g2r_per_ID',
+    1 => ':per_ID',
+  ),
+), null, null, 'Person2group2roleP2g2rs', false);
     } // buildRelations()
 
     /**

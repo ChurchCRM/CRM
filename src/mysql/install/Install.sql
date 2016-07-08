@@ -1,4 +1,4 @@
--- Install Version 2.1.0
+-- Install Version 2.1.1
 -- --------------------------------------------------------
 
 
@@ -219,7 +219,8 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1031, 'sZeroGivers', 'This letter shows our record of your payments for', 'text', 'This letter shows our record of your payments for', 'Verbage for top line of tax report. Dates will be appended to the end of this line.', 'ChurchInfoReport', NULL),
 (1032, 'sZeroGivers2', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
 (1033, 'sZeroGivers3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
-(1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'ChurchInfoReport', NULL);
+(1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'ChurchInfoReport', NULL),
+(1035, 'sEnableGravatarPhotos', '0', 'boolean', '0', 'lookup user images on Gravatar when no local image is present', 'General', NULL);
 
 ALTER TABLE `config_cfg`
 ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;

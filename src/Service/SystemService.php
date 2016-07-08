@@ -197,9 +197,9 @@ function split_sql_file($sql, $delimiter)
       $this->playbackSQLtoDatabase($file['tmp_name']);
     }
     exec("rm -rf $restoreResult->backupRoot");
-    $this->playbackSQLtoDatabase($root . "/mysql/upgrade/rebuild_nav_menus.sql");
-    $this->playbackSQLtoDatabase($root . "/mysql/upgrade/update_config.sql");
     $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
+    $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
+    $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
     return $restoreResult;
   }
 
@@ -390,8 +390,13 @@ function split_sql_file($sql, $delimiter)
       return true;
     }
 
-    if (strncmp($db_version, "2.1", 3) == 0) {
-      $this->rebuildWithSQL("/mysql/upgrade/2.1.x-2.2.0.sql");
+    if (strncmp($db_version, "2.1.0", 5) == 0 || strncmp($db_version, "2.1.1", 5) == 0 || strncmp($db_version, "2.1.2", 5) == 0) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.x-2.1.3.sql");
+      return true;
+    }
+    
+    if (strncmp($db_version, "2.1.3", 5) == 0 ) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.3-2.2.0.sql");
       return true;
     }
 
@@ -433,7 +438,7 @@ function split_sql_file($sql, $delimiter)
     if ($result === FALSE) {
       throw new Exception("Unable to reach the issue bridge", 500);
     }
-    echo $result;
+    return $result;
   }
 
 }

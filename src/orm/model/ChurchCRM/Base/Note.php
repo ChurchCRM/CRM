@@ -5,7 +5,11 @@ namespace ChurchCRM\Base;
 use \DateTime;
 use \Exception;
 use \PDO;
+use ChurchCRM\Family as ChildFamily;
+use ChurchCRM\FamilyQuery as ChildFamilyQuery;
 use ChurchCRM\NoteQuery as ChildNoteQuery;
+use ChurchCRM\Person as ChildPerson;
+use ChurchCRM\PersonQuery as ChildPersonQuery;
 use ChurchCRM\Map\NoteTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -136,6 +140,16 @@ abstract class Note implements ActiveRecordInterface
      * @var        string
      */
     protected $nte_type;
+
+    /**
+     * @var        ChildPerson
+     */
+    protected $aPerson;
+
+    /**
+     * @var        ChildFamily
+     */
+    protected $aFamily;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -545,6 +559,10 @@ abstract class Note implements ActiveRecordInterface
             $this->modifiedColumns[NoteTableMap::COL_NTE_PER_ID] = true;
         }
 
+        if ($this->aPerson !== null && $this->aPerson->getId() !== $v) {
+            $this->aPerson = null;
+        }
+
         return $this;
     } // setPerId()
 
@@ -563,6 +581,10 @@ abstract class Note implements ActiveRecordInterface
         if ($this->nte_fam_id !== $v) {
             $this->nte_fam_id = $v;
             $this->modifiedColumns[NoteTableMap::COL_NTE_FAM_ID] = true;
+        }
+
+        if ($this->aFamily !== null && $this->aFamily->getId() !== $v) {
+            $this->aFamily = null;
         }
 
         return $this;
@@ -835,6 +857,12 @@ abstract class Note implements ActiveRecordInterface
      */
     public function ensureConsistency()
     {
+        if ($this->aPerson !== null && $this->nte_per_id !== $this->aPerson->getId()) {
+            $this->aPerson = null;
+        }
+        if ($this->aFamily !== null && $this->nte_fam_id !== $this->aFamily->getId()) {
+            $this->aFamily = null;
+        }
     } // ensureConsistency
 
     /**
@@ -874,6 +902,8 @@ abstract class Note implements ActiveRecordInterface
 
         if ($deep) {  // also de-associate any related objects?
 
+            $this->aPerson = null;
+            $this->aFamily = null;
         } // if (deep)
     }
 
@@ -972,6 +1002,25 @@ abstract class Note implements ActiveRecordInterface
         $affectedRows = 0; // initialize var to track total num of affected rows
         if (!$this->alreadyInSave) {
             $this->alreadyInSave = true;
+
+            // We call the save method on the following object(s) if they
+            // were passed to this object by their corresponding set
+            // method.  This object relates to these object(s) by a
+            // foreign key reference.
+
+            if ($this->aPerson !== null) {
+                if ($this->aPerson->isModified() || $this->aPerson->isNew()) {
+                    $affectedRows += $this->aPerson->save($con);
+                }
+                $this->setPerson($this->aPerson);
+            }
+
+            if ($this->aFamily !== null) {
+                if ($this->aFamily->isModified() || $this->aFamily->isNew()) {
+                    $affectedRows += $this->aFamily->save($con);
+                }
+                $this->setFamily($this->aFamily);
+            }
 
             if ($this->isNew() || $this->isModified()) {
                 // persist changes
@@ -1190,10 +1239,11 @@ abstract class Note implements ActiveRecordInterface
      *                    Defaults to TableMap::TYPE_PHPNAME.
      * @param     boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns. Defaults to TRUE.
      * @param     array $alreadyDumpedObjects List of objects to skip to avoid recursion
+     * @param     boolean $includeForeignObjects (optional) Whether to include hydrated related objects. Default to FALSE.
      *
      * @return array an associative array containing the field names (as keys) and field values
      */
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
 
         if (isset($alreadyDumpedObjects['Note'][$this->hashCode()])) {
@@ -1226,6 +1276,38 @@ abstract class Note implements ActiveRecordInterface
             $result[$key] = $virtualColumn;
         }
 
+        if ($includeForeignObjects) {
+            if (null !== $this->aPerson) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'person';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'person_per';
+                        break;
+                    default:
+                        $key = 'Person';
+                }
+
+                $result[$key] = $this->aPerson->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
+            }
+            if (null !== $this->aFamily) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'family';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'family_fam';
+                        break;
+                    default:
+                        $key = 'Family';
+                }
+
+                $result[$key] = $this->aFamily->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
+            }
+        }
 
         return $result;
     }
@@ -1540,12 +1622,120 @@ abstract class Note implements ActiveRecordInterface
     }
 
     /**
+     * Declares an association between this object and a ChildPerson object.
+     *
+     * @param  ChildPerson $v
+     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @throws PropelException
+     */
+    public function setPerson(ChildPerson $v = null)
+    {
+        if ($v === null) {
+            $this->setPerId(0);
+        } else {
+            $this->setPerId($v->getId());
+        }
+
+        $this->aPerson = $v;
+
+        // Add binding for other direction of this n:n relationship.
+        // If this object has already been added to the ChildPerson object, it will not be re-added.
+        if ($v !== null) {
+            $v->addNote($this);
+        }
+
+
+        return $this;
+    }
+
+
+    /**
+     * Get the associated ChildPerson object
+     *
+     * @param  ConnectionInterface $con Optional Connection object.
+     * @return ChildPerson The associated ChildPerson object.
+     * @throws PropelException
+     */
+    public function getPerson(ConnectionInterface $con = null)
+    {
+        if ($this->aPerson === null && ($this->nte_per_id !== null)) {
+            $this->aPerson = ChildPersonQuery::create()->findPk($this->nte_per_id, $con);
+            /* The following can be used additionally to
+                guarantee the related object contains a reference
+                to this object.  This level of coupling may, however, be
+                undesirable since it could result in an only partially populated collection
+                in the referenced object.
+                $this->aPerson->addNotes($this);
+             */
+        }
+
+        return $this->aPerson;
+    }
+
+    /**
+     * Declares an association between this object and a ChildFamily object.
+     *
+     * @param  ChildFamily $v
+     * @return $this|\ChurchCRM\Note The current object (for fluent API support)
+     * @throws PropelException
+     */
+    public function setFamily(ChildFamily $v = null)
+    {
+        if ($v === null) {
+            $this->setFamId(0);
+        } else {
+            $this->setFamId($v->getId());
+        }
+
+        $this->aFamily = $v;
+
+        // Add binding for other direction of this n:n relationship.
+        // If this object has already been added to the ChildFamily object, it will not be re-added.
+        if ($v !== null) {
+            $v->addNote($this);
+        }
+
+
+        return $this;
+    }
+
+
+    /**
+     * Get the associated ChildFamily object
+     *
+     * @param  ConnectionInterface $con Optional Connection object.
+     * @return ChildFamily The associated ChildFamily object.
+     * @throws PropelException
+     */
+    public function getFamily(ConnectionInterface $con = null)
+    {
+        if ($this->aFamily === null && ($this->nte_fam_id !== null)) {
+            $this->aFamily = ChildFamilyQuery::create()->findPk($this->nte_fam_id, $con);
+            /* The following can be used additionally to
+                guarantee the related object contains a reference
+                to this object.  This level of coupling may, however, be
+                undesirable since it could result in an only partially populated collection
+                in the referenced object.
+                $this->aFamily->addNotes($this);
+             */
+        }
+
+        return $this->aFamily;
+    }
+
+    /**
      * Clears the current object, sets all attributes to their default values and removes
      * outgoing references as well as back-references (from other objects to this one. Results probably in a database
      * change of those foreign objects when you call `save` there).
      */
     public function clear()
     {
+        if (null !== $this->aPerson) {
+            $this->aPerson->removeNote($this);
+        }
+        if (null !== $this->aFamily) {
+            $this->aFamily->removeNote($this);
+        }
         $this->nte_id = null;
         $this->nte_per_id = null;
         $this->nte_fam_id = null;
@@ -1577,6 +1767,8 @@ abstract class Note implements ActiveRecordInterface
         if ($deep) {
         } // if ($deep)
 
+        $this->aPerson = null;
+        $this->aFamily = null;
     }
 
     /**

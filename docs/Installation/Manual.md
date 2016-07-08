@@ -2,6 +2,14 @@
 
 Currently as ChurchCRM is still in development an install script is not yet available. ChurchCRM can run on a LAMP server (Linux, Apache, Mysql, PHP) or a Shared Hosting account through a manual installation.
 
+## Check your server
+
+[Upload] (https://github.com/ChurchCRM/Check) `check.php` to your web server's document root, and then visit `check.php` in a web browser.
+
+This page should tell you everything that you need to know about if you can run ChurchCRM or not. 
+
+[More at our check repo] (https://github.com/ChurchCRM/Check) 
+
 ## How Do I Install ChurchCRM?
 
 1. The .tar.gz file download contains a directory called "churchcrm"

@@ -284,6 +284,20 @@ class FamilyTableMap extends TableMap
      */
     public function buildRelations()
     {
+        $this->addRelation('Person', '\\ChurchCRM\\Person', RelationMap::ONE_TO_MANY, array (
+  0 =>
+  array (
+    0 => ':per_fam_ID',
+    1 => ':fam_ID',
+  ),
+), null, null, 'People', false);
+        $this->addRelation('Note', '\\ChurchCRM\\Note', RelationMap::ONE_TO_MANY, array (
+  0 =>
+  array (
+    0 => ':nte_fam_ID',
+    1 => ':fam_ID',
+  ),
+), null, null, 'Notes', false);
     } // buildRelations()
 
     /**
