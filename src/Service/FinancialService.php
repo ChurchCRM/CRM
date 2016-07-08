@@ -1411,7 +1411,7 @@ class FinancialService
       }
     }
     //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.
-    $thisReport->ReportSettings->sDepositSlipType == "QBDT";
+    $thisReport->ReportSettings->sDepositSlipType = "QBDT";
 
     $this->calculateFundTotals($thisReport);
     if ( $thisReport->ReportSettings->sDepositSlipType == "QBDT" )
