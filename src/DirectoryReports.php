@@ -212,7 +212,8 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
 	 <td class="LabelColumn"><?= gettext("Paper Size:") ?></td>
  	 <td class="TextColumn">
 		    <input type="radio" name="PageSize" value="letter" checked>Letter (8.5x11)<br>
-		    <input type="radio" name="PageSize" value="legal">Legal (8.5x14)
+		    <input type="radio" name="PageSize" value="legal">Legal (8.5x14)<br>
+		    <input type="radio" name="PageSize" value="a4">A4
 	</td>
 	</tr>
 	<tr>
