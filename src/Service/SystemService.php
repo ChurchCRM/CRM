@@ -69,7 +69,7 @@ class SystemService {
       else if ($restoreResult->type2 == "sql") {
         exec("mkdir $restoreResult->backupRoot");
         exec("mv  " . $file['tmp_name'] . " " . $restoreResult->backupRoot . "/" . $file['name']);
-        $restoreResult->uncompressCommand = "sGZIPname -d $restoreResult->backupRoot/" . $file['name'];
+        $restoreResult->uncompressCommand = "$sGZIPname -d $restoreResult->backupRoot/" . $file['name'];
         exec($restoreResult->uncompressCommand, $rs1, $returnStatus); ;
         $restoreResult->SQLfile = $restoreResult->backupRoot . "/" . substr($file['name'], 0, strlen($file['name']) - 3);
         $this->playbackSQLtoDatabase($restoreResult->SQLfile);
