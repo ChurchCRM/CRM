@@ -280,7 +280,7 @@ class SystemService {
       return true;
     }
 
-    if (strncmp($db_version, "2.1.3", 5) == 0 || strncmp($db_version, "2.1.4", 5) == 0 || strncmp($db_version, "2.1.5", 5) == 0) {
+    if (in_array($db_version, array("2.1.3", "2.1.4", "2.1.5", "2.1.6"))) {
       $this->rebuildWithSQL("/mysql/upgrade/2.1.3-2.1.x.sql");
       return true;
     }
