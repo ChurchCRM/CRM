@@ -67,6 +67,13 @@ function hasModRewrite()
 $sPageTitle = "ChurchCRM – Setup";
 require("Include/HeaderNotLoggedIn.php");
 ?>
+<script>
+$("document").ready(function(){
+$("#dangerContinue").click(function(){
+  $("#setupPage").css("display","");
+})
+});
+</script>
 <div class='container'>
   <h3>ChurchCRM – Setup</h3>
 
@@ -114,9 +121,9 @@ require("Include/HeaderNotLoggedIn.php");
           </table>
         </div>
       </div>
+       <?php if (!$is_ready) { echo '<button class="btn btn-warning" id="dangerContinue">I know what I\'m diong.  Install ChurchCRM Anyway</button>'; } ?>
     </div>
-    <?php if ($is_ready) { ?>
-      <div class="col-lg-6">
+      <div id="setupPage" class="col-lg-6"  <?php if (!$is_ready) { echo 'style="display:none"'; } ?>> 
         <div class="box">
           <div class="box-body">
             <form target="_self" method="post">
@@ -158,6 +165,6 @@ require("Include/HeaderNotLoggedIn.php");
           </div>
         </div>
       </div>
-    <?php }
+    <?php 
     require("Include/FooterNotLoggedIn.php");
     ?>
