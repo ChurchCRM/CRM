@@ -2,7 +2,7 @@
 <html>
 <head>
   <!-- jQuery 2.1.4 -->
-  <script src="/skin/adminlte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  <script src="skin/adminlte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!--<meta http-equiv="pragma" content="no-cache">-->
