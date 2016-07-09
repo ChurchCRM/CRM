@@ -121,7 +121,7 @@ $("#dangerContinue").click(function(){
           </table>
         </div>
       </div>
-       <?php if (!$is_ready) { echo '<button class="btn btn-warning" id="dangerContinue">I know what I\'m diong.  Install ChurchCRM Anyway</button>'; } ?>
+       <?php if (!$is_ready) { echo '<button class="btn btn-warning" id="dangerContinue">I know what I\'m doing.  Install ChurchCRM Anyway</button>'; } ?>
     </div>
       <div id="setupPage" class="col-lg-6"  <?php if (!$is_ready) { echo 'style="display:none"'; } ?>> 
         <div class="box">
