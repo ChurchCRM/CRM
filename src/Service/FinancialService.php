@@ -537,7 +537,7 @@ class FinancialService
       $values->dep_Total = $this->getDepositTotal($dep_ID);
       $values->countCash = $this->getDepositCount($dep_ID, 'CASH');
       $values->countCheck = $this->getDepositCount($dep_ID, 'CHECK');
-      $values->countTotal = $this->getDepositCount($dep_ID);
+      $values->countTotal = $values->countCheck + ($values->countCash > 0); 
       array_push($return, $values);
     }
     return $return;
@@ -1099,7 +1099,7 @@ class FinancialService
     $thisReport->pdf->AddPage();
     // in 2.2.0 we will store these settings in the DB as JSON, but for 2.1.7 we don't want to change schema
     //$thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQuickBooksDepositSlipParameters);
-    $thisReport->QBDepositTicketParameters = json_decode('{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"54","y":"89"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}');
+    $thisReport->QBDepositTicketParameters = json_decode('{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}');
     $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
     $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
 
@@ -1131,6 +1131,8 @@ class FinancialService
     $grandTotalStr = sprintf("%.2f", $thisReport->deposit->dep_Total);
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->subTotal->x, $thisReport->QBDepositTicketParameters->subTotal->y, $grandTotalStr);
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->topTotal->x, $thisReport->QBDepositTicketParameters->topTotal->y, $grandTotalStr);
+    $numItemsString = sprintf("%d", $thisReport->deposit->countTotal);
+    $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->numberOfItems->x, $thisReport->QBDepositTicketParameters->numberOfItems->y, $numItemsString);
     
     $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY;
     $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->titleX, $thisReport->curY );
@@ -1217,6 +1219,7 @@ class FinancialService
     $thisReport->depositSummaryParameters->summary->MemoX = 120;
     $thisReport->depositSummaryParameters->summary->AmountX = 185;
     $thisReport->depositSummaryParameters->aggregateX = 135;
+    $thisReport->depositSummaryParameters->displayBillCounts = false;
     
     
     $thisReport->pdf->AddPage();
@@ -1304,8 +1307,10 @@ class FinancialService
     
     // Now print deposit totals by fund
     $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
-    $this->generateCashDenominations($thisReport);
-    
+    if($thisReport->depositSummaryParameters->displayBillCounts)
+    {
+      $this->generateCashDenominations($thisReport);
+    }
     $thisReport->curX = $thisReport->depositSummaryParameters->aggregateX;
     $this->generateTotalsByFund($thisReport);
     
