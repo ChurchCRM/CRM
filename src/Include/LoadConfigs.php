@@ -60,7 +60,7 @@ $tablecheck = mysql_num_rows(mysql_query($sql));
 
 if (!$tablecheck) {
   $query = '';
-  $restoreQueries = file('mysql/install/install.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+  $restoreQueries = file(dirname(__file__). '/../mysql/install/Install.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
   foreach ($restoreQueries as $line) {
     if ($line != '' && strpos($line, '--') === false) {
       $query .= " $line";
