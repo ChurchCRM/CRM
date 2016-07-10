@@ -35,7 +35,8 @@ $required = array(
   'Mod Rewrite' => hasModRewrite('mod_rewrite'),
   'GD Library for image manipulation' => (extension_loaded('gd') && function_exists('gd_info')),
   'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
-  'cURL' => function_exists('curl_version')
+  'cURL' => function_exists('curl_version'),
+  'locale' => function_exists('bindtextdomain')
 );
 
 foreach ($required as $feature => $pass) {
