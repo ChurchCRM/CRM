@@ -125,11 +125,11 @@ if (!function_exists("stripos")) {
 }
 
 if (!(stripos(php_uname('s'), "windows") === false)) {
-//  $sLanguage = $lang_map_windows[strtolower($sLanguage)];
-  $sLang_Code = $lang_map_windows[strtolower($sLanguage)];
-} else {
-  $sLang_Code = $sLanguage;
+  $sLanguage = $lang_map_windows[strtolower($sLanguage)];
 }
+
+$sLang_Code = $sLanguage;
+
 putenv("LANG=$sLang_Code");
 setlocale(LC_ALL, $sLang_Code, $sLang_Code . ".utf8", $sLang_Code . ".UTF8", $sLang_Code . ".utf-8", $sLang_Code . ".UTF-8");
 
