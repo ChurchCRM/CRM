@@ -63,7 +63,7 @@ require "Include/Header.php"; ?>
         week: 'week',
         day: 'day'
       },
-      // events: API CALL ?>
+      events: window.CRM.root + '/api/calendar/events'
     });
  });
 </script>
