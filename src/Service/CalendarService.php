@@ -10,12 +10,10 @@ use ChurchCRM\EventQuery;
 class CalendarService
 {
 
-  private $eventService;
   private $baseURL;
 
   public function __construct()
   {
-    $this->eventService = new EventService();
     $this->baseURL = $_SESSION['sRootPath'];
   }
 
@@ -26,7 +24,7 @@ class CalendarService
     array_push($eventTypes, $eventType);
     $eventType = array("Name" => "Birthday", "backgroundColor" =>"#f56954" );
     array_push($eventTypes, $eventType);
-
+    return $eventTypes;
   }
 
   function getEvents()
@@ -62,6 +60,7 @@ class CalendarService
       array_push($events, $event);
     }
 
+    return $events;
   }
 
 
