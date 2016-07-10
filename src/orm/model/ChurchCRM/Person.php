@@ -17,4 +17,8 @@ use ChurchCRM\Base\Person as BasePerson;
 class Person extends BasePerson
 {
 
+  function getFullName() {
+    return $this->getFirstName() . " " . $this->getLastName();
+  }
+
 }
