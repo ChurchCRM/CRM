@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__FILE__).'/../Service/PersonService.php';
+require_once dirname(__FILE__).'/../Service/SystemService.php';
 
 /*******************************************************************************
 *
@@ -32,8 +33,10 @@ require_once dirname(__FILE__).'/../Service/PersonService.php';
 // Set the current version of this PHP file
 // Important!  These must be updated before every software release.
 
-$_SESSION['sSoftwareInstalledVersion'] = '2.2.0';
 $personService = new PersonService();
+$systemService = new SystemService();
+$_SESSION['sSoftwareInstalledVersion'] = $systemService->getInstalledVersion();
+
 //
 // Basic security checks:
 //

@@ -13,6 +13,13 @@ CRM_DB_PASS="churchcrm"
 CRM_DB_NAME="churchcrm"
 
 echo "=========================================================="
+echo "================+=   Apache Setup  ======================="
+echo "=========================================================="
+sudo sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2G/g' /etc/php5/apache2/php.ini
+sudo sed -i 's/^post_max_size.*$/post_max_size = 2G/g' /etc/php5/apache2/php.ini
+sudo service apache2 restart
+
+echo "=========================================================="
 echo "====================   DB Setup  ========================="
 echo "=========================================================="
 sudo sed -i 's/^bind-address.*$/bind-address=0.0.0.0/g' /etc/mysql/my.cnf
@@ -73,6 +80,12 @@ cd /vagrant/src
 composer update
 composer dump-autoload
 ../vagrant/build-skin.sh
+
+echo "=========================================================="
+echo "===============  MV Config.php           ================="
+echo "=========================================================="
+
+cp /vagrant/vagrant/Config.php /vagrant/src/Include/
 
 echo "=========================================================="
 echo "=========================================================="

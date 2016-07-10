@@ -29,3 +29,4 @@ ionicons
 src/Include/Config.php
 src/mysql/database_setup_and_install.sh
 
+target

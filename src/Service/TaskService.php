@@ -28,13 +28,13 @@ class TaskService
 
     $tasks = array();
     if ($bRegistered != 1) {
-      array_push($tasks, $this->addTask("Register Software", "/Register.php", true));
+      array_push($tasks, $this->addTask("Register Software", $this->baseURL."/Register.php", true));
     }
     if ($sChurchName == "Some Church") {
-      array_push($tasks, $this->addTask("Update Church Info", "/SystemSettings.php", true));
+      array_push($tasks, $this->addTask("Update Church Info", $this->baseURL."/SystemSettings.php", true));
     }
     if ($sSMTPHost == "") {
-      array_push($tasks, $this->addTask("Set Email Settings", "/SystemSettings.php", true));
+      array_push($tasks, $this->addTask("Set Email Settings", $this->baseURL."/SystemSettings.php", true));
     }
 
     if ($this->latestVersion != null && $this->latestVersion["name"] != $this->installedVersion) {
@@ -53,7 +53,7 @@ class TaskService
   }
 
   function addTask($title, $link, $admin = false) {
-    return  array("title" => $title, "link" => $this->baseURL . $link, "admin" => $admin);
+    return  array("title" => $title, "link" => $link, "admin" => $admin);
   }
 
 }

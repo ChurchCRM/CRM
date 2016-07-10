@@ -12,53 +12,39 @@ This page should tell you everything that you need to know about if you can run 
 
 ## How Do I Install ChurchCRM?
 
-1. The .tar.gz file download contains a directory called "churchcrm"
-Extract the file and place the contents into a directory in the document root of your Web server or via FTP to a shared hosting account
+1. [Download the latest release] (https://github.com/ChurchCRM/CRM/releases/latest)
 
-2. Within the directory you'll find a directory called "mysql," and another called "install"
-containing a file named "Install.sql". Contained in this file are
-the SQL statements necessary to create the ChurchCRM database.
+2. The downloaded zip file contains a directory called "churchcrm"
+Extract the files and place the contents into a directory in the document root of your Web server or via FTP to a shared hosting account
+
+3. Create a Church CRM blank db and user that have full permissions on the db.
+
+ - For shared hosting accounts you must create a database within your hosting control panel
 
  - For LAMP servers, log onto your database server under the root account (or other account
-allowed to create databases), create a database for ChurchCRM, and
-then run the contents of Install.sql to create the tables and initial
-data.
+allowed to create databases), create a database for ChurchCRM.
 
 For example:
 
 mysqladmin -u [user] -p create [database-name]
-mysql -u [user] -p [database-name] < Install.sql
 
- - For shared hosting accounts you must create a database within your hosting control panel, and import the Install.sql script $
-
-
-3. Within the folder, you'll find a directory called "Include"
-containing a file named "Config.php". The first statements in this
-file are the database connection parameters:
-
-For example:
-
-$sSERVERNAME = "localhost";
-
-$sUSER = "root";
-
-$sPASSWORD = "password";
-
-$sDATABASE = "churchcrm";
-
-Change these parameters to match the mysql server and user account you
-intend to use.  You MUST set the $sRootPath option properly as described
-in Config.php.  It is NOT recommended that you use the ROOT account for
+4. Within the folder, you'll find a directory called "Include"
+containing a file named "Config.php.example". rename it Config.php and make the following changes. It is NOT recommended that you use the ROOT account for
 accessing your database.
 
+- update database connection parameters to match the mysql server and user account you intend to use:
 
-4. You should be able to access ChurchCRM at "http://[server
-name]/<crm/church-crm/churchcrm>". The database script will have set up
-an initial user called "Admin" with a password of
-"changeme" (passwords are case insensitive). You will be prompted
-to change this password upon login.  Once you have created other user
-accounts, you may delete or rename this default account.  Just make
-sure that you always have a user with administrative privledges.
+        $sSERVERNAME = "localhost";
+        $sUSER = "root";
+        $sPASSWORD = "password";
+        $sDATABASE = "churchcrm";
+
+- You MUST set the $sRootPath option properly as described in Config.php.  
+
+
+4. You should be able to access ChurchCRM at "http://[servername]/churchcrm". 
+
+The database script will have set up an initial user called "**Admin**" with a password of "**changeme**" (passwords are case insensitive). You will be prompted to change this password upon login.  Once you have created other user accounts, you may delete or rename this default account.  Just make sure that you always have a user with administrative privledges.
 
 ## Configuring ChurchCRM
 

@@ -1,5 +1,10 @@
 <?php
-require_once 'Include/Config.php';
+if (file_exists ( 'Include/Config.php')) {
+  require_once 'Include/Config.php';
+} else {
+  header("Location: Setup.php" );
+  exit();
+}
 
 function dashesToCamelCase($string, $capitalizeFirstCharacter = false)
 {

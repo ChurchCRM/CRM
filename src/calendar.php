@@ -43,7 +43,13 @@ require "Include/Header.php"; ?>
 
 <link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/fullcalendar.min.css">
 <link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/fullcalendar.print.css" media="print">
-
+<style>
+  @media print {
+    a[href]:after {
+      content: none !important;
+    }
+  }
+</style>
 <div class="col-lg-12">
   <div class="box box-primary">
     <div class="box-body">
