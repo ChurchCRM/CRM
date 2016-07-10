@@ -1,41 +1,9 @@
 <?php
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Service/EventService.php";
+require "Service/CalendarService.php";
 
-$eventService = new EventService();
-
-$birthDays = $personService->getBirthDays();
-$crmEvents = $eventService->getEvents();
-
-$events = array();
-$year = date("Y");
-
-foreach ($birthDays as $birthDay) {
-  $event = array(
-             "title" => $birthDay["firstName"] . " " . $birthDay["lastName"],
-             "start" => $year . "-" . $birthDay["birthMonth"] . "-" . $birthDay["birthDay"],
-             "url"   => $birthDay["uri"],
-             "backgroundColor" => '#f56954', //red
-             "borderColor"     => '#f56954', //red
-             "allDay" => true
-           );
-
-  array_push($events, $event);
-}
-
-foreach ($crmEvents as $evnt) {
-  $event = array(
-    "title" => $evnt["title"],
-    "start" => $evnt["start"],
-    "end" => $evnt["end"],
-    "backgroundColor" => '#f39c12', //red
-    "borderColor"     => '#f39c12', //red
-    "allDay" => true
-  );
-  array_push($events, $event);
-}
-
+$calenderService = new CalendarService();
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Church Calendar");
@@ -53,12 +21,11 @@ require "Include/Header.php"; ?>
 <div class="col-lg-12">
   <div class="box box-primary">
     <div class="box-body">
-      <div class="fc-event-container fc-day-grid-event" style="background-color:#f56954;border-color:#f56954;color: white; width: 100px">
-          <div class="fc-title">Birthdays</div>
+      <?php foreach ($calenderService->getEventTypes() as $type) { ?>
+      <div class="fc-event-container fc-day-grid-event" style="background-color:<?= $type["backgroundColor"]?>;border-color:<?= $type["backgroundColor"]?>;color: white; width: 100px">
+          <div class="fc-title"><?= $type["Name"]?></div>
       </div>
-      <div class="fc-event-container fc-day-grid-event" style="background-color:#f39c12;border-color:#f39c12;color: white; width: 100px">
-          <div class="fc-title">Events</div>
-      </div>
+      <?php }?>
     </div>
   </div>
 </div>
@@ -96,8 +63,7 @@ require "Include/Header.php"; ?>
         week: 'week',
         day: 'day'
       },
-      //Random default events
-      events: <?= json_encode($events) ?>
+      // events: API CALL ?>
     });
  });
 </script>
