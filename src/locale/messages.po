@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-10 19:37+0000\n"
+"POT-Creation-Date: 2016-07-10 19:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,11 +38,12 @@ msgstr ""
 #: PropertyTypeEditor.php:116 Register.php:93 ReminderReport.php:57
 #: SettingsIndividual.php:120 SettingsIndividual.php:167 SettingsUser.php:109
 #: SettingsUser.php:171 TaxReport.php:54 UserDelete.php:69 UserEditor.php:418
-#: WhyCameEditor.php:103
+#: WhyCameEditor.php:103 sundayschool/SundaySchoolReports.php:217
 msgid "Cancel"
 msgstr ""
 
 #: AutoPaymentClearAccounts.php:20 CatchCreatePayment.php:67
+#: Include/Functions.php:380
 msgid "Cannot execute query."
 msgstr ""
 
@@ -87,7 +88,8 @@ msgstr ""
 #: CSVImport.php:292 DonatedItemEditor.php:209 DonatedItemEditor.php:255
 #: eGive.php:374 FamilyEditor.php:1037 GroupEditor.php:86
 #: PaddleNumEditor.php:171 PersonEditor.php:667 PersonEditor.php:681
-#: PersonEditor.php:932 SelectDelete.php:258
+#: PersonEditor.php:932 SelectDelete.php:258 Include/Functions.php:1147
+#: Include/Functions.php:1190
 msgid "Unassigned"
 msgstr ""
 
@@ -101,6 +103,7 @@ msgid "Date:"
 msgstr ""
 
 #: AutoPaymentEditor.php:621 FinancialReports.php:201 ReminderReport.php:46
+#: sundayschool/SundaySchoolReports.php:147
 msgid "Fiscal Year:"
 msgstr ""
 
@@ -118,6 +121,7 @@ msgstr ""
 
 #: AutoPaymentEditor.php:641 CartToGroup.php:81 GroupReports.php:49
 #: GroupReports.php:152 PersonToGroup.php:70
+#: sundayschool/SundaySchoolReports.php:133
 msgid "None"
 msgstr ""
 
@@ -133,11 +137,13 @@ msgstr ""
 msgid "Last name"
 msgstr ""
 
-#: AutoPaymentEditor.php:672
+#: AutoPaymentEditor.php:672 Reports/ConfirmReportEmail.php:155
+#: Reports/ConfirmReport.php:128
 msgid "Address 1"
 msgstr ""
 
-#: AutoPaymentEditor.php:677
+#: AutoPaymentEditor.php:677 Reports/ConfirmReportEmail.php:159
+#: Reports/ConfirmReport.php:132
 msgid "Address 2"
 msgstr ""
 
@@ -160,11 +166,19 @@ msgid "Country"
 msgstr ""
 
 #: AutoPaymentEditor.php:702 DirectoryReports.php:264
+#: Reports/DirectoryReport.php:327 Reports/DirectoryReport.php:402
+#: Reports/DirectoryReport.php:465 Reports/DirectoryReport.php:780
+#: Reports/GroupReport.php:263
 msgid "Phone"
 msgstr ""
 
 #: AutoPaymentEditor.php:707 CSVImport.php:245 EditEventAttendees.php:52
-#: EventAttendance.php:203 GroupReports.php:136
+#: EventAttendance.php:203 GroupReports.php:136 Reports/CanvassReports.php:263
+#: Reports/ConfirmReportEmail.php:217 Reports/ConfirmReportEmail.php:237
+#: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:206
+#: Reports/DirectoryReport.php:333 Reports/DirectoryReport.php:413
+#: Reports/DirectoryReport.php:476 Reports/DirectoryReport.php:791
+#: Reports/GroupReport.php:277
 msgid "Email"
 msgstr ""
 
@@ -537,7 +551,8 @@ msgstr ""
 #: PersonView.php:567 PersonView.php:671 PrintView.php:294 PrintView.php:429
 #: PropertyList.php:64 PropertyTypeList.php:40 SelectList.php:895
 #: UserList.php:63 VolunteerOpportunityEditor.php:85
-#: VolunteerOpportunityEditor.php:369
+#: VolunteerOpportunityEditor.php:369 Reports/CanvassReports.php:257
+#: Reports/FRBidSheets.php:95
 msgid "Name"
 msgstr ""
 
@@ -625,6 +640,7 @@ msgstr ""
 #: CartToFamily.php:294 CartToFamily.php:302 CartToFamily.php:310
 #: FamilyEditor.php:757 FamilyEditor.php:767 FamilyEditor.php:777
 #: PersonEditor.php:826 PersonEditor.php:843 PersonEditor.php:861
+#: Include/Functions.php:1181
 msgid "Do not auto-format"
 msgstr ""
 
@@ -730,12 +746,14 @@ msgid "Family Role"
 msgstr ""
 
 #: CartView.php:128 CartView.php:147 DonationFundEditor.php:218
-#: FinancialReports.php:293
+#: FinancialReports.php:293 Include/Functions.php:985
+#: Include/Functions.php:1070
 msgid "Yes"
 msgstr ""
 
 #: CartView.php:140 CartView.php:149 DonationFundEditor.php:219
-#: FinancialReports.php:294
+#: FinancialReports.php:294 Include/Functions.php:987
+#: Include/Functions.php:1075
 msgid "No"
 msgstr ""
 
@@ -909,7 +927,8 @@ msgstr ""
 msgid "No Attendees Assigned to Event"
 msgstr ""
 
-#: Checkin.php:518 PersonView.php:196
+#: Checkin.php:518 PersonView.php:196 Include/Functions.php:1795
+#: Reports/CanvassReports.php:261 Reports/VotingMembers.php:92
 msgid "Member"
 msgstr ""
 
@@ -974,7 +993,7 @@ msgstr ""
 msgid "Suffix:"
 msgstr ""
 
-#: CSVExport.php:133
+#: CSVExport.php:133 Reports/TaxReport.php:195
 msgid "Envelope:"
 msgstr ""
 
@@ -1346,6 +1365,7 @@ msgstr ""
 
 #: DepositSlipEditor.php:698 FamilyView.php:601 FindFundRaiser.php:225
 #: GroupMeeting.php:177 PledgeEditor.php:690 SelectDelete.php:316
+#: Include/Functions.php:173
 msgid "Date"
 msgstr ""
 
@@ -1433,7 +1453,9 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: DirectoryReports.php:176
+#: DirectoryReports.php:176 Reports/ConfirmReportEmail.php:218
+#: Reports/ConfirmReportEmail.php:238 Reports/ConfirmReport.php:187
+#: Reports/ConfirmReport.php:207
 msgid "Birthday"
 msgstr ""
 
@@ -1485,7 +1507,7 @@ msgstr ""
 msgid "Paper Size:"
 msgstr ""
 
-#: DirectoryReports.php:220
+#: DirectoryReports.php:220 Include/LabelFunctions.php:62
 msgid "Font Size:"
 msgstr ""
 
@@ -1758,6 +1780,7 @@ msgid "Month"
 msgstr ""
 
 #: ElectronicPaymentList.php:209 FamilyEditor.php:934
+#: Include/Functions.php:177
 msgid "Year"
 msgstr ""
 
@@ -2214,7 +2237,8 @@ msgid "Last"
 msgstr ""
 
 #: FamilyEditor.php:931 OptionManager.php:65 OptionManager.php:89
-#: PrintView.php:296 PrintView.php:355
+#: PrintView.php:296 PrintView.php:355 Reports/CanvassReports.php:259
+#: Reports/GroupReport.php:252
 msgid "Role"
 msgstr ""
 
@@ -2230,7 +2254,7 @@ msgstr ""
 msgid "Select Role"
 msgstr ""
 
-#: FamilyEditor.php:994
+#: FamilyEditor.php:994 Include/Functions.php:907 Include/Functions.php:1080
 msgid "Unknown"
 msgstr ""
 
@@ -2681,7 +2705,7 @@ msgstr ""
 msgid "Display:"
 msgstr ""
 
-#: FindFundRaiser.php:224 PaddleNumList.php:55
+#: FindFundRaiser.php:224 PaddleNumList.php:55 Include/Functions.php:179
 msgid "Number"
 msgstr ""
 
@@ -2973,11 +2997,11 @@ msgstr ""
 msgid "Standard Info:"
 msgstr ""
 
-#: GroupReports.php:135
+#: GroupReports.php:135 Reports/CanvassReports.php:262
 msgid "Cell Phone"
 msgstr ""
 
-#: GroupReports.php:137
+#: GroupReports.php:137 Reports/GroupReport.php:280
 msgid "Other Email"
 msgstr ""
 
@@ -3492,7 +3516,8 @@ msgstr ""
 msgid "Birth Year:"
 msgstr ""
 
-#: PersonEditor.php:649
+#: PersonEditor.php:649 Reports/ConfirmReport.php:188
+#: Reports/ConfirmReport.php:208
 msgid "Hide Age"
 msgstr ""
 
@@ -3732,7 +3757,7 @@ msgstr ""
 msgid "Family Members:"
 msgstr ""
 
-#: PrintView.php:297
+#: PrintView.php:297 Reports/CanvassReports.php:260
 msgid "Age"
 msgstr ""
 
@@ -4553,4 +4578,593 @@ msgstr ""
 
 #: WhyCameEditor.php:97
 msgid "How did you learn of the church?"
+msgstr ""
+
+#: email/Dashboard.php:24
+msgid "eMail Dashboard"
+msgstr ""
+
+#: email/MailChimpMissingReport.php:23
+msgid "People not in Mailchimp"
+msgstr ""
+
+#: Include/CanvassUtilities.php:70
+msgid "No families need canvassers assigned"
+msgstr ""
+
+#: Include/CanvassUtilities.php:82
+#, php-format
+msgid "Canvassers assigned at random to %d families."
+msgstr ""
+
+#: Include/CanvassUtilities.php:115
+#, php-format
+msgid "Canvassers assigned at random to %d non-pledging families."
+msgstr ""
+
+#: Include/EnvelopeFunctions.php:39
+msgid "Assigned envelope numbers to all families with at least one member."
+msgstr ""
+
+#: Include/EnvelopeFunctions.php:41
+msgid "Assigned envelope numbers to all families."
+msgstr ""
+
+#: Include/Functions.php:172
+msgid "True / False"
+msgstr ""
+
+#: Include/Functions.php:174
+msgid "Text Field (50 char)"
+msgstr ""
+
+#: Include/Functions.php:175
+msgid "Text Field (100 char)"
+msgstr ""
+
+#: Include/Functions.php:176
+msgid "Text Field (long)"
+msgstr ""
+
+#: Include/Functions.php:178
+msgid "Season"
+msgstr ""
+
+#: Include/Functions.php:180
+msgid "Person from Group"
+msgstr ""
+
+#: Include/Functions.php:181
+msgid "Money"
+msgstr ""
+
+#: Include/Functions.php:182
+msgid "Phone Number"
+msgstr ""
+
+#: Include/Functions.php:183
+msgid "Custom Drop-Down List"
+msgstr ""
+
+#: Include/Functions.php:189
+msgid "Thank you for registering your ChurchCRM installation."
+msgstr ""
+
+#: Include/Functions.php:193
+msgid "PDFs successfully emailed "
+msgstr ""
+
+#: Include/Functions.php:198
+msgid "PDF successfully emailed to family members."
+msgstr ""
+
+#: Include/Functions.php:200
+msgid "Failed to email PDF to family members."
+msgstr ""
+
+#: Include/Functions.php:207
+msgid "Group successfully added to the Cart."
+msgstr ""
+
+#: Include/Functions.php:213
+msgid "Group successfully removed from the Cart."
+msgstr ""
+
+#: Include/Functions.php:217
+msgid "Profile Image successfully removed."
+msgstr ""
+
+#: Include/Functions.php:221
+msgid "Profile Image successfully updated."
+msgstr ""
+
+#: Include/Functions.php:225
+msgid "Profile Image upload Error."
+msgstr ""
+
+#: Include/Functions.php:233
+msgid "Selected record successfully added to the Cart."
+msgstr ""
+
+#: Include/Functions.php:239
+msgid "Family successfully added to the Cart."
+msgstr ""
+
+#: Include/Functions.php:245
+msgid "Selected record successfully removed from the Cart."
+msgstr ""
+
+#: Include/Functions.php:251
+msgid "Your cart has been successfully emptied."
+msgstr ""
+
+#: Include/Functions.php:273
+msgid "item(s) added to the Cart."
+msgstr ""
+
+#: Include/Functions.php:344
+msgid "Select Fiscal Year"
+msgstr ""
+
+#: Include/Functions.php:711
+msgid "pm"
+msgstr ""
+
+#: Include/Functions.php:716
+msgid "am"
+msgstr ""
+
+#: Include/Functions.php:885 Include/Functions.php:897
+msgid "1 m old"
+msgstr ""
+
+#: Include/Functions.php:887 Include/Functions.php:899
+msgid "m old"
+msgstr ""
+
+#: Include/Functions.php:895
+msgid "1 yr old"
+msgstr ""
+
+#: Include/Functions.php:902 Include/Functions.php:904
+msgid "yrs old"
+msgstr ""
+
+#: Include/Functions.php:1049
+msgid "Invalid Editor ID!"
+msgstr ""
+
+#: Include/Functions.php:1084
+msgid "[format: YYYY-MM-DD]"
+msgstr ""
+
+#: Include/Functions.php:1110
+msgid "Select Season"
+msgstr ""
+
+#: Include/Functions.php:1113
+msgid "Winter"
+msgstr ""
+
+#: Include/Functions.php:1116
+msgid "Spring"
+msgstr ""
+
+#: Include/Functions.php:1119
+msgid "Summer"
+msgstr ""
+
+#: Include/Functions.php:1122
+msgid "Fall"
+msgstr ""
+
+#: Include/Functions.php:1206
+msgid "Error: Invalid Editor ID!"
+msgstr ""
+
+#: Include/Functions.php:1405
+msgid "Not a valid date"
+msgstr ""
+
+#: Include/Functions.php:1419
+msgid "Invalid Year"
+msgstr ""
+
+#: Include/Functions.php:1424
+msgid "Out of range: Allowable values are 1901 to 2155"
+msgstr ""
+
+#: Include/Functions.php:1439 Include/Functions.php:1458
+msgid "Invalid Number"
+msgstr ""
+
+#: Include/Functions.php:1444
+msgid "Number too large. Must be between -2147483648 and 2147483647"
+msgstr ""
+
+#: Include/Functions.php:1463
+msgid "Money amount too large. Maximum is $999999999.99"
+msgstr ""
+
+#: Include/Functions.php:1671
+msgid " Bold Italic"
+msgstr ""
+
+#: Include/Functions.php:1676
+msgid " Italic"
+msgstr ""
+
+#: Include/Functions.php:1678
+msgid " Bold"
+msgstr ""
+
+#: Include/LabelFunctions.php:44
+msgid "Font:"
+msgstr ""
+
+#: Include/LabelFunctions.php:80
+msgid "Label Type:"
+msgstr ""
+
+#: Include/LabelFunctions.php:96
+msgid "Label Grouping"
+msgstr ""
+
+#: Include/LabelFunctions.php:103
+msgid "All Individuals"
+msgstr ""
+
+#: Include/LabelFunctions.php:109
+msgid "Grouped by Family"
+msgstr ""
+
+#: Include/LabelFunctions.php:115
+msgid "To the parents of:"
+msgstr ""
+
+#: Include/LabelFunctions.php:130
+msgid "Start Row:"
+msgstr ""
+
+#: Include/LabelFunctions.php:137
+msgid "Start Column:"
+msgstr ""
+
+#: Include/LabelFunctions.php:149
+msgid "Ignore Incomplete<br>Addresses:"
+msgstr ""
+
+#: Include/LabelFunctions.php:161
+msgid "File Type:"
+msgstr ""
+
+#: Include/ReportFunctions.php:27
+msgid "ERROR: FPDF Library was not found in your path <i>or</i> at: "
+msgstr ""
+
+#: Include/ReportFunctions.php:54
+msgid "ERROR: JPGraph Library was not found in your path <i>or</i> at: "
+msgstr ""
+
+#: Reports/AdvancedDeposit.php:371 Reports/AdvancedDeposit.php:388
+#: Reports/AdvancedDeposit.php:467 Reports/AdvancedDeposit.php:480
+#: Reports/AdvancedDeposit.php:521 Reports/AdvancedDeposit.php:538
+#: Reports/AdvancedDeposit.php:617 Reports/AdvancedDeposit.php:630
+#: Reports/AdvancedDeposit.php:671 Reports/AdvancedDeposit.php:688
+#: Reports/AdvancedDeposit.php:767 Reports/AdvancedDeposit.php:780
+#: Reports/AdvancedDeposit.php:795
+msgid "items"
+msgstr ""
+
+#: Reports/AdvancedDeposit.php:373 Reports/AdvancedDeposit.php:390
+#: Reports/AdvancedDeposit.php:469 Reports/AdvancedDeposit.php:482
+#: Reports/AdvancedDeposit.php:523 Reports/AdvancedDeposit.php:540
+#: Reports/AdvancedDeposit.php:619 Reports/AdvancedDeposit.php:632
+#: Reports/AdvancedDeposit.php:673 Reports/AdvancedDeposit.php:690
+#: Reports/AdvancedDeposit.php:769 Reports/AdvancedDeposit.php:782
+#: Reports/AdvancedDeposit.php:797
+msgid "item"
+msgstr ""
+
+#: Reports/CanvassReports.php:224
+msgid "Did not pledge"
+msgstr ""
+
+#: Reports/CanvassReports.php:228
+msgid "Top pledger"
+msgstr ""
+
+#: Reports/CanvassReports.php:230
+msgid "Pledged"
+msgstr ""
+
+#: Reports/CanvassReports.php:237
+msgid "Pledge status: "
+msgstr ""
+
+#: Reports/CanvassReports.php:258 Reports/ConfirmReportEmail.php:215
+#: Reports/ConfirmReportEmail.php:235 Reports/ConfirmReport.php:184
+#: Reports/ConfirmReport.php:204
+msgid "M/F"
+msgstr ""
+
+#: Reports/ClassAttendance.php:186
+msgid "Totals"
+msgstr ""
+
+#: Reports/ClassAttendance.php:353 Reports/ClassList.php:89
+msgid "Teacher"
+msgstr ""
+
+#: Reports/ClassAttendance.php:358 Reports/ClassList.php:137
+msgid "Student"
+msgstr ""
+
+#: Reports/ClassAttendance.php:366 Reports/ClassAttendance.php:367
+#: Reports/ClassList.php:110 Reports/ClassList.php:111
+msgid "Liaison"
+msgstr ""
+
+#: Reports/ConfirmReportEmail.php:151 Reports/ConfirmReport.php:124
+msgid "Family name"
+msgstr ""
+
+#: Reports/ConfirmReportEmail.php:163 Reports/ConfirmReport.php:136
+msgid "City, State, Zip"
+msgstr ""
+
+#: Reports/ConfirmReportEmail.php:167 Reports/ConfirmReport.php:140
+msgid "Home phone"
+msgstr ""
+
+#: Reports/ConfirmReportEmail.php:171 Reports/ConfirmReport.php:144
+msgid "Send Newsletter"
+msgstr ""
+
+#: Reports/ConfirmReportEmail.php:180 Reports/ConfirmReport.php:153
+msgid "Anniversary Date"
+msgstr ""
+
+#: Reports/ConfirmReportEmail.php:186 Reports/ConfirmReport.php:159
+msgid "Family E-Mail"
+msgstr ""
+
+#: Reports/ConfirmReportEmail.php:214 Reports/ConfirmReportEmail.php:234
+#: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:203
+msgid "Member Name"
+msgstr ""
+
+#: Reports/ConfirmReportEmail.php:216 Reports/ConfirmReportEmail.php:236
+#: Reports/ConfirmReport.php:185 Reports/ConfirmReport.php:205
+msgid "Adult/Child"
+msgstr ""
+
+#: Reports/ConfirmReportEmail.php:219 Reports/ConfirmReportEmail.php:239
+#: Reports/ConfirmReport.php:189 Reports/ConfirmReport.php:209
+msgid "Cell phone"
+msgstr ""
+
+#: Reports/ConfirmReportEmail.php:220 Reports/ConfirmReportEmail.php:240
+#: Reports/ConfirmReport.php:190 Reports/ConfirmReport.php:210
+msgid "Member/Friend"
+msgstr ""
+
+#: Reports/DirectoryReport.php:60 Reports/DirectoryReport.php:102
+msgid "Directory"
+msgstr ""
+
+#: Reports/DirectoryReport.php:79
+msgid "Page"
+msgstr ""
+
+#: Reports/DirectoryReport.php:329 Reports/DirectoryReport.php:406
+#: Reports/DirectoryReport.php:469 Reports/DirectoryReport.php:784
+#: Reports/GroupReport.php:268
+msgid "Work"
+msgstr ""
+
+#: Reports/DirectoryReport.php:331 Reports/DirectoryReport.php:410
+#: Reports/DirectoryReport.php:473 Reports/DirectoryReport.php:788
+#: Reports/GroupReport.php:273
+msgid "Cell"
+msgstr ""
+
+#: Reports/DirectoryReport.php:335
+msgid "Wedding"
+msgstr ""
+
+#: Reports/DirectoryReport.php:362
+msgid "and"
+msgstr ""
+
+#: Reports/DirectoryReport.php:415 Reports/DirectoryReport.php:478
+#: Reports/DirectoryReport.php:793
+msgid "Work/Other Email"
+msgstr ""
+
+#: Reports/DirectoryReport.php:676
+msgid ""
+"This option requires at least version 3.22 of MySQL!  Hit browser back "
+"button to return to ChurchCRM."
+msgstr ""
+
+#: Reports/FamilyPledgeSummary.php:141 Reports/ReminderReport.php:165
+msgid "All Funds"
+msgstr ""
+
+#: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:166
+msgid " for all funds"
+msgstr ""
+
+#: Reports/FamilyPledgeSummary.php:144 Reports/ReminderReport.php:168
+msgid " for fund "
+msgstr ""
+
+#: Reports/FamilyPledgeSummary.php:146 Reports/ReminderReport.php:170
+msgid "for funds "
+msgstr ""
+
+#: Reports/FRBidSheets.php:84 Reports/FRCatalog.php:104
+#: Reports/FRCertificates.php:85
+msgid "Estimated value "
+msgstr ""
+
+#: Reports/FRBidSheets.php:86 Reports/FRCatalog.php:106
+#: Reports/FRCertificates.php:87
+msgid "Donated by "
+msgstr ""
+
+#: Reports/FRBidSheets.php:96
+msgid "Paddle"
+msgstr ""
+
+#: Reports/FRBidSheets.php:97
+msgid "Bid"
+msgstr ""
+
+#: Reports/FRCatalog.php:102
+msgid "Minimum bid "
+msgstr ""
+
+#: Reports/FRCertificates.php:45
+msgid "Certificate of Ownership"
+msgstr ""
+
+#: Reports/FundRaiserStatement.php:96
+msgid "Donated Items:"
+msgstr ""
+
+#: Reports/FundRaiserStatement.php:147
+msgid "Purchased Items:"
+msgstr ""
+
+#: Reports/FundRaiserStatement.php:219
+msgid "Total of all purchases: $"
+msgstr ""
+
+#: Reports/FundRaiserStatement.php:224
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr ""
+
+#: Reports/FundRaiserStatement.php:226
+msgid "Buyer # "
+msgstr ""
+
+#: Reports/FundRaiserStatement.php:226
+msgid "Total purchases: $"
+msgstr ""
+
+#: Reports/FundRaiserStatement.php:226
+msgid "Amount paid: ________________"
+msgstr ""
+
+#: Reports/FundRaiserStatement.php:228
+msgid ""
+"Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ "
+"__    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr ""
+
+#: Reports/FundRaiserStatement.php:230
+msgid ""
+"                                        Signature "
+"________________________________________________________________"
+msgstr ""
+
+#: Reports/GroupReport.php:58
+msgid "Group Directory"
+msgstr ""
+
+#: Reports/PrintDeposit.php:347
+msgid "UNDESIGNATED"
+msgstr ""
+
+#: Reports/TaxReport.php:232
+msgid "Please detach this slip and mail with your next gift."
+msgstr ""
+
+#: Reports/TaxReport.php:234
+msgid "Please mail you next gift to "
+msgstr ""
+
+#: Reports/TaxReport.php:236
+msgid ", Phone: "
+msgstr ""
+
+#: Reports/TaxReport.php:264
+msgid "Gift Amount:"
+msgstr ""
+
+#: Reports/TaxReport.php:267
+msgid "Gift Designation:"
+msgstr ""
+
+#: Reports/VotingMembers.php:53
+msgid "Voting members "
+msgstr ""
+
+#: sundayschool/SundaySchoolClassView.php:36
+msgid "Sunday School: "
+msgstr ""
+
+#: sundayschool/SundaySchoolDashboard.php:34
+msgid "Sunday School Dashboard"
+msgstr ""
+
+#: sundayschool/SundaySchoolDashboard.php:120
+#: sundayschool/SundaySchoolReports.php:25
+msgid "Sunday School Reports"
+msgstr ""
+
+#: sundayschool/SundaySchoolDashboard.php:121
+msgid "Generate class lists and attendance sheets"
+msgstr ""
+
+#: sundayschool/SundaySchoolDashboard.php:125
+msgid "Export All Classes, Kids, and Parent to CSV file"
+msgstr ""
+
+#: sundayschool/SundaySchoolReports.php:101
+msgid ""
+"At least one group must be selected to make class lists or attendance sheets."
+msgstr ""
+
+#: sundayschool/SundaySchoolReports.php:129
+msgid ""
+"Select Group: \n"
+"To select multiple hold CTL"
+msgstr ""
+
+#: sundayschool/SundaySchoolReports.php:154
+msgid "First Sunday:"
+msgstr ""
+
+#: sundayschool/SundaySchoolReports.php:159
+msgid "Last Sunday:"
+msgstr ""
+
+#: sundayschool/SundaySchoolReports.php:164
+#: sundayschool/SundaySchoolReports.php:169
+#: sundayschool/SundaySchoolReports.php:174
+#: sundayschool/SundaySchoolReports.php:179
+#: sundayschool/SundaySchoolReports.php:184
+#: sundayschool/SundaySchoolReports.php:189
+#: sundayschool/SundaySchoolReports.php:194
+#: sundayschool/SundaySchoolReports.php:199
+msgid "No Sunday School:"
+msgstr ""
+
+#: sundayschool/SundaySchoolReports.php:204
+msgid "Extra Students:"
+msgstr ""
+
+#: sundayschool/SundaySchoolReports.php:208
+msgid "Extra Teachers:"
+msgstr ""
+
+#: sundayschool/SundaySchoolReports.php:215
+msgid "Create Class List"
+msgstr ""
+
+#: sundayschool/SundaySchoolReports.php:216
+msgid "Create Attendance Sheet"
 msgstr ""
