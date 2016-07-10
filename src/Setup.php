@@ -36,7 +36,7 @@ $required = array(
   'GD Library for image manipulation' => (extension_loaded('gd') && function_exists('gd_info')),
   'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
   'cURL' => function_exists('curl_version'),
-  'locale' => function_exists('bindtextdomain')
+  'locale/gettext' => function_exists('bindtextdomain')
 );
 
 foreach ($required as $feature => $pass) {
@@ -166,6 +166,6 @@ $("#dangerContinue").click(function(){
           </div>
         </div>
       </div>
-    <?php 
+    <?php
     require("Include/FooterNotLoggedIn.php");
     ?>
