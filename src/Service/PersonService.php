@@ -1,10 +1,10 @@
 <?php
 
-// require_once (dirname(__FILE__).DIRECTORY_SEPARATOR."/../vendor/autoload.php");
+require_once dirname(__FILE__) . '/../vendor/autoload.php';
+require_once dirname(__FILE__) . '/../orm/conf/config.php';
 
-// require_once "../orm/model/ChurchCRM/members/PersonQuery.php";
-
-// use ChurchCRM\members\PersonQuery as PersonQuery;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\ListOptionQuery;
 
 class PersonService
 {
@@ -15,58 +15,25 @@ class PersonService
     $this->baseURL = $_SESSION['sRootPath'];
   }
 
-  function get($id)
-  {
-    //return $this->personQuery->findPK($id);
-    $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email FROM person_per WHERE per_ID =' . $id;
-    $person = RunQuery($sSQL);
-    extract(mysql_fetch_array($person));
-    return "{id: $id, fName: $per_FirstName}";
-  }
-
-  function getBirthDays()
-  {
-    //return $this->personQuery->findPK($id);
-    $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_BirthMonth, per_BirthDay FROM person_per';
-    $result = mysql_query($sSQL);
-
-    $return = array();
-    while ($row = mysql_fetch_array($result)) {
-      $values['id'] = $row['per_ID'];
-      $values['firstName'] = $row['per_FirstName'];
-      $values['lastName'] = $row['per_LastName'];
-      $values['birthDay'] = $row['per_BirthDay'];
-      $values['birthMonth'] = $row['per_BirthMonth'];
-      $values['uri'] = $this->getViewURI($row['per_ID']);
-
-      array_push($return, $values);
-    }
-
-    return $return;
-  }
-
   function getPhoto($id)
   {
     global $sEnableGravatarPhotos;
-    if ( $id != "" ) {
+    if ($id != "") {
       $photoFile = $this->getUploadedPhoto($id);
-      if ( $photoFile == ""  && $sEnableGravatarPhotos ) {
-        $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email, fmr.lst_OptionName AS sFamRole
-                 FROM person_per per
-                 LEFT JOIN list_lst fmr ON per.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
-                 WHERE per_ID =' . $id;
-        $person = RunQuery($sSQL);
-        extract(mysql_fetch_array($person));
-        if ( $per_Email != "" )
-        {
-          $photoFile = $this->getGravatar($per_Email);
+      if ($photoFile == "") {
+        // need to do inter jon with list for fmaily role.
+        $person = PersonQuery::create()->filterById($id);
+        if ($sEnableGravatarPhotos) {
+          $photoFile = $person->getGravatar();
+        }
+        if ($photoFile == "") {
+          // lst_OptionName AS sFamRole
+          // LEFT JOIN list_lst fmr ON per.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
+          // $familyRoles =  ListQuery::create()->filterByOptionId($person->getFmrId())->filterById(2)->find();
+          // $photoFile = $person->getDefaultPhoto($this->baseURL, $familyRoles->getOptionName());
         }
       }
-
-      if ( $photoFile == "" ) {
-        $photoFile = $this->getDefaultPhoto($per_Gender, $sFamRole);
-      }
-       return $photoFile;
+      return $photoFile;
     }
 
     return $this->baseURL . "/Images/x.gif";
@@ -109,21 +76,6 @@ class PersonService
 
     if ($hasFile) {
       return $photoFile;
-    } else {
-      return "";
-    }
-  }
-
-  private
-  function getGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
-  {
-    $url = 'http://www.gravatar.com/avatar/';
-    $url .= md5(strtolower(trim($email)));
-    $url .= "?s=$s&d=$d&r=$r";
-
-    $headers = @get_headers($url);
-    if (strpos($headers[0], '404') === false) {
-      return $url;
     } else {
       return "";
     }
@@ -177,20 +129,6 @@ class PersonService
     }
   }
 
-  private
-  function getDefaultPhoto($gender, $famRole)
-  {
-    $photoFile = $this->baseURL . "/Images/Person/man-128.png";
-    if ($gender == 1 && $famRole == "Child") {
-      $photoFile = $this->baseURL . "/Images/Person/kid_boy-128.png";
-    } else if ($gender == 2 && $famRole != "Child") {
-      $photoFile = $this->baseURL . "/Images/Person/woman-128.png";
-    } else if ($gender == 2 && $famRole == "Child") {
-      $photoFile = $this->baseURL . "/Images/Person/kid_girl-128.png";
-    }
-
-    return $photoFile;
-  }
 
   function insertPerson($user)
   {
