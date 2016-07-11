@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-10 19:47+0000\n"
+"POT-Creation-Date: 2016-07-11 00:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,7 +80,8 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: AutoPaymentEditor.php:587 PersonEditor.php:679 PrintView.php:226
+#: AutoPaymentEditor.php:587 PersonEditor.php:679 PersonView.php:222
+#: PrintView.php:226
 msgid "Family:"
 msgstr ""
 
@@ -311,6 +312,10 @@ msgstr ""
 msgid "CSV Export"
 msgstr ""
 
+#: CSVExport.php:78
+msgid "Field Selection"
+msgstr ""
+
 #: CSVExport.php:82 PersonEditor.php:602
 msgid "Last Name:"
 msgstr ""
@@ -418,12 +423,20 @@ msgstr ""
 msgid "* Depends whether using person or family output method"
 msgstr ""
 
+#: CSVExport.php:200
+msgid "Custom Field Selection"
+msgstr ""
+
 #: CSVExport.php:209 MembersDashboard.php:58
 msgid "Custom Person Fields"
 msgstr ""
 
 #: CSVExport.php:231 MembersDashboard.php:60
 msgid "Custom Family Fields"
+msgstr ""
+
+#: CSVExport.php:259 FinancialReports.php:107
+msgid "Filters"
 msgstr ""
 
 #: CSVExport.php:265
@@ -1409,10 +1422,10 @@ msgstr ""
 #: DepositSlipEditor.php:714 ElectronicPaymentList.php:213
 #: ElectronicPaymentList.php:272 EventEditor.php:242 EventNames.php:306
 #: FamilyView.php:515 FamilyView.php:607 FindFundRaiser.php:223
-#: FindFundRaiser.php:232 ListEvents.php:295 PersonView.php:571
-#: PersonView.php:607 PropertyList.php:69 PropertyList.php:111
-#: PropertyTypeList.php:45 PropertyTypeList.php:67 SelectList.php:947
-#: UserList.php:62 UserList.php:86
+#: FindFundRaiser.php:232 ListEvents.php:295 PersonView.php:207
+#: PersonView.php:571 PersonView.php:607 PropertyList.php:69
+#: PropertyList.php:111 PropertyTypeList.php:45 PropertyTypeList.php:67
+#: SelectList.php:947 UserList.php:62 UserList.php:86
 msgid "Edit"
 msgstr ""
 
@@ -1445,7 +1458,7 @@ msgid "Information to Include:"
 msgstr ""
 
 #: DirectoryReports.php:174 DirectoryReports.php:248 GeoPage.php:326
-#: GroupReports.php:132
+#: GroupReports.php:132 Menu.php:211
 msgid "Address"
 msgstr ""
 
@@ -1735,7 +1748,7 @@ msgstr ""
 msgid "Vanco ACH"
 msgstr ""
 
-#: ElectronicPaymentList.php:208 FamilyEditor.php:932
+#: ElectronicPaymentList.php:208 FamilyEditor.php:932 calendar.php:95
 msgid "Month"
 msgstr ""
 
@@ -2202,7 +2215,7 @@ msgstr ""
 msgid "Role"
 msgstr ""
 
-#: FamilyEditor.php:933
+#: FamilyEditor.php:933 calendar.php:97
 msgid "Day"
 msgstr ""
 
@@ -2386,7 +2399,7 @@ msgstr ""
 msgid " Canvass Entry"
 msgstr ""
 
-#: FinancialReports.php:35
+#: FinancialReports.php:35 ReportList.php:35
 msgid "Financial Reports"
 msgstr ""
 
@@ -2436,10 +2449,6 @@ msgstr ""
 
 #: FinancialReports.php:69 GroupReports.php:84
 msgid "Next"
-msgstr ""
-
-#: FinancialReports.php:107
-msgid "Filters"
 msgstr ""
 
 #: FinancialReports.php:141
@@ -3250,6 +3259,70 @@ msgid ""
 "Service Standard Address Format.<br>"
 msgstr ""
 
+#: Menu.php:58
+msgid "Welcome to <b>Church</b>CRM"
+msgstr ""
+
+#: Menu.php:74
+msgid "Families"
+msgstr ""
+
+#: Menu.php:81
+msgid "See all Families"
+msgstr ""
+
+#: Menu.php:93
+msgid "People"
+msgstr ""
+
+#: Menu.php:100
+msgid "See All People"
+msgstr ""
+
+#: Menu.php:112
+msgid "Sunday School Classes"
+msgstr ""
+
+#: Menu.php:119 Menu.php:138
+msgid "More info"
+msgstr ""
+
+#: Menu.php:131
+msgid "Groups"
+msgstr ""
+
+#: Menu.php:173
+msgid "Latest Families"
+msgstr ""
+
+#: Menu.php:180 Menu.php:210
+msgid "Family Name"
+msgstr ""
+
+#: Menu.php:181
+msgid "Adress"
+msgstr ""
+
+#: Menu.php:182
+msgid "Created"
+msgstr ""
+
+#: Menu.php:203
+msgid "Updated Families"
+msgstr ""
+
+#: Menu.php:212
+msgid "Updated"
+msgstr ""
+
+#: Menu.php:235
+msgid "Latest Members"
+msgstr ""
+
+#: Menu.php:264
+msgid "Updated Members"
+msgstr ""
+
 #: NoteDelete.php:29
 msgid "Note Delete Confirmation"
 msgstr ""
@@ -3505,6 +3578,14 @@ msgstr ""
 msgid "Not assigned"
 msgstr ""
 
+#: PersonView.php:217
+msgid "About Me"
+msgstr ""
+
+#: PersonView.php:236
+msgid "Address:"
+msgstr ""
+
 #: PersonView.php:242
 msgid "Birthdate:"
 msgstr ""
@@ -3549,8 +3630,24 @@ msgstr ""
 msgid "No group assignments."
 msgstr ""
 
+#: PersonView.php:506
+msgid "Change Role"
+msgstr ""
+
+#: PersonView.php:508
+msgid "Update Properties"
+msgstr ""
+
+#: PersonView.php:528
+msgid "Assign New Group"
+msgstr ""
+
 #: PersonView.php:529
 msgid "Person will be assigned to the Group in the Default Role."
+msgstr ""
+
+#: PersonView.php:543
+msgid "Assign User to Group"
 msgstr ""
 
 #: PersonView.php:666
@@ -4010,6 +4107,10 @@ msgstr ""
 
 #: ReportList.php:47
 msgid "Automated support for conducting an every-member canvass."
+msgstr ""
+
+#: ReportList.php:67
+msgid "Event Attendance Reports"
 msgstr ""
 
 #: RestoreDatabase.php:26
@@ -4540,6 +4641,22 @@ msgstr ""
 msgid "Church Calendar"
 msgstr ""
 
+#: calendar.php:57
+msgid "Birthdays"
+msgstr ""
+
+#: calendar.php:60
+msgid "Events"
+msgstr ""
+
+#: calendar.php:94
+msgid "Today"
+msgstr ""
+
+#: calendar.php:96
+msgid "Week"
+msgstr ""
+
 #: eGive.php:295
 msgid "Start Date: "
 msgstr ""
@@ -4796,6 +4913,22 @@ msgstr ""
 
 #: Include/Functions.php:1678
 msgid " Bold"
+msgstr ""
+
+#: Include/Header-function.php:314 Include/Header-function.php:513
+msgid "Dashboard"
+msgstr ""
+
+#: Include/Header-function.php:417
+msgid "Change Password"
+msgstr ""
+
+#: Include/Header-function.php:420
+msgid "My Settings"
+msgstr ""
+
+#: Include/Header-function.php:532
+msgid "Home"
 msgstr ""
 
 #: Include/LabelFunctions.php:44
