@@ -1,22 +1,21 @@
 # Change Log
 
-## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
-
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.6...HEAD)
+## [2.1.7](https://github.com/ChurchCRM/CRM/tree/2.1.7) (2016-07-11)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.6...2.1.7)
 
 **Implemented enhancements:**
 
 - Locale: french fr\_FR [\#775](https://github.com/ChurchCRM/CRM/issues/775)
 - fix bad $sRootPath at runTime [\#741](https://github.com/ChurchCRM/CRM/issues/741)
-- Locale: french fr\_FR changes \#775 [\#790](https://github.com/ChurchCRM/CRM/pull/790) ([DawoudIO](https://github.com/DawoudIO))
 - System Check and Config.php [\#789](https://github.com/ChurchCRM/CRM/pull/789) ([DawoudIO](https://github.com/DawoudIO))
+- Locale: french fr\_FR changes \#775 [\#790](https://github.com/ChurchCRM/CRM/pull/790) ([DawoudIO](https://github.com/DawoudIO))
 - Version cleanup [\#784](https://github.com/ChurchCRM/CRM/pull/784) ([DawoudIO](https://github.com/DawoudIO))
 
 **Fixed bugs:**
 
-- vendor directory missing in 2.1.6 tar file [\#800](https://github.com/ChurchCRM/CRM/issues/800)
 - Setup.php Get Apache Modules [\#797](https://github.com/ChurchCRM/CRM/issues/797)
 - Bugs and correction with get text [\#776](https://github.com/ChurchCRM/CRM/issues/776)
+- vendor directory missing in 2.1.6 tar file [\#800](https://github.com/ChurchCRM/CRM/issues/800)
 - fix bad $sRootPath at runTime [\#741](https://github.com/ChurchCRM/CRM/issues/741)
 - Deposit Report [\#740](https://github.com/ChurchCRM/CRM/issues/740)
 - Restore DB does not work. [\#708](https://github.com/ChurchCRM/CRM/issues/708)
@@ -32,10 +31,10 @@
 
 **Merged pull requests:**
 
-- Locale: System testing & build [\#804](https://github.com/ChurchCRM/CRM/pull/804) ([DawoudIO](https://github.com/DawoudIO))
 - fix install process [\#799](https://github.com/ChurchCRM/CRM/pull/799) ([crossan007](https://github.com/crossan007))
 - Fix Restore \#708 [\#796](https://github.com/ChurchCRM/CRM/pull/796) ([crossan007](https://github.com/crossan007))
 - update from master [\#795](https://github.com/ChurchCRM/CRM/pull/795) ([crossan007](https://github.com/crossan007))
+- Locale: System testing & build [\#804](https://github.com/ChurchCRM/CRM/pull/804) ([DawoudIO](https://github.com/DawoudIO))
 
 ## [2.1.6](https://github.com/ChurchCRM/CRM/tree/2.1.6) (2016-07-06)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.5...2.1.6)
