@@ -32,7 +32,7 @@ require 'Include/Header.php';
     <div class="col-lg-12">
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Financial Reports</h3>
+          <h3 class="box-title"><?= gettext("Financial Reports") ?></h3>
         </div>
         <div class="box-body">
           <p>
@@ -64,7 +64,7 @@ require 'Include/Header.php';
     <div class="col-lg-12">
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Event Attendance Reports</h3>
+          <h3 class="box-title"><?= gettext("Event Attendance Reports") ?></h3>
         </div>
         <div class="box-body">
           <?php

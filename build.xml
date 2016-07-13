@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model xlink:href="/usr/share/php5/PEAR/data/phing/etc/phing-grammar.rng"
+        type="application/xml"
+        schematypens="http://relaxng.org/ns/structure/1.0" ?>
+
+<project name="ChurchCRM - Build" basedir="." default="dist">
+    <property file="./build.properties"/>
+    <property name="builddir" value="./target"/>
+    <property name="sourcedir" value="${builddir}/code"/>
+
+    <!-- ============================================  -->
+    <!-- Target: prepare                               -->
+    <!-- ============================================  -->
+    <target name="prepare">
+        <echo message="Building ${build.version}"/>
+
+        <delete dir="${builddir}" includeemptydirs="true"/>
+        <mkdir dir="${builddir}"/>
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: build                                 -->
+    <!-- ============================================  -->
+    <target name="build" depends="prepare">
+        <echo message="Copying src to ${sourcedir}/churchcrm directory..."/>
+
+        <copy todir="${sourcedir}/churchcrm">
+            <fileset dir="src">
+                <include name="**"/>
+                <exclude name="Images/Person/thumbnails/*.jpg"/>
+                <exclude name="Include/Config.php"/>
+            </fileset>
+        </copy>
+
+    </target>
+
+    <!-- ============================================  -->
+    <!-- (DEFAULT)  Target: dist                       -->
+    <!-- ============================================  -->
+    <target name="dist" depends="build">
+        <echo message="Creating archive..."/>
+
+        <zip destfile="${builddir}/ChurchCRM-${build.version}.zip" basedir="${sourcedir}"/>
+
+        <echo message="Files copied and compressed in build directory OK!"/>
+    </target>
+
+
+    <!-- ============================================  -->
+    <!-- (DEFAULT)  Change Log                         -->
+    <!-- ============================================  -->
+
+    <target name="install-change-log">
+        <echo message="Installing Ruby"/>
+        <exec command="sudo apt-get install -y ruby" passthru="true"/>
+
+        <echo message="Installing github_changelog_generator"/>
+        <exec command="gem install github_changelog_generator" passthru="true"/>
+    </target>
+
+    <target name="change-log" depends="install-change-log">
+        <echo message="building changeset"/>
+        <exec command="github_changelog_generator -t ${github.token}" dir="." passthru="true"/>
+    </target>
+
+    <target name="locale-update">
+        <echo message="building messages.po"/>
+        <exec command="xgettext --from-code=UTF-8 -o locale/messages.po *.php email/*.php Include/*.php Reports/*.php sundayschool/*.php" dir="src" passthru="true"/>
+    </target>
+
+    <target name="post-release" depends="change-log, locale-update" />
+</project>

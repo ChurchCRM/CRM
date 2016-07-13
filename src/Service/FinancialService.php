@@ -537,7 +537,7 @@ class FinancialService
       $values->dep_Total = $this->getDepositTotal($dep_ID);
       $values->countCash = $this->getDepositCount($dep_ID, 'CASH');
       $values->countCheck = $this->getDepositCount($dep_ID, 'CHECK');
-      $values->countTotal = $this->getDepositCount($dep_ID);
+      $values->countTotal = $values->countCheck + ($values->countCash > 0);
       $values->funds = $this->getDepositFunds($dep_ID);
       array_push($return, $values);
     }
@@ -1132,47 +1132,166 @@ GROUP by fun_Name";
       }
     }
   }
+  
+  private function generateQBDepositSlip($thisReport)
+  {
+    $thisReport->pdf->AddPage();
+    // in 2.2.0 we will store these settings in the DB as JSON, but for 2.1.7 we don't want to change schema
+    //$thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQuickBooksDepositSlipParameters);
+    $thisReport->QBDepositTicketParameters = json_decode('{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}');
+    $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
+    $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
+
+    //print_r($thisReport->QBDepositTicketParameters);
+    //logically, we print the cash in the first possible key=value pair column 
+    if ($thisReport->deposit->totalCash > 0) {
+      $totalCashStr = sprintf("%.2f", $thisReport->deposit->totalCash);
+      $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->QBDepositTicketParameters->topY, $totalCashStr);
+    }
+    $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->lineItemInterval->x;
+    $thisReport->curY = $thisReport->QBDepositTicketParameters->topY;
+    foreach ($thisReport->payments as $payment)
+    {
+      // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
+      if ($payment->plg_method == 'CHECK') {
+        $numItems += 1;
+
+        $thisReport->pdf->PrintRightJustified($thisReport->curX, $thisReport->curY, $payment->plg_CheckNo);
+        $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $payment->plg_amount);
+
+        $thisReport->curX += $thisReport->QBDepositTicketParameters->lineItemInterval->x;
+        if ($thisReport->curX > $thisReport->QBDepositTicketParameters->max->x) {
+          $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX;
+          $thisReport->curY += $thisReport->QBDepositTicketParameters->lineItemInterval->y;
+        }
+      }
+    }
+
+    $grandTotalStr = sprintf("%.2f", $thisReport->deposit->dep_Total);
+    $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->subTotal->x, $thisReport->QBDepositTicketParameters->subTotal->y, $grandTotalStr);
+    $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->topTotal->x, $thisReport->QBDepositTicketParameters->topTotal->y, $grandTotalStr);
+    $numItemsString = sprintf("%d", $thisReport->deposit->countTotal);
+    $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->numberOfItems->x, $thisReport->QBDepositTicketParameters->numberOfItems->y, $numItemsString);
+    
+    $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY;
+    $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->titleX, $thisReport->curY );
+    $thisReport->pdf->SetFont('Courier','B', 20);
+    $thisReport->pdf->Write (8, "Deposit Summary " . $thisReport->deposit->dep_ID);
+    $thisReport->pdf->SetFont('Times','', 10);
+     $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->date2X, $thisReport->curY );
+    $thisReport->pdf->Write (8, $thisReport->deposit->dep_Date);
+
+    $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x;
+    $thisReport->curY += 2*$thisReport->QBDepositTicketParameters->lineItemInterval->y;
+    $this->generateCashDenominations($thisReport);
+    $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x+125;
+
+    $this->generateTotalsByCurrencyType($thisReport);
+    $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x+125;
+    $thisReport->curY=$thisReport->QBDepositTicketParameters->perforationY+30;
+    $this->generateTotalsByFund($thisReport);
+  }
+  
+  private function generateTotalsByFund($thisReport)
+  {
+    $thisReport->pdf->SetFont('Times', 'B', 10);
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    $thisReport->pdf->Write(8, 'Deposit totals by fund');
+    $thisReport->pdf->SetFont('Courier', '', 8);
+
+    $thisReport->curY += 4;
+
+    if (count($thisReport->funds) > 0) //if there are funds defined
+    {
+      foreach ($thisReport->funds as $fund) //iterate through the defined funds
+      {
+        if (array_key_exists($fund->Name, $thisReport->fundTotal) && $thisReport->fundTotal[$fund->Name] > 0) // if the fund exists on this deposit, and the value of the fund is greater than 0
+        {
+          $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+          $thisReport->pdf->Write(8, $fund->Name);
+          $amountStr = sprintf("%.2f", $thisReport->fundTotal[$fund->Name]);
+          $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
+          $thisReport->curY += 4;
+        }
+      }
+      if (array_key_exists('UNDESIGNATED', $thisReport->fundTotal) && $thisReport->fundTotal['UNDESIGNATED']) {
+        $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+        $thisReport->pdf->Write(8, gettext("UNDESIGNATED"));
+        $amountStr = sprintf("%.2f", $thisReport->fundTotal['UNDESIGNATED']);
+        $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
+        $thisReport->curY += 4;
+      }
+    }
+    
+  }
+  
+  private function generateTotalsByCurrencyType($thisReport)
+  {
+    $thisReport->pdf->SetFont('Times', 'B', 10);
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    $thisReport->pdf->Write(8, 'Deposit totals by Currency Type');
+    $thisReport->pdf->SetFont('Courier', '', 8);
+    $thisReport->curY += 4;
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    $thisReport->pdf->Write(8, "Checks: ");
+    $thisReport->pdf->write(8, "(" . $thisReport->deposit->countCheck . ")");
+    $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf("%.2f", $thisReport->deposit->totalChecks));
+    $thisReport->curY += 4;
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    $thisReport->pdf->Write(8, "Cash: ");
+    $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf("%.2f", $thisReport->deposit->totalCash));
+    
+  }
 
   private function generateDepositSummary($thisReport)
   {
+    $thisReport->depositSummaryParameters->title->x = 85;
+    $thisReport->depositSummaryParameters->title->y = 7;
+    $thisReport->depositSummaryParameters->date->x = 185;
+    $thisReport->depositSummaryParameters->date->y = 7;
+    $thisReport->depositSummaryParameters->summary->x = 12;
+    $thisReport->depositSummaryParameters->summary->y = 15;
+    $thisReport->depositSummaryParameters->summary->intervalY = 4;
+    $thisReport->depositSummaryParameters->summary->FundX = 15;
+    $thisReport->depositSummaryParameters->summary->MethodX = 55;
+    $thisReport->depositSummaryParameters->summary->FromX = 80;
+    $thisReport->depositSummaryParameters->summary->MemoX = 120;
+    $thisReport->depositSummaryParameters->summary->AmountX = 185;
+    $thisReport->depositSummaryParameters->aggregateX = 135;
+    $thisReport->depositSummaryParameters->displayBillCounts = false;
+    
+    
     $thisReport->pdf->AddPage();
-    $thisReport->pdf->SetXY($thisReport->date2X, $thisReport->date2Y);
+    $thisReport->pdf->SetXY($thisReport->depositSummaryParameters->date->x, $thisReport->depositSummaryParameters->date->y);
     $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
 
-    $thisReport->pdf->SetXY($thisReport->titleX, $thisReport->titleY);
+    $thisReport->pdf->SetXY($thisReport->depositSummaryParameters->title->x, $thisReport->depositSummaryParameters->title->y);
     $thisReport->pdf->SetFont('Courier', 'B', 20);
     $thisReport->pdf->Write(8, "Deposit Summary " . $thisReport->deposit->dep_ID);
     $thisReport->pdf->SetFont('Times', 'B', 10);
 
-    $thisReport->curX = $thisReport->summaryX;
-    $thisReport->curY = $thisReport->summaryY;
-
-    $thisReport->summaryFundX = 15;
-    $thisReport->summaryMethodX = 55;
-    $thisReport->summaryFromX = 80;
-    $thisReport->summaryMemoX = 120;
-    $thisReport->summaryAmountX = 185;
-    $thisReport->summaryIntervalY = 4;
+    $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
+    $thisReport->curY = $thisReport->depositSummaryParameters->summary->y;
 
     $thisReport->pdf->SetFont('Times', 'B', 10);
     $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
     $thisReport->pdf->Write(8, 'Chk No.');
 
-    $thisReport->pdf->SetXY($thisReport->curX + $thisReport->summaryFundX, $thisReport->curY);
+    $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FundX, $thisReport->curY);
     $thisReport->pdf->Write(8, 'Fund');
 
-    $thisReport->pdf->SetXY($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY);
+    $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MethodX, $thisReport->curY);
     $thisReport->pdf->Write(8, 'PmtMethod');
 
-    $thisReport->pdf->SetXY($thisReport->curX + $thisReport->summaryFromX, $thisReport->curY);
+    $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FromX, $thisReport->curY);
     $thisReport->pdf->Write(8, 'Rcd From');
 
-    $thisReport->pdf->SetXY($thisReport->curX + $thisReport->summaryMemoX, $thisReport->curY);
+    $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MemoX, $thisReport->curY);
     $thisReport->pdf->Write(8, 'Memo');
 
-    $thisReport->pdf->SetXY($thisReport->curX + $thisReport->summaryAmountX - 5, $thisReport->curY);
+    $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY);
     $thisReport->pdf->Write(8, 'Amount');
-    $thisReport->curY += 2 * $thisReport->summaryIntervalY;
+    $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
 
     $totalAmount = 0;
 
@@ -1192,23 +1311,23 @@ GROUP by fun_Name";
 
       $thisReport->pdf->PrintRightJustified($thisReport->curX + 2, $thisReport->curY, $payment->plg_CheckNo);
 
-      $thisReport->pdf->SetXY($thisReport->curX + $thisReport->summaryFundX, $thisReport->curY);
+      $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FundX, $thisReport->curY);
       $thisReport->pdf->Write(8, $payment->fun_Name);
 
-      $thisReport->pdf->SetXY($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY);
+      $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MethodX, $thisReport->curY);
       $thisReport->pdf->Write(8, $payment->plg_method);
 
-      $thisReport->pdf->SetXY($thisReport->curX + $thisReport->summaryFromX, $thisReport->curY);
+      $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FromX, $thisReport->curY);
       $thisReport->pdf->Write(8, $payment->familyName);
 
-      $thisReport->pdf->SetXY($thisReport->curX + $thisReport->summaryMemoX, $thisReport->curY);
+      $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MemoX, $thisReport->curY);
       $thisReport->pdf->Write(8, $payment->plg_comment);
 
       $thisReport->pdf->SetFont('Courier', '', 8);
 
-      $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->summaryAmountX, $thisReport->curY, $payment->plg_amount);
+      $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $payment->plg_amount);
 
-      $thisReport->curY += $thisReport->summaryIntervalY;
+      $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
 
       if ($thisReport->curY >= 250) {
         $thisReport->pdf->AddPage();
@@ -1216,74 +1335,39 @@ GROUP by fun_Name";
       }
     }
 
-    $thisReport->curY += $thisReport->summaryIntervalY;
+    $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
 
-    $thisReport->pdf->SetXY($thisReport->curX + $thisReport->summaryMemoX, $thisReport->curY);
+    $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MemoX, $thisReport->curY);
     $thisReport->pdf->Write(8, 'Deposit total');
 
     $grandTotalStr = sprintf("%.2f", $thisReport->deposit->dep_Total);
-    $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->summaryAmountX, $thisReport->curY, $grandTotalStr);
+    $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
 
+    
     // Now print deposit totals by fund
-    $thisReport->curY += 2 * $thisReport->summaryIntervalY;
-
-    $thisReport->pdf->SetFont('Times', 'B', 10);
-    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-    $thisReport->pdf->Write(8, 'Deposit totals by fund');
-    $thisReport->pdf->SetFont('Courier', '', 8);
-
-    $thisReport->curY += $thisReport->summaryIntervalY;
-
-      foreach ($thisReport->deposit->funds as $fund) //iterate through the defined funds
-      {
-          $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-          $thisReport->pdf->Write(8, $fund->fun_Name);
-          $amountStr = sprintf("%.2f", $fund->fundTotal);
-          $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, $amountStr);
-          $thisReport->curY += $thisReport->summaryIntervalY;
-      }
-      if (array_key_exists('UNDESIGNATED', $thisReport->fundTotal) && $thisReport->fundTotal['UNDESIGNATED']) {
-        $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-        $thisReport->pdf->Write(8, gettext("UNDESIGNATED"));
-        $amountStr = sprintf("%.2f", $thisReport->fundTotal['UNDESIGNATED']);
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, $amountStr);
-        $thisReport->curY += $thisReport->summaryIntervalY;
-      }
-
-
-    $thisReport->curY += $thisReport->summaryIntervalY;
-    $thisReport->pdf->SetFont('Times', 'B', 10);
-    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-    $thisReport->pdf->Write(8, 'Deposit totals by Currency Type');
-    $thisReport->pdf->SetFont('Courier', '', 8);
-    $thisReport->curY += $thisReport->summaryIntervalY;
-    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-    $thisReport->pdf->Write(8, "Checks: ");
-    $thisReport->pdf->write(8, "(" . $thisReport->deposit->countCheck . ")");
-    $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf("%.2f", $thisReport->deposit->totalChecks));
-    $thisReport->curY += $thisReport->summaryIntervalY;
-    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-    $thisReport->pdf->Write(8, "Cash: ");
-    $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf("%.2f", $thisReport->deposit->totalCash));
-    $thisReport->curY += 2*$thisReport->summaryIntervalY;
-    $thisReport->pdf->SetFont('Times','B', 10);
-    $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
-    $thisReport->pdf->Write (8, 'Cash Breakdown:');
-    $thisReport->pdf->SetFont('Courier','', 8);
-    foreach ($this->getCurrency() as $currency)
+    $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
+    if($thisReport->depositSummaryParameters->displayBillCounts)
     {
-        $thisReport->curY += $thisReport->summaryIntervalY;
-        $thisReport->pdf->SetXY ($thisReport->curX, $thisReport->curY);
-        $thisReport->pdf->Write (8, $currency->Name);
-        $thisReport->pdf->PrintRightJustified ($thisReport->curX + $thisReport->summaryMethodX, $thisReport->curY, sprintf ("%.2f", $this->getCurrencyTypeOnDeposit($currency->id,$thisReport->deposit->dep_ID)));
+      $this->generateCashDenominations($thisReport);
     }
+    $thisReport->curX = $thisReport->depositSummaryParameters->aggregateX;
+    $this->generateTotalsByFund($thisReport);
+    
+   
+    $thisReport->curY += $thisReport->summaryIntervalY;
+    $this->generateTotalsByCurrencyType($thisReport);
+    $thisReport->curY += $thisReport->summaryIntervalY * 2;
+    
+    $thisReport->curY +=130;
+    $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
+    
+    $this->generateWitnessSignature($thisReport);
+    
   }
 
   private function generateWitnessSignature($thisReport)
   {
-    $thisReport->curY = $thisReport->pdf->GetY() + $thisReport->summaryIntervalY;
-    $thisReport->curX = $thisReport->date2X;
-    
+   
     $thisReport->pdf->setXY($thisReport->curX,$thisReport->curY);
     $thisReport->pdf->write(8,"Witness 1");
     $thisReport->pdf->line( $thisReport->curX+17, $thisReport->curY+8, $thisReport->curX+80, $thisReport->curY+8);
@@ -1347,63 +1431,20 @@ GROUP by fun_Name";
 
     $thisReport->pdf = new PDF_DepositReport();
     $thisReport->deposit = $this->getDeposits($depID)[0];
-    $thisReport->depositSlipFrontColumns = 135;
-    $thisReport->depositSlipBackCheckNosX = 10;
-    $thisReport->depositSlipBackCheckNosY = 13;
-    $thisReport->depositSlipBackCheckNosHeight = 7;
-    $thisReport->depositSlipBackCheckNosWidth = 15;
-    $thisReport->depositSlipBackDollarsX = 25;
-    $thisReport->depositSlipBackDollarsY = $thisReport->depositSlipBackCheckNosY;
-    $thisReport->depositSlipBackDollarsHeight = $thisReport->depositSlipBackCheckNosHeight;
-    $thisReport->depositSlipBackDollarsWidth = 47;
-    $thisReport->date1X = 15;
-    $thisReport->date1Y = 27;
-    $thisReport->customerName1X = 32;
-    $thisReport->customerName1Y = 37;
-    $thisReport->cashX = $thisReport->depositSlipFrontColumns;
-    $thisReport->cashY = 32;
-    $thisReport->checksX = $thisReport->depositSlipFrontColumns;
-    $thisReport->checksY = 39;
-    $thisReport->date2X = 15;
-    $thisReport->date2Y = 5;
-    $thisReport->titleX = 85;
-    $thisReport->titleY = 5;
-    $thisReport->summaryX = 12;
-    $thisReport->summaryY = 15;
-    $thisReport->leftX = 64;
-    $thisReport->topY = 0 + 7;
-    $thisReport->intervalX = 52 - 3;
-    $thisReport->intervalY = 7;
-    $thisReport->amountOffsetX = 35;
-    $thisReport->maxX = 200;
-    $thisReport->curX = $thisReport->leftX + $thisReport->intervalX;
-    $thisReport->curY = $thisReport->topY;
-    $thisReport->numItemsX = 140 - 4;
-    $thisReport->numItemsY = 61 + 7;
-    $thisReport->subTotalX = $thisReport->depositSlipFrontColumns;
-    $thisReport->subTotalY = 31;
-    $thisReport->AccountNumberX = 125;
-    $thisReport->AccountNumberY = 15;
-    $thisReport->cashReceivedX = $thisReport->depositSlipFrontColumns;
-    $thisReport->cashReceivedY = 46;
-    $thisReport->topTotalX = $thisReport->depositSlipFrontColumns;
-    $thisReport->topTotalY = 57;
-    $thisReport->totalCash = 0;
-    $thisReport->totalChecks = 0;
-    $thisReport->numItems = 0;
-
+    $thisReport->funds = $this->getActiveFunds();
+ 
     // Read in report settings from database
     $rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
     if ($rsConfig) {
       while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-        $thisReport->pdf->$cfg_name = $cfg_value;
+        $thisReport->ReportSettings->$cfg_name = $cfg_value;
       }
     }
+    //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.
+    $thisReport->ReportSettings->sDepositSlipType = "QBDT";
 
-    $this->generateBankDepositSlip($thisReport);
-    //print_r ($thisReport->fundTotal);
-    //exit;
     $this->generateDepositSummary($thisReport);
+
 
    // Export file
    $thisReport->pdf->Output("ChurchCRM-DepositReport-" . $depID . "-" . date("Ymd-Gis") . ".pdf","D");
@@ -1470,7 +1511,7 @@ GROUP by fun_Name";
     return $currencies;
   }
 
-  function getFund()
+  function getActiveFunds()
   {
     requireUserGroupMembership("bFinance");
     $funds = array();
@@ -1490,3 +1531,19 @@ GROUP by fun_Name";
 }
 
 ?>
+    $this->calculateFundTotals($thisReport);
+    if ( $thisReport->ReportSettings->sDepositSlipType == "QBDT" )
+    {
+      //Generate a QuickBooks Deposit Ticket.
+      $this->generateQBDepositSlip($thisReport);
+    }
+    elseif ( $thisReport->ReportSettings->sDepositSlipType == "PTDT" )
+    {
+      //placeholder for Peachtree Deposit Tickets.
+    }
+    elseif ( $thisReport->ReportSettings->sDepositSlipType == "GDT" )
+    {
+      //placeholder for generic deposit ticket.
+    }
+    //$this->generateBankDepositSlip($thisReport);
+   

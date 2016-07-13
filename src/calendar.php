@@ -43,15 +43,21 @@ require "Include/Header.php"; ?>
 
 <link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/fullcalendar.min.css">
 <link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/fullcalendar.print.css" media="print">
-
+<style>
+  @media print {
+    a[href]:after {
+      content: none !important;
+    }
+  }
+</style>
 <div class="col-lg-12">
   <div class="box box-primary">
     <div class="box-body">
       <div class="fc-event-container fc-day-grid-event" style="background-color:#f56954;border-color:#f56954;color: white; width: 100px">
-          <div class="fc-title">Birthdays</div>
+          <div class="fc-title"><?= gettext("Birthdays") ?></div>
       </div>
       <div class="fc-event-container fc-day-grid-event" style="background-color:#f39c12;border-color:#f39c12;color: white; width: 100px">
-          <div class="fc-title">Events</div>
+          <div class="fc-title"><?= gettext("Events") ?></div>
       </div>
     </div>
   </div>
@@ -85,10 +91,10 @@ require "Include/Header.php"; ?>
         right: 'month,agendaWeek,agendaDay'
       },
       buttonText: {
-        today: 'today',
-        month: 'month',
-        week: 'week',
-        day: 'day'
+        today: '<?= gettext("Today") ?>',
+        month: '<?= gettext("Month") ?>',
+        week: '<?= gettext("Week") ?>',
+        day: '<?= gettext("Day") ?>'
       },
       //Random default events
       events: <?= json_encode($events) ?>

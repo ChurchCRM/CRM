@@ -130,10 +130,11 @@ $(document).ready(function() {
         var deletedRows = dataT.rows('.selected').data()
         $.each(deletedRows, function(index, value){
             $.ajax({
-                type        : 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
                 url         : window.CRM.root+'/api/deposits/'+value.dep_ID, // the url where we want to POST
                 dataType    : 'json', // what type of data do we expect back from the server
-                encode      : true
+                encode      : true,
+                data        : {"_METHOD":"DELETE"}
             })
             .done(function(data) {
                 $('#confirmDelete').modal('hide');

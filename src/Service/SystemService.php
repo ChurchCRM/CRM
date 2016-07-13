@@ -144,6 +144,14 @@ function split_sql_file($sql, $delimiter)
     return $release;
   }
 
+  function getInstalledVersion() {
+    $composerFile = file_get_contents(dirname(__FILE__)."/../composer.json");
+    $composerJson = json_decode($composerFile, true);
+    $version = $composerJson["version"];
+
+    return $version;
+  }
+
   function playbackSQLtoDatabase($fileName) {
     requireUserGroupMembership("bAdmin");
     $sql_query = @fread(@fopen($fileName, 'r'), @filesize($fileName)) or die('problem ');
@@ -187,7 +195,7 @@ function split_sql_file($sql, $delimiter)
       else if ($restoreResult->type2 == "sql") {
         exec("mkdir $restoreResult->backupRoot");
         exec("mv  " . $file['tmp_name'] . " " . $restoreResult->backupRoot . "/" . $file['name']);
-        $restoreResult->uncompressCommand = "sGZIPname -d $restoreResult->backupRoot/" . $file['name'];
+        $restoreResult->uncompressCommand = "$sGZIPname -d $restoreResult->backupRoot/" . $file['name'];
         exec($restoreResult->uncompressCommand, $rs1, $returnStatus); ;
         $restoreResult->SQLfile = $restoreResult->backupRoot . "/" . substr($file['name'], 0, strlen($file['name']) - 3);
         $this->playbackSQLtoDatabase($restoreResult->SQLfile);
@@ -395,8 +403,18 @@ function split_sql_file($sql, $delimiter)
       return true;
     }
     
-    if (strncmp($db_version, "2.1.3", 5) == 0 ) {
-      $this->rebuildWithSQL("/mysql/upgrade/2.1.3-2.2.0.sql");
+    if (in_array($db_version, array("2.1.3", "2.1.4", "2.1.5", "2.1.6"))) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.3-2.1.7.sql");
+      return true;
+    }
+    
+    if (strncmp($db_version, "2.1.7", 5) == 0 ) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.7-2.2.0.sql");
+      return true;
+    }
+
+    if (in_array($db_version, array("2.1.3", "2.1.4", "2.1.5", "2.1.6"))) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.3-2.1.7.sql");
       return true;
     }
 

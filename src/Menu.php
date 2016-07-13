@@ -54,7 +54,7 @@ if ($_SESSION['bFinance']) {
 }
 
 // Set the page title
-$sPageTitle = "Welcome to <b>Church</b>CRM";
+$sPageTitle = gettext("Welcome to <b>Church</b>CRM");
 
 require 'Include/Header.php';
 ?>
@@ -70,14 +70,14 @@ require 'Include/Header.php';
                     <?= $familyCount['familyCount'] ?>
                 </h3>
                 <p>
-                    Families
+                    <?= gettext("Families") ?>
                 </p>
             </div>
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>
             </div>
             <a href="<?= $sRootPath ?>/FamilyList.php" class="small-box-footer">
-                See all Families <i class="fa fa-arrow-circle-right"></i>
+                <?= gettext("See all Families") ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -89,14 +89,14 @@ require 'Include/Header.php';
                     <?= $personCount['personCount'] ?>
                 </h3>
                 <p>
-                    People
+                    <?= gettext("People") ?>
                 </p>
             </div>
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
             <a href="<?= $sRootPath ?>/SelectList.php?mode=person" class="small-box-footer">
-                See All People <i class="fa fa-arrow-circle-right"></i>
+                <?= gettext("See All People") ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -108,14 +108,14 @@ require 'Include/Header.php';
                     <?= $groupStats['sundaySchoolClasses'] ?>
                 </h3>
                 <p>
-                    Sunday School Classes
+                    <?= gettext("Sunday School Classes") ?>
                 </p>
             </div>
             <div class="icon">
                 <i class="fa fa-child"></i>
             </div>
             <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
-                More info <i class="fa fa-arrow-circle-right"></i>
+                <?= gettext("More info") ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -127,14 +127,14 @@ require 'Include/Header.php';
                   <?= $groupStats['groups'] -$groupStats['sundaySchoolClasses']  ?>
                 </h3>
                 <p>
-                    Groups
+                    <?= gettext("Groups") ?> 
                 </p>
             </div>
             <div class="icon">
                 <i class="fa fa-gg"></i>
             </div>
-            <a href="<?= $sRootPath ?>/grouplist" class="small-box-footer">
-                More info <i class="fa fa-arrow-circle-right"></i>
+            <a href="<?= $sRootPath ?>/GroupList.php" class="small-box-footer">
+                <?= gettext("More info") ?>  <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -169,16 +169,16 @@ if ($depositData) // If the user has Finance permissions, then let's display the
         <div class="box box-solid">
             <div class="box-header">
                 <i class="ion ion-person-add"></i>
-                <h3 class="box-title">Latest Families</h3>
+                <h3 class="box-title"><?= gettext("Latest Families") ?></h3>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">
                     <table class="table table-striped table-condensed">
                         <thead>
                         <tr>
-                            <th data-field="name">Family Name</th>
-                            <th data-field="address">Address</th>
-                            <th data-field="city">Created</th>
+                            <th data-field="name"><?= gettext("Family Name") ?></th>
+                            <th data-field="address"><?= gettext("Adress") ?></th>
+                            <th data-field="city"><?= gettext("Created") ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -199,16 +199,16 @@ if ($depositData) // If the user has Finance permissions, then let's display the
         <div class="box box-solid">
             <div class="box-header">
                 <i class="fa fa-check"></i>
-                <h3 class="box-title">Updated Families</h3>
+                <h3 class="box-title"><?= gettext("Updated Families") ?></h3>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">
                     <table class="table table-striped table-condensed">
                         <thead>
                         <tr>
-                            <th data-field="name">Family Name</th>
-                            <th data-field="address">Address</th>
-                            <th data-field="city">Updated</th>
+                            <th data-field="name"><?= gettext("Family Name") ?></th>
+                            <th data-field="address"><?= gettext("Address") ?></th>
+                            <th data-field="city"><?= gettext("Updated") ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -231,7 +231,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Latest Members</h3>
+                    <h3 class="box-title"><?= gettext("Latest Members") ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -260,7 +260,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Updated Members</h3>
+                    <h3 class="box-title"><?= gettext("Updated Members") ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -324,4 +324,3 @@ if ($depositData) // If the user has Finance permissions, then let's display the
 <?php
 require 'Include/Footer.php';
 ?>
-

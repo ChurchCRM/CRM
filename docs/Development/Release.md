@@ -2,8 +2,11 @@
 
 ## Do a clean clone of the branch 
  * start the vagrant box (this will download all the 3rd party files)
- * create zip file of the  src dir named ChurchCRM-2.XX.XX.zip (matching version) 
- * rename the src dir to churchcrm
+ * ssh into the vagrant box
+ * 'cd /vagrant'
+ * 'composer install'
+ * 'vendor/bin/phing" to create the zip file
+ * 'vendor/bin/phing change-log' to generate the change log
 
 ##  Create a github release   
 
@@ -17,10 +20,6 @@ https://github.com/ChurchCRM/CRM/releases
 
 ## Update release notes 
  
- * ssh into a vagrant box 
- * run `cd /vagrant` 
- * run  `vagrant/install-changelogs.sh`
- * run  `github_changelog_generator -t 64f5ebabc85c0533ed7e69f0c8ecf8c5981a1c50`
  * commit changes to CHANGELOG.md
  * Update git release to point to version in chagelog
 
