@@ -32,7 +32,6 @@
 require 'Include/Config.php';
 $bSuppressSessionTests = TRUE;
 require 'Include/Functions.php';
-require_once 'Service/SystemService.php';
 // Initialize the variables
 
 // Is the user requesting to logoff or timed out?

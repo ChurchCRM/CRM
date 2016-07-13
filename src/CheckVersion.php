@@ -27,8 +27,6 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require_once 'Service/SystemService.php';
-$systemService = new SystemService();
 
 //Set the page title
 $sPageTitle = gettext("Software Version Check");
