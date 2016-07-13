@@ -7,23 +7,23 @@ function initDepositSlipEditor()
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             '<tr>' +
             '<td>Date:</td>' +
-            '<td>' + d.plg_date + '</td>' +
+            '<td>' + d.Date + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td>Fiscal Year:</td>' +
-            '<td>' + d.FiscalYear + '</td>' +
+            '<td>' + d.Fyid + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td>Fund(s):</td>' +
-            '<td>' + d.fun_Name + '</td>' +
+            '<td>' + d.Fundid + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td>Non Deductible:</td>' +
-            '<td>' + d.plg_NonDeductible + '</td>' +
+            '<td>' + d.Nondeductible + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td>Comment:</td>' +
-            '<td>' + d.plg_comment + '</td>' +
+            '<td>' + d.Comment + '</td>' +
             '</tr>' +
             '</table>';
   }
@@ -146,4 +146,4 @@ function initDepositSlipEditor()
     pieChart = pieChart.Doughnut(fundPieData, pieOptions);
     var legend = pieChart.generateLegend();
     $('#fund-donut-legend').append(legend);
-    }
+}

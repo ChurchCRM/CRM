@@ -3,7 +3,6 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Pledge as BasePledge;
-use ChurchCRM\Base\DepositQuery as DepositQuery ;
 use Propel\Runtime\Exception\PropelException;
 
 /**

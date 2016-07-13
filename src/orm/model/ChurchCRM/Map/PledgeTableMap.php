@@ -237,7 +237,7 @@ class PledgeTableMap extends TableMap
         $this->addColumn('plg_DateLastEdited', 'Datelastedited', 'DATE', true, null, '0000-00-00');
         $this->addColumn('plg_EditedBy', 'Editedby', 'SMALLINT', true, 9, 0);
         $this->addColumn('plg_PledgeOrPayment', 'Pledgeorpayment', 'CHAR', true, null, 'Pledge');
-        $this->addColumn('plg_fundID', 'Fundid', 'TINYINT', false, 3, null);
+        $this->addForeignKey('plg_fundID', 'Fundid', 'TINYINT', 'donationfund_fun', 'fun_ID', false, 3, null);
         $this->addForeignKey('plg_depID', 'Depid', 'SMALLINT', 'deposit_dep', 'dep_ID', false, 9, null);
         $this->addColumn('plg_CheckNo', 'Checkno', 'BIGINT', false, 16, null);
         $this->addColumn('plg_Problem', 'Problem', 'BOOLEAN', false, 1, null);
@@ -259,6 +259,13 @@ class PledgeTableMap extends TableMap
   array (
     0 => ':plg_depID',
     1 => ':dep_ID',
+  ),
+), null, null, null, false);
+        $this->addRelation('DonationFund', '\\ChurchCRM\\DonationFund', RelationMap::MANY_TO_ONE, array (
+  0 =>
+  array (
+    0 => ':plg_fundID',
+    1 => ':fun_ID',
   ),
 ), null, null, null, false);
     } // buildRelations()

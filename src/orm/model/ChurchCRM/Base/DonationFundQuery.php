@@ -10,6 +10,7 @@ use ChurchCRM\Map\DonationFundTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
+use Propel\Runtime\ActiveQuery\ModelJoin;
 use Propel\Runtime\Collection\ObjectCollection;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Exception\PropelException;
@@ -36,6 +37,18 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildDonationFundQuery leftJoinWith($relation) Adds a LEFT JOIN clause and with to the query
  * @method     ChildDonationFundQuery rightJoinWith($relation) Adds a RIGHT JOIN clause and with to the query
  * @method     ChildDonationFundQuery innerJoinWith($relation) Adds a INNER JOIN clause and with to the query
+ *
+ * @method     ChildDonationFundQuery leftJoinPledge($relationAlias = null) Adds a LEFT JOIN clause to the query using the Pledge relation
+ * @method     ChildDonationFundQuery rightJoinPledge($relationAlias = null) Adds a RIGHT JOIN clause to the query using the Pledge relation
+ * @method     ChildDonationFundQuery innerJoinPledge($relationAlias = null) Adds a INNER JOIN clause to the query using the Pledge relation
+ *
+ * @method     ChildDonationFundQuery joinWithPledge($joinType = Criteria::INNER_JOIN) Adds a join clause and with to the query using the Pledge relation
+ *
+ * @method     ChildDonationFundQuery leftJoinWithPledge() Adds a LEFT JOIN clause and with to the query using the Pledge relation
+ * @method     ChildDonationFundQuery rightJoinWithPledge() Adds a RIGHT JOIN clause and with to the query using the Pledge relation
+ * @method     ChildDonationFundQuery innerJoinWithPledge() Adds a INNER JOIN clause and with to the query using the Pledge relation
+ *
+ * @method     \ChurchCRM\PledgeQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
  *
  * @method     ChildDonationFund findOne(ConnectionInterface $con = null) Return the first ChildDonationFund matching the query
  * @method     ChildDonationFund findOneOrCreate(ConnectionInterface $con = null) Return the first ChildDonationFund matching the query, or a new ChildDonationFund object populated from the query conditions when no match is found
@@ -363,6 +376,79 @@ abstract class DonationFundQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(DonationFundTableMap::COL_FUN_DESCRIPTION, $description, $comparison);
+    }
+
+    /**
+     * Filter the query by a related \ChurchCRM\Pledge object
+     *
+     * @param \ChurchCRM\Pledge|ObjectCollection $pledge the related object to use as filter
+     * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return ChildDonationFundQuery The current query, for fluid interface
+     */
+    public function filterByPledge($pledge, $comparison = null)
+    {
+        if ($pledge instanceof \ChurchCRM\Pledge) {
+            return $this
+                ->addUsingAlias(DonationFundTableMap::COL_FUN_ID, $pledge->getFundid(), $comparison);
+        } elseif ($pledge instanceof ObjectCollection) {
+            return $this
+                ->usePledgeQuery()
+                ->filterByPrimaryKeys($pledge->getPrimaryKeys())
+                ->endUse();
+        } else {
+            throw new PropelException('filterByPledge() only accepts arguments of type \ChurchCRM\Pledge or Collection');
+        }
+    }
+
+    /**
+     * Adds a JOIN clause to the query using the Pledge relation
+     *
+     * @param     string $relationAlias optional alias for the relation
+     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
+     *
+     * @return $this|ChildDonationFundQuery The current query, for fluid interface
+     */
+    public function joinPledge($relationAlias = null, $joinType = Criteria::LEFT_JOIN)
+    {
+        $tableMap = $this->getTableMap();
+        $relationMap = $tableMap->getRelation('Pledge');
+
+        // create a ModelJoin object for this join
+        $join = new ModelJoin();
+        $join->setJoinType($joinType);
+        $join->setRelationMap($relationMap, $this->useAliasInSQL ? $this->getModelAlias() : null, $relationAlias);
+        if ($previousJoin = $this->getPreviousJoin()) {
+            $join->setPreviousJoin($previousJoin);
+        }
+
+        // add the ModelJoin to the current object
+        if ($relationAlias) {
+            $this->addAlias($relationAlias, $relationMap->getRightTable()->getName());
+            $this->addJoinObject($join, $relationAlias);
+        } else {
+            $this->addJoinObject($join, 'Pledge');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Use the Pledge relation Pledge object
+     *
+     * @see useQuery()
+     *
+     * @param     string $relationAlias optional alias for the relation,
+     *                                   to be used as main alias in the secondary query
+     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
+     *
+     * @return \ChurchCRM\PledgeQuery A secondary query class using the current class as primary query
+     */
+    public function usePledgeQuery($relationAlias = null, $joinType = Criteria::LEFT_JOIN)
+    {
+        return $this
+            ->joinPledge($relationAlias, $joinType)
+            ->useQuery($relationAlias ? $relationAlias : 'Pledge', '\ChurchCRM\PledgeQuery');
     }
 
     /**

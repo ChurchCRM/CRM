@@ -593,8 +593,11 @@
     <column name="plg_NonDeductible" phpName="Nondeductible" type="DECIMAL" size="8" scale="2" required="true"/>
     <column name="plg_GroupKey" phpName="Groupkey" type="VARCHAR" size="64" required="true"/>
     <foreign-key foreignTable="deposit_dep">
-            <reference local="plg_depID" foreign="dep_ID"/>
-        </foreign-key>
+      <reference local="plg_depID" foreign="dep_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="donationfund_fun">
+      <reference local="plg_fundID" foreign="fun_ID"/>
+    </foreign-key>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>

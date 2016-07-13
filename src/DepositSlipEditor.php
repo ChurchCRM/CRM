@@ -33,6 +33,7 @@ if (array_key_exists("DepositSlipID", $_GET))
 if ($iDepositSlipID) {
 
   $thisDeposit = DepositQuery::create()->findOneById($iDepositSlipID);
+  echo $thisDeposit->getPledges()[0]->getDonationFund();
   // Set the session variable for default payment type so the new payment form will come up correctly
   if ($thisDeposit->getType() == "Bank")
     $_SESSION['idefaultPaymentMethod'] = "CHECK";
@@ -220,7 +221,7 @@ require "Include/Header.php";
 
 <script type="text/javascript" src="<?= $sRootPath ?>/skin/js/DepositSlipEditor.js"></script>
 <script>
-var paymentData = <?php  $pd = $financialService->getPaymentJSON($financialService->getPayments($iDepositSlipID));  echo ($pd ? $pd : 0); ?>;
+var paymentData = <?php  echo $thisDeposit->getPledges()->toJSON(); ?>;
 var typePieData = [
   {
     value: <?= $thisDeposit->getTotalamount() ? $thisDeposit->getTotalamount() : "0" ?> , 
@@ -236,10 +237,11 @@ var typePieData = [
   }
   ];
   
-var fundPieData = 
-<?php/*
+//var fundPieData = 
+<?php
 $fundData = array() ;
-foreach ($thisDeposit->funds as $tmpfund)
+
+foreach ($thisDeposit->getDonationFund() as $tmpfund)
 {
   $fund = new StdClass();
  $fund->color = "#".random_color() ;
@@ -248,7 +250,7 @@ foreach ($thisDeposit->funds as $tmpfund)
  $fund->value = $tmpfund->fundTotal;
  array_push($fundData,$fund);
 }
-echo json_encode($fundData);*/
+echo json_encode($fundData);
 ?>
   
 var depositType = '<?php echo $thisDeposit->getType(); ?>';
@@ -256,7 +258,7 @@ var depositSlipID = <?php echo $iDepositSlipID; ?>;
 
 $(document).ready(function() {
   dataT = $("#paymentsTable").DataTable({
-    data:paymentData.payments,
+    data:paymentData.Pledges,
     columns: [
     {
     "className":      'details-control',
@@ -267,32 +269,32 @@ $(document).ready(function() {
     {
     width: 'auto',
             title:'Family',
-            data:'familyName',
+            data:'FamId',
             render: function(data, type, full, meta) {
-              return '<a href=\'PledgeEditor.php?GroupKey=' + full.plg_GroupKey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa <?= ($thisDeposit->getClosed() ? "fa-search-plus": "fa-pencil" ); ?> fa-stack-1x fa-inverse"></i></span></a>' + data;
+              return '<a href=\'PledgeEditor.php?GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa <?= ($thisDeposit->getClosed() ? "fa-search-plus": "fa-pencil" ); ?> fa-stack-1x fa-inverse"></i></span></a>' + data;
             }
     },
     {
     width: 'auto',
             title:'Check Number',
-            data:'plg_CheckNo',
+            data:'Checkno',
     },
     {
     width: 'auto',
             title:'Amount',
-            data:'plg_amount',
+            data:'Amount',
     }
     ,
     {
     width: 'auto',
             title:'Method',
-            data:'plg_method',
+            data:'Method',
     }
   <?php if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') { ?>,
                 , {
                 width: 'auto',
                         title:'Cleared',
-                        data:'plg_aut_Cleared',
+                        data:'AutCleared',
                 }<?php
   }
   if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
@@ -300,7 +302,7 @@ $(document).ready(function() {
         , {
         width: 'auto',
                 title:'Details',
-                data:'plg_plgID',
+                data:'Id',
                 render: function(data, type, full, meta)
                 {
                   return '<a href=\'PledgeDetails.php?PledgeID=' + data + '\'>Details</a>'

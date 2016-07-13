@@ -4,13 +4,18 @@ namespace ChurchCRM\Base;
 
 use \Exception;
 use \PDO;
+use ChurchCRM\DonationFund as ChildDonationFund;
 use ChurchCRM\DonationFundQuery as ChildDonationFundQuery;
+use ChurchCRM\Pledge as ChildPledge;
+use ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use ChurchCRM\Map\DonationFundTableMap;
+use ChurchCRM\Map\PledgeTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
 use Propel\Runtime\Collection\Collection;
+use Propel\Runtime\Collection\ObjectCollection;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Exception\BadMethodCallException;
 use Propel\Runtime\Exception\LogicException;
@@ -89,12 +94,24 @@ abstract class DonationFund implements ActiveRecordInterface
     protected $fun_description;
 
     /**
+     * @var        ObjectCollection|ChildPledge[] Collection to store aggregation of ChildPledge objects.
+     */
+    protected $collPledges;
+    protected $collPledgesPartial;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
      * @var boolean
      */
     protected $alreadyInSave = false;
+
+    /**
+     * An array of objects scheduled for deletion.
+     * @var ObjectCollection|ChildPledge[]
+     */
+    protected $pledgesScheduledForDeletion = null;
 
     /**
      * Applies default values to this object.
@@ -574,6 +591,8 @@ abstract class DonationFund implements ActiveRecordInterface
 
         if ($deep) {  // also de-associate any related objects?
 
+            $this->collPledges = null;
+
         } // if (deep)
     }
 
@@ -682,6 +701,24 @@ abstract class DonationFund implements ActiveRecordInterface
                     $affectedRows += $this->doUpdate($con);
                 }
                 $this->resetModified();
+            }
+
+            if ($this->pledgesScheduledForDeletion !== null) {
+                if (!$this->pledgesScheduledForDeletion->isEmpty()) {
+                    foreach ($this->pledgesScheduledForDeletion as $pledge) {
+                        // need to save related object because we set the relation to null
+                        $pledge->save($con);
+                    }
+                    $this->pledgesScheduledForDeletion = null;
+                }
+            }
+
+            if ($this->collPledges !== null) {
+                foreach ($this->collPledges as $referrerFK) {
+                    if (!$referrerFK->isDeleted() && ($referrerFK->isNew() || $referrerFK->isModified())) {
+                        $affectedRows += $referrerFK->save($con);
+                    }
+                }
             }
 
             $this->alreadyInSave = false;
@@ -836,10 +873,11 @@ abstract class DonationFund implements ActiveRecordInterface
      *                    Defaults to TableMap::TYPE_PHPNAME.
      * @param     boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns. Defaults to TRUE.
      * @param     array $alreadyDumpedObjects List of objects to skip to avoid recursion
+     * @param     boolean $includeForeignObjects (optional) Whether to include hydrated related objects. Default to FALSE.
      *
      * @return array an associative array containing the field names (as keys) and field values
      */
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
 
         if (isset($alreadyDumpedObjects['DonationFund'][$this->hashCode()])) {
@@ -858,6 +896,23 @@ abstract class DonationFund implements ActiveRecordInterface
             $result[$key] = $virtualColumn;
         }
 
+        if ($includeForeignObjects) {
+            if (null !== $this->collPledges) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'pledges';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'pledge_plgs';
+                        break;
+                    default:
+                        $key = 'Pledges';
+                }
+
+                $result[$key] = $this->collPledges->toArray(null, false, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
+            }
+        }
 
         return $result;
     }
@@ -1083,6 +1138,20 @@ abstract class DonationFund implements ActiveRecordInterface
         $copyObj->setActive($this->getActive());
         $copyObj->setName($this->getName());
         $copyObj->setDescription($this->getDescription());
+
+        if ($deepCopy) {
+            // important: temporarily setNew(false) because this affects the behavior of
+            // the getter/setter methods for fkey referrer objects.
+            $copyObj->setNew(false);
+
+            foreach ($this->getPledges() as $relObj) {
+                if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+                    $copyObj->addPledge($relObj->copy($deepCopy));
+                }
+            }
+
+        } // if ($deepCopy)
+
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setId(NULL); // this is a auto-increment column, so set to default value
@@ -1109,6 +1178,272 @@ abstract class DonationFund implements ActiveRecordInterface
         $this->copyInto($copyObj, $deepCopy);
 
         return $copyObj;
+    }
+
+
+    /**
+     * Initializes a collection based on the name of a relation.
+     * Avoids crafting an 'init[$relationName]s' method name
+     * that wouldn't work when StandardEnglishPluralizer is used.
+     *
+     * @param      string $relationName The name of the relation to initialize
+     * @return void
+     */
+    public function initRelation($relationName)
+    {
+        if ('Pledge' == $relationName) {
+            return $this->initPledges();
+        }
+    }
+
+    /**
+     * Clears out the collPledges collection
+     *
+     * This does not modify the database; however, it will remove any associated objects, causing
+     * them to be refetched by subsequent calls to accessor method.
+     *
+     * @return void
+     * @see        addPledges()
+     */
+    public function clearPledges()
+    {
+        $this->collPledges = null; // important to set this to NULL since that means it is uninitialized
+    }
+
+    /**
+     * Reset is the collPledges collection loaded partially.
+     */
+    public function resetPartialPledges($v = true)
+    {
+        $this->collPledgesPartial = $v;
+    }
+
+    /**
+     * Initializes the collPledges collection.
+     *
+     * By default this just sets the collPledges collection to an empty array (like clearcollPledges());
+     * however, you may wish to override this method in your stub class to provide setting appropriate
+     * to your application -- for example, setting the initial array to the values stored in database.
+     *
+     * @param      boolean $overrideExisting If set to true, the method call initializes
+     *                                        the collection even if it is not empty
+     *
+     * @return void
+     */
+    public function initPledges($overrideExisting = true)
+    {
+        if (null !== $this->collPledges && !$overrideExisting) {
+            return;
+        }
+
+        $collectionClassName = PledgeTableMap::getTableMap()->getCollectionClassName();
+
+        $this->collPledges = new $collectionClassName;
+        $this->collPledges->setModel('\ChurchCRM\Pledge');
+    }
+
+    /**
+     * Gets an array of ChildPledge objects which contain a foreign key that references this object.
+     *
+     * If the $criteria is not null, it is used to always fetch the results from the database.
+     * Otherwise the results are fetched from the database the first time, then cached.
+     * Next time the same method is called without $criteria, the cached collection is returned.
+     * If this ChildDonationFund is new, it will return
+     * an empty collection or the current collection; the criteria is ignored on a new object.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @return ObjectCollection|ChildPledge[] List of ChildPledge objects
+     * @throws PropelException
+     */
+    public function getPledges(Criteria $criteria = null, ConnectionInterface $con = null)
+    {
+        $partial = $this->collPledgesPartial && !$this->isNew();
+        if (null === $this->collPledges || null !== $criteria  || $partial) {
+            if ($this->isNew() && null === $this->collPledges) {
+                // return empty collection
+                $this->initPledges();
+            } else {
+                $collPledges = ChildPledgeQuery::create(null, $criteria)
+                    ->filterByDonationFund($this)
+                    ->find($con);
+
+                if (null !== $criteria) {
+                    if (false !== $this->collPledgesPartial && count($collPledges)) {
+                        $this->initPledges(false);
+
+                        foreach ($collPledges as $obj) {
+                            if (false == $this->collPledges->contains($obj)) {
+                                $this->collPledges->append($obj);
+                            }
+                        }
+
+                        $this->collPledgesPartial = true;
+                    }
+
+                    return $collPledges;
+                }
+
+                if ($partial && $this->collPledges) {
+                    foreach ($this->collPledges as $obj) {
+                        if ($obj->isNew()) {
+                            $collPledges[] = $obj;
+                        }
+                    }
+                }
+
+                $this->collPledges = $collPledges;
+                $this->collPledgesPartial = false;
+            }
+        }
+
+        return $this->collPledges;
+    }
+
+    /**
+     * Sets a collection of ChildPledge objects related by a one-to-many relationship
+     * to the current object.
+     * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
+     * and new objects from the given Propel collection.
+     *
+     * @param      Collection $pledges A Propel collection.
+     * @param      ConnectionInterface $con Optional connection object
+     * @return $this|ChildDonationFund The current object (for fluent API support)
+     */
+    public function setPledges(Collection $pledges, ConnectionInterface $con = null)
+    {
+        /** @var ChildPledge[] $pledgesToDelete */
+        $pledgesToDelete = $this->getPledges(new Criteria(), $con)->diff($pledges);
+
+
+        $this->pledgesScheduledForDeletion = $pledgesToDelete;
+
+        foreach ($pledgesToDelete as $pledgeRemoved) {
+            $pledgeRemoved->setDonationFund(null);
+        }
+
+        $this->collPledges = null;
+        foreach ($pledges as $pledge) {
+            $this->addPledge($pledge);
+        }
+
+        $this->collPledges = $pledges;
+        $this->collPledgesPartial = false;
+
+        return $this;
+    }
+
+    /**
+     * Returns the number of related Pledge objects.
+     *
+     * @param      Criteria $criteria
+     * @param      boolean $distinct
+     * @param      ConnectionInterface $con
+     * @return int             Count of related Pledge objects.
+     * @throws PropelException
+     */
+    public function countPledges(Criteria $criteria = null, $distinct = false, ConnectionInterface $con = null)
+    {
+        $partial = $this->collPledgesPartial && !$this->isNew();
+        if (null === $this->collPledges || null !== $criteria || $partial) {
+            if ($this->isNew() && null === $this->collPledges) {
+                return 0;
+            }
+
+            if ($partial && !$criteria) {
+                return count($this->getPledges());
+            }
+
+            $query = ChildPledgeQuery::create(null, $criteria);
+            if ($distinct) {
+                $query->distinct();
+            }
+
+            return $query
+                ->filterByDonationFund($this)
+                ->count($con);
+        }
+
+        return count($this->collPledges);
+    }
+
+    /**
+     * Method called to associate a ChildPledge object to this object
+     * through the ChildPledge foreign key attribute.
+     *
+     * @param  ChildPledge $l ChildPledge
+     * @return $this|\ChurchCRM\DonationFund The current object (for fluent API support)
+     */
+    public function addPledge(ChildPledge $l)
+    {
+        if ($this->collPledges === null) {
+            $this->initPledges();
+            $this->collPledgesPartial = true;
+        }
+
+        if (!$this->collPledges->contains($l)) {
+            $this->doAddPledge($l);
+
+            if ($this->pledgesScheduledForDeletion and $this->pledgesScheduledForDeletion->contains($l)) {
+                $this->pledgesScheduledForDeletion->remove($this->pledgesScheduledForDeletion->search($l));
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param ChildPledge $pledge The ChildPledge object to add.
+     */
+    protected function doAddPledge(ChildPledge $pledge)
+    {
+        $this->collPledges[]= $pledge;
+        $pledge->setDonationFund($this);
+    }
+
+    /**
+     * @param  ChildPledge $pledge The ChildPledge object to remove.
+     * @return $this|ChildDonationFund The current object (for fluent API support)
+     */
+    public function removePledge(ChildPledge $pledge)
+    {
+        if ($this->getPledges()->contains($pledge)) {
+            $pos = $this->collPledges->search($pledge);
+            $this->collPledges->remove($pos);
+            if (null === $this->pledgesScheduledForDeletion) {
+                $this->pledgesScheduledForDeletion = clone $this->collPledges;
+                $this->pledgesScheduledForDeletion->clear();
+            }
+            $this->pledgesScheduledForDeletion[]= $pledge;
+            $pledge->setDonationFund(null);
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * If this collection has already been initialized with
+     * an identical criteria, it returns the collection.
+     * Otherwise if this DonationFund is new, it will return
+     * an empty collection; or if this DonationFund has previously
+     * been saved, it will retrieve related Pledges from storage.
+     *
+     * This method is protected by default in order to keep the public
+     * api reasonable.  You can provide public methods for those you
+     * actually need in DonationFund.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @param      string $joinBehavior optional join type to use (defaults to Criteria::LEFT_JOIN)
+     * @return ObjectCollection|ChildPledge[] List of ChildPledge objects
+     */
+    public function getPledgesJoinDeposit(Criteria $criteria = null, ConnectionInterface $con = null, $joinBehavior = Criteria::LEFT_JOIN)
+    {
+        $query = ChildPledgeQuery::create(null, $criteria);
+        $query->joinWith('Deposit', $joinBehavior);
+
+        return $this->getPledges($query, $con);
     }
 
     /**
@@ -1141,8 +1476,14 @@ abstract class DonationFund implements ActiveRecordInterface
     public function clearAllReferences($deep = false)
     {
         if ($deep) {
+            if ($this->collPledges) {
+                foreach ($this->collPledges as $o) {
+                    $o->clearAllReferences($deep);
+                }
+            }
         } // if ($deep)
 
+        $this->collPledges = null;
     }
 
     /**

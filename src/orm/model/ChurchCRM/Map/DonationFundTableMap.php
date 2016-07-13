@@ -152,6 +152,13 @@ class DonationFundTableMap extends TableMap
      */
     public function buildRelations()
     {
+        $this->addRelation('Pledge', '\\ChurchCRM\\Pledge', RelationMap::ONE_TO_MANY, array (
+  0 =>
+  array (
+    0 => ':plg_fundID',
+    1 => ':fun_ID',
+  ),
+), null, null, 'Pledges', false);
     } // buildRelations()
 
     /**

@@ -7,6 +7,8 @@ use \Exception;
 use \PDO;
 use ChurchCRM\Deposit as ChildDeposit;
 use ChurchCRM\DepositQuery as ChildDepositQuery;
+use ChurchCRM\DonationFund as ChildDonationFund;
+use ChurchCRM\DonationFundQuery as ChildDonationFundQuery;
 use ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use ChurchCRM\Map\PledgeTableMap;
 use Propel\Runtime\Propel;
@@ -220,6 +222,11 @@ abstract class Pledge implements ActiveRecordInterface
      * @var        ChildDeposit
      */
     protected $aDeposit;
+
+    /**
+     * @var        ChildDonationFund
+     */
+    protected $aDonationFund;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -967,6 +974,10 @@ abstract class Pledge implements ActiveRecordInterface
             $this->modifiedColumns[PledgeTableMap::COL_PLG_FUNDID] = true;
         }
 
+        if ($this->aDonationFund !== null && $this->aDonationFund->getId() !== $v) {
+            $this->aDonationFund = null;
+        }
+
         return $this;
     } // setFundid()
 
@@ -1328,6 +1339,9 @@ abstract class Pledge implements ActiveRecordInterface
      */
     public function ensureConsistency()
     {
+        if ($this->aDonationFund !== null && $this->plg_fundid !== $this->aDonationFund->getId()) {
+            $this->aDonationFund = null;
+        }
         if ($this->aDeposit !== null && $this->plg_depid !== $this->aDeposit->getId()) {
             $this->aDeposit = null;
         }
@@ -1371,6 +1385,7 @@ abstract class Pledge implements ActiveRecordInterface
         if ($deep) {  // also de-associate any related objects?
 
             $this->aDeposit = null;
+            $this->aDonationFund = null;
         } // if (deep)
     }
 
@@ -1482,6 +1497,13 @@ abstract class Pledge implements ActiveRecordInterface
                     $affectedRows += $this->aDeposit->save($con);
                 }
                 $this->setDeposit($this->aDeposit);
+            }
+
+            if ($this->aDonationFund !== null) {
+                if ($this->aDonationFund->isModified() || $this->aDonationFund->isNew()) {
+                    $affectedRows += $this->aDonationFund->save($con);
+                }
+                $this->setDonationFund($this->aDonationFund);
             }
 
             if ($this->isNew() || $this->isModified()) {
@@ -1863,6 +1885,21 @@ abstract class Pledge implements ActiveRecordInterface
                 }
 
                 $result[$key] = $this->aDeposit->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
+            }
+            if (null !== $this->aDonationFund) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'donationFund';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'donationfund_fun';
+                        break;
+                    default:
+                        $key = 'DonationFund';
+                }
+
+                $result[$key] = $this->aDonationFund->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
             }
         }
 
@@ -2344,6 +2381,57 @@ abstract class Pledge implements ActiveRecordInterface
     }
 
     /**
+     * Declares an association between this object and a ChildDonationFund object.
+     *
+     * @param  ChildDonationFund $v
+     * @return $this|\ChurchCRM\Pledge The current object (for fluent API support)
+     * @throws PropelException
+     */
+    public function setDonationFund(ChildDonationFund $v = null)
+    {
+        if ($v === null) {
+            $this->setFundid(NULL);
+        } else {
+            $this->setFundid($v->getId());
+        }
+
+        $this->aDonationFund = $v;
+
+        // Add binding for other direction of this n:n relationship.
+        // If this object has already been added to the ChildDonationFund object, it will not be re-added.
+        if ($v !== null) {
+            $v->addPledge($this);
+        }
+
+
+        return $this;
+    }
+
+
+    /**
+     * Get the associated ChildDonationFund object
+     *
+     * @param  ConnectionInterface $con Optional Connection object.
+     * @return ChildDonationFund The associated ChildDonationFund object.
+     * @throws PropelException
+     */
+    public function getDonationFund(ConnectionInterface $con = null)
+    {
+        if ($this->aDonationFund === null && ($this->plg_fundid !== null)) {
+            $this->aDonationFund = ChildDonationFundQuery::create()->findPk($this->plg_fundid, $con);
+            /* The following can be used additionally to
+                guarantee the related object contains a reference
+                to this object.  This level of coupling may, however, be
+                undesirable since it could result in an only partially populated collection
+                in the referenced object.
+                $this->aDonationFund->addPledges($this);
+             */
+        }
+
+        return $this->aDonationFund;
+    }
+
+    /**
      * Clears the current object, sets all attributes to their default values and removes
      * outgoing references as well as back-references (from other objects to this one. Results probably in a database
      * change of those foreign objects when you call `save` there).
@@ -2352,6 +2440,9 @@ abstract class Pledge implements ActiveRecordInterface
     {
         if (null !== $this->aDeposit) {
             $this->aDeposit->removePledge($this);
+        }
+        if (null !== $this->aDonationFund) {
+            $this->aDonationFund->removePledge($this);
         }
         $this->plg_plgid = null;
         $this->plg_famid = null;
@@ -2396,6 +2487,7 @@ abstract class Pledge implements ActiveRecordInterface
         } // if ($deep)
 
         $this->aDeposit = null;
+        $this->aDonationFund = null;
     }
 
     /**
