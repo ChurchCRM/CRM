@@ -370,18 +370,18 @@
         </vendor>
     </table>
     <table name="deposit_dep" idMethod="native" phpName="Deposit">
-        <column name="dep_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
-                autoIncrement="true" required="true"/>
-        <column name="dep_Date" phpName="Date" type="DATE"/>
-        <column name="dep_Comment" phpName="Comment" type="LONGVARCHAR"/>
-        <column name="dep_EnteredBy" phpName="Enteredby" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
-        <column name="dep_Closed" phpName="Closed" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
-        <column name="dep_Type" phpName="Type" type="CHAR" sqlType="enum('Bank','CreditCard','BankDraft','eGive')"
-                required="true" defaultValue="Bank"/>
-        <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
-        </vendor>
-    </table>
+      <column name="dep_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" 
+              autoIncrement="true" required="true"/>
+      <column name="dep_Date" phpName="Date" type="DATE"/>
+      <column name="dep_Comment" phpName="Comment" type="LONGVARCHAR"/>
+      <column name="dep_EnteredBy" phpName="Enteredby" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+      <column name="dep_Closed" phpName="Closed" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+      <column name="dep_Type" phpName="Type" type="CHAR" sqlType="enum('Bank','CreditCard','BankDraft','eGive')" 
+              required="true" defaultValue="Bank"/>
+      <vendor type="mysql">
+        <parameter name="Engine" value="MyISAM"/>
+      </vendor>
+  </table>
     <table name="donateditem_di" idMethod="native" phpName="DonatedItem">
         <column name="di_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
@@ -408,7 +408,7 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    <table name="donationfund_fun" idMethod="native" phpName="DonationFund">
+     <table name="donationfund_fun" idMethod="native" phpName="DonationFund">
         <column name="fun_ID" phpName="Id" type="TINYINT" size="3" primaryKey="true" autoIncrement="true"
                 required="true"/>
         <column name="fun_Active" phpName="Active" type="CHAR" sqlType="enum('true','false')" required="true"
@@ -553,6 +553,17 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
+    
+    <table name="pledge_denominations_pdem" idMethod="native" phpName="PledgeDenominationsPdem">
+      <column name="pdem_pdemID" phpName="PdemPdemid" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+      <column name="pdem_plg_GroupKey" phpName="PdemPlgGroupkey" type="LONGVARCHAR"/>
+      <column name="plg_depID" phpName="PlgDepid" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+      <column name="pdem_denominationID" phpName="PdemDenominationid" type="LONGVARCHAR"/>
+      <column name="pdem_denominationQuantity" phpName="PdemDenominationquantity" type="SMALLINT" size="9"/>
+      <vendor type="mysql">
+        <parameter name="Engine" value="MyISAM"/>
+      </vendor>
+  </table>
 
     <!--
   <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu" >
