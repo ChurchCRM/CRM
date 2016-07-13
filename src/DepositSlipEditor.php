@@ -80,7 +80,7 @@ require "Include/Header.php";
       <div class="box-header with-border">
         <h3 class="box-title"><?php echo gettext("Deposit Details: "); ?></h3>
       </div>
-      <div claFss="box-body">
+      <div class="box-body">
         <form method="post" action="#" name="DepositSlipEditor" id="DepositSlipEditor">
           <div class="row">
             <div class="col-lg-4">
@@ -101,7 +101,7 @@ require "Include/Header.php";
               <input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
             </div>
             <div class="col-lg-6" style="text-align:center">
-              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location = 'Reports/PrintDeposit.php?BankSlip=<?php echo ($thisDeposit->dep_Type == 'Bank') ?>';">
+              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location = 'api/deposits/<?php echo ($thisDeposit->dep_ID) ?>/pdf';">
             </div>
           </div>
           <?php

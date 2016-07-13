@@ -22,6 +22,10 @@ require "Include/Functions.php";
 require "Service/FinancialService.php";
 
 $financialService = new FinancialService();
+require_once dirname(__FILE__) . '/vendor/autoload.php';
+require_once dirname(__FILE__) . '/orm/conf/config.php';
+
+use ChurchCRM\DonationFundQuery;
 
 
 $thisPledgeID = 0;
@@ -45,7 +49,7 @@ $sComment = array();
 
 $checkHash = array();
 
-$funds = $financialService->getFund();
+$funds = DonationFundQuery::create()->find();
 $currencies = $financialService->getCurrency();
 
 
@@ -337,8 +341,8 @@ if (true) { //If the requested page is to edit a deposit, then we need to get th
               <option value=0><?= gettext("Split"); ?></option>
               <?php
               foreach ($funds as $fund) {
-                echo "<option value=\"" . $fund->ID . "\""; if ($iSelectedFund == $fund->ID)
-                  echo " selected"; echo ">"; echo gettext($fund->Name) . "</option>";
+                echo "<option value=\"" . $fund->getId() . "\""; if ($iSelectedFund == $fund->getId())
+                  echo " selected"; echo ">"; echo gettext($fund->getName()) . "</option>";
               }
               ?>
             </select>

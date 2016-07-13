@@ -1419,6 +1419,20 @@ GROUP by fun_Name";
     $thisReport->pdf->Cell(50, 10, "Total Cash", 1, 2, 'L');
   }
 
+   private function calculateFundTotals($thisReport)
+  {
+    $thisReport->fundTotal = array();
+    foreach ($thisReport->payments as $payment) {
+      if (!$payment->fun_Name)
+        $thisReport->fundTotal['UNDESIGNATED'] += $payment->plg_amount;
+      else {
+        if (array_key_exists($payment->fun_Name, $thisReport->fundTotal))
+          $thisReport->fundTotal[$payment->fun_Name] += $payment->plg_amount;
+        else
+          $thisReport->fundTotal[$payment->fun_Name] = $payment->plg_amount;
+      }
+    }
+  }
 
   function getDepositPDF($depID)
   {
@@ -1442,6 +1456,25 @@ GROUP by fun_Name";
     }
     //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.
     $thisReport->ReportSettings->sDepositSlipType = "QBDT";
+    
+    
+    $this->calculateFundTotals($thisReport);
+    if ( $thisReport->ReportSettings->sDepositSlipType == "QBDT" )
+    {
+      //Generate a QuickBooks Deposit Ticket.
+      $this->generateQBDepositSlip($thisReport);
+    }
+    elseif ( $thisReport->ReportSettings->sDepositSlipType == "PTDT" )
+    {
+      //placeholder for Peachtree Deposit Tickets.
+    }
+    elseif ( $thisReport->ReportSettings->sDepositSlipType == "GDT" )
+    {
+      //placeholder for generic deposit ticket.
+    }
+    //$this->generateBankDepositSlip($thisReport);
+   
+
 
     $this->generateDepositSummary($thisReport);
 
@@ -1529,21 +1562,3 @@ GROUP by fun_Name";
     return $funds;
   }
 }
-
-?>
-    $this->calculateFundTotals($thisReport);
-    if ( $thisReport->ReportSettings->sDepositSlipType == "QBDT" )
-    {
-      //Generate a QuickBooks Deposit Ticket.
-      $this->generateQBDepositSlip($thisReport);
-    }
-    elseif ( $thisReport->ReportSettings->sDepositSlipType == "PTDT" )
-    {
-      //placeholder for Peachtree Deposit Tickets.
-    }
-    elseif ( $thisReport->ReportSettings->sDepositSlipType == "GDT" )
-    {
-      //placeholder for generic deposit ticket.
-    }
-    //$this->generateBankDepositSlip($thisReport);
-   

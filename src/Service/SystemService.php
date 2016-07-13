@@ -5,132 +5,6 @@
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 class SystemService {
-  
-
-//
-// remove_remarks will strip the sql comment lines out of an uploaded sql file
-//
-function remove_remarks($sql)
-{
-   $lines = explode("\n", $sql);
-
-   // try to keep mem. use down
-   $sql = "";
-
-   $linecount = count($lines);
-   $output = "";
-
-   for ($i = 0; $i < $linecount; $i++)
-   {
-      if (($i != ($linecount - 1)) || (strlen($lines[$i]) > 0))
-      {
-         if (isset($lines[$i][0]) && $lines[$i][0] != "#")
-         {
-            $output .= $lines[$i] . "\n";
-         }
-         else
-         {
-            $output .= "\n";
-         }
-         // Trading a bit of speed for lower mem. use here.
-         $lines[$i] = "";
-      }
-   }
-
-   return $output;
-
-}
-  //
-// split_sql_file will split an uploaded sql file into single sql statements.
-// Note: expects trim() to have already been run on $sql.
-//
-function split_sql_file($sql, $delimiter)
-{
-   // Split up our string into "possible" SQL statements.
-   $tokens = explode($delimiter, $sql);
-
-   // try to save mem.
-   $sql = "";
-   $output = array();
-
-   // we don't actually care about the matches preg gives us.
-   $matches = array();
-
-   // this is faster than calling count($oktens) every time thru the loop.
-   $token_count = count($tokens);
-   for ($i = 0; $i < $token_count; $i++)
-   {
-      // Don't wanna add an empty string as the last thing in the array.
-      if (($i != ($token_count - 1)) || (strlen($tokens[$i] > 0)))
-      {
-         // This is the total number of single quotes in the token.
-         $total_quotes = preg_match_all("/'/", $tokens[$i], $matches);
-         // Counts single quotes that are preceded by an odd number of backslashes,
-         // which means they're escaped quotes.
-         $escaped_quotes = preg_match_all("/(?<!\\\\)(\\\\\\\\)*\\\\'/", $tokens[$i], $matches);
-
-         $unescaped_quotes = $total_quotes - $escaped_quotes;
-
-         // If the number of unescaped quotes is even, then the delimiter did NOT occur inside a string literal.
-         if (($unescaped_quotes % 2) == 0)
-         {
-            // It's a complete sql statement.
-            $output[] = $tokens[$i];
-            // save memory.
-            $tokens[$i] = "";
-         }
-         else
-         {
-            // incomplete sql statement. keep adding tokens until we have a complete one.
-            // $temp will hold what we have so far.
-            $temp = $tokens[$i] . $delimiter;
-            // save memory..
-            $tokens[$i] = "";
-
-            // Do we have a complete statement yet?
-            $complete_stmt = false;
-
-            for ($j = $i + 1; (!$complete_stmt && ($j < $token_count)); $j++)
-            {
-               // This is the total number of single quotes in the token.
-               $total_quotes = preg_match_all("/'/", $tokens[$j], $matches);
-               // Counts single quotes that are preceded by an odd number of backslashes,
-               // which means they're escaped quotes.
-               $escaped_quotes = preg_match_all("/(?<!\\\\)(\\\\\\\\)*\\\\'/", $tokens[$j], $matches);
-
-               $unescaped_quotes = $total_quotes - $escaped_quotes;
-
-               if (($unescaped_quotes % 2) == 1)
-               {
-                  // odd number of unescaped quotes. In combination with the previous incomplete
-                  // statement(s), we now have a complete statement. (2 odds always make an even)
-                  $output[] = $temp . $tokens[$j];
-
-                  // save memory.
-                  $tokens[$j] = "";
-                  $temp = "";
-
-                  // exit the loop.
-                  $complete_stmt = true;
-                  // make sure the outer loop continues at the right point.
-                  $i = $j;
-               }
-               else
-               {
-                  // even number of unescaped quotes. We still don't have a complete statement.
-                  // (1 odd and 1 even always make an odd)
-                  $temp .= $tokens[$j] . $delimiter;
-                  // save memory.
-                  $tokens[$j] = "";
-               }
-
-            } // for..
-         } // else
-      }
-   }
-
-   return $output;
-}
 
   function getLatestRelese() {
     $client = new \Github\Client();
@@ -154,21 +28,21 @@ function split_sql_file($sql, $delimiter)
 
   function playbackSQLtoDatabase($fileName) {
     requireUserGroupMembership("bAdmin");
-    $sql_query = @fread(@fopen($fileName, 'r'), @filesize($fileName)) or die('problem ');
-    $sql_query = $this->remove_remarks($sql_query);
-    $sql_query = $this->split_sql_file($sql_query, ';');
-    #print_r($sql_query);
-    $i=1;
-    foreach($sql_query as $sql){
-      mysql_query($sql) or die('error in query '.$i.": ".$sql);
-
-      $i=$i+1;
+    $query = '';
+    $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($restoreQueries as $line) {
+      if ($line != '' && strpos($line, '--') === false) {
+        $query .= " $line";
+        if (substr($query, -1) == ';') {
+          $person = RunQuery($query);
+          $query = '';
+        }
+      }
     }
   }
 
   function restoreDatabaseFromBackup() {
     requireUserGroupMembership("bAdmin");
-    $root = dirname(dirname(__FILE__));
     $restoreResult = new StdClass();
     global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $sGZIPname;
     $file = $_FILES['restoreFile'];
@@ -368,33 +242,36 @@ function split_sql_file($sql, $delimiter)
     return false;
   }
 
+  function rebuildWithSQL($SQLFile) {
+    $root = dirname(dirname(__FILE__));
+    $this->playbackSQLtoDatabase($root . $SQLFile);
+  }
 
   function checkDatabaseVersion() {
-    $root = dirname(dirname(__FILE__));
     $db_version = $this->getDatabaseVersion();
     if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
       return true;
     }
 
     // always rebuild the menu
-    $this->playbackSQLtoDatabase($root ."/mysql/upgrade/rebuild_nav_menus.sql");
+    $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
 
     // This code will automatically update from 1.2.14 (last good churchinfo build to 2.0.0 for ChurchCRM
     if (strncmp($db_version, "1.2.14", 6) == 0) {
-      $this->playbackSQLtoDatabase($root ."/mysql/upgrade/1.2.14-2.0.0.sql");
-      $this->playbackSQLtoDatabase($root ."/mysql/upgrade/2.0.x-2.1.0.sql");
+      $this->rebuildWithSQL("/mysql/upgrade/1.2.14-2.0.0.sql");
+      $this->rebuildWithSQL("/mysql/upgrade/2.0.x-2.1.0.sql");
       return true;
     }
 
     // This code will automatically update from 1.3.0 (early build of ChurchCRM)
     if (strncmp($db_version, "1.3.0", 6) == 0) {
-      $this->playbackSQLtoDatabase($root ."/mysql/upgrade/1.3.0-2.0.0.sql");
-      $this->playbackSQLtoDatabase($root ."/mysql/upgrade/2.0.x-2.1.0.sql");
+      $this->rebuildWithSQL("/mysql/upgrade/1.3.0-2.0.0.sql");
+      $this->rebuildWithSQL("/mysql/upgrade/2.0.x-2.1.0.sql");
       return true;
     }
 
     if (strncmp($db_version, "2.0", 3) == 0) {
-      $this->playbackSQLtoDatabase($root ."/mysql/upgrade/2.0.x-2.1.0.sql");
+      $this->rebuildWithSQL("/mysql/upgrade/2.0.x-2.1.0.sql");
       return true;
     }
 
