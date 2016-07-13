@@ -32,7 +32,7 @@ if (array_key_exists("DepositSlipID", $_GET))
 
 if ($iDepositSlipID) {
 
-  $thisDeposit = DepositQuery::create()->findById($iDepositSlipID);
+  $thisDeposit = DepositQuery::create()->findOneById($iDepositSlipID);
   // Set the session variable for default payment type so the new payment form will come up correctly
   if ($thisDeposit->getType() == "Bank")
     $_SESSION['idefaultPaymentMethod'] = "CHECK";
@@ -90,7 +90,7 @@ require "Include/Header.php";
           <div class="row">
             <div class="col-lg-4">
               <label for="Date"><?php echo gettext("Date:"); ?></label>
-              <input type="text" class="form-control" name="Date" value="<?php echo $thisDeposit->getDate(); ?>" id="DepositDate" >
+              <input type="text" class="form-control" name="Date" value="<?php echo $thisDeposit->getDate('m-d-Y'); ?>" id="DepositDate" >
             </div>
             <div class="col-lg-4">
               <label for="Comment"><?php echo gettext("Comment:"); ?></label>
@@ -251,8 +251,8 @@ foreach ($thisDeposit->funds as $tmpfund)
 echo json_encode($fundData);*/
 ?>
   
-var depositType = '<?php //echo $thisDeposit->getType(); ?>';
-var depositSlipID = <?php //echo $iDepositSlipID; ?>;
+var depositType = '<?php echo $thisDeposit->getType(); ?>';
+var depositSlipID = <?php echo $iDepositSlipID; ?>;
 
 $(document).ready(function() {
   dataT = $("#paymentsTable").DataTable({
@@ -288,14 +288,14 @@ $(document).ready(function() {
             title:'Method',
             data:'plg_method',
     }
-  <?php //if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') { ?>,
+  <?php if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') { ?>,
                 , {
                 width: 'auto',
                         title:'Cleared',
                         data:'plg_aut_Cleared',
                 }<?php
-  //}
-  //if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
+  }
+  if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
   ?>
         , {
         width: 'auto',
@@ -305,7 +305,7 @@ $(document).ready(function() {
                 {
                   return '<a href=\'PledgeDetails.php?PledgeID=' + data + '\'>Details</a>'
                   }
-        }<?php// } ?>
+        }<?php } ?>
     ],
     "createdRow" : function (row,data,index) {
       $(row).addClass("paymentRow");
@@ -321,5 +321,6 @@ initDepositSlipEditor();
 
 
 <?php
+
 require "Include/Footer.php";
 ?>
