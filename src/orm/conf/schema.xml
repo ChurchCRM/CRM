@@ -378,6 +378,11 @@
       <column name="dep_Closed" phpName="Closed" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
       <column name="dep_Type" phpName="Type" type="CHAR" sqlType="enum('Bank','CreditCard','BankDraft','eGive')" 
               required="true" defaultValue="Bank"/>
+      <behavior name="aggregate_column">
+        <parameter name="name" value="totalAmount" />
+        <parameter name="foreign_table" value="pledge_plg" />
+        <parameter name="expression" value ="SUM(plg_amount)"/>
+      </behavior>
       <vendor type="mysql">
         <parameter name="Engine" value="MyISAM"/>
       </vendor>
@@ -554,7 +559,7 @@
         </vendor>
     </table>
     
-    <table name="pledge_denominations_pdem" idMethod="native" phpName="PledgeDenominationsPdem">
+    <table name="pledge_denominations_pdem" idMethod="native" phpName="PledgeDenomination">
       <column name="pdem_pdemID" phpName="PdemPdemid" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
       <column name="pdem_plg_GroupKey" phpName="PdemPlgGroupkey" type="LONGVARCHAR"/>
       <column name="plg_depID" phpName="PlgDepid" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
@@ -563,6 +568,36 @@
       <vendor type="mysql">
         <parameter name="Engine" value="MyISAM"/>
       </vendor>
+  </table>
+  
+  <table name="pledge_plg" idMethod="native" phpName="Pledge" >
+    <column name="plg_plgID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="plg_FamID" phpName="FamId" type="SMALLINT" size="9"/>
+    <column name="plg_FYID" phpName="Fyid" type="SMALLINT" size="9"/>
+    <column name="plg_date" phpName="Date" type="DATE"/>
+    <column name="plg_amount" phpName="Amount" type="DECIMAL" size="8" scale="2"/>
+    <column name="plg_schedule" phpName="Schedule" type="CHAR" sqlType="enum('Weekly','Monthly','Quarterly','Once','Other')"/>
+    <column name="plg_method" phpName="Method" type="CHAR" sqlType="enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE')"/>
+    <column name="plg_comment" phpName="Comment" type="LONGVARCHAR"/>
+    <column name="plg_DateLastEdited" phpName="Datelastedited" type="DATE" required="true" defaultValue="0000-00-00"/>
+    <column name="plg_EditedBy" phpName="Editedby" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="plg_PledgeOrPayment" phpName="Pledgeorpayment" type="CHAR" sqlType="enum('Pledge','Payment')" required="true" defaultValue="Pledge"/>
+    <column name="plg_fundID" phpName="Fundid" type="TINYINT" size="3" sqlType="tinyint(3) unsigned"/>
+    <column name="plg_depID" phpName="Depid" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+    <column name="plg_CheckNo" phpName="Checkno" type="BIGINT" size="16" sqlType="bigint(16) unsigned"/>
+    <column name="plg_Problem" phpName="Problem" type="BOOLEAN" size="1"/>
+    <column name="plg_scanString" phpName="Scanstring" type="LONGVARCHAR"/>
+    <column name="plg_aut_ID" phpName="AutId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="plg_aut_Cleared" phpName="AutCleared" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="plg_aut_ResultID" phpName="AutResultid" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+    <column name="plg_NonDeductible" phpName="Nondeductible" type="DECIMAL" size="8" scale="2" required="true"/>
+    <column name="plg_GroupKey" phpName="Groupkey" type="VARCHAR" size="64" required="true"/>
+    <foreign-key foreignTable="deposit_dep">
+            <reference local="plg_depID" foreign="dep_ID"/>
+        </foreign-key>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
   </table>
 
     <!--
@@ -635,32 +670,7 @@
   </table>
 
   
-  <table name="pledge_plg" idMethod="native" phpName="PledgePlg" >
-    <column name="plg_plgID" phpName="PlgPlgid" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
-    <column name="plg_FamID" phpName="PlgFamid" type="SMALLINT" size="9"/>
-    <column name="plg_FYID" phpName="PlgFyid" type="SMALLINT" size="9"/>
-    <column name="plg_date" phpName="PlgDate" type="DATE"/>
-    <column name="plg_amount" phpName="PlgAmount" type="DECIMAL" size="8" scale="2"/>
-    <column name="plg_schedule" phpName="PlgSchedule" type="CHAR" sqlType="enum('Weekly','Monthly','Quarterly','Once','Other')"/>
-    <column name="plg_method" phpName="PlgMethod" type="CHAR" sqlType="enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE')"/>
-    <column name="plg_comment" phpName="PlgComment" type="LONGVARCHAR"/>
-    <column name="plg_DateLastEdited" phpName="PlgDatelastedited" type="DATE" required="true" defaultValue="0000-00-00"/>
-    <column name="plg_EditedBy" phpName="PlgEditedby" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-    <column name="plg_PledgeOrPayment" phpName="PlgPledgeorpayment" type="CHAR" sqlType="enum('Pledge','Payment')" required="true" defaultValue="Pledge"/>
-    <column name="plg_fundID" phpName="PlgFundid" type="TINYINT" size="3" sqlType="tinyint(3) unsigned"/>
-    <column name="plg_depID" phpName="PlgDepid" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
-    <column name="plg_CheckNo" phpName="PlgCheckno" type="BIGINT" size="16" sqlType="bigint(16) unsigned"/>
-    <column name="plg_Problem" phpName="PlgProblem" type="BOOLEAN" size="1"/>
-    <column name="plg_scanString" phpName="PlgScanstring" type="LONGVARCHAR"/>
-    <column name="plg_aut_ID" phpName="PlgAutId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-    <column name="plg_aut_Cleared" phpName="PlgAutCleared" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
-    <column name="plg_aut_ResultID" phpName="PlgAutResultid" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-    <column name="plg_NonDeductible" phpName="PlgNondeductible" type="DECIMAL" size="8" scale="2" required="true"/>
-    <column name="plg_GroupKey" phpName="PlgGroupkey" type="VARCHAR" size="64" required="true"/>
-    <vendor type="mysql">
-      <parameter name="Engine" value="MyISAM"/>
-    </vendor>
-  </table>
+  
   <table name="property_pro" idMethod="native" phpName="PropertyPro" >
     <column name="pro_ID" phpName="ProId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pro_Class" phpName="ProClass" type="VARCHAR" size="10" required="true" defaultValue=""/>

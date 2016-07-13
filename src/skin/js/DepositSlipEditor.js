@@ -91,9 +91,10 @@ function initDepositSlipEditor()
     var deletedRows = dataT.rows('.selected').data()
     $.each(deletedRows, function(index, value) {
       $.ajax({
-        type: 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
+        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
         url: '/api/payments/' + value.plg_GroupKey, // the url where we want to POST
         dataType: 'json', // what type of data do we expect back from the server
+        data: {"_METHOD":"DELETE"},
         encode: true
       })
               .done(function(data) {

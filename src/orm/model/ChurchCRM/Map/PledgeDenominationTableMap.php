@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Map;
 
-use ChurchCRM\Deposit;
-use ChurchCRM\DepositQuery;
+use ChurchCRM\PledgeDenomination;
+use ChurchCRM\PledgeDenominationQuery;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\InstancePoolTrait;
@@ -16,7 +16,7 @@ use Propel\Runtime\Map\TableMapTrait;
 
 
 /**
- * This class defines the structure of the 'deposit_dep' table.
+ * This class defines the structure of the 'pledge_denominations_pdem' table.
  *
  *
  *
@@ -26,7 +26,7 @@ use Propel\Runtime\Map\TableMapTrait;
  * (i.e. if it's a text column type).
  *
  */
-class DepositTableMap extends TableMap
+class PledgeDenominationTableMap extends TableMap
 {
     use InstancePoolTrait;
     use TableMapTrait;
@@ -34,7 +34,7 @@ class DepositTableMap extends TableMap
     /**
      * The (dot-path) name of this class
      */
-    const CLASS_NAME = 'ChurchCRM.Map.DepositTableMap';
+    const CLASS_NAME = 'ChurchCRM.Map.PledgeDenominationTableMap';
 
     /**
      * The default database name for this class
@@ -44,22 +44,22 @@ class DepositTableMap extends TableMap
     /**
      * The table name for this class
      */
-    const TABLE_NAME = 'deposit_dep';
+    const TABLE_NAME = 'pledge_denominations_pdem';
 
     /**
      * The related Propel class for this table
      */
-    const OM_CLASS = '\\ChurchCRM\\Deposit';
+    const OM_CLASS = '\\ChurchCRM\\PledgeDenomination';
 
     /**
      * A class that can be returned by this tableMap
      */
-    const CLASS_DEFAULT = 'ChurchCRM.Deposit';
+    const CLASS_DEFAULT = 'ChurchCRM.PledgeDenomination';
 
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 7;
+    const NUM_COLUMNS = 5;
 
     /**
      * The number of lazy-loaded columns
@@ -69,42 +69,32 @@ class DepositTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 7;
+    const NUM_HYDRATE_COLUMNS = 5;
 
     /**
-     * the column name for the dep_ID field
+     * the column name for the pdem_pdemID field
      */
-    const COL_DEP_ID = 'deposit_dep.dep_ID';
+    const COL_PDEM_PDEMID = 'pledge_denominations_pdem.pdem_pdemID';
 
     /**
-     * the column name for the dep_Date field
+     * the column name for the pdem_plg_GroupKey field
      */
-    const COL_DEP_DATE = 'deposit_dep.dep_Date';
+    const COL_PDEM_PLG_GROUPKEY = 'pledge_denominations_pdem.pdem_plg_GroupKey';
 
     /**
-     * the column name for the dep_Comment field
+     * the column name for the plg_depID field
      */
-    const COL_DEP_COMMENT = 'deposit_dep.dep_Comment';
+    const COL_PLG_DEPID = 'pledge_denominations_pdem.plg_depID';
 
     /**
-     * the column name for the dep_EnteredBy field
+     * the column name for the pdem_denominationID field
      */
-    const COL_DEP_ENTEREDBY = 'deposit_dep.dep_EnteredBy';
+    const COL_PDEM_DENOMINATIONID = 'pledge_denominations_pdem.pdem_denominationID';
 
     /**
-     * the column name for the dep_Closed field
+     * the column name for the pdem_denominationQuantity field
      */
-    const COL_DEP_CLOSED = 'deposit_dep.dep_Closed';
-
-    /**
-     * the column name for the dep_Type field
-     */
-    const COL_DEP_TYPE = 'deposit_dep.dep_Type';
-
-    /**
-     * the column name for the totalAmount field
-     */
-    const COL_TOTALAMOUNT = 'deposit_dep.totalAmount';
+    const COL_PDEM_DENOMINATIONQUANTITY = 'pledge_denominations_pdem.pdem_denominationQuantity';
 
     /**
      * The default string format for model objects of the related table
@@ -118,11 +108,11 @@ class DepositTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'Date', 'Comment', 'Enteredby', 'Closed', 'Type', 'Totalamount', ),
-        self::TYPE_CAMELNAME     => array('id', 'date', 'comment', 'enteredby', 'closed', 'type', 'totalamount', ),
-        self::TYPE_COLNAME       => array(DepositTableMap::COL_DEP_ID, DepositTableMap::COL_DEP_DATE, DepositTableMap::COL_DEP_COMMENT, DepositTableMap::COL_DEP_ENTEREDBY, DepositTableMap::COL_DEP_CLOSED, DepositTableMap::COL_DEP_TYPE, DepositTableMap::COL_TOTALAMOUNT, ),
-        self::TYPE_FIELDNAME     => array('dep_ID', 'dep_Date', 'dep_Comment', 'dep_EnteredBy', 'dep_Closed', 'dep_Type', 'totalAmount', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('PdemPdemid', 'PdemPlgGroupkey', 'PlgDepid', 'PdemDenominationid', 'PdemDenominationquantity', ),
+        self::TYPE_CAMELNAME     => array('pdemPdemid', 'pdemPlgGroupkey', 'plgDepid', 'pdemDenominationid', 'pdemDenominationquantity', ),
+        self::TYPE_COLNAME       => array(PledgeDenominationTableMap::COL_PDEM_PDEMID, PledgeDenominationTableMap::COL_PDEM_PLG_GROUPKEY, PledgeDenominationTableMap::COL_PLG_DEPID, PledgeDenominationTableMap::COL_PDEM_DENOMINATIONID, PledgeDenominationTableMap::COL_PDEM_DENOMINATIONQUANTITY, ),
+        self::TYPE_FIELDNAME     => array('pdem_pdemID', 'pdem_plg_GroupKey', 'plg_depID', 'pdem_denominationID', 'pdem_denominationQuantity', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, )
     );
 
     /**
@@ -132,11 +122,11 @@ class DepositTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'Date' => 1, 'Comment' => 2, 'Enteredby' => 3, 'Closed' => 4, 'Type' => 5, 'Totalamount' => 6, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'date' => 1, 'comment' => 2, 'enteredby' => 3, 'closed' => 4, 'type' => 5, 'totalamount' => 6, ),
-        self::TYPE_COLNAME       => array(DepositTableMap::COL_DEP_ID => 0, DepositTableMap::COL_DEP_DATE => 1, DepositTableMap::COL_DEP_COMMENT => 2, DepositTableMap::COL_DEP_ENTEREDBY => 3, DepositTableMap::COL_DEP_CLOSED => 4, DepositTableMap::COL_DEP_TYPE => 5, DepositTableMap::COL_TOTALAMOUNT => 6, ),
-        self::TYPE_FIELDNAME     => array('dep_ID' => 0, 'dep_Date' => 1, 'dep_Comment' => 2, 'dep_EnteredBy' => 3, 'dep_Closed' => 4, 'dep_Type' => 5, 'totalAmount' => 6, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('PdemPdemid' => 0, 'PdemPlgGroupkey' => 1, 'PlgDepid' => 2, 'PdemDenominationid' => 3, 'PdemDenominationquantity' => 4, ),
+        self::TYPE_CAMELNAME     => array('pdemPdemid' => 0, 'pdemPlgGroupkey' => 1, 'plgDepid' => 2, 'pdemDenominationid' => 3, 'pdemDenominationquantity' => 4, ),
+        self::TYPE_COLNAME       => array(PledgeDenominationTableMap::COL_PDEM_PDEMID => 0, PledgeDenominationTableMap::COL_PDEM_PLG_GROUPKEY => 1, PledgeDenominationTableMap::COL_PLG_DEPID => 2, PledgeDenominationTableMap::COL_PDEM_DENOMINATIONID => 3, PledgeDenominationTableMap::COL_PDEM_DENOMINATIONQUANTITY => 4, ),
+        self::TYPE_FIELDNAME     => array('pdem_pdemID' => 0, 'pdem_plg_GroupKey' => 1, 'plg_depID' => 2, 'pdem_denominationID' => 3, 'pdem_denominationQuantity' => 4, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, )
     );
 
     /**
@@ -149,20 +139,18 @@ class DepositTableMap extends TableMap
     public function initialize()
     {
         // attributes
-        $this->setName('deposit_dep');
-        $this->setPhpName('Deposit');
+        $this->setName('pledge_denominations_pdem');
+        $this->setPhpName('PledgeDenomination');
         $this->setIdentifierQuoting(false);
-        $this->setClassName('\\ChurchCRM\\Deposit');
+        $this->setClassName('\\ChurchCRM\\PledgeDenomination');
         $this->setPackage('ChurchCRM');
         $this->setUseIdGenerator(true);
         // columns
-        $this->addPrimaryKey('dep_ID', 'Id', 'SMALLINT', true, 9, null);
-        $this->addColumn('dep_Date', 'Date', 'DATE', false, null, null);
-        $this->addColumn('dep_Comment', 'Comment', 'LONGVARCHAR', false, null, null);
-        $this->addColumn('dep_EnteredBy', 'Enteredby', 'SMALLINT', false, 9, null);
-        $this->addColumn('dep_Closed', 'Closed', 'BOOLEAN', true, 1, false);
-        $this->addColumn('dep_Type', 'Type', 'CHAR', true, null, 'Bank');
-        $this->addColumn('totalAmount', 'Totalamount', 'INTEGER', false, null, null);
+        $this->addPrimaryKey('pdem_pdemID', 'PdemPdemid', 'SMALLINT', true, 9, null);
+        $this->addColumn('pdem_plg_GroupKey', 'PdemPlgGroupkey', 'LONGVARCHAR', false, null, null);
+        $this->addColumn('plg_depID', 'PlgDepid', 'SMALLINT', false, 9, null);
+        $this->addColumn('pdem_denominationID', 'PdemDenominationid', 'LONGVARCHAR', false, null, null);
+        $this->addColumn('pdem_denominationQuantity', 'PdemDenominationquantity', 'SMALLINT', false, 9, null);
     } // initialize()
 
     /**
@@ -170,27 +158,7 @@ class DepositTableMap extends TableMap
      */
     public function buildRelations()
     {
-        $this->addRelation('Pledge', '\\ChurchCRM\\Pledge', RelationMap::ONE_TO_MANY, array (
-  0 =>
-  array (
-    0 => ':plg_depID',
-    1 => ':dep_ID',
-  ),
-), null, null, 'Pledges', false);
     } // buildRelations()
-
-    /**
-     *
-     * Gets the list of behaviors registered for this table
-     *
-     * @return array Associative array (name => parameters) of behaviors
-     */
-    public function getBehaviors()
-    {
-        return array(
-            'aggregate_column' => array('name' => 'totalAmount', 'expression' => 'SUM(plg_amount)', 'condition' => '', 'foreign_table' => 'pledge_plg', 'foreign_schema' => '', ),
-        );
-    } // getBehaviors()
 
     /**
      * Retrieves a string version of the primary key from the DB resultset row that can be used to uniquely identify a row in this table.
@@ -208,11 +176,11 @@ class DepositTableMap extends TableMap
     public static function getPrimaryKeyHashFromRow($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
         // If the PK cannot be derived from the row, return NULL.
-        if ($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)] === null) {
+        if ($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('PdemPdemid', TableMap::TYPE_PHPNAME, $indexType)] === null) {
             return null;
         }
 
-        return null === $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)] || is_scalar($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)]) || is_callable([$row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)], '__toString']) ? (string) $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)] : $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
+        return null === $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('PdemPdemid', TableMap::TYPE_PHPNAME, $indexType)] || is_scalar($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('PdemPdemid', TableMap::TYPE_PHPNAME, $indexType)]) || is_callable([$row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('PdemPdemid', TableMap::TYPE_PHPNAME, $indexType)], '__toString']) ? (string) $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('PdemPdemid', TableMap::TYPE_PHPNAME, $indexType)] : $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('PdemPdemid', TableMap::TYPE_PHPNAME, $indexType)];
     }
 
     /**
@@ -232,7 +200,7 @@ class DepositTableMap extends TableMap
         return (int) $row[
             $indexType == TableMap::TYPE_NUM
                 ? 0 + $offset
-                : self::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)
+                : self::translateFieldName('PdemPdemid', TableMap::TYPE_PHPNAME, $indexType)
         ];
     }
 
@@ -249,7 +217,7 @@ class DepositTableMap extends TableMap
      */
     public static function getOMClass($withPrefix = true)
     {
-        return $withPrefix ? DepositTableMap::CLASS_DEFAULT : DepositTableMap::OM_CLASS;
+        return $withPrefix ? PledgeDenominationTableMap::CLASS_DEFAULT : PledgeDenominationTableMap::OM_CLASS;
     }
 
     /**
@@ -263,22 +231,22 @@ class DepositTableMap extends TableMap
      *
      * @throws PropelException Any exceptions caught during processing will be
      *                         rethrown wrapped into a PropelException.
-     * @return array           (Deposit object, last column rank)
+     * @return array           (PledgeDenomination object, last column rank)
      */
     public static function populateObject($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
-        $key = DepositTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
-        if (null !== ($obj = DepositTableMap::getInstanceFromPool($key))) {
+        $key = PledgeDenominationTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
+        if (null !== ($obj = PledgeDenominationTableMap::getInstanceFromPool($key))) {
             // We no longer rehydrate the object, since this can cause data loss.
             // See http://www.propelorm.org/ticket/509
             // $obj->hydrate($row, $offset, true); // rehydrate
-            $col = $offset + DepositTableMap::NUM_HYDRATE_COLUMNS;
+            $col = $offset + PledgeDenominationTableMap::NUM_HYDRATE_COLUMNS;
         } else {
-            $cls = DepositTableMap::OM_CLASS;
-            /** @var Deposit $obj */
+            $cls = PledgeDenominationTableMap::OM_CLASS;
+            /** @var PledgeDenomination $obj */
             $obj = new $cls();
             $col = $obj->hydrate($row, $offset, false, $indexType);
-            DepositTableMap::addInstanceToPool($obj, $key);
+            PledgeDenominationTableMap::addInstanceToPool($obj, $key);
         }
 
         return array($obj, $col);
@@ -301,18 +269,18 @@ class DepositTableMap extends TableMap
         $cls = static::getOMClass(false);
         // populate the object(s)
         while ($row = $dataFetcher->fetch()) {
-            $key = DepositTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
-            if (null !== ($obj = DepositTableMap::getInstanceFromPool($key))) {
+            $key = PledgeDenominationTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
+            if (null !== ($obj = PledgeDenominationTableMap::getInstanceFromPool($key))) {
                 // We no longer rehydrate the object, since this can cause data loss.
                 // See http://www.propelorm.org/ticket/509
                 // $obj->hydrate($row, 0, true); // rehydrate
                 $results[] = $obj;
             } else {
-                /** @var Deposit $obj */
+                /** @var PledgeDenomination $obj */
                 $obj = new $cls();
                 $obj->hydrate($row);
                 $results[] = $obj;
-                DepositTableMap::addInstanceToPool($obj, $key);
+                PledgeDenominationTableMap::addInstanceToPool($obj, $key);
             } // if key exists
         }
 
@@ -333,21 +301,17 @@ class DepositTableMap extends TableMap
     public static function addSelectColumns(Criteria $criteria, $alias = null)
     {
         if (null === $alias) {
-            $criteria->addSelectColumn(DepositTableMap::COL_DEP_ID);
-            $criteria->addSelectColumn(DepositTableMap::COL_DEP_DATE);
-            $criteria->addSelectColumn(DepositTableMap::COL_DEP_COMMENT);
-            $criteria->addSelectColumn(DepositTableMap::COL_DEP_ENTEREDBY);
-            $criteria->addSelectColumn(DepositTableMap::COL_DEP_CLOSED);
-            $criteria->addSelectColumn(DepositTableMap::COL_DEP_TYPE);
-            $criteria->addSelectColumn(DepositTableMap::COL_TOTALAMOUNT);
+            $criteria->addSelectColumn(PledgeDenominationTableMap::COL_PDEM_PDEMID);
+            $criteria->addSelectColumn(PledgeDenominationTableMap::COL_PDEM_PLG_GROUPKEY);
+            $criteria->addSelectColumn(PledgeDenominationTableMap::COL_PLG_DEPID);
+            $criteria->addSelectColumn(PledgeDenominationTableMap::COL_PDEM_DENOMINATIONID);
+            $criteria->addSelectColumn(PledgeDenominationTableMap::COL_PDEM_DENOMINATIONQUANTITY);
         } else {
-            $criteria->addSelectColumn($alias . '.dep_ID');
-            $criteria->addSelectColumn($alias . '.dep_Date');
-            $criteria->addSelectColumn($alias . '.dep_Comment');
-            $criteria->addSelectColumn($alias . '.dep_EnteredBy');
-            $criteria->addSelectColumn($alias . '.dep_Closed');
-            $criteria->addSelectColumn($alias . '.dep_Type');
-            $criteria->addSelectColumn($alias . '.totalAmount');
+            $criteria->addSelectColumn($alias . '.pdem_pdemID');
+            $criteria->addSelectColumn($alias . '.pdem_plg_GroupKey');
+            $criteria->addSelectColumn($alias . '.plg_depID');
+            $criteria->addSelectColumn($alias . '.pdem_denominationID');
+            $criteria->addSelectColumn($alias . '.pdem_denominationQuantity');
         }
     }
 
@@ -360,7 +324,7 @@ class DepositTableMap extends TableMap
      */
     public static function getTableMap()
     {
-        return Propel::getServiceContainer()->getDatabaseMap(DepositTableMap::DATABASE_NAME)->getTable(DepositTableMap::TABLE_NAME);
+        return Propel::getServiceContainer()->getDatabaseMap(PledgeDenominationTableMap::DATABASE_NAME)->getTable(PledgeDenominationTableMap::TABLE_NAME);
     }
 
     /**
@@ -368,16 +332,16 @@ class DepositTableMap extends TableMap
      */
     public static function buildTableMap()
     {
-        $dbMap = Propel::getServiceContainer()->getDatabaseMap(DepositTableMap::DATABASE_NAME);
-        if (!$dbMap->hasTable(DepositTableMap::TABLE_NAME)) {
-            $dbMap->addTableObject(new DepositTableMap());
+        $dbMap = Propel::getServiceContainer()->getDatabaseMap(PledgeDenominationTableMap::DATABASE_NAME);
+        if (!$dbMap->hasTable(PledgeDenominationTableMap::TABLE_NAME)) {
+            $dbMap->addTableObject(new PledgeDenominationTableMap());
         }
     }
 
     /**
-     * Performs a DELETE on the database, given a Deposit or Criteria object OR a primary key value.
+     * Performs a DELETE on the database, given a PledgeDenomination or Criteria object OR a primary key value.
      *
-     * @param mixed               $values Criteria or Deposit object or primary key or array of primary keys
+     * @param mixed               $values Criteria or PledgeDenomination object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param  ConnectionInterface $con the connection to use
      * @return int             The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -388,27 +352,27 @@ class DepositTableMap extends TableMap
      public static function doDelete($values, ConnectionInterface $con = null)
      {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(DepositTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(PledgeDenominationTableMap::DATABASE_NAME);
         }
 
         if ($values instanceof Criteria) {
             // rename for clarity
             $criteria = $values;
-        } elseif ($values instanceof \ChurchCRM\Deposit) { // it's a model object
+        } elseif ($values instanceof \ChurchCRM\PledgeDenomination) { // it's a model object
             // create criteria based on pk values
             $criteria = $values->buildPkeyCriteria();
         } else { // it's a primary key, or an array of pks
-            $criteria = new Criteria(DepositTableMap::DATABASE_NAME);
-            $criteria->add(DepositTableMap::COL_DEP_ID, (array) $values, Criteria::IN);
+            $criteria = new Criteria(PledgeDenominationTableMap::DATABASE_NAME);
+            $criteria->add(PledgeDenominationTableMap::COL_PDEM_PDEMID, (array) $values, Criteria::IN);
         }
 
-        $query = DepositQuery::create()->mergeWith($criteria);
+        $query = PledgeDenominationQuery::create()->mergeWith($criteria);
 
         if ($values instanceof Criteria) {
-            DepositTableMap::clearInstancePool();
+            PledgeDenominationTableMap::clearInstancePool();
         } elseif (!is_object($values)) { // it's a primary key, or an array of pks
             foreach ((array) $values as $singleval) {
-                DepositTableMap::removeInstanceFromPool($singleval);
+                PledgeDenominationTableMap::removeInstanceFromPool($singleval);
             }
         }
 
@@ -416,20 +380,20 @@ class DepositTableMap extends TableMap
     }
 
     /**
-     * Deletes all rows from the deposit_dep table.
+     * Deletes all rows from the pledge_denominations_pdem table.
      *
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).
      */
     public static function doDeleteAll(ConnectionInterface $con = null)
     {
-        return DepositQuery::create()->doDeleteAll($con);
+        return PledgeDenominationQuery::create()->doDeleteAll($con);
     }
 
     /**
-     * Performs an INSERT on the database, given a Deposit or Criteria object.
+     * Performs an INSERT on the database, given a PledgeDenomination or Criteria object.
      *
-     * @param mixed               $criteria Criteria or Deposit object containing data that is used to create the INSERT statement.
+     * @param mixed               $criteria Criteria or PledgeDenomination object containing data that is used to create the INSERT statement.
      * @param ConnectionInterface $con the ConnectionInterface connection to use
      * @return mixed           The new primary key.
      * @throws PropelException Any exceptions caught during processing will be
@@ -438,22 +402,22 @@ class DepositTableMap extends TableMap
     public static function doInsert($criteria, ConnectionInterface $con = null)
     {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(DepositTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(PledgeDenominationTableMap::DATABASE_NAME);
         }
 
         if ($criteria instanceof Criteria) {
             $criteria = clone $criteria; // rename for clarity
         } else {
-            $criteria = $criteria->buildCriteria(); // build Criteria from Deposit object
+            $criteria = $criteria->buildCriteria(); // build Criteria from PledgeDenomination object
         }
 
-        if ($criteria->containsKey(DepositTableMap::COL_DEP_ID) && $criteria->keyContainsValue(DepositTableMap::COL_DEP_ID) ) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key ('.DepositTableMap::COL_DEP_ID.')');
+        if ($criteria->containsKey(PledgeDenominationTableMap::COL_PDEM_PDEMID) && $criteria->keyContainsValue(PledgeDenominationTableMap::COL_PDEM_PDEMID) ) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key ('.PledgeDenominationTableMap::COL_PDEM_PDEMID.')');
         }
 
 
         // Set the correct dbName
-        $query = DepositQuery::create()->mergeWith($criteria);
+        $query = PledgeDenominationQuery::create()->mergeWith($criteria);
 
         // use transaction because $criteria could contain info
         // for more than one table (I guess, conceivably)
@@ -462,7 +426,7 @@ class DepositTableMap extends TableMap
         });
     }
 
-} // DepositTableMap
+} // PledgeDenominationTableMap
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-DepositTableMap::buildTableMap();
+PledgeDenominationTableMap::buildTableMap();

@@ -5,6 +5,11 @@ require_once dirname(dirname(__FILE__)) . "/Include/ReportConfig.php";
 require_once dirname(dirname(__FILE__)) . "/Include/Functions.php";
 require_once dirname(dirname(__FILE__)) . "/Include/MICRFunctions.php";
 require_once dirname(dirname(__FILE__)) . "/classes/pdf_DepositReport.php";
+require_once dirname(dirname(__FILE__)) . '/vendor/autoload.php';
+require_once dirname(dirname(__FILE__)) . '/orm/conf/config.php';
+
+use ChurchCRM\PledgeQuery;
+
 
 class FinancialService
 {
@@ -418,21 +423,7 @@ class FinancialService
   function deletePayment($groupKey)
   {
     requireUserGroupMembership("bFinance");
-    $sSQL = "SELECT deposit_dep.dep_Closed FROM pledge_plg
-        INNER JOIN deposit_dep ON
-        pledge_plg.plg_depID = deposit_dep.dep_ID
-        WHERE
-        pledge_plg.plg_GroupKey = '" . $groupKey . "'";
-    $rIDepClosed = RunQuery($sSQL);
-    $isDepositClosed = mysql_fetch_row($rIDepClosed)[0];
-    if (!$isDepositClosed) {
-      $sSQL = "DELETE FROM `pledge_plg` WHERE `plg_GroupKey` = '" . $groupKey . "';";
-      RunQuery($sSQL);
-
-    } else {
-      throw new Exception("Cannot delete a payment from a closed deposit",400);
-    }
-
+    PledgeQuery::create()->findOneByGroupkey($groupKey)->delete();
   }
 
   function getMemberByScanString($sstrnig)

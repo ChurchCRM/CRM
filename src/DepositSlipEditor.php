@@ -17,6 +17,11 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require "service/FinancialService.php";
+require_once 'vendor/autoload.php';
+require_once 'orm/conf/config.php';
+
+use ChurchCRM\PledgeQuery;
+use ChurchCRM\DepositQuery;
 
 $financialService = new FinancialService();
 $iDepositSlipID = 0;
@@ -27,19 +32,19 @@ if (array_key_exists("DepositSlipID", $_GET))
 
 if ($iDepositSlipID) {
 
-  $thisDeposit = $financialService->GetDeposits($iDepositSlipID)[0];
+  $thisDeposit = DepositQuery::create()->findById($iDepositSlipID);
   // Set the session variable for default payment type so the new payment form will come up correctly
-  if ($thisDeposit->dep_Type == "Bank")
+  if ($thisDeposit->getType() == "Bank")
     $_SESSION['idefaultPaymentMethod'] = "CHECK";
-  else if ($thisDeposit->dep_Type == "CreditCard")
+  else if ($thisDeposit->getType() == "CreditCard")
     $_SESSION['idefaultPaymentMethod'] = "CREDITCARD";
-  else if ($thisDeposit->dep_Type == "BankDraft")
+  else if ($thisDeposit->getType()== "BankDraft")
     $_SESSION['idefaultPaymentMethod'] = "BANKDRAFT";
-  else if ($thisDeposit->dep_Type == "eGive")
+  else if ($thisDeposit->getType() == "eGive")
     $_SESSION['idefaultPaymentMethod'] = "EGIVE";
 
   // Security: User must have finance permission or be the one who created this deposit
-  if (!($_SESSION['bFinance'] || $_SESSION['iUserID'] == $thisDeposit->dep_EnteredBy)) {
+  if (!($_SESSION['bFinance'] || $_SESSION['iUserID'] == $thisDeposit->getEnteredby())) {
     Redirect("Menu.php");
     exit;
   }
@@ -49,7 +54,7 @@ else {
 }
 
 //Set the page title
-$sPageTitle = $thisDeposit->dep_Type . " " . gettext("Deposit Slip Number: ") . $iDepositSlipID;
+$sPageTitle = $thisDeposit->getType() . " " . gettext("Deposit Slip Number: ") . $iDepositSlipID;
 
 //Is this the second pass?
 if (isset($_POST["DepositSlipLoadAuthorized"])) {
@@ -85,15 +90,15 @@ require "Include/Header.php";
           <div class="row">
             <div class="col-lg-4">
               <label for="Date"><?php echo gettext("Date:"); ?></label>
-              <input type="text" class="form-control" name="Date" value="<?php echo $thisDeposit->dep_Date; ?>" id="DepositDate" >
+              <input type="text" class="form-control" name="Date" value="<?php echo $thisDeposit->getDate(); ?>" id="DepositDate" >
             </div>
             <div class="col-lg-4">
               <label for="Comment"><?php echo gettext("Comment:"); ?></label>
-              <input type="text" class="form-control" name="Comment" id="Comment" value="<?php echo $thisDeposit->dep_Comment; ?>"/>
+              <input type="text" class="form-control" name="Comment" id="Comment" value="<?php echo $thisDeposit->getComment(); ?>"/>
             </div>
             <div class="col-lg-4">
               <label for="Closed"><?php echo gettext("Closed:"); ?></label>
-              <input type="checkbox"  name="Closed" id="Closed" value="1" <?php if ($thisDeposit->dep_Closed) echo " checked"; ?>/><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
+              <input type="checkbox"  name="Closed" id="Closed" value="1" <?php if ($thisDeposit->getClosed()) echo " checked"; ?>/><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
             </div>
           </div>
           <div class="row">
@@ -101,11 +106,11 @@ require "Include/Header.php";
               <input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
             </div>
             <div class="col-lg-6" style="text-align:center">
-              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location = 'api/deposits/<?php echo ($thisDeposit->dep_ID) ?>/pdf';">
+              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location = 'api/deposits/<?php echo ($thisDeposit->getId()) ?>/pdf';">
             </div>
           </div>
           <?php
-          if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') {
+          if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
             echo "<p>" . gettext("Important note: failed transactions will be deleted permanantly when the deposit slip is closed.") . "</p>";
           }
           ?>
@@ -124,11 +129,11 @@ require "Include/Header.php";
           <ul style="margin:0px; border:0px; padding:0px;">
           <?php
           // Get deposit totals
-          echo "<li><b>TOTAL (".$thisDeposit->countTotal."):</b>".$thisDeposit->dep_Total."</li>";
-          if ($thisDeposit->totalCash)
-          echo "<li><b>CASH (" . $thisDeposit->countCash . "):</b>" . $thisDeposit->totalCash . "</li>";
-          if ($thisDeposit->totalChecks)
-          echo "<li><b>CHECKS (" . $thisDeposit->countCheck . "):</b>". $thisDeposit->totalChecks . " </li>";
+          echo "<li><b>TOTAL (".$thisDeposit->getTotalamount(). "):</b>".$thisDeposit->dep_Total."</li>";
+          if ($thisDeposit->getTotalamount())
+          echo "<li><b>CASH (" . $thisDeposit->getTotalamount() . "):</b>" . $thisDeposit->getTotalamount() . "</li>";
+          if ($thisDeposit->getTotalamount())
+          echo "<li><b>CHECKS (" . $thisDeposit->getTotalamount() . "):</b>". $thisDeposit->getTotalamount() . " </li>";
           ?>
             </ul>
         </div>
@@ -159,14 +164,14 @@ require "Include/Header.php";
     <h3 class="box-title"><?php echo gettext("Payments on this deposit slip:"); ?></h3>
     <div class="pull-right">
       <?php
-      if ($iDepositSlipID and $thisDeposit->dep_Type and ! $thisDeposit->dep_Closed) {
-        if ($thisDeposit->dep_Type == "eGive") {
+      if ($iDepositSlipID and $thisDeposit->getType() and ! $thisDeposit->getClosed()) {
+        if ($thisDeposit->getType() == "eGive") {
           echo "<input type=button class=btn value=\"" . gettext("Import eGive") . "\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
         }
         else {
           echo "<input type=button class=\"btn btn-success\" value=\"" . gettext("Add Payment") . "\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
         }
-        if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') {
+        if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
           ?>
           <input type="submit" class="btn btn-success" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
           <input type="submit" class="btn btn-warning" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
@@ -179,8 +184,8 @@ require "Include/Header.php";
   <div class="box-body">
     <table class="table" id="paymentsTable"></table>
     <?php
-    if ($iDepositSlipID and $thisDeposit->dep_Type and ! $thisDeposit->dep_Closed) {
-      if ($thisDeposit->dep_Type == "Bank") {
+    if ($iDepositSlipID and $thisDeposit->getType() and !$thisDeposit->getClosed()) {
+      if ($thisDeposit->getType() == "Bank") {
         ?>
         <button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>
         <?php
@@ -218,13 +223,13 @@ require "Include/Header.php";
 var paymentData = <?php  $pd = $financialService->getPaymentJSON($financialService->getPayments($iDepositSlipID));  echo ($pd ? $pd : 0); ?>;
 var typePieData = [
   {
-    value: <?= $thisDeposit->totalCash ? $thisDeposit->totalCash : "0" ?> , 
+    value: <?= $thisDeposit->getTotalamount() ? $thisDeposit->getTotalamount() : "0" ?> , 
     color: "#197A05", 
     highlight: "#4AFF23", 
     label: "Cash" 
   },
   {
-    value:  <?= $thisDeposit->totalChecks ?  $thisDeposit->totalChecks : "0" ?>, 
+    value:  <?= $thisDeposit->getTotalamount() ?  $thisDeposit->getTotalamount() : "0" ?>, 
     color: "#003399", 
     highlight: "#3366ff", 
     label: "Checks" 
@@ -232,7 +237,7 @@ var typePieData = [
   ];
   
 var fundPieData = 
-<?php
+<?php/*
 $fundData = array() ;
 foreach ($thisDeposit->funds as $tmpfund)
 {
@@ -243,11 +248,11 @@ foreach ($thisDeposit->funds as $tmpfund)
  $fund->value = $tmpfund->fundTotal;
  array_push($fundData,$fund);
 }
-echo json_encode($fundData);
+echo json_encode($fundData);*/
 ?>
   
-var depositType = '<?php echo $thisDeposit->dep_Type; ?>';
-var depositSlipID = <?php echo $iDepositSlipID; ?>;
+var depositType = '<?php //echo $thisDeposit->getType(); ?>';
+var depositSlipID = <?php //echo $iDepositSlipID; ?>;
 
 $(document).ready(function() {
   dataT = $("#paymentsTable").DataTable({
@@ -264,7 +269,7 @@ $(document).ready(function() {
             title:'Family',
             data:'familyName',
             render: function(data, type, full, meta) {
-              return '<a href=\'PledgeEditor.php?GroupKey=' + full.plg_GroupKey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa <?= ($thisDeposit->dep_Closed ? "fa-search-plus": "fa-pencil" ); ?> fa-stack-1x fa-inverse"></i></span></a>' + data;
+              return '<a href=\'PledgeEditor.php?GroupKey=' + full.plg_GroupKey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa <?= ($thisDeposit->getClosed() ? "fa-search-plus": "fa-pencil" ); ?> fa-stack-1x fa-inverse"></i></span></a>' + data;
             }
     },
     {
@@ -283,14 +288,14 @@ $(document).ready(function() {
             title:'Method',
             data:'plg_method',
     }
-  <?php if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') { ?>,
+  <?php //if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') { ?>,
                 , {
                 width: 'auto',
                         title:'Cleared',
                         data:'plg_aut_Cleared',
                 }<?php
-  }
-  if ($thisDeposit->dep_Type == 'BankDraft' || $thisDeposit->dep_Type == 'CreditCard') {
+  //}
+  //if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
   ?>
         , {
         width: 'auto',
@@ -300,7 +305,7 @@ $(document).ready(function() {
                 {
                   return '<a href=\'PledgeDetails.php?PledgeID=' + data + '\'>Details</a>'
                   }
-        }<?php } ?>
+        }<?php// } ?>
     ],
     "createdRow" : function (row,data,index) {
       $(row).addClass("paymentRow");
