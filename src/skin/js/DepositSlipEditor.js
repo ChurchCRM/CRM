@@ -15,7 +15,7 @@ function initDepositSlipEditor()
             '</tr>' +
             '<tr>' +
             '<td>Fund(s):</td>' +
-            '<td>' + d.Fundid + '</td>' +
+            '<td>' + d.DonationFund.Name + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td>Non Deductible:</td>' +

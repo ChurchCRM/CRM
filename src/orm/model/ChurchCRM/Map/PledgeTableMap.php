@@ -227,7 +227,7 @@ class PledgeTableMap extends TableMap
         $this->setUseIdGenerator(true);
         // columns
         $this->addPrimaryKey('plg_plgID', 'Id', 'SMALLINT', true, 9, null);
-        $this->addColumn('plg_FamID', 'FamId', 'SMALLINT', false, 9, null);
+        $this->addForeignKey('plg_FamID', 'FamId', 'SMALLINT', 'family_fam', 'fam_ID', false, 9, null);
         $this->addColumn('plg_FYID', 'Fyid', 'SMALLINT', false, 9, null);
         $this->addColumn('plg_date', 'Date', 'DATE', false, null, null);
         $this->addColumn('plg_amount', 'Amount', 'DECIMAL', false, 8, null);
@@ -266,6 +266,13 @@ class PledgeTableMap extends TableMap
   array (
     0 => ':plg_fundID',
     1 => ':fun_ID',
+  ),
+), null, null, null, false);
+        $this->addRelation('Family', '\\ChurchCRM\\Family', RelationMap::MANY_TO_ONE, array (
+  0 =>
+  array (
+    0 => ':plg_FamID',
+    1 => ':fam_ID',
   ),
 ), null, null, null, false);
     } // buildRelations()

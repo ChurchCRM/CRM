@@ -598,6 +598,9 @@
     <foreign-key foreignTable="donationfund_fun">
       <reference local="plg_fundID" foreign="fun_ID"/>
     </foreign-key>
+    <foreign-key foreignTable="family_fam">
+      <reference local="plg_FamID" foreign="fam_ID"/>
+    </foreign-key>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>

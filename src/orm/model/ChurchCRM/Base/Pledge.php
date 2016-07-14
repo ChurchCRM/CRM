@@ -9,6 +9,8 @@ use ChurchCRM\Deposit as ChildDeposit;
 use ChurchCRM\DepositQuery as ChildDepositQuery;
 use ChurchCRM\DonationFund as ChildDonationFund;
 use ChurchCRM\DonationFundQuery as ChildDonationFundQuery;
+use ChurchCRM\Family as ChildFamily;
+use ChurchCRM\FamilyQuery as ChildFamilyQuery;
 use ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use ChurchCRM\Map\PledgeTableMap;
 use Propel\Runtime\Propel;
@@ -227,6 +229,11 @@ abstract class Pledge implements ActiveRecordInterface
      * @var        ChildDonationFund
      */
     protected $aDonationFund;
+
+    /**
+     * @var        ChildFamily
+     */
+    protected $aFamily;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -770,6 +777,10 @@ abstract class Pledge implements ActiveRecordInterface
         if ($this->plg_famid !== $v) {
             $this->plg_famid = $v;
             $this->modifiedColumns[PledgeTableMap::COL_PLG_FAMID] = true;
+        }
+
+        if ($this->aFamily !== null && $this->aFamily->getId() !== $v) {
+            $this->aFamily = null;
         }
 
         return $this;
@@ -1339,6 +1350,9 @@ abstract class Pledge implements ActiveRecordInterface
      */
     public function ensureConsistency()
     {
+        if ($this->aFamily !== null && $this->plg_famid !== $this->aFamily->getId()) {
+            $this->aFamily = null;
+        }
         if ($this->aDonationFund !== null && $this->plg_fundid !== $this->aDonationFund->getId()) {
             $this->aDonationFund = null;
         }
@@ -1386,6 +1400,7 @@ abstract class Pledge implements ActiveRecordInterface
 
             $this->aDeposit = null;
             $this->aDonationFund = null;
+            $this->aFamily = null;
         } // if (deep)
     }
 
@@ -1504,6 +1519,13 @@ abstract class Pledge implements ActiveRecordInterface
                     $affectedRows += $this->aDonationFund->save($con);
                 }
                 $this->setDonationFund($this->aDonationFund);
+            }
+
+            if ($this->aFamily !== null) {
+                if ($this->aFamily->isModified() || $this->aFamily->isNew()) {
+                    $affectedRows += $this->aFamily->save($con);
+                }
+                $this->setFamily($this->aFamily);
             }
 
             if ($this->isNew() || $this->isModified()) {
@@ -1900,6 +1922,21 @@ abstract class Pledge implements ActiveRecordInterface
                 }
 
                 $result[$key] = $this->aDonationFund->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
+            }
+            if (null !== $this->aFamily) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'family';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'family_fam';
+                        break;
+                    default:
+                        $key = 'Family';
+                }
+
+                $result[$key] = $this->aFamily->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
             }
         }
 
@@ -2432,6 +2469,57 @@ abstract class Pledge implements ActiveRecordInterface
     }
 
     /**
+     * Declares an association between this object and a ChildFamily object.
+     *
+     * @param  ChildFamily $v
+     * @return $this|\ChurchCRM\Pledge The current object (for fluent API support)
+     * @throws PropelException
+     */
+    public function setFamily(ChildFamily $v = null)
+    {
+        if ($v === null) {
+            $this->setFamId(NULL);
+        } else {
+            $this->setFamId($v->getId());
+        }
+
+        $this->aFamily = $v;
+
+        // Add binding for other direction of this n:n relationship.
+        // If this object has already been added to the ChildFamily object, it will not be re-added.
+        if ($v !== null) {
+            $v->addPledge($this);
+        }
+
+
+        return $this;
+    }
+
+
+    /**
+     * Get the associated ChildFamily object
+     *
+     * @param  ConnectionInterface $con Optional Connection object.
+     * @return ChildFamily The associated ChildFamily object.
+     * @throws PropelException
+     */
+    public function getFamily(ConnectionInterface $con = null)
+    {
+        if ($this->aFamily === null && ($this->plg_famid !== null)) {
+            $this->aFamily = ChildFamilyQuery::create()->findPk($this->plg_famid, $con);
+            /* The following can be used additionally to
+                guarantee the related object contains a reference
+                to this object.  This level of coupling may, however, be
+                undesirable since it could result in an only partially populated collection
+                in the referenced object.
+                $this->aFamily->addPledges($this);
+             */
+        }
+
+        return $this->aFamily;
+    }
+
+    /**
      * Clears the current object, sets all attributes to their default values and removes
      * outgoing references as well as back-references (from other objects to this one. Results probably in a database
      * change of those foreign objects when you call `save` there).
@@ -2443,6 +2531,9 @@ abstract class Pledge implements ActiveRecordInterface
         }
         if (null !== $this->aDonationFund) {
             $this->aDonationFund->removePledge($this);
+        }
+        if (null !== $this->aFamily) {
+            $this->aFamily->removePledge($this);
         }
         $this->plg_plgid = null;
         $this->plg_famid = null;
@@ -2488,6 +2579,7 @@ abstract class Pledge implements ActiveRecordInterface
 
         $this->aDeposit = null;
         $this->aDonationFund = null;
+        $this->aFamily = null;
     }
 
     /**

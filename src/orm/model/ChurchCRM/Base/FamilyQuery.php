@@ -102,7 +102,17 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildFamilyQuery rightJoinWithNote() Adds a RIGHT JOIN clause and with to the query using the Note relation
  * @method     ChildFamilyQuery innerJoinWithNote() Adds a INNER JOIN clause and with to the query using the Note relation
  *
- * @method     \ChurchCRM\PersonQuery|\ChurchCRM\NoteQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
+ * @method     ChildFamilyQuery leftJoinPledge($relationAlias = null) Adds a LEFT JOIN clause to the query using the Pledge relation
+ * @method     ChildFamilyQuery rightJoinPledge($relationAlias = null) Adds a RIGHT JOIN clause to the query using the Pledge relation
+ * @method     ChildFamilyQuery innerJoinPledge($relationAlias = null) Adds a INNER JOIN clause to the query using the Pledge relation
+ *
+ * @method     ChildFamilyQuery joinWithPledge($joinType = Criteria::INNER_JOIN) Adds a join clause and with to the query using the Pledge relation
+ *
+ * @method     ChildFamilyQuery leftJoinWithPledge() Adds a LEFT JOIN clause and with to the query using the Pledge relation
+ * @method     ChildFamilyQuery rightJoinWithPledge() Adds a RIGHT JOIN clause and with to the query using the Pledge relation
+ * @method     ChildFamilyQuery innerJoinWithPledge() Adds a INNER JOIN clause and with to the query using the Pledge relation
+ *
+ * @method     \ChurchCRM\PersonQuery|\ChurchCRM\NoteQuery|\ChurchCRM\PledgeQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
  *
  * @method     ChildFamily findOne(ConnectionInterface $con = null) Return the first ChildFamily matching the query
  * @method     ChildFamily findOneOrCreate(ConnectionInterface $con = null) Return the first ChildFamily matching the query, or a new ChildFamily object populated from the query conditions when no match is found
@@ -1372,6 +1382,79 @@ abstract class FamilyQuery extends ModelCriteria
         return $this
             ->joinNote($relationAlias, $joinType)
             ->useQuery($relationAlias ? $relationAlias : 'Note', '\ChurchCRM\NoteQuery');
+    }
+
+    /**
+     * Filter the query by a related \ChurchCRM\Pledge object
+     *
+     * @param \ChurchCRM\Pledge|ObjectCollection $pledge the related object to use as filter
+     * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return ChildFamilyQuery The current query, for fluid interface
+     */
+    public function filterByPledge($pledge, $comparison = null)
+    {
+        if ($pledge instanceof \ChurchCRM\Pledge) {
+            return $this
+                ->addUsingAlias(FamilyTableMap::COL_FAM_ID, $pledge->getFamId(), $comparison);
+        } elseif ($pledge instanceof ObjectCollection) {
+            return $this
+                ->usePledgeQuery()
+                ->filterByPrimaryKeys($pledge->getPrimaryKeys())
+                ->endUse();
+        } else {
+            throw new PropelException('filterByPledge() only accepts arguments of type \ChurchCRM\Pledge or Collection');
+        }
+    }
+
+    /**
+     * Adds a JOIN clause to the query using the Pledge relation
+     *
+     * @param     string $relationAlias optional alias for the relation
+     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
+     *
+     * @return $this|ChildFamilyQuery The current query, for fluid interface
+     */
+    public function joinPledge($relationAlias = null, $joinType = Criteria::LEFT_JOIN)
+    {
+        $tableMap = $this->getTableMap();
+        $relationMap = $tableMap->getRelation('Pledge');
+
+        // create a ModelJoin object for this join
+        $join = new ModelJoin();
+        $join->setJoinType($joinType);
+        $join->setRelationMap($relationMap, $this->useAliasInSQL ? $this->getModelAlias() : null, $relationAlias);
+        if ($previousJoin = $this->getPreviousJoin()) {
+            $join->setPreviousJoin($previousJoin);
+        }
+
+        // add the ModelJoin to the current object
+        if ($relationAlias) {
+            $this->addAlias($relationAlias, $relationMap->getRightTable()->getName());
+            $this->addJoinObject($join, $relationAlias);
+        } else {
+            $this->addJoinObject($join, 'Pledge');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Use the Pledge relation Pledge object
+     *
+     * @see useQuery()
+     *
+     * @param     string $relationAlias optional alias for the relation,
+     *                                   to be used as main alias in the secondary query
+     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
+     *
+     * @return \ChurchCRM\PledgeQuery A secondary query class using the current class as primary query
+     */
+    public function usePledgeQuery($relationAlias = null, $joinType = Criteria::LEFT_JOIN)
+    {
+        return $this
+            ->joinPledge($relationAlias, $joinType)
+            ->useQuery($relationAlias ? $relationAlias : 'Pledge', '\ChurchCRM\PledgeQuery');
     }
 
     /**

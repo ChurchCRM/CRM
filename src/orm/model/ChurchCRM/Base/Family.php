@@ -11,9 +11,12 @@ use ChurchCRM\Note as ChildNote;
 use ChurchCRM\NoteQuery as ChildNoteQuery;
 use ChurchCRM\Person as ChildPerson;
 use ChurchCRM\PersonQuery as ChildPersonQuery;
+use ChurchCRM\Pledge as ChildPledge;
+use ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\Map\NoteTableMap;
 use ChurchCRM\Map\PersonTableMap;
+use ChurchCRM\Map\PledgeTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -271,6 +274,12 @@ abstract class Family implements ActiveRecordInterface
     protected $collNotesPartial;
 
     /**
+     * @var        ObjectCollection|ChildPledge[] Collection to store aggregation of ChildPledge objects.
+     */
+    protected $collPledges;
+    protected $collPledgesPartial;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -289,6 +298,12 @@ abstract class Family implements ActiveRecordInterface
      * @var ObjectCollection|ChildNote[]
      */
     protected $notesScheduledForDeletion = null;
+
+    /**
+     * An array of objects scheduled for deletion.
+     * @var ObjectCollection|ChildPledge[]
+     */
+    protected $pledgesScheduledForDeletion = null;
 
     /**
      * Applies default values to this object.
@@ -1582,6 +1597,8 @@ abstract class Family implements ActiveRecordInterface
 
             $this->collNotes = null;
 
+            $this->collPledges = null;
+
         } // if (deep)
     }
 
@@ -1720,6 +1737,24 @@ abstract class Family implements ActiveRecordInterface
 
             if ($this->collNotes !== null) {
                 foreach ($this->collNotes as $referrerFK) {
+                    if (!$referrerFK->isDeleted() && ($referrerFK->isNew() || $referrerFK->isModified())) {
+                        $affectedRows += $referrerFK->save($con);
+                    }
+                }
+            }
+
+            if ($this->pledgesScheduledForDeletion !== null) {
+                if (!$this->pledgesScheduledForDeletion->isEmpty()) {
+                    foreach ($this->pledgesScheduledForDeletion as $pledge) {
+                        // need to save related object because we set the relation to null
+                        $pledge->save($con);
+                    }
+                    $this->pledgesScheduledForDeletion = null;
+                }
+            }
+
+            if ($this->collPledges !== null) {
+                foreach ($this->collPledges as $referrerFK) {
                     if (!$referrerFK->isDeleted() && ($referrerFK->isNew() || $referrerFK->isModified())) {
                         $affectedRows += $referrerFK->save($con);
                     }
@@ -2167,6 +2202,21 @@ abstract class Family implements ActiveRecordInterface
                 }
 
                 $result[$key] = $this->collNotes->toArray(null, false, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
+            }
+            if (null !== $this->collPledges) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'pledges';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'pledge_plgs';
+                        break;
+                    default:
+                        $key = 'Pledges';
+                }
+
+                $result[$key] = $this->collPledges->toArray(null, false, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
             }
         }
 
@@ -2632,6 +2682,12 @@ abstract class Family implements ActiveRecordInterface
                 }
             }
 
+            foreach ($this->getPledges() as $relObj) {
+                if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+                    $copyObj->addPledge($relObj->copy($deepCopy));
+                }
+            }
+
         } // if ($deepCopy)
 
         if ($makeNew) {
@@ -2678,6 +2734,9 @@ abstract class Family implements ActiveRecordInterface
         }
         if ('Note' == $relationName) {
             return $this->initNotes();
+        }
+        if ('Pledge' == $relationName) {
+            return $this->initPledges();
         }
     }
 
@@ -3157,6 +3216,281 @@ abstract class Family implements ActiveRecordInterface
     }
 
     /**
+     * Clears out the collPledges collection
+     *
+     * This does not modify the database; however, it will remove any associated objects, causing
+     * them to be refetched by subsequent calls to accessor method.
+     *
+     * @return void
+     * @see        addPledges()
+     */
+    public function clearPledges()
+    {
+        $this->collPledges = null; // important to set this to NULL since that means it is uninitialized
+    }
+
+    /**
+     * Reset is the collPledges collection loaded partially.
+     */
+    public function resetPartialPledges($v = true)
+    {
+        $this->collPledgesPartial = $v;
+    }
+
+    /**
+     * Initializes the collPledges collection.
+     *
+     * By default this just sets the collPledges collection to an empty array (like clearcollPledges());
+     * however, you may wish to override this method in your stub class to provide setting appropriate
+     * to your application -- for example, setting the initial array to the values stored in database.
+     *
+     * @param      boolean $overrideExisting If set to true, the method call initializes
+     *                                        the collection even if it is not empty
+     *
+     * @return void
+     */
+    public function initPledges($overrideExisting = true)
+    {
+        if (null !== $this->collPledges && !$overrideExisting) {
+            return;
+        }
+
+        $collectionClassName = PledgeTableMap::getTableMap()->getCollectionClassName();
+
+        $this->collPledges = new $collectionClassName;
+        $this->collPledges->setModel('\ChurchCRM\Pledge');
+    }
+
+    /**
+     * Gets an array of ChildPledge objects which contain a foreign key that references this object.
+     *
+     * If the $criteria is not null, it is used to always fetch the results from the database.
+     * Otherwise the results are fetched from the database the first time, then cached.
+     * Next time the same method is called without $criteria, the cached collection is returned.
+     * If this ChildFamily is new, it will return
+     * an empty collection or the current collection; the criteria is ignored on a new object.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @return ObjectCollection|ChildPledge[] List of ChildPledge objects
+     * @throws PropelException
+     */
+    public function getPledges(Criteria $criteria = null, ConnectionInterface $con = null)
+    {
+        $partial = $this->collPledgesPartial && !$this->isNew();
+        if (null === $this->collPledges || null !== $criteria  || $partial) {
+            if ($this->isNew() && null === $this->collPledges) {
+                // return empty collection
+                $this->initPledges();
+            } else {
+                $collPledges = ChildPledgeQuery::create(null, $criteria)
+                    ->filterByFamily($this)
+                    ->find($con);
+
+                if (null !== $criteria) {
+                    if (false !== $this->collPledgesPartial && count($collPledges)) {
+                        $this->initPledges(false);
+
+                        foreach ($collPledges as $obj) {
+                            if (false == $this->collPledges->contains($obj)) {
+                                $this->collPledges->append($obj);
+                            }
+                        }
+
+                        $this->collPledgesPartial = true;
+                    }
+
+                    return $collPledges;
+                }
+
+                if ($partial && $this->collPledges) {
+                    foreach ($this->collPledges as $obj) {
+                        if ($obj->isNew()) {
+                            $collPledges[] = $obj;
+                        }
+                    }
+                }
+
+                $this->collPledges = $collPledges;
+                $this->collPledgesPartial = false;
+            }
+        }
+
+        return $this->collPledges;
+    }
+
+    /**
+     * Sets a collection of ChildPledge objects related by a one-to-many relationship
+     * to the current object.
+     * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
+     * and new objects from the given Propel collection.
+     *
+     * @param      Collection $pledges A Propel collection.
+     * @param      ConnectionInterface $con Optional connection object
+     * @return $this|ChildFamily The current object (for fluent API support)
+     */
+    public function setPledges(Collection $pledges, ConnectionInterface $con = null)
+    {
+        /** @var ChildPledge[] $pledgesToDelete */
+        $pledgesToDelete = $this->getPledges(new Criteria(), $con)->diff($pledges);
+
+
+        $this->pledgesScheduledForDeletion = $pledgesToDelete;
+
+        foreach ($pledgesToDelete as $pledgeRemoved) {
+            $pledgeRemoved->setFamily(null);
+        }
+
+        $this->collPledges = null;
+        foreach ($pledges as $pledge) {
+            $this->addPledge($pledge);
+        }
+
+        $this->collPledges = $pledges;
+        $this->collPledgesPartial = false;
+
+        return $this;
+    }
+
+    /**
+     * Returns the number of related Pledge objects.
+     *
+     * @param      Criteria $criteria
+     * @param      boolean $distinct
+     * @param      ConnectionInterface $con
+     * @return int             Count of related Pledge objects.
+     * @throws PropelException
+     */
+    public function countPledges(Criteria $criteria = null, $distinct = false, ConnectionInterface $con = null)
+    {
+        $partial = $this->collPledgesPartial && !$this->isNew();
+        if (null === $this->collPledges || null !== $criteria || $partial) {
+            if ($this->isNew() && null === $this->collPledges) {
+                return 0;
+            }
+
+            if ($partial && !$criteria) {
+                return count($this->getPledges());
+            }
+
+            $query = ChildPledgeQuery::create(null, $criteria);
+            if ($distinct) {
+                $query->distinct();
+            }
+
+            return $query
+                ->filterByFamily($this)
+                ->count($con);
+        }
+
+        return count($this->collPledges);
+    }
+
+    /**
+     * Method called to associate a ChildPledge object to this object
+     * through the ChildPledge foreign key attribute.
+     *
+     * @param  ChildPledge $l ChildPledge
+     * @return $this|\ChurchCRM\Family The current object (for fluent API support)
+     */
+    public function addPledge(ChildPledge $l)
+    {
+        if ($this->collPledges === null) {
+            $this->initPledges();
+            $this->collPledgesPartial = true;
+        }
+
+        if (!$this->collPledges->contains($l)) {
+            $this->doAddPledge($l);
+
+            if ($this->pledgesScheduledForDeletion and $this->pledgesScheduledForDeletion->contains($l)) {
+                $this->pledgesScheduledForDeletion->remove($this->pledgesScheduledForDeletion->search($l));
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param ChildPledge $pledge The ChildPledge object to add.
+     */
+    protected function doAddPledge(ChildPledge $pledge)
+    {
+        $this->collPledges[]= $pledge;
+        $pledge->setFamily($this);
+    }
+
+    /**
+     * @param  ChildPledge $pledge The ChildPledge object to remove.
+     * @return $this|ChildFamily The current object (for fluent API support)
+     */
+    public function removePledge(ChildPledge $pledge)
+    {
+        if ($this->getPledges()->contains($pledge)) {
+            $pos = $this->collPledges->search($pledge);
+            $this->collPledges->remove($pos);
+            if (null === $this->pledgesScheduledForDeletion) {
+                $this->pledgesScheduledForDeletion = clone $this->collPledges;
+                $this->pledgesScheduledForDeletion->clear();
+            }
+            $this->pledgesScheduledForDeletion[]= $pledge;
+            $pledge->setFamily(null);
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * If this collection has already been initialized with
+     * an identical criteria, it returns the collection.
+     * Otherwise if this Family is new, it will return
+     * an empty collection; or if this Family has previously
+     * been saved, it will retrieve related Pledges from storage.
+     *
+     * This method is protected by default in order to keep the public
+     * api reasonable.  You can provide public methods for those you
+     * actually need in Family.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @param      string $joinBehavior optional join type to use (defaults to Criteria::LEFT_JOIN)
+     * @return ObjectCollection|ChildPledge[] List of ChildPledge objects
+     */
+    public function getPledgesJoinDeposit(Criteria $criteria = null, ConnectionInterface $con = null, $joinBehavior = Criteria::LEFT_JOIN)
+    {
+        $query = ChildPledgeQuery::create(null, $criteria);
+        $query->joinWith('Deposit', $joinBehavior);
+
+        return $this->getPledges($query, $con);
+    }
+
+
+    /**
+     * If this collection has already been initialized with
+     * an identical criteria, it returns the collection.
+     * Otherwise if this Family is new, it will return
+     * an empty collection; or if this Family has previously
+     * been saved, it will retrieve related Pledges from storage.
+     *
+     * This method is protected by default in order to keep the public
+     * api reasonable.  You can provide public methods for those you
+     * actually need in Family.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @param      string $joinBehavior optional join type to use (defaults to Criteria::LEFT_JOIN)
+     * @return ObjectCollection|ChildPledge[] List of ChildPledge objects
+     */
+    public function getPledgesJoinDonationFund(Criteria $criteria = null, ConnectionInterface $con = null, $joinBehavior = Criteria::LEFT_JOIN)
+    {
+        $query = ChildPledgeQuery::create(null, $criteria);
+        $query->joinWith('DonationFund', $joinBehavior);
+
+        return $this->getPledges($query, $con);
+    }
+
+    /**
      * Clears the current object, sets all attributes to their default values and removes
      * outgoing references as well as back-references (from other objects to this one. Results probably in a database
      * change of those foreign objects when you call `save` there).
@@ -3218,10 +3552,16 @@ abstract class Family implements ActiveRecordInterface
                     $o->clearAllReferences($deep);
                 }
             }
+            if ($this->collPledges) {
+                foreach ($this->collPledges as $o) {
+                    $o->clearAllReferences($deep);
+                }
+            }
         } // if ($deep)
 
         $this->collPeople = null;
         $this->collNotes = null;
+        $this->collPledges = null;
     }
 
     /**

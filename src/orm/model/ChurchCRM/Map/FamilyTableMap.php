@@ -298,6 +298,13 @@ class FamilyTableMap extends TableMap
     1 => ':fam_ID',
   ),
 ), null, null, 'Notes', false);
+        $this->addRelation('Pledge', '\\ChurchCRM\\Pledge', RelationMap::ONE_TO_MANY, array (
+  0 =>
+  array (
+    0 => ':plg_FamID',
+    1 => ':fam_ID',
+  ),
+), null, null, 'Pledges', false);
     } // buildRelations()
 
     /**

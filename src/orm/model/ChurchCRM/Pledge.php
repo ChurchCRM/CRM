@@ -27,5 +27,4 @@ class Pledge extends BasePledge
      throw new PropelException("Cannot delete a payment from a closed deposit",500);
     }
   }
-
 }
