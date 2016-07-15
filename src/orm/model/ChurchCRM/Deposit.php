@@ -18,7 +18,60 @@ use ChurchCRM\PledgeQuery as ChildPledgeQuery;
  */
 class Deposit extends BaseDeposit
 {
+  
+  public function toOFX()
+  {
+    $OFXReturn = new \stdClass();
+    if ($this->getPledges()->count() == 0) {
+      throw new Exception("No Payments on this Deposit",404);
+    }
 
+    $orgName = "ChurchCRM Deposit Data";
+    $OFXReturn->content = "OFXHEADER:100" . PHP_EOL .
+      "DATA:OFXSGML" . PHP_EOL .
+      "VERSION:102" . PHP_EOL .
+      "SECURITY:NONE" . PHP_EOL .
+      "ENCODING:USASCII" . PHP_EOL .
+      "CHARSET:1252" . PHP_EOL .
+      "COMPRESSION:NONE" . PHP_EOL .
+      "OLDFILEUID:NONE" . PHP_EOL .
+      "NEWFILEUID:NONE" . PHP_EOL . PHP_EOL;
+    $OFXReturn->content .= "<OFX>";
+    $OFXReturn->content .= "<SIGNONMSGSRSV1><SONRS><STATUS><CODE>0<SEVERITY>INFO</STATUS><DTSERVER>" . date("YmdHis.u[O:T]") . "<LANGUAGE>ENG<FI><ORG>" . $orgName . "<FID>12345</FI></SONRS></SIGNONMSGSRSV1>";
+    $OFXReturn->content .= "<BANKMSGSRSV1>" .
+      "<STMTTRNRS>" .
+      "<TRNUID>" .
+      "<STATUS>" .
+      "<CODE>0" .
+      "<SEVERITY>INFO" .
+      "</STATUS>";
+
+
+   foreach ( $this->getFundTotals() as $fund ) 
+   {
+          $OFXReturn->content .= "<STMTRS>" .
+            "<CURDEF>USD" .
+            "<BANKACCTFROM>" .
+            "<BANKID>" . $orgName .
+            "<ACCTID>" . $fund->Name .
+            "<ACCTTYPE>SAVINGS" .
+            "</BANKACCTFROM>";
+          $OFXReturn->content .=
+            "<STMTTRN>" .
+            "<TRNTYPE>CREDIT" .
+            "<DTPOSTED>" . $this->getDate("Ymd") .
+            "<TRNAMT>" . $fund->Total .
+            "<FITID>" .
+            "<NAME>" . $this->getComment() .
+            "<MEMO>" . $fund->Name .
+            "</STMTTRN></STMTRS>";
+    }
+
+    $OFXReturn->content .= "</STMTTRNRS></BANKTRANLIST></OFX>";
+    // Export file
+    $OFXReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-Deposit-" . $depID . "-" . date("Ymd-Gis") . ".ofx";
+    return $OFXReturn;
+  }
   public function getFundTotals()
   {
      //there is probably a better way to do this with Propel ORM...

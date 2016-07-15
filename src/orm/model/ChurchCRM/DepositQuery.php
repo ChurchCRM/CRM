@@ -27,8 +27,4 @@ class DepositQuery extends BaseDepositQuery
   
   }
   
- 
-  
-  
-
 }

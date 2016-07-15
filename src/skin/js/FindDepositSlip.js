@@ -54,7 +54,7 @@ $(document).ready(function() {
             }
             else
             {
-                return parseInt(full.dep_ID);
+                return parseInt(full.Id);
             }
         },
         type:'num'
@@ -121,7 +121,7 @@ $(document).ready(function() {
         var selectedRows = dataT.rows('.selected').data()
         var type = this .getAttribute("data-exportType");
         $.each(selectedRows, function(index, value){
-          verifyContent(window.CRM.root+'/api/deposits/'+value.dep_ID+'/'+type);
+          verifyContent(window.CRM.root+'/api/deposits/'+value.Id+'/'+type);
            
         });
     });
@@ -131,7 +131,7 @@ $(document).ready(function() {
         $.each(deletedRows, function(index, value){
             $.ajax({
                 type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url         : window.CRM.root+'/api/deposits/'+value.dep_ID, // the url where we want to POST
+                url         : window.CRM.root+'/api/deposits/'+value.Id, // the url where we want to POST
                 dataType    : 'json', // what type of data do we expect back from the server
                 encode      : true,
                 data        : {"_METHOD":"DELETE"}
