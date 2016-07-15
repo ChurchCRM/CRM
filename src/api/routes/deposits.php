@@ -39,9 +39,7 @@ $app->group('/deposits', function () {
 
   $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
     $id = $args['id'];
-    $CSV = $this->FinancialService->getDepositCSV($id);
-    header($CSV->header);
-    echo $CSV->content;
+    echo \ChurchCRM\Base\DepositQuery::create()->findOneById($id)->toCSV();
   });
 
   $this->delete('/{id:[0-9]+}', function ($request, $response, $args) {

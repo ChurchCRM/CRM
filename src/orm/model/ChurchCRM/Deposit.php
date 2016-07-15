@@ -19,7 +19,7 @@ use ChurchCRM\PledgeQuery as ChildPledgeQuery;
 class Deposit extends BaseDeposit
 {
   
-  public function toOFX()
+  public function getOFX()
   {
     $OFXReturn = new \stdClass();
     if ($this->getPledges()->count() == 0) {
@@ -72,6 +72,7 @@ class Deposit extends BaseDeposit
     $OFXReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-Deposit-" . $depID . "-" . date("Ymd-Gis") . ".ofx";
     return $OFXReturn;
   }
+  
   public function getFundTotals()
   {
      //there is probably a better way to do this with Propel ORM...

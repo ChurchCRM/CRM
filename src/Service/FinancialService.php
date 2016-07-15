@@ -587,16 +587,6 @@ class FinancialService
     return $deposit_count;
   }
 
-  function getDepositJSON($deposits)
-  {
-    if ($deposits) {
-      return '{"deposits":' . json_encode($deposits) . '}';
-    } else {
-      return false;
-    }
-
-  }
-
   function getPaymentJSON($payments)
   {
     if ($payments) {
@@ -925,11 +915,6 @@ class FinancialService
     $payment->total = $total;
     return json_encode($payment);
 
-  }
-
-  function getDepositOFX($depID)
-  {
-    
   }
 
   private function generateBankDepositSlip($thisReport)
