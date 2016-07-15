@@ -59,7 +59,7 @@ class DepositTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 7;
+    const NUM_COLUMNS = 6;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class DepositTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 7;
+    const NUM_HYDRATE_COLUMNS = 6;
 
     /**
      * the column name for the dep_ID field
@@ -102,11 +102,6 @@ class DepositTableMap extends TableMap
     const COL_DEP_TYPE = 'deposit_dep.dep_Type';
 
     /**
-     * the column name for the totalAmount field
-     */
-    const COL_TOTALAMOUNT = 'deposit_dep.totalAmount';
-
-    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -118,11 +113,11 @@ class DepositTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'Date', 'Comment', 'Enteredby', 'Closed', 'Type', 'Totalamount', ),
-        self::TYPE_CAMELNAME     => array('id', 'date', 'comment', 'enteredby', 'closed', 'type', 'totalamount', ),
-        self::TYPE_COLNAME       => array(DepositTableMap::COL_DEP_ID, DepositTableMap::COL_DEP_DATE, DepositTableMap::COL_DEP_COMMENT, DepositTableMap::COL_DEP_ENTEREDBY, DepositTableMap::COL_DEP_CLOSED, DepositTableMap::COL_DEP_TYPE, DepositTableMap::COL_TOTALAMOUNT, ),
-        self::TYPE_FIELDNAME     => array('dep_ID', 'dep_Date', 'dep_Comment', 'dep_EnteredBy', 'dep_Closed', 'dep_Type', 'totalAmount', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('Id', 'Date', 'Comment', 'Enteredby', 'Closed', 'Type', ),
+        self::TYPE_CAMELNAME     => array('id', 'date', 'comment', 'enteredby', 'closed', 'type', ),
+        self::TYPE_COLNAME       => array(DepositTableMap::COL_DEP_ID, DepositTableMap::COL_DEP_DATE, DepositTableMap::COL_DEP_COMMENT, DepositTableMap::COL_DEP_ENTEREDBY, DepositTableMap::COL_DEP_CLOSED, DepositTableMap::COL_DEP_TYPE, ),
+        self::TYPE_FIELDNAME     => array('dep_ID', 'dep_Date', 'dep_Comment', 'dep_EnteredBy', 'dep_Closed', 'dep_Type', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, )
     );
 
     /**
@@ -132,11 +127,11 @@ class DepositTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'Date' => 1, 'Comment' => 2, 'Enteredby' => 3, 'Closed' => 4, 'Type' => 5, 'Totalamount' => 6, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'date' => 1, 'comment' => 2, 'enteredby' => 3, 'closed' => 4, 'type' => 5, 'totalamount' => 6, ),
-        self::TYPE_COLNAME       => array(DepositTableMap::COL_DEP_ID => 0, DepositTableMap::COL_DEP_DATE => 1, DepositTableMap::COL_DEP_COMMENT => 2, DepositTableMap::COL_DEP_ENTEREDBY => 3, DepositTableMap::COL_DEP_CLOSED => 4, DepositTableMap::COL_DEP_TYPE => 5, DepositTableMap::COL_TOTALAMOUNT => 6, ),
-        self::TYPE_FIELDNAME     => array('dep_ID' => 0, 'dep_Date' => 1, 'dep_Comment' => 2, 'dep_EnteredBy' => 3, 'dep_Closed' => 4, 'dep_Type' => 5, 'totalAmount' => 6, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('Id' => 0, 'Date' => 1, 'Comment' => 2, 'Enteredby' => 3, 'Closed' => 4, 'Type' => 5, ),
+        self::TYPE_CAMELNAME     => array('id' => 0, 'date' => 1, 'comment' => 2, 'enteredby' => 3, 'closed' => 4, 'type' => 5, ),
+        self::TYPE_COLNAME       => array(DepositTableMap::COL_DEP_ID => 0, DepositTableMap::COL_DEP_DATE => 1, DepositTableMap::COL_DEP_COMMENT => 2, DepositTableMap::COL_DEP_ENTEREDBY => 3, DepositTableMap::COL_DEP_CLOSED => 4, DepositTableMap::COL_DEP_TYPE => 5, ),
+        self::TYPE_FIELDNAME     => array('dep_ID' => 0, 'dep_Date' => 1, 'dep_Comment' => 2, 'dep_EnteredBy' => 3, 'dep_Closed' => 4, 'dep_Type' => 5, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, )
     );
 
     /**
@@ -162,7 +157,6 @@ class DepositTableMap extends TableMap
         $this->addColumn('dep_EnteredBy', 'Enteredby', 'SMALLINT', false, 9, null);
         $this->addColumn('dep_Closed', 'Closed', 'BOOLEAN', true, 1, false);
         $this->addColumn('dep_Type', 'Type', 'CHAR', true, null, 'Bank');
-        $this->addColumn('totalAmount', 'Totalamount', 'INTEGER', false, null, null);
     } // initialize()
 
     /**
@@ -178,19 +172,6 @@ class DepositTableMap extends TableMap
   ),
 ), null, null, 'Pledges', false);
     } // buildRelations()
-
-    /**
-     *
-     * Gets the list of behaviors registered for this table
-     *
-     * @return array Associative array (name => parameters) of behaviors
-     */
-    public function getBehaviors()
-    {
-        return array(
-            'aggregate_column' => array('name' => 'totalAmount', 'expression' => 'SUM(plg_amount)', 'condition' => '', 'foreign_table' => 'pledge_plg', 'foreign_schema' => '', ),
-        );
-    } // getBehaviors()
 
     /**
      * Retrieves a string version of the primary key from the DB resultset row that can be used to uniquely identify a row in this table.
@@ -339,7 +320,6 @@ class DepositTableMap extends TableMap
             $criteria->addSelectColumn(DepositTableMap::COL_DEP_ENTEREDBY);
             $criteria->addSelectColumn(DepositTableMap::COL_DEP_CLOSED);
             $criteria->addSelectColumn(DepositTableMap::COL_DEP_TYPE);
-            $criteria->addSelectColumn(DepositTableMap::COL_TOTALAMOUNT);
         } else {
             $criteria->addSelectColumn($alias . '.dep_ID');
             $criteria->addSelectColumn($alias . '.dep_Date');
@@ -347,7 +327,6 @@ class DepositTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.dep_EnteredBy');
             $criteria->addSelectColumn($alias . '.dep_Closed');
             $criteria->addSelectColumn($alias . '.dep_Type');
-            $criteria->addSelectColumn($alias . '.totalAmount');
         }
     }
 

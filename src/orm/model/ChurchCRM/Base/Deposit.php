@@ -111,13 +111,6 @@ abstract class Deposit implements ActiveRecordInterface
     protected $dep_type;
 
     /**
-     * The value for the totalamount field.
-     *
-     * @var        int
-     */
-    protected $totalamount;
-
-    /**
      * @var        ObjectCollection|ChildPledge[] Collection to store aggregation of ChildPledge objects.
      */
     protected $collPledges;
@@ -457,16 +450,6 @@ abstract class Deposit implements ActiveRecordInterface
     }
 
     /**
-     * Get the [totalamount] column value.
-     *
-     * @return int
-     */
-    public function getTotalamount()
-    {
-        return $this->totalamount;
-    }
-
-    /**
      * Set the value of [dep_id] column.
      *
      * @param int $v new value
@@ -595,26 +578,6 @@ abstract class Deposit implements ActiveRecordInterface
     } // setType()
 
     /**
-     * Set the value of [totalamount] column.
-     *
-     * @param int $v new value
-     * @return $this|\ChurchCRM\Deposit The current object (for fluent API support)
-     */
-    public function setTotalamount($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->totalamount !== $v) {
-            $this->totalamount = $v;
-            $this->modifiedColumns[DepositTableMap::COL_TOTALAMOUNT] = true;
-        }
-
-        return $this;
-    } // setTotalamount()
-
-    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -678,9 +641,6 @@ abstract class Deposit implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : DepositTableMap::translateFieldName('Type', TableMap::TYPE_PHPNAME, $indexType)];
             $this->dep_type = (null !== $col) ? (string) $col : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : DepositTableMap::translateFieldName('Totalamount', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->totalamount = (null !== $col) ? (int) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -689,7 +649,7 @@ abstract class Deposit implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 7; // 7 = DepositTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 6; // 6 = DepositTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\ChurchCRM\\Deposit'), 0, $e);
@@ -924,9 +884,6 @@ abstract class Deposit implements ActiveRecordInterface
         if ($this->isColumnModified(DepositTableMap::COL_DEP_TYPE)) {
             $modifiedColumns[':p' . $index++]  = 'dep_Type';
         }
-        if ($this->isColumnModified(DepositTableMap::COL_TOTALAMOUNT)) {
-            $modifiedColumns[':p' . $index++]  = 'totalAmount';
-        }
 
         $sql = sprintf(
             'INSERT INTO deposit_dep (%s) VALUES (%s)',
@@ -955,9 +912,6 @@ abstract class Deposit implements ActiveRecordInterface
                         break;
                     case 'dep_Type':
                         $stmt->bindValue($identifier, $this->dep_type, PDO::PARAM_STR);
-                        break;
-                    case 'totalAmount':
-                        $stmt->bindValue($identifier, $this->totalamount, PDO::PARAM_INT);
                         break;
                 }
             }
@@ -1039,9 +993,6 @@ abstract class Deposit implements ActiveRecordInterface
             case 5:
                 return $this->getType();
                 break;
-            case 6:
-                return $this->getTotalamount();
-                break;
             default:
                 return null;
                 break;
@@ -1078,7 +1029,6 @@ abstract class Deposit implements ActiveRecordInterface
             $keys[3] => $this->getEnteredby(),
             $keys[4] => $this->getClosed(),
             $keys[5] => $this->getType(),
-            $keys[6] => $this->getTotalamount(),
         );
         if ($result[$keys[1]] instanceof \DateTime) {
             $result[$keys[1]] = $result[$keys[1]]->format('c');
@@ -1157,9 +1107,6 @@ abstract class Deposit implements ActiveRecordInterface
             case 5:
                 $this->setType($value);
                 break;
-            case 6:
-                $this->setTotalamount($value);
-                break;
         } // switch()
 
         return $this;
@@ -1203,9 +1150,6 @@ abstract class Deposit implements ActiveRecordInterface
         }
         if (array_key_exists($keys[5], $arr)) {
             $this->setType($arr[$keys[5]]);
-        }
-        if (array_key_exists($keys[6], $arr)) {
-            $this->setTotalamount($arr[$keys[6]]);
         }
     }
 
@@ -1265,9 +1209,6 @@ abstract class Deposit implements ActiveRecordInterface
         }
         if ($this->isColumnModified(DepositTableMap::COL_DEP_TYPE)) {
             $criteria->add(DepositTableMap::COL_DEP_TYPE, $this->dep_type);
-        }
-        if ($this->isColumnModified(DepositTableMap::COL_TOTALAMOUNT)) {
-            $criteria->add(DepositTableMap::COL_TOTALAMOUNT, $this->totalamount);
         }
 
         return $criteria;
@@ -1360,7 +1301,6 @@ abstract class Deposit implements ActiveRecordInterface
         $copyObj->setEnteredby($this->getEnteredby());
         $copyObj->setClosed($this->getClosed());
         $copyObj->setType($this->getType());
-        $copyObj->setTotalamount($this->getTotalamount());
 
         if ($deepCopy) {
             // important: temporarily setNew(false) because this affects the behavior of
@@ -1707,7 +1647,6 @@ abstract class Deposit implements ActiveRecordInterface
         $this->dep_enteredby = null;
         $this->dep_closed = null;
         $this->dep_type = null;
-        $this->totalamount = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();
@@ -1745,33 +1684,6 @@ abstract class Deposit implements ActiveRecordInterface
     public function __toString()
     {
         return (string) $this->exportTo(DepositTableMap::DEFAULT_STRING_FORMAT);
-    }
-
-    // aggregate_column behavior
-
-    /**
-     * Computes the value of the aggregate column totalAmount *
-     * @param ConnectionInterface $con A connection object
-     *
-     * @return mixed The scalar result from the aggregate query
-     */
-    public function computeTotalamount(ConnectionInterface $con)
-    {
-        $stmt = $con->prepare('SELECT SUM(plg_amount) FROM pledge_plg WHERE pledge_plg.PLG_DEPID = :p1');
-        $stmt->bindValue(':p1', $this->getId());
-        $stmt->execute();
-
-        return $stmt->fetchColumn();
-    }
-
-    /**
-     * Updates the aggregate column totalAmount *
-     * @param ConnectionInterface $con A connection object
-     */
-    public function updateTotalamount(ConnectionInterface $con)
-    {
-        $this->setTotalamount($this->computeTotalamount($con));
-        $this->save($con);
     }
 
     /**

@@ -41,16 +41,16 @@ $(document).ready(function() {
     });
    
     dataT = $("#depositsTable").DataTable({
-    data:depositData.deposits,
+    data:depositData.Deposits,
     columns: [
     {
         width: 'auto',
         title:'Deposit ID',
-        data:'dep_ID',
+        data:'Id',
         render: function  (data, type, full, meta ) {
             if (type === 'display')
             {
-                return '<a href=\'DepositSlipEditor.php?DepositSlipID='+full.dep_ID+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a>'+full.dep_ID; 
+                return '<a href=\'DepositSlipEditor.php?DepositSlipID='+full.Id+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a>'+full.Id; 
             }
             else
             {
@@ -62,25 +62,25 @@ $(document).ready(function() {
     {
         width: 'auto',
         title:'Deposit Date',
-        data:'dep_Date',
+        data:'Date',
         searchable: true
     },
     {
         width: 'auto',
         title:'Deposit Total',
-        data:'dep_Total',
+        data:'totalAmount',
         searchable: false,
     },
     {
         width: 'auto',
         title:'Deposit Comment',
-        data:'dep_Comment',
+        data:'Comment',
         searchable: true
     },
     {
         width: 'auto',
         title:'Closed',
-        data:'dep_Closed',
+        data:'Closed',
         searchable: true,
         render: function (data,type,full,meta) {
             return data == 1 ? 'Yes' : 'No';
@@ -89,7 +89,7 @@ $(document).ready(function() {
     {
         width: 'auto',
         title:'Deposit Type',
-        data:'dep_Type',
+        data:'Type',
         searchable: true
     }
     ],

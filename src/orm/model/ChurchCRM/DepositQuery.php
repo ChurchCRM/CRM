@@ -16,5 +16,19 @@ use ChurchCRM\Base\DepositQuery as BaseDepositQuery;
  */
 class DepositQuery extends BaseDepositQuery
 {
+  function preSelect(\Propel\Runtime\Connection\ConnectionInterface $con)
+  {
+    
+   $this->joinPledge();
+   $this->groupBy("Deposit.Id");
+   $this->withColumn("SUM(Pledge.Amount)","totalAmount");
+   
+    parent::preSelect($con);
+  
+  }
+  
+ 
+  
+  
 
 }

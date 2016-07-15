@@ -1365,62 +1365,6 @@ abstract class PledgeQuery extends ModelCriteria
     }
 
     /**
-     * Code to execute before every DELETE statement
-     *
-     * @param     ConnectionInterface $con The connection object used by the query
-     */
-    protected function basePreDelete(ConnectionInterface $con)
-    {
-        // aggregate_column_relation_aggregate_column behavior
-        $this->findRelatedDepositTotalamounts($con);
-
-        return $this->preDelete($con);
-    }
-
-    /**
-     * Code to execute after every DELETE statement
-     *
-     * @param     int $affectedRows the number of deleted rows
-     * @param     ConnectionInterface $con The connection object used by the query
-     */
-    protected function basePostDelete($affectedRows, ConnectionInterface $con)
-    {
-        // aggregate_column_relation_aggregate_column behavior
-        $this->updateRelatedDepositTotalamounts($con);
-
-        return $this->postDelete($affectedRows, $con);
-    }
-
-    /**
-     * Code to execute before every UPDATE statement
-     *
-     * @param     array $values The associative array of columns and values for the update
-     * @param     ConnectionInterface $con The connection object used by the query
-     * @param     boolean $forceIndividualSaves If false (default), the resulting call is a Criteria::doUpdate(), otherwise it is a series of save() calls on all the found objects
-     */
-    protected function basePreUpdate(&$values, ConnectionInterface $con, $forceIndividualSaves = false)
-    {
-        // aggregate_column_relation_aggregate_column behavior
-        $this->findRelatedDepositTotalamounts($con);
-
-        return $this->preUpdate($values, $con, $forceIndividualSaves);
-    }
-
-    /**
-     * Code to execute after every UPDATE statement
-     *
-     * @param     int $affectedRows the number of updated rows
-     * @param     ConnectionInterface $con The connection object used by the query
-     */
-    protected function basePostUpdate($affectedRows, ConnectionInterface $con)
-    {
-        // aggregate_column_relation_aggregate_column behavior
-        $this->updateRelatedDepositTotalamounts($con);
-
-        return $this->postUpdate($affectedRows, $con);
-    }
-
-    /**
      * Deletes all rows from the pledge_plg table.
      *
      * @param ConnectionInterface $con the connection to use
@@ -1479,36 +1423,6 @@ abstract class PledgeQuery extends ModelCriteria
 
             return $affectedRows;
         });
-    }
-
-    // aggregate_column_relation_aggregate_column behavior
-
-    /**
-     * Finds the related Deposit objects and keep them for later
-     *
-     * @param ConnectionInterface $con A connection object
-     */
-    protected function findRelatedDepositTotalamounts($con)
-    {
-        $criteria = clone $this;
-        if ($this->useAliasInSQL) {
-            $alias = $this->getModelAlias();
-            $criteria->removeAlias($alias);
-        } else {
-            $alias = '';
-        }
-        $this->depositTotalamounts = \ChurchCRM\DepositQuery::create()
-            ->joinPledge($alias)
-            ->mergeWith($criteria)
-            ->find($con);
-    }
-
-    protected function updateRelatedDepositTotalamounts($con)
-    {
-        foreach ($this->depositTotalamounts as $depositTotalamount) {
-            $depositTotalamount->updateTotalamount($con);
-        }
-        $this->depositTotalamounts = array();
     }
 
 } // PledgeQuery

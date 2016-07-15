@@ -243,12 +243,6 @@ abstract class Pledge implements ActiveRecordInterface
      */
     protected $alreadyInSave = false;
 
-    // aggregate_column_relation_aggregate_column behavior
-    /**
-     * @var ChildDeposit
-     */
-    protected $oldDepositTotalamount;
-
     /**
      * Applies default values to this object.
      * This method should be called from the object's constructor (or
@@ -1474,8 +1468,6 @@ abstract class Pledge implements ActiveRecordInterface
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                // aggregate_column_relation_aggregate_column behavior
-                $this->updateRelatedDepositTotalamount($con);
                 PledgeTableMap::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
@@ -2371,10 +2363,6 @@ abstract class Pledge implements ActiveRecordInterface
      */
     public function setDeposit(ChildDeposit $v = null)
     {
-        // aggregate_column_relation behavior
-        if (null !== $this->aDeposit && $v !== $this->aDeposit) {
-            $this->oldDepositTotalamount = $this->aDeposit;
-        }
         if ($v === null) {
             $this->setDepid(NULL);
         } else {
@@ -2590,24 +2578,6 @@ abstract class Pledge implements ActiveRecordInterface
     public function __toString()
     {
         return (string) $this->exportTo(PledgeTableMap::DEFAULT_STRING_FORMAT);
-    }
-
-    // aggregate_column_relation_aggregate_column behavior
-
-    /**
-     * Update the aggregate column in the related Deposit object
-     *
-     * @param ConnectionInterface $con A connection object
-     */
-    protected function updateRelatedDepositTotalamount(ConnectionInterface $con)
-    {
-        if ($deposit = $this->getDeposit()) {
-            $deposit->updateTotalamount($con);
-        }
-        if ($this->oldDepositTotalamount) {
-            $this->oldDepositTotalamount->updateTotalamount($con);
-            $this->oldDepositTotalamount = null;
-        }
     }
 
     /**

@@ -378,11 +378,6 @@
       <column name="dep_Closed" phpName="Closed" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
       <column name="dep_Type" phpName="Type" type="CHAR" sqlType="enum('Bank','CreditCard','BankDraft','eGive')" 
               required="true" defaultValue="Bank"/>
-      <behavior name="aggregate_column">
-        <parameter name="name" value="totalAmount" />
-        <parameter name="foreign_table" value="pledge_plg" />
-        <parameter name="expression" value ="SUM(plg_amount)"/>
-      </behavior>
       <vendor type="mysql">
         <parameter name="Engine" value="MyISAM"/>
       </vendor>

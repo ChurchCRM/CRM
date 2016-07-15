@@ -26,7 +26,6 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildDepositQuery orderByEnteredby($order = Criteria::ASC) Order by the dep_EnteredBy column
  * @method     ChildDepositQuery orderByClosed($order = Criteria::ASC) Order by the dep_Closed column
  * @method     ChildDepositQuery orderByType($order = Criteria::ASC) Order by the dep_Type column
- * @method     ChildDepositQuery orderByTotalamount($order = Criteria::ASC) Order by the totalAmount column
  *
  * @method     ChildDepositQuery groupById() Group by the dep_ID column
  * @method     ChildDepositQuery groupByDate() Group by the dep_Date column
@@ -34,7 +33,6 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildDepositQuery groupByEnteredby() Group by the dep_EnteredBy column
  * @method     ChildDepositQuery groupByClosed() Group by the dep_Closed column
  * @method     ChildDepositQuery groupByType() Group by the dep_Type column
- * @method     ChildDepositQuery groupByTotalamount() Group by the totalAmount column
  *
  * @method     ChildDepositQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildDepositQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -64,8 +62,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildDeposit findOneByComment(string $dep_Comment) Return the first ChildDeposit filtered by the dep_Comment column
  * @method     ChildDeposit findOneByEnteredby(int $dep_EnteredBy) Return the first ChildDeposit filtered by the dep_EnteredBy column
  * @method     ChildDeposit findOneByClosed(boolean $dep_Closed) Return the first ChildDeposit filtered by the dep_Closed column
- * @method     ChildDeposit findOneByType(string $dep_Type) Return the first ChildDeposit filtered by the dep_Type column
- * @method     ChildDeposit findOneByTotalamount(int $totalAmount) Return the first ChildDeposit filtered by the totalAmount column *
+ * @method     ChildDeposit findOneByType(string $dep_Type) Return the first ChildDeposit filtered by the dep_Type column *
 
  * @method     ChildDeposit requirePk($key, ConnectionInterface $con = null) Return the ChildDeposit by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildDeposit requireOne(ConnectionInterface $con = null) Return the first ChildDeposit matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -76,7 +73,6 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildDeposit requireOneByEnteredby(int $dep_EnteredBy) Return the first ChildDeposit filtered by the dep_EnteredBy column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildDeposit requireOneByClosed(boolean $dep_Closed) Return the first ChildDeposit filtered by the dep_Closed column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildDeposit requireOneByType(string $dep_Type) Return the first ChildDeposit filtered by the dep_Type column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildDeposit requireOneByTotalamount(int $totalAmount) Return the first ChildDeposit filtered by the totalAmount column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildDeposit[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildDeposit objects based on current ModelCriteria
  * @method     ChildDeposit[]|ObjectCollection findById(int $dep_ID) Return ChildDeposit objects filtered by the dep_ID column
@@ -85,7 +81,6 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildDeposit[]|ObjectCollection findByEnteredby(int $dep_EnteredBy) Return ChildDeposit objects filtered by the dep_EnteredBy column
  * @method     ChildDeposit[]|ObjectCollection findByClosed(boolean $dep_Closed) Return ChildDeposit objects filtered by the dep_Closed column
  * @method     ChildDeposit[]|ObjectCollection findByType(string $dep_Type) Return ChildDeposit objects filtered by the dep_Type column
- * @method     ChildDeposit[]|ObjectCollection findByTotalamount(int $totalAmount) Return ChildDeposit objects filtered by the totalAmount column
  * @method     ChildDeposit[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -184,7 +179,7 @@ abstract class DepositQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT dep_ID, dep_Date, dep_Comment, dep_EnteredBy, dep_Closed, dep_Type, totalAmount FROM deposit_dep WHERE dep_ID = :p0';
+        $sql = 'SELECT dep_ID, dep_Date, dep_Comment, dep_EnteredBy, dep_Closed, dep_Type FROM deposit_dep WHERE dep_ID = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -476,47 +471,6 @@ abstract class DepositQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(DepositTableMap::COL_DEP_TYPE, $type, $comparison);
-    }
-
-    /**
-     * Filter the query on the totalAmount column
-     *
-     * Example usage:
-     * <code>
-     * $query->filterByTotalamount(1234); // WHERE totalAmount = 1234
-     * $query->filterByTotalamount(array(12, 34)); // WHERE totalAmount IN (12, 34)
-     * $query->filterByTotalamount(array('min' => 12)); // WHERE totalAmount > 12
-     * </code>
-     *
-     * @param     mixed $totalamount The value to use as filter.
-     *              Use scalar values for equality.
-     *              Use array values for in_array() equivalent.
-     *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
-     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
-     *
-     * @return $this|ChildDepositQuery The current query, for fluid interface
-     */
-    public function filterByTotalamount($totalamount = null, $comparison = null)
-    {
-        if (is_array($totalamount)) {
-            $useMinMax = false;
-            if (isset($totalamount['min'])) {
-                $this->addUsingAlias(DepositTableMap::COL_TOTALAMOUNT, $totalamount['min'], Criteria::GREATER_EQUAL);
-                $useMinMax = true;
-            }
-            if (isset($totalamount['max'])) {
-                $this->addUsingAlias(DepositTableMap::COL_TOTALAMOUNT, $totalamount['max'], Criteria::LESS_EQUAL);
-                $useMinMax = true;
-            }
-            if ($useMinMax) {
-                return $this;
-            }
-            if (null === $comparison) {
-                $comparison = Criteria::IN;
-            }
-        }
-
-        return $this->addUsingAlias(DepositTableMap::COL_TOTALAMOUNT, $totalamount, $comparison);
     }
 
     /**

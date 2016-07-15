@@ -278,19 +278,6 @@ class PledgeTableMap extends TableMap
     } // buildRelations()
 
     /**
-     *
-     * Gets the list of behaviors registered for this table
-     *
-     * @return array Associative array (name => parameters) of behaviors
-     */
-    public function getBehaviors()
-    {
-        return array(
-            'aggregate_column_relation_aggregate_column' => array('foreign_table' => 'deposit_dep', 'update_method' => 'updateTotalamount', 'aggregate_name' => 'Totalamount', ),
-        );
-    } // getBehaviors()
-
-    /**
      * Retrieves a string version of the primary key from the DB resultset row that can be used to uniquely identify a row in this table.
      *
      * For tables with a single-column primary key, that simple pkey value will be returned.  For tables with

@@ -17,6 +17,9 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require 'Service/FinancialService.php';
+require_once 'vendor/autoload.php';
+require_once 'orm/conf/config.php';
+use ChurchCRM\DepositQuery;
 
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
@@ -109,7 +112,7 @@ require "Include/Header.php";
 </div>
 
 <script>
-var depositData = <?php $json = $financialService->getDepositJSON($financialService->getDeposits()); if ($json) { echo $json; } else { echo 0; } ?>;
+var depositData = <?php echo \ChurchCRM\Base\DepositQuery::create()->find()->toJSON(); ?>;
 </script>
 
 <script src="<?= $sRootPath; ?>/skin/js/FindDepositSlip.js"></script>
