@@ -36,7 +36,6 @@ class CalendarService
     $peopleWithBirthDays = PersonQuery::create()
       ->filterByBirthMonth(array('min' => 1)) // have birthday month
       ->filterByBirthDay(array('min' => 1)) // have birthday day
-      ->filterByFlags(0) // hide ages
       ->find();
 
     foreach ($peopleWithBirthDays as $person) {
@@ -51,7 +50,6 @@ class CalendarService
 
 
     $activeEvents = EventQuery::create()
-      //->filterByStart(array('max' => 'yesterday'))
       ->filterByInActive("false")
       ->orderByStart()
       ->find();
