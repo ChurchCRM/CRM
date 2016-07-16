@@ -22,11 +22,6 @@ class Person extends BasePerson
     return $this->getFirstName() . " " . $this->getLastName();
   }
 
-  function getFullName()
-  {
-    return $this->getFirstName() . " " . $this->getLastName();
-  }
-
   function hideAge() {
     return $this->getFlags() == 1;
   }
