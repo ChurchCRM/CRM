@@ -374,7 +374,7 @@ if ($iFamilyID == $fam_ID) {
                       <?= $item['text'] ?>
                     </div>
 
-                    <?php if (($_SESSION['bNotes']) && ($item["editLink"] != "" || $item["deleteLink"] != "")) { ?>
+                    <?php if (($_SESSION['bNotes']) && (in_array("editLink", $item) || in_array("deleteLink", $item))) { ?>
                       <div class="timeline-footer">
                         <?php if ($item["editLink"] != "") { ?>
                           <a href="<?= $item["editLink"] ?>">

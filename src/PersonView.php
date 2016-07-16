@@ -339,7 +339,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             <!-- /.timeline-label -->
 
             <!-- timeline item -->
-            <?php foreach ($timelineService->getForPerson($iPersonID) as $item) { ?>
+            <?php
+            foreach ($timelineService->getForPerson($iPersonID) as $item) { ?>
               <li>
                 <!-- timeline icon -->
                 <i class="fa <?= $item['style'] ?>"></i>
@@ -359,7 +360,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                     <?= $item['text'] ?>
                   </div>
 
-                  <?php if (($_SESSION['bNotes']) && ($item["editLink"] != "" || $item["deleteLink"] != "")) { ?>
+                  <?php if (($_SESSION['bNotes']) && (in_array("editLink", $item) || in_array("deleteLink", $item))) { ?>
                     <div class="timeline-footer">
                       <?php if ($item["editLink"] != "") { ?>
                         <a href="<?= $item["editLink"] ?>">
