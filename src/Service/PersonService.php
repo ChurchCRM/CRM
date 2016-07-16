@@ -3,7 +3,7 @@
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 require_once dirname(__FILE__) . '/../orm/conf/config.php';
 
-require "NoteService.php";
+require_once "NoteService.php";
 
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Person;
