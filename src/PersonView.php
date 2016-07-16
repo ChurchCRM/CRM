@@ -204,7 +204,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
           } ?>
         </p>
         <?php if ($bOkToEdit) { ?>
-          <a href="PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b>Edit</b></a>
+          <a href="PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b><?php echo gettext("Edit"); ?></b></a>
         <?php } ?>
       </div>
       <!-- /.box-body -->
@@ -214,12 +214,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     <!-- About Me Box -->
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title text-center">About Me</h3>
+        <h3 class="box-title text-center"><?php echo gettext("About Me"); ?></h3>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
         <ul class="fa-ul">
-          <li><i class="fa-li fa fa-group"></i>Family: <span>
+          <li><i class="fa-li fa fa-group"></i><?php echo gettext("Family:"); ?> <span>
 							<?php
               if ($fam_ID != "") { ?>
                 <a href="FamilyView.php?FamilyID=<?= $fam_ID ?>"><?= $fam_Name ?> </a>
@@ -233,7 +233,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 echo gettext("(No assigned family)");
               ?>
 						</span></li>
-          <li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
+          <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext("Address:"); ?> <span>
 						<a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
               <?= $formattedMailingAddress ?>
             </a>
@@ -503,9 +503,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                 <span class="sr-only">Toggle Dropdown</span>
                               </button>
                               <ul class="dropdown-menu" role="menu">
-                                <li><a href="MemberRoleChange.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>">Change Role</a></li>
+                                <li><a href="MemberRoleChange.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext("Change Role") ?></a></li>
                                 <?php if ($grp_hasSpecialProps == 'true') { ?>
-                                  <li><a href="GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>">Update Properties</a></li>
+                                  <li><a href="GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext("Update Properties") ?></a></li>
                                 <?php } ?>
                               </ul>
                             </div>
@@ -525,7 +525,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               }
               if ($_SESSION['bManageGroups']) { ?>
                 <div class="alert alert-info">
-                  <h4><strong>Assign New Group</strong></h4>
+                  <h4><strong><?php echo gettext("Assign New Group"); ?> </strong></h4>
                   <i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?= gettext("Person will be assigned to the Group in the Default Role.") ?></span>
 
                   <p><br></p>
@@ -540,7 +540,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                     }
                     ?>
                   </select>
-                  <a href="#" onclick="GroupAdd()" class="btn btn-success" role="button">Assign User to Group</a>
+                  <a href="#" onclick="GroupAdd()" class="btn btn-success" role="button"><?= gettext("Assign User to Group") ?></a>
                   <br>
                 </div>
               <?php } ?>

@@ -58,10 +58,10 @@ require "Include/Header.php"; ?>
         right: 'month,agendaWeek,agendaDay'
       },
       buttonText: {
-        today: 'today',
-        month: 'month',
-        week: 'week',
-        day: 'day'
+        today: '<?= gettext("Today") ?>',
+        month: '<?= gettext("Month") ?>',
+        week: '<?= gettext("Week") ?>',
+        day: '<?= gettext("Day") ?>'
       },
       events: window.CRM.root + '/api/calendar/events'
     });

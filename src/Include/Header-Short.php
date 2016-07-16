@@ -42,4 +42,4 @@ ob_start();
           <td valign="top">
             <br>
 
-            <p class="PageTitle"><?= $sPageTitle ?></p>
+            <p class="PageTitle"><?= gettext($sPageTitle) ?></p>
