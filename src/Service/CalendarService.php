@@ -20,9 +20,9 @@ class CalendarService
   function getEventTypes()
   {
     $eventTypes = array();
-    $eventType = array("Name" => "Event", "backgroundColor" =>"#f39c12" );
+    $eventType = array("Name" => "Event", "backgroundColor" => "#f39c12");
     array_push($eventTypes, $eventType);
-    $eventType = array("Name" => "Birthday", "backgroundColor" =>"#f56954" );
+    $eventType = array("Name" => "Birthday", "backgroundColor" => "#f56954");
     array_push($eventTypes, $eventType);
     return $eventTypes;
   }
@@ -34,8 +34,8 @@ class CalendarService
     $curYear = date("Y");
     $curMonth = date("m");
     $peopleWithBirthDays = PersonQuery::create()
-      ->filterByBirthMonth(array('min' => 1)) // have birthday month
-      ->filterByBirthDay(array('min' => 1)) // have birthday day
+      ->filterByBirthMonth(array('min' => 1))// have birthday month
+      ->filterByBirthDay(array('min' => 1))// have birthday day
       ->find();
 
     foreach ($peopleWithBirthDays as $person) {
