@@ -22,6 +22,8 @@ require 'Include/PersonFunctions.php';
 require 'Service/MailchimpService.php';
 require 'Service/TimelineService.php';
 
+use ChurchCRM\PersonQuery;
+
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
 
@@ -59,6 +61,8 @@ $sSQL = "SELECT a.*, family_fam.*, cls.lst_OptionName AS sClassName, fmr.lst_Opt
 			WHERE a.per_ID = " . $iPersonID;
 $rsPerson = RunQuery($sSQL);
 extract(mysql_fetch_array($rsPerson));
+
+$person = PersonQuery::create()->findPk($iPersonID);
 
 // Set the page title and include HTML header
 
@@ -294,21 +298,20 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
           <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i> <?= gettext("Delete Photo") ?></a>
         <?php } ?>
       <?php } ?>
-      <a class="btn btn-app" href="PrintView.php?PersonID=<?= $per_ID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
-      <a class="btn btn-app" href="PersonView.php?PersonID=<?= $per_ID ?>&AddToPeopleCart=<?= $per_ID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
+      <a class="btn btn-app" href="PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
+      <a class="btn btn-app" href="PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
       <?php if ($_SESSION['bNotes']) { ?>
-        <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?php echo $per_ID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
-        <a class="btn btn-app" href="NoteEditor.php?PersonID=<?php echo $per_ID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
+        <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
+        <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
       <?php }
       if ($_SESSION['bDeleteRecords']) { ?>
-        <a class="btn btn-app bg-maroon" href="SelectDelete.php?mode=person&PersonID=<?= $per_ID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
+        <a class="btn btn-app bg-maroon" href="SelectDelete.php?mode=person&PersonID=<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
       <?php }
       if ($_SESSION['bAdmin']) {
-        $sSQL = "SELECT usr_per_ID FROM user_usr WHERE usr_per_ID = " . $per_ID;
-        if (mysql_num_rows(RunQuery($sSQL)) == 0) { ?>
-          <a class="btn btn-app" href="UserEditor.php?NewPersonID=<?= $per_ID ?>"><i class="fa fa-user-secret"></i> <?= gettext("Make User") ?></a>
+        if (!$person->isUser()) { ?>
+          <a class="btn btn-app" href="UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext("Make User") ?></a>
         <?php } else { ?>
-          <a class="btn btn-app" href="UserEditor.php?PersonID=<?= $per_ID ?>"><i class="fa fa-user-secret"></i> <?= gettext("Edit User") ?></a>
+          <a class="btn btn-app" href="UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext("Edit User") ?></a>
         <?php }
       } ?>
       <a class="btn btn-app" role="button" href="SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>

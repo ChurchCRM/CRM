@@ -3,6 +3,7 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Person as BasePerson;
+use ChurchCRM\Base\UserQuery;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
@@ -27,9 +28,15 @@ class Person extends BasePerson
     return $this->getFlags() == 1;
   }
 
-  function getViewURI($baseURL)
+  function getViewURI($baseURL, $addToCart = false)
   {
-    return $baseURL . "/PersonView.php?PersonID=" . $this->getId();
+    $url = $baseURL . "/PersonView.php?PersonID=" . $this->getId();
+
+    if ($addToCart) {
+      $url = $url . "&AddToPeopleCart=" . $this->getId();
+    }
+
+    return $url;
   }
 
   function isMale()
@@ -100,6 +107,11 @@ class Person extends BasePerson
     }
 
     $note->save();
+  }
+
+  public function isUser() {
+    $user = UserQuery::create()->findPk($this->getId());
+    return !is_null($user);
   }
 
 }
