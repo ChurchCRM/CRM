@@ -76,6 +76,9 @@ if (!$tablecheck) {
 session_name('CRM@' . $sRootPath);
 session_start();
 
+require_once dirname(__FILE__) . '/../vendor/autoload.php';
+require_once dirname(__FILE__) . '/../orm/conf/config.php';
+
 // Avoid consecutive slashes when $sRootPath = '/'
 if (strlen($sRootPath) < 2) $sRootPath = '';
 
