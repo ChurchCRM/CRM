@@ -22,8 +22,6 @@ class DataSeedService
   function generateFamilies($families)
   {
     requireUserGroupMembership("bAdmin");
-    $PersonService = new PersonService();
-    $FamilyService = new FamilyService();
     $kidsPerFamily = 3;
     $kidsdev = 3;
     $personPointer = 1;
