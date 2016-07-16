@@ -1,7 +1,5 @@
 <?php
 
-use ChurchCRM\ListOptionQuery;
-
 class PersonService
 {
   private $baseURL;
