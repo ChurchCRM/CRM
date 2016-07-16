@@ -1,5 +1,41 @@
 # Change Log
 
+## [2.1.7](https://github.com/ChurchCRM/CRM/tree/2.1.7) (2016-07-11)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.6...2.1.7)
+
+**Implemented enhancements:**
+
+- Locale: french fr\_FR [\#775](https://github.com/ChurchCRM/CRM/issues/775)
+- fix bad $sRootPath at runTime [\#741](https://github.com/ChurchCRM/CRM/issues/741)
+- System Check and Config.php [\#789](https://github.com/ChurchCRM/CRM/pull/789) ([DawoudIO](https://github.com/DawoudIO))
+- Locale: french fr\_FR changes \#775 [\#790](https://github.com/ChurchCRM/CRM/pull/790) ([DawoudIO](https://github.com/DawoudIO))
+- Version cleanup [\#784](https://github.com/ChurchCRM/CRM/pull/784) ([DawoudIO](https://github.com/DawoudIO))
+
+**Fixed bugs:**
+
+- Setup.php Get Apache Modules [\#797](https://github.com/ChurchCRM/CRM/issues/797)
+- Bugs and correction with get text [\#776](https://github.com/ChurchCRM/CRM/issues/776)
+- vendor directory missing in 2.1.6 tar file [\#800](https://github.com/ChurchCRM/CRM/issues/800)
+- fix bad $sRootPath at runTime [\#741](https://github.com/ChurchCRM/CRM/issues/741)
+- Deposit Report [\#740](https://github.com/ChurchCRM/CRM/issues/740)
+- Restore DB does not work. [\#708](https://github.com/ChurchCRM/CRM/issues/708)
+- Address for a family member [\#701](https://github.com/ChurchCRM/CRM/issues/701)
+- Skin: Need to remove href values when printing in Chrome [\#694](https://github.com/ChurchCRM/CRM/issues/694)
+- hide href printing for calendar page. [\#794](https://github.com/ChurchCRM/CRM/pull/794) ([DawoudIO](https://github.com/DawoudIO))
+- Fix Deposit Reports [\#783](https://github.com/ChurchCRM/CRM/pull/783) ([crossan007](https://github.com/crossan007))
+
+**Closed issues:**
+
+- Auto SQL install fails on shared hosting. [\#798](https://github.com/ChurchCRM/CRM/issues/798)
+- Update Docs to use Release vs Clone  [\#529](https://github.com/ChurchCRM/CRM/issues/529)
+
+**Merged pull requests:**
+
+- fix install process [\#799](https://github.com/ChurchCRM/CRM/pull/799) ([crossan007](https://github.com/crossan007))
+- Fix Restore \#708 [\#796](https://github.com/ChurchCRM/CRM/pull/796) ([crossan007](https://github.com/crossan007))
+- update from master [\#795](https://github.com/ChurchCRM/CRM/pull/795) ([crossan007](https://github.com/crossan007))
+- Locale: System testing & build [\#804](https://github.com/ChurchCRM/CRM/pull/804) ([DawoudIO](https://github.com/DawoudIO))
+
 ## [2.1.6](https://github.com/ChurchCRM/CRM/tree/2.1.6) (2016-07-06)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.5...2.1.6)
 
@@ -9,6 +45,7 @@
 
 **Fixed bugs:**
 
+- Upload photo from mobile [\#749](https://github.com/ChurchCRM/CRM/issues/749)
 - address delete compatibility server issues [\#764](https://github.com/ChurchCRM/CRM/pull/764) ([crossan007](https://github.com/crossan007))
 
 **Closed issues:**
@@ -22,6 +59,10 @@
 **Implemented enhancements:**
 
 - Build system Updates v2 [\#778](https://github.com/ChurchCRM/CRM/pull/778) ([DawoudIO](https://github.com/DawoudIO))
+
+**Fixed bugs:**
+
+- Problem to install churchCRM [\#773](https://github.com/ChurchCRM/CRM/issues/773)
 
 **Merged pull requests:**
 

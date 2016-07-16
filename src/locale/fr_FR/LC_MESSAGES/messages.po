@@ -1,4 +1,4 @@
- # translation of new2.po to Italian
+# translation of new2.po to Italian
 # InfoCentral Italian translation
 # Copyright (C) 2003
 # This file is distributed under the same license (GPL) as the InfoCentral package.
@@ -227,7 +227,7 @@ msgstr "Configuration automatique pour le paiement"
 #: AutoPaymentEditor.php:31 Canvas05Editor.php:29 CanvassEditor.php:41
 #, fuzzy
 msgid " family"
-msgstr " famille)"
+msgstr " famille"
 
 #: AutoPaymentEditor.php:277 Canvas05Editor.php:90 CanvassEditor.php:148
 #: DepositSlipEditor.php:457 DonatedItemEditor.php:183 FamilyEditor.php:662
@@ -238,11 +238,28 @@ msgstr " famille)"
 #: PropertyTypeEditor.php:116 UserEditor.php:446 UserPasswordChange.php:221
 #: WhyCameEditor.php:89
 msgid "Save"
-msgstr "Sauver"
+msgstr "Enregistrer"
 
-#: AutoPaymentEditor.php:287 PersonEditor.php:614 PrintView.php:226
+#: AutoPaymentEditor.php:287 PersonEditor.php:614 PrintView.php:226 PersonView.php:614
 msgid "Family:"
-msgstr "Famille:"
+msgstr "Famille :"
+
+#: PersonView.php:614
+msgid "Address:"
+msgstr "Adresse :"
+
+#: PersonView.php:615
+msgid "Assign New Group"
+msgstr "Ajouter au groupe"
+
+#: PersonView.php:616
+msgid "Person will be assigned to the Group in the Default Role."
+msgstr "La personne sera ajouter au groupe avec le r&ocirc;le par d&eacute;faut."
+
+#: PersonView.php:616
+msgid "Assign User to Group"
+msgstr "Ajouter l'utilisateur au groupe"
+
 
 #: AutoPaymentEditor.php:290 BatchWinnerEntry.php:84 BatchWinnerEntry.php:96
 #: CSVImport.php:280 DonatedItemEditor.php:210 DonatedItemEditor.php:256
@@ -394,6 +411,10 @@ msgstr ""
 msgid "Backup Database"
 msgstr "Sauvegarder la Base de Donn&eacute;es"
 
+#: BackupDatabase.php:116 MenuStrings.php:12
+msgid "Restore Database"
+msgstr "Restaurer la Base de Donn&eacute;es"
+
 #: BackupDatabase.php:120
 msgid ""
 "This tool will assist you in manually backing up the InfoCentral database."
@@ -505,6 +526,22 @@ msgstr "Priv&eacute;"
 #: BatchWinnerEntry.php:112
 msgid "Enter Winners"
 msgstr "Entrez gagnants"
+
+#: calendar.php:112
+msgid "Birthdays"
+msgstr "Date de naissance"
+
+#: calendar.php:112
+msgid "Church Calendar"
+msgstr "Agenda de l&#39;&eacute;glise"
+
+#: calendar.php:112
+msgid "Today"
+msgstr "Aujourd hui"
+
+#: calendar.php
+msgid "Week"
+msgstr "Semaine"
 
 #: Canvas05Editor.php:29
 msgid "Canvas 2005 Input for the "
@@ -822,6 +859,14 @@ msgstr "Adresse1:"
 #: PersonEditor.php:668
 msgid "Address2:"
 msgstr "Adresse2:"
+
+#: CSVExport.php:114
+msgid "Custom Field Selection"
+msgstr "Sélection de champs personnalisés"
+
+#: CSVExport.php:115
+msgid "Field Selection"
+msgstr "Sélection de champs"
 
 #: CartToFamily.php:251 CSVExport.php:119 FamilyEditor.php:695
 #: PersonEditor.php:673
@@ -1302,9 +1347,8 @@ msgstr ""
 "* D&eacute;pend de la m&eacute;thode de sortie choisie par l'utilisateur"
 
 #: CSVExport.php:199
-#, fuzzy
 msgid "Custom Person Fields"
-msgstr "Modifiez Champs Personnalis&eacute;s"
+msgstr "Modifiez Champs de Personnes"
 
 #: CSVExport.php:218
 #, fuzzy
@@ -1875,7 +1919,7 @@ msgstr "Éditeur de Note"
 #: DonatedItemEditor.php:184 FamilyEditor.php:663 PaddleNumEditor.php:165
 #: PersonEditor.php:552 PersonEditor.php:914 PledgeEditor.php:550
 msgid "Save and Add"
-msgstr "Sauver et Ajouter"
+msgstr "Enregistrer et Ajouter"
 
 #: DonatedItemEditor.php:196
 #, fuzzy
@@ -1975,7 +2019,7 @@ msgstr ""
 #: PersonCustomFieldsEditor.php:424 VolunteerOpportunityEditor.php:343
 #: VolunteerOpportunityEditor.php:403
 msgid "Save Changes"
-msgstr "Sauver les Changements"
+msgstr "Enregistrer les Changements"
 
 #: DonationFundEditor.php:211
 msgid "delete"
@@ -2138,7 +2182,7 @@ msgstr "Événements"
 #: EventAttendance.php:76
 #, fuzzy
 msgid "Back to Report Menu"
-msgstr "Menu des Rapports"
+msgstr "Menu Rapports"
 
 #: EventAttendance.php:122
 #, fuzzy
@@ -2309,8 +2353,7 @@ msgstr "[Accéder à une liste des comtes de présence que vous souhaitez inclur
 msgid "New Event Type"
 msgstr "Type d&#39;événement nouveau"
 
-#: FamilyCustomFieldsEditor.php:39 FamilyCustomFieldsEditorSave.php:39
-#, fuzzy
+#: FamilyCustomFieldsEditor.php:39 FamilyCustomFieldsEditorSave.php:39 
 msgid "Custom Family Fields Editor"
 msgstr "Gestionnaire des Champs Personnalis&eacute;s"
 
@@ -2530,10 +2573,11 @@ msgid "Role"
 msgstr "R&ocirc;le"
 
 #: FamilyEditor.php:947
+#: calendar.php:112
 msgid "Month"
 msgstr "Mois"
 
-#: FamilyEditor.php:948
+#: FamilyEditor.php:948 calendar.php
 msgid "Day"
 msgstr "Jour"
 
@@ -2675,7 +2719,7 @@ msgstr "Propri&eacute;t&eacute;s Assign&eacute;es:"
 
 #: FamilyView.php:452 GroupView.php:235 PersonView.php:507 PrintView.php:423
 msgid "No property assignments."
-msgstr "Aucune propri&eacute;t&eacute;s n'est assign&eacute;es."
+msgstr "Aucune propri&eacute;t&eacute;s n'est attribu&eacute;es."
 
 #: FamilyView.php:462 GroupMemberList.php:410 GroupView.php:245
 #: PersonView.php:516 PersonView.php:693 PrintView.php:430
@@ -2802,10 +2846,14 @@ msgstr "Modifier cette Note"
 msgid "Delete This Note"
 msgstr "Supprimer cette Note"
 
-#: FinancialReports.php:35 ReportList.php:71
-#, fuzzy
+#: FinancialReports.php:35 
+#: ReportList.php:73
 msgid "Financial Reports"
-msgstr "Finances"
+msgstr "Rapports Financiers"
+
+#: FinancialReports.php:35 ReportList.php:72
+msgid "Event Attendance Reports"
+msgstr "Rapports des événements locaux"
 
 #: FinancialReports.php:42
 msgid "No records were returned from the previous report."
@@ -3741,7 +3789,7 @@ msgstr "Confirmer les étiquettes de données"
 
 #: ListEvents.php:47
 msgid "Listing All Church Events"
-msgstr "Listage de tous les événements de l&#39;église"
+msgstr "&Eacute;v&eacute;nements de l&#39;&eacute;glise"
 
 #: ListEvents.php:90
 msgid "Select Event Types To Display"
@@ -3832,7 +3880,7 @@ msgstr "Nouveau R&ocirc;le:"
 #: Menu.php:31
 #, fuzzy
 msgid "Welcome to ChurchCRM"
-msgstr "Bienvenue dans InfoCentral"
+msgstr "Bienvenue dans ChurchCRM"
 
 #: Menu.php:36
 msgid "Hi"
@@ -4039,16 +4087,19 @@ msgstr "Ajouter Nouvel Utilisateur"
 
 #: MenuStrings.php:9
 msgid "Edit Custom Person Fields"
-msgstr "Modifiez Champs Personnalis&eacute;s"
+msgstr "Modifiez Champs des Personnes"
 
 #: MenuStrings.php:10
 msgid "Edit Donation Funds"
 msgstr "Modifiez les Associations"
 
 #: MenuStrings.php:12
-#, fuzzy
 msgid "CSV Import"
-msgstr "Export au format CSV"
+msgstr "Import au format CSV"
+
+#: MenuStrings.php:12
+msgid "Generate Seed Data"
+msgstr "Générer une graine pour les données"
 
 #: MenuStrings.php:14
 msgid "Edit General Settings"
@@ -4063,6 +4114,10 @@ msgstr "Modifier Enregistrements:"
 msgid "Edit User Default Settings"
 msgstr "Modifier les paramètres utilisateur par défaut"
 
+#: MenuStrings.php:17
+msgid "System Users"
+msgstr "Liste de Utilisateurs"
+
 #: MenuStrings.php:18
 msgid "Please select this option to register ChurchCRM after configuring."
 msgstr "S&#39;il vous plaît sélectionner cette option pour enregistrer ChurchCRM après la configuration."
@@ -4070,10 +4125,6 @@ msgstr "S&#39;il vous plaît sélectionner cette option pour enregistrer ChurchC
 #: MenuStrings.php:19
 msgid "People/Families"
 msgstr "Personnes/Familles"
-
-#: MenuStrings.php:20
-msgid "Add New Person"
-msgstr "Ajouter Nouvelle Personne"
 
 #: MenuStrings.php:21
 msgid "View All Persons"
@@ -4114,21 +4165,20 @@ msgid "Events"
 msgstr "Événements"
 
 #: MenuStrings.php:30
-#, fuzzy
 msgid "List Church Events"
-msgstr "Liste des El&eacute;ments du Panier"
+msgstr "&Eacute;v&eacute;nements de l'&Eacute;glise"
 
-#: MenuStrings.php:31
+#: MenuStrings.php:32
 msgid "Add Church Event"
 msgstr "Ajouter un évènement Eglise"
 
-#: MenuStrings.php:32
+#: MenuStrings.php:33
 msgid "List Event Types"
 msgstr "Liste des types d&#39;événement"
 
-#: MenuStrings.php:33
+#: MenuStrings.php:34
 msgid "Check-in and Check-out"
-msgstr "Check-in et check-out"
+msgstr "Contr&ocirc;ler"
 
 #: MenuStrings.php:35
 #, fuzzy
@@ -4192,7 +4242,7 @@ msgstr "Donn&eacute;es/Rapports"
 
 #: MenuStrings.php:52
 msgid "CSV Export Records"
-msgstr "Export Enregistrements CSV"
+msgstr "Export au format CSV"
 
 #: MenuStrings.php:53
 msgid "Query Menu"
@@ -4214,10 +4264,9 @@ msgstr "Liste des Groupes"
 msgid "Edit Group Types"
 msgstr "Modifiez Types Groupe"
 
-#: MenuStrings.php:59 SelectList.php:174 SelectListFormatted.php:170
-#, fuzzy
+#: MenuStrings.php:59 SelectList.php:174 SelectListFormatted.php:170 Include/Header-function.php:462
 msgid "Group Assignment Helper"
-msgstr " Affectation de Propri&eacute;t&eacute;"
+msgstr " Propri&eacute;t&eacute; d'affectation"
 
 #: MenuStrings.php:60 MenuStrings.php:77 PersonView.php:640
 #: PropertyTypeList.php:40
@@ -4254,11 +4303,59 @@ msgstr "A propos de InfoCentral"
 msgid "Wiki Documentation"
 msgstr "Voir les Cotisations"
 
-#: MenuStrings.php:68 Include/Header-function.php:577
+#: MenuStrings.php:68 Include/Header-function.php:577 Menu.php:31
 msgid "People"
 msgstr "Personne"
 
-#: MenuStrings.php:69 Include/Header-function.php:584
+#: Menu.php:31
+msgid "Welcome to <b>Church</b>CRM"
+msgstr "Bienvenue dans <b>ChurchCRM</b>"
+
+#: Menu.php:31
+msgid "Latest Families"
+msgstr "Derni&egrave;re famille"
+
+#: Menu.php:31
+msgid "Latest Members"
+msgstr "Dernier membres ajout&eacute;s"
+
+#: Menu.php:31
+msgid "Updated Families"
+msgstr "Familles mises &agrave; jour"
+
+#: Menu.php:31
+msgid "Adress"
+msgstr "Adresse"
+
+#: Menu.php:31
+msgid "Created"
+msgstr "Cr&eacute;ation"         
+
+#: Menu.php:31
+msgid "Updated"
+msgstr "Mise &agrave; jour"
+
+#: Menu.php:31
+msgid "Updated Members"
+msgstr "Membres &agrave; jour"
+
+#: Menu.php:31
+msgid "See All People"
+msgstr "Visualiser toutes les personnes"
+
+#: Menu.php:31
+msgid "See all Families"
+msgstr "Visualiser toutes les Familles"
+
+#: Menu.php:31 
+msgid "Sunday School Classes"
+msgstr "Classes d'&Eacute;cole du dimanche"
+
+#: Menu.php:31
+msgid "More info"
+msgstr "Plus d'info"
+
+#: MenuStrings.php:69 Include/Header-function.php:584 Menu.php:31
 msgid "Families"
 msgstr "Famille"
 
@@ -4295,10 +4392,9 @@ msgstr "Toile de soutien"
 msgid "Menu Options"
 msgstr "Options"
 
-#: MenuStrings.php:84
-#, fuzzy
+#: MenuStrings.php:84 Include/Header-function.php:22
 msgid "Edit Custom Family Fields"
-msgstr "Modifiez Champs Personnalis&eacute;s"
+msgstr "Modifiez Champs Personnalis&eacute;s de Familles"
 
 #: mrbs.php:26
 msgid "ChurchCRM MRBS Portal"
@@ -4454,6 +4550,14 @@ msgstr "Personne - Fiche Associ&eacute;e"
 msgid "Person Editor"
 msgstr "Gestionnaire des Personnes"
 
+#: PersonEditor.php:32
+msgid "Select Month"
+msgstr "S&eacute;lectionner un mois"
+
+#: PersonEditor.php:45
+msgid "Select Day"
+msgstr "S&eacute;lectionner un jour"
+
 #: PersonEditor.php:176
 msgid "You must enter a Last Name if no Family is selected."
 msgstr ""
@@ -4495,6 +4599,14 @@ msgstr "Créez une nouvelle famille (en utilisant le nom de famille)"
 msgid "Work / Other Email:"
 msgstr "Travail / Autres Email:"
 
+#: PersonEditor.php:
+msgid "Birth Month:"
+msgstr "Mois de Naissance:"
+
+#: PersonEditor.php:785
+msgid "Birth Day:"
+msgstr "Jour de Naissance:"
+
 #: PersonEditor.php:785
 msgid "Birth Date:"
 msgstr "Date de Naissance:"
@@ -4502,6 +4614,23 @@ msgstr "Date de Naissance:"
 #: PersonEditor.php:803
 msgid "Unk"
 msgstr "N/D"
+
+#: PersonEditor.php:803
+msgid "Family Info"
+msgstr "Information sur la famille"
+
+#: PersonEditor.php:803
+msgid "Personal Info"
+msgstr "Information personnelle"
+
+#: PersonEditor.php:803
+msgid "Contact Info"
+msgstr "Information sur la fiche contact"
+
+
+#: PersonEditor.php:803
+msgid "Membership Info"
+msgstr "Information sur le membre"
 
 #: PersonEditor.php:820
 msgid "Birth Year:"
@@ -4511,13 +4640,12 @@ msgstr "Ann&eacute;e de Naissance:"
 msgid "Must be four-digit format."
 msgstr "Vous devez saisir 4 chiffres."
 
-#: PersonEditor.php:822
-#, fuzzy
+#: PersonEditor.php:803
 msgid "Hide Age"
 msgstr "Cacher les D&eacute;tails"
 
-#: PersonEditor.php:839 PersonView.php:427
-#, fuzzy
+#: PersonEditor.php:839 
+#: PersonView.php:427
 msgid "Friend Date:"
 msgstr "Date de Mariage:"
 
@@ -4554,6 +4682,10 @@ msgstr "Cr&eacute;er vCard"
 msgid "Printable Page"
 msgstr "Page Imprimable"
 
+#: PersonView.php:213 PersonView.php:821
+msgid "List Members"
+msgstr "Liste des membres"
+
 #: PersonView.php:221 PersonView.php:829
 msgid "Make User"
 msgstr "Cr&eacute;er Utilisateur"
@@ -4577,11 +4709,40 @@ msgstr "Date de naissance:"
 
 #: PersonView.php:422
 msgid "Age:"
-msgstr "Age:"
+msgstr "&Acirc;ge:"
+
+#: PersonView.php:422
+msgid "About Me"
+msgstr "Mon profile"
+
+#: PersonView.php:422
+msgid "Person Profile"
+msgstr "Profile personnel"
+
+#: PersonView.php:423
+msgid "Timeline"
+msgstr "Chronologie"
+
+#: PersonView.php:424
+msgid "Assigned Properties"
+msgstr "Propri&eacute;t&eacute;s attribu&eacute;s"
+
+#: PersonView.php:425
+msgid "Volunteer opportunities"
+msgstr "Opportunités bénévoles"
 
 #: PersonView.php:610 PrintView.php:336
 msgid "Assigned Groups:"
-msgstr "Groupes Assign&eacute;s:"
+msgstr "Groupes Attribu&eacute;s:"
+
+#: PersonView.php:610 PrintView.php:336
+msgid "Assigned Groups"
+msgstr "Groupes Attribu&eacute;s"
+
+
+#: PersonView.php:610
+msgid "Change Role"
+msgstr "Changer le r&ocirc;le"
 
 #: PersonView.php:614
 msgid ""
@@ -4593,7 +4754,11 @@ msgstr ""
 
 #: PersonView.php:630 PrintView.php:348
 msgid "No group assignments."
-msgstr "Aucun groupe assign&eacute;."
+msgstr "Aucun groupe attribu&eacute;."
+
+#: PersonView.php:630 PrintView.php:348
+msgid "Update Properties"
+msgstr "Mise &agrave; jour des propri&eacute;t&eacute;s."
 
 #: PersonView.php:636 PrintView.php:354
 msgid "Group Name"
@@ -4603,9 +4768,9 @@ msgstr "Nom du groupe"
 msgid "View/Edit"
 msgstr "Voir/Modifier"
 
-#: PersonView.php:714
-msgid "Assign a New Group:"
-msgstr "Assign&eacute; un Nouveau Groupe:"
+#: PersonView.php:665
+msgid "Add a Note"
+msgstr "Ajouter une note"
 
 #: PersonView.php:731
 msgid "(Person will be assigned to the Group in the Default Role.)"
@@ -4638,9 +4803,8 @@ msgstr ""
 "&agrave; la famille."
 
 #: PersonView.php:868
-#, fuzzy
 msgid "Edit \"Why Came\" Notes"
-msgstr "Modifier cette Note"
+msgstr "Editer la note \"Raison de ma venue\""
 
 #: PledgeDelete.php:21
 #, fuzzy
@@ -4963,7 +5127,7 @@ msgstr "Non, maintenir cette tâche"
 
 #: QueryList.php:21
 msgid "Query Listing"
-msgstr "Liste des Requ&ecirc;te s"
+msgstr "Menu Requ&ecirc;tes"
 
 #: QueryList.php:32
 msgid "Run a Free-Text Query"
@@ -5076,7 +5240,7 @@ msgstr "Rapport Rappel Pledge"
 
 #: ReportList.php:20
 msgid "Report Menu"
-msgstr "Menu des Rapports"
+msgstr "Menu Rapports"
 
 #: ReportList.php:31
 msgid "Reports on groups and roles"
@@ -5350,7 +5514,7 @@ msgstr "Date d'Entr&eacute;e"
 msgid "Add a New Family Record"
 msgstr "Ajouter Nouvelle Famille"
 
-#: SelectList.php:1435 SelectListFormatted.php:1537
+#: SelectList.php:1435 SelectListFormatted.php:1537 Menu.php:32
 msgid "Family Name"
 msgstr "Nom de Famille"
 
@@ -5375,7 +5539,7 @@ msgstr "Page Imprimable"
 #: UserEditor.php:545
 #, fuzzy
 msgid "Save Settings"
-msgstr "Sauver les Changements"
+msgstr "Enregistrer les Changements"
 
 #: SettingsIndividual.php:93
 #, fuzzy
@@ -5481,6 +5645,35 @@ msgstr "Personne Autoriser &agrave; Cr&eacute;er des Utilisateurs:"
 #: UserEditor.php:359 Include/Header-function.php:455
 msgid "User:"
 msgstr "Utilisateur:"
+
+#: Include/Header-function.php:456
+msgid "Change Password"
+msgstr "Mot de passe"
+
+#: Include/Header-function.php:457
+msgid "My Settings"
+msgstr "Param&egrave;tres"
+
+#: Include/Header-function.php:458
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: Include/Header-function.php:458
+msgid "Calendar"
+msgstr "Calendrier"
+
+#: Include/Header-function.php:459
+msgid "Home"
+msgstr "Accueil"
+
+#: Include/Header-function.php:470 
+msgid "Sunday School"
+msgstr "&Eacute;cole du dimanche"
+
+
+#: Include/Header-function.php:460 MenuStrings.php:20
+msgid "Add New Person"
+msgstr "Ajouter Nouvelle Personne"
 
 #: UserEditor.php:372
 #, fuzzy
