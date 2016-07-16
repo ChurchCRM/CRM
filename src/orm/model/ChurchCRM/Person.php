@@ -3,7 +3,6 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Person as BasePerson;
-use ChurchCRM\Note;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
