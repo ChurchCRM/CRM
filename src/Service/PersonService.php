@@ -3,21 +3,16 @@
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 require_once dirname(__FILE__) . '/../orm/conf/config.php';
 
-require_once "NoteService.php";
-
-use ChurchCRM\PersonQuery;
 use ChurchCRM\Person;
 use ChurchCRM\ListOptionQuery;
 
 class PersonService
 {
   private $baseURL;
-  private $noteService;
 
   public function __construct()
   {
     $this->baseURL = $_SESSION['sRootPath'];
-    $this->noteService = new NoteService();
   }
 
   function get($id)
@@ -224,9 +219,8 @@ class PersonService
     $person->setFamId($user->famID);
     $person->setFmrId($user->per_fmr_id);
     $person->setEnteredBy(FilterInput($_SESSION['iUserID']));
-    $person->setDateEntered(date('Y-m-d', $user->registered));
+    $person->setDateEntered(date('Y-m-d h:i:s', $user->registered));
     $person->save();
-    $this->noteService->addNote($person->getId(), 0, 0, "Created", "create");
     return $person->getId();
 
   }

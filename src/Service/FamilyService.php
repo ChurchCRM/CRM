@@ -11,12 +11,10 @@ class FamilyService
 {
 
   private $baseURL;
-  private $noteService;
 
   public function __construct()
   {
     $this->baseURL = $_SESSION['sRootPath'];
-    $this->noteService = new NoteService();
   }
 
   function getViewURI($Id)
@@ -164,10 +162,9 @@ class FamilyService
     $family->setCountry("USA");
     $family->setZip($user->location->zip);
     $family->setHomephone($user->phone);
-    $family->setDateEntered(date('Y-m-d', $user->registered));
+    $family->setDateEntered(date('Y-m-d h:i:s', $user->registered));
     $family->setEnteredBy($_SESSION['iUserID']);
     $family->save();
-    $this->noteService->addNote(0, $family->getId(), 0, "Created", "create");
     return $family->getId();
   }
 }
