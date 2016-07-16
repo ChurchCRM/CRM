@@ -339,8 +339,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             <!-- /.timeline-label -->
 
             <!-- timeline item -->
-            <?php
-            foreach ($timelineService->getForPerson($iPersonID) as $item) { ?>
+            <?php foreach ($timelineService->getForPerson($iPersonID) as $item) { ?>
               <li>
                 <!-- timeline icon -->
                 <i class="fa <?= $item['style'] ?>"></i>
