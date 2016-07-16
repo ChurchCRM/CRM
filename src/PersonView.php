@@ -27,6 +27,11 @@ use ChurchCRM\PersonQuery;
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
 
+// Set the page title and include HTML header
+
+$sPageTitle = "Person Profile";
+require "Include/Header.php";
+
 // Get the person ID from the querystring
 $iPersonID = FilterInput($_GET["PersonID"], 'int');
 
@@ -64,10 +69,6 @@ extract(mysql_fetch_array($rsPerson));
 
 $person = PersonQuery::create()->findPk($iPersonID);
 
-// Set the page title and include HTML header
-
-$sPageTitle = "Person Profile";
-require "Include/Header.php";
 if ($per_ID == $iPersonID) {
 
 // Get the lists of custom person fields
@@ -126,16 +127,6 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp)) {
   $aSecurityType[$lst_OptionID] = $lst_OptionName;
 }
 
-if ($fam_ID != "") {
-// Other family members by age
-  $sSQL = "SELECT per_ID, per_Title, per_FirstName, per_LastName, per_Suffix, per_Gender, per_Email,
-	per_BirthMonth, per_BirthDay, per_BirthYear, per_Flags, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole
-	FROM person_per
-	LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
-	LEFT JOIN list_lst fmr ON per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2 where per_fam_ID = " . $fam_ID . " and per_Id != " . $per_ID . " order by per_BirthYear";
-  $rsOtherFamily = RunQuery($sSQL);
-}
-
 $dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, "-", $per_Flags);
 
 $sFamilyInfoBegin = "<span style=\"color: red;\">";
@@ -188,7 +179,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img src="<?= $personService->getPhoto($iPersonID) ?>" alt="" class="profile-user-img img-responsive img-circle"/>
+        <img src="<?= $person->getPhoto($sRootPath, $sEnableGravatarPhotos)?>" alt="" class="profile-user-img img-responsive img-circle"/>
 
         <h3 class="profile-username text-center"><?= getGenderIcon($per_Gender) . " " . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
 
@@ -384,7 +375,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         </div>
         <div role="tab-pane fade" class="tab-pane" id="family">
 
-          <?php if (mysql_num_rows($rsOtherFamily) != 0) { ?>
+          <?php if ($person->getFamId() != "") { ?>
           <table class="table user-list table-hover">
             <thead>
             <tr>
@@ -396,22 +387,21 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             </tr>
             </thead>
             <tbody>
-            <?php while ($Row = mysql_fetch_array($rsOtherFamily)) {
-              $tmpPersonId = $Row["per_ID"];
+            <?php foreach($person->getOtherFamilyMembers() as $familyMember) {
+              $tmpPersonId = $familyMember->getId();
               ?>
               <tr>
                 <td>
-                  <img src="<?= $personService->getPhoto($tmpPersonId) ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
-                  <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $Row["per_FirstName"] . " " . $Row["per_LastName"] ?> </a>
+                  <img src="<?= $familyMember->getPhoto($sRootPath, $sEnableGravatarPhotos) ?>" width="40" height="40" class="img-circle img-bordered-sm"/> <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
                 </td>
                 <td class="text-center">
-                  <?= getRoleLabel($Row["sFamRole"]) ?>
+                  <?= $familyMember->getFamilyRole() ?>
                 </td>
                 <td>
-                  <?= FormatBirthDate($Row["per_BirthYear"], $Row["per_BirthMonth"], $Row["per_BirthDay"], "-", $Row["per_Flags"]) ?>
+                  <?= $familyMember->getBirthDate() ?>
                 </td>
                 <td>
-                  <?php $tmpEmail = $Row["per_Email"];
+                  <?php $tmpEmail = $familyMember->getEmail();
                   if ($tmpEmail != "") { ?>
                     <a href="#"><a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a></a>
                   <?php } ?>

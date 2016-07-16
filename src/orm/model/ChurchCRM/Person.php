@@ -2,6 +2,7 @@
 
 namespace ChurchCRM;
 
+use ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\Base\UserQuery;
 use Propel\Runtime\Connection\ConnectionInterface;
@@ -25,7 +26,23 @@ class Person extends BasePerson
 
   function hideAge()
   {
-    return $this->getFlags() == 1;
+    return $this->getFlags() == 1 || $this->getBirthYear() == "" || $this->getBirthYear() == "0";
+  }
+
+  function getBirthDate()
+  {
+    $birthYear  = $this->getBirthYear();
+    if ($this->hideAge() ) {
+      $birthYear = 1900;
+    }
+
+    $date = strtotime($this->getBirthDay() . "-" . $this->getBirthMonth() . "-" . $birthYear);
+
+    if (!$this->hideAge() ) {
+      return date("d/m/Y", $date);
+    } else {
+      return date("d/m", $date);
+    }
   }
 
   function getViewURI($baseURL, $addToCart = false)
@@ -49,17 +66,56 @@ class Person extends BasePerson
     return $this->getGender() == 2;
   }
 
-  function getDefaultPhoto($baseURL, $famRole)
+  function getUploadedPhoto($baseURL)
   {
-    $photoFile = $baseURL . "/Images/Person/man-128.png";
-    if ($this->isMale() && $famRole == "Child") {
-      $photoFile = $baseURL . "/Images/Person/kid_boy-128.png";
-    } else if ($this->isFemale() && $famRole != "Child") {
-      $photoFile = $baseURL . "/Images/Person/woman-128.png";
-    } else if ($this->isFemale() && $famRole == "Child") {
-      $photoFile = $baseURL . "/Images/Person/kid_girl-128.png";
+    $validextensions = array("jpeg", "jpg", "png");
+    $hasFile = false;
+    while (list(, $ext) = each($validextensions)) {
+      $photoFile = dirname(__FILE__) . "/../../Images/Person/thumbnails/" . $this->getId() . "." . $ext;
+      if (file_exists($photoFile)) {
+        $hasFile = true;
+        $photoFile = $baseURL . "/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
+        break;
+      }
     }
 
+    if ($hasFile) {
+      return $photoFile;
+    } else {
+      return "";
+    }
+  }
+
+  function getPhoto($baseURL, $sEnableGravatarPhotos)
+  {
+    $photoFile = $this->getUploadedPhoto($baseURL);
+    if ($photoFile == "") {
+      if ($sEnableGravatarPhotos) {
+        $photoFile = $this->getGravatar();
+      }
+      if ($photoFile == "") {
+        $photoFile = $this->getDefaultPhoto($baseURL);
+      }
+    }
+    return $photoFile;
+  }
+
+  function getFamilyRole() {
+    $familyRole =  ListOptionQuery::create()->filterById(2)->filterByOptionId($this->getFmrId())->findOne();
+    return $familyRole;
+  }
+
+  function getDefaultPhoto($baseURL)
+  {
+    $photoFile = $baseURL . "/Images/Person/man-128.png";
+    $isChild = "Child" == $this->getFamilyRole();
+    if ($this->isMale() && $isChild) {
+      $photoFile = $baseURL . "/Images/Person/kid_boy-128.png";
+    } else if ($this->isFemale() && $isChild) {
+      $photoFile = $baseURL . "/Images/Person/kid_girl-128.png";
+    } else if ($this->isFemale() && !$isChild) {
+      $photoFile = $baseURL . "/Images/Person/woman-128.png";
+    }
     return $photoFile;
   }
 
@@ -109,9 +165,22 @@ class Person extends BasePerson
     $note->save();
   }
 
-  public function isUser() {
+  public function isUser()
+  {
     $user = UserQuery::create()->findPk($this->getId());
     return !is_null($user);
+  }
+
+  public function getOtherFamilyMembers()
+  {
+    $familyMembers = $this->getFamily()->getPeople();
+    $otherFamilyMembers = array();
+    foreach ($familyMembers as $member) {
+      if ($member->getId() != $this->getId()) {
+        array_push($otherFamilyMembers, $member);
+      }
+    }
+    return $otherFamilyMembers;
   }
 
 }
