@@ -1,7 +1,6 @@
 <?php
 
 require_once "NoteService.php";
-require_once "PersonService.php";
 require_once "EventService.php";
 
 use ChurchCRM\NoteQuery;
@@ -12,12 +11,10 @@ class TimelineService
   private $baseURL;
   private $currentUser;
   private $currentUserIsAdmin;
-  private $personService;
   private $eventService;
 
   public function __construct()
   {
-    $this->personService = new PersonService();
     $this->eventService = new EventService();
     $this->currentUser = $_SESSION['iUserID'];
     $this->currentUserIsAdmin = $_SESSION['bAdmin'];
