@@ -17,6 +17,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+use ChurchCRM\NoteQuery;
+
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bNotes'])
@@ -51,9 +53,8 @@ elseif ($nte_fam_ID > 0)
 //Do we have confirmation?
 if (isset($_GET["Confirmed"]))
 {
-	//Delete the specified Person record
-	$sSQL = "DELETE FROM note_nte WHERE nte_ID = " . $iNoteID;
-	RunQuery($sSQL);
+  $note = NoteQuery::create()->findPk($iNoteID);
+  $note->delete();
 
 	//Send back to the page they came from
 	Redirect($sReroute);
