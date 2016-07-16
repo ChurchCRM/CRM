@@ -1,18 +1,23 @@
 <?php
 
-// require_once (dirname(__FILE__).DIRECTORY_SEPARATOR."/../vendor/autoload.php");
+require_once dirname(__FILE__) . '/../vendor/autoload.php';
+require_once dirname(__FILE__) . '/../orm/conf/config.php';
 
-// require_once "../orm/model/ChurchCRM/members/PersonQuery.php";
+require "NoteService.php";
 
-// use ChurchCRM\members\PersonQuery as PersonQuery;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\Person;
+use ChurchCRM\ListOptionQuery;
 
 class PersonService
 {
   private $baseURL;
+  private $noteService;
 
   public function __construct()
   {
     $this->baseURL = $_SESSION['sRootPath'];
+    $this->noteService = new NoteService();
   }
 
   function get($id)
@@ -195,81 +200,34 @@ class PersonService
   function insertPerson($user)
   {
     requireUserGroupMembership("bAddRecords");
-    $sSQL = "INSERT INTO person_per
-    (per_Title,
-    per_FirstName,
-    per_MiddleName,
-    per_LastName,
-    per_Suffix,
-    per_Gender,
-    per_Address1,
-    per_Address2,
-    per_City,
-    per_State,
-    per_Zip,
-    per_Country,
-    per_HomePhone,
-    per_WorkPhone,
-    per_CellPhone,
-    per_Email,
-    per_WorkEmail,
-    per_BirthMonth,
-    per_BirthDay,
-    per_BirthYear,
-    per_Envelope,
-    per_fam_ID,
-    per_fmr_ID,
-    per_MembershipDate,
-    per_cls_ID,
-    per_DateEntered,
-    per_EnteredBy,
-    per_FriendDate,
-    per_Flags )
-    VALUES ('" .
-      FilterInput($user->name->title) . "','" .
-      FilterInput($user->name->first) . "',NULL,'" .
-      FilterInput($user->name->last) . "',NULL,'";
+    $person = new Person();
+    $person->setTitle($user->name->title);
+    $person->setFirstName($user->name->first);
+    $person->setLastName($user->name->last);
     if (FilterInput($user->gender) == "male") {
-      $sSQL .= "1";
+      $person->setGender(1);
     } else {
-      $sSQL .= "2";
+      $person->setGender(2);
     }
-    $sSQL .= FilterInput($user->gender) . "','" .
-      FilterInput($user->location->street) . "',\"\",'" .
-      FilterInput($user->location->city) . "','" .
-      FilterInput($user->location->state) . "','" .
-      FilterInput($user->location->zip) . "','USA','" .
-      FilterInput($user->phone) . "',NULL,'" .
-      FilterInput($user->cell) . "','" .
-      FilterInput($user->email) . "',NULL," .
-      date('m', $user->dob) . "," .
-      date('d', $user->dob) . "," .
-      date('Y', $user->dob) . ",NULL,'" .
-      FilterInput($user->famID) . "'," .
-      FilterInput($user->per_fmr_id) . "," . "\"" .
-      date('Y-m-d', $user->registered) .
-      "\"" . ",1,'" .
-      date("YmdHis") .
-      "'," .
-      FilterInput($_SESSION['iUserID']) . ",";
 
-    if (isset($dFriendDate) && strlen($dFriendDate) > 0)
-      $sSQL .= "\"" . $dFriendDate . "\"";
-    else
-      $sSQL .= "NULL";
-    $sSQL .= ", 0";
-    $sSQL .= ")";
-    $bGetKeyBack = True;
-    RunQuery($sSQL);
-    // If this is a new person, get the key back and insert a blank row into the person_custom table
-    if ($bGetKeyBack) {
-      $sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
-      $rsPersonID = RunQuery($sSQL);
-      extract(mysql_fetch_array($rsPersonID));
-      $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('" . $iPersonID . "')";
-      RunQuery($sSQL);
-    }
-    return $iPersonID;
+    $person->setAddress1($user->location->street);
+    $person->setCity($user->location->city);
+    $person->setState($user->location->state);
+    $person->setZip($user->location->zip);
+    $person->setCountry("USA");
+    $person->setHomePhone($user->phone);
+    $person->setCellPhone($user->cell);
+    $person->setEmail($user->email);
+    $person->setBirthDay(date('d', $user->dob));
+    $person->setBirthMonth(date('m', $user->dob));
+    $person->setBirthYear(date('Y', $user->dob));
+    $person->setFamId($user->famID);
+    $person->setFmrId($user->per_fmr_id);
+    $person->setEnteredBy(FilterInput($_SESSION['iUserID']));
+    $person->setDateEntered(date('Y-m-d', $user->registered));
+    $person->save();
+    $this->noteService->addNote($person->getId(), 0, 0, "Created", "create");
+    return $person->getId();
 
   }
 
