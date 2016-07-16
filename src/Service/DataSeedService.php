@@ -22,8 +22,6 @@ class DataSeedService
   function generateFamilies($families)
   {
     requireUserGroupMembership("bAdmin");
-    $PersonService = new PersonService();
-    $FamilyService = new FamilyService();
     $kidsPerFamily = 3;
     $kidsdev = 3;
     $personPointer = 1;
@@ -67,7 +65,6 @@ class DataSeedService
       $this->savePersonImage($spouse, $spouseID);
       $rTotalSpouse += 1;
 
-      #$thisFamChildren = stats_rand_gen_normal ($kidsPerFamily, $stddev);
       $thisFamChildren = rand($kidsPerFamily - $kidsdev, $kidsPerFamily + $kidsdev);
 
       for ($y = 0; $y < $thisFamChildren; $y++) {
@@ -134,7 +131,7 @@ class DataSeedService
     $person->setBirthYear(date('Y', $user->dob));
     $person->setFamId($user->famID);
     $person->setFmrId($user->per_fmr_id);
-    $person->setEnteredBy(FilterInput($_SESSION['iUserID']));
+    $person->setEnteredBy($_SESSION['iUserID']);
     $person->setDateEntered(date('Y-m-d h:i:s', $user->registered));
     $person->save();
     return $person->getId();
