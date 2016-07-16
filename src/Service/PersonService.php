@@ -3,7 +3,6 @@
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 require_once dirname(__FILE__) . '/../orm/conf/config.php';
 
-use ChurchCRM\Person;
 use ChurchCRM\ListOptionQuery;
 
 class PersonService
@@ -190,39 +189,6 @@ class PersonService
     }
 
     return $photoFile;
-  }
-
-  function insertPerson($user)
-  {
-    requireUserGroupMembership("bAddRecords");
-    $person = new Person();
-    $person->setTitle($user->name->title);
-    $person->setFirstName($user->name->first);
-    $person->setLastName($user->name->last);
-    if (FilterInput($user->gender) == "male") {
-      $person->setGender(1);
-    } else {
-      $person->setGender(2);
-    }
-
-    $person->setAddress1($user->location->street);
-    $person->setCity($user->location->city);
-    $person->setState($user->location->state);
-    $person->setZip($user->location->zip);
-    $person->setCountry("USA");
-    $person->setHomePhone($user->phone);
-    $person->setCellPhone($user->cell);
-    $person->setEmail($user->email);
-    $person->setBirthDay(date('d', $user->dob));
-    $person->setBirthMonth(date('m', $user->dob));
-    $person->setBirthYear(date('Y', $user->dob));
-    $person->setFamId($user->famID);
-    $person->setFmrId($user->per_fmr_id);
-    $person->setEnteredBy(FilterInput($_SESSION['iUserID']));
-    $person->setDateEntered(date('Y-m-d h:i:s', $user->registered));
-    $person->save();
-    return $person->getId();
-
   }
 
   function getPeopleEmailsAndGroups()

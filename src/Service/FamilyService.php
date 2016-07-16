@@ -1,12 +1,5 @@
 <?php
 
-require_once dirname(__FILE__) . '/../vendor/autoload.php';
-require_once dirname(__FILE__) . '/../orm/conf/config.php';
-
-require_once "NoteService.php";
-
-use ChurchCRM\Family;
-
 class FamilyService
 {
 
@@ -151,22 +144,6 @@ class FamilyService
     RunQuery($sSQL);
   }
 
-  function insertFamily($user)
-  {
-    requireUserGroupMembership("bAddRecords");
-    $family = new Family();
-    $family->setName($user->name->last);
-    $family->setAddress1($user->location->street);
-    $family->setCity($user->location->city);
-    $family->setState($user->location->state);
-    $family->setCountry("USA");
-    $family->setZip($user->location->zip);
-    $family->setHomephone($user->phone);
-    $family->setDateEntered(date('Y-m-d h:i:s', $user->registered));
-    $family->setEnteredBy($_SESSION['iUserID']);
-    $family->save();
-    return $family->getId();
-  }
 }
 
 ?>
