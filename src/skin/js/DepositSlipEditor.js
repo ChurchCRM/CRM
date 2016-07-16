@@ -7,7 +7,7 @@ function initDepositSlipEditor()
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             '<tr>' +
             '<td>Date:</td>' +
-            '<td>' + d.Date + '</td>' +
+            '<td>' + moment(d.Date).format("MM-DD-YYYY") + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td>Fiscal Year:</td>' +

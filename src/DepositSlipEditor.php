@@ -23,7 +23,6 @@ require_once 'orm/conf/config.php';
 use ChurchCRM\PledgeQuery;
 use ChurchCRM\DepositQuery;
 
-$financialService = new FinancialService();
 $iDepositSlipID = 0;
 $thisDeposit = 0;
 
@@ -58,10 +57,10 @@ $sPageTitle = $thisDeposit->getType() . " " . gettext("Deposit Slip Number: ") .
 
 //Is this the second pass?
 if (isset($_POST["DepositSlipLoadAuthorized"])) {
-  $financialService->loadAuthorized($iDepositSlipID);
+  $thisDeposit->loadAuthorized();
 }
 else if (isset($_POST["DepositSlipRunTransactions"])) {
-  $financialService->runTransactions($iDepositSlipID);
+  $thisDeposit->runTransactions();
 }
 
 $_SESSION['iCurrentDeposit'] = $iDepositSlipID;  // Probably redundant
@@ -106,7 +105,7 @@ require "Include/Header.php";
               <input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
             </div>
             <div class="col-lg-6" style="text-align:center">
-              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location = 'api/deposits/<?php echo ($thisDeposit->getId()) ?>/pdf';">
+              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location = window.CRM.root + '/api/deposits/<?php echo ($thisDeposit->getId()) ?>/pdf';">
             </div>
           </div>
           <?php
@@ -129,11 +128,11 @@ require "Include/Header.php";
           <ul style="margin:0px; border:0px; padding:0px;">
           <?php
           // Get deposit totals
-          echo "<li><b>TOTAL (".$thisDeposit->getTotalamount(). "):</b>".$thisDeposit->dep_Total."</li>";
-          if ($thisDeposit->getTotalamount())
-          echo "<li><b>CASH (" . $thisDeposit->getTotalamount() . "):</b>" . $thisDeposit->getTotalamount() . "</li>";
-          if ($thisDeposit->getTotalamount())
-          echo "<li><b>CHECKS (" . $thisDeposit->getTotalamount() . "):</b>". $thisDeposit->getTotalamount() . " </li>";
+          echo "<li><b>TOTAL (".$thisDeposit->getPledges()->count(). "):</b> $".$thisDeposit->getVirtualColumn("totalAmount")."</li>";
+          if ($thisDeposit->getCountChecks())
+            echo "<li><b>CASH (" . $thisDeposit->getCountChecks() . "):</b> $" . $thisDeposit->getTotalChecks()."</li>";
+          if ($thisDeposit->getCountCash())
+            echo "<li><b>CHECKS (" . $thisDeposit->getCountCash() . "):</b> $". $thisDeposit->getTotalCash() . " </li>";
           ?>
             </ul>
         </div>
@@ -141,21 +140,13 @@ require "Include/Header.php";
           <canvas id="fund-donut" style="height:250px"></canvas>
           <ul style="margin:0px; border:0px; padding:0px;">
           <?php
-          foreach ($thisDeposit->funds as $fund)
+          foreach ($thisDeposit->getFundTotals() as $fund)
           {
-            echo "<li><b>". $fund->fun_Name . "</b>:" . $fund->fundTotal."</li>";
+            echo "<li><b>". $fund->Name . "</b>: $" . $fund->Total."</li>";
           }
           ?>
         </div>
-        
-        
-        
-         
-       
-
-
       </div>
-
     </div>
   </div>
 </div>
@@ -223,13 +214,13 @@ require "Include/Header.php";
 var paymentData = <?php  echo $thisDeposit->getPledgesJoinAll()->toJSON();?>;
 var typePieData = [
   {
-    value: <?= $thisDeposit->getTotalamount() ? $thisDeposit->getTotalamount() : "0" ?> , 
+    value: <?= $thisDeposit->getTotalamount() ? $thisDeposit->getTotalCash() : "0" ?> , 
     color: "#197A05", 
     highlight: "#4AFF23", 
     label: "Cash" 
   },
   {
-    value:  <?= $thisDeposit->getTotalamount() ?  $thisDeposit->getTotalamount() : "0" ?>, 
+    value:  <?= $thisDeposit->getTotalamount() ?  $thisDeposit->getTotalChecks() : "0" ?>, 
     color: "#003399", 
     highlight: "#3366ff", 
     label: "Checks" 

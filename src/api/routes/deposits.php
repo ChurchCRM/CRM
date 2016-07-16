@@ -10,12 +10,12 @@ $app->group('/deposits', function () {
   });
 
   $this->get('', function ($request, $response, $args) {
-    echo json_encode(["deposits" => $this->FinancialService->getDeposits()]);
+    echo \ChurchCRM\Base\DepositQuery::create()->find()->toJSON();
   });
 
   $this->get('/{id:[0-9]+}', function ($request, $response, $args) {
     $id = $args['id'];
-    echo json_encode(["deposits" => $this->FinancialService->getDeposits($id)]);
+    echo \ChurchCRM\Base\DepositQuery::create()->findOneById($id)->toJSON();
   });
 
   $this->post('/{id:[0-9]+}', function ($request, $response, $args) {
@@ -44,7 +44,7 @@ $app->group('/deposits', function () {
 
   $this->delete('/{id:[0-9]+}', function ($request, $response, $args) {
     $id = $args['id'];
-    $this->FinancialService->deleteDeposit($id);
+    \ChurchCRM\Base\DepositQuery::create()->findOneById($id)->delete();
     echo json_encode(["success" => true]);
   });
 

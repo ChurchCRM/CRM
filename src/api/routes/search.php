@@ -22,7 +22,19 @@ $app->get('/search/{query}', function ($request, $response, $args) {
   }
 
   try {
-    array_push($resultsArray, $this->FinancialService->getDepositJSON($this->FinancialService->searchDeposits($query)));
+    $q= \ChurchCRM\DepositQuery::create();
+    $q ->filterByComment("%$query%",  Propel\Runtime\ActiveQuery\Criteria::LIKE) 
+         ->_or()
+         ->filterById($query)
+        ///->filterbyDate($query)
+        ->_or()
+        ->usePledgeQuery()
+          ->filterByCheckno("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+        ->endUse()
+        ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', "displayName")
+        ->withColumn('CONCAT("DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', "uri")
+        ->limit(5);
+    array_push($resultsArray, $q->find()->toJSON());
   } catch (Exception $e) {
   }
 
