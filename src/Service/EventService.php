@@ -1,17 +1,10 @@
 <?php
 
-use ChurchCRM\EventAttendQuery;
-
 class EventService
 {
 
   function getEventsByPerson($id)
   {
-    //$events = EventAttendQuery::create()->filterByPersonId($id)
-    //  ->innerJoinWith(Event)
-    //  ->orderByEventId()
-    //  ->find();
-
     $sSQL = "SELECT event.event_title, event.event_desc, event.event_start, event.event_end
             FROM events_event AS event, event_attend
               WHERE event.event_id = event_attend.event_id

@@ -17,11 +17,49 @@ use ChurchCRM\Base\Note as BaseNote;
 class Note extends BaseNote
 {
 
-  function isPrivate() {
+  function getEditLink($rootPath)
+  {
+    $url = $rootPath . "/NoteEditor.php?NoteID=" . $this->getId() . "&";
+
+    if ($this->getPerId() != "") {
+      $url = $url . "PersonID=" . $this->getPerId();
+    } else {
+      $url = $url . "FamilyID=" . $this->getFamId();
+    }
+    return $url;
+  }
+
+  function getDeleteLink($rootPath)
+  {
+    return $rootPath . "/NoteDelete.php?NoteID=" . $this->getId();
+  }
+
+
+  function getDisplayEditedDate()
+  {
+    if ($this->getDateLastEdited() != "") {
+      return $this->getDateLastEdited('Y-m-d h:i:s');
+    } else {
+      return $this->getDateEntered('Y-m-d h:i:s');
+    }
+  }
+
+  function getDisplayEditedBy()
+  {
+    if ($this->getEditedBy() != "") {
+      return $this->getEditedBy();
+    } else {
+      return $this->getEnteredBy();
+    }
+  }
+
+  function isPrivate()
+  {
     return $this->getPrivate() != "0";
   }
 
-  function isVisable($personId) {
+  function isVisable($personId)
+  {
     return !$this->isPrivate() || $this->getPrivate() == $personId;
   }
 

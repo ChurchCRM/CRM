@@ -17,7 +17,6 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Person extends BasePerson
 {
-
   function getFullName()
   {
     return $this->getFirstName() . " " . $this->getLastName();

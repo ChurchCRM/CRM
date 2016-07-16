@@ -1,7 +1,6 @@
 <?php
 
 require_once "NoteService.php";
-require_once "PersonService.php";
 require_once "EventService.php";
 
 use ChurchCRM\NoteQuery;
@@ -9,27 +8,28 @@ use ChurchCRM\PersonQuery;
 
 class TimelineService
 {
-
-  private $personService;
+  private $baseURL;
+  private $currentUser;
+  private $currentUserIsAdmin;
   private $eventService;
 
   public function __construct()
   {
-    $this->personService = new PersonService();
     $this->eventService = new EventService();
+    $this->currentUser = $_SESSION['iUserID'];
+    $this->currentUserIsAdmin = $_SESSION['bAdmin'];
+    $this->baseURL = $_SESSION['sRootPath'];
   }
 
   function getForFamily($familyID)
   {
     $timeline = array();
-    $rawNotes = NoteQuery::create()->findByFamId($familyID);
-    $notes = $this->convertNotes($rawNotes, $_SESSION['bAdmin']);
-    foreach ($notes as $note) {
-      $item = $this->createTimeLineItem($note["type"], $note["lastUpdateDatetime"],
-        "by " . $note["lastUpdateByName"], "", $note["text"],
-        "NoteEditor.php?FamilyID=" . $familyID . "&NoteID=" . $note["id"],
-        "NoteDelete.php?NoteID=" . $note["id"]);
-      $timeline[$item["key"]] = $item;
+    $familyNotes = NoteQuery::create()->findByFamId($familyID);
+    foreach ($familyNotes as $dbNote) {
+      $item = $this->noteToTimelineItem($dbNote);
+      if (!is_null($item)) {
+        $timeline[$item["key"]] = $item;
+      }
     }
 
     krsort($timeline);
@@ -40,20 +40,17 @@ class TimelineService
     }
 
     return $sortedTimeline;
-
   }
-  
+
   function getForPerson($personID)
   {
     $timeline = array();
-    $rawNotes = NoteQuery::create()->findByPerId($personID);
-    $notes = $this->convertNotes($rawNotes, $_SESSION['bAdmin']);
-    foreach ($notes as $note) {
-      $item = $this->createTimeLineItem($note["type"], $note["lastUpdateDatetime"],
-        "by " . $note["lastUpdateByName"], "", $note["text"],
-        "NoteEditor.php?PersonID=" . $personID . "&NoteID=" . $note["id"],
-        "NoteDelete.php?NoteID=" . $note["id"]);
-      $timeline[$item["key"]] = $item;
+    $personNotes = NoteQuery::create()->findByPerId($personID);
+    foreach ($personNotes as $dbNote) {
+      $item = $this->noteToTimelineItem($dbNote);
+      if (!is_null($item)) {
+        $timeline[$item["key"]] = $item;
+      }
     }
 
     $events = $this->eventService->getEventsByPerson($personID);
@@ -67,13 +64,29 @@ class TimelineService
 
     $sortedTimeline = array();
     foreach ($timeline as $date => $item) {
-      array_push($sortedTimeline,  $item);
+      array_push($sortedTimeline, $item);
     }
 
     return $sortedTimeline;
-
   }
 
+
+  function noteToTimelineItem($dbNote)
+  {
+    $item = NULL;
+    if ($this->currentUserIsAdmin || $dbNote->isVisable($this->currentUser)) {
+      $displayEditedBy = "unknown?";
+      $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
+      if ($editor != null) {
+        $displayEditedBy = $editor->getFullName();
+      }
+      $item = $this->createTimeLineItem($dbNote->getType(), $dbNote->getDisplayEditedDate(),
+        "by " . $displayEditedBy, "", $dbNote->getText(),
+        $dbNote->getEditLink($this->baseURL), $dbNote->getDeleteLink($this->baseURL));
+
+    }
+    return $item;
+  }
 
   function createTimeLineItem($type, $datetime, $header, $headerLink, $text, $editLink = "", $deleteLink = "")
   {
@@ -102,10 +115,8 @@ class TimelineService
     $item["headerLink"] = $headerLink;
     $item["text"] = $text;
 
-    $itemTime = strtotime($datetime);
-
     $item["datetime"] = $datetime;
-    $item["key"] = $itemTime;
+    $item["key"] = $datetime;
 
     return $item;
   }
