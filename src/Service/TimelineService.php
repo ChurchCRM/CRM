@@ -29,15 +29,8 @@ class TimelineService
     $timeline = array();
     $familyNotes = NoteQuery::create()->findByFamId($familyID);
     foreach ($familyNotes as $dbNote) {
-      if ($this->currentUserIsAdmin || $dbNote->isVisable($this->currentUser)) {
-        $displayEditedBy = "unknown?";
-        $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
-        if ($editor != null) {
-          $displayEditedBy = $editor->getFullName();
-        }
-        $item = $this->createTimeLineItem($dbNote->getType(), $dbNote->getDisplayEditedDate(),
-          "by " . $displayEditedBy, "", $dbNote->getText(),
-          $dbNote->getEditLink($this->baseURL), $dbNote->getDeleteLink($this->baseURL));
+      $item = $this->noteToTimelineItem($dbNote);
+      if (!is_null($item)) {
         $timeline[$item["key"]] = $item;
       }
     }
@@ -50,7 +43,6 @@ class TimelineService
     }
 
     return $sortedTimeline;
-
   }
 
   function getForPerson($personID)
@@ -58,15 +50,8 @@ class TimelineService
     $timeline = array();
     $personNotes = NoteQuery::create()->findByPerId($personID);
     foreach ($personNotes as $dbNote) {
-      if ($this->currentUserIsAdmin || $dbNote->isVisable($this->currentUser)) {
-        $displayEditedBy = "unknown?";
-        $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
-        if ($editor != null) {
-          $displayEditedBy = $editor->getFullName();
-        }
-        $item = $this->createTimeLineItem($dbNote->getType(), $dbNote->getDisplayEditedDate(),
-          "by " . $displayEditedBy, "", $dbNote->getText(),
-          $dbNote->getEditLink($this->baseURL), $dbNote->getDeleteLink($this->baseURL));
+      $item = $this->noteToTimelineItem($dbNote);
+      if (!is_null($item)) {
         $timeline[$item["key"]] = $item;
       }
     }
@@ -86,7 +71,24 @@ class TimelineService
     }
 
     return $sortedTimeline;
+  }
 
+
+  function noteToTimelineItem($dbNote)
+  {
+    $item = NULL;
+    if ($this->currentUserIsAdmin || $dbNote->isVisable($this->currentUser)) {
+      $displayEditedBy = "unknown?";
+      $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
+      if ($editor != null) {
+        $displayEditedBy = $editor->getFullName();
+      }
+      $item = $this->createTimeLineItem($dbNote->getType(), $dbNote->getDisplayEditedDate(),
+        "by " . $displayEditedBy, "", $dbNote->getText(),
+        $dbNote->getEditLink($this->baseURL), $dbNote->getDeleteLink($this->baseURL));
+
+    }
+    return $item;
   }
 
   function createTimeLineItem($type, $datetime, $header, $headerLink, $text, $editLink = "", $deleteLink = "")
