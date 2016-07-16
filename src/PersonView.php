@@ -359,7 +359,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                     <?= $item['text'] ?>
                   </div>
 
-                  <?php if (($_SESSION['bNotes']) && (in_array("editLink", $item) || in_array("deleteLink", $item))) { ?>
+                  <?php if (($_SESSION['bNotes']) && ($item["editLink"] != "" || $item["deleteLink"] != "")) { ?>
                     <div class="timeline-footer">
                       <?php if ($item["editLink"] != "") { ?>
                         <a href="<?= $item["editLink"] ?>">
