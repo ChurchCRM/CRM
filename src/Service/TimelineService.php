@@ -121,38 +121,4 @@ class TimelineService
     return $item;
   }
 
-  function convertNotes($notes, $admin)
-  {
-    $notesArray = array();
-    foreach ($notes as $rawNote) {
-      // if the user is not admin, ensure the note is not private or it is created by current user
-      if ($admin || $rawNote->isVisable($_SESSION['iUserID'])) {
-
-        $note['id'] = $rawNote->getId();
-        $note['private'] = $rawNote->getPrivate();
-        $note['text'] = $rawNote->getText();
-        $note['type'] = $rawNote->getType();
-
-        if ($rawNote->getDateLastEdited() != null) {
-          $note['lastUpdateDatetime'] = $rawNote->getDateLastEdited()->format('Y-m-d H:i:s');
-          $note['lastUpdateById'] = $rawNote->getEditedBy();
-        } else {
-          $note['lastUpdateDatetime'] = $rawNote->getDateEntered()->format('Y-m-d H:i:s');
-          $note['lastUpdateById'] = $rawNote->getEnteredBy();
-        }
-
-        $person = PersonQuery::create()->findPk($note['lastUpdateById']);
-
-        if ($person != null) {
-          $note['lastUpdateByName'] = $person->getFullName();
-        } else {
-          $note['lastUpdateByName'] = "unknown?";
-        }
-        array_push($notesArray, $note);
-      }
-    }
-    return $notesArray;
-  }
-
-
 }
