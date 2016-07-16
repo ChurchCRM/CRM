@@ -76,7 +76,12 @@ if (isset($_POST["Submit"])) {
     if ($iNoteID <= 0) {
       $noteService->addNote($iPersonID, $iFamilyID, $bPrivate, $sNoteText, "note");
     } else {
-      $noteService->updateNote($iNoteID, $bPrivate, $sNoteText);
+      $note = NoteQuery::create()->findPk($iNoteID);
+      $note->setPrivate($bPrivate);
+      $note->setText($sNoteText);
+      $note->setDateLastEdited(new DateTime());
+      $note->setEditedBy($_SESSION['iUserID']);
+      $note->save();
     }
 
     //Send them back to whereever they came from
