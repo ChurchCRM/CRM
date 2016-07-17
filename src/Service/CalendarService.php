@@ -16,10 +16,8 @@ class CalendarService
   function getEventTypes()
   {
     $eventTypes = array();
-    $eventType = array("Name" => "Event", "backgroundColor" =>"#f39c12" );
-    array_push($eventTypes, $eventType);
-    $eventType = array("Name" => "Birthday", "backgroundColor" =>"#f56954" );
-    array_push($eventTypes, $eventType);
+    array_push($eventTypes, array("Name" => "Event", "backgroundColor" =>"#f39c12" ));
+    array_push($eventTypes, array("Name" => "Birthday", "backgroundColor" =>"#f56954" ));
     return $eventTypes;
   }
 
