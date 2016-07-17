@@ -371,13 +371,13 @@
     </table>
     <table name="deposit_dep" idMethod="native" phpName="Deposit">
       <column name="dep_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" 
-              autoIncrement="true" required="true"/>
+        autoIncrement="true" required="true"/>
       <column name="dep_Date" phpName="Date" type="DATE"/>
       <column name="dep_Comment" phpName="Comment" type="LONGVARCHAR"/>
       <column name="dep_EnteredBy" phpName="Enteredby" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
       <column name="dep_Closed" phpName="Closed" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
       <column name="dep_Type" phpName="Type" type="CHAR" sqlType="enum('Bank','CreditCard','BankDraft','eGive')" 
-              required="true" defaultValue="Bank"/>
+        required="true" defaultValue="Bank"/>
       <vendor type="mysql">
         <parameter name="Engine" value="MyISAM"/>
       </vendor>
@@ -408,7 +408,7 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-     <table name="donationfund_fun" idMethod="native" phpName="DonationFund">
+    <table name="donationfund_fun" idMethod="native" phpName="DonationFund">
         <column name="fun_ID" phpName="Id" type="TINYINT" size="3" primaryKey="true" autoIncrement="true"
                 required="true"/>
         <column name="fun_Active" phpName="Active" type="CHAR" sqlType="enum('true','false')" required="true"
