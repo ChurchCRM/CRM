@@ -3,6 +3,7 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Person as BasePerson;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -16,5 +17,39 @@ use ChurchCRM\Base\Person as BasePerson;
  */
 class Person extends BasePerson
 {
+  function getFullName()
+  {
+    return $this->getFirstName() . " " . $this->getLastName();
+  }
+
+  public function postInsert(ConnectionInterface $con = null)
+  {
+    $this->createTimeLineNote(true);
+  }
+
+  public function postUpdate(ConnectionInterface $con = null)
+  {
+    $this->createTimeLineNote(false);
+  }
+
+  private function createTimeLineNote($new)
+  {
+    $note = new Note();
+    $note->setPerId($this->getId());
+
+    if ($new) {
+      $note->setText("Created");
+      $note->setType("create");
+      $note->setEnteredBy($this->getEnteredBy());
+      $note->setDateLastEdited($this->getDateEntered());
+    } else {
+      $note->setText("Updated");
+      $note->setType("edit");
+      $note->setEnteredBy($this->getEditedBy());
+      $note->setDateLastEdited($this->getDateLastEdited());
+    }
+
+    $note->save();
+  }
 
 }

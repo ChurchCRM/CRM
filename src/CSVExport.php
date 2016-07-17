@@ -75,7 +75,7 @@ require "Include/Header.php";
     <div class="col-lg-12">
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Field Selection</h3>
+          <h3 class="box-title"><?= gettext("Field Selection") ?></h3>
         </div>
         <div class="box-body">
           <div class="col-md-4">
@@ -197,7 +197,7 @@ require "Include/Header.php";
       <div class="col-lg-12">
         <div class="box">
           <div class="box-header with-border">
-            <h3 class="box-title">Custom Field Selection</h3>
+            <h3 class="box-title"><?= gettext("Custom Field Selection") ?></h3>
           </div>
           <div class="box-body">
             <table border="0">
@@ -256,7 +256,7 @@ require "Include/Header.php";
     <div class="col-lg-12">
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Filters</h3>
+          <h3 class="box-title"><?= gettext("Filters") ?></h3>
         </div>
         <div class="box-body">
           <div class="col-lg-4">
