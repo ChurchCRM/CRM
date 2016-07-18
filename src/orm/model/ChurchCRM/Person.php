@@ -22,7 +22,8 @@ class Person extends BasePerson
     return $this->getFirstName() . " " . $this->getLastName();
   }
 
-  function hideAge() {
+  function hideAge()
+  {
     return $this->getFlags() == 1;
   }
 
@@ -97,6 +98,6 @@ class Person extends BasePerson
     }
 
     $note->save();
-  }
+  } 
 
 }
