@@ -340,7 +340,7 @@ function CurrentFY()
 // PrintFYIDSelect: make a fiscal year selection menu.
 function PrintFYIDSelect ($iFYID, $selectName)
 {
-    echo "<select class=\"form-control\" name=\"" . $selectName . "\">";
+    echo "<select name=\"" . $selectName . "\">";
     echo "<option value=\"0\">" . gettext("Select Fiscal Year") . "</option>";
 
     for ($fy = 1; $fy < CurrentFY() + 2; $fy++) {
@@ -2013,8 +2013,8 @@ function getMailingAddress($Address1, $Address2, $City, $State, $Zip, $Country)
     if ($Address1 != "") { $mailingAddress .= $Address1. " " ; }
     if ($Address2 != "") { $mailingAddress .= $Address2. " " ; }
     if ($City != "") { $mailingAddress .= $City . ", "; }
-    if ($State != "") { $mailingAddress .= $State; }
-    if ($Zip != "") { $mailingAddress .= " " . $Zip ." "; }
+    if ($State != "") { $mailingAddress .= $State . " "; }
+    if ($Zip != "") { $mailingAddress .= " " . $Zip . " "; }
     if ($Country != "") {$mailingAddress .= $Country; }
     return $mailingAddress;
 }
