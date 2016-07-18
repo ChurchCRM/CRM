@@ -24,6 +24,14 @@ class Person extends BasePerson
     return $this->getFirstName() . " " . $this->getLastName();
   }
 
+  function isMale() {
+    return $this->getGender() == 1;
+  }
+
+  function isFemale() {
+    return $this->getGender() == 2;
+  }
+
   function hideAge()
   {
     return $this->getFlags() == 1 || $this->getBirthYear() == "" || $this->getBirthYear() == "0";
@@ -56,15 +64,6 @@ class Person extends BasePerson
     return $url;
   }
 
-  function isMale()
-  {
-    return $this->getGender() == 1;
-  }
-
-  function isFemale()
-  {
-    return $this->getGender() == 2;
-  }
 
   function getUploadedPhoto($baseURL)
   {
