@@ -7,6 +7,8 @@ require_once "../Service/FamilyService.php";
 require_once "../Service/GroupService.php";
 require_once '../Service/NoteService.php';
 
+require_once '../Service/CalendarService.php';
+
 require_once "../Service/FinancialService.php";
 require_once "../Service/ReportingService.php";
 
@@ -25,4 +27,6 @@ $container['ReportingService'] = new ReportingService();
 
 $container['DataSeedService'] = new DataSeedService();
 $container['SystemService'] = new SystemService();
+
+$container['CalendarService'] = new CalendarService();
 

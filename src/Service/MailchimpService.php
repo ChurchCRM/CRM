@@ -1,9 +1,4 @@
 <?php
-/**
- * User: gdawoud
- * Date: 12/9/2014
- * Time: 11:00 PM
- */
 
 class MailChimpService
 {
