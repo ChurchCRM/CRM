@@ -152,14 +152,5 @@ class Deposit extends BaseDeposit
       $query->joinWith('DonationFund', Criteria::RIGHT_JOIN);
       return $this->getPledges($query, $con);
   }
-  public function getSearchResult()
-  {
-    $ret = new \stdClass();
-    $ret->id = $this->
-    $ret['familyID'] = $row['per_fam_ID'];
-    $ret['firstName'] = $row['per_FirstName'];
-    $ret['lastName'] = $row['per_LastName'];
-    $ret['displayName'] = $row['per_FirstName'] . " " . $row['per_LastName'];
-    $ret['uri'] = $this->getViewURI($row['per_ID']);
-  }
+
 }
