@@ -35,13 +35,11 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         ->limit(5);
     array_push($resultsArray, $q->find()->toJSON());
   } catch (Exception $e) {
-    print_r($e);
   }
 
   try {
     array_push($resultsArray, $this->FinancialService->getPaymentJSON($this->FinancialService->searchPayments($query)));
   } catch (Exception $e) {
-    print_r($e);
   }
 
   $data = ["results" => array_filter($resultsArray)];
