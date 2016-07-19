@@ -78,7 +78,7 @@ echo "=========================================================="
 
 cd /vagrant/src
 composer update
-
+composer dump-autoload
 ../vagrant/build-skin.sh
 
 echo "=========================================================="
