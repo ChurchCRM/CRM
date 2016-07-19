@@ -1,6 +1,9 @@
 <?php
 
 use ChurchCRM\Note;
+use ChurchCRM\NoteQuery;
+use ChurchCRM\PersonQuery;
+
 
 class NoteService
 {
@@ -10,13 +13,13 @@ class NoteService
     requireUserGroupMembership("bNotes");
 
     $note = new Note();
-    $note->setEnteredBy($_SESSION['iUserID']);
     $note->setPerId($personID);
     $note->setFamId($familyID);
     $note->setPrivate($private);
     $note->setText($text);
     $note->setType($type);
-    $note->setDateLastEdited(date("YmdHis"));
+    $note->setDateEntered(new DateTime());
+    $note->setEnteredBy($_SESSION['iUserID']);
     $note->save();
 
   }
@@ -53,12 +56,4 @@ class NoteService
     $note['editedById'] = $nte_EditedBy;
     return $note;
   }
-
-  function deleteNoteById($noteId)
-  {
-    requireUserGroupMembership("bNotes");
-    $sSQL = "DELETE FROM note_nte WHERE nte_ID = " . $noteId;
-    return RunQuery($sSQL);
-  }
-
 }
