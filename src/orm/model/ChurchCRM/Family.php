@@ -2,6 +2,7 @@
 
 namespace ChurchCRM;
 
+use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Base\Family as BaseFamily;
 
 /**
@@ -16,5 +17,34 @@ use ChurchCRM\Base\Family as BaseFamily;
  */
 class Family extends BaseFamily
 {
+  
+public function postInsert(ConnectionInterface $con = null)
+  {
+    $this->createTimeLineNote(true);
+  }
 
+  public function postUpdate(ConnectionInterface $con = null)
+  {
+    $this->createTimeLineNote(false);
+  }
+
+  private function createTimeLineNote($new)
+  {
+    $note = new Note();
+    $note->setFamId($this->getId());
+
+    if ($new) {
+      $note->setText("Created");
+      $note->setType("create");
+      $note->setEnteredBy($this->getEnteredBy());
+      $note->setDateLastEdited($this->getDateEntered());
+    } else {
+      $note->setText("Updated");
+      $note->setType("edit");
+      $note->setEnteredBy($this->getEditedBy());
+      $note->setDateLastEdited($this->getDateLastEdited());
+    }
+
+    $note->save();
+  }
 }
