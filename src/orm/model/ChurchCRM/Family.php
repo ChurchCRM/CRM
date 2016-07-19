@@ -17,8 +17,8 @@ use ChurchCRM\Base\Family as BaseFamily;
  */
 class Family extends BaseFamily
 {
-  
-public function postInsert(ConnectionInterface $con = null)
+
+  public function postInsert(ConnectionInterface $con = null)
   {
     $this->createTimeLineNote(true);
   }
