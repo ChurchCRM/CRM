@@ -99,5 +99,5 @@ class Person extends BasePerson
 
     $note->save();
   } 
-  
+
 }
