@@ -22,7 +22,7 @@ CREATE TABLE `version_ver` (
 --
 
 INSERT INTO version_ver (ver_version, ver_update_start)
-VALUES ('2.1.7', now());
+VALUES ('2.1.8', now());
 
 --
 -- Table structure for table `autopayment_aut`
