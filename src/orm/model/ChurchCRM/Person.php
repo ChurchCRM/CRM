@@ -162,7 +162,7 @@ class Person extends BasePerson
     }
 
     $note->save();
-  }
+  } 
 
   public function isUser()
   {
