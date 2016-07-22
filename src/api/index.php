@@ -37,6 +37,9 @@ require __DIR__ . '/routes/groups.php';
 require __DIR__ . '/routes/deposits.php';
 require __DIR__ . '/routes/payments.php';
 
+// other
+require __DIR__ . '/routes/calendar.php';
+
 // Run app
 $app->run();
 

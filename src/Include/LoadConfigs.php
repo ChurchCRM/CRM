@@ -60,7 +60,7 @@ $tablecheck = mysql_num_rows(mysql_query($sql));
 
 if (!$tablecheck) {
   $query = '';
-  $restoreQueries = file('mysql/install/install.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+  $restoreQueries = file(dirname(__file__). '/../mysql/install/Install.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
   foreach ($restoreQueries as $line) {
     if ($line != '' && strpos($line, '--') === false) {
       $query .= " $line";
@@ -75,6 +75,9 @@ if (!$tablecheck) {
 // Initialize the session
 session_name('CRM@' . $sRootPath);
 session_start();
+
+require_once dirname(__FILE__) . '/../vendor/autoload.php';
+require_once dirname(__FILE__) . '/../orm/conf/config.php';
 
 // Avoid consecutive slashes when $sRootPath = '/'
 if (strlen($sRootPath) < 2) $sRootPath = '';
@@ -125,11 +128,11 @@ if (!function_exists("stripos")) {
 }
 
 if (!(stripos(php_uname('s'), "windows") === false)) {
-//  $sLanguage = $lang_map_windows[strtolower($sLanguage)];
-  $sLang_Code = $lang_map_windows[strtolower($sLanguage)];
-} else {
-  $sLang_Code = $sLanguage;
+  $sLanguage = $lang_map_windows[strtolower($sLanguage)];
 }
+
+$sLang_Code = $sLanguage;
+
 putenv("LANG=$sLang_Code");
 setlocale(LC_ALL, $sLang_Code, $sLang_Code . ".utf8", $sLang_Code . ".UTF8", $sLang_Code . ".utf-8", $sLang_Code . ".UTF-8");
 
@@ -151,45 +154,10 @@ if ($sLanguage == 'it_IT') {
 
 if (function_exists('bindtextdomain')) {
   $domain = 'messages';
-
-  $sLocaleDir = 'locale';
-  if (!is_dir($sLocaleDir))
-    $sLocaleDir = '../' . $sLocaleDir;
+  $sLocaleDir = dirname(__FILE__). '/../locale';
 
   bind_textdomain_codeset($domain, 'UTF-8');
   bindtextdomain($domain, $sLocaleDir);
   textdomain($domain);
-} else {
-  if ($sLanguage != 'en_US') {
-    // PHP array version of the l18n strings
-    $sLocaleMessages = "locale/$sLanguage/LC_MESSAGES/messages.php";
-
-    if (!is_readable($sLocaleMessages))
-      $sLocaleMessages = "../$sLocaleMessages";
-
-    require($sLocaleMessages);
-
-    // replacement implementation of gettext for broken installs
-    function gettext($text)
-    {
-      global $locale;
-
-      if (!empty($locale[$text]))
-        return $locale[$text];
-      else
-        return $text;
-    }
-  } else {
-    // dummy gettext function
-    function gettext($text)
-    {
-      return $text;
-    }
-  }
-
-  function _($text)
-  {
-    return gettext($text);
-  }
 }
 ?>

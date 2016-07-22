@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by IntelliJ IDEA.
- * User: georg
- * Date: 1/17/2016
- * Time: 8:02 AM
- */
 class DashboardService
 {
 
