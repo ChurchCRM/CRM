@@ -84,7 +84,6 @@ echo "=========================================================="
 
 cd /vagrant/src
 composer update
-composer dump-autoload
 ../vagrant/build-skin.sh
 
 echo "=========================================================="
@@ -92,6 +91,13 @@ echo "===============  MV Config.php           ================="
 echo "=========================================================="
 
 cp /vagrant/vagrant/Config.php /vagrant/src/Include/
+
+echo "=========================================================="
+echo "================   Build ORM Classes    =================="
+echo "=========================================================="
+
+/vagrant/src/vendor/bin/propel model:build --config-dir=/vagrant/vagrant
+composer dump-autoload
 
 echo "=========================================================="
 echo "=========================================================="
