@@ -169,9 +169,9 @@ class SystemService {
   function copyBackupToExternalStorage()
   {
     global $sRemoteBackupType, $sRemoteBackupUsername, $sRemoteBackupPassword, $sRemoteBackupEndpoint;
-    if($sRemoteBackupType == "WebDAV")
+    if( $sRemoteBackupType == "WebDAV" )
     {
-      if($sRemoteBackupType && $sRemoteBackupUsername && $sRemoteBackupPassword && $sRemoteBackupEndpoint)
+      if( $sRemoteBackupUsername && $sRemoteBackupPassword && $sRemoteBackupEndpoint )
       {
         $params = new stdClass();
         $params->iArchiveType = 3;
@@ -194,6 +194,20 @@ class SystemService {
       {
         throw new Exception("WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set",500);
       }
+    }
+    elseif( $sRemoteBackupType == "Local" )
+    {
+      try
+      {
+        $backup = $this->getDatabaseBackup($params);
+        exec("mv " . $backup->saveTo . " " .  $sRemoteBackupEndpoint);
+        return($backup);
+      }
+      catch (Exception $exc)
+      {
+        throw new Exception("The local path $sRemoteBackupEndpoint is not writeable.  Unable to store backup.",500);
+      }
+    
     }
   }
 
