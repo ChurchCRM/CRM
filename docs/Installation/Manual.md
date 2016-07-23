@@ -28,21 +28,10 @@ For example:
 
 mysqladmin -u [user] -p create [database-name]
 
-4. Within the folder, you'll find a directory called "Include"
-containing a file named "Config.php.example". rename it Config.php and make the following changes. It is NOT recommended that you use the ROOT account for
-accessing your database.
-
-- update database connection parameters to match the mysql server and user account you intend to use:
-
-        $sSERVERNAME = "localhost";
-        $sUSER = "root";
-        $sPASSWORD = "password";
-        $sDATABASE = "churchcrm";
-
-- You MUST set the $sRootPath option properly as described in Config.php.  
-
-
-4. You should be able to access ChurchCRM at "http://[servername]/churchcrm". 
+4. You should be able to access ChurchCRM at "http://[servername]/churchcrm". and a setup page will help with the next steps
+    
+   - the setup will create a file called Config.php in Include Dir. 
+   - the $sRootPath option properly as described in Config.php.  
 
 The database script will have set up an initial user called "**Admin**" with a password of "**changeme**" (passwords are case insensitive). You will be prompted to change this password upon login.  Once you have created other user accounts, you may delete or rename this default account.  Just make sure that you always have a user with administrative privledges.
 

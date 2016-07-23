@@ -37,4 +37,4 @@ Users can be edited by clicking on _"Edit Users"_ in the Admin ⚙ menu. A list 
 
 ## What is the default password assigned to new Users?
 
-In the subfolder Include, the file `Config.php`, one of the lines reads the following: `$sDefault_Pass = "password"`. The word in the quotations is the default password. This can be changed at any time by editing `Config.php`.
+The default password is set and can be changed in the System Settings via the top right admin menu.
