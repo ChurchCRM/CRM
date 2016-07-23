@@ -28,6 +28,15 @@ $rsAdultsGender = RunQuery($sSQL);
 $sSQL = "select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;";
 $rsKidsGender = RunQuery($sSQL);
 
+$sSQL = "select lst_OptionID,lst_OptionName from list_lst where lst_ID = 1;";
+$rsClassification = RunQuery($sSQL);
+$classifications = new stdClass();
+while (list ($lst_OptionID,$lst_OptionName) = mysql_fetch_row($rsClassification))
+{
+  $classifications->$lst_OptionName = $lst_OptionID;
+ 
+}
+
 $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
           LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
           INNER JOIN list_lst on lst_ID=1 AND per_cls_ID = lst_OptionID
@@ -304,7 +313,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
         </tr>
         <? foreach ($personStats as $key => $value) { ?>
           <tr>
-            <td><?= $key ?></td>
+            <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= $key ?></a></td>
             <td>
               <div class="progress progress-xs progress-striped active">
                 <div class="progress-bar progress-bar-success"
