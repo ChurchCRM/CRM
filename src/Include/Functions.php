@@ -278,6 +278,27 @@ if (isset($_POST["BulkAddToCart"])) {
 // Some very basic functions that all scripts use
 //
 
+if ($sEnableRemoteBackups && $sRemoteBackupAutoInterval > 0)  //if remote backups are enabled, and the interval is greater than zero
+{
+  try
+  {
+    $now =  new DateTime();  //get the current time
+    $previous = new DateTime($sLastBackupTimeStamp); // get a DateTime object for the last time a backup was done.
+    $diff = $previous->diff($now);  // calculate the difference.
+    if (!$sLastBackupTimeStamp ||  $diff->h >= $sRemoteBackupAutoInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
+    {
+      $systemService->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
+      $now = new DateTime();  // update the LastBackupTimeStamp.
+      $sSQL = "UPDATE config_cfg SET cfg_value='". $now->format('Y-m-d H:i:s') . "' WHERE cfg_name='sLastBackupTimeStamp'";
+      $rsUpdate = RunQuery($sSQL); 
+    }
+  }
+  catch(Exception $exc)
+  {
+    // an error in the auto-backup shouldn't prevent the page from loading...
+  }
+}
+
 // Convert a relative URL into an absolute URL and return absolute URL.
 function RedirectURL($sRelativeURL)
 {
