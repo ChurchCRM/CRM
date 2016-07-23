@@ -8,7 +8,13 @@ $app->group('/database', function () {
     $backup = $this->SystemService->getDatabaseBackup($input);
     echo json_encode($backup);
   });
-
+  
+  $this->post('/backupRemote', function ($request, $response, $args) {
+    $input = (object)$request->getParsedBody();
+    $backup = $this->SystemService->copyBackupToExternalStorage();
+    echo json_encode($backup);
+  });  
+  
   $this->post('/restore', function ($request, $response, $args) {
     $restore = $this->SystemService->restoreDatabaseFromBackup();
     echo json_encode($restore);
