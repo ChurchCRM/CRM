@@ -221,7 +221,6 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
 }
 if ($sEmailLink)
 {
-  print_r($roleEmail);
     // Add default email if default email has been set and is not already in string
     if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress'
                                && !stristr($sEmailLink, $sToEmailAddress))
