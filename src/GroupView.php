@@ -190,11 +190,12 @@ echo '<a class="btn btn-app" href="MapUsingGoogle.php?GroupID=' . $grp_ID . '"><
 
 // Email Group link
 // Note: This will email entire group, even if a specific role is currently selected.
-$sSQL = "SELECT per_Email, fam_Email
+$sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName
             FROM person_per
             LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
             LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
             LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
+            INNER JOIN list_lst on  grp_RoleListID = lst_ID AND p2g2r_rle_ID = lst_OptionID
         WHERE per_ID NOT IN
             (SELECT per_ID
                 FROM person_per
@@ -203,7 +204,7 @@ $sSQL = "SELECT per_Email, fam_Email
             AND p2g2r_grp_ID = " . $iGroupID;
 $rsEmailList = RunQuery($sSQL);
 $sEmailLink = '';
-while (list ($per_Email, $fam_Email) = mysql_fetch_row($rsEmailList))
+while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailList))
 {
     $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
     if ($sEmail)
@@ -212,22 +213,49 @@ while (list ($per_Email, $fam_Email) = mysql_fetch_row($rsEmailList))
             $sEmailLink .= $sMailtoDelimiter; */
         // Add email only if email address is not already in string
         if (!stristr($sEmailLink, $sEmail))
+        {
             $sEmailLink .= $sEmail .= $sMailtoDelimiter;
+            $roleEmails->$virt_RoleName .= $sEmail.= $sMailtoDelimiter;
+        }
     }
 }
 if ($sEmailLink)
 {
+  print_r($roleEmail);
     // Add default email if default email has been set and is not already in string
     if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress'
                                && !stristr($sEmailLink, $sToEmailAddress))
         $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
-
+    
     if ($bEmailMailto) { // Does user have permission to email groups
     // Display link
-    echo '<a class="btn btn-app" href="mailto:'. mb_substr($sEmailLink,0,-3) .'"><i class="fa fa-send-o"></i>'.gettext('Email Group').'</a>';
-    echo '<a class="btn btn-app" href="mailto:?bcc='. mb_substr($sEmailLink,0,-3) .'"><i class="fa fa-send"></i>'.gettext('Email (BCC)').'</a>';
+     ?>
+      <div class="btn-group">
+        <a  class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink,0,-3) ?>"><i class="fa fa-send-o"></i><?= gettext('Email Group')?></a>
+        <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+         <?php generateGroupRoleEmailDropdown($roleEmails,"mailto:") ?>
+        </ul>
+      </div>
+    
+      <div class="btn-group">
+        <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink,0,-3) ?>"><i class="fa fa-send"></i><?=gettext('Email (BCC)') ?></a>
+         <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+         <?php generateGroupRoleEmailDropdown($roleEmails,"mailto:?bcc=") ?>
+        </ul>
+      </div>
+    
+    <?php
     }
+    
 }
 // Group Text Message Comma Delimited - added by RSBC
 // Note: This will provide cell phone numbers for the entire group, even if a specific role is currently selected.
