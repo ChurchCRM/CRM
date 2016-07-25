@@ -30,3 +30,7 @@ cp -rf /vagrant/src/vendor/driftyco/ionicons/less/ /var/www/public/skin/ionicons
 cp -rf /vagrant/src/vendor/driftyco/ionicons/png/ /var/www/public/skin/ionicons/
 
 echo "Build: ionicons copied"
+
+wget -nv -O /vagrant/src/skin/adminlte/plugins/fastclick/fastclick.js https://raw.githubusercontent.com/ftlabs/fastclick/569732a7aa5861d428731b8db022b2d55abe1a5a/lib/fastclick.js
+
+echo "FastClick Patched for iOS Select2 Bug"
