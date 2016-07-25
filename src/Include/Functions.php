@@ -278,14 +278,14 @@ if (isset($_POST["BulkAddToCart"])) {
 // Some very basic functions that all scripts use
 //
 
-if ($sEnableRemoteBackups && $sRemoteBackupAutoInterval > 0)  //if remote backups are enabled, and the interval is greater than zero
+if ($sEnableExternalBackupTarget && $sExternalBackupAutoInterval > 0)  //if remote backups are enabled, and the interval is greater than zero
 {
   try
   {
     $now =  new DateTime();  //get the current time
     $previous = new DateTime($sLastBackupTimeStamp); // get a DateTime object for the last time a backup was done.
     $diff = $previous->diff($now);  // calculate the difference.
-    if (!$sLastBackupTimeStamp ||  $diff->h >= $sRemoteBackupAutoInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
+    if (!$sLastBackupTimeStamp ||  $diff->h >= $sExternalBackupAutoInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
     {
       $systemService->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
       $now = new DateTime();  // update the LastBackupTimeStamp.

@@ -168,18 +168,18 @@ class SystemService {
   
   function copyBackupToExternalStorage()
   {
-    global $sRemoteBackupType, $sRemoteBackupUsername, $sRemoteBackupPassword, $sRemoteBackupEndpoint;
-    if( strcasecmp($sRemoteBackupType,"WebDAV") == 0  )
+    global $sExternalBackupType, $sExternalBackupUsername, $sExternalBackupPassword, $sExternalBackupEndpoint;
+    if( strcasecmp($sExternalBackupType,"WebDAV") == 0  )
     {
-      if( $sRemoteBackupUsername && $sRemoteBackupPassword && $sRemoteBackupEndpoint )
+      if( $sExternalBackupUsername && $sExternalBackupPassword && $sExternalBackupEndpoint )
       {
         $params = new stdClass();
         $params->iArchiveType = 3;
         $backup = $this->getDatabaseBackup($params);
-        $backup->credentials = $sRemoteBackupUsername.":".$sRemoteBackupPassword;
+        $backup->credentials = $sExternalBackupUsername.":".$sExternalBackupPassword;
         $backup->filesize = filesize($backup->saveTo);
         $fh = fopen($backup->saveTo, 'r');
-        $backup->remoteUrl = $sRemoteBackupEndpoint;
+        $backup->remoteUrl = $sExternalBackupEndpoint;
         $ch = curl_init($backup->remoteUrl . $backup->filename);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
         curl_setopt($ch, CURLOPT_USERPWD, $backup->credentials);
@@ -195,17 +195,17 @@ class SystemService {
         throw new Exception("WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set",500);
       }
     }
-    elseif( strcasecmp($sRemoteBackupType,$sRemoteBackupType) == 0 )
+    elseif( strcasecmp($sExternalBackupType,"Local") == 0 )
     {
       try
       {
         $backup = $this->getDatabaseBackup($params);
-        exec("mv " . $backup->saveTo . " " .  $sRemoteBackupEndpoint);
+        exec("mv " . $backup->saveTo . " " .  $sExternalBackupEndpoint);
         return($backup);
       }
       catch (Exception $exc)
       {
-        throw new Exception("The local path $sRemoteBackupEndpoint is not writeable.  Unable to store backup.",500);
+        throw new Exception("The local path $sExternalBackupEndpoint is not writeable.  Unable to store backup.",500);
       }
     
     }
