@@ -297,6 +297,7 @@ class SystemService {
     $issueDescription = FilterInput($data->issueDescription) . "\r\n\r\n\r\n" .
             "Collected Value Title |  Data \r\n" .
             "----------------------|----------------\r\n" .
+            "Page Name |".$data->pageName."\r\n".
             "Platform Information | " . php_uname($mode = "a") . "\r\n" .
             "PHP Version | " . phpversion() . "\r\n" .
             "ChurchCRM Version |" . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .

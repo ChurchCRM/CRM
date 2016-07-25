@@ -2,7 +2,8 @@ $("#submitIssue").click(function()
 {
   var postData = {
     "issueTitle": $("input:text[name=issueTitle]").val(),
-    "issueDescription": $("textarea[name=issueDescription]").val()
+    "issueDescription": $("textarea[name=issueDescription]").val(),
+    "pageName" : $("input[name=pageName]").val()
   };
   $.ajax({
     method: "POST",
