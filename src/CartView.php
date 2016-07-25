@@ -92,80 +92,10 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
         value="<?= gettext("Go To Labels") ?>">
         </form>
         <?php } ?>
-<!-- Default box -->
-<div class="box box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext("Your cart contains") . ' ' . $iNumPersons . ' ' . gettext("persons from") . ' ' . $iNumFamilies . ' ' . gettext("families.") ?></h3>
-    </div>
-    <div class="box-body">
-        <table class="table table-hover">
-        <tr>
-            <th><?= gettext("Name") ?></th>
-            <th><?=  gettext("Address?") ?></th>
-            <th><?=  gettext("Email?") ?></th>
-            <th><?= gettext("Remove") ?></th>
-            <th><?=  gettext("Classification") ?></th>
-            <th><?=  gettext("Family Role") ?></th>
-        </tr>
-        <?php
-        $sEmailLink = "";
-        $iEmailNum = 0;
-        $sRowClass = "RowColorA";
-        $email_array = array ();
-
-        while ($aRow = mysql_fetch_array($rsCartItems))
-        {
-                $sRowClass = AlternateRowStyle($sRowClass);
-
-                extract($aRow);
-
-                $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
-                if (strlen($sEmail) == 0 && strlen ($per_WorkEmail) > 0) {
-                	$sEmail = $per_WorkEmail;                	
-                }
-                
-                if (strlen($sEmail)) {
-                    $sValidEmail = gettext("Yes");
-                    if (!stristr($sEmailLink, $sEmail)) {
-                        $email_array[] = $sEmail;
-
-                        if ($iEmailNum == 0) {       
-                        	// Comma is not needed before first email address
-                            $sEmailLink .= $sEmail;
-                            $iEmailNum++;
-                        } else
-                            $sEmailLink .= $sMailtoDelimiter . $sEmail;
-                    }
-                } else {
-                        $sValidEmail = gettext("No");
-                }
-
-                $sAddress1 = SelectWhichInfo($per_Address1, $fam_Address1, False);
-                $sAddress2 = SelectWhichInfo($per_Address2, $fam_Address2, False);
-
-                if (strlen($sAddress1) > 0 || strlen($sAddress2) > 0)
-                        $sValidAddy = gettext("Yes");
-                else
-                        $sValidAddy = gettext("No");
-
-                echo '<tr class="' . $sRowClass . '">';
-                echo '<td><img src="'. $personService->getPhoto($per_ID). '" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
-
-                echo '<td align="center">' . $sValidAddy . '</td>';
-                echo '<td align="center">' . $sValidEmail . '</td>';
-                echo '<td><a href="CartView.php?RemoveFromPeopleCart=' .
-                        $per_ID . '">' . gettext("Remove") . '</a></td>';
-                echo '<td align="center">' . $aClassificationName[$per_cls_ID] . '</td>';
-                echo '<td align="center">' . $aFamilyRoleName[$per_fmr_ID] . '</td>';
-
-                echo "</tr>";
-        }
-
-        echo "</table>";
-} ?>
-
-
-<!-- Default box -->
+                    
+     <!-- BEGIN CART FUNCTIONS -->          
+     
+     
 <?php if (count($_SESSION['aPeopleCart']) > 0) { ?>
 <div class="box">
     <div class="box-header with-border">
@@ -654,6 +584,87 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
         echo "</td></tr></table></div>\n";
     }
 }
+
+
+?>
+                    
+                    
+    <!-- END CART FUNCTIONS -->
+                    
+<!-- BEGIN CART LISTING -->
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title"><?= gettext("Your cart contains") . ' ' . $iNumPersons . ' ' . gettext("persons from") . ' ' . $iNumFamilies . ' ' . gettext("families.") ?></h3>
+    </div>
+    <div class="box-body">
+        <table class="table table-hover">
+        <tr>
+            <th><?= gettext("Name") ?></th>
+            <th><?=  gettext("Address?") ?></th>
+            <th><?=  gettext("Email?") ?></th>
+            <th><?= gettext("Remove") ?></th>
+            <th><?=  gettext("Classification") ?></th>
+            <th><?=  gettext("Family Role") ?></th>
+        </tr>
+        <?php
+        $sEmailLink = "";
+        $iEmailNum = 0;
+        $sRowClass = "RowColorA";
+        $email_array = array ();
+
+        while ($aRow = mysql_fetch_array($rsCartItems))
+        {
+                $sRowClass = AlternateRowStyle($sRowClass);
+
+                extract($aRow);
+
+                $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
+                if (strlen($sEmail) == 0 && strlen ($per_WorkEmail) > 0) {
+                	$sEmail = $per_WorkEmail;                	
+                }
+                
+                if (strlen($sEmail)) {
+                    $sValidEmail = gettext("Yes");
+                    if (!stristr($sEmailLink, $sEmail)) {
+                        $email_array[] = $sEmail;
+
+                        if ($iEmailNum == 0) {       
+                        	// Comma is not needed before first email address
+                            $sEmailLink .= $sEmail;
+                            $iEmailNum++;
+                        } else
+                            $sEmailLink .= $sMailtoDelimiter . $sEmail;
+                    }
+                } else {
+                        $sValidEmail = gettext("No");
+                }
+
+                $sAddress1 = SelectWhichInfo($per_Address1, $fam_Address1, False);
+                $sAddress2 = SelectWhichInfo($per_Address2, $fam_Address2, False);
+
+                if (strlen($sAddress1) > 0 || strlen($sAddress2) > 0)
+                        $sValidAddy = gettext("Yes");
+                else
+                        $sValidAddy = gettext("No");
+
+                echo '<tr class="' . $sRowClass . '">';
+                echo '<td><img src="'. $personService->getPhoto($per_ID). '" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
+
+                echo '<td align="center">' . $sValidAddy . '</td>';
+                echo '<td align="center">' . $sValidEmail . '</td>';
+                echo '<td><a href="CartView.php?RemoveFromPeopleCart=' .
+                        $per_ID . '">' . gettext("Remove") . '</a></td>';
+                echo '<td align="center">' . $aClassificationName[$per_cls_ID] . '</td>';
+                echo '<td align="center">' . $aFamilyRoleName[$per_fmr_ID] . '</td>';
+
+                echo "</tr>";
+        }
+
+        echo "</table>";
+} ?>
+<!-- END CART LISTING -->
+
+<?php
 
 require "Include/Footer.php";
 
