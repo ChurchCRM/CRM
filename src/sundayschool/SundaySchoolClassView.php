@@ -39,16 +39,72 @@ $TeachersEmails = array();
 $KidsEmails = array();
 $ParentsEmails = array();
 
+$thisClassChildren = $sundaySchoolService->getKidsFullDetails($iGroupId);
+
+foreach ($thisClassChildren as $child) {
+ if ($child['dadEmail'] != "")
+   array_push($ParentsEmails,  $child['dadEmail']);
+ if ($child['momEmail'] != "")
+   array_push($ParentsEmails, $child['momEmail']);
+ if ($child['kidEmail'] != "")
+   array_push($KidsEmails,  $child['kidEmail']);
+}
+
+foreach ($rsTeachers as $teacher) {
+  array_push($TeachersEmails, $teacher['per_Email']);
+}
+
 require "../Include/Header.php";
 
 ?>
 
-<div class="btn-group pull-right clearfix">
-  <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>
-  <a class="btn btn-info" href="../GroupView.php?GroupID=<?= $iGroupId ?>"><i class="fa fa-eye-slash"></i> LegacyView </a>
-</div>
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Sunday School Class Functions</h3>
+    </div>
+  <div class="box-body">
+    <?php
+      $allEmails = array_unique(array_merge($ParentsEmails, $KidsEmails,$TeachersEmails));
+      $roleEmails->Parents = join($sMailtoDelimiter, $ParentsEmails).",";
+      $roleEmails->Teachers = join($sMailtoDelimiter, $TeachersEmails).",";
+      $roleEmails->Kids = join($sMailtoDelimiter, $KidsEmails).",";
+      $sEmailLink = join($sMailtoDelimiter, $allEmails).",";
+      // Add default email if default email has been set and is not already in string
+      if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress' && !stristr($sEmailLink, $sToEmailAddress))
+          $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
+      $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
-<p><br/></p><p><br/></p>
+      if ($bEmailMailto) { // Does user have permission to email groups
+      // Display link
+      ?>
+        <div class="btn-group">
+          <a  class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink,0,-3)?>"><i class="fa fa-send-o"></i><?= gettext('Email')?></a>
+          <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+           <?php generateGroupRoleEmailDropdown($roleEmails,"mailto:") ?>
+          </ul>
+        </div>
+    
+        <div class="btn-group">
+          <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink,0,-3) ?>"><i class="fa fa-send"></i><?=gettext('Email (BCC)') ?></a>
+           <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+           <?php generateGroupRoleEmailDropdown($roleEmails,"mailto:?bcc=") ?>
+          </ul>
+        </div>
+      <?php
+      }
+    ?>
+    <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>  This doesn't really work right now...-->
+    <a class="btn btn-app" href="../GroupView.php?GroupID=<?= $iGroupId ?>"><i class="fa fa-eye-slash"></i> LegacyView </a>
+  </div>
+</div>
 
 <div class="box box-success">
   <div class="box-header">
@@ -57,7 +113,6 @@ require "../Include/Header.php";
   <!-- /.box-header -->
   <div class="box-body row">
     <?php foreach ($rsTeachers as $teacher) {
-      array_push($TeachersEmails, "<" . $teacher['per_FirstName'] . " " . $teacher['per_LastName'] . "> " . $teacher['per_Email']);
       ?>
       <div class="col-sm-2">
         <!-- Begin user profile -->
@@ -74,9 +129,12 @@ require "../Include/Header.php";
   </div>
 </div>
 
-<div class="box box-info">
+<div class="box box-info collapsed-box">
   <div class="box-header">
     <h3 class="box-title">Quick Status</h3>
+    <div class="box-tools pull-right">
+      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+    </div>
   </div>
   <!-- /.box-header -->
   <div class="box-body row">
@@ -140,17 +198,12 @@ require "../Include/Header.php";
       <tbody>
       <?php
 
-      foreach ($sundaySchoolService->getKidsFullDetails($iGroupId) as $child) {
+      foreach ($thisClassChildren as $child)
+      {
         $birthDate = "";
         if ($child['birthYear'] != "") {
           $birthDate = $child['birthMonth'] . "/" . $child['birthDay'] . "/" . $child['birthYear'];
         }
-        if ($child['dadEmail'] != "")
-          array_push($ParentsEmails, "<" . $child['dadFirstName'] . " " . $child['dadLastName'] . "> " . $child['dadEmail']);
-        if ($momEmail != "")
-          array_push($ParentsEmails, "<" . $child['momFirstName'] . " " . $child['momLastName'] . "> " . $child['momEmail']);
-        if ($kidEmail != "")
-          array_push($KidsEmails, "<" . $child['firstName'] . " " . $child['LastName'] . "> " . $child['kidEmail']);
         echo "<tr>";
         echo "<td><img src='" . $personService->getPhoto($child['kidId']) . "' hight='30' width='30' > <a href='../PersonView.php?PersonID=" . $child['kidId'] . "'>" . $child['firstName'] . ", " . $child['LastName'] . "</a></td>";
         echo "<td>" . $birthDate . "</td>";

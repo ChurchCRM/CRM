@@ -2045,4 +2045,16 @@ function requireUserGroupMembership($allowedRoles=null)
   throw new Exception("User is not authorized to access " . debug_backtrace()[1]['function'], 401);
 }
 
+function generateGroupRoleEmailDropdown($roleEmails,$href)
+{
+  foreach ($roleEmails as $role => $Email)
+  {
+    if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress' && !stristr($Email, $sToEmailAddress))
+      $Email .= $sMailtoDelimiter . $sToEmailAddress;
+    $Email = urlencode($Email);  // Mailto should comply with RFC 2368
+    ?>
+      <li> <a href="<?= $href. mb_substr($Email,0,-3) ?>"><?=$role?></li>
+    <?php
+  }    
+}
 ?>
