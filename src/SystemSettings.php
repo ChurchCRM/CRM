@@ -95,7 +95,12 @@ if (isset ($_POST['save'])) {
       }
       putenv("LANG=$sLang_Code");
       setlocale(LC_ALL, $sLang_Code);
+      
+      //echo $sLang_Code;
 
+			$url1=$_SERVER['REQUEST_URI'];
+    	header("Refresh: 1; URL=$url1");
+    
       TranslateMenuOptions();
     }
 
@@ -104,7 +109,7 @@ if (isset ($_POST['save'])) {
     $rsUpdate = RunQuery($sSQL);
     next($type);
   }
-  $sGlobalMessage = "Setting saved";
+  $sGlobalMessage = gettext("Setting saved");
 }
 
 require "Include/Header.php";
@@ -121,7 +126,7 @@ $rsConfigs = RunQuery($sSQL);
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             <?php foreach ($steps as $step => $stepName) { ?>
-              <li class="<?php if ($step == "Step1") echo "active" ?>"><a href="#<?= $step ?>" data-toggle="tab" aria-expanded="false"><?= $stepName ?></a></li>
+              <li class="<?php if ($step == "Step1") echo "active" ?>"><a href="#<?= $step ?>" data-toggle="tab" aria-expanded="false"><?= gettext($stepName) ?></a></li>
             <?php } ?>
           </ul>
           <div class="tab-content">
@@ -129,8 +134,8 @@ $rsConfigs = RunQuery($sSQL);
               <table class="table">
                 <tr>
                   <th width="150px"><?= gettext("Variable name") ?></th>
-                  <th width="400px">Value</th>
-                  <th>Default Value</th>
+                  <th width="400px"><?= gettext("Value") ?></th>
+                  <th><?= gettext("Default Value") ?></th>
                 </tr>
                 <?php
                 $r = 1;
@@ -146,8 +151,8 @@ $rsConfigs = RunQuery($sSQL);
               <table class="table">
                 <tr>
                   <th width="150px"><?= gettext("Variable name") ?></th>
-                  <th width="400px">Current Value</th>
-                  <th>Default Value</th>
+                  <th width="400px"><?= gettext("Current Value") ?></th>
+                  <th><?= gettext("Default Value") ?></th>
                 </tr>
                 <?php } ?>
                 <tr>

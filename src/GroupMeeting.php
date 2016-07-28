@@ -17,6 +17,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+$lang = getTranslationLanguage ();
+
 //Get the GroupID out of the querystring
 $iGroupID = FilterInput($_GET["GroupID"],'int');
 $linkBack = FilterInput($_GET["linkBack"]);
@@ -39,12 +41,19 @@ if (isset($_POST["Submit"]))
 	// Validate Date
 	if (strlen($dDate) > 0)
 	{
-		list($iYear, $iMonth, $iDay) = sscanf($dDate,"%04d-%02d-%02d");
+		$dateString = parseAndValidateDate($dDate, $locale = substr($lang,0,2), $pasfut = "past");
+		
+		list($iYear, $iMonth, $iDay) = sscanf($dateString,"%04d-%02d-%02d");
+		
+		//echo $dateString." ".$dDate;
+		
 		if ( !checkdate($iMonth,$iDay,$iYear) )
 		{
 			$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid Date") . "</span>";
 			$bErrorFlag = true;
 		}
+		
+		$dDate = $dateString;
 	}
 
 	//If no errors, then let's update...
@@ -155,9 +164,7 @@ require "Include/Header.php";
 
 <div class="alert alert-info alert-dismissable">
 		<i class="fa fa-info"></i>
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;&nbsp;Important note: this form may be used to schedule a WebCalendar meeting.  Once the 
-meeting is scheduled any changes must be made within WebCalendar.  All members of
-this group will be added to the meeting as external users of WebCalendar.
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;&nbsp;<?= gettext("Important note: this form may be used to schedule a WebCalendar meeting.  Once the  meeting is scheduled any changes must be made within WebCalendar.  All members of this group will be added to the meeting as external users of WebCalendar.")?>
 </div>
 <div class="box box-body">
 <form method="post" action="GroupMeeting.php?<?= "GroupID=" . $iGroupID . "&linkBack=" . $linkBack . "&Name=" . $tName ?>" name="GroupMeeting">
@@ -201,9 +208,12 @@ this group will be added to the meeting as external users of WebCalendar.
 <form>
 
 </div>
+
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/locales/bootstrap-datepicker.<?= substr($lang,0,2)?>.js" type="text/javascript" charset="UTF-8"></script>
+
 <script>
 $("#Time").timepicker({showMeridian: false});
-$("#Date").datepicker({format:'yyyy-mm-dd'});
+$("#Date").datepicker({format:'<?=gettext("yyyy-mm-dd")?>',language :'<?= substr($lang,0,2)?>'});
 </script>
 
 <?php require "Include/Footer.php" ?>

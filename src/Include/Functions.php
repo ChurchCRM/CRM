@@ -676,6 +676,7 @@ function RemoveGroupFromPeopleCart($iGroupID)
 // Reinstated by Todd Pillars for Event Listing
 // Takes MYSQL DateTime
 // bWithtime 1 to be displayed
+// update by Philippe Logel
 function FormatDate($dDate, $bWithTime=FALSE)
 {
     if ($dDate == '' || $dDate == '0000-00-00 00:00:00' || $dDate == '0000-00-00')
@@ -707,21 +708,33 @@ function FormatDate($dDate, $bWithTime=FALSE)
 
     $month = gettext("$mn"); // Allow for translation of 3 character month abbr
 
-    if ($h > 11) {
-        $sAMPM = gettext('pm');
-        if ($h > 12) {
-            $h = $h-12;
-        }
-    } else {
-        $sAMPM = gettext('am');
-        if ($h == 0) {
-            $h = 12;
-        }
-    }
+    $lang = getTranslationLanguage ();
+
+		if ($lang != "fr_FR")
+		{
+			if ($h > 11) {
+					$sAMPM = gettext('pm');
+					if ($h > 12) {
+							$h = $h-12;
+					}
+			} else {
+					$sAMPM = gettext('am');
+					if ($h == 0) {
+							$h = 12;
+					}
+			}
+		}
+    
 
     if ($bWithTime) {
-        return ("$month $dm, $y $h$m $sAMPM");
+    	if ($lang == "fr_FR")
+    		return ("$dm $month $y à $h$m $sAMPM");
+    	else	
+        return ("$month $dm, $y à $h$m $sAMPM");
     } else {
+    	if ($lang == "fr_FR")
+    		return ("$dm $month $y");
+    	else	
         return ("$month $dm, $y");
     }
 
@@ -1278,6 +1291,61 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = "future") {
         return FALSE;
     }
 
+}
+
+function getTranslationLanguage ()
+{
+// This function to transform the date in the right way, frend US format etc ...
+// It's necessary in the field editor
+// Philippe Logel © 2016-07-22
+
+	// On cherche la langue choisie par défaut
+	// **************************************************
+	$sSQL = "SELECT cfg_value "
+  . "FROM config_cfg WHERE cfg_name='sLanguage'";
+  
+  $rsConfig = mysql_query($sSQL);         // Can't use RunQuery -- not defined yet
+  
+  $sLanguage = mysql_fetch_row($rsConfig)[0];
+  
+  return $sLanguage;
+}
+
+function localizeDate ($data,$locale = "US")
+{
+// This function to transform the date in the right way, frend US format etc ...
+// It's necessary in the field editor
+// Philippe Logel © 2016-07-22
+
+	if (strlen ($data) == 0)
+		return $data;
+		
+	if (substr_count($data, '-') == 2) {
+        // Assume format is Y-M-D
+        $iFirstDelimiter = strpos($data, '-');
+        $iSecondDelimiter = strpos($data, '-', $iFirstDelimiter+1);
+
+        // Parse the year.
+        $sYear = substr($data, 0, $iFirstDelimiter);
+
+        // Parse the month
+        $sMonth = substr($data, $iFirstDelimiter+1, $iSecondDelimiter-$iFirstDelimiter-1);
+
+        // Parse the day
+        $sDay = substr($data, $iSecondDelimiter+1);
+
+        // Put into YYYY-MM-DD form
+        if ($locale == "US")
+	        return $data;
+  } 
+  
+  if ($locale == "fr" || $locale == "FR")
+  {
+  	return $sDay."/".$sMonth."/".$sYear;
+  }
+  
+  return $data;
+  	
 }
 
 function parseAndValidateDate($data, $locale = "US", $pasfut = "future") {

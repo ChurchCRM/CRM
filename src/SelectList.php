@@ -39,20 +39,20 @@ $iTenThousand = 10000;  // Constant used to offset negative choices in drop down
 $sClassSQL  = "SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence";
 $rsClassification = RunQuery($sClassSQL);
 unset($aClassificationName);
-$aClassificationName[0] = "Unassigned";
+$aClassificationName[0] = gettext("Unassigned");
 while ($aRow = mysql_fetch_array($rsClassification)) {
 	extract($aRow);
-	$aClassificationName[intval($lst_OptionID)]=$lst_OptionName;
+	$aClassificationName[intval($lst_OptionID)]=gettext($lst_OptionName);
 }
 
 // Create array with Family Role Information (lst_ID = 2)
 $sFamRoleSQL  = "SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence";
 $rsFamilyRole = RunQuery($sFamRoleSQL);
 unset($aFamilyRoleName);
-$aFamilyRoleName[0] = "Unassigned";
+$aFamilyRoleName[0] = gettext("Unassigned");
 while ($aRow = mysql_fetch_array($rsFamilyRole)) {
 	extract($aRow);
-	$aFamilyRoleName[intval($lst_OptionID)]=$lst_OptionName;
+	$aFamilyRoleName[intval($lst_OptionID)]=gettext($lst_OptionName);
 }
 
 // Create array with Person Property
@@ -65,12 +65,12 @@ $ProRows = mysql_num_rows($rsPro);
 $sPersonPropertySQL  = "SELECT * FROM property_pro WHERE pro_Class=\"p\" ORDER BY pro_Name";
 $rsPersonProperty = RunQuery($sPersonPropertySQL);
 unset($aPersonPropertyName);
-$aPersonPropertyName[0] = "Unassigned";
+$aPersonPropertyName[0] = gettext("Unassigned");
 $i = 1;
 while ( $i <= $ProRows ) {
 	$aRow = mysql_fetch_array($rsPersonProperty);
 	extract($aRow);
-	$aPersonPropertyName[intval($pro_ID)]=$pro_Name;
+	$aPersonPropertyName[intval($pro_ID)]=gettext($pro_Name);
 	$i++;
 }
 
@@ -455,7 +455,7 @@ require "Include/Header.php";
 ?>
 <div class="box box-primary">
     <div class="box-header">
-        Filter and Cart
+        <?= gettext("Filter and Cart") ?>
     </div>
     <div class="box-body">
 <form method="get" action="SelectList.php" name="PersonList">
@@ -695,7 +695,7 @@ if ($iMode == 1) {
 </div>
 <div class="box box-warning">
 	<div class="box-header">
-        Listing
+        <?= gettext("Listing")?>
     </div>
 	<div class="box-body">
 <?php
@@ -852,39 +852,39 @@ if ($Total > 0) {
 if (!isset($sPersonColumn3)) {
 	if (array_key_exists ('sPersonColumn3', $_SESSION)) {
 		switch ($_SESSION['sPersonColumn3']) {
-		case ("Family Role"):
-			$sPersonColumn3 = "Family Role";
+		case gettext("Family Role"):
+			$sPersonColumn3 = gettext("Family Role");
 			break;
-		case ("Gender"):
-			$sPersonColumn3 = "Gender";
+		case gettext("Gender"):
+			$sPersonColumn3 = gettext("Gender");
 			break;
 		default:
-			$sPersonColumn3 = "Classification";
+			$sPersonColumn3 = gettext("Classification");
 		break;
 		}
 	} else {
-		$sPersonColumn3 = "Classification";
+		$sPersonColumn3 = gettext("Classification");
 	}
 }
 
 if (!isset($sPersonColumn5)) {
 	if (array_key_exists ('sPersonColumn5', $_SESSION)) {
 		switch ($_SESSION['sPersonColumn5']) {
-		case ("Home Phone"):
-			$sPersonColumn5 = "Home Phone";
+			case gettext("Home Phone"):
+				$sPersonColumn5 = gettext("Home Phone");
+				break;
+			case gettext("Work Phone"):
+				$sPersonColumn5 = gettext("Work Phone");
+				break;
+			case gettext("Mobile Phone"):
+				$sPersonColumn5 = gettext("Mobile Phone");
 			break;
-		case ("Work Phone"):
-			$sPersonColumn5 = "Work Phone";
+			default:
+				$sPersonColumn5 = gettext("Zip/Postal Code");
 			break;
-		case ("Mobile Phone"):
-			$sPersonColumn5 = "Mobile Phone";
-		break;
-		default:
-			$sPersonColumn5 = "Zip/Postal Code";
-		break;
 		}
 	} else {
-		$sPersonColumn5 = "Zip/Postal Code";
+		$sPersonColumn5 = gettext("Zip/Postal Code");
 	}
 }
 
@@ -919,12 +919,12 @@ if(isset($iGroupID))
 
 echo '<select class="SmallText" name="PersonColumn3" onchange="this.form.submit()">';
 
-$aPersonCol3 = array("Classification","Family Role","Gender");
+$aPersonCol3 = array(gettext("Classification"),gettext("Family Role"),gettext("Gender"));
 foreach($aPersonCol3 as $s) {
 	$sel = "";
 	if($sPersonColumn3 == $s)
 		$sel = " selected";
-	echo '<option value="'.$s.'"'.$sel.'>'.gettext($s).'</option>';
+	echo '<option value="'.$s.'"'.$sel.'>'.$s.'</option>';
 }
 
 echo '</select></th>';
@@ -934,12 +934,12 @@ echo '&amp;Sort=family&amp;Filter=' .$sFilter. '">' . gettext("Family") . '</a><
 
 echo '<th>';
 echo '<select class="SmallText" name="PersonColumn5" onchange="this.form.submit()">';
-$aPersonCol5 = array("Home Phone","Work Phone","Mobile Phone","Zip/Postal Code");
+$aPersonCol5 = array(gettext("Home Phone"),gettext("Work Phone"),gettext("Mobile Phone"),gettext("Zip/Postal Code"));
 foreach($aPersonCol5 as $s) {
 	$sel = "";
 	if($sPersonColumn5 == $s)
 		$sel = " selected";
-	echo '<option value="'.$s.'"'.$sel.'>'.gettext($s).'</option>';
+	echo '<option value="'.$s.'"'.$sel.'>'.$s.'</option>';
 }
 echo "</select></th><th>";
 
@@ -949,7 +949,7 @@ if ($_SESSION['bEditRecords'])
 echo "</th><th>" . gettext("Cart") . "</th>";
 
 if ($iMode == 1) {
-	echo "<th>" . gettext("Print") . "</th>";
+	echo "<th>" . gettext("Print"). "</th>";
 } else {
 	echo "<th>" . gettext("Assign") . "</th>";
 }
@@ -989,7 +989,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 			if (isset($fam_Name))
 				echo $fam_Name;
 			else
-				echo "Unassigned";
+				echo gettext("Unassigned");
 
 			echo "</td></tr>";
 			$sRowClass = "RowColorA";
@@ -1024,9 +1024,9 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
     </td>
     <td>
     <?php
-    if ($sPersonColumn3 == "Classification")
+  if ($sPersonColumn3 == gettext("Classification"))
 		echo $aClassificationName[$per_cls_ID];
-	elseif ($sPersonColumn3 == "Family Role")
+	elseif ($sPersonColumn3 == gettext("Family Role"))
 		echo $aFamilyRoleName[$per_fmr_ID];
 	else {	// Display Gender
 		switch ($per_Gender) {
@@ -1046,13 +1046,13 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 
 	echo "<td>";
 	// Phone number or zip code
-	if ($sPersonColumn5 == "Home Phone") {
+	if ($sPersonColumn5 == gettext("Home Phone")) {
 		echo SelectWhichInfo(ExpandPhoneNumber($fam_HomePhone,$fam_Country,$dummy),
 				ExpandPhoneNumber($per_HomePhone,$fam_Country,$dummy), True);
-	} elseif ($sPersonColumn5 == "Work Phone") {
+	} elseif ($sPersonColumn5 == gettext("Work Phone")) {
 		echo SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone,$fam_Country,$dummy),
 				ExpandPhoneNumber($fam_WorkPhone,$fam_Country,$dummy), True);
-	} elseif ($sPersonColumn5 == "Mobile Phone") {
+	} elseif ($sPersonColumn5 == gettext("Mobile Phone")) {
 		echo SelectWhichInfo(ExpandPhoneNumber($per_CellPhone,$fam_Country,$dummy),
 				ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy), True);
 	} else {

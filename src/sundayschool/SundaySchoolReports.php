@@ -17,6 +17,8 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 
+$lang = gettext("en_US");
+
 // Get all the groups
 $sSQL = "SELECT * FROM group_grp ORDER BY grp_Name";
 $rsGroups = RunQuery($sSQL);
@@ -119,7 +121,7 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 ?>
 <div class="box">
   <div class="box-header with-border">
-    <h3 class="box-title">Report Details</h3>
+    <h3 class="box-title"><?= gettext("Report Details")?></h3>
   </div>
   <div class="box-body">
     <form method="post" action="SundaySchoolReports.php">
@@ -136,9 +138,9 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
               echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
             }
             echo "</select><br>";
-            echo "Multiple groups will have a Page Break between Groups<br>";
+            echo gettext("Multiple groups will have a Page Break between Groups<br>");
             echo "<input type=\"checkbox\" Name=\"allroles\" value=\"1\" checked>";
-            echo "List all Roles (unchecked will list Teacher/Student roles only)";
+            echo gettext("List all Roles (unchecked will list Teacher/Student roles only)");
             ?>
           </td>
         </tr>
@@ -220,17 +222,19 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
     </form>
   </div>
 </div>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/locales/bootstrap-datepicker.<?= substr($lang,0,2)?>.js" type="text/javascript" charset="UTF-8"></script>
+
 <script>
-  $("#FirstSunday").datepicker({format: 'yyyy-mm-dd'});
-  $("#LastSunday").datepicker({format: 'yyyy-mm-dd'});
-  $("#NoSchool1").datepicker({format: 'yyyy-mm-dd'});
-  $("#NoSchool2").datepicker({format: 'yyyy-mm-dd'});
-  $("#NoSchool3").datepicker({format: 'yyyy-mm-dd'});
-  $("#NoSchool4").datepicker({format: 'yyyy-mm-dd'});
-  $("#NoSchool5").datepicker({format: 'yyyy-mm-dd'});
-  $("#NoSchool6").datepicker({format: 'yyyy-mm-dd'});
-  $("#NoSchool7").datepicker({format: 'yyyy-mm-dd'});
-  $("#NoSchool8").datepicker({format: 'yyyy-mm-dd'});
+  $("#FirstSunday").datepicker({format:'<?=gettext("yyyy-mm-dd")?>',language :'<?= substr($lang,0,2)?>'});
+  $("#LastSunday").datepicker({format:'<?=gettext("yyyy-mm-dd")?>',language :'<?= substr($lang,0,2)?>'});
+  $("#NoSchool1").datepicker({format:'<?=gettext("yyyy-mm-dd")?>',language :'<?= substr($lang,0,2)?>'});
+  $("#NoSchool2").datepicker({format:'<?=gettext("yyyy-mm-dd")?>',language :'<?= substr($lang,0,2)?>'});
+  $("#NoSchool3").datepicker({format:'<?=gettext("yyyy-mm-dd")?>',language :'<?= substr($lang,0,2)?>'});
+  $("#NoSchool4").datepicker({format:'<?=gettext("yyyy-mm-dd")?>',language :'<?= substr($lang,0,2)?>'});
+  $("#NoSchool5").datepicker({format:'<?=gettext("yyyy-mm-dd")?>',language :'<?= substr($lang,0,2)?>'});
+  $("#NoSchool6").datepicker({format:'<?=gettext("yyyy-mm-dd")?>',language :'<?= substr($lang,0,2)?>'});
+  $("#NoSchool7").datepicker({format:'<?=gettext("yyyy-mm-dd")?>',language :'<?= substr($lang,0,2)?>'});
+  $("#NoSchool8").datepicker({format:'<?=gettext("yyyy-mm-dd")?>',language :'<?= substr($lang,0,2)?>'});
 </script>
 
 <?php

@@ -85,7 +85,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
 }
 
 // Format the BirthDate
-$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, "/", $per_Flags);
+$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, "-", $per_Flags);
 //if ($per_BirthMonth > 0 && $per_BirthDay > 0)
 //{
 //	$dBirthDate = $per_BirthMonth . "/" . $per_BirthDay;
@@ -232,7 +232,7 @@ if ($fam_ID)
 		<tr>
 			<td class="LabelColumn"><?= gettext("Family Role:") ?></td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
-			<td class="TextColumnWithBottomBorder"><?php if ($sFamRole != "") { echo $sFamRole; } else { echo "Unassigned"; } ?>&nbsp;</td>
+			<td class="TextColumnWithBottomBorder"><?php if ($sFamRole != "") { echo gettext($sFamRole); } else { echo gettext("Unassigned"); } ?>&nbsp;</td>
 		</tr>
 		<?php
 			for($i = 1; $i <= $numColumn2Fields; $i++)
@@ -321,7 +321,7 @@ if ($fam_ID)
 				<?php switch ($per_Gender) {case 1: echo gettext("Male"); break; case 2: echo gettext("Female"); break; default: echo "";} ?>&nbsp;
 			</td>
 			<td>
-				<?= $sFamRole ?>&nbsp;
+				<?= gettext($sFamRole) ?>&nbsp;
 			</td>
 			<td>
 				<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear, $per_Flags); ?>
@@ -441,7 +441,7 @@ else
 
 		//Display the row
 		echo "<tr class=\"" . $sRowClass . "\">";
-		echo "<td valign=\"top\">" . $pro_Name . "&nbsp;</td>";
+		echo "<td valign=\"top\">" . gettext($pro_Name) . "&nbsp;</td>";
 		echo "<td valign=\"top\">" . $r2p_Value . "&nbsp;</td>";
 
 		echo "</tr>";
@@ -460,7 +460,7 @@ if ($_SESSION['bNotes'])
 	while($aRow = mysql_fetch_array($rsNotes))
 	{
 		extract($aRow);
-		echo "<p class=\"ShadedBox\")>" . $nte_Text . "</p>";
+		echo "<p class=\"ShadedBox\")>" . gettext($nte_Text) . "</p>";
 		echo "<span class=\"SmallText\">" . gettext("Entered:") . FormatDate($nte_DateEntered,True) . "</span><br>";
 
 		if (strlen($nte_DateLastEdited))

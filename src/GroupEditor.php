@@ -52,7 +52,7 @@ require "Include/Header.php";
         <span style="color: red"></span>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close")?></button>
         <button name="setgroupSpecificProperties" id="setgroupSpecificProperties" type="button" class="btn btn-danger"></button>
       </div>
     </div>
@@ -62,7 +62,7 @@ require "Include/Header.php";
 
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title">Group Settings</h3>
+    <h3 class="box-title"><?= gettext("Group Settings")?></h3>
   </div>
   <div class="box-body">
     <form name="groupEditForm" id="groupEditForm">
@@ -129,13 +129,13 @@ require "Include/Header.php";
 
             <?php
             if ($thisGroup['grp_hasSpecialProps']) {
-              echo "Enabled<br/>";
+              echo "<?= gettext('Enabled')?><br/>";
               echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">Disable Group Specific Properties</button><br/>';
               echo '<a  class="btn btn-success" href="GroupPropsFormEditor.php?GroupID=' . $iGroupID . '">' . gettext("Edit Group-Specific Properties Form") . ' </a>';
             }
             else {
               echo "Disabled <br>";
-              echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">Enable Group Specific Properties</button>&nbsp;';
+              echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">'.gettext("Enable Group Specific Properties").'</button>&nbsp;';
             }
             ?>
           </div>
@@ -158,13 +158,13 @@ require "Include/Header.php";
     <div class="alert alert-info alert-dismissable">
       <i class="fa fa-info"></i>
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-      <strong></strong>Group role name changes are saved as soon as the box loses focus
+      <strong></strong><?= gettext("Group role name changes are saved as soon as the box loses focus")?>
     </div>
     <table class="table" id="groupRoleTable">
     </table>
-    <label for="newRole">New Role: </label><input type="text" class="form-control" id="newRole" name="newRole">
+    <label for="newRole"><?= gettext("New Role:")?> </label><input type="text" class="form-control" id="newRole" name="newRole">
     <br>
-    <button type="button" id="addNewRole" class="btn btn-primary">Add New Role</button>
+    <button type="button" id="addNewRole" class="btn btn-primary"><?= gettext("Add New Role")?></button>
   </div>
 </div>
 <script>

@@ -23,7 +23,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
-    <strong>Copyright &copy; 2015-2016 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2015-2016 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext("All rights reserved")?>.
   </footer>
 
     <!-- Add the sidebar's background. This div must be placed
@@ -55,6 +55,38 @@
     };
   </script>
   <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+  
+  <script type="text/javascript">
+// Â© Philippe Logel 2016 : I change the way to translate all the tables so I rewrite the to change the footer
+$(function() {
+	// Automatically convert all data tables that have not already been converted.
+	$('table.data-table:not(.dataTable)').dataTable({
+            "language": {
+							"sProcessing":     "<?= gettext('Processing...') ?>",
+							"sSearch":         "<?= gettext('Search:') ?>",
+							"sLengthMenu":     "<?= gettext('Show _MENU_ entries') ?>",
+							"sInfo":           "<?= gettext('Showing _START_ to _END_ of _TOTAL_ entries') ?>",
+							"sInfoEmpty":      "<?= gettext('Showing 0 to 0 of 0 entries') ?>",
+							"sInfoFiltered":   "<?= gettext('(filtered from _MAX_ total entries)') ?>",
+							"sInfoPostFix":    "",
+							"sLoadingRecords": "<?= gettext('Loading...') ?>",
+							"sZeroRecords":    "",
+							"sEmptyTable":     "<?= gettext('No data available in table')?>",
+							"oPaginate": {
+								"sFirst":      "<?= gettext('First')?>",
+								"sPrevious":   "<?= gettext('Previous')?>",
+								"sNext":       "<?= gettext('Next')?>",
+								"sLast":       "<?= gettext('Last')?>"
+							},
+							"oAria": {
+								"sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+								"sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
+							}			 
+						}
+        });
+});
+
+</script>
   <? } ?>
 
 </body>

@@ -23,7 +23,7 @@ require "Include/Header.php"; ?>
     <div class="box-body">
       <?php foreach ($calenderService->getEventTypes() as $type) { ?>
       <div class="fc-event-container fc-day-grid-event" style="background-color:<?= $type["backgroundColor"]?>;border-color:<?= $type["backgroundColor"]?>;color: white; width: 100px">
-          <div class="fc-title"><?= $type["Name"]?></div>
+          <div class="fc-title"><?= gettext($type["Name"])?></div>
       </div>
       <?php }?>
     </div>
@@ -47,12 +47,13 @@ require "Include/Header.php"; ?>
 <!-- fullCalendar 2.2.5 -->
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/daterangepicker/moment.min.js"></script>
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/fullcalendar.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/lang-all.js"></script>
 <script>
   $(function () {
     /* initialize the calendar
      -----------------------------------------------------------------*/
     $('#calendar').fullCalendar({
-      header: {
+    	header: {
         left: 'prev,next today',
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
@@ -64,6 +65,7 @@ require "Include/Header.php"; ?>
         day: '<?= gettext("Day") ?>'
       },
       events: window.CRM.root + '/api/calendar/events'
+      lang: '<?= substr(getTranslationLanguage(),0,2)?>'
     });
  });
 </script>

@@ -15,6 +15,8 @@
 
 function TranslateMenuOptions()
 {
+	return;
+	
   $sSQL = "SELECT content_english from menuconfig_mcf";
   $rsMenuOptions = RunQuery($sSQL);
 
