@@ -23,7 +23,7 @@ require "Include/Header.php"; ?>
     <div class="box-body">
       <?php foreach ($calenderService->getEventTypes() as $type) { ?>
       <div class="fc-event-container fc-day-grid-event" style="background-color:<?= $type["backgroundColor"]?>;border-color:<?= $type["backgroundColor"]?>;color: white; width: 100px">
-          <div class="fc-title"><?= $type["Name"]?></div>
+          <div class="fc-title"><?= gettext($type["Name"])?></div>
       </div>
       <?php }?>
     </div>
