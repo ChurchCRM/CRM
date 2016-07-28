@@ -256,27 +256,27 @@ function implodeUnique($array, $withQuotes)
         "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
       },
       "language": {
-			"sProcessing":     "<?= gettext('Processing...') ?>",
-			"sSearch":         "<?= gettext('Search:') ?>",
-			"sLengthMenu":     "<?= gettext('Show _MENU_ entries') ?>",
-			"sInfo":           "<?= gettext('Showing _START_ to _END_ of _TOTAL_ entries') ?>",
-			"sInfoEmpty":      "<?= gettext('Showing 0 to 0 of 0 entries') ?>",
-			"sInfoFiltered":   "<?= gettext('(filtered from _MAX_ total entries)') ?>",
-			"sInfoPostFix":    "",
-			"sLoadingRecords": "<?= gettext('Loading...') ?>",
-			"sZeroRecords":    "",
-			"sEmptyTable":     "<?= gettext('No data available in table')?>",
-			"oPaginate": {
-				"sFirst":      "<?= gettext('First')?>",
-				"sPrevious":   "<?= gettext('Previous')?>",
-				"sNext":       "<?= gettext('Next')?>",
-				"sLast":       "<?= gettext('Last')?>"
-			},
-			"oAria": {
-				"sSortAscending":  ": activer pour trier la colonne par ordre croissant",
-				"sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
-			}			 
-		}
+        "sProcessing":     "<?= gettext('Processing...') ?>",
+        "sSearch":         "<?= gettext('Search:') ?>",
+        "sLengthMenu":     "<?= gettext('Show _MENU_ entries') ?>",
+        "sInfo":           "<?= gettext('Showing _START_ to _END_ of _TOTAL_ entries') ?>",
+        "sInfoEmpty":      "<?= gettext('Showing 0 to 0 of 0 entries') ?>",
+        "sInfoFiltered":   "<?= gettext('(filtered from _MAX_ total entries)') ?>",
+        "sInfoPostFix":    "",
+        "sLoadingRecords": "<?= gettext('Loading...') ?>",
+        "sZeroRecords":    "",
+        "sEmptyTable":     "<?= gettext('No data available in table')?>",
+        "oPaginate": {
+          "sFirst":      "<?= gettext('First')?>",
+          "sPrevious":   "<?= gettext('Previous')?>",
+          "sNext":       "<?= gettext('Next')?>",
+          "sLast":       "<?= gettext('Last')?>"
+        },
+        "oAria": {
+          "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+          "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
+        }
+      }
     });
 
     // turn the element to select2 select style
