@@ -176,11 +176,17 @@ $app->group('/queries', function () use ($app) {
 
 $app->group('/database', function () use ($app) {
   $systemService = $app->SystemService;
+  
   $app->post('/backup', function () use ($app, $systemService) {
     $input = getJSONFromApp($app);
     $backup = $systemService->getDatabaseBackup($input);
     echo json_encode($backup);
   });
+  
+  $app->post('/backupRemote', function() use ($app, $systemService) {
+    $backup = $systemService->copyBackupToExternalStorage();
+    echo json_encode($backup);
+  });  
 
   $app->post('/restore', function () use ($app, $systemService) {
 

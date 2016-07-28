@@ -165,6 +165,51 @@ class SystemService {
 
     return $backup;
   }
+  
+  function copyBackupToExternalStorage()
+  {
+    global $sExternalBackupType, $sExternalBackupUsername, $sExternalBackupPassword, $sExternalBackupEndpoint;
+    if( strcasecmp($sExternalBackupType,"WebDAV") == 0  )
+    {
+      if( $sExternalBackupUsername && $sExternalBackupPassword && $sExternalBackupEndpoint )
+      {
+        $params = new stdClass();
+        $params->iArchiveType = 3;
+        $backup = $this->getDatabaseBackup($params);
+        $backup->credentials = $sExternalBackupUsername.":".$sExternalBackupPassword;
+        $backup->filesize = filesize($backup->saveTo);
+        $fh = fopen($backup->saveTo, 'r');
+        $backup->remoteUrl = $sExternalBackupEndpoint;
+        $ch = curl_init($backup->remoteUrl . $backup->filename);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+        curl_setopt($ch, CURLOPT_USERPWD, $backup->credentials);
+        curl_setopt($ch, CURLOPT_PUT, true);
+        curl_setopt($ch, CURLOPT_INFILE, $fh);
+        curl_setopt($ch, CURLOPT_INFILESIZE, $backup->filesize);
+        $backup->result = curl_exec($ch);
+        fclose($fh);
+        return($backup);
+      }
+      else 
+      {
+        throw new Exception("WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set",500);
+      }
+    }
+    elseif( strcasecmp($sExternalBackupType,"Local") == 0 )
+    {
+      try
+      {
+        $backup = $this->getDatabaseBackup($params);
+        exec("mv " . $backup->saveTo . " " .  $sExternalBackupEndpoint);
+        return($backup);
+      }
+      catch (Exception $exc)
+      {
+        throw new Exception("The local path $sExternalBackupEndpoint is not writeable.  Unable to store backup.",500);
+      }
+    
+    }
+  }
 
   function download($filename) {
     requireUserGroupMembership("bAdmin");
