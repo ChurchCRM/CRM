@@ -50,21 +50,21 @@ class PersonService
     global $sEnableGravatarPhotos;
     if ( $id != "" ) {
       $photoFile = $this->getUploadedPhoto($id);
-      if ( $photoFile == ""  && $sEnableGravatarPhotos ) {
+      if ( $photoFile == "" ) {
         $sSQL = 'SELECT per_ID, per_FirstName, per_LastName, per_Gender, per_Email, fmr.lst_OptionName AS sFamRole
                  FROM person_per per
                  LEFT JOIN list_lst fmr ON per.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
                  WHERE per_ID =' . $id;
         $person = RunQuery($sSQL);
         extract(mysql_fetch_array($person));
-        if ( $per_Email != "" )
+        if ( $per_Email != "" && $sEnableGravatarPhotos)
         {
           $photoFile = $this->getGravatar($per_Email);
         }
-      }
 
-      if ( $photoFile == "" ) {
-        $photoFile = $this->getDefaultPhoto($per_Gender, $sFamRole);
+        if ( $photoFile == "" ) {
+          $photoFile = $this->getDefaultPhoto($per_Gender, $sFamRole);
+        }
       }
        return $photoFile;
     }
