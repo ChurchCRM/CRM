@@ -102,8 +102,8 @@ $rsConfigs = RunQuery($sSQL);
 <form method=post action=SettingsIndividual.php>
 <table class="table">
 <tr><th><?= gettext("Variable name") ?></th>
-	<th>Current Value</th>
-	<th>Notes</h3></th>
+	<th><?= gettext("Current Value")?></th>
+	<th><?= gettext("Notes")?></h3></th>
 </tr>
 <?
 $r = 1;
@@ -124,8 +124,8 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 
 	
 	// Variable Name & Type
-	echo '<tr><td class=LabelColumn>'.$ucfg_name;
-	echo '<input type=hidden name="type['.$ucfg_id.']" value="'.$ucfg_type.'"></td>';
+	echo '<tr><td class=LabelColumn>'.gettext($ucfg_name);
+	echo '<input type=hidden name="type['.$ucfg_id.']" value="'.gettext($ucfg_type).'"></td>';
 	
 	// Current Value
 	if ($ucfg_type == 'text') {
@@ -154,7 +154,7 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 	}
 		
 	// Notes
-	echo "<td>$ucfg_tooltip</td>	</tr>";
+	echo "<td>".gettext($ucfg_tooltip)."</td>	</tr>";
 	$r++;
 }
 ?>
