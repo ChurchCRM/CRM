@@ -317,11 +317,11 @@ if (isset($loginPageMsg))
 
 <form class="form-signin" role="form" method="post" name="LoginForm" action="Login.php">
     <div class="form-group has-feedback">
-        <input type="text" id="UserBox" name="User" class="form-control" placeholder="Email/Username" required autofocus>
+        <input type="text" id="UserBox" name="User" class="form-control" placeholder="<?= gettext("Email/Username")?>" required autofocus>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
     </div>
     <div class="form-group has-feedback">
-        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="Password" required autofocus>
+        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext("Password") ?>" required autofocus>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
     </div>
     <div class="row">
