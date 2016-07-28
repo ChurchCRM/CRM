@@ -35,7 +35,7 @@ $rsKidsGender = RunQuery($sSQL);
 <!-- Default box -->
 <div class="box">
   <div class="box-header with-border">
-    <h3 class="box-title">Members Functions</h3>
+    <h3 class="box-title"><?= gettext("Members Functions") ?></h3>
   </div>
   <div class="box-body">
     <a href="SelectList.php?mode=person" class="btn btn-app"><i class="fa fa-user"></i><?= gettext("All People") ?></a>
@@ -73,14 +73,14 @@ $rsKidsGender = RunQuery($sSQL);
         </h3>
 
         <p>
-          Families
+          <?= gettext("Families") ?>
         </p>
       </div>
       <div class="icon">
         <i class="ion ion-person-stalker"></i>
       </div>
       <a href="<?= $sRootPath . "/" ?>FamilyList.php" class="small-box-footer">
-        See all Families <i class="fa fa-arrow-circle-right"></i>
+        <?= gettext("See all Families") ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -94,14 +94,14 @@ $rsKidsGender = RunQuery($sSQL);
         </h3>
 
         <p>
-          People
+          <?= gettext("People") ?>
         </p>
       </div>
       <div class="icon">
         <i class="ion ion-person"></i>
       </div>
       <a href="<?= $sRootPath . "/" ?>SelectList.php?mode=person" class="small-box-footer">
-        See All People <i class="fa fa-arrow-circle-right"></i>
+        <?= gettext("See All People") ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -115,14 +115,14 @@ $rsKidsGender = RunQuery($sSQL);
         </h3>
 
         <p>
-          Sunday School Kids
+          <?= gettext("Sunday School Kids") ?>
         </p>
       </div>
       <div class="icon">
         <i class="fa fa-child"></i>
       </div>
       <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
-        More info <i class="fa fa-arrow-circle-right"></i>
+        <?= gettext("More info") ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -136,14 +136,14 @@ $rsKidsGender = RunQuery($sSQL);
         </h3>
 
         <p>
-          Groups
+          <?= gettext("Groups") ?>
         </p>
       </div>
       <div class="icon">
         <i class="fa fa-gg"></i>
       </div>
       <a href="<?= $sRootPath ?>/grouplist" class="small-box-footer">
-        More info <i class="fa fa-arrow-circle-right"></i>
+        <?= gettext("More info") ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -154,7 +154,7 @@ $rsKidsGender = RunQuery($sSQL);
   <div class="col-lg-12">
     <div class="box box-info">
       <div class="box-header with-border">
-        <h3 class="box-title">Reports</h3>
+        <h3 class="box-title"><?= gettext("Reports") ?></h3>
       </div>
       <div class="box-body">
         <a class="MediumText" href="GroupReports.php"><?php echo gettext('Reports on groups and roles'); ?></a>
@@ -189,7 +189,7 @@ $rsKidsGender = RunQuery($sSQL);
       <div class="box-header with-border">
         <i class="fa fa-pie-chart"></i>
 
-        <h3 class="box-title">Family Roles</h3>
+        <h3 class="box-title"><?= gettext("Family Roles") ?></h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -200,13 +200,13 @@ $rsKidsGender = RunQuery($sSQL);
       <div class="box-body no-padding">
         <table class="table table-condensed">
           <tr>
-            <th>Role / Gender</th>
-            <th>% of Members</th>
-            <th style="width: 40px">Count</th>
+            <th><?= gettext("Role / Gender") ?></th>
+            <th>% <?= gettext("of Members") ?></th>
+            <th style="width: 40px"><?= gettext("Count") ?></th>
           </tr>
           <? foreach ($demographicStats as $key => $value) { ?>
             <tr>
-              <td><?= $key ?></td>
+              <td><?= gettext($key) ?></td>
               <td>
                 <div class="progress progress-xs progress-striped active">
                   <div class="progress-bar progress-bar-success"
@@ -225,7 +225,7 @@ $rsKidsGender = RunQuery($sSQL);
       <div class="box-header with-border">
         <i class="fa fa-bar-chart-o"></i>
 
-        <h3 class="box-title">People Classification</h3>
+        <h3 class="box-title"><?= gettext("People Classification") ?></h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -235,13 +235,13 @@ $rsKidsGender = RunQuery($sSQL);
       </div>
       <table class="table table-condensed">
         <tr>
-          <th>Classification</th>
-          <th>% of Members</th>
-          <th style="width: 40px">Count</th>
+          <th><?= gettext("Classification") ?></th>
+          <th>% <?= gettext("of Members") ?></th>
+          <th style="width: 40px"><?= gettext("Count") ?></th>
         </tr>
         <? foreach ($personStats as $key => $value) { ?>
           <tr>
-            <td><?= $key ?></td>
+            <td><?= gettext($key) ?></td>
             <td>
               <div class="progress progress-xs progress-striped active">
                 <div class="progress-bar progress-bar-success"
@@ -258,7 +258,7 @@ $rsKidsGender = RunQuery($sSQL);
       <div class="box-header">
         <i class="ion ion-android-contacts"></i>
 
-        <h3 class="box-title">Gender Demographics</h3>
+        <h3 class="box-title"><?= gettext("Gender Demographics") ?></h3>
 
         <div class="box-tools pull-right">
           <div id="gender-donut-legend" class="chart-legend"></div>
@@ -282,18 +282,18 @@ $rsKidsGender = RunQuery($sSQL);
   var PieData = [
     <?php while ($row = mysql_fetch_array($rsAdultsGender)) {
         if ($row['per_Gender'] == 1 ) {
-            echo "{value: ". $row['numb'] ." , color: \"#003399\", highlight: \"#3366ff\", label: \"Men\" },";
+            echo "{value: ". $row['numb'] ." , color: \"#003399\", highlight: \"#3366ff\", label: \"".gettext("Men")."\" },";
         }
         if ($row['per_Gender'] == 2 ) {
-            echo "{value: ". $row['numb'] ." , color: \"#9900ff\", highlight: \"#ff66cc\", label: \"Women\"},";
+            echo "{value: ". $row['numb'] ." , color: \"#9900ff\", highlight: \"#ff66cc\", label: \"".gettext("Women")."\"},";
         }
     }
     while ($row = mysql_fetch_array($rsKidsGender)) {
     if ($row['per_Gender'] == 1 ) {
-            echo "{value: ". $row['numb'] ." , color: \"#3399ff\", highlight: \"#99ccff\", label: \"Boys\"},";
+            echo "{value: ". $row['numb'] ." , color: \"#3399ff\", highlight: \"#99ccff\", label: \"".gettext("Boys")."\"},";
         }
         if ($row['per_Gender'] == 2 ) {
-            echo "{value: ". $row['numb'] ." , color: \"#009933\", highlight: \"#99cc00\", label: \"Girls\",}";
+            echo "{value: ". $row['numb'] ." , color: \"#009933\", highlight: \"#99cc00\", label: \"".gettext("Girls")."\",}";
         }
     }
     ?>
