@@ -1,29 +1,28 @@
 # Change Log
 
-## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
-
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.7...HEAD)
+## [2.1.8](https://github.com/ChurchCRM/CRM/tree/2.1.8) (2016-07-28)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.7...2.1.8)
 
 **Implemented enhancements:**
 
 - Email from Member Dashboard [\#848](https://github.com/ChurchCRM/CRM/issues/848)
 - Create Automatic Backup to Cloud Storage [\#263](https://github.com/ChurchCRM/CRM/issues/263)
-- Backup to External Storage \(Manual and Automatic on Schedule\) [\#855](https://github.com/ChurchCRM/CRM/pull/855) ([crossan007](https://github.com/crossan007))
-- update translations es\_ES using base file [\#836](https://github.com/ChurchCRM/CRM/pull/836) ([ajcobo](https://github.com/ajcobo))
-- Merge from \#830 [\#831](https://github.com/ChurchCRM/CRM/pull/831) ([DawoudIO](https://github.com/DawoudIO))
 - add corrected translations to Spanish locale [\#830](https://github.com/ChurchCRM/CRM/pull/830) ([ajcobo](https://github.com/ajcobo))
 - ORM Cleanup: Autoloader Import, Seeddata, Timelines   [\#823](https://github.com/ChurchCRM/CRM/pull/823) ([DawoudIO](https://github.com/DawoudIO))
 - Calendar api [\#803](https://github.com/ChurchCRM/CRM/pull/803) ([DawoudIO](https://github.com/DawoudIO))
+- Backup to External Storage \(Manual and Automatic on Schedule\) [\#855](https://github.com/ChurchCRM/CRM/pull/855) ([crossan007](https://github.com/crossan007))
+- update translations es\_ES using base file [\#836](https://github.com/ChurchCRM/CRM/pull/836) ([ajcobo](https://github.com/ajcobo))
+- Merge from \#830 [\#831](https://github.com/ChurchCRM/CRM/pull/831) ([DawoudIO](https://github.com/DawoudIO))
 
 **Fixed bugs:**
 
-- Default pictures no longer correct [\#873](https://github.com/ChurchCRM/CRM/issues/873)
 - Last Login Time Stamp Does not respect timezone [\#867](https://github.com/ChurchCRM/CRM/issues/867)
+- Search box is not touch friendly [\#404](https://github.com/ChurchCRM/CRM/issues/404)
+- Default pictures no longer correct [\#873](https://github.com/ChurchCRM/CRM/issues/873)
 - show page name in issue reporter [\#865](https://github.com/ChurchCRM/CRM/issues/865)
 - Sunday School Email  [\#851](https://github.com/ChurchCRM/CRM/issues/851)
 - Cart Functions Buttons Location [\#847](https://github.com/ChurchCRM/CRM/issues/847)
 - Search bar does not work on iOS [\#821](https://github.com/ChurchCRM/CRM/issues/821)
-- Search box is not touch friendly [\#404](https://github.com/ChurchCRM/CRM/issues/404)
 - Fixed Default pictures no longer correct due to Gravatar flag [\#876](https://github.com/ChurchCRM/CRM/pull/876) ([DawoudIO](https://github.com/DawoudIO))
 - Don't use the server's time zone for user login timestamps.  Use the … [\#868](https://github.com/ChurchCRM/CRM/pull/868) ([crossan007](https://github.com/crossan007))
 - add page name to issue reporter [\#866](https://github.com/ChurchCRM/CRM/pull/866) ([crossan007](https://github.com/crossan007))
@@ -45,17 +44,17 @@
 
 **Merged pull requests:**
 
-- rearrange cart functions to top [\#850](https://github.com/ChurchCRM/CRM/pull/850) ([crossan007](https://github.com/crossan007))
-- group roles email link [\#849](https://github.com/ChurchCRM/CRM/pull/849) ([crossan007](https://github.com/crossan007))
 - Change spelling error in ReadMe.md \(Project Metrics\) [\#842](https://github.com/ChurchCRM/CRM/pull/842) ([JerJohn15](https://github.com/JerJohn15))
 - db upgrades cleanup  [\#839](https://github.com/ChurchCRM/CRM/pull/839) ([DawoudIO](https://github.com/DawoudIO))
 - ORM Schema Ony Update July 19 [\#838](https://github.com/ChurchCRM/CRM/pull/838) ([DawoudIO](https://github.com/DawoudIO))
 - Moving all to 2.1.8 [\#837](https://github.com/ChurchCRM/CRM/pull/837) ([DawoudIO](https://github.com/DawoudIO))
 - Only cleanup schema [\#833](https://github.com/ChurchCRM/CRM/pull/833) ([crossan007](https://github.com/crossan007))
-- don't remove the files composer puts in the vendor directory [\#832](https://github.com/ChurchCRM/CRM/pull/832) ([crossan007](https://github.com/crossan007))
 - Diff from Feature/ImprovePledgeEditor for schema only chagnes [\#825](https://github.com/ChurchCRM/CRM/pull/825) ([crossan007](https://github.com/crossan007))
 - Update develop from master [\#808](https://github.com/ChurchCRM/CRM/pull/808) ([crossan007](https://github.com/crossan007))
 - Note orm cleanup [\#807](https://github.com/ChurchCRM/CRM/pull/807) ([DawoudIO](https://github.com/DawoudIO))
+- rearrange cart functions to top [\#850](https://github.com/ChurchCRM/CRM/pull/850) ([crossan007](https://github.com/crossan007))
+- group roles email link [\#849](https://github.com/ChurchCRM/CRM/pull/849) ([crossan007](https://github.com/crossan007))
+- don't remove the files composer puts in the vendor directory [\#832](https://github.com/ChurchCRM/CRM/pull/832) ([crossan007](https://github.com/crossan007))
 
 ## [2.1.7](https://github.com/ChurchCRM/CRM/tree/2.1.7) (2016-07-11)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.6...2.1.7)
