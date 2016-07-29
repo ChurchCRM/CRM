@@ -23,6 +23,6 @@ function getRoleLabel($famRole)
   } else {
     $label = $label . "label-default";
   }
-  $label = $label . "\">" . gettext($famRole) . "</span>";
+  $label = $label . "\">" . $famRole . "</span>";
   return $label;
 }

@@ -158,7 +158,7 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
                         ?>
                   <tr>
                        <td><img style="vertical-align:middle;" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$lst_OptionID] ?>.png'/></td>
-                       <td><?= gettext($lst_OptionName) ?></td>
+                       <td><?= $lst_OptionName ?></td>
                  </tr>
         <?php
                 }
