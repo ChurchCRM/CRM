@@ -135,7 +135,8 @@ if ($iUserID > 0)
     else
     {
         // Set the LastLogin and Increment the LoginCount
-        $sSQL = "UPDATE user_usr SET usr_LastLogin = NOW(), usr_LoginCount = usr_LoginCount + 1, usr_FailedLogins = 0 WHERE usr_per_ID ='$iUserID'";
+        $date = new DateTime("now", new DateTimeZone($sTimeZone));
+        $sSQL = "UPDATE user_usr SET usr_LastLogin = '".$date->format('Y-m-d H:i:s')."', usr_LoginCount = usr_LoginCount + 1, usr_FailedLogins = 0 WHERE usr_per_ID ='$iUserID'";
         RunQuery($sSQL);
 
         // Set the User's family id in case EditSelf is enabled

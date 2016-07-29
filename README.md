@@ -18,7 +18,7 @@ Welcome to Church Web CRM
 
 * [Checkout our online Docs] (http://docs.churchcrm.io)
 
-## Projet Metrics 
+## Project Metrics 
 
 [![Throughput Graph](https://graphs.waffle.io/ChurchCRM/CRM/throughput.svg)](https://waffle.io/ChurchCRM/CRM/metrics/throughput)
 

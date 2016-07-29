@@ -3,7 +3,7 @@
         type="application/xml"
         schematypens="http://relaxng.org/ns/structure/1.0" ?>
 
-<project name="ChurchCRM - Build" basedir="." default="dist">
+<project name="ChurchCRM - Build" basedir="." default="release">
     <property file="./build.properties"/>
     <property name="builddir" value="./target"/>
     <property name="sourcedir" value="${builddir}/code"/>
@@ -29,6 +29,9 @@
                 <include name="**"/>
                 <exclude name="Images/Person/thumbnails/*.jpg"/>
                 <exclude name="Include/Config.php"/>
+                <exclude name="vendor/almasaeed2010/**"/>
+                <exclude name="vendor/components/**"/>
+                <exclude name="vendor/driftyco/**"/>
             </fileset>
         </copy>
 
@@ -37,7 +40,7 @@
     <!-- ============================================  -->
     <!-- (DEFAULT)  Target: dist                       -->
     <!-- ============================================  -->
-    <target name="dist" depends="build">
+    <target name="package" depends="build">
         <echo message="Creating archive..."/>
 
         <zip destfile="${builddir}/ChurchCRM-${build.version}.zip" basedir="${sourcedir}"/>
@@ -58,6 +61,12 @@
         <exec command="gem install github_changelog_generator" passthru="true"/>
     </target>
 
+    <target name="rev-build-number">
+        <echo message="now version ${build.version.next}"/>
+        <exec command="replace '${build.version}' '${build.version.next}' -- build.properties src/composer.json src/mysql/install/Install.sql" dir="." passthru="true"/>
+        <echo message="please update build.xml with the next verion file"/>
+    </target>
+
     <target name="change-log" depends="install-change-log">
         <echo message="building changeset"/>
         <exec command="github_changelog_generator -t ${github.token}" dir="." passthru="true"/>
@@ -68,5 +77,5 @@
         <exec command="xgettext --from-code=UTF-8 -o locale/messages.po *.php email/*.php Include/*.php Reports/*.php sundayschool/*.php" dir="src" passthru="true"/>
     </target>
 
-    <target name="post-release" depends="change-log, locale-update" />
+    <target name="release" depends="locale-update, package, change-log, rev-build-number" />
 </project>
