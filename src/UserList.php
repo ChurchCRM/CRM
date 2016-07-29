@@ -51,8 +51,8 @@ require "Include/Header.php";
 <!-- Default box -->
     <div class="box">
         <div class="box-body">
-            <a href="UserEditor.php" class="btn btn-app"><i class="fa fa-user-plus"></i>New User</a>
-            <a href="SettingsUser.php" class="btn btn-app"><i class="fa fa-wrench"></i>User Settings</a>
+            <a href="UserEditor.php" class="btn btn-app"><i class="fa fa-user-plus"></i><?= gettext("New User")?></a>
+            <a href="SettingsUser.php" class="btn btn-app"><i class="fa fa-wrench"></i><?= gettext("User Settings")?></a>
         </div>
     </div>
 <div class="box">

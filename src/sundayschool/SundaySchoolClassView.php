@@ -21,19 +21,19 @@ while ($aRow = mysql_fetch_array($rsSundaySchoolClass)) {
 
 $birthDayMonthChartArray = array();
 foreach ($sundaySchoolService->getKidsBirthdayMonth($iGroupId) as $birthDayMonth => $kidsCount) {
-  array_push($birthDayMonthChartArray, "['" . $birthDayMonth . "', " . $kidsCount . " ]");
+  array_push($birthDayMonthChartArray, "['" . gettext($birthDayMonth) . "', " . $kidsCount . " ]");
 }
 $birthDayMonthChartJSON = implode(",", $birthDayMonthChartArray);
 
 $genderChartArray = array();
 foreach ($sundaySchoolService->getKidsGender($iGroupId) as $gender => $kidsCount) {
-  array_push($genderChartArray, "{label: '" . $gender . "', data: " . $kidsCount . "}");
+  array_push($genderChartArray, "{label: '" . gettext($gender) . "', data: " . $kidsCount . "}");
 }
 $genderChartJSON = implode(",", $genderChartArray);
 
 
 $rsTeachers = $sundaySchoolService->getClassByRole($iGroupId, "Teacher");
-$sPageTitle = gettext("Sunday School: " . $iGroupName);
+$sPageTitle = gettext("Sunday School: ") . $iGroupName;
 
 $TeachersEmails = array();
 $KidsEmails = array();
@@ -108,7 +108,7 @@ require "../Include/Header.php";
 
 <div class="box box-success">
   <div class="box-header">
-    <h3 class="box-title">Teachers</h3>
+    <h3 class="box-title"><?= gettext("Teachers") ?></h3>
   </div>
   <!-- /.box-header -->
   <div class="box-body row">
@@ -120,8 +120,8 @@ require "../Include/Header.php";
           <div class="user-profile-inner">
             <h4 class="white"><?= $teacher['per_FirstName'] . " " . $teacher['per_LastName'] ?></h4>
             <img src="<?= $personService->getPhoto($teacher['per_ID']); ?>" class="img-circle profile-avatar" alt="User avatar" width="80" height="80">
-            <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</a>
-            <a href="../PersonView.php?PersonID=<?= $teacher['per_ID'] ?>" type="button" class="btn btn-primary btn-info btn-block"><i class="fa fa-q"></i> View Profile</a>
+            <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> <?= gettext("Send Message") ?></a>
+            <a href="../PersonView.php?PersonID=<?= $teacher['per_ID'] ?>" type="button" class="btn btn-primary btn-info btn-block"><i class="fa fa-q"></i><?= gettext("View Profile") ?></a>
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@ require "../Include/Header.php";
 
 <div class="box box-info collapsed-box">
   <div class="box-header">
-    <h3 class="box-title">Quick Status</h3>
+    <h3 class="box-title"><?= gettext("Quick Status") ?></h3>
     <div class="box-tools pull-right">
       <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
     </div>
@@ -144,7 +144,7 @@ require "../Include/Header.php";
         <div class="box-header">
           <i class="fa fa-bar-chart-o"></i>
 
-          <h3 class="box-title">Birthdays by Month</h3>
+          <h3 class="box-title"><?= gettext("Birthdays by Month")?></h3>
         </div>
         <div class="box-body">
           <div id="bar-chart" style="height: 300px;"></div>
@@ -159,7 +159,7 @@ require "../Include/Header.php";
         <div class="box-header">
           <i class="fa fa-bar-chart-o"></i>
 
-          <h3 class="box-title">Gender</h3>
+          <h3 class="box-title"><?= gettext("Gender")?></h3>
         </div>
         <div class="box-body">
           <div id="donut-chart" style="height: 300px;"></div>
@@ -173,26 +173,26 @@ require "../Include/Header.php";
 
 <div class="box box-primary">
   <div class="box-header">
-    <h3 class="box-title">Kids</h3>
+    <h3 class="box-title"><?= gettext("Kids")?></h3>
   </div>
   <!-- /.box-header -->
   <div class="box-body table-responsive">
     <table id="sundayschool" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
       <tr>
-        <th>Name</th>
-        <th>Birth Date</th>
-        <th>Age</th>
-        <th>Email</th>
-        <th>Mobile</th>
-        <th>Home Phone</th>
-        <th>Home Address</th>
-        <th>Dad Name</th>
-        <th>Dad Mobile</th>
-        <th>Dad Email</th>
-        <th>Mom Name</th>
-        <th>Mom Mobile</th>
-        <th>Mom Email</th>
+        <th><?= gettext("Name") ?></th>
+        <th><?= gettext("Birth Date") ?></th>
+        <th><?= gettext("Age") ?></th>
+        <th><?= gettext("Email") ?></th>
+        <th><?= gettext("Mobile") ?></th>
+        <th><?= gettext("Home Phone") ?></th>
+        <th><?= gettext("Home Address") ?></th>
+        <th><?= gettext("Dad Name") ?></th>
+        <th><?= gettext("Dad Mobile") ?></th>
+        <th><?= gettext("Dad Email") ?></th>
+        <th><?= gettext("Mom Name") ?></th>
+        <th><?= gettext("Mom Mobile") ?></th>
+        <th><?= gettext("Mom Email") ?></th>
       </tr>
       </thead>
       <tbody>
@@ -251,20 +251,20 @@ function implodeUnique($array, $withQuotes)
     <div class="modal-content large">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-envelope-o"></i> Compose New Message</h4>
+        <h4 class="modal-title"><i class="fa fa-envelope-o"></i><?= gettext("Compose New Message")?></h4>
       </div>
       <form action="SendEmail.php" method="post">
         <div class="modal-body">
           <div class="form-group">
-            <label>Kids Emails</label>
+            <label><?= gettext("Kids Emails")?></label>
             <input name="email_to" class="form-control email-recepients-kids" value="<?= implodeUnique($KidsEmails, false) ?>">
           </div>
           <div class="form-group">
-            <label>Parents Emails</label>
+            <label><?= gettext("Parents Emails")?></label>
             <input name="email_to_2" class="form-control email-recepients-parents" value="<?= implodeUnique($ParentsEmails, false) ?>">
           </div>
           <div class="form-group">
-            <label>Teachers Emails</label>
+            <label><?= gettext("Teachers Emails")?></label>
             <input name="email_cc" class="form-control email-recepients-teachers" value="<?= implodeUnique($TeachersEmails, false) ?>">
           </div>
           <div class="form-group">
@@ -272,18 +272,18 @@ function implodeUnique($array, $withQuotes)
           </div>
           <div class="form-group">
             <div class="btn btn-success btn-file">
-              <i class="fa fa-paperclip"></i> Attachment
+              <i class="fa fa-paperclip"></i><?= gettext("Attachment")?>
               <input type="file" name="attachment"/>
             </div>
-            <p class="help-block">Max. 32MB</p>
+            <p class="help-block"><?= gettext("Max. 32MB")?></p>
           </div>
 
         </div>
         <div class="modal-footer clearfix">
 
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i><?= gettext("Discard")?></button>
 
-          <button type="submit" class="btn btn-primary pull-left"><i class="fa fa-envelope"></i> Send Message</button>
+          <button type="submit" class="btn btn-primary pull-left"><i class="fa fa-envelope"></i><?= gettext("Send Message") ?></button>
         </div>
       </form>
     </div>
