@@ -323,8 +323,13 @@ class SystemService {
     }
 
 
-    if (in_array($db_version, array("2.1.3", "2.1.4", "2.1.5", "2.1.6", "2.1.7", "2.1.8"))) {
-      $this->rebuildWithSQL("/mysql/upgrade/2.1.3_8-2.2.0.sql");
+    if (in_array($db_version, array("2.1.3", "2.1.4", "2.1.5", "2.1.6", "2.1.7"))) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.3-2.1.8.sql");
+      return true;
+    }
+    
+     if (in_array($db_version, array("2.1.8","2.1.9"))) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.8-2.2.0.sql");
       return true;
     }
 
