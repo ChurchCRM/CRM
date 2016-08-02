@@ -31,7 +31,8 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json"
         }).done(function(data){
-            dataT.row.add(data[0]);
+            data.totalAmount='';
+            dataT.row.add(data);
             dataT.rows().invalidate().draw(true);
         });
     });

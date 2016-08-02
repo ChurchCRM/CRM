@@ -6,7 +6,12 @@ $app->group('/deposits', function () {
 
   $this->post('', function ($request, $response, $args) {
     $input = (object)$request->getParsedBody();
-    echo json_encode($this->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate));
+    $deposit = new \ChurchCRM\Deposit();
+    $deposit->setType($input->depositType);
+    $deposit->setComment($input->depositComment);
+    $deposit->setDate($input->depositDate);
+    $deposit->save();
+    echo $deposit->toJSON();
   });
 
   $this->get('', function ($request, $response, $args) {
