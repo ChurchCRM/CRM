@@ -44,6 +44,7 @@ class SystemService {
   function restoreDatabaseFromBackup() {
     requireUserGroupMembership("bAdmin");
     $restoreResult = new StdClass();
+    $restoreResult->Messages = array();
     global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $sGZIPname;
     $file = $_FILES['restoreFile'];
     $restoreResult->file = $file;
@@ -86,6 +87,7 @@ class SystemService {
     //This can be very troublesome for users in a testing environment.
     $sSQL = 'UPDATE config_cfg SET cfg_value = "0" WHERE cfg_name = "sEnableExternalBackupTarget"';
     $aRow = mysql_fetch_array(RunQuery($sSQL));
+    array_push($restoreResult->Messages,gettext("As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the sEnableExternalBackupTarget setting."));
     return $restoreResult;
   }
 
