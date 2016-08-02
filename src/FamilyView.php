@@ -180,7 +180,7 @@ if ($iFamilyID == $fam_ID) {
               if ($nChurchLatitude && $nChurchLongitude) {
                 $sDistance = LatLonDistance($nChurchLatitude, $nChurchLongitude, $fam_Latitude, $fam_Longitude);
                 $sDirection = LatLonBearing($nChurchLatitude, $nChurchLongitude, $fam_Latitude, $fam_Longitude);
-                echo $sDistance . " " . strtolower($sDistanceUnit) . " " . $sDirection . " of church<br>";
+                echo $sDistance . " " . strtolower($sDistanceUnit) . " " . $sDirection." ". gettext(" of church<br>");
               }
             }
             ?>
@@ -188,7 +188,7 @@ if ($iFamilyID == $fam_ID) {
               <li><i class="fa-li fa fa-compass"></i><?= gettext("Latitude/Longitude") ?> <span><?= $fam_Latitude . " / " . $fam_Longitude ?></span></li>
             <?php }
             if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
-              <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send newsletter:") ?> <span><?= $fam_SendNewsLetter ?></span></li>
+              <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send newsletter:") ?> <span><?= gettext($fam_SendNewsLetter) ?></span></li>
             <?php }
             if (!$bHideWeddingDate) { /* Wedding Date can be hidden - General Settings */ ?>
               <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date:") ?> <span><?= FormatDate($fam_WeddingDate, false) ?></span></li>
@@ -229,17 +229,17 @@ if ($iFamilyID == $fam_ID) {
     <div class="col-lg-9 col-md-8 col-sm-8">
       <div class="row">
         <div class="box"><br/>
-          <a class="btn btn-app bg-aqua-active" href="FamilyVerify.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-check-square"></i> Verify Info</a>
-          <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-plus-square"></i> Add New Member</a>
+          <a class="btn btn-app bg-aqua-active" href="FamilyVerify.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-check-square"></i> <?= gettext("Verify Info")?></a>
+          <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-plus-square"></i> <?= gettext("Add New Member") ?></a>
           <?php if (($previous_id > 0)) { ?>
-            <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i class="fa fa-hand-o-left"></i> Previous Family</a>
+            <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i class="fa fa-hand-o-left"></i><?= gettext("Previous Family") ?></a>
           <?php } ?>
-          <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i class="fa fa-list-ul"></i> Family List</a>
+          <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i class="fa fa-list-ul"></i><?= gettext("Family List") ?></a>
           <?php if (($next_id > 0)) { ?>
-            <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i class="fa fa-hand-o-right"></i>Next Family </a>
+            <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i class="fa fa-hand-o-right"></i><?= gettext("Next Family") ?> </a>
           <?php } ?>
           <?php if ($_SESSION['bDeleteRecords']) { ?>
-            <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-trash-o"></i> Delete this Family</a>
+            <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-trash-o"></i><?= gettext("Delete this Family") ?></a>
           <?php } ?>
           <br/>
           <?php if ($bOkToEdit) { ?>
@@ -249,11 +249,11 @@ if ($iFamilyID == $fam_ID) {
             <?php }
           }
           if ($_SESSION['bNotes']) { ?>
-            <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-sticky-note"></i> Add a Note</a>
+            <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
           <?php } ?>
-          <a class="btn btn-app" href="Reports/ConfirmReport.php?familyId=<?= $iFamilyID ?>"><i class="fa fa-download"></i> Download PDF Report</a>
-          <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-email-pdf"><i class="fa fa-send"></i> Email PDF Report</a>
-          <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i class="fa fa-cart-plus"></i> Add All Family Members to Cart</a>
+          <a class="btn btn-app" href="Reports/ConfirmReport.php?familyId=<?= $iFamilyID ?>"><i class="fa fa-download"></i><?= gettext("Download PDF Report") ?></a>
+          <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-email-pdf"><i class="fa fa-send"></i><?= gettext("Email PDF Report") ?></a>
+          <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
         </div>
       </div>
     </div>
@@ -265,10 +265,10 @@ if ($iFamilyID == $fam_ID) {
             <table class="table user-list table-hover">
               <thead>
               <tr>
-                <th><span>Family Members</span></th>
-                <th class="text-center"><span>Role</span></th>
-                <th><span>Birthday</span></th>
-                <th><span>Email</span></th>
+                <th><span><?= gettext("Family Members") ?></span></th>
+                <th class="text-center"><span><?= gettext("Role") ?></span></th>
+                <th><span><?= gettext("Birthday") ?></span></th>
+                <th><span><?= gettext("Email") ?></span></th>
                 <th></th>
               </tr>
               </thead>
@@ -366,7 +366,7 @@ if ($iFamilyID == $fam_ID) {
                       <?php if (in_array('headerlink', $item)) { ?>
                         <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                       <?php } else { ?>
-                        <?= $item['header'] ?>
+                        <?= gettext($item['header']) ?>
                       <?php } ?>
                     </h3>
 
@@ -490,7 +490,7 @@ if ($iFamilyID == $fam_ID) {
                           }
                           ?>
                         </select>
-                        <input type="submit" class="btn btn-default" value="Assign" name="Submit2" style="font-size: 8pt;">
+                        <input type="submit" class="btn btn-default" value="<?= gettext("Assign")?>" name="Submit2" style="font-size: 8pt;">
                         </p>
                       </form>
                     </div>
@@ -556,13 +556,13 @@ if ($iFamilyID == $fam_ID) {
                           <?= $aut_Interval ?>&nbsp;
                         </td>
                         <td>
-                          <?= $fundName ?>&nbsp;
+                          <?= gettext($fundName) ?>&nbsp;
                         </td>
                         <td>
-                          <a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
+                          <a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Edit") ?></a>
                         </td>
                         <td>
-                          <a href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
+                          <a href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Delete") ?></a>
                         </td>
                         <td>
                           <?= $aut_DateLastEdited ?>&nbsp;
@@ -587,8 +587,8 @@ if ($iFamilyID == $fam_ID) {
                 <form method="post" action="FamilyView.php?FamilyID=<?= $iFamilyID ?>">
                   <input type="checkbox" name="ShowPledges" value="1" <?php if ($_SESSION['sshowPledges']) echo " checked"; ?>><?= gettext("Show Pledges") ?>
                   <input type="checkbox" name="ShowPayments" value="1" <?php if ($_SESSION['sshowPayments']) echo " checked"; ?>><?= gettext("Show Payments") ?>
-                  Since:
-                  <input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?= $_SESSION['sshowSince'] ?>" maxlength="10" id="ShowSinceDate" size="15">
+                  <?= gettext(" Since:") ?>
+                  <input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?= $_SESSION['sshowSince'] ?>" maxlength="10" id="ShowSinceDate" size="15" >
                   <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?> name="UpdatePledgeTable" style="font-size: 8pt;">
                 </form>
 
@@ -736,508 +736,80 @@ if ($iFamilyID == $fam_ID) {
           </div>
           <div class="modal-body">
             <input type="file" name="file" size="50"/>
-            Max Photo size: <?= ini_get('upload_max_filesize') ?>
+            <?= gettext("Max Photo size:")?> <?= ini_get('upload_max_filesize') ?>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close")?></button>
+            <input type="submit" class="btn btn-primary" value="<?= gettext("Upload Image")?>">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm Delete") ?></h4>
+        </div>
+
+        <div class="modal-body">
+          <p><?= gettext("You are about to delete the profile photo, this procedure is irreversible.") ?></p>
+
+          <p><?= gettext("Do you want to proceed?") ?></p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+          <a href="ImageDelete.php?FamilyID=<?= $iFamilyID ?>" class="btn btn-danger danger"><?= gettext("Delete") ?></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="confirm-email-pdf" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm PDF Email")?></h4>
+        </div>
+        <?php if (count($sFamilyEmails) > 0) { ?>
+          <div class="modal-body">
+            <p><?= gettext("You are about to email copy of the family information in pdf to the following emails") ?> <i><?= implode(", ", $sFamilyEmails) ?></i></p>
+
+            <p><?= gettext("Do you want to proceed?") ?></p>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+            <a href="Reports/ConfirmReportEmail.php?familyId=<?= $iFamilyID ?>" class="btn btn-warning warning"><?= gettext("Email") ?></a>
+            <a href="Reports/ConfirmReportEmail.php?updated=true&familyId=<?= $iFamilyID ?>" class="btn btn-warning warning"><?= gettext("Email Updated") ?></a>
+          </div>
+        <?php } else { ?>
+          <div class="modal-body">
+            <p><?= gettext("This family does not have any email address, so we can't send email")?> </p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <input type="submit" class="btn btn-primary" value="Upload Image">
           </div>
-        </div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-lg-12 col-md-6 col-sm-3">
-		<div class="box box-solid">
-			<div class="box-body clearfix">
-				<div role="person-tabs">
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
-						<?php if ($_SESSION['bFinance']) { ?>
-							<li role="presentation"><a href="#finance" aria-controls="finance" role="tab" data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
-							<li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab" data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
-						<?php }
-						if ($_SESSION['bNotes']) { ?>
-							<li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext("Notes") ?></a></li>
-						<?php } ?>
-					</ul>
+        <?php } ?>
+      </div>
+    </div>
+  </div>
 
-					<!-- Tab panes -->
-					<div class="tab-content">
-						<div role="tab-pane fade" class="tab-pane active" id="properties">
-							<div class="main-box clearfix">
-								<div class="main-box-body clearfix">
-									<?php
-									$sAssignedProperties = ",";
-
-									if (mysql_num_rows($rsAssignedProperties) == 0) { ?>
-										<br>
-										<div class="alert alert-warning">
-											<i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No property assignments.") ?></span>
-										</div>
-									<?php } else {
-										//Yes, start the table
-										echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
-										echo "<tr class=\"TableHeader\">";
-										echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Type") . "</b></td>";
-										echo "<td width=\"15%\" valign=\"top\"><b>" . gettext("Name") . "</b></td>";
-										echo "<td valign=\"top\"><b>" . gettext("Value") . "</b></td>";
-
-										if ($bOkToEdit)  {
-											echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Edit Value") . "</td>";
-											echo "<td valign=\"top\"><b>" . gettext("Remove") . "</td>";
-										}
-
-										echo "</tr>";
-
-										$last_pro_prt_ID = "";
-										$bIsFirst = true;
-
-										//Loop through the rows
-										while ($aRow = mysql_fetch_array($rsAssignedProperties)) {
-											$pro_Prompt = "";
-											$r2p_Value = "";
-
-											extract($aRow);
-
-											if ($pro_prt_ID != $last_pro_prt_ID) {
-												echo "<tr class=\"";
-												if ($bIsFirst)
-													echo "RowColorB";
-												else
-													echo "RowColorC";
-												echo "\"><td><b>" . $prt_Name . "</b></td>";
-
-												$bIsFirst = false;
-												$last_pro_prt_ID = $pro_prt_ID;
-												$sRowClass = "RowColorB";
-											} else {
-												echo "<tr class=\"" . $sRowClass . "\">";
-												echo "<td valign=\"top\">&nbsp;</td>";
-											}
-
-											echo "<td valign=\"center\">" . $pro_Name . "</td>";
-											echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
-
-											if ($bOkToEdit) {
-												if (strlen($pro_Prompt) > 0) {
-													echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
-												} else {
-													echo "<td>&nbsp;</td>";
-												}
-
-												echo "<td valign=\"center\"><a href=\"PropertyUnassign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Remove") . "</a></td>";
-											}
-
-											echo "</tr>";
-
-											//Alternate the row style
-											$sRowClass = AlternateRowStyle($sRowClass);
-
-											$sAssignedProperties .= $pro_ID . ",";
-										}
-
-										//Close the table
-										echo "</table>";
-
-									}
-									if ($bOkToEdit) { ?>
-									<div class="alert alert-info">
-										<div>
-											<h4><strong><?= gettext("Assign a New Property:") ?></strong></h4>
-											<p><br></p>
-											<form method="post" action="PropertyAssign.php?FamilyID=<?= $iFamilyID ?>">
-											  <select name="PropertyID">
-												<?php
-											while ($aRow = mysql_fetch_array($rsProperties))
-											{
-												extract($aRow);
-												//If the property doesn't already exist for this Person, write the <OPTION> tag
-												if (strlen(strstr($sAssignedProperties,"," . $pro_ID . ",")) == 0)
-												{
-													echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
-												}
-											}
-											?>
-											  </select>
-											  <input type="submit" class="btn btn-default" value="Assign" name="Submit2" style="font-size: 8pt;">
-										  </p>
-										</form>
-										</div>
-									</div>
-									<?php } ?>
-								</div>
-							</div>
-						</div>
-						<?php if ($_SESSION['bFinance']) { ?>
-						<div role="tab-pane fade" class="tab-pane" id="finance">
-							<div class="main-box clearfix">
-								<div class="main-box-body clearfix">
-								<?php if (mysql_num_rows ($rsAutoPayments) > 0) { ?>
-								<table cellpadding="5" cellspacing="0" width="100%">
-
-								<tr class="TableHeader">
-									<td><?= gettext("Type") ?></td>
-									<td><?= gettext("Next payment date") ?></td>
-									<td><?= gettext("Amount") ?></td>
-									<td><?= gettext("Interval (months)") ?></td>
-									<td><?= gettext("Fund") ?></td>
-									<td><?= gettext("Edit") ?></td>
-									<td><?= gettext("Delete") ?></td>
-									<td><?= gettext("Date Updated") ?></td>
-									<td><?= gettext("Updated By") ?></td>
-								</tr>
-
-								<?php
-
-									$tog = 0;
-
-									//Loop through all automatic payments
-									while ($aRow =mysql_fetch_array($rsAutoPayments))
-									{
-										$tog = (! $tog);
-
-										extract($aRow);
-
-										$payType = "Disabled";
-										if ($aut_EnableBankDraft)
-											$payType = "Bank Draft";
-										if ($aut_EnableCreditCard)
-											$payType = "Credit Card";
-
-										//Alternate the row style
-										if ($tog)
-											$sRowClass = "RowColorA";
-										else
-											$sRowClass = "RowColorB";
-
-										?>
-
-										<tr class="<?= $sRowClass ?>">
-											<td>
-												<?= $payType ?>&nbsp;
-											</td>
-											<td>
-												<?= $aut_NextPayDate ?>&nbsp;
-											</td>
-											<td>
-												<?= $aut_Amount ?>&nbsp;
-											</td>
-											<td>
-												<?= $aut_Interval ?>&nbsp;
-											</td>
-											<td>
-												<?= $fundName ?>&nbsp;
-											</td>
-											<td>
-												<a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
-											</td>
-											<td>
-												<button type="button" class="btn btn-primary delete-button" id="delete:<?= $plg_GroupKey;?>" ><?= gettext("Delete"); ?></button>
-
-											</td>
-											<td>
-												<?= $aut_DateLastEdited ?>&nbsp;
-											</td>
-											<td>
-												<?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
-											</td>
-										</tr>
-										<?php
-									} ?>
-								</table>
-								<?php } ?>
-									<p align="center">
-										<a class="SmallText" href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Add a new automatic payment") ?></a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div role="tab-pane fade" class="tab-pane" id="pledges">
-							<div class="main-box clearfix">
-								<div class="main-box-body clearfix">
-								<form method="post" action="FamilyView.php?FamilyID=<?= $iFamilyID ?>">
-									<input type="checkbox" name="ShowPledges" value="1" <?php if ($_SESSION['sshowPledges']) echo " checked";?>><?= gettext("Show Pledges") ?>
-									<input type="checkbox" name="ShowPayments" value="1" <?php if ($_SESSION['sshowPayments']) echo " checked";?>><?= gettext("Show Payments") ?>
-									 Since:
-									<input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?= $_SESSION['sshowSince'] ?>" maxlength="10" id="ShowSinceDate" size="15">
-									<input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?> name="UpdatePledgeTable" style="font-size: 8pt;">
-								</form>
-
-								<table cellpadding="4" cellspacing="0" width="100%">
-
-								<tr class="TableHeader" align="center">
-									<td><?= gettext("Pledge or Payment") ?></td>
-									<td><?= gettext("Fund") ?></td>
-									<td><?= gettext("Fiscal Year") ?></td>
-									<td><?= gettext("Date") ?></td>
-									<td><?= gettext("Amount") ?></td>
-									<td><?= gettext("NonDeductible") ?></td>
-									<td><?= gettext("Schedule") ?></td>
-									<td><?= gettext("Method") ?></td>
-									<td><?= gettext("Comment") ?></td>
-									<td><?= gettext("Edit") ?></td>
-									<td><?= gettext("Delete") ?></td>
-									<td><?= gettext("Date Updated") ?></td>
-									<td><?= gettext("Updated By") ?></td>
-								</tr>
-
-								<?php
-
-
-								$tog = 0;
-
-								if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments'])
-								{
-									//Loop through all pledges
-									while ($aRow =mysql_fetch_array($rsPledges))
-									{
-										$tog = (! $tog);
-
-										$plg_FYID = "";
-										$plg_date = "";
-										$plg_amount = "";
-										$plg_schedule = "";
-										$plg_method = "";
-										$plg_comment = "";
-										$plg_plgID = 0;
-										$plg_DateLastEdited  = "";
-										$plg_EditedBy = "";
-
-										extract($aRow);
-
-										//Display the pledge or payment if appropriate
-										if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
-											 ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
-											 ) &&
-											($_SESSION['sshowSince'] == "" || $plg_date > $_SESSION['sshowSince'])
-										   )
-										{
-											//Alternate the row style
-											if ($tog)
-												$sRowClass = "RowColorA";
-											else
-												$sRowClass = "RowColorB";
-
-											if ($plg_PledgeOrPayment == 'Payment') {
-												if ($tog)
-													$sRowClass = "PaymentRowColorA";
-												else
-													$sRowClass = "PaymentRowColorB";
-											}
-
-											?>
-
-											<tr class="<?= $sRowClass ?>" align="center">
-												<td>
-													<?= $plg_PledgeOrPayment ?>&nbsp;
-												</td>
-												<td>
-													<?= $fundName ?>&nbsp;
-												</td>
-												<td>
-													<?= MakeFYString ($plg_FYID) ?>&nbsp;
-												</td>
-												<td>
-													<?= $plg_date ?>&nbsp;
-												</td>
-												<td align=center>
-													<?= $plg_amount ?>&nbsp;
-												</td>
-												<td align=center>
-													<?= $plg_NonDeductible ?>&nbsp;
-												</td>
-												<td>
-													<?= $plg_schedule ?>&nbsp;
-												</td>
-												<td>
-													<?= $plg_method ?>&nbsp;
-												</td>
-												<td>
-													<?= $plg_comment ?>&nbsp;
-												</td>
-												<td>
-													<a href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
-												</td>
-												<td>
-													<a href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
-												</td>
-												<td>
-													<?= $plg_DateLastEdited ?>&nbsp;
-												</td>
-												<td>
-													<?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
-												</td>
-											</tr>
-											<?php
-										}
-									}
-								} // if bShowPledges
-
-								?>
-
-								</table>
-
-								<p align="center">
-									<a class="SmallText" href="PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>&amp;PledgeOrPayment=Pledge"><?= gettext("Add a new pledge") ?></a>
-									<a class="SmallText" href="PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>&amp;PledgeOrPayment=Payment"><?= gettext("Add a new payment") ?></a>
-								</p>
-
-								<?php } ?>
-
-								<?php if ($_SESSION['bCanvasser']) { ?>
-
-								<p align="center">
-									<a class="SmallText" href="CanvassEditor.php?FamilyID=<?= $fam_ID ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= MakeFYString ($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
-								</p>
-								</div>
-							</div>
-						</div>
-						<?php } ?>
-						<?php if ($_SESSION['bNotes']) { ?>
-						<div role="tab-pane fade" class="tab-pane" id="notes">
-							<div class="box box-solid">
-								<div class="box-body chat" id="chat-box">
-									<?php
-									//Loop through all the notes
-									while($aRow = mysql_fetch_array($rsNotes)){
-										extract($aRow);
-										?>
-									<!-- chat item -->
-									<div class="item">
-                    <?php $noteBy = $nte_EnteredBy; if (!strlen($nte_EditedBy)) { $noteBy = $nte_EditedBy; } ?>
-										<img src="<?= $personService->getPhoto($noteBy) ?>"/>
-										<p class="message">
-											<a href="#" class="name">
-												<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php
-													if (!strlen($nte_DateLastEdited)) {
-														echo FormatDate($nte_DateEntered, True);
-													} else {
-														echo FormatDate($nte_DateLastEdited,True);
-													} ?>
-												</small>
-												<?php if (!strlen($nte_DateLastEdited)) {
-													echo $EnteredFirstName . " " . $EnteredLastName;
-												} else {
-													echo $EditedFirstName . " " . $EditedLastName;
-												} ?>
-											</a>
-											<?= $nte_Text ?>
-										</p>
-										<?php if ($_SESSION['bNotes']) { ?>
-											<div class="pull-right">
-												<a href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>&NoteID=<?= $nte_ID ?>">
-												<span class="fa-stack">
-													<i class="fa fa-square fa-stack-2x"></i>
-													<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-												</span>
-												</a>
-												<a href="NoteDelete.php?NoteID=<?= $nte_ID ?>">
-												<span class="fa-stack">
-													<i class="fa fa-square fa-stack-2x"></i>
-													<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-												</span>
-												</a>
-											</div>
-										<?php } ?>
-										</div><!-- /.item -->
-										<?php } ?>
-									</div>
-								</div>
-							<?php } ?>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label" aria-hidden="true">
-	<div class="modal-dialog">
-		<form action="ImageUpload.php?FamilyID=<?= $iFamilyID ?>" method="post" enctype="multipart/form-data" id="UploadForm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="upload-Image-label"><?= gettext("Upload Photo") ?></h4>
-				</div>
-				<div class="modal-body">
-					<input type="file" name="file" size="50" />
-					Max Photo size: <?= ini_get('upload_max_filesize') ?>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<input type="submit" class="btn btn-primary" value="Upload Image">
-				</div>
-			</div>
-		</form>
-	</div>
-</div>
-<div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="delete-Image-label">Confirm Delete</h4>
-			</div>
-
-			<div class="modal-body">
-				<p>You are about to delete the profile photo, this procedure is irreversible.</p>
-				<p>Do you want to proceed?</p>
-			</div>
-
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<a href="ImageDelete.php?FamilyID=<?= $iFamilyID ?>" class="btn btn-danger danger">Delete</a>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="modal fade" id="confirm-email-pdf" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="delete-Image-label">Confirm PDF Email</h4>
-			</div>
-			<?php if (count($sFamilyEmails) >0 ) { ?>
-			<div class="modal-body">
-				<p>You are about to email copy of the family information in pdf to the following emails <i><?= implode(", ", $sFamilyEmails) ?></i> </p>
-				<p>Do you want to proceed?</p>
-			</div>
-
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<a href="Reports/ConfirmReportEmail.php?familyId=<?= $iFamilyID ?>" class="btn btn-warning warning">Email</a>
-				<a href="Reports/ConfirmReportEmail.php?updated=true&familyId=<?= $iFamilyID ?>" class="btn btn-warning warning">Email Updated</a>
-			</div>
-			<?php } else { ?>
-				<div class="modal-body">
-					<p>This family does not have any email address, so we can't send email </p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			<?php } ?>
-		</div>
-	</div>
-</div>
-
-<script type="text/javascript" src="js/DepositSlipEditor.js"></script>
-<script>
-$("#ShowSinceDate").datepicker({format:'yyyy-mm-dd'});
-</script>
+  <script>
+    $("#ShowSinceDate").datepicker({format: 'yyyy-mm-dd'});
+  </script>
 <?php } else { ?>
   <div class="error-page">
     <h2 class="headline text-yellow"> 404</h2>
 
     <div class="error-content">
-      <h3><i class="fa fa-warning text-yellow"></i> Oops! Family not found.</h3>
+      <h3><i class="fa fa-warning text-yellow"></i> <?= gettext("Oops! Family not found.") ?></h3>
 
       <p>
-        We could not find the family you were looking for.
-        Meanwhile, you may <a href="/MembersDashboard.php">return to member dashboard</a>
+        <?= gettext("We could not find the family you were looking for.<br>Meanwhile, you may")?> <a href="/MembersDashboard.php"><?= gettext("return to member dashboard")?></a>
       </p>
     </div>
   </div>

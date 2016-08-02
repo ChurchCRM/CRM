@@ -27,6 +27,43 @@ $rsAdultsGender = RunQuery($sSQL);
 
 $sSQL = "select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;";
 $rsKidsGender = RunQuery($sSQL);
+
+$sSQL = "select lst_OptionID,lst_OptionName from list_lst where lst_ID = 1;";
+$rsClassification = RunQuery($sSQL);
+$classifications = new stdClass();
+while (list ($lst_OptionID,$lst_OptionName) = mysql_fetch_row($rsClassification))
+{
+  $classifications->$lst_OptionName = $lst_OptionID;
+ 
+}
+
+$sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
+          LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
+          INNER JOIN list_lst on lst_ID=1 AND per_cls_ID = lst_OptionID
+          WHERE per_ID NOT IN
+          (SELECT per_ID
+              FROM person_per
+              INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
+              INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not Email')";
+
+$rsEmailList = RunQuery($sSQL);
+$sEmailLink = '';
+while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailList))
+{
+    $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
+    if ($sEmail)
+    {
+        /* if ($sEmailLink) // Don't put delimiter before first email
+            $sEmailLink .= $sMailtoDelimiter; */
+        // Add email only if email address is not already in string
+        if (!stristr($sEmailLink, $sEmail))
+        {
+          $sEmailLink .= $sEmail .= $sMailtoDelimiter;
+          $roleEmails->$virt_RoleName .= $sEmail.= $sMailtoDelimiter;
+        }
+    }
+}
+
 ?>
 
 <!-- this page specific styles -->
@@ -35,12 +72,47 @@ $rsKidsGender = RunQuery($sSQL);
 <!-- Default box -->
 <div class="box">
   <div class="box-header with-border">
-    <h3 class="box-title">Members Functions</h3>
+    <h3 class="box-title"><?= gettext("Members Functions") ?></h3>
   </div>
   <div class="box-body">
     <a href="SelectList.php?mode=person" class="btn btn-app"><i class="fa fa-user"></i><?= gettext("All People") ?></a>
     <a href="OptionManager.php?mode=classes" class="btn btn-app"><i
         class="fa fa-gears"></i><?= gettext("Classifications Manager") ?></a>
+    <?php
+    if ($sEmailLink)
+    {
+      // Add default email if default email has been set and is not already in string
+      if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress'
+                                 && !stristr($sEmailLink, $sToEmailAddress))
+          $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
+      $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
+       if ($bEmailMailto) { // Does user have permission to email groups
+      // Display link
+       ?>
+        <div class="btn-group">
+          <a  class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink,0,-3) ?>"><i class="fa fa-send-o"></i><?= gettext('Email All')?></a>
+          <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+           <?php generateGroupRoleEmailDropdown($roleEmails,"mailto:") ?>
+          </ul>
+        </div>
+       <div class="btn-group">
+          <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink,0,-3) ?>"><i class="fa fa-send"></i><?=gettext('Email All (BCC)') ?></a>
+           <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+           <?php generateGroupRoleEmailDropdown($roleEmails,"mailto:?bcc=") ?>
+          </ul>
+        </div>
+       <?php
+       }
+      }
+     ?>
     <br/>
     <a href="FamilyList.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext("All Families") ?></a>
     <a href="OptionManager.php?mode=famroles" class="btn btn-app"><i
@@ -73,14 +145,14 @@ $rsKidsGender = RunQuery($sSQL);
         </h3>
 
         <p>
-          Families
+          <?= gettext("Families") ?>
         </p>
       </div>
       <div class="icon">
         <i class="ion ion-person-stalker"></i>
       </div>
       <a href="<?= $sRootPath . "/" ?>FamilyList.php" class="small-box-footer">
-        See all Families <i class="fa fa-arrow-circle-right"></i>
+        <?= gettext("See all Families") ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -94,14 +166,14 @@ $rsKidsGender = RunQuery($sSQL);
         </h3>
 
         <p>
-          People
+          <?= gettext("People") ?>
         </p>
       </div>
       <div class="icon">
         <i class="ion ion-person"></i>
       </div>
       <a href="<?= $sRootPath . "/" ?>SelectList.php?mode=person" class="small-box-footer">
-        See All People <i class="fa fa-arrow-circle-right"></i>
+        <?= gettext("See All People") ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -115,14 +187,14 @@ $rsKidsGender = RunQuery($sSQL);
         </h3>
 
         <p>
-          Sunday School Kids
+          <?= gettext("Sunday School Kids") ?>
         </p>
       </div>
       <div class="icon">
         <i class="fa fa-child"></i>
       </div>
       <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
-        More info <i class="fa fa-arrow-circle-right"></i>
+        <?= gettext("More info") ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -136,14 +208,14 @@ $rsKidsGender = RunQuery($sSQL);
         </h3>
 
         <p>
-          Groups
+          <?= gettext("Groups") ?>
         </p>
       </div>
       <div class="icon">
         <i class="fa fa-gg"></i>
       </div>
       <a href="<?= $sRootPath ?>/grouplist" class="small-box-footer">
-        More info <i class="fa fa-arrow-circle-right"></i>
+        <?= gettext("More info") ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -154,7 +226,7 @@ $rsKidsGender = RunQuery($sSQL);
   <div class="col-lg-12">
     <div class="box box-info">
       <div class="box-header with-border">
-        <h3 class="box-title">Reports</h3>
+        <h3 class="box-title"><?= gettext("Reports") ?></h3>
       </div>
       <div class="box-body">
         <a class="MediumText" href="GroupReports.php"><?php echo gettext('Reports on groups and roles'); ?></a>
@@ -189,7 +261,7 @@ $rsKidsGender = RunQuery($sSQL);
       <div class="box-header with-border">
         <i class="fa fa-pie-chart"></i>
 
-        <h3 class="box-title">Family Roles</h3>
+        <h3 class="box-title"><?= gettext("Family Roles") ?></h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -200,13 +272,13 @@ $rsKidsGender = RunQuery($sSQL);
       <div class="box-body no-padding">
         <table class="table table-condensed">
           <tr>
-            <th>Role / Gender</th>
-            <th>% of Members</th>
-            <th style="width: 40px">Count</th>
+            <th><?= gettext("Role / Gender") ?></th>
+            <th>% <?= gettext("of Members") ?></th>
+            <th style="width: 40px"><?= gettext("Count") ?></th>
           </tr>
           <? foreach ($demographicStats as $key => $value) { ?>
             <tr>
-              <td><?= $key ?></td>
+              <td><?= gettext($key) ?></td>
               <td>
                 <div class="progress progress-xs progress-striped active">
                   <div class="progress-bar progress-bar-success"
@@ -225,7 +297,7 @@ $rsKidsGender = RunQuery($sSQL);
       <div class="box-header with-border">
         <i class="fa fa-bar-chart-o"></i>
 
-        <h3 class="box-title">People Classification</h3>
+        <h3 class="box-title"><?= gettext("People Classification") ?></h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -235,13 +307,13 @@ $rsKidsGender = RunQuery($sSQL);
       </div>
       <table class="table table-condensed">
         <tr>
-          <th>Classification</th>
-          <th>% of Members</th>
-          <th style="width: 40px">Count</th>
+          <th><?= gettext("Classification") ?></th>
+          <th>% <?= gettext("of Members") ?></th>
+          <th style="width: 40px"><?= gettext("Count") ?></th>
         </tr>
         <? foreach ($personStats as $key => $value) { ?>
           <tr>
-            <td><?= $key ?></td>
+            <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
             <td>
               <div class="progress progress-xs progress-striped active">
                 <div class="progress-bar progress-bar-success"
@@ -258,7 +330,7 @@ $rsKidsGender = RunQuery($sSQL);
       <div class="box-header">
         <i class="ion ion-android-contacts"></i>
 
-        <h3 class="box-title">Gender Demographics</h3>
+        <h3 class="box-title"><?= gettext("Gender Demographics") ?></h3>
 
         <div class="box-tools pull-right">
           <div id="gender-donut-legend" class="chart-legend"></div>
@@ -282,18 +354,18 @@ $rsKidsGender = RunQuery($sSQL);
   var PieData = [
     <?php while ($row = mysql_fetch_array($rsAdultsGender)) {
         if ($row['per_Gender'] == 1 ) {
-            echo "{value: ". $row['numb'] ." , color: \"#003399\", highlight: \"#3366ff\", label: \"Men\" },";
+            echo "{value: ". $row['numb'] ." , color: \"#003399\", highlight: \"#3366ff\", label: \"".gettext("Men")."\" },";
         }
         if ($row['per_Gender'] == 2 ) {
-            echo "{value: ". $row['numb'] ." , color: \"#9900ff\", highlight: \"#ff66cc\", label: \"Women\"},";
+            echo "{value: ". $row['numb'] ." , color: \"#9900ff\", highlight: \"#ff66cc\", label: \"".gettext("Women")."\"},";
         }
     }
     while ($row = mysql_fetch_array($rsKidsGender)) {
     if ($row['per_Gender'] == 1 ) {
-            echo "{value: ". $row['numb'] ." , color: \"#3399ff\", highlight: \"#99ccff\", label: \"Boys\"},";
+            echo "{value: ". $row['numb'] ." , color: \"#3399ff\", highlight: \"#99ccff\", label: \"".gettext("Boys")."\"},";
         }
         if ($row['per_Gender'] == 2 ) {
-            echo "{value: ". $row['numb'] ." , color: \"#009933\", highlight: \"#99cc00\", label: \"Girls\",}";
+            echo "{value: ". $row['numb'] ." , color: \"#009933\", highlight: \"#99cc00\", label: \"".gettext("Girls")."\",}";
         }
     }
     ?>

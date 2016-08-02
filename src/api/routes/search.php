@@ -26,13 +26,12 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     $q ->filterByComment("%$query%",  Propel\Runtime\ActiveQuery\Criteria::LIKE) 
          ->_or()
          ->filterById($query)
-        ///->filterbyDate($query)
         ->_or()
         ->usePledgeQuery()
           ->filterByCheckno("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
         ->endUse()
         ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', "displayName")
-        ->withColumn('CONCAT("DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', "uri")
+        ->withColumn('CONCAT("' . $sRootPath . 'DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', "uri")
         ->limit(5);
     array_push($resultsArray, $q->find()->toJSON());
   } catch (Exception $e) {

@@ -398,7 +398,7 @@ if ($bShowPersonSelect) {
     </tr>
 
     <tr>
-        <td><?= gettext('Edit Self:') ?></td>
+        <td><?= gettext("Edit Self:") ?></td>
         <td><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?= gettext('(Edit own family only.)') ?></span></td>
     </tr>
     <tr>
@@ -426,13 +426,13 @@ if ($bShowPersonSelect) {
 <!-- Default box -->
 <div class="box">
     <div class="box-body box-danger">
-        <div class="callout callout-info">Set Permission True to give this user the ability to change their current value.</div>
+        <div class="callout callout-info"><?= gettext("Set Permission True to give this user the ability to change their current value.") ?></div>
         <table class="table">
             <tr>
-                <th>Permission</h3></th>
+                <th><?= gettext("Permission") ?></h3></th>
                 <th><?= gettext("Variable name") ?></th>
-                <th>Current Value</h3></th>
-                <th>Notes</th>
+                <th><?= gettext("Current Value") ?></h3></th>
+                <th><?= gettext("Notes") ?></th>
             </tr>
         <?php
 
@@ -503,7 +503,7 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
         
     // Notes
     echo "<td><input type=\"hidden\" name=\"type[$ucfg_id]\" value=\"$ucfg_type\">
-            $ucfg_tooltip</td></tr>";
+            ".gettext($ucfg_tooltip)."</td></tr>";
 
     $r++;
 }    
@@ -513,8 +513,8 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
 
     <tr>
         <td colspan="4" class="text-center">
-            <input type="submit" class="btn btn-primary" name="save" value="Save Settings">
-            <input type="submit" class="btn" name="cancel" value="Cancel">
+            <input type="submit" class="btn btn-primary" name="save" value="<?= gettext("Save Settings") ?>">
+            <input type="submit" class="btn" name="cancel" value="<?= gettext("Cancel") ?>">
         </td>
     </tr>
     </table>

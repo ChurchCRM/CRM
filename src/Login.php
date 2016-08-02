@@ -135,7 +135,8 @@ if ($iUserID > 0)
     else
     {
         // Set the LastLogin and Increment the LoginCount
-        $sSQL = "UPDATE user_usr SET usr_LastLogin = NOW(), usr_LoginCount = usr_LoginCount + 1, usr_FailedLogins = 0 WHERE usr_per_ID ='$iUserID'";
+        $date = new DateTime("now", new DateTimeZone($sTimeZone));
+        $sSQL = "UPDATE user_usr SET usr_LastLogin = '".$date->format('Y-m-d H:i:s')."', usr_LoginCount = usr_LoginCount + 1, usr_FailedLogins = 0 WHERE usr_per_ID ='$iUserID'";
         RunQuery($sSQL);
 
         // Set the User's family id in case EditSelf is enabled
@@ -317,11 +318,11 @@ if (isset($loginPageMsg))
 
 <form class="form-signin" role="form" method="post" name="LoginForm" action="Login.php">
     <div class="form-group has-feedback">
-        <input type="text" id="UserBox" name="User" class="form-control" placeholder="Email/Username" required autofocus>
+        <input type="text" id="UserBox" name="User" class="form-control" placeholder="<?= gettext("Email/Username")?>" required autofocus>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
     </div>
     <div class="form-group has-feedback">
-        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="Password" required autofocus>
+        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext("Password") ?>" required autofocus>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
     </div>
     <div class="row">
