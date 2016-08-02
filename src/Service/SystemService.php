@@ -82,6 +82,10 @@ class SystemService {
     $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
     $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
     $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
+    //When restoring a database, do NOT let the database continue to create remote backups.
+    //This can be very troublesome for users in a testing environment.
+    $sSQL = 'UPDATE config_cfg SET cfg_value = "0" WHERE cfg_name = "sEnableExternalBackupTarget"';
+    $aRow = mysql_fetch_array(RunQuery($sSQL));
     return $restoreResult;
   }
 
