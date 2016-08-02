@@ -1,7 +1,3 @@
-if (!$.isArray(depositData.deposits))
-{
-    depositData.deposits=[depositData.deposits];
-}
 var dataT = 0;
 
 function verifyContent(url) {
@@ -41,7 +37,11 @@ $(document).ready(function() {
     });
    
     dataT = $("#depositsTable").DataTable({
-    data:depositData.Deposits,
+    ajax:{
+      url :"/api/deposits",
+      dataSrc:"Deposits"
+    },
+    "deferRender": true,
     columns: [
     {
         width: 'auto',
@@ -63,6 +63,16 @@ $(document).ready(function() {
         width: 'auto',
         title:'Deposit Date',
         data:'Date',
+        render: function  (data, type, full, meta ) {
+            if (type === 'display')
+            {
+                return moment(data).format("MM-DD-YY");
+            }
+            else
+            {
+                return data
+            }
+        },
         searchable: true
     },
     {

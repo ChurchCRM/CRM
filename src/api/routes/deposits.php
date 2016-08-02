@@ -27,7 +27,7 @@ $app->group('/deposits', function () {
 
   $this->get('/{id:[0-9]+}/ofx', function ($request, $response, $args) {
     $id = $args['id'];
-    $OFX = \ChurchCRM\Base\DepositQuery::create()->findOneById($id)->toOFX();
+    $OFX = \ChurchCRM\Base\DepositQuery::create()->findOneById($id)->getOFX();
     header($OFX->header);
     echo $OFX->content;
   });
