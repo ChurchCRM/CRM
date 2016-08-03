@@ -77,5 +77,5 @@
         <exec command="xgettext --from-code=UTF-8 -o locale/messages.po *.php email/*.php Include/*.php Reports/*.php sundayschool/*.php" dir="src" passthru="true"/>
     </target>
 
-    <target name="release" depends="locale-update, package, change-log, rev-build-number" />
+    <target name="release" depends="locale-update, package, rev-build-number" />
 </project>
