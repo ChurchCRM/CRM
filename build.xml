@@ -46,6 +46,7 @@
         <zip destfile="${builddir}/ChurchCRM-${build.version}.zip" basedir="${sourcedir}"/>
 
         <echo message="Files copied and compressed in build directory OK!"/>
+        <delete dir="${sourcedir}" includeemptydirs="true"/>
     </target>
 
 
