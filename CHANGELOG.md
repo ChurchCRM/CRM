@@ -1,5 +1,12 @@
 # Change Log
 
+## [2.1.10](https://github.com/ChurchCRM/CRM/tree/2.1.10) (2016-08-03)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.9...2.1.10)
+
+**Merged pull requests:**
+
+- 2 1 10 [\#903](https://github.com/ChurchCRM/CRM/pull/903) ([DawoudIO](https://github.com/DawoudIO))
+
 ## [2.1.9](https://github.com/ChurchCRM/CRM/tree/2.1.9) (2016-08-03)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.8...2.1.9)
 
