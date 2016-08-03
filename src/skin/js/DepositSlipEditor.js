@@ -1,4 +1,71 @@
-function initDepositSlipEditor() 
+function initPaymentTable()
+{
+  var colDef = [
+    {
+      "className":      'details-control',
+      "orderable":      false,
+      "data":           null,
+      "defaultContent": '<i class="fa fa-plus-circle"></i>'
+    },
+    {
+      width: 'auto',
+      title:'Family',
+      data:'Family.Name',
+      render: function(data, type, full, meta) {
+        return '<a href=\'PledgeEditor.php?GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa '+  (isDepositClosed ? "fa-search-plus": "fa-pencil" ) +' fa-stack-1x fa-inverse"></i></span></a>' + data;
+      }
+    },
+    {
+      width: 'auto',
+      title:'Check Number',
+      data:'Checkno',
+    },
+    {
+      width: 'auto',
+      title:'Amount',
+      data:'Amount',
+    },
+    {
+      width: 'auto',
+      title:'Method',
+      data:'Method',
+    }   
+  ];
+    
+  if ( depositType == "CreditCard" )
+  {
+    colDef.push(
+      {
+        width: 'auto',
+        title:'Details',
+        data:'Id',
+        render: function(data, type, full, meta)
+        {
+          return '<a href=\'PledgeDetails.php?PledgeID=' + data + '\'>Details</a>'
+        }
+      }
+    );
+  }
+    
+  
+  dataT = $("#paymentsTable").DataTable({
+    ajax:{
+      url :"/api/deposits/"+depositSlipID+"/pledges",
+      dataSrc:"Pledges"
+    },
+    columns: colDef,
+    responsive: true,
+    "createdRow" : function (row,data,index) {
+      $(row).addClass("paymentRow");
+    }
+  });
+  dataT.on( 'xhr', function () {
+   // var json = dataT.ajax.json();
+   // console.log( json );
+} );
+}
+
+function initDepositSlipEditor()
 {
   $("#DepositDate").datepicker({format: 'yyyy-mm-dd'});
 
@@ -105,45 +172,41 @@ function initDepositSlipEditor()
     });
   });
 
+}
 
+function initCharts(fundChartData, pledgeChartData)
+{
+  var pieOptions = {
+    //String - Point label font colour
+    pointLabelFontColor: "#666",
+    //Boolean - Whether we should show a stroke on each segment
+    segmentShowStroke: true,
+    //String - The colour of each segment stroke
+    segmentStrokeColor: "#fff",
+    //Number - The width of each segment stroke
+    segmentStrokeWidth: 2,
+    //Number - The percentage of the chart that we cut out of the middle
+    percentageInnerCutout: 50, // This is 0 for Pie charts
+    //Boolean - Whether we animate the rotation of the Doughnut
+    animateRotate: false,
+    //Boolean - whether to make the chart responsive to window resizing
+    responsive: true,
+    // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+    maintainAspectRatio: true,
+    //String - A legend template
+    legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
+  };
 
-    //-------------
-    //- PIE CHART -
-    //-------------
-    // Get context with jQuery - using jQuery's .get() method.
+  pieChartCanvas = $("#type-donut").get(0).getContext("2d");
+  var pieChart = new Chart(pieChartCanvas);
+  pieChart = pieChart.Doughnut(fundChartData, pieOptions);
+  var legend = pieChart.generateLegend();
+  $('#type-donut-legend').append(legend);
 
-    var pieOptions = {
-
-      //String - Point label font colour
-      pointLabelFontColor: "#666",
-
-      //Boolean - Whether we should show a stroke on each segment
-      segmentShowStroke: true,
-      //String - The colour of each segment stroke
-      segmentStrokeColor: "#fff",
-      //Number - The width of each segment stroke
-      segmentStrokeWidth: 2,
-      //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout: 50, // This is 0 for Pie charts
-      //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate: false,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive: true,
-      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio: true,
-      //String - A legend template
-      legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
-    };
-
-    var pieChartCanvas = $("#type-donut").get(0).getContext("2d");
-    var pieChart = new Chart(pieChartCanvas);
-    pieChart = pieChart.Doughnut(typePieData, pieOptions);
-    var legend = pieChart.generateLegend();
-    $('#type-donut-legend').append(legend);
-    
-    var pieChartCanvas = $("#fund-donut").get(0).getContext("2d");
-    var pieChart = new Chart(pieChartCanvas);
-    pieChart = pieChart.Doughnut(fundPieData, pieOptions);
-    var legend = pieChart.generateLegend();
-    $('#fund-donut-legend').append(legend);
+  var pieChartCanvas = $("#fund-donut").get(0).getContext("2d");
+  var pieChart = new Chart(pieChartCanvas);
+  pieChart = pieChart.Doughnut(pledgeChartData, pieOptions);
+  var legend = pieChart.generateLegend();
+  $('#fund-donut-legend').append(legend);
+ 
 }

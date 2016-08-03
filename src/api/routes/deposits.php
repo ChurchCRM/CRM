@@ -53,8 +53,9 @@ $app->group('/deposits', function () {
     echo json_encode(["success" => true]);
   });
 
-  $this->get('/{id:[0-9]+}/payments', function ($request, $response, $args) {
+  $this->get('/{id:[0-9]+}/pledges', function ($request, $response, $args) {
     $id = $args['id'];
-    echo $this->FinancialService->getPaymentJSON($this->FinancialService->getPayments($id));
+    echo \ChurchCRM\Base\DepositQuery::create()->findOneById($id)->getPledgesJoinAll()->toJSON();
   });
+  
 });

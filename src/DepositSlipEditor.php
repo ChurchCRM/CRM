@@ -16,7 +16,6 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "service/FinancialService.php";
 require_once 'vendor/autoload.php';
 require_once 'orm/conf/config.php';
 
@@ -69,15 +68,8 @@ $rsUpdate = RunQuery($sSQL);
 
 require "Include/Header.php";
 ?>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.css">
-<script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 <div class="row">
   <div class="col-lg-7">
     <div class="box">
@@ -122,7 +114,6 @@ require "Include/Header.php";
         <h3 class="box-title"><?php echo gettext("Deposit Summary: "); ?></h3>
       </div>
       <div class="box-body">
-        <script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
         <div class="col-lg-6">
           <canvas id="type-donut" style="height:250px"></canvas>
           <ul style="margin:0px; border:0px; padding:0px;">
@@ -210,108 +201,45 @@ require "Include/Header.php";
 <!-- End Delete Confirm Modal -->
 
 <script type="text/javascript" src="<?= $sRootPath ?>/skin/js/DepositSlipEditor.js"></script>
-<script>
-var paymentData = <?php  echo $thisDeposit->getPledgesJoinAll()->toJSON();?>;
-var typePieData = [
-  {
-    value: <?= $thisDeposit->getTotalamount() ? $thisDeposit->getTotalCash() : "0" ?> , 
-    color: "#197A05", 
-    highlight: "#4AFF23", 
-    label: "Cash" 
-  },
-  {
-    value:  <?= $thisDeposit->getTotalamount() ?  $thisDeposit->getTotalChecks() : "0" ?>, 
-    color: "#003399", 
-    highlight: "#3366ff", 
-    label: "Checks" 
-  }
-  ];
-  
-var fundPieData = 
 <?php
-$fundData = array() ;
-foreach ($thisDeposit->getFundTotals() as $tmpfund)
-{
- $fund = new StdClass();
- $fund->color = "#".random_color() ;
- $fund->highlight= "#".random_color() ;
- $fund->label = $tmpfund->Name;
- $fund->value = $tmpfund->Total;
- array_push($fundData,$fund);
-}
-echo json_encode($fundData);
+  $fundData = array() ;
+  foreach ($thisDeposit->getFundTotals() as $tmpfund)
+  {
+    $fund = new StdClass();
+    $fund->color = "#".random_color() ;
+    $fund->highlight= "#".random_color() ;
+    $fund->label = $tmpfund->Name;
+    $fund->value = $tmpfund->Total;
+    array_push($fundData,$fund);
+  }
+  $pledgeTypeData = array();
+  $t1 = new stdClass();
+  $t1->value = $thisDeposit->getTotalamount() ? $thisDeposit->getTotalCash() : "0";
+  $t1->color = "#197A05";
+  $t1->highlight ="#4AFF23";
+  $t1->label ="Cash";
+  array_push($pledgeTypeData, $t1);
+  $t1 = new stdClass();
+  $t1->value = $thisDeposit->getTotalamount() ? $thisDeposit->getTotalChecks() : "0";
+  $t1->color = "#003399";
+  $t1->highlight ="#3366ff";
+  $t1->label ="Checks";
+  array_push($pledgeTypeData, $t1);
 ?>
+
+<script>
+  var depositType = '<?php echo $thisDeposit->getType(); ?>';
+  var depositSlipID = <?php echo $iDepositSlipID; ?>;
+  var isDepositClosed = Boolean(<?=  $thisDeposit->getClosed();  ?>);
+  var fundData = <?= json_encode($fundData) ?>; 
+  var pledgeData = <?= json_encode($pledgeTypeData) ?>;
   
-var depositType = '<?php echo $thisDeposit->getType(); ?>';
-var depositSlipID = <?php echo $iDepositSlipID; ?>;
-
-$(document).ready(function() {
-  dataT = $("#paymentsTable").DataTable({
-    data:paymentData.Pledges,
-    columns: [
-    {
-    "className":      'details-control',
-            "orderable":      false,
-            "data":           null,
-            "defaultContent": '<i class="fa fa-plus-circle"></i>'
-    },
-    {
-    width: 'auto',
-            title:'Family',
-            data:'Family.Name',
-            render: function(data, type, full, meta) {
-              return '<a href=\'PledgeEditor.php?GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa <?= ($thisDeposit->getClosed() ? "fa-search-plus": "fa-pencil" ); ?> fa-stack-1x fa-inverse"></i></span></a>' + data;
-            }
-    },
-    {
-    width: 'auto',
-            title:'Check Number',
-            data:'Checkno',
-    },
-    {
-    width: 'auto',
-            title:'Amount',
-            data:'Amount',
-    }
-    ,
-    {
-    width: 'auto',
-            title:'Method',
-            data:'Method',
-    }
-  <?php if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') { ?>,
-                , {
-                width: 'auto',
-                        title:'Cleared',
-                        data:'AutCleared',
-                }<?php
-  }
-  if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
-  ?>
-        , {
-        width: 'auto',
-                title:'Details',
-                data:'Id',
-                render: function(data, type, full, meta)
-                {
-                  return '<a href=\'PledgeDetails.php?PledgeID=' + data + '\'>Details</a>'
-                  }
-        }<?php } ?>
-    ],
-    "createdRow" : function (row,data,index) {
-      $(row).addClass("paymentRow");
-    }
- 
-});
-
-initDepositSlipEditor();
-});
-
+  $(document).ready(function() {
+    initPaymentTable();
+    initCharts(pledgeData, fundData);
+    initDepositSlipEditor();
+  });
 </script>
-
-
-
 <?php
-
-require "Include/Footer.php";
+  require "Include/Footer.php";
 ?>
