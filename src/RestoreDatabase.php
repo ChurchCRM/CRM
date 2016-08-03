@@ -44,33 +44,43 @@ require 'Include/Header.php';
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">Restore Status:</h3>&nbsp;<h3 class="box-title" id="restorestatus" style="color:red">No Restore Running</h3>
+        <div id="restoreMessages"></div>
+        <span id="restoreNextStep"></span>
     </div>
 </div>
 <script>
 $('#restoredatabase').submit(function(event) {
-   event.preventDefault();
-   $("#restorestatus").css("color","orange");
-   $("#restorestatus").html("Restore Running, Please wait.");
-   var formData = new FormData($(this)[0]); 
-   $.ajax({
-        url: window.CRM.root + '/api/database/restore',
-        type: 'POST',
-        data: formData,
-        cache: false,
-        contentType: false,
-        enctype: 'multipart/form-data',
-        processData: false,
-        dataType    : 'json'
-   })
-   .done(function(data) {
-        console.log(data);
-        $("#restorestatus").css("color","green");
-        $("#restorestatus").html('Restore Complete <a href="Login.php?Logoff=True" class="btn btn-primary">Login to restored Database</a>');
-    }).fail(function()  {
-        $("#restorestatus").css("color","red");
-        $("#restorestatus").html("Restore Error.");
-    });
-   return false;
+  event.preventDefault();
+  $("#restorestatus").css("color","orange");
+  $("#restorestatus").html("Restore Running, Please wait.");
+  var formData = new FormData($(this)[0]); 
+  $.ajax({
+    url: window.CRM.root + '/api/database/restore',
+    type: 'POST',
+    data: formData,
+    cache: false,
+    contentType: false,
+    enctype: 'multipart/form-data',
+    processData: false,
+    dataType    : 'json'
+  })
+  .done(function(data) {
+    if(data.Messages.length>0)
+    {
+      $.each(data.Messages, function(index,value)
+      {
+        var inhtml = '<h4><i class="icon fa fa-ban"></i> Alert!</h4>'+value;
+        $("<div>").addClass("alert alert-danger").html(inhtml).appendTo("#restoreMessages");
+      });
+    }
+    $("#restorestatus").css("color","green");
+    $("#restorestatus").html("Restore Complete");
+    $("#restoreNextStep").html('<a href="Login.php?Logoff=True" class="btn btn-primary">Login to restored Database</a>');
+   }).fail(function()  {
+    $("#restorestatus").css("color","red");
+    $("#restorestatus").html("Restore Error.");
+  });
+  return false;
 });
 </script>
 <!-- PACE -->
