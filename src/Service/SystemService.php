@@ -336,6 +336,11 @@ class SystemService {
       return true;
     }
 
+    if (in_array($db_version, array("2.1.8", "2.1.9"))) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.8-2.1.10.sql");
+      return true;
+    }
+
     return false;
   }
 
