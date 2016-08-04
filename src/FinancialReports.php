@@ -306,9 +306,7 @@ if ($sReportType == "") {
     }
     
     if ($sReportType == "Voting Members"){
-        echo "<tr><td class=LabelColumn>".gettext("Voting members must have made<br>
-            a donation within this many years<br>
-            (0 to not require a donation):")."</td>";
+        echo "<tr><td class=LabelColumn>".gettext("Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):")."</td>";
         echo "<td class=TextColumnWithBottomBorder><input name=RequireDonationYears type=text value=0 size=5></td></tr>";
     }
     
