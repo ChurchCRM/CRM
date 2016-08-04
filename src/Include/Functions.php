@@ -1084,25 +1084,20 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
     {
         // Handler for boolean fields
         case 1:
-            echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"true\"";
-            if ($data == 'true') {
-                echo " checked";
-            }
-            echo ">".gettext("Yes");
-            echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"false\"";
-            if ($data == 'false') {
-                echo " checked";
-            }
-            echo ">".gettext("No");
-            echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"\"";
-            if (strlen($data) == 0) {
-                echo " checked";
-            }
-            echo ">".gettext("Unknown");
-            break;
+          echo "<div class=\"form-group\">".
+               "<div class=\"radio\"><label><input type=\"radio\" Name=\"" . $fieldname . "\" value=\"true\"". ($data == 'true' ? "checked":"").">".gettext("Yes")."</label></div>".
+               "<div class=\"radio\"><label><input type=\"radio\" Name=\"" . $fieldname . "\" value=\"false\"". ($data == 'false' ? "checked":"").">".gettext("No")."</label></div>".
+               "<div class=\"radio\"><label><input type=\"radio\" Name=\"" . $fieldname . "\" value=\"\"". (strlen($data) == 0 ? "checked":"").">".gettext("Unknown")."</label></div>".
+              "</div>";
+          break;
         // Handler for date fields
         case 2:
-            echo "<input class=\"form-control\" type=\"text\" id=\"" . $fieldname . "\" Name=\"" . $fieldname . "\" maxlength=\"10\" size=\"15\" value=\"" . $data . "\">&nbsp;<input type=\"image\" class=\"form-control\" onclick=\"return showCalendar('$fieldname', 'y-mm-dd');\" src=\"Images/calendar.gif\"> " . gettext("[format: YYYY-MM-DD]");
+            echo "<div class=\"input-group\">".
+                    "<div class=\"input-group-addon\">".
+                    "<i class=\"fa fa-calendar\"></i>".
+                    "</div>".
+                "<input class=\"form-control inputDatePicker\" type=\"text\" id=\"" . $fieldname . "\" Name=\"" . $fieldname . "\" value=\"" . $data . "\"> " .
+                "</div>";
             break;
 
         // Handler for 50 character max. text fields

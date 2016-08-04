@@ -1,5 +1,44 @@
 # Change Log
 
+## [2.1.10](https://github.com/ChurchCRM/CRM/tree/2.1.10) (2016-08-03)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.9...2.1.10)
+
+**Merged pull requests:**
+
+- 2 1 10 [\#903](https://github.com/ChurchCRM/CRM/pull/903) ([DawoudIO](https://github.com/DawoudIO))
+
+## [2.1.9](https://github.com/ChurchCRM/CRM/tree/2.1.9) (2016-08-03)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.8...2.1.9)
+
+**Implemented enhancements:**
+
+- Email sunday school class parents [\#71](https://github.com/ChurchCRM/CRM/issues/71)
+- Local changes - Using gettext where missing  [\#878](https://github.com/ChurchCRM/CRM/pull/878) ([DawoudIO](https://github.com/DawoudIO))
+
+**Fixed bugs:**
+
+- sEnableExternalBackupTarget during database restore [\#889](https://github.com/ChurchCRM/CRM/issues/889)
+- fix develop's upgrade process [\#887](https://github.com/ChurchCRM/CRM/pull/887) ([crossan007](https://github.com/crossan007))
+- Dont restore auto backup [\#890](https://github.com/ChurchCRM/CRM/pull/890) ([crossan007](https://github.com/crossan007))
+- fix rendering of custom  fields to use AdminLTE documentation. [\#885](https://github.com/ChurchCRM/CRM/pull/885) ([crossan007](https://github.com/crossan007))
+
+**Closed issues:**
+
+- test [\#899](https://github.com/ChurchCRM/CRM/issues/899)
+- Test [\#898](https://github.com/ChurchCRM/CRM/issues/898)
+- test2 [\#897](https://github.com/ChurchCRM/CRM/issues/897)
+- adding students [\#884](https://github.com/ChurchCRM/CRM/issues/884)
+- test [\#883](https://github.com/ChurchCRM/CRM/issues/883)
+- Favicon [\#893](https://github.com/ChurchCRM/CRM/issues/893)
+- Custom Family/Person Fields [\#881](https://github.com/ChurchCRM/CRM/issues/881)
+
+**Merged pull requests:**
+
+- demo video in install doc [\#880](https://github.com/ChurchCRM/CRM/pull/880) ([crossan007](https://github.com/crossan007))
+- Master 2.1.8 to Develop [\#877](https://github.com/ChurchCRM/CRM/pull/877) ([DawoudIO](https://github.com/DawoudIO))
+- icon v1 [\#902](https://github.com/ChurchCRM/CRM/pull/902) ([DawoudIO](https://github.com/DawoudIO))
+- auto-provision 1.2.14 for testing upgrade. [\#900](https://github.com/ChurchCRM/CRM/pull/900) ([crossan007](https://github.com/crossan007))
+
 ## [2.1.8](https://github.com/ChurchCRM/CRM/tree/2.1.8) (2016-07-28)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.7...2.1.8)
 
@@ -22,7 +61,6 @@
 - show page name in issue reporter [\#865](https://github.com/ChurchCRM/CRM/issues/865)
 - Sunday School Email  [\#851](https://github.com/ChurchCRM/CRM/issues/851)
 - Cart Functions Buttons Location [\#847](https://github.com/ChurchCRM/CRM/issues/847)
-- Search bar does not work on iOS [\#821](https://github.com/ChurchCRM/CRM/issues/821)
 - Fixed Default pictures no longer correct due to Gravatar flag [\#876](https://github.com/ChurchCRM/CRM/pull/876) ([DawoudIO](https://github.com/DawoudIO))
 - Don't use the server's time zone for user login timestamps.  Use the … [\#868](https://github.com/ChurchCRM/CRM/pull/868) ([crossan007](https://github.com/crossan007))
 - add page name to issue reporter [\#866](https://github.com/ChurchCRM/CRM/pull/866) ([crossan007](https://github.com/crossan007))

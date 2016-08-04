@@ -5,7 +5,7 @@
  * ssh into the vagrant box
  * 'cd /vagrant'
  * 'composer install'
- * 'vendor/bin/phing" this will do the following
+ * 'vendor/bin/phing' this will do the following
  ** regen messages.po based on the latest files
  ** build zip package
  ** generate the change log
@@ -27,7 +27,7 @@ https://github.com/ChurchCRM/CRM/releases
  * Publish the release 
 
 ## Update release notes 
- 
+ * 'vendor/bin/phing change-log' this will do genreate the logs after the tags are created
  * commit changes to CHANGELOG.md
  * Update git release to point to version in change log
 
