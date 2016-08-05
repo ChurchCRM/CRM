@@ -1,7 +1,7 @@
 <?php
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Service/CalendarService.php";
+use ChurchCRM\Service\CalendarService;
 
 $calenderService = new CalendarService();
 
