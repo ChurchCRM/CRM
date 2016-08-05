@@ -18,12 +18,13 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+require 'Service/NoteService.php';
 
 if (!$_SESSION['bAdmin']) {
     Redirect("Menu.php");
     exit;
 }
-
+$noteService = new NoteService();
 /**
   Class to store family data so we can assign roles once we have all members.
   A monogamous society is assumed, however  it can be patriarchal or matriarchal
@@ -670,11 +671,12 @@ if (isset($_POST["DoImport"]))
                                      "\"" . date("YmdHis") . "\"," .
                                      "\"" . $_SESSION['iUserID'] . "\");";
                     RunQuery($sSQL);
+
                     $sSQL = "SELECT LAST_INSERT_ID()";
                     $rsFid = RunQuery($sSQL);
                     $aFid = mysql_fetch_array($rsFid);
                     $famid =  $aFid[0];
-
+                    $noteService->addNote(0, $famid, 0, "Imported", "create");
                     $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
                     RunQuery($sSQL);
 
@@ -743,12 +745,13 @@ if (isset($_POST["DoImport"]))
                 }
             }
 
+            // Get the last inserted person ID and insert a dummy row in the person_custom table
+            $sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
+            $rsPersonID = RunQuery($sSQL);
+            extract(mysql_fetch_array($rsPersonID));
+            $noteService->addNote($iPersonID, 0, 0, "Imported", "create");
             if ($bHasCustom)
             {
-                // Get the last inserted person ID and insert a dummy row in the person_custom table
-                $sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
-                $rsPersonID = RunQuery($sSQL);
-                extract(mysql_fetch_array($rsPersonID));
                 $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('" . $iPersonID . "')";
                 RunQuery($sSQL);
 
