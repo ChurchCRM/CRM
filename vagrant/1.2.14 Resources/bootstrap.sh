@@ -2,14 +2,19 @@
 
 #=============================================================================
 # DB Setup
+rm -rf /var/www/public/*
+wget -nv -O /var/www/1.2.14.zip http://downloads.sourceforge.net/project/churchinfo/churchinfo/1.2.14/churchinfo-1.2.14.zip
+unzip -d /var/www/public /var/www/1.2.14.zip
+mv  /var/www/public/churchinfo/* /var/www/public/
+
 DB_USER="root"
 DB_PASS="root"
 DB_HOST="localhost"
 
 CRM_DB_INSTALL_SCRIPT="/vagrant/src/SQL/Install.sql"
-CRM_DB_USER="churchcrm"
-CRM_DB_PASS="churchcrm"
-CRM_DB_NAME="churchcrm"
+CRM_DB_USER="churchinfo"
+CRM_DB_PASS="churchinfo"
+CRM_DB_NAME="churchinfo"
 
 RET=1
 while [[ RET -ne 0 ]]; do

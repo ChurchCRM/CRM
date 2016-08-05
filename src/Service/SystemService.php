@@ -41,6 +41,7 @@ class SystemService {
   function restoreDatabaseFromBackup() {
     requireUserGroupMembership("bAdmin");
     $restoreResult = new StdClass();
+    $restoreResult->Messages = array();
     global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $sGZIPname;
     $file = $_FILES['restoreFile'];
     $restoreResult->file = $file;
@@ -79,6 +80,11 @@ class SystemService {
     $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
     $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
     $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
+    //When restoring a database, do NOT let the database continue to create remote backups.
+    //This can be very troublesome for users in a testing environment.
+    $sSQL = 'UPDATE config_cfg SET cfg_value = "0" WHERE cfg_name = "sEnableExternalBackupTarget"';
+    $aRow = mysql_fetch_array(RunQuery($sSQL));
+    array_push($restoreResult->Messages,gettext("As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the sEnableExternalBackupTarget setting."));
     return $restoreResult;
   }
 
@@ -323,8 +329,18 @@ class SystemService {
     }
 
 
-    if (in_array($db_version, array("2.1.3", "2.1.4", "2.1.5", "2.1.6", "2.1.7", "2.1.8"))) {
-      $this->rebuildWithSQL("/mysql/upgrade/2.1.3_8-2.2.0.sql");
+    if (in_array($db_version, array("2.1.3", "2.1.4", "2.1.5", "2.1.6", "2.1.7"))) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.3-2.1.8.sql");
+      return true;
+    }
+    
+     if (in_array($db_version, array("2.1.8","2.1.9"))) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.8-2.2.0.sql");
+      return true;
+    }
+
+    if (in_array($db_version, array("2.1.8", "2.1.9", "2.1.10"))) {
+      $this->rebuildWithSQL("/mysql/upgrade/2.1.8-2.1.11.sql");
       return true;
     }
 
