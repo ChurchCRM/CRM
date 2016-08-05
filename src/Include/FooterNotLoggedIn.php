@@ -1,5 +1,4 @@
-  <!-- jQuery 2.1.4 -->
-  <script src="skin/adminlte/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+
   <!-- Bootstrap 3.3.5 -->
   <script src="skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
   <!-- iCheck -->
