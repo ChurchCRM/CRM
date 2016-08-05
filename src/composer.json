@@ -41,6 +41,7 @@
     "propel/propel": "~2.0@dev"
   },
   "autoload": {
-    "classmap": ["orm/"]
+    "classmap": ["orm/"],
+    "psr-4": {"ChurchCRM\\Service\\": "Service/"}
   }
 }
