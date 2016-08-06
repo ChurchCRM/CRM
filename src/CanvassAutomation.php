@@ -170,8 +170,7 @@ if ($processNews != "")
                        name="AssignCanvassers">
               </td>
               <td align="left" width="75%">
-                <?= gettext("Randomly assign canvassers to all Families.  The Canvassers are
-                        taken from the &quot;Canvassers&quot; Group.") ?>
+                <?= gettext("Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group.") ?>
                 <p><input type="checkbox" name="AssignCanvassersConfirm"><?= gettext("Check to confirm") ?></p>
               </td>
             </tr>
@@ -182,8 +181,7 @@ if ($processNews != "")
                        name="AssignNonPledging">
               </td>
               <td align="left" width="75%">
-                <?= gettext("Randomly assign canvassers to non-pledging Families.  The Canvassers are
-                        taken from the &quot;BraveCanvassers&quot; Group.") ?>
+                <?= gettext("Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group.") ?>
                 <p><input type="checkbox" name="AssignNonPledgingConfirm"><?= gettext("Check to confirm") ?></p>
               </td>
             </tr>
@@ -194,8 +192,7 @@ if ($processNews != "")
                        name="ClearCanvasserAssignments">
               </td>
               <td align="left" width="75%">
-                <?= gettext("Clear all the canvasser assignments for all families.  <p>Important
-                        note: this will lose any canvasser assignments that have been made by hand.</p>"); ?>
+                <?= gettext("Clear all the canvasser assignments for all families.") ?>  <p><?= gettext("Important note: this will lose any canvasser assignments that have been made by hand.") ?></p>
                 <input type="checkbox" name="ClearCanvasserAssignmentsConfirm"><?= gettext("Check to confirm") ?>
               </td>
             </tr>
@@ -206,8 +203,7 @@ if ($processNews != "")
                        name="SetAllOkToCanvass">
               </td>
               <td align="left" width="75%">
-                <?= gettext("Turn on the &quot;Ok To Canvass&quot; field for all Families.  <p>Important
-                        note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand.</p>"); ?>
+                <?= gettext("Turn on the &quot;Ok To Canvass&quot; field for all Families.") ?>  <p><?= gettext("Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."); ?></p>
                 <input type="checkbox" name="SetAllOkToCanvassConfirm"><?= gettext("Check to confirm") ?>
               </td>
             </tr>
@@ -218,8 +214,7 @@ if ($processNews != "")
                        name="ClearAllOkToCanvass">
               </td>
               <td align="left" width="75%">
-                <?= gettext("Turn off the &quot;Ok To Canvass&quot; field for all Families.  <p>Important
-                        note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand.</p>"); ?>
+                <?= gettext("Turn off the &quot;Ok To Canvass&quot; field for all Families") ?>  <p><?= gettext("Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."); ?></p>
                 <input type="checkbox" name="ClearAllOkToCanvassConfirm"><?= gettext("Check to confirm") ?>
               </td>
             </tr>
@@ -240,8 +235,7 @@ if ($processNews != "")
                        name="ProgressReport">
               </td>
               <td align="left" width="75%">
-                <?= gettext("Generate a PDF containing a progress report.  The progress report includes
-                        information on the overall progress of the canvass, and the progress of individual canvassers.") ?>
+                <?= gettext("Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers.") ?>
               </td>
             </tr>
 
@@ -251,8 +245,7 @@ if ($processNews != "")
                        name="SummaryReport">
               </td>
               <td align="left" width="75%">
-                <?= gettext("Generate a PDF containing a summary report.  The summary report includes
-                        comments extracted from the canvass data.") ?>
+                <?= gettext("Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data.") ?>
               </td>
             </tr>
 
