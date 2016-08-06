@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-04 06:13+0000\n"
+"POT-Creation-Date: 2016-08-06 05:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr ""
 #: ElectronicPaymentList.php:214 ElectronicPaymentList.php:273
 #: EventNames.php:314 FamilyCustomFieldsEditor.php:355 FamilyView.php:516
 #: FamilyView.php:565 FamilyView.php:608 FamilyView.php:765
-#: FindDepositSlip.php:51 FundRaiserEditor.php:210 ListEvents.php:303
+#: FindDepositSlip.php:49 FundRaiserEditor.php:210 ListEvents.php:303
 #: PaddleNumList.php:57 PersonCustomFieldsEditor.php:307 PersonView.php:768
 #: PledgeDelete.php:55 PropertyList.php:70 PropertyList.php:112
 #: PropertyTypeList.php:46 PropertyTypeList.php:69 PropertyTypeList.php:71
@@ -89,12 +89,12 @@ msgid "Family:"
 msgstr ""
 
 #: AutoPaymentEditor.php:590 BatchWinnerEntry.php:84 BatchWinnerEntry.php:96
-#: CSVImport.php:292 DonatedItemEditor.php:209 DonatedItemEditor.php:255
-#: eGive.php:374 FamilyEditor.php:1037 GroupEditor.php:86
-#: PaddleNumEditor.php:171 PersonEditor.php:667 PersonEditor.php:681
-#: PersonEditor.php:932 PrintView.php:235 SelectDelete.php:258
-#: SelectList.php:42 SelectList.php:52 SelectList.php:68
-#: Include/Functions.php:1163 Include/Functions.php:1206
+#: CSVImport.php:293 DonatedItemEditor.php:209 DonatedItemEditor.php:255
+#: FamilyEditor.php:1037 GroupEditor.php:86 PaddleNumEditor.php:171
+#: PersonEditor.php:667 PersonEditor.php:681 PersonEditor.php:932
+#: PrintView.php:235 SelectDelete.php:258 SelectList.php:42 SelectList.php:52
+#: SelectList.php:68 eGive.php:374 Include/Functions.php:1163
+#: Include/Functions.php:1206
 msgid "Unassigned"
 msgstr ""
 
@@ -142,22 +142,22 @@ msgstr ""
 msgid "Last name"
 msgstr ""
 
-#: AutoPaymentEditor.php:672 Reports/ConfirmReportEmail.php:155
-#: Reports/ConfirmReport.php:128
+#: AutoPaymentEditor.php:672 Reports/ConfirmReport.php:128
+#: Reports/ConfirmReportEmail.php:155
 msgid "Address 1"
 msgstr ""
 
-#: AutoPaymentEditor.php:677 Reports/ConfirmReportEmail.php:159
-#: Reports/ConfirmReport.php:132
+#: AutoPaymentEditor.php:677 Reports/ConfirmReport.php:132
+#: Reports/ConfirmReportEmail.php:159
 msgid "Address 2"
 msgstr ""
 
-#: AutoPaymentEditor.php:682 CSVImport.php:238 DirectoryReports.php:252
+#: AutoPaymentEditor.php:682 CSVImport.php:239 DirectoryReports.php:252
 #: FamilyList.php:26 GeoPage.php:327 GroupView.php:575
 msgid "City"
 msgstr ""
 
-#: AutoPaymentEditor.php:687 CSVImport.php:239 DirectoryReports.php:256
+#: AutoPaymentEditor.php:687 CSVImport.php:240 DirectoryReports.php:256
 #: FamilyList.php:27 GeoPage.php:328 GroupView.php:580
 msgid "State"
 msgstr ""
@@ -166,7 +166,7 @@ msgstr ""
 msgid "Zip code"
 msgstr ""
 
-#: AutoPaymentEditor.php:697 CSVImport.php:241
+#: AutoPaymentEditor.php:697 CSVImport.php:242
 msgid "Country"
 msgstr ""
 
@@ -177,11 +177,11 @@ msgstr ""
 msgid "Phone"
 msgstr ""
 
-#: AutoPaymentEditor.php:707 CSVImport.php:245 EditEventAttendees.php:52
+#: AutoPaymentEditor.php:707 CSVImport.php:246 EditEventAttendees.php:52
 #: EventAttendance.php:203 FamilyView.php:271 FamilyView.php:786
 #: GroupReports.php:136 PersonView.php:391 Reports/CanvassReports.php:263
-#: Reports/ConfirmReportEmail.php:217 Reports/ConfirmReportEmail.php:237
 #: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:206
+#: Reports/ConfirmReportEmail.php:217 Reports/ConfirmReportEmail.php:237
 #: Reports/DirectoryReport.php:333 Reports/DirectoryReport.php:413
 #: Reports/DirectoryReport.php:476 Reports/DirectoryReport.php:791
 #: Reports/GroupReport.php:277 sundayschool/SundaySchoolClassView.php:81
@@ -265,7 +265,7 @@ msgstr ""
 msgid "GZip"
 msgstr ""
 
-#: BackupDatabase.php:60 CSVImport.php:240 DirectoryReports.php:260
+#: BackupDatabase.php:60 CSVImport.php:241 DirectoryReports.php:260
 #: FamilyList.php:28 GeoPage.php:329
 msgid "Zip"
 msgstr ""
@@ -318,24 +318,383 @@ msgstr ""
 msgid "Enter Winners"
 msgstr ""
 
-#: calendar.php:9
-msgid "Church Calendar"
+#: CSVExport.php:70 CartView.php:115
+msgid "CSV Export"
 msgstr ""
 
-#: calendar.php:61
-msgid "Today"
+#: CSVExport.php:78
+msgid "Field Selection"
 msgstr ""
 
-#: calendar.php:62 ElectronicPaymentList.php:208 FamilyEditor.php:932
-msgid "Month"
+#: CSVExport.php:82 PersonEditor.php:602
+msgid "Last Name:"
 msgstr ""
 
-#: calendar.php:63
-msgid "Week"
+#: CSVExport.php:83
+msgid "Required"
 msgstr ""
 
-#: calendar.php:64 FamilyEditor.php:933
-msgid "Day"
+#: CSVExport.php:88 DonatedItemEditor.php:226 FundRaiserEditor.php:179
+#: PersonEditor.php:583
+msgid "Title:"
+msgstr ""
+
+#: CSVExport.php:93 PersonEditor.php:590
+msgid "First Name:"
+msgstr ""
+
+#: CSVExport.php:98 PersonEditor.php:596
+msgid "Middle Name:"
+msgstr ""
+
+#: CSVExport.php:103 PersonEditor.php:608
+msgid "Suffix:"
+msgstr ""
+
+#: CSVExport.php:108 CartToFamily.php:240 FamilyEditor.php:678
+#: PersonEditor.php:711
+msgid "Address1:"
+msgstr ""
+
+#: CSVExport.php:113 CartToFamily.php:245 FamilyEditor.php:682
+#: PersonEditor.php:724
+msgid "Address2:"
+msgstr ""
+
+#: CSVExport.php:118 CartToFamily.php:250 FamilyEditor.php:686
+#: PersonEditor.php:737
+msgid "City:"
+msgstr ""
+
+#: CSVExport.php:123 CartToFamily.php:255 FamilyEditor.php:698
+#: PersonEditor.php:754
+msgid "State:"
+msgstr ""
+
+#: CSVExport.php:128 CartToFamily.php:270 FamilyEditor.php:711
+#: PersonEditor.php:772
+msgid "Zip:"
+msgstr ""
+
+#: CSVExport.php:133 Reports/TaxReport.php:195
+msgid "Envelope:"
+msgstr ""
+
+#: CSVExport.php:138 CartToFamily.php:280 FamilyEditor.php:720
+#: PersonEditor.php:792
+msgid "Country:"
+msgstr ""
+
+#: CSVExport.php:143 CartToFamily.php:291 FamilyEditor.php:751
+#: FamilyView.php:200 PersonEditor.php:816 PersonEditor.php:818
+#: PersonView.php:252 PrintView.php:166
+msgid "Home Phone:"
+msgstr ""
+
+#: CSVExport.php:148 CartToFamily.php:299 FamilyEditor.php:761
+#: FamilyView.php:203 PersonEditor.php:833 PersonEditor.php:835
+#: PersonView.php:263 PrintView.php:171
+msgid "Work Phone:"
+msgstr ""
+
+#: CSVExport.php:153 CartToFamily.php:307 FamilyEditor.php:771
+#: FamilyView.php:206 PersonEditor.php:851 PersonEditor.php:853
+#: PersonView.php:248 PrintView.php:176
+msgid "Mobile Phone:"
+msgstr ""
+
+#: CSVExport.php:158 CartToFamily.php:315 FamilyEditor.php:783
+#: FamilyView.php:209 FamilyView.php:211 PersonEditor.php:871
+#: PersonEditor.php:873 PersonView.php:256 PrintView.php:253
+msgid "Email:"
+msgstr ""
+
+#: CSVExport.php:163 PersonView.php:266
+msgid "Work/Other Email:"
+msgstr ""
+
+#: CSVExport.php:168 CSVExport.php:383 PersonEditor.php:919 PrintView.php:263
+msgid "Membership Date:"
+msgstr ""
+
+#: CSVExport.php:173
+msgid "* Birth / Anniversary Date:"
+msgstr ""
+
+#: CSVExport.php:178
+msgid "* Age / Years Married:"
+msgstr ""
+
+#: CSVExport.php:183 CSVExport.php:311 PersonEditor.php:665 PrintView.php:233
+msgid "Family Role:"
+msgstr ""
+
+#: CSVExport.php:186
+msgid "* Depends whether using person or family output method"
+msgstr ""
+
+#: CSVExport.php:200
+msgid "Custom Field Selection"
+msgstr ""
+
+#: CSVExport.php:209 MembersDashboard.php:130
+msgid "Custom Person Fields"
+msgstr ""
+
+#: CSVExport.php:231 MembersDashboard.php:132
+msgid "Custom Family Fields"
+msgstr ""
+
+#: CSVExport.php:259 FinancialReports.php:107
+msgid "Filters"
+msgstr ""
+
+#: CSVExport.php:265
+msgid "Records to export:"
+msgstr ""
+
+#: CSVExport.php:274
+msgid "Based on filters below.."
+msgstr ""
+
+#: CSVExport.php:275
+msgid "People in Cart (filters ignored)"
+msgstr ""
+
+#: CSVExport.php:284 FinancialReports.php:117 PersonEditor.php:930
+#: PrintView.php:268
+msgid "Classification:"
+msgstr ""
+
+#: CSVExport.php:303 CSVExport.php:330 CSVExport.php:366
+#: DirectoryReports.php:87 DirectoryReports.php:104 DirectoryReports.php:124
+#: DirectoryReports.php:140 DirectoryReports.php:157 FinancialReports.php:257
+msgid "Use Ctrl Key to select multiple"
+msgstr ""
+
+#: CSVExport.php:338 PersonEditor.php:574 PrintView.php:205
+msgid "Gender:"
+msgstr ""
+
+#: CSVExport.php:347
+msgid "Don't Filter"
+msgstr ""
+
+#: CSVExport.php:348 FamilyEditor.php:973 PersonEditor.php:578
+#: PrintView.php:212 PrintView.php:321 SelectList.php:511 SelectList.php:1033
+msgid "Male"
+msgstr ""
+
+#: CSVExport.php:349 FamilyEditor.php:974 PersonEditor.php:579
+#: PrintView.php:215 PrintView.php:321 SelectList.php:516 SelectList.php:1034
+msgid "Female"
+msgstr ""
+
+#: CSVExport.php:358 DirectoryReports.php:102
+msgid "Group Membership:"
+msgstr ""
+
+#: CSVExport.php:391 CSVExport.php:408 CSVExport.php:425 CSVExport.php:442
+#: CartView.php:439 EmailEditor.php:73
+msgid "From:"
+msgstr ""
+
+#: CSVExport.php:392 CSVExport.php:409 CSVExport.php:426 CSVExport.php:443
+msgid "To:"
+msgstr ""
+
+#: CSVExport.php:400
+msgid "Birthday Date:"
+msgstr ""
+
+#: CSVExport.php:417
+msgid "Anniversary Date:"
+msgstr ""
+
+#: CSVExport.php:434
+msgid "Date Entered:"
+msgstr ""
+
+#: CSVExport.php:455 FinancialReports.php:321
+msgid "Output Method:"
+msgstr ""
+
+#: CSVExport.php:459
+msgid "CSV Individual Records"
+msgstr ""
+
+#: CSVExport.php:460
+msgid "CSV Combine Families"
+msgstr ""
+
+#: CSVExport.php:461
+msgid "Add Individuals to Cart"
+msgstr ""
+
+#: CSVExport.php:464
+msgid "Skip records with incomplete mail address"
+msgstr ""
+
+#: CSVExport.php:466
+msgid "Create File"
+msgstr ""
+
+#: CSVImport.php:141
+msgid "No file selected for upload."
+msgstr ""
+
+#: CSVImport.php:166
+msgid "Total number of rows in the CSV file:"
+msgstr ""
+
+#: CSVImport.php:229
+msgid "Ignore this Field"
+msgstr ""
+
+#: CSVImport.php:230 FindFundRaiser.php:226 FundRaiserEditor.php:205
+msgid "Title"
+msgstr ""
+
+#: CSVImport.php:231 sundayschool/SundaySchoolDashboard.php:176
+msgid "First Name"
+msgstr ""
+
+#: CSVImport.php:232
+msgid "Middle Name"
+msgstr ""
+
+#: CSVImport.php:233 ManageEnvelopes.php:163
+#: sundayschool/SundaySchoolDashboard.php:177
+msgid "Last Name"
+msgstr ""
+
+#: CSVImport.php:234 FamilyEditor.php:929
+msgid "Suffix"
+msgstr ""
+
+#: CSVImport.php:235 FamilyEditor.php:930 PrintView.php:295
+#: sundayschool/SundaySchoolClassView.php:162
+msgid "Gender"
+msgstr ""
+
+#: CSVImport.php:236
+msgid "Donation Envelope"
+msgstr ""
+
+#: CSVImport.php:237
+msgid "Address1"
+msgstr ""
+
+#: CSVImport.php:238
+msgid "Address2"
+msgstr ""
+
+#: CSVImport.php:243 EditEventAttendees.php:53 EventAttendance.php:204
+#: FamilyList.php:24 GroupReports.php:133
+#: sundayschool/SundaySchoolClassView.php:188
+msgid "Home Phone"
+msgstr ""
+
+#: CSVImport.php:244 GroupReports.php:134
+msgid "Work Phone"
+msgstr ""
+
+#: CSVImport.php:245
+msgid "Mobile Phone"
+msgstr ""
+
+#: CSVImport.php:247
+msgid "Work / Other Email"
+msgstr ""
+
+#: CSVImport.php:248 sundayschool/SundaySchoolClassView.php:184
+#: sundayschool/SundaySchoolDashboard.php:178
+msgid "Birth Date"
+msgstr ""
+
+#: CSVImport.php:249
+msgid "Membership Date"
+msgstr ""
+
+#: CSVImport.php:250 DirectoryReports.php:175
+msgid "Wedding Date"
+msgstr ""
+
+#: CSVImport.php:260
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr ""
+
+#: CSVImport.php:265
+msgid "Make Family records based on last name and address"
+msgstr ""
+
+#: CSVImport.php:271
+msgid "Patriarch"
+msgstr ""
+
+#: CSVImport.php:272
+msgid "Matriarch"
+msgstr ""
+
+#: CSVImport.php:274
+msgid "Family Type: used with Make Family records... option above"
+msgstr ""
+
+#: CSVImport.php:281
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr ""
+
+#: CSVImport.php:286
+msgid "Default country if none specified otherwise"
+msgstr ""
+
+#: CSVImport.php:305 CartView.php:606 FamilyEditor.php:935
+#: MembersDashboard.php:310 OptionManager.php:71
+msgid "Classification"
+msgstr ""
+
+#: CSVImport.php:307
+msgid "Perform Import"
+msgstr ""
+
+#: CSVImport.php:851
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr ""
+
+#: CSVImport.php:870
+msgid "Data Cleared Successfully!"
+msgstr ""
+
+#: CSVImport.php:874
+msgid "Please select the confirmation checkbox"
+msgstr ""
+
+#: CSVImport.php:885
+msgid "Upload CSV File"
+msgstr ""
+
+#: CSVImport.php:896 CSVImport.php:903 CSVImport.php:915
+msgid "Clear Persons and Families"
+msgstr ""
+
+#: CSVImport.php:908
+msgid ""
+"Warning!  Do not select this option if you plan to add to an existing "
+"database.<br/>"
+msgstr ""
+
+#: CSVImport.php:909
+msgid ""
+"Use only if unsatisfied with initial import.  All person and member data "
+"will be destroyed!"
+msgstr ""
+
+#: CSVImport.php:927
+msgid "Data import successful."
+msgstr ""
+
+#: CSVImport.php:927
+msgid "persons were imported"
 msgstr ""
 
 #: Canvas05Editor.php:29
@@ -621,26 +980,6 @@ msgstr ""
 msgid "Only the new data below"
 msgstr ""
 
-#: CartToFamily.php:240 CSVExport.php:108 FamilyEditor.php:678
-#: PersonEditor.php:711
-msgid "Address1:"
-msgstr ""
-
-#: CartToFamily.php:245 CSVExport.php:113 FamilyEditor.php:682
-#: PersonEditor.php:724
-msgid "Address2:"
-msgstr ""
-
-#: CartToFamily.php:250 CSVExport.php:118 FamilyEditor.php:686
-#: PersonEditor.php:737
-msgid "City:"
-msgstr ""
-
-#: CartToFamily.php:255 CSVExport.php:123 FamilyEditor.php:698
-#: PersonEditor.php:754
-msgid "State:"
-msgstr ""
-
 #: CartToFamily.php:260
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr ""
@@ -649,45 +988,11 @@ msgstr ""
 msgid "Postal Code:"
 msgstr ""
 
-#: CartToFamily.php:270 CSVExport.php:128 FamilyEditor.php:711
-#: PersonEditor.php:772
-msgid "Zip:"
-msgstr ""
-
-#: CartToFamily.php:280 CSVExport.php:138 FamilyEditor.php:720
-#: PersonEditor.php:792
-msgid "Country:"
-msgstr ""
-
-#: CartToFamily.php:291 CSVExport.php:143 FamilyEditor.php:751
-#: FamilyView.php:200 PersonEditor.php:816 PersonEditor.php:818
-#: PersonView.php:252 PrintView.php:166
-msgid "Home Phone:"
-msgstr ""
-
 #: CartToFamily.php:294 CartToFamily.php:302 CartToFamily.php:310
 #: FamilyEditor.php:757 FamilyEditor.php:767 FamilyEditor.php:777
 #: PersonEditor.php:826 PersonEditor.php:843 PersonEditor.php:861
 #: Include/Functions.php:1197
 msgid "Do not auto-format"
-msgstr ""
-
-#: CartToFamily.php:299 CSVExport.php:148 FamilyEditor.php:761
-#: FamilyView.php:203 PersonEditor.php:833 PersonEditor.php:835
-#: PersonView.php:263 PrintView.php:171
-msgid "Work Phone:"
-msgstr ""
-
-#: CartToFamily.php:307 CSVExport.php:153 FamilyEditor.php:771
-#: FamilyView.php:206 PersonEditor.php:851 PersonEditor.php:853
-#: PersonView.php:248 PrintView.php:176
-msgid "Mobile Phone:"
-msgstr ""
-
-#: CartToFamily.php:315 CSVExport.php:158 FamilyEditor.php:783
-#: FamilyView.php:209 FamilyView.php:211 PersonEditor.php:871
-#: PersonEditor.php:873 PersonView.php:256 PrintView.php:253
-msgid "Email:"
 msgstr ""
 
 #: CartToFamily.php:323
@@ -754,10 +1059,6 @@ msgstr ""
 msgid "Empty Cart to Event"
 msgstr ""
 
-#: CartView.php:115 CSVExport.php:70
-msgid "CSV Export"
-msgstr ""
-
 #: CartView.php:117
 msgid "Map Cart"
 msgstr ""
@@ -797,11 +1098,6 @@ msgstr ""
 
 #: CartView.php:430 EmailEditor.php:67
 msgid "Compose Email"
-msgstr ""
-
-#: CartView.php:439 CSVExport.php:391 CSVExport.php:408 CSVExport.php:425
-#: CSVExport.php:442 EmailEditor.php:73
-msgid "From:"
 msgstr ""
 
 #: CartView.php:441 EmailEditor.php:75
@@ -866,11 +1162,6 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: CartView.php:606 CSVImport.php:304 FamilyEditor.php:935
-#: MembersDashboard.php:310 OptionManager.php:71
-msgid "Classification"
-msgstr ""
-
 #: CartView.php:607
 msgid "Family Role"
 msgstr ""
@@ -885,6 +1176,10 @@ msgstr ""
 #: FinancialReports.php:294 Include/Functions.php:1008
 #: Include/Functions.php:1089
 msgid "No"
+msgstr ""
+
+#: CheckVersion.php:32
+msgid "Software Version Check"
 msgstr ""
 
 #: Checkin.php:25
@@ -981,10 +1276,6 @@ msgstr ""
 msgid "Only jpeg photos can be uploaded."
 msgstr ""
 
-#: CheckVersion.php:32
-msgid "Software Version Check"
-msgstr ""
-
 #: ConvertIndividualToFamily.php:46
 msgid "Convert Individuals to Families"
 msgstr ""
@@ -995,317 +1286,6 @@ msgstr ""
 
 #: ConvertIndividualToFamily.php:149
 msgid "Convert All"
-msgstr ""
-
-#: CSVExport.php:78
-msgid "Field Selection"
-msgstr ""
-
-#: CSVExport.php:82 PersonEditor.php:602
-msgid "Last Name:"
-msgstr ""
-
-#: CSVExport.php:83
-msgid "Required"
-msgstr ""
-
-#: CSVExport.php:88 DonatedItemEditor.php:226 FundRaiserEditor.php:179
-#: PersonEditor.php:583
-msgid "Title:"
-msgstr ""
-
-#: CSVExport.php:93 PersonEditor.php:590
-msgid "First Name:"
-msgstr ""
-
-#: CSVExport.php:98 PersonEditor.php:596
-msgid "Middle Name:"
-msgstr ""
-
-#: CSVExport.php:103 PersonEditor.php:608
-msgid "Suffix:"
-msgstr ""
-
-#: CSVExport.php:133 Reports/TaxReport.php:195
-msgid "Envelope:"
-msgstr ""
-
-#: CSVExport.php:163 PersonView.php:266
-msgid "Work/Other Email:"
-msgstr ""
-
-#: CSVExport.php:168 CSVExport.php:383 PersonEditor.php:919 PrintView.php:263
-msgid "Membership Date:"
-msgstr ""
-
-#: CSVExport.php:173
-msgid "* Birth / Anniversary Date:"
-msgstr ""
-
-#: CSVExport.php:178
-msgid "* Age / Years Married:"
-msgstr ""
-
-#: CSVExport.php:183 CSVExport.php:311 PersonEditor.php:665 PrintView.php:233
-msgid "Family Role:"
-msgstr ""
-
-#: CSVExport.php:186
-msgid "* Depends whether using person or family output method"
-msgstr ""
-
-#: CSVExport.php:200
-msgid "Custom Field Selection"
-msgstr ""
-
-#: CSVExport.php:209 MembersDashboard.php:130
-msgid "Custom Person Fields"
-msgstr ""
-
-#: CSVExport.php:231 MembersDashboard.php:132
-msgid "Custom Family Fields"
-msgstr ""
-
-#: CSVExport.php:259 FinancialReports.php:107
-msgid "Filters"
-msgstr ""
-
-#: CSVExport.php:265
-msgid "Records to export:"
-msgstr ""
-
-#: CSVExport.php:274
-msgid "Based on filters below.."
-msgstr ""
-
-#: CSVExport.php:275
-msgid "People in Cart (filters ignored)"
-msgstr ""
-
-#: CSVExport.php:284 FinancialReports.php:117 PersonEditor.php:930
-#: PrintView.php:268
-msgid "Classification:"
-msgstr ""
-
-#: CSVExport.php:303 CSVExport.php:330 CSVExport.php:366
-#: DirectoryReports.php:87 DirectoryReports.php:104 DirectoryReports.php:124
-#: DirectoryReports.php:140 DirectoryReports.php:157 FinancialReports.php:257
-msgid "Use Ctrl Key to select multiple"
-msgstr ""
-
-#: CSVExport.php:338 PersonEditor.php:574 PrintView.php:205
-msgid "Gender:"
-msgstr ""
-
-#: CSVExport.php:347
-msgid "Don't Filter"
-msgstr ""
-
-#: CSVExport.php:348 FamilyEditor.php:973 PersonEditor.php:578
-#: PrintView.php:212 PrintView.php:321 SelectList.php:511 SelectList.php:1033
-msgid "Male"
-msgstr ""
-
-#: CSVExport.php:349 FamilyEditor.php:974 PersonEditor.php:579
-#: PrintView.php:215 PrintView.php:321 SelectList.php:516 SelectList.php:1034
-msgid "Female"
-msgstr ""
-
-#: CSVExport.php:358 DirectoryReports.php:102
-msgid "Group Membership:"
-msgstr ""
-
-#: CSVExport.php:392 CSVExport.php:409 CSVExport.php:426 CSVExport.php:443
-msgid "To:"
-msgstr ""
-
-#: CSVExport.php:400
-msgid "Birthday Date:"
-msgstr ""
-
-#: CSVExport.php:417
-msgid "Anniversary Date:"
-msgstr ""
-
-#: CSVExport.php:434
-msgid "Date Entered:"
-msgstr ""
-
-#: CSVExport.php:455 FinancialReports.php:321
-msgid "Output Method:"
-msgstr ""
-
-#: CSVExport.php:459
-msgid "CSV Individual Records"
-msgstr ""
-
-#: CSVExport.php:460
-msgid "CSV Combine Families"
-msgstr ""
-
-#: CSVExport.php:461
-msgid "Add Individuals to Cart"
-msgstr ""
-
-#: CSVExport.php:464
-msgid "Skip records with incomplete mail address"
-msgstr ""
-
-#: CSVExport.php:466
-msgid "Create File"
-msgstr ""
-
-#: CSVImport.php:140
-msgid "No file selected for upload."
-msgstr ""
-
-#: CSVImport.php:165
-msgid "Total number of rows in the CSV file:"
-msgstr ""
-
-#: CSVImport.php:228
-msgid "Ignore this Field"
-msgstr ""
-
-#: CSVImport.php:229 FindFundRaiser.php:226 FundRaiserEditor.php:205
-msgid "Title"
-msgstr ""
-
-#: CSVImport.php:230 sundayschool/SundaySchoolDashboard.php:176
-msgid "First Name"
-msgstr ""
-
-#: CSVImport.php:231
-msgid "Middle Name"
-msgstr ""
-
-#: CSVImport.php:232 ManageEnvelopes.php:163
-#: sundayschool/SundaySchoolDashboard.php:177
-msgid "Last Name"
-msgstr ""
-
-#: CSVImport.php:233 FamilyEditor.php:929
-msgid "Suffix"
-msgstr ""
-
-#: CSVImport.php:234 FamilyEditor.php:930 PrintView.php:295
-#: sundayschool/SundaySchoolClassView.php:162
-msgid "Gender"
-msgstr ""
-
-#: CSVImport.php:235
-msgid "Donation Envelope"
-msgstr ""
-
-#: CSVImport.php:236
-msgid "Address1"
-msgstr ""
-
-#: CSVImport.php:237
-msgid "Address2"
-msgstr ""
-
-#: CSVImport.php:242 EditEventAttendees.php:53 EventAttendance.php:204
-#: FamilyList.php:24 GroupReports.php:133
-#: sundayschool/SundaySchoolClassView.php:188
-msgid "Home Phone"
-msgstr ""
-
-#: CSVImport.php:243 GroupReports.php:134
-msgid "Work Phone"
-msgstr ""
-
-#: CSVImport.php:244
-msgid "Mobile Phone"
-msgstr ""
-
-#: CSVImport.php:246
-msgid "Work / Other Email"
-msgstr ""
-
-#: CSVImport.php:247 sundayschool/SundaySchoolClassView.php:184
-#: sundayschool/SundaySchoolDashboard.php:178
-msgid "Birth Date"
-msgstr ""
-
-#: CSVImport.php:248
-msgid "Membership Date"
-msgstr ""
-
-#: CSVImport.php:249 DirectoryReports.php:175
-msgid "Wedding Date"
-msgstr ""
-
-#: CSVImport.php:259
-msgid "Ignore first CSV row (to exclude a header)"
-msgstr ""
-
-#: CSVImport.php:264
-msgid "Make Family records based on last name and address"
-msgstr ""
-
-#: CSVImport.php:270
-msgid "Patriarch"
-msgstr ""
-
-#: CSVImport.php:271
-msgid "Matriarch"
-msgstr ""
-
-#: CSVImport.php:273
-msgid "Family Type: used with Make Family records... option above"
-msgstr ""
-
-#: CSVImport.php:280
-msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
-msgstr ""
-
-#: CSVImport.php:285
-msgid "Default country if none specified otherwise"
-msgstr ""
-
-#: CSVImport.php:306
-msgid "Perform Import"
-msgstr ""
-
-#: CSVImport.php:848
-msgid "ERROR: the uploaded CSV file no longer exists!"
-msgstr ""
-
-#: CSVImport.php:867
-msgid "Data Cleared Successfully!"
-msgstr ""
-
-#: CSVImport.php:871
-msgid "Please select the confirmation checkbox"
-msgstr ""
-
-#: CSVImport.php:882
-msgid "Upload CSV File"
-msgstr ""
-
-#: CSVImport.php:893 CSVImport.php:900 CSVImport.php:912
-msgid "Clear Persons and Families"
-msgstr ""
-
-#: CSVImport.php:905
-msgid ""
-"Warning!  Do not select this option if you plan to add to an existing "
-"database.<br/>"
-msgstr ""
-
-#: CSVImport.php:906
-msgid ""
-"Use only if unsatisfied with initial import.  All person and member data "
-"will be destroyed!"
-msgstr ""
-
-#: CSVImport.php:924
-msgid "Data import successful."
-msgstr ""
-
-#: CSVImport.php:924
-msgid "persons were imported"
 msgstr ""
 
 #: DepositSlipEditor.php:62
@@ -1499,8 +1479,8 @@ msgid "Address"
 msgstr ""
 
 #: DirectoryReports.php:176 FamilyView.php:270 PersonView.php:390
-#: Reports/ConfirmReportEmail.php:218 Reports/ConfirmReportEmail.php:238
 #: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:207
+#: Reports/ConfirmReportEmail.php:218 Reports/ConfirmReportEmail.php:238
 msgid "Birthday"
 msgstr ""
 
@@ -1749,42 +1729,6 @@ msgstr ""
 msgid "Return to Event Types"
 msgstr ""
 
-#: eGive.php:295
-msgid "Start Date: "
-msgstr ""
-
-#: eGive.php:297
-msgid "End Date: "
-msgstr ""
-
-#: eGive.php:387
-msgid "Re-import to selected family"
-msgstr ""
-
-#: eGive.php:393
-msgid "Data import results: "
-msgstr ""
-
-#: eGive.php:393
-msgid " gifts were imported, "
-msgstr ""
-
-#: eGive.php:393
-msgid " gifts unchanged, and "
-msgstr ""
-
-#: eGive.php:393
-msgid " gifts not imported due to problems"
-msgstr ""
-
-#: eGive.php:394 eGive.php:423
-msgid "Back to Deposit Slip"
-msgstr ""
-
-#: eGive.php:422
-msgid "Fatal error in eGive API datastream: '"
-msgstr ""
-
 #: ElectronicPaymentList.php:35
 msgid "Electronic Payment Listing"
 msgstr ""
@@ -1818,6 +1762,10 @@ msgstr ""
 
 #: ElectronicPaymentList.php:205
 msgid "Vanco ACH"
+msgstr ""
+
+#: ElectronicPaymentList.php:208 FamilyEditor.php:932 calendar.php:62
+msgid "Month"
 msgstr ""
 
 #: ElectronicPaymentList.php:209 FamilyEditor.php:934
@@ -2281,6 +2229,10 @@ msgstr ""
 #: OptionManager.php:89 PersonView.php:389 PrintView.php:296 PrintView.php:355
 #: Reports/CanvassReports.php:259 Reports/GroupReport.php:252
 msgid "Role"
+msgstr ""
+
+#: FamilyEditor.php:933 calendar.php:64
+msgid "Day"
 msgstr ""
 
 #: FamilyEditor.php:972 PersonEditor.php:576
@@ -2795,31 +2747,31 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: FindDepositSlip.php:24
+#: FindDepositSlip.php:23
 msgid "Deposit Listing"
 msgstr ""
 
-#: FindDepositSlip.php:63
+#: FindDepositSlip.php:61
 msgid "Add New Deposit: "
 msgstr ""
 
-#: FindDepositSlip.php:98
+#: FindDepositSlip.php:96
 msgid "Deposits: "
 msgstr ""
 
-#: FindDepositSlip.php:104
+#: FindDepositSlip.php:101
 msgid "Delete Selected Rows"
 msgstr ""
 
-#: FindDepositSlip.php:105
+#: FindDepositSlip.php:102
 msgid "Export Selected Rows (OFX)"
 msgstr ""
 
-#: FindDepositSlip.php:106
+#: FindDepositSlip.php:103
 msgid "Export Selected Rows (CSV)"
 msgstr ""
 
-#: FindDepositSlip.php:107
+#: FindDepositSlip.php:104
 msgid "Generate Deposit Split for Selected Rows (PDF)"
 msgstr ""
 
@@ -3640,10 +3592,6 @@ msgstr ""
 msgid "Updated Members"
 msgstr ""
 
-#: mrbs.php:26
-msgid "ChurchCRM MRBS Portal"
-msgstr ""
-
 #: NoteDelete.php:31
 msgid "Note Delete Confirmation"
 msgstr ""
@@ -4389,6 +4337,10 @@ msgstr ""
 msgid "Execute Query"
 msgstr ""
 
+#: RPCdummy.php:49
+msgid "Address Info:"
+msgstr ""
+
 #: Register.php:21
 msgid "Software Registration"
 msgstr ""
@@ -4431,10 +4383,6 @@ msgstr ""
 
 #: RestoreDatabase.php:26
 msgid "Restore Database"
-msgstr ""
-
-#: RPCdummy.php:49
-msgid "Address Info:"
 msgstr ""
 
 #: SelectDelete.php:60
@@ -4616,8 +4564,8 @@ msgstr ""
 msgid "My User Settings"
 msgstr ""
 
-#: SettingsIndividual.php:104 SettingsUser.php:94 SystemSettings.php:131
-#: SystemSettings.php:148 UserEditor.php:433
+#: SettingsIndividual.php:104 SettingsUser.php:94 SystemSettings.php:136
+#: SystemSettings.php:153 UserEditor.php:433
 msgid "Variable name"
 msgstr ""
 
@@ -4630,7 +4578,7 @@ msgid "Notes"
 msgstr ""
 
 #: SettingsIndividual.php:119 SettingsIndividual.php:166 SettingsUser.php:107
-#: SettingsUser.php:170 SystemSettings.php:202 UserEditor.php:516
+#: SettingsUser.php:170 SystemSettings.php:216 UserEditor.php:516
 msgid "Save Settings"
 msgstr ""
 
@@ -4686,6 +4634,21 @@ msgstr ""
 
 #: TaxReport.php:45
 msgid "Calendar Year:"
+msgstr ""
+
+#: USISTAddressVerification.php:356
+msgid "US Address Verification"
+msgstr ""
+
+#: USISTAddressVerification.php:389 USISTAddressVerification.php:410
+#: USISTAddressVerification.php:434 USISTAddressVerification.php:687
+#: USISTAddressVerification.php:701
+msgid "https://www.intelligentsearch.com/Hosted/User/"
+msgstr ""
+
+#: USISTAddressVerification.php:419
+msgid ""
+"http://www.intelligentsearch.com/address_verification/verify_address.html"
 msgstr ""
 
 #: UpdateAllLatLon.php:30
@@ -4902,21 +4865,6 @@ msgstr ""
 msgid "No, cancel this operation"
 msgstr ""
 
-#: USISTAddressVerification.php:356
-msgid "US Address Verification"
-msgstr ""
-
-#: USISTAddressVerification.php:389 USISTAddressVerification.php:410
-#: USISTAddressVerification.php:434 USISTAddressVerification.php:687
-#: USISTAddressVerification.php:701
-msgid "https://www.intelligentsearch.com/Hosted/User/"
-msgstr ""
-
-#: USISTAddressVerification.php:419
-msgid ""
-"http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr ""
-
 #: VolunteerOpportunityEditor.php:78
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr ""
@@ -4973,6 +4921,58 @@ msgstr ""
 
 #: WhyCameEditor.php:97
 msgid "How did you learn of the church?"
+msgstr ""
+
+#: calendar.php:9
+msgid "Church Calendar"
+msgstr ""
+
+#: calendar.php:61
+msgid "Today"
+msgstr ""
+
+#: calendar.php:63
+msgid "Week"
+msgstr ""
+
+#: eGive.php:295
+msgid "Start Date: "
+msgstr ""
+
+#: eGive.php:297
+msgid "End Date: "
+msgstr ""
+
+#: eGive.php:387
+msgid "Re-import to selected family"
+msgstr ""
+
+#: eGive.php:393
+msgid "Data import results: "
+msgstr ""
+
+#: eGive.php:393
+msgid " gifts were imported, "
+msgstr ""
+
+#: eGive.php:393
+msgid " gifts unchanged, and "
+msgstr ""
+
+#: eGive.php:393
+msgid " gifts not imported due to problems"
+msgstr ""
+
+#: eGive.php:394 eGive.php:423
+msgid "Back to Deposit Slip"
+msgstr ""
+
+#: eGive.php:422
+msgid "Fatal error in eGive API datastream: '"
+msgstr ""
+
+#: mrbs.php:26
+msgid "ChurchCRM MRBS Portal"
 msgstr ""
 
 #: email/Dashboard.php:24
@@ -5293,9 +5293,9 @@ msgstr ""
 msgid "Pledge status: "
 msgstr ""
 
-#: Reports/CanvassReports.php:258 Reports/ConfirmReportEmail.php:215
-#: Reports/ConfirmReportEmail.php:235 Reports/ConfirmReport.php:184
-#: Reports/ConfirmReport.php:204
+#: Reports/CanvassReports.php:258 Reports/ConfirmReport.php:184
+#: Reports/ConfirmReport.php:204 Reports/ConfirmReportEmail.php:215
+#: Reports/ConfirmReportEmail.php:235
 msgid "M/F"
 msgstr ""
 
@@ -5316,47 +5316,47 @@ msgstr ""
 msgid "Liaison"
 msgstr ""
 
-#: Reports/ConfirmReportEmail.php:151 Reports/ConfirmReport.php:124
+#: Reports/ConfirmReport.php:124 Reports/ConfirmReportEmail.php:151
 msgid "Family name"
 msgstr ""
 
-#: Reports/ConfirmReportEmail.php:163 Reports/ConfirmReport.php:136
+#: Reports/ConfirmReport.php:136 Reports/ConfirmReportEmail.php:163
 msgid "City, State, Zip"
 msgstr ""
 
-#: Reports/ConfirmReportEmail.php:167 Reports/ConfirmReport.php:140
+#: Reports/ConfirmReport.php:140 Reports/ConfirmReportEmail.php:167
 msgid "Home phone"
 msgstr ""
 
-#: Reports/ConfirmReportEmail.php:171 Reports/ConfirmReport.php:144
+#: Reports/ConfirmReport.php:144 Reports/ConfirmReportEmail.php:171
 msgid "Send Newsletter"
 msgstr ""
 
-#: Reports/ConfirmReportEmail.php:180 Reports/ConfirmReport.php:153
+#: Reports/ConfirmReport.php:153 Reports/ConfirmReportEmail.php:180
 msgid "Anniversary Date"
 msgstr ""
 
-#: Reports/ConfirmReportEmail.php:186 Reports/ConfirmReport.php:159
+#: Reports/ConfirmReport.php:159 Reports/ConfirmReportEmail.php:186
 msgid "Family E-Mail"
 msgstr ""
 
-#: Reports/ConfirmReportEmail.php:214 Reports/ConfirmReportEmail.php:234
 #: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:203
+#: Reports/ConfirmReportEmail.php:214 Reports/ConfirmReportEmail.php:234
 msgid "Member Name"
 msgstr ""
 
-#: Reports/ConfirmReportEmail.php:216 Reports/ConfirmReportEmail.php:236
 #: Reports/ConfirmReport.php:185 Reports/ConfirmReport.php:205
+#: Reports/ConfirmReportEmail.php:216 Reports/ConfirmReportEmail.php:236
 msgid "Adult/Child"
 msgstr ""
 
-#: Reports/ConfirmReportEmail.php:219 Reports/ConfirmReportEmail.php:239
 #: Reports/ConfirmReport.php:189 Reports/ConfirmReport.php:209
+#: Reports/ConfirmReportEmail.php:219 Reports/ConfirmReportEmail.php:239
 msgid "Cell phone"
 msgstr ""
 
-#: Reports/ConfirmReportEmail.php:220 Reports/ConfirmReportEmail.php:240
 #: Reports/ConfirmReport.php:190 Reports/ConfirmReport.php:210
+#: Reports/ConfirmReportEmail.php:220 Reports/ConfirmReportEmail.php:240
 msgid "Member/Friend"
 msgstr ""
 
@@ -5399,22 +5399,6 @@ msgid ""
 "button to return to ChurchCRM."
 msgstr ""
 
-#: Reports/FamilyPledgeSummary.php:141 Reports/ReminderReport.php:165
-msgid "All Funds"
-msgstr ""
-
-#: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:166
-msgid " for all funds"
-msgstr ""
-
-#: Reports/FamilyPledgeSummary.php:144 Reports/ReminderReport.php:168
-msgid " for fund "
-msgstr ""
-
-#: Reports/FamilyPledgeSummary.php:146 Reports/ReminderReport.php:170
-msgid "for funds "
-msgstr ""
-
 #: Reports/FRBidSheets.php:84 Reports/FRCatalog.php:104
 #: Reports/FRCertificates.php:85
 msgid "Estimated value "
@@ -5439,6 +5423,22 @@ msgstr ""
 
 #: Reports/FRCertificates.php:45
 msgid "Certificate of Ownership"
+msgstr ""
+
+#: Reports/FamilyPledgeSummary.php:141 Reports/ReminderReport.php:165
+msgid "All Funds"
+msgstr ""
+
+#: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:166
+msgid " for all funds"
+msgstr ""
+
+#: Reports/FamilyPledgeSummary.php:144 Reports/ReminderReport.php:168
+msgid " for fund "
+msgstr ""
+
+#: Reports/FamilyPledgeSummary.php:146 Reports/ReminderReport.php:170
+msgid "for funds "
 msgstr ""
 
 #: Reports/FundRaiserStatement.php:96
