@@ -1,5 +1,39 @@
 # Change Log
 
+## [2.1.11](https://github.com/ChurchCRM/CRM/tree/2.1.11) (2016-08-06)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.10...2.1.11)
+
+**Implemented enhancements:**
+
+- Need a Warning on the Login Page that a browser is not supported [\#844](https://github.com/ChurchCRM/CRM/issues/844)
+- List All Church Events sort order [\#785](https://github.com/ChurchCRM/CRM/issues/785)
+- Calendar: Change Member Birthdays to API [\#466](https://github.com/ChurchCRM/CRM/issues/466)
+- Import People does not add a note in the timeline \#688 [\#910](https://github.com/ChurchCRM/CRM/pull/910) ([DawoudIO](https://github.com/DawoudIO))
+- per \#785 reversed order [\#909](https://github.com/ChurchCRM/CRM/pull/909) ([DawoudIO](https://github.com/DawoudIO))
+- waring if not chome [\#916](https://github.com/ChurchCRM/CRM/pull/916) ([DawoudIO](https://github.com/DawoudIO))
+- add screen size to collected bug report [\#913](https://github.com/ChurchCRM/CRM/pull/913) ([crossan007](https://github.com/crossan007))
+
+**Fixed bugs:**
+
+- File extraction with incorrect 666 permissions [\#882](https://github.com/ChurchCRM/CRM/issues/882)
+- Search bar does not work on iOS [\#821](https://github.com/ChurchCRM/CRM/issues/821)
+- Default Start and end times for event [\#412](https://github.com/ChurchCRM/CRM/issues/412)
+- Import People does not add a note in the timeline \\#688 [\#910](https://github.com/ChurchCRM/CRM/pull/910) ([DawoudIO](https://github.com/DawoudIO))
+- working JQuery and removed bad version [\#908](https://github.com/ChurchCRM/CRM/pull/908) ([DawoudIO](https://github.com/DawoudIO))
+- add timezone dropdown, and validation [\#914](https://github.com/ChurchCRM/CRM/pull/914) ([crossan007](https://github.com/crossan007))
+
+**Closed issues:**
+
+- Timezone Error [\#912](https://github.com/ChurchCRM/CRM/issues/912)
+- Build System should rev the build version [\#780](https://github.com/ChurchCRM/CRM/issues/780)
+
+**Merged pull requests:**
+
+- working autoloader for CalendarService [\#911](https://github.com/ChurchCRM/CRM/pull/911) ([DawoudIO](https://github.com/DawoudIO))
+- fixed warnings [\#904](https://github.com/ChurchCRM/CRM/pull/904) ([DawoudIO](https://github.com/DawoudIO))
+- remove fastclick.min.js as it is not in sync [\#901](https://github.com/ChurchCRM/CRM/pull/901) ([DawoudIO](https://github.com/DawoudIO))
+- Find Deposit Slip API+ORM+UI [\#888](https://github.com/ChurchCRM/CRM/pull/888) ([crossan007](https://github.com/crossan007))
+
 ## [2.1.10](https://github.com/ChurchCRM/CRM/tree/2.1.10) (2016-08-03)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.9...2.1.10)
 

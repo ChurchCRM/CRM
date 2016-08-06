@@ -357,6 +357,9 @@ class SystemService {
             "Collected Value Title |  Data \r\n" .
             "----------------------|----------------\r\n" .
             "Page Name |".$data->pageName."\r\n".
+            "Screen Size |".$data->screenSize->height."x".$data->screenSize->width."\r\n".
+            "Window Size |".$data->windowSize->height."x".$data->windowSize->width."\r\n".
+            "Page Size |".$data->pageSize->height."x".$data->pageSize->width."\r\n".
             "Platform Information | " . php_uname($mode = "a") . "\r\n" .
             "PHP Version | " . phpversion() . "\r\n" .
             "ChurchCRM Version |" . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
