@@ -98,6 +98,11 @@ if (isset ($_POST['save'])) {
 
       TranslateMenuOptions();
     }
+    
+      if ( $id == 65 && !( in_array ( $value, timezone_identifiers_list()))) 
+      {
+          $value = date_default_timezone_get();
+      }
 
     // Save new setting
     $sSQL = "UPDATE config_cfg SET cfg_value='$value' WHERE cfg_id='$id'";
@@ -155,7 +160,16 @@ $rsConfigs = RunQuery($sSQL);
                   <input type=hidden name='type[<?= $cfg_id ?>]' value='<?= $cfg_type ?>'>
                   <td>
                     <!--  Current Value -->
-                    <?php if ($cfg_type == 'text') { ?>
+                    <?php if ($cfg_name == "sTimeZone" ) {?>
+                    <select name='new_value[<?= $cfg_id ?>]' id="timeZoneSelectBox">
+                        <?php
+                            foreach (timezone_identifiers_list() as $timeZone)
+                            {
+                                echo "<option value = ". $timeZone." " . ($cfg_value == $timeZone ? "selected" : "") . ">".$timeZone."</option>";
+                            }
+                        ?>
+                    </select>
+                    <?php } elseif ($cfg_type == 'text') { ?>
                       <input type=text size=40 maxlength=255 name='new_value[<?= $cfg_id ?>]' value='<?= htmlspecialchars($cfg_value, ENT_QUOTES) ?>'>
                     <?php } elseif ($cfg_type == 'textarea') { ?>
                       <textarea rows=4 cols=40 name='new_value[<?= $cfg_id ?>]'><?= htmlspecialchars($cfg_value, ENT_QUOTES) ?></textarea>
@@ -204,6 +218,12 @@ $rsConfigs = RunQuery($sSQL);
     </form>
   </div>
 </div>
+
+<script>
+$(document).ready(function(){
+   $("#timeZoneSelectBox").select2();
+}); 
+</script>
 
 
 <?php require "Include/Footer.php" ?>
