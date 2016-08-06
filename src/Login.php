@@ -345,9 +345,9 @@ require("Include/HeaderNotLoggedIn.php");
 <!-- /.login-box -->
 
 <div id="not-chrome" class="error-page">
-  <div class="callout callout-danger">
-    <h4>Your browser is Not Supported</h4>
-    <p>This software has been tested with Google Chrome Only... <a href="https://www.google.com/chrome/browser/desktop/"> Download and install Google Chrome</a></p>
+  <div class="callout callout-warning">
+    <h4>For the best experience, please use Google Chrome.</h4>
+    <p>This software has been tested with Google Chrome... <a href="https://www.google.com/chrome/browser/desktop/"> Download and install Google Chrome</a></p>
   </div>
 </div>
 <script language="JavaScript" type="text/JavaScript">
