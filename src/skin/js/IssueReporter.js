@@ -1,5 +1,4 @@
-$("#submitIssue").click(function()
-{
+$("#submitIssue").click(function () {
   var postData = {
     "issueTitle": $("input:text[name=issueTitle]").val(),
     "issueDescription": $("textarea[name=issueDescription]").val(),
@@ -20,9 +19,10 @@ $("#submitIssue").click(function()
   $.ajax({
     method: "POST",
     url: window.CRM.root + "/api/issues",
-    data: JSON.stringify(postData)
-  }).done(function(data)
-  {
+    data: JSON.stringify(postData),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json"
+  }).done(function (data) {
     console.log(data);
     $("#IssueReportModal .modal-body").empty();
     $("<h2/>").text("Successfully submitted Issue #" + data.number).appendTo("#IssueReportModal .modal-body");

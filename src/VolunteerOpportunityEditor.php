@@ -260,8 +260,8 @@ if (isset($_POST["SaveChanges"])) {
         $numRows = mysql_num_rows($rsOpps);
         $newOrder = $numRows + 1;
         $sSQL = "INSERT INTO `volunteeropportunity_vol` 
-           (`vol_ID` , `vol_Order` , `vol_Name` , `vol_Description`)
-           VALUES ('', '". $newOrder . "', '" . $newFieldName . "', '" . $newFieldDesc . "');";
+           ( `vol_Order` , `vol_Name` , `vol_Description`)
+           VALUES ( '". $newOrder . "', '" . $newFieldName . "', '" . $newFieldDesc . "');";
         RunQuery($sSQL);
         $bNewNameError = false;
         }

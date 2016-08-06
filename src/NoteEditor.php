@@ -18,6 +18,8 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Service/NoteService.php";
 
+use ChurchCRM\NoteQuery;
+
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bNotes']) {
@@ -74,7 +76,12 @@ if (isset($_POST["Submit"])) {
     if ($iNoteID <= 0) {
       $noteService->addNote($iPersonID, $iFamilyID, $bPrivate, $sNoteText, "note");
     } else {
-      $noteService->updateNote($iNoteID, $bPrivate, $sNoteText);
+      $note = NoteQuery::create()->findPk($iNoteID);
+      $note->setPrivate($bPrivate);
+      $note->setText($sNoteText);
+      $note->setDateLastEdited(new DateTime());
+      $note->setEditedBy($_SESSION['iUserID']);
+      $note->save();
     }
 
     //Send them back to whereever they came from
@@ -85,13 +92,13 @@ if (isset($_POST["Submit"])) {
   if (isset($_GET["NoteID"])) {
     //Get the NoteID from the querystring
     $iNoteID = FilterInput($_GET["NoteID"], 'int');
+    $dbNote = NoteQuery::create()->findPk($iNoteID);
 
-    $note = $noteService->getNoteById($iNoteID);
     //Assign everything locally
-    $sNoteText = $note['text'];
-    $bPrivate = $note['private'];
-    $iPersonID = $note['personId'];
-    $iFamilyID = $note['familyId'];
+    $sNoteText = $dbNote->getText();
+    $bPrivate = $dbNote->getPrivate();
+    $iPersonID = $dbNote->getPerId();
+    $iFamilyID = $dbNote->getFamId();
   }
 }
 

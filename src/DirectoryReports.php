@@ -92,7 +92,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
                     if (in_array($lst_OptionID,$aDefaultClasses)) echo " selected";
-                    echo ">" . $lst_OptionName . "</option>";
+                    echo ">" . gettext($lst_OptionName) . "</option>";
                 }
             ?>
             </select>
@@ -128,7 +128,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
                     if (in_array($lst_OptionID, $aDirRoleHead)) echo " selected";
-                    echo ">" . $lst_OptionName . "</option>";
+                    echo ">" . gettext($lst_OptionName) . "</option>";
                 }
             ?>
             </select>
@@ -145,7 +145,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
                     if (in_array($lst_OptionID, $aDirRoleSpouse)) echo " selected";
-                    echo ">" . $lst_OptionName . "</option>";
+                    echo ">" . gettext($lst_OptionName) . "</option>";
                 }
             ?>
             </select>
@@ -162,7 +162,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
                     if (in_array($lst_OptionID, $aDirRoleChild)) echo " selected";
-                    echo ">" . $lst_OptionName . "</option>";
+                    echo ">" . gettext($lst_OptionName) . "</option>";
                 }
             ?>
             </select>
