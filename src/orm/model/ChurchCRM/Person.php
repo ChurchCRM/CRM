@@ -93,11 +93,8 @@ class Person extends BasePerson
   }
 
   function getFamilyRole() {
-    $roleId = intval ($this->getFmrId());
-    $roleId = intval ($this->getFmrId());
-    echo "([".$roleId . "])";
-    $familyRole =  ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->find();
-    return $familyRole; //->getOptionName();
+    $familyRole =  ListOptionQuery::create()->filterById(2)->filterByOptionId($this->getFmrId())->find();
+    return $familyRole->getOptionName();
   }
 
   function getDefaultPhoto($baseURL)
