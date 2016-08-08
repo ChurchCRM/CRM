@@ -65,7 +65,7 @@
 
     <target name="rev-build-number">
         <echo message="now version ${build.version.next}"/>
-        <exec command="replace '${build.version}' '${build.version.next}' -- build.properties src/composer.json src/mysql/install/Install.sql" dir="." passthru="true"/>
+        <exec command="replace '${build.version}' '${build.version.next}' -- build.properties src/composer.json" dir="." passthru="true"/>
         <echo message="please update build.xml with the next verion file"/>
     </target>
 
