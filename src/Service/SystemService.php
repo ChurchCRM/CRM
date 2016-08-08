@@ -278,14 +278,14 @@ class SystemService
   function checkDatabaseVersion()
   {
 
-    $db_version = $dbVersion = VersionQuery::create()->findPk(1);
-    if ($db_version->getVersion() == $_SESSION['sSoftwareInstalledVersion']) {
+    $dbVersion = VersionQuery::create()->findPk(1);
+    $db_version = $dbVersion->getVersion();
+    if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
       return true;
     }
 
     // always rebuild the menu
     $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
-
     $dbUpdatesFile = file_get_contents(dirname(__FILE__) . "/../mysql/upgrade.json");
     $dbUpdates = json_decode($dbUpdatesFile, true);
     foreach ($dbUpdates as $dbUpdate) {
