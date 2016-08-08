@@ -1,7 +1,5 @@
 <?php
 
-use ChurchCRM\VersionQuery;
-
 class SystemService
 {
 
@@ -267,27 +265,6 @@ class SystemService
   function setConfigurationSetting($settingName, $settingValue)
   {
     requireUserGroupMembership("bAdmin");
-  }
-
-  function getDatabaseVersion()
-  {
-    // Check if the table version_ver exists.  If the table does not exist then
-    // SQL scripts must be manually run to get the database up to version 1.2.7
-    $bVersionTableExists = FALSE;
-    if (mysql_num_rows(RunQuery("SHOW TABLES LIKE 'version_ver'")) == 1) {
-      $bVersionTableExists = TRUE;
-    }
-
-    // Let's see if the MySQL version matches the PHP version.  If we have a match then
-    // proceed to Menu.php.  Otherwise further error checking is needed.
-    $ver_version = "unknown";
-    if ($bVersionTableExists) {
-      $sSQL = 'SELECT * FROM version_ver ORDER BY ver_ID DESC';
-      $aRow = mysql_fetch_array(RunQuery($sSQL));
-      extract($aRow);
-      return $ver_version;
-    }
-    return false;
   }
 
   function rebuildWithSQL($SQLFile)

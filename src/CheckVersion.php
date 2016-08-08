@@ -28,6 +28,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\VersionQuery;
+
 //Set the page title
 $sPageTitle = gettext("Software Version Check");
 
@@ -38,6 +40,7 @@ if ($systemService->checkDatabaseVersion())  //either the DB is good, or the upg
 }
 else        //the upgrade failed!
 {
+  $dbVersion = VersionQuery::create()->findPk(1);
   $sPageTitle = "ChurchCRM - Version Check";
   require ("Include/HeaderNotLoggedIn.php");
 
@@ -73,7 +76,7 @@ else        //the upgrade failed!
             </div>
             <div class="box-footer">
                 <p>
-                    Software Database Version = <?= $systemService->getDatabaseVersion(); ?> <br/>
+                    Software Database Version = <?= $dbVersion->getVersion(); ?> <br/>
                     Software Version = <?=  $_SESSION['sSoftwareInstalledVersion'] ?>
                 </p>
             </div>
