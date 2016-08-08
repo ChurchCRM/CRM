@@ -30,9 +30,6 @@ require 'Include/Functions.php';
 
 use ChurchCRM\VersionQuery;
 
-//Set the page title
-$sPageTitle = gettext("Software Version Check");
-
 if ($systemService->checkDatabaseVersion())  //either the DB is good, or the upgrade was successful.
 {
   Redirect('Menu.php');
@@ -40,7 +37,8 @@ if ($systemService->checkDatabaseVersion())  //either the DB is good, or the upg
 } else        //the upgrade failed!
 {
   $dbVersion = VersionQuery::create()->findPk(1);
-  $sPageTitle = "ChurchCRM - Version Check";
+  //Set the page title
+  $sPageTitle = gettext("Software Version Check");
   require("Include/HeaderNotLoggedIn.php");
 
   ?>
