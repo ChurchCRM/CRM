@@ -1,5 +1,7 @@
 <?php
 
+use ChurchCRM\VersionQuery;
+
 class SystemService
 {
 
@@ -276,8 +278,8 @@ class SystemService
   function checkDatabaseVersion()
   {
 
-    $db_version = $this->getDatabaseVersion();
-    if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
+    $db_version = $dbVersion = VersionQuery::create()->findPk(1);
+    if ($db_version->getVersion() == $_SESSION['sSoftwareInstalledVersion']) {
       return true;
     }
 
