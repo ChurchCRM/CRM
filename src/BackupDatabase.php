@@ -152,7 +152,7 @@ function doBackup(isRemote)
 }
   
 $('#doBackup').click(function(event) {
-event.preventDefault();
+  event.preventDefault();
   doBackup (0);
 });
 
