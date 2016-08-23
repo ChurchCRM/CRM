@@ -13,7 +13,13 @@ CRM_DB_PASS="churchcrm"
 CRM_DB_NAME="churchcrm"
 
 echo "=========================================================="
-echo "================+=   Apache Setup  ======================="
+echo "==================   Stop unused stuff===================="
+echo "=========================================================="
+
+sudo service mongod stop
+
+echo "=========================================================="
+echo "==================   Apache Setup  ======================="
 echo "=========================================================="
 sudo sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2G/g' /etc/php5/apache2/php.ini
 sudo sed -i 's/^post_max_size.*$/post_max_size = 2G/g' /etc/php5/apache2/php.ini
