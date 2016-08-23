@@ -347,7 +347,7 @@ if (isset($loginPageMsg))
 checkAllowedURL();
 ?> 
         <a href="external/user/password">I forgot my password</a><br>
-        <a href="external/family/registor" class="text-center">Register a new Family</a><br>
+        <a href="external/family/register" class="text-center">Register a new Family</a><br>
         <a href="external/family/verify" class="text-center">Verify Family Info</a>
     </div>
     <!-- /.login-box-body -->
