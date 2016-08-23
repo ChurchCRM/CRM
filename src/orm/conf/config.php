@@ -1,8 +1,14 @@
 <?php
-$serviceContainer = \Propel\Runtime\Propel::getServiceContainer();
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Propel\Runtime\Propel;
+use Propel\Runtime\Connection\ConnectionManagerSingle;
+
+$serviceContainer = Propel::getServiceContainer();
 $serviceContainer->checkVersion('2.0.0-dev');
 $serviceContainer->setAdapterClass('default', 'mysql');
-$manager = new \Propel\Runtime\Connection\ConnectionManagerSingle();
+$manager = new ConnectionManagerSingle();
 $manager->setConfiguration(array(
   'dsn' => 'mysql:host=' . $sSERVERNAME . ';port=3306;dbname=' . $sDATABASE,
   'user' => $sUSER,
@@ -14,6 +20,7 @@ $manager->setConfiguration(array(
         array(),
     ),
   'classname' => '\\Propel\\Runtime\\Connection\\ConnectionWrapper',
+ // DEBUG 'classname' => '\\Propel\Runtime\Connection\DebugPDO',
   'model_paths' =>
     array(
       0 => 'src',
@@ -23,3 +30,6 @@ $manager->setConfiguration(array(
 $manager->setName('default');
 $serviceContainer->setConnectionManager('default', $manager);
 $serviceContainer->setDefaultDatasource('default');
+$logger = new Logger('defaultLogger');
+$logger->pushHandler(new StreamHandler('/tmp/ChurchCrm-orm.log'));
+$serviceContainer->setLogger('defaultLogger', $logger);
