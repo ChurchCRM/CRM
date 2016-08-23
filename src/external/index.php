@@ -16,6 +16,7 @@ $container = $app->getContainer();
 //require __DIR__ . '/error-handler.php';
 
 // routes
+require __DIR__ . '/routes/user.php';
 require __DIR__ . '/routes/verify.php';
 
 // Run app
