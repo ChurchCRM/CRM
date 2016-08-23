@@ -2,9 +2,27 @@
 use Slim\Views\PhpRenderer;
 
 
-$app->group('/verify/family', function () {
+$app->group('/family', function () {
 
-  $this->get('/{token}', function ($request, $response, $args) {
+  $this->get('/register/', function ($request, $response, $args) {
+    
+    $renderer = new PhpRenderer("templates/");
+
+    return $renderer->render($response, "register.php", array("token" => "no"));
+
+  });
+
+
+  $this->get('/verify', function ($request, $response, $args) {
+    
+    $renderer = new PhpRenderer("templates/");
+
+    return $renderer->render($response, "verify-start.php", array("token" => "no"));
+
+  });
+
+
+  $this->get('/verify/{token}', function ($request, $response, $args) {
     $token = $args['token'];
 
     $renderer = new PhpRenderer("templates/");
@@ -13,7 +31,7 @@ $app->group('/verify/family', function () {
 
   });
 
-  $this->post('/{token}', function ($request, $response, $args) {
+  $this->post('/verify/{token}', function ($request, $response, $args) {
     $token = $args['token'];
 
     $renderer = new PhpRenderer("templates/");
