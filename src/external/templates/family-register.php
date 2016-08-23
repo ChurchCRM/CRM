@@ -5,7 +5,7 @@ $sPageTitle = "ChurchCRM - Login";
 require ("../Include/HeaderNotLoggedIn.php");
 ?>
 
-<?= $family ?>
+register
 
 <?php
 // Add the page footer

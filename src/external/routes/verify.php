@@ -4,11 +4,11 @@ use Slim\Views\PhpRenderer;
 
 $app->group('/family', function () {
 
-  $this->get('/register/', function ($request, $response, $args) {
+  $this->get('/register', function ($request, $response, $args) {
     
     $renderer = new PhpRenderer("templates/");
 
-    return $renderer->render($response, "register.php", array("token" => "no"));
+    return $renderer->render($response, "family-register.php", array("token" => "no"));
 
   });
 
