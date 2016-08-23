@@ -36,7 +36,7 @@ if ($systemService->checkDatabaseVersion())  //either the DB is good, or the upg
   exit;
 } else        //the upgrade failed!
 {
-  $dbVersion = VersionQuery::create()->findPk(1);
+  $dbVersion = $systemService->getDBVersion();
   //Set the page title
   $sPageTitle = gettext("Software Version Check");
   require("Include/HeaderNotLoggedIn.php");
@@ -73,7 +73,7 @@ if ($systemService->checkDatabaseVersion())  //either the DB is good, or the upg
           </div>
           <div class="box-footer">
             <p>
-              <?= gettext("Software Database Version") ?> = <?= $dbVersion->getVersion() ?> <br/>
+              <?= gettext("Software Database Version") ?> = <?= $dbVersion ?> <br/>
               <?= gettext("Software Version") ?> = <?= $_SESSION['sSoftwareInstalledVersion'] ?>
             </p>
           </div>

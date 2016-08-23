@@ -1,6 +1,8 @@
 <?php
 
+use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\VersionQuery;
+use ChurchCRM\Version;
 
 class SystemService
 {
@@ -275,11 +277,15 @@ class SystemService
     $this->playbackSQLtoDatabase($root . $SQLFile);
   }
 
+  function getDBVersion() {
+    $dbVersion = VersionQuery::create()->orderByUpdateEnd(Criteria::DESC)->findOne();
+    return $dbVersion->getVersion();
+  }
+
   function checkDatabaseVersion()
   {
 
-    $dbVersion = VersionQuery::create()->findPk(1);
-    $db_version = $dbVersion->getVersion();
+    $db_version = $this->getDBVersion();
     if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
       return true;
     }
@@ -290,7 +296,7 @@ class SystemService
     $dbUpdates = json_decode($dbUpdatesFile, true);
     foreach ($dbUpdates as $dbUpdate) {
       if (in_array($db_version, $dbUpdate["versions"])) {
-        $version = \ChurchCRM\VersionQuery::create()->findPk(1);
+        $version = new Version();
         $version->setVersion($dbUpdate["dbVersion"]);
         $version->setUpdateStart(new DateTime());
         foreach ($dbUpdate["scripts"] as $dbScript) {
