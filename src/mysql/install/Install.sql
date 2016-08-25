@@ -101,7 +101,7 @@ CREATE TABLE `config_cfg` (
   `cfg_id` int(11) NOT NULL default '0',
   `cfg_name` varchar(50) NOT NULL default '',
   `cfg_value` text,
-  `cfg_type` enum('text','number','date','boolean','textarea') NOT NULL default 'text',
+  `cfg_type` ENUM('text','number','date','boolean','textarea','json') NOT NULL default 'text',
   `cfg_default` text NOT NULL,
   `cfg_tooltip` text NOT NULL,
   `cfg_section` varchar(50) NOT NULL default '',
