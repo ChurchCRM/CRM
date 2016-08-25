@@ -1,5 +1,5 @@
 {
-  "name": "churchCRM/CRM",
+  "name": "ChurchCRM/CRM",
   "version": "2.2.0",
   "type": "project",
   "keywords": [
@@ -41,7 +41,11 @@
     "propel/propel": "~2.0@dev"
   },
   "autoload": {
-    "classmap": ["orm/"],
-    "psr-4": {"ChurchCRM\\Service\\": "Service/"}
+    "classmap": [
+      "orm/"
+    ],
+    "psr-4": {
+      "ChurchCRM\\Service\\": "Service/"
+    }
   }
 }

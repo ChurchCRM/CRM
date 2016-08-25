@@ -30,6 +30,14 @@
  *  of hard tab characters.
  *
  ******************************************************************************/
+
+require_once dirname(__FILE__) . '/../vendor/autoload.php';
+require_once dirname(__FILE__) . '/../orm/conf/config.php';
+require_once dirname(__FILE__).' /../Service/SystemService.php';
+
+use ChurchCRM\Version;
+
+
 if (!function_exists("mysql_failure")) {
   function mysql_failure($message)
   {
@@ -59,6 +67,10 @@ $sql = "SHOW TABLES FROM `$sDATABASE`";
 $tablecheck = mysql_num_rows(mysql_query($sql));
 
 if (!$tablecheck) {
+  $systemService = new SystemService();
+  $version = new Version();
+  $version->setVersion($systemService->getInstalledVersion());
+  $version->setUpdateStart(new DateTime());
   $query = '';
   $restoreQueries = file(dirname(__file__). '/../mysql/install/Install.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
   foreach ($restoreQueries as $line) {
@@ -70,14 +82,13 @@ if (!$tablecheck) {
       }
     }
   }
+  $version->setUpdateEnd(new DateTime());
+  $version->save();
 }
 
 // Initialize the session
 session_name('CRM@' . $sRootPath);
 session_start();
-
-require_once dirname(__FILE__) . '/../vendor/autoload.php';
-require_once dirname(__FILE__) . '/../orm/conf/config.php';
 
 // Avoid consecutive slashes when $sRootPath = '/'
 if (strlen($sRootPath) < 2) $sRootPath = '';
