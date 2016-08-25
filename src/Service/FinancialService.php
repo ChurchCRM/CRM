@@ -1096,7 +1096,6 @@ class FinancialService
   
   private function generateQBDepositSlip($thisReport)
   {
-    global $sQBDTSettings;
     $thisReport->pdf->AddPage();
     // in 2.2.0 we will store these settings in the DB as JSON, but for 2.1.7 we don't want to change schema
     //$thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQuickBooksDepositSlipParameters);
