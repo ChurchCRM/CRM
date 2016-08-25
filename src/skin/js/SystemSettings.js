@@ -54,4 +54,5 @@ $(".jsonSettingsClose").on("click",function(event){
    var settings=getFormValue($("#JSONSettingsDiv"));
    $("input[name='new_value["+cfgid+"]']").val(JSON.stringify(settings));
    $("#JSONSettingsModal").modal("hide");
+   $("input[name=save]").click();
 });
