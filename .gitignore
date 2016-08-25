@@ -27,7 +27,6 @@ ionicons
 
 # Configuration files with passwords
 src/Include/Config.php
-src/mysql/database_setup_and_install.sh
 
 target
 /src/orm/model/ChurchCRM/Base/
