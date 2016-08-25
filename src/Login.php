@@ -346,9 +346,9 @@ if (isset($loginPageMsg))
 // An array of authorized URL's is specified in Config.php in the $URL array
 checkAllowedURL();
 ?> 
-        <a href="external/user/password">I forgot my password</a><br>
-        <a href="external/family/register" class="text-center">Register a new Family</a><br>
-        <a href="external/family/verify" class="text-center">Verify Family Info</a>
+        <!--<a href="external/user/password">I forgot my password</a><br> -->
+        <a href="external/family/register" class="text-center"><?= gettext("Register a new Family");?></a><br>
+        <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
     </div>
     <!-- /.login-box-body -->
 </div>
