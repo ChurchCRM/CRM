@@ -1096,10 +1096,11 @@ class FinancialService
   
   private function generateQBDepositSlip($thisReport)
   {
+    global $sQBDTSettings;
     $thisReport->pdf->AddPage();
     // in 2.2.0 we will store these settings in the DB as JSON, but for 2.1.7 we don't want to change schema
     //$thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQuickBooksDepositSlipParameters);
-    $thisReport->QBDepositTicketParameters = json_decode('{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}');
+    $thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQBDTSettings);
     $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
     $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
 
