@@ -13,7 +13,7 @@ $container = $app->getContainer();
 
 // Set up
 //require __DIR__ . '/dependencies.php';
-//require __DIR__ . '/error-handler.php';
+require __DIR__ . '/error-handler.php';
 
 // routes
 require __DIR__ . '/routes/user.php';
