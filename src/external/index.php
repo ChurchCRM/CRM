@@ -17,7 +17,7 @@ $container = $app->getContainer();
 
 // routes
 require __DIR__ . '/routes/user.php';
-require __DIR__ . '/routes/verify.php';
+require __DIR__ . '/routes/family.php';
 
 // Run app
 $app->run();
