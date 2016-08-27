@@ -4,11 +4,9 @@ $sPageTitle = "ChurchCRM - Family Registration";
 require("../Include/HeaderNotLoggedIn.php");
 ?>
   <form action="<?= $sRootPath ?>/external/family/register/members" method="post">
-    <?= print_r($body)?>
-
     <div class="box box-solid">
       <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext("Register") . " " . $familyName . gettext(" members") . $familyCount ?></h3>
+        <h3 class="box-title"><?= gettext("Register") . " " . $family->getName() . " ". gettext("family members") ?></h3>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
@@ -17,8 +15,7 @@ require("../Include/HeaderNotLoggedIn.php");
             <div class="panel box box-primary">
               <div class="box-header with-border">
                 <h4 class="box-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $x ?>" aria-expanded="true"
-                     class="">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $x ?>" class="">
                     Family Member #<?= $x ?>
                   </a>
                 </h4>

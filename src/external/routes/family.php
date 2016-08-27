@@ -1,7 +1,9 @@
 <?php
 
 use Slim\Views\PhpRenderer;
-
+use ChurchCRM\Family;
+use ChurchCRM\ListOption;
+use ChurchCRM\ListOptionQuery;
 
 $app->group('/family', function () {
 
@@ -17,11 +19,25 @@ $app->group('/family', function () {
     $renderer = new PhpRenderer("templates/");
     $body = $request->getParsedBody();
 
-    $pageObjects = array("familyName" => $body["familyName"],
-      "familyCount" => $body["familyCount"]);
+    $family = new Family();
+    $family->setName($body["familyName"]);
+    $family->setAddress1($body["familyAddress1"]);
+    $family->setCity($body["familyCity"]);
+    $family->setState($body["familyState"]);
+    $family->setCountry($body["familyCountry"]);
 
-    return $renderer->render($response, "family-register-members.php",
-      $pageObjects);
+    $className = "Regular Attender";
+    if ($body["familyPrimaryChurch"] == "No") {
+      $className = "Guest";
+    }
+    $familyMembership = ListOptionQuery::create()->filterById(1)->filterByOptionName($className)->findOne();
+
+    $_SESSION[regFamily] = $family;
+    $_SESSION[regFamilyClassId] = $familyMembership->getOptionId();
+
+    $pageObjects = array("family" => $family, "familyCount" => $body["familyCount"]);
+
+    return $renderer->render($response, "family-register-members.php", $pageObjects);
 
   });
 
