@@ -87,7 +87,18 @@
         <then>
           <propertyprompt propertyName="demoKey" promptText="Enter the demo site hook password" />
           <exec command = "git rev-parse --abbrev-ref HEAD" outputProperty="currentBranch" />
-          <exec command = "curl -F 'demoKey=${demoKey}' -F 'version=2.2.0' -F 'branch=${currentBranch}' -F 'fileupload=@${builddir}/ChurchCRM-${build.version}.zip' http://demo.churchcrm.io/webhooks/DemoUpdate.php" passthru="true"/>
+          <if>
+            <not>
+              <or>
+                <equals arg1="${currentBranch}" arg2="develop"/>
+                <equals arg1="${currentBranch}" arg2="master"/>
+              </or>
+            </not>
+            <then>
+                <propertyprompt propertyName="currentBranch" defaultValue="develop" promptText="Current branch is not master or develop. Enter branch to emulate:" />
+            </then>
+          </if>
+          <exec command = "curl -F 'demoKey=${demoKey}' -F 'branch=${currentBranch}' -F 'fileupload=@${builddir}/ChurchCRM-${build.version}.zip' http://demo.churchcrm.io/webhooks/DemoUpdate.php" passthru="true"/>
         </then>
         <else>
             <echo message="You must build the source before pushing to demo site" />
