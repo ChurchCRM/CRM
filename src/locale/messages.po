@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-06 05:17+0000\n"
+"POT-Creation-Date: 2016-08-25 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1178,8 +1178,43 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: CheckVersion.php:32
+#: CheckVersion.php:41
 msgid "Software Version Check"
+msgstr ""
+
+#: CheckVersion.php:53
+msgid "Oops! Something went wrong"
+msgstr ""
+
+#: CheckVersion.php:56
+msgid ""
+"There is an incompatibility between database schema and installed software. "
+"You are seeing this message because there is a software bug or an incomplete "
+"upgrade."
+msgstr ""
+
+#: CheckVersion.php:66
+msgid "Please check the following resources for assistance:"
+msgstr ""
+
+#: CheckVersion.php:68
+msgid "GitHub issues"
+msgstr ""
+
+#: CheckVersion.php:69
+msgid "Developer Chat"
+msgstr ""
+
+#: CheckVersion.php:70
+msgid "Docs"
+msgstr ""
+
+#: CheckVersion.php:76
+msgid "Software Database Version"
+msgstr ""
+
+#: CheckVersion.php:77
+msgid "Software Version"
 msgstr ""
 
 #: Checkin.php:25
