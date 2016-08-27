@@ -1,9 +1,14 @@
 <?php
 
+use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\VersionQuery;
+use ChurchCRM\Version;
 
-class SystemService {
+class SystemService
+{
 
-  function getLatestRelese() {
+  function getLatestRelese()
+  {
     $client = new \Github\Client();
     $release = null;
     try {
@@ -15,15 +20,17 @@ class SystemService {
     return $release;
   }
 
-  function getInstalledVersion() {
-    $composerFile = file_get_contents(dirname(__FILE__)."/../composer.json");
+  function getInstalledVersion()
+  {
+    $composerFile = file_get_contents(dirname(__FILE__) . "/../composer.json");
     $composerJson = json_decode($composerFile, true);
     $version = $composerJson["version"];
 
     return $version;
   }
 
-  function playbackSQLtoDatabase($fileName) {
+  function playbackSQLtoDatabase($fileName)
+  {
     requireUserGroupMembership("bAdmin");
     $query = '';
     $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -38,9 +45,11 @@ class SystemService {
     }
   }
 
-  function restoreDatabaseFromBackup() {
+  function restoreDatabaseFromBackup()
+  {
     requireUserGroupMembership("bAdmin");
     $restoreResult = new StdClass();
+    $restoreResult->Messages = array();
     global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $sGZIPname;
     $file = $_FILES['restoreFile'];
     $restoreResult->file = $file;
@@ -62,27 +71,31 @@ class SystemService {
         $this->playbackSQLtoDatabase($restoreResult->SQLfile);
         exec("rm -rf $restoreResult->root/Images/*");
         exec("mv -f $restoreResult->backupRoot/Images/* $restoreResult->root/Images");
-      }
-      else if ($restoreResult->type2 == "sql") {
+      } else if ($restoreResult->type2 == "sql") {
         exec("mkdir $restoreResult->backupRoot");
         exec("mv  " . $file['tmp_name'] . " " . $restoreResult->backupRoot . "/" . $file['name']);
         $restoreResult->uncompressCommand = "$sGZIPname -d $restoreResult->backupRoot/" . $file['name'];
-        exec($restoreResult->uncompressCommand, $rs1, $returnStatus); ;
+        exec($restoreResult->uncompressCommand, $rs1, $returnStatus);;
         $restoreResult->SQLfile = $restoreResult->backupRoot . "/" . substr($file['name'], 0, strlen($file['name']) - 3);
         $this->playbackSQLtoDatabase($restoreResult->SQLfile);
       }
-    }
-    else if ($restoreResult->type == "sql") {
+    } else if ($restoreResult->type == "sql") {
       $this->playbackSQLtoDatabase($file['tmp_name']);
     }
     exec("rm -rf $restoreResult->backupRoot");
     $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
     $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
     $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
+    //When restoring a database, do NOT let the database continue to create remote backups.
+    //This can be very troublesome for users in a testing environment.
+    $sSQL = 'UPDATE config_cfg SET cfg_value = "0" WHERE cfg_name = "sEnableExternalBackupTarget"';
+    $aRow = mysql_fetch_array(RunQuery($sSQL));
+    array_push($restoreResult->Messages, gettext("As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the sEnableExternalBackupTarget setting."));
     return $restoreResult;
   }
 
-  function getDatabaseBackup($params) {
+  function getDatabaseBackup($params)
+  {
     requireUserGroupMembership("bAdmin");
     global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME, $sGZIPname, $sZIPname, $sPGPname;
 
@@ -111,7 +124,7 @@ class SystemService {
     $backupCommand = "mysqldump -u $sUSER --password=$sPASSWORD --host=$sSERVERNAME $sDATABASE > $backup->SQLFile";
     exec($backupCommand, $returnString, $returnStatus);
 
-    switch($params->iArchiveType) {
+    switch ($params->iArchiveType) {
       case 0: # The user wants a gzip'd SQL file.
         $backup->saveTo .= ".sql";
         exec("mv $backup->SQLFile  $backup->saveTo");
@@ -146,7 +159,7 @@ class SystemService {
       $archiveType = 3;
     }
 
-    switch($params->iArchiveType) {
+    switch ($params->iArchiveType) {
       case 0:
         array_push($backup->headers, "");
       case 1:
@@ -162,18 +175,16 @@ class SystemService {
 
     return $backup;
   }
-  
+
   function copyBackupToExternalStorage()
   {
     global $sExternalBackupType, $sExternalBackupUsername, $sExternalBackupPassword, $sExternalBackupEndpoint;
-    if( strcasecmp($sExternalBackupType,"WebDAV") == 0  )
-    {
-      if( $sExternalBackupUsername && $sExternalBackupPassword && $sExternalBackupEndpoint )
-      {
+    if (strcasecmp($sExternalBackupType, "WebDAV") == 0) {
+      if ($sExternalBackupUsername && $sExternalBackupPassword && $sExternalBackupEndpoint) {
         $params = new stdClass();
         $params->iArchiveType = 3;
         $backup = $this->getDatabaseBackup($params);
-        $backup->credentials = $sExternalBackupUsername.":".$sExternalBackupPassword;
+        $backup->credentials = $sExternalBackupUsername . ":" . $sExternalBackupPassword;
         $backup->filesize = filesize($backup->saveTo);
         $fh = fopen($backup->saveTo, 'r');
         $backup->remoteUrl = $sExternalBackupEndpoint;
@@ -185,30 +196,24 @@ class SystemService {
         curl_setopt($ch, CURLOPT_INFILESIZE, $backup->filesize);
         $backup->result = curl_exec($ch);
         fclose($fh);
-        return($backup);
+        return ($backup);
+      } else {
+        throw new Exception("WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set", 500);
       }
-      else 
-      {
-        throw new Exception("WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set",500);
-      }
-    }
-    elseif( strcasecmp($sExternalBackupType,"Local") == 0 )
-    {
-      try
-      {
+    } elseif (strcasecmp($sExternalBackupType, "Local") == 0) {
+      try {
         $backup = $this->getDatabaseBackup($params);
-        exec("mv " . $backup->saveTo . " " .  $sExternalBackupEndpoint);
-        return($backup);
+        exec("mv " . $backup->saveTo . " " . $sExternalBackupEndpoint);
+        return ($backup);
+      } catch (Exception $exc) {
+        throw new Exception("The local path $sExternalBackupEndpoint is not writeable.  Unable to store backup.", 500);
       }
-      catch (Exception $exc)
-      {
-        throw new Exception("The local path $sExternalBackupEndpoint is not writeable.  Unable to store backup.",500);
-      }
-    
+
     }
   }
 
-  function download($filename) {
+  function download($filename)
+  {
     requireUserGroupMembership("bAdmin");
     set_time_limit(0);
     $path = dirname(dirname(__FILE__)) . "/tmp_attach/ChurchCRMBackups/$filename";
@@ -217,7 +222,7 @@ class SystemService {
         $fsize = filesize($path);
         $path_parts = pathinfo($path);
         $ext = strtolower($path_parts["extension"]);
-        switch($ext) {
+        switch ($ext) {
           case "gz":
             header("Content-type: application/x-gzip");
             header("Content-Disposition: attachment; filename=\"" . $path_parts["basename"] . "\"");
@@ -256,97 +261,75 @@ class SystemService {
     }
   }
 
-  function getConfigurationSetting($settingName, $settingValue) {
+  function getConfigurationSetting($settingName, $settingValue)
+  {
     requireUserGroupMembership("bAdmin");
   }
 
-  function setConfigurationSetting($settingName, $settingValue) {
+  function setConfigurationSetting($settingName, $settingValue)
+  {
     requireUserGroupMembership("bAdmin");
   }
 
-  function getDatabaseVersion() {
-    // Check if the table version_ver exists.  If the table does not exist then
-    // SQL scripts must be manually run to get the database up to version 1.2.7
-    $bVersionTableExists = FALSE;
-    if (mysql_num_rows(RunQuery("SHOW TABLES LIKE 'version_ver'")) == 1) {
-      $bVersionTableExists = TRUE;
-    }
-
-    // Let's see if the MySQL version matches the PHP version.  If we have a match then
-    // proceed to Menu.php.  Otherwise further error checking is needed.
-    $ver_version = "unknown";
-    if ($bVersionTableExists) {
-      $sSQL = 'SELECT * FROM version_ver ORDER BY ver_ID DESC';
-      $aRow = mysql_fetch_array(RunQuery($sSQL));
-      extract($aRow);
-      return $ver_version;
-    }
-    return false;
-  }
-
-  function rebuildWithSQL($SQLFile) {
+  function rebuildWithSQL($SQLFile)
+  {
     $root = dirname(dirname(__FILE__));
     $this->playbackSQLtoDatabase($root . $SQLFile);
   }
 
-  function checkDatabaseVersion() {
-    $db_version = $this->getDatabaseVersion();
+  function getDBVersion() {
+    $dbVersion = VersionQuery::create()->orderByUpdateEnd(Criteria::DESC)->findOne();
+    return $dbVersion->getVersion();
+  }
+
+  function checkDatabaseVersion()
+  {
+
+    $db_version = $this->getDBVersion();
     if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
       return true;
     }
 
     // always rebuild the menu
     $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
-
-    // This code will automatically update from 1.2.14 (last good churchinfo build to 2.0.0 for ChurchCRM
-    if (strncmp($db_version, "1.2.14", 6) == 0) {
-      $this->rebuildWithSQL("/mysql/upgrade/1.2.14-2.0.0.sql");
-      $this->rebuildWithSQL("/mysql/upgrade/2.0.x-2.1.0.sql");
-      return true;
-    }
-
-    // This code will automatically update from 1.3.0 (early build of ChurchCRM)
-    if (strncmp($db_version, "1.3.0", 6) == 0) {
-      $this->rebuildWithSQL("/mysql/upgrade/1.3.0-2.0.0.sql");
-      $this->rebuildWithSQL("/mysql/upgrade/2.0.x-2.1.0.sql");
-      return true;
-    }
-
-    if (strncmp($db_version, "2.0", 3) == 0) {
-      $this->rebuildWithSQL("/mysql/upgrade/2.0.x-2.1.0.sql");
-      return true;
-    }
-
-    if (in_array($db_version, array("2.1.0", "2.1.1", "2.1.2"))) {
-      $this->rebuildWithSQL("/mysql/upgrade/2.1.x-2.1.3.sql");
-      return true;
-    }
-
-
-    if (in_array($db_version, array("2.1.3", "2.1.4", "2.1.5", "2.1.6", "2.1.7", "2.1.8"))) {
-      $this->rebuildWithSQL("/mysql/upgrade/2.1.3_8-2.2.0.sql");
-      return true;
+    $dbUpdatesFile = file_get_contents(dirname(__FILE__) . "/../mysql/upgrade.json");
+    $dbUpdates = json_decode($dbUpdatesFile, true);
+    foreach ($dbUpdates as $dbUpdate) {
+      if (in_array($db_version, $dbUpdate["versions"])) {
+        $version = new Version();
+        $version->setVersion($dbUpdate["dbVersion"]);
+        $version->setUpdateStart(new DateTime());
+        foreach ($dbUpdate["scripts"] as $dbScript) {
+          $this->rebuildWithSQL($dbScript);
+        }
+        $version->setUpdateEnd(new DateTime());
+        $version->save();
+        return true;
+      }
     }
 
     return false;
   }
 
-  function reportIssue($data) {
+  function reportIssue($data)
+  {
 
     $serviceURL = "http://demo.churchcrm.io/issues/";
     $headers = array();
     $headers[] = "Content-type: application/json";
-    
+
     $issueDescription = FilterInput($data->issueDescription) . "\r\n\r\n\r\n" .
-            "Collected Value Title |  Data \r\n" .
-            "----------------------|----------------\r\n" .
-            "Page Name |".$data->pageName."\r\n".
-            "Platform Information | " . php_uname($mode = "a") . "\r\n" .
-            "PHP Version | " . phpversion() . "\r\n" .
-            "ChurchCRM Version |" . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
-            "Reporting Browser |" . $_SERVER['HTTP_USER_AGENT'] . "\r\n";
-    if (function_exists("apache_get_modules"))
-    {
+      "Collected Value Title |  Data \r\n" .
+      "----------------------|----------------\r\n" .
+      "Page Name |" . $data->pageName . "\r\n" .
+      "Screen Size |" . $data->screenSize->height . "x" . $data->screenSize->width . "\r\n" .
+      "Window Size |" . $data->windowSize->height . "x" . $data->windowSize->width . "\r\n" .
+      "Page Size |" . $data->pageSize->height . "x" . $data->pageSize->width . "\r\n" .
+      "Platform Information | " . php_uname($mode = "a") . "\r\n" .
+      "PHP Version | " . phpversion() . "\r\n" .
+      "ChurchCRM Version |" . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
+      "Reporting Browser |" . $_SERVER['HTTP_USER_AGENT'] . "\r\n";
+    if (function_exists("apache_get_modules")) {
       $issueDescription .= "Apache Modules    |" . implode(",", apache_get_modules());
     }
 

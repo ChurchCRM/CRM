@@ -339,11 +339,6 @@ if (isset($loginPageMsg))
         </div>
     </div>
 </form>
-
-<script language="JavaScript" type="text/JavaScript">
-    document.LoginForm.User.focus();
-</script>
-
 <?php
 // Check if the login page is following thre required URL schema
 // including the desired protocol, hiotsname, and path.
@@ -357,6 +352,23 @@ checkAllowedURL();
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+
+<div id="not-chrome" class="error-page">
+  <div class="callout callout-warning">
+    <h4>For the best experience, please use Google Chrome.</h4>
+    <p>This software has been tested with Google Chrome... <a href="https://www.google.com/chrome/browser/desktop/"> Download and install Google Chrome</a></p>
+  </div>
+</div>
+<script language="JavaScript" type="text/JavaScript">
+  $(document).ready(function () {
+    $("#not-chrome").hide();
+    var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    if (!isChrome)
+      $("#not-chrome").show();
+
+    document.LoginForm.User.focus();
+  });
+</script>
 
 <?php
 // Add the page footer

@@ -6,7 +6,7 @@
 <project name="ChurchCRM - Build" basedir="." default="release">
     <property file="./build.properties"/>
     <property name="builddir" value="./target"/>
-    <property name="sourcedir" value="${builddir}/code"/>
+    <property name="sourcedir" value="/tmp/code"/>
 
     <!-- ============================================  -->
     <!-- Target: prepare                               -->
@@ -28,6 +28,7 @@
             <fileset dir="src">
                 <include name="**"/>
                 <exclude name="Images/Person/thumbnails/*.jpg"/>
+                <exclude name="composer.lock"/>
                 <exclude name="Include/Config.php"/>
                 <exclude name="vendor/almasaeed2010/**"/>
                 <exclude name="vendor/components/**"/>
@@ -46,6 +47,7 @@
         <zip destfile="${builddir}/ChurchCRM-${build.version}.zip" basedir="${sourcedir}"/>
 
         <echo message="Files copied and compressed in build directory OK!"/>
+        <delete dir="${sourcedir}" includeemptydirs="true"/>
     </target>
 
 
@@ -63,8 +65,8 @@
 
     <target name="rev-build-number">
         <echo message="now version ${build.version.next}"/>
-        <exec command="replace '${build.version}' '${build.version.next}' -- build.properties src/composer.json src/mysql/install/Install.sql" dir="." passthru="true"/>
-        <echo message="please update build.xml with the next verion file"/>
+        <exec command="replace '${build.version}' '${build.version.next}' -- build.properties src/composer.json" dir="." passthru="true"/>
+        <echo message="please update build.properties with the next verion file"/>
     </target>
 
     <target name="change-log" depends="install-change-log">
@@ -77,5 +79,31 @@
         <exec command="xgettext --from-code=UTF-8 -o locale/messages.po *.php email/*.php Include/*.php Reports/*.php sundayschool/*.php" dir="src" passthru="true"/>
     </target>
 
-    <target name="release" depends="locale-update, package, change-log, rev-build-number" />
+    <target name="release" depends="locale-update, package, rev-build-number" />
+    
+    <target name="demosite">
+      <if>
+        <available file="${builddir}/ChurchCRM-${build.version}.zip" />
+        <then>
+          <propertyprompt propertyName="demoKey" promptText="Enter the demo site hook password" />
+          <exec command = "git rev-parse --abbrev-ref HEAD" outputProperty="currentBranch" />
+          <if>
+            <not>
+              <or>
+                <equals arg1="${currentBranch}" arg2="develop"/>
+                <equals arg1="${currentBranch}" arg2="master"/>
+              </or>
+            </not>
+            <then>
+                <propertyprompt propertyName="currentBranch" defaultValue="develop" promptText="Current branch is not master or develop. Enter branch to emulate:" />
+            </then>
+          </if>
+          <exec command = "curl -F 'demoKey=${demoKey}' -F 'branch=${currentBranch}' -F 'fileupload=@${builddir}/ChurchCRM-${build.version}.zip' http://demo.churchcrm.io/webhooks/DemoUpdate.php" passthru="true"/>
+        </then>
+        <else>
+            <echo message="You must build the source before pushing to demo site" />
+        </else>
+      </if>
+    </target>
+    
 </project>

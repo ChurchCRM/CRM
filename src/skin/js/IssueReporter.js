@@ -2,7 +2,19 @@ $("#submitIssue").click(function () {
   var postData = {
     "issueTitle": $("input:text[name=issueTitle]").val(),
     "issueDescription": $("textarea[name=issueDescription]").val(),
-    "pageName" : $("input[name=pageName]").val()
+    "pageName" : $("input[name=pageName]").val(),
+    "screenSize": {
+        "height":screen.height,
+        "width":screen.width
+    },
+    "windowSize":{
+        "height":$(window).height(),
+        "width":$(window).width()
+    },
+    "pageSize" : {
+        "height" : $(document).height(),
+        "width":$(document).width()
+    }
   };
   $.ajax({
     method: "POST",

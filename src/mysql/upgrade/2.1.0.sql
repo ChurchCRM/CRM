@@ -1,10 +1,10 @@
 SET @upgradeStartTime = NOW();
 
-ALTER TABLE `version_ver`
-CHANGE COLUMN `ver_date` `ver_update_start` datetime default NULL;
+ALTER TABLE version_ver
+CHANGE COLUMN ver_date ver_update_start datetime default NULL;
 
-ALTER TABLE `version_ver`
-ADD COLUMN `ver_update_end` datetime default NULL AFTER `ver_update_start`;
+ALTER TABLE version_ver
+ADD COLUMN ver_update_end datetime default NULL AFTER ver_update_start;
 
 INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`, `cfg_order`) 
 VALUES
@@ -103,5 +103,3 @@ INSERT INTO note_nte
 
 -- 'sFPDF_PATH', 'vendor/fpdf17'
 DELETE FROM config_cfg WHERE cfg_id IN (4);
-
-INSERT IGNORE INTO version_ver (ver_version, ver_update_start, ver_update_end) VALUES ('2.1.0',@upgradeStartTime,NOW());

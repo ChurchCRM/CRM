@@ -17,12 +17,7 @@ CREATE TABLE `version_ver` (
   UNIQUE KEY `ver_version` (`ver_version`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `version_ver`
---
 
-INSERT INTO version_ver (ver_version, ver_update_start)
-VALUES ('2.2.0', now());
 
 --
 -- Table structure for table `autopayment_aut`

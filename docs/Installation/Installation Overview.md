@@ -1,5 +1,10 @@
 # Installation Overview & Requirements
 
+## Installation Demo Video
+
+[![ChurchCRM Installation Demo Video](http://img.youtube.com/vi/SMjZpo3aO5Q/0.jpg)](http://www.youtube.com/watch?v=SMjZpo3aO5Q "ChurchCRM Installation Demo Video")
+
+
 ## How do I run ChurchCRM?
 
 Running ChurchCRM is not complicated if you have experience with
