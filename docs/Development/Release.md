@@ -6,10 +6,25 @@
  * 'cd /vagrant'
  * 'composer install'
  * 'vendor/bin/phing' this will do the following
- ** regen messages.po based on the latest files
- ** build zip package
- ** generate the change log
- ** update the version #s to next version
+   * regen messages.po based on the latest files
+   * build zip package
+   * generate the change log
+   * update the version #s to next version
+
+## Update the demo site
+ * Git checkout the branch you want to push to demo site
+ * start the vagrant box (this will download all the 3rd party files)
+ * ssh into the vagrant box
+ * 'cd /vagrant'
+ * 'composer install'
+ * 'vendor/bin/phing package' this will do the following
+   * build zip package
+ * 'vendor/bin/phing demosite' this will do the following
+   * upload the zip file to the demo site
+   * run server-side scripts to unpack the zip file
+   * copy a pre-configured config.php file 
+   * reset the demo database
+   * set the demo password to admin / george
 
 ## check in translation file 
 
