@@ -6,7 +6,7 @@
 <project name="ChurchCRM - Build" basedir="." default="release">
     <property file="./build.properties"/>
     <property name="builddir" value="./target"/>
-    <property name="sourcedir" value="${builddir}/code"/>
+    <property name="sourcedir" value="/tmp/code"/>
 
     <!-- ============================================  -->
     <!-- Target: prepare                               -->
@@ -80,4 +80,30 @@
     </target>
 
     <target name="release" depends="locale-update, package, rev-build-number" />
+    
+    <target name="demosite">
+      <if>
+        <available file="${builddir}/ChurchCRM-${build.version}.zip" />
+        <then>
+          <propertyprompt propertyName="demoKey" promptText="Enter the demo site hook password" />
+          <exec command = "git rev-parse --abbrev-ref HEAD" outputProperty="currentBranch" />
+          <if>
+            <not>
+              <or>
+                <equals arg1="${currentBranch}" arg2="develop"/>
+                <equals arg1="${currentBranch}" arg2="master"/>
+              </or>
+            </not>
+            <then>
+                <propertyprompt propertyName="currentBranch" defaultValue="develop" promptText="Current branch is not master or develop. Enter branch to emulate:" />
+            </then>
+          </if>
+          <exec command = "curl -F 'demoKey=${demoKey}' -F 'branch=${currentBranch}' -F 'fileupload=@${builddir}/ChurchCRM-${build.version}.zip' http://demo.churchcrm.io/webhooks/DemoUpdate.php" passthru="true"/>
+        </then>
+        <else>
+            <echo message="You must build the source before pushing to demo site" />
+        </else>
+      </if>
+    </target>
+    
 </project>
