@@ -97,6 +97,8 @@ CREATE TABLE `canvassdata_can` (
 -- Table structure for table `config_cfg`
 --
 
+SET @JSONV = '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}';
+
 CREATE TABLE `config_cfg` (
   `cfg_id` int(11) NOT NULL default '0',
   `cfg_name` varchar(50) NOT NULL default '',
@@ -222,7 +224,8 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1039, 'sExternalBackupUsername', '', 'Text', '', 'Remote Backup Username', 'General', "Step5"),
 (1040, 'sExternalBackupPassword', '', 'Text', '', 'Remote Backup Password', 'General', "Step5"),
 (1041, 'sExternalBackupAutoInterval', '', 'Text', '', 'Interval in Hours for Automatic Remote Backups', 'General', "Step5"),
-(1042, 'sLastBackupTimeStamp', '', 'Text', '', 'Last Backup Timestamp', 'General', "Step5");
+(1042, 'sLastBackupTimeStamp', '', 'Text', '', 'Last Backup Timestamp', 'General', "Step5"),
+(1043, 'sQBDTSettings', @JSONV , 'json', @JSONV , 'QuickBooks Deposit Ticket Settings', 'ChurchInfoReport', 'Step7');
 
 ALTER TABLE `config_cfg`
 ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
