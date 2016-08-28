@@ -225,7 +225,10 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1040, 'sExternalBackupPassword', '', 'Text', '', 'Remote Backup Password', 'General', "Step5"),
 (1041, 'sExternalBackupAutoInterval', '', 'Text', '', 'Interval in Hours for Automatic Remote Backups', 'General', "Step5"),
 (1042, 'sLastBackupTimeStamp', '', 'Text', '', 'Last Backup Timestamp', 'General', "Step5"),
-(1043, 'sQBDTSettings', @JSONV , 'json', @JSONV , 'QuickBooks Deposit Ticket Settings', 'ChurchInfoReport', 'Step7');
+(1043, 'sQBDTSettings', @JSONV , 'json', @JSONV , 'QuickBooks Deposit Ticket Settings', 'ChurchInfoReport', 'Step7'),
+(1044, 'sAUTHORIZENET_API_LOGIN_ID', '' , 'text', '' , 'Authorize.NET Login ID', 'ChurchInfoReport', 'Step7'),
+(1045, 'sAUTHORIZENET_TRANSACTION_KEY', '' , 'text', '' , 'Authorize.NET Password', 'ChurchInfoReport', 'Step7'),
+(1046, 'sAUTHORIZENET_SANDBOX', '' , 'boolean', '' , 'Use Authorize.NET Sandbox Mode?', 'ChurchInfoReport', 'Step7');
 
 ALTER TABLE `config_cfg`
 ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
