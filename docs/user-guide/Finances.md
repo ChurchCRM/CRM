@@ -87,12 +87,21 @@ Payments are very similar to pledges.  There are two ways in which payments can 
   The layout for most QuickBooks deposit tickets should nearly identical; however, differences in printers and deposit ticket providers may require you to adjust the position of various elements of the report.
 
   1. Click on the 'Gear' in the upper right corner, and select 'General Settings'
+
       ![Admin (gear) menu](images/gear_menu.png)
+
   2. Select the 'Report Settings' tab.
+
       ![Admin (gear) menu](images/report_settings.png)
+
   3. Find the sQBDTSettings setting, and choose 'Edit Settings'
+
       ![Admin (gear) menu](images/sQBDTSettings.png)
+
   4. Adjust the values for each setting according.
+
       ![Admin (gear) menu](images/sQBDTSettings2.png)
+
   5. Use the report layout below for reference:
+
       ![Admin (gear) menu](images/qbdt.png)
