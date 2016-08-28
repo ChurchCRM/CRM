@@ -26,7 +26,13 @@ $app->group('/deposits', function () {
   $this->post('/{id:[0-9]+}', function ($request, $response, $args) {
     $id = $args['id'];
     $input = (object)$request->getParsedBody();
-    echo json_encode($this->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate, $id, $input->depositClosed));
+    $thisDeposit = \ChurchCRM\DepositQuery::create()->findOneById($id);
+    $thisDeposit->setType($input->depositType);
+    $thisDeposit->setComment($input->depositComment);
+    $thisDeposit->setDate($input->depositDate);
+    $thisDeposit->setClosed($input->depositClosed);
+    $thisDeposit->save();
+    echo $thisDeposit->toJSON();
   });
 
 
