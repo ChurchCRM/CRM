@@ -149,7 +149,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (37, 'sZIPname', 'zip', 'text', 'zip', '', 'General', NULL),
 (38, 'sPGPname', 'gpg', 'text', 'gpg', '', 'General', NULL),
 (39, 'sLanguage', 'en_US', 'text', 'en_US', 'Internationalization (I18n) support\rUS English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)', 'General', NULL),
-(40, 'iFYMonth', '1', 'number', '1', 'First month of the fiscal year', 'General', NULL),
+(40, 'iFYMonth', '1', 'number', '1', 'First month of the fiscal year', 'General', 'Step9'),
 (41, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General', NULL),
 (42, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General', NULL),
 (43, 'sGeocoderPW', '', 'text', '', 'Password for rpc.geocoder.us', 'General', NULL),
@@ -166,7 +166,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (54, 'sISTusername', 'username', 'text', 'username', 'Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.intelligentsearch.com/Hosted/User', 'General', NULL),
 (55, 'sISTpassword', '', 'text', '', 'Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.intelligentsearch.com/Hosted/User', 'General', NULL),
 (56, 'bUseGoogleGeocode', '1', 'boolean', '1', 'Set true to use the Google geocoder.  Set false to use rpc.geocoder.us.', 'General', NULL),
-(57, 'iChecksPerDepositForm', '14', 'number', '14', 'Number of checks for Deposit Slip Report', 'General', NULL),
+(57, 'iChecksPerDepositForm', '14', 'number', '14', 'Number of checks for Deposit Slip Report', 'General', 'Step9'),
 (58, 'bUseScannedChecks', '0', 'boolean', '0', 'Set true to enable use of scanned checks', 'General', 'Step9'),
 (61, 'iEventPeriodStartHr', '7', 'number', '7', 'Church Event Valid Period Start Hour (0-23)', 'General', NULL),
 (62, 'iEventPeriodEndHr', '18', 'number', '18', 'Church Event Valid Period End Hour (0-23, must be greater than iEventStartHr)', 'General', NULL),
@@ -330,11 +330,10 @@ UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='23' WHERE `cfg_id`=
 UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='24' WHERE `cfg_id`='1033';
 
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='0' WHERE `cfg_id`='20';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='1' WHERE `cfg_id`='40';
 
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='3' WHERE `cfg_id`='57';
 
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='5' WHERE `cfg_id`='73';
+
+
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='6' WHERE `cfg_id`='61';
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='7' WHERE `cfg_id`='62';
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='8' WHERE `cfg_id`='63';
@@ -344,9 +343,13 @@ UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='2' WHERE `cfg_id`='
 UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='3' WHERE `cfg_id`='1034';
 UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='4' WHERE `cfg_id`='72';
 UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='5' WHERE `cfg_id`='10';
-UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='6' WHERE `cfg_id`='1044';
-UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='7' WHERE `cfg_id`='1045';
-UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='8' WHERE `cfg_id`='1046';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='6' WHERE `cfg_id`='73';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='7' WHERE `cfg_id`='1044';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='8' WHERE `cfg_id`='1045';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='9' WHERE `cfg_id`='1046';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='10' WHERE `cfg_id`='40';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='11' WHERE `cfg_id`='57';
+
 
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1011';
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1012';
