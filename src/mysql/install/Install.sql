@@ -126,7 +126,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (7, 'sDirRoleSpouse', '2', 'text', '2', 'These are the family role numbers designated as spouse', 'General', NULL),
 (8, 'sDirRoleChild', '3', 'text', '3', 'These are the family role numbers designated as child', 'General', NULL),
 (9, 'sSessionTimeout', '3600', 'number', '3600', 'Session timeout length in seconds\rSet to zero to disable session timeouts.', 'General', NULL),
-(10, 'aFinanceQueries', '28,30,31,32', 'text', '28', 'Queries for which user must have finance permissions to use:', 'General', NULL),
+(10, 'aFinanceQueries', '28,30,31,32', 'text', '28', 'Queries for which user must have finance permissions to use:', 'General', 'Step9'),
 (11, 'bCSVAdminOnly', '1', 'boolean', '1', 'Should only administrators have access to the CSV export system and directory report?', 'General', NULL),
 (12, 'sDefault_Pass', 'password', 'text', 'password', 'Default password for new users and those with reset passwords', 'General', NULL),
 (13, 'sMinPasswordLength', '6', 'number', '6', 'Minimum length a user may set their password to', 'General', NULL),
@@ -180,8 +180,8 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 
 -- Save 68, 69 for MRBS if installed
 -- Save 70, 71 for WebCalendar if installed
-(72, 'bEnableNonDeductible', '0', 'boolean', '0', 'Enable non-deductible payments', 'General', NULL),
-(73, 'sElectronicTransactionProcessor', 'Vanco', 'text', 'Vanco', 'Electronic Transaction Processor', 'General', NULL),
+(72, 'bEnableNonDeductible', '0', 'boolean', '0', 'Enable non-deductible payments', 'General', 'Step9'),
+(73, 'sElectronicTransactionProcessor', 'Vanco', 'text', 'Vanco', 'Electronic Transaction Processor', 'General', 'Step9'),
 (999, 'bRegistered', '0', 'boolean', '0', 'ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General', NULL),
 (1001, 'leftX', '20', 'number', '20', 'Left Margin (1 = 1/100th inch)', 'ChurchInfoReport', NULL),
 (1002, 'incrementY', '4', 'number', '4', 'Line Thickness (1 = 1/100th inch', 'ChurchInfoReport', NULL),
@@ -216,7 +216,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1031, 'sZeroGivers', 'This letter shows our record of your payments for', 'text', 'This letter shows our record of your payments for', 'Verbage for top line of tax report. Dates will be appended to the end of this line.', 'ChurchInfoReport', NULL),
 (1032, 'sZeroGivers2', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
 (1033, 'sZeroGivers3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
-(1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'ChurchInfoReport', NULL),
+(1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'General', 'Step9'),
 (1035, 'sEnableGravatarPhotos', '0', 'boolean', '0', 'lookup user images on Gravatar when no local image is present', 'General', NULL),
 (1036, 'sEnableExternalBackupTarget', '0', 'boolean', '0', 'Enable Remote Backups to Cloud Services', 'General', "Step5"),
 (1037, 'sExternalBackupType', 'WebDAV', 'Text', '', 'Cloud Service Type (Supported values: WebDAV, Local)', 'General', "Step5"),
@@ -226,9 +226,9 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1041, 'sExternalBackupAutoInterval', '', 'Text', '', 'Interval in Hours for Automatic Remote Backups', 'General', "Step5"),
 (1042, 'sLastBackupTimeStamp', '', 'Text', '', 'Last Backup Timestamp', 'General', "Step5"),
 (1043, 'sQBDTSettings', @JSONV , 'json', @JSONV , 'QuickBooks Deposit Ticket Settings', 'ChurchInfoReport', 'Step7'),
-(1044, 'sAUTHORIZENET_API_LOGIN_ID', '' , 'text', '' , 'Authorize.NET Login ID', 'ChurchInfoReport', 'Step7'),
-(1045, 'sAUTHORIZENET_TRANSACTION_KEY', '' , 'text', '' , 'Authorize.NET Password', 'ChurchInfoReport', 'Step7'),
-(1046, 'sAUTHORIZENET_SANDBOX', '' , 'boolean', '' , 'Use Authorize.NET Sandbox Mode?', 'ChurchInfoReport', 'Step7');
+(1044, 'sAUTHORIZENET_API_LOGIN_ID', '' , 'text', '' , 'Authorize.NET Login ID', 'General', 'Step9'),
+(1045, 'sAUTHORIZENET_TRANSACTION_KEY', '' , 'text', '' , 'Authorize.NET Password', 'General', 'Step9'),
+(1046, 'sAUTHORIZENET_SANDBOX', '' , 'boolean', '' , 'Use Authorize.NET Sandbox Mode?', 'General', 'Step9');
 
 ALTER TABLE `config_cfg`
 ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
@@ -328,7 +328,6 @@ UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='21' WHERE `cfg_id`=
 UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='22' WHERE `cfg_id`='1031';
 UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='23' WHERE `cfg_id`='1032';
 UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='24' WHERE `cfg_id`='1033';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='25' WHERE `cfg_id`='1034';
 
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='0' WHERE `cfg_id`='20';
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='1' WHERE `cfg_id`='40';
@@ -339,8 +338,13 @@ UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='5' WHERE `cfg_id`='
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='6' WHERE `cfg_id`='61';
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='7' WHERE `cfg_id`='62';
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='8' WHERE `cfg_id`='63';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='9' WHERE `cfg_id`='72';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='10' WHERE `cfg_id`='10';
+
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='1' WHERE `cfg_id`='1034';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='2' WHERE `cfg_id`='72';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='3' WHERE `cfg_id`='10';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='4' WHERE `cfg_id`='1044';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='5' WHERE `cfg_id`='1045';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='6' WHERE `cfg_id`='1046';
 
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1011';
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1012';
