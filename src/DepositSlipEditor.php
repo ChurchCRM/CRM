@@ -16,8 +16,6 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require_once 'vendor/autoload.php';
-require_once 'orm/conf/config.php';
 
 use ChurchCRM\PledgeQuery;
 use ChurchCRM\DepositQuery;
