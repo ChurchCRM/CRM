@@ -111,6 +111,7 @@ function initDepositSlipEditor()
       url: '/api/deposits/' + depositSlipID, // the url where we want to POST
       data: JSON.stringify(formData), // our data object
       dataType: 'json', // what type of data do we expect back from the server
+      contentType: "application/json; charset=utf-8",
       encode: true
     })
             .done(function(data) {
