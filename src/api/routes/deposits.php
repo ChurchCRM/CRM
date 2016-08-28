@@ -32,7 +32,7 @@ $app->group('/deposits', function () {
 
   $this->get('/{id:[0-9]+}/ofx', function ($request, $response, $args) {
     $id = $args['id'];
-    $OFX = $this->FinancialService->getDepositOFX($id);
+    $OFX = \ChurchCRM\Base\DepositQuery::create()->findOneById($id)->getOFX();
     header($OFX->header);
     echo $OFX->content;
   });
@@ -44,9 +44,7 @@ $app->group('/deposits', function () {
 
   $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
     $id = $args['id'];
-    $CSV = $this->FinancialService->getDepositCSV($id);
-    header($CSV->header);
-    echo $CSV->content;
+    echo \ChurchCRM\Base\DepositQuery::create()->findOneById($id)->toCSV();
   });
 
   $this->delete('/{id:[0-9]+}', function ($request, $response, $args) {
@@ -55,8 +53,9 @@ $app->group('/deposits', function () {
     echo json_encode(["success" => true]);
   });
 
-  $this->get('/{id:[0-9]+}/payments', function ($request, $response, $args) {
+  $this->get('/{id:[0-9]+}/pledges', function ($request, $response, $args) {
     $id = $args['id'];
-    echo $this->FinancialService->getPaymentJSON($this->FinancialService->getPayments($id));
+    echo \ChurchCRM\Base\DepositQuery::create()->findOneById($id)->getPledgesJoinAll()->toJSON();
   });
+  
 });
