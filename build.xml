@@ -33,6 +33,12 @@
                 <exclude name="vendor/almasaeed2010/**"/>
                 <exclude name="vendor/components/**"/>
                 <exclude name="vendor/driftyco/**"/>
+                <exclude name="vendor/propel/propel/tests/**"/>
+                <exclude name="vendor/guzzle/guzzle/tests/**"/>
+                <exclude name="vendor/guzzle/guzzle/docs/**"/>
+                <exclude name="vendor/monolog/monolog/tests/**"/>
+                <exclude name="skin/adminlte/dist/img/**"/>
+                <exclude name="skin/adminlte/plugins/datatables/extensions/TableTools/images/psd/**"/>
             </fileset>
         </copy>
 
