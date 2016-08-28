@@ -77,9 +77,7 @@ class Pledge extends BasePledge
     if ($response != null)
     {
       $tresponse = $response->getTransactionResponse();
-      print_r($response);
-      print_r($tresponse);
-      if (($tresponse != null) && ($tresponse->getResponseCode()== \SampleCode\Constants::RESPONSE_OK) )   
+      if (($tresponse != null) && ($tresponse->getResponseCode()== "1") )   
       {
         echo  "Debit Bank Account APPROVED  :" . "\n";
         echo " Debit Bank Account AUTH CODE : " . $tresponse->getAuthCode() . "\n";

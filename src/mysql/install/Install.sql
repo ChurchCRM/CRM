@@ -161,13 +161,13 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (49, 'bHideFamilyNewsletter', '0', 'boolean', '0', 'Set true to disable management of newsletter subscriptions in the Family Editor.', 'General', NULL),
 (50, 'bHideWeddingDate', '0', 'boolean', '0', 'Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.', 'General', NULL),
 (51, 'bHideLatLon', '0', 'boolean', '0', 'Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.', 'General', NULL),
-(52, 'bUseDonationEnvelopes', '0', 'boolean', '0', 'Set true to enable use of donation envelopes', 'General', NULL),
+(52, 'bUseDonationEnvelopes', '0', 'boolean', '0', 'Set true to enable use of donation envelopes', 'General', 'Step9'),
 (53, 'sHeader', '', 'textarea', '', 'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.', 'General', NULL),
 (54, 'sISTusername', 'username', 'text', 'username', 'Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.intelligentsearch.com/Hosted/User', 'General', NULL),
 (55, 'sISTpassword', '', 'text', '', 'Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.intelligentsearch.com/Hosted/User', 'General', NULL),
 (56, 'bUseGoogleGeocode', '1', 'boolean', '1', 'Set true to use the Google geocoder.  Set false to use rpc.geocoder.us.', 'General', NULL),
 (57, 'iChecksPerDepositForm', '14', 'number', '14', 'Number of checks for Deposit Slip Report', 'General', NULL),
-(58, 'bUseScannedChecks', '0', 'boolean', '0', 'Set true to enable use of scanned checks', 'General', NULL),
+(58, 'bUseScannedChecks', '0', 'boolean', '0', 'Set true to enable use of scanned checks', 'General', 'Step9'),
 (61, 'iEventPeriodStartHr', '7', 'number', '7', 'Church Event Valid Period Start Hour (0-23)', 'General', NULL),
 (62, 'iEventPeriodEndHr', '18', 'number', '18', 'Church Event Valid Period End Hour (0-23, must be greater than iEventStartHr)', 'General', NULL),
 (63, 'iEventPeriodIntervalMin', '15', 'number', '15', 'Event Period interval (in minutes)', 'General', NULL),
@@ -331,20 +331,22 @@ UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='24' WHERE `cfg_id`=
 
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='0' WHERE `cfg_id`='20';
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='1' WHERE `cfg_id`='40';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='2' WHERE `cfg_id`='52';
+
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='3' WHERE `cfg_id`='57';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='4' WHERE `cfg_id`='58';
+
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='5' WHERE `cfg_id`='73';
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='6' WHERE `cfg_id`='61';
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='7' WHERE `cfg_id`='62';
 UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='8' WHERE `cfg_id`='63';
 
-UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='1' WHERE `cfg_id`='1034';
-UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='2' WHERE `cfg_id`='72';
-UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='3' WHERE `cfg_id`='10';
-UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='4' WHERE `cfg_id`='1044';
-UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='5' WHERE `cfg_id`='1045';
-UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='6' WHERE `cfg_id`='1046';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='1' WHERE `cfg_id`='58';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='2' WHERE `cfg_id`='52';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='3' WHERE `cfg_id`='1034';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='4' WHERE `cfg_id`='72';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='5' WHERE `cfg_id`='10';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='6' WHERE `cfg_id`='1044';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='7' WHERE `cfg_id`='1045';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='8' WHERE `cfg_id`='1046';
 
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1011';
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1012';
