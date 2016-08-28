@@ -102,6 +102,14 @@ echo "=========================================================="
 composer dump-autoload
 
 echo "=========================================================="
+echo "==========   Starting Background Packaging    ============"
+echo "=========================================================="
+
+cd /vagrant
+./vendor/bin/phing package &
+echo "Build will be available in a few minutes at target/"
+
+echo "=========================================================="
 echo "=========================================================="
 echo "===   .o88b. db   db db    db d8888b.  .o88b. db   db  ==="     
 echo "===  d8P  Y8 88   88 88    88 88  '8D d8P  Y8 88   88  ==="  
