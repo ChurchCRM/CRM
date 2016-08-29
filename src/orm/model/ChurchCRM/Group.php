@@ -16,25 +16,5 @@ use ChurchCRM\Base\Group as BaseGroup;
  */
 class Group extends BaseGroup
 {
-  public function preSave(\Propel\Runtime\Connection\ConnectionInterface $con = null)
-  {
-    requireUserGroupMembership("bManageGroups");
-    parent::preSave($con);
-  }
-  
-  public function preUpdate(\Propel\Runtime\Connection\ConnectionInterface $con = null)
-  {
-    requireUserGroupMembership("bManageGroups");
-    parent::preUpdate($con);
-  }
-  public function preDelete(\Propel\Runtime\Connection\ConnectionInterface $con = null)
-  {
-    requireUserGroupMembership("bManageGroups");
-    parent::preDelete($con);
-  }
-  public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
-  {
-    requireUserGroupMembership("bManageGroups");
-    parent::preInsert($con);
-  }
+
 }
