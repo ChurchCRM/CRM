@@ -16,8 +16,6 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require_once 'vendor/autoload.php';
-require_once 'orm/conf/config.php';
 
 use ChurchCRM\PledgeQuery;
 use ChurchCRM\DepositQuery;
@@ -81,7 +79,7 @@ require "Include/Header.php";
           <div class="row">
             <div class="col-lg-4">
               <label for="Date"><?php echo gettext("Date:"); ?></label>
-              <input type="text" class="form-control" name="Date" value="<?php echo $thisDeposit->getDate('m-d-Y'); ?>" id="DepositDate" >
+              <input type="text" class="form-control" name="Date" value="<?php echo $thisDeposit->getDate('Y-m-d'); ?>" id="DepositDate" >
             </div>
             <div class="col-lg-4">
               <label for="Comment"><?php echo gettext("Comment:"); ?></label>

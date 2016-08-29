@@ -512,27 +512,6 @@ class GroupService
     RunQuery($sSQL);
   }
 
-  function updateGroup($groupID, $groupData)
-  {
-    requireUserGroupMembership("bManageGroups");
-    //Assign everything locally
-    $thisGroup['grp_Name'] = $groupData->groupName;
-    $thisGroup['grp_type'] = $groupData->groupType;
-    $thisGroup['grp_Description'] = $groupData->description;
-
-    //Did they enter a Name?
-    if (strlen($thisGroup['grp_Name']) < 1) {
-      throw new Exception ("You must enter a name");
-    }
-
-    $sSQL = "UPDATE group_grp SET grp_Name='" . mysql_real_escape_string($thisGroup['grp_Name']) . "', grp_Type='" . $thisGroup['grp_type'] . "', grp_Description='" . mysql_real_escape_string($thisGroup['grp_Description']) . "'";
-
-    $sSQL .= " WHERE grp_ID = " . $groupID;
-    // execute the SQL
-    RunQuery($sSQL);
-    return '{"success":"true"}';
-  }
-
   function getGroups($groupIDs = NULL)
   {
     requireUserGroupMembership("bManageGroups");

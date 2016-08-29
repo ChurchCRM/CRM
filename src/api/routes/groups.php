@@ -1,5 +1,7 @@
 <?php
 // Routes
+use ChurchCRM\Group;
+use ChurchCRM\GroupQuery;
 
 $app->group('/groups', function () {
 
@@ -11,8 +13,14 @@ $app->group('/groups', function () {
 
   $this->post('/{groupID:[0-9]+}', function ($request, $response, $args) {
     $groupID = $args['groupID'];
-    $input = $request->getParsedBody();
-    echo $this->GroupService->updateGroup($groupID, $input);
+    $input = (object)$request->getParsedBody();
+    $group = GroupQuery::create()->findOneById($groupID);
+    $group->setName($input->groupName);
+    $group->setType($input->groupType);
+    $group->setDescription($input->Description);
+    $group->save();
+    echo $group->toJSON();
+    
   });
 
   $this->get('/{groupID:[0-9]+}', function ($request, $response, $args) {

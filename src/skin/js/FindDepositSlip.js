@@ -39,7 +39,7 @@ $(document).ready(function() {
    
     dataT = $("#depositsTable").DataTable({
     ajax:{
-      url :"/api/deposits",
+      url :window.CRM.root+"/api/deposits",
       dataSrc:"Deposits"
     },
     "deferRender": true,
