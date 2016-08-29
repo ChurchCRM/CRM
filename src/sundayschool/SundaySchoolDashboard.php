@@ -1,13 +1,19 @@
 <?php
 require "../Include/Config.php";
 require "../Include/Functions.php";
-require "../Service/SundaySchoolService.php";
 
+use ChurchCRM\Service\SundaySchoolService;
+use ChurchCRM\Service\DashboardService;
+
+$dashboardService = new DashboardService();
 $sundaySchoolService = new SundaySchoolService();
+
+$groupStats = $dashboardService->getGroupStats();
+
 
 $kidsWithoutClasses = $sundaySchoolService->getKidsWithoutClasses();
 $classStats = $sundaySchoolService->getClassStats();
-$classes = 0;
+$classes = $groupStats['sundaySchoolClasses'];
 $teachers = 0;
 $kids = 0;
 $families = 0;
@@ -15,7 +21,6 @@ $maleKids = 0;
 $femaleKids = 0;
 $familyIds = array();
 foreach ($classStats as $class) {
-  $classes++;
   $kids = $kids + $class['kids'];
   $teachers = $teachers + $class['teachers'];
   $classKids = $sundaySchoolService->getKidsFullDetails($class["id"]);
