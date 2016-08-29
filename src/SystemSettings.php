@@ -47,6 +47,7 @@ $steps = array(
   "Step6" => "Map Settings",
   "Step7" => "Report Settings",
   "Step8" => "Other Settings",
+  "Step9" => "Financial Settings"
 );
 
 

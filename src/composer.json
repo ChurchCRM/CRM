@@ -33,13 +33,18 @@
     "slim/slim": "3.4.1",
     "slim/php-view": "2.1",
     "monolog/monolog": "^1.17",
-    "authorizenet/authorizenet": "1.8.0",
+    "jms/serializer": "serializer-master-dev as 1.0",
+    "authorizenet/authorizenet": "1.8.9",
     "knplabs/github-api": "~1.4",
     "almasaeed2010/adminlte": "2.3.3",
     "driftyco/ionicons": "2.0.1",
     "components/font-awesome": "4.6.3",
     "propel/propel": "~2.0@dev"
   },
+  "repositories": [{
+       "type": "vcs",
+       "url": "https://github.com/goetas/serializer.git"
+  }],
   "autoload": {
     "classmap": [
       "orm/"

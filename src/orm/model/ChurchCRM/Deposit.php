@@ -5,6 +5,8 @@ namespace ChurchCRM;
 use ChurchCRM\Base\Deposit as BaseDeposit;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\PledgeQuery as ChildPledgeQuery;
+use net\authorize\api\contract\v1 as AnetAPI;
+use net\authorize\api\controller as AnetController;
 
 /**
  * Skeleton subclass for representing a row from the 'deposit_dep' table.
@@ -152,5 +154,27 @@ class Deposit extends BaseDeposit
       $query->joinWith('DonationFund', Criteria::RIGHT_JOIN);
       return $this->getPledges($query, $con);
   }
+  
+  public function runTransactions()
+  {
+    global $sElectronicTransactionProcessor;
+    requireUserGroupMembership("bFinance");
+    // Process all the transactions
 
+    $pledges = $this->getPledges();
+
+    foreach($pledges as $pledge) {
+
+      if ($pledge->isAutCleared()) // If this one already cleared do not submit it again.
+        continue;
+
+      if ($sElectronicTransactionProcessor == "AuthorizeNet") {
+        $pledge->processAuthorizeNet();
+
+      } else if ($sElectronicTransactionProcessor == "Vanco") {
+        $this->processVanco();
+      }
+    }
+  }
+     
 }
