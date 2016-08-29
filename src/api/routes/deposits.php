@@ -1,7 +1,7 @@
 <?php
 // Routes
-use ChurchCRM\Base\DepositQuery;
-use  ChurchCRM\Base\Deposit;
+use ChurchCRM\DepositQuery;
+use ChurchCRM\Deposit;
 
 $app->group('/deposits', function () {
 
