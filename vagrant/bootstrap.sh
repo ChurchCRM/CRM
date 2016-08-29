@@ -105,8 +105,7 @@ echo "=========================================================="
 echo "==========   Starting Background Packaging    ============"
 echo "=========================================================="
 
-cd /vagrant
-./vendor/bin/phing package &
+/vagrant/vagrant/package.sh &
 echo "Build will be available in a few minutes at target/"
 
 echo "=========================================================="
