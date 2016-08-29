@@ -50,7 +50,7 @@ function initPaymentTable()
   
   dataT = $("#paymentsTable").DataTable({
     ajax:{
-      url :"/api/deposits/"+depositSlipID+"/pledges",
+      url :window.CRM.root+"/api/deposits/"+depositSlipID+"/pledges",
       dataSrc:"Pledges"
     },
     columns: colDef,
@@ -108,7 +108,7 @@ function initDepositSlipEditor()
     //process the form
     $.ajax({
       type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-      url: '/api/deposits/' + depositSlipID, // the url where we want to POST
+      url: window.CRM.root+'/api/deposits/' + depositSlipID, // the url where we want to POST
       data: JSON.stringify(formData), // our data object
       dataType: 'json', // what type of data do we expect back from the server
       contentType: "application/json; charset=utf-8",
@@ -160,7 +160,7 @@ function initDepositSlipEditor()
     $.each(deletedRows, function(index, value) {
       $.ajax({
         type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: '/api/payments/' + value.plg_GroupKey, // the url where we want to POST
+        url: window.CRM.root+'/api/payments/' + value.plg_GroupKey, // the url where we want to POST
         dataType: 'json', // what type of data do we expect back from the server
         data: {"_METHOD":"DELETE"},
         encode: true
