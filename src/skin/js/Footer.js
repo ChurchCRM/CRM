@@ -33,7 +33,8 @@ $("document").ready(function(){
                   idKey++;
                   resultGroup.children.push(childObject);
                 });
-                results.push(resultGroup);
+                if(resultGroup.children.length > 0)
+                  results.push(resultGroup);
               });
               return {results: results}; 
             },
