@@ -28,10 +28,10 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
 require 'Service/FinancialService.php';
+require "Service/DashboardService.php";
+use ChurchCRM\DepositQuery;
 
 $financialService = new FinancialService();
-
-require_once "Service/DashboardService.php";
 
 $sSQL = "select * from family_fam order by fam_DateLastEdited desc  LIMIT 10;";
 $rsLastFamilies = RunQuery($sSQL);
@@ -51,7 +51,7 @@ $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
 $depositData = false;  //Determine whether or not we should display the deposit line graph
 if ($_SESSION['bFinance']) {
-  $depositData = $financialService->getDeposits();  //Get the deposit data from the financialService
+  $depositData =  \ChurchCRM\Base\DepositQuery::create()->find()->toJSON();  //Get the deposit data from the financialService
 }
 
 // Set the page title
@@ -285,7 +285,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
 </div>
 
 <!-- this page specific inline scripts -->
@@ -297,7 +297,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
     //---------------
     //- LINE CHART  -
     //---------------
-    var lineDataRaw = <?= $financialService->getDepositJSON($depositData) ?>;
+    var lineDataRaw = <?= $depositData ?>;
 
     var lineData = {
         labels: [],
@@ -308,17 +308,20 @@ if ($depositData) // If the user has Finance permissions, then let's display the
         ]
     };
     
-    $.each(lineDataRaw.deposits, function(i, val) {
-        lineData.labels.push(val.dep_Date);
-        lineData.datasets[0].data.push(val.dep_Total);
+    
+  $( document ).ready(function() {
+    $.each(lineDataRaw.Deposits, function(i, val) {
+        lineData.labels.push(moment(val.Date).format("MM-DD-YY"));
+        lineData.datasets[0].data.push(val.totalAmount);
     });
 
     var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
 
     var lineChart = new Chart(lineChartCanvas).Line(lineData);
+  });
 <?php 
 }  //END IF block for Finance permissions to include JS for Deposit Chart
- ?>
+?>
 </script>
 
 
