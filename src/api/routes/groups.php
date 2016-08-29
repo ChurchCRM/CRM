@@ -27,11 +27,12 @@ $app->group('/groups', function () {
   });
 
   $this->get('/{groupID:[0-9]+}', function ($request, $response, $args) {
-    $groupID = $args['groupID'];
-    echo $this->GroupService->getGroupJSON($this->GroupService->getGroups($groupID));
+    echo "finding group: ".$args['groupID'];
+    print_r(GroupQuery::create()->findOneById($args['groupID'])->toJSON());
   });
   
   $this->get('/{groupID:[0-9]+}/cartStatus', function ($request, $response, $args) {
+   
     echo GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart();
    });
   
