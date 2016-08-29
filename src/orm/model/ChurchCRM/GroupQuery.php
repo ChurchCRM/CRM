@@ -16,5 +16,12 @@ use ChurchCRM\Base\GroupQuery as BaseGroupQuery;
  */
 class GroupQuery extends BaseGroupQuery
 {
-
+  function preSelect(\Propel\Runtime\Connection\ConnectionInterface $con)
+  {
+    
+    $this->joinPerson2group2roleP2g2r(null,'LEFT JOIN');
+    $this->groupBy("Group.Id");
+    $this->withColumn("COUNT(Person2group2roleP2g2r.P2g2rPerId)","memberCount");
+    parent::preSelect($con);
+  }
 }

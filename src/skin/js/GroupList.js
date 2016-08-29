@@ -23,14 +23,17 @@ $(document).ready(function () {
     });
 
     dataT = $("#groupsTable").DataTable({
-        data: groupData.groups,
+        ajax:{
+          url :window.CRM.root+"/api/groups/",
+          dataSrc:"Groups"
+        },
         columns: [
             {
                 width: 'auto',
                 title: 'Group Name',
-                data: 'groupName',
+                data: 'Name',
                 render: function (data, type, full, meta) {
-                    return '<a href=\'GroupView.php?GroupID=' + full.id + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a><a href=\'GroupEditor.php?GroupID=' + full.id + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-pencil fa-stack-1x fa-inverse"></i></span></a>' + data;
+                    return '<a href=\'GroupView.php?GroupID=' + full.Id + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a><a href=\'GroupEditor.php?GroupID=' + full.id + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-pencil fa-stack-1x fa-inverse"></i></span></a>' + data;
                 }
             },
             {
@@ -42,17 +45,24 @@ $(document).ready(function () {
             {
                 width: 'auto',
                 title: 'Group Cart Status',
-                data: 'groupCartStatus',
                 searchable: false,
                 render: function (data, type, full, meta) {
-
-                    if (data)
-                    {
-                        return "<span>All members of this group are in the cart</span><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart=" + full.id + "\">Remove all</a>";
-                    } else
-                    {
-                        return "<span>Not all members of this group are in the cart</span><br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart=" + full.id + "\">Add all</a>";
-                    }
+                    $.ajax({
+                      method: "GET",
+                      url: window.CRM.root + "/api/groups/"+full.Id+"/cartStatus",
+                      dataType: "json"
+                    }).done(function (data) {        
+                      console.log(data.status);
+                      if (data.bAllInCart=="true")
+                      {
+                          $("#cart-"+full.Id).html("All members of this group are in the cart<a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart=" + full.Id + "\">Remove all</a>");
+                      } else
+                      {
+                          $("#cart-"+full.Id).html("Not all members of this group are in the cart><br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart=" + full.Id + "\">Add all</a>");
+                      }
+                    });
+                    return '<span id="cart-' + full.Id + '">Checking Cart Status</span>';
+                   
                 }
             },
             {

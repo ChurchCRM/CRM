@@ -251,6 +251,9 @@
         <column name="grp_Description" phpName="Description" type="LONGVARCHAR"/>
         <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="CHAR" sqlType="enum('true','false')"
                 required="true" defaultValue="false"/>
+        <foreign-key foreignTable="list_lst">
+            <reference local="grp_Type" foreign="lst_OptionID"/>
+        </foreign-key>
         <index name="grp_ID_2">
             <index-column name="grp_ID"/>
         </index>

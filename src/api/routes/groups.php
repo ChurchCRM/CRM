@@ -5,7 +5,10 @@ use ChurchCRM\GroupQuery;
 
 $app->group('/groups', function () {
 
-
+  $this->get('/',function () {
+    echo ChurchCRM\Base\GroupQuery::create()->find()->toJSON();
+  });
+  
   $this->post('/', function ($request, $response, $args) {
     $groupName = $request->getParsedBody()["groupName"];
     $response->withJson($this->GroupService->createGroup($groupName));
@@ -17,7 +20,7 @@ $app->group('/groups', function () {
     $group = GroupQuery::create()->findOneById($groupID);
     $group->setName($input->groupName);
     $group->setType($input->groupType);
-    $group->setDescription($input->Description);
+    $group->setDescription($input->description);
     $group->save();
     echo $group->toJSON();
     
@@ -27,6 +30,11 @@ $app->group('/groups', function () {
     $groupID = $args['groupID'];
     echo $this->GroupService->getGroupJSON($this->GroupService->getGroups($groupID));
   });
+  
+  $this->get('/{groupID:[0-9]+}/cartStatus', function ($request, $response, $args) {
+    echo GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart();
+   });
+  
 
   $this->delete('/{groupID:[0-9]+}', function ($request, $response, $args) {
     $groupID = $args['groupID'];
