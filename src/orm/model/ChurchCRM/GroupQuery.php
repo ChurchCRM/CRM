@@ -18,11 +18,11 @@ class GroupQuery extends BaseGroupQuery
 {
   function preSelect(\Propel\Runtime\Connection\ConnectionInterface $con)
   {
-    $this->joinPerson2group2roleP2g2r(null,'LEFT JOIN');
+    $this->leftJoinPerson2group2roleP2g2r();
+    $this->withColumn("COUNT(person2group2role_p2g2r.PersonId)","memberCount");
     $this->groupBy("Group.Id");
-    $this->withColumn("COUNT(Person2group2roleP2g2r.P2g2rPerId)","memberCount");
-    $this->join('ListOption');
-    $this->where("list_lst.lst_ID =?", 3);
+    $this->leftJoinListOption();
+    $this->addJoinCondition("ListOption","ListOption.Id = ?","3");
     $this->withColumn('list_lst.lst_OptionName','groupType');
     parent::preSelect($con);
   }

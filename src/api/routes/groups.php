@@ -2,6 +2,8 @@
 // Routes
 use ChurchCRM\Group;
 use ChurchCRM\GroupQuery;
+use ChurchCRM\ListOptionQuery;
+use ChurchCRM\ListOption;
 
 $app->group('/groups', function () {
 
@@ -11,7 +13,10 @@ $app->group('/groups', function () {
   
   $this->post('/', function ($request, $response, $args) {
     $groupName = $request->getParsedBody()["groupName"];
-    $response->withJson($this->GroupService->createGroup($groupName));
+    $group = new Group();
+    $group->setName($groupName);
+    $group->save();
+    echo $group->toJSON();
   });
 
   $this->post('/{groupID:[0-9]+}', function ($request, $response, $args) {
@@ -25,10 +30,10 @@ $app->group('/groups', function () {
     echo $group->toJSON();
     
   });
-
-  $this->get('/{groupID:[0-9]+}', function ($request, $response, $args) {
-    echo "finding group: ".$args['groupID'];
-    print_r(GroupQuery::create()->findOneById($args['groupID'])->toJSON());
+  
+   $this->get('/{groupID:[0-9]+}', function ($request, $response, $args) {
+    echo GroupQuery::create()->findOneById($args['groupID'])->toJSON();
+            
   });
   
   $this->get('/{groupID:[0-9]+}/cartStatus', function ($request, $response, $args) {
@@ -39,14 +44,23 @@ $app->group('/groups', function () {
 
   $this->delete('/{groupID:[0-9]+}', function ($request, $response, $args) {
     $groupID = $args['groupID'];
-    $this->GroupService->deleteGroup($groupID);
-    echo json_encode(["success" => true]);
+    GroupQuery::create()->findOneById($groupID)->delete();
   });
+  
   $this->post('/{groupID:[0-9]+}/removeuser/{userID:[0-9]+}', function ($request, $response, $args) {
     $groupID = $args['groupID'];
     $userID = $args['userID'];
-    $this->GroupService->removeUserFromGroup($groupID, $userID);
-    echo json_encode(["success" => true]);
+    $groupID = $args['groupID'];
+    $group = GroupQuery::create()->findOneById($groupID);
+    $groupRoleMemberships = $group->getPerson2group2roleP2g2rs();
+    foreach ($groupRoleMemberships as $groupRoleMembership)
+    {
+      if ($groupRoleMembership->getPersonId() == $userID)
+      {
+        $groupRoleMembership->delete();
+      }
+    }
+   
   });
   $this->post('/{groupID:[0-9]+}/adduser/{userID:[0-9]+}', function ($request, $response, $args) {
     $groupID = $args['groupID'];

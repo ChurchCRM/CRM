@@ -282,12 +282,12 @@
         </vendor>
     </table>
 
-    <table name="person2group2role_p2g2r" idMethod="native" phpName="Person2group2roleP2g2r">
-        <column name="p2g2r_per_ID" phpName="P2g2rPerId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
+    <table name="person2group2role_p2g2r" isCrossRef="true">
+        <column name="p2g2r_per_ID" phpName="PersonId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
                 primaryKey="true" required="true" defaultValue="0"/>
-        <column name="p2g2r_grp_ID" phpName="P2g2rGrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
+        <column name="p2g2r_grp_ID" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
                 primaryKey="true" required="true" defaultValue="0"/>
-        <column name="p2g2r_rle_ID" phpName="P2g2rRleId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
+        <column name="p2g2r_rle_ID" phpName="RoleId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
                 required="true" defaultValue="0"/>
         <index name="p2g2r_per_ID">
             <index-column name="p2g2r_per_ID"/>

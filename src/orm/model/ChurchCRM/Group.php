@@ -3,7 +3,8 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Group as BaseGroup;
-
+use ChurchCRM\ListOptionQuery;
+use ChurchCRM\ListOption;
 /**
  * Skeleton subclass for representing a row from the 'group_grp' table.
  *
@@ -38,23 +39,37 @@ class Group extends BaseGroup
   public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
   {
     requireUserGroupMembership("bManageGroups");
+    $newListID = ListOptionQuery::create()->withColumn("MAX(ListOption.Id)","newListId")->find()->getColumnValues('newListId')[0] + 1;
+    $this->setRoleListId($newListID);
     parent::preInsert($con);
     return true;
   }
   
+  public function postInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+  {
+    $listOption = new ListOption();
+    $listOption->setId($this->getRoleListId());
+    $listOption->setOptionId(1);
+    $listOption->setOptionSequence(1);
+    $listOption->setOptionName("Member");
+    $listOption->save();
+    parent::postInsert($con);
+    return true;
+  }
+  
+  
   public function checkAgainstCart() 
   {
-    $members = $this->getPerson2group2roleP2g2rs();
-    //echo "Members: ".count($members);
+    $groupMemberships = $this->getPerson2group2roleP2g2rsJoinPerson();
     $bNoneInCart = TRUE;
     $bAllInCart = TRUE;
     //Loop through the recordset
-    foreach ($members as $member) {
+    foreach ($groupMemberships as $groupMembership) {
       if (!isset ($_SESSION['aPeopleCart']))
         $bAllInCart = FALSE; // Cart does not exist.  This person is not in cart.
-      elseif (!in_array($member->getP2g2rPerId(), $_SESSION['aPeopleCart'], false))
+      elseif (!in_array($groupMembership->getPersonId(), $_SESSION['aPeopleCart'], false))
         $bAllInCart = FALSE; // This person is not in cart.
-      elseif (in_array($member->getP2g2rPerId(), $_SESSION['aPeopleCart'], false))
+      elseif (in_array($groupMembership->getPersonId(), $_SESSION['aPeopleCart'], false))
         $bNoneInCart = FALSE; // This person is in the cart
     }
 

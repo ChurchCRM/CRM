@@ -12,6 +12,7 @@ $(document).ready(function () {
               contentType: "application/json; charset=utf-8",
               dataType: "json"
             }).done(function (data) {                               //yippie, we got something good back from the server
+                console.log(data);
                 dataT.row.add(data);                                //add the group data to the existing DataTable
                 dataT.rows().invalidate().draw(true);               //redraw the dataTable
             });
@@ -40,7 +41,8 @@ $(document).ready(function () {
                 width: 'auto',
                 title: 'Members',
                 data: 'memberCount',
-                searchable: false
+                searchable: false,
+                defaultContent:"0"
             },
             {
                 width: 'auto',
@@ -69,6 +71,7 @@ $(document).ready(function () {
                 width: 'auto',
                 title: 'Group Type',
                 data: 'groupType',
+                defaultContent:"",
                 searchable: true
             }
         ]
