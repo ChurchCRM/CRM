@@ -52,15 +52,15 @@ function Header_modals() {
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">ERROR!</h4>
+          <h4 class="modal-title"><?= gettext("ERROR!") ?></h4>
         </div>
         <div class="modal-body">
-          <p>Error making API Call to: <span id="APIEndpoint"></span></p>
+          <p><?= gettext("Error making API Call to:") ?> <span id="APIEndpoint"></span></p>
 
-          <p>Error text: <span id="APIErrorText"></span></p>
+          <p><?= gettext("Error text:") ?> <span id="APIErrorText"></span></p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal"><?= gettext("Close") ?></button>
         </div>
       </div>
     </div>
@@ -76,21 +76,21 @@ function Header_modals() {
           <input type="hidden" name="pageName" value="<?= $_SERVER['SCRIPT_NAME']?>"/>
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Issue Report!</h4>
+            <h4 class="modal-title"><?= gettext("Issue Report!") ?></h4>
           </div>
           <div class="modal-body">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-xl-3">
-                  <label for="issueTitle">Enter a Title for your bug / feature report: </label>
+                  <label for="issueTitle"><?= gettext("Enter a Title for your bug / feature report:") ?> </label>
                 </div>
                 <div class="col-xl-3">
-                  <input type="text" name="issueTitle" style="width:100%"></input>
+                  <input type="text" name="issueTitle" style="width:100%">
                 </div>
               </div>
               <div class="row">
                 <div class="col-xl-3">
-                  <label for="issueDescription">What were you doing when you noticed the bug / feature opportunity?</label>
+                  <label for="issueDescription"><?= gettext("What were you doing when you noticed the bug / feature opportunity?") ?></label>
                 </div>
                 <div class="col-xl-3">
                   <textarea rows="10" cols="50" name="issueDescription" style="width:100%"></textarea>
@@ -98,15 +98,14 @@ function Header_modals() {
               </div>
             </div>
             <ul>
-              <li>When you click "submit," an error report will be posted to the ChurchCRM GitHub Issue tracker.</li>
-              <li>Please do not include any confidential information.</li>
-              <li>Some general information about your system will be submitted along with the request such as Server version and browser headers.</li>
-              <li>No personally identifiable information will be submitted unless you purposefully include it.</li>
+              <li><?= gettext("When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker.") ?></li>
+              <li><?= gettext("Please do not include any confidential information.") ?></li>
+              <li><?= gettext("Some general information about your system will be submitted along with the request such as Server version and browser headers.") ?></li>
+              <li><?= gettext("No personally identifiable information will be submitted unless you purposefully include it.") ?>"</li>
             </ul>
           </div>
           <div class="modal-footer">
-
-            <button type="button" class="btn btn-primary" id="submitIssue">Submit</button>
+            <button type="button" class="btn btn-primary" id="submitIssue"><?= gettext("Submit") ?></button>
           </div>
         </form>
       </div>
@@ -127,7 +126,7 @@ function Header_body_scripts() {
 
   <script language="javascript" type="text/javascript">
     window.CRM = {root: "<?= $sRootPath ?>"};
-    
+
     function LimitTextSize(theTextArea, size) {
       if(theTextArea.value.length > size) {
         theTextArea.value = theTextArea.value.substr(0, size);
@@ -283,7 +282,7 @@ function addMenuItem($aMenu, $mIdx) {
   }
 
   function Header_body_menu() {
-    global $sLanguage, $bExportCSV, $sMetaRefresh, $bToolTipsOn, $bRegistered, $sHeader, $sGlobalMessage, $sGlobalMessageClass;
+    global $sHeader, $sGlobalMessage, $sGlobalMessageClass;
     global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
 
     $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
@@ -311,7 +310,7 @@ function addMenuItem($aMenu, $mIdx) {
       <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-          <span class="sr-only">Toggle navigation</span>
+          <span class="sr-only"><?= gettext("Toggle navigation") ?></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -395,7 +394,7 @@ function addMenuItem($aMenu, $mIdx) {
                 <span class="label label-danger"><?= $taskSize ?></span>
               </a>
               <ul class="dropdown-menu">
-                <li class="header">You have <?= $taskSize ?> task(s)</li>
+                <li class="header"><?= gettext("You have") ?> <?= $taskSize ?> <?= gettext("task(s)") ?></li>
                 <li>
                   <!-- inner menu: contains the actual data -->
                   <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;">
@@ -414,9 +413,6 @@ function addMenuItem($aMenu, $mIdx) {
                       <?php } ?>
                     </ul><div class="slimScrollBar" style="width: 3px; position: absolute; top: 11px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 188.679px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
                 </li>
-                <!-- li class="footer">
-                  <a href="<?= $sRootPath ?>/Tasks.php">View all tasks</a>
-                </li -->
               </ul>
             </li>
       <?php  } ?>
@@ -482,12 +478,12 @@ function addMenuItem($aMenu, $mIdx) {
       </section>
       <!-- Main content -->
       <section class="content">
-  <?php if ($sGlobalMessage) { ?>
+      <?php if ($sGlobalMessage) { ?>
           <div class="main-box-body clearfix">
             <div class="callout callout-<?= $sGlobalMessageClass ?> fade in">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
               <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i>
-    <?= $sGlobalMessage ?>
+                <?= $sGlobalMessage ?>
             </div>
           </div>
           <?php
