@@ -124,64 +124,10 @@ function Header_body_scripts() {
   checkAllowedURL();
   ?>
   <script type="text/javascript" src="<?= $sRootPath ?>/skin/js/IssueReporter.js" type="text/javascript"></script>
-  <script type="text/javascript" src="<?= $sRootPath ?>/Include/jscalendar/calendar.js"></script>
-  <script type="text/javascript" src="<?= $sRootPath ?>/Include/jscalendar/lang/calendar-<?= substr($sLanguage, 0, 2) ?>.js"></script>
 
   <script language="javascript" type="text/javascript">
     window.CRM = {root: "<?= $sRootPath ?>"};
-
-    // Popup Calendar stuff
-    function selected(cal, date) {
-      cal.sel.value = date; // update the date in the input field.
-      if(cal.dateClicked)
-        cal.callCloseHandler();
-    }
-
-    function closeHandler(cal) {
-      cal.hide(); // hide the calendar
-    }
-
-    function showCalendar(id, format) {
-      var el = document.getElementById(id);
-      if(calendar != null) {
-        calendar.hide();
-      }
-      else {
-        var cal = new Calendar(false, null, selected, closeHandler);
-        cal.weekNumbers = false;
-        calendar = cal;                  // remember it in the global var
-        cal.setRange(1900, 2070);        // min/max year allowed.
-        cal.create();
-      }
-      calendar.setDateFormat(format);    // set the specified date format
-      calendar.parseDate(el.value);      // try to parse the text in field
-      calendar.sel = el;                 // inform it what input field we use
-      calendar.showAtElement(el);        // show the calendar below it
-      return false;
-    }
-
-    var MINUTE = 60 * 1000;
-    var HOUR = 60 * MINUTE;
-    var DAY = 24 * HOUR;
-    var WEEK = 7 * DAY;
-
-    function isDisabled(date) {
-      var today = new Date();
-      return (Math.abs(date.getTime() - today.getTime()) / DAY) > 10;
-    }
-
-    // Clear a field on the first focus
-    var priorSelect = new Array();
-    function ClearFieldOnce(sField) {
-      if(priorSelect[sField.id]) {
-        sField.select();
-      }
-      else {
-        sField.value = "";
-        priorSelect[sField.id] = true;
-      }
-    }
-
+    
     function LimitTextSize(theTextArea, size) {
       if(theTextArea.value.length > size) {
         theTextArea.value = theTextArea.value.substr(0, size);
