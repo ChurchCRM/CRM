@@ -43,12 +43,12 @@ $ParentsEmails = array();
 $thisClassChildren = $sundaySchoolService->getKidsFullDetails($iGroupId);
 
 foreach ($thisClassChildren as $child) {
- if ($child['dadEmail'] != "")
-   array_push($ParentsEmails,  $child['dadEmail']);
- if ($child['momEmail'] != "")
-   array_push($ParentsEmails, $child['momEmail']);
- if ($child['kidEmail'] != "")
-   array_push($KidsEmails,  $child['kidEmail']);
+  if ($child['dadEmail'] != "")
+    array_push($ParentsEmails, $child['dadEmail']);
+  if ($child['momEmail'] != "")
+    array_push($ParentsEmails, $child['momEmail']);
+  if ($child['kidEmail'] != "")
+    array_push($KidsEmails, $child['kidEmail']);
 }
 
 foreach ($rsTeachers as $teacher) {
@@ -60,50 +60,53 @@ require "../Include/Header.php";
 ?>
 
 <div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title">Sunday School Class Functions</h3>
-    </div>
+  <div class="box-header with-border">
+    <h3 class="box-title"><?= gettext("Sunday School Class Functions") ?></h3>
+  </div>
   <div class="box-body">
     <?php
-      $allEmails = array_unique(array_merge($ParentsEmails, $KidsEmails,$TeachersEmails));
-      $roleEmails->Parents = join($sMailtoDelimiter, $ParentsEmails).",";
-      $roleEmails->Teachers = join($sMailtoDelimiter, $TeachersEmails).",";
-      $roleEmails->Kids = join($sMailtoDelimiter, $KidsEmails).",";
-      $sEmailLink = join($sMailtoDelimiter, $allEmails).",";
-      // Add default email if default email has been set and is not already in string
-      if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress' && !stristr($sEmailLink, $sToEmailAddress))
-          $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
-      $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
+    $allEmails = array_unique(array_merge($ParentsEmails, $KidsEmails, $TeachersEmails));
+    $roleEmails->Parents = join($sMailtoDelimiter, $ParentsEmails) . ",";
+    $roleEmails->Teachers = join($sMailtoDelimiter, $TeachersEmails) . ",";
+    $roleEmails->Kids = join($sMailtoDelimiter, $KidsEmails) . ",";
+    $sEmailLink = join($sMailtoDelimiter, $allEmails) . ",";
+    // Add default email if default email has been set and is not already in string
+    if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress' && !stristr($sEmailLink, $sToEmailAddress))
+      $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
+    $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
-      if ($bEmailMailto) { // Does user have permission to email groups
+    if ($bEmailMailto) { // Does user have permission to email groups
       // Display link
       ?>
-        <div class="btn-group">
-          <a  class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink,0,-3)?>"><i class="fa fa-send-o"></i><?= gettext('Email')?></a>
-          <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-           <?php generateGroupRoleEmailDropdown($roleEmails,"mailto:") ?>
-          </ul>
-        </div>
-    
-        <div class="btn-group">
-          <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink,0,-3) ?>"><i class="fa fa-send"></i><?=gettext('Email (BCC)') ?></a>
-           <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-           <?php generateGroupRoleEmailDropdown($roleEmails,"mailto:?bcc=") ?>
-          </ul>
-        </div>
+      <div class="btn-group">
+        <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i
+            class="fa fa-send-o"></i><?= gettext('Email') ?></a>
+        <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only"><?= gettext("Toggle Dropdown") ?></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <?php generateGroupRoleEmailDropdown($roleEmails, "mailto:") ?>
+        </ul>
+      </div>
+
+      <div class="btn-group">
+        <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><i
+            class="fa fa-send"></i><?= gettext('Email (BCC)') ?></a>
+        <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only"><?= gettext("Toggle Dropdown") ?></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <?php generateGroupRoleEmailDropdown($roleEmails, "mailto:?bcc=") ?>
+        </ul>
+      </div>
       <?php
-      }
+    }
     ?>
     <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>  This doesn't really work right now...-->
-    <a class="btn btn-app" href="../GroupView.php?GroupID=<?= $iGroupId ?>"><i class="fa fa-eye-slash"></i> LegacyView </a>
+    <a class="btn btn-app" href="../GroupView.php?GroupID=<?= $iGroupId ?>"><i
+        class="fa fa-eye-slash"></i><?= gettext("LegacyView") ?> </a>
   </div>
 </div>
 
@@ -120,9 +123,12 @@ require "../Include/Header.php";
         <div class="box box-info text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white"><?= $teacher['per_FirstName'] . " " . $teacher['per_LastName'] ?></h4>
-            <img src="<?= $personService->getPhoto($teacher['per_ID']); ?>" class="img-circle profile-avatar" alt="User avatar" width="80" height="80">
-            <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> <?= gettext("Send Message") ?></a>
-            <a href="../PersonView.php?PersonID=<?= $teacher['per_ID'] ?>" type="button" class="btn btn-primary btn-info btn-block"><i class="fa fa-q"></i><?= gettext("View Profile") ?></a>
+            <img src="<?= $personService->getPhoto($teacher['per_ID']); ?>" class="img-circle profile-avatar"
+                 alt="User avatar" width="80" height="80">
+            <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i
+                class="fa fa-envelope"></i> <?= gettext("Send Message") ?></a>
+            <a href="../PersonView.php?PersonID=<?= $teacher['per_ID'] ?>" type="button"
+               class="btn btn-primary btn-info btn-block"><i class="fa fa-q"></i><?= gettext("View Profile") ?></a>
           </div>
         </div>
       </div>
@@ -133,6 +139,7 @@ require "../Include/Header.php";
 <div class="box box-info collapsed-box">
   <div class="box-header">
     <h3 class="box-title"><?= gettext("Quick Status") ?></h3>
+
     <div class="box-tools pull-right">
       <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
     </div>
@@ -145,7 +152,7 @@ require "../Include/Header.php";
         <div class="box-header">
           <i class="fa fa-bar-chart-o"></i>
 
-          <h3 class="box-title"><?= gettext("Birthdays by Month")?></h3>
+          <h3 class="box-title"><?= gettext("Birthdays by Month") ?></h3>
         </div>
         <div class="box-body">
           <div id="bar-chart" style="height: 300px;"></div>
@@ -160,7 +167,7 @@ require "../Include/Header.php";
         <div class="box-header">
           <i class="fa fa-bar-chart-o"></i>
 
-          <h3 class="box-title"><?= gettext("Gender")?></h3>
+          <h3 class="box-title"><?= gettext("Gender") ?></h3>
         </div>
         <div class="box-body">
           <div id="donut-chart" style="height: 300px;"></div>
@@ -174,7 +181,7 @@ require "../Include/Header.php";
 
 <div class="box box-primary">
   <div class="box-header">
-    <h3 class="box-title"><?= gettext("Kids")?></h3>
+    <h3 class="box-title"><?= gettext("Students") ?></h3>
   </div>
   <!-- /.box-header -->
   <div class="box-body table-responsive">
@@ -199,8 +206,7 @@ require "../Include/Header.php";
       <tbody>
       <?php
 
-      foreach ($thisClassChildren as $child)
-      {
+      foreach ($thisClassChildren as $child) {
         $birthDate = "";
         if ($child['birthYear'] != "") {
           $birthDate = $child['birthMonth'] . "/" . $child['birthDay'] . "/" . $child['birthYear'];
@@ -252,39 +258,45 @@ function implodeUnique($array, $withQuotes)
     <div class="modal-content large">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-envelope-o"></i><?= gettext("Compose New Message")?></h4>
+        <h4 class="modal-title"><i class="fa fa-envelope-o"></i><?= gettext("Compose New Message") ?></h4>
       </div>
       <form action="SendEmail.php" method="post">
         <div class="modal-body">
           <div class="form-group">
-            <label><?= gettext("Kids Emails")?></label>
-            <input name="email_to" class="form-control email-recepients-kids" value="<?= implodeUnique($KidsEmails, false) ?>">
+            <label><?= gettext("Kids Emails") ?></label>
+            <input name="email_to" class="form-control email-recepients-kids"
+                   value="<?= implodeUnique($KidsEmails, false) ?>">
           </div>
           <div class="form-group">
-            <label><?= gettext("Parents Emails")?></label>
-            <input name="email_to_2" class="form-control email-recepients-parents" value="<?= implodeUnique($ParentsEmails, false) ?>">
+            <label><?= gettext("Parents Emails") ?></label>
+            <input name="email_to_2" class="form-control email-recepients-parents"
+                   value="<?= implodeUnique($ParentsEmails, false) ?>">
           </div>
           <div class="form-group">
-            <label><?= gettext("Teachers Emails")?></label>
-            <input name="email_cc" class="form-control email-recepients-teachers" value="<?= implodeUnique($TeachersEmails, false) ?>">
+            <label><?= gettext("Teachers Emails") ?></label>
+            <input name="email_cc" class="form-control email-recepients-teachers"
+                   value="<?= implodeUnique($TeachersEmails, false) ?>">
           </div>
           <div class="form-group">
-            <textarea name="message" id="email_message" class="form-control" placeholder="Message" style="height: 120px;"></textarea>
+            <textarea name="message" id="email_message" class="form-control" placeholder="Message"
+                      style="height: 120px;"></textarea>
           </div>
           <div class="form-group">
             <div class="btn btn-success btn-file">
-              <i class="fa fa-paperclip"></i><?= gettext("Attachment")?>
+              <i class="fa fa-paperclip"></i><?= gettext("Attachment") ?>
               <input type="file" name="attachment"/>
             </div>
-            <p class="help-block"><?= gettext("Max. 32MB")?></p>
+            <p class="help-block"><?= gettext("Max. 32MB") ?></p>
           </div>
 
         </div>
         <div class="modal-footer clearfix">
 
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i><?= gettext("Discard")?></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i
+              class="fa fa-times"></i><?= gettext("Discard") ?></button>
 
-          <button type="submit" class="btn btn-primary pull-left"><i class="fa fa-envelope"></i><?= gettext("Send Message") ?></button>
+          <button type="submit" class="btn btn-primary pull-left"><i
+              class="fa fa-envelope"></i><?= gettext("Send Message") ?></button>
         </div>
       </form>
     </div>
@@ -300,7 +312,8 @@ function implodeUnique($array, $withQuotes)
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js"
+        type="text/javascript"></script>
 
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function () {
@@ -401,7 +414,5 @@ function implodeUnique($array, $withQuotes)
 
 
 <?php
-
 require "../Include/Footer.php";
-
 ?>
