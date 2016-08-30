@@ -153,7 +153,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (41, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General', NULL),
 (42, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General', NULL),
 (43, 'sGeocoderPW', '', 'text', '', 'Password for rpc.geocoder.us', 'General', NULL),
-(44, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from http://maps.google.com/apis/maps/signup.html', 'General', NULL),
+(44, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from https://developers.google.com/maps/documentation/javascript/get-api-key', 'General', NULL),
 (45, 'nChurchLatitude', '', 'number', '', 'Latitude of the church, used to center the Google map', 'General', NULL),
 (46, 'nChurchLongitude', '', 'number', '', 'Longitude of the church, used to center the Google map', 'General', NULL),
 (47, 'bHidePersonAddress', '1', 'boolean', '1', 'Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.', 'General', NULL),
