@@ -1,13 +1,19 @@
 <?php
 require "../Include/Config.php";
 require "../Include/Functions.php";
-require "../Service/SundaySchoolService.php";
 
+use ChurchCRM\Service\SundaySchoolService;
+use ChurchCRM\Service\DashboardService;
+
+$dashboardService = new DashboardService();
 $sundaySchoolService = new SundaySchoolService();
+
+$groupStats = $dashboardService->getGroupStats();
+
 
 $kidsWithoutClasses = $sundaySchoolService->getKidsWithoutClasses();
 $classStats = $sundaySchoolService->getClassStats();
-$classes = 0;
+$classes = $groupStats['sundaySchoolClasses'];
 $teachers = 0;
 $kids = 0;
 $families = 0;
@@ -15,7 +21,6 @@ $maleKids = 0;
 $femaleKids = 0;
 $familyIds = array();
 foreach ($classStats as $class) {
-  $classes++;
   $kids = $kids + $class['kids'];
   $teachers = $teachers + $class['teachers'];
   $classKids = $sundaySchoolService->getKidsFullDetails($class["id"]);
@@ -65,7 +70,7 @@ require "../Include/Header.php";
     <div class="info-box">
       <span class="info-box-icon bg-orange"><i class="fa fa-child"></i></span>
       <div class="info-box-content">
-        <span class="info-box-text"><?= gettext("Kids") ?></span>
+        <span class="info-box-text"><?= gettext("Students") ?></span>
         <span class="info-box-number"> <?= $kids ?></span>
       </div>
       <!-- /.info-box-content -->
@@ -118,11 +123,11 @@ require "../Include/Header.php";
       <div class="box-body">
         <p>
           <a href="SundaySchoolReports.php"><?= gettext("Sunday School Reports"); ?></a><br/>
-          <?php echo gettext("Generate class lists and attendance sheets"); ?>
+          <?= gettext("Generate class lists and attendance sheets"); ?>
         </p>
         <p>
           <a href="SundaySchoolClassListExport.php"><?= gettext("Export Sunday School to CSV") ?></a><br/>
-          <?php echo gettext("Export All Classes, Kids, and Parent to CSV file"); ?>
+          <?= gettext("Export All Classes, Kids, and Parent to CSV file"); ?>
         </p>
       </div>
     </div>
@@ -141,7 +146,7 @@ require "../Include/Header.php";
         <th></th>
         <th><?= gettext("Class") ?></th>
         <th><?= gettext("Teachers") ?></th>
-        <th><?= gettext("Kids") ?></th>
+        <th><?= gettext("Students") ?></th>
       </tr>
       </thead>
       <tbody>
@@ -165,7 +170,7 @@ require "../Include/Header.php";
 
 <div class="box box-danger">
   <div class="box-header">
-    <h3 class="box-title"><?= gettext("Kids not in a Sunday School Class") ?></h3>
+    <h3 class="box-title"><?= gettext("Students not in a Sunday School Class") ?></h3>
   </div>
   <!-- /.box-header -->
   <div class="box-body table-responsive">
