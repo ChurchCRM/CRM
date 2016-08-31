@@ -28,7 +28,8 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
 require 'Service/FinancialService.php';
-require "Service/DashboardService.php";
+
+use ChurchCRM\Service\DashboardService;
 use ChurchCRM\DepositQuery;
 
 $financialService = new FinancialService();
