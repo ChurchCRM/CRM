@@ -8,7 +8,20 @@ use ChurchCRM\ListOption;
 $app->group('/groups', function () {
 
   $this->get('/',function () {
-    echo ChurchCRM\Base\GroupQuery::create()->find()->toJSON();
+    echo GroupQuery::create()->find()->toJSON();
+  });
+  
+  $this->get('/groupsInCart',function() {
+    $groupsInCart = Array();
+    $groups = GroupQuery::create()->find();
+    foreach ($groups as $group)
+    {
+      if ($group->checkAgainstCart())
+      {
+        array_push($groupsInCart,$group->getId());
+      } 
+    }
+   echo json_encode(['groupsInCart' => $groupsInCart]);    
   });
   
   $this->post('/', function ($request, $response, $args) {

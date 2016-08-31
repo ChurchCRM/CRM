@@ -39,7 +39,7 @@ class Group extends BaseGroup
   public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
   {
     requireUserGroupMembership("bManageGroups");
-    $newListID = ListOptionQuery::create()->withColumn("MAX(ListOption.Id)","newListId")->find()->getColumnValues('newListId')[0] + 1;
+    $newListID = ListOptionQuery::create()->withColumn("MAX(ListOption.Id)","newListId")->findOne()->getColumnValues('newListId') + 1;
     $this->setRoleListId($newListID);
     parent::preInsert($con);
     return true;
@@ -75,12 +75,12 @@ class Group extends BaseGroup
 
     if (!$bAllInCart) {
       //there is at least one person in this group who is not in the cart.  Return false
-      return json_encode(["bAllInCart"=>"false"]);
+      return false;
     }
     if (!$bNoneInCart) {
       //every member of this group is in the cart.  Return true
-      return json_encode(["bAllInCart"=>"true"]);;
+      return true;
     }
-    return json_encode(["bAllInCart"=>"false"]);;
+    return false;
   }
 }
