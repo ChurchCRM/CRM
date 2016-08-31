@@ -1,29 +1,49 @@
 # Develop using a Vagrant Box
 
-## Get Started
 
-[Scotch box](https://github.com/scotch-io/scotch-box#get-started) provides us a quick LAMP stack in the Vagrant environment.
+#Steps
+
+## 1. Prerequisites
+
+Install the following prerequisite applications:
+
+1. [Oracle VirtualBox](https://www.virtualbox.org/)
+
+2. [Vagrant](https://www.vagrantup.com/)
+
+3. [GitHub Desktop](https://desktop.github.com/)
 
 
-## Steps  
+## 2. Clone the repository  
 
-Just clone and run Vagrant up
+Use either the GitHub Desktop Application, or the command line to get the ChurchCRM code onto your development machine:
 
-1. `git clone https://github.com/ChurchCRM/CRM.git`
+*  GitHub Desktop
+   
+*  Command Line:
 
-2. `vagrant up`
+     `git clone https://github.com/ChurchCRM/CRM.git`
 
-## Server
+
+## 3. Start Vagrant
+
+Vagrant takes care of building a VM with the proper prerequisutes and other configuration as specified by the ChurchCRM Project maintainers.
+Specifically, we use [Scotch box](https://github.com/scotch-io/scotch-box#get-started) to provide a a quick LAMP stack in the Vagrant environment.
+
+
+`vagrant up`
+
+## 4. Go!
+
+Vagrant creates a mapped directory from the source code (locally on your computer) to the virtualized web server.  
+This means that you can edit files directly on your machine, and the changes are live as soon as you reload the page.
 
 Access the Project at [http://192.168.33.10](http://192.168.33.10/)
-
-
-### Login Info
 
 User: `Admin`
 Password: `changeme`
 
-## Database
+## Database Access
 
 See https://github.com/scotch-io/scotch-box#database-access for connection info
 
@@ -36,6 +56,7 @@ DB Password: `churchcrm`
 ### Vagrant Database Access 
 - You can use a MySQL development platform, or your favorite IDE to access the ChurchCRM databases.
 - As part of the vagrant development environment, MySQL is configured to listen on all interfaces, and the churchcrm user is allowed to login from any host.
+
 #### NetBeans 8.1 PHP Database Connector Setup
 1. Navigate to the "Services" Node from the "Window" menu
 2. Right Click "Databases, " and select "New Connection"
