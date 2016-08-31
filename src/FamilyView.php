@@ -168,7 +168,7 @@ if ($iFamilyID == $fam_ID) {
 
           <h3 class="profile-username text-center"><?= gettext("The") . " $fam_Name " . gettext("Family") ?></h3>
           <?php if ($bOkToEdit) { ?>
-            <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="btn btn-primary btn-block"><b>Edit</b></a>
+            <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="btn btn-primary btn-block"><b><?= gettext("Edit") ?></b></a>
           <?php } ?>
           <hr/>
           <ul class="fa-ul">
@@ -791,7 +791,7 @@ if ($iFamilyID == $fam_ID) {
             <p><?= gettext("This family does not have any email address, so we can't send email")?> </p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
           </div>
         <?php } ?>
       </div>
@@ -803,7 +803,7 @@ if ($iFamilyID == $fam_ID) {
   </script>
 <?php } else { ?>
   <div class="error-page">
-    <h2 class="headline text-yellow"> 404</h2>
+    <h2 class="headline text-yellow">404</h2>
 
     <div class="error-content">
       <h3><i class="fa fa-warning text-yellow"></i> <?= gettext("Oops! Family not found.") ?></h3>

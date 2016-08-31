@@ -8,7 +8,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
 
-require_once "Service/DashboardService.php";
+use ChurchCRM\Service\DashboardService;
 
 // Set the page title
 $sPageTitle = "Members Dashboard";
