@@ -51,6 +51,7 @@
       "2.1.11"
     ],
     "scripts": [
+      "/mysql/upgrade/2.2.0.sql"
     ],
     "dbVersion": "2.2.0"
   }

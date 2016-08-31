@@ -20,7 +20,7 @@ if ($rsConfig) {
 	}
 }
 
-if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
+if ($nChurchLatitude == "" || $nChurchLongitude == "") {
 
 	require ("Include/GeoCoder.php");
 	$myAddressLatLon = new AddressLatLon;
@@ -32,16 +32,28 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
 		$nChurchLatitude = $myAddressLatLon->GetLat ();
 		$nChurchLongitude = $myAddressLatLon->GetLon ();
 
-		$sSQL = "UPDATE config_cfg SET cfg_value='" . $nChurchLatitude . "' WHERE cfg_name=\"nChurchLatitude\"";
+		$sSQL = "UPDATE config_cfg SET cfg_value='" . $nChurchLatitude . "' WHERE cfg_name='nChurchLatitude'";
 		RunQuery ($sSQL);
-		$sSQL = "UPDATE config_cfg SET cfg_value='" . $nChurchLongitude . "' WHERE cfg_name=\"nChurchLongitude\"";
+		$sSQL = "UPDATE config_cfg SET cfg_value='" . $nChurchLongitude . "' WHERE cfg_name='nChurchLongitude'";
 		RunQuery ($sSQL);
 	}
 }
 
+if ($nChurchLatitude == "") {
 ?>
+  <div class="callout callout-danger">
+    <?= gettext("Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.") ?>
+  </div>
+<?php } else {
+  if ($sGoogleMapKey == "") {
+?>
+    <div class="callout callout-warning">
+      <?= gettext("Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.") ?>
+    </div>
+<?php }
+  ?>
 
-<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= $sGoogleMapKey ?>&sensor=false"></script>
 
 <div class="box box-body">
     <div class="col-lg-10 col-md-8 col-sm-4">
@@ -61,7 +73,7 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
                 new google.maps.Point(18, 37));
 
             var churchMark = new google.maps.Marker({
-                icon: "http://google-maps-icons.googlecode.com/files/church2.png",
+                icon: window.CRM.root + "/skin/icons/church.png",
                 shadow: shadow,
                 position: new google.maps.LatLng(<?= $nChurchLatitude . ", " . $nChurchLongitude ?>),
                 map: map});
@@ -167,4 +179,6 @@ if ($nChurchLatitude == 0 || $nChurchLongitude == 0) {
     </div>
 </div>
 
-<?php require "Include/Footer.php" ?>
+<?php }
+
+require "Include/Footer.php" ?>

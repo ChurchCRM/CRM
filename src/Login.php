@@ -354,21 +354,15 @@ checkAllowedURL();
 </div>
 <!-- /.login-box -->
 
-<div id="not-chrome" class="error-page">
-  <div class="callout callout-warning">
-    <h4>For the best experience, please use Google Chrome.</h4>
-    <p>This software has been tested with Google Chrome... <a href="https://www.google.com/chrome/browser/desktop/"> Download and install Google Chrome</a></p>
-  </div>
-</div>
-<script language="JavaScript" type="text/JavaScript">
-  $(document).ready(function () {
-    $("#not-chrome").hide();
-    var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-    if (!isChrome)
-      $("#not-chrome").show();
-
-    document.LoginForm.User.focus();
-  });
+<script>
+  var $buoop = {vs:{i:11,f:30,o:25,s:7},c:2};
+  function $buo_f(){
+    var e = document.createElement("script");
+    e.src = "//browser-update.org/update.min.js";
+    document.body.appendChild(e);
+  };
+  try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+  catch(e){window.attachEvent("onload", $buo_f)}
 </script>
 
 <?php
