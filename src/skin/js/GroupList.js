@@ -20,7 +20,6 @@ $(document).ready(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json"
       }).done(function (data) {                               //yippie, we got something good back from the server
-        console.log(data);
         dataT.row.add(data);                                //add the group data to the existing DataTable
         dataT.rows().invalidate().draw(true);               //redraw the dataTable
       });
@@ -73,12 +72,10 @@ $(document).ready(function () {
       $(".cartStatusButton").each(function(index,element){
         var objectID = $(element).data("groupid");
         if ($.inArray(objectID,window.CRM.groupsInCart) > -1 ) {
-          console.log(objectID+ " In Cart");
           $(element).html("All members of this group are in the cart<a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart=" + objectID + "\">Remove all</a>");
         } 
         else {
-          console.log(objectID+ " Not In Cart");
-            $(element).html("Not all members of this group are in the cart><br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart=" + objectID + "\">Add all</a>");
+          $(element).html("Not all members of this group are in the cart><br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart=" + objectID + "\">Add all</a>");
         }
       });
     });

@@ -39,7 +39,7 @@ class Group extends BaseGroup
   public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
   {
     requireUserGroupMembership("bManageGroups");
-    $newListID = ListOptionQuery::create()->withColumn("MAX(ListOption.Id)","newListId")->findOne()->getColumnValues('newListId') + 1;
+    $newListID = ListOptionQuery::create()->withColumn("MAX(ListOption.Id)","newListId")->find()->getColumnValues('newListId')[0] + 1;
     $this->setRoleListId($newListID);
     parent::preInsert($con);
     return true;
