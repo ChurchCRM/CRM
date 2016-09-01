@@ -14,7 +14,7 @@ require("../Include/HeaderNotLoggedIn.php");
         <div class="box box-solid">
           <div class="box-header with-border">
             <h3
-              class="box-title"><?= gettext("Register") . " " . $family->getName() . " " . gettext("family members") ?></h3>
+              class="box-title"><?= gettext("Register") . " <b>" . $family->getName() . "</b> " . gettext("family members") ?></h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
