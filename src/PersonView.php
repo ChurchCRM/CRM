@@ -469,7 +469,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                       </div>
                       <?php
                       // If this group has associated special properties, display those with values and prop_PersonDisplay flag set.
-                      if ($grp_hasSpecialProps == 'true') {
+                      if ($grp_hasSpecialProps) {
                         // Get the special properties for this group
                         $sSQL = "SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = " . $grp_ID . " AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
                         $rsPropList = RunQuery($sSQL);
@@ -504,7 +504,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                               </button>
                               <ul class="dropdown-menu" role="menu">
                                 <li><a href="MemberRoleChange.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext("Change Role") ?></a></li>
-                                <?php if ($grp_hasSpecialProps == 'true') { ?>
+                                <?php if ($grp_hasSpecialProps) { ?>
                                   <li><a href="GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext("Update Properties") ?></a></li>
                                 <?php } ?>
                               </ul>

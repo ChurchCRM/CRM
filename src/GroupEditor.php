@@ -19,6 +19,11 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Service/GroupService.php";
 
+use ChurchCRM\Group;
+use ChurchCRM\GroupQuery;
+use ChurchCRM\ListOption;
+use ChurchCRM\ListOptionQuery;
+
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bManageGroups']) {
   Redirect("Menu.php");
@@ -35,9 +40,9 @@ else {
   Redirect("GroupList.php");
 }
 
-$thisGroup = $groupService->getGroups($iGroupID);   //get this group from the group service.
-$rsGroupTypes = $groupService->getGroupTypes();     // Get Group Types for the drop-down
-$rsGroupRoleSeed = $groupService->getGroupRoleTemplateGroups();     //Group Group Role List
+$thisGroup = GroupQuery::create()->findOneById($iGroupID);   //get this group from the group service.
+$rsGroupTypes = ListOptionQuery::create()->filterById("3") ->find();     // Get Group Types for the drop-down
+$rsGroupRoleSeed =  GroupQuery::create()->filterByRoleListId(array("min"=>0), $comparison)->find();     //Group Group Role List
 require "Include/Header.php";
 ?>
 <!-- GROUP SPECIFIC PROPERTIES MODAL-->
@@ -70,13 +75,13 @@ require "Include/Header.php";
         <div class="row">
           <div class="col-xs-4">
             <label for="Name"><?= gettext("Name:") ?></label>
-            <input class="form-control" type="text" Name="Name" value="<?= htmlentities(stripslashes($thisGroup['groupName']), ENT_NOQUOTES, "UTF-8") ?>">
+            <input class="form-control" type="text" Name="Name" value="<?= htmlentities(stripslashes($thisGroup->getName()), ENT_NOQUOTES, "UTF-8") ?>">
           </div>
         </div>
         <div class="row">
           <div class="col-xs-4">
             <label for="Description"><?= gettext("Description:") ?></label>
-            <textarea  class="form-control" name="Description" cols="40" rows="5"><?= htmlentities(stripslashes($thisGroup['groupDescription']), ENT_NOQUOTES, "UTF-8") ?></textarea></td>
+            <textarea  class="form-control" name="Description" cols="40" rows="5"><?= htmlentities(stripslashes($thisGroup->getDescription()), ENT_NOQUOTES, "UTF-8") ?></textarea></td>
           </div>
         </div>
         <div class="row">
@@ -87,10 +92,10 @@ require "Include/Header.php";
               <option value="0">-----------------------</option>
               <?php
               foreach ($rsGroupTypes as $groupType) {
-                echo "<option value=\"" . $groupType['lst_OptionID'] . "\"";
-                if ($thisGroup['grp_Type'] == $groupType['lst_OptionID'])
+                echo "<option value=\"" . $groupType->getOptionId() . "\"";
+                if ($thisGroup->getType() == $groupType->getOptionId())
                   echo " selected";
-                echo ">" . $groupType['lst_OptionName'] . "</option>";
+                echo ">" . $groupType->getOptionName() . "</option>";
               }
               ?>
             </select>
@@ -128,7 +133,7 @@ require "Include/Header.php";
             <label for="UseGroupProps"><?= gettext("Group Specific Properties: ") ?></label>
 
             <?php
-            if ($thisGroup['grp_hasSpecialProps']) {
+            if ($thisGroup->getHasSpecialProps()) {
               echo gettext('Enabled'). "<br/>";
               echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">Disable Group Specific Properties</button><br/>';
               echo '<a  class="btn btn-success" href="GroupPropsFormEditor.php?GroupID=' . $iGroupID . '">' . gettext("Edit Group-Specific Properties Form") . ' </a>';
@@ -169,7 +174,7 @@ require "Include/Header.php";
 </div>
 <script>
   //setup some document-global variables for later on in the javascript
-  var defaultRoleID = <?= ($thisGroup['grp_DefaultRole'] ? $thisGroup['grp_DefaultRole'] : 1) ?>;
+  var defaultRoleID = <?= ($thisGroup->getDefaultRole() ? $thisGroup->getDefaultRole() : 1) ?>;
   var dataT = 0;
   var groupRoleData = <?= json_encode($groupService->getGroupRoles($iGroupID)); ?>;
   var roleCount = groupRoleData.length;

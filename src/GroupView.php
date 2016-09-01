@@ -179,7 +179,7 @@ if ($_SESSION['bManageGroups'])
 
 
     <?php
-    if ($grp_hasSpecialProps == 'true')
+    if ($grp_hasSpecialProps)
     {
         echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID=' . $grp_ID . '"><i class="fa fa-list-alt"></i>' . gettext("Edit Group-Specific Properties Form") . '</a>';
     }
@@ -334,7 +334,7 @@ if ($sPhoneLink)
     <b><?= gettext('Group-Specific Properties:') ?></b>
 
     <?php
-    if ($grp_hasSpecialProps == 'true')
+    if ($grp_hasSpecialProps)
     {
         // Create arrays of the properties.
         for ($row = 1; $row <= $numRows; $row++)

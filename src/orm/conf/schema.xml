@@ -249,8 +249,7 @@
         <column name="grp_DefaultRole" phpName="DefaultRole" type="SMALLINT" size="9" required="true" defaultValue="0"/>
         <column name="grp_Name" phpName="Name" type="VARCHAR" size="50" required="true" defaultValue=""/>
         <column name="grp_Description" phpName="Description" type="LONGVARCHAR"/>
-        <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="CHAR" sqlType="enum('true','false')"
-                required="true" defaultValue="false"/>
+        <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="BOOLEAN" defaultValue="0"/>
         <foreign-key foreignTable="list_lst">
             <reference local="grp_Type" foreign="lst_OptionID"/>
         </foreign-key>
