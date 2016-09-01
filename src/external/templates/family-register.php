@@ -4,7 +4,7 @@ $sPageTitle = "ChurchCRM - Family Registration";
 require("../Include/HeaderNotLoggedIn.php");
 ?>
 
-  <div class="register-box">
+  <div class="register-box" style="width: 600px;">
     <div class="register-logo">
       <a href="<?= $sRootPath ?>/"><b>Church</b>CRM</a>
     </div>

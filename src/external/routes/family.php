@@ -38,7 +38,9 @@ $app->group('/family', function () {
       $_SESSION[regFamily] = $family;
       $_SESSION[regFamilyClassId] = $familyMembership->getOptionId();
 
-      $pageObjects = array("family" => $family, "familyCount" => $body["familyCount"]);
+      $familyRoles = ListOptionQuery::create()->filterById(2)->orderByOptionSequence()->find();
+
+      $pageObjects = array("family" => $family, "familyCount" => $body["familyCount"], "familyRoles" => $familyRoles);
 
       return $renderer->render($response, "family-register-members.php", $pageObjects);
 
