@@ -3,6 +3,7 @@
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
+use ChurchCRM\ConfigQuery;
 
 class SystemService
 {
@@ -351,6 +352,10 @@ class SystemService
       throw new Exception("Unable to reach the issue bridge", 500);
     }
     return $result;
+  }
+
+  function getConfig($configName) {
+    return ConfigQuery::create()->filterByName($configName)->findOne();
   }
 
 }
