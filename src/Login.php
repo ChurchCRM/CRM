@@ -34,6 +34,8 @@ $bSuppressSessionTests = TRUE;
 require 'Include/Functions.php';
 // Initialize the variables
 
+$systemService = new SystemService();
+
 // Is the user requesting to logoff or timed out?
 if (isset($_GET["Logoff"]) || isset($_GET['Timeout'])) {
     if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == ''))
@@ -282,7 +284,6 @@ if ($iUserID > 0)
             RunQuery($sSQL);
         }
 
-        $systemService = new SystemService();
         $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         Redirect('CheckVersion.php');
         exit;
@@ -291,6 +292,8 @@ if ($iUserID > 0)
 
 // Turn ON output buffering
 ob_start();
+
+$enableSelfReg = $systemService->getConfig("sEnableSelfRegistration")->getBooleanValue();
 
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM - Login";
@@ -345,10 +348,12 @@ if (isset($loginPageMsg))
 // Otherwise redirect to login page.
 // An array of authorized URL's is specified in Config.php in the $URL array
 checkAllowedURL();
-?> 
+?>
         <!--<a href="external/user/password">I forgot my password</a><br> -->
+        <?php if ($enableSelfReg) { ?>
         <a href="external/family/register" class="text-center"><?= gettext("Register a new Family");?></a><br>
-        <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
+        <?php } ?>
+      <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
     </div>
     <!-- /.login-box-body -->
 </div>

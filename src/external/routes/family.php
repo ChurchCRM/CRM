@@ -2,46 +2,48 @@
 
 use Slim\Views\PhpRenderer;
 use ChurchCRM\Family;
-use ChurchCRM\ListOption;
 use ChurchCRM\ListOptionQuery;
+use ChurchCRM\ConfigQuery;
 
 $app->group('/family', function () {
 
-  $this->get('/register', function ($request, $response, $args) {
+  $enableSelfReg = ConfigQuery::create()->filterByName("sEnableSelfRegistration")->findOne();
+  if ($enableSelfReg->getBooleanValue()) {
 
-    $renderer = new PhpRenderer("templates/");
+    $this->get('/register', function ($request, $response, $args) {
 
-    return $renderer->render($response, "family-register.php", array("token" => "no"));
+      $renderer = new PhpRenderer("templates/");
 
-  });
+      return $renderer->render($response, "family-register.php", array("token" => "no"));
 
-  $this->post('/register', function ($request, $response, $args) {
-    $renderer = new PhpRenderer("templates/");
-    $body = $request->getParsedBody();
+    });
 
-    $family = new Family();
-    $family->setName($body["familyName"]);
-    $family->setAddress1($body["familyAddress1"]);
-    $family->setCity($body["familyCity"]);
-    $family->setState($body["familyState"]);
-    $family->setCountry($body["familyCountry"]);
+    $this->post('/register', function ($request, $response, $args) {
+      $renderer = new PhpRenderer("templates/");
+      $body = $request->getParsedBody();
 
-    $className = "Regular Attender";
-    if ($body["familyPrimaryChurch"] == "No") {
-      $className = "Guest";
-    }
-    $familyMembership = ListOptionQuery::create()->filterById(1)->filterByOptionName($className)->findOne();
+      $family = new Family();
+      $family->setName($body["familyName"]);
+      $family->setAddress1($body["familyAddress1"]);
+      $family->setCity($body["familyCity"]);
+      $family->setState($body["familyState"]);
+      $family->setCountry($body["familyCountry"]);
 
-    $_SESSION[regFamily] = $family;
-    $_SESSION[regFamilyClassId] = $familyMembership->getOptionId();
+      $className = "Regular Attender";
+      if ($body["familyPrimaryChurch"] == "No") {
+        $className = "Guest";
+      }
+      $familyMembership = ListOptionQuery::create()->filterById(1)->filterByOptionName($className)->findOne();
 
-    $pageObjects = array("family" => $family, "familyCount" => $body["familyCount"]);
+      $_SESSION[regFamily] = $family;
+      $_SESSION[regFamilyClassId] = $familyMembership->getOptionId();
 
-    return $renderer->render($response, "family-register-members.php", $pageObjects);
+      $pageObjects = array("family" => $family, "familyCount" => $body["familyCount"]);
 
-  });
+      return $renderer->render($response, "family-register-members.php", $pageObjects);
 
-
+    });
+  }
   $this->get('/verify', function ($request, $response, $args) {
 
     $renderer = new PhpRenderer("templates/");
