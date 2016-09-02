@@ -103,9 +103,11 @@ $("document").ready(function()
       method: "POST",
       url: window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID,
       encode: true,
-      data: {"_METHOD":"DELETE"}
+      data: {"_METHOD":"DELETE"},
+      dataType: "json"
     }).done(function(data)
     {
+      console.log(data);
       dataT.clear();
       dataT.rows.add(data);
       if(roleID == defaultRoleID)        // if we delete the default group role, set the default group role to 1 before we tell the table to re-render so that the buttons work correctly
