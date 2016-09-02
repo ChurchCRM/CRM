@@ -615,31 +615,25 @@ $(document).ready(function() {
             },
             dataType: 'json',
             delay: 250,
-            data: "",
-            processResults: function (data, params) {
+            data: function (params) {
+              return {
+              q: params.term, // search term
+              page: params.page
+              };
+            },
+            processResults: function (rdata, page) {
                 var idKey = 1;
                 var results = new Array();
-                $.each(data, function (key,value) {
-                    var groupName = Object.keys(value)[0];
-                    var ckeys = value[groupName];
-                    var resultGroup = {
-                        id: key,
-                        text: groupName,
-                        children:[]
-                    };
-                    idKey++;
-                    var children = new Array();
-                    $.each(ckeys, function (ckey,cvalue) {
-                        var childObject = {
-                            id: idKey,
-                            objid:cvalue.id,
-                            text: cvalue.displayName,
-                            uri: cvalue.uri
-                        };
-                        idKey++;
-                        resultGroup.children.push(childObject);
-                    });
-                    results.push(resultGroup);
+                data = JSON.parse(rdata);
+                $.each(data[0].persons, function (index,cvalue) {
+                  var childObject = {
+                      id: idKey,
+                      objid:cvalue.id,
+                      text: cvalue.displayName,
+                       uri: cvalue.uri
+                  };
+                  idKey++;
+                  results.push(childObject);
                 });
                 return {results: results};
             },
