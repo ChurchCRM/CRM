@@ -392,7 +392,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               ?>
               <tr>
                 <td>
-                  <img src="<?= $familyMember->getPhoto($sRootPath, $sEnableGravatarPhotos) ?>" width="40" height="40" class="img-circle img-bordered-sm"/> <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
+                  <img src="<?= $familyMember->getPhoto() ?>" width="40" height="40" class="img-circle img-bordered-sm"/> <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
                 </td>
                 <td class="text-center">
                   <?= $familyMember->getFamilyRole() ?>
