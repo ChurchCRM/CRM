@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\PersonQuery;
-// use ChurchCRM\ListOptionQuery;
 
 class PersonService
 {
