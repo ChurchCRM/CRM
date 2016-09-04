@@ -591,9 +591,9 @@
     </table>
 
     <table name="list_lst" idMethod="native" phpName="ListOption">
-        <column name="lst_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true"/>
-        <column name="lst_OptionID" phpName="OptionId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true"/>
-        <column name="lst_OptionSequence" phpName="OptionSequence" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0" primaryKey="true"/>
+        <column name="lst_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" />
+        <column name="lst_OptionID" phpName="OptionId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" />
+        <column name="lst_OptionSequence" phpName="OptionSequence" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0" primaryKey="true" />
         <column name="lst_OptionName" phpName="OptionName" type="VARCHAR" size="50" required="true" defaultValue=""/>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
