@@ -17,12 +17,7 @@ CREATE TABLE `version_ver` (
   UNIQUE KEY `ver_version` (`ver_version`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `version_ver`
---
 
-INSERT INTO version_ver (ver_version, ver_update_start)
-VALUES ('2.2.0', now());
 
 --
 -- Table structure for table `autopayment_aut`
@@ -102,11 +97,13 @@ CREATE TABLE `canvassdata_can` (
 -- Table structure for table `config_cfg`
 --
 
+SET @JSONV = '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}';
+
 CREATE TABLE `config_cfg` (
   `cfg_id` int(11) NOT NULL default '0',
   `cfg_name` varchar(50) NOT NULL default '',
   `cfg_value` text,
-  `cfg_type` enum('text','number','date','boolean','textarea') NOT NULL default 'text',
+  `cfg_type` ENUM('text','number','date','boolean','textarea','json') NOT NULL default 'text',
   `cfg_default` text NOT NULL,
   `cfg_tooltip` text NOT NULL,
   `cfg_section` varchar(50) NOT NULL default '',
@@ -156,7 +153,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (41, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General', NULL),
 (42, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General', NULL),
 (43, 'sGeocoderPW', '', 'text', '', 'Password for rpc.geocoder.us', 'General', NULL),
-(44, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from http://maps.google.com/apis/maps/signup.html', 'General', NULL),
+(44, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from https://developers.google.com/maps/documentation/javascript/get-api-key', 'General', NULL),
 (45, 'nChurchLatitude', '', 'number', '', 'Latitude of the church, used to center the Google map', 'General', NULL),
 (46, 'nChurchLongitude', '', 'number', '', 'Longitude of the church, used to center the Google map', 'General', NULL),
 (47, 'bHidePersonAddress', '1', 'boolean', '1', 'Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.', 'General', NULL),
@@ -220,7 +217,15 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1032, 'sZeroGivers2', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
 (1033, 'sZeroGivers3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
 (1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'ChurchInfoReport', NULL),
-(1035, 'sEnableGravatarPhotos', '0', 'boolean', '0', 'lookup user images on Gravatar when no local image is present', 'General', NULL);
+(1035, 'sEnableGravatarPhotos', '0', 'boolean', '0', 'lookup user images on Gravatar when no local image is present', 'General', NULL),
+(1036, 'sEnableExternalBackupTarget', '0', 'boolean', '0', 'Enable Remote Backups to Cloud Services', 'General', "Step5"),
+(1037, 'sExternalBackupType', 'WebDAV', 'Text', '', 'Cloud Service Type (Supported values: WebDAV, Local)', 'General', "Step5"),
+(1038, 'sExternalBackupEndpoint', '', 'Text', '', 'Remote Backup Endpoint', 'General', "Step5"),
+(1039, 'sExternalBackupUsername', '', 'Text', '', 'Remote Backup Username', 'General', "Step5"),
+(1040, 'sExternalBackupPassword', '', 'Text', '', 'Remote Backup Password', 'General', "Step5"),
+(1041, 'sExternalBackupAutoInterval', '', 'Text', '', 'Interval in Hours for Automatic Remote Backups', 'General', "Step5"),
+(1042, 'sLastBackupTimeStamp', '', 'Text', '', 'Last Backup Timestamp', 'General', "Step5"),
+(1043, 'sQBDTSettings', @JSONV , 'json', @JSONV , 'QuickBooks Deposit Ticket Settings', 'ChurchInfoReport', 'Step7');
 
 ALTER TABLE `config_cfg`
 ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
@@ -833,7 +838,6 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 
 (60, 'deposit', 'root', 1, 'Deposit', 'Deposit', '', '', 'bFinance', NULL, 0, 0, NULL, 1, 7, 'fa-bank'),
 (61, 'envelopmgr', 'deposit', 0, 'Envelope Manager', 'Envelope Manager', 'ManageEnvelopes.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
-(62, 'newdeposit', 'deposit', 0, 'Create New Deposit', 'Create New Deposit', 'DepositSlipEditor.php?DepositType=Bank', '', 'bFinance', NULL, 0, 0, NULL, 1, 2, NULL),
 (63, 'viewdeposit', 'deposit', 0, 'View All Deposits', 'View All Deposits', 'FindDepositSlip.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 3, NULL),
 (64, 'depositreport', 'deposit', 0, 'Deposit Reports', 'Deposit Reports', 'FinancialReports.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 4, NULL),
 (65, 'depositslip', 'deposit', 0, 'Edit Deposit Slip', 'Edit Deposit Slip', 'DepositSlipEditor.php', '', 'bFinance', 'iCurrentDeposit', 1, 1, 'DepositSlipID', 1, 5, NULL),

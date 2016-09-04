@@ -13,7 +13,13 @@ CRM_DB_PASS="churchcrm"
 CRM_DB_NAME="churchcrm"
 
 echo "=========================================================="
-echo "================+=   Apache Setup  ======================="
+echo "==================   Stop unused stuff===================="
+echo "=========================================================="
+
+sudo service mongod stop
+
+echo "=========================================================="
+echo "==================   Apache Setup  ======================="
 echo "=========================================================="
 sudo sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2G/g' /etc/php5/apache2/php.ini
 sudo sed -i 's/^post_max_size.*$/post_max_size = 2G/g' /etc/php5/apache2/php.ini
@@ -51,12 +57,14 @@ sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SC
 
 echo "Database: tables and metadata deployed"
 
+CODE_VER=`grep version /vagrant/src/composer.json | cut -d ',' -f1 | cut -d'"' -f4`
+
 echo "=========================================================="
-echo "==============   Development DB Setup  ==================="
+echo "==============   Development DB Setup $CODE_VER ==================="
 echo "=========================================================="
 
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_VAGRANT_SCRIPT
-
+sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "INSERT INTO churchcrm.version_ver (ver_version, ver_update_start) VALUES ('$CODE_VER', now());"
 echo "Database: development seed data deployed"
 
 echo "=========================================================="
@@ -92,6 +100,13 @@ echo "=========================================================="
 
 /vagrant/src/vendor/bin/propel model:build --config-dir=/vagrant/vagrant
 composer dump-autoload
+
+echo "=========================================================="
+echo "==========   Starting Background Packaging    ============"
+echo "=========================================================="
+
+/vagrant/vagrant/package.sh &
+echo "Build will be available in a few minutes at target/"
 
 echo "=========================================================="
 echo "=========================================================="

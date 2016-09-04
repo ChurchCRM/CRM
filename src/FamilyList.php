@@ -12,7 +12,7 @@ require "Include/Header.php";
 ?>
 
 <div class="pull-right">
-    <a class="btn btn-success" role="button" href="FamilyEditor.php"> <span class="fa fa-plus" aria-hidden="true"></span> Add Family</a>
+    <a class="btn btn-success" role="button" href="FamilyEditor.php"> <span class="fa fa-plus" aria-hidden="true"></span><?= gettext("Add Family")?></a>
 </div>
 <p><br/><br/></p>
 <div class="box">
@@ -20,14 +20,14 @@ require "Include/Header.php";
         <table id="families" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Home Phone</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip</th>
-                <th>Created</th>
-                <th>Edited</th>
+                <th><?= gettext("Name")?></th>
+                <th><?= gettext("Home Phone")?></th>
+                <th><?= gettext("Address")?></th>
+                <th><?= gettext("City")?></th>
+                <th><?= gettext("State")?></th>
+                <th><?= gettext("Zip")?></th>
+                <th><?= gettext("Created")?></th>
+                <th><?= gettext("Edited")?></th>
             </tr>
             </thead>
             <tbody>

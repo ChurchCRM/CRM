@@ -278,6 +278,27 @@ if (isset($_POST["BulkAddToCart"])) {
 // Some very basic functions that all scripts use
 //
 
+if ($sEnableExternalBackupTarget && $sExternalBackupAutoInterval > 0)  //if remote backups are enabled, and the interval is greater than zero
+{
+  try
+  {
+    $now =  new DateTime();  //get the current time
+    $previous = new DateTime($sLastBackupTimeStamp); // get a DateTime object for the last time a backup was done.
+    $diff = $previous->diff($now);  // calculate the difference.
+    if (!$sLastBackupTimeStamp ||  $diff->h >= $sExternalBackupAutoInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
+    {
+      $systemService->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
+      $now = new DateTime();  // update the LastBackupTimeStamp.
+      $sSQL = "UPDATE config_cfg SET cfg_value='". $now->format('Y-m-d H:i:s') . "' WHERE cfg_name='sLastBackupTimeStamp'";
+      $rsUpdate = RunQuery($sSQL); 
+    }
+  }
+  catch(Exception $exc)
+  {
+    // an error in the auto-backup shouldn't prevent the page from loading...
+  }
+}
+
 // Convert a relative URL into an absolute URL and return absolute URL.
 function RedirectURL($sRelativeURL)
 {
@@ -1063,25 +1084,20 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
     {
         // Handler for boolean fields
         case 1:
-            echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"true\"";
-            if ($data == 'true') {
-                echo " checked";
-            }
-            echo ">".gettext("Yes");
-            echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"false\"";
-            if ($data == 'false') {
-                echo " checked";
-            }
-            echo ">".gettext("No");
-            echo "<input class=\"form-control\" type=\"radio\" Name=\"" . $fieldname . "\" value=\"\"";
-            if (strlen($data) == 0) {
-                echo " checked";
-            }
-            echo ">".gettext("Unknown");
-            break;
+          echo "<div class=\"form-group\">".
+               "<div class=\"radio\"><label><input type=\"radio\" Name=\"" . $fieldname . "\" value=\"true\"". ($data == 'true' ? "checked":"").">".gettext("Yes")."</label></div>".
+               "<div class=\"radio\"><label><input type=\"radio\" Name=\"" . $fieldname . "\" value=\"false\"". ($data == 'false' ? "checked":"").">".gettext("No")."</label></div>".
+               "<div class=\"radio\"><label><input type=\"radio\" Name=\"" . $fieldname . "\" value=\"\"". (strlen($data) == 0 ? "checked":"").">".gettext("Unknown")."</label></div>".
+              "</div>";
+          break;
         // Handler for date fields
         case 2:
-            echo "<input class=\"form-control\" type=\"text\" id=\"" . $fieldname . "\" Name=\"" . $fieldname . "\" maxlength=\"10\" size=\"15\" value=\"" . $data . "\">&nbsp;<input type=\"image\" class=\"form-control\" onclick=\"return showCalendar('$fieldname', 'y-mm-dd');\" src=\"Images/calendar.gif\"> " . gettext("[format: YYYY-MM-DD]");
+            echo "<div class=\"input-group\">".
+                    "<div class=\"input-group-addon\">".
+                    "<i class=\"fa fa-calendar\"></i>".
+                    "</div>".
+                "<input class=\"form-control inputDatePicker\" type=\"text\" id=\"" . $fieldname . "\" Name=\"" . $fieldname . "\" value=\"" . $data . "\"> " .
+                "</div>";
             break;
 
         // Handler for 50 character max. text fields
@@ -2012,9 +2028,9 @@ function getMailingAddress($Address1, $Address2, $City, $State, $Zip, $Country)
     $mailingAddress= "";
     if ($Address1 != "") { $mailingAddress .= $Address1. " " ; }
     if ($Address2 != "") { $mailingAddress .= $Address2. " " ; }
-    if ($City != "") { $mailingAddress .= $City. ", "; }
-    if ($State != "") { $mailingAddress .= $State. " "; }
-    if ($Zip != "") { $mailingAddress .= " " . $Zip. " "; }
+    if ($City != "") { $mailingAddress .= $City . ", "; }
+    if ($State != "") { $mailingAddress .= $State . " "; }
+    if ($Zip != "") { $mailingAddress .= " " . $Zip . " "; }
     if ($Country != "") {$mailingAddress .= $Country; }
     return $mailingAddress;
 }
@@ -2045,4 +2061,26 @@ function requireUserGroupMembership($allowedRoles=null)
   throw new Exception("User is not authorized to access " . debug_backtrace()[1]['function'], 401);
 }
 
+
+function random_color_part() {
+    return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
+}
+
+function random_color() {
+    return random_color_part() . random_color_part() . random_color_part();
+}
+
+
+function generateGroupRoleEmailDropdown($roleEmails,$href)
+{
+  foreach ($roleEmails as $role => $Email)
+  {
+    if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress' && !stristr($Email, $sToEmailAddress))
+      $Email .= $sMailtoDelimiter . $sToEmailAddress;
+    $Email = urlencode($Email);  // Mailto should comply with RFC 2368
+    ?>
+      <li> <a href="<?= $href. mb_substr($Email,0,-3) ?>"><?=$role?></li>
+    <?php
+  }    
+}
 ?>

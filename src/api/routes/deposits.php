@@ -1,33 +1,45 @@
 <?php
 // Routes
-
+use ChurchCRM\DepositQuery;
+use ChurchCRM\Deposit;
 
 $app->group('/deposits', function () {
 
   $this->post('', function ($request, $response, $args) {
     $input = (object)$request->getParsedBody();
-    echo json_encode($this->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate));
+    $deposit = new Deposit();
+    $deposit->setType($input->depositType);
+    $deposit->setComment($input->depositComment);
+    $deposit->setDate($input->depositDate);
+    $deposit->save();
+    echo $deposit->toJSON();
   });
 
   $this->get('', function ($request, $response, $args) {
-    echo json_encode(["deposits" => $this->FinancialService->getDeposits()]);
+    echo DepositQuery::create()->find()->toJSON();
   });
 
   $this->get('/{id:[0-9]+}', function ($request, $response, $args) {
     $id = $args['id'];
-    echo json_encode(["deposits" => $this->FinancialService->getDeposits($id)]);
+    echoDepositQuery::create()->findOneById($id)->toJSON();
   });
 
   $this->post('/{id:[0-9]+}', function ($request, $response, $args) {
     $id = $args['id'];
     $input = (object)$request->getParsedBody();
-    echo json_encode($this->FinancialService->setDeposit($input->depositType, $input->depositComment, $input->depositDate, $id, $input->depositClosed));
+    $thisDeposit = DepositQuery::create()->findOneById($id);
+    $thisDeposit->setType($input->depositType);
+    $thisDeposit->setComment($input->depositComment);
+    $thisDeposit->setDate($input->depositDate);
+    $thisDeposit->setClosed($input->depositClosed);
+    $thisDeposit->save();
+    echo $thisDeposit->toJSON();
   });
 
 
   $this->get('/{id:[0-9]+}/ofx', function ($request, $response, $args) {
     $id = $args['id'];
-    $OFX = $this->FinancialService->getDepositOFX($id);
+    $OFX = DepositQuery::create()->findOneById($id)->getOFX();
     header($OFX->header);
     echo $OFX->content;
   });
@@ -39,19 +51,18 @@ $app->group('/deposits', function () {
 
   $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
     $id = $args['id'];
-    $CSV = $this->FinancialService->getDepositCSV($id);
-    header($CSV->header);
-    echo $CSV->content;
+    echo DepositQuery::create()->findOneById($id)->toCSV();
   });
 
   $this->delete('/{id:[0-9]+}', function ($request, $response, $args) {
     $id = $args['id'];
-    $this->FinancialService->deleteDeposit($id);
+    DepositQuery::create()->findOneById($id)->delete();
     echo json_encode(["success" => true]);
   });
 
-  $this->get('/{id:[0-9]+}/payments', function ($request, $response, $args) {
+  $this->get('/{id:[0-9]+}/pledges', function ($request, $response, $args) {
     $id = $args['id'];
-    echo $this->FinancialService->getPaymentJSON($this->FinancialService->getPayments($id));
+    echo DepositQuery::create()->findOneById($id)->getPledgesJoinAll()->toJSON();
   });
+  
 });

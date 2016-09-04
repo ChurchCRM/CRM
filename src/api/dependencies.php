@@ -7,7 +7,7 @@ require_once "../Service/FamilyService.php";
 require_once "../Service/GroupService.php";
 require_once '../Service/NoteService.php';
 
-require_once '../Service/CalendarService.php';
+use ChurchCRM\Service\CalendarService;
 
 require_once "../Service/FinancialService.php";
 require_once "../Service/ReportingService.php";

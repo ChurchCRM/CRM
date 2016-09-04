@@ -11,7 +11,7 @@ $app->group('/payments', function () {
     echo json_encode(["payment" => $this->FinancialService->submitPledgeOrPayment($payment)]);
   });
 
-  $this->delete('/{groupKey:[0-9]+}', function ($request, $response, $args) {
+  $this->delete('/{groupKey}', function ($request, $response, $args) {
     $groupKey = $args['groupKey'];
     $this->FinancialService->deletePayment($groupKey);
     echo json_encode(["status" => "ok"]);

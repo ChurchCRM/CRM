@@ -1,7 +1,3 @@
-if (!$.isArray(depositData.deposits))
-{
-    depositData.deposits=[depositData.deposits];
-}
 var dataT = 0;
 
 function verifyContent(url) {
@@ -35,26 +31,31 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json"
         }).done(function(data){
-            dataT.row.add(data[0]);
+            data.totalAmount='';
+            dataT.row.add(data);
             dataT.rows().invalidate().draw(true);
         });
     });
    
     dataT = $("#depositsTable").DataTable({
-    data:depositData.deposits,
+    ajax:{
+      url :window.CRM.root+"/api/deposits",
+      dataSrc:"Deposits"
+    },
+    "deferRender": true,
     columns: [
     {
         width: 'auto',
         title:'Deposit ID',
-        data:'dep_ID',
+        data:'Id',
         render: function  (data, type, full, meta ) {
             if (type === 'display')
             {
-                return '<a href=\'DepositSlipEditor.php?DepositSlipID='+full.dep_ID+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a>'+full.dep_ID; 
+                return '<a href=\'DepositSlipEditor.php?DepositSlipID='+full.Id+'\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a>'+full.Id; 
             }
             else
             {
-                return parseInt(full.dep_ID);
+                return parseInt(full.Id);
             }
         },
         type:'num'
@@ -62,25 +63,35 @@ $(document).ready(function() {
     {
         width: 'auto',
         title:'Deposit Date',
-        data:'dep_Date',
+        data:'Date',
+        render: function  (data, type, full, meta ) {
+            if (type === 'display')
+            {
+                return moment(data).format("MM-DD-YY");
+            }
+            else
+            {
+                return data
+            }
+        },
         searchable: true
     },
     {
         width: 'auto',
         title:'Deposit Total',
-        data:'dep_Total',
+        data:'totalAmount',
         searchable: false,
     },
     {
         width: 'auto',
         title:'Deposit Comment',
-        data:'dep_Comment',
+        data:'Comment',
         searchable: true
     },
     {
         width: 'auto',
         title:'Closed',
-        data:'dep_Closed',
+        data:'Closed',
         searchable: true,
         render: function (data,type,full,meta) {
             return data == 1 ? 'Yes' : 'No';
@@ -89,7 +100,7 @@ $(document).ready(function() {
     {
         width: 'auto',
         title:'Deposit Type',
-        data:'dep_Type',
+        data:'Type',
         searchable: true
     }
     ],
@@ -121,7 +132,7 @@ $(document).ready(function() {
         var selectedRows = dataT.rows('.selected').data()
         var type = this .getAttribute("data-exportType");
         $.each(selectedRows, function(index, value){
-          verifyContent(window.CRM.root+'/api/deposits/'+value.dep_ID+'/'+type);
+          verifyContent(window.CRM.root+'/api/deposits/'+value.Id+'/'+type);
            
         });
     });
@@ -131,7 +142,7 @@ $(document).ready(function() {
         $.each(deletedRows, function(index, value){
             $.ajax({
                 type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url         : window.CRM.root+'/api/deposits/'+value.dep_ID, // the url where we want to POST
+                url         : window.CRM.root+'/api/deposits/'+value.Id, // the url where we want to POST
                 dataType    : 'json', // what type of data do we expect back from the server
                 encode      : true,
                 data        : {"_METHOD":"DELETE"}

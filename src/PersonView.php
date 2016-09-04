@@ -186,16 +186,16 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         <p class="text-muted text-center">
           <?php
           if ($sFamRole != "")
-            echo $sFamRole;
+            echo gettext($sFamRole);
           else
             echo gettext("Member");
           ?>
         </p>
 
         <p class="text-muted text-center">
-          <?= $sClassName;
+          <?= gettext($sClassName);
           if ($per_MembershipDate) {
-            echo " since: " . FormatDate($per_MembershipDate, false);
+            echo gettext(" Since:")." ". FormatDate($per_MembershipDate, false);
           } ?>
         </p>
         <?php if ($bOkToEdit) { ?>
@@ -316,7 +316,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         <li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab"><?= gettext("Family") ?></a></li>
         <li role="presentation"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?= gettext("Assigned Groups") ?></a></li>
         <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
-        <li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext("Volunteer opportunities") ?></a></li>
+        <li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext("Volunteer Opportunities") ?></a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -379,10 +379,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
           <table class="table user-list table-hover">
             <thead>
             <tr>
-              <th><span>Family Members</span></th>
-              <th class="text-center"><span>Role</span></th>
-              <th><span>Birthday</span></th>
-              <th><span>Email</span></th>
+              <th><span><?= gettext("Family Members") ?></span></th>
+              <th class="text-center"><span><?= gettext("Role") ?></span></th>
+              <th><span><?= gettext("Birthday") ?></span></th>
+              <th><span><?= gettext("Email") ?></span></th>
               <th>&nbsp;</th>
             </tr>
             </thead>
@@ -490,7 +490,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                           <?php if ($_SESSION['bManageGroups']) { ?>
                             <a href="GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="glyphicon glyphicon-list"></i></a>
                             <div class="btn-group">
-                              <button type="button" class="btn btn-default">Action</button>
+                              <button type="button" class="btn btn-default"><?= gettext("Action") ?></button>
                               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
@@ -732,11 +732,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         </div>
         <div class="modal-body">
           <input type="file" name="file" size="50"/> <br/>
-          Max Photo size: <?= ini_get('upload_max_filesize') ?>
+          <?= gettext("Max Photo size:") ?> <?= ini_get('upload_max_filesize') ?>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <input type="submit" class="btn btn-primary" value="Upload Image">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
+          <input type="submit" class="btn btn-primary" value="<?= gettext("Upload Image") ?>">
         </div>
       </div>
     </form>
@@ -747,18 +747,18 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="delete-Image-label">Confirm Delete</h4>
+        <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm Delete") ?></h4>
       </div>
 
       <div class="modal-body">
-        <p>You are about to delete the profile photo, this procedure is irreversible.</p>
+        <p><?= gettext("You are about to delete the profile photo, this procedure is irreversible.") ?></p>
 
-        <p>Do you want to proceed?</p>
+        <p><?= gettext("Do you want to proceed?") ?></p>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <a href="ImageDelete.php?PersonID=<?= $iPersonID ?>" class="btn btn-danger danger">Delete</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+        <a href="ImageDelete.php?PersonID=<?= $iPersonID ?>" class="btn btn-danger danger"><?= gettext("Delete") ?></a>
       </div>
     </div>
   </div>
@@ -790,14 +790,13 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
 <?php } else { ?>
   <div class="error-page">
-    <h2 class="headline text-yellow"> 404</h2>
+    <h2 class="headline text-yellow">404</h2>
 
     <div class="error-content">
-      <h3><i class="fa fa-warning text-yellow"></i> Oops! Person not found.</h3>
+      <h3><i class="fa fa-warning text-yellow"></i><?= gettext("Oops! Person not found.") ?></h3>
 
       <p>
-        We could not find the person you were looking for.
-        Meanwhile, you may <a href="//MembersDashboard.php">return to member dashboard</a>
+      	<?= gettext("We could not find the person you were looking for.<br>Meanwhile, you may")?> <a href="//MembersDashboard.php"><?= gettext("return to member dashboard") ?></a>
       </p>
     </div>
   </div>

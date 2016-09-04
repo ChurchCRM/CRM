@@ -135,7 +135,8 @@ if ($iUserID > 0)
     else
     {
         // Set the LastLogin and Increment the LoginCount
-        $sSQL = "UPDATE user_usr SET usr_LastLogin = NOW(), usr_LoginCount = usr_LoginCount + 1, usr_FailedLogins = 0 WHERE usr_per_ID ='$iUserID'";
+        $date = new DateTime("now", new DateTimeZone($sTimeZone));
+        $sSQL = "UPDATE user_usr SET usr_LastLogin = '".$date->format('Y-m-d H:i:s')."', usr_LoginCount = usr_LoginCount + 1, usr_FailedLogins = 0 WHERE usr_per_ID ='$iUserID'";
         RunQuery($sSQL);
 
         // Set the User's family id in case EditSelf is enabled
@@ -317,11 +318,11 @@ if (isset($loginPageMsg))
 
 <form class="form-signin" role="form" method="post" name="LoginForm" action="Login.php">
     <div class="form-group has-feedback">
-        <input type="text" id="UserBox" name="User" class="form-control" placeholder="Email/Username" required autofocus>
+        <input type="text" id="UserBox" name="User" class="form-control" placeholder="<?= gettext("Email/Username")?>" required autofocus>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
     </div>
     <div class="form-group has-feedback">
-        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="Password" required autofocus>
+        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext("Password") ?>" required autofocus>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
     </div>
     <div class="row">
@@ -338,11 +339,6 @@ if (isset($loginPageMsg))
         </div>
     </div>
 </form>
-
-<script language="JavaScript" type="text/JavaScript">
-    document.LoginForm.User.focus();
-</script>
-
 <?php
 // Check if the login page is following thre required URL schema
 // including the desired protocol, hiotsname, and path.
@@ -356,6 +352,17 @@ checkAllowedURL();
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+
+<script>
+  var $buoop = {vs:{i:11,f:30,o:25,s:7},c:2};
+  function $buo_f(){
+    var e = document.createElement("script");
+    e.src = "//browser-update.org/update.min.js";
+    document.body.appendChild(e);
+  };
+  try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+  catch(e){window.attachEvent("onload", $buo_f)}
+</script>
 
 <?php
 // Add the page footer
