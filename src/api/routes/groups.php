@@ -60,6 +60,15 @@ $app->group('/groups', function () {
     GroupQuery::create()->findOneById($groupID)->delete();
   });
   
+   $this->get('/{groupID:[0-9]+}/members', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
+            ->joinWithPerson()
+            ->findByGroupId($groupID);
+    echo $members->toJSON();
+   
+  });
+  
   $this->post('/{groupID:[0-9]+}/removeuser/{userID:[0-9]+}', function ($request, $response, $args) {
     $groupID = $args['groupID'];
     $userID = $args['userID'];
@@ -73,12 +82,22 @@ $app->group('/groups', function () {
         $groupRoleMembership->delete();
       }
     }
+    echo json_encode(array("success" => "true"));
    
   });
   $this->post('/{groupID:[0-9]+}/adduser/{userID:[0-9]+}', function ($request, $response, $args) {
     $groupID = $args['groupID'];
     $userID = $args['userID'];
-    echo json_encode($this->GroupService->addUserToGroup($groupID, $userID, 0));
+    $group = GroupQuery::create()->findOneById($groupID);
+    $p2g2r = new ChurchCRM\Person2group2roleP2g2r();
+    $p2g2r->setGroupId($groupID);
+    $p2g2r->setPersonId($userID);
+    $p2g2r->setRoleId($group->getDefaultRole());
+    $p2g2r->save();
+    $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
+            ->joinWithPerson()
+            ->findByGroupId($groupID);
+    echo $members->toJSON();
   });
 
 
