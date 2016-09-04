@@ -591,9 +591,9 @@
     </table>
 
     <table name="list_lst" idMethod="native" phpName="ListOption">
-        <column name="lst_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" />
-        <column name="lst_OptionID" phpName="OptionId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" />
-        <column name="lst_OptionSequence" phpName="OptionSequence" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0" primaryKey="true" />
+        <column name="lst_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true"/>
+        <column name="lst_OptionID" phpName="OptionId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true"/>
+        <column name="lst_OptionSequence" phpName="OptionSequence" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0" primaryKey="true"/>
         <column name="lst_OptionName" phpName="OptionName" type="VARCHAR" size="50" required="true" defaultValue=""/>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
@@ -715,31 +715,6 @@
     </table>
 
     <!--
-
-  <table name="tasks" idMethod="native" phpName="Task">
-        <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="type" phpName="Type" type="VARCHAR" required="true" defaultValue=""/>
-        <column name="title" phpName="Title" type="VARCHAR" size="255" required="true" defaultValue=""/>
-        <column name="active" phpName="active" type="BOOLEAN" required="true" defaultValue="true"/>
-        <column name="desc" phpName="Desc" type="VARCHAR" size="255"/>
-        <column name="remote_id" phpName="remoteId" type="INTEGER"/>
-        <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
-        </vendor>
-    </table>
-
-    <table name="tokens" idMethod="native" phpName="Token">
-        <column name="guid" phpName="guid" type="VARCHAR" primaryKey="true" required="true"/>
-        <column name="type" phpName="Type" type="VARCHAR" required="true"/>
-        <column name="active_until_date" phpName="Date" type="DATE" required="true"/>
-        <column name="remote_id" phpName="remoteId" type="INTEGER" defaultValue=""/>
-        <column name="use_count" phpName="UseCount" type="INTEGER" defaultValue="0"/>
-        <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
-        </vendor>
-    </table>
-
-
  <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu" >
    <column name="lu_fam_ID" phpName="LuFamId" type="SMALLINT" size="9" primaryKey="true" required="true" defaultValue="0"/>
    <column name="lu_LookupDateTime" phpName="LuLookupdatetime" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
