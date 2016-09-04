@@ -179,7 +179,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img src="<?= $person->getPhoto($sRootPath, $sEnableGravatarPhotos)?>" alt="" class="profile-user-img img-responsive img-circle"/>
+        <img src="<?= $person->getPhoto()?>" alt="" class="profile-user-img img-responsive img-circle"/>
 
         <h3 class="profile-username text-center"><?= getGenderIcon($per_Gender) . " " . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
 
@@ -395,7 +395,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                   <img src="<?= $familyMember->getPhoto() ?>" width="40" height="40" class="img-circle img-bordered-sm"/> <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
                 </td>
                 <td class="text-center">
-                  <?= $familyMember->getFamilyRole() ?>
+                  <?= $familyMember->getFamilyRoleName() ?>
                 </td>
                 <td>
                   <?= $familyMember->getBirthDate() ?>

@@ -14,21 +14,11 @@ class PersonService
 
   function getPhoto($id)
   {
-    global $sEnableGravatarPhotos;
     if ($id != "") {
       $photoFile = $this->getUploadedPhoto($id);
       if ($photoFile == "") {
-        // need to do inter jon with list for fmaily role.
-        $person = PersonQuery::create()->filterById($id);
-        if ($sEnableGravatarPhotos) {
-          $photoFile = $person->getGravatar();
-        }
-        if ($photoFile == "") {
-          // lst_OptionName AS sFamRole
-          // LEFT JOIN list_lst fmr ON per.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
-          // $familyRoles =  ListQuery::create()->filterByOptionId($person->getFmrId())->filterById(2)->find();
-          // $photoFile = $person->getDefaultPhoto($this->baseURL, $familyRoles->getOptionName());
-        }
+        $person = PersonQuery::create()->findPk($id);
+        $photoFile = $person->getPhoto();
       }
       return $photoFile;
     }
