@@ -25,7 +25,7 @@ require "Include/Header.php"; ?>
       <div class="fc-event-container fc-day-grid-event" style="background-color:<?= $type["backgroundColor"]?>;border-color:<?= $type["backgroundColor"]?>;color: white; width: 100px">
           <div class="fc-title"><?= gettext($type["Name"])?></div>
       </div>
-      <?php } ?>
+      <?php }?>
     </div>
   </div>
 </div>
