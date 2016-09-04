@@ -30,8 +30,8 @@ class CalendarService
     $curYear = date("Y");
     $curMonth = date("m");
     $peopleWithBirthDays = PersonQuery::create()
-      ->filterByBirthMonth(array('min' => 1))// have birthday month
-      ->filterByBirthDay(array('min' => 1))// have birthday day
+      ->filterByBirthMonth(array('min' => 1)) // have birthday month
+      ->filterByBirthDay(array('min' => 1)) // have birthday day
       ->find();
 
     foreach ($peopleWithBirthDays as $person) {
