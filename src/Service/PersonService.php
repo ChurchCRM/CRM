@@ -1,5 +1,7 @@
 <?php
 
+namespace ChurchCRM\Service;
+
 use ChurchCRM\PersonQuery;
 
 class PersonService

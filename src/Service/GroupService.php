@@ -1,6 +1,6 @@
 <?php
 
-require_once "PersonService.php";
+use ChurchCRM\Service\PersonService;
 
 class GroupService
 {

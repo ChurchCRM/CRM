@@ -2,12 +2,12 @@
 
 
 // Services
-require_once "../Service/PersonService.php";
 require_once "../Service/FamilyService.php";
 require_once "../Service/GroupService.php";
 require_once '../Service/NoteService.php';
 
 use ChurchCRM\Service\CalendarService;
+use ChurchCRM\Service\PersonService;
 
 require_once "../Service/FinancialService.php";
 require_once "../Service/ReportingService.php";
