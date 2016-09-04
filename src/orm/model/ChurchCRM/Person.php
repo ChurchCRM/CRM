@@ -113,7 +113,12 @@ class Person extends BasePerson
 
   function getFamilyRoleName()
   {
-    return $this->getFamilyRole()->getOptionName();
+    $roleName = "";
+    $role = $this->getFamilyRole();
+    if (!is_null($role)) {
+     $roleName = $this->getFamilyRole()->getOptionName();
+    }
+    return $roleName;
   }
 
   function getDefaultPhoto()
