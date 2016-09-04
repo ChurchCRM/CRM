@@ -68,8 +68,7 @@ class Person extends BasePerson
 
   function getViewURI()
   {
-    $url = $this->baseURL . "/PersonView.php?PersonID=" . $this->getId();
-    return $url;
+    return $this->baseURL . "/PersonView.php?PersonID=" . $this->getId();
   }
 
   function getUploadedPhoto()
