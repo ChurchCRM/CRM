@@ -1,16 +1,5 @@
 <?php
 
-function getGenderIcon($gender)
-{
-  $icon = "";
-  if ($gender == 1)
-    $icon = "<i class=\"fa fa-male\"></i>";
-  if ($gender == 2)
-    $icon = "<i class=\"fa fa-female\"></i>";
-
-  return $icon;
-}
-
 function getRoleLabel($famRole)
 {
   $label = "<span class=\"label ";

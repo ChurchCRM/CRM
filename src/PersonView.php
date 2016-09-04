@@ -181,7 +181,13 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
       <div class="box-body box-profile">
         <img src="<?= $person->getPhoto()?>" alt="" class="profile-user-img img-responsive img-circle"/>
 
-        <h3 class="profile-username text-center"><?= getGenderIcon($per_Gender) . " " . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
+        <h3 class="profile-username text-center">
+          <? if ($person->isMale()) { ?>
+          <i class="fa fa-male"></i>
+          <?php } else { ?>
+            <i class="fa fa-female"></i>
+          <?php } ?>
+          <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
 
         <p class="text-muted text-center">
           <?php
