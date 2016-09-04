@@ -19,16 +19,29 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Person extends BasePerson
 {
+
+  protected $baseURL;
+  protected $showGravatar;
+
+  public function applyDefaultValues()
+  {
+    parent::applyDefaultValues();
+    $this->baseURL = $_SESSION['sRootPath'];
+    $this->showGravatar = $_SESSION['$sEnableGravatarPhotos'];
+  }
+
   function getFullName()
   {
     return $this->getFirstName() . " " . $this->getLastName();
   }
 
-  function isMale() {
+  function isMale()
+  {
     return $this->getGender() == 1;
   }
 
-  function isFemale() {
+  function isFemale()
+  {
     return $this->getGender() == 2;
   }
 
@@ -39,33 +52,27 @@ class Person extends BasePerson
 
   function getBirthDate()
   {
-    $birthYear  = $this->getBirthYear();
-    if ($this->hideAge() ) {
+    $birthYear = $this->getBirthYear();
+    if ($this->hideAge()) {
       $birthYear = 1900;
     }
 
     $date = strtotime($this->getBirthDay() . "-" . $this->getBirthMonth() . "-" . $birthYear);
 
-    if (!$this->hideAge() ) {
+    if (!$this->hideAge()) {
       return date("d/m/Y", $date);
     } else {
       return date("d/m", $date);
     }
   }
 
-  function getViewURI($baseURL, $addToCart = false)
+  function getViewURI()
   {
-    $url = $baseURL . "/PersonView.php?PersonID=" . $this->getId();
-
-    if ($addToCart) {
-      $url = $url . "&AddToPeopleCart=" . $this->getId();
-    }
-
+    $url = $this->baseURL . "/PersonView.php?PersonID=" . $this->getId();
     return $url;
   }
 
-
-  function getUploadedPhoto($baseURL)
+  function getUploadedPhoto()
   {
     $validextensions = array("jpeg", "jpg", "png");
     $hasFile = false;
@@ -73,7 +80,7 @@ class Person extends BasePerson
       $photoFile = dirname(__FILE__) . "/../../Images/Person/thumbnails/" . $this->getId() . "." . $ext;
       if (file_exists($photoFile)) {
         $hasFile = true;
-        $photoFile = $baseURL . "/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
+        $photoFile = $this->baseURL . "/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
         break;
       }
     }
@@ -85,35 +92,41 @@ class Person extends BasePerson
     }
   }
 
-  function getPhoto($baseURL, $sEnableGravatarPhotos)
+  function getPhoto()
   {
-    $photoFile = $this->getUploadedPhoto($baseURL);
+    $photoFile = $this->getUploadedPhoto();
     if ($photoFile == "") {
-      if ($sEnableGravatarPhotos) {
+      if ($this->showGravatar) {
         $photoFile = $this->getGravatar();
       }
       if ($photoFile == "") {
-        $photoFile = $this->getDefaultPhoto($baseURL);
+        $photoFile = $this->getDefaultPhoto();
       }
     }
     return $photoFile;
   }
 
-  function getFamilyRole() {
-    $familyRole =  ListOptionQuery::create()->filterById(2)->filterByOptionId($this->getFmrId())->findOne();
+  function getFamilyRole()
+  {
+    $familyRole = ListOptionQuery::create()->filterById(2)->filterByOptionId($this->getFmrId())->findOne();
     return $familyRole;
   }
 
-  function getDefaultPhoto($baseURL)
+  function getFamilyRoleName()
   {
-    $photoFile = $baseURL . "/Images/Person/man-128.png";
-    $isChild = "Child" == $this->getFamilyRole();
+    return $this->getFamilyRole()->getOptionName();
+  }
+
+  function getDefaultPhoto()
+  {
+    $photoFile = $this->baseURL . "/Images/Person/man-128.png";
+    $isChild = "Child" == $this->getFamilyRoleName();
     if ($this->isMale() && $isChild) {
-      $photoFile = $baseURL . "/Images/Person/kid_boy-128.png";
+      $photoFile = $this->baseURL . "/Images/Person/kid_boy-128.png";
     } else if ($this->isFemale() && $isChild) {
-      $photoFile = $baseURL . "/Images/Person/kid_girl-128.png";
+      $photoFile = $this->baseURL . "/Images/Person/kid_girl-128.png";
     } else if ($this->isFemale() && !$isChild) {
-      $photoFile = $baseURL . "/Images/Person/woman-128.png";
+      $photoFile = $this->baseURL . "/Images/Person/woman-128.png";
     }
     return $photoFile;
   }
@@ -162,7 +175,7 @@ class Person extends BasePerson
     }
 
     $note->save();
-  } 
+  }
 
   public function isUser()
   {
