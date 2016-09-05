@@ -1,24 +1,29 @@
 <?php
 
 require_once "NoteService.php";
-require_once "EventService.php";
 
 use ChurchCRM\NoteQuery;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\EventAttendQuery;
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 class TimelineService
 {
   private $baseURL;
   private $currentUser;
   private $currentUserIsAdmin;
-  private $eventService;
+  private $log;
 
   public function __construct()
   {
-    $this->eventService = new EventService();
     $this->currentUser = $_SESSION['iUserID'];
     $this->currentUserIsAdmin = $_SESSION['bAdmin'];
     $this->baseURL = $_SESSION['sRootPath'];
+    // create a log channel
+    $this->log = new Logger('name');
+    $this->log->pushHandler(new StreamHandler('/tmp/ChurchCRM.log', Logger::WARNING));
   }
 
   function getForFamily($familyID)
@@ -52,11 +57,13 @@ class TimelineService
         $timeline[$item["key"]] = $item;
       }
     }
-
-    $events = $this->eventService->getEventsByPerson($personID);
-    foreach ($events as $event) {
-      $item = $this->createTimeLineItem("cal", $event["date"],
-        $event["title"], "", $event["desc"], "", "");
+    $this->log->info("here");
+    $eventsByPerson = EventAttendQuery::create()->findByPersonId($personID);
+    foreach ($eventsByPerson as $personEvent) {
+      $event = $personEvent->getEvent();
+      $this->log->info("Event" . $event->getTitle());
+      $item = $this->createTimeLineItem("cal", $event->getStart(), $event->getTitle(), "",
+        $event->getTitle(), "", "");
       $timeline[$item["key"]] = $item;
     }
 
