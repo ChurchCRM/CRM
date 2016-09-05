@@ -16,5 +16,24 @@ use ChurchCRM\Base\Group as BaseGroup;
  */
 class Group extends BaseGroup
 {
+  public function postInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+  {
+    $optionList = array("Member");
+    if ($this->getType() == 4) {
+      $optionList = array("Teacher", "Student");
+    }
 
+    $i = 1;
+    foreach ($optionList as $option) {
+      $listOption = new ListOption();
+      $listOption->setId($this->getRoleListId());
+      $listOption->setOptionId($i);
+      $listOption->setOptionSequence($i);
+      $listOption->setOptionName($option);
+      $listOption->save();
+      $i++;
+    }
+    parent::postInsert($con);
+    return true;
+  }
 }
