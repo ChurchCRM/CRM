@@ -45,7 +45,9 @@ require "../Include/Header.php";
     <h3 class="box-title"><?= gettext("Functions") ?></h3>
   </div>
   <div class="box-body">
+    <?php if ($_SESSION['bManageGroups']) { ?>
     <a href="SelectList.php?mode=person" class="btn btn-app" href="#" data-toggle="modal" data-target="#add-class"><i class="fa fa-plus-square"></i><?= gettext("Add New Class") ?></a>
+    <?php } ?>
     <a href="SundaySchoolReports.php" class="btn btn-app" title="<?= gettext("Generate class lists and attendance sheets"); ?>"><i class="fa fa-file-pdf-o"></i><?= gettext("Reports"); ?></a>
     <a href="SundaySchoolClassListExport.php" class="btn btn-app" title="<?= gettext("Export All Classes, Kids, and Parent to CSV file"); ?>"><i class="fa fa-file-excel-o"></i><?= gettext("Export to CSV") ?></a><br/>
   </div>
@@ -204,6 +206,7 @@ require "../Include/Header.php";
     </table>
   </div>
 </div>
+<?php if ($_SESSION['bManageGroups']) { ?>
 <div class="modal fade" id="add-class" tabindex="-1" role="dialog" aria-labelledby="add-class-label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -245,6 +248,6 @@ require "../Include/Header.php";
       }
     });
   });
-
 </script>
-<?php require "../Include/Footer.php" ?>
+<?php }
+require "../Include/Footer.php" ?>
