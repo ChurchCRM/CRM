@@ -105,7 +105,10 @@ $app->group('/groups', function () {
     $groupID = $args['groupID'];
     $userID = $args['userID'];
     $roleID = $request->getParsedBody()["roleID"];
-    echo json_encode($this->GroupService->setGroupMemberRole($groupID, $userID, $roleID));
+    $membership = ChurchCRM\Person2group2roleP2g2rQuery::create()->filterByGroupId($groupID)->filterByPersonId($userID)->findOne();
+    $membership->setRoleId($roleID);
+    $membership->save();
+    echo $membership->toJSON();
   });
 
   $this->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
@@ -119,6 +122,13 @@ $app->group('/groups', function () {
     }
 
     echo json_encode(["success" => true]);
+  });
+  
+  $this->get('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
+    $groupID = $args['groupID'];
+    $group = GroupQuery::create()->findOneById($groupID);
+    $roles=  ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->find();
+    echo $roles->toJSON();
   });
 
   $this->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
