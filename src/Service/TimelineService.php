@@ -6,8 +6,6 @@ use ChurchCRM\NoteQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\EventAttendQuery;
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
 
 class TimelineService
 {
@@ -21,9 +19,6 @@ class TimelineService
     $this->currentUser = $_SESSION['iUserID'];
     $this->currentUserIsAdmin = $_SESSION['bAdmin'];
     $this->baseURL = $_SESSION['sRootPath'];
-    // create a log channel
-    $this->log = new Logger('name');
-    $this->log->pushHandler(new StreamHandler('/tmp/ChurchCRM.log', Logger::WARNING));
   }
 
   function getForFamily($familyID)
@@ -57,13 +52,12 @@ class TimelineService
         $timeline[$item["key"]] = $item;
       }
     }
-    $this->log->info("here");
+
     $eventsByPerson = EventAttendQuery::create()->findByPersonId($personID);
     foreach ($eventsByPerson as $personEvent) {
       $event = $personEvent->getEvent();
-      $this->log->info("Event" . $event->getTitle());
-      $item = $this->createTimeLineItem("cal", $event->getStart(), $event->getTitle(), "",
-        $event->getTitle(), "", "");
+      $item = $this->createTimeLineItem("cal", $event->getStart('Y-m-d h:i:s'), $event->getTitle(), "",
+        $event->getDesc(), "", "");
       $timeline[$item["key"]] = $item;
     }
 
