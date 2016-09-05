@@ -217,7 +217,6 @@ require "../Include/Header.php";
 
       <div class="modal-body">
         <div class="form-group">
-          <label>Text Disabled</label>
           <input type="text" id="new-class-name" class="form-control" placeholder="<?= gettext("Enter Name") ?> " required>
         </div>
       </div>
