@@ -151,8 +151,11 @@ $formattedMailingAddress = getMailingAddress($Address1, $Address2, $sCity, $sSta
 
 $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, False);
 $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), True);
+$sHomePhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
 $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), True);
+$sWorkPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
 $sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), True);
+$sCellPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
 $sEmail = SelectWhichInfo($per_Email, $fam_Email, True);
 $sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, False);
 
@@ -170,9 +173,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 );
 ?>
 <div class="alert alert-warning alert-dismissable">
-  <i class="fa fa-magic"></i>
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <b><span style="color: red;"><?= gettext("Red text") ?></span></b> <?php echo gettext("indicates items inherited from the associated family record."); ?>
+  <i class="fa fa-fw fa-tree"></i>
+  <?php echo gettext("indicates items inherited from the associated family record."); ?>
 </div>
 <div class="row">
   <div class="col-lg-3 col-md-3 col-sm-3">
@@ -245,11 +247,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             <li><i class="fa-li fa fa-tasks"></i><?= gettext("Friend Date:") ?> <span><?= FormatDate($per_FriendDate, false) ?></span></li>
           <?php }
           if ($sCellPhone) { ?>
-            <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext("Mobile Phone:") ?> <span><?= $sCellPhone ?></span></li>
+            <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext("Mobile Phone:") ?> <span><a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a></span></li>
           <?php }
           if ($sHomePhone) {
             ?>
-            <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><?= $sHomePhone ?></span></li>
+            <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a></span></li>
             <?php
           }
           if ($sEmail != "") { ?>
@@ -260,7 +262,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
           }
           if ($sWorkPhone) {
             ?>
-            <li><i class="fa-li fa fa-phone"></i><?= gettext("Work Phone:") ?> <span><?= $sWorkPhone ?></span></li>
+            <li><i class="fa-li fa fa-phone"></i><?= gettext("Work Phone:") ?> <span><a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a></span></li>
           <?php } ?>
           <?php if ($per_WorkEmail != "") { ?>
             <li><i class="fa-li fa fa-envelope"></i><?= gettext("Work/Other Email:") ?> <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
