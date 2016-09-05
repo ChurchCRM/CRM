@@ -17,7 +17,7 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Service/GroupService.php";
+use ChurchCRM\Service\GroupService;
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bManageGroups']) {

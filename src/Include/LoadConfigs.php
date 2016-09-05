@@ -33,8 +33,8 @@
 
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 require_once dirname(__FILE__) . '/../orm/conf/config.php';
-require_once dirname(__FILE__).' /../Service/SystemService.php';
 
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\Version;
 
 

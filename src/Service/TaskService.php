@@ -1,5 +1,7 @@
 <?php
 
+namespace ChurchCRM\Service;
+
 class TaskService
 {
   private $baseURL;

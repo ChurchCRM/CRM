@@ -1,5 +1,7 @@
 <?php
 
+namespace ChurchCRM\Service;
+
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;

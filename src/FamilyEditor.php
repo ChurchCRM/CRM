@@ -18,7 +18,8 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/CanvassUtilities.php";
 require "Include/GeoCoder.php";
-require 'Service/NoteService.php';
+
+use ChurchCRM\Service\NoteService;
 
 $noteService = new NoteService();
 

@@ -18,7 +18,7 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require 'Service/NoteService.php';
+use ChurchCRM\Service\NoteService;
 
 if (!$_SESSION['bAdmin']) {
     Redirect("Menu.php");
