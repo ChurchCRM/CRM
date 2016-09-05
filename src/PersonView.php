@@ -243,7 +243,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
           <?php if ($dBirthDate) { ?>
             <li><i class="fa-li fa fa-calendar"></i><?= gettext("Birthdate:") ?> <span><?= $dBirthDate ?></span> (<?php PrintAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags); ?>)</li>
           <?php }
-          if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
+          if (!$bHideFriendDate && $per_FriendDate != "") { /* Friend Date can be hidden - General Settings */ ?>
             <li><i class="fa-li fa fa-tasks"></i><?= gettext("Friend Date:") ?> <span><?= FormatDate($per_FriendDate, false) ?></span></li>
           <?php }
           if ($sCellPhone) { ?>
