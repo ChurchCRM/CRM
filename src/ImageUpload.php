@@ -2,7 +2,6 @@
 
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/PersonFunctions.php";
 require "Include/class.upload.php";
 require "Service/NoteService.php";
 

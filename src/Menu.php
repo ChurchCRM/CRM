@@ -26,7 +26,6 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'Include/PersonFunctions.php';
 require 'Service/FinancialService.php';
 
 use ChurchCRM\Service\DashboardService;
