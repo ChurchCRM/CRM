@@ -19,12 +19,20 @@ class Group extends BaseGroup
 
   protected $typeSundaySchool = 4;
 
+  public function isSundaySchool() {
+    return $this->getType() == $this->typeSundaySchool;
+  }
+
   public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
   {
     requireUserGroupMembership("bManageGroups");
+    $defaultRole = 1;
+    if ($this->isSundaySchool()) {
+      $defaultRole = 2;
+    }
     $newListID = ListOptionQuery::create()->withColumn("MAX(ListOption.Id)","newListId")->find()->getColumnValues('newListId')[0] + 1;
     $this->setRoleListId($newListID);
-    $this->setDefaultRole(2);
+    $this->setDefaultRole($defaultRole);
     parent::preInsert($con);
     return true;
   }
@@ -32,7 +40,7 @@ class Group extends BaseGroup
   public function postInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
   {
     $optionList = array("Member");
-    if ($this->getType() == $this->typeSundaySchool) {
+    if ($this->isSundaySchool()) {
       $optionList = array("Teacher", "Student");
     }
 
