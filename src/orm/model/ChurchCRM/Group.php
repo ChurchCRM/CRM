@@ -16,10 +16,23 @@ use ChurchCRM\Base\Group as BaseGroup;
  */
 class Group extends BaseGroup
 {
+
+  protected $typeSundaySchool = 4;
+
+  public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+  {
+    requireUserGroupMembership("bManageGroups");
+    $newListID = ListOptionQuery::create()->withColumn("MAX(ListOption.Id)","newListId")->find()->getColumnValues('newListId')[0] + 1;
+    $this->setRoleListId($newListID);
+    $this->setDefaultRole(2);
+    parent::preInsert($con);
+    return true;
+  }
+
   public function postInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
   {
     $optionList = array("Member");
-    if ($this->getType() == 4) {
+    if ($this->getType() == $this->typeSundaySchool) {
       $optionList = array("Teacher", "Student");
     }
 

@@ -97,4 +97,13 @@ $app->group('/groups', function () {
     }
   });
 
+  $this->post('/sundayschool/{name}', function ($request, $response, $args) {
+    $className = $args['name'];
+    $sundaySchoolClass = new Group();
+    $sundaySchoolClass->setName($className);
+    $sundaySchoolClass->setType(4);
+    $sundaySchoolClass->set;
+    $sundaySchoolClass->save();
+  });
+
 });
