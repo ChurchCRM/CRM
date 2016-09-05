@@ -1,6 +1,6 @@
 <?php
-require_once dirname(dirname(__FILE__)) . "/Include/phpmailer/class.phpmailer.php";
 
+require_once dirname(dirname(__FILE__)) . "/Include/phpmailer/class.phpmailer.php";
 
 class EmailService
 {

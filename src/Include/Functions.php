@@ -2029,8 +2029,8 @@ function getMailingAddress($Address1, $Address2, $City, $State, $Zip, $Country)
     if ($Address1 != "") { $mailingAddress .= $Address1. " " ; }
     if ($Address2 != "") { $mailingAddress .= $Address2. " " ; }
     if ($City != "") { $mailingAddress .= $City . ", "; }
-    if ($State != "") { $mailingAddress .= $State; }
-    if ($Zip != "") { $mailingAddress .= " " . $Zip ." "; }
+    if ($State != "") { $mailingAddress .= $State . " "; }
+    if ($Zip != "") { $mailingAddress .= " " . $Zip . " "; }
     if ($Country != "") {$mailingAddress .= $Country; }
     return $mailingAddress;
 }
@@ -2060,6 +2060,16 @@ function requireUserGroupMembership($allowedRoles=null)
   //if we get to this point in the code, then the user is not authorized.
   throw new Exception("User is not authorized to access " . debug_backtrace()[1]['function'], 401);
 }
+
+
+function random_color_part() {
+    return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
+}
+
+function random_color() {
+    return random_color_part() . random_color_part() . random_color_part();
+}
+
 
 function generateGroupRoleEmailDropdown($roleEmails,$href)
 {

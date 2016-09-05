@@ -119,7 +119,7 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 ?>
 <div class="box">
   <div class="box-header with-border">
-    <h3 class="box-title">Report Details</h3>
+    <h3 class="box-title"><?= gettext("Report Details")?></h3>
   </div>
   <div class="box-body">
     <form method="post" action="SundaySchoolReports.php">
@@ -136,9 +136,9 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
               echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
             }
             echo "</select><br>";
-            echo "Multiple groups will have a Page Break between Groups<br>";
+            echo gettext("Multiple groups will have a Page Break between Groups<br>");
             echo "<input type=\"checkbox\" Name=\"allroles\" value=\"1\" checked>";
-            echo "List all Roles (unchecked will list Teacher/Student roles only)";
+            echo gettext("List all Roles (unchecked will list Teacher/Student roles only)");
             ?>
           </td>
         </tr>

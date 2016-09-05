@@ -26,7 +26,7 @@ $sSQL = "SELECT per_FirstName, per_LastName FROM person_per where per_ID = " . $
 $rsPerson = RunQuery($sSQL);
 extract(mysql_fetch_array($rsPerson));
 
-$sPageTitle = gettext("\"Why Came\" notes for " . $per_FirstName . " " . $per_LastName);
+$sPageTitle = gettext("\"Why Came\" notes for ") . $per_FirstName . " " . $per_LastName;
 
 //Is this the second pass?
 if (isset($_POST["Submit"])) {

@@ -232,7 +232,7 @@ if ($fam_ID)
 		<tr>
 			<td class="LabelColumn"><?= gettext("Family Role:") ?></td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
-			<td class="TextColumnWithBottomBorder"><?php if ($sFamRole != "") { echo $sFamRole; } else { echo "Unassigned"; } ?>&nbsp;</td>
+			<td class="TextColumnWithBottomBorder"><?php if ($sFamRole != "") { echo $sFamRole; } else { echo gettext("Unassigned"); } ?>&nbsp;</td>
 		</tr>
 		<?php
 			for($i = 1; $i <= $numColumn2Fields; $i++)
@@ -441,7 +441,7 @@ else
 
 		//Display the row
 		echo "<tr class=\"" . $sRowClass . "\">";
-		echo "<td valign=\"top\">" . $pro_Name . "&nbsp;</td>";
+		echo "<td valign=\"top\">" . gettext($pro_Name) . "&nbsp;</td>";
 		echo "<td valign=\"top\">" . $r2p_Value . "&nbsp;</td>";
 
 		echo "</tr>";
