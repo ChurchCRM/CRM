@@ -180,7 +180,7 @@ if ($iFamilyID == $fam_ID) {
                 $sDirection = LatLonBearing($nChurchLatitude, $nChurchLongitude, $fam_Latitude, $fam_Longitude);
                 echo $sDistance . " " . strtolower($sDistanceUnit) . " " . $sDirection . " " . gettext(" of church<br>");
               }
-            } else {
+            }   else {
               $bHideLatLon = true;
             }
             ?>
@@ -192,7 +192,7 @@ if ($iFamilyID == $fam_ID) {
               <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send newsletter:") ?>
                 <span><?= gettext($fam_SendNewsLetter) ?></span></li>
             <?php }
-            if (!$bHideWeddingDate) { /* Wedding Date can be hidden - General Settings */ ?>
+            if (!$bHideWeddingDate && $fam_WeddingDate != "") { /* Wedding Date can be hidden - General Settings */ ?>
               <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date:") ?>
                 <span><?= FormatDate($fam_WeddingDate, false) ?></span></li>
             <?php }
@@ -201,13 +201,13 @@ if ($iFamilyID == $fam_ID) {
               </li>
             <?php }
             if ($sHomePhone != "") { ?>
-              <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><?= $sHomePhone ?></span></li>
+              <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><a href="tel:<?= $sHomePhone ?>"><?= $sHomePhone ?></a></span></li>
             <?php }
             if ($sWorkPhone != "") { ?>
-              <li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone:") ?> <span><?= $sWorkPhone ?></span></li>
+              <li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone:") ?> <span><a href="tel:<?= $sWorkPhone ?>"><?= $sWorkPhone ?></a></span></li>
             <?php }
             if ($sCellPhone != "") { ?>
-              <li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone:") ?> <span><?= $sCellPhone ?></span></li>
+              <li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone:") ?> <span><a href="tel:<?= $sCellPhone ?>"><?= $sCellPhone ?></a></span></li>
             <?php }
             if ($fam_Email != "") { ?>
             <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email:") ?><a href="mailto:<?= $fam_Email ?>">
