@@ -12,7 +12,7 @@ use ChurchCRM\Service\CalendarService;
 require_once "../Service/FinancialService.php";
 require_once "../Service/ReportingService.php";
 
-require_once "../Service/DataSeedService.php";
+use ChurchCRM\Service\DataSeedService;
 require_once '../Service/SystemService.php';
 
 // DIC configuration
