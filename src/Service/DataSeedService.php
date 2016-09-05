@@ -81,6 +81,7 @@ class DataSeedService
       }
 
     }
+    $this->generateSundaySchoolClasses();
     echo '{"families created": ' . $families . ',"heads of household created": ' . $rTotalHoh . ', "spouses created":' . $rTotalSpouse . ', "children created":' . $rTotalChildren . ',"random.me response":' . $response . '}';
 
   }
