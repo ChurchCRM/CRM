@@ -52,18 +52,23 @@ class Person extends BasePerson
 
   function getBirthDate()
   {
-    $birthYear = $this->getBirthYear();
-    if ($this->hideAge()) {
-      $birthYear = 1900;
-    }
+    if (!is_null($this->getBirthDay()) && $this->getBirthDay() != "" &&
+      !is_null($this->getBirthMonth()) && $this->getBirthMonth() != "") {
 
-    $date = strtotime($this->getBirthDay() . "-" . $this->getBirthMonth() . "-" . $birthYear);
+      $birthYear = $this->getBirthYear();
+      if ($this->hideAge()) {
+        $birthYear = 1900;
+      }
 
-    if (!$this->hideAge()) {
-      return date("d/m/Y", $date);
-    } else {
-      return date("d/m", $date);
+      $date = strtotime($this->getBirthDay() . "-" . $this->getBirthMonth() . "-" . $birthYear);
+
+      if (!$this->hideAge()) {
+        return date("M d Y", $date);
+      } else {
+        return date("M d", $date);
+      }
     }
+    return "";
   }
 
   function getViewURI()
@@ -116,7 +121,7 @@ class Person extends BasePerson
     $roleName = "";
     $role = $this->getFamilyRole();
     if (!is_null($role)) {
-     $roleName = $this->getFamilyRole()->getOptionName();
+      $roleName = $this->getFamilyRole()->getOptionName();
     }
     return $roleName;
   }
@@ -151,17 +156,20 @@ class Person extends BasePerson
     return "";
   }
 
-  public function postInsert(ConnectionInterface $con = null)
+  public
+  function postInsert(ConnectionInterface $con = null)
   {
     $this->createTimeLineNote(true);
   }
 
-  public function postUpdate(ConnectionInterface $con = null)
+  public
+  function postUpdate(ConnectionInterface $con = null)
   {
     $this->createTimeLineNote(false);
   }
 
-  private function createTimeLineNote($new)
+  private
+  function createTimeLineNote($new)
   {
     $note = new Note();
     $note->setPerId($this->getId());
@@ -181,13 +189,15 @@ class Person extends BasePerson
     $note->save();
   }
 
-  public function isUser()
+  public
+  function isUser()
   {
     $user = UserQuery::create()->findPk($this->getId());
     return !is_null($user);
   }
 
-  public function getOtherFamilyMembers()
+  public
+  function getOtherFamilyMembers()
   {
     $familyMembers = $this->getFamily()->getPeople();
     $otherFamilyMembers = array();
