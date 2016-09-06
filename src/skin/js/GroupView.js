@@ -189,7 +189,10 @@ function initDataTable()
         title: 'E-mail',
         data: 'Person.Email'
       }
-    ]
+    ],
+    "fnDrawCallback":function(oSettings) {
+      $("#iTotalMembers").text(oSettings.aoData.length);
+    }
   });
 
   $("#membersTable tbody").on('click', 'tr', function() {
