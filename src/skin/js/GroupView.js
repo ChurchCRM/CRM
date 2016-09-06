@@ -78,19 +78,23 @@ $(document).ready(function() {
     });
   });
 
-  $(document).on("click", ".removeUserGroup", function(e) {
-    var userid = $(e.currentTarget).data("personid");
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/removeuser/" + userid,
-      dataType: "json"
-    }).done(function(data) {
-      dataT.row(function(idx, data, node) {
-        if(data.personid == userid) {
-          return true;
-        }
-      }).remove();
-      dataT.rows().invalidate().draw(true);
+  $("#deleteSelectedRows").click(function() {
+    var deletedRows = dataT.rows('.selected').data()
+    $.each(deletedRows, function(index, value) {
+      $.ajax({
+        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+        url: window.CRM.root+'/api/groups/' + window.CRM.currentGroup+'/removeuser/'+value.PersonId, // the url where we want to POST
+        dataType: 'json', // what type of data do we expect back from the server
+        data: {"_METHOD":"DELETE"},
+        encode: true
+      }).done(function(data) {    
+        dataT.row(function(idx, data, node) {
+         if(data.PersonId == value.PersonId) {
+           return true;
+         }
+       }).remove();
+       dataT.rows().invalidate().draw(true);
+      });
     });
   });
 
@@ -212,20 +216,7 @@ function initDataTable()
   });
 
 
-   $("#deleteSelectedRows").click(function() {
-    var deletedRows = dataT.rows('.selected').data()
-    $.each(deletedRows, function(index, value) {
-      $.ajax({
-        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root+'/api/groups/' + window.CRM.currentGroup+'/removeuser/'+value.PersonId, // the url where we want to POST
-        dataType: 'json', // what type of data do we expect back from the server
-        data: {"_METHOD":"DELETE"},
-        encode: true
-      }).done(function(data) {    
-        dataT.rows('.selected').remove().draw(false);
-      });
-    });
-  });
+   
 
   
 }
