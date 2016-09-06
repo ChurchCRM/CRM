@@ -75,11 +75,6 @@ $rsAssignedProperties = RunQuery($sSQL);
 $sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'g' ORDER BY pro_Name";
 $rsProperties = RunQuery($sSQL);
 
-// Lookup the Group's Name from GroupID
-$sSQL = 'SELECT grp_Name FROM group_grp WHERE grp_ID = ' . $iGroupID;
-$rsGrpName = RunQuery($sSQL);
-$aTemp = mysql_fetch_array($rsGrpName);
-
 // Get data for the form as it now exists..
 $sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID';
 $rsPropList = RunQuery($sSQL);

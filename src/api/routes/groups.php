@@ -96,6 +96,7 @@ $app->group('/groups', function () {
     $p2g2r->save();
     $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
+            ->filterByPersonId($userID)
             ->findByGroupId($groupID);
     echo $members->toJSON();
   });
