@@ -69,7 +69,7 @@ $app->group('/groups', function () {
    
   });
   
-  $this->post('/{groupID:[0-9]+}/removeuser/{userID:[0-9]+}', function ($request, $response, $args) {
+  $this->delete('/{groupID:[0-9]+}/removeuser/{userID:[0-9]+}', function ($request, $response, $args) {
     $groupID = $args['groupID'];
     $userID = $args['userID'];
     $groupID = $args['groupID'];
