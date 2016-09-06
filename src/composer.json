@@ -29,6 +29,7 @@
     "docs": "http://docs.churchcrm.io"
   },
   "require": {
+    "php": ">=5.6.0",
     "mailchimp/mailchimp": "2.0.6",
     "slim/slim": "3.4.1",
     "slim/php-view": "2.1",
