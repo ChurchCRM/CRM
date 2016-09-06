@@ -485,8 +485,17 @@ if ($sPhoneLink) {
 
                     <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext("Remove Selected Members from group") ?> </button>
                     <button type="button" id="exportSelectedRowsCSV" class="btn btn-success" data-exportType="csv" disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (CSV)") ?></button>
-                    <button type="button" id="addSelectedToGroup" class="btn btn-success"  disabled> <?= gettext("Add Selected Members to Group") ?></button>
-                    <button type="button" id="addSelectedToCart" class="btn btn-success"  disabled> <?= gettext("Add Selected Members to Cart") ?></button>
+                    <div class="btn-group">
+                      <button type="button" id="addSelectedToCart" class="btn btn-success"  disabled> <?= gettext("Add Selected Members to Cart") ?></button>
+                      <button type="button" id="buttonDropdown" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false" disabled>
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a id="addSelectedToGroup"   disabled> <?= gettext("Add Selected Members to Group") ?></a></li>
+                        <li><a id="moveSelectedToGroup"  disabled> <?= gettext("Move Selected Members to Group") ?></a></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 </form>

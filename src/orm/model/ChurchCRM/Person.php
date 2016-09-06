@@ -1,8 +1,8 @@
 <?php
 
 namespace ChurchCRM;
-
-use ChurchCRM\Base\ListOptionQuery;
+use ChurchCRM\ListOption;
+use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\Base\UserQuery;
 use Propel\Runtime\Connection\ConnectionInterface;
@@ -63,7 +63,7 @@ class Person extends BasePerson
     $validextensions = array("jpeg", "jpg", "png");
     $hasFile = false;
     while (list(, $ext) = each($validextensions)) {
-      $photoFile = dirname(__FILE__) . "/../../Images/Person/thumbnails/" . $this->getId() . "." . $ext;
+      $photoFile = $baseURL . "/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
       if (file_exists($photoFile)) {
         $hasFile = true;
         $photoFile = $baseURL . "/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
@@ -93,8 +93,14 @@ class Person extends BasePerson
   }
 
   function getFamilyRole() {
-    $familyRole =  ListOptionQuery::create()->filterById(2)->filterByOptionId($this->getFmrId())->find();
-    return $familyRole->getOptionName();
+   
+    $roleId =$this->getFmrId();
+    if ( isset($roleId) && $roleId  !== 0) 
+    {
+      $familyRole =  ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->findOne();
+      return $familyRole->getOptionName();
+    }
+    return "";
   }
 
   function getDefaultPhoto($baseURL)

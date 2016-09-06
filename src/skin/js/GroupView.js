@@ -145,7 +145,7 @@ function initDataTable()
         title: 'Name',
         data: 'PersonId',
         render: function(data, type, full, meta) {
-          return '<img src="' + full.photo + '" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
+          return '<img src="' + window.CRM.root + '/api/persons/'+full.PersonId+'/photo" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
         }
       },
       {
@@ -199,10 +199,13 @@ function initDataTable()
     $("#deleteSelectedRows").text("Remove (" + selectedRows + ") Members from group");
     $("#exportSelectedRowsCSV").prop('disabled', !(selectedRows));
     $("#exportSelectedRowsCSV").html("<i class=\"fa fa-download\"></i> Export (" + selectedRows + ") Selected Rows (CSV)");
+    $("#buttonDropdown").prop('disabled', !(selectedRows));
     $("#addSelectedToGroup").prop('disabled', !(selectedRows));
     $("#addSelectedToGroup").html("Add  (" + selectedRows + ") Members to another group");
     $("#addSelectedToCart").prop('disabled', !(selectedRows));
     $("#addSelectedToCart").html("Add  (" + selectedRows + ") Members to cart");
+    $("#moveSelectedToGroup").prop('disabled', !(selectedRows));
+    $("#moveSelectedToGroup").html("Move  (" + selectedRows + ") Members to another group");
   });
 
 

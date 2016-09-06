@@ -49,7 +49,7 @@ class Group extends BaseGroup
   {
     $listOption = new ListOption();
     $listOption->setId($this->getRoleListId());
-    $listOption->setOptionId(1);
+    $listOption->setOptionId(0);
     $listOption->setOptionSequence(1);
     $listOption->setOptionName("Member");
     $listOption->save();
