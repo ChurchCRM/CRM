@@ -27,12 +27,11 @@ require 'Service/GroupService.php';
 
 use ChurchCRM\Group;
 use ChurchCRM\GroupQuery;
+use ChurchCRM\ListOptionQuery;
+use ChurchCRM\ListOption;
 
 //Get the GroupID out of the querystring
 $iGroupID = FilterInput($_GET['GroupID'], 'int');
-$personService = new PersonService();
-$groupService = new GroupService();
-
 
 //Do they want to add this group to their cart?
 if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'AddGroupToCart') {
@@ -53,20 +52,12 @@ if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'AddGroupToCart') {
 $thisGroup  = ChurchCRM\GroupQuery::create()->findOneById($iGroupID);
 
 //Look up the default role name
-$sSQL = "SELECT lst_OptionName FROM list_lst WHERE lst_ID = ".$thisGroup->getRoleListId()." AND lst_OptionID = " . $thisGroup->getDefaultRole();
-$aDefaultRole = mysql_fetch_array(RunQuery($sSQL));
-$sDefaultRole = $aDefaultRole[0];
+$defaultRole = ListOptionQuery::create()->filterById($thisGroup->getRoleListId())->filterByOptionId($thisGroup->getDefaultRole())->findOne();
 
-//Get the count of members
-$sSQL = 'SELECT COUNT(*) AS iTotalMembers FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = ' . $iGroupID;
-$rsTotalMembers = mysql_fetch_array(RunQuery($sSQL));
-extract($rsTotalMembers);
 
 //Get the group's type name
 if ($thisGroup->getType() > 0) {
-  $sSQL = 'SELECT lst_OptionName FROM list_lst WHERE lst_ID = 3 AND lst_OptionID = ' . $thisGroup->getType();
-  $rsGroupType = mysql_fetch_array(RunQuery($sSQL));
-  $sGroupType = $rsGroupType[0];
+  $sGroupType = ListOptionQuery::create()->filterById(3)->filterByOptionId($thisGroup->getType())->findOne()->getOptionName();
 }
 else
   $sGroupType = gettext('Undefined');
@@ -303,7 +294,7 @@ require 'Include/Header.php';
                     <br>
                     <?= gettext('Type of Group:') ?> <?= $sGroupType ?>
                     <br>
-                    <?= gettext('Default Role:') ?> <?= $sDefaultRole ?>
+                    <?= gettext('Default Role:') ?> <?= $defaultRole->getOptionName() ?>
                     </font></div></td>
               </tr>
             </table>
@@ -485,6 +476,7 @@ require 'Include/Header.php';
                     <table class="table" id="depositsTable"></table>
 
                     <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext("Remove Selected Members from group") ?> </button>
+                    <!--
                     <button type="button" id="exportSelectedRowsCSV" class="btn btn-success" data-exportType="csv" disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (CSV)") ?></button>
                     <div class="btn-group">
                       <button type="button" id="addSelectedToCart" class="btn btn-success"  disabled> <?= gettext("Add Selected Members to Cart") ?></button>
@@ -497,6 +489,7 @@ require 'Include/Header.php';
                         <li><a id="moveSelectedToGroup"  disabled> <?= gettext("Move Selected Members to Group") ?></a></li>
                       </ul>
                     </div>
+                    -->
                   </div>
                 </div>
                 </form>
