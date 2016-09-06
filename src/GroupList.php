@@ -41,10 +41,10 @@ if ($_SESSION['bManageGroups'])
 
 <br>
 <form action="#" method="get" class="form">
-    <label for="addNewGruop"><?= gettext("Add New Group: ") ?></label>
+    <label for="addNewGruop"><?= gettext("Add New Group") ?> :</label>
     <input class="form-control newGroup" name="groupName" id="groupName" style="width:100%">
     <br>
-    <button type="button" class="btn btn-primary" id="addNewGroup">Add New Group</button>
+    <button type="button" class="btn btn-primary" id="addNewGroup"><?= gettext("Add New Group") ?></button>
 </form>
 <?php
 }

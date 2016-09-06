@@ -46,18 +46,10 @@ require 'Include/Header.php';
     $('#SeedForm').submit(function(event) {
 		event.preventDefault();
 		console.log("submit pressed");
-        // get the form data
-        // there are many ways to get this data using jQuery (you can use the class or id also)
-        var formData = {
-            "families" : $("#Num_Families").val()
-        };
-		console.log(JSON.stringify(formData));
-
        //process the form
        $.ajax({
-            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : window.CRM.root + '/api/data/seed/families', // the url where we want to POST
-            data        : JSON.stringify(formData), // our data object
+         type: 'GET', // define the type of HTTP verb we want to use (POST for our form)
+         url: window.CRM.root + '/api/data/seed/families/' + $("#Num_Families").val(), // the url where we want to POST
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true,
             beforeSend  : function () { 

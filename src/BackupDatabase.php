@@ -95,7 +95,6 @@ function doBackup(isRemote)
   {
     endpointURL = window.CRM.root +'/api/database/backup';
   }
-  event.preventDefault();
   var errorflag =0;
   if ($("input[name=encryptBackup]").is(':checked'))
   {
@@ -153,10 +152,12 @@ function doBackup(isRemote)
 }
   
 $('#doBackup').click(function(event) {
+  event.preventDefault();
   doBackup (0);
 });
 
 $('#doRemoteBackup').click(function(event) {
+  event.preventDefault();
   doBackup(1);
 });
 

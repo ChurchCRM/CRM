@@ -1,0 +1,58 @@
+{
+  "pre-2.0.0": {
+    "versions": [
+      "1.2.14",
+      "1.3.0"
+    ],
+    "scripts": [
+      "/mysql/upgrade/2.0.0.sql"
+    ],
+    "dbVersion": "2.0.0"
+  },
+  "pre-2.1.0": {
+    "versions": [
+      "2.0.0",
+      "2.0.1"
+    ],
+    "scripts": [
+      "/mysql/upgrade/2.1.0.sql"
+    ],
+    "dbVersion": "2.1.0"
+  },
+  "pre-2.1.3": {
+    "versions": [
+      "2.1.0",
+      "2.1.1",
+      "2.1.2"
+    ],
+    "scripts": [
+      "/mysql/upgrade/2.1.3.sql"
+    ],
+    "dbVersion": "2.1.3"
+  },
+  "pre-2.1.8": {
+    "versions": [
+      "2.1.3",
+      "2.1.4",
+      "2.1.5",
+      "2.1.6",
+      "2.1.7"
+    ],
+    "scripts": [
+      "/mysql/upgrade/2.1.8.sql"
+    ],
+    "dbVersion": "2.1.8"
+  },
+  "pre-2.2.0": {
+    "versions": [
+      "2.1.8",
+      "2.1.9",
+      "2.1.10",
+      "2.1.11"
+    ],
+    "scripts": [
+      "/mysql/upgrade/2.2.0.sql"
+    ],
+    "dbVersion": "2.2.0"
+  }
+}

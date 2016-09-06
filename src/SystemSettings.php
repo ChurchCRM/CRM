@@ -78,6 +78,8 @@ if (isset ($_POST['save'])) {
       $value = FilterInput($new_value[$id], "float");
     elseif ($current_type == 'date')
       $value = FilterInput($new_value[$id], "date");
+     elseif ($current_type == 'json')
+      $value = $new_value[$id];
     elseif ($current_type == 'boolean') {
       if ($new_value[$id] != "1")
         $value = "";
@@ -118,6 +120,24 @@ require "Include/Header.php";
 $sSQL = "SELECT * FROM config_cfg ORDER BY cfg_category, cfg_order";
 $rsConfigs = RunQuery($sSQL);
 ?>
+
+<div id="JSONSettingsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit JSON Settings</h4>
+        </div>
+        <div class="modal-body" id="JSONSettingsDiv">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary jsonSettingsClose">Save</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <div class="row">
   <div class="col-lg-12">
@@ -187,7 +207,15 @@ $rsConfigs = RunQuery($sSQL);
                         <option value='' <?= $sel1 ?>>False
                         <option value='1' <?= $sel2 ?>>True
                       </select>
-                    <?php } ?>
+                    <?php } elseif ($cfg_type == 'json') {
+                      ?>
+                      <input type="hidden" name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>'>
+                      <button class="btn-primary jsonSettingsEdit" id="set_value<?= $cfg_id ?>" data-cfgid="<?= $cfg_id ?>">Edit Settings</button>
+                        
+                        
+                      <?php
+                      
+                    } ?>
                   </td>
                   <?php
                   // Default Value
@@ -224,6 +252,7 @@ $(document).ready(function(){
    $("#timeZoneSelectBox").select2();
 }); 
 </script>
+<script src="skin/js/SystemSettings.js" type="text/javascript"></script>
 
 
 <?php require "Include/Footer.php" ?>
