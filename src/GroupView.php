@@ -25,10 +25,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\Service\GroupService;
 
-use ChurchCRM\Group;
-use ChurchCRM\GroupQuery;
 use ChurchCRM\ListOptionQuery;
-use ChurchCRM\ListOption;
 
 //Get the GroupID out of the querystring
 $iGroupID = FilterInput($_GET['GroupID'], 'int');
@@ -289,7 +286,9 @@ require 'Include/Header.php';
                     <br>
                     <?= gettext('Type of Group:') ?> <?= $sGroupType ?>
                     <br>
+                    <?php if (!is_null($defaultRole)) { ?>
                     <?= gettext('Default Role:') ?> <?= $defaultRole->getOptionName() ?>
+                    <?php } ?>
                     </font></div></td>
               </tr>
             </table>
