@@ -1,6 +1,6 @@
 <?php
 
-namespace ChurchCRM\Service;
+use ChurchCRM\Service\PersonService;
 
 class GroupService
 {

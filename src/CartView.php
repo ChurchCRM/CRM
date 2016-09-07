@@ -29,7 +29,6 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/LabelFunctions.php";
-require "Include/PersonFunctions.php";
 
 if (isset($_POST["rmEmail"]))
 {
