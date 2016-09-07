@@ -1,8 +1,8 @@
 <?php
 require "../Include/Config.php";
 require "../Include/Functions.php";
-require "../Service/GroupService.php";
 
+use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\SundaySchoolService;
 
 $groupService = new GroupService();

@@ -16,8 +16,8 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Service/NoteService.php";
 
+use ChurchCRM\Service\NoteService;
 use ChurchCRM\NoteQuery;
 
 // Security: User must have Notes permission

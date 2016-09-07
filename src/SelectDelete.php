@@ -16,7 +16,7 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Service/GroupService.php";
+use ChurchCRM\Service\GroupService;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.

@@ -1,6 +1,7 @@
 <?php
-require_once dirname(__FILE__).'/../Service/PersonService.php';
-require_once dirname(__FILE__).'/../Service/SystemService.php';
+
+use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\SystemService;
 
 /*******************************************************************************
 *
