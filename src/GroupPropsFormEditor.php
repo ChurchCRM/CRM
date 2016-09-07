@@ -34,7 +34,7 @@ $rsGroupInfo = RunQuery($sSQL);
 extract(mysql_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
-if ($grp_hasSpecialProps == 'false')
+if ($grp_hasSpecialProps == false)
 {
 	Redirect("GroupView.php?GroupID=" . $iGroupID);
 }

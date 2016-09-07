@@ -249,8 +249,10 @@
         <column name="grp_DefaultRole" phpName="DefaultRole" type="SMALLINT" size="9" required="true" defaultValue="0"/>
         <column name="grp_Name" phpName="Name" type="VARCHAR" size="50" required="true" defaultValue=""/>
         <column name="grp_Description" phpName="Description" type="LONGVARCHAR"/>
-        <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="CHAR" sqlType="enum('true','false')"
-                required="true" defaultValue="false"/>
+        <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="BOOLEAN" defaultValue="0"/>
+        <foreign-key foreignTable="list_lst">
+            <reference local="grp_Type" foreign="lst_OptionID"/>
+        </foreign-key>
         <index name="grp_ID_2">
             <index-column name="grp_ID"/>
         </index>
@@ -279,12 +281,12 @@
         </vendor>
     </table>
 
-    <table name="person2group2role_p2g2r" idMethod="native" phpName="Person2group2roleP2g2r">
-        <column name="p2g2r_per_ID" phpName="P2g2rPerId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
+    <table name="person2group2role_p2g2r" isCrossRef="true">
+        <column name="p2g2r_per_ID" phpName="PersonId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
                 primaryKey="true" required="true" defaultValue="0"/>
-        <column name="p2g2r_grp_ID" phpName="P2g2rGrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
+        <column name="p2g2r_grp_ID" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
                 primaryKey="true" required="true" defaultValue="0"/>
-        <column name="p2g2r_rle_ID" phpName="P2g2rRleId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
+        <column name="p2g2r_rle_ID" phpName="RoleId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
                 required="true" defaultValue="0"/>
         <index name="p2g2r_per_ID">
             <index-column name="p2g2r_per_ID"/>
@@ -467,6 +469,9 @@
         <column name="checkin_id" phpName="CheckinId" type="INTEGER"/>
         <column name="checkout_date" phpName="CheckoutDate" type="TIMESTAMP"/>
         <column name="checkout_id" phpName="CheckoutId" type="INTEGER"/>
+        <foreign-key foreignTable="events_event">
+            <reference local="event_id" foreign="event_id"/>
+        </foreign-key>
         <unique name="event_id">
             <unique-column name="event_id"/>
             <unique-column name="person_id"/>

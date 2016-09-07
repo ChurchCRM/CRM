@@ -1,20 +1,20 @@
 <?php
 
-require_once "EventService.php";
+namespace ChurchCRM\Service;
 
 use ChurchCRM\NoteQuery;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\EventAttendQuery;
+
 
 class TimelineService
 {
   private $baseURL;
   private $currentUser;
   private $currentUserIsAdmin;
-  private $eventService;
 
   public function __construct()
   {
-    $this->eventService = new EventService();
     $this->currentUser = $_SESSION['iUserID'];
     $this->currentUserIsAdmin = $_SESSION['bAdmin'];
     $this->baseURL = $_SESSION['sRootPath'];
@@ -52,10 +52,11 @@ class TimelineService
       }
     }
 
-    $events = $this->eventService->getEventsByPerson($personID);
-    foreach ($events as $event) {
-      $item = $this->createTimeLineItem("cal", $event["date"],
-        $event["title"], "", $event["desc"], "", "");
+    $eventsByPerson = EventAttendQuery::create()->findByPersonId($personID);
+    foreach ($eventsByPerson as $personEvent) {
+      $event = $personEvent->getEvent();
+      $item = $this->createTimeLineItem("cal", $event->getStart('Y-m-d h:i:s'), $event->getTitle(), "",
+        $event->getDesc(), "", "");
       $timeline[$item["key"]] = $item;
     }
 
