@@ -25,8 +25,6 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\GroupQuery;
-use ChurchCRM\Group;
 use ChurchCRM\Service\GroupService;
 
 //Set the page title
