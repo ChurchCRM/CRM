@@ -217,7 +217,7 @@ require "../Include/Header.php";
 
       <div class="modal-body">
         <div class="form-group">
-          <input type="text" id="new-class-name" class="form-control" placeholder="<?= gettext("Enter Name") ?> " required>
+          <input type="text" id="new-class-name" class="form-control" placeholder="<?= gettext("Enter Name") ?>" maxlength="20" required>
         </div>
       </div>
 
