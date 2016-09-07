@@ -1,5 +1,7 @@
 <?php
-require_once "FamilyService.php";
+
+namespace ChurchCRM\Service;
+
 require_once dirname(dirname(__FILE__)) . "/Include/ReportFunctions.php";
 require_once dirname(dirname(__FILE__)) . "/Include/ReportConfig.php";
 require_once dirname(dirname(__FILE__)) . "/Include/Functions.php";
@@ -630,7 +632,6 @@ class FinancialService
   function getPledgeorPayment($GroupKey)
   {
     requireUserGroupMembership("bFinance");
-    require_once "FamilyService.php";
     $total = 0;
     $FamilyService = New FamilyService();
     $sSQL = "SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey=\"" . $GroupKey . "\"";

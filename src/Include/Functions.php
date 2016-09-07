@@ -1,8 +1,7 @@
 <?php
 
 use ChurchCRM\Service\PersonService;
-
-require_once dirname(__FILE__) . '/../Service/SystemService.php';
+use ChurchCRM\Service\SystemService;
 
 /*******************************************************************************
  *

@@ -33,8 +33,8 @@
 
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 require_once dirname(__FILE__) . '/../orm/conf/config.php';
-require_once dirname(__FILE__).' /../Service/SystemService.php';
 
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\Version;
 
 
@@ -99,12 +99,6 @@ if (strlen($sRootPath) < 2) $sRootPath = '';
 
 // Some webhosts make it difficult to use DOCUMENT_ROOT.  Define our own!
 $sDocumentRoot = dirname(dirname(__FILE__));
-
-$version = mysql_fetch_row(mysql_query("SELECT version()"));
-
-if (substr($version[0], 0, 3) >= "4.1") {
-  mysql_query("SET NAMES 'utf8'");
-}
 
 // Read values from config table into local variables
 // **************************************************

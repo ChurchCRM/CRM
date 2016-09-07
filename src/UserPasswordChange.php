@@ -144,7 +144,7 @@ if (isset($_POST["Submit"]))
 
         // Is the password valid for length?
         elseif (strlen($sNewPassword1) < $sMinPasswordLength) {
-            $sNewPasswordError = "<br><font color=\"red\">" . gettext("Your new password must be at least") . $sMinPasswordLength . gettext("characters") . "</font>";
+            $sNewPasswordError = "<br><font color=\"red\">" . gettext("Your new password must be at least") . " " . $sMinPasswordLength . " " . gettext("characters") . "</font>";
             $bError = True;
         }
 

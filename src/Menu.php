@@ -26,10 +26,8 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'Service/FinancialService.php';
-
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\DashboardService;
-use ChurchCRM\DepositQuery;
 
 $financialService = new FinancialService();
 

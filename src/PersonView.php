@@ -18,7 +18,7 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require 'Service/MailchimpService.php';
+use ChurchCRM\Service\MailChimpService;
 require 'Service/TimelineService.php';
 
 use ChurchCRM\PersonQuery;
