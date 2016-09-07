@@ -12,7 +12,6 @@ class TimelineService
   private $baseURL;
   private $currentUser;
   private $currentUserIsAdmin;
-  private $log;
 
   public function __construct()
   {
