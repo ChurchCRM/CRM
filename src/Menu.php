@@ -27,9 +27,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/PersonFunctions.php';
-require 'Service/FinancialService.php';
-require "Service/DashboardService.php";
-use ChurchCRM\DepositQuery;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\DashboardService;
 
 $financialService = new FinancialService();
 
@@ -150,7 +149,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
         <div class="box box-info">
             <div class="box-header">
                 <i class="ion ion-cash"></i>
-                <h3 class="box-title">Deposit Tracking</h3>
+                <h3 class="box-title"><?= gettext("Deposit Tracking") ?></h3>
                 <div class="box-tools pull-right">
                     <div id="deposit-graph" class="chart-legend"></div>
                 </div>

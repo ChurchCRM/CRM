@@ -22,6 +22,6 @@ $sDATABASE = 'churchcrm_test';
 $sRootPath = '/src';
 require "./src/Include/LoadConfigs.php";
 require "./src/Include/Functions.php";
-require './src/Service/SystemService.php';
+
 spl_autoload_register('loader');
 

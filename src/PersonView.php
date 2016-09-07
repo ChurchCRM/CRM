@@ -19,7 +19,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require 'Include/PersonFunctions.php';
-require 'Service/MailchimpService.php';
+use ChurchCRM\Service\MailChimpService;
 require 'Service/TimelineService.php';
 
 $timelineService = new TimelineService();
@@ -754,7 +754,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="delete-Image-label">Confirm Delete</h4>
+        <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm Delete") ?></h4>
       </div>
 
       <div class="modal-body">
@@ -797,7 +797,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
 <?php } else { ?>
   <div class="error-page">
-    <h2 class="headline text-yellow"> 404</h2>
+    <h2 class="headline text-yellow">404</h2>
 
     <div class="error-content">
       <h3><i class="fa fa-warning text-yellow"></i><?= gettext("Oops! Person not found.") ?></h3>

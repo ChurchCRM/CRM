@@ -1,9 +1,8 @@
 <?php
 
-use ChurchCRM\Note;
-use ChurchCRM\NoteQuery;
-use ChurchCRM\PersonQuery;
+namespace ChurchCRM\Service;
 
+use ChurchCRM\Note;
 
 class NoteService
 {

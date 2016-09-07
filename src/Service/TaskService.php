@@ -1,5 +1,7 @@
 <?php
 
+namespace ChurchCRM\Service;
+
 class TaskService
 {
   private $baseURL;
@@ -30,6 +32,11 @@ class TaskService
     if ($sChurchName == "Some Church") {
       array_push($tasks, $this->addTask("Update Church Info", $this->baseURL."/SystemSettings.php", true));
     }
+
+    if ($sChurchAddress == "") {
+      array_push($tasks, $this->addTask("Set Church Address", $this->baseURL."/SystemSettings.php", true));
+    }
+
     if ($sSMTPHost == "") {
       array_push($tasks, $this->addTask("Set Email Settings", $this->baseURL."/SystemSettings.php", true));
     }

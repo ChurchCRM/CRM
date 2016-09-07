@@ -75,10 +75,12 @@
         <echo message="please update build.properties with the next verion file"/>
     </target>
 
-    <target name="change-log" depends="install-change-log">
+    <target name="update-change-log">
         <echo message="building changeset"/>
         <exec command="github_changelog_generator -t ${github.token}" dir="." passthru="true"/>
     </target>
+
+    <target name="change-log" depends="install-change-log, update-change-log" />
 
     <target name="locale-update">
         <echo message="building messages.po"/>
@@ -93,6 +95,7 @@
         <then>
           <propertyprompt propertyName="demoKey" promptText="Enter the demo site hook password" />
           <exec command = "git rev-parse --abbrev-ref HEAD" outputProperty="currentBranch" />
+          <exec command = "git log --pretty=format:'%H' -n 1" outputProperty="commitHash" />
           <if>
             <not>
               <or>
@@ -104,7 +107,7 @@
                 <propertyprompt propertyName="currentBranch" defaultValue="develop" promptText="Current branch is not master or develop. Enter branch to emulate:" />
             </then>
           </if>
-          <exec command = "curl -F 'demoKey=${demoKey}' -F 'branch=${currentBranch}' -F 'fileupload=@${builddir}/ChurchCRM-${build.version}.zip' http://demo.churchcrm.io/webhooks/DemoUpdate.php" passthru="true"/>
+          <exec command = "curl -F 'demoKey=${demoKey}' -F 'branch=${currentBranch}' -F 'commitHash=${commitHash}' -F 'fileupload=@${builddir}/ChurchCRM-${build.version}.zip' http://demo.churchcrm.io/webhooks/DemoUpdate.php" passthru="true"/>
         </then>
         <else>
             <echo message="You must build the source before pushing to demo site" />
