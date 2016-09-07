@@ -1,5 +1,7 @@
 <?php
 
+namespace ChurchCRM\Service;
+
 require_once "EventService.php";
 
 use ChurchCRM\NoteQuery;
