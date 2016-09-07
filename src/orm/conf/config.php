@@ -31,5 +31,5 @@ $manager->setName('default');
 $serviceContainer->setConnectionManager('default', $manager);
 $serviceContainer->setDefaultDatasource('default');
 $logger = new Logger('defaultLogger');
-$logger->pushHandler(new StreamHandler('/tmp/ChurchCrm-orm.log'));
+$logger->pushHandler(new StreamHandler('/tmp/ChurchCRM.log'));
 $serviceContainer->setLogger('defaultLogger', $logger);

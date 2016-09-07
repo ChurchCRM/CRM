@@ -91,7 +91,6 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 
 (100, 'generalsetting', 'admin', 0, 'Edit General Settings', 'Edit General Settings', 'SystemSettings.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
 (101, 'editusers', 'admin', 0, 'System Users', 'System Users', 'UserList.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 2, NULL),
-(102, 'accessreport', 'admin', 0, 'Access report', 'Access report', 'AccessReport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3, NULL),
 (104, 'customfamilyfld', 'admin', 0, 'Edit Custom Family Fields', 'Edit Custom Family Fields', 'FamilyCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 5, NULL),
 (105, 'custompersonfld', 'admin', 0, 'Edit Custom Person Fields', 'Edit Custom Person Fields', 'PersonCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 6, NULL),
 (106, 'donationfund', 'admin', 0, 'Edit Donation Funds', 'Edit Donation Funds', 'DonationFundEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 7, NULL),
