@@ -565,8 +565,8 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Status:") ?></td>
     <td colspan="3" class="TextColumn">
-      <?php $render->Radio("Inactive", "EventStatus", 0, ($iEventStatus == 0)); ?>
-      <?php $render->Radio("Active",   "EventStatus", 1, ($iEventStatus == 1)); ?>
+      <?php $render->Radio("Active",   "EventStatus", 0, ($iEventStatus == 0)); ?>
+      <?php $render->Radio("Inactive", "EventStatus", 1, ($iEventStatus == 1)); ?>
       <?php if ( $bStatusError ) echo "<div><span style=\"color: red;\">" . gettext("Is this Active or Inactive?") . "</span></div>"; ?>
     </td>
   </tr>
