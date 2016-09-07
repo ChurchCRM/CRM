@@ -1,6 +1,9 @@
 <?php
 
+namespace ChurchCRM\Service;
+
 use ChurchCRM\Family;
+use ChurchCRM\Group;
 use ChurchCRM\Person;
 
 class DataSeedService
@@ -78,6 +81,7 @@ class DataSeedService
       }
 
     }
+    $this->generateSundaySchoolClasses();
     echo '{"families created": ' . $families . ',"heads of household created": ' . $rTotalHoh . ', "spouses created":' . $rTotalSpouse . ', "children created":' . $rTotalChildren . ',"random.me response":' . $response . '}';
 
   }
@@ -85,7 +89,13 @@ class DataSeedService
   function generateSundaySchoolClasses()
   {
     requireUserGroupMembership("bAdmin");
-    echo '{"status":"Sunday School Seed Data Not Implemented"}';
+    $classNames = array("Angels class", "Class 1-3", "Class 4-5", "Class 6-7", "High School Class", "Youth Meeting");
+    foreach ($classNames as $className) {
+      $class = new Group();
+      $class->setName($className);
+      $class->setType(4);
+      $class->save();
+    }
   }
 
   function generateEvents()

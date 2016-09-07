@@ -1,5 +1,7 @@
 <?php
 
+namespace ChurchCRM\Service;
+
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
@@ -48,7 +50,7 @@ class SystemService
   function restoreDatabaseFromBackup()
   {
     requireUserGroupMembership("bAdmin");
-    $restoreResult = new StdClass();
+    $restoreResult = new \stdClass();
     $restoreResult->Messages = array();
     global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $sGZIPname;
     $file = $_FILES['restoreFile'];
@@ -99,7 +101,7 @@ class SystemService
     requireUserGroupMembership("bAdmin");
     global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME, $sGZIPname, $sZIPname, $sPGPname;
 
-    $backup = new StdClass();
+    $backup = new \stdClass();
     $backup->root = dirname(dirname(__FILE__));
     $backup->backupRoot = "$backup->root/tmp_attach/ChurchCRMBackups";
     $backup->imagesRoot = "Images";
@@ -181,7 +183,7 @@ class SystemService
     global $sExternalBackupType, $sExternalBackupUsername, $sExternalBackupPassword, $sExternalBackupEndpoint;
     if (strcasecmp($sExternalBackupType, "WebDAV") == 0) {
       if ($sExternalBackupUsername && $sExternalBackupPassword && $sExternalBackupEndpoint) {
-        $params = new stdClass();
+        $params = new \stdClass();
         $params->iArchiveType = 3;
         $backup = $this->getDatabaseBackup($params);
         $backup->credentials = $sExternalBackupUsername . ":" . $sExternalBackupPassword;
@@ -298,11 +300,11 @@ class SystemService
       if (in_array($db_version, $dbUpdate["versions"])) {
         $version = new Version();
         $version->setVersion($dbUpdate["dbVersion"]);
-        $version->setUpdateStart(new DateTime());
+        $version->setUpdateStart(new \DateTime());
         foreach ($dbUpdate["scripts"] as $dbScript) {
           $this->rebuildWithSQL($dbScript);
         }
-        $version->setUpdateEnd(new DateTime());
+        $version->setUpdateEnd(new \DateTime());
         $version->save();
         return true;
       }
