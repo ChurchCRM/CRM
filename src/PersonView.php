@@ -19,7 +19,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 use ChurchCRM\Service\MailChimpService;
-require 'Service/TimelineService.php';
+use ChurchCRM\Service\TimelineService;
 
 use ChurchCRM\PersonQuery;
 
