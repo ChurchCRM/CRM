@@ -1,7 +1,6 @@
 <?php
 
 
-// Services
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\GroupService;
