@@ -69,16 +69,6 @@ INSERT INTO `currency_denominations_cdem` (`cdem_denominationName`, `cdem_denomi
 ("$50", 50,'BILL'),
 ("$100", 100,'BILL');
 
-DROP TABLE IF EXISTS `pledge_denominations_pdem`;
-CREATE TABLE `pledge_denominations_pdem`(
- `pdem_pdemID` mediumint(9) NOT NULL auto_increment,
- `pdem_plg_GroupKey` text,
- `plg_depID` mediumint(9) unsigned default NULL,
- `pdem_denominationID` text,
- `pdem_denominationQuantity` mediumint(9) default NULL,
- PRIMARY KEY  (`pdem_pdemID`)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
-
 CREATE TABLE `pledgesplit_pls` (
   `pls_pledgesplitID` mediumint(9) NOT NULL auto_increment,
   `pls_plgID` mediumint(9) NOT NULL, 
