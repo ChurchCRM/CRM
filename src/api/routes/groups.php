@@ -115,14 +115,24 @@ $app->group('/groups', function () {
   $this->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
     $groupID = $args['groupID'];
     $roleID = $args['roleID'];
-    $input = $request->getParsedBody();
-    if (property_exists($input, "groupRoleName")) {
-      $this->GroupService->setGroupRoleName($groupID, $roleID, $input['groupRoleName']);
-    } elseif (property_exists($input, "groupRoleOrder")) {
-      $this->GroupService->setGroupRoleOrder($groupID, $roleID, $input['groupRoleOrder']);
+    $input = (object)$request->getParsedBody();
+    $group = GroupQuery::create()->findOneById($groupID);
+    if (isset($input->groupRoleName))
+    {
+      $groupRole =  ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
+      $groupRole->setOptionName($input->groupRoleName);
+      $groupRole->save();
+      return json_encode(["success" => true]);
+    } 
+    elseif (isset($input->groupRoleOrder)) 
+    {
+      $groupRole =  ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
+      $groupRole->setOptionSequence($input->groupRoleOrder);
+      $groupRole->save();
+      return json_encode(["success" => true]);
     }
 
-    echo json_encode(["success" => true]);
+    echo json_encode(["success" => false]);
   });
   
   $this->get('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
