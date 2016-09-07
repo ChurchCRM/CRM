@@ -33,11 +33,11 @@ require 'Include/Header.php';
 		<div class="form-group">
 			<label for="Num_Families"><?= gettext("Families to Seed")?></label>
 			<input type="text" name="Num_Families" id="Num_Families" value="20">
-			<button type="submit" class="btn btn-primary ajax" value="<?= gettext("Generate Seed Data")?>" id="SeedSubmit" name="SeedSubmit">"<?= gettext("Generate Seed Data")?></button>
+			<button type="submit" class="btn btn-primary ajax" value="<?= gettext("Generate Seed Data")?>" id="SeedSubmit" name="SeedSubmit"><?= gettext("Generate Seed Data")?></button>
 		</div>
 	</div>
     <div class="box box-footer">
-        <button type="button" class="btn btn-primary" value="Clear Results" name="ClearResults" onclick="javascript:$('#results').empty();">"<?= gettext("Clear Results")?></button>
+        <button type="button" class="btn btn-primary" value="Clear Results" name="ClearResults" onclick="javascript:$('#results').empty();"><?= gettext("Clear Results")?></button>
         <div id="results"></div>
     </div>
 </div>
