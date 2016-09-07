@@ -1,6 +1,6 @@
 <?php
 
-require_once "EventService.php";
+namespace ChurchCRM\Service;
 
 use ChurchCRM\NoteQuery;
 use ChurchCRM\PersonQuery;

@@ -1,6 +1,6 @@
 <?php
 
-use ChurchCRM\Service\PersonService;
+namespace ChurchCRM\Service;
 
 class GroupService
 {
@@ -604,34 +604,7 @@ class GroupService
     return $members;
   }
 
-  function checkGroupAgainstCart($groupID)
-  {
-    requireUserGroupMembership("bManageGroups");
-    $members = $this->getGroupMembersIds($groupID);
-    //echo "Members: ".count($members);
-    $bNoneInCart = TRUE;
-    $bAllInCart = TRUE;
-    //Loop through the recordset
-    foreach ($members as $member) {
-      if (!isset ($_SESSION['aPeopleCart']))
-        $bAllInCart = FALSE; // Cart does not exist.  This person is not in cart.
-      elseif (!in_array($member['id'], $_SESSION['aPeopleCart'], false))
-        $bAllInCart = FALSE; // This person is not in cart.
-      elseif (in_array($member['id'], $_SESSION['aPeopleCart'], false))
-        $bNoneInCart = FALSE; // This person is in the cart
-    }
-
-    if (!$bAllInCart) {
-      //there is at least one person in this group who is not in the cart.  Return false
-      return false;
-    }
-    if (!$bNoneInCart) {
-      //every member of this group is in the cart.  Return true
-      return true;
-    }
-    return false;
-  }
-
+ 
   function copyCartToGroup()
   {
     requireUserGroupMembership("bManageGroups");
