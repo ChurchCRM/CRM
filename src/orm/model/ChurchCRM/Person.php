@@ -81,7 +81,7 @@ class Person extends BasePerson
     $validextensions = array("jpeg", "jpg", "png");
     $hasFile = false;
     while (list(, $ext) = each($validextensions)) {
-      $photoFile = $baseURL . "/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
+      $photoFile = dirname(__FILE__) . "/../../../Images/Person/thumbnails/" . $this->getId() . "." . $ext;
       if (file_exists($photoFile)) {
         $hasFile = true;
         $photoFile = $this->baseURL . "/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
