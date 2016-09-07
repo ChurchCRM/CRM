@@ -467,6 +467,9 @@
         <column name="checkin_id" phpName="CheckinId" type="INTEGER"/>
         <column name="checkout_date" phpName="CheckoutDate" type="TIMESTAMP"/>
         <column name="checkout_id" phpName="CheckoutId" type="INTEGER"/>
+        <foreign-key foreignTable="events_event">
+            <reference local="event_id" foreign="event_id"/>
+        </foreign-key>
         <unique name="event_id">
             <unique-column name="event_id"/>
             <unique-column name="person_id"/>

@@ -23,6 +23,7 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\GroupService;
 
 //Get the GroupID out of the querystring
