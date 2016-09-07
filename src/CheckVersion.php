@@ -28,7 +28,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\VersionQuery;
+use ChurchCRM\Service\SystemService;
+
+$systemService = new SystemService();
+$_SESSION['latestVersion'] = $systemService->getLatestRelese();
 
 if ($systemService->checkDatabaseVersion())  //either the DB is good, or the upgrade was successful.
 {
