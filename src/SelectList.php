@@ -31,7 +31,6 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/PersonFunctions.php";
 
 $iTenThousand = 10000;  // Constant used to offset negative choices in drop down lists
 
