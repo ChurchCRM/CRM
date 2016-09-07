@@ -30,7 +30,7 @@ require "Include/GeoCoder.php";
 
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\FamilyService;
-require 'Service/TimelineService.php';
+use ChurchCRM\Service\TimelineService;
 
 use ChurchCRM\FamilyQuery;
 

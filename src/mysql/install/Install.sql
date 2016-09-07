@@ -673,7 +673,7 @@ CREATE TABLE `group_grp` (
   `grp_DefaultRole` mediumint(9) NOT NULL default '0',
   `grp_Name` varchar(50) NOT NULL default '',
   `grp_Description` text,
-  `grp_hasSpecialProps` enum('true','false') NOT NULL default 'false',
+  `grp_hasSpecialProps` BOOLEAN NOT NULL default 0,
   PRIMARY KEY  (`grp_ID`),
   UNIQUE KEY `grp_ID` (`grp_ID`),
   KEY `grp_ID_2` (`grp_ID`)
