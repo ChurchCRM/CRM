@@ -18,7 +18,7 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require_once "Service/GroupService.php";
+use ChurchCRM\Service\GroupService;
 
 $groupService = new GroupService();
 

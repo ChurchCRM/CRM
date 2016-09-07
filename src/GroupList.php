@@ -24,7 +24,7 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'Service/GroupService.php';
+use ChurchCRM\Service\GroupService;
 
 //Set the page title
 $sPageTitle = gettext('Group Listing');

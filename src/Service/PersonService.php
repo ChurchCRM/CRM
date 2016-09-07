@@ -1,5 +1,7 @@
 <?php
 
+namespace ChurchCRM\Service;
+
 class PersonService
 {
   private $baseURL;

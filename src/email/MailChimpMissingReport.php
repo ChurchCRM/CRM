@@ -13,8 +13,9 @@
 
 require '../Include/Config.php';
 require '../Include/Functions.php';
-require_once '../Service/MailchimpService.php';
-require_once '../Service/PersonService.php';
+
+use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Service\PersonService;
 
 $mailchimp = new MailChimpService();
 $personService = new PersonService();
