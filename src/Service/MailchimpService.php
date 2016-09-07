@@ -22,7 +22,7 @@ class MailChimpService
 
     if ($apikey != "") {
       $this->isActive = true;
-      $this->myMailchimp = new Mailchimp($apikey);
+      $this->myMailchimp = new \Mailchimp($apikey);
     }
   }
 
