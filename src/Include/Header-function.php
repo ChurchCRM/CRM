@@ -27,9 +27,10 @@
  *
  ******************************************************************************/
 
-require_once dirname(__FILE__) . '/../Service/PersonService.php';
 require_once 'Functions.php';
-require_once dirname(__FILE__) . "/../Service/TaskService.php";
+
+use ChurchCRM\Service\TaskService;
+use ChurchCRM\Service\PersonService;
 
 function Header_head_metatag() {
   global $sLanguage, $bExportCSV, $sMetaRefresh, $sHeader, $sGlobalMessage;

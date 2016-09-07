@@ -2,7 +2,8 @@
 
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Service/NoteService.php";
+
+use ChurchCRM\Service\NoteService;
 
 $noteService = new NoteService();
 $redirectURL="Menu.php";

@@ -14,8 +14,9 @@
 
 //Include the function library
 require "Include/Config.php";
-
 require "Include/Functions.php";
+
+use ChurchCRM\Service\EmailService;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Software Registration");
@@ -54,7 +55,6 @@ $sEmailMessage =
 
 // Save Settings
 if (isset ($_POST['Submit'])) {
-  require 'Service/EmailService.php';
 
   $emailService = new EmailService();
 

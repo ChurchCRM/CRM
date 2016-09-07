@@ -23,7 +23,7 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'Service/GroupService.php';
+use ChurchCRM\Service\GroupService;
 
 //Get the GroupID out of the querystring
 $iGroupID = FilterInput($_GET['GroupID'],'int');
