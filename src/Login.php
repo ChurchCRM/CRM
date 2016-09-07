@@ -282,8 +282,6 @@ if ($iUserID > 0)
             RunQuery($sSQL);
         }
 
-        $systemService = new SystemService();
-        $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         Redirect('CheckVersion.php');
         exit;
     }
