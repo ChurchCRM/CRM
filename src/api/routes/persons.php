@@ -13,13 +13,7 @@ $app->group('/persons', function ()  {
   });
   
   $this->get('/{personId:[0-9]+}/photo', function($request, $response, $args)  {
-    $person = PersonQuery::create()->findOneById($args['personId']);
-    
-    $path = $person->getPhoto(dirname(dirname(dirname(__FILE__))), false);
-   
-    $image = file_get_contents($path);
-    $finfo = new finfo(FILEINFO_MIME_TYPE);
-    $this->response->write($image);
-    return $this->response->withHeader('Content-Type', 'content-type: ' . $finfo->buffer($image));
+    $person = PersonQuery::create()->findPk($args['personId']);
+    return $response->withRedirect($person->getPhoto());
   });
 });
