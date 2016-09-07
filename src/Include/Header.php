@@ -42,23 +42,23 @@ $MenuFirst = 1;
 ?>
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <?php
-    require 'Header-HTML-Scripts.php';
-    Header_head_metatag();
-    ?>
-    <script src="<?= $sRootPath; ?>/skin/js/APIErrorHandler.js" type="text/javascript"></script>
-  </head>
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <?php
+  require 'Header-HTML-Scripts.php';
+  Header_head_metatag();
+  ?>
+  <script src="<?= $sRootPath; ?>/skin/js/APIErrorHandler.js" type="text/javascript"></script>
+</head>
 
-  <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
-      <?php
-      Header_modals();
-      Header_body_scripts();
-      Header_body_menu();
-      ?>
+<body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+    <?php
+        Header_modals();
+        Header_body_scripts();
+        Header_body_menu();
+    ?>
