@@ -97,6 +97,20 @@ $(document).ready(function() {
       });
     });
   });
+  
+  $("#addSelectedToCart").click(function() {
+    var selectedRows = dataT.rows('.selected').data()
+    $.each(selectedRows, function(index, value) {
+      $.ajax({
+        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+        url: window.CRM.root+'/api/persons/' +value.PersonId + "/addToCart", // the url where we want to POST
+        dataType: 'json', // what type of data do we expect back from the server
+        encode: true
+      });
+    });
+     location.reload();
+  });
+  
 
   $(document).on("click", ".changeMembership", function(e) {
     var userid = $(e.currentTarget).data("personid");
@@ -214,23 +228,5 @@ function initDataTable()
     $("#moveSelectedToGroup").prop('disabled', !(selectedRows));
     $("#moveSelectedToGroup").html("Move  (" + selectedRows + ") Members to another group");
   });
-
-
-   
-
-  
-}
-
-function initHandlers() {
-  $("#chkClear").click(function(e) {
-    $("#deleteGroupButton").prop("disabled", !e.target.checked);
-  });
-
-
-
-
-
-
-
-
+ 
 }

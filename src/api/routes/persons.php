@@ -16,4 +16,9 @@ $app->group('/persons', function ()  {
     $person = PersonQuery::create()->findPk($args['personId']);
     return $response->withRedirect($person->getPhoto());
   });
+  
+  $this->post('/{personId:[0-9]+}/addToCart', function($request, $response, $args)  {
+    AddToPeopleCart($args['personId']);
+  });
+  
 });
