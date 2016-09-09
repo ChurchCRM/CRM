@@ -23,8 +23,6 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-use ChurchCRM\Service\PersonService;
-use ChurchCRM\Service\GroupService;
 
 use ChurchCRM\ListOptionQuery;
 
