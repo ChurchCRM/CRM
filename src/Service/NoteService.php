@@ -17,7 +17,7 @@ class NoteService
     $note->setPrivate($private);
     $note->setText($text);
     $note->setType($type);
-    $note->setDateEntered(new DateTime());
+    $note->setDateEntered(new \DateTime());
     $note->setEnteredBy($_SESSION['iUserID']);
     $note->save();
 
