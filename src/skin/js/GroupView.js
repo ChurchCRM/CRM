@@ -148,13 +148,8 @@ $(document).ready(function() {
     var selectedRows = dataT.rows('.selected').data()
     var targetGroupId = $("#targetGroupSelection option:selected").val()
     var action = $("#targetGroupAction").val();
-    console.log(selectedRows);
-    console.log(targetGroupId);
-    console.log(action);
-    
+
     $.each(selectedRows, function(index, value) {
-      console.log("Performing " + action + " on ");
-      console.log(value);
       $.ajax({
         type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
         url: window.CRM.root+'/api/groups/' + targetGroupId+'/adduser/'+value.PersonId,
