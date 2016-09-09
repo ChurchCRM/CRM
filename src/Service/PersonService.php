@@ -13,20 +13,6 @@ class PersonService
     $this->baseURL = $_SESSION['sRootPath'];
   }
 
-  function getPhoto($id)
-  {
-    if ($id != "") {
-      $photoFile = $this->getUploadedPhoto($id);
-      if ($photoFile == "") {
-        $person = PersonQuery::create()->findPk($id);
-        $photoFile = $person->getPhoto();
-      }
-      return $photoFile;
-    }
-
-    return $this->baseURL . "/Images/x.gif";
-  }
-
   function deleteUploadedPhoto($id)
   {
     requireUserGroupMembership("bEditRecords");

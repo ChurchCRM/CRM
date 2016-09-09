@@ -15,10 +15,8 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\Service\MailChimpService;
-use ChurchCRM\Service\PersonService;
 
 $mailchimp = new MailChimpService();
-$personService = new PersonService();
 
 //Set the page title
 $sPageTitle = gettext('People not in Mailchimp');
@@ -53,8 +51,8 @@ $rsPeopleWithEmail = RunQuery($sSQL);
             $mailchimpList = $mailchimp->isEmailInMailChimp($per_Email);
             if ($mailchimpList == "") { ?>
               <tr>
-                <td><img class="contacts-list-img" src="<?= $personService->getPhoto($per_id) ?>"></td>
-                <td><a href='<?= $personService->getViewURI($per_id); ?>'><?= $per_FirstName . " " . $per_LastName ?></a></td>
+                <td><img class="contacts-list-img" src="<?=$sRootPath?>/api/persons/<?= $per_id ?>/photo"></td>
+                <td><a href=' "<?=$sRootPath?>/PersonView.php?PersonID="<?= $per_id ?>'><?= $per_FirstName . " " . $per_LastName ?></a></td>
                 <td><?= $per_Email ?></td>
               </tr>
             <?php }
