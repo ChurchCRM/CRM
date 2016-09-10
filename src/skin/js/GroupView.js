@@ -52,6 +52,24 @@ $(document).ready(function() {
     }
   });
 
+  $("#targetGroupSelection").select2({
+    ajax : {
+      url: window.CRM.root + "/api/groups/",
+      dataType: 'json',
+      processResults: function(rdata, page) {
+        var p =  $.map(rdata.Groups, function(item) {
+          var o = {
+              text: item.Name,
+              id: item.Id
+						};
+          return o;
+        });
+        return {results : p} ;
+      }
+    },
+    minimumResultsForSearch: Infinity
+  });
+
   $(".personSearch").on("select2:select", function(e) {
     $.ajax({
       method: "POST",
@@ -97,6 +115,70 @@ $(document).ready(function() {
       });
     });
   });
+  
+  $("#addSelectedToCart").click(function() {
+    var selectedRows = dataT.rows('.selected').data()
+    $.each(selectedRows, function(index, value) {
+      $.ajax({
+        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+        url: window.CRM.root+'/api/persons/' +value.PersonId + "/addToCart", // the url where we want to POST
+        dataType: 'json', // what type of data do we expect back from the server
+        encode: true
+      });
+    });
+     location.reload();
+  });
+  
+  //copy membership
+  $("#addSelectedToGroup").click(function() {
+    $("#selectTargetGroupModal").modal("show");
+    $("#targetGroupAction").val("copy");
+    
+  });
+  
+  $("#moveSelectedToGroup").click(function() {
+    $("#selectTargetGroupModal").modal("show");
+    $("#targetGroupAction").val("move");
+    
+  });
+  
+  
+  
+  $("#confirmTargetGroup").click(function(){
+    var selectedRows = dataT.rows('.selected').data()
+    var targetGroupId = $("#targetGroupSelection option:selected").val()
+    var action = $("#targetGroupAction").val();
+
+    $.each(selectedRows, function(index, value) {
+      $.ajax({
+        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+        url: window.CRM.root+'/api/groups/' + targetGroupId+'/adduser/'+value.PersonId,
+        dataType: 'json', // what type of data do we expect back from the server
+        encode: true
+      });
+      if (action == "move")
+      {
+        $.ajax({
+          type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+          url: window.CRM.root+'/api/groups/' + window.CRM.currentGroup +'/removeuser/'+value.PersonId,
+          dataType: 'json', // what type of data do we expect back from the server
+          encode: true,
+          data: {"_METHOD":"DELETE"},
+        }).done(function(data) {
+            dataT.row(function(idx, data, node) {
+             if(data.PersonId == value.PersonId) {
+               return true;
+             }
+           }).remove();
+           dataT.rows().invalidate().draw(true);
+        });
+      }
+    });
+     $(document).ajaxStop(function () {
+      $("#selectTargetGroupModal").modal("hide");
+  });
+  });
+  
 
   $(document).on("click", ".changeMembership", function(e) {
     var userid = $(e.currentTarget).data("personid");
@@ -214,23 +296,5 @@ function initDataTable()
     $("#moveSelectedToGroup").prop('disabled', !(selectedRows));
     $("#moveSelectedToGroup").html("Move  (" + selectedRows + ") Members to another group");
   });
-
-
-   
-
-  
-}
-
-function initHandlers() {
-  $("#chkClear").click(function(e) {
-    $("#deleteGroupButton").prop("disabled", !e.target.checked);
-  });
-
-
-
-
-
-
-
-
+ 
 }

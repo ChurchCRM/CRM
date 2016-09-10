@@ -149,7 +149,29 @@ require 'Include/Header.php';
         </div>
       </div>
       <!--END MEMBER ROLE MODAL-->
-
+      
+      <!-- TARGET GROP SELECT MODAL-->
+      <div class="modal fade" id="selectTargetGroupModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="upload-Image-label"><?= gettext("Select Target Group") ?></h4>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="targetGroupAction">
+              <span style="color: red"><?= gettext("Please select target group for members:") ?></span>
+              <select name="targetGroupSelection" id="targetGroupSelection" style="width: 50%">
+              </select>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
+              <button name="confirmTargetGroup" id="confirmTargetGroup" type="button" class="btn btn-danger"><?= gettext("Confirm Target Group") ?></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--TARGET GROP SELECT MODAL-->
 
 
       <?php
@@ -469,7 +491,6 @@ require 'Include/Header.php';
                     <table class="table" id="depositsTable"></table>
 
                     <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext("Remove Selected Members from group") ?> </button>
-                    <!--
                     <button type="button" id="exportSelectedRowsCSV" class="btn btn-success" data-exportType="csv" disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (CSV)") ?></button>
                     <div class="btn-group">
                       <button type="button" id="addSelectedToCart" class="btn btn-success"  disabled> <?= gettext("Add Selected Members to Cart") ?></button>
@@ -482,7 +503,6 @@ require 'Include/Header.php';
                         <li><a id="moveSelectedToGroup"  disabled> <?= gettext("Move Selected Members to Group") ?></a></li>
                       </ul>
                     </div>
-                    -->
                   </div>
                 </div>
                 </form>
