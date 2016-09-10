@@ -49,13 +49,13 @@ class MailChimpService
         array_push($listNames, $val["name"]);
       }
       return implode(",", $listNames);
-    } catch (Mailchimp_Invalid_ApiKey $e) {
+    } catch (\Mailchimp_Invalid_ApiKey $e) {
       return "Invalid ApiKey";
-    } catch (Mailchimp_List_NotSubscribed $e) {
+    } catch (\Mailchimp_List_NotSubscribed $e) {
       return "";
-    } catch (Mailchimp_Email_NotExists $e) {
+    } catch (\Mailchimp_Email_NotExists $e) {
       return "";
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       return $e;
     }
 
