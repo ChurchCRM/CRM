@@ -15,7 +15,7 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
+use ChurchCRM\Reports\ChurchInfoReport;
 require "../Include/class_fpdf_labels.php";
 
 class PDF_ConfirmLabels extends PDF_Label {
@@ -23,7 +23,7 @@ class PDF_ConfirmLabels extends PDF_Label {
 	// Constructor
 	function PDF_ConfirmLabels($sLabelFormat) {
    	parent::PDF_Label ($sLabelFormat);
-      $this->Open();
+      
 	}
 }
 

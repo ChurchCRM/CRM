@@ -1,5 +1,7 @@
 <?php
 
+namespace ChurchCRM\Reports;
+
 class PDF_DepositReport extends ChurchInfoReport
 {
 
@@ -26,15 +28,16 @@ class PDF_DepositReport extends ChurchInfoReport
   }
 
   // Constructor
-  function PDF_DepositReport()
+  function __construct()
   {
-    parent::FPDF("P", "mm", $this->paperFormat);
+    parent::__construct("P", "mm", $this->paperFormat);
 
-    $this->_Font = "Courier";
+    //
+    $this->SetFont("courier");
     $this->SetMargins(0, 0);
-    $this->Open();
     $this->Set_Char_Size(10);
     $this->SetAutoPageBreak(false);
+    
   }
 
 

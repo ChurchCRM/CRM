@@ -37,7 +37,8 @@
 *	  adjustment of label format parameters: 5160,
 *
 */
-
+namespace ChurchCRM\Reports;
+use ChurchCRM\Reports\ChurchInfoReport;
 
 class PDF_Label extends ChurchInfoReport
 {
@@ -110,7 +111,7 @@ class PDF_Label extends ChurchInfoReport
     }
 
 	// Constructor
-	function PDF_Label ($format, $posX=1, $posY=1, $unit='mm')
+	function __construct ($format, $posX=1, $posY=1, $unit='mm')
 	{
 		if (is_array($format)) {
 			// Custom format
@@ -120,7 +121,7 @@ class PDF_Label extends ChurchInfoReport
 			$Tformat = $this->_Avery_Labels[$format];
 		}
 
-		parent::FPDF('P', $unit, $Tformat['paper-size']);
+		parent::__construct('P', $unit, $Tformat['paper-size']);
 		$this->SetMargins(0,0);
 		$this->SetAutoPageBreak(false);
 

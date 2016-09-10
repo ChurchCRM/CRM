@@ -15,7 +15,7 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
+use ChurchCRM\Reports\ChurchInfoReport;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -181,10 +181,10 @@ if ($output == "pdf") {
 
 		// Constructor
 		function PDF_TaxReport() {
-			parent::FPDF("P", "mm", $this->paperFormat);
+			parent::__construct("P", "mm", $this->paperFormat);
 			$this->SetFont("Times",'',10);
 			$this->SetMargins(20,20);
-			$this->Open();
+			
 			$this->SetAutoPageBreak(false);
 		}
 
