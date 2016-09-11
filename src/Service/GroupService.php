@@ -121,7 +121,6 @@ class GroupService
    */
   function search($searchTerm)
   {
-   requireUserGroupMembership("bManageGroups"); 
     $sSQL = 'SELECT grp_ID FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type WHERE grp_Name LIKE \'%' . $searchTerm . '%\' OR  grp_Description LIKE \'%' . $searchTerm . '%\' OR lst_OptionName LIKE \'%' . $searchTerm . '%\'  order by grp_Name LIMIT 15';
     $result = mysql_query($sSQL);
     $return = array();
@@ -162,7 +161,6 @@ class GroupService
    */
   function getGroupRoles($groupID)
   {
-    requireUserGroupMembership("bManageGroups");
     $groupRoles = array ();
     $sSQL = "SELECT grp_ID, lst_OptionName, lst_OptionID, lst_OptionSequence
               FROM group_grp
@@ -217,7 +215,6 @@ class GroupService
 
   function getGroupDefaultRole($groupID)
   {
-    requireUserGroupMembership("bManageGroups");
     //Look up the default role name
     $sSQL = "SELECT lst_OptionName from list_lst INNER JOIN group_grp on (group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_DefaultRole = list_lst.lst_OptionID) WHERE group_grp.grp_ID = " . $groupID;
     $aDefaultRole = mysql_fetch_array(RunQuery($sSQL));
@@ -226,7 +223,6 @@ class GroupService
 
   function getGroupRoleOrder($groupID, $groupRoleID)
   {
-    requireUserGroupMembership("bManageGroups");
     $sSQL = 'SELECT list_lst.lst_OptionSequence FROM list_lst
                 INNER JOIN group_grp
                     ON group_grp.grp_RoleListID = list_lst.lst_ID
@@ -356,7 +352,6 @@ class GroupService
 
   function getGroupTotalMembers($groupID)
   {
-    requireUserGroupMembership("bManageGroups");
     //Get the count of members
     $sSQL = 'SELECT COUNT(*) AS iTotalMembers FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = ' . $groupID;
     $rsTotalMembers = mysql_fetch_array(RunQuery($sSQL));
@@ -365,7 +360,6 @@ class GroupService
 
   function getGroupTypes()
   {
-    requireUserGroupMembership("bManageGroups");
     $groupTypes = array();
     // Get Group Types for the drop-down
     $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 3 ORDER BY lst_OptionSequence";
@@ -378,7 +372,6 @@ class GroupService
 
   function getGroupRoleTemplateGroups()
   {
-    requireUserGroupMembership("bManageGroups");
     $templateGroups = array();
     $sSQL = "SELECT * FROM group_grp WHERE grp_RoleListID > 0 ORDER BY grp_Name";
     $rsGroupRoleSeed = RunQuery($sSQL);
@@ -514,7 +507,6 @@ class GroupService
 
   function getGroups($groupIDs = NULL)
   {
-    requireUserGroupMembership("bManageGroups");
     $whereClause = "";
     if (is_numeric($groupIDs)) {
       $whereClause = "WHERE grp_ID = " . $groupIDs;
@@ -553,7 +545,6 @@ class GroupService
 
   function getGroupMembers($groupID, $personID = null)
   {
-    requireUserGroupMembership("bManageGroups");
     $whereClause = "";
     if (is_numeric($personID)) {
       $whereClause = " AND p2g2r_per_ID = " . $personID;
@@ -583,7 +574,6 @@ class GroupService
 
   function getGroupMembersIds($groupID)
   {
-    requireUserGroupMembership("bManageGroups");
     $members = array();
     // Main select query
     $sSQL = "SELECT p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID, lst_OptionName FROM person2group2role_p2g2r
