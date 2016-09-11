@@ -23,7 +23,7 @@ if (!$_SESSION['bAdmin'])
 }
 
 //Set the page title
-$sPageTitle = gettext("Generate Seed Data");
+$sPageTitle = "Generate Seed Data";
 require 'Include/Header.php';
 ?>
 
@@ -31,13 +31,13 @@ require 'Include/Header.php';
 <div class="box">
 	<div class="box-body">
 		<div class="form-group">
-			<label for="Num_Families">Families to Seed</label>
+			<label for="Num_Families"><?= gettext("Families to Seed")?></label>
 			<input type="text" name="Num_Families" id="Num_Families" value="20">
-			<button type="submit" class="btn btn-primary ajax" value="Generate Seed Data" id="SeedSubmit" name="SeedSubmit">Generate Seed Data</button>
+			<button type="submit" class="btn btn-primary ajax" value="<?= gettext("Generate Seed Data")?>" id="SeedSubmit" name="SeedSubmit"><?= gettext("Generate Seed Data")?></button>
 		</div>
 	</div>
     <div class="box box-footer">
-        <button type="button" class="btn btn-primary" value="Clear Results" name="ClearResults" onclick="javascript:$('#results').empty();">Clear Results</button>
+        <button type="button" class="btn btn-primary" value="Clear Results" name="ClearResults" onclick="javascript:$('#results').empty();"><?= gettext("Clear Results")?></button>
         <div id="results"></div>
     </div>
 </div>
@@ -46,18 +46,10 @@ require 'Include/Header.php';
     $('#SeedForm').submit(function(event) {
 		event.preventDefault();
 		console.log("submit pressed");
-        // get the form data
-        // there are many ways to get this data using jQuery (you can use the class or id also)
-        var formData = {
-            "families" : $("#Num_Families").val()
-        };
-		console.log(JSON.stringify(formData));
-
        //process the form
        $.ajax({
-            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : window.CRM.root + '/api/data/seed/families', // the url where we want to POST
-            data        : JSON.stringify(formData), // our data object
+         type: 'GET', // define the type of HTTP verb we want to use (POST for our form)
+         url: window.CRM.root + '/api/data/seed/families/' + $("#Num_Families").val(), // the url where we want to POST
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true,
             beforeSend  : function () { 

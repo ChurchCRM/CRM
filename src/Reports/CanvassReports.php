@@ -17,25 +17,12 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
+use ChurchCRM\Reports\PDF_CanvassBriefingReport;
 
 //Get the Fiscal Year ID out of the querystring
 $iFYID = FilterInput($_GET["FYID"],'int');
 $sWhichReport = FilterInput($_GET["WhichReport"]);
 
-class PDF_CanvassBriefingReport extends ChurchInfoReport {
-
-	// Constructor
-	function PDF_CanvassBriefingReport() {
-		parent::FPDF("P", "mm", $this->paperFormat);
-
-		$this->SetFont('Times','', 10);
-		$this->SetMargins(0,0);
-		$this->Open();
-		$this->SetAutoPageBreak(false);
-		$this->AddPage ();
-	}
-}
 
 function TopPledgersLevel ($iFYID, $iPercent)
 {

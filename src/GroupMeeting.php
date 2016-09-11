@@ -155,9 +155,7 @@ require "Include/Header.php";
 
 <div class="alert alert-info alert-dismissable">
 		<i class="fa fa-info"></i>
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;&nbsp;Important note: this form may be used to schedule a WebCalendar meeting.  Once the 
-meeting is scheduled any changes must be made within WebCalendar.  All members of
-this group will be added to the meeting as external users of WebCalendar.
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;&nbsp;<?= gettext("Important note: this form may be used to schedule a WebCalendar meeting.  Once the  meeting is scheduled any changes must be made within WebCalendar.  All members of this group will be added to the meeting as external users of WebCalendar.")?>
 </div>
 <div class="box box-body">
 <form method="post" action="GroupMeeting.php?<?= "GroupID=" . $iGroupID . "&linkBack=" . $linkBack . "&Name=" . $tName ?>" name="GroupMeeting">

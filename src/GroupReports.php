@@ -59,7 +59,7 @@ require "Include/Header.php";
                         <div class="col-xs-6">
                             <label for=""><?= gettext("Select Role:") ?></label>
                             <select name="GroupRole" id="GroupRole">
-                                <option><?= gettext("No Group Selected") ?></option>
+                                <option><?= gettext("No Role Selected") ?></option>
                             </select>
                         </div>
                     </div>

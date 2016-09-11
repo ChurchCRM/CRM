@@ -1,6 +1,6 @@
 {
-  "name": "churchCRM/CRM",
-  "version": "2.1.12",
+  "name": "ChurchCRM/CRM",
+  "version": "2.2.0",
   "type": "project",
   "keywords": [
     "church",
@@ -29,12 +29,26 @@
     "docs": "http://docs.churchcrm.io"
   },
   "require": {
+    "php": ">=5.6.0",
     "mailchimp/mailchimp": "2.0.6",
-    "slim/slim": "2.6.2",
+    "slim/slim": "3.4.1",
+    "slim/php-view": "2.1",
+    "monolog/monolog": "^1.17",
     "authorizenet/authorizenet": "1.8.0",
     "knplabs/github-api": "~1.4",
-    "almasaeed2010/adminlte": "2.3.2",
+    "almasaeed2010/adminlte": "2.3.3",
     "driftyco/ionicons": "2.0.1",
-    "components/font-awesome": "4.5.0"
+    "components/font-awesome": "4.6.3",
+    "propel/propel": "~2.0@dev",
+    "setasign/fpdf": "1.8.1"
+  },
+  "autoload": {
+    "classmap": [
+      "orm/"
+    ],
+    "psr-4": {
+      "ChurchCRM\\Service\\": "Service/",
+      "ChurchCRM\\Reports\\"  : "Reports/"
+    }
   }
 }

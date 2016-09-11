@@ -35,7 +35,7 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
+use ChurchCRM\Reports\ChurchInfoReport;
 
 require "../Include/class_fpdf_labels.php";
 

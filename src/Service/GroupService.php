@@ -1,6 +1,6 @@
 <?php
 
-require_once "PersonService.php";
+namespace ChurchCRM\Service;
 
 class GroupService
 {
@@ -512,27 +512,6 @@ class GroupService
     RunQuery($sSQL);
   }
 
-  function updateGroup($groupID, $groupData)
-  {
-    requireUserGroupMembership("bManageGroups");
-    //Assign everything locally
-    $thisGroup['grp_Name'] = $groupData->groupName;
-    $thisGroup['grp_type'] = $groupData->groupType;
-    $thisGroup['grp_Description'] = $groupData->description;
-
-    //Did they enter a Name?
-    if (strlen($thisGroup['grp_Name']) < 1) {
-      throw new Exception ("You must enter a name");
-    }
-
-    $sSQL = "UPDATE group_grp SET grp_Name='" . mysql_real_escape_string($thisGroup['grp_Name']) . "', grp_Type='" . $thisGroup['grp_type'] . "', grp_Description='" . mysql_real_escape_string($thisGroup['grp_Description']) . "'";
-
-    $sSQL .= " WHERE grp_ID = " . $groupID;
-    // execute the SQL
-    RunQuery($sSQL);
-    return '{"success":"true"}';
-  }
-
   function getGroups($groupIDs = NULL)
   {
     requireUserGroupMembership("bManageGroups");
@@ -625,34 +604,7 @@ class GroupService
     return $members;
   }
 
-  function checkGroupAgainstCart($groupID)
-  {
-    requireUserGroupMembership("bManageGroups");
-    $members = $this->getGroupMembersIds($groupID);
-    //echo "Members: ".count($members);
-    $bNoneInCart = TRUE;
-    $bAllInCart = TRUE;
-    //Loop through the recordset
-    foreach ($members as $member) {
-      if (!isset ($_SESSION['aPeopleCart']))
-        $bAllInCart = FALSE; // Cart does not exist.  This person is not in cart.
-      elseif (!in_array($member['id'], $_SESSION['aPeopleCart'], false))
-        $bAllInCart = FALSE; // This person is not in cart.
-      elseif (in_array($member['id'], $_SESSION['aPeopleCart'], false))
-        $bNoneInCart = FALSE; // This person is in the cart
-    }
-
-    if (!$bAllInCart) {
-      //there is at least one person in this group who is not in the cart.  Return false
-      return false;
-    }
-    if (!$bNoneInCart) {
-      //every member of this group is in the cart.  Return true
-      return true;
-    }
-    return false;
-  }
-
+ 
   function copyCartToGroup()
   {
     requireUserGroupMembership("bManageGroups");

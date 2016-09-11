@@ -16,7 +16,7 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
+use ChurchCRM\Reports\ChurchInfoReport;
 
 $iCurrentFundraiser = $_GET["CurrentFundraiser"];
 
@@ -25,11 +25,11 @@ $curY = 0;
 class PDF_FRCatalogReport extends ChurchInfoReport {
 	// Constructor
 	function PDF_FRCatalogReport() {
-		parent::FPDF("P", "mm", $this->paperFormat);
+		parent::__construct("P", "mm", $this->paperFormat);
 		$this->leftX = 10;
 		$this->SetFont("Times",'',10);
 		$this->SetMargins(10,20);
-		$this->Open();
+		
 		$this->AddPage ();
 		$this->SetAutoPageBreak(true, 25);
 	}

@@ -18,7 +18,8 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/CanvassUtilities.php";
 require "Include/GeoCoder.php";
-require 'Service/NoteService.php';
+
+use ChurchCRM\Service\NoteService;
 
 $noteService = new NoteService();
 
@@ -799,7 +800,7 @@ require "Include/Header.php";
 	</div>
 	<div class="box box-info clearfix">
 		<div class="box-header">
-			<h3 class="box-title"><?= gettext("Other Info") ?></h3>
+			<h3 class="box-title"><?= gettext("Other Info:") ?></h3>
 			<div class="pull-right"><br/>
 				<input type="submit" class="form-control" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
@@ -1008,7 +1009,7 @@ require "Include/Header.php";
 			</td>
 			<td class="TextColumn">
 				<select name="BirthDay<?= $iCount ?>">
-					<option value="0">Unk</option>
+					<option value="0"><?= gettext("Unk")?></option>
 					<?php for ($x=1; $x < 32; $x++)
 					{
 						if ($x < 10) { $sDay = "0" . $x; } else { $sDay = $x; }
@@ -1058,9 +1059,9 @@ require "Include/Header.php";
 	echo "<td colspan=\"2\" align=\"center\">";
 	echo "<input type=\"hidden\" Name=\"UpdateBirthYear\" value=\"".$UpdateBirthYear."\">";
 
-	echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\">";
-	if ($_SESSION['bAddRecords']) { echo "<input type=\"submit\" class=\"btn\" value=\"Save and Add\" name=\"FamilySubmitAndAdd\">"; }
-	echo "<input type=\"button\" class=\"btn\" value=\"" . gettext("Cancel") . "\" Name=\"FamilyCancel\"";
+	echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\"> ";
+	if ($_SESSION['bAddRecords']) { echo " <input type=\"submit\" class=\"btn\" value=\"".gettext("Save and Add")."\" name=\"FamilySubmitAndAdd\"> "; }
+	echo " <input type=\"button\" class=\"btn\" value=\"" . gettext("Cancel") . "\" Name=\"FamilyCancel\"";
 	if ($iFamilyID > 0)
 		echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
 	else

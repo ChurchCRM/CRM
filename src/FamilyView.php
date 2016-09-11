@@ -27,10 +27,12 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/GeoCoder.php";
-require 'Include/PersonFunctions.php';
-require 'Service/MailchimpService.php';
-require 'Service/FamilyService.php';
-require 'Service/TimelineService.php';
+
+use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\TimelineService;
+
+use ChurchCRM\FamilyQuery;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -92,14 +94,7 @@ if ($iFamilyID == $fam_ID) {
   $rsFamCustomData = RunQuery($sSQL);
   $aFamCustomData = mysql_fetch_array($rsFamCustomData, MYSQL_BOTH);
 
-//Get the family members for this family
-  $sSQL = "SELECT per_ID, per_Title, per_FirstName, per_LastName, per_Suffix, per_Gender, per_Email,
-		per_BirthMonth, per_BirthDay, per_BirthYear, per_Flags, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole
-		FROM person_per
-		LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
-		LEFT JOIN list_lst fmr ON per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
-		WHERE per_fam_ID = " . $iFamilyID . " ORDER BY fmr.lst_OptionSequence";
-  $rsFamilyMembers = RunQuery($sSQL);
+  $family = FamilyQuery::create()->findPk($iFamilyID);
 
 //Get the pledges for this family
   $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
@@ -164,51 +159,63 @@ if ($iFamilyID == $fam_ID) {
     <div class="col-lg-3 col-md-4 col-sm-4">
       <div class="box box-primary">
         <div class="box-body">
-          <img src="<?= $familyService->getFamilyPhoto($fam_ID) ?>" alt="" class="img-circle img-responsive profile-user-img"/>
+          <img src="<?= $familyService->getFamilyPhoto($fam_ID) ?>" alt=""
+               class="img-circle img-responsive profile-user-img"/>
 
           <h3 class="profile-username text-center"><?= gettext("The") . " $fam_Name " . gettext("Family") ?></h3>
           <?php if ($bOkToEdit) { ?>
-            <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="btn btn-primary btn-block"><b>Edit</b></a>
+            <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>"
+               class="btn btn-primary btn-block"><b><?= gettext("Edit") ?></b></a>
           <?php } ?>
           <hr/>
           <ul class="fa-ul">
             <li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
-					<a href="http://maps.google.com/?q=<?= getMailingAddress($fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) ?>" target="_blank"><?php
+					<a
+            href="http://maps.google.com/?q=<?= getMailingAddress($fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) ?>"
+            target="_blank"><?php
             echo getMailingAddress($fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
             echo "</a></span><br>";
             if ($fam_Latitude && $fam_Longitude) {
               if ($nChurchLatitude && $nChurchLongitude) {
                 $sDistance = LatLonDistance($nChurchLatitude, $nChurchLongitude, $fam_Latitude, $fam_Longitude);
                 $sDirection = LatLonBearing($nChurchLatitude, $nChurchLongitude, $fam_Latitude, $fam_Longitude);
-                echo $sDistance . " " . strtolower($sDistanceUnit) . " " . $sDirection . " of church<br>";
+                echo $sDistance . " " . strtolower($sDistanceUnit) . " " . $sDirection . " " . gettext(" of church<br>");
               }
+            }   else {
+              $bHideLatLon = true;
             }
             ?>
             <?php if (!$bHideLatLon) { /* Lat/Lon can be hidden - General Settings */ ?>
-              <li><i class="fa-li fa fa-compass"></i><?= gettext("Latitude/Longitude") ?> <span><?= $fam_Latitude . " / " . $fam_Longitude ?></span></li>
+              <li><i class="fa-li fa fa-compass"></i><?= gettext("Latitude/Longitude") ?>
+                <span><?= $fam_Latitude . " / " . $fam_Longitude ?></span></li>
             <?php }
             if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
-              <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send newsletter:") ?> <span><?= $fam_SendNewsLetter ?></span></li>
+              <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send newsletter:") ?>
+                <span><?= gettext($fam_SendNewsLetter) ?></span></li>
             <?php }
-            if (!$bHideWeddingDate) { /* Wedding Date can be hidden - General Settings */ ?>
-              <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date:") ?> <span><?= FormatDate($fam_WeddingDate, false) ?></span></li>
+            if (!$bHideWeddingDate && $fam_WeddingDate != "") { /* Wedding Date can be hidden - General Settings */ ?>
+              <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date:") ?>
+                <span><?= FormatDate($fam_WeddingDate, false) ?></span></li>
             <?php }
             if ($bUseDonationEnvelopes) { ?>
-              <li><i class="fa-li fa fa-phone"></i><?= gettext("Envelope Number") ?> <span><?= $fam_Envelope ?></span></li>
+              <li><i class="fa-li fa fa-phone"></i><?= gettext("Envelope Number") ?> <span><?= $fam_Envelope ?></span>
+              </li>
             <?php }
             if ($sHomePhone != "") { ?>
-              <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><?= $sHomePhone ?></span></li>
+              <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><a href="tel:<?= $sHomePhone ?>"><?= $sHomePhone ?></a></span></li>
             <?php }
             if ($sWorkPhone != "") { ?>
-              <li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone:") ?> <span><?= $sWorkPhone ?></span></li>
+              <li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone:") ?> <span><a href="tel:<?= $sWorkPhone ?>"><?= $sWorkPhone ?></a></span></li>
             <?php }
             if ($sCellPhone != "") { ?>
-              <li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone:") ?> <span><?= $sCellPhone ?></span></li>
+              <li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone:") ?> <span><a href="tel:<?= $sCellPhone ?>"><?= $sCellPhone ?></a></span></li>
             <?php }
             if ($fam_Email != "") { ?>
-            <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email:") ?><a href="mailto:<?= $fam_Email ?>"> <span><?= $fam_Email ?></span></a></li>
+            <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email:") ?><a href="mailto:<?= $fam_Email ?>">
+                <span><?= $fam_Email ?></span></a></li>
             <?php if ($mailchimp->isActive()) { ?>
-            <li><i class="fa-li glyphicon glyphicon-send"></i><?= gettext("Email:") ?> <span><?= $mailchimp->isEmailInMailChimp($fam_Email) ?></span>
+            <li><i class="fa-li glyphicon glyphicon-send"></i><?= gettext("Email:") ?>
+              <span><?= $mailchimp->isEmailInMailChimp($fam_Email) ?></span>
           </a></li>
             <?php }
             }
@@ -229,31 +236,44 @@ if ($iFamilyID == $fam_ID) {
     <div class="col-lg-9 col-md-8 col-sm-8">
       <div class="row">
         <div class="box"><br/>
-          <a class="btn btn-app bg-aqua-active" href="FamilyVerify.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-check-square"></i> Verify Info</a>
-          <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-plus-square"></i> Add New Member</a>
+          <a class="btn btn-app bg-aqua-active" href="FamilyVerify.php?FamilyID=<?= $iFamilyID ?>"><i
+              class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
+          <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i
+              class="fa fa-plus-square"></i> <?= gettext("Add New Member") ?></a>
           <?php if (($previous_id > 0)) { ?>
-            <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i class="fa fa-hand-o-left"></i> Previous Family</a>
+            <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i
+                class="fa fa-hand-o-left"></i><?= gettext("Previous Family") ?></a>
           <?php } ?>
-          <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i class="fa fa-list-ul"></i> Family List</a>
+          <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
+              class="fa fa-list-ul"></i><?= gettext("Family List") ?></a>
           <?php if (($next_id > 0)) { ?>
-            <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i class="fa fa-hand-o-right"></i>Next Family </a>
+            <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
+                class="fa fa-hand-o-right"></i><?= gettext("Next Family") ?> </a>
           <?php } ?>
           <?php if ($_SESSION['bDeleteRecords']) { ?>
-            <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-trash-o"></i> Delete this Family</a>
+            <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
+                class="fa fa-trash-o"></i><?= gettext("Delete this Family") ?></a>
           <?php } ?>
           <br/>
           <?php if ($bOkToEdit) { ?>
-            <a class="btn btn-app" href="#" data-toggle="modal" data-target="#upload-image"><i class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
+            <a class="btn btn-app" href="#" data-toggle="modal" data-target="#upload-image"><i
+                class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
             <?php if ($familyService->getUploadedPhoto($iFamilyID) != "") { ?>
-              <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i> <?= gettext("Delete Photo") ?> </a>
+              <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i
+                  class="fa fa-remove"></i> <?= gettext("Delete Photo") ?> </a>
             <?php }
           }
           if ($_SESSION['bNotes']) { ?>
-            <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i class="fa fa-sticky-note"></i> Add a Note</a>
+            <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i
+                class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
           <?php } ?>
-          <a class="btn btn-app" href="Reports/ConfirmReport.php?familyId=<?= $iFamilyID ?>"><i class="fa fa-download"></i> Download PDF Report</a>
-          <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-email-pdf"><i class="fa fa-send"></i> Email PDF Report</a>
-          <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i class="fa fa-cart-plus"></i> Add All Family Members to Cart</a>
+          <a class="btn btn-app" href="Reports/ConfirmReport.php?familyId=<?= $iFamilyID ?>"><i
+              class="fa fa-download"></i><?= gettext("Download PDF Report") ?></a>
+          <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-email-pdf"><i
+              class="fa fa-send"></i><?= gettext("Email PDF Report") ?></a>
+          <a class="btn btn-app"
+             href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i
+              class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
         </div>
       </div>
     </div>
@@ -265,30 +285,37 @@ if ($iFamilyID == $fam_ID) {
             <table class="table user-list table-hover">
               <thead>
               <tr>
-                <th><span>Family Members</span></th>
-                <th class="text-center"><span>Role</span></th>
-                <th><span>Birthday</span></th>
-                <th><span>Email</span></th>
+                <th><span><?= gettext("Family Members") ?></span></th>
+                <th class="text-center"><span><?= gettext("Role") ?></span></th>
+                <th><span><?= gettext("Birthday") ?></span></th>
+                <th><span><?= gettext("Email") ?></span></th>
                 <th></th>
               </tr>
               </thead>
               <tbody>
-              <?php while ($Row = mysql_fetch_array($rsFamilyMembers)) {
-                $tmpPersonId = $Row["per_ID"];
-                ?>
+              <?php foreach ($family->getPeople() as $person) { ?>
                 <tr>
                   <td>
-                    <img src="<?= $personService->getPhoto($tmpPersonId) ?>" width="40" height="40" class="img-circle"/>
-                    <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $Row["per_FirstName"] . " " . $Row["per_LastName"] ?> </a>
+                    <img src="<?= $person->getPhoto() ?>" width="40" height="40" class="img-circle"/>
+                    <a href="<?= $person->getViewURI() ?>" class="user-link"><?= $person->getFullName() ?> </a>
                   </td>
                   <td class="text-center">
-                    <?= getRoleLabel($Row["sFamRole"]) ?>
+                    <?php
+                    $famRole = $person->getFamilyRoleName();
+                    $labelColor = "label-default";
+                    if ($famRole == "Head of Household") {
+                    } else if ($famRole == "Spouse") {
+                    $labelColor = "label-info";
+                    } else if ($famRole == "Child") {
+                    $labelColor = "label-warning";
+                    }?>
+                    <span class='label <?= $labelColor ?>'> <?= $famRole ?></span>
                   </td>
                   <td>
-                    <?= FormatBirthDate($Row["per_BirthYear"], $Row["per_BirthMonth"], $Row["per_BirthDay"], "-", $Row["per_Flags"]) ?>
+                    <?= $person->getBirthDate() ?>
                   </td>
                   <td>
-                    <?php $tmpEmail = $Row["per_Email"];
+                    <?php $tmpEmail = $person->getEmail();
                     if ($tmpEmail != "") {
                       array_push($sFamilyEmails, $tmpEmail);
                       ?>
@@ -296,20 +323,20 @@ if ($iFamilyID == $fam_ID) {
                     <?php } ?>
                   </td>
                   <td style="width: 20%;">
-                    <a href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddToPeopleCart=<?= $tmpPersonId ?>">
+                    <a href="FamilyView.php?FamilyID=<?= $person->getId() ?>&AddToPeopleCart=<?= $person->getId() ?>">
                                         <span class="fa-stack">
                                             <i class="fa fa-square fa-stack-2x"></i>
                                             <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
                                         </span>
                     </a>
                     <?php if ($bOkToEdit) { ?>
-                      <a href="PersonEditor.php?PersonID=<?= $tmpPersonId ?>" class="table-link">
+                      <a href="PersonEditor.php?PersonID=<?= $person->getId() ?>" class="table-link">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                     </span>
                       </a>
-                      <a href="SelectDelete.php?mode=person&PersonID=<?= $tmpPersonId ?>" class="table-link">
+                      <a href="SelectDelete.php?mode=person&PersonID=<?= $person->getId() ?>" class="table-link">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -331,11 +358,15 @@ if ($iFamilyID == $fam_ID) {
       <div class="nav-tabs-custom">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#timeline" aria-controls="timeline" role="tab" data-toggle="tab"><?= gettext("Timeline") ?></a></li>
-          <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
+          <li role="presentation" class="active"><a href="#timeline" aria-controls="timeline" role="tab"
+                                                    data-toggle="tab"><?= gettext("Timeline") ?></a></li>
+          <li role="presentation"><a href="#properties" aria-controls="properties" role="tab"
+                                     data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
           <?php if ($_SESSION['bFinance']) { ?>
-            <li role="presentation"><a href="#finance" aria-controls="finance" role="tab" data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
-            <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab" data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
+            <li role="presentation"><a href="#finance" aria-controls="finance" role="tab"
+                                       data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
+            <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab"
+                                       data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
           <?php } ?>
 
         </ul>
@@ -366,7 +397,7 @@ if ($iFamilyID == $fam_ID) {
                       <?php if (in_array('headerlink', $item)) { ?>
                         <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                       <?php } else { ?>
-                        <?= $item['header'] ?>
+                        <?= gettext($item['header']) ?>
                       <?php } ?>
                     </h3>
 
@@ -403,7 +434,8 @@ if ($iFamilyID == $fam_ID) {
                 if (mysql_num_rows($rsAssignedProperties) == 0) { ?>
                   <br>
                   <div class="alert alert-warning">
-                    <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No property assignments.") ?></span>
+                    <i class="fa fa-question-circle fa-fw fa-lg"></i>
+                    <span><?= gettext("No property assignments.") ?></span>
                   </div>
                 <?php } else {
                   //Yes, start the table
@@ -490,7 +522,8 @@ if ($iFamilyID == $fam_ID) {
                           }
                           ?>
                         </select>
-                        <input type="submit" class="btn btn-default" value="Assign" name="Submit2" style="font-size: 8pt;">
+                        <input type="submit" class="btn btn-default" value="<?= gettext("Assign") ?>" name="Submit2"
+                               style="font-size: 8pt;">
                         </p>
                       </form>
                     </div>
@@ -556,13 +589,15 @@ if ($iFamilyID == $fam_ID) {
                           <?= $aut_Interval ?>&nbsp;
                         </td>
                         <td>
-                          <?= $fundName ?>&nbsp;
+                          <?= gettext($fundName) ?>&nbsp;
                         </td>
                         <td>
-                          <a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
+                          <a
+                            href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Edit") ?></a>
                         </td>
                         <td>
-                          <a href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
+                          <a
+                            href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Delete") ?></a>
                         </td>
                         <td>
                           <?= $aut_DateLastEdited ?>&nbsp;
@@ -576,7 +611,8 @@ if ($iFamilyID == $fam_ID) {
                   </table>
                 <?php } ?>
                 <p align="center">
-                  <a class="SmallText" href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Add a new automatic payment") ?></a>
+                  <a class="SmallText"
+                     href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Add a new automatic payment") ?></a>
                 </p>
               </div>
             </div>
@@ -585,11 +621,15 @@ if ($iFamilyID == $fam_ID) {
             <div class="main-box clearfix">
               <div class="main-box-body clearfix">
                 <form method="post" action="FamilyView.php?FamilyID=<?= $iFamilyID ?>">
-                  <input type="checkbox" name="ShowPledges" value="1" <?php if ($_SESSION['sshowPledges']) echo " checked"; ?>><?= gettext("Show Pledges") ?>
-                  <input type="checkbox" name="ShowPayments" value="1" <?php if ($_SESSION['sshowPayments']) echo " checked"; ?>><?= gettext("Show Payments") ?>
-                  Since:
-                  <input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate" value="<?= $_SESSION['sshowSince'] ?>" maxlength="10" id="ShowSinceDate" size="15">
-                  <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?> name="UpdatePledgeTable" style="font-size: 8pt;">
+                  <input type="checkbox" name="ShowPledges"
+                         value="1" <?php if ($_SESSION['sshowPledges']) echo " checked"; ?>><?= gettext("Show Pledges") ?>
+                  <input type="checkbox" name="ShowPayments"
+                         value="1" <?php if ($_SESSION['sshowPayments']) echo " checked"; ?>><?= gettext("Show Payments") ?>
+                  <?= gettext(" Since:") ?>
+                  <input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate"
+                         value="<?= $_SESSION['sshowSince'] ?>" maxlength="10" id="ShowSinceDate" size="15">
+                  <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?> name="UpdatePledgeTable"
+                         style="font-size: 8pt;">
                 </form>
 
                 <table cellpadding="4" cellspacing="0" width="100%">
@@ -682,10 +722,12 @@ if ($iFamilyID == $fam_ID) {
                             <?= $plg_comment ?>&nbsp;
                           </td>
                           <td>
-                            <a href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
+                            <a
+                              href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
                           </td>
                           <td>
-                            <a href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
+                            <a
+                              href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
                           </td>
                           <td>
                             <?= $plg_DateLastEdited ?>&nbsp;
@@ -704,8 +746,10 @@ if ($iFamilyID == $fam_ID) {
                 </table>
 
                 <p align="center">
-                  <a class="SmallText" href="PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>&amp;PledgeOrPayment=Pledge"><?= gettext("Add a new pledge") ?></a>
-                  <a class="SmallText" href="PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>&amp;PledgeOrPayment=Payment"><?= gettext("Add a new payment") ?></a>
+                  <a class="SmallText"
+                     href="PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>&amp;PledgeOrPayment=Pledge"><?= gettext("Add a new pledge") ?></a>
+                  <a class="SmallText"
+                     href="PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>&amp;PledgeOrPayment=Payment"><?= gettext("Add a new payment") ?></a>
                 </p>
 
                 <?php } ?>
@@ -713,7 +757,8 @@ if ($iFamilyID == $fam_ID) {
                 <?php if ($_SESSION['bCanvasser']) { ?>
 
                 <p align="center">
-                  <a class="SmallText" href="CanvassEditor.php?FamilyID=<?= $fam_ID ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
+                  <a class="SmallText"
+                     href="CanvassEditor.php?FamilyID=<?= $fam_ID ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
                 </p>
               </div>
             </div>
@@ -726,72 +771,81 @@ if ($iFamilyID == $fam_ID) {
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label" aria-hidden="true">
+  <div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label"
+       aria-hidden="true">
     <div class="modal-dialog">
-      <form action="ImageUpload.php?FamilyID=<?= $iFamilyID ?>" method="post" enctype="multipart/form-data" id="UploadForm">
+      <form action="ImageUpload.php?FamilyID=<?= $iFamilyID ?>" method="post" enctype="multipart/form-data"
+            id="UploadForm">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="upload-Image-label"><?= gettext("Upload Photo") ?></h4>
           </div>
           <div class="modal-body">
             <input type="file" name="file" size="50"/>
-            Max Photo size: <?= ini_get('upload_max_filesize') ?>
+            <?= gettext("Max Photo size:") ?> <?= ini_get('upload_max_filesize') ?>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <input type="submit" class="btn btn-primary" value="Upload Image">
+            <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
+            <input type="submit" class="btn btn-primary" value="<?= gettext("Upload Image") ?>">
           </div>
         </div>
       </form>
     </div>
   </div>
-  <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
+  <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
+       aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="delete-Image-label">Confirm Delete</h4>
+          <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm Delete") ?></h4>
         </div>
 
         <div class="modal-body">
-          <p>You are about to delete the profile photo, this procedure is irreversible.</p>
+          <p><?= gettext("You are about to delete the profile photo, this procedure is irreversible.") ?></p>
 
-          <p>Do you want to proceed?</p>
+          <p><?= gettext("Do you want to proceed?") ?></p>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <a href="ImageDelete.php?FamilyID=<?= $iFamilyID ?>" class="btn btn-danger danger">Delete</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+          <a href="ImageDelete.php?FamilyID=<?= $iFamilyID ?>"
+             class="btn btn-danger danger"><?= gettext("Delete") ?></a>
         </div>
       </div>
     </div>
   </div>
-  <div class="modal fade" id="confirm-email-pdf" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
+  <div class="modal fade" id="confirm-email-pdf" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
+       aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="delete-Image-label">Confirm PDF Email</h4>
+          <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm PDF Email") ?></h4>
         </div>
         <?php if (count($sFamilyEmails) > 0) { ?>
           <div class="modal-body">
-            <p>You are about to email copy of the family information in pdf to the following emails <i><?= implode(", ", $sFamilyEmails) ?></i></p>
+            <p><?= gettext("You are about to email copy of the family information in pdf to the following emails") ?>
+              <i><?= implode(", ", $sFamilyEmails) ?></i></p>
 
-            <p>Do you want to proceed?</p>
+            <p><?= gettext("Do you want to proceed?") ?></p>
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <a href="Reports/ConfirmReportEmail.php?familyId=<?= $iFamilyID ?>" class="btn btn-warning warning">Email</a>
-            <a href="Reports/ConfirmReportEmail.php?updated=true&familyId=<?= $iFamilyID ?>" class="btn btn-warning warning">Email Updated</a>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+            <a href="Reports/ConfirmReportEmail.php?familyId=<?= $iFamilyID ?>"
+               class="btn btn-warning warning"><?= gettext("Email") ?></a>
+            <a href="Reports/ConfirmReportEmail.php?updated=true&familyId=<?= $iFamilyID ?>"
+               class="btn btn-warning warning"><?= gettext("Email Updated") ?></a>
           </div>
         <?php } else { ?>
           <div class="modal-body">
-            <p>This family does not have any email address, so we can't send email </p>
+            <p><?= gettext("This family does not have any email address, so we can't send email") ?> </p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
           </div>
         <?php } ?>
       </div>
@@ -803,14 +857,14 @@ if ($iFamilyID == $fam_ID) {
   </script>
 <?php } else { ?>
   <div class="error-page">
-    <h2 class="headline text-yellow"> 404</h2>
+    <h2 class="headline text-yellow">404</h2>
 
     <div class="error-content">
-      <h3><i class="fa fa-warning text-yellow"></i> Oops! Family not found.</h3>
+      <h3><i class="fa fa-warning text-yellow"></i> <?= gettext("Oops! Family not found.") ?></h3>
 
       <p>
-        We could not find the family you were looking for.
-        Meanwhile, you may <a href="/MembersDashboard.php">return to member dashboard</a>
+        <?= gettext("We could not find the family you were looking for.<br>Meanwhile, you may") ?> <a
+          href="/MembersDashboard.php"><?= gettext("return to member dashboard") ?></a>
       </p>
     </div>
   </div>

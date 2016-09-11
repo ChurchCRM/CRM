@@ -165,7 +165,7 @@ if ($sAction == "edit") {
 }
 
 // Set the page title and include HTML header
-$sPageTitle = $sTypeName . gettext(" Property Assignment");
+$sPageTitle = $sTypeName ." : ".gettext(" Property Assignment");
 require "Include/Header.php";
 ?>
 
