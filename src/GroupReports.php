@@ -29,7 +29,7 @@ $sPageTitle = gettext("Group reports");
 require "Include/Header.php";
 ?>
 
-<script src="js/RPCDummyAjax.js"></script>
+<script src="skin/js/GroupRoles.js"></script>
 
 <?php if (!isset($_POST["GroupID"])) { ?>
     <div class="row">
