@@ -1,7 +1,11 @@
+
+#ChurchCRM Development QuickStart
+
+[Video] (https://www.youtube.com/watch?v=vULjGvIb_uA)
+
 #Credits and Thanks
 
 ##The ChurchCRM team:
-  
 
   * [Charles Crossan](http://www.ccrossan.com)
   * Daniel Schwen
@@ -9,9 +13,6 @@
   * Rod Kesselring
   
   
-
-
-
 ##Other Open Source code used in this project:
 * [php-google-map-api] (https://github.com/streetlogics/php-google-map-api)
 * [mailchimp-mailchimp-api-php] (https://github.com/horechek/mailchimp-mailchimp-api-php)
