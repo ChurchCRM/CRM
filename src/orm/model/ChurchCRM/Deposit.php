@@ -167,7 +167,7 @@ class Deposit extends BaseDeposit
     $thisReport->curY = $thisReport->QBDepositTicketParameters->topY;
     
     $pledges = \ChurchCRM\PledgeQuery::create()
-            ->filterByDepid($id)
+            ->filterByDepid($this->getId())
             ->groupByGroupkey()
             ->withColumn("SUM(Pledge.Amount)","sumAmount")
             ->joinFamily(null, Criteria::LEFT_JOIN)
@@ -179,7 +179,7 @@ class Deposit extends BaseDeposit
       if ($pledge->getMethod() == 'CHECK') {
 
         $thisReport->pdf->PrintRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckno());
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getAmount());
+        $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getsumAmount());
 
         $thisReport->curX += $thisReport->QBDepositTicketParameters->lineItemInterval->x;
         if ($thisReport->curX > $thisReport->QBDepositTicketParameters->max->x) {
@@ -426,7 +426,6 @@ class Deposit extends BaseDeposit
   {
      $totalCash = PledgeQuery::create()
             ->filterByDepid($this->getId())
-            ->groupByGroupkey()
             ->filterByMethod("CHECK")
             ->withColumn("SUM(Pledge.Amount)","sumAmount")
             ->find()
@@ -438,7 +437,6 @@ class Deposit extends BaseDeposit
   {
     $totalCash = PledgeQuery::create()
             ->filterByDepid($this->getId())
-            ->groupByGroupkey()
             ->filterByMethod("CASH")
             ->withColumn("SUM(Pledge.Amount)","sumAmount")
             ->find()
