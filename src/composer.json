@@ -39,14 +39,16 @@
     "almasaeed2010/adminlte": "2.3.3",
     "driftyco/ionicons": "2.0.1",
     "components/font-awesome": "4.6.3",
-    "propel/propel": "~2.0@dev"
+    "propel/propel": "~2.0@dev",
+    "setasign/fpdf": "1.8.1"
   },
   "autoload": {
     "classmap": [
       "orm/"
     ],
     "psr-4": {
-      "ChurchCRM\\Service\\": "Service/"
+      "ChurchCRM\\Service\\": "Service/",
+      "ChurchCRM\\Reports\\"  : "Reports/"
     }
   }
 }

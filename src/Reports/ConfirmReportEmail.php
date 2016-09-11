@@ -17,7 +17,7 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
+use ChurchCRM\Reports\ChurchInfoReport;
 require "../Include/phpmailer/class.phpmailer.php";
 
 class EmailPDF_ConfirmReport extends ChurchInfoReport
@@ -26,11 +26,11 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport
   // Constructor
   function EmailPDF_ConfirmReport()
   {
-    parent::FPDF("P", "mm", $this->paperFormat);
+    parent::__construct("P", "mm", $this->paperFormat);
     $this->leftX = 10;
     $this->SetFont("Times", '', 10);
     $this->SetMargins(10, 20);
-    $this->Open();
+    
     $this->SetAutoPageBreak(false);
   }
 

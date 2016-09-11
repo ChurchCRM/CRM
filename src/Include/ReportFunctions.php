@@ -13,55 +13,8 @@
  *
  ******************************************************************************/
 
-// Try to find and load the FPDF library, giving preference to a user-specified copy
-function LoadLib_FPDF()
-{
-  $sfpdfpath = dirname(dirname(__FILE__)) . '/bin/fpdf17';
-
-  $sfpdflib = $sfpdfpath . "/fpdf.php";
-
-  if (is_readable($sfpdflib)) {
-    require $sfpdflib;
-    define('FPDF_FONTPATH', $sfpdfpath . "/font/");
-  } else {
-    echo "<h2>" . gettext("ERROR: FPDF Library was not found in your path <i>or</i> at: ") . $sfpdflib;
-    exit;
-  }
-}
-
 // Finds and loads the base JPGraph library and any components specified as arguments
 //
-// ****  Example syntax:  LoadLib_JPGraph(pie,pie3d);  ****
-// This would load jpgraph.php, jpgraph_pie.php, and jpgraph_pie3d.php
-function LoadLib_JPGraph()
-{
-  $numargs = func_num_args();
-  $arg_list = func_get_args();
-
-  global $sJPGRAPH_PATH;
-
-  // Check if the Config.php given path is absolute
-  if ($sJPGRAPH_PATH{0} == "/" || substr($sJPGRAPH_PATH, 1, 2) == ":\\")
-    $sJPGRAPHpath = $sJPGRAPH_PATH . "/";
-  else
-    $sJPGRAPHpath = "../" . $sJPGRAPH_PATH . "/";
-
-  // If JPGraph is not found at user specified path, fall back to PHP include_path, or else exit with error.
-  if (!is_readable($sJPGRAPHpath . "jpgraph.php")) {
-    if (is_readable('jpgraph.php'))
-      $sJPGRAPHpath = "";
-    else {
-      echo "<h2>" . gettext("ERROR: JPGraph Library was not found in your path <i>or</i> at: ") . $sJPGRAPHpath;
-      exit;
-    }
-  }
-
-  // If all went well, load the requested libraries
-  require $sJPGRAPHpath . "jpgraph.php";
-  for ($i = 0; $i < $numargs; $i++) {
-    require $sJPGRAPHpath . "jpgraph_" . $arg_list[$i] . ".php";
-  }
-}
 
 // MakeSalutation: this utility is used to figure out how to address a family
 // for correspondence.

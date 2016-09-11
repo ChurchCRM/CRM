@@ -21,7 +21,7 @@ $app->group('/deposits', function () {
 
   $this->get('/{id:[0-9]+}', function ($request, $response, $args) {
     $id = $args['id'];
-    echoDepositQuery::create()->findOneById($id)->toJSON();
+    echo DepositQuery::create()->findOneById($id)->toJSON();
   });
 
   $this->post('/{id:[0-9]+}', function ($request, $response, $args) {
@@ -46,7 +46,7 @@ $app->group('/deposits', function () {
 
   $this->get('/{id:[0-9]+}/pdf', function ($request, $response, $args) {
     $id = $args['id'];
-    $this->FinancialService->getDepositPDF($id);
+    DepositQuery::create()->findOneById($id)->getPDF();
   });
 
   $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {

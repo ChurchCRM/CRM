@@ -5,6 +5,9 @@ namespace ChurchCRM;
 use ChurchCRM\Base\Deposit as BaseDeposit;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\PledgeQuery as ChildPledgeQuery;
+use ChurchCRM\DonationFundQuery;
+use ChurchCRM\Reports\pdf_DepositReport;
+
 
 /**
  * Skeleton subclass for representing a row from the 'deposit_dep' table.
@@ -69,6 +72,185 @@ class Deposit extends BaseDeposit
     // Export file
     $OFXReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-Deposit-" . $depID . "-" . date("Ymd-Gis") . ".ofx";
     return $OFXReturn;
+  }
+  
+  
+   private function generateCashDenominations($thisReport)
+  {
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    $cashDenominations = ["0.01", "0.05","0.10","0.25","0.50","1.00"];
+    $thisReport->pdf->Cell(10, 10, "Coin", 1, 0, 'L');
+    $thisReport->pdf->Cell(20, 10, "Counts", 1, 0, 'L');
+    $thisReport->pdf->Cell(20, 10, "Totals", 1, 2, 'L');
+    $thisReport->pdf->SetX($thisReport->curX);
+    foreach ($cashDenominations as $denomination)
+    {
+      $thisReport->pdf->Cell(10,10, $denomination,  1, 0, 'L');
+      $thisReport->pdf->Cell(20,10, "",  1, 0, 'L');
+      $thisReport->pdf->Cell(20,10, "",  1, 2, 'L');
+      $thisReport->pdf->SetX($thisReport->curX);
+    }
+    $thisReport->pdf->Cell(50, 10, "Total Coin", 1, 2, 'L');
+    
+    $thisReport->curX += 70;
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    
+    $cashDenominations = ["$1","$2","$5","$10","$20","$50","$100"];
+    $thisReport->pdf->Cell(10, 10, "Bill", 1, 0, 'L');
+    $thisReport->pdf->Cell(20, 10, "Counts", 1, 0, 'L');
+    $thisReport->pdf->Cell(20, 10, "Totals", 1, 2, 'L');
+    $thisReport->pdf->SetX($thisReport->curX);
+    foreach ($cashDenominations as $denomination)
+    {
+      $thisReport->pdf->Cell(10,10, $denomination,  1, 0, 'L');
+      $thisReport->pdf->Cell(20,10, "",  1, 0, 'L');
+      $thisReport->pdf->Cell(20,10, "",  1, 2, 'L');
+      $thisReport->pdf->SetX($thisReport->curX);
+    }
+    $thisReport->pdf->Cell(50, 10, "Total Cash", 1, 2, 'L');
+  }
+
+  private function generateTotalsByCurrencyType($thisReport)
+  {
+    $thisReport->pdf->SetFont('Times', 'B', 10);
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    $thisReport->pdf->Write(8, 'Deposit totals by Currency Type');
+    $thisReport->pdf->SetFont('Courier', '', 8);
+    $thisReport->curY += 4;
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    $thisReport->pdf->Write(8, "Checks: ");
+    $thisReport->pdf->write(8, "(" . $this->getCountChecks() . ")");
+    $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf("%.2f", $this->getTotalChecks()));
+    $thisReport->curY += 4;
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    $thisReport->pdf->Write(8, "Cash: ");
+    $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf("%.2f", $this->getTotalCash()));
+    
+  }
+  
+   private function generateTotalsByFund($thisReport)
+  {
+    $thisReport->pdf->SetFont('Times', 'B', 10);
+    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+    $thisReport->pdf->Write(8, 'Deposit totals by fund');
+    $thisReport->pdf->SetFont('Courier', '', 8);
+
+    $thisReport->curY += 4;
+
+    foreach ($this->getFundTotals() as $fund) //iterate through the defined funds
+    {
+        $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+        $thisReport->pdf->Write(8, $fund->Name);
+        $amountStr = sprintf("%.2f", $fund->Total);
+        $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
+        $thisReport->curY += 4;
+    }    
+    
+  }
+
+  private function generateQBDepositSlip($thisReport)
+  {
+    $thisReport->pdf->AddPage();
+    
+    $thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQBDTSettings);
+    $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
+    $thisReport->pdf->Write(8, $this->getDate()->format("Ymd"));
+    
+
+    //print_r($thisReport->QBDepositTicketParameters);
+    //logically, we print the cash in the first possible key=value pair column 
+    if ($this->getTotalCash() > 0) {
+      $totalCashStr = sprintf("%.2f", $this->getTotalCash());
+      $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->QBDepositTicketParameters->topY, $totalCashStr);
+    }
+    $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->lineItemInterval->x;
+    $thisReport->curY = $thisReport->QBDepositTicketParameters->topY;
+    foreach ($this->getPledges() as $pledge)
+    {
+      // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
+      if ($pledge->getMethod() == 'CHECK') {
+
+        $thisReport->pdf->PrintRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckno());
+        $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getAmount());
+
+        $thisReport->curX += $thisReport->QBDepositTicketParameters->lineItemInterval->x;
+        if ($thisReport->curX > $thisReport->QBDepositTicketParameters->max->x) {
+          $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX;
+          $thisReport->curY += $thisReport->QBDepositTicketParameters->lineItemInterval->y;
+        }
+      }
+    }
+
+    $grandTotalStr = sprintf("%.2f", $this->getTotalAmount());
+    $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->subTotal->x, $thisReport->QBDepositTicketParameters->subTotal->y, $grandTotalStr);
+    $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->topTotal->x, $thisReport->QBDepositTicketParameters->topTotal->y, $grandTotalStr);
+    $numItemsString = sprintf("%d", $this->getCountCash()+$this->getCountChecks());
+    $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->numberOfItems->x, $thisReport->QBDepositTicketParameters->numberOfItems->y, $numItemsString);
+    
+    $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY;
+    $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->titleX, $thisReport->curY );
+    $thisReport->pdf->SetFont('Courier','B', 20);
+    $thisReport->pdf->Write (8, "Deposit Summary " . $this->getId());
+    $thisReport->pdf->SetFont('Times','', 10);
+     $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->date2X, $thisReport->curY );
+    $thisReport->pdf->Write (8, $this->getDate()->format("Ymd"));
+
+    $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x;
+    $thisReport->curY += 2*$thisReport->QBDepositTicketParameters->lineItemInterval->y;
+    $this->generateCashDenominations($thisReport);
+    $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x+125;
+
+    $this->generateTotalsByCurrencyType($thisReport);
+    $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x+125;
+    $thisReport->curY=$thisReport->QBDepositTicketParameters->perforationY+30;
+    $this->generateTotalsByFund($thisReport);
+  }
+
+  public function getPDF()
+  {
+    requireUserGroupMembership("bFinance");
+    $Report = new \stdClass();
+    if (count($this->getPledges()) == 0) {
+      throw new Exception("No Payments on this Deposit",404);
+    }
+
+    
+    $Report->pdf = new \ChurchCRM\Reports\PDF_DepositReport;
+    $Report->funds = DonationFundQuery::create()->find();
+ 
+    // Read in report settings from database
+    $settings = ConfigQuery::create()->filterBySection("ChurchInfoReport")->find();
+    foreach ($settings as $setting) {
+      $name = $setting->getName();
+      $Report->ReportSettings->$name = $setting->getValue();
+    }
+    
+    
+    //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.
+    $Report->ReportSettings->sDepositSlipType = "QBDT";
+    
+    if ( $Report->ReportSettings->sDepositSlipType == "QBDT" )
+    { 
+      //Generate a QuickBooks Deposit Ticket.
+      $this->generateQBDepositSlip($Report);
+    }
+    elseif ( $Report->ReportSettings->sDepositSlipType == "PTDT" )
+    {
+      //placeholder for Peachtree Deposit Tickets.
+    }
+    elseif ( $Report->ReportSettings->sDepositSlipType == "GDT" )
+    {
+      //placeholder for generic deposit ticket.
+    }
+    //$this->generateBankDepositSlip($Report);
+   
+
+
+   // $this->generateDepositSummary($Report);
+
+
+   // Export file
+   $Report->pdf->Output("ChurchCRM-DepositReport-" . $depID . "-" . date("Ymd-Gis") . ".pdf","D");
   }
   
   public function getTotalAmount()
