@@ -65,7 +65,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 {
   ?>
 
-  <script src="js/RPCDummyAjax.js"></script>
+  <script src="skin/js/GroupRoles.js"></script>
 
   <!-- Default box -->
   <div class="box">
