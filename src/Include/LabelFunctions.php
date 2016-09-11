@@ -25,10 +25,10 @@ function FontSelect($fieldname)
 {
   $sFPDF_PATH = "vendor/setasign/fpdf";
 
-  $d = dir($sFPDF_PATH . "/font/");
+  $d = scandir($sFPDF_PATH . "/font/",SCANDIR_SORT_DESCENDING);
   $fontnames = array();
   $family = " ";
-  while (false !== ($entry = $d->read())) {
+  foreach($d as $entry) {
     $len = strlen($entry);
     if ($len > 3) {
       if (strtoupper(substr($entry, $len - 3)) == 'PHP') { // php files only
@@ -39,7 +39,9 @@ function FontSelect($fieldname)
       }
     }
   }
-
+  
+  sort($fontnames);
+  
   echo "<tr>";
   echo "<td class=\"LabelColumn\">" . gettext("Font:") . "</td>";
   echo "<td class=\"TextColumn\">";
