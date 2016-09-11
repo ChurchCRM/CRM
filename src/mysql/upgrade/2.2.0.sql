@@ -5,6 +5,8 @@ SET @JSONV = '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7
 INSERT IGNORE INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES
 (1043, 'sQBDTSettings', @JSONV , 'json', @JSONV , 'QuickBooks Deposit Ticket Settings', 'ChurchInfoReport', 'Step7');
 
+DELETE FROM `config_cfg` WHERE cfg_id = 3;
+
 /*Convert the Group Special Properties Field from an ENUM("true","false") 
   to a proper BOOLEAN field without losing data. 
 */
