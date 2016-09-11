@@ -165,7 +165,15 @@ class Deposit extends BaseDeposit
     }
     $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->lineItemInterval->x;
     $thisReport->curY = $thisReport->QBDepositTicketParameters->topY;
-    foreach ($this->getPledges() as $pledge)
+    
+    $pledges = \ChurchCRM\PledgeQuery::create()
+            ->filterByDepid($id)
+            ->groupByGroupkey()
+            ->withColumn("SUM(Pledge.Amount)","sumAmount")
+            ->joinFamily(null, Criteria::LEFT_JOIN)
+            ->withColumn("Family.Name")
+            ->find();
+    foreach ($pledges as $pledge)
     {
       // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
       if ($pledge->getMethod() == 'CHECK') {
@@ -260,53 +268,47 @@ class Deposit extends BaseDeposit
   
   public function getTotalChecks()
   {
-    $totalChecks = 0;
-    foreach ( $this->getPledges() as $pledge)
-    {
-      if ($pledge->getMethod() == "CHECK")
-      {
-        $totalChecks += $pledge->getAmount();
-      }
-    }
-    return $totalChecks;
+     $totalCash = PledgeQuery::create()
+            ->filterByDepid($this->getId())
+            ->groupByGroupkey()
+            ->filterByMethod("CHECK")
+            ->withColumn("SUM(Pledge.Amount)","sumAmount")
+            ->find()
+            ->getColumnValues("sumAmount")[0];
+    return $totalCash;
   }
  
   public function getTotalCash()
   {
-    $totalCash= 0;
-    foreach ( $this->getPledges() as $pledge)
-    {
-      if ($pledge->getMethod() == "CASH")
-      {
-        $totalCash += $pledge->getAmount();
-      }
-    }
+    $totalCash = PledgeQuery::create()
+            ->filterByDepid($this->getId())
+            ->groupByGroupkey()
+            ->filterByMethod("CASH")
+            ->withColumn("SUM(Pledge.Amount)","sumAmount")
+            ->find()
+            ->getColumnValues("sumAmount")[0];
     return $totalCash;
   }
   
   public function getCountChecks()
   {
-    $countChecks = 0;
-    foreach ( $this->getPledges() as $pledge)
-    {
-      if ($pledge->getMethod() == "CHECK")
-      {
-        $countChecks += 1;
-      }
-    }
-    return $countChecks;
+     $countCash = PledgeQuery::create()
+            ->filterByDepid($this->getId())
+            ->groupByGroupkey()
+            ->filterByMethod("CHECK")
+            ->find()
+            ->count();
+    return $countCash;
   }
  
   public function getCountCash()
   {
-    $countCash= 0;
-    foreach ( $this->getPledges() as $pledge)
-    {
-      if ($pledge->getMethod() == "CASH")
-      {
-        $countCash += 1;
-      }
-    }
+    $countCash = PledgeQuery::create()
+            ->filterByDepid($this->getId())
+            ->groupByGroupkey()
+            ->filterByMethod("CASH")
+            ->find()
+            ->count();
     return $countCash;
   }
   

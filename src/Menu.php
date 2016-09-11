@@ -49,7 +49,7 @@ $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
 $depositData = false;  //Determine whether or not we should display the deposit line graph
 if ($_SESSION['bFinance']) {
-  $depositData =  \ChurchCRM\Base\DepositQuery::create()->find()->toJSON();  //Get the deposit data from the financialService
+  $depositData =  \ChurchCRM\Base\DepositQuery::create()->orderBy("Date",  Propel\Runtime\ActiveQuery\Criteria::DESC)->limit(20)->find()->toJSON();  //Get the deposit data from the financialService
 }
 
 // Set the page title

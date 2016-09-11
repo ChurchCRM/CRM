@@ -10,7 +10,7 @@ function initPaymentTable()
     {
       width: 'auto',
       title:'Family',
-      data:'Family.Name',
+      data:'FamilyName',
       render: function(data, type, full, meta) {
         return '<a href=\'PledgeEditor.php?GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa '+  (isDepositClosed ? "fa-search-plus": "fa-pencil" ) +' fa-stack-1x fa-inverse"></i></span></a>' + data;
       }
@@ -23,7 +23,7 @@ function initPaymentTable()
     {
       width: 'auto',
       title:'Amount',
-      data:'Amount',
+      data:'sumAmount',
     },
     {
       width: 'auto',
