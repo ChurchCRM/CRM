@@ -7,7 +7,6 @@ function UpdateRoles()
     dataType: "json"
   }).done(function (data) {
     var html = "";
-    alert(data);
     $.each(data.ListOptions, function (index, value) {
       html += "<option value=\"" + value.OptionId + "\"";
       html += ">" + value.OptionName + "</option>";
