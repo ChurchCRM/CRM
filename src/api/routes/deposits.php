@@ -69,6 +69,8 @@ $app->group('/deposits', function () {
             ->withColumn("SUM(Pledge.Amount)","sumAmount")
             ->joinFamily(null, Propel\Runtime\ActiveQuery\Criteria::LEFT_JOIN)
             ->withColumn("Family.Name")
+            ->joinDonationFund()
+            ->withColumn("DonationFund.Name")
             ->find()
             ->toJSON();
   });

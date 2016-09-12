@@ -12,7 +12,8 @@ function initPaymentTable()
       title:'Family',
       data:'FamilyName',
       render: function(data, type, full, meta) {
-        return '<a href=\'PledgeEditor.php?GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa '+  (isDepositClosed ? "fa-search-plus": "fa-pencil" ) +' fa-stack-1x fa-inverse"></i></span></a>' + data;
+        var familyName = data ? data : "Anonymous"
+        return '<a href=\'PledgeEditor.php?GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa '+  (isDepositClosed ? "fa-search-plus": "fa-pencil" ) +' fa-stack-1x fa-inverse"></i></span></a>' + familyName;
       }
     },
     {
@@ -82,7 +83,7 @@ function initDepositSlipEditor()
             '</tr>' +
             '<tr>' +
             '<td>Fund(s):</td>' +
-            '<td>' + d.DonationFund.Name + '</td>' +
+            '<td>' + d.DonationFundName + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td>Non Deductible:</td>' +

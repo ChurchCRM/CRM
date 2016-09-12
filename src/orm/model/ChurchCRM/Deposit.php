@@ -154,7 +154,7 @@ class Deposit extends BaseDeposit
     
     $thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQBDTSettings);
     $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
-    $thisReport->pdf->Write(8, $this->getDate()->format("Ymd"));
+    $thisReport->pdf->Write(8, $this->getDate()->format("Y-m-d"));
     
 
     //print_r($thisReport->QBDepositTicketParameters);
@@ -192,7 +192,7 @@ class Deposit extends BaseDeposit
     $grandTotalStr = sprintf("%.2f", $this->getTotalAmount());
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->subTotal->x, $thisReport->QBDepositTicketParameters->subTotal->y, $grandTotalStr);
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->topTotal->x, $thisReport->QBDepositTicketParameters->topTotal->y, $grandTotalStr);
-    $numItemsString = sprintf("%d", $this->getCountCash()+$this->getCountChecks());
+    $numItemsString = sprintf("%d", ( $this->getCountCash() >0 ? 1 : 0 ) + $this->getCountChecks());
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->numberOfItems->x, $thisReport->QBDepositTicketParameters->numberOfItems->y, $numItemsString);
     
     $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY;
@@ -201,7 +201,7 @@ class Deposit extends BaseDeposit
     $thisReport->pdf->Write (8, "Deposit Summary " . $this->getId());
     $thisReport->pdf->SetFont('Times','', 10);
      $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->date2X, $thisReport->curY );
-    $thisReport->pdf->Write (8, $this->getDate()->format("Ymd"));
+    $thisReport->pdf->Write (8, $this->getDate()->format("Y-m-d"));
 
     $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x;
     $thisReport->curY += 2*$thisReport->QBDepositTicketParameters->lineItemInterval->y;
@@ -414,7 +414,7 @@ class Deposit extends BaseDeposit
 
 
    // Export file
-   $Report->pdf->Output("ChurchCRM-DepositReport-" . $depID . "-" . date("Ymd-Gis") . ".pdf","D");
+   $Report->pdf->Output("ChurchCRM-DepositReport-" . $this->getId() . "-" . date("Ymd-Gis") . ".pdf","D");
   }
   
   public function getTotalAmount()
