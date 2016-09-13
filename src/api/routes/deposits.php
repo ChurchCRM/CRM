@@ -62,7 +62,16 @@ $app->group('/deposits', function () {
 
   $this->get('/{id:[0-9]+}/pledges', function ($request, $response, $args) {
     $id = $args['id'];
-    echo DepositQuery::create()->findOneById($id)->getPledgesJoinAll()->toJSON();
+    echo \ChurchCRM\PledgeQuery::create()
+            ->filterByDepid($id)
+            ->groupByGroupkey()
+            ->withColumn("SUM(Pledge.Amount)","sumAmount")
+            ->joinFamily(null, Propel\Runtime\ActiveQuery\Criteria::LEFT_JOIN)
+            ->withColumn("Family.Name")
+            ->joinDonationFund()
+            ->withColumn("DonationFund.Name")
+            ->find()
+            ->toJSON();
   });
   
 });

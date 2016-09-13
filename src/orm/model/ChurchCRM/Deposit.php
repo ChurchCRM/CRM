@@ -154,7 +154,7 @@ class Deposit extends BaseDeposit
     
     $thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQBDTSettings);
     $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
-    $thisReport->pdf->Write(8, $this->getDate()->format("Ymd"));
+    $thisReport->pdf->Write(8, $this->getDate()->format("Y-m-d"));
     
 
     //print_r($thisReport->QBDepositTicketParameters);
@@ -165,13 +165,21 @@ class Deposit extends BaseDeposit
     }
     $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->lineItemInterval->x;
     $thisReport->curY = $thisReport->QBDepositTicketParameters->topY;
-    foreach ($this->getPledges() as $pledge)
+    
+    $pledges = \ChurchCRM\PledgeQuery::create()
+            ->filterByDepid($this->getId())
+            ->groupByGroupkey()
+            ->withColumn("SUM(Pledge.Amount)","sumAmount")
+            ->joinFamily(null, Criteria::LEFT_JOIN)
+            ->withColumn("Family.Name")
+            ->find();
+    foreach ($pledges as $pledge)
     {
       // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
       if ($pledge->getMethod() == 'CHECK') {
 
         $thisReport->pdf->PrintRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckno());
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getAmount());
+        $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getsumAmount());
 
         $thisReport->curX += $thisReport->QBDepositTicketParameters->lineItemInterval->x;
         if ($thisReport->curX > $thisReport->QBDepositTicketParameters->max->x) {
@@ -184,7 +192,7 @@ class Deposit extends BaseDeposit
     $grandTotalStr = sprintf("%.2f", $this->getTotalAmount());
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->subTotal->x, $thisReport->QBDepositTicketParameters->subTotal->y, $grandTotalStr);
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->topTotal->x, $thisReport->QBDepositTicketParameters->topTotal->y, $grandTotalStr);
-    $numItemsString = sprintf("%d", $this->getCountCash()+$this->getCountChecks());
+    $numItemsString = sprintf("%d", ( $this->getCountCash() >0 ? 1 : 0 ) + $this->getCountChecks());
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->numberOfItems->x, $thisReport->QBDepositTicketParameters->numberOfItems->y, $numItemsString);
     
     $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY;
@@ -193,7 +201,7 @@ class Deposit extends BaseDeposit
     $thisReport->pdf->Write (8, "Deposit Summary " . $this->getId());
     $thisReport->pdf->SetFont('Times','', 10);
      $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->date2X, $thisReport->curY );
-    $thisReport->pdf->Write (8, $this->getDate()->format("Ymd"));
+    $thisReport->pdf->Write (8, $this->getDate()->format("Y-m-d"));
 
     $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x;
     $thisReport->curY += 2*$thisReport->QBDepositTicketParameters->lineItemInterval->y;
@@ -406,7 +414,7 @@ class Deposit extends BaseDeposit
 
 
    // Export file
-   $Report->pdf->Output("ChurchCRM-DepositReport-" . $depID . "-" . date("Ymd-Gis") . ".pdf","D");
+   $Report->pdf->Output("ChurchCRM-DepositReport-" . $this->getId() . "-" . date("Ymd-Gis") . ".pdf","D");
   }
   
   public function getTotalAmount()
@@ -416,53 +424,45 @@ class Deposit extends BaseDeposit
   
   public function getTotalChecks()
   {
-    $totalChecks = 0;
-    foreach ( $this->getPledges() as $pledge)
-    {
-      if ($pledge->getMethod() == "CHECK")
-      {
-        $totalChecks += $pledge->getAmount();
-      }
-    }
-    return $totalChecks;
+     $totalCash = PledgeQuery::create()
+            ->filterByDepid($this->getId())
+            ->filterByMethod("CHECK")
+            ->withColumn("SUM(Pledge.Amount)","sumAmount")
+            ->find()
+            ->getColumnValues("sumAmount")[0];
+    return $totalCash;
   }
  
   public function getTotalCash()
   {
-    $totalCash= 0;
-    foreach ( $this->getPledges() as $pledge)
-    {
-      if ($pledge->getMethod() == "CASH")
-      {
-        $totalCash += $pledge->getAmount();
-      }
-    }
+    $totalCash = PledgeQuery::create()
+            ->filterByDepid($this->getId())
+            ->filterByMethod("CASH")
+            ->withColumn("SUM(Pledge.Amount)","sumAmount")
+            ->find()
+            ->getColumnValues("sumAmount")[0];
     return $totalCash;
   }
   
   public function getCountChecks()
   {
-    $countChecks = 0;
-    foreach ( $this->getPledges() as $pledge)
-    {
-      if ($pledge->getMethod() == "CHECK")
-      {
-        $countChecks += 1;
-      }
-    }
-    return $countChecks;
+     $countCash = PledgeQuery::create()
+            ->filterByDepid($this->getId())
+            ->groupByGroupkey()
+            ->filterByMethod("CHECK")
+            ->find()
+            ->count();
+    return $countCash;
   }
  
   public function getCountCash()
   {
-    $countCash= 0;
-    foreach ( $this->getPledges() as $pledge)
-    {
-      if ($pledge->getMethod() == "CASH")
-      {
-        $countCash += 1;
-      }
-    }
+    $countCash = PledgeQuery::create()
+            ->filterByDepid($this->getId())
+            ->groupByGroupkey()
+            ->filterByMethod("CASH")
+            ->find()
+            ->count();
     return $countCash;
   }
   
