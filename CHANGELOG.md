@@ -1,5 +1,165 @@
 # Change Log
 
+## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
+
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0-RC5...HEAD)
+
+**Implemented enhancements:**
+
+- Moving up/ transferring students in classes [\#856](https://github.com/ChurchCRM/CRM/issues/856)
+- Test with Safari  [\#843](https://github.com/ChurchCRM/CRM/issues/843)
+- Deposit & Pledges Max Value [\#430](https://github.com/ChurchCRM/CRM/issues/430)
+- Add delete button for Deposit slips [\#245](https://github.com/ChurchCRM/CRM/issues/245)
+
+**Fixed bugs:**
+
+- Anonymous Cash Doesn't Show up in DepositSlipEditor [\#1028](https://github.com/ChurchCRM/CRM/issues/1028)
+- Add to Cart getPhoto Bug [\#1027](https://github.com/ChurchCRM/CRM/issues/1027)
+- DirectoryReports Showing HTML not links [\#1022](https://github.com/ChurchCRM/CRM/issues/1022)
+- Role dropdown brokend [\#1021](https://github.com/ChurchCRM/CRM/issues/1021)
+- Fonts with capital names are broken in develop [\#1020](https://github.com/ChurchCRM/CRM/issues/1020)
+- Group Reports is broken [\#1010](https://github.com/ChurchCRM/CRM/issues/1010)
+- Deposit Report is broken in develop [\#1008](https://github.com/ChurchCRM/CRM/issues/1008)
+- MailChimp breaks in PersonView.php [\#997](https://github.com/ChurchCRM/CRM/issues/997)
+- Saving a person is broken in develop [\#993](https://github.com/ChurchCRM/CRM/issues/993)
+- GitHub API Limit Hard Fail [\#983](https://github.com/ChurchCRM/CRM/issues/983)
+- Permissions: Manage Groups and Roles - Broken List Group [\#978](https://github.com/ChurchCRM/CRM/issues/978)
+- Removed broken/unused getPhoto [\#1036](https://github.com/ChurchCRM/CRM/pull/1036) ([DawoudIO](https://github.com/DawoudIO))
+- Fix deposits...again [\#1030](https://github.com/ChurchCRM/CRM/pull/1030) ([crossan007](https://github.com/crossan007))
+- Re-add missing page to deposit report. [\#1029](https://github.com/ChurchCRM/CRM/pull/1029) ([crossan007](https://github.com/crossan007))
+- Fix Group Roles [\#1026](https://github.com/ChurchCRM/CRM/pull/1026) ([DawoudIO](https://github.com/DawoudIO))
+- Manage groups permissions [\#1025](https://github.com/ChurchCRM/CRM/pull/1025) ([DawoudIO](https://github.com/DawoudIO))
+- removed extra tel tag [\#1024](https://github.com/ChurchCRM/CRM/pull/1024) ([DawoudIO](https://github.com/DawoudIO))
+- Move Reports to Autoloader.  User Composer for FPDF. [\#1012](https://github.com/ChurchCRM/CRM/pull/1012) ([crossan007](https://github.com/crossan007))
+- fix release exception [\#1007](https://github.com/ChurchCRM/CRM/pull/1007) ([crossan007](https://github.com/crossan007))
+
+**Closed issues:**
+
+- Demo Data doesn't add sunday school groups correctly [\#1015](https://github.com/ChurchCRM/CRM/issues/1015)
+- Groups dashboard widget [\#746](https://github.com/ChurchCRM/CRM/issues/746)
+- Group Assignment [\#704](https://github.com/ChurchCRM/CRM/issues/704)
+- Groups: Commented Logic in CreateGroup [\#467](https://github.com/ChurchCRM/CRM/issues/467)
+
+**Merged pull requests:**
+
+- starting 2.3 [\#1023](https://github.com/ChurchCRM/CRM/pull/1023) ([DawoudIO](https://github.com/DawoudIO))
+- Develop \(2.2.0\) to Master [\#1005](https://github.com/ChurchCRM/CRM/pull/1005) ([DawoudIO](https://github.com/DawoudIO))
+
+## [2.2.0-RC5](https://github.com/ChurchCRM/CRM/tree/2.2.0-RC5) (2016-09-10)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0-RC4...2.2.0-RC5)
+
+**Implemented enhancements:**
+
+- SundaySchool: Default Roles is Member [\#469](https://github.com/ChurchCRM/CRM/issues/469)
+- Theme: Fund Raiser [\#187](https://github.com/ChurchCRM/CRM/issues/187)
+- Copy / Move Members between groups [\#996](https://github.com/ChurchCRM/CRM/pull/996) ([crossan007](https://github.com/crossan007))
+- Person photo via api [\#991](https://github.com/ChurchCRM/CRM/pull/991) ([DawoudIO](https://github.com/DawoudIO))
+- removed the mySQL 4 check  [\#965](https://github.com/ChurchCRM/CRM/pull/965) ([DawoudIO](https://github.com/DawoudIO))
+- Person: Service -\> ORM and Cleanup [\#809](https://github.com/ChurchCRM/CRM/pull/809) ([DawoudIO](https://github.com/DawoudIO))
+
+**Fixed bugs:**
+
+- email dashboard is broken [\#990](https://github.com/ChurchCRM/CRM/issues/990)
+- Adding Some People via the Group page breaks the page  [\#985](https://github.com/ChurchCRM/CRM/issues/985)
+- Edit Group Role button not working for page 2-x of group list [\#977](https://github.com/ChurchCRM/CRM/issues/977)
+- Remove user from group button not working for page 2-x of group list [\#973](https://github.com/ChurchCRM/CRM/issues/973)
+- GroupEditor [\#938](https://github.com/ChurchCRM/CRM/issues/938)
+- Fix Sunday School Email [\#814](https://github.com/ChurchCRM/CRM/issues/814)
+- Event: Active falg is backwards [\#786](https://github.com/ChurchCRM/CRM/issues/786)
+- Nav: Groups : Edit Group Types is visible when it should not  [\#520](https://github.com/ChurchCRM/CRM/issues/520)
+- SundaySchool: Default Roles is Member [\#469](https://github.com/ChurchCRM/CRM/issues/469)
+- Delete: Access report [\#166](https://github.com/ChurchCRM/CRM/issues/166)
+- add group membership security [\#1002](https://github.com/ChurchCRM/CRM/pull/1002) ([crossan007](https://github.com/crossan007))
+- MailChimp Exception namespaces [\#999](https://github.com/ChurchCRM/CRM/pull/999) ([DawoudIO](https://github.com/DawoudIO))
+- Fix Case Sensitivity of MailChimp Service [\#992](https://github.com/ChurchCRM/CRM/pull/992) ([crossan007](https://github.com/crossan007))
+- Develop bug fixes [\#986](https://github.com/ChurchCRM/CRM/pull/986) ([DawoudIO](https://github.com/DawoudIO))
+- fix class errors in system service [\#982](https://github.com/ChurchCRM/CRM/pull/982) ([crossan007](https://github.com/crossan007))
+- Event: Active falg is backwards [\#970](https://github.com/ChurchCRM/CRM/pull/970) ([DawoudIO](https://github.com/DawoudIO))
+- Fix group editor [\#951](https://github.com/ChurchCRM/CRM/pull/951) ([crossan007](https://github.com/crossan007))
+
+**Closed issues:**
+
+- bug test [\#984](https://github.com/ChurchCRM/CRM/issues/984)
+
+**Merged pull requests:**
+
+- Note Service Cleanup [\#1001](https://github.com/ChurchCRM/CRM/pull/1001) ([DawoudIO](https://github.com/DawoudIO))
+- Sept randam fixes [\#981](https://github.com/ChurchCRM/CRM/pull/981) ([DawoudIO](https://github.com/DawoudIO))
+- Delete Access Report [\#980](https://github.com/ChurchCRM/CRM/pull/980) ([DawoudIO](https://github.com/DawoudIO))
+- Moved from require to use for Service Classes [\#972](https://github.com/ChurchCRM/CRM/pull/972) ([DawoudIO](https://github.com/DawoudIO))
+- all logs now go to ChurchCRM.log [\#971](https://github.com/ChurchCRM/CRM/pull/971) ([DawoudIO](https://github.com/DawoudIO))
+- Data service cleanup [\#969](https://github.com/ChurchCRM/CRM/pull/969) ([DawoudIO](https://github.com/DawoudIO))
+- Moved Logic from EventService to ORM in Timeline Service [\#968](https://github.com/ChurchCRM/CRM/pull/968) ([DawoudIO](https://github.com/DawoudIO))
+- Update Locale.md [\#961](https://github.com/ChurchCRM/CRM/pull/961) ([DawoudIO](https://github.com/DawoudIO))
+
+## [2.2.0-RC4](https://github.com/ChurchCRM/CRM/tree/2.2.0-RC4) (2016-09-01)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0-RC2...2.2.0-RC4)
+
+**Implemented enhancements:**
+
+- Capture resolution in bug reports [\#891](https://github.com/ChurchCRM/CRM/issues/891)
+- Add Service Classes to composer Auto Loader  [\#824](https://github.com/ChurchCRM/CRM/issues/824)
+- Import People does not add a note in the timeline [\#688](https://github.com/ChurchCRM/CRM/issues/688)
+- better errors for first run setup [\#959](https://github.com/ChurchCRM/CRM/pull/959) ([crossan007](https://github.com/crossan007))
+- Add missing map api key \#930  [\#954](https://github.com/ChurchCRM/CRM/pull/954) ([DawoudIO](https://github.com/DawoudIO))
+- switching to browser-update [\#953](https://github.com/ChurchCRM/CRM/pull/953) ([DawoudIO](https://github.com/DawoudIO))
+- Deposit Slip Editor updates [\#940](https://github.com/ChurchCRM/CRM/pull/940) ([crossan007](https://github.com/crossan007))
+- Initial JSON settings option [\#932](https://github.com/ChurchCRM/CRM/pull/932) ([crossan007](https://github.com/crossan007))
+
+**Fixed bugs:**
+
+- Unsuppored PHP Versions show non-helpful error [\#958](https://github.com/ChurchCRM/CRM/issues/958)
+- The Backup Database is not working [\#927](https://github.com/ChurchCRM/CRM/issues/927)
+- Fix Case Sensitive Path in LoadConfigs [\#923](https://github.com/ChurchCRM/CRM/issues/923)
+- Sunday School Dashboard not reporting all Sunday School Classes [\#858](https://github.com/ChurchCRM/CRM/issues/858)
+- invalid gettext messages [\#805](https://github.com/ChurchCRM/CRM/issues/805)
+- Sunday school dashboard count [\#952](https://github.com/ChurchCRM/CRM/pull/952) ([DawoudIO](https://github.com/DawoudIO))
+- Fix group editor Permissions [\#949](https://github.com/ChurchCRM/CRM/pull/949) ([crossan007](https://github.com/crossan007))
+- underp api root path [\#948](https://github.com/ChurchCRM/CRM/pull/948) ([crossan007](https://github.com/crossan007))
+- fix group editor save \#938 [\#946](https://github.com/ChurchCRM/CRM/pull/946) ([crossan007](https://github.com/crossan007))
+
+**Closed issues:**
+
+- Teste de bug [\#962](https://github.com/ChurchCRM/CRM/issues/962)
+- Move authorizenet to composer [\#225](https://github.com/ChurchCRM/CRM/issues/225)
+
+**Merged pull requests:**
+
+- Added missing gettext [\#960](https://github.com/ChurchCRM/CRM/pull/960) ([mnavarrocarter](https://github.com/mnavarrocarter))
+- add commit hash to demo site [\#957](https://github.com/ChurchCRM/CRM/pull/957) ([crossan007](https://github.com/crossan007))
+- update dev doc [\#956](https://github.com/ChurchCRM/CRM/pull/956) ([crossan007](https://github.com/crossan007))
+- Aug cleanup [\#955](https://github.com/ChurchCRM/CRM/pull/955) ([DawoudIO](https://github.com/DawoudIO))
+- Revert "Fix group editor Permissions" [\#950](https://github.com/ChurchCRM/CRM/pull/950) ([DawoudIO](https://github.com/DawoudIO))
+- fix auto package from a fresh environment [\#945](https://github.com/ChurchCRM/CRM/pull/945) ([crossan007](https://github.com/crossan007))
+- update doc for QBDT [\#939](https://github.com/ChurchCRM/CRM/pull/939) ([crossan007](https://github.com/crossan007))
+- auto-package CRM in the background at vagrant provision. [\#937](https://github.com/ChurchCRM/CRM/pull/937) ([crossan007](https://github.com/crossan007))
+- remove unneeded files [\#936](https://github.com/ChurchCRM/CRM/pull/936) ([crossan007](https://github.com/crossan007))
+- initial build modz [\#934](https://github.com/ChurchCRM/CRM/pull/934) ([crossan007](https://github.com/crossan007))
+- Build info fix post 2.2.0 RC2 [\#933](https://github.com/ChurchCRM/CRM/pull/933) ([DawoudIO](https://github.com/DawoudIO))
+
+## [2.2.0-RC2](https://github.com/ChurchCRM/CRM/tree/2.2.0-RC2) (2016-08-25)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0-RC1...2.2.0-RC2)
+
+**Implemented enhancements:**
+
+- Fixed Person ORM Role Bug [\#918](https://github.com/ChurchCRM/CRM/pull/918) ([DawoudIO](https://github.com/DawoudIO))
+
+**Fixed bugs:**
+
+- Fixed Person ORM Role Bug [\#918](https://github.com/ChurchCRM/CRM/pull/918) ([DawoudIO](https://github.com/DawoudIO))
+
+**Merged pull requests:**
+
+- fix firefox backups [\#931](https://github.com/ChurchCRM/CRM/pull/931) ([crossan007](https://github.com/crossan007))
+- fixed case of include  -\> Include [\#924](https://github.com/ChurchCRM/CRM/pull/924) ([DawoudIO](https://github.com/DawoudIO))
+- Build version sql cleanup [\#917](https://github.com/ChurchCRM/CRM/pull/917) ([DawoudIO](https://github.com/DawoudIO))
+
+## [2.2.0-RC1](https://github.com/ChurchCRM/CRM/tree/2.2.0-RC1) (2016-08-06)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0-RC3...2.2.0-RC1)
+
+## [2.2.0-RC3](https://github.com/ChurchCRM/CRM/tree/2.2.0-RC3) (2016-08-06)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.11...2.2.0-RC3)
+
 ## [2.1.11](https://github.com/ChurchCRM/CRM/tree/2.1.11) (2016-08-06)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.10...2.1.11)
 
@@ -314,12 +474,14 @@
 - Remove mrbs.sql [\#692](https://github.com/ChurchCRM/CRM/pull/692) ([DawoudIO](https://github.com/DawoudIO))
 
 ## [2.1.0](https://github.com/ChurchCRM/CRM/tree/2.1.0) (2016-06-18)
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.1.0-RC1...2.1.0)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.1...2.1.0)
 
 **Implemented enhancements:**
 
 - Update Build Documentation [\#662](https://github.com/ChurchCRM/CRM/issues/662)
+- TaskService - Update ChurchCRM [\#653](https://github.com/ChurchCRM/CRM/issues/653)
 - Add attendance Information tab to Person profile [\#634](https://github.com/ChurchCRM/CRM/issues/634)
+- 404 Error page [\#176](https://github.com/ChurchCRM/CRM/issues/176)
 - General Configuration Settings Needs better organization [\#167](https://github.com/ChurchCRM/CRM/issues/167)
 - Revamp Sundayschool Dashboard [\#161](https://github.com/ChurchCRM/CRM/issues/161)
 - Add events to calender [\#632](https://github.com/ChurchCRM/CRM/issues/632)
@@ -340,6 +502,7 @@
 
 **Fixed bugs:**
 
+- Create a Debug page for Remote Servers to check requirements  [\#654](https://github.com/ChurchCRM/CRM/issues/654)
 - Calendar Popup Issue   [\#543](https://github.com/ChurchCRM/CRM/issues/543)
 - Group View should use cart icon for add to cart [\#521](https://github.com/ChurchCRM/CRM/issues/521)
 - Upload New Photo does not effect Updated Date for member [\#293](https://github.com/ChurchCRM/CRM/issues/293)
@@ -361,8 +524,12 @@
 
 - tert [\#679](https://github.com/ChurchCRM/CRM/issues/679)
 - Error on My User Settings page [\#668](https://github.com/ChurchCRM/CRM/issues/668)
+- vagrant provision should also reset the VM [\#665](https://github.com/ChurchCRM/CRM/issues/665)
+- Composer Build Out of Date in Scotchbox. [\#664](https://github.com/ChurchCRM/CRM/issues/664)
 - Move Skin to Composer [\#661](https://github.com/ChurchCRM/CRM/issues/661)
+- TaskService - Update Church Info [\#652](https://github.com/ChurchCRM/CRM/issues/652)
 - \#594 Unnecessary sub directory [\#633](https://github.com/ChurchCRM/CRM/issues/633)
+- Add new group not working [\#613](https://github.com/ChurchCRM/CRM/issues/613)
 - Remove Downloaded Skins from src [\#685](https://github.com/ChurchCRM/CRM/issues/685)
 - Multiple unnecessary composer files [\#680](https://github.com/ChurchCRM/CRM/issues/680)
 - Remove Vendor folder from git repo [\#656](https://github.com/ChurchCRM/CRM/issues/656)
@@ -373,6 +540,10 @@
 **Merged pull requests:**
 
 - Fix composer build [\#682](https://github.com/ChurchCRM/CRM/pull/682) ([crossan007](https://github.com/crossan007))
+- update bootstrap so that provision resets DB [\#667](https://github.com/ChurchCRM/CRM/pull/667) ([crossan007](https://github.com/crossan007))
+- Revert "Revert "Moving to 2.0.2"" [\#631](https://github.com/ChurchCRM/CRM/pull/631) ([crossan007](https://github.com/crossan007))
+- Revert "Moving to 2.0.2" [\#630](https://github.com/ChurchCRM/CRM/pull/630) ([crossan007](https://github.com/crossan007))
+- Moving to 2.0.2 [\#629](https://github.com/ChurchCRM/CRM/pull/629) ([DawoudIO](https://github.com/DawoudIO))
 - Merge 2.1.0 into master. [\#686](https://github.com/ChurchCRM/CRM/pull/686) ([DawoudIO](https://github.com/DawoudIO))
 - removing webcal from the system [\#676](https://github.com/ChurchCRM/CRM/pull/676) ([DawoudIO](https://github.com/DawoudIO))
 - Removing skin from repo [\#671](https://github.com/ChurchCRM/CRM/pull/671) ([DawoudIO](https://github.com/DawoudIO))
@@ -383,32 +554,6 @@
 - 2.1.0 tweaks [\#624](https://github.com/ChurchCRM/CRM/pull/624) ([crossan007](https://github.com/crossan007))
 - Moved the system to 2.1.0 [\#609](https://github.com/ChurchCRM/CRM/pull/609) ([DawoudIO](https://github.com/DawoudIO))
 - Tweak deposit report [\#606](https://github.com/ChurchCRM/CRM/pull/606) ([crossan007](https://github.com/crossan007))
-
-## [2.1.0-RC1](https://github.com/ChurchCRM/CRM/tree/2.1.0-RC1) (2016-06-13)
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.1...2.1.0-RC1)
-
-**Implemented enhancements:**
-
-- TaskService - Update ChurchCRM [\#653](https://github.com/ChurchCRM/CRM/issues/653)
-- 404 Error page [\#176](https://github.com/ChurchCRM/CRM/issues/176)
-
-**Fixed bugs:**
-
-- Create a Debug page for Remote Servers to check requirements  [\#654](https://github.com/ChurchCRM/CRM/issues/654)
-
-**Closed issues:**
-
-- vagrant provision should also reset the VM [\#665](https://github.com/ChurchCRM/CRM/issues/665)
-- Composer Build Out of Date in Scotchbox. [\#664](https://github.com/ChurchCRM/CRM/issues/664)
-- TaskService - Update Church Info [\#652](https://github.com/ChurchCRM/CRM/issues/652)
-- Add new group not working [\#613](https://github.com/ChurchCRM/CRM/issues/613)
-
-**Merged pull requests:**
-
-- update bootstrap so that provision resets DB [\#667](https://github.com/ChurchCRM/CRM/pull/667) ([crossan007](https://github.com/crossan007))
-- Revert "Revert "Moving to 2.0.2"" [\#631](https://github.com/ChurchCRM/CRM/pull/631) ([crossan007](https://github.com/crossan007))
-- Revert "Moving to 2.0.2" [\#630](https://github.com/ChurchCRM/CRM/pull/630) ([crossan007](https://github.com/crossan007))
-- Moving to 2.0.2 [\#629](https://github.com/ChurchCRM/CRM/pull/629) ([DawoudIO](https://github.com/DawoudIO))
 
 ## [2.0.1](https://github.com/ChurchCRM/CRM/tree/2.0.1) (2016-05-23)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.0.0...2.0.1)
