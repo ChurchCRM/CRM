@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
-
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0-RC5...HEAD)
+## [2.2.0-RC6](https://github.com/ChurchCRM/CRM/tree/2.2.0-RC6) (2016-09-13)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0-RC5...2.2.0-RC6)
 
 **Implemented enhancements:**
 
