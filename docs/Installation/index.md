@@ -4,24 +4,6 @@
 
 [![ChurchCRM Installation Demo Video](http://img.youtube.com/vi/SMjZpo3aO5Q/0.jpg)](http://www.youtube.com/watch?v=SMjZpo3aO5Q "ChurchCRM Installation Demo Video")
 
-
-## How do I run ChurchCRM?
-
-Running ChurchCRM is not complicated if you have experience with
-Web applications. If you don't, there are a few things to get used to.
-It is important to understand is that ChurchCRM is a Web-based
-application, which means it has two distinct sides:
-
-The "server", on which the application actually runs. This is a
-centrally located computer that stores the files and information that
-ChurchCRM needs to run
-
-The "client", through which a user interacts with the application via
-a Web browser.
-
-There is only one server, but there can be an unlimited number of
-clients.
-
 ## ChurchCRM Requirements?
 
 A PHP-compatible Web server (Apache is recommended)
@@ -71,22 +53,6 @@ insert the following line into that new file:
 	php_flag register_globals off
 Save this file and upload this file into the main ChurchCRM directory.
 
-## What kind of client computers do I need?
-
-The interface will work fine with any modern standards-compliant web
-browser.  However, be warned:  Microsoft Internet Explorer is in many
-cases NOT compliant to well-established W3C-consortium Internet standards.
-If you have troubles, please use a quality (and free) browser such as
-Chrome instead.  Alternatively, there is a setting in
-Admin -> Edit General Settings that can disable certain interface 
-features for non-compliant browsers.
-
-## What if I only have one computer?
-
-That's fine, so long as the computer satisfies the requirements for
-both the server and client. Both sides of ChurchCRM can be on the
-same computer.
-
 ## Where do I get a Web server?
 
 The free Apache web server will work on Windows, Linux or about any
@@ -100,4 +66,3 @@ Where do I get a MySQL database and Apache web server?
 MySQL is available from www.mysql.com
 Apache is available from www.apache.org
 PHP is available from www.php.net
-

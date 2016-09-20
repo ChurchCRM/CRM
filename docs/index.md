@@ -7,25 +7,37 @@ The software was developed by a team of volunteers, in their spare time, for the
 
 If you'd like to find out more or want to help out, checkout our [github.com repo](https://github.com/ChurchCRM/CRM/)
 
----
+How do I run ChurchCRM?
+-------------------------
+Running ChurchCRM is not complicated if you have experience with
+Web applications. If you don't, there are a few things to get used to.
+It is important to understand is that ChurchCRM is a Web-based
+application, which means it has two distinct sides:
 
-**ChurchCRM is currently still in development.**
+The "server", on which the application actually runs. This is a
+centrally located computer that stores the files and information that
+ChurchCRM needs to run
 
-We're progressing quickly, but the documentation still needs filling in, and there are a few rough edges.  The 1.0 release is planned to arrive in the next few months.
+The "client", through which a user interacts with the application via
+a Web browser.
 
----
-
-#### Host anywhere.
-
-TODO
-
-#### Great themes available.
+There is only one server, but there can be an unlimited number of
+clients.
 
 ---
 
 ## Installation
 
 ChurchCRM is a PHP/MySQL application which runs on a web server, providing web pages so users can update and access the data in the database. You can run both the server and the browser on a single computer, but the real power of a web database application is visible when you have multiple users accessing the database from their own computers.
+
+---
+
+## Getting help
+
+To get help with ChurchCRM, please use the [GitHub issues].
+
+[GitHub issues]: https://github.com/ChurchCRM/CRM/issues
+[Dev Chat]: https://gitter.im/ChurchCRM/CRM
 
 ---
 
@@ -38,11 +50,6 @@ After you have installed the ChurchCRM application and can login, you are ready 
 
 The first thing to do is enter your church name, address, phone and email address into the Report Settings.
 
-You can add a custom header to ChurchCRM by entering the HTML for the custom header in the General Settings. From the Admin menu, choose “Edit General Settings”. Near the bottom of the General Settings page, enter the HTML for the custom header into the field “sHeader”. Example: If you enter-
-```html
-<H2>My Church</H2>
-```
-
 ChurchCRM will display “My Church” in large, bold letters at the top of each page.
 
 During the configuration stage, give some consideration to how you will use ChurchCRM:
@@ -53,14 +60,4 @@ During the configuration stage, give some consideration to how you will use Chur
 4. Who needs access to the administration features?
 5. Who should be given access to the Financial records?
 6. Who can add or change records?
-
-## Deploying
-
-The documentation site that we've just built only uses static files so you'll be able to host it from pretty much anywhere. [GitHub project pages] and [Amazon S3] are good hosting options. Upload the contents of the entire `site` directory to wherever you're hosting your website from and you're done.
-
-## Getting help
-
-To get help with ChurchCRM, please use the [GitHub issues].
-
-[GitHub issues]: https://github.com/ChurchCRM/CRM/issues
 
