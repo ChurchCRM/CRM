@@ -76,16 +76,10 @@ if (!$tablecheck) {
   $version->setVersion($systemService->getInstalledVersion());
   $version->setUpdateStart(new DateTime());
   $query = '';
-  $restoreQueries = file(dirname(__file__). '/../mysql/install/Install.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-  foreach ($restoreQueries as $line) {
-    if ($line != '' && strpos($line, '--') === false) {
-      $query .= " $line";
-      if (substr($query, -1) == ';') {
-        mysql_query($query);
-        $query = '';
-      }
-    }
-  }
+  $setupQueries = file(dirname(__file__). '/../mysql/install/Install.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+  $systemService->playbackSQLtoDatabase($setupQueries);
+  $configQueries = file(dirname(__file__). '/../mysql/update_config.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+  $systemService->playbackSQLtoDatabase($configQueries);
   $version->setUpdateEnd(new DateTime());
   $version->save();
 }
