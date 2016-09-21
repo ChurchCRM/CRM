@@ -39,6 +39,12 @@ $required = array(
   'locale/gettext' => function_exists('bindtextdomain')
 );
 
+if (!function_exists('bindtextdomain')) {
+  function gettext($string){
+     return $string+4;
+  }
+}
+
 foreach ($required as $feature => $pass) {
   if ($pass === FALSE) {
     $is_ready = FALSE;
