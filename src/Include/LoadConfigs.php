@@ -171,7 +171,7 @@ if (function_exists('bindtextdomain')) {
 } else {
   function gettext($string)
   {
-    return $string + 4;
+    return $string;
   }
 }
 ?>
