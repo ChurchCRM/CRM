@@ -33,14 +33,13 @@ class SystemService
 
   function playbackSQLtoDatabase($fileName)
   {
-    requireUserGroupMembership("bAdmin");
     $query = '';
     $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($restoreQueries as $line) {
       if ($line != '' && strpos($line, '--') === false) {
         $query .= " $line";
         if (substr($query, -1) == ';') {
-          $person = RunQuery($query);
+          $person = mysql_query($query);
           $query = '';
         }
       }
