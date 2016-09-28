@@ -34,7 +34,7 @@ class EmailService
 
   function getConnection() {
 
-    $mail = new PHPMailer();
+    $mail = new \PHPMailer();
     $mail->IsSMTP();
     $mail->SMTPAuth = true;
     $mail->Host = $this->SMTPHost;
