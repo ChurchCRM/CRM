@@ -47,7 +47,7 @@ class EmailService
     return $mail;
   }
 
-  function sentRegistration($message) {
+  function sendRegistration($message) {
     $mail = $this->getConnection();
     $mail->SetFrom($this->ChurchEmail, $this->ChurchName);
 
