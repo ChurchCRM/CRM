@@ -18,7 +18,6 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\ChurchInfoReport;
-require "../Include/phpmailer/class.phpmailer.php";
 
 class EmailPDF_ConfirmReport extends ChurchInfoReport
 {
@@ -76,7 +75,7 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport
   function getEmailConnection()
   {
 
-    $mail = new PHPMailer();
+    $mail = new \PHPMailer();
     $mail->IsSMTP();
     // $mail->SMTPDebug  = 2; 
     $mail->SMTPAuth = true;
