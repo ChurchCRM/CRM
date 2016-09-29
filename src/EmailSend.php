@@ -128,7 +128,7 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
     // redirect back to EmailSend.php with meta refresh until finished.
     $tStartTime = time();
 
-    $mail = new PHPMailer();
+    $mail = new \PHPMailer();
 
     // Set the language for PHPMailer
     $mail->SetLanguage($sLangCode, $sLanguagePath);
