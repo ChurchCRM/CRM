@@ -43,7 +43,7 @@ class EmailService
       $mail->Password = $this->SMTPPass;
     }
 
-    $mail->SMTPDebug = 2;
+    //$mail->SMTPDebug = 2;
 
     return $mail;
   }
