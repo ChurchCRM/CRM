@@ -529,7 +529,6 @@ class GroupService
       $values['groupDescription'] = $row['grp_Description'];
       $values['uri'] = $this->getViewURI($row['grp_ID']);
       $values['memberCount'] = $totalMembers;
-      $values['groupCartStatus'] = $this->checkGroupAgainstCart($row['grp_ID']);
       $values['defaultRole'] = $this->getGroupDefaultRole($row['grp_ID']);
       $values['roles'] = $this->getGroupRoles($row['grp_ID']);
       $values['totalMembers'] = $totalMembers;
