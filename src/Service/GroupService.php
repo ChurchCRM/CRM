@@ -172,7 +172,7 @@ class GroupService
     // Validate that this list ID is really for a group roles list. (for security)
     if(mysql_num_rows($rsList) == 0)
     {
-      throw new Exception("invalid request");
+      throw new \Exception("invalid request");
     }
 
     while ($row = mysql_fetch_assoc( $rsList ))
@@ -296,7 +296,7 @@ class GroupService
 
       return $this->getGroupRoles($groupID);
     } else {
-      throw new Exception ("You cannont delete the only group");
+      throw new \Exception ("You cannot delete the only group");
     }
   }
 
@@ -304,7 +304,7 @@ class GroupService
   {
     requireUserGroupMembership("bManageGroups");
     if (strlen($groupRoleName) == 0) {
-      throw new Exception ("New field name cannot be blank");
+      throw new \Exception ("New field name cannot be blank");
     } else {
       // Check for a duplicate option name
       $sSQL = 'SELECT \'\' FROM list_lst
@@ -314,7 +314,7 @@ class GroupService
                  lst_OptionName = "' . $groupRoleName . '"';
       $rsCount = RunQuery($sSQL);
       if (mysql_num_rows($rsCount) > 0) {
-        throw new Exception ("Field " . $groupRoleName . " already exists");
+        throw new \Exception ("Field " . $groupRoleName . " already exists");
       } else {
         $sSQL = "SELECT grp_RoleListID FROM group_grp WHERE grp_ID = $groupID";
         $rsTemp = RunQuery($sSQL);
@@ -427,7 +427,7 @@ class GroupService
   {
     requireUserGroupMembership("bManageGroups");
     if (!$groupName) {   //If there's no group name, throw an exception
-      throw new Exception ("Unable to create a group without a name");
+      throw new \Exception ("Unable to create a group without a name");
     }
     //Get a new Role List ID
     $sSQL = "SELECT MAX(lst_ID) FROM list_lst";
