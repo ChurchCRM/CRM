@@ -47,7 +47,7 @@ class DataSeedService
       $family->setCountry("United States");
       $family->setZip($hoh->location->zip);
       $family->setHomephone($hoh->phone);
-      $family->setDateEntered(\DateTime::createFromFormat('Y-m-d h:i:s', $hoh->registered));
+      $family->setDateEntered(\DateTime::createFromFormat('Y-m-d H:i:s', $hoh->registered));
       $family->setEnteredBy($_SESSION['iUserID']);
       $family->save();
       $FamilyID = $family->getId();
@@ -136,14 +136,14 @@ class DataSeedService
     $person->setHomePhone($user->phone);
     $person->setCellPhone($user->cell);
     $person->setEmail($user->email);
-    $birthday = \DateTime::createFromFormat('Y-m-d h:i:s', $user->dob);
-    $person->setBirthDay(date('d', $birthday));
-    $person->setBirthMonth(date('m', $birthday));
-    $person->setBirthYear(date('Y', $birthday));
+    $birthdayDate = \DateTime::createFromFormat('Y-m-d H:i:s', $user->dob);
+    $person->setBirthDay($birthdayDate->format("d"));
+    $person->setBirthMonth($birthdayDate->format('m'));
+    $person->setBirthYear($birthdayDate->format('Y'));
     $person->setFamId($user->famID);
     $person->setFmrId($user->per_fmr_id);
     $person->setEnteredBy($_SESSION['iUserID']);
-    $person->setDateEntered(\DateTime::createFromFormat('Y-m-d h:i:s', $user->registered));
+    $person->setDateEntered(\DateTime::createFromFormat('Y-m-d H:i:s', $user->registered));
     $person->save();
     return $person->getId();
 
