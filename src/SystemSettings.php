@@ -151,7 +151,7 @@ $rsConfigs = RunQuery($sSQL);
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="Step1">
-              <table class="table">
+              <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext("Variable name") ?></th>
                   <th width="400px">Value</th>
@@ -168,7 +168,7 @@ $rsConfigs = RunQuery($sSQL);
               </table>
             </div>
             <div class="tab-pane" id="<?= $step ?>">
-              <table class="table">
+              <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext("Variable name") ?></th>
                   <th width="400px">Current Value</th>
@@ -181,7 +181,7 @@ $rsConfigs = RunQuery($sSQL);
                   <td>
                     <!--  Current Value -->
                     <?php if ($cfg_name == "sTimeZone" ) {?>
-                    <select name='new_value[<?= $cfg_id ?>]' id="timeZoneSelectBox">
+                    <select class="input-small" name='new_value[<?= $cfg_id ?>]' id="timeZoneSelectBox">
                         <?php
                             foreach (timezone_identifiers_list() as $timeZone)
                             {
@@ -190,11 +190,11 @@ $rsConfigs = RunQuery($sSQL);
                         ?>
                     </select>
                     <?php } elseif ($cfg_type == 'text') { ?>
-                      <input type=text size=40 maxlength=255 name='new_value[<?= $cfg_id ?>]' value='<?= htmlspecialchars($cfg_value, ENT_QUOTES) ?>'>
+                      <input type=text class="col-lg-12" maxlength=255 name='new_value[<?= $cfg_id ?>]' value='<?= htmlspecialchars($cfg_value, ENT_QUOTES) ?>'>
                     <?php } elseif ($cfg_type == 'textarea') { ?>
-                      <textarea rows=4 cols=40 name='new_value[<?= $cfg_id ?>]'><?= htmlspecialchars($cfg_value, ENT_QUOTES) ?></textarea>
+                      <textarea rows=4 class="col-lg-12" name='new_value[<?= $cfg_id ?>]'><?= htmlspecialchars($cfg_value, ENT_QUOTES) ?></textarea>
                     <?php } elseif ($cfg_type == 'number' || $cfg_type == 'date') { ?>
-                      <input type=text size=40 maxlength=15 name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>'>
+                      <input type=text class="col-lg-12" maxlength=15 name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>'>
                     <?php } elseif ($cfg_type == 'boolean') {
                       if ($cfg_value) {
                         $sel1 = "";
