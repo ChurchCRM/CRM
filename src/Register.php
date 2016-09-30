@@ -60,7 +60,7 @@ if (isset ($_POST['Submit'])) {
 
   $sEmailMessage =  $_POST['emailmessage'];
 
-  $emailService->sentRegistration($sEmailMessage);
+  $emailService->sendRegistration($sEmailMessage);
 
   // Turn off the registration flag so the menu option is less obtrusive
   $sSQL = "UPDATE config_cfg SET cfg_value = 1 WHERE cfg_name='bRegistered'";
