@@ -1,5 +1,42 @@
 # Change Log
 
+## [2.2.1](https://github.com/ChurchCRM/CRM/tree/2.2.1) (2016-09-30)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0...2.2.1)
+
+**Implemented enhancements:**
+
+- Add people to cart takes a lot of clocking [\#413](https://github.com/ChurchCRM/CRM/issues/413)
+- General Settings: Time Zone Dropdown [\#208](https://github.com/ChurchCRM/CRM/issues/208)
+
+**Fixed bugs:**
+
+- UNABLE TO INSTALL CHUCH CRM [\#1038](https://github.com/ChurchCRM/CRM/issues/1038)
+- E-mail address not displayed in group member grid [\#974](https://github.com/ChurchCRM/CRM/issues/974)
+- Permissions: User needs Note access to add Note [\#1061](https://github.com/ChurchCRM/CRM/issues/1061)
+- Register Software and/or phpmailer not functioning [\#1054](https://github.com/ChurchCRM/CRM/issues/1054)
+- Demo Data doesn't add sunday school groups correctly [\#1014](https://github.com/ChurchCRM/CRM/issues/1014)
+- Fix seed data import [\#1066](https://github.com/ChurchCRM/CRM/pull/1066) ([DawoudIO](https://github.com/DawoudIO))
+- Move phpmailer to composer [\#1065](https://github.com/ChurchCRM/CRM/pull/1065) ([DawoudIO](https://github.com/DawoudIO))
+- Fixed Member Images [\#1063](https://github.com/ChurchCRM/CRM/pull/1063) ([DawoudIO](https://github.com/DawoudIO))
+- You don't need bNote Role to use the addNodeService [\#1062](https://github.com/ChurchCRM/CRM/pull/1062) ([DawoudIO](https://github.com/DawoudIO))
+- fixed class namespace in services [\#1058](https://github.com/ChurchCRM/CRM/pull/1058) ([DawoudIO](https://github.com/DawoudIO))
+- added sunday school roles [\#1048](https://github.com/ChurchCRM/CRM/pull/1048) ([DawoudIO](https://github.com/DawoudIO))
+- added gettext if missing [\#1047](https://github.com/ChurchCRM/CRM/pull/1047) ([DawoudIO](https://github.com/DawoudIO))
+
+**Closed issues:**
+
+- Icons not reflecting gender/age properly [\#1056](https://github.com/ChurchCRM/CRM/issues/1056)
+- Login/Install problems [\#1053](https://github.com/ChurchCRM/CRM/issues/1053)
+- System setting page mobile rendering [\#745](https://github.com/ChurchCRM/CRM/issues/745)
+- Icons not reflecting gender/age properly [\#1055](https://github.com/ChurchCRM/CRM/issues/1055)
+- Groups dashboard widget [\#746](https://github.com/ChurchCRM/CRM/issues/746)
+
+**Merged pull requests:**
+
+- Merge 2.2.0 final to Develop [\#1046](https://github.com/ChurchCRM/CRM/pull/1046) ([DawoudIO](https://github.com/DawoudIO))
+- Fix 2.2.1 upgrade [\#1043](https://github.com/ChurchCRM/CRM/pull/1043) ([crossan007](https://github.com/crossan007))
+- Moving all build downloads to background thread [\#1037](https://github.com/ChurchCRM/CRM/pull/1037) ([DawoudIO](https://github.com/DawoudIO))
+
 ## [2.2.0](https://github.com/ChurchCRM/CRM/tree/2.2.0) (2016-09-17)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0-RC6...2.2.0)
 
@@ -132,7 +169,6 @@
 **Closed issues:**
 
 - Demo Data doesn't add sunday school groups correctly [\#1015](https://github.com/ChurchCRM/CRM/issues/1015)
-- Groups dashboard widget [\#746](https://github.com/ChurchCRM/CRM/issues/746)
 - Group Assignment [\#704](https://github.com/ChurchCRM/CRM/issues/704)
 
 **Merged pull requests:**
