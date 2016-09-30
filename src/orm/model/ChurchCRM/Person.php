@@ -1,8 +1,7 @@
 <?php
 
 namespace ChurchCRM;
-use ChurchCRM\ListOption;
-use ChurchCRM\ListOptionQuery;
+
 use ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\Base\UserQuery;
 use Propel\Runtime\Connection\ConnectionInterface;
@@ -53,7 +52,8 @@ class Person extends BasePerson
   function getBirthDate()
   {
     if (!is_null($this->getBirthDay()) && $this->getBirthDay() != "" &&
-      !is_null($this->getBirthMonth()) && $this->getBirthMonth() != "") {
+      !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ""
+    ) {
 
       $birthYear = $this->getBirthYear();
       if ($this->hideAge()) {
@@ -100,9 +100,7 @@ class Person extends BasePerson
   {
     $photoFile = $this->getUploadedPhoto();
     if ($photoFile == "") {
-      if ($this->showGravatar) {
-        $photoFile = $this->getGravatar();
-      }
+      $photoFile = $this->getGravatar();
       if ($photoFile == "") {
         $photoFile = $this->getDefaultPhoto();
       }
@@ -148,15 +146,15 @@ class Person extends BasePerson
 
   function getGravatar($s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
   {
-    if ($this->getEmail() != "") {
-    }
-    $url = 'http://www.gravatar.com/avatar/';
-    $url .= md5(strtolower(trim($this->getEmail())));
-    $url .= "?s=$s&d=$d&r=$r";
+    if ($this->showGravatar && $this->getEmail() != "") {
+      $url = 'http://www.gravatar.com/avatar/';
+      $url .= md5(strtolower(trim($this->getEmail())));
+      $url .= "?s=$s&d=$d&r=$r";
 
-    $headers = @get_headers($url);
-    if (strpos($headers[0], '404') === false) {
-      return $url;
+      $headers = @get_headers($url);
+      if (strpos($headers[0], '404') === false) {
+        return $url;
+      }
     }
     return "";
   }

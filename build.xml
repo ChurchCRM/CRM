@@ -61,26 +61,16 @@
     <!-- (DEFAULT)  Change Log                         -->
     <!-- ============================================  -->
 
-    <target name="install-change-log">
-        <echo message="Installing Ruby"/>
-        <exec command="sudo apt-get install -y ruby" passthru="true"/>
-
-        <echo message="Installing github_changelog_generator"/>
-        <exec command="gem install github_changelog_generator" passthru="true"/>
-    </target>
-
     <target name="rev-build-number">
         <echo message="now version ${build.version.next}"/>
         <exec command="replace '${build.version}' '${build.version.next}' -- build.properties src/composer.json" dir="." passthru="true"/>
         <echo message="please update build.properties with the next verion file"/>
     </target>
 
-    <target name="update-change-log">
+    <target name="change-log">
         <echo message="building changeset"/>
         <exec command="github_changelog_generator -t ${github.token}" dir="." passthru="true"/>
     </target>
-
-    <target name="change-log" depends="install-change-log, update-change-log" />
 
     <target name="locale-update">
         <echo message="building messages.po"/>

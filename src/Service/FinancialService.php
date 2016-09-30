@@ -27,7 +27,7 @@ class FinancialService
   function processAuthorizeNet()
   {
     requireUserGroupMembership("bFinance");
-    $donation = new AuthorizeNetAIM;
+    $donation = new \AuthorizeNetAIM();
     $donation->amount = "$plg_amount";
     $donation->first_name = $firstName;
     $donation->last_name = $lastName;
@@ -179,7 +179,7 @@ class FinancialService
     // put aut_ID into the $customerid field
     // Create object to preform API calls
 
-    $workingobj = new VancoTools($VancoUserid, $VancoPassword, $VancoClientid, $VancoEnc_key, $VancoTest);
+    $workingobj = new \VancoTools($VancoUserid, $VancoPassword, $VancoClientid, $VancoEnc_key, $VancoTest);
     // Call Login API to receive a session ID to be used in future API calls
     $sessionid = $workingobj->vancoLoginRequest();
     // Create content to be passed in the nvpvar variable for a TransparentRedirect API call
@@ -283,7 +283,7 @@ class FinancialService
     global $bUseScannedChecks;
     if ($bUseScannedChecks) {
       require "../Include/MICRFunctions.php";
-      $micrObj = new MICRReader(); // Instantiate the MICR class
+      $micrObj = new \MICRReader(); // Instantiate the MICR class
       $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
       if ($routeAndAccount) {
         $sSQL = "SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck=\"" . $routeAndAccount . "\"";

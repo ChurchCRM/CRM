@@ -335,7 +335,7 @@ class SystemService
       $issueDescription .= "Apache Modules    |" . implode(",", apache_get_modules());
     }
 
-    $postdata = new stdClass();
+    $postdata = new \stdClass();
     $postdata->issueTitle = FilterInput($data->issueTitle);
     $postdata->issueDescription = $issueDescription;
 

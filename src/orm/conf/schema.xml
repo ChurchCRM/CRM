@@ -40,7 +40,7 @@
                 required="true" defaultValue="0"/>
         <column name="per_BirthYear" phpName="BirthYear" type="INTEGER" size="4"/>
         <column name="per_MembershipDate" phpName="MembershipDate" type="DATE"/>
-        <column name="per_Gender" phpName="Gender" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true"
+        <column name="per_Gender" phpName="Gender" type="TINYINT" size="1" sqlType="tinyint(1) unsigned" required="true"
                 defaultValue="false"/>
         <column name="per_fmr_ID" phpName="FmrId" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"
                 defaultValue="0"/>
