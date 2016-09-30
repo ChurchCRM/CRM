@@ -5,8 +5,6 @@ namespace ChurchCRM;
 use ChurchCRM\Base\Deposit as BaseDeposit;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\PledgeQuery as ChildPledgeQuery;
-use ChurchCRM\DonationFundQuery;
-use ChurchCRM\Reports\pdf_DepositReport;
 
 
 /**
@@ -26,7 +24,7 @@ class Deposit extends BaseDeposit
   {
     $OFXReturn = new \stdClass();
     if ( $this->getPledges()->count() == 0 ) {
-      throw new Exception("No Payments on this Deposit",404);
+      throw new \Exception("No Payments on this Deposit",404);
     }
 
     $orgName = "ChurchCRM Deposit Data";
@@ -375,7 +373,7 @@ class Deposit extends BaseDeposit
     requireUserGroupMembership("bFinance");
     $Report = new \stdClass();
     if (count($this->getPledges()) == 0) {
-      throw new Exception("No Payments on this Deposit",404);
+      throw new \Exception("No Payments on this Deposit",404);
     }
 
     
