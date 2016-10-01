@@ -223,7 +223,7 @@ require "../Include/Header.php";
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
-        <button type="button" id="addNewCalssBtn"  class="btn btn-primary" data-dismiss="modal"><?= gettext("Add") ?></button>
+        <button type="button" id="addNewClassBtn"  class="btn btn-primary" data-dismiss="modal"><?= gettext("Add") ?></button>
       </div>
     </div>
   </div>
@@ -231,7 +231,7 @@ require "../Include/Header.php";
 <script type="application/javascript">
   $(document).ready(function () {
 
-    $("#addNewCalssBtn").click(function (e) {
+    $("#addNewClassBtn").click(function (e) {
       var name = $("#new-class-name").val(); // get the name of the from the textbox
       if (name) // ensure that the user entered a name
       {
