@@ -31,8 +31,13 @@ require 'Include/Functions.php';
 use ChurchCRM\Service\SystemService;
 
 $systemService = new SystemService();
-$_SESSION['latestVersion'] = $systemService->getLatestRelese();
-
+try
+{
+  $_SESSION['latestVersion'] = $systemService->getLatestRelese();
+} catch (Exception $ex) {
+  //there was an error checking for the latest release.  The user probably
+  //doesn't need to know, and it should NOT prevent the app from loading.
+}
 if ($systemService->checkDatabaseVersion())  //either the DB is good, or the upgrade was successful.
 {
   Redirect('Menu.php');

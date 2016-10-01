@@ -3,8 +3,6 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Group as BaseGroup;
-use ChurchCRM\ListOptionQuery;
-use ChurchCRM\ListOption;
 
 /**
  * Skeleton subclass for representing a row from the 'group_grp' table.
@@ -78,6 +76,7 @@ class Group extends BaseGroup
       $listOption->save();
       $i++;
     }
+
     parent::postInsert($con);
     return true;
   }

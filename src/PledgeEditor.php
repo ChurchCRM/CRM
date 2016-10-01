@@ -488,8 +488,7 @@ if ($PledgeOrPayment == 'Pledge') {
 	$sPageTitle = gettext("Pledge Editor");
 } elseif ($iCurrentDeposit) {
 	$sPageTitle = gettext("Payment Editor: ") . $dep_Type . gettext(" Deposit Slip #") . $iCurrentDeposit . " ($dep_Date)";
-
-	// form assumed by Reports/PrintDeposit.php. 
+  
 	$checksFit = $iChecksPerDepositForm;
 
 	$sSQL = "SELECT plg_FamID, plg_plgID, plg_checkNo, plg_method from pledge_plg where plg_method=\"CHECK\" and plg_depID=" . $iCurrentDeposit;

@@ -30,7 +30,6 @@
 require_once 'Functions.php';
 
 use ChurchCRM\Service\TaskService;
-use ChurchCRM\Service\PersonService;
 
 function Header_head_metatag() {
   global $sLanguage, $bExportCSV, $sMetaRefresh, $sHeader, $sGlobalMessage;
@@ -286,7 +285,7 @@ function addMenuItem($aMenu, $mIdx) {
     global $sHeader, $sGlobalMessage, $sGlobalMessageClass;
     global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
 
-    $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
+    $loggedInUserPhoto = $sRootPath . "/api/persons/" .$_SESSION['iUserID']. "/photo";
 
     $MenuFirst = 1;
 

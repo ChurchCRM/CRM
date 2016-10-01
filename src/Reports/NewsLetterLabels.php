@@ -15,17 +15,10 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
-require "../Include/class_fpdf_labels.php";
 
-class PDF_NewsletterLabels extends PDF_Label {
 
-	// Constructor
-	function PDF_NewsletterLabels($sLabelFormat) {
-   	parent::PDF_Label ($sLabelFormat);
-      $this->Open();
-	}
-}
+use ChurchCRM\Reports\PDF_NewsletterLabels;
+
 
 $sLabelFormat = FilterInput($_GET["labeltype"]);
 setcookie("labeltype", $sLabelFormat, time()+60*60*24*90, "/" );

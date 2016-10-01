@@ -13,20 +13,6 @@ class PersonService
     $this->baseURL = $_SESSION['sRootPath'];
   }
 
-  function getPhoto($id)
-  {
-    if ($id != "") {
-      $photoFile = $this->getUploadedPhoto($id);
-      if ($photoFile == "") {
-        $person = PersonQuery::create()->findPk($id);
-        $photoFile = $person->getPhoto();
-      }
-      return $photoFile;
-    }
-
-    return $this->baseURL . "/Images/x.gif";
-  }
-
   function deleteUploadedPhoto($id)
   {
     requireUserGroupMembership("bEditRecords");
@@ -102,7 +88,6 @@ class PersonService
         WHERE per_ID = " . $per_ID;
     $result = mysql_query($fetch);
     $row = mysql_fetch_assoc($result);
-    $row['photo'] = $this->getPhoto($per_ID);
     $row['displayName'] = $row['per_FirstName'] . " " . $row['per_LastName'];
 
     return $row;

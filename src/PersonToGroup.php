@@ -56,7 +56,7 @@ $sPageTitle = gettext("Add Person to Group");
 require "Include/Header.php";
 ?>
 
-<script src="js/RPCDummyAjax.js"></script>
+<script src="skin/js/GroupRoles.js"></script>
 
 <p align="center"><?= gettext("Select the group to add this person to:") ?></p>
 <form method="post" action="PersonToGroup.php?PersonID=<?= $iPersonID ?>">
