@@ -24,6 +24,10 @@ class Group extends BaseGroup
     return $this->getType() == $this->typeSundaySchool;
   }
 
+  public function makeSundaySchool() {
+    $this->setType($this->typeSundaySchool);
+  }
+
   public function preSave(\Propel\Runtime\Connection\ConnectionInterface $con = null)
   {
     requireUserGroupMembership("bManageGroups");

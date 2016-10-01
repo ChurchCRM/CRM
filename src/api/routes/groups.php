@@ -177,8 +177,7 @@ $app->group('/groups', function () {
     $className = $args['name'];
     $sundaySchoolClass = new Group();
     $sundaySchoolClass->setName($className);
-    $sundaySchoolClass->setType(4);
-    $sundaySchoolClass->set;
+    $sundaySchoolClass->makeSundaySchool();
     $sundaySchoolClass->save();
   });
 
