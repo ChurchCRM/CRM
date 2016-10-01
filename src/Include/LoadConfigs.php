@@ -58,14 +58,14 @@ if (!function_exists("mysql_failure")) {
 
 // Establish the database connection
 if (!function_exists('mysql_connect')) {
-   mysql_failure("mysql_connect function is not defined.  Possibly due to unsupported PHP version.  Currently installed version: ".phpversion());
+  mysql_failure("mysql_connect function is not defined.  Possibly due to unsupported PHP version.  Currently installed version: " . phpversion());
 }
 
 $cnInfoCentral = mysql_connect($sSERVERNAME, $sUSER, $sPASSWORD)
-or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ".mysql_error());
+or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysql_error());
 
 mysql_select_db($sDATABASE)
-or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ".mysql_error());
+or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysql_error());
 
 $sql = "SHOW TABLES FROM `$sDATABASE`";
 $tablecheck = mysql_num_rows(mysql_query($sql));
@@ -156,10 +156,15 @@ if ($sLanguage == 'it_IT') {
 
 if (function_exists('bindtextdomain')) {
   $domain = 'messages';
-  $sLocaleDir = dirname(__FILE__). '/../locale';
+  $sLocaleDir = dirname(__FILE__) . '/../locale';
 
   bind_textdomain_codeset($domain, 'UTF-8');
   bindtextdomain($domain, $sLocaleDir);
   textdomain($domain);
+} else {
+  function gettext($string)
+  {
+    return $string;
+  }
 }
 ?>

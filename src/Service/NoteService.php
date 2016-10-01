@@ -9,8 +9,6 @@ class NoteService
 
   function addNote($personID, $familyID, $private, $text, $type = "system")
   {
-    requireUserGroupMembership("bNotes");
-
     $note = new Note();
     $note->setPerId($personID);
     $note->setFamId($familyID);

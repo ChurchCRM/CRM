@@ -181,7 +181,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img src="<?= $person->getPhoto()?>" alt="" class="profile-user-img img-responsive img-circle"/>
+        <img src="<?= $sRootPath . "/api/persons/" .$iPersonID. "/photo" ?>" alt="" class="profile-user-img img-responsive img-circle"/>
 
         <h3 class="profile-username text-center">
           <? if ($person->isMale()) { ?>

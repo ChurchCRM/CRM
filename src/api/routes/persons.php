@@ -1,8 +1,7 @@
 <?php
 // Person APIs
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Person;
-Use Slim;
+
 $app->group('/persons', function ()  {
 
   // search person by Name
