@@ -24,3 +24,8 @@ Update `config_cfg` set
 `cfg_data` = '{"Choices":["WebDAV","Local"]}',
 `cfg_type` = 'choice'
 where `cfg_id` = 1037;
+
+Update `config_cfg` set
+`cfg_data` = '{"Choices":["en_US","de_DE","en_AU","en_GB","es_ES","fr_FR","hu_HU","it_IT","nb_NO","nl_NL","pl_PL","pt_BR","ro_RO","ru_RU","se_SE","sq_AL","sv_SE","zh_CN","zh_TW"]}',
+`cfg_type` = 'choice'
+where `cfg_id` = 1037;
