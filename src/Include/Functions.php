@@ -329,7 +329,7 @@ function CurrentFY()
   $yearNow = date("Y");
   $monthNow = date("m");
   $FYID = $yearNow - 1996;
-  if ($monthNow >= $iFYMonth)
+  if ($monthNow >= $iFYMonth && $iFYMonth > 1)
     $FYID += 1;
   return ($FYID);
 }
