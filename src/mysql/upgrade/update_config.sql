@@ -120,6 +120,7 @@ UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='95' WHERE `cfg_cate
 
 delete from config_cfg where cfg_id ='18';
 delete from config_cfg where cfg_id ='2001';
+
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1011';
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1012';
 UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1013';

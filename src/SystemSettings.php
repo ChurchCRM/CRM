@@ -260,7 +260,8 @@ $rsConfigs = RunQuery($sSQL);
 
 <script>
 $(document).ready(function(){
-   $("#timeZoneSelectBox").select2();
+   $("select").select2();
+   
 }); 
 </script>
 <script src="skin/js/SystemSettings.js" type="text/javascript"></script>
