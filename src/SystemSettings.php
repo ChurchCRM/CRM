@@ -183,7 +183,7 @@ $rsConfigs = RunQuery($sSQL);
                   <td>
                     <!--  Current Value -->
                     <?php if ($cfg_name == "sTimeZone" ) {?>
-                    <select name='new_value[<?= $cfg_id ?>]' id="timeZoneSelectBox">
+                    <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox" style="width: 100%">
                         <?php
                             foreach (timezone_identifiers_list() as $timeZone)
                             {
@@ -192,7 +192,7 @@ $rsConfigs = RunQuery($sSQL);
                         ?>
                     </select>
                     <?php } elseif ( $cfg_type == 'choice' ) { ?>
-                      <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox">
+                      <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox" style="width: 100%">
                         <?php
                             foreach (json_decode($cfg_data)->Choices as $choice)
                             {
@@ -201,11 +201,11 @@ $rsConfigs = RunQuery($sSQL);
                         ?>
                       </select>           
                     <?php }  elseif ($cfg_type == 'text') { ?>
-                      <input type=text size=40 maxlength=255 name='new_value[<?= $cfg_id ?>]' value='<?= htmlspecialchars($cfg_value, ENT_QUOTES) ?>'>
+                      <input type=text size=40 maxlength=255 name='new_value[<?= $cfg_id ?>]' value='<?= htmlspecialchars($cfg_value, ENT_QUOTES) ?>' class="form-control">
                     <?php } elseif ($cfg_type == 'textarea') { ?>
-                      <textarea rows=4 cols=40 name='new_value[<?= $cfg_id ?>]'><?= htmlspecialchars($cfg_value, ENT_QUOTES) ?></textarea>
+                      <textarea rows=4 cols=40 name='new_value[<?= $cfg_id ?>]' class="form-control"><?= htmlspecialchars($cfg_value, ENT_QUOTES) ?></textarea>
                     <?php } elseif ($cfg_type == 'number' || $cfg_type == 'date') { ?>
-                      <input type=text size=40 maxlength=15 name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>'>
+                      <input type=text size=40 maxlength=15 name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>' class="form-control">
                     <?php } elseif ($cfg_type == 'boolean') {
                       if ($cfg_value) {
                         $sel1 = "";
@@ -214,7 +214,7 @@ $rsConfigs = RunQuery($sSQL);
                         $sel1 = "SELECTED";
                         $sel2 = "";
                       } ?>
-                      <select name='new_value[<?= $cfg_id ?>]'>
+                      <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox" style="width: 100%">
                         <option value='' <?= $sel1 ?>>False
                         <option value='1' <?= $sel2 ?>>True
                       </select>
@@ -260,8 +260,11 @@ $rsConfigs = RunQuery($sSQL);
 
 <script>
 $(document).ready(function(){
-   $("select").select2();
-   
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  var target = $(e.target).attr("href") // activated tab
+  $(target +" .choiceSelectBox").select2({ width: 'resolve' });
+});
+$(".choiceSelectBox").select2({ width: 'resolve' });
 }); 
 </script>
 <script src="skin/js/SystemSettings.js" type="text/javascript"></script>
