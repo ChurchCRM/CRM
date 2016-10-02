@@ -9,14 +9,14 @@
 
 Running ChurchCRM is not complicated if you have experience with
 Web applications. If you don't, there are a few things to get used to.
-It is important to understand is that ChurchCRM is a Web-based
+It is important to understand that ChurchCRM is a Web-based
 application, which means it has two distinct sides:
 
-The "server", on which the application actually runs. This is a
+* The "server", on which the application actually runs. This is a
 centrally located computer that stores the files and information that
 ChurchCRM needs to run
 
-The "client", through which a user interacts with the application via
+* The "client", through which a user interacts with the application via
 a Web browser.
 
 There is only one server, but there can be an unlimited number of
@@ -24,9 +24,9 @@ clients.
 
 ## ChurchCRM Requirements?
 
-A PHP-compatible Web server (Apache is recommended)
-The MySQL database server (version 5.1 or higher)
-PHP (version 5.6 or higher)
+* A PHP-compatible Web server (Apache is recommended)
+* MySQL database server (version 5.1 or higher)
+* PHP (version 5.6 or higher)
 
 Certain PHP modules (sometimes referred to as extensions) must be enabled:
 'mysql' and 'gd' version 2 or higher.  On some platforms, you may need to
