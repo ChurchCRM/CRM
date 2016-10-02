@@ -55,22 +55,16 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
           <hr/>
         </div>
         <div class="form-group has-feedback">
-          <div class="radio">
+          <div class="checkbox">
             <label>
-              <input type="radio" name="familyPrimaryChurch" id="optionsRadios1" value="Yes" checked>
+              <input type="checkbox" name="familyPrimaryChurch" checked>&nbsp;
               <?= gettext("This will be my primary church.") ?>
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="familyPrimaryChurch" id="optionsRadios2" value="No">
-              <?= gettext("This will NOT be my primary church.") ?>
             </label>
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-6">
-            <button type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext("Register"); ?></button>
+          <div class="col-xs-12 text-center">
+            <button type="submit" class="btn bg-olive"><?= gettext("Next"); ?></button>
           </div>
           <!-- /.col -->
         </div>
