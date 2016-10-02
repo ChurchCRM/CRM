@@ -370,7 +370,7 @@ else
 		echo "</tr>";
 
 		// If this group has associated special properties, display those with values and prop_PersonDisplay flag set.
-		if ($grp_hasSpecialProps == 'true')
+		if ($grp_hasSpecialProps)
 		{
 			$firstRow = true;
 			// Get the special properties for this group

@@ -14,8 +14,9 @@
 
 //Include the function library
 require "Include/Config.php";
-
 require "Include/Functions.php";
+
+use ChurchCRM\Service\EmailService;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Software Registration");
@@ -54,13 +55,12 @@ $sEmailMessage =
 
 // Save Settings
 if (isset ($_POST['Submit'])) {
-  require 'Service/EmailService.php';
 
   $emailService = new EmailService();
 
   $sEmailMessage =  $_POST['emailmessage'];
 
-  $emailService->sentRegistration($sEmailMessage);
+  $emailService->sendRegistration($sEmailMessage);
 
   // Turn off the registration flag so the menu option is less obtrusive
   $sSQL = "UPDATE config_cfg SET cfg_value = 1 WHERE cfg_name='bRegistered'";

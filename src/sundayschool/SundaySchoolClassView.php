@@ -2,7 +2,6 @@
 
 require "../Include/Config.php";
 require "../Include/Functions.php";
-require "../Include/PersonFunctions.php";
 
 use ChurchCRM\Service\SundaySchoolService;
 
@@ -123,7 +122,7 @@ require "../Include/Header.php";
         <div class="box box-info text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white"><?= $teacher['per_FirstName'] . " " . $teacher['per_LastName'] ?></h4>
-            <img src="<?= $personService->getPhoto($teacher['per_ID']); ?>" class="img-circle profile-avatar"
+            <img src="<?=$sRootPath?>/api/persons/<?= $teacher['per_ID'] ?>/photo" class="img-circle profile-avatar"
                  alt="User avatar" width="80" height="80">
             <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i
                 class="fa fa-envelope"></i> <?= gettext("Send Message") ?></a>
@@ -212,7 +211,7 @@ require "../Include/Header.php";
           $birthDate = $child['birthMonth'] . "/" . $child['birthDay'] . "/" . $child['birthYear'];
         }
         echo "<tr>";
-        echo "<td><img src='" . $personService->getPhoto($child['kidId']) . "' hight='30' width='30' > <a href='../PersonView.php?PersonID=" . $child['kidId'] . "'>" . $child['firstName'] . ", " . $child['LastName'] . "</a></td>";
+        echo "<td><img src='" . $sRootPath."/api/persons/". $child['kidId']. "/photo' hight='30' width='30' > <a href='../PersonView.php?PersonID=" . $child['kidId'] . "'>" . $child['firstName'] . ", " . $child['LastName'] . "</a></td>";
         echo "<td>" . $birthDate . "</td>";
         echo "<td>" . FormatAge($child['birthMonth'], $child['birthDay'], $child['birthYear'], "") . "</td>";
         echo "<td>" . $child['kidEmail'] . "</td>";

@@ -7,6 +7,7 @@ DB_PASS="root"
 DB_HOST="localhost"
 
 CRM_DB_INSTALL_SCRIPT="/vagrant/src/mysql/install/Install.sql"
+CRM_DB_INSTALL_SCRIPT2="/vagrant/src/mysql/upgrade/update_config.sql"
 CRM_DB_VAGRANT_SCRIPT="/vagrant/vagrant/vagrant.sql"
 CRM_DB_USER="churchcrm"
 CRM_DB_PASS="churchcrm"
@@ -54,13 +55,14 @@ sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "FLUSH PRIVILEGES;"
 echo "Database: user created with needed PRIVILEGES"
 
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT
+sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT2
 
 echo "Database: tables and metadata deployed"
 
 CODE_VER=`grep version /vagrant/src/composer.json | cut -d ',' -f1 | cut -d'"' -f4`
 
 echo "=========================================================="
-echo "==============   Development DB Setup $CODE_VER ==================="
+echo "==============   Development DB Setup $CODE_VER ============="
 echo "=========================================================="
 
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_VAGRANT_SCRIPT
@@ -102,11 +104,11 @@ echo "=========================================================="
 composer dump-autoload
 
 echo "=========================================================="
-echo "==========   Starting Background Packaging    ============"
+echo "==========   Starting Background Installs     ============"
 echo "=========================================================="
 
-/vagrant/vagrant/package.sh &
-echo "Build will be available in a few minutes at target/"
+/vagrant/vagrant/build.sh &
+echo "Build systems are downloading"
 
 echo "=========================================================="
 echo "=========================================================="

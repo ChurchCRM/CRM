@@ -1,19 +1,17 @@
 <?php
 
 
-// Services
-require_once "../Service/PersonService.php";
-require_once "../Service/FamilyService.php";
-require_once "../Service/GroupService.php";
-require_once '../Service/NoteService.php';
+use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\GroupService;
+use ChurchCRM\Service\NoteService;
 
 use ChurchCRM\Service\CalendarService;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\ReportingService;
 
-require_once "../Service/FinancialService.php";
-require_once "../Service/ReportingService.php";
-
-require_once "../Service/DataSeedService.php";
-require_once '../Service/SystemService.php';
+use ChurchCRM\Service\DataSeedService;
+use ChurchCRM\Service\SystemService;
 
 // DIC configuration
 

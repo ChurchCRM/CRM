@@ -27,9 +27,9 @@
  *
  ******************************************************************************/
 
-require_once dirname(__FILE__) . '/../Service/PersonService.php';
 require_once 'Functions.php';
-require_once dirname(__FILE__) . "/../Service/TaskService.php";
+
+use ChurchCRM\Service\TaskService;
 
 function Header_head_metatag() {
   global $sLanguage, $bExportCSV, $sMetaRefresh, $sHeader, $sGlobalMessage;
@@ -285,7 +285,7 @@ function addMenuItem($aMenu, $mIdx) {
     global $sHeader, $sGlobalMessage, $sGlobalMessageClass;
     global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
 
-    $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
+    $loggedInUserPhoto = $sRootPath . "/api/persons/" .$_SESSION['iUserID']. "/photo";
 
     $MenuFirst = 1;
 

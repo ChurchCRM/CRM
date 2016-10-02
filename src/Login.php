@@ -242,6 +242,7 @@ if ($iUserID > 0)
 
         // Set the Root Path ... used in basic security check
         $_SESSION['sRootPath'] = $sRootPath;
+        $_SESSION['$sEnableGravatarPhotos'] = $sEnableGravatarPhotos;
 
         // If PHP's magic quotes setting is turned off, we want to use a workaround to ensure security.
         if (function_exists('get_magic_quotes_gpc'))

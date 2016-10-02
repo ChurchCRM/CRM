@@ -78,8 +78,10 @@ if (isset ($_POST['save'])) {
       $value = FilterInput($new_value[$id], "float");
     elseif ($current_type == 'date')
       $value = FilterInput($new_value[$id], "date");
-     elseif ($current_type == 'json')
+    elseif ($current_type == 'json')
       $value = $new_value[$id];
+    elseif ($current_type == 'choice')
+      $value = FilterInput($new_value[$id]);
     elseif ($current_type == 'boolean') {
       if ($new_value[$id] != "1")
         $value = "";
@@ -161,7 +163,7 @@ $rsConfigs = RunQuery($sSQL);
                 $r = 1;
                 $step = "Step" . $r;
                 // List Individual Settings
-                while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_tooltip, $cfg_section, $cfg_category) = mysql_fetch_row($rsConfigs)) {
+                while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_tooltip, $cfg_section, $cfg_category, $cfg_order, $cfg_data) = mysql_fetch_row($rsConfigs)) {
                 if ($cfg_category != $step) {
                 $step = $cfg_category;
                 ?>
@@ -181,7 +183,7 @@ $rsConfigs = RunQuery($sSQL);
                   <td>
                     <!--  Current Value -->
                     <?php if ($cfg_name == "sTimeZone" ) {?>
-                    <select name='new_value[<?= $cfg_id ?>]' id="timeZoneSelectBox">
+                    <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox" style="width: 100%">
                         <?php
                             foreach (timezone_identifiers_list() as $timeZone)
                             {
@@ -189,12 +191,21 @@ $rsConfigs = RunQuery($sSQL);
                             }
                         ?>
                     </select>
-                    <?php } elseif ($cfg_type == 'text') { ?>
-                      <input type=text size=40 maxlength=255 name='new_value[<?= $cfg_id ?>]' value='<?= htmlspecialchars($cfg_value, ENT_QUOTES) ?>'>
+                    <?php } elseif ( $cfg_type == 'choice' ) { ?>
+                      <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox" style="width: 100%">
+                        <?php
+                            foreach (json_decode($cfg_data)->Choices as $choice)
+                            {
+                                echo "<option value = ". $choice." " . ($cfg_value == $choice ? "selected" : "") . ">".$choice."</option>";
+                            }
+                        ?>
+                      </select>           
+                    <?php }  elseif ($cfg_type == 'text') { ?>
+                      <input type=text size=40 maxlength=255 name='new_value[<?= $cfg_id ?>]' value='<?= htmlspecialchars($cfg_value, ENT_QUOTES) ?>' class="form-control">
                     <?php } elseif ($cfg_type == 'textarea') { ?>
-                      <textarea rows=4 cols=40 name='new_value[<?= $cfg_id ?>]'><?= htmlspecialchars($cfg_value, ENT_QUOTES) ?></textarea>
+                      <textarea rows=4 cols=40 name='new_value[<?= $cfg_id ?>]' class="form-control"><?= htmlspecialchars($cfg_value, ENT_QUOTES) ?></textarea>
                     <?php } elseif ($cfg_type == 'number' || $cfg_type == 'date') { ?>
-                      <input type=text size=40 maxlength=15 name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>'>
+                      <input type=text size=40 maxlength=15 name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>' class="form-control">
                     <?php } elseif ($cfg_type == 'boolean') {
                       if ($cfg_value) {
                         $sel1 = "";
@@ -203,7 +214,7 @@ $rsConfigs = RunQuery($sSQL);
                         $sel1 = "SELECTED";
                         $sel2 = "";
                       } ?>
-                      <select name='new_value[<?= $cfg_id ?>]'>
+                      <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox" style="width: 100%">
                         <option value='' <?= $sel1 ?>>False
                         <option value='1' <?= $sel2 ?>>True
                       </select>
@@ -249,7 +260,11 @@ $rsConfigs = RunQuery($sSQL);
 
 <script>
 $(document).ready(function(){
-   $("#timeZoneSelectBox").select2();
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  var target = $(e.target).attr("href") // activated tab
+  $(target +" .choiceSelectBox").select2({ width: 'resolve' });
+});
+$(".choiceSelectBox").select2({ width: 'resolve' });
 }); 
 </script>
 <script src="skin/js/SystemSettings.js" type="text/javascript"></script>

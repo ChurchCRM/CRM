@@ -16,5 +16,15 @@ use ChurchCRM\Base\GroupQuery as BaseGroupQuery;
  */
 class GroupQuery extends BaseGroupQuery
 {
-
+  function preSelect(\Propel\Runtime\Connection\ConnectionInterface $con)
+  {
+    $this->leftJoinPerson2group2roleP2g2r();
+    $this->withColumn("COUNT(person2group2role_p2g2r.PersonId)","memberCount");
+    $this->groupBy("Group.Id");
+    $this->leftJoinListOption();
+    $this->addJoinCondition("ListOption","ListOption.Id = ?","3");
+    $this->withColumn('list_lst.lst_OptionName','groupType');
+    parent::preSelect($con);
+  }
 }
+?>

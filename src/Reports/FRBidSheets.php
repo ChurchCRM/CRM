@@ -15,18 +15,18 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
+use ChurchCRM\Reports\ChurchInfoReport;
 
 $iCurrentFundraiser = $_GET["CurrentFundraiser"];
 
 class PDF_FRBidSheetsReport extends ChurchInfoReport {
 	// Constructor
 	function PDF_FRBidSheetsReport() {
-		parent::FPDF("P", "mm", $this->paperFormat);
+		parent::__construct("P", "mm", $this->paperFormat);
 		$this->leftX = 10;
 		$this->SetFont("Times",'',10);
 		$this->SetMargins(15,25);
-		$this->Open();
+		
 		$this->SetAutoPageBreak(true, 25);
 	}
 	

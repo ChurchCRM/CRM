@@ -2,7 +2,6 @@
 
 namespace ChurchCRM;
 
-use ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\Base\UserQuery;
 use Propel\Runtime\Connection\ConnectionInterface;
@@ -19,9 +18,30 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Person extends BasePerson
 {
+
+  protected $baseURL;
+  protected $showGravatar;
+
+  public function applyDefaultValues()
+  {
+    parent::applyDefaultValues();
+    $this->baseURL = $_SESSION['sRootPath'];
+    $this->showGravatar = $_SESSION['$sEnableGravatarPhotos'];
+  }
+
   function getFullName()
   {
     return $this->getFirstName() . " " . $this->getLastName();
+  }
+
+  function isMale()
+  {
+    return $this->getGender() == 1;
+  }
+
+  function isFemale()
+  {
+    return $this->getGender() == 2;
   }
 
   function hideAge()
@@ -29,44 +49,42 @@ class Person extends BasePerson
     return $this->getFlags() == 1 || $this->getBirthYear() == "" || $this->getBirthYear() == "0";
   }
 
-  function getViewURI($baseURL)
-  {
-    return $baseURL . "/PersonView.php?PersonID=" . $this->getId();
-  }
-
-  function isMale() {
-    return $this->getGender() == 1;
-  }
-
-  function isFemale() {
-    return $this->getGender() == 2;
-  }
-
   function getBirthDate()
   {
-    $birthYear  = $this->getBirthYear();
-    if ($this->hideAge() ) {
-      $birthYear = 1900;
-    }
+    if (!is_null($this->getBirthDay()) && $this->getBirthDay() != "" &&
+      !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ""
+    ) {
 
-    $date = strtotime($this->getBirthDay() . "-" . $this->getBirthMonth() . "-" . $birthYear);
+      $birthYear = $this->getBirthYear();
+      if ($this->hideAge()) {
+        $birthYear = 1900;
+      }
 
-    if (!$this->hideAge() ) {
-      return date("d/m/Y", $date);
-    } else {
-      return date("d/m", $date);
+      $date = strtotime($this->getBirthDay() . "-" . $this->getBirthMonth() . "-" . $birthYear);
+
+      if (!$this->hideAge()) {
+        return date("M d Y", $date);
+      } else {
+        return date("M d", $date);
+      }
     }
+    return "";
   }
 
-  function getUploadedPhoto($baseURL)
+  function getViewURI()
+  {
+    return $this->baseURL . "/PersonView.php?PersonID=" . $this->getId();
+  }
+
+  function getUploadedPhoto()
   {
     $validextensions = array("jpeg", "jpg", "png");
     $hasFile = false;
     while (list(, $ext) = each($validextensions)) {
-      $photoFile = dirname(__FILE__) . "/../../Images/Person/thumbnails/" . $this->getId() . "." . $ext;
+      $photoFile = dirname(__FILE__) . "/../../../Images/Person/thumbnails/" . $this->getId() . "." . $ext;
       if (file_exists($photoFile)) {
         $hasFile = true;
-        $photoFile = $baseURL . "/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
+        $photoFile = $this->baseURL . "/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
         break;
       }
     }
@@ -78,35 +96,49 @@ class Person extends BasePerson
     }
   }
 
-  function getPhoto($baseURL, $sEnableGravatarPhotos)
+  function getPhoto()
   {
-    $photoFile = $this->getUploadedPhoto($baseURL);
+    $photoFile = $this->getUploadedPhoto();
     if ($photoFile == "") {
-      if ($sEnableGravatarPhotos) {
-        $photoFile = $this->getGravatar();
-      }
+      $photoFile = $this->getGravatar();
       if ($photoFile == "") {
-        $photoFile = $this->getDefaultPhoto($baseURL);
+        $photoFile = $this->getDefaultPhoto();
       }
     }
     return $photoFile;
   }
 
-  function getFamilyRole() {
-    $familyRole =  ListOptionQuery::create()->filterById(2)->filterByOptionId($this->getFmrId())->find();
-    return $familyRole->getOptionName();
+  function getFamilyRole()
+  {
+
+    $roleId = $this->getFmrId();
+    if (isset($roleId) && $roleId !== 0) {
+      $familyRole = ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->findOne();
+      return $familyRole;
+    }
+    return null;
   }
 
-  function getDefaultPhoto($baseURL)
+  function getFamilyRoleName()
   {
-    $photoFile = $baseURL . "/Images/Person/man-128.png";
-    $isChild = "Child" == $this->getFamilyRole();
+    $roleName = "";
+    $role = $this->getFamilyRole();
+    if (!is_null($role)) {
+      $roleName = $this->getFamilyRole()->getOptionName();
+    }
+    return $roleName;
+  }
+
+  function getDefaultPhoto()
+  {
+    $photoFile = $this->baseURL . "/Images/Person/man-128.png";
+    $isChild = "Child" == $this->getFamilyRoleName();
     if ($this->isMale() && $isChild) {
-      $photoFile = $baseURL . "/Images/Person/kid_boy-128.png";
+      $photoFile = $this->baseURL . "/Images/Person/kid_boy-128.png";
     } else if ($this->isFemale() && $isChild) {
-      $photoFile = $baseURL . "/Images/Person/kid_girl-128.png";
+      $photoFile = $this->baseURL . "/Images/Person/kid_girl-128.png";
     } else if ($this->isFemale() && !$isChild) {
-      $photoFile = $baseURL . "/Images/Person/woman-128.png";
+      $photoFile = $this->baseURL . "/Images/Person/woman-128.png";
     }
     return $photoFile;
   }
@@ -114,30 +146,33 @@ class Person extends BasePerson
 
   function getGravatar($s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
   {
-    if ($this->getEmail() != "") {
-    }
-    $url = 'http://www.gravatar.com/avatar/';
-    $url .= md5(strtolower(trim($this->getEmail())));
-    $url .= "?s=$s&d=$d&r=$r";
+    if ($this->showGravatar && $this->getEmail() != "") {
+      $url = 'http://www.gravatar.com/avatar/';
+      $url .= md5(strtolower(trim($this->getEmail())));
+      $url .= "?s=$s&d=$d&r=$r";
 
-    $headers = @get_headers($url);
-    if (strpos($headers[0], '404') === false) {
-      return $url;
+      $headers = @get_headers($url);
+      if (strpos($headers[0], '404') === false) {
+        return $url;
+      }
     }
     return "";
   }
 
-  public function postInsert(ConnectionInterface $con = null)
+  public
+  function postInsert(ConnectionInterface $con = null)
   {
     $this->createTimeLineNote(true);
   }
 
-  public function postUpdate(ConnectionInterface $con = null)
+  public
+  function postUpdate(ConnectionInterface $con = null)
   {
     $this->createTimeLineNote(false);
   }
 
-  private function createTimeLineNote($new)
+  private
+  function createTimeLineNote($new)
   {
     $note = new Note();
     $note->setPerId($this->getId());
@@ -157,13 +192,15 @@ class Person extends BasePerson
     $note->save();
   }
 
-  public function isUser()
+  public
+  function isUser()
   {
     $user = UserQuery::create()->findPk($this->getId());
     return !is_null($user);
   }
 
-  public function getOtherFamilyMembers()
+  public
+  function getOtherFamilyMembers()
   {
     $familyMembers = $this->getFamily()->getPeople();
     $otherFamilyMembers = array();

@@ -19,7 +19,7 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require_once "Service/GroupService.php";
+use ChurchCRM\Service\GroupService;
 
 $groupService = new GroupService();
 
@@ -56,7 +56,7 @@ $sPageTitle = gettext("Add Person to Group");
 require "Include/Header.php";
 ?>
 
-<script src="js/RPCDummyAjax.js"></script>
+<script src="skin/js/GroupRoles.js"></script>
 
 <p align="center"><?= gettext("Select the group to add this person to:") ?></p>
 <form method="post" action="PersonToGroup.php?PersonID=<?= $iPersonID ?>">

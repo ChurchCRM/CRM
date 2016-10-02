@@ -1,5 +1,7 @@
 <?php
 
+namespace ChurchCRM\Service;
+
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
@@ -32,14 +34,13 @@ class SystemService
 
   function playbackSQLtoDatabase($fileName)
   {
-    requireUserGroupMembership("bAdmin");
     $query = '';
     $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($restoreQueries as $line) {
       if ($line != '' && strpos($line, '--') === false) {
         $query .= " $line";
         if (substr($query, -1) == ';') {
-          $person = RunQuery($query);
+          $person = mysql_query($query);
           $query = '';
         }
       }
@@ -49,7 +50,7 @@ class SystemService
   function restoreDatabaseFromBackup()
   {
     requireUserGroupMembership("bAdmin");
-    $restoreResult = new StdClass();
+    $restoreResult = new \stdClass();
     $restoreResult->Messages = array();
     global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $sGZIPname;
     $file = $_FILES['restoreFile'];
@@ -100,7 +101,7 @@ class SystemService
     requireUserGroupMembership("bAdmin");
     global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME, $sGZIPname, $sZIPname, $sPGPname;
 
-    $backup = new StdClass();
+    $backup = new \stdClass();
     $backup->root = dirname(dirname(__FILE__));
     $backup->backupRoot = "$backup->root/tmp_attach/ChurchCRMBackups";
     $backup->imagesRoot = "Images";
@@ -182,7 +183,7 @@ class SystemService
     global $sExternalBackupType, $sExternalBackupUsername, $sExternalBackupPassword, $sExternalBackupEndpoint;
     if (strcasecmp($sExternalBackupType, "WebDAV") == 0) {
       if ($sExternalBackupUsername && $sExternalBackupPassword && $sExternalBackupEndpoint) {
-        $params = new stdClass();
+        $params = new \stdClass();
         $params->iArchiveType = 3;
         $backup = $this->getDatabaseBackup($params);
         $backup->credentials = $sExternalBackupUsername . ":" . $sExternalBackupPassword;
@@ -299,11 +300,11 @@ class SystemService
       if (in_array($db_version, $dbUpdate["versions"])) {
         $version = new Version();
         $version->setVersion($dbUpdate["dbVersion"]);
-        $version->setUpdateStart(new DateTime());
+        $version->setUpdateStart(new \DateTime());
         foreach ($dbUpdate["scripts"] as $dbScript) {
           $this->rebuildWithSQL($dbScript);
         }
-        $version->setUpdateEnd(new DateTime());
+        $version->setUpdateEnd(new \DateTime());
         $version->save();
         return true;
       }
@@ -334,7 +335,7 @@ class SystemService
       $issueDescription .= "Apache Modules    |" . implode(",", apache_get_modules());
     }
 
-    $postdata = new stdClass();
+    $postdata = new \stdClass();
     $postdata->issueTitle = FilterInput($data->issueTitle);
     $postdata->issueDescription = $issueDescription;
 
@@ -352,6 +353,28 @@ class SystemService
       throw new Exception("Unable to reach the issue bridge", 500);
     }
     return $result;
+  }
+  
+  function runTimerJobs()
+  {
+    //start the external backup timer job
+    if ($sEnableExternalBackupTarget && $sExternalBackupAutoInterval > 0)  //if remote backups are enabled, and the interval is greater than zero
+    {
+      try {
+        $now = new DateTime();  //get the current time
+        $previous = new DateTime($sLastBackupTimeStamp); // get a DateTime object for the last time a backup was done.
+        $diff = $previous->diff($now);  // calculate the difference.
+        if (!$sLastBackupTimeStamp || $diff->h >= $sExternalBackupAutoInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
+        {
+          $systemService->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
+          $now = new DateTime();  // update the LastBackupTimeStamp.
+          $sSQL = "UPDATE config_cfg SET cfg_value='" . $now->format('Y-m-d H:i:s') . "' WHERE cfg_name='sLastBackupTimeStamp'";
+          $rsUpdate = RunQuery($sSQL);
+        }
+      } catch (Exception $exc) {
+        // an error in the auto-backup shouldn't prevent the page from loading...
+      }
+    }
   }
 
   function getConfig($configName) {

@@ -2,8 +2,9 @@
 
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Service/NoteService.php";
-require "Service/FamilyService.php";
+
+use ChurchCRM\Service\NoteService;
+use ChurchCRM\Service\FamilyService;
 
 $noteService = new NoteService();
 $familyService = new FamilyService();

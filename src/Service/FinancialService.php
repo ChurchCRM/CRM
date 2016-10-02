@@ -1,15 +1,14 @@
 <?php
-require_once "FamilyService.php";
+
+namespace ChurchCRM\Service;
+
 require_once dirname(dirname(__FILE__)) . "/Include/ReportFunctions.php";
-require_once dirname(dirname(__FILE__)) . "/Include/ReportConfig.php";
 require_once dirname(dirname(__FILE__)) . "/Include/Functions.php";
 require_once dirname(dirname(__FILE__)) . "/Include/MICRFunctions.php";
-require_once dirname(dirname(__FILE__)) . "/classes/pdf_DepositReport.php";
 require_once dirname(dirname(__FILE__)) . '/vendor/autoload.php';
 require_once dirname(dirname(__FILE__)) . '/orm/conf/config.php';
 
 use ChurchCRM\PledgeQuery;
-
 
 class FinancialService
 {
@@ -28,7 +27,7 @@ class FinancialService
   function processAuthorizeNet()
   {
     requireUserGroupMembership("bFinance");
-    $donation = new AuthorizeNetAIM;
+    $donation = new \AuthorizeNetAIM();
     $donation->amount = "$plg_amount";
     $donation->first_name = $firstName;
     $donation->last_name = $lastName;
@@ -180,7 +179,7 @@ class FinancialService
     // put aut_ID into the $customerid field
     // Create object to preform API calls
 
-    $workingobj = new VancoTools($VancoUserid, $VancoPassword, $VancoClientid, $VancoEnc_key, $VancoTest);
+    $workingobj = new \VancoTools($VancoUserid, $VancoPassword, $VancoClientid, $VancoEnc_key, $VancoTest);
     // Call Login API to receive a session ID to be used in future API calls
     $sessionid = $workingobj->vancoLoginRequest();
     // Create content to be passed in the nvpvar variable for a TransparentRedirect API call
@@ -284,7 +283,7 @@ class FinancialService
     global $bUseScannedChecks;
     if ($bUseScannedChecks) {
       require "../Include/MICRFunctions.php";
-      $micrObj = new MICRReader(); // Instantiate the MICR class
+      $micrObj = new \MICRReader(); // Instantiate the MICR class
       $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
       if ($routeAndAccount) {
         $sSQL = "SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck=\"" . $routeAndAccount . "\"";
@@ -337,8 +336,6 @@ class FinancialService
     return $deposit_total;
   }
   
-
-
   function getPaymentJSON($payments)
   {
     if ($payments) {
@@ -366,7 +363,7 @@ class FinancialService
     $payments = array();
     while ($aRow = mysql_fetch_array($rsDep)) {
       extract($aRow);
-      $values = new StdClass();
+      $values = new \stdClass();
       $values->plg_plgID = $plg_plgID;
       $values->plg_FamID = $plg_FamID;
       $values->familyName = $this->familyService->getFamilyName($plg_FamID);
@@ -630,12 +627,11 @@ class FinancialService
   function getPledgeorPayment($GroupKey)
   {
     requireUserGroupMembership("bFinance");
-    require_once "FamilyService.php";
     $total = 0;
     $FamilyService = New FamilyService();
     $sSQL = "SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey=\"" . $GroupKey . "\"";
     $rsKeys = RunQuery($sSQL);
-    $payment = new stdClass();
+    $payment = new \stdClass();
     $payment->funds = array();
     while ($aRow = mysql_fetch_array($rsKeys)) {
       extract($aRow);
@@ -722,117 +718,7 @@ class FinancialService
     }
   }
   
-  private function generateQBDepositSlip($thisReport)
-  {
-    $thisReport->pdf->AddPage();
-    // in 2.2.0 we will store these settings in the DB as JSON, but for 2.1.7 we don't want to change schema
-    //$thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQuickBooksDepositSlipParameters);
-    $thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQBDTSettings);
-    $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
-    $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
-
-    //print_r($thisReport->QBDepositTicketParameters);
-    //logically, we print the cash in the first possible key=value pair column 
-    if ($thisReport->deposit->totalCash > 0) {
-      $totalCashStr = sprintf("%.2f", $thisReport->deposit->totalCash);
-      $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->QBDepositTicketParameters->topY, $totalCashStr);
-    }
-    $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->lineItemInterval->x;
-    $thisReport->curY = $thisReport->QBDepositTicketParameters->topY;
-    foreach ($thisReport->payments as $payment)
-    {
-      // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
-      if ($payment->plg_method == 'CHECK') {
-        $numItems += 1;
-
-        $thisReport->pdf->PrintRightJustified($thisReport->curX, $thisReport->curY, $payment->plg_CheckNo);
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $payment->plg_amount);
-
-        $thisReport->curX += $thisReport->QBDepositTicketParameters->lineItemInterval->x;
-        if ($thisReport->curX > $thisReport->QBDepositTicketParameters->max->x) {
-          $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX;
-          $thisReport->curY += $thisReport->QBDepositTicketParameters->lineItemInterval->y;
-        }
-      }
-    }
-
-    $grandTotalStr = sprintf("%.2f", $thisReport->deposit->dep_Total);
-    $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->subTotal->x, $thisReport->QBDepositTicketParameters->subTotal->y, $grandTotalStr);
-    $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->topTotal->x, $thisReport->QBDepositTicketParameters->topTotal->y, $grandTotalStr);
-    $numItemsString = sprintf("%d", $thisReport->deposit->countTotal);
-    $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->numberOfItems->x, $thisReport->QBDepositTicketParameters->numberOfItems->y, $numItemsString);
-    
-    $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY;
-    $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->titleX, $thisReport->curY );
-    $thisReport->pdf->SetFont('Courier','B', 20);
-    $thisReport->pdf->Write (8, "Deposit Summary " . $thisReport->deposit->dep_ID);
-    $thisReport->pdf->SetFont('Times','', 10);
-     $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->date2X, $thisReport->curY );
-    $thisReport->pdf->Write (8, $thisReport->deposit->dep_Date);
-
-    $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x;
-    $thisReport->curY += 2*$thisReport->QBDepositTicketParameters->lineItemInterval->y;
-    $this->generateCashDenominations($thisReport);
-    $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x+125;
-
-    $this->generateTotalsByCurrencyType($thisReport);
-    $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x+125;
-    $thisReport->curY=$thisReport->QBDepositTicketParameters->perforationY+30;
-    $this->generateTotalsByFund($thisReport);
-  }
-  
-  private function generateTotalsByFund($thisReport)
-  {
-    $thisReport->pdf->SetFont('Times', 'B', 10);
-    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-    $thisReport->pdf->Write(8, 'Deposit totals by fund');
-    $thisReport->pdf->SetFont('Courier', '', 8);
-
-    $thisReport->curY += 4;
-
-    if (count($thisReport->funds) > 0) //if there are funds defined
-    {
-      foreach ($thisReport->funds as $fund) //iterate through the defined funds
-      {
-        if (array_key_exists($fund->Name, $thisReport->fundTotal) && $thisReport->fundTotal[$fund->Name] > 0) // if the fund exists on this deposit, and the value of the fund is greater than 0
-        {
-          $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-          $thisReport->pdf->Write(8, $fund->Name);
-          $amountStr = sprintf("%.2f", $thisReport->fundTotal[$fund->Name]);
-          $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
-          $thisReport->curY += 4;
-        }
-      }
-      if (array_key_exists('UNDESIGNATED', $thisReport->fundTotal) && $thisReport->fundTotal['UNDESIGNATED']) {
-        $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-        $thisReport->pdf->Write(8, gettext("UNDESIGNATED"));
-        $amountStr = sprintf("%.2f", $thisReport->fundTotal['UNDESIGNATED']);
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
-        $thisReport->curY += 4;
-      }
-    }
-    
-  }
-  
-  private function generateTotalsByCurrencyType($thisReport)
-  {
-    $thisReport->pdf->SetFont('Times', 'B', 10);
-    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-    $thisReport->pdf->Write(8, 'Deposit totals by Currency Type');
-    $thisReport->pdf->SetFont('Courier', '', 8);
-    $thisReport->curY += 4;
-    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-    $thisReport->pdf->Write(8, "Checks: ");
-    $thisReport->pdf->write(8, "(" . $thisReport->deposit->countCheck . ")");
-    $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf("%.2f", $thisReport->deposit->totalChecks));
-    $thisReport->curY += 4;
-    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-    $thisReport->pdf->Write(8, "Cash: ");
-    $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf("%.2f", $thisReport->deposit->totalCash));
-    
-  }
-
-  private function generateDepositSummary($thisReport)
+     private function generateDepositSummary($thisReport)
   {
     $thisReport->depositSummaryParameters->title->x = 85;
     $thisReport->depositSummaryParameters->title->y = 7;
@@ -973,103 +859,12 @@ class FinancialService
 
   }
   
-  private function generateCashDenominations($thisReport)
-  {
-    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-    $cashDenominations = ["0.01", "0.05","0.10","0.25","0.50","1.00"];
-    $thisReport->pdf->Cell(10, 10, "Coin", 1, 0, 'L');
-    $thisReport->pdf->Cell(20, 10, "Counts", 1, 0, 'L');
-    $thisReport->pdf->Cell(20, 10, "Totals", 1, 2, 'L');
-    $thisReport->pdf->SetX($thisReport->curX);
-    foreach ($cashDenominations as $denomination)
-    {
-      $thisReport->pdf->Cell(10,10, $denomination,  1, 0, 'L');
-      $thisReport->pdf->Cell(20,10, "",  1, 0, 'L');
-      $thisReport->pdf->Cell(20,10, "",  1, 2, 'L');
-      $thisReport->pdf->SetX($thisReport->curX);
-    }
-    $thisReport->pdf->Cell(50, 10, "Total Coin", 1, 2, 'L');
-    
-    $thisReport->curX += 70;
-    $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-    
-    $cashDenominations = ["$1","$2","$5","$10","$20","$50","$100"];
-    $thisReport->pdf->Cell(10, 10, "Bill", 1, 0, 'L');
-    $thisReport->pdf->Cell(20, 10, "Counts", 1, 0, 'L');
-    $thisReport->pdf->Cell(20, 10, "Totals", 1, 2, 'L');
-    $thisReport->pdf->SetX($thisReport->curX);
-    foreach ($cashDenominations as $denomination)
-    {
-      $thisReport->pdf->Cell(10,10, $denomination,  1, 0, 'L');
-      $thisReport->pdf->Cell(20,10, "",  1, 0, 'L');
-      $thisReport->pdf->Cell(20,10, "",  1, 2, 'L');
-      $thisReport->pdf->SetX($thisReport->curX);
-    }
-    $thisReport->pdf->Cell(50, 10, "Total Cash", 1, 2, 'L');
-  }
-
-   private function calculateFundTotals($thisReport)
-  {
-    $thisReport->fundTotal = array();
-    foreach ($thisReport->payments as $payment) {
-      if (!$payment->fun_Name)
-        $thisReport->fundTotal['UNDESIGNATED'] += $payment->plg_amount;
-      else {
-        if (array_key_exists($payment->fun_Name, $thisReport->fundTotal))
-          $thisReport->fundTotal[$payment->fun_Name] += $payment->plg_amount;
-        else
-          $thisReport->fundTotal[$payment->fun_Name] = $payment->plg_amount;
-      }
-    }
-  }
+ 
+   
 
   function getDepositPDF($depID)
   {
-    requireUserGroupMembership("bFinance");
-    $thisReport = new StdClass();
-    $thisReport->payments = $this->getPayments($depID);
-    if (count($thisReport->payments) == 0) {
-      throw new Exception("No Payments on this Deposit",404);
-    }
-
-    $thisReport->pdf = new PDF_DepositReport();
-    $thisReport->deposit = $this->getDeposits($depID)[0];
-    $thisReport->funds = $this->getActiveFunds();
- 
-    // Read in report settings from database
-    $rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-    if ($rsConfig) {
-      while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-        $thisReport->ReportSettings->$cfg_name = $cfg_value;
-      }
-    }
-    //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.
-    $thisReport->ReportSettings->sDepositSlipType = "QBDT";
     
-    
-    $this->calculateFundTotals($thisReport);
-    if ( $thisReport->ReportSettings->sDepositSlipType == "QBDT" )
-    {
-      //Generate a QuickBooks Deposit Ticket.
-      $this->generateQBDepositSlip($thisReport);
-    }
-    elseif ( $thisReport->ReportSettings->sDepositSlipType == "PTDT" )
-    {
-      //placeholder for Peachtree Deposit Tickets.
-    }
-    elseif ( $thisReport->ReportSettings->sDepositSlipType == "GDT" )
-    {
-      //placeholder for generic deposit ticket.
-    }
-    //$this->generateBankDepositSlip($thisReport);
-   
-
-
-    $this->generateDepositSummary($thisReport);
-
-
-   // Export file
-   $thisReport->pdf->Output("ChurchCRM-DepositReport-" . $depID . "-" . date("Ymd-Gis") . ".pdf","D");
    
   }
 
@@ -1097,7 +892,7 @@ class FinancialService
 
     }
 
-    $CSVReturn = new StdClass();
+    $CSVReturn = new \stdClass();
     $CSVReturn->content = $retstring;
     // Export file
     $CSVReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-" . $depID . "-" . date("Ymd-Gis") . ".csv";
@@ -1123,7 +918,7 @@ class FinancialService
     $rscurrencyDenomination = RunQuery($sSQL);
     mysql_data_seek($rscurrencyDenomination, 0);
     while ($row = mysql_fetch_array($rscurrencyDenomination)) {
-      $currency = new StdClass();
+      $currency = new \stdClass();
       $currency->id = $row['cdem_denominationID'];
       $currency->Name = $row['cdem_denominationName'];
       $currency->Value = $row['cdem_denominationValue'];
@@ -1142,7 +937,7 @@ class FinancialService
     $rsFunds = RunQuery($sSQL);
     mysql_data_seek($rsFunds, 0);
     while ($aRow = mysql_fetch_array($rsFunds)) {
-      $fund = new StdClass();
+      $fund = new \stdClass();
       $fund->ID = $aRow['fun_ID'];
       $fund->Name = $aRow['fun_Name'];
       $fund->Description = $aRow['fun_Description'];
