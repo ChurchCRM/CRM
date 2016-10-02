@@ -20,7 +20,7 @@ $container = $app->getContainer();
 
 // Set up
 require __DIR__ . '/dependencies.php';
-require __DIR__ . '/error-handler.php';
+require __DIR__ . '../Include/slim/error-handler.php';
 
 // system routes
 require __DIR__ . '/routes/data.php';
