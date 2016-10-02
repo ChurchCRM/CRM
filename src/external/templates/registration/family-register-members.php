@@ -1,7 +1,7 @@
 <?php
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM - Family Registration";
-require("../Include/HeaderNotLoggedIn.php");
+require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
 ?>
   <form action="<?= $sRootPath ?>/external/family/register/members" method="post">
     <div class="register-box" style="width: 600px;">
@@ -103,4 +103,4 @@ require("../Include/HeaderNotLoggedIn.php");
 
 <?php
 // Add the page footer
-require("../Include/FooterNotLoggedIn.php");
+require(__DIR__ ."/../../../Include/FooterNotLoggedIn.php");
