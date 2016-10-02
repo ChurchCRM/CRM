@@ -13,6 +13,7 @@ $container = $app->getContainer();
 
 // Set up
 require __DIR__ . '/../Include/slim/error-handler.php';
+$settings = require __DIR__ . '/../Include/slim/settings.php';
 
 // routes
 require __DIR__ . '/routes/family.php';
