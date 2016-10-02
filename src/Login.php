@@ -34,6 +34,8 @@ $bSuppressSessionTests = TRUE;
 require 'Include/Functions.php';
 // Initialize the variables
 
+use ChurchCRM\Service\SystemService;
+
 $systemService = new SystemService();
 
 // Is the user requesting to logoff or timed out?
