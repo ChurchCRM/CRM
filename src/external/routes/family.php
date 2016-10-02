@@ -12,14 +12,14 @@ $app->group('/family', function () {
 
     $this->get('/register', function ($request, $response, $args) {
 
-      $renderer = new PhpRenderer("templates/registration");
+      $renderer = new PhpRenderer("templates/registration/");
 
-      return $renderer->render($response, "family-register.php", array("token" => "no"));
+      return $renderer->render($response, "family-register.php", array("sRootPath" =>  $_SESSION['sRootPath'], "token" => "no"));
 
     });
 
     $this->post('/register', function ($request, $response, $args) {
-      $renderer = new PhpRenderer("templates/registration");
+      $renderer = new PhpRenderer("templates/registration/");
       $body = $request->getParsedBody();
 
       $family = new Family();
@@ -40,7 +40,7 @@ $app->group('/family', function () {
 
       $familyRoles = ListOptionQuery::create()->filterById(2)->orderByOptionSequence()->find();
 
-      $pageObjects = array("family" => $family, "familyCount" => $body["familyCount"], "familyRoles" => $familyRoles);
+      $pageObjects = array("sRootPath" =>  $_SESSION['sRootPath'] ,"family" => $family, "familyCount" => $body["familyCount"], "familyRoles" => $familyRoles);
 
       return $renderer->render($response, "family-register-members.php", $pageObjects);
 
