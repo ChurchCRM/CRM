@@ -32,3 +32,6 @@ where `cfg_id` = 1037;
 
 delete from config_cfg where cfg_id ='18';
 delete from config_cfg where cfg_id ='2001';
+
+INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`, `cfg_data`) VALUES
+(80, 'sEnableSelfRegistration', '1', 'boolean', '1', 'Set false to disable family self registration.', 'General', NULL, NULL);
