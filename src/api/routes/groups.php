@@ -179,6 +179,7 @@ $app->group('/groups', function () {
     $sundaySchoolClass->setName($className);
     $sundaySchoolClass->makeSundaySchool();
     $sundaySchoolClass->save();
+    return $response->withJson($sundaySchoolClass->exportTo("JSON"));
   });
 
 });
