@@ -12,7 +12,7 @@ $app = new \Slim\App();
 $container = $app->getContainer();
 
 // Set up
-require __DIR__ . '../Include/slim/error-handler.php';
+require __DIR__ . '/../Include/slim/error-handler.php';
 
 // routes
 require __DIR__ . '/routes/family.php';
