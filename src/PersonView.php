@@ -18,12 +18,19 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require 'Include/PersonFunctions.php';
-require 'Service/MailchimpService.php';
-require 'Service/TimelineService.php';
+
+use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Service\TimelineService;
+
+use ChurchCRM\PersonQuery;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
+
+// Set the page title and include HTML header
+
+$sPageTitle = "Person Profile";
+require "Include/Header.php";
 
 // Get the person ID from the querystring
 $iPersonID = FilterInput($_GET["PersonID"], 'int');
@@ -60,10 +67,8 @@ $sSQL = "SELECT a.*, family_fam.*, cls.lst_OptionName AS sClassName, fmr.lst_Opt
 $rsPerson = RunQuery($sSQL);
 extract(mysql_fetch_array($rsPerson));
 
-// Set the page title and include HTML header
+$person = PersonQuery::create()->findPk($iPersonID);
 
-$sPageTitle = "Person Profile";
-require "Include/Header.php";
 if ($per_ID == $iPersonID) {
 
 // Get the lists of custom person fields
@@ -122,16 +127,6 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp)) {
   $aSecurityType[$lst_OptionID] = $lst_OptionName;
 }
 
-if ($fam_ID != "") {
-// Other family members by age
-  $sSQL = "SELECT per_ID, per_Title, per_FirstName, per_LastName, per_Suffix, per_Gender, per_Email,
-	per_BirthMonth, per_BirthDay, per_BirthYear, per_Flags, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole
-	FROM person_per
-	LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
-	LEFT JOIN list_lst fmr ON per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2 where per_fam_ID = " . $fam_ID . " and per_Id != " . $per_ID . " order by per_BirthYear";
-  $rsOtherFamily = RunQuery($sSQL);
-}
-
 $dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, "-", $per_Flags);
 
 $sFamilyInfoBegin = "<span style=\"color: red;\">";
@@ -157,8 +152,11 @@ $formattedMailingAddress = getMailingAddress($Address1, $Address2, $sCity, $sSta
 
 $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, False);
 $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), True);
+$sHomePhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
 $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), True);
+$sWorkPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
 $sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), True);
+$sCellPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
 $sEmail = SelectWhichInfo($per_Email, $fam_Email, True);
 $sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, False);
 
@@ -176,31 +174,36 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 );
 ?>
 <div class="alert alert-warning alert-dismissable">
-  <i class="fa fa-magic"></i>
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <b><span style="color: red;"><?= gettext("Red text") ?></span></b> <?php echo gettext("indicates items inherited from the associated family record."); ?>
+  <i class="fa fa-fw fa-tree"></i>
+  <?php echo gettext("indicates items inherited from the associated family record."); ?>
 </div>
 <div class="row">
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img src="<?= $personService->getPhoto($iPersonID) ?>" alt="" class="profile-user-img img-responsive img-circle"/>
+        <img src="<?= $sRootPath . "/api/persons/" .$iPersonID. "/photo" ?>" alt="" class="profile-user-img img-responsive img-circle"/>
 
-        <h3 class="profile-username text-center"><?= getGenderIcon($per_Gender) . " " . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
+        <h3 class="profile-username text-center">
+          <? if ($person->isMale()) { ?>
+          <i class="fa fa-male"></i>
+          <?php } else { ?>
+            <i class="fa fa-female"></i>
+          <?php } ?>
+          <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
 
         <p class="text-muted text-center">
           <?php
           if ($sFamRole != "")
-            echo $sFamRole;
+            echo gettext($sFamRole);
           else
             echo gettext("Member");
           ?>
         </p>
 
         <p class="text-muted text-center">
-          <?= $sClassName;
+          <?= gettext($sClassName);
           if ($per_MembershipDate) {
-            echo " since: " . FormatDate($per_MembershipDate, false);
+            echo gettext(" Since:")." ". FormatDate($per_MembershipDate, false);
           } ?>
         </p>
         <?php if ($bOkToEdit) { ?>
@@ -241,15 +244,15 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
           <?php if ($dBirthDate) { ?>
             <li><i class="fa-li fa fa-calendar"></i><?= gettext("Birthdate:") ?> <span><?= $dBirthDate ?></span> (<?php PrintAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags); ?>)</li>
           <?php }
-          if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
+          if (!$bHideFriendDate && $per_FriendDate != "") { /* Friend Date can be hidden - General Settings */ ?>
             <li><i class="fa-li fa fa-tasks"></i><?= gettext("Friend Date:") ?> <span><?= FormatDate($per_FriendDate, false) ?></span></li>
           <?php }
           if ($sCellPhone) { ?>
-            <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext("Mobile Phone:") ?> <span><?= $sCellPhone ?></span></li>
+            <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext("Mobile Phone:") ?> <span><a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a></span></li>
           <?php }
           if ($sHomePhone) {
             ?>
-            <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><?= $sHomePhone ?></span></li>
+            <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a></span></li>
             <?php
           }
           if ($sEmail != "") { ?>
@@ -260,7 +263,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
           }
           if ($sWorkPhone) {
             ?>
-            <li><i class="fa-li fa fa-phone"></i><?= gettext("Work Phone:") ?> <span><?= $sWorkPhone ?></span></li>
+            <li><i class="fa-li fa fa-phone"></i><?= gettext("Work Phone:") ?> <span><a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a></span></li>
           <?php } ?>
           <?php if ($per_WorkEmail != "") { ?>
             <li><i class="fa-li fa fa-envelope"></i><?= gettext("Work/Other Email:") ?> <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
@@ -294,21 +297,20 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
           <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i> <?= gettext("Delete Photo") ?></a>
         <?php } ?>
       <?php } ?>
-      <a class="btn btn-app" href="PrintView.php?PersonID=<?= $per_ID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
-      <a class="btn btn-app" href="PersonView.php?PersonID=<?= $per_ID ?>&AddToPeopleCart=<?= $per_ID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
+      <a class="btn btn-app" href="PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
+      <a class="btn btn-app" href="PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
       <?php if ($_SESSION['bNotes']) { ?>
-        <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?php echo $per_ID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
-        <a class="btn btn-app" href="NoteEditor.php?PersonID=<?php echo $per_ID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
+        <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
+        <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
       <?php }
       if ($_SESSION['bDeleteRecords']) { ?>
-        <a class="btn btn-app bg-maroon" href="SelectDelete.php?mode=person&PersonID=<?= $per_ID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
+        <a class="btn btn-app bg-maroon" href="SelectDelete.php?mode=person&PersonID=<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
       <?php }
       if ($_SESSION['bAdmin']) {
-        $sSQL = "SELECT usr_per_ID FROM user_usr WHERE usr_per_ID = " . $per_ID;
-        if (mysql_num_rows(RunQuery($sSQL)) == 0) { ?>
-          <a class="btn btn-app" href="UserEditor.php?NewPersonID=<?= $per_ID ?>"><i class="fa fa-user-secret"></i> <?= gettext("Make User") ?></a>
+        if (!$person->isUser()) { ?>
+          <a class="btn btn-app" href="UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext("Make User") ?></a>
         <?php } else { ?>
-          <a class="btn btn-app" href="UserEditor.php?PersonID=<?= $per_ID ?>"><i class="fa fa-user-secret"></i> <?= gettext("Edit User") ?></a>
+          <a class="btn btn-app" href="UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext("Edit User") ?></a>
         <?php }
       } ?>
       <a class="btn btn-app" role="button" href="SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
@@ -322,7 +324,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         <li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab"><?= gettext("Family") ?></a></li>
         <li role="presentation"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?= gettext("Assigned Groups") ?></a></li>
         <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
-        <li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext("Volunteer opportunities") ?></a></li>
+        <li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext("Volunteer Opportunities") ?></a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -381,34 +383,33 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         </div>
         <div role="tab-pane fade" class="tab-pane" id="family">
 
-          <?php if (mysql_num_rows($rsOtherFamily) != 0) { ?>
+          <?php if ($person->getFamId() != "") { ?>
           <table class="table user-list table-hover">
             <thead>
             <tr>
-              <th><span>Family Members</span></th>
-              <th class="text-center"><span>Role</span></th>
-              <th><span>Birthday</span></th>
-              <th><span>Email</span></th>
+              <th><span><?= gettext("Family Members") ?></span></th>
+              <th class="text-center"><span><?= gettext("Role") ?></span></th>
+              <th><span><?= gettext("Birthday") ?></span></th>
+              <th><span><?= gettext("Email") ?></span></th>
               <th>&nbsp;</th>
             </tr>
             </thead>
             <tbody>
-            <?php while ($Row = mysql_fetch_array($rsOtherFamily)) {
-              $tmpPersonId = $Row["per_ID"];
+            <?php foreach($person->getOtherFamilyMembers() as $familyMember) {
+              $tmpPersonId = $familyMember->getId();
               ?>
               <tr>
                 <td>
-                  <img src="<?= $personService->getPhoto($tmpPersonId) ?>" width="40" height="40" class="img-circle img-bordered-sm"/>
-                  <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $Row["per_FirstName"] . " " . $Row["per_LastName"] ?> </a>
+                  <img src="<?= $familyMember->getPhoto() ?>" width="40" height="40" class="img-circle img-bordered-sm"/> <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
                 </td>
                 <td class="text-center">
-                  <?= getRoleLabel($Row["sFamRole"]) ?>
+                  <?= $familyMember->getFamilyRoleName() ?>
                 </td>
                 <td>
-                  <?= FormatBirthDate($Row["per_BirthYear"], $Row["per_BirthMonth"], $Row["per_BirthDay"], "-", $Row["per_Flags"]) ?>
+                  <?= $familyMember->getBirthDate() ?>
                 </td>
                 <td>
-                  <?php $tmpEmail = $Row["per_Email"];
+                  <?php $tmpEmail = $familyMember->getEmail();
                   if ($tmpEmail != "") { ?>
                     <a href="#"><a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a></a>
                   <?php } ?>
@@ -469,7 +470,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                       </div>
                       <?php
                       // If this group has associated special properties, display those with values and prop_PersonDisplay flag set.
-                      if ($grp_hasSpecialProps == 'true') {
+                      if ($grp_hasSpecialProps) {
                         // Get the special properties for this group
                         $sSQL = "SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = " . $grp_ID . " AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
                         $rsPropList = RunQuery($sSQL);
@@ -497,14 +498,14 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                           <?php if ($_SESSION['bManageGroups']) { ?>
                             <a href="GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="glyphicon glyphicon-list"></i></a>
                             <div class="btn-group">
-                              <button type="button" class="btn btn-default">Action</button>
+                              <button type="button" class="btn btn-default"><?= gettext("Action") ?></button>
                               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                               </button>
                               <ul class="dropdown-menu" role="menu">
                                 <li><a href="MemberRoleChange.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext("Change Role") ?></a></li>
-                                <?php if ($grp_hasSpecialProps == 'true') { ?>
+                                <?php if ($grp_hasSpecialProps) { ?>
                                   <li><a href="GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext("Update Properties") ?></a></li>
                                 <?php } ?>
                               </ul>
@@ -739,11 +740,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         </div>
         <div class="modal-body">
           <input type="file" name="file" size="50"/> <br/>
-          Max Photo size: <?= ini_get('upload_max_filesize') ?>
+          <?= gettext("Max Photo size:") ?> <?= ini_get('upload_max_filesize') ?>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <input type="submit" class="btn btn-primary" value="Upload Image">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
+          <input type="submit" class="btn btn-primary" value="<?= gettext("Upload Image") ?>">
         </div>
       </div>
     </form>
@@ -754,18 +755,18 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="delete-Image-label">Confirm Delete</h4>
+        <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm Delete") ?></h4>
       </div>
 
       <div class="modal-body">
-        <p>You are about to delete the profile photo, this procedure is irreversible.</p>
+        <p><?= gettext("You are about to delete the profile photo, this procedure is irreversible.") ?></p>
 
-        <p>Do you want to proceed?</p>
+        <p><?= gettext("Do you want to proceed?") ?></p>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <a href="ImageDelete.php?PersonID=<?= $iPersonID ?>" class="btn btn-danger danger">Delete</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+        <a href="ImageDelete.php?PersonID=<?= $iPersonID ?>" class="btn btn-danger danger"><?= gettext("Delete") ?></a>
       </div>
     </div>
   </div>
@@ -797,14 +798,13 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
 <?php } else { ?>
   <div class="error-page">
-    <h2 class="headline text-yellow"> 404</h2>
+    <h2 class="headline text-yellow">404</h2>
 
     <div class="error-content">
-      <h3><i class="fa fa-warning text-yellow"></i> Oops! Person not found.</h3>
+      <h3><i class="fa fa-warning text-yellow"></i><?= gettext("Oops! Person not found.") ?></h3>
 
       <p>
-        We could not find the person you were looking for.
-        Meanwhile, you may <a href="//MembersDashboard.php">return to member dashboard</a>
+      	<?= gettext("We could not find the person you were looking for.<br>Meanwhile, you may")?> <a href="//MembersDashboard.php"><?= gettext("return to member dashboard") ?></a>
       </p>
     </div>
   </div>

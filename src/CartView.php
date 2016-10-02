@@ -29,7 +29,6 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/LabelFunctions.php";
-require "Include/PersonFunctions.php";
 
 if (isset($_POST["rmEmail"]))
 {
@@ -648,7 +647,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
                         $sValidAddy = gettext("No");
 
                 echo '<tr class="' . $sRowClass . '">';
-                echo '<td><img src="'. $personService->getPhoto($per_ID). '" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
+                echo '<td><img src="'. $sRootPath. '/api/persons/'.$per_ID.'/photo" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
 
                 echo '<td align="center">' . $sValidAddy . '</td>';
                 echo '<td align="center">' . $sValidEmail . '</td>';

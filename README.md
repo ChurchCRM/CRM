@@ -22,6 +22,7 @@ Welcome to Church Web CRM
 
 [![Throughput Graph](https://graphs.waffle.io/ChurchCRM/CRM/throughput.svg)](https://waffle.io/ChurchCRM/CRM/metrics/throughput)
 
+see [Download Stats] (http://www.somsubhra.com/github-release-stats/?username=churchcrm&repository=CRM)
 
 ##  Change Log
 

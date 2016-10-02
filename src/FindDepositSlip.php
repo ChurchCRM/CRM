@@ -16,7 +16,6 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require 'Service/FinancialService.php';
 
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
@@ -26,22 +25,12 @@ $sPageTitle = gettext("Deposit Listing");
 // Security: User must have finance permission to use this form
 if (!$_SESSION['bFinance'])
 {
-    Redirect("index.php");
-    exit;
+  Redirect("index.php");
+  exit;
 }
 
-$financialService=new FinancialService();
 require "Include/Header.php";
 ?>
-
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.css">
-<script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 <!-- Delete Confirm Modal -->
 <div id="confirmDelete" class="modal fade" role="dialog">
@@ -68,59 +57,59 @@ require "Include/Header.php";
 <!-- End Delete Confirm Modal -->
 
 <div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title"><?php echo gettext("Add New Deposit: ");?></h3>
-    </div>
-    <div class="box-body">
-        <form action="#" method="get" class="form">
-            <div class="row">
-                <div class="col-xs-3">
-                    <label for="addNewGruop">Deposit Comment</label>
-                    <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
-                </div>
-                <div class="col-xs-3">
-                    <label for="depositType">Deposit Type</label>
-                    <select  class="form-control" id="depositType" name="depositType">
-                        <option value="Bank">Bank</option>
-                        <option value="CreditCard">Credit Card</option>
-                        <option value="BankDraft">Bank Draft</option>
-                        <option value="eGive">eGive</option>
-                    </select>
-                </div>
-                <div class="col-xs-3">
-                    <label for="addNewGruop">Deposit Date</label>
-                    <input class="form-control" name="depositDate" id="depositDate" style="width:100%">
-                </div>
-            </div>
-            <p>
-            <div class="row">
-                <div class="col-xs-3">
-                    <button type="button" class="btn btn-primary" id ="addNewDeposit" >Add New Deposit</button>
-                </div>
-            </div>
-        </form>
-    </div>
+  <div class="box-header with-border">
+    <h3 class="box-title"><?php echo gettext("Add New Deposit: ");?></h3>
+  </div>
+  <div class="box-body">
+    <form action="#" method="get" class="form">
+      <div class="row">
+        <div class="container-fluid">
+          <div class="col-lg-4">
+            <label for="addNewGruop">Deposit Comment</label>
+            <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
+          </div>
+          <div class="col-lg-3">
+            <label for="depositType">Deposit Type</label>
+            <select  class="form-control" id="depositType" name="depositType">
+              <option value="Bank">Bank</option>
+              <option value="CreditCard">Credit Card</option>
+              <option value="BankDraft">Bank Draft</option>
+              <option value="eGive">eGive</option>
+            </select>
+          </div>
+          <div class="col-lg-3">
+            <label for="addNewGruop">Deposit Date</label>
+            <input class="form-control" name="depositDate" id="depositDate" style="width:100%">
+          </div>
+        </div>
+      </div>
+      <p>
+      <div class="row">
+        <div class="col-xs-3">
+          <button type="button" class="btn btn-primary" id ="addNewDeposit" >Add New Deposit</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
 <div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title"><?php echo gettext("Deposits: ");?></h3>
-    </div>
-    <div class="box-body">
-        <table class="table" id="depositsTable">
-        </table>
-
-        <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext("Delete Selected Rows") ?> </button>
-        <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx" disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (OFX)") ?></button>
-        <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv" disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (CSV)") ?></button>
-        <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf" disabled> <?= gettext("Generate Deposit Split for Selected Rows (PDF)") ?></button>
-    </div>
+  <div class="box-header with-border">
+    <h3 class="box-title"><?php echo gettext("Deposits: ");?></h3>
+  </div>
+  <div class="box-body">
+    <div class="container-fluid">
+      <table class="display responsive nowrap" id="depositsTable" width="100%"></table>
+  
+      <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext("Delete Selected Rows") ?> </button>
+      <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx" disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (OFX)") ?></button>
+      <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv" disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (CSV)") ?></button>
+      <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf" disabled> <?= gettext("Generate Deposit Split for Selected Rows (PDF)") ?></button>
+    </div >
+  </div>
 </div>
-
-<script>
-var depositData = <?php $json = $financialService->getDepositJSON($financialService->getDeposits()); if ($json) { echo $json; } else { echo 0; } ?>;
-</script>
-
+<link href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet" type="text/css"/>
+<script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
 <script src="<?= $sRootPath; ?>/skin/js/FindDepositSlip.js"></script>
 
 <?php require "Include/Footer.php" ?>

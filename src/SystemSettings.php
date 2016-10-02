@@ -78,6 +78,8 @@ if (isset ($_POST['save'])) {
       $value = FilterInput($new_value[$id], "float");
     elseif ($current_type == 'date')
       $value = FilterInput($new_value[$id], "date");
+     elseif ($current_type == 'json')
+      $value = $new_value[$id];
     elseif ($current_type == 'boolean') {
       if ($new_value[$id] != "1")
         $value = "";
@@ -119,6 +121,24 @@ $sSQL = "SELECT * FROM config_cfg ORDER BY cfg_category, cfg_order";
 $rsConfigs = RunQuery($sSQL);
 ?>
 
+<div id="JSONSettingsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit JSON Settings</h4>
+        </div>
+        <div class="modal-body" id="JSONSettingsDiv">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary jsonSettingsClose">Save</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <div class="row">
   <div class="col-lg-12">
     <div class="box box-body">
@@ -131,7 +151,7 @@ $rsConfigs = RunQuery($sSQL);
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="Step1">
-              <table class="table">
+              <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext("Variable name") ?></th>
                   <th width="400px">Value</th>
@@ -148,7 +168,7 @@ $rsConfigs = RunQuery($sSQL);
               </table>
             </div>
             <div class="tab-pane" id="<?= $step ?>">
-              <table class="table">
+              <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext("Variable name") ?></th>
                   <th width="400px">Current Value</th>
@@ -161,7 +181,7 @@ $rsConfigs = RunQuery($sSQL);
                   <td>
                     <!--  Current Value -->
                     <?php if ($cfg_name == "sTimeZone" ) {?>
-                    <select name='new_value[<?= $cfg_id ?>]' id="timeZoneSelectBox">
+                    <select class="input-small" name='new_value[<?= $cfg_id ?>]' id="timeZoneSelectBox">
                         <?php
                             foreach (timezone_identifiers_list() as $timeZone)
                             {
@@ -170,11 +190,11 @@ $rsConfigs = RunQuery($sSQL);
                         ?>
                     </select>
                     <?php } elseif ($cfg_type == 'text') { ?>
-                      <input type=text size=40 maxlength=255 name='new_value[<?= $cfg_id ?>]' value='<?= htmlspecialchars($cfg_value, ENT_QUOTES) ?>'>
+                      <input type=text class="col-lg-12" maxlength=255 name='new_value[<?= $cfg_id ?>]' value='<?= htmlspecialchars($cfg_value, ENT_QUOTES) ?>'>
                     <?php } elseif ($cfg_type == 'textarea') { ?>
-                      <textarea rows=4 cols=40 name='new_value[<?= $cfg_id ?>]'><?= htmlspecialchars($cfg_value, ENT_QUOTES) ?></textarea>
+                      <textarea rows=4 class="col-lg-12" name='new_value[<?= $cfg_id ?>]'><?= htmlspecialchars($cfg_value, ENT_QUOTES) ?></textarea>
                     <?php } elseif ($cfg_type == 'number' || $cfg_type == 'date') { ?>
-                      <input type=text size=40 maxlength=15 name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>'>
+                      <input type=text class="col-lg-12" maxlength=15 name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>'>
                     <?php } elseif ($cfg_type == 'boolean') {
                       if ($cfg_value) {
                         $sel1 = "";
@@ -187,7 +207,15 @@ $rsConfigs = RunQuery($sSQL);
                         <option value='' <?= $sel1 ?>>False
                         <option value='1' <?= $sel2 ?>>True
                       </select>
-                    <?php } ?>
+                    <?php } elseif ($cfg_type == 'json') {
+                      ?>
+                      <input type="hidden" name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>'>
+                      <button class="btn-primary jsonSettingsEdit" id="set_value<?= $cfg_id ?>" data-cfgid="<?= $cfg_id ?>">Edit Settings</button>
+                        
+                        
+                      <?php
+                      
+                    } ?>
                   </td>
                   <?php
                   // Default Value
@@ -224,6 +252,7 @@ $(document).ready(function(){
    $("#timeZoneSelectBox").select2();
 }); 
 </script>
+<script src="skin/js/SystemSettings.js" type="text/javascript"></script>
 
 
 <?php require "Include/Footer.php" ?>

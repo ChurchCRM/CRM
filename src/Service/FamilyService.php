@@ -1,11 +1,20 @@
 <?php
 
+namespace ChurchCRM\Service;
+
 class FamilyService
 {
 
+  private $baseURL;
+
+  public function __construct()
+  {
+    $this->baseURL = $_SESSION['sRootPath'];
+  }
+
   function getViewURI($Id)
   {
-    return $_SESSION['sRootPath'] . "/FamilyView.php?FamilyID=" . $Id;
+    return $this->baseURL . "/FamilyView.php?FamilyID=" . $Id;
   }
 
   function search($searchTerm)
@@ -137,64 +146,6 @@ class FamilyService
     RunQuery($sSQL);
   }
 
-  function insertFamily($user)
-  {
-    requireUserGroupMembership("bAddRecords");
-    $dWeddingDate = "NULL";
-    $iCanvasser = 0;
-    $nLatitude = 0;
-    $nLongitude = 0;
-    $nEnvelope = 0;
-    $sSQL = "INSERT INTO family_fam (
-            fam_Name,
-            fam_Address1,
-            fam_Address2,
-            fam_City,
-            fam_State,
-            fam_Zip,
-            fam_Country,
-            fam_HomePhone,
-            fam_WorkPhone,
-            fam_CellPhone,
-            fam_Email,
-            fam_WeddingDate,
-            fam_DateEntered,
-            fam_EnteredBy,
-            fam_SendNewsLetter,
-            fam_OkToCanvass,
-            fam_Canvasser,
-            fam_Latitude,
-            fam_Longitude,
-            fam_Envelope)
-            VALUES ('" .
-      FilterInput($user->name->last) . "','" .
-      FilterInput($user->location->street) . "','" .
-      "\"\"','" .
-      FilterInput($user->location->city) . "','" .
-      FilterInput($user->location->state) . "','" .
-      FilterInput($user->location->zip) . "','" .
-      "USA','" .
-      FilterInput($user->phone) . "','" .
-      "NULL','" .
-      FilterInput($user->cell) . "','" .
-      FilterInput($user->email) . "'," .
-      date('Y-m-d', $user->registered) . ",'" .
-      date("YmdHis") . "'," .
-      $_SESSION['iUserID'] . "," .
-      "FALSE," .
-      "FALSE,'" .
-      $iCanvasser . "'," .
-      $nLatitude . "," .
-      $nLongitude . "," .
-      $nEnvelope . ")";
-    RunQuery($sSQL);
-    $sSQL = "SELECT MAX(fam_ID) AS iFamilyID FROM family_fam";
-
-    $rsLastEntry = RunQuery($sSQL);
-    extract(mysql_fetch_array($rsLastEntry));
-    return $iFamilyID;
-
-  }
 }
 
 ?>

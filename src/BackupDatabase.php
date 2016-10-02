@@ -95,7 +95,6 @@ function doBackup(isRemote)
   {
     endpointURL = window.CRM.root +'/api/database/backup';
   }
-  event.preventDefault();
   var errorflag =0;
   if ($("input[name=encryptBackup]").is(':checked'))
   {
@@ -130,7 +129,8 @@ function doBackup(isRemote)
       url         : endpointURL, // the url where we want to POST
       data        : JSON.stringify(formData), // our data object
       dataType    : 'json', // what type of data do we expect back from the server
-      encode      : true
+      encode      : true,
+      contentType: "application/json; charset=utf-8"
     })
     .done(function(data) {
       console.log(data);
@@ -153,10 +153,12 @@ function doBackup(isRemote)
 }
   
 $('#doBackup').click(function(event) {
+  event.preventDefault();
   doBackup (0);
 });
 
 $('#doRemoteBackup').click(function(event) {
+  event.preventDefault();
   doBackup(1);
 });
 

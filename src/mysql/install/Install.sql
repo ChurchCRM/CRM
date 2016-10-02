@@ -17,12 +17,7 @@ CREATE TABLE `version_ver` (
   UNIQUE KEY `ver_version` (`ver_version`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `version_ver`
---
 
-INSERT INTO version_ver (ver_version, ver_update_start)
-VALUES ('2.1.12', now());
 
 --
 -- Table structure for table `autopayment_aut`
@@ -102,11 +97,13 @@ CREATE TABLE `canvassdata_can` (
 -- Table structure for table `config_cfg`
 --
 
+SET @JSONV = '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}';
+
 CREATE TABLE `config_cfg` (
   `cfg_id` int(11) NOT NULL default '0',
   `cfg_name` varchar(50) NOT NULL default '',
   `cfg_value` text,
-  `cfg_type` enum('text','number','date','boolean','textarea') NOT NULL default 'text',
+  `cfg_type` ENUM('text','number','date','boolean','textarea','json') NOT NULL default 'text',
   `cfg_default` text NOT NULL,
   `cfg_tooltip` text NOT NULL,
   `cfg_section` varchar(50) NOT NULL default '',
@@ -123,7 +120,6 @@ CREATE TABLE `config_cfg` (
 INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES
 (1, 'sWEBCALENDARDB', '', 'text', '', 'WebCalendar database name', 'General', NULL),
 (2, 'debug', '1', 'boolean', '1', 'Set debug mode\r\nThis may be helpful for when you''re first setting up ChurchCRM, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you''ll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.', 'General', NULL),
-(3, 'sJPGRAPH_PATH', 'Include/jpgraph-1.13/src', 'text', 'Include/jpgraph-1.13/src', 'JPGraph library', 'General', NULL),
 (5, 'sDirClassifications', '1,2,4,5', 'text', '1,2,4,5', 'Include only these classifications in the directory, comma seperated', 'General', NULL),
 (6, 'sDirRoleHead', '1,7', 'text', '1,7', 'These are the family role numbers designated as head of house', 'General', NULL),
 (7, 'sDirRoleSpouse', '2', 'text', '2', 'These are the family role numbers designated as spouse', 'General', NULL),
@@ -144,7 +140,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (25, 'sSendType', 'smtp', 'text', 'smtp', 'The method for sending email. Either "smtp" or "sendmail"', 'General', NULL),
 (26, 'sToEmailAddress', '', 'text', '', 'Default account for receiving a copy of all emails', 'General', NULL),
 (27, 'sSMTPHost', '', 'text', '', 'SMTP Server Address (mail.server.com:25)', 'General', NULL),
-(28, 'sSMTPAuth', '1', 'boolean', '1', 'Does your SMTP server require auththentication (username/password)?', 'General', NULL),
+(28, 'sSMTPAuth', '0', 'boolean', '1', 'Does your SMTP server require auththentication (username/password)?', 'General', NULL),
 (29, 'sSMTPUser', '', 'text', '', 'SMTP Username', 'General', NULL),
 (30, 'sSMTPPass', '', 'text', '', 'SMTP Password', 'General', NULL),
 (33, 'bShowFamilyData', '1', 'boolean', '1', 'Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person''s assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ', 'General', NULL),
@@ -156,7 +152,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (41, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General', NULL),
 (42, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General', NULL),
 (43, 'sGeocoderPW', '', 'text', '', 'Password for rpc.geocoder.us', 'General', NULL),
-(44, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from http://maps.google.com/apis/maps/signup.html', 'General', NULL),
+(44, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from https://developers.google.com/maps/documentation/javascript/get-api-key', 'General', NULL),
 (45, 'nChurchLatitude', '', 'number', '', 'Latitude of the church, used to center the Google map', 'General', NULL),
 (46, 'nChurchLongitude', '', 'number', '', 'Longitude of the church, used to center the Google map', 'General', NULL),
 (47, 'bHidePersonAddress', '1', 'boolean', '1', 'Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.', 'General', NULL),
@@ -227,7 +223,8 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1039, 'sExternalBackupUsername', '', 'Text', '', 'Remote Backup Username', 'General', "Step5"),
 (1040, 'sExternalBackupPassword', '', 'Text', '', 'Remote Backup Password', 'General', "Step5"),
 (1041, 'sExternalBackupAutoInterval', '', 'Text', '', 'Interval in Hours for Automatic Remote Backups', 'General', "Step5"),
-(1042, 'sLastBackupTimeStamp', '', 'Text', '', 'Last Backup Timestamp', 'General', "Step5");
+(1042, 'sLastBackupTimeStamp', '', 'Text', '', 'Last Backup Timestamp', 'General', "Step5"),
+(1043, 'sQBDTSettings', @JSONV , 'json', @JSONV , 'QuickBooks Deposit Ticket Settings', 'ChurchInfoReport', 'Step7');
 
 ALTER TABLE `config_cfg`
 ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
@@ -283,16 +280,15 @@ UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='1' WHERE `cfg_id`='
 UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='2' WHERE `cfg_id`='999';
 UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='3' WHERE `cfg_id`='39';
 UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='4' WHERE `cfg_id`='4';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='5' WHERE `cfg_id`='3';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='6' WHERE `cfg_id`='41';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='7' WHERE `cfg_id`='36';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='8' WHERE `cfg_id`='37';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='9' WHERE `cfg_id`='38';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='10' WHERE `cfg_id`='34';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='12' WHERE `cfg_id`='64';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='5' WHERE `cfg_id`='41';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='6' WHERE `cfg_id`='36';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='7' WHERE `cfg_id`='37';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='8' WHERE `cfg_id`='38';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='9' WHERE `cfg_id`='34';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='10' WHERE `cfg_id`='64';
 UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='11' WHERE `cfg_id`='11';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='13' WHERE `cfg_id`='1';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='14' WHERE `cfg_id`='53';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='12' WHERE `cfg_id`='1';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='13' WHERE `cfg_id`='53';
 
 UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='0' WHERE `cfg_id`='44';
 UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='1' WHERE `cfg_id`='56';
@@ -675,7 +671,7 @@ CREATE TABLE `group_grp` (
   `grp_DefaultRole` mediumint(9) NOT NULL default '0',
   `grp_Name` varchar(50) NOT NULL default '',
   `grp_Description` text,
-  `grp_hasSpecialProps` enum('true','false') NOT NULL default 'false',
+  `grp_hasSpecialProps` BOOLEAN NOT NULL default 0,
   PRIMARY KEY  (`grp_ID`),
   UNIQUE KEY `grp_ID` (`grp_ID`),
   KEY `grp_ID_2` (`grp_ID`)
@@ -840,7 +836,6 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 
 (60, 'deposit', 'root', 1, 'Deposit', 'Deposit', '', '', 'bFinance', NULL, 0, 0, NULL, 1, 7, 'fa-bank'),
 (61, 'envelopmgr', 'deposit', 0, 'Envelope Manager', 'Envelope Manager', 'ManageEnvelopes.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
-(62, 'newdeposit', 'deposit', 0, 'Create New Deposit', 'Create New Deposit', 'DepositSlipEditor.php?DepositType=Bank', '', 'bFinance', NULL, 0, 0, NULL, 1, 2, NULL),
 (63, 'viewdeposit', 'deposit', 0, 'View All Deposits', 'View All Deposits', 'FindDepositSlip.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 3, NULL),
 (64, 'depositreport', 'deposit', 0, 'Deposit Reports', 'Deposit Reports', 'FinancialReports.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 4, NULL),
 (65, 'depositslip', 'deposit', 0, 'Edit Deposit Slip', 'Edit Deposit Slip', 'DepositSlipEditor.php', '', 'bFinance', 'iCurrentDeposit', 1, 1, 'DepositSlipID', 1, 5, NULL),
@@ -865,7 +860,6 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 
 (100, 'generalsetting', 'admin', 0, 'Edit General Settings', 'Edit General Settings', 'SystemSettings.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
 (101, 'editusers', 'admin', 0, 'System Users', 'System Users', 'UserList.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 2, NULL),
-(102, 'accessreport', 'admin', 0, 'Access report', 'Access report', 'AccessReport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3, NULL),
 (104, 'customfamilyfld', 'admin', 0, 'Edit Custom Family Fields', 'Edit Custom Family Fields', 'FamilyCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 5, NULL),
 (105, 'custompersonfld', 'admin', 0, 'Edit Custom Person Fields', 'Edit Custom Person Fields', 'PersonCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 6, NULL),
 (106, 'donationfund', 'admin', 0, 'Edit Donation Funds', 'Edit Donation Funds', 'DonationFundEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 7, NULL),

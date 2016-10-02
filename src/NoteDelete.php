@@ -17,6 +17,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+use ChurchCRM\NoteQuery;
+
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bNotes'])
@@ -51,9 +53,8 @@ elseif ($nte_fam_ID > 0)
 //Do we have confirmation?
 if (isset($_GET["Confirmed"]))
 {
-	//Delete the specified Person record
-	$sSQL = "DELETE FROM note_nte WHERE nte_ID = " . $iNoteID;
-	RunQuery($sSQL);
+  $note = NoteQuery::create()->findPk($iNoteID);
+  $note->delete();
 
 	//Send back to the page they came from
 	Redirect($sReroute);
@@ -62,21 +63,16 @@ if (isset($_GET["Confirmed"]))
 require "Include/Header.php";
 
 ?>
-
-<p>
+<div class="box box-warning">
+  <div class="box-header with-border">
 	<?= gettext("Please confirm deletion of this note:") ?>
-</p>
-
-<p class="ShadedBox">
-	<?= $nte_Text ?>
-</p>
-
-<p>
-	<a href="NoteDelete.php?Confirmed=Yes&NoteID=<?php echo $iNoteID ?>"><?= gettext("Yes, delete this record") ?></a> <?= gettext("(this action cannot be undone)") ?>
-</p>
-
-<p>
-	<a href="<?php echo $sReroute ?>"><?= gettext("No, cancel this deletion") ?></a>
-</p>
+  </div>
+  <div class="box-body">
+    <?= $nte_Text ?>
+  </div>
+  <div class="box-footer">
+    <a class="btn btn-default" href="<?php echo $sReroute ?>"><?= gettext("Cancel") ?></a>
+  	<a class="btn btn-danger" href="NoteDelete.php?Confirmed=Yes&NoteID=<?php echo $iNoteID ?>"><?= gettext("Yes, delete this record") ?></a> <?= gettext("(this action cannot be undone)") ?>
+  </div>
 
 <?php require "Include/Footer.php" ?>

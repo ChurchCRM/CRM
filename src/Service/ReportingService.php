@@ -1,12 +1,14 @@
 <?php
 
+namespace ChurchCRM\Service;
+
 class ReportingService
 {
 
   function queryDatabase($queryRequest)
   {
     requireUserGroupMembership("bAdmin");
-    $returnObject = new StdClass();
+    $returnObject = new \stdClass();
     $returnObject->query = $queryRequest;
     $returnObject->sql = $this->getQuerySQL($queryRequest->queryID, $queryRequest->queryParameters);
     $returnObject->rows = array();

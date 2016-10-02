@@ -17,8 +17,8 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
-require "../Include/phpmailer/class.phpmailer.php";
+use ChurchCRM\Reports\ChurchInfoReport;
+use \ChurchCRM\Service\EmailService;
 
 class EmailPDF_ConfirmReport extends ChurchInfoReport
 {
@@ -26,11 +26,11 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport
   // Constructor
   function EmailPDF_ConfirmReport()
   {
-    parent::FPDF("P", "mm", $this->paperFormat);
+    parent::__construct("P", "mm", $this->paperFormat);
     $this->leftX = 10;
     $this->SetFont("Times", '', 10);
     $this->SetMargins(10, 20);
-    $this->Open();
+    
     $this->SetAutoPageBreak(false);
   }
 
@@ -76,16 +76,9 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport
   function getEmailConnection()
   {
 
-    $mail = new PHPMailer();
-    $mail->IsSMTP();
-    // $mail->SMTPDebug  = 2; 
-    $mail->SMTPAuth = true;
-    $mail->Port = 2525;
-    $mail->Host = $this->sSMTPHost;
-    $mail->Username = $this->sSMTPUser;
-    $mail->Password = $this->sSMTPPass;
+    $emailSerice = new EmailService();
 
-    return $mail;
+    return $emailSerice->getConnection();
   }
 
 }
@@ -390,15 +383,15 @@ while ($aFam = mysql_fetch_array($rsFamilies))
     $message = "Dear " . $fam_Name . " Family <p>" . $pdf->sConfirm1 . "</p>Sincerely, <br/>" . $pdf->sConfirmSigner;
 
     $mail->Subject = $subject;
-    $mail->MsgHTML($message);
+    $mail->msgHTML($message);
     $mail->isHTML(true);
     $filename = "ConfirmReportEmail-" . $fam_Name . "-" . date("Ymd") . ".pdf";
-    $mail->AddStringAttachment($doc, $filename);
+    $mail->addStringAttachment($doc, $filename);
     foreach ($myArray = explode(',', $emaillist) as $address)
     {
-      $mail->AddAddress($address);
+      $mail->addAddress($address);
     }
-    $familyEmailSent = $mail->Send();
+    $familyEmailSent = $mail->send();
     if ($familyEmailSent)
     {
       $familiesEmailed = $familiesEmailed + 1;

@@ -18,7 +18,7 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require_once "Service/GroupService.php";
+use ChurchCRM\Service\GroupService;
 
 $groupService = new GroupService();
 
@@ -65,7 +65,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 {
   ?>
 
-  <script src="js/RPCDummyAjax.js"></script>
+  <script src="skin/js/GroupRoles.js"></script>
 
   <!-- Default box -->
   <div class="box">

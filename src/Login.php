@@ -240,6 +240,7 @@ if ($iUserID > 0)
 
         // Set the Root Path ... used in basic security check
         $_SESSION['sRootPath'] = $sRootPath;
+        $_SESSION['$sEnableGravatarPhotos'] = $sEnableGravatarPhotos;
 
         // If PHP's magic quotes setting is turned off, we want to use a workaround to ensure security.
         if (function_exists('get_magic_quotes_gpc'))
@@ -282,8 +283,6 @@ if ($iUserID > 0)
             RunQuery($sSQL);
         }
 
-        $systemService = new SystemService();
-        $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         Redirect('CheckVersion.php');
         exit;
     }
@@ -318,11 +317,11 @@ if (isset($loginPageMsg))
 
 <form class="form-signin" role="form" method="post" name="LoginForm" action="Login.php">
     <div class="form-group has-feedback">
-        <input type="text" id="UserBox" name="User" class="form-control" placeholder="Email/Username" required autofocus>
+        <input type="text" id="UserBox" name="User" class="form-control" placeholder="<?= gettext("Email/Username")?>" required autofocus>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
     </div>
     <div class="form-group has-feedback">
-        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="Password" required autofocus>
+        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext("Password") ?>" required autofocus>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
     </div>
     <div class="row">
@@ -353,21 +352,15 @@ checkAllowedURL();
 </div>
 <!-- /.login-box -->
 
-<div id="not-chrome" class="error-page">
-  <div class="callout callout-warning">
-    <h4>For the best experience, please use Google Chrome.</h4>
-    <p>This software has been tested with Google Chrome... <a href="https://www.google.com/chrome/browser/desktop/"> Download and install Google Chrome</a></p>
-  </div>
-</div>
-<script language="JavaScript" type="text/JavaScript">
-  $(document).ready(function () {
-    $("#not-chrome").hide();
-    var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-    if (!isChrome)
-      $("#not-chrome").show();
-
-    document.LoginForm.User.focus();
-  });
+<script>
+  var $buoop = {vs:{i:11,f:30,o:25,s:7},c:2};
+  function $buo_f(){
+    var e = document.createElement("script");
+    e.src = "//browser-update.org/update.min.js";
+    document.body.appendChild(e);
+  };
+  try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+  catch(e){window.attachEvent("onload", $buo_f)}
 </script>
 
 <?php

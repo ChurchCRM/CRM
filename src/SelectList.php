@@ -31,7 +31,6 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/PersonFunctions.php";
 
 $iTenThousand = 10000;  // Constant used to offset negative choices in drop down lists
 
@@ -39,7 +38,7 @@ $iTenThousand = 10000;  // Constant used to offset negative choices in drop down
 $sClassSQL  = "SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence";
 $rsClassification = RunQuery($sClassSQL);
 unset($aClassificationName);
-$aClassificationName[0] = "Unassigned";
+$aClassificationName[0] = gettext("Unassigned");
 while ($aRow = mysql_fetch_array($rsClassification)) {
 	extract($aRow);
 	$aClassificationName[intval($lst_OptionID)]=$lst_OptionName;
@@ -49,7 +48,7 @@ while ($aRow = mysql_fetch_array($rsClassification)) {
 $sFamRoleSQL  = "SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence";
 $rsFamilyRole = RunQuery($sFamRoleSQL);
 unset($aFamilyRoleName);
-$aFamilyRoleName[0] = "Unassigned";
+$aFamilyRoleName[0] = gettext("Unassigned");
 while ($aRow = mysql_fetch_array($rsFamilyRole)) {
 	extract($aRow);
 	$aFamilyRoleName[intval($lst_OptionID)]=$lst_OptionName;
@@ -65,7 +64,7 @@ $ProRows = mysql_num_rows($rsPro);
 $sPersonPropertySQL  = "SELECT * FROM property_pro WHERE pro_Class=\"p\" ORDER BY pro_Name";
 $rsPersonProperty = RunQuery($sPersonPropertySQL);
 unset($aPersonPropertyName);
-$aPersonPropertyName[0] = "Unassigned";
+$aPersonPropertyName[0] = gettext("Unassigned");
 $i = 1;
 while ( $i <= $ProRows ) {
 	$aRow = mysql_fetch_array($rsPersonProperty);
@@ -455,7 +454,7 @@ require "Include/Header.php";
 ?>
 <div class="box box-primary">
     <div class="box-header">
-        Filter and Cart
+        <?= gettext("Filter and Cart") ?>
     </div>
     <div class="box-body">
 <form method="get" action="SelectList.php" name="PersonList">
@@ -695,7 +694,7 @@ if ($iMode == 1) {
 </div>
 <div class="box box-warning">
 	<div class="box-header">
-        Listing
+        <?= gettext("Listing")?>
     </div>
 	<div class="box-body">
 <?php
@@ -1016,7 +1015,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 	//Display the row
 	echo "<tr class=\"" .$sRowClass. "\">"; ?>
 	</td>
-    <td><img src="<?= $personService->getPhoto($per_ID); ?>" class="direct-chat-img" width="10px" height="10px" /> </td>
+    <td><img src="<?=$sRootPath?>/api/persons/<?= $per_ID ?>/photo" class="direct-chat-img" width="10px" height="10px" /> </td>
 	<td>
 	    <a href="PersonView.php?PersonID=<?= $per_ID ?>" >
 	    <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3) ?>
