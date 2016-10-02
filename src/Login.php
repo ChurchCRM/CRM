@@ -342,7 +342,7 @@ if (isset($loginPageMsg))
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext('Login') ?></button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in"></i> <?= gettext('Login') ?></button>
         </div>
     </div>
 </form>
@@ -355,7 +355,7 @@ checkAllowedURL();
 ?>
         <!--<a href="external/user/password">I forgot my password</a><br> -->
         <?php if ($enableSelfReg) { ?>
-        <a href="external/family/register" class="text-center"><?= gettext("Register a new Family");?></a><br>
+        <a href="external/family/register" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext("Register a new Family");?></a><br>
         <?php } ?>
       <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
     </div>
