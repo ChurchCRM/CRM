@@ -33,14 +33,13 @@ class SystemService
 
   function playbackSQLtoDatabase($fileName)
   {
-    requireUserGroupMembership("bAdmin");
     $query = '';
     $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($restoreQueries as $line) {
       if ($line != '' && strpos($line, '--') === false) {
         $query .= " $line";
         if (substr($query, -1) == ';') {
-          $person = RunQuery($query);
+          $person = mysql_query($query);
           $query = '';
         }
       }
@@ -335,7 +334,7 @@ class SystemService
       $issueDescription .= "Apache Modules    |" . implode(",", apache_get_modules());
     }
 
-    $postdata = new stdClass();
+    $postdata = new \stdClass();
     $postdata->issueTitle = FilterInput($data->issueTitle);
     $postdata->issueDescription = $issueDescription;
 
@@ -353,6 +352,28 @@ class SystemService
       throw new Exception("Unable to reach the issue bridge", 500);
     }
     return $result;
+  }
+  
+  function runTimerJobs()
+  {
+    //start the external backup timer job
+    if ($sEnableExternalBackupTarget && $sExternalBackupAutoInterval > 0)  //if remote backups are enabled, and the interval is greater than zero
+    {
+      try {
+        $now = new DateTime();  //get the current time
+        $previous = new DateTime($sLastBackupTimeStamp); // get a DateTime object for the last time a backup was done.
+        $diff = $previous->diff($now);  // calculate the difference.
+        if (!$sLastBackupTimeStamp || $diff->h >= $sExternalBackupAutoInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
+        {
+          $systemService->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
+          $now = new DateTime();  // update the LastBackupTimeStamp.
+          $sSQL = "UPDATE config_cfg SET cfg_value='" . $now->format('Y-m-d H:i:s') . "' WHERE cfg_name='sLastBackupTimeStamp'";
+          $rsUpdate = RunQuery($sSQL);
+        }
+      } catch (Exception $exc) {
+        // an error in the auto-backup shouldn't prevent the page from loading...
+      }
+    }
   }
 
 }

@@ -58,34 +58,27 @@ if (!function_exists("mysql_failure")) {
 
 // Establish the database connection
 if (!function_exists('mysql_connect')) {
-   mysql_failure("mysql_connect function is not defined.  Possibly due to unsupported PHP version.  Currently installed version: ".phpversion());
+  mysql_failure("mysql_connect function is not defined.  Possibly due to unsupported PHP version.  Currently installed version: " . phpversion());
 }
 
 $cnInfoCentral = mysql_connect($sSERVERNAME, $sUSER, $sPASSWORD)
-or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ".mysql_error());
+or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysql_error());
 
 mysql_select_db($sDATABASE)
-or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ".mysql_error());
+or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysql_error());
 
 $sql = "SHOW TABLES FROM `$sDATABASE`";
 $tablecheck = mysql_num_rows(mysql_query($sql));
 
 if (!$tablecheck) {
   $systemService = new SystemService();
+  $setupQueries = dirname(__file__). '/../mysql/install/Install.sql';
+  $systemService->playbackSQLtoDatabase($setupQueries);
+  $configQueries = dirname(__file__). '/../mysql/upgrade/update_config.sql';
+  $systemService->playbackSQLtoDatabase($configQueries);
   $version = new Version();
   $version->setVersion($systemService->getInstalledVersion());
   $version->setUpdateStart(new DateTime());
-  $query = '';
-  $restoreQueries = file(dirname(__file__). '/../mysql/install/Install.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-  foreach ($restoreQueries as $line) {
-    if ($line != '' && strpos($line, '--') === false) {
-      $query .= " $line";
-      if (substr($query, -1) == ';') {
-        mysql_query($query);
-        $query = '';
-      }
-    }
-  }
   $version->setUpdateEnd(new DateTime());
   $version->save();
 }
@@ -163,10 +156,15 @@ if ($sLanguage == 'it_IT') {
 
 if (function_exists('bindtextdomain')) {
   $domain = 'messages';
-  $sLocaleDir = dirname(__FILE__). '/../locale';
+  $sLocaleDir = dirname(__FILE__) . '/../locale';
 
   bind_textdomain_codeset($domain, 'UTF-8');
   bindtextdomain($domain, $sLocaleDir);
   textdomain($domain);
+} else {
+  function gettext($string)
+  {
+    return $string;
+  }
 }
 ?>

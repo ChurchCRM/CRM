@@ -103,11 +103,13 @@ CREATE TABLE `config_cfg` (
   `cfg_id` int(11) NOT NULL default '0',
   `cfg_name` varchar(50) NOT NULL default '',
   `cfg_value` text,
-  `cfg_type` ENUM('text','number','date','boolean','textarea','json') NOT NULL default 'text',
+  `cfg_type` ENUM('text','number','date','boolean','textarea','json','choice') NOT NULL default 'text',
   `cfg_default` text NOT NULL,
   `cfg_tooltip` text NOT NULL,
   `cfg_section` varchar(50) NOT NULL default '',
   `cfg_category` varchar(20) default NULL,
+  `cfg_order` INT NULL COMMENT '',
+  `cfg_data` text,
   PRIMARY KEY  (`cfg_id`),
   UNIQUE KEY `cfg_name` (`cfg_name`),
   KEY `cfg_id` (`cfg_id`)
@@ -117,245 +119,115 @@ CREATE TABLE `config_cfg` (
 -- Dumping data for table `config_cfg`
 --
 
-INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES
-(1, 'sWEBCALENDARDB', '', 'text', '', 'WebCalendar database name', 'General', NULL),
-(2, 'debug', '1', 'boolean', '1', 'Set debug mode\r\nThis may be helpful for when you''re first setting up ChurchCRM, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you''ll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.', 'General', NULL),
-(5, 'sDirClassifications', '1,2,4,5', 'text', '1,2,4,5', 'Include only these classifications in the directory, comma seperated', 'General', NULL),
-(6, 'sDirRoleHead', '1,7', 'text', '1,7', 'These are the family role numbers designated as head of house', 'General', NULL),
-(7, 'sDirRoleSpouse', '2', 'text', '2', 'These are the family role numbers designated as spouse', 'General', NULL),
-(8, 'sDirRoleChild', '3', 'text', '3', 'These are the family role numbers designated as child', 'General', NULL),
-(9, 'sSessionTimeout', '3600', 'number', '3600', 'Session timeout length in seconds\rSet to zero to disable session timeouts.', 'General', NULL),
-(10, 'aFinanceQueries', '28,30,31,32', 'text', '28', 'Queries for which user must have finance permissions to use:', 'General', NULL),
-(11, 'bCSVAdminOnly', '1', 'boolean', '1', 'Should only administrators have access to the CSV export system and directory report?', 'General', NULL),
-(12, 'sDefault_Pass', 'password', 'text', 'password', 'Default password for new users and those with reset passwords', 'General', NULL),
-(13, 'sMinPasswordLength', '6', 'number', '6', 'Minimum length a user may set their password to', 'General', NULL),
-(14, 'sMinPasswordChange', '4', 'number', '4', 'Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature', 'General', NULL),
-(15, 'sDisallowedPasswords', 'churchcrm,password,god,jesus,church,christian', 'text', 'churchcrm,password,god,jesus,church,christian', 'A comma-seperated list of disallowed (too obvious) passwords.', 'General', NULL),
-(16, 'iMaxFailedLogins', '50', 'number', '50', 'Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature.', 'General', NULL),
-(20, 'iPDFOutputType', '1', 'number', '1', 'PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window', 'General', NULL),
-(21, 'sDefaultCity', '', 'text', '', 'Default City', 'General', NULL),
-(22, 'sDefaultState', '', 'text', '', 'Default State - Must be 2-letter abbreviation!', 'General', NULL),
-(23, 'sDefaultCountry', 'United States', 'text', 'United States', 'Default Country', 'General', NULL),
-(24, 'bEmailSend', '', 'boolean', '', 'If you wish to be able to send emails from within ChurchCRM. This requires\reither an SMTP server address to send from or sendmail installed in PHP.', 'General', NULL),
-(25, 'sSendType', 'smtp', 'text', 'smtp', 'The method for sending email. Either "smtp" or "sendmail"', 'General', NULL),
-(26, 'sToEmailAddress', '', 'text', '', 'Default account for receiving a copy of all emails', 'General', NULL),
-(27, 'sSMTPHost', '', 'text', '', 'SMTP Server Address (mail.server.com:25)', 'General', NULL),
-(28, 'sSMTPAuth', '1', 'boolean', '1', 'Does your SMTP server require auththentication (username/password)?', 'General', NULL),
-(29, 'sSMTPUser', '', 'text', '', 'SMTP Username', 'General', NULL),
-(30, 'sSMTPPass', '', 'text', '', 'SMTP Password', 'General', NULL),
-(33, 'bShowFamilyData', '1', 'boolean', '1', 'Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person''s assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ', 'General', NULL),
-(36, 'sGZIPname', 'gzip', 'text', 'gzip', '', 'General', NULL),
-(37, 'sZIPname', 'zip', 'text', 'zip', '', 'General', NULL),
-(38, 'sPGPname', 'gpg', 'text', 'gpg', '', 'General', NULL),
-(39, 'sLanguage', 'en_US', 'text', 'en_US', 'Internationalization (I18n) support\rUS English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)', 'General', NULL),
-(40, 'iFYMonth', '1', 'number', '1', 'First month of the fiscal year', 'General', NULL),
-(41, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General', NULL),
-(42, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General', NULL),
-(43, 'sGeocoderPW', '', 'text', '', 'Password for rpc.geocoder.us', 'General', NULL),
-(44, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from https://developers.google.com/maps/documentation/javascript/get-api-key', 'General', NULL),
-(45, 'nChurchLatitude', '', 'number', '', 'Latitude of the church, used to center the Google map', 'General', NULL),
-(46, 'nChurchLongitude', '', 'number', '', 'Longitude of the church, used to center the Google map', 'General', NULL),
-(47, 'bHidePersonAddress', '1', 'boolean', '1', 'Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.', 'General', NULL),
-(48, 'bHideFriendDate', '0', 'boolean', '0', 'Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.', 'General', NULL),
-(49, 'bHideFamilyNewsletter', '0', 'boolean', '0', 'Set true to disable management of newsletter subscriptions in the Family Editor.', 'General', NULL),
-(50, 'bHideWeddingDate', '0', 'boolean', '0', 'Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.', 'General', NULL),
-(51, 'bHideLatLon', '0', 'boolean', '0', 'Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.', 'General', NULL),
-(52, 'bUseDonationEnvelopes', '0', 'boolean', '0', 'Set true to enable use of donation envelopes', 'General', NULL),
-(53, 'sHeader', '', 'textarea', '', 'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.', 'General', NULL),
-(54, 'sISTusername', 'username', 'text', 'username', 'Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.intelligentsearch.com/Hosted/User', 'General', NULL),
-(55, 'sISTpassword', '', 'text', '', 'Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.intelligentsearch.com/Hosted/User', 'General', NULL),
-(56, 'bUseGoogleGeocode', '1', 'boolean', '1', 'Set true to use the Google geocoder.  Set false to use rpc.geocoder.us.', 'General', NULL),
-(57, 'iChecksPerDepositForm', '14', 'number', '14', 'Number of checks for Deposit Slip Report', 'General', NULL),
-(58, 'bUseScannedChecks', '0', 'boolean', '0', 'Set true to enable use of scanned checks', 'General', NULL),
-(61, 'iEventPeriodStartHr', '7', 'number', '7', 'Church Event Valid Period Start Hour (0-23)', 'General', NULL),
-(62, 'iEventPeriodEndHr', '18', 'number', '18', 'Church Event Valid Period End Hour (0-23, must be greater than iEventStartHr)', 'General', NULL),
-(63, 'iEventPeriodIntervalMin', '15', 'number', '15', 'Event Period interval (in minutes)', 'General', NULL),
-(64, 'sDistanceUnit', 'miles', 'text', 'miles', 'Unit used to measure distance, miles or km.', 'General', NULL),
-(65, 'sTimeZone', 'America/New_York', 'text', 'America/New_York', 'Time zone- see http://php.net/manual/en/timezones.php for valid choices.', 'General', NULL),
-(66, 'sGMapIcons', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'text', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'Names of markers for Google Maps in order of classification', 'General',NULL),
-(67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General', NULL),
-(2000, 'mailChimpApiKey', '', 'text', '', 'see http://kb.mailchimp.com/accounts/management/about-api-keys', 'General', NULL),
+INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`, `cfg_data`) VALUES
+(1, 'sWEBCALENDARDB', '', 'text', '', 'WebCalendar database name', 'General', NULL, NULL),
+(2, 'debug', '1', 'boolean', '1', 'Set debug mode\r\nThis may be helpful for when you''re first setting up ChurchCRM, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you''ll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.', 'General', NULL, NULL),
+(5, 'sDirClassifications', '1,2,4,5', 'text', '1,2,4,5', 'Include only these classifications in the directory, comma seperated', 'General', NULL, NULL),
+(6, 'sDirRoleHead', '1,7', 'text', '1,7', 'These are the family role numbers designated as head of house', 'General', NULL, NULL),
+(7, 'sDirRoleSpouse', '2', 'text', '2', 'These are the family role numbers designated as spouse', 'General', NULL, NULL),
+(8, 'sDirRoleChild', '3', 'text', '3', 'These are the family role numbers designated as child', 'General', NULL, NULL),
+(9, 'sSessionTimeout', '3600', 'number', '3600', 'Session timeout length in seconds\rSet to zero to disable session timeouts.', 'General', NULL, NULL),
+(10, 'aFinanceQueries', '28,30,31,32', 'text', '28', 'Queries for which user must have finance permissions to use:', 'General', NULL, NULL),
+(11, 'bCSVAdminOnly', '1', 'boolean', '1', 'Should only administrators have access to the CSV export system and directory report?', 'General', NULL, NULL),
+(12, 'sDefault_Pass', 'password', 'text', 'password', 'Default password for new users and those with reset passwords', 'General', NULL, NULL),
+(13, 'sMinPasswordLength', '6', 'number', '6', 'Minimum length a user may set their password to', 'General', NULL, NULL),
+(14, 'sMinPasswordChange', '4', 'number', '4', 'Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature', 'General', NULL, NULL),
+(15, 'sDisallowedPasswords', 'churchcrm,password,god,jesus,church,christian', 'text', 'churchcrm,password,god,jesus,church,christian', 'A comma-seperated list of disallowed (too obvious) passwords.', 'General', NULL, NULL),
+(16, 'iMaxFailedLogins', '50', 'number', '50', 'Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature.', 'General', NULL, NULL),
+(20, 'iPDFOutputType', '1', 'number', '1', 'PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window', 'General', NULL, NULL),
+(21, 'sDefaultCity', '', 'text', '', 'Default City', 'General', NULL, NULL),
+(22, 'sDefaultState', '', 'text', '', 'Default State - Must be 2-letter abbreviation!', 'General', NULL, NULL),
+(23, 'sDefaultCountry', 'United States', 'text', 'United States', 'Default Country', 'General', NULL, NULL),
+(24, 'bEmailSend', '', 'boolean', '', 'If you wish to be able to send emails from within ChurchCRM. This requires\reither an SMTP server address to send from or sendmail installed in PHP.', 'General', NULL, NULL),
+(25, 'sSendType', 'smtp', 'choice', 'smtp', 'The method for sending email. Either "smtp" or "sendmail"', 'General', NULL, '{"Choices":["smtp","SendMail"]}'),
+(26, 'sToEmailAddress', '', 'text', '', 'Default account for receiving a copy of all emails', 'General', NULL, NULL),
+(27, 'sSMTPHost', '', 'text', '', 'SMTP Server Address (mail.server.com:25)', 'General', NULL, NULL),
+(28, 'sSMTPAuth', '1', 'boolean', '1', 'Does your SMTP server require auththentication (username/password)?', 'General', NULL, NULL),
+(29, 'sSMTPUser', '', 'text', '', 'SMTP Username', 'General', NULL, NULL),
+(30, 'sSMTPPass', '', 'text', '', 'SMTP Password', 'General', NULL, NULL),
+(33, 'bShowFamilyData', '1', 'boolean', '1', 'Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person''s assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ', 'General', NULL, NULL),
+(36, 'sGZIPname', 'gzip', 'text', 'gzip', '', 'General', NULL, NULL),
+(37, 'sZIPname', 'zip', 'text', 'zip', '', 'General', NULL, NULL),
+(38, 'sPGPname', 'gpg', 'text', 'gpg', '', 'General', NULL, NULL),
+(39, 'sLanguage', 'en_US', 'choice', 'en_US', 'Internationalization (I18n) support\rUS English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)', 'General', NULL, '{"Choices":["en_US","de_DE","en_AU","en_GB","es_ES","fr_FR","hu_HU","it_IT","nb_NO","nl_NL","pl_PL","pt_BR","ro_RO","ru_RU","se_SE","sq_AL","sv_SE","zh_CN","zh_TW"]}'),
+(40, 'iFYMonth', '1', 'number', '1', 'First month of the fiscal year', 'General', NULL, NULL),
+(41, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General', NULL, NULL),
+(42, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General', NULL, NULL),
+(43, 'sGeocoderPW', '', 'text', '', 'Password for rpc.geocoder.us', 'General', NULL, NULL),
+(44, 'sGoogleMapKey', '', 'text', '', 'Google map API requires a unique key from https://developers.google.com/maps/documentation/javascript/get-api-key', 'General', NULL, NULL),
+(45, 'nChurchLatitude', '', 'number', '', 'Latitude of the church, used to center the Google map', 'General', NULL, NULL),
+(46, 'nChurchLongitude', '', 'number', '', 'Longitude of the church, used to center the Google map', 'General', NULL, NULL),
+(47, 'bHidePersonAddress', '1', 'boolean', '1', 'Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.', 'General', NULL, NULL),
+(48, 'bHideFriendDate', '0', 'boolean', '0', 'Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.', 'General', NULL, NULL),
+(49, 'bHideFamilyNewsletter', '0', 'boolean', '0', 'Set true to disable management of newsletter subscriptions in the Family Editor.', 'General', NULL, NULL),
+(50, 'bHideWeddingDate', '0', 'boolean', '0', 'Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.', 'General', NULL, NULL),
+(51, 'bHideLatLon', '0', 'boolean', '0', 'Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.', 'General', NULL, NULL),
+(52, 'bUseDonationEnvelopes', '0', 'boolean', '0', 'Set true to enable use of donation envelopes', 'General', NULL, NULL),
+(53, 'sHeader', '', 'textarea', '', 'Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.', 'General', NULL, NULL),
+(54, 'sISTusername', 'username', 'text', 'username', 'Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.intelligentsearch.com/Hosted/User', 'General', NULL, NULL),
+(55, 'sISTpassword', '', 'text', '', 'Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.intelligentsearch.com/Hosted/User', 'General', NULL, NULL),
+(56, 'bUseGoogleGeocode', '1', 'boolean', '1', 'Set true to use the Google geocoder.  Set false to use rpc.geocoder.us.', 'General', NULL, NULL),
+(57, 'iChecksPerDepositForm', '14', 'number', '14', 'Number of checks for Deposit Slip Report', 'General', NULL, NULL),
+(58, 'bUseScannedChecks', '0', 'boolean', '0', 'Set true to enable use of scanned checks', 'General', NULL, NULL),
+(61, 'iEventPeriodStartHr', '7', 'number', '7', 'Church Event Valid Period Start Hour (0-23)', 'General', NULL, NULL),
+(62, 'iEventPeriodEndHr', '18', 'number', '18', 'Church Event Valid Period End Hour (0-23, must be greater than iEventStartHr)', 'General', NULL, NULL),
+(63, 'iEventPeriodIntervalMin', '15', 'number', '15', 'Event Period interval (in minutes)', 'General', NULL, NULL),
+(64, 'sDistanceUnit', 'miles', 'choice', 'miles', 'Unit used to measure distance, miles or km.', 'General', NULL, '{"Choices":["miles","kilometers"]}'),
+(65, 'sTimeZone', 'America/New_York', 'text', 'America/New_York', 'Time zone- see http://php.net/manual/en/timezones.php for valid choices.', 'General', NULL, NULL),
+(66, 'sGMapIcons', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'text', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'Names of markers for Google Maps in order of classification', 'General', NULL, NULL),
+(67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General', NULL, NULL),
+(2000, 'mailChimpApiKey', '', 'text', '', 'see http://kb.mailchimp.com/accounts/management/about-api-keys', 'General', NULL, NULL),
 
 
 -- Save 68, 69 for MRBS if installed
 -- Save 70, 71 for WebCalendar if installed
-(72, 'bEnableNonDeductible', '0', 'boolean', '0', 'Enable non-deductible payments', 'General', NULL),
-(73, 'sElectronicTransactionProcessor', 'Vanco', 'text', 'Vanco', 'Electronic Transaction Processor', 'General', NULL),
-(999, 'bRegistered', '0', 'boolean', '0', 'ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General', NULL),
-(1001, 'leftX', '20', 'number', '20', 'Left Margin (1 = 1/100th inch)', 'ChurchInfoReport', NULL),
-(1002, 'incrementY', '4', 'number', '4', 'Line Thickness (1 = 1/100th inch', 'ChurchInfoReport', NULL),
-(1003, 'sChurchName', 'Some Church', 'text', '', 'Church Name', 'ChurchInfoReport', NULL),
-(1004, 'sChurchAddress', '', 'text', '', 'Church Address', 'ChurchInfoReport', NULL),
-(1005, 'sChurchCity', '', 'text', '', 'Church City', 'ChurchInfoReport', NULL),
-(1006, 'sChurchState', '', 'text', '', 'Church State', 'ChurchInfoReport', NULL),
-(1007, 'sChurchZip', '', 'text', '', 'Church Zip', 'ChurchInfoReport', NULL),
-(1008, 'sChurchPhone', '', 'text', '', 'Church Phone', 'ChurchInfoReport', NULL),
-(1009, 'sChurchEmail', '', 'text', '', 'Church Email', 'ChurchInfoReport', NULL),
-(1010, 'sHomeAreaCode', '', 'text', '', 'Home area code of the church', 'ChurchInfoReport', NULL),
-(1011, 'sTaxReport1', 'This letter shows our record of your payments for', 'text', 'This letter shows our record of your payments for', 'Verbage for top line of tax report. Dates will be appended to the end of this line.', 'ChurchInfoReport', NULL),
-(1012, 'sTaxReport2', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
-(1013, 'sTaxReport3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
-(1014, 'sTaxSigner', 'Elder Joe Smith', 'text', '', 'Tax Report signer', 'ChurchInfoReport', NULL),
-(1015, 'sReminder1', 'This letter shows our record of your pledge and payments for fiscal year', 'text', 'This letter shows our record of your pledge and payments for fiscal year', 'Verbage for the pledge reminder report', 'ChurchInfoReport', NULL),
-(1016, 'sReminderSigner', 'Elder Joe Smith', 'text', '', 'Pledge Reminder Signer', 'ChurchInfoReport', NULL),
-(1017, 'sReminderNoPledge', 'Pledges: We do not have record of a pledge for from you for this fiscal year.', 'text', 'Pledges: We do not have record of a pledge for from you for this fiscal year.', 'Verbage for the pledge reminder report - No record of a pledge', 'ChurchInfoReport', NULL),
-(1018, 'sReminderNoPayments', 'Payments: We do not have record of a pledge for from you for this fiscal year.', 'text', 'Payments: We do not have record of a pledge for from you for this fiscal year.', 'Verbage for the pledge reminder report - No record of payments', 'ChurchInfoReport', NULL),
-(1019, 'sConfirm1', 'This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.', 'text', 'This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport', NULL),
-(1020, 'sConfirm2', 'Thank you very much for helping us to update this information.  If you want on-line access to the church database please provide your email address and a desired password and we will send instructions.', 'text', 'Thank you very much for helping us to update this information.  If you want on-line access to the church database please provide your email address and a desired password and we will send instructions.', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport', NULL),
-(1021, 'sConfirm3', 'Email _____________________________________ Password ________________', 'text', 'Email _____________________________________ Password ________________', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport', NULL),
-(1022, 'sConfirm4', '[  ] I no longer want to be associated with the church (check here to be removed from our records).', 'text', '[  ] I no longer want to be associated with the church (check here to be removed from our records).', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport', NULL),
-(1023, 'sConfirm5', '', 'text', '', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport', NULL),
-(1024, 'sConfirm6', '', 'text', '', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport', NULL),
-(1025, 'sConfirmSigner', 'Elder Joe Smith', 'text', '', 'Database information confirmation and correction report signer', 'ChurchInfoReport', NULL),
-(1026, 'sPledgeSummary1', 'Summary of pledges and payments for the fiscal year', 'text', 'Summary of pledges and payments for the fiscal year', 'Verbage for the pledge summary report', 'ChurchInfoReport', NULL),
-(1027, 'sPledgeSummary2', 'as of', 'text', ' as of', 'Verbage for the pledge summary report', 'ChurchInfoReport', NULL),
-(1028, 'sDirectoryDisclaimer1', 'Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of', 'text', 'Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of', 'Verbage for the directory report', 'ChurchInfoReport', NULL),
-(1029, 'sDirectoryDisclaimer2', ', and the information contained in it may not be used for business or commercial purposes.', 'text', ', and the information contained in it may not be used for business or commercial purposes.', 'Verbage for the directory report', 'ChurchInfoReport', NULL),
-(1030, 'bDirLetterHead', '../Images/church_letterhead.jpg', 'text', '../Images/church_letterhead.jpg', 'Church Letterhead path and file', 'ChurchInfoReport', NULL),
-(1031, 'sZeroGivers', 'This letter shows our record of your payments for', 'text', 'This letter shows our record of your payments for', 'Verbage for top line of tax report. Dates will be appended to the end of this line.', 'ChurchInfoReport', NULL),
-(1032, 'sZeroGivers2', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
-(1033, 'sZeroGivers3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL),
-(1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'ChurchInfoReport', NULL),
-(1035, 'sEnableGravatarPhotos', '0', 'boolean', '0', 'lookup user images on Gravatar when no local image is present', 'General', NULL),
-(1036, 'sEnableExternalBackupTarget', '0', 'boolean', '0', 'Enable Remote Backups to Cloud Services', 'General', "Step5"),
-(1037, 'sExternalBackupType', 'WebDAV', 'Text', '', 'Cloud Service Type (Supported values: WebDAV, Local)', 'General', "Step5"),
-(1038, 'sExternalBackupEndpoint', '', 'Text', '', 'Remote Backup Endpoint', 'General', "Step5"),
-(1039, 'sExternalBackupUsername', '', 'Text', '', 'Remote Backup Username', 'General', "Step5"),
-(1040, 'sExternalBackupPassword', '', 'Text', '', 'Remote Backup Password', 'General', "Step5"),
-(1041, 'sExternalBackupAutoInterval', '', 'Text', '', 'Interval in Hours for Automatic Remote Backups', 'General', "Step5"),
-(1042, 'sLastBackupTimeStamp', '', 'Text', '', 'Last Backup Timestamp', 'General', "Step5"),
-(1043, 'sQBDTSettings', @JSONV , 'json', @JSONV , 'QuickBooks Deposit Ticket Settings', 'ChurchInfoReport', 'Step7');
+(72, 'bEnableNonDeductible', '0', 'boolean', '0', 'Enable non-deductible payments', 'General', NULL, NULL),
+(73, 'sElectronicTransactionProcessor', 'Vanco', 'choice', 'Vanco', 'Electronic Transaction Processor', 'General', NULL, '{"Choices":["Vanco","Authorize.NET"]}'),
+(999, 'bRegistered', '0', 'boolean', '0', 'ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General', NULL, NULL),
+(1001, 'leftX', '20', 'number', '20', 'Left Margin (1 = 1/100th inch)', 'ChurchInfoReport', NULL, NULL),
+(1002, 'incrementY', '4', 'number', '4', 'Line Thickness (1 = 1/100th inch', 'ChurchInfoReport', NULL, NULL),
+(1003, 'sChurchName', 'Some Church', 'text', '', 'Church Name', 'ChurchInfoReport', NULL, NULL),
+(1004, 'sChurchAddress', '', 'text', '', 'Church Address', 'ChurchInfoReport', NULL, NULL),
+(1005, 'sChurchCity', '', 'text', '', 'Church City', 'ChurchInfoReport', NULL, NULL),
+(1006, 'sChurchState', '', 'text', '', 'Church State', 'ChurchInfoReport', NULL, NULL),
+(1007, 'sChurchZip', '', 'text', '', 'Church Zip', 'ChurchInfoReport', NULL, NULL),
+(1008, 'sChurchPhone', '', 'text', '', 'Church Phone', 'ChurchInfoReport', NULL, NULL),
+(1009, 'sChurchEmail', '', 'text', '', 'Church Email', 'ChurchInfoReport', NULL, NULL),
+(1010, 'sHomeAreaCode', '', 'text', '', 'Home area code of the church', 'ChurchInfoReport', NULL, NULL),
+(1011, 'sTaxReport1', 'This letter shows our record of your payments for', 'text', 'This letter shows our record of your payments for', 'Verbage for top line of tax report. Dates will be appended to the end of this line.', 'ChurchInfoReport', NULL, NULL),
+(1012, 'sTaxReport2', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL, NULL),
+(1013, 'sTaxReport3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL, NULL),
+(1014, 'sTaxSigner', 'Elder Joe Smith', 'text', '', 'Tax Report signer', 'ChurchInfoReport', NULL, NULL),
+(1015, 'sReminder1', 'This letter shows our record of your pledge and payments for fiscal year', 'text', 'This letter shows our record of your pledge and payments for fiscal year', 'Verbage for the pledge reminder report', 'ChurchInfoReport', NULL, NULL),
+(1016, 'sReminderSigner', 'Elder Joe Smith', 'text', '', 'Pledge Reminder Signer', 'ChurchInfoReport', NULL, NULL),
+(1017, 'sReminderNoPledge', 'Pledges: We do not have record of a pledge for from you for this fiscal year.', 'text', 'Pledges: We do not have record of a pledge for from you for this fiscal year.', 'Verbage for the pledge reminder report - No record of a pledge', 'ChurchInfoReport', NULL, NULL),
+(1018, 'sReminderNoPayments', 'Payments: We do not have record of a pledge for from you for this fiscal year.', 'text', 'Payments: We do not have record of a pledge for from you for this fiscal year.', 'Verbage for the pledge reminder report - No record of payments', 'ChurchInfoReport', NULL, NULL),
+(1019, 'sConfirm1', 'This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.', 'text', 'This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport', NULL, NULL),
+(1020, 'sConfirm2', 'Thank you very much for helping us to update this information.  If you want on-line access to the church database please provide your email address and a desired password and we will send instructions.', 'text', 'Thank you very much for helping us to update this information.  If you want on-line access to the church database please provide your email address and a desired password and we will send instructions.', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport', NULL, NULL),
+(1021, 'sConfirm3', 'Email _____________________________________ Password ________________', 'text', 'Email _____________________________________ Password ________________', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport', NULL, NULL),
+(1022, 'sConfirm4', '[  ] I no longer want to be associated with the church (check here to be removed from our records).', 'text', '[  ] I no longer want to be associated with the church (check here to be removed from our records).', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport', NULL, NULL),
+(1023, 'sConfirm5', '', 'text', '', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport', NULL, NULL),
+(1024, 'sConfirm6', '', 'text', '', 'Verbage for the database information confirmation and correction report', 'ChurchInfoReport', NULL, NULL),
+(1025, 'sConfirmSigner', 'Elder Joe Smith', 'text', '', 'Database information confirmation and correction report signer', 'ChurchInfoReport', NULL, NULL),
+(1026, 'sPledgeSummary1', 'Summary of pledges and payments for the fiscal year', 'text', 'Summary of pledges and payments for the fiscal year', 'Verbage for the pledge summary report', 'ChurchInfoReport', NULL, NULL),
+(1027, 'sPledgeSummary2', 'as of', 'text', ' as of', 'Verbage for the pledge summary report', 'ChurchInfoReport', NULL, NULL),
+(1028, 'sDirectoryDisclaimer1', 'Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of', 'text', 'Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of', 'Verbage for the directory report', 'ChurchInfoReport', NULL, NULL),
+(1029, 'sDirectoryDisclaimer2', ', and the information contained in it may not be used for business or commercial purposes.', 'text', ', and the information contained in it may not be used for business or commercial purposes.', 'Verbage for the directory report', 'ChurchInfoReport', NULL, NULL),
+(1030, 'bDirLetterHead', '../Images/church_letterhead.jpg', 'text', '../Images/church_letterhead.jpg', 'Church Letterhead path and file', 'ChurchInfoReport', NULL, NULL),
+(1031, 'sZeroGivers', 'This letter shows our record of your payments for', 'text', 'This letter shows our record of your payments for', 'Verbage for top line of tax report. Dates will be appended to the end of this line.', 'ChurchInfoReport', NULL, NULL),
+(1032, 'sZeroGivers2', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL, NULL),
+(1033, 'sZeroGivers3', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', 'Verbage for bottom line of tax report.', 'ChurchInfoReport', NULL, NULL),
+(1034, 'sChurchChkAcctNum', '111111111', 'text', '', 'Church Checking Account Number', 'ChurchInfoReport', NULL, NULL),
+(1035, 'sEnableGravatarPhotos', '0', 'boolean', '0', 'lookup user images on Gravatar when no local image is present', 'General', NULL, NULL),
+(1036, 'sEnableExternalBackupTarget', '0', 'boolean', '0', 'Enable Remote Backups to Cloud Services', 'General', "Step5", NULL),
+(1037, 'sExternalBackupType', 'WebDAV', 'choice', '', 'Cloud Service Type (Supported values: WebDAV, Local)', 'General', "Step5", '{"Choices":["WebDAV","Local"]}'),
+(1038, 'sExternalBackupEndpoint', '', 'Text', '', 'Remote Backup Endpoint', 'General', "Step5", NULL),
+(1039, 'sExternalBackupUsername', '', 'Text', '', 'Remote Backup Username', 'General', "Step5", NULL),
+(1040, 'sExternalBackupPassword', '', 'Text', '', 'Remote Backup Password', 'General', "Step5", NULL),
+(1041, 'sExternalBackupAutoInterval', '', 'Text', '', 'Interval in Hours for Automatic Remote Backups', 'General', "Step5", NULL),
+(1042, 'sLastBackupTimeStamp', '', 'Text', '', 'Last Backup Timestamp', 'General', "Step5", NULL),
+(1043, 'sQBDTSettings', @JSONV , 'json', @JSONV , 'QuickBooks Deposit Ticket Settings', 'ChurchInfoReport', 'Step7', NULL);
 
-ALTER TABLE `config_cfg`
-ADD COLUMN `cfg_order` INT NULL COMMENT '' AFTER `cfg_category`;
-
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='0' WHERE `cfg_id`='1003';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='1' WHERE `cfg_id`='1004';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='2' WHERE `cfg_id`='1005';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='3' WHERE `cfg_id`='1006';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='4' WHERE `cfg_id`='1007';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='5' WHERE `cfg_id`='1008';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='7' WHERE `cfg_id`='1009';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='6' WHERE `cfg_id`='1010';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='8' WHERE `cfg_id`='65';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='9' WHERE `cfg_id`='45';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='10' WHERE `cfg_id`='46';
-
-UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='0' WHERE `cfg_id`='12';
-UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='1' WHERE `cfg_id`='13';
-UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='3' WHERE `cfg_id`='14';
-UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='4' WHERE `cfg_id`='16';
-UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='5' WHERE `cfg_id`='9';
-UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='6' WHERE `cfg_id`='15';
-
-UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='1' WHERE `cfg_id`='25';
-UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='2' WHERE `cfg_id`='27';
-UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='3' WHERE `cfg_id`='28';
-UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='4' WHERE `cfg_id`='29';
-UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='5' WHERE `cfg_id`='30';
-UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='7' WHERE `cfg_id`='31';
-UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='0' WHERE `cfg_id`='24';
-UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='6' WHERE `cfg_id`='26';
-UPDATE `config_cfg` SET `cfg_category`='Step3', `cfg_order`='8' WHERE `cfg_id`='2000';
-
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='0' WHERE `cfg_id`='5';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='1' WHERE `cfg_id`='6';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='2' WHERE `cfg_id`='7';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='3' WHERE `cfg_id`='8';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='4' WHERE `cfg_id`='21';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='5' WHERE `cfg_id`='22';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='6' WHERE `cfg_id`='23';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='7' WHERE `cfg_id`='33';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='8' WHERE `cfg_id`='47';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='9' WHERE `cfg_id`='48';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='10' WHERE `cfg_id`='49';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='11' WHERE `cfg_id`='50';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='12' WHERE `cfg_id`='51';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='13' WHERE `cfg_id`='67';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='15' WHERE `cfg_id`='19';
-UPDATE `config_cfg` SET `cfg_category`='Step4', `cfg_order`='16' WHERE `cfg_id`='1035';
-
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='0' WHERE `cfg_id`='2';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='1' WHERE `cfg_id`='35';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='2' WHERE `cfg_id`='999';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='3' WHERE `cfg_id`='39';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='4' WHERE `cfg_id`='4';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='5' WHERE `cfg_id`='41';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='6' WHERE `cfg_id`='36';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='7' WHERE `cfg_id`='37';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='8' WHERE `cfg_id`='38';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='9' WHERE `cfg_id`='34';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='10' WHERE `cfg_id`='64';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='11' WHERE `cfg_id`='11';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='12' WHERE `cfg_id`='1';
-UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='13' WHERE `cfg_id`='53';
-
-UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='0' WHERE `cfg_id`='44';
-UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='1' WHERE `cfg_id`='56';
-UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='2' WHERE `cfg_id`='66';
-UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='3' WHERE `cfg_id`='54';
-UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='4' WHERE `cfg_id`='55';
-UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='5' WHERE `cfg_id`='42';
-UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='6' WHERE `cfg_id`='43';
-
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='0' WHERE `cfg_id`='1001';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='1' WHERE `cfg_id`='1002';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='2' WHERE `cfg_id`='1011';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='3' WHERE `cfg_id`='1012';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='4' WHERE `cfg_id`='1013';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='5' WHERE `cfg_id`='1014';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='6' WHERE `cfg_id`='1015';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='7' WHERE `cfg_id`='1016';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='8' WHERE `cfg_id`='1017';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='9' WHERE `cfg_id`='1018';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='10' WHERE `cfg_id`='1019';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='11' WHERE `cfg_id`='1020';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='12' WHERE `cfg_id`='1021';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='13' WHERE `cfg_id`='1022';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='14' WHERE `cfg_id`='1023';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='15' WHERE `cfg_id`='1024';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='16' WHERE `cfg_id`='1025';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='17' WHERE `cfg_id`='1026';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='18' WHERE `cfg_id`='1027';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='19' WHERE `cfg_id`='1028';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='20' WHERE `cfg_id`='1029';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='21' WHERE `cfg_id`='1030';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='22' WHERE `cfg_id`='1031';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='23' WHERE `cfg_id`='1032';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='24' WHERE `cfg_id`='1033';
-UPDATE `config_cfg` SET `cfg_category`='Step7', `cfg_order`='25' WHERE `cfg_id`='1034';
-
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='0' WHERE `cfg_id`='20';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='1' WHERE `cfg_id`='40';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='2' WHERE `cfg_id`='52';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='3' WHERE `cfg_id`='57';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='4' WHERE `cfg_id`='58';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='5' WHERE `cfg_id`='73';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='6' WHERE `cfg_id`='61';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='7' WHERE `cfg_id`='62';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='8' WHERE `cfg_id`='63';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='9' WHERE `cfg_id`='72';
-UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='10' WHERE `cfg_id`='10';
-
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1011';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1012';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1013';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1015';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1017';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1018';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1019';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1020';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1021';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1022';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1023';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1024';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1026';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1027';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1028';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1029';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1031';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1032';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1033';
 -- --------------------------------------------------------
 
 --

@@ -40,7 +40,8 @@
     "driftyco/ionicons": "2.0.1",
     "components/font-awesome": "4.6.3",
     "propel/propel": "~2.0@dev",
-    "setasign/fpdf": "1.8.1"
+    "setasign/fpdf": "1.8.1",
+    "phpmailer/phpmailer": "5.2.*"
   },
   "autoload": {
     "classmap": [
