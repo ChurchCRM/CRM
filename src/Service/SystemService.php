@@ -377,8 +377,4 @@ class SystemService
     }
   }
 
-  function getConfig($configName) {
-    return ConfigQuery::create()->filterByName($configName)->findOne();
-  }
-
 }
