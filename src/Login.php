@@ -35,6 +35,7 @@ require 'Include/Functions.php';
 // Initialize the variables
 
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\ConfigQuery;
 
 $systemService = new SystemService();
 
