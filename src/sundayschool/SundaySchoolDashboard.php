@@ -237,9 +237,12 @@ require "../Include/Header.php";
       {
         $.ajax({
           method: "POST",
-          url: window.CRM.root + "/api/groups/sundayschool/"+name
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
+          url: window.CRM.root + "/api/groups/sundayschool/"+encodeURI(name)
         }).done(function (data) {                               //yippie, we got something good back from the server
-          location.reload();
+          ssClass = JSON.parse(data);
+          window.location.href = window.CRM.root + "/sundayschool/SundaySchoolClassView.php?groupId="+ ssClass["Id"];
         });
       }
       else {
