@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-13 05:11+0000\n"
+"POT-Creation-Date: 2016-10-02 15:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,12 +133,12 @@ msgid "Last name"
 msgstr ""
 
 #: AutoPaymentEditor.php:672 Reports/ConfirmReport.php:128
-#: Reports/ConfirmReportEmail.php:155
+#: Reports/ConfirmReportEmail.php:148
 msgid "Address 1"
 msgstr ""
 
 #: AutoPaymentEditor.php:677 Reports/ConfirmReport.php:132
-#: Reports/ConfirmReportEmail.php:159
+#: Reports/ConfirmReportEmail.php:152
 msgid "Address 2"
 msgstr ""
 
@@ -171,7 +171,7 @@ msgstr ""
 #: EventAttendance.php:203 FamilyView.php:291 FamilyView.php:839
 #: GroupReports.php:136 PersonView.php:393 Reports/CanvassReports.php:250
 #: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:206
-#: Reports/ConfirmReportEmail.php:217 Reports/ConfirmReportEmail.php:237
+#: Reports/ConfirmReportEmail.php:210 Reports/ConfirmReportEmail.php:230
 #: Reports/DirectoryReport.php:301 Reports/GroupReport.php:138
 #: Reports/PDF_Directory.php:306 Reports/PDF_Directory.php:386
 #: Reports/PDF_Directory.php:449 sundayschool/SundaySchoolClassView.php:82
@@ -1398,7 +1398,7 @@ msgstr ""
 
 #: DirectoryReports.php:176 FamilyView.php:290 PersonView.php:392
 #: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:207
-#: Reports/ConfirmReportEmail.php:218 Reports/ConfirmReportEmail.php:238
+#: Reports/ConfirmReportEmail.php:211 Reports/ConfirmReportEmail.php:231
 msgid "Birthday"
 msgstr ""
 
@@ -1588,13 +1588,13 @@ msgstr ""
 
 #: DonationFundEditor.php:234 EventEditor.php:576 EventNames.php:246
 #: FamilyCustomFieldsEditor.php:435 GroupPropsFormEditor.php:386
-#: OptionManager.php:370 PersonCustomFieldsEditor.php:392
+#: OptionManager.php:371 PersonCustomFieldsEditor.php:392
 #: VolunteerOpportunityEditor.php:420
 msgid "Save Changes"
 msgstr ""
 
 #: DonationFundEditor.php:250 FamilyCustomFieldsEditor.php:465
-#: GroupEditor.php:77 GroupPropsFormEditor.php:415 OptionManager.php:385
+#: GroupEditor.php:77 GroupPropsFormEditor.php:415 OptionManager.php:386
 #: PersonCustomFieldsEditor.php:426 PropertyEditor.php:164
 #: PropertyTypeEditor.php:106 VolunteerOpportunityEditor.php:438
 msgid "Name:"
@@ -2737,23 +2737,23 @@ msgstr ""
 msgid "Add New Deposit: "
 msgstr ""
 
-#: FindDepositSlip.php:96
+#: FindDepositSlip.php:98
 msgid "Deposits: "
 msgstr ""
 
-#: FindDepositSlip.php:101
+#: FindDepositSlip.php:104
 msgid "Delete Selected Rows"
 msgstr ""
 
-#: FindDepositSlip.php:102
+#: FindDepositSlip.php:105
 msgid "Export Selected Rows (OFX)"
 msgstr ""
 
-#: FindDepositSlip.php:103 GroupView.php:494
+#: FindDepositSlip.php:106 GroupView.php:494
 msgid "Export Selected Rows (CSV)"
 msgstr ""
 
-#: FindDepositSlip.php:104
+#: FindDepositSlip.php:107
 msgid "Generate Deposit Split for Selected Rows (PDF)"
 msgstr ""
 
@@ -3704,24 +3704,24 @@ msgstr ""
 msgid "Make Default"
 msgstr ""
 
-#: OptionManager.php:374 OptionManager.php:376
+#: OptionManager.php:375 OptionManager.php:377
 #: VolunteerOpportunityEditor.php:422
 msgid "Exit"
 msgstr ""
 
-#: OptionManager.php:390
+#: OptionManager.php:391
 msgid "Add New"
 msgstr ""
 
-#: OptionManager.php:396
+#: OptionManager.php:397
 msgid "Error: You must enter a name."
 msgstr ""
 
-#: OptionManager.php:398
+#: OptionManager.php:399
 msgid "Error: A "
 msgstr ""
 
-#: OptionManager.php:398
+#: OptionManager.php:399
 msgid " by that name already exists."
 msgstr ""
 
@@ -4626,31 +4626,31 @@ msgstr ""
 msgid "Permission"
 msgstr ""
 
-#: Setup.php:135
+#: Setup.php:141
 msgid "DB Server Name:"
 msgstr ""
 
-#: Setup.php:140
+#: Setup.php:146
 msgid "DB Name:"
 msgstr ""
 
-#: Setup.php:144
+#: Setup.php:150
 msgid "DB User:"
 msgstr ""
 
-#: Setup.php:148
+#: Setup.php:154
 msgid "DB Password:"
 msgstr ""
 
-#: Setup.php:154
+#: Setup.php:160
 msgid "Root Path:"
 msgstr ""
 
-#: Setup.php:159
+#: Setup.php:165
 msgid "Base URL:"
 msgstr ""
 
-#: Setup.php:164
+#: Setup.php:170
 msgid "Setup"
 msgstr ""
 
@@ -5382,8 +5382,8 @@ msgid "Pledge status: "
 msgstr ""
 
 #: Reports/CanvassReports.php:245 Reports/ConfirmReport.php:184
-#: Reports/ConfirmReport.php:204 Reports/ConfirmReportEmail.php:215
-#: Reports/ConfirmReportEmail.php:235
+#: Reports/ConfirmReport.php:204 Reports/ConfirmReportEmail.php:208
+#: Reports/ConfirmReportEmail.php:228
 msgid "M/F"
 msgstr ""
 
@@ -5400,47 +5400,47 @@ msgstr ""
 msgid "Liaison"
 msgstr ""
 
-#: Reports/ConfirmReport.php:124 Reports/ConfirmReportEmail.php:151
+#: Reports/ConfirmReport.php:124 Reports/ConfirmReportEmail.php:144
 msgid "Family name"
 msgstr ""
 
-#: Reports/ConfirmReport.php:136 Reports/ConfirmReportEmail.php:163
+#: Reports/ConfirmReport.php:136 Reports/ConfirmReportEmail.php:156
 msgid "City, State, Zip"
 msgstr ""
 
-#: Reports/ConfirmReport.php:140 Reports/ConfirmReportEmail.php:167
+#: Reports/ConfirmReport.php:140 Reports/ConfirmReportEmail.php:160
 msgid "Home phone"
 msgstr ""
 
-#: Reports/ConfirmReport.php:144 Reports/ConfirmReportEmail.php:171
+#: Reports/ConfirmReport.php:144 Reports/ConfirmReportEmail.php:164
 msgid "Send Newsletter"
 msgstr ""
 
-#: Reports/ConfirmReport.php:153 Reports/ConfirmReportEmail.php:180
+#: Reports/ConfirmReport.php:153 Reports/ConfirmReportEmail.php:173
 msgid "Anniversary Date"
 msgstr ""
 
-#: Reports/ConfirmReport.php:159 Reports/ConfirmReportEmail.php:186
+#: Reports/ConfirmReport.php:159 Reports/ConfirmReportEmail.php:179
 msgid "Family E-Mail"
 msgstr ""
 
 #: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:203
-#: Reports/ConfirmReportEmail.php:214 Reports/ConfirmReportEmail.php:234
+#: Reports/ConfirmReportEmail.php:207 Reports/ConfirmReportEmail.php:227
 msgid "Member Name"
 msgstr ""
 
 #: Reports/ConfirmReport.php:185 Reports/ConfirmReport.php:205
-#: Reports/ConfirmReportEmail.php:216 Reports/ConfirmReportEmail.php:236
+#: Reports/ConfirmReportEmail.php:209 Reports/ConfirmReportEmail.php:229
 msgid "Adult/Child"
 msgstr ""
 
 #: Reports/ConfirmReport.php:189 Reports/ConfirmReport.php:209
-#: Reports/ConfirmReportEmail.php:219 Reports/ConfirmReportEmail.php:239
+#: Reports/ConfirmReportEmail.php:212 Reports/ConfirmReportEmail.php:232
 msgid "Cell phone"
 msgstr ""
 
 #: Reports/ConfirmReport.php:190 Reports/ConfirmReport.php:210
-#: Reports/ConfirmReportEmail.php:220 Reports/ConfirmReportEmail.php:240
+#: Reports/ConfirmReportEmail.php:213 Reports/ConfirmReportEmail.php:233
 msgid "Member/Friend"
 msgstr ""
 
