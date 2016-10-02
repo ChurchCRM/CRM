@@ -68,7 +68,7 @@ class Deposit extends BaseDeposit
 
     $OFXReturn->content .= "</STMTTRNRS></BANKTRANLIST></OFX>";
     // Export file
-    $OFXReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-Deposit-" . $depID . "-" . date("Ymd-Gis") . ".ofx";
+    $OFXReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-Deposit-" . $this->getId() . "-" . date("Ymd-Gis") . ".ofx";
     return $OFXReturn;
   }
   
