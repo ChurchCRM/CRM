@@ -1,15 +1,16 @@
 # Create a release
 
 ## Do a clean clone of the branch 
- * start the vagrant box (this will download all the 3rd party files)
+ * Start the vagrant box (this will download all the third party files)
  * ssh into the vagrant box
  * 'cd /vagrant'
  * 'composer install'
  * 'vendor/bin/phing' this will do the following
-   * regen messages.po based on the latest files
-   * build zip package
-   * generate the change log
-   * update the version #s to next version
+   * Regenerate messages.po based on the latest files
+   * Build zip package
+   * Generate the change log
+   * Update the version #s to next version
+
 
 ## Update the demo site
  * Git checkout the branch you want to push to demo site
@@ -26,32 +27,32 @@
    * reset the demo database
    * set the demo password to admin / george
 
-## check in translation file 
+## Check in translation file 
 
- * commit changes to messages.po 
- * push to master 
+ * Commit changes to messages.po 
+ * Push to master 
 
-##  Create a github release   
+##  Create a GitHub release   
 
 https://github.com/ChurchCRM/CRM/releases
 
  * Ensure you select the correct branch
  * Enter version # as the tag and subject 
- * point to the change log 
+ * Point to the change log 
  * Upload zip file
  * Publish the release 
 
 ## Update release notes 
- * 'vendor/bin/phing change-log' this will do genreate the logs after the tags are created
- * commit changes to CHANGELOG.md
- * Update git release to point to version in change log
+ * 'vendor/bin/phing change-log' this will generate the logs after the tags are created
+ * Commit changes to CHANGELOG.md
+ * Update git release so it points to the latest version in the change log
 
 ## Update milestones
 
 https://github.com/ChurchCRM/CRM/milestones
 
  * Close version milestone 
- * create next version milestone 
+ * Create next version milestone 
  
 ## Merge into develop 
  * Create PR
@@ -59,7 +60,7 @@ https://github.com/ChurchCRM/CRM/milestones
    
 ## Rev to the next version 
  * Update app version in build.xml
- * create new version  db scripts 
+ * Create new version  db scripts 
  
  
   
