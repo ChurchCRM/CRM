@@ -72,20 +72,13 @@ $tablecheck = mysql_num_rows(mysql_query($sql));
 
 if (!$tablecheck) {
   $systemService = new SystemService();
+  $setupQueries = dirname(__file__). '/../mysql/install/Install.sql';
+  $systemService->playbackSQLtoDatabase($setupQueries);
+  $configQueries = dirname(__file__). '/../mysql/upgrade/update_config.sql';
+  $systemService->playbackSQLtoDatabase($configQueries);
   $version = new Version();
   $version->setVersion($systemService->getInstalledVersion());
   $version->setUpdateStart(new DateTime());
-  $query = '';
-  $restoreQueries = file(dirname(__file__) . '/../mysql/install/Install.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-  foreach ($restoreQueries as $line) {
-    if ($line != '' && strpos($line, '--') === false) {
-      $query .= " $line";
-      if (substr($query, -1) == ';') {
-        mysql_query($query);
-        $query = '';
-      }
-    }
-  }
   $version->setUpdateEnd(new DateTime());
   $version->save();
 }

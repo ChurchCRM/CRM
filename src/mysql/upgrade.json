@@ -58,7 +58,11 @@
   "pre-2.3.0" : {
     "versions": [
       "2.2.0",
-      "2.2.1"
+      "2.2.1",
+      "2.2.2"
+    ],
+    "scripts": [
+      "/mysql/upgrade/2.3.0.sql"
     ],
     "dbVersion": "2.3.0"
   }

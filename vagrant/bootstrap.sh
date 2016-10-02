@@ -7,6 +7,7 @@ DB_PASS="root"
 DB_HOST="localhost"
 
 CRM_DB_INSTALL_SCRIPT="/vagrant/src/mysql/install/Install.sql"
+CRM_DB_INSTALL_SCRIPT2="/vagrant/src/mysql/upgrade/update_config.sql"
 CRM_DB_VAGRANT_SCRIPT="/vagrant/vagrant/vagrant.sql"
 CRM_DB_USER="churchcrm"
 CRM_DB_PASS="churchcrm"
@@ -54,6 +55,7 @@ sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "FLUSH PRIVILEGES;"
 echo "Database: user created with needed PRIVILEGES"
 
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT
+sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT2
 
 echo "Database: tables and metadata deployed"
 
