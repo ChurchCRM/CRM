@@ -1,12 +1,49 @@
 # Change Log
 
-## [2.2.1](https://github.com/ChurchCRM/CRM/tree/2.2.1) (2016-09-30)
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0...2.2.1)
+## [2.2.2](https://github.com/ChurchCRM/CRM/tree/2.2.2) (2016-10-02)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.1...2.2.2)
 
 **Implemented enhancements:**
 
-- Add people to cart takes a lot of clocking [\#413](https://github.com/ChurchCRM/CRM/issues/413)
-- General Settings: Time Zone Dropdown [\#208](https://github.com/ChurchCRM/CRM/issues/208)
+- New Member to SundaySchool Class [\#703](https://github.com/ChurchCRM/CRM/issues/703)
+- Switch PDF creation to html2pdf  [\#220](https://github.com/ChurchCRM/CRM/issues/220)
+- timerjobs mvp [\#1079](https://github.com/ChurchCRM/CRM/pull/1079) ([crossan007](https://github.com/crossan007))
+- Cleanup Config Menus [\#1049](https://github.com/ChurchCRM/CRM/pull/1049) ([crossan007](https://github.com/crossan007))
+
+**Fixed bugs:**
+
+- remove all mysql\_ [\#922](https://github.com/ChurchCRM/CRM/issues/922)
+- AdminLTE 2 containers allow overflow [\#138](https://github.com/ChurchCRM/CRM/issues/138)
+- Tax Report- Wrong Fiscal Year  [\#90](https://github.com/ChurchCRM/CRM/issues/90)
+- Error during email export [\#1072](https://github.com/ChurchCRM/CRM/issues/1072)
+- Backup Database: tar.gz \(Include Photos\)  [\#1067](https://github.com/ChurchCRM/CRM/issues/1067)
+- System settings Input fields are larger than page on mobile [\#925](https://github.com/ChurchCRM/CRM/issues/925)
+- Mobile rendering [\#860](https://github.com/ChurchCRM/CRM/issues/860)
+- Map cart mobile [\#754](https://github.com/ChurchCRM/CRM/issues/754)
+- Tablet Testing Needed [\#285](https://github.com/ChurchCRM/CRM/issues/285)
+- fix fy month from \#90 [\#1080](https://github.com/ChurchCRM/CRM/pull/1080) ([crossan007](https://github.com/crossan007))
+- fix backups [\#1077](https://github.com/ChurchCRM/CRM/pull/1077) ([crossan007](https://github.com/crossan007))
+- fixes \#750 [\#1076](https://github.com/ChurchCRM/CRM/pull/1076) ([crossan007](https://github.com/crossan007))
+- Fix export emails [\#1073](https://github.com/ChurchCRM/CRM/pull/1073) ([DawoudIO](https://github.com/DawoudIO))
+- fixed namespace for exceptions  [\#1070](https://github.com/ChurchCRM/CRM/pull/1070) ([DawoudIO](https://github.com/DawoudIO))
+- Mobile rendering Cleanup [\#1068](https://github.com/ChurchCRM/CRM/pull/1068) ([DawoudIO](https://github.com/DawoudIO))
+
+**Closed issues:**
+
+- Build 2.2.1 returning blank [\#1071](https://github.com/ChurchCRM/CRM/issues/1071)
+- Create a Blog and FAQ for ChurchCRM [\#793](https://github.com/ChurchCRM/CRM/issues/793)
+- Guzzle 3 is deprecated [\#681](https://github.com/ChurchCRM/CRM/issues/681)
+- break church info fork relationship [\#562](https://github.com/ChurchCRM/CRM/issues/562)
+- Mobile Phone Testing Needed [\#284](https://github.com/ChurchCRM/CRM/issues/284)
+- Move to WebPack for CSS/JS file packages [\#271](https://github.com/ChurchCRM/CRM/issues/271)
+- Add deposit slip mobile rendering [\#750](https://github.com/ChurchCRM/CRM/issues/750)
+
+**Merged pull requests:**
+
+- Not Logged In Page cleanup [\#1081](https://github.com/ChurchCRM/CRM/pull/1081) ([DawoudIO](https://github.com/DawoudIO))
+
+## [2.2.1](https://github.com/ChurchCRM/CRM/tree/2.2.1) (2016-09-30)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0...2.2.1)
 
 **Fixed bugs:**
 
@@ -48,9 +85,10 @@
 - Add Service Classes to composer Auto Loader  [\#824](https://github.com/ChurchCRM/CRM/issues/824)
 - List All Church Events sort order [\#785](https://github.com/ChurchCRM/CRM/issues/785)
 - Import People does not add a note in the timeline [\#688](https://github.com/ChurchCRM/CRM/issues/688)
-- SundaySchool: Default Roles is Member [\#469](https://github.com/ChurchCRM/CRM/issues/469)
 - Calendar: Change Member Birthdays to API [\#466](https://github.com/ChurchCRM/CRM/issues/466)
+- Add people to cart takes a lot of clocking [\#413](https://github.com/ChurchCRM/CRM/issues/413)
 - Add delete button for Deposit slips [\#245](https://github.com/ChurchCRM/CRM/issues/245)
+- General Settings: Time Zone Dropdown [\#208](https://github.com/ChurchCRM/CRM/issues/208)
 - Copy / Move Members between groups [\#996](https://github.com/ChurchCRM/CRM/pull/996) ([crossan007](https://github.com/crossan007))
 - Person photo via api [\#991](https://github.com/ChurchCRM/CRM/pull/991) ([DawoudIO](https://github.com/DawoudIO))
 - removed the mySQL 4 check  [\#965](https://github.com/ChurchCRM/CRM/pull/965) ([DawoudIO](https://github.com/DawoudIO))
@@ -90,10 +128,11 @@
 - The Backup Database is not working [\#927](https://github.com/ChurchCRM/CRM/issues/927)
 - Fix Case Sensitive Path in LoadConfigs [\#923](https://github.com/ChurchCRM/CRM/issues/923)
 - Sunday School Dashboard not reporting all Sunday School Classes [\#858](https://github.com/ChurchCRM/CRM/issues/858)
+- Member Directory Photos [\#854](https://github.com/ChurchCRM/CRM/issues/854)
 - Search bar does not work on iOS [\#821](https://github.com/ChurchCRM/CRM/issues/821)
 - invalid gettext messages [\#805](https://github.com/ChurchCRM/CRM/issues/805)
 - Event: Active falg is backwards [\#786](https://github.com/ChurchCRM/CRM/issues/786)
-- SundaySchool: Default Roles is Member [\#469](https://github.com/ChurchCRM/CRM/issues/469)
+- Phone numbers are not links [\#751](https://github.com/ChurchCRM/CRM/issues/751)
 - Delete: Access report [\#166](https://github.com/ChurchCRM/CRM/issues/166)
 - Removed broken/unused getPhoto [\#1036](https://github.com/ChurchCRM/CRM/pull/1036) ([DawoudIO](https://github.com/DawoudIO))
 - Fix deposits...again [\#1030](https://github.com/ChurchCRM/CRM/pull/1030) ([crossan007](https://github.com/crossan007))
@@ -180,12 +219,14 @@
 
 **Implemented enhancements:**
 
+- SundaySchool: Default Roles is Member [\#469](https://github.com/ChurchCRM/CRM/issues/469)
 - Theme: Fund Raiser [\#187](https://github.com/ChurchCRM/CRM/issues/187)
 
 **Fixed bugs:**
 
 - Fix Sunday School Email [\#814](https://github.com/ChurchCRM/CRM/issues/814)
 - Nav: Groups : Edit Group Types is visible when it should not  [\#520](https://github.com/ChurchCRM/CRM/issues/520)
+- SundaySchool: Default Roles is Member [\#469](https://github.com/ChurchCRM/CRM/issues/469)
 
 **Closed issues:**
 
@@ -410,6 +451,7 @@
 
 **Fixed bugs:**
 
+- Person property editor does not render correctly on mobile [\#748](https://github.com/ChurchCRM/CRM/issues/748)
 - sEnableGravatarPhotos breaks some upgrades [\#744](https://github.com/ChurchCRM/CRM/issues/744)
 - Release Notice has invalid URL [\#720](https://github.com/ChurchCRM/CRM/issues/720)
 - Release Notice has invalid URL \#720 [\#772](https://github.com/ChurchCRM/CRM/pull/772) ([DawoudIO](https://github.com/DawoudIO))
