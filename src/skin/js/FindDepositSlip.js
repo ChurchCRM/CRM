@@ -42,10 +42,10 @@ $(document).ready(function() {
       url :window.CRM.root+"/api/deposits",
       dataSrc:"Deposits"
     },
+    responsive: true,
     "deferRender": true,
     columns: [
     {
-        width: 'auto',
         title:'Deposit ID',
         data:'Id',
         render: function  (data, type, full, meta ) {
@@ -61,7 +61,6 @@ $(document).ready(function() {
         type:'num'
     },
     {
-        width: 'auto',
         title:'Deposit Date',
         data:'Date',
         render: function  (data, type, full, meta ) {
@@ -77,19 +76,16 @@ $(document).ready(function() {
         searchable: true
     },
     {
-        width: 'auto',
         title:'Deposit Total',
         data:'totalAmount',
         searchable: false,
     },
     {
-        width: 'auto',
         title:'Deposit Comment',
         data:'Comment',
         searchable: true
     },
     {
-        width: 'auto',
         title:'Closed',
         data:'Closed',
         searchable: true,
@@ -98,7 +94,6 @@ $(document).ready(function() {
         }
     },
     {
-        width: 'auto',
         title:'Deposit Type',
         data:'Type',
         searchable: true
