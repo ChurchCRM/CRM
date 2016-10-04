@@ -14,6 +14,7 @@
 - Merge 2.2.0 final to Develop [\#1046](https://github.com/ChurchCRM/CRM/pull/1046) ([DawoudIO](https://github.com/DawoudIO))
 - Fix 2.2.1 upgrade [\#1043](https://github.com/ChurchCRM/CRM/pull/1043) ([crossan007](https://github.com/crossan007))
 
+
 ## [2.2.0](https://github.com/ChurchCRM/CRM/tree/2.2.0) (2016-09-17)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0-RC6...2.2.0)
 
@@ -25,9 +26,10 @@
 - Add Service Classes to composer Auto Loader  [\#824](https://github.com/ChurchCRM/CRM/issues/824)
 - List All Church Events sort order [\#785](https://github.com/ChurchCRM/CRM/issues/785)
 - Import People does not add a note in the timeline [\#688](https://github.com/ChurchCRM/CRM/issues/688)
-- SundaySchool: Default Roles is Member [\#469](https://github.com/ChurchCRM/CRM/issues/469)
 - Calendar: Change Member Birthdays to API [\#466](https://github.com/ChurchCRM/CRM/issues/466)
+- Add people to cart takes a lot of clocking [\#413](https://github.com/ChurchCRM/CRM/issues/413)
 - Add delete button for Deposit slips [\#245](https://github.com/ChurchCRM/CRM/issues/245)
+- General Settings: Time Zone Dropdown [\#208](https://github.com/ChurchCRM/CRM/issues/208)
 - Copy / Move Members between groups [\#996](https://github.com/ChurchCRM/CRM/pull/996) ([crossan007](https://github.com/crossan007))
 - Person photo via api [\#991](https://github.com/ChurchCRM/CRM/pull/991) ([DawoudIO](https://github.com/DawoudIO))
 - removed the mySQL 4 check  [\#965](https://github.com/ChurchCRM/CRM/pull/965) ([DawoudIO](https://github.com/DawoudIO))
@@ -67,10 +69,11 @@
 - The Backup Database is not working [\#927](https://github.com/ChurchCRM/CRM/issues/927)
 - Fix Case Sensitive Path in LoadConfigs [\#923](https://github.com/ChurchCRM/CRM/issues/923)
 - Sunday School Dashboard not reporting all Sunday School Classes [\#858](https://github.com/ChurchCRM/CRM/issues/858)
+- Member Directory Photos [\#854](https://github.com/ChurchCRM/CRM/issues/854)
 - Search bar does not work on iOS [\#821](https://github.com/ChurchCRM/CRM/issues/821)
 - invalid gettext messages [\#805](https://github.com/ChurchCRM/CRM/issues/805)
 - Event: Active falg is backwards [\#786](https://github.com/ChurchCRM/CRM/issues/786)
-- SundaySchool: Default Roles is Member [\#469](https://github.com/ChurchCRM/CRM/issues/469)
+- Phone numbers are not links [\#751](https://github.com/ChurchCRM/CRM/issues/751)
 - Delete: Access report [\#166](https://github.com/ChurchCRM/CRM/issues/166)
 - Removed broken/unused getPhoto [\#1036](https://github.com/ChurchCRM/CRM/pull/1036) ([DawoudIO](https://github.com/DawoudIO))
 - Fix deposits...again [\#1030](https://github.com/ChurchCRM/CRM/pull/1030) ([crossan007](https://github.com/crossan007))
@@ -146,7 +149,6 @@
 **Closed issues:**
 
 - Demo Data doesn't add sunday school groups correctly [\#1015](https://github.com/ChurchCRM/CRM/issues/1015)
-- Groups dashboard widget [\#746](https://github.com/ChurchCRM/CRM/issues/746)
 - Group Assignment [\#704](https://github.com/ChurchCRM/CRM/issues/704)
 
 **Merged pull requests:**
@@ -158,12 +160,14 @@
 
 **Implemented enhancements:**
 
+- SundaySchool: Default Roles is Member [\#469](https://github.com/ChurchCRM/CRM/issues/469)
 - Theme: Fund Raiser [\#187](https://github.com/ChurchCRM/CRM/issues/187)
 
 **Fixed bugs:**
 
 - Fix Sunday School Email [\#814](https://github.com/ChurchCRM/CRM/issues/814)
 - Nav: Groups : Edit Group Types is visible when it should not  [\#520](https://github.com/ChurchCRM/CRM/issues/520)
+- SundaySchool: Default Roles is Member [\#469](https://github.com/ChurchCRM/CRM/issues/469)
 
 **Closed issues:**
 
@@ -388,6 +392,7 @@
 
 **Fixed bugs:**
 
+- Person property editor does not render correctly on mobile [\#748](https://github.com/ChurchCRM/CRM/issues/748)
 - sEnableGravatarPhotos breaks some upgrades [\#744](https://github.com/ChurchCRM/CRM/issues/744)
 - Release Notice has invalid URL [\#720](https://github.com/ChurchCRM/CRM/issues/720)
 - Release Notice has invalid URL \#720 [\#772](https://github.com/ChurchCRM/CRM/pull/772) ([DawoudIO](https://github.com/DawoudIO))

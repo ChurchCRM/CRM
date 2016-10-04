@@ -51,7 +51,17 @@ $app->group('/deposits', function () {
 
   $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
     $id = $args['id'];
-    echo DepositQuery::create()->findOneById($id)->toCSV();
+    //echo DepositQuery::create()->findOneById($id)->toCSV();
+    header("Content-Disposition: attachment; filename=ChurchCRM-Deposit-" . $id . "-" . date("Ymd-Gis") . ".csv");
+    echo ChurchCRM\PledgeQuery::create()->filterByDepid($id)
+            ->joinDonationFund()->useDonationFundQuery()
+            ->withColumn("DonationFund.Name", "DonationFundName")
+            ->endUse()
+            ->joinFamily()->useFamilyQuery()
+            ->withColumn("Family.Name","FamilyName")
+            ->endUse()
+            ->find()
+            ->toCSV();
   });
 
   $this->delete('/{id:[0-9]+}', function ($request, $response, $args) {
