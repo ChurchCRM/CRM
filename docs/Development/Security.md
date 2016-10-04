@@ -1,7 +1,7 @@
 # Security
 
 ## User Accounts
-Any "Person" in ChurchCRM may be promoted to a "User."  By default "Persons" in ChurchCRM are not able to log into the system at all until an administrator provisions their user account.
+Any "Person" in ChurchCRM may be promoted to a "User."  By default, a "Person" in ChurchCRM is not allowed to log into the system until an administrator provisions them with a user account.
 
 ## Role Based Access Control
 ChurchCRM contains many roles to control access to your church's sensitive data:
