@@ -292,10 +292,10 @@ class FinancialService
         $iCheckNo = $micrObj->FindCheckNo($tScanString);
         return '{"ScanString": "' . $tScanString . '" , "RouteAndAccount": "' . $routeAndAccount . '" , "CheckNumber": "' . $iCheckNo . '" ,"fam_ID": "' . $fam_ID . '" , "fam_Name": "' . $fam_Name . '"}';
       } else {
-        throw new Exception("error in locating family");
+        throw new \Exception("error in locating family");
       }
     } else {
-      throw new Exception("Scanned Checks is disabled");
+      throw new \Exception("Scanned Checks is disabled");
     }
   }
 
@@ -462,7 +462,7 @@ class FinancialService
     if (strlen($payment->Date) > 0) {
       list($iYear, $iMonth, $iDay) = sscanf($payment->Date, "%04d-%02d-%02d");
       if (!checkdate($iMonth, $iDay, $iYear)) {
-        throw new Exception ("Invalid Date");
+        throw new \Exception("Invalid Date");
       }
     }
 
@@ -484,15 +484,15 @@ class FinancialService
         if ($GLOBALS['bEnableNonDeductible'] && isset($fund->NonDeductible)) {
           //Validate the NonDeductible Amount
           if ($fund->NonDeductible > $fund->Amount) { //Validate the NonDeductible Amount
-            throw new Exception (gettext("NonDeductible amount can't be greater than total amount."));
+            throw new \Exception (gettext("NonDeductible amount can't be greater than total amount."));
           }
         }
       } // end foreach
       if (!$nonZeroFundAmountEntered) {
-        throw new Exception (gettext("At least one fund must have a non-zero amount."));
+        throw new \Exception (gettext("At least one fund must have a non-zero amount."));
       }
     } else {
-      throw new Exception ("Must select a valid fund");
+      throw new \Exception ("Must select a valid fund");
     }
   }
 
@@ -513,15 +513,15 @@ class FinancialService
     //If the payment method is a check, then the check nubmer must be present, and it must not already have been used for this family
     //if the payment method is cash, there must not be a check number
     if ($payment->type == "Payment" and $payment->iMethod == "CHECK" and !isset($payment->iCheckNo)) {
-      throw new Exception (gettext("Must specify non-zero check number"));
+      throw new \Exception (gettext("Must specify non-zero check number"));
     }
     // detect check inconsistencies
     if ($payment->type == "Payment" and isset($payment->iCheckNo)) {
       if ($payment->iMethod == "CASH") {
-        throw new Exception (gettext("Check number not valid for 'CASH' payment"));
+        throw new \Exception (gettext("Check number not valid for 'CASH' payment"));
       } //build routine to make sure this check number hasn't been used by this family yet (look at group key)
       elseif ($payment->iMethod == 'CHECK' and $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
-        throw new Exception ("Check number '" . $payment->iCheckNo . "' for selected family already exists.");
+        throw new \Exception ("Check number '" . $payment->iCheckNo . "' for selected family already exists.");
       }
     }
 
@@ -876,7 +876,7 @@ class FinancialService
     $firstLine = true;
     $payments = $this->getPayments($depID);
     if (count($payments) == 0) {
-      throw new Exception("No Payments on this Deposit",404);
+      throw new \Exception("No Payments on this Deposit",404);
     }
     foreach ($payments[0] as $key => $value) {
       array_push($line, $key);

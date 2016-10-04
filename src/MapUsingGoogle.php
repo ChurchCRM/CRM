@@ -56,8 +56,8 @@ if ($nChurchLatitude == "") {
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= $sGoogleMapKey ?>&sensor=false"></script>
 
 <div class="box box-body">
-    <div class="col-lg-10 col-md-8 col-sm-4">
-        <div id="map" style="width: 800px; height: 600px; float:left;"></div>
+    <div class="col-lg-12">
+        <div id="map" class="col-lg-12" style="height: 400px;"></div>
         <script type="text/javascript">
             var mapOptions = {
                center: new google.maps.LatLng(<?= $nChurchLatitude . ", " . $nChurchLongitude ?>),
