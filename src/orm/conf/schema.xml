@@ -650,6 +650,9 @@
         <unique name="usr_UserName">
             <unique-column name="usr_UserName"/>
         </unique>
+        <foreign-key foreignTable="person_per">
+            <reference local="usr_per_ID" foreign="per_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>

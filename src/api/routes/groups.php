@@ -25,9 +25,13 @@ $app->group('/groups', function () {
   });
   
   $this->post('/', function ($request, $response, $args) {
-    $groupName = $request->getParsedBody()["groupName"];
+    $groupSettings = (object)$request->getParsedBody();
     $group = new Group();
-    $group->setName($groupName);
+    if($groupSettings->isSundaySchool)
+    {
+      $group->makeSundaySchool();
+    }
+    $group->setName($groupSettings->groupName);
     $group->save();
     echo $group->toJSON();
   });
@@ -172,5 +176,6 @@ $app->group('/groups', function () {
       echo json_encode(["status" => "group specific properties disabled"]);
     }
   });
+
 
 });

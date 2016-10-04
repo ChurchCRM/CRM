@@ -153,7 +153,7 @@ $rsConfigs = RunQuery($sSQL);
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="Step1">
-              <table class="table">
+              <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext("Variable name") ?></th>
                   <th width="400px">Value</th>
@@ -170,7 +170,7 @@ $rsConfigs = RunQuery($sSQL);
               </table>
             </div>
             <div class="tab-pane" id="<?= $step ?>">
-              <table class="table">
+              <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext("Variable name") ?></th>
                   <th width="400px">Current Value</th>

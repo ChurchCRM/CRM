@@ -6,9 +6,9 @@
 
 ## ChurchCRM Requirements?
 
-A PHP-compatible Web server (Apache is recommended)
-The MySQL database server (version 5.1 or higher)
-PHP (version 5.6 or higher)
+* A PHP-compatible Web server (Apache is recommended)
+* MySQL database server (version 5.1 or higher)
+* PHP (version 5.6 or higher)
 
 Certain PHP modules (sometimes referred to as extensions) must be enabled:
 'mysql' and 'gd' version 2 or higher.  On some platforms, you may need to
