@@ -46,7 +46,7 @@ require "../Include/Header.php";
   </div>
   <div class="box-body">
     <?php if ($_SESSION['bManageGroups']) { ?>
-    <a href="SelectList.php?mode=person" class="btn btn-app" href="#" data-toggle="modal" data-target="#add-class"><i class="fa fa-plus-square"></i><?= gettext("Add New Class") ?></a>
+    <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i class="fa fa-plus-square"></i><?= gettext("Add New Class") ?></button>
     <?php } ?>
     <a href="SundaySchoolReports.php" class="btn btn-app" title="<?= gettext("Generate class lists and attendance sheets"); ?>"><i class="fa fa-file-pdf-o"></i><?= gettext("Reports"); ?></a>
     <a href="SundaySchoolClassListExport.php" class="btn btn-app" title="<?= gettext("Export All Classes, Kids, and Parent to CSV file"); ?>"><i class="fa fa-file-excel-o"></i><?= gettext("Export to CSV") ?></a><br/>
@@ -232,17 +232,20 @@ require "../Include/Header.php";
   $(document).ready(function () {
 
     $("#addNewClassBtn").click(function (e) {
-      var name = $("#new-class-name").val(); // get the name of the from the textbox
-      if (name) // ensure that the user entered a name
+      var groupName = $("#new-class-name").val(); // get the name of the from the textbox
+      if (groupName) // ensure that the user entered a name
       {
         $.ajax({
           method: "POST",
           dataType: "json",
           contentType: "application/json; charset=utf-8",
-          url: window.CRM.root + "/api/groups/sundayschool/"+encodeURI(name)
+          url: window.CRM.root + "/api/groups/",
+          data: JSON.stringify({
+            'groupName':groupName,
+            'isSundaySchool':true
+          }) 
         }).done(function (data) {                               //yippie, we got something good back from the server
-          ssClass = JSON.parse(data);
-          window.location.href = window.CRM.root + "/sundayschool/SundaySchoolClassView.php?groupId="+ ssClass["Id"];
+          window.location.href = window.CRM.root + "/sundayschool/SundaySchoolClassView.php?groupId="+ data.Id;
         });
       }
       else {

@@ -25,9 +25,13 @@ $app->group('/groups', function () {
   });
   
   $this->post('/', function ($request, $response, $args) {
-    $groupName = $request->getParsedBody()["groupName"];
+    $groupSettings = (object)$request->getParsedBody();
     $group = new Group();
-    $group->setName($groupName);
+    if($groupSettings->isSundaySchool)
+    {
+      $group->makeSundaySchool();
+    }
+    $group->setName($groupSettings->groupName);
     $group->save();
     echo $group->toJSON();
   });
@@ -173,13 +177,5 @@ $app->group('/groups', function () {
     }
   });
 
-  $this->post('/sundayschool/{name}', function ($request, $response, $args) {
-    $className = $args['name'];
-    $sundaySchoolClass = new Group();
-    $sundaySchoolClass->setName($className);
-    $sundaySchoolClass->makeSundaySchool();
-    $sundaySchoolClass->save();
-    return $response->withJson($sundaySchoolClass->exportTo("JSON"));
-  });
 
 });
