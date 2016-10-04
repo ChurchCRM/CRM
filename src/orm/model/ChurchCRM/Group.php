@@ -3,8 +3,6 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Group as BaseGroup;
-use ChurchCRM\ListOptionQuery;
-use ChurchCRM\ListOption;
 
 /**
  * Skeleton subclass for representing a row from the 'group_grp' table.
@@ -24,6 +22,10 @@ class Group extends BaseGroup
   public function isSundaySchool()
   {
     return $this->getType() == $this->typeSundaySchool;
+  }
+
+  public function makeSundaySchool() {
+    $this->setType($this->typeSundaySchool);
   }
 
   public function preSave(\Propel\Runtime\Connection\ConnectionInterface $con = null)
@@ -67,6 +69,7 @@ class Group extends BaseGroup
     if ($this->isSundaySchool()) {
       $optionList = array("Teacher", "Student");
     }
+
     $i = 1;
     foreach ($optionList as $option) {
       $listOption = new ListOption();
@@ -77,6 +80,7 @@ class Group extends BaseGroup
       $listOption->save();
       $i++;
     }
+
     parent::postInsert($con);
     return true;
   }
