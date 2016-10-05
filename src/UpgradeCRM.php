@@ -35,9 +35,9 @@ require ("Include/HeaderNotLoggedIn.php");
       </ul>
       <input type="button" class="btn btn-warning" id="applyUpdate" <?= 'value="' . gettext("Apply Update Files") . '"' ?>>
     </div>
-    <div class="login-box-body" style="display:none" id="upgradePhase">
-      <p class="login-box-msg"><?= gettext('Step 3: Upgrade Database') ?></p>
-      <input type="button" class="btn btn-success" id="runUpgrade" <?= 'value="' . gettext("Upgrade Database") . '"' ?>>
+    <div class="login-box-body" style="display:none" id="finalPhase">
+      <p class="login-box-msg"><?= gettext('Step 4: Login') ?></p>
+      <a href="Login.php?Logoff=True" class="btn btn-primary">Login to Upgraded System</a>
     </div>
 </div>
 <script>
@@ -97,6 +97,7 @@ require ("Include/HeaderNotLoggedIn.php");
       contentType: "application/json; charset=utf-8"
     }).done(function(data){
       console.log(data);
+      $("#finalPhase").css('display','');
     });
  });
  

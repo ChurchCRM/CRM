@@ -10,6 +10,7 @@ $app->group('/systemupgrade', function () {
 
   $this->post('/doUpgrade', function ($request, $response, $args) {
     $input = (object)$request->getParsedBody();
-    $this->SystemService->doUpgrade($input->fullPath,$input->sha1);
+    $upgradeResult = $this->SystemService->doUpgrade($input->fullPath,$input->sha1);
+    echo json_encode($upgradeResult);
   });
 });

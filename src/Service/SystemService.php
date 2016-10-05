@@ -391,16 +391,31 @@ class SystemService
     return $returnFile;
   }
   
-  function doUpgrade($filename,$sha1)
+  function doUpgrade($zipFilename,$sha1)
   {
-    if($sha1 == sha1_file($filename))
+    ini_set('max_execution_time',60);
+    $CRMInstallRoot = dirname(__DIR__);
+    if($sha1 == sha1_file($zipFilename))
     {
-      echo "hashes match.  let's do this thing!";
-       $zipHandle = zip_open($filename);
+      $zip = new \ZipArchive();
+      if ($zip->open($zipFilename) == TRUE) 
+      {
+        for($i = 0; $i < $zip->numFiles; $i++) 
+        {
+            $archivedFileName = $zip->getNameIndex($i);
+            $targetFilename = str_replace("churchcrm/","/",$archivedFileName);
+            if ($targetFilename != "/Service/SystemService.php")  // save the best for last.
+            {
+              copy("zip://".$zipFilename."#".$archivedFileName, $CRMInstallRoot.$targetFilename);
+            }
+        } 
+        $zip->close();
+      }
+      return "It is done";
     }
     else
     {
-       echo "hashes dont match.  don't touch it!";
+       return "hashes dont match.  don't touch it!";
     }
    
   }
