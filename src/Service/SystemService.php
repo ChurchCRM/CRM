@@ -376,4 +376,32 @@ class SystemService
     }
   }
 
+  function downloadLatestRelease()
+  {
+    $release = $this->getLatestRelese();
+    $CRMInstallRoot = dirname(__DIR__);
+    $UpgradeDir = $CRMInstallRoot."/Upgrade";
+    $url = $release['assets'][0]['browser_download_url'];
+    mkdir($UpgradeDir);
+    //file_put_contents($UpgradeDir."/".basename($url), file_get_contents($url));
+    $returnFile= array();
+    $returnFile['fileName'] = basename($url);
+    $returnFile['fullPath'] = $UpgradeDir."/".basename($url);
+    $returnFile['sha1'] = sha1_file($UpgradeDir."/".basename($url));
+    return $returnFile;
+  }
+  
+  function doUpgrade($filename,$sha1)
+  {
+    if($sha1 == sha1_file($filename))
+    {
+      echo "hashes match.  let's do this thing!";
+       $zipHandle = zip_open($filename);
+    }
+    else
+    {
+       echo "hashes dont match.  don't touch it!";
+    }
+   
+  }
 }

@@ -42,7 +42,7 @@ class TaskService
     }
 
     if ($this->latestVersion != null && $this->latestVersion["name"] != $this->installedVersion) {
-      array_push($tasks, $this->addTask("New Release ". $this->latestVersion["name"], $this->latestVersion["html_url"], true));
+      array_push($tasks, $this->addTask("New Release ". $this->latestVersion["name"], $this->baseURL."/UpgradeCRM.php", true));
     }
 
     return $tasks;
