@@ -35,6 +35,7 @@ require '../Include/Header.php';
         You can import the generated CSV file to external email system.
         For MailChimp see: <a href="http://kb.mailchimp.com/lists/growth/import-subscribers-to-a-list" target="_blank">import subscribers to a list.</a>
         <br/><br/>
+
         <p class="text-center">
           <a class="btn btn-app" href="MemberEmailExport.php">
             <i class="fa fa-file-o"></i> Generate
@@ -45,8 +46,7 @@ require '../Include/Header.php';
   </div>
 </div>
 
-
-<?php  if ($mailchimp->isActive()) {
+<?php if ($mailchimp->isActive()) {
   $mcLists = $mailchimp->getLists();
   ?>
   <div class="row">
@@ -74,10 +74,16 @@ require '../Include/Header.php';
   </div>
   <div class="row">
     <div class="col-lg-4 col-md-2 col-sm-2">
-      <h3>Reports</h3>
-      <ul>
-        <li><a href="MailChimpMissingReport.php">Missing emails report </a> (slow)</li>
-      </ul>
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">MailChimp</h3>
+        </div>
+        <div class="box-body">
+          <ul>
+            <li><a href="MailChimpMissingReport.php">Missing emails report </a> (slow)</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 <?php } else { ?>
