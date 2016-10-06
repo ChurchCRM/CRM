@@ -103,7 +103,7 @@ while ($aRow = mysql_fetch_array($rsPlgIDs)) {
 
 
 // Set the page title and include HTML header
-$sPageTitle = "eGive Import";
+$sPageTitle = gettext("eGive Import");
 require "Include/Header.php";
 
 if (isset($_POST["ApiGet"])) {
