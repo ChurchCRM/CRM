@@ -296,7 +296,7 @@ if ($embedded)
 	include "Include/Header-Minimal.php";
 else
 {
-	$sPageTitle = $adj . ' ' . $noun . "s Editor:";
+	$sPageTitle = $adj . ' ' . $noun . "s ".gettext("Editor");
 	include "Include/Header.php";
 }
 

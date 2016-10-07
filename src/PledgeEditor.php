@@ -519,7 +519,7 @@ if ($PledgeOrPayment == 'Pledge') {
 } // end if $PledgeOrPayment
 
 if ($dep_Closed && $sGroupKey && $PledgeOrPayment == 'Payment') {
-	$sPageTitle .= " &nbsp; <font color=red>Deposit closed</font>";
+	$sPageTitle .= " &nbsp; <font color=red>". gettext("Deposit closed") ."</font>";
 }			
 
 //$familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
