@@ -6,7 +6,7 @@ $bSuppressSessionTests = TRUE;
 require 'Include/Functions.php';
 
 // Set the page title and include HTML header
-$sPageTitle = "Upgrade ChurchCRM";
+$sPageTitle = gettext("Upgrade ChurchCRM");
 require ("Include/HeaderNotLoggedIn.php");
 ?>
 
@@ -29,15 +29,15 @@ require ("Include/HeaderNotLoggedIn.php");
   <div class="login-box-body" style="display:none" id="updatePhase">
       <p class="login-box-msg"><?= gettext('Step 3: Apply Update Package on Server') ?></p>
       <ul>
-        <li>File Name: <span id="updateFileName"> </span></li>
-        <li>Full Path: <span id="updateFullPath"> </span></li>
-        <li>SHA1: <span id="updateSHA1"> </span></li>
+        <li><? gettext("File Name:")?> <span id="updateFileName"> </span></li>
+        <li><? gettext("Full Path:")?> <span id="updateFullPath"> </span></li>
+        <li><? gettext("SHA1:")?> <span id="updateSHA1"> </span></li>
       </ul>
       <input type="button" class="btn btn-warning" id="applyUpdate" <?= 'value="' . gettext("Apply Update Files") . '"' ?>>
     </div>
     <div class="login-box-body" style="display:none" id="finalPhase">
       <p class="login-box-msg"><?= gettext('Step 4: Login') ?></p>
-      <a href="Login.php?Logoff=True" class="btn btn-primary">Login to Upgraded System</a>
+      <a href="Login.php?Logoff=True" class="btn btn-primary"><?= gettext("Login to Upgraded System") ?> </a>
     </div>
 </div>
 <script>
@@ -56,14 +56,14 @@ require ("Include/HeaderNotLoggedIn.php");
       console.log(data);
       var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\"><i class='fa fa-download'></i>  "+data.filename+"</button>";
       $("#backupstatus").css("color","green");
-      $("#backupstatus").html("Backup Complete, Ready for Download.");
+      $("#backupstatus").html(<?= gettext("Backup Complete, Ready for Download.") ?>;
       $("#resultFiles").html(downloadButton);
       $("#downloadbutton").click(function(){
         $("#fetchPhase").css('display','');
       });
     }).fail(function()  {
       $("#backupstatus").css("color","red");
-      $("#backupstatus").html("Backup Error.");
+      $("#backupstatus").html(<?= gettext("Backup Error.") ?>;
     });
    
  });
@@ -71,7 +71,7 @@ require ("Include/HeaderNotLoggedIn.php");
  $("#fetchUpdate").click(function(){
     $.ajax({
       type : 'GET',
-      url  : window.CRM.root +'/api/systemupgrade/downloadLatestRelease', // the url where we want to POST
+      url  : window.CRM.root +'/api/systemupgrade/downloadlatestrelease', // the url where we want to POST
       dataType    : 'json' // what type of data do we expect back from the server
     }).done(function(data){
       console.log(data);
@@ -87,7 +87,7 @@ require ("Include/HeaderNotLoggedIn.php");
  $("#applyUpdate").click(function(){
    $.ajax({
       type : 'POST',
-      url  : window.CRM.root +'/api/systemupgrade/doUpgrade', // the url where we want to POST
+      url  : window.CRM.root +'/api/systemupgrade/doupgrade', // the url where we want to POST
       data        : JSON.stringify({
         fullPath: window.CRM.updateFile.fullPath,
         sha1: window.CRM.updateFile.sha1
@@ -104,7 +104,7 @@ require ("Include/HeaderNotLoggedIn.php");
 function downloadbutton(filename) {
     window.location = window.CRM.root +"/api/database/download/"+filename;
     $("#backupstatus").css("color","green");
-    $("#backupstatus").html("Backup Downloaded, Copy on server removed");
+    $("#backupstatus").html(<?= gettext("Backup Downloaded, Copy on server removed") ?>);
     $("#downloadbutton").attr("disabled","true");
 }
 </script>
