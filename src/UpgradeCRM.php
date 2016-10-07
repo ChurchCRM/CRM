@@ -7,6 +7,13 @@ require 'Include/Functions.php';
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Upgrade ChurchCRM");
+
+if (!$_SESSION['bAdmin'])
+{
+  Redirect("index.php");
+  exit;
+}
+
 require ("Include/HeaderNotLoggedIn.php");
 ?>
 
