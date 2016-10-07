@@ -118,7 +118,7 @@ class Family
 }
 
 // Set the page title and include HTML header
-$sPageTitle = "CSV Import";
+$sPageTitle = gettext("CSV Import");
 require "Include/Header.php"; ?>
 
 <div class="box">

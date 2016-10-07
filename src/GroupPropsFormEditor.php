@@ -39,7 +39,7 @@ if ($grp_hasSpecialProps == false)
 	Redirect("GroupView.php?GroupID=" . $iGroupID);
 }
 
-$sPageTitle = gettext("Group-Specific Properties Form Editor:") . " &nbsp&nbsp " . $grp_Name;
+$sPageTitle = gettext("Group-Specific Properties Form Editor:") . "  " . $grp_Name;
 
 require "Include/Header.php"; ?>
 

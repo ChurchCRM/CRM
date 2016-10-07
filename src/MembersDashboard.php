@@ -10,7 +10,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Service\DashboardService;
 
 // Set the page title
-$sPageTitle = "Members Dashboard";
+$sPageTitle = gettext("Members Dashboard");
 
 require 'Include/Header.php';
 
