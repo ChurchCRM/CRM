@@ -48,7 +48,7 @@ if (!function_exists("mysql_failure")) {
       <h3>ChurchCRM – Setup failure</h3>
 
       <div class='alert alert-danger text-center' style='margin-top: 20px;'>
-        <?= $message ?>
+        <?= gettext($message) ?>
       </div>
     </div>
     <?php
@@ -98,7 +98,7 @@ $sDocumentRoot = dirname(dirname(__FILE__));
 // **************************************************
 
 $generalConfig = new SystemConfig();
-$generalConfig->init(ConfigQuery::create()->filterBySection("General")->find());
+$generalConfig->init(ConfigQuery::create()->find());
 
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
   . "FROM config_cfg WHERE cfg_section='General'";
