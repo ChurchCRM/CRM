@@ -18,11 +18,15 @@ class Config extends BaseConfig
 {
   function getBooleanValue()
   {
-    $rawValue = $this->getValue();
-    if (is_null($rawValue) || $rawValue == 0 || mb_strtolower($rawValue) == "false")
-      return false;
-    else
-      return true;
+    return boolval($this->getValue());
+  }
+
+  function getValue()
+  {
+    if (is_null($this->cfg_value)) {
+      return $this->cfg_default;
+    }
+    return $this->cfg_value;
   }
 
 }

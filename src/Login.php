@@ -297,7 +297,7 @@ if ($iUserID > 0)
 // Turn ON output buffering
 ob_start();
 
-$enableSelfReg = ConfigQuery::create()->filterByName("sEnableSelfRegistration")->findOne()->getBooleanValue();
+$enableSelfReg = $generalConfig->getRawConfig("sEnableSelfRegistration")->getBooleanValue();
 
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM - Login";
