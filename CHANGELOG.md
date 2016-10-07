@@ -1,78 +1,19 @@
 # Change Log
 
-## [2.2.2](https://github.com/ChurchCRM/CRM/tree/2.2.2) (2016-10-02)
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.1...2.2.2)
+## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
+
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0...HEAD)
 
 **Implemented enhancements:**
 
-- New Member to SundaySchool Class [\#703](https://github.com/ChurchCRM/CRM/issues/703)
-- Switch PDF creation to html2pdf  [\#220](https://github.com/ChurchCRM/CRM/issues/220)
-- timerjobs mvp [\#1079](https://github.com/ChurchCRM/CRM/pull/1079) ([crossan007](https://github.com/crossan007))
-- Cleanup Config Menus [\#1049](https://github.com/ChurchCRM/CRM/pull/1049) ([crossan007](https://github.com/crossan007))
-
-**Fixed bugs:**
-
-- remove all mysql\_ [\#922](https://github.com/ChurchCRM/CRM/issues/922)
-- AdminLTE 2 containers allow overflow [\#138](https://github.com/ChurchCRM/CRM/issues/138)
-- Tax Report- Wrong Fiscal Year  [\#90](https://github.com/ChurchCRM/CRM/issues/90)
-- Error during email export [\#1072](https://github.com/ChurchCRM/CRM/issues/1072)
-- Backup Database: tar.gz \(Include Photos\)  [\#1067](https://github.com/ChurchCRM/CRM/issues/1067)
-- System settings Input fields are larger than page on mobile [\#925](https://github.com/ChurchCRM/CRM/issues/925)
-- Mobile rendering [\#860](https://github.com/ChurchCRM/CRM/issues/860)
-- Map cart mobile [\#754](https://github.com/ChurchCRM/CRM/issues/754)
-- Tablet Testing Needed [\#285](https://github.com/ChurchCRM/CRM/issues/285)
-- fix fy month from \#90 [\#1080](https://github.com/ChurchCRM/CRM/pull/1080) ([crossan007](https://github.com/crossan007))
-- fix backups [\#1077](https://github.com/ChurchCRM/CRM/pull/1077) ([crossan007](https://github.com/crossan007))
-- fixes \#750 [\#1076](https://github.com/ChurchCRM/CRM/pull/1076) ([crossan007](https://github.com/crossan007))
-- Fix export emails [\#1073](https://github.com/ChurchCRM/CRM/pull/1073) ([DawoudIO](https://github.com/DawoudIO))
-- fixed namespace for exceptions  [\#1070](https://github.com/ChurchCRM/CRM/pull/1070) ([DawoudIO](https://github.com/DawoudIO))
-- Mobile rendering Cleanup [\#1068](https://github.com/ChurchCRM/CRM/pull/1068) ([DawoudIO](https://github.com/DawoudIO))
-
-**Closed issues:**
-
-- Build 2.2.1 returning blank [\#1071](https://github.com/ChurchCRM/CRM/issues/1071)
-- Create a Blog and FAQ for ChurchCRM [\#793](https://github.com/ChurchCRM/CRM/issues/793)
-- Guzzle 3 is deprecated [\#681](https://github.com/ChurchCRM/CRM/issues/681)
-- break church info fork relationship [\#562](https://github.com/ChurchCRM/CRM/issues/562)
-- Mobile Phone Testing Needed [\#284](https://github.com/ChurchCRM/CRM/issues/284)
-- Move to WebPack for CSS/JS file packages [\#271](https://github.com/ChurchCRM/CRM/issues/271)
-- Add deposit slip mobile rendering [\#750](https://github.com/ChurchCRM/CRM/issues/750)
-
-**Merged pull requests:**
-
-- Not Logged In Page cleanup [\#1081](https://github.com/ChurchCRM/CRM/pull/1081) ([DawoudIO](https://github.com/DawoudIO))
-
-## [2.2.1](https://github.com/ChurchCRM/CRM/tree/2.2.1) (2016-09-30)
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0...2.2.1)
-
-**Fixed bugs:**
-
-- UNABLE TO INSTALL CHUCH CRM [\#1038](https://github.com/ChurchCRM/CRM/issues/1038)
-- E-mail address not displayed in group member grid [\#974](https://github.com/ChurchCRM/CRM/issues/974)
-- Permissions: User needs Note access to add Note [\#1061](https://github.com/ChurchCRM/CRM/issues/1061)
-- Register Software and/or phpmailer not functioning [\#1054](https://github.com/ChurchCRM/CRM/issues/1054)
-- Demo Data doesn't add sunday school groups correctly [\#1014](https://github.com/ChurchCRM/CRM/issues/1014)
-- Fix seed data import [\#1066](https://github.com/ChurchCRM/CRM/pull/1066) ([DawoudIO](https://github.com/DawoudIO))
-- Move phpmailer to composer [\#1065](https://github.com/ChurchCRM/CRM/pull/1065) ([DawoudIO](https://github.com/DawoudIO))
-- Fixed Member Images [\#1063](https://github.com/ChurchCRM/CRM/pull/1063) ([DawoudIO](https://github.com/DawoudIO))
-- You don't need bNote Role to use the addNodeService [\#1062](https://github.com/ChurchCRM/CRM/pull/1062) ([DawoudIO](https://github.com/DawoudIO))
-- fixed class namespace in services [\#1058](https://github.com/ChurchCRM/CRM/pull/1058) ([DawoudIO](https://github.com/DawoudIO))
-- added sunday school roles [\#1048](https://github.com/ChurchCRM/CRM/pull/1048) ([DawoudIO](https://github.com/DawoudIO))
-- added gettext if missing [\#1047](https://github.com/ChurchCRM/CRM/pull/1047) ([DawoudIO](https://github.com/DawoudIO))
-
-**Closed issues:**
-
-- Icons not reflecting gender/age properly [\#1056](https://github.com/ChurchCRM/CRM/issues/1056)
-- Login/Install problems [\#1053](https://github.com/ChurchCRM/CRM/issues/1053)
-- System setting page mobile rendering [\#745](https://github.com/ChurchCRM/CRM/issues/745)
-- Icons not reflecting gender/age properly [\#1055](https://github.com/ChurchCRM/CRM/issues/1055)
-- Groups dashboard widget [\#746](https://github.com/ChurchCRM/CRM/issues/746)
+- Add people to cart takes a lot of clocking [\#413](https://github.com/ChurchCRM/CRM/issues/413)
+- General Settings: Time Zone Dropdown [\#208](https://github.com/ChurchCRM/CRM/issues/208)
 
 **Merged pull requests:**
 
 - Merge 2.2.0 final to Develop [\#1046](https://github.com/ChurchCRM/CRM/pull/1046) ([DawoudIO](https://github.com/DawoudIO))
 - Fix 2.2.1 upgrade [\#1043](https://github.com/ChurchCRM/CRM/pull/1043) ([crossan007](https://github.com/crossan007))
-- Moving all build downloads to background thread [\#1037](https://github.com/ChurchCRM/CRM/pull/1037) ([DawoudIO](https://github.com/DawoudIO))
+
 
 ## [2.2.0](https://github.com/ChurchCRM/CRM/tree/2.2.0) (2016-09-17)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.2.0-RC6...2.2.0)

@@ -18,7 +18,14 @@ ChurchCRM leverages Slim 2.6.2 to provide REST access to the data elements.
 
 ## Groups
 *  [POST] /api/groups
-  *Creates a new group with groupData in POST Data
+  *  Post Data options:
+  ```
+    {
+      'groupName':"groupName",
+      'isSundaySchool':[true|false]
+    }
+  ```
+  *  if ```isSundaySchool``` is specified, the group will be marked as a Sunday School class, and the ```Teacher``` and ```Student``` roles will be created.
   
 *  [POST] /api/groups/:groupID/removeuser/:userID
   * Removes the user with ID :userID from group with ID :groupID

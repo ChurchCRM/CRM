@@ -474,6 +474,7 @@ require 'Include/Header.php';
             </table>
             </div>
             </div>
+
             <div class="box">
               <div class="box-header with-border">
                 <h3 class="box-title"><?= gettext('Group Members:') ?></h3>
@@ -482,7 +483,6 @@ require 'Include/Header.php';
                 <!-- START GROUP MEMBERS LISTING  -->
                 <table class="table" id="membersTable">
                 </table>
-                <?php if ($_SESSION['bManageGroups']) { ?>
                 <div class="box">
                   <div class="box-header with-border">
                     <h3 class="box-title"><?php echo gettext("Group members: "); ?></h3>
@@ -505,15 +505,16 @@ require 'Include/Header.php';
                     </div>
                   </div>
                 </div>
+                </form>
                 <!-- END GROUP MEMBERS LISTING -->
                 <form action="#" method="get" class="sidebar-form">
                   <label for="addGroupMember"><?= gettext("Add Group Member: ") ?></label>
                   <select class="form-control personSearch" name="addGroupMember" style="width:100%">
                   </select>
                 </form>
-                <?php } ?>
               </div>
             </div>
+
             <script>
               window.CRM.currentGroup = <?= $iGroupID ?>;
               var dataT = 0;

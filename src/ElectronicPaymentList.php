@@ -40,7 +40,7 @@ require "Include/Header.php";
 	function ConfirmDeleteAutoPayment (AutID)
 {
 	var famName = document.getElementById("FamName"+AutID).innerHTML;
-	var r = confirm("Delete automatic payment for "+famName);
+	var r = confirm("<?= gettext("Delete automatic payment for") ?> " + famName );
 	if (r == true) {
 		DeleteAutoPayment (AutID);
 	} 
@@ -49,7 +49,7 @@ require "Include/Header.php";
 function ConfirmClearAccounts (AutID)
 {
 	var famName = document.getElementById("FamName"+AutID).innerHTML;
-	var r = confirm("Clear account numbers for "+famName);
+	var r = confirm("<?= gettext("Clear account numbers for")?> "+famName);
 	if (r == true) {
 		ClearAccounts (AutID);
 	} 

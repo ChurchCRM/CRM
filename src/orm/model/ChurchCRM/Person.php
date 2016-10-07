@@ -3,7 +3,7 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Person as BasePerson;
-use ChurchCRM\Base\UserQuery;
+use ChurchCRM\UserQuery;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
