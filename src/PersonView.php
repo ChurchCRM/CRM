@@ -774,10 +774,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 <script language="javascript">
   var person_ID = <?= $iPersonID ?>;
   function GroupRemove(Group, Person) {
-    var answer = confirm(<?= "'",  "'" ?>)
+    var answer = confirm("<?= gettext("Are you sure you want to remove this person from the Group") ?>");
     if (answer)
       $.ajax({
-        method: "POST",
+        method: "DELETE",
         url: window.CRM.root + "/api/groups/" + Group + "/removeuser/" + Person
       }).done(function (data) {
         location.reload();
