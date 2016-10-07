@@ -29,7 +29,7 @@ $mailchimp = new MailChimpService();
 
 // Set the page title and include HTML header
 
-$sPageTitle = "Person Profile";
+$sPageTitle = gettext("Person Profile");
 require "Include/Header.php";
 
 // Get the person ID from the querystring
@@ -784,7 +784,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
       });
   }
 
-  function GroupAdd(Group, Person) {
+  function GroupAdd() {
     var GroupAssignID = $("select[name='GroupAssignID'] option:selected").val();
     $.ajax({
       method: "POST",
