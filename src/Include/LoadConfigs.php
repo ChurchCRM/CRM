@@ -97,8 +97,8 @@ $sDocumentRoot = dirname(dirname(__FILE__));
 // Read values from config table into local variables
 // **************************************************
 
-$generalConfig = new SystemConfig();
-$generalConfig->init(ConfigQuery::create()->find());
+$systemConfig = new SystemConfig();
+$systemConfig->init(ConfigQuery::create()->find());
 
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
   . "FROM config_cfg WHERE cfg_section='General'";
