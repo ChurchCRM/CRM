@@ -63,14 +63,14 @@ require ("Include/HeaderNotLoggedIn.php");
       console.log(data);
       var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\"><i class='fa fa-download'></i>  "+data.filename+"</button>";
       $("#backupstatus").css("color","green");
-      $("#backupstatus").html(<?= gettext("Backup Complete, Ready for Download.") ?>;
+      $("#backupstatus").html("<?= gettext("Backup Complete, Ready for Download.") ?>");
       $("#resultFiles").html(downloadButton);
       $("#downloadbutton").click(function(){
         $("#fetchPhase").css('display','');
       });
     }).fail(function()  {
       $("#backupstatus").css("color","red");
-      $("#backupstatus").html(<?= gettext("Backup Error.") ?>;
+      $("#backupstatus").html("<?= gettext("Backup Error.") ?>");
     });
    
  });
@@ -111,7 +111,7 @@ require ("Include/HeaderNotLoggedIn.php");
 function downloadbutton(filename) {
     window.location = window.CRM.root +"/api/database/download/"+filename;
     $("#backupstatus").css("color","green");
-    $("#backupstatus").html(<?= gettext("Backup Downloaded, Copy on server removed") ?>);
+    $("#backupstatus").html("<?= gettext("Backup Downloaded, Copy on server removed") ?>");
     $("#downloadbutton").attr("disabled","true");
 }
 </script>
