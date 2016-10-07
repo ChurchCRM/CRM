@@ -374,6 +374,11 @@ class SystemService
         // an error in the auto-backup shouldn't prevent the page from loading...
       }
     }
+    
+    $CRMInstallRoot = dirname(__DIR__);
+    $integrityCheckFile = $CRMInstallRoot."/integrityCheck.json";
+    $appIntegrity = $this->verifyApplicationIntegrity();
+    file_put_contents($integrityCheckFile, json_encode($appIntegrity));
   }
 
   function downloadLatestRelease()
@@ -418,5 +423,38 @@ class SystemService
        return "hashes dont match.  don't touch it!";
     }
    
+  }
+  
+  function verifyApplicationIntegrity()
+  {
+    $CRMInstallRoot = dirname(__DIR__);
+    $signatureFile = $CRMInstallRoot."/signatures.json";
+    $signatureData = json_decode(file_get_contents($signatureFile));
+    $signatureFailures = array();
+   
+    if (sha1(json_encode($signatureData->files)) == $signatureData->sha1)
+    {
+      foreach ($signatureData->files as $file)
+      {
+       if (sha1_file($CRMInstallRoot."/".$file->filename) != $file->sha1)
+       {
+         array_push($signatureFailures, $file->filename);
+       }
+      }
+    }
+    else
+    {
+      return array("status"=>"failure","message"=>"Signature Definition file signature failed validation");
+    }
+    
+    if(count($signatureFailures) > 0 )
+    {
+      return array("status"=>"failure","files"=>$signatureFailures);
+    }
+    else 
+    {
+       return array("status"=>"success");
+    }
+    
   }
 }
