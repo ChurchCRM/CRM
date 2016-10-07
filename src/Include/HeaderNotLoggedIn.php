@@ -8,6 +8,9 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+  <!-- Custom ChurchCRM styles -->
+  <link rel="stylesheet" href="<?= $sRootPath ?>/skin/churchcrm.min.css">
+
   <!-- Bootstrap 3.3.5 -->
   <link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
