@@ -41,6 +41,12 @@
                 <exclude name="skin/adminlte/plugins/datatables/extensions/TableTools/images/psd/**"/>
             </fileset>
         </copy>
+        
+        <echo message="Generating code signature file..."/>
+        <delete file="${sourcedir}/churchcrm/signatures.json"/>
+        <exec command = "php generateSignatures.php ${sourcedir}/churchcrm" passthru="true"/>
+
+
 
     </target>
 

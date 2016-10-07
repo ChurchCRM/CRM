@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$CRMRoot = __DIR__."/src";
+$CRMRoot = $argv[1];
 $CRMRootLen = strlen($CRMRoot);
 $signatureFile = $CRMRoot."/signatures.json";
 $composerFile = file_get_contents(__DIR__. "/src/composer.json");
