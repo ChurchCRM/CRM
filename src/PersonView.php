@@ -29,7 +29,7 @@ $mailchimp = new MailChimpService();
 
 // Set the page title and include HTML header
 
-$sPageTitle = "Person Profile";
+$sPageTitle = gettext("Person Profile");
 require "Include/Header.php";
 
 // Get the person ID from the querystring
@@ -774,17 +774,17 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 <script language="javascript">
   var person_ID = <?= $iPersonID ?>;
   function GroupRemove(Group, Person) {
-    var answer = confirm(<?= "'",  "'" ?>)
+    var answer = confirm("<?= gettext("Are you sure you want to remove this person from the Group") ?>");
     if (answer)
       $.ajax({
-        method: "POST",
+        method: "DELETE",
         url: window.CRM.root + "/api/groups/" + Group + "/removeuser/" + Person
       }).done(function (data) {
         location.reload();
       });
   }
 
-  function GroupAdd(Group, Person) {
+  function GroupAdd() {
     var GroupAssignID = $("select[name='GroupAssignID'] option:selected").val();
     $.ajax({
       method: "POST",
