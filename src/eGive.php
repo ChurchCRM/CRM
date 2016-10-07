@@ -11,16 +11,6 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if (!function_exists(stream_get_contents)) {
-	function stream_get_contents($fp) {
-		$contents = '';
-		while (!feof($fp)) {
-  			$contents .= fread($fp, 8192);
-		}
-		return $contents;
-	}
-}
-
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
     Redirect("Menu.php");
     exit;
