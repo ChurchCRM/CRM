@@ -35,9 +35,8 @@ require_once dirname(__FILE__) . '/../vendor/autoload.php';
 require_once dirname(__FILE__) . '/../orm/conf/config.php';
 
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Service\ConfigService;
 use ChurchCRM\Version;
-use ChurchCRM\ConfigQuery;
-use ChurchCRM\dto\SystemConfig;
 
 if (!function_exists("mysql_failure")) {
   function mysql_failure($message)
@@ -97,8 +96,7 @@ $sDocumentRoot = dirname(dirname(__FILE__));
 // Read values from config table into local variables
 // **************************************************
 
-$systemConfig = new SystemConfig();
-$systemConfig->init(ConfigQuery::create()->find());
+$configService = new ConfigService();
 
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
   . "FROM config_cfg WHERE cfg_section='General'";

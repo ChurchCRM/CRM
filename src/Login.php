@@ -35,9 +35,12 @@ require 'Include/Functions.php';
 // Initialize the variables
 
 use ChurchCRM\Service\SystemService;
+Use ChurchCRM\Service\ConfigService;
 use ChurchCRM\UserQuery;
 
 $systemService = new SystemService();
+$configService = new ConfigService();
+
 
 // Is the user requesting to logoff or timed out?
 if (isset($_GET["Logoff"]) || isset($_GET['Timeout'])) {
@@ -268,9 +271,10 @@ if ($currentUser != Null)
 }
 
 // Turn ON output buffering
+
 ob_start();
 
-$enableSelfReg = $systemConfig->getRawConfig("sEnableSelfRegistration")->getBooleanValue();
+$enableSelfReg = $configService->getRawConfig("sEnableSelfRegistration");
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("ChurchCRM - Login");

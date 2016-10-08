@@ -216,6 +216,7 @@
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
+        <behavior name="query_cache" />
     </table>
 
     <table name="menuconfig_mcf" idMethod="native" phpName="MenuConfig">
