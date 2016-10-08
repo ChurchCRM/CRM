@@ -20,7 +20,7 @@ require ("Include/HeaderNotLoggedIn.php");
 
 <div class="login-box">
     <div class="login-logo">
-        Upgrade <b>Church</b>CRM</a>
+        <?= gettext("Upgrade ChurchCRM") ?>
     </div>
     <div class="login-box-body" id="backupPhase">
       <p class="login-box-msg"><?= gettext('Step 1: Backup Database') ?></p>

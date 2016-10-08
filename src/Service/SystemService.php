@@ -388,7 +388,7 @@ class SystemService
     $UpgradeDir = $CRMInstallRoot."/Upgrade";
     $url = $release['assets'][0]['browser_download_url'];
     mkdir($UpgradeDir);
-    //file_put_contents($UpgradeDir."/".basename($url), file_get_contents($url));
+    file_put_contents($UpgradeDir."/".basename($url), file_get_contents($url));
     $returnFile= array();
     $returnFile['fileName'] = basename($url);
     $returnFile['fullPath'] = $UpgradeDir."/".basename($url);
