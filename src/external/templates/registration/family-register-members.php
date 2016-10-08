@@ -1,7 +1,7 @@
 <?php
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM - Family Registration";
-require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
+require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
 ?>
   <form action="<?= $sRootPath ?>/external/family/register/members" method="post">
     <div class="register-box" style="width: 600px;">
@@ -48,34 +48,61 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
                   <div class="form-group has-feedback">
                     <div class="row">
                       <div class="col-lg-6">
-                        <input name="memberFirstName-<?= $x ?>" class="form-control"
+                        <input name="memberFirstName-<?= $x ?>" class="form-control" maxlength="50"
                                placeholder="<?= gettext("First Name") ?>" required>
                       </div>
                       <div class="col-lg-6">
-                        <input name="memberLastName-<?= $x ?>" class="form-control" value="<?= $family->getName()?>"
+                        <input name="memberLastName-<?= $x ?>" class="form-control" value="<?= $family->getName() ?>" maxlength="50"
                                placeholder="<?= gettext("Last Name") ?>" required>
                       </div>
                     </div>
                   </div>
                   <div class="form-group has-feedback">
-                    <input name="memberEmail-<?= $x ?>" class="form-control"
-                           placeholder="<?= gettext("Email") ?>">
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-envelope"></i>
+                      </div>
+                      <input name="memberEmail-<?= $x ?>" class="form-control" maxlength="50"
+                             placeholder="<?= gettext("Email") ?>">
+                    </div>
                   </div>
                   <div class="form-group has-feedback">
-                    <input name="memberPhone-<?= $x ?>" class="form-control"
-                           placeholder="<?= gettext("Phone") ?>">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-phone"></i>
+                          </div>
+                          <select name="memberPhoneType-<?= $x ?>" class="form-control">
+                            <option value="mobile"><?= gettext("Mobile") ?></option>
+                            <option value="home"><?= gettext("Home") ?></option>
+                            <option value="work"><?= gettext("Work") ?></option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-lg-8">
+                        <div class="input-group">
+                          <input name="memberPhone-<?= $x ?>" class="form-control" maxlength="30"
+                                 placeholder="<?= gettext("Phone") ?>">
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group has-feedback">
                     <div class="row">
                       <div class="col-lg-6">
-                          <div class="input-group">
-                            <div class="input-group-addon">
-                              <i class="fa fa-birthday-cake"></i>
-                            </div>
-                            <input type="text" class="form-control inputDatePicker" id="birthday-<?= $x ?>" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask="">
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-birthday-cake"></i>
                           </div>
-                          <!-- /.input group -->
+                          <input type="text" class="form-control inputDatePicker" id="birthday-<?= $x ?>" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask="">
                         </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <label>
+                            <input type="checkbox" name="familyPrimaryChurch">&nbsp; <?= gettext("Hide Age") ?>
+                          </label>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -91,10 +118,10 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
 
   </form>
   <script type="text/javascript">
-    $(function() {
+    $(function () {
       $("[data-mask]").inputmask();
     });
   </script>
 <?php
 // Add the page footer
-require(__DIR__ ."/../../../Include/FooterNotLoggedIn.php");
+require(__DIR__ . "/../../../Include/FooterNotLoggedIn.php");
