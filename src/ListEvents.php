@@ -42,7 +42,7 @@ if($eType!="All"){
   $rsOpps = RunQuery($sSQL);
   $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
   extract($aRow);
-  $sPageTitle = "Listing Events of Type = ".$type_name;
+  $sPageTitle = gettext("Listing Events of Type = ") .$type_name;
 } else {
   $sPageTitle = gettext("Listing All Church Events");
 }
@@ -300,7 +300,7 @@ if ($numRows > 0)
                   <td>
                     <form name="DeleteEvent" action="ListEvents.php" method="POST">
                       <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-                      <button type="submit" name="Action" title="<?=gettext("Delete") ?>" data-tooltip value="<?= gettext("Delete") ?>" class="btn btn-default btn-sm" onClick="return confirm('Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: <?=  $aEventID[$row] ?>')">
+                      <button type="submit" name="Action" title="<?=gettext("Delete") ?>" data-tooltip value="<?= gettext("Delete") ?>" class="btn btn-default btn-sm" onClick="return confirm('<?= gettext("Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: ") . $aEventID[$row] ?>')">
                         <i class='fa fa-trash'></i>
                       </button>
                     </form>
