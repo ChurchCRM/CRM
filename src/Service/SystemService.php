@@ -5,7 +5,6 @@ namespace ChurchCRM\Service;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
-use ChurchCRM\ConfigQuery;
 
 class SystemService
 {
