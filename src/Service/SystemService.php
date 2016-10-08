@@ -356,17 +356,19 @@ class SystemService
   
   function runTimerJobs()
   {
+    global $sEnableExternalBackupTarget, $sExternalBackupAutoInterval, $sLastBackupTimeStamp;
+    global $sEnableIntegrityCheck, $sIntegrityCheckInterval, $sLastIntegrityCheckTimeStamp;
     //start the external backup timer job
     if ($sEnableExternalBackupTarget && $sExternalBackupAutoInterval > 0)  //if remote backups are enabled, and the interval is greater than zero
     {
       try {
-        $now = new DateTime();  //get the current time
-        $previous = new DateTime($sLastBackupTimeStamp); // get a DateTime object for the last time a backup was done.
+        $now = new \DateTime();  //get the current time
+        $previous = new \DateTime($sLastBackupTimeStamp); // get a DateTime object for the last time a backup was done.
         $diff = $previous->diff($now);  // calculate the difference.
         if (!$sLastBackupTimeStamp || $diff->h >= $sExternalBackupAutoInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
         {
           $systemService->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
-          $now = new DateTime();  // update the LastBackupTimeStamp.
+          $now = new \DateTime();  // update the LastBackupTimeStamp.
           $sSQL = "UPDATE config_cfg SET cfg_value='" . $now->format('Y-m-d H:i:s') . "' WHERE cfg_name='sLastBackupTimeStamp'";
           $rsUpdate = RunQuery($sSQL);
         }
@@ -374,11 +376,22 @@ class SystemService
         // an error in the auto-backup shouldn't prevent the page from loading...
       }
     }
-    
-    $CRMInstallRoot = dirname(__DIR__);
-    $integrityCheckFile = $CRMInstallRoot."/integrityCheck.json";
-    $appIntegrity = $this->verifyApplicationIntegrity();
-    file_put_contents($integrityCheckFile, json_encode($appIntegrity));
+    if ($sEnableIntegrityCheck && $sIntegrityCheckInterval > 0)
+    {
+      $now = new \DateTime();  //get the current time
+      $previous = new \DateTime($sLastIntegrityCheckTimeStamp); // get a DateTime object for the last time a backup was done.
+      $diff = $previous->diff($now);  // calculate the difference.
+      if (!$sLastIntegrityCheckTimeStamp || $diff->h >= $sIntegrityCheckInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
+      {
+        $CRMInstallRoot = dirname(__DIR__);
+        $integrityCheckFile = $CRMInstallRoot."/integrityCheck.json";
+        $appIntegrity = $this->verifyApplicationIntegrity();
+        file_put_contents($integrityCheckFile, json_encode($appIntegrity));
+        $now = new \DateTime();  // update the LastBackupTimeStamp.
+        $sSQL = "UPDATE config_cfg SET cfg_value='" . $now->format('Y-m-d H:i:s') . "' WHERE cfg_name='sLastIntegrityCheckTimeStamp'";
+        $rsUpdate = RunQuery($sSQL);
+      }
+    }
   }
 
   function downloadLatestRelease()
