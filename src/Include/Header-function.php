@@ -127,7 +127,7 @@ function Header_body_scripts() {
   <script language="javascript" type="text/javascript">
     window.CRM = {root: "<?= $sRootPath ?>"};
     
-    window.CRM.DisplayErrorMessage= function(endpoint, message) {
+    window.CRM.DisplayErrorMessage = function(endpoint, message) {
       $(".modal").modal('hide');
       $("#APIError").modal('show');
       $("#APIEndpoint").text(endpoint);
@@ -170,8 +170,6 @@ function Header_body_scripts() {
       eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
     }
     
-    
-
   </script>
   <?php
 }

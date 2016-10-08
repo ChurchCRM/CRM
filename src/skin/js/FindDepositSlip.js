@@ -112,7 +112,6 @@ $(document).ready(function() {
         var type = this .getAttribute("data-exportType");
         $.each(selectedRows, function(index, value){
           window.CRM.VerifyThenLoadAPIContent(window.CRM.root+'/api/deposits/'+value.Id+'/'+type);
-           
         });
     });
 
