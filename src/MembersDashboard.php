@@ -10,7 +10,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Service\DashboardService;
 
 // Set the page title
-$sPageTitle = "Members Dashboard";
+$sPageTitle = gettext("Members Dashboard");
 
 require 'Include/Header.php';
 
@@ -135,7 +135,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
 </div>
 <!-- Small boxes (Stat box) -->
 <div class="row">
-  <div class="col-lg-3">
+  <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
     <div class="small-box bg-aqua">
       <div class="inner">
@@ -156,7 +156,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
     </div>
   </div>
   <!-- ./col -->
-  <div class="col-lg-3">
+  <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
     <div class="small-box bg-green">
       <div class="inner">
@@ -177,7 +177,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
     </div>
   </div>
   <!-- ./col -->
-  <div class="col-lg-3">
+  <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
     <div class="small-box bg-yellow">
       <div class="inner">
@@ -198,7 +198,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
     </div>
   </div>
   <!-- ./col -->
-  <div class="col-lg-3">
+  <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
     <div class="small-box bg-red">
       <div class="inner">

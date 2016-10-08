@@ -1,4 +1,3 @@
-
   <!-- Bootstrap 3.3.5 -->
   <script src="<?= $sRootPath ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
   <!-- iCheck -->

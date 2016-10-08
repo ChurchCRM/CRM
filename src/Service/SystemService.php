@@ -200,15 +200,15 @@ class SystemService
         fclose($fh);
         return ($backup);
       } else {
-        throw new Exception("WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set", 500);
+        throw new \Exception("WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set", 500);
       }
     } elseif (strcasecmp($sExternalBackupType, "Local") == 0) {
       try {
         $backup = $this->getDatabaseBackup($params);
         exec("mv " . $backup->saveTo . " " . $sExternalBackupEndpoint);
         return ($backup);
-      } catch (Exception $exc) {
-        throw new Exception("The local path $sExternalBackupEndpoint is not writeable.  Unable to store backup.", 500);
+      } catch (\Exception $exc) {
+        throw new \Exception("The local path $sExternalBackupEndpoint is not writeable.  Unable to store backup.", 500);
       }
 
     }
@@ -350,7 +350,7 @@ class SystemService
 
     $result = curl_exec($curlService);
     if ($result === FALSE) {
-      throw new Exception("Unable to reach the issue bridge", 500);
+      throw new \Exception("Unable to reach the issue bridge", 500);
     }
     return $result;
   }

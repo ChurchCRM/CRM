@@ -1,21 +1,5 @@
 var dataT = 0;
 
-function verifyContent(url) {
-  $.ajax({
-    type: 'HEAD',
-    url: url,
-    async: false,
-    statusCode: {
-      200: function() {
-        window.open(url);
-      },
-      404: function() {
-        displayErrorMessage(url, "There was a problem retreiving the export for this object");
-      }
-    }
-  });
-}
-
 $(document).ready(function() {
     $("#depositDate").datepicker({format:'yyyy-mm-dd'}).datepicker("setDate", new Date());
     $("#addNewDeposit").click(function (e){
@@ -42,10 +26,10 @@ $(document).ready(function() {
       url :window.CRM.root+"/api/deposits",
       dataSrc:"Deposits"
     },
+    responsive: true,
     "deferRender": true,
     columns: [
     {
-        width: 'auto',
         title:'Deposit ID',
         data:'Id',
         render: function  (data, type, full, meta ) {
@@ -61,7 +45,6 @@ $(document).ready(function() {
         type:'num'
     },
     {
-        width: 'auto',
         title:'Deposit Date',
         data:'Date',
         render: function  (data, type, full, meta ) {
@@ -77,19 +60,16 @@ $(document).ready(function() {
         searchable: true
     },
     {
-        width: 'auto',
         title:'Deposit Total',
         data:'totalAmount',
         searchable: false,
     },
     {
-        width: 'auto',
         title:'Deposit Comment',
         data:'Comment',
         searchable: true
     },
     {
-        width: 'auto',
         title:'Closed',
         data:'Closed',
         searchable: true,
@@ -98,7 +78,6 @@ $(document).ready(function() {
         }
     },
     {
-        width: 'auto',
         title:'Deposit Type',
         data:'Type',
         searchable: true
@@ -132,8 +111,7 @@ $(document).ready(function() {
         var selectedRows = dataT.rows('.selected').data()
         var type = this .getAttribute("data-exportType");
         $.each(selectedRows, function(index, value){
-          verifyContent(window.CRM.root+'/api/deposits/'+value.Id+'/'+type);
-           
+          window.CRM.VerifyThenLoadAPIContent(window.CRM.root+'/api/deposits/'+value.Id+'/'+type);
         });
     });
 

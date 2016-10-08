@@ -95,7 +95,7 @@ require "Include/Header.php";
               <input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
             </div>
             <div class="col-lg-6" style="text-align:center">
-              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location = window.CRM.root + '/api/deposits/<?php echo ($thisDeposit->getId()) ?>/pdf';">
+              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/deposits/<?php echo ($thisDeposit->getId()) ?>/pdf');">
             </div>
           </div>
           <?php
