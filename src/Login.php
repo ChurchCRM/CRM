@@ -234,11 +234,7 @@ if ($currentUser != Null)
         $_SESSION['sRootPath'] = $sRootPath;
         $_SESSION['$sEnableGravatarPhotos'] = $sEnableGravatarPhotos;
 
-        // If PHP's magic quotes setting is turned off, we want to use a workaround to ensure security.
-        if (function_exists('get_magic_quotes_gpc'))
-            $_SESSION['bHasMagicQuotes'] = get_magic_quotes_gpc();
-        else
-            $_SESSION['bHasMagicQuotes'] = 0;
+        $_SESSION['bHasMagicQuotes'] = 0;
 
         // Pledge and payment preferences
         $_SESSION['sshowPledges'] = $currentUser->getShowPledges();
