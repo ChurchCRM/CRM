@@ -311,7 +311,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
                     <td>
                       <form name="ProcessEventType" action="EventNames.php" method="POST" class="pull-left">
                         <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
-                        <button type="submit" class="btn btn-default btn-sm" title="<?= gettext("Delete") ?>" data-tooltip name="Action" value="DELETE" onClick="return confirm('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: <?=  $aTypeID[$row] ?>')">
+                        <button type="submit" class="btn btn-default btn-sm" title="<?= gettext("Delete") ?>" data-tooltip name="Action" value="DELETE" onClick="return confirm('<?= gettext("Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: ") .  $aTypeID[$row] ?>')">
                           <i class='fa fa-trash'></i>
                         </button>
                       </form>
