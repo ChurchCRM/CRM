@@ -126,6 +126,37 @@ function Header_body_scripts() {
 
   <script language="javascript" type="text/javascript">
     window.CRM = {root: "<?= $sRootPath ?>"};
+    
+    window.CRM.DisplayErrorMessage= function(endpoint, message) {
+      $(".modal").modal('hide');
+      $("#APIError").modal('show');
+      $("#APIEndpoint").text(endpoint);
+      $("#APIErrorText").text(message);
+    }
+    
+    window.CRM.VerifyThenLoadAPIContent = function(url) {
+      $.ajax({
+        type: 'HEAD',
+        url: url,
+        async: false,
+        statusCode: {
+          200: function() {
+            window.open(url);
+          },
+          404: function() {
+            window.CRM.DisplayErrorMessage(url, "There was a problem retreiving the requested object");
+          },
+          500: function() {
+            window.CRM.DisplayErrorMessage(url, "There was a problem retreiving the requested object");
+          }
+        }
+      });
+    }
+
+    $(document).ajaxError(function(evt, xhr, settings) {
+      var CRMResponse = JSON.parse(xhr.responseText).error;
+      window.CRM.DisplayErrorMessage("[" + settings.type + "] " + settings.url, " " + CRMResponse.text);
+    });
 
     function LimitTextSize(theTextArea, size) {
       if(theTextArea.value.length > size) {
@@ -138,6 +169,8 @@ function Header_body_scripts() {
       id = day.getTime();
       eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
     }
+    
+    
 
   </script>
   <?php

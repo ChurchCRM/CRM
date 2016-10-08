@@ -111,7 +111,7 @@ $(document).ready(function() {
         var selectedRows = dataT.rows('.selected').data()
         var type = this .getAttribute("data-exportType");
         $.each(selectedRows, function(index, value){
-          verifyThenLoadAPIContent(window.CRM.root+'/api/deposits/'+value.Id+'/'+type);
+          window.CRM.VerifyThenLoadAPIContent(window.CRM.root+'/api/deposits/'+value.Id+'/'+type);
            
         });
     });

@@ -51,7 +51,6 @@ $MenuFirst = 1;
   require 'Header-HTML-Scripts.php';
   Header_head_metatag();
   ?>
-  <script src="<?= $sRootPath; ?>/skin/js/APIErrorHandler.js" type="text/javascript"></script>
 </head>
 
 <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">

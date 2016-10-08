@@ -1,19 +1,3 @@
-function verifyThenLoadAPIContent(url) {
-  $.ajax({
-    type: 'HEAD',
-    url: url,
-    async: false,
-    statusCode: {
-      200: function() {
-        window.open(url);
-      },
-      404: function() {
-        displayErrorMessage(url, "There was a problem retreiving the requested object");
-      }
-    }
-  });
-}
-
 $("document").ready(function(){
 
     $(".multiSearch").select2({
