@@ -271,7 +271,7 @@ if ($currentUser != Null)
 ob_start();
 
 // Set the page title and include HTML header
-$sPageTitle = "ChurchCRM - Login";
+$sPageTitle = gettext("ChurchCRM - Login");
 require ("Include/HeaderNotLoggedIn.php");
 ?>
 

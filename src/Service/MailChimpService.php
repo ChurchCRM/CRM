@@ -69,7 +69,9 @@ class MailChimpService
     try {
       $result = $this->myMailchimp->lists->getList();
       return $result["data"];
-    } catch (Exception $e) {
+    } catch (\Mailchimp_Invalid_ApiKey $e) {
+      return "Invalid ApiKey";
+    } catch (\Exception $e) {
       return $e->getMessage();
     }
   }

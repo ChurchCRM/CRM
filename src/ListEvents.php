@@ -42,7 +42,7 @@ if($eType!="All"){
   $rsOpps = RunQuery($sSQL);
   $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
   extract($aRow);
-  $sPageTitle = "Listing Events of Type = ".$type_name;
+  $sPageTitle = gettext("Listing Events of Type = ") .$type_name;
 } else {
   $sPageTitle = gettext("Listing All Church Events");
 }
