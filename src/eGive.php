@@ -11,38 +11,6 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if( !function_exists(json_decode) ) {
-   require_once 'bin/JSON/JSON.php';
-   function json_decode($data, $bool) {
-       if ($bool) {
-           $json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
-       } else {
-           $json = new Services_JSON();
-       }
-       return( $json->decode($data) );
-   }
-}
-
-if (!function_exists(json_last_error)) {
-	define("JSON_ERROR_NONE", 0);
-	define("JSON_ERROR_DEPTH", 1);
-	define("JSON_ERROR_CTRL_CHAR", 2);
-	define("JSON_ERROR_SYNTAX", 3);
-  	function json_last_error() {
-		return 0; // nothing
-	}
-}
-
-if (!function_exists(stream_get_contents)) {
-	function stream_get_contents($fp) {
-		$contents = '';
-		while (!feof($fp)) {
-  			$contents .= fread($fp, 8192);
-		}
-		return $contents;
-	}
-}
-
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
     Redirect("Menu.php");
     exit;
