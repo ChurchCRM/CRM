@@ -3,7 +3,7 @@
 $sPageTitle = "ChurchCRM - Family Registration";
 require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
 ?>
-  <form action="<?= $sRootPath ?>/external/family/register/members" method="post">
+  <form action="<?= $sRootPath ?>/external/family/register/confirm" method="post">
     <div class="register-box" style="width: 600px;">
       <div class="register-logo">
         <a href="<?= $sRootPath ?>/"><b>Church</b>CRM</a>
@@ -110,7 +110,7 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
             <?php } ?>
           </div>
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext("Register"); ?></button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext("Next"); ?></button>
           </div>
         </div>
       </div>
