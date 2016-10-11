@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\EventAttendQuery;
 use ChurchCRM\NoteQuery;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\EventAttendQuery;
 
 
 class TimelineService
@@ -75,10 +75,14 @@ class TimelineService
   {
     $item = NULL;
     if ($this->currentUserIsAdmin || $dbNote->isVisable($this->currentUser)) {
-      $displayEditedBy = "unknown?";
-      $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
-      if ($editor != null) {
-        $displayEditedBy = $editor->getFullName();
+      $displayEditedBy = gettext("Unknown" . $dbNote->getDisplayEditedBy());
+      if ($dbNote->getDisplayEditedBy() == "-1") {
+        $displayEditedBy = gettext("Self Registration");
+      } else {
+        $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
+        if ($editor != null) {
+          $displayEditedBy = $editor->getFullName();
+        }
       }
       $item = $this->createTimeLineItem($dbNote->getType(), $dbNote->getDisplayEditedDate(),
         "by " . $displayEditedBy, "", $dbNote->getText(),
