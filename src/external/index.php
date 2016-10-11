@@ -16,7 +16,7 @@ require __DIR__ . '/../Include/slim/error-handler.php';
 $settings = require __DIR__ . '/../Include/slim/settings.php';
 
 // routes
-require __DIR__ . '/routes/family.php';
+require __DIR__ . '/routes/register.php';
 
 // Run app
 $app->run();
