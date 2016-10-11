@@ -3,7 +3,7 @@
 $sPageTitle = "ChurchCRM - Family Registration";
 require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
 ?>
-  <form action="<?= $sRootPath ?>/external/family/register/confirm" method="post">
+  <form action="<?= $sRootPath ?>/external/register/confirm" method="post">
     <div class="register-box" style="width: 600px;">
       <div class="register-logo">
         <a href="<?= $sRootPath ?>/"><b>Church</b>CRM</a>

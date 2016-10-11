@@ -12,7 +12,7 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
     <div class="register-box-body">
       <p class="login-box-msg"><?= gettext("Register your family") ?></p>
 
-      <form action="<?= $sRootPath ?>/external/family/register" method="post">
+      <form action="<?= $sRootPath ?>/external/register/" method="post">
         <div class="form-group has-feedback">
           <input name="familyName" type="text" class="form-control" placeholder="<?= gettext("Family Name") ?>" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
