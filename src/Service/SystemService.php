@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
+use Propel\Runtime;
 
 class SystemService
 {
@@ -280,8 +281,13 @@ class SystemService
   }
 
   function getDBVersion() {
-    $dbVersion = VersionQuery::create()->orderByUpdateEnd(Criteria::DESC)->findOne();
-    return $dbVersion->getVersion();
+    $connection = Runtime\Propel::getConnection();
+    $query = "Select * from version_ver";
+    $statement = $connection->prepare($query);
+    $resultset = $statement->execute();
+    $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
+    rsort($results);
+    return $results[0]['ver_version'];
   }
 
   function checkDatabaseVersion()
@@ -292,12 +298,12 @@ class SystemService
       return true;
     }
 
-    // always rebuild the menu
-    $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
+    //the database isn't at the current version.  Start the upgrade
     $dbUpdatesFile = file_get_contents(dirname(__FILE__) . "/../mysql/upgrade.json");
     $dbUpdates = json_decode($dbUpdatesFile, true);
+    $upgradeSuccess = false;
     foreach ($dbUpdates as $dbUpdate) {
-      if (in_array($db_version, $dbUpdate["versions"])) {
+      if (in_array($this->getDBVersion(), $dbUpdate["versions"])) {
         $version = new Version();
         $version->setVersion($dbUpdate["dbVersion"]);
         $version->setUpdateStart(new \DateTime());
@@ -306,11 +312,12 @@ class SystemService
         }
         $version->setUpdateEnd(new \DateTime());
         $version->save();
-        return true;
+        $upgradeSuccess = true;
       }
     }
-
-    return false;
+    // always rebuild the menu
+    $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
+    return $upgradeSuccess;
   }
 
   function reportIssue($data)
