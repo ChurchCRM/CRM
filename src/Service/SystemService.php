@@ -291,12 +291,13 @@ class SystemService
 
   function checkDatabaseVersion()
   {
-    
+
     $db_version = $this->getDBVersion();
     if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
       return true;
     }
-   
+
+    //the database isn't at the current version.  Start the upgrade
     $dbUpdatesFile = file_get_contents(dirname(__FILE__) . "/../mysql/upgrade.json");
     $dbUpdates = json_decode($dbUpdatesFile, true);
     $upgradeSuccess = false;
