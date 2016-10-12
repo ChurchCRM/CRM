@@ -48,7 +48,7 @@ class TaskService
     }
     
     if($integrityCheckData->status == "failure") {
-      array_push($tasks, $this->addTask("Application Integrity Check Failed", "/IntegrityCheck.php", true));
+      array_push($tasks, $this->addTask("Application Integrity Check Failed", $this->baseURL."/IntegrityCheck.php", true));
     }
 
     return $tasks;
