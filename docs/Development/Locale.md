@@ -18,3 +18,6 @@ The hosting system must have the correct locale as gettext depends on system lib
 - Review changes in /vagrant/src/locale/messages.po 
 - Commit messages.po
 
+##Want to help translate this project?
+Join the Project on POEditor
+https://poeditor.com/join/project/RABdnDSqAt
