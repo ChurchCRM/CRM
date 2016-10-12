@@ -74,7 +74,12 @@ $IntegrityCheckDetails = json_decode(file_get_contents($integrityCheckFile));
     foreach ($IntegrityCheckDetails->files as $file)
     {
       ?>
-    <li><?= $file ?></li>
+    <li>FileName: <?= $file->filename ?>
+      <ul>
+        <li>Expected Hash: <?= $file->expectedhash ?></li>
+        <li>Actual Hash: <?= $file->actualhash ?></li>
+      </ul>
+    </li>
       <?php
     }
     ?>

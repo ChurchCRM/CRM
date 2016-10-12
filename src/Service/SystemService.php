@@ -449,10 +449,11 @@ class SystemService
     {
       foreach ($signatureData->files as $file)
       {
-       if (sha1_file($CRMInstallRoot."/".$file->filename) != $file->sha1)
-       {
-         array_push($signatureFailures, $file->filename);
-       }
+        $actualHash = sha1_file($CRMInstallRoot."/".$file->filename);
+        if ( $actualHash != $file->sha1 )
+        {
+          array_push($signatureFailures, array("filename"=>$file->filename,"expectedhash"=>$file->sha1,"actualhash"=>$actualHash));
+        }
       }
     }
     else
