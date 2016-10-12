@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
+use Propel\Runtime;
 
 class SystemService
 {
@@ -280,7 +281,7 @@ class SystemService
   }
 
   function getDBVersion() {
-    $connection = \Propel\Runtime\Propel::getConnection();
+    $connection = Runtime\Propel::getConnection();
     $query = "Select * from version_ver";
     $statement = $connection->prepare($query);
     $resultset = $statement->execute();
