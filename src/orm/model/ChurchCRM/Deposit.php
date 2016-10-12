@@ -236,7 +236,7 @@ class Deposit extends BaseDeposit
 
     $thisReport->pdf->SetXY($thisReport->depositSummaryParameters->title->x, $thisReport->depositSummaryParameters->title->y);
     $thisReport->pdf->SetFont('Courier', 'B', 20);
-    $thisReport->pdf->Write(8, "Deposit Summary " . $thisReport->deposit->dep_ID);
+    $thisReport->pdf->Write(8, "Deposit Summary " . $this->getId());
     $thisReport->pdf->SetFont('Times', 'B', 10);
 
     $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
