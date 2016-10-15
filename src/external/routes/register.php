@@ -34,6 +34,7 @@ $app->group('/register', function () {
       $family->setHomePhone($body["familyHomePhone"]);
       $family->setEnteredBy(1);
       $family->setDateEntered(new \DateTime());
+      $family->save();
 
       $className = "Regular Attender";
       if ($body["familyPrimaryChurch"] == "No") {
@@ -88,7 +89,9 @@ $app->group('/register', function () {
       $person->setDateEntered(new \DateTime());
 
       $familyRole = $body["memberRole-" . $x];
+      $person->setFamily($family);
       $person->setFmrId($familyRole);
+      $person->save();
       $family->addPerson($person);
       array_push($familyMembers, $person);
     }
@@ -97,21 +100,6 @@ $app->group('/register', function () {
     $pageObjects = array("sRootPath" => $_SESSION['sRootPath'], "family" => $family, "familyClass" => $_SESSION['regFamilyClass']);
     return $renderer->render($response, "family-register-confirm.php", $pageObjects);
 
-  });
-
-  $this->post('/done', function ($request, $response, $args) {
-    $renderer = new PhpRenderer("templates/registration/");
-    $family = $_SESSION["regFamily"];
-
-
-    foreach($_SESSION['familyMembers'] as $person) {
-      $person->setFamily($family);
-      $person->save();
-    }
-    $family->save();
-
-    $pageObjects = array("sRootPath" => $_SESSION['sRootPath']);
-    return $renderer->render($response, "family-register-done.php", $pageObjects);
   });
 
 });

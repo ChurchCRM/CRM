@@ -13,12 +13,16 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
     <div class="register-box-body">
 
       <div class="box box-solid">
+
+        <h3><?= gettext("Registration Complete") ?></h3>
+
+
         <div class="box-header with-border">
           <h3
-            class="box-title"><?= gettext("Confirm") . " <b>" . $family->getName() . "</b> " . gettext("family information") ?></h3>
+            class="box-title"><?= gettext("Thank you for registering your family."); ?></h3>
         </div>
         <div class="box-body">
-          <h3><?= gettext("Family")?></h3>
+          <h3><?= $family->getName() . " " . gettext("Family")?></h3>
           <b><?= gettext("Address") ?></b>: <?= $family->getAddress(); ?><br/>
           <b><?= gettext("Home Phone")?></b>: <?= $family->getHomePhone(); ?>
           <h3><?= gettext("Member(s)")?></h3>
@@ -26,8 +30,12 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
                 <?= $person->getFamilyRoleName() ." - ". $person->getFullName(); ?><br/>
            <?php } ?>
         </div>
-        <div class="box-footer">
-          <button type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext("Finish"); ?></button>
+
+
+        <p/>
+
+        <div class="text-center">
+          <a href="<?= $sRootPath ?>/" class="btn btn-success">Done</a>
         </div>
       </div>
 
