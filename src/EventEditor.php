@@ -488,40 +488,19 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
       <?php if ( $bDescError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a description.") . "</span></div>"; ?>
     </td>
   </tr>
+  <?php
+    $eventStart = $sEventStartDate . " " . $iEventStartHour. ":".$iEventStartMins;
+    $eventEnd = $sEventEndDate . " " . $iEventEndHour. ":".$iEventEndMins;
+  ?>
+  <tr>
+    <td class="LabelColumn"><span style="color: red">*</span>
+      <?= gettext("Date Range:") ?>
+    </td>
+    <td class="TextColumn">
+      <input type="text" name="EventDateRange" value="<?= $eventStart ." - ". $eventEnd?>"
+             maxlength="10" id="EventDateRange" size="50" class='form-control' required>
+    </td>
 
-  <tr>
-    <td class="LabelColumn"><span style="color: red">*</span>
-      <?= gettext("Start Date:") ?>
-    </td>
-    <td class="TextColumn">
-      <input type="text" name="EventStartDate" value="<?= ($sEventStartDate) ?>" maxlength="10" id="EventStartDate" size="11" class='form-control'>
-      <?php if ( $bESDError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a start date.") . "</span></div>"; ?>
-    </td>
-    <td class="LabelColumn"><span style="color: red">*</span>
-      <?= gettext("Start Time:") ?>
-    </td>
-    <td class="TextColumn">
-     <div class="input-group bootstrap-timepicker timepicker">
-      <input name="EventStartTime" id="EventStartTime" type="text" class='form-control' placeholder='HH:MM  AM/PM' />
-     </div>
-      <?php if ( $bESTError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a start time.") . "</span></div>"; ?>
-    </td>
-  </tr>
-  <tr>
-    <td class="LabelColumn">
-      <?= gettext("End Date:") ?>
-    </td>
-    <td class="TextColumn">
-      <input type="text" name="EventEndDate" value="<?= ($sEventEndDate) ?>" maxlength="10" id="EventEndDate" size="11" class='form-control'>
-    </td>
-    <td class="LabelColumn">
-      <?= gettext("End Time:") ?>
-    </td>
-    <td class="TextColumn">
-     <div class="input-group bootstrap-timepicker timepicker">
-      <input name="EventEndTime" id="EventEndTime" type="text" class='form-control' placeholder='HH:MM AM/PM' />
-     </div>
-    </td>
   </tr>
 
   <tr>
@@ -590,9 +569,13 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
 </div>
 
 <script>
-$("#EventStartDate").datepicker({format:'yyyy-mm-dd'});
-$("#EventEndDate").datepicker({format:'yyyy-mm-dd'});
-$("#EventStartTime").timepicker({defaultTime: false});
-$("#EventEndTime").timepicker({defaultTime: false});
+  $('#EventDateRange').daterangepicker({
+    timePicker: true,
+    timePickerIncrement: 30,
+    format: 'YYYY-MM-DD h:mm A',
+    startDate: '<?= $eventStart ?>',
+    endDate: '<?= $eventEnd ?>'
+  });
 </script>
+
 <?php require "Include/Footer.php" ?>
