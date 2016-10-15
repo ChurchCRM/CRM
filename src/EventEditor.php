@@ -502,7 +502,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
     </td>
     <td class="TextColumn">
      <div class="input-group bootstrap-timepicker timepicker">
-      <input name="EventStartTime" id="EventStartTime" type="text" class='form-control' placeholder='HH:MM' />
+      <input name="EventStartTime" id="EventStartTime" type="text" class='form-control' placeholder='HH:MM  AM/PM' />
      </div>
       <?php if ( $bESTError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a start time.") . "</span></div>"; ?>
     </td>
@@ -519,7 +519,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
     </td>
     <td class="TextColumn">
      <div class="input-group bootstrap-timepicker timepicker">
-      <input name="EventEndTime" id="EventEndTime" type="text" class='form-control' placeholder='HH:MM' />
+      <input name="EventEndTime" id="EventEndTime" type="text" class='form-control' placeholder='HH:MM AM/PM' />
      </div>
     </td>
   </tr>
@@ -592,7 +592,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
 <script>
 $("#EventStartDate").datepicker({format:'yyyy-mm-dd'});
 $("#EventEndDate").datepicker({format:'yyyy-mm-dd'});
-$("#EventStartTime").timepicker({showMeridian: false,  defaultTime: false});
-$("#EventEndTime").timepicker({showMeridian: false,  defaultTime: false});
+$("#EventStartTime").timepicker({defaultTime: false});
+$("#EventEndTime").timepicker({defaultTime: false});
 </script>
 <?php require "Include/Footer.php" ?>
