@@ -75,7 +75,7 @@ class TimelineService
   {
     $item = NULL;
     if ($this->currentUserIsAdmin || $dbNote->isVisable($this->currentUser)) {
-      $displayEditedBy = gettext("Unknown" . $dbNote->getDisplayEditedBy());
+      $displayEditedBy = gettext("Unknown");
       if ($dbNote->getDisplayEditedBy() == "-1") {
         $displayEditedBy = gettext("Self Registration");
       } else {
