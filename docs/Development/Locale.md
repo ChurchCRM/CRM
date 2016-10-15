@@ -1,14 +1,19 @@
+##Want to help translate this project?
+[Join the Project on POEditor](https://poeditor.com/join/project/RABdnDSqAt)
+
 ##The system uses gettext for localization
 
 checkout http://www.gnu.org/software/gettext/manual/ 
 
-##Localized Files
-locale dir https://github.com/ChurchCRM/CRM/tree/master/src/locale
-
 ##System locale 
-The hosting system must have the correct locale as gettext depends on system libs for localization
-- see http://www.shellhacks.com/en/HowTo-Change-Locale-Language-and-Character-Set-in-Linux 
 
+1. Ensure System has correct locals ```sudo locale-gen es_ES```
+
+    The hosting system must have the correct locale as gettext depends on system libs for localization
+     - see http://www.shellhacks.com/en/HowTo-Change-Locale-Language-and-Character-Set-in-Linux 
+
+2. Visit System Settings 
+3. Change ```sLanguage``` to one of the available languages in the drop down. 
 
 ##Generate new message.po file 
 
@@ -18,6 +23,3 @@ The hosting system must have the correct locale as gettext depends on system lib
 - Review changes in /vagrant/src/locale/messages.po 
 - Commit messages.po
 
-##Want to help translate this project?
-Join the Project on POEditor
-https://poeditor.com/join/project/RABdnDSqAt
