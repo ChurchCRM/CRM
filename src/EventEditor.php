@@ -480,9 +480,11 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
       <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control'>
       <?php if ( $bTitleError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a title.") . "</span></div>"; ?>
     </td>
+  </tr>
+  <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Desc:") ?></td>
-    <td colspan="1" class="TextColumn">
-      <input type="text" name="EventDesc" value="<?= ($sEventDesc) ?>" size="30" maxlength="100" class='form-control'>
+    <td colspan="3" class="TextColumn">
+      <textarea name="EventDesc" rows="4" maxlength="100" class='form-control'><?= ($sEventDesc) ?></textarea>
       <?php if ( $bDescError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a description.") . "</span></div>"; ?>
     </td>
   </tr>
