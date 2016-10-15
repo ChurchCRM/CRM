@@ -435,11 +435,12 @@ class SystemService
         } 
         $zip->close();
       }
-      return "It is done";
+      unlink($zipFilename);
+      return "success";
     }
     else
     {
-       return "hashes dont match.  don't touch it!";
+       return "hash validation failure";
     }
    
   }
