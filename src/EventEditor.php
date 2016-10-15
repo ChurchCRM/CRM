@@ -283,7 +283,6 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
             $sCountNotes = $evtcnt_notes;
           }
         }
-//        for($v=0; $v<$aNumCounts; $v++)echo "count {$cCountName[$v]} = {$cCount[$v]}\n\r";
 
 } elseif (isset($_POST["SaveChanges"])) {
 // Does the user want to save changes to text fields?
@@ -292,8 +291,6 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
         $EventExists = $_POST['EventExists'];
         $sEventTitle = $_POST['EventTitle'];
         $sEventDesc = $_POST['EventDesc'];
-        $sEventStartDate = $_POST['EventStartDate'];
-        $sEventStartTime = $_POST['EventStartTime'];
         if (empty($_POST['EventTitle'])) {
                 $bTitleError = true;
                 $iErrors++;
@@ -313,29 +310,25 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
 					$sTypeName = $type_name;
 				}
         $sEventText = $_POST['EventText'];
-        if (empty($_POST['EventStartDate'])) {
+        if (empty($_POST['EventDateRange'])) {
                 $bESDError = true;
                 $iErrors++;
-        }
-        if (empty($_POST['EventStartTime'])) {
-                $bESTError = true;
-                $iErrors++;
-        } else {
-                $aESTokens = explode(":", $_POST['EventStartTime']);
-                $iEventStartHour = $aESTokens[0];
-                $iEventStartMins = $aESTokens[1];
         }
 				if ($_POST['EventStatus'] === NULL) {
                 $bStatusError = true;
                 $iErrors++;
         }
-        $sEventStart = $sEventStartDate." ".$sEventStartTime;
-        $sEventEndDate = $_POST['EventEndDate'];
-        $sEventEndTime = $_POST['EventEndTime'];
-        $aEETokens = explode(":", $_POST['EventEndTime']);
-        $iEventEndHour = $aEETokens[0];
-        $iEventEndMins = $aEETokens[1];
-        $sEventEnd = $sEventEndDate." ".$sEventEndTime;
+        $sEventRange = $_POST['EventDateRange'];
+        $sEventStartDateTime = DateTime::createFromFormat("Y-m-d H:i a", explode(" - ", $sEventRange)[0]);
+        $sEventEndDateTime = DateTime::createFromFormat("Y-m-d H:i a", explode(" - ", $sEventRange)[1]);
+        $sEventStart = $sEventStartDateTime->format("Y-m-d H:i");
+        $sEventStartDate =  $sEventStartDateTime->format("Y-m-d");
+        $iEventStartHour = $sEventStartDateTime->format("H");
+        $iEventStartMins = $sEventStartDateTime->format("i");
+        $sEventEnd = $sEventEndDateTime->format("Y-m-d H:i");
+        $sEventEndDate =  $sEventEndDateTime->format("Y-m-d");
+        $iEventEndHour = $sEventEndDateTime->format("H");
+        $iEventEndMins = $sEventEndDateTime->format("i");
         $iEventStatus = $_POST['EventStatus'];
 
         $iNumCounts = $_POST["NumAttendCounts"];
@@ -572,7 +565,10 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   $('#EventDateRange').daterangepicker({
     timePicker: true,
     timePickerIncrement: 30,
+    linkedCalendars: true,
+    showDropdowns: true,
     format: 'YYYY-MM-DD h:mm A',
+    minDate: 1/1/1990,
     startDate: '<?= $eventStart ?>',
     endDate: '<?= $eventEnd ?>'
   });
