@@ -23,8 +23,7 @@ $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 $sPageTitle = gettext("Deposit Listing");
 
 // Security: User must have finance permission to use this form
-if (!$_SESSION['bFinance'])
-{
+if (!$_SESSION['bFinance']) {
   Redirect("index.php");
   exit;
 }
@@ -39,17 +38,19 @@ require "Include/Header.php";
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Confirm Delete</h4>
+        <h4 class="modal-title"><?= gettext("Confirm Delete") ?></h4>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete the selected <span id="deleteNumber"></span> Deposit(s)?</p>
-        <p>This will also delete all payments associated with this deposit</p>
-        <p>This action CANNOT be undone, and may have legal implications!</p>
-        <p>Please ensure this what you want to do.</p>
-        <button type="button" class="btn btn-danger" id="deleteConfirmed" ><?php echo gettext("Delete"); ?></button>
+        <p><?= gettext("Are you sure you want to delete the selected"); ?> <span
+            id="deleteNumber"></span> <?= gettext("Deposit(s)"); ?>?
+        </p>
+        <p><?= gettext("This will also delete all payments associated with this deposit"); ?></p>
+        <p><?= gettext("This action CANNOT be undone, and may have legal implications!") ?></p>
+        <p><?= gettext("Please ensure this what you want to do.") ?></p>
+        <button type="button" class="btn btn-danger" id="deleteConfirmed"><?php echo gettext("Delete"); ?></button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><?= gettext("Close"); ?></button>
       </div>
     </div>
   </div>
@@ -58,7 +59,7 @@ require "Include/Header.php";
 
 <div class="box">
   <div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext("Add New Deposit: ");?></h3>
+    <h3 class="box-title"><?php echo gettext("Add New Deposit: "); ?></h3>
   </div>
   <div class="box-body">
     <form action="#" method="get" class="form">
@@ -69,16 +70,16 @@ require "Include/Header.php";
             <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
           </div>
           <div class="col-lg-3">
-            <label for="depositType">Deposit Type</label>
-            <select  class="form-control" id="depositType" name="depositType">
-              <option value="Bank">Bank</option>
-              <option value="CreditCard">Credit Card</option>
-              <option value="BankDraft">Bank Draft</option>
-              <option value="eGive">eGive</option>
+            <label for="depositType"><?= gettext("Deposit Type") ?></label>
+            <select class="form-control" id="depositType" name="depositType">
+              <option value="Bank"><?= gettext("Bank") ?></option>
+              <option value="CreditCard"><?= gettext("Credit Card") ?></option>
+              <option value="BankDraft"><?= gettext("Bank Draft") ?></option>
+              <option value="eGive"><?= gettext("eGive") ?></option>
             </select>
           </div>
           <div class="col-lg-3">
-            <label for="addNewGruop">Deposit Date</label>
+            <label for="addNewGruop"><?= gettext("Deposit Date") ?></label>
             <input class="form-control" name="depositDate" id="depositDate" style="width:100%">
           </div>
         </div>
@@ -86,7 +87,7 @@ require "Include/Header.php";
       <p>
       <div class="row">
         <div class="col-xs-3">
-          <button type="button" class="btn btn-primary" id ="addNewDeposit" >Add New Deposit</button>
+          <button type="button" class="btn btn-primary" id="addNewDeposit"><?= gettext("Add New Deposit") ?></button>
         </div>
       </div>
     </form>
@@ -95,21 +96,28 @@ require "Include/Header.php";
 
 <div class="box">
   <div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext("Deposits: ");?></h3>
+    <h3 class="box-title"><?php echo gettext("Deposits: "); ?></h3>
   </div>
   <div class="box-body">
     <div class="container-fluid">
       <table class="display responsive nowrap" id="depositsTable" width="100%"></table>
-  
-      <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext("Delete Selected Rows") ?> </button>
-      <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx" disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (OFX)") ?></button>
-      <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv" disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (CSV)") ?></button>
-      <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf" disabled> <?= gettext("Generate Deposit Split for Selected Rows (PDF)") ?></button>
-    </div >
+
+      <button type="button" id="deleteSelectedRows" class="btn btn-danger"
+              disabled> <?= gettext("Delete Selected Rows") ?> </button>
+      <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
+              disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (OFX)") ?></button>
+      <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
+              disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (CSV)") ?></button>
+      <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
+              disabled> <?= gettext("Generate Deposit Split for Selected Rows (PDF)") ?></button>
+    </div>
   </div>
 </div>
-<link href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet" type="text/css"/>
-<script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+<link href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css"
+      rel="stylesheet" type="text/css"/>
+<script
+  src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"
+  type="text/javascript"></script>
 <script src="<?= $sRootPath; ?>/skin/js/FindDepositSlip.js"></script>
 
 <?php require "Include/Footer.php" ?>
