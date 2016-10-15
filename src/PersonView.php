@@ -777,7 +777,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     var answer = confirm("<?= gettext("Are you sure you want to remove this person from the Group") ?>");
     if (answer)
       $.ajax({
-        method: "DELETE",
+        method: "POST",
+        data:{"_METHOD":"DELETE"},
         url: window.CRM.root + "/api/groups/" + Group + "/removeuser/" + Person
       }).done(function (data) {
         location.reload();
