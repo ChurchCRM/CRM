@@ -1,21 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-08 04:36+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: en-us\n"
 
 #: AutoPaymentClearAccounts.php:20 CatchCreatePayment.php:67
 #: Include/Functions.php:376
@@ -217,34 +207,23 @@ msgid "Backup Database"
 msgstr ""
 
 #: BackupDatabase.php:47
-msgid ""
-"This tool will assist you in manually backing up the ChurchCRM database."
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr ""
 
 #: BackupDatabase.php:51
-msgid ""
-"You should make a manual backup at least once a week unless you already have "
-"a regular backup procedule for your systems."
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
 msgstr ""
 
 #: BackupDatabase.php:52
-msgid ""
-"After you download the backup file, you should make two copies. Put one of "
-"them in a fire-proof safe on-site and the other in a safe location off-site."
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
 msgstr ""
 
 #: BackupDatabase.php:53
-msgid ""
-"If you are concerned about confidentiality of data stored in the ChurchCRM "
-"database, you should encrypt the backup data if it will be stored somewhere "
-"potentially accessible to others"
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
 msgstr ""
 
 #: BackupDatabase.php:54
-msgid ""
-"For added backup security, you can e-mail the backup to yourself at an e-"
-"mail account hosted off-site or to a trusted friend.  Be sure to use "
-"encryption if you do this, however."
+msgid "For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."
 msgstr ""
 
 #: BackupDatabase.php:58
@@ -672,15 +651,11 @@ msgid "Clear Persons and Families"
 msgstr ""
 
 #: CSVImport.php:908
-msgid ""
-"Warning!  Do not select this option if you plan to add to an existing "
-"database.<br/>"
+msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
 msgstr ""
 
 #: CSVImport.php:909
-msgid ""
-"Use only if unsatisfied with initial import.  All person and member data "
-"will be destroyed!"
+msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
 msgstr ""
 
 #: CSVImport.php:927
@@ -763,9 +738,7 @@ msgid "Assign Canvassers"
 msgstr ""
 
 #: CanvassAutomation.php:173
-msgid ""
-"Randomly assign canvassers to all Families.  The Canvassers are taken from "
-"the &quot;Canvassers&quot; Group."
+msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
 msgstr ""
 
 #: CanvassAutomation.php:180
@@ -773,9 +746,7 @@ msgid "Assign To Non Pledging"
 msgstr ""
 
 #: CanvassAutomation.php:184
-msgid ""
-"Randomly assign canvassers to non-pledging Families.  The Canvassers are "
-"taken from the &quot;BraveCanvassers&quot; Group."
+msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
 msgstr ""
 
 #: CanvassAutomation.php:191
@@ -787,9 +758,7 @@ msgid "Clear all the canvasser assignments for all families."
 msgstr ""
 
 #: CanvassAutomation.php:195
-msgid ""
-"Important note: this will lose any canvasser assignments that have been made "
-"by hand."
+msgid "Important note: this will lose any canvasser assignments that have been made by hand."
 msgstr ""
 
 #: CanvassAutomation.php:202
@@ -801,9 +770,7 @@ msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
 msgstr ""
 
 #: CanvassAutomation.php:206 CanvassAutomation.php:217
-msgid ""
-"Important note: this will lose any &quot;Ok To Canvass&quot; fields that "
-"have been set by hand."
+msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
 msgstr ""
 
 #: CanvassAutomation.php:213
@@ -819,9 +786,7 @@ msgid "Briefing Sheets"
 msgstr ""
 
 #: CanvassAutomation.php:228
-msgid ""
-"Generate a PDF containing briefing sheets for all Families, sorted by "
-"canvasser."
+msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
 msgstr ""
 
 #: CanvassAutomation.php:234
@@ -829,10 +794,7 @@ msgid "Progress Report"
 msgstr ""
 
 #: CanvassAutomation.php:238
-msgid ""
-"Generate a PDF containing a progress report.  The progress report includes "
-"information on the overall progress of the canvass, and the progress of "
-"individual canvassers."
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
 msgstr ""
 
 #: CanvassAutomation.php:244
@@ -840,9 +802,7 @@ msgid "Summary Report"
 msgstr ""
 
 #: CanvassAutomation.php:248
-msgid ""
-"Generate a PDF containing a summary report.  The summary report includes "
-"comments extracted from the canvass data."
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
 msgstr ""
 
 #: CanvassAutomation.php:254
@@ -850,9 +810,7 @@ msgid "Not Interested Report"
 msgstr ""
 
 #: CanvassAutomation.php:258
-msgid ""
-"Generate a PDF containing a report of the families marked &quot;Not "
-"Interested&quot; by the canvasser."
+msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
 msgstr ""
 
 #: CanvassEditor.php:46
@@ -1181,10 +1139,7 @@ msgid "Oops! Something went wrong"
 msgstr ""
 
 #: CheckVersion.php:64
-msgid ""
-"There is an incompatibility between database schema and installed software. "
-"You are seeing this message because there is a software bug or an incomplete "
-"upgrade."
+msgid "There is an incompatibility between database schema and installed software. You are seeing this message because there is a software bug or an incomplete upgrade."
 msgstr ""
 
 #: CheckVersion.php:74
@@ -1342,9 +1297,7 @@ msgid "Deposit Slip Report"
 msgstr ""
 
 #: DepositSlipEditor.php:103
-msgid ""
-"Important note: failed transactions will be deleted permanantly when the "
-"deposit slip is closed."
+msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
 msgstr ""
 
 #: DepositSlipEditor.php:112
@@ -1555,18 +1508,14 @@ msgid "Are you sure you want to delete this fund?"
 msgstr ""
 
 #: DonationFundEditor.php:169
-msgid ""
-"Warning: Field changes will be lost if you do not 'Save Changes' before "
-"using a delete or 'add new' button!"
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
 msgstr ""
 
 #: DonationFundEditor.php:174 FamilyCustomFieldsEditor.php:346
 #: GroupPropsFormEditor.php:300 OptionManager.php:316
 #: PersonCustomFieldsEditor.php:296 PersonEditor.php:561
 #: VolunteerOpportunityEditor.php:355
-msgid ""
-"Invalid fields or selections. Changes not saved! Please correct and try "
-"again!"
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr ""
 
 #: DonationFundEditor.php:184
@@ -1964,14 +1913,11 @@ msgid "Optional"
 msgstr ""
 
 #: EventNames.php:235
-msgid ""
-"Enter a list of the attendance counts you want to include with this event."
+msgid "Enter a list of the attendance counts you want to include with this event."
 msgstr ""
 
 #: EventNames.php:236
-msgid ""
-"Separate each count_name with a comma. e.g. Members, Visitors, Campus, "
-"Children"
+msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
 msgstr ""
 
 #: EventNames.php:237
@@ -1999,16 +1945,11 @@ msgid "Default Option"
 msgstr ""
 
 #: FamilyCustomFieldsEditor.php:316
-msgid ""
-"Warning:  By deleting this field, you will irrevokably lose all family data "
-"assigned for this field!"
+msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
 msgstr ""
 
 #: FamilyCustomFieldsEditor.php:328 PersonCustomFieldsEditor.php:280
-msgid ""
-"Warning: Arrow and delete buttons take effect immediately.  Field name "
-"changes will be lost if you do not 'Save Changes' before using an up, down, "
-"delete or 'add new' button!"
+msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
 msgstr ""
 
 #: FamilyCustomFieldsEditor.php:337
@@ -2166,9 +2107,7 @@ msgid "Family Members"
 msgstr ""
 
 #: FamilyEditor.php:922
-msgid ""
-"You may create family members now or add them later.  All entries will "
-"become <i>new</i> person records."
+msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
 msgstr ""
 
 #: FamilyEditor.php:927
@@ -2471,8 +2410,7 @@ msgid "Confirm Delete"
 msgstr ""
 
 #: FamilyView.php:807 PersonView.php:762
-msgid ""
-"You are about to delete the profile photo, this procedure is irreversible."
+msgid "You are about to delete the profile photo, this procedure is irreversible."
 msgstr ""
 
 #: FamilyView.php:809 FamilyView.php:833 PersonView.php:764
@@ -2484,9 +2422,7 @@ msgid "Confirm PDF Email"
 msgstr ""
 
 #: FamilyView.php:830
-msgid ""
-"You are about to email copy of the family information in pdf to the "
-"following emails"
+msgid "You are about to email copy of the family information in pdf to the following emails"
 msgstr ""
 
 #: FamilyView.php:841
@@ -2502,8 +2438,7 @@ msgid "Oops! Family not found."
 msgstr ""
 
 #: FamilyView.php:866
-msgid ""
-"We could not find the family you were looking for.<br>Meanwhile, you may"
+msgid "We could not find the family you were looking for.<br>Meanwhile, you may"
 msgstr ""
 
 #: FamilyView.php:867 PersonView.php:807
@@ -2703,9 +2638,7 @@ msgid "Summary Data"
 msgstr ""
 
 #: FinancialReports.php:309
-msgid ""
-"Voting members must have made<br> a donation within this many years<br> (0 "
-"to not require a donation):"
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
 msgstr ""
 
 #: FinancialReports.php:315
@@ -3026,11 +2959,7 @@ msgid "Schedule Group Meeting"
 msgstr ""
 
 #: GroupMeeting.php:158
-msgid ""
-"Important note: this form may be used to schedule a WebCalendar meeting.  "
-"Once the  meeting is scheduled any changes must be made within WebCalendar.  "
-"All members of this group will be added to the meeting as external users of "
-"WebCalendar."
+msgid "Important note: this form may be used to schedule a WebCalendar meeting.  Once the  meeting is scheduled any changes must be made within WebCalendar.  All members of this group will be added to the meeting as external users of WebCalendar."
 msgstr ""
 
 #: GroupMeeting.php:165
@@ -3062,9 +2991,7 @@ msgid "Group Member Properties Editor"
 msgstr ""
 
 #: GroupPropsEditor.php:122
-msgid ""
-"This group currently has no properties!  You can add them in the Group "
-"Editor."
+msgid "This group currently has no properties!  You can add them in the Group Editor."
 msgstr ""
 
 #: GroupPropsEditor.php:124
@@ -3092,9 +3019,7 @@ msgid "No properties have been added yet"
 msgstr ""
 
 #: GroupPropsFormEditor.php:295
-msgid ""
-"Warning: Field changes will be lost if you do not 'Save Changes' before "
-"using an up, down, delete, or 'add new' button!"
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
 msgstr ""
 
 #: GroupPropsFormEditor.php:311
@@ -3186,15 +3111,11 @@ msgid "Please confirm deletion of this group record:"
 msgstr ""
 
 #: GroupView.php:114
-msgid ""
-"This will also delete all Roles and Group-Specific Property data associated "
-"with this Group record."
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
 msgstr ""
 
 #: GroupView.php:116
-msgid ""
-"All group membership and properties will be destroyed.  The group members "
-"themselves will not be altered."
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
 msgstr ""
 
 #: GroupView.php:118
@@ -3358,9 +3279,7 @@ msgid "Invalid login or password"
 msgstr ""
 
 #: Login.php:122
-msgid ""
-"Too many failed logins: your account has been locked.  Please contact an "
-"administrator."
+msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr ""
 
 #: Login.php:295
@@ -3420,15 +3339,11 @@ msgid "Assign starting at #"
 msgstr ""
 
 #: MapUsingGoogle.php:45
-msgid ""
-"Unable to display map due to missing Church Latitude or Longitude. Please "
-"update the church Address in the settings menu."
+msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
 msgstr ""
 
 #: MapUsingGoogle.php:51
-msgid ""
-"Google Map API key is not set. The Map will work for smaller set of "
-"locations. Please create a Key in the maps sections of the setting menu."
+msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
 msgstr ""
 
 #: MapUsingGoogle.php:163
@@ -3553,9 +3468,7 @@ msgid "US Address Verification Report"
 msgstr ""
 
 #: MembersDashboard.php:249
-msgid ""
-"Generate report comparing all US family addresses with United States Postal "
-"Service Standard Address Format.<br>"
+msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
 msgstr ""
 
 #: MembersDashboard.php:274
@@ -3699,9 +3612,7 @@ msgid "Editor"
 msgstr ""
 
 #: OptionManager.php:308
-msgid ""
-"Warning: Removing will reset all assignments for all persons with the "
-"assignment!"
+msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
 msgstr ""
 
 #: OptionManager.php:315
@@ -3782,9 +3693,7 @@ msgid "Custom Person Fields Editor"
 msgstr ""
 
 #: PersonCustomFieldsEditor.php:268
-msgid ""
-"Warning:  By deleting this field, you will irrevokably lose all person data "
-"assigned for this field!"
+msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
 msgstr ""
 
 #: PersonCustomFieldsEditor.php:289
@@ -3973,8 +3882,7 @@ msgid "Oops! Person not found."
 msgstr ""
 
 #: PersonView.php:807
-msgid ""
-"We could not find the person you were looking for.<br>Meanwhile, you may"
+msgid "We could not find the person you were looking for.<br>Meanwhile, you may"
 msgstr ""
 
 #: PledgeDetails.php:19
@@ -4188,9 +4096,7 @@ msgid "Please confirm deletion of this property:"
 msgstr ""
 
 #: PropertyDelete.php:63
-msgid ""
-"Deleting this Property will also delete all assignments of this Property to "
-"any People, Family, or Group records."
+msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr ""
 
 #: PropertyDelete.php:69 PropertyTypeDelete.php:73 SelectDelete.php:233
@@ -4227,8 +4133,7 @@ msgid "Prompt:"
 msgstr ""
 
 #: PropertyEditor.php:179
-msgid ""
-"Entering a Prompt value will allow the association of a free-form value."
+msgid "Entering a Prompt value will allow the association of a free-form value."
 msgstr ""
 
 #: PropertyList.php:45
@@ -4408,9 +4313,7 @@ msgid "Software Registration"
 msgstr ""
 
 #: Register.php:81
-msgid ""
-"Please register your copy of ChurchCRM by checking over this information and "
-"pressing the Send button.  "
+msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
 msgstr ""
 
 #: Register.php:82
@@ -4422,9 +4325,7 @@ msgid "Send"
 msgstr ""
 
 #: Register.php:99
-msgid ""
-"If you need to make changes go to Admin->Edit General Settings and Admin-"
-">Edit Report Settings.  "
+msgid "If you need to make changes go to Admin->Edit General Settings and Admin->Edit Report Settings.  "
 msgstr ""
 
 #: ReminderReport.php:27
@@ -4460,9 +4361,7 @@ msgid "Family Delete Confirmation"
 msgstr ""
 
 #: SelectDelete.php:225
-msgid ""
-"Sorry, this person is a user.  An administrator must remove their user "
-"status before they may be deleted from the database."
+msgid "Sorry, this person is a user.  An administrator must remove their user status before they may be deleted from the database."
 msgstr ""
 
 #: SelectDelete.php:226
@@ -4478,9 +4377,7 @@ msgid " (This action CANNOT be undone!)"
 msgstr ""
 
 #: SelectDelete.php:245
-msgid ""
-"Sorry, there are records of donations from this family. This family may not "
-"be deleted."
+msgid "Sorry, there are records of donations from this family. This family may not be deleted."
 msgstr ""
 
 #: SelectDelete.php:246
@@ -4488,9 +4385,7 @@ msgid "Return to Family View"
 msgstr ""
 
 #: SelectDelete.php:251
-msgid ""
-"WARNING: This family has records of donations and may NOT be deleted until "
-"these donations are associated with another family."
+msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
 msgstr ""
 
 #: SelectDelete.php:255
@@ -4510,8 +4405,7 @@ msgid "Please confirm deletion of this family record:"
 msgstr ""
 
 #: SelectDelete.php:374
-msgid ""
-"Note: This will also delete all Notes associated with this Family record."
+msgid "Note: This will also delete all Notes associated with this Family record."
 msgstr ""
 
 #: SelectDelete.php:375
@@ -4649,9 +4543,7 @@ msgid "Default User Settings"
 msgstr ""
 
 #: SettingsUser.php:90
-msgid ""
-"Set Permission True to give new users the ability to change their current "
-"value.<BR>"
+msgid "Set Permission True to give new users the ability to change their current value.<BR>"
 msgstr ""
 
 #: SettingsUser.php:93 UserEditor.php:432
@@ -4709,8 +4601,7 @@ msgid "https://www.intelligentsearch.com/Hosted/User/"
 msgstr ""
 
 #: USISTAddressVerification.php:419
-msgid ""
-"http://www.intelligentsearch.com/address_verification/verify_address.html"
+msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
 msgstr ""
 
 #: UpdateAllLatLon.php:30
@@ -4802,9 +4693,7 @@ msgid "Style:"
 msgstr ""
 
 #: UserEditor.php:429
-msgid ""
-"Set Permission True to give this user the ability to change their current "
-"value."
+msgid "Set Permission True to give this user the ability to change their current value."
 msgstr ""
 
 #: UserList.php:47
@@ -4880,15 +4769,11 @@ msgid "User Password Change"
 msgstr ""
 
 #: UserPasswordChange.php:200
-msgid ""
-"Your account record indicates that you need to change your password before "
-"proceding."
+msgid "Your account record indicates that you need to change your password before proceding."
 msgstr ""
 
 #: UserPasswordChange.php:211
-msgid ""
-"Enter your current password, then your new password twice.  Passwords must "
-"be at least"
+msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr ""
 
 #: UserPasswordChange.php:211
@@ -4956,9 +4841,7 @@ msgid "No volunteer opportunities have been added yet"
 msgstr ""
 
 #: VolunteerOpportunityEditor.php:347
-msgid ""
-"NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or "
-"Desc fields must be saved by pressing 'Save Changes'"
+msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
 msgstr ""
 
 #: VolunteerOpportunityEditor.php:449
@@ -5054,12 +4937,10 @@ msgid "No families need canvassers assigned"
 msgstr ""
 
 #: Include/CanvassUtilities.php:82
-#, php-format
 msgid "Canvassers assigned at random to %d families."
 msgstr ""
 
 #: Include/CanvassUtilities.php:115
-#, php-format
 msgid "Canvassers assigned at random to %d non-pledging families."
 msgstr ""
 
@@ -5292,9 +5173,7 @@ msgid "What were you doing when you noticed the bug / feature opportunity?"
 msgstr ""
 
 #: Include/Header-function.php:101
-msgid ""
-"When you click \"submit,\" an error report will be posted to the ChurchCRM "
-"GitHub Issue tracker."
+msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
 msgstr ""
 
 #: Include/Header-function.php:102
@@ -5302,15 +5181,11 @@ msgid "Please do not include any confidential information."
 msgstr ""
 
 #: Include/Header-function.php:103
-msgid ""
-"Some general information about your system will be submitted along with the "
-"request such as Server version and browser headers."
+msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
 msgstr ""
 
 #: Include/Header-function.php:104
-msgid ""
-"No personally identifiable information will be submitted unless you "
-"purposefully include it."
+msgid "No personally identifiable information will be submitted unless you purposefully include it."
 msgstr ""
 
 #: Include/Header-function.php:291 Include/Header-function.php:487
@@ -5481,9 +5356,7 @@ msgid "Member/Friend"
 msgstr ""
 
 #: Reports/DirectoryReport.php:186
-msgid ""
-"This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchCRM."
+msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr ""
 
 #: Reports/DirectoryReport.php:294 Reports/GroupReport.php:129
@@ -5570,15 +5443,11 @@ msgid "Amount paid: ________________"
 msgstr ""
 
 #: Reports/FundRaiserStatement.php:228
-msgid ""
-"Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ "
-"__    __ __ __ __    __ __ __ __  Exp __ / __"
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr ""
 
 #: Reports/FundRaiserStatement.php:230
-msgid ""
-"                                        Signature "
-"________________________________________________________________"
+msgid "                                        Signature ________________________________________________________________"
 msgstr ""
 
 #: Reports/PDF_Attendance.php:119
@@ -5771,8 +5640,7 @@ msgid "Students not in a Sunday School Class"
 msgstr ""
 
 #: sundayschool/SundaySchoolReports.php:101
-msgid ""
-"At least one group must be selected to make class lists or attendance sheets."
+msgid "At least one group must be selected to make class lists or attendance sheets."
 msgstr ""
 
 #: sundayschool/SundaySchoolReports.php:122
@@ -5780,8 +5648,7 @@ msgid "Report Details"
 msgstr ""
 
 #: sundayschool/SundaySchoolReports.php:129
-msgid ""
-"Select Group: \n"
+msgid "Select Group: \n"
 "To select multiple hold CTL"
 msgstr ""
 
@@ -5827,3 +5694,4 @@ msgstr ""
 #: sundayschool/SundaySchoolReports.php:216
 msgid "Create Attendance Sheet"
 msgstr ""
+
