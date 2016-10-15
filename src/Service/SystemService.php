@@ -390,8 +390,7 @@ class SystemService
       $diff = $previous->diff($now);  // calculate the difference.
       if (!$sLastIntegrityCheckTimeStamp || $diff->h >= $sIntegrityCheckInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
       {
-        $CRMInstallRoot = dirname(__DIR__);
-        $integrityCheckFile = $CRMInstallRoot."/integrityCheck.json";
+        $integrityCheckFile = dirname(__DIR__) . "/integrityCheck.json";
         $appIntegrity = $this->verifyApplicationIntegrity();
         file_put_contents($integrityCheckFile, json_encode($appIntegrity));
         $now = new \DateTime();  // update the LastBackupTimeStamp.

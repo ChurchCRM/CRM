@@ -40,7 +40,7 @@ require ("Include/HeaderNotLoggedIn.php");
         <li><? gettext("Full Path:")?> <span id="updateFullPath"> </span></li>
         <li><? gettext("SHA1:")?> <span id="updateSHA1"> </span></li>
       </ul>
-      <input type="button" class="btn btn-warning" id="applyUpdate" <?= 'value="' . gettext("Apply Update Files") . '"' ?>>
+      <input type="button" class="btn btn-warning" id="applyUpdate" value="<?= gettext("Upgrade System") ?>">
     </div>
     <div class="login-box-body" style="display:none" id="finalPhase">
       <p class="login-box-msg"><?= gettext('Step 4: Login') ?></p>
