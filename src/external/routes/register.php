@@ -70,21 +70,27 @@ $app->group('/register', function () {
       $person->setEmail($body["memberEmail-" . $x]);
 
       $phoneType = $body["memberPhoneType-" . $x];
-      if ($phoneType == "Mobile") {
+      if ($phoneType == "mobile") {
         $person->setCellPhone($body["memberPhone-" . $x]);
-      } else if ($phoneType == "Home") {
-        $person->setHomePhone($body["memberPhone-" . $x]);
-      } else if ($phoneType == "Work") {
+      } else if ($phoneType == "work") {
         $person->setWorkPhone($body["memberPhone-" . $x]);
+      } else {
+        $person->setHomePhone($body["memberPhone-" . $x]);
       }
 
-      $birthday = $body["birthday-" . $x];
+      $birthday = $body["memberBirthday-" . $x];
+      $person->setTitle($birthday);
       if (!empty($birthday)) {
         $birthdayDate = \DateTime::createFromFormat('m/d/Y', $birthday);
         $person->setBirthDay($birthdayDate->format("d"));
         $person->setBirthMonth($birthdayDate->format('m'));
         $person->setBirthYear($birthdayDate->format('Y'));
       }
+
+      if (!empty($body["memberHideAge-" . $x])) {
+        $person->setFlags(1);
+      }
+
       $person->setEnteredBy(1);
       $person->setDateEntered(new \DateTime());
 

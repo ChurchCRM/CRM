@@ -95,12 +95,12 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
                           <div class="input-group-addon">
                             <i class="fa fa-birthday-cake"></i>
                           </div>
-                          <input type="text" class="form-control inputDatePicker" id="birthday-<?= $x ?>" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask="">
+                          <input type="text" class="form-control inputDatePicker" name="memberBirthday-<?= $x ?>">
                         </div>
                       </div>
                       <div class="col-lg-6">
                           <label>
-                            <input type="checkbox" name="familyPrimaryChurch">&nbsp; <?= gettext("Hide Age") ?>
+                            <input type="checkbox" name="memberHideAge-<?= $x ?>">&nbsp; <?= gettext("Hide Age") ?>
                           </label>
                       </div>
                     </div>
@@ -119,7 +119,9 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
   </form>
   <script type="text/javascript">
     $(function () {
-      $("[data-mask]").inputmask();
+      $(".inputDatePicker").datepicker({
+        autoclose: true
+      });
     });
   </script>
 <?php
