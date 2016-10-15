@@ -53,7 +53,7 @@ if ($_SESSION['bFinance']) {
 }
 
 // Set the page title
-$sPageTitle = gettext("Welcome to <b>Church</b>CRM");
+$sPageTitle = gettext("Welcome to"). " <b>Church</b>CRM";
 
 require 'Include/Header.php';
 ?>
