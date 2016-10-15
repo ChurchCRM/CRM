@@ -36,6 +36,7 @@ require_once dirname(__FILE__) . '/../orm/conf/config.php';
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Version;
+use ChurchCRM\dto\LocaleInfo;
 
 
 if (!function_exists("mysql_failure")) {
@@ -72,9 +73,9 @@ $tablecheck = mysql_num_rows(mysql_query($sql));
 
 if (!$tablecheck) {
   $systemService = new SystemService();
-  $setupQueries = dirname(__file__). '/../mysql/install/Install.sql';
+  $setupQueries = dirname(__file__) . '/../mysql/install/Install.sql';
   $systemService->playbackSQLtoDatabase($setupQueries);
-  $configQueries = dirname(__file__). '/../mysql/upgrade/update_config.sql';
+  $configQueries = dirname(__file__) . '/../mysql/upgrade/update_config.sql';
   $systemService->playbackSQLtoDatabase($configQueries);
   $version = new Version();
   $version->setVersion($systemService->getInstalledVersion());
@@ -120,51 +121,27 @@ if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
 
 $sMetaRefresh = '';  // Initialize to empty
 
-require_once("winlocalelist.php");
-
-if (!function_exists("stripos")) {
-  function stripos($str, $needle)
-  {
-    return strpos(strtolower($str), strtolower($needle));
-  }
-}
-
-if (!(stripos(php_uname('s'), "windows") === false)) {
-  $sLanguage = $lang_map_windows[strtolower($sLanguage)];
-}
-
-$sLang_Code = $sLanguage;
-
-putenv("LANG=$sLang_Code");
-setlocale(LC_ALL, $sLang_Code, $sLang_Code . ".utf8", $sLang_Code . ".UTF8", $sLang_Code . ".utf-8", $sLang_Code . ".UTF-8");
-
 if (isset($sTimeZone)) {
   date_default_timezone_set($sTimeZone);
 }
 
+$localeInfo = new LocaleInfo($sLanguage);
+
+putenv("LANG=$localeInfo->getLanguageCode()");
+setlocale(LC_ALL, $localeInfo->getLocaleArray());
+
 // Get numeric and monetary locale settings.
-$aLocaleInfo = localeconv();
+$aLocaleInfo = $localeInfo->getLocaleInfo();
 
 // This is needed to avoid some bugs in various libraries like fpdf.
+// http://www.velanhotels.com/fpdf/FAQ.htm#6
 setlocale(LC_NUMERIC, 'C');
 
-// patch some missing data for Italian.  This shouldn't be necessary!
-if ($sLanguage == 'it_IT') {
-  $aLocaleInfo['thousands_sep'] = '.';
-  $aLocaleInfo['frac_digits'] = '2';
-}
+$domain = 'messages';
+$sLocaleDir = dirname(__FILE__) . '/../locale';
 
-if (function_exists('bindtextdomain')) {
-  $domain = 'messages';
-  $sLocaleDir = dirname(__FILE__) . '/../locale';
+bind_textdomain_codeset($domain, 'UTF-8');
+bindtextdomain($domain, $sLocaleDir);
+textdomain($domain);
 
-  bind_textdomain_codeset($domain, 'UTF-8');
-  bindtextdomain($domain, $sLocaleDir);
-  textdomain($domain);
-} else {
-  function gettext($string)
-  {
-    return $string;
-  }
-}
 ?>
