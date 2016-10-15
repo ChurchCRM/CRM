@@ -590,7 +590,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
 <script>
 $("#EventStartDate").datepicker({format:'yyyy-mm-dd'});
 $("#EventEndDate").datepicker({format:'yyyy-mm-dd'});
-$("#EventStartTime").timepicker({showMeridian: false});
-$("#EventEndTime").timepicker({showMeridian: false});
+$("#EventStartTime").timepicker({showMeridian: false,  defaultTime: false});
+$("#EventEndTime").timepicker({showMeridian: false,  defaultTime: false});
 </script>
 <?php require "Include/Footer.php" ?>
