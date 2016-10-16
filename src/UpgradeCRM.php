@@ -86,7 +86,6 @@ require ("Include/HeaderNotLoggedIn.php");
       contentType: "application/json; charset=utf-8"
     })
     .done(function(data) {
-      console.log(data);
       var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\"><i class='fa fa-download'></i>  "+data.filename+"</button>";
       $("#backupstatus").css("color","green");
       $("#backupstatus").html("<?= gettext("Backup Complete, Ready for Download.") ?>");
