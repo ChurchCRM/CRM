@@ -29,6 +29,7 @@
                 <include name="**"/>
                 <exclude name="Images/Person/thumbnails/*.jpg"/>
                 <exclude name="composer.lock"/>
+                <exclude name="signatures.json"/>
                 <exclude name="Include/Config.php"/>
                 <exclude name="vendor/almasaeed2010/**"/>
                 <exclude name="vendor/components/**"/>
@@ -41,6 +42,11 @@
                 <exclude name="skin/adminlte/plugins/datatables/extensions/TableTools/images/psd/**"/>
             </fileset>
         </copy>
+        
+        <echo message="Generating code signature file..."/>
+        <exec command = "php generateSignatures.php ${sourcedir}/churchcrm" passthru="true"/>
+
+
 
     </target>
 
