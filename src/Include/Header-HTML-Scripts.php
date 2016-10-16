@@ -13,6 +13,8 @@
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
 <!-- AdminLTE DatePicker -->
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/locales/bootstrap-datepicker.<?= $localeInfo->getLanguageCode() ?>.js" charset="UTF-8" type="text/javascript"></script>
+
 <!-- AdminLTE TimePicker -->
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
 
