@@ -16,7 +16,7 @@ if (!$_SESSION['bAdmin'])
 
 require ("Include/HeaderNotLoggedIn.php");
 ?>
-<div class="col-lg-8 col-lg-offset-2">
+<div class="col-lg-8 col-lg-offset-2" style="margin-top: 10px">
   <ul class="timeline">
     <li class="time-label">
         <span class="bg-red">
@@ -28,9 +28,10 @@ require ("Include/HeaderNotLoggedIn.php");
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 1: Backup Database') ?></h3>
         <div class="timeline-body" id="backupPhase">
+          <p><?= gettext("Please create a database backup before beginning the upgrade process.")?></p>
           <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="' . gettext("Generate Database Backup") . '"' ?>>
           <span id="backupStatus"></span>
-          <div id="resultFiles">
+          <div id="resultFiles" style="margin-top:10px">
           </div>
         </div>
       </div>
@@ -40,6 +41,7 @@ require ("Include/HeaderNotLoggedIn.php");
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 2: Fetch Update Package on Server') ?></h3>
         <div class="timeline-body" id="fetchPhase" style="display: none">
+          <p><?= gettext("Fetch the latest files from the ChurchCRM GitHub release page")?></p>
           <input type="button" class="btn btn-primary" id="fetchUpdate" <?= 'value="' . gettext("Fetch Update Files") . '"' ?> >
         </div>
       </div>
@@ -49,10 +51,11 @@ require ("Include/HeaderNotLoggedIn.php");
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 3: Apply Update Package on Server') ?></h3>
         <div class="timeline-body" id="updatePhase" style="display: none">
+          <p><?= gettext("Extract the upgrade archive, and apply the new files")?></p>
           <ul>
-            <li><? gettext("File Name:")?> <span id="updateFileName"> </span></li>
-            <li><? gettext("Full Path:")?> <span id="updateFullPath"> </span></li>
-            <li><? gettext("SHA1:")?> <span id="updateSHA1"> </span></li>
+            <li><?= gettext("File Name:")?> <span id="updateFileName"> </span></li>
+            <li><?= gettext("Full Path:")?> <span id="updateFullPath"> </span></li>
+            <li><?= gettext("SHA1:")?> <span id="updateSHA1"> </span></li>
           </ul>
           <input type="button" class="btn btn-warning" id="applyUpdate" value="<?= gettext("Upgrade System") ?>">
         </div>
