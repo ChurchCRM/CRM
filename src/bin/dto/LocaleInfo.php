@@ -9,28 +9,40 @@ class LocaleInfo
   var $language;
   var $country;
 
-  public function __construct($locale) {
-      $this->locale = $locale;
-      if (strpos($locale, "_")) {
-        $items = explode("_", $locale);
-        $this->language = $items[0];
-        $this->country = $items[1];
-      }
+  public function __construct($locale)
+  {
+    $this->locale = $locale;
+    if (strpos($locale, "_")) {
+      $items = explode("_", $locale);
+      $this->language = $items[0];
+      $this->country = $items[1];
+    }
+    if ($locale == "zh_CN") {
+      $this->language = "zh-cn";
+    } else if ($locale == "zh_TW") {
+      $this->language = "zh-tw";
+    } else if ($locale == "pt_BR") {
+      $this->language = "pt-br";
+    }
   }
 
-  function getLocale() {
+  function getLocale()
+  {
     return $this->locale;
   }
 
-  function getLanguageCode() {
+  function getLanguageCode()
+  {
     return $this->language;
   }
 
-  function getCountryCode() {
+  function getCountryCode()
+  {
     return $this->country;
   }
 
-  function getThousandSeparator() {
+  function getThousandSeparator()
+  {
     $sep = ',';
     if ($this->language == 'it_IT') {
       $sep = ".";
@@ -38,17 +50,19 @@ class LocaleInfo
     return $sep;
   }
 
-  function getLocaleArray() {
+  function getLocaleArray()
+  {
     $utfList = array(".utf8", ".UTF8", ".utf-8", ".UTF-8");
     $localArray = array();
     array_push($localArray, $this->getLanguageCode());
     foreach ($utfList as $item) {
-      array_push($localArray, $this->getLanguageCode(). $item);
+      array_push($localArray, $this->getLanguageCode() . $item);
     }
     return $localArray;
   }
 
-  function getLocaleInfo() {
+  function getLocaleInfo()
+  {
     $localeInfo = localeconv();
     // patch some missing data for Italian.  This shouldn't be necessary!
     if ($this->language == 'it_IT') {
