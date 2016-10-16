@@ -173,7 +173,7 @@ require "Include/Header.php";
       </div> <p> </p> <div class="row">
             <div class="col-xs-2">
             <label for="Date"><?= gettext("Date") ?></label>
-            <input class="form-control input-small" type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11"><font color="red"><?php echo $sDateError ?></font>
+            <input class="form-control input-small date-picker" type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11"><font color="red"><?php echo $sDateError ?></font>
             </div>
             <div class="col-xs-2">
             <label for="Time"><?= gettext("Time") ?></label>
@@ -201,7 +201,6 @@ require "Include/Header.php";
 </div>
 <script>
 $("#Time").timepicker({showMeridian: false});
-$("#Date").datepicker({format:'yyyy-mm-dd'});
 </script>
 
 <?php require "Include/Footer.php" ?>

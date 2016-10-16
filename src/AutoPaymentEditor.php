@@ -614,7 +614,7 @@ function CreatePaymentMethod()
 
 			<tr>
 				<td class="LabelColumn"><?= gettext("Date:") ?></td>
-				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?= $dNextPayDate ?>" maxlength="10" id="NextPayDate" size="11" class="form-control pull-right active"></td>
+				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?= $dNextPayDate ?>" maxlength="10" id="NextPayDate" size="11" class="form-control pull-right active date-picker"></td>
 			</tr>
 
 			<tr>
@@ -784,7 +784,4 @@ if ($sElectronicTransactionProcessor == "Vanco") {
 		</tr>
 </table>
 </form>
-<script>
-$("#NextPayDate").datepicker({format:'yyyy-mm-dd'});
-</script>
 <?php require "Include/Footer.php" ?>

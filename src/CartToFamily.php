@@ -213,7 +213,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 	<tr>
 		<td class="LabelColumn"><?= gettext("Wedding Date:") ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active"><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active date-picker"><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
 	</tr>
 
 	<tr>
@@ -329,7 +329,4 @@ else
 	echo "<p align=\"center\" class='callout callout-warning'>" . gettext("Your cart is empty!") . "</p>";
 ?>
 </div>
-<script>
-$("#sel1").datepicker({format:'yyyy-mm-dd'});
-</script>
 <?php require "Include/Footer.php"; ?>

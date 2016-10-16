@@ -241,7 +241,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 	// Validate Wedding Date if one was entered
 	if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != "0000-00-00")) {
-		$dateString = parseAndValidateDate($dWeddingDate, $locale = "US", $pasfut = "past");
+		$dateString = parseAndValidateDate($dWeddingDate, $locale = "<?= $localeInfo->getCountryCode() ?>", $pasfut = "past");
 		if ( $dateString === FALSE ) {
 			$sWeddingDateError = "<span style=\"color: red; \">" 
 								. gettext("Not a valid Wedding Date") . "</span>";
@@ -811,7 +811,7 @@ require "Include/Header.php";
 				<div class="row">
 					<div class="form-group col-md-4">
 						<label><?= gettext("Wedding Date:") ?></label>
-						<input type="text" class="form-control" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="12" id="WeddingDate" size="15">
+						<input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="12" id="WeddingDate" size="15">
 						<?php if ($sWeddingDateError) { ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php } ?>
 					</div>
 				</div>
@@ -1077,10 +1077,6 @@ require "Include/Header.php";
 		$(function() {
 			$("[data-mask]").inputmask();
 		});
-        
-    $("#WeddingDate").datepicker({
-      format:'yyyy-mm-dd',
-      language: '<?= $localeInfo->getLanguageCode() ?>'
-    });
+
 	</script>
 <?php require "Include/Footer.php" ?>

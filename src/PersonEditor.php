@@ -911,7 +911,7 @@ require "Include/Header.php";
 						<div class="input-group-addon">
 							<i class="fa fa-calendar"></i>
 						</div>
-						<input type="text" name="FriendDate" class="form-control inputDatePicker" value="<?= $dFriendDate ?>" maxlength="10" id="sel2" size="11" placeholder="YYYY-MM-DD">
+						<input type="text" name="FriendDate" class="form-control date-picker" value="<?= $dFriendDate ?>" maxlength="10" id="sel2" size="11" placeholder="YYYY-MM-DD">
 						<?php if ($sFriendDateError) { ?><font color="red"><?php echo $sFriendDateError ?></font><?php } ?>
 					</div>
 				</div>
@@ -922,7 +922,7 @@ require "Include/Header.php";
 						<div class="input-group-addon">
 							<i class="fa fa-calendar"></i>
 						</div>
-						<input type="text" name="MembershipDate" class="form-control inputDatePicker" value="<?= $dMembershipDate ?>" maxlength="10" id="sel1" size="11" placeholder="YYYY-MM-DD">
+						<input type="text" name="MembershipDate" class="form-control date-picker" value="<?= $dMembershipDate ?>" maxlength="10" id="sel1" size="11" placeholder="YYYY-MM-DD">
 						<?php if ($sMembershipDateError) { ?><font color="red"><?= $sMembershipDateError ?></font><?php } ?>
 					</div>
 				</div>
@@ -989,8 +989,6 @@ require "Include/Header.php";
 <script type="text/javascript">
 	$(function() {
 		$("[data-mask]").inputmask();
-		$('.inputDatePicker').datepicker({format:'yyyy-mm-dd'});
-
 	});
 </script>
 

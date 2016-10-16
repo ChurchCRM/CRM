@@ -266,7 +266,7 @@ if ($rsDonatedItems != 0) {
 
 
 <script>
-$("#Date").datepicker({format:'yyyy-mm-dd'});
+$("#Date").datepicker({format:'yyyy-mm-dd', language: '<?= $localeInfo->getLanguageCode() ?>'});
 </script>
 </div>
 <?php require "Include/Footer.php" ?>

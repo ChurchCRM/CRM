@@ -261,9 +261,9 @@ if (isset($_POST["ApiGet"])) {
 	<tr><td>
 		<form method="post" action="eGive.php?DepositSlipID=<?php echo $iDepositSlipID ?>" enctype="multipart/form-data">
 		<class="LabelColumn"><b><?= gettext("Start Date: ") ?></b>
-			<class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate ?>" maxlength="10" id="StartDate" size="11"><font color="red"><?php echo $sDateError ?></font><br>
+			<class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate ?>" maxlength="10" id="StartDate" size="11" class="date-picker"><font color="red"><?php echo $sDateError ?></font><br>
 			<class="LabelColumn"><b><?= gettext("End Date: ") ?></b>
-			<class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate ?>" maxlength="10" id="EndDate" size="11"><font color="red"><?php echo $sDateError ?></font><br><br>
+			<class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate ?>" maxlength="10" id="EndDate" size="11" class="date-picker"><font color="red"><?php echo $sDateError ?></font><br><br>
 		<input type="submit" class="btn" value="<?= gettext("Import eGive") ?>" name="ApiGet">
 		<br><br><br>
 		</form>
@@ -394,10 +394,6 @@ function get_api_data($json) {
 	}
 }
 ?>
-<script>
-$("#StartDate").datepicker({format:'yyyy-mm-dd'});
-$("#EndDate").datepicker({format:'yyyy-mm-dd'});
-</script>
 
 <?php
 

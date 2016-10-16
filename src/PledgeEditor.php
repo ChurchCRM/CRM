@@ -689,7 +689,7 @@ $(document).ready(function() {
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?>><?= gettext("Date") ?></td>
 <?php	if (!$dDate)	$dDate = $dep_Date ?>
 	
-				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11"><font color="red"><?= $sDateError ?></font></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11" class="date-picker"><font color="red"><?= $sDateError ?></font></td>
 			</tr>
 
 
@@ -803,8 +803,5 @@ $(document).ready(function() {
 	<?php } ?>
 </table>
 </form>
-<script>
-$("#Date").datepicker({format:'yyyy-mm-dd'});
-</script
 
 <?php require "Include/Footer.php" ?>
