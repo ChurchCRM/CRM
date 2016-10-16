@@ -5,14 +5,21 @@ namespace ChurchCRM\dto;
 
 class LocaleInfo
 {
+  var $locale;
   var $language;
+  var $country;
 
-  public function __construct($language) {
-      $this->language = $language;
+  public function __construct($locale) {
+      $this->locale = $locale;
+      if (strpos($locale, "_")) {
+        $items = explode("_", $locale);
+        $this->language = $items[0];
+        $this->country = $items[1];
+      }
   }
 
   function getLocale() {
-
+    return $this->locale;
   }
 
   function getLanguageCode() {
@@ -20,7 +27,7 @@ class LocaleInfo
   }
 
   function getCountryCode() {
-    return $this->language;
+    return $this->country;
   }
 
   function getThousandSeparator() {

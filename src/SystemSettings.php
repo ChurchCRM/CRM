@@ -95,7 +95,7 @@ if (isset ($_POST['save'])) {
     // If changing the locale, translate the menu options
     if ($id == 39 && $value != $sLanguage) {
       $localeInfo = new LocaleInfo($value);
-      putenv("LANG=$localeInfo->getLanguageCode()");
+      putenv("LANG=$localeInfo->getLocale()");
       setlocale(LC_ALL, $localeInfo->getLocaleArray());
       $aLocaleInfo = $localeInfo->getLocaleInfo();
       TranslateMenuOptions();
