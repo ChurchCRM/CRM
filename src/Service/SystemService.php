@@ -399,7 +399,7 @@ class SystemService
       }
     }
   }
-
+  
   function downloadLatestRelease()
   {
     $release = $this->getLatestRelese();
@@ -415,25 +415,26 @@ class SystemService
     return $returnFile;
   }
   
+  function moveDir($src,$dest) {
+    $files = array_diff(scandir($src), array('.', '..'));
+    foreach ($files as $file) {
+      (is_dir("$src/$file")) ? $this->moveDir("$src/$file","$dest/$file") : rename("$src/$file","$dest/$file");
+    }
+    return rmdir($src);
+  }
+  
   function doUpgrade($zipFilename,$sha1)
   {
     ini_set('max_execution_time',60);
-    $CRMInstallRoot = dirname(__DIR__);
+    $CRMInstallRoot = dirname(__DIR__); 
     if($sha1 == sha1_file($zipFilename))
     {
       $zip = new \ZipArchive();
       if ($zip->open($zipFilename) == TRUE) 
       {
-        for($i = 0; $i < $zip->numFiles; $i++) 
-        {
-            $archivedFileName = $zip->getNameIndex($i);
-            $targetFilename = str_replace("churchcrm/","/",$archivedFileName);
-            if ($targetFilename != "/Service/SystemService.php")  // save the best for last.
-            {
-              copy("zip://".$zipFilename."#".$archivedFileName, $CRMInstallRoot.$targetFilename);
-            }
-        } 
+        $zip->extractTo($CRMInstallRoot."/Upgrade");
         $zip->close();
+        $this->moveDir($CRMInstallRoot."/Upgrade/churchcrm", $CRMInstallRoot);
       }
       unlink($zipFilename);
       return "success";
