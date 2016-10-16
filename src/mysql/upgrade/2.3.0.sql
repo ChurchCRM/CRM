@@ -38,4 +38,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (101, 'sPhoneFormatWithExt', '(999) 999-9999 x99999', 'text', '(999) 999-9999 x99999', '', 'General', NULL),
 (102, 'sDateFormatLong', 'yyyy-mm-dd', 'text', 'yyyy-mm-dd', '', 'General', NULL),
 (103, 'sDateFormatNoYear', 'DD/MM', 'text', 'DD/MM', '', 'General', NULL),
-(104, 'sDateFormatShort', 'yy-mm-dd', 'text', 'yy-mm-dd', '', 'General', NULL);
+(104, 'sDateFormatShort', 'yy-mm-dd', 'text', 'yy-mm-dd', '', 'General', NULL),
+(1044, 'sEnableIntegrityCheck', '1', 'boolean', '1', 'Enable Integrity Check', 'General', "Step5", NULL),
+(1045, 'sIntegrityCheckInterval', '168', 'Text', '168', 'Interval in Hours for Integrity Check', 'General', "Step5", NULL),
+(1046, 'sLastIntegrityCheckTimeStamp', '', 'Text', '', 'Last Integrity Check Timestamp', 'General', "Step5", NULL);
