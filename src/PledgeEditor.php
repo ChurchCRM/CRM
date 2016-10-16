@@ -780,16 +780,17 @@ $(document).ready(function() {
 				<?php }?>
 
 				<td class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext("Comment") ?></td>
-             </tr>
+     </tr>
 
 			<?php 
       foreach ($fundId2Name as $fun_id => $fun_name) { ?>
-				<tr>
+      <tr>
 				<td class="TextColumn"><b><?= $fun_name ?></b></td>
 				<td class="TextColumn">
           <input type="text" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= $nAmount[$fun_id] ?>"><br>
           <font color="red"><?= $sAmountError[$fun_id] ?></font>
-        </td> <?php
+        </td>
+        <?php
 				if ($bEnableNonDeductible) {
 					echo "<td class=\"TextColumn\"><input type=\"text\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
 				}
@@ -797,9 +798,9 @@ $(document).ready(function() {
 				echo "</tr>";
 			}
 			?>
-		</td>
 		</table>
-		</tr>
+    </td>
+  </tr>
 	<?php } ?>
 </table>
 </form>
