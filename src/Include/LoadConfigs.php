@@ -126,9 +126,7 @@ if (isset($sTimeZone)) {
 }
 
 $localeInfo = new LocaleInfo($sLanguage);
-
-putenv("LANG=$localeInfo->getLocale()");
-setlocale(LC_ALL, $localeInfo->getLocaleArray());
+setlocale(LC_ALL, $localeInfo->getLocale());
 
 // Get numeric and monetary locale settings.
 $aLocaleInfo = $localeInfo->getLocaleInfo();

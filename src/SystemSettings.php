@@ -93,12 +93,10 @@ if (isset ($_POST['save'])) {
     }
 
     // If changing the locale, translate the menu options
-    if ($id == 39 && $value != $sLanguage) {
+    if ($id == 39 && $value != $localeInfo->getLocale()) {
       $localeInfo = new LocaleInfo($value);
-      putenv("LANG=$localeInfo->getLocale()");
-      setlocale(LC_ALL, $localeInfo->getLocaleArray());
+      setlocale(LC_ALL, $localeInfo->getLocale());
       $aLocaleInfo = $localeInfo->getLocaleInfo();
-      TranslateMenuOptions();
     }
 
     if ($id == 65 && !(in_array($value, timezone_identifiers_list()))) {
@@ -110,7 +108,7 @@ if (isset ($_POST['save'])) {
     $rsUpdate = RunQuery($sSQL);
     next($type);
   }
-  $sGlobalMessage = "Setting saved";
+  $sGlobalMessage = gettext("Setting saved");
 }
 
 require "Include/Header.php";
@@ -155,8 +153,8 @@ $rsConfigs = RunQuery($sSQL);
               <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext("Variable name") ?></th>
-                  <th width="400px">Value</th>
-                  <th>Default Value</th>
+                  <th width="400px"><?= gettext("Value")?></th>
+                  <th><?= gettext("Default Value")?></th>
                 </tr>
                 <?php
                 $r = 1;
@@ -215,13 +213,13 @@ $rsConfigs = RunQuery($sSQL);
                         $sel2 = "";
                       } ?>
                       <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox" style="width: 100%">
-                        <option value='' <?= $sel1 ?>>False
-                        <option value='1' <?= $sel2 ?>>True
+                        <option value='' <?= $sel1 ?>><?= gettext("False")?>
+                        <option value='1' <?= $sel2 ?>><?= gettext("True")?>
                       </select>
                     <?php } elseif ($cfg_type == 'json') { ?>
                       <input type="hidden" name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>'>
                       <button class="btn-primary jsonSettingsEdit" id="set_value<?= $cfg_id ?>"
-                              data-cfgid="<?= $cfg_id ?>">Edit Settings
+                              data-cfgid="<?= $cfg_id ?>"><?= gettext("Edit Settings")?>
                       </button>
                     <?php } ?>
                   </td>
