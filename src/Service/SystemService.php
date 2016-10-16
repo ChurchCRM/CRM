@@ -464,10 +464,17 @@ class SystemService
     {
       foreach ($signatureData->files as $file)
       {
-        $actualHash = sha1_file($CRMInstallRoot."/".$file->filename);
-        if ( $actualHash != $file->sha1 )
+        if(file_exists($CRMInstallRoot."/".$file->filename))
         {
-          array_push($signatureFailures, array("filename"=>$file->filename,"expectedhash"=>$file->sha1,"actualhash"=>$actualHash));
+          $actualHash = sha1_file($CRMInstallRoot."/".$file->filename);
+          if ( $actualHash != $file->sha1 )
+          {
+            array_push($signatureFailures, array("filename"=>$file->filename,"status"=>"Hash Mismatch", "expectedhash"=>$file->sha1,"actualhash"=>$actualHash));
+          }
+        }
+        else
+        {
+          array_push($signatureFailures, array("filename"=>$file->filename,"status"=>"File Missing"));
         }
       }
     }

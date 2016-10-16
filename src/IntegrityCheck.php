@@ -33,10 +33,25 @@ if ($IntegrityCheckDetails->status == "failure")
           {
             ?>
             <li>FileName: <?= $file->filename ?>
-              <ul>
-                <li>Expected Hash: <?= $file->expectedhash ?></li>
-                <li>Actual Hash: <?= $file->actualhash ?></li>
-              </ul>
+              <?php 
+              if($file->status == "File Missing")
+              {
+                ?>
+                <ul>
+                 <li><?= gettext("File Missing")?></li>
+                </ul>
+                <?php
+              }
+              else
+              {
+                ?>
+                <ul>
+                 <li><?= gettext("Expected Hash:")?> <?= $file->expectedhash ?></li>
+                 <li><?= gettext("Actual Hash:") ?> <?= $file->actualhash ?></li>
+                </ul>
+                <?php
+              }
+              ?>
             </li>
             <?php
           }

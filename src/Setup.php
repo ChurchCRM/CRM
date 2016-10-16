@@ -22,8 +22,8 @@ $systemService = new \ChurchCRM\Service\SystemService();
 
 
 $temp = $_SERVER['REQUEST_URI'];
-$sRootPath = "/" . str_replace("/Setup.php", "", $temp);
-if ($sRootPath = "/") {
+$sRootPath = str_replace("/Setup.php", "", $temp);
+if ($sRootPath == "/") {
   $sRootPath = "";
 }
 $URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . "/";
@@ -172,7 +172,7 @@ $("#dangerContinue").click(function(){
 
                   <div class="col-md-4">
                     <label for="ROOT_PATH"><?= gettext("Root Path:") ?></label>
-                    <input type="text" name="ROOT_PATH" id="ROOT_PATH" value="<?= $rootPath ?>" class="form-control">
+                    <input type="text" name="ROOT_PATH" id="ROOT_PATH" value="<?= $sRootPath ?>" class="form-control">
                   </div>
 
                   <div class="col-md-4">
