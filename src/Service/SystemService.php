@@ -418,7 +418,14 @@ class SystemService
   function moveDir($src,$dest) {
     $files = array_diff(scandir($src), array('.', '..'));
     foreach ($files as $file) {
-      (is_dir("$src/$file")) ? $this->moveDir("$src/$file","$dest/$file") : rename("$src/$file","$dest/$file");
+      if (is_dir("$src/$file")) {
+        mkdir("$dest/$file");
+        $this->moveDir("$src/$file","$dest/$file");
+      }
+      else
+      {
+        rename("$src/$file","$dest/$file");
+      }
     }
     return rmdir($src);
   }
