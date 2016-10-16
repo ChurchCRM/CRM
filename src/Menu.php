@@ -176,7 +176,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                         <thead>
                         <tr>
                             <th data-field="name"><?= gettext("Family Name") ?></th>
-                            <th data-field="address"><?= gettext("Adress") ?></th>
+                            <th data-field="address"><?= gettext("Address") ?></th>
                             <th data-field="city"><?= gettext("Created") ?></th>
                         </tr>
                         </thead>
