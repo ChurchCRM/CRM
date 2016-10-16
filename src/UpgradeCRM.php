@@ -16,36 +16,58 @@ if (!$_SESSION['bAdmin'])
 
 require ("Include/HeaderNotLoggedIn.php");
 ?>
-
-
-<div class="login-box">
-    <div class="login-logo">
-        <?= gettext("Upgrade ChurchCRM") ?>
-    </div>
-    <div class="login-box-body" id="backupPhase">
-      <p class="login-box-msg"><?= gettext('Step 1: Backup Database') ?></p>
-      <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="' . gettext("Generate Database Backup") . '"' ?>>
-      <span id="backupStatus"></span>
-      <div id="resultFiles">
+<div class="col-lg-8 col-lg-offset-2">
+  <ul class="timeline">
+    <li class="time-label">
+        <span class="bg-red">
+            <?= gettext("Upgrade ChurchCRM") ?>
+        </span>
+    </li>
+    <li>
+      <i class="fa fa-database bg-blue"></i>
+      <div class="timeline-item" >
+        <h3 class="timeline-header"><?= gettext('Step 1: Backup Database') ?></h3>
+        <div class="timeline-body" id="backupPhase">
+          <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="' . gettext("Generate Database Backup") . '"' ?>>
+          <span id="backupStatus"></span>
+          <div id="resultFiles">
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="login-box-body" style="display:none" id="fetchPhase">
-      <p class="login-box-msg"><?= gettext('Step 2: Fetch Update Package on Server') ?></p>
-      <input type="button" class="btn btn-primary" id="fetchUpdate" <?= 'value="' . gettext("Fetch Update Files") . '"' ?>>
-    </div>
-  <div class="login-box-body" style="display:none" id="updatePhase">
-      <p class="login-box-msg"><?= gettext('Step 3: Apply Update Package on Server') ?></p>
-      <ul>
-        <li><? gettext("File Name:")?> <span id="updateFileName"> </span></li>
-        <li><? gettext("Full Path:")?> <span id="updateFullPath"> </span></li>
-        <li><? gettext("SHA1:")?> <span id="updateSHA1"> </span></li>
-      </ul>
-      <input type="button" class="btn btn-warning" id="applyUpdate" value="<?= gettext("Upgrade System") ?>">
-    </div>
-    <div class="login-box-body" style="display:none" id="finalPhase">
-      <p class="login-box-msg"><?= gettext('Step 4: Login') ?></p>
-      <a href="Login.php?Logoff=True" class="btn btn-primary"><?= gettext("Login to Upgraded System") ?> </a>
-    </div>
+    </li>
+    <li>
+      <i class="fa fa-cloud-download bg-blue"></i>
+      <div class="timeline-item" >
+        <h3 class="timeline-header"><?= gettext('Step 2: Fetch Update Package on Server') ?></h3>
+        <div class="timeline-body" id="fetchPhase" style="display: none">
+          <input type="button" class="btn btn-primary" id="fetchUpdate" <?= 'value="' . gettext("Fetch Update Files") . '"' ?> >
+        </div>
+      </div>
+    </li>
+    <li>
+      <i class="fa fa-cogs bg-blue"></i>
+      <div class="timeline-item" >
+        <h3 class="timeline-header"><?= gettext('Step 3: Apply Update Package on Server') ?></h3>
+        <div class="timeline-body" id="updatePhase" style="display: none">
+          <ul>
+            <li><? gettext("File Name:")?> <span id="updateFileName"> </span></li>
+            <li><? gettext("Full Path:")?> <span id="updateFullPath"> </span></li>
+            <li><? gettext("SHA1:")?> <span id="updateSHA1"> </span></li>
+          </ul>
+          <input type="button" class="btn btn-warning" id="applyUpdate" value="<?= gettext("Upgrade System") ?>">
+        </div>
+      </div>
+    </li>
+    <li>
+      <i class="fa fa-sign-in bg-blue"></i>
+      <div class="timeline-item" >
+        <h3 class="timeline-header"><?= gettext('Step 4: Login') ?></h3>
+        <div class="timeline-body" id="finalPhase" style="display: none">
+          <a href="Login.php?Logoff=True" class="btn btn-primary"><?= gettext("Login to Upgraded System") ?> </a>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>
 <script>
  $("#doBackup").click(function(){
@@ -66,7 +88,8 @@ require ("Include/HeaderNotLoggedIn.php");
       $("#backupstatus").html("<?= gettext("Backup Complete, Ready for Download.") ?>");
       $("#resultFiles").html(downloadButton);
       $("#downloadbutton").click(function(){
-        $("#fetchPhase").css('display','');
+        $("#fetchPhase").show("slow");
+        $("#backupPhase").slideUp();
       });
     }).fail(function()  {
       $("#backupstatus").css("color","red");
@@ -86,7 +109,8 @@ require ("Include/HeaderNotLoggedIn.php");
       $("#updateFileName").text(data.fileName);
       $("#updateFullPath").text(data.fullPath);
       $("#updateSHA1").text(data.sha1);
-      $("#updatePhase").css('display','');
+      $("#fetchPhase").slideUp();
+      $("#updatePhase").show("slow");
     });
    
  });
@@ -104,7 +128,8 @@ require ("Include/HeaderNotLoggedIn.php");
       contentType: "application/json; charset=utf-8"
     }).done(function(data){
       console.log(data);
-      $("#finalPhase").css('display','');
+      $("#updatePhase").slideUp();
+      $("#finalPhase").show("slow");
     });
  });
  
