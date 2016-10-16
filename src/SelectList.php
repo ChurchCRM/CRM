@@ -988,7 +988,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 			if (isset($fam_Name))
 				echo $fam_Name;
 			else
-				echo "Unassigned";
+				echo gettext("Unassigned");
 
 			echo "</td></tr>";
 			$sRowClass = "RowColorA";
