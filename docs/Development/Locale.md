@@ -13,6 +13,7 @@ checkout http://www.gnu.org/software/gettext/manual/
      - see http://www.shellhacks.com/en/HowTo-Change-Locale-Language-and-Character-Set-in-Linux 
 
 2. Visit System Settings 
+3. Select ```Localization``` tab
 3. Change ```sLanguage``` to one of the available languages in the drop down. 
 
 ##Generate new message.po file 

@@ -48,6 +48,7 @@ $steps = array(
   "Step5" => gettext("System Settings"),
   "Step6" => gettext("Map Settings"),
   "Step7" => gettext("Report Settings"),
+  "Step9" => gettext("Localization"),
   "Step8" => gettext("Other Settings")
 );
 
