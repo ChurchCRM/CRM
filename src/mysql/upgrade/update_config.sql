@@ -118,6 +118,11 @@ UPDATE `config_cfg` SET `cfg_category`='Step8', `cfg_order`='95' WHERE `cfg_cate
 
 UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='1' WHERE `cfg_id`='39';
 UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='2' WHERE `cfg_id`='64';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='3' WHERE `cfg_id`='100';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='4' WHERE `cfg_id`='101';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='5' WHERE `cfg_id`='102';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='6' WHERE `cfg_id`='103';
+UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='7' WHERE `cfg_id`='104';
 
 delete from config_cfg where cfg_id ='18';
 delete from config_cfg where cfg_id ='2001';

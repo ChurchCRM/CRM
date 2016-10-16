@@ -32,3 +32,10 @@ where `cfg_id` = 1037;
 
 delete from config_cfg where cfg_id ='18';
 delete from config_cfg where cfg_id ='2001';
+
+INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES
+(100, 'sPhoneFormat', '(999) 999-9999', 'text', '(999) 999-9999', '', 'General',NULL),
+(101, 'sPhoneFormatWithExt', '(999) 999-9999 x99999', 'text', '(999) 999-9999 x99999', '', 'General', NULL),
+(102, 'sDateFormatLong', 'yyyy-mm-dd', 'text', 'yyyy-mm-dd', '', 'General', NULL),
+(103, 'sDateFormatNoYear', 'DD/MM', 'text', 'DD/MM', '', 'General', NULL),
+(104, 'sDateFormatShort', 'yy-mm-dd', 'text', 'yy-mm-dd', '', 'General', NULL);
