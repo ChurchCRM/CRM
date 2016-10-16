@@ -80,7 +80,7 @@ require "Include/Header.php";
           </div>
           <div class="col-lg-3">
             <label for="addNewGruop"><?= gettext("Deposit Date") ?></label>
-            <input class="form-control" name="depositDate" id="depositDate" style="width:100%">
+            <input class="form-control" name="depositDate" id="depositDate" style="width:100%" class="date-picker">
           </div>
         </div>
       </div>

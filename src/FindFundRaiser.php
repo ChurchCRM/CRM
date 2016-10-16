@@ -237,9 +237,5 @@ while (list ($fr_ID, $fr_Date, $fr_Title) = mysql_fetch_row($rsDep))
 }
 echo "</table>";
 ?>
-<script>
-$("#DateStart").datepicker({format:'yyyy-mm-dd', language: '<?= $localeInfo->getLanguageCode() ?>'});
-$("#DateEnd").datepicker({format:'yyyy-mm-dd', language: '<?= $localeInfo->getLanguageCode() ?>'});
-</script>
 </div>
 <?php require "Include/Footer.php" ?>
