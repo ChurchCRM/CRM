@@ -15,6 +15,9 @@
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/locales/bootstrap-datepicker.<?= $localeInfo->getLanguageCode() ?>.js" charset="UTF-8" type="text/javascript"></script>
 
+<!-- AdminLTE DatePicker -->
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/daterangepicker/moment.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- AdminLTE TimePicker -->
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
 
@@ -22,7 +25,8 @@
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/daterangepicker/moment.min.js" type="text/javascript"></script>
+
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/daterangepicker/daterangepicker-bs3.css">
