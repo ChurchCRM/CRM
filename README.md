@@ -35,7 +35,7 @@ To test out the demo, you may login to the http://demo.churchcrm.io  with the fo
 - **Username:** admin
 - **Password:** george
 
-## New Ui.
+## New UI
 
 ![Menu](http://www.churchcrm.io/screenshots/menu.PNG)
 ![Family](http://www.churchcrm.io/screenshots/family.PNG)
