@@ -34,4 +34,7 @@ delete from config_cfg where cfg_id ='18';
 delete from config_cfg where cfg_id ='2001';
 
 INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`, `cfg_data`) VALUES
-(80, 'sEnableSelfRegistration', '1', 'boolean', '1', 'Set false to disable family self registration.', 'General', NULL, NULL);
+(80, 'sEnableSelfRegistration', '1', 'boolean', '1', 'Set false to disable family self registration.', 'General', NULL, NULL),
+(1044, 'sEnableIntegrityCheck', '1', 'boolean', '1', 'Enable Integrity Check', 'General', "Step5", NULL),
+(1045, 'sIntegrityCheckInterval', '168', 'Text', '168', 'Interval in Hours for Integrity Check', 'General', "Step5", NULL),
+(1046, 'sLastIntegrityCheckTimeStamp', '', 'Text', '', 'Last Integrity Check Timestamp', 'General', "Step5", NULL);

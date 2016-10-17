@@ -29,4 +29,8 @@
 
 </head>
 <body class="hold-transition login-page">
+  
+  <script language="javascript" type="text/javascript">
+    window.CRM = {root: "<?= $sRootPath ?>"};
+  </script>
 

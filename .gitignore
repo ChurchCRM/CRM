@@ -31,3 +31,5 @@ src/Include/Config.php
 target
 /src/orm/model/ChurchCRM/Base/
 /src/orm/model/ChurchCRM/Map/
+/src/signatures.json
+/src/integrityCheck.json

@@ -17,6 +17,8 @@ class TaskService
 
   function getAdminTasks() {
     requireUserGroupMembership("bAdmin");
+    $CRMInstallRoot = dirname(__DIR__);
+    $integrityCheckData = json_decode(file_get_contents($CRMInstallRoot."/integrityCheck.json"));
     $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg";
     $rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
     if ($rsConfig) {
@@ -42,7 +44,11 @@ class TaskService
     }
 
     if ($this->latestVersion != null && $this->latestVersion["name"] != $this->installedVersion) {
-      array_push($tasks, $this->addTask("New Release ". $this->latestVersion["name"], $this->latestVersion["html_url"], true));
+      array_push($tasks, $this->addTask("New Release ". $this->latestVersion["name"], $this->baseURL."/UpgradeCRM.php", true));
+    }
+    
+    if($integrityCheckData->status == "failure") {
+      array_push($tasks, $this->addTask("Application Integrity Check Failed", $this->baseURL."/IntegrityCheck.php", true));
     }
 
     return $tasks;
