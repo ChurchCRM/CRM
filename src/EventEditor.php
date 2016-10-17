@@ -283,7 +283,6 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
             $sCountNotes = $evtcnt_notes;
           }
         }
-//        for($v=0; $v<$aNumCounts; $v++)echo "count {$cCountName[$v]} = {$cCount[$v]}\n\r";
 
 } elseif (isset($_POST["SaveChanges"])) {
 // Does the user want to save changes to text fields?
@@ -292,8 +291,6 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
         $EventExists = $_POST['EventExists'];
         $sEventTitle = $_POST['EventTitle'];
         $sEventDesc = $_POST['EventDesc'];
-        $sEventStartDate = $_POST['EventStartDate'];
-        $sEventStartTime = $_POST['EventStartTime'];
         if (empty($_POST['EventTitle'])) {
                 $bTitleError = true;
                 $iErrors++;
@@ -313,29 +310,25 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
 					$sTypeName = $type_name;
 				}
         $sEventText = $_POST['EventText'];
-        if (empty($_POST['EventStartDate'])) {
+        if (empty($_POST['EventDateRange'])) {
                 $bESDError = true;
                 $iErrors++;
-        }
-        if (empty($_POST['EventStartTime'])) {
-                $bESTError = true;
-                $iErrors++;
-        } else {
-                $aESTokens = explode(":", $_POST['EventStartTime']);
-                $iEventStartHour = $aESTokens[0];
-                $iEventStartMins = $aESTokens[1];
         }
 				if ($_POST['EventStatus'] === NULL) {
                 $bStatusError = true;
                 $iErrors++;
         }
-        $sEventStart = $sEventStartDate." ".$sEventStartTime;
-        $sEventEndDate = $_POST['EventEndDate'];
-        $sEventEndTime = $_POST['EventEndTime'];
-        $aEETokens = explode(":", $_POST['EventEndTime']);
-        $iEventEndHour = $aEETokens[0];
-        $iEventEndMins = $aEETokens[1];
-        $sEventEnd = $sEventEndDate." ".$sEventEndTime;
+        $sEventRange = $_POST['EventDateRange'];
+        $sEventStartDateTime = DateTime::createFromFormat("Y-m-d H:i a", explode(" - ", $sEventRange)[0]);
+        $sEventEndDateTime = DateTime::createFromFormat("Y-m-d H:i a", explode(" - ", $sEventRange)[1]);
+        $sEventStart = $sEventStartDateTime->format("Y-m-d H:i");
+        $sEventStartDate =  $sEventStartDateTime->format("Y-m-d");
+        $iEventStartHour = $sEventStartDateTime->format("H");
+        $iEventStartMins = $sEventStartDateTime->format("i");
+        $sEventEnd = $sEventEndDateTime->format("Y-m-d H:i");
+        $sEventEndDate =  $sEventEndDateTime->format("Y-m-d");
+        $iEventEndHour = $sEventEndDateTime->format("H");
+        $iEventEndMins = $sEventEndDateTime->format("i");
         $iEventStatus = $_POST['EventStatus'];
 
         $iNumCounts = $_POST["NumAttendCounts"];
@@ -480,46 +473,27 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
       <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control'>
       <?php if ( $bTitleError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a title.") . "</span></div>"; ?>
     </td>
+  </tr>
+  <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Desc:") ?></td>
-    <td colspan="1" class="TextColumn">
-      <input type="text" name="EventDesc" value="<?= ($sEventDesc) ?>" size="30" maxlength="100" class='form-control'>
+    <td colspan="3" class="TextColumn">
+      <textarea name="EventDesc" rows="4" maxlength="100" class='form-control'><?= ($sEventDesc) ?></textarea>
       <?php if ( $bDescError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a description.") . "</span></div>"; ?>
     </td>
   </tr>
+  <?php
+    $eventStart = $sEventStartDate . " " . $iEventStartHour. ":".$iEventStartMins;
+    $eventEnd = $sEventEndDate . " " . $iEventEndHour. ":".$iEventEndMins;
+  ?>
+  <tr>
+    <td class="LabelColumn"><span style="color: red">*</span>
+      <?= gettext("Date Range:") ?>
+    </td>
+    <td class="TextColumn">
+      <input type="text" name="EventDateRange" value="<?= $eventStart ." - ". $eventEnd?>"
+             maxlength="10" id="EventDateRange" size="50" class='form-control' required>
+    </td>
 
-  <tr>
-    <td class="LabelColumn"><span style="color: red">*</span>
-      <?= gettext("Start Date:") ?>
-    </td>
-    <td class="TextColumn">
-      <input type="text" name="EventStartDate" value="<?= ($sEventStartDate) ?>" maxlength="10" id="EventStartDate" size="11" class='form-control'>
-      <?php if ( $bESDError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a start date.") . "</span></div>"; ?>
-    </td>
-    <td class="LabelColumn"><span style="color: red">*</span>
-      <?= gettext("Start Time:") ?>
-    </td>
-    <td class="TextColumn">
-     <div class="input-group bootstrap-timepicker timepicker">
-      <input name="EventStartTime" id="EventStartTime" type="text" class='form-control' placeholder='HH:MM' />
-     </div>
-      <?php if ( $bESTError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a start time.") . "</span></div>"; ?>
-    </td>
-  </tr>
-  <tr>
-    <td class="LabelColumn">
-      <?= gettext("End Date:") ?>
-    </td>
-    <td class="TextColumn">
-      <input type="text" name="EventEndDate" value="<?= ($sEventEndDate) ?>" maxlength="10" id="EventEndDate" size="11" class='form-control'>
-    </td>
-    <td class="LabelColumn">
-      <?= gettext("End Time:") ?>
-    </td>
-    <td class="TextColumn">
-     <div class="input-group bootstrap-timepicker timepicker">
-      <input name="EventEndTime" id="EventEndTime" type="text" class='form-control' placeholder='HH:MM' />
-     </div>
-    </td>
   </tr>
 
   <tr>
@@ -588,9 +562,16 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
 </div>
 
 <script>
-$("#EventStartDate").datepicker({format:'yyyy-mm-dd'});
-$("#EventEndDate").datepicker({format:'yyyy-mm-dd'});
-$("#EventStartTime").timepicker({showMeridian: false});
-$("#EventEndTime").timepicker({showMeridian: false});
+  $('#EventDateRange').daterangepicker({
+    timePicker: true,
+    timePickerIncrement: 30,
+    linkedCalendars: true,
+    showDropdowns: true,
+    format: 'YYYY-MM-DD h:mm A',
+    minDate: 1/1/1990,
+    startDate: '<?= $eventStart ?>',
+    endDate: '<?= $eventEnd ?>'
+  });
 </script>
+
 <?php require "Include/Footer.php" ?>

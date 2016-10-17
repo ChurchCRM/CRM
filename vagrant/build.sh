@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 cd /vagrant
 sudo /usr/local/bin/composer install
 sudo apt-get install -y ruby
