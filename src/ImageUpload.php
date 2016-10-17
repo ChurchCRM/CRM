@@ -2,7 +2,6 @@
 
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/class.upload.php";
 
 use ChurchCRM\Service\NoteService;
 
@@ -40,7 +39,7 @@ $imageLocationThumb = $imageLocation . "thumbnails/";
 
 $uploaded = false;
 if ($_SESSION['bAddRecords'] || $bOkToEdit) {
-  $foo = new Upload($_FILES['file']);
+  $foo = new upload($_FILES['file']);
   $foo->allowed = array('"image/png"', 'image/jpg', 'image/jpeg');
 
   if ($foo->uploaded) {
