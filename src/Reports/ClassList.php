@@ -12,12 +12,12 @@
 *
 ******************************************************************************/
 
-namespace ChurchCRM\Reports;
-
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 require "../Include/GetGroupArray.php";
+
+use ChurchCRM\Reports\ChurchInfoReport;
 
 $iGroupID = FilterInput($_GET["GroupID"],'int');
 $iFYID = FilterInput($_GET["FYID"],'int');

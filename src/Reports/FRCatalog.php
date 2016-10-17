@@ -12,11 +12,11 @@
 *  (at your option) any later version.
 *
 ******************************************************************************/
-namespace ChurchCRM\Reports;
 
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
+use ChurchCRM\Reports\ChurchInfoReport;
 
 $iCurrentFundraiser = $_GET["CurrentFundraiser"];
 

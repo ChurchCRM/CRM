@@ -10,11 +10,10 @@
 *  (at your option) any later version.
 *
 ******************************************************************************/
-namespace ChurchCRM\Reports;
-
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
+use ChurchCRM\Reports\ChurchInfoReport;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {

@@ -11,12 +11,13 @@
 *  (at your option) any later version.
 *
 ******************************************************************************/
-namespace ChurchCRM\Reports;
 
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 require "../Include/class_fpdf_labels.php";
+
+use ChurchCRM\Reports\ChurchInfoReport;
 
 class PDF_ConfirmLabels extends PDF_Label {
 
