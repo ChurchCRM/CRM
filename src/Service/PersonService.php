@@ -2,28 +2,27 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\PersonQuery;
+
 class PersonService
 {
-  private $baseURL;
-
-  public function __construct()
-  {
-    $this->baseURL = $_SESSION['sRootPath'];
-  }
 
   function search($searchTerm)
   {
-    $fetch = 'SELECT per_ID, per_FirstName, per_LastName, CONCAT_WS(" ",per_FirstName,per_LastName) AS fullname, per_fam_ID  FROM person_per WHERE per_FirstName LIKE \'%' . $searchTerm . '%\' OR per_LastName LIKE \'%' . $searchTerm . '%\' OR per_Email LIKE \'%' . $searchTerm . '%\' OR CONCAT_WS(" ",per_FirstName,per_LastName) LIKE \'%' . $searchTerm . '%\' order by per_FirstName LIMIT 15';
-    $result = mysql_query($fetch);
+    $searchLikeString = '%$searchTerm%';
+    $people = PersonQuery::create()->filterByEmail($searchLikeString, Criteria::LIKE)->
+      _or()->filterByFirstName($searchLikeString, Criteria::LIKE)->
+      _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
+      limit(15)->find();
 
     $return = array();
-    while ($row = mysql_fetch_array($result)) {
-      $values['id'] = $row['per_ID'];
-      $values['familyID'] = $row['per_fam_ID'];
-      $values['firstName'] = $row['per_FirstName'];
-      $values['lastName'] = $row['per_LastName'];
-      $values['displayName'] = $row['per_FirstName'] . " " . $row['per_LastName'];
-      $values['uri'] = $this->baseURL . "/PersonView.php?PersonID=". $row['per_ID'];
+    foreach ($people as $person) {
+      $values['id'] = $person->getId();
+      $values['familyID'] = $person->getFamId();
+      $values['firstName'] = $person->getFirstName();
+      $values['lastName'] = $person->getLastName();
+      $values['displayName'] = $person->getFullName();
+      $values['uri'] = $person->getViewURI();
 
       array_push($return, $values);
     }
