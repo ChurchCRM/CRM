@@ -33,26 +33,6 @@ class PersonService
     return $deleted;
   }
 
-  function getUploadedPhoto($personId)
-  {
-    $validextensions = array("jpeg", "jpg", "png");
-    $hasFile = false;
-    while (list(, $ext) = each($validextensions)) {
-      $photoFile = dirname(__FILE__) . "/../Images/Person/thumbnails/" . $personId . "." . $ext;
-      if (file_exists($photoFile)) {
-        $hasFile = true;
-        $photoFile = $this->baseURL . "/Images/Person/thumbnails/" . $personId . "." . $ext;
-        break;
-      }
-    }
-
-    if ($hasFile) {
-      return $photoFile;
-    } else {
-      return "";
-    }
-  }
-
   function search($searchTerm)
   {
     $fetch = 'SELECT per_ID, per_FirstName, per_LastName, CONCAT_WS(" ",per_FirstName,per_LastName) AS fullname, per_fam_ID  FROM person_per WHERE per_FirstName LIKE \'%' . $searchTerm . '%\' OR per_LastName LIKE \'%' . $searchTerm . '%\' OR per_Email LIKE \'%' . $searchTerm . '%\' OR CONCAT_WS(" ",per_FirstName,per_LastName) LIKE \'%' . $searchTerm . '%\' order by per_FirstName LIMIT 15';
