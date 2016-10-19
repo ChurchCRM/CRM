@@ -41,15 +41,17 @@
     "components/font-awesome": "4.6.3",
     "propel/propel": "~2.0@dev",
     "setasign/fpdf": "1.8.1",
-    "phpmailer/phpmailer": "5.2.*"
+    "phpmailer/phpmailer": "5.2.*",
+    "verot/class.upload.php": "dev-master"
   },
   "autoload": {
     "classmap": [
       "orm/"
     ],
     "psr-4": {
+      "\\": "bin/",
       "ChurchCRM\\Service\\": "Service/",
-      "ChurchCRM\\Reports\\"  : "Reports/"
+      "ChurchCRM\\"  : "ChurchCRM/"
     }
   }
 }

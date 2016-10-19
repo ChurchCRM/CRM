@@ -1,6 +1,6 @@
 <?php
 namespace ChurchCRM\Reports;
-use ChurchCRM\Reports\ChurchInfoReport;
+
 class PDF_AddressReport extends ChurchInfoReport {
 
 	// Private properties
