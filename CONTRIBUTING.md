@@ -21,6 +21,11 @@ We love to hear ideas from other ChurchInfo and ChurchCRM users!  It's what make
 * Check for unnecessary whitespace with `git diff --check` before committing.
 * Changes to ChurchCRM will trigger version number changes in accordance with [Semantic Versioning 2.0.0](http://semver.org/)
 
+## Branching Strategy
+* "Master" branch is evergreen - only peer reviewed, working code should be merged into master.  
+* "Develop" is less strict.  If code is not perfect, but provides adequate functionality, it may be merged into develop.  All known bugs are should have new issues opened so that the issues are tracked.
+*  Features should be developed in a separate branch named accordingly
+
 ## Submitting Changes
 
 * Push your changes to a topic branch in your fork of the repository.
