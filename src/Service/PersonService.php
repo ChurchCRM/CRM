@@ -11,28 +11,6 @@ class PersonService
     $this->baseURL = $_SESSION['sRootPath'];
   }
 
-  function deleteUploadedPhoto($id)
-  {
-    requireUserGroupMembership("bEditRecords");
-    $validExtensions = array("jpeg", "jpg", "png");
-    $finalFileName = "Images/Person/" . $id;
-    $finalFileNameThumb = "Images/Person/thumbnails/" . $id;
-    $deleted = false;
-    while (list(, $ext) = each($validExtensions)) {
-      $tmpFile = $finalFileName . "." . $ext;
-      if (file_exists($tmpFile)) {
-        unlink($tmpFile);
-        $deleted = true;
-      }
-      $tmpFile = $finalFileNameThumb . "." . $ext;
-      if (file_exists($tmpFile)) {
-        unlink($tmpFile);
-        $deleted = true;
-      }
-    }
-    return $deleted;
-  }
-
   function search($searchTerm)
   {
     $fetch = 'SELECT per_ID, per_FirstName, per_LastName, CONCAT_WS(" ",per_FirstName,per_LastName) AS fullname, per_fam_ID  FROM person_per WHERE per_FirstName LIKE \'%' . $searchTerm . '%\' OR per_LastName LIKE \'%' . $searchTerm . '%\' OR per_Email LIKE \'%' . $searchTerm . '%\' OR CONCAT_WS(" ",per_FirstName,per_LastName) LIKE \'%' . $searchTerm . '%\' order by per_FirstName LIMIT 15';
