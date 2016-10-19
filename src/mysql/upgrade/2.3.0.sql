@@ -37,3 +37,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1044, 'sEnableIntegrityCheck', '1', 'boolean', '1', 'Enable Integrity Check', 'General', "Step5", NULL),
 (1045, 'sIntegrityCheckInterval', '168', 'Text', '168', 'Interval in Hours for Integrity Check', 'General', "Step5", NULL),
 (1046, 'sLastIntegrityCheckTimeStamp', '', 'Text', '', 'Last Integrity Check Timestamp', 'General', "Step5", NULL);
+
+delete from config_cfg where cfg_id ='61';
+delete from config_cfg where cfg_id ='62';
+delete from config_cfg where cfg_id ='63';

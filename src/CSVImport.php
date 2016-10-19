@@ -18,13 +18,12 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-use ChurchCRM\Service\NoteService;
+use ChurchCRM\Note;
 
 if (!$_SESSION['bAdmin']) {
     Redirect("Menu.php");
     exit;
 }
-$noteService = new NoteService();
 /**
   Class to store family data so we can assign roles once we have all members.
   A monogamous society is assumed, however  it can be patriarchal or matriarchal
@@ -676,7 +675,12 @@ if (isset($_POST["DoImport"]))
                     $rsFid = RunQuery($sSQL);
                     $aFid = mysql_fetch_array($rsFid);
                     $famid =  $aFid[0];
-                    $noteService->addNote(0, $famid, 0, "Imported", "create");
+                    $note = new Note();
+                    $note->setFamId($famid);
+                    $note->setText("Imported");
+                    $note->setType("create");
+                    $note->setEntered($_SESSION['iUserID']);
+                    $note->save();
                     $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
                     RunQuery($sSQL);
 
@@ -749,7 +753,12 @@ if (isset($_POST["DoImport"]))
             $sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
             $rsPersonID = RunQuery($sSQL);
             extract(mysql_fetch_array($rsPersonID));
-            $noteService->addNote($iPersonID, 0, 0, "Imported", "create");
+            $note = new Note();
+            $note->setPerId($iPersonID);
+            $note->setText("Imported");
+            $note->setType("create");
+            $note->setEntered($_SESSION['iUserID']);
+            $note->save();
             if ($bHasCustom)
             {
                 $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('" . $iPersonID . "')";

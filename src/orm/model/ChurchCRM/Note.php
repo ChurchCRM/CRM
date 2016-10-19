@@ -17,6 +17,11 @@ use ChurchCRM\Base\Note as BaseNote;
 class Note extends BaseNote
 {
 
+  function setEntered($enteredBy) {
+      $this->setDateEntered(new \DateTime());
+      $this->setEnteredBy($enteredBy);
+  }
+
   function getEditLink($rootPath)
   {
     $url = $rootPath . "/NoteEditor.php?NoteID=" . $this->getId() . "&";
