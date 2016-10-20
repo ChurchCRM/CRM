@@ -29,26 +29,26 @@ class TaskService
 
     $tasks = array();
     if ($bRegistered != 1) {
-      array_push($tasks, $this->addTask("Register Software", $this->baseURL."/Register.php", true));
+      array_push($tasks, $this->addTask(gettext("Register Software"), $this->baseURL."/Register.php", true));
     }
     if ($sChurchName == "Some Church") {
-      array_push($tasks, $this->addTask("Update Church Info", $this->baseURL."/SystemSettings.php", true));
+      array_push($tasks, $this->addTask(gettext("Update Church Info"), $this->baseURL."/SystemSettings.php", true));
     }
 
     if ($sChurchAddress == "") {
-      array_push($tasks, $this->addTask("Set Church Address", $this->baseURL."/SystemSettings.php", true));
+      array_push($tasks, $this->addTask(gettext("Set Church Address"), $this->baseURL."/SystemSettings.php", true));
     }
 
     if ($sSMTPHost == "") {
-      array_push($tasks, $this->addTask("Set Email Settings", $this->baseURL."/SystemSettings.php", true));
+      array_push($tasks, $this->addTask(gettext("Set Email Settings"), $this->baseURL."/SystemSettings.php", true));
     }
 
     if ($this->latestVersion != null && $this->latestVersion["name"] != $this->installedVersion) {
-      array_push($tasks, $this->addTask("New Release ". $this->latestVersion["name"], $this->baseURL."/UpgradeCRM.php", true));
+      array_push($tasks, $this->addTask(gettext("New Release") . " " . $this->latestVersion["name"], $this->baseURL."/UpgradeCRM.php", true));
     }
     
     if($integrityCheckData->status == "failure") {
-      array_push($tasks, $this->addTask("Application Integrity Check Failed", $this->baseURL."/IntegrityCheck.php", true));
+      array_push($tasks, $this->addTask(gettext("Application Integrity Check Failed"), $this->baseURL."/IntegrityCheck.php", true));
     }
 
     return $tasks;

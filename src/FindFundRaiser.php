@@ -74,14 +74,14 @@ require "Include/Header.php";
 
 			<tr>
 				<td class="LabelColumn"><?= gettext("Date Start:") ?></td>
-				<td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="DateStart" size="11" value="<?= $dDateStart ?>"></td>
+				<td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="DateStart" size="11" value="<?= $dDateStart ?>" class="date-picker"></td>
 				<td align="center">
 					<input type="submit" class="btn btn-primary" value="<?= gettext("Apply Filters") ?>" name="FindFundRaiserSubmit">
 				</td>
 			</tr>
 			<tr>
 				<td class="LabelColumn"><?= gettext("Date End:") ?></td>
-				<td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?= $dDateEnd ?>"></td>
+				<td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?= $dDateEnd ?>" class="date-picker"></td>
 				<td align="center">
 					<input type="submit" class="btn btn-danger" value="<?= gettext("Clear Filters") ?>" name="FilterClear">
 				</td>
@@ -237,9 +237,5 @@ while (list ($fr_ID, $fr_Date, $fr_Title) = mysql_fetch_row($rsDep))
 }
 echo "</table>";
 ?>
-<script>
-$("#DateStart").datepicker({format:'yyyy-mm-dd'});
-$("#DateEnd").datepicker({format:'yyyy-mm-dd'});
-</script>
 </div>
 <?php require "Include/Footer.php" ?>

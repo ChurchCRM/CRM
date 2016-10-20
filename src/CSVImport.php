@@ -122,7 +122,7 @@ require "Include/Header.php"; ?>
 
 <div class="box">
 <div class="box-header">
-<h3 class="box-title">Import Data</h3>
+<h3 class="box-title"><?= gettext("Import Data")?></h3>
 </div>
 <div class="box-body">
 
@@ -898,7 +898,7 @@ if ($iStage == 1)
         </div>
         <div class="box">
         <div class="box-header">
-        <h3 class="box-title">Clear Data</h3>
+        <h3 class="box-title"><?= gettext("Clear Data")?></h3>
         </div>
         <div class="box-body">
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">

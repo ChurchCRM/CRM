@@ -172,7 +172,7 @@ require "Include/Header.php";
 		<table cellpadding="3">
 			<tr>
 				<td class="LabelColumn"><?= gettext("Date:") ?></td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11"><font color="red"><?php echo $sDateError ?></font></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11" class="date-picker"><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
 			
 			<tr>
@@ -264,9 +264,5 @@ if ($rsDonatedItems != 0) {
 
 </table>
 
-
-<script>
-$("#Date").datepicker({format:'yyyy-mm-dd'});
-</script>
 </div>
 <?php require "Include/Footer.php" ?>

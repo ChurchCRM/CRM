@@ -982,7 +982,7 @@ require "Include/Header.php";
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" name="FriendDate" class="form-control inputDatePicker"
+                            <input type="text" name="FriendDate" class="form-control inputDatePicker date-picker"
                                    value="<?= $dFriendDate ?>" maxlength="10" id="sel2" size="11"
                                    placeholder="YYYY-MM-DD">
                             <?php if ($sFriendDateError) { ?><font
@@ -996,7 +996,7 @@ require "Include/Header.php";
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" name="MembershipDate" class="form-control inputDatePicker"
+                        <input type="text" name="MembershipDate" class="form-control inputDatePicker date-picker"
                                value="<?= $dMembershipDate ?>" maxlength="10" id="sel1" size="11"
                                placeholder="YYYY-MM-DD">
                         <?php if ($sMembershipDateError) { ?><font
@@ -1069,14 +1069,11 @@ require "Include/Header.php";
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-    $(function () {
-        $("[data-mask]").inputmask();
-        $('.inputDatePicker').datepicker({format: 'yyyy-mm-dd'});
-
-    });
+	$(function() {
+		$("[data-mask]").inputmask();
+	});
 </script>
 
 <?php require "Include/Footer.php" ?>

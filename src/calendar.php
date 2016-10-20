@@ -9,8 +9,8 @@ $calenderService = new CalendarService();
 $sPageTitle = gettext("Church Calendar");
 require "Include/Header.php"; ?>
 
-<link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/fullcalendar.min.css">
-<link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/fullcalendar.print.css" media="print">
+<link rel="stylesheet" href="<?= $sRootPath ?>/skin/fullcalendar/fullcalendar.min.css">
+<link rel="stylesheet" href="<?= $sRootPath ?>/skin/fullcalendar/fullcalendar.print.css" media="print">
 <style>
   @media print {
     a[href]:after {
@@ -46,23 +46,14 @@ require "Include/Header.php"; ?>
 
 <!-- fullCalendar 2.2.5 -->
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/daterangepicker/moment.min.js"></script>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/fullcalendar/fullcalendar.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/fullcalendar/fullcalendar.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/fullcalendar/locale-all.js"></script>
 <script>
   $(function () {
     /* initialize the calendar
      -----------------------------------------------------------------*/
     $('#calendar').fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
-      },
-      buttonText: {
-        today: '<?= gettext("Today") ?>',
-        month: '<?= gettext("Month") ?>',
-        week: '<?= gettext("Week") ?>',
-        day: '<?= gettext("Day") ?>'
-      },
+      locale: '<?= $localeInfo->getLanguageCode() ?>',
       events: window.CRM.root + '/api/calendar/events'
     });
  });
