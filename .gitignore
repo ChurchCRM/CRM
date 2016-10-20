@@ -13,6 +13,7 @@
 #Exclude composer vendor folders
 vendor
 composer.lock
+node_modules
 
 # Uploaded Images
 thumbnails
