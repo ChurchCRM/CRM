@@ -73,11 +73,11 @@ require 'Include/Header.php';
           });
         }
         $("#restorestatus").css("color", "green");
-        $("#restorestatus").html("<?= gettext("Restore Complete")?>";
+        $("#restorestatus").html("<?= gettext("Restore Complete")?>");
         $("#restoreNextStep").html('<a href="Login.php?Logoff=True" class="btn btn-primary"><?= gettext("Login to restored Database")?></a>');
       }).fail(function () {
       $("#restorestatus").css("color", "red");
-      $("#restorestatus").html("<?= gettext("Restore Error.")?>";
+      $("#restorestatus").html("<?= gettext("Restore Error.")?>");
     });
     return false;
   });
