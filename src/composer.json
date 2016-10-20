@@ -49,7 +49,7 @@
       "orm/"
     ],
     "psr-4": {
-      "\\": "bin/",
+      "ChurchCRM\\dto\\": "bin/dto/",
       "ChurchCRM\\Service\\": "Service/",
       "ChurchCRM\\"  : "ChurchCRM/"
     }
