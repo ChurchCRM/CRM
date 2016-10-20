@@ -18,11 +18,11 @@ class LocaleInfo
       $this->country = $items[1];
     }
     if ($locale == "zh_CN") {
-      $this->language = "zh-cn";
+      $this->language = "zh-CN";
     } else if ($locale == "zh_TW") {
-      $this->language = "zh-tw";
+      $this->language = "zh-TW";
     } else if ($locale == "pt_BR") {
-      $this->language = "pt-br";
+      $this->language = "pt-BR";
     }
   }
 
