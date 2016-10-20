@@ -53,7 +53,7 @@
       "ChurchCRM\\": "ChurchCRM/",
       "ChurchCRM\\dto\\": "ChurchCRM/dto/",
       "ChurchCRM\\Service\\": "Service/",
-      "ChurchCRM\\Reports\\": "Reports/"
+      "ChurchCRM\\Reports\\": "ChurchCRM/Reports/"
     }
   }
 }
