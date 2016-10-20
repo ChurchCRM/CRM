@@ -24,6 +24,7 @@ thumbnails
 adminlte
 font-awesome
 ionicons
+fullcalendar
 
 # Configuration files with passwords
 src/Include/Config.php
