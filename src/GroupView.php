@@ -180,7 +180,6 @@ require 'Include/Header.php';
       }
     }
     echo '<a class="btn btn-app" href="GroupView.php?Action=AddGroupToCart&amp;GroupID=' . $thisGroup->getId() . '"><i class="fa fa-users"></i>' . gettext("Add Group Members to Cart") . '</a>';
-    echo '<a class="btn btn-app" href="GroupMeeting.php?GroupID=' . $thisGroup->getId() . '&amp;Name=' . $thisGroup->getName() . '&amp;linkBack=GroupView.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-calendar-o"></i>' . gettext('Schedule a meeting') . '</a>';
 
     echo '<a class="btn btn-app" href="MapUsingGoogle.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-map-marker"></i>' . gettext("Map this group") . '</a>';
 
