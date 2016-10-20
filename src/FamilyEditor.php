@@ -19,9 +19,7 @@ require "Include/Functions.php";
 require "Include/CanvassUtilities.php";
 require "Include/GeoCoder.php";
 
-use ChurchCRM\Service\NoteService;
-
-$noteService = new NoteService();
+use ChurchCRM\Note;
 
 //Set the page title
 $sPageTitle = gettext("Family Editor");
@@ -447,7 +445,12 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					RunQuery("UNLOCK TABLES");
 				}
 			}
-      $noteService->addNote(0, $iFamilyID, 0, "Created", "create");
+			$note = new Note();
+			$note->setFamId($iFamilyID);
+			$note->setText("Created");
+			$note->setType("create");
+			$note->setEntered($_SESSION['iUserID']);
+			$note->save();
 		} else {
 			for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++)
 			{
@@ -474,7 +477,12 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					//RunQuery("UNLOCK TABLES");
 				}
 			}
-      $noteService->addNote(0, $iFamilyID, 0, "Updated", "edit");
+			$note = new Note();
+			$note->setFamId($iFamilyID);
+			$note->setText("Updated");
+			$note->setType("edit");
+			$note->setEntered($_SESSION['iUserID']);
+			$note->save();
 		}
 		
 		// Update the custom person fields.

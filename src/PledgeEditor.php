@@ -19,7 +19,7 @@ global $iChecksPerDepositForm;
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/MICRFunctions.php";
+use ChurchCRM\MICRReader;
 
 if ($bUseScannedChecks) { // Instantiate the MICR class
    $micrObj = new MICRReader();

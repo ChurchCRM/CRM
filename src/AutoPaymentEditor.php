@@ -255,7 +255,6 @@ $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun
 $rsFunds = RunQuery($sSQL);
 
 if ($sElectronicTransactionProcessor == "Vanco") {
-	include "Include/vancowebservices.php";
 	include "Include/VancoConfig.php";
 	$customerid = "$iAutID"; // This is an optional value that can be used to indicate a unique customer ID that is used in your system
 	// put aut_ID into the $customerid field
