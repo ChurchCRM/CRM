@@ -10,9 +10,10 @@ class PersonService
   function search($searchTerm)
   {
     $searchLikeString = '%$searchTerm%';
-    $people = PersonQuery::create()->filterByEmail($searchLikeString, Criteria::LIKE)->
-      _or()->filterByFirstName($searchLikeString, Criteria::LIKE)->
-      _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
+    $people = PersonQuery::create()->
+      filterByEmail($searchLikeString, Criteria::LIKE)->_or()->
+      filterByFirstName($searchLikeString, Criteria::LIKE)->_or()->
+      filterByLastName($searchLikeString, Criteria::LIKE)->
       limit(15)->find();
 
     $return = array();
