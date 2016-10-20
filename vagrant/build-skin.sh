@@ -37,6 +37,6 @@ rm /vagrant/src/skin/adminlte/plugins/fastclick/fastclick.min.js
 echo "FastClick Patched for iOS Select2 Bug"
 
 echo "Building Full Calendar"
-bower --allow-root install fullcalendar
-cp -rf /vagrant/src/bower_components/fullcalendar/dist/ /var/www/public/skin/fullcalendar
-rm -rf /vagrant/src/bower_components
+npm install fullcalendar
+cp -rf /vagrant/src/node_modules/fullcalendar/dist/ /var/www/public/skin/fullcalendar
+rm -rf /vagrant/src/node_modules
