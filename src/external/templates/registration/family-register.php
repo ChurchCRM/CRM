@@ -32,7 +32,14 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
           </div>
         </div>
         <div class="form-group has-feedback">
-          <input name="familyCountry" class="form-control" placeholder="<?= gettext("Country") ?>" required>
+          <div class="row">
+            <div class="col-lg-3">
+              <input name="familyZip" class="form-control" placeholder="<?= gettext("Zip") ?>" required>
+            </div>
+            <div class="col-lg-9">
+              <input name="familyCountry" class="form-control" placeholder="<?= gettext("Country") ?>" required>
+            </div>
+          </div>
         </div>
         <div class="form-group has-feedback">
           <input name="familyHomePhone" class="form-control" placeholder="<?= gettext("Home Phone") ?>">

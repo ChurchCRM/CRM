@@ -31,6 +31,7 @@ $app->group('/register', function () {
       $family->setCity($body["familyCity"]);
       $family->setState($body["familyState"]);
       $family->setCountry($body["familyCountry"]);
+      $family->setZip($body["familyZip"]);
       $family->setHomePhone($body["familyHomePhone"]);
       $family->setEnteredBy(0);
       $family->setDateEntered(new \DateTime());
