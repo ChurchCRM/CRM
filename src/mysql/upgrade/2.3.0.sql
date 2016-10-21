@@ -33,16 +33,16 @@ where `cfg_id` = 1037;
 delete from config_cfg where cfg_id ='18';
 delete from config_cfg where cfg_id ='2001';
 
-INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`, `cfg_data`) VALUES
-(80, 'sEnableSelfRegistration', '0', 'boolean', '0', 'Set true to enable family self registration.', 'General', NULL, NULL),
-(100, 'sPhoneFormat', '(999) 999-9999', 'text', '(999) 999-9999', '', 'General',NULL),
-(101, 'sPhoneFormatWithExt', '(999) 999-9999 x99999', 'text', '(999) 999-9999 x99999', '', 'General', NULL),
-(102, 'sDateFormatLong', 'yyyy-mm-dd', 'text', 'yyyy-mm-dd', '', 'General', NULL),
-(103, 'sDateFormatNoYear', 'DD/MM', 'text', 'DD/MM', '', 'General', NULL),
-(104, 'sDateFormatShort', 'yy-mm-dd', 'text', 'yy-mm-dd', '', 'General', NULL),
-(1044, 'sEnableIntegrityCheck', '1', 'boolean', '1', 'Enable Integrity Check', 'General', "Step5", NULL),
-(1045, 'sIntegrityCheckInterval', '168', 'Text', '168', 'Interval in Hours for Integrity Check', 'General', "Step5", NULL),
-(1046, 'sLastIntegrityCheckTimeStamp', '', 'Text', '', 'Last Integrity Check Timestamp', 'General', "Step5", NULL);
+INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`) VALUES
+(80, 'sEnableSelfRegistration', '0', 'boolean', '0', 'Set true to enable family self registration.', 'General'),
+(100, 'sPhoneFormat', '(999) 999-9999', 'text', '(999) 999-9999', '', 'General'),
+(101, 'sPhoneFormatWithExt', '(999) 999-9999 x99999', 'text', '(999) 999-9999 x99999', '', 'General'),
+(102, 'sDateFormatLong', 'yyyy-mm-dd', 'text', 'yyyy-mm-dd', '', 'General'),
+(103, 'sDateFormatNoYear', 'DD/MM', 'text', 'DD/MM', '', 'General'),
+(104, 'sDateFormatShort', 'yy-mm-dd', 'text', 'yy-mm-dd', '', 'General'),
+(1044, 'sEnableIntegrityCheck', '1', 'boolean', '1', 'Enable Integrity Check', 'General'),
+(1045, 'sIntegrityCheckInterval', '168', 'Text', '168', 'Interval in Hours for Integrity Check', 'General'),
+(1046, 'sLastIntegrityCheckTimeStamp', '', 'Text', '', 'Last Integrity Check Timestamp', 'General');
 
 delete from config_cfg where cfg_id ='61';
 delete from config_cfg where cfg_id ='62';
