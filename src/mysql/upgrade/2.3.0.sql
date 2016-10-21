@@ -47,3 +47,12 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 delete from config_cfg where cfg_id ='61';
 delete from config_cfg where cfg_id ='62';
 delete from config_cfg where cfg_id ='63';
+
+-- remove unsigned
+ALTER TABLE `person_per`
+  CHANGE COLUMN `per_EnteredBy` `per_EnteredBy` SMALLINT(5) NOT NULL DEFAULT '0' COMMENT '' ;
+
+ALTER TABLE `family_fam`
+  CHANGE COLUMN `fam_EnteredBy` `fam_EnteredBy` SMALLINT(5) NOT NULL DEFAULT '0' COMMENT '' ;
+
+
