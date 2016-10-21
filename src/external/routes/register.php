@@ -79,7 +79,6 @@ $app->group('/register', function () {
       }
 
       $birthday = $body["memberBirthday-" . $x];
-      $person->setTitle($birthday);
       if (!empty($birthday)) {
         $birthdayDate = \DateTime::createFromFormat('m/d/Y', $birthday);
         $person->setBirthDay($birthdayDate->format("d"));
@@ -104,7 +103,7 @@ $app->group('/register', function () {
     $_SESSION['familyMembers'] = $familyMembers;
 
     $pageObjects = array("sRootPath" => $_SESSION['sRootPath'], "family" => $family, "familyClass" => $_SESSION['regFamilyClass']);
-    return $renderer->render($response, "family-register-confirm.php", $pageObjects);
+    return $renderer->render($response, "family-register-done.php", $pageObjects);
 
   });
 
