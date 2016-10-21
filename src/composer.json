@@ -51,9 +51,7 @@
     "psr-4": {
       "\\": "bin/",
       "ChurchCRM\\": "ChurchCRM/",
-      "ChurchCRM\\dto\\": "ChurchCRM/dto/",
-      "ChurchCRM\\Service\\": "Service/",
-      "ChurchCRM\\Reports\\": "ChurchCRM/Reports/"
+      "ChurchCRM\\Service\\": "Service/"
     }
   }
 }
