@@ -379,7 +379,7 @@ class Deposit extends BaseDeposit
     
     $Report->pdf = new \ChurchCRM\Reports\PDF_DepositReport;
     $Report->funds = DonationFundQuery::create()->find();
-
+ 
     // Read in report settings from database
     $settings = ConfigQuery::create()->filterBySection("ChurchInfoReport")->find();
     foreach ($settings as $setting) {
@@ -408,7 +408,7 @@ class Deposit extends BaseDeposit
    
 
 
-    $this->generateDepositSummary($Report);
+   // $this->generateDepositSummary($Report);
 
 
    // Export file

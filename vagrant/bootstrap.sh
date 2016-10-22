@@ -7,6 +7,7 @@ DB_PASS="root"
 DB_HOST="localhost"
 
 CRM_DB_INSTALL_SCRIPT="/vagrant/src/mysql/install/Install.sql"
+CRM_DB_INSTALL_SCRIPT2="/vagrant/src/mysql/upgrade/update_config.sql"
 CRM_DB_VAGRANT_SCRIPT="/vagrant/vagrant/vagrant.sql"
 CRM_DB_USER="churchcrm"
 CRM_DB_PASS="churchcrm"
@@ -54,6 +55,7 @@ sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "FLUSH PRIVILEGES;"
 echo "Database: user created with needed PRIVILEGES"
 
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT
+sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT2
 
 echo "Database: tables and metadata deployed"
 
@@ -81,14 +83,6 @@ echo "=========================================================="
 sudo /usr/local/bin/composer self-update
 
 echo "=========================================================="
-echo "===============   Composer PHP & Skin    ================="
-echo "=========================================================="
-
-cd /vagrant/src
-composer update
-../vagrant/build-skin.sh
-
-echo "=========================================================="
 echo "===============  MV Config.php           ================="
 echo "=========================================================="
 
@@ -102,6 +96,14 @@ echo "=========================================================="
 composer dump-autoload
 
 echo "=========================================================="
+echo "===============   Composer PHP & Skin    ================="
+echo "=========================================================="
+
+cd /vagrant/src
+composer update
+../vagrant/build-skin.sh
+
+echo "=========================================================="
 echo "==========   Starting Background Installs     ============"
 echo "=========================================================="
 
@@ -109,20 +111,43 @@ echo "=========================================================="
 echo "Build systems are downloading"
 
 echo "=========================================================="
+echo "==========   Add Locals                       ============"
 echo "=========================================================="
-echo "===   .o88b. db   db db    db d8888b.  .o88b. db   db  ==="     
-echo "===  d8P  Y8 88   88 88    88 88  '8D d8P  Y8 88   88  ==="  
-echo "===  8P      88ooo88 88    88 88oobY' 8P      88ooo88  ==="  
-echo "===  8b      88~~~88 88    88 88'8b   8b      88~~~88  ===" 
-echo "===  Y8b  d8 88   88 88b  d88 88 '88. Y8b  d8 88   88  ===" 
-echo "===   'Y88P' YP   YP ~Y8888P' 88   YD  'Y88P' YP   YP  ===" 
+
+sudo locale-gen de_DE &
+sudo locale-gen en_AU &
+sudo locale-gen en_GB &
+sudo locale-gen es_ES &
+sudo locale-gen fr_FR &
+sudo locale-gen hu_HU &
+sudo locale-gen it_IT &
+sudo locale-gen nb_NO &
+sudo locale-gen nl_NL &
+sudo locale-gen pl_PL &
+sudo locale-gen pt_BR &
+sudo locale-gen ro_RO &
+sudo locale-gen ru_RU &
+sudo locale-gen se_SE &
+sudo locale-gen sq_AL &
+sudo locale-gen sv_SE &
+sudo locale-gen zh_CN &
+sudo locale-gen zh_TW &
+
+echo "=========================================================="
+echo "=========================================================="
+echo "===   .o88b. db   db db    db d8888b.  .o88b. db   db  ==="
+echo "===  d8P  Y8 88   88 88    88 88  '8D d8P  Y8 88   88  ==="
+echo "===  8P      88ooo88 88    88 88oobY' 8P      88ooo88  ==="
+echo "===  8b      88~~~88 88    88 88'8b   8b      88~~~88  ==="
+echo "===  Y8b  d8 88   88 88b  d88 88 '88. Y8b  d8 88   88  ==="
+echo "===   'Y88P' YP   YP ~Y8888P' 88   YD  'Y88P' YP   YP  ==="
 echo "===                                                    ==="
 echo "===                         .o88b. d8888b. .88b  d88.  ==="
 echo "===                        d8P  Y8 88  '8D 88'YbdP'88  ==="
 echo "===                        8P      88oobY' 88  88  88  ==="
 echo "===                        8b      88'8b   88  88  88  ==="
 echo "===                        Y8b  d8 88 '88. 88  88  88  ==="
-echo "===                         'Y88P' 88   YD YP  YP  YP  ==="                           
+echo "===                         'Y88P' 88   YD YP  YP  YP  ==="
 echo "=========================================================="
 echo "=========================================================="
 echo "====== Visit  http://192.168.33.10/               ========"

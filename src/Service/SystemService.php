@@ -34,14 +34,13 @@ class SystemService
 
   function playbackSQLtoDatabase($fileName)
   {
-    requireUserGroupMembership("bAdmin");
     $query = '';
     $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($restoreQueries as $line) {
       if ($line != '' && strpos($line, '--') === false) {
         $query .= " $line";
         if (substr($query, -1) == ';') {
-          $person = RunQuery($query);
+          $person = mysql_query($query);
           $query = '';
         }
       }
@@ -361,5 +360,137 @@ class SystemService
     }
     return $result;
   }
-
+  
+  function runTimerJobs()
+  {
+    global $sEnableExternalBackupTarget, $sExternalBackupAutoInterval, $sLastBackupTimeStamp;
+    global $sEnableIntegrityCheck, $sIntegrityCheckInterval, $sLastIntegrityCheckTimeStamp;
+    //start the external backup timer job
+    if ($sEnableExternalBackupTarget && $sExternalBackupAutoInterval > 0)  //if remote backups are enabled, and the interval is greater than zero
+    {
+      try {
+        $now = new \DateTime();  //get the current time
+        $previous = new \DateTime($sLastBackupTimeStamp); // get a DateTime object for the last time a backup was done.
+        $diff = $previous->diff($now);  // calculate the difference.
+        if (!$sLastBackupTimeStamp || $diff->h >= $sExternalBackupAutoInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
+        {
+          $systemService->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
+          $now = new \DateTime();  // update the LastBackupTimeStamp.
+          $sSQL = "UPDATE config_cfg SET cfg_value='" . $now->format('Y-m-d H:i:s') . "' WHERE cfg_name='sLastBackupTimeStamp'";
+          $rsUpdate = RunQuery($sSQL);
+        }
+      } catch (Exception $exc) {
+        // an error in the auto-backup shouldn't prevent the page from loading...
+      }
+    }
+    if ($sEnableIntegrityCheck && $sIntegrityCheckInterval > 0)
+    {
+      $now = new \DateTime();  //get the current time
+      $previous = new \DateTime($sLastIntegrityCheckTimeStamp); // get a DateTime object for the last time a backup was done.
+      $diff = $previous->diff($now);  // calculate the difference.
+      if (!$sLastIntegrityCheckTimeStamp || $diff->h >= $sIntegrityCheckInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
+      {
+        $integrityCheckFile = dirname(__DIR__) . "/integrityCheck.json";
+        $appIntegrity = $this->verifyApplicationIntegrity();
+        file_put_contents($integrityCheckFile, json_encode($appIntegrity));
+        $now = new \DateTime();  // update the LastBackupTimeStamp.
+        $sSQL = "UPDATE config_cfg SET cfg_value='" . $now->format('Y-m-d H:i:s') . "' WHERE cfg_name='sLastIntegrityCheckTimeStamp'";
+        $rsUpdate = RunQuery($sSQL);
+      }
+    }
+  }
+  
+  function downloadLatestRelease()
+  {
+    $release = $this->getLatestRelese();
+    $CRMInstallRoot = dirname(__DIR__);
+    $UpgradeDir = $CRMInstallRoot."/Upgrade";
+    $url = $release['assets'][0]['browser_download_url'];
+    mkdir($UpgradeDir);
+    file_put_contents($UpgradeDir."/".basename($url), file_get_contents($url));
+    $returnFile= array();
+    $returnFile['fileName'] = basename($url);
+    $returnFile['fullPath'] = $UpgradeDir."/".basename($url);
+    $returnFile['sha1'] = sha1_file($UpgradeDir."/".basename($url));
+    return $returnFile;
+  }
+  
+  function moveDir($src,$dest) {
+    $files = array_diff(scandir($src), array('.', '..'));
+    foreach ($files as $file) {
+      if (is_dir("$src/$file")) {
+        mkdir("$dest/$file");
+        $this->moveDir("$src/$file","$dest/$file");
+      }
+      else
+      {
+        rename("$src/$file","$dest/$file");
+      }
+    }
+    return rmdir($src);
+  }
+  
+  function doUpgrade($zipFilename,$sha1)
+  {
+    ini_set('max_execution_time',60);
+    $CRMInstallRoot = dirname(__DIR__); 
+    if($sha1 == sha1_file($zipFilename))
+    {
+      $zip = new \ZipArchive();
+      if ($zip->open($zipFilename) == TRUE) 
+      {
+        $zip->extractTo($CRMInstallRoot."/Upgrade");
+        $zip->close();
+        $this->moveDir($CRMInstallRoot."/Upgrade/churchcrm", $CRMInstallRoot);
+      }
+      unlink($zipFilename);
+      return "success";
+    }
+    else
+    {
+       return "hash validation failure";
+    }
+   
+  }
+  
+  function verifyApplicationIntegrity()
+  {
+    $CRMInstallRoot = dirname(__DIR__);
+    $signatureFile = $CRMInstallRoot."/signatures.json";
+    $signatureData = json_decode(file_get_contents($signatureFile));
+    $signatureFailures = array();
+   
+    if (sha1(json_encode($signatureData->files)) == $signatureData->sha1)
+    {
+      foreach ($signatureData->files as $file)
+      {
+        if(file_exists($CRMInstallRoot."/".$file->filename))
+        {
+          $actualHash = sha1_file($CRMInstallRoot."/".$file->filename);
+          if ( $actualHash != $file->sha1 )
+          {
+            array_push($signatureFailures, array("filename"=>$file->filename,"status"=>"Hash Mismatch", "expectedhash"=>$file->sha1,"actualhash"=>$actualHash));
+          }
+        }
+        else
+        {
+          array_push($signatureFailures, array("filename"=>$file->filename,"status"=>"File Missing"));
+        }
+      }
+    }
+    else
+    {
+      return array("status"=>"failure","message"=>"Signature Definition file signature failed validation");
+    }
+    
+    if(count($signatureFailures) > 0 )
+    {
+      return array("status"=>"failure","files"=>$signatureFailures);
+    }
+    else 
+    {
+       return array("status"=>"success");
+    }
+    
+  }
 }

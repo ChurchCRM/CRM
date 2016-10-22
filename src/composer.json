@@ -1,6 +1,6 @@
 {
   "name": "ChurchCRM/CRM",
-  "version": "2.2.5",
+  "version": "2.3.0",
   "type": "project",
   "keywords": [
     "church",
@@ -41,15 +41,18 @@
     "components/font-awesome": "4.6.3",
     "propel/propel": "~2.0@dev",
     "setasign/fpdf": "1.8.1",
-    "phpmailer/phpmailer": "5.2.*"
+    "phpmailer/phpmailer": "5.2.*",
+    "verot/class.upload.php": "dev-master"
   },
   "autoload": {
     "classmap": [
       "orm/"
     ],
     "psr-4": {
-      "ChurchCRM\\Service\\": "Service/",
-      "ChurchCRM\\Reports\\"  : "Reports/"
+      "\\"  : "bin/",
+      "ChurchCRM\\"  : "ChurchCRM/",
+      "ChurchCRM\\dto\\": "ChurchCRM/dto/",
+      "ChurchCRM\\Service\\": "Service/"
     }
   }
 }

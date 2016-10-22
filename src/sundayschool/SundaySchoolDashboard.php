@@ -40,6 +40,18 @@ $sPageTitle = gettext("Sunday School Dashboard");
 require "../Include/Header.php";
 
 ?>
+<div class="box">
+  <div class="box-header with-border">
+    <h3 class="box-title"><?= gettext("Functions") ?></h3>
+  </div>
+  <div class="box-body">
+    <?php if ($_SESSION['bManageGroups']) { ?>
+    <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i class="fa fa-plus-square"></i><?= gettext("Add New Class") ?></button>
+    <?php } ?>
+    <a href="SundaySchoolReports.php" class="btn btn-app" title="<?= gettext("Generate class lists and attendance sheets"); ?>"><i class="fa fa-file-pdf-o"></i><?= gettext("Reports"); ?></a>
+    <a href="SundaySchoolClassListExport.php" class="btn btn-app" title="<?= gettext("Export All Classes, Kids, and Parent to CSV file"); ?>"><i class="fa fa-file-excel-o"></i><?= gettext("Export to CSV") ?></a><br/>
+  </div>
+</div>
 <!-- Small boxes (Stat box) -->
 <div class="row">
   <div class="col-md-3 col-sm-6 col-xs-12">
@@ -114,26 +126,6 @@ require "../Include/Header.php";
     <!-- /.info-box -->
   </div>
 </div><!-- /.row -->
-<div class="row">
-  <div class="col-lg-12">
-    <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext("Sunday School Reports") ?></h3>
-      </div>
-      <div class="box-body">
-        <p>
-          <a href="SundaySchoolReports.php"><?= gettext("Sunday School Reports"); ?></a><br/>
-          <?= gettext("Generate class lists and attendance sheets"); ?>
-        </p>
-        <p>
-          <a href="SundaySchoolClassListExport.php"><?= gettext("Export Sunday School to CSV") ?></a><br/>
-          <?= gettext("Export All Classes, Kids, and Parent to CSV file"); ?>
-        </p>
-      </div>
-    </div>
-  </div>
-  <!-- ./col -->
-</div>
 <!-- on continue -->
 <div class="box box-info">
   <div class="box-header">
@@ -214,5 +206,53 @@ require "../Include/Header.php";
     </table>
   </div>
 </div>
+<?php if ($_SESSION['bManageGroups']) { ?>
+<div class="modal fade" id="add-class" tabindex="-1" role="dialog" aria-labelledby="add-class-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="delete-Image-label"><?= gettext("Add") ?> <?= gettext("Sunday School") ?> <?= gettext("Class") ?> </h4>
+      </div>
 
-<?php require "../Include/Footer.php" ?>
+      <div class="modal-body">
+        <div class="form-group">
+          <input type="text" id="new-class-name" class="form-control" placeholder="<?= gettext("Enter Name") ?>" maxlength="20" required>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+        <button type="button" id="addNewClassBtn"  class="btn btn-primary" data-dismiss="modal"><?= gettext("Add") ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="application/javascript">
+  $(document).ready(function () {
+
+    $("#addNewClassBtn").click(function (e) {
+      var groupName = $("#new-class-name").val(); // get the name of the from the textbox
+      if (groupName) // ensure that the user entered a name
+      {
+        $.ajax({
+          method: "POST",
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
+          url: window.CRM.root + "/api/groups/",
+          data: JSON.stringify({
+            'groupName':groupName,
+            'isSundaySchool':true
+          }) 
+        }).done(function (data) {                               //yippie, we got something good back from the server
+          window.location.href = window.CRM.root + "/sundayschool/SundaySchoolClassView.php?groupId="+ data.Id;
+        });
+      }
+      else {
+
+      }
+    });
+  });
+</script>
+<?php }
+require "../Include/Footer.php" ?>

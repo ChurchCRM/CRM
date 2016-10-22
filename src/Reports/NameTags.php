@@ -15,8 +15,8 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-use ChurchCRM\Reports\ChurchInfoReport;
-require "../Include/class_fpdf_labels.php";
+
+use ChurchCRM\Reports\PDF_Label;
 
 class PDF_NameTags extends PDF_Label {
 

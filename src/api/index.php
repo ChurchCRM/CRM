@@ -40,6 +40,12 @@ require __DIR__ . '/routes/payments.php';
 // other
 require __DIR__ . '/routes/calendar.php';
 
+//timer jobs
+require __DIR__ . '/routes/timerjobs.php';
+
+//self-upgrade tasks
+require __DIR__ . '/routes/systemupgrade.php';
+
 // Run app
 $app->run();
 

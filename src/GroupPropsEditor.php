@@ -174,13 +174,6 @@ if (mysql_num_rows($rsPropList) == 0) {
   <?php
 } ?>
 
-<script type="text/javascript">
-  $(function () {
-    $('.inputDatePicker').datepicker({format: 'yyyy-mm-dd'});
-  });
-</script>
-
-
 <?
 require "Include/Footer.php";
 ?>
