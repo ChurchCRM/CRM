@@ -55,4 +55,8 @@ ALTER TABLE `person_per`
 ALTER TABLE `family_fam`
   CHANGE COLUMN `fam_EnteredBy` `fam_EnteredBy` SMALLINT(5) NOT NULL DEFAULT '0' COMMENT '' ;
 
+ALTER TABLE `note_nte`
+  CHANGE COLUMN `nte_EnteredBy` `nte_EnteredBy` MEDIUMINT(8) NOT NULL DEFAULT '0' COMMENT '' ;
+
+
 

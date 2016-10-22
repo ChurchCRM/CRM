@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\EventAttendQuery;
+use ChurchCRM\Note;
 use ChurchCRM\NoteQuery;
 use ChurchCRM\PersonQuery;
 
@@ -70,13 +71,16 @@ class TimelineService
     return $sortedTimeline;
   }
 
-
+  /**
+   * @param $dbNote Note
+   * @return mixed|null
+   */
   function noteToTimelineItem($dbNote)
   {
     $item = NULL;
     if ($this->currentUserIsAdmin || $dbNote->isVisable($this->currentUser)) {
       $displayEditedBy = gettext("Unknown");
-      if ($dbNote->getDisplayEditedBy() == "-1") {
+      if ($dbNote->getDisplayEditedBy() == -1) {
         $displayEditedBy = gettext("Self Registration");
       } else {
         $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());

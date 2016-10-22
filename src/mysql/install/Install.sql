@@ -756,7 +756,7 @@ CREATE TABLE `note_nte` (
   `nte_Text` text,
   `nte_DateEntered` datetime NOT NULL default '0000-00-00 00:00:00',
   `nte_DateLastEdited` datetime default NULL,
-  `nte_EnteredBy` mediumint(8) unsigned NOT NULL default '0',
+  `nte_EnteredBy` mediumint(8) NOT NULL default '0',
   `nte_EditedBy` mediumint(8) unsigned NOT NULL default '0',
   `nte_Type` varchar(50) DEFAULT NULL,
   PRIMARY KEY  (`nte_ID`)

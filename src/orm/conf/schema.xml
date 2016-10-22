@@ -180,7 +180,7 @@
         <column name="nte_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true"
                 defaultValue="0000-00-00 00:00:00"/>
         <column name="nte_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
-        <column name="nte_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
+        <column name="nte_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="8" sqlType="mediumint(8)"
                 required="true" defaultValue="0"/>
         <column name="nte_EditedBy" phpName="EditedBy" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
                 required="true" defaultValue="0"/>
