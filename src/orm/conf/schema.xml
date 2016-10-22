@@ -52,7 +52,7 @@
         <column name="per_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
         <column name="per_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true"
                 defaultValue="0000-00-00 00:00:00"/>
-        <column name="per_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"
+        <column name="per_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="5" sqlType="smallint(5)"
                 required="true" defaultValue="0"/>
         <column name="per_EditedBy" phpName="EditedBy" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"
                 defaultValue="0"/>
@@ -114,15 +114,15 @@
         <column name="fam_State" phpName="State" type="VARCHAR" size="50"/>
         <column name="fam_Zip" phpName="Zip" type="VARCHAR" size="50"/>
         <column name="fam_Country" phpName="Country" type="VARCHAR" size="50"/>
-        <column name="fam_HomePhone" phpName="Homephone" type="VARCHAR" size="30"/>
-        <column name="fam_WorkPhone" phpName="Workphone" type="VARCHAR" size="30"/>
-        <column name="fam_CellPhone" phpName="Cellphone" type="VARCHAR" size="30"/>
+        <column name="fam_HomePhone" phpName="HomePhone" type="VARCHAR" size="30"/>
+        <column name="fam_WorkPhone" phpName="WorkPhone" type="VARCHAR" size="30"/>
+        <column name="fam_CellPhone" phpName="CellPhone" type="VARCHAR" size="30"/>
         <column name="fam_Email" phpName="Email" type="VARCHAR" size="100"/>
         <column name="fam_WeddingDate" phpName="Weddingdate" type="DATE"/>
         <column name="fam_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true"
                 defaultValue="0000-00-00 00:00:00"/>
         <column name="fam_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
-        <column name="fam_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"
+        <column name="fam_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="5" sqlType="smallint(5)"
                 required="true" defaultValue="0"/>
         <column name="fam_EditedBy" phpName="EditedBy" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"
                 defaultValue="0"/>
@@ -180,7 +180,7 @@
         <column name="nte_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true"
                 defaultValue="0000-00-00 00:00:00"/>
         <column name="nte_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
-        <column name="nte_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
+        <column name="nte_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="8" sqlType="mediumint(8)"
                 required="true" defaultValue="0"/>
         <column name="nte_EditedBy" phpName="EditedBy" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
                 required="true" defaultValue="0"/>
