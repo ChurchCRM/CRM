@@ -58,6 +58,7 @@ $app->group('/groups', function () {
   $this->delete('/{groupID:[0-9]+}', function ($request, $response, $args) {
     $groupID = $args['groupID'];
     GroupQuery::create()->findOneById($groupID)->delete();
+    echo json_encode(array("status"=>"success"));
   });
   
    $this->get('/{groupID:[0-9]+}/members', function ($request, $response, $args) {
