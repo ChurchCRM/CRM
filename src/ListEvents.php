@@ -211,15 +211,15 @@ if ($numRows > 0)
       <h3 class='box-title'><?= gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
     </div>
     <div class='box-body'>
-  <table class='table data-table table-striped table-bordered'>
+  <table class='table data-table table-striped table-bordered table-responsive'>
     <thead>
       <tr class="TableHeader">
-        <th><?= gettext("Event Type") ?></th>
+        <th><?= gettext("Action") ?></th>
         <th><?= gettext("Description") ?></th>
+        <th><?= gettext("Event Type") ?></th>
         <th><?= gettext("Attendance Counts") ?></th>
         <th><?= gettext("Start Date/Time") ?></th>
         <th><?= gettext("Active") ?></th>
-        <th><?= gettext("Action") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -228,7 +228,37 @@ if ($numRows > 0)
         {
           ?>
           <tr>
-            <td><?= $aEventType[$row] ?></td>
+            <td>
+              <table class='table-responsive'>
+                <tr>
+                  <td>
+                    <form name="EditEvent" action="EventEditor.php" method="POST">
+                      <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
+                      <button type="submit" name="Action" title="<?= gettext('Edit') ?>" value="<?= gettext("Edit") ?>" data-tooltip class="btn btn-default btn-sm">
+                        <i class='fa fa-pencil'></i>
+                      </button>
+                    </form>
+                  </td>
+                  <td>
+                    <form name="EditAttendees" action="EditEventAttendees.php" method="POST">
+                      <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
+                      <input type="hidden" name="EName" value="<?= $aEventTitle[$row] ?>">
+                      <input type="hidden" name="EDesc" value="<?= $aEventDesc[$row] ?>">
+                      <input type="hidden" name="EDate" value="<?= FormatDate($aEventStartDateTime[$row],1) ?>">
+                      <input type="submit" name="Action" value="<?= gettext("Attendees(".$attNumRows[$row].")") ?>" class="btn btn-info btn-sm btn-block" >
+                    </form>
+                  </td>
+                  <td>
+                    <form name="DeleteEvent" action="ListEvents.php" method="POST">
+                      <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
+                      <button type="submit" name="Action" title="<?=gettext("Delete") ?>" data-tooltip value="<?= gettext("Delete") ?>" class="btn btn-danger btn-sm" onClick="return confirm('Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: <?=  $aEventID[$row] ?>')">
+                        <i class='fa fa-trash'></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              </table>
+            </td>
             <td>
               <?= $aEventTitle[$row] ?>
               <?= ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]) ?>
@@ -236,6 +266,7 @@ if ($numRows > 0)
                 <div class='text-bold'><a href="javascript:popUp('GetText.php?EID=<?=$aEventID[$row]?>')">Sermon Text</a></div>
               <?php } ?>
             </td>
+            <td><?= $aEventType[$row] ?></td>
             <td>
               <table width='100%' class='table-simple-padding'>
                 <tr>
@@ -277,37 +308,7 @@ if ($numRows > 0)
             <td>
               <?= ($aEventStatus[$row] != 0 ? "No":"Yes") ?>
             </td>
-            <td>
-              <table class='table-simple-padding'>
-                <tr>
-                  <td>
-                    <form name="EditAttendees" action="EditEventAttendees.php" method="POST">
-                      <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-                      <input type="hidden" name="EName" value="<?= $aEventTitle[$row] ?>">
-                      <input type="hidden" name="EDesc" value="<?= $aEventDesc[$row] ?>">
-                      <input type="hidden" name="EDate" value="<?= FormatDate($aEventStartDateTime[$row],1) ?>">
-                      <input type="submit" name="Action" value="<?= gettext("Attendees(".$attNumRows[$row].")") ?>" class="btn btn-default btn-sm btn-block" >
-                    </form>
-                  </td>
-                  <td>
-                    <form name="EditEvent" action="EventEditor.php" method="POST">
-                      <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-                      <button type="submit" name="Action" title="<?= gettext('Edit') ?>" value="<?= gettext("Edit") ?>" data-tooltip class="btn btn-default btn-sm">
-                        <i class='fa fa-pencil'></i>
-                      </button>
-                    </form>
-                  </td>
-                  <td>
-                    <form name="DeleteEvent" action="ListEvents.php" method="POST">
-                      <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-                      <button type="submit" name="Action" title="<?=gettext("Delete") ?>" data-tooltip value="<?= gettext("Delete") ?>" class="btn btn-default btn-sm" onClick="return confirm('<?= gettext("Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: ") . $aEventID[$row] ?>')">
-                        <i class='fa fa-trash'></i>
-                      </button>
-                    </form>
-                  </td>
-                </tr>
-              </table>
-            </td>
+
           </tr>
           <?php
         } // end of for loop for # rows for this month

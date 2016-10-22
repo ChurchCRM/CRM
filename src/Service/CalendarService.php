@@ -8,13 +8,6 @@ use ChurchCRM\EventQuery;
 class CalendarService
 {
 
-  private $baseURL;
-
-  public function __construct()
-  {
-    $this->baseURL = $_SESSION['sRootPath'];
-  }
-
   function getEventTypes()
   {
     $eventTypes = array();
@@ -40,7 +33,7 @@ class CalendarService
         $year = $year + 1;
       }
       $start = $year . "-" . $person->getBirthMonth() . "-" . $person->getBirthDay();
-      $event = $this->createCalendarItem("birthday", $person->getFullName(), $start, "", $person->getViewURI($this->baseURL));
+      $event = $this->createCalendarItem("birthday", $person->getFullName(), $start, "", $person->getViewURI());
       array_push($events, $event);
     }
 

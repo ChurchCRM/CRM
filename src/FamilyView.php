@@ -626,7 +626,7 @@ if ($iFamilyID == $fam_ID) {
                   <input type="checkbox" name="ShowPayments"
                          value="1" <?php if ($_SESSION['sshowPayments']) echo " checked"; ?>><?= gettext("Show Payments") ?>
                   <?= gettext(" Since:") ?>
-                  <input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate"
+                  <input type="text" class="date-picker" Name="ShowSinceDate"
                          value="<?= $_SESSION['sshowSince'] ?>" maxlength="10" id="ShowSinceDate" size="15">
                   <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?> name="UpdatePledgeTable"
                          style="font-size: 8pt;">
@@ -852,9 +852,6 @@ if ($iFamilyID == $fam_ID) {
     </div>
   </div>
 
-  <script>
-    $("#ShowSinceDate").datepicker({format: 'yyyy-mm-dd'});
-  </script>
 <?php } else { ?>
   <div class="error-page">
     <h2 class="headline text-yellow">404</h2>
