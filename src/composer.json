@@ -46,7 +46,7 @@
   },
   "autoload": {
     "classmap": [
-      "orm/"
+      "ChurchCRM/"
     ],
     "psr-4": {
       "\\": "bin/",
