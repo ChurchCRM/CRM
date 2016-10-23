@@ -5,7 +5,7 @@ Welcome to Church Web CRM
 [![Stories in Ready](https://badge.waffle.io/ChurchCRM/CRM.png?label=ready&title=Ready)](https://waffle.io/ChurchCRM/CRM)
 [![Join the chat at https://gitter.im/ChurchCRM/CRM](https://badges.gitter.im/ChurchCRM/CRM.svg)](https://gitter.im/ChurchCRM/CRM?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/ChurchCRM/CRM.svg?branch=master)](https://travis-ci.org/ChurchCRM/CRM)
-
+[![](https://images.microbadger.com/badges/image/churchcrm/crm.svg)](https://microbadger.com/images/churchcrm/crm "Get your own image badge on microbadger.com")
 ## Website
 
 [http://churchcrm.io](http://churchcrm.io)
