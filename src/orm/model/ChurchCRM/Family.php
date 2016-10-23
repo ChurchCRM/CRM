@@ -2,8 +2,8 @@
 
 namespace ChurchCRM;
 
-use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Base\Family as BaseFamily;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -17,6 +17,36 @@ use ChurchCRM\Base\Family as BaseFamily;
  */
 class Family extends BaseFamily
 {
+
+  function getAddress()
+  {
+
+    $address = array();
+    if (!empty($this->getAddress1())) {
+      $tmp = $this->getAddress1();
+      if (!empty($this->getAddress2())) {
+        $tmp = $tmp . " " . $this->getAddress2();
+      }
+      array_push($address, $tmp);
+    }
+
+    if (!empty($this->getCity())) {
+      array_push($address, $this->getCity() . ",");
+    }
+
+    if (!empty($this->getState())) {
+      array_push($address, $this->getState());
+    }
+
+    if (!empty($this->getZip())) {
+      array_push($address, $this->getZip());
+    }
+    if (!empty($this->getCountry())) {
+      array_push($address, $this->getCountry());
+    }
+
+    return implode(" ", $address);
+  }
 
   public function postInsert(ConnectionInterface $con = null)
   {
@@ -47,4 +77,5 @@ class Family extends BaseFamily
 
     $note->save();
   }
+
 }
