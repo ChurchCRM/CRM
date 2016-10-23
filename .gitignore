@@ -31,7 +31,7 @@ fullcalendar
 src/Include/Config.php
 
 target
-/src/orm/model/ChurchCRM/Base/
-/src/orm/model/ChurchCRM/Map/
+/src/ChurchCRM/model/ChurchCRM/Base/
+/src/ChurchCRM/model/ChurchCRM/Map/
 /src/signatures.json
 /src/integrityCheck.json
