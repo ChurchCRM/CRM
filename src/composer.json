@@ -49,9 +49,8 @@
       "orm/"
     ],
     "psr-4": {
-      "\\"  : "bin/",
-      "ChurchCRM\\"  : "ChurchCRM/",
-      "ChurchCRM\\dto\\": "ChurchCRM/dto/",
+      "\\": "bin/",
+      "ChurchCRM\\": "ChurchCRM/",
       "ChurchCRM\\Service\\": "Service/"
     }
   }

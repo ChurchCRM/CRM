@@ -5,16 +5,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
-"Language: fr\n"
+"Language: vi\n"
 
 #: AutoPaymentClearAccounts.php:20 CatchCreatePayment.php:67
 #: Include/Functions.php:359
 msgid "Cannot execute query."
-msgstr "Impossibilit&eacute; d'ex&eacute;cuter la demande."
+msgstr "Không thể thực hiện truy vấn."
 
 #: AutoPaymentDelete.php:21
 msgid "Confirm Delete Automatic payment"
-msgstr "Confirmer la suppression paiement automatique"
+msgstr "Xác nhận Xóa Thanh toán tự động"
 
 #: AutoPaymentDelete.php:71 DepositSlipEditor.php:191
 #: DonationFundEditor.php:195 EditEventAttendees.php:88
@@ -27,7 +27,7 @@ msgstr "Confirmer la suppression paiement automatique"
 #: PropertyTypeList.php:46 PropertyTypeList.php:69 PropertyTypeList.php:71
 #: UserDelete.php:68 UserList.php:68 UserList.php:104
 msgid "Delete"
-msgstr "Supprimer"
+msgstr "Xóa bỏ"
 
 #: AutoPaymentDelete.php:72 AutoPaymentEditor.php:577 BatchWinnerEntry.php:113
 #: CanvassEditor.php:161 Checkin.php:183 Checkin.php:288 Checkin.php:341
@@ -45,11 +45,11 @@ msgstr "Supprimer"
 #: sundayschool/SundaySchoolDashboard.php:225
 #: sundayschool/SundaySchoolReports.php:217
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Hủy bỏ"
 
 #: AutoPaymentEditor.php:128
 msgid "Automatic payment configuration for the "
-msgstr "Configuration automatique pour le paiement"
+msgstr "Cấu hình thanh toán tự động cho "
 
 #: AutoPaymentEditor.php:576 CanvassEditor.php:160 DepositSlipEditor.php:95
 #: DonatedItemEditor.php:181 FamilyEditor.php:672 FamilyEditor.php:754
@@ -62,12 +62,12 @@ msgstr "Configuration automatique pour le paiement"
 #: PropertyTypeEditor.php:116 UserEditor.php:418 UserPasswordChange.php:238
 #: WhyCameEditor.php:102
 msgid "Save"
-msgstr "Enregistrer"
+msgstr "Lưu lại"
 
 #: AutoPaymentEditor.php:586 PersonEditor.php:719 PersonView.php:225
 #: PrintView.php:226
 msgid "Family:"
-msgstr "Famille :"
+msgstr "Họ"
 
 #: AutoPaymentEditor.php:589 BatchWinnerEntry.php:84 BatchWinnerEntry.php:96
 #: CSVImport.php:292 DonatedItemEditor.php:209 DonatedItemEditor.php:255
@@ -77,91 +77,84 @@ msgstr "Famille :"
 #: SelectList.php:51 SelectList.php:67 SelectList.php:991 eGive.php:342
 #: Include/Functions.php:1103 Include/Functions.php:1145
 msgid "Unassigned"
-msgstr "Non assign&eacute;"
+msgstr "Không gán"
 
 #: AutoPaymentEditor.php:608
-#, fuzzy
 msgid "Automatic payment type"
-msgstr "Vous devez s&eacute;lectionner un moyen de paiement."
+msgstr "Loại hình thanh toán tự động"
 
 #: AutoPaymentEditor.php:615 CanvassEditor.php:202 DepositSlipEditor.php:81
 #: FundRaiserEditor.php:174
 msgid "Date:"
-msgstr "Date:"
+msgstr "Ngày:"
 
 #: AutoPaymentEditor.php:620 FinancialReports.php:201 ReminderReport.php:46
 #: sundayschool/SundaySchoolReports.php:147
 msgid "Fiscal Year:"
-msgstr "Ann&eacute;e Fiscale:"
+msgstr "Năm tài chính:"
 
 #: AutoPaymentEditor.php:627
 msgid "Payment amount"
-msgstr "Montant du paiement"
+msgstr "Số tiền thanh toán"
 
 #: AutoPaymentEditor.php:632
 msgid "Payment interval (months)"
-msgstr "Intervalle de paiement (mois)"
+msgstr "Khoảng thời gian thanh toán (tháng)"
 
 #: AutoPaymentEditor.php:637
-#, fuzzy
 msgid "Fund:"
-msgstr "Association"
+msgstr "Quỹ:"
 
 #: AutoPaymentEditor.php:640 CartToGroup.php:81 GroupReports.php:49
 #: GroupReports.php:152 PersonToGroup.php:70
 #: sundayschool/SundaySchoolReports.php:133
 msgid "None"
-msgstr "Aucun"
+msgstr "Không có"
 
 #: AutoPaymentEditor.php:652
 msgid "inactive"
-msgstr "inactive"
+msgstr "Không hoạt động"
 
 #: AutoPaymentEditor.php:661
-#, fuzzy
 msgid "First name"
-msgstr "Pr&eacute;nom"
+msgstr "Tên"
 
 #: AutoPaymentEditor.php:666
-#, fuzzy
 msgid "Last name"
-msgstr "Nom"
+msgstr "Họ"
 
 #: AutoPaymentEditor.php:671 Reports/ConfirmReport.php:128
 #: Reports/ConfirmReportEmail.php:148
-#, fuzzy
 msgid "Address 1"
-msgstr "Adresse1:"
+msgstr "Địa chỉ 1:"
 
 #: AutoPaymentEditor.php:676 Reports/ConfirmReport.php:132
 #: Reports/ConfirmReportEmail.php:152
-#, fuzzy
 msgid "Address 2"
-msgstr "Adresse2:"
+msgstr "Địa chỉ 2:"
 
 #: AutoPaymentEditor.php:681 CSVImport.php:238 DirectoryReports.php:252
 #: FamilyList.php:26 GeoPage.php:327
 msgid "City"
-msgstr "Ville"
+msgstr "Thành phố"
 
 #: AutoPaymentEditor.php:686 CSVImport.php:239 DirectoryReports.php:256
 #: FamilyList.php:27 GeoPage.php:328
 msgid "State"
-msgstr "État/Région"
+msgstr "Quận/Huyện"
 
 #: AutoPaymentEditor.php:691
 msgid "Zip code"
-msgstr "Code postal"
+msgstr "Mã bưu điện"
 
 #: AutoPaymentEditor.php:696 CSVImport.php:241
-#, fuzzy
 msgid "Country"
-msgstr "Pays:"
+msgstr "Quốc gia "
 
 #: AutoPaymentEditor.php:701 DirectoryReports.php:264
 #: Reports/DirectoryReport.php:290 Reports/GroupReport.php:124
 msgid "Phone"
-msgstr "Téléphone"
+msgstr "Điện thoại"
 
 #: AutoPaymentEditor.php:706 CSVImport.php:245 EditEventAttendees.php:52
 #: EventAttendance.php:203 FamilyView.php:291 FamilyView.php:839
@@ -172,603 +165,576 @@ msgstr "Téléphone"
 #: sundayschool/SundaySchoolClassView.php:82
 #: sundayschool/SundaySchoolClassView.php:193
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 #: AutoPaymentEditor.php:711 ElectronicPaymentList.php:207
 #: FinancialReports.php:262 FindDepositSlip.php:76 PledgeEditor.php:601
-#, fuzzy
 msgid "Credit Card"
-msgstr "Cr&eacute;er vCard"
+msgstr "Thẻ tín dụng"
 
 #: AutoPaymentEditor.php:718
-#, fuzzy
 msgid "Vanco Credit Card Method"
-msgstr "m&eacute;thode Vanco des cartes de cr&eacute;dit"
+msgstr ""
 
 #: AutoPaymentEditor.php:726
 msgid "Expiration Month"
-msgstr "Mois d&#39;expiration"
+msgstr "Tháng hết hạn"
 
 #: AutoPaymentEditor.php:731
-#, fuzzy
 msgid "Expiration Year"
-msgstr "Ann&eacute;e de Naissance:"
+msgstr "Năm Hết hạn"
 
 #: AutoPaymentEditor.php:736
-#, fuzzy
 msgid "Bank Name"
-msgstr "Par Nom"
+msgstr "Tên ngân hàng"
 
 #: AutoPaymentEditor.php:741
-#, fuzzy
 msgid "Bank Route Number"
-msgstr "Num&eacute;ro de t&eacute;l&eacute;phone"
+msgstr "Mã số Ngân hàng"
 
 #: AutoPaymentEditor.php:746
 msgid "Bank Account Number"
-msgstr "Numéro de compte bancaire"
+msgstr "Số tài khoản ngân hàng"
 
+#. I don't understand "Vanco", someone can help me pls ?
 #: AutoPaymentEditor.php:753
 msgid "Vanco Bank Account Method"
-msgstr "m&eacute;thode Vanco des comptes bancaires"
+msgstr ""
 
 #: BackupDatabase.php:41
 msgid "Backup Database"
-msgstr "Sauvegarder la Base de Donn&eacute;es"
+msgstr "Cơ sở dữ liệu sao lưu"
 
 #: BackupDatabase.php:47
-#, fuzzy
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Cet outil vous aide &agrave; effectuer une sauvegarde manuelle de la base de donn&eacute;es de ChurchCRM"
+msgstr "Công cụ này sẽ giúp bạn tự sao lưu cơ sở dữ liệu Hệ Thống Quản Lý Hội Thánh"
 
 #: BackupDatabase.php:51
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
-msgstr "Vous devriez faire une protection manuelle au moins une fois par semaine &agrave; moins que vous ayez d&eacute;j&agrave; un proc&eacute;dure de sauvegarde r&eacute;guliere pour vos syst&egrave;mes."
+msgstr "Bạn nên thực hiện một sao lưu thủ công ít nhất một lần một tuần, trừ khi bạn đã có một lịch sao lưu thường xuyên cho hệ thống của bạn."
 
 #: BackupDatabase.php:52
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Apr&egrave;s que vous t&eacute;l&eacute;chargiez le dossier de secours, vous devriez effectuer deux copies.Mettez-en une dans un emplacement s&ucirc;r du site et l'autre dans un emplacement s&ucirc;r &agrave; l'ext&eacute;rieur du site."
+msgstr "Sau khi bạn tải về các tập tin sao lưu, bạn nên làm cho hai bản sao. Đặt một trong số tập tin này vào nơi an toàn trong máy chủ và ngoài máy chủ."
 
 #: BackupDatabase.php:53
 msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr ""
+msgstr "Nếu bạn lo lắng về tính bảo mật của dữ liệu được lưu trữ trong cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh, bạn nên mã hóa dữ liệu sao lưu nếu nó sẽ được lưu trữ ở đâu đó có khả năng tiếp cận với những người khác"
 
 #: BackupDatabase.php:54
 msgid "For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."
-msgstr "Pour ajouter une sauvegarde de s&eacute;curit&eacute;, vous pouvez vous envoyer un Email ou l'envoyer &agrave; un ami de confiance. Cependant, soyez s&ucirc;r d'employer l'encryptage si vous faites ceci."
+msgstr "Để bảo mật sao lưu thêm vào, bạn có thể e-mail các bản sao lưu cho chính mình tại một tài khoản e-mail lưu trữ trên máy chủ ngoài hoặc một người bạn đáng tin cậy. Hãy chắc chắn để sử dụng mã hóa nếu bạn làm điều này."
 
 #: BackupDatabase.php:58
 msgid "Select archive type:"
-msgstr "S&eacute;lectionnez le type de sauvegarde:"
+msgstr "Chọn loại lưu trữ:"
 
 #: BackupDatabase.php:59
 msgid "GZip"
-msgstr "Gzip"
+msgstr "GZip"
 
 #: BackupDatabase.php:60 CSVImport.php:240 DirectoryReports.php:260
 #: FamilyList.php:28 GeoPage.php:329
 msgid "Zip"
-msgstr "Code postal"
+msgstr "Zip"
 
 #: BackupDatabase.php:61
 msgid "Uncompressed"
-msgstr "Non compress&eacute;"
+msgstr "Không nén"
 
 #: BackupDatabase.php:62
-#, fuzzy
 msgid "tar.gz (Include Photos)"
-msgstr "tar.gz (inclure les photos)"
+msgstr "tar.gz (Bao gồm hình ảnh)"
 
 #: BackupDatabase.php:65
 msgid "Encrypt backup file with a password?"
-msgstr "Encrypter les fichiers de sauvegarde avec un mot de passe?"
+msgstr "Mã hóa tập tin sao lưu với một mật khẩu?"
 
 #: BackupDatabase.php:67
 msgid "Password:"
-msgstr "Mot de Passe:"
+msgstr "Mật khẩu:"
 
 #: BackupDatabase.php:68
 msgid "Re-type Password:"
-msgstr "Retapez votre Mot de Passe:"
+msgstr "Gõ lại mật khẩu: "
 
 #: BackupDatabase.php:71
 msgid "Generate and Download Backup"
-msgstr "G&eacute;n&eacute;rez ou T&eacute;l&eacute;chargez Sauvegardes"
+msgstr "Tạo và Tải Sao lưu"
 
 #: BackupDatabase.php:72
 msgid "Generate and Ship Backup to External Storage"
-msgstr ""
+msgstr "Tạo và gửi tập tin lưu trữ đến kho lưu trữ bên ngoài"
 
 #: BatchWinnerEntry.php:36 FundRaiserEditor.php:164
-#, fuzzy
 msgid "Batch Winner Entry"
-msgstr "Entr&eacute;e en mode Batch"
+msgstr ""
 
 #: BatchWinnerEntry.php:75 FundRaiserEditor.php:201
-#, fuzzy
 msgid "Item"
-msgstr "Mettre &eacute;l&eacute;ments dans"
+msgstr ""
 
-#. Not "Winter" (hiver) but "Winner"
 #: BatchWinnerEntry.php:76
-#, fuzzy
 msgid "Winner"
-msgstr "Gagnant"
+msgstr ""
 
-#. Privé is "private", not "price"
 #: BatchWinnerEntry.php:77
-#, fuzzy
 msgid "Price"
-msgstr "Prix"
+msgstr ""
 
 #: BatchWinnerEntry.php:112
 msgid "Enter Winners"
-msgstr "Entrez gagnants"
+msgstr ""
 
 #: CSVExport.php:70 CartView.php:114
 msgid "CSV Export"
-msgstr "Export au format CSV"
+msgstr "Xuất CSV"
 
 #: CSVExport.php:78
 msgid "Field Selection"
-msgstr "Sélection de champs"
+msgstr "Lựa chọn trường"
 
 #: CSVExport.php:82 PersonEditor.php:600
 msgid "Last Name:"
-msgstr "Nom:"
+msgstr "Họ:"
 
 #: CSVExport.php:83
 msgid "Required"
-msgstr "Requis"
+msgstr "Bắt buộc"
 
 #: CSVExport.php:88 DonatedItemEditor.php:226 FundRaiserEditor.php:179
 #: PersonEditor.php:573
 msgid "Title:"
-msgstr "Titre:"
+msgstr "Chức vụ:"
 
 #: CSVExport.php:93 PersonEditor.php:582
 msgid "First Name:"
-msgstr "Pr&eacute;nom:"
+msgstr "Tên:"
 
 #: CSVExport.php:98 PersonEditor.php:591
 msgid "Middle Name:"
-msgstr "Deuxi&egrave;me Pr&eacute;nom:"
+msgstr "Tên đệm:"
 
 #: CSVExport.php:103 PersonEditor.php:609
 msgid "Suffix:"
-msgstr "Suffixe:"
+msgstr ""
 
 #: CSVExport.php:108 CartToFamily.php:239 FamilyEditor.php:687
 #: PersonEditor.php:753
 msgid "Address1:"
-msgstr "Adresse1:"
+msgstr "Địa chỉ 1:"
 
 #: CSVExport.php:113 CartToFamily.php:244 FamilyEditor.php:691
 #: PersonEditor.php:768
 msgid "Address2:"
-msgstr "Adresse2:"
+msgstr "Địa chỉ 2:"
 
 #: CSVExport.php:118 CartToFamily.php:249 FamilyEditor.php:695
 #: PersonEditor.php:783
 msgid "City:"
-msgstr "Ville:"
+msgstr "Thành phố:"
 
 #: CSVExport.php:123 CartToFamily.php:254 FamilyEditor.php:707
 #: PersonEditor.php:802
 msgid "State:"
-msgstr "État:"
+msgstr "Quận/Huyện:"
 
-#. Code is masculine - no "e" for "postal"
 #: CSVExport.php:128 CartToFamily.php:269 FamilyEditor.php:720
 #: PersonEditor.php:822
 msgid "Zip:"
-msgstr "Code postal:"
+msgstr "Zip:"
 
 #: CSVExport.php:133 Reports/TaxReport.php:195
 msgid "Envelope:"
-msgstr "Enveloppe:"
+msgstr "Địa chỉ nhận thư:"
 
 #: CSVExport.php:138 CartToFamily.php:279 FamilyEditor.php:729
 #: PersonEditor.php:842
 msgid "Country:"
-msgstr "Pays:"
+msgstr "Quốc gia:"
 
 #: CSVExport.php:143 CartToFamily.php:290 FamilyEditor.php:760
 #: FamilyView.php:205 PersonEditor.php:873 PersonEditor.php:875
 #: PersonView.php:255 PrintView.php:166
 msgid "Home Phone:"
-msgstr "T&eacute;l&eacute;phone Personnel:"
+msgstr "Điện thoại nhà:"
 
 #: CSVExport.php:148 CartToFamily.php:298 FamilyEditor.php:770
 #: FamilyView.php:208 PersonEditor.php:893 PersonEditor.php:895
 #: PersonView.php:266 PrintView.php:171
 msgid "Work Phone:"
-msgstr "T&eacute;l&eacute;phone Professionnel:"
+msgstr "Điện thoại công việc:"
 
 #: CSVExport.php:153 CartToFamily.php:306 FamilyEditor.php:780
 #: FamilyView.php:211 PersonEditor.php:915 PersonEditor.php:917
 #: PersonView.php:251 PrintView.php:176
 msgid "Mobile Phone:"
-msgstr "Portable:"
+msgstr "Di động: "
 
 #: CSVExport.php:158 CartToFamily.php:314 FamilyEditor.php:792
 #: FamilyView.php:214 FamilyView.php:217 PersonEditor.php:938
 #: PersonEditor.php:940 PersonView.php:259 PrintView.php:253
 msgid "Email:"
-msgstr "Email:"
+msgstr "E-mail:"
 
 #: CSVExport.php:163 PersonView.php:269
 msgid "Work/Other Email:"
-msgstr "Email Travail / Autre:"
+msgstr "Email công việc/khác:"
 
 #: CSVExport.php:168 CSVExport.php:383 PersonEditor.php:994 PrintView.php:263
 msgid "Membership Date:"
-msgstr "Date d'Adh&eacute;sion:"
+msgstr "Ngày đăng ký thành viên:"
 
 #: CSVExport.php:173
 msgid "* Birth / Anniversary Date:"
-msgstr "* Date De Naissance / Anniversaire:"
+msgstr "* Ngày sinh / Kỷ niệm:"
 
 #: CSVExport.php:178
 msgid "* Age / Years Married:"
-msgstr "* Dur&eacute;e / Ann&eacute;es de Mariage:"
+msgstr "* Tuổi / năm kết hôn:"
 
 #: CSVExport.php:183 CSVExport.php:311 PersonEditor.php:703 PrintView.php:233
 msgid "Family Role:"
-msgstr "R&ocirc;le Famille"
+msgstr "Vai trò trong gia đình:"
 
 #: CSVExport.php:186
 msgid "* Depends whether using person or family output method"
-msgstr "* D&eacute;pend de la m&eacute;thode de sortie choisie par l'utilisateur"
+msgstr ""
 
 #: CSVExport.php:200
 msgid "Custom Field Selection"
-msgstr "Sélection de champs personnalisés"
+msgstr "Tùy chỉnh trường lựa chọn"
 
 #: CSVExport.php:209 MembersDashboard.php:129
 msgid "Custom Person Fields"
-msgstr "Champs personnalisés des Membres"
+msgstr "Tùy chỉnh trường thành viên"
 
 #: CSVExport.php:231 MembersDashboard.php:131
 msgid "Custom Family Fields"
-msgstr "Champs Personnalis&eacute;s familiaux"
+msgstr "Tùy chỉnh trường gia đình"
 
 #: CSVExport.php:259 FinancialReports.php:107
 msgid "Filters"
-msgstr "Filtres"
+msgstr "Bộ lọc"
 
 #: CSVExport.php:265
 msgid "Records to export:"
-msgstr "Enregistrements &agrave; exporter:"
+msgstr "Bản ghi để xuất:"
 
 #: CSVExport.php:274
 msgid "Based on filters below.."
-msgstr "Bas&eacute; sur des filtres ci-dessous.."
+msgstr "Dựa trên bộ lọc dưới đây.."
 
 #: CSVExport.php:275
 msgid "People in Cart (filters ignored)"
-msgstr "Personne dans le Panier (filtres ignor&eacute;s)"
+msgstr ""
 
 #: CSVExport.php:284 FinancialReports.php:117 PersonEditor.php:1008
 #: PrintView.php:268
 msgid "Classification:"
-msgstr "Classification:"
+msgstr "Phân loại:"
 
 #: CSVExport.php:303 CSVExport.php:330 CSVExport.php:366
 #: DirectoryReports.php:87 DirectoryReports.php:104 DirectoryReports.php:124
 #: DirectoryReports.php:140 DirectoryReports.php:157 FinancialReports.php:257
 msgid "Use Ctrl Key to select multiple"
-msgstr "Utilisez la touche Ctrl pour une s&eacute;lection multiple"
+msgstr "Sử dụng Ctrl Key để chọn nhiều"
 
 #: CSVExport.php:338 PersonEditor.php:560 PrintView.php:205
 msgid "Gender:"
-msgstr "Sexe:"
+msgstr "Giới tính"
 
 #: CSVExport.php:347
 msgid "Don't Filter"
-msgstr "Ne Pas Filtrer"
+msgstr "Không lọc"
 
 #: CSVExport.php:348 FamilyEditor.php:982 PersonEditor.php:566
 #: PrintView.php:212 PrintView.php:321 SelectList.php:510 SelectList.php:1032
 msgid "Male"
-msgstr "Homme"
+msgstr "Nam"
 
 #: CSVExport.php:349 FamilyEditor.php:983 PersonEditor.php:569
 #: PrintView.php:215 PrintView.php:321 SelectList.php:515 SelectList.php:1033
 msgid "Female"
-msgstr "Femme"
+msgstr "Nữ"
 
 #: CSVExport.php:358 DirectoryReports.php:102
 msgid "Group Membership:"
-msgstr "Adh&eacute;sion au Groupe:"
+msgstr "Thành viên trong nhóm:"
 
 #: CSVExport.php:391 CSVExport.php:408 CSVExport.php:425 CSVExport.php:442
 #: CartView.php:438 EmailEditor.php:73
 msgid "From:"
-msgstr "De:"
+msgstr "Gửi từ:"
 
 #: CSVExport.php:392 CSVExport.php:409 CSVExport.php:426 CSVExport.php:443
 msgid "To:"
-msgstr "A:"
+msgstr "Gửi đến:"
 
 #: CSVExport.php:400
 msgid "Birthday Date:"
-msgstr "Date de Naissance:"
+msgstr "Ngày sinh nhật:"
 
 #: CSVExport.php:417
 msgid "Anniversary Date:"
-msgstr "Date d'Anniversaire:"
+msgstr "Ngày kỷ niệm:"
 
 #: CSVExport.php:434
 msgid "Date Entered:"
-msgstr "Date d'Entr&eacute;e:"
+msgstr "Ngày nhập dữ liệu:"
 
 #: CSVExport.php:455 FinancialReports.php:321
 msgid "Output Method:"
-msgstr "M&eacute;thode d'Exportation:"
+msgstr ""
 
 #: CSVExport.php:459
 msgid "CSV Individual Records"
-msgstr "Enregistrements individuels CSV"
+msgstr ""
 
 #: CSVExport.php:460
 msgid "CSV Combine Families"
-msgstr "Donn&eacute;es Familles en CVS"
+msgstr ""
 
 #: CSVExport.php:461
 msgid "Add Individuals to Cart"
-msgstr "Ajoutez des individus au panier"
+msgstr ""
 
 #: CSVExport.php:464
 msgid "Skip records with incomplete mail address"
-msgstr "Ignorer les enregistrements qui ont une adresse email incompl&egrave;te "
+msgstr ""
 
 #: CSVExport.php:466
 msgid "Create File"
-msgstr "Dossier cr&eacute;&eacute;"
+msgstr "Tạo tập tin"
 
 #: CSVImport.php:120
 msgid "CSV Import"
-msgstr "Import au format CSV"
+msgstr "Nhập CSV"
 
 #: CSVImport.php:140
-#, fuzzy
 msgid "No file selected for upload."
-msgstr "Aucune photo n'a &eacute;t&eacute; s&eacute;lectionn&eacute; pour le t&eacute;l&eacute;chargement."
+msgstr "Không có tập tin được lựa chọn để tải lên."
 
 #: CSVImport.php:165
 msgid "Total number of rows in the CSV file:"
-msgstr "Nombre total de lignes dans le fichier CSV:"
+msgstr "Tổng số hàng trong tập tin CSV:"
 
 #: CSVImport.php:228
 msgid "Ignore this Field"
-msgstr "Ignorez ce champ"
+msgstr "Bỏ qua trường này"
 
 #: CSVImport.php:229 FindFundRaiser.php:226 FundRaiserEditor.php:205
-#, fuzzy
 msgid "Title"
-msgstr "Titre:"
+msgstr "Tiêu đề"
 
 #: CSVImport.php:230 sundayschool/SundaySchoolDashboard.php:173
 msgid "First Name"
-msgstr "Pr&eacute;nom"
+msgstr "Họ"
 
 #: CSVImport.php:231
-#, fuzzy
 msgid "Middle Name"
-msgstr "Deuxi&egrave;me Pr&eacute;nom:"
+msgstr "Tên đệm"
 
 #: CSVImport.php:232 ManageEnvelopes.php:163
 #: sundayschool/SundaySchoolDashboard.php:174
 msgid "Last Name"
-msgstr "Nom"
+msgstr "Họ"
 
 #: CSVImport.php:233 FamilyEditor.php:938
-#, fuzzy
 msgid "Suffix"
-msgstr "Suffixe:"
+msgstr ""
 
 #: CSVImport.php:234 FamilyEditor.php:939 PrintView.php:295
 #: sundayschool/SundaySchoolClassView.php:169
 msgid "Gender"
-msgstr "Sexe"
+msgstr "Giới tính"
 
-#. Cotisation?  Don perhaps?
 #: CSVImport.php:235
-#, fuzzy
 msgid "Donation Envelope"
-msgstr "Enveloppe De Cotisation:"
+msgstr ""
 
 #: CSVImport.php:236
-#, fuzzy
 msgid "Address1"
-msgstr "Adresse1:"
+msgstr "Địa chỉ 1"
 
 #: CSVImport.php:237
-#, fuzzy
 msgid "Address2"
-msgstr "Adresse2:"
+msgstr "Địa chỉ 2"
 
 #: CSVImport.php:242 EditEventAttendees.php:53 EventAttendance.php:204
 #: FamilyList.php:24 GroupReports.php:133
 #: sundayschool/SundaySchoolClassView.php:195
 msgid "Home Phone"
-msgstr "Téléphone Personnel"
+msgstr "Điện thoại nhà"
 
 #: CSVImport.php:243 GroupReports.php:134
 msgid "Work Phone"
-msgstr "Téléphone Professionnel"
+msgstr "Điện thoại công việc"
 
 #: CSVImport.php:244
 msgid "Mobile Phone"
-msgstr "Téléphone Portable"
+msgstr "Di động: "
 
 #: CSVImport.php:246
-#, fuzzy
 msgid "Work / Other Email"
-msgstr "Travail / Autres Email:"
+msgstr "Email làm việc/khác"
 
 #: CSVImport.php:247 sundayschool/SundaySchoolClassView.php:191
 #: sundayschool/SundaySchoolDashboard.php:175
 msgid "Birth Date"
-msgstr "Date de naissance"
+msgstr "Năm sinh"
 
 #: CSVImport.php:248
-#, fuzzy
 msgid "Membership Date"
-msgstr "Date d'Adh&eacute;sion:"
+msgstr "Ngày gia nhập"
 
 #: CSVImport.php:249 DirectoryReports.php:175
 msgid "Wedding Date"
-msgstr "Date de Mariage:"
+msgstr "Ngày cưới"
 
 #: CSVImport.php:259
 msgid "Ignore first CSV row (to exclude a header)"
-msgstr "Ignorer la première rangée CSV (pour exclure un en-tête)"
+msgstr ""
 
 #: CSVImport.php:264
 msgid "Make Family records based on last name and address"
-msgstr "Assurez-dossiers famille basé sur le nom de famille et adresse"
+msgstr "Tạo bản ghi gia đình dựa trên họ và địa chỉ"
 
 #: CSVImport.php:270
 msgid "Patriarch"
-msgstr "Patriarche"
+msgstr ""
 
 #: CSVImport.php:271
-#, fuzzy
 msgid "Matriarch"
-msgstr "Matriarche"
+msgstr ""
 
 #: CSVImport.php:273
 msgid "Family Type: used with Make Family records... option above"
-msgstr "Type de famille: Faire utilisé avec les enregistrements de famille ... option ci-dessus"
+msgstr "Loại gia đình: Sử dụng với bản ghi Tạo gia đình...ở tùy chọn bên trên"
 
 #: CSVImport.php:280
 msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
-msgstr "REMARQUE: Les séparateurs (tirets, etc) et leurs manque pas d&#39;importance"
+msgstr "LƯU Ý: Phân tách bằng (dấu gạch ngang, vv) hoặc thiếu dấu đó thì không thành vấn đề"
 
 #: CSVImport.php:285
 msgid "Default country if none specified otherwise"
-msgstr "Pays par défaut si aucune indication contraire"
+msgstr "Quốc gia mặc định nếu không có quy định khác"
 
 #: CSVImport.php:304 CartView.php:605 FamilyEditor.php:944
 #: MembersDashboard.php:309 OptionManager.php:71
 msgid "Classification"
-msgstr "Classification"
+msgstr "Phân loại:"
 
 #: CSVImport.php:306
-#, fuzzy
 msgid "Perform Import"
-msgstr "Lancer"
+msgstr "Thực hiện nhập vào"
 
 #: CSVImport.php:860
 msgid "ERROR: the uploaded CSV file no longer exists!"
-msgstr "ERREUR: le fichier CSV téléchargé n&#39;existe plus!"
+msgstr "LỖI: tập tin CSV tải lên không còn tồn tại!"
 
 #: CSVImport.php:879
 msgid "Data Cleared Successfully!"
-msgstr "Les données effacé avec succès!"
+msgstr "Dữ liệu đã xóa thành công!"
 
 #: CSVImport.php:883
-#, fuzzy
 msgid "Please select the confirmation checkbox"
-msgstr "Confirmation de la suppression de la personne"
+msgstr "Vui lòng chọn các ô xác nhận"
 
 #: CSVImport.php:894
 msgid "Upload CSV File"
-msgstr "Télécharger un fichier CSV"
+msgstr "Tải lên tập tin CSV"
 
 #: CSVImport.php:905 CSVImport.php:912 CSVImport.php:924
 msgid "Clear Persons and Families"
-msgstr "Effacer les personnes et les familles"
+msgstr "Xóa sạch thành viên và gia đình"
 
 #: CSVImport.php:917
 msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Attention! Ne sélectionnez pas cette option si vous prévoyez d&#39;ajouter à une base de données existante. <br/>"
+msgstr "Cảnh báo! Không chọn vào tùy chọn này nếu bạn có kế hoạch thêm vào một cơ sở dữ liệu hiện có. <br/>"
 
 #: CSVImport.php:918
 msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Utilisez uniquement s&#39;il n&#39;est pas satisfait importation initiale. Toute personne membre et les données seront détruites!"
+msgstr "Chỉ sử dụng khi không hài lòng với lần nhập vào ban đầu. Tất cả dữ liệu thành viên sẽ bị xóa bỏ"
 
 #: CSVImport.php:936
 msgid "Data import successful."
-msgstr "Importation de données réussie."
+msgstr "Nhập dữ liệu thành công"
 
 #: CSVImport.php:936
 msgid "persons were imported"
-msgstr "personnes ont été importés"
+msgstr "thành viên đã được nhập vào"
 
 #: Canvas05Editor.php:29
 msgid "Canvas 2005 Input for the "
-msgstr "Toile 2005 d&#39;entrée de la"
+msgstr ""
 
 #: Canvas05Editor.php:99
 msgid "Do you like the color of the church?"
-msgstr "Aimez-vous la couleur de l&#39;église ?"
+msgstr "Bạn có thích màu sắc của nhà thờ?"
 
 #: Canvas05Editor.php:104
 msgid "What are we doing right?"
-msgstr "Que faisons-nous correctement ?"
+msgstr ""
 
 #: Canvas05Editor.php:109
 msgid "How can we improve?"
-msgstr "Comment pouvons-nous am&eacute;liorer ?"
+msgstr ""
 
 #: Canvas05Editor.php:114
 msgid "Will you pledge by March 31?"
-msgstr "Engagez vous avant le 31 mars ?"
+msgstr ""
 
 #: Canvas05Editor.php:119
 msgid "Canvasser Comments:"
-msgstr "Commentaires des solliciteurs:"
+msgstr ""
 
 #: CanvassAutomation.php:23 ReportList.php:46
 msgid "Canvass Automation"
-msgstr "Automatisation de d&eacute;marchage"
+msgstr ""
 
 #: CanvassAutomation.php:51 CanvassAutomation.php:62 CanvassAutomation.php:73
 #: CanvassAutomation.php:85 CanvassAutomation.php:97
 msgid "Not confirmed."
-msgstr "Pas confirmé."
+msgstr "Không được xác nhận."
 
 #: CanvassAutomation.php:58 CanvassEditor.php:148 FamilyEditor.php:61
 msgid "Canvassers"
-msgstr "Démarcheurs"
+msgstr ""
 
 #: CanvassAutomation.php:69 CanvassEditor.php:149 FamilyEditor.php:62
 msgid "BraveCanvassers"
-msgstr "BraveCanvassers"
+msgstr ""
 
 #: CanvassAutomation.php:81
 msgid "Cleared all canvasser assignments."
-msgstr "Effacé toutes les affectations de recensement par interview."
+msgstr ""
 
 #: CanvassAutomation.php:93
 msgid "Set Ok To Canvass for all families."
-msgstr "Réglez Ok Pour Prospecter pour toutes les familles."
+msgstr ""
 
 #: CanvassAutomation.php:105
 msgid "Disabled Ok To Canvass for all families."
-msgstr "Ok désactivé Pour Prospecter pour toutes les familles."
+msgstr ""
 
 #: CanvassAutomation.php:109
 msgid "ClearAllOkToCanvass button not confimed."
-msgstr "ClearAllOkToCanvass bouton ne confimed."
+msgstr ""
 
 #: CanvassAutomation.php:159
 msgid "Set default fiscal year"
-msgstr "Configuration par défaut de l&#39;exercice"
+msgstr "thiết lập năm tài chính mặc định"
 
 #: CanvassAutomation.php:163 CanvassAutomation.php:174
 #: CanvassAutomation.php:185 CanvassAutomation.php:196
 #: CanvassAutomation.php:207 CanvassAutomation.php:218
 msgid "Check to confirm"
-msgstr "Cocher pour Confirmer"
+msgstr "Chọn để xác nhận"
 
 #: CanvassAutomation.php:169
-#, fuzzy
 msgid "Assign Canvassers"
-msgstr "Enveloppes Assign&eacute;es:"
+msgstr ""
 
 #: CanvassAutomation.php:173
 msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
@@ -776,7 +742,7 @@ msgstr ""
 
 #: CanvassAutomation.php:180
 msgid "Assign To Non Pledging"
-msgstr "Attribuer à des donateurs non"
+msgstr ""
 
 #: CanvassAutomation.php:184
 msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
@@ -784,7 +750,7 @@ msgstr ""
 
 #: CanvassAutomation.php:191
 msgid "Clear Canvasser Assignments"
-msgstr "Affectation des solliciteurs claires"
+msgstr ""
 
 #: CanvassAutomation.php:195
 msgid "Clear all the canvasser assignments for all families."
@@ -796,7 +762,7 @@ msgstr ""
 
 #: CanvassAutomation.php:202
 msgid "Enable Canvass for All Families"
-msgstr "Activer Canvass pour Tous"
+msgstr ""
 
 #: CanvassAutomation.php:206
 msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
@@ -807,9 +773,8 @@ msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that 
 msgstr ""
 
 #: CanvassAutomation.php:213
-#, fuzzy
 msgid "Disable Canvass for All Families"
-msgstr "Voir Toutes les Familles"
+msgstr ""
 
 #: CanvassAutomation.php:217
 msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
@@ -817,34 +782,31 @@ msgstr ""
 
 #: CanvassAutomation.php:224
 msgid "Briefing Sheets"
-msgstr "Fiches d&#39;information"
+msgstr ""
 
 #: CanvassAutomation.php:228
 msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Générer un fichier PDF de feuilles d&#39;information contenant toutes les familles, triés par démarcheur."
+msgstr ""
 
 #: CanvassAutomation.php:234
-#, fuzzy
 msgid "Progress Report"
-msgstr "Cr&eacute;er un Rapport"
+msgstr "Báo cáo Tiến độ"
 
 #: CanvassAutomation.php:238
 msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
 msgstr ""
 
 #: CanvassAutomation.php:244
-#, fuzzy
 msgid "Summary Report"
-msgstr "Compte rendu succinct de cotisation"
+msgstr "Báo cáo hồ sơ tổng hợp"
 
 #: CanvassAutomation.php:248
 msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
 msgstr ""
 
 #: CanvassAutomation.php:254
-#, fuzzy
 msgid "Not Interested Report"
-msgstr "Cr&eacute;er un Rapport"
+msgstr ""
 
 #: CanvassAutomation.php:258
 msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
@@ -852,79 +814,71 @@ msgstr ""
 
 #: CanvassEditor.php:46
 msgid " Canvass Input for the "
-msgstr "Prospection d&#39;entrée de la"
+msgstr ""
 
 #: CanvassEditor.php:173 UserEditor.php:405
 msgid "Canvasser:"
-msgstr "Démarcheur:"
+msgstr ""
 
 #: CanvassEditor.php:208
-#, fuzzy
 msgid "Positive"
-msgstr "positif"
+msgstr "Dương tính"
 
 #: CanvassEditor.php:213
 msgid "Critical"
-msgstr "Critique"
+msgstr "Chỉ trích"
 
 #: CanvassEditor.php:218
 msgid "Insightful"
-msgstr "Perspicace"
+msgstr "Sâu sắc"
 
 #: CanvassEditor.php:223
-#, fuzzy
 msgid "Financial"
-msgstr "Finance"
+msgstr "Nội dung và thông lệ"
 
 #: CanvassEditor.php:228
 msgid "Suggestions"
-msgstr "Suggestions"
+msgstr "Gợi ý:"
 
 #: CanvassEditor.php:233
-#, fuzzy
 msgid "Not Interested"
-msgstr "Date d'Entr&eacute;e"
+msgstr "không quan tâm"
 
 #: CanvassEditor.php:238
 msgid "Why Not Interested?"
-msgstr "Pourquoi ne pas int&eacute;ress&eacute; ?"
+msgstr "Tại sao không quan tâm không?"
 
 #: CartToEvent.php:56 CartToEvent.php:92
-#, fuzzy
 msgid "Add Cart to Event"
-msgstr "Ajouter au Panier Groupe"
+msgstr "Thêm giỏ hàng để tổ chức sự kiện"
 
 #: CartToEvent.php:67
-#, fuzzy
 msgid "Select the event to which you would like to add your cart:"
-msgstr "S&eacute;lectionnez le groupe que vous voulez ajouter &agrave; votre panier:"
+msgstr "Chọn sự kiện mà bạn muốn thêm vào giỏ hàng của bạn:"
 
 #: CartToEvent.php:76 Checkin.php:68
-#, fuzzy
 msgid "Select Event:"
-msgstr "Choisissez le R&ocirc;le:"
+msgstr "Chọn sự kiện:"
 
 #: CartToEvent.php:93 CartToGroup.php:103 Checkin.php:85
 msgid "OR"
-msgstr "OU"
+msgstr "HOẶC"
 
 #: CartToEvent.php:94 Checkin.php:86 ListEvents.php:362
-#, fuzzy
 msgid "Add New Event"
-msgstr "Ajouter Nouvelle Personne"
+msgstr "Thêm sự kiện mới"
 
 #: CartToEvent.php:102 CartToFamily.php:329 CartToGroup.php:112
 msgid "Your cart is empty!"
-msgstr "Votre panier est vide!"
+msgstr "Giỏ hàng của bạn trống"
 
 #: CartToFamily.php:80
 msgid "No family name entered!"
-msgstr "Pas de nom de famille inscrit!"
+msgstr "Không có tên trong gia đình bước vào!"
 
 #: CartToFamily.php:125
-#, fuzzy
 msgid "Add Cart to Family"
-msgstr "Ajouter Nouvelle Famille"
+msgstr "Thêm giỏ hàng để gia đình"
 
 #: CartToFamily.php:159 CartView.php:601 Checkin.php:366
 #: DonationFundEditor.php:192 EditEventAttendees.php:51
@@ -938,447 +892,412 @@ msgstr "Ajouter Nouvelle Famille"
 #: Reports/CanvassReports.php:244 Reports/FRBidSheets.php:95
 #: sundayschool/SundaySchoolClassView.php:190
 msgid "Name"
-msgstr "Nom"
+msgstr "Tên"
 
 #: CartToFamily.php:160
-#, fuzzy
 msgid "Assign Role"
-msgstr "Assign&eacute;"
+msgstr "gán vai trò"
 
 #: CartToFamily.php:177
 msgid "Already in a family"
-msgstr "Déjà, dans une famille"
+msgstr "Ngay trong một gia đình"
 
 #: CartToFamily.php:188
-#, fuzzy
 msgid "Add to Family:"
-msgstr "Ajouter Nouvelle Famille"
+msgstr "Thêm vào gia đình:"
 
 #: CartToFamily.php:193
-#, fuzzy
 msgid "Create new family"
-msgstr "Dossier cr&eacute;&eacute;"
+msgstr "Tạo gia đình mới"
 
 #: CartToFamily.php:205
 msgid "If adding a new family, enter data below."
-msgstr "Si vous ajoutez une nouvelle famille, entrez les données ci-dessous."
+msgstr "Nếu thêm một gia đình mới, nhập dữ liệu dưới đây."
 
 #: CartToFamily.php:210 FamilyEditor.php:679 SelectDelete.php:254
 #: SelectDelete.php:377
 msgid "Family Name:"
-msgstr "Nom de Famille"
+msgstr "Tên gia đình:"
 
 #: CartToFamily.php:215 FamilyEditor.php:821 FamilyView.php:197
 msgid "Wedding Date:"
-msgstr "Date de Mariage:"
+msgstr "Ngày cưới:"
 
 #: CartToFamily.php:220
 msgid "Use address/contact data from:"
-msgstr "Utilisez l&#39;adresse / données de contact à partir de:"
+msgstr "Sử dụng dữ liệu địa chỉ / số liên lạc từ:"
 
 #: CartToFamily.php:224
 msgid "Only the new data below"
-msgstr "Seules les nouvelles données ci-dessous"
+msgstr "Chỉ có các dữ liệu mới dưới đây"
 
 #: CartToFamily.php:259
-#, fuzzy
 msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Utiliser ce champ pour les personnes n'habitant pas les USA)"
+msgstr "(Sử dụng hộp văn bản cho các nước khác ngoài Mỹ và Canada)"
 
 #: CartToFamily.php:267 FamilyEditor.php:718
-#, fuzzy
 msgid "Postal Code:"
-msgstr "Ordre de tri:"
+msgstr "Mã gửi thư"
 
 #: CartToFamily.php:293 CartToFamily.php:301 CartToFamily.php:309
 #: FamilyEditor.php:766 FamilyEditor.php:776 FamilyEditor.php:786
 #: PersonEditor.php:886 PersonEditor.php:907 PersonEditor.php:928
 #: Include/Functions.php:1136
 msgid "Do not auto-format"
-msgstr "Ne pas utiliser le format automatique"
+msgstr "Không tự động định dạng"
 
 #: CartToFamily.php:322
-#, fuzzy
 msgid "Add to Family"
-msgstr "Ajouter Nouvelle Famille"
+msgstr "Thêm vào gia đình"
 
 #: CartToGroup.php:61
 msgid "Add Cart to Group"
-msgstr "Ajouter au Panier Groupe"
+msgstr "Thêm giỏ hàng để Nhóm"
 
 #: CartToGroup.php:73
 msgid "Select the group to which you would like to add your cart:"
-msgstr "S&eacute;lectionnez le groupe que vous voulez ajouter &agrave; votre panier:"
+msgstr "Chọn nhóm mà bạn muốn thêm vào giỏ hàng của bạn:"
 
 #: CartToGroup.php:77 GroupReports.php:45 PersonToGroup.php:66
 msgid "Select Group:"
-msgstr "Choisissez le groupe:"
+msgstr "CHỌN nhóm"
 
 #: CartToGroup.php:92 GroupReports.php:60 PersonToGroup.php:81
 msgid "Select Role:"
-msgstr "Choisissez le R&ocirc;le:"
+msgstr "Chọn Vai trò:"
 
 #: CartToGroup.php:95 PersonToGroup.php:84
 msgid "No Group Selected"
-msgstr ""
+msgstr "Không Nhóm được chọn"
 
 #: CartToGroup.php:102 PersonToGroup.php:91 SelectList.php:1117
 msgid "Add to Group"
-msgstr "Ajoutez au groupe"
+msgstr "Thêm vào Nhóm"
 
 #: CartToGroup.php:104
 msgid "Create a New Group"
-msgstr "Cr&eacute;ez un nouveau groupe"
+msgstr "Tạo nhóm mới"
 
 #: CartView.php:39
 msgid "View Your Cart"
-msgstr "Consulter votre panier"
+msgstr "Xem giỏ hàng của bạn"
 
 #: CartView.php:46
 msgid "You have no items in your cart."
-msgstr "Vous n'avez aucun &eacute;l&eacute;ment dans votre panier."
+msgstr "Bạn không có mặt hàng nào trong giỏ."
 
 #: CartView.php:54 Checkin.php:124 EditEventAttendees.php:47
-#, fuzzy
 msgid "Back to Menu"
-msgstr "Revenir &agrave; la fiche Personne"
+msgstr "Trở lại vào Menu"
 
 #: CartView.php:91
 msgid "Go To Labels"
-msgstr "Aller à étiquettes"
+msgstr "Go To Nhãn"
 
 #: CartView.php:104
 msgid "Empty Cart"
-msgstr "Vider le Panier"
+msgstr "Giỏ hàng rỗng"
 
 #: CartView.php:106
 msgid "Empty Cart to Group"
-msgstr "Vider le Panier Groupe"
+msgstr "Giỏ hàng rỗng vào Nhóm"
 
 #: CartView.php:109
-#, fuzzy
 msgid "Empty Cart to Family"
-msgstr "Vider le Panier Groupe"
+msgstr "Giỏ hàng trống để gia đình"
 
 #: CartView.php:111
-#, fuzzy
 msgid "Empty Cart to Event"
-msgstr "Vider le Panier Groupe"
+msgstr "Giỏ hàng trống để tổ chức sự kiện"
 
 #: CartView.php:116
-#, fuzzy
 msgid "Map Cart"
-msgstr "Panier"
+msgstr "Giỏ Bản đồ"
 
 #: CartView.php:117
-#, fuzzy
 msgid "Name Tags"
-msgstr "Nom"
+msgstr "Thẻ tên"
 
 #: CartView.php:154
-#, fuzzy
 msgid "Email Cart"
-msgstr "Vider le Panier"
+msgstr "Giỏ email"
 
 #: CartView.php:155 GroupView.php:235
 #: sundayschool/SundaySchoolClassView.php:94
 msgid "Email (BCC)"
-msgstr "Mail (CCI) au groupe"
+msgstr "Email (BCC)"
 
 #: CartView.php:188
-#, fuzzy
 msgid "Create Directory From Cart"
-msgstr "Cr&eacute;er Dossier"
+msgstr "Tạo thư mục khỏi giỏ hàng"
 
 #: CartView.php:214 CartView.php:253
 msgid "Generate Labels"
-msgstr "Cr&eacute;ez des Etiquettes"
+msgstr "tạo Labels"
 
 #: CartView.php:222
 msgid "Bulk Mail Presort"
-msgstr "En vrac courrier prétrié"
+msgstr "Bulk Presort Thư"
 
 #: CartView.php:230
-#, fuzzy
 msgid "Quiet Presort"
-msgstr "Liste des Rapports"
+msgstr "Presort Quiet"
 
 #: CartView.php:284
-#, fuzzy
 msgid "Send Email To People in Cart"
-msgstr "Envoyez Email au contenu du Panier"
+msgstr "Gửi Email đến người dân trong giỏ hàng"
 
 #: CartView.php:429 EmailEditor.php:67
 msgid "Compose Email"
-msgstr "Ecrire un email"
+msgstr "Soạn email"
 
 #: CartView.php:440 EmailEditor.php:75
 msgid "To (blind):"
-msgstr "Pour (aveugle):"
+msgstr "Để (mù):"
 
 #: CartView.php:442 EmailEditor.php:83
 msgid "Subject:"
-msgstr "Sujet:"
+msgstr "Môn học"
 
 #: CartView.php:445 EmailEditor.php:87
 msgid "Attach file:"
-msgstr "Attacher un fichier:"
+msgstr "Đính kèm file:"
 
 #: CartView.php:471
-#, fuzzy
 msgid "Edit Email"
-msgstr "Modifier la Valeur"
+msgstr "Sửa Email"
 
 #: CartView.php:492
-#, fuzzy
 msgid "Send Email"
-msgstr "Autre Email"
+msgstr "Gửi Email"
 
 #: CartView.php:498
-#, fuzzy
 msgid "Delete Email"
-msgstr "Autre Email"
+msgstr "xóa Email"
 
 #: CartView.php:520
-#, fuzzy
 msgid "Resume"
-msgstr "Effacer"
+msgstr "Tiếp tục"
 
 #: CartView.php:532
 msgid "Abort"
-msgstr "Abandonner"
+msgstr "Abort 3"
 
 #: CartView.php:543
-#, fuzzy
 msgid "View Log"
-msgstr "Voir"
+msgstr "Xem nhật kí"
 
 #: CartView.php:596
-#, fuzzy
 msgid "Your cart contains"
-msgstr "Votre panier est vide!"
+msgstr "Giỏ hàng của bạn có chứa"
 
 #: CartView.php:596
-#, fuzzy
 msgid "persons from"
-msgstr "Personne du groupe"
+msgstr "người từ"
 
 #: CartView.php:596
-#, fuzzy
 msgid "families."
-msgstr "Familles."
+msgstr "các gia đình."
 
 #: CartView.php:602
 msgid "Address?"
-msgstr "Adresse?"
+msgstr "Địa chỉ 2:"
 
 #: CartView.php:603
 msgid "Email?"
-msgstr "Email?"
+msgstr "E-mail:"
 
 #: CartView.php:604 CartView.php:655 EditEventTypes.php:171 FamilyView.php:450
 #: FamilyView.php:491 GroupView.php:386 GroupView.php:428 PersonView.php:573
 #: PersonView.php:612 PersonView.php:675 PersonView.php:690
 msgid "Remove"
-msgstr "Supprimer"
+msgstr "Tẩy"
 
 #: CartView.php:606
 msgid "Family Role"
-msgstr "Rôle dans la Famille"
+msgstr "Vai trò của gia đình"
 
 #: CartView.php:626 CartView.php:645 DonationFundEditor.php:218
 #: FinancialReports.php:293 Include/Functions.php:941
 #: Include/Functions.php:1020
 msgid "Yes"
-msgstr "Oui"
+msgstr "Vâng"
 
 #: CartView.php:638 CartView.php:647 DonationFundEditor.php:219
 #: FinancialReports.php:294 Include/Functions.php:943
 #: Include/Functions.php:1021
 msgid "No"
-msgstr "Non"
+msgstr "Không"
 
 #: CheckVersion.php:49
 msgid "Software Version Check"
-msgstr ""
+msgstr "Phiên bản phần mềm Kiểm tra"
 
 #: CheckVersion.php:61
 msgid "Oops! Something went wrong"
-msgstr ""
+msgstr "Rất tiếc! Một cái gì đó đã đi sai"
 
 #: CheckVersion.php:64
 msgid "There is an incompatibility between database schema and installed software. You are seeing this message because there is a software bug or an incomplete upgrade."
-msgstr ""
+msgstr "Có một sự không tương thích giữa giản đồ cơ sở dữ liệu và phần mềm được cài đặt. Bạn đang nhìn thấy thông báo này vì có một lỗi phần mềm hoặc một bản nâng cấp không đầy đủ."
 
 #: CheckVersion.php:74
 msgid "Please check the following resources for assistance:"
-msgstr ""
+msgstr "Vui lòng kiểm tra các tài liệu sau đây để được giúp đỡ:"
 
 #: CheckVersion.php:76
 msgid "GitHub issues"
-msgstr ""
+msgstr "vấn đề GitHub"
 
 #: CheckVersion.php:77
 msgid "Developer Chat"
-msgstr ""
+msgstr "Nhà phát triển trò chuyện"
 
 #: CheckVersion.php:78
 msgid "Docs"
-msgstr ""
+msgstr "Tài liệu"
 
 #: CheckVersion.php:84
 msgid "Software Database Version"
-msgstr ""
+msgstr "Phần mềm cơ sở dữ liệu bản"
 
 #: CheckVersion.php:85
 msgid "Software Version"
-msgstr ""
+msgstr "Phiên bản phần mềm"
 
 #: Checkin.php:25
 msgid "Event Checkin"
-msgstr "Événement Checkin"
+msgstr "Sự kiện Checkin"
 
 #: Checkin.php:59
-#, fuzzy
 msgid "Select the event to which you would like to check people in for:"
-msgstr "S&eacute;lectionnez le groupe que vous voulez ajouter &agrave; votre panier:"
+msgstr "Chọn sự kiện mà bạn muốn kiểm tra người ở cho:"
 
 #: Checkin.php:84
-#, fuzzy
 msgid "Select Event"
-msgstr "Choisissez la saison"
+msgstr "Chọn sự kiện"
 
 #: Checkin.php:123
 msgid "Verify"
-msgstr "Vérifier"
+msgstr "Xác thực"
 
 #: Checkin.php:125
-#, fuzzy
 msgid "Add Visitor"
-msgstr "Ajouter au Panier"
+msgstr "Thêm khách"
 
 #: Checkin.php:184 Checkin.php:342
-#, fuzzy
 msgid "CheckIn"
-msgstr "Ch&egrave;que"
+msgstr "checkin"
 
 #: Checkin.php:185
-#, fuzzy
 msgid "CheckOut"
-msgstr "Ch&egrave;que"
+msgstr "Thanh toán"
 
 #: Checkin.php:240
 msgid "Continue checkin"
-msgstr "Continuer checkin"
+msgstr "tiếp tục checkin"
 
 #: Checkin.php:289
 msgid "Verify CheckOut"
-msgstr "Vérifiez Passer à la caisse"
+msgstr "Xác Thanh Toán"
 
 #: Checkin.php:343
 msgid "Finalize CheckOut"
-msgstr "Finaliser Passer à la caisse"
+msgstr "Hoàn thiện Thanh Toán"
 
 #: Checkin.php:367
 msgid "Checked In Time"
-msgstr "Vérifiées en temps"
+msgstr "Kiểm tra trong thời gian"
 
 #: Checkin.php:368
 msgid "Checked In By"
-msgstr "Retourné par"
+msgstr "Kiểm tra Trong Bằng"
 
 #: Checkin.php:369
-#, fuzzy
 msgid "Checked Out Time"
-msgstr "V&eacute;rifiez le nombre:"
+msgstr "Mượn Time"
 
 #: Checkin.php:370
 msgid "Checked Out By"
-msgstr "Extrait par"
+msgstr "Mượn Bằng"
 
 #: Checkin.php:371 EditEventAttendees.php:54 EventNames.php:278
 #: ListEvents.php:217 PersonView.php:501
-#, fuzzy
 msgid "Action"
-msgstr "Option"
+msgstr "Hành động"
 
 #: Checkin.php:441
-#, fuzzy
 msgid "Checkout"
-msgstr "Ch&egrave;que"
+msgstr "Thanh toán"
 
 #: Checkin.php:450 EditEventAttendees.php:96
 msgid "No Attendees Assigned to Event"
-msgstr "Pas de participant à l&#39;événement Assigned"
+msgstr "Không tham dự giao để tổ chức sự kiện"
 
 #: Checkin.php:518 PersonView.php:199 Include/Functions.php:1682
 #: Reports/CanvassReports.php:248 Reports/VotingMembers.php:92
 msgid "Member"
-msgstr "Membre(s)"
+msgstr "Thành viên"
 
 #: Checkin.php:519
 msgid " of the"
-msgstr " de la"
+msgstr " của"
 
 #: Checkin.php:519
 msgid " family)"
-msgstr " famille)"
+msgstr " họ"
 
 #: Checkin.php:522 PersonView.php:236
 msgid "(No assigned family)"
-msgstr "(Aucune Famille assign&eacute;e)"
+msgstr "(Không gia đình được giao)"
 
 #: Checkin.php:544
 msgid "No photo selected for uploading."
-msgstr "Aucune photo n'a &eacute;t&eacute; s&eacute;lectionn&eacute; pour le t&eacute;l&eacute;chargement."
+msgstr "Không có hình ảnh được lựa chọn để tải lên."
 
 #: Checkin.php:546
 msgid "Only jpeg photos can be uploaded."
-msgstr "Il n'y a seulement que les photos au format jpeg qui peuvent &ecirc;tre  t&eacute;l&eacute;charg&eacute;e."
+msgstr "Chỉ ảnh jpeg có thể được tải lên."
 
 #: ConvertIndividualToFamily.php:46
-#, fuzzy
 msgid "Convert Individuals to Families"
-msgstr "Ajoutez des individus au panier"
+msgstr "Chuyển đổi của cá nhân gia đình"
 
 #: ConvertIndividualToFamily.php:148
 msgid "Convert Next"
-msgstr "Autre Suivante"
+msgstr "chuyển Tiếp"
 
 #: ConvertIndividualToFamily.php:149
 msgid "Convert All"
-msgstr "Autre Tous"
+msgstr "chuyển đổi Tất cả"
 
 #: DepositSlipEditor.php:53
-#, fuzzy
 msgid "Deposit Slip Number: "
-msgstr "Valeur de l'Enveloppe la plus Elev&eacute;e:"
+msgstr "Tiền gửi Số Phiếu điểm: "
 
 #: DepositSlipEditor.php:75
 msgid "Deposit Details: "
 msgstr ""
 
 #: DepositSlipEditor.php:85
-#, fuzzy
 msgid "Comment:"
-msgstr "Pays:"
+msgstr "1 bình luận"
 
 #: DepositSlipEditor.php:89
-#, fuzzy
 msgid "Closed:"
-msgstr "Classe:"
+msgstr "Đóng:"
 
 #: DepositSlipEditor.php:90
 msgid "Close deposit slip (remember to press Save)"
-msgstr "Fermer bordereau de dépôt (n&#39;oubliez pas d&#39;appuyer sur Enregistrer)"
+msgstr "Đóng tiền gửi phiếu (nhớ nhấn Save)"
 
 #: DepositSlipEditor.php:98
 msgid "Deposit Slip Report"
-msgstr "Rapport Bordereau de dépôt"
+msgstr "Tiền gửi Báo cáo trượt"
 
 #: DepositSlipEditor.php:103
 msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
-msgstr "Note importante: les transactions échouées seront supprimés permanantly lorsque le bordereau de dépôt est fermé."
+msgstr "Lưu ý quan trọng: không giao dịch sẽ bị xóa permanantly khi phiếu gửi tiền được đóng lại."
 
 #: DepositSlipEditor.php:112
 msgid "Deposit Summary: "
@@ -1386,230 +1305,225 @@ msgstr ""
 
 #: DepositSlipEditor.php:144
 msgid "Payments on this deposit slip:"
-msgstr "Les paiements sur ce bordereau de dépôt:"
+msgstr "Thanh toán trên phiếu gửi tiền này:"
 
 #: DepositSlipEditor.php:149 eGive.php:267
 msgid "Import eGive"
-msgstr "Importer eGive"
+msgstr "nhập eGive"
 
 #: DepositSlipEditor.php:152
-#, fuzzy
 msgid "Add Payment"
-msgstr "Ajouter un Nouveau"
+msgstr "Thêm thanh toán"
 
 #: DepositSlipEditor.php:156
 msgid "Load Authorized Transactions"
-msgstr "Chargez les transactions autorisées"
+msgstr "Tải ủy quyền giao dịch"
 
 #: DepositSlipEditor.php:157
 msgid "Run Transactions"
-msgstr "Exécuter les transactions"
+msgstr "Giao dịch chạy"
 
 #: DirectoryReports.php:30
 msgid "Directory reports"
-msgstr "Liste des Rapports"
+msgstr "báo cáo thư mục"
 
 #: DirectoryReports.php:85
 msgid "Select classifications to include"
-msgstr "Choisissez les classifications &agrave; inclure"
+msgstr "Chọn phân loại bao gồm"
 
 #: DirectoryReports.php:122
 msgid "Which role is the head of household?"
-msgstr "Quel est le R&ocirc;le du chef de famille?"
+msgstr "vai trò là người đứng đầu của gia đình?"
 
 #: DirectoryReports.php:138
 msgid "Which role is the spouse?"
-msgstr "Quel est le R&ocirc;le du conjoint?"
+msgstr "vai trò là người bạn đời?"
 
 #: DirectoryReports.php:155
 msgid "Which role is a child?"
-msgstr "Quel R&ocirc;le de l'enfant?"
+msgstr "vai trò là một đứa trẻ?"
 
 #: DirectoryReports.php:172
 msgid "Information to Include:"
-msgstr "Information &agrave; Inclure:"
+msgstr "Thông tin bao gồm:"
 
 #: DirectoryReports.php:174 DirectoryReports.php:248 FamilyList.php:25
 #: GeoPage.php:326 GroupReports.php:132 Menu.php:179 Menu.php:209
 msgid "Address"
-msgstr "Adresse"
+msgstr "Địa chỉ"
 
 #: DirectoryReports.php:176 FamilyView.php:290 PersonView.php:392
 #: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:207
 #: Reports/ConfirmReportEmail.php:211 Reports/ConfirmReportEmail.php:231
 msgid "Birthday"
-msgstr "Anniversaire"
+msgstr "Sinh nhật"
 
 #: DirectoryReports.php:178
 msgid "Family Home Phone"
-msgstr "T&eacute;l&eacute;phone Personnel"
+msgstr "Gia đình Điện thoại"
 
 #: DirectoryReports.php:179
 msgid "Family Work Phone"
-msgstr "T&eacute;l&eacute;phone Professionnel"
+msgstr "Gia đình Điện thoại làm việc"
 
 #: DirectoryReports.php:180
 msgid "Family Cell Phone"
-msgstr "T&eacute;l&eacute;phone Portable Personnel"
+msgstr "Điện thoại di động gia đình"
 
 #: DirectoryReports.php:181
 msgid "Family Email"
-msgstr "Email personnel"
+msgstr "Gia đình Email"
 
 #: DirectoryReports.php:183
 msgid "Personal Home Phone"
-msgstr "T&eacute;l&eacute;phone Personnel"
+msgstr "Personal Home Phone"
 
 #: DirectoryReports.php:184
 msgid "Personal Work Phone"
-msgstr "T&eacute;l&eacute;phone Personnel du travail"
+msgstr "Cá nhân Điện thoại làm việc"
 
 #: DirectoryReports.php:185
 msgid "Personal Cell Phone"
-msgstr "T&eacute;l&eacute;phone Portable Personnel"
+msgstr "Điện thoại di động cá nhân"
 
 #: DirectoryReports.php:186
 msgid "Personal Email"
-msgstr "Email Personnel"
+msgstr "Email cá nhân"
 
 #: DirectoryReports.php:187
 msgid "Personal Work/Other Email"
-msgstr "Email Personnel Travail/Autre:"
+msgstr "Làm việc cá nhân / Email khác"
 
 #: DirectoryReports.php:188
 msgid "Photos"
-msgstr "Photos"
+msgstr "Hình ảnh "
 
 #: DirectoryReports.php:204
 msgid "Number of Columns:"
-msgstr "Nombre de colonnes:"
+msgstr "Số cột"
 
 #: DirectoryReports.php:212
 msgid "Paper Size:"
-msgstr "Taille du papier:"
+msgstr "Khổ giấy:"
 
 #: DirectoryReports.php:220 Include/LabelFunctions.php:64
 msgid "Font Size:"
-msgstr "Taille de la Police par D&eacute;faut"
+msgstr "Cỡ chữ"
 
 #: DirectoryReports.php:236
 msgid "Title page:"
-msgstr "Titre de la page:"
+msgstr "Trang tiêu đề:"
 
 #: DirectoryReports.php:240
 msgid "Use Title Page"
-msgstr "Utilisez Titre Page"
+msgstr "Sử dụng Page Title"
 
 #: DirectoryReports.php:244
 msgid "Church Name"
-msgstr "Nom de la Soci&eacute;t&eacute;"
+msgstr "Tên Giáo Hội"
 
 #: DirectoryReports.php:268
 msgid "Disclaimer"
-msgstr "Avertissement"
+msgstr "Miễn trừ trách nhiệm"
 
 #: DirectoryReports.php:284
 msgid "Create Directory"
-msgstr "Cr&eacute;er Dossier"
+msgstr "Create Directory"
 
 #: DonatedItemEditor.php:44
-#, fuzzy
 msgid "Donated Item Editor"
-msgstr "Éditeur de Note"
+msgstr "Tặng mục Biên tập viên"
 
 #: DonatedItemEditor.php:182 FamilyEditor.php:1071 PaddleNumEditor.php:150
 #: PersonEditor.php:1059 PledgeEditor.php:550
 msgid "Save and Add"
-msgstr "Enregistrer et Ajouter"
+msgstr "Lưu và Thêm"
 
 #: DonatedItemEditor.php:195
-#, fuzzy
 msgid "Item:"
-msgstr "Mettre &eacute;l&eacute;ments dans"
+msgstr "Mục:"
 
 #: DonatedItemEditor.php:200
 msgid "Multiple items:"
-msgstr "Plusieurs articles:"
+msgstr "Nhiều hạng mục:"
 
 #: DonatedItemEditor.php:201
 msgid "Sell to everyone"
-msgstr "Vendre à tout le monde"
+msgstr "Bán cho tất cả mọi người"
 
 #: DonatedItemEditor.php:205
-#, fuzzy
 msgid "Donor:"
-msgstr "Nom du Cotisant:"
+msgstr "Nhà tài trợ:"
 
 #: DonatedItemEditor.php:231
 msgid "Estimated Price:"
-msgstr "Prix ​​estimé:"
+msgstr "Giá dự kiến:"
 
 #: DonatedItemEditor.php:236
 msgid "Material Value:"
-msgstr "Valeur Matériaux:"
+msgstr "Giá trị vật liệu:"
 
 #: DonatedItemEditor.php:241
 msgid "Minimum Price:"
-msgstr "Prix ​​minimum:"
+msgstr "Giá tối thiểu:"
 
 #: DonatedItemEditor.php:251 PaddleNumEditor.php:167
 msgid "Buyer:"
-msgstr "Acheteur:"
+msgstr "Người Mua:"
 
 #: DonatedItemEditor.php:253 FundRaiserEditor.php:202 FundRaiserEditor.php:239
 msgid "Multiple"
-msgstr "Multiple"
+msgstr "Nhiều"
 
 #: DonatedItemEditor.php:272
-#, fuzzy
 msgid "Final Price:"
-msgstr "Finance"
+msgstr "Thức Giá:"
 
 #: DonatedItemEditor.php:279
 msgid "Replicate item"
-msgstr ""
+msgstr "Nhân rộng mục"
 
 #: DonatedItemEditor.php:281 FindFundRaiser.php:217
 msgid "Go"
-msgstr "Aller"
+msgstr "Đến"
 
 #: DonatedItemEditor.php:294 DonationFundEditor.php:193
 #: GroupPropsFormEditor.php:309 GroupView.php:346 ListEvents.php:218
 #: PersonView.php:673 VolunteerOpportunityEditor.php:86
 #: VolunteerOpportunityEditor.php:370
 msgid "Description"
-msgstr "D&eacute;signation"
+msgstr "Mô tả"
 
 #: DonatedItemEditor.php:299
 msgid "Picture URL"
-msgstr ""
+msgstr "URL hình ảnh"
 
 #: DonationFundEditor.php:50
 msgid "Donation Fund Editor"
-msgstr "Gestionnaire de Cotisations par Associations"
+msgstr "Tặng Quỹ Biên tập viên"
 
 #: DonationFundEditor.php:159
 msgid "Are you sure you want to delete this fund?"
-msgstr "Etes vous s&ucirc;r de vouloir supprimer ces Associations?"
+msgstr "Bạn có chắc chắn muốn xóa quỹ này?"
 
 #: DonationFundEditor.php:169
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr "Attention: Les champs modifi&eacute;s seront perdus si vous ne 'Sauvez pas les Changementsavant d'utiliser les boutons supprimer ou 'ajouter nouveau'"
+msgstr "Cảnh báo: thay đổi hiện trường sẽ bị mất nếu bạn không 'Save Changes' trước khi sử dụng một xóa hoặc 'thêm mới' nút!"
 
 #: DonationFundEditor.php:174 FamilyCustomFieldsEditor.php:346
 #: GroupPropsFormEditor.php:300 OptionManager.php:316
 #: PersonCustomFieldsEditor.php:296 PersonEditor.php:546
 #: VolunteerOpportunityEditor.php:355
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
-msgstr "Champs ou choix invalides.  Changements non sauv&eacute;s!  Svp corrigez et essayez encore!"
+msgstr "trường không hợp lệ hoặc các lựa chọn. Thay đổi không được lưu! Xin vui lòng sửa và thử lại!"
 
 #: DonationFundEditor.php:184
 msgid "No funds have been added yet"
-msgstr "Aucune Association n'a encore &eacute;t&eacute; ajout&eacute;e"
+msgstr "Không có kinh phí đã được thêm vào chưa"
 
 #: DonationFundEditor.php:194 ListEvents.php:222
 msgid "Active"
-msgstr "Actif"
+msgstr "Kích hoạt"
 
 #: DonationFundEditor.php:210 DonationFundEditor.php:252
 #: FamilyCustomFieldsEditor.php:370 GroupPropsFormEditor.php:338
@@ -1617,151 +1531,147 @@ msgstr "Actif"
 #: PersonCustomFieldsEditor.php:324 VolunteerOpportunityEditor.php:399
 #: VolunteerOpportunityEditor.php:440
 msgid "You must enter a name."
-msgstr "Vous devez entrer un nom."
+msgstr "Bạn phải nhập một tên."
 
 #: DonationFundEditor.php:222 FamilyCustomFieldsEditor.php:414
 #: PersonCustomFieldsEditor.php:371
 msgid "delete"
-msgstr "Supprimer"
+msgstr "xóa bỏ"
 
 #: DonationFundEditor.php:234 EventEditor.php:550 EventNames.php:246
 #: FamilyCustomFieldsEditor.php:435 GroupPropsFormEditor.php:386
 #: OptionManager.php:371 PersonCustomFieldsEditor.php:392
 #: VolunteerOpportunityEditor.php:420
 msgid "Save Changes"
-msgstr "Enregistrer les Changements"
+msgstr "Lưu thay đổi"
 
 #: DonationFundEditor.php:250 FamilyCustomFieldsEditor.php:465
 #: GroupEditor.php:77 GroupPropsFormEditor.php:415 OptionManager.php:386
 #: PersonCustomFieldsEditor.php:426 PropertyEditor.php:164
 #: PropertyTypeEditor.php:106 VolunteerOpportunityEditor.php:438
 msgid "Name:"
-msgstr "Nom:"
+msgstr "Tên:"
 
 #: DonationFundEditor.php:256 FundRaiserEditor.php:184 GroupEditor.php:83
 #: GroupPropsFormEditor.php:424 PropertyTypeEditor.php:111
 #: VolunteerOpportunityEditor.php:444
 msgid "Description:"
-msgstr "Description:"
+msgstr "Miêu tả:"
 
 #: DonationFundEditor.php:261
 msgid "Add New Fund"
-msgstr "Ajouter Nouvelle Association"
+msgstr "Thêm Quỹ mới"
 
 #: EditEventAttendees.php:9 EventEditor.php:32
 msgid "Church Event Editor"
-msgstr "Event Editor Eglise"
+msgstr "Giáo Hội tổ chức sự kiện biên tập viên"
 
 #: EditEventTypes.php:28 EventNames.php:32
-#, fuzzy
 msgid "Edit Event Types"
-msgstr "Modifiez Types Groupe"
+msgstr "Các loại Chỉnh sửa sự kiện"
 
 #: EditEventTypes.php:126
-#, fuzzy
 msgid "Edit Event Type"
-msgstr "Modifiez Types Groupe"
+msgstr "Sửa Loại sự kiện"
 
 #: EditEventTypes.php:136 EventNames.php:273 ListEvents.php:219
-#, fuzzy
 msgid "Event Type"
-msgstr "Moyen de paiement:"
+msgstr "Loại sự kiện"
 
 #: EditEventTypes.php:142
-#, fuzzy
 msgid "Save Name"
-msgstr "Nom"
+msgstr "Lưu tên"
 
 #: EditEventTypes.php:147 EventNames.php:275
 msgid "Recurrance Pattern"
-msgstr "Modèle recurrance"
+msgstr "Pattern Recurrance"
 
 #: EditEventTypes.php:162 EventEditor.php:500 EventNames.php:277
 #: ListEvents.php:220
 msgid "Attendance Counts"
-msgstr "Comtes de présence"
+msgstr "Đếm Attendance"
 
 #: EditEventTypes.php:182
 msgid "Add counter"
-msgstr ""
+msgstr "Thêm truy cập"
 
 #: EditEventTypes.php:192
 msgid "Return to Event Types"
-msgstr ""
+msgstr "Return to Các loại tổ chức sự kiện"
 
 #: ElectronicPaymentList.php:35
 msgid "Electronic Payment Listing"
-msgstr ""
+msgstr "Liệt kê thanh toán điện tử"
 
 #: ElectronicPaymentList.php:187
 msgid "Add a New Electronic Payment Method"
-msgstr ""
+msgstr "Thêm một phương pháp thanh toán điện tử mới"
 
 #: ElectronicPaymentList.php:194 FamilyView.php:165 FinancialReports.php:301
 #: OptionManager.php:64 PersonView.php:324 PledgeEditor.php:645
 #: PropertyAssign.php:79 PropertyEditor.php:46 PropertyList.php:31
 #: PropertyTypeEditor.php:100 PropertyTypeList.php:63 SelectList.php:932
 msgid "Family"
-msgstr "Familles"
+msgstr "họ"
 
 #: ElectronicPaymentList.php:195 FamilyCustomFieldsEditor.php:350
 #: FamilyView.php:444 FamilyView.php:543 GroupPropsFormEditor.php:307
 #: GroupView.php:344 GroupView.php:380 OptionManager.php:77
 #: PersonCustomFieldsEditor.php:302 PersonView.php:567 SelectDelete.php:313
 msgid "Type"
-msgstr "Type"
+msgstr "Kiểu"
 
 #: ElectronicPaymentList.php:196 FamilyView.php:640 PledgeEditor.php:615
 #: SelectDelete.php:315
 msgid "Fiscal Year"
-msgstr "Ann&eacute;e Fiscale"
+msgstr "Năm tài chính"
 
 #: ElectronicPaymentList.php:197
 msgid "Next Date"
-msgstr ""
+msgstr "ngày tiếp theo"
 
 #: ElectronicPaymentList.php:198 FamilyView.php:545 FamilyView.php:642
 #: PledgeEditor.php:776 SelectDelete.php:317
 msgid "Amount"
-msgstr "Montant"
+msgstr "Số tiền"
 
 #: ElectronicPaymentList.php:199
 msgid "Interval"
-msgstr ""
+msgstr "khoảng thời gian"
 
 #: ElectronicPaymentList.php:200 FamilyView.php:547 FamilyView.php:639
 #: FinancialReports.php:300 PledgeEditor.php:621 SelectDelete.php:314
 msgid "Fund"
-msgstr "Association"
+msgstr "Quỹ"
 
 #: ElectronicPaymentList.php:201 FindDepositSlip.php:75
 msgid "Bank"
-msgstr "Banque"
+msgstr "Ngân hàng"
 
 #: ElectronicPaymentList.php:202
 msgid "Routing"
-msgstr ""
+msgstr "định tuyến"
 
 #: ElectronicPaymentList.php:203
 msgid "Account"
-msgstr ""
+msgstr "Tài khoản"
 
 #: ElectronicPaymentList.php:205
 msgid "Vanco ACH"
-msgstr ""
+msgstr "Vanco ACH"
 
 #: ElectronicPaymentList.php:208 FamilyEditor.php:941
 msgid "Month"
-msgstr "Mois"
+msgstr "Tháng"
 
 #: ElectronicPaymentList.php:209 FamilyEditor.php:943
 #: Include/Functions.php:165
 msgid "Year"
-msgstr "Ann&eacute;e"
+msgstr "Năm"
 
 #: ElectronicPaymentList.php:211
 msgid "Vanco CC"
-msgstr ""
+msgstr "Vanco CC"
 
 #: ElectronicPaymentList.php:213 ElectronicPaymentList.php:272
 #: EventEditor.php:242 EventNames.php:306 FamilyView.php:168
@@ -1771,927 +1681,882 @@ msgstr ""
 #: PropertyList.php:69 PropertyList.php:111 PropertyTypeList.php:45
 #: PropertyTypeList.php:67 SelectList.php:946 UserList.php:62 UserList.php:86
 msgid "Edit"
-msgstr "Modifier"
+msgstr "Chỉnh sửa"
 
 #: EmailEditor.php:90 Register.php:88
 msgid "Message:"
-msgstr "Message:"
+msgstr "Thông điệp:"
 
 #: EmailEditor.php:95
-#, fuzzy
 msgid "Save Email"
-msgstr "Autre Email"
+msgstr "Lưu Email"
 
 #: EmailSend.php:495
-#, fuzzy
 msgid "Email Sent"
-msgstr "Email"
+msgstr "Gửi Email"
 
 #: EmailSend.php:499
 msgid "ERROR: PHPMailer is not properly installed on this server."
-msgstr "ERREUR: PHPMailer n&#39;est pas correctement installé sur ce serveur."
+msgstr "ERROR: PHPMailer không được cài đặt đúng trên máy chủ này."
 
 #: EmailSend.php:500
 msgid "PHPMailer is required in order to send emails from this server."
-msgstr "PHPMailer est nécessaire pour envoyer des emails à partir de ce serveur."
+msgstr "PHPMailer là cần thiết để gửi email từ máy chủ này."
 
 #: EventAttendance.php:29
 msgid "Event Attendees"
-msgstr "Les participants de l&#39;événement"
+msgstr "Những người tham dự sự kiện"
 
 #: EventAttendance.php:55
 msgid "Event Nonattendees"
-msgstr "Nonattendees événements"
+msgstr "Nonattendees tổ chức sự kiện"
 
 #: EventAttendance.php:63
 msgid "Event Guests"
-msgstr "Invités"
+msgstr "tổ chức sự kiện Khách"
 
 #: EventAttendance.php:70
-#, fuzzy
 msgid "All "
-msgstr ", tous les "
+msgstr "Tất cả "
 
 #: EventAttendance.php:76
-#, fuzzy
 msgid "Back to Report Menu"
-msgstr "Menu Rapports"
+msgstr "Về Báo cáo đơn"
 
 #: EventAttendance.php:118 EventAttendance.php:199 ListEvents.php:211
-#, fuzzy
 msgid "There "
-msgstr "Vous avez"
+msgstr "Nó "
 
 #: EventAttendance.php:121
 msgid "Event Title"
-msgstr "Titre de l&#39;événement"
+msgstr "Chủ đề Sự kiện"
 
 #: EventAttendance.php:122
-#, fuzzy
 msgid "Event Date"
-msgstr "Date de Mariage:"
+msgstr "ngày tổ chức sự kiện"
 
 #: EventAttendance.php:123
-#, fuzzy
 msgid "Generate Report"
-msgstr "Cr&eacute;er un Rapport"
+msgstr "Generate Report"
 
 #: EventAttendance.php:158
 msgid "Attending Members"
-msgstr "Membres présents"
+msgstr "Thành viên tham dự"
 
 #: EventAttendance.php:169
 msgid "Non-Attending Members"
-msgstr "Non-membres présents"
+msgstr "Thành viên không tham dự"
 
 #: EventAttendance.php:185
 msgid "Guests"
-msgstr "Invités"
+msgstr "Guests"
 
 #: EventAttendance.php:235
 msgid "There are no events in this category"
-msgstr "Il n&#39;y a aucun événement dans cette catégorie"
+msgstr "Không có sự kiện trong thể loại này"
 
 #: EventAttendance.php:235
-#, fuzzy
 msgid "There are no Records"
-msgstr "Effacer Enregistrements:"
+msgstr "Không có hồ sơ"
 
 #: EventEditor.php:56 EventEditor.php:61 EventNames.php:298 EventNames.php:299
 msgid "Create Event"
-msgstr ""
+msgstr "tạo sự kiện"
 
 #: EventEditor.php:413
 msgid "Create a new Event"
-msgstr ""
+msgstr "Tạo sự kiện mới"
 
 #: EventEditor.php:413
 msgid "Editing Event ID: "
-msgstr "Modification des ID d&#39;événement:"
+msgstr "Chỉnh sửa ID sự kiện: "
 
 #: EventEditor.php:419
-#, fuzzy
 msgid "There were "
-msgstr "Vous avez"
+msgstr "có "
 
 #: EventEditor.php:419
 msgid " errors. Please see below"
-msgstr "erreurs. S&#39;il vous plaît voir ci-dessous"
+msgstr " lỗi. Vui lòng xem bên dưới"
 
 #: EventEditor.php:423
-#, fuzzy
 msgid "Items with a "
-msgstr "El&eacute;ments du Panier:"
+msgstr "Các mặt hàng với "
 
 #: EventEditor.php:423
-#, fuzzy
 msgid " are required"
-msgstr "Cette valeur est exig&eacute;e."
+msgstr " được yêu cầu"
 
 #: EventEditor.php:436 EventEditor.php:462
-#, fuzzy
 msgid "Event Type:"
-msgstr "Moyen de paiement:"
+msgstr "Loại sự kiện:"
 
 #: EventEditor.php:439
 msgid "Select your event type"
-msgstr ""
+msgstr "Chọn loại sự kiện của bạn"
 
 #: EventEditor.php:449
 msgid "You must pick an event type."
-msgstr ""
+msgstr "Bạn phải chọn một loại sự kiện."
 
 #: EventEditor.php:471
-#, fuzzy
 msgid "Event Title:"
-msgstr "Titre:"
+msgstr "Sự kiện Tiêu đề:"
 
 #: EventEditor.php:474
-#, fuzzy
 msgid "You must enter a title."
-msgstr "Vous devez entrer un Nom."
+msgstr "- Bạn phải nhập một tiêu đề"
 
 #: EventEditor.php:478
 msgid "Event Desc:"
-msgstr "Événement Desc:"
+msgstr "Sự kiện quyết định:"
 
 #: EventEditor.php:481
-#, fuzzy
 msgid "You must enter a description."
-msgstr "Vous devez entrer un nom."
+msgstr "Bạn phải nhập một mô tả."
 
 #: EventEditor.php:492
-#, fuzzy
 msgid "Start Date:"
-msgstr "Date de Naissance:"
+msgstr "Ngày bắt đầu"
 
 #: EventEditor.php:496
-#, fuzzy
 msgid "You must enter a start date."
-msgstr "Vous devez entrer un Pr&eacute;nom."
+msgstr "Bạn phải nhập một ngày bắt đầu."
 
 #: EventEditor.php:499
-#, fuzzy
 msgid "Start Time:"
-msgstr "État:"
+msgstr "Thời gian bắt đầu"
 
 #: EventEditor.php:505
-#, fuzzy
 msgid "You must enter a start time."
-msgstr "Vous devez entrer un Nom."
+msgstr "Bạn phải nhập thời gian bắt đầu."
 
 #: EventEditor.php:510
-#, fuzzy
 msgid "End Date:"
-msgstr "Date:"
+msgstr "Ngày kết thúc"
 
 #: EventEditor.php:516
 msgid "End Time:"
-msgstr "Heure de fin:"
+msgstr "Thời gian Kết thúc"
 
 #: EventEditor.php:505
 msgid "No Attendance counts recorded"
-msgstr "Pas de présence compte enregistré"
+msgstr "Không đếm tham dự ghi"
 
 #: EventEditor.php:523
 msgid "Attendance Notes: "
-msgstr "Notes de fréquentation:"
+msgstr "Ghi chú tham gia: "
 
 #: EventEditor.php:535
 msgid "Event Sermon:"
-msgstr "Sermon de l&#39;événement:"
+msgstr "Bài giảng tổ chức sự kiện:"
 
 #: EventEditor.php:540
 msgid "Event Status:"
-msgstr "État de l&#39;événement:"
+msgstr "Tình trạng tổ chức sự kiện:"
 
 #: EventEditor.php:544
 msgid "Is this Active or Inactive?"
-msgstr "Est-ce actif ou inactif?"
+msgstr "này là hoạt động hoặc không hoạt động?"
 
 #: EventEditor.php:560
 msgid "Return to Events"
-msgstr ""
+msgstr "Quay trở lại sự kiện"
 
 #: EventNames.php:159
 msgid "EVENT TYPE NAME"
-msgstr "NOM TYPE D&#39;ÉVÉNEMENT"
+msgstr "TRƯỜNG TÊN LOẠI"
 
 #: EventNames.php:167
 msgid "RECURRANCE PATTERN"
-msgstr "MOTIF recurrance"
+msgstr "RECURRANCE MẪU"
 
 #: EventNames.php:181
 msgid "Sundays"
-msgstr "Dimanche"
+msgstr "Chủ nhật"
 
 #: EventNames.php:182
-#, fuzzy
 msgid "Mondays"
-msgstr "Monnaie"
+msgstr "thứ hai"
 
 #: EventNames.php:183
 msgid "Tuesdays"
-msgstr "Mardi"
+msgstr "Thứ Ba"
 
 #: EventNames.php:184
 msgid "Wednesdays"
-msgstr "Mercredi"
+msgstr "Thứ Tư"
 
 #: EventNames.php:185
 msgid "Thursdays"
-msgstr "Jeudi"
+msgstr "thứ năm"
 
 #: EventNames.php:186
 msgid "Fridays"
-msgstr "Vendredi"
+msgstr "Thứ Sáu"
 
 #: EventNames.php:187
 msgid "Saturdays"
-msgstr "Samedi"
+msgstr "Thứ Bảy"
 
 #: EventNames.php:221
 msgid "DEFAULT START TIME"
-msgstr ""
+msgstr "DEFAULT BẮT ĐẦU THỜI GIAN"
 
 #: EventNames.php:231
 msgid "ATTENDANCE COUNTS"
-msgstr "POINTS DE PRÉSENCE"
+msgstr "đếm CHẤM"
 
 #: EventNames.php:234
 msgid "Optional"
-msgstr ""
+msgstr "Tùy biến"
 
 #: EventNames.php:235
 msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr ""
+msgstr "Nhập một danh sách các tham dự đếm bạn muốn bao gồm với sự kiện này."
 
 #: EventNames.php:236
 msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr ""
+msgstr "Tách riêng từng count_name với một dấu phẩy. ví dụ như thành viên, Khách thăm, Campus, trẻ em"
 
 #: EventNames.php:237
 msgid "Every event type includes a Total count, you do not need to include it."
-msgstr ""
+msgstr "Mỗi loại sự kiện bao gồm Tổng số, bạn không cần phải bao gồm nó."
 
 #: EventNames.php:261
-#, fuzzy
 msgid "There currently "
-msgstr "Vous avez"
+msgstr "hiện nay "
 
 #: EventNames.php:276
-#, fuzzy
 msgid "Start Time"
-msgstr "État"
+msgstr "Thời gian bắt đầu"
 
 #: EventNames.php:341
 msgid "Add Event Type"
-msgstr "Ajouter Type d&#39;événement"
+msgstr "Thêm Sự kiện loại"
 
 #: FamilyCustomFieldsEditor.php:39
 msgid "Custom Family Fields Editor"
-msgstr "Editeur de Champs Personnalisés pour les Familles"
+msgstr "Tuỳ chỉnh Fields Biên tập viên Gia đình"
 
 #: FamilyCustomFieldsEditor.php:194 PersonCustomFieldsEditor.php:150
 msgid "Default Option"
-msgstr "Option par D&eacute;faut"
+msgstr "mặc định Tùy chọn"
 
 #: FamilyCustomFieldsEditor.php:316
-#, fuzzy
 msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Attention: En supprimant ce champ, vous perdrez de fait toutes les donn&eacute;es de personne assign&eacute;es &agrave; ce champ!"
+msgstr "Cảnh báo: Bằng cách xóa các lĩnh vực này, bạn sẽ mất tất cả dữ liệu irrevokably gia đình giao cho lĩnh vực này!"
 
 #: FamilyCustomFieldsEditor.php:328 PersonCustomFieldsEditor.php:280
-#, fuzzy
 msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Attention: Les champs modifi&eacute;s seront perdus si vous ne 'Sauvez pas les Changements avant d'utiliser les boutons haut, bas, supprimer ou 'ajouter nouveau'"
+msgstr "Cảnh báo: Mũi tên và xóa các nút có hiệu lực ngay lập tức. thay đổi tên trường sẽ bị mất nếu bạn không 'Save Changes' trước khi sử dụng một lên, xuống, xóa hoặc 'thêm mới' nút!"
 
 #: FamilyCustomFieldsEditor.php:337
-#, fuzzy
 msgid "No custom Family fields have been added yet"
-msgstr "Aucun champ personnalis&eacute; n'a encore &eacute;t&eacute; ins&eacute;r&eacute;"
+msgstr "Không có các trường tùy gia đình đã được thêm vào chưa"
 
 #: FamilyCustomFieldsEditor.php:352 GroupPropsFormEditor.php:310
 #: PersonCustomFieldsEditor.php:304
 msgid "Special option"
-msgstr "Option Sp&eacute;ciale"
+msgstr "tùy chọn đặc biệt"
 
 #: FamilyCustomFieldsEditor.php:353 FamilyCustomFieldsEditor.php:474
 #: PersonCustomFieldsEditor.php:305 PersonCustomFieldsEditor.php:441
-#, fuzzy
 msgid "Security Option"
-msgstr "D&eacute;signation"
+msgstr "Lựa chọn an"
 
 #: FamilyCustomFieldsEditor.php:354
-#, fuzzy
 msgid "Family-View Side"
-msgstr "Vue De La Famille"
+msgstr "Gia đình-View Side"
 
 #: FamilyCustomFieldsEditor.php:394 GroupPropsFormEditor.php:367
 #: PersonCustomFieldsEditor.php:347
 msgid "You must select a group."
-msgstr "Vous devez s&eacute;lectionner un groupe."
+msgstr "Bạn phải chọn một nhóm."
 
 #: FamilyCustomFieldsEditor.php:399 PersonCustomFieldsEditor.php:349
 msgid "Edit List Options"
-msgstr "Modifier la Liste des Options"
+msgstr "Sửa Danh sách chọn"
 
 #: FamilyCustomFieldsEditor.php:410 FamilyCustomFieldsEditor.php:479
 #: PersonCustomFieldsEditor.php:366 PersonCustomFieldsEditor.php:436
 msgid "Left"
-msgstr "Gauche"
+msgstr "Trái"
 
 #: FamilyCustomFieldsEditor.php:411 FamilyCustomFieldsEditor.php:480
 #: PersonCustomFieldsEditor.php:368 PersonCustomFieldsEditor.php:437
 msgid "Right"
-msgstr "Droite"
+msgstr "Đúng vậy"
 
 #: FamilyCustomFieldsEditor.php:451 GroupPropsFormEditor.php:402
 #: PersonCustomFieldsEditor.php:413 PropertyEditor.php:145
 msgid "Type:"
-msgstr "Type:"
+msgstr "Kiểu:"
 
 #: FamilyCustomFieldsEditor.php:462 GroupPropsFormEditor.php:412
 #: PersonCustomFieldsEditor.php:423
 msgid "Help on types.."
-msgstr "Aide sur les types.."
+msgstr "Trợ giúp về các loại .."
 
 #: FamilyCustomFieldsEditor.php:468 PersonCustomFieldsEditor.php:429
 #: PropertyTypeEditor.php:49
 msgid "You must enter a name"
-msgstr "Vous devez entrer un nom"
+msgstr "Bạn phải nhập tên"
 
 #: FamilyCustomFieldsEditor.php:469 GroupPropsFormEditor.php:419
 #: PersonCustomFieldsEditor.php:430
 msgid "That field name already exists."
-msgstr "Ce nom de champ existe d&eacute;j&agrave;."
+msgstr "Đó là tên trường đã tồn tại."
 
 #: FamilyCustomFieldsEditor.php:478 PersonCustomFieldsEditor.php:435
 msgid "Side:"
-msgstr "Côt&eacute;:"
+msgstr "bên."
 
 #: FamilyCustomFieldsEditor.php:484 GroupPropsFormEditor.php:429
 #: PersonCustomFieldsEditor.php:445
 msgid "Add New Field"
-msgstr "Ajouter Nouveaux Champs"
+msgstr "Thêm lĩnh vực mới"
 
 #: FamilyEditor.php:25
 msgid "Family Editor"
-msgstr "Gestion des Familles"
+msgstr "Gia đình biên tập"
 
 #: FamilyEditor.php:208
-#, fuzzy
 msgid "First name must be entered"
-msgstr "Cette valeur doit &ecirc;tre  de type num&eacute;rique."
+msgstr "tên đầu tiên phải được nhập"
 
 #: FamilyEditor.php:218 PersonEditor.php:189
 msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Ann&eacute;e Invalide:  les valeurs permises sont comprise entre 1901 et 2155"
+msgstr "Năm không hợp lệ: giá trị cho phép là 1901-2155"
 
 #: FamilyEditor.php:225 PersonEditor.php:193
 msgid "Invalid Birth Date."
-msgstr "Date de Naissance Invalide."
+msgstr "Ngày sinh không hợp lệ."
 
 #: FamilyEditor.php:235
 msgid "You must enter a Name."
-msgstr "Vous devez entrer un Nom."
+msgstr "Bạn phải nhập tên."
 
 #: FamilyEditor.php:245
-#, fuzzy
 msgid "Not a valid Wedding Date"
-msgstr "La Date de Mariage est Invalide"
+msgstr "Không phải là một đám cưới ngày hợp lệ"
 
 #: FamilyEditor.php:259 PersonEditor.php:227
 msgid "Email is Not Valid"
-msgstr "E-mail n&#39;est pas valide"
+msgstr "Email là không hợp lệ"
 
 #: FamilyEditor.php:670 PersonEditor.php:696
 msgid "Family Info"
-msgstr "Information sur la famille"
+msgstr "Thông tin gia đình"
 
 #: FamilyEditor.php:705
 msgid "Province:"
-msgstr "Province:"
+msgstr "Tỉnh"
 
 #: FamilyEditor.php:713 PersonEditor.php:811
 msgid "None US/CND State:"
-msgstr "Aucun État US / CND : "
+msgstr "Không Mỹ / CND Nhà nước:"
 
 #: FamilyEditor.php:737
-#, fuzzy
 msgid "Latitude:"
-msgstr "Derniere Modification:"
+msgstr "Vĩ độ"
 
 #: FamilyEditor.php:741
 msgid "Longitude:"
-msgstr "Longitude:"
+msgstr "Kinh độ"
 
 #: FamilyEditor.php:752 PersonEditor.php:739
 msgid "Contact Info"
-msgstr "Information sur la fiche contact"
+msgstr "Thông Tin Liên Hệ "
 
 #: FamilyEditor.php:802
 msgid "Send Newsletter:"
-msgstr "Envoyer Newsletter:"
+msgstr "Gửi bản tin:"
 
 #: FamilyEditor.php:811
 msgid "Other Info:"
-msgstr "Autres Informations : "
+msgstr "Thông tin khác:"
 
 #: FamilyEditor.php:830
 msgid "Ok To Canvass:"
-msgstr "Donnée personnelle :"
+msgstr "Ok để vận động:"
 
 #: FamilyEditor.php:837
-#, fuzzy
 msgid "Assign a Canvasser:"
-msgstr "Assign&eacute; un Nouveau Groupe:"
+msgstr "Chỉ định một người vận động:"
 
 #: FamilyEditor.php:853
-#, fuzzy
 msgid "Assign a Brave Canvasser:"
-msgstr "Assigner une Nouvelle Classification:"
+msgstr "Chỉ định một người vận động Brave:"
 
 #: FamilyEditor.php:873
 msgid "Envelope Info"
-msgstr ""
+msgstr "Phong bì Thông tin"
 
 #: FamilyEditor.php:881
-#, fuzzy
 msgid "Envelope number:"
-msgstr "Valeur d'Enveloppe"
+msgstr "số phong bì:"
 
 #: FamilyEditor.php:891 PersonEditor.php:1026
 msgid "Custom Fields"
-msgstr "Champs Personnalis&eacute;s"
+msgstr "Custom Fields"
 
 #: FamilyEditor.php:918 FamilyView.php:288 PersonView.php:390
 msgid "Family Members"
-msgstr "Membres de la Famille"
+msgstr "Thành viên gia đình"
 
 #: FamilyEditor.php:930
 msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Vous pouvez cr&eacute;er des membres de famille maintenant ou les ajouter plus tard.  Toutes les entr&eacute;es deviendront de <i>nouveaux</i> enregistrement de personne."
+msgstr "Bạn có thể tạo ra các thành viên gia đình bây giờ hoặc thêm chúng sau này. Tất cả các bài dự thi sẽ trở thành <i> mới </ i> hồ sơ cá nhân."
 
 #: FamilyEditor.php:935
 msgid "First"
-msgstr "Premier"
+msgstr "Đầu tiên"
 
 #: FamilyEditor.php:936
 msgid "Middle"
-msgstr "Second pr&eacute;nom"
+msgstr "Trung bình"
 
 #: FamilyEditor.php:937
 msgid "Last"
-msgstr "Dernier"
+msgstr "Cuối cùng"
 
 #: FamilyEditor.php:940 FamilyView.php:289 OptionManager.php:65
 #: OptionManager.php:89 PersonView.php:391 PrintView.php:296 PrintView.php:355
 #: Reports/CanvassReports.php:246 Reports/GroupReport.php:113
 msgid "Role"
-msgstr "Rôle"
+msgstr "Vai trò"
 
 #: FamilyEditor.php:942
 msgid "Day"
-msgstr "Jour"
+msgstr "Ngày"
 
 #: FamilyEditor.php:981 PersonEditor.php:562
 msgid "Select Gender"
-msgstr "S&eacute;lectionner le Sexe"
+msgstr "Chọn giới tính"
 
 #: FamilyEditor.php:989
 msgid "Select Role"
-msgstr "S&eacute;lectionner le R&ocirc;le"
+msgstr "Chọn Vai trò"
 
 #: FamilyEditor.php:1003 Include/Functions.php:858 Include/Functions.php:1022
 msgid "Unknown"
-msgstr "Inconnu"
+msgstr "Không xác định"
 
 #: FamilyEditor.php:1004 PersonEditor.php:625
 msgid "January"
-msgstr "Janvier"
+msgstr "Tháng Giêng"
 
 #: FamilyEditor.php:1005 PersonEditor.php:628
 msgid "February"
-msgstr "F&eacute;vrier"
+msgstr "Tháng hai"
 
 #: FamilyEditor.php:1006 PersonEditor.php:631
 msgid "March"
-msgstr "Mars"
+msgstr "Tháng ba"
 
 #: FamilyEditor.php:1007 PersonEditor.php:634
 msgid "April"
-msgstr "Avril"
+msgstr "háng tư"
 
 #: FamilyEditor.php:1008 PersonEditor.php:637
 msgid "May"
-msgstr "Mai"
+msgstr "Tháng năm"
 
 #: FamilyEditor.php:1009 PersonEditor.php:640
 msgid "June"
-msgstr "Juin"
+msgstr "Tháng sáu"
 
 #: FamilyEditor.php:1010 PersonEditor.php:643
 msgid "July"
-msgstr "Juillet"
+msgstr "Tháng bảy"
 
 #: FamilyEditor.php:1011 PersonEditor.php:646
 msgid "August"
-msgstr "Ao&ucirc;t "
+msgstr "Tháng tám"
 
 #: FamilyEditor.php:1012 PersonEditor.php:649
 msgid "September"
-msgstr "Septembre"
+msgstr "Tháng chín"
 
 #: FamilyEditor.php:1013 PersonEditor.php:652
 msgid "October"
-msgstr "Octobre"
+msgstr "Tháng mười"
 
 #: FamilyEditor.php:1014 PersonEditor.php:655
 msgid "November"
-msgstr "Novembre"
+msgstr "tháng mười một"
 
 #: FamilyEditor.php:1015 PersonEditor.php:658
 msgid "December"
-msgstr "D&eacute;cembre"
+msgstr "tháng mười hai"
 
 #: FamilyEditor.php:1020
 msgid "Unk"
-msgstr "N/D"
+msgstr "Unk"
 
 #: FamilyList.php:9 FamilyView.php:248
 msgid "Family List"
-msgstr "Liste des Familles"
+msgstr "Danh sách gia đình"
 
 #: FamilyList.php:15
 msgid "Add Family"
-msgstr "Ajouter une Famille"
+msgstr "Thêm gia đình"
 
 #: FamilyList.php:29 Menu.php:180
 msgid "Created"
-msgstr "Cr&eacute;ation"
+msgstr "Tạo"
 
 #: FamilyList.php:30
 msgid "Edited"
-msgstr "Edité"
+msgstr "sửa"
 
 #: FamilyView.php:41 MapUsingGoogle.php:7
 msgid "Family View"
-msgstr "Les Familles"
+msgstr "Gia đình Xem"
 
 #: FamilyView.php:165
 msgid "The"
-msgstr "La"
+msgstr "Các"
 
 #: FamilyView.php:182
 msgid " of church<br>"
-msgstr " de l'église<br>"
+msgstr " của nhà thờ <br>"
 
 #: FamilyView.php:189
 msgid "Latitude/Longitude"
-msgstr "Latitude / Longitude"
+msgstr "Kinh độ vĩ độ"
 
 #: FamilyView.php:193
 msgid "Send newsletter:"
-msgstr "Envoyer newsletter:"
+msgstr "Gửi bản tin:"
 
 #: FamilyView.php:201
-#, fuzzy
 msgid "Envelope Number"
-msgstr "Valeur d'Enveloppe"
+msgstr "Số phong bì"
 
 #: FamilyView.php:240
 msgid "Verify Info"
-msgstr "Vérifier les infos"
+msgstr "Xác nhận thông tin"
 
 #: FamilyView.php:242
 msgid "Add New Member"
-msgstr "Ajouter un nouveau membre"
+msgstr "Add New Member"
 
 #: FamilyView.php:245
 msgid "Previous Family"
-msgstr "Famille précédente"
+msgstr "gia đình trước"
 
 #: FamilyView.php:251
 msgid "Next Family"
-msgstr "Famille suivante"
+msgstr "gia đình tiếp theo"
 
 #: FamilyView.php:255
 msgid "Delete this Family"
-msgstr "Effacer cette famille"
+msgstr "Xóa gia đình này"
 
 #: FamilyView.php:260 FamilyView.php:783 PersonView.php:295 PersonView.php:739
 msgid "Upload Photo"
-msgstr "T&eacute;l&eacute;charger Photo"
+msgstr "Tải ảnh lên"
 
 #: FamilyView.php:263 PersonView.php:297
 msgid "Delete Photo"
-msgstr "Photo supprim&eacute;e"
+msgstr "xóa ảnh"
 
 #: FamilyView.php:268 PersonView.php:304
 msgid "Add a Note"
-msgstr "Ajouter une note"
+msgstr "Thêm một lưu ý"
 
 #: FamilyView.php:271
 msgid "Download PDF Report"
-msgstr "Télécharger Rapport en PDF"
+msgstr "Tải về PDF Báo cáo"
 
 #: FamilyView.php:273
 msgid "Email PDF Report"
-msgstr "Envoyer Rapport en PDF"
+msgstr "Email Report PDF"
 
 #: FamilyView.php:276
 msgid "Add All Family Members to Cart"
-msgstr "Ajouter tous les membres de la famille au panier"
+msgstr "Thêm Tất cả các thành viên gia đình vào giỏ"
 
 #: FamilyView.php:362 PersonView.php:323
 msgid "Timeline"
-msgstr "Chronologie"
+msgstr "Mốc thời gian"
 
 #: FamilyView.php:364 PersonView.php:326
 msgid "Assigned Properties"
-msgstr "Propriétés attribu&eacute;s"
+msgstr "Thuộc tính giao"
 
 #: FamilyView.php:367
 msgid "Automatic Payments"
-msgstr "Paiements automatiques"
+msgstr "Thanh toán tự động"
 
 #: FamilyView.php:369
 msgid "Pledges and Payments"
-msgstr "Engagements et paiements"
+msgstr "Cam kết và Thanh toán"
 
 #: FamilyView.php:438 GroupView.php:373 PersonView.php:561 PrintView.php:423
 msgid "No property assignments."
-msgstr "Aucune Propriétés n'est attribu&eacute;es."
+msgstr "Không có bài tập tài sản."
 
 #: FamilyView.php:446 GroupView.php:382 PersonView.php:569 PrintView.php:430
 #: SystemSettings.php:155
 msgid "Value"
-msgstr "Valeur"
+msgstr "Giá trị"
 
 #: FamilyView.php:449 FamilyView.php:486 GroupView.php:385 GroupView.php:421
 msgid "Edit Value"
-msgstr "Modifier la Valeur"
+msgstr "chỉnh sửa Giá trị"
 
 #: FamilyView.php:509 GroupView.php:448 PersonView.php:629
 msgid "Assign a New Property:"
-msgstr "Assigner une Nouvelle Propriété:"
+msgstr "Chỉ định một tài sản mới:"
 
 #: FamilyView.php:525 GroupView.php:461 PersonView.php:645 PersonView.php:720
 #: PropertyAssign.php:192 SelectList.php:953
 msgid "Assign"
-msgstr "Affecter"
+msgstr "Gán"
 
 #: FamilyView.php:544
 msgid "Next payment date"
-msgstr "Nouvelle date de paiement"
+msgstr "ngày thanh toán tiếp theo"
 
 #: FamilyView.php:546
 msgid "Interval (months)"
-msgstr "Intervalle (en mois)"
+msgstr "Khoảng thời gian (tháng)"
 
 #: FamilyView.php:550 FamilyView.php:649 SelectDelete.php:321
 msgid "Date Updated"
-msgstr "Date de mise à jour"
+msgstr "ngày cập nhật"
 
 #: FamilyView.php:551 FamilyView.php:650 SelectDelete.php:322
 msgid "Updated By"
-msgstr "Mise &agrave; jour par"
+msgstr "Cập nhật bởi"
 
 #: FamilyView.php:615
 msgid "Add a new automatic payment"
-msgstr "Ajouter un nouveau Paiement automatique"
+msgstr "Thêm một thanh toán tự động mới"
 
 #: FamilyView.php:625
 msgid "Show Pledges"
-msgstr "Voir Garantie"
+msgstr "Hiện sản thế chấp"
 
 #: FamilyView.php:627
 msgid "Show Payments"
-msgstr "Voir Paiement"
+msgstr "Hiện Thanh toán"
 
 #: FamilyView.php:628 PersonView.php:206
 msgid " Since:"
-msgstr " depuis :"
+msgstr " Từ"
 
 #: FamilyView.php:631 MemberRoleChange.php:123 PropertyAssign.php:192
 msgid "Update"
-msgstr "Mise &agrave; jour"
+msgstr "Cập nhật"
 
 #: FamilyView.php:638
 msgid "Pledge or Payment"
-msgstr "Gage ou de vente"
+msgstr "Cầm cố, thanh toán"
 
 #: FamilyView.php:641 FindFundRaiser.php:225 PledgeEditor.php:689
 #: SelectDelete.php:316 Include/Functions.php:161
 msgid "Date"
-msgstr "Date"
+msgstr "Ngày"
 
 #: FamilyView.php:643
 msgid "NonDeductible"
-msgstr "Non déductibles"
+msgstr "Không được khấu trừ"
 
 #: FamilyView.php:644 SelectDelete.php:318
 msgid "Schedule"
-msgstr "Calendrier"
+msgstr "Lập lịch quét"
 
 #: FamilyView.php:645 SelectDelete.php:319
-#, fuzzy
 msgid "Method"
-msgstr "M&eacute;thode d'Exportation:"
+msgstr "Phương thức"
 
 #: FamilyView.php:646 PledgeEditor.php:636 PledgeEditor.php:782
 #: SelectDelete.php:320
 msgid "Comment"
-msgstr "Commenter"
+msgstr "Nhận xét"
 
 #: FamilyView.php:750
 msgid "Add a new pledge"
-msgstr "Ajouter un nouvel engagement"
+msgstr "Thêm một cam kết mới"
 
 #: FamilyView.php:752
 msgid "Add a new payment"
-msgstr "Ajouter un nouveau paiement"
+msgstr "Thêm một thanh toán mới"
 
 #: FamilyView.php:761
 msgid " Canvass Entry"
-msgstr " Bilan annuel"
+msgstr " canvass nhập"
 
 #: FamilyView.php:787 PersonView.php:743
 msgid "Max Photo size:"
-msgstr "Taille maximale de la photo : "
+msgstr "Max ảnh kích thước:"
 
 #: FamilyView.php:790 FamilyView.php:848 FindDepositSlip.php:53
 #: GroupEditor.php:60 GroupView.php:121 GroupView.php:145 GroupView.php:168
 #: PersonView.php:746 Include/Header-function.php:63
 msgid "Close"
-msgstr "Fermer"
+msgstr "Đóng"
 
 #: FamilyView.php:791 PersonView.php:747
 msgid "Upload Image"
-msgstr "Envoyer l'image"
+msgstr "Tải lên Hình ảnh"
 
 #: FamilyView.php:803 FindDepositSlip.php:41 PersonView.php:758
 #: PledgeDelete.php:21
-#, fuzzy
 msgid "Confirm Delete"
-msgstr "Confirmer"
+msgstr "Xác nhận xóa?"
 
 #: FamilyView.php:807 PersonView.php:762
 msgid "You are about to delete the profile photo, this procedure is irreversible."
-msgstr "Vous êtes sur le point d'effacer la photo de pofile, cette opération est irréversible."
+msgstr "Bạn muốn xóa ảnh hồ sơ, thủ tục này là không thể đảo ngược."
 
 #: FamilyView.php:809 FamilyView.php:833 PersonView.php:764
 msgid "Do you want to proceed?"
-msgstr "Voulez-vous continuer ?"
+msgstr "Bạn có muốn tiếp tục?"
 
 #: FamilyView.php:826
 msgid "Confirm PDF Email"
-msgstr "Confirmer l'envoi du PDF"
+msgstr "Xác nhận Email PDF"
 
 #: FamilyView.php:830
 msgid "You are about to email copy of the family information in pdf to the following emails"
-msgstr "Vous êtes sur le point d'envoyer une copie PDF des informations d'une famille aux emails suivants"
+msgstr "Bạn muốn gửi email bản sao của thông tin gia đình trong pdf để các email sau"
 
 #: FamilyView.php:841
 msgid "Email Updated"
-msgstr "Email de mis à jour"
+msgstr "email cập nhật"
 
 #: FamilyView.php:845
 msgid "This family does not have any email address, so we can't send email"
-msgstr ""
+msgstr "gia đình này không có bất kỳ địa chỉ email, vì vậy chúng tôi không thể gửi email"
 
 #: FamilyView.php:860
 msgid "Oops! Family not found."
-msgstr "Oh! La famille n'a pas été trouvé."
+msgstr "Rất tiếc! không tìm thấy gia đình."
 
 #: FamilyView.php:863
 msgid "We could not find the family you were looking for.<br>Meanwhile, you may"
-msgstr "La famille recherchée n'a pas été trouvée.<br>En attendant, vous pourrez"
+msgstr "Chúng tôi không thể tìm thấy gia đình bạn đang tìm kiếm. <br> Trong khi đó, bạn có thể"
 
 #: FamilyView.php:864 PersonView.php:808
 msgid "return to member dashboard"
-msgstr "retourner au tableau de bord"
+msgstr "quay trở lại bảng quản lý thành viên"
 
 #: FinancialReports.php:35 ReportList.php:35
 msgid "Financial Reports"
-msgstr "Rapports Financiers"
+msgstr "Báo cáo tài chính"
 
 #: FinancialReports.php:46
 msgid "No records were returned from the previous report."
-msgstr "Aucun enregistrement n&#39;a été renvoyée par le rapport précédent."
+msgstr "Không có dữ liệu được trả về từ các báo cáo trước đó."
 
 #: FinancialReports.php:52 FinancialReports.php:302 FinancialReports.php:314
-#, fuzzy
 msgid "Report Type:"
-msgstr "Mod&egrave;le de Rapport"
+msgstr "Loại báo cáo:"
 
 #: FinancialReports.php:54
-#, fuzzy
 msgid "Select Report Type"
-msgstr "S&eacute;lectionnez un Type de Propriété"
+msgstr "Chọn Loại Báo cáo"
 
 #: FinancialReports.php:55
 msgid "Pledge Summary"
-msgstr "Résumé Pledge"
+msgstr "Cam kết Tóm tắt"
 
 #: FinancialReports.php:56
 msgid "Pledge FamilySummary"
-msgstr "FamilySummary Pledge"
+msgstr "Pledge FamilySummary"
 
 #: FinancialReports.php:57
 msgid "Pledge Reminders"
-msgstr "Rappels Pledge"
+msgstr "Pledge Nhắc nhở"
 
 #: FinancialReports.php:58
-#, fuzzy
 msgid "Voting Members"
-msgstr "Tous les Membres:"
+msgstr "Thành viên có quyền biểu quyết"
 
 #: FinancialReports.php:59
 msgid "Giving Report (Tax Statements)"
-msgstr "Donner Rapport (déclarations fiscales)"
+msgstr "Cho Report (Báo cáo thuế)"
 
 #: FinancialReports.php:60
 msgid "Zero Givers"
-msgstr "Zéro Givers"
+msgstr "zero, người tặng"
 
 #: FinancialReports.php:61
-#, fuzzy
 msgid "Individual Deposit Report"
-msgstr "(Enregistrements individuels seulement)"
+msgstr "Báo cáo tiền gửi cá nhân"
 
 #: FinancialReports.php:62
 msgid "Advanced Deposit Report"
-msgstr "Rapport avancée dépôt"
+msgstr "Báo cáo tiền gửi tiết"
 
 #: FinancialReports.php:69 GroupReports.php:84
 msgid "Next"
-msgstr "Suivant"
+msgstr "Kế tiếp"
 
 #: FinancialReports.php:141
-#, fuzzy
 msgid "Filter by Family:"
-msgstr "Group&eacute; par Famille"
+msgstr "Lọc theo gia đình:"
 
 #: FinancialReports.php:188
 msgid "Report Start Date:"
-msgstr "Signaler Date de début:"
+msgstr "Báo cáo Ngày bắt đầu:"
 
 #: FinancialReports.php:190
-#, fuzzy
 msgid "Report End Date:"
-msgstr "Mod&egrave;le de Rapport"
+msgstr "Báo cáo kết thúc:"
 
 #: FinancialReports.php:193
 msgid "Apply Report Dates To:"
-msgstr "Appliquer Dates rapport à:"
+msgstr "Áp dụng Báo cáo Ngày Để:"
 
 #: FinancialReports.php:194
 msgid "Deposit Date (Default)"
-msgstr "Date de dépôt (par défaut)"
+msgstr "Ngày Deposit (Mặc định)"
 
 #: FinancialReports.php:195
-#, fuzzy
 msgid "Payment Date"
-msgstr "Moyen de paiement:"
+msgstr "THANH TOÁN NGÀY"
 
 #: FinancialReports.php:211
 msgid "Filter by Deposit:"
-msgstr "Filtrez par dépôt:"
+msgstr "Lọc bởi Tiền đặt cọc:"
 
 #: FinancialReports.php:214
 msgid "If deposit is selected, date criteria will be ignored."
-msgstr "Si le dépôt est sélectionné, les critères de date sera ignorée."
+msgstr "Nếu khoản tiền gửi được chọn, tiêu chí ngày sẽ được bỏ qua."
 
 #: FinancialReports.php:217
 msgid "All deposits within date range"
-msgstr "Tous les dépôts au sein plage de dates"
+msgstr "Tất cả các khoản tiền gửi trong phạm vi ngày"
 
 #: FinancialReports.php:231
 msgid "Filter by Fund:"
-msgstr "Filtrez par le Fonds:"
+msgstr "Lọc bởi Quỹ:"
 
 #: FinancialReports.php:255
-#, fuzzy
 msgid "Filter by Payment Type:"
-msgstr "Moyen de paiement:"
+msgstr "Lọc theo Loại thanh toán:"
 
 #: FinancialReports.php:259
 msgid "All Methods"
-msgstr "Toutes les méthodes"
+msgstr "Tất cả các phương pháp"
 
 #: FinancialReports.php:260
 msgid "Check"
-msgstr "Ch&egrave;que"
+msgstr "Kiểm tra"
 
 #: FinancialReports.php:261
 msgid "Cash"
-msgstr "Esp&egrave;ce"
+msgstr "tiền mặt"
 
 #: FinancialReports.php:263 FindDepositSlip.php:77 PledgeEditor.php:604
 msgid "Bank Draft"
-msgstr "Bank Draft"
+msgstr "Dự thảo ngân hàng"
 
 #: FinancialReports.php:264 FindDepositSlip.php:78 PledgeEditor.php:608
 msgid "eGive"
@@ -2699,100 +2564,95 @@ msgstr "eGive"
 
 #: FinancialReports.php:269
 msgid "Minimun Total Amount:"
-msgstr "Montant Minimum totale:"
+msgstr "Minimun Tổng số tiền:"
 
 #: FinancialReports.php:271
 msgid "0 - No Minimum"
-msgstr "0 - Pas de minimum"
+msgstr "0 - Không có tối thiểu"
 
 #: FinancialReports.php:276 SystemSettings.php:51
 msgid "Other Settings"
-msgstr "Autres réglages"
+msgstr "Cài đặt khác"
 
 #: FinancialReports.php:279
 msgid "Include:"
-msgstr "Inclure:"
+msgstr "Bao gồm:"
 
 #: FinancialReports.php:280
 msgid "Only Payments with Pledges"
-msgstr "Seuls les paiements Nantissements"
+msgstr "Chỉ thanh toán với sản thế chấp"
 
 #: FinancialReports.php:281
 msgid "All Payments"
-msgstr "Tous les paiements"
+msgstr "Tất cả các khoản thanh toán"
 
 #: FinancialReports.php:282
-#, fuzzy
 msgid "Generate:"
-msgstr "Sexe:"
+msgstr "tạo:"
 
 #: FinancialReports.php:283
 msgid "Only Families with unpaid pledges"
-msgstr "Seules les familles avec arriérés de contributions"
+msgstr "Chỉ có gia đình với những cam kết chưa thanh toán"
 
 #: FinancialReports.php:284 GeoPage.php:264 MembersDashboard.php:116
 msgid "All Families"
-msgstr "Voir Toutes les Familles"
+msgstr "Tất cả gia đình"
 
 #: FinancialReports.php:288
-#, fuzzy
 msgid "Report Heading:"
-msgstr "Menu des Rapports"
+msgstr "Báo cáo Tiêu đề:"
 
 #: FinancialReports.php:289
 msgid "Graphic"
-msgstr "Graphique"
+msgstr "Đồ họa"
 
 #: FinancialReports.php:290
-#, fuzzy
 msgid "Church Address"
-msgstr "Adresse"
+msgstr "Giáo Hội Địa chỉ"
 
 #: FinancialReports.php:291
 msgid "Blank"
-msgstr "Vide"
+msgstr "Blank"
 
 #: FinancialReports.php:292
 msgid "Remittance Slip:"
-msgstr "Bordereau de paiement:"
+msgstr "Nộp phiếu:"
 
 #: FinancialReports.php:298
 msgid "Sort Data by:"
-msgstr "Données Trier par:"
+msgstr "Sắp xếp dữ liệu theo:"
 
 #: FinancialReports.php:299
 msgid "Deposit"
-msgstr "Dépôt"
+msgstr "Tiền gửi"
 
 #: FinancialReports.php:303
 msgid "All Data"
-msgstr "Toutes les données"
+msgstr "Tất cả dữ liệu"
 
 #: FinancialReports.php:304
-#, fuzzy
 msgid "Moderate Detail"
-msgstr "Cacher les D&eacute;tails"
+msgstr "Moderate chi tiết"
 
 #: FinancialReports.php:305
 msgid "Summary Data"
-msgstr "Données sommaires"
+msgstr "Tổng hợp dữ liệu"
 
 #: FinancialReports.php:309
 msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr ""
+msgstr "các thành viên có quyền biểu quyết phải làm <br> đóng góp trong năm này nhiều <br> (0 để không đòi hỏi một hiến):"
 
 #: FinancialReports.php:315
 msgid "Deposit Slip"
-msgstr "Bordereau de dépôt"
+msgstr "Phiếu gửi tiền"
 
 #: FinancialReports.php:316
-#, fuzzy
 msgid "Deposit Report"
-msgstr "Cr&eacute;er un Rapport"
+msgstr "báo cáo tiền gửi"
 
 #: FinancialReports.php:322
 msgid "PDF"
-msgstr "PDF"
+msgstr "%PDF-1.2"
 
 #: FinancialReports.php:323
 msgid "CSV"
@@ -2800,149 +2660,136 @@ msgstr "CSV"
 
 #: FinancialReports.php:330 PaddleNumEditor.php:151 PledgeDetails.php:61
 msgid "Back"
-msgstr "Arrière"
+msgstr "Trở lại"
 
 #: FinancialReports.php:332 GroupReports.php:160 ReminderReport.php:56
 #: TaxReport.php:53
 msgid "Create Report"
-msgstr "Cr&eacute;er un Rapport"
+msgstr "Tạo báo cáo"
 
 #: FindDepositSlip.php:23
-#, fuzzy
 msgid "Deposit Listing"
-msgstr "Liste des Personnes"
+msgstr "Tiền đặt cọc Liệt kê"
 
 #: FindDepositSlip.php:62
 msgid "Add New Deposit: "
-msgstr ""
+msgstr "Thêm New Tiền đặt cọc: "
 
 #: FindDepositSlip.php:99
 msgid "Deposits: "
-msgstr ""
+msgstr "TIỀN ĐẶT CỌC "
 
 #: FindDepositSlip.php:106
 msgid "Delete Selected Rows"
-msgstr ""
+msgstr "Xóa Rows chọn"
 
 #: FindDepositSlip.php:108
 msgid "Export Selected Rows (OFX)"
-msgstr ""
+msgstr "Xuất chọn Rows (OFX)"
 
 #: FindDepositSlip.php:110 GroupView.php:493
 msgid "Export Selected Rows (CSV)"
-msgstr ""
+msgstr "Xuất chọn Rows (CSV)"
 
 #: FindDepositSlip.php:112
 msgid "Generate Deposit Split for Selected Rows (PDF)"
-msgstr ""
+msgstr "Tạo tiền gửi chia cho dòng chọn (PDF)"
 
 #: FindFundRaiser.php:21
-#, fuzzy
 msgid "Fundraiser Listing"
-msgstr "Liste des Utilisateurs"
+msgstr "Gây Quỹ Liệt kê"
 
 #: FindFundRaiser.php:71 PaddleNumEditor.php:162
-#, fuzzy
 msgid "Number:"
-msgstr "Nombre"
+msgstr "Số lượng :"
 
 #: FindFundRaiser.php:76
-#, fuzzy
 msgid "Date Start:"
-msgstr "Date d'Entr&eacute;e:"
+msgstr "Ngày bắt đầu:"
 
 #: FindFundRaiser.php:79
-#, fuzzy
 msgid "Apply Filters"
-msgstr "Appliquer le Filtre"
+msgstr "Áp dụng bộ lọc"
 
 #: FindFundRaiser.php:83
-#, fuzzy
 msgid "Date End:"
-msgstr "Date d'Entr&eacute;e:"
+msgstr "Ngày kết thúc:"
 
 #: FindFundRaiser.php:86 SelectList.php:686
 msgid "Clear Filters"
-msgstr "Effacer le filtres"
+msgstr "Xóa bộ lọc"
 
 #: FindFundRaiser.php:141 SelectList.php:727
 msgid "Previous Page"
-msgstr "Page Pr&eacute;c&eacute;dente"
+msgstr "Trang trước"
 
 #: FindFundRaiser.php:183 SelectList.php:764
 msgid "Next Page"
-msgstr "Page Suivante"
+msgstr "Trang tiếp theo"
 
 #: FindFundRaiser.php:209 SelectList.php:828
 msgid "Display:"
-msgstr "Affichage:"
+msgstr "Hiển thị"
 
 #: FindFundRaiser.php:224 PaddleNumList.php:55 Include/Functions.php:167
 msgid "Number"
-msgstr "Nombre"
+msgstr "Số"
 
 #: FundRaiserEditor.php:33
 msgid "Fund Raiser #"
-msgstr "Collecte de fonds #"
+msgstr "Quỹ Raiser #"
 
 #: FundRaiserEditor.php:35
-#, fuzzy
 msgid "Create New Fund Raiser"
-msgstr "Dossier cr&eacute;&eacute;"
+msgstr "Tạo Quỹ New Raiser"
 
 #: FundRaiserEditor.php:57 PledgeEditor.php:334
 msgid "Not a valid Date"
-msgstr "Le format de la date est invalide"
+msgstr "Không phải là một ngày hợp lệ"
 
 #: FundRaiserEditor.php:160
-#, fuzzy
 msgid "Add Donated Item"
-msgstr "Ajouter une Cotisation"
+msgstr "Thêm Tặng mục"
 
 #: FundRaiserEditor.php:161
-#, fuzzy
 msgid "Generate Catalog"
-msgstr "Cr&eacute;ez des Etiquettes"
+msgstr "tạo Catalog"
 
 #: FundRaiserEditor.php:162
-#, fuzzy
 msgid "Generate Bid Sheets"
-msgstr "Cr&eacute;ez des Etiquettes"
+msgstr "Tạo Sheets thầu"
 
 #: FundRaiserEditor.php:163
-#, fuzzy
 msgid "Generate Certificates"
-msgstr "Cr&eacute;ez des Etiquettes"
+msgstr "tạo Certificates"
 
 #: FundRaiserEditor.php:195
 msgid "Donated items for this fundraiser:"
-msgstr "Les articles donnés pour cette levée de fonds:"
+msgstr "vật tặng cho buổi quyên góp này:"
 
 #: FundRaiserEditor.php:203
-#, fuzzy
 msgid "Donor"
-msgstr "Nom du Cotisant:"
+msgstr "Nhà tài trợ"
 
 #: FundRaiserEditor.php:204 PaddleNumList.php:56
 msgid "Buyer"
-msgstr "Acheteur"
+msgstr "Người Mua"
 
 #: FundRaiserEditor.php:206
 msgid "Sale Price"
-msgstr "Prix ​​de vente"
+msgstr "Giá khuyến mãi"
 
 #: FundRaiserEditor.php:207
-#, fuzzy
 msgid "Est Value"
-msgstr "Modifier la Valeur"
+msgstr "Giá trị ước tính"
 
 #: FundRaiserEditor.php:208
 msgid "Material Value"
-msgstr "Valeur Matériaux"
+msgstr "Giá trị tài liệu"
 
 #: FundRaiserEditor.php:209
 msgid "Minimum Price"
-msgstr "Prix ​​minimum"
+msgstr "Giá tối thiểu"
 
 #: GenerateSeedData.php:34
 msgid "Families to Seed"
@@ -2950,7 +2797,7 @@ msgstr ""
 
 #: GenerateSeedData.php:36
 msgid "Generate Seed Data"
-msgstr "Générer une graine pour les données"
+msgstr "Tạo dữ liệu giống"
 
 #: GenerateSeedData.php:40
 msgid "Clear Results"
@@ -2958,24 +2805,23 @@ msgstr ""
 
 #: GeoPage.php:91
 msgid "Family Geographic Utilities"
-msgstr "Famille géographique Utilitaires"
+msgstr "Gia đình Geographic Utilities"
 
 #: GeoPage.php:230
-#, fuzzy
 msgid "Select Family:"
-msgstr "Choisissez le R&ocirc;le:"
+msgstr "Chọn gia đình:"
 
 #: GeoPage.php:244
 msgid "Maximum number of neighbors:"
-msgstr "Le nombre maximum de voisins:"
+msgstr "Số lượng tối đa của các nước láng giềng:"
 
 #: GeoPage.php:249
 msgid "Maximum distance"
-msgstr "La distance maximale"
+msgstr "{0}1 -{/0} {1}                              {/1} {2}Khoảng cách tối đa:{/2}"
 
 #: GeoPage.php:254
 msgid "Data file format:"
-msgstr "Format de fichier de données:"
+msgstr "định dạng tập tin dữ liệu:"
 
 #: GeoPage.php:256
 msgid "GPS Visualizer"
@@ -2983,322 +2829,315 @@ msgstr "GPS Visualizer"
 
 #: GeoPage.php:257
 msgid "Street Atlas USA"
-msgstr "Street Atlas USA"
+msgstr "Đường Atlas USA"
 
 #: GeoPage.php:262
 msgid "Include families in coordinate file:"
-msgstr "Inclure les familles dans le fichier de coordonnées:"
+msgstr "Bao gồm các gia đình trong phối hợp tập tin:"
 
 #: GeoPage.php:265
-#, fuzzy
 msgid "Neighbor Families"
-msgstr "Famille"
+msgstr "Các gia đình hàng xóm"
 
 #: GeoPage.php:270
 msgid "Coordinate data base file name"
-msgstr "Coordonner nom de fichier de base de données"
+msgstr "Phối hợp dữ liệu tên tập tin cơ sở"
 
 #: GeoPage.php:276
-#, fuzzy
 msgid "Make Data File"
-msgstr "Dossier cr&eacute;&eacute;"
+msgstr "Hãy tập tin dữ liệu"
 
 #: GeoPage.php:289
 msgid "Show Neighbors"
-msgstr "Voir voisins"
+msgstr "Show Neighbors"
 
 #: GeoPage.php:323
-#, fuzzy
 msgid "Distance"
-msgstr "Finance"
+msgstr "Khoảng cách"
 
 #: GeoPage.php:324
-#, fuzzy
 msgid "Direction"
-msgstr "Annuaire"
+msgstr "Phương hướng"
 
 #: GeoPage.php:330
-#, fuzzy
 msgid "Latitude"
-msgstr "Derniere Modification"
+msgstr "vĩ độ"
 
 #: GeoPage.php:331
 msgid "Longitude"
-msgstr "Longitude"
+msgstr "kinh độ"
 
 #: GeoPage.php:392 PersonView.php:301 SelectList.php:687
 msgid "Add to Cart"
-msgstr "Ajouter au Panier"
+msgstr "Thêm vào giỏ hàng"
 
 #: GeoPage.php:393 SelectList.php:688
 msgid "Intersect with Cart"
-msgstr "Intersection avec panier"
+msgstr "Giao nhau với Giỏ"
 
 #: GeoPage.php:394 SelectList.php:689
 msgid "Remove from Cart"
-msgstr "Retirer du panier"
+msgstr "Xoá khỏi giỏ hàng"
 
 #: GetText.php:33
 msgid "Text for Event ID: "
-msgstr "Texte pour l&#39;ID d&#39;événement:"
+msgstr "Văn bản cho tổ chức sự kiện ID: "
 
 #: GroupEditor.php:34
 msgid "Group Editor"
-msgstr "Gestion de Groupe"
+msgstr "nhóm biên tập"
 
 #: GroupEditor.php:70
 msgid "Group Settings"
-msgstr "Paramètres du Groupe"
+msgstr "Cài đặt nhóm"
 
 #: GroupEditor.php:89 GroupView.php:307
 msgid "Type of Group:"
-msgstr "Type de Groupe:"
+msgstr "Loại Nhóm:"
 
 #: GroupEditor.php:110
-#, fuzzy
 msgid "Group Member Roles:"
-msgstr "Membres du Groupe:"
+msgstr "Nhóm thành viên Vai trò:"
 
 #: GroupEditor.php:112
 msgid "Clone roles:"
-msgstr "Clone rôles:"
+msgstr "vai trò Clone:"
 
 #: GroupEditor.php:116
-#, fuzzy
 msgid "from group:"
-msgstr "Personne du groupe"
+msgstr "khỏi nhóm:"
 
 #: GroupEditor.php:118 GroupPropsFormEditor.php:350
 msgid "Select a group"
-msgstr "S&eacute;lectionner un groupe"
+msgstr "Chọn một nhóm"
 
 #: GroupEditor.php:133
 msgid "Group Specific Properties: "
-msgstr ""
+msgstr "Group Properties cụ thể: "
 
 #: GroupEditor.php:137
 msgid "Enabled"
-msgstr ""
+msgstr "Bật"
 
 #: GroupEditor.php:139 GroupView.php:179
 msgid "Edit Group-Specific Properties Form"
-msgstr "Modifier les Propriétés Sp&eacute;cifiques du Formulaire pour un Groupe"
+msgstr "Form Properties chỉnh sửa Group-cụ thể"
 
 #: GroupEditor.php:142
 msgid "Disabled"
-msgstr "Désactivé"
+msgstr "Đã vô hiệu hóa"
 
 #: GroupEditor.php:143
 msgid "Enable Group Specific Properties"
-msgstr "Activer les propriétés de groupe spécifiques"
+msgstr "Kích hoạt tính năng Group Properties cụ thể"
 
 #: GroupEditor.php:160
 msgid "Group Roles:"
-msgstr "R&ocirc;les du Groupe:"
+msgstr "Vai trò của nhóm:"
 
 #: GroupEditor.php:166
 msgid "Group role name changes are saved as soon as the box loses focus"
-msgstr "Le nom du rôle de groupe est enregistré quand la boîte de diaglogue n'est plus au premier plan."
+msgstr "Nhóm thay đổi tên vai trò được lưu ngay sau khi hộp mất tập trung"
 
 #: GroupEditor.php:170 MemberRoleChange.php:95
 msgid "New Role:"
-msgstr "Nouveau R&ocirc;le:"
+msgstr "Vai trò mới:"
 
 #: GroupEditor.php:172
 msgid "Add New Role"
-msgstr "Ajouter un nouveau rôle"
+msgstr "Thêm vai trò mới"
 
 #: GroupList.php:31
 msgid "Group Listing"
-msgstr "Liste des Groupes"
+msgstr "nhóm Liệt kê"
 
 #: GroupList.php:45 GroupList.php:48
 msgid "Add New Group"
-msgstr "Ajouter un nouveau groupe"
+msgstr "Thêm Nhóm mới"
 
 #: GroupMeeting.php:26
 msgid "Schedule Group Meeting"
-msgstr "Organiser une réunion de groupe"
+msgstr "Hội nghị Nhóm Lịch"
 
 #: GroupMeeting.php:158
 msgid "Important note: this form may be used to schedule a WebCalendar meeting.  Once the  meeting is scheduled any changes must be made within WebCalendar.  All members of this group will be added to the meeting as external users of WebCalendar."
-msgstr "Note importante : ce formulaire permet de programmer une réunion dans le calendrier WEB. Une fois la réunion programmée, tout changement devra être fait dans le calendrier WEB. Tous les membres du groupes seront ajouter à la réunion en tant qu'utilisateurs externes au calendrier WEB."
+msgstr "Lưu ý quan trọng: mẫu này có thể được dùng để sắp xếp một cuộc họp WebCalendar. Một khi cuộc họp được dự kiến ​​thay đổi phải được thực hiện trong vòng WebCalendar. Tất cả các thành viên của nhóm này sẽ được thêm vào các cuộc họp như người sử dụng bên ngoài của WebCalendar."
 
 #: GroupMeeting.php:165
 msgid "Meeting name"
-msgstr "Nom de la réunion"
+msgstr "tên họp"
 
 #: GroupMeeting.php:170
 msgid "Meeting description"
-msgstr "Objet de la réunion"
+msgstr "Mô tả đáp"
 
 #: GroupMeeting.php:179
 msgid "Time"
-msgstr "Heure"
+msgstr "Thời gian"
 
 #: GroupMeeting.php:187
 msgid "Duration (hours)"
-msgstr "Durée (heures)"
+msgstr "Thời gian (giờ)"
 
 #: GroupMeeting.php:190
 msgid "Notify ahead (days)"
-msgstr "Prévenez-avant (jours)"
+msgstr "Thông báo trước (ngày)"
 
 #: Include/Header-function.php:108
 msgid "Submit"
-msgstr "Soumettre"
+msgstr "Chấp nhận"
 
 #: GroupPropsEditor.php:28
 msgid "Group Member Properties Editor"
-msgstr "Editeur des Propriétés des Membres du Groupe"
+msgstr "Nhóm thành viên thuộc tính biên tập"
 
 #: GroupPropsEditor.php:122
 msgid "This group currently has no properties!  You can add them in the Group Editor."
-msgstr "Ce groupe n'a actuellement aucune Propriété!  Vous pouvez l'ajouter dans l'&eacute;diteur de Groupe."
+msgstr "Nhóm này hiện không có thuộc tính! Bạn có thể thêm chúng trong trình soạn thảo Group."
 
 #: GroupPropsEditor.php:124
 msgid "Return to Person Record"
-msgstr "Retourner &agrave; l'enregistrement des personnes"
+msgstr "Quay trở lại với Người Ghi"
 
 #: GroupPropsEditor.php:131
 msgid "Editing"
-msgstr "Modifi&eacute;"
+msgstr "Chỉnh sửa"
 
 #: GroupPropsEditor.php:131
 msgid "data for member"
-msgstr "donn&eacute;es du membre"
+msgstr "dữ liệu cho thành viên"
 
 #: GroupPropsFormEditor.php:42
 msgid "Group-Specific Properties Form Editor:"
-msgstr "Éditeur de Formulaire des Propriétés Sp&eacute;cifiques du Groupe:"
+msgstr "Nhóm-cụ thể thuộc tính Form Editor:"
 
 #: GroupPropsFormEditor.php:190
 msgid "'Default Option'"
-msgstr "'Option par D&eacute;faut'"
+msgstr "'Lựa chọn Default'"
 
 #: GroupPropsFormEditor.php:287
 msgid "No properties have been added yet"
-msgstr "Aucune Propriété n'a encore &eacute;t&eacute; ajout&eacute;"
+msgstr "Không có tài sản đã được thêm vào chưa"
 
 #: GroupPropsFormEditor.php:295
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
-msgstr "Attention: Les champs modifi&eacute;s seront perdus si vous ne 'Sauvez les Changements' avant'utiliser les bouton haut, bas, supprimer ou 'ajouter nouveau'"
+msgstr "Cảnh báo: thay đổi hiện trường sẽ bị mất nếu bạn không 'Save Changes' trước khi sử dụng một lên, xuống, xóa, hoặc 'thêm mới' nút!"
 
 #: GroupPropsFormEditor.php:311
 msgid "Show in"
-msgstr "Montrer"
+msgstr "Hiện tại"
 
 #: GroupPropsFormEditor.php:311
 msgid "Person View"
-msgstr "Voir Fiche Personne"
+msgstr "người Xem"
 
 #: GroupReports.php:28
 msgid "Group reports"
-msgstr "Rapport du Groupe"
+msgstr "báo cáo nhóm"
 
 #: GroupReports.php:39
 msgid "Select the group you would like to report:"
-msgstr "S&eacute;lectionnez le groupe pour lequel vous voulez un rapport:"
+msgstr "Chọn nhóm bạn muốn báo cáo:"
 
 #: GroupReports.php:62
 msgid "No Role Selected"
-msgstr "Aucun rôle sélectionné"
+msgstr "Không có vai trò chọn"
 
 #: GroupReports.php:68
 msgid "Only cart persons?:"
-msgstr "Seulement le Panier des Personnes?:"
+msgstr "Chỉ Toán người ?:"
 
 #: GroupReports.php:74
 msgid "Report Model:"
-msgstr "Mod&egrave;le de Rapport"
+msgstr "Báo cáo mẫu:"
 
 #: GroupReports.php:75
 msgid "Report for group and role selected"
-msgstr "Rapport pour le groupe et le r&ocirc;le s&eacute;lectionn&eacute;s"
+msgstr "Báo cáo cho nhóm và vai trò chọn"
 
 #: GroupReports.php:76
 msgid "Report for any role in group selected"
-msgstr "Rapport pour n'importe quel r&ocirc;le dans le groupe choisi"
+msgstr "Báo cáo cho bất kỳ vai trò trong nhóm được lựa chọn"
 
 #: GroupReports.php:105
 msgid "Select which information you want to include"
-msgstr "S&eacute;lectionnez les informations que vous voulez inclure"
+msgstr "Chọn thông tin mà bạn muốn bao gồm"
 
 #: GroupReports.php:130
 msgid "Standard Info:"
-msgstr "Information Standard"
+msgstr "Thông tin tiêu chuẩn:"
 
 #: GroupReports.php:135 Reports/CanvassReports.php:249
 msgid "Cell Phone"
-msgstr "T&eacute;l&eacute;phone Portable"
+msgstr "Điện Thoại Di Động"
 
 #: GroupReports.php:137 Reports/GroupReport.php:141
 msgid "Other Email"
-msgstr "Autre Email"
+msgstr "Gửi email khác"
 
 #: GroupReports.php:138
 msgid "GroupRole"
-msgstr "R&ocirc;le"
+msgstr "GroupRole"
 
 #: GroupReports.php:142
 msgid "Group-Specific Property Fields:"
-msgstr "Propriété des Champs Sp&eacute;cifiques au Groupe:"
+msgstr "Nhóm-Specific Fields tài sản:"
 
 #: GroupView.php:59
 msgid "Undefined"
-msgstr "Ind&eacute;fini"
+msgstr "Chưa xác định"
 
 #: GroupView.php:80
 msgid "Group View"
-msgstr "Visualiser le Groupe"
+msgstr "Xem theo nhóm"
 
 #: GroupView.php:88
 msgid "Group Functions"
-msgstr "Propriétés du groupe"
+msgstr "Group Functions"
 
 #: GroupView.php:94
 msgid "Edit this Group"
-msgstr "Modifier ce Groupe"
+msgstr "Edit this Group"
 
 #: GroupView.php:95
 msgid "Delete this Group"
-msgstr "Supprimer ce Groupe"
+msgstr "Delete this Group"
 
 #: GroupView.php:103
 msgid "Confirm Delete Group"
-msgstr "Confirmer la suppression du groupe"
+msgstr "Confirm Delete Group"
 
 #: GroupView.php:107
 msgid "Please confirm deletion of this group record:"
-msgstr "Merci de confirmer la suppression de ce groupe d'enregistrement:"
+msgstr "Please confirm deletion of this group record:"
 
 #: GroupView.php:114
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
-msgstr "Ceci supprimera &eacute;galement tous les r&ocirc;les et donn&eacute;es des Propriétés d'un groupe sp&eacute;cifique li&eacute;s &agrave; ce groupe d'enregistrement."
+msgstr "This will also delete all Roles and Group-Specific Property data associated with this Group record."
 
 #: GroupView.php:116
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-msgstr ""
+msgstr "All group membership and properties will be destroyed.  The group members themselves will not be altered."
 
 #: GroupView.php:118
 msgid "I Understand"
-msgstr "J'ai compris"
+msgstr "Tôi hiểu rồi"
 
 #: GroupView.php:122
 msgid "Delete Group"
-msgstr "Supprimer le groupe"
+msgstr "Delete Group"
 
 #: GroupView.php:135
 msgid "Change Member Role"
-msgstr "Changer le rôle d'un membre"
+msgstr "Change Member Role"
 
 #: GroupView.php:138
 msgid "Please select target role for member:"
-msgstr ""
+msgstr "Please select target role for member:"
 
 #: GroupView.php:146
 msgid "Change Membership"
-msgstr ""
+msgstr "Change Membership"
 
 #: GroupView.php:159
 msgid "Select Target Group"
@@ -3314,47 +3153,47 @@ msgstr ""
 
 #: GroupView.php:182
 msgid "Add Group Members to Cart"
-msgstr "Ajouter Membres du Groupe au Panier"
+msgstr "Add Group Members to Cart"
 
 #: GroupView.php:183
 msgid "Schedule a meeting"
-msgstr "Programmer une réunion"
+msgstr "Schedule a meeting"
 
 #: GroupView.php:184
 msgid "Map this group"
-msgstr "Visualiser les membres sur GoogleMap"
+msgstr "Map this group"
 
 #: GroupView.php:224
 msgid "Email Group"
-msgstr "Mail au groupe"
+msgstr "Email Group"
 
 #: GroupView.php:290
 msgid "Group Properties"
-msgstr "Propriétés Groupes"
+msgstr "Group Properties"
 
 #: GroupView.php:305
 msgid "Total Members:"
-msgstr "Tous les Membres:"
+msgstr "Total Members:"
 
 #: GroupView.php:310
 msgid "Default Role:"
-msgstr "R&ocirc;le par D&eacute;faut:"
+msgstr "Default Role:"
 
 #: GroupView.php:319
 msgid "Group-Specific Properties:"
-msgstr "Propriétés Sp&eacute;cifiques au Groupe:"
+msgstr "Group-Specific Properties:"
 
 #: GroupView.php:363
 msgid "Disabled for this group."
-msgstr "Inutilisable pour ce groupe."
+msgstr "Disabled for this group."
 
 #: GroupView.php:367 PrintView.php:411
 msgid "Assigned Properties:"
-msgstr "Propriétés Assign&eacute;es:"
+msgstr "Assigned Properties:"
 
 #: GroupView.php:479
 msgid "Group Members:"
-msgstr "Membres du Groupe:"
+msgstr "Group Members:"
 
 #: GroupView.php:487
 msgid "Group members: "
@@ -3378,32 +3217,31 @@ msgstr ""
 
 #: GroupView.php:510
 msgid "Add Group Member: "
-msgstr "Ajouter une membre au groupe"
+msgstr "Add Group Member: "
 
 #: LettersAndLabels.php:29 MembersDashboard.php:241
 msgid "Letters and Mailing Labels"
-msgstr "Des lettres et des étiquettes de publipostage"
+msgstr "Letters and Mailing Labels"
 
 #: LettersAndLabels.php:66
 msgid "Member Reports"
-msgstr "Rapport sur les membres"
+msgstr "Member Reports"
 
 #: LettersAndLabels.php:79
-#, fuzzy
 msgid "Newsletter labels"
-msgstr "Cr&eacute;ez des Etiquettes"
+msgstr "Newsletter labels"
 
 #: LettersAndLabels.php:80
 msgid "Confirm data letter"
-msgstr "Confirmer lettre données"
+msgstr "Confirm data letter"
 
 #: LettersAndLabels.php:81
 msgid "Confirm data Email"
-msgstr ""
+msgstr "Confirm data Email"
 
 #: LettersAndLabels.php:82
 msgid "Confirm data labels"
-msgstr "Confirmer les étiquettes de données"
+msgstr "Confirm data labels"
 
 #: ListEvents.php:45
 msgid "Listing Events of Type = "
@@ -3411,40 +3249,39 @@ msgstr ""
 
 #: ListEvents.php:47
 msgid "Listing All Church Events"
-msgstr "&Eacute;v&eacute;nements de l&#39;&eacute;glise"
+msgstr "Listing All Church Events"
 
 #: ListEvents.php:90
 msgid "Select Event Types To Display"
-msgstr "Sélectionner les types d&#39;événements pour afficher"
+msgstr "Select Event Types To Display"
 
 #: ListEvents.php:128
 msgid "Display Events in Year"
-msgstr "Affichage des événements de l&#39;année"
+msgstr "Display Events in Year"
 
 #: ListEvents.php:221
 msgid "Start Date/Time"
-msgstr "Date / Heure"
+msgstr "Ngày giờ bắt đầu"
 
 #: ListEvents.php:297
 msgid "No Attendance Recorded"
-msgstr "Pas de fréquentation enregistrée"
+msgstr "No Attendance Recorded"
 
 #: ListEvents.php:248
 msgid "Attendees("
-msgstr "Les participants ("
+msgstr "Attendees("
 
 #: ListEvents.php:324
 msgid " Monthly Averages"
-msgstr "Moyennes mensuelles"
+msgstr " Monthly Averages"
 
 #: Login.php:90 Login.php:123
-#, fuzzy
 msgid "Invalid login or password"
-msgstr "Mot de passe invalide"
+msgstr "Invalid login or password"
 
 #: Login.php:113
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Trop de connexions échouées: votre compte a été verrouillé. S&#39;il vous plaît contacter un administrateur."
+msgstr "Too many failed logins: your account has been locked.  Please contact an administrator."
 
 #: Login.php:270
 msgid "ChurchCRM - Login"
@@ -3452,60 +3289,55 @@ msgstr ""
 
 #: Login.php:280
 msgid "Please Login"
-msgstr "Merci de vous identifier"
+msgstr "Please Login"
 
 #: Login.php:295
 msgid "Email/Username"
-msgstr "Mail/Nom d'utilisateur"
+msgstr "Email/Username"
 
 #: Login.php:299 UserList.php:67
 msgid "Password"
-msgstr "Mot de Passe"
+msgstr "Mật khẩu"
 
 #: Login.php:312
 msgid "Login"
-msgstr "Connexion"
+msgstr "Đăng nhập"
 
 #: ManageEnvelopes.php:23
-#, fuzzy
 msgid "Envelope Manager"
-msgstr "Gestion des Enveloppes pour les Cotisations"
+msgstr "Envelope Manager"
 
 #: ManageEnvelopes.php:122
-#, fuzzy
 msgid "Update Family Records"
-msgstr "Ajouter Nouvelle Famille"
+msgstr "Update Family Records"
 
 #: ManageEnvelopes.php:133
 msgid "Update Envelopes"
-msgstr ""
+msgstr "Update Envelopes"
 
 #: ManageEnvelopes.php:139
 msgid "Confirm"
-msgstr "Confirmer"
+msgstr "Xác nhận"
 
 #: ManageEnvelopes.php:152
 msgid "All"
-msgstr "Tous"
+msgstr "Tất cả"
 
 #: ManageEnvelopes.php:161
 msgid "Sort by"
-msgstr "Trier par"
+msgstr "Sắp xếp theo"
 
 #: ManageEnvelopes.php:165 PledgeEditor.php:568
-#, fuzzy
 msgid "Envelope #"
-msgstr "Enveloppe:"
+msgstr "Phong bì"
 
 #: ManageEnvelopes.php:169
-#, fuzzy
 msgid "Zero"
-msgstr "Personne"
+msgstr "Zero"
 
 #: ManageEnvelopes.php:171
-#, fuzzy
 msgid "Assign starting at #"
-msgstr "Assign&eacute;e:"
+msgstr "Assign starting at #"
 
 #: MapUsingGoogle.php:45
 msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
@@ -3517,172 +3349,172 @@ msgstr ""
 
 #: MapUsingGoogle.php:163
 msgid "Key:"
-msgstr "Légendes :"
+msgstr "Quan trọng:"
 
 #: MemberRoleChange.php:28
 msgid "Member Role Change"
-msgstr "Modifier le R&ocirc;le du Membre"
+msgstr "Member Role Change"
 
 #: MemberRoleChange.php:83
 msgid "Group Name:"
-msgstr "Nom du Groupe:"
+msgstr "Group Name:"
 
 #: MemberRoleChange.php:87
 msgid "Member's Name:"
-msgstr "Noms des Membres:"
+msgstr "Member's Name:"
 
 #: MemberRoleChange.php:91
 msgid "Current Role:"
-msgstr "R&ocirc;le Actuel:"
+msgstr "Current Role:"
 
 #: MembersDashboard.php:13
 msgid "Members Dashboard"
-msgstr "Tableau de bord des Membres"
+msgstr "Bảng quản lý Thành viên"
 
 #: MembersDashboard.php:74
 msgid "Members Functions"
-msgstr "Fonctionnalités des Membres"
+msgstr "Thành viên Chức năng"
 
 #: MembersDashboard.php:77
 msgid "All People"
-msgstr "Tous les Membres"
+msgstr "Tất cả mọi người"
 
 #: MembersDashboard.php:79
 msgid "Classifications Manager"
-msgstr "Centre de Classifications"
+msgstr "phân loại quản lý"
 
 #: MembersDashboard.php:92
 msgid "Email All"
-msgstr ""
+msgstr "email Tất cả"
 
 #: MembersDashboard.php:102
 msgid "Email All (BCC)"
-msgstr ""
+msgstr "Email Tất cả (BCC)"
 
 #: MembersDashboard.php:118 MembersDashboard.php:263
 msgid "Family Roles"
-msgstr "Rôles par famille"
+msgstr "Vai trò của gia đình"
 
 #: MembersDashboard.php:119
 msgid "Family Geographic"
-msgstr "Lieu de résidence"
+msgstr "Gia đình Geographic"
 
 #: MembersDashboard.php:120
 msgid "Family Map"
-msgstr "Carte"
+msgstr "Gia đình Bản đồ"
 
 #: MembersDashboard.php:123
 msgid "Update All Family Coordinates"
-msgstr "Mise à jour de toutes les coordonnées"
+msgstr "Cập nhật tất cả các gia đình Tọa độ"
 
 #: MembersDashboard.php:127 PersonView.php:327
 msgid "Volunteer Opportunities"
-msgstr "Opportunités de Bénévolats"
+msgstr "Cơ hội tình nguyện"
 
 #: MembersDashboard.php:147 Menu.php:72
 #: sundayschool/SundaySchoolDashboard.php:97
 msgid "Families"
-msgstr "Familles"
+msgstr "Các gia đình"
 
 #: MembersDashboard.php:154 Menu.php:79
 msgid "See all Families"
-msgstr "Visualiser toutes les Familles"
+msgstr "Xem tất cả các gia đình"
 
 #: MembersDashboard.php:168 Menu.php:91
 msgid "People"
-msgstr "Personnes"
+msgstr "Mọi người"
 
 #: MembersDashboard.php:175 Menu.php:98
 msgid "See All People"
-msgstr "Visualiser toutes les personnes"
+msgstr "Xem tất cả dân"
 
 #: MembersDashboard.php:189
 msgid "Sunday School Kids"
-msgstr "Enfants de l'école du dimanche"
+msgstr "Trường Chúa Nhật Kids"
 
 #: MembersDashboard.php:196 MembersDashboard.php:217 Menu.php:117 Menu.php:136
 msgid "More info"
-msgstr "Plus d'info"
+msgstr "Xem thêm thông tin"
 
 #: MembersDashboard.php:210 Menu.php:129
 msgid "Groups"
-msgstr "Groupes"
+msgstr "Nhóm"
 
 #: MembersDashboard.php:228 sundayschool/SundaySchoolDashboard.php:51
 msgid "Reports"
-msgstr "Rapport"
+msgstr "Báo cáo"
 
 #: MembersDashboard.php:231
 msgid "Reports on groups and roles"
-msgstr "Rapport sur les groupes et les r&ocirc;les"
+msgstr "Báo cáo về các nhóm và vai trò"
 
 #: MembersDashboard.php:233
 msgid "Report on group and roles selected (it may be a multi-page PDF)."
-msgstr "Rapport sur les groupes et les r&ocirc;les s&eacute;lectionn&eacute;s (ils peuvent &ecirc;tre  g&eacute;n&eacute;rer en multipage PDF)."
+msgstr "Báo cáo về nhóm và vai trò được lựa chọn (có thể là nhiều trang PDF)."
 
 #: MembersDashboard.php:238
 msgid "Members Directory"
-msgstr "Annuaire des membres"
+msgstr "Thành viên mục"
 
 #: MembersDashboard.php:238
 msgid "Printable directory of all members, grouped by family where assigned"
-msgstr "Annuaire imprimable de tous les membres, group&eacute; par l'assignement de la famille"
+msgstr "thư mục có thể in của tất cả các thành viên, nhóm lại theo gia đình, nơi giao"
 
 #: MembersDashboard.php:242
 msgid "Generate letters and mailing labels."
-msgstr "Générer des lettres et des étiquettes de publipostage."
+msgstr "Tạo chữ và nhãn thư."
 
 #: MembersDashboard.php:248
 msgid "US Address Verification Report"
-msgstr "Rapport américain de vérification d&#39;adresse"
+msgstr "Mỹ Địa chỉ Báo cáo thẩm tra"
 
 #: MembersDashboard.php:249
 msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr ""
+msgstr "Tạo báo cáo so sánh tất cả các địa chỉ gia đình Mỹ với Bưu chính Hoa Kỳ Format Địa chỉ Standard. <br>"
 
 #: MembersDashboard.php:274
 msgid "Role / Gender"
-msgstr "Rôle / sexe"
+msgstr "Vai trò / Giới tính"
 
 #: MembersDashboard.php:275 MembersDashboard.php:310
 msgid "of Members"
-msgstr "de membres"
+msgstr "Thành viên"
 
 #: MembersDashboard.php:276 MembersDashboard.php:311
 msgid "Count"
-msgstr "Effectifs"
+msgstr "Đếm"
 
 #: MembersDashboard.php:299
 msgid "People Classification"
-msgstr "Classification des Personnes"
+msgstr "Phân loại người"
 
 #: MembersDashboard.php:332
 msgid "Gender Demographics"
-msgstr "Répartition Hommes / femmes"
+msgstr "Nhân khẩu học giới tính"
 
 #: MembersDashboard.php:356
 msgid "Men"
-msgstr "Hommes"
+msgstr "Nam giới,"
 
 #: MembersDashboard.php:359
 msgid "Women"
-msgstr "Femmes"
+msgstr "Phụ nữ:"
 
 #: MembersDashboard.php:364 sundayschool/SundaySchoolDashboard.php:109
 msgid "Boys"
-msgstr "Garçons"
+msgstr "bé trai"
 
 #: MembersDashboard.php:367 sundayschool/SundaySchoolDashboard.php:121
 msgid "Girls"
-msgstr "Filles"
+msgstr "Các con?"
 
 #: Menu.php:56
 msgid "Welcome to <b>Church</b>CRM"
-msgstr "Bienvenue dans <b>ChurchCRM</b>"
+msgstr "Chào mừng bạn đến với <b>Hệ Thống Quản Lý Hội Thánh</ b>"
 
 #: Menu.php:110 sundayschool/SundaySchoolDashboard.php:132
 msgid "Sunday School Classes"
-msgstr "Classes d'&Eacute;cole du dimanche"
+msgstr "Các lớp học Trường Chúa Nhật"
 
 #: Menu.php:151
 msgid "Deposit Tracking"
@@ -3690,93 +3522,91 @@ msgstr ""
 
 #: Menu.php:171
 msgid "Latest Families"
-msgstr "Derni&egrave;re famille"
+msgstr "Các gia đình mới nhất"
 
 #: Menu.php:178 Menu.php:208
 msgid "Family Name"
-msgstr "Nom de Famille"
+msgstr "Tên gia đình"
 
 #: Menu.php:179
 msgid "Adress"
-msgstr "Adresse"
+msgstr "Địa chỉ"
 
 #: Menu.php:201
 msgid "Updated Families"
-msgstr "Familles mises &agrave; jour"
+msgstr "Các gia đình được cập nhật"
 
 #: Menu.php:210
 msgid "Updated"
-msgstr "Mise &agrave; jour"
+msgstr "Cập nhật"
 
 #: Menu.php:233
 msgid "Latest Members"
-msgstr "Dernier membres ajout&eacute;s"
+msgstr "Thành viên mới nhất"
 
 #: Menu.php:262
 msgid "Updated Members"
-msgstr "Membres &agrave; jour"
+msgstr "Thành viên được cập nhật"
 
 #: NoteDelete.php:31
 msgid "Note Delete Confirmation"
-msgstr "Confirmation de la suppression de la note"
+msgstr "Lưu ý Xóa xác nhận"
 
 #: NoteDelete.php:68
 msgid "Please confirm deletion of this note:"
-msgstr "Merci de bien vouloir confirmer le suppression de la note:"
+msgstr "Vui lòng xác nhận việc xóa các ghi chú này:"
 
 #: NoteDelete.php:75 PropertyDelete.php:67 PropertyTypeDelete.php:71
 #: SelectDelete.php:232
 msgid "Yes, delete this record"
-msgstr "oui, supprimer cet enregistrement"
+msgstr "Có, xóa hồ sơ này"
 
 #: NoteDelete.php:75 PropertyDelete.php:67
 msgid "(this action cannot be undone)"
-msgstr "(cette action ne peut pas &ecirc;tre  annul&eacute;e)"
+msgstr "(Hành động này không thể được hoàn tác)"
 
 #: NoteEditor.php:31
 msgid "Note Editor"
-msgstr "Éditeur de Note"
+msgstr "Lưu ý biên tập"
 
 #: NoteEditor.php:128
 msgid "Private"
-msgstr "Priv&eacute;"
+msgstr "Riêng tư"
 
 #: OptionManager.php:70 PropertyAssign.php:47 PropertyEditor.php:42
 #: PropertyList.php:27 PropertyTypeEditor.php:99 PropertyTypeList.php:63
 msgid "Person"
-msgstr "Personne"
+msgstr "Chịu Trách Nhiệm"
 
 #: OptionManager.php:76 OptionManager.php:83 PropertyAssign.php:63
 #: PropertyEditor.php:50 PropertyList.php:35 PropertyTypeEditor.php:101
 #: PropertyTypeList.php:63
 msgid "Group"
-msgstr "Groupe"
+msgstr "Nhóm"
 
 #: OptionManager.php:82
 msgid "Security"
-msgstr "Sécurité"
+msgstr "Bảo mật"
 
 #: OptionManager.php:88
 msgid "Group Member"
-msgstr "Membre du Groupe"
+msgstr "Thành viên nhóm"
 
 #: OptionManager.php:107
-#, fuzzy
 msgid "Person Custom List"
-msgstr "Liste Personnalis&eacute;e"
+msgstr "Người Danh sách Tuỳ chỉnh"
 
 #: OptionManager.php:108 OptionManager.php:124 OptionManager.php:140
 msgid "Option"
-msgstr "Option"
+msgstr "Tùy chọn"
 
 #: OptionManager.php:123
 msgid "Custom List"
-msgstr "Liste Personnalis&eacute;e"
+msgstr "Danh sách tùy chỉnh"
 
 #: OptionManager.php:139
-#, fuzzy
 msgid "Family Custom List"
-msgstr "Liste Personnalis&eacute;e"
+msgstr "Gia đình Danh sách Tuỳ chỉnh"
 
 #: OptionManager.php:299
 msgid "Editor"
@@ -3784,274 +3614,265 @@ msgstr ""
 
 #: OptionManager.php:308
 msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
-msgstr "Avertissement: Suppression réinitialise toutes les affectations pour toutes les personnes de la mission!"
+msgstr "Cảnh báo: Loại bỏ sẽ thiết lập lại tất cả các bài tập cho tất cả những người có nhiệm vụ!"
 
 #: OptionManager.php:315
 msgid "Error: Duplicate"
-msgstr "Erreur: Duplication"
+msgstr "Lỗi: Duplicate"
 
 #: OptionManager.php:315
 msgid "s are not allowed."
-msgstr "s ne sont pas permis."
+msgstr "không được phép s."
 
 #: OptionManager.php:332
 msgid "Default"
-msgstr "D&eacute;faut"
+msgstr "Mặc định"
 
 #: OptionManager.php:358
 msgid "Duplicate name found."
-msgstr "Dupliquer nom trouvé."
+msgstr "Duplicate tên được tìm thấy."
 
 #: OptionManager.php:363
 msgid "Make Default"
-msgstr "Par Défaut"
+msgstr "Hãy mặc định"
 
 #: OptionManager.php:375 OptionManager.php:377
 #: VolunteerOpportunityEditor.php:422
 msgid "Exit"
-msgstr "Sortir"
+msgstr "Thoát"
 
 #: OptionManager.php:391
 msgid "Add New"
-msgstr "Ajouter Nouveau"
+msgstr "Thêm mới"
 
 #: OptionManager.php:397
 msgid "Error: You must enter a name."
-msgstr "Erreur: Vous devez entrer un nom."
+msgstr "Lỗi: Bạn phải nhập một tên."
 
 #: OptionManager.php:399
 msgid "Error: A "
-msgstr "Erreur: Un"
+msgstr "Lỗi: A "
 
 #: OptionManager.php:399
 msgid " by that name already exists."
-msgstr " par ce nom existe d&eacute;j&agrave;."
+msgstr " tên đó đã tồn tại."
 
 #: PaddleNumEditor.php:43
-#, fuzzy
 msgid "Buyer Number Editor"
-msgstr "Gestionnaire Utilisateur"
+msgstr "Người mua Số biên tập"
 
 #: PaddleNumEditor.php:149
-#, fuzzy
 msgid "Generate Statement"
-msgstr "Cr&eacute;ez des Etiquettes"
+msgstr "tạo Trữ"
 
 #: PaddleNumList.php:36
 msgid "Buyers for this fundraiser:"
-msgstr "Les acheteurs de cette levée de fonds:"
+msgstr "Người mua hàng để gây quỹ này:"
 
 #: PaddleNumList.php:43
-#, fuzzy
 msgid "Select all"
-msgstr "S&eacute;lectionner le R&ocirc;le"
+msgstr "Chọn tất cả"
 
 #: PaddleNumList.php:44
-#, fuzzy
 msgid "Select none"
-msgstr "S&eacute;lectionner le R&ocirc;le"
+msgstr "Bỏ chọn"
 
 #: PaddleNumList.php:45
-#, fuzzy
 msgid "Add Buyer"
-msgstr "Ajouter Nouveau"
+msgstr "Thêm người mua"
 
 #: PaddleNumList.php:46
 msgid "Generate Statements for Selected"
-msgstr "Générer états sélectionnés pour"
+msgstr "Tạo báo cáo cho chọn"
 
 #: PaddleNumList.php:54
-#, fuzzy
 msgid "Select"
-msgstr "S&eacute;lectionner le R&ocirc;le"
+msgstr "Lựa chọn"
 
 #: PersonCustomFieldsEditor.php:26
 msgid "Custom Person Fields Editor"
-msgstr "Gestionnaire des Champs Personnalisés pour les personnes"
+msgstr "Tuỳ chỉnh Fields biên tập Person"
 
 #: PersonCustomFieldsEditor.php:268
 msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Attention: En supprimant ce champ, vous perdrez de fait toutes les donn&eacute;es de personne assign&eacute;es &agrave; ce champ!"
+msgstr "Cảnh báo: Bằng cách xóa các lĩnh vực này, bạn sẽ irrevokably mất tất cả dữ liệu người được giao cho lĩnh vực này!"
 
 #: PersonCustomFieldsEditor.php:289
 msgid "No custom person fields have been added yet"
-msgstr "Aucun champ personnalis&eacute; n'a encore &eacute;t&eacute; ins&eacute;r&eacute;"
+msgstr "Không có lĩnh vực người tuỳ chỉnh đã được thêm vào chưa"
 
 #: PersonCustomFieldsEditor.php:306
 msgid "Person-View Side"
-msgstr "Personne - Fiche Associ&eacute;e"
+msgstr "Người-View Side"
 
 #: PersonEditor.php:23
 msgid "Person Editor"
-msgstr "Gestionnaire des Personnes"
+msgstr "người biên tập"
 
 #: PersonEditor.php:174
 msgid "You must enter a Last Name if no Family is selected."
-msgstr "Vous devez entrer un Nom si aucune Famille n'a &eacute;t&eacute; s&eacute;lectionn&eacute;e."
+msgstr "Bạn phải nhập Tên cuối nếu không có gia đình được chọn."
 
 #: PersonEditor.php:204
-#, fuzzy
 msgid "Not a valid Friend Date"
-msgstr "Le format de la date est invalide"
+msgstr "Không phải là một người bạn ngày hợp lệ"
 
 #: PersonEditor.php:216
 msgid "Not a valid Membership Date"
-msgstr "Date d'Adh&eacute;sion Invalide"
+msgstr "Không phải là một ngày hội viên hợp lệ"
 
 #: PersonEditor.php:238
 msgid "Work Email is Not Valid"
-msgstr "Email travail n&#39;est pas valide"
+msgstr "Gửi email đến địa là không hợp lệ"
 
 #: PersonEditor.php:540
 msgid "Red text"
-msgstr "Texte en Rouge"
+msgstr "chữ đỏ"
 
 #: PersonEditor.php:540 PersonView.php:178
 msgid "indicates items inherited from the associated family record."
-msgstr "indique les objets h&eacute;rit&eacute;s de l'enregistrement associ&eacute; &agrave; la famille."
+msgstr "chỉ mục thừa hưởng từ các hồ sơ gia đình liên quan."
 
 #: PersonEditor.php:551
 msgid "Personal Info"
-msgstr "Information personnelle"
+msgstr "Thông tin cá nhân"
 
 #: PersonEditor.php:576
 msgid "Mr., Mrs., Dr., Rev."
-msgstr "Mr., Mme., Dr., Past."
+msgstr "Ông, bà, Tiến sĩ, Rev."
 
 #: PersonEditor.php:612
 msgid "Jr., Sr., III"
-msgstr ""
+msgstr "Jr., Sr., III"
 
 #: PersonEditor.php:618
 msgid "Birth Month:"
-msgstr "Mois de Naissance:"
+msgstr "Tháng sinh:"
 
 #: PersonEditor.php:622
 msgid "Select Month"
-msgstr "S&eacute;lectionner un mois"
+msgstr "CHỌN THÁNG"
 
 #: PersonEditor.php:662
 msgid "Birth Day:"
-msgstr "Jour de Naissance:"
+msgstr "Sinh nhật:"
 
 #: PersonEditor.php:664
 msgid "Select Day"
-msgstr "S&eacute;lectionner un jour"
+msgstr "CHỌN NGÀY"
 
 #: PersonEditor.php:678
 msgid "Birth Year:"
-msgstr "Ann&eacute;e de Naissance:"
+msgstr "Năm sinh:"
 
 #: PersonEditor.php:687 Reports/ConfirmReport.php:188
 #: Reports/ConfirmReport.php:208
 msgid "Hide Age"
-msgstr "Cacher les D&eacute;tails"
+msgstr "Ẩn Tuổi"
 
 #: PersonEditor.php:722
 msgid "Create a new family (using last name)"
-msgstr "Créez une nouvelle famille (en utilisant le nom de famille)"
+msgstr "Tạo một gia đình mới (sử dụng tên cuối cùng)"
 
 #: PersonEditor.php:954 PrintView.php:258
 msgid "Work / Other Email:"
-msgstr "Travail / Autres Email:"
+msgstr "Làm việc / Email khác:"
 
 #: PersonEditor.php:971
 msgid "Membership Info"
-msgstr "Information sur le membre"
+msgstr "thành viên Thông tin"
 
 #: PersonEditor.php:980 PersonView.php:248
 msgid "Friend Date:"
-msgstr "Date de Mariage:"
+msgstr "Ngày bạn bè:"
 
 #: PersonToGroup.php:55
-#, fuzzy
 msgid "Add Person to Group"
-msgstr "Ajouter au Panier Groupe"
+msgstr "Thêm người để Nhóm"
 
 #: PersonToGroup.php:61
-#, fuzzy
 msgid "Select the group to add this person to:"
-msgstr "S&eacute;lectionnez le groupe pour lequel vous voulez un rapport:"
+msgstr "Chọn nhóm để thêm người này:"
 
 #: PersonView.php:32
 msgid "Person Profile"
-msgstr "Profile personnel"
+msgstr ""
 
 #: PersonView.php:167
 msgid "Not assigned"
-msgstr "Non assign&eacute;"
+msgstr "Không được chỉ định"
 
 #: PersonView.php:220
 msgid "About Me"
-msgstr "Mon profile"
+msgstr "Thông tin về tôi"
 
 #: PersonView.php:239
 msgid "Address:"
-msgstr "Adresse :"
+msgstr "Địa chỉ:"
 
 #: PersonView.php:245
 msgid "Birthdate:"
-msgstr "Date de naissance:"
+msgstr "- Năm sinh"
 
 #: PersonView.php:300
 msgid "Printable Page"
-msgstr "Page Imprimable"
+msgstr "trang có thể in"
 
 #: PersonView.php:303
 msgid "Edit \"Why Came\" Notes"
-msgstr "Editer la note \"Raison de ma venue\""
+msgstr "Chỉnh sửa \\ \"Tại sao Came \" Notes"
 
 #: PersonView.php:307
 msgid "Delete this Record"
-msgstr "Effacer cet Enregistrement"
+msgstr "Xóa bản ghi này"
 
 #: PersonView.php:311
 msgid "Make User"
-msgstr "Cr&eacute;er Utilisateur"
+msgstr "Tạo người dùng"
 
 #: PersonView.php:313
 msgid "Edit User"
-msgstr "Modifier Utilisateur"
+msgstr "Chỉnh sửa người dùng"
 
 #: PersonView.php:316
 msgid "List Members"
-msgstr "Liste des membres"
+msgstr "danh sách thành viên"
 
 #: PersonView.php:325
 msgid "Assigned Groups"
-msgstr "Groupes Attribu&eacute;s"
+msgstr "Nhóm giao"
 
 #: PersonView.php:453 PrintView.php:348
 msgid "No group assignments."
-msgstr "Aucun groupe attribu&eacute;."
+msgstr "Không có nhóm tập."
 
 #: PersonView.php:507
 msgid "Change Role"
-msgstr "Changer le r&ocirc;le"
+msgstr "thay đổi vai trò"
 
 #: PersonView.php:509
 msgid "Update Properties"
-msgstr "Mise &agrave; jour des Propriétés."
+msgstr "cập nhật tính"
 
 #: PersonView.php:529
 msgid "Assign New Group"
-msgstr "Affecter un nouveau groupe"
+msgstr "Gán Nhóm mới"
 
 #: PersonView.php:530
 msgid "Person will be assigned to the Group in the Default Role."
-msgstr "La personne sera ajouter au groupe avec le r&ocirc;le par d&eacute;faut."
+msgstr "Người đó sẽ được giao cho Tập đoàn trong Default Role."
 
 #: PersonView.php:544
 msgid "Assign User to Group"
-msgstr "Affecter l'utilisateur au groupe"
+msgstr "Gán tài để Nhóm"
 
 #: PersonView.php:667
 msgid "No volunteer opportunity assignments."
-msgstr "Aucune Propriétés n'est assign&eacute;es."
+msgstr "Không có bài tập cơ hội tình nguyện."
 
 #: PersonView.php:704
 msgid "Assign a New Volunteer Opportunity:"
-msgstr "Assigner une Nouvelle Propriété de bénévolat:"
+msgstr "Gán một cơ hội tình nguyện viên mới:"
 
 #: PersonView.php:777
 msgid "Are you sure you want to remove this person from the Group"
@@ -4059,738 +3880,722 @@ msgstr ""
 
 #: PersonView.php:805
 msgid "Oops! Person not found."
-msgstr "Oh ! Cette personne est inconnue."
+msgstr "Rất tiếc! không tìm thấy người."
 
 #: PersonView.php:808
 msgid "We could not find the person you were looking for.<br>Meanwhile, you may"
-msgstr "La personne recherchée n'a pas été trouvée.<br>En attendant, vous pourrez"
+msgstr "Chúng tôi không thể tìm thấy những người bạn đang tìm kiếm. <br> Trong khi đó, bạn có thể"
 
 #: PledgeDetails.php:19
 msgid "Electronic Transaction Details"
-msgstr "Détails de la transaction électronique"
+msgstr "Chi tiết giao dịch điện tử"
 
 #: PledgeEditor.php:289
 msgid "NonDeductible amount can't be greater than total amount."
-msgstr "Montant non déductible ne peut pas être supérieur au montant total."
+msgstr "lượng được khấu trừ không có thể lớn hơn tổng số tiền."
 
 #: PledgeEditor.php:296
 msgid "At least one fund must have a non-zero amount."
-msgstr "Au moins un fonds doit avoir une valeur non nulle."
+msgstr "Ít nhất một quỹ phải có một số lượng không bằng không."
 
 #: PledgeEditor.php:311
-#, fuzzy
 msgid "Must specify non-zero check number"
-msgstr "Vous devez &eacute;crire un nombre valide."
+msgstr "Phải xác định khác không số kiểm tra"
 
 #: PledgeEditor.php:318
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Vérifiez le numéro n&#39;est pas valable pour les «CASH» de paiement"
+msgstr "Kiểm tra số không hợp lệ để thanh toán 'TIỀN'"
 
 #: PledgeEditor.php:488
 msgid "Pledge Editor"
-msgstr "Gestionnaire des Promesses de Paiements"
+msgstr "Cam kết Biên tập viên"
 
 #: PledgeEditor.php:490
 msgid "Payment Editor: "
-msgstr "Gestionnaire des Paiements"
+msgstr "Biên tập viên thanh toán: "
 
 #: PledgeEditor.php:490
 msgid " Deposit Slip #"
-msgstr "Bordereau de dépôt #"
+msgstr " Phiếu gửi tiền #"
 
 #: PledgeEditor.php:510
 msgid " more entries will fit."
-msgstr "plus d&#39;entrées va s&#39;insérer."
+msgstr " nhiều mục sẽ phù hợp."
 
 #: PledgeEditor.php:515
 msgid "Payment Editor - Modify Existing Payment"
-msgstr "Editeur de vente - Paiement Modifier existante"
+msgstr "Thanh toán Editor - Sửa đổi hiện thanh toán"
 
 #: PledgeEditor.php:517
 msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Editeur de vente - Bordereau de dépôt sera créé"
+msgstr "Thanh toán Editor - Phiếu tiền gửi mới Sẽ tạo"
 
 #: PledgeEditor.php:522
 msgid "Deposit closed"
 msgstr ""
 
 #: PledgeEditor.php:571
-#, fuzzy
 msgid "Find family->"
-msgstr " famille)"
+msgstr "Tìm tại gia đình>"
 
 #: PledgeEditor.php:578
 msgid "Payment Schedule"
-msgstr "Calendrier de paiement"
+msgstr "Lịch trình thanh toán"
 
 #: PledgeEditor.php:581
 msgid "Select Schedule"
-msgstr "S&eacute;lectionner le type de calendrier"
+msgstr "Chọn Schedule"
 
 #: PledgeEditor.php:582
 msgid "Weekly"
-msgstr "Hebdomadaire"
+msgstr "Hàng tuần"
 
 #: PledgeEditor.php:583
 msgid "Monthly"
-msgstr "Mois"
+msgstr "Hàng tháng"
 
 #: PledgeEditor.php:584
 msgid "Quarterly"
-msgstr "Trimestriel"
+msgstr "_____Theo quý________"
 
 #: PledgeEditor.php:585
 msgid "Once"
-msgstr "Une fois"
+msgstr "Một khi"
 
 #: PledgeEditor.php:586
 msgid "Other"
-msgstr "Autre"
+msgstr "Khác"
 
 #: PledgeEditor.php:593
-#, fuzzy
 msgid "Payment by"
-msgstr "Moyen de paiement:"
+msgstr "Thanh toán bằng"
 
 #: PledgeEditor.php:597
 msgid "CHECK"
-msgstr "VOIR"
+msgstr "Kiểm tra"
 
 #: PledgeEditor.php:598
 msgid "CASH"
-msgstr "CASH"
+msgstr "TIỀN"
 
 #: PledgeEditor.php:624
 msgid "Split"
-msgstr "Divisé"
+msgstr "Chia nhỏ"
 
 #: PledgeEditor.php:681
-#, fuzzy
 msgid "Check #"
-msgstr "Ch&egrave;que"
+msgstr "Kiểm tra"
 
 #: PledgeEditor.php:698
 msgid "Total $"
-msgstr "Total €"
+msgstr "Tổng số"
 
 #: PledgeEditor.php:704
 msgid "Split to Funds by pledge"
-msgstr "Split à fonds par nantissement"
+msgstr "Chia cho Quỹ bằng cầm cố"
 
 #: PledgeEditor.php:716
 msgid "Choose online payment method"
-msgstr "Choisissez la méthode de paiement en ligne"
+msgstr "Chọn phương thức thanh toán trực tuyến"
 
 #: PledgeEditor.php:723
 msgid "Select online payment record"
-msgstr "Sélectionner le journal de paiement en ligne"
+msgstr "Chọn bản ghi thanh toán trực tuyến"
 
 #: PledgeEditor.php:730
 msgid "Credit card ..."
-msgstr "Carte de crédit ..."
+msgstr "Thẻ tín dụng"
 
 #: PledgeEditor.php:732
 msgid "Bank account "
-msgstr "Compte bancaire"
+msgstr "Số Tài khoản Ngân hàng:  "
 
 #: PledgeEditor.php:751
-#, fuzzy
 msgid "Scan check"
-msgstr "ch&egrave;que"
+msgstr "kiểm tra Scan"
 
 #: PledgeEditor.php:757
 msgid "find family from check account #"
-msgstr "trouver la famille du compte chèque #"
+msgstr "tìm gia đình từ tài khoản séc #"
 
 #: PledgeEditor.php:758
 msgid "Set default check account number for family"
-msgstr "Réglez le numéro de compte par défaut chèque de famille"
+msgstr "Đặt số tài khoản kiểm tra mặc định cho gia đình"
 
 #: PledgeEditor.php:775
-#, fuzzy
 msgid "Fund Name"
-msgstr "Nom du groupe"
+msgstr "Tên Quỹ"
 
 #: PledgeEditor.php:779
 msgid "Non-deductible amount"
-msgstr "Montant non déductible"
+msgstr "lượng không được khấu trừ"
 
 #: PrintView.php:119
 msgid "Printable View"
-msgstr "Aperçu Avant Impression"
+msgstr "Chế độ in"
 
 #: PrintView.php:221
 msgid "BirthDate:"
-msgstr "Date de Naissance:"
+msgstr "- Năm sinh"
 
 #: PrintView.php:291 SelectDelete.php:380
 msgid "Family Members:"
-msgstr "Membres de la Famille:"
+msgstr "Thành viên gia đình:"
 
 #: PrintView.php:297 Reports/CanvassReports.php:247
 #: sundayschool/SundaySchoolClassView.php:192
 #: sundayschool/SundaySchoolDashboard.php:176
 msgid "Age"
-msgstr "Age"
+msgstr "Tuổi"
 
 #: PrintView.php:336
 msgid "Assigned Groups:"
-msgstr "Groupes Attribu&eacute;s:"
+msgstr "Nhóm được giao:"
 
 #: PrintView.php:354
 msgid "Group Name"
-msgstr "Nom du groupe"
+msgstr "Tên nhóm"
 
 #: PrintView.php:457
 msgid "Notes:"
-msgstr "Notes:"
+msgstr "Ghi chú:"
 
 #: PrintView.php:464
 msgid "Entered:"
-msgstr "Saisie le : "
+msgstr "Được nhập:"
 
 #: PrintView.php:468
 msgid "Last Edited:"
-msgstr "Derniere Modification:"
+msgstr "Chỉnh lần cuối:"
 
 #: PrintView.php:468
 msgid "by"
-msgstr "par"
+msgstr "bởi"
 
 #: PropertyAssign.php:133 PropertyAssign.php:152
 msgid "Property successfully assigned."
-msgstr "La Propriété a &eacute;t&eacute; affect&eacute;e avec succ&egrave;s."
+msgstr "Tài sản được giao thành công."
 
 #: PropertyAssign.php:168
 msgid " Property Assignment"
-msgstr " Affectation de Propriété"
+msgstr " Chuyển nhượng tài sản"
 
 #: PropertyAssign.php:182
 msgid "Assigning:"
-msgstr "Assign&eacute;e:"
+msgstr "Phân công:"
 
 #: PropertyAssign.php:186
 msgid "Value:"
-msgstr "Valeur:"
+msgstr "Giá trị"
 
 #: PropertyDelete.php:27
 msgid "Property Delete Confirmation"
-msgstr "Confirmer la Suppression de Propriété"
+msgstr "Bất động sản Chứng nhận Xóa"
 
 #: PropertyDelete.php:55
 msgid "Please confirm deletion of this property:"
-msgstr "Merci de confirmer la suppression de cette Propriété:"
+msgstr "Vui lòng xác nhận việc xóa các tài sản này:"
 
 #: PropertyDelete.php:63
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
-msgstr "Supprimer cette Propriété entrainera &eacute;galement toutes les suppressions des Propriétés associ&eacute;es de tous les enregistrement de personne, de famille, ou de groupe."
+msgstr "Xóa tài sản này cũng sẽ xóa tất cả các bài tập hữu này cho bất kỳ người, gia đình, hoặc hồ sơ Group."
 
 #: PropertyDelete.php:69 PropertyTypeDelete.php:73 SelectDelete.php:233
 #: VolunteerOpportunityEditor.php:123
 msgid "No, cancel this deletion"
-msgstr "Non, annuler cette suppression"
+msgstr "Không, hủy xóa này"
 
 #: PropertyEditor.php:60
 msgid "Property Editor"
-msgstr "Éditeur de Propriété"
+msgstr "Bất động sản Biên tập viên"
 
 #: PropertyEditor.php:76
 msgid "You must enter a Name"
-msgstr "Vous devez entrer un Nom"
+msgstr "Bạn phải nhập tên"
 
 #: PropertyEditor.php:83
 msgid "You must select a Type"
-msgstr "Vous devez s&eacute;lectionner un Type"
+msgstr "Bạn phải chọn một loại"
 
 #: PropertyEditor.php:147
 msgid "Select Property Type"
-msgstr "S&eacute;lectionnez un Type de Propriété"
+msgstr "Chọn loại BĐS"
 
 #: PropertyEditor.php:171 PropertyList.php:65
 msgid "A"
-msgstr "Un"
+msgstr "Chi"
 
 #: PropertyEditor.php:171
 msgid "with this property.."
-msgstr "avec cette Propriété..."
+msgstr "với khách sạn này .."
 
 #: PropertyEditor.php:177
 msgid "Prompt:"
-msgstr "Message:"
+msgstr "Nhắc"
 
 #: PropertyEditor.php:179
 msgid "Entering a Prompt value will allow the association of a free-form value."
-msgstr "Accepter cette valeur vous permettra d'associer de nouveaux champs personnalis&eacute;s"
+msgstr "Bước vào một giá trị Prompt sẽ cho phép sự kết hợp của một giá trị dạng tự do."
 
 #: PropertyList.php:45
 msgid "Property List"
-msgstr "Liste des Propriétés"
+msgstr "Danh sách tài sản"
 
 #: PropertyList.php:58
 msgid "Add a New"
-msgstr "Ajouter au type : "
+msgstr "Thêm mới"
 
 #: PropertyList.php:58
 msgid "Property"
-msgstr "Propriété"
+msgstr "Đặc tính"
 
 #: PropertyList.php:65
 msgid "with this Property..."
-msgstr "avec cette Propriété..."
+msgstr "với tài sản này ..."
 
 #: PropertyList.php:66
 msgid "Prompt"
-msgstr "Demande"
+msgstr "Nhắc"
 
 #: PropertyTypeDelete.php:28
 msgid "Property Type Delete Confirmation"
-msgstr "Confirmation Suppression Type de Propriété"
+msgstr "Loại tài sản Xóa Chứng nhận"
 
 #: PropertyTypeDelete.php:62
 msgid "Warning"
-msgstr "Attention"
+msgstr "Cảnh báo"
 
 #: PropertyTypeDelete.php:62
 msgid "This property type is still being used by at least one property."
-msgstr "Ce type de Propriété est associ&eacute;e &agrave; une autre Propriété minimum."
+msgstr "loại tài sản này vẫn đang được sử dụng bởi ít nhất một tài sản."
 
 #: PropertyTypeDelete.php:62
 msgid "If you delete this type, you will also remove all properties using"
-msgstr "Si vous supprimez ce type, vous enl&egrave;verez &eacute;galement tout les Propriétés associ&eacute;es"
+msgstr "Nếu bạn xóa các loại này, bạn cũng sẽ loại bỏ tất cả các thuộc tính sử dụng"
 
 #: PropertyTypeDelete.php:62
 msgid "it and lose any corresponding property assignments."
-msgstr "et vous perdrez toutes les Propriétés des tâches correspondantes."
+msgstr "nó và mất bất kỳ bài tập tài sản tương ứng."
 
 #: PropertyTypeDelete.php:67
 msgid "Please confirm deletion of this Property Type:"
-msgstr "Merci de confirmer la suppression du Type de Propriété:"
+msgstr "Vui lòng xác nhận việc xóa các loại BĐS này:"
 
 #: PropertyTypeEditor.php:28
 msgid "Property Type Editor"
-msgstr "Gestionnaire de Type de Propriété"
+msgstr "Loại biên tập"
 
 #: PropertyTypeEditor.php:96
 msgid "Class:"
-msgstr "Classe:"
+msgstr "Phân loại ... ... ... ... ... ... 3"
 
 #: PropertyTypeList.php:21
 msgid "Property Type List"
-msgstr "Propriétés pour les types listes"
+msgstr "Loại bất động sản Danh sách"
 
 #: PropertyTypeList.php:34
 msgid "Add a New Property Type"
-msgstr "Ajouter Nouveau Type de Propriété"
+msgstr "Thêm một loại tài sản mới"
 
 #: PropertyTypeList.php:41 sundayschool/SundaySchoolDashboard.php:139
 #: sundayschool/SundaySchoolDashboard.php:215
 msgid "Class"
-msgstr "Classe"
+msgstr "Lớp"
 
 #: PropertyTypeList.php:42
 msgid "Properties"
-msgstr "Propriétés"
+msgstr "Các bất động sản"
 
 #: PropertyUnassign.php:102
 msgid " Property Unassignment"
-msgstr " Propriété non Assign&eacute;e"
+msgstr " Sở hữu Unassignment"
 
 #: PropertyUnassign.php:109
 msgid "Please confirm removal of this property from this"
-msgstr "Veuillez confirmer le d&eacute;placement de cette Propriété"
+msgstr "Vui lòng xác nhận việc loại bỏ các thuộc tính này từ này"
 
 #: PropertyUnassign.php:118
 msgid "Unassigning:"
-msgstr "Non assign&eacute;:"
+msgstr "Unassigning:"
 
 #: PropertyUnassign.php:124
 msgid "Yes, unassign this Property"
-msgstr "Oui, annuler cette Propriété"
+msgstr "Có, hủy giao hữu này"
 
 #: PropertyUnassign.php:127
 msgid "No, retain this assignment"
-msgstr "Non, maintenir cette tâche"
+msgstr "Không, giữ nhiệm vụ này"
 
 #: QueryList.php:21
 msgid "Query Listing"
-msgstr "Menu Requ&ecirc;tes"
+msgstr "truy vấn Niêm yết"
 
 #: QueryList.php:32
 msgid "Run a Free-Text Query"
-msgstr "Ex&eacute;cuter une Requ&ecirc;te  Libre"
+msgstr "Chạy một truy vấn miễn phí-Text"
 
 #: QuerySQL.php:21
 msgid "Free-Text Query"
-msgstr "Requ&ecirc;te  Texte Libre"
+msgstr "Truy vấn miễn phí-Text"
 
 #: QuerySQL.php:54
 msgid "Export Results to CSV file"
-msgstr "Exporter les résultats vers un fichier CSV"
+msgstr "Xuất kết quả vào tập tin CSV"
 
 #: QuerySQL.php:62
 msgid "Execute SQL"
-msgstr "Ex&eacute;cuter SQL"
+msgstr "Execute SQL"
 
 #: QuerySQL.php:96 QuerySQL.php:154
 msgid "An error occured: "
-msgstr "Une erreur s'est produite: "
+msgstr "Đã xảy ra lỗi: "
 
 #: QuerySQL.php:136 QueryView.php:197
 msgid " record(s) returned"
-msgstr " enregistrement(s) retourn&eacute;(s)"
+msgstr " hồ sơ (s) trở lại"
 
 #: QuerySQL.php:214 QueryView.php:278
 msgid "Add Results To Cart"
-msgstr "Ajouter R&eacute;sultats au Panier"
+msgstr "Thêm kết quả vào giỏ hàng"
 
 #: QuerySQL.php:215 QueryView.php:279
-#, fuzzy
 msgid "Intersect Results With Cart"
-msgstr "Ajouter R&eacute;sultats au Panier"
+msgstr "Intersect Kết quả Với giỏ"
 
 #: QuerySQL.php:216 QueryView.php:280
-#, fuzzy
 msgid "Remove Results From Cart"
-msgstr "Ajouter R&eacute;sultats au Panier"
+msgstr "Hủy bỏ kết quả khỏi giỏ hàng"
 
 #: QuerySQL.php:220 QueryView.php:286
 msgid "Return to Query Menu"
-msgstr "Retour Menu Requ&ecirc;te "
+msgstr "Quay trở lại để truy vấn đơn"
 
 #: QueryView.php:22
 msgid "Query View"
-msgstr "Visualisation de la Requ&ecirc;te "
+msgstr "Query Xem"
 
 #: QueryView.php:99
 msgid "This value is required."
-msgstr "Cette valeur est exig&eacute;e."
+msgstr "Giá trị này là bắt buộc."
 
 #: QueryView.php:115
 msgid "This value must be numeric."
-msgstr "Cette valeur doit &ecirc;tre  de type num&eacute;rique."
+msgstr "Giá trị này phải là số."
 
 #: QueryView.php:123
 msgid "This value must be at least "
-msgstr "Cette valeur doit &ecirc;tre  au moins "
+msgstr "Giá trị này phải có ít nhất "
 
 #: QueryView.php:129 QueryView.php:143
 msgid "This value cannot be more than "
-msgstr "Cette valeur ne peut pas &ecirc;tre  sup&eacute;rieure &agrave; "
+msgstr "Giá trị này không thể có nhiều hơn "
 
 #: QueryView.php:143 QueryView.php:149
 msgid " characters long"
-msgstr " caract&egrave;res"
+msgstr " kí tự dài"
 
 #: QueryView.php:149
 msgid "This value cannot be less than "
-msgstr "Cette valeur ne peut pas &ecirc;tre  inf&eacute;rieure &agrave; "
+msgstr "Giá trị này không thể ít hơn "
 
 #: QueryView.php:285
 msgid "Run Query Again"
-msgstr "Ex&eacute;cuter Requ&ecirc;te  &agrave; Nouveau"
+msgstr "Run Query Một lần nữa"
 
 #: QueryView.php:402
 msgid "Execute Query"
-msgstr "Ex&eacute;cutez la Requ&ecirc;te "
+msgstr "Thực hiện truy vấn"
 
 #: RPCdummy.php:49
 msgid "Address Info:"
-msgstr "Adresse Information:"
+msgstr "Địa chỉ Thông tin:"
 
 #: Register.php:22
 msgid "Software Registration"
-msgstr ""
+msgstr "Đăng ký phần mềm"
 
 #: Register.php:81
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "S&#39;il vous plaît enregistrer votre copie de ChurchCRM en vérifiant sur ces informations et en appuyant sur le bouton Envoyer."
+msgstr "Vui lòng đăng ký bản sao của ChurchCRM bằng cách kiểm tra trên các thông tin này và nhấn nút Gửi.  "
 
 #: Register.php:82
 msgid "This information is used only to track the usage of this software.  "
-msgstr "Cette information est utilisée uniquement pour suivre l&#39;utilisation de ce logiciel."
+msgstr "Thông tin này chỉ được sử dụng để theo dõi việc sử dụng phần mềm này.  "
 
 #: Register.php:92
-#, fuzzy
 msgid "Send"
-msgstr "Saison"
+msgstr "Gửi"
 
 #: Register.php:99
 msgid "If you need to make changes go to Admin->Edit General Settings and Admin->Edit Report Settings.  "
-msgstr "Si vous devez apporter des modifications aller à Admin-> Modifier les paramètres généraux et Admin-> Rapport sur Modifier les paramètres."
+msgstr "Nếu bạn cần phải thực hiện thay đổi đi đến chính hàng> Edit Settings chung và chính hàng> Edit Settings Báo cáo.  "
 
 #: ReminderReport.php:27
 msgid "Pledge Reminder Report"
-msgstr "Rapport Rappel Pledge"
+msgstr "Báo cáo Reminder Pledge"
 
 #: ReportList.php:20
 msgid "Report Menu"
-msgstr "Menu Rapports"
+msgstr "báo cáo đơn"
 
 #: ReportList.php:47
 msgid "Automated support for conducting an every-member canvass."
-msgstr "Support automatisé pour effectuer une tous les membres toile."
+msgstr "hỗ trợ tự động thực hiện một cuộc kiểm phiếu mỗi thành viên."
 
 #: ReportList.php:67
 msgid "Event Attendance Reports"
-msgstr "Rapports des événements locaux"
+msgstr "Báo cáo tham dự sự kiện"
 
 #: RestoreDatabase.php:25
 msgid "Restore Database"
-msgstr "Restaurer la Base de Donn&eacute;es"
+msgstr "Khôi phục cơ sở dữ liệu"
 
 #: SelectDelete.php:60
 msgid "All donations from this family have been moved to another family."
-msgstr "Tous les dons de cette famille ont été transférés à une autre famille."
+msgstr "Mọi đóng góp từ gia đình này đã được chuyển sang một gia đình khác."
 
 #: SelectDelete.php:66
 msgid "Person Delete Confirmation"
-msgstr "Confirmation de la suppression de la personne"
+msgstr "Người Xóa xác nhận"
 
 #: SelectDelete.php:68
 msgid "Family Delete Confirmation"
-msgstr "Confirmation de la suppression de la famille"
+msgstr "Gia đình nhận Xóa"
 
 #: SelectDelete.php:225
 msgid "Sorry, this person is a user.  An administrator must remove their user status before they may be deleted from the database."
-msgstr "D&eacute;sol&eacute;e, cette personne est un utilisateur.  Un administrateur doit enlever leur statut d'utilisateur avant qu'ils puissent &ecirc;tre  supprim&eacute;s de la base de donn&eacute;es."
+msgstr "Xin lỗi, người này là một người sử dụng. Một quản trị viên phải loại bỏ tình trạng người dùng của họ trước khi họ có thể bị xóa khỏi cơ sở dữ liệu."
 
 #: SelectDelete.php:226
 msgid "Return to Person View"
-msgstr "Retour sur l'aperçu de la personne"
+msgstr "Quay trở lại với Người Xem"
 
 #: SelectDelete.php:229 VolunteerOpportunityEditor.php:82
 msgid "Please confirm deletion of:"
-msgstr "Veuillez confirmer la suppression de:"
+msgstr "Vui lòng xác nhận xóa:"
 
 #: SelectDelete.php:230
 msgid " (This action CANNOT be undone!)"
-msgstr " (cette action NE PEUT PAS &ecirc;tre  annul&eacute;e!)"
+msgstr " (Hành động này không thể được hoàn tác!)"
 
 #: SelectDelete.php:245
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Désolé, il ya des dossiers de dons de cette famille. Cette famille ne peut pas être supprimé."
+msgstr "Xin lỗi, có những ghi chép của các đóng góp từ gia đình này. Gia đình này có thể không bị xóa."
 
 #: SelectDelete.php:246
-#, fuzzy
 msgid "Return to Family View"
-msgstr "Retour sur l'aperçu de la personne"
+msgstr "Quay trở lại với gia đình Xem"
 
 #: SelectDelete.php:251
 msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "AVERTISSEMENT: Cette famille a des dossiers de dons et ne peut être supprimé jusqu&#39;à ce que ces dons sont associés avec une autre famille."
+msgstr "CẢNH BÁO: gia đình này đã ghi nhận sự đóng góp và có thể không bị xóa cho đến những đóng góp có liên quan với một gia đình khác."
 
 #: SelectDelete.php:255
 msgid "Please select another family with whom to associate these donations:"
-msgstr "S&#39;il vous plaît sélectionner une autre famille avec qui s&#39;associer à ces dons:"
+msgstr "Hãy chọn một gia đình với ai để liên kết những đóng góp:"
 
 #: SelectDelete.php:256
 msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "AVERTISSEMENT: Cette action ne peut pas être annulée et pourrait avoir des implications juridiques!"
+msgstr "Chú ý: Thao tác này không thể hoàn tác và có thể có ý nghĩa pháp lý!"
 
 #: SelectDelete.php:290
 msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "FAMILLE ACTUELLE AVEC LES DONS"
+msgstr "GIA ĐÌNH HIỆN VỚI TẶNG"
 
 #: SelectDelete.php:373
 msgid "Please confirm deletion of this family record:"
-msgstr "Merci de confirmer la suppression de l'enregistrement de cette famille:"
+msgstr "Vui lòng xác nhận việc xóa các kỷ lục gia đình này:"
 
 #: SelectDelete.php:374
-#, fuzzy
 msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Ceci supprimera &eacute;galement toutes les notes li&eacute;es &agrave; cet enregistrement Famille."
+msgstr "Lưu ý: Điều này cũng sẽ xóa tất cả các ghi chú kết hợp với kỷ lục gia này."
 
 #: SelectDelete.php:375
 msgid " (this action cannot be undone)"
-msgstr " (cette action ne peut pas &ecirc;tre  annul&eacute;e)"
+msgstr " (Hành động này không thể được hoàn tác)"
 
 #: SelectDelete.php:390
-#, fuzzy
 msgid "Delete Family Record ONLY"
-msgstr "Effacer cet Enregistrement"
+msgstr "Xóa Family Ghi CHỈ"
 
 #: SelectDelete.php:391
 msgid "Delete Family Record AND Family Members"
-msgstr "Supprimer de famille et les membres de la famille"
+msgstr "Xóa Ghi Gia đình và thành viên gia đình"
 
 #: SelectDelete.php:392
 msgid "No, cancel this deletion</a>"
-msgstr "Non, annuler cette suppression</a>"
+msgstr "Không, hủy xóa này </a>"
 
 #: SelectList.php:146
 msgid "Person Listing"
-msgstr "Liste des Personnes"
+msgstr "người Liệt kê"
 
 #: SelectList.php:171
 msgid "Group Assignment Helper"
-msgstr " Rechercher dans un Groupe "
+msgstr "Helper Phân Nhóm"
 
 #: SelectList.php:457
 msgid "Filter and Cart"
-msgstr "Filtre et panier"
+msgstr "Lọc và giỏ hàng"
 
 #: SelectList.php:467
 msgid "Show people <b>not</b> in this group type:"
-msgstr "Montrer aux gens <b>pas</b> dans ce type de groupe:"
+msgstr "Hiển thị những người <b> không </ b> trong loại nhóm này:"
 
 #: SelectList.php:483
 msgid "Sort order:"
-msgstr "Ordre de tri:"
+msgstr "Thứ tự sắp xếp:"
 
 #: SelectList.php:485
 msgid "By Name"
-msgstr "Par Nom"
+msgstr "Bằng tên"
 
 #: SelectList.php:486
 msgid "By Family"
-msgstr "Par Famille"
+msgstr "bởi gia đình"
 
 #: SelectList.php:487
 msgid "By ZIP/Postal Code"
-msgstr "Par Code postal"
+msgstr "Bởi ZIP / Postal Code"
 
 #: SelectList.php:488
 msgid "By Newest Entries"
-msgstr "Par Nouvelle Entr&eacute;es"
+msgstr "By Entries mới nhất"
 
 #: SelectList.php:489
 msgid "By Recently Edited"
-msgstr "Par récemment édité"
+msgstr "By Gần đây Sửa"
 
 #: SelectList.php:495
 msgid "Apply Filter"
-msgstr "Appliquer le Filtre"
+msgstr "ÁP DỤNG LỌC "
 
 #: SelectList.php:505
 msgid "Male & Female"
-msgstr "Homme & Femme"
+msgstr "Nam nữ"
 
 #: SelectList.php:523
 msgid "All Classifications"
-msgstr "Les classifications"
+msgstr "Tất cả các phân loại"
 
 #: SelectList.php:546
 msgid "All Family Roles"
-msgstr "Tous les Rôles de Famille"
+msgstr "Tất cả các vai trò gia đình"
 
 #: SelectList.php:569
 msgid "All Contact Properties"
-msgstr "Toutes les propriétés de Contact"
+msgstr "Tất cả các Liên Thuộc tính"
 
 #: SelectList.php:596
 msgid "All Group Types"
-msgstr "Tous les types de groupes"
+msgstr "Tất cả Nhóm các loại"
 
 #: SelectList.php:630
-#, fuzzy
 msgid "All Groups"
-msgstr "Groupes"
+msgstr "- Tất cả các nhóm -"
 
 #: SelectList.php:673
-#, fuzzy
 msgid "All Roles"
-msgstr "R&ocirc;le"
+msgstr "Tất cả các vai trò"
 
 #: SelectList.php:697
 msgid "Listing"
-msgstr "Liste des personnes"
+msgstr "Liệt kê"
 
 #: SelectList.php:706
 msgid "View All"
-msgstr "Tout voir"
+msgstr "Xem tất cả"
 
 #: SelectList.php:948
 msgid "Cart"
-msgstr "Panier"
+msgstr "Danh sách đã chọn"
 
 #: SelectList.php:951
 msgid "Print"
-msgstr "Imprimer"
+msgstr "In"
 
 #: SelectList.php:1061
 msgid "unassigned"
-msgstr "Non assigné"
+msgstr "unassigned"
 
 #: SettingsIndividual.php:93
 msgid "My User Settings"
-msgstr "Mes paramètres personnels"
+msgstr "Cài đặt tài khoản của tôi"
 
 #: SettingsIndividual.php:104 SettingsUser.php:94 SystemSettings.php:154
 #: SystemSettings.php:171 UserEditor.php:433
 msgid "Variable name"
-msgstr "Nom de la variable"
+msgstr "tên biến"
 
 #: SettingsIndividual.php:105 SettingsUser.php:95 SystemSettings.php:172
 #: UserEditor.php:434
 msgid "Current Value"
-msgstr "Valeur Actuelle"
+msgstr "Giá trị hiện tại"
 
 #: SettingsIndividual.php:106 SettingsUser.php:96 UserEditor.php:435
 msgid "Notes"
-msgstr "Notes"
+msgstr "Ghi chú"
 
 #: SettingsIndividual.php:119 SettingsIndividual.php:166 SettingsUser.php:107
 #: SettingsUser.php:170 SystemSettings.php:249 UserEditor.php:516
 msgid "Save Settings"
-msgstr "Enregistrer les Changements"
+msgstr "Lưu cài đặt"
 
 #: SettingsUser.php:78
 msgid "Default User Settings"
-msgstr "Paramètres Utilisateur par défaut"
+msgstr "Cài đặt mặc định tài"
 
 #: SettingsUser.php:90
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
-msgstr "Mettre les permissions à \"True\" pour donner aux nouveaux utilisateurs la possibilité de changer leur valeur actuelle. <BR>"
+msgstr "Đặt Permission True để cung cấp cho người dùng mới có khả năng thay đổi giá trị hiện tại của họ. <BR>"
 
 #: SettingsUser.php:93 UserEditor.php:432
 msgid "Permission"
-msgstr "Permission"
+msgstr "Cho phép"
 
 #: Setup.php:155
 msgid "DB Server Name:"
-msgstr ""
+msgstr "DB Name Server:"
 
 #: Setup.php:160
 msgid "DB Name:"
-msgstr ""
+msgstr "Tên DB:"
 
 #: Setup.php:164
 msgid "DB User:"
-msgstr ""
+msgstr "DB User:"
 
 #: Setup.php:168
 msgid "DB Password:"
-msgstr ""
+msgstr "DB Mật khẩu:"
 
 #: Setup.php:174
 msgid "Root Path:"
-msgstr ""
+msgstr "Đường dẫn gốc:"
 
 #: Setup.php:179
 msgid "Base URL:"
-msgstr ""
+msgstr "URL cơ sở:"
 
 #: Setup.php:184
 msgid "Setup"
-msgstr ""
+msgstr "Cài đặt"
 
 #: SystemSettings.php:40 SystemSettings.php:47
 msgid "System Settings"
-msgstr "Paramètres Système"
+msgstr "THIẾT LẬP HỆ THỐNG"
 
 #: TaxReport.php:27
-#, fuzzy
 msgid "Tax Report"
-msgstr "Rapport"
+msgstr "báo cáo thuế"
 
 #: TaxReport.php:45
-#, fuzzy
 msgid "Calendar Year:"
-msgstr "Ann&eacute;e Invalide"
+msgstr "Năm dương lịch:"
 
 #: USISTAddressVerification.php:356
 msgid "US Address Verification"
-msgstr "Vérification de l&#39;adresse US"
+msgstr "Địa chỉ xác minh Mỹ"
 
 #: USISTAddressVerification.php:389 USISTAddressVerification.php:410
 #: USISTAddressVerification.php:434 USISTAddressVerification.php:687
@@ -4804,284 +4609,279 @@ msgstr "http://www.intelligentsearch.com/address_verification/verify_address.htm
 
 #: UpdateAllLatLon.php:30
 msgid "Update Latitude & Longitude"
-msgstr ""
+msgstr "Cập nhật Latitude & Kinh độ"
 
 #: UpdateAllLatLon.php:89
 msgid "Update Finished"
-msgstr ""
+msgstr "cập nhật xong"
 
 #: UserDelete.php:58
 msgid "User Delete Confirmation"
-msgstr "Confirmation Suppression de l'Utilisateur"
+msgstr "Ký Xóa Chứng nhận"
 
 #: UserDelete.php:65
 msgid "Please confirm removal of user status from:"
-msgstr "Veuillez confirmer le d&eacute;placement du statut d'utilisateur de:"
+msgstr "Vui lòng xác nhận việc loại bỏ tình trạng sử dụng từ:"
 
 #: UserEditor.php:310
 msgid "User Editor"
-msgstr "Gestion de l'utilisateur"
+msgstr "người sử dụng biên tập viên"
 
 #: UserEditor.php:318
 msgid "Note: Changes will not take effect until next logon."
-msgstr "Note:  Les changements entreront en vigueur au prochain red&eacute;marrage."
+msgstr "Lưu ý: Thay đổi sẽ không có hiệu lực cho đến khi đăng nhập tiếp theo."
 
 #: UserEditor.php:331
 msgid "Person to Make User:"
-msgstr "Personne Autoriser &agrave; Cr&eacute;er des Utilisateurs:"
+msgstr "Người để Tạo người dùng:"
 
 #: UserEditor.php:348
 msgid "User:"
-msgstr "Utilisateur:"
+msgstr "Người dùng"
 
 #: UserEditor.php:361
 msgid "Login Name:"
-msgstr "Nom pour se connecter (Login):"
+msgstr "Tên đăng nhập:"
 
 #: UserEditor.php:366
 msgid "Add Records:"
-msgstr "Ajouter Enregistrements:"
+msgstr "Thêm Bản ghi:"
 
 #: UserEditor.php:371
 msgid "Edit Records:"
-msgstr "Modifier Enregistrements:"
+msgstr "Sửa hồ sơ:"
 
 #: UserEditor.php:376
 msgid "Delete Records:"
-msgstr "Effacer Enregistrements:"
+msgstr "Xóa Records:"
 
 #: UserEditor.php:381
 msgid "Manage Properties and Classifications:"
-msgstr "Gestion Propriétés et Classifications:"
+msgstr "Quản lý Tài sản và phân loại:"
 
 #: UserEditor.php:386
 msgid "Manage Groups and Roles:"
-msgstr "Gestion des Groupes et R&ocirc;les:"
+msgstr "Quản lý nhóm và vai trò:"
 
 #: UserEditor.php:391
 msgid "Manage Donations and Finance:"
-msgstr "Gestion Cotisations et Finances:"
+msgstr "Quản lý Tài trợ và Tài chính:"
 
 #: UserEditor.php:396
 msgid "View, Add and Edit Notes:"
-msgstr "Visuliser, Ajouter et Éditer les notes:"
+msgstr "Xem, Thêm và chỉnh sửa ghi chú:"
 
 #: UserEditor.php:401
 msgid "Edit Self:"
-msgstr "L'utilisateur peut modifier ses paramètres"
+msgstr "Chỉnh sửa tự phục vụ:"
 
 #: UserEditor.php:402
 msgid "(Edit own family only.)"
-msgstr "(Modifier propre famille uniquement.)"
+msgstr "(Chỉnh sửa gia đình riêng mà thôi.)"
 
 #: UserEditor.php:406
 msgid "(Canvass volunteer.)"
-msgstr "(Solliciteur bénévole.)"
+msgstr "(Canvass tình nguyện.)"
 
 #: UserEditor.php:409
 msgid "Admin:"
-msgstr "Administrateur:"
+msgstr "Quản trị viên"
 
 #: UserEditor.php:410
 msgid "(Grants all privileges.)"
-msgstr "(Avoir tous les privil&egrave;ges.)"
+msgstr "(Grants tất cả các đặc quyền.)"
 
 #: UserEditor.php:413
 msgid "Style:"
-msgstr "Style:"
+msgstr "Kiểu:"
 
 #: UserEditor.php:429
 msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Mettre les permissions à \"True\", pour permettre à l'utilisateur de modifier les valeurs courantes."
+msgstr "Đặt Permission True để cung cấp cho người dùng đó là khả năng thay đổi giá trị hiện tại của họ."
 
 #: UserList.php:47
 msgid "User Listing"
-msgstr "Liste des Utilisateurs"
+msgstr "Liệt kê người dùng"
 
 #: UserList.php:54
 msgid "New User"
-msgstr "Ajouter Nouvel Utilisateur"
+msgstr "Người dùng mới"
 
 #: UserList.php:55
 msgid "User Settings"
-msgstr "Paramètres utilisateur"
+msgstr "Thiết lập người dùng"
 
 #: UserList.php:64
 msgid "Last Login"
-msgstr "Derniere Connexion"
+msgstr "Lân đăng nhập cuôi"
 
 #: UserList.php:65
 msgid "Total Logins"
-msgstr "Connexion Totale"
+msgstr "Tổng số Logins"
 
 #: UserList.php:66
 msgid "Failed Logins"
-msgstr "La connexion a &eacute;chou&eacute;e"
+msgstr "Thông tin đăng nhập không thành công"
 
 #: UserList.php:97 UserList.php:103
 msgid "Reset"
-msgstr "Effacer"
+msgstr "Làm lại"
 
 #: UserList.php:102
 msgid "Change"
-msgstr "Changer"
+msgstr "Thay đổi"
 
 #: UserPasswordChange.php:64
 msgid "You must enter a password in both boxes"
-msgstr "Vous devez entrer un mot de passe dans des les champs"
+msgstr "Bạn phải nhập một mật khẩu trong cả hộp"
 
 #: UserPasswordChange.php:70 UserPasswordChange.php:135
 msgid "You must enter the same password in both boxes"
-msgstr "Vous devez entrer le meme mot de passe dans des les deux champs"
+msgstr "Bạn phải nhập lại mật khẩu trong cả hộp"
 
 #: UserPasswordChange.php:123
 msgid "Invalid password"
-msgstr "Mot de passe invalide"
+msgstr "mật khẩu không hợp lệ"
 
 #: UserPasswordChange.php:129
 msgid "You must enter your new password in both boxes"
-msgstr "Vous devez entrer votre nouveau mot de passe dans les deux champs"
+msgstr "Bạn phải nhập mật khẩu mới của bạn trong cả hai hộp"
 
 #: UserPasswordChange.php:141
 msgid "Your password choice is too obvious. Please choose something else."
-msgstr "Votre mot de passe est trop &eacute;vident.  Veuillez en choisir un autre."
+msgstr "lựa chọn mật khẩu của bạn là quá rõ ràng. Hãy chọn một cái gì đó khác."
 
 #: UserPasswordChange.php:147
 msgid "Your new password must be at least"
-msgstr "Votre nouveau mot de passe doit au moins avoir"
+msgstr "Mật khẩu mới phải có ít nhất"
 
 #: UserPasswordChange.php:147
 msgid "characters"
-msgstr "caract&egrave;res"
+msgstr "nhân vật"
 
 #: UserPasswordChange.php:153
 msgid "You need to actually change your password (nice try, though!)"
-msgstr "Vous devez r&eacute;ellement changer votre mot de passe"
+msgstr "Bạn cần phải thực sự thay đổi mật khẩu của bạn (hãy thử lại, mặc dù!)"
 
 #: UserPasswordChange.php:158
 msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Votre nouveau mot de passe est trop ressemblant &agrave; l'ancien. Soyez plus cr&eacute;atif!"
+msgstr "Mật khẩu mới của bạn là quá giống với một tuổi của bạn. Hãy sáng tạo nhiều hơn nữa!"
 
 #: UserPasswordChange.php:193
 msgid "User Password Change"
-msgstr "Changement du Mot de Passe Utilisateur"
+msgstr "Ký Thay đổi mật khẩu"
 
 #: UserPasswordChange.php:200
 msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "L'enregistrement de votre compte indique que vous devez changer votre mot de passe avant de continuer."
+msgstr "ghi lại tài khoản của bạn cho thấy bạn cần thay đổi mật khẩu của bạn trước khi proceding."
 
 #: UserPasswordChange.php:211
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
-msgstr "Entrez votre mot de passe actuel, puis votre nouveau mot de passe deux fois.  Les mots de passe doivent &ecirc;tre  au moins"
+msgstr "Nhập mật khẩu hiện tại của bạn, sau đó mật khẩu mới của bạn hai lần. Mật khẩu phải có ít nhất"
 
 #: UserPasswordChange.php:211
 msgid "characters in length."
-msgstr "caract&egrave;res de long."
+msgstr "ký tự."
 
 #: UserPasswordChange.php:213
 msgid "Enter a new password for this user."
-msgstr "Entrez un nouveau mot de passe pour cet utilisateur."
+msgstr "Nhập một mật khẩu mới cho người dùng này."
 
 #: UserPasswordChange.php:222
 msgid "Old Password:"
-msgstr "Ancien Mot de Passe:"
+msgstr "Mật khẩu cũ"
 
 #: UserPasswordChange.php:227
 msgid "New Password:"
-msgstr "Nouveau Mot de Passe:"
+msgstr "Mật khẩu mới"
 
 #: UserPasswordChange.php:231
 msgid "Confirm New Password:"
-msgstr "Confirmation Nouveau Mot de Passe:"
+msgstr "Xác Nhận Mật Khẩu Mới"
 
 #: UserReset.php:48
 msgid "User Reset"
-msgstr "Effacement de l'utilisateur"
+msgstr "Đặt lại tài"
 
 #: UserReset.php:55
 msgid "Please confirm the password reset of this user:"
-msgstr "Merci de confirmer le mot de passe d'effacement de cet utilisateur:"
+msgstr "Vui lòng xác nhận các thiết lập lại mật khẩu của người dùng này:"
 
 #: UserReset.php:59
 msgid "Yes, reset this User's password"
-msgstr "Oui, effacer le mot de passe de cet utilisateur"
+msgstr "Có, đặt lại mật khẩu của tài khoản này"
 
 #: UserReset.php:60
 msgid "No, cancel this operation"
-msgstr "Non, annuler cette op&eacute;ration"
+msgstr "Không, hủy bỏ hoạt động này"
 
 #: VolunteerOpportunityEditor.php:78
-#, fuzzy
 msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Confirmer la Suppression de Propriété"
+msgstr "Tình nguyện Cơ hội Xóa xác nhận"
 
 #: VolunteerOpportunityEditor.php:110
-#, fuzzy
 msgid "Warning!"
-msgstr "Attention"
+msgstr "Cảnh báo!"
 
 #: VolunteerOpportunityEditor.php:111
 msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Il ya des gens affectés à cette occasion de bénévolat."
+msgstr "Có những người được giao cho Cơ hội tình nguyện này."
 
 #: VolunteerOpportunityEditor.php:112
 msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Une occasion de bénévolat seront sans affectation pour les personnes suivantes."
+msgstr "Cơ hội tình nguyện viên sẽ không được gán cho những người sau đây."
 
 #: VolunteerOpportunityEditor.php:121
-#, fuzzy
 msgid "Yes, delete this Volunteer Opportunity"
-msgstr "oui, supprimer cet enregistrement"
+msgstr "Có, xóa Cơ hội tình nguyện viên này"
 
 #: VolunteerOpportunityEditor.php:208
 msgid "Volunteer Opportunity Editor"
-msgstr "Bénévoles Opportunity Editor"
+msgstr "Tình nguyện Cơ hội Biên tập viên"
 
 #: VolunteerOpportunityEditor.php:298
-#, fuzzy
 msgid "No volunteer opportunities have been added yet"
-msgstr "Aucune Propriété n'a encore &eacute;t&eacute; ajout&eacute;"
+msgstr "Không có cơ hội tình nguyện đã được thêm vào chưa"
 
 #: VolunteerOpportunityEditor.php:347
 msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "NOTE: ajouter, supprimer, et les changements de commande sont immédiats. Modifications du nom ou de champs Desc doit être enregistrée en appuyant sur \"Enregistrer les modifications\""
+msgstr "LƯU Ý: ADD, xóa, và thay đổi Thứ tự là ngay lập tức. Thay đổi Tên hoặc quyết định các lĩnh vực cần được lưu lại bằng cách nhấn 'Save Changes'"
 
 #: VolunteerOpportunityEditor.php:449
-#, fuzzy
 msgid "Add New Opportunity"
-msgstr "Ajouter Nouvelle Association"
+msgstr "Thêm cơ hội mới"
 
 #: WhyCameEditor.php:29
 msgid "\"Why Came\" notes for "
-msgstr "Notes concernant la \"Raison de ma venue\" pour : "
+msgstr "\\ \"Tại sao Came \" ghi chú cho "
 
 #: WhyCameEditor.php:85
 msgid "Why did you come to the church?"
-msgstr "Quelles sont les raisons de votre venue à l&#39;église ?"
+msgstr "Tại sao bạn không đến nhà thờ?"
 
 #: WhyCameEditor.php:89
 msgid "Why do you keep coming?"
-msgstr "Qu'est ce qui vous motive à rester ?"
+msgstr "Tại sao bạn giữ cho tới?"
 
 #: WhyCameEditor.php:93
 msgid "Do you have any suggestions for us?"
-msgstr "Avez-vous des suggestions à nous faire?"
+msgstr "Bạn có bất cứ lời đề nghị cho chúng ta?"
 
 #: WhyCameEditor.php:97
 msgid "How did you learn of the church?"
-msgstr "Comment avez-vous découvert l&#39;église ? (un membre, le site internet, etc ...)"
+msgstr "Làm thế nào mà bạn học của nhà thờ?"
 
 #: calendar.php:9
 msgid "Church Calendar"
-msgstr "Agenda de l&#39;&eacute;glise"
+msgstr "Giáo Hội Lịch"
 
 #: calendar.php:61
 msgid "Today"
-msgstr "Aujourd hui"
+msgstr "Hôm nay"
 
 #: calendar.php:63
 msgid "Week"
-msgstr "Semaine"
+msgstr "Tuần"
 
 #: eGive.php:74
 msgid "eGive Import"
@@ -5089,72 +4889,71 @@ msgstr ""
 
 #: eGive.php:263
 msgid "Start Date: "
-msgstr "À partir de :"
+msgstr "Ngày bắt đầu "
 
 #: eGive.php:265
-#, fuzzy
 msgid "End Date: "
-msgstr "Date:"
+msgstr "Ngày kết thúc "
 
 #: eGive.php:355
 msgid "Re-import to selected family"
-msgstr "Réimportation à la famille sélectionnée"
+msgstr "Tái nhập khẩu để lựa chọn gia đình"
 
 #: eGive.php:361
 msgid "Data import results: "
-msgstr "Les résultats des données d&#39;importation:"
+msgstr "kết quả nhập dữ liệu: "
 
 #: eGive.php:361
 msgid " gifts were imported, "
-msgstr "cadeaux ont été importés,"
+msgstr " quà tặng được nhập khẩu, "
 
 #: eGive.php:361
 msgid " gifts unchanged, and "
-msgstr "cadeaux inchangée, et"
+msgstr " quà tặng không thay đổi, và "
 
 #: eGive.php:361
 msgid " gifts not imported due to problems"
-msgstr "cadeaux ne sont pas importés en raison de problèmes"
+msgstr " quà tặng không phải nhập khẩu do các vấn đề"
 
 #: eGive.php:362 eGive.php:391
 msgid "Back to Deposit Slip"
-msgstr "Retour à bordereau de dépôt"
+msgstr "Về tiền gửi trượt"
 
 #: eGive.php:390
 msgid "Fatal error in eGive API datastream: '"
-msgstr "Erreur fatale dans eGive API de flux de données: &#39;"
+msgstr "Fatal error trong luồng dữ liệu API eGive: '"
 
 #: mrbs.php:26
 msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRM MRBS Portail"
+msgstr "ChurchCRM MRBS Portal"
 
 #: email/Dashboard.php:24
 msgid "eMail Dashboard"
-msgstr ""
+msgstr "Bảng quản lý eMail"
 
 #: email/MailChimpMissingReport.php:22
 msgid "People not in Mailchimp"
-msgstr ""
+msgstr "Con người không trong Mailchimp"
 
 #: Include/CanvassUtilities.php:70
 msgid "No families need canvassers assigned"
-msgstr "Pas besoin de solliciteurs familles affectées"
+msgstr "Không có gia đình cần canvassers giao"
 
 #: Include/CanvassUtilities.php:82
 msgid "Canvassers assigned at random to %d families."
-msgstr "Solliciteurs assignés au hasard à des familles% d."
+msgstr "Canvassers giao ngẫu nhiên đến %d gia đình."
 
 #: Include/CanvassUtilities.php:115
 msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Solliciteurs assignés au hasard à% d non nantissements familles."
+msgstr "Canvassers giao ngẫu nhiên đến %d gia đình không cam kết."
 
 #: Include/EnvelopeFunctions.php:39
 msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Attribuer des numéros d&#39;enveloppe à toutes les familles avec au moins un membre."
+msgstr "Giao số phong bì cho tất cả các gia đình có ít nhất một thành viên."
 
 #: Include/EnvelopeFunctions.php:41
 msgid "Assigned envelope numbers to all families."
-msgstr "Attribuer des numéros d&#39;enveloppe pour toutes les familles."
+msgstr "Giao số phong bì cho tất cả các gia đình."
 
 #: Include/Footer.php:24
 msgid "Version"
@@ -5166,195 +4965,191 @@ msgstr ""
 
 #: Include/Footer.php:26
 msgid "All rights reserved"
-msgstr "Tous droits réservés"
+msgstr "Tất cả các quyền được bảo lưu."
 
 #: Include/Functions.php:160
 msgid "True / False"
-msgstr "Vrai / Faux"
+msgstr "Đúng Sai"
 
 #: Include/Functions.php:162
 msgid "Text Field (50 char)"
-msgstr "Champ Texte (50 caract&egrave;res)"
+msgstr "Text Field (50 char)"
 
 #: Include/Functions.php:163
 msgid "Text Field (100 char)"
-msgstr "Champ Texte (100 caract&egrave;res)"
+msgstr "Text Field (100 ký tự)"
 
 #: Include/Functions.php:164
 msgid "Text Field (long)"
-msgstr "Champ Texte (long)"
+msgstr "Text Field (dài)"
 
 #: Include/Functions.php:166
 msgid "Season"
-msgstr "Saison"
+msgstr "Mùa"
 
 #: Include/Functions.php:168
 msgid "Person from Group"
-msgstr "Personne du groupe"
+msgstr "Người từ Nhóm"
 
 #: Include/Functions.php:169
 msgid "Money"
-msgstr "Monnaie"
+msgstr "Tiền"
 
 #: Include/Functions.php:170
 msgid "Phone Number"
-msgstr "Num&eacute;ro de t&eacute;l&eacute;phone"
+msgstr "Số điện thoại"
 
 #: Include/Functions.php:171
 msgid "Custom Drop-Down List"
-msgstr "Liste d&eacute;roulante personnalis&eacute;e"
+msgstr "Tuỳ chỉnh Drop-Down Danh sách"
 
 #: Include/Functions.php:177
 msgid "Thank you for registering your ChurchCRM installation."
-msgstr ""
+msgstr "Cảm ơn bạn đã đăng ký lắp đặt ChurchCRM của bạn."
 
 #: Include/Functions.php:181
 msgid "PDFs successfully emailed "
-msgstr ""
+msgstr "PDF gửi qua email thành công "
 
 #: Include/Functions.php:186
 msgid "PDF successfully emailed to family members."
-msgstr ""
+msgstr "PDF thành công gửi qua email cho các thành viên trong gia đình."
 
 #: Include/Functions.php:188
 msgid "Failed to email PDF to family members."
-msgstr "Echec de l'envoi des mails aux membres de la famille"
+msgstr "Không thể gửi email PDF cho các thành viên trong gia đình."
 
 #: Include/Functions.php:195
-#, fuzzy
 msgid "Group successfully added to the Cart."
-msgstr "Les enregistrements s&eacute;lectionn&eacute;s ont bien &eacute;t&eacute; ajout&eacute; au panier."
+msgstr "Nhóm thêm thành công vào Cart."
 
 #: Include/Functions.php:201
-#, fuzzy
 msgid "Group successfully removed from the Cart."
-msgstr "Les enregistrements s&eacute;lectionn&eacute;s ont bien &eacute;t&eacute; supprim&eacute; du panier."
+msgstr "Nhóm gỡ bỏ thành công từ các giỏ hàng."
 
 #: Include/Functions.php:205
 msgid "Profile Image successfully removed."
-msgstr ""
+msgstr "Hồ sơ ảnh gỡ bỏ thành công."
 
 #: Include/Functions.php:209
 msgid "Profile Image successfully updated."
-msgstr ""
+msgstr "Hồ sơ hình ảnh cập nhật thành công."
 
 #: Include/Functions.php:213
 msgid "Profile Image upload Error."
-msgstr ""
+msgstr "Hồ sơ Lỗi tải hình ảnh lên."
 
 #: Include/Functions.php:221
 msgid "Selected record successfully added to the Cart."
-msgstr "Les enregistrements s&eacute;lectionn&eacute;s ont bien &eacute;t&eacute; ajout&eacute; au panier."
+msgstr "ghi được chọn thêm thành công vào Cart."
 
 #: Include/Functions.php:226
 msgid "Family successfully added to the Cart."
-msgstr ""
+msgstr "Gia đình thành công thêm vào giỏ hàng."
 
 #: Include/Functions.php:232
 msgid "Selected record successfully removed from the Cart."
-msgstr "Les enregistrements s&eacute;lectionn&eacute;s ont bien &eacute;t&eacute; supprim&eacute; du panier."
+msgstr "ghi được chọn gỡ bỏ thành công từ các giỏ hàng."
 
 #: Include/Functions.php:238
 msgid "Your cart has been successfully emptied."
-msgstr "Votre panier a bien &eacute;t&eacute; vid&eacute;."
+msgstr "Giỏ hàng của bạn đã bị dọn sạch thành công."
 
 #: Include/Functions.php:255
 msgid "item(s) added to the Cart."
-msgstr "&eacute;l&eacute;ment(s) ajout&eacute;(s) au panier."
+msgstr "item (s) được thêm vào giỏ hàng."
 
 #: Include/Functions.php:324
-#, fuzzy
 msgid "Select Fiscal Year"
-msgstr "S&eacute;lectionner un groupe"
+msgstr "Chọn năm tài chính"
 
 #: Include/Functions.php:671
 msgid "pm"
-msgstr "h"
+msgstr "buổi chiều"
 
 #: Include/Functions.php:676
-#, fuzzy
 msgid "am"
-msgstr "Nom"
+msgstr "buổi sáng"
 
 #: Include/Functions.php:840 Include/Functions.php:850
 msgid "1 m old"
-msgstr ""
+msgstr "1 m cũ"
 
 #: Include/Functions.php:842 Include/Functions.php:852
 msgid "m old"
-msgstr ""
+msgstr "m cũ"
 
 #: Include/Functions.php:848
 msgid "1 yr old"
-msgstr ""
+msgstr "1 năm tuổi"
 
 #: Include/Functions.php:854 Include/Functions.php:856
 msgid "yrs old"
-msgstr "ans"
+msgstr "năm tuổi"
 
 #: Include/Functions.php:1003
 msgid "Invalid Editor ID!"
-msgstr "Modification de l'ID non valide!"
+msgstr "ID biên tập không hợp lệ!"
 
 #: Include/Functions.php:1058
 msgid "Select Season"
-msgstr "Choisissez la saison"
+msgstr "Chọn mùa"
 
 #: Include/Functions.php:1063
 msgid "Winter"
-msgstr "Hiver"
+msgstr "mùa đông:"
 
 #: Include/Functions.php:1068
 msgid "Spring"
-msgstr "Printemps"
+msgstr "mùa xuân"
 
 #: Include/Functions.php:1073
 msgid "Summer"
-msgstr "Et&eacute;"
+msgstr "- Summer ..."
 
 #: Include/Functions.php:1078
 msgid "Fall"
-msgstr "Automne"
+msgstr "Mùa thu"
 
 #: Include/Functions.php:1160
 msgid "Error: Invalid Editor ID!"
-msgstr "Erreur: Modification de l'ID non valide!"
+msgstr "Lỗi: không hợp lệ biên tập ID!"
 
 #: Include/Functions.php:1359
 msgid "Not a valid date"
-msgstr "Le format de la date est invalide"
+msgstr "Không phải là một ngày hợp lệ"
 
 #: Include/Functions.php:1371
 msgid "Invalid Year"
-msgstr "Ann&eacute;e Invalide"
+msgstr "Năm không hợp lệ"
 
 #: Include/Functions.php:1374
 msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Ann&eacute;e Invalide:  les valeurs permises sont comprise entre 1901 et 2155"
+msgstr "Trong số khoảng: giá trị Allowable là 1901-2155"
 
 #: Include/Functions.php:1387 Include/Functions.php:1403
 msgid "Invalid Number"
-msgstr "Num&eacute;ro invalide"
+msgstr "Số không hợp lệ"
 
 #: Include/Functions.php:1390
 msgid "Number too large. Must be between -2147483648 and 2147483647"
-msgstr "Nombre trop grand Celui-ci doit &ecirc;tre  compris entre -2147483648 et 2147483647"
+msgstr "Số quá lớn. Phải từ -2147483648 2147483647"
 
 #: Include/Functions.php:1406
 msgid "Money amount too large. Maximum is $999999999.99"
-msgstr "Le montant indiqu&eacute; est trop important. Le Maximum est 999999999.99"
+msgstr "Số tiền quá lớn. Tối đa là $ 999999999,99"
 
 #: Include/Functions.php:1593
 msgid " Bold Italic"
-msgstr "Gras Italique"
+msgstr " Bold Italic"
 
 #: Include/Functions.php:1596
 msgid " Italic"
-msgstr "Italique"
+msgstr " nghiêng"
 
 #: Include/Functions.php:1598
 msgid " Bold"
-msgstr "Audacieux"
+msgstr " Dũng cảm"
 
 #: Include/Header-function.php:55
 msgid "ERROR!"
@@ -5398,7 +5193,7 @@ msgstr ""
 
 #: Include/Header-function.php:293 Include/Header-function.php:489
 msgid "Dashboard"
-msgstr "Tableau de bord"
+msgstr "Trang Chủ"
 
 #: Include/Header-function.php:346
 msgid "Toggle navigation"
@@ -5406,11 +5201,11 @@ msgstr ""
 
 #: Include/Header-function.php:396
 msgid "Change Password"
-msgstr "Changer le mot de passe"
+msgstr "Đổi Mật Khẩu"
 
 #: Include/Header-function.php:399
 msgid "My Settings"
-msgstr "Param&egrave;tres"
+msgstr "Cài đặt của tôi"
 
 #: Include/Header-function.php:430
 msgid "You have"
@@ -5422,49 +5217,47 @@ msgstr ""
 
 #: Include/Header-function.php:508
 msgid "Home"
-msgstr "Accueil"
+msgstr "Trang Chủ"
 
 #: Include/LabelFunctions.php:46
-#, fuzzy
 msgid "Font:"
-msgstr "Quantit&eacute;:"
+msgstr "Phông chữ"
 
 #: Include/LabelFunctions.php:82
 msgid "Label Type:"
-msgstr "Type d'&eacute;tiquette:"
+msgstr "Loại nhãn:"
 
 #: Include/LabelFunctions.php:98
 msgid "Label Grouping"
-msgstr "Groupement étiquette"
+msgstr "nhãn Nhóm"
 
 #: Include/LabelFunctions.php:105
 msgid "All Individuals"
-msgstr "Tous les Individus"
+msgstr "Tất cả Cá nhân"
 
 #: Include/LabelFunctions.php:111
 msgid "Grouped by Family"
-msgstr "Group&eacute; par Famille"
+msgstr "Xét theo gia đình"
 
 #: Include/LabelFunctions.php:117
 msgid "To the parents of:"
-msgstr "Pour les parents de:"
+msgstr "Để cha mẹ của:"
 
 #: Include/LabelFunctions.php:132
 msgid "Start Row:"
-msgstr "Ligne de D&eacute;part:"
+msgstr "Bắt đầu Row:"
 
 #: Include/LabelFunctions.php:139
 msgid "Start Column:"
-msgstr "Colonne de D&eacute;part:"
+msgstr "Bắt đầu cột:"
 
 #: Include/LabelFunctions.php:151
 msgid "Ignore Incomplete<br>Addresses:"
-msgstr "Ignorez les Adresses<br>Incompl&egrave;te s:"
+msgstr "Bỏ qua Incomplete <br> Địa chỉ:"
 
 #: Include/LabelFunctions.php:163
-#, fuzzy
 msgid "File Type:"
-msgstr "Type:"
+msgstr "72 = tệp tin loại"
 
 #: Reports/AdvancedDeposit.php:371 Reports/AdvancedDeposit.php:388
 #: Reports/AdvancedDeposit.php:467 Reports/AdvancedDeposit.php:480
@@ -5473,9 +5266,8 @@ msgstr "Type:"
 #: Reports/AdvancedDeposit.php:671 Reports/AdvancedDeposit.php:688
 #: Reports/AdvancedDeposit.php:767 Reports/AdvancedDeposit.php:780
 #: Reports/AdvancedDeposit.php:795
-#, fuzzy
 msgid "items"
-msgstr "Filtres"
+msgstr "Sản phẩm"
 
 #: Reports/AdvancedDeposit.php:373 Reports/AdvancedDeposit.php:390
 #: Reports/AdvancedDeposit.php:469 Reports/AdvancedDeposit.php:482
@@ -5484,25 +5276,24 @@ msgstr "Filtres"
 #: Reports/AdvancedDeposit.php:673 Reports/AdvancedDeposit.php:690
 #: Reports/AdvancedDeposit.php:769 Reports/AdvancedDeposit.php:782
 #: Reports/AdvancedDeposit.php:797
-#, fuzzy
 msgid "item"
-msgstr "Hiver"
+msgstr "sản phẩm"
 
 #: Reports/CanvassReports.php:211
 msgid "Did not pledge"
-msgstr "N&#39;est-ce pas en gage"
+msgstr "Không cam kết"
 
 #: Reports/CanvassReports.php:215
 msgid "Top pledger"
-msgstr "Pledger Haut"
+msgstr "Lên trên cầm cố"
 
 #: Reports/CanvassReports.php:217
 msgid "Pledged"
-msgstr "Engagés"
+msgstr "cam kết"
 
 #: Reports/CanvassReports.php:224
 msgid "Pledge status: "
-msgstr "Statut engagement:"
+msgstr "tình trạng cam kết: "
 
 #: Reports/CanvassReports.php:245 Reports/ConfirmReport.php:184
 #: Reports/ConfirmReport.php:204 Reports/ConfirmReportEmail.php:208
@@ -5511,227 +5302,207 @@ msgid "M/F"
 msgstr "M / F"
 
 #: Reports/ClassAttendance.php:112 Reports/ClassList.php:90
-#, fuzzy
 msgid "Teacher"
-msgstr "Recherche"
+msgstr "Giáo viên"
 
 #: Reports/ClassAttendance.php:117 Reports/ClassList.php:138
 msgid "Student"
-msgstr "Étudiant"
+msgstr "Sinh viên"
 
 #: Reports/ClassAttendance.php:125 Reports/ClassAttendance.php:126
 #: Reports/ClassList.php:111 Reports/ClassList.php:112
-#, fuzzy
 msgid "Liaison"
-msgstr "Saison"
+msgstr "Sự liên lạc"
 
 #: Reports/ConfirmReport.php:124 Reports/ConfirmReportEmail.php:144
-#, fuzzy
 msgid "Family name"
-msgstr "Nom de Famille"
+msgstr "Tên gia đình"
 
 #: Reports/ConfirmReport.php:136 Reports/ConfirmReportEmail.php:156
 msgid "City, State, Zip"
-msgstr "Ville, État, Code postal"
+msgstr "Thành phố, Nhà nước, Zip"
 
 #: Reports/ConfirmReport.php:140 Reports/ConfirmReportEmail.php:160
-#, fuzzy
 msgid "Home phone"
-msgstr "T&eacute;l&eacute;phone Personnel"
+msgstr "Điện thoại nhà"
 
 #: Reports/ConfirmReport.php:144 Reports/ConfirmReportEmail.php:164
 msgid "Send Newsletter"
-msgstr "Envoyer Newsletter"
+msgstr "Gửi bản tin"
 
 #: Reports/ConfirmReport.php:153 Reports/ConfirmReportEmail.php:173
-#, fuzzy
 msgid "Anniversary Date"
-msgstr "Date d'Anniversaire:"
+msgstr "Kỷ niệm ngày"
 
 #: Reports/ConfirmReport.php:159 Reports/ConfirmReportEmail.php:179
-#, fuzzy
 msgid "Family E-Mail"
-msgstr "Email personnel"
+msgstr "Gia đình E-Mail"
 
 #: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:203
 #: Reports/ConfirmReportEmail.php:207 Reports/ConfirmReportEmail.php:227
-#, fuzzy
 msgid "Member Name"
-msgstr "Noms des Membres:"
+msgstr "Tên thành viên"
 
 #: Reports/ConfirmReport.php:185 Reports/ConfirmReport.php:205
 #: Reports/ConfirmReportEmail.php:209 Reports/ConfirmReportEmail.php:229
 msgid "Adult/Child"
-msgstr "Adulte / Enfant"
+msgstr "Người lớn / trẻ em"
 
 #: Reports/ConfirmReport.php:189 Reports/ConfirmReport.php:209
 #: Reports/ConfirmReportEmail.php:212 Reports/ConfirmReportEmail.php:232
-#, fuzzy
 msgid "Cell phone"
-msgstr "T&eacute;l&eacute;phone Portable"
+msgstr "Điện Thoại Di Động"
 
 #: Reports/ConfirmReport.php:190 Reports/ConfirmReport.php:210
 #: Reports/ConfirmReportEmail.php:213 Reports/ConfirmReportEmail.php:233
-#, fuzzy
 msgid "Member/Friend"
-msgstr "Membre"
+msgstr "Thành viên / bạn bè"
 
 #: Reports/DirectoryReport.php:186
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Cette option nécessite au moins la version 3.22 de MySQL! Toucher le bouton retour du navigateur pour revenir à ChurchCRM."
+msgstr "Tùy chọn này đòi hỏi phải có ít nhất là phiên bản 3.22 của MySQL! Lượt duyệt lại để trở về ChurchCRM."
 
 #: Reports/DirectoryReport.php:294 Reports/GroupReport.php:129
 msgid "Work"
-msgstr "Profession"
+msgstr "Sự nghiệp"
 
 #: Reports/DirectoryReport.php:298 Reports/GroupReport.php:134
 msgid "Cell"
-msgstr "Cellule"
+msgstr ".."
 
 #: Reports/DirectoryReport.php:303
 msgid "Work/Other Email"
-msgstr "Email Travail/Autre"
+msgstr "Làm việc / Email khác"
 
 #: Reports/FRBidSheets.php:84 Reports/FRCatalog.php:104
 #: Reports/FRCertificates.php:56
-#, fuzzy
 msgid "Estimated value "
-msgstr "Modifier la Valeur"
+msgstr "Giá trị ước tính "
 
 #: Reports/FRBidSheets.php:86 Reports/FRCatalog.php:106
 #: Reports/FRCertificates.php:58
-#, fuzzy
 msgid "Donated by "
-msgstr "Cotisation par Association"
+msgstr "tặng bằng "
 
 #: Reports/FRBidSheets.php:96
-#, fuzzy
 msgid "Paddle"
-msgstr "Second pr&eacute;nom"
+msgstr "chèo"
 
 #: Reports/FRBidSheets.php:97
 msgid "Bid"
-msgstr "Offre"
+msgstr "BID"
 
 #: Reports/FRCatalog.php:102
 msgid "Minimum bid "
-msgstr "Soumission minimal"
+msgstr "Đấu giá tối thiểu "
 
 #: Reports/FamilyPledgeSummary.php:141 Reports/ReminderReport.php:165
-#, fuzzy
 msgid "All Funds"
-msgstr "Association"
+msgstr "Tất cả các quỹ"
 
 #: Reports/FamilyPledgeSummary.php:142 Reports/ReminderReport.php:166
 msgid " for all funds"
-msgstr "pour tous les fonds"
+msgstr " cho tất cả các quỹ"
 
 #: Reports/FamilyPledgeSummary.php:144 Reports/ReminderReport.php:168
 msgid " for fund "
-msgstr "pour le fonds de"
+msgstr " cho quỹ "
 
 #: Reports/FamilyPledgeSummary.php:146 Reports/ReminderReport.php:170
 msgid "for funds "
-msgstr "pour les fonds"
+msgstr "đối với các quỹ "
 
 #: Reports/FundRaiserStatement.php:96
-#, fuzzy
 msgid "Donated Items:"
-msgstr "Date de la Cotisation:"
+msgstr "Items tặng:"
 
 #: Reports/FundRaiserStatement.php:147
 msgid "Purchased Items:"
-msgstr "Les articles achetés:"
+msgstr "Items đã mua:"
 
 #: Reports/FundRaiserStatement.php:219
 msgid "Total of all purchases: $"
-msgstr "Total de tous les achats: $"
+msgstr "Tổng số của tất cả các giao dịch mua: $"
 
 #: Reports/FundRaiserStatement.php:224
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr ""
+msgstr "10. "
 
 #: Reports/FundRaiserStatement.php:226
 msgid "Buyer # "
-msgstr "Acheteur #"
+msgstr "BÊN MUA "
 
 #: Reports/FundRaiserStatement.php:226
 msgid "Total purchases: $"
-msgstr "Total des achats: $"
+msgstr "Tổng số giao dịch mua: $"
 
 #: Reports/FundRaiserStatement.php:226
 msgid "Amount paid: ________________"
-msgstr "Montant payé: ________________"
+msgstr "Số tiền thanh toán: ________________"
 
 #: Reports/FundRaiserStatement.php:228
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
-msgstr "Payé par () Trésorerie () Vérifie () Carte de crédit ________________________________ Exp __ / __"
+msgstr "Trả () Tiền mặt () Kiểm tra () Thẻ tín dụng __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ Exp / __"
 
 #: Reports/FundRaiserStatement.php:230
 msgid "                                        Signature ________________________________________________________________"
-msgstr "Signature ________________________________________________________________"
+msgstr "                                        Chữ ký"
 
 #: Reports/PDF_Attendance.php:119
-#, fuzzy
 msgid "Totals"
-msgstr "Total"
+msgstr "Tổng số"
 
 #: Reports/PDF_CertificatesReport.php:25
 msgid "Certificate of Ownership"
-msgstr "Certificat de propriété"
+msgstr "Giấy chứng nhận quyền sở hữu"
 
 #: Reports/PDF_Directory.php:34 Reports/PDF_Directory.php:76
 msgid "Directory"
-msgstr "Annuaire"
+msgstr "Thư mục"
 
 #: Reports/PDF_Directory.php:53
-#, fuzzy
 msgid "Page"
-msgstr "Page Suivante"
+msgstr "Trang"
 
 #: Reports/PDF_Directory.php:308
 msgid "Wedding"
-msgstr "Mariage"
+msgstr "lễ cưới"
 
 #: Reports/PDF_Directory.php:335
 msgid "and"
-msgstr "et"
+msgstr "v"
 
 #: Reports/PDF_GroupDirectory.php:29
 msgid "Group Directory"
-msgstr "Annuaire du Groupe"
+msgstr "Thư mục nhóm"
 
 #: Reports/TaxReport.php:232
 msgid "Please detach this slip and mail with your next gift."
-msgstr "S&#39;il vous plaît détacher ce feuillet et le poster avec votre prochain cadeau."
+msgstr "Vui lòng tách ra trượt này và mail với món quà tiếp theo của bạn."
 
 #: Reports/TaxReport.php:234
 msgid "Please mail you next gift to "
-msgstr "S&#39;il vous plaît vous envoyer don à côté de"
+msgstr "Vui lòng gửi món quà bên cạnh "
 
 #: Reports/TaxReport.php:236
-#, fuzzy
 msgid ", Phone: "
-msgstr "T&eacute;l&eacute;phone"
+msgstr "Điện thoại: * "
 
 #: Reports/TaxReport.php:264
-#, fuzzy
 msgid "Gift Amount:"
-msgstr "Quantit&eacute;:"
+msgstr "Số tiền quà tặng:"
 
 #: Reports/TaxReport.php:267
-#, fuzzy
 msgid "Gift Designation:"
-msgstr "Description:"
+msgstr "Chỉ quà tặng:"
 
 #: Reports/VotingMembers.php:53
-#, fuzzy
 msgid "Voting members "
-msgstr "Tous les Membres:"
+msgstr "các thành viên có quyền biểu quyết "
 
 #: sundayschool/SundaySchoolClassView.php:36
 msgid "Sunday School: "
-msgstr "Ecole du dimanche : "
+msgstr "Trường Chúa Nhật: "
 
 #: sundayschool/SundaySchoolClassView.php:63
 msgid "Sunday School Class Functions"
@@ -5744,30 +5515,30 @@ msgstr ""
 
 #: sundayschool/SundaySchoolClassView.php:108
 msgid "LegacyView"
-msgstr "Hérite de"
+msgstr ""
 
 #: sundayschool/SundaySchoolClassView.php:114
 #: sundayschool/SundaySchoolDashboard.php:74
 #: sundayschool/SundaySchoolDashboard.php:140
 msgid "Teachers"
-msgstr "Moniteurs"
+msgstr "Giáo viên"
 
 #: sundayschool/SundaySchoolClassView.php:128
 #: sundayschool/SundaySchoolClassView.php:298
 msgid "Send Message"
-msgstr "Envoyer un message"
+msgstr "Gửi Tin Nhắn  "
 
 #: sundayschool/SundaySchoolClassView.php:130
 msgid "View Profile"
-msgstr "Voir le profile"
+msgstr "Xem Hồ Sơ "
 
 #: sundayschool/SundaySchoolClassView.php:140
 msgid "Quick Status"
-msgstr "Aperçu rapide"
+msgstr "Tình trạng nhanh"
 
 #: sundayschool/SundaySchoolClassView.php:154
 msgid "Birthdays by Month"
-msgstr "Anniversaire du mois"
+msgstr "Sinh nhật của Tháng"
 
 #: sundayschool/SundaySchoolClassView.php:183
 #: sundayschool/SundaySchoolDashboard.php:85
@@ -5777,88 +5548,88 @@ msgstr ""
 
 #: sundayschool/SundaySchoolClassView.php:194
 msgid "Mobile"
-msgstr "Téléphone portable"
+msgstr "Di động"
 
 #: sundayschool/SundaySchoolClassView.php:196
 #: sundayschool/SundaySchoolDashboard.php:177
 msgid "Home Address"
-msgstr "Adresse personnelle"
+msgstr "Địa chỉ nhà: ________________________________________________________________"
 
 #: sundayschool/SundaySchoolClassView.php:197
 msgid "Dad Name"
-msgstr "Nom du père"
+msgstr "Bố Tên"
 
 #: sundayschool/SundaySchoolClassView.php:198
 msgid "Dad Mobile"
-msgstr "Téléphone du père"
+msgstr "Bố Mobile"
 
 #: sundayschool/SundaySchoolClassView.php:199
 msgid "Dad Email"
-msgstr "Email du père"
+msgstr "Bố Email"
 
 #: sundayschool/SundaySchoolClassView.php:200
 msgid "Mom Name"
-msgstr "Nom de la mère"
+msgstr "Mẹ Tên"
 
 #: sundayschool/SundaySchoolClassView.php:201
 msgid "Mom Mobile"
-msgstr "Téléphone de la mère"
+msgstr "Mẹ Mobile"
 
 #: sundayschool/SundaySchoolClassView.php:202
 msgid "Mom Email"
-msgstr "Email de la mère"
+msgstr "Mẹ Email"
 
 #: sundayschool/SundaySchoolClassView.php:260
 msgid "Compose New Message"
-msgstr ""
+msgstr "Soạn tin nhắn mới"
 
 #: sundayschool/SundaySchoolClassView.php:265
 msgid "Kids Emails"
-msgstr "Mails des enfants"
+msgstr "Kids email"
 
 #: sundayschool/SundaySchoolClassView.php:270
 msgid "Parents Emails"
-msgstr "Mail des Parents"
+msgstr "Cha mẹ email"
 
 #: sundayschool/SundaySchoolClassView.php:275
 msgid "Teachers Emails"
-msgstr "Mail des Moniteurs"
+msgstr "giáo viên email"
 
 #: sundayschool/SundaySchoolClassView.php:285
 msgid "Attachment"
-msgstr "Pièce jointe"
+msgstr "Đính kèm"
 
 #: sundayschool/SundaySchoolClassView.php:288
 msgid "Max. 32MB"
-msgstr "Maximum 32MB"
+msgstr "Max. 32MB"
 
 #: sundayschool/SundaySchoolClassView.php:295
 msgid "Discard"
-msgstr "Annuler"
+msgstr "Hủy"
 
 #: sundayschool/SundaySchoolDashboard.php:39
 msgid "Sunday School Dashboard"
-msgstr "Tableau de bord école du dimanche"
+msgstr "Bảng quản lý Trường Chúa Nhật"
 
 #: sundayschool/SundaySchoolDashboard.php:62
 msgid "Classes"
-msgstr "Classes"
+msgstr "Lớp:"
 
 #: sundayschool/SundaySchoolReports.php:25
 msgid "Sunday School Reports"
-msgstr "Rapports sur l'école du dimanche"
+msgstr "Báo cáo Trường Chúa Nhật"
 
 #: sundayschool/SundaySchoolDashboard.php:51
 msgid "Generate class lists and attendance sheets"
-msgstr "Générer des listes de classe et des feuilles de présence"
+msgstr "Tạo danh sách lớp và tấm tham dự"
 
 #: sundayschool/SundaySchoolDashboard.php:129
 msgid "Export Sunday School to CSV"
-msgstr "Exporter l'école du dimanche au format CSV"
+msgstr "Trường Chúa Nhật xuất khẩu sang CSV"
 
 #: sundayschool/SundaySchoolDashboard.php:52
 msgid "Export All Classes, Kids, and Parent to CSV file"
-msgstr "Exporter toutes les classes, les enfants et les parents dans une fichier SCV"
+msgstr "Xuất tất cả lớp học, trẻ em, và cha để tập tin CSV"
 
 #: sundayschool/SundaySchoolDashboard.php:165
 msgid "Students not in a Sunday School Class"
@@ -5866,32 +5637,32 @@ msgstr ""
 
 #: sundayschool/SundaySchoolReports.php:101
 msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Au moins un groupe doit être sélectionné pour faire des listes de classes ou des feuilles de présence."
+msgstr "Ít nhất một nhóm phải được lựa chọn để làm cho danh sách lớp hoặc tờ tham dự."
 
 #: sundayschool/SundaySchoolReports.php:122
 msgid "Report Details"
-msgstr "Détails des rapports"
+msgstr ""
 
 #: sundayschool/SundaySchoolReports.php:129
 msgid "Select Group: \n"
 "To select multiple hold CTL"
-msgstr "Sélection de Groupe(s) :<br> Pour sélectionner plusieurs groupes, utiliser SHIFT et CTL en même temps"
+msgstr "Chọn Nhóm: \\ nĐể chọn nhiều giữ CTL"
 
 #: sundayschool/SundaySchoolReports.php:139
 msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Les différents groupes seront séparés par un saut de page<br>"
+msgstr "Nhiều nhóm này sẽ có một ngắt trang giữa các Nhóm <br>"
 
 #: sundayschool/SundaySchoolReports.php:141
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Lister tous les rôles (en décochant, vous listerez les rôles Teacher/Student seulement)"
+msgstr "Liệt kê tất cả các vai trò (đánh dấu ý danh sách giáo viên / vai trò sinh viên chỉ)"
 
 #: sundayschool/SundaySchoolReports.php:154
 msgid "First Sunday:"
-msgstr "Premier dimanche:"
+msgstr "Chúa Nhật Thứ Nhất:"
 
 #: sundayschool/SundaySchoolReports.php:159
 msgid "Last Sunday:"
-msgstr "Dernier dimanche:"
+msgstr "Chủ nhật trước"
 
 #: sundayschool/SundaySchoolReports.php:164
 #: sundayschool/SundaySchoolReports.php:169
@@ -5902,23 +5673,23 @@ msgstr "Dernier dimanche:"
 #: sundayschool/SundaySchoolReports.php:194
 #: sundayschool/SundaySchoolReports.php:199
 msgid "No Sunday School:"
-msgstr "Pas d&#39;école du dimanche:"
+msgstr "Không học Chủ nhật:"
 
 #: sundayschool/SundaySchoolReports.php:204
 msgid "Extra Students:"
-msgstr "Les élèves supplémentaires:"
+msgstr "Học sinh thêm:"
 
 #: sundayschool/SundaySchoolReports.php:208
 msgid "Extra Teachers:"
-msgstr "Les enseignants supplémentaires:"
+msgstr "Giáo viên phụ:"
 
 #: sundayschool/SundaySchoolReports.php:215
 msgid "Create Class List"
-msgstr "Créer la liste des classes"
+msgstr "Tạo lớp Danh sách"
 
 #: sundayschool/SundaySchoolReports.php:216
 msgid "Create Attendance Sheet"
-msgstr "Créer une feuille de présence"
+msgstr "Tạo Attendance Bảng"
 
 #: 
 msgid "System Users"
@@ -5938,7 +5709,7 @@ msgstr ""
 
 #: 
 msgid "Members"
-msgstr ""
+msgstr "Thành viên"
 
 #: 
 msgid "Add New Person"
@@ -6002,7 +5773,7 @@ msgstr ""
 
 #: 
 msgid "View All Fundraisers"
-msgstr ""
+msgstr "Xem tất cả"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6359,7 +6130,7 @@ msgstr ""
 
 #: email/Dashboard.php:63
 msgid "Members:"
-msgstr ""
+msgstr "Thành viên"
 
 #: email/Dashboard.php:64
 msgid "Campaigns:"
