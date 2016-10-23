@@ -92,7 +92,7 @@ echo "=========================================================="
 echo "================   Build ORM Classes    =================="
 echo "=========================================================="
 
-/vagrant/src/vendor/bin/propel model:build --config-dir=/vagrant/vagrant
+/vagrant/src/vendor/bin/propel model:build --config-dir=/vagrant/propel
 composer dump-autoload
 
 echo "=========================================================="
