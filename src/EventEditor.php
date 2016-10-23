@@ -27,7 +27,6 @@
 
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/RenderFunctions.php";
 
 $sPageTitle = gettext("Church Event Editor");
 
@@ -48,11 +47,6 @@ else
 $iEventID = 0;
 $iErrors = 0;
 
-$bTitleError = false;
-$bDescError = false;
-$bESDError = false;
-$bESTError = false;
-$bStatusError = false;
 if (!$sAction) { $sAction = gettext('Create Event'); }
 
 //
@@ -291,14 +285,6 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
         $EventExists = $_POST['EventExists'];
         $sEventTitle = $_POST['EventTitle'];
         $sEventDesc = $_POST['EventDesc'];
-        if (empty($_POST['EventTitle'])) {
-                $bTitleError = true;
-                $iErrors++;
-        }
-				if (empty($_POST['EventDesc'])) {
-                $bDescError = true;
-                $iErrors++;
-        }
 				if (empty($_POST['EventTypeID'])) {
                 $bEventTypeError = true;
                 $iErrors++;
@@ -310,10 +296,6 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
 					$sTypeName = $type_name;
 				}
         $sEventText = $_POST['EventText'];
-        if (empty($_POST['EventDateRange'])) {
-                $bESDError = true;
-                $iErrors++;
-        }
 				if ($_POST['EventStatus'] === NULL) {
                 $bStatusError = true;
                 $iErrors++;
@@ -470,27 +452,21 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Title:") ?></td>
     <td colspan="1" class="TextColumn">
-      <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control'>
-      <?php if ( $bTitleError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a title.") . "</span></div>"; ?>
+      <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control' required>
     </td>
   </tr>
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Desc:") ?></td>
     <td colspan="3" class="TextColumn">
-      <textarea name="EventDesc" rows="4" maxlength="100" class='form-control'><?= ($sEventDesc) ?></textarea>
-      <?php if ( $bDescError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a description.") . "</span></div>"; ?>
+      <textarea name="EventDesc" rows="4" maxlength="100" class='form-control' required><?= ($sEventDesc) ?></textarea>
     </td>
   </tr>
-  <?php
-    $eventStart = $sEventStartDate . " " . $iEventStartHour. ":".$iEventStartMins;
-    $eventEnd = $sEventEndDate . " " . $iEventEndHour. ":".$iEventEndMins;
-  ?>
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span>
       <?= gettext("Date Range:") ?>
     </td>
     <td class="TextColumn">
-      <input type="text" name="EventDateRange" value="<?= $eventStart ." - ". $eventEnd?>"
+      <input type="text" name="EventDateRange" value=""
              maxlength="10" id="EventDateRange" size="50" class='form-control' required>
     </td>
 
@@ -539,9 +515,8 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Status:") ?></td>
     <td colspan="3" class="TextColumn">
-      <?php $render->Radio("Active",   "EventStatus", 0, ($iEventStatus == 0)); ?>
-      <?php $render->Radio("Inactive", "EventStatus", 1, ($iEventStatus == 1)); ?>
-      <?php if ( $bStatusError ) echo "<div><span style=\"color: red;\">" . gettext("Is this Active or Inactive?") . "</span></div>"; ?>
+      <input type="radio" name="EventStatus" value="0" <?php if ($iEventStatus == 0) { echo 'checked'; } ?>/> <?= _("Active")?>
+      <input type="radio" name="EventStatus" value="1" <?php if ($iEventStatus == 1) { echo 'checked'; } ?>/> <?= _("Inactive")?>
     </td>
   </tr>
 
@@ -560,17 +535,23 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
     <?= gettext("Return to Events") ?>
   </a>
 </div>
-
+<?php
+$eventStart = $sEventStartDate . " " . $iEventStartHour. ":".$iEventStartMins;
+$eventEnd = $sEventEndDate . " " . $iEventEndHour. ":".$iEventEndMins;
+?>
 <script>
+  var startDate = moment("<?= $eventStart?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
+  var endDate = moment("<?= $eventEnd?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
+  $('#EventDateRange').val(startDate + " - "+ endDate);
   $('#EventDateRange').daterangepicker({
     timePicker: true,
     timePickerIncrement: 30,
     linkedCalendars: true,
     showDropdowns: true,
     format: 'YYYY-MM-DD h:mm A',
-    minDate: 1/1/1990,
-    startDate: '<?= $eventStart ?>',
-    endDate: '<?= $eventEnd ?>'
+    minDate: 1/1/1900,
+    startDate: startDate,
+    endDate: endDate
   });
 </script>
 
