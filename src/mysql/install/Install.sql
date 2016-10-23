@@ -149,7 +149,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (36, 'sGZIPname', 'gzip', 'text', 'gzip', '', 'General', NULL, NULL),
 (37, 'sZIPname', 'zip', 'text', 'zip', '', 'General', NULL, NULL),
 (38, 'sPGPname', 'gpg', 'text', 'gpg', '', 'General', NULL, NULL),
-(39, 'sLanguage', 'en_US', 'choice', 'en_US', 'Internationalization (I18n) support\rUS English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)', 'General', NULL, '{"Choices":["en_US","de_DE","en_AU","en_GB","es_ES","fr_FR","hu_HU","it_IT","nb_NO","nl_NL","pl_PL","pt_BR","ro_RO","ru_RU","se_SE","sq_AL","sv_SE","zh_CN","zh_TW"]}'),
+(39, 'sLanguage', 'en_US', 'choice', 'en_US', 'Internationalization (I18n) support\rUS English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)', 'General', NULL, '{"Choices":["en_US","de_DE","en_AU","en_GB","es_ES","fr_FR","hu_HU","it_IT","nb_NO","nl_NL","pl_PL","pt_BR","ro_RO","ru_RU","se_SE","sq_AL","sv_SE","vi_VN","zh_CN","zh_TW"]}'),
 (40, 'iFYMonth', '1', 'number', '1', 'First month of the fiscal year', 'General', NULL, NULL),
 (41, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General', NULL, NULL),
 (42, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General', NULL, NULL),
@@ -169,20 +169,18 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (56, 'bUseGoogleGeocode', '1', 'boolean', '1', 'Set true to use the Google geocoder.  Set false to use rpc.geocoder.us.', 'General', NULL, NULL),
 (57, 'iChecksPerDepositForm', '14', 'number', '14', 'Number of checks for Deposit Slip Report', 'General', NULL, NULL),
 (58, 'bUseScannedChecks', '0', 'boolean', '0', 'Set true to enable use of scanned checks', 'General', NULL, NULL),
-(61, 'iEventPeriodStartHr', '7', 'number', '7', 'Church Event Valid Period Start Hour (0-23)', 'General', NULL, NULL),
-(62, 'iEventPeriodEndHr', '18', 'number', '18', 'Church Event Valid Period End Hour (0-23, must be greater than iEventStartHr)', 'General', NULL, NULL),
-(63, 'iEventPeriodIntervalMin', '15', 'number', '15', 'Event Period interval (in minutes)', 'General', NULL, NULL),
 (64, 'sDistanceUnit', 'miles', 'choice', 'miles', 'Unit used to measure distance, miles or km.', 'General', NULL, '{"Choices":["miles","kilometers"]}'),
 (65, 'sTimeZone', 'America/New_York', 'text', 'America/New_York', 'Time zone- see http://php.net/manual/en/timezones.php for valid choices.', 'General', NULL, NULL),
 (66, 'sGMapIcons', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'text', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'Names of markers for Google Maps in order of classification', 'General', NULL, NULL),
 (67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General', NULL, NULL),
-(2000, 'mailChimpApiKey', '', 'text', '', 'see http://kb.mailchimp.com/accounts/management/about-api-keys', 'General', NULL, NULL),
-
-
--- Save 68, 69 for MRBS if installed
--- Save 70, 71 for WebCalendar if installed
 (72, 'bEnableNonDeductible', '0', 'boolean', '0', 'Enable non-deductible payments', 'General', NULL, NULL),
 (73, 'sElectronicTransactionProcessor', 'Vanco', 'choice', 'Vanco', 'Electronic Transaction Processor', 'General', NULL, '{"Choices":["Vanco","Authorize.NET"]}'),
+(80, 'sEnableSelfRegistration', '0', 'boolean', '0', 'Set true to enable family self registration.', 'General', NULL, NULL),
+(100, 'sPhoneFormat', '(999) 999-9999', 'text', '(999) 999-9999', '', 'General',NULL, NULL),
+(101, 'sPhoneFormatWithExt', '(999) 999-9999 x99999', 'text', '(999) 999-9999 x99999', '', 'General', NULL, NULL),
+(102, 'sDateFormatLong', 'yyyy-mm-dd', 'text', 'yyyy-mm-dd', '', 'General', NULL, NULL),
+(103, 'sDateFormatNoYear', 'DD/MM', 'text', 'DD/MM', '', 'General', NULL, NULL),
+(104, 'sDateFormatShort', 'yy-mm-dd', 'text', 'yy-mm-dd', '', 'General', NULL, NULL),
 (999, 'bRegistered', '0', 'boolean', '0', 'ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.', 'General', NULL, NULL),
 (1001, 'leftX', '20', 'number', '20', 'Left Margin (1 = 1/100th inch)', 'ChurchInfoReport', NULL, NULL),
 (1002, 'incrementY', '4', 'number', '4', 'Line Thickness (1 = 1/100th inch', 'ChurchInfoReport', NULL, NULL),
@@ -229,8 +227,8 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1043, 'sQBDTSettings', @JSONV , 'json', @JSONV , 'QuickBooks Deposit Ticket Settings', 'ChurchInfoReport', 'Step7', NULL),
 (1044, 'sEnableIntegrityCheck', '1', 'boolean', '1', 'Enable Integrity Check', 'General', "Step5", NULL),
 (1045, 'sIntegrityCheckInterval', '168', 'Text', '168', 'Interval in Hours for Integrity Check', 'General', "Step5", NULL),
-(1046, 'sLastIntegrityCheckTimeStamp', '', 'Text', '', 'Last Integrity Check Timestamp', 'General', "Step5", NULL);
-
+(1046, 'sLastIntegrityCheckTimeStamp', '', 'Text', '', 'Last Integrity Check Timestamp', 'General', "Step5", NULL),
+(2000, 'mailChimpApiKey', '', 'text', '', 'see http://kb.mailchimp.com/accounts/management/about-api-keys', 'General', NULL, NULL);
 -- --------------------------------------------------------
 
 --
@@ -491,7 +489,7 @@ CREATE TABLE `family_fam` (
   `fam_WeddingDate` date default NULL,
   `fam_DateEntered` datetime NOT NULL default '0000-00-00 00:00:00',
   `fam_DateLastEdited` datetime default NULL,
-  `fam_EnteredBy` smallint(5) unsigned NOT NULL default '0',
+  `fam_EnteredBy` smallint(5) NOT NULL default '0',
   `fam_EditedBy` smallint(5) unsigned default '0',
   `fam_scanCheck` text,
   `fam_scanCredit` text,
@@ -701,7 +699,7 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (30, 'sundayschool', 'root', 1, 'Sunday School', 'Sunday School', '', '', 'bAll', NULL, 0, 0, NULL, 1, 4, 'fa-child'),
 (31, 'sundayschool-dash', 'sundayschool', 0, 'Dashboard', 'Dashboard', 'sundayschool/SundaySchoolDashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
 
-(40, 'email', 'root', 0, 'email', 'email', 'email/Dashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 5, 'fa-envelope'),
+(40, 'email', 'root', 0, 'Email', 'Email', 'email/Dashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 5, 'fa-envelope'),
 
 (50, 'events', 'root', 1, 'Events', 'Events', '', 'Events', 'bAll', NULL, 0, 0, NULL, 1,6, 'fa-ticket'),
 (51, 'listevent', 'events', 0, 'List Church Events', 'List Church Events', 'ListEvents.php', 'List Church Events', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
@@ -758,7 +756,7 @@ CREATE TABLE `note_nte` (
   `nte_Text` text,
   `nte_DateEntered` datetime NOT NULL default '0000-00-00 00:00:00',
   `nte_DateLastEdited` datetime default NULL,
-  `nte_EnteredBy` mediumint(8) unsigned NOT NULL default '0',
+  `nte_EnteredBy` mediumint(8) NOT NULL default '0',
   `nte_EditedBy` mediumint(8) unsigned NOT NULL default '0',
   `nte_Type` varchar(50) DEFAULT NULL,
   PRIMARY KEY  (`nte_ID`)
@@ -879,7 +877,7 @@ CREATE TABLE `person_per` (
   `per_Envelope` smallint(5) unsigned default NULL,
   `per_DateLastEdited` datetime default NULL,
   `per_DateEntered` datetime NOT NULL default '0000-00-00 00:00:00',
-  `per_EnteredBy` smallint(5) unsigned NOT NULL default '0',
+  `per_EnteredBy` smallint(5)  NOT NULL default '0',
   `per_EditedBy` smallint(5) unsigned default '0',
   `per_FriendDate` date default NULL,
   `per_Flags` mediumint(9) NOT NULL default '0',

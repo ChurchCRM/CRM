@@ -19,9 +19,7 @@ require "Include/Functions.php";
 require "Include/CanvassUtilities.php";
 require "Include/GeoCoder.php";
 
-use ChurchCRM\Service\NoteService;
-
-$noteService = new NoteService();
+use ChurchCRM\Note;
 
 //Set the page title
 $sPageTitle = gettext("Family Editor");
@@ -89,7 +87,7 @@ $UpdateBirthYear = 0;
 
 $aFirstNameError = array();
 $aBirthDateError = array();
-$aperFlags = array(); 
+$aperFlags = array();
 
 //Is this the second pass?
 if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
@@ -155,7 +153,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$nEnvelope = 0;
 	if (array_key_exists ("Envelope", $_POST))
 		$nEnvelope = FilterInput($_POST["Envelope"], "int");
-	
+
 	if(is_numeric($nEnvelope)){ // Only integers are allowed as Envelope Numbers
 		if(intval($nEnvelope)==floatval($nEnvelope))
 			$nEnvelope= "'" . intval($nEnvelope) . "'";
@@ -184,7 +182,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$bNoFormat_HomePhone = isset($_POST["NoFormat_HomePhone"]);
 	$bNoFormat_WorkPhone = isset($_POST["NoFormat_WorkPhone"]);
 	$bNoFormat_CellPhone = isset($_POST["NoFormat_CellPhone"]);
-	
+
 	//Loop through the Family Member 'quick entry' form fields
 	for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++)
 	{
@@ -213,7 +211,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		}
 
 		// Validate any family member birthdays
-		if ((strlen($aFirstNames[$iCount]) > 0) && (strlen($aBirthYears[$iCount]) > 0)) 
+		if ((strlen($aFirstNames[$iCount]) > 0) && (strlen($aBirthYears[$iCount]) > 0))
 		{
 			if (($aBirthYears[$iCount] > 2155) || ($aBirthYears[$iCount] < 1901))
 			{
@@ -241,9 +239,9 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 	// Validate Wedding Date if one was entered
 	if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != "0000-00-00")) {
-		$dateString = parseAndValidateDate($dWeddingDate, $locale = "US", $pasfut = "past");
+		$dateString = parseAndValidateDate($dWeddingDate, $locale = "<?= $localeInfo->getCountryCode() ?>", $pasfut = "past");
 		if ( $dateString === FALSE ) {
-			$sWeddingDateError = "<span style=\"color: red; \">" 
+			$sWeddingDateError = "<span style=\"color: red; \">"
 								. gettext("Not a valid Wedding Date") . "</span>";
 			$bErrorFlag = true;
 		} else {
@@ -257,7 +255,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	if (strlen($sEmail) > 0)
 	{
 		if ( checkEmail($sEmail) == false ) {
-			$sEmailError = "<span style=\"color: red; \">" 
+			$sEmailError = "<span style=\"color: red; \">"
 								. gettext("Email is Not Valid") . "</span>";
 			$bErrorFlag = true;
 		} else {
@@ -320,22 +318,22 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						fam_Latitude,
 						fam_Longitude,
 						fam_Envelope)
-					VALUES ('"							. 
-						$sName					. "','" . 
-						$sAddress1				. "','" . 
-						$sAddress2				. "','" . 
-						$sCity					. "','" . 
-						$sState					. "','" . 
-						$sZip					. "','" . 
-						$sCountry				. "','" . 
-						$sHomePhone				. "','" . 
-						$sWorkPhone				. "','" . 
-						$sCellPhone				. "','" . 
-						$sEmail					. "'," . 
-						$dWeddingDate			. ",'" . 
-						date("YmdHis")			. "'," . 
-						$_SESSION['iUserID']	. "," . 
-						$bSendNewsLetterString	. "," . 
+					VALUES ('"							.
+						$sName					. "','" .
+						$sAddress1				. "','" .
+						$sAddress2				. "','" .
+						$sCity					. "','" .
+						$sState					. "','" .
+						$sZip					. "','" .
+						$sCountry				. "','" .
+						$sHomePhone				. "','" .
+						$sWorkPhone				. "','" .
+						$sCellPhone				. "','" .
+						$sEmail					. "'," .
+						$dWeddingDate			. ",'" .
+						date("YmdHis")			. "'," .
+						$_SESSION['iUserID']	. "," .
+						$bSendNewsLetterString	. "," .
 						$bOkToCanvassString		. ",'" .
 						$iCanvasser				. "'," .
 						$nLatitude				. "," .
@@ -364,7 +362,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 						"fam_EditedBy = " . $_SESSION['iUserID'] . "," .
 						"fam_SendNewsLetter = " . $bSendNewsLetterString;
 			if ($_SESSION['bCanvasser'])
-				$sSQL .= ", fam_OkToCanvass = " . $bOkToCanvassString . 
+				$sSQL .= ", fam_OkToCanvass = " . $bOkToCanvassString .
 									", fam_Canvasser = '" . $iCanvasser . "'";
 				$sSQL .= " WHERE fam_ID = " . $iFamilyID;
 			$bGetKeyBack = false;
@@ -383,7 +381,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 			$sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $iFamilyID . "')";
 			RunQuery($sSQL);
-			
+
 			// Add property if assigned
 			if ($iPropertyID)
 			{
@@ -441,13 +439,18 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 								$aBirthYears[$iCount],
 								$aClassification[$iCount])";
 					RunQuery($sSQL);
-					$sSQL = "INSERT INTO person_custom (per_ID) VALUES (" 
+					$sSQL = "INSERT INTO person_custom (per_ID) VALUES ("
 								. mysql_insert_id() . ")";
 					RunQuery($sSQL);
 					RunQuery("UNLOCK TABLES");
 				}
 			}
-      $noteService->addNote(0, $iFamilyID, 0, "Created", "create");
+			$note = new Note();
+			$note->setFamId($iFamilyID);
+			$note->setText("Created");
+			$note->setType("create");
+			$note->setEntered($_SESSION['iUserID']);
+			$note->save();
 		} else {
 			for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++)
 			{
@@ -474,9 +477,14 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					//RunQuery("UNLOCK TABLES");
 				}
 			}
-      $noteService->addNote(0, $iFamilyID, 0, "Updated", "edit");
+			$note = new Note();
+			$note->setFamId($iFamilyID);
+			$note->setText("Updated");
+			$note->setType("edit");
+			$note->setEntered($_SESSION['iUserID']);
+			$note->save();
 		}
-		
+
 		// Update the custom person fields.
 		if ($numCustomFields > 0)
 		{
@@ -526,7 +534,7 @@ else
 		$sSQL = "SELECT * FROM family_fam WHERE fam_ID = " . $iFamilyID;
 		$rsFamily = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsFamily));
-		
+
 		$iFamilyID = $fam_ID;
 		$sName = $fam_Name;
 		$sAddress1 = $fam_Address1;
@@ -554,16 +562,16 @@ else
 		$sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
 		$rsCustomData = RunQuery($sSQL);
 		$aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
-		
+
 		$aCustomErrors = array();
-		
+
 		if ($numCustomFields >0) {
 			mysql_data_seek($rsCustomFields,0);
 			while ($rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
 				$aCustomErrors[$rowCustomField['fam_custom_Field']] = false;
 			}
 		}
-				
+
 		$sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID =" . $iFamilyID . " ORDER BY per_fmr_ID";
 		$rsMembers = RunQuery($sSQL);
 		$iCount = 0;
@@ -575,8 +583,8 @@ else
 			$iFamilyMemberRows++;
 			$aFirstNames[$iCount] = $per_FirstName;
 			$aMiddleNames[$iCount] = $per_MiddleName;
-			$aLastNames[$iCount] = $per_LastName;		
-			$aSuffix[$iCount] = $per_Suffix;		
+			$aLastNames[$iCount] = $per_LastName;
+			$aSuffix[$iCount] = $per_Suffix;
 			$aGenders[$iCount] = $per_Gender;
 			$aRoles[$iCount] = $per_fmr_ID;
 			$aBirthMonths[$iCount] = $per_BirthMonth;
@@ -600,7 +608,7 @@ else
 		$iClassification = "0";
 		$iFamilyMemberRows = 6;
 		$bOkToCanvass = 1;
-		
+
 		$iFamilyID = -1;
 		$sName = "";
 		$sAddress1 = "";
@@ -617,7 +625,7 @@ else
 		$iCanvasser = -1;
 		$dWeddingDate = "";
 		$nLatitude = 0.0;
-		$nLongitude = 0.0;		
+		$nLongitude = 0.0;
 
 		//Loop through the Family Member 'quick entry' form fields
 		for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++)
@@ -636,7 +644,7 @@ else
 			$aPersonIDs[$iCount] = 0;
 			$aUpdateBirthYear[$iCount] = 0;
 		}
-		
+
 		$aCustomData = array ();
 		$aCustomErrors = array ();
 		if ($numCustomFields > 0) {
@@ -646,7 +654,7 @@ else
 				$aCustomData[$fam_custom_Field] = '';
 				$aCustomErrors[$fam_custom_Field] = false;
 			}
-		}		
+		}
 	}
 }
 
@@ -811,7 +819,7 @@ require "Include/Header.php";
 				<div class="row">
 					<div class="form-group col-md-4">
 						<label><?= gettext("Wedding Date:") ?></label>
-						<input type="text" class="form-control" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="12" id="WeddingDate" size="15">
+						<input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="12" id="WeddingDate" size="15">
 						<?php if ($sWeddingDateError) { ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php } ?>
 					</div>
 				</div>
@@ -1026,8 +1034,8 @@ require "Include/Header.php";
 				<input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" size="4" maxlength="4">
 				<div><font color="red"><?php if (array_key_exists ($iCount, $aBirthDateError)) echo $aBirthDateError[$iCount]; ?></font></div>
 			<?php }
-			else 
-			{ 
+			else
+			{
 				$UpdateBirthYear = 0;
 			}
 			?>
@@ -1055,7 +1063,7 @@ require "Include/Header.php";
 		echo "</table>";
 	echo "</div></div>";
 	}
-	
+
 	echo "<td colspan=\"2\" align=\"center\">";
 	echo "<input type=\"hidden\" Name=\"UpdateBirthYear\" value=\"".$UpdateBirthYear."\">";
 
@@ -1068,18 +1076,11 @@ require "Include/Header.php";
 		echo " onclick=\"javascript:document.location='FamilyList.php';\">";
 	echo "</td></tr></form></table>";
 ?>
-	<!-- InputMask -->
-	<script src="<?= $sRootPath ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
-	<script src="<?= $sRootPath ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
-	<script src="<?= $sRootPath ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
-
-	<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
 
 	<script type="text/javascript">
 		$(function() {
 			$("[data-mask]").inputmask();
 		});
-        
-        $("#WeddingDate").datepicker({format:'yyyy-mm-dd'});
+
 	</script>
 <?php require "Include/Footer.php" ?>

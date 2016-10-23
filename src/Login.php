@@ -34,7 +34,10 @@ $bSuppressSessionTests = TRUE;
 require 'Include/Functions.php';
 // Initialize the variables
 
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
+
+$systemService = new SystemService();
 
 // Is the user requesting to logoff or timed out?
 if (isset($_GET["Logoff"]) || isset($_GET['Timeout'])) {
@@ -258,6 +261,7 @@ if ($currentUser != Null)
         // Search preference
         $_SESSION['bSearchFamily'] = $currentUser->getSearchfamily();
 
+        $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         Redirect('CheckVersion.php');
         exit;
     }
@@ -265,6 +269,8 @@ if ($currentUser != Null)
 
 // Turn ON output buffering
 ob_start();
+
+$enableSelfReg = $systemConfig->getRawConfig("sEnableSelfRegistration")->getBooleanValue();
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("ChurchCRM - Login");
@@ -309,7 +315,7 @@ if (isset($loginPageMsg))
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext('Login') ?></button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in"></i> <?= gettext('Login') ?></button>
         </div>
     </div>
 </form>
@@ -320,8 +326,11 @@ if (isset($loginPageMsg))
 // An array of authorized URL's is specified in Config.php in the $URL array
 checkAllowedURL();
 ?>
-        <!--<a href="#">I forgot my password</a><br>
-        <a href="register.html" class="text-center">Register a new membership</a>-->
+        <!--<a href="external/user/password">I forgot my password</a><br> -->
+        <?php if ($enableSelfReg) { ?>
+        <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext("Register a new Family");?></a><br>
+        <?php } ?>
+      <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
     </div>
     <!-- /.login-box-body -->
 </div>

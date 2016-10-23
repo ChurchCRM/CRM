@@ -4,11 +4,11 @@ namespace ChurchCRM\Service;
 
 require_once dirname(dirname(__FILE__)) . "/Include/ReportFunctions.php";
 require_once dirname(dirname(__FILE__)) . "/Include/Functions.php";
-require_once dirname(dirname(__FILE__)) . "/Include/MICRFunctions.php";
 require_once dirname(dirname(__FILE__)) . '/vendor/autoload.php';
 require_once dirname(dirname(__FILE__)) . '/orm/conf/config.php';
 
 use ChurchCRM\PledgeQuery;
+use ChurchCRM\MICRReader;
 
 class FinancialService
 {
@@ -281,7 +281,7 @@ class FinancialService
     global $bUseScannedChecks;
     if ($bUseScannedChecks) {
       require "../Include/MICRFunctions.php";
-      $micrObj = new \MICRReader(); // Instantiate the MICR class
+      $micrObj = new MICRReader(); // Instantiate the MICR class
       $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
       if ($routeAndAccount) {
         $sSQL = "SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck=\"" . $routeAndAccount . "\"";

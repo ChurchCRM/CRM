@@ -46,7 +46,7 @@ class DataSeedService
       $family->setState($this->getStateAbb(ucwords($hoh->location->state)));
       $family->setCountry("United States");
       $family->setZip($hoh->location->zip);
-      $family->setHomephone($hoh->phone);
+      $family->setHomePhone($hoh->phone);
       $family->setDateEntered(\DateTime::createFromFormat('Y-m-d H:i:s', $hoh->registered));
       $family->setEnteredBy($_SESSION['iUserID']);
       $family->save();

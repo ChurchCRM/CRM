@@ -1,5 +1,7 @@
 <?php
 
+namespace ChurchCRM;
+
 // Utility functions used to process MICR data
 
 class MICRReader
