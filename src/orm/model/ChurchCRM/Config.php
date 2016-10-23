@@ -16,5 +16,17 @@ use ChurchCRM\Base\Config as BaseConfig;
  */
 class Config extends BaseConfig
 {
+  function getBooleanValue()
+  {
+    return boolval($this->getValue());
+  }
+
+  function getValue()
+  {
+    if (is_null($this->cfg_value)) {
+      return $this->cfg_default;
+    }
+    return $this->cfg_value;
+  }
 
 }

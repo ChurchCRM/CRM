@@ -36,8 +36,9 @@ require_once dirname(__FILE__) . '/../orm/conf/config.php';
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Version;
+use ChurchCRM\ConfigQuery;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\LocaleInfo;
-
 
 if (!function_exists("mysql_failure")) {
   function mysql_failure($message)
@@ -48,7 +49,7 @@ if (!function_exists("mysql_failure")) {
       <h3>ChurchCRM – Setup failure</h3>
 
       <div class='alert alert-danger text-center' style='margin-top: 20px;'>
-        <?= $message ?>
+        <?= gettext($message) ?>
       </div>
     </div>
     <?php
@@ -96,6 +97,10 @@ $sDocumentRoot = dirname(dirname(__FILE__));
 
 // Read values from config table into local variables
 // **************************************************
+
+$systemConfig = new SystemConfig();
+$systemConfig->init(ConfigQuery::create()->find());
+
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
   . "FROM config_cfg WHERE cfg_section='General'";
 $rsConfig = mysql_query($sSQL);         // Can't use RunQuery -- not defined yet
