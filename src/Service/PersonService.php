@@ -3,17 +3,18 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\PersonQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService
 {
 
   function search($searchTerm)
   {
-    $searchLikeString = '%$searchTerm%';
+    $searchLikeString = '%'.$searchTerm.'%';
     $people = PersonQuery::create()->
-      filterByEmail($searchLikeString, Criteria::LIKE)->_or()->
-      filterByFirstName($searchLikeString, Criteria::LIKE)->_or()->
-      filterByLastName($searchLikeString, Criteria::LIKE)->
+    filterByFirstName($searchLikeString, Criteria::LIKE)->
+    _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
+    _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
       limit(15)->find();
 
     $return = array();
