@@ -82,6 +82,17 @@ $(document).ready(function() {
     });
     $(".personSearch").select2("val", "");
   });
+  
+  $("#chkClear").change(function(){
+    if ($(this).is(":checked"))
+    {
+      $("#deleteGroupButton").removeAttr("disabled");
+    }
+    else
+    {
+      $("#deleteGroupButton").attr("disabled","disabled");
+    }
+  });
 
   $("#deleteGroupButton").on("click", function(e) {
     $.ajax({
@@ -91,8 +102,8 @@ $(document).ready(function() {
       encode: true,
       data: {"_METHOD": "DELETE"}
     }).done(function(data) {
-      if(data.success)
-        window.location.href = "GroupList.php";
+      if( data.status == "success" )
+        window.location.href = window.CRM.root+"/GroupList.php";
     });
   });
 
