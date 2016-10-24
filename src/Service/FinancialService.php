@@ -14,13 +14,11 @@ class FinancialService
 {
 
   private $baseURL;
-  private $personService;
   private $familyService;
 
   public function __construct()
   {
     $this->baseURL = $_SESSION['sRootPath'];
-    $this->personService = new PersonService();
     $this->familyService = new FamilyService();
   }
 
