@@ -27,6 +27,7 @@ adminlte
 font-awesome
 ionicons
 fullcalendar
+moment
 
 # Configuration files with passwords
 src/Include/Config.php

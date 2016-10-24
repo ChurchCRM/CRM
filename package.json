@@ -17,7 +17,7 @@
   },
   "homepage": "http://www.churchcrm.io",
   "dependencies": {
-    "admin-lte": "2.3.3",
+    "admin-lte": "2.3.7",
     "ionicons": "2.0.1",
     "font-awesome": "4.6.3",
     "fullcalendar": "3.0.1"

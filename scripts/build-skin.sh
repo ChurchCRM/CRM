@@ -37,5 +37,6 @@ rm /vagrant/src/skin/adminlte/plugins/fastclick/fastclick.min.js
 echo "FastClick Patched for iOS Select2 Bug"
 
 cp -rf /vagrant/node_modules/fullcalendar/dist/ /var/www/public/skin/fullcalendar/
+cp -rf /vagrant/node_modules/moment/min/ /var/www/public/skin/moment/
 
 echo "Build Skin: Full Calendar"
