@@ -21,5 +21,8 @@
     "ionicons": "2.0.1",
     "font-awesome": "4.6.3",
     "fullcalendar": "3.0.1"
+  },
+  "scripts": {
+    "install": "/vagrant/scripts/build-skin.sh"
   }
 }

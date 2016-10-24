@@ -70,11 +70,10 @@ sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "INSERT INTO churchcrm.version_ver (ver_
 echo "Database: development seed data deployed"
 
 echo "=========================================================="
-echo "=================   MailCatcher Setup  ==================="
+echo "===============  MV Config.php           ================="
 echo "=========================================================="
 
-sudo pkill mailcatcher
-sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
+cp /vagrant/vagrant/Config.php /vagrant/src/Include/
 
 echo "=========================================================="
 echo "=================   Composer Update    ==================="
@@ -82,33 +81,29 @@ echo "=========================================================="
 
 sudo /usr/local/bin/composer self-update
 
-echo "=========================================================="
-echo "===============  MV Config.php           ================="
-echo "=========================================================="
+echo "===============   Composer PHP           ================="
 
-cp /vagrant/vagrant/Config.php /vagrant/src/Include/
+cd /vagrant/src
+composer update
 
-echo "=========================================================="
 echo "================   Build ORM Classes    =================="
-echo "=========================================================="
 
 /vagrant/src/vendor/bin/propel model:build --config-dir=/vagrant/vagrant
 composer dump-autoload
 
 echo "=========================================================="
-echo "===============   Composer PHP & Skin    ================="
+echo "===============   NPM                    ================="
 echo "=========================================================="
 
-cd /vagrant/src
-composer update
-../vagrant/build-skin.sh
+cd /vagrant
+npm install --unsafe-perm
 
 echo "=========================================================="
-echo "==========   Starting Background Installs     ============"
+echo "=================   MailCatcher Setup  ==================="
 echo "=========================================================="
 
-/vagrant/vagrant/build.sh &
-echo "Build systems are downloading"
+sudo pkill mailcatcher
+sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
 
 echo "=========================================================="
 echo "==========   Add Locals                       ============"
@@ -132,6 +127,13 @@ sudo locale-gen sq_AL
 sudo locale-gen sv_SE
 sudo locale-gen zh_CN
 sudo locale-gen zh_TW
+
+echo "=========================================================="
+echo "==========   Starting Background Installs     ============"
+echo "=========================================================="
+
+/vagrant/vagrant/build.sh &
+echo "Build systems are downloading"
 
 echo "=========================================================="
 echo "=========================================================="
