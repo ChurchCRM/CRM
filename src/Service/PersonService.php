@@ -3,94 +3,33 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\PersonQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService
 {
-  private $baseURL;
-
-  public function __construct()
-  {
-    $this->baseURL = $_SESSION['sRootPath'];
-  }
-
-  function deleteUploadedPhoto($id)
-  {
-    requireUserGroupMembership("bEditRecords");
-    $validExtensions = array("jpeg", "jpg", "png");
-    $finalFileName = "Images/Person/" . $id;
-    $finalFileNameThumb = "Images/Person/thumbnails/" . $id;
-    $deleted = false;
-    while (list(, $ext) = each($validExtensions)) {
-      $tmpFile = $finalFileName . "." . $ext;
-      if (file_exists($tmpFile)) {
-        unlink($tmpFile);
-        $deleted = true;
-      }
-      $tmpFile = $finalFileNameThumb . "." . $ext;
-      if (file_exists($tmpFile)) {
-        unlink($tmpFile);
-        $deleted = true;
-      }
-    }
-    return $deleted;
-  }
-
-  function getUploadedPhoto($personId)
-  {
-    $validextensions = array("jpeg", "jpg", "png");
-    $hasFile = false;
-    while (list(, $ext) = each($validextensions)) {
-      $photoFile = dirname(__FILE__) . "/../Images/Person/thumbnails/" . $personId . "." . $ext;
-      if (file_exists($photoFile)) {
-        $hasFile = true;
-        $photoFile = $this->baseURL . "/Images/Person/thumbnails/" . $personId . "." . $ext;
-        break;
-      }
-    }
-
-    if ($hasFile) {
-      return $photoFile;
-    } else {
-      return "";
-    }
-  }
-
-  function getViewURI($Id)
-  {
-    return $this->baseURL . "/PersonView.php?PersonID=" . $Id;
-  }
 
   function search($searchTerm)
   {
-    $fetch = 'SELECT per_ID, per_FirstName, per_LastName, CONCAT_WS(" ",per_FirstName,per_LastName) AS fullname, per_fam_ID  FROM person_per WHERE per_FirstName LIKE \'%' . $searchTerm . '%\' OR per_LastName LIKE \'%' . $searchTerm . '%\' OR per_Email LIKE \'%' . $searchTerm . '%\' OR CONCAT_WS(" ",per_FirstName,per_LastName) LIKE \'%' . $searchTerm . '%\' order by per_FirstName LIMIT 15';
-    $result = mysql_query($fetch);
+    $searchLikeString = '%'.$searchTerm.'%';
+    $people = PersonQuery::create()->
+    filterByFirstName($searchLikeString, Criteria::LIKE)->
+    _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
+    _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
+      limit(15)->find();
 
     $return = array();
-    while ($row = mysql_fetch_array($result)) {
-      $values['id'] = $row['per_ID'];
-      $values['familyID'] = $row['per_fam_ID'];
-      $values['firstName'] = $row['per_FirstName'];
-      $values['lastName'] = $row['per_LastName'];
-      $values['displayName'] = $row['per_FirstName'] . " " . $row['per_LastName'];
-      $values['uri'] = $this->getViewURI($row['per_ID']);
+    foreach ($people as $person) {
+      $values['id'] = $person->getId();
+      $values['familyID'] = $person->getFamId();
+      $values['firstName'] = $person->getFirstName();
+      $values['lastName'] = $person->getLastName();
+      $values['displayName'] = $person->getFullName();
+      $values['uri'] = $person->getViewURI();
 
       array_push($return, $values);
     }
 
     return $return;
-  }
-
-  function getPersonByID($per_ID)
-  {
-    $fetch = "SELECT per_ID, per_FirstName, LEFT(per_MiddleName,1) AS per_MiddleName, per_LastName, per_Title, per_Suffix, per_Address1, per_Address2, per_City, per_State, per_Zip, per_CellPhone, per_Country, per_Email, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_CellPhone, fam_Email
-            FROM person_per
-            LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
-        WHERE per_ID = " . $per_ID;
-    $result = mysql_query($fetch);
-    $row = mysql_fetch_assoc($result);
-    $row['displayName'] = $row['per_FirstName'] . " " . $row['per_LastName'];
-
-    return $row;
   }
 
   function getPersonsJSON($persons)

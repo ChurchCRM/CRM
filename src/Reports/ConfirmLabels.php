@@ -18,19 +18,10 @@ require "../Include/ReportFunctions.php";
 
 use ChurchCRM\Reports\PDF_Label;
 
-class PDF_ConfirmLabels extends PDF_Label {
-
-	// Constructor
-	function PDF_ConfirmLabels($sLabelFormat) {
-   	parent::PDF_Label ($sLabelFormat);
-      
-	}
-}
-
 $sLabelFormat = FilterInput($_GET["labeltype"]);
 setcookie("labeltype", $sLabelFormat, time()+60*60*24*90, "/" );
 
-$pdf = new PDF_ConfirmLabels($sLabelFormat);
+$pdf = new PDF_Label($sLabelFormat);
 
 $sFontInfo = FontFromName($_GET["labelfont"]);
 setcookie("labelfont", $_GET["labelfont"], time()+60*60*24*90, "/" );
@@ -65,5 +56,5 @@ header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1)
 	$pdf->Output("ConfirmDataLabels" . date("Ymd") . ".pdf", "D");
 else
-	$pdf->Output();	
+	$pdf->Output();
 ?>

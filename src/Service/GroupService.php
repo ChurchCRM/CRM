@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\PersonQuery;
+
 class GroupService
 {
 
@@ -550,7 +552,6 @@ class GroupService
     }
 
     $members = array();
-    $personService = new PersonService();
     // Main select query
     $sSQL = "SELECT p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID, lst_OptionName FROM person2group2role_p2g2r
 
@@ -564,7 +565,8 @@ class GroupService
         WHERE p2g2r_grp_ID =" . $groupID . " " . $whereClause;
     $result = mysql_query($sSQL);
     while ($row = mysql_fetch_assoc($result)) {
-      $person = $personService->getPersonByID($row['p2g2r_per_ID']);
+      $dbPerson = PersonQuery::create()->findPk($row['p2g2r_per_ID']);
+      $person['displayName'] = $dbPerson->getFullName();
       $person['groupRole'] = $row['lst_OptionName'];
       array_push($members, $person);
     }
