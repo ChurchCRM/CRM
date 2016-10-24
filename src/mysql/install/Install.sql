@@ -120,7 +120,6 @@ CREATE TABLE `config_cfg` (
 --
 
 INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`, `cfg_data`) VALUES
-(1, 'sWEBCALENDARDB', '', 'text', '', 'WebCalendar database name', 'General', NULL, NULL),
 (2, 'debug', '1', 'boolean', '1', 'Set debug mode\r\nThis may be helpful for when you''re first setting up ChurchCRM, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you''ll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.', 'General', NULL, NULL),
 (5, 'sDirClassifications', '1,2,4,5', 'text', '1,2,4,5', 'Include only these classifications in the directory, comma seperated', 'General', NULL, NULL),
 (6, 'sDirRoleHead', '1,7', 'text', '1,7', 'These are the family role numbers designated as head of house', 'General', NULL, NULL),
@@ -133,7 +132,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (13, 'sMinPasswordLength', '6', 'number', '6', 'Minimum length a user may set their password to', 'General', NULL, NULL),
 (14, 'sMinPasswordChange', '4', 'number', '4', 'Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature', 'General', NULL, NULL),
 (15, 'sDisallowedPasswords', 'churchcrm,password,god,jesus,church,christian', 'text', 'churchcrm,password,god,jesus,church,christian', 'A comma-seperated list of disallowed (too obvious) passwords.', 'General', NULL, NULL),
-(16, 'iMaxFailedLogins', '50', 'number', '50', 'Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature.', 'General', NULL, NULL),
+(16, 'iMaxFailedLogins', '5', 'number', '5', 'Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature.', 'General', NULL, NULL),
 (20, 'iPDFOutputType', '1', 'number', '1', 'PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window', 'General', NULL, NULL),
 (21, 'sDefaultCity', '', 'text', '', 'Default City', 'General', NULL, NULL),
 (22, 'sDefaultState', '', 'text', '', 'Default State - Must be 2-letter abbreviation!', 'General', NULL, NULL),

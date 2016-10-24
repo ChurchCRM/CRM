@@ -30,6 +30,7 @@ Update `config_cfg` set
 `cfg_type` = 'choice'
 where `cfg_id` = 1037;
 
+delete from config_cfg where cfg_id ='1';
 delete from config_cfg where cfg_id ='18';
 delete from config_cfg where cfg_id ='2001';
 
