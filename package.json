@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/ChurchCRM/CRM/issues"
   },
-  "homepage": "www.churchcrm.io",
+  "homepage": "http://www.churchcrm.io",
   "dependencies": {
     "admin-lte": "2.3.3",
     "ionicons": "2.0.1",
