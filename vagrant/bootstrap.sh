@@ -114,24 +114,24 @@ echo "=========================================================="
 echo "==========   Add Locals                       ============"
 echo "=========================================================="
 
-sudo locale-gen de_DE &
-sudo locale-gen en_AU &
-sudo locale-gen en_GB &
-sudo locale-gen es_ES &
-sudo locale-gen fr_FR &
-sudo locale-gen hu_HU &
-sudo locale-gen it_IT &
-sudo locale-gen nb_NO &
-sudo locale-gen nl_NL &
-sudo locale-gen pl_PL &
-sudo locale-gen pt_BR &
-sudo locale-gen ro_RO &
-sudo locale-gen ru_RU &
-sudo locale-gen se_SE &
-sudo locale-gen sq_AL &
-sudo locale-gen sv_SE &
-sudo locale-gen zh_CN &
-sudo locale-gen zh_TW &
+sudo locale-gen de_DE
+sudo locale-gen en_AU
+sudo locale-gen en_GB
+sudo locale-gen es_ES
+sudo locale-gen fr_FR
+sudo locale-gen hu_HU
+sudo locale-gen it_IT
+sudo locale-gen nb_NO
+sudo locale-gen nl_NL
+sudo locale-gen pl_PL
+sudo locale-gen pt_BR
+sudo locale-gen ro_RO
+sudo locale-gen ru_RU
+sudo locale-gen se_SE
+sudo locale-gen sq_AL
+sudo locale-gen sv_SE
+sudo locale-gen zh_CN
+sudo locale-gen zh_TW
 
 echo "=========================================================="
 echo "=========================================================="
