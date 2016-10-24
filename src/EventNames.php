@@ -169,12 +169,12 @@ if (FilterInput($_POST["Action"]) == "NEW")
           <div class='col-sm-6 event-recurrance-patterns'>
             <div class='row form-radio-list'>
               <div class='col-xs-12'>
-                <input type="radio" name="newEvtTypeRecur" value="none" checked/> None
+                <input type="radio" name="newEvtTypeRecur" value="none" checked/> <?= gettext("None"); ?>
               </div>
             </div>
             <div class='row form-radio-list'>
               <div class='col-xs-5'>
-                <input type="radio" name="newEvtTypeRecur" value="weekly"/> Weekly
+                <input type="radio" name="newEvtTypeRecur" value="weekly"/> <?= gettext("Weekly") ?>
               </div>
               <div class='col-xs-7'>
                 <select name="newEvtRecurDOW" size="1" class='form-control pull-left' disabled>
@@ -190,7 +190,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
             </div>
             <div class='row form-radio-list'>
               <div class='col-xs-5'>
-                <input type="radio" name="newEvtTypeRecur" value="monthly"/> Monthly
+                <input type="radio" name="newEvtTypeRecur" value="monthly"/> <?= gettext("Monthly")?>
               </div>
               <div class='col-xs-7'>
                 <select name="newEvtRecurDOM" size="1" class='form-control pull-left' disabled>
@@ -208,7 +208,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
             </div>
             <div class='row form-radio-list'>
               <div class='col-xs-5'>
-                <input type="radio" name="newEvtTypeRecur" value="yearly"/> Yearly
+                <input type="radio" name="newEvtTypeRecur" value="yearly"/> <?= gettext("Yearly")?>
               </div>
               <div class='col-xs-7'>
                 <input type="text" disabled class="form-control" name="newEvtRecurDOY" maxlength="10" id="nSD" size="11" placeholder='YYYY-MM-DD' data-provide="datepicker" data-format='mm/dd/yyyy' />
