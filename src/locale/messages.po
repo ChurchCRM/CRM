@@ -8,7 +8,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-23 03:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +15,62 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: QueryView.php:22
+msgid "Query View"
+msgstr ""
+
+#: QueryView.php:99
+msgid "This value is required."
+msgstr ""
+
+#: QueryView.php:115
+msgid "This value must be numeric."
+msgstr ""
+
+#: QueryView.php:123
+msgid "This value must be at least "
+msgstr ""
+
+#: QueryView.php:129 QueryView.php:143
+msgid "This value cannot be more than "
+msgstr ""
+
+#: QueryView.php:143 QueryView.php:149
+msgid " characters long"
+msgstr ""
+
+#: QueryView.php:149
+msgid "This value cannot be less than "
+msgstr ""
+
+#: QueryView.php:197
+msgid " record(s) returned"
+msgstr ""
+
+#: QueryView.php:278
+msgid "Add Results To Cart"
+msgstr ""
+
+#: QueryView.php:279
+msgid "Intersect Results With Cart"
+msgstr ""
+
+#: QueryView.php:280
+msgid "Remove Results From Cart"
+msgstr ""
+
+#: QueryView.php:285
+msgid "Run Query Again"
+msgstr ""
+
+#: QueryView.php:286
+msgid "Return to Query Menu"
+msgstr ""
+
+#: QueryView.php:402
+msgid "Execute Query"
+msgstr ""
 
 #: Register.php:22
 msgid "Software Registration"
