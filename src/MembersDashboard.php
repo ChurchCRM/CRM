@@ -33,7 +33,7 @@ $classifications = new stdClass();
 while (list ($lst_OptionID,$lst_OptionName) = mysql_fetch_row($rsClassification))
 {
   $classifications->$lst_OptionName = $lst_OptionID;
- 
+
 }
 
 $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
@@ -64,9 +64,6 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
 }
 
 ?>
-
-<!-- this page specific styles -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
 
 <!-- Default box -->
 <div class="box">
