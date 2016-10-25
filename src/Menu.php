@@ -57,8 +57,6 @@ $sPageTitle = gettext("Welcome to"). " <b>Church</b>CRM";
 
 require 'Include/Header.php';
 ?>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
-
 <!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-3 col-xs-6">
@@ -126,7 +124,7 @@ require 'Include/Header.php';
                   <?= $groupStats['groups'] -$groupStats['sundaySchoolClasses']  ?>
                 </h3>
                 <p>
-                    <?= gettext("Groups") ?> 
+                    <?= gettext("Groups") ?>
                 </p>
             </div>
             <div class="icon">
@@ -139,9 +137,9 @@ require 'Include/Header.php';
     </div><!-- ./col -->
 </div><!-- /.row -->
 
-<?php 
+<?php
 if ($depositData) // If the user has Finance permissions, then let's display the deposit line chart
-{ 
+{
 ?>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -159,7 +157,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
             </div>
     </div>
 </div>
-<?php 
+<?php
 }  //END IF block for Finance permissions to include HTML for Deposit Chart
  ?>
 
@@ -283,14 +281,14 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 
 <!-- this page specific inline scripts -->
 <script>
-<?php 
+<?php
 if ($depositData) // If the user has Finance permissions, then let's display the deposit line chart
-{ 
+{
 ?>
     //---------------
     //- LINE CHART  -
@@ -302,11 +300,11 @@ if ($depositData) // If the user has Finance permissions, then let's display the
         datasets: [
             {
                 data: []
-            }     
+            }
         ]
     };
-    
-    
+
+
   $( document ).ready(function() {
     $.each(lineDataRaw.Deposits, function(i, val) {
         lineData.labels.push(moment(val.Date).format("MM-DD-YY"));
@@ -317,7 +315,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
 
     var lineChart = new Chart(lineChartCanvas).Line(lineData);
   });
-<?php 
+<?php
 }  //END IF block for Finance permissions to include JS for Deposit Chart
 ?>
 </script>

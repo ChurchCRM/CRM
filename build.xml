@@ -31,9 +31,6 @@
                 <exclude name="composer.lock"/>
                 <exclude name="signatures.json"/>
                 <exclude name="Include/Config.php"/>
-                <exclude name="vendor/almasaeed2010/**"/>
-                <exclude name="vendor/components/**"/>
-                <exclude name="vendor/driftyco/**"/>
                 <exclude name="vendor/propel/propel/tests/**"/>
                 <exclude name="vendor/guzzle/guzzle/tests/**"/>
                 <exclude name="vendor/guzzle/guzzle/docs/**"/>
