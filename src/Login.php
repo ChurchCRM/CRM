@@ -287,7 +287,7 @@ require ("Include/HeaderNotLoggedIn.php");
 
 <?php
 if (isset($_GET['Timeout']))
-    $loginPageMsg = "Your previous session timed out.  Please login again.";
+    $loginPageMsg = gettext('Your previous session timed out.  Please login again.');
 
 // output warning and error messages
 if (isset($sErrorText))
