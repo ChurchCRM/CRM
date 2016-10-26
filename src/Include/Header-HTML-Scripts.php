@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="<?= $sRootPath ?>/skin/churchcrm.min.css">
 
 <!-- jQuery 2.1.4 -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/jQuery/jQuery-2.2.3.min.js"></script>
+<script src="<?= $sRootPath ?>/skin/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- jQuery UI -->
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/jQueryUI/jquery-ui.min.js"></script>
 
