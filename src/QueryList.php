@@ -42,9 +42,9 @@ while ($aRow = mysql_fetch_array($rsQueries))
 	{
 		// Display the query name and description
 		echo "<p>";
-		echo "<a href=\"QueryView.php?QueryID=" . $qry_ID . "\">" . $qry_Name . "</a>";
+		echo "<a href=\"QueryView.php?QueryID=" . $qry_ID . "\">" . gettext($qry_Name) . "</a>";
 		echo "<br>";
-		echo $qry_Description;
+		echo gettext($qry_Description);
 		echo "</p>";
 	}
 }
