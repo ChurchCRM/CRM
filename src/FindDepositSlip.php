@@ -66,7 +66,7 @@ require "Include/Header.php";
       <div class="row">
         <div class="container-fluid">
           <div class="col-lg-4">
-            <label for="addNewGruop">Deposit Comment</label>
+            <label for="addNewGruop"><?= gettext("Deposit Comment") ?></label>
             <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
           </div>
           <div class="col-lg-3">

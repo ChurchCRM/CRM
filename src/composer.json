@@ -43,12 +43,19 @@
   },
   "autoload": {
     "classmap": [
-      "orm/"
+      "ChurchCRM/"
     ],
     "psr-4": {
       "\\": "bin/",
       "ChurchCRM\\": "ChurchCRM/",
       "ChurchCRM\\Service\\": "Service/"
     }
+  },
+  "repositories": {
+      "packagist": { 
+        "url": "https://packagist.org", 
+        "type": "composer" 
+      }
   }
+
 }
