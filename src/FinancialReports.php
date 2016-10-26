@@ -34,7 +34,7 @@ if ($sReportType == "" && array_key_exists ("ReportType", $_GET))
 // Set the page title and include HTML header
 $sPageTitle = gettext("Financial Reports");
 if ($sReportType)
-    $sPageTitle .= ": $sReportType";
+    $sPageTitle .= ": ".gettext($sReportType);
 require "Include/Header.php";
 ?>
 <div class="box box-body">
@@ -53,7 +53,7 @@ if ($sReportType == "") {
     echo "<td class=TextColumn><select name=ReportType>";
     echo "<option value=0>" . gettext("Select Report Type") ."</option>";
     echo "<option value='Pledge Summary'>" . gettext("Pledge Summary") ."</option>";
-    echo "<option value='Pledge Family Summary'>" . gettext("Pledge FamilySummary") ."</option>";
+    echo "<option value='Pledge Family Summary'>" . gettext("Pledge Family Summary") ."</option>";
     echo "<option value='Pledge Reminders'>" . gettext("Pledge Reminders") ."</option>";
     echo "<option value='Voting Members'>" . gettext("Voting Members") ."</option>";
     echo "<option value='Giving Report'>" . gettext("Giving Report (Tax Statements)") ."</option>";
@@ -131,8 +131,8 @@ if ($sReportType == "") {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllClasses" class="btn">Add All Classes</button>
-        <button type="button" id="clearAllClasses" class="btn">Clear All Classes</button><br/><br/>
+        <button type="button" id="addAllClasses" class="btn"><?= gettext("Add All Funds") ?></button>
+        <button type="button" id="clearAllClasses" class="btn"><?= gettext("Clear All Funds") ?></button><br/><br/>
         </td></tr>
         <?php
 
@@ -176,8 +176,8 @@ if ($sReportType == "") {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllFamilies" class="btn">Add All Families</button>
-        <button type="button" id="clearAllFamilies" class="btn">Clear All Families</button><br/><br/>
+        <button type="button" id="addAllFamilies" class="btn"><?= gettext("Add All Families") ?></button>
+        <button type="button" id="clearAllFamilies" class="btn"><?= gettext("Clear All Families") ?></button><br/><br/>
         </td></tr>
         <?php
     }
@@ -243,8 +243,8 @@ if ($sReportType == "") {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllFunds" class="btn">Add All Funds</button>
-        <button type="button" id="clearAllFunds" class="btn">Clear All Funds</button><br/><br/>
+        <button type="button" id="addAllFunds" class="btn"><?= gettext("Add All Funds") ?></button>
+        <button type="button" id="clearAllFunds" class="btn"><?= gettext("Clear All Funds") ?></button><br/><br/>
         </td></tr>
         
         <?php

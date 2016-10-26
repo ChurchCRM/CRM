@@ -148,8 +148,8 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 			$sel2 = "";
 		}	
 		echo "<td class=TextColumnWithBottomBorder><select name=\"new_value[$ucfg_id]\">";
-		echo "<option value='' $sel1>False";
-		echo "<option value='1' $sel2>True";
+		echo "<option value='' $sel1>".gettext('False');
+		echo "<option value='1' $sel2>".gettext('True');
 		echo "</select></td>";
 	}
 		

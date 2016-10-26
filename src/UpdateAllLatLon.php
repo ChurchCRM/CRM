@@ -91,7 +91,7 @@ echo '<br/><p>' . gettext('Update Finished') . '</p>';
 </div>
 <div class="box box-warning">
 <div class="box-header">
-    <b>No coordinates found</b>
+    <b><?= gettext("No coordinates found") ?></b>
 </div>
 <div class="box-body ">
 <?
