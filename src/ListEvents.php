@@ -90,7 +90,7 @@ $numRows = mysql_num_rows($rsOpps);
 <td align="center" width="50%"><p><strong><?= gettext("Select Event Types To Display") ?></strong></p>
     <form name="EventTypeSelector" method="POST" action="ListEvents.php">
        <select name="WhichType" onchange="javascript:this.form.submit()" class='form-control'>
-        <option value="All">All</option>
+        <option value="All"><?= gettext("All") ?></option>
         <?php
         for ($r = 1; $r <= $numRows; $r++)
         {
