@@ -34,7 +34,7 @@ require '../Include/Header.php';
       <div class="box-body">
         <?= gettext("You can import the generated CSV file to external email system.
         For MailChimp see:") ?> <a href="http://kb.mailchimp.com/lists/growth/import-subscribers-to-a-list"
-                                   target="_blank">import subscribers to a list.</a>
+                                   target="_blank"><?= gettext("import subscribers to a list.") ?></a>
         <br/><br/>
 
         <p class="text-center">
@@ -92,10 +92,9 @@ require '../Include/Header.php';
     <div class="col-lg-12 col-md-7 col-sm-3">
       <div class="box box-body">
         <div class="alert alert-danger alert-dismissible">
-          <h4><i class="icon fa fa-ban"></i> MailChimp is not configured</h4>
-          Please update the MailChimp API key in Setting-><a href="../SystemSettings.php">Edit General Settings</a>,
-          then update mailChimpApiKey. For more info see our <a href="http://docs.churchcrm.io">MailChimp support
-            docs.</a>
+          <h4><i class="icon fa fa-ban"></i> MailChimp <?= gettext("is not configured") ?></h4>
+          <?= gettext("Please update the") ?> MailChimp <?= gettext("API key in Setting->") ?><a href="../SystemSettings.php"><?= gettext("Edit General Settings") ?></a>,
+          <?= gettext("then update") ?> mailChimpApiKey. <?= gettext("For more info see our ") ?><a href="http://docs.churchcrm.io"> MailChimp <?= gettext("support docs.") ?></a>
         </div>
       </div>
     </div>
