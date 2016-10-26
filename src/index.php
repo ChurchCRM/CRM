@@ -53,7 +53,7 @@ else if (file_exists($fileName))
 }
 else
 {
-  Header("Location: index.php");
+  header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
   exit;
 }
 ?>
