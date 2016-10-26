@@ -169,7 +169,7 @@ if ($iFamilyID == $fam_ID) {
           <?php } ?>
           <hr/>
           <ul class="fa-ul">
-            <li><i class="fa-li glyphicon glyphicon-home"></i>Address: <span>
+            <li><i class="fa-li glyphicon glyphicon-home"></i><?= gettext("Address:") ?><span>
 					<a
             href="http://maps.google.com/?q=<?= getMailingAddress($fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) ?>"
             target="_blank"><?php
