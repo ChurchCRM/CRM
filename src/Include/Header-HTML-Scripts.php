@@ -14,9 +14,10 @@
 <!-- AdminLTE DatePicker -->
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
 <?php
-if ( $localeInfo->getLanguageCode() != "en" ) {
+$localizationFile = "skin/adminlte/plugins/datepicker/locales/bootstrap-datepicker.".$localeInfo->getLanguageCode().".js";
+if ( file_exists(_DIR__."/../".$localizationFile ) ) {
   ?>
-  <script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/locales/bootstrap-datepicker.<?= $localeInfo->getLanguageCode() ?>.js" charset="UTF-8" type="text/javascript"></script>
+  <script src="<?= $sRootPath."/".$localizationFile ?>" charset="UTF-8" type="text/javascript"></script>
   <?php 
 }
 ?>
