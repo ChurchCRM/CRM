@@ -1,8 +1,8 @@
 <?php
 /*******************************************************************************
  *
- *  filename    : CSVExport.php
- *  description : options for creating csv file
+ *  filename    : SystemSettings.php
+ *  description : setup de systema settings
  *
  *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
@@ -234,7 +234,7 @@ $rsConfigs = RunQuery($sSQL);
                   ?>
                   <td>
                     <?php if ($cfg_tooltip != "") { ?>
-                      <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="<?= $cfg_tooltip ?>"></i>
+                      <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="<?= gettext($cfg_tooltip) ?>"></i>
                     <?php } ?>
                     <?= $display_default ?>
                   </td>
