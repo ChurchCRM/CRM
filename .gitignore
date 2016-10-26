@@ -14,6 +14,7 @@
 vendor
 composer.lock
 node_modules
+npm-debug.log*
 
 # Uploaded Images
 thumbnails
@@ -26,12 +27,13 @@ adminlte
 font-awesome
 ionicons
 fullcalendar
+moment
 
 # Configuration files with passwords
 src/Include/Config.php
 
 target
-/src/orm/model/ChurchCRM/Base/
-/src/orm/model/ChurchCRM/Map/
+/src/ChurchCRM/model/ChurchCRM/Base/
+/src/ChurchCRM/model/ChurchCRM/Map/
 /src/signatures.json
 /src/integrityCheck.json

@@ -31,9 +31,6 @@
                 <exclude name="composer.lock"/>
                 <exclude name="signatures.json"/>
                 <exclude name="Include/Config.php"/>
-                <exclude name="vendor/almasaeed2010/**"/>
-                <exclude name="vendor/components/**"/>
-                <exclude name="vendor/driftyco/**"/>
                 <exclude name="vendor/propel/propel/tests/**"/>
                 <exclude name="vendor/guzzle/guzzle/tests/**"/>
                 <exclude name="vendor/guzzle/guzzle/docs/**"/>
@@ -80,7 +77,7 @@
 
     <target name="locale-update">
         <echo message="building messages.po"/>
-        <exec command="find . -iname '*.php' | xargs xgettext --from-code=UTF-8 -o locale/messages.po -L PHP" dir="src" passthru="true"/>
+        <exec command="find . -iname '*.php' | grep -v ./vendor | xargs xgettext --from-code=UTF-8 -o locale/messages.po -L PHP" dir="src" passthru="true"/>
     </target>
 
     <target name="release" depends="locale-update, package, rev-build-number" />

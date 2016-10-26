@@ -70,11 +70,10 @@ sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "INSERT INTO churchcrm.version_ver (ver_
 echo "Database: development seed data deployed"
 
 echo "=========================================================="
-echo "=================   MailCatcher Setup  ==================="
+echo "===============  MV Config.php           ================="
 echo "=========================================================="
 
-sudo pkill mailcatcher
-sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
+cp /vagrant/vagrant/Config.php /vagrant/src/Include/
 
 echo "=========================================================="
 echo "=================   Composer Update    ==================="
@@ -82,26 +81,52 @@ echo "=========================================================="
 
 sudo /usr/local/bin/composer self-update
 
-echo "=========================================================="
-echo "===============  MV Config.php           ================="
-echo "=========================================================="
-
-cp /vagrant/vagrant/Config.php /vagrant/src/Include/
-
-echo "=========================================================="
-echo "================   Build ORM Classes    =================="
-echo "=========================================================="
-
-/vagrant/src/vendor/bin/propel model:build --config-dir=/vagrant/vagrant
-composer dump-autoload
-
-echo "=========================================================="
-echo "===============   Composer PHP & Skin    ================="
-echo "=========================================================="
+echo "===============   Composer PHP           ================="
 
 cd /vagrant/src
 composer update
-../vagrant/build-skin.sh
+
+echo "================   Build ORM Classes    =================="
+
+/vagrant/src/vendor/bin/propel model:build --config-dir=/vagrant/propel
+composer dump-autoload
+
+echo "=========================================================="
+echo "===============   NPM                    ================="
+echo "=========================================================="
+
+cd /vagrant
+npm install --unsafe-perm
+
+echo "=========================================================="
+echo "=================   MailCatcher Setup  ==================="
+echo "=========================================================="
+
+sudo pkill mailcatcher
+sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
+
+echo "=========================================================="
+echo "==========   Add Locals                       ============"
+echo "=========================================================="
+
+sudo locale-gen de_DE
+sudo locale-gen en_AU
+sudo locale-gen en_GB
+sudo locale-gen es_ES
+sudo locale-gen fr_FR
+sudo locale-gen hu_HU
+sudo locale-gen it_IT
+sudo locale-gen nb_NO
+sudo locale-gen nl_NL
+sudo locale-gen pl_PL
+sudo locale-gen pt_BR
+sudo locale-gen ro_RO
+sudo locale-gen ru_RU
+sudo locale-gen se_SE
+sudo locale-gen sq_AL
+sudo locale-gen sv_SE
+sudo locale-gen zh_CN
+sudo locale-gen zh_TW
 
 echo "=========================================================="
 echo "==========   Starting Background Installs     ============"
@@ -109,29 +134,6 @@ echo "=========================================================="
 
 /vagrant/vagrant/build.sh &
 echo "Build systems are downloading"
-
-echo "=========================================================="
-echo "==========   Add Locals                       ============"
-echo "=========================================================="
-
-sudo locale-gen de_DE &
-sudo locale-gen en_AU &
-sudo locale-gen en_GB &
-sudo locale-gen es_ES &
-sudo locale-gen fr_FR &
-sudo locale-gen hu_HU &
-sudo locale-gen it_IT &
-sudo locale-gen nb_NO &
-sudo locale-gen nl_NL &
-sudo locale-gen pl_PL &
-sudo locale-gen pt_BR &
-sudo locale-gen ro_RO &
-sudo locale-gen ru_RU &
-sudo locale-gen se_SE &
-sudo locale-gen sq_AL &
-sudo locale-gen sv_SE &
-sudo locale-gen zh_CN &
-sudo locale-gen zh_TW &
 
 echo "=========================================================="
 echo "=========================================================="

@@ -45,7 +45,6 @@ require "Include/Header.php"; ?>
 &nbsp;
 
 <!-- fullCalendar 2.2.5 -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/daterangepicker/moment.min.js"></script>
 <script src="<?= $sRootPath ?>/skin/fullcalendar/fullcalendar.min.js"></script>
 <script src="<?= $sRootPath ?>/skin/fullcalendar/locale-all.js"></script>
 <script>

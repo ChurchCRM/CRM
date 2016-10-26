@@ -36,9 +36,6 @@
     "monolog/monolog": "^1.17",
     "authorizenet/authorizenet": "1.8.0",
     "knplabs/github-api": "~1.4",
-    "almasaeed2010/adminlte": "2.3.3",
-    "driftyco/ionicons": "2.0.1",
-    "components/font-awesome": "4.6.3",
     "propel/propel": "~2.0@dev",
     "setasign/fpdf": "1.8.1",
     "phpmailer/phpmailer": "5.2.*",
@@ -46,12 +43,19 @@
   },
   "autoload": {
     "classmap": [
-      "orm/"
+      "ChurchCRM/"
     ],
     "psr-4": {
       "\\": "bin/",
       "ChurchCRM\\": "ChurchCRM/",
       "ChurchCRM\\Service\\": "Service/"
     }
+  },
+  "repositories": {
+      "packagist": { 
+        "url": "https://packagist.org", 
+        "type": "composer" 
+      }
   }
+
 }

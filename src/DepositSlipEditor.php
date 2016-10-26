@@ -66,8 +66,6 @@ $rsUpdate = RunQuery($sSQL);
 
 require "Include/Header.php";
 ?>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
-
 <div class="row">
   <div class="col-lg-7">
     <div class="box">
@@ -229,9 +227,9 @@ require "Include/Header.php";
   var depositType = '<?php echo $thisDeposit->getType(); ?>';
   var depositSlipID = <?php echo $iDepositSlipID; ?>;
   var isDepositClosed = Boolean(<?=  $thisDeposit->getClosed();  ?>);
-  var fundData = <?= json_encode($fundData) ?>; 
+  var fundData = <?= json_encode($fundData) ?>;
   var pledgeData = <?= json_encode($pledgeTypeData) ?>;
-  
+
   $(document).ready(function() {
     initPaymentTable();
     initCharts(pledgeData, fundData);
