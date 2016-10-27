@@ -43,7 +43,7 @@ require 'Include/Header.php';
 </div>
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title">Restore Status:</h3>&nbsp;<h3 class="box-title" id="restorestatus"
+    <h3 class="box-title"><?= gettext("Restore Status:") ?></h3>&nbsp;<h3 class="box-title" id="restorestatus"
                                                         style="color:red"><?= gettext("No Restore Running") ?></h3>
     <div id="restoreMessages"></div>
     <span id="restoreNextStep"></span>
