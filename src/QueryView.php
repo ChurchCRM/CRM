@@ -300,7 +300,7 @@ function DisplayQueryInfo()
 
 	//Display the information about this query
 	echo "<p align=\"center\">";
-	echo "<b>" . $qry_Name . "</b><br>" . $qry_Description;
+	echo "<b>" . gettext($qry_Name) . "</b><br>" . gettext($qry_Description);
 	echo "</p>";
 
 }
@@ -326,7 +326,7 @@ function DisplayParameterForm()
 
 		//Begin the row, giving the name of the parameter
 		echo "<tr>";
-		echo "<td class=\"LabelColumn\">" . $qrp_Name . ":</td>";
+		echo "<td class=\"LabelColumn\">" . gettext($qrp_Name) . ":</td>";
 
 		//Determine the type of parameter we're dealing with
 		switch ($qrp_Type)
@@ -355,7 +355,7 @@ function DisplayParameterForm()
 					extract($ThisRow);
 
 					//Display the OPTION tag
-					echo "<option value=\"" . $qpo_Value . "\">" . $qpo_Display . "</option>";
+					echo "<option value=\"" . $qpo_Value . "\">" . gettext($qpo_Display) . "</option>";
 				}
 
 				//Close the SELECT tag and table cell
@@ -384,7 +384,7 @@ function DisplayParameterForm()
 		}
 
 		//Display the query description and close the row
-		echo "<td  valign=\"top\" class=\"SmallText\">" . $qrp_Description . "</td>";
+		echo "<td  valign=\"top\" class=\"SmallText\">" . gettext($qrp_Description) . "</td>";
 		echo "</tr>";
 
 		//If we are re-rendering this form due to a validation error, display the error
