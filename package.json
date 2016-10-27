@@ -23,6 +23,7 @@
     "fullcalendar": "3.0.1"
   },
   "scripts": {
-    "install": "/vagrant/scripts/build-skin.sh"
+    "install": "/vagrant/scripts/build-skin.sh",
+    "locale": "cd src && find . -iname '*.php' | grep -v ./vendor | xargs xgettext --from-code=UTF-8 -o locale/messages.po -L PHP"
   }
 }
