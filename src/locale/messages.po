@@ -8,7 +8,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-24 04:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,7 +123,8 @@ msgid "Pledge Reminder Report"
 msgstr ""
 
 #: ReminderReport.php:46 sundayschool/SundaySchoolReports.php:147
-#: AutoPaymentEditor.php:620 FinancialReports.php:201
+#: AutoPaymentEditor.php:620 CanvassAutomation.php:152
+#: FinancialReports.php:201
 msgid "Fiscal Year:"
 msgstr ""
 
@@ -495,6 +495,10 @@ msgstr ""
 msgid "Upload Files"
 msgstr ""
 
+#: RestoreDatabase.php:46
+msgid "Restore Status:"
+msgstr ""
+
 #: RestoreDatabase.php:47
 msgid "No Restore Running"
 msgstr ""
@@ -838,19 +842,19 @@ msgstr ""
 msgid "Add to Group"
 msgstr ""
 
-#: Service/FinancialService.php:485 PledgeEditor.php:289
+#: Service/FinancialService.php:483 PledgeEditor.php:289
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr ""
 
-#: Service/FinancialService.php:490 PledgeEditor.php:296
+#: Service/FinancialService.php:488 PledgeEditor.php:296
 msgid "At least one fund must have a non-zero amount."
 msgstr ""
 
-#: Service/FinancialService.php:514 PledgeEditor.php:311
+#: Service/FinancialService.php:512 PledgeEditor.php:311
 msgid "Must specify non-zero check number"
 msgstr ""
 
-#: Service/FinancialService.php:519 PledgeEditor.php:318
+#: Service/FinancialService.php:517 PledgeEditor.php:318
 msgid "Check number not valid for 'CASH' payment"
 msgstr ""
 
@@ -915,6 +919,16 @@ msgstr ""
 #: SettingsIndividual.php:119 SettingsIndividual.php:166 SettingsUser.php:107
 #: SettingsUser.php:170 SystemSettings.php:249 UserEditor.php:516
 msgid "Save Settings"
+msgstr ""
+
+#: SettingsIndividual.php:151 SettingsUser.php:123 SettingsUser.php:154
+#: SystemSettings.php:215 UserEditor.php:471 UserEditor.php:499
+msgid "False"
+msgstr ""
+
+#: SettingsIndividual.php:152 SettingsUser.php:124 SettingsUser.php:155
+#: SystemSettings.php:216 UserEditor.php:472 UserEditor.php:500
+msgid "True"
 msgstr ""
 
 #: SettingsUser.php:78
@@ -1106,7 +1120,7 @@ msgstr ""
 msgid "Generate class lists and attendance sheets"
 msgstr ""
 
-#: sundayschool/SundaySchoolDashboard.php:51 MembersDashboard.php:228
+#: sundayschool/SundaySchoolDashboard.php:51 MembersDashboard.php:225
 msgid "Reports"
 msgstr ""
 
@@ -1122,20 +1136,20 @@ msgstr ""
 msgid "Classes"
 msgstr ""
 
-#: sundayschool/SundaySchoolDashboard.php:97 MembersDashboard.php:147
-#: Menu.php:72
+#: sundayschool/SundaySchoolDashboard.php:97 MembersDashboard.php:144
+#: Menu.php:70
 msgid "Families"
 msgstr ""
 
-#: sundayschool/SundaySchoolDashboard.php:109 MembersDashboard.php:364
+#: sundayschool/SundaySchoolDashboard.php:109 MembersDashboard.php:361
 msgid "Boys"
 msgstr ""
 
-#: sundayschool/SundaySchoolDashboard.php:121 MembersDashboard.php:367
+#: sundayschool/SundaySchoolDashboard.php:121 MembersDashboard.php:364
 msgid "Girls"
 msgstr ""
 
-#: sundayschool/SundaySchoolDashboard.php:132 Menu.php:110
+#: sundayschool/SundaySchoolDashboard.php:132 Menu.php:108
 msgid "Sunday School Classes"
 msgstr ""
 
@@ -1181,7 +1195,7 @@ msgid ""
 "At least one group must be selected to make class lists or attendance sheets."
 msgstr ""
 
-#: sundayschool/SundaySchoolReports.php:122
+#: sundayschool/SundaySchoolReports.php:122 CanvassAutomation.php:147
 msgid "Report Details"
 msgstr ""
 
@@ -1293,14 +1307,6 @@ msgstr ""
 msgid "Default Value"
 msgstr ""
 
-#: SystemSettings.php:215
-msgid "False"
-msgstr ""
-
-#: SystemSettings.php:216
-msgid "True"
-msgstr ""
-
 #: SystemSettings.php:221
 msgid "Edit Settings"
 msgstr ""
@@ -1319,6 +1325,10 @@ msgstr ""
 
 #: UpdateAllLatLon.php:89
 msgid "Update Finished"
+msgstr ""
+
+#: UpdateAllLatLon.php:94
+msgid "No coordinates found"
 msgstr ""
 
 #: UpgradeCRM.php:9 UpgradeCRM.php:23
@@ -1402,7 +1412,7 @@ msgid "Please confirm removal of user status from:"
 msgstr ""
 
 #: UserDelete.php:68 UserList.php:68 UserList.php:104 AutoPaymentDelete.php:71
-#: DepositSlipEditor.php:191 DonationFundEditor.php:195
+#: DepositSlipEditor.php:189 DonationFundEditor.php:195
 #: EditEventAttendees.php:80 ElectronicPaymentList.php:214
 #: ElectronicPaymentList.php:273 EventNames.php:314
 #: FamilyCustomFieldsEditor.php:355 FamilyView.php:549 FamilyView.php:600
@@ -1491,7 +1501,7 @@ msgid "Style:"
 msgstr ""
 
 #: UserEditor.php:418 UserPasswordChange.php:238 WhyCameEditor.php:102
-#: AutoPaymentEditor.php:576 CanvassEditor.php:160 DepositSlipEditor.php:95
+#: AutoPaymentEditor.php:576 CanvassEditor.php:160 DepositSlipEditor.php:93
 #: DonatedItemEditor.php:181 FamilyEditor.php:672 FamilyEditor.php:754
 #: FamilyEditor.php:813 FamilyEditor.php:875 FamilyEditor.php:893
 #: FamilyEditor.php:920 FamilyEditor.php:1070 FundRaiserEditor.php:156
@@ -1777,7 +1787,7 @@ msgstr ""
 msgid "Automatic payment type"
 msgstr ""
 
-#: AutoPaymentEditor.php:615 CanvassEditor.php:202 DepositSlipEditor.php:81
+#: AutoPaymentEditor.php:615 CanvassEditor.php:202 DepositSlipEditor.php:79
 #: EditEventAttendees.php:35 FundRaiserEditor.php:174
 msgid "Date:"
 msgstr ""
@@ -1935,6 +1945,14 @@ msgstr ""
 
 #: BackupDatabase.php:72
 msgid "Generate and Ship Backup to External Storage"
+msgstr ""
+
+#: BackupDatabase.php:79
+msgid "Backup Status:"
+msgstr ""
+
+#: BackupDatabase.php:79
+msgid "No Backup Running"
 msgstr ""
 
 #: BatchWinnerEntry.php:36 FundRaiserEditor.php:164
@@ -2430,7 +2448,7 @@ msgid "Remove"
 msgstr ""
 
 #: CartView.php:605 CSVImport.php:304 FamilyEditor.php:944
-#: MembersDashboard.php:309 OptionManager.php:71
+#: MembersDashboard.php:306 OptionManager.php:71
 msgid "Classification"
 msgstr ""
 
@@ -2578,6 +2596,10 @@ msgstr ""
 msgid "Software Version"
 msgstr ""
 
+#: ChurchCRM/model/ChurchCRM/Deposit.php:283
+msgid "Anonymous"
+msgstr ""
+
 #: ChurchCRM/Reports/PDF_Attendance.php:119
 msgid "Totals"
 msgstr ""
@@ -2676,11 +2698,11 @@ msgstr ""
 msgid "Custom Field Selection"
 msgstr ""
 
-#: CSVExport.php:209 MembersDashboard.php:129
+#: CSVExport.php:209 MembersDashboard.php:126
 msgid "Custom Person Fields"
 msgstr ""
 
-#: CSVExport.php:231 MembersDashboard.php:131
+#: CSVExport.php:231 MembersDashboard.php:128
 msgid "Custom Family Fields"
 msgstr ""
 
@@ -2907,53 +2929,53 @@ msgstr ""
 msgid "Deposit Slip Number: "
 msgstr ""
 
-#: DepositSlipEditor.php:75
+#: DepositSlipEditor.php:73
 msgid "Deposit Details: "
 msgstr ""
 
-#: DepositSlipEditor.php:85
+#: DepositSlipEditor.php:83
 msgid "Comment:"
 msgstr ""
 
-#: DepositSlipEditor.php:89
+#: DepositSlipEditor.php:87
 msgid "Closed:"
 msgstr ""
 
-#: DepositSlipEditor.php:90
+#: DepositSlipEditor.php:88
 msgid "Close deposit slip (remember to press Save)"
 msgstr ""
 
-#: DepositSlipEditor.php:98
+#: DepositSlipEditor.php:96
 msgid "Deposit Slip Report"
 msgstr ""
 
-#: DepositSlipEditor.php:103
+#: DepositSlipEditor.php:101
 msgid ""
 "Important note: failed transactions will be deleted permanantly when the "
 "deposit slip is closed."
 msgstr ""
 
-#: DepositSlipEditor.php:112
+#: DepositSlipEditor.php:110
 msgid "Deposit Summary: "
 msgstr ""
 
-#: DepositSlipEditor.php:144
+#: DepositSlipEditor.php:142
 msgid "Payments on this deposit slip:"
 msgstr ""
 
-#: DepositSlipEditor.php:149 eGive.php:267
+#: DepositSlipEditor.php:147 eGive.php:267
 msgid "Import eGive"
 msgstr ""
 
-#: DepositSlipEditor.php:152
+#: DepositSlipEditor.php:150
 msgid "Add Payment"
 msgstr ""
 
-#: DepositSlipEditor.php:156
+#: DepositSlipEditor.php:154
 msgid "Load Authorized Transactions"
 msgstr ""
 
-#: DepositSlipEditor.php:157
+#: DepositSlipEditor.php:155
 msgid "Run Transactions"
 msgstr ""
 
@@ -2984,7 +3006,7 @@ msgstr ""
 #: DirectoryReports.php:174 DirectoryReports.php:248
 #: external/templates/registration/family-register-done.php:26
 #: external/templates/registration/family-register.php:21 FamilyList.php:25
-#: GeoPage.php:326 GroupReports.php:132 Menu.php:179 Menu.php:209
+#: GeoPage.php:326 GroupReports.php:132 Menu.php:177 Menu.php:207
 msgid "Address"
 msgstr ""
 
@@ -3304,6 +3326,10 @@ msgid ""
 "        For MailChimp see:"
 msgstr ""
 
+#: email/Dashboard.php:37
+msgid "import subscribers to a list."
+msgstr ""
+
 #: email/Dashboard.php:42
 msgid "Generate"
 msgstr ""
@@ -3342,6 +3368,34 @@ msgstr ""
 
 #: email/Dashboard.php:84
 msgid "Missing emails report"
+msgstr ""
+
+#: email/Dashboard.php:95
+msgid "is not configured"
+msgstr ""
+
+#: email/Dashboard.php:96
+msgid "Please update the"
+msgstr ""
+
+#: email/Dashboard.php:96
+msgid "API key in Setting->"
+msgstr ""
+
+#: email/Dashboard.php:96
+msgid "Edit General Settings"
+msgstr ""
+
+#: email/Dashboard.php:97
+msgid "then update"
+msgstr ""
+
+#: email/Dashboard.php:97
+msgid "For more info see our "
+msgstr ""
+
+#: email/Dashboard.php:97
+msgid "support docs."
 msgstr ""
 
 #: email/MailChimpMissingReport.php:22
@@ -3624,8 +3678,8 @@ msgstr ""
 msgid "Register your family"
 msgstr ""
 
-#: external/templates/registration/family-register.php:17 Menu.php:178
-#: Menu.php:208
+#: external/templates/registration/family-register.php:17 Menu.php:176
+#: Menu.php:206
 msgid "Family Name"
 msgstr ""
 
@@ -3902,7 +3956,7 @@ msgstr ""
 msgid "Add Family"
 msgstr ""
 
-#: FamilyList.php:29 Menu.php:180
+#: FamilyList.php:29 Menu.php:178
 msgid "Created"
 msgstr ""
 
@@ -3916,6 +3970,10 @@ msgstr ""
 
 #: FamilyView.php:165
 msgid "The"
+msgstr ""
+
+#: FamilyView.php:172 PersonView.php:239
+msgid "Address:"
 msgstr ""
 
 #: FamilyView.php:182
@@ -4130,7 +4188,7 @@ msgid "Pledge Summary"
 msgstr ""
 
 #: FinancialReports.php:56
-msgid "Pledge FamilySummary"
+msgid "Pledge Family Summary"
 msgstr ""
 
 #: FinancialReports.php:57
@@ -4157,8 +4215,24 @@ msgstr ""
 msgid "Advanced Deposit Report"
 msgstr ""
 
+#: FinancialReports.php:134
+msgid "Add All Classes"
+msgstr ""
+
+#: FinancialReports.php:135
+msgid "Clear All Classes"
+msgstr ""
+
 #: FinancialReports.php:141
 msgid "Filter by Family:"
+msgstr ""
+
+#: FinancialReports.php:179
+msgid "Add All Families"
+msgstr ""
+
+#: FinancialReports.php:180
+msgid "Clear All Families"
 msgstr ""
 
 #: FinancialReports.php:188
@@ -4195,6 +4269,14 @@ msgstr ""
 
 #: FinancialReports.php:231
 msgid "Filter by Fund:"
+msgstr ""
+
+#: FinancialReports.php:246
+msgid "Add All Funds"
+msgstr ""
+
+#: FinancialReports.php:247
+msgid "Clear All Funds"
 msgstr ""
 
 #: FinancialReports.php:255
@@ -4249,7 +4331,7 @@ msgstr ""
 msgid "Only Families with unpaid pledges"
 msgstr ""
 
-#: FinancialReports.php:284 GeoPage.php:264 MembersDashboard.php:116
+#: FinancialReports.php:284 GeoPage.php:264 MembersDashboard.php:113
 msgid "All Families"
 msgstr ""
 
@@ -4345,6 +4427,10 @@ msgstr ""
 
 #: FindDepositSlip.php:62
 msgid "Add New Deposit: "
+msgstr ""
+
+#: FindDepositSlip.php:69
+msgid "Deposit Comment"
 msgstr ""
 
 #: FindDepositSlip.php:73
@@ -4469,6 +4555,10 @@ msgstr ""
 
 #: GenerateSeedData.php:40
 msgid "Clear Results"
+msgstr ""
+
+#: GenerateSeedData.php:57
+msgid "Loading Seed Data"
 msgstr ""
 
 #: GeoPage.php:91
@@ -5211,7 +5301,7 @@ msgstr ""
 msgid "The previous integrity check passed"
 msgstr ""
 
-#: LettersAndLabels.php:29 MembersDashboard.php:241
+#: LettersAndLabels.php:29 MembersDashboard.php:238
 msgid "Letters and Mailing Labels"
 msgstr ""
 
@@ -5245,6 +5335,10 @@ msgstr ""
 
 #: ListEvents.php:90
 msgid "Select Event Types To Display"
+msgstr ""
+
+#: ListEvents.php:93 ManageEnvelopes.php:152
+msgid "All"
 msgstr ""
 
 #: ListEvents.php:128
@@ -5283,6 +5377,10 @@ msgstr ""
 
 #: Login.php:286
 msgid "Please Login"
+msgstr ""
+
+#: Login.php:290
+msgid "Your previous session timed out.  Please login again."
 msgstr ""
 
 #: Login.php:301
@@ -5325,10 +5423,6 @@ msgstr ""
 
 #: ManageEnvelopes.php:150
 msgid "with at least one:"
-msgstr ""
-
-#: ManageEnvelopes.php:152
-msgid "All"
 msgstr ""
 
 #: ManageEnvelopes.php:161
@@ -5383,125 +5477,125 @@ msgstr ""
 msgid "Members Dashboard"
 msgstr ""
 
-#: MembersDashboard.php:74
+#: MembersDashboard.php:71
 msgid "Members Functions"
 msgstr ""
 
-#: MembersDashboard.php:77
+#: MembersDashboard.php:74
 msgid "All People"
 msgstr ""
 
-#: MembersDashboard.php:79
+#: MembersDashboard.php:76
 msgid "Classifications Manager"
 msgstr ""
 
-#: MembersDashboard.php:92
+#: MembersDashboard.php:89
 msgid "Email All"
 msgstr ""
 
-#: MembersDashboard.php:102
+#: MembersDashboard.php:99
 msgid "Email All (BCC)"
 msgstr ""
 
-#: MembersDashboard.php:118 MembersDashboard.php:263
+#: MembersDashboard.php:115 MembersDashboard.php:260
 msgid "Family Roles"
 msgstr ""
 
-#: MembersDashboard.php:119
+#: MembersDashboard.php:116
 msgid "Family Geographic"
 msgstr ""
 
-#: MembersDashboard.php:120
+#: MembersDashboard.php:117
 msgid "Family Map"
 msgstr ""
 
-#: MembersDashboard.php:123
+#: MembersDashboard.php:120
 msgid "Update All Family Coordinates"
 msgstr ""
 
-#: MembersDashboard.php:127 PersonView.php:327
+#: MembersDashboard.php:124 PersonView.php:327
 msgid "Volunteer Opportunities"
 msgstr ""
 
-#: MembersDashboard.php:154 Menu.php:79
+#: MembersDashboard.php:151 Menu.php:77
 msgid "See all Families"
 msgstr ""
 
-#: MembersDashboard.php:168 Menu.php:91
+#: MembersDashboard.php:165 Menu.php:89
 msgid "People"
 msgstr ""
 
-#: MembersDashboard.php:175 Menu.php:98
+#: MembersDashboard.php:172 Menu.php:96
 msgid "See All People"
 msgstr ""
 
-#: MembersDashboard.php:189
+#: MembersDashboard.php:186
 msgid "Sunday School Kids"
 msgstr ""
 
-#: MembersDashboard.php:196 MembersDashboard.php:217 Menu.php:117 Menu.php:136
+#: MembersDashboard.php:193 MembersDashboard.php:214 Menu.php:115 Menu.php:134
 msgid "More info"
 msgstr ""
 
-#: MembersDashboard.php:210 Menu.php:129
+#: MembersDashboard.php:207 Menu.php:127
 msgid "Groups"
 msgstr ""
 
-#: MembersDashboard.php:231
+#: MembersDashboard.php:228
 msgid "Reports on groups and roles"
 msgstr ""
 
-#: MembersDashboard.php:233
+#: MembersDashboard.php:230
 msgid "Report on group and roles selected (it may be a multi-page PDF)."
 msgstr ""
 
-#: MembersDashboard.php:238
+#: MembersDashboard.php:235
 msgid "Members Directory"
 msgstr ""
 
-#: MembersDashboard.php:238
+#: MembersDashboard.php:235
 msgid "Printable directory of all members, grouped by family where assigned"
 msgstr ""
 
-#: MembersDashboard.php:242
+#: MembersDashboard.php:239
 msgid "Generate letters and mailing labels."
 msgstr ""
 
-#: MembersDashboard.php:248
+#: MembersDashboard.php:245
 msgid "US Address Verification Report"
 msgstr ""
 
-#: MembersDashboard.php:249
+#: MembersDashboard.php:246
 msgid ""
 "Generate report comparing all US family addresses with United States Postal "
 "Service Standard Address Format.<br>"
 msgstr ""
 
-#: MembersDashboard.php:274
+#: MembersDashboard.php:271
 msgid "Role / Gender"
 msgstr ""
 
-#: MembersDashboard.php:275 MembersDashboard.php:310
+#: MembersDashboard.php:272 MembersDashboard.php:307
 msgid "of Members"
 msgstr ""
 
-#: MembersDashboard.php:276 MembersDashboard.php:311
+#: MembersDashboard.php:273 MembersDashboard.php:308
 msgid "Count"
 msgstr ""
 
-#: MembersDashboard.php:299
+#: MembersDashboard.php:296
 msgid "People Classification"
 msgstr ""
 
-#: MembersDashboard.php:332
+#: MembersDashboard.php:329
 msgid "Gender Demographics"
 msgstr ""
 
-#: MembersDashboard.php:356
+#: MembersDashboard.php:353
 msgid "Men"
 msgstr ""
 
-#: MembersDashboard.php:359
+#: MembersDashboard.php:356
 msgid "Women"
 msgstr ""
 
@@ -5509,27 +5603,27 @@ msgstr ""
 msgid "Welcome to"
 msgstr ""
 
-#: Menu.php:151
+#: Menu.php:149
 msgid "Deposit Tracking"
 msgstr ""
 
-#: Menu.php:171
+#: Menu.php:169
 msgid "Latest Families"
 msgstr ""
 
-#: Menu.php:201
+#: Menu.php:199
 msgid "Updated Families"
 msgstr ""
 
-#: Menu.php:210
+#: Menu.php:208
 msgid "Updated"
 msgstr ""
 
-#: Menu.php:233
+#: Menu.php:231
 msgid "Latest Members"
 msgstr ""
 
-#: Menu.php:262
+#: Menu.php:260
 msgid "Updated Members"
 msgstr ""
 
@@ -5622,6 +5716,10 @@ msgstr ""
 msgid "Make Default"
 msgstr ""
 
+#: OptionManager.php:386
+msgid "New"
+msgstr ""
+
 #: OptionManager.php:391
 msgid "Add New"
 msgstr ""
@@ -5636,10 +5734,6 @@ msgstr ""
 
 #: OptionManager.php:399
 msgid " by that name already exists."
-msgstr ""
-
-#: orm/model/ChurchCRM/Deposit.php:283
-msgid "Anonymous"
 msgstr ""
 
 #: PaddleNumEditor.php:43
@@ -5786,10 +5880,6 @@ msgstr ""
 
 #: PersonView.php:220
 msgid "About Me"
-msgstr ""
-
-#: PersonView.php:239
-msgid "Address:"
 msgstr ""
 
 #: PersonView.php:245
