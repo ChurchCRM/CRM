@@ -131,8 +131,8 @@ if ($sReportType == "") {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllClasses" class="btn"><?= gettext("Add All Funds") ?></button>
-        <button type="button" id="clearAllClasses" class="btn"><?= gettext("Clear All Funds") ?></button><br/><br/>
+        <button type="button" id="addAllClasses" class="btn"><?= gettext("Add All Classes") ?></button>
+        <button type="button" id="clearAllClasses" class="btn"><?= gettext("Clear All Classes") ?></button><br/><br/>
         </td></tr>
         <?php
 
