@@ -144,12 +144,12 @@ if ($processNews != "")
   <div class="col-lg-12">
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Report Details</h3>
+        <h3 class="box-title"><?= gettext("Report Details") ?></h3>
       </div>
       <div class="box-body">
         <form method="post" action="CanvassAutomation.php" name="CanvassAutomation">
 
-          <p>Fiscal Year:
+          <p><?= gettext("Fiscal Year:") ?>
             <?php PrintFYIDSelect($iFYID, "FYID") ?>
           </p>
 

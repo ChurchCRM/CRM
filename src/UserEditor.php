@@ -468,8 +468,8 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
     }   
     echo "\n<tr>";
     echo "<td><select name=\"new_permission[$ucfg_id]\">";
-    echo "<option value=\"FALSE\" $sel1>False";
-    echo "<option value=\"TRUE\" $sel2>True";
+    echo "<option value=\"FALSE\" $sel1>".gettext('False');
+    echo "<option value=\"TRUE\" $sel2>".gettext('True');
     echo '</select></td>';
     
     // Variable Name & Type
@@ -496,8 +496,8 @@ while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
             $sel2 = '';
         }   
         echo "<td><select name=\"new_value[$ucfg_id]\">";
-        echo "<option value=\"\" $sel1>False";
-        echo "<option value=\"1\" $sel2>True";
+        echo "<option value=\"\" $sel1>".gettext('False');
+        echo "<option value=\"1\" $sel2>".gettext('True');
         echo '</select></td>';
     }
         
