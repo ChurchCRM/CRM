@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/plugins/iCheck/square/blue.css">
 
   <!-- jQuery JS -->
-  <script src="<?= $sRootPath ?>/skin/adminlte/plugins/jQuery/jQuery-2.2.3.min.js"></script>
+  <script src="<?= $sRootPath ?>/skin/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
 
   <title>ChurchCRM: <?= $sPageTitle ?></title>
 
