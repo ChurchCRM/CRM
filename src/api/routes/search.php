@@ -11,21 +11,24 @@ $app->get('/search/{query}', function ($request, $response, $args) {
   } catch (Exception $e) {
   }
   
-  try{
-    $q = ChurchCRM\FamilyQuery::create()
-      ->filterByEnvelope($query)
-      ->limit(5)
-      ->withColumn("fam_Name","displayName")
-      ->withColumn('CONCAT("' . $sRootPath . 'FamilyView.php?FamilyID=",Family.Id)', "uri")
-      ->select(array("displayName","uri"))
-      ->find();
-    array_push($resultsArray, str_replace('Families', 'Donation Envelopes', $q->toJSON()));
-  } catch (Exception $ex) {
-  }
+  if ( $_SESSION['bFinance'] )
+  {
+    try{
+      $q = ChurchCRM\FamilyQuery::create()
+        ->filterByEnvelope($query)
+        ->limit(5)
+        ->withColumn("fam_Name","displayName")
+        ->withColumn('CONCAT("' . $sRootPath . 'FamilyView.php?FamilyID=",Family.Id)', "uri")
+        ->select(array("displayName","uri"))
+        ->find();
+      array_push($resultsArray, str_replace('Families', 'Donation Envelopes', $q->toJSON()));
+    } catch (Exception $ex) {
+    }
 
-  try {
-    array_push($resultsArray, $this->FamilyService->getFamiliesJSON($this->FamilyService->search($query)));
-  } catch (Exception $e) {
+    try {
+      array_push($resultsArray, $this->FamilyService->getFamiliesJSON($this->FamilyService->search($query)));
+    } catch (Exception $e) {
+    }
   }
 
   try {
