@@ -42,7 +42,7 @@ require "Include/Header.php";
     <?= gettext('Church Name:') ?> <?= $systemConfig->getValue("sChurchName"); ?><br>
     <?= gettext('Address:') ?> <?= $systemConfig->getValue("sChurchAddress"); ?><br>
     <?= gettext('City:') ?> <?= $systemConfig->getValue("sChurchCity"); ?><br>
-    <?= gettext('State:') ?><?= $systemConfig->getValue("sChurchState"); ?><br>
+    <?= gettext('State:') ?> <?= $systemConfig->getValue("sChurchState"); ?><br>
     <?= gettext('Zip:') ?> <?= $systemConfig->getValue("sChurchZip"); ?><br>
     <?= gettext('Country:') ?> <?= $systemConfig->getValue("sDefaultCountry"); ?><br>
     <?= gettext('Church Email:') ?> <?= $systemConfig->getValue("sChurchEmail"); ?><br>
