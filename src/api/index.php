@@ -46,6 +46,9 @@ require __DIR__ . '/routes/timerjobs.php';
 //self-upgrade tasks
 require __DIR__ . '/routes/systemupgrade.php';
 
+//registration
+require __DIR__ . '/routes/register.php';
+
 // Run app
 $app->run();
 

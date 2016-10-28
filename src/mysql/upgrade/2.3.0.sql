@@ -30,6 +30,10 @@ Update `config_cfg` set
 `cfg_type` = 'choice'
 where `cfg_id` = 1037;
 
+Update `config_cfg` set
+`cfg_value` = NULL 
+where `cfg_name` = "bRegistered";
+
 delete from config_cfg where cfg_id ='1';
 delete from config_cfg where cfg_id ='18';
 delete from config_cfg where cfg_id ='2001';
@@ -58,6 +62,3 @@ ALTER TABLE `family_fam`
 
 ALTER TABLE `note_nte`
   CHANGE COLUMN `nte_EnteredBy` `nte_EnteredBy` MEDIUMINT(8) NOT NULL DEFAULT '0' COMMENT '' ;
-
-
-
