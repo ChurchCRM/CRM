@@ -30,8 +30,7 @@ $app->group('/register', function () {
     }
 
     // =Turn off the registration flag so the menu option is less obtrusive
-    $sSQL = "UPDATE config_cfg SET cfg_value = 1 WHERE cfg_name='bRegistered'";
-    RunQuery($sSQL);
+    $systemConfig->setValue("bRegistered","1");
     $bRegistered = 1;
     echo json_encode(array("status"=>"success"));
 
