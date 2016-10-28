@@ -77,7 +77,7 @@
 
     <target name="locale-update">
         <echo message="building messages.po"/>
-        <exec command="find . -iname '*.php' | grep -v ./vendor | xargs xgettext --from-code=UTF-8 -o locale/messages.po -L PHP" dir="src" passthru="true"/>
+        <exec command="npm run locale-gen" dir="." passthru="true"/>
     </target>
 
     <target name="release" depends="locale-update, package, rev-build-number" />

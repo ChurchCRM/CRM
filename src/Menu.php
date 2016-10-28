@@ -48,8 +48,8 @@ $personCount = $dashboardService->getPersonCount();
 $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
 $depositData = false;  //Determine whether or not we should display the deposit line graph
-if ($_SESSION['bFinance']) {
-  $depositData =  \ChurchCRM\Base\DepositQuery::create()->find()->toJSON();  //Get the deposit data from the financialService
+if ($_SESSION['bFinance']) {  
+  $depositData =  \ChurchCRM\Base\DepositQuery::create()->filterByDate(array('min' =>date('Y-m-d', strtotime('-90 days'))))->find()->toJSON();
 }
 
 // Set the page title
@@ -310,10 +310,13 @@ if ($depositData) // If the user has Finance permissions, then let's display the
         lineData.labels.push(moment(val.Date).format("MM-DD-YY"));
         lineData.datasets[0].data.push(val.totalAmount);
     });
-
+    options = {
+      responsive:true,
+      maintainAspectRatio:false
+    };
     var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
-
-    var lineChart = new Chart(lineChartCanvas).Line(lineData);
+    var lineChart = new Chart(lineChartCanvas).Line(lineData,options);
+    
   });
 <?php
 }  //END IF block for Finance permissions to include JS for Deposit Chart
