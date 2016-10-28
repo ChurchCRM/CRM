@@ -548,7 +548,9 @@ $eventEnd = $sEventEndDate . " " . $iEventEndHour. ":".$iEventEndMins;
     timePickerIncrement: 30,
     linkedCalendars: true,
     showDropdowns: true,
-    format: 'YYYY-MM-DD h:mm A',
+    locale: {
+      format: 'YYYY-MM-DD h:mm A'
+    },
     minDate: 1/1/1900,
     startDate: startDate,
     endDate: endDate

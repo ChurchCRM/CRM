@@ -22,7 +22,6 @@
 
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/RenderFunctions.php";
 
 if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent'])
 {
