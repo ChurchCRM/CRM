@@ -20,7 +20,10 @@ global $systemConfig;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Software Registration");
-$ChurchCRMURL = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://' .$_SERVER['SERVER_NAME'] . str_replace("Register.php", '', $_SERVER['REQUEST_URI']);
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$domainName = $_SERVER['HTTP_HOST']. str_replace("Register.php", '', $_SERVER['REQUEST_URI']);
+$ChurchCRMURL =  $protocol.$domainName;
+
 require "Include/Header.php";
 ?>
 
