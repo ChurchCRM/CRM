@@ -8,6 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-29 21:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,32 +77,85 @@ msgstr ""
 msgid "Software Registration"
 msgstr ""
 
-#: Register.php:81
+#: Register.php:32
+msgid "If you need to make changes to registration data, go to "
+msgstr ""
+
+#: Register.php:32
+msgid "Admin->Edit General Settings"
+msgstr ""
+
+#: Register.php:39
 msgid ""
 "Please register your copy of ChurchCRM by checking over this information and "
 "pressing the Send button.  "
 msgstr ""
 
-#: Register.php:82
+#: Register.php:40
 msgid "This information is used only to track the usage of this software.  "
 msgstr ""
 
-#: Register.php:88 EmailEditor.php:90
-msgid "Message:"
+#: Register.php:45 DirectoryReports.php:244
+msgid "Church Name"
 msgstr ""
 
-#: Register.php:92
+#: Register.php:46 DirectoryReports.php:174 DirectoryReports.php:248
+#: external/templates/registration/family-register-done.php:26
+#: external/templates/registration/family-register.php:21 FamilyList.php:25
+#: GeoPage.php:326 GroupReports.php:132 Menu.php:177 Menu.php:207
+msgid "Address"
+msgstr ""
+
+#: Register.php:47 AutoPaymentEditor.php:681 CSVImport.php:238
+#: DirectoryReports.php:252
+#: external/templates/registration/family-register.php:27 FamilyList.php:26
+#: GeoPage.php:327
+msgid "City"
+msgstr ""
+
+#: Register.php:48 AutoPaymentEditor.php:686 CSVImport.php:239
+#: DirectoryReports.php:256
+#: external/templates/registration/family-register.php:30 FamilyList.php:27
+#: GeoPage.php:328
+msgid "State"
+msgstr ""
+
+#: Register.php:49 BackupDatabase.php:60 CSVImport.php:240
+#: DirectoryReports.php:260
+#: external/templates/registration/family-register.php:37 FamilyList.php:28
+#: GeoPage.php:329
+msgid "Zip"
+msgstr ""
+
+#: Register.php:50 AutoPaymentEditor.php:696 CSVImport.php:241
+#: external/templates/registration/family-register.php:40
+msgid "Country"
+msgstr ""
+
+#: Register.php:51
+msgid "Church Email"
+msgstr ""
+
+#: Register.php:52
+msgid "ChurchCRM URL"
+msgstr ""
+
+#: Register.php:53
+msgid "Message"
+msgstr ""
+
+#: Register.php:58
 msgid "Send"
 msgstr ""
 
-#: Register.php:93 ReminderReport.php:57 SettingsIndividual.php:120
+#: Register.php:59 ReminderReport.php:57 SettingsIndividual.php:120
 #: SettingsIndividual.php:167 SettingsUser.php:109 SettingsUser.php:171
 #: sundayschool/SundaySchoolDashboard.php:225
 #: sundayschool/SundaySchoolReports.php:217 TaxReport.php:54 UserDelete.php:69
 #: UserEditor.php:418 UserEditor.php:517 WhyCameEditor.php:103
 #: AutoPaymentDelete.php:72 AutoPaymentEditor.php:577 BatchWinnerEntry.php:113
 #: CanvassEditor.php:161 Checkin.php:183 Checkin.php:288 Checkin.php:341
-#: DirectoryReports.php:285 DonatedItemEditor.php:183 EventNames.php:243
+#: DirectoryReports.php:285 DonatedItemEditor.php:183 EventNames.php:242
 #: FamilyEditor.php:1072 FamilyView.php:813 FamilyView.php:837
 #: FinancialReports.php:67 FundRaiserEditor.php:157 GroupPropsEditor.php:167
 #: GroupReports.php:85 GroupReports.php:161 LettersAndLabels.php:83
@@ -110,12 +164,6 @@ msgstr ""
 #: PersonView.php:768 PledgeDelete.php:56 PropertyEditor.php:184
 #: PropertyTypeEditor.php:116
 msgid "Cancel"
-msgstr ""
-
-#: Register.php:99
-msgid ""
-"If you need to make changes go to Admin->Edit General Settings and Admin-"
-">Edit Report Settings.  "
 msgstr ""
 
 #: ReminderReport.php:27
@@ -194,7 +242,7 @@ msgstr ""
 #: UserList.php:63 VolunteerOpportunityEditor.php:85
 #: VolunteerOpportunityEditor.php:369 CartToFamily.php:159 CartView.php:601
 #: Checkin.php:366 DonationFundEditor.php:192 EditEventAttendees.php:43
-#: EventAttendance.php:202 EventNames.php:274 FamilyCustomFieldsEditor.php:351
+#: EventAttendance.php:202 EventNames.php:273 FamilyCustomFieldsEditor.php:351
 #: FamilyList.php:23 FamilyView.php:445 GeoPage.php:325
 #: GroupPropsFormEditor.php:308 GroupView.php:345 GroupView.php:381
 #: PersonCustomFieldsEditor.php:303 PersonView.php:568 PersonView.php:672
@@ -812,7 +860,7 @@ msgstr ""
 
 #: SelectList.php:946 UserList.php:62 UserList.php:86
 #: ElectronicPaymentList.php:213 ElectronicPaymentList.php:272
-#: EventEditor.php:236 EventNames.php:306 FamilyView.php:168
+#: EventEditor.php:236 EventNames.php:305 FamilyView.php:168
 #: FamilyView.php:548 FamilyView.php:596 FamilyView.php:647
 #: FindFundRaiser.php:223 FindFundRaiser.php:232 ListEvents.php:237
 #: PersonView.php:210 PersonView.php:572 PersonView.php:608
@@ -1206,7 +1254,7 @@ msgid ""
 msgstr ""
 
 #: sundayschool/SundaySchoolReports.php:133 AutoPaymentEditor.php:640
-#: CartToGroup.php:81 EventNames.php:172 GroupReports.php:49
+#: CartToGroup.php:81 EventNames.php:171 GroupReports.php:49
 #: GroupReports.php:152 PersonToGroup.php:70
 msgid "None"
 msgstr ""
@@ -1414,7 +1462,7 @@ msgstr ""
 #: UserDelete.php:68 UserList.php:68 UserList.php:104 AutoPaymentDelete.php:71
 #: DepositSlipEditor.php:189 DonationFundEditor.php:195
 #: EditEventAttendees.php:80 ElectronicPaymentList.php:214
-#: ElectronicPaymentList.php:273 EventNames.php:314
+#: ElectronicPaymentList.php:273 EventNames.php:313
 #: FamilyCustomFieldsEditor.php:355 FamilyView.php:549 FamilyView.php:600
 #: FamilyView.php:648 FamilyView.php:815 FindDepositSlip.php:50
 #: FundRaiserEditor.php:210 ListEvents.php:254 PaddleNumList.php:57
@@ -1716,7 +1764,7 @@ msgid "You must enter a name."
 msgstr ""
 
 #: VolunteerOpportunityEditor.php:420 DonationFundEditor.php:234
-#: EventEditor.php:525 EventNames.php:246 FamilyCustomFieldsEditor.php:435
+#: EventEditor.php:525 EventNames.php:245 FamilyCustomFieldsEditor.php:435
 #: GroupPropsFormEditor.php:386 OptionManager.php:371
 #: PersonCustomFieldsEditor.php:392
 msgid "Save Changes"
@@ -1816,25 +1864,8 @@ msgstr ""
 msgid "Last name"
 msgstr ""
 
-#: AutoPaymentEditor.php:681 CSVImport.php:238 DirectoryReports.php:252
-#: external/templates/registration/family-register.php:27 FamilyList.php:26
-#: GeoPage.php:327
-msgid "City"
-msgstr ""
-
-#: AutoPaymentEditor.php:686 CSVImport.php:239 DirectoryReports.php:256
-#: external/templates/registration/family-register.php:30 FamilyList.php:27
-#: GeoPage.php:328
-msgid "State"
-msgstr ""
-
 #: AutoPaymentEditor.php:691
 msgid "Zip code"
-msgstr ""
-
-#: AutoPaymentEditor.php:696 CSVImport.php:241
-#: external/templates/registration/family-register.php:40
-msgid "Country"
 msgstr ""
 
 #: AutoPaymentEditor.php:711 ElectronicPaymentList.php:207
@@ -1911,12 +1942,6 @@ msgstr ""
 
 #: BackupDatabase.php:59
 msgid "GZip"
-msgstr ""
-
-#: BackupDatabase.php:60 CSVImport.php:240 DirectoryReports.php:260
-#: external/templates/registration/family-register.php:37 FamilyList.php:28
-#: GeoPage.php:329
-msgid "Zip"
 msgstr ""
 
 #: BackupDatabase.php:61
@@ -2524,7 +2549,7 @@ msgstr ""
 msgid "Checked Out By"
 msgstr ""
 
-#: Checkin.php:371 EditEventAttendees.php:46 EventNames.php:278
+#: Checkin.php:371 EditEventAttendees.php:46 EventNames.php:277
 #: ListEvents.php:217 PersonView.php:501
 msgid "Action"
 msgstr ""
@@ -3003,13 +3028,6 @@ msgstr ""
 msgid "Information to Include:"
 msgstr ""
 
-#: DirectoryReports.php:174 DirectoryReports.php:248
-#: external/templates/registration/family-register-done.php:26
-#: external/templates/registration/family-register.php:21 FamilyList.php:25
-#: GeoPage.php:326 GroupReports.php:132 Menu.php:177 Menu.php:207
-msgid "Address"
-msgstr ""
-
 #: DirectoryReports.php:178
 msgid "Family Home Phone"
 msgstr ""
@@ -3068,10 +3086,6 @@ msgstr ""
 
 #: DirectoryReports.php:240
 msgid "Use Title Page"
-msgstr ""
-
-#: DirectoryReports.php:244
-msgid "Church Name"
 msgstr ""
 
 #: DirectoryReports.php:268
@@ -3186,7 +3200,7 @@ msgstr ""
 msgid "Are you sure you want to DELETE this person from Event ID: "
 msgstr ""
 
-#: EditEventTypes.php:28 EventNames.php:32
+#: EditEventTypes.php:28 EventNames.php:31
 msgid "Edit Event Types"
 msgstr ""
 
@@ -3194,7 +3208,7 @@ msgstr ""
 msgid "Edit Event Type"
 msgstr ""
 
-#: EditEventTypes.php:136 EventNames.php:273 ListEvents.php:219
+#: EditEventTypes.php:136 EventNames.php:272 ListEvents.php:219
 msgid "Event Type"
 msgstr ""
 
@@ -3202,11 +3216,11 @@ msgstr ""
 msgid "Save Name"
 msgstr ""
 
-#: EditEventTypes.php:147 EventNames.php:275
+#: EditEventTypes.php:147 EventNames.php:274
 msgid "Recurrance Pattern"
 msgstr ""
 
-#: EditEventTypes.php:162 EventEditor.php:476 EventNames.php:277
+#: EditEventTypes.php:162 EventEditor.php:476 EventNames.php:276
 #: ListEvents.php:220
 msgid "Attendance Counts"
 msgstr ""
@@ -3402,6 +3416,10 @@ msgstr ""
 msgid "People not in Mailchimp"
 msgstr ""
 
+#: EmailEditor.php:90
+msgid "Message:"
+msgstr ""
+
 #: EmailEditor.php:95
 msgid "Save Email"
 msgstr ""
@@ -3474,7 +3492,7 @@ msgstr ""
 msgid "There are no Records"
 msgstr ""
 
-#: EventEditor.php:50 EventEditor.php:55 EventNames.php:298 EventNames.php:299
+#: EventEditor.php:50 EventEditor.php:55 EventNames.php:297 EventNames.php:298
 msgid "Create Event"
 msgstr ""
 
@@ -3550,96 +3568,96 @@ msgstr ""
 msgid "Return to Events"
 msgstr ""
 
-#: EventNames.php:159
+#: EventNames.php:158
 msgid "EVENT TYPE NAME"
 msgstr ""
 
-#: EventNames.php:167
+#: EventNames.php:166
 msgid "RECURRANCE PATTERN"
 msgstr ""
 
-#: EventNames.php:177 PledgeEditor.php:582
+#: EventNames.php:176 PledgeEditor.php:582
 msgid "Weekly"
 msgstr ""
 
-#: EventNames.php:181
+#: EventNames.php:180
 msgid "Sundays"
 msgstr ""
 
-#: EventNames.php:182
+#: EventNames.php:181
 msgid "Mondays"
 msgstr ""
 
-#: EventNames.php:183
+#: EventNames.php:182
 msgid "Tuesdays"
 msgstr ""
 
-#: EventNames.php:184
+#: EventNames.php:183
 msgid "Wednesdays"
 msgstr ""
 
-#: EventNames.php:185
+#: EventNames.php:184
 msgid "Thursdays"
 msgstr ""
 
-#: EventNames.php:186
+#: EventNames.php:185
 msgid "Fridays"
 msgstr ""
 
-#: EventNames.php:187
+#: EventNames.php:186
 msgid "Saturdays"
 msgstr ""
 
-#: EventNames.php:193 PledgeEditor.php:583
+#: EventNames.php:192 PledgeEditor.php:583
 msgid "Monthly"
 msgstr ""
 
-#: EventNames.php:211
+#: EventNames.php:210
 msgid "Yearly"
 msgstr ""
 
-#: EventNames.php:221
+#: EventNames.php:220
 msgid "DEFAULT START TIME"
 msgstr ""
 
-#: EventNames.php:231
+#: EventNames.php:230
 msgid "ATTENDANCE COUNTS"
 msgstr ""
 
-#: EventNames.php:234
+#: EventNames.php:233
 msgid "Optional"
 msgstr ""
 
-#: EventNames.php:235
+#: EventNames.php:234
 msgid ""
 "Enter a list of the attendance counts you want to include with this event."
 msgstr ""
 
-#: EventNames.php:236
+#: EventNames.php:235
 msgid ""
 "Separate each count_name with a comma. e.g. Members, Visitors, Campus, "
 "Children"
 msgstr ""
 
-#: EventNames.php:237
+#: EventNames.php:236
 msgid "Every event type includes a Total count, you do not need to include it."
 msgstr ""
 
-#: EventNames.php:261
+#: EventNames.php:260
 msgid "There currently "
 msgstr ""
 
-#: EventNames.php:276
+#: EventNames.php:275
 msgid "Start Time"
 msgstr ""
 
-#: EventNames.php:314
+#: EventNames.php:313
 msgid ""
 "Deleting this event TYPE will NOT delete any existing Events or Attendance "
 "Counts.  Are you sure you want to DELETE Event Type ID: "
 msgstr ""
 
-#: EventNames.php:341
+#: EventNames.php:340
 msgid "Add Event Type"
 msgstr ""
 
