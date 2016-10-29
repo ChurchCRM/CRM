@@ -39,7 +39,7 @@ echo "FastClick Patched for iOS Select2 Bug"
 rm -rf /var/www/public/skin/fullcalendar/
 mkdir /var/www/public/skin/fullcalendar/
 
-cp -rf /vagrant/node_modules/fullcalendar/dist/ /var/www/public/skin/fullcalendar/
+cp -rf /vagrant/node_modules/fullcalendar/dist/* /var/www/public/skin/fullcalendar/
 
 echo "Build Skin: Full Calendar"
 
