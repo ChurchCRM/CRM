@@ -34,6 +34,7 @@ class SystemConfig
     $config = $this->getRawConfig($name);
     if (!is_null($config)) {
       $config->setValue($value);
+      $config->save();
     }
   }
 
