@@ -31,7 +31,7 @@ Update `config_cfg` set
 where `cfg_id` = 1037;
 
 Update `config_cfg` set
-`cfg_value` = NULL 
+`cfg_value` = 0 
 where `cfg_name` = "bRegistered";
 
 delete from config_cfg where cfg_id ='1';

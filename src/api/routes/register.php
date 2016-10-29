@@ -3,7 +3,6 @@
 $app->group('/register', function () {
   $this->post('', function ($request, $response, $args) {
     global $systemConfig;
-    $systemConfig->getValue("");
     $input = (object)$request->getParsedBody();
 
     $registrationData = new \stdClass();
@@ -14,6 +13,7 @@ $app->group('/register', function () {
     $registrationData->sZip = $systemConfig->getValue("sChurchZip");
     $registrationData->sCountry = $systemConfig->getValue("sDefaultCountry");
     $registrationData->sEmail = $systemConfig->getValue("sChurchEmail");
+    $registrationData->ChurchCRMURL = $input->ChurchCRMURL;
 
     $registrationData->sComments = $input->emailmessage;
     $curlService = curl_init("http://demo.churchcrm.io/register.php");
@@ -32,7 +32,7 @@ $app->group('/register', function () {
     // =Turn off the registration flag so the menu option is less obtrusive
     $systemConfig->setValue("bRegistered","1");
     $bRegistered = 1;
-    echo json_encode(array("status"=>"success"));
+    return $response->withJson(array("status"=>"success"));
 
   });
 });

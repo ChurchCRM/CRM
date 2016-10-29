@@ -20,7 +20,7 @@ global $systemConfig;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Software Registration");
-
+$ChurchCRMURL = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://' .$_SERVER['SERVER_NAME'] . str_replace("Register.php", '', $_SERVER['REQUEST_URI']);
 require "Include/Header.php";
 ?>
 
@@ -39,17 +39,19 @@ require "Include/Header.php";
 	</div>
 	<form id="registerForm">
 	<div class="box-body">
-    <?= gettext('Church Name:') ?> <?= $systemConfig->getValue("sChurchName"); ?><br>
-    <?= gettext('Address:') ?> <?= $systemConfig->getValue("sChurchAddress"); ?><br>
-    <?= gettext('City:') ?> <?= $systemConfig->getValue("sChurchCity"); ?><br>
-    <?= gettext('State:') ?> <?= $systemConfig->getValue("sChurchState"); ?><br>
-    <?= gettext('Zip:') ?> <?= $systemConfig->getValue("sChurchZip"); ?><br>
-    <?= gettext('Country:') ?> <?= $systemConfig->getValue("sDefaultCountry"); ?><br>
-    <?= gettext('Church Email:') ?> <?= $systemConfig->getValue("sChurchEmail"); ?><br>
-		<br> <?= gettext('Message:') ?>
+    <?= gettext('Church Name') ?>: <?= $systemConfig->getValue("sChurchName"); ?><br>
+    <?= gettext('Address') ?>: <?= $systemConfig->getValue("sChurchAddress"); ?><br>
+    <?= gettext('City') ?>: <?= $systemConfig->getValue("sChurchCity"); ?><br>
+    <?= gettext('State') ?>: <?= $systemConfig->getValue("sChurchState"); ?><br>
+    <?= gettext('Zip') ?>: <?= $systemConfig->getValue("sChurchZip"); ?><br>
+    <?= gettext('Country') ?>: <?= $systemConfig->getValue("sDefaultCountry"); ?><br>
+    <?= gettext('Church Email') ?>: <?= $systemConfig->getValue("sChurchEmail"); ?><br>
+    <?= gettext('ChurchCRM URL') ?>: <?= $ChurchCRMURL ?><br>
+		<br> <?= gettext('Message') ?>:
 		<br><textarea class="form-control" name="emailmessage" rows="20" cols="72"><?= htmlspecialchars($sEmailMessage) ?> </textarea>
 	</div>
 	<div class="box-footer">
+    <input type="hidden" name="ChurchCRMURL" value="<?= $ChurchCRMURL ?>"/>
 		<input type="submit" class="btn btn-primary" value="<?= gettext("Send") ?>" name="Submit">
 		<input type="button" class="btn btn-default" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='Menu.php';">
 	</div>
@@ -64,7 +66,8 @@ $(document).ready(function () {
       type: "POST",
       url: window.CRM.root + "/api/register",
       data: {
-        emailmessage: $("textarea[name=emailmessage]").val()
+        emailmessage: $("textarea[name=emailmessage]").val(),
+        ChurchCRMURL: $("input[name=ChurchCRMURL]").val()
       },
       success: function (data) {
         window.location.href = window.CRM.root+"/";
