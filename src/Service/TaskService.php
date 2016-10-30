@@ -31,6 +31,11 @@ class TaskService
     if ($bRegistered != 1) {
       array_push($tasks, $this->addTask(gettext("Register Software"), $this->baseURL."/Register.php", true));
     }
+
+    if(!isset($_SERVER['HTTPS'])) {
+      array_push($tasks, $this->addTask(gettext("Configure HTTPS"), "http://docs.churchcrm.io/en/latest/", true));
+    }
+    
     if ($sChurchName == "Some Church") {
       array_push($tasks, $this->addTask(gettext("Update Church Info"), $this->baseURL."/SystemSettings.php", true));
     }
