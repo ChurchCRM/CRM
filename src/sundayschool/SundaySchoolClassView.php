@@ -85,7 +85,7 @@ require "../Include/Header.php";
           <span class="sr-only"><?= gettext("Toggle Dropdown") ?></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <?php generateGroupRoleEmailDropdown($roleEmails, "mailto:") ?>
+          <?php generateGroupRoleEmailDropdown($roleEmails, "mailto") ?>:
         </ul>
       </div>
 

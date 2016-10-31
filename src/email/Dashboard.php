@@ -33,7 +33,7 @@ require '../Include/Header.php';
       </div>
       <div class="box-body">
         <?= gettext("You can import the generated CSV file to external email system.
-        For MailChimp see:") ?> <a href="http://kb.mailchimp.com/lists/growth/import-subscribers-to-a-list"
+        For MailChimp see") ?>: <a href="http://kb.mailchimp.com/lists/growth/import-subscribers-to-a-list"
                                    target="_blank"><?= gettext("import subscribers to a list.") ?></a>
         <br/><br/>
 
@@ -55,7 +55,7 @@ require '../Include/Header.php';
       <div class="col-lg-4 col-md-2 col-sm-2">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title"><?= gettext("List:") ?> <?= $list["name"] ?></h3>
+            <h3 class="box-title"><?= gettext("List") ?>: <?= $list["name"] ?></h3>
           </div>
           <div class="box-body">
             <?

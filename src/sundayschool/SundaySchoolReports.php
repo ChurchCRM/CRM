@@ -144,68 +144,68 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
         </tr>
 
         <tr>
-          <td><?= gettext("Fiscal Year:") ?></td>
+          <td><?= gettext("Fiscal Year") ?>:</td>
           <td class="TextColumnWithBottomBorder">
             <?php PrintFYIDSelect($iFYID, "FYID") ?>
           </td>
         </tr>
 
         <tr>
-          <td><?= gettext("First Sunday:") ?></td>
+          <td><?= gettext("First Sunday") ?>:</td>
           <td><input type="text" name="FirstSunday" value="<?= $dFirstSunday ?>" maxlength="10" id="FirstSunday" size="11"  class="date-picker"></td>
         </tr>
 
         <tr>
-          <td><?= gettext("Last Sunday:") ?></td>
+          <td><?= gettext("Last Sunday") ?>:</td>
           <td><input type="text" name="LastSunday" value="<?= $dLastSunday ?>" maxlength="10" id="LastSunday" size="11"  class="date-picker"></td>
         </tr>
 
         <tr>
-          <td><?= gettext("No Sunday School:") ?></td>
+          <td><?= gettext("No Sunday School") ?>:</td>
           <td><input type="text" name="NoSchool1" value="<?= $dNoSchool1 ?>" maxlength="10" id="NoSchool1" size="11" class="date-picker"></td>
         </tr>
 
         <tr>
-          <td><?= gettext("No Sunday School:") ?></td>
+          <td><?= gettext("No Sunday School") ?>:</td>
           <td><input type="text" name="NoSchool2" value="<?= $dNoSchool2 ?>" maxlength="10" id="NoSchool2" size="11"  class="date-picker"></td>
         </tr>
 
         <tr>
-          <td><?= gettext("No Sunday School:") ?></td>
+          <td><?= gettext("No Sunday School") ?>:</td>
           <td><input type="text" name="NoSchool3" value="<?= $dNoSchool3 ?>" maxlength="10" id="NoSchool3" size="11" class="date-picker"></td>
         </tr>
 
         <tr>
-          <td><?= gettext("No Sunday School:") ?></td>
+          <td><?= gettext("No Sunday School") ?>:</td>
           <td><input type="text" name="NoSchool4" value="<?= $dNoSchool4 ?>" maxlength="10" id="NoSchool4" size="11" class="date-picker"></td>
         </tr>
 
         <tr>
-          <td><?= gettext("No Sunday School:") ?></td>
+          <td><?= gettext("No Sunday School") ?>:</td>
           <td><input type="text" name="NoSchool5" value="<?= $dNoSchool5 ?>" maxlength="10" id="NoSchool5" size="11" class="date-picker"></td>
         </tr>
 
         <tr>
-          <td><?= gettext("No Sunday School:") ?></td>
+          <td><?= gettext("No Sunday School") ?>:</td>
           <td><input type="text" name="NoSchool6" value="<?= $dNoSchool6 ?>" maxlength="10" id="NoSchool6" size="11" class="date-picker"></td>
         </tr>
 
         <tr>
-          <td><?= gettext("No Sunday School:") ?></td>
+          <td><?= gettext("No Sunday School") ?>:</td>
           <td><input type="text" name="NoSchool7" value="<?= $dNoSchool7 ?>" maxlength="10" id="NoSchool7" size="11" class="date-picker"></td>
         </tr>
 
         <tr>
-          <td><?= gettext("No Sunday School:") ?></td>
+          <td><?= gettext("No Sunday School") ?>:</td>
           <td><input type="text" name="NoSchool8" value="<?= $dNoSchool8 ?>" maxlength="10" id="NoSchool8" size="11" class="date-picker"></td>
         </tr>
 
         <tr>
-          <td><?= gettext("Extra Students:") ?></td>
+          <td><?= gettext("Extra Students") ?>:</td>
           <td><input type="text" name="ExtraStudents" value="<?= $iExtraStudents ?>" id="ExtraStudents" size="11">&nbsp;</td>
         </tr>
         <tr>
-          <td><?= gettext("Extra Teachers:") ?></td>
+          <td><?= gettext("Extra Teachers") ?>:</td>
           <td><input type="text" name="ExtraTeachers" value="<?= $iExtraTeachers ?>" id="ExtraTeachers" size="11">&nbsp;</td>
         </tr>
         <tr>
